@@ -1,48 +1,49 @@
 {
-  "url": "https://github.com/mtes-mct/Dossier-Facile-Frontend",
+  "url": "https://github.com/MTES-MCT/Dossier-Facile-Frontend",
   "name": "Dossier-Facile-Frontend",
-  "description": "Ce projet correspond aux sites DossierFacile et FiligraneFacile. Il permet de réaliser des dossiers de location et est composé de plusieurs applications web.",
-  "language": "TypeScript",
+  "description": "Ce projet correspond aux sites DossierFacile et FiligraneFacile. Il permet de réaliser des dossiers de location et de gérer les partages de documents.",
+  "language": "Vue",
   "features": [
-    "Authentification utilisateur",
-    "Gestion des documents",
-    "Soumission de dossiers",
+    "Gestion des dossiers de location",
     "Partage de documents",
-    "Gestion des garants",
-    "Informations sur le logement"
+    "Authentification utilisateur",
+    "Gestion des comptes utilisateurs",
+    "Diagnostic de performance énergétique",
+    "Formulaire de contact"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Vue",
-    "pnpm",
-    "axios",
+    "Vue Router",
+    "Pinia",
+    "Axios",
     "vee-validate",
-    "vue-router",
-    "pinia"
+    "df-shared-next",
+    "Keycloak-js"
   ],
   "components": [
-    "Frontend React",
-    "Composants Vue",
-    "API REST",
-    "Base de données"
+    "Frontend Vue",
+    "Composants DSFR",
+    "API REST (via Axios)",
+    "Gestionnaire d'état Pinia"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "email-password"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
-  "auth.providers": [],
   "tests": [
     "Cypress",
     "Vitest"
   ],
   "workflows": [
-    "codeql-analysis.yml",
-    "e2e.yml",
-    "www.yml"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-01-29T13:44:08+01:00",
+  "lastActivity": "2026-02-16T10:23:12+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,10 +54,13 @@
     "openIssues": 39
   },
   "tags": [
-    "dossierfacile",
-    "logement",
-    "franceconnect",
+    "location",
+    "dossier",
+    "immobilier",
+    "administration",
+    "frontend",
     "vuejs",
-    "typescript"
+    "franceconnect",
+    "dsfr"
   ]
 }
