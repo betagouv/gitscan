@@ -1,31 +1,25 @@
 {
   "url": "https://github.com/betagouv/slack-ovh",
   "name": "slack-ovh",
-  "description": "Cette interface permet d'accéder et de gérer les mailing-listes OVH via Slack. Elle vise à démocratiser l'accès à ces listes au sein de l'organisation.",
+  "description": "Cette interface permet de démocratiser l'accès aux mailing-listes OVH et de gérer les inscriptions.",
   "language": "JavaScript",
   "features": [
     "Liste des listes de diffusion",
-    "Gestion des inscriptions aux listes",
-    "Commande /emails list",
-    "Commande /emails join",
-    "Commande /emails leave"
+    "Gestion des inscriptions",
+    "Rejoindre une liste",
+    "Quitter une liste"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "express",
     "dotenv",
     "ovh",
-    "bluebird",
-    "body-parser",
-    "cookie-parser",
-    "morgan",
-    "serve-favicon"
+    "bluebird"
   ],
   "components": [
-    "API REST (Express)",
-    "Interface Slack",
-    "Configuration via config.js",
-    "Gestion des messages Slack"
+    "API REST",
+    "Application Node.js",
+    "Intégration Slack"
   ],
   "auth": {
     "methods": [
@@ -49,11 +43,10 @@
     "openIssues": 9
   },
   "tags": [
-    "Slack",
-    "OVH",
+    "slack",
+    "ovh",
     "mailing-list",
-    "JavaScript",
-    "API",
-    "automation"
+    "javascript",
+    "node.js"
   ]
 }
