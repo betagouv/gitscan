@@ -1,67 +1,68 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir des outils et des fonctionnalités pour la gestion et l'analyse de données dans le domaine de la justice.",
   "language": "JavaScript",
   "features": [
-    "Gestion des utilisateurs",
+    "Gestion des situations d'agents",
+    "Exportation de données",
+    "Visualisation de données (graphiques)",
+    "Anonymisation de données",
     "Gestion des droits d'accès",
-    "Extraction de données",
-    "Visualisation de données",
-    "Gestion des sauvegardes",
-    "Notifications"
+    "Importation de données"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
-    "React",
-    "Koa",
+    "Redis",
+    "Express",
     "Sequelize",
-    "Chart.js",
-    "xlsx",
-    "Moment.js"
+    "Cypress",
+    "Babel"
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST (Node.js/Express)",
     "Base de données PostgreSQL",
-    "Serveur Node.js"
+    "Redis (cache)",
+    "Tests E2E (Cypress)"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "sso"
+      "oauth2",
+      "saml"
     ],
     "providers": []
   },
   "tests": [
     "Mocha",
     "Cypress",
-    "Jest"
+    "E2E tests"
   ],
   "workflows": [
-    "github-actions.yml",
-    "nightly-sandbox.yml"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-31T10:24:53+01:00",
+  "lastActivity": "2026-02-16T10:44:29+01:00",
   "status": "active",
-  "license": "EUPL-1.2",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
-    "forks": 1,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 42
+    "openIssues": null
   },
   "tags": [
     "justice",
     "administration",
-    "logiciel",
-    "gestion",
     "données",
+    "analyse",
+    "gestion",
+    "javascript",
     "react",
-    "nodejs",
-    "postgresql"
+    "postgresql",
+    "cypress"
   ]
 }
