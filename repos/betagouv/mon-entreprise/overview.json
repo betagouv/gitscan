@@ -1,27 +1,29 @@
 {
   "url": "https://github.com/betagouv/mon-entreprise",
   "name": "mon-entreprise",
-  "description": "L'assistant officiel des entrepreneurs. Il propose des simulateurs de cotisations sociales basés sur le langage déclaratif Publicodes et permet aux développeurs de réutiliser ces règles.",
+  "description": "Ce dépôt contient le code source du site mon-entreprise, les règles publicodes pour le calcul des cotisations sociales et des impôts, ainsi que des outils pour les créateurs d'entreprise.",
   "language": "TypeScript",
   "features": [
     "Simulateurs de cotisations sociales",
-    "Calcul des cotisations sociales",
-    "Calcul des impôts",
-    "Intégration pour les développeurs",
-    "Calcul des exonérations de cotisations liées au covid"
+    "Calcul de l'impôt",
+    "Calcul des exonérations de cotisations",
+    "Intégration pour développeurs",
+    "Calcul du coût d'une embauche",
+    "Calcul du salaire net après impôt"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Publicodes",
     "React",
     "Koa",
-    "ioredis"
+    "Publicodes",
+    "ioredis",
+    "swagger-ui-dist"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données Redis",
-    "Règles Publicodes"
+    "Publicodes (moteur de règles)"
   ],
   "auth": {
     "methods": [
@@ -29,6 +31,7 @@
     ]
   },
   "tests": [
+    "Jest",
     "Vitest",
     "Cypress"
   ],
@@ -36,23 +39,24 @@
     "deploy.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-01-30T12:44:31+00:00",
+  "lastActivity": "2026-02-11T00:57:41+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 306,
-    "forks": 93,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 410
+    "openIssues": null
   },
   "tags": [
-    "legaltech",
-    "simulation",
     "cotisations sociales",
     "impôts",
-    "Publicodes",
-    "TypeScript",
-    "France"
+    "création d'entreprise",
+    "simulateur",
+    "publicodes",
+    "typescript",
+    "react",
+    "urssaf"
   ]
 }
