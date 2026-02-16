@@ -1,0 +1,32 @@
+## Changelog : drive (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de Drive se concentrent sur l'amélioration de l'expérience utilisateur avec l'ajout de notes de publication, une meilleure gestion des accès et des améliorations de l'interface utilisateur. Des efforts importants ont également été déployés pour optimiser les performances, notamment en ce qui concerne la synchronisation des fichiers et la gestion des accès, ainsi que pour améliorer la robustesse et la sécurité de la plateforme.
+
+### Évolutions fonctionnelles
+- Ajout d'un système de notes de publication avec suivi de version pour informer les utilisateurs des nouvelles fonctionnalités (#9161e31).
+- Implémentation d'une fonctionnalité de connexion silencieuse (silent login) pour une expérience utilisateur plus fluide (#7291d6c).
+- Possibilité de rediriger vers une page d'accueil externe configurable (#a965203).
+- Amélioration de la gestion des accès avec la prise en compte de l'héritage des droits et des rôles ancêtres (#ff831e0, #7b18daf).
+- Ajout de la possibilité de déplacer des éléments vers la racine (#8251464).
+- Amélioration de la gestion des documents OLE2 (#0c7c381).
+- Correction d'un problème empêchant le téléchargement de fichiers contenant le caractère '#' dans leur nom (#0823972).
+
+### Évolutions techniques
+- Mise à jour de plusieurs dépendances : Django (v5.2.11), Pillow (v12.1.1), Cryptography (v46.0.5), django-lasuite (v0.0.23), Celery (v5.6.2), pylint (v4.0.4).
+- Refactorisation de la gestion des accès pour améliorer les performances et la lisibilité du code (#dca39e3, #3793f00).
+- Migration du build system vers `uv_build` (#84e7dba).
+- Amélioration de la configuration de Celery Beat pour une meilleure gestion des tâches asynchrones (#46d61a9).
+- Ajout de mécanismes de retry pour la tâche de mirroring de fichiers (#e2d6d4e).
+- Introduction d'un système de mirroring de fichiers sur S3 pour la sauvegarde et la redondance (#5bd9859).
+- Amélioration des tests E2E avec Cypress et Playwright, incluant des tests pour les nouvelles fonctionnalités (#03c32d5, #2dc54fe).
+- Optimisation des requêtes pour réduire les temps de réponse et améliorer les performances globales (#e094890, #8cfa413).
+- Configuration améliorée pour les déploiements Helm, permettant une plus grande flexibilité et personnalisation (#eef5cc5).
+
+### Autres changements
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements de configuration (#31d9be6, #9161e31).
+- Suppression de la gestion des workspaces (#45989c7).
+- Suppression de la tâche pgdump de Scalingo (#abd055a).
+- Correction de la configuration Nginx pour les cookies Keycloak (#ecf7d74).
+- Amélioration de la gestion des logs et des erreurs (#6f9d213).
+- Diverses corrections de bugs et améliorations de la qualité du code.
