@@ -1,0 +1,56 @@
+## Changelog : verseau2 (30 derniers jours)
+
+### Résumé
+Les dernières semaines ont été marquées par des améliorations significatives de la stabilité, de la performance et des fonctionnalités de verseau2. Des corrections de bugs ont été apportées, notamment concernant le traitement des fichiers Sandre et la gestion des droits d'accès. L'application bénéficie également de l'ajout d'indicateurs pour le tableau de bord et d'une meilleure gestion des logs et des erreurs.
+
+### Évolutions fonctionnelles
+
+- Ajout d'indicateurs pour les stations liées à l'utilisateur, avec pagination dans les groupes de contrôles (#9).
+- Normalisation des adresses email reçues de Cerbere (passage en minuscules).
+- Ajout de la gestion de plusieurs erreurs du parser Sandre.
+- Amélioration de la gestion des droits d'accès utilisateur, notamment avec l'ajout de l'intervenant dans l'objet utilisateur authentifié (#8).
+- Ajout de l'année de référence des indicateurs.
+- Ajout d'icônes aux contrôles Sandre.
+- Correction d'un bug empêchant l'envoi de plusieurs emails en cas d'erreurs.
+- Correction d'un problème de caractères spéciaux dans le nom des fichiers déposés.
+
+### Évolutions techniques
+
+- Ajout d'index sur certaines colonnes de la base de données pour améliorer les performances.
+- Refactor de la gestion des logs avec l'utilisation du `LoggerService` et l'ajout de décorateurs `TraceCalls` pour le suivi des appels de méthodes.
+- Mise en place d'un cache géré par un interceptor.
+- Amélioration des tests E2E pour l'API et le worker, avec un renforcement de la configuration des droits d'accès.
+- Mutualisation des mocks et des datasets pour les tests.
+- Découpage des tâches pour éviter les tâches trop longues lors du traitement des données Sandre.
+- Correction d'une race condition lors de la mise à jour des dépôts.
+- Réduction de la poolSize PostgreSQL pour l'API et le worker afin de faciliter le scaling.
+- Passage du service Logger à Transient pour résoudre un problème de test.
+- Suppression du correlation id dans traceCalls.
+- Correction d'une erreur de clé dupliquée lors du traitement des contrôles Sandre (timeout des jobs Sandre passé à 2h).
+- Ajout d'un préfixe aux queues pour les environnements avec une base de données partagée (recette, environnements spécifiques).
+- Correction d'une erreur de typage dans le code TypeScript.
+- Correction d'un problème de résolution qui causait une erreur au runtime.
+- Amélioration des performances de la requête des indicateurs.
+- Suppression de throw pour éviter un retry de la file.
+
+### Autres changements
+
+- Ajout d'une documentation AGENTS.md adaptée à une structure mémoire de type 3 couches.
+- Mise à jour des dépendances vulnérables.
+- Ajout de vérification du contenu du dump avant la restauration.
+- Ajout de skills dans la documentation.
+- Correction de la structure des titres dans la table des indicateurs.
+- Ajout de séparateurs sur la page des contrôles.
+- Ajout d'une librairie commune non orientée domaine.
+- Correction d'un bug dans les tests E2E.
+- Correction d'un import manquant dans les tests.
+- Bypass de la transpilation de la librairie pour le développement.
+- Ajout de la possibilité de créer une nouvelle table PostgreSQL pour un test spécifique.
+- Limitation de la longueur du correlationId à 9 caractères.
+- Correction d'un test LoggerService en erreur.
+- Correction d'un bug lié au typage de CTL05.
+- Correction d'un bug lié à l'extraction du mapper de réponse Sandre.
+- Correction d'un bug lié au calcul du seuil EH.
+- Ajout d'infos dans les logs.
+- Typage cohérent avec la base de données referentiel.
+- Ajout de deux siret pour les contrôles de droits de dépôt.
