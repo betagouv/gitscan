@@ -4,9 +4,7 @@
 
 Automated GitHub public repository scanner. Collects metadata, documentation, dependencies, and commit history from public repositories. Optionally generates AI-powered structured overviews.
 
-Demo frontend on https://revolunet.github.io/gitscan
-
-Use this repo as a template, edit [orgas.txt](./orgas.txt) and activate github pages to get your own for free.
+Edit [orgas.txt](./orgas.txt) and activate github pages to get your own for free.
 
 ## Overview
 
