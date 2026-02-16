@@ -1,31 +1,33 @@
 {
   "url": "https://github.com/betagouv/datapass",
   "name": "datapass",
-  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il simplifie l'accès aux données pour les administrations tout en garantissant le respect de la réglementation.",
+  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il simplifie l'accès aux données publiques pour les entités autorisées, en harmonisant les procédures et en assurant la conformité juridique.",
   "language": "TypeScript",
   "features": [
     "Gestion des habilitations",
-    "Authentification utilisateur",
-    "Validation des demandes d'accès",
-    "Gestion des organisations",
-    "Suivi des événements",
-    "Intégration avec FranceConnect"
+    "Authentification",
+    "Validation de documents",
+    "Gestion des utilisateurs",
+    "API pour l'intégration",
+    "Notifications"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
-    "Node.js",
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "React",
-    "Sidekiq"
+    "Node.js",
+    "TypeScript",
+    "React"
   ],
   "components": [
-    "Frontend React",
     "Backend Ruby on Rails",
+    "Frontend React",
     "Base de données PostgreSQL",
+    "Cache Redis",
     "API REST",
-    "Worker Sidekiq"
+    "Microservices"
   ],
   "auth": {
     "methods": [
@@ -41,10 +43,9 @@
     "Jest"
   ],
   "workflows": [
-    "Frontend build",
-    "Frontend tests",
-    "Backend CI",
-    "HTTPS deploy (production, staging, sandbox)"
+    "back.yml",
+    "frontend-build.yml",
+    "frontend-tests.yml"
   ],
   "lastActivity": "2025-10-23T11:27:16Z",
   "status": "maintained",
@@ -54,15 +55,15 @@
     "stars": 18,
     "forks": 18,
     "contributors": null,
-    "openIssues": 40
+    "openIssues": 39
   },
   "tags": [
     "données",
     "juridique",
     "habilitation",
     "administration",
+    "API",
     "FranceConnect",
-    "RGPD",
-    "API"
+    "RGPD"
   ]
 }
