@@ -1,0 +1,33 @@
+## Changelog : carbure (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de Carbure se concentrent sur l'amélioration de la gestion des données QualiCharge, notamment l'affichage et la validation des certificats d'électricité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées. Des évolutions significatives ont été implémentées pour la gestion des données biogaz et biométhane, avec l'ajout de nouveaux champs et la correction de problèmes liés aux déclarations annuelles.
+
+### Évolutions fonctionnelles
+- Amélioration de l'affichage des quantités en kWh pour QualiCharge (#1278d5ff).
+- Ajout de la possibilité de valider l'ensemble des données QualiCharge en une seule opération (#c372f89b).
+- Affichage de l'unité (MWh) dans la liste d'administration QualiCharge (#afe1499c).
+- Possibilité de ne visualiser que l'énergie renouvelable dans l'interface QualiCharge (#ab681670).
+- Restriction de la validation des certificats QualiCharge aux utilisateurs DGEC (#e05ac793).
+- Amélioration des filtres de la liste des certificats QualiCharge (#27409613).
+- Correction d'un bug lié aux requêtes N+1 pour les données d'électricité (#766b8b43).
+- Augmentation de la longueur du champ "numéro de position" dans SAF (#71a5ee80).
+- Ajout de nouveaux champs et modifications des champs existants pour la gestion des données biométhane (INSEE code, propane, heures d'opération, tonnage de digestat brut, etc.) (#b2072a93, #8f42b275, #6f3de290, #51116cfa, #b5c8963c).
+- Ajout de la gestion des organismes d'aide aux contrats (#b5c8963c).
+- Correction de bugs et amélioration de la gestion des volumes dans les plans d'approvisionnement biométhane (#c0489050, #661ba93c).
+
+### Évolutions techniques
+- Mise à jour des dépendances (pipfile.lock) (#f59699b5).
+- Amélioration des performances avec la création et la mise à jour en masse de certificats QualiCharge (#cf417559).
+- Utilisation de `bulk_update` avec des filtres pour QualiCharge (#399dae39).
+- Refactoring du code QualiCharge pour une meilleure lisibilité et maintenance (#092437c9).
+- Correction de tests unitaires et d'intégration (#3e75dbca, #b50439cc, #d211cb29).
+- Correction d'un problème de réversion de branche (#7e6ff355).
+- Correction d'un problème lié à l'environnement Sentry (#e836cb78).
+
+### Autres changements
+- Ajout de commentaires et documentation (#536bc406).
+- Modifications de traductions (#f91ac13f, #59b764e7).
+- Correction de problèmes de tests liés à l'année en cours (#23ec6daa).
+- Ajout de la prise en charge d'une nouvelle colonne lors du scraping des tables ISCC (#e92490a7).
+- Correction de problèmes mineurs et amélioration de la cohérence du code.
