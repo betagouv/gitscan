@@ -8,6 +8,11 @@ on:
                 required: false
                 default: "50"
                 type: string
+            exclude:
+                description: "Comma-separated list of repos to exclude (e.g. betagouv/some-repo,SocialGouv/other-repo)"
+                required: false
+                default: "betagouv/gitscan,betagouv/dashlord"
+                type: string
     schedule:
         - cron: "0 0 * * *" # midnight, see https://crontab.guru
 
@@ -47,6 +52,7 @@ jobs:
               uses: "./.github/actions/init"
               with:
                   count: ${{ inputs.count || '50' }}
+                  exclude: ${{ inputs.exclude || '' }}
 
     scans:
         runs-on: ubuntu-latest

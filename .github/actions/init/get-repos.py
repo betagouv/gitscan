@@ -75,10 +75,22 @@ def get_repo_local_path(url):
     return f"{repos_folder}/{get_repo_path(url)}"
 
 
+exclude_repos = set(
+    r.strip() for r in os.environ.get("EXCLUDE_REPOS", "").split(",") if r.strip()
+)
+
 for orga in orgas:
     repos_file = os.path.join(repos_folder, orga, "repos.txt")
     if os.path.isfile(repos_file):
         urls.extend(line.strip() for line in open(repos_file) if line.strip())
+
+# Filter out excluded repos
+if exclude_repos:
+    before = len(urls)
+    urls = [u for u in urls if get_repo_path(u) not in exclude_repos]
+    excluded = before - len(urls)
+    if excluded:
+        print(f"Excluded {excluded} repos: {', '.join(exclude_repos)}", file=sys.stderr)
 
 
 # Sort URLs: new repos first, then updated repos (oldest analysis first), then unchanged repos
