@@ -1,60 +1,57 @@
 {
   "url": "https://github.com/betagouv/signalement-api",
   "name": "signalement-api",
-  "description": "L'API de l'outil SignalConso permet aux consommateurs de signaler des anomalies aux professionnels. Elle facilite la communication directe et simplifiée des problèmes rencontrés.",
+  "description": "L'API de l'outil SignalConso permet aux consommateurs de signaler des anomalies aux professionnels. Elle facilite le signalement rapide et simple des problèmes rencontrés.",
   "language": "Scala",
   "features": [
     "Gestion des signalements",
     "Authentification utilisateur",
     "Gestion des entreprises",
     "Gestion des utilisateurs",
-    "Envoi d'emails",
-    "Téléchargement de fichiers",
-    "Analyse de données",
-    "Gestion des accès"
+    "Envoi d'emails"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "PostgreSQL",
-    "SBT",
-    "Flyway"
+    "SBT"
   ],
   "components": [
     "API REST",
     "Base de données PostgreSQL",
     "Acteurs",
-    "Orchestrateurs",
-    "Repositories"
+    "Authentification par cookie"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "api-key",
       "session"
-    ]
+    ],
+    "providers": []
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": [
+    "Tests unitaires"
+  ],
   "workflows": [
     "build",
     "scala-steward"
   ],
-  "lastActivity": "2026-01-30T15:56:30+01:00",
+  "lastActivity": "2026-02-13T16:48:29+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 0,
-    "contributors": null,
-    "openIssues": 4
+    "contributors": 0,
+    "openIssues": 3
   },
   "tags": [
+    "signalement",
     "API",
     "Scala",
-    "SignalConso",
-    "Signalement",
     "PostgreSQL",
-    "Administration",
-    "Consommateur",
-    "Professionnel"
+    "consommateur",
+    "professionnel"
   ]
 }

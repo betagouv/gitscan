@@ -1,0 +1,18 @@
+## Changelog : signalement-api (30 derniers jours)
+
+### Résumé
+Ce changelog décrit les améliorations apportées à l'API SignalConso au cours des 30 derniers jours. Les modifications incluent des corrections de bugs concernant la taille limite des requêtes, le traitement des erreurs lors de l'absence de paiement pour Social Blade, et des ajustements des seuils d'alerte pour le téléchargement de fichiers. Des optimisations ont également été apportées à l'importation des utilisateurs pour améliorer les performances.
+
+### Évolutions fonctionnelles
+- Correction d'un problème où la taille limite du corps de la requête était trop courte, empêchant certains signalements d'être traités correctement. (#2017, #2015)
+- Optimisation de l'importation des utilisateurs en utilisant des insertions par lots dans la base de données, améliorant ainsi les performances. (#2009)
+
+### Évolutions techniques
+- Ajustement des seuils d'alerte pour le téléchargement de fichiers afin d'éviter des alertes inutiles. (#2012)
+- Modification du comportement de l'application pour ignorer les alertes Albert lorsque la limite d'utilisation est atteinte. (#2011)
+- Correction d'un problème où des erreurs étaient enregistrées inutilement dans les logs lors de l'absence de paiement pour Social Blade. (#2010)
+- Configuration de la mémoire JVM (Xmx et Xms) personnalisée pour l'environnement de production. (#2015)
+- Correction de problèmes de linting et de noms de fichiers exportés. (#2017)
+
+### Autres changements
+-  Aucun changement significatif à signaler.
