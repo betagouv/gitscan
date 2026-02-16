@@ -1,21 +1,17 @@
 # Synthèse d'activité : etalab (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations significatives en matière de sécurité, notamment avec l'ajout de l'authentification multi-facteurs (MFA) pour MonComptePro via ProConnect sur plusieurs dépôts ([data_pass](/repos/etalab/data_pass), [admin_api_entreprise](/repos/etalab/admin_api_entreprise)).  Des efforts ont également été déployés pour améliorer l'accessibilité et la qualité des données, avec des mises à jour des données de test pour les API Entreprise et Particulier ([siade_staging_data](/repos/etalab/siade_staging_data)), l'ajout du département du Loir-et-Cher à la base de covoiturage ([transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage)) et des améliorations de l'interface utilisateur du site transport ([transport-site](/repos/etalab/transport-site)).
+La semaine écoulée a été marquée par des améliorations significatives sur plusieurs dépôts d'etalab. L'admin API entreprise ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)) a bénéficié de renforcements de sécurité et de nouvelles fonctionnalités de recherche d'API, notamment l'intégration des données INSEE.  Des améliorations ont également été apportées à la qualité des données de transport avec des mises à jour de la base nationale des lieux de covoiturage ([transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage)) et du validateur GTFS ([transport-validator](/repos/etalab/transport-validator)). Ces évolutions se traduisent par une meilleure expérience pour les administrateurs, les développeurs et, en fin de compte, les utilisateurs finaux des services proposés.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- Implémentation de la réauthentification MFA pour les utilisateurs MonComptePro via ProConnect ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)).
-- Ajout de l'authentification multi-facteurs (MFA) pour MonComptePro via ProConnect ([data_pass](/repos/etalab/data_pass)).
-- Renforcement de la sécurité du contrôleur `Admin::TokensController` ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)).
+- Implémentation de la réauthentification MFA pour les utilisateurs MonComptePro via ProConnect dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- Renforcement de la sécurité en utilisant le namespace au lieu d'une valeur codée en dur pour les tokens d'administration dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
 
 ## Autres changements notables
-- Amélioration significative du script de consolidation IRVE pour le dépôt [transport-site](/repos/etalab/transport-site), incluant la gestion des erreurs et la parallélisation.
-- Ajout de la validation NeTEx pour les véhicules en libre-service dans [transport-site](/repos/etalab/transport-site).
-- Amélioration de la validation des données GTFS avec signalement plus précis des erreurs liées aux calendriers et à la langue du flux ([transport-validator](/repos/etalab/transport-validator)).
+- Ajout de la possibilité de configurer le nom du bucket S3 via une option de configuration dans [flask-storage](/repos/etalab/flask-storage).
+- La validation de l'absence de calendrier est maintenant signalée comme une erreur critique et la présence de la langue du flux est obligatoire dans [transport-validator](/repos/etalab/transport-validator).
 
 ## Dépôts les plus actifs
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Améliorations de la sécurité, de l'administration des utilisateurs et de l'intégration de données INSEE.
-- [data_pass](/repos/etalab/data_pass) : Ajout de l'authentification MFA et gestion des scopes d'accès pour l'API Particulier.
-- [transport-site](/repos/etalab/transport-site) : Amélioration de l'interface utilisateur, ajout de statistiques et optimisation du script de consolidation IRVE.
-- [siade_staging_data](/repos/etalab/siade_staging_data) : Mise à jour des données de test pour les API Entreprise et Particulier avec ajout de nouveaux cas d'usage.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Amélioration de la sécurité, ajout de fonctionnalités de recherche d'API et intégration de données INSEE.
+- [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) : Mise à jour de la base de données des lieux de covoiturage avec ajout de département et correction de doublons.
+- [transport-validator](/repos/etalab/transport-validator) : Amélioration de la validation des données GTFS, notamment concernant le calendrier et la langue.

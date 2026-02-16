@@ -1,21 +1,22 @@
 # Synthèse d'activité : MTES-MCT (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation MTES-MCT a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité, la correction de bugs, l'ajout de nouvelles fonctionnalités et l'optimisation des performances. Plusieurs projets ont bénéficié de mises à jour de dépendances pour assurer la stabilité et la sécurité des applications. Des améliorations notables ont été apportées à l'expérience utilisateur sur des plateformes comme `acceslibre`, `dialog`, `dossierfacile-frontend` et `qualicharge`, avec des fonctionnalités de recherche, de gestion des données et d'affichage améliorées. Des projets comme `ecobalyse-data` et `prelevements-deau-api` ont mis l'accent sur l'enrichissement des données et l'amélioration de la robustesse des systèmes.
+
+La semaine écoulée a été marquée par une activité soutenue sur les différents dépôts de l'organisation MTES-MCT, avec des améliorations significatives en termes de fonctionnalités, de sécurité et de performance. Plusieurs projets ont bénéficié de refontes d'interface utilisateur, comme Dossier-Facile-Frontend et Vizeau, offrant une expérience utilisateur plus intuitive et complète. Des efforts importants ont également été consacrés à la correction de bugs et à la mise à jour des dépendances pour renforcer la sécurité et la stabilité des applications. Des améliorations notables ont été apportées à la gestion des données et à l'intégration de nouvelles sources d'informations, notamment dans les projets ecobalyse-data, trackdechets-data et histologe.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- Correction de failles de sécurité dans `vizeau` (CVE-2026-21440 et CVE-2026-22814).
-- Mise à jour de dépendances vulnérables dans `mon-devis-sans-oublis-backend-ocr` et `trackdechets`.
+
+Plusieurs dépôts ont bénéficié de mises à jour de dépendances visant à corriger des vulnérabilités de sécurité. On note notamment des mises à jour dans [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) et [vizeau](/repos/MTES-MCT/vizeau).  Des mesures de sécurité supplémentaires ont été implémentées dans [td-mass-validator](/repos/MTES-MCT/td-mass-validator) et [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) pour protéger les données et les applications.
 
 ## Autres changements notables
-- **Refonte et améliorations majeures :** `acceslibre` a migré de `pipenv` vers `uv` pour une meilleure gestion des dépendances Python. `dossierfacile-frontend` a complètement revu la gestion des partages de documents. `ecobalyse-method-tooling` a refactorisé la logique de fusion des activités.
-- **Intégrations et nouvelles fonctionnalités :** `dialog` a intégré de nouvelles sources de données (Sogelink, BDTOPO) et amélioré l'accessibilité. `prelevements-deau-api` a ajouté une fonctionnalité d'import de séries temporelles. `trackdechets-vigiedechets` a ajouté des indicateurs pour les stations et amélioré l'affichage des cartes.
-- **Améliorations techniques :** `monitor-ui` a corrigé des problèmes liés à l'installation de Cypress dans le pipeline CI/CD. `td-mass-validator` a intégré les modifications de la branche `tra-17569`. `trackdechets-data` a standardisé les noms de colonnes dans les modèles dbt.
+
+Plusieurs projets ont connu des évolutions techniques majeures. [Docurba](/repos/MTES-MCT/Docurba) a été mis à niveau vers Django 5.2.10. [otelo-back](/repos/MTES-MCT/otelo-back) a vu l'ajout de métriques Node pour la surveillance et l'optimisation des performances.  [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) a bénéficié d'une refonte de l'infrastructure CI/CD et de l'ajout de tests unitaires.  [ecobalyse-method-tooling](/repos/MTES-MCT/ecobalyse-method-tooling) a connu une refactorisation importante pour améliorer la fusion des activités et la qualité des données.
 
 ## Dépôts les plus actifs
-- [acceslibre](/repos/MTES-MCT/acceslibre) : Optimisation des performances, modernisation des outils de développement et amélioration de l'expérience utilisateur.
-- [dialog](/repos/MTES-MCT/dialog) : Intégration de nouvelles sources de données et amélioration de l'accessibilité.
-- [dossierfacile-frontend](/repos/MTES-MCT/dossierfacile-frontend) : Refonte complète de la gestion des partages de documents.
-- [ecobalyse-data](/repos/MTES-MCT/ecobalyse-data) : Ajout de nouvelles données pour différents matériaux.
-- [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) : Amélioration de la présentation des données et correction de bugs.
+
+*   [Docurba](/repos/MTES-MCT/Docurba) : Amélioration de l'accès et de la navigation pour les administrateurs et les utilisateurs DDT, correction d'un bug critique et activation des enquêtes 2025/2026.
+*   [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Refonte complète de la gestion des liens de partage avec de nouvelles fonctionnalités et améliorations d'accessibilité.
+*   [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) : Amélioration de l'interface utilisateur, ajout de nouvelles fonctionnalités et corrections de bugs pour une meilleure gestion des données.
+*   [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités de cartographie, de gestion des exploitations et des tâches, ainsi que des améliorations techniques et de sécurité.
+*   [ecobalyse-method-tooling](/repos/MTES-MCT/ecobalyse-method-tooling) : Amélioration de la qualité des données et de la précision des résultats grâce à des refactorisations et des corrections.
+*   [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Amélioration de l'expérience utilisateur, correction de bugs et optimisations techniques pour une meilleure gestion des logements vacants.

@@ -1,19 +1,17 @@
 # Synthèse d'activité : SocialGouv (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts de SocialGouv, avec un accent particulier sur l'amélioration de l'expérience utilisateur, la correction de bugs et la modernisation des infrastructures. Des mises à jour importantes ont été apportées à des outils clés comme `code-du-travail-numerique`, `da-manager` et `enfants-du-spectacle`, avec l'ajout de nouvelles fonctionnalités et l'amélioration de l'accessibilité. La migration vers pnpm a été une tendance forte, impactant plusieurs projets comme `domifa`, `nos1000jours-blues-epds-widget` et `token-bureau`, visant à améliorer la gestion des dépendances et la sécurité.
+La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts de SocialGouv, avec un accent particulier sur l'amélioration de l'expérience utilisateur et la modernisation des infrastructures. Plusieurs projets ont bénéficié de la migration vers pnpm, un gestionnaire de paquets plus performant et sécurisé. Des corrections de bugs ont été apportées à de nombreuses applications, notamment concernant l'affichage, la gestion des données et l'intégration avec des services externes. L'ajout de nouvelles fonctionnalités, comme l'enregistrement des discussions dans SRDT et l'ouverture de la déclaration d'index égalité 2026 dans EgaPro, témoigne d'une volonté constante d'améliorer les services proposés aux utilisateurs.
 
 ## Sécurité
-Le projet `crossplane-function-js` a bénéficié d'une mise à jour de Yarn pour renforcer la sécurité. Le projet `token-bureau` a également bénéficié de corrections liées à la configuration des permissions, améliorant la sécurité des tokens générés.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité, notamment [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) qui a corrigé des vulnérabilités de dépendances, et [token-bureau](/repos/SocialGouv/token-bureau) avec des corrections liées à la configuration et à l'action GitHub.
 
 ## Autres changements notables
-`da-manager` a connu une transformation significative avec l'ajout de l'édition de schémas via Excalidraw, l'exportation en PDF et la création d'une structure de routes. L'intégration de workflows GitHub et de Kontinuous modernise l'infrastructure.  `graal` a vu des améliorations de l'infrastructure et de la gestion des opérations asynchrones, ainsi que la préparation pour l'utilisation d'OAuth.  Plusieurs projets ont migré vers pnpm, ce qui représente un changement technique important.
+La migration vers pnpm est une évolution technique majeure qui a concerné plusieurs dépôts : [domifa](/repos/SocialGouv/domifa), [graal](/repos/SocialGouv/graal), [matomo-postgres](/repos/SocialGouv/matomo-postgres), [nos1000jours-blues-epds-pro](/repos/SocialGouv/nos1000jours-blues-epds-pro), [revu](/repos/SocialGouv/revu), [srdt](/repos/SocialGouv/srdt) et [token-bureau](/repos/SocialGouv/token-bureau).  Cette migration vise à améliorer la sécurité et la performance de ces projets. L'ajout d'un cluster PostgreSQL pour [srdt](/repos/SocialGouv/srdt) modernise également l'infrastructure.
 
 ## Dépôts les plus actifs
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de notifications Mattermost pour les déploiements et nouvelles versions, amélioration de la page "Quoi de neuf".
-*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Amélioration de l'accessibilité de la recherche, ajout d'une page "Quoi de neuf" et amélioration du design de la page d'accueil.
-*   [da-manager](/repos/SocialGouv/da-manager) : Ajout de fonctionnalités majeures comme l'édition de schémas, l'exportation en PDF et la modernisation de l'infrastructure.
-*   [domifa](/repos/SocialGouv/domifa) : Corrections de bugs et migration vers pnpm.
-*   [graal](/repos/SocialGouv/graal) : Amélioration du pipeline de traitement des amendements et des performances.
-*   [enfants-du-spectacle](/repos/SocialGouv/enfants-du-spectacle) : Ajout de nouvelles fonctionnalités pour la gestion des accès et des déploiements.
-*   [token-bureau](/repos/SocialGouv/token-bureau) : Migration vers pnpm et amélioration de la configuration des permissions.
+*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de notifications Mattermost et d'une page "Quoi de neuf".
+*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Amélioration de l'accessibilité, ajout de données structurées JSON-LD et d'une page "Quoi de Neuf?".
+*   [graal](/repos/SocialGouv/graal) : Amélioration du pipeline de traitement des amendements et de l'interface utilisateur.
+*   [srdt](/repos/SocialGouv/srdt) : Ajout de l'enregistrement des discussions, d'un bouton de support et migration vers pnpm.
+*   [vao](/repos/SocialGouv/vao) : Corrections de bugs et amélioration de l'expérience utilisateur, notamment dans la gestion des agréments et des séjours.
