@@ -1,0 +1,40 @@
+## Changelog : potentiel (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de Potentiel se concentrent sur l'amélioration de l'export de données, la migration vers une architecture plus moderne (ESM), et l'ajout de nouvelles fonctionnalités de traçabilité et de gestion des permissions. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées pour optimiser l'expérience des agents de l'administration.
+
+### Évolutions fonctionnelles
+
+- Ajout de la mise en service du raccordement d'un projet et affichage dans les étapes projet (#3994, #3984).
+- Amélioration de l'export global des lauréats avec l'ajout de la mise en service (#3997).
+- Ajout de filtres sur la page d'export et harmonisation des colonnes retournées (#3927).
+- Possibilité d'exporter les projets éliminés (#3918).
+- Ouverture des permissions d'abandon aux cocontractants et refonte du menu associé (#3895).
+- Ajout de notifications pour les recours accordés et les abandons accordés (#3894).
+- Affichage des filtres actifs lors de l'export CSV (#3937).
+- Amélioration de la vue statistiques projets (#3979, #3996).
+- Ajout des champs puissance à l'API Achèvement (#3912).
+- Ajout des champs AOS dans l'export global des projets (#3970).
+
+### Évolutions techniques
+
+- Migration progressive des packages vers la norme ECMAScript Modules (ESM) pour une meilleure performance et compatibilité (#3964, #3972, #3973, #3978, #3952, #3909, #3911, #3910, #3905).
+- Suppression du package `scheduled-tasks` et réorganisation des scripts pour simplifier la maintenance (#3975).
+- Suppression de Redis et des variables legacy (#3955).
+- Ajout d'un index sur le champ `identifiantProjet` pour optimiser les requêtes en base de données (#3968).
+- Mise à jour de Typespec (#3941).
+- Ajout de logs pour les requêtes HTTP (#3965).
+
+### Autres changements
+
+- Documentation sur le mode maintenance (#3999).
+- Suppression des utilisations de la variable legacy `MAINTENANCE_MODE` (#4000).
+- Mise à jour des abonnés (#4001).
+- Correction de bugs mineurs concernant l'accès à certaines pages, l'export de fournisseurs, la modification de données en fonction des permissions, et l'affichage de données incorrectes (#3991, #3986, #3948, #3944, #3943, #3926, #3923, #3916, #3904, #3901).
+- Amélioration de la traçabilité des actions (transmission de la PTF, modification du GRD, suppression de dossier de raccordement) (#3925, #3922, #3914, #3913).
+- Nettoyage du code et des détails des candidatures (#3907, #3898).
+- Correction de l'ordre alphabétique des menus (#3957).
+- Migration des templates de mail pour les délais, les recours et les abandons (#3958, #3956, #3951).
+- Amélioration de la gestion des permissions pour la modification de données (#3959).
+- Correction de bugs et amélioration de l'interface utilisateur pour la gestion des demandes de délais et des attestations (#3938, #3929).
+- Diverses corrections et améliorations mineures.
