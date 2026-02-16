@@ -1,60 +1,47 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est par nature multi-portails.",
+  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
   "language": "Python",
   "features": [
-    "Gestion de recommandations collaboratives",
-    "Multi-portails",
     "Gestion de projets",
-    "Gestion de ressources",
-    "Gestion de conversations",
-    "Gestion des utilisateurs",
+    "Gestion des ressources",
     "Notifications",
-    "Export de données"
+    "Recommandations collaboratives",
+    "Gestion des utilisateurs",
+    "Interface utilisateur multi-portails"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Python",
     "Django",
+    "AlpineJS",
+    "Bootstrap",
+    "DSFR",
     "PostgreSQL",
     "Redis",
-    "Celery",
-    "beautifulsoup4",
-    "django-allauth",
-    "django-crispy-forms",
-    "django-filter",
-    "django-gravatar2",
-    "django-guardian",
-    "django-htmx",
-    "djangorestframework",
-    "uv",
-    "alpinejs",
-    "bootstrap",
-    "dsfr"
+    "Celery"
   ],
   "components": [
     "Backend Python/Django",
-    "Frontend Alpinejs/Bootstrap/DSFR",
+    "Frontend AlpineJS/Bootstrap/DSFR",
     "Base de données PostgreSQL",
-    "API REST",
-    "Broker Redis",
-    "Tâches asynchrones Celery"
+    "Broker Redis"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "saml"
+      "oauth2"
     ]
   },
   "tests": [
     "Pytest",
-    "Jest"
+    "Frontend tests (Yarn)"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-29T16:27:30+01:00",
+  "lastActivity": "2026-02-16T11:07:34+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -68,9 +55,8 @@
     "recommandations collaboratives",
     "python",
     "django",
-    "postgresql",
     "administration",
     "gestion de projet",
-    "outil numérique"
+    "gestion de ressources"
   ]
 }
