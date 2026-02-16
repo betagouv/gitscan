@@ -1,0 +1,58 @@
+{
+  "name": "@socialgouv/cdtn-utils",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "version": "4.213.0",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SocialGouv/code-du-travail-numerique.git",
+    "directory": "packages/code-du-travail-utils"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint \"./src/**/*.ts\"",
+    "format": "prettier --write \"./src/**/*.ts\"",
+    "format:check": "prettier --check \"./src/**/*.ts\"",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@swc/core": "^1.15.11",
+    "@swc/jest": "^0.2.39",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.2.11",
+    "eslint": "^9.39.2",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "pnpm lint --fix --quiet",
+      "pnpm format"
+    ]
+  }
+}

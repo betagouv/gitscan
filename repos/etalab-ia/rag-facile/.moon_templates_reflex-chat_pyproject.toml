@@ -1,0 +1,31 @@
+[project]
+name = "{{ project_name }}"
+version = "0.10.1" # x-release-please-version
+description = "{{ description }}"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "albert-client",
+    "rag-core",
+    "retrieval-{{ retrieval_module }}",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "reflex>=0.7.11",
+]
+
+[project.scripts]
+reflex-chat = "reflex.reflex:cli"
+
+[tool.setuptools.packages.find]
+include = ["{{ project_name | replace(from='-', to='_') }}*"]
+
+[tool.setuptools]
+py-modules = ["context_loader"]
+
+[tool.uv.sources]
+albert-client = { workspace = true }
+rag-core = { workspace = true }
+retrieval-{{ retrieval_module }} = { workspace = true }
+
+[tool.uv]
+package = true

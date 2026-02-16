@@ -1,0 +1,376 @@
+2026-02-13T23:27:31+01:00 - 32a93af - Luis Arias : Merge pull request #76 from etalab-ia/feat/retrieval-albert
+2026-02-13T18:44:47+01:00 - 63a788f - Luis Arias : fix: address code review comments from Gemini Code Assist
+2026-02-13T15:56:36+01:00 - edffd7a - Luis Arias : refactor: replace use_pdf boolean with retrieval_module string variable
+2026-02-13T14:58:04+01:00 - 33ef440 - Luis Arias : fix: rename albert_rag provider for clarity
+2026-02-13T14:51:42+01:00 - 6c41d7d - Luis Arias : fix: reflex app crashes on malformed SSE events from Albert API
+2026-02-13T14:51:23+01:00 - 052792c - Luis Arias : docs: update for Albert RAG component and retrieval modules
+2026-02-13T14:37:49+01:00 - e501d21 - Luis Arias : fix: rename Reflex app package dir after moon generate
+2026-02-13T14:25:11+01:00 - 1a551a7 - Luis Arias : fix: update golden master modules.yml from stale pdf_context
+2026-02-13T14:17:13+01:00 - 1ffa0cf - Luis Arias : fix: monorepo templates conditionally use retrieval-basic or retrieval-albert
+2026-02-13T14:03:20+01:00 - 67350f2 - Luis Arias : feat: local PDF fallback when Albert parse API fails
+2026-02-13T13:17:42+01:00 - 531f056 - Luis Arias : fix: chainlit repeating all responses + handle malformed SSE
+2026-02-13T12:31:10+01:00 - a4332bc - Luis Arias : fix: make Albert RAG first choice, remove broken Chainlit config gen
+2026-02-13T12:18:14+01:00 - dc25e79 - Luis Arias : fix: restrict file types to Albert API-supported formats
+2026-02-13T11:52:29+01:00 - 7ab2bc3 - Luis Arias : feat: multi-format file support for retrieval-albert, update TEST_PLAN
+2026-02-13T11:13:56+01:00 - 4f993cc - Luis Arias : fix: make retrieval-albert interchangeable with retrieval-basic
+2026-02-13T10:56:40+01:00 - 2bba840 - Luis Arias : fix: add interactive retrieval module selection to setup command
+2026-02-13T10:47:48+01:00 - 7834dce - Luis Arias : feat: add retrieval-albert package and remove Chroma placeholder
+2026-02-13T08:47:41+01:00 - d8b0316 - Luis Arias : Merge pull request #74 from etalab-ia/release-please--branches--main
+2026-02-13T08:45:13+01:00 - 9d721fd - Luis Arias : Merge pull request #75 from etalab-ia/fix/release-please-extra-files
+2026-02-13T08:21:52+01:00 - 3437926 - Luis Arias : fix: update extra-files to match renamed packages and sync versions
+2026-02-13T07:45:33Z - d62e2a8 - github-actions[bot] : chore: release main
+2026-02-13T07:00:19+01:00 - 4725817 - Luis Arias : Merge pull request #72 from etalab-ia/fix/release-please-albert-client-versioning
+2026-02-13T06:55:33+01:00 - 63daa9f - Luis Arias : fix: align albert-client version with Albert API (v0.4.0) and enable component tags
+2026-02-13T06:45:46+01:00 - 7d7f788 - Luis Arias : Merge pull request #67 from etalab-ia/release-please--branches--main
+2026-02-13T06:43:20+01:00 - c53e312 - Luis Arias : Merge pull request #71 from etalab-ia/docs/readme-refactoring
+2026-02-13T06:39:53+01:00 - c606fe4 - Luis Arias : docs(albert-client): document model aliases and api version
+2026-02-13T06:21:32+01:00 - b46a1c2 - Luis Arias : docs: add Windows upgrade commands
+2026-02-13T05:58:57+01:00 - 68c06a7 - Luis Arias : docs: refactor README into focused documentation files
+2026-02-13T05:44:31Z - fd8916d - github-actions[bot] : chore: release main
+2026-02-12T21:52:29+01:00 - 246fc11 - Luis Arias : Merge pull request #70 from etalab-ia/feat/albert-client-v0.4.0-update
+2026-02-12T21:47:17+01:00 - cbf5dce - Luis Arias : docs(albert-client): improve docstrings and address PR review
+2026-02-12T21:38:13+01:00 - 3259442 - Luis Arias : chore: add version check workflow and update release config
+2026-02-12T16:53:01+01:00 - 46b348b - Luis Arias : feat(albert-client): update to v0.4.0 API spec
+2026-02-12T16:14:20+01:00 - 23425ff - Luis Arias : Merge pull request #69 from etalab-ia/feat/refactor-monorepo-structure
+2026-02-12T15:48:45+01:00 - c87f168 - Luis Arias : refactor: improve authentication header check to be truly case-insensitive
+2026-02-12T14:23:22+01:00 - 1cd1fc6 - Luis Arias : fix: add missing authentication headers to Albert API requests
+2026-02-12T13:47:31+01:00 - f52b3d1 - Luis Arias : fix: use correct AlbertClient API method names
+2026-02-12T13:32:00+01:00 - 57e6ed3 - Luis Arias : feat: add .envrc support to standalone workspaces
+2026-02-12T13:27:20+01:00 - cbcbc1a - Luis Arias : docs: update test plan to document config precedence for OPENAI_MODEL
+2026-02-12T13:26:30+01:00 - 7f80f2f - Luis Arias : fix: use ragfacile.toml config as fallback for OPENAI_MODEL
+2026-02-12T13:19:30+01:00 - 6e1ca21 - Luis Arias : feat: add direnv support for automatic .env loading
+2026-02-12T12:08:55+01:00 - 9dcbbd5 - Luis Arias : fix: correct generate-dataset command in test plan
+2026-02-12T11:24:08+01:00 - 3b022da - Luis Arias : fix: add OpenAI SDK exclusions to generated workspace pyproject.toml
+2026-02-12T11:14:41+01:00 - 4dc84a1 - Luis Arias : fix: add explicit exclusions to type-check moon task
+2026-02-12T10:06:13+01:00 - 3a0b838 - Luis Arias : docs: update test plan to use just commands consistently
+2026-02-12T09:33:24+01:00 - da9e0fe - Luis Arias : chore: remove deprecated pre-commit stage configuration
+2026-02-12T09:32:55+01:00 - a2bee94 - Luis Arias : docs: update test plan to reflect automatic template regeneration
+2026-02-12T09:31:46+01:00 - b628dac - Luis Arias : chore: add pre-commit hook for automatic template regeneration
+2026-02-12T09:26:27+01:00 - 5f9117d - Luis Arias : chore: regenerate Moon templates with correct rag_core imports
+2026-02-12T09:24:48+01:00 - 07146d9 - Luis Arias : docs: add comprehensive test plan for component-first architecture
+2026-02-12T06:39:03+01:00 - e289d15 - Luis Arias : feat: component-first architecture refactoring
+2026-02-11T07:06:53+01:00 - 2960013 - Luis Arias : Merge pull request #68 from etalab-ia/feat/sync-templates-workflow
+2026-02-11T07:04:01+01:00 - 8a3e381 - Luis Arias : feat: add workflow to sync templates on release PRs
+2026-02-11T06:58:04+01:00 - 6bfa9b3 - Luis Arias : Merge pull request #66 from etalab-ia/docs/just-run-convention
+2026-02-11T06:55:03+01:00 - f35589b - Luis Arias : docs: remove historical Issue 46 investigation files
+2026-02-11T06:49:40+01:00 - b96f4f0 - Luis Arias : docs: fix redundant code fences in README files
+2026-02-11T06:44:41+01:00 - 49f3c2d - Luis Arias : docs: use just run instead of raw uv commands in documentation
+2026-02-11T06:17:42+01:00 - 71e8d81 - Luis Arias : Merge pull request #61 from etalab-ia/release-please--branches--main
+2026-02-11T06:14:55+01:00 - 13c3043 - Luis Arias : Merge pull request #65 from etalab-ia/docs/config-system
+2026-02-11T06:13:05+01:00 - ce53f1b - Luis Arias : chore: skip CI/CD checks for documentation-only changes
+2026-02-11T06:09:12+01:00 - b7b0eec - Luis Arias : docs: comprehensive documentation for RAG configuration system
+2026-02-11T05:29:51+01:00 - f5fce7a - Luis Arias : Merge pull request #63 from etalab-ia/feat/config-app-integration
+2026-02-11T05:25:18+01:00 - cfc65cc - Luis Arias : fix: move base URL to presets and remove setup prompt
+2026-02-11T05:20:14+01:00 - 92f8c25 - Luis Arias : fix: resolve ty type checking issues in setup and reflex app
+2026-02-11T05:15:17Z - dd93186 - github-actions[bot] : chore(main): release 0.9.0
+2026-02-11T05:09:38+01:00 - a5d4670 - Luis Arias : Merge pull request #64 from etalab-ia/dependabot/uv/cryptography-46.0.5
+2026-02-11T03:01:58Z - db71f1c - dependabot[bot] : chore(deps): bump cryptography from 46.0.4 to 46.0.5
+2026-02-10T21:20:37+01:00 - 8f054a5 - Luis Arias : fix: set balanced preset as default selection in prompt
+2026-02-10T21:11:54+01:00 - 8ae7867 - Luis Arias : fix: create .env file at workspace root in monorepo mode
+2026-02-10T19:40:15+01:00 - a582d0e - Luis Arias : chore: regenerate chainlit-chat template with ty exclusion
+2026-02-10T19:35:57+01:00 - 657dc02 - Luis Arias : feat: integrate config presets into workspace setup command
+2026-02-10T18:21:53+01:00 - 4b6c2dc - Luis Arias : feat: integrate config system into apps (Phase 4)
+2026-02-10T17:41:38+01:00 - 7e44788 - Luis Arias : Merge pull request #62 from etalab-ia/feat/config-workspace-integration
+2026-02-10T17:36:16+01:00 - 5f8bf4f - Luis Arias : refactor: consolidate duplicated path resolution logic
+2026-02-10T17:27:19+01:00 - c420f5c - Luis Arias : refactor: rename workflows for consistency and widen install check triggers
+2026-02-10T17:12:10+01:00 - 1d5e916 - Luis Arias : fix: update test to expect new template name after module renaming
+2026-02-10T16:58:58+01:00 - fa4ae2c - Luis Arias : refactor: rename packages with flat structure and consistent naming
+2026-02-10T11:51:09+01:00 - 8beb8d3 - Luis Arias : fix: update workspace generation for phase-based package structure
+2026-02-10T09:22:41+01:00 - f4f6e9f - Luis Arias : refactor: organize packages by RAG pipeline phase
+2026-02-10T08:58:55+01:00 - dc58587 - Luis Arias : feat: integrate rag-config package into workspace generation
+2026-02-09T19:28:18+01:00 - 2a5974d - Luis Arias : Merge pull request #60 from etalab-ia/feat/rag-config-system
+2026-02-09T19:26:00+01:00 - d0d0d5d - Luis Arias : fix: address Gemini Code Assist review feedback
+2026-02-09T18:42:19+01:00 - 87f67cd - Luis Arias : docs: translate French content to English and add config system documentation
+2026-02-09T18:33:12+01:00 - 4b87b59 - Luis Arias : feat: add config management CLI commands
+2026-02-09T18:22:43+01:00 - 2a48da4 - Luis Arias : feat: add rag-config package with complete RAG pipeline configuration
+2026-02-09T10:59:05+01:00 - e500d83 - Luis Arias : Merge pull request #57 from etalab-ia/release-please--branches--main
+2026-02-09T10:57:14+01:00 - 85da4aa - Luis Arias : Merge pull request #59 from etalab-ia/feat/consolidate-openai-dependency
+2026-02-09T10:54:10+01:00 - 7573f29 - Luis Arias : test: update test for albert-client in standalone packages
+2026-02-09T10:37:53+01:00 - 1e99698 - Luis Arias : feat: add albert-client package template for monorepo workspaces
+2026-02-09T10:21:11+01:00 - 9c20691 - Luis Arias : fix: rename app.py to match Reflex app_name requirement in standalone workspaces
+2026-02-09T10:01:17+01:00 - d36c744 - Luis Arias : fix: bundle albert-client with CLI for standalone workspaces
+2026-02-09T09:57:40Z - 043ee0e - github-actions[bot] : chore(main): release 0.8.0
+2026-02-09T09:50:32+01:00 - 094be96 - Luis Arias : fix: regenerate templates with albert-client dependency
+2026-02-09T09:37:40+01:00 - 418b5f2 - Luis Arias : feat: add OPENAI_API_KEY fallback for AlbertClient initialization
+2026-02-09T09:21:44+01:00 - 552d071 - Luis Arias : fix: centralize ruff config and remove unused resources directory
+2026-02-09T08:25:12+01:00 - a61e954 - Luis Arias : chore: Sort project dependencies in alphabetical order
+2026-02-08T19:20:31+01:00 - 3b2573f - Luis Arias : chore: add root .env.example file for environment variable documentation
+2026-02-08T19:12:46+01:00 - 4b1b10f - Luis Arias : refactor: address Gemini Code Assist review comments
+2026-02-08T18:57:15+01:00 - 2ca8609 - Luis Arias : style: improve import ordering and dependency sorting for PEP 8 compliance
+2026-02-08T18:36:03+01:00 - 2ecee0a - Luis Arias : refactor: consolidate OpenAI dependency to albert-client only
+2026-02-08T18:06:33+01:00 - eeb5d8d - Luis Arias : Merge pull request #58 from etalab-ia/docs/albert-client-sdk
+2026-02-08T18:02:39+01:00 - 122beaa - Luis Arias : fix: correct API usage in documentation examples
+2026-02-08T17:57:00+01:00 - a9fcd03 - Luis Arias : fix: use correct Albert API model aliases in documentation
+2026-02-08T17:42:24+01:00 - 6a3a51e - Luis Arias : docs: add Albert Client SDK with audience-focused documentation
+2026-02-08T13:06:08+01:00 - ebf3d55 - Luis Arias : Merge pull request #56 from etalab-ia/feat/albert-client-sdk
+2026-02-08T12:52:36+01:00 - dc7d2af - Luis Arias : docs: improve type safety documentation in albert-client SDK
+2026-02-08T11:30:51+01:00 - 8d405f8 - Luis Arias : fix: add albert-client to workspace dependencies and test dependencies
+2026-02-08T09:34:43+01:00 - 4b0abba - Luis Arias : feat: implement Phase 4 (Tools & Monitoring) for Albert Client SDK
+2026-02-07T19:36:41+01:00 - f7d29af - Luis Arias : feat: implement Phase 3 (Collections & Documents) for Albert Client SDK
+2026-02-07T19:20:15+01:00 - 675ad56 - Luis Arias : feat: implement Phase 2 (Search + Rerank) for Albert Client SDK
+2026-02-07T15:30:07+01:00 - 0424d2c - Luis Arias : feat: add albert-client SDK Phase 1 (core client + OpenAI passthrough)
+2026-02-07T06:16:27+01:00 - 3b4b5d1 - Luis Arias : Merge pull request #51 from etalab-ia/release-please--branches--main
+2026-02-07T06:12:08+01:00 - 5c0ee40 - Luis Arias : Merge pull request #54 from etalab-ia/47-windows-support
+2026-02-07T05:12:35Z - 7205027 - github-actions[bot] : chore(main): release 0.7.0
+2026-02-06T18:15:03+01:00 - 19f68b6 - Luis Arias : fix: pin Python 3.13.11 across all toolchain configurations
+2026-02-06T17:21:28+01:00 - 0df9943 - Luis Arias : fix: add .prototools to workspace templates and pin Python 3.13.11
+2026-02-06T17:04:21+01:00 - a84d042 - Luis Arias : fix: add proto paths to GITHUB_PATH and force UTF-8 encoding on Windows
+2026-02-06T16:57:08+01:00 - 86b4d35 - Luis Arias : fix: use GITHUB_PATH for uv tools directory in CI
+2026-02-06T16:36:33+01:00 - 64343cf - Luis Arias : fix: use GITHUB_ENV to persist PATH across workflow steps
+2026-02-06T16:30:30+01:00 - 6a3654e - Luis Arias : fix: add uv tools directory to PATH on Windows
+2026-02-06T16:26:34+01:00 - 8b0ed8b - Luis Arias : fix: catch all exceptions when printing CLI banner
+2026-02-06T16:24:15+01:00 - b61a826 - Luis Arias : fix: remove nested PowerShell call in Windows CI test
+2026-02-06T16:20:05+01:00 - e672345 - Luis Arias : fix: handle Windows encoding issues in CI and CLI
+2026-02-06T16:09:07+01:00 - d0221e6 - Luis Arias : fix: use subexpression syntax for variable interpolation in PowerShell install script
+2026-02-06T16:00:43+01:00 - 2e5dd71 - Luis Arias : feat: add just sync task to install dependencies and pre-commit hooks
+2026-02-06T15:51:25+01:00 - 87a4f1f - Luis Arias : fix: use static directory names in reflex-chat template for Windows compatibility
+2026-02-06T13:40:36+01:00 - 7eb2b9e - Luis Arias : fix: remove proxy simulation jobs from test-install workflow
+2026-02-06T13:35:29+01:00 - ee33c05 - Luis Arias : fix: move proxy env vars to installer step to avoid checkout failures
+2026-02-06T13:29:20+01:00 - 2d313f8 - Luis Arias : fix: simplify test-install workflow to only verify tool installation
+2026-02-06T13:24:46+01:00 - eadf6b3 - Luis Arias : fix: export PATH to GitHub Actions environment for CI/CD
+2026-02-06T13:21:03+01:00 - 95761d5 - Luis Arias : fix: source shell profile in workflow verification steps
+2026-02-06T13:12:49+01:00 - 5936cc5 - Luis Arias : fix: pass RAG_FACILE_BRANCH env var to installers in workflow
+2026-02-06T13:03:52+01:00 - daadefe - Luis Arias : feat: add --version flag to rag-facile CLI
+2026-02-06T12:51:17+01:00 - 24e06af - Luis Arias : fix: correct just plugin URL from moonrepo to Phault repository
+2026-02-06T11:31:06+01:00 - ba2a511 - Luis Arias : fix: remove macOS Intel (macos-12) test - runners not available
+2026-02-06T11:18:57+01:00 - 7418f99 - Luis Arias : fix: prevent install.sh from exiting when no proxy is detected
+2026-02-06T11:16:36+01:00 - 1c1c0e3 - Luis Arias : fix: add verbose output and error logging to installer tests
+2026-02-06T11:12:03+01:00 - 051698d - Luis Arias : fix: replace process substitution with file download for installer
+2026-02-06T11:07:27+01:00 - 93087e0 - Luis Arias : fix: use correct GitHub raw content URL format with refs/heads
+2026-02-06T11:00:37+01:00 - 5589820 - Luis Arias : fix: use github.head.ref for PR testing to avoid 404 errors
+2026-02-06T10:55:37+01:00 - be62466 - Luis Arias : fix: add explicit permissions block to test-install workflow
+2026-02-06T10:51:46+01:00 - a2b9189 - Luis Arias : docs: add Linux and macOS CI/CD testing guides with comprehensive workflow
+2026-02-06T10:48:01+01:00 - 0be49f8 - Luis Arias : fix: address review feedback on PR #54
+2026-02-06T10:39:26+01:00 - 871e8fd - Luis Arias : docs: add comprehensive Windows support documentation
+2026-02-06T10:39:26+01:00 - 6cd5300 - Luis Arias : feat: add Windows support with proto as unified dependency manager
+2026-02-06T09:50:42+01:00 - c1aa693 - Luis Arias : Merge pull request #53 from etalab-ia/46-allow-use-of-proxy-in-install-script
+2026-02-06T09:49:22+01:00 - 78e0710 - Luis Arias : fix: address review feedback on PR #53
+2026-02-06T09:39:15+01:00 - b3d8123 - Luis Arias : refactor: simplify proto installation to rely on official installer script
+2026-02-06T09:25:29+01:00 - f7271cc - Luis Arias : fix: preserve proxy environment variables when running proto installer
+2026-02-06T09:21:13+01:00 - 6bc2e7e - Luis Arias : fix: add fallback curl without SSL verification for corporate proxies
+2026-02-06T09:16:53+01:00 - 9016286 - Luis Arias : fix: improve error handling by downloading proto installer to temp file
+2026-02-06T09:10:42+01:00 - 75522f9 - Luis Arias : fix: add comprehensive error handling for SSL certificate issues in proto installation
+2026-02-06T06:34:24+01:00 - cf15658 - Luis Arias : docs: update AGENTS.md with comprehensive current project knowledge
+2026-02-06T06:30:30+01:00 - 1e43a1f - Luis Arias : docs: reorganize documentation into dedicated docs directory
+2026-02-06T06:20:08+01:00 - 0a90cc3 - Luis Arias : feat: add proxy support to install script for corporate/restricted networks
+2026-02-06T06:07:56+01:00 - c06a947 - Luis Arias : Merge pull request #52 from etalab-ia/48-install-script-references-pre-061-commands-generate
+2026-02-06T06:04:54+01:00 - 6ac8d99 - Luis Arias : fix: update install script to reference current setup command
+2026-02-06T05:52:35+01:00 - d8f8a66 - Luis Arias : Merge pull request #50 from etalab-ia/fix/align-just-documentation
+2026-02-05T15:31:33+01:00 - 3064ed2 - Luis Arias : docs:
+2026-02-05T15:29:20+01:00 - 581feb8 - Luis Arias : docs: align documentation wording on just and moon commands
+2026-02-05T10:33:23+01:00 - fbd4644 - Luis Arias : Merge pull request #45 from etalab-ia/release-please--branches--main
+2026-02-05T10:29:00+01:00 - 817c96d - Luis Arias : Merge pull request #44 from etalab-ia/refactor/flatten-cli-structure
+2026-02-05T09:29:18Z - 4da731d - github-actions[bot] : chore(main): release 0.6.1
+2026-02-05T07:16:39+01:00 - f0a423f - Luis Arias : fix: update remaining eval.providers references in test_document_preprocessor.py
+2026-02-05T07:12:48+01:00 - 78e4d3a - Luis Arias : refactor: address review comments - move providers directory and improve debug output
+2026-02-05T07:01:25+01:00 - f664ae6 - Luis Arias : refactor: rename init command to setup, update workspace generation language to workspace setup
+2026-02-05T06:48:25+01:00 - fe18946 - Luis Arias : refactor: flatten init to top-level command for alphabetical ordering
+2026-02-05T06:37:45+01:00 - add4b31 - Luis Arias : refactor: flatten CLI command structure
+2026-02-04T20:15:19+01:00 - 65870df - Luis Arias : Merge pull request #41 from etalab-ia/release-please--branches--main
+2026-02-04T20:00:25+01:00 - a6e431a - Luis Arias : Merge pull request #43 from etalab-ia/feat/albert-api-provider
+2026-02-04T19:57:09+01:00 - b457b5c - Luis Arias : fix: resolve ruff formatting issues
+2026-02-04T19:52:02+01:00 - fbb0f6c - Luis Arias : Update apps/cli/src/cli/commands/eval/generate.py
+2026-02-04T19:50:49+01:00 - a22d00d - Luis Arias : chore: format code with ruff
+2026-02-04T19:43:33+01:00 - 041b8fc - Luis Arias : docs: update documentation for eval generate improvements
+2026-02-04T19:39:40+01:00 - a2a85d3 - Luis Arias : feat: add --debug flag and strengthen Albert sample count requirement
+2026-02-04T19:32:19+01:00 - a6d5f14 - Luis Arias : feat: add comprehensive logging for provider interactions and debugging
+2026-02-04T19:20:48+01:00 - d735430 - Luis Arias : fix: strengthen Albert provider prompt to enforce JSONL-only output
+2026-02-04T19:19:19+01:00 - 52e48d7 - Luis Arias : feat: add debug output for provider IDs during eval generate
+2026-02-04T19:15:36+01:00 - c6f1bba - Luis Arias : fix: strengthen Letta provider prompt to enforce JSONL-only output
+2026-02-04T19:00:49Z - 8251dca - github-actions[bot] : chore(main): release 0.6.0
+2026-02-04T18:52:53+01:00 - e97504b - Luis Arias : feat: add document preprocessing with PDF extraction for eval providers
+2026-02-04T16:53:53+01:00 - b1f56d4 - Luis Arias : docs: add Albert API provider documentation
+2026-02-04T16:51:12+01:00 - 467f8be - Luis Arias : feat: add Albert API provider for eval generate command
+2026-02-04T15:00:30+01:00 - 1c754f9 - Luis Arias : Merge pull request #42 from etalab-ia/remove-search-list-commands
+2026-02-04T14:59:10+01:00 - fc3eb90 - Luis Arias : fix: remove extra blank lines in cli README
+2026-02-04T14:47:51+01:00 - d171427 - Luis Arias : fix: remove search and sources (list) commands from eval
+2026-02-04T14:16:44+01:00 - 6371225 - Luis Arias : Merge pull request #40 from etalab-ia/feat/data-foundry
+2026-02-04T13:31:57+01:00 - 6dec547 - Luis Arias : refactor(eval): extract _process_line to fix code duplication
+2026-02-04T13:23:51+01:00 - da9ea82 - Luis Arias : feat: add new PDF sample files for testing and demonstration purposes.
+2026-02-04T13:22:24+01:00 - 58fad11 - Luis Arias : perf(eval): use buffer for efficient streaming JSON parsing
+2026-02-04T13:08:05+01:00 - 2f53765 - Luis Arias : fix(eval): delete folder after generation to avoid storage limits
+2026-02-04T12:55:44+01:00 - 027cb19 - Luis Arias : docs: add eval generate command documentation
+2026-02-04T09:11:36+01:00 - 2861e40 - Luis Arias : refactor(eval): extract Letta code into provider module
+2026-02-04T08:41:37+01:00 - 0fc3f4a - Luis Arias : feat(eval): add Data Foundry synthetic Q/A generation
+2026-02-03T22:14:50+01:00 - 58c4213 - Luis Arias : Merge pull request #37 from etalab-ia/release-please--branches--main
+2026-02-03T22:12:34+01:00 - 1d718ff - Luis Arias : Merge pull request #39 from etalab-ia/refactor/consolidate-cli
+2026-02-03T22:11:02+01:00 - b3cd4e3 - Luis Arias : fix: handle edge cases and follow PEP 8 in CLI
+2026-02-03T22:06:01+01:00 - bc3e862 - Luis Arias : fix: show help when subcommands are missing
+2026-02-03T22:00:59+01:00 - 1ee8692 - Luis Arias : refactor: improve CLI UX and sync package versions
+2026-02-03T21:51:10+01:00 - e5d0e1a - Luis Arias : refactor: consolidate rag-eval CLI into rag-facile
+2026-02-03T21:30:06+01:00 - bc5c52d - Luis Arias : Merge pull request #38 from etalab-ia/feat/enhance-dataset-search-filters
+2026-02-03T21:28:12+01:00 - 5b83e72 - Luis Arias : chore: update lockfile for huggingface-hub dependency bump
+2026-02-03T21:12:54Z - 59a405a - github-actions[bot] : chore(main): release 0.5.0
+2026-02-03T21:04:48+01:00 - f3f95e2 - Luis Arias : feat: add dataset filtering by task and language to search commands
+2026-02-03T18:18:09+01:00 - 1f903dd - Luis Arias : Merge pull request #36 from etalab-ia/fix/remove-duplicate-changelog
+2026-02-03T18:17:06+01:00 - f486853 - Luis Arias : Merge branch 'main' into fix/remove-duplicate-changelog
+2026-02-03T18:12:27+01:00 - 0635ac2 - Luis Arias : Merge pull request #35 from etalab-ia/release-please--branches--main
+2026-02-03T18:12:19+01:00 - a83fd72 - Luis Arias : fix: remove duplicate 0.4.0 from CHANGELOG
+2026-02-03T18:08:01+01:00 - 7242631 - Luis Arias : chore(main): release 0.4.0
+2026-02-03T18:06:47+01:00 - 51058ae - Luis Arias : Merge pull request #34 from etalab-ia/fix/remove-title-pattern
+2026-02-03T18:06:28+01:00 - f35b1f6 - Luis Arias : Merge pull request #32 from etalab-ia/fix/reset-release-version
+2026-02-03T18:05:35+01:00 - 1866551 - Luis Arias : fix: remove pull-request-title-pattern from root config
+2026-02-03T18:00:38+01:00 - c0a847b - Luis Arias : chore: reset release version to 0.3.0 for fresh release cycle
+2026-02-03T17:52:30+01:00 - 2af79c5 - Luis Arias : Merge pull request #31 from etalab-ia/fix/release-please-pattern
+2026-02-03T17:51:07+01:00 - 30af21b - Luis Arias : fix: use named capture groups in pull-request-title-pattern
+2026-02-03T17:38:08+01:00 - d2ac8d7 - Luis Arias : Merge pull request #30 from etalab-ia/fix/release-please-config
+2026-02-03T17:36:16+01:00 - a574351 - Luis Arias : fix: extract conventional commits from PR titles for release-please
+2026-02-03T17:21:21+01:00 - 5ce03f3 - Luis Arias : Merge pull request #29 from etalab-ia/fix/add-explicit-permissions
+2026-02-03T17:19:22+01:00 - 540b680 - Luis Arias : fix: add explicit permissions to checks workflow
+2026-02-03T17:09:24+01:00 - 7b7995d - Luis Arias : Merge pull request #28 from etalab-ia/feat/rag-eval-cli
+2026-02-03T17:08:46+01:00 - bb67bf0 - Luis Arias : Merge pull request #27 from etalab-ia/release-please--branches--main
+2026-02-03T17:07:47+01:00 - 4c049bd - Luis Arias : fix: add TypedDict for KNOWN_SOURCES to fix type checking
+2026-02-03T17:02:55+01:00 - 951d764 - Luis Arias : fix: address PR review feedback and tooling issues
+2026-02-03T15:56:48+01:00 - 15b9268 - Luis Arias : docs: add evaluation guide for end users
+2026-02-03T15:50:58+01:00 - d22e495 - Luis Arias : docs: add release and license badges to README
+2026-02-03T15:48:47+01:00 - 8b75d8b - Luis Arias : chore: add rag-eval to release-please config
+2026-02-03T15:46:23+01:00 - bf40c0e - Luis Arias : refactor: use huggingface_hub API for dataset search
+2026-02-03T15:40:35+01:00 - c6ae5ee - Luis Arias : feat: add Compar:IA datasets from ministere-culture
+2026-02-03T15:37:39+01:00 - f57d862 - Luis Arias : feat: add rag-eval CLI for dataset discovery
+2026-02-03T15:02:34+01:00 - 962ebd2 - Luis Arias : Merge pull request #21 from etalab-ia/feat/standalone-mode
+2026-02-03T14:44:40+01:00 - adb3413 - Luis Arias : Merge pull request #26 from etalab-ia/dependabot/uv/python-multipart-0.0.22
+2026-02-03T14:44:27+01:00 - 1878898 - Luis Arias : Merge pull request #25 from etalab-ia/dependabot/uv/protobuf-6.33.5
+2026-02-03T14:44:12+01:00 - 3d2207d - Luis Arias : Merge pull request #24 from etalab-ia/dependabot/uv/pypdf-6.6.2
+2026-02-03T14:38:09+01:00 - 9a21910 - Luis Arias : docs: add project structure comparison (Simple vs Monorepo)
+2026-02-03T14:33:16+01:00 - 816c046 - Luis Arias : fix: ask project structure before frontend selection
+2026-02-03T14:27:38+01:00 - a0f89e3 - Luis Arias : fix: make standalone test more robust for CI
+2026-02-03T14:24:35+01:00 - 14cf653 - Luis Arias : Merge pull request #23 from etalab-ia/release-please--branches--main
+2026-02-03T14:17:17+01:00 - 63124cb - Luis Arias : Merge pull request #22 from etalab-ia/chore/update-release-please-config
+2026-02-03T14:17:06+01:00 - 11d8e74 - Luis Arias : fix: remove unused imports in test file
+2026-02-03T14:15:37+01:00 - 4250615 - Luis Arias : fix: update release-please-config.json
+2026-02-03T14:14:02+01:00 - 14b79d1 - Luis Arias : chore: consolidate release-please config to single rag-facile package
+2026-02-03T14:11:31+01:00 - 7a3701c - Luis Arias : feat: add standalone project structure option for simpler setup
+2026-02-03T14:02:58Z - eee8306 - github-actions[bot] : chore(main): release 0.4.0
+2026-02-03T13:43:18Z - eb68834 - dependabot[bot] : chore(deps): bump python-multipart from 0.0.21 to 0.0.22
+2026-02-03T13:43:09Z - a970d53 - dependabot[bot] : chore(deps): bump protobuf from 6.33.4 to 6.33.5
+2026-02-03T13:43:07Z - 81ae673 - dependabot[bot] : chore(deps): bump pypdf from 6.6.1 to 6.6.2
+2026-02-03T13:18:21Z - 942ca5f - github-actions[bot] : chore(main): release 0.3.0
+2026-02-03T12:48:14+01:00 - e2750be - Luis Arias : Merge pull request #20 from etalab-ia/release-please--branches--main
+2026-02-03T12:45:43+01:00 - e703ff1 - Luis Arias : Merge pull request #19 from etalab-ia/feat/add-changelog
+2026-02-03T12:04:25+01:00 - 89cc602 - Luis Arias : feat: integrate release-please for unified monorepo versioning
+2026-02-03T11:46:38Z - 48bc0c6 - github-actions[bot] : chore: release main
+2026-02-03T11:44:46+01:00 - 16bf483 - Luis Arias : docs: add CHANGELOG from merged PR history
+2026-02-03T11:41:59+01:00 - 74b31e4 - Luis Arias : Merge pull request #18 from etalab-ia/add-justfile-for-generated-projects
+2026-02-03T11:40:40+01:00 - bfed9fb - Luis Arias : fix: Add unzip as a system dependency for Reflex
+2026-02-03T11:33:38+01:00 - 9bf4c52 - Luis Arias : fix: Properly escape Just variables in justfile template
+2026-02-03T11:30:08+01:00 - b071f52 - Luis Arias : docs: Update README with correct run command syntax
+2026-02-03T11:26:57+01:00 - eddff73 - Luis Arias : fix: Use Just variable syntax in run recipe
+2026-02-03T11:03:29+01:00 - 9309c27 - Luis Arias : docs: Update install.sh examples to use pipe syntax
+2026-02-03T11:01:15+01:00 - 7e986ef - Luis Arias : fix: Use shell variable syntax in justfile to avoid Tera conflicts
+2026-02-03T10:57:50+01:00 - 6213af8 - Luis Arias : refactor: Simplify justfile commands, rename run-app to run
+2026-02-03T10:49:05+01:00 - 198a77e - Luis Arias : fix: Add ruff and ty exclusions for template directories
+2026-02-03T10:42:31+01:00 - 1b4ee25 - Luis Arias : chore: Update generated sys-config justfile
+2026-02-03T10:40:53+01:00 - eb27ecf - Luis Arias : feat: Add default recipe to justfiles to display help
+2026-02-03T10:06:09+01:00 - 2643b08 - Luis Arias : fix: Install just in install.sh and update docs
+2026-02-03T09:57:00+01:00 - 9fd7211 - Luis Arias : docs: Document justfile commands in README
+2026-02-03T09:54:17+01:00 - 2932114 - Luis Arias : Add justfile for generated projects
+2026-02-03T09:34:03+01:00 - 01a0165 - Luis Arias : Merge pull request #17 from etalab-ia/feat/cli-rename-and-banner
+2026-02-03T09:30:28+01:00 - fdf917b - Luis Arias : feat: rename CLI to rag-facile and add ASCII banner
+2026-02-03T04:51:05+01:00 - c876a4e - Luis Arias : Merge pull request #16 from etalab-ia/fix/readme-installation-clarity
+2026-02-03T04:50:25+01:00 - 2ef49ff - Luis Arias : docs: add Docker testing instructions to CONTRIBUTING.md
+2026-02-03T04:39:25+01:00 - d6a25f3 - Luis Arias : docs: document RAG_FACILE_BRANCH for testing from branches
+2026-02-03T04:33:21+01:00 - 0d07041 - Luis Arias : feat: add moon tasks, Justfile, and CONTRIBUTING.md
+2026-02-03T04:12:26+01:00 - 89641fa - Luis Arias : fix: configure ty excludes in pyproject.toml
+2026-02-03T04:09:38+01:00 - 730ea37 - Luis Arias : fix: exclude template directories from ruff checks
+2026-02-03T03:58:46+01:00 - 25e16ef - Luis Arias : chore: exclude template directories from ruff
+2026-02-02T22:51:18+01:00 - 6a7c4f8 - Luis Arias : docs: update README with simplified install instructions
+2026-02-02T22:44:41+01:00 - 215ff5a - Luis Arias : feat: support RAG_FACILE_BRANCH env var in install.sh
+2026-02-02T22:36:49+01:00 - 6408718 - Luis Arias : feat: bundle templates in CLI package distribution
+2026-02-02T22:14:57+01:00 - 66a2015 - Luis Arias : feat: add bootstrap installer and auto-download templates
+2026-02-02T17:39:57+01:00 - 6a289ff - Luis Arias : fix: add proto paths to PATH after installation
+2026-02-02T17:38:45+01:00 - 6ea9e2c - Luis Arias : docs: add proto prerequisites to README
+2026-02-02T17:21:48+01:00 - 07f9d63 - Luis Arias : fix: use --yes flag for proto install to avoid interactive prompt issues
+2026-02-02T14:57:52+01:00 - d520536 - Luis Arias : Merge pull request #15 from etalab-ia/feature/rf-generate-init-patch
+2026-02-02T14:56:39+01:00 - bab1fbb - Luis Arias : fix: fix test mocks for workspace generation flow
+2026-02-02T14:28:51+01:00 - 1deafc1 - Luis Arias : fix: use moonrepo/setup-toolchain action and pin Python 3.13
+2026-02-02T12:36:05+01:00 - 2e917bc - Luis Arias : fix: use --exclude flag for ty (exclude not valid in config)
+2026-02-02T12:33:58+01:00 - 41f7e3d - Luis Arias : fix: configure ty to handle metaprogramming false positives
+2026-02-02T12:28:08+01:00 - ada6ea8 - Luis Arias : chore: auto-install pre-commit hooks in just setup
+2026-02-02T12:26:04+01:00 - ecf8e84 - Luis Arias : fix: resolve linting and formatting issues
+2026-02-02T12:19:51+01:00 - 5982f75 - Luis Arias : chore: exclude templates from pre-commit hooks
+2026-02-02T12:18:01+01:00 - 4aea431 - Luis Arias : feat: auto-install proto and moon if not present
+2026-02-02T12:16:07+01:00 - bd38c31 - Luis Arias : ci: exclude .moon/templates from checks
+2026-02-02T12:12:55+01:00 - 09e8da7 - Luis Arias : ci: add checks workflow for lint, typecheck, and tests
+2026-02-02T11:58:54+01:00 - 2f1fd99 - Luis Arias : docs: update README and CONTRIBUTING with architecture overview
+2026-02-02T11:54:04+01:00 - 1858c6a - Luis Arias : feat: Add script to automatically open browser to localhost:3000 and integrate it into the `dev` task in `moon.yml`.
+2026-02-02T11:44:07+01:00 - 92d0090 - Luis Arias : feat: auto-run uv sync and start dev server after generation
+2026-02-02T11:39:18+01:00 - 6219006 - Luis Arias : feat: prompt for env config and create .env file during generation
+2026-02-02T11:31:55+01:00 - fa7720f - Luis Arias : fix: parameterize imports and add dotenv loading for reflex-chat
+2026-02-02T11:21:54+01:00 - d950e19 - Luis Arias : chore: add private/ to gitignore
+2026-02-02T11:20:15+01:00 - 5b24aa2 - Luis Arias : test: add unit tests for rf generate workspace command
+2026-02-02T11:14:19+01:00 - 06a7cae - Luis Arias : feat: complete rf generate workspace command
+2026-02-02T09:36:32+01:00 - a345bac - Luis Arias : chore: rename CLI package from 'cli' to 'rag-facile-cli'
+2026-02-02T09:03:48+01:00 - fb8e0db - Luis Arias : feat: implement hybrid Factory + Tera architecture for modular template generation
+2026-02-02T08:43:28+01:00 - 7d8ff6a - Luis Arias : feat: implement Init + Patch architecture for workspace generation
+2026-01-31T06:57:52+01:00 - 307dd88 - Luis Arias : Merge pull request #14 from etalab-ia/refactor/moon-templates
+2026-01-31T06:52:10+01:00 - 09e283b - Luis Arias : refactor: replace Copier-based template generation with Moon's built-in generator.
+2026-01-31T05:58:24+01:00 - 13c51f5 - Luis Arias : Merge pull request #13 from etalab-ia/feature/reflex-chat-pdf-context
+2026-01-31T05:52:37+01:00 - 16b6318 - Luis Arias : feat: Implement UI for displaying attached files in the chat input and refine the action bar's styling and layout.
+2026-01-31T05:20:43+01:00 - 492b051 - Luis Arias : feat: Implement PDF upload and context integration for the Reflex chat application.
+2026-01-30T18:50:07+01:00 - a26a598 - Luis Arias : feat(templates): support env var API keys and fix uv sync warning
+2026-01-30T14:43:05+01:00 - 9cac265 - Luis Arias : Merge pull request #12 from etalab-ia/feat/pdf-context-package
+2026-01-30T14:41:01+01:00 - fd021ee - Luis Arias : feat: extract pdf-context package and fix templates
+2026-01-30T13:23:18+01:00 - d3f5bd8 - Luis Arias : Merge pull request #11 from etalab-ia/chore/update-readme-templates
+2026-01-30T13:14:12+01:00 - a6f6c96 - Luis Arias : docs: clarify available vs planned application templates in README
+2026-01-30T10:30:19+01:00 - c2a911f - Luis Arias : Merge pull request #10 from etalab-ia/refactor/docs-separate-users-contributors
+2026-01-30T10:24:08+01:00 - c183dca - Luis Arias : refactor: separate documentation for users and contributors
+2026-01-30T09:40:26+01:00 - 27db58a - Luis Arias : Merge pull request #9 from etalab-ia/feat/cli-uv-tool-install
+2026-01-30T09:03:21+01:00 - 0d687e2 - Luis Arias : chore: ignore the entire `.letta` directory in `.gitignore`.
+2026-01-30T08:56:00+01:00 - 63ec4ab - Luis Arias : feat: make CLI installable via uv tool install
+2026-01-30T07:59:21+01:00 - b5cb2a7 - Luis Arias : Merge pull request #8 from etalab-ia/feat/direnv-integration
+2026-01-30T07:58:23+01:00 - 505dde9 - Luis Arias : fix: resolve type error in chainlit app
+2026-01-28T16:24:17+01:00 - d2df794 - Luis Arias : feat: add direnv configuration and remove .envrc from gitignore.
+2026-01-27T18:31:40+01:00 - 13121d0 - Luis Arias : chore: Add `.letta` directory to `.gitignore` with an exception for `settings.json`.
+2026-01-27T18:28:05+01:00 - 5fd0654 - Luis Arias : chore: :pushpin: Pin python to 3.13
+2026-01-27T17:49:38+01:00 - ba385ba - Luis Arias : Merge pull request #7 from etalab-ia/feature/hybrid-codemod-templating
+2026-01-27T17:49:08+01:00 - c2d5ca6 - Luis Arias : docs: update app and template READMEs with just command instructions
+2026-01-27T17:47:46+01:00 - ccc40b8 - Luis Arias : feat: Enhance `create-app` justfile recipe to normalize app type inputs and support shorthands.
+2026-01-27T17:40:24+01:00 - 7ad5bbc - Luis Arias : fix: add validation to create-app just command
+2026-01-27T17:36:40+01:00 - e5208eb - Luis Arias : chore: stop tracking generated templates and auto-generate on demand
+2026-01-27T17:34:25+01:00 - c668c37 - Luis Arias : fix: set default just task to list commands
+2026-01-27T17:31:27+01:00 - 2a93250 - Luis Arias : docs: update README with template management and usage instructions
+2026-01-27T17:30:30+01:00 - 1f2619d - Luis Arias : feat: add just commands for template generation and instantiation
+2026-01-27T16:01:24+01:00 - e90c269 - Luis Arias : style: add spaces around the pipe in the Jinja `app_name` variable.
+2026-01-27T16:00:47+01:00 - 59acb4b - Luis Arias : fix: resolve ast-grep warnings and improve reflex parameterization
+2026-01-27T15:31:39+01:00 - 4dfff91 - Luis Arias : feat: generalize hybrid codemod pipeline to support multiple apps
+2026-01-27T15:07:58+01:00 - d611924 - Luis Arias : Merge remote-tracking branch 'origin/main' into feature/hybrid-codemod-templating
+2026-01-27T15:06:32+01:00 - 6634c86 - Luis Arias : feat: implement hybrid LibCST + ast-grep pipeline for chainlit-chat
+2026-01-27T15:00:47+01:00 - 06040e1 - Luis Arias : Merge pull request #6 from etalab-ia/refactor-template-cli
+2026-01-27T14:16:59+01:00 - c511de2 - Luis Arias : docs: improve template READMEs for standalone use and add CLI README
+2026-01-27T14:16:05+01:00 - 26d2e00 - Luis Arias : docs: add template generation instructions to root README
+2026-01-27T14:14:03+01:00 - cb8ec7f - Luis Arias : feat(templates): update reflex-chat template with parameterized imports and jinja extensions
+2026-01-27T14:13:36+01:00 - c95823d - Luis Arias : fix(cli): rename main app file and parameterize imports in reflex template
+2026-01-27T14:00:30+01:00 - 88990d2 - Luis Arias : feat: refactor template generation cli for multi-app support
+2026-01-27T13:32:16+01:00 - abfb788 - Luis Arias : Merge pull request #5 from etalab-ia/feat/grit-chainlit-template
+2026-01-27T12:19:04+01:00 - 15ab2f6 - Luis Arias : chore: remove unused gritql configuration
+2026-01-27T12:11:54+01:00 - 519e96f - Luis Arias : feat: update default OpenAI API key help message, base URL, and model to Albert API endpoints.
+2026-01-27T12:05:51+01:00 - d4e4a66 - Luis Arias : fix: rename README.md to .jinja for full parameterization
+2026-01-27T12:00:57+01:00 - d44f573 - Luis Arias : fix: use .jinja extension for parameterized template files
+2026-01-27T11:56:11+01:00 - d4f3f7b - Luis Arias : refactor: remove hardcoded model default and simplify template generation
+2026-01-27T11:53:48+01:00 - 72be38a - Luis Arias : feat: parameterize env vars and fix grit usage
+2026-01-27T11:40:06+01:00 - 1c684d9 - Luis Arias : refactor: migrate template generation to python cli
+2026-01-27T11:30:56+01:00 - 0075244 - Luis Arias : feat: add gritql template generation for chainlit-chat
+2026-01-26T10:48:05+01:00 - c8f8312 - Luis Arias : Rename project from RAG Starter Kit to RAG Facile
+2026-01-26T10:47:34+01:00 - 5d34133 - Luis Arias : Merge pull request #4 from etalab-ia/feature/chainlit-chat
+2026-01-26T10:45:20+01:00 - 7bd4106 - Luis Arias : docs: update root README to reflect the change from apps/chat to apps/chainlit-chat
+2026-01-26T10:43:25+01:00 - a9b4a6b - Luis Arias : fix: increase engineio max_decode_packets to prevent payload errors
+2026-01-26T10:40:58+01:00 - 42414ce - Luis Arias : fix: resolve IndexError in streaming and add PDF processing support
+2026-01-26T10:37:31+01:00 - df277e8 - Luis Arias : chore: ignore chainlit local directories and track chainlit.md
+2026-01-26T10:33:51+01:00 - 0657255 - Luis Arias : fix: restrict python version to 3.13 for pydantic compatibility
+2026-01-26T10:31:14+01:00 - afe1d9c - Luis Arias : feat: implement chainlit-chat app, update AGENTS.md, and rename project to rag-facile
+2026-01-26T09:58:35+01:00 - aa8be55 - Luis Arias : Merge pull request #3 from etalab-ia/setup-reflex-chat
+2026-01-26T09:33:25+01:00 - 5ba73a3 - Luis Arias : feat: Add Albert API integration and update project documentation for simplified setup with `just` commands.
+2026-01-26T09:23:07+01:00 - e33b488 - Luis Arias : fix: Add `ty:ignore[call-non-callable]` comments to suppress type errors in `navbar.py` and `state.py`.
+2026-01-26T09:16:59+01:00 - a1ac644 - Luis Arias : feat: add justfile to run reflex-chat
+2026-01-26T09:00:56+01:00 - 371ddbc - Luis Arias : fix: Prevent potential errors by checking if `item.choices` is valid before accessing its elements.
+2026-01-24T17:01:53+01:00 - 7c49d0d - Luis Arias : feat(reflex-chat): add python-dotenv for .env file loading - Add python-dotenv dependency - Load .env from rxconfig.py before reflex initializes - Add .env.example with sample configuration - Update .gitignore to exclude .env but not .env.example
+2026-01-24T16:51:33+01:00 - 7395391 - Luis Arias : feat: add reflex-chat app and downgrade to Python 3.13 - Add reflex-chat application using reflex-chat template - Downgrade all pyproject.toml files from Python 3.14 to 3.13 for Pydantic/Reflex compatibility - Configure setuptools package discovery to exclude assets directory - Update uv.lock with new dependencies
+2026-01-23T17:23:48+01:00 - e96ccb7 - Luis Arias : Merge pull request #2 from etalab-ia/docs/add-agents-md
+2026-01-23T17:22:47+01:00 - a2c8beb - Luis Arias : docs: Add AGENTS.md with project knowledge
+2026-01-23T16:59:56+01:00 - 6135ebb - Luis Arias : Merge pull request #1 from etalab-ia/setup-rag-starter-kit
+2026-01-23T16:59:18+01:00 - cd9ab10 - Luis Arias : chore: :pushpin: Update lock file
+2026-01-23T16:58:42+01:00 - c7fbbc5 - Luis Arias : chore: :bug: Fix remaining review comments
+2026-01-23T16:55:45+01:00 - b6c8ea0 - Luis Arias : fix: Address PR review feedback (Python 3.14.2, ruff 0.9.3, rag-facile)
+2026-01-23T16:42:05+01:00 - d28b590 - Luis Arias : refactor: Rename CLI to rf and add version command
+2026-01-23T16:38:00+01:00 - 80ce74e - Luis Arias : feat: Initial RAG starter kit setup
+2026-01-23T16:17:55+01:00 - 1f3f4f3 - Luis Arias : Initial commit

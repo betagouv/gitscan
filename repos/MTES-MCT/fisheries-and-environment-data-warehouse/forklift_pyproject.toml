@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "forklift"
+version = "0.1.0"
+description = ""
+authors = ["Vincent <vincent.chery@m4x.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.13.7"
+prefect = "~1.4.1"
+pandas = {extras = ["postgresql"], version = "^2.3.2"}
+duckdb = "^1.4.4"
+black = "^25.1.0"
+isort = "^6.0.1"
+coverage = "^7.13.4"
+pre-commit = "^4.5.1"
+flake8 = "^7.3.0"
+python-dotenv = "^1.2.1"
+pytest = "^8.4.2"
+geopandas = "^1.1.2"
+simplejson = "^3.20.2"
+geoalchemy2 = "^0.18.1"
+clickhouse-connect = "^0.11.0"
+h3 = "^4.4.2"
+unidecode = "^1.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.run]
+source = ['forklift']

@@ -1,0 +1,102 @@
+name: GitScan
+
+on:
+    workflow_dispatch:
+        inputs:
+            count:
+                description: "Number of sites to scan"
+                required: false
+                default: "50"
+                type: string
+    schedule:
+        - cron: "0 0 * * *" # midnight, see https://crontab.guru
+
+# allow only one concurrent scan action
+concurrency:
+    cancel-in-progress: true
+    group: scans
+
+jobs:
+    repos:
+        runs-on: ubuntu-latest
+        name: Repos
+        steps:
+            - uses: actions/checkout@v4
+            - name: "fetch repos"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  ./scripts/fetch-repos.sh
+            - uses: EndBug/add-and-commit@v9
+              with:
+                  add: "./repos/*/repos.*"
+                  author_name: "Bot"
+                  author_email: "bot@github.com"
+                  message: "update: repos"
+                  pull: "--rebase --autostash"
+
+    init:
+        runs-on: ubuntu-latest
+        name: Prepare
+        needs: repos
+        outputs:
+            sites: ${{ steps.init.outputs.sites }}
+        steps:
+            - uses: actions/checkout@v4
+            - id: init
+              uses: "./.github/actions/init"
+              with:
+                  count: ${{ inputs.count || '50' }}
+
+    scans:
+        runs-on: ubuntu-latest
+        name: Scan
+        needs: init
+        continue-on-error: true
+        strategy:
+            fail-fast: false
+            max-parallel: 3
+            matrix:
+                sites: ${{ fromJson(needs.init.outputs.sites) }}
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.ref }}
+
+            - name: "fetch repo"
+              continue-on-error: true
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  echo "${{ matrix.sites.url }}"
+                  ./scripts/fetch-repo.sh "${{ matrix.sites.url }}"
+
+            # - name: "fetch repo"
+            #   env:
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #   run: |
+            #       pwd
+            #       echo "${{ matrix.sites.url }}"
+            #       ./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}"
+            #       ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}"
+
+            - name: Commit changes
+              run: |
+                  git config user.name "BetaBot"
+                  git config user.email "infra@incubateur.net"
+                  git add "./repos/${{ matrix.sites.full_name }}"
+
+                  # Check if there are changes to commit
+                  if git diff --staged --quiet; then
+                    echo "No changes to commit"
+                    exit 0
+                  fi
+
+                  git commit -m "update: ${{ matrix.sites.full_name }}"
+
+                  # Retry push with rebase up to 5 times
+                  for i in {1..5}; do
+                    git pull --rebase --autostash && git push && break
+                    echo "Push failed, retrying ($i/5)..."
+                    sleep $((i * 2))
+                  done

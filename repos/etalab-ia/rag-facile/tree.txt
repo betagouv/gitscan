@@ -1,0 +1,330 @@
+.
+├── .env.example
+├── .envrc
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── check-albert-version.yml
+│       ├── check-codebase.yml
+│       ├── check-install.yml
+│       ├── release.yml
+│       └── sync-templates-on-release.yml
+├── .gitignore
+├── .moon
+│   ├── templates
+│   │   ├── albert-client
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── albert
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _async_client.py
+│   │   │   │       ├── _models.py
+│   │   │   │       ├── _version.py
+│   │   │   │       ├── client.py
+│   │   │   │       └── types
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── collections.py
+│   │   │   │           ├── search.py
+│   │   │   │           └── tools.py
+│   │   │   └── template.yml
+│   │   ├── chainlit-chat
+│   │   │   ├── .env.example
+│   │   │   ├── .env.template
+│   │   │   ├── .envrc
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── app.py
+│   │   │   ├── chainlit.md
+│   │   │   ├── context_loader.py
+│   │   │   ├── justfile
+│   │   │   ├── modules.yml
+│   │   │   ├── moon.yml
+│   │   │   ├── pyproject.toml
+│   │   │   └── template.yml
+│   │   ├── rag-core
+│   │   │   ├── README.md
+│   │   │   ├── presets
+│   │   │   │   ├── accurate.toml
+│   │   │   │   ├── balanced.toml
+│   │   │   │   ├── fast.toml
+│   │   │   │   ├── hr.toml
+│   │   │   │   └── legal.toml
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── rag_core
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── loader.py
+│   │   │   │       ├── pdf.py
+│   │   │   │       ├── presets.py
+│   │   │   │       ├── runtime.py
+│   │   │   │       └── schema.py
+│   │   │   └── template.yml
+│   │   ├── reflex-chat
+│   │   │   ├── .env.example
+│   │   │   ├── .env.template
+│   │   │   ├── .envrc
+│   │   │   ├── .github
+│   │   │   │   └── workflows
+│   │   │   │       └── ci.yml
+│   │   │   ├── .gitignore
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── app
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── app.py
+│   │   │   │   ├── components
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── chat.py
+│   │   │   │   │   └── navbar.py
+│   │   │   │   └── state.py
+│   │   │   ├── assets
+│   │   │   │   └── favicon.ico
+│   │   │   ├── context_loader.py
+│   │   │   ├── docs
+│   │   │   │   └── demo.gif
+│   │   │   ├── justfile
+│   │   │   ├── modules.yml
+│   │   │   ├── moon.yml
+│   │   │   ├── pyproject.toml
+│   │   │   ├── rxconfig.py
+│   │   │   ├── scripts
+│   │   │   │   └── open_browser.py
+│   │   │   └── template.yml
+│   │   ├── retrieval-albert
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── retrieval_albert
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _types.py
+│   │   │   │       ├── formatter.py
+│   │   │   │       ├── ingestion.py
+│   │   │   │       ├── parser.py
+│   │   │   │       └── retriever.py
+│   │   │   └── template.yml
+│   │   ├── retrieval-basic
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── retrieval_basic
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── extractor.py
+│   │   │   │       └── formatter.py
+│   │   │   └── template.yml
+│   │   └── sys-config
+│   │       ├── .moon
+│   │       │   ├── toolchain.yml
+│   │       │   └── workspace.yml
+│   │       ├── .prototools
+│   │       ├── .python-version
+│   │       ├── justfile
+│   │       ├── pyproject.toml
+│   │       └── template.yml
+│   ├── toolchain.yml
+│   └── workspace.yml
+├── .pre-commit-config.yaml
+├── .prototools
+├── .python-version
+├── .release-please-manifest.json
+├── AGENTS.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── TEST_PLAN.md
+├── apps
+│   ├── chainlit-chat
+│   │   ├── .env.example
+│   │   ├── .envrc
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── app.py
+│   │   ├── chainlit.md
+│   │   ├── context_loader.py
+│   │   ├── justfile
+│   │   ├── modules.yml
+│   │   ├── moon.yml
+│   │   └── pyproject.toml
+│   ├── cli
+│   │   ├── .env.example
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── moon.yml
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── cli
+│   │   │       ├── __init__.py
+│   │   │       ├── commands
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── config
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── preset.py
+│   │   │       │   │   ├── set_value.py
+│   │   │       │   │   ├── show.py
+│   │   │       │   │   └── validate.py
+│   │   │       │   ├── gen_template.py
+│   │   │       │   ├── generate_dataset.py
+│   │   │       │   ├── providers
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── albert.py
+│   │   │       │   │   ├── document_preprocessor.py
+│   │   │       │   │   ├── letta.py
+│   │   │       │   │   └── schema.py
+│   │   │       │   └── setup.py
+│   │   │       ├── main.py
+│   │   │       └── templates
+│   │   │           └── ragfacile.toml
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_document_preprocessor.py
+│   │       ├── test_generate_dataset.py
+│   │       └── test_setup.py
+│   └── reflex-chat
+│       ├── .env.example
+│       ├── .envrc
+│       ├── .github
+│       │   └── workflows
+│       │       └── ci.yml
+│       ├── .gitignore
+│       ├── CHANGELOG.md
+│       ├── LICENSE
+│       ├── README.md
+│       ├── assets
+│       │   └── favicon.ico
+│       ├── context_loader.py
+│       ├── docs
+│       │   └── demo.gif
+│       ├── justfile
+│       ├── modules.yml
+│       ├── moon.yml
+│       ├── pyproject.toml
+│       ├── reflex_chat
+│       │   ├── __init__.py
+│       │   ├── components
+│       │   │   ├── __init__.py
+│       │   │   ├── chat.py
+│       │   │   └── navbar.py
+│       │   ├── reflex_chat.py
+│       │   └── state.py
+│       ├── rxconfig.py
+│       └── scripts
+│           └── open_browser.py
+├── docs
+│   ├── README.md
+│   ├── guides
+│   │   ├── ci-cd-linux.md
+│   │   ├── ci-cd-macos.md
+│   │   ├── ci-cd-windows.md
+│   │   ├── developer-setup-windows.md
+│   │   ├── evaluation.md
+│   │   ├── getting-started.md
+│   │   ├── proxy-setup.md
+│   │   ├── rag-pipeline.md
+│   │   └── windows-setup.md
+│   ├── reference
+│   │   ├── components.md
+│   │   └── ragfacile-toml.md
+│   └── troubleshooting
+│       └── proxy.md
+├── install.ps1
+├── install.sh
+├── justfile
+├── packages
+│   ├── albert-client
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── albert
+│   │   │       ├── __init__.py
+│   │   │       ├── _async_client.py
+│   │   │       ├── _models.py
+│   │   │       ├── _version.py
+│   │   │       ├── client.py
+│   │   │       └── types
+│   │   │           ├── __init__.py
+│   │   │           ├── collections.py
+│   │   │           ├── search.py
+│   │   │           └── tools.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       ├── test_async_client.py
+│   │       ├── test_async_collections_documents.py
+│   │       ├── test_async_rerank.py
+│   │       ├── test_async_search.py
+│   │       ├── test_async_tools.py
+│   │       ├── test_chunks.py
+│   │       ├── test_client.py
+│   │       ├── test_collections.py
+│   │       ├── test_documents.py
+│   │       ├── test_models.py
+│   │       ├── test_rerank.py
+│   │       ├── test_search.py
+│   │       └── test_tools.py
+│   ├── rag-core
+│   │   ├── README.md
+│   │   ├── presets
+│   │   │   ├── accurate.toml
+│   │   │   ├── balanced.toml
+│   │   │   ├── fast.toml
+│   │   │   ├── hr.toml
+│   │   │   └── legal.toml
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── rag_core
+│   │   │       ├── __init__.py
+│   │   │       ├── loader.py
+│   │   │       ├── pdf.py
+│   │   │       ├── presets.py
+│   │   │       ├── runtime.py
+│   │   │       └── schema.py
+│   │   └── tests
+│   │       ├── test_loader.py
+│   │       ├── test_presets.py
+│   │       ├── test_runtime.py
+│   │       └── test_schema.py
+│   ├── retrieval-albert
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── retrieval_albert
+│   │   │       ├── __init__.py
+│   │   │       ├── _types.py
+│   │   │       ├── formatter.py
+│   │   │       ├── ingestion.py
+│   │   │       ├── parser.py
+│   │   │       └── retriever.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       ├── test_formatter.py
+│   │       ├── test_ingestion.py
+│   │       └── test_retriever.py
+│   └── retrieval-basic
+│       ├── CHANGELOG.md
+│       ├── README.md
+│       ├── pyproject.toml
+│       └── src
+│           └── retrieval_basic
+│               ├── __init__.py
+│               ├── extractor.py
+│               └── formatter.py
+├── pyproject.toml
+├── release-please-config.json
+├── samples
+│   ├── 9782340040069_extrait.pdf
+│   ├── INTRODSP.pdf
+│   ├── fiche_14_vademecum_kit_elections_2014_v2_18.02.14.pdf
+│   └── service_dag_2023-2024.pdf
+├── tools
+│   ├── generate_templates.py
+│   ├── moon.yml
+│   ├── pyproject.toml
+│   └── uv.lock
+└── uv.lock
+72 directories, 257 files

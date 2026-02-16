@@ -1,0 +1,177 @@
+.
+├── .buildpacks
+├── .dockerignore
+├── .env.example
+├── .github
+│   └── workflows
+│       └── github-actions.yml
+├── .gitignore
+├── .locales
+├── .prettierrc
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── .yarn
+│   └── releases
+│       └── yarn-4.7.0.cjs
+├── .yarnrc.yml
+├── Dockerfile.backend
+├── Dockerfile.frontend
+├── Pipfile
+├── Pipfile.lock
+├── Procfile
+├── README.en.md
+├── README.md
+├── backend
+│   ├── dn
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── champs.py
+│   │   ├── client.py
+│   │   ├── queries.py
+│   │   └── sample-data-4
+│   ├── dn_signalements
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── dn_mappings.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_rename_auteur_signalement_to_constatant.py
+│   │   │   ├── 0003_remove_dnsignalement_souhaite_porter_plainte_and_more.py
+│   │   │   ├── 0004_remove_dnsignalement_risque_ecoulement.py
+│   │   │   ├── 0005_remove_dnsignalement_nom_entreprise_and_more.py
+│   │   │   ├── 0006_rename_dn_date_depot_to_creation.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_api.py
+│   │   │   ├── test_doc_generation.py
+│   │   │   ├── test_process_dossier.py
+│   │   │   └── test_process_dossier_auth.py
+│   │   └── views.py
+│   ├── doc_maker
+│   │   ├── __init__.py
+│   │   ├── doc_templates
+│   │   │   ├── doc-constat.odt
+│   │   │   └── lettre-info.odt
+│   │   ├── example.py
+│   │   ├── odt.py
+│   │   ├── odt_utils.py
+│   │   └── settings.py
+│   ├── home
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_views.py
+│   │   └── views.py
+│   ├── middlewares
+│   │   └── __init__.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── local.py
+│   │   ├── prod.py
+│   │   └── test.py
+│   ├── signalements
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_signalement_pdf_document.py
+│   │   │   ├── 0003_signalement_concerne_une_entreprise_and_more.py
+│   │   │   ├── 0004_remove_signalement_concerne_une_entreprise_and_more.py
+│   │   │   ├── 0005_signalement_risque_ecoulement.py
+│   │   │   ├── 0006_remove_signalement_pdf_document.py
+│   │   │   ├── 0007_renommer_doc_constat.py
+│   │   │   ├── 0008_signalement_lettre_info_and_more.py
+│   │   │   ├── 0009_signalement_created_signalement_modified.py
+│   │   │   ├── 0010_alter_signalement_nature_terrain.py
+│   │   │   ├── 0011_add_contact_person.py
+│   │   │   ├── 0012_rename_auteur_signalement_to_constatant.py
+│   │   │   ├── 0013_remove_signalement_souhaite_porter_plainte_and_more.py
+│   │   │   ├── 0014_remove_signalement_risque_ecoulement.py
+│   │   │   ├── 0015_remove_signalement_nom_entreprise_and_more.py
+│   │   │   ├── 0016_delete_signalement.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── prejudice.py
+│   │   ├── signals.py
+│   │   └── views.py
+│   ├── throttling
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   └── throttles.py
+│   ├── unit_tests
+│   │   ├── __init__.py
+│   │   └── factories.py
+│   ├── urls.py
+│   └── wsgi.py
+├── docker-compose.yml
+├── frontend
+│   ├── app.vue
+│   ├── components
+│   │   └── dn
+│   │       ├── DnDocuments.vue
+│   │       ├── DnHero.vue
+│   │       ├── DnInfos.vue
+│   │       ├── DnLoading.vue
+│   │       ├── InfoAuteurIdentifie.vue
+│   │       ├── InfoAuteurNonIdentifie.vue
+│   │       ├── RessourcesUtiles.vue
+│   │       └── tabs
+│   │           ├── ProcedureAdministrative.vue
+│   │           ├── ProcedureAdministrativeNonIdentifie.vue
+│   │           └── ProcedureJudiciaire.vue
+│   ├── composables
+│   │   └── useScroll.ts
+│   ├── layouts
+│   │   └── default-layout.vue
+│   ├── main.js
+│   ├── pages
+│   │   ├── accueil.vue
+│   │   ├── comprendre-la-procedure.vue
+│   │   ├── contact.vue
+│   │   ├── demarche-numerique-rejoindre-protectenvi.vue
+│   │   ├── joindre.vue
+│   │   ├── mes-dossiers.vue
+│   │   ├── rejoindre-le-dispositif.vue
+│   │   └── signalements-dn.vue
+│   ├── services
+│   │   ├── api.ts
+│   │   └── urls.ts
+│   ├── stores
+│   │   └── dossier.ts
+│   ├── styles
+│   │   └── form-steps.css
+│   ├── tests
+│   │   ├── accueil.test.ts
+│   │   └── contact.test.ts
+│   ├── types
+│   │   └── signalement.ts
+│   └── utils
+│       └── files.ts
+├── index.html
+├── manage.py
+├── package-lock.json
+├── package.json
+├── pyproject.toml
+├── scalingo.json
+├── scripts
+│   ├── backend-entrypoint.sh
+│   ├── first_deploy.sh
+│   ├── frontend-entrypoint.sh
+│   ├── post_deploy.sh
+│   ├── start_web.sh
+│   └── start_worker.sh
+├── static
+│   └── depot-de-dechet-sauvage-image-accueil.webp
+├── templates
+│   └── email-get-documents.html
+├── vite.config.ts
+└── vitest.setup.ts
+37 directories, 139 files
