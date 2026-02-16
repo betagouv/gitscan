@@ -71,14 +71,14 @@ jobs:
                   echo "${{ matrix.sites.url }}"
                   ./scripts/fetch-repo.sh "${{ matrix.sites.url }}"
 
-            # - name: "fetch repo"
-            #   env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #   run: |
-            #       pwd
-            #       echo "${{ matrix.sites.url }}"
-            #       ./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}"
-            #       ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}"
+            - name: "generate repo data"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  pwd
+                  echo "${{ matrix.sites.url }}"
+                  ./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}"
+                  ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}"
 
             - name: Commit changes
               run: |
