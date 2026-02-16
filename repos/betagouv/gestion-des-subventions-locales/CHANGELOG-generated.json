@@ -1,0 +1,48 @@
+## Changelog : gestion-des-subventions-locales (30 derniers jours)
+
+### Résumé
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment sur les pages d'administration et de simulation. Des corrections de bugs ont été apportées pour améliorer la robustesse de l'application, en particulier concernant la gestion des données de dossier et des catégories de subventions. Des fonctionnalités ont été ajoutées pour faciliter la gestion des utilisateurs et des dotations, ainsi que pour améliorer l'affichage des informations sur les projets.
+
+### Évolutions fonctionnelles
+- Ajout d'une vidéo de démonstration sur la page d'aide (#526).
+- Ajout d'un filtre par arrondissement sur les pages Dossier et Projet du BO (#522).
+- Suppression de la connexion par username/mot de passe (#523).
+- Possibilité de supprimer un Projet depuis l'admin Django (#520).
+- Amélioration UI du formulaire de renseignement d'info pour un dossier reporté "sans" (#506).
+- Ajout de colonnes dans la page liste des utilisateurs (BO) (#502).
+- Affichage du tag "Reporté" pour les projets issus d'une demande précédente (#484).
+- Possibilité de repasser un projet notifié en traitement (#480).
+- Ajout d'un spinner et désactivation du bouton de soumission sur la page simulation (#477).
+- Ne plus rendre accessible l'onglet "notifications" s'il n'existe pas de dotation acceptée pour ce projet (#478).
+- Décochage de la case d'une dotation dans les annotations si celle-ci avait été acceptée (#471).
+- Calcul de la taille d'un document généré pour l'afficher dans l'onglet notifications (#474).
+- Distinction dans l'affichage des infos ajoutées par le demandeur et celles ajoutées par l'instructeur sur la page projet (#482).
+- Ajout des champs libres instructeurs dans "Annotations" (#494).
+- Ajout des champs "Autre zonage local" et "Autre contrat local" (#493).
+- Affichage du label complet sur les pages listes de projets (#511).
+- Renommage de l'onglet "Annotations" en "Notes" (#507).
+
+### Évolutions techniques
+- Optimisation des performances des pages d'administration de Collegue et FieldMapping (#518).
+- Suppression des requêtes N+1 dans l'admin Collegue (#512).
+- Refactorisation : séparation des données brutes de dossier dans un nouveau modèle `DossierData` (#476).
+- Simplification de la modélisation : suppression de `FieldMappingForHuman` et renommage de `FieldMapping` (#493).
+- Utilisation de `BaseModel` au lieu de `TimestampedModel` (#485).
+- Amélioration de la robustesse de l'algorithme de récupération des données d'un dossier DN (#501).
+- Correction de l'algorithme de récupération des catégories DETR (#510).
+- Mise à jour des dossiers même si la date de mise à jour sauvegardée est supérieure ou égale à celle de DN (#489).
+- Correction d'un potentiel problème de XSS (#483).
+- Suppression de fichiers Javascript inutiles (#483).
+- Utilisation de la classe CSS `fr-hidden` au lieu de `hidden` (#483).
+- Correction de la logique de mise à jour ou de création des `ProgrammationProjet` lors d'un changement d'enveloppe (#483).
+- Amélioration de la gestion des catégories DETR et DSIL (#491, #492).
+- Association du périmètre avec le dossier plutôt qu'avec le projet (#497).
+- Suppression de la possibilité de supprimer des dotations projets programmés (#521).
+
+### Autres changements
+- Ajout de l'import des prénoms et noms des utilisateurs (#475).
+- Ajout du lien Tchap (#506).
+- Correction de tests unitaires (#486, #520).
+- Amélioration de la documentation et des messages d'erreur.
+- Corrections de migrations Django.
+- Nettoyage du code.

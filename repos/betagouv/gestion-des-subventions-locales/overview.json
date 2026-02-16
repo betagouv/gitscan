@@ -1,51 +1,51 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Cet outil facilite la gestion des subventions de l’État aux collectivités locales.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions, les dossiers, les utilisateurs et les notifications. Il offre des fonctionnalités d'importation de données et de génération de documents.",
   "language": "Python",
   "features": [
     "Gestion des subventions",
-    "Interface d'administration",
-    "Import/Export de données",
+    "Gestion des dossiers",
     "Gestion des utilisateurs",
     "Notifications",
-    "Génération de documents"
+    "Import de données",
+    "Génération de documents",
+    "Interface d'administration",
+    "Recherche",
+    "Gestion des catégories de subventions (DSIL et DETR)"
   ],
-  "audience": [
-    "Agents de l'Administration",
-    "Associations"
-  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Celery",
     "Redis",
     "Mozilla-django-oidc",
-    "htmx.org"
+    "django-htmx",
+    "htmx.org",
+    "tiptap",
+    "esbuild"
   ],
   "components": [
     "Backend Django",
+    "Frontend React (via htmx)",
     "Base de données PostgreSQL",
     "API REST",
-    "Frontend (HTMX, Stimulus)",
-    "Tâches asynchrones (Celery)"
+    "Celery pour les tâches asynchrones",
+    "Redis pour la mise en cache"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2"
     ]
   },
   "tests": [
-    "pytest",
-    "factory_boy"
+    "pytest"
   ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-01-30T16:10:49+01:00",
+  "workflows": [],
+  "lastActivity": "2026-02-16T09:49:33+01:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -55,10 +55,12 @@
   },
   "tags": [
     "subventions",
-    "collectivités locales",
     "gestion",
-    "django",
     "administration",
-    "python"
+    "django",
+    "postgresql",
+    "celery",
+    "htmx",
+    "subventions locales"
   ]
 }
