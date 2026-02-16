@@ -1,0 +1,38 @@
+## Changelog : docs (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour apportent des améliorations à l'expérience utilisateur, notamment en matière d'importation de documents, de gestion des accès et de sécurité. Des corrections de bugs ont également été implémentées pour améliorer la stabilité et la fiabilité de la plateforme. Des optimisations techniques ont été réalisées pour améliorer les performances et la maintenance du code.
+
+### Évolutions fonctionnelles
+- Ajout de la possibilité d'importer des documents (#1609, #1824).
+- Implémentation de la connexion silencieuse (silent login) (#1690).
+- Possibilité de gérer les demandes de réconciliation de comptes utilisateurs (#1878).
+- Amélioration du tri des résultats de recherche d'utilisateurs en fonction de la proximité avec l'utilisateur actif (#1802).
+- Ajout d'un champ pour personnaliser le libellé des boutons dans les modèles d'e-mail (#1817).
+- Ajout de statistiques Crisp pour le suivi de l'utilisation (#1824).
+- Amélioration de l'interface utilisateur pour l'impression de documents (#1832).
+
+### Évolutions techniques
+- Ajout d'un workflow GHCR pour les tests sur les forks (#1851).
+- Mise à jour de la configuration du cache backend (#1825).
+- Amélioration de la validation des fichiers importés (#1825).
+- Ajout de tests pour la fonctionnalité d'importation de documents.
+- Mise à jour de la version de l'API docspec à 2.4.4.
+- Augmentation de la valeur `client_max_body_size` dans la configuration Helm.
+- Suppression du code lié aux templates (#1780).
+- Ajout de la prise en charge de la variable d'environnement `AWS_S3_SIGNATURE_VERSION` (#1776).
+- Refactorisation du code pour utiliser des hooks dédiés au lieu d'un seul hook principal.
+- Amélioration de la gestion des erreurs 401 pour les threads.
+
+### Autres changements
+- Correction de l'affichage des dates (#1762).
+- Mise à jour des dépendances : axios à la version 1.13.5 (correction de sécurité), lodash à la version 4.17.23 (correction de sécurité).
+- Correction de bugs mineurs liés à la synchronisation du store, à la fermeture de l'emoji picker, aux tests E2E, et à la gestion des langues Blocknote.
+- Amélioration de l'accessibilité : prévention de la focalisation sur les dates, amélioration de la navigation après filtrage, correction de problèmes d'accessibilité liés à l'ouverture de sous-documents et à l'emoji picker.
+- Mise à jour des chaînes de traduction (#1880).
+- Correction de vulnérabilités de sécurité liées à jaraco.context et à Interlinking.
+- Amélioration de la configuration du thème et de la gestion des couleurs.
+- Suppression d'un guard trivy sur le backend.
+- Ajout d'un flag de fonctionnalité `FRONTEND_SILENT_LOGIN_ENABLED`.
+- Modification de l'URL de mime.types dans le Dockerfile.
+- Ajout d'une analyse de vulnérabilités Trivy sur l'image backend.

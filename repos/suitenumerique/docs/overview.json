@@ -1,48 +1,43 @@
 {
   "url": "https://github.com/suitenumerique/docs",
   "name": "docs",
-  "description": "Docs est un éditeur de texte collaboratif conçu pour faciliter la création et le partage de connaissances. Il permet de créer des documents propres, de travailler en temps réel avec une équipe et de s'auto-héberger facilement.",
+  "description": "Docs est un éditeur de texte collaboratif conçu pour faciliter la création et le partage de connaissances. Il permet une édition en temps réel, un contrôle d'accès granulaire et l'exportation de contenu dans différents formats.",
   "language": "TypeScript",
   "features": [
-    "Édition collaborative en temps réel",
-    "Gestion des accès granulaires",
-    "Exportation en différents formats (.odt, .docx, .pdf)",
-    "Organisation des connaissances avec des sous-pages",
-    "Intégration d'actions d'IA (reformulation, résumé, correction)",
-    "Auto-hébergement facile",
+    "Édition collaborative",
+    "Gestion des accès",
+    "Exportation de documents",
+    "Importation de documents",
+    "Recherche",
     "Gestion des versions",
-    "Partage de documents",
-    "Authentification utilisateur",
-    "Gestion des invitations",
-    "Personnalisation de l'apparence"
+    "Intégration IA (résumé, reformulation)",
+    "Thèmes personnalisables"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "React",
+    "Django Rest Framework",
     "Next.js",
     "BlockNote.js",
     "HocusPocus",
     "Yjs",
-    "Django Rest Framework"
+    "React",
+    "Docker",
+    "Kubernetes"
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST Django",
     "Base de données PostgreSQL",
+    "Service Yjs",
     "Service Worker",
-    "Yjs pour la collaboration en temps réel"
+    "Helm Charts"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "session"
     ],
-    "providers": [
-      "Google",
-      "GitHub",
-      "Microsoft"
-    ]
+    "providers": []
   },
   "tests": [
     "Jest",
@@ -51,9 +46,9 @@
   ],
   "workflows": [
     ".github/workflows/ci.yml",
-    ".github/workflows/e2e.yml"
+    ".github/workflows/pr.yml"
   ],
-  "lastActivity": "2026-01-29T16:13:37+01:00",
+  "lastActivity": "2024-01-28T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -66,12 +61,12 @@
   "tags": [
     "collaboration",
     "text editor",
-    "documentation",
     "knowledge management",
+    "document management",
     "self-hosting",
     "open source",
     "typescript",
-    "react",
-    "django"
+    "django",
+    "react"
   ]
 }
