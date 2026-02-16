@@ -1,0 +1,31 @@
+## Changelog : zero-logement-vacant (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de l'application Zero Logement Vacant se concentrent sur l'amélioration de la gestion des documents, notamment l'ajout de fonctionnalités pour lier et gérer les documents associés aux logements. Des améliorations ont également été apportées à la gestion des données de performance énergétique des bâtiments, à la cartographie et à la correction de bugs pour une meilleure expérience utilisateur. Enfin, des mises à jour de dépendances et des optimisations de l'infrastructure ont été réalisées.
+
+### Évolutions fonctionnelles
+- Ajout d'un onglet "Documents" dans la vue et l'édition des logements, permettant de gérer les documents associés (PR #1597, #1601, #1571).
+- Possibilité de lier plusieurs documents à un logement lors de l'édition groupée (PR #1548).
+- Amélioration de l'affichage des informations sur la performance énergétique des bâtiments (DPE, GES, RNB) dans la vue des logements (PR #1571).
+- Ajout de la possibilité de filtrer les logements par performance énergétique (PR #1571).
+- Ajout de couches administratives à la carte (PR #1555).
+- Correction d'un bug empêchant l'affichage correct des logements dans certaines projections géographiques (PR #1539).
+- Correction d'un bug lié au comptage des logements dans un périmètre géographique vide (PR #1542).
+- Ajout d'un script pour exporter les utilisateurs vers le Portail DF (PR #1583).
+- Mise à jour de la page 404 (PR #1579).
+
+### Évolutions techniques
+- Refactorisation de la gestion des documents pour une meilleure architecture et une plus grande flexibilité (PR #1549, #1589).
+- Mise en place d'un système de suivi des événements liés aux documents (PR #1589).
+- Migration vers `react-hook-form` pour la gestion des formulaires, améliorant la robustesse et la maintenabilité (PR #1549).
+- Amélioration de la gestion des coordonnées géographiques et ajout de la reprojection automatique vers WGS84 (PR #1539).
+- Mise à jour de plusieurs dépendances, notamment `lexical` et des bibliothèques npm (PR #1562, #1558, #1543, #1560, #1551).
+- Optimisation de l'infrastructure CI/CD avec l'ajout d'options pour les builds et les review apps (PR #1592, #1583, #1562).
+- Suppression de champs de précision obsolètes et refactorisation du code associé (PR #1578).
+
+### Autres changements
+- Ajout de documentation pour la configuration des agents IA (PR #1555).
+- Mise à jour des configurations des sources externes (PR #1602, #1598).
+- Amélioration des tests et correction de bugs mineurs dans le code (nombreuses PR).
+- Nettoyage du code et suppression de composants inutilisés (PR #1549, #1550).
+- Ajout de commentaires et documentation pour faciliter la compréhension du code.
