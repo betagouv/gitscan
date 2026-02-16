@@ -1,0 +1,43 @@
+## Changelog : eva-serveur (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour d'eva-serveur se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration d'un nouveau design pour le tableau de bord et les restitutions, ainsi que l'ajout de fonctionnalités pour la gestion des OPCO et des campagnes. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
+
+### Évolutions fonctionnelles
+- Possibilité de recréer ou réimporter un questionnaire avec le nom technique d'un questionnaire effacé (#ed96e4d).
+- Les utilisateurs peuvent maintenant télécharger le rapport PDF d'une évaluation pour Eva Pro (#c82b53d).
+- Ajout d'un composant SIRET avec formatage et validation (#d9f95af).
+- Affichage du logo de l'OPCO financeur sur le résultat d'une évaluation (#d272749).
+- Ajout d'un champ téléphone au formulaire d'informations de compte (#1bc4fbd).
+- Le bilan d'EvaPro affiche maintenant l'OPCO même s'il n'est pas financeur (#a5d8d0a).
+- Les liens du footer ont été mis à jour et corrigés (#f23088b, #d11cc45, #9dd750b).
+- Amélioration de la gestion de l'activation des boutons dans le formulaire d'informations de compte (#e66694b, #9012a2d).
+- Ajout d'un composant pour afficher les coûts avec un nouveau design (#8fa02d7).
+- Affichage des informations de l'OPCO dans les structures pour les super-admins (#46978da).
+- Ajout d'un champ "passable" dans l'API et les questions pour une gestion plus fine des questionnaires (#a235c34, #4f232c1, #0332b46).
+
+### Évolutions techniques
+- Refactorisation du code pour une meilleure lisibilité et maintenabilité (#4537c56).
+- Utilisation du composant `BoutonDsfr` pour une gestion améliorée des boutons (#297bdfe).
+- Séparation des vues d'évaluation entre Eva et EvaPro (#96c5aba).
+- Ajout d'un feature flag pour activer EvaPro uniquement si la variable système `ACTIVE_EVAPRO` est présente (#c2d0275).
+- Mise à jour de Puppeteer (#a765862).
+- Suppression de code CSS en commentaire (#b4f8301).
+- Utilisation du composant `LienComponent` pour les liens du footer, améliorant l'accessibilité (#d7649a8).
+- Simplification de la logique de création de campagne (#7a653b5).
+- Mise à jour des dépendances (Faraday, aws-sdk-s3, Ruby) (#22f96f5, #47749f0, #08d6231).
+- Ajout de tests pour le helper `Admin::DashboardHelper` (#c82d599).
+- Configuration de Stylelint pour assurer la cohérence du style (#94055aa).
+
+### Autres changements
+- Documentation de la variable d'environnement `ACTIVE_EVAPRO` (#98870ee).
+- Correction de typos et amélioration de la formulation dans les traductions (#f2ba27f, #025fb13).
+- Amélioration des styles pour la version mobile (page de connexion, boutons, modales) (#84714cf, #6bda929).
+- Corrections de styles diverses (header, boutons, sidebar, footer) (#880da47, #82bf46e, #956bfcf, #7746b62).
+- Suppression de duplication de code (champs input dans l'admin, lien de l'annuaire) (#e101252, #9d4e0fb).
+- Suppression de tests inutiles (#82bf46e).
+- Ajout de commentaires et de documentation pour clarifier le code.
+- Correction de bugs mineurs liés à l'affichage et au comportement de l'interface utilisateur.
+- Correction de l'erreur 500 sur la page des evaluations (#91d2ead).
+- Correction de l'erreur 500 sur le footer (#d3c6e36).
+- Correction de l'erreur js sur le header (#e91ce08).
