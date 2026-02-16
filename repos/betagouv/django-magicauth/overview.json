@@ -5,19 +5,18 @@
   "language": "Python",
   "features": [
     "Authentification sans mot de passe",
-    "Envoi de lien par email",
-    "Authentification à deux facteurs (2FA)",
-    "Compatibilité avec django-otp"
+    "Envoi de lien magique par email",
+    "Authentification à deux facteurs (2FA) avec OTP"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Django",
     "django-otp"
   ],
   "components": [
-    "Backend Django",
+    "Application Django",
     "Templates HTML",
-    "Envoi d'emails"
+    "API Email"
   ],
   "auth": {
     "methods": [
@@ -26,12 +25,11 @@
     ]
   },
   "tests": [
-    "Pytest"
+    "Pytest",
+    "Tox"
   ],
   "workflows": [
-    "CI/CD avec CircleCI",
-    "Tests avec tox",
-    "pre-commit hooks"
+    "CI/CD avec CircleCI"
   ],
   "lastActivity": "2024-09-09T16:34:17Z",
   "status": "active",
@@ -49,8 +47,7 @@
     "Sans mot de passe",
     "Magic Link",
     "Sécurité",
-    "Email",
     "2FA",
-    "django-otp"
+    "OTP"
   ]
 }
