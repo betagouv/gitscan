@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/aides-jeunes",
   "name": "aides-jeunes",
-  "description": "Ce simulateur global permet aux jeunes de découvrir les prestations sociales françaises auxquelles ils peuvent prétendre. Il vise à simplifier l'accès à l'information et à faciliter les démarches administratives.",
+  "description": "Ce simulateur permet aux jeunes de découvrir les aides sociales auxquelles ils peuvent prétendre en France. Il est basé sur OpenFisca et vise à simplifier l'accès à l'information sur les aides disponibles.",
   "language": "TypeScript",
   "features": [
     "Simulation de prestations sociales",
     "Recherche d'aides",
-    "Informations personnalisées",
-    "Suivi des candidatures",
-    "Accès à des ressources et services"
+    "Géolocalisation des aides",
+    "Informations sur les aides",
+    "Authentification France Connect"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -18,18 +18,22 @@
     "OpenFisca",
     "NetlifyCMS",
     "Express",
-    "React"
+    "axios",
+    "dayjs"
   ],
   "components": [
     "Frontend VueJS",
-    "Backend NodeJS",
+    "Backend NodeJS/Express",
     "Base de données MongoDB",
-    "API REST",
-    "OpenFisca (moteur de simulation)"
+    "API OpenFisca",
+    "Interface d'administration NetlifyCMS"
   ],
   "auth": {
     "methods": [
-      "none"
+      "oauth2"
+    ],
+    "providers": [
+      "France Connect"
     ]
   },
   "tests": [
@@ -37,9 +41,9 @@
     "Cypress"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD avec Github Actions"
   ],
-  "lastActivity": "2026-01-30T15:41:20+01:00",
+  "lastActivity": "2026-02-11T18:36:06+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -47,15 +51,15 @@
     "stars": 82,
     "forks": 43,
     "contributors": null,
-    "openIssues": 116
+    "openIssues": 114
   },
   "tags": [
     "aides sociales",
     "jeunes",
-    "simulation",
     "OpenFisca",
-    "France",
-    "prestations",
-    "social"
+    "simulation",
+    "France Connect",
+    "TypeScript",
+    "VueJS"
   ]
 }
