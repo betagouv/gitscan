@@ -1,29 +1,30 @@
 {
   "url": "https://github.com/betagouv/heroku-buildpack-ruby",
   "name": "heroku-buildpack-ruby",
-  "description": "Ce buildpack Heroku permet de déployer des applications Ruby, Rack et Rails. Il utilise Bundler pour la gestion des dépendances.",
+  "description": "Ce buildpack Heroku permet de déployer des applications Ruby, Rack et Rails. Il utilise Bundler pour la gestion des dépendances et est conçu pour fonctionner sur Linux 64 bits.",
   "language": "Ruby",
   "features": [
     "Gestion des dépendances avec Bundler",
-    "Support de Rails 2, 3, 4 et 5",
-    "Support de JRuby",
+    "Support de Rails 2 et 3",
     "Précompilation des assets",
-    "Gestion des versions de Ruby"
+    "Injection de plugins Rails",
+    "Support de JRuby"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Bundler",
     "Rack",
     "Rails",
-    "OpenJDK",
+    "Ruby",
+    "OpenJDK (pour JRuby)",
     "Node.js"
   ],
   "components": [
     "Buildpack Heroku",
-    "Language Pack Ruby",
-    "Gestionnaire de dépendances Bundler",
-    "Scripts de compilation et de détection",
-    "Intégration avec Heroku"
+    "Gestionnaire de dépendances (Bundler)",
+    "Environnement d'exécution Ruby",
+    "Serveur d'applications (Rack)",
+    "Framework web (Rails)"
   ],
   "auth": {
     "methods": [
@@ -31,13 +32,9 @@
     ],
     "providers": []
   },
-  "tests": [
-    "Rspec",
-    "Hatchet"
-  ],
+  "tests": "Rspec, hatchet",
   "workflows": [
-    "CI/CD avec Travis CI",
-    "Tests automatisés"
+    "CI/CD (via GitHub Actions)"
   ],
   "lastActivity": "2016-11-07T13:46:41Z",
   "status": "maintained",
@@ -55,8 +52,7 @@
     "Buildpack",
     "Bundler",
     "Rails",
-    "JRuby",
-    "Deployment",
-    "CI/CD"
+    "Rack",
+    "JRuby"
   ]
 }
