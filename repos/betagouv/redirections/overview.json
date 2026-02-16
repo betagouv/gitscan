@@ -1,18 +1,19 @@
 {
   "url": "https://github.com/betagouv/redirections",
   "name": "redirections",
-  "description": "Cet outil permet de gérer des redirections d'une URL vers une autre. Il est utilisé pour maintenir la continuité des liens lors de changements de domaine ou de structure de site.",
+  "description": "Cet outil permet de gérer des redirections d'une URL vers une autre. Il est utilisé pour maintenir la continuité des liens lors de changements de domaine ou de structure de site web.",
   "language": "HTML",
   "features": [
     "Redirection d'URL"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "nginx"
+    "Nginx",
+    "Scalingo"
   ],
   "components": [
     "Configuration Nginx",
-    "Scripts de déploiement",
+    "DNS",
     "Scalingo"
   ],
   "auth": {
@@ -20,9 +21,7 @@
       "none"
     ]
   },
-  "tests": [
-    "test-erb-nginx-conf.sh"
-  ],
+  "tests": null,
   "workflows": [
     "main.yml"
   ],
@@ -32,14 +31,15 @@
   "hasDocumentation": true,
   "metrics": {
     "stars": 4,
-    "forks": 13,
+    "forks": 14,
     "contributors": null,
     "openIssues": 1
   },
   "tags": [
     "redirection",
-    "nginx",
     "URL",
-    "Scalingo"
+    "Nginx",
+    "Scalingo",
+    "DNS"
   ]
 }
