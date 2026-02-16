@@ -1,72 +1,65 @@
 {
   "url": "https://github.com/suitenumerique/conversations",
   "name": "conversations",
-  "description": "Conversations est un chatbot open-source conçu pour être simple, sécurisé et respectueux de la vie privée. Il vise à permettre un contrôle total des données et une personnalisation facile.",
+  "description": "Conversations est un chatbot open-source conçu pour être simple, sécurisé et respectueux de la vie privée. Il vise à offrir un contrôle total sur les données et l'interaction avec l'IA, avec une interface conviviale et une personnalisation facile.",
   "language": "Python",
   "features": [
-    "Chatbot",
-    "Intégration avec des LLM (Large Language Models)",
+    "Chat avec l'IA",
+    "Gestion des conversations (nommer, éditer)",
+    "Téléchargement et analyse de documents (PDF)",
+    "Intégration avec des modèles de langage (LLM)",
     "Recherche web",
-    "Gestion de documents",
-    "Personnalisation",
-    "Authentification utilisateur"
+    "Authentification utilisateur",
+    "Gestion des pièces jointes"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "Django REST Framework",
     "Pydantic",
-    "Next.js",
-    "PostgreSQL",
+    "Pydantic AI",
     "Redis",
-    "MinIO",
-    "Keycloak",
-    "Langfuse"
+    "PostgreSQL",
+    "Boto3",
+    "Langfuse",
+    "Uvicorn",
+    "Mozilla Django OIDC"
   ],
   "components": [
     "Backend Django",
-    "Frontend React (Next.js)",
+    "Frontend Next.js",
+    "API REST",
     "Base de données PostgreSQL",
     "Cache Redis",
-    "Stockage d'objets MinIO",
-    "Serveur d'authentification Keycloak"
+    "Stockage MinIO"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "saml"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
-  "tests": [
-    "pytest",
-    "jest",
-    "playwright"
-  ],
-  "workflows": [
-    "CI/CD avec GitHub Actions",
-    "Déploiement sur Docker Hub"
-  ],
-  "lastActivity": "2026-01-31T14:18:01+00:00",
+  "tests": null,
+  "workflows": [],
+  "lastActivity": "2026-02-16T10:11:32+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 32,
-    "forks": 5,
+    "stars": 41,
+    "forks": 8,
     "contributors": null,
-    "openIssues": 56
+    "openIssues": 60
   },
   "tags": [
     "chatbot",
+    "IA",
     "AI",
-    "LLM",
     "Django",
-    "React",
+    "Pydantic",
     "Open Source",
-    "Privacy",
-    "Security"
+    "LLM",
+    "Privacy"
   ]
 }

@@ -1,0 +1,41 @@
+## Changelog : conversations (30 derniers jours)
+
+### Résumé
+Ce mois-ci, l'équipe a apporté des améliorations significatives à l'expérience utilisateur, notamment l'ajout d'un mode sombre persistant, l'amélioration des performances de l'interface et l'intégration de nouvelles fonctionnalités pour la gestion des documents et la recherche d'informations. Des corrections de bugs et des optimisations techniques ont également été réalisées pour améliorer la stabilité et la fiabilité de la plateforme.
+
+### Évolutions fonctionnelles
+- Ajout d'un mode sombre persistant, permettant aux utilisateurs de conserver leur préférence d'affichage. (#240)
+- Amélioration de la gestion des documents : ajout d'un parseur PDF adaptatif pour une meilleure extraction de texte et OCR.
+- Possibilité de générer et d'éditer le titre des conversations.
+- Intégration de FindRagBackend pour améliorer la recherche d'informations. (#209)
+- Amélioration des performances de l'interface utilisateur, notamment lors de la saisie de messages.
+- Ajout d'un kit d'interface utilisateur (UI Kit) avec support du mode sombre.
+- Possibilité de supprimer des collections temporaires.
+- Amélioration de l'intégration de l'API Find avec les informations de l'utilisateur et les tags.
+- Correction de l'affichage des formules mathématiques et des carrousels en mode traduction.
+
+### Évolutions techniques
+- Migration vers `uv` pour améliorer les performances.
+- Refactorisation des parseurs de documents pour une meilleure maintenabilité.
+- Mise à jour de Django.
+- Optimisation de la taille du bundle de surlignage de syntaxe.
+- Mise à jour de plusieurs dépendances (Next.js, protobuf) pour corriger des vulnérabilités et améliorer la stabilité.
+- Correction de problèmes de keepalives lors de l'analyse de documents.
+- Amélioration de la gestion des erreurs et des timeouts lors des appels aux outils.
+- Correction de tests unitaires.
+- Monture du fichier de configuration JSON du LLM dans les jobs Helm.
+
+### Autres changements
+- Mise à jour des chaînes de traduction (i18n).
+- Bump de la version à 0.0.13.
+- Suppression de code mort et de fichiers inutilisés.
+- Configuration de l'accès au stockage S3 sans accès externe.
+- Suppression de la partie "thinking" de l'interface utilisateur.
+- Correction de problèmes liés à l'hydratation de React.
+- Mise à jour du fichier `mime.types` pour une meilleure gestion des types de fichiers.
+- Désactivation de Trivy sur `yarn.lock` pour la génération de mail.
+- Correction de problèmes liés à l'envoi de types de fichiers interdits.
+- Correction de liens `target="_blank"` dans le chat.
+- Passage de UUID à str pour l'ID utilisateur dans Posthog.
+- Correction de l'affichage du rejet de fichiers en glisser-déposer sur Safari.
+- Correction de l'ID de suivi dans les événements d'upload.
