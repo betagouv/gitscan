@@ -1,7 +1,7 @@
 {
-  "url": "https://github.com/mtes-mct/sparte",
+  "url": "https://github.com/MTES-MCT/sparte",
   "name": "sparte",
-  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maitriser la consommation d'espaces et l'artificialisation des sols de leur territoire.",
+  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maitriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard des exigences de la loi climat et résilience, et notamment de la ZAN.",
   "language": "Python",
   "features": [
     "Analyse de la consommation d'espaces",
@@ -9,54 +9,60 @@
     "Visualisation de données cartographiques",
     "Génération de rapports",
     "Comparaison de territoires",
-    "Suivi de l'évolution de l'artificialisation",
-    "Gestion des objectifs de réduction de l'artificialisation"
+    "Gestion des objectifs de territorialisation"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "React",
     "PostgreSQL",
-    "Airflow",
+    "Redis",
+    "React",
+    "Webpack",
+    "Babel",
+    "TypeScript",
     "Highcharts",
-    "Puppeteer"
+    "Maplibre GL",
+    "Celery"
   ],
   "components": [
     "Backend Django",
     "Frontend React",
-    "API REST",
     "Base de données PostgreSQL",
+    "API REST",
     "Serveur d'export PDF",
-    "Workflows Airflow"
+    "Cartographie Maplibre GL"
   ],
   "auth": {
     "methods": [
-      "none"
-    ],
-    "providers": []
+      "email-password"
+    ]
   },
   "tests": [
     "Jest",
-    "Vitest"
+    "Pytest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-01-29T14:29:51+00:00",
+  "workflows": [
+    "CI/CD (via GitHub Actions)"
+  ],
+  "lastActivity": "2026-02-12T18:32:56+01:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 8,
-    "forks": 2,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 82
+    "openIssues": null
   },
   "tags": [
-    "artificialisation",
-    "consommation d'espace",
-    "django",
-    "react",
-    "python",
-    "OCSGE",
-    "aménagement du territoire"
+    "artificialisation des sols",
+    "consommation d'espaces",
+    "SIG",
+    "données environnementales",
+    "loi climat et résilience",
+    "ZAN",
+    "urbanisme",
+    "cartographie",
+    "reporting"
   ]
 }
