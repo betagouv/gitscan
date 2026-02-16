@@ -1,39 +1,40 @@
 {
-  "url": "https://github.com/mtes-mct/monitorenv",
+  "url": "https://github.com/MTES-MCT/monitorenv",
   "name": "monitorenv",
-  "description": "MonitorEnv est une application développée pour le CACEM afin de centraliser les outils nécessaires à l'exercice de ses missions — la protection de l'environnement marin et le contrôle des activités les plus à risque pour la biodiversité marine.",
-  "language": "TypeScript",
+  "description": "MonitorEnv est une application développée pour le CACEM afin de centraliser les outils nécessaires à la protection de l'environnement marin et au contrôle des activités à risque pour la biodiversité marine.",
+  "language": "Python",
   "features": [
-    "Suivi de l'environnement marin",
-    "Appui au contrôle des activités",
-    "Gestion des missions de contrôle",
+    "Gestion des zones de vigilance",
     "Analyse des données de contrôle",
-    "Aide à la décision"
+    "Suivi et rapportage des missions de contrôle",
+    "Recherche de données (plages, couches)",
+    "Gestion des réglementations"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "PostgreSQL",
-    "Kafka",
+    "GeoAlchemy2",
+    "pandas",
     "GeoPandas",
     "Prefect",
-    "Swagger",
-    "Flyway"
+    "React",
+    "Redux Toolkit",
+    "Sentry"
   ],
   "components": [
+    "Application web",
+    "Pipeline de traitement de données",
     "Frontend React",
     "API REST",
-    "Base de données PostgreSQL",
-    "Pipeline de traitement de données",
-    "Microservices"
+    "Base de données PostgreSQL"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "session"
     ],
     "providers": [
-      "Google"
+      "OIDC"
     ]
   },
   "tests": [
@@ -42,31 +43,20 @@
     "Pytest"
   ],
   "workflows": [
-    "cicd-app.yml",
-    "cicd-database.yml",
-    "cicd-datapipeline-prefect3.yml",
-    "cicd-datapipeline.yml",
-    "codeql.yml",
-    "trivy.yml"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-29T16:13:28+00:00",
+  "lastActivity": "2026-02-13T10:48:06+01:00",
   "status": "active",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 10,
-    "forks": 1,
-    "contributors": null,
-    "openIssues": 269
-  },
+  "metrics": null,
   "tags": [
-    "environment",
-    "sea",
-    "typescript",
-    "reactjs",
-    "postgis",
-    "prefect",
-    "openlayers",
-    "kotlin"
+    "environnement marin",
+    "biodiversité",
+    "contrôle",
+    "données",
+    "PostgreSQL",
+    "React",
+    "Python"
   ]
 }

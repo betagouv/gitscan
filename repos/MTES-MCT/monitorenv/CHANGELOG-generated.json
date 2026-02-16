@@ -1,0 +1,35 @@
+## Changelog : monitorenv (30 derniers jours)
+
+### Résumé
+Ce changelog résume les améliorations apportées à monitorenv au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration de la recherche de plages, l'ajout d'informations sur la dernière position des navires, des corrections de données et des optimisations techniques pour améliorer la performance et la maintenance du système.
+
+### Évolutions fonctionnelles
+- Affichage de la dernière position connue des navires (#fd5148a).
+- Amélioration de la recherche de plages, notamment en gérant correctement les accents et en ajoutant des filtres (#db3962e, #3655ae8, #ca1f62b, #e716c08).
+- Correction de l'affichage des zones réglementaires dans la vue "brief" (#9c73b9d).
+- Ajout de la prise en charge de Mayotte, Martinique et Guadeloupe dans l'API Google Places (#cfb7a55).
+- Correction de l'affichage des ampoules dans le résumé des briefs si aucun ampoule n'est sélectionné (#126b76b).
+- Ajout de la recherche personnalisée pour les stations et ressources dans l'unité de contrôle (#81f542d).
+
+### Évolutions techniques
+- Remplacement de la dépendance `cx_oracle` par `oracledb` (#2d2515f).
+- Ajout de l'extension `unaccent` à PostgreSQL pour améliorer la recherche sans accent (#db3962e).
+- Création d'une vue matérialisée pour accélérer la recherche de plages sans accent (#3655ae8).
+- Mise à jour des dépendances et des workflows CI/CD (#c3c6080, #de9eb8e, #c1805fb, #ad78352).
+- Suppression de code et de configurations obsolètes (anciens pipelines, dossiers datascience, infra legacy) (#aececeb, #2feb5eb, #03c91be, #503e2fe, #4d5c3b9, #376dca2, #3036a5d).
+- Ajout de volumes pour les certificats Kafka (#95d038f).
+- Correction d'un problème de migration de données (#0382dac).
+- Correction d'un problème de test lié aux dates (#d9655db).
+- Correction d'un problème de type `jsonb` dans les modèles de données (#044566f).
+
+### Autres changements
+- Ajout de documentation pour l'installation du worker Prefect 3 (#e69b967).
+- Mise à jour de la configuration de l'environnement et du pre-commit (#f5969b8).
+- Ajout d'un test manquant (#e258a56).
+- Mise à jour du fichier `poetry.lock` (#59ac0dd).
+- Mise à jour du fichier `CONTRIBUTING.md` (#9ee220e).
+- Suppression d'une requête inutilisée (#991ffe1).
+- Mise à jour du workflow Dependabot GitHub (#cd8fe0c).
+- Correction de tests unitaires (#bb39824, #8ff992d).
+- Mise à jour du format des coordonnées par défaut pour DMD (#ac52a3e).
+- Création de flows pour `ref_natinfs` et les dernières positions (#d1230bd, #fd5148a, #b7b3f99, #06987c5).
