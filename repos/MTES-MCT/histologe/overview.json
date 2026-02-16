@@ -1,29 +1,28 @@
 {
-  "url": "https://github.com/mtes-mct/histologe",
+  "url": "https://github.com/MTES-MCT/histologe",
   "name": "histologe",
-  "description": "Une solution pour détecter et accélérer la prise en charge du “mal-logement”. Cette application permet de signaler et de suivre les situations de logement insalubre.",
+  "description": "Une solution pour détecter et accélérer la prise en charge du “mal-logement”. Cette application permet de détecter et d'accélérer la prise en charge des problèmes de logement.",
   "language": "PHP",
   "features": [
     "Gestion des signalements",
-    "Suivi des dossiers",
-    "Collaboration entre partenaires",
-    "Automatisation des injonctions",
+    "Suivi des injonctions",
+    "Communication avec les bailleurs",
     "Tableaux de bord et statistiques",
     "Gestion des utilisateurs et des rôles",
-    "Import de données",
-    "Envoi de notifications"
+    "Import/Export de données",
+    "Géolocalisation",
+    "Notifications"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "PHP",
     "Symfony",
-    "Twig",
-    "Vue.js",
-    "TypeScript",
+    "PHP",
     "MySQL",
     "Redis",
-    "Nginx",
-    "Docker"
+    "Vue.js",
+    "TypeScript",
+    "Leaflet",
+    "Sentry"
   ],
   "components": [
     "Frontend Vue.js / TypeScript",
@@ -31,7 +30,6 @@
     "Base de données MySQL",
     "Serveur Nginx",
     "API REST",
-    "Microservices (optionnel)",
     "Système de design de l'État français"
   ],
   "auth": {
@@ -39,32 +37,21 @@
       "email-password"
     ]
   },
-  "tests": [
-    "Playwright",
-    "PHPUnit"
-  ],
-  "workflows": [
-    "CI/CD (via GitHub Actions ou similaire)"
-  ],
-  "lastActivity": "2026-01-30T09:51:25+01:00",
+  "tests": null,
+  "workflows": null,
+  "lastActivity": "2026-02-13T11:07:42+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "logement",
-    "insalubrité",
+    "mal-logement",
     "signalement",
+    "injonction",
     "administration",
     "PHP",
     "Symfony",
-    "Vue.js",
-    "Base de données",
-    "API"
+    "Vue.js"
   ]
 }

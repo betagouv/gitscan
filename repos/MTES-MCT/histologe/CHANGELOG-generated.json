@@ -1,0 +1,50 @@
+## Changelog : histologe (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour d'histologe se concentrent sur l'amélioration de l'expérience utilisateur, notamment pour les agents de l'administration, avec des améliorations de l'interface, l'ajout de nouvelles fonctionnalités de suivi et de notification, et des corrections de bugs. Des optimisations techniques ont également été apportées pour améliorer la performance et la stabilité de l'application.
+
+### Évolutions fonctionnelles
+- Ajout de la possibilité de choisir un bâtiment lors de la saisie manuelle d'une adresse pour les usagers (#5341).
+- Ajout de la qualification "Saleté" dans la liste des signalements (#5371).
+- Ajout de la donnée "Profil Occupant" dans l'interface frontend et backend (#5329).
+- Possibilité d'envoyer un message après la clôture d'un signalement rouvert dans le suivi usager (#5320).
+- Amélioration de l'accessibilité pour les connexions SI externes (#5259).
+- Ajout de la possibilité de renseigner la réponse du bailleur (#5269).
+- Ajout d'événements Matomo pour le suivi de la démarche accélérée (#5366).
+- Ajout de la catégorie de suivi "arrêté de main-levée" et "arrêté" pour la gestion des interventions depuis SISH (#5333).
+- Ajout du nom du partenaire ayant saisi le signalement professionnel sur la fiche signalement (#5380).
+- Amélioration du filtre signalement/injonction (#5360).
+- Ajout de la possibilité d'ajouter des communes (#5367).
+- Ajout d'une route par service pour le formulaire service secours (#5344).
+- Ajout de skiplinks pour passer les filtres et la liste dans les listes (#5377).
+- Division du menu SA en deux pour une meilleure organisation (#5392).
+- Ajout de la gestion des catégories de suivi (#5400).
+- Correction de l'affichage des tags triés par libellé dans la vue signalement (#4981).
+
+### Évolutions techniques
+- Exécution du cron de synchronisation des fichiers bucket S3 via un service jobless (#5261).
+- Organisation des nouveaux fichiers S3 par année/mois pour optimiser les synchronisations (#5331).
+- Mise à jour de Webpack (version 5.105.1) (#5407).
+- Mise à jour de certaines dépendances mineures (#5382).
+- Mise à jour de phpunit (#5343).
+- Correction de l'envoi d'événements Matomo (#5354).
+- Correction d'une erreur lors de la création d'une copie locale temporaire depuis le bucket S3 (#5391).
+- Correction de redirections après actions (#5314).
+- Limitation de la longueur des propriétés en fonction des spécifications (#5245).
+- Correction d'un bug empêchant la soumission multiple de formulaires (#5248).
+- Correction d'un problème de soumission de formulaire pro (#5282).
+- Modification de `request->request` en `request->query` (#5336).
+
+### Autres changements
+- Ajout de rappels automatiques pour le suivi mensuel de la démarche accélérée (#5304).
+- Suppression de l'autocomplétion du composant de recherche avec checkbox (#5406).
+- Ajout de notifications pour les abandons de demande (#5335).
+- Simplification de la création de périmètre pour les partenaires (#5287).
+- Ajout de la nature du parc dans la liste des signalements (#5311).
+- Amélioration du dashboard pour filtrer les dossiers sans activité partenaire sur le status de l'affectation pour un agent (#5325).
+- Ajout d'un cron pour le rappel des injonctions (#5322).
+- Mise à jour de la documentation de l'API v1.3.0 (#5190).
+- Suppression des alertes immédiates dans les notifications (#5356).
+- Ajout de textes incitatifs dans la démarche accélérée (#5275).
+- Activation de l'injonction courrier pour les RT (#5134).
+- Amélioration des messages flash (#5307).
