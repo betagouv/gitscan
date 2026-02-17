@@ -1,0 +1,28 @@
+## Changelog : infomedicament-html-parser (30 derniers jours)
+
+### Résumé
+Ce changelog couvre les dernières améliorations apportées à l'outil d'analyse des documents HTML des médicaments de l'ANSM. Les évolutions se concentrent principalement sur l'ajout d'un classificateur pédiatrique, l'amélioration de la gestion des données et de l'infrastructure de déploiement, ainsi que l'ajout d'une fonctionnalité de conversion SQL vers CSV.
+
+### Évolutions fonctionnelles
+- Ajout d'un classificateur pédiatrique et d'un pipeline d'évaluation associé accessible via l'interface en ligne de commande (CLI) (#2).
+- Amélioration de la classification pédiatrique avec la prise en compte de différents motifs et la gestion des priorités entre les classes (B > C > A).
+- Normalisation des chaînes de caractères lors de l'extraction de texte pour gérer les guillemets français, les tirets et certains symboles mathématiques (≥, ≤) (#8461375).
+- Ajout d'une fonctionnalité permettant de convertir des requêtes SQL en fichiers CSV via la CLI (#1).
+- Possibilité de spécifier un fichier de sortie local lors de l'utilisation de la CLI en mode CSV (#3ce8f6c).
+
+### Évolutions techniques
+- Utilisation de PostgreSQL pour la gestion du mapping CIS-ATC (#ce2593e).
+- Refactorisation de l'application pour supprimer le mode NR et utiliser des dossiers S3 distincts pour les notices et les RCP (#01f1a4f).
+- Implémentation d'un système de batching dans la CLI pour limiter l'utilisation de la mémoire sur Scalingo (#8ebdb72).
+- Ajout de tests unitaires pour le parser SQL vers CSV (#ce640de).
+- Amélioration de la gestion des fichiers S3 avec une vérification de leur existence avant téléchargement (#42e5e5d).
+- Configuration du déploiement Scalingo avec une taille de batch de 1000 (#9cdad04).
+- Configuration du déploiement Scalingo pour suivre le fichier `poetry.lock` (#22deb96).
+- Prise en charge de la chaîne de connexion Scalingo pour MySQL (#664a34d).
+
+### Autres changements
+- Mise à jour de la documentation pour préciser que l'interpolation de variables n'est pas supportée dans les requêtes SQL (#32a0dcc).
+- Mise à jour de la documentation de déploiement (README) (#59682ff).
+- Modifications de la configuration du ProcFile pour le déploiement Scalingo (#068e239, #bd157a8, #22deb96).
+- Ajout d'une commande `web` au ProcFile pour éviter les échecs de build (#068e239).
+- Initialisation du dépôt (#885455b).

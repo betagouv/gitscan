@@ -1,31 +1,34 @@
 {
   "url": "https://github.com/betagouv/infomedicament-html-parser",
   "name": "infomedicament-html-parser",
-  "description": "Ce parseur permet d'analyser le HTML des documents de la BDPM (Base de données publique des médicaments) et de charger les données en base de données. Il est conçu pour traiter les notices et les RCP (résumés des caractéristiques du produit).",
+  "description": "Ce parseur permet d'analyser les documents HTML des médicaments (Notices et RCP) de l'ANSM. Il extrait des données structurées à partir de ces documents pour faciliter leur traitement et leur intégration dans d'autres systèmes.",
   "language": "Python",
   "features": [
-    "Parsing de fichiers HTML",
+    "Parsing de documents HTML",
     "Extraction de données",
-    "Chargement en base de données",
-    "Gestion de fichiers S3"
+    "Conversion SQL vers CSV",
+    "Classification pédiatrique",
+    "Gestion de fichiers locaux et S3"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
-    "beautifulsoup4",
+    "BeautifulSoup4",
     "lxml",
     "chardet",
     "pymysql",
     "cryptography",
     "tqdm",
     "boto3",
-    "poetry"
+    "sqlglot",
+    "psycopg2-binary",
+    "Poetry"
   ],
   "components": [
     "Parser HTML",
-    "Interface CLI",
+    "Interface en ligne de commande (CLI)",
     "Gestionnaire de configuration",
-    "Connecteur base de données",
-    "Client S3"
+    "Connecteur S3",
+    "Connecteur base de données (MySQL, PostgreSQL)"
   ],
   "auth": {
     "methods": [
@@ -37,22 +40,25 @@
     "pytest-cov"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-03T17:56:36+01:00",
+  "lastActivity": "2026-02-17T16:17:29Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 0,
-    "contributors": 1,
+    "contributors": 0,
     "openIssues": 0
   },
   "tags": [
     "HTML parsing",
-    "BDPM",
     "ANSM",
-    "Medication",
-    "Data extraction",
-    "Python"
+    "infomedicament",
+    "data extraction",
+    "Python",
+    "S3",
+    "SQL",
+    "CSV",
+    "pediatrics"
   ]
 }
