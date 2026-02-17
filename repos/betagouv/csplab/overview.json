@@ -1,44 +1,43 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet vise à soutenir le travail des employeurs de la fonction publique en fournissant des outils et des services adaptés.",
+  "description": "Ce projet a pour objectif d'accompagner le travail des employeurs de la fonction publique. Il s'agit d'un monorepo organisé en services pour le développement et l'analyse de données.",
   "language": "Python",
   "features": [
-    "Ingestion de données",
-    "Analyse de CV",
-    "Recherche de corps",
-    "Traitement de documents",
-    "Vectorisation de documents",
-    "OCR"
+    "Ingestion d'offres d'emploi",
+    "Traitement de CV (OCR)",
+    "Recherche sémantique",
+    "Analyse de données",
+    "Gestion des concours"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "OpenAI",
+    "Docker",
+    "Docker Compose",
+    "Uv",
+    "Direnv",
     "Jupyter",
-    "pytest",
-    "ruff",
-    "uv",
-    "dependency-injector"
+    "elasticsearch"
   ],
   "components": [
     "Backend Django",
-    "Frontend (JavaScript)",
+    "Frontend (HTMX)",
     "Base de données PostgreSQL",
+    "Service Jupyter Notebook",
     "API REST",
-    "Services Jupyter Notebook",
-    "Microservices (TalentSoft, Legifrance)"
+    "Microservices (dev, notebook)"
   ],
   "auth": {
     "methods": [
-      "none"
+      "jwt"
     ]
   },
   "tests": [
     "pytest",
-    "pytest-cov",
-    "pytest-django"
+    "coverage"
   ],
   "workflows": [
     "chore",
@@ -46,14 +45,14 @@
     "notebook",
     "tycho"
   ],
-  "lastActivity": "2026-01-30T16:52:16+01:00",
+  "lastActivity": "2026-02-17T15:05:37+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 7,
+    "stars": 8,
     "forks": 1,
-    "contributors": 10,
+    "contributors": 11,
     "openIssues": 38
   },
   "tags": [
@@ -61,9 +60,9 @@
     "public-administration",
     "python",
     "django",
+    "data-analysis",
     "cv-processing",
-    "data-ingestion",
-    "llm",
-    "ocr"
+    "job-offers",
+    "monorepo"
   ]
 }

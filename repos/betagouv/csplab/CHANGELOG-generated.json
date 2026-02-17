@@ -1,0 +1,33 @@
+## Changelog : csplab (30 derniers jours)
+
+### Résumé
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'ingestion et du traitement des offres d'emploi et des CV, notamment via l'intégration de nouvelles sources de données et l'optimisation des processus existants. Des améliorations significatives ont également été apportées à l'interface utilisateur, en particulier pour le module "candidat" avec l'ajout de fonctionnalités de gestion de CV et de recherche. Enfin, des travaux techniques ont été réalisés pour moderniser l'infrastructure et améliorer la qualité du code.
+
+### Évolutions fonctionnelles
+- **Candidats :** Ajout d'une page de gestion des CV avec la possibilité de téléverser et de visualiser les CV (#53, #102).
+- **Candidats :** Implémentation d'une recherche simple de CV avec filtrage (#178, #2026-02-03T15:37:45+01:00).
+- **Correspondance CV/Offres :** Mise en place d'une fonctionnalité d'association entre les CV et les offres d'emploi (#167).
+- **Ingestion d'offres :** Amélioration de la gestion des erreurs lors du traitement des offres d'emploi (#164).
+- **Ingestion d'offres :** Possibilité de nettoyer et vectoriser les offres d'emploi pour une meilleure analyse (#166, #171).
+- **Ingestion d'offres :** Intégration d'un client pour collecter les offres d'emploi depuis Talentsoft (#95).
+
+### Évolutions techniques
+- **Authentification :** Sécurisation de toutes les API avec une authentification JWT (#143).
+- **Infrastructure :** Mise à jour de Django en version 6.0.1 et de psycopg en version 3.3.2 (#144).
+- **Outils :** Ajout de la Django Debug Toolbar en mode développement (#186).
+- **Refactoring :** Refactorisation des administrateurs pour rendre certains champs en lecture seule (#184).
+- **Tests :** Amélioration des tests pour l'ingestion d'offres (#130).
+- **Frontend :** Migration du CSS vers SCSS modulaire avec l'intégration de linters et de formatteurs (Prettier, Stylelint, djLint) (#121, #122).
+- **Configuration :** Séparation des configurations en fonction de l'environnement et configuration de la collecte des fichiers statiques (#159).
+- **Tooling :** Amélioration du CI pour vérifier le format du titre des PR (#190).
+- **Tooling :** Possibilité de définir des endpoints tiers personnalisés en mode développement (#188).
+
+### Autres changements
+- **Documentation :** Mise à jour du CHANGELOG.md pour les versions 0.1.1 et 0.1.2 (#87, #131).
+- **Exploration :** Exploration des DTOs Talentsoft pour l'ingestion d'offres (#124).
+- **Correction :** Correction d'un problème de "polling" qui causait un dépassement de capacité (#165).
+- **Correction :** Correction d'erreurs empêchant la sauvegarde des offres nettoyées en base de données (#168).
+- **Correction :** Correction d'un problème de configuration avec Django 6 (#151).
+- **Correction :** Correction de problèmes de localisation et de nettoyage des références (#154).
+- **Amélioration :** Ajout de CSP images pour les prochaines intégrations (#179).
+- **Amélioration :** Mise à jour des styles globaux pour le module "candidat" (#180, #182).
