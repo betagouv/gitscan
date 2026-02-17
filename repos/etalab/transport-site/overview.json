@@ -1,55 +1,55 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet est le dépôt du Point d'Accès National (NAP) français pour les données de mobilité. Il vise à centraliser et valoriser les données de mobilité hébergées sur data.gouv.fr.",
+  "description": "Ce dépôt héberge le Point d'Accès National (PAN) français pour les données de mobilité. Il met l'accent sur les données de mobilité hébergées sur data.gouv.fr, le portail français des données ouvertes.",
   "language": "Elixir",
   "features": [
-    "Gestion des données de transport",
-    "Validation de données (GTFS, NeTEx)",
-    "API pour l'accès aux données",
-    "Interface d'administration",
-    "Visualisation de données (carte)",
-    "Notifications et alertes",
-    "Recherche de données"
+    "Recherche",
+    "Validation de données",
+    "Import de données",
+    "Visualisation de données",
+    "Notifications",
+    "API",
+    "Espace producteur",
+    "Suivi des téléchargements"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Phoenix",
-    "Elixir",
     "PostgreSQL",
-    "JavaScript",
-    "Webpack",
+    "Ecto",
     "Leaflet",
-    "Vega",
-    "Swoosh"
+    "Webpack",
+    "Sass",
+    "JavaScript",
+    "Docker"
   ],
   "components": [
-    "Backend Elixir/Phoenix",
-    "Frontend JavaScript (React possible)",
+    "Frontend React",
+    "Backend Elixir",
     "Base de données PostgreSQL",
     "API REST",
-    "Serveur web",
-    "Workers pour les tâches asynchrones"
+    "Proxy",
+    "Workers",
+    "Outils de validation"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "data.gouv.fr"
     ]
   },
   "tests": [
-    "Mix tests",
     "ExUnit",
-    "Swoosh tests"
+    "Rambo"
   ],
   "workflows": [
-    "CI/CD (CircleCI)",
-    "Tests automatisés",
-    "Linting"
+    "CI/CD (CircleCI)"
   ],
-  "lastActivity": "2026-01-29T14:44:58Z",
+  "lastActivity": "2026-02-12T17:27:21Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -61,14 +61,14 @@
   },
   "tags": [
     "transport",
-    "mobility",
-    "data",
-    "opendata",
-    "GTFS",
-    "NeTEx",
-    "API",
+    "mobilité",
+    "données ouvertes",
+    "data.gouv.fr",
     "Elixir",
     "Phoenix",
-    "PostgreSQL"
+    "GTFS",
+    "NeTEx",
+    "validation de données",
+    "API"
   ]
 }
