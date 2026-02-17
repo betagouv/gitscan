@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/metiers-numeriques",
   "name": "metiers-numeriques",
-  "description": "Ce projet vise à recenser et présenter les métiers du numérique au sein de l'État, ainsi que les offres d'emploi associées. Il permet aux candidats de découvrir les opportunités et aux recruteurs de trouver des profils qualifiés.",
+  "description": "Ce site web présente les métiers du numérique au sein de l'État et les offres d'emploi associées. Il vise à attirer de nouveaux talents et à valoriser les compétences numériques de l'administration.",
   "language": "TypeScript",
   "features": [
-    "Recherche d'offres d'emploi",
-    "Gestion des candidatures",
+    "Recherche d'emplois",
+    "Présentation des métiers",
     "Espace candidat",
+    "Gestion des offres d'emploi (pour les administrateurs)",
     "Gestion des institutions",
-    "Gestion des métiers",
-    "Publication d'offres d'emploi",
-    "Gestion des contacts et recruteurs"
+    "Gestion des contacts",
+    "Gestion des profils utilisateurs"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,15 +18,16 @@
     "React",
     "GraphQL",
     "Prisma",
+    "@apollo/client",
     "styled-components",
-    "@apollo/client"
+    "bcryptjs"
   ],
   "components": [
     "Frontend React",
     "API GraphQL",
     "Base de données PostgreSQL",
-    "Composants d'interface utilisateur (UI)",
-    "Workers (bot, pep)"
+    "Microservices (workers)",
+    "Composants réutilisables (atoms, molecules, organisms)"
   ],
   "auth": {
     "methods": [
@@ -34,9 +35,7 @@
       "oauth2",
       "session"
     ],
-    "providers": [
-      "NextAuth"
-    ]
+    "providers": []
   },
   "tests": [
     "Jest",
@@ -44,8 +43,8 @@
     "Cypress"
   ],
   "workflows": [
-    "Check",
-    "CodeQL Analysis"
+    "check.yml",
+    "codeql-analysis.yml"
   ],
   "lastActivity": "2023-06-14T10:02:47Z",
   "status": "active",
@@ -58,12 +57,13 @@
     "openIssues": 14
   },
   "tags": [
-    "GraphQL",
-    "Next.js",
-    "Prisma",
-    "React",
-    "Emploi",
-    "Numérique",
-    "État"
+    "emploi",
+    "numérique",
+    "administration",
+    "recrutement",
+    "métiers",
+    "graphql",
+    "react",
+    "typescript"
   ]
 }
