@@ -1,30 +1,30 @@
 {
   "url": "https://github.com/betagouv/mon-indemnisation-justice",
   "name": "mon-indemnisation-justice",
-  "description": "Plateforme de gestion des demandes d'indemnisation en précontentieux au Ministère de la Justice.",
+  "description": "Plateforme de gestion des demandes d'indemnisation en précontentieux au Ministère de la Justice. Elle vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation.",
   "language": "PHP",
   "features": [
-    "Gestion des dossiers d'indemnisation",
-    "Déclaration de bris de porte",
-    "Gestion des agents",
-    "Génération de documents (courriers, arrêts de paiement)",
+    "Gestion des demandes d'indemnisation",
+    "Téléversement de pièces jointes",
+    "Gestion des brouillons de déclaration",
     "Suivi de l'état des dossiers",
-    "Téléversement de pièces jointes"
+    "Génération de documents (arrêtés, courriers)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Symfony",
-    "Doctrine",
     "API Platform",
-    "Twig",
+    "Doctrine",
+    "PHPUnit",
+    "Playwright",
     "React",
     "Vite"
   ],
   "components": [
     "Backend Symfony",
     "Frontend React",
-    "Base de données PostgreSQL",
     "API REST",
+    "Base de données PostgreSQL",
     "Docker"
   ],
   "auth": {
@@ -33,14 +33,13 @@
       "session"
     ],
     "providers": [
-      "FranceConnect",
-      "ProConnect"
+      "FranceConnect"
     ]
   },
   "tests": [
     "PHPUnit",
     "Playwright",
-    "Vitest"
+    "Tests end-to-end"
   ],
   "workflows": [
     "build-docker-image.yml",
@@ -49,14 +48,14 @@
     "merge-to-prod.yml",
     "test.yml"
   ],
-  "lastActivity": "2026-01-30T16:04:38+01:00",
+  "lastActivity": "2026-02-17T17:55:50+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 0,
-    "contributors": null,
+    "contributors": 1,
     "openIssues": 0
   },
   "tags": [
