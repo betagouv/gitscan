@@ -1,49 +1,47 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant de gérer les prélèvements et les analyses dans le domaine agroalimentaire. Elle offre un suivi complet des données, de la planification à la publication des résultats.",
+  "description": "Maestro est une application web permettant de gérer les prélèvements et les analyses. Elle offre une interface pour les utilisateurs, les coordinateurs et les laboratoires.",
   "language": "TypeScript",
   "features": [
     "Gestion des prélèvements",
-    "Gestion des analyses",
-    "Suivi des programmations",
+    "Gestion des programmations",
     "Gestion des utilisateurs",
+    "EDI Sacha",
+    "Connexion SFTP",
     "Génération de rapports",
-    "Gestion des documents"
+    "Gestion des analyses"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Express",
+    "React",
     "PostgreSQL",
-    "Knex",
-    "nodemailer",
-    "imapflow",
-    "openapi-explorer",
-    "vitest"
+    "Node.js",
+    "KnexJS",
+    "vitest",
+    "Storybook",
+    "S3",
+    "Browserless"
   ],
   "components": [
-    "Backend Node.js",
     "Frontend React",
+    "Backend Node.js",
     "Base de données PostgreSQL",
     "API REST",
-    "Microservices (Browserless, S3mock, Maildev)"
+    "Microservices (Browserless, Maildev, S3mock)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
-    ]
+      "email-password"
+    ],
+    "providers": null
   },
   "tests": [
     "Vitest",
     "Jest"
   ],
-  "workflows": [
-    "codeql-analysis.yml",
-    "github-actions.yml",
-    "release.yml"
-  ],
-  "lastActivity": "2026-01-30T23:02:12+00:00",
+  "workflows": null,
+  "lastActivity": "2026-02-17T16:27:51+00:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -51,14 +49,16 @@
     "stars": 0,
     "forks": 0,
     "contributors": null,
-    "openIssues": 15
+    "openIssues": 14
   },
   "tags": [
     "prélèvements",
     "analyses",
-    "agroalimentaire",
-    "gestion de données",
     "administration",
-    "web application"
+    "gestion",
+    "web",
+    "typescript",
+    "react",
+    "postgresql"
   ]
 }

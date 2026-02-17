@@ -1,0 +1,44 @@
+## Changelog : maestro (30 derniers jours)
+
+### Résumé
+Cette période a été marquée par de nombreuses corrections et améliorations concernant la gestion des prélèvements, des programmations et des utilisateurs. Des ajustements ont été apportés pour améliorer l'expérience utilisateur, notamment dans les filtres de prélèvement, l'affichage des informations et la gestion des droits d'accès. Des corrections ont également été apportées concernant l'EDI Sacha et l'envoi de DAI.
+
+### Évolutions fonctionnelles
+- Suppression des droits de création et de modification de prélèvements pour les coordinateurs départementaux (#534).
+- Suppression des droits de saisie d'un prélèvement pour un coordinateur régional (#558).
+- Amélioration des filtres de prélèvement avec le remplacement des champs de sélection par des zones de recherche (#515).
+- Affichage plus précis des informations de programmation, notamment les pourcentages de réalisation (#520, #560).
+- Correction de l'affichage des échantillons (#550, #0b26d99).
+- Ajout de la possibilité de mettre en pause l'envoi des DAI (#555).
+- Correction du contenu et des destinataires des notifications lors de la validation de la programmation (#565, #4f2da42).
+- Ajout de commémoratifs optionnels pour Sacha (#562, #cbd8b2f).
+- Correction de l'affichage des prélèvements pour les préleveurs rattachés à des abattoirs (#542, #69d4cbc, #0919dd0).
+- Correction de l'affichage des indicateurs de la vue tableau sur la vue carte (#514, #518).
+- Correction du champ Échantillonnage (#541).
+- Correction du champ type de production et type de culture pour la campagne 2026 (#559).
+
+### Évolutions techniques
+- Utilisation de types spécifiques pour distinguer l'âge en mois et l'âge en jours dans la gestion des prélèvements (#522, #e40733e).
+- Rattachement des analyses à l'échantillon et non au prélèvement (#553, #ca253bf).
+- Correction de l'utilisation de la colonne LMR dans Capinov (#564, #c554ad3).
+- Suppression des fichiers du SFTP après traitement dans Sacha (#544, #585a47f).
+- Mise à jour de la référence Inovalys (#561, #b4145ae).
+- Augmentation du nombre de connexions possibles à la base de données PostgreSQL (#649d171).
+- Amélioration de la gestion des connexions avec la fonctionnalité de masquage (#5ba0e477).
+- Correction de l'affichage des échantillons (#5c99b49).
+
+### Autres changements
+- Mise à jour de plusieurs dépendances npm (Knip, aws-sdk, fast-xml-parser, lodash, swc, workbox) (#563, #556, #528, #538, #0b9cf98).
+- Amélioration du CI/CD pour ne plus installer toutes les dépendances pour les releases (#552, #9d42304).
+- Correction de fautes d'orthographe (#d11da60, #0b26d99, #12ef9a0).
+- Ajout du référentiel PPV 2026 (#523, #e1dbdf7, #03792d0).
+- Correction de tests (#4235ece).
+- Respect des recommandations de semantic-release (#551).
+- Ajout de la version du référentiel Prescripteur pour Sacha (#540).
+- Correction du DAP (labos des échantillons et adresse d'envoi au labo trop longue) (#00005fc).
+- Ajout d'une ligne pour les consignes de répartition dans la programmation (#417f5da).
+- Correction de l'unicité pour un plan de surveillance (#533, #d7644b9).
+- Initialisation des échantillons en fonction de la programmation (#531, #3342bc5).
+- Suppression du filtre départements pour les coordinateurs départementaux et les préleveurs DAOA (#535, #0fca6c2).
+- Correction de la gestion des notifications de commentaires pour les plans (#555b5ca).
+- Suppression de l'obligation du numéro de scellé pour le plan de surveillance (#524, #f429230, #37f4d6a).
