@@ -1,35 +1,34 @@
 {
   "url": "https://github.com/betagouv/jeveuxaider-back",
   "name": "jeveuxaider-back",
-  "description": "Backend Laravel pour la plateforme 'Je veux aider'. Ce projet gère les fonctionnalités côté serveur pour connecter les citoyens aux opportunités de bénévolat et d'engagement civique.",
+  "description": "Backend Laravel pour la plateforme \"Je veux aider\". Ce projet gère les fonctionnalités côté serveur, incluant la gestion des missions, des utilisateurs et des organisations.",
   "language": "PHP",
   "features": [
-    "Gestion des missions de bénévolat",
-    "Gestion des structures",
+    "Gestion des missions",
     "Gestion des utilisateurs",
-    "Notifications",
+    "Gestion des organisations",
     "Recherche",
-    "Export de données",
-    "API"
+    "Notifications",
+    "API",
+    "Authentification",
+    "Export de données"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Laravel",
     "PHP",
-    "PostgreSQL",
+    "MySQL",
     "Redis",
     "Algolia",
     "Sendinblue",
-    "Sentry"
+    "S3"
   ],
   "components": [
     "API REST",
-    "Base de données PostgreSQL",
-    "Serveur d'applications PHP",
-    "Queue de tâches (Redis)",
-    "Système de cache (Redis)",
-    "Service de notification (Sendinblue)",
-    "Monitoring (Sentry)"
+    "Base de données MySQL",
+    "Serveur d'application PHP",
+    "Queue de tâches",
+    "Cache Redis"
   ],
   "auth": {
     "methods": [
@@ -44,7 +43,7 @@
   "workflows": [
     "laravel.yml"
   ],
-  "lastActivity": "2026-01-28T16:25:48+01:00",
+  "lastActivity": "2026-02-17T15:45:46+00:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -52,15 +51,15 @@
     "stars": 3,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 3
+    "openIssues": 4
   },
   "tags": [
     "laravel",
     "php",
+    "missions",
+    "volontariat",
     "bénévolat",
-    "engagement civique",
     "api",
-    "administration",
-    "franceconnect"
+    "backend"
   ]
 }

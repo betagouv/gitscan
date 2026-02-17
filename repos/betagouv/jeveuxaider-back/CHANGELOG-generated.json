@@ -1,0 +1,38 @@
+## Changelog : jeveuxaider-back (30 derniers jours)
+
+### Résumé
+Ce changelog présente les améliorations apportées au backend de la plateforme "Je veux aider" au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des optimisations de performance, l'ajout de nouvelles fonctionnalités comme le redémarrage de l'application frontale via un scheduler, et des améliorations des notifications Slack. Des ajustements ont également été faits pour améliorer la précision des statistiques et la gestion des missions.
+
+### Évolutions fonctionnelles
+
+- Ajout d'un scheduler pour redémarrer l'application frontale (#128).
+- Amélioration des notifications Slack avec des composants Block Kit (#126).
+- Correction d'un bug empêchant l'envoi correct des notifications par email (#127).
+- Ajout d'un endpoint spécifique pour les statistiques de février pour l'opération "Février pour protéger" (#119).
+- Amélioration de la suggestion de titres pour les missions (#116).
+- Ajout de notifications Slack pour les suggestions de titres de missions.
+- Correction de l'affichage de la photo dans les missions similaires (#118).
+- Mise à jour de l'email du destinataire des notifications du réseau (de Nivine à Augusta).
+
+### Évolutions techniques
+
+- Refactorisation de la gestion des notifications Slack avec l'introduction d'un trait `HasSlackNotification` (#125).
+- Optimisation des requêtes pour le tableau de bord des statistiques, notamment pour les organisations et missions actives.
+- Optimisation de la méthode `overviewPlaces` dans `NumbersController` et nettoyage du code inutilisé.
+- Correction de la gestion des valeurs nulles dans les statistiques et ajustement du paramètre de taille pour les statistiques de trafic.
+- Mise à jour des routes des statistiques pour refléter les nouvelles méthodes d'évolution et marquage des anciennes routes pour suppression.
+- Refactorisation de la logique d'exclusion des missions dans le service `MissionRecommendation`.
+- Amélioration de la gestion des dates et refactorisation des requêtes de missions dans `StatisticsPublicController`.
+- Simplification des filtres dans `ActivityLogController` pour une recherche plus précise des logs.
+- Suppression de relations inutiles dans `MissionController` (#122).
+- Correction du filtre d'état dans `UserController` pour une correspondance exacte avec les requêtes de participation.
+- Mise à jour de l'endpoint de l'API Adresse et de la documentation associée.
+
+### Autres changements
+
+- Correction de la formulation d'un message de notification dans `MissionSuggestEnhanceText`.
+- Correction d'un message de raison utile dans `MissionSuggestEnhanceTextLiked`.
+- Mise à jour de la version de `psy/psysh` à 0.12.19 (#121).
+- Mise à jour de PHPUnit et de ses dépendances (#120).
+- Correction de la durée du filtre des missions envoyées dans `MissionRecommendation`.
+- Correction du nom de la variable dans `MissionRecommendation`.
