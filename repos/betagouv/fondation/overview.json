@@ -4,68 +4,61 @@
   "description": "Donner au CSM (Conseil Supérieur de la Magistrature) les moyens d'un travail efficace et de qualité afin de concourir à la continuité du fonctionnement de l'institution judiciaire et de contribuer à une RH vertueuse du corps de la magistrature.",
   "language": "TypeScript",
   "features": [
-    "Gestion des affectations",
+    "Gestion des observations",
     "Gestion des fichiers",
-    "Gestion des utilisateurs",
-    "Import de données",
-    "Génération de rapports",
-    "Commentaires et observations",
-    "Gestion des sessions"
+    "Gestion des affectations",
+    "Suivi des dossiers",
+    "Gestion des informations",
+    "Authentification utilisateur"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "NestJS",
     "React",
+    "NestJS",
     "Prisma",
     "Zod",
-    "lodash"
+    "axios",
+    "bcrypt",
+    "date-fns",
+    "react-hook-form",
+    "react-query",
+    "react-table"
   ],
   "components": [
     "Frontend React",
-    "API REST (NestJS)",
-    "Base de données PostgreSQL (Prisma)",
-    "Microservices",
-    "Authentification (JWT)",
+    "API REST NestJS",
+    "Base de données PostgreSQL",
     "S3 Storage"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
-    ],
-    "providers": []
+      "email-password"
+    ]
   },
   "tests": [
     "Jest",
-    "Cypress",
-    "Vitest"
+    "Vitest",
+    "Playwright"
   ],
   "workflows": [
-    "build-and-upload-api-artifact.yml",
-    "build-and-upload-client-artifact.yml",
-    "continuous-delivery.yml",
-    "deploy-production.yml",
-    "deploy-to-scalingo.yml",
-    "integration-checks.yml",
-    "validates-pr.yml"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-30T10:23:46Z",
+  "lastActivity": "2026-02-17T13:23:12+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 5,
-    "forks": 1,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 3
+    "openIssues": null
   },
   "tags": [
     "administration",
     "magistrature",
-    "gestion",
+    "gestion de dossiers",
     "typescript",
     "nestjs",
-    "react",
-    "postgresql"
+    "react"
   ]
 }
