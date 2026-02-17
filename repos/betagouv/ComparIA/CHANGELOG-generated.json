@@ -1,0 +1,37 @@
+## Changelog : ComparIA (30 derniers jours)
+
+### Résumé
+Ce mois-ci, ComparIA a connu une refonte importante de son backend, avec une migration vers FastAPI et une réorganisation de l'architecture pour une meilleure maintenabilité et performance. De nouveaux modèles d'IA ont été ajoutés et les données de classement ont été mises à jour. L'interface utilisateur a également bénéficié d'améliorations, notamment une meilleure gestion des erreurs et une intégration plus robuste avec le backend.
+
+### Évolutions fonctionnelles
+- Ajout des modèles Qwen 3.5 397B et MiniMax M2.5 (#282).
+- Ajout du modèle Arcee Trinity Large et mise à jour des informations pour Kimi K2.5 (#287).
+- Mise à jour des informations concernant les licences des modèles Apertus et OLMo, les qualifiant désormais comme open source (#281, #291).
+- Amélioration de la gestion des erreurs et affichage dans l'interface utilisateur.
+- Correction d'un bug où la troncature de la sortie était interprétée comme une erreur de contexte trop long.
+- Correction d'un problème où le modèle était changé en cas de timeout lors de la première interaction.
+- Mise à jour des données de classement des modèles.
+- Ajout du modèle Qwen3-Coder-Next.
+
+### Évolutions techniques
+- Refonte complète du backend avec migration vers FastAPI.
+- Réorganisation de l'architecture du backend pour une meilleure maintenabilité.
+- Utilisation de Pydantic pour la validation des données et la sérialisation.
+- Amélioration de la gestion des sessions et du streaming SSE.
+- Optimisation des fichiers Docker pour une meilleure performance et une taille réduite.
+- Suppression de Sentry comme dépendance directe, configuration simplifiée.
+- Mise à jour des dépendances Python et JavaScript.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la configuration et de la gestion des variables d'environnement.
+- Utilisation de `uv` pour lancer le backend.
+- Ajout de logging plus détaillé.
+- Intégration de linters et de formatteurs de code (mypy, isort, autoflake).
+
+### Autres changements
+- Mise à jour des traductions via Weblate (#247).
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code obsolète.
+- Correction de problèmes d'import et de typage.
+- Amélioration de la gestion des erreurs et des logs.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Mise à jour des schémas JSON pour les modèles d'IA.
