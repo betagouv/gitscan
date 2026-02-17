@@ -1,27 +1,30 @@
 {
   "url": "https://github.com/betagouv/pitchou",
   "name": "pitchou",
-  "description": "Pitchou permet de mieux contrôler les dérogations d'espèces protégées. L'application vise à faciliter la gestion et le suivi de ces dérogations pour les instructeurs.",
+  "description": "Pitchou permet de mieux contrôler les dérogations d'espèces protégées. Il facilite la gestion des dossiers et des avis d'expert, et assure le suivi des données relatives aux dérogations.",
   "language": "JavaScript",
   "features": [
-    "Gestion des dérogations d'espèces protégées",
-    "Saisie des espèces",
+    "Gestion des dossiers de dérogation",
+    "Suivi des avis d'expert",
     "Synchronisation avec l'API Démarche Numérique",
-    "Gestion des avis d'expert",
     "Import de données",
-    "Suivi des dossiers"
+    "Génération de rapports",
+    "Gestion des utilisateurs",
+    "Interface de saisie d'espèces protégées"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
+    "Fastify",
+    "Knex.js",
     "Svelte",
-    "knex",
-    "fastify"
+    "pg",
+    "odfjs"
   ],
   "components": [
-    "Front-end Svelte",
-    "Back-end Node.js",
+    "Frontend Svelte",
+    "Backend Node.js",
     "Base de données PostgreSQL",
     "API REST",
     "Docker"
@@ -31,12 +34,14 @@
       "none"
     ]
   },
-  "tests": "Playwright",
-  "workflows": [
-    "qualité-de-code.yml",
-    "tests.yml"
+  "tests": [
+    "Playwright"
   ],
-  "lastActivity": "2026-01-29T17:01:46+00:00",
+  "workflows": [
+    "Qualité de code",
+    "Tests"
+  ],
+  "lastActivity": "2026-02-16T17:12:39+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -44,16 +49,17 @@
     "stars": 1,
     "forks": 2,
     "contributors": null,
-    "openIssues": 48
+    "openIssues": 50
   },
   "tags": [
     "dérogations",
     "espèces protégées",
     "biodiversité",
-    "administration",
     "environnement",
-    "javascript",
-    "svelte",
-    "postgresql"
+    "administration",
+    "API",
+    "PostgreSQL",
+    "Svelte",
+    "Node.js"
   ]
 }
