@@ -1,0 +1,34 @@
+## Changelog : resorption-bidonvilles (30 derniers jours)
+
+### Résumé
+Cette période a été marquée par d'importantes améliorations de l'application, notamment autour de la gestion des logs de connexion, de la recherche et de l'affichage des données. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
+
+### Évolutions fonctionnelles
+- Ajout de la gestion des logs de connexion : visualisation, filtrage et purge des logs. (#2606)
+- Amélioration de la recherche : ajout de la recherche par ID d'action, localisation géographique et structures opérateurs. (#2584, #2606)
+- Possibilité de mettre à jour le champ "Objectif résorption" d'un site. (#2603)
+- Amélioration de l'affichage des points d'intérêt sur la carte. (#2598)
+- Ajout d'indicateurs de performance pour mesurer la latence de la carte. (#2598)
+- Ajout de l'icône "ri-key-fill" pour la gestion des accès. (#2606)
+- Amélioration de l'affichage des informations et ajout de la durée prévue de blocage de compte et d'attente de l'email.
+- Intégration de la librairie de composants Dsfr.
+- Ajout du taux de MAJ des actions à l'affichage.
+
+### Évolutions techniques
+- Migration de `isPlural` vers des utilitaires.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des performances de la carte en limitant les manipulations du DOM et en mettant en cache les données. (#2598)
+- Amélioration du typage du code.
+- Mise à jour des dépendances.
+- Ajout de tests unitaires.
+- Sécurisation de la requête SQL pour la recherche. (#2606)
+- Ajout d'un rate limiter pour bloquer les tentatives de connexion après 3 échecs consécutifs. (#2606)
+
+### Autres changements
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Suppression de commentaires inutiles et de code mort.
+- Amélioration de la documentation.
+- Correction de l'isolation des tests unitaires.
+- Suppression de "defineProps".
+- Correction de la police utilisée dans le PDF.
+- Correction de l'URL pour éviter le "/" en fin d'URL.

@@ -1,40 +1,39 @@
 {
-  "url": "https://github.com/mtes-mct/resorption-bidonvilles",
+  "url": "https://github.com/MTES-MCT/resorption-bidonvilles",
   "name": "resorption-bidonvilles",
-  "description": "Ce projet vise à agir pour la résorption des bidonvilles. Il s'agit d'une plateforme permettant de gérer et de suivre les actions liées à la résorption des bidonvilles.",
-  "language": "JavaScript",
+  "description": "Ce projet vise à agir pour résorber les bidonvilles. Il s'agit d'une plateforme permettant de suivre et de gérer les actions liées à la résorption des bidonvilles.",
+  "language": "TypeScript",
   "features": [
-    "Gestion des sites",
-    "Suivi des actions",
-    "Gestion des intervenants",
-    "Export de données",
+    "Gestion des actions",
+    "Suivi des sites",
     "Gestion des utilisateurs",
-    "Notifications Mattermost"
+    "Export de données",
+    "Cartographie",
+    "Recherche"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "VueJS",
     "NodeJS",
     "Express",
-    "VueJS",
-    "Yarn",
-    "Dsfr"
+    "@gouvfr/dsfr"
   ],
   "components": [
     "Frontend VueJS",
     "API REST (NodeJS/Express)",
-    "Base de données PostgreSQL",
-    "Workspaces (monorepo)"
+    "Base de données (non spécifiée)",
+    "Cartographie"
   ],
   "auth": {
     "methods": [
       "email-password"
     ]
   },
-  "tests": "Jest, Pytest",
+  "tests": "Tests unitaires (Pytest, Jest)",
   "workflows": [
     "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-22T17:15:47+01:00",
+  "lastActivity": "2026-02-12T17:13:02+01:00",
   "status": "active",
   "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,
