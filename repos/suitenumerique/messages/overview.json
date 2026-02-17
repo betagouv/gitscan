@@ -1,12 +1,12 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Messages est une boîte de réception collaborative pour La Suite territoriale. Il permet aux équipes de collaborer sur les e-mails via des boîtes de réception partagées ou personnelles.",
+  "description": "Messages est une boîte de réception collaborative pour La Suite territoriale. Elle permet aux équipes de collaborer sur les e-mails via des boîtes de réception partagées ou personnelles.",
   "language": "Python",
   "features": [
     "Réception, rédaction et envoi d'e-mails",
     "Fil de discussion intelligent",
-    "Téléchargement et envoi de pièces jointes",
+    "Téléchargement et téléchargement de pièces jointes",
     "Importation d'e-mails depuis MBOX ou IMAP",
     "Recherche en texte intégral avec filtres avancés",
     "Traitement asynchrone des e-mails (antispam, antivirus)",
@@ -14,70 +14,63 @@
     "Widgets intégrables pour les commentaires",
     "Partage de boîtes de réception",
     "Partage de fils de discussion",
-    "Messages privés (à venir)",
-    "Édition de texte en temps réel (à venir)"
+    "Invitations de calendrier"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django Rest Framework",
+    "Django REST Framework",
+    "Celery",
+    "Redis",
+    "PostgreSQL",
+    "OpenSearch",
+    "Keycloak",
     "Next.js",
     "BlockNote.js",
-    "Postfix",
-    "Redis",
-    "Celery",
-    "OpenAI",
-    "drf-spectacular",
-    "opensearch-py"
+    "drf-spectacular"
   ],
   "components": [
-    "Frontend React (Next.js)",
-    "API REST (Django Rest Framework)",
+    "MTA basé sur Postfix",
+    "MDA personnalisé basé sur Django Rest Framework",
+    "Frontend Next.js",
     "Base de données PostgreSQL",
-    "MTA (Message Transfer Agent) basé sur Postfix",
-    "MDA (Message Delivery Agent) personnalisé",
-    "File Storage (Drive)",
-    "Queue de tâches (Celery)",
-    "Cache (Redis)",
-    "Index de recherche (OpenSearch)"
+    "Cache Redis"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": [
-    "Pytest",
-    "Vitest",
-    "Playwright"
+    "pytest"
   ],
   "workflows": [
-    "docker-publish.yml",
-    "messages.yml"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-31T22:34:03+00:00",
+  "lastActivity": "2026-02-17T18:30:13+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 104,
-    "forks": 14,
+    "stars": 162,
+    "forks": 17,
     "contributors": null,
     "openIssues": 95
   },
   "tags": [
     "email",
-    "collaboration",
     "django",
-    "react",
+    "rest api",
+    "collaboration",
     "postfix",
     "imap",
     "mbox",
-    "ai",
-    "messaging"
+    "keycloak",
+    "opensearch",
+    "ai"
   ]
 }
