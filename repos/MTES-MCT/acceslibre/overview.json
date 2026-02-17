@@ -1,40 +1,44 @@
 {
-  "url": "https://github.com/mtes-mct/acceslibre",
+  "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "La plateforme collaborative pour l’accessibilité. Ce projet vise à référencer l'accessibilité des Établissements Recevant du Public (ERP) en France.",
+  "description": "Plateforme collaborative pour l’accessibilité des établissements recevant du public en France. Elle vise à référencer et améliorer l'accessibilité de ces lieux pour tous.",
   "language": "Python",
   "features": [
-    "Référencement de l'accessibilité des ERP",
-    "Contribution collaborative",
-    "Recherche",
-    "Gestion des utilisateurs",
+    "Référencement des ERP",
+    "Gestion des contributions",
     "Import de données",
-    "Export de données",
-    "Notifications",
-    "API"
+    "API",
+    "Interface utilisateur pour la gestion de l'accessibilité",
+    "Recherche",
+    "Géolocalisation",
+    "Notifications"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "PostgreSQL",
-    "Redis",
-    "celery",
     "djangorestframework",
+    "PostgreSQL",
+    "redis",
+    "celery",
+    "pandas",
+    "requests",
+    "@gouvfr/dsfr",
     "leaflet",
-    "panoramax",
     "sentry-sdk"
   ],
   "components": [
     "Backend Django",
-    "Frontend JavaScript",
+    "Frontend (probablement JavaScript/React)",
     "Base de données PostgreSQL",
     "API REST",
-    "Serveur Redis",
-    "Serveur Celery"
+    "Serveur Celery",
+    "Cache Redis"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "session",
+      "mfa"
     ]
   },
   "tests": [
@@ -44,7 +48,7 @@
     "lint",
     "codeql-analysis"
   ],
-  "lastActivity": "2026-01-30T04:16:50Z",
+  "lastActivity": "2026-02-17T16:55:17Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -52,18 +56,16 @@
     "stars": 18,
     "forks": 6,
     "contributors": null,
-    "openIssues": 18
+    "openIssues": 10
   },
   "tags": [
-    "a11y",
-    "accessibility",
-    "django",
-    "france",
-    "geodjango",
-    "gouv-fr",
-    "python",
-    "ERP",
     "accessibilité",
-    "données ouvertes"
+    "ERP",
+    "France",
+    "Django",
+    "géolocalisation",
+    "données ouvertes",
+    "inclusion",
+    "handicap"
   ]
 }
