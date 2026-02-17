@@ -1,0 +1,43 @@
+## Changelog : jeveuxaider-front (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de "Je veux aider" se concentrent sur l'amélioration de l'expérience utilisateur, notamment en corrigeant des bugs et en optimisant les performances. Des refactorings importants ont été effectués pour moderniser le code et préparer le projet à de futures évolutions, avec une attention particulière portée à la gestion de la mémoire et à l'intégration de nouvelles fonctionnalités comme l'IA pour la suggestion de titres de missions.
+
+### Évolutions fonctionnelles
+- Amélioration de la validation du numéro RNA pour autoriser les caractères alphanumériques (#267).
+- Ajout de badges indiquant les inscriptions complètes et clôturées sur les cartes missions (#260).
+- Refonte des espaces tableau de bord et profil (#259).
+- Refonte des statistiques d'administration (#258).
+- Ajout d'une page de quiz pour l'opération "Février pour protéger" (#240).
+- Amélioration de l'interface et ajout d'alertes pour les utilisateurs inactifs (#241).
+- Amélioration de la suggestion de titres de missions grâce à l'IA (#207).
+- Ajout de statistiques optionnelles pour les organisations et réseaux (#248).
+- Amélioration de la gestion des numéros de téléphone lors de la validation des missions (#248).
+
+### Évolutions techniques
+- Mise à jour de Nuxt à la version 3.21.1 (#264).
+- Refactorisation de l'intégration de Plausible Analytics dans un plugin client (#265).
+- Refactorisation de l'API Engagement pour utiliser le nouveau fichier `api.ts` (#261).
+- Correction d'un problème de chargement de `auth-init` avant le plugin API (#256).
+- Suppression de MixinUsetiful et implémentation du plugin Usetiful (#229).
+- Suppression de Hotjar mixin et implémentation du plugin Hotjar (#227).
+- Utilisation de `#app` au lieu de `#imports` pour les imports de `useRoute` et `useRouter` (#256).
+- Suppression de la fonction `maximum-scale` dans la configuration de Nuxt pour améliorer l'accessibilité (#236).
+- Correction d'une fuite de mémoire en rétrogradant Vue à la version 3.5.13 et en mettant à jour les dépendances associées (#225).
+- Suppression du hook de build manifest pour simplifier le processus de build (#233).
+- Ajout de nettoyages de timeouts dans divers composants pour prévenir les fuites de mémoire (#230, #226).
+- Amélioration de la gestion des erreurs et suppression des logs de console inutiles (#223).
+- Refactorisation de `useFetcher` pour simplifier les options de requête et la gestion des erreurs (#243).
+- Utilisation directe des stores dans les composants au lieu de `$stores` (#235).
+- Mise à jour de la version de Node.js à la version 24 (#220).
+
+### Autres changements
+- Ajout d'un fichier `.nvmrc` pour spécifier la version de Node.js (#255).
+- Suppression de sections API Engagement commentées dans le menu latéral et le menu secondaire des statistiques (#252).
+- Suppression d'imports inutilisés et de code commenté dans `useAlgoliaQueryBuilder` (#250).
+- Ajout d'une transformation `emptyToNull` pour la validation des chaînes de caractères (#248).
+- Correction de l'URL de la route du tableau de bord dans `nuxt.config` (#247).
+- Suppression de l'importation inutile de `router` dans `BlocBanner` (#226).
+- Correction d'un problème de référence dans `CardMissionPreview` (#224).
+- Correction de la récupération de miniatures de missions (#222).
+- Mise à jour de diverses dépendances (qs, axios, devalue, tar, h3, lodash, lodash-es) (#267, #263, #239, #238, #237, #223, #222).
