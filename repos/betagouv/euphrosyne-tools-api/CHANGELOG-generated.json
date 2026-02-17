@@ -1,0 +1,32 @@
+## Changelog : euphrosyne-tools-api (30 derniers jours)
+
+### Résumé
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des données et la modernisation de l'infrastructure. Une nouvelle fonctionnalité permet désormais de stocker les données des projets sur Azure Blob Storage. De plus, l'environnement de développement a été mis à jour vers Python 3.14 et les dépendances ont été actualisées pour bénéficier des dernières corrections et améliorations de sécurité.
+
+### Évolutions fonctionnelles
+- Implémentation d'un client Azure Blob Storage pour la gestion des données projets (#675).
+- Ajout d'une interface client abstraite pour la gestion des données, facilitant l'ajout de futurs supports de stockage (#654).
+
+### Évolutions techniques
+- Mise à jour de l'environnement Python vers la version 3.14 (#695).
+- Remplacement de `azure-mgmt-resource` par `azure-mgmt-resource-deployments` (#689).
+- Mises à jour de plusieurs dépendances :
+    - `azure-mgmt-compute` (37.1.0 -> 37.2.0) (#687)
+    - `azure-mgmt-storage` (23.1.0 -> 24.0.0) (#657)
+    - `azure-identity` (1.25.0 -> 1.25.1, puis 1.25.2) (#660, #683)
+    - `fastapi` (0.128.0 -> 0.128.5 -> 0.129.0) (#688, #704)
+    - `uvicorn[standard]` (0.38.0 -> 0.40.0) (#690)
+    - `sentry-sdk[fastapi]` (2.42.1 -> 2.49.0 -> 2.50.0 -> 2.51.0 -> 2.52.0) (#656, #672, #680, #686)
+    - `pytest` (8.4.2 -> 9.0.2) (#658)
+    - `pytest-asyncio` (1.2.0 -> 1.3.0) (#671)
+    - `python-dotenv` (1.1.1 -> 1.2.1) (#655)
+    - `types-requests` (2.32.4.20250913 -> 2.32.4.20260107) (#659)
+    - `pydantic-settings` (2.10.1 -> 2.12.0 -> 2.13.0) (#679, #703)
+    - `ruff` (0.14.0 -> 0.14.14 -> 0.15.1) (#682, #706)
+    - `mypy` (1.18.2 -> 1.19.1) (#681)
+    - `stream-zip` (0.0.83 -> 0.0.84) (#702)
+
+### Autres changements
+- Application du formateur de code Black pour améliorer la lisibilité du code (#673).
+- Ajout du fichier `.python-version` et suppression du fichier `runtime.txt` pour une meilleure gestion de la version de Python (#693).
+- Mise à jour des workflows CI/CD pour utiliser Python 3.14 (#693).

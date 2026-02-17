@@ -1,44 +1,43 @@
 {
   "url": "https://github.com/betagouv/euphrosyne-tools-api",
   "name": "euphrosyne-tools-api",
-  "description": "Ce micro service gère les Machines Virtuelles sur Azure et les connexions (RDP) via Apache Guacamole. Il fournit une API pour interagir avec ces ressources.",
+  "description": "Un micro service dédié à la gestion de Machines Virtuelles sur Azure et des connections (RDP) via Apache Guacamole.",
   "language": "Python",
   "features": [
-    "Gestion des machines virtuelles",
-    "Connexions RDP via Guacamole",
-    "Stockage des données projets"
+    "Gestion de Machines Virtuelles",
+    "Connexions RDP via Apache Guacamole",
+    "Stockage de données projets",
+    "Authentification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "FastAPI",
-    "azure-mgmt-compute",
-    "azure-storage-blob",
-    "azure-storage-file-share",
-    "python-dotenv",
+    "Azure SDK",
+    "Apache Guacamole",
     "pytest",
-    "aiohttp"
+    "uvicorn",
+    "sentry-sdk"
   ],
   "components": [
     "API REST",
     "Clients Azure",
     "Interface avec Guacamole",
-    "Gestion de la configuration"
+    "Gestionnaire de stockage (Azure Blob/Fileshare)"
   ],
   "auth": {
     "methods": [
       "jwt"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [
     "checks-and-tests.yml",
-    "automerge-dependabot.yaml",
-    "update-caches.yml"
+    "update-caches.yml",
+    "automerge-dependabot.yaml"
   ],
-  "lastActivity": "2026-01-30T16:36:44Z",
+  "lastActivity": "2026-02-16T06:15:25Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -46,15 +45,14 @@
     "stars": 2,
     "forks": 1,
     "contributors": null,
-    "openIssues": 12
+    "openIssues": 8
   },
   "tags": [
-    "azure",
-    "virtual-machines",
-    "guacamole",
-    "rdp",
-    "api",
-    "python",
-    "fastapi"
+    "Azure",
+    "Virtual Machines",
+    "Guacamole",
+    "API",
+    "Python",
+    "RDP"
   ]
 }
