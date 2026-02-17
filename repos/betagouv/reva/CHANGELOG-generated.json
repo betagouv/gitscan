@@ -1,0 +1,32 @@
+## Changelog : reva (30 derniers jours)
+
+### Résumé
+Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur, notamment sur les pages de candidature et d'administration. L'intégration de FranceConnect a été renforcée et des corrections ont été apportées pour améliorer la stabilité et la performance de l'application. De plus, la génération de documents DFF a été améliorée et de nouvelles fonctionnalités ont été ajoutées pour faciliter la gestion des organismes et des certifications.
+
+### Évolutions fonctionnelles
+- Amélioration de la gestion de France Connect : gestion des erreurs, intégration d'informations supplémentaires (numéro de téléphone, adresse) et redirection après authentification (#22363ef, #d76c9b4, #47ebdc5, #21f3a9e).
+- Ajout de la possibilité de s'enregistrer avec un mot de passe (#d9ae732, #59859d0, #15432c4, #e403c0d).
+- Amélioration de l'interface utilisateur sur les pages de candidature : simplification de la mise en page, amélioration de l'espacement, ajout de composants d'état (#cada316, #3718a0b, #e6e132b, #f2a723a, #c44c6b2, #b6a8eba, #311a945, #1086438, #262e066, #70013fa, #55f1e75).
+- Ajout d'une confirmation de modal lors de la déclaration de complétion du DF par une autorité de certification (#77c1234).
+- Amélioration de l'affichage des coûts de jury dans l'interface d'administration (#57e2616, #5f362e1).
+- Ajout d'un nouveau tableau de bord Metabase pour le CPNEFP de la Métallurgie (#1056e3b).
+- Amélioration du formulaire Typologie et convention collective (#17ede0a).
+- Ajout de la gestion des organismes liés à plusieurs certifications dans l'interface VAE Collective (#228c2db, #431164a, #5294b18, #a967126, #e612d4b, #d888f17, #be84fd4, #8cee876, #7adc1f7, #488720b, #0246659).
+- Ajout de la possibilité de sélectionner plusieurs certifications dans l'interface VAE Collective (#b74c66e, #66bbaee, #5dfed86).
+
+### Évolutions techniques
+- Refactorisation de la gestion des cookies et de la limitation du débit (rate limiting) avec l'utilisation de Fastify (#d165081, #76b0d2e, #c730ad3).
+- Mise à jour des dépendances : Fastify, Webpack, Lodash, jspdf, @aws-sdk, etc. (#d76c9b4, #feea1ed, #c7f87a1, #fb25daa, #9e369fa, #d340887, #a010319, #1b75b65, #6534b93).
+- Amélioration de la structure du code et suppression de code obsolète (#6b2dca6, #39fb0cd, #b6a8eba, #311a945, #1086438).
+- Génération de types GraphQL pour assurer la compatibilité entre les différents packages (#fbe1df5, #307bcff).
+- Mise à jour des versions de PostgreSQL et des images Docker (#9041e35, #309df67).
+- Amélioration de la configuration CI/CD pour optimiser les temps de build et les tests (#5d50250, #088e572).
+- Refactorisation du code pour utiliser des composants React plus réutilisables (#e8f55ee, #c44c6b2, #b6a8eba).
+
+### Autres changements
+- Mise à jour des liens vers la documentation Notion (#c66e954, #6078670).
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code (#192d3aa, #a453afc, #d59d3eb, #bcbe381, #ed7dda9, #995d15e, #cac72b3, #c36b07b, #898978a).
+- Amélioration de la gestion des fichiers .gitignore (#c57738a).
+- Ajout de commentaires et documentation pour faciliter la compréhension du code (#21cac93, #572224a).
+- Correction de problèmes de typographie et de mise en forme dans la documentation et l'interface utilisateur (#192d3aa, #b4ce038).
+- Ajout d'un nouveau système de génération de documents DFF avec des améliorations de la mise en page et du contenu (#0e336b2, #f73d4c4, #904e1d4, #3f14a05, #a71a701, #8b1626a, #31f3f77, #9e72496, #a4fbc0b).
