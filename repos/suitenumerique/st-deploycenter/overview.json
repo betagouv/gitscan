@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/suitenumerique/st-deploycenter",
   "name": "st-deploycenter",
-  "description": "Ce projet aide les opérateurs d'instances de La Suite territoriale à configurer les applications pour chaque organisation qu'ils gèrent. Il fournit une interface pour la gestion des applications et des accès.",
+  "description": "Ce projet aide les opérateurs d'instances de La Suite territoriale à configurer les services et les rôles pour chaque organisation qu'ils gèrent.",
   "language": "Python",
   "features": [
-    "Gestion des applications",
+    "Gestion des comptes utilisateurs",
     "Gestion des organisations",
-    "Gestion des utilisateurs",
-    "Gestion des accès",
-    "Gestion des services",
-    "Import de données (SIRET, SIREN)"
+    "Import de données",
+    "Gestion des rôles",
+    "Gestion des services"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,41 +17,38 @@
     "PostgreSQL",
     "Redis",
     "Celery",
-    "Keycloak",
-    "Docker",
-    "Next.js"
+    "Keycloak"
   ],
   "components": [
     "Frontend React",
-    "Backend Django",
-    "API REST",
+    "API REST Django",
     "Base de données PostgreSQL",
-    "Cache Redis",
-    "File d'attente Celery",
-    "Serveur d'authentification Keycloak"
+    "Keycloak (Identity Provider)",
+    "Celery (Task Queue)"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "session"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": [
-    "pytest",
-    "jest"
+    "Pytest",
+    "Jest"
   ],
   "workflows": [
     "tests.yml"
   ],
-  "lastActivity": "2026-01-30T15:44:38+01:00",
+  "lastActivity": "2026-02-16T16:16:01+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 3,
+    "stars": 6,
     "forks": 2,
     "contributors": null,
     "openIssues": 5
@@ -61,8 +57,9 @@
     "Python",
     "Django",
     "React",
+    "Keycloak",
     "La Suite Territoriale",
-    "Déploiement",
-    "Gestion d'applications"
+    "Deployment",
+    "Administration"
   ]
 }
