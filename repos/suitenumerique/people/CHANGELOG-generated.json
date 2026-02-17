@@ -1,0 +1,27 @@
+## Changelog : people (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de l'application people se concentrent sur l'amélioration de la gestion des invitations, l'ajout de fonctionnalités pour les alias (création, gestion, suppression, importation depuis Dimail), et des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des mises à jour de sécurité et des optimisations techniques ont également été apportées.
+
+### Évolutions fonctionnelles
+- Possibilité de supprimer les invitations par un administrateur (#1052).
+- Ajout d'une icône au bouton de configuration de domaine (#1054).
+- Possibilité de créer, gérer et supprimer des alias (#1013).
+- Importation d'alias existants depuis Dimail.
+- Possibilité de supprimer des invitations de domaine.
+- Affichage des alias dans l'interface d'administration des domaines (#1040).
+- Les alias peuvent avoir une destination "devnull@devnull" (#1029).
+- Le premier utilisateur créé n'est plus automatiquement administrateur (#776).
+
+### Évolutions techniques
+- Migration de l'outil de gestion des dépendances de `pip` vers `uv`.
+- Mise à jour de la version de Python à 3.14.2.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité : `pillow`, `cryptography`, `django`, `lodash`, et diverses autres dépendances Python.
+- Simplification des tests liés aux invitations par email.
+- Refactorisation du code pour déplacer les exceptions liées aux invitations vers le cœur de l'application.
+
+### Autres changements
+- Mise à jour des chaînes de traduction.
+- Publication des versions 1.23.1, 1.23.0, 1.22.2, 1.22.1 et 1.22.0.
+- Correction d'un job d'upload Crowdin.
+- Suppression d'un plugin CommuneCreation.

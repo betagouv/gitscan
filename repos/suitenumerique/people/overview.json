@@ -1,72 +1,71 @@
 {
   "url": "https://github.com/suitenumerique/people",
   "name": "people",
-  "description": "Application pour gérer les utilisateurs, les équipes et distribuer les permissions au sein de La Suite. Elle est construite sur Django Rest Framework.",
+  "description": "Application de gestion des utilisateurs et des équipes, et de distribution des permissions au sein de La Suite. Elle est construite sur Django Rest Framework.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs",
     "Gestion des équipes",
-    "Gestion des permissions",
+    "Distribution des permissions",
     "Intégration avec Dimail",
-    "Gestion des accès",
-    "Synchronisation des boîtes aux lettres"
+    "Gestion des alias",
+    "Authentification",
+    "Gestion des rôles"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "Django Rest Framework",
-    "Celery",
-    "Redis",
+    "Docker",
+    "Docker Compose",
     "PostgreSQL",
-    "Mozilla Django OIDC",
-    "drf-spectacular",
-    "cunningham"
+    "Redis",
+    "Celery",
+    "React"
   ],
   "components": [
     "Backend Django",
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur Celery",
-    "Redis pour le cache"
+    "Redis",
+    "Celery"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "ProConnect"
+    ]
   },
   "tests": [
-    "pytest",
-    "jest",
-    "playwright"
+    "pytest"
   ],
   "workflows": [
-    "dependencies",
-    "deploy",
-    "docker-hub",
-    "crowdin_download",
-    "crowdin_upload",
-    "release-helmchart"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-30T16:26:58+01:00",
+  "lastActivity": "2026-02-16T14:43:07Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 93,
-    "forks": 9,
+    "stars": 118,
+    "forks": 12,
     "contributors": null,
     "openIssues": 115
   },
   "tags": [
-    "django",
-    "django-rest-framework",
-    "open-source",
-    "permissions-manager",
-    "teams",
-    "contacts",
-    "RBAC"
+    "Django",
+    "React",
+    "Python",
+    "API",
+    "User Management",
+    "Team Management",
+    "Permissions",
+    "Dimail",
+    "Authentication",
+    "Authorization"
   ]
 }
