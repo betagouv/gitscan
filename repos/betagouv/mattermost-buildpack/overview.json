@@ -1,25 +1,28 @@
 {
   "url": "https://github.com/betagouv/mattermost-buildpack",
   "name": "mattermost-buildpack",
-  "description": "Ce buildpack permet d'installer une instance Mattermost sur Scalingo et de la configurer selon vos besoins.",
+  "description": "Ce buildpack permet d'installer une instance Mattermost sur Scalingo et de la configurer selon vos besoins. Il simplifie le déploiement et la configuration de Mattermost sur cette plateforme.",
   "language": "Shell",
   "features": [
-    "Déploiement facile de Mattermost",
+    "Déploiement facile",
     "Configuration flexible",
-    "Intégration avec Scalingo"
+    "Intégration avec Scalingo",
+    "Support de bases de données PostgreSQL et MySQL",
+    "Installation de plugins"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Mattermost",
     "Scalingo",
     "PostgreSQL",
-    "MySQL"
+    "MySQL",
+    "Docker"
   ],
   "components": [
     "Buildpack Shell",
-    "Docker",
-    "PostgreSQL (optionnel)",
-    "MySQL (optionnel)"
+    "Dockerfile",
+    "Fichiers de configuration",
+    "Scripts de déploiement"
   ],
   "auth": {
     "methods": [
@@ -43,6 +46,8 @@
     "buildpack",
     "scalingo",
     "collaboration",
-    "chat"
+    "communication",
+    "postgresql",
+    "mysql"
   ]
 }
