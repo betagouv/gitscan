@@ -1,0 +1,20 @@
+## Changelog : prelevements-deau-api (30 derniers jours)
+
+### Résumé
+Cette mise à jour apporte des améliorations à l'API, notamment l'exposition des exploitations liées, la correction de bugs concernant l'édition du SIRET et l'ajout d'une intégration Sentry pour la surveillance des erreurs et la traçabilité. Des corrections et améliorations ont également été apportées à la configuration S3 et Redis.
+
+### Évolutions fonctionnelles
+- Correction d'un bug empêchant l'édition correcte du numéro SIRET dans le formulaire de prélèvement. (#171)
+- L'API expose désormais les exploitations liées, facilitant l'accès aux informations contextuelles. (#172)
+
+### Évolutions techniques
+- Intégration de Sentry pour la surveillance des erreurs et la traçabilité des performances. (#168, #169)
+- Amélioration de la gestion de la connexion Redis avec une stratégie de reconnexion.
+- Correction de l'initialisation de S3 et ajout de la variable d'environnement manquante.
+- Correction de tests liés à S3 et à l'intégration de Sentry.
+- Mise à jour de `bullboard` pour utiliser le routeur correct. (#169)
+- Mise à jour de la documentation OpenAPI (`openapi.yml`).
+
+### Autres changements
+- Correction de vulnérabilités identifiées par `npm audit fix`. (#167)
+- Amélioration du linting du code. (#170)
