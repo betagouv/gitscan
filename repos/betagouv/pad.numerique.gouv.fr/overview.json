@@ -1,55 +1,55 @@
 {
   "url": "https://github.com/betagouv/pad.numerique.gouv.fr",
   "name": "pad.numerique.gouv.fr",
-  "description": "Pad numérique de l'état. Ce projet permet de créer des notes Markdown collaboratives en temps réel.",
+  "description": "Pad numérique de l'état. Ce projet permet la création de notes Markdown collaboratives en temps réel, inspiré par Hackpad et Etherpad.",
   "language": "JavaScript",
   "features": [
-    "Édition collaborative de Markdown",
-    "Gestion des utilisateurs",
+    "Collaboration en temps réel",
+    "Édition Markdown",
     "Intégration OAuth2",
-    "Gestion des révisions",
-    "Exportation de notes",
-    "Authentification",
-    "Gestion des images"
+    "Gestion des utilisateurs",
+    "Sauvegarde et restauration",
+    "Authentification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Express",
-    "Socket.io",
+    "Socket.IO",
     "Passport",
-    "Markdown-it",
     "Sequelize",
+    "Markdown-it",
     "pg",
-    "pg-hstore"
+    "sqlite3",
+    "Webpack"
   ],
   "components": [
-    "Frontend React",
-    "API REST",
+    "Frontend JavaScript",
+    "Backend Node.js",
     "Base de données PostgreSQL",
-    "Serveur Socket.io"
+    "API REST",
+    "Authentification OAuth2"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "saml"
+      "saml",
+      "email-password"
     ],
     "providers": [
-      "Google",
-      "GitHub",
-      "GitLab",
       "facebook",
-      "twitter"
+      "twitter",
+      "github",
+      "gitlab",
+      "google",
+      "ldap"
     ]
   },
-  "tests": [
-    "Mocha"
-  ],
+  "tests": "Mocha",
   "workflows": [
-    "build-and-test.yml",
-    "lint.yml"
+    "build-and-test",
+    "lint"
   ],
-  "lastActivity": "2025-09-20T09:33:03Z",
+  "lastActivity": "2026-02-15T20:07:54Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -60,10 +60,11 @@
     "openIssues": 10
   },
   "tags": [
-    "markdown",
-    "collaboration",
-    "notes",
-    "hedgedoc",
-    "pad"
+    "Markdown",
+    "Collaboration",
+    "HedgeDoc",
+    "Pad",
+    "Notes",
+    "JavaScript"
   ]
 }
