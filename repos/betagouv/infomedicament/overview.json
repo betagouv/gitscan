@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/infomedicament",
   "name": "infomedicament",
-  "description": "Info Médicament est un service numérique qui fournit des informations sur les médicaments. Il utilise des données publiques de l'ANSM et les enrichit pour offrir une meilleure expérience utilisateur.",
+  "description": "Info Médicament est un service numérique qui fournit des informations sur les médicaments. Il vise à améliorer l'accès à l'information pour les professionnels de santé et le grand public.",
   "language": "TypeScript",
   "features": [
     "Recherche",
-    "Navigation par catégories (ATC, pathologies, substances)",
     "Affichage des informations sur les médicaments",
-    "Accès aux notices et RCP",
-    "Statistiques d'utilisation",
-    "Recherche avancée avec filtres"
+    "Accès aux données de la base publique des médicaments",
+    "Gestion des notices et RCP",
+    "Recherche avancée",
+    "Informations sur les effets indésirables"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -18,18 +18,14 @@
     "PostgreSQL",
     "MySQL",
     "kysely",
-    "styled-components",
-    "@mui/material",
-    "@emotion/react",
-    "@emotion/styled"
+    "react-dsfr"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Base de données MySQL (lecture seule)",
-    "Composants DSFR",
-    "Microservices (Matomo)"
+    "Base de données MySQL",
+    "Composants DSFR"
   ],
   "auth": {
     "methods": [
@@ -37,32 +33,34 @@
     ]
   },
   "tests": [
+    "Jest",
     "Vitest",
     "Tests unitaires",
     "Tests d'intégration",
-    "Tests UI (snapshots)"
+    "Tests d'UI (snapshots)"
   ],
   "workflows": [
-    "tests.yml"
+    "CI/CD avec Scalingo"
   ],
-  "lastActivity": "2026-01-29T17:11:38+01:00",
+  "lastActivity": "2026-02-17T16:17:42+00:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 6,
     "forks": 0,
-    "contributors": null,
-    "openIssues": 14
+    "contributors": 0,
+    "openIssues": 0
   },
   "tags": [
     "santé",
     "médicament",
     "information",
-    "ANSM",
     "Next.js",
     "React",
     "TypeScript",
+    "PostgreSQL",
+    "MySQL",
     "DSFR"
   ]
 }
