@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/mon-service-securise",
   "name": "mon-service-securise",
-  "description": "MonServiceSécurisé est un service numérique développé par l'ANSSI et BetaGouv pour aider les collectivités territoriales et les entités publiques à sécuriser et homologuer leurs services publics numériques.",
-  "language": "JavaScript",
+  "description": "MonServiceSécurisé est un service numérique développé par l'ANSSI et BetaGouv pour aider les collectivités territoriales et les entités publiques à sécuriser et à homologuer leurs services publics numériques.",
+  "language": "TypeScript",
   "features": [
-    "Authentification",
-    "Gestion des utilisateurs",
-    "Homologation des services",
-    "Analyse de sécurité",
     "Gestion des risques",
+    "Évaluation du niveau de sécurité",
+    "Homologation des services",
+    "Gestion des utilisateurs",
+    "Authentification multi-facteurs (MFA)",
     "Visite guidée",
     "Export de données"
   ],
@@ -17,52 +17,55 @@
     "Node.js",
     "Express",
     "PostgreSQL",
-    "Docker",
+    "bcrypt",
+    "jsonwebtoken",
+    "zod",
     "Svelte",
-    "Typescript",
-    "Zod"
+    "Vite"
   ],
   "components": [
     "Frontend Svelte",
     "API REST",
     "Base de données PostgreSQL",
-    "Conteneurisation Docker"
+    "Middleware",
+    "Gestionnaire de session"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "jwt",
-      "session"
+      "session",
+      "mfa"
     ]
   },
   "tests": [
-    "ESLint",
-    "Vitest"
+    "Jest",
+    "Vitest",
+    "ESLint"
   ],
   "workflows": [
     "node.js.yml",
     "codeql-analysis.yml",
     "deploiement.yml"
   ],
-  "lastActivity": "2026-01-29T16:01:44Z",
+  "lastActivity": "2026-02-16T10:26:12+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 18,
-    "forks": 10,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 3
+    "openIssues": null
   },
   "tags": [
     "sécurité",
     "administration publique",
     "homologation",
     "services numériques",
-    "JavaScript",
-    "Node.js",
-    "PostgreSQL",
-    "Svelte"
+    "TypeScript",
+    "Svelte",
+    "MFA"
   ]
 }
