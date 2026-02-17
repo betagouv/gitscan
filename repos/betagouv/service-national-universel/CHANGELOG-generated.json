@@ -1,0 +1,21 @@
+## Changelog : service-national-universel (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour du Service National Universel se concentrent sur l'amélioration de la gestion des utilisateurs, la correction de bugs liés à l'API et à l'export de données, ainsi que des ajustements pour assurer la conformité et la sécurité. Des alertes ont été ajoutées pour signaler les problèmes d'envoi d'emails et des restrictions ont été mises en place sur la suppression des utilisateurs.
+
+### Évolutions fonctionnelles
+- Ajout d'une alerte sur les pages de connexion et d'accueil en cas de problèmes d'envoi d'emails (#5247).
+- Seuls les super-modérateurs peuvent désormais supprimer des utilisateurs (#5241).
+- Mise à jour de l'API pour utiliser le nouveau point d'accès `data.geopf.fr` pour la recherche d'adresses, remplaçant l'ancien `api-adresse.data.gouv.fr` (#5240).
+- Correction du statut des référents pour gérer correctement les référents inactifs (#5250).
+- Rétablissement du filtrage des domaines email Microsoft pour la mission `noticePushMission` (#5254).
+
+### Évolutions techniques
+- Montée de version de librairies spécifiques (#5245).
+- Décommissionnement de tous les domaines (#5214).
+- Correction d'une régression introduite par le filtrage des emails Microsoft (#5253).
+- Ajout de fonctions pour détecter les domaines email Microsoft publics (#5251, #5252).
+- Mise à jour de la dépendance `validator` pour corriger une vulnérabilité de sécurité (#5203).
+
+### Autres changements
+- Aucun autre changement significatif à signaler.

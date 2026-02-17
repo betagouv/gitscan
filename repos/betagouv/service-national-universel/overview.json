@@ -1,62 +1,47 @@
 {
   "url": "https://github.com/betagouv/service-national-universel",
   "name": "service-national-universel",
-  "description": "Ce projet est la plateforme du Service National Universel. Il permet de gérer les inscriptions, les convocations et le suivi des jeunes participants.",
+  "description": "Plateforme du Service National Universel, organisée en plusieurs services : interface publique, interface de gestion et API.",
   "language": "TypeScript",
   "features": [
+    "Gestion des missions",
+    "Gestion des utilisateurs",
+    "Export de données (DSNJ)",
     "Gestion des inscriptions",
-    "Génération de convocations",
-    "Suivi des jeunes",
-    "Gestion des centres",
-    "Gestion des sessions",
-    "Export DSNJ",
-    "Gestion des pièces d'identité",
-    "Authentification utilisateur"
+    "Suivi des candidatures",
+    "Gestion des établissements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Node.js",
     "Express",
-    "Mongoose",
     "PostgreSQL",
-    "Redis",
-    "Sentry",
-    "Nodemailer",
-    "PDFKit",
-    "Elasticsearch"
+    "turbo",
+    "dotenv-cli",
+    "patch-package"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur Node.js",
-    "Microservices",
-    "Cron jobs"
+    "Interface de gestion (Admin)",
+    "Interface publique (App)"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "jwt",
-      "session"
+      "oauth2"
     ]
   },
-  "tests": [
-    "Jest",
-    "Cypress"
-  ],
+  "tests": "Tests unitaires et d'intégration (Jest, Pytest, Cypress)",
   "workflows": [
     "CI",
     "CD",
-    "Tests",
-    "Linting",
-    "Build",
-    "Déploiement"
+    "Déploiement hebdomadaire"
   ],
   "lastActivity": "2024-05-10T00:00:00Z",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -67,12 +52,11 @@
   "tags": [
     "Service National Universel",
     "SNU",
-    "Inscription",
-    "Convocations",
-    "Jeunes",
-    "Administration",
-    "France",
-    "Civisme",
-    "Engagement"
+    "Engagement Civique",
+    "Plateforme",
+    "Administration Publique",
+    "TypeScript",
+    "React",
+    "API"
   ]
 }
