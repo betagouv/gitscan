@@ -1,68 +1,68 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Ce site est le portail de l'ANSSI. Il fournit des informations et des outils pour la cybersécurité.",
+  "description": "Ce site est construit avec Jekyll et fournit un portail pour l'ANSSI. Il offre des informations sur la sécurité numérique, des guides, et des outils pour les professionnels et le grand public.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
     "Recherche",
-    "Gestion des guides",
-    "Statistiques",
-    "Gestion des favoris",
+    "Téléchargement de guides",
+    "Suivi des téléchargements",
+    "Gestion des financements cyber",
     "Tests de maturité",
-    "Gestion des contacts utiles"
+    "Demande de diagnostic",
+    "Statistiques"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Jekyll",
+    "Node.js",
+    "PostgreSQL",
+    "pnpm",
     "React",
     "Express",
-    "PostgreSQL",
-    "axios",
-    "Svelte",
-    "vitest"
+    "@lab-anssi/ui-kit"
   ],
   "components": [
-    "Frontend Svelte",
+    "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Jekyll (pour la documentation)"
+    "Jekyll (générateur de site statique)",
+    "Docker",
+    "CI/CD"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "jwt"
+      "oauth2"
     ]
   },
   "tests": [
     "Jest",
-    "Vitest",
-    "Cypress"
+    "Vitest"
   ],
   "workflows": [
-    "checkov.yml",
-    "compare-financements.yml",
-    "deploiement-node.yml",
-    "deploiement-wc-demande-diag.yml",
-    "deploiement.yml",
-    "integration-continue.yml"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-30T14:31:10+01:00",
+  "lastActivity": "2026-02-17T16:39:16+01:00",
   "status": "active",
-  "license": "Apache-2.0",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 3,
-    "forks": 0,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 2
+    "openIssues": null
   },
   "tags": [
-    "cybersécurité",
+    "sécurité",
+    "cybersecurity",
     "ANSSI",
-    "portail",
-    "TypeScript",
-    "Svelte",
+    "Jekyll",
     "React",
-    "PostgreSQL"
+    "TypeScript",
+    "financements",
+    "guides",
+    "diagnostique"
   ]
 }
