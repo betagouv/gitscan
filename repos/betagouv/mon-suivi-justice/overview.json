@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/mon-suivi-justice",
   "name": "mon-suivi-justice",
-  "description": "Mon Suivi Justice est un service numérique public visant à réduire l'absentéisme lors des convocations avec les agents du ministère de la justice. Il permet de suivre les convocations et d'envoyer des SMS aux utilisateurs.",
+  "description": "Un service numérique public pour réduire l'absentéisme lors des convocations avec les agents du ministère de la justice. Il permet de prendre et suivre des convocations, en envoyant des SMS à différentes étapes du process.",
   "language": "Ruby",
   "features": [
     "Gestion des convocations",
     "Envoi de SMS",
     "Suivi des rendez-vous",
-    "Gestion des utilisateurs",
+    "Gestion des agents",
     "Gestion des lieux",
     "Gestion des types de rendez-vous"
   ],
@@ -16,14 +16,16 @@
     "@gouvfr/dsfr",
     "PostgreSQL",
     "Redis",
-    "ActiveStorage",
-    "ActionText"
+    "Trix",
+    "Stimulus",
+    "esbuild",
+    "postcss"
   ],
   "components": [
-    "Frontend Ruby on Rails",
+    "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Active Storage"
+    "Backend Rails"
   ],
   "auth": {
     "methods": [
@@ -32,14 +34,11 @@
     ],
     "providers": []
   },
-  "tests": [
-    "RSpec",
-    "FactoryBot"
-  ],
+  "tests": null,
   "workflows": [
-    "main.yml"
+    "main"
   ],
-  "lastActivity": "2026-01-28T16:00:52+01:00",
+  "lastActivity": "2026-02-16T16:54:10+01:00",
   "status": "active",
   "license": "EUPL-1.2",
   "hasDocumentation": true,
@@ -47,14 +46,15 @@
     "stars": 7,
     "forks": 3,
     "contributors": null,
-    "openIssues": 19
+    "openIssues": 16
   },
   "tags": [
     "justice",
     "rendez-vous",
     "sms",
     "administration",
-    "ruby on rails",
-    "public service"
+    "public",
+    "rails",
+    "ruby"
   ]
 }
