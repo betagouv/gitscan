@@ -1,51 +1,60 @@
 ## Changelog : seves (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Sèves se concentrent sur l'amélioration des performances, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment concernant le chargement massif de documents et la gestion des TIAC/SSA. Des améliorations ont également été apportées à l'interface utilisateur et à la gestion des droits d'accès.
+Ce changelog présente les évolutions récentes de Sèves, l'outil de gestion des événements sanitaires. Les améliorations concernent principalement l'expérience utilisateur avec des optimisations de performance, des corrections de bugs et de nouvelles fonctionnalités comme le téléversement massif de documents et la gestion des verrous sur les TIAC et SSA. Des améliorations techniques ont également été apportées pour la maintenance et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Possibilité de télécharger massivement des documents sur les fiches Seves (#1733).
-- Ajout d'une barre de progression pour le téléchargement massif de documents.
-- Restriction des types de documents autorisés en modification (#1733).
-- Ajout de liens libres avec une API pour les TIAC.
-- Amélioration de la recherche de liens libres via l'API.
-- Ajout d'options de suivi ("FollowUp") pour les enregistrements simples.
-- Ajout de nouvelles catégories de produits.
-- Amélioration de l'affichage des historiques d'investigation TIAC.
-- Possibilité de masquer les membres de l'équipe dans les listes déroulantes.
-- Ajout de nouveaux départements (Saint-Pierre-et-Miquelon).
-- Ajout de nouveaux champs et règles pour les TIAC et SSA (danger syndromiques, conclusions).
+- Possibilité de téléverser massivement des documents sur les fiches Seves (#1733).
+- Amélioration de la gestion des documents : restriction des types de documents autorisés en édition et détection correcte des types de fichiers (docx).
 - Ajout d'un mécanisme de verrouillage sur les TIAC et SSA pour éviter les conflits de modification.
-- Amélioration de l'expérience utilisateur pour la création/mise à jour des TIAC et SSA.
-- Ajout d'alertes/avertissements pour l'équipe en environnement de production.
-- Amélioration de la gestion des erreurs lors du téléchargement massif de documents.
-- Correction d'une vulnérabilité XSS dans le téléchargement massif de documents.
-- Correction de la détection du type MIME pour les fichiers docx.
+- Amélioration de la recherche de liens libres via l'API.
+- Ajout de la possibilité de masquer des membres d'équipe dans les sélecteurs.
+- Ajout de nouvelles catégories de produits.
+- Amélioration de l'interface utilisateur pour la création/mise à jour des TIAC et SSA (optimisation des performances).
+- Ajout de la possibilité de définir des structures comme contacts.
+- Amélioration de l'affichage de l'historique des investigations TIAC.
+- Ajout de champs pour les actions engagées.
+- Ajout de nouvelles options pour l'enregistrement simple (FollowUp).
+- Ajout de nouveaux DOM/TOM.
+- Ajout de règles pour les précisions sur les pages d'édition.
+- Amélioration de la gestion des dates d'inspection.
+- Ajout de Saint-Pierre-et-Miquelon dans la liste des départements.
+- Correction de problèmes liés à la recherche dans les listes ChoicesJs.
+- Amélioration de l'affichage des badges pour le nombre de participants aux TIAC.
+- Suppression de l'indicateur de page de révision sur les SSA/TIAC.
+- Ajout d'une alerte/avertissement pour l'équipe en environnement de production.
+- Possibilité d'activer les nouveaux utilisateurs par défaut sur des environnements spécifiques.
+- Ajout de règles pour les champs de conclusion des investigations TIAC.
 
 ### Évolutions techniques
-- Utilisation de Ruff pour le formatage du code (tri des imports).
-- Mise à jour de plusieurs dépendances : Django, sentry-sdk, playwright, ruff, django-dirtyfields, django-debug-toolbar, django-reversion, django-reversion-compare, urllib3.
-- Optimisation des performances globales de l'application, notamment sur les pages de listes et de mise à jour.
-- Amélioration des tests unitaires et d'intégration (correction de tests "flaky").
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Ajout d'une variable d'environnement pour contrôler l'envoi des emails d'accès.
-- Utilisation d'un nouveau fork pour la librairie docxcompose.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
-- Configuration de Django pour permettre l'utilisation de "partials" dans les templates.
+- Refactorisation du code pour préparer la prise en charge du téléversement massif de documents asynchrone.
+- Utilisation de Ruff pour le tri des imports.
+- Mise à jour de plusieurs dépendances : Django, pytest-django, redis, urllib3, django-dirtyfields, django-debug-toolbar, django-reversion, ruff, sentry-sdk[django], playwright, django-reversion-compare.
+- Amélioration des performances globales de l'application.
+- Amélioration des tests unitaires et E2E.
+- Mise à jour de la configuration de Django pour permettre l'utilisation de partials dans les templates de formulaires.
+- Correction d'une vulnérabilité XSS dans le téléversement massif de documents.
+- Utilisation d'une nouvelle fork pour docxcompose.
+- Amélioration de la gestion des erreurs lors du téléversement massif de documents.
 
 ### Autres changements
-- Ajout de structures dans l'import agricoll.
-- Suppression d'un ancien "feature flag".
+- Suppression des éléments en double dans la recherche en texte libre.
+- Ajout de MUS au contact si MUS est concerné par le suivi.
+- Séparation du champ "numéro" en deux champs distincts.
+- Limitation du nombre de caractères dans le nom de fichier des documents.
+- Ajout d'une variable d'environnement pour contrôler l'envoi des emails d'accès.
+- Suppression d'un ancien feature flag.
 - Modification du nombre d'objets affichés sur les pages de liste.
-- Ajout de préfixes pour les badges de nombre de participants pour les TIAC.
-- Ajout de sauts de ligne pour l'évaluation dans les ICH.
-- Suppression de règles pour le champ RASFF sur les SSA.
-- Ajout d'un indicateur pour limiter la création sur les SSA/TIAC.
-- Correction de problèmes liés à l'inspection des dates.
-- Amélioration du composant LienLibre.
-- Ajout d'un indicateur pour lier l'historique à la page de SV.
-- Autorisation des valeurs vides pour les actions engagées.
-- Réinitialisation des champs repas et aliment dans le bloc de conclusion.
-- Correction de l'affichage des messages d'erreur vides lors du téléchargement massif.
-- Amélioration de la gestion des erreurs dans le modal de document en masse.
-- Ajout d'un verrouillage pour les TIAC et SSA.
+- Ajout de règles pour les champs RASFF sur les SSA.
+- Modification des labels pour les dangers syndromiques TIAC.
+- Ajout de règles pour les précisions sur les TIAC.
+- Ajout de structures dans l'import agricoll.
+- Suppression des URL dans les notifications par email.
+- Amélioration de l'historique des liens.
+- Correction de la détection du type MIME pour les fichiers docx.
+- Ajout d'un flag pour limiter la création sur les SSA/TIAC.
+- Amélioration de la gestion des erreurs dans le téléversement massif de documents.
+- Correction de tests instables.
+- Ajout d'un indicateur pour l'historique des liens sur SV.
+- Suppression de règles pour le champ RASFF sur SSA.
+- Ajout d'un mécanisme de verrouillage sur les TIAC et SSA.

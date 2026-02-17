@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de gérer les fiches Seves et les documents associés, ainsi que d'optimiser les performances et l'expérience utilisateur.",
+  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de gérer les fiches Seves, les documents associés, et les investigations.",
   "language": "Python",
   "features": [
+    "Gestion des événements sanitaires",
     "Gestion des fiches Seves",
-    "Gestion des documents",
     "Téléchargement massif de documents",
+    "Gestion des TIAC (Travaux d'Investigation et de Contrôle)",
+    "Gestion des SSA (Signalements Sanitaires)",
     "Notifications",
     "Recherche",
-    "Gestion des TIAC",
-    "Gestion des SSA",
-    "Export CSV",
-    "Historique des modifications"
+    "Gestion des contacts",
+    "Gestion des utilisateurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -23,17 +23,15 @@
     "Ruff",
     "Celery",
     "Sentry",
-    "pip-tools",
-    "dj-importmap",
-    "django-countries",
-    "django-template-partials"
+    "pip-tools"
   ],
   "components": [
-    "Frontend (HTML, CSS, JavaScript)",
     "Backend Django",
+    "Frontend HTML, CSS, JavaScript (AlpineJS)",
     "Base de données PostgreSQL",
+    "Système de Design de l'État (DSFR)",
     "API REST",
-    "Système de Design de l'État (DSFR)"
+    "Tests E2E (Playwright)"
   ],
   "auth": {
     "methods": [
@@ -44,8 +42,10 @@
     "Pytest",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-16T09:17:03+01:00",
+  "workflows": [
+    "CI/CD (Scalingo)"
+  ],
+  "lastActivity": "2026-02-16T16:51:58+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -56,13 +56,13 @@
     "openIssues": null
   },
   "tags": [
-    "gestion",
     "santé",
     "événements sanitaires",
+    "gestion de crise",
     "Django",
     "Python",
     "PostgreSQL",
-    "administration",
+    "administration publique",
     "TIAC",
     "SSA"
   ]
