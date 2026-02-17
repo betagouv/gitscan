@@ -1,45 +1,53 @@
 {
   "url": "https://github.com/etalab/admin_api_entreprise",
   "name": "admin_api_entreprise",
-  "description": "Site vitrine / backoffice de l'API Entreprise. Permet de gérer et visualiser les informations relatives à l'API.",
+  "description": "Site vitrine / backoffice de API Entreprise. Ce projet fournit une interface d'administration pour les API Entreprise et Particulier, permettant la gestion des accès et des données.",
   "language": "Ruby",
   "features": [
-    "Gestion des webhooks DataPass",
-    "Documentation",
+    "Gestion des accès",
+    "Recherche d'API",
     "Gestion des utilisateurs",
     "Visualisation des données",
-    "Authentification",
-    "Administration"
+    "Gestion des webhooks"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "Rails"
+    "Docker",
+    "Node.js",
+    "Mjml"
   ],
   "components": [
     "Frontend Ruby on Rails",
+    "API REST",
     "Base de données PostgreSQL",
-    "Serveur Redis"
+    "Serveur Redis",
+    "Docker pour le déploiement"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2",
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
   "tests": [
     "RSpec",
-    "Guard"
+    "Guard",
+    "Brakeman"
   ],
   "workflows": [
-    "ci_cd.yml",
-    "https-deploy-production.yaml",
-    "https-deploy-sandbox.yaml",
-    "https-deploy-staging.yaml"
+    "tests.yml",
+    "lint.yml",
+    "security.yml"
   ],
-  "lastActivity": "2026-01-30T13:47:47Z",
+  "lastActivity": "2026-02-17T18:45:57+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -47,14 +55,15 @@
     "stars": 12,
     "forks": 7,
     "contributors": null,
-    "openIssues": 9
+    "openIssues": 12
   },
   "tags": [
     "API",
     "Rails",
-    "Ruby",
     "Administration",
     "FranceConnect",
-    "SIADE"
+    "Ruby",
+    "PostgreSQL",
+    "Redis"
   ]
 }
