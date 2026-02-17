@@ -1,44 +1,39 @@
 {
-  "url": "https://github.com/mtes-mct/dossierfacile-backend",
+  "url": "https://github.com/MTES-MCT/dossierfacile-backend",
   "name": "dossierfacile-backend",
-  "description": "Ce projet est le back-end de DossierFacile.fr, une application web conçue pour aider à la constitution de dossiers de location. Il fournit les API et la logique métier nécessaires au fonctionnement de la plateforme.",
+  "description": "Le projet DossierFacile a été créé par le Ministère de la Transition écologique pour aider à la réalisation de dossiers de location. Il fournit une API pour gérer les dossiers et les utilisateurs.",
   "language": "Java",
   "features": [
-    "Gestion des dossiers de location",
-    "Authentification utilisateur",
     "Gestion des utilisateurs",
-    "Gestion des documents",
-    "Partage de documents",
+    "Gestion des propriétés",
+    "Génération de documents",
+    "Intégration avec Keycloak",
     "Envoi d'emails",
-    "Gestion des garants",
-    "Statistiques"
+    "Gestion des applications"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Spring Boot",
     "Maven",
+    "Spring Boot",
     "Keycloak",
-    "RabbitMQ",
     "PostgreSQL",
-    "Docker"
+    "Docker",
+    "RabbitMQ",
+    "ZXing-cpp"
   ],
   "components": [
     "API REST",
     "Base de données PostgreSQL",
-    "Microservices",
-    "Keycloak (authentification)",
-    "RabbitMQ (gestion des files d'attente)",
-    "Frontend React (via lien vers autre dépôt)"
+    "Keycloak pour l'authentification",
+    "Microservices (api-owner, api-tenant, etc.)",
+    "Docker pour la conteneurisation"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "session"
+      "jwt"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
     "JUnit"
@@ -46,26 +41,23 @@
   "workflows": [
     "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-01-30T14:06:41+01:00",
+  "lastActivity": "2026-02-17T10:56:51+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 24,
+    "stars": 23,
     "forks": 10,
     "contributors": null,
-    "openIssues": 19
+    "openIssues": 17
   },
   "tags": [
+    "dossierfacile",
     "location",
-    "dossier",
-    "administration",
-    "Java",
-    "Spring Boot",
-    "Keycloak",
-    "RabbitMQ",
-    "PostgreSQL",
-    "API",
+    "java",
+    "keycloak",
+    "spring-boot",
+    "api",
     "microservices"
   ]
 }
