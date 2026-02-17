@@ -1,14 +1,14 @@
 {
-  "url": "https://github.com/mtes-mct/qualicharge",
+  "url": "https://github.com/MTES-MCT/qualicharge",
   "name": "qualicharge",
-  "description": "Améliorer la qualité globale du service de recharge pour véhicules électriques en analysant les données de supervision.",
+  "description": "Ce projet vise à améliorer la qualité du service de recharge pour véhicules électriques en analysant les données de supervision. Il fournit des outils pour collecter, traiter et visualiser ces données.",
   "language": "Python",
   "features": [
-    "Gestion des points de recharge",
-    "Collecte et analyse de données",
+    "Collecte de données de supervision",
+    "Analyse de la qualité de la recharge",
+    "Visualisation des données",
     "API pour les opérateurs",
-    "Tableaux de bord",
-    "Open Data"
+    "Tableaux de bord"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -16,19 +16,16 @@
     "FastAPI",
     "PostgreSQL",
     "httpx",
-    "pandas",
-    "psycopg",
-    "prefect",
-    "data7",
-    "geopandas",
-    "uvicorn"
+    "pydantic",
+    "sqlalchemy",
+    "Docker"
   ],
   "components": [
-    "API REST",
+    "Backend Python (Django, FastAPI)",
     "Base de données PostgreSQL",
-    "Frontend Dashboard",
-    "Client Python",
-    "Workflows Prefect"
+    "API REST",
+    "Interface utilisateur (Dashboard)",
+    "Docker pour la conteneurisation"
   ],
   "auth": {
     "methods": [
@@ -41,15 +38,13 @@
   },
   "tests": [
     "pytest",
-    "pytest-cov"
+    "coverage"
   ],
   "workflows": [
-    "API tests",
-    "Python packages build",
-    "Docker images build",
-    "Security checks"
+    "CI/CD avec GitHub Actions",
+    "Renovate pour les mises à jour de dépendances"
   ],
-  "lastActivity": "2026-01-27T22:10:26+01:00",
+  "lastActivity": "2026-02-17T18:14:37+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -57,13 +52,16 @@
     "stars": 6,
     "forks": 3,
     "contributors": null,
-    "openIssues": 33
+    "openIssues": 34
   },
   "tags": [
-    "EVSE",
-    "Open Data",
-    "Charging Stations",
+    "véhicules électriques",
+    "recharge",
+    "qualité",
+    "supervision",
+    "données",
     "API",
-    "Data Analysis"
+    "dashboard",
+    "open-data"
   ]
 }
