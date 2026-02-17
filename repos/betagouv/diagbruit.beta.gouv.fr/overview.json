@@ -1,35 +1,32 @@
 {
   "url": "https://github.com/betagouv/diagbruit.beta.gouv.fr",
   "name": "diagbruit.beta.gouv.fr",
-  "description": "Permet aux instructeurs de permis de construire d’alerter sur les risques sonores et de proposer des préconisations pour un urbanisme favorable à la santé.",
+  "description": "Permet aux instructeurs de permis de construire d’alerter sur les risques sonores et de proposer des préconisations pour des constructions respectueuses de la santé.",
   "language": "TypeScript",
   "features": [
-    "Analyse des risques sonores",
-    "Préconisations d'atténuation",
-    "Intégration de données géospatiales",
-    "Consultation de réglementations",
-    "Interface cartographique"
+    "Calcul de risques sonores",
+    "Préconisations pour l'isolation acoustique",
+    "Intégration de données cartographiques",
+    "Gestion des décrets et réglementations",
+    "Collecte de feedback utilisateur"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "React",
-    "Node.js",
     "PostgreSQL",
-    "PostGIS",
+    "FastAPI",
+    "Strapi",
+    "Dbt",
     "GeoPandas",
     "Shapely",
-    "Pyproj",
-    "FastAPI",
-    "Uvicorn",
-    "Strapi"
+    "Turf.js"
   ],
   "components": [
     "Frontend React",
-    "API REST FastAPI",
-    "Base de données PostgreSQL/PostGIS",
+    "API REST (FastAPI)",
+    "Base de données PostgreSQL",
     "CMS Strapi",
-    "Librairie de calcul acoustique",
-    "Serveur d'application Node.js"
+    "Pipeline de transformation de données (DBT)"
   ],
   "auth": {
     "methods": [
@@ -41,9 +38,9 @@
     "Jest"
   ],
   "workflows": [
-    "ci.yml"
+    "CI Tests"
   ],
-  "lastActivity": "2026-01-26T17:06:45+00:00",
+  "lastActivity": "2026-02-16T16:12:38+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,16 +48,18 @@
     "stars": 1,
     "forks": 0,
     "contributors": null,
-    "openIssues": 2
+    "openIssues": 3
   },
   "tags": [
     "bruit",
     "urbanisme",
-    "environnement",
-    "géospatial",
-    "sound",
-    "noise",
-    "planning",
-    "mapping"
+    "isolation acoustique",
+    "permis de construire",
+    "données géospatiales",
+    "TypeScript",
+    "PostgreSQL",
+    "FastAPI",
+    "Strapi",
+    "DBT"
   ]
 }

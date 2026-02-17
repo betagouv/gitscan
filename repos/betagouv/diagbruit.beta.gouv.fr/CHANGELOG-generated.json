@@ -1,0 +1,27 @@
+## Changelog : diagbruit.beta.gouv.fr (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de diagbruit.beta.gouv.fr se concentrent sur l'amélioration de la robustesse de l'API, la correction de bugs et l'ajout de nouvelles fonctionnalités liées au calcul des scores sonores et à la gestion des zones géographiques. Des corrections ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de l'application.
+
+### Évolutions fonctionnelles
+- Ajout de Strasbourg à la liste blanche des zones gérées par l'API. (#35)
+- Amélioration de la gestion des erreurs : affichage d'un message d'erreur clair en cas de problème avec l'API côté frontend. (#37)
+- Ajout d'un bouton de copie de l'URL avec un style visuel amélioré. (#37)
+- Implémentation d'un score global. (#35)
+- Ajout de la possibilité de calculer le pourcentage de zones impactées. (#35)
+- Ajout d'une exception pour le calcul du score sonore en fonction des topoblocks. (#37)
+
+### Évolutions techniques
+- Correction de problèmes de pool de connexions à la base de données au premier démarrage. (#35)
+- Correction d'une erreur de syntaxe dans les scripts DBT qui empêchait la création d'indices. (#35)
+- Adaptation des tests d'intégration FastAPI suite aux modifications récentes. (#35)
+- Correction de conflits dans le code FastAPI. (#35)
+- Ajout d'un buffer à la géométrie avant les calculs de correction pour améliorer la précision. (#35)
+- Mise à jour de la version de l'API. (#35, #38)
+- Suppression d'un package `serve` inutilisé dans le frontend. (#35)
+- Ajout de la gestion des erreurs 500 côté frontend. (#37)
+- Adaptation du script d'ingestion pour tenir compte des changements en production. (#38)
+
+### Autres changements
+- Ajout de la whitelist 35 59 67. (#38)
+- Correction de la configuration de `serve` pour le démarrage en production. (#38)
