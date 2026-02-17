@@ -1,0 +1,56 @@
+## Changelog : bhasile (30 derniers jours)
+
+### Résumé
+Ce changelog présente les évolutions récentes de Bhasile (anciennement Place d'asile), la plateforme de gestion du parc de logements pour demandeurs d’asile. Les dernières mises à jour se concentrent sur l'amélioration de la gestion des CPOM (Convention de Placement d'Office des Mineurs), l'ajout de fonctionnalités financières, la correction de bugs et l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des adresses et des activités. Le nom du projet a également été mis à jour.
+
+### Évolutions fonctionnelles
+- Ajout de liens vers les CPOM dans le menu et l'en-tête (#996).
+- Amélioration de la gestion des adresses avec une correction pour l'affichage correct de la liste (#1001).
+- Ajout de l'affichage des CPOM sur la page de chaque structure (#990).
+- Ajout d'un formulaire pour la gestion des CPOM (#947).
+- Ajout d'une modale de confirmation pour les CPOM (#978).
+- Ajout de tableaux financiers sur la page de chaque structure (#971).
+- Amélioration des activités avec des corrections de bugs et des mises à jour de l'interface (#1008, #938).
+- Ajout de la possibilité de télécharger des fichiers Excel avec macros (.xlsm) (#945).
+- Ajout de la gestion des indicateurs de qualité (#930, #944).
+- Ajout d'un cron pour l'exécution de la synchronisation avec l'API EIG (#937).
+- Renommage de "Place d'Asile" en "Bhasile" (#982).
+- Ajout de la possibilité de gérer des affectations de fonds dédiés négatives (#939).
+- Ajout de la possibilité de ne pas évaluer une structure (#929).
+- Correction d'un bug lié à la redirection des liens dans les marqueurs de la carte (#993).
+- Correction d'un bug lié à l'erreur de déconnexion (#1003).
+- Correction d'un bug lié à la validation du formulaire des structures subventionnées (#941).
+- Correction d'un bug lié au reset du département dans le formulaire (#983).
+- Correction d'un bug lié à la validation du formulaire CPOM structure (#981).
+- Correction d'un bug lié à l'affichage des budgets dans le formulaire de modification des finances (#87581dd).
+- Correction de typos dans les finances (#969).
+- Ajout de la possibilité d'ajouter des dates aux CPOM (#953).
+
+### Évolutions techniques
+- Mise à jour de la configuration Next.js (#975).
+- Ajout de documentation sur l'architecture backend (#999).
+- Ajout de tests E2E pour le formulaire CPOM (#984).
+- Amélioration de la gestion des erreurs et des validations dans les formulaires.
+- Correction d'une vulnérabilité potentielle liée à l'utilisation de commandes shell construites à partir de variables d'environnement (#949).
+- Mise à jour de plusieurs dépendances (jsdom, next, et autres) (#1007, #1006, #985, #960, #951, #943, #928).
+- Suppression de code obsolète et nettoyage du code (#956, #923, #905, #819).
+- Passage de l'API Adresse à l'API Geocode (#932).
+- Suppression des champs "places à créer" et "fermer" (#946).
+
+### Autres changements
+- Incohérence entre département et DNA corrigée (#966).
+- Ajout d'un message de chargement pour l'utilisation (#962).
+- Suppression des logs (#956).
+- Suppression des années dans les CPOM (#964).
+- Ajout de couleurs de fond aux titres dans le formulaire de finance (#967).
+- Inversion des numéros de téléphone (#997).
+- Ajustement de la taille du logo (#1002).
+- Ajout du suivi de la sélection sur la carte (#998).
+- Ajout de restrictions sur les utilisateurs autorisés (#950).
+- Ajout de la possibilité de passer la limite de taille des fichiers uploadés à 30Mo (#958).
+- Suppression du total des activités (#959).
+- Mise à jour des tests avec le script EIG (#934).
+- Trim du mot de passe de l'opérateur (#933).
+- Ajout de fichiers de convention aux CPOM (#972).
+- Correction de l'affichage des dates dans le formulaire CPOM (#942).
+- Ajout d'une option pour ne pas avoir d'évaluation (#929).
