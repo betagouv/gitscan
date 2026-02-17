@@ -1,44 +1,55 @@
 {
   "url": "https://github.com/betagouv/mle-back",
   "name": "mle-back",
-  "description": "Ce projet est le backend de \"Mon Logement Étudiant\", une application visant à faciliter la recherche de logement pour les étudiants. Il gère les informations sur les logements, les utilisateurs et les établissements.",
+  "description": "Ce projet est le backend de \"Mon Logement Étudiant\", une application visant à faciliter la recherche de logements pour les étudiants. Il gère les données des logements, les sources, les utilisateurs et les alertes.",
   "language": "Python",
   "features": [
-    "Gestion des logements",
+    "Recherche de logements",
     "Gestion des utilisateurs",
-    "Recherche de logement",
+    "Gestion des établissements",
     "Alertes",
-    "Gestion des établissements"
+    "Import de données (CROUS, AFEV, etc.)",
+    "Gestion des sources de données",
+    "Publication/Non publication de logements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
+    "Django REST Framework",
     "pytest",
     "Ruff",
     "Sentry",
-    "DRF Spectacular"
+    "PostgreSQL",
+    "BeautifulSoup4",
+    "drf-spectacular"
   ],
   "components": [
-    "API REST",
+    "API REST (Django REST Framework)",
     "Base de données PostgreSQL",
-    "Frontend (non inclus dans ce dépôt)",
-    "Microservices"
+    "Backend Python (Django)",
+    "Tests unitaires (Pytest)",
+    "Gestion des événements (Celery/Redis)",
+    "Interface d'administration (Django Admin)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "session",
       "magic-link"
-    ],
-    "providers": null
+    ]
   },
   "tests": [
     "Pytest",
-    "Factories"
+    "Factories (pour les tests)",
+    "Tests d'intégration",
+    "Tests unitaires"
   ],
-  "workflows": null,
-  "lastActivity": "2026-01-27T16:57:16Z",
+  "workflows": [
+    "CI/CD (via GitHub Actions/CircleCI)",
+    "Linting (Ruff)",
+    "Tests automatiques"
+  ],
+  "lastActivity": "2026-02-17T18:55:36Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -46,13 +57,15 @@
     "stars": 3,
     "forks": 1,
     "contributors": null,
-    "openIssues": 6
+    "openIssues": 1
   },
   "tags": [
     "logement étudiant",
     "Django",
+    "Python",
     "API",
-    "recherche logement",
-    "administration"
+    "recherche de logement",
+    "back-end",
+    "administration publique"
   ]
 }
