@@ -1,0 +1,30 @@
+## Changelog : mobilic-api (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de l'API mobilic-api se concentrent sur l'amélioration de la gestion des employés, notamment la réactivation, la gestion des employés inactifs et le suivi de leur activité. Des améliorations ont également été apportées à l'intégration avec Brevo (Sendinblue) pour l'envoi d'emails et la gestion des workflows d'activation. Enfin, des fonctionnalités liées à la localisation des contrôles ont été ajoutées.
+
+### Évolutions fonctionnelles
+- Ajout de la possibilité de rattacher un employé à une entreprise après un licenciement (#653).
+- Les administrateurs peuvent désormais voir les employés inactifs (#653).
+- Amélioration de la table d'administration des employés (#658).
+- Modification du bouton de détachement pour les administrateurs (#656).
+- Ajout de rappels pour les entreprises sans activité depuis 14 jours (#653).
+- Ajout de l'API de localisation des contrôles (#651).
+- Correction du calcul des alertes de travail de nuit (#650).
+- Ajout de la date de planification de l'anonymisation des utilisateurs (#647).
+
+### Évolutions techniques
+- Implémentation d'un pipeline d'activation basé sur le statut des emails Brevo (#654).
+- Mise à jour des attributs de tous les deals Brevo (#641).
+- Ajout d'une colonne `last_active_at` à la table `employment` avec un trigger PostgreSQL pour la mise à jour automatique lors de la fin d'une mission (#639).
+- Ajout de propriétés de statut calculées et d'un filtre `latestPerUser` pour la gestion des employments (#656).
+- Prévention de l'exécution de commits à l'intérieur de transactions atomiques pour les emails de rattachement (#658).
+- Utilisation de `dismissed_at` au lieu de `is_dismissed` pour la réactivation des employés (#658).
+- Ajout de tests IDOR pour la mutation `ReattachEmployment` (#653).
+- Ajout de mutations pour la terminaison groupée d'employés (#639).
+- Refactorisation de l'envoi du premier email d'activité, passant de J+10 à J+7 (#654).
+
+### Autres changements
+- Ajout de tests pour la mutation `ReattachEmployment` (#653).
+- Correction d'une variable inutilisée et utilisation de `const` dans les tests (#650).
+- Exposition des champs `dismissed_at` et `validation_status` dans l'API (#653).

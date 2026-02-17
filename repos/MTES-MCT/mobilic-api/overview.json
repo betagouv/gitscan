@@ -1,30 +1,29 @@
 {
-  "url": "https://github.com/mtes-mct/mobilic-api",
+  "url": "https://github.com/MTES-MCT/mobilic-api",
   "name": "mobilic-api",
-  "description": "Backend pour le suivi du temps de travail des transporteurs mobiles. Ce dépôt contient le code source du back de la startup Mobilic incubée à la Fabrique Numérique du Ministère de la Transition Écologique.",
+  "description": "Backend pour le suivi du temps de travail des transporteurs mobiles. Cette API permet de gérer les activités, les entreprises, les utilisateurs et les contrôles associés.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs",
     "Gestion des entreprises",
+    "Gestion des utilisateurs",
+    "Suivi du temps de travail",
     "Gestion des contrôles",
-    "Gestion des missions",
-    "Alertes réglementaires",
-    "Génération de rapports (Excel, PDF)",
-    "Authentification",
-    "Notifications"
+    "Génération de rapports (Excel)",
+    "Envoi de notifications",
+    "Gestion des certificats",
+    "Authentification"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Flask",
     "SQLAlchemy",
     "Graphene",
+    "Redis",
+    "Celery",
     "XlsxWriter",
     "Jinja",
     "xhtml2pdf",
-    "Docker",
-    "pipenv",
-    "Celery",
-    "Redis"
+    "PostgreSQL"
   ],
   "components": [
     "API REST (GraphQL)",
@@ -36,8 +35,8 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
+      "session",
       "api-key"
     ]
   },
@@ -45,9 +44,9 @@
     "pytest"
   ],
   "workflows": [
-    "CI/CD (via GitHub Actions ou CircleCI - non spécifié)"
+    "CI/CD (via .circleci/config.yml)"
   ],
-  "lastActivity": "2026-01-29T09:57:19+01:00",
+  "lastActivity": "2026-02-17T12:30:46+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,17 +54,17 @@
     "stars": 3,
     "forks": 0,
     "contributors": null,
-    "openIssues": 9
+    "openIssues": 7
   },
   "tags": [
-    "Python",
     "API",
-    "Backend",
-    "Transport",
-    "Réglementation",
-    "Temps de travail",
-    "Docker",
+    "Python",
+    "Flask",
+    "GraphQL",
     "PostgreSQL",
-    "GraphQL"
+    "Transport",
+    "Temps de travail",
+    "Contrôles",
+    "Certificats"
   ]
 }
