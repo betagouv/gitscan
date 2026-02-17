@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Ce projet est un service public numérique qui permet aux agriculteurs de trouver des aides adaptées à leur situation. Il propose une interface d'administration pour la gestion des aides et un parcours utilisateur pour les agriculteurs.",
+  "description": "Ce service public numérique permet aux agricultrices et agriculteurs de trouver des dispositifs d’aide adaptés à leur situation et leur besoin. Il propose une interface d'administration et un parcours utilisateur pour les exploitants agricoles.",
   "language": "Python",
   "features": [
     "Gestion des aides publiques",
-    "Recherche d'aides",
     "Interface d'administration",
     "Parcours utilisateur",
-    "Suivi des erreurs (Sentry)",
-    "Suivi de l'activité des utilisateurs (Matomo)"
+    "Recherche d'aides",
+    "Export CSV"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,41 +16,38 @@
     "PostgreSQL",
     "StimulusJS",
     "htmx",
-    "django-dsfr",
     "Brevo",
     "Matomo",
-    "Sentry"
+    "Sentry",
+    "Scalingo"
   ],
   "components": [
-    "Backend Django",
-    "Frontend (Templates Django, StimulusJS, htmx)",
-    "Base de données PostgreSQL",
+    "Frontend Django",
     "API REST",
+    "Base de données PostgreSQL",
     "Interface d'administration Django"
   ],
   "auth": {
     "methods": [
       "email-password"
-    ],
-    "providers": null
+    ]
   },
   "tests": [
-    "Pytest"
+    "pytest"
   ],
   "workflows": [
-    "CI",
-    "Dependabot updates",
-    "Vendor JS deps"
+    "dependabot",
+    "github-code-scanning"
   ],
-  "lastActivity": "2026-01-29T16:06:11+00:00",
+  "lastActivity": "2026-02-16T17:44:22Z",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 2,
-    "forks": 4,
-    "contributors": null,
-    "openIssues": 3
+    "stars": 0,
+    "forks": 0,
+    "contributors": 0,
+    "openIssues": 0
   },
   "tags": [
     "agriculture",
@@ -59,7 +55,6 @@
     "django",
     "python",
     "gouvernement",
-    "public",
-    "beta.gouv.fr"
+    "service public"
   ]
 }
