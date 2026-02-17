@@ -1,0 +1,38 @@
+## Changelog : dialog (30 derniers jours)
+
+### Résumé
+Ce changelog résume les améliorations apportées à dialog au cours des 30 derniers jours. Les principales évolutions concernent l'import de données (BDTOPO, Litteralis, Sogelink), l'amélioration de l'API et de l'interface utilisateur, ainsi que des optimisations techniques pour la gestion des données et l'infrastructure.
+
+### Évolutions fonctionnelles
+- Amélioration de l'autocomplétion grâce à la BDTOPO (#1688).
+- Intégration des cotes d'Armor via Literalis (#1681).
+- Ajout du type de restriction "circulation alternée" dans l'import Litteralis (#1658 et #1641).
+- Intégration des liens Sogelink en tant que ressource (#1642).
+- Amélioration de l'export CIFS (#1661).
+- Tri de l'affichage des tronçons sur la carte par ordre d'importance (#1672).
+- Correction de l'affichage du bandeau "notice" (#1678).
+- Ajout d'un bouton d'export CSV de la base utilisateur (#1612).
+- Export du nombre d'arrêtés créés par utilisateur vers Grist (#1636).
+
+### Évolutions techniques
+- La durée de vie des tokens a été augmentée à 1 mois (#1671).
+- Configuration du client Literalis pour augmenter son délai d'inactivité et les tentatives de reconnexion (#1682).
+- Les mises à jour de la BDTOPO ne sont plus exécutées dans la CI (#1685).
+- Les imports Literalis sont maintenant encapsulés dans une transaction pour éviter la suppression de données en cas d'échec d'import (#1686).
+- Amélioration de la récupération des dernières versions de la BDTOPO (#1643).
+- Script d'import automatique de la BDTOPO (#1639).
+- Mise à jour de Node vers la dernière version LTS (24) (#1602).
+- Amélioration de la configuration Monolog en production (#1640).
+- Correction de l'installation des dépendances sur la CI de la BDTOPO (#1655).
+- Suppression des références à l'ancienne BDTOPO (2023) (#1635).
+- Synchronisation des utilisateurs et organisations vers Grist (#1625).
+
+### Autres changements
+- Documentation de l'API complétée pour expliciter les règles permanentes (#1683).
+- Migration des contacts du site web vers Zammad (#1680).
+- Amélioration du contrôle des variables pour les templates (#1652).
+- Correction d'une faute de frappe (#1675).
+- Correction d'une erreur dans la clé CIFS (#1664).
+- Suppression de pgAdmin de la configuration Docker Compose (#1630).
+- Renommage des actions des boutons d'administration pour plus de clarté (#1626).
+- Correction du format d'export CSV pour Windows (#1627).
