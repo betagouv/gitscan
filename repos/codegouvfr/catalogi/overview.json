@@ -1,64 +1,60 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Application de catalogue logiciel. Permet de gérer et de consulter des logiciels, notamment pour l'administration française.",
+  "description": "Catalogi est une application web permettant de gérer des catalogues de logiciels. Elle est utilisée pour lister les logiciels recommandés pour l'administration française et pour le catalogue ESR.",
   "language": "TypeScript",
   "features": [
-    "Gestion de catalogue logiciel",
+    "Gestion de catalogue de logiciels",
+    "Import de métadonnées depuis GitHub et GitLab",
     "Recherche de logiciels",
-    "Import de données depuis différentes sources (CNLL, HAL, Zenodo, GitLab, GitHub)",
-    "Gestion des utilisateurs et des organisations",
-    "Authentification (Keycloak)",
-    "Documentation"
+    "Affichage des informations sur les logiciels",
+    "Interface utilisateur",
+    "Import de métadonnées depuis HAL"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "TypeScript",
-    "Kysely",
     "PostgreSQL",
-    "Keycloak",
+    "Kysely",
     "Node.js",
-    "yarn",
-    "Vite"
+    "TypeScript",
+    "@trpc/client",
+    "@tanstack/react-virtual"
   ],
   "components": [
     "Frontend React",
-    "API REST (Node.js)",
+    "API REST",
     "Base de données PostgreSQL",
-    "Keycloak (Authentification)",
-    "Docker"
+    "Nginx (proxy)",
+    "Keycloak (authentification)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "oauth2"
     ],
     "providers": []
   },
-  "tests": [
-    "Vitest",
-    "Cypress"
-  ],
+  "tests": "Vitest",
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-30T23:11:14+00:00",
+  "lastActivity": "2026-02-17T18:12:26+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 37,
+    "stars": 38,
     "forks": 11,
     "contributors": null,
     "openIssues": 80
   },
   "tags": [
     "logiciel libre",
-    "administration",
-    "catalogage",
     "open source",
-    "typescript",
-    "react"
+    "catalogage",
+    "administration",
+    "logiciels",
+    "TypeScript",
+    "React"
   ]
 }
