@@ -4,12 +4,12 @@
   "description": "Le site officiel de france-chaleur-urbaine.beta.gouv.fr. Il permet de faciliter et d'accélérer les raccordements aux réseaux de chaleur.",
   "language": "TypeScript",
   "features": [
-    "Gestion des demandes de raccordement",
-    "Cartographie des réseaux de chaleur",
-    "Calcul de l'éligibilité",
-    "Suivi des demandes",
-    "Administration des réseaux",
-    "Export de statistiques"
+    "Gestion des réseaux de chaleur",
+    "Calcul d'éligibilité",
+    "Interface d'administration",
+    "Géolocalisation",
+    "Import de données",
+    "Suivi des demandes"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,8 +18,8 @@
     "PostgreSQL",
     "MapLibre",
     "Kysely",
-    "Node.js",
-    "pnpm"
+    "Vitest",
+    "Biome"
   ],
   "components": [
     "Frontend React",
@@ -30,18 +30,15 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "email-password"
     ]
   },
   "tests": [
     "Vitest",
-    "Jest"
+    "Cypress"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-01-29T17:57:33+01:00",
+  "workflows": [],
+  "lastActivity": "2026-02-11T10:01:48+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -54,15 +51,12 @@
   "tags": [
     "énergie",
     "chaleur",
-    "réseaux de chaleur",
-    "raccordement",
-    "géolocalisation",
-    "cartographie",
-    "administration",
+    "urbain",
+    "géothermie",
     "France",
-    "SIG",
-    "Next.js",
     "React",
-    "TypeScript"
+    "Next.js",
+    "PostgreSQL",
+    "MapLibre"
   ]
 }
