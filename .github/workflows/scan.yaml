@@ -30,6 +30,7 @@ jobs:
             - name: "fetch repos"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  EXCLUDE_REPOS: ${{ inputs.exclude || 'betagouv/gitscan,betagouv/dashlord' }}
               run: |
                   ./scripts/fetch-repos.sh
             - uses: EndBug/add-and-commit@v9
