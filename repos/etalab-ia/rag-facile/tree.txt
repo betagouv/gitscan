@@ -37,11 +37,47 @@
 │   │   │   ├── README.md
 │   │   │   ├── app.py
 │   │   │   ├── chainlit.md
-│   │   │   ├── context_loader.py
 │   │   │   ├── justfile
-│   │   │   ├── modules.yml
 │   │   │   ├── moon.yml
 │   │   │   ├── pyproject.toml
+│   │   │   └── template.yml
+│   │   ├── context
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── context
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── formatter.py
+│   │   │   └── template.yml
+│   │   ├── ingestion
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ingestion
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _base.py
+│   │   │   │       ├── albert.py
+│   │   │   │       └── local.py
+│   │   │   └── template.yml
+│   │   ├── orchestration
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── orchestration
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _base.py
+│   │   │   │       ├── albert.py
+│   │   │   │       └── basic.py
+│   │   │   └── template.yml
+│   │   ├── pipelines
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── pipelines
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _base.py
+│   │   │   │       ├── albert.py
+│   │   │   │       └── basic.py
 │   │   │   └── template.yml
 │   │   ├── rag-core
 │   │   │   ├── README.md
@@ -56,6 +92,7 @@
 │   │   │   │   └── rag_core
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── loader.py
+│   │   │   │       ├── mediatech.py
 │   │   │   │       ├── pdf.py
 │   │   │   │       ├── presets.py
 │   │   │   │       ├── runtime.py
@@ -82,39 +119,39 @@
 │   │   │   │   └── state.py
 │   │   │   ├── assets
 │   │   │   │   └── favicon.ico
-│   │   │   ├── context_loader.py
 │   │   │   ├── docs
 │   │   │   │   └── demo.gif
 │   │   │   ├── justfile
-│   │   │   ├── modules.yml
 │   │   │   ├── moon.yml
 │   │   │   ├── pyproject.toml
 │   │   │   ├── rxconfig.py
 │   │   │   ├── scripts
 │   │   │   │   └── open_browser.py
 │   │   │   └── template.yml
-│   │   ├── retrieval-albert
-│   │   │   ├── CHANGELOG.md
+│   │   ├── reranking
 │   │   │   ├── README.md
 │   │   │   ├── pyproject.toml
 │   │   │   ├── src
-│   │   │   │   └── retrieval_albert
+│   │   │   │   └── reranking
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── _types.py
-│   │   │   │       ├── formatter.py
-│   │   │   │       ├── ingestion.py
-│   │   │   │       ├── parser.py
-│   │   │   │       └── retriever.py
+│   │   │   │       └── albert.py
 │   │   │   └── template.yml
-│   │   ├── retrieval-basic
-│   │   │   ├── CHANGELOG.md
+│   │   ├── retrieval
 │   │   │   ├── README.md
 │   │   │   ├── pyproject.toml
 │   │   │   ├── src
-│   │   │   │   └── retrieval_basic
+│   │   │   │   └── retrieval
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── extractor.py
-│   │   │   │       └── formatter.py
+│   │   │   │       └── albert.py
+│   │   │   └── template.yml
+│   │   ├── storage
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── storage
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _base.py
+│   │   │   │       └── albert.py
 │   │   │   └── template.yml
 │   │   └── sys-config
 │   │       ├── .moon
@@ -131,6 +168,8 @@
 ├── .prototools
 ├── .python-version
 ├── .release-please-manifest.json
+├── .vscode
+│   └── settings.json
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -139,15 +178,15 @@
 ├── TEST_PLAN.md
 ├── apps
 │   ├── chainlit-chat
+│   │   ├── .chainlit
+│   │   │   └── config.toml
 │   │   ├── .env.example
 │   │   ├── .envrc
 │   │   ├── CHANGELOG.md
 │   │   ├── README.md
 │   │   ├── app.py
 │   │   ├── chainlit.md
-│   │   ├── context_loader.py
 │   │   ├── justfile
-│   │   ├── modules.yml
 │   │   ├── moon.yml
 │   │   └── pyproject.toml
 │   ├── cli
@@ -161,6 +200,7 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── commands
 │   │   │       │   ├── __init__.py
+│   │   │       │   ├── collections.py
 │   │   │       │   ├── config
 │   │   │       │   │   ├── __init__.py
 │   │   │       │   │   ├── preset.py
@@ -175,7 +215,9 @@
 │   │   │       │   │   ├── document_preprocessor.py
 │   │   │       │   │   ├── letta.py
 │   │   │       │   │   └── schema.py
-│   │   │       │   └── setup.py
+│   │   │       │   ├── setup.py
+│   │   │       │   ├── uninstall.py
+│   │   │       │   └── upgrade.py
 │   │   │       ├── main.py
 │   │   │       └── templates
 │   │   │           └── ragfacile.toml
@@ -183,7 +225,9 @@
 │   │       ├── __init__.py
 │   │       ├── test_document_preprocessor.py
 │   │       ├── test_generate_dataset.py
-│   │       └── test_setup.py
+│   │       ├── test_setup.py
+│   │       ├── test_uninstall.py
+│   │       └── test_upgrade.py
 │   └── reflex-chat
 │       ├── .env.example
 │       ├── .envrc
@@ -196,11 +240,9 @@
 │       ├── README.md
 │       ├── assets
 │       │   └── favicon.ico
-│       ├── context_loader.py
 │       ├── docs
 │       │   └── demo.gif
 │       ├── justfile
-│       ├── modules.yml
 │       ├── moon.yml
 │       ├── pyproject.toml
 │       ├── reflex_chat
@@ -225,6 +267,7 @@
 │   │   ├── getting-started.md
 │   │   ├── proxy-setup.md
 │   │   ├── rag-pipeline.md
+│   │   ├── uninstalling.md
 │   │   └── windows-setup.md
 │   ├── reference
 │   │   ├── components.md
@@ -266,6 +309,40 @@
 │   │       ├── test_rerank.py
 │   │       ├── test_search.py
 │   │       └── test_tools.py
+│   ├── context
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── context
+│   │   │       ├── __init__.py
+│   │   │       └── formatter.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_formatter.py
+│   ├── ingestion
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ingestion
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       ├── albert.py
+│   │   │       └── local.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_ingestion.py
+│   ├── pipelines
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── pipelines
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       ├── albert.py
+│   │   │       └── basic.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_pipelines.py
 │   ├── rag-core
 │   │   ├── README.md
 │   │   ├── presets
@@ -279,42 +356,50 @@
 │   │   │   └── rag_core
 │   │   │       ├── __init__.py
 │   │   │       ├── loader.py
+│   │   │       ├── mediatech.py
 │   │   │       ├── pdf.py
 │   │   │       ├── presets.py
 │   │   │       ├── runtime.py
 │   │   │       └── schema.py
 │   │   └── tests
 │   │       ├── test_loader.py
+│   │       ├── test_mediatech.py
 │   │       ├── test_presets.py
 │   │       ├── test_runtime.py
 │   │       └── test_schema.py
-│   ├── retrieval-albert
-│   │   ├── CHANGELOG.md
+│   ├── reranking
 │   │   ├── README.md
 │   │   ├── pyproject.toml
 │   │   ├── src
-│   │   │   └── retrieval_albert
+│   │   │   └── reranking
 │   │   │       ├── __init__.py
-│   │   │       ├── _types.py
-│   │   │       ├── formatter.py
-│   │   │       ├── ingestion.py
-│   │   │       ├── parser.py
-│   │   │       └── retriever.py
+│   │   │       └── albert.py
 │   │   └── tests
 │   │       ├── conftest.py
-│   │       ├── test_formatter.py
-│   │       ├── test_ingestion.py
+│   │       └── test_albert.py
+│   ├── retrieval
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── retrieval
+│   │   │       ├── __init__.py
+│   │   │       └── albert.py
+│   │   └── tests
+│   │       ├── conftest.py
 │   │       └── test_retriever.py
-│   └── retrieval-basic
-│       ├── CHANGELOG.md
+│   └── storage
 │       ├── README.md
 │       ├── pyproject.toml
-│       └── src
-│           └── retrieval_basic
-│               ├── __init__.py
-│               ├── extractor.py
-│               └── formatter.py
+│       ├── src
+│       │   └── storage
+│       │       ├── __init__.py
+│       │       ├── _base.py
+│       │       └── albert.py
+│       └── tests
+│           ├── conftest.py
+│           └── test_albert.py
 ├── pyproject.toml
+├── ragfacile.toml
 ├── release-please-config.json
 ├── samples
 │   ├── 9782340040069_extrait.pdf
@@ -327,4 +412,4 @@
 │   ├── pyproject.toml
 │   └── uv.lock
 └── uv.lock
-72 directories, 257 files
+106 directories, 308 files

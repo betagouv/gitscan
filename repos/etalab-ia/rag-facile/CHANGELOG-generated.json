@@ -1,0 +1,38 @@
+## Changelog : rag-facile (30 derniers jours)
+
+### Résumé
+Cette version apporte des améliorations significatives à rag-facile, notamment l'ajout de la prise en charge des collections publiques Albert, une meilleure gestion des erreurs avec l'intégration de liens vers les issues GitHub pour faciliter le débogage, et une refonte de l'architecture pour une plus grande modularité et flexibilité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
+
+### Évolutions fonctionnelles
+- Ajout de la prise en charge des collections publiques Albert pour l'ingestion de données.
+- Amélioration de la journalisation des erreurs de l'API Albert avec des liens directs vers les issues GitHub pour faciliter le diagnostic.
+- Possibilité de choisir entre différents frontends via un flag `--expert` dans la commande de configuration.
+- Ajout d'un test de fumée (smoke test) pour vérifier le bon fonctionnement de l'application après la construction.
+- Intégration de l'upload de fichiers PDF dans l'application de chat Reflex.
+- Ajout de filtres de recherche par tâche et par langue pour les datasets.
+- Ajout d'une commande `rag-facile uninstall` pour désinstaller l'application.
+- Ajout d'une commande `rag-facile upgrade` pour mettre à jour l'application.
+- Ajout d'une option pour afficher les commandes CLI par ordre alphabétique.
+
+### Évolutions techniques
+- Refonte de l'architecture pour une plus grande modularité avec l'introduction de packages dédiés pour l'ingestion, le traitement et la recherche.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Mise à jour des dépendances.
+- Utilisation de `just` pour la gestion des tâches et des commandes.
+- Intégration de `proto` pour la gestion des dépendances.
+- Amélioration de la configuration avec l'ajout d'un fichier `ragfacile.toml`.
+- Ajout de tests unitaires.
+- Refactorisation du code pour une meilleure lisibilité et maintenabilité.
+- Utilisation de Moon pour la génération de templates.
+- Suppression des templates générés et génération à la demande.
+- Intégration de release-please pour la gestion des versions.
+
+### Autres changements
+- Mise à jour de la documentation avec des instructions d'installation et d'utilisation plus claires.
+- Ajout d'un fichier `CONTRIBUTING.md` pour les contributeurs.
+- Ajout d'un fichier `AGENTS.md` avec des informations sur le projet.
+- Ajout d'un fichier `CHANGELOG.md` pour suivre les modifications.
+- Amélioration de la gestion des fichiers `.gitignore`.
+- Correction de problèmes de compatibilité avec différentes versions de Python.
+- Correction de problèmes de typage avec `mypy`.
+- Amélioration de la configuration de l'environnement de développement.

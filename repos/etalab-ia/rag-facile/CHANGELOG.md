@@ -5,6 +5,157 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0](https://github.com/etalab-ia/rag-facile/compare/v0.14.0...v0.15.0) (2026-02-17)
+
+
+### Features
+
+* add CI smoke test — scaffold, build and launch Chainlit app ([b70fd49](https://github.com/etalab-ia/rag-facile/commit/b70fd498d96121f611e3c259183fc69315820b83))
+* add CI smoke test — scaffold, build and launch Chainlit app ([2ffa86f](https://github.com/etalab-ia/rag-facile/commit/2ffa86f63d723911083eb04c4bdd104a14e23c82))
+* add public collections as RAG sources ([7c0fee8](https://github.com/etalab-ia/rag-facile/commit/7c0fee833db7039db55dadf4bb7a242f7501e8af))
+* **albert-client:** log API errors with gh issue command for 5xx ([3721c65](https://github.com/etalab-ia/rag-facile/commit/3721c656d8a4237a4a609e4b615eef1c928ccfba))
+* **albert-client:** log API errors with gh issue command for 5xx ([cff3299](https://github.com/etalab-ia/rag-facile/commit/cff3299909b73317dd2b2b5aee404316acc61122))
+* move frontend choice behind --expert flag ([88bb4b9](https://github.com/etalab-ia/rag-facile/commit/88bb4b9ad0d94a1de4a718554df7f14f90b720b4))
+* move frontend choice behind --expert flag in setup command ([5ed23bb](https://github.com/etalab-ia/rag-facile/commit/5ed23bbe9b215400c5f1c450becaf9b61da57d8b))
+
+
+### Bug Fixes
+
+* add collection ID logging to pipeline search ([8091901](https://github.com/etalab-ia/rag-facile/commit/80919018c426d6799618607457caadda434fdce1))
+* address Gemini review comments on public collections ([c69cd6b](https://github.com/etalab-ia/rag-facile/commit/c69cd6bfcd7f00e36fb48bcbaaefbb9493768907))
+* align pipeline tests with true RAG upload behavior ([8685147](https://github.com/etalab-ia/rag-facile/commit/8685147a712b902570198594d5490e05decdc282))
+* alphabetical option ordering in generate-dataset and uninstall ([14c4b0f](https://github.com/etalab-ia/rag-facile/commit/14c4b0fce3acf368dc51aa5118143fa81b31cf02))
+* alphabetical option ordering in setup command ([e52eb56](https://github.com/etalab-ia/rag-facile/commit/e52eb56d36d5669942b21349df482521a00ce85b))
+* ignore Chainlit translation files in nested paths ([ab50b8c](https://github.com/etalab-ia/rag-facile/commit/ab50b8c7a6ddeb4f8164ad34187467cf83e7a619))
+* ignore Chainlit translation files in nested paths ([1e62d7c](https://github.com/etalab-ia/rag-facile/commit/1e62d7cf59707793e369574a46358d6838a3e756))
+* make curl command in gh issue dynamic based on HTTP method ([119cff2](https://github.com/etalab-ia/rag-facile/commit/119cff2068ea25e2cb883969bee9b7b97e577f2d))
+* remove JSON file type from Albert ingestion provider ([17fd077](https://github.com/etalab-ia/rag-facile/commit/17fd07714edfcb89f9bacf3384a5f95b6395f473))
+* remove JSON file type from Albert ingestion provider ([60fb436](https://github.com/etalab-ia/rag-facile/commit/60fb436e1a909ed75803edf860e80dbd68e5a124))
+* respect disabled collection toggles in chat apps ([5500b9b](https://github.com/etalab-ia/rag-facile/commit/5500b9b19e4a767fee6003d7b26a896bde31c314))
+* respect disabled collection toggles in chat apps ([a7f03cb](https://github.com/etalab-ia/rag-facile/commit/a7f03cb73817aef32ca56f42348fed3d2e9b211d))
+* restrict file uploads to supported formats in Chainlit app ([fb56f4c](https://github.com/etalab-ia/rag-facile/commit/fb56f4c3bf45ece042bd8c8105b0c5cba357a03d))
+
+## [0.14.0](https://github.com/etalab-ia/rag-facile/compare/v0.13.0...v0.14.0) (2026-02-17)
+
+
+### Features
+
+* add `rag-facile uninstall` and `rag-facile upgrade` commands ([6dcb688](https://github.com/etalab-ia/rag-facile/commit/6dcb688d10f35264948e9946b0f7e3103af2b6f0))
+* add `rag-facile uninstall` and `rag-facile upgrade` commands ([5c39988](https://github.com/etalab-ia/rag-facile/commit/5c3998898d247f809d229e924692875bfc6eb2e1))
+
+
+### Bug Fixes
+
+* bundle context and reranking to correct paths for standalone setup ([9f753d9](https://github.com/etalab-ia/rag-facile/commit/9f753d9eca6934eb2c1ba9ecde370614dc7ac7f3))
+* bundle context and reranking to correct paths for standalone setup ([a4bf035](https://github.com/etalab-ia/rag-facile/commit/a4bf0353508ae743b91296d3ede7af80c21f7422))
+* default uninstall removes CLI only, --all for toolchain ([3bb4d52](https://github.com/etalab-ia/rag-facile/commit/3bb4d525d893dc9ccf7d8cd24ab92aa8f3973dc8))
+* display CLI commands in alphabetical order ([37a2d57](https://github.com/etalab-ia/rag-facile/commit/37a2d570dbd3b15be99e665a4fe7ad8b9fb1c9ef))
+
+## [0.13.0](https://github.com/etalab-ia/rag-facile/compare/v0.12.1...v0.13.0) (2026-02-17)
+
+
+### Features
+
+* add --expert flag to setup command and rename PDF pipeline to Local ([4c8b584](https://github.com/etalab-ia/rag-facile/commit/4c8b584bf156cadd212277d104bc41699699186a))
+* add --expert flag to setup command and rename PDF pipeline to Local ([3605a5a](https://github.com/etalab-ia/rag-facile/commit/3605a5a12555b1e961994c3243b0b7559f55a8da))
+* add interactive collection badges to chat apps ([fadd438](https://github.com/etalab-ia/rag-facile/commit/fadd4385bc532dd1093e7b2131d69adb151ca377))
+* add support for public Albert collections as RAG sources ([6d9ec12](https://github.com/etalab-ia/rag-facile/commit/6d9ec12b07b6a8429190c15f02609074e81dabc4))
+* add support for public Albert collections as RAG sources ([4fc5903](https://github.com/etalab-ia/rag-facile/commit/4fc5903088262b3046319e692fb5323cfbf550ac))
+
+
+### Bug Fixes
+
+* add missing open_browser.py script for reflex-chat auto-open ([b2f20be](https://github.com/etalab-ia/rag-facile/commit/b2f20be35ce2abaca278b7dca72ece07922d3a48))
+* bypass moon for app dev server to prevent dangling processes ([cbc9b59](https://github.com/etalab-ia/rag-facile/commit/cbc9b59ecff653fc7daf0960558182278f85aa8e))
+* bypass moon for app dev server to prevent dangling processes ([a9a05c4](https://github.com/etalab-ia/rag-facile/commit/a9a05c48c6ed576c3b1adc5189e84dc128efa7d2))
+* remove --public flag, add real MediaTech collection IDs to presets ([c301381](https://github.com/etalab-ia/rag-facile/commit/c3013814b4a857548c28d74886ad4c8a6f0dde21))
+* resolve CI test failure from Rich ANSI codes in assertion ([79bc659](https://github.com/etalab-ia/rag-facile/commit/79bc65911313e1e1913f39b3b86f4ab2b47266b0))
+* restore browser opener in reflex-chat moon.yml ([f6bbae2](https://github.com/etalab-ia/rag-facile/commit/f6bbae22324e955dd69e6b6e02af3b07874b724d))
+
+## [0.12.1](https://github.com/etalab-ia/rag-facile/compare/v0.12.0...v0.12.1) (2026-02-16)
+
+
+### Bug Fixes
+
+* add GIT_WORK_TREE workaround for moon in bare repo worktrees ([a45e1e3](https://github.com/etalab-ia/rag-facile/commit/a45e1e3b84bd98939ce1ef5b5d9d2c45ee5b706e))
+* add GIT_WORK_TREE workaround for moon in bare repo worktrees ([1563b56](https://github.com/etalab-ia/rag-facile/commit/1563b566e822f0f84d6ffcbb1d73fc79ba7bb50d))
+* add missing context and reranking packages to standalone setup ([a6e880e](https://github.com/etalab-ia/rag-facile/commit/a6e880e12faa950710ddbb84679b5f68defa9dc4))
+* add missing context and reranking packages to standalone setup ([75c0264](https://github.com/etalab-ia/rag-facile/commit/75c0264596af13f714350aee3631ed2d4de9f0ce))
+
+
+### Documentation
+
+* fix install instructions for macOS/zsh compatibility ([8c27ef3](https://github.com/etalab-ia/rag-facile/commit/8c27ef31f24911ff5f72c276251ef5289a0affe6))
+* fix install instructions for macOS/zsh compatibility ([1d336f6](https://github.com/etalab-ia/rag-facile/commit/1d336f6e987f9807ef257f0b07f0aa7a227680c3))
+
+## [0.12.0](https://github.com/etalab-ia/rag-facile/compare/v0.11.1...v0.12.0) (2026-02-16)
+
+
+### Features
+
+* true RAG pipeline with auto-managed collections and tuned presets ([e912ca5](https://github.com/etalab-ia/rag-facile/commit/e912ca521dc31c4389c6eea8e6b190369ff15f86))
+* true RAG pipeline with auto-managed collections and tuned presets ([4fa5cd2](https://github.com/etalab-ia/rag-facile/commit/4fa5cd2359fc8349caf035a6069915f760b3172c))
+
+
+### Bug Fixes
+
+* address review comments on context injection and session naming ([b89e69e](https://github.com/etalab-ia/rag-facile/commit/b89e69ef9eb6ed05021ec048c437b45d5ac2820b))
+* increase retrieval depth for better recall on long sections ([48de5c4](https://github.com/etalab-ia/rag-facile/commit/48de5c4c94052f1cb9329deb7bf55779525b54df))
+* make Collection model fields optional for create response ([8e18529](https://github.com/etalab-ia/rag-facile/commit/8e185297eae58010f809f4b856fb8382aa9395f1))
+* use date-sorted release badge to avoid shields.io semver bug ([54586ef](https://github.com/etalab-ia/rag-facile/commit/54586efc80f858955ed3efd174199d4d27a53426))
+* use date-sorted release badge to avoid shields.io semver bug ([8d6175a](https://github.com/etalab-ia/rag-facile/commit/8d6175a7e882072fa3f67004ed45f1a14d734660))
+
+## [0.11.1](https://github.com/etalab-ia/rag-facile/compare/v0.11.0...v0.11.1) (2026-02-15)
+
+
+### Bug Fixes
+
+* address review comments on process_query and rerank_chunks ([06de58b](https://github.com/etalab-ia/rag-facile/commit/06de58ba6887829936b81c651f1f5dbf7f23e2ad))
+
+## [0.11.0](https://github.com/etalab-ia/rag-facile/compare/v0.10.1...v0.11.0) (2026-02-15)
+
+
+### Features
+
+* Add initial `ragfacile.toml` configuration file for RAG system settings. ([482ad12](https://github.com/etalab-ia/rag-facile/commit/482ad12a58ecacf99c4bd9afa09989504fdc5d4e))
+* add retrieval-albert package and remove Chroma placeholder ([32a93af](https://github.com/etalab-ia/rag-facile/commit/32a93af64a53dd3a02ce3bb01bb55927fb47e5f8))
+* add retrieval-albert package and remove Chroma placeholder ([7834dce](https://github.com/etalab-ia/rag-facile/commit/7834dce74b6738dd08370ba4b713baa2ac4088c6))
+* display config show in RAG pipeline order with descriptions ([c810ccb](https://github.com/etalab-ia/rag-facile/commit/c810ccb3ce77b9d1527a79acd2e6310bf70f3539))
+* display config show in RAG pipeline order with descriptions ([5955e82](https://github.com/etalab-ia/rag-facile/commit/5955e8298f87c625789d339ca3d246e8ed793784))
+* local PDF fallback when Albert parse API fails ([67350f2](https://github.com/etalab-ia/rag-facile/commit/67350f2eeb9490a8f656273ab2dd847be9654e0a))
+* multi-format file support for retrieval-albert, update TEST_PLAN ([7ab2bc3](https://github.com/etalab-ia/rag-facile/commit/7ab2bc32a950273c4684f87dea2077ce17252f62))
+* uniform table widths in config show ([4466dba](https://github.com/etalab-ia/rag-facile/commit/4466dba7251b3d19e8a09299463cfa18f025538d))
+
+
+### Bug Fixes
+
+* add interactive retrieval module selection to setup command ([2bba840](https://github.com/etalab-ia/rag-facile/commit/2bba840b791779ad944b989554e784c0b43ca858))
+* address code review comments from Gemini Code Assist ([63a788f](https://github.com/etalab-ia/rag-facile/commit/63a788ff3bfcb484f28961f25a70250c3307d252))
+* address Gemini Code Assist review comments ([9ed3b9c](https://github.com/etalab-ia/rag-facile/commit/9ed3b9c59cc9bd2402c9c0324e038ee5cda8e779))
+* address Gemini review - sort __all__, simplify dotted_key logic ([783e3c2](https://github.com/etalab-ia/rag-facile/commit/783e3c20b4007b15ae57b7f0b5d2369fd8b558c3))
+* chainlit repeating all responses + handle malformed SSE ([531f056](https://github.com/etalab-ia/rag-facile/commit/531f05657ff5779e1bcf1836cea2629d2f5dac7e))
+* display storage backend in config show command ([bac5bb9](https://github.com/etalab-ia/rag-facile/commit/bac5bb9a90441136865fc9239d343702fe9cb786))
+* make Albert RAG first choice, remove broken Chainlit config gen ([a4332bc](https://github.com/etalab-ia/rag-facile/commit/a4332bcb33a6c1735a7f491a6369a4216f4c6324))
+* make retrieval-albert interchangeable with retrieval-basic ([4f993cc](https://github.com/etalab-ia/rag-facile/commit/4f993cce42c381de04b0e9b035bd9b91852842ae))
+* monorepo templates conditionally use retrieval-basic or retrieval-albert ([1ffa0cf](https://github.com/etalab-ia/rag-facile/commit/1ffa0cf7bcc33175fc7c4de5528f73485e556262))
+* reflex app crashes on malformed SSE events from Albert API ([6c41d7d](https://github.com/etalab-ia/rag-facile/commit/6c41d7dc12998c780ccb110f14285cac24aa56de))
+* rename albert_rag provider for clarity ([33ef440](https://github.com/etalab-ia/rag-facile/commit/33ef440e61c36c340d9e846231c86e6f9e6a5fa7))
+* rename Reflex app package dir after moon generate ([e501d21](https://github.com/etalab-ia/rag-facile/commit/e501d2153a0f625537f999d7aff47430f3f56812))
+* restrict file types to Albert API-supported formats ([dc25e79](https://github.com/etalab-ia/rag-facile/commit/dc25e79601cd2c1ade8716d87c5c46b5ee4730e4))
+* update golden master modules.yml from stale pdf_context ([1a551a7](https://github.com/etalab-ia/rag-facile/commit/1a551a796af2280fb725992823a6537489e32a1d))
+* update setup command to use unified retrieval template ([65d11ba](https://github.com/etalab-ia/rag-facile/commit/65d11baac91808fa17ca9daa5cf11a286f19470d))
+* use Albert API model aliases instead of raw model IDs ([ea5c5b9](https://github.com/etalab-ia/rag-facile/commit/ea5c5b9681d86cb00abe7172afea1afb93616a40))
+
+
+### Documentation
+
+* update for Albert RAG component and retrieval modules ([052792c](https://github.com/etalab-ia/rag-facile/commit/052792cc3daf658c314a9bc153ec745eeb822ebc))
+
+
+### Code Refactoring
+
+* consolidate citation config and unify schema terminology ([065e41b](https://github.com/etalab-ia/rag-facile/commit/065e41bdfbc8cbec9cc26dca1e013567718ed8e8))
+
 ## [0.10.1](https://github.com/etalab-ia/rag-facile/compare/v0.10.0...v0.10.1) (2026-02-13)
 
 

@@ -1,6 +1,6 @@
 # RAG Facile
 
-[![Release](https://img.shields.io/github/v/release/etalab-ia/rag-facile?style=flat-square)](https://github.com/etalab-ia/rag-facile/releases)
+[![Release](https://img.shields.io/github/v/release/etalab-ia/rag-facile?sort=date&style=flat-square)](https://github.com/etalab-ia/rag-facile/releases)
 [![License](https://img.shields.io/github/license/etalab-ia/rag-facile?style=flat-square)](LICENSE)
 
 ```
@@ -23,18 +23,19 @@ Build a RAG application for the French government in under 5 minutes, powered by
 
 One command installs the entire toolchain and the `rag-facile` CLI:
 
+Linux / macOS / WSL:
+
 ```bash
-# Linux / macOS / WSL
 curl -fsSL https://raw.githubusercontent.com/etalab-ia/rag-facile/main/install.sh | bash
-source ~/.bashrc  # or restart your terminal
 ```
 
+Windows (PowerShell):
+
 ```powershell
-# Windows (PowerShell)
 irm https://raw.githubusercontent.com/etalab-ia/rag-facile/main/install.ps1 | iex
 ```
 
-Verify it worked:
+Then **restart your terminal** (or run the `source` command shown by the installer) and verify it worked:
 
 ```bash
 rag-facile --help
@@ -46,21 +47,33 @@ rag-facile --help
 rag-facile setup my-rag-app
 ```
 
-The CLI will guide you through choosing a project structure, a configuration preset, and a frontend. After setup, it installs dependencies and starts the dev server — your app opens in the browser, ready to use.
+The CLI will guide you through choosing a configuration preset and your API key. After setup, it installs dependencies and starts the dev server — your app opens in the browser, ready to use. Use `--expert` for advanced options like project structure, frontend, and pipeline selection.
 
 ## Upgrade
 
 Re-run the installer to get the latest version:
 
+Linux / macOS / WSL:
+
 ```bash
-# Linux / macOS / WSL
 curl -fsSL https://raw.githubusercontent.com/etalab-ia/rag-facile/main/install.sh | bash
 ```
 
+Windows (PowerShell):
+
 ```powershell
-# Windows (PowerShell)
 irm https://raw.githubusercontent.com/etalab-ia/rag-facile/main/install.ps1 | iex
 ```
+
+## Uninstall
+
+To remove RAG Facile and its entire toolchain:
+
+```bash
+rag-facile uninstall
+```
+
+See the [Uninstalling Guide](docs/guides/uninstalling.md) for manual steps and details.
 
 ## Documentation
 
@@ -73,6 +86,7 @@ irm https://raw.githubusercontent.com/etalab-ia/rag-facile/main/install.ps1 | ie
 | [Components Reference](docs/reference/components.md) | Albert Client SDK, frontend apps, and modules |
 | [Windows Setup](docs/guides/windows-setup.md) | Complete guide for Windows (PowerShell and Git Bash) |
 | [Proxy & Network Setup](docs/guides/proxy-setup.md) | Install behind corporate proxies and VPNs |
+| [Uninstalling](docs/guides/uninstalling.md) | Remove RAG Facile and its toolchain |
 
 ## Contributing
 

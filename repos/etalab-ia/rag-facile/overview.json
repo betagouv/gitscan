@@ -1,54 +1,62 @@
 {
   "url": "https://github.com/etalab-ia/rag-facile",
   "name": "rag-facile",
-  "description": "RAG Facile est une trousse de démarrage pour la construction d'applications RAG (Retrieval-Augmented Generation) dans l'administration française, en utilisant l'API Albert. Elle est conçue pour des projets exploratoires.",
+  "description": "RAG Facile permet de construire une application RAG pour l'administration française en moins de 5 minutes, en s'appuyant sur l'API Albert. Il offre une trousse de démarrage accessible et des fonctionnalités pour l'ingestion de documents, la recherche et l'assemblage de contexte.",
   "language": "Python",
   "features": [
-    "Génération de modèles",
-    "Intégration PDF",
-    "Interface de chat"
+    "Création rapide d'applications RAG",
+    "Intégration avec l'API Albert",
+    "Ingestion de documents (PDF, Markdown, HTML)",
+    "Recherche sémantique",
+    "Assemblage de contexte",
+    "Interface de chat",
+    "Gestion de la configuration"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "albert-client",
     "chainlit",
-    "streamlit",
-    "openai",
-    "pypdf",
     "reflex",
-    "typer",
-    "ruff"
+    "pydantic",
+    "pypdf",
+    "tomli-w",
+    "httpx",
+    "openai"
   ],
   "components": [
-    "Frontend Reflex",
-    "Frontend Streamlit",
-    "API Python",
-    "CLI Python"
+    "CLI (Command Line Interface)",
+    "API REST (Albert API)",
+    "Frontend (Chainlit, Reflex)",
+    "Pipeline RAG",
+    "Système de configuration"
   ],
   "auth": {
     "methods": [
-      "none"
+      "api-key"
     ]
   },
-  "tests": null,
+  "tests": "Pytest, respx",
   "workflows": [
-    "ci.yml"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-31T13:10:47+01:00",
+  "lastActivity": "2026-02-17T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 1,
-    "contributors": 1,
-    "openIssues": 0
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
   },
   "tags": [
     "RAG",
-    "LLM",
-    "Python",
     "Albert API",
-    "Chatbot",
-    "Government"
+    "IA",
+    "Gouvernement",
+    "Python",
+    "LLM",
+    "NLP",
+    "Chatbot"
   ]
 }
