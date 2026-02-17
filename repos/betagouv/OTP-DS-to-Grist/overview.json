@@ -1,39 +1,31 @@
 {
   "url": "https://github.com/betagouv/OTP-DS-to-Grist",
   "name": "OTP-DS-to-Grist",
-  "description": "Ce projet permet de synchroniser des données de Démarches Simplifiées vers Grist pour les utilisateurs ayant les droits nécessaires. Il facilite l'exportation et la gestion des données entre ces deux plateformes.",
+  "description": "OTP-DS-to-Grist est un gestionnaire de connecteur entre Démarches Simplifiées et Grist. Il permet d'exporter des données de Démarches Simplifiées vers Grist.",
   "language": "Python",
   "features": [
-    "Synchronisation de données",
+    "Synchronisation des données",
     "Configuration de filtres",
-    "Gestion des tokens API",
-    "Interface utilisateur",
-    "Suivi de la progression",
-    "Journaux détaillés",
-    "Synchronisation automatique"
+    "Gestion des connexions API",
+    "Interface de configuration",
+    "Suivi de la progression de la synchronisation",
+    "Affichage des logs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Flask",
     "Flask-SocketIO",
-    "Python-dotenv",
     "Requests",
-    "Python-SocketIO",
-    "Eventlet",
-    "Gevent",
-    "Python-dateutil",
-    "Gunicorn",
-    "Cryptography",
-    "Psycopg2-binary",
+    "SQLAlchemy",
     "APScheduler",
-    "SQLAlchemy"
+    "psycopg2-binary",
+    "python-dotenv"
   ],
   "components": [
     "Backend Flask",
-    "Interface utilisateur (JavaScript)",
-    "Base de données (PostgreSQL)",
-    "Planificateur de tâches (APScheduler)",
-    "API REST"
+    "Interface utilisateur web",
+    "Base de données PostgreSQL",
+    "Planificateur de tâches (APScheduler)"
   ],
   "auth": {
     "methods": [
@@ -41,13 +33,13 @@
     ]
   },
   "tests": [
-    "Jest",
-    "Pytest"
+    "Pytest",
+    "Jest"
   ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-01-29T11:20:26+01:00",
+  "lastActivity": "2026-02-16T17:08:58+01:00",
   "status": "active",
   "license": "ISC",
   "hasDocumentation": true,
@@ -63,7 +55,6 @@
     "Synchronisation de données",
     "API",
     "Python",
-    "Flask",
-    "Automatisation"
+    "Flask"
   ]
 }
