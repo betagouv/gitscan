@@ -1,53 +1,47 @@
 {
   "url": "https://github.com/betagouv/signalconso-website",
   "name": "signalconso-website",
-  "description": "Le site public SignalConso est une plateforme permettant de signaler des anomalies ou des problèmes rencontrés par les utilisateurs.",
+  "description": "Le site public SignalConso est une plateforme permettant de signaler des anomalies ou des problèmes rencontrés avec les services publics en ligne.",
   "language": "TypeScript",
   "features": [
+    "Authentification utilisateur",
     "Signalement d'anomalies",
     "Gestion des signalements",
-    "Analyse des données",
-    "Interface utilisateur web"
+    "Suivi des signalements",
+    "Statistiques"
   ],
   "audience": "Grand public",
   "dependencies": [
     "React",
+    "Node.js",
     "Express",
-    "Airtable",
-    "Google APIs",
     "TypeScript",
-    "Next.js"
+    "Airtable"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "Base de données Airtable",
-    "Serveur Node.js"
+    "Base de données (Airtable)",
+    "Backend Node.js"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2"
     ],
-    "providers": [
-      "Google"
-    ]
+    "providers": []
   },
   "tests": [
     "Jest",
-    "Playwright",
-    "Cypress"
+    "Playwright"
   ],
   "workflows": [
     "build-all.yml",
-    "build-mobiles-tools.yml",
     "build-website.yml",
-    "gen-satisfaction-data.yml",
     "generate-actus.yml",
-    "generate-analytics.yml",
-    "integration-tests.yml",
-    "sanitize-anomalies-filenames.yml"
+    "integration-tests.yml"
   ],
-  "lastActivity": "2026-01-23T16:49:03Z",
+  "lastActivity": "2026-01-23T16:49:03+00:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -59,11 +53,10 @@
   },
   "tags": [
     "signalement",
-    "anomalies",
+    "administration",
+    "services publics",
     "web",
     "typescript",
-    "react",
-    "administration",
-    "open data"
+    "react"
   ]
 }
