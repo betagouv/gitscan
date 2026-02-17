@@ -5,28 +5,28 @@
   "language": "Python",
   "features": [
     "Déploiement facile d'errbot",
-    "Configuration automatique",
+    "Configuration préconfigurée",
     "Support de Mattermost",
     "Stockage Redis"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "errbot",
-    "Mattermost",
-    "Redis",
+    "mattermostdriver",
+    "redis",
     "asyncio",
     "boto3",
     "jsonpickle",
-    "mattermostdriver",
     "dulwich",
     "cryptography",
     "Werkzeug"
   ],
   "components": [
     "Buildpack",
-    "Script de compilation",
-    "Fichiers de configuration",
-    "Docker"
+    "errbot",
+    "Mattermost backend",
+    "Redis storage",
+    "Fichiers de configuration"
   ],
   "auth": {
     "methods": [
