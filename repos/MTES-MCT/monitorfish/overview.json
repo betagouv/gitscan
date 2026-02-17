@@ -1,53 +1,55 @@
 {
-  "url": "https://github.com/mtes-mct/monitorfish",
+  "url": "https://github.com/MTES-MCT/monitorfish",
   "name": "monitorfish",
-  "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé par l'administration française pour le Centre National de Surveillance des Pêches. Il permet de visualiser les positions des navires, les données d'activité de pêche et de détecter les fraudes.",
-  "language": "TypeScript",
+  "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé par l'administration française pour le Centre National de Surveillance des Pêches. Il vise à améliorer le suivi et le contrôle des activités de pêche.",
+  "language": "JavaScript",
   "features": [
-    "Visualisation des positions des navires",
-    "Visualisation des données d'activité de pêche",
-    "Alertes de fraude",
-    "Gestion des rapports d'inspection",
-    "Surveillance des zones réglementées",
-    "Calcul du facteur de risque",
-    "Gestion des groupes de navires"
+    "Visualisation des positions des navires de pêche (VMS)",
+    "Visualisation des données d'activité de pêche (ERS et FLUX)",
+    "Vue d'ensemble de l'activité",
+    "Rapports d'activité (Act-Rep)",
+    "Saisie de données des rapports d'inspection",
+    "Visualisation des inspections et infractions historiques",
+    "Visualisation des zones de pêche réglementées",
+    "Calcul du facteur de risque des navires",
+    "Vérification de la conformité des préavis de retour au port",
+    "Création et partage de groupes de navires",
+    "Panneau d'administration pour la gestion des données et des paramètres"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
-    "Redux",
-    "TypeScript",
     "PostgreSQL",
-    "OL",
-    "Zod",
-    "Cypress"
+    "Keycloak",
+    "Geoserver",
+    "Cypress",
+    "React"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Service Worker"
+    "Keycloak pour l'authentification",
+    "Geoserver pour les données géospatiales"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": [
-    "Jest",
     "Cypress",
-    "ESLint"
+    "Jest"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD workflows defined in .github/workflows"
   ],
-  "lastActivity": "2026-01-29T17:05:23+01:00",
+  "lastActivity": "2026-02-17T17:05:15+01:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": "GNU Affero GPL Version 3",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -59,11 +61,14 @@
     "pêche",
     "surveillance",
     "navires",
+    "VMS",
+    "ERS",
+    "réglementation",
     "contrôle",
     "fraude",
-    "maritime",
-    "administration",
-    "typescript",
-    "react"
+    "géospatial",
+    "PostgreSQL",
+    "React",
+    "Keycloak"
   ]
 }
