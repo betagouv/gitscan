@@ -1,0 +1,16 @@
+## Changelog : github-export (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour de github-export se concentrent principalement sur l'amélioration de la robustesse et de la fiabilité du processus de migration, notamment via des ajustements de l'orchestration et la gestion de l'état de la migration. Des correctifs ont également été apportés pour gérer plus finement les dépôts inactifs et pour améliorer le workflow de nettoyage sur Codeberg.
+
+### Évolutions fonctionnelles
+- Ajout d'un workflow pour nettoyer les dépôts inactifs sur Codeberg (#112b127).
+- Possibilité d'exclure les dépôts inactifs de la migration via le paramètre `exclude_inactive_days` (#a98e829).
+- Correction d'un bug qui empêchait la synchronisation (#763bfdc, #221a8ee, #5e99964).
+- Correction d'un bug qui empêchait de sauter les issues et les pull requests (#dcac9aa).
+
+### Évolutions techniques
+- Modification de la planification de la synchronisation pour qu'elle s'exécute quotidiennement à 2h UTC (#93035c2).
+- Amélioration de la gestion de l'état de la migration dans les workflows GitHub Actions, avec des mises à jour après chaque étape (discovery et batch processing) (#b26f19b, #3787a6c, #72cec50, #e53227d, #4a5518b, #2fe7b7f, #53a486f, #57129d0, #201cc66, #b4f05c3, #4b45975, #6a79b7d, #030fa77, #917debe, #6911f7a, #cf057de, #2be0383, #a24cb0f, #f0d054f, #3f3a010, #80e7b4e, #73b20b5, #c724d3a, #a182f4d, #c7726b3, #340aab3, #8660f34, #0fded42, #191ddf0, #4869d16, #6692c5c, #906a243, #d7b107a, #08c3a57, #4536f7e, #077e107, #e9bfa42, #0100f22, #3c3d8b1, #a5dd50b, #89bba51, #8d879d6, #261f9f3, #7142996, #300b9b6, #dd58a49).
+- Correction de bugs dans le workflow de nettoyage Codeberg (#4debaf0).
+- Amélioration de la gestion des dépôts inactifs dans le workflow de nettoyage Codeberg (#112b127).
