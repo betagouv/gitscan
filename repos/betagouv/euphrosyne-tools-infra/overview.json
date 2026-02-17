@@ -1,29 +1,31 @@
 {
   "url": "https://github.com/betagouv/euphrosyne-tools-infra",
   "name": "euphrosyne-tools-infra",
-  "description": "Ce projet fournit l'infrastructure en tant que code pour la mise à disposition d'outils aux chercheurs NewAGLAE. Il permet de gérer et de provisionner l'infrastructure nécessaire à ces outils de manière automatisée.",
+  "description": "Ce projet fournit l'infrastructure en tant que code pour la mise à disposition des outils aux chercheurs NewAGLAE. Il permet de gérer et de provisionner l'infrastructure Azure nécessaire à ces outils.",
   "language": "HCL",
   "features": [],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Terraform",
-    "Azure"
+    "Azure",
+    "Guacamole"
   ],
   "components": [
     "Infrastructure as Code",
     "Terraform",
-    "Azure Resource Manager"
+    "Azure Resource Manager",
+    "Base de données MySQL (Guacamole)"
   ],
   "auth": {
     "methods": [
-      "none"
+      "api-key"
     ]
   },
   "tests": [],
   "workflows": [
     "validate"
   ],
-  "lastActivity": "2025-11-29T08:01:37-10:00",
+  "lastActivity": "2025-11-29T18:01:48Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -36,8 +38,8 @@
   "tags": [
     "Terraform",
     "Azure",
-    "IaC",
-    "Infrastructure",
-    "NewAGLAE"
+    "Infrastructure as Code",
+    "Guacamole",
+    "DevOps"
   ]
 }
