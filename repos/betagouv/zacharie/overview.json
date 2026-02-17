@@ -1,71 +1,75 @@
 {
   "url": "https://github.com/betagouv/zacharie",
   "name": "zacharie",
-  "description": "Zacharie est une application web visant à garantir la sécurité et la traçabilité des viandes de gibier sauvage, facilitant la gestion des données pour les différents acteurs de la filière.",
+  "description": "Zacharie est une application web pour le suivi des chasses et des carcasses, permettant la gestion des données relatives aux animaux abattus et aux contrôles sanitaires. Elle vise à améliorer la traçabilité et la sécurité alimentaire.",
   "language": "TypeScript",
   "features": [
+    "Gestion des chasses",
     "Gestion des carcasses",
-    "Suivi des examens sanitaires",
-    "Gestion des utilisateurs et des rôles",
-    "Export de données",
+    "Suivi des contrôles sanitaires",
+    "Gestion des utilisateurs",
+    "Génération de rapports",
+    "Exportation des données",
     "Notifications",
-    "Intégration avec des services tiers (Metabase)",
+    "Authentification",
     "Gestion des partenaires",
-    "Création de comptes circuit court"
+    "Tableau de bord"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
     "Express",
+    "PostgreSQL",
     "Prisma",
     "bcryptjs",
     "jsonwebtoken",
-    "passport",
     "cors",
     "dayjs",
-    "zod",
-    "react",
-    "react-dom"
+    "react-router",
+    "react-toastify"
   ],
   "components": [
-    "API REST",
     "Frontend React",
+    "API REST Express",
     "Base de données PostgreSQL",
-    "Serveur Express",
     "Authentification JWT",
-    "Cronjobs"
+    "Architecture local-first"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "api-key"
+      "jwt"
     ],
-    "providers": []
+    "providers": null
   },
   "tests": [
+    "Jest",
     "Vitest",
-    "Playwright"
+    "Cypress"
   ],
   "workflows": [
-    "tests.yml"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-01-30T11:36:31+00:00",
+  "lastActivity": "2026-02-17T14:09:50+02:00",
   "status": "active",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 1,
-    "forks": 1,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 7
+    "openIssues": null
   },
   "tags": [
-    "gibier",
-    "santé",
+    "chasse",
+    "carcasse",
+    "sanitaire",
     "traçabilité",
     "administration",
-    "viande",
-    "PostgreSQL",
+    "SVI",
+    "ETG",
+    "React",
     "TypeScript",
-    "React"
+    "PostgreSQL"
   ]
 }

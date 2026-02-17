@@ -1,0 +1,39 @@
+## Changelog : zacharie (30 derniers jours)
+
+### Résumé
+Ce changelog présente les améliorations apportées à Zacharie au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de l'interface utilisateur, des optimisations de la synchronisation des données, et des évolutions concernant la gestion des carcasses et des FEI (Fiche d'Enregistrement Individuelle). Des efforts ont également été faits pour nettoyer et simplifier le code.
+
+### Évolutions fonctionnelles
+- Correction d'un bug empêchant l'enregistrement des commentaires sur une carcasse non refusée.
+- Amélioration de la gestion des carcasses sans décision, qui sont désormais affichées comme acceptées (#124).
+- Ajout de la possibilité de créer des contacts CCG (Circuit Court Groupement) directement lors du flux FEI (#147).
+- Synchronisation des contacts de circuit court vers Brevo (#144).
+- Ajout d'un motif SVI (Surveillance Vétérinaire et Industrielle) dans le tableau de bord.
+- Ajout de la possibilité de sauter des étapes lors de l'onboarding (#138).
+- Ajout de champs de propriété à la Carcasse (#145).
+- Ajout d'une fonctionnalité pour afficher uniquement un onglet "Entreprise" (#125).
+- Correction de l'affichage des carcasses avec des statuts non définis.
+- Ajout de la possibilité de ne pas activer un utilisateur lors de sa création.
+- Correction de l'affichage des statistiques SVI dans le tableau de bord.
+- Ajout d'un champ motif SVI dans le dashboard.
+- Ajout d'une gestion des utilisateurs non activés.
+
+### Évolutions techniques
+- Refonte de la synchronisation des données FEI avec un nouveau endpoint `/sync` pour une meilleure performance (#173, #154).
+- Extraction de la logique de sauvegarde des FEI, carcasses et carcasses intermédiaires pour une meilleure modularité.
+- Utilisation de types `SyncRequest` et `SyncResponse` pour améliorer la clarté du code.
+- Correction d'une condition de course entre l'ETG et le transport lors de la synchronisation.
+- Optimisation du chargement des FEI pour éviter les problèmes de synchronisation.
+- Nettoyage du code, suppression de code obsolète et simplification de la structure des données.
+- Amélioration de la gestion des relations entre les entités.
+- Correction de problèmes liés à la gestion des données en local-first.
+
+### Autres changements
+- Mise à jour des dépendances `lodash` et `tar` (#155, #152).
+- Ajout d'un fichier `CLAUDER.md` pour documenter l'architecture local-first.
+- Mise à jour du fichier `.gitignore`.
+- Amélioration des tests et correction de tests défaillants.
+- Correction de problèmes de typage.
+- Suppression de certaines espèces (Cailles et Oies) de la liste des espèces.
+- Amélioration de la documentation.
+- Correction de problèmes d'affichage de l'interface utilisateur.
