@@ -1,14 +1,14 @@
 {
-  "url": "https://github.com/mtes-mct/vigieau-api",
+  "url": "https://github.com/MTES-MCT/vigieau-api",
   "name": "vigieau-api",
-  "description": "L'API permet de retourner les restrictions en vigueur en lien avec la politique de préservation de la ressource en eau. Elle se base sur les données de VigiEau Admin.",
+  "description": "API permettant de retourner les restrictions en vigueur en lien avec la politique de préservation de la ressource en eau.",
   "language": "TypeScript",
   "features": [
     "Récupérer la réglementation applicable à une localisation",
     "Recherche de communes",
     "Gestion des alertes sécheresse"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "@nestjs/axios",
     "@nestjs/config",
@@ -16,9 +16,14 @@
     "@nestjs/passport",
     "@nestjs/typeorm",
     "pg",
-    "rxjs",
+    "axios",
+    "class-transformer",
     "class-validator",
-    "class-transformer"
+    "lodash",
+    "moment",
+    "passport",
+    "passport-jwt",
+    "typeorm"
   ],
   "components": [
     "API REST",
@@ -36,7 +41,7 @@
     "Supertest"
   ],
   "workflows": [],
-  "lastActivity": "2026-01-30T07:15:04Z",
+  "lastActivity": "2026-02-17T03:59:25Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -44,7 +49,7 @@
     "stars": 3,
     "forks": 0,
     "contributors": null,
-    "openIssues": 19
+    "openIssues": 18
   },
   "tags": [
     "sécheresse",
