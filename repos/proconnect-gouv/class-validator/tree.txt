@@ -1,0 +1,235 @@
+.
+├── .eslintrc.yml
+├── .gitbook.yaml
+├── .github
+│   ├── dependabot.yml
+│   ├── semantic.yml
+│   └── workflows
+│       ├── auto-approve-dependabot-workflow.yml
+│       ├── continuous-deployment-workflow.yml
+│       ├── continuous-integration-workflow.yml
+│       └── lock-closed-issues-workflow.yml
+├── .gitignore
+├── .prettierrc.yml
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── codecov.yml
+├── docs
+│   ├── README.md
+│   ├── basics
+│   │   └── validating-objects.md
+│   └── introduction
+│       └── installation.md
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── rollup.config.js
+├── sample
+│   ├── sample1-simple-validation
+│   │   ├── Post.ts
+│   │   └── app.ts
+│   ├── sample2-using-groups
+│   │   ├── Post.ts
+│   │   └── app.ts
+│   ├── sample3-nested-objects
+│   │   ├── Post.ts
+│   │   ├── Tag.ts
+│   │   └── app.ts
+│   ├── sample4-custom-validator
+│   │   ├── CustomTextLength.ts
+│   │   ├── Post.ts
+│   │   └── app.ts
+│   ├── sample5-schemas
+│   │   ├── Post.ts
+│   │   ├── app.ts
+│   │   └── post.json
+│   ├── sample6-custom-decorator
+│   │   ├── IsLongerThan.ts
+│   │   ├── IsUserAlreadyExist.ts
+│   │   ├── User.ts
+│   │   └── app.ts
+│   ├── sample7-inheritance-support
+│   │   ├── BaseContent.ts
+│   │   ├── Post.ts
+│   │   └── app.ts
+│   ├── sample8-es6-maps
+│   │   ├── Post.ts
+│   │   ├── Tag.ts
+│   │   └── app.ts
+│   └── sample9-es6-sets
+│       ├── Post.ts
+│       ├── Tag.ts
+│       └── app.ts
+├── src
+│   ├── container.ts
+│   ├── decorator
+│   │   ├── ValidationOptions.ts
+│   │   ├── array
+│   │   │   ├── ArrayContains.ts
+│   │   │   ├── ArrayMaxSize.ts
+│   │   │   ├── ArrayMinSize.ts
+│   │   │   ├── ArrayNotContains.ts
+│   │   │   ├── ArrayNotEmpty.ts
+│   │   │   └── ArrayUnique.ts
+│   │   ├── common
+│   │   │   ├── Allow.ts
+│   │   │   ├── Equals.ts
+│   │   │   ├── IsDefined.ts
+│   │   │   ├── IsEmpty.ts
+│   │   │   ├── IsIn.spec.ts
+│   │   │   ├── IsIn.ts
+│   │   │   ├── IsLatLong.ts
+│   │   │   ├── IsLatitude.ts
+│   │   │   ├── IsLongitude.ts
+│   │   │   ├── IsNotEmpty.ts
+│   │   │   ├── IsNotIn.ts
+│   │   │   ├── IsOptional.ts
+│   │   │   ├── NotEquals.ts
+│   │   │   ├── Validate.ts
+│   │   │   ├── ValidateBy.ts
+│   │   │   ├── ValidateIf.ts
+│   │   │   ├── ValidateNested.ts
+│   │   │   └── ValidatePromise.ts
+│   │   ├── date
+│   │   │   ├── MaxDate.ts
+│   │   │   └── MinDate.ts
+│   │   ├── decorators.ts
+│   │   ├── number
+│   │   │   ├── IsDivisibleBy.ts
+│   │   │   ├── IsNegative.ts
+│   │   │   ├── IsPositive.ts
+│   │   │   ├── Max.ts
+│   │   │   └── Min.ts
+│   │   ├── object
+│   │   │   ├── IsInstance.ts
+│   │   │   └── IsNotEmptyObject.ts
+│   │   ├── string
+│   │   │   ├── Contains.ts
+│   │   │   ├── IsAlpha.ts
+│   │   │   ├── IsAlphanumeric.ts
+│   │   │   ├── IsAscii.ts
+│   │   │   ├── IsBIC.ts
+│   │   │   ├── IsBase32.ts
+│   │   │   ├── IsBase58.ts
+│   │   │   ├── IsBase64.ts
+│   │   │   ├── IsBooleanString.ts
+│   │   │   ├── IsBtcAddress.ts
+│   │   │   ├── IsByteLength.ts
+│   │   │   ├── IsCreditCard.ts
+│   │   │   ├── IsCurrency.ts
+│   │   │   ├── IsDataURI.ts
+│   │   │   ├── IsDateString.ts
+│   │   │   ├── IsDecimal.ts
+│   │   │   ├── IsEAN.ts
+│   │   │   ├── IsEmail.ts
+│   │   │   ├── IsEthereumAddress.ts
+│   │   │   ├── IsFQDN.ts
+│   │   │   ├── IsFirebasePushId.ts
+│   │   │   ├── IsFullWidth.ts
+│   │   │   ├── IsHSL.ts
+│   │   │   ├── IsHalfWidth.ts
+│   │   │   ├── IsHash.ts
+│   │   │   ├── IsHexColor.ts
+│   │   │   ├── IsHexadecimal.ts
+│   │   │   ├── IsIBAN.ts
+│   │   │   ├── IsIP.ts
+│   │   │   ├── IsISBN.ts
+│   │   │   ├── IsISIN.ts
+│   │   │   ├── IsISO31661Alpha2.ts
+│   │   │   ├── IsISO31661Alpha3.ts
+│   │   │   ├── IsISO8601.ts
+│   │   │   ├── IsISRC.ts
+│   │   │   ├── IsISSN.ts
+│   │   │   ├── IsIdentityCard.ts
+│   │   │   ├── IsJSON.ts
+│   │   │   ├── IsJWT.ts
+│   │   │   ├── IsLocale.ts
+│   │   │   ├── IsLowercase.ts
+│   │   │   ├── IsMacAddress.ts
+│   │   │   ├── IsMagnetURI.ts
+│   │   │   ├── IsMilitaryTime.ts
+│   │   │   ├── IsMimeType.ts
+│   │   │   ├── IsMobilePhone.ts
+│   │   │   ├── IsMongoId.ts
+│   │   │   ├── IsMultibyte.ts
+│   │   │   ├── IsNumberString.ts
+│   │   │   ├── IsOctal.ts
+│   │   │   ├── IsPassportNumber.ts
+│   │   │   ├── IsPhoneNumber.spec.ts
+│   │   │   ├── IsPhoneNumber.ts
+│   │   │   ├── IsPort.ts
+│   │   │   ├── IsPostalCode.ts
+│   │   │   ├── IsRFC3339.ts
+│   │   │   ├── IsRgbColor.ts
+│   │   │   ├── IsSemVer.ts
+│   │   │   ├── IsStrongPassword.ts
+│   │   │   ├── IsSurrogatePair.ts
+│   │   │   ├── IsTimeZone.ts
+│   │   │   ├── IsUUID.ts
+│   │   │   ├── IsUppercase.ts
+│   │   │   ├── IsUrl.ts
+│   │   │   ├── IsVariableWidth.ts
+│   │   │   ├── Length.ts
+│   │   │   ├── Matches.ts
+│   │   │   ├── MaxLength.ts
+│   │   │   ├── MinLength.ts
+│   │   │   ├── NotContains.ts
+│   │   │   ├── is-iso4217-currency-code.ts
+│   │   │   └── is-tax-id.ts
+│   │   └── typechecker
+│   │       ├── IsArray.ts
+│   │       ├── IsBoolean.ts
+│   │       ├── IsDate.ts
+│   │       ├── IsEnum.ts
+│   │       ├── IsInt.ts
+│   │       ├── IsNumber.ts
+│   │       ├── IsObject.ts
+│   │       └── IsString.ts
+│   ├── index.ts
+│   ├── metadata
+│   │   ├── ConstraintMetadata.ts
+│   │   ├── MetadataStorage.ts
+│   │   ├── ValidationMetadata.ts
+│   │   └── ValidationMetadataArgs.ts
+│   ├── register-decorator.ts
+│   ├── utils
+│   │   ├── convert-to-array.util.ts
+│   │   ├── get-global.util.ts
+│   │   ├── index.ts
+│   │   └── is-promise.util.ts
+│   ├── validation
+│   │   ├── ValidationArguments.ts
+│   │   ├── ValidationError.ts
+│   │   ├── ValidationExecutor.ts
+│   │   ├── ValidationTypes.ts
+│   │   ├── ValidationUtils.ts
+│   │   ├── Validator.ts
+│   │   ├── ValidatorConstraintInterface.ts
+│   │   └── ValidatorOptions.ts
+│   └── validation-schema
+│       ├── ValidationSchema.ts
+│       └── ValidationSchemaToMetadataTransformer.ts
+├── test
+│   ├── functional
+│   │   ├── conditional-validation.spec.ts
+│   │   ├── custom-decorators.spec.ts
+│   │   ├── inherited-validation.spec.ts
+│   │   ├── nested-validation.spec.ts
+│   │   ├── promise-validation.spec.ts
+│   │   ├── reject-validation.spec.ts
+│   │   ├── sync-validation.spec.ts
+│   │   ├── validation-error.spec.ts
+│   │   ├── validation-functions-and-decorators.spec.ts
+│   │   ├── validation-options.spec.ts
+│   │   ├── validator-options.spec.ts
+│   │   └── whitelist-validation.spec.ts
+│   └── utils.spec.ts
+├── tsconfig.json
+├── tsconfig.prod.cjs.json
+├── tsconfig.prod.esm2015.json
+├── tsconfig.prod.esm5.json
+├── tsconfig.prod.json
+├── tsconfig.prod.types.json
+└── tsconfig.spec.json
+31 directories, 203 files
