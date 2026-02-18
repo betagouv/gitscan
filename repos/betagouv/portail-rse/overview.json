@@ -1,60 +1,62 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Proposer aux entreprises un espace unique gratuit pour renseigner leurs indicateurs ESG et piloter leurs obligations extra-financières.",
+  "description": "Le portail RSE est un service permettant de gérer et de suivre les indicateurs de responsabilité sociale des entreprises. Il offre une interface pour la saisie de données, le calcul d'indicateurs et la génération de rapports.",
   "language": "Python",
   "features": [
-    "Gestion des indicateurs ESG",
-    "Collecte de données",
-    "Reporting",
-    "Analyse des données",
-    "Suivi des obligations réglementaires"
+    "Gestion des indicateurs RSE",
+    "Calcul d'indicateurs",
+    "Génération de rapports",
+    "Interface utilisateur",
+    "Authentification utilisateur",
+    "Analyse de documents"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Svelte",
-    "Vite",
-    "openpyxl"
+    "Redis",
+    "openpyxl",
+    "Sass",
+    "htmx"
   ],
   "components": [
-    "Frontend Svelte",
     "Backend Django",
+    "Frontend React/Svelte",
     "Base de données PostgreSQL",
-    "API REST"
+    "Cache Redis",
+    "API REST",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "sso"
-    ],
-    "providers": []
+      "session"
+    ]
   },
   "tests": [
-    "Pytest",
-    "Jest"
+    "Pytest"
   ],
   "workflows": [
     "test.yml"
   ],
-  "lastActivity": "2026-01-29T17:35:32+01:00",
+  "lastActivity": "2026-02-17T17:25:16+01:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 5,
-    "forks": 6,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 195
+    "openIssues": null
   },
   "tags": [
-    "ESG",
     "RSE",
-    "Développement Durable",
-    "Reporting Extra-financier",
+    "Responsabilité Sociale des Entreprises",
+    "Indicateurs",
+    "Reporting",
     "Django",
-    "Svelte",
-    "Python"
+    "Python",
+    "CSRD",
+    "BDESE"
   ]
 }
