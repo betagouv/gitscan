@@ -1,0 +1,25 @@
+## Changelog : federation (30 derniers jours)
+
+### Résumé
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface utilisateur avec une nouvelle mise en page, des alertes plus claires et l'ajout de boutons de contact pour faciliter l'assistance. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de la plateforme, notamment concernant la gestion des erreurs et des jetons CSRF. Enfin, des mises à jour techniques ont été effectuées pour maintenir la sécurité et la performance de l'application.
+
+### Évolutions fonctionnelles
+- Nouvelle mise en page en une seule colonne pour l'interface utilisateur (#802).
+- Ajout d'un bouton de contact pour signaler des problèmes lors d'erreurs internes (Y500006) (#823, #807).
+- Amélioration des messages d'erreur liés à l'authentification OIDC (#853).
+- Ajout d'une alerte en cas d'utilisation de l'environnement de test (#848).
+- Ajout d'un bouton de contact pour l'assistance en cas d'erreur d'IDP (#807).
+- Amélioration du style du bouton de contact pour l'erreur Y500006 (#823).
+
+### Évolutions techniques
+- Suppression d'un index TTL obsolète qui supprimait les sous-utilisateurs après 3 ans (#850).
+- Correction d'un problème où le jeton CSRF était renouvelé à chaque requête (#831).
+- Suppression d'une exception inutile (FcException) (#824).
+- Mise à jour des logs de débogage pour l'IDP/SP afin d'améliorer le diagnostic des problèmes (#822).
+- Correction de bugs dans les tests d'intégration (#832).
+- Correction d'un problème lié à la gestion des variables booléennes dans Ansible (#849).
+- Rétractation d'une mise à jour de `@nestjs/core` qui causait des problèmes (#819).
+
+### Autres changements
+- Mises à jour de dépendances : axios, @isaacs/brace-expansion, diff, type-fest, prettier, @typescript-eslint/parser, cypress, lodash, body-parser, actions/attest-build-provenance, actions/checkout, @eslint-community/eslint-plugin-eslint-comments, ejs, eslint-plugin-prettier (#833, #834, #836, #835, #839, #837, #841, #821, #825, #826, #827, #828, #779, #505, #817, #818).
+- Nettoyage du code et suppression de code inutile.

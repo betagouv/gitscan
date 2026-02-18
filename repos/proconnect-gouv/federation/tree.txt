@@ -1,0 +1,1655 @@
+.
+├── .github
+│   ├── dependabot.yml
+│   ├── labeler.yml
+│   └── workflows
+│       ├── auto-assign.yml
+│       ├── build-docker.yml
+│       ├── ci-admin-tests.yml
+│       ├── ci-pcdbapi-test.yml
+│       ├── ci-tests.yml
+│       ├── integration-tests.yml
+│       └── labeler.yml
+├── .gitignore
+├── .prettierrc
+├── .vscode
+│   ├── README.md
+│   ├── launch.json
+│   └── settings.json
+├── AGPL-3.0.LICENSE.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── admin
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .prettierrc
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── cypress
+│   │   ├── fixtures
+│   │   │   ├── csv
+│   │   │   │   ├── failed_fs.csv
+│   │   │   │   ├── valid_fs_comma.csv
+│   │   │   │   ├── valid_fs_semicolon.csv
+│   │   │   │   ├── valid_fs_with_empty_values_semicolon.csv
+│   │   │   │   └── valid_fs_with_extra_columns_semicolon.csv
+│   │   │   └── rnipp-test-identities.json
+│   │   ├── integration
+│   │   │   ├── account
+│   │   │   │   ├── account-create.spec.js
+│   │   │   │   ├── account-create.utils.js
+│   │   │   │   ├── account-delete.spec.js
+│   │   │   │   ├── account-delete.utils.js
+│   │   │   │   ├── account-roles.spec.js
+│   │   │   │   ├── account-update.spec.js
+│   │   │   │   ├── account-update.utils.js
+│   │   │   │   └── account.authentication.spec.js
+│   │   │   ├── exception
+│   │   │   │   ├── forbidden.spec.js
+│   │   │   │   ├── page-not-found.spec.js
+│   │   │   │   └── unauthorized.spec.js
+│   │   │   ├── identity-provider
+│   │   │   │   ├── identity-provider-create.spec.js
+│   │   │   │   ├── identity-provider-delete.spec.js
+│   │   │   │   ├── identity-provider-list.spec.js
+│   │   │   │   ├── identity-provider-search.spec.js
+│   │   │   │   ├── identity-provider-update.spec.js
+│   │   │   │   └── identity-provider.utils.js
+│   │   │   ├── pagination
+│   │   │   │   └── pagination.spec.js
+│   │   │   ├── scopes
+│   │   │   │   ├── scopes-create.spec.js
+│   │   │   │   ├── scopes-delete.spec.js
+│   │   │   │   ├── scopes-update.spec.js
+│   │   │   │   └── scopes.utils.js
+│   │   │   ├── security
+│   │   │   │   └── security-headers.spec.js
+│   │   │   └── service-provider
+│   │   │       ├── service-provider-create.spec.js
+│   │   │       ├── service-provider-create.utils.js
+│   │   │       ├── service-provider-delete.spec.js
+│   │   │       ├── service-provider-generate-new-client-secret.spec.js
+│   │   │       ├── service-provider-list.spec.js
+│   │   │       ├── service-provider-search.spec.js
+│   │   │       ├── service-provider-update.spec.js
+│   │   │       └── service-provider.utils.js
+│   │   ├── plugins
+│   │   │   ├── index.js
+│   │   │   └── otp-plugin.js
+│   │   └── support
+│   │       ├── apply-db-backup.sh
+│   │       ├── clear-business-log.command.js
+│   │       ├── commands.js
+│   │       ├── constants.js
+│   │       ├── create-db-backup.sh
+│   │       ├── db.sh
+│   │       ├── forms.js
+│   │       ├── get-user-activation-token.js
+│   │       ├── get-user-activation-token.sh
+│   │       ├── has-business-log.command.js
+│   │       ├── index.js
+│   │       ├── login.js
+│   │       ├── parseBusinessLog.js
+│   │       ├── request.js
+│   │       └── reset.js
+│   ├── cypress.config.js
+│   ├── deploy
+│   │   └── pm2
+│   │       └── app.json
+│   ├── eslint.config.js
+│   ├── fixtures
+│   │   ├── User.yml
+│   │   └── xmlMockedString.js
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── font
+│   │   │   ├── comfortaa
+│   │   │   │   ├── 1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMDr0fIA9c.woff2
+│   │   │   │   └── 1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMDrMfIA.woff2
+│   │   │   └── vt323
+│   │   │       ├── pxiKyp0ihIEF2isRFJXGdg.woff2
+│   │   │       └── pxiKyp0ihIEF2isfFJU.woff2
+│   │   ├── images
+│   │   │   ├── FClogo.png
+│   │   │   └── background.svg
+│   │   ├── javascript
+│   │   │   ├── addValidClass.js
+│   │   │   ├── change-discovery.js
+│   │   │   ├── clipboard.js
+│   │   │   ├── compare-password.js
+│   │   │   ├── custom-file-input.js
+│   │   │   ├── delete-service-provider.js
+│   │   │   ├── handle-email.js
+│   │   │   ├── item-par-page.js
+│   │   │   ├── jquery_wrapper.js
+│   │   │   ├── lazy-init.js
+│   │   │   ├── main.js
+│   │   │   ├── modals
+│   │   │   │   ├── confirm-dialog.js
+│   │   │   │   ├── confirm-form.js
+│   │   │   │   ├── generate-client-secret.modal.js
+│   │   │   │   └── validate-notification-creation.js
+│   │   │   ├── search-reset.js
+│   │   │   ├── select-scopes-group.js
+│   │   │   ├── toggle-by-radio.js
+│   │   │   ├── unauthorized.js
+│   │   │   ├── validate-enrollment.js
+│   │   │   ├── validate-form.js
+│   │   │   ├── validate-input-date.js
+│   │   │   ├── validate-input-hour.js
+│   │   │   ├── validate-select-value.js
+│   │   │   ├── validateAccountCreate.js
+│   │   │   └── validateAccountUpdate.js
+│   │   └── style
+│   │       ├── border.less
+│   │       ├── configuration.less
+│   │       ├── constants.less
+│   │       ├── exception.less
+│   │       ├── font-styles.less
+│   │       ├── header.less
+│   │       ├── list.less
+│   │       ├── login.less
+│   │       ├── logo.less
+│   │       ├── main.less
+│   │       ├── modal.less
+│   │       ├── scrollbox.less
+│   │       ├── spinner.less
+│   │       └── upload.less
+│   ├── scripts
+│   │   └── coverage.sh
+│   ├── src
+│   │   ├── account
+│   │   │   ├── account.controller.spec.ts
+│   │   │   ├── account.controller.ts
+│   │   │   ├── account.module.ts
+│   │   │   ├── account.service.ts
+│   │   │   ├── dto
+│   │   │   │   ├── create-user.dto.ts
+│   │   │   │   ├── enroll-user.dto.ts
+│   │   │   │   └── update-account.dto.ts
+│   │   │   └── validator
+│   │   │       ├── is-compliant.validator.spec.ts
+│   │   │       ├── is-compliant.validator.ts
+│   │   │       ├── is-same-as.validator.ts
+│   │   │       └── unauthorized.ts
+│   │   ├── app-context
+│   │   │   └── middleware
+│   │   │       ├── app-context.middleware.spec.ts
+│   │   │       └── app-context.middleware.ts
+│   │   ├── app.controller.spec.ts
+│   │   ├── app.controller.ts
+│   │   ├── app.module.ts
+│   │   ├── authentication
+│   │   │   ├── authentication-actions.enum.ts
+│   │   │   ├── authentication-failures.sql.entity.ts
+│   │   │   ├── authentication-track.interface.ts
+│   │   │   ├── authentication.controller.spec.ts
+│   │   │   ├── authentication.controller.ts
+│   │   │   ├── authentication.module.ts
+│   │   │   ├── authentication.service.spec.ts
+│   │   │   ├── authentication.service.ts
+│   │   │   ├── decorator
+│   │   │   │   ├── index.ts
+│   │   │   │   └── roles.decorator.ts
+│   │   │   ├── dto
+│   │   │   │   └── authentication.dto.ts
+│   │   │   ├── guard
+│   │   │   │   ├── local.guard.ts
+│   │   │   │   ├── roles.guard.spec.ts
+│   │   │   │   └── roles.guard.ts
+│   │   │   ├── middleware
+│   │   │   │   ├── authenticated.middleware.spec.ts
+│   │   │   │   ├── authenticated.middleware.ts
+│   │   │   │   ├── totp.middleware.spec.ts
+│   │   │   │   └── totp.middleware.ts
+│   │   │   ├── passport
+│   │   │   │   ├── local.serializer.ts
+│   │   │   │   ├── local.strategy.spec.ts
+│   │   │   │   └── local.strategy.ts
+│   │   │   └── totp
+│   │   │       └── totp.service.ts
+│   │   ├── cli
+│   │   │   ├── cli.module.ts
+│   │   │   ├── cli.service.spec.ts
+│   │   │   └── cli.service.ts
+│   │   ├── config
+│   │   │   ├── app.ts
+│   │   │   ├── database.ts
+│   │   │   ├── grist.ts
+│   │   │   ├── http.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── mongo-database.ts
+│   │   │   ├── session.ts
+│   │   │   └── totp.ts
+│   │   ├── configuration
+│   │   │   ├── configuration.controller.spec.ts
+│   │   │   ├── configuration.controller.ts
+│   │   │   ├── configuration.module.ts
+│   │   │   ├── configuration.service.spec.ts
+│   │   │   ├── configuration.service.ts
+│   │   │   ├── dto
+│   │   │   │   ├── indisponibilite.dto.spec.ts
+│   │   │   │   └── indisponibilite.dto.ts
+│   │   │   ├── entity
+│   │   │   │   └── configuration.mongodb.entity.ts
+│   │   │   ├── fixture
+│   │   │   │   └── configuration.fixtures.ts
+│   │   │   └── interface
+│   │   │       ├── application-api-authorization.interface.ts
+│   │   │       ├── buyan.interface.ts
+│   │   │       ├── company-API.interface.ts
+│   │   │       ├── debug.interface.ts
+│   │   │       ├── enable-mails.inerface.ts
+│   │   │       ├── features.interface.ts
+│   │   │       ├── fi-mapping-user-info-rules.interface.ts
+│   │   │       ├── fridp_indentity.interface.ts
+│   │   │       ├── http-global-agent.interface.ts
+│   │   │       ├── logger.interface.ts
+│   │   │       ├── mailjet.entity.ts
+│   │   │       ├── message-on-login.interface.ts
+│   │   │       ├── meta.interface.ts
+│   │   │       ├── mobile-connect.interface.ts
+│   │   │       └── rnipp.interface.ts
+│   │   ├── console.ts
+│   │   ├── dataSource.ts
+│   │   ├── enum
+│   │   │   ├── algo-value.enum.ts
+│   │   │   ├── core-plateformenum.ts
+│   │   │   └── index.ts
+│   │   ├── exception
+│   │   │   └── filter
+│   │   │       ├── all-exception.filter.spec.ts
+│   │   │       └── all-exception.filter.ts
+│   │   ├── file-storage
+│   │   │   ├── file-storage.mongodb.entity.ts
+│   │   │   ├── file-storage.service.spec.ts
+│   │   │   └── file-storage.service.ts
+│   │   ├── form
+│   │   │   ├── dto
+│   │   │   │   ├── form-validation-error.dto.ts
+│   │   │   │   └── form-validation-errors.dto.ts
+│   │   │   ├── form.module.ts
+│   │   │   └── interceptor
+│   │   │       ├── form-errors.interceptor.spec.ts
+│   │   │       └── form-errors.interceptor.ts
+│   │   ├── grist-publisher
+│   │   │   ├── grist-publisher.module.ts
+│   │   │   ├── grist-publisher.service.spec.ts
+│   │   │   ├── grist-publisher.service.ts
+│   │   │   └── interface
+│   │   │       ├── grist-record.interface.ts
+│   │   │       ├── identity-provider-grist-record.interface.ts
+│   │   │       └── service-provider-grist-record.interface.ts
+│   │   ├── identity-provider
+│   │   │   ├── dto
+│   │   │   │   ├── identity-provider.dto.spec.ts
+│   │   │   │   └── identity-provider.dto.ts
+│   │   │   ├── fixtures
+│   │   │   │   ├── identity-provider.factory.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── identity-provider.controller.spec.ts
+│   │   │   ├── identity-provider.controller.ts
+│   │   │   ├── identity-provider.module.ts
+│   │   │   ├── identity-provider.mongodb.entity.ts
+│   │   │   ├── identity-provider.service.spec.ts
+│   │   │   ├── identity-provider.service.ts
+│   │   │   ├── index.ts
+│   │   │   └── interface
+│   │   │       ├── identity-provider-with-fqdn.interface.ts
+│   │   │       └── index.ts
+│   │   ├── interfaces
+│   │   │   ├── config.interface.ts
+│   │   │   ├── crud-track.interface.ts
+│   │   │   └── index.ts
+│   │   ├── logger
+│   │   │   ├── enum
+│   │   │   │   ├── log-levels.enum.ts
+│   │   │   │   ├── log-states.enum.ts
+│   │   │   │   └── rnipp-call-states.enum.ts
+│   │   │   ├── log-maps.map.ts
+│   │   │   ├── logger.module.ts
+│   │   │   └── logger.service.ts
+│   │   ├── main.ts
+│   │   ├── meta
+│   │   │   ├── error-code-translations.ts
+│   │   │   ├── locals.interceptor.spec.ts
+│   │   │   └── locals.interceptor.ts
+│   │   ├── migrations
+│   │   │   ├── authentication-failures
+│   │   │   │   └── 1585297442338-AuthenticationFailuresMigration.ts
+│   │   │   └── user
+│   │   │       ├── 1566214064919-UserMigration.ts
+│   │   │       ├── 1568712125082-AddSecurityRole.ts
+│   │   │       ├── 1580722971792-AddTokenForSignup.ts
+│   │   │       ├── 1582821117172-AddTokenExpiresAtForAuthentication.ts
+│   │   │       ├── 1585158679573-AddBlockedUserMigration.ts
+│   │   │       └── 1588747237723-addLast5Passwords.ts
+│   │   ├── pagination
+│   │   │   ├── index.ts
+│   │   │   ├── interface
+│   │   │   │   ├── index.ts
+│   │   │   │   └── pagination-options.interface.ts
+│   │   │   └── pagination.service.ts
+│   │   ├── scopes
+│   │   │   ├── fixture
+│   │   │   │   ├── index.ts
+│   │   │   │   └── scopes.fixtures.ts
+│   │   │   ├── index.ts
+│   │   │   ├── interface
+│   │   │   │   ├── index.ts
+│   │   │   │   └── scopes.interface.ts
+│   │   │   ├── scopes.controller.spec.ts
+│   │   │   ├── scopes.controller.ts
+│   │   │   ├── scopes.module.ts
+│   │   │   ├── scopes.mongodb.entity.ts
+│   │   │   ├── scopes.service.spec.ts
+│   │   │   └── scopes.service.ts
+│   │   ├── service-provider
+│   │   │   ├── dto
+│   │   │   │   ├── delete-service-provider.dto.ts
+│   │   │   │   ├── generate-new-client-secret.dto.ts
+│   │   │   │   ├── service-provider-input.dto.spec.ts
+│   │   │   │   └── service-provider-input.dto.ts
+│   │   │   ├── fixtures
+│   │   │   │   ├── index.ts
+│   │   │   │   └── service-provider.factory.ts
+│   │   │   ├── service-provider.controller.spec.ts
+│   │   │   ├── service-provider.controller.ts
+│   │   │   ├── service-provider.module.ts
+│   │   │   ├── service-provider.mongodb.entity.ts
+│   │   │   ├── service-provider.service.spec.ts
+│   │   │   └── service-provider.service.ts
+│   │   ├── user
+│   │   │   ├── interface
+│   │   │   │   ├── create-user-dto.interface.ts
+│   │   │   │   ├── enroll-user-dto.interface.ts
+│   │   │   │   ├── user-password-update-dto.interface.ts
+│   │   │   │   ├── user-service.interface.ts
+│   │   │   │   └── user-track.interface.ts
+│   │   │   ├── password.sql.entity.ts
+│   │   │   ├── roles.enum.ts
+│   │   │   ├── user.module.ts
+│   │   │   ├── user.service.spec.ts
+│   │   │   ├── user.service.ts
+│   │   │   └── user.sql.entity.ts
+│   │   └── utils
+│   │       ├── instance.enum.ts
+│   │       ├── ip-validator.constant.spec.ts
+│   │       ├── ip-validator.constant.ts
+│   │       ├── secret-manager.service.spec.ts
+│   │       ├── secret-manager.service.ts
+│   │       ├── secret.adapter.spec.ts
+│   │       ├── secret.adapter.ts
+│   │       ├── transforms
+│   │       │   ├── index.ts
+│   │       │   ├── normalize-date.transform.spec.ts
+│   │       │   ├── normalize-date.transform.ts
+│   │       │   ├── parse-boolean.spec.ts
+│   │       │   ├── parse-boolean.ts
+│   │       │   ├── string.transform.spec.ts
+│   │       │   └── string.transform.ts
+│   │       └── validators
+│   │           ├── index.ts
+│   │           ├── is-optional-extended.validator.ts
+│   │           ├── is-optionnal-array-extended.validator.ts
+│   │           ├── is-safe-string.validator.ts
+│   │           ├── is-valid-input-string.ts
+│   │           └── validate-with.validator.ts
+│   ├── tsconfig.build.json
+│   ├── tsconfig.json
+│   ├── views
+│   │   ├── .gitkeep
+│   │   ├── account
+│   │   │   ├── creation.ejs
+│   │   │   ├── enrollment.ejs
+│   │   │   ├── list.ejs
+│   │   │   └── userAccount.ejs
+│   │   ├── configuration
+│   │   │   └── indisponibilite.ejs
+│   │   ├── exception
+│   │   │   ├── 400.ejs
+│   │   │   ├── 403.ejs
+│   │   │   ├── 404.ejs
+│   │   │   ├── 413.ejs
+│   │   │   └── 500.ejs
+│   │   ├── identity-provider
+│   │   │   ├── creation.ejs
+│   │   │   ├── list.ejs
+│   │   │   └── update.ejs
+│   │   ├── login.ejs
+│   │   ├── notification
+│   │   │   ├── create.ejs
+│   │   │   ├── information.ejs
+│   │   │   └── update.ejs
+│   │   ├── partials
+│   │   │   ├── algorithms-error.ejs
+│   │   │   ├── border.ejs
+│   │   │   ├── choose-items-number-to-show.ejs
+│   │   │   ├── dropdownAccount.ejs
+│   │   │   ├── global-errors-handler.ejs
+│   │   │   ├── head.ejs
+│   │   │   ├── header.ejs
+│   │   │   ├── hidden-form.ejs
+│   │   │   ├── pagination.ejs
+│   │   │   ├── resource-server.ejs
+│   │   │   ├── scopes.ejs
+│   │   │   ├── search.ejs
+│   │   │   └── sort-table.ejs
+│   │   ├── scopes
+│   │   │   └── label
+│   │   │       ├── creation.ejs
+│   │   │       ├── list.ejs
+│   │   │       └── update.ejs
+│   │   └── service-provider
+│   │       ├── creation.ejs
+│   │       ├── generate-new-client-secret.ejs
+│   │       ├── list.ejs
+│   │       └── update.ejs
+│   └── yarn.lock
+├── back
+│   ├── .dockerignore
+│   ├── .eslintignore
+│   ├── .eslintrc.js
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .pino-prettyrc
+│   ├── .prettierignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── _doc
+│   │   ├── env-vars.md
+│   │   ├── erreurs.md
+│   │   └── tracked-event.md
+│   ├── apps
+│   │   ├── bridge-http-proxy-rie
+│   │   │   ├── src
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── bridge-http-proxy.module.spec.ts
+│   │   │   │   ├── bridge-http-proxy.module.ts
+│   │   │   │   ├── config
+│   │   │   │   │   ├── app.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger-legacy.ts
+│   │   │   │   │   ├── logger.ts
+│   │   │   │   │   └── rie-broker.ts
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── bridge-http-proxy.controller.spec.ts
+│   │   │   │   │   ├── bridge-http-proxy.controller.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── app-config.dto.ts
+│   │   │   │   │   ├── bridge-http-proxy-config.dto.ts
+│   │   │   │   │   ├── bridge-http-proxy-error.dto.ts
+│   │   │   │   │   ├── bridge-http-proxy-protocol.dto.ts
+│   │   │   │   │   ├── bridge-http-proxy-response.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── bridge-http-proxy-routes.enum.ts
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── bridge-http-proxy-base.exception.ts
+│   │   │   │   │   ├── bridge-http-proxy-csmr.exception.ts
+│   │   │   │   │   ├── bridge-http-proxy-rabbitmq.exception.ts
+│   │   │   │   │   ├── bridge-http-proxy-variable-missing.exception.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── main.ts
+│   │   │   │   └── services
+│   │   │   │       ├── bridge-http-proxy.service.spec.ts
+│   │   │   │       ├── bridge-http-proxy.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.app.json
+│   │   ├── core-fca-low
+│   │   │   ├── src
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── config
+│   │   │   │   │   ├── app.ts
+│   │   │   │   │   ├── email-validator.ts
+│   │   │   │   │   ├── exceptions.ts
+│   │   │   │   │   ├── identity-provider-adapter-mongo.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger-legacy.ts
+│   │   │   │   │   ├── logger.ts
+│   │   │   │   │   ├── mongoose.ts
+│   │   │   │   │   ├── oidc-client.ts
+│   │   │   │   │   ├── oidc-provider.ts
+│   │   │   │   │   ├── redis.ts
+│   │   │   │   │   ├── service-provider-adapter-mongo.ts
+│   │   │   │   │   └── session.ts
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── interaction.controller.spec.ts
+│   │   │   │   │   ├── interaction.controller.ts
+│   │   │   │   │   ├── oidc-client.controller.spec.ts
+│   │   │   │   │   ├── oidc-client.controller.ts
+│   │   │   │   │   ├── oidc-provider.controller.spec.ts
+│   │   │   │   │   └── oidc-provider.controller.ts
+│   │   │   │   ├── decorators
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── user-session.decorator.spec.ts
+│   │   │   │   │   └── user-session.decorator.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── app-config.dto.ts
+│   │   │   │   │   ├── authorize-params.dto.ts
+│   │   │   │   │   ├── content-secury-policy.dto.ts
+│   │   │   │   │   ├── core-fca-config.dto.ts
+│   │   │   │   │   ├── core-fca-session.dto.ts
+│   │   │   │   │   ├── identity-for-sp.dto.ts
+│   │   │   │   │   ├── identity-from-idp.dto.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── interaction-params.dto.ts
+│   │   │   │   │   ├── interaction.dto.ts
+│   │   │   │   │   ├── interaction_error_query.dto.ts
+│   │   │   │   │   ├── logout-params.dto.ts
+│   │   │   │   │   ├── post-identity-provider-selection.dto.ts
+│   │   │   │   │   ├── redirect-to-idp.dto.ts
+│   │   │   │   │   ├── revocation-token-params.dto.ts
+│   │   │   │   │   ├── sp-authorized-fqdns-config.dto.ts
+│   │   │   │   │   └── user-session
+│   │   │   │   │       ├── active-user-session.dto.ts
+│   │   │   │   │       ├── after-get-interaction-session.dto.ts
+│   │   │   │   │       ├── after-get-oidc-callback-session.dto.ts
+│   │   │   │   │       ├── after-redirect-to-idp-with-email-session.dto.ts
+│   │   │   │   │       ├── after-redirect-to-idp-with-idp-id-session.dto.ts
+│   │   │   │   │       └── user-session.dto.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── routes.enum.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── core-fca-account-blocked.exception.ts
+│   │   │   │   │   ├── core-fca-agent-not-from-public-service.exception.ts
+│   │   │   │   │   ├── core-fca-base.exception.ts
+│   │   │   │   │   ├── core-fca-idp-configuration.exception.ts
+│   │   │   │   │   ├── core-fca-idp-disabled.exception.ts
+│   │   │   │   │   ├── core-fca-invalid-email-domain.exception.ts
+│   │   │   │   │   ├── core-fca-invalid-identity.exception.spec.ts
+│   │   │   │   │   ├── core-fca-invalid-identity.exception.ts
+│   │   │   │   │   ├── core-fca-no-idp.exception.spec.ts
+│   │   │   │   │   ├── core-fca-no-idp.exception.ts
+│   │   │   │   │   ├── core-fca-unauthorized-email.exception.spec.ts
+│   │   │   │   │   ├── core-fca-unauthorized-email.exception.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── invalid-session.exception.ts
+│   │   │   │   ├── filters
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── invalid-session-exception.filter.spec.ts
+│   │   │   │   │   └── invalid-session-exception.filter.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── sp-authorized-fqdns-details.ts
+│   │   │   │   ├── main.ts
+│   │   │   │   ├── public
+│   │   │   │   │   ├── css
+│   │   │   │   │   │   └── pages
+│   │   │   │   │   │       ├── dsfr.pc.css
+│   │   │   │   │   │       ├── error.css
+│   │   │   │   │   │       └── interaction.css
+│   │   │   │   │   ├── favicon
+│   │   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   │   ├── img
+│   │   │   │   │   │   ├── access-restricted-error.svg
+│   │   │   │   │   │   ├── connexion.svg
+│   │   │   │   │   │   ├── default-error.svg
+│   │   │   │   │   │   ├── expert-id.svg
+│   │   │   │   │   │   ├── forbidden-access-error.svg
+│   │   │   │   │   │   ├── ordre-avocats.svg
+│   │   │   │   │   │   ├── pro-sante-connect.svg
+│   │   │   │   │   │   ├── proconnect-logo.svg
+│   │   │   │   │   │   ├── provider.svg
+│   │   │   │   │   │   ├── renater.svg
+│   │   │   │   │   │   ├── renater2.svg
+│   │   │   │   │   │   ├── temporary-restricted-error.svg
+│   │   │   │   │   │   └── unauthorized-email-error.svg
+│   │   │   │   │   ├── js
+│   │   │   │   │   │   ├── crisp.js
+│   │   │   │   │   │   ├── email-fca.js
+│   │   │   │   │   │   ├── email-suggestion.js
+│   │   │   │   │   │   ├── form-validation.js
+│   │   │   │   │   │   ├── matomo.js
+│   │   │   │   │   │   └── unshow-notice.js
+│   │   │   │   │   └── robots.txt
+│   │   │   │   ├── services
+│   │   │   │   │   ├── core-fca-controller.service.spec.ts
+│   │   │   │   │   ├── core-fca-controller.service.ts
+│   │   │   │   │   ├── core-fca-middleware.service.spec.ts
+│   │   │   │   │   ├── core-fca-middleware.service.ts
+│   │   │   │   │   ├── core-fca.service.spec.ts
+│   │   │   │   │   ├── core-fca.service.ts
+│   │   │   │   │   ├── identity.sanitizer.spec.ts
+│   │   │   │   │   ├── identity.sanitizer.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── validators
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── is-phone-number-simple-validator.spec.ts
+│   │   │   │   │   ├── is-phone-number-simple-validator.validator.ts
+│   │   │   │   │   ├── is-siret-validator.spec.ts
+│   │   │   │   │   └── is-siret-validator.ts
+│   │   │   │   └── views
+│   │   │   │       ├── error.ejs
+│   │   │   │       ├── identity-provider-selection.ejs
+│   │   │   │       ├── includes
+│   │   │   │       │   ├── footer.ejs
+│   │   │   │       │   ├── head.ejs
+│   │   │   │       │   ├── header.ejs
+│   │   │   │       │   ├── notice.ejs
+│   │   │   │       │   ├── scripts.ejs
+│   │   │   │       │   └── skiplinks.ejs
+│   │   │   │       └── interaction.ejs
+│   │   │   └── tsconfig.app.json
+│   │   ├── csmr-rie
+│   │   │   ├── src
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── config
+│   │   │   │   │   ├── app.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger-legacy.ts
+│   │   │   │   │   ├── logger.ts
+│   │   │   │   │   └── rie-broker.ts
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── csmr-http-proxy.controller.spec.ts
+│   │   │   │   │   ├── csmr-http-proxy.controller.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── csmr-http-proxy.module.spec.ts
+│   │   │   │   ├── csmr-http-proxy.module.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── bridge-payload.dto.ts
+│   │   │   │   │   ├── csmr-http-proxy.config.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── http
+│   │   │   │   │   ├── http-module.config.spec.ts
+│   │   │   │   │   ├── http-module.config.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── main.ts
+│   │   │   │   └── services
+│   │   │   │       ├── csmr-http-proxy.service.spec.ts
+│   │   │   │       ├── csmr-http-proxy.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.app.json
+│   │   ├── mock-data-provider
+│   │   │   ├── src
+│   │   │   │   └── main.ts
+│   │   │   └── tsconfig.app.json
+│   │   ├── mock-identity-provider-fca-low
+│   │   │   ├── src
+│   │   │   │   ├── index.ejs
+│   │   │   │   ├── main.ts
+│   │   │   │   ├── oidc-provider-support
+│   │   │   │   │   ├── configuration.ts
+│   │   │   │   │   ├── memory_adapter.js
+│   │   │   │   │   └── policy.js
+│   │   │   │   └── user-data.ts
+│   │   │   └── tsconfig.app.json
+│   │   └── mock-service-provider-fca-low
+│   │       ├── src
+│   │       │   ├── decrypt.ts
+│   │       │   ├── index.ejs
+│   │       │   └── main.ts
+│   │       └── tsconfig.app.json
+│   ├── deploy
+│   │   └── pm2
+│   │       └── app.json
+│   ├── global.d.ts
+│   ├── jest-setup-file.ts
+│   ├── jest.config.ts
+│   ├── libs
+│   │   ├── account-fca
+│   │   │   ├── src
+│   │   │   │   ├── account-fca.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── account-fca.schema.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── services
+│   │   │   │       ├── account-fca.service.spec.ts
+│   │   │   │       ├── account-fca.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── app
+│   │   │   ├── src
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── app-config.dto.ts
+│   │   │   │   │   ├── app-rmq-config.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── app-helper.spec.ts
+│   │   │   │   │   ├── app-helper.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── interceptors
+│   │   │   │       ├── app.interceptor.spec.ts
+│   │   │   │       ├── app.interceptor.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── async-local-storage
+│   │   │   ├── .mocks
+│   │   │   │   ├── async-local-storage.service.mock.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── src
+│   │   │   │   ├── async-local-storage.module.ts
+│   │   │   │   ├── async-local-storage.service.spec.ts
+│   │   │   │   ├── async-local-storage.service.ts
+│   │   │   │   ├── enum
+│   │   │   │   │   ├── error-codes.enum.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── async-local-storage-base.exception.ts
+│   │   │   │   │   ├── async-local-storage-not-found.exception.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── async-local-storage-request.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── middlewares
+│   │   │   │       ├── async-local-storage-request.middleware.spec.ts
+│   │   │   │       ├── async-local-storage-request.middleware.ts
+│   │   │   │       ├── async-local-storage.middleware.spec.ts
+│   │   │   │       ├── async-local-storage.middleware.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── common
+│   │   │   ├── src
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── dto-validation.spec.ts
+│   │   │   │   │   ├── dto-validation.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parse-boolean.spec.ts
+│   │   │   │   │   ├── parse-boolean.ts
+│   │   │   │   │   ├── parse-json-property.spec.ts
+│   │   │   │   │   └── parse-json-property.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── transforms
+│   │   │   │   │   ├── enforce-array.transform.spec.ts
+│   │   │   │   │   ├── enforce-array.transform.ts
+│   │   │   │   │   ├── enforce-boolean.transform.spec.ts
+│   │   │   │   │   ├── enforce-boolean.transform.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── types
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── type-or-token.type.ts
+│   │   │   │   ├── validators
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── is-string-or-regexp.validator.spec.ts
+│   │   │   │   │   └── is-string-or-regexp.validator.ts
+│   │   │   │   └── wrappers
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── nestjs-dependency-injection.wrapper.spec.ts
+│   │   │   │       └── nestjs-dependency-injection.wrapper.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── config
+│   │   │   ├── .mocks
+│   │   │   │   ├── config.service.mock.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── cli
+│   │   │   │   │   └── export-env
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── markdown-generator.spec.ts
+│   │   │   │   │       ├── markdown-generator.ts
+│   │   │   │   │       ├── runner.spec.ts
+│   │   │   │   │       ├── runner.ts
+│   │   │   │   │       └── views
+│   │   │   │   │           └── env-vars.ejs
+│   │   │   │   ├── config.module.ts
+│   │   │   │   ├── config.service.spec.ts
+│   │   │   │   ├── config.service.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── config.config.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── unknown-configuration-name.error.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── config-parser.spec.ts
+│   │   │   │   │   ├── config-parser.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── config-options.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── index.ts
+│   │   │   │       └── template-exposed.type.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── cryptography
+│   │   │   ├── src
+│   │   │   │   ├── cryptography.module.ts
+│   │   │   │   ├── cryptography.service.spec.ts
+│   │   │   │   ├── cryptography.service.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── cryptography-config.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── key-encryption-key-alg.enum.ts
+│   │   │   │   │   └── support-sig-alg.enum.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── cryptography-base.exception.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── low-entropy-argument.exception.ts
+│   │   │   │   │   └── password-hash-failure.exception.ts
+│   │   │   │   └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── csrf
+│   │   │   ├── src
+│   │   │   │   ├── csrf.module.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── csrf-session.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── csrf-bad-token.exception.ts
+│   │   │   │   │   ├── csrf-base.exception.ts
+│   │   │   │   │   ├── csrf-missing-token.exception.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── guards
+│   │   │   │   │   ├── csrf-token.guard.spec.ts
+│   │   │   │   │   ├── csrf-token.guard.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── services
+│   │   │   │       ├── csrf.service.spec.ts
+│   │   │   │       ├── csrf.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── email-validator
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── email-validator-config.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── email-validator.module.ts
+│   │   │   │   └── services
+│   │   │   │       ├── email-validator.service.spec.ts
+│   │   │   │       ├── email-validator.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── exceptions
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── cli
+│   │   │   │   │   └── export-exceptions
+│   │   │   │   │       ├── fixtures
+│   │   │   │   │       │   ├── module-2.exception.fixture.ts
+│   │   │   │   │       │   └── module.exception.fixture.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── markdown-generator.spec.ts
+│   │   │   │   │       ├── markdown-generator.ts
+│   │   │   │   │       ├── runner.spec.ts
+│   │   │   │   │       ├── runner.ts
+│   │   │   │   │       └── view
+│   │   │   │   │           └── erreurs.ejs
+│   │   │   │   ├── config
+│   │   │   │   │   └── http-error-display.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── exception-config.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── base.exception.ts
+│   │   │   │   │   ├── enriched-display-base.exception.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── validation-exception.spec.ts
+│   │   │   │   │   └── validation-exception.ts
+│   │   │   │   ├── exceptions.module.ts
+│   │   │   │   ├── filters
+│   │   │   │   │   ├── fc-web-html-exception.filter.spec.ts
+│   │   │   │   │   ├── fc-web-html-exception.filter.ts
+│   │   │   │   │   ├── http-exception.filter.spec.ts
+│   │   │   │   │   ├── http-exception.filter.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── unknown-html-exception.filter.spec.ts
+│   │   │   │   │   └── unknown-html-exception.filter.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── code.helper.spec.ts
+│   │   │   │   │   ├── code.helper.ts
+│   │   │   │   │   ├── exception-display.helper.spec.ts
+│   │   │   │   │   ├── exception-display.helper.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── stack-trace.helper.spec.ts
+│   │   │   │   │   └── stack-trace.helper.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── error-page-params.ts
+│   │   │   │       ├── exception-documentation.interface.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       └── runner-exception.type.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── hybridge-http-proxy
+│   │   │   ├── src
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── message-type.enum.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interface
+│   │   │   │   │   ├── bridge-error.interface.ts
+│   │   │   │   │   ├── bridge-payload.interface.ts
+│   │   │   │   │   ├── bridge-protocol.interface.ts
+│   │   │   │   │   ├── bridge-response.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── validator
+│   │   │   │       ├── http-headers.validator.spec.ts
+│   │   │   │       ├── http-headers.validator.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── identity-provider-adapter-mongo
+│   │   │   ├── src
+│   │   │   │   ├── README.md
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── identity-provider-adapter-mongo-config.ts
+│   │   │   │   │   ├── identity-provider-adapter-mongo.dto.spec.ts
+│   │   │   │   │   ├── identity-provider-adapter-mongo.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── identity-provider-adapter-mongo.module.ts
+│   │   │   │   ├── identity-provider-adapter-mongo.service.spec.ts
+│   │   │   │   ├── identity-provider-adapter-mongo.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schemas
+│   │   │   │       ├── identity-provider-adapter-mongo.schema.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── logger
+│   │   │   ├── .mocks
+│   │   │   │   ├── index.ts
+│   │   │   │   └── logger.service.mock.ts
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── config
+│   │   │   │   │   └── tracked-event-steps.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger-config.dto.ts
+│   │   │   │   │   └── logger-legacy-config.dto.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── log-levels.enum.ts
+│   │   │   │   │   └── tracked-event.enum.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── logger-plugin.interface.ts
+│   │   │   │   ├── logger.module.ts
+│   │   │   │   ├── services
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger.service.spec.ts
+│   │   │   │   │   ├── logger.service.ts
+│   │   │   │   │   ├── nest-logger.service.spec.ts
+│   │   │   │   │   └── nest-logger.service.ts
+│   │   │   │   ├── tokens
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── plugin-services.token.ts
+│   │   │   │   └── types
+│   │   │   │       ├── custom-log-levels.type.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── logger-plugins
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── logger-plugins.module.ts
+│   │   │   │   ├── plugins
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logger-request.plugin.ts
+│   │   │   │   │   └── logger-session.plugin.ts
+│   │   │   │   └── services
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── logger-request.service.spec.ts
+│   │   │   │       ├── logger-request.service.ts
+│   │   │   │       ├── logger-session.service.spec.ts
+│   │   │   │       └── logger-session.service.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── microservices
+│   │   │   ├── src
+│   │   │   │   └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── mongoose
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── mongoose-config.dto.ts
+│   │   │   │   ├── events
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mongoose-connection-connected.event.ts
+│   │   │   │   │   ├── mongoose-connection-disconnected.event.ts
+│   │   │   │   │   └── mongoose-connection-reconnected.event.ts
+│   │   │   │   ├── handlers
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mongoose-connection-connected.handler.ts
+│   │   │   │   │   └── mongoose-connection-disconnected.handler.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mongoose-collection-update-watcher.helper.spec.ts
+│   │   │   │   │   └── mongoose-collection-update-watcher.helper.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── connexion.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── mongoose.module.e2e.spec.ts
+│   │   │   │   ├── mongoose.module.ts
+│   │   │   │   └── providers
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── mongoose.provider.spec.ts
+│   │   │   │       └── mongoose.provider.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── notifications
+│   │   │   ├── src
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── notifications.interface.ts
+│   │   │   │   ├── notifications.module.ts
+│   │   │   │   ├── notifications.service.spec.ts
+│   │   │   │   ├── notifications.service.ts
+│   │   │   │   └── schemas
+│   │   │   │       ├── index.ts
+│   │   │   │       └── notifications.schema.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── oidc
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── client-metadata.dto.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── issuer-metadata.dto.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── identity-provider.interface.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── service-provider-adapter.interface.ts
+│   │   │   │   └── tokens
+│   │   │   │       ├── index.ts
+│   │   │   │       └── service-provider-service.token.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── oidc-acr
+│   │   │   ├── src
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── oidc-acr.module.ts
+│   │   │   │   ├── oidc-acr.service.spec.ts
+│   │   │   │   ├── oidc-acr.service.ts
+│   │   │   │   └── oidc-acr.type.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── oidc-client
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── crsf-token.dto.ts
+│   │   │   │   │   ├── identity-service.dto.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── oidc-client-config.dto.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── oidc-client-class.enum.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-client-base.exception.ts
+│   │   │   │   │   ├── oidc-client-get-end-session-url.exception.ts
+│   │   │   │   │   ├── oidc-client-idp-disabled.exception.ts
+│   │   │   │   │   ├── oidc-client-idp-not-found.exception.ts
+│   │   │   │   │   ├── oidc-client-invalid-state.exception.ts
+│   │   │   │   │   ├── oidc-client-issuer-discovery-failed.exception.ts
+│   │   │   │   │   ├── oidc-client-missing-state.exception.ts
+│   │   │   │   │   ├── oidc-client-token-failed.exception.ts
+│   │   │   │   │   ├── oidc-client-token-result-failed.exception.ts
+│   │   │   │   │   └── oidc-client-userinfo-failed.exception.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── identity-adapter.interface.ts
+│   │   │   │   │   ├── identity-provider-adapter.interface.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── oidc-client.module.ts
+│   │   │   │   ├── services
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-client-config.service.spec.ts
+│   │   │   │   │   ├── oidc-client-config.service.ts
+│   │   │   │   │   ├── oidc-client-issuer.service.spec.ts
+│   │   │   │   │   ├── oidc-client-issuer.service.ts
+│   │   │   │   │   ├── oidc-client-utils.service.spec.ts
+│   │   │   │   │   ├── oidc-client-utils.service.ts
+│   │   │   │   │   ├── oidc-client.service.spec.ts
+│   │   │   │   │   └── oidc-client.service.ts
+│   │   │   │   └── tokens
+│   │   │   │       ├── idp-service.token.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── oidc-provider
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-provider-redis-adapter.spec.ts
+│   │   │   │   │   └── oidc-provider-redis.adapter.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── oidc-provider-config.dto.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-provider-events.enum.ts
+│   │   │   │   │   ├── oidc-provider-middleware-pattern.enum.ts
+│   │   │   │   │   ├── oidc-provider-middleware-step.enum.ts
+│   │   │   │   │   ├── oidc-provider-prompt.enum.ts
+│   │   │   │   │   └── oidc-provider-routes.enum.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-provider-base.exception.ts
+│   │   │   │   │   ├── oidc-provider-initialisation.exception.ts
+│   │   │   │   │   ├── oidc-provider-parse-redis-response.exception.ts
+│   │   │   │   │   └── oidc-provider-stringify-payload-for-redis.exception.ts
+│   │   │   │   ├── filters
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── oidc-provider-session-not-found-exception.filter.spec.ts
+│   │   │   │   │   └── oidc-provider-session-not-found-exception.filter.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── oidc-provider-context.interface.ts
+│   │   │   │   ├── oidc-provider.module.spec.ts
+│   │   │   │   ├── oidc-provider.module.ts
+│   │   │   │   ├── oidc-provider.service.spec.ts
+│   │   │   │   ├── oidc-provider.service.ts
+│   │   │   │   └── services
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── oidc-provider-config-app.service.spec.ts
+│   │   │   │       ├── oidc-provider-config-app.service.ts
+│   │   │   │       ├── oidc-provider-config.service.spec.ts
+│   │   │   │       └── oidc-provider-config.service.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── rabbitmq
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── rabbitmq.config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── rabbitmq.module.spec.ts
+│   │   │   │   └── rabbitmq.module.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── redis
+│   │   │   ├── .mocks
+│   │   │   │   ├── index.ts
+│   │   │   │   └── redis.service.mock.ts
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── redis.config.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── redis.module.spec.ts
+│   │   │   │   ├── redis.module.ts
+│   │   │   │   └── services
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── redis.service.spec.ts
+│   │   │   │       └── redis.service.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── service-provider-adapter-mongo
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── service-provider-adapter-mongo-config.dto.ts
+│   │   │   │   │   └── service-provider-adapter-mongo.dto.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── service-provider-adapter-mongo.schema.ts
+│   │   │   │   ├── service-provider-adapter-mongo.module.ts
+│   │   │   │   ├── service-provider-adapter-mongo.service.spec.ts
+│   │   │   │   └── service-provider-adapter-mongo.service.ts
+│   │   │   └── tsconfig.lib.json
+│   │   └── session
+│   │       ├── .mocks
+│   │       │   ├── index.ts
+│   │       │   └── session.service.mock.ts
+│   │       ├── README.md
+│   │       ├── src
+│   │       │   ├── dto
+│   │       │   │   ├── index.ts
+│   │       │   │   └── session.config.ts
+│   │       │   ├── enums
+│   │       │   │   ├── error-code.enum.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── exceptions
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── session-alias-not-found.exception.ts
+│   │       │   │   ├── session-bad-alias.exception.ts
+│   │       │   │   ├── session-bad-cookie.exception.ts
+│   │       │   │   ├── session-bad-format.exception.ts
+│   │       │   │   ├── session-bad-stringify.exception.ts
+│   │       │   │   ├── session-base.exception.ts
+│   │       │   │   ├── session-cannot-commit-undefined-session.exception.ts
+│   │       │   │   ├── session-not-found.exception.ts
+│   │       │   │   └── session-storage.exception.ts
+│   │       │   ├── index.ts
+│   │       │   ├── interceptors
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── session-commit.interceptor.spec.ts
+│   │       │   │   └── session-commit.interceptor.ts
+│   │       │   ├── interfaces
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── session-cookie-options.interface.ts
+│   │       │   │   ├── session-service.interface.ts
+│   │       │   │   └── session-storage.interface.ts
+│   │       │   ├── middlewares
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── session.middleware.spec.ts
+│   │       │   │   └── session.middleware.ts
+│   │       │   ├── services
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── session-backend-storage.service.spec.ts
+│   │       │   │   ├── session-backend-storage.service.ts
+│   │       │   │   ├── session-cookies.service.spec.ts
+│   │       │   │   ├── session-cookies.service.ts
+│   │       │   │   ├── session-lifecycle.service.spec.ts
+│   │       │   │   ├── session-lifecycle.service.ts
+│   │       │   │   ├── session-local-storage.service.spec.ts
+│   │       │   │   ├── session-local-storage.service.ts
+│   │       │   │   ├── session.service.spec.ts
+│   │       │   │   └── session.service.ts
+│   │       │   ├── session.module.ts
+│   │       │   ├── tokens
+│   │       │   │   ├── index.ts
+│   │       │   │   └── session-store-key.token.ts
+│   │       │   └── types
+│   │       │       ├── index.ts
+│   │       │       ├── samesite.type.ts
+│   │       │       └── template-exposed.type.ts
+│   │       └── tsconfig.lib.json
+│   ├── migrate-mongo-config.js
+│   ├── migrations
+│   │   └── 20250203155216-remove_alt_field_from_provider_collection.ts
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── scripts
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── broadcast.sh
+│   │   ├── pem
+│   │   │   └── ec-secp256r1.pem
+│   │   └── pemToJwk.js
+│   ├── tsconfig.build.json
+│   ├── tsconfig.json
+│   └── yarn.lock
+├── compose.yaml
+├── docker
+│   ├── .dockerignore
+│   ├── .env
+│   ├── .gitignore
+│   ├── README.md
+│   ├── bash
+│   │   ├── README.md
+│   │   ├── commands
+│   │   │   ├── docker.sh
+│   │   │   ├── index.sh
+│   │   │   ├── lemonldap.sh
+│   │   │   ├── mongo.sh
+│   │   │   ├── node.sh
+│   │   │   ├── postgres.sh
+│   │   │   └── up.sh
+│   │   ├── config.sh
+│   │   ├── txt
+│   │   │   └── atomic.art.txt
+│   │   └── utils
+│   │       ├── commands.sh
+│   │       ├── index.sh
+│   │       ├── task.sh
+│   │       └── wait.sh
+│   ├── builds
+│   │   ├── broker
+│   │   │   ├── Dockerfile
+│   │   │   ├── definitions.json
+│   │   │   └── rabbitmq.config
+│   │   ├── lemonldap
+│   │   │   ├── Dockerfile
+│   │   │   └── entrypoint.sh
+│   │   └── mongodb
+│   │       ├── Dockerfile
+│   │       └── healthcheck.sh
+│   ├── compose
+│   │   ├── fca-low
+│   │   │   ├── .env
+│   │   │   │   ├── admin.env
+│   │   │   │   ├── core-rie.env
+│   │   │   │   ├── core.env
+│   │   │   │   ├── dpa1-low.env
+│   │   │   │   ├── dpa2-low.env
+│   │   │   │   ├── fia-llng-low.env
+│   │   │   │   ├── fia-rie-low.env
+│   │   │   │   ├── fia1-low.env
+│   │   │   │   ├── fia2-low.env
+│   │   │   │   ├── fsa1-low.env
+│   │   │   │   ├── fsa2-low.env
+│   │   │   │   ├── fsa3-low.env
+│   │   │   │   ├── fsa4-low.env
+│   │   │   │   ├── fsa5-low.env
+│   │   │   │   ├── hybridge-internet.env
+│   │   │   │   ├── hybridge-rie.env
+│   │   │   │   ├── moncomptepro.env
+│   │   │   │   └── mongo-fca-low.env
+│   │   │   ├── admin.yml
+│   │   │   ├── core.yml
+│   │   │   ├── hybridge.yml
+│   │   │   ├── mocks.yml
+│   │   │   ├── mongo.yml
+│   │   │   ├── postgres.yml
+│   │   │   └── stack.yml
+│   │   └── shared
+│   │       ├── .env
+│   │       │   ├── base-app.env
+│   │       │   ├── pc-mongo.env
+│   │       │   ├── postgres
+│   │       │   │   ├── base.env
+│   │       │   │   └── databases.env
+│   │       │   ├── postgres.env
+│   │       │   └── redis.env
+│   │       └── shared.yml
+│   ├── docker-stack
+│   └── volumes
+│       ├── .home
+│       │   ├── .bashrc
+│       │   └── .gitignore
+│       ├── fca-low
+│       │   └── mocks
+│       │       └── idp
+│       │           └── databases
+│       │               └── scenarios
+│       │                   └── scenarios.json
+│       ├── llng
+│       │   ├── README.md
+│       │   ├── llng-conf.json
+│       │   └── scripts
+│       │       └── init.sh
+│       ├── log
+│       │   └── .gitkeep
+│       ├── mongo-fca-low
+│       │   ├── initdb.d
+│       │   │   └── 01-create-user.js
+│       │   └── scripts
+│       │       ├── db-states
+│       │       │   ├── _default
+│       │       │   │   ├── account-fca.js
+│       │       │   │   ├── dp.js
+│       │       │   │   ├── idp.js
+│       │       │   │   ├── index.js
+│       │       │   │   ├── scopes.js
+│       │       │   │   └── sp.js
+│       │       │   ├── drop-db.js
+│       │       │   ├── e2e-idp
+│       │       │   │   ├── e2e-idp-insert.js
+│       │       │   │   ├── e2e-idp-remove.js
+│       │       │   │   ├── e2e-idp-update-activate.js
+│       │       │   │   └── e2e-idp-update-desactivate.js
+│       │       │   └── mongo-reset.js
+│       │       ├── flatten-v2-federation-keys.js
+│       │       ├── manage.sh
+│       │       └── run.sh
+│       ├── nginx-proxy
+│       │   ├── default-vhost
+│       │   │   └── index.html
+│       │   ├── etc
+│       │   │   ├── __default_vhost.conf
+│       │   │   ├── review.conf
+│       │   │   └── services.conf
+│       │   ├── includes
+│       │   │   └── common.vhost.conf
+│       │   └── nginx.conf
+│       ├── postgres
+│       │   ├── init-multiple-postgresql-databases.sh
+│       │   ├── pg_hba.conf
+│       │   ├── postgresql.conf
+│       │   └── start.sh
+│       ├── rp-bridge-proxy
+│       │   └── vhost.conf
+│       └── ssl
+│           ├── README.md
+│           ├── app.crt
+│           ├── app.key
+│           ├── ca.crt
+│           ├── client-ignite.crt
+│           ├── client-ignite.key
+│           ├── docker-stack-ca.crt
+│           ├── docker-stack-ca.key
+│           ├── docker-stack-ca.srl
+│           ├── generate.sh
+│           ├── mongo.crt
+│           ├── mongo.key
+│           ├── mongo.pem
+│           ├── postgres.crt
+│           ├── postgres.fc-apps.client.crt
+│           ├── postgres.fc-apps.client.key
+│           ├── postgres.key
+│           ├── postgres.partner.client.crt
+│           ├── postgres.partner.client.key
+│           ├── redis-pwd.crt
+│           ├── redis-pwd.key
+│           ├── redis.crt
+│           ├── redis.key
+│           └── requests
+│               ├── app-req.conf
+│               ├── app.csr
+│               ├── mongo-req.conf
+│               ├── mongo.csr
+│               ├── postgres-req.conf
+│               ├── postgres.csr
+│               ├── postgres.fc-apps.client-req.conf
+│               ├── postgres.fc-apps.client.csr
+│               ├── postgres.partner.client-req.conf
+│               ├── postgres.partner.client.csr
+│               ├── redis-pwd-req.conf
+│               └── redis-pwd.csr
+├── pcdbapi
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── Dockerfile.test
+│   ├── README.md
+│   ├── compose.yaml
+│   ├── crypt.py
+│   ├── main.py
+│   ├── middleware.py
+│   ├── pyproject.toml
+│   ├── test_api.py
+│   └── test_crypt.py
+└── quality
+    ├── .eslintrc.js
+    ├── .gitignore
+    ├── .npmrc
+    ├── .nvmrc
+    ├── .prettierignore
+    ├── README.md
+    ├── _doc
+    │   └── UPGRADE.md
+    ├── fca
+    │   ├── .cypress-cucumber-preprocessorrc.json
+    │   ├── .gitignore
+    │   ├── .prettierignore
+    │   ├── .vscode
+    │   │   └── settings.json
+    │   ├── cypress
+    │   │   ├── fixtures
+    │   │   │   └── fca-low
+    │   │   │       ├── docker
+    │   │   │       │   ├── api-common.json
+    │   │   │       │   ├── environment.json
+    │   │   │       │   ├── identity-provider-configs.json
+    │   │   │       │   ├── identity-providers.json
+    │   │   │       │   ├── service-provider-configs.json
+    │   │   │       │   └── service-providers.json
+    │   │   │       ├── integ01
+    │   │   │       │   ├── api-common.json
+    │   │   │       │   ├── environment.json
+    │   │   │       │   ├── identity-provider-configs.json
+    │   │   │       │   ├── identity-providers.json
+    │   │   │       │   ├── service-provider-configs.json
+    │   │   │       │   └── service-providers.json
+    │   │   │       ├── kube-mvp0
+    │   │   │       │   ├── api-common.json
+    │   │   │       │   ├── environment.json
+    │   │   │       │   ├── identity-provider-configs.json
+    │   │   │       │   ├── identity-providers.json
+    │   │   │       │   ├── service-provider-configs.json
+    │   │   │       │   └── service-providers.json
+    │   │   │       └── scopes.json
+    │   │   ├── integration
+    │   │   │   ├── accessibilité
+    │   │   │   │   └── accessibilité-connexion.feature
+    │   │   │   ├── api
+    │   │   │   │   ├── api-authorize.feature
+    │   │   │   │   ├── api-discovery.feature
+    │   │   │   │   ├── api-oidc-callback.feature
+    │   │   │   │   ├── api-redirect-to-idp.feature
+    │   │   │   │   ├── api-token-introspection.feature
+    │   │   │   │   └── api-token.feature
+    │   │   │   ├── exploitation
+    │   │   │   │   ├── connexion-exploitation.feature
+    │   │   │   │   ├── creation-modification-fi-routing.feature
+    │   │   │   │   ├── creation-modification-fi.feature
+    │   │   │   │   └── creation-modification-fs.feature
+    │   │   │   ├── usager
+    │   │   │   │   ├── 404.feature
+    │   │   │   │   ├── connexion-acr-pci.feature
+    │   │   │   │   ├── connexion-acr.feature
+    │   │   │   │   ├── connexion-claims.feature
+    │   │   │   │   ├── connexion-email-authorise.feature
+    │   │   │   │   ├── connexion-fi-non-signé.feature
+    │   │   │   │   ├── connexion-fi.feature
+    │   │   │   │   ├── connexion-identite-personnalisee.feature
+    │   │   │   │   ├── connexion-idp_hint.feature
+    │   │   │   │   ├── connexion-local-storage.feature
+    │   │   │   │   ├── connexion-login-hint.feature
+    │   │   │   │   ├── connexion-pkce.feature
+    │   │   │   │   ├── connexion-proconnect-identite.feature
+    │   │   │   │   ├── connexion-prompt.feature
+    │   │   │   │   ├── connexion-redirect-uri.feature
+    │   │   │   │   ├── connexion-scope.feature
+    │   │   │   │   ├── connexion-secteur-prive.feature
+    │   │   │   │   ├── connexion-session-absente.feature
+    │   │   │   │   ├── connexion-session.feature
+    │   │   │   │   ├── connexion-siret-hint.feature
+    │   │   │   │   ├── connexion-sso.feature
+    │   │   │   │   ├── connexion-sub.feature
+    │   │   │   │   ├── connexion-token.feature
+    │   │   │   │   ├── connexion-usager-multi-fi.feature
+    │   │   │   │   ├── connexion-usager.feature
+    │   │   │   │   ├── deconnexion-usager.feature
+    │   │   │   │   ├── fournisseur-données.feature
+    │   │   │   │   ├── hybridge.feature
+    │   │   │   │   └── reconciliation-pci.feature
+    │   │   │   └── visuel
+    │   │   │       └── validation-visuelle-fca-low.feature
+    │   │   ├── plugins
+    │   │   │   ├── console-log-plugin.ts
+    │   │   │   ├── crypto-plugin.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── jwt-plugin.ts
+    │   │   │   ├── log-plugin.ts
+    │   │   │   └── otp-plugin.ts
+    │   │   ├── snapshots
+    │   │   │   └── base
+    │   │   │       └── validation-visuelle-fca-low.feature
+    │   │   │           ├── 1ce4009bc3_erreur_desktop.snap.png
+    │   │   │           ├── 2ebf6a5851_erreur_mobile.snap.png
+    │   │   │           ├── 599d606b53_selectionFI_tablet landscape.snap.png
+    │   │   │           ├── 7e6412aedf_selectionFI_mobile.snap.png
+    │   │   │           ├── 9b7f0f39af_erreur_tablet portrait.snap.png
+    │   │   │           ├── c0e37ce4cb_selectionFI_desktop.snap.png
+    │   │   │           ├── c72875dd86_erreur_tablet landscape.snap.png
+    │   │   │           └── d8afd680d4_selectionFI_tablet portrait.snap.png
+    │   │   └── support
+    │   │       ├── api
+    │   │       │   ├── dto
+    │   │       │   │   ├── get-discovery.dto.ts
+    │   │       │   │   └── post-token-introspection.dto.ts
+    │   │       │   ├── helpers
+    │   │       │   │   └── class-validator-helper.ts
+    │   │       │   └── steps
+    │   │       │       ├── api-discovery-steps.ts
+    │   │       │       ├── api-jwt-steps.ts
+    │   │       │       ├── api-request-steps.ts
+    │   │       │       ├── api-response-steps.ts
+    │   │       │       ├── api-sp-error-steps.ts
+    │   │       │       ├── api-token-introspection-steps.ts
+    │   │       │       └── api-token-userinfo-steps.ts
+    │   │       ├── common
+    │   │       │   ├── helpers
+    │   │       │   │   ├── accessibility-helper.ts
+    │   │       │   │   ├── basic-authorization-helper.ts
+    │   │       │   │   ├── cookie-helper.ts
+    │   │       │   │   ├── fixtures-helper.ts
+    │   │       │   │   ├── index.ts
+    │   │       │   │   ├── log-helper.ts
+    │   │       │   │   ├── sp-claims-helper.ts
+    │   │       │   │   ├── sp-custom-params-helper.ts
+    │   │       │   │   └── user-helper.ts
+    │   │       │   ├── steps
+    │   │       │   │   ├── accessibility-steps.ts
+    │   │       │   │   ├── browser-steps.ts
+    │   │       │   │   ├── cookie-steps.ts
+    │   │       │   │   ├── hooks.ts
+    │   │       │   │   ├── image-snapshot-steps.ts
+    │   │       │   │   ├── local-log-steps.ts
+    │   │       │   │   └── viewport-steps.ts
+    │   │       │   └── types
+    │   │       │       ├── environment.d.ts
+    │   │       │       ├── identity-provider-config.d.ts
+    │   │       │       ├── identity-provider.d.ts
+    │   │       │       ├── index.d.ts
+    │   │       │       ├── operator-user.d.ts
+    │   │       │       ├── service-provider-config.d.ts
+    │   │       │       └── service-provider.d.ts
+    │   │       ├── exploitation
+    │   │       │   ├── helpers
+    │   │       │   │   ├── index.ts
+    │   │       │   │   ├── operator-user-provider.ts
+    │   │       │   │   └── operator-user.ts
+    │   │       │   ├── pages
+    │   │       │   │   ├── exploit-form-page.ts
+    │   │       │   │   ├── exploit-idp-form-page.ts
+    │   │       │   │   ├── exploit-idp-list-page.ts
+    │   │       │   │   ├── exploit-sp-form-page.ts
+    │   │       │   │   ├── exploit-sp-list-page.ts
+    │   │       │   │   └── totp-modal-component.ts
+    │   │       │   └── steps
+    │   │       │       ├── exploit-common-steps.ts
+    │   │       │       ├── exploit-connection-steps.ts
+    │   │       │       ├── exploit-idp-form-steps.ts
+    │   │       │       ├── exploit-idp-list-steps.ts
+    │   │       │       ├── exploit-sp-form-steps.ts
+    │   │       │       └── exploit-sp-list-steps.ts
+    │   │       ├── index.ts
+    │   │       └── usager
+    │   │           └── steps
+    │   │               ├── contact-support-steps.ts
+    │   │               ├── identity-provider-steps.ts
+    │   │               ├── idp-proconnect-identite-steps.ts
+    │   │               ├── interaction-idp-selection-steps.ts
+    │   │               ├── interaction-steps.ts
+    │   │               ├── service-provider-error-steps.ts
+    │   │               ├── service-provider-steps.ts
+    │   │               └── technical-error-steps.ts
+    │   ├── cypress-base.config.ts
+    │   ├── cypress-fca-low-visual.config.ts
+    │   ├── cypress-fca-low.config.ts
+    │   ├── package.json
+    │   └── tsconfig.json
+    ├── package.json
+    ├── scripts
+    │   ├── get-business-logs.ts
+    │   ├── multiple-cucumber-html-reporter.ts
+    │   └── parse-business-log.ts
+    ├── tsconfig.json
+    └── yarn.lock
+369 directories, 1285 files
