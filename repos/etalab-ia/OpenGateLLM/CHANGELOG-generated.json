@@ -1,0 +1,28 @@
+## Changelog : OpenGateLLM (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour d'OpenGateLLM se concentrent sur l'amélioration de la gestion des documents, de la recherche et de l'architecture interne du projet. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fonctionnalité de l'API, notamment en ce qui concerne le streaming de réponses et la gestion des erreurs.
+
+### Évolutions fonctionnelles
+- Amélioration de la gestion des erreurs lors de la configuration (#672).
+- Correction du streaming des réponses du chat avec les modèles (#692).
+- Correction de la gestion du seuil dans la recherche (#684).
+- Correction d'une erreur lors de l'utilisation de l'intégration Albert pour l'audio (#665).
+- Correction du tri et des filtres sur les pages des routeurs et des fournisseurs dans le playground (#664).
+- Correction du format de la date d'expiration des utilisateurs lors de la création dans le playground (#663).
+- Suppression des rôles et organisations dans le playground (#666).
+- Correction d'un bug lié à l'absence de TTL pour les clés Redis de limitation de débit (#654).
+
+### Évolutions techniques
+- Refactorisation de la création de l'application pour adopter une architecture plus propre (#691).
+- Refactorisation des routeurs pour une architecture plus propre (#658).
+- Consolidation des index Elasticsearch en un seul index (#667).
+- Modification du schéma des chunks (#688).
+- Correction d'une division par zéro dans la recherche et ajout de tests (#687).
+- Suppression du nom du document de l'index Elasticsearch (#686).
+- Ajout d'un healthcheck au script de migration Elasticsearch (#669).
+- Modification du type d'ID de collection obsolète dans la recherche (#662).
+
+### Autres changements
+- Documentation d'une architecture de scaling pour Elasticsearch (#668).
+- Dépréciation de la fonctionnalité "proconnect" (#693).

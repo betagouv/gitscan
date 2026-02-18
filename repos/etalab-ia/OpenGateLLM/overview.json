@@ -1,44 +1,45 @@
 {
   "url": "https://github.com/etalab-ia/OpenGateLLM",
   "name": "OpenGateLLM",
-  "description": "OpenGateLLM est une API gateway open-source, prête pour la production, optimisée pour les modèles auto-hébergés. Elle est conçue pour centraliser, sécuriser et gérer l'accès à l'IA générative de manière souveraine et économique.",
+  "description": "OpenGateLLM est une API unifiée open-source pour exécuter et gérer des modèles de langage de grande taille (LLM) auto-hébergés. Elle permet de centraliser, sécuriser et gérer l'accès à l'IA générative de manière souveraine et économique.",
   "language": "Python",
   "features": [
-    "Gestion des clés API",
-    "Authentification utilisateur",
-    "Contrôle d'accès basé sur les rôles",
-    "Gestion des organisations",
-    "Limitation du débit",
+    "Gestion des modèles",
+    "Authentification",
+    "Contrôle d'accès",
+    "Limitation de débit",
     "Surveillance de l'utilisation",
-    "Intégration avec des modèles auto-hébergés",
-    "Support OpenAI-compatible API"
+    "Intégration avec Elasticsearch",
+    "Support de différents modèles (Mistral, OpenAI, etc.)",
+    "OCR (Reconnaissance Optique de Caractères)"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "requests",
-    "pydantic",
-    "httpx",
     "FastAPI",
+    "Pydantic",
+    "httpx",
+    "Elasticsearch",
     "Redis",
-    "PostgreSQL",
-    "Celery"
+    "Celery",
+    "PyYAML",
+    "Authlib",
+    "python-jose"
   ],
   "components": [
-    "Frontend Reflex",
     "API REST",
     "Base de données PostgreSQL",
+    "Index Elasticsearch",
+    "Cache Redis",
     "Queue Celery",
-    "Gestionnaire d'accès",
-    "Gestionnaire de documents"
+    "Interface utilisateur (Reflex)"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "api-key",
       "oauth2",
-      "sso"
-    ],
-    "providers": []
+      "api-key",
+      "jwt"
+    ]
   },
   "tests": [
     "pytest",
@@ -46,29 +47,32 @@
     "pytest-snapshot"
   ],
   "workflows": [
-    "build_and_deploy.yml",
-    "codeql_scan.yml",
-    "deploy_documentation.yml",
-    "generate_documentation.yml",
-    "run_tests.yml",
-    "secrets_scan.yml",
-    "update_pyproject_version.yml"
+    "build_and_deploy",
+    "codeql_scan",
+    "deploy_documentation",
+    "generate_documentation",
+    "run_tests",
+    "secrets_scan",
+    "update_pyproject_version"
   ],
-  "lastActivity": "2026-01-30T16:31:21+01:00",
+  "lastActivity": "2026-02-17T22:20:01+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 122,
+    "stars": 134,
     "forks": 19,
     "contributors": null,
-    "openIssues": 63
+    "openIssues": 76
   },
   "tags": [
     "API",
     "LLM",
     "Self-hosted",
     "IA générative",
-    "Open Source"
+    "Open Source",
+    "Elasticsearch",
+    "Redis",
+    "Python"
   ]
 }

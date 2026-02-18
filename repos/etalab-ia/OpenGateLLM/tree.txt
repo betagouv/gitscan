@@ -71,6 +71,7 @@
 │   │       ├── 2025_12_17_0947-551b2920b23c_add_provider_router_list_relationship.py
 │   │       └── 2025_12_22_1507-f02a2525b97c_remove_carbon_footprint_prefix.py
 │   ├── alembic.ini
+│   ├── app.py
 │   ├── clients
 │   │   ├── __init__.py
 │   │   ├── model
@@ -134,12 +135,9 @@
 │   │   │   ├── info.py
 │   │   │   ├── keys.py
 │   │   │   └── usage.py
+│   │   ├── monitoring.py
 │   │   ├── ocr.py
 │   │   ├── parse.py
-│   │   ├── proconnect
-│   │   │   ├── __init__.py
-│   │   │   ├── token.py
-│   │   │   └── user.py
 │   │   ├── rerank.py
 │   │   └── search.py
 │   ├── helpers
@@ -153,7 +151,6 @@
 │   │   ├── _streamingresponsewithstatuscode.py
 │   │   ├── _usagemanager.py
 │   │   ├── _usagetokenizer.py
-│   │   ├── auth_encryption.py
 │   │   ├── data
 │   │   │   ├── __init__.py
 │   │   │   └── chunkers
@@ -194,6 +191,9 @@
 │   │       ├── _postgresuserinforepository.py
 │   │       └── _postgresusersrepository.py
 │   ├── main.py
+│   ├── routers
+│   │   ├── __init__.py
+│   │   └── registry.py
 │   ├── schemas
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -323,7 +323,6 @@
 │   │       │   │   ├── test_providers.py
 │   │       │   │   └── test_routers.py
 │   │       │   └── test_parsermanager.py
-│   │       ├── test_proconnect.py
 │   │       ├── test_utils
 │   │       │   ├── test_carbon.py
 │   │       │   └── test_qos.py
@@ -399,7 +398,6 @@
 │   │   │   ├── rate-limiting.md
 │   │   │   └── usage.md
 │   │   ├── getting-started
-│   │   │   ├── configuration.md
 │   │   │   ├── configuration_file.md
 │   │   │   ├── environment_variables.md
 │   │   │   └── quickstart.md
@@ -412,7 +410,6 @@
 │   │   │   └── rag.md
 │   │   ├── index.mdx
 │   │   └── models
-│   │       ├── configuration.md
 │   │       ├── models.md
 │   │       └── routing.md
 │   ├── docusaurus.config.ts
@@ -642,4 +639,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-138 directories, 506 files
+138 directories, 503 files
