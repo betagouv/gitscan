@@ -1,0 +1,35 @@
+## Changelog : ecobalyse-method-tooling (30 derniers jours)
+
+### Résumé
+Les dernières mises à jour se concentrent sur l'amélioration du processus de fusion des données, notamment la gestion des versions des ingrédients et des activités, ainsi que sur la correction de classifications erronées et l'amélioration de la prédiction de groupes de cultures. Des ajustements ont également été apportés à la gestion des suffixes et des préfixes pour une meilleure identification des données.
+
+### Évolutions fonctionnelles
+- Correction d'une erreur de classification qui associait incorrectement les produits laitiers à la viande. (#16db8ef)
+- Amélioration de la prédiction du groupe de cultures grâce à l'utilisation de données de référence RPG 28. (#1f98e12)
+- Correction d'un problème où des terres de jachère étaient faussement associées à des groupes de cultures. (#5b876d5)
+- La localisation de la colonne "thread" est maintenant correctement transmise depuis le CSV vers les activités générées en JSON. (#b01781d)
+- Les données non alimentaires (textiles, etc.) sont maintenant préservées lors de la fusion. (#316dfd9)
+- Correction du processus de choix pour certains ingrédients. (#8ce6d66)
+
+### Évolutions techniques
+- Refactorisation de la fonction `merge_activities` pour utiliser des dictionnaires plats et des clés de fusion basées sur l'UUID. (#b8f6acd)
+- Remplacement des variables d'environnement individuelles par des chemins de base `ECOBALYSE_DATA` et `ECOBALYSE`. (#c70285e)
+- Consolidation des activités par `activityName` lors de la fusion. (#ff61dfc)
+- Modification de l'utilisation des suffixes pour la gestion des versions, passant de `(old)` à `(2025)`. (#06d8707, #7936b15)
+- Renommage des options de ligne de commande `--add-old-prefix` et `--remove-old-prefix` en `--add-2025-suffix` et `--remove-2025-suffix`. (#7936b15)
+- Mise à jour de la logique de fusion pour utiliser `displayName` au lieu de `activityName`. (#a1560d9, #4c14d31)
+
+### Autres changements
+- Ajout du fichier `.envrc` à `.gitignore`. (#3019751)
+- Mise à jour du fichier `README` avec les variables d'environnement actuelles et l'utilisation de la CLI. (#7348048)
+- Renommage du fichier de sortie final en `fichier_final_{variant}.csv`. (#39066c1)
+- Ajout d'un nouveau suffixe aux noms de fichiers de sortie générés. (#6b241c4)
+- Correction du renommage des clés dans `feed.json` pour utiliser les alias des ingrédients au lieu des alias des activités. (#99c27ad)
+- Mise à jour de `feed.json` pour la gestion des suffixes/préfixes des alias d'activités. (#6f7ba5f, #9549c6c)
+- Ajout d'un préfixe `new-` aux alias lors de l'utilisation de l'option `--add-old-prefix`. (#f4ba978)
+- Suppression du suffixe `(old)` pour les ingrédients listés dans `keep.csv`. (#ab7eba2)
+- Gestion de la production de DOM avec un suffixe FR Outre-Mer et changement de `(old)` à un suffixe. (#057fedd)
+- Mise à jour des données sources et des données générées. (#4c14d31, #220122)
+- Suppression des doublons d'ingrédients par `displayName` lors de la fusion. (#b88dfe2)
+- Mise à jour des ingrédients tournesol. (#0d03056)
+- Nouvelle sortie. (#712709c)
