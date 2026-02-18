@@ -1,0 +1,130 @@
+.
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── build-docker.yml
+│       └── ci-tests.yml
+├── .gitignore
+├── .gitlint
+├── .gitmodules
+├── .tiltignore
+├── CHANGELOG.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── Tiltfile
+├── bin
+│   ├── _config.sh
+│   ├── compose
+│   ├── pylint
+│   └── pytest
+├── docker
+│   ├── files
+│   │   ├── etc
+│   │   │   └── nginx
+│   │   │       └── conf.d
+│   │   │           └── default.conf
+│   │   └── usr
+│   │       └── local
+│   │           ├── bin
+│   │           │   └── entrypoint
+│   │           └── etc
+│   │               └── gunicorn
+│   │                   └── satosa.py
+│   └── oidc-test-client
+│       ├── .dockerignore
+│       ├── Dockerfile
+│       ├── app.py
+│       └── requirements.txt
+├── docker-compose.yml
+├── docs
+│   └── architecture.md
+├── env.d
+│   └── development
+│       └── common.dist
+├── gitlint
+│   └── gitlint_emoji.py
+├── renovate.json
+├── scripts
+│   ├── install-pre-commit-hook.sh
+│   ├── update-git-submodule.sh
+│   └── updatekeys.sh
+├── secrets
+├── src
+│   ├── helm
+│   │   ├── env.d
+│   │   │   ├── dev
+│   │   │   │   ├── secrets.enc.yaml
+│   │   │   │   └── values.oidc2fer.yaml.gotmpl
+│   │   │   ├── outscale-production
+│   │   │   │   ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/oidc2fer/env/outscale-production/secrets.enc.yaml
+│   │   │   │   └── values.oidc2fer.yaml.gotmpl
+│   │   │   └── staging
+│   │   │       ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/oidc2fer/env/staging/secrets.enc.yaml
+│   │   │       └── values.oidc2fer.yaml.gotmpl
+│   │   ├── extra
+│   │   │   ├── Chart.yaml
+│   │   │   └── templates
+│   │   │       └── redis.yaml
+│   │   ├── helmfile.yaml.gotmpl
+│   │   └── oidc2fer
+│   │       ├── Chart.yaml
+│   │       ├── templates
+│   │       │   ├── _helpers.tpl
+│   │       │   ├── ingress.yaml
+│   │       │   ├── satosa_deployment.yaml
+│   │       │   ├── satosa_svc.yaml
+│   │       │   └── secrets.yaml
+│   │       └── values.yaml
+│   └── satosa
+│       ├── .pylintrc
+│       ├── internal_attributes.yaml
+│       ├── oidc2fer
+│       │   ├── __init__.py
+│       │   ├── attribute_generators
+│       │   │   ├── __init__.py
+│       │   │   └── entity_id_to_siret_mapper.py
+│       │   ├── attribute_processors
+│       │   │   ├── __init__.py
+│       │   │   └── flattening_processor.py
+│       │   ├── frontends
+│       │   │   ├── __init__.py
+│       │   │   └── jwt_userinfo_openid_connect.py
+│       │   └── wsgi.py
+│       ├── plugins
+│       │   ├── backends
+│       │   │   └── saml2_backend.yaml
+│       │   ├── frontends
+│       │   │   ├── openid_connect_frontend.yaml
+│       │   │   └── ping_frontend.yaml
+│       │   └── microservices
+│       │       ├── attribute_authorization.yaml
+│       │       ├── attribute_processor.yaml
+│       │       ├── filter_attributes.yaml
+│       │       ├── primary_identifier.yaml
+│       │       ├── siret_mapping.yaml
+│       │       └── static_attributes.yaml
+│       ├── proxy_conf.yaml
+│       ├── pyproject.toml
+│       ├── pytest.ini
+│       ├── setup.py
+│       ├── static
+│       │   ├── images
+│       │   │   └── logo.svg
+│       │   └── index.html
+│       └── tests
+│           ├── oidc2fer
+│           │   ├── attribute_generators
+│           │   │   └── test_entity_id_to_siret_mapper.py
+│           │   └── attribute_processors
+│           │       └── test_flattening_processor.py
+│           └── test_e2e.py
+└── start-kind.sh
+47 directories, 82 files

@@ -1,0 +1,102 @@
+#
+# OIDC2FER package
+#
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oidc2fer"
+version = "0.1.0"
+authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+description = "An application to handle contacts and teams."
+keywords = ["OIDC", "SAML", "Shibboleth", "FER", "RENATER"]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "SATOSA==8.5.1",
+    "gunicorn==23.0.0",
+    "redis==5.0.4",
+    "JSON-log-formatter==1.0",
+    "WhiteNoise==6.7.0",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/proconnect-gouv/oidc2fer/issues/new"
+"Changelog" = "https://github.com/proconnect-gouv/oidc2fer/blob/main/CHANGELOG.md"
+"Homepage" = "https://github.com/proconnect-gouv/oidc2fer"
+"Repository" = "https://github.com/proconnect-gouv/oidc2fer"
+
+[project.optional-dependencies]
+dev = [
+    "pylint==3.1.0",
+    "pytest-cov==4.1.0",
+    "pytest==8.0.2",
+    "ruff==0.2.2",
+    "pytest-playwright==0.4.4",
+]
+
+[tool.setuptools]
+packages = { find = { where = ["."], exclude = ["tests"] } }
+zip-safe = true
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "venv",
+    "__pycache__",
+]
+line-length = 88
+
+
+[tool.ruff.lint]
+ignore= ["DJ001", "PLR2004"]
+select = [
+    "B", # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "C4", # flake8-comprehensions
+    "I", # isort
+    "PLC", # pylint-convention
+    "PLE", # pylint-error
+    "PLR", # pylint-refactoring
+    "PLW", # pylint-warning
+    "RUF100", # Ruff unused-noqa
+    "RUF200", # Ruff check pyproject.toml
+    "S", # flake8-bandit
+    "SLF", # flake8-self
+    "T20", # flake8-print
+]
+
+[tool.ruff.lint.isort]
+section-order = ["future","standard-library","third-party","oidc2fer","first-party","local-folder"]
+sections = { oidc2fer=["core"] }
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S", "SLF"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-v",
+    "--cov-report",
+    "term-missing",
+    # Allow test files to have the same name in different directories.
+    "--import-mode=importlib",
+]
+python_files = [
+    "test_*.py",
+    "tests.py",
+]

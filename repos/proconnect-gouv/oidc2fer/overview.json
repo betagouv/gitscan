@@ -1,0 +1,59 @@
+{
+  "url": "https://github.com/proconnect-gouv/oidc2fer",
+  "name": "oidc2fer",
+  "description": "Ce projet est une passerelle entre OIDC et la fédération d'éducation française SAML (RENATER). Il n'est pas encore prêt pour la production et des changements importants sont à prévoir.",
+  "language": "Python",
+  "features": [
+    "Authentification OIDC",
+    "Intégration SAML",
+    "Gestion des attributs utilisateurs"
+  ],
+  "audience": "Agents de l'Administration",
+  "dependencies": [
+    "SATOSA",
+    "gunicorn",
+    "redis",
+    "JSON-log-formatter",
+    "WhiteNoise",
+    "Flask",
+    "oic"
+  ],
+  "components": [
+    "Backend SATOSA",
+    "API REST",
+    "Frontend statique",
+    "Base de données Redis"
+  ],
+  "auth": {
+    "methods": [
+      "oauth2",
+      "saml"
+    ],
+    "providers": []
+  },
+  "tests": [
+    "pytest",
+    "pytest-cov"
+  ],
+  "workflows": [
+    "build-docker.yml",
+    "ci-tests.yml"
+  ],
+  "lastActivity": "2026-02-11T09:39:24+01:00",
+  "status": "active",
+  "license": "MIT",
+  "hasDocumentation": true,
+  "metrics": {
+    "stars": 5,
+    "forks": 4,
+    "contributors": null,
+    "openIssues": 5
+  },
+  "tags": [
+    "OIDC",
+    "SAML",
+    "RENATER",
+    "Fédération d'identité",
+    "Authentification"
+  ]
+}
