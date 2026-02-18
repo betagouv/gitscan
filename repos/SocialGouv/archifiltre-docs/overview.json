@@ -1,32 +1,33 @@
 {
-  "url": "https://github.com/socialgouv/archifiltre-docs",
+  "url": "https://github.com/SocialGouv/archifiltre-docs",
   "name": "archifiltre-docs",
-  "description": "Archifiltre Docs permet de visualiser et d'améliorer vos arborescences de fichiers. Ce projet fournit une interface pour explorer et analyser la structure des fichiers.",
+  "description": "Docs par Archifiltre permet de visualiser et d'améliorer vos arborescences de fichiers.  Ce projet fournit une interface pour explorer et analyser la structure des fichiers et dossiers.",
   "language": "TypeScript",
   "features": [
     "Visualisation d'arborescence de fichiers",
     "Analyse de la structure des fichiers",
     "Export CSV",
     "Calcul de la taille des fichiers",
-    "Détection de doublons",
+    "Calcul de l'empreinte carbone (CO2)",
     "Génération de rapports d'audit"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Electron",
-    "Webpack",
-    "PostgreSQL",
-    "Sentry",
     "i18next",
-    "xlsx"
+    "styled-components",
+    "xlsx",
+    "js-md5",
+    "winston",
+    "sentry"
   ],
   "components": [
     "Frontend React",
     "Backend Electron",
-    "API REST",
-    "Base de données (potentielle)",
-    "Interface utilisateur graphique"
+    "Interface utilisateur",
+    "Gestion des fichiers",
+    "Génération de rapports"
   ],
   "auth": {
     "methods": [
@@ -35,30 +36,25 @@
   },
   "tests": [
     "Jest",
-    "Cypress"
+    "Playwright"
   ],
   "workflows": [
     "CI",
     "CodeQL"
   ],
-  "lastActivity": "2024-09-25T00:00:00Z",
+  "lastActivity": "2025-11-28T13:01:51+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "file management",
     "file analysis",
-    "file visualization",
+    "file tree",
     "electron",
     "react",
-    "typescript",
     "audit",
-    "data analysis"
+    "carbon footprint",
+    "data visualization"
   ]
 }
