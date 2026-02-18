@@ -1,0 +1,29 @@
+## Changelog : monprojetsup (30 derniers jours)
+
+### Résumé
+Les dernières semaines ont été marquées par des améliorations significatives du système de suggestions de formations, notamment grâce à l'intégration de nouvelles données Parcoursup et à l'optimisation des performances. Des corrections de bugs et des mises à jour de l'infrastructure ont également été réalisées pour améliorer la stabilité et la fiabilité du service. Enfin, des efforts ont été déployés pour améliorer les tests et le CI/CD.
+
+### Évolutions fonctionnelles
+- Amélioration du système de suggestions de formations avec un nouveau score basé sur les données Parcoursup (#1038, #1033, #1034).
+- Prise en charge de nomenclatures inconnues dans les données de Parcoursup (#963, #1032).
+- Correction d'un bug affectant les suggestions (#1031).
+- Restauration du service de progression (#1047).
+- Mise à jour des indicateurs MPS (#1045, #1048).
+- Correction d'un bug lié aux vœux inconnus (#1020).
+
+### Évolutions techniques
+- Optimisation de l'utilisation de la mémoire dans le module de suggestions2 (#1040).
+- Pré-calcul des modèles pour améliorer le temps de démarrage de suggestions2 (#1051).
+- Ajout d'une variable d'environnement `MODELS_DIR` pour configurer le répertoire des modèles de suggestions2.
+- Mise à jour de Spring Boot et d'autres dépendances pour corriger des exclusions de groupes et accélérer l'ETL en mode test (#1053).
+- Simplification du calcul des villes et des vœux (#85e021b9, #897fe27a).
+- Amélioration des diagnostics de l'ETL.
+- Correction de tests et ajout de tests pour l'ETL.
+- Refonte de l'intégration continue (CI) et des workflows de déploiement.
+- Rebasage des branches `demo` et `prod` pour assurer la cohérence du code.
+
+### Autres changements
+- Mise à jour de la documentation du score Parcoursup dans le README.
+- Correction de fautes de frappe et amélioration de la lisibilité du code YAML (#1015, #1023).
+- Mise à jour de certaines dépendances (filelock, torch, commons-lang3) (#1011, #988, #987).
+- Merge des branches `develop` et `prod`.

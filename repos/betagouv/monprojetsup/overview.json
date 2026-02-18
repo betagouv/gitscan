@@ -1,43 +1,41 @@
 {
   "url": "https://github.com/betagouv/monprojetsup",
   "name": "monprojetsup",
-  "description": "MonProjetSup est un mono-repo contenant plusieurs applications nécessaires au fonctionnement du service. Il permet de gérer les parcours des élèves et de les orienter vers des formations.",
+  "description": "Ce repository contient plusieurs applications nécessaires au fonctionnement de Mon Projet Sup. Il permet de gérer l'authentification, les données de référence et les suggestions de formations.",
   "language": "Kotlin",
   "features": [
-    "Gestion des profils élèves",
-    "Recherche de formations",
-    "Suggestions de formations",
-    "Suivi des candidatures",
-    "Authentification utilisateur"
+    "Authentification utilisateur",
+    "Recherche",
+    "Suggestions de formations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "FastAPI",
+    "NumPy",
+    "Pandas",
+    "PostgreSQL",
     "Spring Boot",
     "React",
     "TypeScript",
-    "PostgreSQL",
-    "Docker",
-    "Keycloak"
+    "ViteJS"
   ],
   "components": [
-    "Frontend React/TypeScript",
-    "Backend Kotlin/Spring Boot",
-    "API REST",
+    "Backend API Kotlin/Spring Boot",
+    "Frontend React/TypeScript/ViteJS",
     "Base de données PostgreSQL",
-    "Keycloak (authentification)"
+    "ETL (Kotlin/Java/Spring Boot)",
+    "API Suggestions (Kotlin/Java/Spring Boot)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "email-password",
+      "oauth2"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
-    "Vitest",
-    "Pytest"
+    "Pytest",
+    "Vitest"
   ],
   "workflows": [
     "backend.yml",
@@ -51,7 +49,7 @@
     "suggestions.yml",
     "suggestions2.yml"
   ],
-  "lastActivity": "2026-01-30T21:28:28Z",
+  "lastActivity": "2026-02-17T11:39:23+01:00",
   "status": "active",
   "license": "Other",
   "hasDocumentation": true,
@@ -59,16 +57,14 @@
     "stars": 1,
     "forks": 5,
     "contributors": null,
-    "openIssues": 31
+    "openIssues": 34
   },
   "tags": [
     "Kotlin",
     "React",
     "Spring Boot",
     "PostgreSQL",
-    "Keycloak",
-    "Orientation",
     "Formation",
-    "Parcoursup"
+    "Administration"
   ]
 }
