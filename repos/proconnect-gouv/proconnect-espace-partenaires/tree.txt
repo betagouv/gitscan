@@ -1,0 +1,324 @@
+.
+├── .dockerignore
+├── .editorconfig
+├── .env.development
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── cleanup-cache.yml
+├── .gitignore
+├── .node-version
+├── .prettierignore
+├── .releaserc.json
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── csp.config.mjs
+├── docker
+│   ├── mongodb
+│   │   ├── entrypoint.sh
+│   │   ├── keyfile
+│   │   └── mockdata.json
+│   └── ssl
+│       ├── ca.crt
+│       ├── docker-stack-ca.crt
+│       ├── docker-stack-ca.key
+│       ├── docker-stack-ca.srl
+│       ├── mongo.crt
+│       ├── mongo.key
+│       └── mongo.pem
+├── docker-compose.yml
+├── docs
+│   ├── architecture.md
+│   └── best-practices.md
+├── e2e
+│   ├── .gitignore
+│   ├── README.md
+│   ├── cucumber.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── steps
+│   │   └── index.ts
+│   └── uuv
+│       ├── cucumber
+│       │   └── step_definitions
+│       │       ├── codecept.ts
+│       │       └── maildev.ts
+│       ├── features
+│       │   ├── 404.feature
+│       │   ├── docs.feature
+│       │   ├── healthz.feature
+│       │   ├── home.feature
+│       │   ├── login.feature
+│       │   └── new_service_provider.feature
+│       └── playwright.config.ts
+├── eslint.config.mjs
+├── instrumentation.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── packages
+│   └── email
+│       ├── CHANGELOG.md
+│       ├── README.md
+│       ├── index.html
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── src
+│       │   ├── MagicLink.stories.tsx
+│       │   ├── MagicLink.tsx
+│       │   ├── _layout.tsx
+│       │   ├── components
+│       │   │   ├── Badge.tsx
+│       │   │   ├── Button.tsx
+│       │   │   ├── Em.tsx
+│       │   │   ├── Html.tsx
+│       │   │   ├── Link.tsx
+│       │   │   ├── ProConnectLogo.tsx
+│       │   │   ├── Section.tsx
+│       │   │   ├── Text.tsx
+│       │   │   ├── index.ts
+│       │   │   └── style.ts
+│       │   └── index.ts
+│       ├── tsconfig.json
+│       └── tsconfig.lib.json
+├── prisma
+│   ├── db_espace.prisma
+│   └── db_proconnect.prisma
+├── proconnect-espace-partenaires.code-workspace
+├── public
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   └── images
+│       ├── docs
+│       │   ├── erreur.png
+│       │   ├── flux_openid.svg
+│       │   ├── keycloak
+│       │   │   ├── client
+│       │   │   │   ├── advanced
+│       │   │   │   │   ├── advanced-settings1.png
+│       │   │   │   │   ├── advanced-settings2.png
+│       │   │   │   │   ├── advanced-settings3.png
+│       │   │   │   │   ├── fine-grain-openid-connect-configuration.png
+│       │   │   │   │   └── openid-connect-compatibility-modes.png
+│       │   │   │   ├── capability-config.png
+│       │   │   │   ├── general-settings.png
+│       │   │   │   ├── logout-settings.png
+│       │   │   │   └── scopes
+│       │   │   │       ├── chorusdt
+│       │   │   │       │   ├── onglet1.png
+│       │   │   │       │   ├── onglet2.png
+│       │   │   │       │   ├── onglet2details.png
+│       │   │   │       │   └── onglet3.png
+│       │   │   │       ├── given_name
+│       │   │   │       │   ├── onglet1.png
+│       │   │   │       │   ├── onglet2.png
+│       │   │   │       │   ├── onglet2details.png
+│       │   │   │       │   └── onglet3.png
+│       │   │   │       └── siret
+│       │   │   │           ├── onglet1.png
+│       │   │   │           ├── onglet2.png
+│       │   │   │           ├── onglet2details.png
+│       │   │   │           └── onglet3.png
+│       │   │   └── ldap
+│       │   │       ├── cache-settings.png
+│       │   │       ├── connection-authentication-settings.png
+│       │   │       ├── ldap-mapper-email.png
+│       │   │       ├── ldap-mapper-given_name.png
+│       │   │       ├── ldap-mappers.png
+│       │   │       ├── ldap-searching-updating.png
+│       │   │       └── synchronization-settings.png
+│       │   ├── network-flowchart-internet.excalidraw.svg
+│       │   ├── network-flowchart-rie.excalidraw.svg
+│       │   ├── pc.svg
+│       │   ├── reconciliation-sub.png
+│       │   ├── schema_reseau.png
+│       │   ├── screenshot-annuaire-entreprises.png
+│       │   ├── screenshot-datapass.png
+│       │   ├── screenshot-francetransfert.png
+│       │   ├── screenshot-plus-fraiche-ma-ville.png
+│       │   └── screenshot-rdv.png
+│       ├── espace-partenaires-hero.png
+│       ├── home-laptop.svg
+│       ├── partners
+│       │   ├── lasuite.svg
+│       │   ├── malt.svg
+│       │   ├── rdv-service-public.svg
+│       │   └── whaller.png
+│       └── pictograms
+│           ├── buildings
+│           │   ├── city-hall.svg
+│           │   ├── factory.svg
+│           │   ├── house.svg
+│           │   ├── nuclear-plant.svg
+│           │   └── school.svg
+│           ├── digital
+│           │   ├── application.svg
+│           │   ├── avatar.svg
+│           │   ├── calendar.svg
+│           │   ├── coding.svg
+│           │   ├── data-visualization.svg
+│           │   ├── in-progress.svg
+│           │   ├── internet.svg
+│           │   ├── mail-send.svg
+│           │   └── search.svg
+│           ├── document
+│           │   ├── contract.svg
+│           │   ├── document-add.svg
+│           │   ├── document-download.svg
+│           │   ├── document-signature.svg
+│           │   ├── document.svg
+│           │   ├── driving-licence.svg
+│           │   ├── national-identity-card.svg
+│           │   ├── passport.svg
+│           │   ├── tax-stamp.svg
+│           │   └── vehicle-registration.svg
+│           ├── environment
+│           │   ├── environment.svg
+│           │   ├── food.svg
+│           │   ├── grocery.svg
+│           │   ├── human-cooperation.svg
+│           │   ├── leaf.svg
+│           │   ├── moon.svg
+│           │   ├── mountain.svg
+│           │   ├── sun.svg
+│           │   └── tree.svg
+│           ├── health
+│           │   ├── health.svg
+│           │   ├── hospital.svg
+│           │   ├── vaccine.svg
+│           │   └── virus.svg
+│           ├── institutions
+│           │   ├── firefighter.svg
+│           │   ├── gendarmerie.svg
+│           │   ├── justice.svg
+│           │   ├── money.svg
+│           │   └── police.svg
+│           ├── leisure
+│           │   ├── book.svg
+│           │   ├── community.svg
+│           │   ├── culture.svg
+│           │   ├── digital-art.svg
+│           │   └── paint.svg
+│           ├── map
+│           │   ├── airport.svg
+│           │   ├── location-france.svg
+│           │   ├── luggage.svg
+│           │   └── map.svg
+│           └── system
+│               ├── connection-lost.svg
+│               ├── error.svg
+│               ├── information.svg
+│               ├── notification.svg
+│               ├── padlock.svg
+│               ├── success.svg
+│               ├── system.svg
+│               ├── technical-error.svg
+│               └── warning.svg
+├── scripts
+│   └── prebuild.ts
+├── sentry.client.config.ts
+├── sentry.server.config.ts
+├── src
+│   ├── components
+│   │   ├── AppSideMenu.tsx
+│   │   ├── CodeBlock.module.css
+│   │   ├── CodeBlock.tsx
+│   │   ├── CopyToClipboard.tsx
+│   │   ├── CopyableField.tsx
+│   │   ├── NotificationsContainer.tsx
+│   │   ├── ProviderUrl.tsx
+│   │   └── VerticalStepper.tsx
+│   ├── layouts
+│   │   ├── docs.module.css
+│   │   ├── docs.tsx
+│   │   ├── docsNav.ts
+│   │   └── page.tsx
+│   ├── lib
+│   │   ├── auth.ts
+│   │   ├── matomo.ts
+│   │   ├── pcdbapi.ts
+│   │   ├── prisma.ts
+│   │   ├── remark-alerts.mjs
+│   │   ├── remark-relative-links.mjs
+│   │   └── remark-shiki.mjs
+│   ├── mdx-components.tsx
+│   ├── pages
+│   │   ├── 404.tsx
+│   │   ├── 500.tsx
+│   │   ├── _app.tsx
+│   │   ├── _document.tsx
+│   │   ├── _error.tsx
+│   │   ├── api
+│   │   │   ├── apps
+│   │   │   │   ├── [id].ts
+│   │   │   │   └── index.ts
+│   │   │   └── auth
+│   │   │       └── [...nextauth].ts
+│   │   ├── apps
+│   │   │   ├── [id].tsx
+│   │   │   └── index.tsx
+│   │   ├── auth
+│   │   │   └── verify-request.tsx
+│   │   ├── docs
+│   │   │   ├── fournisseur-identite
+│   │   │   │   ├── certificats_fi.md
+│   │   │   │   ├── changement-agentconnect-proconnect-fi.md
+│   │   │   │   ├── configuration.md
+│   │   │   │   ├── format-user-info.md
+│   │   │   │   ├── idp-configs
+│   │   │   │   │   ├── keycloak.md
+│   │   │   │   │   └── lemon-ldap.md
+│   │   │   │   ├── index.mdx
+│   │   │   │   ├── plateformes_fi.md
+│   │   │   │   ├── prerequis-fi.md
+│   │   │   │   ├── referentiel-IP.md
+│   │   │   │   ├── test-configuration-fi.md
+│   │   │   │   └── troubleshooting-fi.md
+│   │   │   ├── fournisseur-service
+│   │   │   │   ├── aide_support.md
+│   │   │   │   ├── bouton_proconnect.md
+│   │   │   │   ├── certification-dirigeant.md
+│   │   │   │   ├── changement-agentconnect-proconnect-fs.md
+│   │   │   │   ├── connaitre-le-fi-utilise.md
+│   │   │   │   ├── couverture-proconnect.md
+│   │   │   │   ├── custom-scope.md
+│   │   │   │   ├── datapass-fs.md
+│   │   │   │   ├── donnees_fournies.md
+│   │   │   │   ├── double_authentification.md
+│   │   │   │   ├── eligibilite_installation.md
+│   │   │   │   ├── fs_RIE.md
+│   │   │   │   ├── identifiants-fi-test.md
+│   │   │   │   ├── idp_hint_usage.md
+│   │   │   │   ├── implementation_technique.md
+│   │   │   │   ├── index.mdx
+│   │   │   │   ├── login_hint_usage.md
+│   │   │   │   ├── modification_redirect_uris.md
+│   │   │   │   ├── niveaux-acr.md
+│   │   │   │   ├── recommandation_parcours.md
+│   │   │   │   ├── reconciliation-sub.png
+│   │   │   │   ├── refresh-token.md
+│   │   │   │   ├── resource_server.md
+│   │   │   │   ├── scope-claims.md
+│   │   │   │   ├── serveurs_internet_rie.md
+│   │   │   │   ├── siret_hint_usage.md
+│   │   │   │   ├── sso.md
+│   │   │   │   ├── table_matieres.md
+│   │   │   │   └── troubleshooting-fs.md
+│   │   │   ├── index.md
+│   │   │   └── ressources
+│   │   │       ├── claim_amr.md
+│   │   │       ├── flux_oidc.md
+│   │   │       ├── glossaire.md
+│   │   │       └── valeur_ac_domain.md
+│   │   ├── healthz.tsx
+│   │   ├── index.tsx
+│   │   └── login.tsx
+│   ├── styles
+│   │   └── global.css
+│   └── types
+│       └── next-auth.d.ts
+└── tsconfig.json
+58 directories, 265 files
