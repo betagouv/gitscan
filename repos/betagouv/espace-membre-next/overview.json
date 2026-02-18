@@ -1,34 +1,36 @@
 {
   "url": "https://github.com/betagouv/espace-membre-next",
   "name": "espace-membre-next",
-  "description": "L'espace membre permet de gérer les membres et missions de la communauté, ainsi que les produits, incubateurs, sponsors et l'accès aux outils.",
+  "description": "L'espace membre permet de gérer les membres et missions de la communauté, ainsi que les produits, incubateurs, sponsors et les comptes beta. Il offre également des fonctionnalités d'exploration de la communauté, d'affichage des formations et événements, et de gestion de l'infolettre.",
   "language": "TypeScript",
   "features": [
-    "Gestion des membres et missions",
-    "Gestion des produits, incubateurs, équipes, sponsors",
+    "Gestion des membres",
+    "Gestion des missions",
+    "Gestion des produits",
+    "Gestion des incubateurs",
+    "Gestion des sponsors",
     "Gestion du compte utilisateur",
     "Exploration de la communauté",
-    "Affichage des formations et évènements",
+    "Affichage des formations et événements",
     "Gestion de l'infolettre",
     "Connexion via ProConnect ou magic-link"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Next.js",
+    "Express",
     "PostgreSQL",
-    "pg",
-    "kysely",
-    "tailwindcss",
-    "express",
-    "nodemailer",
-    "sib-api-v3-sdk"
+    "pg-boss",
+    "Next.js",
+    "Kysely",
+    "tailwindcss"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Authentification NextAuth.js"
+    "Serveur Express",
+    "Composants React DSFR"
   ],
   "auth": {
     "methods": [
@@ -40,16 +42,15 @@
   },
   "tests": [
     "Jest",
-    "ts-mocha",
-    "Playwright"
+    "Playwright",
+    "ts-mocha"
   ],
   "workflows": [
-    "nodejs",
-    "playwright",
-    "codeql-analysis",
-    "onboarding-checklist-validation"
+    "Node.js",
+    "CodeQL",
+    "Playwright"
   ],
-  "lastActivity": "2026-01-30T16:30:57Z",
+  "lastActivity": "2026-02-17T15:56:07+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -57,15 +58,15 @@
     "stars": 3,
     "forks": 8,
     "contributors": null,
-    "openIssues": 65
+    "openIssues": 75
   },
   "tags": [
-    "administration",
     "gestion-membres",
+    "communauté",
     "incubateur",
     "typescript",
     "react",
-    "nextjs",
-    "postgresql"
+    "postgresql",
+    "administration"
   ]
 }
