@@ -1,25 +1,27 @@
 {
   "url": "https://github.com/suitenumerique/projects",
   "name": "projects",
-  "description": "Projets est un outil de gestion de projet pour La Suite territoriale. Il offre une interface Kanban personnalisée pour les équipes gérant des projets de transformation territoriale et numérique.",
+  "description": "Projets est l'outil de gestion de projet pour La Suite territoriale. Il fournit une interface de type Kanban personnalisée, conçue spécifiquement pour les équipes gérant des projets de transformation territoriale et numérique.",
   "language": "JavaScript",
   "features": [
     "Gestion de projet",
     "Collaboration",
-    "Contenu enrichi (Markdown)",
+    "Contenu enrichi",
     "Filtrage",
     "Mises à jour en temps réel",
     "Notifications",
-    "Internationalisation (Français, Anglais)",
-    "Authentification unique (OpenID Connect)"
+    "Internationalisation",
+    "Authentification unique",
+    "Interface utilisateur moderne"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "React",
     "Sails.js",
     "PostgreSQL",
+    "Knex.js",
     "Socket.io",
-    "Keycloak"
+    "AWS S3"
   ],
   "components": [
     "Frontend React",
@@ -39,24 +41,25 @@
   },
   "tests": [
     "Mocha",
-    "Cucumber"
+    "Jest"
   ],
   "workflows": [
-    "build-and-push-docker-base-image.yml",
-    "build-and-push-docker-image-dev.yml",
-    "build-and-push-docker-image.yml",
-    "build-and-test.yml",
-    "lint.yml"
+    "build-and-push-docker-base-image",
+    "build-and-push-docker-image-dev",
+    "build-and-push-docker-image",
+    "build-and-push-release-package",
+    "build-and-test",
+    "lint"
   ],
-  "lastActivity": "2026-01-31T18:02:25+01:00",
+  "lastActivity": "2026-02-17T07:42:35+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 17,
-    "forks": 3,
+    "stars": 29,
+    "forks": 5,
     "contributors": null,
-    "openIssues": 40
+    "openIssues": 41
   },
   "tags": [
     "gestion de projet",
