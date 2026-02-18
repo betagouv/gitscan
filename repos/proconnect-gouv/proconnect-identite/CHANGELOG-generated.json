@@ -1,0 +1,43 @@
+## Changelog : proconnect-identite (30 derniers jours)
+
+### Résumé
+Ce changelog résume les améliorations apportées à ProConnect Identité au cours des 30 derniers jours. Les modifications incluent des améliorations de l'interface utilisateur, des corrections de bugs, des optimisations de la gestion des organisations et des vérifications d'identité, ainsi que des mises à jour techniques pour améliorer la stabilité et la maintenabilité du code.
+
+### Évolutions fonctionnelles
+
+*   Possibilité pour les mairies de choisir une adresse email spécifique lors de l'authentification. (#1728)
+*   Amélioration de l'algorithme pour déterminer si une entité est une entreprise unipersonnelle, corrigeant ainsi un bug. (#1746)
+*   Affichage d'un avertissement en environnement de test pour éviter toute confusion. (#1754)
+*   Retour des informations utilisateur obligatoires (userinfo) pour une meilleure expérience d'authentification. (#1738)
+*   Ajout d'un statut "réouvert" aux modérations pour un suivi plus précis. (#1701, #1720)
+*   Amélioration de la gestion des types de vérification, avec suppression des types obsolètes. (#1713, #1722)
+*   Possibilité de choisir entre plusieurs mairies lors de l'authentification. (#1728)
+*   Ajout d'une alerte en cas d'indisponibilité de l'API Sirene. (#1724)
+
+### Évolutions techniques
+
+*   Migration de plusieurs fichiers de migration vers TypeScript pour une meilleure typage et maintenabilité. (#1712)
+*   Refactorisation majeure de la gestion des "guards" (sécurité), améliorant la structure du code. (#1716)
+*   Migration de la vérification de petite association vers le domaine lorsque l'email est vérifié. (#1760)
+*   Ajout de tests unitaires pour les types de vérification d'utilisateur. (#1759)
+*   Mise à jour des dépendances : `axios`, `cypress-io/github-action`, `ejs`, `hono`, `lodash`, `lodash-es`, `nodemailer`, `pkgroll`, `qs`, `sentry`. (#1735, #1736, #1749, #1750, #1756, #1763, #1765, #1767)
+*   Mise à jour du fichier `package-lock.json` pour assurer la cohérence des dépendances. (#1753, #1761, #1764)
+*   Ajout d'un barrel file dans le dossier `adapter`. (#1766)
+*   Correction d'un bug où les liens de domaine non vérifiés étaient écrasés après modération. (#1758)
+*   Amélioration de la gestion des statuts de modération. (#1740)
+*   Ajout du champ `status` à la tâche cron Metabase. (#1739)
+
+### Autres changements
+
+*   Mise à jour de l'icône de l'aide dans la section concernée. (#1773)
+*   Nouvelle mise en page avec une colonne pour une meilleure lisibilité. (#1679)
+*   Ajout de la table `franceconnect_userinfo` à la copie cron d'anonymisation. (#1757)
+*   Suppression du flag de fonctionnalité pour la certification de tous les utilisateurs. (#1705)
+*   Collecte du nom du service et de l'adresse IP de l'utilisateur pour le suivi. (#1703)
+*   Ajout du type `verified_by_coop_mediation_numerique` pour les liens organisation utilisateur. (#1736)
+*   Simplification du logger d'événements de débogage. (#1747)
+*   Utilisation de la commande Cypress `cy.magicLinkLogin`. (#1692, #1747)
+*   Suppression d'une variable d'environnement FranceConnect obsolète. (#1708)
+*   Correction d'un problème de scoring lié à l'absence de pays de naissance dans les données. (#1699, #1700)
+*   Mise à jour de l'URL de rappel FranceConnect. (#1727)
+*   Ajout de la possibilité de choisir entre plusieurs mairies. (#1728)

@@ -1,0 +1,52 @@
+{
+  "name": "@proconnect-gouv/proconnect.annuaire_entreprises",
+  "version": "1.1.3",
+  "private": true,
+  "homepage": "https://github.com/proconnect-gouv/proconnect-identite/tree/main/packages/annuaire_entreprises#readme",
+  "bugs": "https://github.com/proconnect-gouv/proconnect-identite/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proconnect-gouv/proconnect-identite.git",
+    "directory": "packages/annuaire_entreprises"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "imports": {
+    "#data/*": "./data/*.json",
+    "#src/*": {
+      "types": "./dist/*/index.d.ts",
+      "default": "./dist/*/index.js"
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "default": "./dist/*/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.lib.json",
+    "prebuild:data": "npx --yes del-cli data/*.json",
+    "build:data": "tsx scripts/build-data.ts",
+    "postbuild:data": "prettier --write data",
+    "check": "npm run build -- --noEmit",
+    "dev": "npm run build -- --watch --preserveWatchOutput",
+    "dev:test": "tsx --watch --test src/**/*.test.ts",
+    "test": "tsx --test --test-reporter=spec src/**/*.test.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@proconnect-gouv/proconnect.devtools.typescript": "1.0.0",
+    "@types/node": "^22.18.6",
+    "tsx": "^4.20.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
