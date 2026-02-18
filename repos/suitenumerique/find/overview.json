@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/suitenumerique/find",
   "name": "find",
-  "description": "Find indexe des documents provenant de plusieurs applications partageant une fédération OIDC commune et permet aux utilisateurs de rechercher des documents avec leurs droits d'accès dans toutes les applications de la fédération.",
+  "description": "Find permet d'indexer des documents provenant de plusieurs applications partageant une fédération OIDC commune et permet aux utilisateurs de rechercher des documents avec leurs droits d'accès dans toutes les applications de la fédération.",
   "language": "Python",
   "features": [
     "Recherche",
-    "Gestion des droits d'accès",
-    "Indexation de documents"
+    "Gestion des accès",
+    "Indexation de documents",
+    "Suppression de documents par tags"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -21,14 +22,15 @@
     "Backend Django",
     "API REST",
     "Base de données PostgreSQL",
-    "Index OpenSearch"
+    "Index OpenSearch",
+    "Frontend (via Django templates)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt"
     ],
-    "providers": []
+    "providers": null
   },
   "tests": [
     "Pytest"
@@ -39,21 +41,22 @@
     "find.yml",
     "release-helm-chart.yaml"
   ],
-  "lastActivity": "2026-01-31T18:04:08+01:00",
+  "lastActivity": "2026-02-17T13:30:10+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 18,
+    "stars": 21,
     "forks": 3,
     "contributors": null,
-    "openIssues": 7
+    "openIssues": 8
   },
   "tags": [
     "recherche",
-    "indexation",
     "opensearch",
     "django",
-    "oidc"
+    "oidc",
+    "indexation",
+    "gestion des accès"
   ]
 }
