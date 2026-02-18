@@ -1,0 +1,43 @@
+## Changelog : otelo (30 derniers jours)
+
+### Résumé
+Le projet Otelo a connu une période d'activité intense ces dernières semaines, avec des améliorations significatives apportées à la gestion des simulations, à l'exportation de données, à l'authentification et à l'ajout de nouvelles fonctionnalités comme la comparaison avec des territoires voisins. L'application a également bénéficié d'optimisations techniques pour améliorer la stabilité et la performance, ainsi que de corrections de bugs pour une meilleure expérience utilisateur.
+
+### Évolutions fonctionnelles
+- Ajout d'un bouton d'exportation des résultats de simulation (#10).
+- Implémentation d'un historique des résultats de simulation (#10).
+- Ajout d'une bannière d'information (feedback) pour les utilisateurs (#3d2356f).
+- Refonte de la gestion des utilisateurs (#3079a94).
+- Ajout de la possibilité d'exporter des données au format image (#e9c6bb3).
+- Implémentation de la fonctionnalité de territoires voisins, permettant de comparer des données entre différentes zones géographiques (#28bee79, #4887078).
+- Ajout de la possibilité d'ajouter des EPCI voisins pour des comparaisons (#c781fd9).
+- Amélioration du calcul des taux de logements vacants (#38a150d).
+- Ajout de l'EPCI dans la liste d'exportation des statistiques (#2c043b0).
+- Ajout d'une page 404 et d'un rafraîchissement automatique après la déconnexion (#17ae3bc).
+- Correction de l'affichage des offres potentielles RS (#f2ca409).
+- Correction de l'arrondi de la taille des ménages (#457a517).
+
+### Évolutions techniques
+- Migration vers une meilleure solution d'authentification (Better Auth) (#3a3706c, #eae9833, #6607b63, #7726298, #c08525d, #6a19384).
+- Mise en place d'un système de tests unitaires pour le moteur de calcul Excel (#4c2ef91).
+- Amélioration de la gestion des dépendances et de la configuration du build.
+- Optimisation de la gestion de Chromium pour Puppeteer (#2418a08, #a89a65f, #997563c).
+- Suppression du module d'authentification de l'API (#3276fda).
+- Suppression du seed de la base de données (#4887078).
+- Suppression du client Prisma généré lors du déploiement (#5155155).
+- Mise à jour de la configuration pour le déploiement sur Scalingo (#9c07a00, #ef78626, #8e051ba, #51e38b6).
+- Initialisation du monorepo (#9ee197a).
+
+### Autres changements
+- Ajout d'un fichier README (#e71eeb9).
+- Correction de fautes de frappe (#515486a, #b0c7e14).
+- Suppression de commandes de nettoyage inutiles (#dd5928c).
+- Suppression d'un log inutile (#ba1c53c).
+- Correction d'un problème de blocage de la pagination (#c52de65).
+- Correction de la navigation du menu d'en-tête pour les utilisateurs connectés (#6233f97).
+- Suppression d'une page de source de données non authentifiée (#2a10186).
+- Correction de l'affichage des couleurs des graphiques et des taux d'hébergement secondaire (#d65871a).
+- Ajout de tests pour le calcul du logement indigne (#5f5ef12).
+- Correction de problèmes de build (#5e4a880, #12ecbcc, #cd55d2d, #cc22ce3, #d8b58d6).
+- Mise à jour de la version de Node.js (#9c07a00).
+- Ajout de la gestion de la variable d'environnement PROJECT_DIR (#67689a5).

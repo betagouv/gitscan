@@ -73,6 +73,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260206103449_better_auth_migration
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260217111913_add_user_feedback
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260217144153_simulation_results_history
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -145,6 +149,7 @@
 │   │   │   │   │   │   └── mauvaise-qualite-b14
 │   │   │   │   │   │       ├── bad-quality.service.spec.ts
 │   │   │   │   │   │       └── bad-quality.service.ts
+│   │   │   │   │   ├── needs-calculation-cli.module.ts
 │   │   │   │   │   ├── needs-calculation.module.ts
 │   │   │   │   │   ├── needs-calculation.service.spec.ts
 │   │   │   │   │   ├── needs-calculation.service.ts
@@ -160,7 +165,8 @@
 │   │   │   │   ├── cli.module.ts
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── commands
-│   │   │   │   │   └── import-backup.command.ts
+│   │   │   │   │   ├── import-backup.command.ts
+│   │   │   │   │   └── recalculate-results.command.ts
 │   │   │   │   └── services
 │   │   │   │       └── scalingo-backup.service.ts
 │   │   │   ├── common
@@ -256,6 +262,11 @@
 │   │   │   │       ├── zip.module.ts
 │   │   │   │       ├── zip.service.spec.ts
 │   │   │   │       └── zip.service.ts
+│   │   │   ├── feedback
+│   │   │   │   ├── feedback.controller.ts
+│   │   │   │   ├── feedback.module.ts
+│   │   │   │   ├── feedback.service.spec.ts
+│   │   │   │   └── feedback.service.ts
 │   │   │   ├── filocom
 │   │   │   │   ├── filocom.module.ts
 │   │   │   │   ├── filocom.service.spec.ts
@@ -304,7 +315,6 @@
 │   │   │   ├── schemas
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── impersonation-status.ts
-│   │   │   │   │   ├── sign-in-callback.ts
 │   │   │   │   │   └── verify-email.ts
 │   │   │   │   ├── data
 │   │   │   │   │   └── data.ts
@@ -319,6 +329,8 @@
 │   │   │   │   ├── epci-group.ts
 │   │   │   │   ├── export-powerpoint
 │   │   │   │   │   └── export-powerpoint.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   └── submit-feedback.ts
 │   │   │   │   ├── json.ts
 │   │   │   │   ├── results
 │   │   │   │   │   └── results.ts
@@ -367,6 +379,7 @@
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   └── jest-e2e.json
 │   │   ├── tsconfig.build.json
+│   │   ├── tsconfig.cli.json
 │   │   └── tsconfig.json
 │   └── web
 │       ├── .env.dist
@@ -613,6 +626,13 @@
 │       │   │   │   ├── export-excel
 │       │   │   │   │   └── [id]
 │       │   │   │   │       └── route.ts
+│       │   │   │   ├── feedback
+│       │   │   │   │   ├── snooze
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   ├── status
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   └── submit
+│       │   │   │   │       └── route.ts
 │       │   │   │   ├── simulations
 │       │   │   │   │   ├── [id]
 │       │   │   │   │   │   ├── clone
@@ -624,6 +644,8 @@
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── statistics
+│       │   │   │   │   ├── results
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── route.ts
 │       │   │   │   │   ├── simulations
 │       │   │   │   │   │   └── route.ts
@@ -634,6 +656,9 @@
 │       │   │   │       │   └── route.ts
 │       │   │   │       ├── delete
 │       │   │   │       │   └── [id]
+│       │   │   │       │       └── route.ts
+│       │   │   │       ├── export
+│       │   │   │       │   └── csv
 │       │   │   │       │       └── route.ts
 │       │   │   │       ├── route.ts
 │       │   │   │       └── search
@@ -648,7 +673,9 @@
 │       │   │   │   ├── admin-breadcrumb.tsx
 │       │   │   │   ├── statistics-export-buttons.tsx
 │       │   │   │   └── users
+│       │   │   │       ├── users-management.tsx
 │       │   │   │       ├── users-table-header.tsx
+│       │   │   │       ├── users-table.module.css
 │       │   │   │       └── users-table.tsx
 │       │   │   ├── auth
 │       │   │   │   ├── forgot-password-form.tsx
@@ -704,6 +731,9 @@
 │       │   │   │   ├── data-visualisation-page.tsx
 │       │   │   │   ├── data-visualisation-table.tsx
 │       │   │   │   └── select-data-type.tsx
+│       │   │   ├── feedback
+│       │   │   │   ├── feedback-banner.module.css
+│       │   │   │   └── feedback-banner.tsx
 │       │   │   ├── header.tsx
 │       │   │   ├── impersonation-banner.tsx
 │       │   │   ├── navigation
@@ -897,6 +927,7 @@
 │       │   │   ├── background.css
 │       │   │   ├── border.css
 │       │   │   ├── color.css
+│       │   │   ├── container.css
 │       │   │   ├── display.css
 │       │   │   ├── dropdown.css
 │       │   │   ├── flex.css
@@ -922,9 +953,12 @@
 │       │   │   ├── use-epci-neighbors-access.ts
 │       │   │   ├── use-epci-neighbors.ts
 │       │   │   ├── use-epcis.ts
+│       │   │   ├── use-export-csv-users.ts
 │       │   │   ├── use-export-excel-simulation.ts
+│       │   │   ├── use-export-results-statistics.ts
 │       │   │   ├── use-export-simulations-statistics.ts
 │       │   │   ├── use-export-users-statistics.ts
+│       │   │   ├── use-feedback-status.ts
 │       │   │   ├── use-forgot-password.ts
 │       │   │   ├── use-geoapi-search.ts
 │       │   │   ├── use-impersonation.ts
@@ -933,7 +967,9 @@
 │       │   │   ├── use-scenario.ts
 │       │   │   ├── use-search-users.ts
 │       │   │   ├── use-simulation.ts
+│       │   │   ├── use-snooze-feedback.ts
 │       │   │   ├── use-statistics.ts
+│       │   │   ├── use-submit-feedback.ts
 │       │   │   ├── use-synchro-ds.ts
 │       │   │   ├── use-update-simulation.ts
 │       │   │   ├── use-update-user-access.ts
@@ -1033,4 +1069,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-296 directories, 739 files
+308 directories, 763 files

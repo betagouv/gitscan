@@ -1,16 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/otelo",
   "name": "otelo",
-  "description": "Application d'intelligence territoriale pour une stratégie de logement adaptée, durable et inclusive.",
+  "description": "Monorepo pour la startup Otelo. L'application d'intelligence territoriale pour une stratégie de logement adaptée, durable et inclusive.",
   "language": "TypeScript",
   "features": [
     "Authentification",
-    "Gestion des utilisateurs",
-    "Calculs de besoins en logement",
     "Exports (Excel, PowerPoint)",
     "Visualisation de données",
-    "Gestion des scénarios",
-    "Import de sauvegardes"
+    "Gestion des simulations",
+    "Calculs de besoins en logements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -30,12 +28,10 @@
     "Backend NestJS",
     "Frontend Next.js",
     "Base de données PostgreSQL",
-    "API REST",
-    "Interface en ligne de commande"
+    "Package partagé (Types TypeScript, schémas Zod)"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
       "jwt",
       "session"
@@ -43,10 +39,11 @@
     "providers": []
   },
   "tests": [
-    "Jest"
+    "Jest",
+    "Cypress (via e2e tests)"
   ],
   "workflows": [],
-  "lastActivity": "2026-01-30T15:34:20+01:00",
+  "lastActivity": "2026-02-17T20:10:00+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,16 +51,13 @@
     "stars": 1,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 0
+    "openIssues": 1
   },
   "tags": [
     "logement",
     "territoire",
     "simulation",
     "statistiques",
-    "administration",
-    "typescript",
-    "nestjs",
-    "react"
+    "urbanisme"
   ]
 }
