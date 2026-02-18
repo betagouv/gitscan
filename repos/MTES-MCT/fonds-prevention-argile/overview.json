@@ -1,16 +1,17 @@
 {
-  "url": "https://github.com/mtes-mct/fonds-prevention-argile",
+  "url": "https://github.com/MTES-MCT/fonds-prevention-argile",
   "name": "fonds-prevention-argile",
-  "description": "Plateforme d'aide pour réduire la vulnérabilité des logements aux retrait et gonflement des argiles.",
+  "description": "Application web pour le Fonds de Prévention des Risques liés au Retrait-Gonflement des Argiles (RGA).",
   "language": "TypeScript",
   "features": [
-    "Gestion des demandes d'aide",
-    "Simulation des risques RGA",
-    "Recherche de conseillers locaux",
+    "Gestion des utilisateurs",
+    "Simulation de risques RGA",
     "Espace administrateur",
-    "Intégration iframe pour partenaires"
+    "Suivi des statistiques",
+    "Gestion des allers-vers",
+    "Intégration avec Démarches Simplifiées"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Next.js",
     "React",
@@ -18,52 +19,45 @@
     "Tailwind CSS",
     "DSFR",
     "Vitest",
-    "PostgreSQL",
-    "DrizzleORM"
+    "Sentry",
+    "Matomo",
+    "Drizzle-ORM"
   ],
   "components": [
-    "Frontend React (Next.js)",
+    "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Composants DSFR",
-    "Système d'authentification FranceConnect"
+    "Composants DSFR"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
-    ],
-    "providers": [
-      "FranceConnect"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Vitest",
-    "Tests unitaires",
-    "Tests d'intégration"
+    "Cypress"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD"
   ],
-  "lastActivity": "2026-01-30T15:04:38+01:00",
+  "lastActivity": "2026-02-16T16:14:29+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 0,
-    "contributors": 1,
-    "openIssues": 10
+    "contributors": 0,
+    "openIssues": 9
   },
   "tags": [
     "RGA",
     "argile",
     "prévention",
     "logement",
-    "sécurité",
-    "FranceConnect",
-    "Next.js",
-    "TypeScript",
-    "DSFR"
+    "simulation",
+    "administration"
   ]
 }
