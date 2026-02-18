@@ -1,0 +1,836 @@
+.
+├── .buildpacks
+├── .editorconfig
+├── .env
+├── .eslintrc
+├── .github
+│   ├── Charco - Security.png
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.yml
+│   │   └── feature-request.yml
+│   ├── dependabot.yml
+│   ├── labeler.yml
+│   └── workflows
+│       ├── buildpack.yml
+│       ├── ci.yml
+│       ├── e2e.yml
+│       ├── labeler.yml
+│       ├── release.yml
+│       └── release_cron.yaml
+├── .gitignore
+├── .prettierignore
+├── .release-it-changeset
+│   ├── .gitkeep
+│   ├── fix-search-page-reset.md
+│   └── sentry-full-instrumentation.md
+├── .scalingo
+│   └── buildpack
+│       ├── README.md
+│       ├── bin
+│       │   ├── compile
+│       │   ├── detect
+│       │   └── release
+│       └── profile
+│           ├── bun.sh
+│           └── n.sh
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── bin
+│   ├── .env -> ../.env
+│   ├── .gitignore
+│   ├── build.ts
+│   ├── dev.ts
+│   ├── package.json
+│   ├── public
+│   │   ├── .gitkeep
+│   │   └── assets
+│   │       └── 404.svg
+│   ├── src
+│   │   ├── bun
+│   │   │   └── index.ts
+│   │   └── node
+│   │       ├── index.ts
+│   │       └── instrument.ts
+│   └── tsconfig.json
+├── bun.lock
+├── bunfig.toml
+├── docker-compose.yaml
+├── e2e
+│   ├── .gitignore
+│   ├── README.md
+│   ├── bun.lock
+│   ├── cypress
+│   │   └── support
+│   │       ├── command.ts
+│   │       ├── e2e.ts
+│   │       └── step_definitions
+│   │           ├── connexion.ts
+│   │           ├── database.ts
+│   │           ├── hyyyper.ts
+│   │           ├── mockserver.ts
+│   │           └── uvv.ts
+│   ├── cypress.config.ts
+│   ├── features
+│   │   ├── auth
+│   │   │   └── connexion.feature
+│   │   ├── delivrability-domain
+│   │   │   └── delivrability-email-domain.feature
+│   │   ├── moderations
+│   │   │   ├── accept_blocking_moderation.feature
+│   │   │   ├── add_external_member.feature
+│   │   │   ├── add_internal_member.feature
+│   │   │   ├── filter_by_moderator.feature
+│   │   │   ├── handle_big_organization.feature
+│   │   │   ├── handle_duplicate_requests.feature
+│   │   │   ├── manage_external_domain.feature
+│   │   │   ├── manage_internal_domain.feature
+│   │   │   ├── reject_blocking_moderation.feature
+│   │   │   ├── reprocess_completed_moderation.feature
+│   │   │   ├── select_verification_type.feature
+│   │   │   ├── validate_similar_moderations.feature
+│   │   │   └── verify_domain.feature
+│   │   ├── organizations
+│   │   │   ├── dinum.feature
+│   │   │   ├── member_actions.feature
+│   │   │   └── yes_we_hack_domain_verification.feature
+│   │   └── users
+│   │       ├── jean_bon.feature
+│   │       ├── raphael_alpha.feature
+│   │       └── raphael_beta.feature
+│   ├── package.json
+│   └── tsconfig.json
+├── hyyypertool.code-workspace
+├── mocks
+│   ├── api.crisp.chat
+│   │   └── mockserverInitialization.json
+│   ├── auth.agentconnect.gouv.fr
+│   │   └── mockserverInitialization.json
+│   ├── docker-compose.mocks.yaml
+│   ├── entreprise.api.gouv.fr
+│   │   └── mockserverInitialization.json
+│   ├── identite.proconnect.gouv.fr
+│   │   └── mockserverInitialization.json
+│   └── support.etalab.gouv.fr
+│       └── mockserverInitialization.json
+├── package.json
+├── packages
+│   ├── hono-slotify
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── __snapshots__
+│   │   │   │   └── indext.test.tsx.snap
+│   │   │   ├── index.tsx
+│   │   │   └── indext.test.tsx
+│   │   └── tsconfig.json
+│   ├── release-it-changeset-plugin
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   └── tsconfig.json
+│   ├── release-it-gitmoji-changelog-plugin
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   └── tsconfig.json
+│   └── release-it-plugin-types
+│       ├── README.md
+│       ├── package.json
+│       └── src
+│           └── index.d.ts
+├── scalingo.json
+├── scripts
+│   ├── dev.ts
+│   ├── seed.ts
+│   └── studio.ts
+├── sources
+│   ├── config
+│   │   ├── bun-plugin-client-scripts
+│   │   │   ├── index.ts
+│   │   │   ├── package.json
+│   │   │   └── tsconfig.json
+│   │   ├── tailwindcss
+│   │   │   ├── index.ts
+│   │   │   └── package.json
+│   │   └── typescript
+│   │       ├── api
+│   │       │   └── tsconfig.json
+│   │       ├── base
+│   │       │   └── tsconfig.json
+│   │       ├── bun
+│   │       │   └── tsconfig.json
+│   │       ├── package.json
+│   │       └── tsx
+│   │           └── tsconfig.json
+│   ├── core
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── config
+│   │   │   │   ├── env.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   └── schema
+│   │   │       ├── index.ts
+│   │   │       ├── z_email_domain.test.ts
+│   │   │       ├── z_email_domain.ts
+│   │   │       ├── z_empty_string_to_undefined.ts
+│   │   │       ├── z_username.test.ts
+│   │   │       └── z_username.ts
+│   │   └── tsconfig.json
+│   ├── identite-proconnect
+│   │   ├── bin
+│   │   │   ├── migration.ts
+│   │   │   └── seed.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── api
+│   │   │   │   ├── fetch.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── database
+│   │   │   │   ├── drizzle.schema.ts
+│   │   │   │   ├── email_domain.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── seed
+│   │   │   │   │   ├── authenticators
+│   │   │   │   │   │   ├── nordPass.ts
+│   │   │   │   │   │   └── onePassword.ts
+│   │   │   │   │   ├── captus.ts
+│   │   │   │   │   ├── delete.ts
+│   │   │   │   │   ├── email_deliverability_whitelist.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── insert.ts
+│   │   │   │   │   ├── organizations
+│   │   │   │   │   │   ├── abracadabra.ts
+│   │   │   │   │   │   ├── aldp.ts
+│   │   │   │   │   │   ├── bosch_france.ts
+│   │   │   │   │   │   ├── bosch_rexroth.ts
+│   │   │   │   │   │   ├── commune_de_pompierre.ts
+│   │   │   │   │   │   ├── dengi.ts
+│   │   │   │   │   │   ├── dinum.ts
+│   │   │   │   │   │   ├── sak.ts
+│   │   │   │   │   │   └── yes_we_hack.ts
+│   │   │   │   │   ├── troll.ts
+│   │   │   │   │   ├── unicorn.ts
+│   │   │   │   │   ├── users
+│   │   │   │   │   │   ├── jeanbon.ts
+│   │   │   │   │   │   ├── jeandre.ts
+│   │   │   │   │   │   ├── mariebon.ts
+│   │   │   │   │   │   ├── pierrebon.ts
+│   │   │   │   │   │   ├── raphael.ts
+│   │   │   │   │   │   ├── raphael_alpha.ts
+│   │   │   │   │   │   └── richardbon.ts
+│   │   │   │   │   └── zombie.ts
+│   │   │   │   ├── testing
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── sdk
+│   │   │   │   └── index.ts
+│   │   │   └── types
+│   │   │       └── index.ts
+│   │   └── tsconfig.json
+│   ├── moderations
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── build_moderation_update.test.ts
+│   │   │   ├── build_moderation_update.ts
+│   │   │   └── comment_message.ts
+│   │   └── tsconfig.json
+│   ├── organizations
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── web
+│       ├── package.json
+│       ├── src
+│       │   ├── config
+│       │   │   ├── env.ts
+│       │   │   └── index.ts
+│       │   ├── errors
+│       │   │   └── index.ts
+│       │   ├── html
+│       │   │   ├── ClientScript.tsx
+│       │   │   └── index.ts
+│       │   ├── htmx
+│       │   │   └── index.ts
+│       │   ├── layouts
+│       │   │   ├── __snapshots__
+│       │   │   │   ├── main.test.tsx.snap
+│       │   │   │   └── root.test.tsx.snap
+│       │   │   ├── index.ts
+│       │   │   ├── main.test.tsx
+│       │   │   ├── main.tsx
+│       │   │   ├── nprogress.client.ts
+│       │   │   ├── root.test.tsx
+│       │   │   ├── root.ts
+│       │   │   └── sentry.client.ts
+│       │   ├── lib
+│       │   │   ├── create-island
+│       │   │   │   ├── index.test.tsx
+│       │   │   │   └── index.tsx
+│       │   │   ├── crisp
+│       │   │   │   ├── api.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── links.ts
+│       │   │   │   └── types.ts
+│       │   │   ├── htmx.client.ts
+│       │   │   ├── moderations
+│       │   │   │   ├── comment_message.ts
+│       │   │   │   ├── context
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── rejected.ts
+│       │   │   │   ├── entities
+│       │   │   │   │   └── Moderation.ts
+│       │   │   │   ├── event.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── moderation_type.mapper.ts
+│       │   │   │   ├── schema
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── rejected.form.ts
+│       │   │   │   │   └── validate.form.ts
+│       │   │   │   ├── types.ts
+│       │   │   │   └── usecase
+│       │   │   │       ├── CreateAndSendEmailToUser.test.ts
+│       │   │   │       ├── CreateAndSendEmailToUser.ts
+│       │   │   │       ├── GetCripsFromSessionId.ts
+│       │   │   │       ├── GetModerationHeader.ts
+│       │   │   │       ├── GetZammadFromTicketId.ts
+│       │   │   │       ├── IsUserExternalMember.ts
+│       │   │   │       ├── RespondToTicket.ts
+│       │   │   │       ├── SendRejectedMessageToUser.ts
+│       │   │   │       ├── ValidateSimilarModerations.test.ts
+│       │   │   │       ├── ValidateSimilarModerations.ts
+│       │   │   │       ├── index.ts
+│       │   │   │       └── mark_moderation_as.ts
+│       │   │   ├── organizations
+│       │   │   │   ├── event.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── usecase
+│       │   │   │       ├── AddAuthorizedDomain.test.ts
+│       │   │   │       ├── AddAuthorizedDomain.ts
+│       │   │   │       ├── AddVerifiedDomain.test.ts
+│       │   │   │       ├── AddVerifiedDomain.ts
+│       │   │   │       ├── GetBanaticUrl.test.ts
+│       │   │   │       ├── GetBanaticUrl.ts
+│       │   │   │       ├── GetFicheOrganizationById.ts
+│       │   │   │       ├── RemoveDomainEmailById.test.ts
+│       │   │   │       ├── RemoveDomainEmailById.ts
+│       │   │   │       └── index.ts
+│       │   │   ├── users
+│       │   │   │   ├── entities
+│       │   │   │   │   └── User.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── templates
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── usecase
+│       │   │   │       ├── CountUserMemberships.test.ts
+│       │   │   │       ├── CountUserMemberships.ts
+│       │   │   │       ├── GetUserInfo.ts
+│       │   │   │       ├── ResetMFA.test.ts
+│       │   │   │       ├── ResetMFA.ts
+│       │   │   │       ├── ResetPassword.test.ts
+│       │   │   │       ├── ResetPassword.ts
+│       │   │   │       ├── SuggestSameUserEmails.test.ts
+│       │   │   │       ├── SuggestSameUserEmails.ts
+│       │   │   │       └── index.ts
+│       │   │   └── zammad
+│       │   │       ├── const.ts
+│       │   │       ├── fetch.ts
+│       │   │       ├── get_zammad_attachment.ts
+│       │   │       ├── get_zammad_mail.ts
+│       │   │       ├── index.ts
+│       │   │       ├── is_zammad_ticket.ts
+│       │   │       └── types.ts
+│       │   ├── middleware
+│       │   │   ├── auth
+│       │   │   │   ├── AgentConnectUserInfo.ts
+│       │   │   │   ├── NotAuthorized.tsx
+│       │   │   │   ├── authorized.test.ts
+│       │   │   │   ├── authorized.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── set_userinfo.test#fixture.ts
+│       │   │   │   ├── set_userinfo.test.ts
+│       │   │   │   ├── set_userinfo.ts
+│       │   │   │   ├── vip_list.guard.test.ts
+│       │   │   │   └── vip_list.guard.tsx
+│       │   │   ├── cache
+│       │   │   │   ├── cache_immutable.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── config
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── set_config.test.ts
+│       │   │   │   └── set_config.ts
+│       │   │   ├── context
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── set_variables.test.ts
+│       │   │   │   └── set_variables.ts
+│       │   │   ├── crisp
+│       │   │   │   ├── index.test.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── csp
+│       │   │   │   ├── csp_headers.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── fetch
+│       │   │   │   ├── index.ts
+│       │   │   │   └── set_fetch.ts
+│       │   │   ├── identite-pg
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── set_identite_pg.test.ts
+│       │   │   │   └── set_identite_pg.ts
+│       │   │   ├── nonce
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── set_nonce.test.ts
+│       │   │   │   └── set_nonce.ts
+│       │   │   ├── sentry
+│       │   │   │   └── index.ts
+│       │   │   └── session
+│       │   │       ├── SessionContext.ts
+│       │   │       ├── hyyypersession.ts
+│       │   │       └── index.ts
+│       │   ├── queries
+│       │   │   ├── moderations
+│       │   │   │   ├── GetModeration.test.ts
+│       │   │   │   ├── GetModerationById.test.ts
+│       │   │   │   ├── GetModerationById.ts
+│       │   │   │   ├── GetModerationWithDetails.test.ts
+│       │   │   │   ├── GetModerationWithDetails.ts
+│       │   │   │   ├── GetModerationWithUser.ts
+│       │   │   │   ├── RemoveUserFromOrganization.test.ts
+│       │   │   │   ├── RemoveUserFromOrganization.ts
+│       │   │   │   ├── UpdateModerationById.test.ts
+│       │   │   │   ├── UpdateModerationById.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── organizations
+│       │   │   │   ├── AddVerifiedDomain.test.ts
+│       │   │   │   ├── AddVerifiedDomain.ts
+│       │   │   │   ├── CountOrganizationMembers.test.ts
+│       │   │   │   ├── CountOrganizationMembers.ts
+│       │   │   │   ├── DeleteDomainById.test.ts
+│       │   │   │   ├── DeleteDomainById.ts
+│       │   │   │   ├── GetDomainCount.test.ts
+│       │   │   │   ├── GetDomainCount.ts
+│       │   │   │   ├── GetDomains.ts
+│       │   │   │   ├── GetOrganizationById.test.ts
+│       │   │   │   ├── GetOrganizationById.ts
+│       │   │   │   ├── GetOrganizationDomains.ts
+│       │   │   │   ├── GetOrganizationMember.test.ts
+│       │   │   │   ├── GetOrganizationMember.ts
+│       │   │   │   ├── GetOrganizationMembersCount.ts
+│       │   │   │   ├── GetOrganizationsList.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── update_domain_by_id.test.ts
+│       │   │   │   └── update_domain_by_id.ts
+│       │   │   └── users
+│       │   │       ├── CountGmailMembers.test.ts
+│       │   │       ├── CountGmailMembers.ts
+│       │   │       ├── FindUsersByName.ts
+│       │   │       ├── GetAuthenticatorByUserId.ts
+│       │   │       ├── GetEmailsByOrganizationId.ts
+│       │   │       ├── GetMember.test.ts
+│       │   │       ├── GetMember.ts
+│       │   │       ├── GetUserById.test.ts
+│       │   │       ├── GetUserById.ts
+│       │   │       ├── GetUsersList.test.ts
+│       │   │       ├── GetUsersList.ts
+│       │   │       ├── UpdateUserByIdInOrganization.test.ts
+│       │   │       ├── UpdateUserByIdInOrganization.ts
+│       │   │       ├── get_authenticators_by_user_id.test.ts
+│       │   │       └── index.ts
+│       │   ├── routes
+│       │   │   ├── __dev__
+│       │   │   │   ├── live-reload.client.ts
+│       │   │   │   └── reload.tsx
+│       │   │   ├── assets
+│       │   │   │   ├── config.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── rewrite.ts
+│       │   │   │   └── zammad
+│       │   │   │       ├── index.test.ts
+│       │   │   │       └── index.ts
+│       │   │   ├── auth
+│       │   │   │   ├── agentconnect.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── domains-deliverability
+│       │   │   │   ├── AddDomain.tsx
+│       │   │   │   ├── Table.tsx
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── get_email_deliverability_whitelist.query.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── page.tsx
+│       │   │   ├── error.tsx
+│       │   │   ├── index.ts
+│       │   │   ├── moderations
+│       │   │   │   ├── :id
+│       │   │   │   │   ├── ModerationExchanges.tsx
+│       │   │   │   │   ├── SuggestOrganizationDomains.ts
+│       │   │   │   │   ├── duplicate_warning
+│       │   │   │   │   │   ├── DuplicateWarning.tsx
+│       │   │   │   │   │   ├── find_duplicate_users.query.ts
+│       │   │   │   │   │   ├── get_duplicate_moderations.query.test.ts
+│       │   │   │   │   │   ├── get_duplicate_moderations.query.ts
+│       │   │   │   │   │   ├── get_moderation.query.ts
+│       │   │   │   │   │   ├── get_moderation_tickets.query.ts
+│       │   │   │   │   │   ├── get_user_by_id.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── email
+│       │   │   │   │   │   ├── Message.tsx
+│       │   │   │   │   │   ├── Zammad.tsx
+│       │   │   │   │   │   ├── find_moderation_for_email.query.test.ts
+│       │   │   │   │   │   ├── find_moderation_for_email.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── get_organization_by_id.query.ts
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── mark_as_validated.ts
+│       │   │   │   │   ├── not-found.tsx
+│       │   │   │   │   ├── page.tsx
+│       │   │   │   │   ├── procedures_context.ts
+│       │   │   │   │   ├── processed
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── rejected
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── mark_as_rejected.workflow.ts
+│       │   │   │   │   ├── reprocess
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── validate.test.ts
+│       │   │   │   │   └── validate.ts
+│       │   │   │   ├── ProcessedCheckboxIsland.tsx
+│       │   │   │   ├── SearchEmailIsland.tsx
+│       │   │   │   ├── SearchModeratedByIsland.tsx
+│       │   │   │   ├── SearchSiretIsland.tsx
+│       │   │   │   ├── context.test.ts
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── filter-signals.client.ts
+│       │   │   │   ├── get_moderations_list.query.test.ts
+│       │   │   │   ├── get_moderations_list.query.ts
+│       │   │   │   ├── ids.attr.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   ├── page.tsx
+│       │   │   │   ├── processed-checkbox.client.tsx
+│       │   │   │   ├── search-email.client.tsx
+│       │   │   │   ├── search-moderated-by.client.tsx
+│       │   │   │   └── search-siret.client.tsx
+│       │   │   ├── not-found.tsx
+│       │   │   ├── organizations
+│       │   │   │   ├── :id
+│       │   │   │   │   ├── Fiche.tsx
+│       │   │   │   │   ├── domains
+│       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── context.ts
+│       │   │   │   │   │   ├── get_organization_domains.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── get_organization_by_id.query.ts
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── members
+│       │   │   │   │   │   ├── :user_id
+│       │   │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   │   └── index.ts
+│       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── context.ts
+│       │   │   │   │   │   ├── get_users_by_organization.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── not-found.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── domains
+│       │   │   │   │   ├── get_unverified_domains.query.test.ts
+│       │   │   │   │   ├── get_unverified_domains.query.ts
+│       │   │   │   │   ├── ids.attr.ts
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── get_organizations_list.query.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   ├── leaders
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   └── index.tsx
+│       │   │   │   └── page.tsx
+│       │   │   ├── proxy
+│       │   │   │   └── index.tsx
+│       │   │   ├── readyz
+│       │   │   │   └── index.ts
+│       │   │   ├── users
+│       │   │   │   ├── :id
+│       │   │   │   │   ├── get_authenticators_by_user_id.query.ts
+│       │   │   │   │   ├── get_franceconnect_by_user_id.query.ts
+│       │   │   │   │   ├── get_user_by_id.query.ts
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── moderations
+│       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── get_moderations_by_user_id.query.test.ts
+│       │   │   │   │   │   ├── get_moderations_by_user_id.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   ├── not-found.tsx
+│       │   │   │   │   ├── organizations
+│       │   │   │   │   │   ├── Table.tsx
+│       │   │   │   │   │   ├── context.tsx
+│       │   │   │   │   │   ├── get_organizations_by_user_id.query.test.ts
+│       │   │   │   │   │   ├── get_organizations_by_user_id.query.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── get_users_list.query.ts
+│       │   │   │   ├── index.test.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── page.tsx
+│       │   │   └── welcome
+│       │   │       ├── hyyypertitle.client.ts
+│       │   │       └── index.tsx
+│       │   ├── routes.d.ts
+│       │   ├── time
+│       │   │   ├── date_format.ts
+│       │   │   └── index.ts
+│       │   ├── ui
+│       │   │   ├── badge
+│       │   │   │   └── index.ts
+│       │   │   ├── button
+│       │   │   │   ├── components
+│       │   │   │   │   ├── CopyButtonIsland.tsx
+│       │   │   │   │   ├── copy.client.test.tsx
+│       │   │   │   │   ├── copy.client.tsx
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── search.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── scripts
+│       │   │   │       ├── disable_until_htmx:afterOnLoad.client.test.tsx
+│       │   │   │       ├── disable_until_htmx:afterOnLoad.ts
+│       │   │   │       └── index.ts
+│       │   │   ├── callout
+│       │   │   │   └── index.ts
+│       │   │   ├── crisp
+│       │   │   │   ├── Message
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── processor.ts
+│       │   │   ├── form
+│       │   │   │   └── index.ts
+│       │   │   ├── hx_table
+│       │   │   │   ├── Foot.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   ├── links
+│       │   │   │   ├── OpenInCrisp.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── list
+│       │   │   │   └── index.ts
+│       │   │   ├── loader
+│       │   │   │   ├── Loader.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── menu
+│       │   │   │   ├── components
+│       │   │   │   │   ├── Horizontal_Menu.tsx
+│       │   │   │   │   ├── Menu.tsx
+│       │   │   │   │   ├── Popover.tsx
+│       │   │   │   │   ├── Trigger.tsx
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── scripts
+│       │   │   │   │       ├── hide_on_click_elsewere.client.test.tsx
+│       │   │   │   │       └── hide_on_click_elsewere.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── moderations
+│       │   │   │   ├── Actions
+│       │   │   │   │   ├── AcceptModal.tsx
+│       │   │   │   │   ├── Actions.tsx
+│       │   │   │   │   ├── AddAsMemberExternal.tsx
+│       │   │   │   │   ├── AddAsMemberInternal.tsx
+│       │   │   │   │   ├── AddDomain.tsx
+│       │   │   │   │   ├── RefusalModal.tsx
+│       │   │   │   │   ├── ResponseMessageSelector.tsx
+│       │   │   │   │   ├── SendNotification.tsx
+│       │   │   │   │   ├── TagInput.tsx
+│       │   │   │   │   ├── Toolbar.tsx
+│       │   │   │   │   ├── context.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── responses
+│       │   │   │   │       ├── __snapshots__
+│       │   │   │   │       │   ├── admin_centrale.test.tsx.snap
+│       │   │   │   │       │   ├── agent_comcom_comaglo.test.tsx.snap
+│       │   │   │   │       │   ├── agent_comcom_to_commune.test.tsx.snap
+│       │   │   │   │       │   ├── agent_outside_min_finance_chorus_pro.test.tsx.snap
+│       │   │   │   │       │   ├── association_ordinary_person.test.tsx.snap
+│       │   │   │   │       │   ├── association_with_staff_but_no_domain_name.test.tsx.snap
+│       │   │   │   │       │   ├── domain_name_not_found.test.tsx.snap
+│       │   │   │   │       │   ├── enseignement_agricole.test.tsx.snap
+│       │   │   │   │       │   ├── existing_domain_name.test.tsx.snap
+│       │   │   │   │       │   ├── first_and_last_name_inversion.test.tsx.snap
+│       │   │   │   │       │   ├── gendarmerie_agent.test.tsx.snap
+│       │   │   │   │       │   ├── link_with_chosen_organization.test.tsx.snap
+│       │   │   │   │       │   ├── min_armee_pec.test.tsx.snap
+│       │   │   │   │       │   ├── min_armees.test.tsx.snap
+│       │   │   │   │       │   ├── min_armees_terre_marine_musee.test.tsx.snap
+│       │   │   │   │       │   ├── missing_name.test.tsx.snap
+│       │   │   │   │       │   ├── more_precise_existing_establishement_cnrs.test.tsx.snap
+│       │   │   │   │       │   ├── name_incorrectly_entered.test.tsx.snap
+│       │   │   │   │       │   ├── non_teaching_agent.test.tsx.snap
+│       │   │   │   │       │   ├── presta_email_admin_public.test.tsx.snap
+│       │   │   │   │       │   ├── presta_email_orga_public_beta_gouv.test.tsx.snap
+│       │   │   │   │       │   ├── public_or_private_organization.test.tsx.snap
+│       │   │   │   │       │   ├── refusal_france_travail.test.tsx.snap
+│       │   │   │   │       │   ├── refusal_interieur_gouv.test.tsx.snap
+│       │   │   │   │       │   ├── reservist_or_other_email_perso.test.tsx.snap
+│       │   │   │   │       │   ├── seconded_agent_min_interior.test.tsx.snap
+│       │   │   │   │       │   ├── student_host_organisation.test.tsx.snap
+│       │   │   │   │       │   ├── student_school_training_establishment.test.tsx.snap
+│       │   │   │   │       │   ├── teacher_academic_email.test.tsx.snap
+│       │   │   │   │       │   └── university_email_cnrs.test.tsx.snap
+│       │   │   │   │       ├── admin_centrale.test.tsx
+│       │   │   │   │       ├── admin_centrale.tsx
+│       │   │   │   │       ├── agent_*.tsx  (6 files)
+│       │   │   │   │       ├── association_ordinary_person.test.tsx
+│       │   │   │   │       ├── association_ordinary_person.tsx
+│       │   │   │   │       ├── association_with_staff_but_no_domain_name.test.tsx
+│       │   │   │   │       ├── association_with_staff_but_no_domain_name.tsx
+│       │   │   │   │       ├── contractors.tsx
+│       │   │   │   │       ├── domain_name_not_found.test.tsx
+│       │   │   │   │       ├── domain_name_not_found.tsx
+│       │   │   │   │       ├── enseignement_agricole.test.tsx
+│       │   │   │   │       ├── enseignement_agricole.tsx
+│       │   │   │   │       ├── existing_domain_name.test.tsx
+│       │   │   │   │       ├── existing_domain_name.tsx
+│       │   │   │   │       ├── first_and_last_name_inversion.test.tsx
+│       │   │   │   │       ├── first_and_last_name_inversion.tsx
+│       │   │   │   │       ├── gendarmerie_agent.test.tsx
+│       │   │   │   │       ├── gendarmerie_agent.tsx
+│       │   │   │   │       ├── index.ts
+│       │   │   │   │       ├── link_with_chosen_organization.test.tsx
+│       │   │   │   │       ├── link_with_chosen_organization.tsx
+│       │   │   │   │       ├── min_*.tsx  (6 files)
+│       │   │   │   │       ├── missing_name.test.tsx
+│       │   │   │   │       ├── missing_name.tsx
+│       │   │   │   │       ├── more_precise_existing_establishement_cnrs.test.tsx
+│       │   │   │   │       ├── more_precise_existing_establishement_cnrs.tsx
+│       │   │   │   │       ├── name_incorrectly_entered.test.tsx
+│       │   │   │   │       ├── name_incorrectly_entered.tsx
+│       │   │   │   │       ├── non_teaching_agent.test.tsx
+│       │   │   │   │       ├── non_teaching_agent.tsx
+│       │   │   │   │       ├── presta_email_admin_public.test.tsx
+│       │   │   │   │       ├── presta_email_admin_public.tsx
+│       │   │   │   │       ├── presta_email_orga_public_beta_gouv.test.tsx
+│       │   │   │   │       ├── presta_email_orga_public_beta_gouv.tsx
+│       │   │   │   │       ├── public_or_private_organization.test.tsx
+│       │   │   │   │       ├── public_or_private_organization.tsx
+│       │   │   │   │       ├── refusal_france_travail.test.tsx
+│       │   │   │   │       ├── refusal_france_travail.tsx
+│       │   │   │   │       ├── refusal_interieur_gouv.test.tsx
+│       │   │   │   │       ├── refusal_interieur_gouv.tsx
+│       │   │   │   │       ├── reservist_or_other_email_perso.test.tsx
+│       │   │   │   │       ├── reservist_or_other_email_perso.tsx
+│       │   │   │   │       ├── seconded_agent_min_interior.test.tsx
+│       │   │   │   │       ├── seconded_agent_min_interior.tsx
+│       │   │   │   │       ├── student_host_organisation.test.tsx
+│       │   │   │   │       ├── student_host_organisation.tsx
+│       │   │   │   │       ├── student_school_training_establishment.test.tsx
+│       │   │   │   │       ├── student_school_training_establishment.tsx
+│       │   │   │   │       ├── teacher_academic_email.test.tsx
+│       │   │   │   │       ├── teacher_academic_email.tsx
+│       │   │   │   │       ├── university_email_cnrs.test.tsx
+│       │   │   │   │       ├── university_email_cnrs.tsx
+│       │   │   │   │       ├── use_official_email.tsx
+│       │   │   │   │       ├── user_with_existing_pc_account.test.tsx
+│       │   │   │   │       └── user_with_existing_pc_account.tsx
+│       │   │   │   ├── AutoGoBack
+│       │   │   │   │   ├── AutoGoBack.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── Crisp
+│       │   │   │   │   ├── Crisp.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── DomainsByOrganization
+│       │   │   │   │   ├── DomainsByOrganization.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── FindCorrespondingEmail
+│       │   │   │   │   ├── FindCorrespondingEmail.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── Header
+│       │   │   │   │   ├── Header.test.tsx
+│       │   │   │   │   ├── Header.tsx
+│       │   │   │   │   ├── __snapshots__
+│       │   │   │   │   │   └── Header.test.tsx.snap
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── MessageInfo
+│       │   │   │   │   ├── MessageInfo.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── OrganizationsByUser
+│       │   │   │   │   ├── OrganizationsByUser.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── UsersByOrganization
+│       │   │   │   │   ├── UsersByOrganization.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── notice
+│       │   │   │   └── index.ts
+│       │   │   ├── notifications
+│       │   │   │   ├── NotificationIsland.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── notifications.client.test.tsx
+│       │   │   │   └── notifications.client.tsx
+│       │   │   ├── number
+│       │   │   │   └── index.ts
+│       │   │   ├── organizations
+│       │   │   │   ├── index.ts
+│       │   │   │   └── info
+│       │   │   │       ├── About.test.tsx
+│       │   │   │       ├── About.tsx
+│       │   │   │       ├── InactiveWarning.test.tsx
+│       │   │   │       ├── InactiveWarning.tsx
+│       │   │   │       ├── Investigation.test.tsx
+│       │   │   │       ├── Investigation.tsx
+│       │   │   │       ├── __snapshots__
+│       │   │   │       │   ├── InactiveWarning.test.tsx.snap
+│       │   │   │       │   └── Investigation.test.tsx.snap
+│       │   │   │       └── index.ts
+│       │   │   ├── plurial
+│       │   │   │   ├── index.test.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── quote
+│       │   │   │   └── index.ts
+│       │   │   ├── table
+│       │   │   │   └── index.ts
+│       │   │   ├── tag
+│       │   │   │   └── index.ts
+│       │   │   ├── tailwind.css
+│       │   │   ├── testing
+│       │   │   │   └── index.ts
+│       │   │   ├── time
+│       │   │   │   ├── LocalTime.test.tsx
+│       │   │   │   ├── LocalTime.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── users
+│       │   │   │   ├── About
+│       │   │   │   │   ├── About.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── Investigation
+│       │   │   │   │   ├── Investigation.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── visually_hidden
+│       │   │   │   └── index.ts
+│       │   │   └── zammad
+│       │   │       └── components
+│       │   │           ├── OpenInZammad.tsx
+│       │   │           ├── SearchInZammad.tsx
+│       │   │           └── index.ts
+│       │   └── urls
+│       │       ├── index.ts
+│       │       ├── urls.test.ts
+│       │       └── urls.ts
+│       └── tsconfig.json
+└── tsconfig.json
+185 directories, 660 files

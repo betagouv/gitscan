@@ -1,0 +1,70 @@
+{
+  "name": "@~/web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*/index.ts"
+  },
+  "exports": {
+    "./config": "./src/config/index.ts",
+    "./routes": "./src/routes/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "rm -rf node_modules/.cache/tsc",
+    "dev:api": "bun run dev:api:clean && bun run dev:api:tsc && bun run dev:api:cp && bun run dev:api:format",
+    "dev:api:clean": "bun run clean",
+    "dev:api:cp": "cp ./node_modules/.cache/tsc/src/routes/index.d.ts 'src/routes.d.ts'",
+    "dev:api:format": "prettier --write src/routes.d.ts",
+    "dev:api:tsc": "bun run build",
+    "start:bun": "bun run src/bun/index.ts",
+    "start:node": "tsx src/node/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.19.9",
+    "@hono/sentry": "1.2.2",
+    "@hono/zod-validator": "0.7.6",
+    "@proconnect-gouv/proconnect.core": "1.0.0",
+    "@proconnect-gouv/proconnect.crisp": "1.0.1",
+    "@sentry/browser": "10.38.0",
+    "@sentry/core": "10.38.0",
+    "@sentry/node": "10.38.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@~/core": "workspace:*",
+    "@~/identite-proconnect": "workspace:*",
+    "@~/moderations": "workspace:*",
+    "@~/organizations": "workspace:*",
+    "await-to-js": "3.0.0",
+    "consola": "3.4.2",
+    "hono": "4.11.7",
+    "hono-sessions": "0.8.0",
+    "hono-slotify": "workspace:*",
+    "is-disposable-email-domain": "1.0.7",
+    "lodash.sortby": "4.7.0",
+    "nprogress": "0.2.0",
+    "openid-client": "6.8.2",
+    "preact": "10.28.3",
+    "preact-render-to-string": "6.6.5",
+    "rehype-sanitize": "6.0.0",
+    "rehype-stringify": "10.0.1",
+    "remark-parse": "11.0.0",
+    "remark-rehype": "11.1.2",
+    "static-path": "0.0.4",
+    "tailwind-variants": "3.2.2",
+    "tailwindcss": "4.1.18",
+    "ts-dedent": "2.2.0",
+    "ts-pattern": "5.9.0",
+    "tsx": "4.21.0",
+    "type-fest": "5.4.4",
+    "unified": "11.0.5",
+    "youch": "3.3.4"
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "20.5.3",
+    "@types/lodash.sortby": "4.7.9",
+    "@types/nprogress": "0.2.3",
+    "@~/config.typescript": "workspace:*",
+    "prettier": "3.8.1"
+  }
+}
