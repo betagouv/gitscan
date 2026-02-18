@@ -1,20 +1,20 @@
 {
   "url": "https://github.com/betagouv/aplypro",
   "name": "aplypro",
-  "description": "Application de support aux personnels de lycées professionnels pour la gestion des allocations pour les lycéens professionnels, en suivant les montants définis par l'arrêté du 11 août 2023.",
+  "description": "APLyPro est une application supportant les personnels de lycées professionnels pour la gestion et le paiement des stages des élèves, en se basant sur les montants définis par l'arrêté du 11 août 2023.",
   "language": "Ruby",
   "features": [
-    "Gestion des allocations",
-    "Paiement des stages",
+    "Gestion des stages",
+    "Paiement des allocations",
     "Gestion des utilisateurs",
-    "Suivi des dossiers",
-    "Génération de rapports",
+    "Statistiques et rapports",
     "Intégration avec des sources de données externes (SYGNE, FREGATA)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
+    "Docker",
     "RSpec",
     "Cucumber",
     "Keycloak",
@@ -23,9 +23,10 @@
   "components": [
     "Backend Ruby on Rails",
     "Base de données PostgreSQL",
-    "Frontend (DSFR)",
+    "Interface utilisateur (DSFR)",
     "API REST",
-    "Gestion des utilisateurs avec Keycloak"
+    "Microservices (worker)",
+    "Docker pour la conteneurisation"
   ],
   "auth": {
     "methods": [
@@ -43,7 +44,7 @@
   "workflows": [
     "test.yaml"
   ],
-  "lastActivity": "2026-01-30T08:14:42+01:00",
+  "lastActivity": "2026-02-17T17:31:01Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,15 +52,16 @@
     "stars": 7,
     "forks": 3,
     "contributors": null,
-    "openIssues": 168
+    "openIssues": 174
   },
   "tags": [
     "Ruby on Rails",
-    "allocation",
-    "lycée professionnel",
+    "PostgreSQL",
     "Keycloak",
     "DSFR",
-    "administration",
-    "stages"
+    "Stages",
+    "Allocation",
+    "Lycée professionnel",
+    "Administration"
   ]
 }
