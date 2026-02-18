@@ -1,0 +1,32 @@
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours)
+
+### Résumé
+Ce mois-ci, les améliorations se concentrent sur l'ajout d'une nouvelle section "Ressources" avec un proxy pour des contenus externes, l'amélioration du suivi analytique (Matomo) et la correction de plusieurs problèmes liés au déploiement et à la configuration de l'application. Des optimisations ont également été apportées à l'intégration de l'IA et au processus de build.
+
+### Évolutions fonctionnelles
+- Ajout d'une page "Vocabulaire métier" dans la section "Ressources" (#369).
+- Ajout d'un proxy pour la cartographie dans la section "Ressources" (#367).
+- Amélioration de la page d'accueil et du proxy cartographie dans la section "Ressources" (#372).
+- Remplacement de l'iframe Notion par du contenu statique pour la page Vocabulaire (#378).
+- Correction d'une erreur CORS sur la page des statistiques (#379).
+- Exclusion des catégories de test du dashboard statistiques.
+- Ajout du tracking Matomo sur toutes les pages statiques (#374).
+
+### Évolutions techniques
+- Migration vers le modèle Claude Haiku 4.5 pour l'IA (#360).
+- Augmentation du nombre maximal de tokens pour Claude 4.5 Haiku à 2048 (#364).
+- Déplacement de `openapi-fetch` vers les dépendances du projet (#376).
+- Correction du script `prepare` pour le déploiement Scalingo (#375).
+- Amélioration de l'ordre de build pour Scalingo (#362).
+- Utilisation de `GITHUB_TOKEN` au lieu de la clé SSH Scalingo pour le checkout (#365).
+- Utilisation de `ADMIN_PAT` pour contourner la protection des branches (#366).
+- Ajout de `--url` à `sentry-cli inject` pour la cohérence (#361).
+- Correction de la réécriture des chemins dans le proxy (#373).
+- Support des attributs HTML avec guillemets simples dans le proxy (#371).
+- Ajout du proxy pour analyses-convergence (#370).
+- Correction de l'URL d'embed Notion (#368).
+- Réécriture des chemins d'assets dans le HTML proxié (#367).
+
+### Autres changements
+- Conformité CNIL pour Matomo sans bannière de consentement (#377).
+- Plusieurs releases de version (0.1.8 à 0.1.19).
