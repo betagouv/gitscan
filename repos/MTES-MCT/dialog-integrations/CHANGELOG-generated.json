@@ -1,0 +1,33 @@
+## Changelog : dialog-integrations (30 derniers jours)
+
+### Résumé
+Ce projet a connu des avancées significatives au cours des dernières semaines, notamment l'intégration de nouvelles sources de données (Sarthe et Brest) et l'amélioration de la robustesse et de la maintenabilité du code. Des tests unitaires et d'intégration ont été ajoutés pour garantir la qualité du code et faciliter les futures évolutions.
+
+### Évolutions fonctionnelles
+- Intégration des données de dialogue pour la zone de Brest, incluant l'URL associée (#f6d1fa5).
+- Intégration des données de dialogue pour le département de la Sarthe (#96d76a7).
+- Correction d'un bug concernant les arrêtés de la Sarthe où le tonnage était à 0 (#61fd346).
+- Possibilité d'intégrer des données provenant de sources multiples (#1421f48).
+- Ajout de la gestion des limitations de gabarits pour le département de la Sarthe (#6e90737).
+
+### Évolutions techniques
+- Ajout de tests unitaires et d'intégration pour améliorer la qualité et la couverture du code (#f5fb68b, #d8c1bbc).
+- Refactorisation et harmonisation de plusieurs fonctions pour améliorer la lisibilité et la maintenabilité du code (#0932a01).
+- Abstraction de la création de mesures et mutualisation de la création d'objets `VehicleDTO` (#3f6a01d, #d08ef05).
+- Simplification des fonctions de création de mesures (#b74257a).
+- Mutualisation de la logique de création de localisation (#32c645c).
+- Utilisation de `uv run` pour l'exécution des commandes (#b367249).
+- Mise en place d'un workflow d'intégration continue (#37eed1b).
+- Simplification des paramètres de configuration (#3f5d0fd).
+- Remplacement de la recherche dynamique de fichiers par une approche plus explicite (#d55f85f).
+
+### Autres changements
+- Renommage de `dp_sarthes` en `dp_sarthe` pour une meilleure cohérence (#877a0b2).
+- Refactorisation de la configuration `DESCRIPTION_CONFING` (#7ef86d3).
+- Ajout de tests pour les fonctions de traitement des dates (#5fff973).
+- Rendre l'ID de `dp_sarthes` déterministe (#15bd0be).
+- Ajout d'une étape de pré-traitement (#52e94e0).
+- Mutualisation du code pour le calcul des dates de mesures (#bd74128).
+- Mise à jour de la dépendance `nbconvert` (#fbf596a).
+- Utilisation de JSON compact pour le CI (#1825d42).
+- Reformatage du fichier JSON (#25db74e).
