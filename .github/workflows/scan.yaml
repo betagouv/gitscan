@@ -88,7 +88,7 @@ jobs:
                   pwd
                   echo "${{ matrix.sites.url }}"
                   ./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}" > ./repos/"${{ matrix.sites.full_name }}"/overview.json
-                  ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.json
+                  ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.md
 
             - name: Commit changes
               run: |
