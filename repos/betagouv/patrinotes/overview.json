@@ -5,28 +5,31 @@
   "language": "JavaScript",
   "features": [
     "Gestion des rapports",
-    "Authentification utilisateur",
-    "Synchronisation en temps réel",
     "Génération de PDF",
-    "Gestion des utilisateurs"
+    "Synchronisation des données",
+    "Gestion des pièces jointes",
+    "Authentification utilisateur",
+    "Alertes et notifications"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Node.js",
     "PostgreSQL",
-    "Kysely",
     "Fastify",
-    "Prisma",
-    "PDF.js",
-    "PowerSync"
+    "Kysely",
+    "PowerSync",
+    "AWS S3",
+    "Nodemailer"
   ],
   "components": [
     "Frontend React",
     "Backend Node.js",
-    "Base de données PostgreSQL",
     "API REST",
-    "Service de synchronisation PowerSync"
+    "Base de données PostgreSQL",
+    "Serveur WebSocket PowerSync",
+    "Stockage d'images MinIO",
+    "Stockage PDF S3"
   ],
   "auth": {
     "methods": [
@@ -36,13 +39,12 @@
     "providers": []
   },
   "tests": [
-    "Vitest",
-    "Playwright"
+    "Vitest"
   ],
   "workflows": [
     "main.yml"
   ],
-  "lastActivity": "2026-02-12T10:24:16Z",
+  "lastActivity": "2026-02-18T12:56:21+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,9 +56,9 @@
   },
   "tags": [
     "rapports",
+    "patrimoine",
     "administration",
     "PDF",
-    "synchronisation",
     "React",
     "Node.js"
   ]
