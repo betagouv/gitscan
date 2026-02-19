@@ -1,22 +1,16 @@
-## Changelog : euphrosyne-digilab (derniers 30 jours)
+## Changelog : euphrosyne-digilab (30 derniers jours)
 
 ### Résumé
-Ce changelog fait état d'une période d'amélioration continue de la plateforme Euphrosyne Digilab. Les modifications concernent principalement des mises à jour de dépendances, des corrections de problèmes de construction et des optimisations du processus de CI/CD. Ces améliorations visent à garantir la stabilité, la sécurité et la performance de la plateforme.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+Ce changelog couvre les 30 derniers jours d'évolution de la plateforme Euphrosyne Digilab. Les mises à jour se concentrent principalement sur la maintenance et la mise à jour des dépendances du projet, notamment Next.js, React, webpack et les outils de développement associés. Une mise à jour de Next.js vers la version 16.1.1 est notable.
 
 ### Évolutions techniques
-- Mise à jour de Next.js de la version 15.5.7 à la version 15.5.9 (#276)
-- Mise à jour de @sentry/nextjs de la version 10.22.0 à la version 10.27.0 (#275)
-- Mise à jour de react-dom et @types/react-dom (#280)
-- Mise à jour de sass de la version 1.86.3 à la version 1.97.1 (#281)
-- Mise à jour de js-yaml de la version 4.1.0 à la version 4.1.1 (#269)
-- Amélioration du workflow CI/CD avec la modernisation de setup-node et une meilleure fiabilité (#274)
-- Correction d'un problème de taille de build trop importante en excluant les artefacts et caches de construction avec un fichier `.slugignore` (#278)
-- Correction d'un problème lié aux permissions dans le workflow CI (#279)
-- Mise à jour des icônes React DSFR (#277)
+- Mise à jour de Next.js de la version 15.5.9 vers la version 16.1.1 (#283)
+- Mise à jour de webpack de la version 5.102.1 vers la version 5.105.0
+- Mise à jour de react-dom de la version 19.2.3 vers la version 19.2.4
+- Mise à jour de tss-react de la version 4.9.16 vers la version 4.9.20
+- Mise à jour des types de Node.js de la version 24.0.10 vers la version 25.0.10
+- Refactoring du code pour appliquer le formateur de code Prettier (#286)
+- Mise à jour de Prettier de la version 3.5.3 vers la version 3.8.0
 
 ### Autres changements
-- Correction d'un problème potentiel lié à une alerte de code scanning (#280)
-- Suppression d'une propriété de cooldown inutile dans la configuration de Dependabot (#279)
+- Mise à jour de plusieurs autres dépendances de développement (multi, sass).
