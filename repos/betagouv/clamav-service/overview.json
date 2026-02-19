@@ -5,28 +5,20 @@
   "language": "Python",
   "features": [
     "Analyse de fichiers",
-    "Interface REST"
+    "Interface REST",
+    "Authentification"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "clamd",
-    "flask",
-    "raven",
+    "Flask",
     "passlib",
-    "Flask-HTTPAuth",
-    "Werkzeug",
     "gunicorn",
-    "blinker",
-    "dnspython",
-    "ecs-logging",
-    "requests",
-    "Flask-Testing",
-    "locust"
+    "clamd"
   ],
   "components": [
-    "API REST",
-    "Docker",
-    "NGINX"
+    "API REST en Python",
+    "Interface Nginx",
+    "Conteneur Docker ClamD"
   ],
   "auth": {
     "methods": [
@@ -34,28 +26,27 @@
     ]
   },
   "tests": [
-    "Flask-Testing",
-    "Locust"
+    "pytest",
+    "locust"
   ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2024-06-21T12:37:21Z",
+  "lastActivity": "2023-10-25T18:08:21Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
+    "stars": 7,
     "forks": 0,
     "contributors": null,
     "openIssues": 5
   },
   "tags": [
-    "clamav",
-    "antivirus",
-    "rest",
-    "api",
-    "python",
-    "docker"
+    "ClamAV",
+    "REST API",
+    "Python",
+    "Antivirus",
+    "Docker"
   ]
 }
