@@ -1,0 +1,40 @@
+## Changelog : nosgestesclimat-site-nextjs (30 derniers jours)
+
+### Résumé
+Ce mois-ci, le site nosgestesclimat a bénéficié d'améliorations significatives en termes de fonctionnalités utilisateurs, notamment avec l'ajout de la gestion des comptes utilisateurs, de nouvelles pages d'abonnement à la newsletter et des corrections de bugs pour une meilleure expérience globale. Des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance du site.
+
+### Évolutions fonctionnelles
+- **Comptes utilisateurs :** Ajout d'une nouvelle fonctionnalité permettant aux utilisateurs de créer et gérer leur compte. (#1405)
+- **Newsletter :** Nouvelle page de gestion des abonnements à la newsletter. (#1598)
+- **Page "Demander une démo" :** Remplacement du formulaire Tally par Calendly pour faciliter la prise de contact. (#1657)
+- **Amélioration de l'expérience de connexion :** Empêchement de la connexion/inscription avec des adresses e-mail Microsoft. (#1640)
+- **Correction d'un bug de désélection :** Résolution d'un problème empêchant la désélection d'éléments. (#1646)
+- **Amélioration du formulaire de code de vérification :** Ajout d'une autocomplétion pour faciliter la saisie du code de vérification. (#1631)
+- **Amélioration de la page "Mon espace" :** Correction de la capitalisation des titres ("Mon Espace" -> "Mon espace"). (#1636)
+- **Correction d'un bug d'affichage :** Correction d'un problème d'affichage de code HTML brut sur les pages thématiques. (#1648)
+- **Suppression du score "eau" :** Suppression de l'affichage du score "eau" sur la page de résultats. (#1650)
+
+### Évolutions techniques
+- **Mise à jour des dépendances :**
+    - Mise à jour du modèle `nosgestesclimat` vers la version 4.9.0. (#1652)
+    - Mise à jour des paquets `next` et `react`. (#1626)
+    - Mise à jour du paquet `posthog`. (#1624, #1660)
+- **Refactoring et Optimisations :**
+    - Suppression de code mort avec `knip.js`. (#1615)
+    - Suppression de la dépendance `SimulationSyncProvider`. (#1601)
+    - Simplification de la logique de migration des simulations. (#1620)
+- **Tests :**
+    - Ajout de tests E2E. (#1556)
+    - Correction de problèmes dans les tests E2E. (#1622, #1662)
+    - Prévention de l'exécution des tests E2E sur les pull requests en brouillon. (#1638)
+- **Infrastructure :**
+    - Correction d'un problème de crash de l'application Scalingo dû à une dépendance TypeScript. (#1651)
+    - Correction d'un problème de cookie sur l'environnement de préproduction. (#1632)
+
+### Autres changements
+- **Documentation :** Mise à jour de la déclaration d'accessibilité française avec les résultats du contre-audit Access42. (#1564)
+- **Sitemap :** Amélioration du sitemap. (#1604)
+- **Redirections :** Ajout de redirections. (#1603, #1627)
+- **Tracking :** Ajout d'événements de suivi PostHog. (#1634, #1654)
+- **Suppression de fonctionnalités :** Suppression de la fonctionnalité "Reprendre le test". (#1606)
+- **Configuration :** Ajout de la possibilité de désactiver la capture d'erreurs Sentry. (#1634)
