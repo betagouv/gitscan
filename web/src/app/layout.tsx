@@ -94,7 +94,7 @@ export default function RootLayout({
                   </span>
                 </Link>
                 <a
-                  href="https://github.com/revolunet/gitscan"
+                  href="https://github.com/betagouv/gitscan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
@@ -166,7 +166,7 @@ export default function RootLayout({
                   </li>
                   <li>
                     <a
-                      href="https://github.com/revolunet/gitscan"
+                      href="https://github.com/betagouv/gitscan"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"
