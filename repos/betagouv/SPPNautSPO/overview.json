@@ -1,28 +1,28 @@
 {
   "url": "https://github.com/betagouv/SPPNautSPO",
   "name": "SPPNautSPO",
-  "description": "Ce projet est un générateur et une interface S3 pour la startup SPPNaut, visant à moderniser et ouvrir la production de publications nautiques.",
+  "description": "SPPNaut est une startup d'État qui vise à moderniser la chaîne de production des publications nautiques et à les rendre plus accessibles. Ce projet fournit un générateur et une interface S3 pour SPPNaut.",
   "language": "Python",
   "features": [
     "Génération de publications nautiques",
-    "Synchronisation de référentiels",
-    "Interface de consultation et de lancement de génération",
-    "Authentification basique"
+    "Synchronisation avec le SHOM",
+    "Interface de gestion",
+    "Authentification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "AWS CLI",
-    "boto3",
-    "procrastinate",
+    "Boto3",
+    "psycopg2",
     "python-decouple",
-    "watchdog",
-    "tenacity"
+    "requests",
+    "sentry-sdk"
   ],
   "components": [
-    "Backend PDFGenerator (Python/Django)",
-    "Interface (TypeScript)",
-    "Démon de synchronisation de référentiel (Python)",
+    "Backend PDFGenerator",
+    "Interface utilisateur",
+    "Synchronisation referentiel-sync",
     "Base de données PostgreSQL",
     "Stockage S3"
   ],
@@ -33,20 +33,9 @@
     "providers": []
   },
   "tests": [
-    "pytest",
-    "integration tests",
-    "unit tests"
+    "pytest"
   ],
-  "workflows": [
-    "interface_deploy",
-    "interface_pull_request",
-    "interface_push_to_main",
-    "interface_test",
-    "pdfgenerator_deploy",
-    "pdfgenerator_pull_request",
-    "pdfgenerator_push_to_main",
-    "pdfgenerator_test"
-  ],
+  "workflows": [],
   "lastActivity": "2023-09-20T06:51:19Z",
   "status": "active",
   "license": "EUPL-1.2",
@@ -60,9 +49,9 @@
   "tags": [
     "publications nautiques",
     "génération PDF",
-    "synchronisation S3",
+    "S3",
     "Django",
-    "TypeScript",
-    "Python"
+    "Python",
+    "SHOM"
   ]
 }
