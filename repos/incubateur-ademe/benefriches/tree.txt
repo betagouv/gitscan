@@ -631,8 +631,9 @@
 │   │   │   │   ├── onboarding.fixtures.ts
 │   │   │   │   └── onboarding.spec.ts
 │   │   │   ├── site-creation
-│   │   │   │   ├── site-creation.fixtures.ts
-│   │   │   │   └── site-creation.spec.ts
+│   │   │   │   ├── site-creation-custom.spec.ts
+│   │   │   │   ├── site-creation-express.spec.ts
+│   │   │   │   └── site-creation.fixtures.ts
 │   │   │   └── urban-project-creation
 │   │   │       ├── urban-project-creation.fixtures.ts
 │   │   │       └── urban-project-creation.spec.ts
@@ -915,9 +916,6 @@
 │       │   │   │   │       │   ├── navigateToStep.action.spec.ts
 │       │   │   │   │       │   ├── requestStepCompletion.action.spec.ts
 │       │   │   │   │       │   ├── steps
-│       │   │   │   │       │   │   ├── buildings
-│       │   │   │   │       │   │   │   ├── buildingsUseIntroduction.step.spec.ts
-│       │   │   │   │       │   │   │   └── buildingsUseSelection.step.spec.ts
 │       │   │   │   │       │   │   ├── creation-mode
 │       │   │   │   │       │   │   │   └── creationMode.step.spec.ts
 │       │   │   │   │       │   │   ├── decontamination
@@ -943,11 +941,11 @@
 │       │   │   │   │       │   │   │   └── spacesSurfaceArea.step.spec.ts
 │       │   │   │   │       │   │   └── uses
 │       │   │   │   │       │   │       ├── usesFloorSurfaceArea.step.spec.ts
+│       │   │   │   │       │   │       ├── usesPublicGreenSpacesSoilsDistribution.step.spec.ts
 │       │   │   │   │       │   │       ├── usesPublicGreenSpacesSurfaceArea.step.spec.ts
 │       │   │   │   │       │   │       └── usesSelection.step.spec.ts
 │       │   │   │   │       │   └── urbanProject.selectors.spec.ts
 │       │   │   │   │       ├── fetchEstimatedSiteResalePrice.action.ts
-│       │   │   │   │       ├── mock.ts
 │       │   │   │   │       ├── urbanProject.actions.ts
 │       │   │   │   │       ├── urbanProject.reducer.ts
 │       │   │   │   │       ├── urbanProject.selectors.ts
@@ -1958,6 +1956,7 @@
 │       │   │   │   │   ├── formatNumber.spec.ts
 │       │   │   │   │   └── formatNumber.ts
 │       │   │   │   ├── gateways
+│       │   │   │   │   ├── AddressSearchGateway.ts
 │       │   │   │   │   └── RealEstateValuationGateway.ts
 │       │   │   │   ├── isObjectsEqual
 │       │   │   │   │   ├── isObjectsEqual.spec.ts
@@ -2001,11 +2000,7 @@
 │       │   │   │   │           │   └── surfaceAreaDistribution.ts
 │       │   │   │   │           ├── step-handlers
 │       │   │   │   │           │   ├── buildings
-│       │   │   │   │           │   │   ├── buildingsFloorSurfaceArea.handler.ts
-│       │   │   │   │           │   │   ├── buildingsIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── buildingsUseIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── buildingsUseSelection.handler.ts
-│       │   │   │   │           │   │   └── buildingsUseSurfaceAreaDistribution.handler.ts
+│       │   │   │   │           │   │   └── buildingsIntroduction.handler.ts
 │       │   │   │   │           │   ├── creation-mode
 │       │   │   │   │           │   │   └── creationMode.handler.ts
 │       │   │   │   │           │   ├── expenses
@@ -2044,16 +2039,10 @@
 │       │   │   │   │           │   │   └── soilsSummary.handler.ts
 │       │   │   │   │           │   ├── spaces
 │       │   │   │   │           │   │   ├── getCommonRules.ts
-│       │   │   │   │           │   │   ├── greenSpacesIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── greenSpacesSurfaceAreaDistribution.handler.ts
-│       │   │   │   │           │   │   ├── publicSpacesDistribution.handler.ts
-│       │   │   │   │           │   │   ├── publicSpacesIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── residentialActivitySpacesDistribution.handler.ts
-│       │   │   │   │           │   │   ├── residentialActivitySpacesIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── spaceDevelopmentPlanIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── spacesCategoriesIntroduction.handler.ts
-│       │   │   │   │           │   │   ├── spacesCategoriesSelection.handler.ts
-│       │   │   │   │           │   │   ├── spacesCategoriesSurfaceArea.handler.ts
+│       │   │   │   │           │   │   ├── new-public-green-spaces
+│       │   │   │   │           │   │   │   ├── publicGreenSpacesIntroduction.handler.ts
+│       │   │   │   │           │   │   │   ├── publicGreenSpacesSoilsDistribution.handler.ts
+│       │   │   │   │           │   │   │   └── publicGreenSpacesSurfaceArea.handler.ts
 │       │   │   │   │           │   │   ├── spacesIntroduction.handler.ts
 │       │   │   │   │           │   │   ├── spacesSelection.handler.ts
 │       │   │   │   │           │   │   └── spacesSurfaceArea.handler.ts
@@ -2068,7 +2057,6 @@
 │       │   │   │   │           │   └── uses
 │       │   │   │   │           │       ├── usesFloorSurfaceArea.handler.ts
 │       │   │   │   │           │       ├── usesIntroduction.handler.ts
-│       │   │   │   │           │       ├── usesPublicGreenSpacesSurfaceArea.handler.ts
 │       │   │   │   │           │       └── usesSelection.handler.ts
 │       │   │   │   │           ├── urbanProject.actions.ts
 │       │   │   │   │           ├── urbanProject.reducer.ts
@@ -2204,6 +2192,9 @@
 │       │   │       ├── envVars.ts
 │       │   │       ├── hooks
 │       │   │       │   ├── store.hooks.ts
+│       │   │       │   ├── useAddressSearch.spec.ts
+│       │   │       │   ├── useAddressSearch.ts
+│       │   │       │   ├── useDebounce.ts
 │       │   │       │   ├── useHeaderHeight.ts
 │       │   │       │   ├── useIsSmallScreen.ts
 │       │   │       │   └── useNavigationBlocker.ts
@@ -2303,20 +2294,8 @@
 │       │   │       │   │   └── useBuildStepperNavigationItems.tsx
 │       │   │       │   ├── urban-project
 │       │   │       │   │   ├── buildings
-│       │   │       │   │   │   ├── floor-surface-area
-│       │   │       │   │   │   │   ├── BuildingsFloorSurfaceArea.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── BuildingsIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── use-introduction
-│       │   │       │   │   │   │   ├── BuildingsUseIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── use-selection
-│       │   │       │   │   │   │   ├── BuildingsUseSelection.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── use-surface-areas
-│       │   │       │   │   │       ├── BuildingsUseSurfaceAreas.tsx
+│       │   │       │   │   │   └── introduction
+│       │   │       │   │   │       ├── BuildingsIntroduction.tsx
 │       │   │       │   │   │       └── index.tsx
 │       │   │       │   │   ├── expenses
 │       │   │       │   │   │   ├── installation
@@ -2372,52 +2351,20 @@
 │       │   │       │   │   │   └── surface-area
 │       │   │       │   │   │       └── index.tsx
 │       │   │       │   │   ├── spaces
-│       │   │       │   │   │   ├── development-plan-introduction
-│       │   │       │   │   │   │   ├── UrbanSpacesDevelopmentPlanIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── green-spaces
-│       │   │       │   │   │   │   ├── introduction
-│       │   │       │   │   │   │   │   ├── UrbanGreenSpacesIntroduction.tsx
-│       │   │       │   │   │   │   │   └── index.tsx
-│       │   │       │   │   │   │   └── surface-area-distribution
-│       │   │       │   │   │   │       ├── UrbanGreenSpacesDistribution.tsx
-│       │   │       │   │   │   │       └── index.tsx
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── SpacesIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── living-and-activity-spaces
-│       │   │       │   │   │   │   ├── introduction
-│       │   │       │   │   │   │   │   ├── LivingAndActivitySpacesIntroduction.tsx
-│       │   │       │   │   │   │   │   └── index.tsx
-│       │   │       │   │   │   │   └── surface-area-distribution
-│       │   │       │   │   │   │       ├── LivingAndActivitySpacesDistribution.tsx
-│       │   │       │   │   │   │       └── index.tsx
 │       │   │       │   │   │   ├── new-introduction
 │       │   │       │   │   │   │   ├── SpacesIntroduction.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── new-selection
+│       │   │       │   │   │   │   ├── SpacesSelectionForm.spec.tsx
 │       │   │       │   │   │   │   ├── SpacesSelectionForm.tsx
 │       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── new-surface-area
 │       │   │       │   │   │   │   ├── SpacesSurfaceAreaForm.tsx
 │       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── public-spaces
-│       │   │       │   │   │   │   ├── introduction
-│       │   │       │   │   │   │   │   ├── PublicSpacesIntroduction.tsx
-│       │   │       │   │   │   │   │   └── index.tsx
-│       │   │       │   │   │   │   └── surface-area-distribution
-│       │   │       │   │   │   │       ├── PublicSpacesDistribution.tsx
-│       │   │       │   │   │   │       └── index.tsx
-│       │   │       │   │   │   ├── selection
-│       │   │       │   │   │   │   ├── SpacesCategoriesSelection.tsx
-│       │   │       │   │   │   │   └── index.tsx
 │       │   │       │   │   │   ├── soils-carbon-storage
 │       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── soils-summary
-│       │   │       │   │   │   │   ├── UrbanProjectSoilsSummary.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── surface-area
-│       │   │       │   │   │       ├── SpacesCategoriesSurfaceAreaDistributionForm.tsx
+│       │   │       │   │   │   └── soils-summary
+│       │   │       │   │   │       ├── UrbanProjectSoilsSummary.tsx
 │       │   │       │   │   │       └── index.tsx
 │       │   │       │   │   ├── stakeholders
 │       │   │       │   │   │   ├── developer
@@ -2427,8 +2374,9 @@
 │       │   │       │   │   │   └── reinstatement-contract-owner
 │       │   │       │   │   │       └── index.tsx
 │       │   │       │   │   ├── summary
-│       │   │       │   │   │   ├── UrbanProjectExpensesAndRevenuesSummary.tsx
+│       │   │       │   │   │   ├── UrbanProjectExpensesSection.tsx
 │       │   │       │   │   │   ├── UrbanProjectFormSummary.tsx
+│       │   │       │   │   │   ├── UrbanProjectRevenuesSection.tsx
 │       │   │       │   │   │   └── index.tsx
 │       │   │       │   │   └── uses
 │       │   │       │   │       ├── floor-surface-area
@@ -2437,6 +2385,12 @@
 │       │   │       │   │       ├── introduction
 │       │   │       │   │       │   ├── UsesIntroduction.tsx
 │       │   │       │   │       │   └── index.tsx
+│       │   │       │   │       ├── public-green-spaces-soils-distribution
+│       │   │       │   │       │   ├── PublicGreenSpacesSoilsDistribution.tsx
+│       │   │       │   │       │   ├── index.tsx
+│       │   │       │   │       │   └── introduction
+│       │   │       │   │       │       ├── PublicGreenSpacesIntroduction.tsx
+│       │   │       │   │       │       └── index.tsx
 │       │   │       │   │       ├── public-green-spaces-surface-area
 │       │   │       │   │       │   ├── PublicGreenSpacesSurfaceArea.tsx
 │       │   │       │   │       │   └── index.tsx
@@ -2572,14 +2526,8 @@
 │       │   │       ├── projectPhase.ts
 │       │   │       ├── revenues.ts
 │       │   │       ├── spaces
-│       │   │       │   ├── green-spaces
-│       │   │       │   │   └── urbanGreenSpaces.ts
-│       │   │       │   ├── living-and-activity-spaces
-│       │   │       │   │   ├── buildingsUse.ts
-│       │   │       │   │   └── urbanLivingAndActivitySpaces.ts
-│       │   │       │   ├── public-spaces
-│       │   │       │   │   └── urbanPublicSpaces.ts
-│       │   │       │   └── spaceCategories.ts
+│       │   │       │   └── green-spaces
+│       │   │       │       └── urbanGreenSpaces.ts
 │       │   │       └── uses
 │       │   │           └── urbanProjectUse.ts
 │       │   ├── services
@@ -2634,6 +2582,7 @@
 │       │   │   ├── index.ts
 │       │   │   ├── soilDistribution.ts
 │       │   │   ├── soilDistributionByType.ts
+│       │   │   ├── soils.spec.ts
 │       │   │   └── soilsDistributionObjToArray.ts
 │       │   ├── surface-area
 │       │   │   ├── index.ts
@@ -2651,4 +2600,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-740 directories, 1913 files
+723 directories, 1879 files
