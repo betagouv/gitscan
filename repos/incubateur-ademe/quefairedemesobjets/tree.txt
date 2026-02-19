@@ -660,6 +660,7 @@
 │   │   │   │   ├── exposure_epci.sql
 │   │   │   │   └── schema.yml
 │   │   │   └── stats
+│   │   │       ├── exposure_stats_acteur_revision_statut.sql
 │   │   │       ├── exposure_stats_distance_nb_acteur_by_action.sql
 │   │   │       ├── exposure_stats_nb_acteur_stacked_history.sql
 │   │   │       ├── exposure_stats_nb_acteur_stacked_rounded_history.sql
@@ -698,10 +699,12 @@
 │   │   │       ├── Untitled
 │   │   │       ├── int_acteur_visible_location.sql
 │   │   │       ├── int_acteur_visible_location_rounded.sql
+│   │   │       ├── int_acteur_with_revision.sql
 │   │   │       ├── int_acteur_with_siren.sql
 │   │   │       ├── int_acteur_with_siret.sql
 │   │   │       ├── int_ae_siren_in_acteur.sql
 │   │   │       ├── int_ae_siret_in_acteur.sql
+│   │   │       ├── int_revision_with_acteur.sql
 │   │   │       ├── int_stacked_location.sql
 │   │   │       ├── int_stacked_location_rounded.sql
 │   │   │       └── schema.yml
@@ -765,6 +768,7 @@
 │   │   │   │   ├── marts_enrich_acteurs_villes_suggest_typo.sql
 │   │   │   │   └── schema.yml
 │   │   │   └── stats
+│   │   │       ├── marts_acteur_revision_statut.sql
 │   │   │       ├── marts_acteur_siren_actif.sql
 │   │   │       ├── marts_acteur_siret_actif.sql
 │   │   │       ├── marts_acteur_stacked.sql
@@ -909,7 +913,9 @@
 │   ├── helpers.ts
 │   ├── homepage.spec.ts
 │   ├── iframe.spec.ts
-│   └── iframe_navigation.spec.ts
+│   ├── iframe_navigation.spec.ts
+│   ├── infotri.spec.ts
+│   └── search.spec.ts
 ├── iframe.html
 ├── iframe_without_js.html
 ├── img
@@ -1045,7 +1051,10 @@
 │   │       ├── create_assistant_permissions.py
 │   │       ├── create_wagtail_pages.py
 │   │       ├── import_data_ademe.py
-│   │       └── import_infos_tris.py
+│   │       ├── import_infos_tris.py
+│   │       ├── migrate_from_sites_faciles_experiment.py
+│   │       ├── populate_fake_search_tags.py
+│   │       └── populate_search_terms.py
 │   ├── middleware.py
 │   ├── migrations
 │   │   ├── 0001_initial_squashed_0036_delete_cmspage_alter_produit_id.py
@@ -1086,6 +1095,9 @@
 │   │   ├── 0069_delete_suggestion.py
 │   │   ├── 0070_produitpage_est_famille.py
 │   │   ├── 0071_remove_produitpage_bonus_and_more.py
+│   │   ├── 0072_searchtag_and_synonyme_inheritance.py
+│   │   ├── 0073_produitpagesearchterm.py
+│   │   ├── 0074_alter_produitindexpage_body_alter_produitpage_body.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── signals.py
@@ -1230,12 +1242,22 @@
 │   │   └── purge_db_logs.sh
 │   ├── restore_prod_locally.sh
 │   ├── restore_prod_to_preprod.sh
+│   ├── restore_sample_locally.sh
 │   └── sql
 │       ├── create_databases.sql
 │       ├── create_extensions.sql
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
 │       └── drop_all_tables.sql
+├── search
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── constants.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   └── wagtail_hooks.py
 ├── servers.conf.erb
 ├── static
 │   ├── documentation_files
@@ -1353,6 +1375,7 @@
 │   │   ├── input_filter.html
 │   │   ├── nav_sidebar.html
 │   │   ├── qfdmd
+│   │   │   ├── confirm_import_synonymes.html
 │   │   │   └── produit
 │   │   │       └── change_form.html
 │   │   ├── qfdmo
@@ -1387,7 +1410,7 @@
 │   │   ├── global_js.html
 │   │   └── pagination.html
 │   ├── robots.txt
-│   ├── sites_faciles_content_manager
+│   ├── sites_conformes_content_manager
 │   │   └── blocks
 │   │       ├── breadcrumbs.html
 │   │       └── tabs.html
@@ -1551,13 +1574,13 @@
 │       │   │       ├── consigne-1.html
 │       │   │       ├── consigne-2.html
 │       │   │       ├── consigne-3.html
+│       │   │       ├── linge.html
 │       │   │       ├── phrase-1.html
 │       │   │       ├── phrase-2.html
 │       │   │       ├── phrase-3.html
-│       │   │       ├── tissu.html
+│       │   │       ├── textile.html
 │       │   │       ├── tous.html
 │       │   │       ├── triman.html
-│       │   │       ├── vetement.html
 │       │   │       └── website.html
 │       │   ├── label_qualite
 │       │   │   ├── dsfr_label.html
@@ -1599,8 +1622,11 @@
 │       │   │   ├── heading_family.md
 │       │   │   └── produit.html
 │       │   ├── search
-│       │   │   ├── _search_result.html
-│       │   │   ├── _search_result_beta.html
+│       │   │   ├── _search_term.html
+│       │   │   ├── search_result.html
+│       │   │   ├── search_result_produitpage.html
+│       │   │   ├── search_result_searchtag.html
+│       │   │   ├── search_result_synonyme.html
 │       │   │   ├── view.html
 │       │   │   └── widget.html
 │       │   ├── service
@@ -1669,6 +1695,7 @@
 │           ├── t_13_itineraire_button_carte_sur_mesure.html
 │           ├── t_14_carte_mal_centree.html
 │           ├── t_15_acteur_fiche_viewport.html
+│           ├── t_16_infotri_configurator.html
 │           ├── t_1_referrer_assistant.html
 │           ├── t_1_referrer_carte.html
 │           ├── t_2_carte_mode_liste_switch.html
@@ -1708,6 +1735,7 @@
 │   ├── qfdmd
 │   │   ├── qfdmod_factory.py
 │   │   ├── test_genre_nombre_model.py
+│   │   ├── test_import_legacy_synonymes.py
 │   │   ├── test_legacy_synonyme_redirection.py
 │   │   ├── test_lien.py
 │   │   ├── test_middleware.py
@@ -1740,7 +1768,11 @@
 │   │   ├── test_views.py
 │   │   └── views
 │   │       └── test_carte_icon_display.py
+│   ├── search_tests
+│   │   ├── __init__.py
+│   │   ├── test_search_term.py
+│   │   └── test_search_view.py
 │   └── stats
 │       └── test_stats_utils.py
 └── uv.lock
-334 directories, 1411 files
+337 directories, 1440 files
