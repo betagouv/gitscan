@@ -1,50 +1,46 @@
 {
   "url": "https://github.com/SocialGouv/vao",
   "name": "vao",
-  "description": "Ce SI a pour vocation à dématérialiser l'ensemble des procédures liées à l'organisation de séjours pour les personnes handicapées.",
+  "description": "Ce SI a pour vocation à dématérialiser l'ensemble des procédures liées à l'organisation de séjours pour les personnes handicapées. Il propose des démarches aux organismes et un back office pour l'administration.",
   "language": "JavaScript",
   "features": [
     "Demande d'agrément",
     "Déclaration de séjour",
-    "Instruction des demandes d'agrément",
-    "Instruction des demandes de séjour",
-    "Contrôle des séjours organisés",
+    "Instruction des demandes",
+    "Contrôle des séjours",
     "Statistiques"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "NodeJs",
-    "Express",
-    "PostgreSQL",
-    "axios",
+    "NuxtJs",
+    "VueJs",
+    "Pinia",
+    "Vee-validate",
     "yup",
+    "Express",
     "pg",
-    "dayjs"
+    "axios",
+    "jsonwebtoken"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "Base de données PostgreSQL"
+    "Base de données PostgreSQL",
+    "Frontend NuxtJs",
+    "Backend NodeJs"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "jwt",
+      "session"
     ]
   },
   "tests": [
     "Jest",
-    "Playwright"
+    "Vitest"
   ],
-  "workflows": [
-    "deactivate",
-    "debug-kube",
-    "e2e",
-    "lint-format-tests",
-    "preproduction",
-    "production",
-    "release"
-  ],
-  "lastActivity": "2026-01-30T21:23:38+00:00",
+  "workflows": [],
+  "lastActivity": "2026-02-18T17:33:28+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -52,7 +48,7 @@
     "stars": 2,
     "forks": 1,
     "contributors": null,
-    "openIssues": 16
+    "openIssues": 18
   },
   "tags": [
     "handicap",
