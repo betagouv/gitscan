@@ -1,55 +1,46 @@
 {
-  "url": "https://github.com/socialgouv/kali-data",
+  "url": "https://github.com/SocialGouv/kali-data",
   "name": "kali-data",
   "description": "Ce projet fournit un dump JSON régulier des conventions collectives publiées par l'API DILA. Il est destiné à un usage interne et expérimental.",
-  "language": "TypeScript",
+  "language": "JavaScript",
   "features": [
-    "Accès aux accords de travail",
+    "Accès aux conventions collectives",
     "Recherche d'articles",
-    "Extraction de données",
-    "API pour récupérer les données"
+    "Extraction de données conventionnelles"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
+    "unist",
     "csv-parser",
-    "node-xlsx",
-    "unist-util-find",
-    "unist-util-flat-filter",
-    "unist-util-parents"
+    "node-xlsx"
   ],
   "components": [
-    "API REST",
+    "API",
     "Données JSON",
-    "Scripts de génération de données"
+    "Scripts de mise à jour"
   ],
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
-    "Jest",
-    "ESLint",
-    "TypeScript"
+    "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-01-31T00:00:00Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-02-18T00:00:00Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
-    "convention collective",
-    "travail",
+    "conventions collectives",
     "dila",
+    "api",
     "json",
-    "typescript",
-    "api"
+    "travail",
+    "législation"
   ]
 }

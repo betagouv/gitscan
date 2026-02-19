@@ -1,25 +1,15 @@
-## Changelog : kali-data (derniers 30 jours)
+## Changelog : kali-data (30 derniers jours)
 
 ### Résumé
-Au cours des 30 derniers jours, le projet kali-data a été mis à jour quotidiennement avec les nouvelles données des conventions collectives publiées par l'API DILA. Ces mises à jour permettent de maintenir à jour la base de données des accords de travail accessible via l'API et les fichiers JSON.
+Ce changelog résume les mises à jour récentes des données des conventions collectives fournies par le projet kali-data. Les principales évolutions concernent l'ajout de la gestion des notes facultatives et l'intégration de ces notes dans les informations récupérées, ainsi que des mises à jour régulières des données elles-mêmes.
 
 ### Évolutions fonctionnelles
-- Mise à jour des données des conventions collectives avec les informations du 7 janvier 2026 (#8c95254)
-- Mise à jour des données des conventions collectives avec les informations du 8 janvier 2026 (#12fb5cd)
-- Mise à jour des données des conventions collectives avec les informations du 9 janvier 2026 (#aea6d50)
-- Mise à jour des données des conventions collectives avec les informations du 10 janvier 2026 (#3278153)
-- Mise à jour des données des conventions collectives avec les informations du 13 janvier 2026 (#44600a1)
-- Mise à jour des données des conventions collectives avec les informations du 14 janvier 2026 (#f7123f7)
-- Mise à jour des données des conventions collectives avec les informations du 15 janvier 2026 (#dab2f87)
-- Mise à jour des données des conventions collectives avec les informations du 20 janvier 2026 (#c661e44)
-- Mise à jour des données des conventions collectives avec les informations du 22 janvier 2026 (#b591884)
-- Mise à jour des données des conventions collectives avec les informations du 24 janvier 2026 (#05c0c42)
-- Mise à jour des données des conventions collectives avec les informations du 27 janvier 2026 (#fa7551d)
-- Mise à jour des données des conventions collectives avec les informations du 28 janvier 2026 (#41d68e1)
-- Mise à jour des données des conventions collectives avec les informations du 31 janvier 2026 (#a8de32e)
+- Ajout de la gestion des notes facultatives dans les données des conventions collectives (#319).
+- Intégration des notes dans les informations récupérées sur les conventions collectives (#318).
+- Mises à jour régulières des données des conventions collectives (20260218_1334, 20260214_1316, 20260213_1328, 20260210_0906, 20260207_1315, 20260205_1329, 20260203_1327, 20260131_1313, 20260128_1319, 20260127_1320, 20260124_1309, 20260122_1322, 20260120_1316).
 
 ### Évolutions techniques
-- Aucune évolution technique significative n'a été apportée durant cette période.
+Aucune évolution technique significative n'a été apportée durant cette période.
 
 ### Autres changements
-- Mises à jour de version automatiques (chore(release)) pour chaque mise à jour de données.
+Aucun autre changement significatif à signaler.
