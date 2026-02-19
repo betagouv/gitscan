@@ -1,68 +1,67 @@
 {
   "url": "https://github.com/betagouv/chatwoot",
   "name": "chatwoot",
-  "description": "Chatwoot est une suite d'engagement client open-source, une alternative à Intercom, Zendesk et Salesforce Service Cloud. Elle permet de gérer les données clients, de communiquer avec eux via différents canaux et de les réengager en fonction de leur profil.",
+  "description": "Chatwoot est une suite d'engagement client open-source, une alternative à Intercom, Zendesk, Salesforce Service Cloud etc. Elle permet de gérer les données clients, de communiquer avec eux via différents canaux et de les réengager en fonction de leur profil.",
   "language": "Ruby",
   "features": [
-    "Authentification utilisateur",
-    "Gestion des conversations",
     "Chat en direct",
-    "Support par e-mail",
-    "Intégrations avec les réseaux sociaux",
-    "Gestion des tickets",
-    "Base de connaissances",
+    "Support par email",
+    "Omnicanal",
+    "Gestion des contacts",
+    "Réponses pré-enregistrées",
+    "Intégrations",
     "Automatisation",
-    "Rapports et analyses"
+    "Rapports",
+    "Gestion des équipes"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Ruby",
     "Rails",
+    "Ruby",
     "PostgreSQL",
     "Redis",
-    "JavaScript",
-    "Vue.js"
+    "Vue.js",
+    "JavaScript"
   ],
   "components": [
     "Frontend Vue.js",
-    "API REST",
+    "Backend Rails (Ruby)",
     "Base de données PostgreSQL",
-    "Serveur d'application Ruby on Rails"
+    "Cache Redis",
+    "API REST",
+    "Websockets (ActionCable)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml",
-      "jwt",
-      "session"
+      "sso"
     ]
   },
-  "auth.providers": [
-    "Google",
-    "Microsoft"
-  ],
   "tests": [
-    "Jest",
-    "RSpec"
+    "RSpec",
+    "Jest"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD (CircleCI)"
+  ],
   "lastActivity": "2025-07-10T13:59:24Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 27109,
-    "forks": 6226,
+    "stars": 27319,
+    "forks": 6355,
     "contributors": null,
-    "openIssues": 955
+    "openIssues": 983
   },
   "tags": [
     "chat",
     "support client",
     "open source",
-    "engagement client",
-    "live chat",
-    "helpdesk"
+    "rails",
+    "ruby",
+    "vuejs",
+    "customer engagement"
   ]
 }
