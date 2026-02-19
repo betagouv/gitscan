@@ -1,48 +1,53 @@
 ## Changelog : gestion-des-subventions-locales (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment sur les pages d'administration et de simulation. Des corrections de bugs ont été apportées pour améliorer la robustesse de l'application, en particulier concernant la gestion des données de dossier et des catégories de subventions. Des fonctionnalités ont été ajoutées pour faciliter la gestion des utilisateurs et des dotations, ainsi que pour améliorer l'affichage des informations sur les projets.
+Les dernières mises à jour apportent des améliorations significatives à l'application, notamment en termes de sécurité, d'expérience utilisateur et de robustesse. Des correctifs ont été implémentés pour améliorer la gestion des dossiers, des projets et des simulations, ainsi que pour optimiser les performances de l'interface d'administration. L'ajout de nouvelles fonctionnalités, comme la gestion des catégories DETR/DSIL et l'affichage d'informations plus claires, vise à faciliter le travail des agents de l'administration.
 
 ### Évolutions fonctionnelles
-- Ajout d'une vidéo de démonstration sur la page d'aide (#526).
+- Ajout d'une protection contre les attaques par force brute (#524).
+- Pages d'erreur 403, 404 et 500 mises à jour pour être conformes au modèle DSFR (#528).
+- Ajout d'une vidéo de démo sur la page d'aide (#526).
+- Possibilité de supprimer un Projet depuis l'interface d'administration Django (#520).
 - Ajout d'un filtre par arrondissement sur les pages Dossier et Projet du BO (#522).
-- Suppression de la connexion par username/mot de passe (#523).
-- Possibilité de supprimer un Projet depuis l'admin Django (#520).
-- Amélioration UI du formulaire de renseignement d'info pour un dossier reporté "sans" (#506).
-- Ajout de colonnes dans la page liste des utilisateurs (BO) (#502).
+- Suppression de la connexion par nom d'utilisateur/mot de passe (#523).
 - Affichage du tag "Reporté" pour les projets issus d'une demande précédente (#484).
+- Ajout de champs pour les catégories DETR/DSIL au formulaire dossier SANS pièces (#496).
+- Distinction dans l'affichage des informations ajoutées par le demandeur et celles ajoutées par l'instructeur sur la page projet (#482).
 - Possibilité de repasser un projet notifié en traitement (#480).
-- Ajout d'un spinner et désactivation du bouton de soumission sur la page simulation (#477).
-- Ne plus rendre accessible l'onglet "notifications" s'il n'existe pas de dotation acceptée pour ce projet (#478).
-- Décochage de la case d'une dotation dans les annotations si celle-ci avait été acceptée (#471).
-- Calcul de la taille d'un document généré pour l'afficher dans l'onglet notifications (#474).
-- Distinction dans l'affichage des infos ajoutées par le demandeur et celles ajoutées par l'instructeur sur la page projet (#482).
-- Ajout des champs libres instructeurs dans "Annotations" (#494).
-- Ajout des champs "Autre zonage local" et "Autre contrat local" (#493).
-- Affichage du label complet sur les pages listes de projets (#511).
-- Renommage de l'onglet "Annotations" en "Notes" (#507).
+- Ajout du nombre de projets dans les listes de projets (#495).
+- Ajout des champs "Autre zonage local" et "Autre contrat local" (#481).
+- Amélioration de l'algorithme de récupération des données d'un dossier DN (#501).
+- Ajout de colonnes dans la page liste des utilisateurs (BO) (#502).
+- Ajout d'un lien vers Tchap (#506).
+- Simplification de la modélisation : suppression de FieldMappingForHuman et renommage de FieldMapping (#493).
+- Ajout d'un spinner et désactivation du bouton de soumission sur la page de simulation (#477).
+- Amélioration de l'affichage des informations sur les projets (#492).
 
 ### Évolutions techniques
-- Optimisation des performances des pages d'administration de Collegue et FieldMapping (#518).
-- Suppression des requêtes N+1 dans l'admin Collegue (#512).
 - Refactorisation : séparation des données brutes de dossier dans un nouveau modèle `DossierData` (#476).
-- Simplification de la modélisation : suppression de `FieldMappingForHuman` et renommage de `FieldMapping` (#493).
-- Utilisation de `BaseModel` au lieu de `TimestampedModel` (#485).
+- Optimisation des performances des pages d'administration de `Collegue` et `FieldMapping` (#518) en corrigeant des requêtes N+1.
+- Utilisation de `iterator()` pour optimiser la migration des données des dossiers (#488).
+- Ajout du modèle `CategorieDetr` et `CategorieDsil` et association avec le dossier (#491).
+- Correction d'un bug lors de la re-programmation d'un projet sur une autre enveloppe (#483).
+- Utilisation de `logger.exception` au lieu de `logger.error` pour une meilleure gestion des exceptions.
+- Refactorisation de la gestion des catégories DETR (#510).
+- Correction de l'algorithme de récupération des catégories DETR (#509).
 - Amélioration de la robustesse de l'algorithme de récupération des données d'un dossier DN (#501).
-- Correction de l'algorithme de récupération des catégories DETR (#510).
-- Mise à jour des dossiers même si la date de mise à jour sauvegardée est supérieure ou égale à celle de DN (#489).
-- Correction d'un potentiel problème de XSS (#483).
-- Suppression de fichiers Javascript inutiles (#483).
-- Utilisation de la classe CSS `fr-hidden` au lieu de `hidden` (#483).
-- Correction de la logique de mise à jour ou de création des `ProgrammationProjet` lors d'un changement d'enveloppe (#483).
-- Amélioration de la gestion des catégories DETR et DSIL (#491, #492).
-- Association du périmètre avec le dossier plutôt qu'avec le projet (#497).
-- Suppression de la possibilité de supprimer des dotations projets programmés (#521).
+- Ajout de tests pour les services et le formulaire de projet (#485).
+- Correction d'un bug dans la migration des données (#479).
 
 ### Autres changements
-- Ajout de l'import des prénoms et noms des utilisateurs (#475).
-- Ajout du lien Tchap (#506).
-- Correction de tests unitaires (#486, #520).
-- Amélioration de la documentation et des messages d'erreur.
-- Corrections de migrations Django.
-- Nettoyage du code.
+- Copie de la base de données de l'application parente pour l'environnement de revue (#527).
+- Correction de dépendances dupliquées dans les migrations (#528).
+- Clarification des textes d'aide pour les champs `is_staff` et `is_superuser` dans le modèle `Collegue` (#528).
+- Ajout de champs en lecture seule dans l'interface d'administration du modèle `Collegue` pour les utilisateurs non-supervisuers (#528).
+- Correction d'un bug empêchant l'acceptation des taux supérieurs à 100% depuis les annotations DN (#513).
+- Renommage de l'onglet "Annotations" en "Notes" (#507).
+- Renommage des messages de succès des projets acceptés et refusés provisoirement (#516).
+- Correction de tests unitaires (#517).
+- Suppression de colonnes inutiles sur la page Simulation (#517).
+- Correction de la migration des données (#515).
+- Correction de problèmes de XSS potentiels (#514).
+- Mise à jour des dossiers même si la date de mise à jour sauvegardée est supérieure ou égale à celle de DN (#489).
+- Correction de l'algorithme de récupération des catégories DETR (#490).
+- Correction de bugs et améliorations diverses.

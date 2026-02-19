@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions, les dossiers, les utilisateurs et les notifications. Il offre des fonctionnalités d'importation de données et de génération de documents.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subventions, les dotations et les projets associés. L'application offre des fonctionnalités d'administration, de simulation et de gestion des utilisateurs.",
   "language": "Python",
   "features": [
-    "Gestion des subventions",
-    "Gestion des dossiers",
-    "Gestion des utilisateurs",
-    "Notifications",
+    "Gestion des dossiers de subvention",
+    "Gestion des dotations",
+    "Gestion des projets",
+    "Simulation de subventions",
+    "Administration des utilisateurs",
     "Import de données",
     "Génération de documents",
-    "Interface d'administration",
-    "Recherche",
-    "Gestion des catégories de subventions (DSIL et DETR)"
+    "Notifications",
+    "Gestion des catégories de subventions (DETR/DSIL)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,30 +20,36 @@
     "PostgreSQL",
     "Celery",
     "Redis",
-    "Mozilla-django-oidc",
-    "django-htmx",
+    "Mozilla OIDC",
     "htmx.org",
     "tiptap",
-    "esbuild"
+    "django-htmx",
+    "django-csp",
+    "django-dsfr"
   ],
   "components": [
     "Backend Django",
     "Frontend React (via htmx)",
     "Base de données PostgreSQL",
+    "Tâches asynchrones avec Celery",
+    "Authentification OIDC",
     "API REST",
-    "Celery pour les tâches asynchrones",
-    "Redis pour la mise en cache"
+    "Interface d'administration Django"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
+    ],
+    "providers": [
+      "Mozilla OIDC"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-16T09:49:33+01:00",
+  "lastActivity": "2026-02-17T12:34:36+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,10 +63,11 @@
     "subventions",
     "gestion",
     "administration",
-    "django",
-    "postgresql",
-    "celery",
-    "htmx",
+    "Django",
+    "Python",
+    "PostgreSQL",
+    "Celery",
+    "OIDC",
     "subventions locales"
   ]
 }
