@@ -1,13 +1,14 @@
 {
-  "url": "https://github.com/mtes-mct/trackdechets-data",
+  "url": "https://github.com/MTES-MCT/trackdechets-data",
   "name": "trackdechets-data",
   "description": "Cette plateforme contient les briques de la plateforme data du projet Trackdéchets, incluant des outils d'orchestration, de stockage, de transformation et de visualisation de données.",
   "language": "Python",
   "features": [
-    "Gestion de données",
-    "ETL",
+    "Orchestration de données",
+    "Transformation de données",
     "Visualisation de données",
-    "Analyse de données"
+    "Extraction de données",
+    "Chargement de données"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -15,30 +16,38 @@
     "ClickHouse",
     "dbt",
     "Metabase",
-    "PostgreSQL",
     "uv",
+    "boto3",
+    "clickhouse-connect",
+    "clickhouse-sqlalchemy",
+    "dbt-clickhouse",
+    "dbt-core",
+    "dlt",
     "pandas",
     "polars",
-    "sqlalchemy"
+    "psycopg2",
+    "sqlalchemy",
+    "sqlfluff"
   ],
   "components": [
-    "Frontend Metabase",
-    "Backend Airflow",
-    "Base de données ClickHouse",
-    "Pipeline ETL avec dbt",
-    "Scripts Python"
+    "Airflow (orchestration)",
+    "ClickHouse (base de données)",
+    "dbt (transformation de données)",
+    "Metabase (BI/visualisation de données)",
+    "Pipelines de données Python"
   ],
   "auth": {
     "methods": [
       "none"
-    ]
+    ],
+    "providers": []
   },
   "tests": null,
   "workflows": [
     "deploy-to-prod.yml",
     "deploy-to-sandbox.yml"
   ],
-  "lastActivity": "2026-01-29T09:13:32Z",
+  "lastActivity": "2026-02-18T11:17:59Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -49,13 +58,13 @@
     "openIssues": 1
   },
   "tags": [
-    "data pipeline",
-    "etl",
+    "data",
     "airflow",
     "clickhouse",
     "dbt",
     "metabase",
-    "data visualization",
-    "environmental data"
+    "python",
+    "data-pipeline",
+    "etl"
   ]
 }
