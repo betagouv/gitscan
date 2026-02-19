@@ -1,25 +1,31 @@
 {
   "url": "https://github.com/betagouv/mon-service-securise-journal",
   "name": "mon-service-securise-journal",
-  "description": "Ce dépôt Git représente le journal des événements métiers survenus dans MonServiceSécurisé. Ces événements sont utilisés pour le reporting via Metabase.",
+  "description": "Ce dépôt Git représente le journal des événements métiers survenus dans MonServiceSécurisé, utilisé pour le reporting via Metabase.",
   "language": "JavaScript",
-  "features": [],
-  "audience": null,
+  "features": [
+    "Collecte d'événements métiers",
+    "Reporting",
+    "Visualisation de données"
+  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "dotenv",
-    "knex",
-    "pg"
+    "Node.js",
+    "PostgreSQL",
+    "Knex.js",
+    "pg",
+    "dotenv"
   ],
   "components": [
-    "Frontend Metabase",
     "Backend Node.js",
-    "Base de données PostgreSQL"
+    "Base de données PostgreSQL",
+    "Outil de reporting Metabase",
+    "Migrations Knex.js"
   ],
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
   "tests": null,
   "workflows": [
@@ -39,7 +45,9 @@
     "reporting",
     "metabase",
     "postgresql",
+    "nodejs",
     "journal",
+    "événements",
     "mon-service-securise"
   ]
 }
