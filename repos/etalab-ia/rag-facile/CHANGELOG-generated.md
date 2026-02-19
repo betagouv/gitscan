@@ -1,33 +1,44 @@
-## Changelog : rag-facile (derniers 30 jours)
+## Changelog : rag-facile (30 derniers jours)
 
 ### Résumé
-Ce projet a connu une refonte importante au cours des dernières semaines, passant d'un "RAG Starter Kit" à "RAG Facile". L'objectif est de fournir une trousse de démarrage plus accessible pour la construction d'applications RAG (Retrieval-Augmented Generation) utilisant l'API Albert, particulièrement pour les agents de l'administration française. De nouvelles fonctionnalités ont été ajoutées, notamment l'intégration de PDF et une interface de chat, ainsi que des améliorations de l'infrastructure et des outils de développement.
+Les 30 derniers jours ont été marqués par une amélioration significative du projet, avec l'ajout de nouvelles fonctionnalités comme un système d'expansion de requêtes pour améliorer la pertinence des résultats, une meilleure intégration avec l'API Albert, et une refonte de l'architecture pour faciliter la distribution et l'utilisation du projet. De plus, de nombreuses corrections de bugs et améliorations de la documentation ont été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une application de chat basée sur Chainlit, avec support du streaming et du traitement de fichiers PDF (#13, #4).
-- Implémentation d'une interface utilisateur pour l'attachement et l'affichage de fichiers dans l'application de chat (#16b6318).
-- Intégration de l'API Albert pour une utilisation simplifiée avec les services gouvernementaux (#5ba73a3).
-- Ajout d'une application Reflex de chat (#7bd4106).
-- Possibilité d'utiliser des variables d'environnement pour les clés API (#a26a598).
-- Ajout d'une documentation pour les agents et contributeurs (#10).
+*   Ajout d'un système d'expansion de requêtes avec stratégies multi-requêtes et HyDE pour améliorer la pertinence des résultats de recherche.
+*   Amélioration de l'intégration avec l'API Albert, notamment en gérant mieux les erreurs et en fournissant des informations de débogage plus claires.
+*   Possibilité d'utiliser des collections publiques Albert comme sources de données pour le RAG.
+*   Ajout d'un nouveau mode "standalone" pour une installation et une utilisation simplifiées du projet.
+*   Ajout de la prise en charge de l'upload de fichiers PDF pour le contexte.
+*   Ajout d'une interface utilisateur pour afficher les fichiers attachés dans l'application de chat.
+*   Ajout de commandes CLI pour la gestion de la configuration du RAG.
+*   Ajout d'un nouveau CLI `rag-facile` avec une bannière et une commande version.
+*   Ajout d'une fonctionnalité pour télécharger des jeux de données avec des filtres par tâche et par langue.
 
 ### Évolutions techniques
-- Refactorisation de la génération de templates, passant de Copier à Moon (#307dd88).
-- Extraction du package `pdf-context` pour une meilleure organisation du code (#fd021ee).
-- Amélioration de la gestion des templates avec l'utilisation de `just` pour la génération et l'instanciation (#2a93250).
-- Migration de la génération de templates vers une CLI Python multi-app (#88990d2).
-- Mise à jour de la version de Python à 3.13 pour assurer la compatibilité avec les dépendances (Pydantic, Reflex) (#0657255).
-- Utilisation de `uv` pour l'installation des dépendances (#63ec4ab).
-- Intégration de `direnv` pour la gestion de l'environnement de développement (#d2df794).
-- Amélioration du pipeline de codemod hybride avec LibCST et ast-grep (#4dfff91).
-- Suppression des templates générés et génération à la demande (#e5208eb).
+*   Refonte de l'architecture du projet pour une meilleure modularité et maintenabilité.
+*   Extraction de packages pour l'ingestion, le contexte, le reranking et la configuration.
+*   Utilisation de Moon pour la génération de templates de projets.
+*   Intégration de `just` pour la gestion des tâches de développement.
+*   Amélioration du système de configuration avec un fichier `ragfacile.toml`.
+*   Mise à jour des dépendances (pypdf, cryptography, protobuf).
+*   Ajout de tests unitaires et d'intégration.
+*   Amélioration de la gestion des erreurs et des logs.
+*   Utilisation de release-please pour la gestion des versions et la génération du changelog.
+*   Ajout de workflows CI/CD pour l'automatisation des tests et du déploiement.
+*   Correction de problèmes de compatibilité avec Python 3.13.
+*   Ajout de support pour Windows.
 
 ### Autres changements
-- Renommage du projet de "RAG Starter Kit" à "RAG Facile" (#c8f8312).
-- Ajout d'un fichier `AGENTS.md` pour documenter les connaissances du projet (#a2c8beb).
-- Mise à jour du fichier `README.md` pour refléter les changements et fournir des instructions d'utilisation claires (#a6f6c96, #c2d5ca6, #26d2e00).
-- Ajout de commentaires `ty:ignore` pour supprimer les erreurs de typage dans Reflex (#e33b488).
-- Ajout d'un fichier `.env.example` pour faciliter la configuration de l'application (#7c49d0d).
-- Suppression du fichier `.envrc` du suivi Git (#0d687e2).
-- Ajout du répertoire `.letta` au `.gitignore` (#13121d0).
-- Mise à jour du fichier `uv.lock` avec les nouvelles dépendances (#cd9ab10).
+*   Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'architecture.
+*   Ajout d'un guide pour les contributeurs.
+*   Correction de problèmes de style et de formatage du code.
+*   Ajout de commentaires et de docstrings pour améliorer la lisibilité du code.
+*   Amélioration de la gestion des erreurs et des exceptions.
+*   Ajout d'un fichier `.env.example` pour la configuration des variables d'environnement.
+*   Ajout d'un fichier `.gitignore` pour ignorer les fichiers inutiles.
+*   Ajout d'un fichier `CONTRIBUTING.md` pour guider les contributeurs.
+*   Ajout d'un fichier `AGENTS.md` avec des informations sur le projet.
+*   Correction de problèmes de typage avec `ty`.
+*   Suppression de fichiers et de dépendances inutiles.
+*   Amélioration des messages d'erreur et des logs.
+*   Correction de bugs mineurs et amélioration de la stabilité du projet.
