@@ -254,6 +254,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260208165236_delete_fiches_solutions_id_column_in_estimation_table
 │   │   │   └── migration.sql
+│   │   ├── 20260212111914_creation_des_tables_epci_et_commune
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── public
@@ -536,6 +538,10 @@
 │   │   └── update-climadiag-population.tsx
 │   ├── connect-sync.ts
 │   ├── csm-mail-batch.ts
+│   ├── fill-collectivite
+│   │   ├── epci_2026.csv
+│   │   └── epci_commune_2026.csv
+│   ├── fill-epci-commune-tables.ts
 │   ├── fill-user-siren-field.tsx
 │   └── hubspot-sync.ts
 ├── sentry.client.config.ts
@@ -1371,6 +1377,7 @@
 │   │   │   ├── prisma-aide-estimation-queries.ts
 │   │   │   ├── prisma-analytics-queries.ts
 │   │   │   ├── prisma-climadiag-queries.ts
+│   │   │   ├── prisma-commune-queries.ts
 │   │   │   ├── prisma-cron-jobs-queries.ts
 │   │   │   ├── prisma-diagnostic-simulation-queries.ts
 │   │   │   ├── prisma-email-queries.ts
@@ -1478,4 +1485,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-367 directories, 1113 files
+369 directories, 1118 files

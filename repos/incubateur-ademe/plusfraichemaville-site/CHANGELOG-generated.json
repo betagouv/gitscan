@@ -1,0 +1,37 @@
+## Changelog : plusfraichemaville-site (30 derniers jours)
+
+### Résumé
+Ce changelog présente les améliorations apportées au site plusfraichemaville-site au cours des 30 derniers jours. Les principales évolutions concernent la gestion des projets, des estimations et des collectivités, ainsi que des corrections de bugs et des optimisations techniques pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
+
+### Évolutions fonctionnelles
+- Possibilité de visualiser tous les projets pour une EPCI ou une commune. (#469)
+- Amélioration de l'affichage des fiches solutions dans la modale d'estimation. (#468)
+- Ajout d'un script pour peupler les nouvelles tables `epci` et `commune`. (#468)
+- Possibilité d'ajouter des fiches solutions à une estimation. (#467)
+- Suppression du champ `fiches_solutions_id` dans la table `estimation` et ajout d'un bouton de suppression pour chaque fiche solution dans une estimation.
+- Affichage de Climadiag pour la commune ou l'EPCI de l'utilisateur. (#464)
+- Gestion des collectivités : ajout d'une alerte Mattermost si l'utilisateur n'a pas de SIREN. (#465)
+- Changement de l'API d'adresse utilisée. (#464)
+- Modification de l'ordre des boutons dans la modale d'estimation. (#462)
+- Correction de l'index des fiches solutions dans l'ouverture de la modale d'estimation.
+- Correction du z-index des options de maturité sur la carte projet. (#460)
+- Correction de la navigation entre les projets avec une estimation ouverte. (#461)
+- Ajout d'une icône à la première étiquette du fil d'Ariane.
+- Prévention de la perte de données de formulaire lors de la navigation. (#458)
+- Changement de l'icône du tableau de bord. (#459)
+
+### Évolutions techniques
+- Mise à jour de Next.js et de jspdf pour corriger des problèmes de sécurité. (#466, #463)
+- Suppression de la liaison entre collectivités et utilisateurs, simplification du code.
+- Nettoyage du code et ajustement des marges pour correspondre à la maquette.
+- Correction de problèmes de build.
+- Amélioration de la gestion des erreurs lors de la récupération des données LCZ.
+
+### Autres changements
+- Suppression de messages d'erreur inutiles.
+- Tri des fiches solutions dans l'estimation.
+- Correction de problèmes de Prettier.
+- Amélioration du mode "lecture seule" (viewer mode).
+- Suppression de l'utilisation de `UserWithCollectivite` lorsque cela n'est pas nécessaire.
+- Mise à jour de la version de checkout.
+- Fusion de la branche `prod`.
