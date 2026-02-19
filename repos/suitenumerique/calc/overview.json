@@ -4,66 +4,66 @@
   "description": "Prototype de feuilles de calcul collaboratives pour La Suite. Ce projet permet l'édition de feuilles de calcul avec IronCalc.",
   "language": "Python",
   "features": [
-    "Édition collaborative",
-    "Intégration IronCalc",
-    "Gestion des accès",
-    "Exportation PDF",
-    "Exportation DOCX",
-    "Gestion des utilisateurs",
+    "Édition collaborative de feuilles de calcul",
+    "Importation et exportation de fichiers",
+    "Gestion des utilisateurs et des permissions",
+    "Intégration avec IronCalc",
     "Authentification OIDC",
-    "Traduction",
-    "Mode hors ligne"
+    "Exportation PDF et DOCX",
+    "Gestion des versions",
+    "Partage de documents"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django Rest Framework",
-    "IronCalc",
-    "Y.js",
-    "Next.js",
-    "PostgreSQL",
+    "Django REST Framework",
+    "Celery",
     "Redis",
-    "Sentry"
+    "IronCalc",
+    "Mozilla Django OIDC",
+    "Sentry",
+    "OpenAI"
   ],
   "components": [
     "Backend Django",
-    "Frontend React",
-    "Serveur Y.js",
+    "Frontend React (implicite)",
     "Base de données PostgreSQL",
-    "Cache Redis"
+    "Serveur Redis",
+    "API REST",
+    "Service worker pour le mode hors ligne"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "session"
     ]
   },
   "tests": [
-    "Jest",
-    "Playwright",
-    "pytest"
+    "pytest",
+    "pytest-django"
   ],
   "workflows": [
     "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-01-31T18:04:15Z",
+  "lastActivity": "2026-02-19T11:28:27Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 5,
-    "forks": 1,
+    "stars": 15,
+    "forks": 2,
     "contributors": null,
-    "openIssues": 5
+    "openIssues": 7
   },
   "tags": [
-    "collaboration",
-    "spreadsheet",
-    "django",
-    "react",
-    "yjs",
-    "pdf",
-    "docx",
-    "oidc"
+    "Django",
+    "Spreadsheet",
+    "Collaboration",
+    "Python",
+    "Web application",
+    "Open Source",
+    "OIDC",
+    "PDF",
+    "DOCX"
   ]
 }
