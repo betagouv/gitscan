@@ -1,16 +1,11 @@
-## Changelog : doc.demarches-simplifiees.fr (derniers 30 jours)
+## Changelog : doc.demarches-simplifiees.fr (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les mises à jour récentes de la documentation des démarches simplifiées. Les modifications concernent principalement des ajustements de contenu et de structure pour améliorer la clarté et la précision des informations disponibles aux utilisateurs et aux contributeurs.
+Ce changelog fait état de l'ajout de nouvelles pages de documentation concernant l'API de la plateforme, ainsi que de plusieurs modifications et ajouts de contenu au sein de la documentation existante. Ces mises à jour visent à améliorer la clarté et la complétude des informations disponibles pour les utilisateurs et les développeurs.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la documentation suite à des retours et corrections (GITBOOK-1155)
-- Ajustements de contenu et de présentation (GITBOOK-1154, GITBOOK-1153, GITBOOK-1152)
-- Amélioration de la documentation (GITBOOK-1151)
-- Ajustements de contenu (GITBOOK-1147)
-
-### Évolutions techniques
-Aucune évolution technique significative à signaler durant cette période.
+- Ajout d'une nouvelle documentation concernant l'API, incluant des cas d'utilisation pour la création de groupes d'instructeurs, le déplacement de dossiers entre groupes et la modification d'annotations. (#10)
+- Ajout d'une nouvelle page de documentation dans la barre latérale. (#11)
 
 ### Autres changements
-Aucun autre changement à signaler.
+- Plusieurs mises à jour de contenu et corrections mineures au sein de la documentation existante (GITBOOK-1155 à GITBOOK-1166). Ces modifications concernent probablement des corrections de texte, des améliorations de la mise en forme ou des ajouts de détails pour clarifier certains points.
