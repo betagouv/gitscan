@@ -1,16 +1,14 @@
 {
   "url": "https://github.com/betagouv/django-template",
   "name": "django-template",
-  "description": "Ce dépôt est un kit de démarrage pour les projets Django. Il intègre le Design System de l'État (DSFR) avec django-dsfr, des Content Security Policies, Pre-commit et une ébauche de CI.",
+  "description": "Ce dépôt est un kit de démarrage pour les projets Django. Il intègre le Design System de l'État (DSFR), des Content Security Policies, Pre-commit et une ébauche de CI.",
   "language": "Python",
   "features": [
-    "Intégration du Design System de l'État (DSFR)",
-    "Content Security Policies",
-    "Pre-commit pour le formatage du code",
-    "CI pour les tests automatiques",
-    "Support de PostgreSQL"
+    "Authentification utilisateur",
+    "Gestion de la configuration",
+    "Tests automatiques"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Django",
     "django-dsfr",
@@ -20,14 +18,13 @@
     "black",
     "isort",
     "psycopg2-binary",
-    "django-referrer-policy",
     "django-csp"
   ],
   "components": [
     "Backend Django",
     "Templates HTML",
-    "Configuration PostgreSQL",
-    "CI/CD (workflow test.yaml)"
+    "Configuration via .env",
+    "CI/CD avec GitHub Actions"
   ],
   "auth": {
     "methods": [
@@ -35,7 +32,7 @@
     ]
   },
   "tests": [
-    "Python tests"
+    "Pytest"
   ],
   "workflows": [
     "test.yaml"
@@ -52,11 +49,9 @@
   },
   "tags": [
     "Django",
-    "Python",
     "DSFR",
-    "Design System",
+    "Python",
     "Template",
-    "PostgreSQL",
-    "CI/CD"
+    "Web Development"
   ]
 }
