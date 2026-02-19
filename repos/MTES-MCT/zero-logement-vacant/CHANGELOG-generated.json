@@ -1,31 +1,35 @@
 ## Changelog : zero-logement-vacant (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application Zero Logement Vacant se concentrent sur l'amélioration de la gestion des documents, notamment l'ajout de fonctionnalités pour lier et gérer les documents associés aux logements. Des améliorations ont également été apportées à la gestion des données de performance énergétique des bâtiments, à la cartographie et à la correction de bugs pour une meilleure expérience utilisateur. Enfin, des mises à jour de dépendances et des optimisations de l'infrastructure ont été réalisées.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de gestion des documents, de performance et de qualité du code. Des fonctionnalités ont été ajoutées pour faciliter la gestion des documents liés aux logements, notamment la possibilité de les lier en masse et de les télécharger. Des optimisations ont été apportées à l'infrastructure et aux processus de construction pour améliorer la vitesse et la fiabilité. Enfin, plusieurs refactorings ont été réalisés pour moderniser le code et améliorer sa maintenabilité.
 
 ### Évolutions fonctionnelles
-- Ajout d'un onglet "Documents" dans la vue et l'édition des logements, permettant de gérer les documents associés (PR #1597, #1601, #1571).
-- Possibilité de lier plusieurs documents à un logement lors de l'édition groupée (PR #1548).
-- Amélioration de l'affichage des informations sur la performance énergétique des bâtiments (DPE, GES, RNB) dans la vue des logements (PR #1571).
-- Ajout de la possibilité de filtrer les logements par performance énergétique (PR #1571).
-- Ajout de couches administratives à la carte (PR #1555).
-- Correction d'un bug empêchant l'affichage correct des logements dans certaines projections géographiques (PR #1539).
-- Correction d'un bug lié au comptage des logements dans un périmètre géographique vide (PR #1542).
-- Ajout d'un script pour exporter les utilisateurs vers le Portail DF (PR #1583).
-- Mise à jour de la page 404 (PR #1579).
+- Ajout de la possibilité de lier plusieurs documents à un logement lors de la création ou de la modification (#1577, #1597).
+- Amélioration de la gestion des documents : ajout de la possibilité de renommer et de supprimer des documents (#1597).
+- Affichage de l'ID de parcelle à la place de la référence cadastrale (#1625).
+- Ajout d'une option pour filtrer les logements par année de fichier de données, incluant une nouvelle source "datafoncier-manual" (#1612).
+- Ajout d'un script pour lister les logements potentiellement erronés (#1610).
+- Ajout d'un script pour exporter les utilisateurs vers le portail DF (#1596).
+- Ajout de la possibilité de catégoriser les sites web pour une meilleure gestion des coûts (#1556).
+- Amélioration de la gestion des précisions : affichage et modification en mode liste, avec prise en compte des évolutions (#1548, #1549).
+- Ajout de couches administratives à la carte (#1555).
 
 ### Évolutions techniques
-- Refactorisation de la gestion des documents pour une meilleure architecture et une plus grande flexibilité (PR #1549, #1589).
-- Mise en place d'un système de suivi des événements liés aux documents (PR #1589).
-- Migration vers `react-hook-form` pour la gestion des formulaires, améliorant la robustesse et la maintenabilité (PR #1549).
-- Amélioration de la gestion des coordonnées géographiques et ajout de la reprojection automatique vers WGS84 (PR #1539).
-- Mise à jour de plusieurs dépendances, notamment `lexical` et des bibliothèques npm (PR #1562, #1558, #1543, #1560, #1551).
-- Optimisation de l'infrastructure CI/CD avec l'ajout d'options pour les builds et les review apps (PR #1592, #1583, #1562).
-- Suppression de champs de précision obsolètes et refactorisation du code associé (PR #1578).
+- Mise à jour de plusieurs dépendances : Nx, Vitest, Cypress, Webpack, Axios, Express, etc. (#1621, #1619, #1607, #1593, #1583).
+- Refactor de l'architecture de construction avec l'utilisation d'esbuild pour le serveur, améliorant la vitesse de build (#1606).
+- Optimisation de la configuration Nx pour améliorer l'efficacité du cache (#1628).
+- Migration de la bibliothèque Highland vers Web Streams pour le serveur (#1622).
+- Suppression de code obsolète et simplification de l'architecture du projet.
+- Amélioration de la gestion des événements liés aux documents.
+- Utilisation de react-hook-form pour simplifier et améliorer la gestion des formulaires (#1549).
+- Suppression des champs de précision obsolètes (#1578).
+- Ajout de tests unitaires et d'intégration pour assurer la qualité du code.
 
 ### Autres changements
-- Ajout de documentation pour la configuration des agents IA (PR #1555).
-- Mise à jour des configurations des sources externes (PR #1602, #1598).
-- Amélioration des tests et correction de bugs mineurs dans le code (nombreuses PR).
-- Nettoyage du code et suppression de composants inutilisés (PR #1549, #1550).
-- Ajout de commentaires et documentation pour faciliter la compréhension du code.
+- Mise à jour de la documentation avec les nouveaux benchmarks de performance (#1606).
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout de configurations pour les agents IA (AGENTS.md) (#1555).
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Mise à jour des configurations externes (DGALN, DGFIP) (#1602, #1598).
+- Correction de problèmes liés à la gestion des types MIME pour les uploads (#1568).

@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/MTES-MCT/zero-logement-vacant",
   "name": "zero-logement-vacant",
-  "description": "Zero Logement Vacant est une application web permettant de recenser et de suivre les logements vacants. Elle vise à faciliter la mobilisation de ces logements pour répondre aux besoins de logement social et lutter contre l'habitat indigne.",
+  "description": "Zero Logement Vacant est une application web visant à recenser et à suivre les logements vacants sur le territoire français. Elle permet aux collectivités de gérer les informations relatives aux logements et de faciliter la lutte contre le logement vacant.",
   "language": "TypeScript",
   "features": [
     "Gestion des logements",
-    "Gestion des utilisateurs",
+    "Gestion des documents",
     "Cartographie",
-    "Import/Export de données",
+    "Import de données",
+    "Gestion des utilisateurs",
     "Suivi des campagnes",
-    "Gestion des documents"
+    "Analyse de données"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,7 +18,8 @@
     "Express",
     "PostgreSQL",
     "Docker",
-    "Postgis",
+    "DuckDB",
+    "Dbt",
     "Redis",
     "Elasticsearch"
   ],
@@ -26,7 +28,8 @@
     "API REST",
     "Base de données PostgreSQL",
     "Queue",
-    "Services Docker"
+    "Elasticsearch",
+    "Redis"
   ],
   "auth": {
     "methods": [
@@ -36,22 +39,29 @@
   "tests": [
     "Jest",
     "Cypress",
-    "E2E tests"
+    "Vitest"
   ],
   "workflows": [
-    "CI/CD with GitHub Actions"
+    "e2e"
   ],
-  "lastActivity": "2026-02-16T11:08:48+01:00",
+  "lastActivity": "2026-02-18T14:53:31+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "logement",
     "vacant",
-    "administration",
+    "collectivités",
     "géolocalisation",
-    "recensement",
-    "habitat"
+    "données",
+    "web",
+    "typescript",
+    "react"
   ]
 }
