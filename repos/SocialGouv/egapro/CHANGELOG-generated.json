@@ -1,22 +1,24 @@
 ## Changelog : egapro (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'EgaPro incluent des corrections de bugs pour améliorer la stabilité et la fiabilité de l'application, notamment concernant la diffusion de données et l'initialisation de la base de données. Des améliorations de performance ont également été apportées pour accélérer la construction de l'application. Enfin, la configuration pour l'authentification via Proconnect a été mise à jour.
+Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de l'expérience utilisateur, notamment en corrigeant des problèmes liés à la déconnexion, aux tests et à la diffusion de certaines informations. Des optimisations techniques ont également été apportées pour accélérer le build de l'application et améliorer la configuration des tests.
 
 ### Évolutions fonctionnelles
-- Intégration de Weez pour une fonctionnalité non précisée (#2719)
-- Correction d'un bug empêchant la diffusion du code NAF.
-- Correction d'un bug empêchant la diffusion des données REPEQ.
-- Correction d'un bug empêchant la diffusion des données.
+- Ajout de la déconnexion avant la sélection de l'organisation (#2796).
+- Correction d'un problème d'affichage des cartes et de paramètres de cache (#2776).
+- Correction de problèmes de non-diffusion du code NAF et d'erreurs associées (#2739, #2776).
+- Amélioration de la vitesse de construction de l'application (#2771).
+- Ajout de logs pour la déconnexion (#2770).
+- Correction de bugs liés à l'environnement de développement Proconnect (#2788, #2795).
 
 ### Évolutions techniques
-- Amélioration de la vitesse de construction de l'application (#2771).
-- Ajout du job `review-auto` à chaque nouvelle branche pour améliorer le processus de revue de code (#2789).
-- Mise à jour des informations d'identification Proconnect.
-- Suppression de `dbinit` et correction de l'initialisation de la base de données (#2735).
-- Ajout de logs de débogage.
+- Optimisation du temps de build Docker via le caching du Dockerfile (#2795).
+- Ajout de la configuration et de la mise en place de Vitest pour les tests avec DSFR (#2794).
+- Ajout du job `review-auto` à chaque nouvelle branche dans la CI (#2789).
+- Nettoyage des fichiers de configuration (#2782).
+- Correction de problèmes liés aux variables d'environnement Proconnect (#2770).
 
 ### Autres changements
-- Publication des versions 3.15.1 et 3.15.2.
-- Correction d'un problème de restauration des cartes et de paramètres de cache incorrects (#2776).
+- Mise à jour des informations d'identification Proconnect (#2770).
+- Publication des versions 3.15.2 et 3.15.1 (#2774, #2739).
 - Correction d'un problème de non-diffusion en production (#2774).

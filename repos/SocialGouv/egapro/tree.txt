@@ -1,22 +1,16 @@
 .
 ├── .dockerignore
-├── .editorconfig
-├── .env.dist
-├── .gitattributes
 ├── .github
 │   ├── CODEOWNERS
-│   ├── bin
-│   │   └── git
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── ci.yaml
 │       ├── deactivate.yaml
-│       ├── e2e.yaml
 │       ├── preproduction.yaml
 │       ├── production.yaml
 │       ├── release.yml
 │       ├── review-auto.yaml
-│       ├── review.yaml
-│       └── test-unitaires.yaml
+│       └── review.yaml
 ├── .gitignore
 ├── .kontinuous
 │   ├── Chart.yaml
@@ -29,8 +23,8 @@
 │   │   │   │   ├── egapro.configmap.yaml -> ../../preprod/templates/egapro.configmap.yaml
 │   │   │   │   ├── github-oauth.sealed-secret.yaml -> ../../preprod/templates/github-oauth.sealed-secret.yaml
 │   │   │   │   ├── moncomptepro.sealed-secret.yaml -> ../../preprod/templates/moncomptepro.sealed-secret.yaml
+│   │   │   │   ├── proconnect-secret.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
-│   │   │   │   ├── proconnect.sealed-secret.yaml
 │   │   │   │   ├── sentry.sealed-secret.yaml -> ../../preprod/templates/sentry.sealed-secret.yaml
 │   │   │   │   └── staff.sealed-secret.yaml -> ../../preprod/templates/staff.sealed-secret.yaml
 │   │   │   └── values.yaml
@@ -63,25 +57,11 @@
 │   │   └── files.pvc.yaml
 │   └── values.yaml
 ├── .nvmrc
-├── .pnpmrc
-├── .releaserc.js
-├── .tool-versions
-├── .vscode
-│   ├── extensions.json
-│   ├── launch.json
-│   ├── settings.json
-│   └── tasks.json
+├── .releaserc.json
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
-├── assets
-│   └── image.png
-├── docker-compose.build.yml
 ├── docker-compose.yml
-├── keycloak
-│   └── realm-export.json
-├── mnt
-│   └── dgt.xlsx
 ├── package.json
 ├── packages
 │   ├── app
@@ -92,11 +72,6 @@
 │   │   ├── .eslintrc.js
 │   │   ├── .gitignore
 │   │   ├── Dockerfile
-│   │   ├── __mocks__
-│   │   │   └── @codegouvfr
-│   │   │       ├── react-dsfr
-│   │   │       │   └── index.js
-│   │   │       └── react-dsfr.js
 │   │   ├── cypress
 │   │   │   ├── e2e
 │   │   │   │   ├── declaration_representative_1.cy.ts
@@ -118,8 +93,6 @@
 │   │   │       └── ownership_request.sql
 │   │   ├── env.d.ts
 │   │   ├── global.d.ts
-│   │   ├── jest.config.ts
-│   │   ├── jest.setup.js
 │   │   ├── next-env.d.ts
 │   │   ├── next.config.js
 │   │   ├── package.json
@@ -243,6 +216,7 @@
 │   │   │   │   ├── shared-domain
 │   │   │   │   │   └── infra
 │   │   │   │   │       ├── db
+│   │   │   │   │       │   ├── initDb.ts
 │   │   │   │   │       │   ├── postgres.ts
 │   │   │   │   │       │   └── seeds
 │   │   │   │   │       │       ├── 01_repEq.ts
@@ -281,6 +255,7 @@
 │   │   │   │   │           └── page.tsx
 │   │   │   │   ├── (default)
 │   │   │   │   │   ├── Navigation.tsx
+│   │   │   │   │   ├── SwitchOrganizationButton.tsx
 │   │   │   │   │   ├── default.module.css
 │   │   │   │   │   ├── index-egapro
 │   │   │   │   │   │   └── declaration
@@ -392,9 +367,6 @@
 │   │   │   │   │   ├── auth
 │   │   │   │   │   │   └── proconnect-logout
 │   │   │   │   │   │       └── route.ts
-│   │   │   │   │   ├── clean-test-user
-│   │   │   │   │   │   └── declaration
-│   │   │   │   │   │       └── route.ts
 │   │   │   │   │   ├── health
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── monitoring
@@ -404,6 +376,9 @@
 │   │   │   │   │   │   └── referents_egalite_professionnelle
 │   │   │   │   │   │       └── [ext]
 │   │   │   │   │   │           └── route.ts
+│   │   │   │   │   ├── test
+│   │   │   │   │   │   └── cleanup
+│   │   │   │   │   │       └── route.ts
 │   │   │   │   │   └── test-sentry-error
 │   │   │   │   │       └── route.ts
 │   │   │   │   ├── consentManagement.tsx
@@ -771,8 +746,10 @@
 │   │   │           ├── searchDeclaration.ts
 │   │   │           └── searchRepresentationEquilibree.ts
 │   │   ├── tsconfig.json
-│   │   └── types
-│   │       └── augment.d.ts
+│   │   ├── types
+│   │   │   └── augment.d.ts
+│   │   ├── vitest.config.mts
+│   │   └── vitest.setup.ts
 │   ├── files
 │   │   ├── .htpasswd
 │   │   ├── Dockerfile
@@ -783,13 +760,5 @@
 │       └── nginx.conf
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── scripts
-│   ├── check-all
-│   ├── dev
-│   ├── fresh-install
-│   ├── package.json
-│   └── postinstall
-├── sonar-project.properties
-├── tech.yaml
-└── trivy.yaml
-168 directories, 626 files
+└── sonar-project.properties
+159 directories, 604 files
