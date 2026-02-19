@@ -1,46 +1,30 @@
-## Changelog : sparte (derniers 30 jours)
+## Changelog : sparte (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de sparte se concentrent sur l'ajout de fonctionnalités de territorialisation, permettant une analyse plus fine des objectifs de réduction de l'artificialisation des sols. L'interface utilisateur a également été améliorée, notamment avec une refonte de la page des diagnostics et une correction de l'année affichée dans les rapports locaux. Des améliorations techniques ont été apportées pour optimiser la gestion des données et des performances.
+Les dernières mises à jour de sparte apportent des améliorations significatives à l'analyse de l'artificialisation des sols et de la consommation d'espaces, notamment avec l'ajout de nouvelles fonctionnalités de carroyage et de visualisation des données de logement vacant. Des corrections ont également été apportées pour améliorer la gestion des données, l'intégration avec DataGouv et l'expérience utilisateur globale. L'application a été optimisée pour mieux gérer les données des utilisateurs DGALN et inclut un suivi des liens sortants via Matomo.
 
 ### Évolutions fonctionnelles
-- Correction de l'année affichée dans les rapports locaux (#1424)
-- Ajout d'un paramètre utilisateur optionnel aux graphiques d'artificialisation et de consommation (#1421)
-- Refonte de la page des diagnostics avec une nouvelle interface et suppression des pages obsolètes (#1412)
-- Mise à jour de la logique de visibilité des objectifs territorialisés pour les membres DGALN (#1418)
-- Ajout de cartes de territorialisation au module de graphiques (#1404)
-- Ajout de la gestion des documents de territorialisation pour améliorer l'affichage des objectifs.
-- Amélioration de l'affichage des objectifs dans TerritorialisationHierarchy et Trajectoires.
-- Ajout d'un fichier de fixture pour les objectifs de territorialisation.
-- Mise à jour du texte et du lien sur la page Friches (#1410).
+- Ajout de la vue Carroyage pour l'analyse de la consommation d'espaces (#1434).
+- Intégration de la configuration du carroyage dans les composants CarroyageLeaMap et CarroyageLeaInfo (#1434).
+- Ajout d'un composant LogementVacantTaux pour suivre l'évolution du taux de logements vacants (#1439).
+- Ajout d'une carte LogementVacant pour visualiser les données de logements vacants (#1439).
+- Amélioration de la visibilité des objectifs territorialisés pour les membres DGALN (#1418).
+- Ajout d'un paramètre utilisateur optionnel aux constructeurs des graphiques d'artificialisation et de consommation (#1421).
+- Suppression des références à l'année 2023 dans le rapport local (#1423, #1424).
+- Suivi des clics sur les liens sortants via Matomo (#1415).
 
 ### Évolutions techniques
-- Refactoring du composant Trajectoires pour ajuster la logique `objectifType` et intégrer l'authentification utilisateur dans la vue du graphique.
-- Ajout d'un DAG Airflow pour ingérer les données de `brevo_user_organism` et création des fichiers SQL associés.
-- Amélioration de la récupération des objectifs de territorialisation en utilisant des filtres explicites.
-- Ajout de champs 'to_field' et 'null' pour les clés étrangères dans la migration de TerritorialisationObjectif.
-- Suppression de la création conditionnelle de la table LandModel et simplification de la migration.
-- Ajout d'un champ clé unique au modèle LandModel et mise à jour des relations dans TerritorialisationObjectif.
-- Mise à jour de la version de la stack dans le fichier `scalingo.json`.
-- Amélioration des tests d'inscription en utilisant le contexte du formulaire pour les erreurs.
-- Suppression des importations redondantes dans le fichier `urls.py`.
-- Ajout d'un nouvel icône de badge pour le composant Card et amélioration du style des cartes dans TerritorialisationHierarchy.
-- Ajout d'un endpoint API pour récupérer l'utilisateur courant et son type.
-- Suppression des fichiers SQL et YAML pour les territoires similaires.
-- Suppression de la tâche de copie des données des territoires similaires dans `update_app.py`.
-- Ajout de la gestion des terres personnalisées et intégration des données.
-- Ajout de calculs et projections statistiques des terres.
-- Ajout d'un élément parent fictif pour la loi climat et amélioration de l'affichage des objectifs dans TerritorialisationHierarchy.
-- Suppression de la validation d'objectif identique à l'objectif de référence dans le modal.
+- Refactor des modèles SQL pour l'export des données imperméabilisées et artificialisées par usage et couverture (#1431).
+- Ajout d'un DAG pour supprimer tous les datasets de data.gouv.fr et mise à jour des configurations avec des slugs de dataset pour 2026 (#1431).
+- Amélioration de la gestion des erreurs et de la journalisation dans DataGouvHandler (#1436, #1437).
+- Modification de la structure du payload lors de la création et de la mise à jour des datasets dans DataGouvHandler (#1437).
+- Utilisation de COALESCE pour l'email utilisateur et modification du type de jointure avec brevo_organism (#1425).
+- Refactor des composants LogementVacant pour une meilleure gestion des données et de l'affichage (#1439).
+- Refactor des tests pour LogementVacant charts (#1439).
+- Suppression des colonnes target_2031 et target_2031_modified dans le modèle project (#1417).
+- Ajout d'un DAG pour ingérer les données de brevo_user_organism et création des fichiers SQL associés (#1416).
 
 ### Autres changements
-- Correction du chemin d'accès de l'image du logo dans le fichier `header.html`.
-- Activation du débogage de la barre d'outils en retournant `True` dans la fonction `show_toolbar`.
-- Suppression de la colonne `look_a_like` des modèles `project.sql` et `project.yml`.
-- Suppression d'une ligne vide inutile dans le composant `ConsoCorrectionStatus`.
-- Suppression de code Maplibre obsolète.
-- Suppression de templates inutilisés.
-- Suppression du composant `PopulationDensityChart` non utilisé.
-- Tracking des clics sur les liens sortants via Matomo (#1415).
-- Ajout de support pour les valeurs négatives dans les objectifs de territorialisation.
-- Suppression de références à l'année 2023 dans le rapport local.
+- Mise à jour des tests pour utiliser `get_dataset_configs` et vérification des slugs de dataset (#1431).
+- Ajustement de la planification du DAG pour s'exécuter à 4h00 chaque jour (#1425).
+- Amélioration de la logique de visibilité des objectifs territorialisés pour les membres DGALN (#1418).

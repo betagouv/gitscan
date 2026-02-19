@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/sparte",
   "name": "sparte",
-  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maîtriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard de la loi climat et résilience.",
+  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maitriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard des exigences de la loi climat et résilience, et notamment de la ZAN.",
   "language": "Python",
   "features": [
     "Analyse de la consommation d'espaces",
-    "Visualisation de l'artificialisation des sols",
-    "Gestion des objectifs de territorialisation",
+    "Analyse de l'artificialisation des sols",
+    "Visualisation de données cartographiques",
     "Génération de rapports",
-    "Cartes interactives",
-    "Suivi de l'évolution des logements vacants"
+    "Comparaison de territoires",
+    "Gestion des objectifs de territorialisation"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,22 +18,19 @@
     "Redis",
     "React",
     "Webpack",
-    "npm",
-    "Celery",
-    "GDAL",
-    "GeoAlchemy2",
-    "SQLAlchemy",
-    "Turf.js",
-    "highcharts"
+    "Babel",
+    "TypeScript",
+    "Highcharts",
+    "Maplibre GL",
+    "Celery"
   ],
   "components": [
     "Backend Django",
     "Frontend React",
     "Base de données PostgreSQL",
     "API REST",
-    "Serveur Celery",
-    "Cartes Maplibre",
-    "Export PDF"
+    "Serveur d'export PDF",
+    "Cartographie Maplibre GL"
   ],
   "auth": {
     "methods": [
@@ -44,10 +41,12 @@
     "Jest",
     "Pytest"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD (via GitHub Actions)"
+  ],
   "lastActivity": "2026-02-12T18:32:56+01:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -58,11 +57,11 @@
   "tags": [
     "artificialisation des sols",
     "consommation d'espaces",
-    "urbanisme",
     "SIG",
-    "environnement",
+    "données environnementales",
     "loi climat et résilience",
     "ZAN",
-    "diagnostic territorial"
+    "urbanisme",
+    "géospatial"
   ]
 }
