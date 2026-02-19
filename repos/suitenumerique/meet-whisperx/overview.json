@@ -1,34 +1,38 @@
 {
   "url": "https://github.com/suitenumerique/meet-whisperx",
   "name": "meet-whisperx",
-  "description": "Ce projet fournit une API pour l'utilisation de Whisper d'OpenAI. Il permet de transcrire de l'audio en texte et offre des fonctionnalités de monitoring. Il est basé sur le projet whisper-openai-api d'Etalab.",
+  "description": "Cette API permet de transcrire de l'audio en utilisant le modèle Whisper d'OpenAI. Elle fournit une interface pour l'utilisation de WhisperX et gère la configuration et l'exécution du modèle.",
   "language": "Python",
   "features": [
     "Transcription audio",
-    "Monitoring",
-    "Gestion des modèles"
+    "Gestion de modèles WhisperX",
+    "Configuration via variables d'environnement"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "openai",
     "uvicorn",
     "fastapi",
     "pydantic",
-    "whisperx",
+    "python-multipart",
+    "pydantic-settings",
     "torch",
     "torchaudio",
+    "transformers",
+    "whisperx",
     "matplotlib"
   ],
   "components": [
     "API REST",
     "Frontend (potentiel)",
-    "Docker",
-    "Serveur Python (FastAPI)"
+    "Modèle WhisperX",
+    "Configuration via variables d'environnement"
   ],
   "auth": {
     "methods": [
-      "api-key"
-    ]
+      "none"
+    ],
+    "providers": []
   },
   "tests": [
     "pytest"
@@ -37,15 +41,15 @@
     "docker-hub.yml",
     "meet-whisperx.yml"
   ],
-  "lastActivity": "2025-12-23T13:46:05+01:00",
+  "lastActivity": "2026-02-19T10:58:55+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 3,
+    "stars": 5,
     "forks": 1,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": 3
   },
   "tags": [
     "whisper",
@@ -53,7 +57,6 @@
     "transcription",
     "audio",
     "api",
-    "python",
-    "docker"
+    "python"
   ]
 }
