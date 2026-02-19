@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/tous-a-bord",
   "name": "tous-a-bord",
-  "description": "Application web supportant le produit \"Tous à bord !\". Elle permet de gérer et d'exporter des données relatives aux étudiants boursiers et aux demandeurs d'emploi.",
+  "description": "Application web supportant le produit \"Tous à bord !\". Elle permet de gérer et d'exporter des données relatives aux bénéficiaires.",
   "language": "Python",
   "features": [
     "Gestion des données utilisateurs",
-    "Export de données",
-    "Import de données",
-    "Authentification"
+    "Import/Export de données",
+    "Authentification",
+    "Interface d'administration"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -15,16 +15,13 @@
     "django-dsfr",
     "psycopg2-binary",
     "mozilla-django-oidc",
-    "requests",
-    "sib-api-v3-sdk",
-    "factory-boy",
-    "sentry-sdk"
+    "gunicorn"
   ],
   "components": [
     "Backend Django",
     "Base de données PostgreSQL",
     "Templates HTML",
-    "API"
+    "API REST"
   ],
   "auth": {
     "methods": [
@@ -50,9 +47,10 @@
     "openIssues": 4
   },
   "tags": [
-    "django-application",
-    "python",
-    "administration",
-    "data-management"
+    "Django",
+    "Python",
+    "Administration",
+    "Données",
+    "Webapp"
   ]
 }
