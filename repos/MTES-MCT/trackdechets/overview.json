@@ -1,22 +1,25 @@
 {
   "url": "https://github.com/MTES-MCT/trackdechets",
   "name": "trackdechets",
-  "description": "Trackdéchets est une solution pour gérer la traçabilité des déchets en toute sécurité. Elle est incubée par la Fabrique Numérique du Ministère de la Transition Écologique et vise à simplifier et sécuriser le suivi des déchets.",
+  "description": "Trackdéchets est une plateforme sécurisée pour gérer la traçabilité des déchets. Elle vise à faciliter le suivi des déchets tout au long de leur cycle de vie, de la production à l'élimination.",
   "language": "TypeScript",
   "features": [
     "Gestion de la traçabilité des déchets",
-    "Création et gestion de bordereaux de déchets (BSDA, BSFF, BSVHU)",
+    "Création et gestion des bordereaux de déchets (BSDA, BSFF, BSVHU)",
     "Signature électronique",
-    "Recherche d'entreprises",
-    "Gestion des utilisateurs et des rôles",
     "Export de données",
-    "Suivi des déchets",
     "Gestion des transporteurs",
-    "Gestion des éco-organismes"
+    "Suivi des déchets",
+    "Gestion des éco-organismes",
+    "Visualisation des données (Metabase)"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration"
+  ],
   "dependencies": [
     "Node.js",
+    "TypeScript",
     "Express.js",
     "Apollo Server",
     "Prisma ORM",
@@ -24,15 +27,16 @@
     "Elasticsearch",
     "React.js",
     "Apollo Client",
-    "Typescript"
+    "Docusaurus"
   ],
   "components": [
-    "Backend Node.js / TypeScript avec Express.js et Apollo Server",
-    "Frontend React.js / TypeScript",
+    "Backend Node.js/TypeScript avec Express.js et Apollo Server",
+    "Frontend React.js/TypeScript",
     "Base de données PostgreSQL",
-    "Moteur de recherche Elasticsearch",
+    "Indexation Elasticsearch",
+    "Documentation technique avec Docusaurus",
     "API REST",
-    "Interface graphique (SPA)"
+    "Microservices (pour les backups, ETL, etc.)"
   ],
   "auth": {
     "methods": [
@@ -41,8 +45,8 @@
     ]
   },
   "tests": [
-    "Intégration tests",
-    "Tests unitaires"
+    "Intégration tests (GitHub Actions)",
+    "Tests unitaires (Jest)"
   ],
   "workflows": [
     "Build & Test",
@@ -65,8 +69,8 @@
     "recyclage",
     "gestion des déchets",
     "Node.js",
-    "React",
     "TypeScript",
+    "React",
     "PostgreSQL",
     "Elasticsearch"
   ]

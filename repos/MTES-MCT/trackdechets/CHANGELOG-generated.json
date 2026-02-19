@@ -1,45 +1,39 @@
 ## Changelog : trackdechets (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des bordereaux de déchets (BSDA, BSFF, BSVHU), notamment en termes d'export, de signature électronique et d'affichage des informations. Des corrections de bugs et des optimisations de performance ont également été implémentées pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
+Cette version apporte des améliorations significatives à la gestion des bordereaux de déchets (BSDA, BSFF, BSVHU), notamment au niveau de l'export, de la signature électronique et de l'affichage des informations. Des corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur. Des améliorations techniques ont également été apportées pour optimiser les performances et la surveillance de l'application.
 
 ### Évolutions fonctionnelles
-- Possibilité de dupliquer une déclaration. (#4636)
-- Amélioration de l'affichage des informations des transporteurs étrangers dans les BSDA. (#4644)
-- Correction de l'affichage de la date de signature sur les BSDA. (#4654)
-- Ajout du mode de traitement sur le PDF d'un BSFF. (#4624)
-- Affichage des bons lots entrants dans le cadre 10 des PDFs des BSVHUs. (#4625)
-- Le champ destinationReceptionRefusedWeight est désormais obligatoire sur le BSDA. (#4638)
-- Correction d'un bug provoquant l'affichage d'une page blanche. (#4645)
-- Amélioration de l'affichage de la sélection d'un éco-organisme (DSFR) lors de la création d'un BSDA. (#4637)
-- Affichage des intermédiaires au PDF du BSVHU. (#4661)
-- Affichage d'une erreur si la conditionnement est manquant. (#4665)
-- Suppression de l'affichage du code de signature aux chauffeurs. (#4664)
-- Plus d'énumération possible via la création d'une demande de droits admin. (#4649)
-- Envoi de mails différents aux admins lors d'une demande de droits admin. (#4646)
-- Ajout d'une information sur la présence ou l'absence d'un récépissé de transport sur la modale de signature d'enlèvement du transporteur. (#4641)
+- Amélioration de l'export des données de l'entreprise, avec application des règles d'affichage du nom (#4657).
+- Modification des règles d'inclusion à l'export du registre (#4673).
+- Ajout d'un rate limiting à l'export du registre pour éviter les abus (#4658).
+- Affichage d'une erreur si la conditionnement est manquant (#4665).
+- Rendre la colonne RegistryTexsAnalysisFile.s3FileKey unique pour éviter des accès non autorisés (#4659).
+- Plus d'énumération possible via la création d'une demande de droits admin (#4649).
+- Envoi de mails différents aux administrateurs lors d'une demande de droits admin (#4646).
+- Suppression de l'affichage du code de signature aux chauffeurs (#4664).
+- Ajout des intermédiaires au PDF du BSVHU (#4661).
+- Amélioration des indexs sur RegistryLookup pour de meilleures performances (#4642).
+- Correction de la date de signature de l'émission sur le BSDA (#4654).
+- Correction de l'affichage des informations du transporteur étranger lors de la réouverture d'un BSDA (#4644).
+- Ajout du mode de traitement sur le PDF d'un BSFF (#4624).
+- Affichage des bons lots entrants dans le cadre 10 des PDFs des BSVHUs (#4625).
+- Le champ destinationReceptionRefusedWeight est désormais obligatoire sur le BSDA (#4638).
+- Correction d'un problème de page blanche (#4645).
+- Amélioration de l'affichage de la sélection d'un éco-organisme lors de la création d'un BSDA (#4637).
+- Possibilité de dupliquer une déclaration (#4636).
+- Autorisation des établissements fermés en producteurs VHU si situation irrégulière (#4635).
+- Suppression du champ consistence (#4634).
+- Reprise de l'information sur la présence ou l'absence d'un récépissé de transport sur la modale de signature d'enlèvement du transporteur (#4641).
 
 ### Évolutions techniques
-- Amélioration des indexs sur RegistryLookup pour optimiser les performances. (#4642)
-- Ajout de monitoring ELU. (#4662)
-- Modification de la configuration Kubernetes. (#4666)
-- Amélioration de la traçabilité des erreurs. (#4632)
-- Application de règles d'affichage de nom aux exports MyCompaniesCsv/MyCompaniesXls. (#4657)
-- Modification des règles d'inclusion à l'export du registre. (#4673)
-- Ajout d'un rate limiting à l'export de registre. (#4658)
-- Rendre la colonne RegistryTexsAnalysisFile.s3FileKey unique pour éviter des accès non-autorisés. (#4659)
-- Suppression du champ consistence. (#4634)
-- Modification de la logique de création de BSDA pour ne pas envoyer de createBsdaTransporter par défaut. (#4663)
-- Nettoyage des transporteurs avant la sauvegarde d'un BSDA.
+- Ajout de la surveillance ELU (Event Logging Utility) (#4662).
+- Modifications Kubernetes (#4666).
+- Amélioration de la traçabilité des erreurs (#4632).
 
 ### Autres changements
-- Mise à jour du Changelog. (#4670)
-- Correction de la couleur du statut "En attente de traitement" pour tous les bordereaux. (#4648)
-- Correction de la date de signature de l'émission sur le BSDA. (#4654)
-- Correction de l'affichage de la timeline de l'émetteur au transporteur sur la modale de signature émetteur. (#4640)
-- Modification de la logique d'affichage des modales pour éviter l'affichage d'une modale d'erreur avant une modale de signature. (#4656)
-- Changement des règles de traçabilité DND/TEXS selon les types d'établissements. (#4643)
-- Autorisation des établissements fermés en producteurs VHU si situation irrégulière. (#4635)
-- Modification de la logique d'affichage des informations sur les BSDA. (#4647)
-- Correction de la pré-complétion de la timeline de l'émetteur au transporteur sur la modale de signature émetteur. (#4640)
-- Correction d'un bug d'affichage sur les petits écrans. (#4650)
+- Mise à jour du Changelog (#4670).
+- Correction de la couleur du statut "En attente de traitement" des bordereaux (#4648).
+- Modification du BSDA signature date (#4656).
+- Nettoyage des transporteurs avant la sauvegarde d'un BSDA.
+- Correction de la date de signature du BSDA (#4654).
