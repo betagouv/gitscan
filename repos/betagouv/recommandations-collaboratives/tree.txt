@@ -469,6 +469,7 @@
 │   │   │   │   │   ├── projects_activity_feed.html
 │   │   │   │   │   ├── projects_low_reach.html
 │   │   │   │   │   ├── reco_without_resources.html
+│   │   │   │   │   ├── resource_list.html
 │   │   │   │   │   ├── search.html
 │   │   │   │   │   ├── search_results.html
 │   │   │   │   │   ├── site_dashboard.html
@@ -1352,6 +1353,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
 │   │   │   ├── apps.py
+│   │   │   ├── filters.py
 │   │   │   ├── importers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── api.py
@@ -1403,11 +1405,13 @@
 │   │   │   │       ├── bookmark
 │   │   │   │       │   └── create.html
 │   │   │   │       └── resource
+│   │   │   │           ├── create.OLD.html
 │   │   │   │           ├── create.html
 │   │   │   │           ├── create_md_template.md
 │   │   │   │           ├── delete.html
 │   │   │   │           ├── details.html
 │   │   │   │           ├── details_embeded.html
+│   │   │   │           ├── form_resource.html
 │   │   │   │           ├── fragments
 │   │   │   │           │   ├── author.html
 │   │   │   │           │   ├── breadcrumb.html
@@ -1421,6 +1425,8 @@
 │   │   │   │           │   └── title.html
 │   │   │   │           ├── history.html
 │   │   │   │           ├── list.html
+│   │   │   │           ├── modal_resource.html
+│   │   │   │           ├── update.OLD.html
 │   │   │   │           ├── update.html
 │   │   │   │           └── widgets
 │   │   │   │               ├── card_horizontal.html
@@ -1620,6 +1626,7 @@
 │   │   ├── postcss.config.mjs
 │   │   ├── src
 │   │   │   ├── assets
+│   │   │   │   ├── building.svg
 │   │   │   │   ├── calendar.svg
 │   │   │   │   ├── check-double-line.svg
 │   │   │   │   ├── contacts-book-line.svg
@@ -1630,6 +1637,7 @@
 │   │   │   │   ├── notification-off-line.svg
 │   │   │   │   ├── notification-on-line.svg
 │   │   │   │   ├── tag-line.svg
+│   │   │   │   ├── target.svg
 │   │   │   │   └── tools-line.svg
 │   │   │   ├── css
 │   │   │   │   ├── DSFR
@@ -1639,8 +1647,6 @@
 │   │   │   │   │   ├── layout-form.scss
 │   │   │   │   │   └── login.scss
 │   │   │   │   ├── activityStream.css
-│   │   │   │   ├── addressbook
-│   │   │   │   │   └── contact_list.scss
 │   │   │   │   ├── base.scss
 │   │   │   │   ├── border.css
 │   │   │   │   ├── buttons.css
@@ -1648,9 +1654,11 @@
 │   │   │   │   ├── colors.css
 │   │   │   │   ├── consent
 │   │   │   │   │   └── banner.scss
+│   │   │   │   ├── contact_list.scss
 │   │   │   │   ├── crm
 │   │   │   │   │   ├── crmNavigation.scss
 │   │   │   │   │   ├── projectList.scss
+│   │   │   │   │   ├── resourceList.scss
 │   │   │   │   │   └── table.scss
 │   │   │   │   ├── crm.css
 │   │   │   │   ├── custom-bootstrap.scss
@@ -1728,6 +1736,7 @@
 │   │   │   │   │   └── segmented_ctrl.scss
 │   │   │   │   ├── projectsKanban.css
 │   │   │   │   ├── resources
+│   │   │   │   │   ├── form-resource.scss
 │   │   │   │   │   ├── resource_card.scss
 │   │   │   │   │   └── resources.scss
 │   │   │   │   ├── role.css
@@ -1780,7 +1789,8 @@
 │   │   │       ├── apps
 │   │   │       │   ├── CRM
 │   │   │       │   │   ├── crmNavigation.js
-│   │   │       │   │   └── projectListCrm.js
+│   │   │       │   │   ├── projectListCrm.js
+│   │   │       │   │   └── resourceListCrm.js
 │   │   │       │   ├── actionPusher.js
 │   │   │       │   ├── actionsEmbed.js
 │   │   │       │   ├── advisorCreateProject.js
@@ -1824,7 +1834,8 @@
 │   │   │       │   ├── AjvValidationSchema.js
 │   │   │       │   ├── Auth.js
 │   │   │       │   ├── CRM
-│   │   │       │   │   └── ProjectListCrm.js
+│   │   │       │   │   ├── ProjectListCrm.js
+│   │   │       │   │   └── ResourceListCrm.js
 │   │   │       │   ├── CitySelect.js
 │   │   │       │   ├── ClickToSeeUser.js
 │   │   │       │   ├── Consent.js
@@ -1833,6 +1844,7 @@
 │   │   │       │   ├── ContactCardExtension.js
 │   │   │       │   ├── ContactCardExtension_README.md
 │   │   │       │   ├── ContactList.js
+│   │   │       │   ├── Crisp.js
 │   │   │       │   ├── Crm.js
 │   │   │       │   ├── DepartmentsSelector.js
 │   │   │       │   ├── Documents.js
@@ -1869,6 +1881,9 @@
 │   │   │       │   ├── ProjectShare.js
 │   │   │       │   ├── Projects.js
 │   │   │       │   ├── RegionDepartmentPreparer.js
+│   │   │       │   ├── ResourceCategoryFilter.js
+│   │   │       │   ├── Resources
+│   │   │       │   │   └── FormResource.js
 │   │   │       │   ├── SearchOrganization.js
 │   │   │       │   ├── SearchableList.js
 │   │   │       │   ├── SelectSearchable.js
@@ -1902,6 +1917,7 @@
 │   │   │       ├── store
 │   │   │       │   ├── actionPusher.js
 │   │   │       │   ├── app.js
+│   │   │       │   ├── crisp.js
 │   │   │       │   ├── djangoData.js
 │   │   │       │   ├── editor.js
 │   │   │       │   ├── geolocation.js
@@ -1922,6 +1938,7 @@
 │   │   │       │   ├── consent-banner.css.js
 │   │   │       │   ├── contact-*.js  (6 files)
 │   │   │       │   ├── departments-selector.css.js
+│   │   │       │   ├── form-resources.css.js
 │   │   │       │   ├── header-menu-burger.css.js
 │   │   │       │   ├── header-user-tools.css.js
 │   │   │       │   ├── home-*.js  (5 files)
@@ -1956,6 +1973,7 @@
 │   │   │           │       ├── ajv.schema.OnboardingSignupForm.js
 │   │   │           │       ├── ajv.schema.PrefillProjectForm.js
 │   │   │           │       ├── ajv.schema.PrefillSetuserForm.js
+│   │   │           │       ├── ajv.schema.ResourceForm.js
 │   │   │           │       └── ajv.schema.forms.js
 │   │   │           ├── api.js
 │   │   │           ├── createProjectUrl.js
@@ -2128,7 +2146,8 @@
 │   │       │   │   ├── create_organization_modal.html
 │   │       │   │   ├── multi_select.html
 │   │       │   │   ├── search_contact_modal.html
-│   │       │   │   └── search_organization.html
+│   │       │   │   ├── search_organization.html
+│   │       │   │   └── searchbar_for_contacts.html
 │   │       │   ├── editor.html
 │   │       │   ├── multi_select.html
 │   │       │   ├── on_leave_modal.html
@@ -2173,4 +2192,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-367 directories, 1830 files
+367 directories, 1849 files
