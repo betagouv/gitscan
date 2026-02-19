@@ -1,15 +1,24 @@
 {
   "url": "https://github.com/betagouv/matomo-buildpack",
   "name": "matomo-buildpack",
-  "description": "Ce buildpack permet d'exécuter une instance Matomo sur une plateforme cloud (Scalingo, Clever Cloud, Dokku, Heroku, etc.). Il simplifie le déploiement et la gestion de Matomo dans des environnements cloud.",
+  "description": "Ce buildpack permet d'exécuter une instance Matomo sur une plateforme cloud (Scalingo, Clever Cloud, Dokku, Heroku, etc.). Il simplifie le déploiement et la gestion de Matomo en automatisant le processus d'installation et de configuration.",
   "language": "PHP",
-  "features": [],
+  "features": [
+    "Téléchargement et installation de Matomo",
+    "Installation de plugins utiles",
+    "Gestion des versions de Matomo",
+    "Compatibilité avec plusieurs plateformes cloud"
+  ],
   "audience": "Professionnels",
-  "dependencies": [],
+  "dependencies": [
+    "Matomo",
+    "PHP",
+    "cURL"
+  ],
   "components": [
     "Buildpack",
-    "Matomo",
-    "PHP"
+    "Scripts de compilation et de détection",
+    "Plugins Matomo"
   ],
   "auth": {
     "methods": [
@@ -18,7 +27,7 @@
   },
   "tests": null,
   "workflows": null,
-  "lastActivity": "2022-10-07T06:11:58Z",
+  "lastActivity": "2024-11-14T14:12:30Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -33,6 +42,9 @@
     "buildpack",
     "analytics",
     "cloud",
-    "php"
+    "php",
+    "scalingo",
+    "dokku",
+    "heroku"
   ]
 }
