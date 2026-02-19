@@ -2,31 +2,33 @@
   "url": "https://github.com/betagouv/nodejs-buildpack",
   "name": "nodejs-buildpack",
   "description": "Ce buildpack permet de déployer des applications Node.js ou basées sur le framework Meteor. Il est basé sur le buildpack Node.js original et a été mis à jour pour une expérience prête à l'emploi avec Meteor.",
-  "language": "Shell",
+  "language": "JavaScript",
   "features": [
-    "Gestion des versions de Node.js et NPM",
-    "Support de Meteor",
-    "Mise en cache des dépendances",
-    "Configuration de l'environnement",
-    "Build et déploiement d'applications Node.js"
+    "Déploiement d'applications Node.js",
+    "Support du framework Meteor",
+    "Gestion des dépendances",
+    "Mise en cache des modules",
+    "Configuration de la version de Node.js"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Node.js",
-    "NPM",
-    "Meteor"
+    "npm",
+    "Meteor",
+    "Yarn"
   ],
   "components": [
-    "Scripts de build",
-    "Gestionnaire de cache",
-    "Configuration de l'environnement d'exécution"
+    "Buildpack",
+    "Scripts de compilation",
+    "Cache de modules",
+    "Configuration d'environnement"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "Tests utilisant Docker pour simuler l'environnement Scalingo.",
+  "tests": "Tests utilisant Docker pour simuler l'environnement Scalingo et le framework shunit2.",
   "workflows": [],
   "lastActivity": "2023-08-01T15:59:59Z",
   "status": "active",
@@ -34,16 +36,16 @@
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
-    "forks": 1,
+    "forks": 0,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": null
   },
   "tags": [
-    "nodejs",
-    "buildpack",
-    "meteor",
-    "scalingo",
-    "javascript",
-    "deployment"
+    "Node.js",
+    "Meteor",
+    "Buildpack",
+    "Déploiement",
+    "JavaScript",
+    "Scalingo"
   ]
 }
