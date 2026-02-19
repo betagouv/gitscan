@@ -1,57 +1,65 @@
 {
   "url": "https://github.com/incubateur-ademe/roadmaps-faciles",
   "name": "roadmaps-faciles",
-  "description": "Ce projet permet de créer et de gérer facilement des roadmaps et des retours d'utilisateurs pour les produits d'État, afin d'améliorer leur impact.",
+  "description": "Roadmaps Faciles permet de créer et exposer facilement la roadmap d'une startup d'État, en regroupant les avis des utilisateurs pour améliorer l'impact du produit.",
   "language": "TypeScript",
   "features": [
     "Gestion de roadmaps",
-    "Collecte de retours utilisateurs",
+    "Collecte de feedback utilisateur",
     "Authentification utilisateur",
-    "Gestion multi-tenant",
-    "Suivi de l'activité",
-    "Notifications"
+    "Gestion des tenants (sous-domaines)",
+    "SSO (OAuth)",
+    "Audit log",
+    "Modération de contenu",
+    "Authentification 2FA (passkey/OTP)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
-    "React",
-    "TypeScript",
-    "NextAuth",
     "Prisma",
     "Zod",
+    "React",
+    "NextAuth",
     "Tailwind CSS",
-    "DSFR",
-    "MUI"
+    "DSFR (Design System de l'État)",
+    "MUI",
+    "ioredis"
   ],
   "components": [
     "Frontend React (Next.js)",
     "API REST",
-    "Base de données PostgreSQL (Prisma)",
-    "Authentification NextAuth",
-    "Design System de l’État (DSFR)",
-    "Multi-tenant (sous-domaines)"
+    "Base de données PostgreSQL",
+    "ORM Prisma",
+    "Système d'authentification NextAuth",
+    "Cache Redis"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "email-password",
+      "oauth2",
+      "session",
+      "magic-link"
     ],
-    "providers": []
+    "providers": [
+      "GitHub",
+      "Google",
+      "ProConnect"
+    ]
   },
   "tests": null,
   "workflows": [
     "build",
-    "codeql-analysis",
     "lint"
   ],
-  "lastActivity": "2025-11-25T18:04:51Z",
+  "lastActivity": "2026-02-18T20:32:52+01:00",
   "status": "active",
-  "license": "Apache-2.0",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 2,
+    "stars": 3,
     "forks": 0,
-    "contributors": null,
-    "openIssues": 13
+    "contributors": 1,
+    "openIssues": 14
   },
   "tags": [
     "roadmap",
@@ -60,7 +68,9 @@
     "nextjs",
     "prisma",
     "react",
-    "state",
-    "administration"
+    "sso",
+    "oauth2",
+    "design-system",
+    "dsfr"
   ]
 }
