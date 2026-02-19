@@ -1,33 +1,27 @@
-## Changelog : complements-alimentaires (derniers 30 jours)
+## Changelog : complements-alimentaires (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité, la sécurité et la maintenance technique du projet. Des corrections ont été apportées pour améliorer l'expérience utilisateur, notamment sur les pages d'administration et les tableaux de données. Des mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité du site avec l'implémentation d'une politique de sécurité du contenu (CSP), des corrections de vulnérabilités et des améliorations de l'accessibilité. Des ajustements ont également été apportés à l'administration, notamment pour la gestion des entreprises mandatées et des substances, ainsi que des mises à jour techniques et de dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'inclure le SIRET et la TVA dans l'export des données des SD (#2683).
-- Amélioration de l'accessibilité des rôles via des balises appropriées (#2641).
-- Correction d'un problème d'affichage sur la page des collaborateurs pour les petits écrans (#2602).
-- Correction d'un problème d'affichage sur les tableaux des instructions et des visas (#2641).
-- Amélioration de l'accessibilité des boutons de modification et des titres des étapes du processus (#2628).
-- Ajout d'un nouveau domaine pour les rôles contrôle (#2624).
-- Correction d'un bug empêchant la suppression correcte des déclarations en raison d'un dépassement de capacité (#2643).
-- Correction pour permettre la suppression des droits d'auteur sur une déclaration (#2653).
-- Amélioration de l'URL de l'administration Django pour une meilleure personnalisation (#2661).
+- Ajout de la possibilité d'inclure l'entreprise mandatée lors de la duplication d'une demande. (#2708)
+- Amélioration de la validation automatique des articles 15, réduisant le temps d'attente pour les utilisateurs. (#2703)
+- Ajout du SIRET et de la TVA dans l'export des données pour les SD. (#2682)
+- Correction d'un bug d'overflow sur la page de déclaration. (#2643)
+- Ajout de l'URL de l'admin Django personnalisable. (#2661)
+- Ajout de l'entreprise mandatée dans l'interface d'administration. (#2706)
+- Amélioration de l'accessibilité des liens et des boutons, notamment avec des titres et des noms explicites pour les lecteurs d'écran. (#2628, #2720)
+- Correction de liens de téléchargement sur les pages de certificats et de résultats. (#2720)
 
 ### Évolutions techniques
-- Mise en place d'une stratégie Content Security Policy (CSP) pour renforcer la sécurité de l'application (#2656, #2684).
-- Refonte de la gestion des styles en ligne dans l'interface utilisateur pour améliorer la maintenabilité et la performance (#2676, #2678).
-- Mise à jour de plusieurs dépendances Python (Django, urllib3, botocore, kombu, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance (#2630, #2634, #2635, #2636, #2637, #2638, #2639, #2640, #2644, #2645, #2646, #2647, #2665, #2666, #2667, #2668, #2669, #2670, #2671, #2679).
-- Mise à jour des dépendances frontend (npm) : eslint-plugin-vue, prettier, babel, etc. (#2672, #2673, #2674).
-- Amélioration de la configuration Docker (#2677).
-- Suppression de l'utilisation de `mark_safe` dans l'administration Django pour des raisons de sécurité (#2678).
-- Mise à jour de la version de Python et autres ajustements pour maintenir la compatibilité avec les mises à jour des packages (#2676).
+- Implémentation initiale d'une politique de sécurité du contenu (CSP) pour renforcer la sécurité du site. (#2662)
+- Mise à jour de plusieurs dépendances : Django (6.0.2), Vue.js (3.5.27), babel, prettier, eslint, et autres.
+- Suppression des styles inline dans l'administration et le frontend. (#2660, #2657)
+- Mise à jour de l'image Docker. (#2677)
+- Suppression de l'utilisation de `mark_safe` dans l'administration pour des raisons de sécurité. (#2685)
 
 ### Autres changements
-- Ajout d'un banner d'environnement pour identifier la plateforme en production (#2646).
-- Amélioration de la documentation et ajout de contexte pour certains composants (#2642).
-- Suppression de code inutile et refactoring de certains composants (#2653).
-- Ajout de tests pour la suppression des droits d'auteur sur une déclaration (#2653).
-- Ajout de commentaires et de précisions dans le code.
-- Mise à jour des fichiers de configuration.
-- Suppression de l'utilisation de styles en ligne dans l'interface utilisateur.
+- Ajout de Metabase dans la configuration CSP. (#2700)
+- Mise à jour du logo du ministère dans les certificats. (#2687)
+- Amélioration de la structure des breadcrumbs. (#2661)
+- Correction de bugs mineurs et améliorations de la qualité du code.
