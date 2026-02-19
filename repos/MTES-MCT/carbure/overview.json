@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/carbure",
   "name": "carbure",
-  "description": "Carbure suit la traçabilité et la durabilité des biocarburants, de la production à la distribution. Il permet de gérer les données relatives aux biocarburants et de suivre leur parcours.",
+  "description": "Carbure est un projet de traçabilité et de durabilité des biocarburants, de la production à la distribution. Il permet de suivre et de gérer les données relatives aux biocarburants tout au long de leur cycle de vie.",
   "language": "Python",
   "features": [
-    "Gestion de la traçabilité des biocarburants",
-    "Suivi de la durabilité",
-    "Gestion des données ISCC",
-    "Gestion des déclarations annuelles de biogaz",
-    "Gestion des certificats d'électricité",
-    "Interface d'administration",
-    "Anonymisation des données"
+    "Gestion des données QualiCharge",
+    "Gestion des données biogaz et biométhane",
+    "Validation des certificats",
+    "Suivi de la production et de la distribution",
+    "Gestion des déclarations annuelles",
+    "Analyse des performances des requêtes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,11 +21,11 @@
   ],
   "components": [
     "Backend Django",
+    "Frontend React",
     "Base de données MySQL",
     "Cache Redis",
-    "Frontend (JavaScript)",
     "API REST",
-    "Microservices (Huey)"
+    "Serveur Web Nginx"
   ],
   "auth": {
     "methods": [
@@ -34,14 +33,12 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Tests unitaires",
-    "Tests d'intégration"
+    "Pytest"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-05T14:10:00Z",
+  "lastActivity": "2026-02-17T15:10:49+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -55,11 +52,12 @@
     "biocarburants",
     "traçabilité",
     "durabilité",
-    "ISCC",
+    "QualiCharge",
     "biogaz",
-    "énergie",
+    "biométhane",
     "Django",
     "Python",
-    "électrification"
+    "énergie",
+    "environnement"
   ]
 }

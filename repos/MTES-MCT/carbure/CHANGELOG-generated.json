@@ -1,33 +1,40 @@
 ## Changelog : carbure (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Carbure se concentrent sur l'amélioration de la gestion des données QualiCharge, notamment l'affichage et la validation des certificats d'électricité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées. Des évolutions significatives ont été implémentées pour la gestion des données biogaz et biométhane, avec l'ajout de nouveaux champs et la correction de problèmes liés aux déclarations annuelles.
+Les dernières mises à jour de Carbure se concentrent sur l'amélioration de la gestion des données biogaz et biométhane, notamment pour les utilisateurs DREAL. Des améliorations ont été apportées à l'interface utilisateur, aux fonctionnalités de validation et à la gestion des déclarations annuelles. Des corrections de bugs et des optimisations de performance ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des quantités en kWh pour QualiCharge (#1278d5ff).
-- Ajout de la possibilité de valider l'ensemble des données QualiCharge en une seule opération (#c372f89b).
-- Affichage de l'unité (MWh) dans la liste d'administration QualiCharge (#afe1499c).
-- Possibilité de ne visualiser que l'énergie renouvelable dans l'interface QualiCharge (#ab681670).
-- Restriction de la validation des certificats QualiCharge aux utilisateurs DGEC (#e05ac793).
-- Amélioration des filtres de la liste des certificats QualiCharge (#27409613).
-- Correction d'un bug lié aux requêtes N+1 pour les données d'électricité (#766b8b43).
-- Augmentation de la longueur du champ "numéro de position" dans SAF (#71a5ee80).
-- Ajout de nouveaux champs et modifications des champs existants pour la gestion des données biométhane (INSEE code, propane, heures d'opération, tonnage de digestat brut, etc.) (#b2072a93, #8f42b275, #6f3de290, #51116cfa, #b5c8963c).
-- Ajout de la gestion des organismes d'aide aux contrats (#b5c8963c).
-- Correction de bugs et amélioration de la gestion des volumes dans les plans d'approvisionnement biométhane (#c0489050, #661ba93c).
+- Ajout de la possibilité pour les utilisateurs DREAL de créer manuellement des déclarations annuelles. (#31410f59)
+- Les utilisateurs DREAL peuvent désormais modifier le statut "ouvert" des déclarations annuelles. (#38b48843)
+- Amélioration de l'interface utilisateur pour la gestion des données biogaz et biométhane pour les DREAL, incluant des pages dédiées aux digestats, à l'énergie, aux contrats et aux plans d'approvisionnement. (#25efc6d5, #48ac629f, #32565afb, #f91ac13f)
+- Ajout d'un badge indiquant si une déclaration est ouverte. (#0b73135d)
+- Amélioration de la validation des données SAF, incluant la prise en compte des dépôts intermédiaires et des méthodes de livraison. (#443c311c, #6251e071, #821a8b4e, #97a80f9b, #7cc2056c, #d8c1bf7a)
+- Possibilité de valider l'ensemble des volumes QualiCharge. (#13b8176c)
+- Affichage du type d'entité sur la page de détails de l'entité. (#8af257e7)
+- Ajout de la gestion des codes INSEE et du champ propane. (#b2072a93)
+- Ajout de champs pour l'efficacité énergétique et les heures de fonctionnement. (#532d1dfd, #6f3de290)
+- Amélioration de l'affichage des quantités d'énergie renouvelable dans l'interface QualiCharge. (#1278d5ff, #27409613)
+- Correction de l'affichage des filtres de certificats QualiCharge. (#27409613)
 
 ### Évolutions techniques
-- Mise à jour des dépendances (pipfile.lock) (#f59699b5).
-- Amélioration des performances avec la création et la mise à jour en masse de certificats QualiCharge (#cf417559).
-- Utilisation de `bulk_update` avec des filtres pour QualiCharge (#399dae39).
-- Refactoring du code QualiCharge pour une meilleure lisibilité et maintenance (#092437c9).
-- Correction de tests unitaires et d'intégration (#3e75dbca, #b50439cc, #d211cb29).
-- Correction d'un problème de réversion de branche (#7e6ff355).
-- Correction d'un problème lié à l'environnement Sentry (#e836cb78).
+- Mise à jour des dépendances. (#f59699b5)
+- Amélioration de la gestion des erreurs et ajout de logs plus détaillés pour faciliter le débogage. (#50a0ec12, #0ded6363, #fcf94cb6, #41f33e66, #d283258b, #536ebb71)
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité. (#f3466933, #f6bb9b70, #bf5931a9)
+- Ajout de tests unitaires pour garantir la qualité du code. (#763d3bc9, #305e39a4)
+- Utilisation de feature flags pour activer/désactiver certaines fonctionnalités. (#f7389c00)
+- Amélioration de la gestion des erreurs UDB et ajout de nouvelles conversions de quantités. (#428db1f2, #16d5a072, #6e3587bd, #e266bbdb, #daf0c6a1)
 
 ### Autres changements
-- Ajout de commentaires et documentation (#536bc406).
-- Modifications de traductions (#f91ac13f, #59b764e7).
-- Correction de problèmes de tests liés à l'année en cours (#23ec6daa).
-- Ajout de la prise en charge d'une nouvelle colonne lors du scraping des tables ISCC (#e92490a7).
-- Correction de problèmes mineurs et amélioration de la cohérence du code.
+- Mise à jour des données GPS des dépôts DGDDI. (#bd759a77)
+- Ajout de fixtures pour les entités DGDDI. (#89b32f53)
+- Correction de bugs mineurs et améliorations de la documentation. (#07c681b6, #774ba421, #423d0331, #13e6341b)
+- Ajout de la possibilité d'importer des fichiers Excel pour la définition de la logistique SAF. (#72a37432)
+- Correction d'un problème lié à la mise à jour des aéroports via un script initial. (#07c681b6)
+- Suppression d'une fonctionnalité de réversion accidentelle. (#fb07f089)
+- Correction d'un bug lié à une requête N+1 dans l'électromobilité. (#766b8b43)
+- Ajout de données UDB supplémentaires. (#77d79d9c, #8990e152, #a3f24aa7)
+- Correction de textes incorrects dans l'interface utilisateur. (#3ad71e25, #38d0374b)
+- Ajout d'un tableau de bord pour les DREAL. (#aa024510, #7cb099e9, #30aac25f)
+- Ajout de filtres pour les déclarations annuelles. (#30aac25f)
+- Ajout de commentaires et de documentation pour améliorer la compréhension du code. (#5fc9586c)
+- Correction de problèmes de validation et d'affichage dans l'interface utilisateur. (#9ffe7fa5, #6b097537)
