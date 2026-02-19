@@ -72,7 +72,8 @@
 │   │       ├── 20260119150149_add_mission_title_description.sql
 │   │       ├── 20260119153036_add_mission_address_schema.sql
 │   │       ├── 20260126100000_add_client_event_id_to_stat_event.sql
-│   │       └── 20260209083538_add_mission_activity_schema.sql
+│   │       ├── 20260209083538_add_mission_activity_schema.sql
+│   │       └── 20260216125629_delete_mission_activity_id.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -488,6 +489,8 @@
 │   │       │   │   └── migration.sql
 │   │       │   ├── 20260212104747_delete_mission_activity_id
 │   │       │   │   └── migration.sql
+│   │       │   ├── 20260218113134_add_mission_publisher_active_partial_index
+│   │       │   │   └── migration.sql
 │   │       │   └── migration_lock.toml
 │   │       └── schema.core.prisma
 │   ├── scripts
@@ -673,6 +676,7 @@
 │   │   │       ├── import.ts
 │   │   │       └── tracking.ts
 │   │   ├── middlewares
+│   │   │   ├── body-parser-error-handler.ts
 │   │   │   ├── cors.ts
 │   │   │   ├── error-handler.ts
 │   │   │   ├── helmet.ts
@@ -832,6 +836,7 @@
 │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   ├── print.test.ts
 │   │   │   │   │   └── widget.test.ts
+│   │   │   │   ├── routing.test.ts
 │   │   │   │   ├── v0
 │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   ├── mymission.test.ts
@@ -1194,4 +1199,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-311 directories, 885 files
+312 directories, 889 files

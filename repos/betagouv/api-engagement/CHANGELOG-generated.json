@@ -1,71 +1,54 @@
 ## Changelog : api-engagement (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de la stabilité et des performances de l'API et du widget, ainsi que par des corrections de bugs et des optimisations de l'interface utilisateur. Des efforts ont également été déployés pour améliorer l'accessibilité de l'application et la qualité du code. De nombreuses mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la compatibilité du projet.
+Ce mois-ci, l'API Engagement a bénéficié d'améliorations significatives en termes de performance, de stabilité et d'accessibilité. Des corrections de bugs ont été apportées sur l'ensemble des applications (API, back office et widget), notamment concernant la gestion des missions, l'analyse des données et l'expérience utilisateur. Des efforts importants ont également été réalisés pour moderniser l'infrastructure et améliorer la qualité du code.
 
 ### Évolutions fonctionnelles
 
-*   **Widget:** Correction d'un problème de définition de la taille maximale de l'espace mémoire du conteneur (#794).
-*   **Widget:** Ajout d'un proxy WAF pour renforcer la sécurité (#795).
-*   **Widget:** Désactivation des images optimisées pour résoudre des problèmes potentiels (#793).
-*   **API:** Amélioration de la logique d'agrégation des données pour le widget (#790).
-*   **API:** Optimisation des recherches textuelles en évitant l'utilisation de `ilike` sur les champs d'ID (#788).
-*   **Application:** Correction d'un bug empêchant l'accès à la page des organisations désactivées (#18512e0).
-*   **API:** Suppression de la relation `activity-id` pour les missions (#787).
-*   **Widget:** Amélioration de la journalisation avec l'instrumentation (#792).
-*   **Widget:** Correction de problèmes liés aux hooks du cycle de vie (#791).
-*   **Widget:** Gestion améliorée des exceptions envoyées à Sentry (#789).
-*   **Widget:** Configuration améliorée des conteneurs du widget (#786).
-*   **Widget:** Déplacement de la récupération des missions vers le frontend pour améliorer les performances (#785).
-*   **Jobs:** Correction d'un problème d'importation des missions pour les missions réactivées après avoir été supprimées (#783).
-*   **API:** Ajout d'un en-tête `request-id` avec support Sentry pour faciliter le suivi des requêtes (#780).
-*   **Widget:** Correction de l'identifiant DSN du projet pour le widget (#779).
-*   **API:** Modification de l'indexation des adresses de mission (#776).
-*   **Application:** Amélioration de la compatibilité avec le zoom pour l'accessibilité (#770).
-*   **Widget:** Ajout d'un logger (#775).
-*   **API:** Suppression des anciennes vues matérielles avec le chemin des statistiques (#772).
-*   **API:** Suppression des messages Sentry inutiles (#729).
-*   **Jobs:** Ajout d'un index composite geo pour les adresses (#774).
-*   **Application:** Ajout d'attributs personnalisés à l'écran de suivi en temps réel (#704).
-*   **API:** Amélioration de la détection des changements de mission lors de l'importation (#701).
-*   **API:** Amélioration de la détection des changements d'adresse lors de l'importation (#692).
-*   **API:** Ajout du support de l'ID client d'événement (#714).
-*   **Analytics:** Ajout de nouveaux modèles pour les organisations actives (#713).
-*   **Analytics:** Ajout de nouveaux attributs pour le service civique (#700).
+- Correction d'un bug empêchant la récupération de l'adresse d'une mission lors de la modération (#784).
+- Amélioration de la gestion des déconnexions pour l'utilisateur "my-missions" (#799).
+- Ajout de l'adresse de la mission dans les informations retournées lors de la modération (#784).
+- Correction de l'affichage des organisations dans l'application (#787).
+- Amélioration de la logique d'agrégation des widgets (#790).
+- Correction d'un problème d'affichage des noms de villes et d'organisations dans le widget (#759).
+- Ajout de la possibilité d'ajouter des attributs personnalisés dans l'écran de suivi en temps réel (#704).
+- Correction de l'affichage des couleurs dans l'application (#688, #687).
+- Amélioration de la pagination pour l'accessibilité (#686).
+- Ajout d'un nouveau composant de tooltip accessible (#720).
+- Ajout d'un service de notification (toast) accessible (#719).
+- Ajout de nouveaux composants de tab accessibles (#699).
 
 ### Évolutions techniques
 
-*   **API:** Refactorisation de la logique d'agrégation pour améliorer les performances (#6633278).
-*   **API:** Migration des activités de mission vers une table de jointure N-N (#757).
-*   **API:** Suppression de MongoDB (#761).
-*   **Jobs:** Amélioration de la détection des changements de mission (#707).
-*   **Jobs:** Amélioration des performances de l'importation des missions (#693).
-*   **Jobs:** Suppression de l'ancienne pipeline (#706).
-*   **API:** Refactorisation de la gestion des organisations (#756).
-*   **API:** Ajout de tests d'intégration pour les endpoints du widget (#750).
-*   **API:** Optimisation des règles de recherche du widget (#782).
-*   **API:** Amélioration de la gestion des erreurs incrémentales dans les analytics (#760).
-*   **API:** Correction d'un problème de pool de connexion et de mémoire Prisma (#726).
-*   **Application:** Migration des composants de sélection vers Headless UI pour une meilleure accessibilité (#751).
-*   **Application:** Ajout de nouveaux composants RGAA-compliant (tooltips, tabs, toasts) pour améliorer l'accessibilité (#712, #715, #719, #699).
+- Mise à jour de Node.js vers la version 24 (#802).
+- Refactorisation de la gestion des exceptions pour utiliser Sentry (#797).
+- Amélioration de la performance des requêtes de recherche de missions avec un index partiel (#806).
+- Ajout d'un middleware dédié pour le parsing des requêtes (#800).
+- Refactorisation de la logique d'optimisation des images dans le widget (#793).
+- Ajout d'un proxy WAF pour le widget (#795).
+- Refactorisation de la gestion des événements pour améliorer la traçabilité avec Sentry (#756).
+- Suppression de l'utilisation de MongoDB (#761).
+- Amélioration de la gestion des connexions et de la mémoire avec Prisma (#726).
+- Migration des activités de mission vers une table de jointure N-N (#757).
+- Ajout de tests d'intégration pour les endpoints du widget (#750).
+- Refactorisation des modèles d'analyse pour une meilleure organisation (#722, #700, #698).
+- Ajout de modèles d'agrégation quotidienne pour l'analyse (#698).
+- Suppression des anciennes vues matérialisées et du chemin d'accès des statistiques (#772).
+- Ajout d'un identifiant de requête (request-id) pour faciliter le suivi et le débogage (#780).
+- Amélioration de la gestion des logs dans le widget avec l'instrumentation (#792).
+- Refactorisation de la configuration des conteneurs du widget (#786).
+- Suppression de l'appel API en double dans le widget (#781).
+- Ajout de tests unitaires pour les endpoints du widget (#750).
+- Ajout de workflows Claude pour la revue de code (#717).
+- Refactorisation du pipeline de CI pour exécuter les migrations Prisma (#804).
 
 ### Autres changements
 
-*   Mise à jour des dépendances (Express, @types/express, NextJS, @types/node, @sentry/cli, globals, etc.).
-*   Ajout de workflows Claude pour la revue de code (#717).
-*   Amélioration de la journalisation et du suivi des erreurs avec Sentry.
-*   Mise à jour de la documentation.
-*   Nettoyage du code.
-*   Correction de problèmes d'accessibilité (couleurs, contraste, etc.).
-*   Amélioration des performances générales.
-*   Mise à jour de la configuration.
-*   Ajout de tests unitaires et d'intégration.
-*   Correction de bugs mineurs.
-*   Amélioration de la gestion des erreurs.
-*   Mise à jour des modèles d'analytics.
-*   Amélioration de la gestion des états de modération.
-*   Correction de problèmes liés à la duplication de données.
-*   Amélioration de la gestion des adresses.
-*   Correction de problèmes d'affichage.
-*   Amélioration de la gestion des erreurs dans les jobs.
-*   Ajout de règles AGENTS.md pour l'API (#734).
+- Mise à jour de la documentation.
+- Amélioration des messages Sentry pour éviter le spam (#729).
+- Correction de problèmes de compatibilité avec le zoom (#770).
+- Ajout d'un logger au widget (#775).
+- Mise à jour des dépendances (Express, NextJS, @types/node, @sentry/cli, etc.).
+- Suppression de code obsolète.
+- Amélioration des performances des jobs d'importation des missions (#701, #693).
+- Ajout de règles AGENTS.md (#634).

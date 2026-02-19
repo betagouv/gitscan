@@ -1,16 +1,14 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et suivre l'engagement des utilisateurs et des organisations.",
+  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et d'analyser l'engagement autour des missions.",
   "language": "TypeScript",
   "features": [
     "API",
     "Back Office (Tableau de bord)",
     "Widget",
-    "Gestion des organisations",
     "Gestion des missions",
-    "Suivi des statistiques",
-    "Import de données"
+    "Analyse des données d'engagement"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,25 +18,30 @@
     "NextJS",
     "PostgreSQL",
     "MongoDB",
-    "Docker"
+    "Docker",
+    "dbt-postgres",
+    "dbt-metabase"
   ],
   "components": [
     "API REST",
     "Frontend React",
-    "Frontend NextJS",
     "Base de données PostgreSQL",
-    "Base de données MongoDB"
+    "Base de données MongoDB",
+    "Widget NextJS",
+    "Docker Compose"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": null,
+  "tests": [
+    "Linting (ESLint, Prettier)",
+    "Husky"
+  ],
   "workflows": [
-    "CI/CD (via GitHub Actions)",
-    "Linting",
-    "Tests"
+    "CI/CD (GitHub Actions)",
+    "Dependabot"
   ],
   "lastActivity": "2026-01-05T00:00:00Z",
   "status": "active",
@@ -53,12 +56,12 @@
   "tags": [
     "API",
     "Engagement",
+    "Missions",
+    "Data Analytics",
     "TypeScript",
     "React",
     "PostgreSQL",
     "MongoDB",
-    "Docker",
-    "Administration",
-    "Data Analytics"
+    "Docker"
   ]
 }
