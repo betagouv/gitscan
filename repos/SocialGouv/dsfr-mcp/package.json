@@ -1,0 +1,39 @@
+{
+  "name": "dsfr-mcp",
+  "version": "1.0.0",
+  "description": "MCP server pour la documentation DSFR (Système de Design de l'État français)",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "dsfr-mcp": "build/index.js"
+  },
+  "files": [
+    "build",
+    "docs"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "fetch-docs": "tsx scripts/fetch-docs.ts",
+    "setup": "pnpm run fetch-docs && pnpm build",
+    "prepublishOnly": "pnpm run setup"
+  },
+  "keywords": [
+    "mcp",
+    "dsfr",
+    "design-system"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
