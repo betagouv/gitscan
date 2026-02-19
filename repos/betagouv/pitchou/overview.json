@@ -1,33 +1,31 @@
 {
   "url": "https://github.com/betagouv/pitchou",
   "name": "pitchou",
-  "description": "Pitchou permet de mieux contrôler les dérogations d'espèces protégées. Il facilite la gestion des dossiers et des avis d'expert, et assure le suivi des données relatives aux dérogations.",
+  "description": "Pitchou permet de mieux contrôler les dérogations d'espèces protégées. Il synchronise les données de Démarche Numérique et offre une sauvegarde régulière pour assurer la pérennité des informations.",
   "language": "JavaScript",
   "features": [
-    "Gestion des dossiers de dérogation",
-    "Suivi des avis d'expert",
+    "Gestion des dérogations d'espèces protégées",
     "Synchronisation avec l'API Démarche Numérique",
-    "Import de données",
-    "Génération de rapports",
-    "Gestion des utilisateurs",
-    "Interface de saisie d'espèces protégées"
+    "Sauvegarde des données",
+    "Interface utilisateur pour les instructeurs",
+    "Gestion des avis d'expert",
+    "Suivi des dossiers AARRI"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
-    "Fastify",
-    "Knex.js",
-    "Svelte",
+    "fastify",
     "pg",
-    "odfjs"
+    "knex",
+    "svelte",
+    "rollup"
   ],
   "components": [
     "Frontend Svelte",
     "Backend Node.js",
     "Base de données PostgreSQL",
-    "API REST",
-    "Docker"
+    "API REST"
   ],
   "auth": {
     "methods": [
@@ -38,10 +36,10 @@
     "Playwright"
   ],
   "workflows": [
-    "Qualité de code",
-    "Tests"
+    "qualité-de-code.yml",
+    "tests.yml"
   ],
-  "lastActivity": "2026-02-16T17:12:39+01:00",
+  "lastActivity": "2026-02-18T16:57:15+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -49,17 +47,15 @@
     "stars": 1,
     "forks": 2,
     "contributors": null,
-    "openIssues": 50
+    "openIssues": 46
   },
   "tags": [
     "dérogations",
     "espèces protégées",
-    "biodiversité",
-    "environnement",
-    "administration",
-    "API",
+    "Démarche Numérique",
+    "AARRI",
     "PostgreSQL",
     "Svelte",
-    "Node.js"
+    "JavaScript"
   ]
 }
