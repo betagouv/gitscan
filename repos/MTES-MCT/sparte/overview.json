@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/sparte",
   "name": "sparte",
-  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maitriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard des exigences de la loi climat et résilience, et notamment de la ZAN.",
+  "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maîtriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard de la loi climat et résilience.",
   "language": "Python",
   "features": [
     "Analyse de la consommation d'espaces",
-    "Analyse de l'artificialisation des sols",
-    "Visualisation de données cartographiques",
+    "Visualisation de l'artificialisation des sols",
+    "Gestion des objectifs de territorialisation",
     "Génération de rapports",
-    "Comparaison de territoires",
-    "Gestion des objectifs de territorialisation"
+    "Cartes interactives",
+    "Suivi de l'évolution des logements vacants"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,19 +18,22 @@
     "Redis",
     "React",
     "Webpack",
-    "Babel",
-    "TypeScript",
-    "Highcharts",
-    "Maplibre GL",
-    "Celery"
+    "npm",
+    "Celery",
+    "GDAL",
+    "GeoAlchemy2",
+    "SQLAlchemy",
+    "Turf.js",
+    "highcharts"
   ],
   "components": [
     "Backend Django",
     "Frontend React",
     "Base de données PostgreSQL",
     "API REST",
-    "Serveur d'export PDF",
-    "Cartographie Maplibre GL"
+    "Serveur Celery",
+    "Cartes Maplibre",
+    "Export PDF"
   ],
   "auth": {
     "methods": [
@@ -41,9 +44,7 @@
     "Jest",
     "Pytest"
   ],
-  "workflows": [
-    "CI/CD (via GitHub Actions)"
-  ],
+  "workflows": [],
   "lastActivity": "2026-02-12T18:32:56+01:00",
   "status": "active",
   "license": null,
@@ -57,12 +58,11 @@
   "tags": [
     "artificialisation des sols",
     "consommation d'espaces",
+    "urbanisme",
     "SIG",
-    "données environnementales",
+    "environnement",
     "loi climat et résilience",
     "ZAN",
-    "urbanisme",
-    "cartographie",
-    "reporting"
+    "diagnostic territorial"
   ]
 }

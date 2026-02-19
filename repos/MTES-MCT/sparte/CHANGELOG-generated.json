@@ -1,32 +1,30 @@
 ## Changelog : sparte (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de sparte se concentrent sur l'ajout de nouvelles fonctionnalités liées à la territorialisation, notamment l'intégration de données DGALN et la gestion des objectifs de territorialisation. Des améliorations ont également été apportées à l'interface utilisateur, à la gestion des données et à l'exportation des données, ainsi qu'à la correction de bugs et à l'optimisation des performances.
+Les dernières mises à jour de sparte se concentrent sur l'ajout de nouvelles fonctionnalités liées à la territorialisation, notamment la gestion des objectifs de territorialisation, l'intégration de données de la DGALN et l'amélioration de l'interface utilisateur pour la visualisation de ces données. Des améliorations ont également été apportées au suivi des logements vacants et à la gestion des données sur data.gouv.fr.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des objectifs de territorialisation, incluant l'affichage dans des graphiques et des cartes. (#1404, #1418, #1420)
-- Intégration des données de la DGALN pour la visualisation des objectifs territorialisés. (#1418)
-- Amélioration de l'affichage des objectifs de réduction et des types de territoires.
-- Ajout d'un composant pour afficher l'évolution du taux de logements vacants. (#1439)
-- Ajout d'une vue carroyage pour la consommation d'espaces. (#1434, #1442, #1443, #1444)
-- Mise à jour de l'interface utilisateur pour les graphiques d'artificialisation et de consommation, avec la possibilité de spécifier un utilisateur. (#1421)
-- Ajout de la possibilité de suivre les clics sur les liens sortants via Matomo. (#1415)
-- Correction de l'affichage de l'année dans les rapports locaux. (#1423, #1424)
+- Ajout de la fonctionnalité de territorialisation avec affichage des objectifs et des cartes correspondantes (#1404, #1415, #1418, #1420).
+- Intégration des données de la DGALN pour la visibilité des objectifs territorialisés (#1418).
+- Amélioration de l'affichage des objectifs de réduction et des types de territoires dans les composants de territorialisation.
+- Ajout d'un composant pour le suivi de l'évolution des logements vacants avec des graphiques et des cartes (#1439).
+- Correction de l'année affichée dans les rapports locaux (#1423, #1424).
+- Ajout de la possibilité de suivre les clics sur les liens sortants via Matomo pour une meilleure analyse de l'utilisation (#1416).
+- Amélioration de l'affichage des objectifs dans la hiérarchie de territorialisation.
 
 ### Évolutions techniques
-- Refactorisation des modèles SQL pour l'exportation des données imperméabilisées et artificialisées.
-- Ajout d'un DAG pour supprimer les datasets de data.gouv.fr et mettre à jour les configurations.
-- Amélioration de la gestion des erreurs lors de la création et de la mise à jour des datasets dans DataGouvHandler. (#1436, #1437)
-- Mise à jour des migrations pour les modèles TerritorialisationObjectif et LandModel.
-- Ajout de tests unitaires et refactorisation des tests existants.
-- Mise à jour de la version de la stack dans le fichier scalingo.json.
-- Amélioration de la journalisation des réponses lors de la création et de la mise à jour des datasets.
+- Refactorisation des modèles SQL pour l'export des données imperméabilisées et artificialisées par usage et couverture.
+- Mise à jour des migrations pour les modèles `TerritorialisationObjectif` et `LandModel` afin d'ajouter des champs et de modifier les contraintes.
+- Ajout d'un DAG pour supprimer tous les datasets de data.gouv.fr et mise à jour des configurations avec des slugs de dataset pour 2026.
+- Amélioration de la gestion des erreurs et de la journalisation lors de la création et de la mise à jour des datasets sur data.gouv.fr (#1436, #1437).
 - Suppression des colonnes `target_2031` et `target_2031_modified` du modèle `project`.
-- Suppression des fichiers SQL et YAML pour les territoires similaires.
+- Mise à jour de la version de la stack dans le fichier `scalingo.json`.
+- Ajout d'un endpoint API pour récupérer les informations de l'utilisateur courant.
 
 ### Autres changements
-- Ajout de documentation pour les nouvelles fonctionnalités.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de références obsolètes et nettoyage du code.
-- Ajout d'un fichier de fixture pour les objectifs de territorialisation.
-- Mise à jour des dépendances.
+- Ajout de tests Jest et Pytest.
+- Amélioration de la documentation.
+- Nettoyage du code et suppression de fichiers inutiles.
+- Correction de bugs mineurs et améliorations de la performance.
+- Ajout d'un icône de badge pour le composant Card.
+- Mise à jour des dépendances et des librairies.
