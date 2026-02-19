@@ -1,53 +1,65 @@
 {
-  "url": "https://github.com/socialgouv/srdt",
+  "url": "https://github.com/SocialGouv/srdt",
   "name": "srdt",
-  "description": "Assistant virtuel pour les services de renseignement en droit du travail. Ce projet vise à fournir une aide automatisée pour la compréhension et l'application du droit du travail.",
-  "language": "TypeScript",
+  "description": "L'assistant virtuel SRDT a pour objectif de fournir des réponses précises et pertinentes aux questions des utilisateurs en se basant sur des sources d'informations officielles, notamment le Code du travail et les contributions.",
+  "language": "Python",
   "features": [
     "Recherche",
-    "Réponse aux questions",
-    "Analyse de documents",
-    "Accès à l'information juridique"
+    "Réponses basées sur des sources officielles",
+    "Accès aux informations du Code du travail",
+    "Accès aux contributions",
+    "Historique de chat",
+    "Authentification"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "Docker",
-    "Poetry",
-    "pnpm",
     "FastAPI",
-    "React",
-    "Elasticsearch"
+    "Uvicorn",
+    "asyncpg",
+    "pandas",
+    "langchain-text-splitters",
+    "tiktoken",
+    "elasticsearch",
+    "spacy",
+    "fr_core_news_md",
+    "sentry-sdk"
   ],
   "components": [
-    "Frontend React",
-    "API REST (Python)",
-    "Base de données (Elasticsearch)",
-    "Docker"
+    "API Python",
+    "Frontend (JavaScript/TypeScript)",
+    "Base de données PostgreSQL",
+    "Index Elasticsearch",
+    "Modèles de langage (LLM)"
   ],
   "auth": {
     "methods": [
-      "api-key"
-    ],
-    "providers": null
+      "email-password"
+    ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-01-23T16:24:27Z",
+  "tests": [
+    "pyright",
+    "ruff",
+    "pre-commit"
+  ],
+  "workflows": [],
+  "lastActivity": "2026-02-17T00:00:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 3,
-    "forks": 0,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 34
+    "openIssues": null
   },
   "tags": [
-    "droit du travail",
-    "assistant virtuel",
+    "Code du travail",
+    "Assistant virtuel",
     "IA",
-    "juridique",
-    "typescript",
-    "python"
+    "LLM",
+    "Recherche juridique",
+    "Administration",
+    "Python",
+    "Elasticsearch"
   ]
 }
