@@ -16,6 +16,7 @@
 │   └── uuid.ts
 ├── docker-compose.yml
 ├── e2e
+│   ├── admin.spec.ts
 │   ├── api.spec.ts
 │   ├── auth.spec.ts
 │   ├── data
@@ -96,6 +97,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260205151009_anonymized_stats
 │   │   │   └── migration.sql
+│   │   ├── 20260217085946_add_life_cycle_score
+│   │   │   └── migration.sql
+│   │   ├── 20260217172805_mandatory_score
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   └── seed
@@ -164,6 +169,8 @@
 │   │   └── doc.json
 │   ├── app
 │   │   ├── admin
+│   │   │   ├── nouvel-utilisateur
+│   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
 │   │   ├── api
 │   │   │   ├── auth
@@ -247,6 +254,9 @@
 │   │   ├── API
 │   │   │   ├── Keys.module.css
 │   │   │   └── Keys.tsx
+│   │   ├── Admin
+│   │   │   ├── CreateUserForm.module.css
+│   │   │   └── CreateUserForm.tsx
 │   │   ├── Block
 │   │   │   ├── BackLink.module.css
 │   │   │   ├── BackLink.tsx
@@ -340,6 +350,7 @@
 │   │   │   ├── Product.module.css
 │   │   │   ├── Product.tsx
 │   │   │   ├── ProductHistory.tsx
+│   │   │   ├── ProductLifeCycleImpacts.tsx
 │   │   │   ├── ProductLink.module.css
 │   │   │   ├── ProductLink.tsx
 │   │   │   ├── ProductScore.module.css
@@ -419,6 +430,7 @@
 │   │   ├── siretInfo.ts
 │   │   └── updateCategorySlug.ts
 │   ├── serverFunctions
+│   │   ├── admin.ts
 │   │   ├── brand.ts
 │   │   ├── export.ts
 │   │   ├── organization.ts
@@ -559,4 +571,4 @@
 │       ├── SearchProducts.tsx
 │       └── Statistics.tsx
 └── tsconfig.json
-141 directories, 420 files
+145 directories, 428 files
