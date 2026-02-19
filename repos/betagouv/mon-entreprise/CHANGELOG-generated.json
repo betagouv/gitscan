@@ -1,33 +1,28 @@
 ## Changelog : mon-entreprise (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de mon-entreprise, avec une attention particulière portée au simulateur de régime pour les travailleurs de l'économie collaborative. Des améliorations significatives ont été apportées à ce simulateur, notamment en termes de clarté, de prise en compte des nouvelles réglementations (Loi Le Meur) et d'accessibilité. Des corrections et mises à jour ont également été effectuées sur d'autres simulateurs et fonctionnalités, ainsi que sur l'accessibilité générale du site.
+Ce changelog présente les améliorations apportées à mon-entreprise au cours des 30 derniers jours. Les principales évolutions concernent le simulateur d'économie collaborative, avec une refonte complète pour prendre en compte la Loi Le Meur et offrir une expérience utilisateur plus claire et précise. Des corrections et mises à jour ont également été apportées aux simulateurs de salariés, notamment concernant la réforme RGDU et les exonérations d'heures supplémentaires. Enfin, des améliorations d'accessibilité et de documentation ont été réalisées.
 
 ### Évolutions fonctionnelles
-- **Économie collaborative :** Refonte complète du simulateur de régime, avec ajout de nouveaux régimes (notamment "pas d'affiliation") et prise en compte des conditions d'applicabilité liées à la Loi Le Meur.
-- **Économie collaborative :** Ajout d'informations sur les conditions d'affiliation et les liens vers les sites de l'Urssaf pour chaque régime.
-- **Économie collaborative :** Amélioration de l'affichage des régimes applicables et inapplicables, avec des messages plus clairs.
-- **Cessation d'activité :** Simplification de l'interface utilisateur avec l'utilisation de composants du design system.
-- **Salarié :** Implémentation de la réforme RGDU.
-- **Salarié :** Mise à jour de la déduction forfaitaire sur les heures supplémentaires.
-- **Salarié :** Ajout de la CET dans la base de l'exonération des heures supplémentaires.
-- **Salarié :** Correction de la saisie du taux Urssaf pour les chirurgiens-dentistes.
-- **Dividendes :** Correction du taux de la flat tax en description.
-- **AE :** Mise à jour du taux BNC Cipav avec Acre.
-- **PAMC :** Correction de la saisie du taux Urssaf pour les chirurgiens-dentistes.
+- **Économie collaborative :** Refonte complète du simulateur avec prise en compte de la Loi Le Meur, affichage des régimes applicables et inapplicables, et simplification de l'expérience utilisateur.
+- **Salarié :** Implémentation de la réforme RGDU (#f0df08a).
+- **Salarié :** Mise à jour de la déduction forfaitaire sur les heures supplémentaires (#3da10e7).
+- **Salarié :** Ajout de la CET dans la base de l'exonération des heures supplémentaires (#61eaaa7).
+- **Salarié :** Correction de l'affichage du taux de la flat tax pour les dividendes (#dc21af1).
+- **Salarié :** Correction de la saisie du taux Urssaf pour les chirurgiens-dentistes (#5e17902).
+- **Accessibilité :** Amélioration de l'accessibilité générale du site, notamment via la correction de problèmes identifiés lors d'audits (#6492ad1, #8ba5ccc).
+- **Accessibilité :** Remplacement d'un tableau par une liste pour une meilleure accessibilité (#8ba5ccc).
 
 ### Évolutions techniques
-- **Accessibilité :** Améliorations significatives de l'accessibilité du site, notamment via la correction de problèmes identifiés lors d'audits et l'ajout de règles d'accessibilité dans la documentation.
-- **Design System :** Utilisation accrue de composants du design system pour une meilleure cohérence et maintenabilité.
-- **Analytics :** Ajout de suivi d'événements pour le simulateur courant et le bouton "Modifier mes réponses".
-- **Refactoring :** Plusieurs refactorings ont été effectués pour améliorer la qualité du code et la lisibilité, notamment dans les modules d'économie collaborative et de cessation d'activité.
-- **Tests :** Ajout et mise à jour de tests unitaires et d'intégration.
-- **Documentation :** Mise à jour de la documentation sur l'accessibilité.
+- **Documentation :** Enrichissement du guide d'accessibilité avec les règles issues des audits (#6d70cc7).
+- **Design System :** Ajout de nouveaux composants et améliorations de composants existants (ConteneurBle, StatusCard).
+- **Refactoring :** Plusieurs refactorings ont été effectués dans le code du simulateur d'économie collaborative pour améliorer la lisibilité et la maintenabilité.
+- **Tests :** Ajout de tests unitaires et d'intégration pour le simulateur d'économie collaborative.
+- **Sentry :** Correction d'une erreur Sentry qui bloquait le build (#1097c74).
+- **Analytics :** Ajout de tracking pour le simulateur d'économie collaborative (#6e51291, #48caeec).
 
 ### Autres changements
-- Mise à jour des traductions (i18n).
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Mise à jour des références pour l'exonération salariale sur les heures supplémentaires.
-- Correction de l'erreur Sentry 'Can't find variable: requestIdleCallback'.
-- Suppression de code obsolète.
-- Mise à jour des taux et des constantes (PASS 2026, CSG non déductible).
+- **Documentation :** Mise à jour de la documentation sur l'accessibilité (#ee5dcd1, #ed14440, #e9600d1, #e62e8cd, #e3c29e9, #db74575, #c871040, #c4ecca3, #c3e20fd, #9218daf, #881d9c5, #7b5ff5b, #7ac35b3, #72c3ea2, #727e3fc, #6c41a68, #5ee58f9, #5e5e16f, #5010755, #4fd3f2a, #4d46be0, #3ca9560, #32898ae, #2f05a67, #136576e, #0f457cd, #09896f7, #0605b8b).
+- **Mise à jour des taux :** Mise à jour des taux pour l'exonération salariale sur les heures supplémentaires et la CSG non déductible sur les dividendes.
+- **Traduction :** Ajout et mise à jour des traductions.
+- **Linting :** Correction de problèmes de linting.
