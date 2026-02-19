@@ -61,6 +61,7 @@
 │   │   │           └── conf.d
 │   │   │               └── default.conf
 │   │   ├── etc
+│   │   │   ├── mime.types
 │   │   │   └── nginx
 │   │   │       └── conf.d
 │   │   │           └── default.conf
@@ -466,19 +467,6 @@
     │   │   │   │   │   │   ├── cancel_blue.svg
     │   │   │   │   │   │   ├── create_folder.svg
     │   │   │   │   │   │   ├── create_workspace.svg
-    │   │   │   │   │   │   ├── defaultTabs
-    │   │   │   │   │   │   │   ├── breadcrumbs
-    │   │   │   │   │   │   │   │   ├── my_files.svg
-    │   │   │   │   │   │   │   │   ├── recents.svg
-    │   │   │   │   │   │   │   │   ├── shared_with_me.svg
-    │   │   │   │   │   │   │   │   ├── starred.svg
-    │   │   │   │   │   │   │   │   └── trash.svg
-    │   │   │   │   │   │   │   └── sidebar
-    │   │   │   │   │   │   │       ├── my_files.svg
-    │   │   │   │   │   │   │       ├── recents.svg
-    │   │   │   │   │   │   │       ├── shared_with_me.svg
-    │   │   │   │   │   │   │       ├── starred.svg
-    │   │   │   │   │   │   │       └── trash.svg
     │   │   │   │   │   │   ├── delete_filled.svg
     │   │   │   │   │   │   ├── folder-tiny-plus.svg
     │   │   │   │   │   │   ├── import_icon.svg
@@ -486,7 +474,6 @@
     │   │   │   │   │   │   ├── settings.svg
     │   │   │   │   │   │   ├── starred-slash.svg
     │   │   │   │   │   │   ├── starred.svg
-    │   │   │   │   │   │   ├── trash.svg
     │   │   │   │   │   │   ├── undo.svg
     │   │   │   │   │   │   ├── undo_blue.svg
     │   │   │   │   │   │   ├── upload_file.svg
@@ -680,7 +667,13 @@
     │   │   │   │   │   │   │   │   ├── GenericDisclaimer.scss
     │   │   │   │   │   │   │   │   └── GenericDisclaimer.tsx
     │   │   │   │   │   │   │   ├── icon
-    │   │   │   │   │   │   │   │   └── Icon.tsx
+    │   │   │   │   │   │   │   │   ├── CheckIcon.tsx
+    │   │   │   │   │   │   │   │   ├── Icon.tsx
+    │   │   │   │   │   │   │   │   ├── MyFilesIcon.tsx
+    │   │   │   │   │   │   │   │   ├── RecentIcon.tsx
+    │   │   │   │   │   │   │   │   ├── SharedWithMeIcon.tsx
+    │   │   │   │   │   │   │   │   ├── StarredIcon.tsx
+    │   │   │   │   │   │   │   │   └── TrashIcon.tsx
     │   │   │   │   │   │   │   ├── infinite-scroll
     │   │   │   │   │   │   │   │   ├── InfiniteScroll.scss
     │   │   │   │   │   │   │   │   ├── InfiniteScroll.tsx
@@ -695,7 +688,7 @@
     │   │   │   │   │   │   │   │   ├── useReleaseNote.ts
     │   │   │   │   │   │   │   │   └── versions
     │   │   │   │   │   │   │   │       ├── index.ts
-    │   │   │   │   │   │   │   │       └── v0.11.1
+    │   │   │   │   │   │   │   │       └── v0.13.0
     │   │   │   │   │   │   │   │           ├── icons
     │   │   │   │   │   │   │   │           │   └── index.tsx
     │   │   │   │   │   │   │   │           └── index.tsx
@@ -759,6 +752,7 @@
     │   │   │   │   │       └── types.ts
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useCopyToClipboard.tsx
+    │   │   │   │   │   ├── useDefaultRoute.tsx
     │   │   │   │   │   └── useThemeCustomization.tsx
     │   │   │   │   ├── pages
     │   │   │   │   │   ├── 401.tsx
@@ -803,6 +797,7 @@
     │   │   │   │       ├── assets
     │   │   │   │       │   ├── pv_cm.pdf
     │   │   │   │       │   └── test-image.heic
+    │   │   │   │       ├── breadcrumbs-from-page.spec.ts
     │   │   │   │       ├── create-folder.spec.ts
     │   │   │   │       ├── db.setup.ts
     │   │   │   │       ├── delete-item.spec.ts
@@ -921,4 +916,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-235 directories, 688 files
+232 directories, 686 files

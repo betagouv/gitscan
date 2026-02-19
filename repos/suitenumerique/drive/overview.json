@@ -1,63 +1,61 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité tout en conservant un contrôle total sur leurs données.",
+  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers de manière sécurisée tout en conservant un contrôle total sur leurs données.",
   "language": "Python",
   "features": [
     "Stockage de fichiers sécurisé",
     "Partage de fichiers et de dossiers",
-    "Contrôle d'accès granulaire",
     "Collaboration en équipe",
     "Recherche de fichiers",
-    "Auto-hébergement",
-    "Gestion des espaces de travail",
-    "Prévisualisation de fichiers",
-    "Partage public",
     "Gestion des accès",
-    "Intégration SSO"
+    "Auto-hébergement",
+    "Gestion des workspaces",
+    "Notes de publication",
+    "Synchronisation de fichiers",
+    "Prévisualisation de fichiers"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django REST Framework",
+    "Django Rest Framework",
     "Next.js",
     "Docker",
     "Docker Compose",
     "Celery",
-    "Pylint",
-    "uv",
-    "ui-kit"
+    "Pillow",
+    "cryptography",
+    "@gouvfr-lasuite/ui-kit"
   ],
   "components": [
     "Backend Django",
     "Frontend React (Next.js)",
     "API REST",
-    "Base de données PostgreSQL",
-    "Stockage Objet S3",
-    "Serveur Celery",
-    "Interface Web",
-    "Microservices"
+    "Base de données (PostgreSQL)",
+    "Stockage d'objets (S3)",
+    "Celery (tâches asynchrones)",
+    "Indexation de fichiers (Elasticsearch)",
+    "Interface utilisateur (UI Kit)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "email-password",
-      "api-key"
+      "email-password"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
-    "Jest",
     "Pytest",
     "Cypress",
-    "E2E tests (Playwright)"
+    "Playwright",
+    "E2E tests"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD (GitHub Actions)",
+    "Build and test",
+    "Deployment"
   ],
-  "lastActivity": "2026-02-16T10:50:10+01:00",
+  "lastActivity": "2026-02-18T14:18:35+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -70,13 +68,12 @@
   "tags": [
     "file sharing",
     "collaboration",
+    "document management",
+    "self-hosting",
+    "open source",
+    "python",
     "django",
     "react",
-    "s3",
-    "docker",
-    "self-hosting",
-    "open-source",
-    "file management",
-    "security"
+    "nextjs"
   ]
 }
