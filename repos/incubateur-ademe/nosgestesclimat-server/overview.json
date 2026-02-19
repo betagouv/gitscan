@@ -1,31 +1,37 @@
 {
   "url": "https://github.com/incubateur-ademe/nosgestesclimat-server",
   "name": "nosgestesclimat-server",
-  "description": "Une application Express qui gère l'API de nosgestesclimat.fr. Elle permet de gérer les sondages et les simulations de réduction d'émissions de gaz à effet de serre.",
+  "description": "Ce serveur gère l'API de nosgestesclimat.fr, notamment le mode sondage. Il permet de collecter et traiter les données relatives aux actions des utilisateurs pour réduire leur impact environnemental.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs",
+    "Collecte de données sur les actions environnementales",
+    "Calcul de l'empreinte carbone",
     "Gestion des organisations",
-    "Calcul des simulations d'émissions",
-    "Collecte de données de sondage",
-    "Intégration avec des services tiers (Brevo, Matomo, Scaleway)"
+    "Enquêtes et sondages",
+    "Intégration avec des services tiers (Brevo, Matomo, Scaleway)",
+    "Gestion des newsletters"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
     "Prisma",
+    "Redis",
     "ioredis",
-    "jsonwebtoken",
     "axios",
-    "zod",
-    "@ts-rest/core"
+    "jsonwebtoken",
+    "winston",
+    "tsx",
+    "vitest",
+    "zod"
   ],
   "components": [
     "API REST",
-    "Base de données PostgreSQL",
+    "Base de données PostgreSQL (via Prisma)",
     "Cache Redis",
-    "Services d'authentification",
-    "Workers asynchrones"
+    "Microservices (worker)",
+    "Adaptateurs pour services externes",
+    "Event Bus"
   ],
   "auth": {
     "methods": [
@@ -33,16 +39,17 @@
       "oauth2",
       "jwt",
       "session"
-    ]
+    ],
+    "providers": []
   },
-  "auth.providers": [],
   "tests": [
-    "Vitest"
+    "Vitest",
+    "Supertest"
   ],
   "workflows": [
     "pull-request.yml"
   ],
-  "lastActivity": "2026-01-30T16:10:57+01:00",
+  "lastActivity": "2026-02-19T10:04:24+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -50,7 +57,7 @@
     "stars": 1,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 3
+    "openIssues": 1
   },
   "tags": [
     "climate",
@@ -58,6 +65,7 @@
     "survey",
     "API",
     "TypeScript",
+    "Node.js",
     "PostgreSQL",
     "Redis"
   ]
