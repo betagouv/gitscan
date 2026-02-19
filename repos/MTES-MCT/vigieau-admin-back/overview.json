@@ -1,14 +1,16 @@
 {
-  "url": "https://github.com/mtes-mct/vigieau-admin-back",
+  "url": "https://github.com/MTES-MCT/vigieau-admin-back",
   "name": "vigieau-admin-back",
-  "description": "Ce projet est le backend de l'application VigiEau, fournissant une interface d'administration pour la gestion des données et des alertes liées à la qualité de l'eau. Il permet de gérer les arrêtés, les restrictions et les statistiques associées.",
+  "description": "Ce projet est le backend de l'application VigiEau, dédié à la gestion des données et des alertes liées à la sécheresse. Il fournit une interface d'administration pour la gestion des arrêtés, des restrictions et des statistiques.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs",
-    "Gestion des données",
-    "Gestion des alertes",
     "Gestion des arrêtés",
-    "Statistiques"
+    "Gestion des restrictions",
+    "Statistiques",
+    "Authentification utilisateur",
+    "Gestion des utilisateurs",
+    "Envoi d'emails",
+    "Téléchargement de fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,23 +19,23 @@
     "PostgreSQL",
     "Express",
     "AdminJS",
-    "AWS SDK",
     "Nodemailer",
-    "Passport",
-    "OpenID Client"
+    "AWS SDK",
+    "Passport"
   ],
   "components": [
     "Backend NestJS",
     "API REST",
     "Base de données PostgreSQL",
-    "Interface d'administration AdminJS"
+    "Interface d'administration AdminJS",
+    "Microservices (potentiel)",
+    "Serveur d'emails"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "session",
-      "jwt"
+      "session"
     ],
     "providers": []
   },
@@ -42,7 +44,7 @@
     "E2E tests"
   ],
   "workflows": [],
-  "lastActivity": "2026-01-31T03:08:11Z",
+  "lastActivity": "2026-02-18T23:54:52Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -54,12 +56,12 @@
   },
   "tags": [
     "VigiEau",
-    "Eau",
+    "Sécheresse",
+    "Gestion de l'eau",
     "Administration",
     "Backend",
     "TypeScript",
     "NestJS",
-    "PostgreSQL",
-    "AdminJS"
+    "PostgreSQL"
   ]
 }
