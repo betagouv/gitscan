@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/betagouv/resorption-bidonvilles-blog",
   "name": "resorption-bidonvilles-blog",
-  "description": "Ce projet est un gestionnaire de contenu (CMS) pour créer et gérer un site internet, basé sur Wagtail et le Système de Design de l'État (DSFR). Il permet de mettre à jour le contenu facilement sans compétences techniques.",
+  "description": "Ce projet est un gestionnaire de contenu (CMS) pour créer et gérer un site internet, basé sur Wagtail et le Système de Design de l'État (DSFR). Il permet de créer des sites .gouv.fr sans compétences techniques.",
   "language": "Python",
   "features": [
     "Gestion de contenu",
     "Création de pages",
     "Modification de pages",
     "Gestion de menus",
-    "Intégration du Système de Design de l'État (DSFR)",
-    "Accessibilité (RGAA 4.1)",
-    "Responsive design"
+    "Intégration du DSFR",
+    "Accessibilité (RGAA 4.1)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,15 +17,13 @@
     "Wagtail",
     "django-dsfr",
     "PostgreSQL",
-    "psycopg2",
     "libsass",
-    "django-sass-processor",
     "boto3",
     "django-storages"
   ],
   "components": [
-    "Frontend Wagtail",
     "Backend Django",
+    "Frontend Wagtail",
     "Base de données PostgreSQL",
     "Système de Design de l'État (DSFR)"
   ],
@@ -37,11 +34,11 @@
   },
   "tests": [
     "pytest",
-    "make test-units",
-    "make test-e2e"
+    "tests unitaires",
+    "tests E2E"
   ],
   "workflows": [
-    "ci.yml"
+    "CI"
   ],
   "lastActivity": "2023-11-13T10:59:17Z",
   "status": "active",
@@ -59,7 +56,6 @@
     "DSFR",
     "Wagtail",
     "Gouvernement",
-    "Accessibilité",
-    "Python"
+    "Accessibilité"
   ]
 }
