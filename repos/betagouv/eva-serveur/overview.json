@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les structures associées.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les utilisateurs.",
   "language": "Ruby",
   "features": [
     "Gestion des évaluations",
     "Espace d'administration",
-    "Gestion des structures",
+    "Gestion des utilisateurs",
+    "Génération de rapports",
     "Intégration avec des services de géolocalisation",
-    "Affichage des résultats d'évaluation"
+    "Gestion des OPCO"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,10 +20,11 @@
     "@gouvfr/dsfr"
   ],
   "components": [
-    "API REST",
+    "Backend Ruby on Rails",
     "Base de données PostgreSQL",
-    "Frontend (probablement Ruby on Rails)",
-    "Service de géolocalisation"
+    "Cache Redis",
+    "API REST",
+    "Frontend (probablement Ruby on Rails views)"
   ],
   "auth": {
     "methods": [
@@ -32,21 +34,21 @@
   },
   "tests": [
     "RSpec",
-    "Guard"
+    "Stylelint"
   ],
   "workflows": [],
-  "lastActivity": "2024-02-29T14:14:16Z",
+  "lastActivity": "2024-02-29T14:19:22Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": null,
   "tags": [
-    "Ruby",
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
+    "Redis",
     "Evaluation",
     "Administration",
-    "Géolocalisation",
-    "DSFR"
+    "OPCO",
+    "Géolocalisation"
   ]
 }
