@@ -1,79 +1,65 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s’adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
-  "language": "Ruby",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l'État, aux opérateurs de services publics et aux collectivités territoriales.",
+  "language": "JavaScript",
   "features": [
     "Prise de rendez-vous",
     "Gestion des rendez-vous",
-    "Synchronisation d'agenda (CalDAV, WebCAL)",
+    "Connexion par code envoyé par email",
+    "Rendez-vous collectifs en visio",
+    "Synchronisation Caldav",
+    "Statistiques d'utilisation",
     "Gestion des utilisateurs",
-    "Gestion des lieux",
-    "Gestion des motifs de rendez-vous",
-    "Intégration avec FranceConnect",
-    "API",
-    "Statistiques"
+    "Gestion des organisations"
   ],
-  "audience": [
-    "Administrations de l’État",
-    "Opérateurs de services publics",
-    "Collectivités territoriales"
-  ],
+  "audience": "Administrations de l’État, Opérateurs de services publics, Collectivités territoriales",
   "dependencies": [
-    "Rails",
-    "Ruby",
-    "PostgreSQL",
-    "Redis",
-    "webpack",
-    "yarn",
+    "React",
     "Bootstrap",
-    "Chart.js"
+    "Chart.js",
+    "Webpack",
+    "Rails",
+    "PostgreSQL"
   ],
   "components": [
     "Frontend JavaScript",
     "API REST",
     "Base de données PostgreSQL",
-    "Backend Ruby on Rails",
-    "Agenda CalDAV",
-    "Serveur d'applications",
-    "Cache Redis"
+    "Agenda FullCalendar",
+    "Serveur Rails"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "sso"
+      "oauth2"
     ],
-    "providers": [
-      "FranceConnect"
-    ]
+    "providers": []
   },
   "tests": [
     "RSpec",
     "Playwright",
-    "Axe-core (accessibilité)"
+    "Jest"
   ],
-  "workflows": [
-    "CI",
-    "Dependency Review",
-    "Pull Request Reminder"
-  ],
-  "lastActivity": "2026-01-29T18:02:25Z",
+  "workflows": [],
+  "lastActivity": "2026-02-18T18:48:58+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 27,
-    "forks": 7,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 299
+    "openIssues": null
   },
   "tags": [
-    "agenda",
+    "rendez-vous",
+    "administration",
+    "public",
+    "javascript",
+    "rails",
+    "caldav",
     "rdv",
-    "rdv-solidarites",
-    "prise de rendez-vous",
-    "FranceConnect",
-    "CalDAV"
+    "service public"
   ]
 }

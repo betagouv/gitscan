@@ -1,0 +1,79 @@
+## Changelog : rdv-service-public (30 derniers jours)
+
+### Résumé
+Ce changelog résume les améliorations apportées à rdv-service-public au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration de la synchronisation Caldav, la gestion des rendez-vous collectifs, la correction de bugs et des optimisations de performance. Des améliorations ont également été apportées à l'interface utilisateur et à l'expérience développeur.
+
+### Évolutions fonctionnelles
+- Correction du lien des rendez-vous d'accompagnement (#6149).
+- Affichage des informations de contact d'une organisation si aucun créneau n'est disponible (#6146).
+- Amélioration de l'affichage des prescripteurs sur les rendez-vous collectifs (#6124).
+- Gestion des motifs de visio pour l'API rdv-i creneaux (#6135).
+- Ne plus afficher les agents opérant les RDV collectifs côté usagers (#6136).
+- Amélioration de l'affichage des détails des rendez-vous (#6107).
+- Correction de la gestion des attributs cassés dans `Users::RdvBuilder` (#6134).
+- Correction du lien et de l'affichage de la bannière pour les rendez-vous d'accompagnement (#6108).
+- Correction d'une erreur 400 lors de la saisie d'un code de login erroné (#6061).
+- Suppression du formulaire d’inscription usager (#6014).
+- Ajout d'un champ "sensitive account" à l'anonymizer (#6073).
+- Permettre la synchronisation Caldav pour tous (fin du feature flag) (#6025).
+- Amélioration de la page de stats structure par structure (#6046).
+- Correction d'une 400 lors de la saisie d'un code de login erroné (#6061).
+- Correction de specs pour utiliser le organisations.public_link_id plutot que id (#6028).
+
+### Évolutions techniques
+- Passage à Yarn v4 (#6064).
+- Passage de FullCalendar v5 à la v6 (#6080).
+- Suppression du flag `SIGN_IN_AS_ALLOWED` (#6138).
+- Refactorisation de `UserRdvWizard` avant fusion des étapes (#6120).
+- Amélioration de l'outillage multi-instance en local (#6143).
+- Restriction de la gem dotenv à l'environnement de développement (#6125).
+- Utilisation même wording agent introuvable et mot de passe incorrect (#6057).
+- Utilisation de dsfr-assets gem plutôt que le package npm (#6013).
+- Ruby 3.4.8 (#6032).
+- Stocker les événements Caldav dans une table dédiée (#6031).
+- Utilisation de jobs unitaires pour la synchronisation CRM (#6030).
+- Suppression de la colonne `connected_with_agent_connect` (#6093).
+- Suppression de la colonne `caldav_url` dans `Absences` (#6092).
+- Générer le corps des webhooks en asynchrone (#6051).
+- Corrige la flaky spec dans `import_absences_from_caldav_job_spec.rb` (#6147).
+- Corrige une flaky spec find(".xdsoft_time", text: "14:15") (#6132).
+- Corrige un crash lors du test de sectorisation (#6110).
+- Corrige crash en cas d'erreur dans le before callback Sentry (#6109).
+- Corrige LAPINS-6EV - Crash lorsque l'on demande à voir l'agenda d'un agent supprimé (#6096).
+- Corrige LAPINS-620 (clé étrangère de InstanceExport à GoodJob::Batch) (#6072).
+- Améliorations de la liste des RDV d'un usager (#6053).
+- Éviter les requêtes inutiles sur chaque page (step 1: `current_agent.roles`) (#6115).
+- Sélectionner automatiquement le seul lieu du formulaire de plages (#6111).
+- Éviter d'afficher trop agressivement "La connexion avec le serveur a été perdue" (#6037).
+- Déplacer les cassettes VCR au bon endroit (#6079).
+- Résorber la dette technique autour de `oauth_applications.default_service_id` (#6082).
+- Perf: Remettre la connexion dans le pool Redis rapidement (#6081).
+- Bugfix: indispos Caldav non affichées sur l'agenda multi-agents (#6078).
+
+### Autres changements
+- Rendre les noms des fichiers ICS plus lisibles (#6142).
+- Passage de cal.com par RDV-SP pour les démos (#6133).
+- Ajout d’une erreur lorsqu’on essaye de créer une review app sans être connecté (#6126).
+- Ajout de Mehdi sur le PR reminder (#6042).
+- Typo birth_date birth_name (#6039).
+- Mettre à jour le lien d'inscription au webinaire sur la page d'accueil (#6067).
+- Ajout de l’id du FI ProConnect pour les agents (#6034).
+- Suppression de la connexion par mot de passe pour les agents ProConnectés (#6088).
+- Fix : agent déjà défini au début du create session (#6086).
+- Ajout d’une valeur pré-calculée pour déterminer si on demande la 2FA (#6055).
+- Diminution du parallélisme dans le calculateur de créneau (#6095).
+- Utiliser Redis comme service plutôt que zhulik/redis-action@1.1.0 (#6112).
+- Éviter les executions inutiles de import_absences_from_caldav_job.rb (#6118).
+- Sélectionner automatiquement la seule orga lors d'une invitation d'agent (#6105).
+- Agenda temps réel : ne refetch que le type d'objet qui a changé (#6114).
+- Suppression du code du refresh d'agenda par polling (#6038).
+- Informer les agents ProConnecté de la désactivation de l’authentification par mot de passe (#6040).
+- Ajout de la synchronisation Caldav pour tous (fin du feature flag) (#6025).
+- Ajout de visio_url to Rdv blueprint (#6101).
+- Extraction d'un form object pour la prise de RDV usagers (#6091).
+- Ne plus retrouver des doublons de fiches usager en dehors de l'espace courant (sauf par e-mail) (#6100).
+- Empêcher l'édition des usagers depuis le formulaire d'édition des RDV collectifs (#6049).
+- Correction de l'apparition de la recherche des plages d'ouvertures (#6054).
+- Amélioration de la homepage (#6084).
+- Changement du wording du lien SMS (#6083).
+- Correction du fil d'ariane dans admin/rdvs#edit (#6029).

@@ -1,9 +1,10 @@
 .
 ├── .active_record_doctor.rb
+├── .buildpacks
 ├── .bundle
 │   └── config
+├── .env.rdv_solidarites.sample
 ├── .env.sample
-├── .env.test
 ├── .erdconfig
 ├── .gitguardian.yml
 ├── .github
@@ -28,7 +29,7 @@
 ├── .ruby-version
 ├── .slim-lint.yml
 ├── .slugignore
-├── .yarnrc
+├── .yarnrc.yml
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── Gemfile
@@ -402,7 +403,6 @@
 │   │   ├── merge_users_form.rb
 │   │   ├── prescripteur_rdv_wizard.rb
 │   │   ├── relative_user_form.rb
-│   │   ├── user_rdv_wizard.rb
 │   │   ├── users
 │   │   │   ├── edit_form.rb
 │   │   │   ├── login_code_request_form.rb
@@ -689,7 +689,8 @@
 │   │   │   ├── agent
 │   │   │   │   ├── caldav_configuration.rb
 │   │   │   │   ├── custom_devise_token_auth_user_omniauth_callbacks.rb
-│   │   │   │   └── feature_flags.rb
+│   │   │   │   ├── feature_flags.rb
+│   │   │   │   └── preload_roles.rb
 │   │   │   ├── ants
 │   │   │   │   └── appointment_serializer_and_listener.rb
 │   │   │   ├── benign_errors.rb
@@ -720,7 +721,6 @@
 │   │   │   ├── strong_password_concern.rb
 │   │   │   ├── text_search.rb
 │   │   │   ├── user
-│   │   │   │   ├── ants_pre_demande_number_status_validation_concern.rb
 │   │   │   │   ├── devise_invitable_with_domain.rb
 │   │   │   │   ├── franceconnect_frozen_fields_concern.rb
 │   │   │   │   ├── improved_unicity_error_concern.rb
@@ -917,7 +917,8 @@
 │   │   ├── users
 │   │   │   ├── contactable_organisations.rb
 │   │   │   ├── geo_search.rb
-│   │   │   └── login_service.rb
+│   │   │   ├── login_service.rb
+│   │   │   └── rdv_builder.rb
 │   │   ├── verified_service_public_domain_names.rb
 │   │   ├── web_invitation_search_context.rb
 │   │   ├── web_search_context.rb
@@ -1350,7 +1351,6 @@
 │       │   ├── _lagaufre_button.html.erb
 │       │   ├── _left_menu.html.slim
 │       │   ├── _meet_the_team_banner.html.slim
-│       │   ├── _pro_connect_migration_notice.html.slim
 │       │   ├── _rdv_a_renseigner.html.slim
 │       │   ├── _rdv_solidarites_instance_name.html.slim
 │       │   ├── _super_admin_sign_in_as_warning.html.slim
@@ -1504,6 +1504,8 @@
 │       │   ├── invitations
 │       │   │   ├── edit.html.slim
 │       │   │   └── invitation.html.slim
+│       │   ├── organisations
+│       │   │   └── _contact_info.html.slim
 │       │   ├── participations
 │       │   │   └── index.html.slim
 │       │   ├── passwords
@@ -1551,7 +1553,6 @@
 │   ├── rspec
 │   ├── rubocop
 │   ├── setup
-│   ├── start_web_server
 │   ├── test_boot
 │   ├── update
 │   └── yarn
@@ -2080,31 +2081,32 @@
 ├── scalingo.json
 ├── scripts
 │   ├── agent_et_motif_changent_de_service.rb
-│   ├── anonymize_database.rb
-│   ├── anonymize_user_data.rb
-│   ├── ants_app.rb
 │   ├── blocked_contacts_stats.rb
 │   ├── copy_users_between_orgas.rb
-│   ├── create_favicons.rb
 │   ├── create_oauth_application.rb
-│   ├── create_review_app.rb
-│   ├── db_dump_load.sh
-│   ├── enable_emails_on_review_app.sh
+│   ├── devtools
+│   │   ├── README.md
+│   │   ├── anonymize_database.rb
+│   │   ├── anonymize_user_data.rb
+│   │   ├── ants_app.rb
+│   │   ├── create_favicons.rb
+│   │   ├── create_review_app.rb
+│   │   ├── db_dump_load.sh
+│   │   ├── enable_emails_on_review_app.sh
+│   │   ├── mon_suivi_social_local.rb
+│   │   ├── replace_string_in_file_names.rb
+│   │   ├── review_app_super_admin_password.sh
+│   │   ├── run_on_both_instances
+│   │   ├── sms_sender_test.rb
+│   │   ├── tronquer_et_anonymiser_db.rb
+│   │   ├── update_playwright.sh
+│   │   └── webhook_debug_rack_app.ru
 │   ├── extract_mairie_from_territory.rb
-│   ├── initialize_calculator_index_values.rb
 │   ├── invite_user.rb
 │   ├── merge_two_agents.rb
 │   ├── migrate_email_to_notification_email.rb
-│   ├── mon_suivi_social_local.rb
 │   ├── move_organisation_to_other_territory.rb
-│   ├── replace_string_in_file_names.rb
-│   ├── review_app_super_admin_password.sh
-│   ├── set_agent_unknown_past_rdv_count.rb
-│   ├── sms_sender_test.rb
-│   ├── split_territory.rb
-│   ├── tronquer_et_anonymiser_db.rb
-│   ├── update_playwright.sh
-│   └── webhook_debug_rack_app.ru
+│   └── split_territory.rb
 ├── spec
 │   ├── anonymizer
 │   │   └── config_spec.rb
@@ -2325,10 +2327,12 @@
 │   │   │   ├── migration_depuis_rdv_aide_num_spec.rb
 │   │   │   ├── ouverture_espace_autonomie_spec.rb
 │   │   │   ├── ouverture_espace_doublon_spec.rb
-│   │   │   ├── planning_multi_agents_spec.rb
-│   │   │   ├── rendez_vous_entre_agents_spec.rb
-│   │   │   ├── rendez_vous_prescripteur_externe_spec.rb
-│   │   │   ├── reservation_en_ligne_sur_un_motif_spec.rb
+│   │   │   ├── produit
+│   │   │   │   ├── infos_de_contact_dans_reservation_en_ligne_spec.rb
+│   │   │   │   ├── planning_multi_agents_spec.rb
+│   │   │   │   ├── rendez_vous_entre_agents_spec.rb
+│   │   │   │   ├── rendez_vous_prescripteur_externe_spec.rb
+│   │   │   │   └── reservation_en_ligne_sur_un_motif_spec.rb
 │   │   │   └── self_onboarding_spec.rb
 │   │   ├── operators
 │   │   │   └── can_manage_espaces_spec.rb
@@ -2428,9 +2432,10 @@
 │   │   ├── merge_users_form_spec.rb
 │   │   ├── prescripteur_rdv_wizard_spec.rb
 │   │   ├── relative_user_form_spec.rb
-│   │   ├── user_rdv_wizard_spec.rb
 │   │   └── users
 │   │       ├── login_code_request_form_spec.rb
+│   │       ├── rdv_booking_form_spec.rb
+│   │       ├── rdv_builder_spec.rb
 │   │       └── registration_form_spec.rb
 │   ├── helpers
 │   │   ├── absences_helper_spec.rb
@@ -2849,4 +2854,4 @@
 │   └── .keep
 ├── webpack.config.js
 └── yarn.lock
-436 directories, 2415 files
+439 directories, 2417 files
