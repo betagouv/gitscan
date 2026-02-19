@@ -1,10 +1,11 @@
-## Changelog : ecobalyse-runner (derniers 30 jours)
+## Changelog : ecobalyse-runner (30 derniers jours)
 
 ### Résumé
-Cette version introduit une première implémentation fonctionnelle du projet, marquant le début de l'automatisation de la mise à jour des données et de l'affichage environnemental. Il s'agit d'une étape importante pour permettre aux utilisateurs de bénéficier rapidement d'informations environnementales à jour.
+Ce mois-ci, le projet ecobalyse-runner a franchi une étape importante avec la mise en place d'une authentification basique par token, permettant de sécuriser l'accès à l'API. De plus, une première version fonctionnelle du projet a été implémentée, ouvrant la voie à des tests et développements futurs.
 
 ### Évolutions fonctionnelles
-- Implémentation d'une première version fonctionnelle du projet (preuve de concept) (#2).
+- Ajout d'une authentification minimale basée sur des tokens pour sécuriser l'accès à l'API. (#5)
+- Mise en place d'une première version fonctionnelle du projet, permettant de valider le concept et de commencer les tests. (#2)
 
 ### Évolutions techniques
-- Mise en place d'une base initiale pour le développement du projet.
+- Mise à jour des dépendances du projet. (#4)

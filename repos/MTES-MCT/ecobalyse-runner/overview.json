@@ -1,9 +1,12 @@
 {
-  "url": "https://github.com/mtes-mct/ecobalyse-runner",
+  "url": "https://github.com/MTES-MCT/ecobalyse-runner",
   "name": "ecobalyse-runner",
-  "description": "Accélérer la mise en place de l'affichage environnemental ; automatisation de la mise à jour des données.",
+  "description": "Ce projet vise à accélérer la mise en place de l'affichage environnemental en automatisant la mise à jour des données.",
   "language": "Python",
-  "features": [],
+  "features": [
+    "Automatisation de la mise à jour des données",
+    "Affichage environnemental"
+  ],
   "audience": "Professionnels",
   "dependencies": [
     "dynaconf",
@@ -13,23 +16,25 @@
     "litestar"
   ],
   "components": [
-    "API REST",
-    "Base de données Redis",
-    "Celery (tâches asynchrones)"
+    "API Litestar",
+    "Celery pour les tâches asynchrones",
+    "Redis pour la gestion des tâches",
+    "Docker",
+    "Just pour l'exécution des commandes"
   ],
   "auth": {
     "methods": [
-      "none"
+      "api-key"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [
-    "ci",
-    "semantic-pr"
+    "ci.yml",
+    "semantic-pr.yml"
   ],
-  "lastActivity": "2026-01-21T16:35:53+01:00",
+  "lastActivity": "2026-02-18T19:34:22+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -40,10 +45,11 @@
     "openIssues": 1
   },
   "tags": [
-    "automatisation",
     "environnement",
+    "automatisation",
     "données",
     "API",
-    "Python"
+    "Python",
+    "Docker"
   ]
 }
