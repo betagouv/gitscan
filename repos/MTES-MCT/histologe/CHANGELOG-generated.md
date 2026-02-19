@@ -1,45 +1,62 @@
-## Changelog : histologe (derniers 30 jours)
+## Changelog : histologe (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'histologe apportent des améliorations significatives à l'expérience utilisateur, notamment au niveau du suivi des signalements, de la gestion des injonctions et de l'accessibilité. Des corrections de bugs et des optimisations techniques ont également été réalisées pour améliorer la stabilité et la performance de l'application.
+Les dernières mises à jour d'histologe se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans le suivi des dossiers, la gestion des signalements et des notifications. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. Des améliorations ont été apportées à l'interconnexion avec SISH et à la gestion des partenaires.
 
 ### Évolutions fonctionnelles
-- Ajout d'un cron pour envoyer des rappels concernant les injonctions liées aux signalements. (#5322, #5323)
-- Possibilité pour les bailleurs de répondre après la clôture d'un signalement rouvert. (#5320)
-- Amélioration de l'accessibilité pour les connexions SI externes. (#5259, #5318)
-- Ajout d'une option pour permettre aux bailleurs de répondre aux signalements. (#5315)
-- Correction de redirections après certaines actions dans le back-office. (#5314)
-- Prévention de soumissions multiples de formulaires. (#5248, #5316)
-- Corrections de réactions aux formulaires dans le back-office. (#5313)
-- Ajout d'un mail automatique de rappel pour le suivi mensuel dans le cadre de la démarche accélérée. (#5304)
-- Modification des messages flash dans le back-office pour une meilleure clarté. (#5307)
-- Activation de l'envoi d'injonctions par courrier pour les RT (Réseaux de Travaux). (#5273)
-- Limitation de la longueur de certains champs en se basant sur les spécifications. (#5245, #5292)
-- Sélection par défaut de la compétence "Visite" pour certains partenaires dans le back-office. (#5293)
-- Amélioration de l'interface utilisateur des formulaires professionnels. (#5282, #5306)
-- Ajout de textes incitatifs dans la démarche accélérée. (#5275)
-- Ajout de la possibilité de télécharger les photos d'un dossier en format zip. (#5137)
-- Ajout d'un filtre pour la provenance des signalements dans la liste des signalements du back-office. (#5249)
-- Mise en place du responsive design pour les tableaux de listes dans le back-office. (#5232)
-- Ajout d'un mail de notification lors de la bascule d'une injonction. (#5260)
-- Ajout d'une note dans le suivi d'un signalement refusé par l'ARS (Agence Régionale de Santé). (#5224)
-- Correction d'un dysfonctionnement du champ de recherche libre dans la recherche de signalements. (#5227)
-- Alerte lors de l'import de signalements si des désordres ne sont pas trouvés. (#5225)
-- Remplacement des alertes "fr-alert" par des notifications "fr-notice" pour une meilleure cohérence visuelle. (#5222)
-- Correction de liens de titres (#5197)
-- Permettre au bailleur de signer en ligne son engagement de travaux (#5158)
-- Rendre inactif un compte utilisateur pour un SA (#5170)
+- Ajout de la qualification "Saleté" dans les signalements (#5371).
+- Possibilité pour les usagers d'envoyer des messages après la réouverture d'un signalement clôturé (#5320).
+- Amélioration de la réorganisation des données et du design dans les détails de dossier du suivi usager (#5324).
+- Ajout du choix de bâtiment pour les usagers saisissant une adresse manuellement (#5341).
+- Ajout du nom du partenaire ayant saisi un signalement professionnel (#5380).
+- Possibilité de filtrer les dossiers sans activité partenaire sur le statut de l'affectation pour un agent (#5325).
+- Simplification de la création de périmètre pour les partenaires (#5287).
+- Ajout de la nature du parc dans la liste des signalements (#5311).
+- Amélioration de la gestion des e-mails en échec (correction de bugs) (#5373).
+- Passage sur un nouveau système de messages de confirmation/erreur pour les visites (#5265).
+- Ajout d'un rappel automatique pour le suivi mensuel dans la démarche accélérée (#5304).
+- Modification des informations de l'agence dans les détails du dossier de suivi usager (#5355).
+- Ajout de la division du menu SA en deux parties (#5392).
+- Ajout d'une fonctionnalité pour bloquer l'envoi d'emails aux usagers lorsque le logement est vacant (#5310).
+- Ajout d'une fonctionnalité pour notifier également les agents et un email générique pour les abandons de procédure (#5335).
+- Implémentation d'un cron pour les rappels d'injonctions de signalement (#5322).
 
 ### Évolutions techniques
-- Mise à jour de Symfony vers la version 7.4. (#5208)
-- Stabilisation de la synchronisation avec Metabase. (#5212)
-- Restriction de l'activation de SecurityApiExceptionListener aux URLs de l'API. (#5183, #5205)
-- Amélioration de la gestion des règles de visualisation des clubs pour les RT. (#5207, #5215)
-- Correction d'un problème de permissions pour les manipulations de fichiers lors de la clôture d'un signalement. (#5196, #5203)
-- Correction d'un bug lié à l'affectation des signalements aux Deux-Sèvres pour la synchronisation avec l'ARS. (#5241, #5244)
+- Exécution du cron de synchronisation des fichiers bucket S3 via un service jobless (#5261).
+- Organisation des nouveaux fichiers S3 par année/mois pour optimiser les synchronisations (#5331).
+- Mise à jour des dépendances (phpunit) (#5343).
+- Mise à jour de la version de lodash (#5338).
+- Ajout des linter JS dans la CI (#5424).
+- Suppression des dépréciations (#5422).
+- Ajout d'informations sur le territoire pour l'accès à l'API (#5334).
+- Mise à jour de la documentation de l'API v1.3.0 (#5190).
+- Correction de la soumission multiple de formulaires (#5248).
+- Amélioration de l'accessibilité pour les connexions SI externes (#5259).
+- Correction de bugs liés aux réactions aux formulaires (#5313).
+- Ajout de skiplinks pour passer les filtres et la liste (#5377).
+- Amélioration du filtrage des signalements et injonctions (#5360).
+- Limitation du sélecteur de construction dans le frontend (#5451).
+- Suppression des sous-domaines dans le service secours (#5425).
+- Correction d'un bug lié à la notification de visite pour un partenaire externe (#5430).
+- Nettoyage de la configuration de l'API (#5401).
+- Réinitialisation du formulaire dans une modale après une soumission réussie sans rechargement de la page (#5429).
+- Correction de bugs sur les visites (#5435, #5434).
+- Correction du mail de notification lors de la suppression d'un SA (#5452).
 
 ### Autres changements
-- Mise à jour de la documentation de l'API v1.3.0. (#5190, #5347)
-- Suppression d'un fichier suspect. (#5200, #5204)
-- Fusion de la branche `main` dans `develop` à plusieurs reprises. (#5236, #5237, #5244, #5304, #5315, #5340)
-- Mise à jour de la librairie PHPUnit. (#5343)
+- Ajout de données "Profil Occupant" (#5329).
+- Ajout de catégories de suivis pour la gestion des interventions depuis SISH (#5333).
+- Ajout d'un événement Matomo pour la démarche accélérée (#5366).
+- Ajout d'une option pour la réponse du bailleur (#5269).
+- Suppression des autocomplete dans les checkbox de recherche (#5406).
+- Ajout de tests et corrections pour l'envoi d'événements Matomo (#5342, #5354).
+- Correction de l'envoi des notifications lorsque des éléments sont supprimés (#5383, #5394).
+- Ajout de la gestion des suivis arrêtés et de main-levée simultanément (#5362).
+- Mise à jour de Webpack (#5407).
+- Ajout de la gestion des tags triés par libellé (#4981, #5381).
+- Suppression de la recherche de paramètres lors de la désactivation d'un utilisateur (#5420, #5423).
+- Ajout d'une URI à la liste bloquée lors de la maintenance (#5418, #5421).
+- Correction d'erreurs de redirections après actions (#5314).
+- Ajout d'un formulaire multi-étape pour le service secours (#5398).
+- Revue des notifications tiers déclarant pro (#5405).
+- Ajout de la gestion des connexions SI externes (#5259).

@@ -1,28 +1,30 @@
 {
   "url": "https://github.com/MTES-MCT/histologe",
   "name": "histologe",
-  "description": "Une solution pour détecter et accélérer la prise en charge du “mal-logement”. Cette application permet de signaler et de suivre les problèmes de logement, en facilitant la communication entre les différents acteurs impliqués.",
+  "description": "Une solution pour détecter et accélérer la prise en charge du “mal-logement”. Cette application permet de détecter et d'accélérer la prise en charge des problèmes de logement.",
   "language": "PHP",
   "features": [
     "Gestion des signalements",
-    "Suivi des interventions",
-    "Notifications",
-    "Interface pour les agents de l'administration",
-    "Interface pour les partenaires",
-    "Gestion des injonctions",
-    "Tableaux de bord",
-    "API"
+    "Suivi des injonctions",
+    "Interface pour les bailleurs",
+    "Interface pour les agents",
+    "Envoi de notifications",
+    "Synchronisation avec SISH",
+    "Génération de rapports",
+    "Gestion des utilisateurs et des rôles"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PHP",
     "Symfony",
+    "Twig",
     "Vue.js",
     "TypeScript",
     "MySQL",
     "Redis",
     "Nginx",
-    "Webpack"
+    "S3",
+    "Docker"
   ],
   "components": [
     "Frontend Vue.js / TypeScript",
@@ -30,7 +32,8 @@
     "Base de données MySQL",
     "Serveur Nginx",
     "API REST",
-    "Système de design de l'État français"
+    "Microservices",
+    "Serveur de cache Redis"
   ],
   "auth": {
     "methods": [
@@ -39,7 +42,7 @@
   },
   "tests": null,
   "workflows": null,
-  "lastActivity": "2026-02-17T17:05:22+01:00",
+  "lastActivity": "2026-02-19T12:22:35+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -48,10 +51,11 @@
     "logement",
     "mal-logement",
     "signalement",
-    "administration",
+    "injonction",
     "PHP",
     "Symfony",
     "Vue.js",
-    "API"
+    "administration",
+    "SISH"
   ]
 }
