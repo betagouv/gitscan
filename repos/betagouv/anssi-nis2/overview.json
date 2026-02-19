@@ -1,21 +1,20 @@
 {
   "url": "https://github.com/betagouv/anssi-nis2",
   "name": "anssi-nis2",
-  "description": "Accompagne les organisations dans la compréhension et la mise en conformité à NIS 2. Ce projet fournit des outils et des informations pour aider les entités à se préparer et à se conformer à la directive NIS 2.",
+  "description": "Ce projet accompagne les organisations dans la compréhension et la mise en conformité à la directive NIS 2.",
   "language": "TypeScript",
   "features": [
-    "Simulateur de conformité NIS 2",
+    "Simulateur de conformité",
     "Informations sur la directive NIS 2",
     "Aide à la préparation",
-    "Gestion des emails",
-    "Analyse de l'éligibilité"
+    "Gestion des emails"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
     "PostgreSQL",
-    "Papaparse",
-    "Axios",
+    "axios",
+    "papaparse",
     "@sentry/node",
     "@sentry/react",
     "@codegouvfr/react-dsfr",
@@ -25,10 +24,9 @@
   ],
   "components": [
     "Frontend React",
-    "API REST (Express)",
+    "API REST Express",
     "Base de données PostgreSQL",
-    "Microservices",
-    "Workspaces (anssi-nis2-api, anssi-nis2-ui, commun/core)"
+    "Microservices"
   ],
   "auth": {
     "methods": [
@@ -38,19 +36,19 @@
   "tests": [
     "Jest",
     "Vitest",
-    "Cypress (inferred from UI tests)"
+    "Cypress (via Storybook)"
   ],
   "workflows": [
     "checkov.yml",
     "deploiement.yml",
     "node.js.yml"
   ],
-  "lastActivity": "2025-12-19T09:57:29+01:00",
+  "lastActivity": "2026-02-14T04:59:09+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 17,
+    "stars": 19,
     "forks": 5,
     "contributors": null,
     "openIssues": 2
@@ -59,8 +57,7 @@
     "cyber-security",
     "france",
     "nis2",
-    "typescript",
-    "react",
-    "postgresql"
+    "conformité",
+    "sécurité"
   ]
 }
