@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/msj-public-front",
   "name": "msj-public-front",
-  "description": "Ce projet est le frontend client de l'application ppsmj de mon suivi justice. Il permet aux utilisateurs d'interagir avec les fonctionnalités de suivi de justice.",
+  "description": "Ce projet est le frontend client de l'application ppsmj de mon suivi justice. Il permet aux utilisateurs d'interagir avec le système de suivi de justice.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
@@ -11,27 +11,28 @@
   "audience": "Grand public",
   "dependencies": [
     "React",
+    "axios",
     "@dataesr/react-dsfr",
     "@gouvfr/dsfr",
-    "axios",
     "react-router-dom",
     "typescript"
   ],
   "components": [
     "Frontend React",
     "Composants DSFR",
-    "API REST (via Axios)",
-    "Gestionnaire d'état (Hooks)"
+    "Gestionnaire d'état (hooks)",
+    "API REST (via axios)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ],
     "providers": []
   },
   "tests": [
     "Jest",
-    "@testing-library/react"
+    "Testing Library"
   ],
   "workflows": [
     "build-react-and-test.yml"
