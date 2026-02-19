@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/betagouv/new-aglae-data-converter",
   "name": "new-aglae-data-converter",
-  "description": "Cet outil convertit des fichiers de données du nouvel accélérateur de particules AGLAE au format HDF5. Il prend en charge la conversion de données d'analyse d'imagerie au format LST et de données de spectre/standards pour l'analyse ponctuelle.",
+  "description": "Ce projet est un outil pour convertir des fichiers de données du nouvel accélérateur de particules AGLAE au format HDF5. Il prend en charge la conversion de données d'analyse d'images au format LST et de données de spectre/standards pour l'analyse ponctuelle.",
   "language": "Python",
   "features": [
-    "Conversion de données LST",
-    "Conversion de données de spectre",
-    "Interface graphique (GUI)",
-    "Interface en ligne de commande (CLI)"
+    "Conversion de données",
+    "Interface graphique",
+    "Interface en ligne de commande"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -23,17 +22,14 @@
   "components": [
     "Interface graphique Qt",
     "CLI Python",
-    "Bibliothèque Rust",
-    "Gestion de fichiers HDF5"
+    "Bibliothèque Rust"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "Tests d'intégration avec comparaison de fichiers HDF5"
-  ],
+  "tests": "Tests unitaires et d'intégration avec comparaison de fichiers HDF5 générés",
   "workflows": [
     "build-package.yml",
     "pr-workflow.yml",
@@ -52,11 +48,11 @@
   },
   "tags": [
     "conversion de données",
-    "AGLAE",
     "HDF5",
-    "accélérateur de particules",
+    "AGLAE",
     "Qt",
     "CLI",
-    "GUI"
+    "Python",
+    "Rust"
   ]
 }
