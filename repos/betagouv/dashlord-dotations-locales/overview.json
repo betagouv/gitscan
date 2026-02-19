@@ -1,38 +1,38 @@
 {
   "url": "https://github.com/betagouv/dashlord-dotations-locales",
   "name": "dashlord-dotations-locales",
-  "description": "DashLord est un tableau de bord permettant de visualiser les bonnes pratiques techniques. Il automatise l'acquisition de données et la génération de rapports.",
+  "description": "Tableau de bord permettant d'évaluer les bonnes pratiques techniques sur des sites web. L'acquisition des données et la génération du rapport sont automatisées.",
   "language": "HTML",
   "features": [
-    "Tableau de bord",
-    "Analyse de sécurité",
-    "Surveillance de la disponibilité",
-    "Rapports automatisés"
+    "Analyse de la sécurité",
+    "Détection des vulnérabilités",
+    "Analyse des performances",
+    "Tests d'accessibilité",
+    "Surveillance de la disponibilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "SocialGouv/dashlord-actions",
-    "SocialGouv/dashlord-nuclei-action",
-    "httpobs",
-    "wappalyzer",
-    "testssl",
-    "zap",
-    "lighthouse",
-    "thirdparties",
-    "updown.io"
+    "Mozilla HTTP Observatory",
+    "Wappalyzer",
+    "Nmap",
+    "OWASP ZAP",
+    "Lighthouse",
+    "Dependabot",
+    "Trivy"
   ],
   "components": [
-    "Frontend web statique",
-    "GitHub Actions",
-    "API de scan",
-    "Base de données de résultats (fichiers JSON)"
+    "Frontend (HTML, JavaScript)",
+    "Backend (GitHub Actions)",
+    "Rapports statiques",
+    "API (pour updown.io)"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": null,
+  "tests": [],
   "workflows": [
     "report.yml",
     "scans.yml"
@@ -49,9 +49,10 @@
   },
   "tags": [
     "sécurité",
-    "qualité du code",
+    "performance",
+    "accessibilité",
+    "audit",
     "tableau de bord",
-    "automatisation",
-    "analyse web"
+    "automatisation"
   ]
 }
