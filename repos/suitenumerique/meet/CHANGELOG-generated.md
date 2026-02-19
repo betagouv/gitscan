@@ -1,36 +1,39 @@
-## Changelog : meet (derniers 30 jours)
+## Changelog : meet (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe de développement s'est concentrée sur l'amélioration de l'accessibilité de l'application, notamment pour les utilisateurs utilisant des lecteurs d'écran. Des corrections de sécurité ont également été apportées, ainsi que des améliorations de la transcription et de l'enregistrement des réunions. Des optimisations ont été faites sur l'infrastructure et la configuration pour une meilleure stabilité et performance.
+Ce mois-ci, l'équipe de développement s'est concentrée sur l'amélioration de l'accessibilité, la sécurité et la performance de la plateforme Meet. Des correctifs de sécurité importants ont été implémentés, notamment pour prévenir les vulnérabilités XSS et renforcer la protection des API externes. L'expérience utilisateur a également été améliorée grâce à des ajustements d'accessibilité pour les utilisateurs ayant des besoins spécifiques, ainsi que des optimisations de performance au niveau de l'administration et des requêtes. De plus, des améliorations ont été apportées au déploiement sur des plateformes PaaS comme Scalingo.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de configurer une redirection externe pour les utilisateurs non authentifiés (#904).
-- Ajout du support des langues néerlandaise et allemande pour la transcription et le résumé des réunions.
-- Amélioration des annonces pour les lecteurs d'écran concernant les actions de partage d'écran, les réactions et les effets de fond.
-- Correction d'une vulnérabilité XSS sur la page d'enregistrement (#911).
-- Amélioration de l'expérience utilisateur lors de l'éjection d'un utilisateur par un administrateur.
-- Possibilité de choisir la langue de transcription.
-- Ajout d'un lien de téléchargement pour les fichiers audio/vidéo des résumés.
-- Possibilité pour les utilisateurs non privilégiés de demander un enregistrement.
+- Ajout d'un lien vers l'application Windows via le web (#976)
+- Ajout de raccourcis clavier supplémentaires pour améliorer l'accessibilité.
+- Ajout d'un lien cliquable vers les paramètres généraux dans la fenêtre d'inactivité (#974)
+- Possibilité de rediriger les utilisateurs non authentifiés vers une URL externe configurable (#904)
+- Documentation du déploiement sur Scalingo (#957)
+- Ajout de la prise en charge des annonces pour les actions d'épinglage/désépinglage de participants pour les lecteurs d'écran.
+- Amélioration des annonces pour le minuteur de déconnexion d'inactivité.
 
 ### Évolutions techniques
-- Configuration des webhooks LiveKit dans la pile Docker Compose locale.
-- Mise à jour de la version de l'application à 1.5.0.
-- Refactorisation du code pour centraliser les annonces pour les lecteurs d'écran.
-- Amélioration de la gestion des raisons de déconnexion.
-- Ajout de scans de sécurité Trivy pour les images backend.
-- Utilisation d'une correspondance d'emails insensible à la casse dans l'API externe.
-- Suppression de la tentative d'upgrade automatique de setuptools.
-- Ajout d'un hook pour gérer les options d'accessibilité.
-- Refactorisation du code pour améliorer la gestion de l'état de l'enregistrement.
-- Ajout de la prise en charge du client Kyutai pour les sous-titres.
-- Persistance des options d'enregistrement sur le backend.
-- Intégration de Langfuse pour l'observabilité des appels d'API LLM.
+- Mise à jour de Django pour corriger plusieurs vulnérabilités de sécurité critiques (#954)
+- Refactorisation de la vue d'ensemble de l'application pour utiliser un ViewSet de base.
+- Amélioration de la performance des requêtes dans l'interface d'administration pour les enregistrements.
+- Optimisation de la sélection des salles dans la vue d'administration des enregistrements.
+- Ajout de tests pour exposer un défaut de permission dans l'API externe.
+- Renforcement des contrôles de permission au niveau des objets pour l'endpoint des salles.
+- Activation temporaire de la vérification de vulnérabilités Trivy pour l'image backend.
+- Ajout de scripts de déploiement pour les plateformes PaaS, testés sur Scalingo.
+- Amélioration de la gestion des scopes pour l'API externe.
+- Ajout de la surveillance des échecs de limitation de débit via Sentry (#964)
+- Extraction des classes de limitation de débit dans un module dédié.
 
 ### Autres changements
-- Mise à jour de la documentation pour corriger des erreurs d'affichage et ajouter des exemples.
-- Correction d'un lien incorrect dans le guide d'installation Docker Compose.
-- Mise à jour des termes de service.
-- Ajout d'une entrée de changelog pour la correction du tooltip visio.
-- Ajout d'un fichier CHANGELOG.md pour documenter les changements du projet.
-- Mise à jour des dépendances aiohttp vers la version 3.13.3 (correction de sécurité).
+- Correction de la documentation pour les variables d'environnement Docker Compose.
+- Correction d'une erreur dans le rendu GitHub de la documentation Docker Compose.
+- Mise à jour des termes juridiques.
+- Ajout d'un exemple de génération de clé API en utilisant OpenSSL.
+- Correction d'une erreur de casse dans une variable d'environnement Docker.
+- Ajout d'une mention du déploiement à l'échelle de l'État français dans le README.
+- Correction d'un bug dans les tests de notification suite à un changement de variable d'environnement.
+- Ajout de traductions allemandes manquantes pour les paramètres d'accessibilité.
+- Correction d'un bug d'ordre des segments de transcription.
+- Amélioration de la gestion des exceptions liées aux fichiers lors de la manipulation des enregistrements.
+- Mise à jour de la documentation pour corriger un lien vers les variables d'environnement.

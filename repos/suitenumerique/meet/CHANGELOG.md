@@ -8,6 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-02-19
+
+### Added
+
+- ✨(frontend) expose Windows app web link #976
+- ✨(frontend) support additional shortcuts to broaden accessibility
+
+### Changed
+
+- ✨(frontend) add clickable settings general link in idle modal #974
+
 ## [1.6.0] - 2026-02-10
 
 ### Added
