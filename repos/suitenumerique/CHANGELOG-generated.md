@@ -1,24 +1,24 @@
-# Synthèse d'activité : suitenumerique (derniers 30 jours)
+# Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-Le mois écoulé a été marqué par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique, avec un focus particulier sur l'amélioration de la sécurité, de la performance et de l'expérience utilisateur. Plusieurs applications ont bénéficié de mises à jour significatives, notamment [conversations](/repos/suitenumerique/conversations) avec de nouvelles fonctionnalités de gestion des conversations et des améliorations de sécurité, et [meet](/repos/suitenumerique/meet) avec des améliorations d'accessibilité et de transcription. L'infrastructure a également été modernisée avec des mises à jour de dépendances et des migrations vers des outils plus performants, comme l'adoption de `uv` pour la gestion des dépendances dans plusieurs dépôts. L'application [st-deploycenter](/repos/suitenumerique/st-deploycenter) a vu des améliorations importantes dans la gestion des comptes utilisateurs et des organisations.
+L'organisation suitenumerique a connu une semaine riche en développement et en améliorations, touchant à la sécurité, à l'expérience utilisateur et à la stabilité de ses différents projets. Des efforts significatifs ont été déployés pour moderniser l'infrastructure, notamment avec la migration vers des outils de construction plus récents et des versions plus actuelles de langages et de frameworks. Plusieurs projets ont bénéficié d'améliorations de l'accessibilité, rendant les applications plus inclusives. L'accent a également été mis sur la correction de vulnérabilités et l'amélioration de la gestion des utilisateurs et des organisations, notamment avec des mises à jour de [django-lasuite](/repos/suitenumerique/django-lasuite) et [st-deploycenter](/repos/suitenumerique/st-deploycenter).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de correctifs de sécurité :
-- Correction de vulnérabilités dans les dépendances de [conversations](/repos/suitenumerique/conversations).
-- Correction d'une vulnérabilité XSS dans [projects](/repos/suitenumerique/projects).
-- Correction d'une erreur SSL et amélioration de la gestion des échecs d'authentification dans [st-deploycenter](/repos/suitenumerique/st-deploycenter).
-- Mise à jour de `aiohttp` dans [meet](/repos/suitenumerique/meet) pour corriger une vulnérabilité.
+Plusieurs dépôts ont bénéficié de corrections de sécurité :
+- Correction de vulnérabilités XSS dans [projects](/repos/suitenumerique/projects) et [meet](/repos/suitenumerique/meet).
+- Mise à jour de dépendances vulnérables dans [conversations](/repos/suitenumerique/conversations), [meet](/repos/suitenumerique/meet) et [st-ansible](/repos/suitenumerique/st-ansible).
+- Correction d'une erreur SSL et amélioration de la gestion des échecs d'authentification dans [messages](/repos/suitenumerique/messages).
 
 ## Autres changements notables
-- Migration vers `uv` pour la gestion des dépendances dans plusieurs dépôts ([conversations](/repos/suitenumerique/conversations), [find](/repos/suitenumerique/find), [people](/repos/suitenumerique/people)).
-- Refonte de la gestion des services pour les comptes dans [st-deploycenter](/repos/suitenumerique/st-deploycenter).
-- Mise à jour de Next.js vers la dernière version dans [st-home](/repos/suitenumerique/st-home).
-- Suppression de `pnpm` au profit de `npm` dans [projects](/repos/suitenumerique/projects) pour simplifier la gestion des dépendances.
+- Migration de la gestion des dépendances de `pip` vers `uv` dans plusieurs dépôts ([people](/repos/suitenumerique/people), [st-ansible](/repos/suitenumerique/st-ansible), [projects](/repos/suitenumerique/projects)).
+- Mise à jour de Next.js vers la dernière version dans [st-home](/repos/suitenumerique/st-home) et [conversations](/repos/suitenumerique/conversations).
+- Refactorisation et simplification de la gestion des paquets dans [projects](/repos/suitenumerique/projects).
+- Ajout de la gestion des alias de messagerie dans [people](/repos/suitenumerique/people).
+- Sortie de la version 1 de la fonctionnalité de visioconférence de "Gaufre" dans [integration](/repos/suitenumerique/integration).
 
 ## Dépôts les plus actifs
-- [conversations](/repos/suitenumerique/conversations) : Amélioration de la stabilité, de la sécurité et de l'expérience utilisateur avec de nouvelles fonctionnalités de gestion des conversations et des correctifs de sécurité.
-- [meet](/repos/suitenumerique/meet) : Amélioration de l'accessibilité, de la transcription et de l'enregistrement des réunions, ainsi que des optimisations de l'infrastructure.
-- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de la gestion des comptes utilisateurs et des organisations, avec de nouvelles fonctionnalités et des corrections de bugs.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (menu contextuel, modal d'onboarding) et amélioration des composants existants, avec un focus sur l'accessibilité et la testabilité.
-- [drive](/repos/suitenumerique/drive) : Amélioration de la sécurité, de la performance et de la stabilité de la plateforme de stockage.
+- [conversations](/repos/suitenumerique/conversations) : Améliorations significatives de la stabilité, de la sécurité et de l'expérience utilisateur, incluant la gestion des conversations et l'analyse de fichiers.
+- [meet](/repos/suitenumerique/meet) : Amélioration de l'accessibilité, correction de vulnérabilités et ajout de support pour de nouvelles langues pour la transcription et le résumé des réunions.
+- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de la gestion des comptes utilisateurs et des organisations, ainsi que des corrections de bugs et des optimisations.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (menu contextuel, modal d'onboarding) et améliorations des composants existants, avec un focus sur l'accessibilité et la testabilité.
+- [messages](/repos/suitenumerique/messages) : Ajout de nouvelles fonctionnalités comme le transfert de pièces jointes et l'affichage des invitations de calendrier.

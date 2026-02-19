@@ -1,19 +1,22 @@
-# Synthèse d'activité : MTES-MCT (derniers 30 jours)
+# Synthèse d'activité : MTES-MCT (derniers 7 jours)
 
 ## Résumé de l'activité
-Le mois dernier a été marqué par une activité soutenue sur les différents dépôts de l'organisation MTES-MCT, avec des améliorations significatives en termes de fonctionnalités, de sécurité et de performance. Plusieurs projets ont bénéficié de refontes majeures de l'interface utilisateur, comme Dossier-Facile-Frontend et vizeau, offrant une expérience utilisateur plus intuitive et efficace. Des efforts importants ont également été consacrés à la correction de bugs et à la mise à jour des dépendances pour garantir la stabilité et la sécurité des applications. Des améliorations notables ont été apportées à des outils clés comme trackdechets et ecobalyse, renforçant ainsi leur capacité à répondre aux besoins des utilisateurs.
+L'organisation MTES-MCT a connu une semaine riche en activités, marquée par des améliorations significatives de ses outils et plateformes. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur Dossier-Facile-Frontend et stop-punaises, avec des refontes d'interfaces et l'ajout de nouvelles fonctionnalités. Des mises à jour de sécurité et des corrections de bugs ont également été déployées sur plusieurs dépôts, notamment apilos et mon-devis-sans-oublis-backend-ocr. L'activité de Docurba a permis d'améliorer l'accès aux données pour différents types d'utilisateurs et de corriger un bug critique.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de dépendances visant à corriger des vulnérabilités de sécurité.  `mon-devis-sans-oublis-frontend` et `vizeau` ont notamment été concernés par ces mises à jour. `otelo-back` a également bénéficié d'une amélioration de la sécurité avec la suppression du traitement anti-XSS sur les strings retournés par l'API.
+Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
+- [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) a mis à jour la dépendance `sentry-sdk` pour corriger des vulnérabilités.
+- [vizeau](/repos/MTES-MCT/vizeau) a mis à jour ses dépendances npm et yarn pour corriger des vulnérabilités de sécurité (CVE-2026-21440 et CVE-2026-22814).
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures. `Docurba` a été mis à jour vers Django 5.2.10 et a bénéficié d'une suppression de code obsolète. `ecobalyse-method-tooling` a vu une refactorisation importante de la fusion des activités. `monitor-ui` a bénéficié d'une correction d'un problème d'installation de Cypress en CI. `trackdechets-vigiedechets` a vu l'ajout de throttling sur les endpoints et la sanitization du nom de fichier uploadé.
+- **Docurba** [Docurba](/repos/MTES-MCT/Docurba) a subi une mise à jour majeure de Django (5.1.5 -> 5.2.10) et d'autres dépendances principales.
+- **trackdechets-vigiedechets** [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) a implémenté des améliorations pour la gestion des entreprises inactives et l'affichage des partenaires éco-organismes.
+- **verseau2** [verseau2](/repos/MTES-MCT/verseau2) a ajouté l'authentification via cookie et la gestion des droits de dépôt.
+- **vizeau** [vizeau](/repos/MTES-MCT/vizeau) a implémenté la possibilité d'éditer les millésimes passés et l'attribution de parcelles.
 
 ## Dépôts les plus actifs
-*   [Docurba](/repos/MTES-MCT/Docurba) : Amélioration de la navigation, de l'accès aux modules et correction d'un bug critique lié à l'annulation de communes.
-*   [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Refonte complète de la gestion des liens de partage avec de nouvelles fonctionnalités et améliorations d'accessibilité.
-*   [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) : Amélioration de la gestion des entreprises inactives, de l'affichage des informations et de la sécurité des dépendances.
-*   [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités de cartographie, de gestion des exploitations et des tâches, ainsi que des corrections de bugs et des optimisations techniques.
-*   [ecobalyse](/repos/MTES-MCT/ecobalyse) : Amélioration de l'explorateur de données, intégration de données CTCP et corrections de bugs.
-*   [apilos](/repos/MTES-MCT/apilos) : Amélioration de la gestion des conventions APL et de la conformité RGAA.
-*   [monitor-ui](/repos/MTES-MCT/monitor-ui) : Ajout de nouvelles icônes et couleurs réglementaires, ainsi qu'une refactorisation d'un composant existant.
+- [Docurba](/repos/MTES-MCT/Docurba) : Amélioration de l'accès aux données et correction d'un bug critique.
+- [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Refonte de la gestion des liens de partage avec de nouvelles fonctionnalités.
+- [trackdechets-vigiedechets](/repos/MTES-MCT/trackdechets-vigiedechets) : Amélioration de la gestion des entreprises et des données affichées.
+- [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités pour la gestion des millésimes et des parcelles.
+- [apilos](/repos/MTES-MCT/apilos) : Amélioration de la gestion des conventions APL et mises à jour de dépendances pour la sécurité.

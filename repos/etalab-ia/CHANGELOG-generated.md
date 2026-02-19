@@ -1,21 +1,21 @@
-# Synthèse d'activité : etalab-ia (derniers 30 jours)
+# Synthèse d'activité : etalab-ia (derniers 7 jours)
 
 ## Résumé de l'activité
-Le mois écoulé a été marqué par une activité soutenue sur les différents dépôts d'etalab-ia, avec un focus sur l'amélioration de l'expérience utilisateur, l'ajout de nouvelles fonctionnalités et l'optimisation des infrastructures.  Plusieurs projets ont bénéficié de refactorisations importantes, comme [rag-facile](/repos/etalab-ia/rag-facile) qui a subi une transformation majeure pour devenir une trousse de démarrage RAG plus accessible, intégrant notamment une interface de chat et le support de PDF.  Des améliorations significatives ont également été apportées à [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour la gestion des données et à [BlockNote](/repos/etalab-ia/BlockNote) pour la stabilité et l'expérience utilisateur. L'accent est mis sur la simplification de l'utilisation des outils et l'ouverture à de nouveaux usages, notamment avec l'intégration de nouveaux modèles et APIs.
+La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts d'etalab-ia, avec des améliorations significatives concernant l'expérience utilisateur, la stabilité et les fonctionnalités des outils proposés.  Des efforts importants ont été consacrés à l'amélioration de l'intégration avec des services tiers (Albert, Hugging Face Hub, OpenRouter) et à la simplification du déploiement et de la configuration des applications.  [BlockNote](/repos/etalab-ia/BlockNote) a bénéficié de corrections de bugs et d'améliorations de l'interface, tandis que [rag-facile](/repos/etalab-ia/rag-facile) a subi une refonte majeure pour devenir une trousse de démarrage plus accessible pour les applications RAG. [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a continué à améliorer la gestion des données et l'expérience utilisateur de son playground.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été spécifiquement mentionné dans les changelogs fournis.
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Une refonte majeure de l'architecture de [rag-facile](/repos/etalab-ia/rag-facile) a été entreprise, avec un passage à de nouveaux outils de templating et une simplification de la configuration.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a bénéficié d'une consolidation des index Elasticsearch pour une meilleure gestion des données.
-- [lettabot](/repos/etalab-ia/lettabot) a vu l'ajout d'un assistant de configuration interactif pour Slack, facilitant son intégration.
-- Des optimisations ont été apportées à l'image Docker de [marker-serve](/repos/etalab-ia/marker-serve) pour accélérer les déploiements.
-- [evalap](/repos/etalab-ia/evalap) a intégré la possibilité d'exporter les résultats vers Hugging Face Hub.
+Plusieurs dépôts ont connu des évolutions techniques notables :
+- Refactorisation importante de l'architecture de [rag-facile](/repos/etalab-ia/rag-facile) avec une migration vers de nouveaux outils de templating et une mise à jour de la version de Python.
+- Optimisation de l'image Docker de [marker-serve](/repos/etalab-ia/marker-serve) pour des déploiements plus rapides.
+- Séparation du chart Helm d' [opengatellm-helm](/repos/etalab-ia/opengatellm-helm) en deux parties pour une plus grande flexibilité de déploiement.
+- Consolidation des index Elasticsearch dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure gestion des données.
 
 ## Dépôts les plus actifs
-- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur, notamment concernant les tableaux et l'IA.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la gestion des données et correction de bugs dans l'interface utilisateur.
-- [rag-facile](/repos/etalab-ia/rag-facile) : Refonte majeure pour devenir une trousse de démarrage RAG plus accessible avec une interface de chat et le support de PDF.
-- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration Slack et intégration de Discord.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.
+- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'interface utilisateur pour une meilleure stabilité et expérience.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la gestion des données, correction de bugs et documentation.
+- [rag-facile](/repos/etalab-ia/rag-facile) : Refonte majeure pour devenir une trousse de démarrage RAG plus accessible, avec intégration de PDF et d'une interface de chat.
+- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de la gestion des modèles.
+- [evalap](/repos/etalab-ia/evalap) : Ajout de l'export des résultats vers Hugging Face Hub et amélioration de la documentation.
