@@ -1,29 +1,29 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à accompagner les entreprises dans leurs démarches.",
+  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
   "language": "Ruby",
   "features": [
     "Recherche",
-    "Gestion des entreprises",
     "Gestion des experts",
+    "Gestion des besoins",
+    "Importation de données",
     "Statistiques",
-    "Export de données",
-    "Gestion des besoins"
+    "Gestion des partenaires"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
+    "@gouvfr/dsfr",
     "webpack",
     "stimulus",
-    "accessible-autocomplete",
-    "@gouvfr/dsfr"
+    "accessible-autocomplete"
   ],
   "components": [
     "Application web Ruby on Rails",
     "Base de données PostgreSQL",
-    "Frontend Javascript",
+    "Frontend JavaScript",
     "API REST"
   ],
   "auth": {
@@ -32,28 +32,30 @@
     ]
   },
   "tests": [
-    "RSpec"
+    "RSpec",
+    "Cypress"
   ],
   "workflows": [
-    "update-dependencies"
+    "CI/CD (CircleCI)"
   ],
-  "lastActivity": "2026-01-29T14:58:55Z",
+  "lastActivity": "2026-02-18T11:32:24+01:00",
   "status": "active",
-  "license": null,
+  "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 16,
-    "forks": 6,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 115
+    "openIssues": null
   },
   "tags": [
+    "conseil aux entreprises",
+    "TPE",
+    "PME",
     "Ruby on Rails",
     "PostgreSQL",
-    "Entreprises",
-    "Conseil",
-    "Administration",
-    "TPE",
-    "PME"
+    "administration publique",
+    "accompagnement",
+    "développement économique"
   ]
 }

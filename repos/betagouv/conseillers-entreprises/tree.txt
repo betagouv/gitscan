@@ -247,7 +247,9 @@
 │   │       │   ├── forms.sass
 │   │       │   ├── labels.sass
 │   │       │   ├── modals.sass
+│   │       │   ├── monitoring.sass
 │   │       │   ├── navigation.sass
+│   │       │   ├── notice.sass
 │   │       │   ├── pagination.sass
 │   │       │   ├── skeleton_card.sass
 │   │       │   ├── solicitation_actions.sass
@@ -314,11 +316,10 @@
 │   │   │   │   └── steps_controller.rb
 │   │   │   ├── diagnoses_controller.rb
 │   │   │   ├── experts_controller.rb
+│   │   │   ├── optimisation_controller.rb
 │   │   │   ├── shared_satisfactions_controller.rb
 │   │   │   ├── sitemap_controller.rb
-│   │   │   ├── solicitations_controller.rb
-│   │   │   ├── suivi_qualite_controller.rb
-│   │   │   └── veille_controller.rb
+│   │   │   └── solicitations_controller.rb
 │   │   ├── contacts_controller.rb
 │   │   ├── emails
 │   │   │   └── solicitations_controller.rb
@@ -332,6 +333,8 @@
 │   │   │   ├── needs_controller.rb
 │   │   │   └── stats_controller.rb
 │   │   ├── matches_controller.rb
+│   │   ├── monitoring
+│   │   │   └── antennes_controller.rb
 │   │   ├── needs_controller.rb
 │   │   ├── pages_controller.rb
 │   │   ├── reminders
@@ -496,6 +499,7 @@
 │   │   │   ├── categorie_juridique.rb
 │   │   │   ├── involvement_concern.rb
 │   │   │   ├── mandatory_answers.rb
+│   │   │   ├── monitoring.rb
 │   │   │   ├── naf_code.rb
 │   │   │   ├── perimeter_needs_status.rb
 │   │   │   ├── person_concern.rb
@@ -903,6 +907,13 @@
 │       │   │       ├── contact.html.haml
 │       │   │       ├── matches.html.haml
 │       │   │       └── needs.html.haml
+│       │   ├── optimisation
+│       │   │   ├── _filters.html.haml
+│       │   │   ├── _header.html.haml
+│       │   │   ├── _menu.html.haml
+│       │   │   ├── quo_matches.html.haml
+│       │   │   ├── starred_needs.haml
+│       │   │   └── taking_care_matches.haml
 │       │   ├── shared_satisfactions
 │       │   │   ├── _callout.html.haml
 │       │   │   ├── _header.html.haml
@@ -914,28 +925,16 @@
 │       │   │   └── mark_as_seen.turbo_stream.haml
 │       │   ├── sitemap
 │       │   │   └── sitemap.html.haml
-│       │   ├── solicitations
-│       │   │   ├── _header.html.haml
-│       │   │   ├── _menu.html.haml
-│       │   │   ├── _retry_diagnosis.html.haml
-│       │   │   ├── _solicitation.haml
-│       │   │   ├── _solicitation_actions.html.haml
-│       │   │   ├── _solicitation_badges.html.haml
-│       │   │   ├── _tracking.haml
-│       │   │   ├── index.html.haml
-│       │   │   └── update_badges.js.haml
-│       │   ├── suivi_qualite
-│       │   │   ├── _filters.html.haml
-│       │   │   ├── _header.html.haml
-│       │   │   ├── _menu.html.haml
-│       │   │   ├── _refused_feedback_need.haml
-│       │   │   └── index.html.haml
-│       │   └── veille
-│       │       ├── _filters.html.haml
+│       │   └── solicitations
 │       │       ├── _header.html.haml
 │       │       ├── _menu.html.haml
-│       │       ├── starred_needs.haml
-│       │       └── taking_care_matches.haml
+│       │       ├── _retry_diagnosis.html.haml
+│       │       ├── _solicitation.haml
+│       │       ├── _solicitation_actions.html.haml
+│       │       ├── _solicitation_badges.html.haml
+│       │       ├── _tracking.haml
+│       │       ├── index.html.haml
+│       │       └── update_badges.js.haml
 │       ├── contacts
 │       │   └── needs_historic.html.haml
 │       ├── devise
@@ -982,6 +981,7 @@
 │       │   │   └── show.haml
 │       │   └── landings
 │       │       ├── _index_institutions.html.haml
+│       │       ├── _information_banner.html.haml
 │       │       ├── _logos.html.haml
 │       │       ├── _multiple_steps.html.haml
 │       │       ├── _pde_partnership_mention.html.haml
@@ -1075,6 +1075,16 @@
 │       ├── matches
 │       │   ├── _match.haml
 │       │   └── update.js.haml
+│       ├── monitoring
+│       │   └── antennes
+│       │       ├── _antenne.html.haml
+│       │       ├── _filters.html.haml
+│       │       ├── _header.html.haml
+│       │       ├── _menu.html.haml
+│       │       ├── _tags_often_not_for_me.html.haml
+│       │       ├── _tags_rarely_done.html.haml
+│       │       ├── _tags_rarely_satisfying.html.haml
+│       │       └── index.html.haml
 │       ├── needs
 │       │   ├── _additional_experts.haml
 │       │   ├── _admin_need.html.haml
@@ -1207,6 +1217,7 @@
 │   └── update
 ├── config
 │   ├── application.rb
+│   ├── appsignal.rb
 │   ├── boot.rb
 │   ├── brakeman.ignore
 │   ├── cable.yml
@@ -1310,7 +1321,8 @@
 │   │   ├── 20260106143520_add_imported_at_columns.rb
 │   │   ├── 20260106153226_fix_schema.rb
 │   │   ├── 20260113150217_add_insee_code_to_solicitations.rb
-│   │   └── 20260126152754_add_insee_code_format_constraint.rb
+│   │   ├── 20260126152754_add_insee_code_format_constraint.rb
+│   │   └── 20260216135245_add_information_banner_to_landing.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1396,10 +1408,9 @@
 │   │   │   │   └── steps_controller_spec.rb
 │   │   │   ├── diagnoses_controller_spec.rb
 │   │   │   ├── experts_controller_spec.rb
+│   │   │   ├── optimisation_controller_spec.rb
 │   │   │   ├── shared_satisfactions_controller_spec.rb
-│   │   │   ├── solicitations_controller_spec.rb
-│   │   │   ├── suivi_qualite_controller_spec.rb
-│   │   │   └── veille_controller_spec.rb
+│   │   │   └── solicitations_controller_spec.rb
 │   │   ├── emails
 │   │   │   └── solicitations_controller_spec.rb
 │   │   ├── feedbacks_controller_spec.rb
@@ -1587,6 +1598,7 @@
 │   │   │   ├── archivable_spec.rb
 │   │   │   ├── categorie_juridique_spec.rb
 │   │   │   ├── involvement_concern_spec.rb
+│   │   │   ├── monitoring_spec.rb
 │   │   │   ├── naf_code_spec.rb
 │   │   │   ├── perimeter_needs_status_spec.rb
 │   │   │   ├── person_concern_spec.rb
@@ -1753,6 +1765,8 @@
 │   │   ├── diagnosis_system_spec.rb
 │   │   ├── manager
 │   │   │   └── needs_system_spec.rb
+│   │   ├── monitoring
+│   │   │   └── antennes_system_spec.rb
 │   │   ├── needs_system_spec.rb
 │   │   ├── pages_system_spec.rb
 │   │   └── users
@@ -1794,4 +1808,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-309 directories, 1496 files
+312 directories, 1507 files

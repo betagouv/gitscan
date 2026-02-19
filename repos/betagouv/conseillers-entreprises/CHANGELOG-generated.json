@@ -1,0 +1,30 @@
+## Changelog : conseillers-entreprises (30 derniers jours)
+
+### Résumé
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité, la correction de bugs et l'optimisation de certaines fonctionnalités existantes. Des améliorations ont été apportées à la gestion des formulaires, à la recherche de communes et à l'export de données. L'ajout d'un suivi des antennes régionales permet également un meilleur contrôle de l'activité.
+
+### Évolutions fonctionnelles
+- Ajout d'un onglet de suivi des antennes régionales, permettant de visualiser et gérer les informations relatives aux antennes. (#4230)
+- Amélioration de la gestion des codes INSEE dans les formulaires et la recherche de communes, avec une meilleure validation et un affichage plus clair. (#4214, #4226)
+- Correction d'un bug empêchant la suppression d'experts ayant des missions en cours. (#4199)
+- Affichage de l'URL du partenaire au lieu de seulement l'indication "venir d'entreprendre?". (#4256)
+- Correction d'un bug lié à un crash dans l'interface d'administration régionale. (#4268)
+- Amélioration de l'affichage des sections d'URL des partenaires avec l'utilisation de la classe `.fr-highlight`. (#4258)
+- Ajout d'une bannière d'information configurable pour l'espace "Landing". (#4262)
+
+### Évolutions techniques
+- Intégration de l'outil AppSignal pour le monitoring et le suivi des erreurs. (#4265)
+- Refactorisation de plusieurs composants pour améliorer la lisibilité et la maintenabilité du code.
+- Mise à jour de plusieurs dépendances : webpack (5.103.0 -> 5.104.1), lodash (4.17.21 -> 4.17.23), hotwired/turbo (8.0.20 -> 8.0.21), rack (3.2.4 -> 3.2.5).
+- Utilisation de gem.coop comme source pour les gems Ruby. (#4232)
+- Suppression de code obsolète et de fonctionnalités inutilisées.
+- Amélioration des tests et de la couverture de code. (#4253, #4257)
+- Refonte de la gestion des formulaires pour améliorer l'accessibilité (RGAA). (#4214)
+
+### Autres changements
+- Ajout d'une règle de crawl-delay dans le fichier robots.txt pour améliorer le comportement des robots d'indexation. (#4228)
+- Suppression de la configuration `local: true` dans plusieurs parties du code. (#4252, #4266)
+- Documentation et correction de typos dans les workflows CI/CD. (#4233)
+- Suppression de la possibilité d'utiliser des balises HTML personnalisées dans les marqueurs, car non supportées par Safari. (#4264)
+- Ajout de tests et de validations pour les champs contenant des codes INSEE.
+- Amélioration des messages d'erreur et de la gestion des erreurs dans les formulaires.
