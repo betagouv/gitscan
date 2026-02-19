@@ -1,3 +1,48 @@
+## [1.43.1](https://github.com/SocialGouv/graal/compare/v1.43.0...v1.43.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* config_file_id usage ([24cb206](https://github.com/SocialGouv/graal/commit/24cb206c6c8d82d3ee54b645891f0b662f19dcdd))
+
+# [1.43.0](https://github.com/SocialGouv/graal/compare/v1.42.0...v1.43.0) (2026-02-18)
+
+
+### Bug Fixes
+
+* Align backend on how to handle excel config files (using IDs) ([7490e2c](https://github.com/SocialGouv/graal/commit/7490e2c070235e0718bacc6b4dab8a13aa0f590e))
+
+
+### Features
+
+* Add retry mechanism to generate new API types ([506b526](https://github.com/SocialGouv/graal/commit/506b526e52a58e370c310d941d36ba4a29a86b46))
+
+# [1.42.0](https://github.com/SocialGouv/graal/compare/v1.41.0...v1.42.0) (2026-02-03)
+
+
+### Bug Fixes
+
+* Backend for excel config deletion ([41a67dd](https://github.com/SocialGouv/graal/commit/41a67dd4a68d291227e4ade8a17cc6dd405606f7))
+
+
+### Features
+
+* Add UI for excel configuration ([54a38ea](https://github.com/SocialGouv/graal/commit/54a38ea9a98d24df57838af3abc58db9a3265f6e))
+
+# [1.41.0](https://github.com/SocialGouv/graal/compare/v1.40.0...v1.41.0) (2026-02-03)
+
+
+### Features
+
+* Add API routes for excel configs ([088b79d](https://github.com/SocialGouv/graal/commit/088b79d477b985266de8e14010a5f40fdc369b5e))
+
+# [1.40.0](https://github.com/SocialGouv/graal/compare/v1.39.2...v1.40.0) (2026-02-02)
+
+
+### Features
+
+* Add backend for handling Excel config files in S3 ([01077ec](https://github.com/SocialGouv/graal/commit/01077ec874874654577983976831162d428ed9dd))
+
 ## [1.39.2](https://github.com/SocialGouv/graal/compare/v1.39.1...v1.39.2) (2026-01-28)
 
 

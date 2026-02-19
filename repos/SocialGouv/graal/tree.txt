@@ -61,7 +61,8 @@
 │       ├── 20251209_0003_dfb8a3c40e7f_remove_s3_config_file_path_from_user_.py
 │       ├── 20251211_1735_add_amendment_database_permissions_table.py
 │       ├── 20251217_1700_add_email_trigram_index.py
-│       └── 20260128_1511_509f4958dc7d_add_oauth_auth_requests_table.py
+│       ├── 20260128_1511_509f4958dc7d_add_oauth_auth_requests_table.py
+│       └── 20260129_1804_252c331e76a3_add_excel_config_manifests.py
 ├── alembic.ini
 ├── config
 │   ├── db_amendments
@@ -141,6 +142,10 @@
 │   │   │   │   └── DatabasePermissions.tsx
 │   │   │   ├── DownloadButton
 │   │   │   │   └── DownloadButton.tsx
+│   │   │   ├── ExcelConfigManager
+│   │   │   │   └── ExcelConfigManager.tsx
+│   │   │   ├── ExcelConfigPermissions
+│   │   │   │   └── ExcelConfigPermissions.tsx
 │   │   │   ├── FeatureConfig
 │   │   │   │   ├── ColumnSimilarityConfig.tsx
 │   │   │   │   ├── ColumnsToCopyConfig.tsx
@@ -187,6 +192,7 @@
 │   │   ├── pages
 │   │   │   ├── AdminPage.tsx
 │   │   │   ├── DatabasePage.tsx
+│   │   │   ├── ExcelConfigsPage.tsx
 │   │   │   ├── Home.tsx
 │   │   │   ├── ProcessingPage.test.tsx
 │   │   │   └── ProcessingPage.tsx
@@ -221,11 +227,13 @@
 │   │   ├── main.py
 │   │   ├── models
 │   │   │   ├── requests.py
-│   │   │   └── responses.py
+│   │   │   ├── responses.py
+│   │   │   └── types.py
 │   │   ├── routes
 │   │   │   ├── authorization.py
 │   │   │   ├── database_builder.py
 │   │   │   ├── db_permissions.py
+│   │   │   ├── excel_configs.py
 │   │   │   ├── health.py
 │   │   │   ├── processing.py
 │   │   │   ├── proconnect.py
@@ -237,6 +245,7 @@
 │   │       ├── authorization_service.py
 │   │       ├── database_builder_service.py
 │   │       ├── database_permission_service.py
+│   │       ├── excel_config_service.py
 │   │       ├── job_registry.py
 │   │       ├── migration_service.py
 │   │       ├── oauth_state_service.py
@@ -402,4 +411,4 @@
 │           ├── similarity_db_loader_test.py
 │           └── text_utils_test.py
 └── tsconfig.json
-94 directories, 310 files
+96 directories, 317 files
