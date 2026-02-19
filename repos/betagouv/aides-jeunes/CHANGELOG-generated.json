@@ -1,24 +1,25 @@
 ## Changelog : aides-jeunes (30 derniers jours)
 
 ### Résumé
-Ce changelog fait le point sur les dernières améliorations apportées à Aides-Jeunes. Les mises à jour incluent des ajustements des aides disponibles (suppression et ajout), des améliorations de l'expérience utilisateur (ajout d'un bouton d'accompagnement après le sondage, correction de l'affichage des mails dans l'outil local), ainsi que des optimisations techniques et des mises à jour de dépendances.
+Ce changelog présente les récentes mises à jour d'Aides-Jeunes, le simulateur d'aides sociales pour les jeunes. Les évolutions concernent principalement la mise à jour des informations sur les aides disponibles, l'ajout de nouveaux lieux d'accompagnement, des corrections de bugs et des améliorations techniques pour faciliter le développement et le déploiement de l'application.
 
 ### Évolutions fonctionnelles
-- Suppression de l'aide des Hauts de France pour les étudiants. (#5071)
-- Suppression de l'aide au permis de conduire pour les apprentis. (#5069)
-- Ajout du rendez-vous d'accompagnement par la Maison France Services de Chemillé en Anjou. (#5068)
-- Ajout d'un bouton d'accompagnement à la fin du sondage pour orienter les utilisateurs. (#5046)
-- Ajout de nouveaux lieux d'aides grâce à l'API de data inclusion. (#5039)
-- Correction de l'affichage des mails dans l'outil local. (#5045)
+- Mise à jour des informations sur les aides disponibles (#5062).
+- Suppression de l'aide des Hauts de France pour les étudiants (#5071).
+- Suppression de l'aide au permis de conduire pour les apprentis (#5069).
+- Ajout du rendez-vous d'accompagnement par la Maison France Services de Chemillé en Anjou (#5068).
+- Ajout de nouveaux lieux d'accompagnement via l'API de data inclusion (#5039).
+- Ajout d'un bouton d'accompagnement à la fin du sondage (#5046).
+- Correction de l'affichage des emails dans l'outil local (#5045).
+- Correction des mentions de "Mes-Aides Jeunes" à "Aides Jeunes" dans les CGU (#5053).
 
 ### Évolutions techniques
-- Amélioration de la CI (Continuous Integration) pour des tests plus fiables et un déploiement plus rapide. (#5048)
-- Amélioration de la réutilisabilité des thèmes du simulateur pour une maintenance plus facile. (#4966)
-- Correction du chemin d'accès pour la génération des statistiques MongoDB, résolvant une erreur signalée par Sentry. (#5066)
-- Mise à jour de la version de Node.js utilisée pour le déploiement. (#5054)
-- Mise à jour d'OpenFisca France dans `/openfisca`. (#5063, #5051, #5049)
-- Mise à jour de Next.js dans `/contribuer`. (#5052)
+- Amélioration de la CI (Continuous Integration) pour faciliter les tests et l'intégration du code (#5048).
+- Ajout de la configuration de la version Node.js pour le déploiement (#5054).
+- Correction d'une erreur dans le chemin d'accès à `generateMongoStats` qui provoquait des erreurs cron dans Sentry (#5066).
+- Amélioration de la réutilisabilité des thèmes du simulateur (#4966).
+- Mise à jour d'OpenFisca France (#5049, #5051, #5063).
+- Mise à jour de Next.js dans le répertoire `/contribuer` de la version 16.0.10 à 16.1.5 (#5052).
 
 ### Autres changements
-- Correction des mentions de "Mes-Aides Jeunes" à "Aides Jeunes" dans les Conditions Générales d'Utilisation (CGU). (#5053)
-- Création de nouvelles entités (communes, communautés de communes) pour l'ajout d'aides locales. (#5061, #5050)
+- Création de nouvelles entités "communaute-de-communes-adour-madiran" (#5061) et "ccas-de-redon-service-transport-plus-handicap" (#5050).

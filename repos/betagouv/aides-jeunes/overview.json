@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/aides-jeunes",
   "name": "aides-jeunes",
-  "description": "Ce simulateur permet aux jeunes de découvrir les aides sociales auxquelles ils peuvent prétendre en France. Il est basé sur OpenFisca et vise à simplifier l'accès à l'information sur les aides disponibles.",
+  "description": "Ce simulateur permet aux jeunes de découvrir les aides sociales auxquelles ils ont droit en France. Il est basé sur le moteur OpenFisca et vise à simplifier l'accès à l'information sur les aides disponibles.",
   "language": "TypeScript",
   "features": [
     "Simulation de prestations sociales",
     "Recherche d'aides",
     "Géolocalisation des aides",
-    "Informations sur les aides",
-    "Authentification France Connect"
+    "Informations sur les conditions d'éligibilité",
+    "Suivi des demandes",
+    "Envoi d'emails et SMS"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -19,7 +20,8 @@
     "NetlifyCMS",
     "Express",
     "axios",
-    "dayjs"
+    "dayjs",
+    "nodemailer"
   ],
   "components": [
     "Frontend VueJS",
@@ -30,10 +32,7 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
-    ],
-    "providers": [
-      "France Connect"
+      "none"
     ]
   },
   "tests": [
@@ -41,9 +40,10 @@
     "Cypress"
   ],
   "workflows": [
-    "CI/CD avec Github Actions"
+    "Continuous integration",
+    "Continuous deployment"
   ],
-  "lastActivity": "2026-02-11T18:36:06+01:00",
+  "lastActivity": "2026-02-18T16:33:52+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -54,12 +54,12 @@
     "openIssues": 114
   },
   "tags": [
-    "aides sociales",
+    "aides-sociales",
     "jeunes",
     "OpenFisca",
     "simulation",
-    "France Connect",
-    "TypeScript",
-    "VueJS"
+    "France",
+    "prestation",
+    "social"
   ]
 }
