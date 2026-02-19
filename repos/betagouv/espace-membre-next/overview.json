@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/espace-membre-next",
   "name": "espace-membre-next",
-  "description": "L'espace membre permet de gérer les membres et missions de la communauté, ainsi que les produits, incubateurs, sponsors et les comptes beta. Il offre également des fonctionnalités d'exploration de la communauté, d'affichage des formations et événements, et de gestion de l'infolettre.",
+  "description": "L'espace membre permet de gérer les membres et missions de la communauté, ainsi que les produits, incubateurs, sponsors et accès aux outils.",
   "language": "TypeScript",
   "features": [
     "Gestion des membres",
@@ -9,7 +9,7 @@
     "Gestion des produits",
     "Gestion des incubateurs",
     "Gestion des sponsors",
-    "Gestion du compte utilisateur",
+    "Accès aux outils (Sentry, Matomo)",
     "Exploration de la communauté",
     "Affichage des formations et événements",
     "Gestion de l'infolettre",
@@ -18,10 +18,12 @@
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Express",
-    "PostgreSQL",
-    "pg-boss",
     "Next.js",
+    "PostgreSQL",
+    "pg",
+    "Express",
+    "jsonwebtoken",
+    "nodemailer",
     "Kysely",
     "tailwindcss"
   ],
@@ -29,16 +31,19 @@
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur Express",
-    "Composants React DSFR"
+    "Authentification NextAuth",
+    "Cron Jobs",
+    "Microservices (Matomo, Sentry)"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "magic-link"
+      "magic-link",
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "ProConnect"
+    ]
   },
   "tests": [
     "Jest",
@@ -47,10 +52,10 @@
   ],
   "workflows": [
     "Node.js",
-    "CodeQL",
+    "CodeQL Analysis",
     "Playwright"
   ],
-  "lastActivity": "2026-02-17T15:56:07+01:00",
+  "lastActivity": "2026-02-19T12:26:58+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -61,12 +66,12 @@
     "openIssues": 75
   },
   "tags": [
-    "gestion-membres",
-    "communauté",
-    "incubateur",
+    "administration",
+    "community management",
+    "member management",
     "typescript",
     "react",
-    "postgresql",
-    "administration"
+    "nextjs",
+    "postgresql"
   ]
 }

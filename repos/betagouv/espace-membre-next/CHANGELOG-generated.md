@@ -1,25 +1,28 @@
-## Changelog : espace-membre-next (derniers 30 jours)
+## Changelog : espace-membre-next (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'espace membre se concentrent sur l'amélioration de la synchronisation des comptes utilisateurs, notamment avec les services DIMail et DINUM, et sur la correction de bugs liés à l'affichage et à la gestion des emails. Des améliorations ont également été apportées à la gestion des nouveaux utilisateurs et à la configuration de l'application pour une meilleure performance et fiabilité.
+Ce changelog présente les améliorations apportées à l'espace membre au cours des 30 derniers jours. Les modifications se concentrent principalement sur la gestion des emails, l'onboarding des nouveaux membres et la synchronisation des données avec les services externes. Plusieurs corrections de bugs ont également été implémentées pour améliorer l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Amélioration de la suite numérique d'onboarding pour les utilisateurs OVH (#1192).
-- Correction de l'affichage du statut de l'email principal pour les membres, qui n'était pertinent que dans certains cas (#1190).
-- Ajout de la prise en charge des emails `francetravail.fr` et `justice.fr` pour les emails publics (#1184).
-- Correction d'un problème lié à la recréation d'utilisateurs qui pouvait affecter les comptes DIMail existants (#1189).
+- Amélioration de l'onboarding pour les utilisateurs venant d'OVH, intégrant la suite numérique. (#1192)
+- Affichage des instructions de création d'email simplifié. (#1223)
+- L'onboarding est maintenant affiché pour tous les membres, y compris les anciens. (#1218)
+- Correction de l'affichage de l'état de l'email principal pour les membres. (#1190)
+- Ajout de la prise en charge des emails `francetravail.fr` et `justice.fr` pour les emails publics. (#1184)
+- Correction de l'affichage des invitations dimail. (#1215, #1214)
+- Correction d'un bug empêchant l'affichage correct des invitations dimail pour les emails supprimés. (#1216)
+- Masquage de l'onboarding sur le tableau de bord pour les anciens membres. (#1222)
 
 ### Évolutions techniques
-- Utilisation d'UUID au lieu de noms d'utilisateur pour la synchronisation DIMail, améliorant ainsi la robustesse et la sécurité (#1199).
-- Synchronisation de la table `dinum_emails` pour assurer la cohérence des données utilisateurs (#1168).
-- Ajout d'un script `npm` pour la synchronisation DIMail, facilitant l'automatisation de ce processus (#1186).
-- Réduction de la limite de tentatives de reconnexion de `pgboos` pour améliorer la réactivité de l'application (#1191).
-- Mise à jour de l'URL du webmail pour le plan OPI (#1200).
-- Désactivation de la revalidation pour améliorer les performances (#1183).
-- Ajout de `expireTime=0` pour éviter les problèmes de cache navigateur (#1175).
-- Configuration de Sentry pour capturer les erreurs en production avec les source maps (#1174).
-- Correction d'un problème lié à ESPACE-MEMBRE-WT (#1176).
+- Utilisation d'UUID au lieu du nom d'utilisateur pour les emails dimail. (#1199)
+- Ajout d'un script npm `sync-dimail` pour synchroniser les données dimail. (#1186)
+- Synchronisation de la table `dinum_emails`. (#1168)
+- Réduction de la limite de tentatives de `pgboos`. (#1191)
+- Correction du format du cron. (#1213)
+- Mise à jour de l'URL du webmail pour `EMAIL_PLAN_OPI`. (#1200)
+- Correction pour éviter de modifier les comptes dimail existants lors de la recréation des utilisateurs. (#1189)
+- Correction de la page `AccountVerifyClientPage`. (#1219)
 
 ### Autres changements
-- Mise à jour de la documentation README.md (#1193).
-- Corrections de logs pour une meilleure traçabilité (#1182).
+- Ajout d'un diagramme de flux pour la documentation. (#1211)
+- Mise à jour du fichier `checklist.yml`. (#1221)
