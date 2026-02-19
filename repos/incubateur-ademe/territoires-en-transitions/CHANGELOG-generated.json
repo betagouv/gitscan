@@ -1,56 +1,43 @@
 ## Changelog : territoires-en-transitions (30 derniers jours)
 
-**Résumé**
-
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment une refonte de l'affichage des plans et des axes, avec l'introduction de l'édition en ligne et de nouvelles fonctionnalités de gestion des sous-actions. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la sécurité et de la gestion des permissions. Enfin, la génération de rapports a été améliorée avec l'utilisation de workers et le stockage des rapports générés.
+### Résumé
+Cette période a été marquée par une refonte significative de l'interface utilisateur, notamment au niveau de la gestion des plans et des fiches, avec l'introduction d'un nouveau design et l'utilisation d'éditeurs en ligne (inline-edit) pour une expérience utilisateur plus fluide. Des améliorations ont également été apportées à la gestion des budgets, des indicateurs et des notifications. Des mises à jour techniques importantes ont été réalisées, incluant des mises à niveau des dépendances et une refactorisation du code pour améliorer la performance et la maintenabilité.
 
 ### Évolutions fonctionnelles
-
-- Ajout de la gestion des sous-actions : création, modification, suppression et affichage dans le tableau de bord personnel.
-- Refonte de l'affichage des plans : nouvelle arborescence, édition en ligne des titres, descriptions et types de plans.
-- Amélioration de l'édition en ligne : intégration dans les headers, sections "Acteurs du projet" et descriptions des fiches actions.
-- Ajout de boutons "Ouvrir/fermer tous les axes/sous-axes" pour faciliter la navigation dans les plans.
-- Ajout d'un bouton "Déplacer" dans le menu d'édition d'un axe pour réorganiser la structure du plan.
-- Amélioration de l'affichage des budgets agrégés dans le détail d'un plan.
-- Ajout de la possibilité de masquer des colonnes dans le tableau des sous-actions.
-- Ajout d'un compteur de documents.
-- Amélioration de la génération de rapports : utilisation de workers pour une meilleure performance et stockage des rapports générés.
-- Ajout d'une notification lors de l'ajout ou de l'invitation d'un nouveau membre de la collectivité.
-- Possibilité de supprimer une date de fin dans le tableau des sous-actions.
-- Amélioration de l'historique en mode visite.
+- Amélioration de l'édition en ligne (inline-edit) pour les champs de texte dans les fiches d'actions et les plans (#a6bcb1d, #defb299, #f99740b).
+- Refonte de l'onglet budget des fiches d'actions (#79d0d48).
+- Ajout de la possibilité de déplacer les fiches dans un plan (#19b2201, #a9b0beb).
+- Ajout d'un bouton pour ouvrir/fermer tous les axes/sous-axes d'un plan (#bd4480a).
+- Ajout de l'information COT (Code Type d'Organisme) pour les collectivités et dans les informations utilisateur (#ff525e8).
+- Amélioration de la gestion des notifications, avec la possibilité de les désactiver par utilisateur (#cbc4645, #cfb7699, #e9761a5).
+- Ajout de la gestion des sous-actions, incluant l'affichage dans le tableau de bord personnel et la possibilité de les modifier (#2624f36, #466128a, #5225f23, #6a90b1f, #802a2da).
+- Ajout de la possibilité de masquer des colonnes dans le tableau des sous-actions (#81405c8).
+- Amélioration de l'affichage des indicateurs liés aux axes (#6e065c1).
+- Ajout de la possibilité de modifier la confidentialité des actions d'un plan (#68dcf67).
+- Ajout d'un bouton pour demander la première étoile pour les labellisations (#ea0394c).
+- Ajout de la possibilité de modifier les services pilote et référent en mode édition multiple (#f95f059).
 
 ### Évolutions techniques
-
-- Mise à jour de Next.js, Vite et Nx.
-- Migration vers React 19.
-- Simplification du modèle de rôles et permissions.
-- Refactoring de l'import de plan.
-- Suppression de `drizzle-zod`.
-- Utilisation de tRPC pour la sauvegarde des actions statuts et des preuves de labellisation.
-- Migration des filtres de la page des collectivités sur nuqs.
-- Suppression de Datadog Logs et activation de Sentry Logs.
-- Amélioration de la gestion des types et des erreurs.
-- Utilisation de Turbopack pour les builds en production.
-- Upgrade de Storybook à la version 10.
-- Refonte de l'implémentation des Context/Provider.
-- Remplacement de `luxon` par des alternatives plus performantes.
-- Utilisation de `echarts` pour les graphiques.
-- Suppression du CSS DSFR et remplacement par des composants personnalisés.
-- Amélioration de la gestion des permissions et des accès.
+- Mise à jour de Next.js pour corriger des vulnérabilités liées aux Server Components (#c08fd38).
+- Mise à jour des dépendances Supabase (#57ae963).
+- Refactorisation du code pour utiliser tRPC pour la mise à jour des documents et des commentaires (#a218361, #f06cf09, #f9283a5).
+- Amélioration des performances des suppressions dans `indicateur_source_metadonnee` (#6c25968).
+- Suppression de l'utilisation de `drizzle-zod` (#2825f81).
+- Mise à jour de Storybook et des dépendances associées (#89425dc, #1d97524).
+- Mise à niveau de Nx, Vite et Next.js (#8819002).
+- Migration vers Turbopack pour le build en production et en développement (#d40c948, #4eb534b).
+- Suppression du CSS DSFR et remplacement par des composants du design system (#30315c4, #35bd0c2, #42f4d7d, #4bed871, #5ad57b7, #6135388, #74cc081, #87fa8b4, #9421394).
+- Simplification du modèle de rôles et permissions (#90420cc).
+- Migration des filtres de la page des collectivités sur nuqs (#804c35b).
 
 ### Autres changements
-
-- Ajout de tests e2e pour les nouvelles fonctionnalités.
-- Correction de bugs et amélioration de la stabilité de l'application.
-- Mise à jour de la documentation.
-- Amélioration de la gestion des notifications "toast".
-- Correction de problèmes de typage.
-- Amélioration de la performance de l'application.
-- Suppression de code inutilisé.
-- Mise à jour des dépendances.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Correction de problèmes de build.
-- Amélioration de la configuration de l'environnement de développement.
-- Ajout d'une whitelist pour l'envoi d'emails depuis la staging.
-- Correction de la règle de linter.
-- Mise à jour de la version de Supabase.
+- Ajout de tests e2e pour la demande de labellisation et l'audit (#7727929).
+- Ajout de tests unitaires pour la sauvegarde des actions statuts (#91e11d5).
+- Amélioration des logs pour le débogage des requêtes tRPC (#3ca7b83).
+- Ajout de documentation et de commentaires pour clarifier le code.
+- Correction de coquilles et de liens obsolètes (#0ea2709).
+- Ajout de la gestion des préférences utilisateur (#8f5f44e, #b9e0418, #cfb7699, #de2997d).
+- Suppression des tests e2e défaillants pour les actions commentaires (#d440905).
+- Ajout d'un correlationId pour faciliter le suivi des requêtes (#361d6ba).
+- Suppression du CSS DSFR du package UI (#1ac10ce).
+- Ajout de la gestion des erreurs Sentry (#29c75e8, #4f6a2b5, #95018da).

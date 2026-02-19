@@ -204,6 +204,8 @@
 │   │   │   │   │   │   │   │   ├── [actionId]
 │   │   │   │   │   │   │   │   │   ├── actions-liees
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── budget
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── details
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── documents
@@ -212,8 +214,6 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   │   │   ├── mesures-liees
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── moyens
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── notes
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
@@ -514,10 +514,6 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── profil
-│   │   │   │   │   ├── _components
-│   │   │   │   │   │   ├── modifier-profil.modal.tsx
-│   │   │   │   │   │   ├── resend-confirmation-link.button.tsx
-│   │   │   │   │   │   └── use-update-user.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── recherches
 │   │   │   │   │   ├── collectivites
@@ -562,6 +558,7 @@
 │   │   │   ├── ADEME-Methodo-Outil-trajectoire-reference_VF_Nov2024.pdf
 │   │   │   ├── Acte_engagement.docx
 │   │   │   ├── ademeLogo.png
+│   │   │   ├── email-header.jpg
 │   │   │   ├── export_audit_cae.xlsx
 │   │   │   ├── export_audit_eci.xlsx
 │   │   │   ├── export_cae.xlsx
@@ -748,6 +745,7 @@
 │   │   │   │   │       │   │   │   │   └── IndicateurCardMenu.tsx
 │   │   │   │   │       │   │   │   ├── IndicateurCardOptions.tsx
 │   │   │   │   │       │   │   │   ├── indicateur-card.skeleton.tsx
+│   │   │   │   │       │   │   │   ├── menu-actions.ts
 │   │   │   │   │       │   │   │   └── utils.ts
 │   │   │   │   │       │   │   ├── indicateurs-list
 │   │   │   │   │       │   │   │   ├── badge-list.tsx
@@ -1142,6 +1140,8 @@
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── delete-fiche.modal.tsx
 │   │   │   │   │   │   ├── delete-or-remove-fiche-sharing.modal.tsx
+│   │   │   │   │   │   ├── dropdowns
+│   │   │   │   │   │   │   └── instance-gouvernance.dropdown.tsx
 │   │   │   │   │   │   └── fiche-action-plans.utils.ts
 │   │   │   │   │   ├── show-fiche
 │   │   │   │   │   │   ├── components
@@ -1215,19 +1215,19 @@
 │   │   │   │   │   │   │   ├── moyens
 │   │   │   │   │   │   │   │   ├── budget
 │   │   │   │   │   │   │   │   │   ├── budget-type-change.modal.tsx
-│   │   │   │   │   │   │   │   │   ├── budget.rule.ts
 │   │   │   │   │   │   │   │   │   ├── budget.view.tsx
 │   │   │   │   │   │   │   │   │   ├── per-year-table
-│   │   │   │   │   │   │   │   │   │   ├── budget-per-year-new.row.tsx
-│   │   │   │   │   │   │   │   │   │   ├── budget-per-year-total.row.tsx
+│   │   │   │   │   │   │   │   │   │   ├── budget-per-year-form.context.tsx
+│   │   │   │   │   │   │   │   │   │   ├── budget-per-year.cells.tsx
 │   │   │   │   │   │   │   │   │   │   ├── budget-per-year.form-fields.tsx
-│   │   │   │   │   │   │   │   │   │   ├── budget-per-year.row.tsx
 │   │   │   │   │   │   │   │   │   │   ├── delete-budget.button.tsx
 │   │   │   │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   │   │   │   ├── summary-table
 │   │   │   │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   │   │   │   ├── types.ts
 │   │   │   │   │   │   │   │   │   └── use-budget-form.ts
+│   │   │   │   │   │   │   │   ├── budget.content.tsx
+│   │   │   │   │   │   │   │   ├── budget.tsx
 │   │   │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   │   │   └── EditableSection.tsx
 │   │   │   │   │   │   │   │   ├── empty-view
@@ -1237,21 +1237,26 @@
 │   │   │   │   │   │   │   │   │   └── investissement.picto.tsx
 │   │   │   │   │   │   │   │   ├── financeurs
 │   │   │   │   │   │   │   │   │   ├── delete-financeur.button.tsx
-│   │   │   │   │   │   │   │   │   ├── financeur-table-new-row.tsx
-│   │   │   │   │   │   │   │   │   ├── financeur-table-row.tsx
+│   │   │   │   │   │   │   │   │   ├── financeur-actions.cell.tsx
+│   │   │   │   │   │   │   │   │   ├── financeur-form.context.tsx
+│   │   │   │   │   │   │   │   │   ├── financeur-montant.cell.tsx
+│   │   │   │   │   │   │   │   │   ├── financeur-name.cell.tsx
 │   │   │   │   │   │   │   │   │   ├── financeurs-table.tsx
 │   │   │   │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   │   │   │   └── use-financeur-form.ts
-│   │   │   │   │   │   │   │   ├── moyens.content.tsx
-│   │   │   │   │   │   │   │   ├── moyens.view.tsx
+│   │   │   │   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   │   │   │   ├── use-draft-financeurs-storage.ts
+│   │   │   │   │   │   │   │   │   └── use-draft-financeurs.ts
 │   │   │   │   │   │   │   │   └── ressources-financements.view.tsx
 │   │   │   │   │   │   │   ├── navigation.tabs.tsx
 │   │   │   │   │   │   │   ├── notes
-│   │   │   │   │   │   │   │   ├── editable-note-row.tsx
 │   │   │   │   │   │   │   │   ├── metadata-note.view.tsx
 │   │   │   │   │   │   │   │   ├── note-deletion.modal.tsx
-│   │   │   │   │   │   │   │   ├── note-table-new-row.tsx
-│   │   │   │   │   │   │   │   ├── notes-table-schema.ts
+│   │   │   │   │   │   │   │   ├── note-form.context.tsx
+│   │   │   │   │   │   │   │   ├── note.actions.cell.tsx
+│   │   │   │   │   │   │   │   ├── note.description.cell.tsx
+│   │   │   │   │   │   │   │   ├── note.metadata.cell.tsx
+│   │   │   │   │   │   │   │   ├── note.year.cell.tsx
+│   │   │   │   │   │   │   │   ├── notes.picto.tsx
 │   │   │   │   │   │   │   │   ├── notes.table.tsx
 │   │   │   │   │   │   │   │   ├── notes.view.tsx
 │   │   │   │   │   │   │   │   └── notification.picto.tsx
@@ -1272,11 +1277,16 @@
 │   │   │   │   │   │   │   │   ├── use-fiche-documents.ts
 │   │   │   │   │   │   │   │   ├── use-fiche-financeurs.ts
 │   │   │   │   │   │   │   │   ├── use-fiche-indicateurs.ts
+│   │   │   │   │   │   │   │   ├── use-fiche-mesure.ts
 │   │   │   │   │   │   │   │   └── use-fiche-notes.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-create-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── use-delete-fiche.ts
+│   │   │   │   │   │   │   ├── use-delete-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── use-get-fiche.ts
+│   │   │   │   │   │   │   ├── use-list-instance-gouvernance-tags.ts
+│   │   │   │   │   │   │   ├── use-update-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheActionInfos.ts
@@ -1375,6 +1385,7 @@
 │   │   │   │   │   │   └── data
 │   │   │   │   │   │       ├── use-delete-budgets.ts
 │   │   │   │   │   │       ├── use-get-budget.ts
+│   │   │   │   │   │       ├── use-is-notification-enabled.ts
 │   │   │   │   │   │       ├── use-update-fiche.ts
 │   │   │   │   │   │       └── use-upsert-budgets.ts
 │   │   │   │   │   └── utils.ts
@@ -1463,7 +1474,7 @@
 │   │   │   │   │   │   │   │   ├── axe-description.tsx
 │   │   │   │   │   │   │   │   ├── axe-fiches.tsx
 │   │   │   │   │   │   │   │   ├── axe-header.tsx
-│   │   │   │   │   │   │   │   ├── axe-indicateurs.panel.tsx
+│   │   │   │   │   │   │   │   ├── axe-indicateurs.panel-content.tsx
 │   │   │   │   │   │   │   │   ├── axe-indicateurs.tsx
 │   │   │   │   │   │   │   │   ├── axe-menu.button.tsx
 │   │   │   │   │   │   │   │   ├── axe-section-title.tsx
@@ -1497,7 +1508,6 @@
 │   │   │   │   │       ├── generate-report.form.tsx
 │   │   │   │   │       ├── generate-report.modal.tsx
 │   │   │   │   │       ├── plan-fiche-selector.tsx
-│   │   │   │   │       ├── use-generate-pptx-plan-report-enabled.ts
 │   │   │   │   │       ├── use-generate-report.ts
 │   │   │   │   │       └── use-is-pending-report.ts
 │   │   │   │   └── sous-actions
@@ -1661,7 +1671,6 @@
 │   │   │   │   │   ├── useCycleLabellisation.ts
 │   │   │   │   │   ├── useEnvoiDemande.ts
 │   │   │   │   │   ├── useLabellisationParcours.ts
-│   │   │   │   │   ├── usePeutCommencerAudit.ts
 │   │   │   │   │   ├── useStartAudit.ts
 │   │   │   │   │   └── useValidateAudit.ts
 │   │   │   │   ├── litterals.ts
@@ -1894,6 +1903,7 @@
 │   │   │   │   │   └── tags
 │   │   │   │   │       ├── SelectTags.tsx
 │   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── select-tags-generic.tsx
 │   │   │   │   │       ├── useTagCreate.ts
 │   │   │   │   │       ├── useTagDelete.ts
 │   │   │   │   │       └── useTagUpdate.ts
@@ -2053,8 +2063,15 @@
 │   │   │   │   │   ├── use-access-levels.ts
 │   │   │   │   │   ├── use-is-access-edition-fiches-indicateurs-enabled.ts
 │   │   │   │   │   └── use-is-visitor.tsx
+│   │   │   │   ├── profil
+│   │   │   │   │   ├── modifier-profil.modal.tsx
+│   │   │   │   │   ├── profil-info.tsx
+│   │   │   │   │   ├── profil-notifications.tsx
+│   │   │   │   │   └── resend-confirmation-link.button.tsx
 │   │   │   │   ├── unverified-user-card.tsx
-│   │   │   │   └── use-update-email.ts
+│   │   │   │   ├── use-update-email.ts
+│   │   │   │   ├── use-update-user.ts
+│   │   │   │   └── use-user-preferences.ts
 │   │   │   └── utils
 │   │   │       ├── [deprecated]use-search-params.test.ts
 │   │   │       ├── [deprecated]use-search-params.ts
@@ -2077,6 +2094,7 @@
 │   │   │       │   └── use-nps-related-events-tracker.tsx
 │   │   │       ├── react-query
 │   │   │       │   └── use-mutation-cache-subscriber.tsx
+│   │   │       ├── scroll-reset.tsx
 │   │   │       ├── sentry
 │   │   │       │   ├── sentry-client.lazy.tsx
 │   │   │       │   ├── sentry.server.config.ts
@@ -2261,14 +2279,29 @@
 │   │   │   │   │   │   └── storage-object.table.ts
 │   │   │   │   │   ├── samples
 │   │   │   │   │   │   └── document_test.pdf
-│   │   │   │   │   └── store-document
-│   │   │   │   │       ├── store-document.errors.ts
-│   │   │   │   │       ├── store-document.router.ts
-│   │   │   │   │       └── store-document.service.ts
+│   │   │   │   │   ├── store-document
+│   │   │   │   │   │   ├── store-document.errors.ts
+│   │   │   │   │   │   ├── store-document.router.ts
+│   │   │   │   │   │   └── store-document.service.ts
+│   │   │   │   │   └── update-document
+│   │   │   │   │       ├── update-document.errors.ts
+│   │   │   │   │       ├── update-document.router.e2e-spec.ts
+│   │   │   │   │       ├── update-document.router.ts
+│   │   │   │   │       ├── update-document.schema.ts
+│   │   │   │   │       └── update-document.service.ts
 │   │   │   │   ├── handle-categories
 │   │   │   │   │   ├── list-categories.router.e2e-spec.ts
 │   │   │   │   │   ├── list-categories.router.ts
 │   │   │   │   │   └── list-categories.service.ts
+│   │   │   │   ├── handle-instance-gouvernance
+│   │   │   │   │   ├── handle-instance-gouvernance.errors.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.input.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.repository.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.result.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.router.e2e-spec.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.router.ts
+│   │   │   │   │   ├── handle-instance-gouvernance.service.ts
+│   │   │   │   │   └── handle-instance-gouvernance.test-fixture.ts
 │   │   │   │   ├── import-collectivite-relations
 │   │   │   │   │   ├── epci-perimetre.schema.ts
 │   │   │   │   │   ├── import-collectivite-relations.request.ts
@@ -2377,6 +2410,7 @@
 │   │   │   │       ├── categorie-tag.fixture.ts
 │   │   │   │       ├── categorie-tag.table.ts
 │   │   │   │       ├── financeur-tag.table.ts
+│   │   │   │       ├── instance-gouvernance.table.ts
 │   │   │   │       ├── libre-tag.table.ts
 │   │   │   │       ├── partenaire-tag.table.ts
 │   │   │   │       ├── personnes
@@ -2647,6 +2681,8 @@
 │   │   │   │   │   │   ├── list-fiches.router.ts
 │   │   │   │   │   │   └── list-fiches.service.ts
 │   │   │   │   │   ├── notify-pilote
+│   │   │   │   │   │   ├── notify-pilote-multi-fiches.email.tsx
+│   │   │   │   │   │   ├── notify-pilote-multi-fiches.props.ts
 │   │   │   │   │   │   ├── notify-pilote.email.tsx
 │   │   │   │   │   │   ├── notify-pilote.props.ts
 │   │   │   │   │   │   ├── notify-pilote.service.e2e-spec.ts
@@ -2671,6 +2707,7 @@
 │   │   │   │   │   │       ├── fiche-action-effet-attendu.table.ts
 │   │   │   │   │   │       ├── fiche-action-financeur-tag.table.ts
 │   │   │   │   │   │       ├── fiche-action-indicateur.table.ts
+│   │   │   │   │   │       ├── fiche-action-instance-gouvernance.ts
 │   │   │   │   │   │       ├── fiche-action-libre-tag.table.ts
 │   │   │   │   │   │       ├── fiche-action-lien.table.ts
 │   │   │   │   │   │       ├── fiche-action-partenaire-tag.table.ts
@@ -2755,6 +2792,7 @@
 │   │   │   │   │   │   ├── adapters
 │   │   │   │   │   │   │   ├── import-fiche-input-to-update-fiche-input.spec.ts
 │   │   │   │   │   │   │   ├── import-fiche-input-to-update-fiche-input.ts
+│   │   │   │   │   │   │   ├── import-plan-input-to-create-plan-aggregate-input.spec.ts
 │   │   │   │   │   │   │   └── import-plan-input-to-create-plan-aggregate-input.ts
 │   │   │   │   │   │   ├── factories
 │   │   │   │   │   │   │   ├── create-plan-import-input.factory.spec.ts
@@ -2769,6 +2807,9 @@
 │   │   │   │   │   │   │   ├── excel-parser.spec.ts
 │   │   │   │   │   │   │   └── excel-parser.ts
 │   │   │   │   │   │   ├── resolvers
+│   │   │   │   │   │   │   ├── instance-gouvernance.resolver.spec.ts
+│   │   │   │   │   │   │   ├── instance-gouvernance.resolver.ts
+│   │   │   │   │   │   │   ├── personne.resolver.spec.ts
 │   │   │   │   │   │   │   ├── personne.resolver.ts
 │   │   │   │   │   │   │   ├── resolve-entity.service.ts
 │   │   │   │   │   │   │   ├── tag.resolver.spec.ts
@@ -2926,10 +2967,14 @@
 │   │   │   │   │   ├── list-labellisations.controller.spec.ts
 │   │   │   │   │   ├── list-labellisations.controller.ts
 │   │   │   │   │   ├── list-labellisations.service.ts
-│   │   │   │   │   ├── liste-preuves
-│   │   │   │   │   │   ├── liste-preuves.input.ts
-│   │   │   │   │   │   ├── liste-preuves.router.ts
-│   │   │   │   │   │   └── liste-preuves.service.ts
+│   │   │   │   │   ├── list-preuves
+│   │   │   │   │   │   ├── list-preuves-audit.errors.ts
+│   │   │   │   │   │   ├── list-preuves-audit.input.ts
+│   │   │   │   │   │   ├── list-preuves-labellisation.errors.ts
+│   │   │   │   │   │   ├── list-preuves-labellisation.input.ts
+│   │   │   │   │   │   ├── list-preuves.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-preuves.router.ts
+│   │   │   │   │   │   └── list-preuves.service.ts
 │   │   │   │   │   ├── post-audit-scores.table.ts
 │   │   │   │   │   ├── pre-audit-scores.table.ts
 │   │   │   │   │   ├── request-labellisation
@@ -2941,6 +2986,7 @@
 │   │   │   │   │   │   ├── request-labellisation.rules.spec.ts
 │   │   │   │   │   │   └── request-labellisation.service.ts
 │   │   │   │   │   ├── start-audit
+│   │   │   │   │   │   ├── start-audit.errors.ts
 │   │   │   │   │   │   ├── start-audit.router.e2e-spec.ts
 │   │   │   │   │   │   ├── start-audit.router.ts
 │   │   │   │   │   │   └── start-audit.service.ts
@@ -3018,6 +3064,11 @@
 │   │   │   │   │   ├── snapshots.service.ts
 │   │   │   │   │   ├── snapshots.utils.ts
 │   │   │   │   │   └── upsert-snapshot.input.ts
+│   │   │   │   ├── update-action-commentaire
+│   │   │   │   │   ├── update-action-commentaire.errors.ts
+│   │   │   │   │   ├── update-action-commentaire.router.e2e-spec.ts
+│   │   │   │   │   ├── update-action-commentaire.router.ts
+│   │   │   │   │   └── update-action-commentaire.service.ts
 │   │   │   │   └── update-action-statut
 │   │   │   │       ├── can-update-action-statut.rules.spec.ts
 │   │   │   │       ├── get-action-status-create-to-complete-referentiel.spec.ts
@@ -3093,6 +3144,14 @@
 │   │   │   │   │   ├── author.utils.ts
 │   │   │   │   │   ├── dcp.table.ts
 │   │   │   │   │   └── invitation.table.ts
+│   │   │   │   ├── preferences
+│   │   │   │   │   ├── user-preference-key.schema.spec.ts
+│   │   │   │   │   ├── user-preference-key.schema.ts
+│   │   │   │   │   ├── user-preferences.errors.ts
+│   │   │   │   │   ├── user-preferences.repository.ts
+│   │   │   │   │   ├── user-preferences.router.e2e-spec.ts
+│   │   │   │   │   ├── user-preferences.router.ts
+│   │   │   │   │   └── user-preferences.service.ts
 │   │   │   │   ├── users
 │   │   │   │   │   ├── list-users
 │   │   │   │   │   │   ├── list-users.controller.spec.ts
@@ -3216,6 +3275,8 @@
 │   │   │       ├── sentry-init.ts
 │   │   │       ├── sleep.utils.ts
 │   │   │       ├── string.utils.ts
+│   │   │       ├── supabase
+│   │   │       │   └── supabase-cookie-parser.ts
 │   │   │       ├── test-fixture.utils.ts
 │   │   │       ├── tracking
 │   │   │       │   ├── api-tracking.interceptor.ts
@@ -3918,6 +3979,8 @@
 │       │   │       └── cron-compute-trajectoire.service.ts
 │       │   ├── main.ts
 │       │   ├── migrations
+│       │   │   ├── ingest-instance-gouvernance-migration-output.ts
+│       │   │   ├── migrate-instance-gouvernance-to-tags.ts
 │       │   │   └── migrate-notes-complementaires.ts
 │       │   ├── notion
 │       │   │   ├── notion-bug-creator
@@ -4132,6 +4195,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   └── type.sql
+│   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
 │   │   │   │   ├── delete_score_cron.sql
@@ -4213,6 +4277,7 @@
 │   │   │   │   ├── confidentialite@v2.92.0.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v2.40.0.sql
+│   │   │   │   ├── delete_metadonnee_perf.sql
 │   │   │   │   ├── detail.sql
 │   │   │   │   ├── detail@v2.80.0.sql
 │   │   │   │   ├── detail@v2.87.2.sql
@@ -4406,9 +4471,11 @@
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
+│   │   │   │   ├── clean_vues_rpc.sql
 │   │   │   │   ├── contenu.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
+│   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
 │   │   │   │   ├── preuve.sql
@@ -4545,6 +4612,7 @@
 │   │   │   │   ├── membre@v3.4.0.sql
 │   │   │   │   ├── modified_by_nom.sql
 │   │   │   │   ├── modified_by_trigger.sql
+│   │   │   │   ├── preferences.sql
 │   │   │   │   ├── referent_contacts.sql
 │   │   │   │   ├── remove_timescale.sql
 │   │   │   │   ├── schema.sql
@@ -4650,6 +4718,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   └── type.sql
+│   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
 │   │   │   │   ├── delete_score_cron.sql
@@ -4731,6 +4800,7 @@
 │   │   │   │   ├── confidentialite@v2.92.0.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v2.40.0.sql
+│   │   │   │   ├── delete_metadonnee_perf.sql
 │   │   │   │   ├── detail.sql
 │   │   │   │   ├── detail@v2.80.0.sql
 │   │   │   │   ├── detail@v2.87.2.sql
@@ -4924,9 +4994,11 @@
 │   │   │   │   ├── add_demande_associated_collectivite_id.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
+│   │   │   │   ├── clean_vues_rpc.sql
 │   │   │   │   ├── contenu.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
+│   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
 │   │   │   │   ├── preuve.sql
@@ -5063,6 +5135,7 @@
 │   │   │   │   ├── membre@v3.4.0.sql
 │   │   │   │   ├── modified_by_nom.sql
 │   │   │   │   ├── modified_by_trigger.sql
+│   │   │   │   ├── preferences.sql
 │   │   │   │   ├── referent_contacts.sql
 │   │   │   │   ├── remove_timescale.sql
 │   │   │   │   ├── schema.sql
@@ -5168,6 +5241,7 @@
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │       │   └── type.sql
+│   │       ├── creation_dune_table_instance_de_gouvernance.sql
 │   │       ├── cron
 │   │       │   ├── cron.sql
 │   │       │   ├── delete_score_cron.sql
@@ -5249,6 +5323,7 @@
 │   │       │   ├── confidentialite@v2.92.0.sql
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v2.40.0.sql
+│   │       │   ├── delete_metadonnee_perf.sql
 │   │       │   ├── detail.sql
 │   │       │   ├── detail@v2.80.0.sql
 │   │       │   ├── detail@v2.87.2.sql
@@ -5442,9 +5517,11 @@
 │   │       │   ├── add_demande_associated_collectivite_id.sql
 │   │       │   ├── business_update.sql
 │   │       │   ├── clean-import-json-table.sql
+│   │       │   ├── clean_vues_rpc.sql
 │   │       │   ├── contenu.sql
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v1.15.0.sql
+│   │       │   ├── historique_modified_by.sql
 │   │       │   ├── justification_ajustement.sql
 │   │       │   ├── justification_ajustement@v4.38.0.sql
 │   │       │   ├── preuve.sql
@@ -5581,6 +5658,7 @@
 │   │       │   ├── membre@v3.4.0.sql
 │   │       │   ├── modified_by_nom.sql
 │   │       │   ├── modified_by_trigger.sql
+│   │       │   ├── preferences.sql
 │   │       │   ├── referent_contacts.sql
 │   │       │   ├── remove_timescale.sql
 │   │       │   ├── schema.sql
@@ -5703,6 +5781,8 @@
 │   │   │   │   ├── discussions.pom.ts
 │   │   │   │   ├── discussions.spec.ts
 │   │   │   │   └── filter-discussions.pom.ts
+│   │   │   ├── documents
+│   │   │   │   └── documents.pom.ts
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── indicateurs
@@ -5731,9 +5811,12 @@
 │   │   │   ├── labellisations
 │   │   │   │   ├── labellisation.pom.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
-│   │   │   │   └── request-labellisation-non-cot.spec.ts
+│   │   │   │   ├── request-labellisation-non-cot.spec.ts
+│   │   │   │   ├── start-labellisation-cot.spec.ts
+│   │   │   │   └── validate-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
 │   │   │   └── scores
+│   │   │       ├── create-update-document.spec.ts
 │   │   │       ├── referentiel-scores.pom.ts
 │   │   │       └── update-action-statut.spec.ts
 │   │   ├── shared
@@ -5944,14 +6027,15 @@
 │   │   │       │   ├── browser-client.ts
 │   │   │       │   ├── cookie-options.ts
 │   │   │       │   ├── get-auth-headers.ts
-│   │   │       │   ├── middleware-client.ts
+│   │   │       │   ├── proxy-client.ts
 │   │   │       │   ├── server-client.ts
 │   │   │       │   ├── sign-out-user.server.ts
 │   │   │       │   └── use-supabase.tsx
 │   │   │       └── trpc
-│   │   │           ├── query-client.ts
-│   │   │           ├── server-client.ts
-│   │   │           └── trpc-with-react-query.provider.tsx
+│   │   │           ├── react-query-client.ts
+│   │   │           ├── trpc-server-client.ts
+│   │   │           ├── trpc-with-react-query.provider.tsx
+│   │   │           └── trpc.utils.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.lib.json
 │   │   ├── tsconfig.spec.json
@@ -5972,6 +6056,7 @@
 │   │   │   │   ├── discussion.schema.ts
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── bibliotheque-fichier.schema.ts
+│   │   │   │   │   ├── preuve-audit-with-fichier.schema.ts
 │   │   │   │   │   ├── preuve-audit.schema.ts
 │   │   │   │   │   ├── preuve-base.schema.ts
 │   │   │   │   │   ├── preuve-complementaire.schema.ts
@@ -5986,6 +6071,7 @@
 │   │   │   │   ├── financeur-tag.schema.ts
 │   │   │   │   ├── identite-collectivite.schema.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── instance-gouvernance.schema.ts
 │   │   │   │   ├── libre-tag.schema.ts
 │   │   │   │   ├── membre.schema.ts
 │   │   │   │   ├── partenaire-tag.schema.ts
@@ -6077,6 +6163,7 @@
 │   │   │   ├── referentiels
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── action-categorie.enum.schema.ts
+│   │   │   │   │   ├── action-commentaire.schema.ts
 │   │   │   │   │   ├── action-definition-tag.schema.ts
 │   │   │   │   │   ├── action-definition.schema.ts
 │   │   │   │   │   ├── action-origine.schema.ts
@@ -6099,9 +6186,12 @@
 │   │   │   │   │   ├── labellisation.schema.ts
 │   │   │   │   │   ├── parcours-labellisation-status.enum.ts
 │   │   │   │   │   ├── parcours-labellisation.schema.ts
-│   │   │   │   │   └── request-labellisation
-│   │   │   │   │       ├── request-labellisation.rules-errors.ts
-│   │   │   │   │       └── request-labellisation.rules.ts
+│   │   │   │   │   ├── request-labellisation
+│   │   │   │   │   │   ├── request-labellisation.rules-errors.ts
+│   │   │   │   │   │   └── request-labellisation.rules.ts
+│   │   │   │   │   └── start-audit
+│   │   │   │   │       ├── start-audit.rules-errors.ts
+│   │   │   │   │       └── start-audit.rules.ts
 │   │   │   │   ├── referentiel-definition.schema.ts
 │   │   │   │   ├── referentiel-id.enum.ts
 │   │   │   │   ├── referentiel-tag.schema.ts
@@ -6139,6 +6229,7 @@
 │   │   │   │   ├── dcp.schema.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── user-info.schema.ts
+│   │   │   │   ├── user-preferences.schema.ts
 │   │   │   │   └── user-with-roles-and-permissions.schema.ts
 │   │   │   └── utils
 │   │   │       ├── application-domains.enum.ts
@@ -6160,6 +6251,8 @@
 │   │   │       ├── number.utils.ts
 │   │   │       ├── pagination.schema.ts
 │   │   │       ├── preset.ts
+│   │   │       ├── supabase
+│   │   │       │   └── supabase-url-to-auth-cookie-name.adapter.ts
 │   │   │       ├── version.models.ts
 │   │   │       └── webhooks
 │   │   │           ├── webhook-configuration.schema.ts
@@ -6746,4 +6839,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1194 directories, 5674 files
+1203 directories, 5758 files
