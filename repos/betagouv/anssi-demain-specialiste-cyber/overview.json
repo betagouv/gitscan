@@ -1,52 +1,53 @@
 {
   "url": "https://github.com/betagouv/anssi-demain-specialiste-cyber",
   "name": "anssi-demain-specialiste-cyber",
-  "description": "Site web vitrine de la campagne « DemainSpécialisteCyber ». Ce site a pour but de promouvoir et d'informer sur les métiers de la cybersécurité.",
+  "description": "Site web vitrine de la campagne « DemainSpécialisteCyber ». Il présente des ressources et des informations sur la cybersécurité.",
   "language": "TypeScript",
   "features": [
-    "Catalogue de jeux",
-    "Informations sur les métiers de la cybersécurité",
-    "Dépôt de jeux",
-    "Recherche",
-    "Espace pour les enseignants",
     "Gestion des utilisateurs",
-    "Réactions aux jeux"
+    "Création et gestion de jeux",
+    "Recherche de ressources",
+    "Affichage de fiches métiers",
+    "Gestion des événements",
+    "Soumission de jeux"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
     "PostgreSQL",
+    "bcrypt",
+    "jsonwebtoken",
     "Knex",
-    "Svelte",
-    "Vite",
+    "Sentry",
     "axios",
     "zod",
     "@lab-anssi/ui-kit"
   ],
   "components": [
-    "Frontend Svelte",
-    "Backend Node.js (Express)",
+    "Backend Node.js avec Express",
     "Base de données PostgreSQL",
+    "Frontend Svelte",
     "API REST",
-    "Composants UI Kit"
+    "Authentification OIDC",
+    "Gestion des erreurs avec Sentry"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": []
   },
   "tests": [
-    "Vitest",
     "Jest",
+    "Vitest",
     "Testing Library"
   ],
   "workflows": [
     "déploiement.yml",
     "integration-continue.yml"
   ],
-  "lastActivity": "2026-01-23T13:46:09Z",
+  "lastActivity": "2026-02-18T09:56:16+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -60,10 +61,9 @@
     "cybersécurité",
     "formation",
     "jeux",
-    "métiers",
-    "ANSSI",
+    "ressources",
     "TypeScript",
-    "Svelte",
-    "Node.js"
+    "Node.js",
+    "Svelte"
   ]
 }

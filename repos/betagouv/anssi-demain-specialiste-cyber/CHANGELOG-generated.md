@@ -1,18 +1,21 @@
-## Changelog : anssi-demain-specialiste-cyber (derniers 30 jours)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées au site web "DemainSpécialisteCyber". Les modifications incluent des mises à jour de contenu, notamment l'ajout d'une section dédiée au kit de communication, des corrections d'erreurs lors de la création de jeux et des améliorations de l'interface utilisateur, comme le remplacement de certaines cartes sur la page d'accueil. Une correction de sécurité a également été appliquée.
+Les dernières mises à jour du site "DemainSpécialisteCyber" se concentrent sur la correction de bugs, notamment liés à la soumission et à la création de jeux, ainsi que sur l'amélioration de la sécurité en mettant à jour certaines dépendances. Des ajustements ont également été apportés à l'interface utilisateur, notamment le remplacement d'un bloc par le kit de communication.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section dédiée au kit de communication sur le site web.
-- Remplacement de la troisième carte sur la page d'accueil (#b4076fb).
-- Amélioration du message d'erreur affiché lors de la création d'un jeu (#6bd6343).
-- Utilisation du nouveau formulaire pour la création de jeux (#dc68094, #201f162).
+- Correction d'un bug empêchant le renvoi correct des résultats du cache en cas d'erreur Grist. (#62d1e8a)
+- Désactivation du bouton de soumission du formulaire de jeu pour éviter des soumissions incorrectes. (#459449e, #560b534)
+- Amélioration du message d'erreur affiché lors de la création d'un jeu pour une meilleure clarté. (#6bd6343)
+- Remplacement du bloc "cyberenjeux" par le "kit de communication" pour mettre en avant de nouvelles ressources. (#70719da)
+- Ajout de la section "kit de communication". (#812479f)
 
 ### Évolutions techniques
-- Correction d'une vulnérabilité de sécurité en utilisant une version corrigée de QS (#ec929bd).
+- Mise à jour de la dépendance `axios` vers la version 1.13.5 pour corriger des vulnérabilités de sécurité. (#8273d24)
+- Mise à jour de la dépendance `fast-xml-parser` vers la version 5.3.6 pour corriger des vulnérabilités de sécurité. (#006d066)
+- Correction de vulnérabilités de dépendances. (#1090414)
 
 ### Autres changements
-- Suppression de logs d'investigation inutiles (#505fb53).
-- Ajout temporaire de logs pour le débogage de l'erreur de création de jeu (#b1572b0, #9ea2379).
-- Amélioration du formattage Svelte dans VS Code (#f4487af).
+- Suppression de logs d'investigation non nécessaires. (#505fb53)
+- Ajout de logs temporaires pour faciliter le débogage des erreurs de création de jeu. (#b1572b0, #9ea2379)
+- Amélioration du formattage Svelte dans l'environnement de développement VSCode. (#f4487af)
