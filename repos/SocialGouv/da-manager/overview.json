@@ -1,41 +1,52 @@
 {
-  "url": "https://github.com/socialgouv/da-manager",
+  "url": "https://github.com/SocialGouv/da-manager",
   "name": "da-manager",
-  "description": "Ce projet permet de construire un document d'architecture. Il offre une interface pour définir et structurer les éléments clés d'une architecture logicielle.",
+  "description": "Ce projet est un formulaire pour construire un document d'architecture. Il permet de créer et de gérer des schémas d'architecture de manière structurée.",
   "language": "TypeScript",
   "features": [
-    "Création de documents d'architecture",
+    "Gestion de documents d'architecture",
     "Édition de schémas",
     "Exportation en PDF",
-    "Authentification utilisateur"
+    "Authentification utilisateur",
+    "Gestion des accès",
+    "Historisation des versions"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
-    "@react-pdf/renderer",
-    "@excalidraw/excalidraw",
-    "@gouvfr/dsfr",
-    "next-auth"
+    "React",
+    "Drizzle ORM",
+    "PostgreSQL",
+    "NextAuth",
+    "Excalidraw",
+    "Geist",
+    "sass"
   ],
   "components": [
-    "Frontend Next.js",
+    "Frontend React",
     "API REST",
-    "Composants React",
-    "Schéma Excalidraw"
+    "Base de données PostgreSQL",
+    "Composants DSFR",
+    "Authentification NextAuth"
   ],
   "auth": {
     "methods": [
       "oauth2"
     ],
-    "providers": [
-      "GitHub"
-    ]
+    "providers": []
   },
-  "tests": null,
+  "tests": [
+    "Vitest"
+  ],
   "workflows": [
+    "ci.yaml",
+    "deactivate.yaml",
+    "preproduction.yaml",
+    "production.yaml",
+    "release.yaml",
     "review.yaml"
   ],
-  "lastActivity": "2026-01-31T23:44:24+01:00",
+  "lastActivity": "2026-02-17T02:44:58+00:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -43,14 +54,16 @@
     "stars": 0,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 0
+    "openIssues": 1
   },
   "tags": [
     "architecture",
-    "software",
+    "document",
+    "form",
     "typescript",
+    "react",
     "nextjs",
-    "diagram",
-    "documentation"
+    "postgresql",
+    "drizzle"
   ]
 }
