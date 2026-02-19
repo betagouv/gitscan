@@ -1,27 +1,29 @@
 {
   "url": "https://github.com/betagouv/python-buildpack",
   "name": "python-buildpack",
-  "description": "Ce buildpack permet de déployer des applications Python sur des plateformes comme Scalingo ou Heroku. Il s'appuie sur Pipenv et pip pour gérer les dépendances et offre une configuration simple pour les frameworks web populaires.",
-  "language": "Python",
+  "description": "Ce buildpack permet de déployer des applications Python sur des plateformes comme Heroku, en utilisant Pipenv, pip et d'autres outils. Il supporte des frameworks web populaires comme Django et Flask et nécessite que les processus web s'attachent au port $PORT.",
+  "language": "Ruby",
   "features": [
     "Gestion des dépendances Python",
     "Support de Pipenv et pip",
-    "Configuration pour Django et Flask",
-    "Déploiement simplifié"
+    "Déploiement d'applications Django et Flask",
+    "Configuration automatique de Gunicorn",
+    "Support de GDAL/GEOS/PROJ (déprécié)"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Pipenv",
     "pip",
     "Django",
     "Flask",
-    "Gunicorn"
+    "Gunicorn",
+    "SQLite3"
   ],
   "components": [
     "Buildpack",
-    "Pipenv",
-    "Pip",
-    "Environnement d'exécution Python"
+    "Scripts de configuration",
+    "Images Docker (base)",
+    "Gestionnaire de dépendances"
   ],
   "auth": {
     "methods": [
@@ -41,13 +43,13 @@
     "openIssues": 0
   },
   "tags": [
-    "python",
-    "buildpack",
-    "pipenv",
-    "django",
-    "flask",
-    "deployment",
-    "scalingo",
-    "heroku"
+    "Python",
+    "Buildpack",
+    "Heroku",
+    "Pipenv",
+    "Django",
+    "Flask",
+    "Gunicorn",
+    "Déploiement"
   ]
 }
