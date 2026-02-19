@@ -1,11 +1,11 @@
-## Changelog : grist-custom-widgets-fr-admin (derniers 30 jours)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au projet au cours du dernier mois. Les principales évolutions concernent l'amélioration du widget "insitu" permettant la mise à jour simultanée de plusieurs indicateurs et l'intégration d'une nouvelle API de géocodage fournie par l'IGN pour une meilleure précision et fiabilité.
+Ce changelog présente les récentes améliorations apportées aux widgets personnalisés pour Grist, destinés à l'administration française. Les changements se concentrent principalement sur l'amélioration du widget de géocodage avec l'intégration d'une nouvelle API fournie par l'IGN.
 
 ### Évolutions fonctionnelles
-- Amélioration du widget "insitu" : il est désormais possible de mettre à jour plusieurs indicateurs dans plusieurs colonnes en parallèle. (#153)
-- Géocodage : Utilisation de la nouvelle API de géocodage de l'IGN, offrant une meilleure qualité de service.
+- **Géocodage :** Utilisation de la nouvelle API IGN pour le widget de géocodage. (#167)
+- **Documentation :** Mise à jour du lien de l'API dans le README du widget de géocodage. (#47f3963)
 
 ### Évolutions techniques
-- Intégration de la nouvelle API de géocodage IGN.
+- **Next.js :** Mise à jour de Next.js de la version 16.0.10 à la version 16.1.5. (#164, #79b31ed)
