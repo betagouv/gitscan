@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/fermeture-eclair",
   "name": "fermeture-eclair",
-  "description": "Fermeture éclair permet de fermer automatiquement un dépôt lorsqu'un incident GitGuardian est déclenché. Cela donne plus de temps pour réagir de manière appropriée à la fuite.",
+  "description": "Fermeture éclair permet de fermer automatiquement un dépôt lorsqu'un incident GitGuardian est déclenché, offrant ainsi plus de temps pour réagir.",
   "language": "TypeScript",
   "features": [
     "Gestion des alertes",
-    "Intégration avec GitGuardian",
     "Automatisation de la fermeture de dépôt",
-    "Notifications Mattermost"
+    "Intégration avec GitGuardian",
+    "Interface utilisateur pour la configuration"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,18 +19,20 @@
     "dotenv"
   ],
   "components": [
-    "Backend Express",
+    "Backend Node.js avec Express",
     "Frontend React",
     "Base de données PostgreSQL",
     "API REST"
   ],
   "auth": {
     "methods": [
-      "none"
-    ]
+      "api-key"
+    ],
+    "providers": []
   },
   "tests": [
-    "Jest"
+    "Jest",
+    "Testing Library"
   ],
   "workflows": [],
   "lastActivity": "2023-09-21T17:32:49Z",
@@ -45,10 +47,10 @@
   },
   "tags": [
     "GitGuardian",
-    "sécurité",
     "automatisation",
+    "sécurité",
     "TypeScript",
-    "PostgreSQL",
-    "React"
+    "React",
+    "PostgreSQL"
   ]
 }
