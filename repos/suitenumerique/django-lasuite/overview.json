@@ -1,35 +1,37 @@
 {
   "url": "https://github.com/suitenumerique/django-lasuite",
   "name": "django-lasuite",
-  "description": "Une bibliothèque Django pour les projets \"La Suite numérique\" et Proconnected. Elle fournit des outils et des composants communs pour simplifier le développement.",
+  "description": "Une bibliothèque Django pour les projets \"La Suite numérique\" et Proconnected. Elle fournit des fonctionnalités communes et des outils pour l'authentification, la gestion des logiciels malveillants et l'intégration avec des services tiers.",
   "language": "Python",
   "features": [
     "Authentification OIDC",
-    "Gestion des jetons",
-    "Analyse de logiciels malveillants",
-    "Envoi d'emails",
-    "Gestion de la configuration"
+    "Gestion des logiciels malveillants",
+    "Intégration marketing (Brevo)",
+    "Gestion des jetons JWT",
+    "Sécurité des API (resource server)"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "Django",
     "djangorestframework",
     "mozilla-django-oidc",
     "PyJWT",
-    "requests"
+    "requests",
+    "django-configurations"
   ],
   "components": [
     "Backend Django",
     "API REST",
-    "Composants OIDC",
-    "Tâches asynchrones (Celery)",
-    "Modules de configuration"
+    "Authentification OIDC",
+    "Gestionnaire de tâches (Celery)",
+    "Modules d'analyse de logiciels malveillants",
+    "Intégration avec des services marketing"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session",
-      "jwt"
+      "jwt",
+      "session"
     ],
     "providers": []
   },
@@ -42,22 +44,23 @@
     "publish.yml",
     "tests.yml"
   ],
-  "lastActivity": "2026-01-27T12:17:06+01:00",
+  "lastActivity": "2026-02-19T10:53:56+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 20,
+    "stars": 50,
     "forks": 5,
     "contributors": null,
-    "openIssues": 7
+    "openIssues": 10
   },
   "tags": [
     "Django",
     "OIDC",
     "Authentification",
     "Sécurité",
-    "Malware",
-    "API"
+    "API",
+    "Logiciel malveillant",
+    "Marketing"
   ]
 }
