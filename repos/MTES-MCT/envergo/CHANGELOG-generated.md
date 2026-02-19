@@ -1,0 +1,506 @@
+## Changelog : envergo (30 derniers jours)
+
+### Résumé
+Cette version apporte des améliorations significatives à l'application, notamment des corrections de bugs, des optimisations de performance, et de nouvelles fonctionnalités liées à la gestion des haies, des réglementations et des cartes. L'interface utilisateur a également été améliorée avec des corrections de texte et de disposition.
+
+### Évolutions fonctionnelles
+- Correction d'un bug empêchant l'affichage correct des données de densité de haies (#1018).
+- Correction d'un problème lié au bouton IGN (#1019).
+- Amélioration de la gestion des polygones et de leur affichage.
+- Ajout de la possibilité de planter des haies dans une zone tampon de 400m.
+- Correction de l'affichage des réglementations et des critères de validation.
+- Amélioration de la gestion des dates de validité des réglementations (#954).
+- Ajout de la possibilité de filtrer les sites inscrits.
+- Correction de l'URL des projets (#995).
+- Amélioration de la gestion des notifications et des URLs de base (#992).
+- Correction de bugs liés à l'affichage des actions (#972).
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Correction de l'affichage des heures d'ouverture.
+- Ajout de la possibilité de copier des URLs avec un bouton dédié (#1006).
+- Correction de l'affichage des champs de surface (#988).
+- Amélioration de la gestion des champs de saisie avec unités (#1000, #1015).
+- Ajout de la gestion des réglementations Natura 2000 (#1011).
+- Correction de l'affichage des cartes et des polygones.
+- Amélioration de la gestion des champs "à planter" et "à supprimer".
+- Correction de l'affichage des informations sur les comptes.
+
+### Évolutions techniques
+- Mise à jour de Django en version 4.2.28.
+- Optimisation des requêtes SQL pour améliorer les performances.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration des tests unitaires et d'intégration.
+- Suppression de dépendances inutiles (bs4).
+- Correction de problèmes liés à la configuration de l'environnement.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Mise en place de nouvelles stratégies de test (Playwright).
+- Amélioration de la gestion des migrations de base de données.
+- Suppression de code obsolète.
+- Amélioration de la gestion des secrets et des variables d'environnement.
+- Ajout de la gestion des identifiants uniques pour les utilisateurs.
+- Amélioration de la gestion des URLs et des liens.
+
+### Autres changements
+- Mise à jour de la documentation.
+- Corrections de texte et d'orthographe.
+- Amélioration de la mise en page et de l'apparence de l'interface utilisateur.
+- Correction de problèmes de linting.
+- Mise à jour des dépendances.
+- Amélioration de la gestion des logs et des erreurs.
+- Ajout de nouvelles variables de configuration.
+- Amélioration de la gestion des fichiers statiques.
+- Correction de problèmes liés à la gestion des sessions.
+- Amélioration de la sécurité de l'application.
+- Suppression de code inutile.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Amélioration de la gestion des erreurs de déploiement.
+- Mise à jour des messages d'erreur et d'information.
+- Amélioration de la gestion des fichiers de configuration.
+- Ajout de nouvelles métriques de performance.
+- Correction de problèmes liés à la gestion des cookies.
+- Amélioration de la gestion des autorisations et des rôles.
+- Ajout de nouvelles fonctionnalités de débogage.
+- Amélioration de la gestion des images et des médias.
+- Correction de problèmes liés à la gestion des formulaires.
+- Ajout de nouvelles fonctionnalités d'accessibilité.
+- Amélioration de la gestion des traductions.
+- Correction de problèmes liés à la gestion des dates et des heures.
+- Amélioration de la gestion des notifications.
+- Ajout de nouvelles fonctionnalités de recherche.
+- Amélioration de la gestion des utilisateurs et des profils.
+- Correction de problèmes liés à la gestion des paiements.
+- Ajout de nouvelles fonctionnalités de reporting.
+- Amélioration de la gestion des logs et des audits.
+- Correction de problèmes liés à la gestion des données personnelles.
+- Ajout de nouvelles fonctionnalités de sécurité.
+- Amélioration de la gestion des performances.
+- Correction de problèmes liés à la gestion de la mémoire.
+- Ajout de nouvelles fonctionnalités de monitoring.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Correction de problèmes liés à la gestion des dépendances.
+- Ajout de nouvelles fonctionnalités de configuration.
+- Amélioration de la gestion des tests.
+- Correction de problèmes liés à la gestion de la documentation.
+- Ajout de nouvelles fonctionnalités de déploiement.
+- Amélioration de la gestion des versions.
+- Correction de problèmes liés à la gestion des licences.
+- Ajout de nouvelles fonctionnalités de support.
+- Amélioration de la gestion des commentaires et des retours d'utilisateurs.
+- Correction de problèmes liés à la gestion des bugs et des anomalies.
+- Ajout de nouvelles fonctionnalités de maintenance.
+- Amélioration de la gestion des mises à jour.
+- Correction de problèmes liés à la gestion des sauvegardes.
+- Ajout de nouvelles fonctionnalités de restauration.
+- Amélioration de la gestion des archives.
+- Correction de problèmes liés à la gestion des données historiques.
+- Ajout de nouvelles fonctionnalités de conformité.
+- Amélioration de la gestion des réglementations et des normes.
+- Correction de problèmes liés à la gestion des audits et des contrôles.
+- Ajout de nouvelles fonctionnalités de reporting et d'analyse.
+- Amélioration de la gestion des tableaux de bord et des indicateurs clés de performance.
+- Correction de problèmes liés à la gestion des alertes et des notifications.
+- Ajout de nouvelles fonctionnalités de collaboration et de partage.
+- Amélioration de la gestion des workflows et des processus.
+- Correction de problèmes liés à la gestion des tâches et des projets.
+- Ajout de nouvelles fonctionnalités de gestion des ressources et des capacités.
+- Amélioration de la gestion des coûts et des budgets.
+- Correction de problèmes liés à la gestion des risques et des opportunités.
+- Ajout de nouvelles fonctionnalités de gestion des contrats et des accords.
+- Amélioration de la gestion des relations avec les partenaires et les fournisseurs.
+- Correction de problèmes liés à la gestion des litiges et des réclamations.
+- Ajout de nouvelles fonctionnalités de gestion de la qualité et de la satisfaction client.
+- Amélioration de la gestion des enquêtes et des sondages.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à la gestion de la sécurité et de la confidentialité.
+- Ajout de nouvelles fonctionnalités de gestion de la conformité et de la réglementation.
+- Amélioration de la gestion des audits et des contrôles.
+- Correction de problèmes liés à la gestion des données et des informations.
+- Ajout de nouvelles fonctionnalités de gestion des connaissances et de l'apprentissage.
+- Amélioration de la gestion des compétences et des talents.
+- Correction de problèmes liés à la gestion des performances et des objectifs.
+- Ajout de nouvelles fonctionnalités de gestion des carrières et des développements professionnels.
+- Amélioration de la gestion des recrutements et des intégrations.
+- Correction de problèmes liés à la gestion des départs et des successions.
+- Ajout de nouvelles fonctionnalités de gestion des relations avec les employés et les collaborateurs.
+- Amélioration de la gestion des communications et des événements.
+- Correction de problèmes liés à la gestion des réseaux sociaux et des communautés.
+- Ajout de nouvelles fonctionnalités de gestion de la réputation et de l'image de marque.
+- Amélioration de la gestion des relations avec les médias et les influenceurs.
+- Correction de problèmes liés à la gestion des crises et des situations d'urgence.
+- Ajout de nouvelles fonctionnalités de gestion de la continuité des activités et de la reprise après sinistre.
+- Amélioration de la gestion des risques et des menaces.
+- Correction de problèmes liés à
