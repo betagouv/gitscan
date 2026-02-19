@@ -1,56 +1,41 @@
 ## Changelog : verseau2 (30 derniers jours)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de la stabilité, de la performance et des fonctionnalités de verseau2. Des corrections de bugs ont été apportées, notamment concernant le traitement des fichiers Sandre et la gestion des droits d'accès. L'application bénéficie également de l'ajout d'indicateurs pour le tableau de bord et d'une meilleure gestion des logs et des erreurs.
+Les dernières mises à jour de Verseau2 se concentrent sur l'amélioration de la robustesse, l'ajout de nouvelles fonctionnalités pour les administrateurs et les utilisateurs experts, ainsi que l'optimisation des performances et des tests. Des contrôles de conformité supplémentaires ont été implémentés, et l'interface utilisateur a été améliorée pour une meilleure expérience.
 
 ### Évolutions fonctionnelles
-
-- Ajout d'indicateurs pour les stations liées à l'utilisateur, avec pagination dans les groupes de contrôles (#9).
-- Normalisation des adresses email reçues de Cerbere (passage en minuscules).
-- Ajout de la gestion de plusieurs erreurs du parser Sandre.
-- Amélioration de la gestion des droits d'accès utilisateur, notamment avec l'ajout de l'intervenant dans l'objet utilisateur authentifié (#8).
-- Ajout de l'année de référence des indicateurs.
-- Ajout d'icônes aux contrôles Sandre.
-- Correction d'un bug empêchant l'envoi de plusieurs emails en cas d'erreurs.
-- Correction d'un problème de caractères spéciaux dans le nom des fichiers déposés.
+- Ajout d'un accès administrateur pour les "expert national verseau" permettant le téléchargement de fichiers XML (#18).
+- Implémentation de l'envoi d'un fichier "acknowledge" après le transfert du XML (#17).
+- Ajout d'indicateurs pour les stations liées à l'utilisateur avec pagination et année de référence (#9).
+- Amélioration de la gestion des droits d'accès utilisateur et ajout de l'intervenant dans l'objet utilisateur authentifié (#8).
+- Normalisation des emails reçus de Cerbere en les convertissant en minuscules.
+- Ajout d'icônes aux contrôles Sandre dans l'interface utilisateur.
+- Amélioration de la structure des titres et ajout de séparateurs sur la page des contrôles.
+- Ajout du contrôle CBPO (054).
 
 ### Évolutions techniques
-
-- Ajout d'index sur certaines colonnes de la base de données pour améliorer les performances.
-- Refactor de la gestion des logs avec l'utilisation du `LoggerService` et l'ajout de décorateurs `TraceCalls` pour le suivi des appels de méthodes.
-- Mise en place d'un cache géré par un interceptor.
-- Amélioration des tests E2E pour l'API et le worker, avec un renforcement de la configuration des droits d'accès.
+- Refactorisation de la gestion des logs avec l'utilisation de `LoggerService` et l'ajout de décorateurs `TraceCalls` pour le suivi des appels de méthode.
+- Amélioration des performances des requêtes d'indicateurs.
+- Optimisation de la pool de connexions PostgreSQL pour faciliter le scaling.
+- Ajout d'index sur certaines colonnes de la base de données.
+- Mise à jour des dépendances vulnérables (#3b862cb).
+- Utilisation d'une librairie commune non orientée domaine pour partager du code entre le backend et le frontend.
+- Suppression du `correlation id` dans `traceCalls`.
+- Passage du service logger à Transient pour éviter des problèmes de retry.
 - Mutualisation des mocks et des datasets pour les tests.
-- Découpage des tâches pour éviter les tâches trop longues lors du traitement des données Sandre.
-- Correction d'une race condition lors de la mise à jour des dépôts.
-- Réduction de la poolSize PostgreSQL pour l'API et le worker afin de faciliter le scaling.
-- Passage du service Logger à Transient pour résoudre un problème de test.
-- Suppression du correlation id dans traceCalls.
-- Correction d'une erreur de clé dupliquée lors du traitement des contrôles Sandre (timeout des jobs Sandre passé à 2h).
-- Ajout d'un préfixe aux queues pour les environnements avec une base de données partagée (recette, environnements spécifiques).
-- Correction d'une erreur de typage dans le code TypeScript.
-- Correction d'un problème de résolution qui causait une erreur au runtime.
-- Amélioration des performances de la requête des indicateurs.
-- Suppression de throw pour éviter un retry de la file.
+- Ajout de tests E2E pour l'API et le worker, avec amélioration du seeding des droits utilisateurs.
+- Correction d'une race condition potentielle lors de la mise à jour d'un dépôt.
 
 ### Autres changements
-
-- Ajout d'une documentation AGENTS.md adaptée à une structure mémoire de type 3 couches.
-- Mise à jour des dépendances vulnérables.
+- Ajout de la documentation AGENTS.md adaptée à une structure en trois couches.
+- Correction de bugs mineurs et améliorations de la structure du code.
 - Ajout de vérification du contenu du dump avant la restauration.
-- Ajout de skills dans la documentation.
-- Correction de la structure des titres dans la table des indicateurs.
-- Ajout de séparateurs sur la page des contrôles.
-- Ajout d'une librairie commune non orientée domaine.
-- Correction d'un bug dans les tests E2E.
-- Correction d'un import manquant dans les tests.
-- Bypass de la transpilation de la librairie pour le développement.
-- Ajout de la possibilité de créer une nouvelle table PostgreSQL pour un test spécifique.
-- Limitation de la longueur du correlationId à 9 caractères.
-- Correction d'un test LoggerService en erreur.
-- Correction d'un bug lié au typage de CTL05.
-- Correction d'un bug lié à l'extraction du mapper de réponse Sandre.
-- Correction d'un bug lié au calcul du seuil EH.
-- Ajout d'infos dans les logs.
-- Typage cohérent avec la base de données referentiel.
-- Ajout de deux siret pour les contrôles de droits de dépôt.
+- Correction d'erreurs de typage et de résolution de dépendances.
+- Amélioration des messages d'erreur et des logs.
+- Correction de problèmes liés à l'envoi d'emails en cas d'erreur.
+- Suppression de throw pour éviter un retry de la file.
+- Correction d'un bug lié à l'affichage des caractères spéciaux dans les noms de fichiers.
+- Correction d'un test qui échouait depuis le passage à Transient du LoggerService.
+- Ajout de tests unitaires et d'intégration pour couvrir davantage de cas d'utilisation.
+- Correction de problèmes de timeout dans les tests.
+- Ajout de skills pour la documentation.
