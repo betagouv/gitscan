@@ -1,17 +1,19 @@
-# Synthèse d'activité : etalab (derniers 7 jours)
+# Synthèse d'activité : etalab (derniers 30 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations significatives sur plusieurs dépôts d'etalab. L'admin API entreprise ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)) a bénéficié de renforcements de sécurité et de nouvelles fonctionnalités de recherche d'API, notamment l'intégration des données INSEE.  Des améliorations ont également été apportées à la qualité des données de transport avec des mises à jour de la base nationale des lieux de covoiturage ([transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage)) et du validateur GTFS ([transport-validator](/repos/etalab/transport-validator)). Ces évolutions se traduisent par une meilleure expérience pour les administrateurs, les développeurs et, en fin de compte, les utilisateurs finaux des services proposés.
+Le mois dernier, l'activité d'etalab s'est concentrée sur l'amélioration de la sécurité et de la qualité des données, ainsi que sur l'ajout de nouvelles fonctionnalités à ses outils. L'admin API entreprise [admin_api_entreprise](/repos/etalab/admin_api_entreprise) a bénéficié de renforcements de sécurité et de nouvelles capacités de recherche d'API et d'intégration de données INSEE. Les données de la base nationale de covoiturage [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) ont été affinées avec l'ajout de nouveaux départements et la correction de doublons. Enfin, le validateur de données GTFS [transport-validator](/repos/etalab/transport-validator) a vu ses règles de validation renforcées pour garantir une meilleure qualité des données de transport en commun.
 
 ## Sécurité
-- Implémentation de la réauthentification MFA pour les utilisateurs MonComptePro via ProConnect dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
-- Renforcement de la sécurité en utilisant le namespace au lieu d'une valeur codée en dur pour les tokens d'administration dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+L'admin API entreprise [admin_api_entreprise](/repos/etalab/admin_api_entreprise) a reçu des améliorations significatives en matière de sécurité :
+- Implémentation de la réauthentification MFA pour les utilisateurs MonComptePro.
+- Renforcement de la sécurité des tokens d'administration.
+- Possibilité de bannir un token d'administrateur avec une date de fin personnalisée.
 
 ## Autres changements notables
-- Ajout de la possibilité de configurer le nom du bucket S3 via une option de configuration dans [flask-storage](/repos/etalab/flask-storage).
-- La validation de l'absence de calendrier est maintenant signalée comme une erreur critique et la présence de la langue du flux est obligatoire dans [transport-validator](/repos/etalab/transport-validator).
+- Suppression des identifiants Algolia de l'admin API entreprise [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+- Ajout de la configuration optionnelle du nom du bucket S3 dans flask-storage [flask-storage](/repos/etalab/flask-storage).
 
 ## Dépôts les plus actifs
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Amélioration de la sécurité, ajout de fonctionnalités de recherche d'API et intégration de données INSEE.
-- [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) : Mise à jour de la base de données des lieux de covoiturage avec ajout de département et correction de doublons.
-- [transport-validator](/repos/etalab/transport-validator) : Amélioration de la validation des données GTFS, notamment concernant le calendrier et la langue.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Amélioration de la sécurité, ajout de fonctionnalités de recherche et intégration de données INSEE.
+- [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) : Mise à jour et correction de la base de données des lieux de covoiturage.
+- [transport-validator](/repos/etalab/transport-validator) : Renforcement des règles de validation des données GTFS.
