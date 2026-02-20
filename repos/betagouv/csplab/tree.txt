@@ -96,6 +96,7 @@
         │   ├── exception_handler.py
         │   ├── settings
         │   │   ├── __init__.py
+        │   │   ├── _sentry.py
         │   │   ├── base.py
         │   │   ├── dev.py
         │   │   └── test.py
@@ -216,7 +217,6 @@
         │   │   │   │   ├── 0002_rawcorps_alter_rawexamination_options.py
         │   │   │   │   ├── 0003_rawdocument_rename_rawexamination_legifranceconcours_and_more.py
         │   │   │   │   ├── 0004_delete_legifranceconcours.py
-        │   │   │   │   ├── 0005_alter_rawdocument_id.py
         │   │   │   │   ├── 0006_corpsmodel.py
         │   │   │   │   ├── 0007_vectorizeddocumentmodel.py
         │   │   │   │   ├── 0008_alter_corpsmodel_category.py
@@ -227,6 +227,9 @@
         │   │   │   │   ├── 0013_delete_corpsmodel_delete_vectorizeddocumentmodel.py
         │   │   │   │   ├── 0014_alter_rawdocument_document_type.py
         │   │   │   │   ├── 0015_alter_rawdocument_unique_together_and_more.py
+        │   │   │   │   ├── 0016_convert_document_id_to_uuid.py
+        │   │   │   │   ├── 0017_rawdocument_error_msg.py
+        │   │   │   │   ├── 0018_rawdocument_processed_at.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -237,8 +240,6 @@
         │   │       ├── apps.py
         │   │       ├── migrations
         │   │       │   ├── 0001_initial.py
-        │   │       │   ├── 0002_remove_concoursmodel_concours_corps_i_871a7f_idx_and_more.py
-        │   │       │   ├── 0003_alter_concoursmodel_grade.py
         │   │       │   ├── 0004_create_offers_table.py
         │   │       │   ├── 0005_rename_titre_to_title.py
         │   │       │   ├── 0006_rename_limit_date_offermodel_beginning_date_and_more.py
@@ -247,8 +248,10 @@
         │   │       │   ├── 0009_remove_publication_date_default.py
         │   │       │   ├── 0010_alter_offermodel_verse.py
         │   │       │   ├── 0011_alter_offermodel_region.py
-        │   │       │   ├── 0012_alter_corpsmodel_category_alter_corpsmodel_id.py
-        │   │       │   ├── 0013_alter_vectorizeddocumentmodel_options_and_more.py
+        │   │       │   ├── 0012_alter_vectorizeddocumentmodel_options_and_more.py
+        │   │       │   ├── 0013_offermodel_archived_at_offermodel_processed_at.py
+        │   │       │   ├── 0014_concoursmodel_archived_at_concoursmodel_processed_at.py
+        │   │       │   ├── 0015_corpsmodel_archived_at_corpsmodel_processed_at.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
@@ -520,4 +523,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-109 directories, 413 files
+109 directories, 416 files

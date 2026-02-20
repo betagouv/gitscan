@@ -1,41 +1,29 @@
-## Changelog : csplab (derniers 30 jours)
+## Changelog : csplab (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'ingestion d'offres d'emploi, l'intégration du traitement de CV (notamment via l'OCR) et l'amélioration de l'environnement de développement avec de nouveaux outils de linting et de formatage. Des améliorations ont également été apportées à l'automatisation des releases et à la documentation du projet.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'ingestion et du traitement des offres d'emploi, ainsi que sur le développement de nouvelles fonctionnalités pour le module Tycho, notamment l'ajout d'un flux de gestion des candidatures avec affichage des CVs et un système de correspondance entre les CVs et les offres. Des améliorations techniques ont également été apportées à l'infrastructure et aux outils de développement.
 
 ### Évolutions fonctionnelles
-
-- Intégration d'une page de téléchargement de CV pour les candidats (#53).
-- Implémentation de l'OCR pour l'extraction de texte des CV via OpenAI (#46).
-- Intégration minimale d'une page de traitement de CV pour les candidats (#102).
-- Intégration de la page d'accueil pour les candidats (#37).
-- Ajout de la récupération des offres depuis TalentSoft via un client front office (#95).
-- Définition des entités et des objets de valeur pour les offres (#92).
-- Ajout d'un dépôt pour les offres (#103).
+- **Tycho (Candidatures):** Ajout d'un flux de gestion des candidatures, incluant l'affichage des CVs et un système de correspondance entre les CVs et les offres (#167, #180, #182, #183).
+- **Tycho (Ingestion):** Amélioration de l'ingestion des offres d'emploi, notamment en permettant de traiter les documents par lots (#208) et en vectorisant les offres (#166).
+- **Interface utilisateur:** Ajout de filtres pour les résultats de CV dans Tycho (#178, #204).
+- **Ingestion:** Possibilité de nettoyer les documents ingérés (#138).
 
 ### Évolutions techniques
-
-- Refactorisation et nettoyage des tests d'ingestion (#130).
-- Mise à jour de l'entité "offre" et des objets de valeur associés (#128).
-- Migration du CSS vers SCSS modulaire pour une meilleure organisation et maintenabilité (#115, #100).
-- Amélioration du tooling frontend avec l'ajout de Prettier et Stylelint (#121).
-- Mise à jour de la version de Python pour Mypy et correction de la syntaxe dans `domain/types.py` (#110).
-- Utilisation de fixtures au lieu de méthodes setup dans les tests pour une meilleure gestion des conteneurs (#59).
-- Configuration de Sass tooling (#100).
-- Ajout de djLint pour le linting et le formatage des templates Django (#101).
-- Utilisation de N-1 processeurs pour l'exécution de la suite de tests Tycho afin d'optimiser les performances (#83).
-- Amélioration du calcul de la couverture de code (#79).
-- Automatisation de la génération du changelog et des releases (#56, #81, #87).
-- Vérification de la présence du label "changelog" sur les PR pour la génération du changelog (#50).
+- **Authentification:** Sécurisation de toutes les API avec une authentification JWT (#210).
+- **Infrastructure:** Mise à jour de Django en version 6.0.1 et de psycopg en version 3.3.2 (#143, #144).
+- **Outils de développement:** Amélioration de la configuration de l'environnement de développement, ajout du Django Debug Toolbar (#186), et configuration de Sentry (#192).
+- **Refactoring:** Refactorisation des administrateurs Django pour rendre certains champs en lecture seule (#184).
+- **Architecture:** Remplacement des identifiants d'entités par des UUID (#201).
+- **Tests:** Réduction de la verbosité des tests (#199) et amélioration des tests d'ingestion (#130).
+- **Frontend:** Migration du CSS vers SCSS modulaire et mise en place d'outils de linting (prettier, stylelint) (#121, #122).
 
 ### Autres changements
-
-- Mise à jour des dépendances (tycho, notebook) (#137, #136, #114).
-- Partage de la configuration VSCode pour une meilleure cohérence de l'environnement de développement (#55).
-- Ajout de modèles d'issues en français (#85).
-- Mise à jour du fichier `.gitignore` (#90).
-- Suppression de la configuration `docker-compose.override.yml` pour simplifier la configuration locale (#80).
-- Exploration des DTOs TalentSoft (#124).
-- Correction de la configuration des URLs des candidats (#92).
-- Suppression d'un job de formatage de commit inutile (#48).
-- Ajout de modèles d'issues (#57).
+- Nettoyage du code et de la configuration du dépôt (#211).
+- Mise à jour de la documentation et du CHANGELOG (#131, #87).
+- Amélioration de la gestion des erreurs dans le flux de candidature (#164).
+- Ajout de la gestion des images CSP pour les intégrations futures (#179).
+- Exploration des DTOs Talentsoft dans les notebooks (#124).
+- Correction de bugs liés à la localisation et au nettoyage des références (#154).
+- Correction d'un problème de swapping de contenu dans le polling (#165).
+- Correction d'un problème de configuration de Tycho avec Django 6 (#151).
