@@ -1,0 +1,40 @@
+.
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE.md
+├── README.md
+├── scripts
+│   ├── compress_test_repos
+│   └── download_gh_users_keys
+├── src
+│   ├── config.rs
+│   ├── git.rs
+│   ├── gpg.rs
+│   ├── init.rs
+│   ├── lib.rs
+│   ├── main.rs
+│   └── verify.rs
+└── tests
+    ├── fixtures
+    │   ├── gpg
+    │   │   ├── openpgp-revocs.d
+    │   │   │   └── C24F1C42FA6AAF5C0CEC9C83DFEF44F6C4F05CD6.rev
+    │   │   ├── private-keys-v1.d
+    │   │   │   ├── 4A9EF40B3B48EB38E189B0402895510964B64193.key
+    │   │   │   └── D9873C0E46F3154E0CC457EE8C9F80539D101A40.key
+    │   │   ├── pubring.kbx
+    │   │   └── trustdb.gpg
+    │   ├── repo-tag-unknown-signature.tar
+    │   ├── repo-test.tar
+    │   ├── repo-untagged.tar
+    │   ├── ssh
+    │   │   ├── git_signing_key
+    │   │   └── git_signing_key.pub
+    │   └── user-test-example-keys.asc
+    ├── helpers.rs
+    └── integration_tests.rs
+11 directories, 28 files
