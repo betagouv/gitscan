@@ -1,3 +1,23 @@
+2026-02-19T16:57:58+01:00 - 1fb3f26a - Caillou : Merge pull request #1385 from etalab/fix/history_link_to_authorization
+2026-02-19T16:12:36+01:00 - 7c7b7f52 - Caillou : remove unused route
+2026-02-19T15:48:19+01:00 - 024edfdd - Caillou : fix the history link to an authorization
+2026-02-19T15:31:35+01:00 - 15bda12b - Isabelle Lafont : Merge pull request #1374 from etalab/feature/DP-1495-politique-confidentialite
+2026-02-19T15:23:21+01:00 - 84c1e616 - Isabelle Lafont : Ajout de la page Politique de confidentialité
+2026-02-19T15:23:21+01:00 - 84bbc8a7 - Isabelle Lafont : Ajout de l'iframe opt-out Matomo
+2026-02-19T15:12:04+01:00 - 0c37cc35 - Nicolas Schweisguth : Merge pull request #1371 from etalab/feature/DP-1496/creation-page-mention-legales
+2026-02-19T13:15:34+01:00 - 3c8a7ffe - Isabelle Lafont : Merge pull request #1384 from etalab/feature/DP-1491-ajout-des-cgus-api-part-fc
+2026-02-19T13:03:55+01:00 - 7bb17b1c - Jean-Baptiste Feldis : Setup tests to work with feature flag
+2026-02-19T12:01:17+01:00 - 8884ed16 - Delmaire Loïc : Merge pull request #1380 from etalab/api-p/rh-cnaf
+2026-02-19T10:51:02+01:00 - 951dab19 - Isabelle Lafont : Ajouter les tests pour les CGU FranceConnect dans le form builder
+2026-02-19T10:50:54+01:00 - 54a34018 - Isabelle Lafont : Afficher les CGU FranceConnect dans la case à cocher API Particulier
+2026-02-19T10:25:57+01:00 - c09d093b - Caillou : Merge pull request #1382 from etalab/annuaire/lutte-fraudes-dgflip
+2026-02-19T10:25:07+01:00 - 92bf7280 - Jean-Baptiste Feldis : Merge pull request #1383 from etalab/feature/dp-1503-feature-flag-par-editeur
+2026-02-18T10:11:00+01:00 - fba4015a - Jean-Baptiste Feldis : Harden APIPFC feature flag
+2026-02-17T17:26:21+01:00 - 542a7520 - Caillou : migrate data of existing annuaire requests and authorizations to the new split scopes
+2026-02-17T17:03:11+01:00 - dfe13676 - Caillou : hide the dgfip scopes for the fraude form for api entreprise
+2026-02-17T16:45:34+01:00 - a4920845 - Caillou : Merge pull request #1377 from HAEKADI/feat/update-formulaire-ade
+2026-02-17T16:43:01+01:00 - 050c72b8 - HAEKADI : feat(formulaire): disable dgfip scopes for lutte contre la fraude
+2026-02-17T16:42:33+01:00 - 5d9434a8 - HAEKADI : feat(scopes): separate conformite sociale et fiscale
 2026-02-17T16:34:47+01:00 - b25040ad - Caillou : Merge pull request #1381 from etalab/display_properly_the_cancel_reopening_reason
 2026-02-17T16:31:14+01:00 - 52c11ec1 - Isabelle Lafont : Merge pull request #1362 from etalab/feature/dp-1507-cgu-checkbox-remove-when-no-gcu-available
 2026-02-17T16:30:53+01:00 - ae57e950 - Isabelle Lafont : Merge pull request #1360 from etalab/new_authorization_inser_jeunes_sup
@@ -5,6 +25,7 @@
 2026-02-17T16:20:25+01:00 - 5680c120 - Isabelle Lafont : Rendre les CGU optionnelles pour les APIs sans cgu_link
 2026-02-17T16:15:04+01:00 - 42b8a953 - Isabelle Lafont : Clarifie les valeurs par défaut dans la documentation
 2026-02-17T16:07:04+01:00 - a7913890 - Isabelle Lafont : Ajoute factories pour api_gunenv et api_inser_jeunes_sup
+2026-02-17T14:41:25+01:00 - 886f969e - Delmaire Loïc : api-particulier-gestion-rh-secteur-public form: enable cnaf scopes
 2026-02-17T12:58:44+01:00 - ec4dee00 - Jean-Baptiste Feldis : Merge pull request #1369 from etalab/dependabot/bundler/rubocop-31ee2ebb19
 2026-02-17T12:49:51+01:00 - 3be76615 - Jean-Baptiste Feldis : Lint
 2026-02-17T12:32:05+01:00 - 948af67f - Isabelle Lafont : Merge pull request #1378 from etalab/bugfix/fix-sentry-instructor-draft-request
@@ -14,10 +35,13 @@
 2026-02-17T11:07:48+01:00 - 9a0ec07e - Delmaire Loïc : Remove DGFIP endpoints from API Entreprise : Lutte contre la fraude
 2026-02-17T11:07:27+01:00 - 0857d516 - Delmaire Loïc : Remove trailing whitespace in api_entreprise.yml
 2026-02-17T10:28:53+01:00 - 8b4c0d11 - Jean-Baptiste Feldis : Setup rails_pulse
+2026-02-17T10:21:25+01:00 - 10b2add6 - Jean-Baptiste Feldis : Move APIPFC feature flag at the editor level
 2026-02-16T15:54:03+01:00 - d5cc257d - Caillou : Merge pull request #1372 from etalab/manage_existing_hubee_subscriptions
 2026-02-16T15:41:45+01:00 - e689d358 - Caillou : Instead of silently skipping, raise an exception if the subscription is not found during recovery
 2026-02-16T13:44:30+01:00 - 2171952b - Caillou : Still raise an error if we can't find the existing subscription for any reason
 2026-02-16T13:36:12+01:00 - 61fb86f2 - Caillou : Recover existing HubEE subscriptions instead of silently ignoring them
+2026-02-16T13:25:03+01:00 - cea29579 - Isabelle Lafont : Correction accessibilité des liens externes (page Accessibilité)
+2026-02-16T13:24:43+01:00 - e46885d3 - Isabelle Lafont : Ajout de la page Mentions légales
 2026-02-16T12:42:00+01:00 - c39e2a11 - Caillou : Merge pull request #1370 from etalab/fix_fc_legal_link
 2026-02-16T10:28:12+01:00 - c712d476 - Caillou : update doc for new habilitaiton
 2026-02-16T10:28:12+01:00 - a49da12a - Isabelle Lafont : Remove typo

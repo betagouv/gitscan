@@ -1993,7 +1993,9 @@
 │       ├── static_pages
 │       │   ├── accessibilite.html.erb
 │       │   ├── cgu_api_impot_particulier_bas.html.erb
-│       │   └── cgu_api_impot_particulier_prod.html.erb
+│       │   ├── cgu_api_impot_particulier_prod.html.erb
+│       │   ├── mentions_legales.html.erb
+│       │   └── politique_confidentialite.html.erb
 │       ├── stats
 │       │   └── index.html.erb
 │       ├── transfer_authorization_requests
@@ -2278,7 +2280,8 @@
 │   │   ├── 20260106171655_fix_verified_reason_default.rb
 │   │   ├── 20260127164801_add_parent_authorization_id_to_authorizations.rb
 │   │   ├── 20260130165452_add_auto_generate_constraint_to_authorization_request_events.rb
-│   │   └── 20260209154842_install_rails_pulse_tables.rb
+│   │   ├── 20260209154842_install_rails_pulse_tables.rb
+│   │   └── 20260217150000_migrate_annuaire_entreprises_conformite_scope_to_conformite_fiscale_sociale.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2350,6 +2353,7 @@
 │   │   ├── api_indicateurs_sociaux.feature
 │   │   ├── api_particulier
 │   │   │   ├── auto_france_connect_authorization.feature
+│   │   │   ├── cgu_france_connect.feature
 │   │   │   ├── choix_formulaire.feature
 │   │   │   ├── soumission_avec_modalites.feature
 │   │   │   ├── soumission_multiples_etapes.feature
@@ -2423,6 +2427,7 @@
 │   │   ├── authorization_requests_steps.rb
 │   │   ├── authorization_steps.rb
 │   │   ├── auto_france_connect_authorization_steps.rb
+│   │   ├── cgu_france_connect_steps.rb
 │   │   ├── date_steps.rb
 │   │   ├── debug_steps.rb
 │   │   ├── email_steps.rb
@@ -2701,6 +2706,8 @@
 │   │       ├── 13002526500013.json
 │   │       ├── 21920023500014.json
 │   │       └── 21920023500022.json
+│   ├── form_builders
+│   │   └── authorization_request_form_builder_spec.rb
 │   ├── generator
 │   │   ├── definition_generator_spec.rb
 │   │   └── multi_stages_definition_generator_spec.rb
@@ -2964,4 +2971,4 @@
     ├── .keep
     └── javascript
         └── .keep
-422 directories, 2682 files
+423 directories, 2688 files

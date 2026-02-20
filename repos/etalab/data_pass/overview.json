@@ -6,24 +6,23 @@
   "features": [
     "Gestion des habilitations",
     "Authentification utilisateur",
+    "API",
     "Gestion des demandes d'accès",
     "Intégration avec FranceConnect",
-    "Gestion des organisations",
-    "API"
+    "Gestion des organisations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
     "PostgreSQL",
-    "Redis",
-    "Docker"
+    "Docker",
+    "Rails"
   ],
   "components": [
-    "Backend Ruby on Rails",
-    "Base de données PostgreSQL",
-    "Frontend (probablement Turbo/Hotwire)",
+    "Frontend Rails",
     "API REST",
-    "Docker pour le développement et le déploiement"
+    "Base de données PostgreSQL",
+    "Docker"
   ],
   "auth": {
     "methods": [
@@ -31,19 +30,19 @@
       "email-password"
     ],
     "providers": [
+      "ProConnect",
       "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
-    "Cypress",
-    "System tests"
+    "Cucumber"
   ],
   "workflows": [
-    "Continuous Integration",
-    "Continuous Deployment"
+    "continuous-deployment",
+    "test"
   ],
-  "lastActivity": "2026-02-17T16:34:47+01:00",
+  "lastActivity": "2026-02-19T16:57:58+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,10 +56,10 @@
     "gestion des données",
     "habilitation",
     "accès restreint",
-    "FranceConnect",
     "API",
+    "FranceConnect",
     "Ruby on Rails",
     "PostgreSQL",
-    "administration publique"
+    "Docker"
   ]
 }
