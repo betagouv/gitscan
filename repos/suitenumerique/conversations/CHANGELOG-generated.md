@@ -1,28 +1,37 @@
-## Changelog : conversations (derniers 30 jours)
+## Changelog : conversations (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité, la sécurité et l'expérience utilisateur. Des correctifs ont été apportés pour améliorer les performances de l'interface, la compatibilité avec différents modèles d'IA auto-hébergés, et la gestion des fichiers. De plus, des améliorations ont été apportées à la gestion des conversations, notamment la possibilité de les nommer et de les modifier. Des mises à jour de sécurité ont également été intégrées pour corriger des vulnérabilités.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur avec l'ajout d'un mode sombre persistant, une meilleure gestion des fichiers (notamment avec le support de S3 sans accès externe et un parseur PDF adaptatif), et des optimisations de performance, en particulier pour le rendu du markdown et l'entrée de texte dans le chat. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la compatibilité avec différents modèles d'IA.
 
 ### Évolutions fonctionnelles
-- Possibilité de nommer et d'éditer le titre des conversations (#849).
-- Amélioration des performances de l'entrée de chat (#120b204).
-- Standardisation de l'affichage lors de l'analyse de fichiers PDF et ajout de la localisation (#f52a27f).
-- Les documents PDF sont maintenant considérés comme des types de documents standard (#234).
-- Possibilité d'utiliser le stockage S3 sans accès externe (#853305a).
+- Ajout d'un mode sombre persistant, conservant le thème choisi par l'utilisateur. (#240)
+- Amélioration de la gestion des fichiers avec la possibilité d'utiliser le stockage S3 sans accès externe. (#849)
+- Implémentation d'un parseur PDF adaptatif pour une meilleure extraction du texte.
+- Ajout de l'intégration FindRagBackend pour une recherche plus performante. (#209)
+- Ajout d'un kit d'interface utilisateur avec support du mode sombre.
+- Possibilité de supprimer des collections temporaires.
+- Amélioration de l'intégration de l'API Find avec les sous-utilisateurs et les tags.
+- Ajout d'un bouton de copie de code.
+- Ajout d'un bouton de réessai.
 
 ### Évolutions techniques
-- Migration du backend vers `uv` pour de meilleures performances (#ab2ad03).
-- Correction de problèmes liés aux keep-alives lors de l'analyse de documents (#3e467ca).
-- Suppression de code mort et de fichiers inutilisés dans le backend (#daf90cf).
-- Correction de la compatibilité du prompt système avec les modèles auto-hébergés (#200).
-- Correction de problèmes de streaming des réponses des outils pour éviter les timeouts (#ddfc86a).
-- Mises à jour de sécurité pour corriger des CVE dans les dépendances (#09b0038, #0b5317a).
+- Migration vers `uv` pour améliorer les performances du backend.
+- Optimisation du rendu du markdown en utilisant la division des blocs.
+- Optimisation de la taille du bundle de surlignage de syntaxe.
+- Mise à jour de Django.
+- Mise à jour de Pydantic AI.
+- Mise à jour de Next.js (version 5.3.9).
+- Mise à jour de Protobuf (version 6.33.5).
+- Correction de problèmes de keepalives lors du parsing de documents.
+- Correction de tests.
+- Vendorisation du fichier `mime.types` pour éviter les dépendances externes.
 
 ### Autres changements
-- Mise à jour de la version Next.js vers 5.3.9 (#7858476).
-- Mise à jour de la version Protobuf vers 6.33.5 (#c02254e).
-- Mise à jour des chaînes de caractères traduites pour la localisation (#d752334, #e7d76e4).
-- Correction de la couleur des liens dans le composant `LeftPanelConversationItem` (#a0b31e1).
-- Suppression de la partie "en train de réfléchir" de l'interface utilisateur (#13c6499).
-- Désactivation de l'exécution de Trivy sur le yarn.lock de la génération de mails (#fb297b9).
-- Publication des versions 0.0.12 et 0.0.11 avec les changements associés (#30f825c, #fd3399d).
+- Mise à jour des chaînes de traduction. (#234)
+- Correction de bugs liés aux formules mathématiques et aux traductions de la carrousel.
+- Correction de l'affichage des documents PDF et standardisation de l'i18n.
+- Suppression de code mort et de fichiers inutilisés.
+- Suppression de la partie "pensée" de l'interface utilisateur.
+- Désactivation de Trivy sur `yarn.lock` pour la génération de mails.
+- Bump de la version à 0.0.13.
+- Bump de la version à 0.0.12.
