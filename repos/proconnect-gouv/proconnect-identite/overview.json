@@ -5,54 +5,46 @@
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
-    "Gestion des identités professionnelles",
-    "Intégration avec la fédération ProConnect",
     "Gestion des organisations",
     "Vérification d'identité",
-    "Gestion des rôles et permissions"
+    "Intégration avec FranceConnect",
+    "Gestion des modérations"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
-    "Node.js",
-    "npm",
-    "Docker",
     "PostgreSQL",
     "Redis",
     "oidc-provider",
-    "zod",
+    "nodemailer",
     "axios",
-    "nodemailer"
+    "zod"
   ],
   "components": [
-    "Frontend React (implicite via assets/)",
-    "API REST (Express.js)",
+    "Frontend React",
+    "API REST",
     "Base de données PostgreSQL",
-    "Cache Redis",
-    "Architecture Monorepo (npm workspaces)",
-    "Microservices (packages/)",
-    "Tests Cypress (End2End)",
-    "CI/CD (GitHub Actions)"
+    "Serveur Express.js",
+    "Monorepo avec npm workspaces"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "session",
+      "magic-link"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
   "tests": [
-    "Cypress (End2End)",
-    "Unit tests (Jest ou équivalent)",
-    "Tests d'intégration"
+    "Cypress (tests end-to-end)",
+    "Jest (tests unitaires)"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)",
-    "Build",
-    "Tests",
-    "Déploiement"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-16T17:55:03+01:00",
+  "lastActivity": "2026-02-19T17:36:42+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -63,14 +55,12 @@
     "openIssues": null
   },
   "tags": [
-    "OpenID Connect",
+    "OpenId Connect",
     "Authentification",
     "Identité numérique",
     "ProConnect",
-    "Professionnels",
+    "FranceConnect",
     "TypeScript",
-    "Node.js",
-    "Microservices",
-    "Docker"
+    "Node.js"
   ]
 }
