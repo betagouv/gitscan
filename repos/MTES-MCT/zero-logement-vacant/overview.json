@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/MTES-MCT/zero-logement-vacant",
   "name": "zero-logement-vacant",
-  "description": "Zero Logement Vacant est une application web visant à recenser et à suivre les logements vacants sur le territoire français. Elle permet aux collectivités de gérer les informations relatives aux logements et de faciliter la lutte contre le logement vacant.",
+  "description": "Zero Logement Vacant est une application web visant à recenser et à suivre les logements vacants pour lutter contre l'habitat indigne et améliorer l'offre de logements. Elle permet aux collectivités de gérer les informations sur les logements et de suivre leur évolution.",
   "language": "TypeScript",
   "features": [
     "Gestion des logements",
-    "Gestion des documents",
-    "Cartographie",
+    "Suivi des logements vacants",
     "Import de données",
     "Gestion des utilisateurs",
-    "Suivi des campagnes",
-    "Analyse de données"
+    "Cartographie",
+    "Export de données",
+    "Gestion des documents"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,18 +18,19 @@
     "Express",
     "PostgreSQL",
     "Docker",
-    "DuckDB",
-    "Dbt",
+    "PostGIS",
     "Redis",
-    "Elasticsearch"
+    "Elasticsearch",
+    "DuckDB",
+    "Dbt"
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST (Node.js/Express)",
     "Base de données PostgreSQL",
-    "Queue",
-    "Elasticsearch",
-    "Redis"
+    "Queue (Redis)",
+    "Elasticsearch pour la recherche",
+    "Docker pour la conteneurisation"
   ],
   "auth": {
     "methods": [
@@ -57,11 +58,14 @@
   "tags": [
     "logement",
     "vacant",
+    "administration",
     "collectivités",
-    "géolocalisation",
+    "habitat",
+    "indigne",
     "données",
-    "web",
-    "typescript",
-    "react"
+    "cartographie",
+    "React",
+    "TypeScript",
+    "PostgreSQL"
   ]
 }
