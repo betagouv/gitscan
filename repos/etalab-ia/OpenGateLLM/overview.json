@@ -1,37 +1,37 @@
 {
   "url": "https://github.com/etalab-ia/OpenGateLLM",
   "name": "OpenGateLLM",
-  "description": "OpenGateLLM est une API unifiée open-source pour exécuter et gérer des modèles de langage de grande taille (LLM) auto-hébergés. Elle permet de centraliser, sécuriser et gérer l'accès à l'IA générative de manière souveraine et économique.",
+  "description": "OpenGateLLM est une API unifiée open-source pour exécuter et gérer des LLM auto-hébergés. Elle permet de centraliser, sécuriser et gérer l'accès à l'IA générative de manière souveraine et économique.",
   "language": "Python",
   "features": [
     "Gestion des modèles",
     "Authentification",
     "Contrôle d'accès",
-    "Limitation de débit",
     "Surveillance de l'utilisation",
+    "Limitation de débit",
+    "Équilibrage de charge",
+    "Suivi de l'empreinte carbone",
     "Intégration avec Elasticsearch",
-    "Support de différents modèles (Mistral, OpenAI, etc.)",
-    "OCR (Reconnaissance Optique de Caractères)"
+    "Support de plusieurs fournisseurs de modèles"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "FastAPI",
     "Pydantic",
     "httpx",
-    "Elasticsearch",
+    "SQLAlchemy",
     "Redis",
+    "Elasticsearch",
     "Celery",
-    "PyYAML",
-    "Authlib",
-    "python-jose"
+    "Authlib"
   ],
   "components": [
     "API REST",
+    "Frontend (Reflex)",
     "Base de données PostgreSQL",
-    "Index Elasticsearch",
-    "Cache Redis",
-    "Queue Celery",
-    "Interface utilisateur (Reflex)"
+    "Queue de messages (Redis)",
+    "Index de recherche (Elasticsearch)",
+    "Microservices"
   ],
   "auth": {
     "methods": [
@@ -39,12 +39,12 @@
       "oauth2",
       "api-key",
       "jwt"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
-    "pytest",
-    "pytest-cov",
-    "pytest-snapshot"
+    "Pytest",
+    "Snapshot testing"
   ],
   "workflows": [
     "build_and_deploy",
@@ -55,7 +55,7 @@
     "secrets_scan",
     "update_pyproject_version"
   ],
-  "lastActivity": "2026-02-17T22:20:01+00:00",
+  "lastActivity": "2026-02-19T23:07:39+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -63,16 +63,15 @@
     "stars": 134,
     "forks": 19,
     "contributors": null,
-    "openIssues": 76
+    "openIssues": 68
   },
   "tags": [
     "API",
     "LLM",
     "Self-hosted",
-    "IA générative",
+    "AI",
     "Open Source",
-    "Elasticsearch",
-    "Redis",
-    "Python"
+    "Generative AI",
+    "Data Sovereignty"
   ]
 }
