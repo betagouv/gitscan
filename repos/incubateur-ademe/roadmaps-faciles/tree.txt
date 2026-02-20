@@ -43,9 +43,7 @@
 │       ├── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
 │       ├── verif
 │       │   └── SKILL.md
-│       ├── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
-│       └── worktree-guard
-│           └── SKILL.md
+│       └── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
 ├── .editorconfig
 ├── .env.development
 ├── .env.production
@@ -63,7 +61,8 @@
 │   │   └── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
 │   └── workflows
 │       ├── build.yml
-│       └── lint.yml
+│       ├── lint.yml
+│       └── test.yml
 ├── .gitignore
 ├── .mcp.json
 ├── .nvmrc
@@ -150,16 +149,23 @@
 │   │   ├── 0015-observability.md
 │   │   ├── 0016-anonymous-posts-and-moderation.md
 │   │   ├── 0017-dsfr-email-templates.md
-│   │   └── 0018-2fa-and-oauth-sso.md
-│   └── deploy
-│       └── caddy
-│           ├── Caddyfile
-│           ├── README.md
-│           ├── docker-compose.caddy.yml
-│           └── k8s
-│               ├── configmap.yaml
-│               ├── deployment.yaml
-│               └── service.yaml
+│   │   ├── 0018-2fa-and-oauth-sso.md
+│   │   ├── 0019-test-infrastructure.md
+│   │   └── 0020-embed-iframe-route-group.md
+│   ├── deploy
+│   │   └── caddy
+│   │       ├── Caddyfile
+│   │       ├── README.md
+│   │       ├── docker-compose.caddy.yml
+│   │       └── k8s
+│   │           ├── configmap.yaml
+│   │           ├── deployment.yaml
+│   │           └── service.yaml
+│   └── plans
+│       ├── 2026-02-18-e2e-auth-tests-design.md
+│       ├── 2026-02-18-e2e-auth-tests-implementation.plan.md
+│       ├── 2026-02-18-e2e-tests-design.md
+│       └── 2026-02-18-e2e-tests-implementation.md
 ├── env.d.ts
 ├── eslint.config.ts
 ├── global.d.ts
@@ -170,6 +176,7 @@
 ├── next-sitemap.config.js
 ├── next.config.ts
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── postcss.config.js
@@ -211,9 +218,12 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260216192012_add_2fa_and_app_settings
 │   │   │   └── migration.sql
+│   │   ├── 20260219140000_add_allow_embedding
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.cts
+│   ├── test-seed.ts
 │   ├── tsconfig.json
 │   └── views
 │       └── public
@@ -259,7 +269,6 @@
 │   ├── tsconfig.json
 │   ├── worktree-clean.sh
 │   ├── worktree-completion.zsh
-│   ├── worktree-guard.sh
 │   └── worktree-new.sh
 ├── sentry.client.config.ts
 ├── sentry.edge.config.ts
@@ -365,6 +374,8 @@
 │   │   │   │   ├── subdomain
 │   │   │   │   │   └── check
 │   │   │   │   │       └── route.ts
+│   │   │   │   ├── test-auth
+│   │   │   │   │   └── route.ts
 │   │   │   │   └── webauthn
 │   │   │   │       ├── authenticate
 │   │   │   │       │   ├── options
@@ -393,6 +404,8 @@
 │   │   │   │   └── verify-request
 │   │   │   │       └── page.tsx
 │   │   │   ├── page.tsx
+│   │   │   ├── roadmap
+│   │   │   │   └── page.tsx
 │   │   │   ├── stats
 │   │   │   │   ├── content.tsx
 │   │   │   │   └── page.tsx
@@ -401,121 +414,130 @@
 │   │   ├── LanguageSelectClient.tsx
 │   │   ├── SystemMessageDisplay.tsx
 │   │   ├── [domain]
-│   │   │   └── (domain)
-│   │   │       ├── (authenticated)
-│   │   │       │   ├── admin
-│   │   │       │   │   ├── AdminSideMenu.tsx
-│   │   │       │   │   ├── api
-│   │   │       │   │   │   ├── ApiKeysList.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── audit-log
-│   │   │       │   │   │   ├── AuditLogView.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── authentication
-│   │   │       │   │   │   ├── AuthenticationForm.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── boards
-│   │   │       │   │   │   ├── BoardsList.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── general
-│   │   │       │   │   │   ├── GeneralForm.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── layout.tsx
-│   │   │       │   │   ├── loading.tsx
-│   │   │       │   │   ├── page.tsx
-│   │   │       │   │   ├── roadmap
-│   │   │       │   │   │   ├── RoadmapForm.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── statuses
-│   │   │       │   │   │   ├── ColorSelect.tsx
-│   │   │       │   │   │   ├── StatusesList.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── users
-│   │   │       │   │   │   ├── MembersList.tsx
-│   │   │       │   │   │   ├── actions.ts
-│   │   │       │   │   │   ├── invitations
-│   │   │       │   │   │   │   ├── InvitationsList.tsx
-│   │   │       │   │   │   │   ├── actions.ts
-│   │   │       │   │   │   │   └── page.tsx
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   └── webhooks
-│   │   │       │   │       ├── WebhooksList.tsx
-│   │   │       │   │       ├── actions.ts
+│   │   │   ├── (domain)
+│   │   │   │   ├── (authenticated)
+│   │   │   │   │   ├── admin
+│   │   │   │   │   │   ├── AdminSideMenu.tsx
+│   │   │   │   │   │   ├── api
+│   │   │   │   │   │   │   ├── ApiKeysList.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── audit-log
+│   │   │   │   │   │   │   ├── AuditLogView.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── authentication
+│   │   │   │   │   │   │   ├── AuthenticationForm.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── boards
+│   │   │   │   │   │   │   ├── BoardsList.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── general
+│   │   │   │   │   │   │   ├── GeneralForm.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   ├── roadmap
+│   │   │   │   │   │   │   ├── RoadmapForm.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── statuses
+│   │   │   │   │   │   │   ├── ColorSelect.tsx
+│   │   │   │   │   │   │   ├── StatusesList.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── users
+│   │   │   │   │   │   │   ├── MembersList.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   ├── invitations
+│   │   │   │   │   │   │   │   ├── InvitationsList.tsx
+│   │   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── webhooks
+│   │   │   │   │   │       ├── WebhooksList.tsx
+│   │   │   │   │   │       ├── actions.ts
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── moderation
+│   │   │   │   │   │   ├── ModerationPostList.tsx
+│   │   │   │   │   │   ├── ModerationSideMenu.tsx
+│   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── rejected
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── profile
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── 2fa
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── @modal
+│   │   │   │   │   ├── (.)post
+│   │   │   │   │   │   └── [postId]
+│   │   │   │   │   │       ├── PostSimpleModal.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── default.tsx
+│   │   │   │   ├── DomainNavigation.tsx
+│   │   │   │   ├── DomainPage.tsx
+│   │   │   │   ├── PublicFooter.tsx
+│   │   │   │   ├── PublicHeader.tsx
+│   │   │   │   ├── SeedBanner.tsx
+│   │   │   │   ├── api
+│   │   │   │   │   └── auth
+│   │   │   │   │       └── [...nextauth]
+│   │   │   │   │           └── route.ts
+│   │   │   │   ├── board
+│   │   │   │   │   └── [boardSlug]
+│   │   │   │   │       ├── Board.module.scss
+│   │   │   │   │       ├── FilterAndSearch.tsx
+│   │   │   │   │       ├── PostList.tsx
+│   │   │   │   │       ├── PostListCompact.tsx
+│   │   │   │   │       ├── SubmitPostForm.tsx
+│   │   │   │   │       ├── actions.ts
+│   │   │   │   │       ├── page.tsx
+│   │   │   │   │       └── types.ts
+│   │   │   │   ├── forbidden.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── login
+│   │   │   │   │   ├── BridgeAutoLogin.tsx
+│   │   │   │   │   ├── OAuthButtons.tsx
+│   │   │   │   │   ├── bridgeSignIn.ts
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── post
+│   │   │   │   │   └── [postId]
+│   │   │   │   │       ├── PostEditForm.tsx
+│   │   │   │   │       ├── PostEditToggle.tsx
+│   │   │   │   │       ├── PostPageComponent.module.scss
+│   │   │   │   │       ├── PostPageHOP.tsx
+│   │   │   │   │       ├── _timeline
+│   │   │   │   │       │   ├── AggregateItem.tsx
+│   │   │   │   │       │   ├── CommentContent.module.scss
+│   │   │   │   │       │   ├── CommentContent.tsx
+│   │   │   │   │       │   ├── CommentItem.tsx
+│   │   │   │   │       │   ├── ItemDate.tsx
+│   │   │   │   │       │   ├── PostTimeline.tsx
+│   │   │   │   │       │   ├── StatusChangeItem.tsx
+│   │   │   │   │       │   ├── actions.ts
+│   │   │   │   │       │   └── activityHelpers.ts
+│   │   │   │   │       ├── actions.ts
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── roadmap
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── unauthorized.tsx
+│   │   │   └── (embed)
+│   │   │       ├── EmbedThemeForcer.tsx
+│   │   │       ├── embed
+│   │   │       │   ├── board
+│   │   │       │   │   └── [boardSlug]
 │   │   │       │   │       └── page.tsx
-│   │   │       │   ├── layout.tsx
-│   │   │       │   ├── moderation
-│   │   │       │   │   ├── ModerationPostList.tsx
-│   │   │       │   │   ├── ModerationSideMenu.tsx
-│   │   │       │   │   ├── actions.ts
-│   │   │       │   │   ├── layout.tsx
-│   │   │       │   │   ├── page.tsx
-│   │   │       │   │   └── rejected
-│   │   │       │   │       └── page.tsx
-│   │   │       │   └── profile
+│   │   │       │   └── roadmap
 │   │   │       │       └── page.tsx
-│   │   │       ├── 2fa
-│   │   │       │   └── page.tsx
-│   │   │       ├── @modal
-│   │   │       │   ├── (.)post
-│   │   │       │   │   └── [postId]
-│   │   │       │   │       ├── PostSimpleModal.tsx
-│   │   │       │   │       └── page.tsx
-│   │   │       │   └── default.tsx
-│   │   │       ├── DomainNavigation.tsx
-│   │   │       ├── DomainPage.tsx
-│   │   │       ├── PublicFooter.tsx
-│   │   │       ├── PublicHeader.tsx
-│   │   │       ├── SeedBanner.tsx
-│   │   │       ├── api
-│   │   │       │   └── auth
-│   │   │       │       └── [...nextauth]
-│   │   │       │           └── route.ts
-│   │   │       ├── board
-│   │   │       │   └── [boardSlug]
-│   │   │       │       ├── Board.module.scss
-│   │   │       │       ├── FilterAndSearch.tsx
-│   │   │       │       ├── PostList.tsx
-│   │   │       │       ├── PostListCompact.tsx
-│   │   │       │       ├── SubmitPostForm.tsx
-│   │   │       │       ├── actions.ts
-│   │   │       │       ├── page.tsx
-│   │   │       │       └── types.ts
-│   │   │       ├── forbidden.tsx
-│   │   │       ├── layout.tsx
-│   │   │       ├── login
-│   │   │       │   ├── BridgeAutoLogin.tsx
-│   │   │       │   ├── OAuthButtons.tsx
-│   │   │       │   ├── bridgeSignIn.ts
-│   │   │       │   └── page.tsx
-│   │   │       ├── page.tsx
-│   │   │       ├── post
-│   │   │       │   └── [postId]
-│   │   │       │       ├── PostEditForm.tsx
-│   │   │       │       ├── PostEditToggle.tsx
-│   │   │       │       ├── PostPageComponent.module.scss
-│   │   │       │       ├── PostPageHOP.tsx
-│   │   │       │       ├── _timeline
-│   │   │       │       │   ├── AggregateItem.tsx
-│   │   │       │       │   ├── CommentContent.module.scss
-│   │   │       │       │   ├── CommentContent.tsx
-│   │   │       │       │   ├── CommentItem.tsx
-│   │   │       │       │   ├── ItemDate.tsx
-│   │   │       │       │   ├── PostTimeline.tsx
-│   │   │       │       │   ├── StatusChangeItem.tsx
-│   │   │       │       │   ├── actions.ts
-│   │   │       │       │   └── activityHelpers.ts
-│   │   │       │       ├── actions.ts
-│   │   │       │       └── page.tsx
-│   │   │       ├── roadmap
-│   │   │       │   └── page.tsx
-│   │   │       └── unauthorized.tsx
+│   │   │       └── layout.tsx
 │   │   ├── api
 │   │   │   └── search
 │   │   │       └── route.ts
@@ -645,6 +667,7 @@
 │   │   │       └── storage.ts
 │   │   ├── dns-provider
 │   │   │   ├── IDnsProvider.ts
+│   │   │   ├── dnsUtils.ts
 │   │   │   ├── impl
 │   │   │   │   ├── CloudflareDnsProvider.ts
 │   │   │   │   ├── ManualDnsProvider.ts
@@ -842,5 +865,108 @@
 │       ├── IWorkflow.ts
 │       └── welcomeDataPreview.ts
 ├── tailwind.config.ts
-└── tsconfig.json
-205 directories, 684 files
+├── tests
+│   ├── testdb
+│   │   ├── helpers.ts
+│   │   ├── repos
+│   │   │   ├── AuditLogRepoPrisma.test.ts
+│   │   │   ├── BoardRepoPrisma.test.ts
+│   │   │   ├── InvitationRepoPrisma.test.ts
+│   │   │   ├── LikeRepoPrisma.test.ts
+│   │   │   ├── PostRepoPrisma.test.ts
+│   │   │   ├── TenantRepoPrisma.test.ts
+│   │   │   └── UserOnTenantRepoPrisma.test.ts
+│   │   └── setup.ts
+│   ├── teste2e
+│   │   ├── .auth
+│   │   │   └── .gitkeep
+│   │   ├── api.spec.ts
+│   │   ├── auth-bridge.spec.ts
+│   │   ├── auth-magic-link.spec.ts
+│   │   ├── auth.setup.ts
+│   │   ├── auth.spec.ts
+│   │   ├── board.spec.ts
+│   │   ├── embed.spec.ts
+│   │   ├── fixtures.ts
+│   │   ├── health.spec.ts
+│   │   ├── home.spec.ts
+│   │   ├── i18n.spec.ts
+│   │   ├── moderation.spec.ts
+│   │   ├── post.spec.ts
+│   │   ├── profile.spec.ts
+│   │   ├── root-admin.spec.ts
+│   │   ├── routing.spec.ts
+│   │   ├── search.spec.ts
+│   │   ├── tenant-admin-extras.spec.ts
+│   │   └── tenant-admin.spec.ts
+│   ├── testi
+│   │   ├── boards
+│   │   │   ├── CreateBoard.test.ts
+│   │   │   ├── DeleteBoard.test.ts
+│   │   │   ├── ReorderBoards.test.ts
+│   │   │   └── UpdateBoard.test.ts
+│   │   ├── cache
+│   │   │   └── AbstractCacheUseCase.test.ts
+│   │   ├── comments
+│   │   │   ├── AddCommentToPost.test.ts
+│   │   │   └── DeleteComment.test.ts
+│   │   ├── helpers.ts
+│   │   ├── invitations
+│   │   │   ├── RevokeInvitation.test.ts
+│   │   │   └── SendInvitation.test.ts
+│   │   ├── likes
+│   │   │   ├── LikePost.test.ts
+│   │   │   └── UnlikePost.test.ts
+│   │   ├── post_statuses
+│   │   │   ├── CreatePostStatus.test.ts
+│   │   │   └── DeletePostStatus.test.ts
+│   │   ├── posts
+│   │   │   ├── ApprovePost.test.ts
+│   │   │   ├── DeletePost.test.ts
+│   │   │   ├── RejectPost.test.ts
+│   │   │   ├── SubmitPost.test.ts
+│   │   │   └── UpdatePostContent.test.ts
+│   │   ├── tenant
+│   │   │   ├── CreateNewTenant.test.ts
+│   │   │   ├── DeleteTenant.test.ts
+│   │   │   ├── GetTenantForDomain.test.ts
+│   │   │   ├── SaveTenantWithSettings.test.ts
+│   │   │   └── UpdateTenantDomain.test.ts
+│   │   └── user_on_tenant
+│   │       ├── RemoveMember.test.ts
+│   │       ├── UpdateMemberRole.test.ts
+│   │       └── UpdateMemberStatus.test.ts
+│   ├── testu
+│   │   ├── auth
+│   │   │   └── assertSession.test.ts
+│   │   ├── dns
+│   │   │   └── computeDnsNames.test.ts
+│   │   ├── model
+│   │   │   └── Post.test.ts
+│   │   ├── utils
+│   │   │   ├── date.test.ts
+│   │   │   ├── dirtyDomain.test.ts
+│   │   │   ├── error.test.ts
+│   │   │   ├── function.test.ts
+│   │   │   └── string.test.ts
+│   │   └── validation
+│   │       ├── ApprovePostInput.test.ts
+│   │       ├── ChangePostStatusInput.test.ts
+│   │       ├── CreateBoardInput.test.ts
+│   │       ├── CreateNewTenantInput.test.ts
+│   │       ├── CreateWebhookInput.test.ts
+│   │       ├── DeletePostInput.test.ts
+│   │       ├── LikePostInput.test.ts
+│   │       ├── RejectPostInput.test.ts
+│   │       ├── SaveTenantWithSettingsInput.test.ts
+│   │       ├── SendInvitationInput.test.ts
+│   │       ├── SubmitPostInput.test.ts
+│   │       ├── UpdateMemberRoleInput.test.ts
+│   │       ├── UpdatePostContentInput.test.ts
+│   │       └── _helpers.ts
+│   └── tsconfig.json
+├── tsconfig.json
+├── vitest.config.db.ts
+├── vitest.config.ts
+└── vitest.setup.ts
+234 directories, 781 files

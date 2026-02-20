@@ -1,28 +1,29 @@
 {
   "url": "https://github.com/incubateur-ademe/roadmaps-faciles",
   "name": "roadmaps-faciles",
-  "description": "Roadmaps Faciles permet de créer et exposer facilement la roadmap d'une startup d'État, en regroupant les avis des utilisateurs pour améliorer l'impact du produit.",
+  "description": "Roadmaps Faciles permet de créer et exposer facilement la roadmap d'une startup d'État. Il regroupe les avis et retours des utilisateurs pour orienter la feuille de route d'un produit et améliorer son impact.",
   "language": "TypeScript",
   "features": [
-    "Gestion de roadmaps",
+    "Gestion des roadmaps",
     "Collecte de feedback utilisateur",
-    "Authentification utilisateur",
     "Gestion des tenants (sous-domaines)",
-    "SSO (OAuth)",
+    "Authentification utilisateur",
+    "Gestion des utilisateurs et des rôles",
     "Audit log",
-    "Modération de contenu",
-    "Authentification 2FA (passkey/OTP)"
+    "Intégration SSO",
+    "Gestion des domaines personnalisés",
+    "Authentification à deux facteurs (2FA)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
+    "TypeScript",
     "Prisma",
-    "Zod",
-    "React",
     "NextAuth",
-    "Tailwind CSS",
-    "DSFR (Design System de l'État)",
+    "Zod",
+    "React DSFR",
     "MUI",
+    "Tailwind CSS",
     "ioredis"
   ],
   "components": [
@@ -30,15 +31,15 @@
     "API REST",
     "Base de données PostgreSQL",
     "ORM Prisma",
-    "Système d'authentification NextAuth",
-    "Cache Redis"
+    "Authentification NextAuth",
+    "Système de gestion des tenants",
+    "Interface utilisateur Design System de l'État (DSFR)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "session",
-      "magic-link"
+      "sso"
     ],
     "providers": [
       "GitHub",
@@ -46,20 +47,24 @@
       "ProConnect"
     ]
   },
-  "tests": null,
+  "tests": [
+    "Vitest",
+    "Playwright"
+  ],
   "workflows": [
     "build",
-    "lint"
+    "lint",
+    "test"
   ],
-  "lastActivity": "2026-02-18T20:32:52+01:00",
+  "lastActivity": "2026-02-20T00:10:31+01:00",
   "status": "active",
-  "license": null,
+  "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 3,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 14
+    "openIssues": 19
   },
   "tags": [
     "roadmap",
@@ -67,10 +72,10 @@
     "typescript",
     "nextjs",
     "prisma",
-    "react",
     "sso",
-    "oauth2",
     "design-system",
-    "dsfr"
+    "administration",
+    "startup",
+    "product-management"
   ]
 }
