@@ -1,27 +1,25 @@
 {
   "url": "https://github.com/MTES-MCT/Dossier-Facile-Frontend",
   "name": "Dossier-Facile-Frontend",
-  "description": "Ce projet correspond aux sites DossierFacile et FiligraneFacile. Il aide à la réalisation de dossiers de location et utilise le framework Vue.",
+  "description": "Ce projet correspond aux sites DossierFacile et FiligraneFacile. Il permet de réaliser des dossiers de location et de gérer les liens de partage.",
   "language": "TypeScript",
   "features": [
-    "Gestion des documents",
+    "Gestion des liens de partage",
     "Authentification utilisateur",
-    "Partage de documents",
-    "Gestion des autorisations",
     "Téléchargement de documents",
     "Accessibilité",
-    "Support FranceConnect"
+    "Gestion des fichiers",
+    "Notifications"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Vue",
     "Pinia",
-    "vee-validate",
     "axios",
-    "vue-i18n",
+    "vee-validate",
     "vue-router",
     "df-shared-next",
-    "Keycloak-js"
+    "keycloak-js"
   ],
   "components": [
     "Frontend Vue",
@@ -32,10 +30,7 @@
   "auth": {
     "methods": [
       "oauth2",
-      "email-password"
-    ],
-    "providers": [
-      "FranceConnect"
+      "session"
     ]
   },
   "tests": [
@@ -47,7 +42,7 @@
     "e2e.yml",
     "www.yml"
   ],
-  "lastActivity": "2026-02-18T17:49:16+01:00",
+  "lastActivity": "2026-02-19T18:40:28+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,13 +50,12 @@
     "stars": 80,
     "forks": 28,
     "contributors": null,
-    "openIssues": 28
+    "openIssues": 27
   },
   "tags": [
+    "dossierfacile",
     "location",
-    "dossier",
-    "administration",
-    "vue",
+    "vuejs",
     "typescript",
     "franceconnect",
     "dsfr"
