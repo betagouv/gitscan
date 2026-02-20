@@ -1,0 +1,80 @@
+.
+├── .dockerignore
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── CONTRIBUTING.md
+├── Cargo.lock
+├── Cargo.toml
+├── Dockerfile
+├── LICENSE.txt
+├── build.rs
+├── launch_demo.sh
+├── readme.md
+├── src
+│   ├── args.rs
+│   ├── bin
+│   │   └── ds_proxy.rs
+│   ├── config.rs
+│   ├── crypto
+│   │   ├── decipher_type.rs
+│   │   ├── decoder.rs
+│   │   ├── encoder.rs
+│   │   ├── header.rs
+│   │   ├── header_decoder.rs
+│   │   └── mod.rs
+│   ├── file.rs
+│   ├── http
+│   │   ├── handlers
+│   │   │   ├── encrypt_to_file.rs
+│   │   │   ├── fetch.rs
+│   │   │   ├── fetch_file.rs
+│   │   │   ├── forward.rs
+│   │   │   ├── mod.rs
+│   │   │   ├── ping.rs
+│   │   │   └── simple_proxy.rs
+│   │   ├── middlewares
+│   │   │   └── mod.rs
+│   │   ├── mod.rs
+│   │   ├── proxy.rs
+│   │   └── utils
+│   │       ├── mod.rs
+│   │       ├── partial_extractor.rs
+│   │       ├── s3_helper.rs
+│   │       └── verify_signature.rs
+│   ├── keyring.rs
+│   ├── keyring_utils.rs
+│   ├── lib.rs
+│   ├── redis_config.rs
+│   ├── redis_utils
+│   │   └── mod.rs
+│   ├── s3_config.rs
+│   └── write_once_service.rs
+└── tests
+    ├── concurrent_uploads.rs
+    ├── content_length_and_transfert_encoding.rs
+    ├── download_witness_file.rs
+    ├── encryption_tests.rs
+    ├── ensure_write_once.rs
+    ├── file_operations.rs
+    ├── fixtures
+    │   ├── computer.svg
+    │   ├── computer.svg.enc
+    │   ├── keyring.toml
+    │   └── server-static
+    │       ├── package-lock.json
+    │       ├── package.json
+    │       ├── server.js
+    │       └── uploads
+    │           ├── .keep
+    │           └── out_of_jail.txt
+    ├── helpers
+    │   ├── curl.rs
+    │   └── mod.rs
+    ├── keyring.rs
+    ├── local_encryption.rs
+    ├── ping.rs
+    ├── traversal_attack.rs
+    └── upload_and_download.rs
+16 directories, 63 files
