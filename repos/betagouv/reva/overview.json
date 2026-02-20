@@ -1,27 +1,26 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi.",
+  "description": "REVA est un monorepo qui regroupe les API et applications France VAE ainsi que ses composants comme Keycloak, Metabase et Strapi. Il permet de gérer les candidatures à la Validation des Acquis de l'Expérience (VAE).",
   "language": "TypeScript",
   "features": [
-    "Authentification utilisateur",
     "Gestion des candidatures",
-    "Gestion des organismes",
+    "Authentification utilisateur",
+    "Administration",
+    "VAE collective",
     "Génération de documents (DFF)",
-    "Suivi des candidatures",
-    "Gestion des certifications",
-    "Interface d'administration",
-    "Site vitrine"
+    "Interoperabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Fastify",
     "Next.js",
+    "React",
     "GraphQL",
     "Prisma",
     "PostgreSQL",
     "Keycloak",
-    "React",
+    "Traefik",
     "Cypress",
     "Playwright",
     "Datadog",
@@ -32,37 +31,47 @@
   "components": [
     "Frontend React",
     "API REST",
+    "API GraphQL",
     "Base de données PostgreSQL",
-    "Keycloak",
-    "Traefik"
+    "Keycloak (Authentification)",
+    "Metabase (Observabilité)",
+    "Strapi (CMS)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session",
-      "email-password"
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "FranceConnect"
+    ]
   },
   "tests": [
     "Vitest",
     "Cypress",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-16T16:48:24+01:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-02-19T17:45:41+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "VAE",
-    "Formation professionnelle",
-    "Administration publique",
+    "Validation des Acquis de l'Expérience",
     "France VAE",
     "Monorepo",
     "TypeScript",
     "React",
-    "GraphQL"
+    "GraphQL",
+    "Keycloak"
   ]
 }
