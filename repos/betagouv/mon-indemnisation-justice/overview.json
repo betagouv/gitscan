@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/mon-indemnisation-justice",
   "name": "mon-indemnisation-justice",
-  "description": "Plateforme de gestion des demandes d'indemnisation en précontentieux au Ministère de la Justice. Elle vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation.",
+  "description": "Cette application vise à améliorer la qualité du service rendu aux usagers en dématérialisant le processus d’indemnisation, réduisant les délais de traitement et permettant des économies financières pour le ministère de la Justice.",
   "language": "PHP",
   "features": [
     "Gestion des demandes d'indemnisation",
@@ -23,9 +23,10 @@
   "components": [
     "Backend Symfony",
     "Frontend React",
-    "API REST",
     "Base de données PostgreSQL",
-    "Docker"
+    "API REST",
+    "Docker",
+    "Playwright pour les tests end-to-end"
   ],
   "auth": {
     "methods": [
@@ -38,8 +39,7 @@
   },
   "tests": [
     "PHPUnit",
-    "Playwright",
-    "Tests end-to-end"
+    "Playwright"
   ],
   "workflows": [
     "build-docker-image.yml",
@@ -48,7 +48,7 @@
     "merge-to-prod.yml",
     "test.yml"
   ],
-  "lastActivity": "2026-02-17T17:55:50+01:00",
+  "lastActivity": "2026-02-19T14:45:27+00:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -56,7 +56,7 @@
     "stars": 1,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 0
+    "openIssues": 1
   },
   "tags": [
     "indemnisation",
@@ -65,6 +65,7 @@
     "PHP",
     "Symfony",
     "React",
-    "Docker"
+    "Docker",
+    "API Platform"
   ]
 }
