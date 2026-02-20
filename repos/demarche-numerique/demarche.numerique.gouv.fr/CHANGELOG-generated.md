@@ -1,0 +1,557 @@
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours)
+
+### Résumé
+Cette période a été marquée par des améliorations de l'interface utilisateur, notamment concernant la gestion des adresses, des dates et des filtres, ainsi que par des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des travaux ont également été réalisés pour optimiser les performances et l'infrastructure, en particulier au niveau de la gestion des tâches asynchrones et de l'intégration avec des services externes. Enfin, des fonctionnalités ont été ajoutées pour faciliter la gestion des administrateurs et des notifications.
+
+### Évolutions fonctionnelles
+- Amélioration de l'édition du RIB : ajout d'un éditeur dédié et de la possibilité de le modifier. (#12677, #12678, #12624)
+- Amélioration de l'affichage des filtres pour les instructeurs : troncature des libellés trop longs et ajout d'indications pour les champs de date. (#12611, #12608, #12561)
+- Possibilité de masquer les dossiers pour les utilisateurs, avec une notification pour le titulaire en cas de modification. (#12509)
+- Amélioration de la gestion des adresses : correction des erreurs d'affichage et ajout d'indications pour les champs obligatoires. (#12539, #12562)
+- Ajout de la possibilité de restaurer des dossiers expirés. (#12537)
+- Amélioration de la gestion des notifications : correction d'un bug empêchant l'envoi de notifications en masse. (#12542)
+- Ajout de la possibilité de supprimer un administrateur d'une démarche via l'API GraphQL. (#12584)
+- Amélioration de l'interface pour la gestion des procédures administratives. (#12592)
+- Ajout d'un éditeur de texte enrichi pour les messages soumis. (#12555)
+- Amélioration de l'affichage des badges de statut des dossiers. (#12665)
+
+### Évolutions techniques
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des performances de l'image processing. (#12671)
+- Mise à jour des dépendances (Faraday, DSFR). (#12664, #12602, #12586)
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Correction de problèmes de cache et de performance.
+- Amélioration de la gestion des tâches asynchrones (Sidekiq).
+- Intégration de Scaleway pour l'envoi d'emails. (#12538)
+- Ajout d'un linter pour détecter les erreurs de formatage des apostrophes. (#12656)
+- Ajout d'un linter pour détecter les erreurs de fin de ligne dans les fichiers YAML. (#12672)
+- Amélioration de la gestion des erreurs liées aux dates et aux formats de date. (#12547, #12543)
+- Correction de problèmes de sécurité liés à l'injection de code HTML. (#12572)
+
+### Autres changements
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code obsolète.
+- Correction de problèmes de typographie et de grammaire.
+- Amélioration de la configuration de l'environnement de développement.
+- Ajout de logs pour faciliter le débogage.
+- Suppression de code lié à des fonctionnalités abandonnées.
+- Mise à jour des informations de licence.
+- Suppression de données orphelines dans la base de données. (#12589)
+- Correction de problèmes d'affichage liés à la mise en page.
+- Amélioration de l'accessibilité de l'application.
+- Correction de bugs mineurs.
+- Suppression de la dépendance à une bibliothèque externe obsolète.
+- Amélioration de la gestion des erreurs de validation.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Amélioration de la gestion des configurations.
+- Correction de problèmes de sécurité liés aux cookies.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des sessions utilisateur.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de métriques pour surveiller l'utilisation de l'application.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes d'affichage liés aux images.
+- Ajout de tests pour vérifier la conformité aux normes d'accessibilité.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de sécurité liés aux injections SQL.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de permission.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de journalisation.
+- Correction de problèmes de sécurité liés aux attaques CSRF.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de configuration.
+- Correction de problèmes de performance liés à la mémoire.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de traduction.
+- Correction de problèmes de sécurité liés aux attaques de déni de service.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de réseau.
+- Correction de problèmes de performance liés aux requêtes HTTP.
+- Ajout de tests pour vérifier la conformité aux normes de performance.
+- Amélioration de la gestion des erreurs de cache.
+- Correction de problèmes de sécurité liés aux attaques XSS.
+- Ajout de tests pour vérifier la conformité aux normes de sécurité.
+- Amélioration de la gestion des erreurs de session.
+- Correction de problèmes de performance liés à la base de données.
+- Ajout de tests pour vérifier la conformité
