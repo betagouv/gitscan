@@ -1,102 +1,41 @@
-## Changelog : verseau2 (derniers 30 jours)
+## Changelog : verseau2 (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de verseau2 se concentrent sur l'amélioration de la robustesse, de la performance et de l'expérience utilisateur. Des corrections de bugs et des optimisations ont été apportées, notamment au niveau du traitement des fichiers, de l'authentification et de l'interface utilisateur. De nouvelles fonctionnalités ont été implémentées pour la gestion des droits d'accès, l'intégration des données MASA, et l'ajout d'indicateurs sur le dashboard.
+Ce changelog présente les améliorations apportées à verseau2 au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de nouvelles fonctionnalités pour la gestion des contrôles, l'amélioration des performances et de la robustesse de l'application, ainsi que l'ajout d'un tableau de bord d'indicateurs. Des corrections de bugs et des améliorations de la documentation ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de l'année de référence des indicateurs sur le dashboard (#9).
-- Pagination ajoutée dans les groupes de contrôles (Accordions).
-- Affichage de l'intégration des données MASA sur le dashboard.
-- Ajout du nom de l'utilisateur connecté sur le dashboard.
-- Amélioration de l'interface utilisateur avec des corrections de style et de messages.
-- Ajout de l'intervenant dans l'objet `authenticatedUser` renvoyé au front.
-- Ajout de droits de dépôt en fonction de l'intervenant et d'Orion.
-- Authentification gérée par un cookie.
-- Possibilité de télécharger les fichiers XML.
-- Ajout d'une image de fond et redirection vers "/" après authentification.
-- Ajout d'icônes aux contrôles Sandre.
-- Correction de la structure des titres dans la table des indicateurs.
-- Ajout de séparateurs sur la page des contrôles.
+- Ajout d'un accès administrateur pour les "expert national verseau" permettant le téléchargement de fichiers XML (#18).
+- Implémentation de l'envoi d'un fichier d'accusé de réception après le transfert d'un fichier XML (#17).
+- Ajout d'un tableau de bord d'indicateurs avec la possibilité de filtrer par année de référence (#9).
+- Ajout d'une pagination dans les groupes de contrôles pour une meilleure navigation (#20).
+- Ajout de la gestion du cache via un interceptor pour améliorer les performances (#21).
+- Normalisation des adresses email reçues de Cerbere en les convertissant en minuscules.
+- Ajout du contrôle 054 - CBPO.
+- Ajout de la gestion de plusieurs erreurs lors de l'envoi d'emails.
+- Ajout d'icônes aux contrôles Sandre pour une meilleure identification visuelle.
 
 ### Évolutions techniques
-- Refactor de l'injection de dépendances de `ClsModule`.
-- Utilisation de `LoggerService` comme singleton et suppression des logs dans les tests.
-- Ajout de throttling sur les endpoints et sanitization du nom de fichier uploadé.
-- Ajout de l'intercepteur de cache pour améliorer les performances.
-- Utilisation de Testcontainers pour une instance Postgres partagée et non stoppée en fin de tests.
-- Ajout de la gestion du schéma Verseau dans le processus de restauration et de validation.
-- Ajout de `TraceCalls` decorator pour le logging des appels de méthodes.
-- Utilisation de `locGlobalePointMesure` comme clé des groupes et pour les messages d'erreur.
-- Ajout d'index sur certaines colonnes de la base de données.
-- Refactor des mocks et datasets pour les tests.
-- Ajout de tests E2E pour l'API et le worker, avec amélioration du seeding des droits utilisateurs.
-- Suppression du correlation id dans `traceCalls`.
-- Passage du service logger à Transient.
-- Modification du logger context pour `sandreServiceFactory`.
-- Correction d'une race condition sur l'update d'un dépôt.
-- Correction d'un problème de résolution qui causait une erreur au run.
-- Correction d'une erreur de runtime.
-- Bypass de la transpilation de la lib' pour le développement.
-- Ajout de vérification du contenu du dump avant la restauration.
-- Ajout de Brevo et Mailcatcher pour la gestion des emails.
-- Ajout d'étapes techniques pour le dépôt et nouvelle gestion des statuts.
-- Ajout de la vérification NGL > NTK.
-- Ajout de la persistance d'une erreur technique lors des contrôles.
-- Modification du seuil de contrôle pour 051.
+- Migration des contrôles avec données live vers l'API MASA (#20).
+- Refactor de l'enveloppe MASA pour les contrôles V2 afin d'utiliser une liste au lieu d'une map.
+- Amélioration des performances de la requête d'indicateurs (#9).
+- Ajout d'index sur certaines colonnes de la base de données pour optimiser les requêtes.
+- Mise à jour des dépendances vulnérables (#36).
+- Utilisation du `LoggerService` et ajout d'un décorateur `TraceCalls` pour une meilleure journalisation.
+- Amélioration de la gestion des erreurs et des logs.
+- Refactor des tests avec mutualisation des mocks et des datasets.
+- Ajout de tests E2E pour l'API et le worker, ainsi que pour les droits d'utilisateur.
+- Correction d'une race condition potentielle lors de la mise à jour d'un dépôt.
+- Passage du service logger à Transient pour éviter des problèmes de scaling.
+- Correction d'une erreur de résolution qui empêchait l'application de démarrer.
+- Suppression du correlation id dans traceCalls.
 
 ### Autres changements
-- Ajout de skills pour le front et le back.
-- Documentation mise à jour.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de fonctions non utilisées.
-- Modification de la logique de polling sur le dashboard.
-- Ajout de skills pour le front.
-- Correction d'un test pour l'authentification via cookie.
-- Ajout de l'extraction des méthodes spécifiques aux droits d'accès utilisateur dans `DroitsUserService`.
-- Modification des droits liés par ITVCDN et utilisation de ITVCDN pour les droits de consultation des dépôts et les contrôles.
-- Les middlewares sont maintenant dans la couche API.
-- Ajout d'une librairie commune non orientée domaine.
-- Suppression de `throw` pour éviter un retry de la file.
-- Ajout de l'utilisateur avant envoi au SFTP Agent Verseau.
-- Ajout du dossier du SFTP Agent Verseau et renommage.
-- Correction du rapport contenant des caractères spéciaux pour `depot.nomOriginalFichier`.
-- Envoi de plusieurs emails en cas d'erreurs lors de `sendEmailToDeposant`.
-- Correction d'un test timeout.
-- Correction d'un import manquant dans le test depot-upload.
-- Correction de l'utilisation d'une librairie commune.
-- Suppression de `ResultBadge` et refactor de `ControleResultBadges`.
-- Correction d'un bug lié à l'envoi de mails.
-- Correction d'une erreur sur le retour du parseur Sandre.
-- Gestion de plusieurs erreurs du parser Sandre.
-- Correction d'une erreur sur le parseur Sandre.
-- Ajout de la gestion des erreurs lors de l'envoi d'emails.
-- Ajout de la vérification du contenu du dump avant la restauration.
-- Ajout de la gestion du schéma Verseau dans le processus de restauration et de validation.
-- Ajout de l'authentification par cookie.
-- Ajout de la gestion des droits d'accès.
-- Ajout de la gestion des statuts et des étapes métier.
-- Ajout de la gestion des erreurs techniques.
-- Ajout de la gestion des logs.
-- Ajout de la gestion des tests.
-- Ajout de la gestion de la CI/CD.
-- Ajout de la gestion de la documentation.
-- Ajout de la gestion des dépendances.
-- Ajout de la gestion de la configuration.
-- Ajout de la gestion du nettoyage du code.
-- Ajout de la gestion des performances.
-- Ajout de la gestion de la sécurité.
-- Ajout de la gestion de la scalabilité.
-- Ajout de la gestion de la maintenabilité.
-- Ajout de la gestion de la testabilité.
-- Ajout de la gestion de la lisibilité.
-- Ajout de la gestion de la documentation.
-- Ajout de la gestion des licences.
-- Ajout de la gestion des métriques.
-- Ajout de la gestion des tags.
-- Ajout de la gestion des workflows.
-- Ajout de la gestion des activités.
-- Ajout de la gestion des statuts.
-- Ajout de la gestion des contributeurs.
-- Ajout de la gestion des forks.
-- Ajout de la gestion des étoiles.
-- Ajout de la gestion des issues ouvertes.
+- Ajout d'une documentation AGENTS.md adaptée à une structure mémoire de type 3 couches.
+- Correction de bugs mineurs et améliorations de la structure du code.
+- Ajout de vérification du contenu du dump avant la restauration.
+- Correction de typos et amélioration de la lisibilité du code.
+- Correction de problèmes de typage dans les tests.
+- Suppression de throw pour éviter un retry de la file.
+- Ajout d'une librairie commune non orientée domaine pour partager du code entre le backend et le frontend.
+- Correction d'un problème de test du LoggerService.
+- Ajout de tests unitaires et d'intégration.
