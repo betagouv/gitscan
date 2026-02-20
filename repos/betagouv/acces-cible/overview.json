@@ -4,48 +4,43 @@
   "description": "Application permettant de contrôler l'accessibilité des sites Internet, et les obligations légales liées à celle-ci.",
   "language": "Ruby",
   "features": [
-    "Analyse de l'accessibilité",
-    "Vérification de la conformité",
-    "Gestion des audits",
-    "Extraction d'informations sur les schémas d'accessibilité",
-    "Gestion des utilisateurs et des équipes"
+    "Vérification de l'accessibilité",
+    "Analyse de schémas et plans d'accessibilité",
+    "Gestion des sites web",
+    "Gestion des utilisateurs et équipes",
+    "Export CSV"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
+    "RSpec",
+    "Cucumber",
+    "Factory Bot",
     "PostgreSQL",
     "SolidQueue",
-    "SolidCable",
-    "SolidCache",
-    "Axe-core",
-    "Ferrum",
-    "Puppeteer-stealth-evasion"
+    "DSFR (Design System de l'État Français)"
   ],
   "components": [
     "Frontend Rails",
     "API REST",
     "Base de données PostgreSQL",
-    "Workers SolidQueue",
-    "Composants DSFR (Design System de l'État Français)"
+    "Jobs asynchrones (SolidQueue)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "email-password",
+      "oauth2"
     ],
-    "providers": [
-      "ProConnect"
-    ]
+    "providers": []
   },
   "tests": [
     "RSpec",
-    "Cucumber",
-    "Factory Bot"
+    "Cucumber"
   ],
   "workflows": [
-    "CI"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-02-17T09:03:22+01:00",
+  "lastActivity": "2026-02-19T13:25:55+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,11 +48,13 @@
     "stars": 5,
     "forks": 3,
     "contributors": null,
-    "openIssues": 34
+    "openIssues": 32
   },
   "tags": [
     "accessibilité",
     "web",
-    "accessibilité numérique"
+    "accessibilité numérique",
+    "test d'accessibilité",
+    "RGAA"
   ]
 }
