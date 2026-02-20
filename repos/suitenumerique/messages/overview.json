@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Messages est une boîte de réception collaborative pour La Suite territoriale. Elle permet aux équipes de collaborer sur les e-mails via des boîtes de réception partagées ou personnelles.",
+  "description": "Une boîte de réception collaborative pour La Suite territoriale. Elle permet aux équipes de collaborer sur les e-mails via des boîtes de réception partagées ou personnelles.",
   "language": "Python",
   "features": [
     "Réception, rédaction et envoi d'e-mails",
@@ -9,12 +9,9 @@
     "Téléchargement et téléchargement de pièces jointes",
     "Importation d'e-mails depuis MBOX ou IMAP",
     "Recherche en texte intégral avec filtres avancés",
-    "Traitement asynchrone des e-mails (antispam, antivirus)",
     "Résumés IA, composition de messages IA, étiquetage automatique IA",
-    "Widgets intégrables pour les commentaires",
-    "Partage de boîtes de réception",
-    "Partage de fils de discussion",
-    "Invitations de calendrier"
+    "Partage de boîtes de réception avec plusieurs utilisateurs",
+    "Partage de fils de discussion avec d'autres utilisateurs"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -27,14 +24,14 @@
     "Keycloak",
     "Next.js",
     "BlockNote.js",
-    "drf-spectacular"
+    "Postfix"
   ],
   "components": [
-    "MTA basé sur Postfix",
-    "MDA personnalisé basé sur Django Rest Framework",
     "Frontend Next.js",
+    "API REST Django",
     "Base de données PostgreSQL",
-    "Cache Redis"
+    "MTA basé sur Postfix",
+    "MDA personnalisé basé sur Django Rest Framework"
   ],
   "auth": {
     "methods": [
@@ -45,32 +42,25 @@
       "Keycloak"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-02-17T18:30:13+00:00",
+  "tests": null,
+  "workflows": null,
+  "lastActivity": "2026-02-20T01:29:14+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 162,
-    "forks": 17,
+    "stars": 164,
+    "forks": 18,
     "contributors": null,
-    "openIssues": 95
+    "openIssues": 90
   },
   "tags": [
     "email",
     "django",
-    "rest api",
-    "collaboration",
     "postfix",
-    "imap",
-    "mbox",
-    "keycloak",
-    "opensearch",
-    "ai"
+    "collaboration",
+    "inbox",
+    "rest api",
+    "python"
   ]
 }

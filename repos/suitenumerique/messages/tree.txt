@@ -49,9 +49,11 @@
 │   ├── email-exporter.md
 │   ├── env.md
 │   ├── internationalization.md
+│   ├── mbox.md
 │   ├── model-custom-attributes.md
 │   ├── permissions.md
 │   ├── prometheus.md
+│   ├── pst.md
 │   ├── self-hosting.md
 │   ├── selfcheck.md
 │   ├── theme-customization.md
@@ -116,6 +118,7 @@
     │   │   │       ├── message.py
     │   │   │       ├── message_template.py
     │   │   │       ├── metrics.py
+    │   │   │       ├── mixins.py
     │   │   │       ├── placeholder.py
     │   │   │       ├── send.py
     │   │   │       ├── task.py
@@ -163,6 +166,7 @@
     │   │   │   │   ├── parser.py
     │   │   │   │   └── utils.py
     │   │   │   ├── selfcheck.py
+    │   │   │   ├── selfcheck_reporting.py
     │   │   │   ├── signing.py
     │   │   │   └── smtp.py
     │   │   ├── metrics.py
@@ -196,27 +200,38 @@
     │   │   │   │   │   └── scaleway.py
     │   │   │   │   ├── provisioning.py
     │   │   │   │   └── tasks.py
+    │   │   │   ├── exporter
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── tasks.py
     │   │   │   ├── identity
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── keycloak.py
     │   │   │   ├── importer
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── eml_tasks.py
     │   │   │   │   ├── imap.py
+    │   │   │   │   ├── imap_tasks.py
     │   │   │   │   ├── labels.py
-    │   │   │   │   ├── service.py
+    │   │   │   │   ├── mbox_tasks.py
+    │   │   │   │   ├── pst.py
+    │   │   │   │   ├── pst_tasks.py
+    │   │   │   │   ├── s3_seekable.py
+    │   │   │   │   └── service.py
+    │   │   │   ├── search
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── index.py
+    │   │   │   │   ├── mapping.py
+    │   │   │   │   ├── parse.py
+    │   │   │   │   ├── search.py
     │   │   │   │   └── tasks.py
-    │   │   │   └── search
-    │   │   │       ├── __init__.py
-    │   │   │       ├── index.py
-    │   │   │       ├── mapping.py
-    │   │   │       ├── parse.py
-    │   │   │       ├── search.py
-    │   │   │       └── tasks.py
+    │   │   │   └── throttle.py
     │   │   ├── signals.py
     │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   └── admin
     │   │   │       └── core
+    │   │   │           ├── mailbox
+    │   │   │           │   └── change_form.html
     │   │   │           ├── maildomain
     │   │   │           │   └── change_form.html
     │   │   │           └── message
@@ -287,12 +302,17 @@
     │   │   │   │   ├── test_check.py
     │   │   │   │   ├── test_provider_scaleway.py
     │   │   │   │   └── test_provisioning.py
+    │   │   │   ├── exporter
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_export_task.py
     │   │   │   ├── importer
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_file_import.py
     │   │   │   │   ├── test_imap_connection.py
     │   │   │   │   ├── test_imap_import.py
-    │   │   │   │   └── test_import_service.py
+    │   │   │   │   ├── test_import_service.py
+    │   │   │   │   ├── test_pst_import.py
+    │   │   │   │   └── test_s3_seekable.py
     │   │   │   ├── mda
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_inbound.py
@@ -306,6 +326,7 @@
     │   │   │   │   ├── test_rfc5322_parser.py
     │   │   │   │   ├── test_rfc5322_parser_structure.py
     │   │   │   │   ├── test_rfc5322_utils.py
+    │   │   │   │   ├── test_selfcheck_reporting.py
     │   │   │   │   ├── test_signing.py
     │   │   │   │   ├── test_smtp.py
     │   │   │   │   └── test_spam_processing.py
@@ -320,15 +341,20 @@
     │   │   │   │   └── test_users.py
     │   │   │   ├── resources
     │   │   │   │   ├── All mail Including Spam and Trash.mbox
+    │   │   │   │   ├── Outlook.pst
     │   │   │   │   ├── Tous les messages, y compris ceux du dossier Spam .mbox
     │   │   │   │   ├── message.eml
-    │   │   │   │   └── messages.mbox
+    │   │   │   │   ├── messages.mbox
+    │   │   │   │   └── sample.pst
     │   │   │   ├── search
     │   │   │   │   ├── test_e2e.py
     │   │   │   │   ├── test_e2e_modifiers.py
     │   │   │   │   ├── test_parse_query.py
     │   │   │   │   ├── test_search.py
     │   │   │   │   └── test_search_modifiers.py
+    │   │   │   ├── services
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_throttle.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
@@ -658,14 +684,11 @@
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
     │   │   │   │   │   │   ├── mailbox_*.ts  (12 files)
-    │   │   │   │   │   │   ├── mailboxes_*.ts  (7 files)
+    │   │   │   │   │   │   ├── mailboxes_*.ts  (8 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
-    │   │   │   │   │   │   ├── maildomains_list_params.ts
-    │   │   │   │   │   │   ├── maildomains_mailboxes_list_params.ts
-    │   │   │   │   │   │   ├── maildomains_message_templates_list_params.ts
-    │   │   │   │   │   │   ├── maildomains_message_templates_list_type.ts
+    │   │   │   │   │   │   ├── maildomains_*.ts  (5 files)
     │   │   │   │   │   │   ├── message.ts
     │   │   │   │   │   │   ├── message_*.ts  (9 files)
     │   │   │   │   │   │   ├── messages_delivery_statuses_partial_update_body_one.ts
@@ -673,7 +696,7 @@
     │   │   │   │   │   │   ├── partial_drive_item.ts
     │   │   │   │   │   │   ├── patched_*.ts  (6 files)
     │   │   │   │   │   │   ├── placeholders_retrieve200.ts
-    │   │   │   │   │   │   ├── read_only_message_template.ts
+    │   │   │   │   │   │   ├── read_message_template.ts
     │   │   │   │   │   │   ├── reset_password_error.ts
     │   │   │   │   │   │   ├── reset_password_internal_server_error.ts
     │   │   │   │   │   │   ├── reset_password_not_found.ts
@@ -710,6 +733,12 @@
     │   │   │   │   ├── blocknote-view-field
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── column-layout-block
+    │   │   │   │   │   ├── _index.scss
+    │   │   │   │   │   ├── column-layout-insert-button.tsx
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── custom-side-menu.tsx
+    │   │   │   │   ├── custom-slash-menu.tsx
     │   │   │   │   ├── email-exporter
     │   │   │   │   │   ├── index.test.tsx
     │   │   │   │   │   └── index.tsx
@@ -785,6 +814,8 @@
     │   │   │   │   │       └── index.ts
     │   │   │   │   └── hooks
     │   │   │   │       └── use-attachments.tsx
+    │   │   │   ├── hooks
+    │   │   │   │   └── use-confirm-before-close.tsx
     │   │   │   ├── i18n
     │   │   │   │   ├── attachments-detection-map.json
     │   │   │   │   ├── conf.ts
@@ -1183,4 +1214,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-265 directories, 996 files
+271 directories, 1026 files
