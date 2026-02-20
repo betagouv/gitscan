@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une solution d'identification pour les professionnels et inclut des fonctionnalités d'administration et de tests de qualité.",
+  "description": "La solution qui vous identifie en tant que professionnel. Cette solution permet l'identification des professionnels et offre des fonctionnalités d'authentification et de gestion des utilisateurs.",
   "language": "TypeScript",
   "features": [
-    "Authentification",
+    "Authentification utilisateur",
     "Gestion des utilisateurs",
-    "Tests automatisés",
-    "Administration",
-    "Intégration avec des fournisseurs d'identité"
+    "Intégration avec des fournisseurs d'identité (OIDC)",
+    "Gestion des erreurs",
+    "Journalisation (logs)",
+    "Tests automatisés"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,18 +17,23 @@
     "Yarn",
     "Docker",
     "Express",
+    "TypeORM",
     "Mongoose",
     "Passport",
+    "Axios",
+    "bcryptjs",
     "class-validator",
-    "axios",
-    "amqp-connection-manager"
+    "jose",
+    "amqplib",
+    "pino"
   ],
   "components": [
-    "Frontend React (admin)",
     "Backend Node.js",
     "API REST",
     "Base de données MongoDB",
-    "Docker containers"
+    "Tests E2E avec Cypress",
+    "Docker pour la conteneurisation",
+    "CI/CD avec GitHub Actions"
   ],
   "auth": {
     "methods": [
@@ -36,31 +42,30 @@
     ]
   },
   "tests": [
+    "Jest",
+    "Cypress",
     "Tests unitaires",
     "Tests d'intégration",
-    "Tests Cypress (E2E)"
+    "Tests E2E"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-16T17:57:16+01:00",
+  "lastActivity": "2026-02-19T15:00:37+01:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
-    "ProConnect",
-    "Identification",
-    "Professionnels",
-    "Authentification",
-    "Administration",
-    "Docker",
+    "authentification",
+    "identification",
+    "professionnels",
+    "OIDC",
+    "Node.js",
     "TypeScript",
-    "Node.js"
+    "Docker",
+    "CI/CD",
+    "administration",
+    "FranceConnect"
   ]
 }
