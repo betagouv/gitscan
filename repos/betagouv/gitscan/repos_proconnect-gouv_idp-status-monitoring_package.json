@@ -1,0 +1,26 @@
+{
+  "name": "idp-status-monitoring",
+  "private": true,
+  "workspaces": [
+    "idp-status-monitoring-consumer",
+    "idp-status-monitoring-producer"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-organize-imports"
+    ]
+  },
+  "devDependencies": {
+    "@tsconfig/bun": "1.0.10",
+    "@types/bun": "1.3.8",
+    "prettier": "3.8.1",
+    "prettier-plugin-organize-imports": "4.3.0",
+    "typescript": "5.9.3"
+  }
+}

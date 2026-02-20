@@ -1,0 +1,89 @@
+services:
+  app-dev:
+    build:
+      context: .
+      target: development
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: oidc2fer:development
+    pull_policy: never
+    environment:
+      PYLINTHOME: /app/.pylint.d
+      BASE_URL: https://satosa.traefik.me
+      GUNICORN_CMD_ARGS: --workers=2
+      TEST_E2E: 1
+      #TEST_E2E_PC: 1
+      OIDC_DB_URI: redis://redis/0
+      CLIENT_DB_JSON: |
+        {
+          "oidc-test-client": {
+            "response_types": [
+              "id_token",
+              "code"
+            ],
+            "redirect_uris": [
+              "https://oidc-test-client.traefik.me/redirect_uri"
+            ],
+            "client_secret": "oidc-test-secret",
+            "token_endpoint_auth_method": "client_secret_post"
+          }
+        }
+      SAML2_DISCOVERY_URL: https://discovery.renater.fr/test/
+      SAML2_METADATA_URL: https://pub.federation.renater.fr/metadata/test/preview/preview-idps-test-metadata.xml
+      SAML2_ENTITY_ID: https://satosa.traefik.me/Saml2/proxy_saml2_backend.xml
+    env_file:
+      - env.d/development/common
+      - env.d/development/satosa
+    volumes:
+      - ./src/satosa:/app
+      - ./docker/files/usr/local/etc/gunicorn/satosa.py:/usr/local/etc/gunicorn/satosa.py
+    depends_on:
+      - redis
+
+  oidc-test-client:
+    build: docker/oidc-test-client
+    depends_on:
+      - nginx # nginx must be up to override satosa.traefik.me resolution
+      - app-dev
+    stop_signal: SIGKILL
+    volumes:
+      - ./docker/oidc-test-client:/app
+      - ./env.d/development/certs/mkcert-root-ca.pem:/usr/local/share/ca-certificates/mkcert-root-ca.crt
+    # - run update-ca-certificates to make mkcert certificates valid
+    # - add startup delay because IDP must be available on boot
+    entrypoint: |
+      /bin/bash -c '
+        cat /usr/local/share/ca-certificates/mkcert-root-ca.crt >> $(python -m certifi)
+        sleep 1
+        cd /app
+        exec python app.py
+      '
+    environment:
+      OIDC_ROOT_URL: https://oidc-test-client.traefik.me
+      OIDC_PROVIDER: https://satosa.traefik.me
+      #OIDC_PROVIDER: https://oidc2fer.127.0.0.1.nip.io
+      #OIDC_PROVIDER: https://oidc2fer-staging.beta.numerique.gouv.fr
+      OIDC_CLIENT_ID: oidc-test-client
+      OIDC_CLIENT_SECRET: oidc-test-secret
+      OIDC_SCOPES: openid,uid,given_name,usual_name,email,siret
+    extra_hosts:
+      - "oidc2fer.127.0.0.1.nip.io:host-gateway"
+
+  redis:
+    image: redis:7.2.4
+
+  nginx:
+    image: nginx:1.25
+    ports:
+      - "443:443"
+      - "8081:8081"
+    volumes:
+      - ./docker/files/etc/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./env.d/development/certs:/etc/nginx/certs:ro
+    networks:
+      default:
+        aliases:
+          # expose proxy internally as the public names to make internal HTTPS work
+          - satosa.traefik.me
+          - oidc-test-client.traefik.me

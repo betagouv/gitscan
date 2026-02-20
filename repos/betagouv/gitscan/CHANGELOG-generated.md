@@ -1,16 +1,14 @@
 ## Changelog : gitscan (30 derniers jours)
 
 ### Résumé
-Au cours des 30 derniers jours, gitscan a été principalement mis à jour pour suivre les évolutions de nombreux dépôts gérés par l'équipe BetaGouv et ses partenaires. Ces mises à jour automatiques permettent de maintenir à jour les informations collectées par le scanner. Une amélioration a également été apportée pour inclure des résumés d'organisation dans les données collectées, et des ajustements ont été faits pour exclure certains dépôts de l'analyse.
+Les 30 derniers jours ont été marqués par une activité importante de mise à jour des nombreux dépôts gérés par les différentes organisations liées à la beta.gouv.fr (betagouv, MTES-MCT, SocialGouv, incubateur-ademe, suitenumerique, etalab, proconnect-gouv, etc.). Ces mises à jour concernent principalement des dépendances et ne modifient pas directement l'expérience utilisateur de gitscan. Une correction concernant les références a été apportée à gitscan, ainsi qu'une mise à jour des résumés d'organisations.
 
 ### Évolutions fonctionnelles
-- Ajout de résumés d'organisation aux données collectées (#2).
-- Correction d'un bug concernant l'exclusion de certains dépôts de l'analyse (#2).
+- Correction d'un problème avec les références (#2).
+- Mise à jour des résumés d'organisations.
 
 ### Évolutions techniques
-- Mise à jour de l'infrastructure CI/CD pour inclure des overviews.
-- Initialisation du dépôt avec un premier commit.
+- Aucune évolution technique significative n'a été apportée à gitscan durant cette période.
 
 ### Autres changements
-- Mise à jour de la documentation README.md.
-- Mises à jour automatiques de nombreux dépôts BetaGouv et partenaires (MTES, etalab, suitenumerique, etc.). Ces mises à jour sont régulières et permettent de maintenir la fraîcheur des données indexées par gitscan.
+- Mises à jour de dépendances pour de nombreux dépôts de l'écosystème beta.gouv.fr. Ces mises à jour sont automatiques et ne nécessitent pas d'action particulière.
