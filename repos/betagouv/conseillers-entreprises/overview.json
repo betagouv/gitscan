@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
+  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers.",
   "language": "Ruby",
   "features": [
-    "Recherche",
     "Gestion des experts",
-    "Gestion des besoins",
-    "Importation de données",
-    "Statistiques",
-    "Gestion des partenaires"
+    "Gestion des besoins des entreprises",
+    "Mise en relation entreprises/conseillers",
+    "Statistiques et rapports",
+    "Import/Export de données",
+    "Gestion des territoires"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,13 +18,14 @@
     "@gouvfr/dsfr",
     "webpack",
     "stimulus",
-    "accessible-autocomplete"
+    "decoupage-administratif"
   ],
   "components": [
     "Application web Ruby on Rails",
     "Base de données PostgreSQL",
     "Frontend JavaScript",
-    "API REST"
+    "API REST",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
@@ -32,13 +33,12 @@
     ]
   },
   "tests": [
-    "RSpec",
-    "Cypress"
+    "RSpec"
   ],
   "workflows": [
-    "CI/CD (CircleCI)"
+    "CI/CD avec CircleCI"
   ],
-  "lastActivity": "2026-02-18T11:32:24+01:00",
+  "lastActivity": "2026-02-19T15:46:08+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -55,7 +55,6 @@
     "Ruby on Rails",
     "PostgreSQL",
     "administration publique",
-    "accompagnement",
     "développement économique"
   ]
 }
