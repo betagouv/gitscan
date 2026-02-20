@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant de gérer les prélèvements et les analyses. Elle offre une interface pour les utilisateurs, les coordinateurs et les laboratoires.",
+  "description": "Maestro est une application web permettant de gérer les prélèvements et les programmations. Elle offre des fonctionnalités pour les utilisateurs, les coordinateurs et les laboratoires.",
   "language": "TypeScript",
   "features": [
     "Gestion des prélèvements",
@@ -9,19 +9,19 @@
     "Gestion des utilisateurs",
     "EDI Sacha",
     "Connexion SFTP",
-    "Génération de rapports",
-    "Gestion des analyses"
+    "Génération de PDF",
+    "Gestion des laboratoires",
+    "Gestion des abattoirs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "PostgreSQL",
     "Node.js",
+    "PostgreSQL",
     "KnexJS",
-    "vitest",
-    "Storybook",
+    "Browserless",
     "S3",
-    "Browserless"
+    "Maildev"
   ],
   "components": [
     "Frontend React",
@@ -33,15 +33,16 @@
   "auth": {
     "methods": [
       "email-password"
-    ],
-    "providers": null
+    ]
   },
   "tests": [
-    "Vitest",
-    "Jest"
+    "Jest",
+    "Vitest"
   ],
-  "workflows": null,
-  "lastActivity": "2026-02-17T16:27:51+00:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-02-19T15:45:07Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -49,14 +50,13 @@
     "stars": 0,
     "forks": 0,
     "contributors": null,
-    "openIssues": 14
+    "openIssues": 15
   },
   "tags": [
     "prélèvements",
-    "analyses",
+    "programmation",
+    "laboratoires",
     "administration",
-    "gestion",
-    "web",
     "typescript",
     "react",
     "postgresql"
