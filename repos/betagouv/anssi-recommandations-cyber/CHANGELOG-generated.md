@@ -1,36 +1,31 @@
-## Changelog : anssi-recommandations-cyber (derniers 30 jours)
+## Changelog : anssi-recommandations-cyber (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'expérience utilisateur, de robustesse et de sécurité. Des fonctionnalités de copie de réponses ont été ajoutées, des corrections de bugs ont été implémentées pour améliorer la navigation et la gestion des erreurs, et des mises à jour de sécurité ont été appliquées. Des efforts ont également été faits pour améliorer la qualité du code et la configuration du projet.
+Ce changelog présente les améliorations apportées à l'interface d'interrogation du modèle d'IA Albert, alimenté par les guides de l'ANSSI. Les modifications incluent une meilleure gestion des conversations, l'ajout de fonctionnalités de reformulation de questions, une gestion améliorée des erreurs et des corrections de bugs pour une expérience utilisateur plus fluide. Des améliorations de sécurité et de maintenance ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de copier le texte de la réponse pour faciliter son utilisation (#44f13c7).
-- Un bouton a été ajouté pour permettre la copie de la réponse.
-- Amélioration de l'affichage de l'infobulle indiquant que le message a été copié (#3da515d).
-- Ajout de pages CGU et politique de confidentialité (#c175639).
-- Ajout d'un bandeau informant les utilisateurs participant aux tests bêta (#78c4064).
-- Correction du comportement de la flèche permettant de scroller en bas de page (#806c30a).
-- Suppression de l'affichage du message d'erreur lorsque la zone de saisie est vide (#80b2448).
-- Repositionnement du message d'avertissement au-dessus de la zone de saisie (#d912902).
-- Soumission de la dernière question lors du clic sur le bouton "Réessayer" en cas d'erreur (#595d513).
-- Affichage du message d'erreur directement dans la conversation (#61792f3).
+- Ajout de la possibilité de converser avec Albert en conservant l'historique des échanges. (#200b289, #254faef, #c25add6)
+- Implémentation d'un reformulateur de question pour améliorer la pertinence des réponses d'Albert. (#368e6ef, #bb0bdc2, #8b32dbb, #3ae7c94, #e5cc552, #dd6bbf1, #c605787, #fa8d59c)
+- Possibilité de copier le texte de la réponse au format Markdown. (#591c056, #44f13c7, #390b5de, #c859ad7)
+- Ajout des pages CGU et politique de confidentialité. (#c175639)
+- Ajout d'un bandeau pour les beta testeurs. (#78c4064)
+- Amélioration de l'affichage des messages d'erreur et ajout de la possibilité de réessayer. (#595d513, #61792f3, #c589f4f)
 
 ### Évolutions techniques
-- Mise à jour de `urllib3` pour corriger une vulnérabilité de sécurité signalée par Dependabot (#5306150).
-- Suppression de `fastapi-armor` et mise à jour de `starlette` (#c02ea49).
-- Suppression de l'environnement utilisé uniquement pour les notebooks (#019f8cb).
-- Remplacement du `ConstructeurAdaptateurJournal` par une implémentation en mémoire pour les tests (#2b4bc6a, #40487ed).
-- Initialisation de Sentry avec une implémentation en mémoire (#5f8b5e0, #75a6a1c).
-- Refactorisation du code pour injecter un adaptateur de chiffrement (#4733fa5, #3812659, #ce18dae, #ce6c436, #0c43ed5).
-- Ajout d'un githook pour exécuter Prettier et ESLint avant chaque commit (#67ee405).
-- Application des règles Prettier sur tous les fichiers (#76fd581).
-- Suppression de répertoires et fichiers inutiles (#94072d3).
+- Refactorisation de la gestion des routes API pour une meilleure organisation. (#a22b8b7)
+- Séparation de la création de conversation et de l'ajout d'interactions. (#0a60f0d, #200b289)
+- Implémentation d'une persistance des conversations en base de données. (#61e5d7d, #74e5861, #9deadfb)
+- Ajout d'un outil de migration de base de données. (#d38b9bb)
+- Utilisation d'une implémentation mémoire pour certains services (Sentry, AdaptateurJournal) pour faciliter les tests et le développement. (#30117c6, #2b4bc6a, #5f8b5e0)
+- Mise à jour des dépendances de sécurité (urllib3, eslint). (#5306150, #6961f19, #f745246)
+- Suppression de dépendances inutilisées (fastapi-armor). (#c02ea49)
+- Amélioration de la gestion des erreurs et de la journalisation. (#595d513, #61792f3, #c589f4f)
+- Ajout de tests unitaires et d'intégration. (#200b289)
 
 ### Autres changements
-- Modification du champ utilisé dans les métadonnées pour extraire le nom du document (#a800dbb).
-- Création d'une variable d'environnement pour paramétrer le décalage de page (#b99ec44).
-- Correction d'un bug pouvant retourner 20 sources à l'utilisateur (#955d484).
-- Ajout d'instructions au prompt pour prendre en compte les balises ajoutées par l'indexeur (#90e9d8d).
-- Génération de l'URL avec le type d'utilisateur pour les appels à l'API (#1ccb3c4).
-- Identification de l'utilisateur lors d'un retour d'information (#d670525).
-- Correction du logo République Française (#c8a1179).
+- Ajout du type utilisateur `EVALUATION`. (#71c01af)
+- Suppression de code mort et de fichiers inutiles. (#34ac072, #94072d3)
+- Amélioration de la qualité du code avec Prettier et ESLint. (#67ee405)
+- Correction de bugs mineurs et améliorations de l'interface utilisateur. (#449223b, #df35053, #16e5df0, #806c30a, #3da515d, #90e9d8d)
+- Uniformisation des noms de variables. (#9bec91b)
+- Suppression d'un print oublié. (#277d10e)

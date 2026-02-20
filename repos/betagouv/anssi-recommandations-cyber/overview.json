@@ -1,30 +1,32 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber",
   "name": "anssi-recommandations-cyber",
-  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.",
+  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.  Elle offre un accès aux recommandations de cybersécurité de l'ANSSI via une interface utilisateur et une API.",
   "language": "Python",
   "features": [
     "Recherche",
-    "Interface utilisateur",
-    "Gestion des conversations",
-    "Copie de réponses"
+    "Pose de questions",
+    "Copie de réponses",
+    "Gestion des retours utilisateurs",
+    "Affichage des sources"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "cryptography",
     "fastapi",
-    "psycopg2-binary",
+    "httpx",
     "openai",
+    "psycopg2-binary",
+    "requests",
+    "sentry-sdk",
     "uvicorn",
-    "svelte",
-    "vite",
-    "pnpm"
+    "zod"
   ],
   "components": [
+    "Backend FastAPI",
     "Frontend Svelte",
-    "API REST FastAPI",
     "Base de données PostgreSQL",
-    "Modèle IA Albert"
+    "Modèle d'IA Albert"
   ],
   "auth": {
     "methods": [
@@ -33,7 +35,6 @@
   },
   "tests": [
     "pytest",
-    "vitest",
     "svelte-check"
   ],
   "workflows": [
@@ -42,7 +43,7 @@
     "codeql-analysis.yml",
     "deploiement.yml"
   ],
-  "lastActivity": "2026-02-17T16:33:33+01:00",
+  "lastActivity": "2026-02-19T16:17:55+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -50,16 +51,17 @@
     "stars": 2,
     "forks": 0,
     "contributors": null,
-    "openIssues": 2
+    "openIssues": 0
   },
   "tags": [
-    "IA",
+    "cybersécurité",
     "ANSSI",
-    "Cybersécurité",
-    "Recommandations",
+    "IA",
     "Albert",
+    "recommandations",
+    "API",
     "Python",
     "Svelte",
-    "FastAPI"
+    "PostgreSQL"
   ]
 }

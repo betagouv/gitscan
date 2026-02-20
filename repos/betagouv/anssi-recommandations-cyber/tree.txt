@@ -40,6 +40,11 @@
 │   │   ├── journal.py
 │   │   ├── migrateur.py
 │   │   └── sentry.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── api.py
+│   │   ├── conversation.py
+│   │   └── recherche.py
 │   ├── configuration.py
 │   ├── infra
 │   │   ├── __init__.py
@@ -59,7 +64,8 @@
 │   ├── main.py
 │   ├── question
 │   │   ├── __init__.py
-│   │   └── question.py
+│   │   ├── question.py
+│   │   └── reformulateur_de_question.py
 │   ├── schemas
 │   │   ├── __init__.py
 │   │   ├── albert.py
@@ -70,15 +76,27 @@
 │   ├── serveur.py
 │   └── services
 │       ├── __init__.py
+│       ├── client_albert.py
 │       ├── fabrique_service_albert.py
 │       └── service_albert.py
 ├── templates
 │   ├── prompt_assistant_cyber.txt
-│   └── prompt_reclassement.txt
+│   ├── prompt_reclassement.txt
+│   └── prompt_reformulation.txt
 ├── tests
 │   ├── adaptateurs
 │   │   ├── test_adaptateur_chiffrement.py
 │   │   └── test_adaptateur_sentry.py
+│   ├── api
+│   │   ├── conftest.py
+│   │   ├── test_conversation_ajoute_interaction.py
+│   │   ├── test_conversation_initie_conversation.py
+│   │   ├── test_extraits_type_utilisateur.py
+│   │   ├── test_index.py
+│   │   ├── test_rate_limiting.py
+│   │   ├── test_recherche.py
+│   │   ├── test_retour_utilisatrice.py
+│   │   └── test_sante.py
 │   ├── conftest.py
 │   ├── infra
 │   │   ├── albert
@@ -95,20 +113,13 @@
 │   ├── question
 │   │   ├── conftest.py
 │   │   ├── test_ajoute_interaction.py
-│   │   └── test_cree_conversation.py
-│   ├── routes
-│   │   ├── conftest.py
-│   │   ├── test_extraits_type_utilisateur.py
-│   │   ├── test_index.py
-│   │   ├── test_rate_limiting.py
-│   │   ├── test_recherche.py
-│   │   ├── test_retour_utilisatrice.py
-│   │   ├── test_route_conversation_ajoute_interaction.py
-│   │   ├── test_route_initie_conversation.py
-│   │   └── test_sante.py
+│   │   ├── test_ajoute_retour_utilisatrice.py
+│   │   ├── test_cree_conversation.py
+│   │   └── test_reformulateur.py
 │   ├── schemas
 │   │   └── test_violations.py
 │   ├── services
+│   │   ├── conftest.py
 │   │   ├── test_fabrique_service_albert.py
 │   │   └── test_service_albert.py
 │   ├── test_adaptateur_base_de_donnees.py
@@ -201,4 +212,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-42 directories, 161 files
+43 directories, 171 files
