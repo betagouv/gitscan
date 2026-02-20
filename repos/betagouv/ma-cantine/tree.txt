@@ -92,7 +92,6 @@
 │   │   │   ├── ImportHelp.vue
 │   │   │   ├── ImportSchemaTable.vue
 │   │   │   ├── ImportSchemaTableDescriptionCell.vue
-│   │   │   ├── ImportStaffCallout.vue
 │   │   │   ├── ImportSuccessModal.vue
 │   │   │   ├── NotificationCenter.vue
 │   │   │   ├── ObservatoryBadgeTitle.vue
@@ -196,8 +195,11 @@
 │   │       ├── GestionnaireImport.vue
 │   │       ├── GestionnaireImportAchats.vue
 │   │       ├── GestionnaireImportAchatsSIRET.vue
+│   │       ├── GestionnaireImportBilansDetailles.vue
 │   │       ├── GestionnaireImportBilansSimples.vue
+│   │       ├── GestionnaireImportBilansSimplesSIRET.vue
 │   │       ├── GestionnaireImportCantines.vue
+│   │       ├── GestionnaireImportCantinesGestionnaires.vue
 │   │       ├── GestionnaireTableauDeBord.vue
 │   │       ├── MentionsLegales.vue
 │   │       ├── Observatoire.vue
@@ -291,10 +293,18 @@
 │   │   │   │   ├── purchases_good_separator_semicolon.csv
 │   │   │   │   ├── purchases_good_separator_tab.tsv
 │   │   │   │   └── purchases_good_with_empty_columns.xlsx
+│   │   │   ├── canteen_managers
+│   │   │   │   ├── canteen_managers_bad_empty_rows.csv
+│   │   │   │   ├── canteen_managers_bad_extra_header.csv
+│   │   │   │   ├── canteen_managers_bad_invalid_email.csv
+│   │   │   │   ├── canteen_managers_bad_no_header.csv
+│   │   │   │   ├── canteen_managers_bad_siret_not_found.csv
+│   │   │   │   ├── canteen_managers_bad_wrong_header.csv
+│   │   │   │   ├── canteen_managers_good.csv
+│   │   │   │   ├── canteen_managers_good.xlsx
+│   │   │   │   └── canteen_managers_good_multiple.csv
 │   │   │   ├── canteens
 │   │   │   │   ├── canteen_bad_sectors.csv
-│   │   │   │   ├── canteens_admin_good_new_canteen copy 2.csv
-│   │   │   │   ├── canteens_admin_good_new_canteen.csv
 │   │   │   │   ├── canteens_bad.csv
 │   │   │   │   ├── canteens_bad_empty_rows.csv
 │   │   │   │   ├── canteens_bad_extra_header.csv
@@ -320,25 +330,17 @@
 │   │   │   │   ├── diagnostics_complete_good.csv
 │   │   │   │   ├── diagnostics_complete_good_encoding_utf-8.csv
 │   │   │   │   ├── diagnostics_complete_staff_good.csv
-│   │   │   │   ├── diagnostics_simple_bad.csv
-│   │   │   │   ├── diagnostics_simple_bad_empty_rows.csv
-│   │   │   │   ├── diagnostics_simple_bad_file_format.ods
-│   │   │   │   ├── diagnostics_simple_bad_format.csv
 │   │   │   │   ├── diagnostics_simple_bad_location.csv
-│   │   │   │   ├── diagnostics_simple_bad_no_header.csv
 │   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_add_managers.csv
 │   │   │   │   ├── diagnostics_simple_bad_separator_semicolon_no_total.csv
-│   │   │   │   ├── diagnostics_simple_bad_wrong_header.csv
 │   │   │   │   ├── diagnostics_simple_cc_bad_same_siret.csv
 │   │   │   │   ├── diagnostics_simple_cc_good.csv
-│   │   │   │   ├── diagnostics_simple_good.xlsx
-│   │   │   │   ├── diagnostics_simple_good_different_canteens.csv
 │   │   │   │   ├── diagnostics_simple_good_duplicate_siret.csv
 │   │   │   │   ├── diagnostics_simple_good_encoding_iso-8859-1.csv
 │   │   │   │   ├── diagnostics_simple_good_encoding_utf-16.csv
+│   │   │   │   ├── diagnostics_simple_good_id.csv
 │   │   │   │   ├── diagnostics_simple_good_locations.csv
 │   │   │   │   ├── diagnostics_simple_good_new_canteen.csv
-│   │   │   │   ├── diagnostics_simple_good_one_canteen.csv
 │   │   │   │   ├── diagnostics_simple_good_sectors.csv
 │   │   │   │   ├── diagnostics_simple_good_separator_semicolon.csv
 │   │   │   │   ├── diagnostics_simple_good_separator_semicolon_add_managers.csv
@@ -350,6 +352,27 @@
 │   │   │   │   ├── diagnostics_simple_staff_good_new_canteen.csv
 │   │   │   │   ├── teledeclaration_error.csv
 │   │   │   │   └── teledeclaration_simple.csv
+│   │   │   ├── diagnostics_complete
+│   │   │   │   ├── .~lock.diagnostics_complete_good.xlsx#
+│   │   │   │   ├── diagnostics_complete_bad.csv
+│   │   │   │   ├── diagnostics_complete_bad_empty_rows.csv
+│   │   │   │   ├── diagnostics_complete_bad_file_format.ods
+│   │   │   │   ├── diagnostics_complete_bad_format.csv
+│   │   │   │   ├── diagnostics_complete_bad_no_header.csv
+│   │   │   │   ├── diagnostics_complete_bad_wrong_header.csv
+│   │   │   │   ├── diagnostics_complete_good.xlsx
+│   │   │   │   ├── diagnostics_complete_good_different_canteens.csv
+│   │   │   │   └── diagnostics_complete_good_one_canteen_seperator_semicolon.csv
+│   │   │   ├── diagnostics_simple
+│   │   │   │   ├── diagnostics_simple_bad.csv
+│   │   │   │   ├── diagnostics_simple_bad_empty_rows.csv
+│   │   │   │   ├── diagnostics_simple_bad_file_format.ods
+│   │   │   │   ├── diagnostics_simple_bad_format.csv
+│   │   │   │   ├── diagnostics_simple_bad_no_header.csv
+│   │   │   │   ├── diagnostics_simple_bad_wrong_header.csv
+│   │   │   │   ├── diagnostics_simple_good.xlsx
+│   │   │   │   ├── diagnostics_simple_good_different_canteens.csv
+│   │   │   │   └── diagnostics_simple_good_one_canteen_seperator_semicolon.csv
 │   │   │   ├── test-image-1.jpg
 │   │   │   ├── test-image-2.jpg
 │   │   │   └── test-image-3.png
@@ -365,11 +388,13 @@
 │   │   ├── test_canteen_territory.py
 │   │   ├── test_canteens.py
 │   │   ├── test_canteens_import.py
+│   │   ├── test_canteens_managers_import.py
 │   │   ├── test_community_events.py
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostics.py
-│   │   ├── test_diagnostics_import.py
+│   │   ├── test_diagnostics_complete_import.py
 │   │   ├── test_diagnostics_import_old.py
+│   │   ├── test_diagnostics_simple_import.py
 │   │   ├── test_initial_data.py
 │   │   ├── test_inquiry.py
 │   │   ├── test_manager_invitations.py
@@ -403,6 +428,7 @@
 │       ├── canteen_export.py
 │       ├── canteen_groupe.py
 │       ├── canteen_import.py
+│       ├── canteen_managers_import.py
 │       ├── communityevent.py
 │       ├── diagnostic.py
 │       ├── diagnostic_import.py
@@ -821,6 +847,8 @@
 │   │   ├── 0238_remove_canteen_satellite_canteens_count_and_more.py
 │   │   ├── 0239_remove_canteen_email_no_diagnostic_first_reminder_and_more.py
 │   │   ├── 0240_canteen_siret_etat_administratif_and_siret_inconnu.py
+│   │   ├── 0241_alter_importfailure_import_type.py
+│   │   ├── 0242_alter_importfailure_import_type.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -863,9 +891,11 @@
 │   │   ├── imports
 │   │   │   ├── achats_id.json
 │   │   │   ├── achats_siret.json
-│   │   │   ├── bilans_simple.json
+│   │   │   ├── bilans_detaille.json
+│   │   │   ├── bilans_simple_id.json
+│   │   │   ├── bilans_simple_siret.json
 │   │   │   ├── cantines.json
-│   │   │   ├── cantines_admin.json
+│   │   │   ├── cantines_gestionnaires.json
 │   │   │   ├── diagnostics.json
 │   │   │   ├── diagnostics_admin.json
 │   │   │   ├── diagnostics_cc.json
@@ -1414,7 +1444,6 @@
     │   │   ├── achats_siret_fichier_exemple_ma_cantine.csv
     │   │   ├── achats_siret_fichier_exemple_ma_cantine.xlsx
     │   │   ├── admin_importer_des_cantines_exemple_ma_cantine.csv
-    │   │   ├── admin_importer_des_cantines_exemple_ma_cantine.xlsx
     │   │   ├── annuaire_des_exploitations_hve_janvier_2022(1).xlsx
     │   │   ├── antiseche-donnees-dachat_2026_ma-cantine.pdf
     │   │   ├── cadre_reglementaire_labelsvf.pdf
@@ -1429,12 +1458,12 @@
     │   │   ├── fiche_evolution_formation_macantine.pdf
     │   │   ├── fichier_*.csv  (5 files)
     │   │   ├── guide_*.pdf  (7 files)
+    │   │   ├── importer_des_bilans_detailles_exemple.csv
+    │   │   ├── importer_des_bilans_detailles_exemple.xlsx
     │   │   ├── importer_des_bilans_simples_exemple.csv
-    │   │   ├── importer_des_bilans_simples_exemple.xlsx
-    │   │   ├── importer_des_bilans_simples_exemple_fichier_accepte.jpg
-    │   │   ├── importer_des_bilans_simples_exemple_fichier_rejete.jpg
-    │   │   ├── importer_des_cantines_exemple_fichier_accepte.jpg
-    │   │   ├── importer_des_cantines_exemple_fichier_rejete.jpg
+    │   │   ├── importer_*.jpg  (6 files)
+    │   │   ├── importer_des_bilans_simples_id_exemple.xlsx
+    │   │   ├── importer_des_bilans_simples_siret_exemple.xlsx
     │   │   ├── importer_des_cantines_exemple_ma_cantine.csv
     │   │   ├── importer_des_cantines_exemple_ma_cantine.xlsx
     │   │   ├── infographie-gaspillage-alimentaire-restau-co_011317.pdf
@@ -1622,4 +1651,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-137 directories, 1535 files
+140 directories, 1566 files
