@@ -1,80 +1,103 @@
 ## Changelog : patrinotes (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Patrinotes se concentrent sur l'amélioration de l'expérience utilisateur, notamment en matière de gestion des rapports, de génération de PDF et de gestion des alertes. De nombreuses corrections de bugs ont été apportées pour améliorer la stabilité et la fluidité de l'application, en particulier sur mobile. L'ajout de nouvelles fonctionnalités comme la gestion des notes et l'amélioration de la navigation contribuent à rendre l'outil plus complet et plus efficace.
+Les dernières mises à jour de Patrinotes se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des alertes, des rapports et des formulaires. De nombreuses corrections de bugs ont été apportées pour améliorer la stabilité et la fluidité de l'application, ainsi que des améliorations visuelles et fonctionnelles pour faciliter l'utilisation quotidienne.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage de l'adresse complète dans les PDF (#1c23868)
-- Adaptation du texte des en-têtes PDF pour s'adapter à différents services (#9d86365)
-- Suppression d'images sur CRVIF (#9a14574)
-- Amélioration de la modale de confirmation sur mobile (#95b21df)
-- Ajout de la possibilité de définir des services par défaut pour les alertes (#992d11d)
-- Ajout d'un formulaire de notes (#83de982)
-- Ajout d'une fonctionnalité d'alerte par email (#e773e08)
-- Ajout d'un bouton "Effacer" dans le constat détaillé (#446ae76)
-- Ajout d'une section "Profil" dans la gestion du compte (#0440064)
-- Ajout de la possibilité d'ajouter plusieurs emails aux alertes (#1fa0cc8)
-- Ajout d'une fonctionnalité de sélection d'objets (#0d5f68f)
-- Ajout d'une fonctionnalité de téléchargement de photos (#19b9795)
-- Ajout d'une popup d'erreur cliquable pour les alertes (#0693220)
-- Ajout d'une navigation accordéon collante dans les pages de rapport d'état (#11e7e7b)
-- Ajout d'une nouvelle navigation dans les pages de rapport d'état (#67c7514)
-- Ajout de badges de statut sur mobile (#0646fce)
-- Ajout d'un indicateur de statut de connexion (#dc8ba46)
-- Ajout de la possibilité de définir des contraintes pour l'en-tête PDF (#ebca782)
-- Ajout d'une fonctionnalité de saisie semi-automatique pour les monuments historiques (#389d434)
-- Amélioration de l'affichage des vignettes de photos (#774c0aa)
-- Amélioration de l'affichage des informations de compte et de service (#99282fa)
+- Ajout de la possibilité de masquer complètement le bouton d'alertes.
+- Désactivation de la longueur minimale du mot de passe lors de l'inscription (#055cc13).
+- Désactivation des alertes sur la page des services (#d7b74c5).
+- Amélioration de l'affichage des boutons "MH non lié" et des alertes sur mobile (#9b0d242).
+- Correction de l'input email CRVIF (#6a4ce40).
+- Affichage de l'adresse complète dans le PDF (#1c23868).
+- Transformation du texte de l'en-tête pour s'adapter à n'importe quel service (#9d86365).
+- Suppression d'image sur le formulaire CRVIF (#9a14574).
+- Ajout d'une confirmation modale lors de la suppression de rapports et de state reports (#20f115d).
+- Ajout d'une section "Profil" dans la page du compte (#0440064).
+- Ajout de la possibilité d'ajouter plusieurs emails aux alertes (#1fa0cc8).
+- Ajout d'un formulaire de notes (#83de982).
+- Ajout d'une popup d'erreur cliquable pour les alertes, avec transmission des données au backend (#0693220).
+- Ajout de la possibilité d'uploader des images pour les alertes (#19b9795).
+- Ajout de la possibilité de sélectionner des objets (#0d5f68f).
+- Ajout d'une barre de navigation collante dans les pages de state report (#11e7e7b).
+- Ajout de tabs pour les constats sur mobile (#a626679).
+- Ajout d'un indicateur de statut de connexion (#dc8ba46).
+- Ajout d'un bouton "clear" dans le constat détaillé (#446ae76).
 
 ### Évolutions techniques
-- Refactorisation de la gestion des alertes (#ef5c25c)
-- Mise à jour de Tanstack Query vers la version 5 (#c05f1b1)
-- Utilisation de `useInfiniteQuery` pour les objets MH (#418fd6b)
-- Ajout d'une migration (#0fd3134)
-- Ajout d'un allowed host (#e403248)
-- Mise à jour de la configuration CI (#28aa450)
+- Refactorisation de la gestion des alertes (#ef5c25c).
+- Mise à jour de Tanstack Query vers la version 5 (#c05f1b1).
+- Utilisation de `useInfiniteQuery` pour les objets MH (#418fd6b).
+- Ajout d'une migration (#0fd3134).
+- Ajout d'allowed host (#e403248).
+- Mise à jour de la configuration PWA (#1625f75).
+- Suppression d'une ancienne variable d'environnement (#5257e32).
+- Mise à jour de la CI (#28aa450).
 
 ### Autres changements
-- Correction de divers bugs d'affichage et de comportement sur mobile (#72f70c4, #015d2cf)
-- Correction de problèmes liés à la synchronisation des données (#1421dec)
-- Correction de bugs liés à l'affichage des PDF (#3cc89ce, #2c9d578)
-- Correction de bugs liés à la gestion des emails (#8f542fa, #b02c271)
-- Correction de bugs liés à la gestion des rapports (#b9f5c7c, #7bde432, #d2c110e)
-- Correction de bugs liés à l'interface utilisateur (#7e26179, #712952d, #f6b7ae9, #bf1047b, #5257e32, #7560f1f, #373c2e3, #66ad435, #fce1378, #8cb289f, #3a88914, #7d1daae, #374da39, #d840c7a, #6a7284d, #bbb7785)
-- Suppression de variables d'environnement obsolètes (#5257e32)
-- Uniformisation de l'utilisation du nom "Patrinotes" (#4397f9d, #1625f75, #e8eb07f)
-- Ajout de logs d'erreur (#7560f1f)
-- Diverses corrections de typos (#fda69ba, #3af5fd8)
-- Amélioration de la gestion des erreurs de connexion (#f6b7ae9)
-- Ajout d'une ligne blanche si la localisation du monument n'est pas spécifiée (#bacde31)
-- Désactivation du défilement lors du changement d'onglet (#fba6947)
-- Amélioration du style de la pagination (#c841248)
-- Ajout d'un espace entre les vignettes (#6a7284d)
-- Correction de l'alignement vertical des images dans les PDF (#ade6748)
-- Correction de l'espacement entre les boutons (#3a88914)
-- Correction de la couleur du bouton d'entrée d'email (#3a88914)
-- Suppression de la hauteur minimale des images (#5792323)
-- Correction de la navigation vers le constat général depuis la page PDF (#8e835a3)
-- Correction de l'affichage des tags d'email (#72f70c4)
-- Correction de l'espacement après l'envoi d'un email (#8fd3697)
-- Ajout d'une fonctionnalité d'auto-sauvegarde des alertes (#faa42e0)
-- Correction de l'affichage du tag d'alerte (#7683715)
-- Correction de la mise à jour des emails de service (#1cb6105)
-- Correction de la largeur maximale du rapport d'état (#ee90e75)
-- Correction du style des tuiles du constat détaillé (#fd2068b)
-- Ajout d'une ligne blanche si la localisation du monument n'est pas spécifiée (#bacde31)
-- Désactivation du défilement lors du changement d'onglet (#fba6947)
-- Amélioration du style de la pagination (#c841248)
-- Ajout d'un espace entre les vignettes (#6a7284d)
-- Correction de l'alignement vertical des images dans les PDF (#ade6748)
-- Correction de l'espacement entre les boutons (#3a88914)
-- Correction de la couleur du bouton d'entrée d'email (#3a88914)
-- Suppression de la hauteur minimale des images (#5792323)
-- Correction de la navigation vers le constat général depuis la page PDF (#8e835a3)
-- Correction de l'affichage des tags d'email (#72f70c4)
-- Correction de l'espacement après l'envoi d'un email (#8fd3697)
-- Ajout d'une fonctionnalité d'auto-sauvegarde des alertes (#faa42e0)
-- Correction de l'affichage du tag d'alerte (#7683715)
-- Correction de la mise à jour des emails de service (#1cb6105)
-- Correction de la largeur maximale du rapport d'état (#ee90e75)
-- Correction du style des tuiles du constat détaillé (#fd2068b)
+- Correction de plusieurs typos (#3af5fd8, #fda69ba).
+- Mise à jour du nom de l'application en "Patrinotes" dans tout le code (#4397f9d, #e8eb07f).
+- Amélioration de la gestion des erreurs de connexion (#f6b7ae9).
+- Correction de problèmes d'affichage et de style divers (#774c0aa, #bbb7785, #374da39, #6a7284d).
+- Correction de bugs liés à la duplication de state reports (#49fd062).
+- Correction de bugs liés à la suppression de clauses (#e93fa07).
+- Correction de bugs liés à la gestion des emails (#712952d, #8f542fa).
+- Correction de bugs liés à l'affichage des images (#5a94ef6).
+- Correction de bugs liés à la synchronisation du statut (#1421dec).
+- Correction de bugs liés à l'affichage des alertes (#7683715).
+- Correction de bugs liés à la redirection (#7bde432).
+- Ajout de logs d'erreur (#7560f1f).
+- Amélioration de la gestion des erreurs lors de l'inscription (#bf1047b).
+- Correction de problèmes de marge sur les pages service/compte (#bf1047b).
+- Correction de problèmes d'affichage sur mobile (#95b21df).
+- Correction de bugs liés à l'affichage des informations de service (#7e26179).
+- Correction de bugs liés à la gestion des sections de constat détaillé (#712952d).
+- Correction de bugs liés à l'utilisation de "isSectionVisited" (#1c1692a).
+- Correction de bugs liés à l'affichage des emails (#8fd3697).
+- Correction de bugs liés à l'affichage du header PDF (#10d50fb).
+- Correction de bugs liés à l'affichage du texte Marianne dans le PDF (#e3643e0).
+- Ajout de contraintes pour l'en-tête PDF (#ebca782).
+- Correction de bugs liés à la suppression de report modal (#d2c110e).
+- Correction de bugs liés à l'affichage du flicker du destinataire (#9e9b748).
+- Correction de bugs liés à la gestion des objets et mobiliers (#67c7514).
+- Correction de bugs liés à la duplication de state report (#0b58511).
+- Correction de bugs liés à l'édition du profil du compte (#8cb289f).
+- Correction de bugs liés à l'affichage des alertes (#d60e7af).
+- Correction de bugs liés à l'affichage des tuiles de constat détaillé (#fd2068b).
+- Correction de bugs liés à l'affichage des vignettes de photos (#774c0aa).
+- Correction de bugs liés au bouton de canvas de dessin (#bbb7785).
+- Correction de bugs liés à l'ajout de destinataires par défaut (#9775940).
+- Correction de bugs liés à l'affichage des résumés de compte et de service (#99282fa).
+- Correction de bugs liés à la pagination (#c841248).
+- Correction de bugs liés à la sélection de pièces jointes (#687514d).
+- Correction de bugs liés à l'auto-update (#1020e63).
+- Correction de bugs liés à la couverture de la vignette de la photo (#a441af9).
+- Correction de bugs liés au style de la page d'informations MH (#389d434).
+- Correction de bugs liés aux liens PDF (#3cc89ce).
+- Correction de bugs liés à l'affichage des liens PDF (#389d434).
+- Correction de bugs liés à l'affichage de l'adresse complète dans le PDF (#1c23868).
+- Correction de bugs liés à l'affichage des liens dans le PDF (#3cc89ce).
+- Correction de bugs liés à l'affichage du titre et de l'image dans le PDF (#2c9d578).
+- Correction de bugs liés à l'affichage des boutons (#374da39).
+- Correction de bugs liés au style de la page d'informations MH (#d840c7a).
+- Correction de bugs liés à l'espacement entre les vignettes (#6a7284d).
+- Correction de bugs liés à la taille de la vignette de la photo sur mobile (#774c0aa).
+- Correction de bugs liés à la couleur du bouton d'entrée d'email (#3a88914).
+- Correction de bugs liés à l'espacement entre les boutons (#3a88914).
+- Correction de bugs liés à la suppression de l'espace blanc en dessous de l'en-tête bleu et du pied de page (#2f74172).
+- Correction de bugs liés à la largeur des onglets (#66ad435).
+- Correction de bugs liés à l'affichage des onglets CE (#fce1378).
+- Correction de bugs liés à l'affichage des alertes (#faa42e0).
+- Correction de bugs liés à l'affichage des erreurs d'alerte (#373c2e3).
+- Correction de bugs liés à la sauvegarde automatique des alertes (#faa42e0).
+- Correction de bugs liés à l'affichage de la balise d'alerte (#7683715).
+- Correction de bugs liés à la mise à jour des emails du service (#1cb6105).
+- Correction de bugs liés à la largeur maximale du state report (#ee90e75).
+- Correction de bugs liés au style des tuiles de constat détaillé (#fd2068b).
+- Correction de bugs liés à l'ajout d'une ligne blanche si l'emplacement du monument n'est pas spécifié (#bacde31).
+- Correction de bugs liés à la désactivation du défilement lors du changement d'onglet de la page d'accueil (#fba6947).
+- Correction de bugs liés au style de la pagination (#c841248).
+- Correction de bugs liés à l'ajout de la section Profil dans la page du compte (#0440064).
+- Correction de bugs liés à la prévention de la création de clause avec une valeur vide (#2b3f3c0).
+- Correction de bugs liés à la définition des pages de service et de compte avec la même largeur (#bb44761).
+- Correction de bugs liés à la position du bouton Ajouter sur mobile (#151dac8).
