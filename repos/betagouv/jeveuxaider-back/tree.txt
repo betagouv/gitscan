@@ -73,6 +73,7 @@
 │   │   │   ├── MissionsCloseByTemplate.php
 │   │   │   ├── MissionsCloseOutdatedCommand.php
 │   │   │   ├── MissionsCreneauxCleanup.php
+│   │   │   ├── MissionsFixSnuMigCompatibility.php
 │   │   │   ├── MissionsQPV.php
 │   │   │   ├── MissionsRecurringCleanup.php
 │   │   │   ├── MissionsRemoveHtmlFromAutonomyPrecisions.php
@@ -83,7 +84,8 @@
 │   │   │   ├── OneTime
 │   │   │   │   ├── MigrateSignaledStatusForOrganisationAndMission.php
 │   │   │   │   ├── NotifyResponsableMissionUserWaitingList.php
-│   │   │   │   └── OneTimeSendNotificationMissionUserWaitingList3WeeksAgo.php
+│   │   │   │   ├── OneTimeSendNotificationMissionUserWaitingList3WeeksAgo.php
+│   │   │   │   └── ResolveOpenToMinorsPendingActionsFromClosedTemplates.php
 │   │   │   ├── OrganisationsCollectiviteForceFields.php
 │   │   │   ├── ParticipationsRefuseExplorJob.php
 │   │   │   ├── ProfileSetCommitment.php
@@ -167,6 +169,8 @@
 │   │   ├── FiltersMacroCompetenceHasRelated.php
 │   │   ├── FiltersMatchMission.php
 │   │   ├── FiltersMissionDate.php
+│   │   ├── FiltersMissionIsOpenToMinors.php
+│   │   ├── FiltersMissionIsSnuMigCompatible.php
 │   │   ├── FiltersMissionIsTemplate.php
 │   │   ├── FiltersMissionPlacesLeft.php
 │   │   ├── FiltersMissionPriorityAvailable.php
@@ -180,6 +184,7 @@
 │   │   ├── FiltersParticipationMissionZip.php
 │   │   ├── FiltersParticipationNeedToBeTreated.php
 │   │   ├── FiltersParticipationSearch.php
+│   │   ├── FiltersPendingAction.php
 │   │   ├── FiltersProfileAgeCategory.php
 │   │   ├── FiltersProfileIsBlocked.php
 │   │   ├── FiltersProfileMinParticipations.php
@@ -239,6 +244,7 @@
 │   │   │   │   ├── MetatagsController.php
 │   │   │   │   ├── MissionAnalyzerController.php
 │   │   │   │   ├── MissionController.php
+│   │   │   │   ├── MissionPendingActionController.php
 │   │   │   │   ├── MissionStateController.php
 │   │   │   │   ├── MissionSuggestionsController.php
 │   │   │   │   ├── MissionTemplateController.php
@@ -371,6 +377,7 @@
 │   │   ├── ArchiveAndClearUserDatas.php
 │   │   ├── CancelWaitingParticipationsFromMission.php
 │   │   ├── CloseOrTransferResponsableMissions.php
+│   │   ├── CreateMissionOpenToMinorsPendingAction.php
 │   │   ├── CreateTerritoireFromStructure.php
 │   │   ├── DeclineParticipation.php
 │   │   ├── DeclineWaitingParticipationsFromMission.php
@@ -385,6 +392,7 @@
 │   │   ├── MissionSetSearchable.php
 │   │   ├── MissionWithSlotsSyncDatesJob.php
 │   │   ├── NotifyMissionUserWaitingList.php
+│   │   ├── NotifyResponsablesAfterClosingTemplateToMinorsJob.php
 │   │   ├── NotifyResponsablesMissionUserWaitingListCreated.php
 │   │   ├── NotifyUserOfCompletedExport.php
 │   │   ├── NotifyVolonteerOfUnreadMessage.php
@@ -393,6 +401,9 @@
 │   │   ├── ProfileFaker.php
 │   │   ├── RecomputeConversationUsersWhenMissionResponsablesAdded.php
 │   │   ├── RecomputeConversationUsersWhenMissionResponsablesRemoved.php
+│   │   ├── ResolvePendingActionAfterMissionFormEditJob.php
+│   │   ├── ResolvePendingActionAfterMissionStateChangeJob.php
+│   │   ├── ResolvePendingActionsAfterClosingTemplateToMinorsJob.php
 │   │   ├── RetreiveMatchingMissionsFromUserAlert.php
 │   │   ├── RuleDispatcherByEvent.php
 │   │   ├── RuleMissionAttachTag.php
@@ -401,6 +412,7 @@
 │   │   │   └── ApiEngagementExportMissionsJob.php
 │   │   ├── SendinblueDeleteUser.php
 │   │   ├── SendinblueSyncUser.php
+│   │   ├── SetMissionsValuesAfterClosingTemplateToMinorsJob.php
 │   │   ├── StructureCalculateScore.php
 │   │   ├── TestJob.php
 │   │   ├── UnarchiveAndRestoreUserDatas.php
@@ -439,6 +451,7 @@
 │   │   ├── NotificationBenevole.php
 │   │   ├── NotificationTemoignage.php
 │   │   ├── Participation.php
+│   │   ├── PendingAction.php
 │   │   ├── Profile.php
 │   │   ├── Region.php
 │   │   ├── Reseau.php
@@ -553,6 +566,7 @@
 │   │   ├── ResponsableParticipationAModeredEnPriorite.php
 │   │   ├── ResponsableSummaryDaily.php
 │   │   ├── ResponsableSummaryMonthly.php
+│   │   ├── ResponsableTemplateClosedToMinors.php
 │   │   ├── ResponsableWillBeArchived.php
 │   │   ├── ResponsableWillBeArchivedSecondReminder.php
 │   │   ├── SendCodeUnarchiveUserDatas.php
@@ -909,7 +923,9 @@
 │   │   ├── 2025_07_16_173159_create_users_emails_missions_table.php
 │   │   ├── 2025_11_24_122422_create_mission_analyzes_table.php
 │   │   ├── 2025_11_25_103947_create_feature_feedbacks_table.php
-│   │   └── 2025_11_25_105521_remove_likes_from_mission_analyzes_table.php
+│   │   ├── 2025_11_25_105521_remove_likes_from_mission_analyzes_table.php
+│   │   ├── 2026_02_05_000000_add_is_open_to_minors_to_mission_templates_table.php
+│   │   └── 2026_02_11_120000_create_pending_actions_table.php
 │   ├── seeders
 │   │   ├── DatabaseSeeder.php
 │   │   └── RoleSeeder.php
@@ -1366,6 +1382,7 @@
 │       │   │   ├── structure-waiting-validation.blade.php
 │       │   │   ├── structure-without-mission-first-reminder.blade.php
 │       │   │   ├── structure-without-mission-second-reminder.blade.php
+│       │   │   ├── template-closed-to-minors.blade.php
 │       │   │   ├── will-be-archived-second-reminder.blade.php
 │       │   │   └── will-be-archived.blade.php
 │       │   ├── structures
@@ -1505,4 +1522,4 @@
     ├── TestCase.php
     └── Unit
         └── ExampleTest.php
-117 directories, 1539 files
+117 directories, 1556 files
