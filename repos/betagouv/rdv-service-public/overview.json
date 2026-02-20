@@ -1,19 +1,18 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l'État, aux opérateurs de services publics et aux collectivités territoriales.",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
   "language": "JavaScript",
   "features": [
     "Prise de rendez-vous",
     "Gestion des rendez-vous",
-    "Connexion par code envoyé par email",
-    "Rendez-vous collectifs en visio",
     "Synchronisation Caldav",
-    "Statistiques d'utilisation",
+    "Notifications",
     "Gestion des utilisateurs",
-    "Gestion des organisations"
+    "Statistiques d'utilisation",
+    "Connexion par code envoyé par email"
   ],
-  "audience": "Administrations de l’État, Opérateurs de services publics, Collectivités territoriales",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Bootstrap",
@@ -23,26 +22,26 @@
     "PostgreSQL"
   ],
   "components": [
-    "Frontend JavaScript",
+    "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Agenda FullCalendar",
-    "Serveur Rails"
+    "Agenda Caldav"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "magic-link"
     ],
     "providers": []
   },
   "tests": [
-    "RSpec",
+    "Jest",
     "Playwright",
-    "Jest"
+    "RSpec"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-18T18:48:58+01:00",
+  "lastActivity": "2026-02-19T18:20:11+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -57,9 +56,9 @@
     "administration",
     "public",
     "javascript",
-    "rails",
+    "react",
     "caldav",
     "rdv",
-    "service public"
+    "service-public"
   ]
 }
