@@ -1,36 +1,39 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Bhasile (anciennement Place d'asile) est un projet visant à piloter le parc de logements pour demandeurs d’asile.",
+  "description": "Bhasile (anciennement Place d'asile) est un outil pour piloter le parc de logements pour demandeurs d’asile. Il permet de gérer les structures, les affectations financières et les données relatives aux bénéficiaires.",
   "language": "TypeScript",
   "features": [
     "Gestion des structures",
-    "Gestion des adresses",
+    "Gestion des finances",
+    "Gestion des affectations",
     "Gestion des CPOM",
-    "Gestion financière",
-    "Intégration avec l'API EIG",
-    "Gestion des documents"
+    "Import de données",
+    "Gestion des utilisateurs",
+    "Tableaux de bord"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@codegouvfr/react-dsfr",
     "Next.js",
-    "Prisma",
-    "TailwindCSS",
     "React",
-    "Leaflet"
+    "Prisma",
+    "@codegouvfr/react-dsfr",
+    "tailwindcss",
+    "Zod"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Composants React DSFR"
+    "Authentification NextAuth.js"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
-    ]
+      "oauth2",
+      "sso"
+    ],
+    "providers": []
   },
   "tests": [
     "Jest",
@@ -38,9 +41,9 @@
     "Playwright"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-16T17:01:52+01:00",
+  "lastActivity": "2026-02-19T16:52:44+01:00",
   "status": "active",
   "license": "GPL-3.0",
   "hasDocumentation": true,
@@ -48,15 +51,16 @@
     "stars": 3,
     "forks": 0,
     "contributors": null,
-    "openIssues": 9
+    "openIssues": 7
   },
   "tags": [
     "logement",
     "asile",
     "administration",
-    "React",
-    "TypeScript",
-    "Next.js",
-    "Prisma"
+    "gestion",
+    "finance",
+    "react",
+    "typescript",
+    "nextjs"
   ]
 }

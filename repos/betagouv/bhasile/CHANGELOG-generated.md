@@ -1,58 +1,47 @@
-## Changelog : bhasile (derniers 30 jours)
+## Changelog : bhasile (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de bhasile se concentrent sur l'amélioration de l'interface utilisateur, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment concernant la gestion financière et l'intégration avec l'API EIG. Des améliorations ont également été apportées à la gestion des CPOM et des structures, ainsi qu'à la robustesse générale de l'application.
+Ce changelog résume les améliorations apportées à Bhasile (anciennement Place d'asile) au cours des 30 derniers jours. Les principales évolutions concernent l'ajout et l'amélioration de la gestion des CPOM (Convention de Partenariat Opérationnel et de Mutualisation), des corrections de bugs et des améliorations de l'interface utilisateur, notamment au niveau des formulaires financiers et de la gestion des structures.  L'outil a également été renommé en Bhasile.
 
 ### Évolutions fonctionnelles
-- Ajout d'indicateurs de conformité v2 (#944)
-- Ajout de couleurs d'arrière-plan aux titres dans le formulaire de finance (#967)
-- Amélioration de l'affichage des dates des documents financiers (#920)
-- Ajout de modales pour les commentaires financiers (#919)
-- Ajout d'un badge de granularité (#918)
-- Amélioration de l'affichage des affectations négatives (#921)
-- Ajout de la possibilité d'uploader des fichiers Excel avec macros (.xlsm) (#945, #952)
-- Ajout d'un champ pour indiquer une incohérence entre le département et le DNA (#966)
-- Ajout de la possibilité d'accepter des valeurs négatives pour l'affectation des fonds dédiés (#939)
-- Ajout de CPOM au formulaire de finalisation des finances (#907)
-- Ajout d'un cron pour l'exécution de la tâche EIG (#937)
-- Amélioration de l'interface pour l'affichage des activités (#938)
-- Ajout de la connexion à l'API DS de l'EIG (#881)
-- Amélioration de l'interface pour les adresses des opérateurs (#917)
+- Ajout de la gestion des CPOM : ajout de liens, de formulaires, de listes et de la possibilité de joindre des fichiers liés aux CPOM (#947, #988, #990, #972, #978, #984, #992, #995).
+- Amélioration de la gestion des structures : affichage des budgets avant la création de la structure (#1016), interdiction des valeurs négatives pour certains champs financiers (#1015, #1017), ajout d'informations CPOM sur la page structure (#959).
+- Amélioration de l'interface utilisateur :
+    - Ajout d'une adresse email de contact sur la page d'erreur 403 (#1009).
+    - Amélioration du bloc "Activités" (#1004, #1008, #938).
+    - Ajustement de la taille du logo dans différents contextes (#1002).
+    - Ajout de suivi de la sélection de la carte (#998).
+    - Correction d'un bug de redirection après déconnexion (#1003).
+    - Renommage de "Places à créer et fermer" (#946).
+- Ajout d'indicateurs de conformité (#944).
+- Ajout d'un cron pour l'EIG (#937).
+- Correction d'un bug empêchant la validation des structures subventionnées (#941).
+- Correction d'un bug lié à la case à cocher "Pas d'évaluation" (#929).
 
 ### Évolutions techniques
-- Renommage de "démarches simplifiées" en "démarches numériques" (#965)
-- Renommage du projet (#963)
-- Suppression des années dans les CPOM (#964, #953)
-- Suppression des champs "places à créer" et "fermer" (#946)
-- Suppression des dates dans les CPOM (#905, #924)
-- Suppression de la table de référence obsolète (#909)
-- Correction d'un bug lié à la dépendance sur une vue (#906)
-- Correction d'un bug dans le script EIG (#935)
-- Correction d'un bug lié à la validation des structures subventionnées (#941)
-- Correction du calcul du résultat net (#912)
-- Correction d'un bug lié à la suppression d'une table de référence lors d'une migration (#911)
-- Mise à jour de l'API Adresse vers l'API Geocode (#932)
-- Suppression des logs inutiles (#956)
-- Exclusion de certains fichiers Next.js des checks (#923)
-- Correction d'un problème d'affichage des dates en -1 (#920)
-- Transformation des dates indéfinies en valeurs nulles pour permettre leur suppression par le backend (#942)
-- Passage de la valeur de limite d'upload de fichier à 30Mo de manière sécurisée (#958)
-- Correction d'un problème lié à l'authentification pour l'API /structures (#904)
-- Suppression d'un avertissement Sentry dans le build (#913)
-- Rotation de la clé secrète Sentry et mise à jour de la configuration (#908)
-- Correction d'un bug lié à la case à cocher "pas d'évaluation" (#929)
-- Correction d'un bug lié à l'affichage des affectations négatives (#921)
-- Suppression des champs "places à créer" et "fermer" (#946)
-- Suppression des dates dans les CPOM (#905, #924)
-- Correction d'un problème lié à la dépendance sur une vue (#906)
+- Renommage du projet de "Place d'Asile" à "Bhasile" (#982).
+- Mise à jour de la configuration Next.js (#975).
+- Amélioration de la sécurité : correction d'une vulnérabilité potentielle liée à la construction de commandes shell à partir de variables d'environnement (#949).
+- Ajout de documentation sur l'architecture backend (#999).
+- Ajout de restrictions sur les utilisateurs autorisés (#950).
+- Ajout de tests E2E pour le formulaire CPOM (#984).
+- Amélioration de la gestion des erreurs et des validations de formulaires (#981, #939, #940).
+- Suppression de TODOs (#1010).
+- Suppression de code inutile (#819).
+- Ajout de brackets obligatoires et formatage du code avec Prettier (#1011).
 
 ### Autres changements
-- Tests E2E ajoutés (#936)
-- Nettoyage du code après la suppression des CPOM (#819)
-- Mise à jour des dépendances (Next.js, preact, etc.) (#951, #934, #928, #915, #910, #960)
-- Amélioration de la gestion des messages de chargement (#962)
-- Suppression du total des activités (#959)
-- Correction du finance indicator (#957)
-- Mise à jour de la formulation du bouton de finalisation (#940)
-- Amélioration de l'interface pour l'accordéon EIG (#927)
-- Suppression des logs (#956)
+- Correction d'un bug où le public était remis à "Tout public" à chaque modification (#1020).
+- Correction d'un bug lié à la liste des adresses (#1001).
+- Correction d'un bug lié à la perte du département dans le formulaire (#983).
+- Correction de typos dans les finances (#969).
+- Mise à jour de plusieurs dépendances (jsdom, divers paquets mineurs) (#1006, #1007, #985, #960, #935).
+- Exclusion de certains fichiers des vérifications (#923).
+- Ajout d'un message de chargement pour l'utilisation (#962).
+- Ajout de la possibilité d'uploader des fichiers Excel avec macros (.xlsm) (#945, #952).
+- Suppression des années du CPOM (#964).
+- Ajout de couleurs d'arrière-plan aux titres dans le formulaire de finance (#967).
+- Ajout d'une incohérence entre le département et le DNA (#966).
+- Suppression de logs (#956).
+- Suppression de l'affichage du total dans les activités (#959).
+- Mise à jour des mots utilisés dans le bouton de finalisation (#940).
