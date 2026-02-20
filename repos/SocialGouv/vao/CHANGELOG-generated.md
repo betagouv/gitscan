@@ -1,29 +1,28 @@
-## Changelog : vao (derniers 30 jours)
+## Changelog : vao (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de vao se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des agréments et des séjours. Des corrections de bugs ont été apportées pour améliorer la robustesse de l'application, et des améliorations techniques ont été réalisées pour moderniser l'infrastructure et le processus de développement.
+Ce changelog résume les améliorations apportées à vao au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de l'interface utilisateur, l'ajout de nouvelles fonctionnalités liées au module "fusager" et des optimisations techniques, notamment la migration vers pnpm et l'amélioration des outils de développement.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'acheminement des emails lors de la mise à jour du SIRET (#1160).
-- Amélioration de la gestion des SIRETs : affichage d'un message clair en cas de SIRET inconnu (#1117, #1156, #1157).
-- Ajout d'un titre sur les modales pour une meilleure clarté (#1150).
-- Affichage des conditions générales d'utilisation (CGU) pour tous les utilisateurs (#1127).
-- Affichage de l'historique des SIRET (#1128).
-- Correction de l'affichage des comptes en double dans la liste des comptes (#1137).
-- Amélioration de l'affichage et de l'adaptation de la page avec la mise à jour de DSFR (#1142).
-- Correction d'un problème de signature OVA lors de la validation du compte (#1131).
-- Correction du chargement par défaut des compétences de l'utilisateur (#1130).
-- Suppression d'un affichage indésirable (#1129).
+- Ajout d'une page d'authentification à deux facteurs (2FA) (#1183)
+- Ajout de boutons pour améliorer l'accessibilité (RGAA) dans les tableaux (#1186)
+- Correction d'un bug empêchant la copie des données du fusager dans les déclarations annulées (#1166)
+- Correction d'un bug lié à la mise à jour du SIRET dans le fusager (#1184)
+- Amélioration de l'affichage des messages d'erreur concernant le SIRET (#1156, #1117)
+- Ajout d'un titre aux modales et modification de leur taille (#1150)
+- Correction d'un problème d'export du schéma téléphonique (#1161, #1191)
+- Correction de l'organisme dans le fusager pour les déclarations (#1160)
 
 ### Évolutions techniques
-- Migration vers pnpm et amélioration du linting (#1125).
-- Ajout de tests d'intégration pour l'acceptation des CGU (#1148).
-- Vérification du typage dans Nuxt pour améliorer la qualité du code (#1138).
-- Suppression des applications du docker-compose pour simplifier l'environnement de développement.
-- Correction du schéma de téléphone pour l'export (#1161).
-- Configuration de l'environnement de développement (#1164, #1165).
-- Amélioration du tooling et des builds CI (#1125).
+- Migration vers pnpm pour la gestion des dépendances et amélioration des outils de linting (#1125, #1185, #1174)
+- Mise à jour de la dépendance `nuxt-maplibre` vers la version 1.2.2 (#1172)
+- Amélioration de la configuration de l'environnement de développement (#1165, #1164)
+- Ajout d'un composable pour la gestion des toasts (#1158)
+- Amélioration des scripts de CI/CD et des tests (#1138)
+- Correction de problèmes liés à la configuration de la carte en environnement de développement (#1187)
 
 ### Autres changements
-- Nettoyage du linter et correction de problèmes associés.
-- Correction de la configuration des dépendances pour les conteneurs de développement.
+- Amélioration du template de pull request (#1191)
+- Correction de l'import manquant (#1176)
+- Ajout de tests d'intégration pour l'acceptation des CGU (#1148)
+- Nettoyage du code et des configurations.

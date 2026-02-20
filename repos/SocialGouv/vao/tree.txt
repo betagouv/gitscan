@@ -1264,7 +1264,8 @@
 │   │   │   │   │   ├── index.vue
 │   │   │   │   │   ├── mot-de-passe-oublie.vue
 │   │   │   │   │   ├── reset-mot-de-passe.vue
-│   │   │   │   │   └── validation.vue
+│   │   │   │   │   ├── validation.vue
+│   │   │   │   │   └── verification-2fa.vue
 │   │   │   │   ├── eig
 │   │   │   │   │   ├── [eigId].vue
 │   │   │   │   │   └── index.vue
@@ -1450,7 +1451,8 @@
 │   │   │   │   │   ├── index.vue
 │   │   │   │   │   ├── mot-de-passe-oublie.vue
 │   │   │   │   │   ├── reset-mot-de-passe.vue
-│   │   │   │   │   └── validation.vue
+│   │   │   │   │   ├── validation.vue
+│   │   │   │   │   └── verification-2fa.vue
 │   │   │   │   ├── demande-sejour
 │   │   │   │   │   ├── [[declarationId]].vue
 │   │   │   │   │   └── liste.vue
@@ -1604,6 +1606,7 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── constantes
+│   │   │   │   ├── auth.ts
 │   │   │   │   ├── demandeSejour.ts
 │   │   │   │   ├── errors.ts
 │   │   │   │   ├── index.ts
@@ -1681,6 +1684,8 @@
 │           │   ├── ValidationModal.vue
 │           │   ├── api
 │           │   │   └── ApiUnavailable.vue
+│           │   ├── auth
+│           │   │   └── TwoFactorCodeVerification.vue
 │           │   ├── cgu
 │           │   │   └── CguValidation.vue
 │           │   ├── eig
@@ -1697,6 +1702,7 @@
 │           ├── composables
 │           │   ├── index.js
 │           │   ├── pagination.ts
+│           │   ├── useAuthentication.ts
 │           │   ├── useLayoutHeader.js
 │           │   ├── useLogout.js
 │           │   ├── useQuickLinks.js
@@ -1718,10 +1724,12 @@
 │           │   ├── prenom.js
 │           │   └── telephone.js
 │           ├── types
+│           │   ├── Auth.type.ts
 │           │   ├── DsfrDataTableV2.type.ts
 │           │   ├── index.ts
 │           │   └── toaster.type.ts
 │           └── utils
+│               ├── auth.ts
 │               ├── columnsTable.js
 │               ├── createLogger.js
 │               ├── eigUtils.js
@@ -1755,4 +1763,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-270 directories, 1492 files
+271 directories, 1499 files
