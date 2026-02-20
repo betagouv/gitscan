@@ -1,34 +1,39 @@
-## Changelog : api-engagement (derniers 30 jours)
+## Changelog : api-engagement (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'accessibilité de l'application, notamment avec l'ajout de composants et de fonctionnalités respectant les normes RGAA. Des corrections de bugs et des optimisations de performance ont également été apportées, en particulier au niveau de la gestion des connexions à la base de données et de l'importation des missions. Enfin, l'infrastructure d'analyse des données a été revue et améliorée.
+Cette période a été marquée par des améliorations de l'accessibilité, des corrections de bugs et des optimisations de performance sur l'ensemble de l'application, incluant l'API, le tableau de bord et les widgets. Des refactorings importants ont été effectués pour simplifier l'architecture et améliorer la maintenance du code. Des mises à jour de dépendances ont également été réalisées pour assurer la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de composants d'interface utilisateur accessibles (tooltips, tabs, skiplinks) respectant les normes RGAA (#699, #712, #719, #720).
-- Amélioration de l'affichage des données dans le tableau de bord, notamment pour les graphiques empilés (#723).
-- Correction d'un bug empêchant la création de campagnes en double (#727).
-- Amélioration de la gestion de la modération des organisations et des missions dans l'interface utilisateur.
-- Ajout de la possibilité d'ajouter des attributs personnalisés à l'écran de temps réel (#704).
-- Ajout de support pour l'ID client d'événement (#714).
-- Ajout de nouveaux attributs pour le service civique dans les analyses (#700).
-- Amélioration de l'affichage des informations de mission avec les informations de l'organisation (#702).
+
+- Ajout d'un identifiant de publisher comme préfixe d'URL (#807)
+- Ajout de l'adresse de la mission dans les informations de modération (#784)
+- Amélioration de la gestion des missions et de la modération dans le tableau de bord (plusieurs commits)
+- Correction d'un bug empêchant la déconnexion pour l'utilisateur "my-missions" (#799)
+- Ajout de la possibilité d'ajouter des attributs personnalisés dans l'écran de suivi en temps réel (#704)
+- Amélioration de la gestion des états de modération en batch (#703, #702)
+- Correction d'un problème d'affichage des noms de villes et d'organisations dans les widgets (#759)
+- Ajout d'un logger pour les widgets (#775)
 
 ### Évolutions techniques
-- Résolution de problèmes de connexion au pool Prisma et de consommation de mémoire (#726).
-- Suppression d'un pipeline legacy dans les jobs (#706).
-- Refactorisation de l'importation des missions pour améliorer les performances (#693).
-- Migration de la logique de gestion des logos de domaine vers le schéma de mission (#692).
-- Suppression de jobs et de modèles d'analyse obsolètes (#630, #681).
-- Mise à jour de la gestion des connexions PostgreSQL pour éviter les fuites (#665).
-- Amélioration de la détection des changements de mission lors de l'importation (#701, #689).
-- Ajout de workflows Claude pour la revue de code et l'amélioration de la qualité du code (#716, #717).
-- Mise à jour des dépendances (Express, eslint, jsdom, etc.) (#651, #652, #653, #654, #655, #695, #696).
+
+- Passage à Node.js version 24 (#802)
+- Refactoring de la logique d'agrégation des widgets (#790)
+- Refactoring de l'implémentation des recherches dans l'API pour optimiser les performances (#806, #788)
+- Migration des activités de mission vers une table de jointure N-N (#757)
+- Suppression de l'utilisation de MongoDB (#761)
+- Ajout de tests d'intégration pour les endpoints des widgets (#750)
+- Amélioration de la gestion des erreurs et ajout de rapports Sentry (plusieurs commits)
+- Refactoring de la configuration des conteneurs de widgets (#786)
+- Ajout d'un request-id header avec support Sentry (#780)
+- Ajout de workflows Claude pour la revue de code (#717)
+- Mise à jour de plusieurs dépendances (Express, Next.js, @types/node, @sentry/cli, etc.)
 
 ### Autres changements
-- Suppression de l'ancien champ d'état du tableau de bord des jobs (#711).
-- Uniformisation de l'unicité du tableau de bord des missions (#709).
-- Correction d'un problème d'incompatibilité de couleurs dans l'application (#705).
-- Amélioration du monitoring des statistiques LinkedIn (#726).
-- Ajout d'une image par défaut pour le logo du domaine (#705).
-- Suppression de la configuration autoscaling en production (#716).
-- Mise à jour de la documentation et du changelog.
+
+- Amélioration de l'accessibilité de l'application avec l'utilisation de composants Headless UI conformes RGAA (plusieurs commits)
+- Ajout de tests E2E pour le SDK jstag.js (#715)
+- Amélioration des logs et du monitoring (plusieurs commits)
+- Suppression de jobs et modèles analytics obsolètes (#706, #681)
+- Mise à jour de la documentation et du fichier CHANGELOG.md (plusieurs commits)
+- Correction de problèmes de performance dans le tableau de bord (#753)
+- Correction de problèmes de configuration de l'environnement Metabase (#708)
