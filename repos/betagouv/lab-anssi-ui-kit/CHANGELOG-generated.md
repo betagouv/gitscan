@@ -1,30 +1,25 @@
-## Changelog : lab-anssi-ui-kit (derniers 30 jours)
+## Changelog : lab-anssi-ui-kit (30 derniers jours)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations significatives en termes de thèmes et de personnalisation, avec l'introduction de "design tokens" et la prise en charge des couleurs MSC et MSS. De nouveaux composants du DSFR ont également été ajoutés, enrichissant la bibliothèque d'éléments d'interface utilisateur disponibles. Enfin, des corrections et améliorations ont été apportées à certains composants existants.
+Ce changelog présente les améliorations apportées à la bibliothèque de composants lab-anssi-ui-kit au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de nouveaux composants, l'amélioration de la gestion des thèmes (notamment avec l'intégration de "Style Dictionary"), et des corrections de bugs pour une meilleure expérience utilisateur. Plusieurs versions mineures ont été publiées pour intégrer ces changements.
 
 ### Évolutions fonctionnelles
-- Ajout du composant `Quote` du DSFR (#d4c291e)
-- Ajout du composant `Accordion` du DSFR (#e5552a5)
-- Amélioration du composant `DsfrButton` : ajout de la gestion des tailles et amélioration de l'état `disabled` pour la variation `inverted-secondary` (#adb2476, #9a99b19)
-- Ajout d'un slot pour le bouton dans le composant `DsfrCallout` (#b4a3359)
-- Possibilité de thématiser l'icône 'check' des composants (#1bae165)
-- Ajout de points d'entrées vers les WebComponents et des types associés (#21f2d22)
+- Ajout du composant Transcription du DSFR (#0a830e9).
+- Amélioration du composant `DsfrButton` avec la gestion des tailles (#adb2476).
+- Correction de l'alignement des numéros dans le composant Marellet (#7efdb55).
+- Ajout d'un slot pour surcharger le texte du composant `DSFR Highlight` (#0ce5f84).
+- Amélioration de l'état "disabled" de la variation "inverted-secondary" du composant `DSFR Button` (#9a99b19).
 
 ### Évolutions techniques
-- Introduction de "Style Dictionary" pour transformer les "design tokens" en variables CSS, facilitant la gestion des thèmes (#8c293b7)
-- Ajout des thèmes du LAB sous forme de "design tokens" (#fd5f89f)
-- Amélioration de la configuration de Style Dictionary pour gérer les éléments thémables (#0971c05)
-- Ajout d'une fonction pour définir un attribut `data-` sur les composants thémables (#892c22b)
-- Amélioration de l'usage des thèmes dans Storybook (#d5a8a28)
-- Construction et envoi des tokens vers le dossier `/assets` du CDN (#eb1a98b)
-- Mise à jour de Storybook vers la version 10.1.11 (#05641e4)
+- Intégration de "Style Dictionary" pour la gestion des "design tokens" et la transformation en variables CSS (#8c293b7, #0971c05, #fd5f89f, #eb1a98b).
+- Amélioration du déploiement des styles de thèmes et du DSFR (#49e0b74).
+- Thématisation des variables DSFR selon les couleurs MSS et MSC (#cb0b633, #b70d222).
+- Ajout d'une fonction pour définir un attribut `data-` sur les composants thématisables (#892c22b).
+- Rendre l'icône 'check' des composants thématisable (#1bae165).
+- Amélioration de l'usage des thèmes dans Storybook (#d5a8a28).
+- Mise à jour des couleurs du thème MSC (#16127a8).
 
 ### Autres changements
-- Amélioration du contenu du fichier de variables DSFR (#c422334)
-- Thématisation des variables DSFR selon les couleurs MSC et MSS (#b70d222, #cb0b633)
-- Ajout du thème 'DSFR' au 'switcher' de thèmes Storybook (#a545bc3)
-- Passage à la version 1.41.0 (#47e2ffd)
-- Passage à la version 1.40.0 (#a1cb2bc)
-- Mise à jour des dépendances (#549ccd3)
-- Ajout du composant Callout du DSFR (#370f7a3)
+- Ajout du thème 'DSFR' au 'switcher' de thèmes de Storybook (#a545bc3).
+- Amélioration du contenu du fichier de variables DSFR (#c422334).
+- Publication des versions 1.40.0, 1.41.0, 1.41.1, 1.41.2, 1.41.3, 1.41.4 et 1.42.0 (#8728641, #03c0387, #290ab26, #4ebae37, #47e2ffd, #8cd32dd).
