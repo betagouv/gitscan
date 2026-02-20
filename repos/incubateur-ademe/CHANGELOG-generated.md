@@ -1,18 +1,21 @@
 # Synthèse d'activité : incubateur-ademe (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de comptes utilisateurs sur [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) et des corrections de bugs sur [aldo](/repos/incubateur-ademe/aldo) et [mutafriches](/repos/incubateur-ademe/mutafriches). Des mises à jour techniques importantes ont également été réalisées, comme le passage à `pnpm` dans [docker-prisma-studio](/repos/incubateur-ademe/docker-prisma-studio) et la mise à niveau de n8n en version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo), ce qui impactera positivement la performance et la maintenance des projets.  Des améliorations des modèles de calcul d'empreinte carbone ont été apportées sur [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) et [publicodes-impact-livraison](/repos/incubateur-ademe/publicodes-impact-livraison).
+L'organisation incubateur-ademe a connu une période d'activité riche et variée au cours des 7 derniers jours. Les efforts de développement se sont concentrés sur l'amélioration de la qualité des données et de l'expérience utilisateur, notamment sur les plateformes nosgestesclimat et nosgestesclimat-site-nextjs. Des corrections de bugs et des mises à jour de données ont été apportées pour affiner le calcul de l'empreinte carbone et améliorer la navigation. Le projet roadmaps-faciles a connu des avancées significatives en matière de sécurité, d'administration et de fonctionnalités utilisateur, avec l'ajout de l'authentification à deux facteurs et la possibilité d'intégrer des roadmaps via iframe.
 
 ## Sécurité
-- Sécurisation du contrôleur "evenements" dans [mutafriches](/repos/incubateur-ademe/mutafriches).
+Le projet [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a implémenté l'authentification à deux facteurs (passkey/OTP/email) et intégré l'authentification SSO pour les tenants, renforçant ainsi la sécurité de la plateforme.
 
 ## Autres changements notables
-- Passage à `pnpm` comme gestionnaire de paquets dans [docker-prisma-studio](/repos/incubateur-ademe/docker-prisma-studio).
-- Mise à niveau de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
-- Suppression de `husky` dans [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) pour simplifier le processus de développement.
+- Le projet [docker-prisma-studio](/repos/incubateur-ademe/docker-prisma-studio) est passé à `pnpm` comme gestionnaire de paquets pour améliorer la gestion des dépendances.
+- Le projet [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) a refactorisé le flux d'inscription à la newsletter et mis à jour le modèle Prisma.
+- Le projet [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) a ajouté des comptes utilisateurs, amélioré la page d'accueil et corrigé des bugs d'affichage et de gestion des formulaires.
+- Le projet [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) a publié des versions 1.0.0 et 1.1.0 avec des corrections et des améliorations du calcul de l'empreinte carbone du chauffage.
+- Le projet [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) a mis à jour Django vers la version 5.11 et supprimé des dépendances inutilisées.
 
 ## Dépôts les plus actifs
-- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Ajout de comptes utilisateurs, améliorations de l'interface et corrections de bugs pour une meilleure expérience utilisateur.
-- [mutafriches](/repos/incubateur-ademe/mutafriches) : Corrections de bugs, amélioration de l'interface et refonte de l'API.
-- [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) : Amélioration du modèle de calcul d'empreinte carbone du chauffage.
-- [aldo](/repos/incubateur-ademe/aldo) : Corrections de bugs et ajout d'une fonctionnalité de regroupement des données.
+- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Ajout de comptes utilisateurs et améliorations de l'interface.
+- [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) : Corrections de bugs et refactorisation du flux d'inscription à la newsletter.
+- [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Implémentation de l'authentification à deux facteurs et de l'intégration via iframe.
+- [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) : Amélioration du calcul de l'empreinte carbone du chauffage.
+- [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) : Mise à jour de Django et suppression de dépendances.

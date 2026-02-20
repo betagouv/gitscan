@@ -1,24 +1,24 @@
 # Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une semaine riche en développement et en améliorations, touchant à la sécurité, à l'expérience utilisateur et à la stabilité de ses différents projets. Des efforts significatifs ont été déployés pour moderniser l'infrastructure, notamment avec la migration vers des outils de construction plus récents et des versions plus actuelles de langages et de frameworks. Plusieurs projets ont bénéficié d'améliorations de l'accessibilité, rendant les applications plus inclusives. L'accent a également été mis sur la correction de vulnérabilités et l'amélioration de la gestion des utilisateurs et des organisations, notamment avec des mises à jour de [django-lasuite](/repos/suitenumerique/django-lasuite) et [st-deploycenter](/repos/suitenumerique/st-deploycenter).
+L'organisation suitenumerique a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'un mode sombre persistant dans [conversations](/repos/suitenumerique/conversations) et l'amélioration de l'importation de documents dans [docs](/repos/suitenumerique/docs). La sécurité a également été une priorité, avec des corrections de vulnérabilités XSS dans [projects](/repos/suitenumerique/projects) et [messages](/repos/suitenumerique/messages) et une mise à jour de Django dans [meet](/repos/suitenumerique/meet) pour corriger des failles critiques. Plusieurs dépôts ont bénéficié d'optimisations techniques et de mises à jour de dépendances pour améliorer la performance et la stabilité.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de corrections de sécurité :
-- Correction de vulnérabilités XSS dans [projects](/repos/suitenumerique/projects) et [meet](/repos/suitenumerique/meet).
-- Mise à jour de dépendances vulnérables dans [conversations](/repos/suitenumerique/conversations), [meet](/repos/suitenumerique/meet) et [st-ansible](/repos/suitenumerique/st-ansible).
-- Correction d'une erreur SSL et amélioration de la gestion des échecs d'authentification dans [messages](/repos/suitenumerique/messages).
+Plusieurs corrections de sécurité ont été apportées :
+- Correction d'une vulnérabilité XSS dans [projects](/repos/suitenumerique/projects).
+- Correction de vulnérabilités XSS dans [messages](/repos/suitenumerique/messages).
+- Mise à jour de Django dans [meet](/repos/suitenumerique/meet) pour corriger des vulnérabilités critiques.
 
 ## Autres changements notables
-- Migration de la gestion des dépendances de `pip` vers `uv` dans plusieurs dépôts ([people](/repos/suitenumerique/people), [st-ansible](/repos/suitenumerique/st-ansible), [projects](/repos/suitenumerique/projects)).
-- Mise à jour de Next.js vers la dernière version dans [st-home](/repos/suitenumerique/st-home) et [conversations](/repos/suitenumerique/conversations).
-- Refactorisation et simplification de la gestion des paquets dans [projects](/repos/suitenumerique/projects).
-- Ajout de la gestion des alias de messagerie dans [people](/repos/suitenumerique/people).
-- Sortie de la version 1 de la fonctionnalité de visioconférence de "Gaufre" dans [integration](/repos/suitenumerique/integration).
+- Migration vers `uv` pour améliorer les performances du backend dans [conversations](/repos/suitenumerique/conversations).
+- Passage de la configuration par arguments en ligne de commande à des variables d'environnement dans [meet-whisperx](/repos/suitenumerique/meet-whisperx) pour une meilleure flexibilité.
+- Simplification de la gestion des paquets dans [projects](/repos/suitenumerique/projects) avec le retour à `npm`.
+- Ajout de la variable `st_keycloak_start_command` dans [st-ansible](/repos/suitenumerique/st-ansible) pour une configuration plus flexible de Keycloak.
+- Mise à jour de Next.js dans [st-home](/repos/suitenumerique/st-home) pour bénéficier des dernières améliorations et corrections de sécurité.
 
 ## Dépôts les plus actifs
-- [conversations](/repos/suitenumerique/conversations) : Améliorations significatives de la stabilité, de la sécurité et de l'expérience utilisateur, incluant la gestion des conversations et l'analyse de fichiers.
-- [meet](/repos/suitenumerique/meet) : Amélioration de l'accessibilité, correction de vulnérabilités et ajout de support pour de nouvelles langues pour la transcription et le résumé des réunions.
-- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de la gestion des comptes utilisateurs et des organisations, ainsi que des corrections de bugs et des optimisations.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (menu contextuel, modal d'onboarding) et améliorations des composants existants, avec un focus sur l'accessibilité et la testabilité.
-- [messages](/repos/suitenumerique/messages) : Ajout de nouvelles fonctionnalités comme le transfert de pièces jointes et l'affichage des invitations de calendrier.
+- [conversations](/repos/suitenumerique/conversations) : Amélioration significative de l'expérience utilisateur avec un mode sombre persistant, une meilleure gestion des fichiers et des optimisations de performance.
+- [messages](/repos/suitenumerique/messages) : Ajout de nouvelles fonctionnalités d'import/export de boîtes aux lettres et correction de vulnérabilités de sécurité.
+- [docs](/repos/suitenumerique/docs) : Amélioration de l'accessibilité et ajout de nouvelles fonctionnalités d'importation et de connexion silencieuse.
+- [drive](/repos/suitenumerique/drive) : Optimisations de performance, corrections de bugs et modernisation des dépendances.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (menu contextuel, modal d'onboarding) et améliorations des composants existants.
