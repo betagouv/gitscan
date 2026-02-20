@@ -1,38 +1,32 @@
-## Changelog : zacharie (derniers 30 jours)
+## Changelog : zacharie (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Zacharie se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec le lancement d'un nouveau tableau de bord pour le suivi des chasses et des carcasses. Des corrections de bugs ont été apportées pour améliorer la fiabilité et la clarté des informations affichées, ainsi que pour optimiser le processus de gestion des utilisateurs et des carcasses. Des améliorations techniques ont également été réalisées, notamment en matière de surveillance des performances et de gestion des erreurs.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la synchronisation des données, la gestion des carcasses et des FEIs, ainsi que sur l'interface utilisateur pour une meilleure expérience utilisateur. Des corrections de bugs et des améliorations de la performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un tableau de bord pour le suivi des chasses et des carcasses (#117).
-- Amélioration du formulaire de saisie des carcasses (#106).
-- Possibilité de créer une fiche même si elle n'est pas active (#105).
-- Affichage des animaux acceptés par le SVI (#112).
-- Possibilité de clôturer une fiche si toutes les carcasses sont manquantes (#111).
-- Ajout d'un message d'alerte concernant la trichine (#102).
-- Ajout d'un feedback en cas d'erreur lors de la saisie du numéro de bracelet (#118).
-- Amélioration de l'affichage des lots acceptés dans la vue tableau (#115).
-- Possibilité de réinitialiser le mot de passe même si aucun n'a été défini auparavant.
-- Suppression de la question sur le transport dans le formulaire.
-- Les carcasses sans décision sont maintenant affichées comme acceptées (#124).
-- Correction de l'affichage des statistiques d'hygiène (#115, #116).
-- Correction de l'affichage des motifs SVI dans le dashboard.
-- Correction du wording pour les utilisateurs non activés.
-- Correction d'un bug empêchant l'enregistrement des commentaires sur une carcasse non refusée.
-- Correction d'un bug lié au chargement des FEIs.
+- Ajout de la possibilité de créer un contact CCG directement pendant le flux FEI (#147).
+- Synchronisation des contacts de circuit court avec Brevo (#144).
+- Ajout de champs de propriété à la modèle Carcasse (#145).
+- Possibilité de sauter des étapes dans le processus d'onboarding (#138).
+- Ajout d'un indicateur SVI (Suivi Vie Intégrée) au tableau de bord, incluant le motif (#168).
+- Amélioration de l'affichage des carcasses sans décision, qui sont maintenant affichées comme acceptées (puis revert). (#124)
+- Ajout d'une page d'administration des utilisateurs avec un onglet dédié (#143).
+- Suppression des espèces Cailles et Oies de la liste des espèces (#150).
+- Correction d'un bug empêchant l'ajout de partenaires avec une adresse email déjà utilisée (#159).
+- Amélioration de l'interface utilisateur avec des placeholders vides (#167), une barre de recherche (#163), et des labels (#164).
+- Adaptation de l'interface pour une meilleure réactivité sur mobile (#184).
 
 ### Évolutions techniques
-- Mise en place d'une surveillance des performances et des erreurs avec Sentry.
-- Nettoyage du code et suppression de composants inutilisés.
-- Amélioration de la gestion des relations entre les entités.
-- Refonte de l'onboarding en plusieurs étapes (#110).
-- Ajout de Matomo pour le suivi analytique.
-- Mise à jour de certaines dépendances (react-router, qs, express) (#114, #109, #108).
+- Refactorisation de la synchronisation des données FEI avec un nouveau endpoint `/sync` pour une meilleure performance (#1879f09, #7dc64d7).
+- Extraction de la logique de sauvegarde des FEIs et des carcasses pour une meilleure organisation du code (#5bd5761).
+- Amélioration de la gestion des relations entre les entités et les ETGs.
+- Optimisation du chargement des FEIs pour une meilleure performance.
+- Nettoyage important du code, notamment des composants d'édition, de formulaire, PWA et des relations entre entités.
+- Mise à jour des dépendances (lodash, tar) (#7bc0aa6, #3a193ef).
 
 ### Autres changements
-- Ajout de documentation sur l'architecture locale-first.
-- Ajout d'un fichier `claude.md` pour la documentation.
-- Amélioration des logs pour Sentry.
-- Suppression des espèces Cailles et Oies de la liste.
-- Correction de tests et ajout de tests pour Sentry.
-- Ajout de react-toastify pour les notifications.
+- Ajout d'une documentation sur l'architecture de synchronisation local-first (CLAUDE.md) (#16a56a9, #ed1c059).
+- Mise à jour du fichier `.gitignore` (#05d4da6).
+- Ajout de tests pour améliorer la couverture du code (#185).
+- Correction de plusieurs bugs mineurs et améliorations de la stabilité.
+- Amélioration de la gestion des erreurs et des messages d'erreur.
