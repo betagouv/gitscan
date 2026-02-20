@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "Plateforme collaborative pour l’accessibilité des établissements recevant du public en France. Elle vise à référencer et améliorer l'accessibilité de ces lieux pour tous.",
+  "description": "La plateforme collaborative pour l’accessibilité. Ce projet vise à référencer l'accessibilité des Établissements Recevant du Public (ERP) en France.",
   "language": "Python",
   "features": [
-    "Référencement des ERP",
-    "Gestion des contributions",
+    "Référencement de l'accessibilité des ERP",
     "Import de données",
+    "Gestion des contributions",
     "API",
-    "Interface utilisateur pour la gestion de l'accessibilité",
+    "Interface d'administration",
     "Recherche",
     "Géolocalisation",
     "Notifications"
@@ -18,37 +18,38 @@
     "Django",
     "djangorestframework",
     "PostgreSQL",
-    "redis",
+    "Redis",
     "celery",
     "pandas",
-    "requests",
-    "@gouvfr/dsfr",
-    "leaflet",
-    "sentry-sdk"
+    "sentry-sdk",
+    "geopy",
+    "scrapfly-sdk",
+    "outscraper"
   ],
   "components": [
     "Backend Django",
-    "Frontend (probablement JavaScript/React)",
-    "Base de données PostgreSQL",
     "API REST",
-    "Serveur Celery",
-    "Cache Redis"
+    "Base de données PostgreSQL",
+    "Frontend (probablement JavaScript/HTML/CSS)",
+    "Serveur Redis",
+    "Worker Celery"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "session",
-      "mfa"
-    ]
+      "oauth2"
+    ],
+    "providers": []
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "pytest-django"
   ],
   "workflows": [
     "lint",
     "codeql-analysis"
   ],
-  "lastActivity": "2026-02-17T16:55:17Z",
+  "lastActivity": "2026-02-20T01:26:55Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,16 +57,16 @@
     "stars": 18,
     "forks": 6,
     "contributors": null,
-    "openIssues": 10
+    "openIssues": 7
   },
   "tags": [
+    "a11y",
+    "accessibility",
+    "django",
+    "france",
+    "geodjango",
+    "python",
     "accessibilité",
-    "ERP",
-    "France",
-    "Django",
-    "géolocalisation",
-    "données ouvertes",
-    "inclusion",
-    "handicap"
+    "ERP"
   ]
 }
