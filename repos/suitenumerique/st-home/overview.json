@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/st-home",
   "name": "st-home",
-  "description": "Ce projet implémente la page d'accueil de la Suite territoriale et le chemin de raccordement pour les collectivités. Il est basé sur Next.js et le template Next.js de betagouv.",
+  "description": "Ce projet implémente la page d'accueil de la Suite territoriale et le chemin de raccordement pour les collectivités. Il fournit une interface web pour explorer et interagir avec les données de la suite territoriale.",
   "language": "TypeScript",
   "features": [
-    "Cartographie interactive",
     "Recherche de communes",
-    "Informations sur le déploiement",
-    "Actualités",
-    "Mentions légales",
-    "Politique de confidentialité"
+    "Cartographie interactive",
+    "Informations sur les collectivités",
+    "Suivi du déploiement",
+    "Statistiques",
+    "Gestion de l'onboarding",
+    "Vérification de la conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,21 +20,25 @@
     "PostgreSQL",
     "Redis",
     "Celery",
-    "Leaflet",
-    "Maplibre GL"
+    "MapLibre GL",
+    "Leaflet"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Composants web",
-    "Cartographie interactive"
+    "Cache Redis",
+    "Serveur Next.js",
+    "Composants web"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "NextAuth"
+    ]
   },
   "tests": [
     "Vitest",
@@ -43,25 +48,25 @@
   "workflows": [
     "tests.yml"
   ],
-  "lastActivity": "2026-01-28T09:23:38+01:00",
+  "lastActivity": "2026-02-19T21:37:47Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
-    "forks": 2,
+    "stars": 10,
+    "forks": 4,
     "contributors": null,
     "openIssues": 4
   },
   "tags": [
-    "Next.js",
     "TypeScript",
+    "Next.js",
     "React",
+    "PostgreSQL",
     "GIS",
     "Cartographie",
-    "Suite Territoriale",
+    "Territoire",
     "Collectivités",
-    "Déploiement",
-    "France"
+    "Suite Territoriale"
   ]
 }
