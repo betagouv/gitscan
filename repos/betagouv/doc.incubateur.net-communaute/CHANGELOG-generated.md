@@ -1,20 +1,25 @@
-## Changelog : doc.incubateur.net-communaute (derniers 30 jours)
+## Changelog : doc.incubateur.net-communaute (30 derniers jours)
 
 ### Résumé
-La documentation de la communauté beta.gouv.fr a été mise à jour au cours du dernier mois avec des améliorations concernant le déploiement, les outils de prise de rendez-vous, les informations sur les adresses email, et la liste des référents techniques. Plusieurs corrections et ajouts ont été effectués pour améliorer la clarté et la pertinence des informations disponibles pour les membres de la communauté.
+La documentation de la communauté beta.gouv.fr a été mise à jour au cours des dernières semaines avec de nombreuses améliorations concernant les guides de déploiement, la configuration des emails, les outils de prise de rendez-vous et la liste des référents techniques. Des ajustements ont également été apportés à la page d'accueil et à la documentation concernant l'utilisation de Metabase.
 
 ### Évolutions fonctionnelles
-- Ajout d'un encart pour le kit de démarrage "biz dev en accélération" (#1688).
-- Mise à jour de la page sur le déploiement, incluant des ajustements de mesures SH (#1683, #1680, #1681, #1679).
-- Ajout de RDV Service Public à la documentation des outils de prise de RDV (#220).
-- Mise à jour des instructions de configuration des emails et ajout d'avertissements concernant l'utilisation de Calendso (#221).
-- Mise à jour de la liste des référents techniques (#219).
-- Mise à jour de la page "choisir-son-nom-de-domaine.md" (#217).
-- Amélioration de la documentation Matomo avec une recommandation pour les pages authentifiées (#218).
-- Mise à jour des informations concernant les emails de la suite numérique (#222, #216).
+- Mise à jour de la documentation concernant les outils de prise de rendez-vous avec l'ajout de RDV Service Public (#220).
+- Ajout d'un encart pour le kit de démarrage biz dev en accélération (#226).
+- Amélioration de la documentation sur la configuration des emails, incluant des avertissements et des instructions révisées (#221, #222).
+- Mise à jour de la documentation Metabase avec des conseils sur PostgreSQL et la sécurité (#225).
+- Modification de la page "Où travailler" (#227).
+- Correction et modifications sur les pages de déploiement liées à la mesure SH (plusieurs commits #1680, #1681, #1683, #1686, #1688).
+- Ajout d'informations sur l'outil de migration OMM pour les emails (#226).
 
 ### Évolutions techniques
-- Fusion de changements concernant les standards (#2c07ebe).
+- Changement de la matrice de pondération (GITBOOK-1698).
+- Ajustements mineurs concernant l'interface d'administration (GITBOOK-1699).
+- Mises à jour diverses sur la documentation (plusieurs commits GITBOOK-1673, #1674, #1675, #1676, #1677, #1679, #1680, #1681, #1683, #1686, #1688, #1690, #1691, #1693, #1694, #1695, #1696, #1697).
 
 ### Autres changements
-- Plusieurs petites modifications et corrections ont été apportées à la documentation, référencées par les numéros GITBOOK-1641, GITBOOK-1643, GITBOOK-1646, GITBOOK-1656, GITBOOK-1657, GITBOOK-1658, GITBOOK-1659, GITBOOK-1660, GITBOOK-1662, GITBOOK-1663, GITBOOK-1665, GITBOOK-1666, GITBOOK-1667, GITBOOK-1668, GITBOOK-1669, GITBOOK-1672, GITBOOK-1673, GITBOOK-1674, GITBOOK-1675 et GITBOOK-1676. Ces changements sont principalement des corrections et des mises à jour mineures de contenu.
+- Mise à jour du fichier README.md (#227).
+- Ajout d'un avertissement concernant l'utilisation de Calendso (#221).
+- Mise à jour de la liste des référents techniques (#219).
+- Correction d'un lien SH sur la page de déploiement (#1686).
+- Modification du texte sur la page de déploiement (#1680).
