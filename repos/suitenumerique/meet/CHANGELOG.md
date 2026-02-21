@@ -8,6 +8,24 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- ♻️(frontend) replace custom reactions toolbar with react aria popover #985
+- 🔒️(frontend) uninstall curl from the frontend production image #987
+
+## [1.8.0] - 2026-02-20
+
+### Changed
+
+- 🔒️(agents) uninstall pip from the agents image
+- 🔒️(summary) switch to Alpine base image
+- 🔒️(backend) uninstall pip in the production image 
+
+### Fixed
+
+- 🔒️(agents) upgrade OpenSSL to address CVE-2025-15467
+- 📌(agents) pin protobuf to 6.33.5 to fix CVE-2026-0994
+
 ## [1.7.0] - 2026-02-19
 
 ### Added

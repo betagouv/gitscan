@@ -1,39 +1,58 @@
 ## Changelog : meet (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe de développement s'est concentrée sur l'amélioration de l'accessibilité, la sécurité et la performance de la plateforme Meet. Des correctifs de sécurité importants ont été implémentés, notamment pour prévenir les vulnérabilités XSS et renforcer la protection des API externes. L'expérience utilisateur a également été améliorée grâce à des ajustements d'accessibilité pour les utilisateurs ayant des besoins spécifiques, ainsi que des optimisations de performance au niveau de l'administration et des requêtes. De plus, des améliorations ont été apportées au déploiement sur des plateformes PaaS comme Scalingo.
+Les dernières mises à jour de Meet se concentrent sur la sécurité, l'amélioration de l'accessibilité et l'optimisation des performances. Des correctifs de sécurité importants ont été implémentés, notamment des mises à jour de bibliothèques vulnérables et des améliorations de la validation des API. L'accessibilité a été renforcée grâce à des améliorations pour les lecteurs d'écran et des ajustements pour les utilisateurs ayant des besoins spécifiques. Enfin, des optimisations ont été apportées à l'interface d'administration et à la gestion des enregistrements pour améliorer la réactivité et l'efficacité.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers l'application Windows via le web (#976)
+- Ajout d'un lien configurable pour rediriger les utilisateurs non authentifiés vers une page externe (#976).
+- Amélioration de l'accessibilité avec l'ajout d'annonces pour les lecteurs d'écran lors de l'épinglage/désépinglage de participants (#922, #908).
+- Ajout d'un lien cliquable vers les paramètres généraux dans le modal d'inactivité (#974).
+- Amélioration des annonces pour les effets d'arrière-plan pour les lecteurs d'écran.
 - Ajout de raccourcis clavier supplémentaires pour améliorer l'accessibilité.
-- Ajout d'un lien cliquable vers les paramètres généraux dans la fenêtre d'inactivité (#974)
-- Possibilité de rediriger les utilisateurs non authentifiés vers une URL externe configurable (#904)
-- Documentation du déploiement sur Scalingo (#957)
-- Ajout de la prise en charge des annonces pour les actions d'épinglage/désépinglage de participants pour les lecteurs d'écran.
-- Amélioration des annonces pour le minuteur de déconnexion d'inactivité.
+- Correction d'une vulnérabilité XSS sur la page d'enregistrement (#911).
 
 ### Évolutions techniques
-- Mise à jour de Django pour corriger plusieurs vulnérabilités de sécurité critiques (#954)
-- Refactorisation de la vue d'ensemble de l'application pour utiliser un ViewSet de base.
-- Amélioration de la performance des requêtes dans l'interface d'administration pour les enregistrements.
-- Optimisation de la sélection des salles dans la vue d'administration des enregistrements.
+- Mise à jour de Django pour corriger plusieurs vulnérabilités de sécurité critiques (#954).
+- Mise à jour d'OpenSSL dans les agents pour corriger une vulnérabilité (CVE-2025-15467).
+- Épingle de la version de Protobuf à 6.33.5 pour corriger une vulnérabilité (CVE-2026-0994).
+- Refactorisation de la classe ApplicationViewSet pour utiliser un ViewSet de base.
+- Optimisation des requêtes dans la vue d'administration des enregistrements en sélectionnant la salle au niveau SQL.
+- Amélioration des performances de l'administration Django en préchargeant l'accès utilisateur.
+- Utilisation d'une image de base Alpine pour améliorer la sécurité et réduire la taille des images.
+- Suppression de `pip` des images de production pour réduire les risques de sécurité.
+- Ajout de scripts de déploiement PaaS, testés sur Scalingo (#957).
+- Standardisation de la récupération de la variable d'environnement `DATABASE_URL` (#957).
+- Ajout de la possibilité de remplacer le logo personnalisé sur Scalingo (#957).
+- Activation temporaire de la suppression de l'étape de scan Trivy pour l'image backend.
+- Amélioration de la gestion des autorisations au niveau des objets dans l'endpoint des salles.
+- Amélioration de la logique de suppression des préfixes de portée.
 - Ajout de tests pour exposer un défaut de permission dans l'API externe.
-- Renforcement des contrôles de permission au niveau des objets pour l'endpoint des salles.
-- Activation temporaire de la vérification de vulnérabilités Trivy pour l'image backend.
-- Ajout de scripts de déploiement pour les plateformes PaaS, testés sur Scalingo.
-- Amélioration de la gestion des scopes pour l'API externe.
-- Ajout de la surveillance des échecs de limitation de débit via Sentry (#964)
-- Extraction des classes de limitation de débit dans un module dédié.
+- Renforcement de la couverture des tests pour le ViewSet de l'API externe.
+- Ajout de la surveillance des échecs de limitation du débit via Sentry.
+- Extraction des classes de limitation du débit dans un module.
+- Mise à jour des dépendances JavaScript (#976).
+- Mise à jour de Prettier (#976).
+- Mise à jour des étapes du workflow GitHub Actions.
 
 ### Autres changements
+- Correction d'une faute de frappe dans le nom d'une variable d'environnement buildpack.
+- Mise à jour de la documentation pour inclure un exemple de génération de clé API.
 - Correction de la documentation pour les variables d'environnement Docker Compose.
-- Correction d'une erreur dans le rendu GitHub de la documentation Docker Compose.
+- Ajout d'une mention du déploiement à grande échelle par l'État français dans le README.
+- Mise à jour du lien vers les variables d'environnement dans la documentation.
+- Mise à jour du changelog avec les changements récents.
+- Correction d'un problème d'indentation dans le fichier Tilt.
+- Ajout de tests pour les notifications.
+- Ajout de la configuration des webhooks LiveKit dans la pile Docker Compose locale.
 - Mise à jour des termes juridiques.
-- Ajout d'un exemple de génération de clé API en utilisant OpenSSL.
-- Correction d'une erreur de casse dans une variable d'environnement Docker.
-- Ajout d'une mention du déploiement à l'échelle de l'État français dans le README.
-- Correction d'un bug dans les tests de notification suite à un changement de variable d'environnement.
-- Ajout de traductions allemandes manquantes pour les paramètres d'accessibilité.
-- Correction d'un bug d'ordre des segments de transcription.
-- Amélioration de la gestion des exceptions liées aux fichiers lors de la manipulation des enregistrements.
-- Mise à jour de la documentation pour corriger un lien vers les variables d'environnement.
+- Centralisation des raccourcis dans un catalogue.
+- Support des touches Shift et Alt lors de la création de raccourcis.
+- Documentation du déploiement Scalingo.
+- Ajout de l'annonceur générique de lecteur d'écran.
+- Amélioration des styles du spinner.
+- Correction des étiquettes de formulaire et du câblage de l'autocomplétion pour l'accessibilité.
+- Amélioration du contraste pour les options sélectionnées.
+- Annonce de l'état de copie dans la boîte de dialogue d'invitation.
+- Alignement de l'étiquette de fermeture de la boîte de dialogue dans la locale des salles.
+- Correction de la documentation pour l'utilisation de `mkdir`.
+- Correction de la variable d'environnement incorrecte dans Docker.
