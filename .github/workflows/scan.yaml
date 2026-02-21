@@ -87,8 +87,11 @@ jobs:
               run: |
                   pwd
                   echo "${{ matrix.sites.url }}"
-                  ./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}" > ./repos/"${{ matrix.sites.full_name }}"/overview.json
-                  ./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.md
+                  overview_content=$(./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}")
+                  [ -n "$overview_content" ] && echo "$overview_content" > ./repos/"${{ matrix.sites.full_name }}"/overview.json
+
+                  changelog_content=$(./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}")
+                  [ -n "$changelog_content" ] && echo "$changelog_content" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.md
 
             - name: Commit changes
               run: |
