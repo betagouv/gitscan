@@ -1,65 +1,70 @@
 {
   "url": "https://github.com/suitenumerique/st-deploycenter",
   "name": "st-deploycenter",
-  "description": "Ce projet aide les opérateurs d'instances de La Suite territoriale à configurer les services et les rôles pour chaque organisation qu'ils gèrent.",
+  "description": "Ce projet permet aux opérateurs de La Suite territoriale de configurer les services et les rôles pour chaque organisation qu'ils gèrent.",
   "language": "Python",
   "features": [
-    "Gestion des comptes utilisateurs",
+    "Gestion des comptes",
     "Gestion des organisations",
     "Import de données",
     "Gestion des rôles",
+    "Authentification",
     "Gestion des services"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "React",
-    "PostgreSQL",
-    "Redis",
+    "Django REST Framework",
     "Celery",
-    "Keycloak"
+    "Redis",
+    "PostgreSQL",
+    "Mozilla OIDC",
+    "React",
+    "Next.js",
+    "i18next"
   ],
   "components": [
+    "Backend Django REST API",
     "Frontend React",
-    "API REST Django",
     "Base de données PostgreSQL",
     "Keycloak (Identity Provider)",
-    "Celery (Task Queue)"
+    "Celery (Task Queue)",
+    "Redis (Cache)"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
   "tests": [
-    "Pytest",
-    "Jest"
+    "pytest",
+    "jest"
   ],
   "workflows": [
     "tests.yml"
   ],
-  "lastActivity": "2026-02-16T16:16:01+01:00",
+  "lastActivity": "2026-02-19T21:41:56+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
-    "forks": 2,
+    "stars": 7,
+    "forks": 3,
     "contributors": null,
-    "openIssues": 5
+    "openIssues": 4
   },
   "tags": [
     "Python",
     "Django",
     "React",
-    "Keycloak",
     "La Suite Territoriale",
-    "Deployment",
-    "Administration"
+    "API",
+    "Frontend",
+    "Backend",
+    "Keycloak"
   ]
 }
