@@ -1,39 +1,50 @@
 ## Changelog : api-engagement (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par des améliorations de l'accessibilité, des corrections de bugs et des optimisations de performance sur l'ensemble de l'application, incluant l'API, le tableau de bord et les widgets. Des refactorings importants ont été effectués pour simplifier l'architecture et améliorer la maintenance du code. Des mises à jour de dépendances ont également été réalisées pour assurer la sécurité et la stabilité du projet.
+Cette période a été marquée par une amélioration significative de la stabilité et de la performance de l'API et des applications associées. Des corrections de bugs ont été apportées pour améliorer l'expérience utilisateur, notamment en matière d'accessibilité et de gestion des missions. Des refactorings importants ont été réalisés pour optimiser le code et préparer l'infrastructure pour l'avenir, notamment en passant à Node 24 et en améliorant la gestion des index de la base de données.
 
 ### Évolutions fonctionnelles
 
-- Ajout d'un identifiant de publisher comme préfixe d'URL (#807)
-- Ajout de l'adresse de la mission dans les informations de modération (#784)
-- Amélioration de la gestion des missions et de la modération dans le tableau de bord (plusieurs commits)
-- Correction d'un bug empêchant la déconnexion pour l'utilisateur "my-missions" (#799)
-- Ajout de la possibilité d'ajouter des attributs personnalisés dans l'écran de suivi en temps réel (#704)
-- Amélioration de la gestion des états de modération en batch (#703, #702)
-- Correction d'un problème d'affichage des noms de villes et d'organisations dans les widgets (#759)
-- Ajout d'un logger pour les widgets (#775)
+- Ajout d'un bouton "événements en direct" sur les listes de campagnes et de widgets (#809).
+- Amélioration de l'accessibilité avec l'utilisation d'éléments de bouton sémantiques (#771).
+- Ajout de l'ID de l'éditeur comme préfixe d'URL (#807).
+- Affichage de l'adresse de la mission lors de la modération (#814).
+- Correction d'un bug empêchant le refus automatique des missions en modération (#813).
+- Correction de l'affichage des organisations dans l'application (#778).
+- Amélioration de la gestion des missions désactivées et réactivées (#783).
+- Correction d'un bug de déconnexion pour l'utilisateur "my-missions" (#799).
+- Ajout de la possibilité de définir la taille maximale de l'espace mémoire pour le widget (#794).
+- Correction de l'affichage du nom de la ville et de l'organisation dans le widget (#761).
 
 ### Évolutions techniques
 
-- Passage à Node.js version 24 (#802)
-- Refactoring de la logique d'agrégation des widgets (#790)
-- Refactoring de l'implémentation des recherches dans l'API pour optimiser les performances (#806, #788)
-- Migration des activités de mission vers une table de jointure N-N (#757)
-- Suppression de l'utilisation de MongoDB (#761)
-- Ajout de tests d'intégration pour les endpoints des widgets (#750)
-- Amélioration de la gestion des erreurs et ajout de rapports Sentry (plusieurs commits)
-- Refactoring de la configuration des conteneurs de widgets (#786)
-- Ajout d'un request-id header avec support Sentry (#780)
-- Ajout de workflows Claude pour la revue de code (#717)
-- Mise à jour de plusieurs dépendances (Express, Next.js, @types/node, @sentry/cli, etc.)
+- Mise à jour de Node.js vers la version 24 (#802).
+- Refactorisation de la logique d'agrégation des widgets (#790).
+- Amélioration de la gestion des exceptions et ajout de logs Sentry (#797).
+- Ajout d'un middleware dédié pour l'analyse des requêtes (#800).
+- Ajout d'un index partiel sur la table `mission` pour optimiser les requêtes de recherche géographique (#806).
+- Refactorisation des modèles d'analyse (#751, #782).
+- Migration des activités de mission vers une table de jointure N-N (#757).
+- Suppression de l'utilisation de MongoDB (#761).
+- Amélioration de la gestion des requêtes de recherche avec `ilike` (#788).
+- Ajout de tests d'intégration pour les endpoints du widget (#750).
+- Ajout d'un header `request-id` avec support Sentry (#780).
+- Amélioration de la configuration des conteneurs du widget (#786).
+- Ajout de tracing pour le widget dans Sentry (#756).
+- Refactorisation de la gestion des règles de recherche optimisées (#782).
+- Ajout de migrations Prisma pendant le workflow CI (#804).
+- Correction d'un problème de mismatch du client Prisma (#801).
 
 ### Autres changements
 
-- Amélioration de l'accessibilité de l'application avec l'utilisation de composants Headless UI conformes RGAA (plusieurs commits)
-- Ajout de tests E2E pour le SDK jstag.js (#715)
-- Amélioration des logs et du monitoring (plusieurs commits)
-- Suppression de jobs et modèles analytics obsolètes (#706, #681)
-- Mise à jour de la documentation et du fichier CHANGELOG.md (plusieurs commits)
-- Correction de problèmes de performance dans le tableau de bord (#753)
-- Correction de problèmes de configuration de l'environnement Metabase (#708)
+- Mise à jour des dépendances (express, @types/express, next, @sentry/cli, @next/eslint-plugin-next, etc.).
+- Amélioration des logs et instrumentation du widget (#792).
+- Suppression de la tâche `letudiant` (#210e6e4).
+- Ajout d'alias pour simplifier les imports (#2bdc525).
+- Suppression de messages Sentry inutiles (#729).
+- Correction de l'optimisation des images dans le widget (#793).
+- Suppression de vues matérielles obsolètes (#772).
+- Ajout de workflows Claude pour la revue de code (#717).
+- Mise à jour de la librairie `react-datepicker` (#728).
+- Amélioration de la gestion des erreurs dans les jobs (#790).
+- Ajout de tests E2E pour le SDK jstag.js (#715).
