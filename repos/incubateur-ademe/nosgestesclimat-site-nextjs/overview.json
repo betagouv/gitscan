@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/incubateur-ademe/nosgestesclimat-site-nextjs",
   "name": "nosgestesclimat-site-nextjs",
-  "description": "Ce site web permet de calculer l'empreinte climat individuelle d'une personne sur une année, en utilisant le modèle nosgestesclimat. Il vise à sensibiliser et à aider les utilisateurs à réduire leur impact environnemental.",
+  "description": "Ce site web permet de calculer l'empreinte climat individuelle d'une personne en utilisant le modèle nosgestesclimat. Il vise à sensibiliser et à aider les utilisateurs à réduire leur impact environnemental.",
   "language": "TypeScript",
   "features": [
     "Calculateur d'empreinte carbone",
-    "Questionnaires interactifs",
+    "Questionnaire personnalisé",
     "Visualisation des résultats",
-    "Comptes utilisateurs",
-    "Suivi des actions",
-    "Simulations"
+    "Suggestions d'actions",
+    "Comptes utilisateurs"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -18,36 +17,29 @@
     "React",
     "TailwindCSS",
     "@incubateur-ademe/nosgestesclimat",
-    "PostHog",
     "Cypress",
-    "Playwright"
+    "PostHog"
   ],
   "components": [
     "Frontend React",
-    "API (via Next.js)",
+    "API (via NextJS)",
     "Calculateur d'empreinte carbone (modèle nosgestesclimat)",
-    "Base de données (implicite via l'utilisation de simulations et comptes utilisateurs)"
+    "Interface utilisateur (TailwindCSS)"
   ],
   "auth": {
     "methods": [
       "email-password"
-    ]
+    ],
+    "providers": null
   },
   "tests": [
-    "Cypress",
-    "Vitest",
-    "Playwright"
+    "Cypress (tests end-to-end)",
+    "Vitest"
   ],
   "workflows": [
-    "check-links-validity",
-    "create-release-note",
-    "deploy",
-    "e2e",
-    "generate-pr-comment",
-    "storybook",
-    "tests"
+    "CI/CD (via GitHub Actions - non spécifié dans les données)"
   ],
-  "lastActivity": "2026-02-18T19:42:05+01:00",
+  "lastActivity": "2026-02-20T11:22:22Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,14 +47,14 @@
     "stars": 6,
     "forks": 13,
     "contributors": null,
-    "openIssues": 12
+    "openIssues": 9
   },
   "tags": [
     "empreinte carbone",
     "climat",
     "environnement",
     "calculateur",
-    "Next.js",
+    "NextJS",
     "TypeScript",
     "React",
     "développement durable"
