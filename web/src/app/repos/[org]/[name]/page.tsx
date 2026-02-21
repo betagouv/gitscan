@@ -374,16 +374,17 @@ export default async function RepoDetailPage({ params }: PageProps) {
                     <dd className="text-slate-900">{repo.tests.join(", ")}</dd>
                   </div>
                 )}
-              {repo.workflows &&
+              {(repo.workflows &&
                 repo.workflows.length > 0 &&
-                repo.workflows.join(
+                repo.workflows.join && (
                   <div>
                     <dt className="text-slate-500 mb-1">CI/CD</dt>
                     <dd className="text-slate-900">
                       {repo.workflows.join(", ")}
                     </dd>
-                  </div>,
-                )}
+                  </div>
+                )) ||
+                null}
             </dl>
           </div>
         </div>
