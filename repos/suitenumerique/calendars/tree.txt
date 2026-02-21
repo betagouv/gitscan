@@ -1,0 +1,503 @@
+.
+├── .cursor
+│   └── rules
+│       └── django-python.mdc
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── calendars-frontend.yml
+│       ├── calendars.yml
+│       ├── crowdin_download.yml
+│       ├── crowdin_upload.yml
+│       ├── docker-hub.yml
+│       └── front-dependencies-installation.yml
+├── .gitignore
+├── .gitlint
+├── AGENTS.md
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── IMPLEMENTATION_CHECKLIST.md
+├── LICENSE
+├── Makefile
+├── Procfile
+├── README.md
+├── README_RECURRENCE.md
+├── RECURRENCE_EXAMPLES.md
+├── RECURRENCE_IMPLEMENTATION.md
+├── RECURRENCE_SUMMARY.md
+├── SCHEDULER_RECURRENCE_INTEGRATION.md
+├── SECURITY.md
+├── bin
+│   ├── _config.sh
+│   ├── clear_db_e2e.sql
+│   ├── compose
+│   ├── export_pg_vars.sh
+│   ├── fernetkey
+│   ├── manage
+│   ├── postgres_e2e
+│   ├── pylint
+│   ├── pytest
+│   ├── scalingo_postcompile
+│   ├── scalingo_postfrontend
+│   ├── scalingo_run_web
+│   ├── update_app_cacert.sh
+│   └── update_openapi_schema
+├── compose.yaml
+├── cron.json
+├── docker
+│   ├── auth
+│   │   └── realm.json
+│   ├── files
+│   │   ├── development
+│   │   │   └── etc
+│   │   │       └── nginx
+│   │   │           └── conf.d
+│   │   │               └── default.conf
+│   │   ├── docker-entrypoint-initdb.d
+│   │   │   └── init-databases.sh
+│   │   └── etc
+│   │       └── nginx
+│   │           └── conf.d
+│   │               └── default.conf
+│   ├── postgresql
+│   │   └── init-databases.sh
+│   └── sabredav
+│       ├── Dockerfile
+│       ├── composer.json
+│       ├── init-database.sh
+│       ├── php-fpm.conf
+│       ├── sabredav.conf
+│       ├── server.php
+│       ├── sql
+│       │   ├── pgsql.addressbooks.sql
+│       │   ├── pgsql.calendars.sql
+│       │   ├── pgsql.locks.sql
+│       │   ├── pgsql.principals.sql
+│       │   ├── pgsql.propertystorage.sql
+│       │   └── pgsql.users.sql
+│       └── src
+│           ├── ApiKeyAuthBackend.php
+│           ├── AttendeeNormalizerPlugin.php
+│           ├── AutoCreatePrincipalBackend.php
+│           ├── CalendarSanitizerPlugin.php
+│           ├── HttpCallbackIMipPlugin.php
+│           └── ICSImportPlugin.php
+├── docs
+│   ├── PR_SPLIT_PLAN.md
+│   └── architecture.md
+├── env.d
+│   └── development
+│       ├── backend.defaults
+│       ├── caldav.defaults
+│       ├── crowdin.defaults
+│       ├── frontend.defaults
+│       ├── keycloak.defaults
+│       ├── postgresql.defaults
+│       └── postgresql.e2e
+├── gitlint
+│   └── gitlint_emoji.py
+├── renovate.json
+└── src
+    ├── backend
+    │   ├── .dockerignore
+    │   ├── .pylintrc
+    │   ├── Dockerfile
+    │   ├── MANIFEST.in
+    │   ├── __init__.py
+    │   ├── calendars
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── configuration
+    │   │   │   └── theme
+    │   │   │       └── default.json
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── fields.py
+    │   │   │   ├── permissions.py
+    │   │   │   ├── serializers.py
+    │   │   │   ├── viewsets.py
+    │   │   │   ├── viewsets_caldav.py
+    │   │   │   ├── viewsets_ical.py
+    │   │   │   └── viewsets_rsvp.py
+    │   │   ├── apps.py
+    │   │   ├── authentication
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends.py
+    │   │   │   ├── exceptions.py
+    │   │   │   └── views.py
+    │   │   ├── enums.py
+    │   │   ├── external_api
+    │   │   │   ├── permissions.py
+    │   │   │   └── viewsets.py
+    │   │   ├── factories.py
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       └── createsuperuser.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   ├── 0002_calendarsubscriptiontoken.py
+    │   │   │   ├── 0003_calendarsubscriptiontoken_token_active_idx.py
+    │   │   │   ├── 0004_remove_calendarshare_calendar_and_more.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── services
+    │   │   │   ├── __init__.py
+    │   │   │   ├── caldav_service.py
+    │   │   │   ├── calendar_invitation_service.py
+    │   │   │   ├── import_service.py
+    │   │   │   └── translation_service.py
+    │   │   ├── signals.py
+    │   │   ├── templates
+    │   │   │   ├── emails
+    │   │   │   │   ├── calendar_invitation.html
+    │   │   │   │   ├── calendar_invitation.txt
+    │   │   │   │   ├── calendar_invitation_cancel.html
+    │   │   │   │   ├── calendar_invitation_cancel.txt
+    │   │   │   │   ├── calendar_invitation_reply.html
+    │   │   │   │   ├── calendar_invitation_reply.txt
+    │   │   │   │   ├── calendar_invitation_update.html
+    │   │   │   │   └── calendar_invitation_update.txt
+    │   │   │   └── rsvp
+    │   │   │       └── response.html
+    │   │   ├── templatetags
+    │   │   │   ├── __init__.py
+    │   │   │   └── extra_tags.py
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── authentication
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_backends.py
+    │   │   │   │   └── test_views.py
+    │   │   │   ├── conftest.py
+    │   │   │   ├── external_api
+    │   │   │   │   └── test_external_api_users.py
+    │   │   │   ├── swagger
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_api_config.py
+    │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_caldav_proxy.py
+    │   │   │   ├── test_caldav_scheduling.py
+    │   │   │   ├── test_caldav_service.py
+    │   │   │   ├── test_calendar_invitation_service.py
+    │   │   │   ├── test_calendar_subscription_api.py
+    │   │   │   ├── test_ical_export.py
+    │   │   │   ├── test_import_events.py
+    │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_rsvp.py
+    │   │   │   ├── test_settings.py
+    │   │   │   ├── test_translation_service.py
+    │   │   │   └── utils
+    │   │   │       └── urls.py
+    │   │   └── urls.py
+    │   ├── e2e
+    │   │   ├── __init__.py
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   │       └── __init__.py
+    │   │   ├── serializers.py
+    │   │   ├── tests
+    │   │   │   └── test_api_e2e.py
+    │   │   ├── urls.py
+    │   │   ├── utils.py
+    │   │   └── viewsets.py
+    │   ├── entrypoint
+    │   ├── gunicorn.conf.py
+    │   ├── locale
+    │   │   ├── de_DE
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   ├── en_US
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   ├── fr_FR
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   └── nl_NL
+    │   │       └── LC_MESSAGES
+    │   │           └── django.po
+    │   ├── manage.py
+    │   ├── pyproject.toml
+    │   └── uv.lock
+    ├── frontend
+    │   ├── .dockerignore
+    │   ├── Dockerfile
+    │   ├── Dockerfile.nginx
+    │   ├── apps
+    │   │   ├── calendars
+    │   │   │   ├── .env
+    │   │   │   ├── .env.development
+    │   │   │   ├── .gitignore
+    │   │   │   ├── README.md
+    │   │   │   ├── __mocks__
+    │   │   │   │   └── fileMock.js
+    │   │   │   ├── conf
+    │   │   │   │   └── default.conf
+    │   │   │   ├── cunningham.ts
+    │   │   │   ├── eslint.config.mjs
+    │   │   │   ├── jest.config.ts
+    │   │   │   ├── next.config.ts
+    │   │   │   ├── package.json
+    │   │   │   ├── public
+    │   │   │   │   ├── assets
+    │   │   │   │   │   ├── 401-background.png
+    │   │   │   │   │   ├── 403-background.png
+    │   │   │   │   │   ├── anct_favicon.png
+    │   │   │   │   │   ├── anct_logo-icon.svg
+    │   │   │   │   │   ├── anct_logo_alpha.svg
+    │   │   │   │   │   ├── anct_logo_beta.svg
+    │   │   │   │   │   ├── cal_icon_no_number.svg
+    │   │   │   │   │   ├── cal_logotype_text_no_number.svg
+    │   │   │   │   │   ├── favicon.png
+    │   │   │   │   │   ├── logo-icon_alpha.svg
+    │   │   │   │   │   ├── logo-icon_beta.svg
+    │   │   │   │   │   ├── logo-suite-numerique.png
+    │   │   │   │   │   └── logo_alpha.svg
+    │   │   │   │   └── mime-video.svg
+    │   │   │   ├── src
+    │   │   │   │   ├── assets
+    │   │   │   │   │   ├── feedback
+    │   │   │   │   │   │   ├── form.svg
+    │   │   │   │   │   │   ├── tchap.svg
+    │   │   │   │   │   │   └── visio.svg
+    │   │   │   │   │   ├── home
+    │   │   │   │   │   │   └── banner.png
+    │   │   │   │   │   ├── icons
+    │   │   │   │   │   │   ├── cancel.svg
+    │   │   │   │   │   │   ├── cancel_blue.svg
+    │   │   │   │   │   │   ├── delete_filled.svg
+    │   │   │   │   │   │   ├── info.svg
+    │   │   │   │   │   │   ├── settings.svg
+    │   │   │   │   │   │   ├── trash.svg
+    │   │   │   │   │   │   ├── undo.svg
+    │   │   │   │   │   │   └── undo_blue.svg
+    │   │   │   │   │   ├── logo-gouv.svg
+    │   │   │   │   │   └── logo-icon.svg
+    │   │   │   │   ├── features
+    │   │   │   │   │   ├── analytics
+    │   │   │   │   │   │   └── AnalyticsProvider.tsx
+    │   │   │   │   │   ├── api
+    │   │   │   │   │   │   ├── APIError.ts
+    │   │   │   │   │   │   ├── fetchApi.ts
+    │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── auth
+    │   │   │   │   │   │   ├── Auth.tsx
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── LoginButton.tsx
+    │   │   │   │   │   │   │   └── LogoutButton.tsx
+    │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   ├── calendar
+    │   │   │   │   │   │   ├── api.ts
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── calendar-list
+    │   │   │   │   │   │   │   │   ├── CalendarItemMenu.tsx
+    │   │   │   │   │   │   │   │   ├── CalendarList.scss
+    │   │   │   │   │   │   │   │   ├── CalendarList.tsx
+    │   │   │   │   │   │   │   │   ├── CalendarListItem.tsx
+    │   │   │   │   │   │   │   │   ├── CalendarModal.tsx
+    │   │   │   │   │   │   │   │   ├── CalendarShareModal.tsx
+    │   │   │   │   │   │   │   │   ├── DeleteConfirmModal.tsx
+    │   │   │   │   │   │   │   │   ├── ImportEventsModal.tsx
+    │   │   │   │   │   │   │   │   ├── SubscriptionUrlModal.tsx
+    │   │   │   │   │   │   │   │   ├── constants.ts
+    │   │   │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   │   │   └── useCalendarListState.ts
+    │   │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   │   ├── left-panel
+    │   │   │   │   │   │   │   │   ├── LeftPanel.scss
+    │   │   │   │   │   │   │   │   ├── LeftPanel.tsx
+    │   │   │   │   │   │   │   │   ├── MiniCalendar.scss
+    │   │   │   │   │   │   │   │   ├── MiniCalendar.tsx
+    │   │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   │   └── scheduler
+    │   │   │   │   │   │   │       ├── AttendeesInput.scss
+    │   │   │   │   │   │   │       ├── AttendeesInput.tsx
+    │   │   │   │   │   │   │       ├── DeleteEventModal.tsx
+    │   │   │   │   │   │   │       ├── EventModal.scss
+    │   │   │   │   │   │   │       ├── EventModal.tsx
+    │   │   │   │   │   │   │       ├── RecurrenceEditor.scss
+    │   │   │   │   │   │   │       ├── RecurrenceEditor.tsx
+    │   │   │   │   │   │   │       ├── Scheduler.scss
+    │   │   │   │   │   │   │       ├── Scheduler.tsx
+    │   │   │   │   │   │   │       ├── SchedulerToolbar.scss
+    │   │   │   │   │   │   │       ├── SchedulerToolbar.tsx
+    │   │   │   │   │   │   │       ├── event-modal-sections
+    │   │   │   │   │   │   │       │   ├── AttachmentsSection.tsx
+    │   │   │   │   │   │   │       │   ├── AttendeesSection.tsx
+    │   │   │   │   │   │   │       │   ├── DateTimeSection.tsx
+    │   │   │   │   │   │   │       │   ├── DescriptionSection.tsx
+    │   │   │   │   │   │   │       │   ├── InvitationResponseSection.scss
+    │   │   │   │   │   │   │       │   ├── InvitationResponseSection.tsx
+    │   │   │   │   │   │   │       │   ├── LocationSection.tsx
+    │   │   │   │   │   │   │       │   ├── RecurrenceSection.tsx
+    │   │   │   │   │   │   │       │   ├── RemindersSection.tsx
+    │   │   │   │   │   │   │       │   ├── SectionPill.scss
+    │   │   │   │   │   │   │       │   ├── SectionPill.tsx
+    │   │   │   │   │   │   │       │   ├── SectionPills.tsx
+    │   │   │   │   │   │   │       │   ├── SectionRow.scss
+    │   │   │   │   │   │   │       │   ├── SectionRow.tsx
+    │   │   │   │   │   │   │       │   ├── StatusSection.tsx
+    │   │   │   │   │   │   │       │   ├── VideoConferenceSection.tsx
+    │   │   │   │   │   │   │       │   ├── __tests__
+    │   │   │   │   │   │   │       │   │   └── generateVisioRoomId.test.ts
+    │   │   │   │   │   │   │       │   └── generateVisioRoomId.ts
+    │   │   │   │   │   │   │       ├── hooks
+    │   │   │   │   │   │   │       │   ├── useEventForm.ts
+    │   │   │   │   │   │   │       │   ├── useSchedulerHandlers.ts
+    │   │   │   │   │   │   │       │   └── useSchedulerInit.ts
+    │   │   │   │   │   │   │       ├── index.ts
+    │   │   │   │   │   │   │       ├── scheduler-theme.scss
+    │   │   │   │   │   │   │       ├── types.ts
+    │   │   │   │   │   │   │       └── utils
+    │   │   │   │   │   │   │           ├── dateFormatters.ts
+    │   │   │   │   │   │   │           ├── eventContent.ts
+    │   │   │   │   │   │   │           └── eventDisplayRules.ts
+    │   │   │   │   │   │   ├── contexts
+    │   │   │   │   │   │   │   ├── CalendarContext.tsx
+    │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   │   ├── useCalendarLocale.ts
+    │   │   │   │   │   │   │   └── useCalendars.ts
+    │   │   │   │   │   │   ├── services
+    │   │   │   │   │   │   │   └── dav
+    │   │   │   │   │   │   │       ├── CalDavService.ts
+    │   │   │   │   │   │   │       ├── EventCalendarAdapter.ts
+    │   │   │   │   │   │   │       ├── VCardComponent.ts
+    │   │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │   │       │   ├── caldav-helpers.test.ts
+    │   │   │   │   │   │   │       │   ├── event-calendar-helper.test.ts
+    │   │   │   │   │   │   │       │   ├── ics-helper.test.ts
+    │   │   │   │   │   │   │       │   └── timezone-conversion.test.ts
+    │   │   │   │   │   │   │       ├── caldav-helpers.ts
+    │   │   │   │   │   │   │       ├── constants.ts
+    │   │   │   │   │   │   │       ├── helpers
+    │   │   │   │   │   │   │       │   ├── dav-helper.ts
+    │   │   │   │   │   │   │       │   ├── event-calendar-helper.ts
+    │   │   │   │   │   │   │       │   ├── ical-timezones.ts
+    │   │   │   │   │   │   │       │   ├── ics-helper.ts
+    │   │   │   │   │   │   │       │   ├── index.ts
+    │   │   │   │   │   │   │       │   └── types-helper.ts
+    │   │   │   │   │   │   │       └── types
+    │   │   │   │   │   │   │           ├── addressbook.ts
+    │   │   │   │   │   │   │           ├── caldav-service.ts
+    │   │   │   │   │   │   │           ├── calendar.ts
+    │   │   │   │   │   │   │           ├── event-calendar.ts
+    │   │   │   │   │   │   │           └── options.ts
+    │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   └── utils
+    │   │   │   │   │   │       └── DavClient.ts
+    │   │   │   │   │   ├── config
+    │   │   │   │   │   │   ├── Config.ts
+    │   │   │   │   │   │   ├── ConfigProvider.tsx
+    │   │   │   │   │   │   └── useApiConfig.ts
+    │   │   │   │   │   ├── errors
+    │   │   │   │   │   │   └── AppError.ts
+    │   │   │   │   │   ├── feedback
+    │   │   │   │   │   │   ├── Feedback.scss
+    │   │   │   │   │   │   ├── Feedback.tsx
+    │   │   │   │   │   │   └── useMessagesWidget.tsx
+    │   │   │   │   │   ├── i18n
+    │   │   │   │   │   │   ├── conf.ts
+    │   │   │   │   │   │   ├── initI18n.ts
+    │   │   │   │   │   │   ├── translations.json
+    │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── layouts
+    │   │   │   │   │   │   └── components
+    │   │   │   │   │   │       ├── global
+    │   │   │   │   │   │       │   ├── GlobalLayout.scss
+    │   │   │   │   │   │       │   └── GlobalLayout.tsx
+    │   │   │   │   │   │       ├── header
+    │   │   │   │   │   │       │   ├── Header.tsx
+    │   │   │   │   │   │       │   └── index.scss
+    │   │   │   │   │   │       ├── left-panel
+    │   │   │   │   │   │       │   ├── LeftPanelMobile.scss
+    │   │   │   │   │   │       │   └── LeftPanelMobile.tsx
+    │   │   │   │   │   │       └── simple
+    │   │   │   │   │   │           └── SimpleLayout.tsx
+    │   │   │   │   │   ├── ui
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── gaufre
+    │   │   │   │   │   │   │   │   └── Gaufre.tsx
+    │   │   │   │   │   │   │   ├── generic-disclaimer
+    │   │   │   │   │   │   │   │   ├── GenericDisclaimer.scss
+    │   │   │   │   │   │   │   │   └── GenericDisclaimer.tsx
+    │   │   │   │   │   │   │   ├── icon
+    │   │   │   │   │   │   │   │   └── Icon.tsx
+    │   │   │   │   │   │   │   ├── logo
+    │   │   │   │   │   │   │   │   ├── DynamicCalendarLogo.scss
+    │   │   │   │   │   │   │   │   ├── DynamicCalendarLogo.tsx
+    │   │   │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   │   │   ├── spinner
+    │   │   │   │   │   │   │   │   ├── SpinnerPage.scss
+    │   │   │   │   │   │   │   │   └── SpinnerPage.tsx
+    │   │   │   │   │   │   │   ├── toaster
+    │   │   │   │   │   │   │   │   ├── Toaster.tsx
+    │   │   │   │   │   │   │   │   └── index.scss
+    │   │   │   │   │   │   │   └── user
+    │   │   │   │   │   │   │       └── UserProfile.tsx
+    │   │   │   │   │   │   ├── cunningham
+    │   │   │   │   │   │   │   └── useCunninghamTheme.ts
+    │   │   │   │   │   │   └── hooks
+    │   │   │   │   │   │       └── useDynamicFavicon.ts
+    │   │   │   │   │   └── users
+    │   │   │   │   │       ├── hooks
+    │   │   │   │   │       │   └── useUserQueries.tsx
+    │   │   │   │   │       └── types.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   └── useThemeCustomization.tsx
+    │   │   │   │   ├── pages
+    │   │   │   │   │   ├── 401.tsx
+    │   │   │   │   │   ├── 403.tsx
+    │   │   │   │   │   ├── _app.tsx
+    │   │   │   │   │   ├── _document.tsx
+    │   │   │   │   │   ├── calendar.scss
+    │   │   │   │   │   ├── calendar.tsx
+    │   │   │   │   │   ├── index.scss
+    │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── styles
+    │   │   │   │   │   ├── cunningham-tokens-sass.scss
+    │   │   │   │   │   ├── cunningham-tokens.css
+    │   │   │   │   │   ├── cunningham-tokens.ts
+    │   │   │   │   │   └── globals.scss
+    │   │   │   │   └── utils
+    │   │   │   │       └── useQueries.ts
+    │   │   │   ├── svg.d.ts
+    │   │   │   ├── tsconfig.json
+    │   │   │   └── types.d.ts
+    │   │   └── e2e
+    │   │       ├── .gitignore
+    │   │       ├── __tests__
+    │   │       │   ├── calendar-locale.test.ts
+    │   │       │   └── calendar.test.ts
+    │   │       ├── package.json
+    │   │       ├── playwright.config.ts
+    │   │       └── tsconfig.json
+    │   ├── docker
+    │   │   └── files
+    │   │       └── usr
+    │   │           └── local
+    │   │               └── bin
+    │   │                   └── entrypoint
+    │   ├── package.json
+    │   └── yarn.lock
+    └── nginx
+        └── servers.conf.erb
+131 directories, 371 files
