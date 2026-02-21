@@ -1,29 +1,26 @@
-## Changelog : code-du-travail-numerique (derniers 30 jours)
+## Changelog : code-du-travail-numerique (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, le projet a connu des améliorations significatives en termes d'accessibilité, de performance et de fonctionnalités. Des optimisations ont été apportées à la recherche, aux outils et à la page d'accueil. L'ajout de données structurées JSON-LD améliore la visibilité du site auprès des moteurs de recherche. De plus, une nouvelle page "Quoi de Neuf ?" a été implémentée pour faciliter la communication des mises à jour aux utilisateurs.
+Ce changelog présente les améliorations apportées au site code-du-travail-numerique au cours des 30 derniers jours. Les mises à jour incluent des améliorations de la recherche, des corrections de bugs sur les modèles de documents et les tests, ainsi que des améliorations de l'interface utilisateur et de l'accessibilité. De nouvelles fonctionnalités ont également été ajoutées, notamment des widgets et des informations JSON-LD pour améliorer le référencement.
 
 ### Évolutions fonctionnelles
-- La recherche utilise désormais par défaut la nouvelle version (v2) et bénéficie d'améliorations en matière d'accessibilité (#7077).
-- La page d'accueil a été améliorée (#7050).
-- Les outils ont été simplifiés avec la suppression des questions sans issue (#7079).
-- Une nouvelle page "Quoi de Neuf ?" permet aux administrateurs de publier des mises à jour (#7048).
-- Ajout d'un message dans Mattermost après chaque publication (#7080).
-- Le layout des modèles de courrier a été mis à jour (#7072).
-- Ajout du `naf` et des redirections `idcc` dans le package partagé (#7075).
-- Ajout du contenu de décembre 2025 à la page "Quoi de Neuf ?" (#7052).
+- **Recherche :** Amélioration de la recherche, notamment en utilisant la version 2 par défaut et en améliorant l'accessibilité (#7061, #7077, #7107, #7115).
+- **Modèles de documents :** Correction de la gestion des listes et des informations dans la page des modèles de documents (#7117).
+- **Page d'accueil :** Changement de l'interface utilisateur dans la section des modèles et ajout de nouvelles icônes pour les thèmes (#7093, #7094).
+- **Outils :** Suppression des questions "cul de sac" dans les outils, améliorant l'expérience utilisateur (#7079).
+- **Thèmes :** Nouveau design des pages thèmes (#7073).
+- **Intégration de widgets :** Ajout de widgets en mode legacy et de nouveaux widgets (#7096).
+- **JSON-LD :** Ajout du support pour les balises JSON-LD `GovernmentOrganization`, `Website`, `Breadcrumbs` et `Legislation` pour améliorer le référencement (#7071).
 
 ### Évolutions techniques
-- Ajout du support JSON-LD pour `GovernmentOrganization`, `Website`, `Breadcrumbs` et `Legislation` pour améliorer le référencement (#7071).
-- Mise en place d'un audit Lighthouse avec des URLs configurables et un CI manuel pour l'exécution (#7074).
-- Correction d'une erreur empêchant Next.js de fonctionner correctement en version 16.1 (#7064).
-- Mise à jour de React de `peerDep` à `devDep` (revert d'une modification précédente) (#7060).
-- Ajout des domaines nécessaires pour l'ouverture de liens externes dans l'outil brut/net pour résoudre un problème de CSP (#7070).
+- **Next.js :** Mise à jour vers la dernière version (#7095).
+- **CI/CD :** Ajout d'un CI manuel pour lancer des audits Lighthouse (#7074).
+- **Tests E2E :** Amélioration et correction des tests E2E pour assurer une couverture complète et une exécution réussie (#7111, #7114, #7078).
+- **Utilitaires partagés :** Ajout du `naf` et des redirections `idcc` dans le package partagé (#7075).
+- **Suppression :** Suppression du fichier de workflow d'analyse CodeQL.
 
 ### Autres changements
-- Correction de liens morts (#7067).
-- Amélioration de l'accessibilité suite à des retours utilisateurs (#7055).
-- Correction de la déclaration d'accessibilité suite à des modifications éditoriales (#7068).
-- Corrections sur les tests e2e de service public et indemnité licenciement (#7053).
-- Modification du wording sur les outils externes (#7054).
-- Fermeture de la popup de recherche lors du changement de lien (#7083).
+- **Mattermost :** Ajout d'un message dans Mattermost après une release (#7080).
+- **Accessibilité :** Amélioration de l'accessibilité de la popup de recherche (#7089).
+- **Redirections :** Suppression de la redirection pour les conventions collectives 1031 et 3203 (#7109).
+- **Corrections diverses :** Correction de la zone de clic sur "La hiérarchie des textes" (#7090) et fermeture de la popup de recherche lors du changement de lien (#7083).
