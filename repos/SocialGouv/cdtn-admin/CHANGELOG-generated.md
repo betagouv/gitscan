@@ -1,22 +1,21 @@
-## Changelog : cdtn-admin (derniers 30 jours)
+## Changelog : cdtn-admin (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à l'outil d'administration du Code du travail numérique au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de notifications Mattermost lors des déploiements en production et des nouvelles versions, des corrections de bugs liés à l'affichage des données et des améliorations de la gestion des thèmes et des outils disponibles.
+Ce changelog résume les améliorations apportées à l'outil d'administration du Code du travail numérique au cours du dernier mois. Les changements incluent des corrections de bugs pour améliorer la publication de contenu (conventions collectives, infographies, contributions, export), l'ajout de nouvelles fonctionnalités comme le suivi des NOTA dans les articles Kali, et l'ajout d'icônes pour les thèmes. Des améliorations ont également été apportées aux notifications envoyées sur Mattermost lors des déploiements.
 
 ### Évolutions fonctionnelles
-- Ajout d'un message de notification sur Mattermost après chaque nouvelle publication/release. (#1633)
-- Ajout de la page permettant aux administrateurs d'ajouter des éléments pour la section "Quoi de neuf". (#1620)
-- Ajout de l'outil externe "Mes démarches travail" à la liste des outils disponibles. (#1622)
-- Correction de l'affichage de la première information de la section "Quoi de neuf" lorsque celle-ci commence le 1er du mois. (#1626)
-- Correction de l'affichage des documents en double dans certains thèmes. (#1623)
+- Correction d'un bug empêchant la mise à jour des fichiers SVG ou PDF dans les infographies (#1639).
+- Correction d'un problème lors de la publication des conventions collectives (#1638).
+- Correction d'un bug lié au type de données lors de la publication d'une contribution.
+- Correction d'un bug lors de l'export des suggestions (#7107, #1641).
+- Ajout du suivi des NOTA dans les articles Kali (#1642).
+- Ajout de nouvelles icônes pour les thèmes (#1635).
+- Amélioration des messages de notification envoyés sur Mattermost lors des déploiements.
 
 ### Évolutions techniques
-- Modification de la génération des thèmes pour s'adapter au nouveau design. (#1628)
-- Modification des sauvegardes (backups) pour les environnements de pré-production et de développement. (#1625)
-- Correction de l'utilisation de `triplet` au lieu de `couple` dans les migrations. (#1631)
-- Amélioration des messages de notification de déploiement sur Mattermost pour plus de clarté.
-- Correction de l'URL du webhook Mattermost.
-- Correction du canal Mattermost utilisé pour les notifications de suivi de mise en production.
+- Ajout de notifications Mattermost lors des déploiements en production (#1630).
+- Modification de la génération des thèmes pour le nouveau design (#1628).
+- Correction d'un problème lié aux migrations et utilisation de `triplet` au lieu de `couple` (#1631).
 
 ### Autres changements
-- Configuration pour l'envoi de notifications sur Mattermost lors des déploiements en production. (#1630)
+- Mise en place des tests des widgets uniquement dans le projet `code-du-travail-numerique` (#1636).
