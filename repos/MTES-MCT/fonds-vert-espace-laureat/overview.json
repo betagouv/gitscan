@@ -1,37 +1,40 @@
 {
-  "url": "https://github.com/mtes-mct/fonds-vert-espace-laureat",
+  "url": "https://github.com/MTES-MCT/fonds-vert-espace-laureat",
   "name": "fonds-vert-espace-laureat",
-  "description": "Ce projet permet aux lauréats du Fonds Vert d'accéder à leurs dossiers de subvention et d'évaluation. Il s'interface avec plusieurs services externes pour centraliser les informations financières et les données des projets.",
+  "description": "Ce projet permet aux lauréats du Fonds Vert d'accéder à leurs dossiers de subvention et de suivre leur avancement. Il s'interface avec plusieurs services externes pour centraliser les informations et offrir une expérience utilisateur simplifiée.",
   "language": "TypeScript",
   "features": [
     "Gestion des dossiers de subvention",
-    "Visualisation des données financières",
+    "Suivi de l'état d'avancement des projets",
+    "Affichage des informations financières",
     "Authentification utilisateur",
-    "Suivi de l'impact des projets",
-    "Accès administrateur"
+    "Filtrage des dossiers par département",
+    "Mode administrateur"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "@codegouvfr/react-dsfr",
     "graphql",
     "graphql-request",
+    "iron-session",
     "next",
-    "react",
     "openid-client",
     "postcss",
+    "react",
     "tailwindcss"
   ],
   "components": [
     "Frontend React",
-    "API REST",
-    "Intégration avec ProConnect",
-    "Intégration avec Demarches Simplifiées",
-    "Intégration avec l'API Fonds Vert",
-    "Intégration avec Grist"
+    "API Next.js",
+    "Intégration avec ProConnect (authentification)",
+    "Intégration avec Demarches Simplifiées (dossiers)",
+    "Intégration avec l'API Fonds Vert (données financières)",
+    "Intégration avec Grist (mapping des données)"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -39,12 +42,12 @@
   },
   "tests": [
     "Playwright",
-    "MSW"
+    "MSW (Mock Service Worker)"
   ],
   "workflows": [
-    "playwright.yml"
+    "CI/CD avec GitHub Actions (playwright.yml)"
   ],
-  "lastActivity": "2026-01-28T19:24:27+01:00",
+  "lastActivity": "2026-02-19T20:09:48+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -60,6 +63,8 @@
     "Environnement",
     "React",
     "TypeScript",
+    "Next.js",
+    "Grist",
     "ProConnect",
     "Demarches Simplifiées"
   ]
