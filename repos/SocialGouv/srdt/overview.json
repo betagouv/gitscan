@@ -1,48 +1,43 @@
 {
   "url": "https://github.com/SocialGouv/srdt",
   "name": "srdt",
-  "description": "L'assistant virtuel SRDT a pour objectif de fournir des réponses précises et pertinentes aux questions des utilisateurs en se basant sur des sources d'informations officielles, notamment le Code du travail et les contributions.",
+  "description": "Assistant virtuel SRDT est un projet visant à fournir une assistance virtuelle, probablement dans le domaine du droit du travail, en utilisant des modèles de langage pour répondre aux questions des utilisateurs.",
   "language": "Python",
   "features": [
     "Recherche",
-    "Réponses basées sur des sources officielles",
-    "Accès aux informations du Code du travail",
-    "Accès aux contributions",
-    "Historique de chat",
-    "Authentification"
+    "Réponses aux questions",
+    "Accès à l'information juridique",
+    "Analyse de documents",
+    "Historique de chat"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "FastAPI",
-    "Uvicorn",
-    "asyncpg",
-    "pandas",
-    "langchain-text-splitters",
-    "tiktoken",
-    "elasticsearch",
-    "spacy",
-    "fr_core_news_md",
-    "sentry-sdk"
+    "Docker",
+    "Poetry",
+    "pnpm",
+    "Next.js",
+    "PostgreSQL",
+    "Elasticsearch",
+    "Tally"
   ],
   "components": [
-    "API Python",
-    "Frontend (JavaScript/TypeScript)",
+    "Frontend React",
+    "API REST (Python)",
     "Base de données PostgreSQL",
-    "Index Elasticsearch",
-    "Modèles de langage (LLM)"
+    "Indexation Elasticsearch",
+    "Modèles de langage (LLM)",
+    "Interface web"
   ],
   "auth": {
     "methods": [
       "email-password"
     ]
   },
-  "tests": [
-    "pyright",
-    "ruff",
-    "pre-commit"
+  "tests": "Pytest, pre-commit",
+  "workflows": [
+    "CI/CD"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-17T00:00:00",
+  "lastActivity": "2026-02-20T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,13 +48,13 @@
     "openIssues": null
   },
   "tags": [
-    "Code du travail",
-    "Assistant virtuel",
+    "assistant virtuel",
+    "droit du travail",
     "IA",
     "LLM",
-    "Recherche juridique",
-    "Administration",
+    "recherche d'information",
+    "Elasticsearch",
     "Python",
-    "Elasticsearch"
+    "React"
   ]
 }
