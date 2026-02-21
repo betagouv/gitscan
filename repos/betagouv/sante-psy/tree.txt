@@ -35,11 +35,14 @@
 │   ├── psyProfileController.ts
 │   ├── reactController.ts
 │   ├── statisticsController.ts
-│   ├── studentController.ts
+│   ├── studentNewsletterController.ts
+│   ├── studentSignInController.ts
+│   ├── studentsController.ts
 │   ├── testController.ts
 │   ├── universitiesController.ts
 │   └── validators
-│       └── patientValidators.ts
+│       ├── patientValidators.ts
+│       └── studentValidators.ts
 ├── cron_jobs
 │   ├── cron.ts
 │   ├── cronDemarchesSimplifiees.ts
@@ -57,6 +60,7 @@
 │   ├── psychologists.ts
 │   ├── statistics.ts
 │   ├── students.ts
+│   ├── studentsNewsletter.ts
 │   ├── suspensionReasons.ts
 │   ├── tables.ts
 │   └── universities.ts
@@ -105,6 +109,7 @@
 │   │   │   │   ├── crisp_closed_chat.svg
 │   │   │   │   ├── doctor.png
 │   │   │   │   ├── doctor_dm.png
+│   │   │   │   ├── file.svg
 │   │   │   │   ├── followup.png
 │   │   │   │   ├── followup_dm.png
 │   │   │   │   ├── human-cooperation.png
@@ -150,6 +155,13 @@
 │   │   │   │   ├── pass-sport.jpg
 │   │   │   │   ├── psycom-small.jpg
 │   │   │   │   └── psycom.png
+│   │   │   ├── studentSpace
+│   │   │   │   ├── acces-contenu.png
+│   │   │   │   ├── instaBanner.png
+│   │   │   │   ├── journal-humeur.png
+│   │   │   │   ├── mieux-t-orienter.png
+│   │   │   │   ├── student-space-history.png
+│   │   │   │   └── suivi-gestion-seances.png
 │   │   │   └── teleconsultation.png
 │   │   ├── scripts
 │   │   │   └── leaflet.js
@@ -174,7 +186,8 @@
 │   │   │   ├── faq.cy.js
 │   │   │   ├── header.cy.js
 │   │   │   ├── landing.cy.js
-│   │   │   ├── login.cy.js
+│   │   │   ├── loginPsy.cy.js
+│   │   │   ├── loginStudent.cy.js
 │   │   │   ├── patients.cy.js
 │   │   │   ├── profile.cy.js
 │   │   │   ├── psyListing.cy.js
@@ -204,6 +217,7 @@
 │   │   ├── App.css
 │   │   ├── App.jsx
 │   │   ├── PsychologistRouter.jsx
+│   │   ├── StudentRouter.jsx
 │   │   ├── colors.css
 │   │   ├── components
 │   │   │   ├── AccessibilityDeclaration
@@ -267,7 +281,7 @@
 │   │   │   │   ├── Statistic.jsx
 │   │   │   │   ├── Statistics.jsx
 │   │   │   │   ├── StudentCards.jsx
-│   │   │   │   ├── StudentLanding.jsx
+│   │   │   │   ├── StudentInfoLanding.jsx
 │   │   │   │   ├── StudentProcess.jsx
 │   │   │   │   ├── followInstagram.cssmodule.scss
 │   │   │   │   ├── newsletter.cssmodule.scss
@@ -305,10 +319,12 @@
 │   │   │   │   ├── FaqSection.jsx
 │   │   │   │   ├── Page.jsx
 │   │   │   │   ├── Section.jsx
+│   │   │   │   ├── StudentPage.jsx
 │   │   │   │   ├── UnderlinedTitle.jsx
 │   │   │   │   ├── faqsection.cssmodule.scss
 │   │   │   │   ├── page.cssmodule.scss
 │   │   │   │   ├── section.cssmodule.scss
+│   │   │   │   ├── studentPage.cssmodule.scss
 │   │   │   │   └── underlinedTitle.cssmodule.scss
 │   │   │   ├── Podcast
 │   │   │   │   ├── Podcast.jsx
@@ -377,11 +393,33 @@
 │   │   │   │   ├── MetabaseAppEmbed.jsx
 │   │   │   │   ├── Statistics.jsx
 │   │   │   │   └── statistics.cssmodule.scss
-│   │   │   ├── StudentAnswer
-│   │   │   │   ├── StudentAnswer.jsx
-│   │   │   │   └── studentAnswer.cssmodule.scss
-│   │   │   ├── StudentUnregister
-│   │   │   │   └── StudentUnregister.jsx
+│   │   │   ├── StudentNewsletterAnswer
+│   │   │   │   ├── StudentNewsletterAnswer.jsx
+│   │   │   │   └── studentNewsletterAnswer.cssmodule.scss
+│   │   │   ├── StudentNewsletterUnregister
+│   │   │   │   └── StudentNewsletterUnregister.jsx
+│   │   │   ├── StudentSpaceInfo
+│   │   │   │   ├── CardsBanner.jsx
+│   │   │   │   ├── InstagramBanner.jsx
+│   │   │   │   ├── StudentSpaceInfo.jsx
+│   │   │   │   ├── cardsBanner.cssmodule.scss
+│   │   │   │   ├── instaBanner.cssmodule.scss
+│   │   │   │   └── studentSpaceInfo.cssmodule.scss
+│   │   │   ├── Students
+│   │   │   │   ├── Certificate
+│   │   │   │   │   ├── CertificateSentSuccess.jsx
+│   │   │   │   │   ├── SendCertificate.jsx
+│   │   │   │   │   └── StudentSendCertificate.jsx
+│   │   │   │   ├── Homepage.jsx
+│   │   │   │   ├── StudentHistory
+│   │   │   │   │   ├── StudentHistory.jsx
+│   │   │   │   │   └── studentHistory.cssmodule.scss
+│   │   │   │   ├── StudentSignIn
+│   │   │   │   │   ├── StudentSignInStepOne.jsx
+│   │   │   │   │   ├── StudentSignInStepTwo.jsx
+│   │   │   │   │   ├── StudentSignInSuccess.jsx
+│   │   │   │   │   └── studentSignIn.cssmodule.scss
+│   │   │   │   └── homepage.cssmodule.scss
 │   │   │   └── Tutorial
 │   │   │       ├── Modal.jsx
 │   │   │       ├── Steps
@@ -424,11 +462,13 @@
 │   │   │   │   │   ├── eligibility.js
 │   │   │   │   │   ├── join.js
 │   │   │   │   │   └── statistics.js
-│   │   │   │   └── student
-│   │   │   │       ├── eligibility.js
-│   │   │   │       ├── problem.js
-│   │   │   │       ├── process.js
-│   │   │   │       └── session.js
+│   │   │   │   ├── student
+│   │   │   │   │   ├── eligibility.js
+│   │   │   │   │   ├── problem.js
+│   │   │   │   │   ├── process.js
+│   │   │   │   │   └── session.js
+│   │   │   │   └── studentSpace
+│   │   │   │       └── space.js
 │   │   │   ├── search.js
 │   │   │   ├── string.js
 │   │   │   ├── trackAds.js
@@ -445,7 +485,10 @@
 │   │   │   ├── googleAds
 │   │   │   │   └── useConsentAds.js
 │   │   │   ├── inactive.js
-│   │   │   └── useScreenSize.js
+│   │   │   ├── useScreenSize.js
+│   │   │   ├── validateEmailFormat.js
+│   │   │   ├── validateIneFormat.js
+│   │   │   └── validateNameFormat.js
 │   │   └── variables.scss
 │   └── test
 │       ├── distance.spec.js
@@ -456,6 +499,7 @@
 ├── middlewares
 │   ├── errorManager.ts
 │   ├── refreshToken.ts
+│   ├── uploadCertificate.ts
 │   └── xsrfProtection.ts
 ├── migrations
 │   ├── 20210216115133_cursor.js
@@ -507,7 +551,14 @@
 │   ├── 20250326093350_add_unaccent_extension.ts
 │   ├── 20250420103540_add_universities_billing_mail.ts
 │   ├── 20250630101101_update_description_field_to_text.ts
-│   └── 20250702141522_add_isINESvalid_patients.ts
+│   ├── 20250702141522_add_isINESvalid_patients.ts
+│   ├── 20251024142544_change_students_table_name.ts
+│   ├── 20251025144200_create_students_table.ts
+│   ├── 20260107121835_add_patient_email.ts
+│   ├── 20260112120246_add_role_to_login_token.ts
+│   ├── 20260113192205_patient_email_can_be_null.ts
+│   ├── 20260203102606_add_student_lastname_dateOfBirth.ts
+│   └── 20260205151206_add_token_signin_attempts.ts
 ├── package-lock.json
 ├── package.json
 ├── routers
@@ -516,6 +567,7 @@
 │   ├── patients.ts
 │   ├── protected.ts
 │   ├── psychologist.ts
+│   ├── students.ts
 │   ├── test.ts
 │   ├── universities.ts
 │   └── unprotected.ts
@@ -562,9 +614,14 @@
 │   ├── inesApi.ts
 │   ├── loginInformations.ts
 │   ├── sanitizer.ts
+│   ├── sendSecondStepMail.ts
+│   ├── sendStudentMailTemplate.ts
+│   ├── signInAttempts.ts
+│   ├── studentAppointments.ts
 │   ├── studentEligibility.ts
-│   ├── studentMails.ts
-│   └── updatePsyFields.ts
+│   ├── studentNewsletterMails.ts
+│   ├── updatePsyFields.ts
+│   └── verifyStudentINE.ts
 ├── static
 │   ├── documents
 │   │   ├── flyer_medecins.pdf
@@ -593,22 +650,24 @@
 │   │   ├── configController.spec.ts
 │   │   ├── contactController.spec.ts
 │   │   ├── conventionController.spec.ts
-│   │   ├── loginController.spec.ts
 │   │   ├── patientsController.spec.ts
 │   │   ├── psyListingController.spec.ts
+│   │   ├── psyLoginController.spec.ts
 │   │   ├── psyProfileController.spec.ts
 │   │   ├── reactController.spec.ts
-│   │   ├── studentController.spec.ts
+│   │   ├── studentNewsletterController.spec.ts
+│   │   ├── studentSignInController.spec.ts
 │   │   └── universityController.spec.ts
 │   ├── cron_jobs
 │   │   └── cronDemarchesSimplifiees.spec.ts
 │   ├── db
 │   │   ├── appointments.spec.ts
 │   │   ├── dsApiCursor.spec.ts
-│   │   ├── loginToken.spec.ts
 │   │   ├── patients.spec.ts
+│   │   ├── psyLoginToken.spec.ts
 │   │   ├── psychologists.spec.ts
 │   │   ├── students.spec.ts
+│   │   ├── studentsNewsletter.spec.ts
 │   │   └── universities.spec.ts
 │   ├── dossier.js
 │   ├── helper
@@ -623,7 +682,8 @@
 │   │   ├── 02-psychologists.ts
 │   │   ├── 03-patients.ts
 │   │   ├── 04-appointments.ts
-│   │   └── 05-students.ts
+│   │   ├── 05-students.ts
+│   │   └── 06-studentsNewsletter.ts
 │   ├── services
 │   │   ├── autoAcceptPsychologist.spec.ts
 │   │   ├── autoVerifyPsychologist.spec.ts
@@ -658,6 +718,7 @@
 │   ├── Patient.ts
 │   ├── Psychologist.ts
 │   ├── Student.ts
+│   ├── StudentNewsletter.ts
 │   ├── SuspensionReason.ts
 │   └── University.ts
 ├── utils
@@ -691,15 +752,20 @@
     └── emails
         ├── footer.ejs
         ├── header.ejs
-        ├── login.ejs
         ├── loginNotAcceptedYet.ejs
         ├── multipleAcceptedAlert.ejs
+        ├── psyLogin.ejs
         ├── sendCertificate.ejs
+        ├── sendStudentCertificate.ejs
+        ├── studentInvitationFromPsy.ejs
+        ├── studentLogin.ejs
         ├── studentMail-1.ejs
         ├── studentMail-2.ejs
         ├── studentMail-3.ejs
         ├── studentMail-4.ejs
         ├── studentMail-doctorAppointment-2.ejs
         ├── studentMail-doctorAppointment.ejs
+        ├── studentSignInValidation.ejs
+        ├── studentWelcome.ejs
         └── summaryUniversity.ejs
-108 directories, 596 files
+115 directories, 655 files
