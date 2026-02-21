@@ -1,7 +1,7 @@
 # Synthèse d'activité : demarche-numerique (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité de l'organisation "demarche-numerique" au cours des derniers jours s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs sur la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr). Les utilisateurs bénéficient désormais d'un éditeur dédié pour le RIB, d'un affichage amélioré des filtres pour les instructeurs, et de la possibilité de masquer des dossiers. Une fonctionnalité de restauration de dossiers expirés a également été ajoutée. Des améliorations techniques ont été apportées, notamment l'intégration de Scaleway pour l'envoi d'emails et des optimisations de performance.
+L'activité de la semaine a été centrée sur l'amélioration de l'expérience utilisateur de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr). Des améliorations significatives ont été apportées à la gestion des RIB et à l'interface des filtres pour les instructeurs. De nouvelles fonctionnalités ont également été introduites, comme la possibilité de masquer des dossiers aux utilisateurs et la restauration de dossiers expirés, offrant ainsi plus de contrôle et de flexibilité. L'intégration de Scaleway pour l'envoi d'emails vise à améliorer la fiabilité des communications.
 
 ## Sécurité
 - Correction de problèmes de sécurité liés à l'injection de code HTML dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
@@ -11,4 +11,4 @@ L'activité de l'organisation "demarche-numerique" au cours des derniers jours s
 - Optimisation des performances de l'image processing dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Améliorations significatives de l'interface utilisateur, correction de bugs et optimisations techniques.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des optimisations de performance.

@@ -1,17 +1,23 @@
 # Synthèse d'activité : SocialGouv (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts de SocialGouv, avec un focus sur l'amélioration de l'expérience utilisateur, la correction de bugs et la modernisation des infrastructures. Des avancées significatives ont été réalisées sur des projets clés comme EgaPro, SRDT et Jardin Mental, avec l'ajout de nouvelles fonctionnalités et l'optimisation des performances. La migration vers pnpm est en cours dans plusieurs dépôts, témoignant d'une volonté d'améliorer la sécurité et la gestion des dépendances. L'intégration de Proconnect pour l'authentification progresse également.
+Au cours des 7 derniers jours, l'organisation SocialGouv a connu une activité soutenue sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec des corrections de bugs et l'ajout de nouvelles fonctionnalités dans des outils comme `cdtn-admin`, `code-du-travail-numerique` et `da-manager`.  Une migration vers le gestionnaire de paquets pnpm a été entreprise dans plusieurs projets (`domifa`, `nos1000jours-blues-epds-widget`, `token-bureau`, `vao`) pour optimiser la gestion des dépendances et améliorer la sécurité. L'infrastructure a également été renforcée avec l'ajout de capacités de CI/CD et l'intégration de nouveaux services d'authentification comme Proconnect (via `charon`).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité, notamment [dsfr-mcp](/repos/SocialGouv/dsfr-mcp) avec la configuration initiale et [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) avec la correction de vulnérabilités dans les dépendances. [token-bureau](/repos/SocialGouv/token-bureau) a également bénéficié d'améliorations de sécurité liées à la migration vers pnpm.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- Correction de vulnérabilités dans `token-bureau` avec la migration vers pnpm et la mise à jour des dépendances.
+- Ajout de vérifications d'autorisation côté serveur dans `srdt` pour les routes API non protégées.
+- Correction de vulnérabilités de sécurité identifiées dans les dépendances de `nos1000jours-blues-epds-widget`.
 
 ## Autres changements notables
-La migration vers pnpm est un thème récurrent, impactant de nombreux dépôts comme [domifa](/repos/SocialGouv/domifa), [matomo-postgres](/repos/SocialGouv/matomo-postgres), [vao](/repos/SocialGouv/vao) et [token-bureau](/repos/SocialGouv/token-bureau).  [da-manager](/repos/SocialGouv/da-manager) a connu une phase d'initialisation importante avec la mise en place des fondations de l'application.  [graal](/repos/SocialGouv/graal) a vu l'ajout de la gestion des fichiers Excel stockés dans S3.  [srdt](/repos/SocialGouv/srdt) a bénéficié de l'ajout d'un cluster PostgreSQL.
+- **Migration vers pnpm :** Plusieurs projets ont migré vers pnpm, incluant `domifa`, `nos1000jours-blues-epds-widget`, `token-bureau` et `vao`, pour une meilleure gestion des dépendances et des performances.
+- **CI/CD :** Amélioration significative des pipelines CI/CD dans `da-manager` et `kontinuous`, permettant des déploiements plus fiables et automatisés.
+- **Intégration Proconnect :** L'intégration du provider d'authentification Proconnect dans `charon` et `egapro` élargit les options d'authentification pour les utilisateurs.
+- **Nouvelle infrastructure PostgreSQL :** Mise en place d'un cluster PostgreSQL pour `srdt`, améliorant la scalabilité et la fiabilité du service.
 
 ## Dépôts les plus actifs
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de notifications Mattermost et d'une page "Quoi de neuf".
-*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Améliorations de l'accessibilité, du référencement et ajout d'une page "Quoi de Neuf?".
-*   [egapro](/repos/SocialGouv/egapro) : Amélioration de la connexion, correction de bugs et préparation de l'environnement Proconnect.
-*   [srdt](/repos/SocialGouv/srdt) : Ajout de l'enregistrement des discussions, d'un bouton de support et migration vers pnpm.
-*   [vao](/repos/SocialGouv/vao) : Ajout de l'authentification à deux facteurs et corrections de bugs dans le module "fusager".
+- [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Corrections de bugs et ajout de fonctionnalités pour l'administration du Code du travail numérique.
+- [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Amélioration de la recherche, corrections de bugs et ajout de widgets pour le site web.
+- [da-manager](/repos/SocialGouv/da-manager) : Développement intensif de l'interface utilisateur et mise en place d'un pipeline CI/CD complet.
+- [srdt](/repos/SocialGouv/srdt) : Amélioration de la sécurité, ajout de la sauvegarde des conversations et correction de bugs.
+- [vao](/repos/SocialGouv/vao) : Corrections de bugs, améliorations de l'interface utilisateur et migration vers pnpm.
