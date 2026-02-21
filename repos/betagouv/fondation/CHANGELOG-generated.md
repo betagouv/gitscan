@@ -1,52 +1,72 @@
-## Changelog : fondation (derniers 30 jours)
+## Changelog : fondation (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à la fondation au cours du dernier mois. Les principales évolutions concernent la gestion des observations, des fichiers et des affectations, ainsi que des corrections de bugs pour améliorer l'expérience utilisateur et la stabilité de l'application. De nouvelles fonctionnalités ont été ajoutées pour faciliter le suivi des dossiers et la gestion des informations.
+Ce changelog présente les améliorations apportées à la fondation au cours des 30 derniers jours. Les principales évolutions concernent l'affectation des dossiers, la gestion des fichiers, l'interface utilisateur et la correction de bugs. Des améliorations ont également été apportées à l'infrastructure et aux tests.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité pour les rapporteurs de commenter les observations (#158).
-- Amélioration du suivi des observations avec la possibilité d'ajouter des commentaires et d'utiliser un éditeur WYSIWYG (#152).
-- Ajout de la possibilité de modifier les observations (#131, #170).
-- Ajout d'une alerte lorsque un fichier nécessite l'avis de deux rapporteurs (#145).
-- Ajout de la possibilité de définir des priorités pour les fichiers associés aux membres (#146, #153).
-- Ajout d'un lien vers lolfi pour les magistrats (#149).
-- Ajout d'avatars standard pour les utilisateurs (#148).
-- Ajout de la possibilité d'associer des résultats à des fichiers de nomination (#117, #132).
-- Ajout du nombre de fichiers de session pour chaque membre (#122).
-- Ajout de statistiques sur les membres (#121).
-- Ajout d'une page d'aide avec les règles d'utilisation (#100).
-- Ajout de mémos pour les membres (#137).
-- Possibilité de fournir des résultats pour plusieurs fichiers de nomination (#132).
-- Amélioration de l'affichage des affectations par grade (#144).
-- Ajout d'un indicateur du nombre de fichiers nécessitant un rapport (#145).
-- Ajout de la possibilité de suivre l'évolution des observations (#160, #161).
-- Ajout de la possibilité de saisir des commentaires et des observations pour les rapporteurs uniquement (#158).
+- Amélioration de l'affectation automatique des dossiers :
+    - Correction du calcul de l'arrondi des affectations (#226).
+    - Correction de la distribution arithmétique des affectations (#225).
+    - Gestion de l'affectation unique par membre et par groupe de grade (#223).
+    - Possibilité de publier une version sans affectations (#164).
+- Gestion des fichiers :
+    - Ajout de l'historique des fichiers avec commentaires (#194).
+    - Ajout de la description des observations (#193, #219).
+    - Suppression des fichiers de la modale d'observation (#172).
+    - Possibilité de modifier les priorités des fichiers (#171).
+    - Affichage du nombre de fichiers par statut (#68).
+- Interface utilisateur :
+    - Ajout d'indicateurs pour les commentaires des rapporteurs sur les observations (#198).
+    - Affichage de la position actuelle (#218).
+    - Affichage de la version dans le pied de page (#197).
+    - Amélioration de l'affichage des badges (#187).
+    - Ajout de badges dynamiques pour le calcul de l'état du tableau (#163).
+    - Ajout d'un indicateur pour les suivis d'observation (#160).
+    - Amélioration de la modale magistrat (#192).
+    - Ajout d'un indicateur pour les positions nécessitant 2 rapporteurs (#168).
+- Corrections de bugs :
+    - Correction d'un bug lié au calcul de l'âge dans la carte récapitulative (#180).
+    - Correction d'un bug lié à la redirection Lolfi (#155).
+    - Correction de l'affichage des alertes pour les positions nécessitant un rapport (#192).
+    - Correction de l'affichage des alertes pour les rapporteurs "premier président de chambre" (#168).
+    - Correction de la récupération de la charge de travail sur les versions non publiées (#222).
+    - Correction de l'utilisation de la fonction de connexion asynchrone (#221).
+    - Correction de la recherche d'ID externe indépendamment du nom (#220).
+    - Correction de l'affichage des alertes sur la position cible uniquement en back-office (#195).
+    - Correction de l'affichage des alertes pour les membres sur les rapporteurs (#200).
 
 ### Évolutions techniques
-- Mise à jour de la librairie Zod (#125).
-- Mise à jour de la version de Node.js vers la version 24 (#127).
-- Refactoring de la table des fichiers de nomination pour utiliser un composant DataTable (#154).
-- Refactoring du point de terminaison de recherche de magistrat (#136).
-- Amélioration de la gestion des valeurs optionnelles dans les requêtes multipartBody (#130).
-- Création d'un composant DataTable réutilisable (#128).
-- Utilisation de `@hey-api/openapi-ts` pour la génération de la documentation de l'API (#124).
-- Ajout d'une intégration Sentry pour la gestion des erreurs (#159).
-- Ajout de hooks de pré-push pour valider la présence d'une référence de ticket (#147).
+- Ajout de tests full-stack de base (#187).
+- Ajout de modules HTTP (#205).
+- Suppression de Lodash (#202).
+- Suppression des fichiers en dehors du scope de la requête (#200).
+- Ajout de l'intégration Sentry pour la gestion des erreurs (#159).
+- Ajout de l'authentification basique (#156).
 - Ajout d'un hook SG (#157).
-- Ajout d'une authentification basique (#156).
+- Mise à jour de React Router (#183).
+- Promotion de `dotenvx` vers les dépendances (#170).
+- Ajout de dépendabot pour la gestion des dépendances (#203).
+- Amélioration des permissions des jobs CI pour la production (#186, #184).
+- Suppression des tests lors de la publication (#191).
+- Ajout de validations PR (#207).
 
 ### Autres changements
-- Correction d'un problème de redirection lolfi (#155).
-- Correction de bugs liés à l'affichage des membres non publiés (#150).
-- Correction d'un problème d'attachement de fichiers en session (#151).
-- Correction de problèmes d'affichage des images (#142).
-- Correction de problèmes liés à l'auto-affectation et à l'affectation manuelle (#123, #120).
-- Correction de bugs mineurs dans l'interface utilisateur (#133, #134, #135, #138, #139, #140, #141, #143).
-- Correction de problèmes liés à l'export Excel avec les résultats (#133).
-- Correction d'un bug empêchant l'affichage correct du modal magistrat (#178).
-- Correction d'un bug lié à l'affichage déterministe du modal magistrat (#178).
-- Correction d'un bug lié au réinitialisation du commentaire lors du changement de fichier (#147).
-- Correction d'un bug lié à l'encodage de l'URL publique du nom de fichier (#159).
-- Suppression de tris inutilisés (#135, #141).
-- Suppression de fonctionnalités inutilisées (#134, #194).
-- Amélioration de la gestion des priorités des fichiers (#153).
+- Ajout de tags aux utilisateurs sur la notification de changelog (#227).
+- Ajout de la cible de grade dans la sortie Excel (#224).
+- Mise en place d'une release sur staging après le tagging (#201).
+- Amélioration des alertes (#224).
+- Suppression des tests de la release (#191).
+- Correction de typos (#183).
+- Amélioration de l'affichage des badges (#187).
+- Ajout de la CC Avocat PARIS (#200).
+- Déplacement des rapporteurs dans l'Excel (#200).
+- Masquage des LODAM observers (#200).
+- Modification du message de succès lors de la publication d'une session (#200).
+- Ajout d'étoiles rouges dans le formulaire d'import de session (#200).
+- Ajout de commentaires pour les observations (#152).
+- Suppression des tests de la release (#191).
+- Ajout de la fonction de mise à jour du suivi à partir de la modale de résultat (#161).
+- Correction de l'export Excel dans le domaine de l'API (#165).
+- Amélioration de la modale d'observation (#192).
+- Ajout de l'acronyme du poste pour les magistrats (#172).
+- Suppression des tests de la release (#191).

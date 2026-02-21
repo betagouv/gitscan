@@ -1,39 +1,43 @@
 {
   "url": "https://github.com/betagouv/fondation",
   "name": "fondation",
-  "description": "Donner au CSM (Conseil Supérieur de la Magistrature) les moyens d'un travail efficace et de qualité afin de concourir à la continuité du fonctionnement de l'institution judiciaire et de contribuer à une RH vertueuse du corps de la magistrature.",
+  "description": "Donner au CSM les moyens d'un travail efficace et de qualité afin de concourir à la continuité du fonctionnement de l'institution judiciaire et de contribuer à une RH vertueuse du corps de la magistrature.",
   "language": "TypeScript",
   "features": [
     "Gestion des observations",
     "Gestion des fichiers",
     "Gestion des affectations",
+    "Import de fichiers Excel",
+    "Gestion des utilisateurs",
+    "Gestion des rôles et permissions",
     "Suivi des dossiers",
-    "Gestion des informations",
-    "Authentification utilisateur"
+    "Génération de rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "NestJS",
+    "React",
     "Prisma",
     "Zod",
     "axios",
     "bcrypt",
-    "date-fns",
-    "react-hook-form",
-    "react-query",
-    "react-table"
+    "dotenvx",
+    "tailwindcss",
+    "react-dsfr"
   ],
   "components": [
     "Frontend React",
-    "API REST NestJS",
+    "API REST (NestJS)",
     "Base de données PostgreSQL",
-    "S3 Storage"
+    "S3 Storage",
+    "Authentification JWT"
   ],
   "auth": {
     "methods": [
-      "email-password"
-    ]
+      "email-password",
+      "jwt"
+    ],
+    "providers": null
   },
   "tests": [
     "Jest",
@@ -41,9 +45,9 @@
     "Playwright"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-02-17T13:23:12+01:00",
+  "lastActivity": "2026-02-20T15:52:07+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -55,8 +59,9 @@
   },
   "tags": [
     "administration",
+    "justice",
     "magistrature",
-    "gestion de dossiers",
+    "gestion",
     "typescript",
     "nestjs",
     "react"
