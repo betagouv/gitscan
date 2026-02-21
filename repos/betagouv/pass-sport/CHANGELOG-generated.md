@@ -1,15 +1,12 @@
-## Changelog : pass-sport (derniers 30 jours)
+## Changelog : pass-sport (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les récentes modifications apportées à pass-sport. Les mises à jour concernent principalement la désactivation de la page de communication et la simplification du formulaire de contact en supprimant certaines questions. Des mises à jour de bannières ont également été effectuées.
+Ce mois-ci, les améliorations se concentrent sur la préparation du site pour des évolutions futures et la maintenance des données. Une pagination a été ajoutée à la FAQ pour faciliter la navigation, et les scripts d'importation des données de l'INJEP ont été affinés.
 
 ### Évolutions fonctionnelles
-- Suppression de certaines questions du formulaire de contact (#491).
-- Désactivation de la page de communication après une certaine date (#494).
-- Mise à jour des bannières d'information (#493).
+- Ajout d'une pagination à la FAQ pour une meilleure expérience utilisateur. (#496)
 
 ### Évolutions techniques
-Aucune évolution technique significative à signaler durant cette période.
-
-### Autres changements
-Aucun autre changement à signaler.
+- Refactorisation en préparation de la pagination de la FAQ. (#496)
+- Amélioration des scripts d'importation des données de l'INJEP. (#495)
+- Ajustements finaux des scripts d'importation des données de l'INJEP. (#0f2a2c9)
