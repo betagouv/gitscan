@@ -5,9 +5,11 @@
   "language": "Python",
   "features": [
     "Recherche",
-    "Gestion des accès",
     "Indexation de documents",
-    "Suppression de documents par tags"
+    "Contrôle d'accès",
+    "Suppression de documents par tags",
+    "Recherche sémantique",
+    "Gestion de plusieurs langues"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -16,24 +18,27 @@
     "Celery",
     "Redis",
     "OpenSearch",
-    "Mozilla Django OIDC"
+    "Mozilla Django OIDC",
+    "psycopg",
+    "langchain-text-splitters"
   ],
   "components": [
     "Backend Django",
     "API REST",
     "Base de données PostgreSQL",
+    "Cache Redis",
     "Index OpenSearch",
-    "Frontend (via Django templates)"
+    "Frontend (via ingress)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
-    ],
-    "providers": null
+      "saml"
+    ]
   },
   "tests": [
-    "Pytest"
+    "pytest",
+    "factory_boy"
   ],
   "workflows": [
     "deploy.yml",
@@ -41,22 +46,22 @@
     "find.yml",
     "release-helm-chart.yaml"
   ],
-  "lastActivity": "2026-02-17T13:30:10+01:00",
+  "lastActivity": "2026-02-19T21:43:05+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 21,
-    "forks": 3,
+    "stars": 22,
+    "forks": 4,
     "contributors": null,
-    "openIssues": 8
+    "openIssues": 9
   },
   "tags": [
-    "recherche",
+    "elasticsearch",
+    "globalsearch",
     "opensearch",
+    "search",
     "django",
-    "oidc",
-    "indexation",
-    "gestion des accès"
+    "oidc"
   ]
 }
