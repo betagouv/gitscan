@@ -394,9 +394,8 @@ export default async function RepoDetailPage({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  console.log("repos", data.repos.length);
   return data.repos.map((repo) => ({
     org: repo.organization,
-    name: repo.name,
+    name: repo.name || "unknown",
   }));
 }
