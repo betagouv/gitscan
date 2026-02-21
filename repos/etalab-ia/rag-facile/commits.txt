@@ -1,3 +1,51 @@
+2026-02-21T08:09:32+01:00 - 1e4bbfd - Luis Arias : Merge pull request #143 from etalab-ia/feat/chat-rag-cli
+2026-02-21T08:06:52+01:00 - cb3e3e7 - Luis Arias : fix: agent must use run_rag_facile for reads, not answer from memory
+2026-02-21T06:29:09+01:00 - c1aa4fd - Luis Arias : refactor: drop get_ragfacile_config tool in favor of run_rag_facile("config show")
+2026-02-21T06:16:48+01:00 - 7b2cc68 - Luis Arias : refactor: drop update_config in favor of run_rag_facile("config set ...")
+2026-02-20T19:29:26+01:00 - e5acc66 - Luis Arias : fix: address PR #143 review comments
+2026-02-20T19:07:04+01:00 - 1d46a39 - Luis Arias : feat: universal run_rag_facile tool + rag-cli skill
+2026-02-20T18:53:02+01:00 - 4d0f831 - Luis Arias : Merge pull request #141 from etalab-ia/fix/skill-routing-antihallucination
+2026-02-20T18:43:24+01:00 - dddb619 - Luis Arias : fix: harden skill routing against hallucination
+2026-02-20T18:14:07+01:00 - fe464ef - Luis Arias : Merge pull request #138 from etalab-ia/feat/chat-config-editing
+2026-02-20T18:09:54+01:00 - aaac2e9 - Luis Arias : feat: semantic skill routing via activate_skill tool — drop keyword detection
+2026-02-20T17:58:38+01:00 - d2aa5a3 - Luis Arias : fix: enforce two-step confirmation before update_config tool call
+2026-02-20T15:57:19+01:00 - a4ea2ea - Luis Arias : fix: remove double confirmation from update_config — resolves terminal freeze
+2026-02-20T14:01:18+01:00 - c633a10 - Luis Arias : fix: address PR #138 review comments + rename chat model env var
+2026-02-20T13:41:46+01:00 - cf47f73 - Luis Arias : feat: update_config tool, model aliases, shared console
+2026-02-20T13:02:41+01:00 - 6ab640e - Luis Arias : Merge pull request #130 from etalab-ia/release-please--branches--main
+2026-02-20T12:58:51+01:00 - aefe01a - Luis Arias : Merge pull request #136 from etalab-ia/feat/chat-skills
+2026-02-20T12:49:35+01:00 - 625edbb - Luis Arias : fix: address PR #136 review comments
+2026-02-20T12:20:23+01:00 - 6c019cd - Luis Arias : feat: tool call notifications + skill bootstrap on explicit load
+2026-02-20T11:59:23Z - 4e75897 - github-actions[bot] : chore(main): release 0.17.0
+2026-02-20T11:30:25+01:00 - 72b1f3d - Luis Arias : feat: skills system with 5 built-in skills + npx skills integration
+2026-02-20T11:07:08+01:00 - 4f845e6 - Luis Arias : Merge pull request #135 from etalab-ia/feat/chat-codebase-awareness
+2026-02-20T11:00:13+01:00 - 67665fe - Luis Arias : fix: address PR #135 review comments
+2026-02-20T10:56:36+01:00 - 54a9a4a - Luis Arias : feat: add --debug flag to show agent tool calls
+2026-02-20T10:33:37+01:00 - b315d6f - Luis Arias : feat: add get_docs tool with bundled documentation
+2026-02-20T10:24:18+01:00 - 771ab25 - Luis Arias : feat: codebase awareness tools (get_agents_md, get_recent_git_activity)
+2026-02-20T10:15:49+01:00 - 18502bc - Luis Arias : Merge pull request #134 from etalab-ia/feat/chat-session-memory
+2026-02-20T10:11:38+01:00 - fc4ba80 - Luis Arias : fix: address PR #134 review comments
+2026-02-20T10:05:11+01:00 - 4d83f3e - Luis Arias : feat: auto initial commit after rag-facile setup
+2026-02-20T09:48:30+01:00 - 4969317 - Luis Arias : fix: skip session commit silently when .rag-facile/ is gitignored
+2026-02-20T09:38:38+01:00 - 13699ec - Luis Arias : fix: inject memory into first user turn instead of system prompt
+2026-02-20T09:32:08+01:00 - baa82b3 - Luis Arias : fix: rate limit retry loops indefinitely until Ctrl+C
+2026-02-20T09:28:23+01:00 - 9b9247d - Luis Arias : chore: add .rag-facile/ to .gitignore
+2026-02-20T09:27:32+01:00 - c315710 - Luis Arias : fix: handle Albert API 429 rate limit with auto-retry in chat loop
+2026-02-20T09:05:14+01:00 - 46e3928 - Luis Arias : feat: git-backed session memory with post-session summarisation
+2026-02-20T08:51:36+01:00 - 465094c - Luis Arias : Merge pull request #133 from etalab-ia/feat/chat-init-wizard
+2026-02-20T08:45:50+01:00 - 79dd1dc - Luis Arias : fix: address PR #133 review comments
+2026-02-20T08:41:49+01:00 - 6a619f6 - Luis Arias : fix: setup closing message shows both just run and rag-facile with real path
+2026-02-20T08:27:23+01:00 - 4d3658d - Luis Arias : fix: localise no-workspace hint in welcome panel
+2026-02-20T08:23:41+01:00 - 0777307 - Luis Arias : fix: stop wizard falling through to second question on Ctrl+C
+2026-02-20T07:40:19+01:00 - fc332c5 - Luis Arias : fix: language-first wizard order and localised chat UI
+2026-02-20T06:53:39+01:00 - 051301c - Luis Arias : feat: chat workspace init — first-run wizard
+2026-02-20T06:46:16+01:00 - e912a0e - Luis Arias : Merge pull request #132 from etalab-ia/feat/chat-harness-spike
+2026-02-20T06:42:20+01:00 - c684454 - Luis Arias : fix: address PR #132 review comments
+2026-02-20T06:27:11+01:00 - e4f0fbb - Luis Arias : fix: suppress smolagents error output and clean up workspace display
+2026-02-20T06:14:33+01:00 - 4764f55 - Luis Arias : feat: rag-facile chat — smolagents harness spike
+2026-02-19T21:46:42+01:00 - f846b93 - Luis Arias : Merge pull request #131 from etalab-ia/cli-ux-expert-mode
+2026-02-19T14:30:54+01:00 - 5d07fa2 - Luis Arias : style: use loop + constants for Getting Started command registration
+2026-02-19T14:23:02+01:00 - 03a0f7f - Luis Arias : feat: rationalise CLI UX — grouped help panels, simpler setup, smarter just run
 2026-02-19T13:43:06+01:00 - 77ea4ae - Luis Arias : Merge pull request #129 from etalab-ia/fix/cli-banner-always
 2026-02-19T13:38:04+01:00 - e4047f7 - Luis Arias : fix: always show banner and version before any output or error
 2026-02-19T13:30:35+01:00 - 6d6d73b - Luis Arias : Merge pull request #128 from etalab-ia/fix/standalone-collections

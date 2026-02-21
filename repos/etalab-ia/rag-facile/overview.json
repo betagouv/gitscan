@@ -1,44 +1,45 @@
 {
   "url": "https://github.com/etalab-ia/rag-facile",
   "name": "rag-facile",
-  "description": "RAG Facile permet de construire une application RAG pour l'administration française en moins de 5 minutes, en utilisant l'API Albert. Il offre une trousse de démarrage accessible et des fonctionnalités pour la gestion de documents, la recherche et l'intégration avec des services gouvernementaux.",
+  "description": "RAG Facile permet de construire une application RAG pour l'administration française en moins de 5 minutes, en s'appuyant sur l'API Albert.",
   "language": "Python",
   "features": [
     "Création rapide d'applications RAG",
     "Intégration avec l'API Albert",
-    "Gestion de documents (PDF, Markdown, HTML)",
-    "Recherche sémantique",
+    "Gestion de la configuration",
+    "Téléchargement de documents",
     "Interface de chat",
-    "Configuration via fichier ragfacile.toml"
+    "Expansion de requêtes",
+    "Gestion des collections"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "albert-client",
     "chainlit",
-    "reflex",
-    "pydantic",
+    "pypdf",
     "tomli-w",
     "httpx",
-    "openai"
+    "instructor",
+    "pydantic",
+    "reflex"
   ],
   "components": [
-    "CLI (Command Line Interface)",
-    "API (Albert API)",
-    "Frontend (Chainlit, Reflex)",
-    "Pipelines de RAG",
-    "Gestion de la configuration (ragfacile.toml)"
+    "API REST",
+    "Interface utilisateur (Chainlit, Reflex)",
+    "Pipeline RAG",
+    "Gestionnaire de configuration",
+    "Intégration avec l'API Albert"
   ],
   "auth": {
     "methods": [
       "api-key"
     ]
   },
-  "tests": "Pytest, respx",
+  "tests": "Pytest",
   "workflows": [
-    "CI (Continuous Integration)",
-    "Template synchronization on release PRs"
+    "CI/CD pour tests et déploiement"
   ],
-  "lastActivity": "2026-02-18T00:00:00Z",
+  "lastActivity": "2026-02-20T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -50,11 +51,11 @@
   },
   "tags": [
     "RAG",
-    "Albert API",
-    "Gouvernement français",
     "IA",
-    "Traitement du langage naturel",
-    "Recherche d'informations",
-    "Python"
+    "Albert",
+    "Gouvernement",
+    "Python",
+    "API",
+    "Chatbot"
   ]
 }

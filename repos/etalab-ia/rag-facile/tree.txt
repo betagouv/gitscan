@@ -215,6 +215,14 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── commands
 │   │   │       │   ├── __init__.py
+│   │   │       │   ├── chat
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── _console.py
+│   │   │       │   │   ├── agent.py
+│   │   │       │   │   ├── init.py
+│   │   │       │   │   ├── memory.py
+│   │   │       │   │   ├── skills.py
+│   │   │       │   │   └── tools.py
 │   │   │       │   ├── collections.py
 │   │   │       │   ├── config
 │   │   │       │   │   ├── __init__.py
@@ -234,12 +242,31 @@
 │   │   │       │   ├── uninstall.py
 │   │   │       │   └── upgrade.py
 │   │   │       ├── main.py
+│   │   │       ├── skills
+│   │   │       │   ├── explain-rag
+│   │   │       │   │   └── SKILL.md
+│   │   │       │   ├── explore-codebase
+│   │   │       │   │   └── SKILL.md
+│   │   │       │   ├── learn-retrieval
+│   │   │       │   │   └── SKILL.md
+│   │   │       │   ├── rag-cli
+│   │   │       │   │   └── SKILL.md
+│   │   │       │   ├── skill-creator
+│   │   │       │   │   └── SKILL.md
+│   │   │       │   └── tune-pipeline
+│   │   │       │       └── SKILL.md
 │   │   │       └── templates
 │   │   │           └── ragfacile.toml
 │   │   └── tests
 │   │       ├── __init__.py
+│   │       ├── test_chat.py
+│   │       ├── test_chat_init.py
+│   │       ├── test_chat_memory.py
+│   │       ├── test_chat_skills.py
+│   │       ├── test_chat_tools.py
 │   │       ├── test_document_preprocessor.py
 │   │       ├── test_generate_dataset.py
+│   │       ├── test_run_rag_facile.py
 │   │       ├── test_setup.py
 │   │       ├── test_uninstall.py
 │   │       └── test_upgrade.py
@@ -461,4 +488,4 @@
 │   ├── pyproject.toml
 │   └── uv.lock
 └── uv.lock
-126 directories, 337 files
+134 directories, 356 files
