@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/qualicharge",
   "name": "qualicharge",
-  "description": "Ce projet vise à améliorer la qualité du service de recharge pour véhicules électriques en analysant les données de supervision. Il fournit des outils pour collecter, traiter et visualiser ces données.",
+  "description": "Ce projet vise à améliorer la qualité globale du service de recharge pour véhicules électriques en analysant les données de supervision. Il fournit des outils pour collecter, traiter et visualiser ces données.",
   "language": "Python",
   "features": [
     "Collecte de données de supervision",
@@ -12,20 +12,21 @@
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Django",
     "FastAPI",
+    "Django",
     "PostgreSQL",
     "httpx",
     "pydantic",
     "sqlalchemy",
-    "Docker"
+    "Docker",
+    "Docker Compose"
   ],
   "components": [
-    "Backend Python (Django, FastAPI)",
+    "API REST (FastAPI)",
+    "Frontend (Dashboard)",
     "Base de données PostgreSQL",
-    "API REST",
-    "Interface utilisateur (Dashboard)",
-    "Docker pour la conteneurisation"
+    "Client Python (qcc)",
+    "Outils de supervision (Metabase)"
   ],
   "auth": {
     "methods": [
@@ -41,10 +42,9 @@
     "coverage"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions",
-    "Renovate pour les mises à jour de dépendances"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-02-17T18:14:37+01:00",
+  "lastActivity": "2026-02-21T01:35:34+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -52,12 +52,11 @@
     "stars": 6,
     "forks": 3,
     "contributors": null,
-    "openIssues": 34
+    "openIssues": 31
   },
   "tags": [
     "véhicules électriques",
     "recharge",
-    "qualité",
     "supervision",
     "données",
     "API",
