@@ -115,11 +115,7 @@
 │       └── Dockerfile
 ├── docker-compose.yml
 ├── docs
-│   ├── génération_tuiles_réseaux_de_chaleur.md
-│   ├── import_etudes_en_cours.md
 │   ├── import_qpv.md
-│   ├── import_reseau_chaleur.md
-│   ├── mise_a_jour_donnees_fcu.md
 │   └── potentiels_de_raccordement_par_territoire.md
 ├── knip.json
 ├── next-sitemap.config.js
@@ -751,9 +747,6 @@
 │   ├── dump-schema.sh
 │   ├── fetch-features-from-feature-server.sh
 │   ├── migrate.sh
-│   ├── opendata
-│   │   ├── create-opendata-archive.sh
-│   │   └── nomenclature_shapefile_des_reseaux_de_chaleur_et_froid.xlsx
 │   ├── postinstall.mjs
 │   ├── simulateur
 │   │   ├── AmorceFileReader.ts
@@ -818,7 +811,8 @@
 │   │   │   ├── GoogleTagsScript.tsx
 │   │   │   ├── HotjarScript.tsx
 │   │   │   ├── LinkedInScript.tsx
-│   │   │   └── index.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── usePostHog.tsx
 │   │   ├── ContributionForm
 │   │   │   └── ContributionForm.tsx
 │   │   ├── Coproprietaire
@@ -1125,7 +1119,6 @@
 │   │   │   │   ├── Global.style.ts
 │   │   │   │   └── MainLayout.data.ts
 │   │   │   └── page
-│   │   │       ├── Banner.tsx
 │   │   │       ├── CenterLayout.tsx
 │   │   │       ├── SimplePage.styles.tsx
 │   │   │       └── SimplePage.tsx
@@ -1358,8 +1351,10 @@
 │   │   ├── analytics
 │   │   │   ├── .env.example
 │   │   │   ├── AGENTS.md
+│   │   │   ├── TRACKING_PLAN.md
 │   │   │   ├── analytics.config.ts
-│   │   │   └── client.ts
+│   │   │   ├── client.ts
+│   │   │   └── posthog.config.ts
 │   │   ├── app
 │   │   │   ├── client
 │   │   │   │   ├── components
@@ -1530,6 +1525,13 @@
 │   │   ├── notification
 │   │   │   ├── AGENTS.md
 │   │   │   └── index.tsx
+│   │   ├── opendata
+│   │   │   ├── OPENDATA.md
+│   │   │   ├── commands.ts
+│   │   │   └── server
+│   │   │       ├── api-data-gouv.ts
+│   │   │       ├── create-opendata-archive.sh
+│   │   │       └── nomenclature_shapefile_des_reseaux_de_chaleur_et_froid.xlsx
 │   │   ├── optimization
 │   │   │   ├── AGENTS.md
 │   │   │   ├── commands
@@ -1841,7 +1843,6 @@
 │   │   ├── api
 │   │   │   ├── authentication.ts
 │   │   │   └── cors.ts
-│   │   ├── api-data-gouv.ts
 │   │   └── eligibility.ts
 │   ├── tests
 │   │   ├── api
@@ -1921,4 +1922,4 @@
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── vitest.config.mts
-257 directories, 1952 files
+258 directories, 1952 files
