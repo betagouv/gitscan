@@ -1,31 +1,28 @@
-## Changelog : catalogi (derniers 30 jours)
+## Changelog : catalogi (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à catalogi au cours des 30 derniers jours. Les principales évolutions concernent l'import de métadonnées depuis GitHub et GitLab, l'amélioration de l'interface utilisateur et la correction de plusieurs bugs, notamment liés à la gestion des versions et des traductions.
+Ce changelog présente les améliorations apportées à catalogi au cours des 30 derniers jours. Les principales évolutions concernent l'import de métadonnées depuis GitLab et GitHub, ainsi que des corrections de bugs et des améliorations de l'interface utilisateur. Des migrations de données ont également été effectuées pour optimiser la gestion des versions des logiciels.
 
 ### Évolutions fonctionnelles
-
-- Ajout de l'import de métadonnées depuis GitLab (#291).
-- Amélioration de l'import de métadonnées depuis GitHub, avec une récupération complète des informations (#317).
-- Affichage des métadonnées du dépôt (activité, type) dans l'interface utilisateur (#203).
-- Correction d'une traduction française incorrecte pour le nombre d'instances publiques (#2f0a31c).
-- Migration des routes des logiciels pour utiliser l'ID au lieu du nom, améliorant la stabilité et la performance (#7be2371).
-- Ajout d'options de formatage de date dans l'interface utilisateur (#203).
-- Ajout d'une configuration UI (#203).
+- Ajout de l'import de données depuis les référentiels GitLab (#291).
+- Amélioration de l'affichage des métadonnées des dépôts GitHub, incluant l'activité partielle du dépôt (#203).
+- Correction d'une traduction française incorrecte pour le nombre d'instances publiques (#203).
+- Correction de l'affichage de l'interface utilisateur (#338).
+- Migration des routes web pour utiliser l'ID du logiciel au lieu de son nom (#7be2371).
+- Ajout d'options de configuration de l'interface utilisateur (#203).
+- Mise à jour du type lors de l'import de métadonnées depuis GitHub (#291).
 
 ### Évolutions techniques
-
-- Refactorisation du code pour améliorer la structure et la lisibilité, notamment le déplacement de `castToSoftwareExternalData` et la suppression de code mort (#2c0eb84, #f9bdcc0, #111b3a4).
-- Suppression de l'utilisation de variables d'environnement au niveau bas du code (#ed04989).
-- Suppression de `dotenv` des tests (#4b8e3df).
-- Migration de la colonne `versionMin` vers les attributs personnalisés, simplifiant la structure de la base de données (#2e27311).
-- Amélioration de la fonction `mergeArrays` pour préserver l'ordre des éléments (#7ef7389).
-- Mise à jour des appels GitHub pour la récupération des métadonnées de dépôt (#50b1adc).
+- Migration de la colonne `versionMin` vers les attributs personnalisés pour une meilleure flexibilité.
+- Refactoring du code pour supprimer le code mort et améliorer la lisibilité.
+- Amélioration de la gestion des liens externes obsolètes lors de la mise à jour des données.
+- Correction de l'utilisation des variables d'environnement au niveau bas du code.
+- Suppression de l'utilisation de `dotenv` dans les tests.
+- Correction de problèmes liés au chargement du token GitHub.
+- Déplacement de la fonction `castToSoftwareExternalData` vers un fichier plus pertinent.
+- Amélioration de la gestion des appels à l'API GitHub pour la récupération des métadonnées des dépôts (#292).
 
 ### Autres changements
-
-- Correction de plusieurs bugs et améliorations mineures de l'interface utilisateur (#6e5f910, #50d51a3, #2463050, #01826e8).
-- Correction de problèmes liés à la configuration et au chargement des métadonnées (#fa2dfc1).
-- Suppression de références obsolètes à `softwareMinimalVersion` (#a1069cb).
-- Bump de version (plusieurs) (#635dda6, #f8435ef, #c3a6390, #3bbefc6).
-- Correction de tests (#17463d6, #92210e9).
+- Ajout d'un fichier de documentation (ignoré par Git).
+- Augmentation du numéro de version de l'application.
+- Correction de bugs mineurs et amélioration de la stabilité générale.
