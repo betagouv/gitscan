@@ -1,36 +1,38 @@
-## Changelog : vizeau (derniers 30 jours)
+## Changelog : vizeau (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Vizeau apportent des améliorations significatives à l'expérience utilisateur, notamment au niveau de la cartographie, de la gestion des exploitations et des tâches. De nouvelles fonctionnalités ont été ajoutées, comme la gestion des logs utilisateurs, l'édition des millésimes passés et l'attribution de parcelles. Des corrections de bugs et des optimisations de performance ont également été réalisées.
+Les dernières mises à jour de Vizeau se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des exploitations, des tâches et des journaux d'activité. Des améliorations ont également été apportées à la cartographie et à l'interface utilisateur, avec l'ajout de nouvelles fonctionnalités et la correction de bugs. Des efforts ont été faits pour améliorer la robustesse et la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'éditer les millésimes passés (#189, #161).
-- Implémentation de l'attribution de parcelles (#143).
-- Ajout d'un journal des actions utilisateurs pour suivre les parcours et améliorer l'application (#158).
-- Amélioration des popups de la carte avec de nouvelles informations et une meilleure gestion (#172, #165, #156).
-- Ajout d'une échelle sur la carte pour une meilleure lisibilité (#213).
-- Ajout de nouveaux filtres sur les cultures dans la cartographie (#212).
-- Possibilité de déselectionner une exploitation directement sur la carte (#185).
-- Amélioration de la visibilité des exploitations : les utilisateurs ne voient plus que leurs propres exploitations et celles créées par l'administrateur (#228).
-- Ajout de la gestion des groupes de cultures (#159).
-- Ajout de la gestion des types d'agriculture (#160).
-- Ajout de boutons pour afficher/masquer les différentes couches de la carte (#157).
-- Correction d'erreurs dans la console (#222).
+- Ajout de la possibilité de filtrer les cultures sur la carte (#212).
+- Ajout d'une échelle sur la carte (#213).
+- Implémentation de la gestion des tags d'exploitation.
+- Ajout de la planification des tâches.
+- Ajout de la gestion des titres dans les notes de journal de bord (#233).
+- Ajout d'une section "Parcelles" à l'interface utilisateur, permettant la gestion et l'attribution des parcelles (#246, #252, #254, #256).
+- Amélioration de la visibilité des actions sur la carte.
 - Ajout d'un bouton de recentrage de la carte (#219).
-- Ajout de la possibilité de supprimer des entrées de log avec une confirmation (#220).
-- Amélioration de l'affichage des notes dans les entrées de log (#220).
-- Amélioration de la gestion des tags et de leur affichage (#215, #216, #218).
+- Possibilité de supprimer des entrées de journal avec une confirmation (#205).
+- Ajout de la gestion de la couche "bio" (#206).
+- Les utilisateurs ne peuvent voir que leurs exploitations et celles créées par l'administrateur (#228).
 
 ### Évolutions techniques
-- Mise à jour des dépendances npm et yarn pour corriger des vulnérabilités de sécurité (CVE-2026-21440 et CVE-2026-22814) (#172).
-- Refactorisation et amélioration de composants UI : `ListItem`, `SelectorMenu`, `AlertDrawer`, `Toaster` (#169, #174, #179, #182, #183).
-- Amélioration de la structure du code et des tests.
-- Mise en place d'une action GitHub pour vérifier le fichier `package-lock.json` (#157).
-- Correction pour assurer le lancement des migrations à chaque déploiement sur Scalingo (#230).
+- Mise à niveau d'AdonisJS pour corriger des failles de sécurité (#257).
+- Amélioration de l'architecture du code, ajout de tests et documentation (#257).
+- Suppression de dépendances inutiles (#257).
+- Stockage du centroïde de la parcelle lors de l'attribution (#277).
+- Mise à jour des dépendances npm et yarn (#247, #191, #209).
+- Refactor de composants et amélioration des performances.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la gestion des erreurs et des logs.
 
 ### Autres changements
-- Mise à jour de la documentation pour l'exécution des migrations en production (#189).
-- Amélioration des données de test pour le MVP (#184).
-- Corrections de typographie et de wording dans l'interface utilisateur (#223, #225, #226, #214, #162).
-- Ajout de commentaires et de documentation dans le code.
-- Amélioration de l'expérience de développement avec Storybook.
+- Corrections de bugs et améliorations de l'interface utilisateur (#234, #244, #248, #249, #274, #275, #279, #280, #282, #283, #288, #289).
+- Amélioration de la documentation.
+- Corrections de typographie et de formatage.
+- Ajout de composants UI réutilisables (Tabs, SmallSection, TruncatedText).
+- Amélioration de l'accessibilité de l'application.
+- Ajout d'illustrations et de placeholders pour améliorer l'expérience utilisateur.
+- Corrections de problèmes détectés lors de la mise en production (#232).
+- Ajout de messages d'alerte pour les erreurs de saisie.
+- Amélioration de la gestion des erreurs et des validations.
