@@ -50,8 +50,14 @@ for github_json in ./repos/*/*/github.json; do
         echo "--- $repo_dir (updated: $updated_at)"
         COUNT=$((COUNT + 1))
 
-        if ./scripts/generate-repo-changelog.sh "$repo_dir" > "$changelog_file"; then
-            echo ""
+        changelog_content=$(./scripts/generate-repo-changelog.sh "$repo_dir")
+        if [ $? -eq 0 ]; then
+            if [ -n "$changelog_content" ]; then
+                echo "$changelog_content" > "$changelog_file"
+                echo ""
+            else
+                echo "--- SKIP empty changelog for $repo_dir"
+            fi
         else
             echo "Error processing $repo_dir" >&2
             ERRORS=$((ERRORS + 1))
