@@ -39,12 +39,20 @@ pnpm run setup    # Fetches DSFR docs and builds the server
 | `list_components` | Lists all DSFR components, fundamentals, and patterns with their name, French title, description, and available doc sections. |
 | `get_component_doc` | Returns the documentation for a specific component section (`overview`, `code`, `design`, `accessibility`, `demo`). Defaults to `code`. Suggests alternatives if the component name is not found. |
 | `search_components` | Full-text search across all DSFR documentation — metadata and markdown content. Returns matching components with excerpts. |
+| `search_icons` | Search DSFR icons by name or category. Returns icon name, category, variants (fill/line), and CSS classes. Supports filtering by category (`arrows`, `system`, `business`, etc.). |
+| `get_color_tokens` | Returns DSFR color tokens filtered by context (`background`, `text`, `artwork`), functional usage (`action`, `error`, `disabled`, etc.), or color family (`blue-france`, `grey`, `green-tilleul-verveine`, etc.). Includes light/dark theme mappings. |
 
 ## Configuration
 
 ### Claude Code
 
-Add to your project's `.mcp.json`:
+Available across all your projects (recommended):
+
+```bash
+claude mcp add dsfr --scope user -- npx dsfr-mcp
+```
+
+Or for a single project, add to your `.mcp.json`:
 
 ```json
 {

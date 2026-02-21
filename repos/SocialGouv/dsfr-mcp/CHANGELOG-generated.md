@@ -1,13 +1,17 @@
 ## Changelog : dsfr-mcp (30 derniers jours)
 
 ### Résumé
-Ce changelog fait état des premiers pas du projet dsfr-mcp. Il s'agit d'une initialisation du dépôt avec l'ajout du code source, des tests et de la configuration pour les releases et les actions CI/CD. Ces changements préparent le terrain pour le développement et le déploiement du serveur MCP qui exposera la documentation du DSFR aux assistants IA.
+Ce changelog présente les premières étapes de développement du serveur MCP pour le DSFR. Les modifications incluent l'initialisation du projet, l'ajout de la base du code source, la mise en place des tests et l'ajout du support des couleurs et des icônes pour la documentation du DSFR.
+
+### Évolutions fonctionnelles
+- Ajout du support des couleurs et des icônes dans la documentation du DSFR. (#910a928)
 
 ### Évolutions techniques
-- Initialisation du dépôt avec le premier commit (#ce767d2)
-- Ajout du code source principal du projet (#2b2747b)
-- Ajout de tests unitaires avec Vitest (#14c3c0e, #f3887fc)
-- Configuration des actions CI/CD pour les tests et les releases (#0ece16c, #34d05e5)
-- Ajout d'un token npm pour la publication des releases (#61a514e)
-- Renommage de fichiers/dossiers pour une meilleure organisation (#e25994f)
-- Correction de la configuration des releases et déclenchement manuel des releases (#e233755)
+- Initialisation du dépôt et du projet. (#ce767d2)
+- Ajout du code source initial. (#2b2747b)
+- Mise en place des tests avec Vitest. (#14c3c0e, #f3887fc)
+- Configuration des workflows CI/CD pour les tests et les releases. (#34d05e5, #61a514e, #0ece16c, #e233755)
+- Renommage de fichiers et réorganisation du projet. (#e25994f)
+
+### Autres changements
+- Mise à jour de la documentation README. (#7798f05, #c6c99dc)
