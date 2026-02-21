@@ -1,20 +1,23 @@
 {
-  "url": "https://github.com/socialgouv/enfants-du-spectacle",
+  "url": "https://github.com/SocialGouv/enfants-du-spectacle",
   "name": "enfants-du-spectacle",
-  "description": "Ce service numérique public vise à simplifier les demandes d’autorisation d’emplois d’enfants du spectacle et à garantir leur protection.",
+  "description": "Ce service numérique public simplifie les demandes d’autorisation d’emplois d’enfants du spectacle pour garantir leur protection. Il est développé par la DRIEETS d’Île-de-France et s'inscrit dans le programme beta.gouv.fr.",
   "language": "TypeScript",
   "features": [
     "Gestion des demandes d'autorisation",
-    "Gestion des utilisateurs",
     "Téléchargement de documents",
-    "Suivi des dossiers"
+    "Gestion des utilisateurs",
+    "Notifications",
+    "Archivage de dossiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "NextJS",
     "NextAuth.js",
     "Prisma",
-    "@dataesr/react-dsfr"
+    "@dataesr/react-dsfr",
+    "react",
+    "react-dom"
   ],
   "components": [
     "Frontend React",
@@ -23,26 +26,32 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [],
   "workflows": [
-    "lint.yml"
+    "lint",
+    "build",
+    "deploy"
   ],
-  "lastActivity": "2026-01-19T00:00:00Z",
+  "lastActivity": "2026-02-19T00:00:00Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
-    "enfant du spectacle",
-    "autorisation",
     "administration",
-    "React",
+    "spectacle",
+    "enfant",
+    "autorisation",
     "NextJS",
-    "Prisma"
+    "Prisma",
+    "React"
   ]
 }

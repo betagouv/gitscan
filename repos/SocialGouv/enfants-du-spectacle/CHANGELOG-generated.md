@@ -1,19 +1,17 @@
-## Changelog : enfants-du-spectacle (derniers 30 jours)
+## Changelog : enfants-du-spectacle (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des accès et du déploiement de l'application, ainsi que sur des corrections de bugs pour une meilleure expérience utilisateur. Des messages d'information ont été ajoutés concernant la nouvelle plateforme et les dossiers en dépôt.
+Ce changelog résume les récentes améliorations apportées au service "enfants du spectacle". Les mises à jour incluent des corrections de bugs, des ajustements de messages pour les utilisateurs, et des modifications concernant le dépôt des dossiers. Une migration vers pnpm a également été effectuée pour améliorer la gestion des dépendances du projet.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug permettant à certains utilisateurs d'accéder aux dossiers en dépôt (#872).
-- Ajout d'un message informant les utilisateurs de la nouvelle plateforme (#864).
-- Ajout d'un message informant les utilisateurs de la désactivation des dossiers en dépôt (#870).
-- Ajustement des messages affichés dans l'application (#871).
-- Déploiement de l'application (#874).
-- Ouverture du dépôt (#873).
+- Correction d'un bug permettant à certains utilisateurs d'accéder au dépôt des dossiers alors qu'ils n'y étaient pas autorisés (#872).
+- Ajustement des messages affichés aux utilisateurs (#871).
+- Modification du message concernant le nouveau service et désactivation du dépôt des dossiers (#870).
+- Suppression du formulaire de connexion (#875).
 
 ### Évolutions techniques
-- Migration vers pnpm (#868).
-- Blocage de la version de Prisma à 6 pour éviter des problèmes de compatibilité (#863).
+- Migration du gestionnaire de paquets vers pnpm (#868).
+- Déploiement amélioré grâce à la correction du trigger de déploiement (#875, #869, #874, 20cafaa).
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Publication des versions 1.131.2, 1.131.1, 1.131.0, 1.130.1, 1.130.0, 1.129.0, 1.128.0, 1.127.0 et 1.126.0.
