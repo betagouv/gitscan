@@ -1,36 +1,39 @@
-## Changelog : pitchou (derniers 30 jours)
+## Changelog : pitchou (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Pitchou au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de nouvelles fonctionnalités pour le suivi des dossiers et des dérogations, notamment l'intégration de l'API GeoMCE, l'amélioration de la gestion des avis d'expert, et le début d'un suivi des événements utilisateurs pour l'analyse des usages. Des corrections de bugs et des améliorations techniques ont également été réalisées.
+Ce changelog présente les améliorations apportées à Pitchou au cours des 30 derniers jours. Les principales évolutions concernent l'intégration et l'amélioration des données AARRI, des corrections de bugs et des améliorations de l'interface utilisateur, notamment pour la gestion des dossiers et des avis d'expert. La synchronisation avec l'API Démarche Numérique a également été affinée.
 
 ### Évolutions fonctionnelles
-
-- Intégration de l'API GeoMCE pour améliorer la gestion des données géographiques. (#484)
-- Correction d'un bug empêchant l'édition des commentaires dans la section "Mes dossiers". (#489)
-- Affichage des acquis sur la page AARRI pour un meilleur suivi de l'avancement des dossiers. (#487)
-- Possibilité de modifier les avis d'expert directement dans l'onglet "Avis". (#431)
-- Ajout de la possibilité de renseigner que des mesures ER sont suffisantes, sans nécessiter de dérogation. (#470)
-- Finition de la page "Tous les dossiers" et création de la page "Mes dossiers" pour une meilleure organisation. (#451)
-- Affichage des fichiers des pétitionnaires pour faciliter l'accès aux documents. (#449)
-- Renommage des variables "demarches simplifiées" en "démarche numérique" pour plus de clarté. (#442)
-- Création d'une page AARRI permettant de suivre l'avancement des dossiers en temps réel. (#452)
+- Ajout du champ "Numéro Onagre" dans l'onglet Instruction des dossiers (#500).
+- Rajout des fichiers de Démarche Numérique manquants dans Pitchou (#503).
+- Affichage des acquis sur la page AARRI (#487).
+- Affichage de "Retenu" dans les informations AARRI (#494).
+- Possibilité de modifier les avis d’expert dans l’onglet Avis (#431).
+- Suppression du bouton "Ajouter une pièce jointe" dans l'onglet Instruction (#510).
+- Remplacement de "nouveau" par "expérimental" dans l'interface (#512).
+- Correction d'un bug concernant un message erroné "dossier bien mis à jour" (#490).
+- Correction d'un bug lié aux commentaires dans la liste "Mes dossiers" (#489).
+- Amélioration de l'affichage des pages "Mes dossiers" et "Tous les dossiers" avec du CSS (#504).
+- Ajout de documentation pour ajouter une espèce manquante (#498).
 
 ### Évolutions techniques
-
-- Résolution d'un problème de dépréciation lié à l'import par défaut de `svelte-preprocess`. (#469)
-- Ajout de `pnpm` comme gestionnaire de paquets pour améliorer la gestion des dépendances. (#461)
-- Utilisation de `pnpm` pour lancer le serveur en production. (#460)
-- Restauration de l'exécution des tests end-to-end pour garantir la qualité du code. (#468)
-- Mise à jour de la version de `pnpm` de 10.25.0 à 10.27.0. (#464)
-- Passage explicite à la version 1.5 de `svelte-check-action` pour plus de stabilité. (#467)
-- Ajout d'un index sur l'événement pour optimiser les performances. (#460)
-- Ajout d'une politique de confidentialité. (#466)
+- Amélioration de la synchronisation avec l'API Démarche Numérique (#497).
+- Correction de la page des statistiques (#507).
+- Ajustement des événements AARRI (#505).
+- Arrêt de la synchronisation des avis expert avec les annotations privées de Démarche Numérique (#499).
+- Implémentation de l'API GeoMCE (#484).
+- Ajout d'événements de consultation des dossiers (#474).
+- Ajout d'événements de contrôle (#486).
+- Calcul de l'indicateur "acquis" à partir des événements (#479).
+- Correction de la logique pour `presence_especes_dans_aire_influence` et `risque_malgre_mesures_erc` (#495).
+- Fin de la correspondance des colonnes du tableau de suivi pour l'import Corse (#477).
+- Suppression des données d'événements (#506).
+- Suppression des adresses en beta.gouv.fr des métriques AARRI (#491).
+- Ajout de documentation pour l'ajout d'une espèce manquante (#498).
+- Préparation de tests e2e (#501).
 
 ### Autres changements
-
-- Ajout d'événements pour le suivi des actions utilisateurs (recherche de dossiers, connexion, etc.) dans le but d'améliorer l'analyse des usages. (#472, #482, #471, #476, #458)
-- Correction d'une typo. (#475)
-- Initialisation du texte de l'autocomplete pour une meilleure expérience utilisateur. (#455)
-- Ajout de liens vers les nouvelles pages de listage des dossiers. (#481)
-- Correction d'un bug lié à la réversion d'une requête pour récupérer les actifs.
-- Migrations en production. (#462)
+- Ajout de documentation concernant les différences entre DN et Pitchou (#508).
+- Mise à jour de la documentation `phases-instructions.md` (plusieurs commits).
+- Envoi de l'événement `seConnecter` à chaque connexion (#482).
+- Ajout de liens vers les nouvelles pages de listes de dossiers (#481).
