@@ -203,6 +203,9 @@
 │   │   ├── 0042_alter_dossier_annotations_taux_detr_and_more.py
 │   │   ├── 0043_merge_20260209_1908.py
 │   │   ├── 0044_associate_perimetre_to_dossier.py
+│   │   ├── 0045_remove_dossierdata_ds_demarche_dossier_ds_demarche_and_more.py
+│   │   ├── 0046_remove_dossier_ds_demarche_number.py
+│   │   ├── 0047_alter_dossier_ds_demarche.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -212,6 +215,11 @@
 │   │       └── dossier_sans_piece.css
 │   ├── tasks.py
 │   ├── templates
+│   │   ├── admin
+│   │   │   └── gsl_demarches_simplifiees
+│   │   │       └── demarche
+│   │   │           ├── change_list.html
+│   │   │           └── refresh_dossiers_depot.html
 │   │   └── gsl_demarches_simplifiees
 │   │       ├── demarche_list.html
 │   │       ├── demarche_mapping.html
@@ -430,7 +438,6 @@
 │   │   │   ├── programmation_projet_detail.html
 │   │   │   ├── programmation_projet_list.html
 │   │   │   └── tab_programmation_projet
-│   │   │       ├── tab_historique.html
 │   │   │       ├── tab_notes.html
 │   │   │       ├── tab_projet.html
 │   │   │       └── tabs.html
@@ -515,7 +522,6 @@
 │   ├── templates
 │   │   ├── gsl_projet
 │   │   │   ├── projet
-│   │   │   │   ├── tab_historique.html
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
 │   │   │   │   └── tabs.html
@@ -622,8 +628,7 @@
 │   │   └── js
 │   │       ├── controllers
 │   │       │   ├── bindAmountTields.js
-│   │       │   ├── dotationDropdown.js
-│   │       │   └── processModal.js
+│   │       │   └── dotationDropdown.js
 │   │       ├── handleInteractionInSimulationProjet.js
 │   │       ├── handleInteractionInSimulationProjetAnnotations.js
 │   │       ├── handleInteractionsInSimulation.js
@@ -637,7 +642,6 @@
 │   │   │   ├── simulation_list.html
 │   │   │   ├── simulation_projet_detail.html
 │   │   │   └── tab_simulation_projet
-│   │   │       ├── tab_historique.html
 │   │   │       ├── tab_notes.html
 │   │   │       ├── tab_projet.html
 │   │   │       └── tabs.html
@@ -748,4 +752,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-140 directories, 610 files
+143 directories, 611 files

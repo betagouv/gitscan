@@ -1,18 +1,17 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subventions, les dotations et les projets associés. L'application offre des fonctionnalités d'administration, de simulation et de gestion des utilisateurs.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les subventions de manière centralisée, de suivre les dossiers et de simplifier les processus administratifs.",
   "language": "Python",
   "features": [
     "Gestion des dossiers de subvention",
-    "Gestion des dotations",
-    "Gestion des projets",
-    "Simulation de subventions",
-    "Administration des utilisateurs",
+    "Suivi des demandes",
+    "Génération de documents (arrêtés, lettres)",
     "Import de données",
-    "Génération de documents",
+    "Gestion des utilisateurs et des droits d'accès",
     "Notifications",
-    "Gestion des catégories de subventions (DETR/DSIL)"
+    "Simulation de subventions",
+    "Gestion des catégories de subventions (DSIL, DETR)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,12 +19,10 @@
     "PostgreSQL",
     "Celery",
     "Redis",
-    "Mozilla OIDC",
-    "htmx.org",
-    "tiptap",
+    "Mozilla-django-oidc",
     "django-htmx",
-    "django-csp",
-    "django-dsfr"
+    "htmx.org",
+    "tiptap"
   ],
   "components": [
     "Backend Django",
@@ -33,23 +30,19 @@
     "Base de données PostgreSQL",
     "Tâches asynchrones avec Celery",
     "Authentification OIDC",
-    "API REST",
-    "Interface d'administration Django"
+    "API REST"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
-    ],
-    "providers": [
-      "Mozilla OIDC"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-17T12:34:36+01:00",
+  "lastActivity": "2026-02-20T13:51:26+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -63,11 +56,11 @@
     "subventions",
     "gestion",
     "administration",
-    "Django",
-    "Python",
-    "PostgreSQL",
-    "Celery",
-    "OIDC",
-    "subventions locales"
+    "django",
+    "postgresql",
+    "celery",
+    "oidc",
+    "htmx",
+    "subventions-locales"
   ]
 }
