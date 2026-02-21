@@ -1,13 +1,37 @@
-## Changelog : fiches-vdd (derniers 30 jours)
+## Changelog : fiches-vdd (30 derniers jours)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'évolution du projet fiches-vdd. Les principales modifications concernent des mises à jour régulières des données relatives aux droits et démarches administratives. Ces mises à jour sont automatisées et visent à maintenir l'information fournie par le projet à jour et précise.
+Ce changelog couvre les 30 derniers jours d'évolution du projet fiches-vdd. Les modifications apportées concernent principalement des mises à jour des données des fiches de droits et démarches. Ces mises à jour sont régulières et visent à maintenir l'information accessible la plus à jour possible pour les utilisateurs (professionnels, associations, agents de l'administration).
 
 ### Évolutions fonctionnelles
-- Mise à jour quotidienne des fiches sur les droits et démarches : les données ont été mises à jour les 31 janvier, 30 janvier, 29 janvier, 28 janvier, 27 janvier, 26 janvier, 25 janvier, 24 janvier, 23 janvier, 22 janvier, 21 janvier, 20 janvier, 19 janvier, 18 janvier, 17 janvier, 16 janvier, 15 janvier, 14 janvier, 13 janvier, 12 janvier, 11 janvier, 10 janvier, 9 janvier, 8 janvier, 7 janvier et 6 janvier. (Voir les commits associés pour plus de détails)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-19 (#2d6c04a)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-18 (#c5d7728)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-17 (#adb0312)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-16 (#55d88d3)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-15 (#ee88554)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-14 (#50fc239)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-13 (#622257b)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-12 (#ed9ef2e)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-11 (#a59888b)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-10 (#180857c)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-08 (#8c2e93c)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-07 (#a8f46cd)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-06 (#3ae2e08)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-05 (#e62ea7ed)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-04 (#afdc708)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-03 (#bb69444)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-02 (#54189c0)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-02-01 (#34838b9)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-31 (#4b6827b)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-30 (#079f2d0)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-29 (#aa2003a)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-28 (#7397218)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-27 (#37a1798)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-26 (#f6db5f9)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-25 (#1c20fb8)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-24 (#c80f8a7)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-23 (#30b2121)
+- Mise à jour des données des fiches de droits et démarches pour le 2026-01-22 (#d966770)
 
 ### Évolutions techniques
-- Aucune évolution technique significative n'a été apportée durant cette période.
-
-### Autres changements
-- Aucune autre modification n'a été effectuée durant cette période.
+- Mises à jour régulières de la version du projet (2.1630.0 à 2.1657.0)
