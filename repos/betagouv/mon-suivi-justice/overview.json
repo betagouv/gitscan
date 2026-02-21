@@ -1,31 +1,32 @@
 {
   "url": "https://github.com/betagouv/mon-suivi-justice",
   "name": "mon-suivi-justice",
-  "description": "Un service numérique public pour réduire l'absentéisme lors des convocations avec les agents du ministère de la justice. Il permet de prendre et suivre des convocations, en envoyant des SMS à différentes étapes du process.",
+  "description": "Un service numérique public pour réduire l'absentéisme lors des convocations avec les agents du ministère de la justice. Il permet de prendre et suivre des convocations, en envoyant des SMS à différentes étapes du processus.",
   "language": "Ruby",
   "features": [
-    "Gestion des convocations",
+    "Gestion des rendez-vous",
     "Envoi de SMS",
-    "Suivi des rendez-vous",
+    "Suivi des convocations",
     "Gestion des agents",
-    "Gestion des lieux",
-    "Gestion des types de rendez-vous"
+    "Gestion des détenus",
+    "Gestion des lieux de rendez-vous"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@gouvfr/dsfr",
+    "Ruby on Rails",
     "PostgreSQL",
-    "Redis",
-    "Trix",
+    "Devise",
+    "Administrate",
     "Stimulus",
-    "esbuild",
-    "postcss"
+    "Turbo Rails",
+    "PostCSS",
+    "esbuild"
   ],
   "components": [
-    "Frontend React",
+    "Frontend Rails",
     "API REST",
     "Base de données PostgreSQL",
-    "Backend Rails"
+    "Backend Ruby on Rails"
   ],
   "auth": {
     "methods": [
@@ -34,11 +35,13 @@
     ],
     "providers": []
   },
-  "tests": null,
-  "workflows": [
-    "main"
+  "tests": [
+    "RSpec"
   ],
-  "lastActivity": "2026-02-16T16:54:10+01:00",
+  "workflows": [
+    "CI/CD avec GitHub Actions"
+  ],
+  "lastActivity": "2026-02-20T01:13:58+01:00",
   "status": "active",
   "license": "EUPL-1.2",
   "hasDocumentation": true,
@@ -46,15 +49,14 @@
     "stars": 7,
     "forks": 3,
     "contributors": null,
-    "openIssues": 16
+    "openIssues": 6
   },
   "tags": [
     "justice",
     "rendez-vous",
     "sms",
     "administration",
-    "public",
-    "rails",
-    "ruby"
+    "ruby",
+    "rails"
   ]
 }
