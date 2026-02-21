@@ -1,32 +1,34 @@
 {
   "url": "https://github.com/betagouv/complements-alimentaires",
   "name": "complements-alimentaires",
-  "description": "Ce projet permet de gérer les compléments alimentaires. Il offre des fonctionnalités d'installation, de configuration et de gestion de données, ainsi que des tests et une intégration continue.",
+  "description": "Ce projet gère les compléments alimentaires. Il permet de suivre les déclarations, les entreprises et les substances associées. Il offre également des fonctionnalités d'administration et d'export de données.",
   "language": "Python",
   "features": [
-    "Gestion des compléments alimentaires",
-    "Import de données initiales",
-    "Export de données",
-    "Gestion des utilisateurs",
+    "Gestion des déclarations",
+    "Gestion des entreprises",
+    "Gestion des substances",
     "Administration",
-    "Tests automatisés"
+    "Export de données",
+    "Authentification",
+    "Validation automatique"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
+    "Python",
     "Node.js",
     "npm",
     "PostgreSQL",
     "Celery",
-    "pytest",
-    "pre-commit"
+    "Sentry",
+    "Matomo"
   ],
   "components": [
-    "Backend Python (Django)",
-    "Frontend JavaScript (Vue.js)",
+    "Backend Python/Django",
+    "Frontend Vue.js",
     "Base de données PostgreSQL",
-    "Tâches asynchrones (Celery)",
-    "API REST"
+    "API REST",
+    "Tâches asynchrones Celery"
   ],
   "auth": {
     "methods": [
@@ -34,13 +36,13 @@
     ]
   },
   "tests": [
-    "pytest",
-    "Tests VueJS (npm)"
+    "Python tests",
+    "Vue.js tests"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD GitHub Actions"
   ],
-  "lastActivity": "2026-02-10T17:33:51+01:00",
+  "lastActivity": "2026-02-20T12:19:53+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -52,11 +54,11 @@
   },
   "tags": [
     "compléments alimentaires",
-    "Django",
-    "Python",
-    "Vue.js",
-    "PostgreSQL",
+    "santé",
     "administration",
-    "santé"
+    "Python",
+    "Django",
+    "Vue.js",
+    "PostgreSQL"
   ]
 }

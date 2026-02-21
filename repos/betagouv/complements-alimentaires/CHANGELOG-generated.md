@@ -1,27 +1,30 @@
 ## Changelog : complements-alimentaires (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité du site avec l'implémentation d'une politique de sécurité du contenu (CSP), des corrections de vulnérabilités et des améliorations de l'accessibilité. Des ajustements ont également été apportés à l'administration, notamment pour la gestion des entreprises mandatées et des substances, ainsi que des mises à jour techniques et de dépendances.
+Ce changelog résume les évolutions récentes du projet de gestion des compléments alimentaires. Les dernières semaines ont été marquées par des améliorations significatives en termes d'accessibilité, notamment avec l'ajout de commutateurs pour les cases à cocher et l'amélioration de la navigation au clavier. Des corrections et des améliorations ont également été apportées à l'administration, à la sécurité (CSP) et à l'export des données. Enfin, de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'inclure l'entreprise mandatée lors de la duplication d'une demande. (#2708)
-- Amélioration de la validation automatique des articles 15, réduisant le temps d'attente pour les utilisateurs. (#2703)
-- Ajout du SIRET et de la TVA dans l'export des données pour les SD. (#2682)
-- Correction d'un bug d'overflow sur la page de déclaration. (#2643)
-- Ajout de l'URL de l'admin Django personnalisable. (#2661)
-- Ajout de l'entreprise mandatée dans l'interface d'administration. (#2706)
-- Amélioration de l'accessibilité des liens et des boutons, notamment avec des titres et des noms explicites pour les lecteurs d'écran. (#2628, #2720)
-- Correction de liens de téléchargement sur les pages de certificats et de résultats. (#2720)
+- Amélioration de l'accessibilité : remplacement des cases à cocher par des commutateurs pour une meilleure conformité RGAA 11.2 (#2739, #2710).
+- Amélioration de l'accessibilité : amélioration de la navigation au clavier et des étiquettes pour les champs de formulaire (#2721, #2723, #2712, #2714, #2715, #2717, #2718, #2719).
+- Ajout de la possibilité de modifier les déclarations sans entreprises mandatées (#2734).
+- Mise à jour de l'entête des certificats (#2736).
+- Ajout de l'entreprise mandatée lors de la duplication d'une déclaration (#2708).
+- Inclusion du SIRET et de la TVA dans l'export des données pour les SD (#2683).
+- Mise à jour de l'attestation et de l'AR pour les articles 15 (#2703).
+- Ajout de l'entreprise mandatée dans l'interface d'administration (#2706).
+- Amélioration de la validation automatique des articles 15 (#2702).
 
 ### Évolutions techniques
-- Implémentation initiale d'une politique de sécurité du contenu (CSP) pour renforcer la sécurité du site. (#2662)
-- Mise à jour de plusieurs dépendances : Django (6.0.2), Vue.js (3.5.27), babel, prettier, eslint, et autres.
-- Suppression des styles inline dans l'administration et le frontend. (#2660, #2657)
-- Mise à jour de l'image Docker. (#2677)
-- Suppression de l'utilisation de `mark_safe` dans l'administration pour des raisons de sécurité. (#2685)
+- Mise à jour de la configuration des Content Security Policies (CSP) pour améliorer la sécurité de l'application (#2664, #2656, #2660, #2662, #2663).
+- Mise à jour de la base de données PostgreSQL dans les workflows GitHub Actions (#2736).
+- Refonte de l'application frontend pour supprimer les styles en ligne et améliorer la maintenabilité (#2663).
+- Mise à jour des dépendances Python (Django, cryptography, ipython, etc.) et Node.js (vue, eslint, prettier, etc.) vers leurs dernières versions stables.
 
 ### Autres changements
-- Ajout de Metabase dans la configuration CSP. (#2700)
-- Mise à jour du logo du ministère dans les certificats. (#2687)
-- Amélioration de la structure des breadcrumbs. (#2661)
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout du logo du ministère dans les certificats (#2687).
+- Amélioration de la documentation et des commentaires dans le code.
+- Corrections mineures de l'interface utilisateur et de l'expérience utilisateur.
+- Ajout de Metabase dans la liste des domaines autorisés par la CSP (#2700).
+- Suppression de l'utilisation de styles inline dans l'application frontend (#2663).
+- Amélioration de la gestion des liens de téléchargement (#2674).
+- Ajout de tests unitaires et d'intégration.
