@@ -226,6 +226,7 @@
 │   │   │   ├── 0007_remove_habilitation_role_entreprise_user_and_more.py
 │   │   │   ├── 0008_habilitation_invitation.py
 │   │   │   ├── 0009_alter_habilitation_invitation.py
+│   │   │   ├── 0010_habilitation_is_conseiller_rse.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -262,6 +263,8 @@
 │   │   │   ├── 0004_invitation_date_acceptation.py
 │   │   │   ├── 0005_alter_invitation_inviteur.py
 │   │   │   ├── 0006_alter_invitation_role.py
+│   │   │   ├── 0007_invitation_est_invitation_proprietaire_tiers.py
+│   │   │   ├── 0008_remove_invitation_est_invitation_proprietaire_tiers.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tests
@@ -320,6 +323,7 @@
 │   │   │   ├── 0025_vsme.py
 │   │   │   ├── 0026_analyseia.py
 │   │   │   ├── 0027_analyseia_nom_fichier.py
+│   │   │   ├── 0028_utilisateur_conseiller_rse.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tests.py
@@ -667,6 +671,7 @@
 │   │   │   ├── droits.png
 │   │   │   ├── durable-2x3.png
 │   │   │   ├── environnement-2x3.png
+│   │   │   ├── equilibre.png
 │   │   │   ├── espace_csrd
 │   │   │   │   ├── GRI.png
 │   │   │   │   ├── MSCI.png
@@ -748,6 +753,8 @@
 │   │   │   ├── 0006_alter_user_options_alter_user_acceptation_cgu_and_more.py
 │   │   │   ├── 0007_alter_user_is_staff.py
 │   │   │   ├── 0008_user_sub_pc.py
+│   │   │   ├── 0009_add_is_conseiller_rse.py
+│   │   │   ├── 0010_user_fonction_rse.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -755,19 +762,31 @@
 │   │   │   │   ├── login_email_password.html
 │   │   │   │   └── login_proconnect.html
 │   │   │   └── users
+│   │   │       ├── accepter_role_proprietaire.html
 │   │   │       ├── account.html
+│   │   │       ├── choix_type_utilisateur.html
 │   │   │       ├── creation.html
 │   │   │       ├── email
 │   │   │       │   ├── confirm_email.html
 │   │   │       │   ├── password_reset_email.html
 │   │   │       │   └── password_reset_subject.txt
+│   │   │       ├── fragments
+│   │   │       │   ├── account_form.html
+│   │   │       │   ├── siren_field_conseiller.html
+│   │   │       │   └── statut_entreprise.html
 │   │   │       ├── login.html
 │   │   │       ├── password_reset_confirm.html
-│   │   │       └── password_reset_form.html
+│   │   │       ├── password_reset_form.html
+│   │   │       └── tableau_de_bord_conseiller.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_accepter_role_proprietaire.py
+│   │   │   ├── test_choix_type_utilisateur.py
 │   │   │   ├── test_commands.py
+│   │   │   ├── test_creer_entreprise_pour_tiers.py
 │   │   │   ├── test_forms.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_tableau_de_bord_conseiller.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   └── views.py
@@ -871,4 +890,4 @@
 │   └── sync_metabase.sh
 ├── servers.conf.erb
 └── start.sh
-131 directories, 742 files
+132 directories, 760 files
