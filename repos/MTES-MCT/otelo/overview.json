@@ -5,30 +5,33 @@
   "language": "TypeScript",
   "features": [
     "Authentification",
-    "Exports (Excel, PowerPoint)",
+    "Calculs de simulation",
+    "Export de données (Excel, PowerPoint)",
     "Visualisation de données",
-    "Gestion des simulations",
-    "Calculs de besoins en logements"
+    "Gestion des utilisateurs",
+    "Gestion des groupes EPCI",
+    "Import de sauvegardes",
+    "Recalcul des résultats"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
     "Prisma",
-    "Next.js",
-    "React",
-    "DSFR",
-    "Zod",
+    "NextAuth/JWT",
     "ExcelJS",
     "Puppeteer",
     "PapaParse",
+    "React",
+    "DSFR",
     "TanStack Query",
-    "Leaflet"
+    "Leaflet",
+    "zod"
   ],
   "components": [
     "Backend NestJS",
     "Frontend Next.js",
     "Base de données PostgreSQL",
-    "Package partagé (Types TypeScript, schémas Zod)"
+    "Package partagé (Types TypeScript et schémas Zod)"
   ],
   "auth": {
     "methods": [
@@ -40,10 +43,10 @@
   },
   "tests": [
     "Jest",
-    "Cypress (via e2e tests)"
+    "Prisma tests"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-17T20:10:00+01:00",
+  "lastActivity": "2026-02-20T11:54:11+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -57,7 +60,8 @@
     "logement",
     "territoire",
     "simulation",
+    "EPCI",
     "statistiques",
-    "urbanisme"
+    "développement durable"
   ]
 }
