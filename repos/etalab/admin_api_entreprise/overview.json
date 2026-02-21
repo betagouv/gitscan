@@ -1,69 +1,62 @@
 {
   "url": "https://github.com/etalab/admin_api_entreprise",
   "name": "admin_api_entreprise",
-  "description": "Site vitrine / backoffice de API Entreprise. Ce projet fournit une interface d'administration pour les API Entreprise et Particulier, permettant la gestion des accès et des données.",
+  "description": "Site vitrine / backoffice de l'API Entreprise et de l'API Particulier. Il permet de gérer et de visualiser les informations relatives à ces APIs.",
   "language": "Ruby",
   "features": [
-    "Gestion des accès",
+    "Gestion des webhooks",
     "Recherche d'API",
     "Gestion des utilisateurs",
     "Visualisation des données",
-    "Gestion des webhooks"
+    "Gestion des accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
-    "Rails",
     "PostgreSQL",
     "Redis",
-    "Docker",
-    "Node.js",
-    "Mjml"
+    "Rails",
+    "Docker"
   ],
   "components": [
-    "Frontend Ruby on Rails",
-    "API REST",
+    "Backend Ruby on Rails",
     "Base de données PostgreSQL",
-    "Serveur Redis",
-    "Docker pour le déploiement"
+    "Cache Redis",
+    "Frontend (Stimulus, Turbo)",
+    "API REST"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "session"
+      "oauth2"
     ],
-    "providers": [
-      "FranceConnect"
-    ]
+    "providers": []
   },
   "tests": [
     "RSpec",
-    "Guard",
-    "Brakeman"
+    "Guard"
   ],
   "workflows": [
     "tests.yml",
     "lint.yml",
     "security.yml"
   ],
-  "lastActivity": "2026-02-17T18:45:57+01:00",
+  "lastActivity": "2026-02-20T13:22:15+01:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 12,
-    "forks": 7,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 12
+    "openIssues": null
   },
   "tags": [
     "API",
-    "Rails",
+    "Ruby on Rails",
     "Administration",
     "FranceConnect",
-    "Ruby",
-    "PostgreSQL",
-    "Redis"
+    "SIADE",
+    "GIP MDS"
   ]
 }
