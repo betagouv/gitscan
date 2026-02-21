@@ -1,26 +1,20 @@
-## Changelog : mission-transition-ecologique (derniers 30 jours)
+## Changelog : mission-transition-ecologique (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'une série de mises à jour et de corrections visant à améliorer l'expérience utilisateur et la qualité des données. Les principales améliorations concernent la gestion des programmes et des projets, la correction de bugs liés à l'affichage des informations et l'amélioration de la robustesse de l'application. Une nouvelle version "Agir" a également été publiée.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives, notamment l'ajout de données ADEME brutes, la correction de bugs liés à l'affichage des programmes archivés et à la gestion des données PostHog, ainsi que l'intégration d'un iframe pour la vérification du SIRET. Des mises à jour régulières des données des programmes et projets ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'URL des aides (#2373)
-- Correction de l'affichage des titres sur la page des projets (#2441)
-- Correction de l'affichage des informations SIRET et associées dans les résultats du formulaire (correction d'un test E2E) (#2415)
-- Correction d'un bug concernant la vérification de la valeur du thème pour la limite de projets sur la page d'accueil (#2478)
-- Correction de l'affichage des pages de détails des programmes archivés (#2467)
-- Publication de la version "Agir" (#2418)
-- Correction d'un bug dans l'API des statistiques (#2413)
-- Mise à jour de la structure et du lien externe de la carte "À propos" (#2440)
+- Ajout des données brutes des programmes ADEME (#2438)
+- Intégration d'un iframe pour la vérification du numéro SIRET (#2493)
+- Correction de l'affichage des pages de détail des programmes archivés (#2467)
+- Amélioration de l'URL de l'application (#2373)
+- Mise à jour de la page "À propos" avec un lien externe corrigé et une structure de carte améliorée (#2440)
+- Correction d'un bug lié à la vérification de la valeur du thème pour la limite de projets sur la page d'accueil (#2478)
+- Publication de la release "agir" (#2418)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `vue-dsfr` (#2402)
-- Correction de la gestion des valeurs nulles provenant des données PostHog dans la fonction `generate_company_id` (#2469)
-- Suppression de la logique de récupération des projets, jugée inutile (#2340)
-- Correction d'un problème lié à l'utilisation de `_` dans ESLint (#2370)
+- Gestion des valeurs nulles provenant des données PostHog dans la fonction `generate_company_id` (#2469)
+- Mise à jour régulière des données des programmes et des projets (plusieurs commits, ex: #2510, #2496, #2480, #2475, #2472, #2471, #2465, #2449, #2448)
 
 ### Autres changements
-- Mises à jour régulières des données des programmes et des projets (plusieurs PRs : #2475, #2472, #2471, #2465, #2449, #2443, #2436, #2410, #2407, #2404, #2388)
-- Mise à jour des données des témoignages (#2376)
-- Mise à jour des données de la FAQ (#2222)
 - Mise à jour des données statiques (#2466)
