@@ -1,20 +1,17 @@
 ## Changelog : idp-status-monitoring (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les récentes mises à jour de l'application de surveillance de l'état des services IDP. Les changements se concentrent principalement sur la mise à jour des dépendances du projet, notamment les librairies TypeScript, les outils de CI/CD et l'environnement d'exécution Bun. Une correction de la version de Bun utilisée dans le Dockerfile a également été apportée.
+Ce changelog fait état de mises à jour régulières des dépendances du projet, ainsi que de quelques corrections mineures concernant la version de Bun utilisée dans le Dockerfile. L'application continue de fonctionner sans interruption de service et ces changements visent à maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions techniques
-- Mise à jour de l'écosystème de gestion des paquets vers Bun (#40).
-- Correction de la version de Bun utilisée dans le Dockerfile (#31cba7e).
-- Mise à jour de Hono de 4.10.2 à 4.11.8 (#42).
-- Mise à jour de Zod de 4.1.12 à 4.3.6 (#46).
-- Mise à jour de `@hono/zod-validator` (#45).
-- Mise à jour de `@types/bun` (#43, #51).
-- Mise à jour de `@tsconfig/bun` (#50).
-- Mise à jour de `@types/amqplib` (#49).
-- Mise à jour de `oven/bun` (#48).
-- Mise à jour de `prettier` de 3.6.2 à 3.8.1 (#44).
-- Mise à jour des actions GitHub : `checkout` (#36, #41), `docker/metadata-action` (#35), `docker/setup-buildx-action` (#39), `actions/download-artifact` (#38), `actions/upload-artifact` (#37).
+- Mise à jour de la version de Bun utilisée dans le Dockerfile pour corriger un problème. (#31cba7e)
+- Mise à jour de l'écosystème de dépendances vers Bun. (#600ba4a)
+- Mises à jour de plusieurs actions utilisées dans les workflows CI/CD (actions/checkout, docker/metadata-action, docker/setup-buildx-action, actions/download-artifact, actions/upload-artifact). (#36, #35, #39, #38, #37)
+- Mises à jour de plusieurs dépendances : hono, @hono/zod-validator, zod, prettier, @types/bun, @types/amqplib, @tsconfig/bun. (#55, #42, #45, #46, #44, #51, #49, #50)
 
 ### Autres changements
-- Mise à jour des dépendances générales du projet via Dependabot. Ces mises à jour concernent principalement des correctifs et des améliorations de sécurité. (#52)
+- Mises à jour mineures des dépendances de développement (@types/bun, @tsconfig/bun). (#56, #43)
+- Mise à jour de l'action docker/build-push-action. (#54)
+- Mise à jour de l'action docker/login-action. (#47)
+- Mise à jour de l'action oven/bun. (#53, #48)
+- Mise à jour de l'action oven-sh/setup-bun. (#40)
