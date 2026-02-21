@@ -1,18 +1,17 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de gérer les fiches Seves, les documents associés, et les investigations.",
+  "description": "Sèves est un outil de gestion mutualisée de tous les événements sanitaires. Il permet de gérer les fiches Seves et les documents associés, ainsi que d'améliorer l'expérience utilisateur grâce à des optimisations de performance et des corrections de bugs.",
   "language": "Python",
   "features": [
-    "Gestion des événements sanitaires",
     "Gestion des fiches Seves",
-    "Téléchargement massif de documents",
-    "Gestion des TIAC (Travaux d'Investigation et de Contrôle)",
-    "Gestion des SSA (Signalements Sanitaires)",
+    "Gestion des documents",
+    "Téléchargement massif de fichiers",
     "Notifications",
     "Recherche",
-    "Gestion des contacts",
-    "Gestion des utilisateurs"
+    "Gestion des TIAC",
+    "Gestion des SSA",
+    "Export de données (CSV, DOCx)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -26,12 +25,10 @@
     "pip-tools"
   ],
   "components": [
-    "Backend Django",
-    "Frontend HTML, CSS, JavaScript (AlpineJS)",
+    "Frontend (HTML, CSS, JavaScript)",
+    "API REST (Django)",
     "Base de données PostgreSQL",
-    "Système de Design de l'État (DSFR)",
-    "API REST",
-    "Tests E2E (Playwright)"
+    "Système de Design de l'État (DSFR)"
   ],
   "auth": {
     "methods": [
@@ -40,12 +37,10 @@
   },
   "tests": [
     "Pytest",
-    "Playwright"
+    "Playwright (tests E2E)"
   ],
-  "workflows": [
-    "CI/CD (Scalingo)"
-  ],
-  "lastActivity": "2026-02-16T16:51:58+01:00",
+  "workflows": [],
+  "lastActivity": "2026-02-18T21:11:01+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -56,14 +51,12 @@
     "openIssues": null
   },
   "tags": [
-    "santé",
-    "événements sanitaires",
-    "gestion de crise",
+    "gestion des événements sanitaires",
     "Django",
     "Python",
     "PostgreSQL",
-    "administration publique",
-    "TIAC",
-    "SSA"
+    "administration",
+    "santé",
+    "Seves"
   ]
 }
