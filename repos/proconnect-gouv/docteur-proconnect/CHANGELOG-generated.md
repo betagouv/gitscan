@@ -1,16 +1,16 @@
 ## Changelog : docteur-proconnect (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des corrections de bugs, des améliorations de la qualité du code et la suppression de tests E2E défaillants. L'application a également été renommée pour une meilleure cohérence linguistique.
+Les récentes mises à jour de Docteur ProConnect se concentrent sur la correction de bugs, l'amélioration de la stabilité des tests et la préparation d'une nouvelle version. Des ajustements ont été apportés pour corriger des erreurs dans le code et supprimer des tests automatisés défaillants.
 
 ### Évolutions fonctionnelles
 - Correction d'un bug où `currentUrl` était utilisé avant d'être défini (#29).
-- Renommage de "Doctor" en "Docteur" dans l'interface utilisateur (#29).
+- Préparation de mises à jour pour une future publication (#36).
 
 ### Évolutions techniques
-- Suppression des tests E2E défaillants (#37, #29).
+- Suppression de tests E2E défaillants pour améliorer la fiabilité de la suite de tests (#37).
 - Correction de vulnérabilités identifiées par `npm audit` (#29).
-- Suppression de la variable d'environnement `title` non utilisée (#35).
+- Suppression d'une variable d'environnement inutile (`title`) (#35).
 
 ### Autres changements
-- Préparation de la publication d'une nouvelle version (#36).
+- Mise à jour de la dépendance `qs` de la version 6.14.1 à la version 6.14.2 (#39).
