@@ -9,14 +9,34 @@
 ├── __init__.py
 ├── config.json
 ├── conftest.py
-├── cv_runner_cli.py
+├── dev
+│   ├── image_test
+│   │   ├── LHD_FXX_0615_6835_LD_A_LAMB93 - Copie.jpg
+│   │   ├── LHD_FXX_0615_6835_LD_A_LAMB93.jpg
+│   │   ├── LHD_FXX_0615_6836_LD_A_LAMB93.jpg
+│   │   ├── LHD_FXX_0615_6837_LD_A_LAMB93 - Copie.jpg
+│   │   ├── LHD_FXX_0615_6837_LD_A_LAMB93.jpg
+│   │   ├── LHD_FXX_0943_6761_LD_A_LAMB93 - Copie.jpg
+│   │   └── LHD_FXX_0943_6761_LD_A_LAMB93.jpg
+│   ├── package_plugin.py
+│   ├── requirements
+│   │   ├── build.txt
+│   │   ├── export.txt
+│   │   └── test.txt
+│   ├── requirements.txt
+│   └── runner_onnx
+│       ├── README.md
+│       ├── build.py
+│       ├── cv_runner_onnx.spec
+│       ├── cv_runner_onnx_cli.py
+│       └── export_to_onnx.py
 ├── icon.png
 ├── main.py
 ├── metadata.txt
 ├── models
 │   └── .gitkeep
 ├── pytest.ini
-├── setup.cfg
+├── run_tests.py
 ├── src
 │   ├── __init__.py
 │   ├── app
@@ -32,11 +52,12 @@
 │   │   │   ├── base.py
 │   │   │   ├── existing_mnt_runner.py
 │   │   │   ├── existing_rvt_runner.py
+│   │   │   ├── helpers.py
 │   │   │   ├── ign_local_runner.py
 │   │   │   └── registry.py
 │   │   ├── services
 │   │   │   ├── __init__.py
-│   │   │   └── cv_service.py
+│   │   │   └── finalize_service.py
 │   │   └── structured_logger.py
 │   ├── config
 │   │   ├── __init__.py
@@ -46,9 +67,15 @@
 │   │   ├── coords.py
 │   │   ├── cv
 │   │   │   ├── __init__.py
-│   │   │   ├── computer_vision.py
+│   │   │   ├── class_utils.py
+│   │   │   ├── computer_vision_onnx.py
 │   │   │   ├── conversion_shp.py
-│   │   │   └── runner.py
+│   │   │   ├── cv_output.py
+│   │   │   ├── external_runner.py
+│   │   │   ├── qgs_project.py
+│   │   │   ├── runner.py
+│   │   │   └── sahi_lite.py
+│   │   ├── geo_utils.py
 │   │   ├── ign
 │   │   │   ├── __init__.py
 │   │   │   ├── coords_fallback.py
@@ -63,16 +90,16 @@
 │   │   │       ├── indices.py
 │   │   │       ├── mnt.py
 │   │   │       ├── qgis_processing.py
-│   │   │       └── results.py
+│   │   │       ├── results.py
+│   │   │       └── rvt_naming.py
 │   │   ├── modes
 │   │   │   ├── __init__.py
 │   │   │   ├── existing_mnt.py
 │   │   │   ├── existing_rvt.py
 │   │   │   └── local_laz.py
-│   │   └── preflight.py
-│   ├── resources
-│   │   └── styles
-│   │       └── style_detections.qml
+│   │   ├── preflight.py
+│   │   ├── subprocess_utils.py
+│   │   └── types.py
 │   └── ui
 │       ├── __init__.py
 │       └── main_dialog.py
@@ -91,12 +118,17 @@
     │   ├── test_preflight.py
     │   ├── test_run_context_integration.py
     │   └── test_runners_integration.py
+    ├── test_laz_corruption_detection.py
     └── unit
         ├── __init__.py
         ├── test_cancel_token.py
         ├── test_cv_service.py
+        ├── test_existing_rvt.py
+        ├── test_external_runner.py
+        ├── test_helpers.py
+        ├── test_preflight.py
         ├── test_progress_reporter.py
         ├── test_registry.py
         ├── test_run_context.py
         └── test_structured_logger.py
-20 directories, 81 files
+22 directories, 111 files

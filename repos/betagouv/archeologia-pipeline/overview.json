@@ -1,51 +1,55 @@
 {
   "url": "https://github.com/betagouv/archeologia-pipeline",
   "name": "archeologia-pipeline",
-  "description": "Ce plugin QGIS permet d'exécuter un pipeline de traitement LiDAR et de produire des rasters (MNT, densité, indices RVT) avec une étape optionnelle de détection par computer vision. Il offre différents modes de données et des options de configuration avancées.",
+  "description": "Ce plugin QGIS permet d'exécuter un pipeline de traitement LiDAR et de produire des rasters (MNT, densité, indices RVT) avec une étape optionnelle de détection par computer vision.",
   "language": "Python",
   "features": [
     "Génération de MNT",
-    "Génération de densité",
-    "Calcul d'indices RVT",
+    "Génération de cartes de densité",
+    "Calcul d'indices RVT (M-HS, SVF, SLO, LD, VAT)",
     "Détection par computer vision",
-    "Export en JPG",
-    "Génération de pyramides"
+    "Génération de pyramides GDAL",
+    "Téléchargement de tuiles LAZ/LAS"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "QGIS",
     "PDAL",
     "GDAL",
-    "ultralytics",
+    "Processing",
+    "onnxruntime",
     "sahi",
-    "PIL",
+    "Pillow",
     "geopandas"
   ],
   "components": [
     "Plugin QGIS",
-    "Interface utilisateur Qt",
-    "Pipeline de traitement LiDAR",
-    "Modules Python",
-    "Runner externe (optionnel)"
+    "API REST (pour computer vision)",
+    "Algorithmes RVT (via Processing)",
+    "Runner ONNX (pour computer vision)"
   ],
   "auth": {
     "methods": [
       "none"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "ruff"
   ],
-  "workflows": [],
-  "lastActivity": "2026-01-19T18:38:06+00:00",
+  "workflows": [
+    "CI/CD (GitHub Actions)"
+  ],
+  "lastActivity": "2026-02-19T20:21:49+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 1,
-    "contributors": 0,
-    "openIssues": 1
+    "contributors": null,
+    "openIssues": 0
   },
   "tags": [
     "QGIS",
@@ -53,7 +57,8 @@
     "traitement de données",
     "computer vision",
     "archéologie",
-    "MNT",
+    "PDAL",
+    "GDAL",
     "RVT"
   ]
 }
