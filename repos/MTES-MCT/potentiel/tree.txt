@@ -809,6 +809,7 @@
 │   │   │   │       │   ├── raccordement
 │   │   │   │       │   │   ├── dossier-raccordement
 │   │   │   │       │   │   │   ├── dateMiseEnService
+│   │   │   │       │   │   │   │   ├── dateMiseEnServiceModifiéeV1.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceSuppriméeV1.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceTransmiseV1.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceTransmiseV2.projector.ts
@@ -1165,6 +1166,8 @@
 │   │   │   │   │   │   │       │   ├── annuler
 │   │   │   │   │   │   │       │   │   ├── AnnulerRecours.form.tsx
 │   │   │   │   │   │   │       │   │   └── annulerRecours.action.ts
+│   │   │   │   │   │   │       │   ├── modele-reponse
+│   │   │   │   │   │   │       │   │   └── route.ts
 │   │   │   │   │   │   │       │   ├── page.tsx
 │   │   │   │   │   │   │       │   ├── passerEnInstruction
 │   │   │   │   │   │   │       │   │   ├── PasserRecoursEnInstruction.form.tsx
@@ -1177,8 +1180,6 @@
 │   │   │   │   │   │   │       │   ├── DemanderRecours.page.tsx
 │   │   │   │   │   │   │       │   ├── demanderRecours.action.ts
 │   │   │   │   │   │   │       │   └── page.tsx
-│   │   │   │   │   │   │       ├── modele-reponse
-│   │   │   │   │   │   │       │   └── route.ts
 │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   └── export
 │   │   │   │   │   │       └── route.ts
@@ -1808,13 +1809,6 @@
 │   │   │   │   │   │   │   │   │   │   ├── SupprimerDossierDuRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   └── supprimerDossierDuRaccordement.action.ts
 │   │   │   │   │   │   │   │   │   ├── [reference]
-│   │   │   │   │   │   │   │   │   │   ├── (date-mise-en-service)
-│   │   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service:transmettre
-│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettreDateMiseEnService.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettreDateMiseEnService.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── transmettreDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   │   └── ÉtapeDateMiseEnService.tsx
 │   │   │   │   │   │   │   │   │   │   ├── (demande-complète-raccordement)
 │   │   │   │   │   │   │   │   │   │   │   ├── InformationDemandeComplèteRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── demande-complete-raccordement:modifier
@@ -1835,6 +1829,20 @@
 │   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.action.ts
 │   │   │   │   │   │   │   │   │   │   │   └── ÉtapePropositionTechniqueEtFinancière.tsx
+│   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service
+│   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnService.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDateMiseEnService.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── supprimer-date-mise-en-service
+│   │   │   │   │   │   │   │   │   │   │   │   ├── SupprimerDateMiseEnService.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── supprimerDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── transmettre
+│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettreDateMiseEnService.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── transmettreDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── ÉtapeDateMiseEnService.tsx
 │   │   │   │   │   │   │   │   │   │   └── reference:corriger
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.form.tsx
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.page.tsx
@@ -1857,6 +1865,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── dossier
 │   │   │   │   │   │   │   │   │   │   │   ├── dateMiseEnService
 │   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceModifiéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceSuppriméeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDateMiseEnServiceTransmiseTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── dcr
@@ -2279,6 +2288,7 @@
 │   │   │   │       │   ├── FeatureFlagContext.tsx
 │   │   │   │       │   └── FeatureFlaggedComponent.template.tsx
 │   │   │   │       ├── formAction.ts
+│   │   │   │       ├── getDashboardRoute.ts
 │   │   │   │       ├── identifiantParameter.ts
 │   │   │   │       ├── modèle-document
 │   │   │   │       │   ├── formatBoolean.ts
@@ -2743,8 +2753,6 @@
 │   │   │   │   │   │   ├── accorder
 │   │   │   │   │   │   │   └── accorderDélai.event.ts
 │   │   │   │   │   │   ├── autoritéCompétente.valueType.ts
-│   │   │   │   │   │   ├── consulter
-│   │   │   │   │   │   │   └── consulterABénéficiéDuDélaiCDC2022.query.ts
 │   │   │   │   │   │   ├── demande
 │   │   │   │   │   │   │   ├── accorder
 │   │   │   │   │   │   │   │   ├── accorderDemandeDélai.command.ts
@@ -3207,6 +3215,10 @@
 │   │   │   │   │   │   ├── listerHistorique
 │   │   │   │   │   │   │   └── listerHistoriqueRaccordementProjet.query.ts
 │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   ├── dateMiseEnService
+│   │   │   │   │   │   │   │   ├── modifierDateMiseEnService.command.ts
+│   │   │   │   │   │   │   │   ├── modifierDateMiseEnService.options.ts
+│   │   │   │   │   │   │   │   └── modifierDateMiseEnService.usecase.ts
 │   │   │   │   │   │   │   ├── demandeComplète
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.command.ts
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.options.ts
@@ -3558,9 +3570,6 @@
 │   │   │   │   │   ├── document.adapter.ts
 │   │   │   │   │   ├── enregistrerDocumentSubstitut.adapter.ts
 │   │   │   │   │   └── générerDocumentPdf.ts
-│   │   │   │   ├── délai
-│   │   │   │   │   ├── consulterABénéficiéDuDélaiCDC2022.adapter.ts
-│   │   │   │   │   └── délai.adapter.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── projet
 │   │   │   │   │   ├── getIdentifiantProjetFromLegacyId.adapter.ts
@@ -4225,7 +4234,9 @@
 │   │   │   │       └── période.when.ts
 │   │   │   ├── raccordement
 │   │   │   │   ├── dateDeMiseEnService
+│   │   │   │   │   ├── dateMiseEnService.world.ts
 │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── modifierDateDeMiseEnService.fixture.ts
 │   │   │   │   │   │   └── transmettreDateDeMiseEnService.fixture.ts
 │   │   │   │   │   ├── modifierDateMiseEnService.feature
 │   │   │   │   │   ├── stepDefinitions
@@ -4386,4 +4397,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1076 directories, 3312 files
+1077 directories, 3322 files
