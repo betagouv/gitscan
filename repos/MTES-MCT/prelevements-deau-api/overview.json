@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-api",
   "name": "prelevements-deau-api",
-  "description": "Partie backend de Prélèvements d'eau. Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée.",
+  "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit divers scripts pour récupérer les dossiers de prélèvements, extraire des données précises et générer des rapports.",
   "language": "JavaScript",
   "features": [
-    "Gestion des points de prélèvement",
-    "Gestion des exploitations",
-    "Gestion des règles",
-    "Import de données",
-    "Agrégation de séries temporelles",
-    "API REST"
+    "Collecte de données",
+    "Analyse de données",
+    "Génération de rapports",
+    "Synchronisation de données",
+    "Gestion des pièces jointes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,30 +18,26 @@
     "MongoDB",
     "Express",
     "bullmq",
-    "Redis",
     "@fabnum/demarches-simplifiees",
     "@fabnum/prelevements-deau-timeseries-parsers"
   ],
   "components": [
-    "Backend Node.js",
-    "API REST Express",
+    "API REST",
     "Base de données MongoDB",
-    "File Storage (S3)",
-    "Queues BullMQ",
-    "Redis"
+    "Workers BullMQ",
+    "Serveur HTTP Express"
   ],
   "auth": {
     "methods": [
       "email-password",
       "jwt"
-    ],
-    "providers": null
+    ]
   },
-  "tests": "Ava",
+  "tests": "Ava, Jest",
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD"
   ],
-  "lastActivity": "2026-02-16T16:48:03+01:00",
+  "lastActivity": "2026-02-18T11:16:15+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,11 +48,11 @@
     "openIssues": null
   },
   "tags": [
-    "prélèvements d'eau",
-    "données environnementales",
+    "prélèvement d'eau",
+    "données",
     "API",
     "MongoDB",
-    "Node.js",
+    "JavaScript",
     "Démarche Simplifiée"
   ]
 }
