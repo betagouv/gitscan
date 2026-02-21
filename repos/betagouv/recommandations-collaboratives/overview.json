@@ -1,60 +1,46 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs.",
+  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
   "language": "Python",
   "features": [
-    "Gestion de documents",
-    "Gestion des RGPD",
-    "Interface utilisateur améliorée",
-    "Gestion des notifications",
-    "Gestion des liens externes",
-    "Enquêtes"
+    "Gestion de projets",
+    "Gestion des ressources",
+    "Notifications",
+    "Recommandations collaboratives",
+    "Gestion des utilisateurs",
+    "Interface utilisateur multi-portails"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Celery",
+    "Python",
+    "AlpineJS",
+    "Bootstrap",
+    "DSFR",
     "PostgreSQL",
-    "Redis",
-    "Beautifulsoup4",
-    "cryptography",
-    "django-allauth",
-    "django-filter",
-    "django-gravatar2",
-    "django-guardian",
-    "django-htmx",
-    "django-leaflet",
-    "django-magicauth",
-    "django-markdownx",
-    "django-multisite2",
-    "djangorestframework",
-    "djangorestframework-simplejwt",
-    "drf-spectacular",
-    "uv"
+    "Redis"
   ],
   "components": [
-    "Moteur Python/Django",
-    "Interface Alpinejs/Bootstrap/DSFR",
-    "API REST",
-    "Base de données PostgreSQL"
+    "Backend Python/Django",
+    "Frontend AlpineJS/Bootstrap/DSFR",
+    "Base de données PostgreSQL",
+    "Cache Redis"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "saml"
+      "oauth2"
     ]
   },
   "tests": [
     "Pytest",
-    "Tests unitaires frontend (Yarn)",
-    "Tests bout en bout frontend (Cypress)"
+    "Frontend tests"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD"
   ],
-  "lastActivity": "2026-02-17T16:40:14+01:00",
+  "lastActivity": "2026-02-19T11:56:52+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -68,8 +54,12 @@
     "recommandations collaboratives",
     "python",
     "django",
+    "alpinejs",
+    "bootstrap",
+    "dsfr",
+    "postgresql",
+    "redis",
     "administration",
-    "gestion de projet",
-    "RGPD"
+    "gestion de projet"
   ]
 }
