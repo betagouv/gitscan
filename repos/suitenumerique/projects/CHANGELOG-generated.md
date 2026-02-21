@@ -1,21 +1,27 @@
-## Changelog : projects (derniers 30 jours)
+## Changelog : projects (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à l'outil de gestion de projet "projects" au cours des 30 derniers jours. Les modifications incluent des corrections de sécurité, des améliorations de l'organisation des tableaux de bord, des mises à jour de l'infrastructure et des ajustements techniques pour simplifier le processus de développement.
+Ce mois-ci, l'outil de gestion de projet a bénéficié d'améliorations significatives en termes de fonctionnalités et de sécurité. Les utilisateurs profiteront d'une meilleure expérience avec l'ajout d'indicateurs de nombre d'éléments dans les listes, l'assignation automatique de membres et de labels lors de la création de cartes, et une gestion améliorée des activités sur les cartes. Des corrections de bugs et des améliorations de sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Organisation des tableaux de bord :** Nouvelle fonctionnalité permettant une meilleure organisation des tableaux de bord. (#49)
-- **Correction de vulnérabilité XSS :** Correction d'une vulnérabilité de type Cross-Site Scripting (XSS) dans la librairie `react-photoswipe-gallery`. (#48)
+- Ajout d'un badge indiquant le nombre d'éléments dans l'en-tête de chaque liste (#58)
+- Lors de la création d'une carte, les membres et les labels filtrés sont automatiquement assignés (#57)
+- Affichage par défaut de toutes les activités sur une carte, avec la possibilité de les masquer (#56)
+- Amélioration de l'affichage des tableaux partagés dans le menu latéral (#59)
+- Correction d'un bug empêchant l'affichage correct des utilisateurs promus (#60)
+- Suppression de la fenêtre contextuelle d'ajout de pièces jointes.
 
 ### Évolutions techniques
-- **Mise à jour de Node.js :** Mise à jour de la version de Node.js utilisée par le projet. (#51)
-- **Simplification de la gestion des paquets :** Suppression de `pnpm` et retour à `npm` pour simplifier la gestion des dépendances et éviter les confusions liées au patching de paquets.
-- **Configuration ESLint :** Correction de la configuration ESLint pour éviter les erreurs liées à l'extension de la configuration depuis `package.json`.
-- **Alignement des versions de Node :** Alignement des versions de Node.js utilisées dans les différents environnements.
-- **Suppression du script de sauvegarde Scalingo :** Suppression du script de sauvegarde de la base de données PostgreSQL sur Scalingo. (#53)
-- **Nettoyage de `package-lock.json` :** Nettoyage du fichier `package-lock.json` et ajout de `async overrides` dans `package.json`. (#50)
-- **Correction CI :** Correction de la configuration CI pour utiliser `npm` dans les images Docker et s'assurer que certains paquets sont définis pour la production.
+- Mise à jour de la librairie UI Kit (v2) (#54)
+- Suppression de l'outil pnpm au profit de npm pour simplifier la gestion des dépendances et éviter les confusions.
+- Correction de problèmes liés aux versions de Node.js dans les différents environnements.
+- Correction d'une vulnérabilité XSS dans la librairie `react-photoswipe-gallery` (#53)
+- Suppression du script de sauvegarde PostgreSQL Scalingo.
+- Amélioration de la performance de la recherche d'utilisateurs en ne récupérant plus tous les utilisateurs au démarrage.
+- Masquage des adresses e-mail des utilisateurs lors de l'accès à un tableau public sans être connecté (#53)
 
 ### Autres changements
-- Application des patches de `patch-package` pour l'environnement de développement.
-- Mise à jour de la branche `main` depuis `github.com:suitenumerique/st-projects`.
+- Mise à jour de la version de publication à 1.2.0 (#1a2f13f)
+- Mise à jour de la version de publication à 1.1.0 (#686cb54)
+- Correction de la configuration ESLint.
+- Ajout de correctifs pour les dépendances via `patch-package` dans l'environnement de développement.
