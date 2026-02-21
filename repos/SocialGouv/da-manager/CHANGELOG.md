@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/SocialGouv/da-manager/compare/v1.1.0...v1.2.0) (2026-02-19)
+
+
+### Features
+
+* add footer ([d79cddb](https://github.com/SocialGouv/da-manager/commit/d79cddb554e0a85e36abc8536e85e7dbf2fe1044))
+
+# [1.1.0](https://github.com/SocialGouv/da-manager/compare/v1.0.0...v1.1.0) (2026-02-19)
+
+
+### Features
+
+* rename da ([#5](https://github.com/SocialGouv/da-manager/issues/5)) ([7da5eac](https://github.com/SocialGouv/da-manager/commit/7da5eac4c18cacbca554f8c735b62ae1c39e7d06))
+
 # 1.0.0 (2026-02-16)
 
 

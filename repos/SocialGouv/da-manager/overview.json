@@ -1,36 +1,31 @@
 {
   "url": "https://github.com/SocialGouv/da-manager",
   "name": "da-manager",
-  "description": "Ce projet est un formulaire pour construire un document d'architecture. Il permet de créer et de gérer des schémas d'architecture de manière structurée.",
+  "description": "Ce projet est un formulaire pour construire un document d'architecture. Il permet de créer et de gérer des schémas d'architecture de manière collaborative.",
   "language": "TypeScript",
   "features": [
     "Gestion de documents d'architecture",
     "Édition de schémas",
     "Exportation en PDF",
-    "Authentification utilisateur",
-    "Gestion des accès",
-    "Historisation des versions"
+    "Authentification utilisateur"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
     "React",
-    "Drizzle ORM",
     "PostgreSQL",
-    "NextAuth",
-    "Excalidraw",
-    "Geist",
-    "sass"
+    "DrizzleORM",
+    "NextAuth"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Composants DSFR",
-    "Authentification NextAuth"
+    "Composants DSFR"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2"
     ],
     "providers": []
@@ -39,31 +34,32 @@
     "Vitest"
   ],
   "workflows": [
-    "ci.yaml",
-    "deactivate.yaml",
-    "preproduction.yaml",
-    "production.yaml",
-    "release.yaml",
-    "review.yaml"
+    "ci",
+    "claude-issue",
+    "claude-pr",
+    "claude-review-check",
+    "deactivate",
+    "preproduction",
+    "production",
+    "release"
   ],
-  "lastActivity": "2026-02-17T02:44:58+00:00",
+  "lastActivity": "2026-02-21T01:54:02Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 0,
-    "contributors": 1,
-    "openIssues": 1
+    "contributors": 0,
+    "openIssues": 6
   },
   "tags": [
     "architecture",
-    "document",
-    "form",
-    "typescript",
-    "react",
-    "nextjs",
-    "postgresql",
-    "drizzle"
+    "formulaire",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "PostgreSQL",
+    "DSFR"
   ]
 }

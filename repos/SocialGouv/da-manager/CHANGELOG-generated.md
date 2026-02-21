@@ -1,30 +1,40 @@
-## Changelog : da-manager (derniers 30 jours)
+## Changelog : da-manager (30 derniers jours)
 
 ### Résumé
-Le projet da-manager a connu une période d'activité intense ces dernières semaines, avec la mise en place des fondations de l'application.  De nombreuses fonctionnalités de base ont été implémentées, notamment la gestion des documents d'architecture, l'édition de schémas avec Excalidraw, l'exportation en PDF, et l'ajout d'un système d'authentification. Des améliorations esthétiques et de style ont également été apportées.
+Ce changelog couvre une période d'intense développement pour da-manager. L'équipe a mis en place les fondations pour le déploiement continu (CI/CD), amélioré l'automatisation avec l'intégration de Claude pour la gestion des pull requests, et ajouté de nombreuses fonctionnalités d'interface utilisateur, notamment la gestion des utilisateurs, l'exportation en PDF, et l'amélioration de l'expérience d'édition de schémas.  Des corrections de bugs et des améliorations de la structure du projet ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de l'exportation en PDF des documents d'architecture.
-- Implémentation de l'édition de schémas avec le composant Excalidraw.
-- Mise en place d'une liste de documents d'architecture (DA list).
-- Ajout d'une route pour la gestion des documents d'architecture (DA route).
-- Ajout d'un menu avec des étapes (steps menu list).
-- Correction de problèmes de style et d'affichage, notamment pour le mode sombre, le menu, les couleurs de l'étape 1, les outlines des inputs et le style de l'étape 1.
-- Correction de l'affichage en plein écran.
-- Correction de l'affichage des cadres 2, 3 et 4.
-- Correction du fonctionnement du stepper.
+- Ajout d'un footer à l'application (#5).
+- Renommage de "da" (Document d'Architecture) (#5).
+- Ajout de la fonctionnalité d'exportation en PDF.
+- Ajout d'une page de gestion des utilisateurs avec la possibilité d'attribuer des rôles.
+- Ajout d'une page pour créer de nouveaux documents d'architecture.
+- Amélioration de la liste des documents d'architecture.
+- Ajout d'une fonctionnalité de sauvegarde et de chargement de schémas.
+- Ajout d'un menu de pas (stepper) pour guider l'utilisateur.
+- Ajout de la possibilité de passer en mode plein écran pour Excalidraw.
+- Correction de problèmes d'affichage en mode sombre.
+- Correction de problèmes d'URL d'authentification.
 
 ### Évolutions techniques
-- Intégration de Prettier pour le formatage automatique du code.
-- Ajout d'un workflow de revue GitHub pour améliorer la qualité du code.
-- Ajout d'un Dockerfile pour faciliter le déploiement.
-- Mise en place de workflows GitHub pour l'automatisation des tâches.
-- Intégration de Kontinuous pour le déploiement continu.
-- Remplacement des composants React DSFR par une version vanilla du DSFR.
-- Ajout des composants Hero et Header.
+- Mise en place d'un workflow CI/CD complet avec des checks de déploiement et des workflows pour les environnements de production et de pré-production.
+- Intégration de Claude pour l'automatisation de la création de pull requests et la gestion des commentaires.
+- Ajout de workflows GitHub pour la désactivation, la pré-production, la production et la publication.
+- Configuration de l'outil Kontinuous.
+- Utilisation de tokenbureau pour l'authentification.
+- Ajout de tests unitaires avec Vitest (#3).
+- Refonte de l'authentification avec NextAuth.
+- Mise à jour de la configuration Dockerfile.
+- Ajout de secrets pour la configuration de l'application.
 
 ### Autres changements
-- Renommage d'une image.
-- Ajout de Proconnect.
-- Suppression de composants React DSFR inutiles.
-- Ajout de lignes de code pour le calcul du total.
+- Ajout d'un favicon.
+- Ajout de prettier pour le formatage du code.
+- Ajout d'un fichier `claude.md` pour la documentation de l'intégration de Claude.
+- Suppression des composants React DSFR et chargement de la version vanilla.
+- Suppression du bouton de suppression d'utilisateur.
+- Amélioration de la liste des administrateurs.
+- Ajout de valeurs factices pour les tests.
+- Correction de styles divers (menu, couleurs, outline, etc.).
+- Ajout de commentaires et de logs pour faciliter le débogage.
+- Initialisation du projet avec Create Next App.

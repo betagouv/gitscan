@@ -3,6 +3,9 @@
 ├── .github
 │   └── workflows
 │       ├── ci.yaml
+│       ├── claude-issue.yml
+│       ├── claude-pr.yml
+│       ├── claude-review-check.yml
 │       ├── deactivate.yaml
 │       ├── preproduction.yaml
 │       ├── production.yaml
@@ -39,6 +42,7 @@
 │   │   ├── da-check-name.test.ts
 │   │   ├── da-id.test.ts
 │   │   ├── da-logs.test.ts
+│   │   ├── da-rename.test.ts
 │   │   ├── da-versions.test.ts
 │   │   ├── da.test.ts
 │   │   └── users.test.ts
@@ -61,7 +65,8 @@
 │   │   ├── DATable.tsx
 │   │   ├── DeleteDAButton.tsx
 │   │   ├── HeaderWithAuth.tsx
-│   │   └── ProConnectLoginButton.tsx
+│   │   ├── ProConnectLoginButton.tsx
+│   │   └── RenameDAModal.tsx
 │   ├── admin
 │   │   └── users
 │   │       └── [id]
@@ -78,6 +83,8 @@
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── logs
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── rename
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── route.ts
 │   │   │   │   └── versions
@@ -133,7 +140,6 @@
 │   │   │   └── ExcalidrawSchemaEditor.tsx
 │   │   └── initialData.ts
 │   ├── dsfr-extensions.css
-│   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── page.tsx
@@ -211,6 +217,13 @@
 │   ├── dsfr
 │   │   ├── dsfr.module.min.js
 │   │   ├── dsfr.nomodule.min.js
+│   │   ├── favicon
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.svg
+│   │   │   └── manifest.webmanifest
 │   │   ├── fonts
 │   │   │   ├── Marianne-Bold.woff
 │   │   │   ├── Marianne-Bold.woff2
@@ -1092,4 +1105,4 @@
 ├── utils
 │   └── excalidrawTemplates.ts
 └── vitest.config.ts
-86 directories, 1220 files
+88 directories, 1231 files
