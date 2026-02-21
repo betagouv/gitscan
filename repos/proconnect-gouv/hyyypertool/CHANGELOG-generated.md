@@ -1,31 +1,26 @@
 ## Changelog : hyyypertool (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de hyyypertool améliorent la stabilité et la performance de l'outil de modération, notamment au niveau de la recherche et de la gestion des domaines. Des corrections de bugs ont été apportées pour améliorer l'expérience utilisateur, et l'intégration de Sentry a été renforcée pour une meilleure surveillance des erreurs. Des améliorations ont également été apportées à la gestion des utilisateurs et des organisations.
+Les dernières mises à jour de Hyyypertool améliorent la stabilité, la performance et l'expérience utilisateur de l'outil de modération. Des corrections de bugs ont été apportées, notamment concernant la pagination et la modération des membres. L'intégration de Sentry a été renforcée pour un meilleur suivi des erreurs et des performances. De plus, des améliorations ont été apportées à la gestion des domaines et des organisations.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien de recherche annuaire EHPAD sur la fiche modération (#1383).
-- Amélioration du filtrage des domaines gratuits et correction du rafraîchissement du tableau des domaines à vérifier (#1404).
-- Correction d'un bug empêchant la modération des membres déjà liés (#1405).
-- Correction d'un bug qui empêchait le tableau des domaines de s'afficher correctement après un rafraîchissement (#1404).
-- Ajout d'un filtre pour rechercher les modérations par modérateur (#1393).
-- Correction d'un bug lié à la restauration de l'action "vérifié par une coopérative de médiation numérique" (#1369).
-- Amélioration de la lisibilité de la section commentaire avec des niveaux d'opacité (#1317).
-- Correction d'un bug d'affichage de l'icône d'oeil avec les cases à cocher associées (#1316).
+- Correction d'un bug empêchant la réinitialisation de la page lors d'une recherche sur les listes de domaines, d'organisations et d'utilisateurs. (#1408)
+- Correction d'un bug lié à la modération des membres déjà liés. (#1405)
+- Optimisation du filtrage des domaines gratuits et correction d'un problème d'affichage du tableau des domaines à vérifier. (#1404)
+- Ajout d'un lien vers les EHPAD dans les actions d'investigation. (#1383)
+- Ajout d'une section FranceConnect. (#1360)
+- Possibilité de gérer les utilisateurs autorisés à utiliser l'outil. (#1307)
 
 ### Évolutions techniques
-- Intégration précoce de Sentry avec initialisation via `--import`, ajout du profiling et du SDK navigateur (#1406).
-- Suppression de dépendances inutiles pour `@sentry/profiling-node` (#1407).
-- Mise à jour de plusieurs dépendances : `@proconnect-gouv/proconnect.identite`, `type-fest`, `openid-client`, `pg`, `@preact/signals`, `@happy-dom/global-registrator`, `dotenv`, `@preact/signals-core`, `drizzle-kit`, `oxc-parser`, `@types/bun`, `preact`, `cypress`, `release-it`, `prettier-plugin-organize-imports`, `ts-pattern`, `oven-sh/setup-bun`, `cypress-io/github-action`.
-- Correction du comportement du workflow de deforestation et de son exécution planifiée (#1364).
-- Suppression du code legacy lié à la jointure forcée d'organisations (#1393).
-- Amélioration de la robustesse des tests E2E avec correction d'un problème de flakiness lié aux notifications (#1392).
-- Mise à jour de la configuration Tailwind CSS (#1380).
-- Utilisation de classes utilitaires DSFR pour la taille des icônes (#1317).
-- Correction d'un problème lié à l'exportation dupliquée dans Bun (#1356).
+- Intégration complète de Sentry pour le suivi des erreurs, le profiling serveur et le SDK navigateur (Web Vitals, suivi des assets, temps de chargement des pages). (#1406)
+- Suppression de dépendances inutiles pour Sentry. (#1407)
+- Mise à jour de la version de Node utilisée pour l'application à la version 24. (#1410)
+- Refactorisation du code pour supprimer l'ancienne logique de jointure forcée des organisations. (#1393)
+- Amélioration de la robustesse des tests E2E en corrigeant un problème de fluctuation. (#1392)
 
 ### Autres changements
-- Documentation : Mise à jour de la documentation pour refléter le format de la commande changeset (#1358, #1363).
-- Diverses corrections et améliorations de la configuration du CI/CD.
-- Mise à jour des fichiers de release notes (#1371).
-- Passage de la branche principale à `main` (#142b402).
+- Mise à jour de plusieurs dépendances (zod, @proconnect-gouv/proconnect.identite, pg, @preact/signals, etc.).
+- Amélioration de la documentation et des exemples de commandes changeset.
+- Correction de typos et amélioration de la lisibilité du code.
+- Mise à jour de la configuration de Tailwind.
+- Formatage des fichiers Gherkin avec Prettier.
