@@ -1,17 +1,21 @@
-## Changelog : apilos (derniers 30 jours)
+## Changelog : apilos (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'apilos se concentrent sur l'amélioration de la gestion des conventions APL, notamment avec l'ajout de fonctionnalités pour les conventions mixtes et la conformité RGAA. Des corrections de bugs ont également été apportées pour améliorer la stabilité de la plateforme. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+Les dernières mises à jour d'apilos se concentrent sur l'amélioration de la gestion des conventions APL, notamment en corrigeant des bugs liés à la manipulation des annexes, des financements et des logements. Des adaptations ont également été apportées pour mieux supporter les conventions spécifiques à l'outre-mer.
 
 ### Évolutions fonctionnelles
-- Ajout de fonctionnalités pour la gestion des conventions mixtes et la conformité RGAA (#2104, #2114).
-- Correction d'une erreur liée à la gestion du nombre de logements dans les formulaires (#2114).
+- Permet de récupérer toutes les annexes dans le contexte d'une convention. (#2132)
+- Le champ "nb_logement" est désormais modifiable après l'upload d'un document. (#2127)
+- Correction d'un bug empêchant la suppression des stationnements. (#2119)
+- Correction d'un blocage de l'interface utilisateur pour les utilisateurs "lecteurs" concernant le groupage/dégroupage. (#2123)
+- Correction du problème de mise à jour du champ "nb-logement". (#2126)
+- Correction d'une erreur Sentry liée à un attribut manquant dans l'objet 'Annexe'. (#2122)
+- Adaptation des templates de convention pour l'outre-mer. (#2121)
+- Correction de l'affichage des financements (taille minuscule). (#2120)
+- Modifications des templates HLM, SEM et type 2. (#2118)
 
 ### Évolutions techniques
-- Mise à jour de l'action `actions/checkout` de la version 5 à la version 6 (#2074).
-- Mise à jour de l'action `actions/upload-artifact` de la version 4 à la version 5 (#2043).
-- Mise à jour de la librairie `django` de la version 5.2.7 à la version 5.2.8 (#2056).
-- Mise à jour de la librairie `drf-spectacular` de la version 0.28.0 à la version 0.29.0 (#2054).
-- Mise à jour de la librairie `sentry-sdk` de la version 2.42.1 à la version 2.43.0 (#2055).
-- Mise à jour de la librairie `django-hijack` de la version 3.7.4 à la version 3.7.6 (#2107).
-- Mise à jour des dépendances pip (#2097).
+- Ajout de `setuptools` aux dépendances et compilation avec l'option `--allow-unsafe` pour améliorer la gestion des packages. (#2129)
+
+### Autres changements
+Aucun autre changement significatif à signaler.
