@@ -1,14 +1,15 @@
-## Changelog : service-national-universel (derniers 30 jours)
+## Changelog : service-national-universel (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes mises à jour de la plateforme Service National Universel. Les modifications incluent la correction de problèmes liés à l'API d'adresse, la gestion des missions rattachées à des structures supprimées, et la décommission de certains domaines. Une mise à jour de sécurité d'une dépendance a également été effectuée.
+Les dernières mises à jour du Service National Universel se concentrent sur l'amélioration de la gestion des emails, notamment en réponse à des problèmes de délivrabilité avec Microsoft, et sur le renforcement des permissions d'administration. Des corrections ont également été apportées pour améliorer la robustesse de l'API et de l'interface d'administration.
 
 ### Évolutions fonctionnelles
-- Correction de l'API de recherche d'adresse pour utiliser le nouveau point d'accès `data.geopf.fr` au lieu de l'ancien `api-adresse.data.gouv.fr` (#5240).
-- Correction de la gestion des missions rattachées à des structures supprimées et des missions JVA non synchronisées (#5234).
+- Ajout des dates de réception du passeport dans les informations du jeune via l'API (#5255).
+- Les super-modérateurs sont désormais les seuls autorisés à supprimer des utilisateurs (#5241).
+- Une alerte est affichée sur les pages de connexion et d'accueil de l'administration en cas de problèmes d'envoi d'emails (#5247).
+- Amélioration de la gestion des statuts des référents dans l'API pour prendre en compte les référents inactifs (#5250).
 
 ### Évolutions techniques
-- Décommissionnement de tous les domaines (#5214).
-
-### Autres changements
-- Mise à jour de la dépendance `validator` vers la version 13.15.22 pour corriger une vulnérabilité de sécurité (#5203).
+- Montée de version de librairies spécifiques (lib' spécifiques) (#5245).
+- Mise en place d'un filtrage temporaire des domaines email Microsoft pour atténuer les problèmes de délivrabilité, puis suppression de ce filtrage après investigation (#5251, #5252, #5253, #5254, #5255).
+- Ajout de fonctions pour détecter les domaines email publics Microsoft (#5251).

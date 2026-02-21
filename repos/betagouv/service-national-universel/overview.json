@@ -5,11 +5,12 @@
   "language": "TypeScript",
   "features": [
     "Gestion des missions",
-    "Gestion des utilisateurs",
+    "Gestion des volontaires",
+    "Gestion des sessions",
     "Export de données (DSNJ)",
-    "Gestion des inscriptions",
-    "Suivi des candidatures",
-    "Gestion des établissements"
+    "Authentification utilisateur",
+    "Gestion des adresses",
+    "Gestion des pièces d'identité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,22 +19,27 @@
     "PostgreSQL",
     "turbo",
     "dotenv-cli",
-    "patch-package"
+    "patch-package",
+    "heic2any",
+    "json-2-csv",
+    "libphonenumber-js",
+    "@bull-board/express"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Interface de gestion (Admin)",
-    "Interface publique (App)"
+    "Interface de gestion",
+    "Interface publique"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "sso"
     ]
   },
-  "tests": "Tests unitaires et d'intégration (Jest, Pytest, Cypress)",
+  "tests": "Jest, Pytest, Cypress",
   "workflows": [
     "CI",
     "CD",
@@ -41,7 +47,7 @@
   ],
   "lastActivity": "2024-05-10T00:00:00Z",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -54,9 +60,9 @@
     "SNU",
     "Engagement Civique",
     "Plateforme",
-    "Administration Publique",
-    "TypeScript",
+    "Administration",
     "React",
+    "TypeScript",
     "API"
   ]
 }
