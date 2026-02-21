@@ -1,33 +1,409 @@
 ## Changelog : conseillers-entreprises (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accessibilité du site (conformité RGAA), l'ajout de nouvelles fonctionnalités pour le suivi des antennes régionales, et l'amélioration de la gestion des données, notamment avec l'intégration du code INSEE et la correction de bugs liés à la recherche et à la création de diagnostics. Des optimisations techniques et des mises à jour de dépendances ont également été réalisées.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'accessibilité (RGAA), de performance et de robustesse. Des corrections de bugs ont été apportées, notamment concernant la gestion des erreurs et des formulaires. De nouvelles fonctionnalités ont été implémentées, comme le suivi des antennes régionales et l'intégration d'AppSignal pour la surveillance de l'application. L'application a également été mise à jour avec des dépendances récentes et des optimisations de code.
 
 ### Évolutions fonctionnelles
-- Ajout d'un onglet de suivi des antennes régionales, permettant de visualiser des informations et des statistiques sur les activités de conseil (#4230).
-- Amélioration de la gestion du code INSEE dans les formulaires et la recherche d'entreprises, avec l'intégration de la gem `decoupage-administratif` (#4214).
-- Correction d'un bug empêchant la suppression d'experts ayant des missions en cours (#4199).
-- Amélioration de la gestion des erreurs lors de la création de diagnostics (#4214).
-- Ajout d'un bandeau d'information configurable pour afficher des messages importants sur certaines pages (#4262).
-- Ajout d'un message de confidentialité dans la modale de présentation des personnes (#4263).
-- Correction d'un crash dans l'interface d'administration lors de la gestion des thèmes des landing pages régionales (#4268).
-- Ajout d'un support pour l'intégration d'AppSignal pour le monitoring et le suivi des performances (#4265, #4278).
+- Ajout d'un onglet de suivi des antennes régionales (#4230).
+- Amélioration de la gestion des erreurs et affichage de messages plus clairs aux utilisateurs (correction de redirection, gestion des erreurs de validation).
+- Intégration d'un bandeau d'information personnalisable pour communiquer des messages importants aux utilisateurs (#4262).
+- Ajout d'un avertissement de confidentialité dans le modal de personne (#4263).
+- Amélioration de la recherche de communes avec l'utilisation de la gem `decoupage-administratif` (#4214).
+- Ajout de l'URL du partenaire au lieu de se limiter à "from_entreprendre?" (#4256).
+- Ajout d'une section dédiée à l'optimisation et à la veille (#4203, #4237).
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances, notamment webpack, lodash, rack et d'autres packages npm/yarn (#4245, #4270, #4231, #4203).
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment dans la gestion des formulaires et des requêtes API (#4214).
-- Amélioration de la couverture de tests avec l'ajout de tests RSpec et l'intégration de SimpleCov pour le suivi de la couverture de code (#4257).
-- Utilisation de gem.coop comme source de gems Ruby (#4232).
-- Suppression de code obsolète et de configurations inutiles (#4253, #4266).
-- Migration vers une nouvelle approche pour la gestion des codes INSEE, améliorant la précision et la performance (#4214).
-- Amélioration de la gestion des erreurs et des retours d'information à l'utilisateur (#4250).
-- Ajout de TimeDurationService::Years pour faciliter les calculs de durée (#4224).
+- Intégration d'AppSignal pour la surveillance et le suivi des performances de l'application (#4265).
+- Mise à jour de plusieurs dépendances : Rack (5.103.0 -> 5.104.1), Webpack (5.103.0 -> 5.104.1).
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration des tests unitaires et d'intégration.
+- Utilisation de gem.coop pour la gestion des dépendances (#4232).
+- Suppression de code obsolète et de configurations inutiles.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Utilisation de Stimulus pour des interactions JavaScript plus performantes.
+- Normalisation du code INSEE.
+- Simplification de la logique de recherche de communes.
+- Amélioration de la gestion des erreurs dans les formulaires.
 
 ### Autres changements
-- Ajout d'un fichier `.vscode` pour les paramètres de l'éditeur VS Code (supprimé du tracking git ensuite) (#4277, #4278).
-- Mise à jour de la documentation README avec des informations sur AppSignal (#4278).
-- Ajout d'un crawl-delay dans le fichier robots.txt pour améliorer le respect des robots d'indexation (#4228).
-- Correction de typos et amélioration de la qualité du code (#4233, #4256).
-- Amélioration de l'accessibilité du site web pour répondre aux critères RGAA (Référentiel Général d'Accessibilité pour les Administrations) (#4214).
-- Suppression de la possibilité d'utiliser `local: true` dans les formulaires (#4253, #4266).
-- Désactivation de robots dans l'environnement de staging (#4239).
+- Ajout d'un fichier `.vscode` pour les configurations de l'éditeur (supprimé ensuite pour éviter le commit dans le repo) (#4277).
+- Ajout d'une mention à AppSignal dans le fichier README (#4278).
+- Mise à jour de la documentation pour refléter les changements apportés.
+- Correction de typos et amélioration de la qualité du code.
+- Ajout d'un crawl-delay dans le fichier robots.txt pour améliorer le référencement (#4228).
+- Suppression de la possibilité d'utiliser `local: true` dans les formulaires (#4253, #4266, #4275).
+- Suppression de la fonctionnalité de recherche d'entreprises (#4214).
+- Suppression de la configuration `skip_enforcing_utf8: true` (#4252).
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Correction d'un bug empêchant la suppression d'experts ayant des correspondances en cours (#4199).
+- Suppression d'un fallback API inutile (#4214).
+- Suppression de tests inutiles (#4214).
+- Correction de la gestion des dates dans le service TimeDurationService (#4224).
+- Ajout de tests pour la gestion des codes INSEE (#4214).
+- Amélioration de la gestion des erreurs dans les formulaires de description de sollicitation (#4214).
+- Correction de la gestion des erreurs lors de la création de diagnostics (#4214).
+- Correction d'un bug lié à la redirection après la création d'un diagnostic (#4215).
+- Amélioration de la gestion des erreurs dans les formulaires de description de sollicitation (#4214).
+- Ajout de tests pour la gestion des codes INSEE (#4214).
+- Correction d'un bug lié à la redirection après la création d'un diagnostic (#4215).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'affichage des vidéos (#4239).
+- Correction d'un bug lié à l'
