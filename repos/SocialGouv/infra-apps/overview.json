@@ -1,17 +1,32 @@
 {
-  "url": "https://github.com/socialgouv/infra-apps",
+  "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt permet de positionner des ressources Kubernetes via ArgoCD. Il contient les manifests nécessaires à la gestion de l'infrastructure.",
-  "language": "Shell",
-  "features": [],
-  "audience": null,
+  "description": "Ce dépôt permet de positionner des ressources Kubernetes via ArgoCD. Il contient les configurations pour déployer et gérer diverses applications et services.",
+  "language": "YAML",
+  "features": [
+    "Gestion de l'infrastructure Kubernetes",
+    "Déploiement d'applications",
+    "Configuration de services",
+    "Synchronisation avec Matomo",
+    "Gestion de secrets"
+  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Kubernetes",
-    "ArgoCD"
+    "ArgoCD",
+    "Helm",
+    "YAML",
+    "Metabase",
+    "Elasticsearch",
+    "CNPG",
+    "Vaultwarden"
   ],
   "components": [
-    "Manifests Kubernetes",
-    "Charts Helm"
+    "Manifestes Kubernetes",
+    "Charts Helm",
+    "Scripts de configuration",
+    "Automatisation via ArgoCD",
+    "Gestion des secrets"
   ],
   "auth": {
     "methods": [
@@ -19,8 +34,10 @@
     ]
   },
   "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-01-29T09:47:03+01:00",
+  "workflows": [
+    "CI/CD via GitHub Actions (inferred)"
+  ],
+  "lastActivity": "2026-02-19T17:18:39+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -31,10 +48,14 @@
     "openIssues": 11
   },
   "tags": [
-    "kubernetes",
-    "argoCD",
-    "infrastructure",
-    "manifests",
-    "helm"
+    "Kubernetes",
+    "ArgoCD",
+    "Infrastructure as Code",
+    "YAML",
+    "Metabase",
+    "Elasticsearch",
+    "Helm",
+    "CNPG",
+    "Vaultwarden"
   ]
 }

@@ -1,17 +1,19 @@
-## Changelog : infra-apps (derniers 30 jours)
+## Changelog : infra-apps (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les modifications apportées à l'infrastructure au cours des 30 derniers jours. Les principales évolutions concernent l'ajout et la configuration de nouvelles instances Metabase pour le SRDT, ainsi que des corrections et améliorations concernant l'instance Metabase existante pour le CDTN, notamment en termes de taille de stockage et d'accès. Des ajustements de politiques réseau et de configuration ont également été effectués.
+Ce changelog résume les modifications apportées à l'infrastructure au cours des 30 derniers jours. Les principales évolutions concernent l'ajout et la configuration de l'application Charon pour différents environnements (proconnect, egapro, srdt), ainsi que des ajustements et corrections concernant l'instance Metabase, notamment pour l'environnement SRDT et la synchronisation avec Matomo.
 
 ### Évolutions fonctionnelles
-- Ajout d'une instance Metabase pour le SRDT, incluant la configuration des secrets nécessaires et l'intégration avec Matomo (#296f963, #03ba605, #0b9ce16, #296f963).
-- Intégration de la synchronisation Matomo pour les instances Metabase (CDTN et SRDT) (#17610d3).
-- Correction d'un problème lié au secret de l'instance Metabase SRDT (#b1fec1e).
+- Ajout de l'application Charon pour l'environnement proconnecttest SRDT (#36).
+- Ajout de l'application Charon pour les environnements proconnect et egapro (#33, #32).
+- Synchronisation Matomo ajoutée pour Metabase SRDT (#34, #35).
+- Ajout de l'instance Metabase pour SRDT (#296f963).
+- Correction d'un problème de rafraîchissement de vue dans Metabase CDTN (#72c4a57, #554f840, #90caac4).
 
 ### Évolutions techniques
-- Augmentation de la taille du disque pour l'instance Metabase du CDTN afin d'améliorer sa capacité et sa performance (#875928f, #588d540).
-- Mise à jour de la politique réseau (netpol) pour l'instance Elasticsearch du CDTN (#3793ccd).
-- Mise à jour de Greenmask (#c926944).
-- Mise à jour de token-bureau (#7522736).
-- Autorisation de l'accès de l'instance Metabase du SRDT à son namespace (#f07c6fb).
-- Corrections et réversions temporaires concernant le rafraîchissement d'une vue dans l'instance Metabase du CDTN (#72c4a57, #90caac4, #554f840).
+- Augmentation de la taille du disque pour l'instance Metabase afin d'améliorer sa performance et sa stabilité (#875928f, #588d540).
+- Autorisation de l'accès de Metabase SRDT à l'espace de noms SRDT (#f07c6fb).
+- Ajout du secret `matomo-key` à Metabase SRDT pour la synchronisation avec Matomo (#0b9ce16).
+- Correction du secret Metabase SRDT (#b1fec1e).
+- Mise à jour de la version de l'image Charon (#7aff9fe).
+- Amélioration de Greenmask (#c926944).
