@@ -4,44 +4,48 @@
   "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
   "language": "JavaScript",
   "features": [
-    "Prise de rendez-vous",
-    "Gestion des rendez-vous",
+    "Gestion de rendez-vous",
     "Synchronisation Caldav",
+    "Rendez-vous collectifs",
     "Notifications",
-    "Gestion des utilisateurs",
-    "Statistiques d'utilisation",
-    "Connexion par code envoyé par email"
+    "API",
+    "Statistiques d'utilisation"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Administrations de l’État, Opérateurs de services publics, Collectivités territoriales",
   "dependencies": [
     "React",
+    "Webpack",
     "Bootstrap",
     "Chart.js",
-    "Webpack",
-    "Rails",
-    "PostgreSQL"
+    "FullCalendar",
+    "Stimulus",
+    "Turbo Rails"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Agenda Caldav"
+    "Agenda",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "magic-link"
+      "email-password"
     ],
-    "providers": []
+    "providers": [
+      "ProConnect"
+    ]
   },
   "tests": [
     "Jest",
     "Playwright",
     "RSpec"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-19T18:20:11+01:00",
+  "workflows": [
+    "CI/CD avec GitHub Actions"
+  ],
+  "lastActivity": "2026-02-21T11:08:34Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -58,7 +62,7 @@
     "javascript",
     "react",
     "caldav",
-    "rdv",
-    "service-public"
+    "api",
+    "rdv"
   ]
 }
