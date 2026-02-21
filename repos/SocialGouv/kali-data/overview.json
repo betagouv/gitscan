@@ -10,14 +10,17 @@
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "unist",
     "csv-parser",
-    "node-xlsx"
+    "node-xlsx",
+    "unist-util-find",
+    "unist-util-flat-filter",
+    "unist-util-parents",
+    "@socialgouv/dila-api-client"
   ],
   "components": [
-    "API",
-    "Données JSON",
-    "Scripts de mise à jour"
+    "API pour l'accès aux données",
+    "Scripts de mise à jour des données",
+    "Données JSON stockées localement"
   ],
   "auth": {
     "methods": [
@@ -25,22 +28,28 @@
     ]
   },
   "tests": [
-    "Jest"
+    "Jest",
+    "ESLint"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD (via GitHub Actions)"
   ],
-  "lastActivity": "2026-02-18T00:00:00Z",
+  "lastActivity": "2026-02-21T00:00:00Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "conventions collectives",
     "dila",
-    "api",
     "json",
-    "travail",
-    "législation"
+    "javascript",
+    "api",
+    "data"
   ]
 }
