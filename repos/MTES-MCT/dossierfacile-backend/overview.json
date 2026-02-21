@@ -7,41 +7,43 @@
     "Gestion des utilisateurs",
     "Gestion des propriétés",
     "Génération de documents",
-    "Intégration avec Keycloak",
     "Envoi d'emails",
-    "Gestion des applications"
+    "Authentification",
+    "Partage de dossiers",
+    "Gestion des alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Maven",
-    "Spring Boot",
-    "Keycloak",
-    "PostgreSQL",
     "Docker",
+    "PostgreSQL",
+    "Keycloak",
     "RabbitMQ",
-    "ZXing-cpp"
+    "Spring Boot"
   ],
   "components": [
     "API REST",
     "Base de données PostgreSQL",
     "Keycloak pour l'authentification",
     "Microservices (api-owner, api-tenant, etc.)",
-    "Docker pour la conteneurisation"
+    "Queue RabbitMQ",
+    "Interface utilisateur (via le frontend)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "session"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": [
-    "JUnit"
-  ],
+  "tests": "Tests unitaires et d'intégration (Maven)",
   "workflows": [
     "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-17T10:56:51+01:00",
+  "lastActivity": "2026-02-20T15:03:49+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -52,12 +54,13 @@
     "openIssues": 17
   },
   "tags": [
-    "dossierfacile",
-    "location",
-    "java",
-    "keycloak",
-    "spring-boot",
-    "api",
-    "microservices"
+    "Java",
+    "Spring Boot",
+    "Keycloak",
+    "PostgreSQL",
+    "API",
+    "DossierFacile",
+    "Location",
+    "Administration"
   ]
 }

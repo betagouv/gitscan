@@ -22,40 +22,33 @@
 ├── dossier-facile-logging-library
 │   ├── pom.xml
 │   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── fr
-│       │   │       └── dossierfacile
-│       │   │           └── logging
-│       │   │               ├── aop
-│       │   │               │   ├── SensitiveRequest.java
-│       │   │               │   └── SensitiveRequestAspect.java
-│       │   │               ├── appender
-│       │   │               │   └── CustomAppender.java
-│       │   │               ├── job
-│       │   │               │   └── LogAggregator.java
-│       │   │               ├── model
-│       │   │               │   ├── LogModel.java
-│       │   │               │   └── TaskStatus.java
-│       │   │               ├── request
-│       │   │               │   ├── LogAggregationFilter.java
-│       │   │               │   └── Oauth2LoggingHandler.java
-│       │   │               ├── serializer
-│       │   │               │   └── LogLevelSerializer.java
-│       │   │               ├── task
-│       │   │               │   └── LogAggregator.java
-│       │   │               └── util
-│       │   │                   └── LoggerUtil.java
-│       │   └── resources
-│       │       └── META-INF
-│       │           └── additional-spring-configuration-metadata.json
-│       └── test
-│           └── java
-│               └── fr
-│                   └── dossierfacile
-│                       └── logging
-│                           └── util
-│                               └── LoggerUtilTest.java
+│       └── main
+│           ├── java
+│           │   └── fr
+│           │       └── dossierfacile
+│           │           └── logging
+│           │               ├── aop
+│           │               │   ├── SensitiveRequest.java
+│           │               │   └── SensitiveRequestAspect.java
+│           │               ├── appender
+│           │               │   └── CustomAppender.java
+│           │               ├── job
+│           │               │   └── LogAggregator.java
+│           │               ├── model
+│           │               │   ├── LogModel.java
+│           │               │   └── TaskStatus.java
+│           │               ├── request
+│           │               │   ├── LogAggregationFilter.java
+│           │               │   └── Oauth2LoggingHandler.java
+│           │               ├── serializer
+│           │               │   └── LogLevelSerializer.java
+│           │               ├── task
+│           │               │   └── LogAggregator.java
+│           │               └── util
+│           │                   └── LoggerUtil.java
+│           └── resources
+│               └── META-INF
+│                   └── additional-spring-configuration-metadata.json
 ├── dossierfacile-api-owner
 │   ├── .gitignore
 │   ├── .mvn
@@ -166,7 +159,8 @@
 │           │                   ├── TestApplication.java
 │           │                   ├── property
 │           │                   │   ├── PropertyControllerTest.java
-│           │                   │   └── PropertyServiceImplTest.java
+│           │                   │   ├── PropertyServiceImplTest.java
+│           │                   │   └── PublicPropertyControllerTest.java
 │           │                   └── register
 │           │                       └── KeycloakServiceImplTest.java
 │           └── resources
@@ -1880,6 +1874,7 @@
 │           │               ├── service
 │           │               │   ├── AdemeApiServiceImplTest.java
 │           │               │   ├── ApartmentSharingLinkServiceTest.java
+│           │               │   ├── KeycloakCommonServiceImplTest.java
 │           │               │   ├── LinkLogServiceImplTest.java
 │           │               │   ├── LogServiceImplTest.java
 │           │               │   ├── OutscaleFileStorageServiceImplTest.java
@@ -2443,4 +2438,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-579 directories, 1970 files
+573 directories, 1971 files
