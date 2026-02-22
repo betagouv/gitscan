@@ -35,6 +35,8 @@
 ├── .claude
 │   ├── settings.json
 │   └── skills
+│       ├── add-tests
+│       │   └── SKILL.md
 │       ├── check-review-pr
 │       │   └── SKILL.md
 │       ├── sync-docs
@@ -55,6 +57,7 @@
 │   │   ├── feature_request.yml
 │   │   └── task.yml
 │   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── filters.yml
 │   ├── skills
 │   │   ├── vercel-composition-patterns -> ../../.agents/skills/vercel-composition-patterns
 │   │   ├── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
@@ -106,6 +109,7 @@
 │       ├── guides
 │       │   ├── board-views.mdx
 │       │   ├── create-account.mdx
+│       │   ├── embed.mdx
 │       │   ├── index.mdx
 │       │   ├── language.mdx
 │       │   ├── meta.json
@@ -220,6 +224,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260219140000_add_allow_embedding
 │   │   │   └── migration.sql
+│   │   ├── 20260220000000_add_pinned_tenant_to_app_settings
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.cts
@@ -233,21 +239,36 @@
 ├── public
 │   ├── doc
 │   │   └── screenshots
-│   │       ├── admin-api-keys.png
-│   │       ├── admin-audit-log.png
-│   │       ├── admin-authentication.png
-│   │       ├── admin-boards.png
-│   │       ├── admin-general.png
-│   │       ├── admin-members.png
-│   │       ├── admin-statuses.png
-│   │       ├── admin-webhooks.png
-│   │       ├── board-cards.png
-│   │       ├── board-list.png
-│   │       ├── login.png
-│   │       ├── moderation.png
-│   │       ├── post-detail.png
-│   │       ├── profile.png
-│   │       └── roadmap.png
+│   │       ├── admin-api-keys-dark.png
+│   │       ├── admin-api-keys-light.png
+│   │       ├── admin-audit-log-dark.png
+│   │       ├── admin-audit-log-light.png
+│   │       ├── admin-authentication-dark.png
+│   │       ├── admin-authentication-light.png
+│   │       ├── admin-boards-dark.png
+│   │       ├── admin-boards-light.png
+│   │       ├── admin-general-dark.png
+│   │       ├── admin-general-light.png
+│   │       ├── admin-members-dark.png
+│   │       ├── admin-members-light.png
+│   │       ├── admin-statuses-dark.png
+│   │       ├── admin-statuses-light.png
+│   │       ├── admin-webhooks-dark.png
+│   │       ├── admin-webhooks-light.png
+│   │       ├── board-cards-dark.png
+│   │       ├── board-cards-light.png
+│   │       ├── board-list-dark.png
+│   │       ├── board-list-light.png
+│   │       ├── login-dark.png
+│   │       ├── login-light.png
+│   │       ├── moderation-dark.png
+│   │       ├── moderation-light.png
+│   │       ├── post-detail-dark.png
+│   │       ├── post-detail-light.png
+│   │       ├── profile-dark.png
+│   │       ├── profile-light.png
+│   │       ├── roadmap-dark.png
+│   │       └── roadmap-light.png
 │   └── img
 │       ├── ademe-incubateur-logo.png
 │       ├── ademe-logo-2022-1.svg
@@ -298,6 +319,7 @@
 │   │   │   │   │   │   │   ├── RootMembersList.tsx
 │   │   │   │   │   │   │   ├── actions.ts
 │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── actions.ts
 │   │   │   │   │   │   ├── new
 │   │   │   │   │   │   │   ├── CreateTenantForm.tsx
 │   │   │   │   │   │   │   ├── actions.ts
@@ -543,6 +565,7 @@
 │   │   │       └── route.ts
 │   │   ├── doc
 │   │   │   ├── DocHeader.tsx
+│   │   │   ├── ImageWithTheme.tsx
 │   │   │   ├── [[...slug]]
 │   │   │   │   └── page.tsx
 │   │   │   ├── docs.css
@@ -869,6 +892,7 @@
 │   ├── testdb
 │   │   ├── helpers.ts
 │   │   ├── repos
+│   │   │   ├── AppSettingsRepoPrisma.test.ts
 │   │   │   ├── AuditLogRepoPrisma.test.ts
 │   │   │   ├── BoardRepoPrisma.test.ts
 │   │   │   ├── InvitationRepoPrisma.test.ts
@@ -969,4 +993,4 @@
 ├── vitest.config.db.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-234 directories, 781 files
+236 directories, 803 files
