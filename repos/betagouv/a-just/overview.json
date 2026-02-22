@@ -1,51 +1,53 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir des outils pour la gestion et l'analyse de données dans le domaine de la justice.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère, avec des fonctionnalités d'extraction de données, de simulation et de gestion des agents.",
   "language": "JavaScript",
   "features": [
-    "Gestion des agents",
-    "Analyse de données",
-    "Export de données",
-    "Visualisation de données",
-    "Gestion des droits d'accès",
-    "Automatisation de tâches"
+    "Gestion des utilisateurs",
+    "Extraction de données",
+    "Simulation",
+    "Gestion des droits",
+    "Exportation de données",
+    "Tableaux de bord"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
     "Redis",
-    "Express",
     "Koa",
     "Sequelize",
-    "Cypress",
-    "Babel"
+    "bcryptjs",
+    "jsonwebtoken",
+    "Cypress"
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST (Node.js/Koa)",
     "Base de données PostgreSQL",
-    "Serveur Node.js",
-    "Tests E2E avec Cypress"
+    "Cache Redis",
+    "Tests E2E (Cypress)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml"
+      "sso"
     ],
     "providers": []
   },
   "tests": [
     "Mocha",
-    "Cypress",
-    "Tests E2E"
+    "Cypress"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD (GitHub Actions)",
+    "Tests unitaires",
+    "Tests E2E",
+    "Déploiement"
   ],
-  "lastActivity": "2026-02-18T15:22:30+01:00",
+  "lastActivity": "2026-02-20T16:09:08+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -59,11 +61,10 @@
     "justice",
     "administration",
     "données",
-    "analyse",
-    "gestion",
-    "javascript",
-    "react",
+    "simulation",
     "nodejs",
-    "postgresql"
+    "postgresql",
+    "react",
+    "cypress"
   ]
 }
