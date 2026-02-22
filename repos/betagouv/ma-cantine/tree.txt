@@ -86,6 +86,7 @@
 │   │   │   ├── GraphBase.vue
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
+│   │   │   ├── ImportAdminCallout.vue
 │   │   │   ├── ImportExplanation.vue
 │   │   │   ├── ImportFileUpload.vue
 │   │   │   ├── ImportFilesExample.vue
@@ -198,8 +199,9 @@
 │   │       ├── GestionnaireImportBilansDetailles.vue
 │   │       ├── GestionnaireImportBilansSimples.vue
 │   │       ├── GestionnaireImportBilansSimplesSIRET.vue
-│   │       ├── GestionnaireImportCantines.vue
+│   │       ├── GestionnaireImportCantinesCreer.vue
 │   │       ├── GestionnaireImportCantinesGestionnaires.vue
+│   │       ├── GestionnaireImportCantinesModifier.vue
 │   │       ├── GestionnaireTableauDeBord.vue
 │   │       ├── MentionsLegales.vue
 │   │       ├── Observatoire.vue
@@ -306,6 +308,7 @@
 │   │   │   ├── canteens
 │   │   │   │   ├── canteen_bad_sectors.csv
 │   │   │   │   ├── canteens_bad.csv
+│   │   │   │   ├── canteens_bad_canteen_already_exists.csv
 │   │   │   │   ├── canteens_bad_empty_rows.csv
 │   │   │   │   ├── canteens_bad_extra_header.csv
 │   │   │   │   ├── canteens_bad_line_ministry.csv
@@ -320,7 +323,18 @@
 │   │   │   │   ├── canteens_good_groupe.csv
 │   │   │   │   ├── canteens_good_line_ministry.csv
 │   │   │   │   ├── canteens_good_max_sectors.csv
-│   │   │   │   └── canteens_sectors.csv
+│   │   │   │   ├── canteens_sectors.csv
+│   │   │   │   ├── canteens_update_bad_canteen_not_found.csv
+│   │   │   │   ├── canteens_update_bad_invalid_email.csv
+│   │   │   │   ├── canteens_update_bad_invalid_insee_code.csv
+│   │   │   │   ├── canteens_update_bad_invalid_siret.csv
+│   │   │   │   ├── canteens_update_bad_missing_insee_code.csv
+│   │   │   │   ├── canteens_update_bad_no_header.csv
+│   │   │   │   ├── canteens_update_bad_permission_denied.csv
+│   │   │   │   ├── canteens_update_good_insee.csv
+│   │   │   │   ├── canteens_update_good_multiple.csv
+│   │   │   │   ├── canteens_update_good_one.csv
+│   │   │   │   └── canteens_update_good_one.xlsx
 │   │   │   ├── diagnostics
 │   │   │   │   ├── diagnostics_bad_file_format.ods
 │   │   │   │   ├── diagnostics_complete_bad.csv
@@ -387,8 +401,10 @@
 │   │   ├── test_canteen_status.py
 │   │   ├── test_canteen_territory.py
 │   │   ├── test_canteens.py
-│   │   ├── test_canteens_import.py
+│   │   ├── test_canteens_create_import.py
 │   │   ├── test_canteens_managers_import.py
+│   │   ├── test_canteens_schema_import.py
+│   │   ├── test_canteens_update_import.py
 │   │   ├── test_community_events.py
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostics.py
@@ -425,10 +441,11 @@
 │       ├── base_import.py
 │       ├── blog.py
 │       ├── canteen.py
+│       ├── canteen_create_import.py
 │       ├── canteen_export.py
 │       ├── canteen_groupe.py
-│       ├── canteen_import.py
 │       ├── canteen_managers_import.py
+│       ├── canteen_update_import.py
 │       ├── communityevent.py
 │       ├── diagnostic.py
 │       ├── diagnostic_import.py
@@ -849,6 +866,9 @@
 │   │   ├── 0240_canteen_siret_etat_administratif_and_siret_inconnu.py
 │   │   ├── 0241_alter_importfailure_import_type.py
 │   │   ├── 0242_alter_importfailure_import_type.py
+│   │   ├── 0243_alter_importfailure_import_type.py
+│   │   ├── 0244_alter_importfailure_import_type.py
+│   │   ├── 0245_alter_diagnostic_verbose_names.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -889,13 +909,15 @@
 │   │   │   ├── schema_cantines.json
 │   │   │   └── schema_teledeclarations.json
 │   │   ├── imports
+│   │   │   ├── README.md
 │   │   │   ├── achats_id.json
 │   │   │   ├── achats_siret.json
 │   │   │   ├── bilans_detaille.json
 │   │   │   ├── bilans_simple_id.json
 │   │   │   ├── bilans_simple_siret.json
-│   │   │   ├── cantines.json
+│   │   │   ├── cantines_creer.json
 │   │   │   ├── cantines_gestionnaires.json
+│   │   │   ├── cantines_modifier.json
 │   │   │   ├── diagnostics.json
 │   │   │   ├── diagnostics_admin.json
 │   │   │   ├── diagnostics_cc.json
@@ -1254,6 +1276,7 @@
 │   │       ├── compare_datasets.py
 │   │       ├── export_dataset.py
 │   │       ├── generate_geo_data_to_json.py
+│   │       ├── generate_import_schema.py
 │   │       ├── importcsv.py
 │   │       ├── teledeclaration_fill_missing_canteen_geolocation_data.py
 │   │       ├── teledeclaration_fix_old.py
@@ -1459,13 +1482,10 @@
     │   │   ├── fichier_*.csv  (5 files)
     │   │   ├── guide_*.pdf  (7 files)
     │   │   ├── importer_des_bilans_detailles_exemple.csv
-    │   │   ├── importer_des_bilans_detailles_exemple.xlsx
+    │   │   ├── importer_*.xlsx  (5 files)
     │   │   ├── importer_des_bilans_simples_exemple.csv
-    │   │   ├── importer_*.jpg  (6 files)
-    │   │   ├── importer_des_bilans_simples_id_exemple.xlsx
-    │   │   ├── importer_des_bilans_simples_siret_exemple.xlsx
+    │   │   ├── importer_*.jpg  (8 files)
     │   │   ├── importer_des_cantines_exemple_ma_cantine.csv
-    │   │   ├── importer_des_cantines_exemple_ma_cantine.xlsx
     │   │   ├── infographie-gaspillage-alimentaire-restau-co_011317.pdf
     │   │   ├── infographie_2024_ADEME_Gaspillage-Alimentaire-RestaurationCollective-optimise-20241006-1.pdf
     │   │   ├── livret-recettes-vegetariennes-egalim-region-reunion.pdf
@@ -1651,4 +1671,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1566 files
+140 directories, 1592 files

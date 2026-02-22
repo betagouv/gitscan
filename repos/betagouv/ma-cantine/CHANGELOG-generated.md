@@ -1,46 +1,55 @@
 ## Changelog : ma-cantine (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration des fonctionnalités d'import de données, notamment pour les bilans et les cantines, ainsi que sur l'ajout de nouvelles ressources pour les utilisateurs. Des optimisations techniques ont également été apportées pour améliorer les performances et la maintenance du code.
+Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration des fonctionnalités d'import de données, notamment pour les cantines et les bilans, avec l'ajout de nouveaux schémas et d'options d'import par identifiant. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour l'export de données et la gestion des cantines, ainsi que des corrections de bugs pour assurer une meilleure stabilité et une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouvel import de bilans via l'ID de la cantine (#6393).
-- Nouvelle page dédiée aux imports de bilans détaillés (#6397).
+- Ajout de la possibilité d'exporter les cantines enregistrées via SIREN (#6409).
+- Suppression du bandeau d'alerte "rappel conso" dans l'en-tête (#6384).
+- Nouvelle page dédiée à l'import de bilans détaillés avec un schéma compatible Validata (#6397, #6394).
+- Possibilité d'importer des bilans via l'ID de la cantine (#6393).
+- Création d'un fichier d'import dédié aux gestionnaires de cantines (#6383).
+- Création de fichiers dédiés pour la création et la modification des cantines (#6407, #6395).
 - Suppression de l'import admin pour les cantines (#6387).
-- Création d'un fichier d'import pour les gestionnaires de cantines uniquement (#6383).
-- Correction d'un bug empêchant la revendication d'une cantine si des champs étaient vérifiés incorrectement (#6388).
-- Correction d'un bug sur les prix lors de l'import des achats (#6389).
-- Suppression du bandeau rappel conso dans l'en-tête (#6384).
-- Ajout de supports et de résultats de webinaires concernant la gestion des cantines concédées et des cuisines centrales/satellites (#6377, #6350, #6302).
-- Ajout du kit du télédéclarant (#6309).
-- Mise à jour de l'antisèche et du kit du télédéclarant (#6346).
+- Mise à jour des textes de la page tampon pour les imports (#6411).
+- Ajout de supports webinaires sur la gestion concédée (#6377).
+- Ajout du kit du télédéclarant et des supports webinaires sur les cuisines centrales et satellites (#6355, #6350, #6302).
 - Ajout d'une modale d'export sur le tableau de bord (#6368).
-- Ajout d'un endpoint API pour générer la liste des cantines au format xlsx (#6369).
-- Amélioration du wording des caractéristiques "performance" et "externalités" dans les achats (#6342).
+- Ajout d'un nouvel endpoint API pour générer la liste des cantines en XLSX (#6369).
 
 ### Évolutions techniques
-- Refactor de la gestion des tests pour les imports de bilans simples (#6392).
-- Réparation d'un test suite aux récentes modifications géographiques (#6385).
-- Mise à jour des informations de version dans la documentation de la télédéclaration (#6401).
-- Mise en place de services dédiés pour Postgres et Redis dans les tests (#6380).
-- Ajout de deux nouveaux champs (siret_ et date_fermeture) pour gérer les informations sur le statut du SIRET des cantines (#6376, #6375).
-- Simplification de l'export Open Data des cantines en gérant le line_ministry dans le serializer (#6354).
-- Suppression de fonctions Metabase non utilisées (#6353).
-- Amélioration des performances de l'API de liste des achats (#6364).
-- Suppression de la vérification des données géographiques lors des imports de cantines, car elles sont maintenant récupérées à la création (#6363).
-- Amélioration des mocks pour les tests des API de recherche d'entreprises et de découpage administratif (#6286, #6284).
-- Refactor de la gestion des tâches nocturnes pour mettre à jour les informations des cantines plus tôt (#6366).
-- Homogénéisation des tests entre Metabase et Open Data pour les télédéclarations et les cantines (#6321, #6308, #6305).
-- Basculement des emails de rappel "pas de diagnostics" de Django vers Brevo (#6282).
-- Stockage des données de bilan des cantines dans le champ 'data' pour Brevo (#6367).
-- Amélioration de l'export des colonnes PAT dans les exports Open Data (#6322).
+- Refactor de la gestion des imports de bilans simples pour préparer les imports de bilans détaillés (#6392).
+- Amélioration des performances de l'API de statistiques en incluant les TD groupes (#6399).
+- Correction d'une erreur bloquante sur le tableau de bord si une cantine n'a pas de mode de production (#6410).
+- Correction d'une erreur sur les prix lors de l'import des achats (#6389).
+- Amélioration de la gestion des données géographiques des cantines, avec récupération en temps réel (#6266).
+- Mise à jour des informations des cantines plus tôt dans la nuit pour Brevo (#6366).
+- Amélioration des performances de l'API des achats (#6364).
+- Simplification de l'export Open Data des cantines en utilisant les données déjà stockées en base de données (#6307).
+- Refactor de l'API de recherche d'entreprises et de découpage administratif pour améliorer les tests (#6286, #6284).
+- Ajout de services dédiés pour Postgres et Redis dans les tests CI/CD (#6380).
+- Utilisation de caches pour optimiser les appels à l'API PATs (#6263).
 
 ### Autres changements
+- Ajout d'informations dans le tableau des versions de la télédéclaration (#6401).
+- Ajout de tests pour expliciter le fonctionnement des historisations (#6295).
+- Correction de liens et de tests suite à des modifications récentes (#6385, #6404).
+- Ajout de règles métier sur le ministère de tutelle des cantines (#6319).
+- Amélioration du wording pour les caractéristiques des achats (performance et externalités) (#6342).
 - Mise à jour de la documentation d'onboarding (#6357).
-- Correction du calcul des totaux EGalim avec les valeurs performances et environnalités (#6362).
-- Correction d'un bug empêchant l'affichage correct de l'input de gaspillage alimentaire (#6377).
-- Correction d'une redirection incorrecte après la création de compte (#6376).
-- Ajout d'un bandeau d'alerte pour le rappel des laits infantiles (#6312).
-- Mise à jour de la convention de délégation (#6301).
-- Ajout d'une règle métier sur le ministère de tutelle des cantines (#6319).
-- Renommage d'une colonne dans l'import des cantines (#6261).
+- Correction de la vérification des totaux EGalim dans la télédéclaration (#6362).
+- Correction du non affichage d'un input dans la gestion du gaspillage alimentaire (#6377).
+- Correction de la redirection après la création de compte (#6276).
+- Suppression de certains champs inutilisés dans Metabase (#6353).
+- Amélioration de l'affichage des champs dans l'admin Django (#6363, #6291, #6269).
+- Ajout de fieldsets pour organiser les champs dans l'admin des cantines (#6363).
+- Ajout de la possibilité de filtrer les cantines par groupes dans l'admin (#6267).
+- Amélioration de l'export des colonnes PATs dans Open Data (#6322).
+- Mise à jour des annexes du protocole de pesées (#6272).
+- Correction du calcul des totaux EGalim (#6362).
+- Ajout de tests pour les exports de télédéclaration (#6308).
+- Amélioration de l'export des fichiers Open Data (#6354).
+- Correction d'un bug empêchant la revendication d'une cantine si des champs étaient vérifiés (#6388).
+- Ajout de la gestion des cantines fermées ou avec SIRET inconnu (#6376).
+- Amélioration de la gestion des erreurs dans les imports (#6278, #6323).
+- Suppression du bandeau d'alerte sur les laits infantiles (#6384).
