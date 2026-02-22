@@ -1,2 +1,270 @@
 .
-0 directories, 0 files
+├── .eslintrc.js
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .vscode
+│   ├── launch.json
+│   └── settings.json
+├── README.md
+├── backend
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   └── templates
+│   │   │       └── admin
+│   │   │           └── base_site.html
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── behaviours.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── environment.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── static
+│   │   └── .keep
+│   ├── sylvasan
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   └── users
+│       ├── __init__.py
+│       ├── admin
+│       │   ├── __init__.py
+│       │   └── user.py
+│       ├── apps.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   └── __init__.py
+│       ├── models
+│       │   ├── __init__.py
+│       │   └── user.py
+│       ├── serializers
+│       │   ├── __init__.py
+│       │   └── user.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── views
+│           ├── __init__.py
+│           └── authentication.py
+├── doc
+│   └── adr
+│       ├── .keep
+│       └── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
+├── mobile
+│   ├── .gitignore
+│   ├── .vscode
+│   │   └── extensions.json
+│   ├── android
+│   │   ├── .gitignore
+│   │   ├── app
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle
+│   │   │   ├── capacitor.build.gradle
+│   │   │   ├── proguard-rules.pro
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── com
+│   │   │       │           └── getcapacitor
+│   │   │       │               └── myapp
+│   │   │       │                   └── ExampleInstrumentedTest.java
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   └── fr
+│   │   │       │   │       └── gouv
+│   │   │       │   │           └── beta
+│   │   │       │   │               └── sylvasan
+│   │   │       │   │                   └── MainActivity.java
+│   │   │       │   └── res
+│   │   │       │       ├── drawable
+│   │   │       │       │   ├── ic_launcher_background.xml
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-land-hdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-land-mdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-land-xhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-land-xxhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-land-xxxhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-port-hdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-port-mdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-port-xhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-port-xxhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-port-xxxhdpi
+│   │   │       │       │   └── splash.png
+│   │   │       │       ├── drawable-v24
+│   │   │       │       │   └── ic_launcher_foreground.xml
+│   │   │       │       ├── layout
+│   │   │       │       │   └── activity_main.xml
+│   │   │       │       ├── mipmap-anydpi-v26
+│   │   │       │       │   ├── ic_launcher.xml
+│   │   │       │       │   └── ic_launcher_round.xml
+│   │   │       │       ├── mipmap-hdpi
+│   │   │       │       │   ├── ic_launcher.png
+│   │   │       │       │   ├── ic_launcher_foreground.png
+│   │   │       │       │   └── ic_launcher_round.png
+│   │   │       │       ├── mipmap-mdpi
+│   │   │       │       │   ├── ic_launcher.png
+│   │   │       │       │   ├── ic_launcher_foreground.png
+│   │   │       │       │   └── ic_launcher_round.png
+│   │   │       │       ├── mipmap-xhdpi
+│   │   │       │       │   ├── ic_launcher.png
+│   │   │       │       │   ├── ic_launcher_foreground.png
+│   │   │       │       │   └── ic_launcher_round.png
+│   │   │       │       ├── mipmap-xxhdpi
+│   │   │       │       │   ├── ic_launcher.png
+│   │   │       │       │   ├── ic_launcher_foreground.png
+│   │   │       │       │   └── ic_launcher_round.png
+│   │   │       │       ├── mipmap-xxxhdpi
+│   │   │       │       │   ├── ic_launcher.png
+│   │   │       │       │   ├── ic_launcher_foreground.png
+│   │   │       │       │   └── ic_launcher_round.png
+│   │   │       │       ├── values
+│   │   │       │       │   ├── ic_launcher_background.xml
+│   │   │       │       │   ├── strings.xml
+│   │   │       │       │   └── styles.xml
+│   │   │       │       └── xml
+│   │   │       │           └── file_paths.xml
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── com
+│   │   │                   └── getcapacitor
+│   │   │                       └── myapp
+│   │   │                           └── ExampleUnitTest.java
+│   │   ├── build.gradle
+│   │   ├── capacitor.settings.gradle
+│   │   ├── gradle
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradle.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── settings.gradle
+│   │   └── variables.gradle
+│   ├── capacitor.config.ts
+│   ├── index.html
+│   ├── ios
+│   │   ├── .gitignore
+│   │   ├── App
+│   │   │   ├── App
+│   │   │   │   ├── AppDelegate.swift
+│   │   │   │   ├── Assets.xcassets
+│   │   │   │   │   ├── AppIcon.appiconset
+│   │   │   │   │   │   ├── AppIcon-512@2x.png
+│   │   │   │   │   │   └── Contents.json
+│   │   │   │   │   ├── Contents.json
+│   │   │   │   │   └── Splash.imageset
+│   │   │   │   │       ├── Contents.json
+│   │   │   │   │       ├── splash-2732x2732-1.png
+│   │   │   │   │       ├── splash-2732x2732-2.png
+│   │   │   │   │       └── splash-2732x2732.png
+│   │   │   │   ├── Base.lproj
+│   │   │   │   │   ├── LaunchScreen.storyboard
+│   │   │   │   │   └── Main.storyboard
+│   │   │   │   └── Info.plist
+│   │   │   ├── App.xcodeproj
+│   │   │   │   ├── project.pbxproj
+│   │   │   │   └── project.xcworkspace
+│   │   │   │       └── xcshareddata
+│   │   │   │           └── IDEWorkspaceChecks.plist
+│   │   │   └── CapApp-SPM
+│   │   │       ├── .gitignore
+│   │   │       ├── Package.swift
+│   │   │       ├── README.md
+│   │   │       └── Sources
+│   │   │           └── CapApp-SPM
+│   │   │               └── CapApp-SPM.swift
+│   │   └── debug.xcconfig
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   └── vite.svg
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   │   ├── images
+│   │   │   │   ├── thumbnail-1.jpg
+│   │   │   │   ├── thumbnail-2.jpg
+│   │   │   │   └── thumbnail-3.jpg
+│   │   │   └── vue.svg
+│   │   ├── components
+│   │   │   └── HelloWorld.vue
+│   │   ├── main.ts
+│   │   ├── pages
+│   │   │   ├── AppShell.vue
+│   │   │   ├── LoginPage.vue
+│   │   │   ├── MapsPage.vue
+│   │   │   ├── ProfilePage.vue
+│   │   │   └── ProjectsPage.vue
+│   │   ├── router
+│   │   │   └── root.ts
+│   │   ├── stores
+│   │   │   └── auth.ts
+│   │   ├── style.css
+│   │   └── utils
+│   │       ├── data-fetching.ts
+│   │       └── ui.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── pyproject.toml
+└── web
+    ├── .gitignore
+    ├── .vscode
+    │   └── extensions.json
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   └── favicon-marianne.png
+    ├── src
+    │   ├── App.vue
+    │   ├── assets
+    │   │   ├── forest.jpg
+    │   │   ├── leaves.png
+    │   │   └── logo.png
+    │   ├── components
+    │   │   ├── AppHeader.vue
+    │   │   ├── ImageAttribution.vue
+    │   │   └── ToastContainer.vue
+    │   ├── main.ts
+    │   ├── pages
+    │   │   ├── DashboardPage.vue
+    │   │   ├── HomePage.vue
+    │   │   ├── LoginPage.vue
+    │   │   └── index.vue
+    │   ├── router
+    │   │   └── root.ts
+    │   ├── stores
+    │   │   ├── root.ts
+    │   │   └── toast.ts
+    │   ├── styles.css
+    │   ├── types
+    │   │   ├── api.d.ts
+    │   │   └── window.d.ts
+    │   └── utils
+    │       └── data-fetching.ts
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    ├── typed-router.d.ts
+    └── vite.config.ts
+97 directories, 172 files
