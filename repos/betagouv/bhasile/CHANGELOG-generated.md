@@ -1,47 +1,55 @@
 ## Changelog : bhasile (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à Bhasile (anciennement Place d'asile) au cours des 30 derniers jours. Les principales évolutions concernent l'ajout et l'amélioration de la gestion des CPOM (Convention de Partenariat Opérationnel et de Mutualisation), des corrections de bugs et des améliorations de l'interface utilisateur, notamment au niveau des formulaires financiers et de la gestion des structures.  L'outil a également été renommé en Bhasile.
+Ce changelog couvre les 30 derniers jours de développement sur Bhasile (anciennement Place d'asile), l'outil de gestion du parc de logements pour demandeurs d’asile. Les améliorations portent principalement sur la gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation), les finances, et l'expérience utilisateur, avec des corrections de bugs et l'ajout de nouvelles fonctionnalités pour faciliter la saisie et le suivi des données.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des CPOM : ajout de liens, de formulaires, de listes et de la possibilité de joindre des fichiers liés aux CPOM (#947, #988, #990, #972, #978, #984, #992, #995).
-- Amélioration de la gestion des structures : affichage des budgets avant la création de la structure (#1016), interdiction des valeurs négatives pour certains champs financiers (#1015, #1017), ajout d'informations CPOM sur la page structure (#959).
-- Amélioration de l'interface utilisateur :
-    - Ajout d'une adresse email de contact sur la page d'erreur 403 (#1009).
-    - Amélioration du bloc "Activités" (#1004, #1008, #938).
-    - Ajustement de la taille du logo dans différents contextes (#1002).
-    - Ajout de suivi de la sélection de la carte (#998).
-    - Correction d'un bug de redirection après déconnexion (#1003).
-    - Renommage de "Places à créer et fermer" (#946).
-- Ajout d'indicateurs de conformité (#944).
-- Ajout d'un cron pour l'EIG (#937).
-- Correction d'un bug empêchant la validation des structures subventionnées (#941).
-- Correction d'un bug lié à la case à cocher "Pas d'évaluation" (#929).
+- Ajout de la possibilité d'accepter des valeurs négatives pour le résultat net cumulé (#1023).
+- Masquage des types de places avant la date de création (#1021).
+- Correction d'un bug où le public était systématiquement mis à "Tout public" lors de chaque modification (#1020).
+- Interdiction des valeurs négatives pour le nombre de places (#1017).
+- Masquage des années de budget avant la création de la structure (#1016).
+- Interdiction des valeurs négatives pour la plupart des champs financiers (#1015).
+- Ajout d'une adresse email de contact sur la page d'erreur 403 (#1009).
+- Ajout de liens vers les CPOM dans le menu et l'en-tête (#996).
+- Affichage des CPOM sur la page de la structure (#990).
+- Ajout de la possibilité de rendre optionnel le "Total Produit Proposé" pour les années 2021, 2022 et 2023 (#989).
+- Ajout de la gestion des fichiers de convention (CPOM) (#972).
+- Ajout d'un modal de confirmation pour les CPOM (#978).
+- Ajout du formulaire de création de CPOM (#947).
+- Correction d'un bug empêchant la suppression de dates dans les CPOM (#942).
+- Ajout d'indicateurs de conformité v2 (#944).
+- Correction de la validation sur les structures subventionnées (#941).
+- Ajout de la possibilité d'uploader des fichiers Excel avec macros (.xlsm) (#945).
+- Correction d'un bug de redirection sur les marqueurs de la carte (#993).
+- Correction d'un bug sur la page d'activité (#1008, #938).
+- Correction d'un bug de déconnexion (#1003).
+- Amélioration de l'affichage des tableaux financiers (#971, #980).
+- Ajout de tests E2E pour le formulaire de modification (#1019) et le formulaire CPOM (#984).
 
 ### Évolutions techniques
-- Renommage du projet de "Place d'Asile" à "Bhasile" (#982).
-- Mise à jour de la configuration Next.js (#975).
-- Amélioration de la sécurité : correction d'une vulnérabilité potentielle liée à la construction de commandes shell à partir de variables d'environnement (#949).
-- Ajout de documentation sur l'architecture backend (#999).
+- Mise à jour de ESLint pour forcer l'utilisation de parenthèses obligatoires (#1011).
+- Amélioration du bloc de contrôle (#1005).
 - Ajout de restrictions sur les utilisateurs autorisés (#950).
-- Ajout de tests E2E pour le formulaire CPOM (#984).
-- Amélioration de la gestion des erreurs et des validations de formulaires (#981, #939, #940).
+- Mise à jour de Next.js (vers 16.1.5) (#951, #985, #960).
+- Mise à jour de jsdom (vers 28.0.0) (#1007).
 - Suppression de TODOs (#1010).
-- Suppression de code inutile (#819).
-- Ajout de brackets obligatoires et formatage du code avec Prettier (#1011).
+- Suppression de code obsolète lié aux places à créer et fermer (#946).
+- Suppression de logs inutiles (#956).
+- Mise à jour de la configuration Next.js (#975).
+- Ajout de documentation sur l'architecture backend (#999).
+- Correction d'un problème potentiel de sécurité lié à l'exécution de commandes shell (#949).
+- Suppression des années dans les CPOM (#953).
+- Ajout d'un message de chargement pour l'utilisation (#962).
 
 ### Autres changements
-- Correction d'un bug où le public était remis à "Tout public" à chaque modification (#1020).
-- Correction d'un bug lié à la liste des adresses (#1001).
-- Correction d'un bug lié à la perte du département dans le formulaire (#983).
-- Correction de typos dans les finances (#969).
-- Mise à jour de plusieurs dépendances (jsdom, divers paquets mineurs) (#1006, #1007, #985, #960, #935).
-- Exclusion de certains fichiers des vérifications (#923).
-- Ajout d'un message de chargement pour l'utilisation (#962).
-- Ajout de la possibilité d'uploader des fichiers Excel avec macros (.xlsm) (#945, #952).
-- Suppression des années du CPOM (#964).
-- Ajout de couleurs d'arrière-plan aux titres dans le formulaire de finance (#967).
-- Ajout d'une incohérence entre le département et le DNA (#966).
-- Suppression de logs (#956).
-- Suppression de l'affichage du total dans les activités (#959).
-- Mise à jour des mots utilisés dans le bouton de finalisation (#940).
+- Renommage de "Place d'Asile" en "Bhasile" (#982).
+- Inversion des numéros de téléphone (#997).
+- Correction de fautes de frappe dans les finances (#969).
+- Ajout d'un incohérence entre département et ADN (#966).
+- Suppression de fichiers inutiles des vérifications (#923).
+- Ajustement de la taille du logo (#1002).
+- Ajout de suivi de la sélection sur la carte (#998).
+- Mise à jour du wording du bouton de finalisation (#940).
+- Augmentation de la limite d'upload de fichiers à 30Mo (#958).
+- Nettoyage du code post-CPOM (#819).
