@@ -1,7 +1,7 @@
 ## Changelog : calendrier.api.gouv.fr (30 derniers jours)
 
 ### Résumé
-Ce changelog présente une mise à jour de maintenance pour l'API des jours fériés. L'unique changement concerne le maintien en vie de l'infrastructure via une action GitHub, assurant la disponibilité continue du service.
+Ce changelog couvre une période calme pour l'API du calendrier des jours fériés. La seule évolution notable est une mise à jour de maintenance pour maintenir l'infrastructure opérationnelle et assurer la disponibilité continue de l'API.
 
 ### Évolutions techniques
-- Maintien en vie de l'infrastructure via l'action GitHub `keepalive` (#I0000000)
+- Maintien de l'infrastructure : Mise à jour du workflow GitHub Actions pour assurer la disponibilité du service. (#I000000 - implicite via commit)
