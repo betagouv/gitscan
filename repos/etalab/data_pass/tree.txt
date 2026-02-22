@@ -1089,6 +1089,8 @@
 │   │   ├── create_revocation_of_authorization_model.rb
 │   │   ├── deliver_authorization_request_notification.rb
 │   │   ├── deliver_gdpr_contacts_mails.rb
+│   │   ├── deliver_linked_france_connect_notification.rb
+│   │   ├── deliver_linked_france_connect_revocation_notification.rb
 │   │   ├── deliver_linked_france_connect_webhook.rb
 │   │   ├── deliver_message_mail.rb
 │   │   ├── deprecate_linked_authorizations.rb
@@ -1186,6 +1188,7 @@
 │   │   ├── application_mailer.rb
 │   │   ├── authorization_request_mailer.rb
 │   │   ├── authorization_request_transfer_mailer.rb
+│   │   ├── auto_generated_france_connect_mailer.rb
 │   │   ├── dgfip
 │   │   │   └── apim_mailer.rb
 │   │   ├── france_connect_mailer.rb
@@ -1816,6 +1819,10 @@
 │       │   ├── _state_badge.html.erb
 │       │   ├── index.html.erb
 │       │   └── show.html.erb
+│       ├── auto_generated_france_connect_mailer
+│       │   ├── approve.text.erb
+│       │   ├── new_scopes.text.erb
+│       │   └── revoke.text.erb
 │       ├── cancel_authorization_reopenings
 │       │   └── new.html.erb
 │       ├── cancel_next_authorization_request_stage
@@ -2725,6 +2732,8 @@
 │   │   ├── create_linked_france_connect_authorization_event_spec.rb
 │   │   ├── create_linked_france_connect_authorization_spec.rb
 │   │   ├── deliver_gdpr_contacts_mails_spec.rb
+│   │   ├── deliver_linked_france_connect_notification_spec.rb
+│   │   ├── deliver_linked_france_connect_revocation_notification_spec.rb
 │   │   ├── deliver_linked_france_connect_webhook_spec.rb
 │   │   ├── deprecate_linked_authorizations_spec.rb
 │   │   ├── deprecate_previous_authorizations_spec.rb
@@ -2757,6 +2766,7 @@
 │   │   ├── admin_mailer_spec.rb
 │   │   ├── authorization_request_mailer_spec.rb
 │   │   ├── authorization_request_transfer_mailer_spec.rb
+│   │   ├── auto_generated_france_connect_mailer_spec.rb
 │   │   ├── dgfip_apim_mailer_spec.rb
 │   │   ├── france_connect_mailer_spec.rb
 │   │   ├── hubee_mailer_spec.rb
@@ -2971,4 +2981,4 @@
     ├── .keep
     └── javascript
         └── .keep
-423 directories, 2688 files
+424 directories, 2697 files
