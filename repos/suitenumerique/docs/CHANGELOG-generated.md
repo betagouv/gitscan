@@ -1,48 +1,47 @@
 ## Changelog : docs (30 derniers jours)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par des améliorations significatives de l'expérience utilisateur, notamment l'ajout de la possibilité d'imprimer des documents directement depuis le navigateur, l'importation de documents, et des ajustements d'accessibilité. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
+Ce changelog présente les améliorations apportées à la documentation et au code source de Docs au cours des 30 derniers jours. Les mises à jour incluent des corrections de bugs, des améliorations de l'interface utilisateur, des optimisations de sécurité et l'ajout de nouvelles fonctionnalités comme la gestion des requêtes de réconciliation de comptes utilisateurs et l'ajout de liens UTM pour le partage de documents.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'imprimer un document en utilisant la fonctionnalité native du navigateur. (#1832)
-- Implémentation de l'importation de documents. (#1609)
-- Ajout d'une barre flottante avec un bouton pour réduire le panneau latéral. (#1876)
-- Ajout de paramètres UTM aux liens de documents partagés pour un meilleur suivi.
-- Ajout d'une fonctionnalité de connexion silencieuse. (#1690)
-- Gestion des requêtes de réconciliation pour les comptes utilisateurs. (#1878)
-- Possibilité de définir des libellés personnalisés pour les boutons dans les modèles d'email. (#1817)
+- Ajout de paramètres UTM aux liens de partage de documents pour un meilleur suivi (#1876).
+- Ajout d'une barre flottante avec un bouton de réduction pour le panneau latéral gauche.
+- Possibilité d'imprimer un document directement depuis le navigateur (#1832).
+- Ajout de la gestion des requêtes de réconciliation de comptes utilisateurs (#1878).
+- Ajout de la connexion silencieuse (silent login) (#1690).
+- Amélioration de la recherche d'utilisateurs : les résultats sont maintenant triés par proximité avec l'utilisateur actif (#1802).
 
 ### Évolutions techniques
-- Amélioration de la validation des fichiers importés.
-- Augmentation de la valeur `client_max_body_size` dans la configuration Helm.
-- Ajout de tests pour la fonctionnalité d'importation de documents.
-- Mise à jour de l'API docspec vers la version 2.4.4.
-- Suppression du code lié aux templates.
-- Ajout d'un workflow GHCR pour les tests sur les forks.
-- Correction de l'ordre de priorité des sondes liveness et readiness dans le déploiement backend.
-- Utilisation des ressources Celery au lieu de celles du backend dans la configuration Helm.
-- Ajout d'un scan Trivy sur l'image backend.
+- Ajout du support de la plateforme ARM64 pour les builds d'images Docker.
+- Ajout d'un workflow GHCR pour les tests de forks.
+- Correction de l'utilisation des ressources dans le déploiement Helm (Celery au lieu de Backend).
+- Inversion de l'ordre des checks liveness et readiness dans le déploiement Helm.
+- Activation de l'analyse de vulnérabilités Trivy sur l'image backend.
 - Modification de l'URL des types MIME dans le Dockerfile.
-- Ajout de support pour la variable d'environnement `AWS_S3_SIGNATURE_VERSION`.
-- Amélioration de la synchronisation du store broadcast.
-- Corrections et améliorations de l'accessibilité (focus, navigation).
-- Suppression de la dépendance à des templates.
+- Ajout de la variable d'environnement `DJANGO_EMAIL_URL_APP`.
+- Refactorisation du code frontend pour utiliser des hooks au lieu de hooks uniques.
+- Mise à jour des dépendances JavaScript.
 
 ### Autres changements
-- Mise à jour de la documentation pour la configuration des langues.
-- Remplacement du lien de démonstration dans le README.
-- Ajustement des typages pour correspondre aux composants stylisés.
-- Amélioration de la hauteur de ligne des titres dans l'exportation PDF.
-- Mise à jour des dépendances axios à la version 1.13.5 (correction de sécurité).
-- Mise à jour des dépendances lodash à la version 4.17.23 (correction de sécurité).
-- Mise à jour des chaînes de caractères traduites.
-- Suppression de la surveillance des mises à jour de la dépendance `react-resizable-panels`.
-- Ajout d'un flag de fonctionnalité `FRONTEND_SILENT_LOGIN_ENABLED`.
-- Correction de l'affichage des timestamps des documents.
-- Suppression du guard Trivy sur le backend.
-- Ajout de tests de régression pour l'exportation PDF.
-- Ajout d'un avertissement si le thème n'est pas mis à jour.
-- Amélioration de la configuration du cache.
-- Ajustement des couleurs et du logo pour correspondre à l'UI Kit v2.
-- Tri des résultats de recherche d'utilisateurs par proximité avec l'utilisateur actif. (#1802)
-- Ignorer la casse lors de la recherche de fallback par email. (#1880)
+- Correction d'une erreur dans la configuration de l'utilisateur Docker.
+- Correction de l'affichage de l'horodatage des documents.
+- Mise à jour des chaînes de traduction.
+- Remplacement du lien de démonstration dans le README (#1875).
+- Amélioration de la sécurité : renforcement de la vérification des URL.
+- Changement du format d'intégration des blocs PDF en iframe pour une meilleure sécurité.
+- Ajout d'un seuil dans les tests de régression.
+- Limitation de l'exécution des checks d'impression au backend.
+- Amélioration de l'accessibilité : empêchement de la focalisation des dates et amélioration de la navigation au clavier.
+- Correction de la synchronisation du store broadcast.
+- Ajout du support de la variable d'environnement `AWS_S3_SIGNATURE_VERSION`.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Mise à jour de la documentation.
+- Suppression du code lié à l'ancien système de templates.
+- Correction de l'affichage des enfants dans les favoris.
+- Correction de la fermeture du sélecteur d'emoji dans l'arborescence.
+- Correction d'un type error dans TRASHBIN_CUTOFF_DAYS.
+- Amélioration de la position de l'icône dans les blocs callout.
+- Correction de l'exportation PDF.
+- Ajout de statistiques Crisp.
+- Amélioration de l'accessibilité pour l'exportation HTML.
+- Ajout de labels manquants pour améliorer l'accessibilité.

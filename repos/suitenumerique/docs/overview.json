@@ -4,14 +4,17 @@
   "description": "Docs est un éditeur de texte collaboratif conçu pour faciliter la création et le partage de connaissances. Il permet une édition en temps réel, un contrôle d'accès granulaire et l'exportation de contenu dans différents formats.",
   "language": "TypeScript",
   "features": [
-    "Édition collaborative",
+    "Édition collaborative en temps réel",
     "Gestion des accès",
-    "Exportation de documents",
-    "Intégration de l'IA",
-    "Gestion des versions",
+    "Exportation de documents (ODT, DOCX, PDF)",
+    "Sous-pages",
+    "Intégration IA (reformulation, résumé, traduction)",
+    "Importation de documents",
+    "Personnalisation du thème",
+    "Gestion des favoris",
     "Recherche",
-    "Favoris",
-    "Importation de documents"
+    "Authentification",
+    "Partage de documents"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -25,25 +28,30 @@
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST Django",
     "Base de données PostgreSQL",
-    "Service Worker",
-    "Yjs Server"
+    "Serveur Yjs",
+    "Service Worker"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "session"
+      "sso"
     ],
     "providers": []
   },
   "tests": [
     "Jest",
     "Vitest",
-    "Cypress"
+    "Cypress",
+    "E2E tests"
   ],
-  "workflows": [],
-  "lastActivity": "2024-01-28T00:00:00Z",
+  "workflows": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/release.yml"
+  ],
+  "lastActivity": "2024-03-28T14:18:47Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -57,10 +65,11 @@
     "collaboration",
     "text editor",
     "knowledge management",
-    "document management",
+    "documentation",
     "open source",
     "typescript",
+    "django",
     "react",
-    "django"
+    "yjs"
   ]
 }
