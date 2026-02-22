@@ -8,18 +8,20 @@ Edit [orgas.txt](./orgas.txt) and activate github pages to get your own for free
 
 ## Overview
 
-This GitScan monitors **9 French GitHub organizations** public repos:
+This GitScan monitors **10 French GitHub organizations** public repos:
 
-| Organization                                            | Description                            |
-| ------------------------------------------------------- | -------------------------------------- |
-| [betagouv](https://github.com/betagouv)                 | Beta.gouv.fr digital startup incubator |
-| [socialgouv](https://github.com/socialgouv)             | Ministry of Social Affairs             |
-| [etalab](https://github.com/etalab)                     | French government open data agency     |
-| [etalab-ia](https://github.com/etalab-ia)               | ETALAB AI initiatives                  |
-| [codegouvfr](https://github.com/codegouvfr)             | Code.gouv.fr platform                  |
-| [suitenumerique](https://github.com/suitenumerique)     | Digital Suite initiative               |
-| [mtes-mct](https://github.com/mtes-mct)                 | Ministry for Ecological Transition     |
-| [incubateur-ademe](https://github.com/incubateur-ademe) | ADEME environmental incubator          |
+| Organization                                                    | Description                            |
+| --------------------------------------------------------------- | -------------------------------------- |
+| [betagouv](https://github.com/betagouv)                         | Beta.gouv.fr digital startup incubator |
+| [socialgouv](https://github.com/socialgouv)                     | Ministry of Social Affairs             |
+| [etalab](https://github.com/etalab)                             | French government open data agency     |
+| [etalab-ia](https://github.com/etalab-ia)                       | ETALAB AI initiatives                  |
+| [codegouvfr](https://github.com/codegouvfr)                     | Code.gouv.fr platform                  |
+| [suitenumerique](https://github.com/suitenumerique)             | Digital Suite initiative               |
+| [mtes-mct](https://github.com/mtes-mct)                         | Ministry for Ecological Transition     |
+| [incubateur-ademe](https://github.com/incubateur-ademe)         | ADEME environmental incubator          |
+| [proconnect-gouv](https://github.com/proconnect-gouv)           | ProConnect government SSO platform     |
+| [demarche-numerique](https://github.com/demarche-numerique)     | Digital procedures initiative          |
 
 You can change that in [./orgas.txt](./orgas.txt)
 
