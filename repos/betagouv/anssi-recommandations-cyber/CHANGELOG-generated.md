@@ -1,31 +1,39 @@
 ## Changelog : anssi-recommandations-cyber (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à l'interface d'interrogation du modèle d'IA Albert, alimenté par les guides de l'ANSSI. Les modifications incluent une meilleure gestion des conversations, l'ajout de fonctionnalités de reformulation de questions, une gestion améliorée des erreurs et des corrections de bugs pour une expérience utilisateur plus fluide. Des améliorations de sécurité et de maintenance ont également été effectuées.
+Ce mois-ci, l'application a connu des améliorations significatives en termes de gestion des conversations, de robustesse et de correction de bugs. L'ajout de la persistance des conversations permet de conserver l'historique des échanges avec Albert, l'IA. Des efforts ont également été faits pour améliorer la qualité des prompts envoyés à Albert et pour une meilleure gestion des erreurs. Enfin, des corrections de sécurité et des améliorations de code ont été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de converser avec Albert en conservant l'historique des échanges. (#200b289, #254faef, #c25add6)
-- Implémentation d'un reformulateur de question pour améliorer la pertinence des réponses d'Albert. (#368e6ef, #bb0bdc2, #8b32dbb, #3ae7c94, #e5cc552, #dd6bbf1, #c605787, #fa8d59c)
-- Possibilité de copier le texte de la réponse au format Markdown. (#591c056, #44f13c7, #390b5de, #c859ad7)
-- Ajout des pages CGU et politique de confidentialité. (#c175639)
-- Ajout d'un bandeau pour les beta testeurs. (#78c4064)
-- Amélioration de l'affichage des messages d'erreur et ajout de la possibilité de réessayer. (#595d513, #61792f3, #c589f4f)
+- Permet d'interroger Albert en mode conversationnel, conservant l'historique des échanges.
+- Ajout de la possibilité d'ajouter des interactions à une conversation existante.
+- Affichage du message d'attente lors de la soumission d'une question.
+- Ajout des pages CGU et politique de confidentialité.
+- Ajout du type utilisateur `EVALUATION`.
+- Ajout de la violation MECONNAISSANCE.
+- Amélioration de la robustesse des prompts envoyés à Albert.
+- Instructions spécifiques ajoutées pour le DG de l'ANSSI.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des routes API pour une meilleure organisation. (#a22b8b7)
-- Séparation de la création de conversation et de l'ajout d'interactions. (#0a60f0d, #200b289)
-- Implémentation d'une persistance des conversations en base de données. (#61e5d7d, #74e5861, #9deadfb)
-- Ajout d'un outil de migration de base de données. (#d38b9bb)
-- Utilisation d'une implémentation mémoire pour certains services (Sentry, AdaptateurJournal) pour faciliter les tests et le développement. (#30117c6, #2b4bc6a, #5f8b5e0)
-- Mise à jour des dépendances de sécurité (urllib3, eslint). (#5306150, #6961f19, #f745246)
-- Suppression de dépendances inutilisées (fastapi-armor). (#c02ea49)
-- Amélioration de la gestion des erreurs et de la journalisation. (#595d513, #61792f3, #c589f4f)
-- Ajout de tests unitaires et d'intégration. (#200b289)
+- Implémentation de la persistance des conversations via une base de données.
+- Refactoring de l'architecture pour séparer les routes API dans des routeurs distincts.
+- Utilisation d'une implémentation mémoire pour certains services (adaptateur journal, sentry) afin de faciliter les tests et le développement.
+- Amélioration de la gestion des erreurs et affichage des messages d'erreur dans l'interface utilisateur.
+- Suppression de dépendances inutilisées (fastapi-armor) et mise à jour de certaines librairies (pip, urllib3, eslint, cryptography).
+- Ajout d'un outil de migration de base de données.
+- Ajout d'un reformulateur de question pour améliorer la qualité des requêtes envoyées à Albert.
+- Utilisation de la question reformulée dans différentes étapes du processus de recherche et de réponse.
 
 ### Autres changements
-- Ajout du type utilisateur `EVALUATION`. (#71c01af)
-- Suppression de code mort et de fichiers inutiles. (#34ac072, #94072d3)
-- Amélioration de la qualité du code avec Prettier et ESLint. (#67ee405)
-- Correction de bugs mineurs et améliorations de l'interface utilisateur. (#449223b, #df35053, #16e5df0, #806c30a, #3da515d, #90e9d8d)
-- Uniformisation des noms de variables. (#9bec91b)
-- Suppression d'un print oublié. (#277d10e)
+- Ajout de tests pour les interactions et la création de conversations.
+- Suppression de code mort et de fichiers inutiles.
+- Amélioration de la configuration (ajout d'un paramètre pour la taille de la fenêtre historique).
+- Ajout de githooks pour appliquer automatiquement les règles de formatage de code (prettier, eslint).
+- Ajout du favicon.
+- Correction du logo République Française.
+- Uniformisation du nom des variables `*_id` en `id_*`.
+- Suppression de la notion de prompt depuis l'interface utilisateur.
+- Renommage de la route `pose_question` en `conversation`.
+- Ajout d'un check pour les fichiers Svelte.
+- Ajout de la date de création des interactions.
+- Suppression de la duplication entre la création d’une conversation et l’ajout d’une interaction.
+- Émission d'événements pour le suivi des interactions et des conversations.
