@@ -1,28 +1,29 @@
 ## Changelog : vao (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à vao au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de l'interface utilisateur, l'ajout de nouvelles fonctionnalités liées au module "fusager" et des optimisations techniques, notamment la migration vers pnpm et l'amélioration des outils de développement.
+Ce changelog résume les améliorations et corrections apportées à l'application vao au cours des 30 derniers jours. Les modifications incluent des corrections de bugs liés à la gestion des organismes et des déclarations de séjour, l'ajout de fonctionnalités d'authentification à deux facteurs, l'amélioration de l'accessibilité, et des optimisations techniques pour le développement et la maintenance du projet.
 
 ### Évolutions fonctionnelles
 - Ajout d'une page d'authentification à deux facteurs (2FA) (#1183)
-- Ajout de boutons pour améliorer l'accessibilité (RGAA) dans les tableaux (#1186)
-- Correction d'un bug empêchant la copie des données du fusager dans les déclarations annulées (#1166)
-- Correction d'un bug lié à la mise à jour du SIRET dans le fusager (#1184)
-- Amélioration de l'affichage des messages d'erreur concernant le SIRET (#1156, #1117)
-- Ajout d'un titre aux modales et modification de leur taille (#1150)
-- Correction d'un problème d'export du schéma téléphonique (#1161, #1191)
-- Correction de l'organisme dans le fusager pour les déclarations (#1160)
+- Amélioration de l'accessibilité avec l'ajout de boutons pour les tableaux, conformément aux directives RGAA (#1186)
+- Correction d'un bug empêchant la disparition correcte du deuxième compte OVA (#1197)
+- Correction d'un bug dans le filtre de liste des déclarations de séjour (DS) pour les organismes (#1196)
+- Correction de l'affichage du message d'erreur "SIRET inexistant" (#1156, #1117)
+- Correction du routage des emails lors de la mise à jour du SIRET (#1157)
+- Correction de la copie d'une déclaration de séjour annulée (#1166)
+- Correction de l'assignation de l'organisme lors de la création d'une déclaration de séjour (#1160)
 
 ### Évolutions techniques
-- Migration vers pnpm pour la gestion des dépendances et amélioration des outils de linting (#1125, #1185, #1174)
+- Migration vers pnpm et correction des problèmes de linting associés (#1125, #1191)
 - Mise à jour de la dépendance `nuxt-maplibre` vers la version 1.2.2 (#1172)
-- Amélioration de la configuration de l'environnement de développement (#1165, #1164)
-- Ajout d'un composable pour la gestion des toasts (#1158)
-- Amélioration des scripts de CI/CD et des tests (#1138)
-- Correction de problèmes liés à la configuration de la carte en environnement de développement (#1187)
+- Amélioration de la configuration de développement, notamment pour les variables d'environnement (#1164, #1165, #1187)
+- Correction de problèmes liés aux schémas de téléphone pour l'export (#1161, #1191)
+- Ajout d'un composable pour la gestion des "toasters" (notifications) (#1158)
+- Amélioration des scripts de CI/CD et de la configuration des conteneurs de développement (#1174, #1176)
+- Correction de l'import manquant dans un composant (#1176)
+- Ajout de vérifications de types dans le projet Nuxt (#1138)
 
 ### Autres changements
-- Amélioration du template de pull request (#1191)
-- Correction de l'import manquant (#1176)
-- Ajout de tests d'intégration pour l'acceptation des CGU (#1148)
-- Nettoyage du code et des configurations.
+- Amélioration du template de pull request pour encourager des contributions de meilleure qualité (#1191, #1185)
+- Correction de la configuration du bucket S3 pour les assets locaux (#1177)
+- Suppression des applications de la configuration docker-compose (#1163)
