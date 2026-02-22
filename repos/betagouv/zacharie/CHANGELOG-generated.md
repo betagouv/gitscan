@@ -1,32 +1,42 @@
 ## Changelog : zacharie (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la synchronisation des données, la gestion des carcasses et des FEIs, ainsi que sur l'interface utilisateur pour une meilleure expérience utilisateur. Des corrections de bugs et des améliorations de la performance ont également été apportées.
+Ce changelog résume les améliorations apportées à Zacharie au cours du dernier mois. Les développements se concentrent sur l'amélioration de la synchronisation des données, la gestion des FEIs et carcasses, l'interface utilisateur et l'expérience utilisateur, ainsi que sur la documentation du projet. Des corrections de bugs ont également été implémentées pour assurer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de créer un contact CCG directement pendant le flux FEI (#147).
-- Synchronisation des contacts de circuit court avec Brevo (#144).
-- Ajout de champs de propriété à la modèle Carcasse (#145).
-- Possibilité de sauter des étapes dans le processus d'onboarding (#138).
-- Ajout d'un indicateur SVI (Suivi Vie Intégrée) au tableau de bord, incluant le motif (#168).
-- Amélioration de l'affichage des carcasses sans décision, qui sont maintenant affichées comme acceptées (puis revert). (#124)
-- Ajout d'une page d'administration des utilisateurs avec un onglet dédié (#143).
-- Suppression des espèces Cailles et Oies de la liste des espèces (#150).
-- Correction d'un bug empêchant l'ajout de partenaires avec une adresse email déjà utilisée (#159).
-- Amélioration de l'interface utilisateur avec des placeholders vides (#167), une barre de recherche (#163), et des labels (#164).
-- Adaptation de l'interface pour une meilleure réactivité sur mobile (#184).
+- Amélioration de la gestion des FEIs avec la possibilité de créer des contacts CCG en ligne lors du processus de création de FEI (#147).
+- Synchronisation des contacts de circuit court vers Brevo (#144).
+- Ajout de champs de propriété à la gestion des carcasses (#145).
+- Possibilité de sauter des étapes lors de l'onboarding (#138).
+- Ajout d'un indicateur de motif SVI dans le tableau de bord.
+- Amélioration de l'interface utilisateur avec l'ajout de placeholders vides, de barres de recherche et de labels (#163, #164, #167, #168).
+- Ajout d'un onglet d'administration des utilisateurs.
+- Correction du tri des FEIs.
+- Amélioration du chargement des entités et des utilisateurs.
+- Correction de la transmission des carcasses.
+- Correction de la pagination.
+- Suppression de l'affichage de l'état "terminé" des FEIs dans l'application.
+- Amélioration de la gestion des carcasses en enregistrant également les champs associés.
+- Correction de la gestion des carcasses en cas de race condition entre l'ETG et le transport.
+- Correction de l'affichage des étiquettes des carcasses.
+- Possibilité de créer un seul point de terminaison pour toutes les FEIs.
 
 ### Évolutions techniques
-- Refactorisation de la synchronisation des données FEI avec un nouveau endpoint `/sync` pour une meilleure performance (#1879f09, #7dc64d7).
-- Extraction de la logique de sauvegarde des FEIs et des carcasses pour une meilleure organisation du code (#5bd5761).
-- Amélioration de la gestion des relations entre les entités et les ETGs.
-- Optimisation du chargement des FEIs pour une meilleure performance.
-- Nettoyage important du code, notamment des composants d'édition, de formulaire, PWA et des relations entre entités.
-- Mise à jour des dépendances (lodash, tar) (#7bc0aa6, #3a193ef).
+- Refactorisation du code pour extraire les effets secondaires des contrôleurs de FEI et de carcasses.
+- Amélioration de la synchronisation des données en remplaçant PQueue par un appel POST groupé vers /sync.
+- Ajout de types SyncRequest/SyncResponse.
+- Nettoyage du code et suppression de code inutile.
+- Mise à jour de la documentation (CLAUDE.md) pour inclure l'architecture de synchronisation local-first.
+- Amélioration de la gestion des erreurs et des timeouts.
+- Correction de problèmes de race condition.
+- Mise à jour des dépendances (lodash, tar).
 
 ### Autres changements
-- Ajout d'une documentation sur l'architecture de synchronisation local-first (CLAUDE.md) (#16a56a9, #ed1c059).
-- Mise à jour du fichier `.gitignore` (#05d4da6).
-- Ajout de tests pour améliorer la couverture du code (#185).
-- Correction de plusieurs bugs mineurs et améliorations de la stabilité.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
+- Mise à jour du fichier `.gitignore`.
+- Correction de la gestion des carcasses intermédiaires.
+- Renommage des contrôleurs.
+- Ajout de tests et corrections de tests existants.
+- Correction de la gestion des utilisateurs non activés.
+- Suppression de Cailles et Oies de la liste des espèces.
+- Ajout de champs de propriété aux carcasses.
+- Ajout de champs sur les carcasses.

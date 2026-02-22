@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/betagouv/zacharie",
   "name": "zacharie",
-  "description": "Zacharie est une application web pour le suivi des chasses et des carcasses, principalement destinée aux agents de l'administration et aux partenaires impliqués dans la gestion de la faune sauvage.",
+  "description": "Zacharie est une application web pour la gestion des données relatives aux animaux et aux carcasses, notamment dans le cadre de la filière de la chasse. Elle permet de suivre les informations de traçabilité et de faciliter les échanges entre les différents acteurs.",
   "language": "TypeScript",
   "features": [
-    "Gestion des chasses",
-    "Suivi des carcasses",
+    "Gestion des carcasses",
+    "Gestion des FEIs",
+    "Synchronisation des données",
     "Gestion des utilisateurs",
-    "Export de données (Excel, PDF)",
-    "Recherche",
+    "Tableau de bord",
+    "Export de données",
     "Gestion des partenaires",
-    "Notifications",
-    "Tableaux de bord",
+    "Suivi de la traçabilité",
     "Gestion des anomalies"
   ],
   "audience": "Agents de l'Administration",
@@ -22,15 +22,13 @@
     "Prisma",
     "bcryptjs",
     "jsonwebtoken",
-    "cors",
+    "passport",
     "dayjs",
-    "react-router",
-    "react-toastify",
     "zod"
   ],
   "components": [
     "Frontend React",
-    "API REST (Express)",
+    "API REST Express",
     "Base de données PostgreSQL",
     "Authentification JWT",
     "Architecture local-first"
@@ -43,14 +41,11 @@
     "providers": []
   },
   "tests": [
-    "Jest",
     "Vitest",
     "Cypress"
   ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-02-19T17:05:06+01:00",
+  "workflows": [],
+  "lastActivity": "2026-02-20T12:16:22+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -61,12 +56,12 @@
     "openIssues": null
   },
   "tags": [
-    "faune sauvage",
     "chasse",
     "carcasse",
+    "FEI",
+    "traçabilité",
     "administration",
     "gestion",
-    "suivi",
     "React",
     "TypeScript",
     "PostgreSQL"
