@@ -1,45 +1,46 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est un outil permettant de comparer différents modèles d'IA conversationnelle pour sensibiliser aux enjeux de l'IA générative (biais, impact environnemental) et constituer des jeux de données de préférence en français.",
+  "description": "ComparIA est une plateforme open source pour collecter des données de préférences humaines sur les LLM, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser à la diversité des modèles, aux biais et à l'impact environnemental.",
   "language": "Python",
   "features": [
-    "Comparaison de modèles d'IA",
-    "Analyse des biais de l'IA",
-    "Collecte de données pour l'IA générative",
-    "Interface utilisateur web"
+    "Comparaison de modèles de langage",
+    "Collecte de données de préférences",
+    "Visualisation de données",
+    "Publication de datasets",
+    "Evaluation de modèles",
+    "Gestion des votes et réactions"
   ],
-  "audience": "Grand public",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration",
+    "Associations",
+    "Développeurs"
+  ],
   "dependencies": [
     "FastAPI",
     "Pydantic",
     "Redis",
-    "uv",
-    "litellm",
-    "Sentry",
-    "psycopg2-binary",
-    "numpy",
-    "requests"
+    "Litellm",
+    "Ecologits",
+    "PostgreSQL"
   ],
   "components": [
     "Backend FastAPI",
-    "Frontend SvelteKit",
+    "Frontend React (implicite)",
     "Base de données PostgreSQL",
     "Cache Redis",
     "API REST",
-    "Interface utilisateur web"
+    "Streaming SSE"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "Pytest",
-  "workflows": [
-    "build",
-    "test"
-  ],
-  "lastActivity": "2026-02-19T18:29:14+01:00",
+  "tests": null,
+  "workflows": null,
+  "lastActivity": "2026-02-20T15:08:08+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -50,14 +51,14 @@
     "openIssues": null
   },
   "tags": [
+    "LLM",
     "IA",
-    "intelligence artificielle",
-    "comparaison",
-    "biais",
-    "génératif",
-    "données",
-    "Python",
-    "FastAPI",
-    "SvelteKit"
+    "Open Source",
+    "Données",
+    "Evaluation",
+    "Préférences",
+    "Langues",
+    "Biais",
+    "Environnement"
   ]
 }
