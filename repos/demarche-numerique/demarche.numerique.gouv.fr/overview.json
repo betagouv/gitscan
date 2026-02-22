@@ -1,42 +1,37 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle est open source sous licence AGPL.",
+  "description": "Plateforme web développée pour répondre au besoin de digitalisation des procédures administratives françaises.",
   "language": "Ruby",
   "features": [
-    "Gestion des démarches administratives",
-    "Téléchargement de pièces jointes",
+    "Gestion des dossiers",
     "Authentification utilisateur",
-    "Gestion des établissements",
-    "Suivi des dossiers",
-    "Notifications"
+    "Notifications",
+    "Gestion des administrateurs",
+    "Gestion des procédures administratives"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "Redis",
-    "Ruby on Rails",
-    "React",
-    "lightgallery",
+    "ImageMagick",
     "Sidekiq",
-    "Delayed Job (migration vers Sidekiq)",
-    "Bun",
-    "Chrome/Chromedriver"
+    "React",
+    "Rails"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur d'applications Ruby on Rails",
-    "Gestion des files d'attente (Sidekiq)",
-    "Traitement d'images"
+    "Serveur d'applications Ruby on Rails"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "sso"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
     "RSpec",
@@ -44,26 +39,19 @@
     "Cypress",
     "Vitest"
   ],
-  "workflows": [
-    "CI/CD (détails non spécifiés)"
-  ],
-  "lastActivity": "2026-02-19T17:31:29+01:00",
+  "workflows": [],
+  "lastActivity": "2024-05-03T14:28:37Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
-    "administration numérique",
-    "démarches administratives",
-    "open source",
+    "administration",
+    "digitalisation",
+    "gouvernement",
     "Ruby on Rails",
     "React",
-    "gouvernement français",
-    "numérisation"
+    "France",
+    "e-administration"
   ]
 }

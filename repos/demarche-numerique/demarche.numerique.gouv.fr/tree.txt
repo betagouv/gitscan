@@ -1053,6 +1053,7 @@
 │   │   │   │   └── groupes_ajout_component.html.haml
 │   │   │   ├── groupes_ajout_component.rb
 │   │   │   ├── groupes_management_component
+│   │   │   │   ├── groupes_management_component.en.yml
 │   │   │   │   ├── groupes_management_component.fr.yml
 │   │   │   │   └── groupes_management_component.html.haml
 │   │   │   ├── groupes_management_component.rb
@@ -2959,10 +2960,11 @@
 │       │   └── notify_removed_gestionnaire.html.haml
 │       ├── groupe_instructeur_mailer
 │       │   ├── confirm_and_notify_added_instructeur.html.haml
-│       │   ├── confirm_and_notify_added_instructeur_from_groupes_import.html.haml
-│       │   ├── notify_added_instructeur_from_groupes_import.html.haml
+│       │   ├── confirm_and_notify_added_instructeur_in_many_groupes.html.haml
+│       │   ├── notify_added_instructeur_in_many_groupes.html.haml
 │       │   ├── notify_added_instructeurs.html.haml
-│       │   └── notify_removed_instructeur.html.haml
+│       │   ├── notify_removed_instructeur.html.haml
+│       │   └── notify_removed_instructeur_from_all_groupes.html.haml
 │       ├── instructeur_mailer
 │       │   ├── last_week_overview.html.haml
 │       │   ├── send_dossier.html.haml
@@ -3828,16 +3830,19 @@
 │   │       │   ├── confirm_and_notify_added_instructeur
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
-│   │       │   ├── confirm_and_notify_added_instructeur_from_groupes_import
+│   │       │   ├── confirm_and_notify_added_instructeur_in_many_groupes
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
-│   │       │   ├── notify_added_instructeur_from_groupes_import
+│   │       │   ├── notify_added_instructeur_in_many_groupes
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
 │   │       │   ├── notify_added_instructeurs
 │   │       │   │   ├── en.yml
 │   │       │   │   └── fr.yml
-│   │       │   └── notify_removed_instructeur
+│   │       │   ├── notify_removed_instructeur
+│   │       │   │   ├── en.yml
+│   │       │   │   └── fr.yml
+│   │       │   └── notify_removed_instructeur_from_all_groupes
 │   │       │       ├── en.yml
 │   │       │       └── fr.yml
 │   │       ├── instructeurs
@@ -4555,6 +4560,7 @@
 │   ├── 502.html
 │   ├── 503.html
 │   ├── 504.html
+│   ├── cosign.pub
 │   ├── csv
 │   │   ├── import-groupe-test.csv
 │   │   ├── import-instructeurs-test.csv
@@ -4713,6 +4719,8 @@
 │   │       ├── editor_component_spec.rb
 │   │       ├── explication_component_spec.rb
 │   │       └── info_referentiel_component_spec.rb
+│   ├── config
+│   │   └── active_storage_spec.rb
 │   ├── controllers
 │   │   ├── administrateurs
 │   │   │   ├── activate_controller_spec.rb
@@ -5827,4 +5835,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-934 directories, 5210 files
+936 directories, 5216 files

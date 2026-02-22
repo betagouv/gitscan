@@ -1,7 +1,30 @@
-2026-02-19T17:18:13Z - f5a69cdcc - Lisa Durand : Merge pull request #12694 from demarche-numerique/make-notify_owner_for_changes-btn-secondary
+2026-02-20T16:02:09+01:00 - c7c4f0d5c - Eric Leroy-Terquem : refactor(email notification): rename notify_instructeur_after_groupes_import -> notify_instructeur_added_in_many_groupes
+2026-02-20T16:02:09+01:00 - a56e0c853 - Eric Leroy-Terquem : refactor(email sanitization): extract emails parsing in a dedicated method
+2026-02-20T16:02:08+01:00 - c56d63ca4 - Eric Leroy-Terquem : feat(groupes instructeurs): can remove instructeurs from all groupes
+2026-02-20T16:02:08+01:00 - 990ac488f - Eric Leroy-Terquem : feat(groupes instructeurs): can add instructeurs to all groupes
+2026-02-20T15:07:41Z - 6a27dad60 - Eric Leroy-Terquem : Merge pull request #12625 from demarche-numerique/affectation-d-instructeurs-en-masse
+2026-02-20T10:52:38Z - 5cd750ffb - Eric Leroy-Terquem : Merge pull request #12673 from demarche-numerique/fix-pdf-display-in-gallery
+2026-02-20T10:32:39+01:00 - 8bd20c1b8 - dependabot[bot] : chore(deps): bump rack from 3.1.18 to 3.1.20
+2026-02-20T10:25:19Z - e475d9c91 - Eric Leroy-Terquem : Merge pull request #12682 from demarche-numerique/remove-active-storage-analyze-job
+2026-02-20T10:15:28+01:00 - f409ca786 - dependabot[bot] : chore(deps): bump nokogiri from 1.18.10 to 1.19.1
+2026-02-20T10:05:39Z - e225cc6af - Eric Leroy-Terquem : Merge pull request #12684 from demarche-numerique/use-variants-for-pdf-preview-images
+2026-02-20T09:54:44Z - 04a0f5d53 - LeSim : Merge pull request #12680 from demarche-numerique/add_cosign_key
+2026-02-20T09:42:29Z - 58967279f - LeSim : Merge pull request #12681 from demarche-numerique/dependabot/bundler/rack-3.1.20
+2026-02-20T09:37:09Z - e41ba1725 - Benoit Queyron : Merge pull request #12690 from demarche-numerique/fix-pg-ambiguous-column-of-commentaires-to-notify-scope
+2026-02-20T09:22:01Z - 1570784ad - LeSim : Merge pull request #12695 from demarche-numerique/dependabot/bundler/nokogiri-1.19.1
+2026-02-20T09:07:16Z - 257833f84 - LeSim : Merge pull request #12691 from demarche-numerique/fix-placeholder-annuaire-education
 2026-02-19T17:31:29+01:00 - 769c6d732 - Lisa Durand : make notify owner for changes btn secondary
+2026-02-19T17:18:13Z - f5a69cdcc - Lisa Durand : Merge pull request #12694 from demarche-numerique/make-notify_owner_for_changes-btn-secondary
+2026-02-19T11:26:52+01:00 - 65e415917 - benoitqueyron : style(annuaire education): affiche un palceholder 'commencer à saisir'
+2026-02-19T11:15:34+01:00 - 5c1601024 - benoitqueyron : fix(Commentaire): precise the table for to_notify scope to avoid a PG::AmbiguousColumn error
 2026-02-19T09:18:17Z - 62c18e0c2 - Mathieu Magnin : Merge pull request #12689 from demarche-numerique/update-zone
 2026-02-18T17:34:30+01:00 - b7da0c85b - Mathieu Magnin : fix(zone): change MAA name
+2026-02-18T12:13:13+01:00 - a7730608c - Eric Leroy-Terquem : refactor(gallery): renaming for better understanding what is a variant or not in representations
+2026-02-18T11:19:04+01:00 - d3b18c414 - Eric Leroy-Terquem : fix(gallery): display variant pdf previews in thumbnails instead of full size pdf previews
+2026-02-18T09:40:30+01:00 - a71a72d32 - Eric Leroy-Terquem : chore(jobs): skip variants and preview images blobs from fix_missing_antivirus_analysis_job
+2026-02-18T09:26:21+01:00 - 35e441bf3 - Eric Leroy-Terquem : chore(jobs): do not run virus scanner job on preview images
+2026-02-17T18:10:39+01:00 - 58dfea948 - Eric Leroy-Terquem : chore(jobs): remove unnecessary active storage analyze job
+2026-02-17T16:36:03+01:00 - 7843817b8 - simon lehericey : chore: add public cosign key
 2026-02-17T15:54:33Z - f16d96442 - LeSim : Merge pull request #12623 from demarche-numerique/go_back_to_pro_connect
 2026-02-17T14:12:18Z - a2d036431 - Eric Leroy-Terquem : Merge pull request #12679 from demarche-numerique/add-a-yaml-lint
 2026-02-17T13:48:20+01:00 - b461e26b7 - Eric Leroy-Terquem : chore(lint): add final newline in yaml files with fix mode of yaml_lint
@@ -14,68 +37,69 @@
 2026-02-16T16:20:45+01:00 - 4c084e76b - simon lehericey : feat: wording on hint
 2026-02-16T15:44:23+01:00 - 7ced4f1b4 - simon lehericey : feat: add hint for formated champ in case of a range with min == max
 2026-02-16T14:54:04+01:00 - 538a14c7c - simon lehericey : fix: one can click on a link, even if it is inside a copy-zone
-2026-02-16T13:26:46Z - e0dc96712 - LeSim : Merge pull request #12624 from demarche-numerique/fix_rib_editeur_ui_2
 2026-02-16T14:14:50+01:00 - 78ebb7c5e - simon lehericey : fix(ui): render RIB editor in an empty layout as intended
+2026-02-16T13:26:46Z - e0dc96712 - LeSim : Merge pull request #12624 from demarche-numerique/fix_rib_editeur_ui_2
 2026-02-16T13:02:22Z - abb27d58b - LeSim : Merge pull request #12672 from demarche-numerique/fix-general-hint-of-champ
 2026-02-16T12:51:39Z - a8fa1e7e6 - LeSim : Merge pull request #12618 from demarche-numerique/usager_depose_un_dossier
-2026-02-16T08:04:47Z - 3de170426 - Lisa Durand : Merge pull request #12665 from demarche-numerique/small-ux-improvement-tdc-formatted-ldu
 2026-02-16T08:35:22+01:00 - a00fe9916 - Lisa Durand : remove placeholder and adjust label for formatted tdc
+2026-02-16T08:04:47Z - 3de170426 - Lisa Durand : Merge pull request #12665 from demarche-numerique/small-ux-improvement-tdc-formatted-ldu
+2026-02-13T14:43:49+01:00 - 0f183d7ba - Eric Leroy-Terquem : fix(UI): display bottom of pdf file in gallery
 2026-02-13T13:03:21+01:00 - afce07a34 - benoitqueyron : fix(EditableChamp): when formatted simple champ, the hint corresponds to the constraints established by the admin
 2026-02-13T13:03:17+01:00 - 7eb6365c1 - benoitqueyron : fix(EditableChamp): puts back general hint
 2026-02-13T12:00:33+01:00 - d50cc3b8c - Eric Leroy-Terquem : chore: do not run image processor job again after a variant image has been created
-2026-02-13T10:32:11Z - 998b13c13 - mfo : Merge pull request #12627 from mfo/US/improve-cleaner
 2026-02-13T11:25:14+01:00 - 87af89150 - Eric Leroy-Terquem : chore: do not run virus scanner job again after a variant image has been created
-2026-02-13T11:11:50+01:00 - 0a3f7baad - mfo : skip(spec): marked as llm_eval
 2026-02-13T11:11:50+01:00 - dcdc642a3 - mfo : fix(llm:rule): do not destroy contextual info
 2026-02-13T11:11:50+01:00 - bc6ee5bfb - mfo : feat(improve_cleaner/prompt): enhance prompt for methodology
 2026-02-13T11:11:50+01:00 - 484dd1f17 - mfo : break(llm:rule): under a section dedicated to contact info, do not remove critical data
+2026-02-13T11:11:50+01:00 - 0a3f7baad - mfo : skip(spec): marked as llm_eval
 2026-02-13T11:05:27+01:00 - b07aefab1 - mfo : feat(LLM::Eval): stop testing by hand, too much work now
-2026-02-13T10:03:22Z - 2b06b5eb1 - mfo : Merge pull request #12653 from mfo/US/annotation-dossier-link
-2026-02-13T09:36:43Z - 3560af32a - mfo : Merge pull request #12581 from mfo/US/improve-structure-algo
+2026-02-13T10:32:11Z - 998b13c13 - mfo : Merge pull request #12627 from mfo/US/improve-cleaner
 2026-02-13T10:18:28+01:00 - 62e2fa1fe - mfo : feat(LLM::BaseImprover): do not need more than 5 examples for the LLM
 2026-02-13T10:18:27+01:00 - fa1a21367 - mfo : fix(schema_to_llm): use safe accessor for header_section_level, this attributes had been introduced a few years ago, some type de champs do not have a stored level
-2026-02-13T10:18:27+01:00 - 1ff881e6e - mfo : clean(schema_to_llm): do not expose complex display_condition for now, otherwise it timeouts
 2026-02-13T10:18:27+01:00 - a2132078c - mfo : feat(ImproveStructureItemComponent): show header_section_level
-2026-02-13T10:18:27+01:00 - 2d1494d2a - mfo : feat(LLM::StructureImprover): without update chanmps position, much simplier implementation
-2026-02-13T10:18:27+01:00 - 7d3122a10 - mfo : feat(LLM::StructureImprover): cleaner and simplier prompt. drop moving fields [bring way too much complexity]
 2026-02-13T10:18:27+01:00 - 827d583fc - mfo : feat(LLM::StructureImprover): only structure root tdcs, going deeper lose the llm
+2026-02-13T10:18:27+01:00 - 7d3122a10 - mfo : feat(LLM::StructureImprover): cleaner and simplier prompt. drop moving fields [bring way too much complexity]
+2026-02-13T10:18:27+01:00 - 2d1494d2a - mfo : feat(LLM::StructureImprover): without update chanmps position, much simplier implementation
+2026-02-13T10:18:27+01:00 - 1ff881e6e - mfo : clean(schema_to_llm): do not expose complex display_condition for now, otherwise it timeouts
 2026-02-13T10:18:20+01:00 - a390afdd1 - mfo : feat(LLM::BaseImprover): strip given schema to LLM depending on the rule
-2026-02-13T09:05:22Z - 82e713d2a - mfo : Merge pull request #12532 from mfo/US/ux-review-label-improver
+2026-02-13T10:03:22Z - 2b06b5eb1 - mfo : Merge pull request #12653 from mfo/US/annotation-dossier-link
 2026-02-13T09:55:57+01:00 - 73439e302 - mfo : feat(LLM::LabelImprover): discard invalid LLM responses
-2026-02-13T09:55:56+01:00 - 916dbc9ec - mfo : feat(LLM::LabelImprover): contraint output token regarding justification, 150 chars is more than enough for a justification
 2026-02-13T09:55:56+01:00 - df0292958 - mfo : feat(base_improver): split LLM calls in batches to avoid timeout
-2026-02-13T09:55:56+01:00 - 2b33c18ca - mfo : review(ux): enhance simpliscore progress-bar. rename skip label
+2026-02-13T09:55:56+01:00 - 916dbc9ec - mfo : feat(LLM::LabelImprover): contraint output token regarding justification, 150 chars is more than enough for a justification
 2026-02-13T09:55:56+01:00 - 439d78c6f - mfo : feat(simpliscore): decrease padding of formatted descriptions
+2026-02-13T09:55:56+01:00 - 2b33c18ca - mfo : review(ux): enhance simpliscore progress-bar. rename skip label
 2026-02-13T09:55:52+01:00 - c58e5b6e3 - mfo : feat(LLM::HeaderCompoenent): do not show analysis in progress, dup with progress bar
 2026-02-13T09:41:19+01:00 - 5f96cdeef - mfo : feat(simpliscore#improve_label): improve prompt based on ux/marlene review
+2026-02-13T09:36:43Z - 3560af32a - mfo : Merge pull request #12581 from mfo/US/improve-structure-algo
+2026-02-13T09:05:22Z - 82e713d2a - mfo : Merge pull request #12532 from mfo/US/ux-review-label-improver
+2026-02-12T17:59:31+01:00 - 254704b12 - Mathieu Magnin : fix(champ pj): accept should have a list of types not extensions
+2026-02-12T17:53:18+01:00 - ed74de72c - Mathieu Magnin : refactor: remove not used method
+2026-02-12T17:53:18+01:00 - babdb94d0 - Mathieu Magnin : fix(titre identite): fix accept form for old type Titre identite
 2026-02-12T17:09:25Z - a3ab7935e - Mathieu Magnin : Merge pull request #12667 from demarche-numerique/fix-accept_from_type_de_champ_2
 2026-02-12T17:06:17Z - 19f625fca - Colin Darie : Merge pull request #12659 from colinux/validate-rnf-before-service
-2026-02-12T17:59:31+01:00 - 254704b12 - Mathieu Magnin : fix(champ pj): accept should have a list of types not extensions
-2026-02-12T17:53:18+01:00 - babdb94d0 - Mathieu Magnin : fix(titre identite): fix accept form for old type Titre identite
-2026-02-12T17:53:18+01:00 - ed74de72c - Mathieu Magnin : refactor: remove not used method
 2026-02-12T16:05:23Z - d2a492dac - Colin Darie : Merge pull request #12663 from colinux/contact-open-crisp
+2026-02-12T15:54:03+01:00 - adb5e946a - Eric Leroy-Terquem : test: fix tests with right apostrophe format
+2026-02-12T15:44:34+01:00 - 3e9df9674 - Mathieu Magnin : fix(pj): fix accept when champ is blank
 2026-02-12T15:44:19Z - e7cbc24b1 - Colin Darie : Merge pull request #12658 from colinux/procedure-dont-clone-ff-percent
 2026-02-12T15:32:39Z - b244e3c80 - Kara Diaby : Merge pull request #12643 from demarche-numerique/refacto/datetime-to-date-conversion-v2
 2026-02-12T15:00:18Z - a5dd05073 - Mathieu Magnin : Merge pull request #12664 from demarche-numerique/fix-accept_from_type_de_champ
 2026-02-12T14:59:30Z - 5f1c54110 - Eric Leroy-Terquem : Merge pull request #12656 from demarche-numerique/linter-for-wrong-apostrophe-format
-2026-02-12T15:54:03+01:00 - adb5e946a - Eric Leroy-Terquem : test: fix tests with right apostrophe format
-2026-02-12T15:44:34+01:00 - 3e9df9674 - Mathieu Magnin : fix(pj): fix accept when champ is blank
 2026-02-12T14:48:13+01:00 - b92ea6d4c - Colin Darie : feat(contact): auto open chat
-2026-02-12T13:48:06Z - 5fcfcb770 - Lisa Durand : Merge pull request #12654 from demarche-numerique/a11y-fix-hierarchy-title-sumup-dossier-page-ldu
 2026-02-12T14:37:19+01:00 - aeeeaf92d - Eric Leroy-Terquem : fix: replace wrong apostrophes in fr translation files with linter fix mode
 2026-02-12T14:37:18+01:00 - e55ff3175 - Eric Leroy-Terquem : chore: add a fix mode to apostrophe format linter
 2026-02-12T14:37:18+01:00 - 0af9bdc87 - Eric Leroy-Terquem : chore: add a linter for wrong apostrophe format
-2026-02-12T13:04:47Z - c45df525a - Mathieu Magnin : Merge pull request #12660 from demarche-numerique/remove-badge-traitement-en-cours
-2026-02-12T13:52:12+01:00 - 96b638a39 - Mathieu Magnin : fix(upload): remove PendingPollComponent it confuses user
 2026-02-12T13:52:12+01:00 - ac598b48b - Mathieu Magnin : fix(pj): do not display to user that watermark is pending, it creates confusion
-2026-02-12T10:39:08Z - e7d8178e7 - Mathieu Magnin : Merge pull request #12661 from demarche-numerique/add-procedure-id-in-logs
+2026-02-12T13:52:12+01:00 - 96b638a39 - Mathieu Magnin : fix(upload): remove PendingPollComponent it confuses user
+2026-02-12T13:48:06Z - 5fcfcb770 - Lisa Durand : Merge pull request #12654 from demarche-numerique/a11y-fix-hierarchy-title-sumup-dossier-page-ldu
+2026-02-12T13:04:47Z - c45df525a - Mathieu Magnin : Merge pull request #12660 from demarche-numerique/remove-badge-traitement-en-cours
 2026-02-12T11:17:55+01:00 - c9df340f4 - Mathieu Magnin : logs(pj): add procedure id in log_content_type_rejection
 2026-02-12T10:41:36+01:00 - 423b1092f - Kara Diaby : refactor: use .to_date before I18n.l() for date-only formatting
+2026-02-12T10:39:08Z - e7d8178e7 - Mathieu Magnin : Merge pull request #12661 from demarche-numerique/add-procedure-id-in-logs
 2026-02-12T08:40:06Z - c4b573f43 - Mathieu Magnin : Merge pull request #12657 from demarche-numerique/try-to-fix-invalid-format
-2026-02-11T16:31:42Z - 0d810aed2 - Colin Darie : Merge pull request #12621 from demarche-numerique/less_flaky
 2026-02-11T17:16:09+01:00 - cc0f3b962 - Lisa Durand : fix h2 to h3 for alert close procedure
 2026-02-11T16:46:27+01:00 - 4d8cbb1ff - Lisa Durand : fix a11y hierarchy title for sections dossier summary
 2026-02-11T16:34:45+01:00 - 23dba6f53 - Colin Darie : feat(rnf): validate with regex before calling service, so we have a better error msg
+2026-02-11T16:31:42Z - 0d810aed2 - Colin Darie : Merge pull request #12621 from demarche-numerique/less_flaky
 2026-02-11T12:13:20+01:00 - 1a453b928 - Colin Darie : fix(flipper): don't clone feature randomly enabled
 2026-02-11T11:43:37+01:00 - dbf0f1c44 - Mathieu Magnin : add logs to investigate pj type error
 2026-02-11T10:22:10Z - 9cf72be9c - Colin Darie : Merge pull request #12638 from mfo/US/flack-submitted-message
@@ -84,57 +108,57 @@
 2026-02-11T09:24:09+01:00 - f130c19e7 - Eric Leroy-Terquem : fix(dossier): display 'deposer modification' button when adding file to en_construction dossier
 2026-02-11T07:51:41Z - 069b66298 - Benoit Queyron : Merge pull request #12641 from demarche-numerique/etq-admin-removes-icon-dossiers-count
 2026-02-10T19:37:08+01:00 - b2a7418ea - Colin Darie : refacto(weekly overview): avoid timeout of large query loading thousands of dossiers
-2026-02-10T16:31:45Z - d2241f49f - Lisa Durand : Merge pull request #12652 from demarche-numerique/add-file-numbers-for-instructeurs-tabs-ldu
 2026-02-10T17:17:11+01:00 - 8e056c709 - Lisa Durand : re introduce counters for archives and deleted dossiers in tabs and list for instructeur
-2026-02-10T15:23:00Z - 572b0c374 - mfo : Merge pull request #12640 from mfo/US/a11y/champ-address
+2026-02-10T16:31:45Z - d2241f49f - Lisa Durand : Merge pull request #12652 from demarche-numerique/add-file-numbers-for-instructeurs-tabs-ldu
 2026-02-10T15:52:17+01:00 - 00258fdbc - mfo : feat(graphql/dossierModifierAnnotation): add support for DossierLinkChamp
 2026-02-10T15:41:26+01:00 - a3a187c07 - mfo : fix(spec.flaky): simplify flaky spec
-2026-02-10T14:19:54Z - 70b1f3c02 - Colin Darie : Merge pull request #12651 from colinux/test-retry-timeout
+2026-02-10T15:23:00Z - 572b0c374 - mfo : Merge pull request #12640 from mfo/US/a11y/champ-address
 2026-02-10T15:06:52+01:00 - ceec8d97f - Colin Darie : test: enable caching like in prod for heavy cached query
+2026-02-10T14:39:04+01:00 - 0ce7f64fd - mfo : fix(messagerie): avoid double escaping of &
+2026-02-10T14:19:54Z - 70b1f3c02 - Colin Darie : Merge pull request #12651 from colinux/test-retry-timeout
 2026-02-10T13:54:55Z - 4edd320f6 - Mathieu Magnin : Merge pull request #12633 from demarche-numerique/more_time_less_timeout
 2026-02-10T13:45:44Z - 8557ba92f - mfo : Merge pull request #12646 from mfo/US/fix-double-amperstamp-encoding
 2026-02-10T13:41:42Z - 43cb19465 - Mathieu Magnin : Merge pull request #12629 from demarche-numerique/clean-jobs-config-3
 2026-02-10T13:41:14Z - 52e6fb4fb - Mathieu Magnin : Merge pull request #12650 from colinux/crisp-delete-old-people
-2026-02-10T14:39:04+01:00 - 0ce7f64fd - mfo : fix(messagerie): avoid double escaping of &
 2026-02-10T13:15:52Z - 05c8be3f0 - Mathieu Magnin : Merge pull request #12647 from colinux/crisp-create-people-on-chat
 2026-02-10T13:15:02Z - 87b9c63d6 - Mathieu Magnin : Merge pull request #12649 from demarche-numerique/fix-12648
 2026-02-10T13:12:32Z - 6787029e0 - Colin Darie : Merge pull request #12635 from colinux/crisp-csp-strict
 2026-02-10T13:11:56+01:00 - 4a819783e - Colin Darie : feat(crisp): remove inactive people every day
 2026-02-10T13:11:56+01:00 - 1b341c576 - Colin Darie : feat(crisp): remove inactive contacts API
 2026-02-10T12:56:39+01:00 - 3ed953b5f - Mathieu Magnin : fix(form): override align-items: last baseline (closes #12648)
-2026-02-10T09:37:10Z - fbb5ab60d - Lisa Durand : Merge pull request #12637 from demarche-numerique/a11y-filters-instrusteur-long-label-truncate-ldu
-2026-02-10T10:30:44+01:00 - 060f07e85 - Mathieu Magnin : refactor(jobs): remove custom error handling, it is now handled by ActiveJob::RetryOnStandardError
-2026-02-10T10:30:44+01:00 - 8e381daf2 - Mathieu Magnin : refactor(jobs): transient errors are retried like standard error
-2026-02-10T10:30:44+01:00 - 46f054582 - Mathieu Magnin : refactor(tests): ensure Sentry.capture_exception is called
-2026-02-10T10:30:44+01:00 - aa320a180 - Mathieu Magnin : refactor(AttestationPdfGenerationJob): custom retry_on no longer needed, retry_on StandardError does the job
-2026-02-10T10:30:44+01:00 - 672433648 - Mathieu Magnin : refactor(FetchCadastreRealGeometryJob): custom retry_on no longer needed, retry_on StandardError does the job
 2026-02-10T10:30:44+01:00 - f8f473ba7 - Mathieu Magnin : refactor(image processor job): custom retry_on no longer needed, retry_on StandardError does the job
-2026-02-10T10:30:44+01:00 - 49902f2c8 - Mathieu Magnin : refactor(api entreprise jobs): custom retry_on no longer needed, retry_on StandardError does the job
+2026-02-10T10:30:44+01:00 - aa320a180 - Mathieu Magnin : refactor(AttestationPdfGenerationJob): custom retry_on no longer needed, retry_on StandardError does the job
 2026-02-10T10:30:44+01:00 - 9f13da281 - Mathieu Magnin : fix(tests): when jobs are manually retried, pass the exception so sentry can log it, else it will raise an ArgumentError
+2026-02-10T10:30:44+01:00 - 8e381daf2 - Mathieu Magnin : refactor(jobs): transient errors are retried like standard error
+2026-02-10T10:30:44+01:00 - 672433648 - Mathieu Magnin : refactor(FetchCadastreRealGeometryJob): custom retry_on no longer needed, retry_on StandardError does the job
+2026-02-10T10:30:44+01:00 - 49902f2c8 - Mathieu Magnin : refactor(api entreprise jobs): custom retry_on no longer needed, retry_on StandardError does the job
+2026-02-10T10:30:44+01:00 - 46f054582 - Mathieu Magnin : refactor(tests): ensure Sentry.capture_exception is called
+2026-02-10T10:30:44+01:00 - 060f07e85 - Mathieu Magnin : refactor(jobs): remove custom error handling, it is now handled by ActiveJob::RetryOnStandardError
 2026-02-10T10:30:43+01:00 - 9881bdf5d - Mathieu Magnin : test(sentry): ensure sentry capture exception is called every times the job fails
 2026-02-10T10:30:43+01:00 - 892279632 - Mathieu Magnin : fix(jobs): active job retries are not reported by default by sentry
 2026-02-10T10:29:21+01:00 - c18028a0d - Colin Darie : fix(crisp): email param is better when url encoded
 2026-02-10T10:21:57+01:00 - cee6b7225 - Colin Darie : feat(crisp): create people only when chat initiated
+2026-02-10T09:37:10Z - fbb5ab60d - Lisa Durand : Merge pull request #12637 from demarche-numerique/a11y-filters-instrusteur-long-label-truncate-ldu
 2026-02-10T08:50:03Z - b6513be89 - Mathieu Magnin : Merge pull request #12642 from demarche-numerique/fix-12515
 2026-02-10T08:35:06Z - cd7e6adb0 - Colin Darie : Merge pull request #12644 from demarche-numerique/dependabot/bundler/faraday-2.14.1
-2026-02-10T08:07:08Z - 08ba1c3da - mfo : Merge pull request #12645 from mfo/US/remove-sib-webhook
-2026-02-10T08:20:30+01:00 - 366f78a5d - mfo : bug(dgfip/cnaf): both champs are no more in use, for now they have the same error message. we will enhance error messaging/support/a11y if one day those champ come in use
 2026-02-10T08:20:30+01:00 - 9da0dc582 - mfo : fix(SiretChamp): focusable_input_id is always the same : if champ is mandatory and blank, point to the same input. Same logic with error_id, we can have two kidn of errors on this champ, but only one error message.
 2026-02-10T08:20:30+01:00 - 7697837cb - mfo : refactor(input_errorable): this component is used by InputComponent & our custom type de champ component, saying that it was too complicated. Sure for inputcomponent we must ensure the input / error message are linked by their attribute. But for our custom type de champ component, the fact that an error exists on the champ means their is an error, no need to add complexity checking what kind of attribute is on error on the champ
+2026-02-10T08:20:30+01:00 - 366f78a5d - mfo : bug(dgfip/cnaf): both champs are no more in use, for now they have the same error message. we will enhance error messaging/support/a11y if one day those champ come in use
+2026-02-10T08:07:08Z - 08ba1c3da - mfo : Merge pull request #12645 from mfo/US/remove-sib-webhook
 2026-02-10T07:44:07+01:00 - 65a64023b - mfo : clean(webhook#send_in_blue): drop unused webhook
 2026-02-09T22:19:23Z - 0caa4d1d2 - dependabot[bot] : chore(deps): bump faraday from 2.13.4 to 2.14.1
 2026-02-09T17:09:05+01:00 - 774996206 - Mathieu Magnin : fix(repetition): Fix heading hierarchy for repeatable block titles (closes #12515)
 2026-02-09T17:08:38+01:00 - 453d964f7 - mfo : fix(LinkedDropDownListChamp): bad dsfr classname so errored champ did not have dsfr error theme
 2026-02-09T17:08:37+01:00 - 56c39f735 - mfo : fix(AddressChamp): bad dsfr classname so errored champ did not have dsfr error theme
-2026-02-09T17:08:37+01:00 - 2974b35e9 - mfo : feat(AddressChamp): error message for wrong commun name linked to comme input
 2026-02-09T17:08:37+01:00 - 47025046c - mfo : feat(InputComponent): use new error_id method so it can works with other attributes than champ.value, like champ.commune_name
+2026-02-09T17:08:37+01:00 - 2974b35e9 - mfo : feat(AddressChamp): error message for wrong commun name linked to comme input
 2026-02-09T16:40:40+01:00 - d9a177fc5 - benoitqueyron : removes estimated dossiers count informations from procedures list
 2026-02-09T16:21:43+01:00 - 0784f1e0e - mfo : refactor(champ.error_id): change error_id signature so it takes the attribute name to build the error_id, will be propagated for compound champ like address
 2026-02-09T11:44:06Z - 6e77fa1be - Lisa Durand : Merge pull request #12608 from demarche-numerique/ay11-hints-for-formatted-tdc-ldu
 2026-02-09T11:28:07+01:00 - c5252ea94 - Lisa Durand : improve accessibility of truncated filter labels
+2026-02-09T10:40:29+01:00 - 31a727631 - Colin Darie : chore(csp): restrict crisp to only authorized features, excluding wss://stream.relay.crisp.chat
 2026-02-09T10:05:51Z - f34eced85 - Colin Darie : Merge pull request #12607 from colinux/fc-prefill-mandataire
 2026-02-09T09:48:02Z - 4438894c4 - Colin Darie : Merge pull request #12612 from colinux/fix-invalid-locale
-2026-02-09T10:40:29+01:00 - 31a727631 - Colin Darie : chore(csp): restrict crisp to only authorized features, excluding wss://stream.relay.crisp.chat
 2026-02-09T09:27:07Z - 2fb59f21a - Lisa Durand : Merge pull request #12611 from demarche-numerique/fix-filters-read-agreement-ldu
 2026-02-09T08:53:44Z - 014cc1107 - mfo : Merge pull request #12632 from mfo/US/modal-with-sticky-a11y-happyness
 2026-02-06T16:18:09+01:00 - 9def304b9 - mfo : fix(a11y): identity dropdown uses dsfr menu that behaves as expected on focus out [meaning, it closes]
@@ -143,29 +167,29 @@
 2026-02-06T09:47:37Z - c4da882d9 - mfo : Merge pull request #12587 from mfo/US/types-improver-rework-prompt
 2026-02-06T09:08:04Z - 06eead373 - Mathieu Magnin : Merge pull request #12620 from demarche-numerique/touch_dossier_when_etablissement_is_updated
 2026-02-05T17:46:16+01:00 - 10768a5dc - simon lehericey : fix: an instructeur/administrateur trying to log using FC is asked to use ProConnect
-2026-02-05T16:32:33Z - b520f0bce - Colin Darie : Merge pull request #12613 from colinux/test-fix-tdc-stable-id-collision
 2026-02-05T17:29:59+01:00 - fc220337b - Lisa Durand : refacto: unify hints logic in hints_for_champ
 2026-02-05T17:28:44+01:00 - 1be760d5a - Lisa Durand : Add hints to formatted champ label when constraints are set
 2026-02-05T17:23:31+01:00 - 8ee9eb2b4 - simon lehericey : spec: find `Supprimer` button
 2026-02-05T17:06:40+01:00 - 62ca6e7c9 - simon lehericey : feat: fix spec
+2026-02-05T16:32:33Z - b520f0bce - Colin Darie : Merge pull request #12613 from colinux/test-fix-tdc-stable-id-collision
 2026-02-05T16:22:59+01:00 - 90e21e181 - simon lehericey : feat: filter use `déposé`
-2026-02-05T16:18:02+01:00 - 080f09d99 - simon lehericey : feat: status_badge_user return `déposé`
-2026-02-05T16:18:02+01:00 - 958497219 - simon lehericey : feat: user see `deposé` instead of `en construction`
 2026-02-05T16:18:02+01:00 - ce369e18a - simon lehericey : chore: remove unused code
+2026-02-05T16:18:02+01:00 - 958497219 - simon lehericey : feat: user see `deposé` instead of `en construction`
+2026-02-05T16:18:02+01:00 - 080f09d99 - simon lehericey : feat: status_badge_user return `déposé`
 2026-02-05T16:16:43+01:00 - f23063c5d - Mathieu Magnin : fix(etablissement): when etablissement is updated touch champ
 2026-02-05T15:57:32+01:00 - 5febe0a2e - Mathieu Magnin : fix(etablissement): when etablissement is updated touch dossier
 2026-02-05T15:46:32+01:00 - 26bcbe95f - Mathieu Magnin : ignore .worktrees/
-2026-02-05T14:06:40Z - 5132434d6 - Eric Leroy-Terquem : Merge pull request #12606 from demarche-numerique/fix-generating-representations-from-pdf-files
-2026-02-05T14:55:37+01:00 - 8108abe7c - Eric Leroy-Terquem : db(task): update task to create representations for pjs of latest dossiers
 2026-02-05T14:55:37+01:00 - 9ecbc5c7d - Eric Leroy-Terquem : fix(image processing): create representations from pdf files
+2026-02-05T14:55:37+01:00 - 8108abe7c - Eric Leroy-Terquem : db(task): update task to create representations for pjs of latest dossiers
+2026-02-05T14:06:40Z - 5132434d6 - Eric Leroy-Terquem : Merge pull request #12606 from demarche-numerique/fix-generating-representations-from-pdf-files
 2026-02-05T13:21:05Z - 8cb91a8d7 - LeSim : Merge pull request #12614 from demarche-numerique/fix_rib_editeur_ui
 2026-02-05T12:34:00Z - 0e412ada0 - Corinne Durrmeyer : Merge pull request #12615 from demarche-numerique/followup-bump-dsfr
 2026-02-05T12:24:21+01:00 - 4c7021c4e - Colin Darie : chore(dossier): FC prefill mandataire, not identity
 2026-02-05T12:17:31+01:00 - 87a45a4f2 - Corinne Durrmeyer : refacto(sr-only): Replace custom classes with DSFR classes
 2026-02-05T12:03:50+01:00 - f23286bfb - Corinne Durrmeyer : refacto(visually-hidden): Replace custom classes with DSFR classes
 2026-02-05T11:40:15+01:00 - e5d245e9e - Corinne Durrmeyer : fix(.procedure__item .fr-nav__link): Correct appearance of links with icons
-2026-02-05T11:30:29+01:00 - 0811f30f4 - simon lehericey : ui: add space before go back
 2026-02-05T11:30:29+01:00 - d2192cc60 - simon lehericey : css: embed doc goes full height
+2026-02-05T11:30:29+01:00 - 0811f30f4 - simon lehericey : ui: add space before go back
 2026-02-05T11:16:13+01:00 - 8e4e54b63 - Corinne Durrmeyer : refacto(font-weight-normal): Replace custom classes with DSFR classes
 2026-02-05T11:16:12+01:00 - a6a9d9407 - Corinne Durrmeyer : refacto(font-weight-bold): Replace custom classes with DSFR classes
 2026-02-05T09:33:31Z - 86cf31315 - Colin Darie : Merge pull request #12610 from colinux/improve-contact-filter
@@ -181,44 +205,44 @@
 2026-02-04T16:23:17+01:00 - 551b47b6e - Colin Darie : chore(contact): filter burpcollaborator.net emails contact
 2026-02-04T11:57:14Z - ff9cb8e3d - Corinne Durrmeyer : Merge pull request #12604 from demarche-numerique/a11y-detail-notfications
 2026-02-03T17:00:28Z - acdeb573a - LeSim : Merge pull request #12597 from demarche-numerique/removing_one_external_data_indirection
-2026-02-03T14:21:13Z - 3edd93488 - Colin Darie : Merge pull request #12602 from demarche-numerique/bump-dsfr
+2026-02-03T14:57:10+01:00 - c96ba48bd - Corinne Durrmeyer : fix(.card-title): Avoid line breaks when the title is too long.
 2026-02-03T14:57:10+01:00 - 42244defd - Corinne Durrmeyer : refacto(code): Correct indentation
 2026-02-03T14:57:10+01:00 - 0f5a5c834 - Corinne Durrmeyer : refacto(mega menu): Replace custom classes with DSFR classes
-2026-02-03T14:57:10+01:00 - c96ba48bd - Corinne Durrmeyer : fix(.card-title): Avoid line breaks when the title is too long.
-2026-02-03T14:56:01+01:00 - 558f3b41a - Corinne Durrmeyer : fix(#procedure-notifications): Use <h4> instead of <p> for titles
 2026-02-03T14:56:01+01:00 - f40e165c5 - Corinne Durrmeyer : fix(#procedure-notifications): Add missing trad
+2026-02-03T14:56:01+01:00 - 558f3b41a - Corinne Durrmeyer : fix(#procedure-notifications): Use <h4> instead of <p> for titles
+2026-02-03T14:21:13Z - 3edd93488 - Colin Darie : Merge pull request #12602 from demarche-numerique/bump-dsfr
 2026-02-03T12:47:33+01:00 - de903f7ed - simon lehericey : refactor: rnf champ returns whole hash
-2026-02-03T12:47:33+01:00 - 83707e81c - simon lehericey : refactor: siret champ returns etablissement and value to be updated
 2026-02-03T12:47:33+01:00 - c683e84fd - simon lehericey : refactor: referentiel champ returns the whole hash to be updated
+2026-02-03T12:47:33+01:00 - 83707e81c - simon lehericey : refactor: siret champ returns etablissement and value to be updated
 2026-02-03T12:47:32+01:00 - 95bf0b7e5 - simon lehericey : refactor: ocr_service wraps its return is value_json
 2026-02-03T11:15:13+01:00 - b1b2927ce - simon lehericey : refactor: an external source can update several columns at once
+2026-02-03T10:37:08+01:00 - 9014448ff - Mathieu Magnin : refactor(repetition): improve readability
+2026-02-03T10:37:08+01:00 - 0ffbe620d - Mathieu Magnin : fix(repetition): when row has errors expand it
+2026-02-03T10:37:07+01:00 - dea74b7d6 - Mathieu Magnin : feat(repetition): error libelle should match libelle in form
 2026-02-03T10:06:05Z - 957fb5c06 - Eric Leroy-Terquem : Merge pull request #12577 from demarche-numerique/fix-hidden-combobox-bug
 2026-02-03T09:57:36Z - d3a7e6cca - Mathieu Magnin : Merge pull request #12574 from demarche-numerique/fix-11732-2
 2026-02-03T09:53:07Z - c971da8d1 - Mathieu Magnin : Merge pull request #12586 from demarche-numerique/clean-jobs-config
 2026-02-03T09:44:13Z - 5b9fc8593 - Colin Darie : Merge pull request #12579 from colinux/crisp-verify-email-signature
-2026-02-03T10:37:08+01:00 - 9014448ff - Mathieu Magnin : refactor(repetition): improve readability
-2026-02-03T10:37:08+01:00 - 0ffbe620d - Mathieu Magnin : fix(repetition): when row has errors expand it
-2026-02-03T10:37:07+01:00 - dea74b7d6 - Mathieu Magnin : feat(repetition): error libelle should match libelle in form
-2026-02-03T09:10:57Z - 8335a2c87 - Mathieu Magnin : Merge pull request #12601 from colinux/fix-edit-footer-overlap
-2026-02-03T09:04:33Z - 55bd724ea - Eric Leroy-Terquem : Merge pull request #12593 from demarche-numerique/fix-archiver-only-if-termine
-2026-02-03T09:43:19+01:00 - 1cd82cea7 - Mathieu Magnin : fix(tests): api entreprise job retries standard errors and transient errors
+2026-02-03T09:43:19+01:00 - d8a549ef3 - Mathieu Magnin : refactor(jobs): disable sidekiq retries to avoid conflicts with activejob retries strategy)
+2026-02-03T09:43:19+01:00 - 8ed44cd5c - Mathieu Magnin : fix(test): cron job is reenqueued without raising error
 2026-02-03T09:43:19+01:00 - 88f99b05b - Mathieu Magnin : refacto(jobs): move retry on StandardError in concern, so we can extend activestorage::basejob
 2026-02-03T09:43:19+01:00 - 794e35a03 - Mathieu Magnin : fix(test): split shared examples by error class
+2026-02-03T09:43:19+01:00 - 1cd82cea7 - Mathieu Magnin : fix(tests): api entreprise job retries standard errors and transient errors
 2026-02-03T09:43:19+01:00 - 0eb96003c - Mathieu Magnin : fix(test): job is reenqueued without raising error
-2026-02-03T09:43:19+01:00 - 8ed44cd5c - Mathieu Magnin : fix(test): cron job is reenqueued without raising error
-2026-02-03T09:43:19+01:00 - d8a549ef3 - Mathieu Magnin : refactor(jobs): disable sidekiq retries to avoid conflicts with activejob retries strategy)
 2026-02-03T09:31:29+01:00 - 199c8edfc - Colin Darie : fix(modal): auto open with JS, not css class
+2026-02-03T09:10:57Z - 8335a2c87 - Mathieu Magnin : Merge pull request #12601 from colinux/fix-edit-footer-overlap
+2026-02-03T09:04:33Z - 55bd724ea - Eric Leroy-Terquem : Merge pull request #12593 from demarche-numerique/fix-archiver-only-if-termine
 2026-02-02T17:55:43+01:00 - 1ef6a1636 - Colin Darie : fix(css): avoid sticky footer overlapping real footer
 2026-02-02T17:55:23+01:00 - 4cb69593d - Colin Darie : fix(css): remove legacy css
 2026-02-02T16:16:50+01:00 - 128de55d4 - Colin Darie : fix(dsfr): wrap nav link icons to prevent space-between layout
 2026-02-02T15:26:02+01:00 - 7a80d2920 - Colin Darie : chore(dsfr): update service-public.fr → service-public.gouv.fr
 2026-02-02T15:25:43+01:00 - 7106958c8 - Colin Darie : chore(deps): bump @gouvfr/dsfr 1.12.1 → 1.14.3
 2026-02-02T15:23:49+01:00 - 23c1902c5 - Colin Darie : fix(dsfr): correct fr-cell---right typos (triple dash)
-2026-02-02T14:02:27Z - 1efaa4a4b - Colin Darie : Merge pull request #12598 from colinux/fix-typhoeux-caching
 2026-02-02T14:49:13+01:00 - 801b5dba6 - Colin Darie : fix(typhoeus): not cacheable when public without max-age since 0 is not a valid TTL
-2026-02-02T13:38:24Z - 8e48c6985 - Colin Darie : Merge pull request #12594 from colinux/update-broken-herb
 2026-02-02T14:18:03+01:00 - ce350e0d5 - Colin Darie : fix: missing space between semi colons
 2026-02-02T14:15:44+01:00 - a458924c9 - Colin Darie : fix(herb): format everything
+2026-02-02T14:02:27Z - 1efaa4a4b - Colin Darie : Merge pull request #12598 from colinux/fix-typhoeux-caching
+2026-02-02T13:38:24Z - 8e48c6985 - Colin Darie : Merge pull request #12594 from colinux/update-broken-herb
 2026-02-02T11:16:00+01:00 - 5465c7cf4 - Colin Darie : chore(bun): bump herb-tools 0.8.1 => 0.8.9
 2026-02-02T09:44:30Z - 499fbd5bb - Lisa Durand : Merge pull request #12561 from demarche-numerique/fix-ux-filter-truncate-ldu
 2026-02-02T09:43:15Z - a10ccc657 - Lisa Durand : Merge pull request #12580 from demarche-numerique/ay11-hints-for-date-tdc-ldu
@@ -227,11 +251,11 @@
 2026-02-02T09:04:33Z - 303f7d05f - Colin Darie : Merge pull request #12499 from colinux/fix-html-close-msg
 2026-02-02T08:33:53+01:00 - 0199e76be - Eric Leroy-Terquem : db(task): desarchive not termine dossiers
 2026-02-02T08:17:18+01:00 - dae180912 - Eric Leroy-Terquem : fix(dossier): instructeur can archive a dossier only if termine
-2026-01-30T15:20:31+01:00 - da69e05fc - Corinne Durrmeyer : refacto(fr-mega-menu): Remove duplicate title
 2026-01-30T15:20:31+01:00 - fe0f6d71c - Corinne Durrmeyer : refacto(fr-mega-menu): Apply accordion pattern
+2026-01-30T15:20:31+01:00 - da69e05fc - Corinne Durrmeyer : refacto(fr-mega-menu): Remove duplicate title
 2026-01-30T15:05:23+01:00 - 9a3f1b818 - Corinne Durrmeyer : refacto(fr-mega-menu): Remove useless classes, attributess & tags in dropdown menu
-2026-01-30T15:05:23+01:00 - 2c2740ea8 - Corinne Durrmeyer : refacto(fr-mega-menu): Remove useless title in dropdown menu
 2026-01-30T15:05:23+01:00 - 3c4bc6486 - Corinne Durrmeyer : fix(fr-mega-menu): Replace .fr-mega-menu with .fr-menu
+2026-01-30T15:05:23+01:00 - 2c2740ea8 - Corinne Durrmeyer : refacto(fr-mega-menu): Remove useless title in dropdown menu
 2026-01-30T10:27:05+01:00 - 6e866c496 - simon lehericey : refactor: do not shout NON_SPECIFIE
 2026-01-30T10:27:04+01:00 - 0c999ba1d - simon lehericey : refactor: remove useless `rib_nature?` method
 2026-01-29T21:13:06Z - 4b7555215 - Colin Darie : Merge pull request #12589 from colinux/clean-orphan-etablissements
@@ -241,35 +265,35 @@
 2026-01-29T17:45:53+01:00 - 5c3bf6612 - Lisa Durand : Fix diff detection for date/datetime tdc options in procedure revisions
 2026-01-29T17:45:50+01:00 - 5c4fcefbe - Lisa Durand : add date validator for tdc
 2026-01-29T17:44:38+01:00 - 8ca5dc59e - Lisa Durand : add hints to date champ label if constrainst are set
+2026-01-29T17:25:28+01:00 - 74df4af2e - Mathieu Magnin : fix(test): fix flaky test
+2026-01-29T17:09:59+01:00 - 27b4fd21a - Mathieu Magnin : fix(referentiel champ): when fetching retries are exhausted, validation should not crash, and extend the retries to 10 (~2 hours)
 2026-01-29T16:37:17Z - 9c8441923 - LeSim : Merge pull request #12584 from demarche-numerique/add_not_eq_to_bool
 2026-01-29T16:30:18Z - 4340e34bd - Mathieu Magnin : Merge pull request #12576 from demarche-numerique/fix-sentry-6985143843
-2026-01-29T17:25:28+01:00 - 74df4af2e - Mathieu Magnin : fix(test): fix flaky test
+2026-01-29T16:17:06+01:00 - 2a02a54cf - Colin Darie : fix: simplify form url generation
 2026-01-29T16:16:49Z - 8e1ed6271 - Benoit Queyron : Merge pull request #12583 from demarche-numerique/fix-badge-notification-when-dossier-hidden-by-user
-2026-01-29T17:09:59+01:00 - 27b4fd21a - Mathieu Magnin : fix(referentiel champ): when fetching retries are exhausted, validation should not crash, and extend the retries to 10 (~2 hours)
 2026-01-29T15:51:38Z - dc667e329 - LeSim : Merge pull request #12585 from demarche-numerique/fix_flaky_add_admin_test
 2026-01-29T15:37:57Z - c3052045f - LeSim : Merge pull request #12553 from demarche-numerique/instructeur_can_modify_rib
-2026-01-29T16:17:06+01:00 - 2a02a54cf - Colin Darie : fix: simplify form url generation
-2026-01-29T12:43:46+01:00 - 9cd5dd14e - simon lehericey : feat: can update rib
-2026-01-29T12:43:46+01:00 - ca27a4711 - simon lehericey : feat: add view to edit rib
 2026-01-29T12:43:46+01:00 - cf897c959 - simon lehericey : refactor: extract RIB model
+2026-01-29T12:43:46+01:00 - ca27a4711 - simon lehericey : feat: add view to edit rib
+2026-01-29T12:43:46+01:00 - 9cd5dd14e - simon lehericey : feat: can update rib
 2026-01-29T12:30:18+01:00 - d3c8b64d7 - simon lehericey : feat: add edit button and internationalize some text
-2026-01-29T12:30:18+01:00 - 1bf42472d - simon lehericey : fix: ocr_viewer does not suggest to copy empty values
 2026-01-29T12:30:18+01:00 - b0ba11445 - simon lehericey : refactor: ocr_viewer_component go erb
-2026-01-29T10:46:12Z - 1f33c7266 - LeSim : Merge pull request #12573 from demarche-numerique/push-rurmrkwymxvs
+2026-01-29T12:30:18+01:00 - 1bf42472d - simon lehericey : fix: ocr_viewer does not suggest to copy empty values
 2026-01-29T11:45:11+01:00 - 8b7b79530 - simon lehericey : spec: fix flaky match array test
-2026-01-29T10:20:34Z - 0173659e8 - Colin Darie : Merge pull request #12582 from colinux/rename-ds
 2026-01-29T10:56:43+01:00 - 1d0481731 - simon lehericey : feat: add not eq operator to bool expression
+2026-01-29T10:46:12Z - 1f33c7266 - LeSim : Merge pull request #12573 from demarche-numerique/push-rurmrkwymxvs
+2026-01-29T10:20:34Z - 0173659e8 - Colin Darie : Merge pull request #12582 from colinux/rename-ds
 2026-01-29T09:47:00+01:00 - aabc8d147 - benoitqueyron : fix(DossierNotification): add missing attribute hidden_by_user_at
 2026-01-28T18:51:46+01:00 - f7e7ce53f - Colin Darie : fix(publiccode): syntaxe & schema
-2026-01-28T18:51:46+01:00 - 19970ca85 - Colin Darie : fix(publiccode): Démarches Simplifiées => Numérique
 2026-01-28T18:51:46+01:00 - b08d067bc - Colin Darie : fix: replace hardcoded Démarches Simplifiées in mailer with app name
 2026-01-28T18:51:46+01:00 - 374e24ea5 - Colin Darie : fix: replace hardcoded "Démarches Simplifiées" with app name
+2026-01-28T18:51:46+01:00 - 19970ca85 - Colin Darie : fix(publiccode): Démarches Simplifiées => Numérique
 2026-01-28T18:18:46+01:00 - 47842cb00 - Colin Darie : fix: remove "démarches simplifiéesz" from sentence
 2026-01-28T17:11:14Z - 39f1a35b8 - Mathieu Magnin : Merge pull request #12578 from demarche-numerique/fix-sentry-6507868086
 2026-01-28T13:21:36+01:00 - ff4986d4e - Colin Darie : feat(crisp): merge user segments with existing conversation segments
-2026-01-28T13:21:36+01:00 - 781890554 - Colin Darie : refactor(crisp): always fetch conversation meta to get segments
-2026-01-28T13:21:36+01:00 - 87bb10a1b - Colin Darie : refactor(crisp): extract update_people_data into dedicated method
 2026-01-28T13:21:36+01:00 - 90c8c3ae8 - Colin Darie : feat(crisp): add User#crisp_segments as single source of truth
+2026-01-28T13:21:36+01:00 - 87bb10a1b - Colin Darie : refactor(crisp): extract update_people_data into dedicated method
+2026-01-28T13:21:36+01:00 - 781890554 - Colin Darie : refactor(crisp): always fetch conversation meta to get segments
 2026-01-28T11:47:45+01:00 - 1d24d92ae - Mathieu Magnin : fix(cookies): when csrf_token is invalid do not crash
 2026-01-28T11:24:59+01:00 - e28ac6a30 - Eric Leroy-Terquem : chore(js): add has-own polyfill to fix hidden combobox bug with old browsers
 2026-01-28T11:17:47+01:00 - ea657a31e - Colin Darie : feat(crisp): enable identity verification with email signature
@@ -277,110 +301,110 @@
 2026-01-28T10:23:17+01:00 - e1e242f22 - Colin Darie : refactor: convert merci from haml to erb
 2026-01-28T10:23:17+01:00 - d92a44a8c - Colin Darie : fix(tiptap): never render raw html, possibly evil tags
 2026-01-28T10:23:17+01:00 - c0e037b92 - Colin Darie : test(tiptap): test real tiptap interaction and preview
-2026-01-28T10:23:16+01:00 - 3630ce43f - Colin Darie : refactor tiptap scss
+2026-01-28T10:23:16+01:00 - e01a352a5 - Colin Darie : style: improve submitted message editor layout and UX
 2026-01-28T10:23:16+01:00 - d2fb99b56 - Colin Darie : feat: add live preview for dossier submitted message editor
+2026-01-28T10:23:16+01:00 - c80e5ecea - Colin Darie : feat: add maintenance task for backfilling TipTap JSON body
+2026-01-28T10:23:16+01:00 - 946ff6bf9 - Colin Darie : feat: add bullet and ordered lists to TipTap editor
 2026-01-28T10:23:16+01:00 - 6378d30b5 - Colin Darie : refactor: tiptap link editor in modal
 2026-01-28T10:23:16+01:00 - 442146be4 - Colin Darie : refactor: extract TipTap editor as ViewComponent
-2026-01-28T10:23:16+01:00 - e01a352a5 - Colin Darie : style: improve submitted message editor layout and UX
-2026-01-28T10:23:16+01:00 - 946ff6bf9 - Colin Darie : feat: add bullet and ordered lists to TipTap editor
-2026-01-28T10:23:16+01:00 - c80e5ecea - Colin Darie : feat: add maintenance task for backfilling TipTap JSON body
-2026-01-28T10:23:15+01:00 - 1ecd8c476 - Colin Darie : feat: add TipTap editor for submitted messages
+2026-01-28T10:23:16+01:00 - 3630ce43f - Colin Darie : refactor tiptap scss
 2026-01-28T10:23:15+01:00 - e31b41c75 - Colin Darie : feat: add link support to TiptapService
 2026-01-28T10:23:15+01:00 - aa681b867 - Colin Darie : feat: add model support for TipTap body in submitted messages
+2026-01-28T10:23:15+01:00 - 1ecd8c476 - Colin Darie : feat: add TipTap editor for submitted messages
 2026-01-27T17:29:31+01:00 - 5edd9122a - Colin Darie : db: add json_body column to dossier_submitted_messages
-2026-01-27T16:07:30Z - e5bea96fe - Eric Leroy-Terquem : Merge pull request #12547 from demarche-numerique/can-add-en-attente-de-reponse-badge-when-sending-multiple-message
 2026-01-27T16:27:32+01:00 - 442352346 - Paul Chavard : fix(champs): clone external_state
-2026-01-27T14:10:11Z - efb0f149a - Mathieu Magnin : Merge pull request #12514 from demarche-numerique/fix-11732
-2026-01-27T14:03:47Z - 0ce58e02d - Colin Darie : Merge pull request #12544 from demarche-numerique/fix-alert-display-annotations-prives-if-not-instruction-ldu
-2026-01-27T13:49:44Z - e78f72705 - Corinne Durrmeyer : Merge pull request #12568 from demarche-numerique/a11y-instructor-procedure-list
-2026-01-27T14:43:23+01:00 - 246ec5c6b - Mathieu Magnin : fix(repetition): delete button text should depend of the repetition structure
-2026-01-27T14:43:23+01:00 - 79fef4dec - Mathieu Magnin : a11y(repetition): aria live deletion
-2026-01-27T14:43:23+01:00 - 1f206795c - Mathieu Magnin : fix(repetition): a11y add a small delay to fix the focus on a row with multiple champs
-2026-01-27T14:43:23+01:00 - 7ece8a839 - Mathieu Magnin : chore(repetition): haml => erb
+2026-01-27T16:07:30Z - e5bea96fe - Eric Leroy-Terquem : Merge pull request #12547 from demarche-numerique/can-add-en-attente-de-reponse-badge-when-sending-multiple-message
 2026-01-27T14:43:23+01:00 - df4e59dd3 - Mathieu Magnin : a11y(repetition): improve toggle all button a11y
 2026-01-27T14:43:23+01:00 - c585756c3 - Mathieu Magnin : fix(repetition): fix not in ban padding in repetition
-2026-01-27T14:43:22+01:00 - 1130a3e19 - Mathieu Magnin : fix(repetition): change icon of toggle and reduce space
-2026-01-27T14:43:22+01:00 - fc5dc7635 - Mathieu Magnin : tests(repetition): fix delete that needs confirmation
-2026-01-27T14:43:22+01:00 - 91352b164 - Mathieu Magnin : fix(repetition): allow any repetition row to be delete as long as there is more than 1 row
+2026-01-27T14:43:23+01:00 - 7ece8a839 - Mathieu Magnin : chore(repetition): haml => erb
+2026-01-27T14:43:23+01:00 - 79fef4dec - Mathieu Magnin : a11y(repetition): aria live deletion
+2026-01-27T14:43:23+01:00 - 246ec5c6b - Mathieu Magnin : fix(repetition): delete button text should depend of the repetition structure
+2026-01-27T14:43:23+01:00 - 1f206795c - Mathieu Magnin : fix(repetition): a11y add a small delay to fix the focus on a row with multiple champs
 2026-01-27T14:43:22+01:00 - ff9687b33 - Mathieu Magnin : tests(repetition): tests on toggle all button
+2026-01-27T14:43:22+01:00 - fc5dc7635 - Mathieu Magnin : tests(repetition): fix delete that needs confirmation
 2026-01-27T14:43:22+01:00 - f939e163e - Mathieu Magnin : fix(repetition): show the toggle all button only for more than 5 repetitions on desktop
-2026-01-27T14:43:22+01:00 - 3bafb8ddd - Colin Darie : style(repetition): fix vertical spacing between elements
 2026-01-27T14:43:22+01:00 - 93fd42081 - Mathieu Magnin : fix(repetition): fix element number, when deleting and recreating
+2026-01-27T14:43:22+01:00 - 91352b164 - Mathieu Magnin : fix(repetition): allow any repetition row to be delete as long as there is more than 1 row
 2026-01-27T14:43:22+01:00 - 5933a7af5 - Mathieu Magnin : fix(repetition): fix horizontal margins
+2026-01-27T14:43:22+01:00 - 3bafb8ddd - Colin Darie : style(repetition): fix vertical spacing between elements
 2026-01-27T14:43:22+01:00 - 144e09c49 - Mathieu Magnin : fix(repetition): fix champ adresse width in repetition
+2026-01-27T14:43:22+01:00 - 1130a3e19 - Mathieu Magnin : fix(repetition): change icon of toggle and reduce space
+2026-01-27T14:43:21+01:00 - c22972213 - Mathieu Magnin : feat(repetition): toggle all buttons
 2026-01-27T14:43:21+01:00 - a92d0b0d0 - Mathieu Magnin : feat(repetition): confirm before delete
 2026-01-27T14:43:21+01:00 - a75c89c56 - Mathieu Magnin : test(repetition): fix tests on aria attributes
-2026-01-27T14:43:21+01:00 - c22972213 - Mathieu Magnin : feat(repetition): toggle all buttons
-2026-01-27T14:43:21+01:00 - 31fe4a26e - Mathieu Magnin : feat(repetition): new repetition row is expanded by default
 2026-01-27T14:43:21+01:00 - 6dc0c1961 - Mathieu Magnin : fix(repetition): fix a11y legend should be directly nested of fieldset
+2026-01-27T14:43:21+01:00 - 31fe4a26e - Mathieu Magnin : feat(repetition): new repetition row is expanded by default
 2026-01-27T14:43:21+01:00 - 1c2e861f0 - Mathieu Magnin : feat(repetition): repetition with more than 1 champ in row, are now in an accordion
 2026-01-27T14:43:21+01:00 - 0c57a85f3 - Mathieu Magnin : feat(repetition): row number is at the beginning of the label
 2026-01-27T14:43:20+01:00 - e4107a8fc - Mathieu Magnin : fix(repetition): remove useless word in buttons
-2026-01-27T13:31:31Z - ad5edb539 - Colin Darie : Merge pull request #12572 from demarche-numerique/fix-count-symbol
+2026-01-27T14:10:11Z - efb0f149a - Mathieu Magnin : Merge pull request #12514 from demarche-numerique/fix-11732
+2026-01-27T14:03:47Z - 0ce58e02d - Colin Darie : Merge pull request #12544 from demarche-numerique/fix-alert-display-annotations-prives-if-not-instruction-ldu
+2026-01-27T13:49:44Z - e78f72705 - Corinne Durrmeyer : Merge pull request #12568 from demarche-numerique/a11y-instructor-procedure-list
 2026-01-27T13:33:09+01:00 - f1ed68914 - Mathieu Magnin : fix(task): fix error when count returns a Symbol
-2026-01-27T12:15:55Z - a708c6ead - LeSim : Merge pull request #12569 from demarche-numerique/fix_component_preview
+2026-01-27T13:31:31Z - ad5edb539 - Colin Darie : Merge pull request #12572 from demarche-numerique/fix-count-symbol
+2026-01-27T12:47:29+01:00 - e667187ea - Corinne Durrmeyer : fix(procedure__item): Inverse title and menu button
+2026-01-27T12:47:29+01:00 - a22abcb78 - Corinne Durrmeyer : fix(menu label): Improve relevance of <nav> aria-label
 2026-01-27T12:47:29+01:00 - 7a8b334bb - Corinne Durrmeyer : fix(procedure menu): Remove  single-element root list
 2026-01-27T12:47:29+01:00 - 0bba369c5 - Corinne Durrmeyer : fix(procedure menu): Add missing trad
-2026-01-27T12:47:29+01:00 - a22abcb78 - Corinne Durrmeyer : fix(menu label): Improve relevance of <nav> aria-label
-2026-01-27T12:47:29+01:00 - e667187ea - Corinne Durrmeyer : fix(procedure__item): Inverse title and menu button
-2026-01-27T11:36:44Z - 4217a880f - Colin Darie : Merge pull request #12571 from colinux/fix-etablissement-task-address-wo-dossier
 2026-01-27T12:21:07+01:00 - 3af87c930 - Colin Darie : fix: some etablissement does not have dossier or champ ?
-2026-01-27T11:14:03Z - 81853eb58 - Colin Darie : Merge pull request #12570 from colinux/remove-enquete
+2026-01-27T12:15:55Z - a708c6ead - LeSim : Merge pull request #12569 from demarche-numerique/fix_component_preview
 2026-01-27T11:59:39+01:00 - f395c84b5 - Colin Darie : chore: remove survey 2025 banner
-2026-01-27T10:48:59Z - aeb06e798 - Eric Leroy-Terquem : Merge pull request #12567 from demarche-numerique/fix-datetime-in-pdf-exports
 2026-01-27T11:42:50+01:00 - 1cef51f66 - simon lehericey : chore: fix component preview layout config
-2026-01-27T10:30:57Z - 91caf6c97 - Colin Darie : Merge pull request #12564 from colinux/fix-alert-spacing-issue
-2026-01-27T10:10:31Z - cdef235c9 - Mathieu Magnin : Merge pull request #12566 from colinux/ensure-api-batch
+2026-01-27T11:36:44Z - 4217a880f - Colin Darie : Merge pull request #12571 from colinux/fix-etablissement-task-address-wo-dossier
+2026-01-27T11:14:03Z - 81853eb58 - Colin Darie : Merge pull request #12570 from colinux/remove-enquete
 2026-01-27T11:00:28+01:00 - bbb509981 - Eric Leroy-Terquem : fix(export): keep datetimes in pdf exports
-2026-01-27T10:00:04Z - af7dee171 - Mathieu Magnin : Merge pull request #12565 from demarche-numerique/fix-index-exists
+2026-01-27T10:48:59Z - aeb06e798 - Eric Leroy-Terquem : Merge pull request #12567 from demarche-numerique/fix-datetime-in-pdf-exports
 2026-01-27T10:47:58+01:00 - c7f49e54e - Colin Darie : fix: larger window batch
 2026-01-27T10:45:04+01:00 - a18afadbc - Mathieu Magnin : fix(migration): do not crash if index exists
+2026-01-27T10:30:57Z - 91caf6c97 - Colin Darie : Merge pull request #12564 from colinux/fix-alert-spacing-issue
 2026-01-27T10:28:12+01:00 - 53d8c066c - Lisa Durand : hide tag items below combobox and keep items in select but disabled
 2026-01-27T10:28:11+01:00 - 7e4c23932 - Lisa Durand : fix filter for_tiers options yes/no were empty
 2026-01-27T10:28:11+01:00 - 3d244a989 - Lisa Durand : truncate long label for instructeurs filters
 2026-01-27T10:24:51+01:00 - ac6eb6014 - Colin Darie : fix(alert): various alerts missing <p> in markup
-2026-01-27T09:22:18Z - 8c90ae58a - LeSim : Merge pull request #11403 from ralmn/feat-graphql-admin
-2026-01-27T10:15:10+01:00 - 2a31c085d - Mathieu Hirel : Update app/graphql/schema.graphql
 2026-01-27T10:15:10+01:00 - 8ee181b22 - Mathieu HIREL : fix(terminology): Use adresse électronique instead of adresse email
-2026-01-27T10:15:09+01:00 - 7aa6f9580 - Mathieu HIREL : refacto: add comma for linter on base_mutation.rb
+2026-01-27T10:15:10+01:00 - 2a31c085d - Mathieu Hirel : Update app/graphql/schema.graphql
 2026-01-27T10:15:09+01:00 - d67fb489c - Mathieu Hirel : chore: changement description mutation DemarcheAjouterAdministrateur
-2026-01-27T10:15:09+01:00 - 2cfc37561 - Mathieu HIREL : feat(graphql): test sur la verification ip de la creation de compte admin en graphql
+2026-01-27T10:15:09+01:00 - 7aa6f9580 - Mathieu HIREL : refacto: add comma for linter on base_mutation.rb
 2026-01-27T10:15:09+01:00 - 61ac57995 - Mathieu HIREL : feat(graphql): autorisation de la création de compte administrateur via mutation uniquement à certains réseau
 2026-01-27T10:15:09+01:00 - 45557d143 - Mathieu Hirel : chore: renommage partition_administrators_by en partition_administrators_by_profile_input
+2026-01-27T10:15:09+01:00 - 2cfc37561 - Mathieu HIREL : feat(graphql): test sur la verification ip de la creation de compte admin en graphql
+2026-01-27T10:15:08+01:00 - 6cbae092e - Mathieu HIREL : feat(graphql): Pouvoir supprimer un administrateur a une démarche via l'api graphql
 2026-01-27T10:15:08+01:00 - 6c44de877 - Mathieu HIREL : test(graphql): test des mutations d'ajout/suppression d'administrateur sur la démarches
 2026-01-27T10:15:08+01:00 - 1b8b18ecf - Mathieu HIREL : fix(graphql): verification autorisation pour ajout/suppression administrateur
-2026-01-27T10:15:08+01:00 - 6cbae092e - Mathieu HIREL : feat(graphql): Pouvoir supprimer un administrateur a une démarche via l'api graphql
 2026-01-27T10:15:08+01:00 - 068845423 - Mathieu HIREL : feat(graphql): Pouvoir ajouter un administrateur a une démarche via l'api graphql
 2026-01-27T10:13:57+01:00 - 0ccae8ab8 - Colin Darie : style: fix alert markup and padding spacing issue
+2026-01-27T10:10:31Z - cdef235c9 - Mathieu Magnin : Merge pull request #12566 from colinux/ensure-api-batch
+2026-01-27T10:00:04Z - af7dee171 - Mathieu Magnin : Merge pull request #12565 from demarche-numerique/fix-index-exists
+2026-01-27T09:42:33+01:00 - af7b16851 - Colin Darie : feat(maintenance): add task to fix etablissements with JSON address
+2026-01-27T09:22:18Z - 8c90ae58a - LeSim : Merge pull request #11403 from ralmn/feat-graphql-admin
+2026-01-27T09:11:18+01:00 - b6c8ce89c - Eric Leroy-Terquem : feat(batch action): can add "en attente de reponse" when sending email to many users
 2026-01-27T09:00:23Z - 799acedbf - Colin Darie : Merge pull request #12560 from demarche-numerique/micro_fix_name_in_api_token_page
 2026-01-27T08:58:16Z - 3dc6345d4 - Colin Darie : Merge pull request #12562 from colinux/fix-association-address-override
 2026-01-27T08:54:42Z - ef66d70b9 - Colin Darie : Merge pull request #12556 from demarche-numerique/fix_horodatage
 2026-01-27T08:53:18Z - 6fe751203 - Colin Darie : Merge pull request #12538 from colinux/scaleway-mailer
-2026-01-27T09:42:33+01:00 - af7b16851 - Colin Darie : feat(maintenance): add task to fix etablissements with JSON address
-2026-01-27T09:11:18+01:00 - b6c8ce89c - Eric Leroy-Terquem : feat(batch action): can add "en attente de reponse" when sending email to many users
 2026-01-26T19:31:12+01:00 - 3b4b731bb - Colin Darie : fix(etablissement): RNA address don't override inlined API Entreprise address
-2026-01-26T17:05:42Z - 7556eb3c1 - Lisa Durand : Merge pull request #12509 from demarche-numerique/invite-can-notify-titulaire-after-changes-ldu
 2026-01-26T17:53:24+01:00 - 88eb54b8f - simon lehericey : chore: update certigna authorities
+2026-01-26T17:05:42Z - 7556eb3c1 - Lisa Durand : Merge pull request #12509 from demarche-numerique/invite-can-notify-titulaire-after-changes-ldu
 2026-01-26T17:03:57+01:00 - 540a4cd9f - simon lehericey : fix: missing name in api_token created page
-2026-01-26T15:11:52Z - a5af4cc54 - Corinne Durrmeyer : Merge pull request #12559 from demarche-numerique/a11y-replace-procedure-list
 2026-01-26T16:09:00+01:00 - d6c4cf4b7 - Colin Darie : fix: sendinblue properly_configured? when is not configured
-2026-01-26T14:59:03Z - f66beb6ec - Colin Darie : Merge pull request #12558 from colinux/test-address-validation
 2026-01-26T15:51:51+01:00 - b7eb3d857 - Colin Darie : fix(config): smtp port should be an integer
 2026-01-26T15:51:51+01:00 - a8bea8712 - Colin Darie : feat(manager): integrate Scaleway into email history page
 2026-01-26T15:51:33+01:00 - e553afea3 - Colin Darie : feat(manager): add Scaleway::API for retrieving sent emails
-2026-01-26T15:32:50+01:00 - 7595d5138 - Colin Darie : docs: add Scaleway TEM environment variables to env.example.optional
-2026-01-26T15:32:50+01:00 - 92a624a06 - Colin Darie : feat(mailer): add Scaleway to email balancer configuration
 2026-01-26T15:32:50+01:00 - d0b0ac071 - Colin Darie : feat(mailer): add Scaleway TEM SMTP delivery method
+2026-01-26T15:32:50+01:00 - 92a624a06 - Colin Darie : feat(mailer): add Scaleway to email balancer configuration
+2026-01-26T15:32:50+01:00 - 7595d5138 - Colin Darie : docs: add Scaleway TEM environment variables to env.example.optional
+2026-01-26T15:11:52Z - a5af4cc54 - Corinne Durrmeyer : Merge pull request #12559 from demarche-numerique/a11y-replace-procedure-list
+2026-01-26T15:08:43+01:00 - e55ae5267 - Corinne Durrmeyer : fix(procedure-list): Remove main list
 2026-01-26T15:08:43+01:00 - 86e902122 - Corinne Durrmeyer : refactor(procedure-stats): Simplify code
 2026-01-26T15:08:43+01:00 - 79341a5fc - Corinne Durrmeyer : fix(procedure-list): Remove legacy code
-2026-01-26T15:08:43+01:00 - e55ae5267 - Corinne Durrmeyer : fix(procedure-list): Remove main list
-2026-01-26T13:57:19Z - 1af4f8142 - Corinne Durrmeyer : Merge pull request #12541 from demarche-numerique/a11y-combobox-placeholder
-2026-01-26T14:49:56+01:00 - 9d45c7d3c - Colin Darie : test: system brouillon use vcr like other tests
+2026-01-26T14:59:03Z - f66beb6ec - Colin Darie : Merge pull request #12558 from colinux/test-address-validation
 2026-01-26T14:49:56+01:00 - c9ae586e5 - Colin Darie : test: submit dossier when testing address champ because of complex validations
-2026-01-26T11:47:59Z - 33c0c6607 - Colin Darie : Merge pull request #12557 from colinux/fix-email-url
-2026-01-26T11:19:57Z - 37244945d - Kara Diaby : Merge pull request #11958 from demarche-numerique/feat/11948
+2026-01-26T14:49:56+01:00 - 9d45c7d3c - Colin Darie : test: system brouillon use vcr like other tests
+2026-01-26T13:57:19Z - 1af4f8142 - Corinne Durrmeyer : Merge pull request #12541 from demarche-numerique/a11y-combobox-placeholder
 2026-01-26T12:19:38+01:00 - aadffffcb - Colin Darie : fix: transmit email in post body instead of query param
 2026-01-26T12:19:38+01:00 - aa3dbd8c0 - Colin Darie : fix: registration & confirmation without email in url
+2026-01-26T11:47:59Z - 33c0c6607 - Colin Darie : Merge pull request #12557 from colinux/fix-email-url
+2026-01-26T11:19:57Z - 37244945d - Kara Diaby : Merge pull request #11958 from demarche-numerique/feat/11948
 2026-01-26T11:16:35Z - 1d1ff7d64 - Colin Darie : Merge pull request #12555 from colinux/fix-expert-signin
 2026-01-23T18:41:04Z - eb456d320 - Colin Darie : Merge pull request #12554 from demarche-numerique/fix-ban-mandatory-error
 2026-01-23T18:33:58+01:00 - 8dee855ae - Mathieu Magnin : fix(champ adresse): complete address should not raise error
@@ -391,92 +415,91 @@
 2026-01-22T15:41:48+01:00 - 1bcdf8451 - benoitqueyron : db(migration): add index on notification_type and dossier_id to dossier_notifications
 2026-01-22T15:36:20+01:00 - 9d5852fff - benoitqueyron : perf(Dossier): change SQL query to NOT EXISTS instead of NOT IN for scope :without_dossier_expirant_notification
 2026-01-22T14:18:34Z - c64166d72 - Mathieu Magnin : Merge pull request #12540 from demarche-numerique/fix-12536
-2026-01-22T12:03:09+01:00 - 5ea9b98d6 - Corinne Durrmeyer : fix (placeholder): Uniformize placeholders for all fields
 2026-01-22T12:03:09+01:00 - 855fc20a2 - Corinne Durrmeyer : fix(combobox 'Select a procedure'): Replace custom classes by dsfr classes
 2026-01-22T12:03:09+01:00 - 81419b0c0 - Corinne Durrmeyer : fix (combobox 'Select a procedure'): Duplicate placeholder in label
+2026-01-22T12:03:09+01:00 - 5ea9b98d6 - Corinne Durrmeyer : fix (placeholder): Uniformize placeholders for all fields
 2026-01-22T12:03:09+01:00 - 50fb47232 - Corinne Durrmeyer : fix(combobox icon): Customize icon for dark theme
 2026-01-22T12:03:09+01:00 - 42518365d - Corinne Durrmeyer : fix(combobox placeholder): Improve contrast to meet requirement
-2026-01-22T10:57:59Z - a1da6ffb0 - Benoit Queyron : Merge pull request #12537 from demarche-numerique/fix-restored-dossiers-that-remain-expired
 2026-01-22T11:40:36+01:00 - b40cf2ae5 - Mathieu Magnin : fix(api entreprise task): call APIEntrepriseService.perform_later_fetch_jobs instead of enqueing a unique Job
+2026-01-22T10:57:59Z - a1da6ffb0 - Benoit Queyron : Merge pull request #12537 from demarche-numerique/fix-restored-dossiers-that-remain-expired
 2026-01-22T08:59:00Z - 31723f362 - Colin Darie : Merge pull request #12539 from colinux/fix-address-ux
-2026-01-21T17:21:00Z - a1b76e590 - Eric Leroy-Terquem : Merge pull request #12546 from demarche-numerique/fix-date-api-errors
 2026-01-21T18:11:41+01:00 - 225ce4d65 - Colin Darie : fix(address): no asterisk when not required
-2026-01-21T18:11:40+01:00 - bb35f6aca - Colin Darie : fix(address): required errors on each subfield, only on check_mandatory_and_visible
 2026-01-21T18:11:40+01:00 - e132e07db - Colin Darie : fix(address): don't re-render admin description before not ban inputs
-2026-01-21T18:11:40+01:00 - 6813b3b63 - Colin Darie : fix(address): add hint to french commune not ban input
+2026-01-21T18:11:40+01:00 - bb35f6aca - Colin Darie : fix(address): required errors on each subfield, only on check_mandatory_and_visible
 2026-01-21T18:11:40+01:00 - b63b7ae18 - Colin Darie : style(address): decrease spacing between combo & no ban checkbox
 2026-01-21T18:11:40+01:00 - af643a435 - Colin Darie : style(address): fix incorrect width
+2026-01-21T18:11:40+01:00 - 6813b3b63 - Colin Darie : fix(address): add hint to french commune not ban input
+2026-01-21T17:21:00Z - a1b76e590 - Eric Leroy-Terquem : Merge pull request #12546 from demarche-numerique/fix-date-api-errors
 2026-01-21T16:44:11+01:00 - af6c9f8ec - Eric Leroy-Terquem : fix(UI): display right datetime formats
 2026-01-21T16:32:39+01:00 - 7e3af9fca - Eric Leroy-Terquem : fix(api): use right date and datime formats
 2026-01-21T14:16:40+01:00 - 38fb648ca - benoitqueyron : db(task): fix restored dossiers that remain expired
 2026-01-21T14:16:39+01:00 - 4dbc93ee3 - benoitqueyron : style: adjusts some ux feedbacks
 2026-01-21T14:16:30+01:00 - d8287b2a2 - benoitqueyron : feat(batch operation component): adjusts the restoration operation according to the reason of hidding
-2026-01-21T11:22:41Z - 77f7a2716 - Eric Leroy-Terquem : Merge pull request #12543 from demarche-numerique/fix-date-translation-errors
 2026-01-21T12:10:00+01:00 - 1e40a992c - Eric Leroy-Terquem : fix(api): return same date and datetime than before. it keeps the O. ex : 01/01/2026 and not 1/01/2026
 2026-01-21T12:08:38+01:00 - 972db9e96 - Mathieu Magnin : task(api entreprise): refetch etablissement without data
 2026-01-21T12:08:38+01:00 - 49af6e35b - Mathieu Magnin : fix(api entreprise): internal server error should be retried
 2026-01-21T11:56:02+01:00 - e51f8a67f - benoitqueyron : style: adds button and alert style for restaurer_repousser_expiration batch operation
 2026-01-21T11:55:54+01:00 - 8929b2d08 - benoitqueyron : feat(BatchOperation): add a restaurer_repousser_expiration action
 2026-01-21T11:23:54+01:00 - fafebae5e - Lisa Durand : it display alert annotations privées only in case of instruction actions
+2026-01-21T11:22:41Z - 77f7a2716 - Eric Leroy-Terquem : Merge pull request #12543 from demarche-numerique/fix-date-translation-errors
 2026-01-21T09:45:14+01:00 - e7fab1eaf - Eric Leroy-Terquem : fix(date): add time in delivered_at sent_emails in manager
 2026-01-21T09:45:14+01:00 - 8c1050da5 - Eric Leroy-Terquem : fix(date): keep default time format
 2026-01-20T13:14:05Z - 140e73d9b - Colin Darie : Merge pull request #12533 from demarche-numerique/fix-order-position-footer
 2026-01-20T13:09:40Z - e862300aa - Colin Darie : Merge pull request #12523 from colinux/fix-rib-state-error
-2026-01-20T10:38:24Z - 78be41282 - Eric Leroy-Terquem : Merge pull request #12461 from demarche-numerique/fix-import-notification
-2026-01-20T10:09:04Z - e9e1f412c - Kara Diaby : Merge pull request #12510 from demarche-numerique/feat/12392
 2026-01-20T10:39:29+01:00 - eb5321920 - Lisa Durand : add hints to number champ label if constrainst are set
+2026-01-20T10:38:24Z - 78be41282 - Eric Leroy-Terquem : Merge pull request #12461 from demarche-numerique/fix-import-notification
 2026-01-20T10:24:39+01:00 - 0fe877ae8 - Lisa Durand : harmonize footer style for edit dossier and annotations
 2026-01-20T10:24:34+01:00 - ccbc18c11 - Lisa Durand : add button and mailer for invite to notify owner
+2026-01-20T10:09:04Z - e9e1f412c - Kara Diaby : Merge pull request #12510 from demarche-numerique/feat/12392
 2026-01-20T09:51:40+01:00 - d81185f03 - benoitqueyron : fix(labels/order_positions) : replace fixed footer by sticky footer
 2026-01-19T17:25:50Z - 34e017584 - Kara Diaby : Merge pull request #12482 from demarche-numerique/feat/12478
 2026-01-19T17:07:01Z - 49203160d - Colin Darie : Merge pull request #12531 from demarche-numerique/a11y-synthese-demarche
 2026-01-19T16:57:00+01:00 - 5666cc4cc - Corinne Durrmeyer : fix (#synthese-content): Replace <span> with <dl> tag
-2026-01-19T16:35:32+01:00 - 17694917d - Kara Diaby : Add tests for harmonized date format
-2026-01-19T16:35:32+01:00 - 8af73c1cc - Kara Diaby : Update jobs to use harmonized date format
+2026-01-19T16:35:32+01:00 - feef43041 - Kara Diaby : Update views to use harmonized date format
 2026-01-19T16:35:32+01:00 - a33b36461 - Kara Diaby : Update helpers to use harmonized date format
 2026-01-19T16:35:32+01:00 - a211eda2d - Kara Diaby : Update models to use harmonized date format
+2026-01-19T16:35:32+01:00 - 8af73c1cc - Kara Diaby : Update jobs to use harmonized date format
 2026-01-19T16:35:32+01:00 - 6bcd42ede - Kara Diaby : Update components to use harmonized date format
-2026-01-19T16:35:32+01:00 - feef43041 - Kara Diaby : Update views to use harmonized date format
+2026-01-19T16:35:32+01:00 - 17694917d - Kara Diaby : Add tests for harmonized date format
 2026-01-19T16:35:31+01:00 - a62247aff - Kara Diaby : Add I18n date formats :veryshort, :month_year, :day_month_short and :long_with_time_and_timezone
-2026-01-19T16:13:09+01:00 - 0dae240c8 - Kara Diaby : Add tests for correction request cancellation
 2026-01-19T16:13:09+01:00 - c8db53daa - Kara Diaby : Add dossierAnnulerDemandeCorrection mutation and cancelCorrection parameter
+2026-01-19T16:13:09+01:00 - 0dae240c8 - Kara Diaby : Add tests for correction request cancellation
 2026-01-19T15:58:18+01:00 - 93d2e6b5d - Kara Diaby : Allow instructeur to cancel a correction request from the messaging
 2026-01-19T15:58:15+01:00 - 4112456cd - Kara Diaby : Add support for cancelling correction requests
-2026-01-19T14:52:06+01:00 - 6278d5bb6 - Kara Diaby : Affiche le descriptif du champ meme si il y a un fichier uploadé
-2026-01-19T14:52:06+01:00 - 9d7ddf426 - Kara Diaby : A11Y : zone live unique par champ PJ pour éviter les IDs dupliqués
-2026-01-19T14:52:06+01:00 - a84b36fa9 - Corinne Durrmeyer : refactor) attachment.fr-upload-group : Replace useless role attribut
-2026-01-19T14:52:06+01:00 - 600be0b63 - Corinne Durrmeyer : (refactor) attachment.fr-upload-group : Replace useless <div> with CSS class
 2026-01-19T14:52:06+01:00 - e2bc9e3eb - Kara Diaby : améliore la gestion du focus et l'ordre de lecture pour les lecteurs d'écran
-2026-01-19T14:52:05+01:00 - 451677e79 - Kara Diaby : fix : permet au voice over de lire le contenu de la zone, modifie le contenu de la zone live au lieu de remplacer
-2026-01-19T14:52:05+01:00 - 4c254663d - Kara Diaby : Fixe les tests
+2026-01-19T14:52:06+01:00 - a84b36fa9 - Corinne Durrmeyer : refactor) attachment.fr-upload-group : Replace useless role attribut
+2026-01-19T14:52:06+01:00 - 9d7ddf426 - Kara Diaby : A11Y : zone live unique par champ PJ pour éviter les IDs dupliqués
+2026-01-19T14:52:06+01:00 - 6278d5bb6 - Kara Diaby : Affiche le descriptif du champ meme si il y a un fichier uploadé
+2026-01-19T14:52:06+01:00 - 600be0b63 - Corinne Durrmeyer : (refactor) attachment.fr-upload-group : Replace useless <div> with CSS class
 2026-01-19T14:52:05+01:00 - cb0c473be - Kara Diaby : A11Y : ajoute la zone live sur les champs PJ pour lecture d'écran. Supprime les flash messages à la suppression des PJ
 2026-01-19T14:52:05+01:00 - bee1e1011 - Kara Diaby : Empeche le scroll automatique vers le haut de la page lorsqu'on supprime un fichier
-2026-01-19T10:39:20Z - c2e0a7082 - Paul Chavard : Merge pull request #12359 from demarche-numerique/push-yvsmqmkyyzxq
+2026-01-19T14:52:05+01:00 - 4c254663d - Kara Diaby : Fixe les tests
+2026-01-19T14:52:05+01:00 - 451677e79 - Kara Diaby : fix : permet au voice over de lire le contenu de la zone, modifie le contenu de la zone live au lieu de remplacer
 2026-01-19T11:13:01+01:00 - 98014b0b7 - Paul Chavard : feat(dossier): show user submitted version
+2026-01-19T10:39:20Z - c2e0a7082 - Paul Chavard : Merge pull request #12359 from demarche-numerique/push-yvsmqmkyyzxq
 2026-01-15T14:52:35Z - e1338d791 - Benoit Queyron : Merge pull request #12525 from demarche-numerique/fix-batch-dossiers-when-create-non-customisable-notification
-2026-01-15T13:30:47Z - 2a9aed418 - Colin Darie : Merge pull request #12522 from colinux/less-agressive-cadre-juridique
 2026-01-15T14:11:34+01:00 - 4f030cc86 - benoitqueyron : fix(DossierNotification): batch directly dossiers for create_non_customisable_notification
+2026-01-15T13:30:47Z - 2a9aed418 - Colin Darie : Merge pull request #12522 from colinux/less-agressive-cadre-juridique
 2026-01-15T11:08:20Z - d457b1fe3 - Colin Darie : Merge pull request #12520 from colinux/fix-attestation-not-termine
 2026-01-14T16:14:30+01:00 - 98854d9ee - Colin Darie : fix(rib): don't render an error when RIB was attached but analyze won't be possible
 2026-01-14T16:02:03+01:00 - d3ad0911f - Colin Darie : fix(rib): no error when another blob was already analyzed
-2026-01-14T10:47:03Z - 72fc28ec4 - Mathieu Magnin : Merge pull request #12521 from demarche-numerique/fix-address-champ-width
 2026-01-14T11:40:38+01:00 - 6eab670c9 - Colin Darie : fix: less agressive cadre juridique cleanup
 2026-01-14T11:00:47+01:00 - 89fd5593a - Colin Darie : fix(attestation): don't fail when dossier is not termine anymore
 2026-01-14T10:59:46+01:00 - cba05602c - Mathieu Magnin : fix(champ address): should take full width in form
-2026-01-14T09:15:27Z - 69b1e4fc8 - Colin Darie : Merge pull request #12519 from colinux/fix-graphql-doc
+2026-01-14T10:47:03Z - 72fc28ec4 - Mathieu Magnin : Merge pull request #12521 from demarche-numerique/fix-address-champ-width
 2026-01-14T10:07:54+01:00 - 490a8ddee - Colin Darie : doc: fix graphql generation
-2026-01-14T08:32:47Z - 8d07e5030 - LeSim : Merge pull request #12513 from demarche-numerique/rename_ds_to_demarche_numerique
 2026-01-14T09:22:00+01:00 - d270e7eaa - simon lehericey : refactor: update name and link to demarche.numerique.gouv.fr
 2026-01-14T09:19:29+01:00 - 5b0ed0567 - simon lehericey : linter: fix
+2026-01-14T09:15:27Z - 69b1e4fc8 - Colin Darie : Merge pull request #12519 from colinux/fix-graphql-doc
+2026-01-14T08:32:47Z - 8d07e5030 - LeSim : Merge pull request #12513 from demarche-numerique/rename_ds_to_demarche_numerique
 2026-01-14T07:18:41Z - c89278be5 - LeSim : Merge pull request #12517 from demarche-numerique/fix_login
-2026-01-13T18:18:27Z - 7220a24ac - Mathieu Magnin : Merge pull request #12518 from colinux/fix-address-ui
 2026-01-13T19:12:15+01:00 - a45f43d44 - Colin Darie : fix: remove unused pro connect barrier
-2026-01-13T19:08:26+01:00 - 4a1e663f6 - Colin Darie : style(address): fix margin & style for not ban address block
 2026-01-13T19:08:26+01:00 - 5be83eee0 - Colin Darie : style(address): fix hint style acting as a label for a11y
+2026-01-13T19:08:26+01:00 - 4a1e663f6 - Colin Darie : style(address): fix margin & style for not ban address block
+2026-01-13T18:18:27Z - 7220a24ac - Mathieu Magnin : Merge pull request #12518 from colinux/fix-address-ui
+2026-01-13T16:17:18+01:00 - 8c9722b2f - mfo : review(pr): catch a nice bug tx! some renaming tx! add some doc tx!
 2026-01-13T15:27:09Z - 42a869a82 - mfo : Merge pull request #12511 from mfo/US/perf-api
 2026-01-13T15:20:42Z - d6f024505 - Colin Darie : Merge pull request #12512 from demarche-numerique/fix-display-alert-unspecified-champs-ldu
-2026-01-13T16:17:18+01:00 - 8c9722b2f - mfo : review(pr): catch a nice bug tx! some renaming tx! add some doc tx!
-2026-01-13T14:35:40Z - 392d822dd - Colin Darie : Merge pull request #12506 from colinux/profile-conditional
 2026-01-13T15:16:58+01:00 - 92cbd3894 - mfo : clean(bench): allow to use it with different proc/admin
 2026-01-13T15:14:17+01:00 - 0083ba50f - Colin Darie : perf: api geo caches communes by departement (improve address too) because transliteration is sloowwww
 2026-01-13T14:55:00+01:00 - 54f28150b - Lisa Durand : fix display alert unspecified champs
@@ -485,38 +508,39 @@
 2026-01-13T14:54:28+01:00 - 603e64eac - mfo : perf(api): ±5% gain, just by caching procedure_revision_type_de_champ.stable_id
 2026-01-13T14:54:10+01:00 - 93ff77338 - mfo : perf(api): ±5% gain : champ.champs_for_condition. for each champ, avoid iterating over all champs O(n²)
 2026-01-13T14:53:38+01:00 - b5539db7e - mfo : perf(bench): setup perf bench for demarche with 312 champs with 246 having at least one condition
+2026-01-13T14:35:40Z - 392d822dd - Colin Darie : Merge pull request #12506 from colinux/profile-conditional
 2026-01-13T10:46:35+01:00 - f69d01a71 - Eric Leroy-Terquem : fix(tests): use right mailer method
+2026-01-13T10:46:34+01:00 - ec3034479 - Eric Leroy-Terquem : refactor(mailer): all methods concerning adding or removing instructeurs are in GroupeInstructeurMailer
 2026-01-13T10:46:34+01:00 - d3605cf2d - Eric Leroy-Terquem : refactor : rename add_instructeur -> add_instructeurs
 2026-01-13T10:46:34+01:00 - c3eb9c33c - Eric Leroy-Terquem : refactor(instructeur email notification): extract notify_instructeurs to a concern
-2026-01-13T10:46:34+01:00 - ec3034479 - Eric Leroy-Terquem : refactor(mailer): all methods concerning adding or removing instructeurs are in GroupeInstructeurMailer
 2026-01-13T10:46:33+01:00 - f92d05c43 - Eric Leroy-Terquem : fix(instructeurs import): send only one email notification if instructeur added to many groups
 2026-01-13T08:57:24Z - 75dd6ced1 - Lisa Durand : Merge pull request #12507 from demarche-numerique/fix-bug-annotations-privees-mandatory-empty
 2026-01-12T17:43:51+01:00 - 05178426f - Lisa Durand : be more specific in PJ champ validation to validate private or public
-2026-01-12T14:20:35Z - e3badf2be - Mathieu Magnin : Merge pull request #12365 from demarche-numerique/rdv-ui-updates
 2026-01-12T15:17:28+01:00 - 0ca6ad532 - Lisa Durand : move alert invite notice from footer to page header
-2026-01-12T14:09:37Z - 4b511b775 - Colin Darie : Merge pull request #12508 from colinux/fix-test
 2026-01-12T15:04:45+01:00 - c16482922 - Mathieu Magnin : fixes after mfo's review
 2026-01-12T14:59:33+01:00 - 1b5ed6e92 - Mathieu Magnin : fix(rdv): fix tests
 2026-01-12T14:58:31+01:00 - 870d8a5df - Mathieu Magnin : fix(rdv): email => adresse electronique
-2026-01-12T14:57:57+01:00 - 6acc486ad - Mathieu Magnin : fix(rdv): fix menu is not selected, when navigating to the second item of the sidemenu
 2026-01-12T14:57:57+01:00 - f80b7510f - Mathieu Magnin : fix(rdv): reorganise blocks order
-2026-01-12T14:57:57+01:00 - 36e8e7e07 - Mathieu Magnin : fix(rdv): change alert design
+2026-01-12T14:57:57+01:00 - 6acc486ad - Mathieu Magnin : fix(rdv): fix menu is not selected, when navigating to the second item of the sidemenu
 2026-01-12T14:57:57+01:00 - 5d5180f23 - Mathieu Magnin : fix(rdv): update tuile rdv content: add a link to doc, and update title
 2026-01-12T14:57:57+01:00 - 374e9b494 - Mathieu Magnin : refactor(rdv): rdv connection info in Alert Info
+2026-01-12T14:57:57+01:00 - 36e8e7e07 - Mathieu Magnin : fix(rdv): change alert design
 2026-01-12T14:57:56+01:00 - 41be9efd6 - Mathieu Magnin : refactor(rdv): rewording for disconnect button
 2026-01-12T14:56:53+01:00 - 1ed43cf96 - Mathieu Magnin : refactor(rdv): i18n rdv connection component
 2026-01-12T14:55:48+01:00 - 50aa9bce5 - Colin Darie : test: fix régression after 1939ffcb2bfdb359934ad9aa2038dd9248ff59ee (comparison between our dump & remote list)
 2026-01-12T14:55:30+01:00 - b0d1f0b86 - Mathieu Magnin : refactor(rdv): Move rdv connection infos in component
+2026-01-12T14:20:35Z - e3badf2be - Mathieu Magnin : Merge pull request #12365 from demarche-numerique/rdv-ui-updates
+2026-01-12T14:09:37Z - 4b511b775 - Colin Darie : Merge pull request #12508 from colinux/fix-test
 2026-01-12T13:24:51Z - 3347bf673 - Colin Darie : Merge pull request #12409 from colinux/attestation-async
-2026-01-12T12:25:27Z - de1ad774f - Benoit Queyron : Merge pull request #12480 from demarche-numerique/etq-tech-add-data-fc-for-api-part
-2026-01-12T11:38:01Z - fff8515cc - mfo : Merge pull request #12389 from demarche-numerique/a11y-replace-incorrect-apostrophe
 2026-01-12T12:32:24+01:00 - d3e99ea10 - Eric Leroy-Terquem : fix remaining tests
 2026-01-12T12:27:11+01:00 - 8fa663857 - Eric Leroy-Terquem : fix(translations): overload active model and action view translations to have right apostrophe
+2026-01-12T12:25:27Z - de1ad774f - Benoit Queyron : Merge pull request #12480 from demarche-numerique/etq-tech-add-data-fc-for-api-part
+2026-01-12T11:38:01Z - fff8515cc - mfo : Merge pull request #12389 from demarche-numerique/a11y-replace-incorrect-apostrophe
 2026-01-12T11:15:52+01:00 - b903841e8 - Colin Darie : chore(attestation): retry job polynomially longer
-2026-01-12T08:27:57Z - caddbfce2 - Eric Leroy-Terquem : Merge pull request #12388 from demarche-numerique/optimize_routing_perf
 2026-01-12T09:09:38+01:00 - b3688151f - Eric Leroy-Terquem : chore(routing): extract update of routing rule statuses in a concern
-2026-01-12T09:01:42+01:00 - 9a04a6c12 - Eric Leroy-Terquem : db(task): backfill unique_routing_rule and valid_routing_rule in groupe_instructeurs table
 2026-01-12T09:01:42+01:00 - a3c253e51 - Eric Leroy-Terquem : chore(groupe instructeur): update rule statuses when creating or updating routing_rule
+2026-01-12T09:01:42+01:00 - 9a04a6c12 - Eric Leroy-Terquem : db(task): backfill unique_routing_rule and valid_routing_rule in groupe_instructeurs table
+2026-01-12T08:27:57Z - caddbfce2 - Eric Leroy-Terquem : Merge pull request #12388 from demarche-numerique/optimize_routing_perf
 2026-01-09T16:18:57+01:00 - c92abbc1a - Corinne Durrmeyer : fix(typo): Replace j' with j’
 2026-01-09T16:18:55+01:00 - 6d3fcc95c - Corinne Durrmeyer : fix(typo): Replace \' with ’
 2026-01-09T16:16:08+01:00 - d74086d24 - Corinne Durrmeyer : fix(typo): Replace qu' with qu’
@@ -529,36 +553,36 @@
 2026-01-09T15:14:11+01:00 - 017cbda49 - Eric Leroy-Terquem : db(migration): add valid_routing_rule and unic_routing_rule to groupe instructeurs
 2026-01-09T15:13:41+01:00 - e8e0b66fa - Eric Leroy-Terquem : perf(instructeur dashboard): make groupe instructeur options request more performant
 2026-01-09T10:29:37Z - 2a34f8c7b - Colin Darie : Merge pull request #12497 from colinux/no-chatbot-on-form
-2026-01-09T09:18:33+01:00 - 1ab72f21b - benoitqueyron : fix test
+2026-01-09T09:18:33+01:00 - f86653011 - benoitqueyron : feat(FranceConnectInformations): complète en base les données de l'identité pivot lors d'une connexion fc
 2026-01-09T09:18:33+01:00 - eacb6cb82 - benoitqueyron : refactor
 2026-01-09T09:18:33+01:00 - e35aaa370 - benoitqueyron : test
-2026-01-09T09:18:33+01:00 - f86653011 - benoitqueyron : feat(FranceConnectInformations): complète en base les données de l'identité pivot lors d'une connexion fc
+2026-01-09T09:18:33+01:00 - 1ab72f21b - benoitqueyron : fix test
 2026-01-09T09:18:23+01:00 - 3576d842f - benoitqueyron : db(migration): ajoute birthcountry à la table france_connect_informations
 2026-01-09T03:46:56Z - b74bc0be3 - mfo : Merge pull request #12498 from mfo/fix-issue-12127-dossier-link-accessibility
-2026-01-08T17:20:00Z - 2ec8e0875 - Mathieu Magnin : Merge pull request #12496 from demarche-numerique/improve-api-timeout-logging
 2026-01-08T18:03:44+01:00 - 350c03da8 - mfo : fix(a11y): announce dossier link info to screen readers
+2026-01-08T17:20:00Z - 2ec8e0875 - Mathieu Magnin : Merge pull request #12496 from demarche-numerique/improve-api-timeout-logging
 2026-01-08T16:22:41+01:00 - b2fc93211 - Colin Darie : fix(chatbot): hide on brouillon & modifier pages
-2026-01-08T14:30:42Z - 757cf19fb - Benoit Queyron : Merge pull request #12477 from demarche-numerique/etq-tech-refacto-email-notification-3
 2026-01-08T15:23:41+01:00 - 647a351cf - Mathieu Magnin : fix(sentry): fix capture_exception parameters when api timeout
 2026-01-08T15:19:28+01:00 - 52b1d5eed - benoitqueyron : model(AssignTo): retire les ignored columns
 2026-01-08T15:19:23+01:00 - 76d47ebaa - benoitqueyron :  db(migration): retire les columns relatives aux préférences mails dans la table assign_tos
+2026-01-08T14:30:42Z - 757cf19fb - Benoit Queyron : Merge pull request #12477 from demarche-numerique/etq-tech-refacto-email-notification-3
 2026-01-08T13:41:37Z - ea93b509d - Benoit Queyron : Merge pull request #12434 from demarche-numerique/etq-instructeur-personnalisation-mail-expire-supprime
 2026-01-08T09:28:22Z - 971814beb - Eric Leroy-Terquem : Merge pull request #12488 from demarche-numerique/update-reaffectation-ui
 2026-01-08T09:03:44Z - 7781d3301 - Colin Darie : Merge pull request #12495 from colinux/fix-pdf-n1
-2026-01-08T08:58:23Z - 09c8e4186 - Colin Darie : Merge pull request #12493 from colinux/fix-dossiers-deletion-timeout
-2026-01-08T08:46:41Z - 7fcc1f484 - Mathieu Magnin : Merge pull request #12494 from colinux/decrease-export-batch
-2026-01-08T08:06:55Z - 032889b6d - Mathieu Magnin : Merge pull request #12492 from demarche-numerique/add_ministere_des_transports
 2026-01-08T09:02:15+01:00 - d53c9ff1a - benoitqueyron : feat(expiration and expired mail): takes into account the email preferences of instructors
 2026-01-08T09:01:37+01:00 - 78a82f98d - benoitqueyron : feat(notify_en_construction_deletion_to_administration): no longer notifies non-follower instructor administrators
 2026-01-08T09:00:28+01:00 - e1fdc1c14 - benoitqueyron : feat(notify_en_construction_deletion_to_administration): takes into account the email preferences of instructors
 2026-01-08T08:59:26+01:00 - fa17358a0 - benoitqueyron : feat(email preference): alert for the deactivation of sensitive emails
+2026-01-08T08:58:23Z - 09c8e4186 - Colin Darie : Merge pull request #12493 from colinux/fix-dossiers-deletion-timeout
 2026-01-08T08:57:04+01:00 - 7e864169f - benoitqueyron : feat(email preference): allows customisation of expiration, expired and deletion emails
 2026-01-08T08:55:45+01:00 - d43aeb353 - benoitqueyron : db(migration): adds the mail preferences columns to the instructeurs_procedures table
+2026-01-08T08:46:41Z - 7fcc1f484 - Mathieu Magnin : Merge pull request #12494 from colinux/decrease-export-batch
+2026-01-08T08:06:55Z - 032889b6d - Mathieu Magnin : Merge pull request #12492 from demarche-numerique/add_ministere_des_transports
 2026-01-07T19:04:38+01:00 - 528512741 - Colin Darie : fix(perf): improve preloader for expo rt generating PDF
 2026-01-07T18:19:25+01:00 - 9bc7b9c10 - Eric Leroy-Terquem : chore(reaffectation): move texts in translation files
 2026-01-07T18:19:24+01:00 - e90dfcb81 - Eric Leroy-Terquem : chore(reaffectation): do not raise error if empty form submitted
-2026-01-07T18:19:24+01:00 - 14bd4ec40 - Eric Leroy-Terquem : fix: remove unused translations
 2026-01-07T18:19:24+01:00 - e6da8764d - Eric Leroy-Terquem : UI(reaffection as admin): use a combobox instead of buttons
+2026-01-07T18:19:24+01:00 - 14bd4ec40 - Eric Leroy-Terquem : fix: remove unused translations
 2026-01-07T18:19:23+01:00 - 66b88c755 - Eric Leroy-Terquem : UI(reaffectation as instructeur): use a combobox instead of buttons
 2026-01-07T18:19:10+01:00 - 25c41587d - Colin Darie : fix(perf): PDF don't reload commentaires relation
 2026-01-07T17:24:50+01:00 - b7eb8a215 - Colin Darie : fix(prelaoder): reduce max champs batch size
@@ -570,216 +594,216 @@
 2026-01-07T14:46:25+01:00 - c123c8c5a - Colin Darie : test: dossier en construction can't have attestation
 2026-01-07T14:46:25+01:00 - aca57b940 - Colin Darie : test: fix trait order so accepte run before attestation generation
 2026-01-07T14:46:24+01:00 - 698f310aa - Colin Darie : refactor(attestation): generate attestation in a job
-2026-01-07T10:37:34Z - 378be7f6c - LeSim : Merge pull request #12417 from demarche-numerique/re_re_re_force_2fa_for_mcp_users
 2026-01-07T11:28:52+01:00 - 285372912 - simon lehericey : feat: force only MCP_IDP instructeurs to use 2fa by launching a second step verification
 2026-01-07T11:04:17+01:00 - b1053bc83 - simon lehericey : feat: add login_hint params
-2026-01-07T11:04:16+01:00 - 4e99660ab - simon lehericey : feat: add force_mfa flag
 2026-01-07T11:04:16+01:00 - d911de757 - simon lehericey : refactor: extract claims and add doc
 2026-01-07T11:04:16+01:00 - acafa3736 - simon lehericey : clean: remove now useless acr_values
+2026-01-07T11:04:16+01:00 - 4e99660ab - simon lehericey : feat: add force_mfa flag
 2026-01-07T11:04:15+01:00 - e92529380 - simon lehericey : clean: remove now useless MANDATORY_EMAIL_DOMAINS
+2026-01-07T10:37:34Z - 378be7f6c - LeSim : Merge pull request #12417 from demarche-numerique/re_re_re_force_2fa_for_mcp_users
 2026-01-07T10:09:30+01:00 - a76efb185 - Mathieu Magnin : feat(zones): add ministere des transports
 2026-01-07T06:35:49Z - 0f24f87a5 - mfo : Merge pull request #12445 from colinux/simpliscore-tdc
-2026-01-06T16:45:40Z - 954569f21 - Mathieu Magnin : Merge pull request #12487 from demarche-numerique/fix-circular-replaced-by-procedure
-2026-01-06T16:37:06Z - 23b39270d - Colin Darie : Merge pull request #12490 from colinux/chatbot-everyone
-2026-01-06T17:24:57+01:00 - 533a4681f - Mathieu Magnin : fix: maintenance task to fix circular replaced by procedure
 2026-01-06T17:24:57+01:00 - e7ac20631 - Mathieu Magnin : fix: do not allow a closed procedure to be replaced by itself
-2026-01-06T16:19:23Z - a10cc6d69 - Mathieu Magnin : Merge pull request #12491 from demarche-numerique/fix-filter-multiple-drop-down-list-with-quote
-2026-01-06T16:18:55Z - 1a827661c - mfo : Merge pull request #12464 from mfo/US/enhance-new_account_warning
+2026-01-06T17:24:57+01:00 - 533a4681f - Mathieu Magnin : fix: maintenance task to fix circular replaced by procedure
 2026-01-06T17:12:51+01:00 - 81e6dff53 - mfo : refactor(UserMailer.new_account_warning): enhance wording for better UX, hopefully
 2026-01-06T16:59:46+01:00 - a83a2e6f1 - mfo : refactor(LLM::Rule): extract sequence and rules behavior in a strategy object
-2026-01-06T16:53:59+01:00 - 160a5e2fa - mfo : feat(simpliscore#tunnel): ensure redirect to last completed step while tunnel is not finished
-2026-01-06T16:53:59+01:00 - 15c753b9d - mfo : refactor(tunnel): extract tunnel logic in dedicated service
+2026-01-06T16:53:59+01:00 - f7b685dd8 - Colin Darie : feat(simpliscore): never destroy a tdc used as condition
 2026-01-06T16:53:59+01:00 - cd4e77162 - mfo : feat(stepper): rework stepper so user can loop on it
 2026-01-06T16:53:59+01:00 - 2aaa783fc - Colin Darie : wip: refactor end of tunnel + tests
-2026-01-06T16:53:59+01:00 - f7b685dd8 - Colin Darie : feat(simpliscore): never destroy a tdc used as condition
+2026-01-06T16:53:59+01:00 - 160a5e2fa - mfo : feat(simpliscore#tunnel): ensure redirect to last completed step while tunnel is not finished
+2026-01-06T16:53:59+01:00 - 15c753b9d - mfo : refactor(tunnel): extract tunnel logic in dedicated service
 2026-01-06T16:53:59+01:00 - 0a419d040 - Colin Darie : feat(simpliscore): options for tdc formatted, date, …
+2026-01-06T16:53:58+01:00 - f4b4f399f - Colin Darie : fix(simpliscore): ignore suggestions not changing its type
+2026-01-06T16:53:58+01:00 - d45f97ed1 - Colin Darie : feat: agents files  & cc config deny .env
+2026-01-06T16:53:58+01:00 - cdf32a3f9 - Colin Darie : refactor(simpliscore): split rules improve types & cleaner
+2026-01-06T16:53:58+01:00 - 680f8c62a - Colin Darie : refactor(simpliscore): extaction actions in concern
 2026-01-06T16:53:58+01:00 - 61319c481 - Colin Darie : fix(simpliscore): fix tunnel logic
 2026-01-06T16:53:58+01:00 - 5b6779693 - Colin Darie : fix(simpliscore): increase timeout & loader
 2026-01-06T16:53:58+01:00 - 1328f2add - Colin Darie : fix(simpliscore): human step titles in notice
-2026-01-06T16:53:58+01:00 - 680f8c62a - Colin Darie : refactor(simpliscore): extaction actions in concern
-2026-01-06T16:53:58+01:00 - d45f97ed1 - Colin Darie : feat: agents files  & cc config deny .env
-2026-01-06T16:53:58+01:00 - cdf32a3f9 - Colin Darie : refactor(simpliscore): split rules improve types & cleaner
-2026-01-06T16:53:58+01:00 - f4b4f399f - Colin Darie : fix(simpliscore): ignore suggestions not changing its type
+2026-01-06T16:53:57+01:00 - cf5d5d10f - Colin Darie : feat(simpliscore): add consolidate_types step title and description to StepperComponent
+2026-01-06T16:53:57+01:00 - c557e4434 - Colin Darie : feat(simpliscore): add TypesConsolidator service for field type suggestions
+2026-01-06T16:53:57+01:00 - b7ee36fa2 - Colin Darie : feat(simpliscore): add ConsolidateTypesItemComponent for displaying type suggestions
 2026-01-06T16:53:57+01:00 - 7dd7c6cb3 - Colin Darie : fix(simpliscore): redirect to last rule
 2026-01-06T16:53:57+01:00 - 6182add2d - Colin Darie : chore(simpliscore): log job error trace
 2026-01-06T16:53:57+01:00 - 015ef2c17 - Colin Darie : refactor(simpliscore): import procedure before schema data in prompt
-2026-01-06T16:53:57+01:00 - cf5d5d10f - Colin Darie : feat(simpliscore): add consolidate_types step title and description to StepperComponent
-2026-01-06T16:53:57+01:00 - b7ee36fa2 - Colin Darie : feat(simpliscore): add ConsolidateTypesItemComponent for displaying type suggestions
-2026-01-06T16:53:57+01:00 - c557e4434 - Colin Darie : feat(simpliscore): add TypesConsolidator service for field type suggestions
-2026-01-06T16:53:56+01:00 - 4452535b6 - Colin Darie : feat(simpliscore): handle type_champ and destroy in apply_llm_rule_suggestion_items
 2026-01-06T16:53:56+01:00 - fa6aff89a - Colin Darie : feat(simpliscore): add consolidate_types rule to LLMRuleSuggestion
+2026-01-06T16:53:56+01:00 - 4452535b6 - Colin Darie : feat(simpliscore): handle type_champ and destroy in apply_llm_rule_suggestion_items
 2026-01-06T16:49:49+01:00 - aa57cf941 - Mathieu Magnin : fix(filters): multiple drop down list filter with quote should work
-2026-01-06T15:17:34Z - 71e5c5f26 - Lisa Durand : Merge pull request #12489 from demarche-numerique/fix-typo-annotations-ldu
+2026-01-06T16:45:40Z - 954569f21 - Mathieu Magnin : Merge pull request #12487 from demarche-numerique/fix-circular-replaced-by-procedure
+2026-01-06T16:37:06Z - 23b39270d - Colin Darie : Merge pull request #12490 from colinux/chatbot-everyone
+2026-01-06T16:19:23Z - a10cc6d69 - Mathieu Magnin : Merge pull request #12491 from demarche-numerique/fix-filter-multiple-drop-down-list-with-quote
+2026-01-06T16:18:55Z - 1a827661c - mfo : Merge pull request #12464 from mfo/US/enhance-new_account_warning
 2026-01-06T15:48:45+01:00 - b3e806264 - Lisa Durand : fix typo
 2026-01-06T15:39:37+01:00 - 24af8425f - Colin Darie : feat(chatbot): crisp under feature flag
-2026-01-06T14:03:50Z - 1956315b5 - LeSim : Merge pull request #12420 from demarches-simplifiees/dont_do_3fa
+2026-01-06T15:17:34Z - 71e5c5f26 - Lisa Durand : Merge pull request #12489 from demarche-numerique/fix-typo-annotations-ldu
 2026-01-06T14:57:36+01:00 - c2247521f - simon lehericey : spec: fix higher query number in api call
 2026-01-06T14:56:00+01:00 - ff9c7ff83 - Colin Darie : feat: every connected user has chatbot
 2026-01-06T14:54:26+01:00 - db345dd36 - Colin Darie : refactor: rename entrypoint track-admin.js > crisp.ts
 2026-01-06T14:35:20+01:00 - de83a1078 - simon lehericey : feat: do not send a magic link if mfa is used
 2026-01-06T14:35:20+01:00 - 289ddc002 - simon lehericey : feat: store mfa information in session info cookie
-2026-01-06T09:41:12Z - 44753c8d9 - Colin Darie : Merge pull request #12486 from colinux/convert-mig-to-mt
-2026-01-06T09:33:18Z - 8d3daa394 - Mathieu Magnin : Merge pull request #12485 from demarches-simplifiees/fix-infinite-redirect-on-closed-procedure
+2026-01-06T14:03:50Z - 1956315b5 - LeSim : Merge pull request #12420 from demarches-simplifiees/dont_do_3fa
 2026-01-06T10:31:42+01:00 - b5d231489 - Colin Darie : refactor: convert private annotation mandatory flip to maintenance task
 2026-01-06T10:09:50+01:00 - 5b5730942 - Mathieu Magnin : fix: do not infinite redirect when closed procedure is replaced by itself
+2026-01-06T09:41:12Z - 44753c8d9 - Colin Darie : Merge pull request #12486 from colinux/convert-mig-to-mt
+2026-01-06T09:33:18Z - 8d3daa394 - Mathieu Magnin : Merge pull request #12485 from demarches-simplifiees/fix-infinite-redirect-on-closed-procedure
 2026-01-06T08:20:58Z - 6159f595f - Colin Darie : Merge pull request #12483 from colinux/banner-enquete
 2026-01-06T08:19:47Z - c79b03880 - Colin Darie : Merge pull request #12484 from demarches-simplifiees/fix-clore-action-is-available-in-menu-ldu
 2026-01-05T17:33:32+01:00 - 7f823a96a - Lisa Durand : add clore action in menu for admin
 2026-01-05T14:24:18+01:00 - aaf2d654f - Colin Darie : test: don't close notice, act as a real user
 2026-01-05T13:32:31+01:00 - 4e0d80f52 - Colin Darie : feat: banner enquête 2025
+2026-01-05T10:23:58+01:00 - c71e6a59e - Paul Chavard : chore(js): retry assets loading
 2026-01-05T10:06:44Z - 35a31c6e5 - Lisa Durand : Merge pull request #12426 from demarches-simplifiees/validate-annotation-privees-before-instruction-ldu
 2026-01-05T09:45:54Z - fc632d586 - Lisa Durand : Merge pull request #12475 from demarches-simplifiees/demande-de-correction-are-more-incentive-for-users-ldu
 2026-01-05T09:44:57Z - 3ecd8268f - Lisa Durand : Merge pull request #12474 from demarches-simplifiees/fix-url-doc-video-ldu
 2026-01-05T09:42:47Z - 3c91c25f0 - Paul Chavard : Merge pull request #12432 from demarches-simplifiees/push-wrumvyqknmow
 2026-01-05T09:23:58Z - 2756082c7 - Colin Darie : Merge pull request #12470 from colinux/fix-mt-cadre-juridique
-2026-01-05T10:23:58+01:00 - c71e6a59e - Paul Chavard : chore(js): retry assets loading
 2026-01-05T09:11:34Z - bbce08228 - Colin Darie : Merge pull request #12479 from demarches-simplifiees/dependabot/bundler/uri-1.0.4
 2025-12-30T21:12:01Z - d887ec15a - dependabot[bot] : chore(deps): bump uri from 1.0.3 to 1.0.4
-2025-12-29T12:56:17Z - bac65b140 - Benoit Queyron : Merge pull request #12401 from demarches-simplifiees/etq-tech-refacto-email-notification-2
 2025-12-29T13:43:35+01:00 - dcd647740 - benoitqueyron : fix(daily summary email): typo
 2025-12-29T13:43:31+01:00 - d527a6590 - benoitqueyron : fix test
-2025-12-29T11:06:42+01:00 - 0a7c1864c - benoitqueyron : model(AssignTo): prépare la suppression des columns liées aux préférences mails
+2025-12-29T12:56:17Z - bac65b140 - Benoit Queyron : Merge pull request #12401 from demarches-simplifiees/etq-tech-refacto-email-notification-2
 2025-12-29T11:06:42+01:00 - 551940c1c - benoitqueyron : refactor(Crisp/UserDataBuilder): utilise la table instructeurs_procedures pour identifier les mails activés ou désactivés
 2025-12-29T11:06:42+01:00 - 1bffc432f - benoitqueyron : fix(daily summary email): récapitule uniquement pour les procédures publiées
+2025-12-29T11:06:42+01:00 - 0a7c1864c - benoitqueyron : model(AssignTo): prépare la suppression des columns liées aux préférences mails
+2025-12-29T11:06:41+01:00 - b4f1c82c1 - benoitqueyron : fix(weekly summary email): comptabilise les nouveaux dossiers depuis le lundi précédent et non le jour même
 2025-12-29T11:06:41+01:00 - 6ee33469e - benoitqueyron : fix(weekly summary email): corrige que l'on comptabilise tout les dossiers en construction
 2025-12-29T11:06:41+01:00 - 3fca73876 - benoitqueyron : perf(weekly email summary): supprime les N+1 sur les dossiers
-2025-12-29T11:06:41+01:00 - b4f1c82c1 - benoitqueyron : fix(weekly summary email): comptabilise les nouveaux dossiers depuis le lundi précédent et non le jour même
-2025-12-29T11:06:40+01:00 - b99dcd259 - benoitqueyron : refactor(weekly summary email): utilise la table instructeurs_procedures
-2025-12-29T11:06:40+01:00 - 09eff4be6 - benoitqueyron : refactor(daily summary email): utilise la table instructeurs_procedures
-2025-12-29T11:06:40+01:00 - c17f32661 - benoitqueyron : refactor(new avis expert email): utilise la table instructeurs_procedures
-2025-12-29T11:06:40+01:00 - 433db4e5f - benoitqueyron : refactor(new message email): utilise la table instructeurs_procedures
-2025-12-29T11:06:40+01:00 - c9db906f8 - benoitqueyron : refactor(new dossier email): utilise la table instructeurs_procedures
 2025-12-29T11:06:40+01:00 - d6e21780b - benoitqueyron : refactor(GroupeInstructeur): supprime le dédoublage des préférences mails lors de l'ajout d'un instructeur
+2025-12-29T11:06:40+01:00 - c9db906f8 - benoitqueyron : refactor(new dossier email): utilise la table instructeurs_procedures
+2025-12-29T11:06:40+01:00 - c17f32661 - benoitqueyron : refactor(new avis expert email): utilise la table instructeurs_procedures
+2025-12-29T11:06:40+01:00 - b99dcd259 - benoitqueyron : refactor(weekly summary email): utilise la table instructeurs_procedures
+2025-12-29T11:06:40+01:00 - 433db4e5f - benoitqueyron : refactor(new message email): utilise la table instructeurs_procedures
+2025-12-29T11:06:40+01:00 - 09eff4be6 - benoitqueyron : refactor(daily summary email): utilise la table instructeurs_procedures
 2025-12-29T11:06:30+01:00 - ccef525b5 - benoitqueyron : refactor(email notification): update uniquement instructeurs_procedure lors du paramétrage des préférences
 2025-12-24T16:48:57+01:00 - 955ffa22f - Lisa Durand : remove message and replace by alert in user status overview
 2025-12-24T16:47:47+01:00 - 0bb5d78f3 - Lisa Durand : add alert inside messagerie for user if correction pending
 2025-12-24T16:26:55+01:00 - 943f7383f - Lisa Durand : migration to change mandatory to false for private annotations
 2025-12-24T16:06:47+01:00 - a087897ce - Lisa Durand : change demo video url
-2025-12-23T17:00:33Z - d8dad3739 - Lisa Durand : Merge pull request #12471 from demarches-simplifiees/fix-check-completude-only-for-invite-ldu
 2025-12-23T17:49:36+01:00 - 233c5347e - Lisa Durand : fix check completude displaying on intructeur context
+2025-12-23T17:00:33Z - d8dad3739 - Lisa Durand : Merge pull request #12471 from demarches-simplifiees/fix-check-completude-only-for-invite-ldu
 2025-12-23T11:55:44+01:00 - bc20f6763 - Colin Darie : fix(mt): reserved method name when mt is initialized from runner
-2025-12-23T10:42:37Z - 5c5a72a6e - Colin Darie : Merge pull request #12469 from colinux/fix-footer-without-cadre-juridique
 2025-12-23T11:35:59+01:00 - cfab95c63 - Colin Darie : fix: don't crash footer when there are no cadre juridique neither deliberation
+2025-12-23T10:42:37Z - 5c5a72a6e - Colin Darie : Merge pull request #12469 from colinux/fix-footer-without-cadre-juridique
 2025-12-23T09:03:57Z - 599cd4d98 - mfo : Merge pull request #12460 from mfo/US/fix-rna-adapter
 2025-12-23T08:45:08Z - e141e3b23 - Colin Darie : Merge pull request #12467 from demarches-simplifiees/capture-graphql-timeout
-2025-12-22T17:50:39Z - 2aaaa9118 - Colin Darie : Merge pull request #12437 from colinux/fix-admin-cadre-juridique-url
 2025-12-22T18:21:05+01:00 - bf63ab7ce - Colin Darie : fix: link cadre juridique only when its an url
 2025-12-22T18:20:57+01:00 - c6923d96e - Colin Darie : fix(task): clean invalid cadre juridique values
 2025-12-22T18:20:47+01:00 - 27eeba0de - Colin Darie : fix(locale): better cadre juridique text & placeholder
+2025-12-22T17:50:39Z - 2aaaa9118 - Colin Darie : Merge pull request #12437 from colinux/fix-admin-cadre-juridique-url
 2025-12-22T16:43:39+01:00 - beb6fa56f - Mathieu Magnin : fix(sentry): graphql timeout should appear in sentry
-2025-12-22T16:29:01+01:00 - 8e3630f17 - Lisa Durand : use turbo to maj dropdown alert when annotations are updated
 2025-12-22T16:29:01+01:00 - fa5169981 - Lisa Durand : harmonize alert style in instruction dropdown for missing champs on attestation
 2025-12-22T16:29:01+01:00 - c9e91491b - Lisa Durand : add alert message in instruction dropdown if annotations are not valid
-2025-12-22T16:29:01+01:00 - 3926ac873 - Lisa Durand : add a link in alert message to get to annotations page
 2025-12-22T16:29:01+01:00 - 8e7ce3e53 - Lisa Durand : if mandatory annotations present, instructeur cant terminer a dossier
+2025-12-22T16:29:01+01:00 - 8e3630f17 - Lisa Durand : use turbo to maj dropdown alert when annotations are updated
+2025-12-22T16:29:01+01:00 - 3926ac873 - Lisa Durand : add a link in alert message to get to annotations page
 2025-12-22T16:29:00+01:00 - 4884555ff - Lisa Durand : annotation_privees can be mandatory
-2025-12-22T14:34:17Z - 84a3bcbea - Colin Darie : Merge pull request #12466 from colinux/fix-graphql-n1
-2025-12-22T14:03:42Z - 7033e043a - Colin Darie : Merge pull request #12218 from colinux/instructeurs-lazy-load
 2025-12-22T14:44:15+01:00 - 94eefd996 - Colin Darie : test: fix flaky test when comparing array
+2025-12-22T14:34:17Z - 84a3bcbea - Colin Darie : Merge pull request #12466 from colinux/fix-graphql-n1
 2025-12-22T14:21:12+01:00 - 820af2606 - Colin Darie : fix(api): remove n+3 when including messages
-2025-12-22T10:45:05Z - 7bfb18101 - Colin Darie : Merge pull request #12463 from demarches-simplifiees/fix_copy_ui_offset
+2025-12-22T14:03:42Z - 7033e043a - Colin Darie : Merge pull request #12218 from colinux/instructeurs-lazy-load
 2025-12-22T11:39:23+01:00 - 50e1c846c - simon lehericey : fix: copy symbol does not offset the page
-2025-12-22T10:32:25Z - 6086ca5c2 - Mathieu Magnin : Merge pull request #12465 from mfo/US/throttle_api_call_by_headers
-2025-12-22T10:32:16Z - 8138caa2f - Lisa Durand : Merge pull request #11873 from demarches-simplifiees/invite-can-check-completude-ldu
 2025-12-22T11:27:33+01:00 - 1832cd2c7 - Colin Darie : feat(rack-attack): rate limit headers
 2025-12-22T11:26:27+01:00 - 70e260320 - mfo : feat(api): throttle by headers
+2025-12-22T10:45:05Z - 7bfb18101 - Colin Darie : Merge pull request #12463 from demarches-simplifiees/fix_copy_ui_offset
+2025-12-22T10:32:25Z - 6086ca5c2 - Mathieu Magnin : Merge pull request #12465 from mfo/US/throttle_api_call_by_headers
+2025-12-22T10:32:16Z - 8138caa2f - Lisa Durand : Merge pull request #11873 from demarches-simplifiees/invite-can-check-completude-ldu
 2025-12-22T10:22:05+01:00 - 05f6fd380 - Lisa Durand : an invited user can check for errors
 2025-12-22T09:13:40Z - 01ff7d2b2 - Lisa Durand : Merge pull request #12450 from demarches-simplifiees/fix-pj-display-after-commentaire-destroy-ldu
 2025-12-20T15:30:45Z - 87598ca1e - mfo : Merge pull request #12458 from mfo/US/prefill-referentiel-champ
 2025-12-19T13:55:10Z - 5ab69033b - Mathieu Magnin : Merge pull request #12459 from demarches-simplifiees/fix-imagemagick-rotate
 2025-12-19T11:38:12+01:00 - 0e1d730bf - Mathieu Magnin : fix(imagemagick): when error is known, skip the job
-2025-12-19T10:55:30+01:00 - 0b03dc65c - mfo : feat(rna_type_de_champ): add association metadata to custom export (rna/titre/object/date_creation/date_declaration/date_publication)
-2025-12-19T10:55:30+01:00 - 66f48418c - mfo : refactor(SiretTypeDeChamp): split association/enterprise columns
 2025-12-19T10:55:30+01:00 - cccd90b0f - mfo : fix(APIEntreprise::RNAAdapter): endpoint takes siren, not siret [or rna]. so when user fill in a siret champ that belongs to an association, we are not fetching association data too
+2025-12-19T10:55:30+01:00 - 66f48418c - mfo : refactor(SiretTypeDeChamp): split association/enterprise columns
+2025-12-19T10:55:30+01:00 - 0b03dc65c - mfo : feat(rna_type_de_champ): add association metadata to custom export (rna/titre/object/date_creation/date_declaration/date_publication)
 2025-12-19T09:33:01Z - bac7c8358 - mfo : Merge pull request #12456 from mfo/US/dossier_link
 2025-12-18T16:47:22+01:00 - fcfc8a93f - mfo : feat(prefill_champs): also referentiel
-2025-12-18T14:19:56Z - c35f9dc06 - Kara Diaby : Merge pull request #12313 from demarches-simplifiees/feat/12253
-2025-12-18T15:04:29+01:00 - 472efc4ff - Kara Diaby : Simplifie le message component en enlevant le controller stimulus et en utilisant le composant dropdown
-2025-12-18T15:04:29+01:00 - 9f3b50cd0 - Kara Diaby : Un seul fichier de migration, optim du layout
-2025-12-18T15:04:29+01:00 - df947ff4e - Kara Diaby : Permet de supprimer un message en attente de réponse et de supprimer le badge
 2025-12-18T15:04:29+01:00 - f178b2f9d - Kara Diaby : Accessibilité du bouton + afficher uniquement si il n'y a pas de demandes de réponses en cours sur le dossier
-2025-12-18T15:04:28+01:00 - 45a1329b3 - Kara Diaby : Fix apres retours UX / UI
-2025-12-18T15:04:28+01:00 - 0d5fb9782 - Kara Diaby : tests
-2025-12-18T15:04:28+01:00 - 28cd4d98c - Kara Diaby : Adaptel'UI pour pending_response
-2025-12-18T15:04:28+01:00 - c4b15a75f - Kara Diaby : traductions
-2025-12-18T15:04:28+01:00 - 38e4b4d77 - Kara Diaby : Ajoute la gestion de pending_response
-2025-12-18T15:04:28+01:00 - 0f827879e - Kara Diaby : adapte la logique  dans DossierNotification
+2025-12-18T15:04:29+01:00 - df947ff4e - Kara Diaby : Permet de supprimer un message en attente de réponse et de supprimer le badge
+2025-12-18T15:04:29+01:00 - 9f3b50cd0 - Kara Diaby : Un seul fichier de migration, optim du layout
+2025-12-18T15:04:29+01:00 - 472efc4ff - Kara Diaby : Simplifie le message component en enlevant le controller stimulus et en utilisant le composant dropdown
 2025-12-18T15:04:28+01:00 - cbabd39ad - Kara Diaby : DossierPendingResponse et son concern
+2025-12-18T15:04:28+01:00 - c4b15a75f - Kara Diaby : traductions
+2025-12-18T15:04:28+01:00 - 45a1329b3 - Kara Diaby : Fix apres retours UX / UI
+2025-12-18T15:04:28+01:00 - 38e4b4d77 - Kara Diaby : Ajoute la gestion de pending_response
+2025-12-18T15:04:28+01:00 - 28cd4d98c - Kara Diaby : Adaptel'UI pour pending_response
+2025-12-18T15:04:28+01:00 - 0f827879e - Kara Diaby : adapte la logique  dans DossierNotification
+2025-12-18T15:04:28+01:00 - 0d5fb9782 - Kara Diaby : tests
 2025-12-18T15:04:27+01:00 - 251b47db8 - Kara Diaby : ajoute display_attente_reponse_notifications aux instructeurs_procedures
 2025-12-18T15:04:27+01:00 - 1fcfa3143 - Kara Diaby : ajoute table dossier_pending_responses
+2025-12-18T14:19:56Z - c35f9dc06 - Kara Diaby : Merge pull request #12313 from demarches-simplifiees/feat/12253
 2025-12-18T13:51:18Z - 7be63f157 - Mathieu Magnin : Merge pull request #12449 from colinux/fix-domain-redirect
 2025-12-18T13:04:51Z - e00497e1a - Mathieu Magnin : Merge pull request #12453 from colinux/demarches-force-redirect
-2025-12-18T11:56:54Z - 3a377ca48 - Mathieu Magnin : Merge pull request #12442 from demarches-simplifiees/civilite-filter-radio-2
 2025-12-18T12:50:25+01:00 - 4071ade87 - Mathieu Magnin : fix(filters): if gender is not asked on the first screen, do not provide the associated filter
 2025-12-18T12:32:01+01:00 - 9349424f3 - Colin Darie : fix: dialog z-index in tabs explanation modal
 2025-12-18T12:12:13+01:00 - 67dff8849 - Mathieu Magnin : fix(filters): civilite is a radio
-2025-12-18T11:11:09Z - 6882edd67 - Benoit Queyron : Merge pull request #12455 from demarches-simplifiees/fix-update-expiration-date-by-super-admin
-2025-12-18T11:02:14Z - 201ee4b90 - Mathieu Magnin : Merge pull request #12454 from demarches-simplifiees/fix-import-referentiel
 2025-12-18T11:59:14+01:00 - 65a3c2d3e - benoitqueyron : fix(ResetExpiringDossiersJob); update expired_at de tous les dossiers, pas seulement ceux expirants
+2025-12-18T11:56:54Z - 3a377ca48 - Mathieu Magnin : Merge pull request #12442 from demarches-simplifiees/civilite-filter-radio-2
 2025-12-18T11:55:17+01:00 - eb22aa8cb - mfo : fix(dossier_link): stop using hard coded app name
 2025-12-18T11:34:01+01:00 - f0a5c4b52 - Mathieu Magnin : fix(import referentiel): when CSV parser return symbol as headers, do not crash
+2025-12-18T11:15:13+01:00 - fe3db1cf1 - Colin Darie : refactor: use all_procedures array to count instead of issueing a count query
 2025-12-18T11:15:13+01:00 - b8cf013ee - Colin Darie : fix(instructeurs): helpers for external links
 2025-12-18T11:15:13+01:00 - 9b8c2cc99 - Colin Darie : refactor: avoid joins on procedures by reusing the already filtered groupes_instructeurs_ids
-2025-12-18T11:15:13+01:00 - fe3db1cf1 - Colin Darie : refactor: use all_procedures array to count instead of issueing a count query
 2025-12-18T11:15:12+01:00 - 90c5823b0 - Colin Darie : refactor: remove dead code about has_export_notification badge from procedures index
 2025-12-18T11:14:50+01:00 - 2e5bae23e - Colin Darie : refactor: load instructeurs dossiers counters from xhr, with a dedicated service and component
-2025-12-18T11:13:59+01:00 - 071cfc902 - Colin Darie : refactor(instructeurs): dossiers synthesis in lazy loaded modal
 2025-12-18T11:13:59+01:00 - 8f9783403 - Colin Darie : refactor(instructeurs): load counters details via turbo frame
+2025-12-18T11:13:59+01:00 - 071cfc902 - Colin Darie : refactor(instructeurs): dossiers synthesis in lazy loaded modal
 2025-12-18T11:13:58+01:00 - cb5b4e6fc - Colin Darie : refactor(instructeur): convert procedures list to component with herb
+2025-12-18T11:11:09Z - 6882edd67 - Benoit Queyron : Merge pull request #12455 from demarches-simplifiees/fix-update-expiration-date-by-super-admin
+2025-12-18T11:02:14Z - 201ee4b90 - Mathieu Magnin : Merge pull request #12454 from demarches-simplifiees/fix-import-referentiel
 2025-12-18T10:09:24Z - 42ebb4983 - Mathieu Magnin : Merge pull request #12342 from mfo/US/prefill-referentiel
 2025-12-18T09:51:08+01:00 - 00141c4c0 - Colin Darie : chore: force redirect from demarches.numerique to demarche.numerique
 2025-12-18T09:41:57+01:00 - b06df8f0c - Colin Darie : fix: redirect from ds.fr to demarche.numerique keep path, remove already signed msg
-2025-12-17T16:53:00Z - 739f69a31 - Mathieu Magnin : Merge pull request #12451 from demarches-simplifiees/fix-jeton-api-expiree-path-error
 2025-12-17T17:17:54+01:00 - 24b88a31e - Mathieu Magnin : fix(jeton api entreprise): when the jeton is expire it should not crash
+2025-12-17T16:53:00Z - 739f69a31 - Mathieu Magnin : Merge pull request #12451 from demarches-simplifiees/fix-jeton-api-expiree-path-error
 2025-12-17T15:40:50+01:00 - a6dac53c0 - Lisa Durand : [bug] fix do not display attachment in message after deleting message in backgroud job
 2025-12-16T10:14:16+01:00 - 107cc472b - Colin Darie : fix: module concern for helper inclusion
 2025-12-15T13:42:37+01:00 - 207f211a3 - Colin Darie : Merge pull request #12362 from demarches-simplifiees/US/simpliscore-structure
 2025-12-15T11:13:40+01:00 - e61647967 - mfo : review(colinux): accepted suggestions
-2025-12-15T11:13:40+01:00 - 049f03db2 - mfo : feat(llm::suggestion_form_component): move buttons outside grey box
 2025-12-15T11:13:40+01:00 - 42ecc194f - mfo : feat(BaseImprover): only expose existing field_types to llm
-2025-12-15T11:13:39+01:00 - ce1270cb1 - mfo : feat(base_improver): clarify available choices for dropdownlist
+2025-12-15T11:13:40+01:00 - 049f03db2 - mfo : feat(llm::suggestion_form_component): move buttons outside grey box
 2025-12-15T11:13:39+01:00 - e654a0551 - mfo : fix(LLM::SuggestionOrderingService): expand tdc.children from repetition after merging suggestion/structure changes
+2025-12-15T11:13:39+01:00 - ce1270cb1 - mfo : feat(base_improver): clarify available choices for dropdownlist
+2025-12-15T11:13:39+01:00 - 82de3acd0 - mfo : feat(LLMBaseImprover): give more context to the LLM, improve results
 2025-12-15T11:13:39+01:00 - 32ea6126d - mfo : feat(improve_structure_component): better rendering when tdc did not change
 2025-12-15T11:13:39+01:00 - 236f54ae2 - mfo : feat(TypesDeChampController#simplify): scope to existing rule and redirect to next rule
 2025-12-15T11:13:39+01:00 - 1bdfe2d3d - mfo : refactor(improve_structure): better LLM prompts to avoid issues with conditionnal [do not move field with condition outside the range of a condition], better support for sections [do not add header-section when one already exists, ensure nice nesting for levels]
-2025-12-15T11:13:39+01:00 - 82de3acd0 - mfo : feat(LLMBaseImprover): give more context to the LLM, improve results
-2025-12-15T11:13:38+01:00 - 0f6953960 - mfo : refactor(structure_improver): use relative positionning to move fields
 2025-12-15T11:13:38+01:00 - b7e66afd0 - mfo : feat(StructureImprover): reseed prompt using LLM to sumup various documents/urls etc...
-2025-12-15T11:13:38+01:00 - 0ada9fd9a - mfo : feat(LabelImprover): add a11y rules
-2025-12-15T11:13:38+01:00 - 548b5816d - mfo : feat(improve_label_item_component): display justification not only when description had been update/added
-2025-12-15T11:13:38+01:00 - 7a2ef0039 - Colin Darie : fix(simpliscore): render when original tdc has no description
 2025-12-15T11:13:38+01:00 - 922f4df03 - Colin Darie : test(simpliscore): multiple fix
 2025-12-15T11:13:38+01:00 - 7c7a8b58f - Colin Darie : style(simpliscore): search-ai-line button icon & ai warn mention
+2025-12-15T11:13:38+01:00 - 7a2ef0039 - Colin Darie : fix(simpliscore): render when original tdc has no description
+2025-12-15T11:13:38+01:00 - 548b5816d - mfo : feat(improve_label_item_component): display justification not only when description had been update/added
+2025-12-15T11:13:38+01:00 - 0f6953960 - mfo : refactor(structure_improver): use relative positionning to move fields
+2025-12-15T11:13:38+01:00 - 0ada9fd9a - mfo : feat(LabelImprover): add a11y rules
+2025-12-15T11:13:37+01:00 - f4b86475c - Colin Darie : refactor(simpliscore): more as component, wording from UX
 2025-12-15T11:13:37+01:00 - d568aec73 - Colin Darie : style(simpliscore): display multilines descriptions changes
 2025-12-15T11:13:37+01:00 - adb4c4ebf - Colin Darie : refactor(simpliscore): add missing legend on fieldset
-2025-12-15T11:13:37+01:00 - 13e06567c - Colin Darie : fix(simpliscore): return to last rule when finished
 2025-12-15T11:13:37+01:00 - a1f0c8ca9 - Colin Darie : refactor(simpliscore): rules summary follows UX
-2025-12-15T11:13:37+01:00 - f4b86475c - Colin Darie : refactor(simpliscore): more as component, wording from UX
 2025-12-15T11:13:37+01:00 - 81d991d24 - Colin Darie : style(simpliscore): fix markup for fieldset/checkbox
-2025-12-15T11:13:36+01:00 - 0539f6c98 - Colin Darie : feat(simpliscore): naive polling with progress bar
-2025-12-15T11:13:36+01:00 - ef13c625f - Colin Darie : refactor(simpliscore): update structure after_stable_id without position
+2025-12-15T11:13:37+01:00 - 13e06567c - Colin Darie : fix(simpliscore): return to last rule when finished
 2025-12-15T11:13:36+01:00 - f49bf2ecd - Colin Darie : fix(simpliscore): can ignore labels suggestions + fix submit js logic
+2025-12-15T11:13:36+01:00 - ef13c625f - Colin Darie : refactor(simpliscore): update structure after_stable_id without position
 2025-12-15T11:13:36+01:00 - cc3e1cba6 - Colin Darie : refactor(admin): adaptative simpliscore badge
-2025-12-15T11:13:35+01:00 - 488c813b4 - Colin Darie : feat(simpliscore): handle end of stepper
-2025-12-15T11:13:35+01:00 - 09bc528b9 - Colin Darie : fix(simpliscore): structure improver compat with LLMRuleSuggestionItem
+2025-12-15T11:13:36+01:00 - 0539f6c98 - Colin Darie : feat(simpliscore): naive polling with progress bar
+2025-12-15T11:13:35+01:00 - f613b1d33 - mfo : feat(LLM::StructureImprover): add StructureImprovever : - basic prompt - wire with background job - wire with procedure_revision.apply_changes - wire with UI
+2025-12-15T11:13:35+01:00 - b28d7a763 - Colin Darie : fix: typos
 2025-12-15T11:13:35+01:00 - 90ae786b5 - Colin Darie : fix(simpliscore): handle no suggestion items response
+2025-12-15T11:13:35+01:00 - 488c813b4 - Colin Darie : feat(simpliscore): handle end of stepper
 2025-12-15T11:13:35+01:00 - 37c5b070a - Colin Darie : refactor(simpliscore): dynamic stepper logic
 2025-12-15T11:13:35+01:00 - 26be7bf60 - Colin Darie : fix(simpliscore): remove n+1 when digesting schema
-2025-12-15T11:13:35+01:00 - b28d7a763 - Colin Darie : fix: typos
-2025-12-15T11:13:35+01:00 - f613b1d33 - mfo : feat(LLM::StructureImprover): add StructureImprovever : - basic prompt - wire with background job - wire with procedure_revision.apply_changes - wire with UI
-2025-12-15T11:13:34+01:00 - 315186f45 - mfo : refactor(LabelImprover): extract LLM::BaseImprover in norder to share code between LabelImprover and upcoming StructureImprover
+2025-12-15T11:13:35+01:00 - 09bc528b9 - Colin Darie : fix(simpliscore): structure improver compat with LLMRuleSuggestionItem
 2025-12-15T11:13:34+01:00 - f0b5909ac - mfo : feat(LLM::StepperComponent): wire stepper
-2025-12-15T09:45:22Z - 07457b15c - mfo : Merge pull request #12402 from mfo/US/fix-referentiel-with-keys-having-invalid-JsonPath-xpath
+2025-12-15T11:13:34+01:00 - 315186f45 - mfo : refactor(LabelImprover): extract LLM::BaseImprover in norder to share code between LabelImprover and upcoming StructureImprover
 2025-12-15T10:40:38+01:00 - d29c7dbf6 - mfo : feat(ReferentielChamp): ensure to always use JsonPath.on with safe accessor
-2025-12-15T10:36:48+01:00 - 0f51ecf8e - mfo : fix(ReferentielAutocompleteRenderService): render autocomplete from API response having keys containing an apostrophe
 2025-12-15T10:36:48+01:00 - 7e2330f38 - mfo : bug(ReferentielAutocompleteRenderService): rendering hashes having key containing apostrophe should not break
+2025-12-15T10:36:48+01:00 - 0f51ecf8e - mfo : fix(ReferentielAutocompleteRenderService): render autocomplete from API response having keys containing an apostrophe
+2025-12-15T09:45:22Z - 07457b15c - mfo : Merge pull request #12402 from mfo/US/fix-referentiel-with-keys-having-invalid-JsonPath-xpath
 2025-12-15T09:07:01Z - a07fd0af9 - Lisa Durand : Merge pull request #12194 from demarches-simplifiees/admin-can-delete-token-api-entreprise-ldu
 2025-12-15T07:38:15Z - 0a929c745 - Mathieu Magnin : Merge pull request #12443 from demarches-simplifiees/remove-group-signature
 2025-12-12T16:35:58+01:00 - bf6a0cda0 - Mathieu Magnin : fix(attachments): admin can delete group signature
-2025-12-12T08:55:58Z - 7d11387aa - Benoit Queyron : Merge pull request #12427 from demarches-simplifiees/fix-badge-notification-suppression
 2025-12-12T09:33:39+01:00 - 4daf27c25 - benoitqueyron : db(task): permet de supprimer les badges de type dossier_suppresion erronés
 2025-12-12T09:33:39+01:00 - 1c2652262 - benoitqueyron : fix(backfill badge suppression task): pour les dossiers supprimés manuellement, backfill les notifs uniquement si le dossier est supprimé par les deux parties
 2025-12-12T09:33:29+01:00 - ea205c01f - benoitqueyron : fix(badge suppresion): lorsqu'un dossier change de groupe, on refresh la notif pour un dossier expiré, ou supprimé à la fois par l'usager et un instructeur
+2025-12-12T08:55:58Z - 7d11387aa - Benoit Queyron : Merge pull request #12427 from demarches-simplifiees/fix-badge-notification-suppression
 2025-12-12T08:22:52Z - fb62fec96 - Mathieu Magnin : Merge pull request #12435 from demarches-simplifiees/fix-dossier-serialization-failing-silently
 2025-12-11T15:48:45+01:00 - c8d4ec37c - Mathieu Magnin : fix(champ address): when department code is nil do not crash
 2025-12-11T15:48:44+01:00 - 014dcc466 - Mathieu Magnin : fix(serialize service): when execute query fails on serialization, the error should be reported to sentry
@@ -788,75 +812,75 @@
 2025-12-11T10:20:34+01:00 - 6b21d1c5a - benoitqueyron : fix(badge suppression): lors de l'ajout d'un nouvel instructeur, on refresh la notif pour un dossier expiré, ou supprimé à la fois par l'usager et un instructeur
 2025-12-11T10:20:26+01:00 - c316b63f1 - benoitqueyron : fix(badge suppresion): pour un dossier termine, lors d'une suppression manuelle par l'instructeur ou l'usager, on crée la notif seulement si les deux parties ont supprimé le dossier
 2025-12-10T17:10:17Z - 38f42904e - Mathieu Magnin : Merge pull request #12430 from demarches-simplifiees/filters-radios-for-civilite
-2025-12-10T15:35:42Z - 278bb1131 - Paul Chavard : Merge pull request #12431 from demarches-simplifiees/push-mpslnwykxrnm
 2025-12-10T16:29:22+01:00 - b046f6d19 - Paul Chavard : fix(info): do not generate bad links
+2025-12-10T15:35:42Z - 278bb1131 - Paul Chavard : Merge pull request #12431 from demarches-simplifiees/push-mpslnwykxrnm
 2025-12-10T15:22:01Z - 34016c4c3 - Colin Darie : Merge pull request #12387 from colinux/remove-conditional-host
+2025-12-10T14:44:11+01:00 - f7315c6ec - Colin Darie : refactor(mailer): remove Current attributes from mailers
+2025-12-10T14:44:11+01:00 - 3d295484a - Colin Darie : fix(mailer): logo & signature without mailer auto link
+2025-12-10T14:41:31+01:00 - 1771b9caf - Colin Darie : refactor: set domain with constant
 2025-12-10T14:11:03Z - 0a228bcf5 - Paul Chavard : Merge pull request #12429 from demarches-simplifiees/push-twtvvnlrpony
 2025-12-10T14:10:19Z - 23527738f - Paul Chavard : Merge pull request #12424 from demarches-simplifiees/push-mrvpswoqrloq
 2025-12-10T13:45:05Z - 12d2dbde0 - Colin Darie : Merge pull request #12415 from colinux/fix-acronyme
-2025-12-10T14:44:11+01:00 - 3d295484a - Colin Darie : fix(mailer): logo & signature without mailer auto link
-2025-12-10T14:44:11+01:00 - f7315c6ec - Colin Darie : refactor(mailer): remove Current attributes from mailers
-2025-12-10T14:41:31+01:00 - 1771b9caf - Colin Darie : refactor: set domain with constant
 2025-12-10T11:58:22+01:00 - 20b771591 - Mathieu Magnin : fix(filters): civilite champ filter is a radio
 2025-12-10T11:58:22+01:00 - 0ad74e42f - Mathieu Magnin : fix(filters): civilite is a radio
-2025-12-10T08:37:21Z - 1006f38f1 - Mathieu Magnin : Merge pull request #12410 from demarches-simplifiees/filter-multiple-values-on-search
-2025-12-10T09:28:25+01:00 - 64f1fdbfd - Mathieu Magnin : refactor: filter_value => filter_values
-2025-12-10T09:28:25+01:00 - 8efcc8742 - Mathieu Magnin : fix(filters): turbo needs uniq id for form to morph properly
-2025-12-10T09:28:25+01:00 - 3d2aae023 - Mathieu Magnin : feat(filters): allow only uniq values in value array
-2025-12-10T09:28:25+01:00 - 7a8363ecd - Mathieu Magnin : feat(filters): instructeur can search for multiple values
 2025-12-10T09:28:25+01:00 - caceee759 - Mathieu Magnin : feat(filters): one button per filter per value
+2025-12-10T09:28:25+01:00 - 8efcc8742 - Mathieu Magnin : fix(filters): turbo needs uniq id for form to morph properly
+2025-12-10T09:28:25+01:00 - 7a8363ecd - Mathieu Magnin : feat(filters): instructeur can search for multiple values
+2025-12-10T09:28:25+01:00 - 64f1fdbfd - Mathieu Magnin : refactor: filter_value => filter_values
+2025-12-10T09:28:25+01:00 - 3d2aae023 - Mathieu Magnin : feat(filters): allow only uniq values in value array
+2025-12-10T08:37:21Z - 1006f38f1 - Mathieu Magnin : Merge pull request #12410 from demarches-simplifiees/filter-multiple-values-on-search
 2025-12-09T21:38:13Z - d4e2e7368 - Colin Darie : Merge pull request #12428 from colinux/fix-champs-errors-duplicate
 2025-12-09T17:25:36+01:00 - fbc59f9d7 - Paul Chavard : fix(fetch): do not report to sentry on 403 redirects
 2025-12-09T17:25:36+01:00 - 2235f2a56 - Paul Chavard : fix(invite): block scope js execution
 2025-12-09T17:21:33+01:00 - 535a0e38d - Colin Darie : fix(champs): don't duplicate errors messages
-2025-12-09T13:26:37Z - 9e419cd98 - Mathieu Magnin : Merge pull request #12425 from demarches-simplifiees/fix-json-filters
 2025-12-09T14:11:10+01:00 - 9d71a5ee9 - Mathieu Magnin : fix(filters): when filter is empty, do not query, return all dossiers
-2025-12-09T12:31:17Z - 904cddcdf - Mathieu Magnin : Merge pull request #12422 from demarches-simplifiees/flaky-click-on-supprimer-attachment
+2025-12-09T13:26:37Z - 9e419cd98 - Mathieu Magnin : Merge pull request #12425 from demarches-simplifiees/fix-json-filters
 2025-12-09T12:56:30+01:00 - 57e526c8c - Mathieu Magnin : fix(test): try to fix a flaky test (again)
-2025-12-09T11:17:39Z - 88024c794 - Kara Diaby : Merge pull request #12421 from demarches-simplifiees/fix-piece-a-joindre
+2025-12-09T12:31:17Z - 904cddcdf - Mathieu Magnin : Merge pull request #12422 from demarches-simplifiees/flaky-click-on-supprimer-attachment
 2025-12-09T11:42:42+01:00 - 5c9cf5ee0 - Kara Diaby : Fixe la largeur sur le type de champ pièce a joindre, ainsi que le booleen qui se déclenchait lorsqu'on ajoutait une description
-2025-12-09T09:52:23Z - 4fb546f4a - Paul Chavard : Merge pull request #12414 from demarches-simplifiees/push-uutxxnqtqpmv
+2025-12-09T11:17:39Z - 88024c794 - Kara Diaby : Merge pull request #12421 from demarches-simplifiees/fix-piece-a-joindre
 2025-12-09T10:18:02+01:00 - 4c2fa976d - Paul Chavard : fix(task): nullify row_id
-2025-12-08T13:35:04Z - 7c52d07a3 - mfo : Merge pull request #12407 from mfo/US/fix-playground-2
+2025-12-09T09:52:23Z - 4fb546f4a - Paul Chavard : Merge pull request #12414 from demarches-simplifiees/push-uutxxnqtqpmv
 2025-12-08T14:33:22+01:00 - a5c73a7f8 - Colin Darie : fix: fix acronymize for .gouv.fr domains
 2025-12-08T14:12:40+01:00 - d0c88adcd - mfo : spec(playground): ensure it keeps working
 2025-12-08T14:12:35+01:00 - 244c7f3b0 - mfo : fix(playground): graphiql does not like graphql fragment with empty declaration, rewrite {} => { __typename }
+2025-12-08T13:35:04Z - 7c52d07a3 - mfo : Merge pull request #12407 from mfo/US/fix-playground-2
 2025-12-08T10:19:19Z - fa2d67873 - Colin Darie : Merge pull request #12382 from demarches-simplifiees/a11y-uniformize-email-address-term
+2025-12-08T10:13:17+01:00 - 405c099c1 - Colin Darie : fix(proconnect): don't block user when restriction on instructeurs only
+2025-12-08T10:11:20+01:00 - fa4f624af - benoitqueyron : fix(manager): renomme le bouton permettant de masquer une démarche dans la liste de toute les démarches
 2025-12-08T09:34:41Z - 199621158 - Colin Darie : Merge pull request #12412 from demarches-simplifiees/etq-ds-bouton-masquer-demarche-dans-la-liste
 2025-12-08T09:19:28Z - 9187e56cf - Colin Darie : Merge pull request #12411 from colinux/fix-proconnect
 2025-12-08T09:17:20Z - 013e9bfd0 - Benoit Queyron : Merge pull request #12198 from demarches-simplifiees/etq-instructeur-badges-notifs-expiration-suppression
-2025-12-08T10:13:17+01:00 - 405c099c1 - Colin Darie : fix(proconnect): don't block user when restriction on instructeurs only
-2025-12-08T10:11:20+01:00 - fa4f624af - benoitqueyron : fix(manager): renomme le bouton permettant de masquer une démarche dans la liste de toute les démarches
 2025-12-04T20:48:47Z - 8395c3d5c - Mathieu Magnin : Merge pull request #12405 from demarches-simplifiees/text-limit-options
-2025-12-04T16:21:52Z - e1ae681d7 - Paul Chavard : Merge pull request #12280 from demarches-simplifiees/instructeur-buffer-stream
 2025-12-04T17:10:12+01:00 - c2d73447e - Paul Chavard : remove redundant tests (clear_titres_identite! is tested in dossier_state_concern_spec)
 2025-12-04T17:10:11+01:00 - fe6b05b08 - Paul Chavard : preserve attachments through history
 2025-12-04T17:10:11+01:00 - 36dfe2d06 - Paul Chavard : feat(dossier): simplify merge algorithm
 2025-12-04T17:06:59+01:00 - c877a4632 - Paul Chavard : feat(dossier): add last_champ_instructeur_updated_at
 2025-12-04T17:06:58+01:00 - b5045ee6e - Paul Chavard : clean: remove last_champ_piece_jointe_updated_at
 2025-12-04T17:06:58+01:00 - 8607ba265 - Paul Chavard : feat(dossier): instructeur buffer stream
+2025-12-04T16:21:52Z - e1ae681d7 - Paul Chavard : Merge pull request #12280 from demarches-simplifiees/instructeur-buffer-stream
 2025-12-04T14:41:18+01:00 - 748f532f3 - Mathieu Magnin : fix(champ): move champ long limit to the right column
 2025-12-04T14:31:12+01:00 - 553cb6739 - Mathieu Magnin : feat(textarea): add options to char limits for support
-2025-12-04T11:06:18Z - 943d79f15 - Mathieu Magnin : Merge pull request #12404 from demarches-simplifiees/fix-form-ui
 2025-12-04T11:35:17+01:00 - 22ee29c11 - Mathieu Magnin : fix(form): fix repetition width
 2025-12-04T11:35:16+01:00 - f7e7077b0 - Mathieu Magnin : fix(form): fix linked drop down padding left
+2025-12-04T11:06:18Z - 943d79f15 - Mathieu Magnin : Merge pull request #12404 from demarches-simplifiees/fix-form-ui
 2025-12-04T09:47:43Z - b8931bcf1 - Mathieu Magnin : Merge pull request #12400 from demarches-simplifiees/fix-12395
 2025-12-04T05:18:30Z - 08e71e5ca - mfo : Merge pull request #12316 from mfo/US/albert-improve-procedures-cleanup
 2025-12-03T20:16:35Z - 2a5999cec - Corinne Durrmeyer : Merge pull request #12396 from demarches-simplifiees/a11y-mc-10.2
 2025-12-03T11:26:39+01:00 - 56f2a8588 - Lisa Durand : remove error 500 if submitting invalid API entreprise token
-2025-12-03T11:26:38+01:00 - 841c8f458 - Lisa Durand : improve descriptions and let description visible for api part when feature flag
 2025-12-03T11:26:38+01:00 - b9cfc7f05 - Lisa Durand : ux: improve ui and info to display on index api page
 2025-12-03T11:26:38+01:00 - a8718e01c - Lisa Durand : feat: admin can delete api entreprise and api particulier
+2025-12-03T11:26:38+01:00 - 841c8f458 - Lisa Durand : improve descriptions and let description visible for api part when feature flag
 2025-12-03T11:26:32+01:00 - 6cf993fa1 - Lisa Durand : feat: improve admin API token card with correct badges
-2025-12-03T11:25:15+01:00 - 11e72d2c3 - Mathieu Magnin : fix(reapeat): Add the row number in the error message
 2025-12-03T11:25:15+01:00 - dc9741a24 - Mathieu Magnin : fix(champ adresse): fix left margin
+2025-12-03T11:25:15+01:00 - 11e72d2c3 - Mathieu Magnin : fix(reapeat): Add the row number in the error message
 2025-12-03T11:25:14+01:00 - 2f07690af - Mathieu Magnin : fix(champs repetables): remove useless a11y attributes with translation missing
+2025-12-03T11:23:11+01:00 - e66b81723 - mfo : feat(LLM::LabelImprover): sanitize schema input
 2025-12-03T11:23:11+01:00 - 8269534da - mfo : feat(SuggestionFormComponent): disable submit until at least one option has been selected
 2025-12-03T11:23:11+01:00 - 600ea052c - mfo : feat(LLM::GenerateRuleSuggestionJob): add cost estimator per LLMRuleSuggestion
-2025-12-03T11:23:11+01:00 - e66b81723 - mfo : feat(LLM::LabelImprover): sanitize schema input
 2025-12-03T11:23:11+01:00 - 3afc5c072 - mfo : feat(LLM::Runner): Add observability to LLM calls with structured logging and user tracking
-2025-12-03T11:23:10+01:00 - 869beedc3 - mfo : feat(Procedure::Card::AiComponent): add Simpliscore to lead administrateur to the feature from his dashboard
 2025-12-03T11:23:10+01:00 - 90ebde40b - mfo : feat(TypesDeChampController#accept_simplification): apply suggestions to procedure revision
+2025-12-03T11:23:10+01:00 - 869beedc3 - mfo : feat(Procedure::Card::AiComponent): add Simpliscore to lead administrateur to the feature from his dashboard
 2025-12-03T11:23:10+01:00 - 5d821e6e4 - mfo : feat(TypesDeChampController#simplify): begin rendering of llm_suggestion_rules/llm_suggestion_rule_items: - add LLM::SuggestionItemComponent as base class for suggestion items - add LLM::ImproveLabelItemComponent for "improve_label" suggestions - add LLM::SuggestionFormComponent to render a form around suggestion items
 2025-12-03T11:23:09+01:00 - a2b0f2c81 - mfo : feat(TypesDeChampController#enqueue_simplify): allow admin to regenerate the suggestions if his procedure_revision has changed since last generated suggestions
 2025-12-03T11:23:07+01:00 - a71d5bda7 - mfo :  feat(LLM): wire LLM calls in background jobs :
@@ -864,43 +888,43 @@
 2025-12-03T11:21:42+01:00 - e9d6accba - mfo : feat(model/llm_rule_suggestion & model/llm_rule_suggestion_item): add two model : - llm_rule_suggestion : a batch of improvement per revision_id, will be processed by background job later. We aim to split suggestions per type of improvement (like improve_label, improve_structure) to decrease the complexity for the LLM. Each suggestion is linked to a procedure_revision - llm_rule_suggestion_item : stores the suggestion issued from the LLM. Each suggestion item is linked to a stable_id
 2025-12-03T11:21:42+01:00 - b02b9d3f2 - mfo : feat(TypesDeChampController): first skeleton for AI simplification : - #simplify for showing suggestions - #accept_simplification to process accepted suggestions - ProcedureRevision.apply_changes to apply changes to the procedure_revision
 2025-12-03T11:21:42+01:00 - 3090ebcdd - mfo : feat(ENV): add LLM env var: - LLM_URI_BASE: for now we are using https://openrouter.ai/api/v1 - LLM_MODEL_NAME: for now we are using mistralai/mistral-medium-3.1 - LLM_API_KEY: this is a secret
-2025-12-03T11:21:41+01:00 - 175760675 - mfo : chore(bundle): add langchainrb & openai, for now we will work with those gems
 2025-12-03T11:21:41+01:00 - bcb85bae8 - mfo : feat(ActiveSupport): handle inflections for LLM/openAI
 2025-12-03T11:21:41+01:00 - 80410342d - Colin Darie : feat(ProcedureRevision): add schema_to_llm to expose a ProcedureRevision schema to an LLM
+2025-12-03T11:21:41+01:00 - 175760675 - mfo : chore(bundle): add langchainrb & openai, for now we will work with those gems
 2025-12-03T11:11:44+01:00 - 1bc3feaa1 - Lisa Durand : fix: make links open in a new tab for external API links
 2025-12-03T11:09:59+01:00 - 2f2988a4f - Lisa Durand : refacto: harmonize token entreprise & token particulier and use one tile for both
 2025-12-03T09:27:51Z - f48769ad9 - Mathieu Magnin : Merge pull request #12399 from demarches-simplifiees/fix-rdv-missing-firstname-lastname
-2025-12-02T22:03:01Z - b588e70b3 - Paul Chavard : Merge pull request #12375 from demarches-simplifiees/push-lymkukqptztk
 2025-12-02T22:58:14+01:00 - e87e5a7a7 - Paul Chavard : feat(graphql): add drop_down_multiple mutation
+2025-12-02T22:03:01Z - b588e70b3 - Paul Chavard : Merge pull request #12375 from demarches-simplifiees/push-lymkukqptztk
 2025-12-02T16:33:46Z - a6f95f990 - Colin Darie : Merge pull request #12398 from colinux/fix-turbo-update
-2025-12-02T15:02:53Z - e013ffd07 - Mathieu Magnin : Merge pull request #12397 from demarches-simplifiees/fix-imagemagick-error-policy
 2025-12-02T16:02:33+01:00 - ba9913bfc - Mathieu Magnin : fix(rdv): when dossier has no individual try to fallback to france connect or send a placeholder
 2025-12-02T15:52:10+01:00 - 8c8ea94a5 - Corinne Durrmeyer : fix(terminology): Use adresse électronique instead of adresse email, adresse mail, or adresse e-mail
 2025-12-02T15:51:18+01:00 - e967ec022 - Corinne Durrmeyer : refacto(wording): Replace _Configuration des emails_ with _Modèles d'email_
+2025-12-02T15:02:53Z - e013ffd07 - Mathieu Magnin : Merge pull request #12397 from demarches-simplifiees/fix-imagemagick-error-policy
 2025-12-02T15:01:05+01:00 - 0f6f54fff - Colin Darie : fix(champ): turbo update id has changed
 2025-12-02T14:27:54+01:00 - 1598bf6ae - Mathieu Magnin : fix(imagemagick): if mime type is not authorized by the imagemagick policy do not try to create a representation
 2025-12-02T11:50:11+01:00 - e35075258 - mfo : feat(Flipper): add llm_nightly_improve_procedure feature in order to launch llm improvements progressively
 2025-12-02T11:05:42+01:00 - 36eae4542 - Corinne Durrmeyer : fix(TagList): Add visible content Adding visible - without CSS- in delete button
-2025-12-02T09:16:18Z - 4779328b9 - Benoit Queyron : Merge pull request #12384 from demarches-simplifiees/etq-instructeur-contenu-notifications-mails
 2025-12-02T09:38:17+01:00 - 8415571b2 - benoitqueyron : mail(send_notifications): apporte davantage d'informations dans le récapitulatif quotidien
 2025-12-02T09:32:42+01:00 - 31cfb36ae - benoitqueyron : mail(notify_groupe_instructeur_changed): rend plus générique le message
-2025-12-01T17:36:53Z - f0999cd36 - Mathieu Magnin : Merge pull request #12394 from colinux/fix-date-format
+2025-12-02T09:16:18Z - 4779328b9 - Benoit Queyron : Merge pull request #12384 from demarches-simplifiees/etq-instructeur-contenu-notifications-mails
 2025-12-01T18:24:57+01:00 - 14edb1d92 - Colin Darie : fix(export): datetimes may also be converted to dashed format
-2025-12-01T17:05:09Z - 2538081ef - Colin Darie : Merge pull request #12393 from demarches-simplifiees/fix-rdv-undefined-with_indifferent_access
 2025-12-01T17:52:18+01:00 - de125c851 - Mathieu Magnin : fix(rdv): fix error undefined method 'with_indifferent_access' for nil (NoMethodError)
-2025-12-01T15:12:04Z - f2f775e5b - Mathieu Magnin : Merge pull request #12391 from colinux/fix-admin-no-identity-analyze
+2025-12-01T17:36:53Z - f0999cd36 - Mathieu Magnin : Merge pull request #12394 from colinux/fix-date-format
+2025-12-01T17:05:09Z - 2538081ef - Colin Darie : Merge pull request #12393 from demarches-simplifiees/fix-rdv-undefined-with_indifferent_access
 2025-12-01T15:55:37+01:00 - 6eb1108aa - Colin Darie : fix(admin): don't tell we analyze PJ when we don't
-2025-12-01T14:16:13Z - 1e4525938 - Mathieu Magnin : Merge pull request #12390 from colinux/desindex-demarches-numerique
+2025-12-01T15:12:04Z - f2f775e5b - Mathieu Magnin : Merge pull request #12391 from colinux/fix-admin-no-identity-analyze
 2025-12-01T14:52:19+01:00 - 29631058a - Colin Darie : fix: noindex demarches.numerique.gouv.fr
-2025-12-01T13:45:58Z - 7d6cdecec - Mathieu Magnin : Merge pull request #12381 from demarches-simplifiees/do-not-log-invalid-authenticity-token-in-sentry
 2025-12-01T14:39:39+01:00 - efc6fa4ca - Mathieu Magnin : fix(static page): replace site name
 2025-12-01T14:38:39+01:00 - b9fff6584 - Mathieu Magnin : fix(sentry): do not log invalid authenticity token, and return a status 403 instead of a the default 422
+2025-12-01T14:16:13Z - 1e4525938 - Mathieu Magnin : Merge pull request #12390 from colinux/desindex-demarches-numerique
+2025-12-01T13:45:58Z - 7d6cdecec - Mathieu Magnin : Merge pull request #12381 from demarches-simplifiees/do-not-log-invalid-authenticity-token-in-sentry
 2025-12-01T10:59:43Z - 9046a3cab - Colin Darie : Merge pull request #12386 from colinux/update-static-page-domain
 2025-12-01T10:24:45+01:00 - a884798a9 - Colin Darie : fix: demarche.numerique on static public pages
-2025-12-01T09:07:49Z - c3fd6cf47 - Colin Darie : Merge pull request #12385 from colinux/crisp-refresh-dn
 2025-12-01T09:56:59+01:00 - 178957db5 - Colin Darie : fix(crisp): link to numerique host
-2025-11-28T10:51:47Z - 84bc13449 - Mathieu Magnin : Merge pull request #12383 from demarches-simplifiees/fix-invalid-jeton-update-error
+2025-12-01T09:07:49Z - c3fd6cf47 - Colin Darie : Merge pull request #12385 from colinux/crisp-refresh-dn
 2025-11-28T10:57:35+01:00 - ee743cc3e - Mathieu Magnin : fix(api-entreprise-jeton): when jeton is invalid the view should not crash
+2025-11-28T10:51:47Z - 84bc13449 - Mathieu Magnin : Merge pull request #12383 from demarches-simplifiees/fix-invalid-jeton-update-error
 2025-11-28T10:40:28+01:00 - 8350af32a - benoitqueyron : mail(notify_new_avis): utilise 'avis rendu' et non plus 'avis déposé'
 2025-11-28T10:32:37+01:00 - ca16fbcd4 - benoitqueyron : mail(notify_new_commentaire): utilise 'message envoyé' et non plus 'commentaire déposé'
 2025-11-27T16:51:11Z - eee896c19 - Mathieu Magnin : Merge pull request #12167 from demarches-simplifiees/a11y-repeatable-block-v2
@@ -909,40 +933,40 @@
 2025-11-27T12:25:21+01:00 - e1859e5ce - Colin Darie : feat: store location on /commencer for proconnect flow
 2025-11-27T12:25:19+01:00 - 9a6f8862d - Colin Darie : chore: always freeze hash constant
 2025-11-27T12:24:25+01:00 - fb2d46666 - Colin Darie : fix: weird wording "créé il y a 12 minutes et brouillon"
+2025-11-27T12:24:25+01:00 - d09bf354e - Colin Darie : chore: remove backfill maintenance task (incompatible with ignored column)
 2025-11-27T12:24:25+01:00 - 2e8183c97 - Colin Darie : feat: add proconnect restriction ui and include session concern
 2025-11-27T12:24:25+01:00 - 15d578f86 - Colin Darie : refactor(proconnect): extract signin button with in a component
-2025-11-27T12:24:25+01:00 - d09bf354e - Colin Darie : chore: remove backfill maintenance task (incompatible with ignored column)
-2025-11-27T12:24:24+01:00 - 1c4235c9a - Colin Darie : chore(procedure): remove dual-write and ignore old column
+2025-11-27T12:24:24+01:00 - 75cd7a31a - Colin Darie : feat(procedure): add enable_pro_connect_restriction! method
 2025-11-27T12:24:24+01:00 - 4b221f95a - Colin Darie : feat(admin/procedures): add 3-option UI for pro_connect_restriction
 2025-11-27T12:24:24+01:00 - 48e6d35c7 - Colin Darie : refactor(admin/procedures): convert pro_connect_restricted view to ERB
-2025-11-27T12:24:24+01:00 - 75cd7a31a - Colin Darie : feat(procedure): add enable_pro_connect_restriction! method
+2025-11-27T12:24:24+01:00 - 1c4235c9a - Colin Darie : chore(procedure): remove dual-write and ignore old column
 2025-11-27T11:55:32+01:00 - 5de474d39 - Mathieu Magnin : fix(filters): the filter legend should expand the filter box up to 400px
 2025-11-27T11:37:47+01:00 - e5aa1bc18 - Mathieu Magnin : fix(filters): on multi combobox filters, tags are displayed below the input
 2025-11-27T11:10:53+01:00 - 1d1135236 - Mathieu Magnin : fix(filters): small ui adjustments on date filters
-2025-11-27T10:48:01+01:00 - b36d6eb06 - Mathieu Magnin : feat(filters): clear filters values button
+2025-11-27T10:48:01+01:00 - ee9b9ec90 - Mathieu Magnin : fix(filters): remove Décision vue par l'usager if not accuse de lecture
 2025-11-27T10:48:01+01:00 - e80ffe4c9 - Mathieu Magnin : fix(filters): wrap clear filter buttons
 2025-11-27T10:48:01+01:00 - d79a13e65 - Mathieu Magnin : fix(filters): hide date operator labels if not screen reader
-2025-11-27T10:48:01+01:00 - ee9b9ec90 - Mathieu Magnin : fix(filters): remove Décision vue par l'usager if not accuse de lecture
 2025-11-27T10:48:01+01:00 - b4acdfe14 - Mathieu Magnin : fix(filters): remove date since columns for filters
+2025-11-27T10:48:01+01:00 - b36d6eb06 - Mathieu Magnin : feat(filters): clear filters values button
 2025-11-27T10:48:01+01:00 - abd41f57d - Mathieu Magnin : fix(filters): hide arrows on input type number
-2025-11-27T10:48:00+01:00 - 6d0b1136c - Mathieu Magnin : fix(filters): fix a bug when there is more than 5 filters, order of the hidden inputs is not guaranteed so it leads to a bug when ordering
 2025-11-27T10:48:00+01:00 - 8c6937557 - Mathieu Magnin : refactor(filters): add placeholder & space
+2025-11-27T10:48:00+01:00 - 6d0b1136c - Mathieu Magnin : fix(filters): fix a bug when there is more than 5 filters, order of the hidden inputs is not guaranteed so it leads to a bug when ordering
 2025-11-27T05:07:49Z - 8ae3339af - mfo : Merge pull request #12357 from mfo/US/super-admin-expert-has-many-dossiers
 2025-11-26T10:21:49Z - 10ad5f5b0 - Kara Diaby : Merge pull request #12064 from demarches-simplifiees/feat/11922
 2025-11-26T09:41:20Z - ea3174676 - Kara Diaby : avoid n+1 queries
 2025-11-26T09:41:20Z - 90e517d1b - Kara Diaby : supprime le champ entier lorsqu'on supprime la PJ titre identité
-2025-11-26T09:41:19Z - a865e965c - Kara Diaby : Fix Accepted_types apres rebase
-2025-11-26T09:41:19Z - f80aed2b6 - Kara Diaby : fix linter
 2025-11-26T09:41:19Z - fdbb6e218 - Kara Diaby : Adapt previous tests
+2025-11-26T09:41:19Z - f80aed2b6 - Kara Diaby : fix linter
+2025-11-26T09:41:19Z - a865e965c - Kara Diaby : Fix Accepted_types apres rebase
 2025-11-26T09:41:17Z - 56eb76193 - Kara Diaby : Fix apres retours
-2025-11-26T09:40:31Z - 20384b7e0 - Kara Diaby : Tests
-2025-11-26T09:40:31Z - 3151ad9f3 - Kara Diaby : Watermark :Adapte le Watermark sur titre identite
-2025-11-26T09:40:31Z - 40e1d55a9 - Kara Diaby : Dossier : purge auto des PJ à la décision
-2025-11-26T09:40:31Z - db37d0db6 - Kara Diaby : Révisions : diff des nouvelles options + libellés traduits
-2025-11-26T09:40:31Z - 4a141e645 - Kara Diaby : Interface usager :  formats/tailles affichés + accept dynamique
-2025-11-26T09:40:31Z - df02f97f0 - Kara Diaby : Interface adminI : éditeur pièce à joindre
-2025-11-26T09:40:31Z - 4b1db8e6b - Kara Diaby : Validations : règles dynamiques des PJ
 2025-11-26T09:40:31Z - f770c99d5 - Kara Diaby : TypeDeChamp pièce à joindre, natures et options PJ
+2025-11-26T09:40:31Z - df02f97f0 - Kara Diaby : Interface adminI : éditeur pièce à joindre
+2025-11-26T09:40:31Z - db37d0db6 - Kara Diaby : Révisions : diff des nouvelles options + libellés traduits
+2025-11-26T09:40:31Z - 4b1db8e6b - Kara Diaby : Validations : règles dynamiques des PJ
+2025-11-26T09:40:31Z - 4a141e645 - Kara Diaby : Interface usager :  formats/tailles affichés + accept dynamique
+2025-11-26T09:40:31Z - 40e1d55a9 - Kara Diaby : Dossier : purge auto des PJ à la décision
+2025-11-26T09:40:31Z - 3151ad9f3 - Kara Diaby : Watermark :Adapte le Watermark sur titre identite
+2025-11-26T09:40:31Z - 20384b7e0 - Kara Diaby : Tests
 2025-11-26T09:40:30Z - c00eaa149 - Kara Diaby : Familles de formats et exemples
 2025-11-26T09:16:39Z - 0ccb00d51 - Eric Leroy-Terquem : Merge pull request #12374 from demarches-simplifiees/fix-notice-wording-for-instructeurs-import
 2025-11-26T08:59:40Z - a2bbe2249 - Eric Leroy-Terquem : Merge pull request #12370 from demarches-simplifiees/add_attestation_to_gallery
@@ -957,8 +981,8 @@
 2025-11-25T13:52:39+01:00 - af3dc534d - Mathieu Magnin : feat(lint): detect when adresse email is used in templates
 2025-11-25T13:52:38+01:00 - f4e3681c9 - Mathieu Magnin : feat(rubocop): detect when adresse email is used in ruby files
 2025-11-25T11:26:38+01:00 - d9ef1448d - Eric Leroy-Terquem : feat(gallery): add dossier attestation
-2025-11-25T10:22:08Z - b0dfb2c68 - Mathieu Magnin : Merge pull request #12371 from demarches-simplifiees/fix-filters-error-on-linked-dropdownlist
 2025-11-25T11:00:30+01:00 - 373eea5f7 - Mathieu Magnin : fix(filters): fix error on linked dropdown list filter https://demarches-simplifiees.sentry.io/issues/7003343135
+2025-11-25T10:22:08Z - b0dfb2c68 - Mathieu Magnin : Merge pull request #12371 from demarches-simplifiees/fix-filters-error-on-linked-dropdownlist
 2025-11-25T09:34:28+01:00 - a4c4cac65 - Mathieu Magnin : fix(contact): fixes sentry out of range error https://demarches-simplifiees.sentry.io/issues/6918882428/
 2025-11-25T07:26:56Z - b2c92dd5d - Corinne Durrmeyer : Merge pull request #12366 from demarches-simplifiees/a11y-alert-links
 2025-11-24T16:00:45+01:00 - 5a0ba9a68 - Corinne Durrmeyer : refactor(.alert): Replace CSS declaration with DSFR class
@@ -971,21 +995,21 @@
 2025-11-24T14:37:28+01:00 - 31a239c3d - benoitqueyron : db(task): supprime les instructeurs_procedures obsolètes
 2025-11-24T14:37:24+01:00 - 48011a4d7 - benoitqueyron : fix(GroupeInstructeur): quand un instructeur est retiré d'un groupe, supprime son instructeurs_procedure (seulement s'il n'est plus dans aucun groupe)
 2025-11-24T11:55:39+01:00 - a50b89bf7 - benoitqueyron : traduction(badge notification)
-2025-11-24T11:55:38+01:00 - 53b86e277 - benoitqueyron : fix tests
+2025-11-24T11:55:38+01:00 - fd60791ed - benoitqueyron : feat(badge notification): lorsqu'un instructeur restaure des dossiers (unitaire ou en masse), on supprime les notifs :dossier_suppression
 2025-11-24T11:55:38+01:00 - e89efcd48 - benoitqueyron : db(task): permet de rattraper les notifs :dossier_suppression
 2025-11-24T11:55:38+01:00 - dfd3b1af3 - benoitqueyron : db(task): permet de rattraper les notifs :dossier_expirant
-2025-11-24T11:55:38+01:00 - fd60791ed - benoitqueyron : feat(badge notification): lorsqu'un instructeur restaure des dossiers (unitaire ou en masse), on supprime les notifs :dossier_suppression
-2025-11-24T11:55:37+01:00 - 8b076d190 - benoitqueyron : feat(badge notification): lorsqu'un instructeur supprime manuellement des dossiers (unitaire ou en masse), on crée les notifs :dossier_suppression
-2025-11-24T11:55:37+01:00 - aa864654c - benoitqueyron : feat(badge notification): lorsqu'un admin modifie le duree de conservation (à la hausse), on supprime les notifs :dossier_expirants et :dossier_suppression (s'il a été supprimé par l'expiration seulement)
+2025-11-24T11:55:38+01:00 - 53b86e277 - benoitqueyron : fix tests
 2025-11-24T11:55:37+01:00 - b2216f37a - benoitqueyron : feat(badge notification): lorsqu'un dossier expirant passe ou repasse en_instruction, on supprime les notifs :dossier_expirant
+2025-11-24T11:55:37+01:00 - aa864654c - benoitqueyron : feat(badge notification): lorsqu'un admin modifie le duree de conservation (à la hausse), on supprime les notifs :dossier_expirants et :dossier_suppression (s'il a été supprimé par l'expiration seulement)
+2025-11-24T11:55:37+01:00 - 8b076d190 - benoitqueyron : feat(badge notification): lorsqu'un instructeur supprime manuellement des dossiers (unitaire ou en masse), on crée les notifs :dossier_suppression
 2025-11-24T11:55:37+01:00 - 775436265 - benoitqueyron : feat(badge notification): lorsqu'un instructeur étend la durée de conservation de dossiers (unitaire ou en masse), on supprime les notifs :dossier_expirant
-2025-11-24T11:55:36+01:00 - 1d82e51e9 - benoitqueyron : feat(badge notification): lorsqu'un dossier change de groupe, on refresh les badges expirant et suppression pour les nouveaux instructeurs
-2025-11-24T11:55:36+01:00 - 0a4491154 - benoitqueyron : feat(badge notification): lorsqu'on ajoute un nouvel instructeur, on refresh les badges expirant et suppression
-2025-11-24T11:55:36+01:00 - 1788bc123 - benoitqueyron : feat(badge notification): en régime nominal, intégre la gestion des badges dans le process actuel d'expiration des dossiers
 2025-11-24T11:55:36+01:00 - 9465ab6af - benoitqueyron : feat(badge notification): permet de filtrer sur les nouveaux badges expirant et suppression
-2025-11-24T11:55:35+01:00 - 2f1b67e0f - benoitqueyron : feat(badge notification): permet l'affichage du badge dossier_suppression (uniquement) pour les dossiers supprimés
+2025-11-24T11:55:36+01:00 - 1d82e51e9 - benoitqueyron : feat(badge notification): lorsqu'un dossier change de groupe, on refresh les badges expirant et suppression pour les nouveaux instructeurs
+2025-11-24T11:55:36+01:00 - 1788bc123 - benoitqueyron : feat(badge notification): en régime nominal, intégre la gestion des badges dans le process actuel d'expiration des dossiers
+2025-11-24T11:55:36+01:00 - 0a4491154 - benoitqueyron : feat(badge notification): lorsqu'on ajoute un nouvel instructeur, on refresh les badges expirant et suppression
 2025-11-24T11:55:35+01:00 - a67e786a3 - benoitqueyron : feat(badge notification): permet l'affichage du badge dossier_expirant (uniquement) pour les dossiers archivés
 2025-11-24T11:55:35+01:00 - 9248969a2 - benoitqueyron : fix(personnalisation notifications): ne pas permettre la personnalisation des badges dossier_expirant et dossier_suppression
+2025-11-24T11:55:35+01:00 - 2f1b67e0f - benoitqueyron : feat(badge notification): permet l'affichage du badge dossier_suppression (uniquement) pour les dossiers supprimés
 2025-11-24T11:55:23+01:00 - ee53898ad - benoitqueyron : feat(badge notification): propose deux nouveaux badges dossier_expirant et dossier_suppression
 2025-11-24T09:45:28Z - b45e560aa - mfo : Merge pull request #12350 from mfo/US/refix-siret-maintenance-task
 2025-11-24T09:32:33Z - 68a2d8d77 - Eric Leroy-Terquem : Merge pull request #12352 from demarches-simplifiees/fix-translations
