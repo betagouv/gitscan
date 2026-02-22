@@ -1,36 +1,52 @@
 ## Changelog : anssi-portail (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les évolutions récentes du portail ANSSI. Les modifications portent principalement sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la page d'accueil, l'ajout de nouvelles fonctionnalités comme la page directive NIS2 et la demande de diagnostic cyber, ainsi que des corrections de bugs et des optimisations de performance. Des améliorations techniques ont également été apportées, notamment concernant la gestion des statistiques et la sécurité des dépendances.
+Ce changelog résume les évolutions récentes du portail ANSSI. Les dernières mises à jour se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la page d'accueil, l'ajout de nouvelles fonctionnalités comme la page directive NIS2 et la demande de diagnostic cyber, ainsi que des corrections de bugs et des optimisations techniques.
 
 ### Évolutions fonctionnelles
-- Refonte de la page d'accueil avec une nouvelle présentation et des illustrations.
-- Ajout d'une page dédiée à la directive NIS2, incluant des onglets, une vidéo et la possibilité de télécharger la plaquette.
-- Implémentation d'une nouvelle fonctionnalité de demande de diagnostic cyber, avec une version WebComponent pour une intégration facilitée.
-- Amélioration du suivi des téléchargements avec l'ajout de l'origine du téléchargement.
-- Ajout de statistiques dynamiques sur la page d'accueil.
-- Possibilité de contacter le DPD (Délégué à la Protection des Données) via une nouvelle section dédiée.
-- Ajout de liens vers des nouvelles pages dans le pied de page.
-- Amélioration de la gestion des guides : masquage des guides non publiés et tri par date de publication/mise à jour.
-- Ajout d'un bouton de redirection vers les guides depuis l'accueil.
-- Amélioration de la page statistiques.
+- Ajout d'une nouvelle page dédiée à la directive NIS2 avec des onglets et la possibilité de télécharger la plaquette. (#29/01)
+- Intégration d'une demande de diagnostic cyber simplifiée, disponible en tant que WebComponent et en démo. (#29/01)
+- Refonte de la page d'accueil avec une nouvelle présentation et des illustrations. (#26/01, #23/01)
+- Amélioration du suivi des statistiques et ajout de la satisfaction utilisateur. (#11/02)
+- Ajout de liens vers des nouvelles pages dans le pied de page. (#11/02)
+- Mise en avant du test en groupe et extraction de l'introduction. (#11/02)
+- Ajout de la possibilité de télécharger des guides. (#16/02)
+- Ajout de liens sur la marelle et dans l'accordéon pour la page NIS2. (#16/02)
+- Amélioration de l'affichage des guides non publiés. (#16/02)
+- Ajout d'une section pour contacter le DPD (Délégué à la Protection des Données). (#20/01)
+- Ajout de l'URL de démo pour la demande de diagnostic. (#29/01)
+- Ajout d'un bouton de redirection vers les guides sur la page d'accueil. (#28/01)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances pour améliorer la sécurité et la performance (UI-Kit, diff).
-- Optimisation du cache pour les résultats de MAC (Mesures d'Atténuation du Cyber-risque).
-- Refonte de l'intégration des statistiques depuis l'API.
-- Amélioration de la gestion des événements avec la publication d'un événement `VisaTelecharge`.
-- Utilisation de Grist pour la gestion des guides et des ressources.
-- Implémentation d'un workflow de comparaison des guides entre deux sources.
-- Suppression des feature flags pour les guides, les filtres de comparaison et les avis.
-- Correction de plusieurs vulnérabilités potentielles et améliorations de la sécurité.
-- Amélioration de la structure du code et refactoring de certains composants.
+- Mise à jour de l'UI-Kit en version 1.41.3 et 1.41.2. (#06/02, #29/01)
+- Refonte du système de thèmes avec remplacement des couleurs pour une meilleure conformité. (#06/02)
+- Utilisation de Grist pour la gestion des guides de production. (#18/02)
+- Implémentation d'un système de cache pour les statistiques MAC. (#04/02)
+- Amélioration de la pipeline de comparaison des guides avec Grist. (#18/02)
+- Correction de la gestion des dates pour l'affichage des guides. (#16/02)
+- Suppression des feature flags pour les guides, les filtres de comparaison et les avis. (#13/02)
+- Passage à la version 8.0.3 de la librairie `diff` pour des raisons de sécurité. (#23/01)
+- Ajout d'un événement pour le téléchargement des visas. (#27/01)
+- Amélioration de la gestion des erreurs et de la consignation des logs. (#13/02, #12/02)
+- Utilisation de WebComponents pour la demande de diagnostic cyber. (#29/01)
+- Optimisation du contenu vidéo pour la protection des risques et la demande de diagnostic. (#11/02)
 
 ### Autres changements
-- Mise à jour de la documentation et des instructions d'installation.
-- Correction de typos et amélioration de la formulation de certains textes.
-- Amélioration de la conformité aux standards d'accessibilité.
-- Ajustements de style et de mise en page pour une meilleure expérience utilisateur.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Mise en place d'un système de logs plus complet pour faciliter le débogage.
-- Suppression de code inutilisé et nettoyage du code source.
+- Correction de typos et amélioration de la lisibilité du code. (#30/01, #16/02, #23/01)
+- Mise à jour des illustrations et des textes. (#09/02, #26/01)
+- Nettoyage du code et suppression de fichiers inutiles. (#26/01)
+- Documentation et instructions d'installation enrichies. (#03/02)
+- Modification du nom du site sur Google. (#19/02)
+- Changement de titre des landings. (#19/02)
+- Ajustement de l'espacement et de la mise en page sur différentes pages. (#19/02)
+- Mise à jour du nombre d'organisations accompagnées. (#23/01, #04/02)
+- Amélioration de l'affichage des liens et des titres. (#17/02)
+- Suppression de l'ancienne sélection NIS2. (#19/02)
+- Ajout de la FAQ pour la page NIS2. (#19/02)
+- Redirection de l'ancienne sélection NIS2. (#19/02)
+- Suppression de l'espace entre les accordéons. (#19/02)
+- Ajout de l'illustration dans le Hero de la page collectivités. (#10/02)
+- Ajout des logos pour la demande de diagnostic. (#11/02)
+- Ajustement des styles DSFR. (#11/02, #12/02)
+- Ajout de l'URL de base dans le lien "sécurité". (#12/02)
+- Ajout de mixins SCSS pour faciliter la maintenance des styles. (#04/02)
