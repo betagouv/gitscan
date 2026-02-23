@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité tout en conservant un contrôle total sur leurs données.",
+  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité, tout en conservant un contrôle total sur leurs données.",
   "language": "Python",
   "features": [
     "Stockage de fichiers sécurisé",
@@ -10,10 +10,10 @@
     "Recherche de fichiers",
     "Gestion des accès",
     "Auto-hébergement",
-    "Gestion des espaces de travail",
-    "Prévisualisation de fichiers",
-    "Partage public",
-    "Authentification silencieuse"
+    "Synchronisation de la langue",
+    "Notes de version",
+    "Gestion des accès",
+    "Gestion des workspaces"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -24,37 +24,31 @@
     "Docker Compose",
     "Celery",
     "Pillow",
-    "urllib3",
-    "@gouvfr-lasuite/ui-kit"
+    "mozilla-django-oidc"
   ],
   "components": [
     "Backend Django",
     "Frontend React (Next.js)",
     "API REST",
     "Base de données (PostgreSQL)",
-    "Stockage d'objets (S3)",
-    "Indexation de fichiers (Elasticsearch)",
-    "Serveur d'authentification (OIDC)"
+    "Stockage Objet (S3)",
+    "Indexer (Find)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
     ],
-    "providers": [
-      "Google",
-      "GitHub",
-      "Microsoft"
-    ]
+    "providers": []
   },
   "tests": [
-    "Pytest",
     "Jest",
-    "Playwright",
-    "Cypress"
+    "Pytest",
+    "Cypress",
+    "Playwright"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD (GitHub Actions)"
   ],
   "lastActivity": "2026-02-19T17:38:18+01:00",
   "status": "active",
@@ -67,13 +61,12 @@
     "openIssues": null
   },
   "tags": [
-    "gestion de fichiers",
+    "file sharing",
     "collaboration",
-    "auto-hébergement",
-    "sécurité",
+    "django",
+    "react",
+    "self-hosting",
     "open source",
-    "Django",
-    "React",
-    "Next.js"
+    "document management"
   ]
 }
