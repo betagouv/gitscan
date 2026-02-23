@@ -6,38 +6,40 @@
   "features": [
     "Création rapide d'applications RAG",
     "Intégration avec l'API Albert",
-    "Gestion de la configuration",
-    "Téléchargement de documents",
-    "Interface de chat",
-    "Expansion de requêtes",
-    "Gestion des collections"
+    "Gestion de la mémoire de session",
+    "Système de compétences",
+    "Chat avec intégration Smolagents",
+    "Configuration via fichier TOML",
+    "Prise en charge de collections publiques Albert"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "albert-client",
     "chainlit",
-    "pypdf",
+    "pydantic",
     "tomli-w",
     "httpx",
     "instructor",
-    "pydantic",
-    "reflex"
+    "reflex",
+    "ruff",
+    "ty"
   ],
   "components": [
-    "API REST",
-    "Interface utilisateur (Chainlit, Reflex)",
-    "Pipeline RAG",
-    "Gestionnaire de configuration",
-    "Intégration avec l'API Albert"
+    "CLI (Command Line Interface)",
+    "API (Albert API)",
+    "Frontend (Chainlit, Reflex)",
+    "Pipelines de RAG",
+    "Gestion de la configuration (ragfacile.toml)"
   ],
   "auth": {
     "methods": [
       "api-key"
-    ]
+    ],
+    "providers": null
   },
-  "tests": "Pytest",
+  "tests": "Pytest, respx",
   "workflows": [
-    "CI/CD pour tests et déploiement"
+    "CI smoke test"
   ],
   "lastActivity": "2026-02-20T00:00:00Z",
   "status": "active",
@@ -51,11 +53,12 @@
   },
   "tags": [
     "RAG",
-    "IA",
-    "Albert",
-    "Gouvernement",
+    "Albert API",
+    "LLM",
     "Python",
-    "API",
-    "Chatbot"
+    "IA",
+    "Gouvernement",
+    "Administration",
+    "Recherche d'information"
   ]
 }

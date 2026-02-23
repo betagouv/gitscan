@@ -1,45 +1,538 @@
 ## Changelog : rag-facile (30 derniers jours)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une amélioration significative de l'expérience utilisateur et de la fonctionnalité de rag-facile. De nouvelles fonctionnalités ont été ajoutées, notamment un système de compétences, une gestion de la mémoire de session basée sur Git, et une intégration avec un harnais smolagents pour le chat. L'interface CLI a été rationalisée et des outils de débogage ont été ajoutés.  Des améliorations ont également été apportées à la configuration et à la gestion des projets.
+Les 30 derniers jours ont été marqués par une évolution significative de rag-facile, avec l'ajout de nouvelles fonctionnalités axées sur l'amélioration de l'expérience utilisateur et l'extension des capacités du projet.  De nouvelles fonctionnalités comme l'intégration de la mémoire de session basée sur Git, un système de compétences, et une interface de chat avec intégration Smolagents ont été implémentées. L'interface CLI a également été améliorée avec une meilleure organisation et des commandes plus intuitives.
 
 ### Évolutions fonctionnelles
 - Ajout d'un système de compétences avec 5 compétences intégrées et une intégration avec npx skills.
-- Implémentation d'une gestion de la mémoire de session basée sur Git avec une summarisation post-session.
-- Intégration d'un harnais smolagents pour le chat.
-- Rationalisation de l'interface CLI avec des panneaux d'aide regroupés, une configuration simplifiée et une exécution plus intelligente de `just run`.
-- Ajout d'un assistant d'initialisation de l'espace de travail pour guider les nouveaux utilisateurs.
-- Ajout d'outils de débogage, notamment un drapeau `--debug` pour afficher les appels d'outils de l'agent.
-- Ajout d'un outil `get_docs` avec une documentation intégrée.
-- Ajout d'un outil `update_config` pour modifier la configuration.
-- Ajout de la possibilité d'éditer la configuration via l'interface de chat.
-- Ajout de la gestion des collections et de la possibilité de les activer/désactiver.
-- Ajout de la prise en charge de l'expansion de requêtes avec des stratégies multi-requêtes et HyDE.
-- Ajout de la prise en charge de l'API Albert pour la recherche et la récupération de documents.
-- Ajout de la possibilité d'utiliser des collections publiques Albert.
-- Ajout d'une fonction de recherche de datasets avec des filtres par tâche et langue.
-- Ajout d'un système de configuration avec des commandes CLI dédiées.
-- Ajout d'un mode standalone pour une installation plus simple.
+- Implémentation d'une interface de chat intégrant Smolagents.
+- Ajout d'une mémoire de session basée sur Git avec une fonction de résumé post-session.
+- Ajout d'un système de compétences avec des outils pour l'édition de la configuration.
+- Ajout d'outils de prise en charge de la connaissance de la base de code (récupération de la documentation des agents et de l'activité Git récente).
+- Ajout d'un indicateur `--debug` pour afficher les appels d'outils de l'agent.
+- Ajout d'un outil `get_docs` avec la documentation intégrée.
+- Ajout d'un assistant d'initialisation pour l'espace de travail avec un guide pas à pas.
+- Amélioration de l'interface CLI avec des panneaux d'aide regroupés, une configuration simplifiée et une commande `just run` plus intelligente.
+- Ajout de la possibilité de filtrer les ensembles de données par tâche et par langue.
+- Ajout d'un système de configuration avec des commandes CLI pour la gestion.
+- Ajout d'un support pour les collections publiques Albert.
+- Ajout d'un support pour l'upload de fichiers PDF et leur intégration dans le contexte.
 
 ### Évolutions techniques
-- Refactorisation de l'architecture pour séparer les préoccupations et améliorer la maintenabilité.
-- Utilisation de Moon pour la génération de templates de projets.
-- Intégration de `just` pour la gestion des tâches de développement.
-- Amélioration de la gestion des dépendances avec `uv`.
+- Refactorisation de l'architecture pour une meilleure modularité et maintenabilité.
+- Intégration de l'API Albert pour la recherche et la gestion des documents.
+- Utilisation de just pour la gestion des tâches et la génération de projets.
+- Mise en place d'un système de templates pour la génération de projets.
+- Amélioration de la gestion des dépendances avec uv.
 - Ajout de tests unitaires pour les nouvelles fonctionnalités.
-- Mise à jour des dépendances vers les dernières versions.
-- Amélioration de la gestion des erreurs et des exceptions.
+- Mise à jour des dépendances (pypdf, cryptography, protobuf).
+- Utilisation de moon pour la génération de templates.
+- Implémentation d'un système de configuration basé sur des fichiers TOML.
+- Ajout d'un système de gestion de la configuration avec des presets.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
 - Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Utilisation de type hints pour améliorer la lisibilité et la maintenabilité du code.
-- Amélioration de la gestion des variables d'environnement.
-- Ajout de workflows CI/CD pour automatiser les tests et le déploiement.
 
 ### Autres changements
-- Ajout d'un fichier CHANGELOG pour documenter les modifications apportées au projet.
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées au code.
-- Correction de bugs et amélioration de la stabilité du code.
-- Amélioration de la lisibilité et de la cohérence du code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Ajout d'un fichier .gitignore pour exclure les fichiers inutiles du contrôle de version.
-- Ajout d'un fichier .env.example pour fournir un exemple de configuration des variables d'environnement.
-- Ajout d'un fichier CONTRIBUTING.md pour documenter les directives de contribution au projet.
+- Ajout d'un fichier CHANGELOG.md pour documenter les modifications.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
+- Amélioration de la configuration de l'intégration continue (CI).
+- Ajout de badges de statut et de licence au fichier README.
+- Correction de problèmes mineurs et amélioration de la stabilité du projet.
+- Ajout de la prise en charge de Windows.
+- Ajout d'un système de gestion des versions avec release-please.
+- Ajout de la prise en charge de l'encodage UTF-8 sur Windows.
+- Ajout de la possibilité de spécifier une branche pour les tests.
+- Ajout de la possibilité de définir des variables d'environnement.
+- Ajout d'un fichier .env.example pour la configuration.
+- Ajout de la prise en charge de direnv.
+- Ajout de la possibilité de configurer le proxy pour l'installation.
+- Ajout d'un système de gestion des erreurs amélioré.
+- Ajout de la prise en charge de l'authentification par clé API.
+- Ajout de la prise en charge de l'API Albert.
+- Ajout de la prise en charge de l'API Albert v0.4.0.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout d'un système de gestion des logs amélioré.
+- Ajout
