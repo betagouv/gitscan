@@ -5,31 +5,31 @@
   "language": "JavaScript",
   "features": [
     "Visualisation des positions des navires de pêche (VMS)",
-    "Visualisation des données d'activité de pêche déclaratives (ERS et FLUX)",
-    "Aperçu synthétique de l'activité",
+    "Visualisation des données d'activité de pêche (ERS et FLUX)",
+    "Vue d'ensemble de l'activité",
     "Rapports d'activité (Act-Rep)",
     "Saisie de données des rapports d'inspection",
     "Visualisation des inspections et infractions historiques",
     "Visualisation des zones de pêche réglementées",
-    "Calcul du facteur de risque des navires de pêche",
+    "Calcul du facteur de risque des navires",
+    "Alertes de fraude en temps réel",
     "Vérification de la conformité des préavis de retour au port",
     "Création et partage de groupes de navires",
     "Panneau d'administration pour la gestion des données et des paramètres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
     "PostgreSQL",
-    "Keycloak",
     "Geoserver",
-    "Cypress",
-    "React"
+    "Keycloak"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Keycloak pour l'authentification",
-    "Geoserver pour les données géospatiales"
+    "Geoserver",
+    "Keycloak"
   ],
   "auth": {
     "methods": [
@@ -42,14 +42,14 @@
   },
   "tests": [
     "Cypress",
-    "Pytest"
+    "Jest"
   ],
   "workflows": [
-    "CI/CD workflows defined in .github/workflows"
+    "CI/CD"
   ],
   "lastActivity": "2026-02-19T16:22:36+01:00",
   "status": "active",
-  "license": "GNU Affero GPL Version 3",
+  "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -64,10 +64,9 @@
     "VMS",
     "ERS",
     "réglementation",
-    "contrôle",
     "fraude",
-    "géospatial",
+    "contrôle",
     "administration",
-    "monitorfish"
+    "géospatial"
   ]
 }
