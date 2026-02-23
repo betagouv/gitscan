@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les structures associées.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les campagnes associées.",
   "language": "Ruby",
   "features": [
     "Gestion des évaluations",
+    "Gestion des campagnes",
     "Espace d'administration",
-    "Gestion des structures",
+    "Génération de rapports",
     "Intégration avec des services de géolocalisation",
-    "API pour les événements et les données"
+    "Authentification utilisateur"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,6 +17,9 @@
     "Redis",
     "libvips",
     "GraphViz",
+    "Rack",
+    "Faraday",
+    "aws-sdk-s3",
     "@gouvfr/dsfr"
   ],
   "components": [
@@ -23,31 +27,38 @@
     "Base de données PostgreSQL",
     "Cache Redis",
     "API REST",
-    "Frontend (intégré ou via JavaScript)"
+    "Interface d'administration",
+    "Intégration avec des services externes (géolocalisation, etc.)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "session"
+      "email-password"
     ]
   },
   "tests": [
-    "RSpec",
-    "Puppeteer"
+    "Rake spec",
+    "Guard"
   ],
   "workflows": [],
-  "lastActivity": "2024-02-29T16:14:14Z",
+  "lastActivity": "2026-02-23T00:08:41+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Ruby on Rails",
     "PostgreSQL",
     "Redis",
     "Administration",
     "Évaluation",
+    "Campagne",
     "Géolocalisation",
-    "API"
+    "API",
+    "DSFR"
   ]
 }
