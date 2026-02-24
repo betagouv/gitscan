@@ -6,16 +6,19 @@
   "features": [
     "Gestion de la domiciliation",
     "Accès aux droits pour les personnes sans domicile stable",
-    "Interface d'administration",
-    "Portail pour les domiciliés",
-    "Gestion des structures"
+    "Interface structures",
+    "Portail domiciliés",
+    "Interface admin"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Node.js",
+    "Pnpm",
+    "Docker",
+    "Docker Compose",
+    "PostgreSQL",
     "Angular",
     "NestJS",
-    "PostgreSQL",
-    "Docker",
     "TypeORM"
   ],
   "components": [
@@ -26,16 +29,15 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Tests unitaires (Frontend et Backend)",
     "Tests d'intégration (Backend)"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
+  "workflows": [],
   "lastActivity": "2026-01-29T00:00:00Z",
   "status": "active",
   "license": null,
@@ -49,10 +51,10 @@
   "tags": [
     "domiciliation",
     "administration",
-    "social",
     "typescript",
     "angular",
     "nestjs",
-    "postgresql"
+    "postgresql",
+    "monorepo"
   ]
 }
