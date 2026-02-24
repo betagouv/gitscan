@@ -1,34 +1,34 @@
 {
   "url": "https://github.com/incubateur-ademe/quefairedemesobjets",
   "name": "quefairedemesobjets",
-  "description": "Longue vie aux objets propose des solutions pour promouvoir les gestes de consommation responsable. Le projet met à disposition une cartographie des acteurs du ré-emploi et de la réparation en France et promeut le don, le partage local et la réparation.",
+  "description": "Longue vie aux objets propose des solutions pour promouvoir les gestes de consommation responsable. Le projet met à disposition une cartographie des acteurs du ré-emploi et de la réparation en France, et promeut le don, le partage local et la réparation d'objets.",
   "language": "TypeScript",
   "features": [
-    "Recherche",
+    "Recherche d'objets",
     "Cartographie des acteurs du ré-emploi et de la réparation",
-    "Affichage des acteurs",
-    "Gestion des suggestions",
-    "Open Data"
+    "Affichage des acteurs sur une carte",
+    "Gestion des corrections et des sources de données",
+    "API",
+    "Intégration de la carte en iframe"
   ],
   "audience": "Grand public",
   "dependencies": [
     "@gouvfr/dsfr",
     "carte-facile",
+    "maplibre-gl",
     "tailwindcss",
     "django",
     "django-ninja",
     "psycopg",
-    "orjson",
-    "pillow",
-    "requests",
-    "sentry-sdk"
+    "boto3"
   ],
   "components": [
     "Frontend TypeScript",
     "Backend Django",
     "Base de données PostgreSQL",
     "API REST",
-    "Carte interactive"
+    "Carte interactive",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
@@ -41,9 +41,9 @@
     "pytest"
   ],
   "workflows": [
-    "CI/CD GitHub Actions"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-20T10:19:20+01:00",
+  "lastActivity": "2026-02-23T09:31:37+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -58,8 +58,9 @@
     "réemploi",
     "réparation",
     "économie circulaire",
-    "open data",
     "carte interactive",
+    "API",
+    "open data",
     "django",
     "typescript"
   ]
