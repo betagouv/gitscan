@@ -1,28 +1,29 @@
 ## Changelog : people (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application "people" se concentrent sur l'amélioration de la gestion des invitations, des alias et de la sécurité. Des corrections de bugs ont été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment en lien avec l'importation de données depuis Dimail et la gestion des erreurs. Des mises à jour de dépendances ont également été effectuées pour corriger des vulnérabilités de sécurité.
+Les dernières mises à jour de l'application "people" se concentrent sur l'amélioration de la gestion des invitations, des domaines et des alias, ainsi que sur la correction de vulnérabilités de sécurité et l'amélioration de la stabilité générale. Des améliorations de l'interface utilisateur ont également été apportées, notamment l'ajout d'icônes et la gestion des invitations.
 
 ### Évolutions fonctionnelles
 - Possibilité de supprimer les invitations par un administrateur (#1052).
-- Ajout d'une icône au bouton de configuration de domaine (#1054).
-- Affichage des invitations liées aux domaines dans l'interface (#1040).
+- Ajout d'une icône au bouton de configuration d'un domaine (#1054).
 - Possibilité de supprimer les invitations de domaine.
-- Les alias peuvent maintenant avoir une destination "devnull@devnull" (#1029).
-- Le premier utilisateur créé n'est plus automatiquement administrateur (#776).
-- Ajout de l'affichage des alias dans la démo.
-- Comptabilisation des alias dans l'endpoint des statistiques.
+- Ajout de l'affichage des invitations liées aux domaines dans l'interface utilisateur (#1040).
+- Comptabilisation des alias dans l'endpoint de statistiques.
+- Ajout des alias à la démo.
+- Possibilité de supprimer les invitations de domaine.
+- Amélioration de la gestion des erreurs lors de la synchronisation des boîtes aux lettres avec Dimail.
 
 ### Évolutions techniques
 - Migration de l'outil de gestion des dépendances de `pip` à `uv`.
 - Mise à jour de la version de Python à 3.14.2.
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité : Django (v5.2.11), Pillow, Cryptography, lodash et next (v15.5.10).
-- Déplacement de l'exception liée aux invitations vers le core.
-- Simplification des tests liés aux invitations par email.
+- Mise à jour de Django à la version 5.2.11 (correction de vulnérabilités).
+- Mise à jour de la librairie `lodash` à la version 4.17.23 (correction de vulnérabilités).
+- Mise à jour de la librairie `pillow` et `cryptography` pour corriger des CVEs.
+- Mise à jour de `next` à la version 15.5.10 (correction de vulnérabilités).
+- Déplacement des exceptions liées aux invitations vers le cœur de l'application.
+- Simplification des tests liés aux invitations de domaine par email.
 
 ### Autres changements
-- Mise à jour des chaînes de traduction.
-- Publication des versions 1.23.1, 1.23.0 et 1.22.1.
+- Mise à jour des chaînes de traduction (i18n).
 - Correction de warnings linter.
-- Suppression d'un commentaire inutile dans le fichier des permissions.
-- Correction d'un job d'upload Crowdin.
+- Publication des versions 1.23.1, 1.23.0 et 1.22.2.
