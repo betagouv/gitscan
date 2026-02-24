@@ -1,15 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Ecobalyse accélère la mise en place de l'affichage environnemental. L'application est accessible à cette adresse : https://ecobalyse.beta.gouv.fr.",
+  "description": "Ecobalyse accélère la mise en place de l'affichage environnemental. L'application est accessible à l'adresse https://ecobalyse.beta.gouv.fr.",
   "language": "JavaScript",
   "features": [
     "Affichage environnemental",
-    "Explorateur de données",
-    "Comparaison d'impacts",
+    "Calcul d'impact",
+    "Comparaison de données",
     "Gestion des utilisateurs",
-    "Administration des processus",
-    "Calcul d'impacts"
+    "Exportation de favoris",
+    "Analyse de données textiles",
+    "Analyse de données alimentaires",
+    "Analyse de données d'objets"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,27 +21,44 @@
     "pipenv",
     "gettext",
     "transcrypt",
+    "Elm",
     "PostgreSQL",
-    "Docker",
-    "Elm"
+    "litestar",
+    "aiosqlite",
+    "pytest",
+    "psycopg",
+    "asyncpg",
+    "structlog",
+    "orjson",
+    "aiosmtplib",
+    "emails",
+    "python-stdnum",
+    "pygithub",
+    "typer",
+    "pytest-mock",
+    "asyncstdlib",
+    "sentry-sdk",
+    "pwdlib"
   ],
   "components": [
     "Frontend Elm",
     "Backend Python (Django)",
     "API REST",
     "Base de données PostgreSQL",
-    "Frontend React"
+    "Frontend React",
+    "Serveur Express"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Jest",
     "Pytest",
-    "Cypress",
-    "Playwright"
+    "Playwright",
+    "elm-test"
   ],
   "workflows": [
     "node.js.yml"
@@ -48,20 +67,14 @@
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "environnement",
-    "impact environnemental",
     "analyse de cycle de vie",
-    "développement durable",
+    "impact environnemental",
     "textile",
     "alimentaire",
-    "véhicules",
-    "données environnementales"
+    "objets",
+    "développement durable"
   ]
 }
