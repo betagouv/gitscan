@@ -1,51 +1,56 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère, avec des fonctionnalités d'extraction de données, de simulation et de gestion des agents.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère, avec des fonctionnalités d'extraction de données, de simulation et de gestion des droits d'accès.",
   "language": "JavaScript",
   "features": [
     "Gestion des utilisateurs",
     "Extraction de données",
     "Simulation",
-    "Gestion des droits",
-    "Exportation de données",
-    "Tableaux de bord"
+    "Gestion des droits d'accès",
+    "Exportation de données (Excel)",
+    "SSO (Single Sign-On)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Node.js",
     "PostgreSQL",
     "Redis",
-    "Koa",
-    "Sequelize",
     "bcryptjs",
     "jsonwebtoken",
-    "Cypress"
+    "koa",
+    "sequelize",
+    "axios",
+    "sib-api-v3-sdk",
+    "csv-parse",
+    "csv-writer"
   ],
   "components": [
     "Frontend React",
     "API REST (Node.js/Koa)",
     "Base de données PostgreSQL",
-    "Cache Redis",
-    "Tests E2E (Cypress)"
+    "Redis (cache)",
+    "Docker",
+    "Cypress (tests E2E)"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "session"
     ],
     "providers": []
   },
   "tests": [
     "Mocha",
-    "Cypress"
+    "Cypress",
+    "Jest"
   ],
   "workflows": [
     "CI/CD (GitHub Actions)",
     "Tests unitaires",
+    "Tests d'intégration",
     "Tests E2E",
-    "Déploiement"
+    "Anonymisation de la base de données"
   ],
   "lastActivity": "2026-02-20T16:09:08+01:00",
   "status": "active",
@@ -65,6 +70,9 @@
     "nodejs",
     "postgresql",
     "react",
-    "cypress"
+    "sso",
+    "sécurité",
+    "tests",
+    "docker"
   ]
 }
