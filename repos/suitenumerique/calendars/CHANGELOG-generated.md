@@ -1,34 +1,34 @@
 ## Changelog : calendars (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application Calendars a bénéficié d'une refonte majeure de l'interface utilisateur, notamment du calendrier et de la gestion des événements. De nouvelles fonctionnalités ont été ajoutées, comme l'importation de calendriers, les invitations à des événements avec liens de réponse, et le partage de calendriers. Des améliorations significatives ont également été apportées à l'infrastructure et aux tests pour assurer une meilleure stabilité et performance.
+Ce mois-ci, l'application Calendars a bénéficié d'une refonte majeure de l'interface utilisateur, notamment au niveau de l'affichage des événements et de la gestion des calendriers. De nouvelles fonctionnalités ont été ajoutées, comme l'importation de calendriers, les liens de confirmation de participation aux invitations, et le partage de calendriers. Des améliorations significatives ont également été apportées à la compatibilité et à la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de liens de réponse (RSVP) dans les invitations par email (#10).
+- Ajout de liens de confirmation de participation (RSVP) dans les emails d'invitation (#10).
 - Possibilité de partager des calendriers avec d'autres utilisateurs.
 - Ajout d'une fonctionnalité d'importation de calendriers (#10).
-- Amélioration de l'affichage des événements et de l'interface modale associée.
+- Amélioration de l'affichage des événements et ajout de nouvelles fonctionnalités à la modale d'événement.
 - Ajout de la génération de liens de visioconférence dans les événements (#8).
-- Amélioration de l'expérience utilisateur du Scheduler, avec des performances optimisées.
+- Amélioration de l'expérience utilisateur du calendrier (Scheduler) avec une nouvelle interface et des performances optimisées.
 - Ajout d'un logo dynamique pour les calendriers.
-- Ajout de la prise en charge de l'importation d'événements via ICS.
+- Ajout d'une bannière d'accueil.
 
 ### Évolutions techniques
 - Ajout du support de l'architecture ARM64 pour les images Docker (#11).
-- Refonte de l'architecture frontend avec une meilleure organisation des composants.
-- Amélioration de la qualité du code React et optimisation des performances.
-- Mise à jour des dépendances et refactoring du code pour une meilleure maintenabilité.
-- Ajout de tests Playwright et Cypress pour une couverture de test plus complète.
-- Amélioration de l'intégration avec SabreDAV, notamment pour la gestion des invitations et des abonnements.
-- Ajout de nouvelles classes et plugins SabreDAV pour la normalisation des participants et la gestion des abonnements.
-- Optimisation des requêtes à la base de données pour améliorer la performance du chargement des calendriers.
-- Ajout de variables d'environnement pour la configuration de CalDAV.
+- Refonte de l'architecture frontend avec une meilleure organisation des composants et des types.
+- Implémentation d'un service CalDAV pour la synchronisation avec des calendriers externes.
+- Ajout de tests Playwright et Cypress pour améliorer la qualité du code et la couverture des tests.
+- Amélioration de la gestion des timezones et correction d'un bug lié à la double conversion.
+- Ajout de plugins SabreDAV pour améliorer la compatibilité et les fonctionnalités.
+- Optimisation des requêtes à la base de données pour améliorer les performances.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Mise à jour de la configuration et des outils de développement (OpenSpec).
 
 ### Autres changements
-- Suppression de modèles de données Calendar et CalendarShare.
-- Suppression de code et de composants inutilisés.
+- Correction de textes sur la page d'accueil.
+- Nettoyage du code et suppression de composants inutilisés.
 - Mise à jour de la documentation du projet.
-- Correction de bugs mineurs liés à la conversion de fuseaux horaires.
-- Amélioration du style et du formatage du code.
-- Mise à jour des thèmes et des tokens de design Cunningham.
-- Nettoyage du code et suppression de fichiers de suivi Git inutiles.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Suppression de modèles de calendriers inutiles.
+- Ajout de variables d'environnement pour la configuration CalDAV.
+- Ajout de modèles d'emails pour les invitations.
