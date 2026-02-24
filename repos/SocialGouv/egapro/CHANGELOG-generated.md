@@ -1,28 +1,24 @@
 ## Changelog : egapro (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'EgaPro se concentrent principalement sur l'amélioration de l'expérience de connexion et de l'authentification, notamment avec l'intégration de Proconnect. Des optimisations de performance ont également été apportées au processus de construction de l'application, et des améliorations ont été faites aux tests et à la configuration du projet.
+Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de la qualité du code, l'ajout de tests automatisés, l'optimisation des performances et la correction de bugs liés à l'authentification et à la configuration de l'environnement. Des améliorations ont également été apportées au processus de CI/CD pour garantir une meilleure qualité des déploiements.
 
 ### Évolutions fonctionnelles
-- Amélioration du processus de connexion/déconnexion, avec gestion des sessions et des redirections (#2796).
-- Ajout d'une fonctionnalité de déconnexion avant la sélection d'une organisation.
-- Ajout d'un environnement de développement Proconnect (#2770).
-- Optimisation du temps de construction de l'application via le caching dans le Dockerfile (#2795).
-- Restauration des cartes et correction des paramètres de cache invalides (#2776).
+- Amélioration de la gestion de l'authentification et de la sélection d'organisation, notamment en corrigeant des problèmes de redirection et de nettoyage de session. (#2796)
+- Ajout de la possibilité de se déconnecter avant de sélectionner une organisation.
+- Correction de l'affichage des cartes et des paramètres de cache. (#2776)
 
 ### Évolutions techniques
-- Ajout de la configuration et de la mise en place de Vitest pour les tests avec DSFR (#2794).
-- Nettoyage des fichiers de configuration (#2782).
-- Ajout du job `review-auto` à chaque nouvelle branche dans le CI/CD (#2789).
-- Correction de l'écrasement des variables d'environnement (#2774).
-- Suppression du prompt de sélection d'organisation dans certains cas.
-- Tests améliorés pour la répétition des requêtes (#2788).
+- Mise en place d'une nouvelle version du projet. (#2797)
+- Ajout de tests Vitest avec support du DSFR pour une meilleure couverture des tests unitaires. (#2794)
+- Optimisation du temps de build Docker via le caching. (#2795)
+- Ajout de workflows GitHub Actions pour l'analyse de l'accessibilité (a11y) et l'évaluation de la qualité du code avec Claude.
+- Ajout de jobs de `review-auto` à chaque nouvelle branche pour une revue de code automatisée. (#2789)
+- Amélioration de la configuration de l'environnement de développement avec Proconnect. (#2770)
+- Ajout de Lighthouse pour vérifier la qualité des déploiements. (#2818)
+- Ajout de `lint` et `format` au processus CI pour garantir la qualité du code. (#2803)
 
 ### Autres changements
-- Mise à jour de la version de l'application à 3.15.2 (0b3e634).
-- Utilisation des nouvelles informations d'identification Proconnect (040a098).
-- Correction de l'URL de test pour l'authentification.
-- Correction de l'URL pour les tests avec clean config.
-- Ajout de logs pour la déconnexion.
-- Ajout d'un test sans clé Keycloak (#2796).
-- Correction d'un bug lié à la récupération du siret (#2771).
+- Nettoyage des fichiers de configuration. (#2782)
+- Mise à jour des informations d'identification Proconnect. (#040a098)
+- Correction de la version de l'application (3.15.2).

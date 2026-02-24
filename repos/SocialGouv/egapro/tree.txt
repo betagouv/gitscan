@@ -5,7 +5,11 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── ci.yaml
+│       ├── claude-question.yml
+│       ├── claude-revue-rgaa.yml
 │       ├── deactivate.yaml
+│       ├── e2e.yaml
+│       ├── lighthouse.yaml
 │       ├── preproduction.yaml
 │       ├── production.yaml
 │       ├── release.yml
@@ -13,20 +17,19 @@
 │       └── review.yaml
 ├── .gitignore
 ├── .kontinuous
-│   ├── Chart.yaml
 │   ├── config.yaml
 │   ├── env
 │   │   ├── dev
 │   │   │   ├── templates
-│   │   │   │   ├── basic-auth.sealed-secret.yaml -> ../../preprod/templates/basic-auth.sealed-secret.yaml
-│   │   │   │   ├── egapro-secret.sealed-secret.yaml -> ../../preprod/templates/egapro-secret.sealed-secret.yaml
-│   │   │   │   ├── egapro.configmap.yaml -> ../../preprod/templates/egapro.configmap.yaml
-│   │   │   │   ├── github-oauth.sealed-secret.yaml -> ../../preprod/templates/github-oauth.sealed-secret.yaml
-│   │   │   │   ├── moncomptepro.sealed-secret.yaml -> ../../preprod/templates/moncomptepro.sealed-secret.yaml
-│   │   │   │   ├── proconnect-secret.sealed-secret.yaml
+│   │   │   │   ├── basic-auth.sealed-secret.yaml
+│   │   │   │   ├── egapro-secret.sealed-secret.yaml
+│   │   │   │   ├── egapro.configmap.yaml
+│   │   │   │   ├── github-oauth.sealed-secret.yaml
+│   │   │   │   ├── moncomptepro.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
-│   │   │   │   ├── sentry.sealed-secret.yaml -> ../../preprod/templates/sentry.sealed-secret.yaml
-│   │   │   │   └── staff.sealed-secret.yaml -> ../../preprod/templates/staff.sealed-secret.yaml
+│   │   │   │   ├── proconnect.sealed-secret.yaml
+│   │   │   │   ├── sentry.sealed-secret.yaml
+│   │   │   │   └── staff.sealed-secret.yaml
 │   │   │   └── values.yaml
 │   │   ├── preprod
 │   │   │   ├── templates
@@ -35,6 +38,8 @@
 │   │   │   │   ├── egapro.configmap.yaml
 │   │   │   │   ├── github-oauth.sealed-secret.yaml
 │   │   │   │   ├── moncomptepro.sealed-secret.yaml
+│   │   │   │   ├── proconnect.configmap.yaml
+│   │   │   │   ├── proconnect.sealed-secret.yaml
 │   │   │   │   ├── sentry.sealed-secret.yaml
 │   │   │   │   └── staff.sealed-secret.yaml
 │   │   │   └── values.yaml
@@ -46,719 +51,108 @@
 │   │       │   ├── moncomptepro.sealed-secret.yaml
 │   │       │   ├── redirect-index-egapro.ingress.yaml
 │   │       │   ├── sentry.sealed-secret.yaml
-│   │       │   ├── smtp-app.sealed-secret.yaml
-│   │       │   ├── smtp.sealed-secret.yaml
 │   │       │   └── staff.sealed-secret.yaml
 │   │       └── values.yaml
 │   ├── templates
-│   │   ├── egapro.configmap.yaml
-│   │   ├── files-public.ingress.yaml
-│   │   ├── files-restricted.ingress.yaml
-│   │   └── files.pvc.yaml
+│   │   └── egapro.configmap.yaml
 │   └── values.yaml
 ├── .nvmrc
 ├── .releaserc.json
+├── AGENTS.MD
 ├── CHANGELOG.md
+├── CLAUDE.md
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
 ├── package.json
 ├── packages
-│   ├── app
-│   │   ├── .env.development
-│   │   ├── .env.example
-│   │   ├── .env.production
-│   │   ├── .env.test
-│   │   ├── .eslintrc.js
-│   │   ├── .gitignore
-│   │   ├── Dockerfile
-│   │   ├── cypress
-│   │   │   ├── e2e
-│   │   │   │   ├── declaration_representative_1.cy.ts
-│   │   │   │   ├── declaration_representative_2.cy.ts
-│   │   │   │   ├── declaration_representative_3.cy.ts
-│   │   │   │   └── declaration_representative_4.cy.ts
-│   │   │   ├── fixtures
-│   │   │   │   └── example.json
-│   │   │   ├── support
-│   │   │   │   ├── commands.ts
-│   │   │   │   ├── e2e.ts
-│   │   │   │   └── index.ts
-│   │   │   └── tsconfig.json
-│   │   ├── cypress.config.ts
-│   │   ├── docker
-│   │   │   └── db
-│   │   │       ├── Dockerfile
-│   │   │       ├── egapro.sql
-│   │   │       └── ownership_request.sql
-│   │   ├── env.d.ts
-│   │   ├── global.d.ts
-│   │   ├── next-env.d.ts
-│   │   ├── next.config.js
-│   │   ├── package.json
-│   │   ├── public
-│   │   │   ├── Guide.Mon.Espace.pdf
-│   │   │   ├── Procedure.pour.ajouter.ou.supprimer.declarants.pdf
-│   │   │   ├── Procédure.pour.déclarer.les.objectifs.de.progression-mesures.de.correction.pdf
-│   │   │   ├── font
-│   │   │   │   ├── Marianne-Bold.ttf
-│   │   │   │   ├── Marianne-BoldItalic.ttf
-│   │   │   │   ├── Marianne-Regular.ttf
-│   │   │   │   └── Marianne-RegularItalic.ttf
-│   │   │   ├── icons
-│   │   │   │   └── marianne.svg
-│   │   │   ├── img
-│   │   │   │   ├── home.svg
-│   │   │   │   └── question.svg
-│   │   │   ├── logo-ministere.png
-│   │   │   ├── logo.jpeg
-│   │   │   └── logo.png
-│   │   ├── scripts
-│   │   │   ├── generateEnvDeclaration.ts
-│   │   │   ├── generateModelsFromSchema.ts
-│   │   │   ├── prebuild-dsfr.js
-│   │   │   ├── sql-scripts
-│   │   │   │   ├── migrate-simulations-helpers.ts
-│   │   │   │   └── migrate-simulations.ts
-│   │   │   └── tsconfig.json
-│   │   ├── sentry.client.config.ts
-│   │   ├── sentry.edge.config.ts
-│   │   ├── sentry.server.config.ts
-│   │   ├── src
-│   │   │   ├── api
-│   │   │   │   ├── TODO.md
-│   │   │   │   ├── core-domain
-│   │   │   │   │   ├── infra
-│   │   │   │   │   │   ├── auth
-│   │   │   │   │   │   │   ├── EgaproNextAuthAdapter.ts
-│   │   │   │   │   │   │   ├── ProConnectProvider.ts
-│   │   │   │   │   │   │   └── config.ts
-│   │   │   │   │   │   ├── companies-store.ts
-│   │   │   │   │   │   ├── db
-│   │   │   │   │   │   │   ├── CodeDepartement.ts
-│   │   │   │   │   │   │   ├── CodeNaf.ts
-│   │   │   │   │   │   │   ├── CodePays.ts
-│   │   │   │   │   │   │   ├── CodeRegion.ts
-│   │   │   │   │   │   │   ├── DeclarationRaw.ts
-│   │   │   │   │   │   │   ├── DeclarationSearch.ts
-│   │   │   │   │   │   │   └── raw.ts
-│   │   │   │   │   │   ├── mail
-│   │   │   │   │   │   │   ├── IGlobalMailerService.ts
-│   │   │   │   │   │   │   ├── impl
-│   │   │   │   │   │   │   │   └── NodemailerGlobalMailerService.ts
-│   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   └── templates.tsx
-│   │   │   │   │   │   ├── pdf
-│   │   │   │   │   │   │   └── templates
-│   │   │   │   │   │   │       ├── BaseReceiptTemplate.tsx
-│   │   │   │   │   │   │       ├── DeclarationReceipt.tsx
-│   │   │   │   │   │   │       └── RepresentationEquilibreeReceipt.tsx
-│   │   │   │   │   │   └── services
-│   │   │   │   │   │       ├── IEntrepriseService.ts
-│   │   │   │   │   │       ├── impl
-│   │   │   │   │   │       │   └── RechercheEntrepriseService.ts
-│   │   │   │   │   │       └── index.ts
-│   │   │   │   │   ├── repo
-│   │   │   │   │   │   ├── IAdminDeclarationRepo.ts
-│   │   │   │   │   │   ├── IAuditRepo.ts
-│   │   │   │   │   │   ├── IDeclarationRepo.ts
-│   │   │   │   │   │   ├── IDeclarationSearchRepo.ts
-│   │   │   │   │   │   ├── IOwnershipRepo.ts
-│   │   │   │   │   │   ├── IOwnershipRequestRepo.ts
-│   │   │   │   │   │   ├── IPublicStatsRepo.ts
-│   │   │   │   │   │   ├── IReferentRepo.ts
-│   │   │   │   │   │   ├── IRepresentationEquilibreeRepo.ts
-│   │   │   │   │   │   ├── IRepresentationEquilibreeSearchRepo.ts
-│   │   │   │   │   │   ├── ISimulationRepo.ts
-│   │   │   │   │   │   ├── IUserRepo.ts
-│   │   │   │   │   │   ├── impl
-│   │   │   │   │   │   │   ├── PostgresAdminDeclarationRepo.ts
-│   │   │   │   │   │   │   ├── PostgresAuditRepo.ts
-│   │   │   │   │   │   │   ├── PostgresDeclarationRepo.ts
-│   │   │   │   │   │   │   ├── PostgresDeclarationSearchRepo.ts
-│   │   │   │   │   │   │   ├── PostgresOwnershipRepo.ts
-│   │   │   │   │   │   │   ├── PostgresOwnershipRequestRepo.ts
-│   │   │   │   │   │   │   ├── PostgresPublicStatsRepo.ts
-│   │   │   │   │   │   │   ├── PostgresReferentRepo.ts
-│   │   │   │   │   │   │   ├── PostgresRepresentationEquilibreeRepo.ts
-│   │   │   │   │   │   │   └── PostgresRepresentationEquilibreeSearchRepo.ts
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   └── useCases
-│   │   │   │   │       ├── CreateOwnershipRequest.ts
-│   │   │   │   │       ├── DownloadDeclarationReceipt.ts
-│   │   │   │   │       ├── DownloadRepresentationEquilibreeReceipt.ts
-│   │   │   │   │       ├── GetAllDeclarationsBySiren.ts
-│   │   │   │   │       ├── GetDeclarationBySirenAndYear.ts
-│   │   │   │   │       ├── GetDeclarationOpmcBySirenAndYear.ts
-│   │   │   │   │       ├── GetDeclarationStats.ts
-│   │   │   │   │       ├── GetOwnershipRequest.ts
-│   │   │   │   │       ├── GetPublicStats.ts
-│   │   │   │   │       ├── GetRepresentationEquilibreeBySiren.ts
-│   │   │   │   │       ├── GetRepresentationEquilibreeBySirenAndYear.ts
-│   │   │   │   │       ├── SaveDeclaration.ts
-│   │   │   │   │       ├── SaveRepresentationEquilibree.ts
-│   │   │   │   │       ├── SearchDeclaration.ts
-│   │   │   │   │       ├── SearchRepresentationEquilibree.ts
-│   │   │   │   │       ├── SendDeclarationReceipt.ts
-│   │   │   │   │       ├── SendOpmcReceipt.ts
-│   │   │   │   │       ├── SendRepresentationEquilibreeReceipt.ts
-│   │   │   │   │       ├── SyncOwnership.ts
-│   │   │   │   │       ├── UpdateDeclarationWithOpMc.ts
-│   │   │   │   │       ├── UpdateOwnershipRequestStatus.ts
-│   │   │   │   │       └── referent
-│   │   │   │   │           ├── CreateReferent.ts
-│   │   │   │   │           ├── DeleteReferent.ts
-│   │   │   │   │           ├── EditReferent.ts
-│   │   │   │   │           ├── ExportReferents.ts
-│   │   │   │   │           ├── GetAllDeclarations.ts
-│   │   │   │   │           ├── GetReferents.ts
-│   │   │   │   │           └── ImportReferents.ts
-│   │   │   │   ├── shared-domain
-│   │   │   │   │   └── infra
-│   │   │   │   │       ├── db
-│   │   │   │   │       │   ├── initDb.ts
-│   │   │   │   │       │   ├── postgres.ts
-│   │   │   │   │       │   └── seeds
-│   │   │   │   │       │       ├── 01_repEq.ts
-│   │   │   │   │       │       └── utils
-│   │   │   │   │       │           └── index.ts
-│   │   │   │   │       ├── mail
-│   │   │   │   │       │   ├── IMailerService.ts
-│   │   │   │   │       │   ├── config.ts
-│   │   │   │   │       │   ├── nodemailer.ts
-│   │   │   │   │       │   └── type.ts
-│   │   │   │   │       └── pdf
-│   │   │   │   │           ├── IJsxPdfService.ts
-│   │   │   │   │           ├── impl
-│   │   │   │   │           │   └── ReactPdfService.tsx
-│   │   │   │   │           └── index.ts
-│   │   │   │   └── utils
-│   │   │   │       ├── auth.ts
-│   │   │   │       ├── pino.ts
-│   │   │   │       └── stream.ts
-│   │   │   ├── app
-│   │   │   │   ├── (consultation)
-│   │   │   │   │   ├── Breadcrumb.tsx
-│   │   │   │   │   ├── Navigation.tsx
-│   │   │   │   │   ├── SearchSirenForm.module.scss
-│   │   │   │   │   ├── SearchSirenForm.tsx
-│   │   │   │   │   ├── TODO.md
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── SearchSirenForm.test.tsx
-│   │   │   │   │   ├── consultation.module.css
-│   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   └── representation-equilibree
-│   │   │   │   │       └── recherche
-│   │   │   │   │           ├── DisplayRepeqResults.tsx
-│   │   │   │   │           ├── PageDisplay.tsx
-│   │   │   │   │           ├── opengraph-image.tsx
-│   │   │   │   │           └── page.tsx
-│   │   │   │   ├── (default)
-│   │   │   │   │   ├── Navigation.tsx
-│   │   │   │   │   ├── SwitchOrganizationButton.tsx
-│   │   │   │   │   ├── default.module.css
-│   │   │   │   │   ├── index-egapro
-│   │   │   │   │   │   └── declaration
-│   │   │   │   │   │       └── declarationFunnelConfiguration.ts
-│   │   │   │   │   ├── index.module.css
-│   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   ├── login
-│   │   │   │   │   │   ├── CheckLogged.tsx
-│   │   │   │   │   │   ├── EmailLogin.tsx
-│   │   │   │   │   │   ├── GithubLogin.tsx
-│   │   │   │   │   │   ├── ProConnectLogin.tsx
-│   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   ├── messages.tsx
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   │   ├── rattachement
-│   │   │   │   │   │   └── actions.ts
-│   │   │   │   │   └── representation-equilibree
-│   │   │   │   │       ├── (funnel)
-│   │   │   │   │       │   ├── AlertEdition.tsx
-│   │   │   │   │       │   ├── Stepper.tsx
-│   │   │   │   │       │   ├── __test-utils__
-│   │   │   │   │       │   │   ├── repeq-mocks.ts
-│   │   │   │   │       │   │   └── setup-repeq-mocks.ts
-│   │   │   │   │       │   ├── commencer
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── declarant
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── ecarts-cadres
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── ecarts-membres
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── entreprise
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── layout.tsx
-│   │   │   │   │       │   ├── loading.tsx
-│   │   │   │   │       │   ├── periode-reference
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── publication
-│   │   │   │   │       │   │   ├── Form.tsx
-│   │   │   │   │       │   │   ├── __tests__
-│   │   │   │   │       │   │   │   └── page.test.tsx
-│   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │       │   ├── titles.ts
-│   │   │   │   │       │   ├── useRepeqFunnelStore.ts
-│   │   │   │   │       │   └── validation
-│   │   │   │   │       │       ├── RecapRepEq.tsx
-│   │   │   │   │       │       ├── __tests__
-│   │   │   │   │       │       │   └── page.test.tsx
-│   │   │   │   │       │       └── page.tsx
-│   │   │   │   │       ├── Breadcrumb.tsx
-│   │   │   │   │       ├── Recap.tsx
-│   │   │   │   │       ├── [siren]
-│   │   │   │   │       │   └── [year]
-│   │   │   │   │       │       ├── EditButton.tsx
-│   │   │   │   │       │       ├── __tests__
-│   │   │   │   │       │       │   └── page.test.tsx
-│   │   │   │   │       │       ├── page.tsx
-│   │   │   │   │       │       └── pdf
-│   │   │   │   │       │           └── route.ts
-│   │   │   │   │       ├── __tests__
-│   │   │   │   │       │   ├── Breadcrumb.test.tsx
-│   │   │   │   │       │   ├── layout.test.tsx
-│   │   │   │   │       │   └── page.test.tsx
-│   │   │   │   │       ├── actions.ts
-│   │   │   │   │       ├── assujetti
-│   │   │   │   │       │   ├── Form.tsx
-│   │   │   │   │       │   ├── __tests__
-│   │   │   │   │       │   │   └── page.test.tsx
-│   │   │   │   │       │   └── page.tsx
-│   │   │   │   │       ├── layout.tsx
-│   │   │   │   │       ├── opengraph-image.tsx
-│   │   │   │   │       ├── page.tsx
-│   │   │   │   │       └── transmission
-│   │   │   │   │           ├── DownloadRepeqPdf.tsx
-│   │   │   │   │           ├── SendReceipt.tsx
-│   │   │   │   │           ├── page.tsx
-│   │   │   │   │           └── style.module.css
-│   │   │   │   ├── AuthHeaderItems.tsx
-│   │   │   │   ├── DsfrClientInit.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── HeaderAccountMenu.tsx
-│   │   │   │   ├── ImpersonateNotice.tsx
-│   │   │   │   ├── SessionProvider.tsx
-│   │   │   │   ├── __tests__
-│   │   │   │   │   └── Footer.test.tsx
-│   │   │   │   ├── _globalActions
-│   │   │   │   │   ├── company.ts
-│   │   │   │   │   └── companyErrorCodes.ts
-│   │   │   │   ├── api
-│   │   │   │   │   ├── auth
-│   │   │   │   │   │   └── proconnect-logout
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   ├── health
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   ├── monitoring
-│   │   │   │   │   │   └── envelope
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   ├── public
-│   │   │   │   │   │   └── referents_egalite_professionnelle
-│   │   │   │   │   │       └── [ext]
-│   │   │   │   │   │           └── route.ts
-│   │   │   │   │   ├── test
-│   │   │   │   │   │   └── cleanup
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   └── test-sentry-error
-│   │   │   │   │       └── route.ts
-│   │   │   │   ├── consentManagement.tsx
-│   │   │   │   ├── defaultColorScheme.ts
-│   │   │   │   ├── error
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── error.tsx
-│   │   │   │   ├── favicon.ico
-│   │   │   │   ├── global-error.jsx
-│   │   │   │   ├── global.css
-│   │   │   │   ├── layout.tsx
-│   │   │   │   ├── not-found.tsx
-│   │   │   │   ├── opengraph-image.tsx
-│   │   │   │   ├── providers.tsx
-│   │   │   │   └── root.module.scss
-│   │   │   ├── common
-│   │   │   │   ├── config.ts
-│   │   │   │   ├── core-domain
-│   │   │   │   │   ├── computers
-│   │   │   │   │   │   ├── AbstractComputer.ts
-│   │   │   │   │   │   ├── AbstractGroupComputer.ts
-│   │   │   │   │   │   ├── DeclarationComputer
-│   │   │   │   │   │   │   ├── DeclarationComputer.test.ts
-│   │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   │   └── DeclarationComputer.test.ts.snap
-│   │   │   │   │   │   │   └── dto-1820.ts
-│   │   │   │   │   │   ├── DeclarationComputer.ts
-│   │   │   │   │   │   ├── IndexComputer.ts
-│   │   │   │   │   │   ├── IndicateurCinqComputer.ts
-│   │   │   │   │   │   ├── IndicateurDeuxComputer.ts
-│   │   │   │   │   │   ├── IndicateurDeuxTroisComputer.ts
-│   │   │   │   │   │   ├── IndicateurQuatreComputer.ts
-│   │   │   │   │   │   ├── IndicateurTroisComputer.ts
-│   │   │   │   │   │   ├── IndicateurUnComputer.ts
-│   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── Declaration.ts
-│   │   │   │   │   │   ├── DeclarationData.ts
-│   │   │   │   │   │   ├── DeclarationOpmc.ts
-│   │   │   │   │   │   ├── DeclarationScoreSynthesis.ts
-│   │   │   │   │   │   ├── DeclarationSearchResult.ts
-│   │   │   │   │   │   ├── Ownership.ts
-│   │   │   │   │   │   ├── OwnershipRequest.ts
-│   │   │   │   │   │   ├── PublicStats.ts
-│   │   │   │   │   │   ├── Referent.ts
-│   │   │   │   │   │   ├── RepresentationEquilibree.ts
-│   │   │   │   │   │   ├── RepresentationEquilibreeSearchResult.ts
-│   │   │   │   │   │   ├── declaration
-│   │   │   │   │   │   │   ├── Company.ts
-│   │   │   │   │   │   │   ├── Declarant.ts
-│   │   │   │   │   │   │   ├── DeclarationInfo.ts
-│   │   │   │   │   │   │   ├── Indicators.ts
-│   │   │   │   │   │   │   ├── company
-│   │   │   │   │   │   │   │   └── UES.ts
-│   │   │   │   │   │   │   ├── declarationInfo
-│   │   │   │   │   │   │   │   └── Publication.ts
-│   │   │   │   │   │   │   └── indicators
-│   │   │   │   │   │   │       ├── AbstractIndicator.ts
-│   │   │   │   │   │   │       ├── BalancedRepresentation.ts
-│   │   │   │   │   │   │       ├── HighRemunerationsIndicator.ts
-│   │   │   │   │   │   │       ├── MaternityLeavesIndicator.ts
-│   │   │   │   │   │   │       ├── PromotionsIndicator.ts
-│   │   │   │   │   │   │       ├── RemunerationsIndicator.ts
-│   │   │   │   │   │   │       ├── SalaryRaisesAndPromotionsIndicator.ts
-│   │   │   │   │   │   │       └── SalaryRaisesIndicator.ts
-│   │   │   │   │   │   ├── representationEquilibree
-│   │   │   │   │   │   │   ├── Declarant.ts
-│   │   │   │   │   │   │   └── Publication.ts
-│   │   │   │   │   │   ├── specification
-│   │   │   │   │   │   │   ├── DeclarationOpmcSpecification.ts
-│   │   │   │   │   │   │   ├── DeclarationSpecification.ts
-│   │   │   │   │   │   │   └── RepresentationEquilibreeSpecification.ts
-│   │   │   │   │   │   └── valueObjects
-│   │   │   │   │   │       ├── CSP.ts
-│   │   │   │   │   │       ├── CountryCode.ts
-│   │   │   │   │   │       ├── County.ts
-│   │   │   │   │   │       ├── FrenchPhoneNumber.ts
-│   │   │   │   │   │       ├── FrenchPostalCode.ts
-│   │   │   │   │   │       ├── NafCode.ts
-│   │   │   │   │   │       ├── Region.ts
-│   │   │   │   │   │       ├── Siren.ts
-│   │   │   │   │   │       ├── Siret.ts
-│   │   │   │   │   │       ├── declaration
-│   │   │   │   │   │       │   ├── AgeRange.ts
-│   │   │   │   │   │       │   ├── CompanyWorkforceRange.ts
-│   │   │   │   │   │       │   ├── DeclarationSource.ts
-│   │   │   │   │   │       │   ├── declarationInfo
-│   │   │   │   │   │       │   │   ├── CorrectiveMeasures.ts
-│   │   │   │   │   │       │   │   ├── DeclarationIndex.ts
-│   │   │   │   │   │       │   │   ├── DeclarationIndicatorsYear.ts
-│   │   │   │   │   │       │   │   └── RepEqIndicatorsYear.ts
-│   │   │   │   │   │       │   └── indicators
-│   │   │   │   │   │       │       ├── FavorablePopulation.ts
-│   │   │   │   │   │       │       ├── HighRemunerationsResult.ts
-│   │   │   │   │   │       │       ├── NotComputableReason.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonExecutiveRepEq.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonMaternityLeaves.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonMemberRepEq.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonPromotions.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonRemunerations.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonSalaryRaises.ts
-│   │   │   │   │   │       │       ├── NotComputableReasonSalaryRaisesAndPromotions.ts
-│   │   │   │   │   │       │       └── RemunerationsMode.ts
-│   │   │   │   │   │       ├── ownership_request
-│   │   │   │   │   │       │   ├── ErrorDetail.ts
-│   │   │   │   │   │       │   └── OwnershipRequestStatus.ts
-│   │   │   │   │   │       └── referent
-│   │   │   │   │   │           └── ReferentType.ts
-│   │   │   │   │   ├── dtos
-│   │   │   │   │   │   ├── AdminDeclarationDTO.ts
-│   │   │   │   │   │   ├── CompanyDTO.ts
-│   │   │   │   │   │   ├── CompanyDTOFromAPI.ts
-│   │   │   │   │   │   ├── CreateOwnershipRequestDTO.ts
-│   │   │   │   │   │   ├── CreateRepresentationEquilibreeDTO.ts
-│   │   │   │   │   │   ├── CreateSimulationDTO.ts
-│   │   │   │   │   │   ├── DeclarationDTO.ts
-│   │   │   │   │   │   ├── DeclarationOpmcDTO.ts
-│   │   │   │   │   │   ├── OwnershipDTO.ts
-│   │   │   │   │   │   ├── OwnershipRequestActionDTO.ts
-│   │   │   │   │   │   ├── OwnershipRequestDTO.ts
-│   │   │   │   │   │   ├── OwnershipRequestWarningDTO.ts
-│   │   │   │   │   │   ├── PublicStatsDTO.ts
-│   │   │   │   │   │   ├── ReferentDTO.ts
-│   │   │   │   │   │   ├── RepresentationEquilibreeDTO.ts
-│   │   │   │   │   │   ├── SearchDeclarationDTO.ts
-│   │   │   │   │   │   ├── SearchRepresentationEquilibreeDTO.ts
-│   │   │   │   │   │   ├── UpdateOpMcDTO.ts
-│   │   │   │   │   │   └── helpers
-│   │   │   │   │   │       └── common.ts
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── entreprise.ts
-│   │   │   │   │   │   └── impersonate.ts
-│   │   │   │   │   └── mappers
-│   │   │   │   │       ├── companyMap.ts
-│   │   │   │   │       ├── declarationMap.ts
-│   │   │   │   │       ├── declarationOpmcMap.ts
-│   │   │   │   │       ├── declarationSearchMap.ts
-│   │   │   │   │       ├── declarationSearchResultMap.ts
-│   │   │   │   │       ├── ownershipMap.ts
-│   │   │   │   │       ├── ownershipRequestMap.ts
-│   │   │   │   │       ├── publicStatsMap.ts
-│   │   │   │   │       ├── referentMap.ts
-│   │   │   │   │       ├── representationEquilibreeMap.ts
-│   │   │   │   │       ├── representationEquilibreeSearchMap.ts
-│   │   │   │   │       └── representationEquilibreeSearchResultMap.ts
-│   │   │   │   ├── dict.ts
-│   │   │   │   ├── error.ts
-│   │   │   │   ├── models
-│   │   │   │   │   ├── company.ts
-│   │   │   │   │   └── generated.ts
-│   │   │   │   ├── shared-domain
-│   │   │   │   │   ├── AbstractCachedUseCase.ts
-│   │   │   │   │   ├── UseCase.ts
-│   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── AggregateRoot.ts
-│   │   │   │   │   │   ├── Entity.ts
-│   │   │   │   │   │   ├── EntityMap.ts
-│   │   │   │   │   │   ├── Specification.ts
-│   │   │   │   │   │   ├── ValidationError.ts
-│   │   │   │   │   │   ├── ValueObject.ts
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── valueObjects
-│   │   │   │   │   │       ├── Email.ts
-│   │   │   │   │   │       ├── Enum.ts
-│   │   │   │   │   │       ├── ExclusivePositiveInteger.ts
-│   │   │   │   │   │       ├── ExclusivePositiveNumber.ts
-│   │   │   │   │   │       ├── ExclusiveRangeInteger.ts
-│   │   │   │   │   │       ├── ExclusiveRangeNumber.ts
-│   │   │   │   │   │       ├── Image.ts
-│   │   │   │   │   │       ├── Name.ts
-│   │   │   │   │   │       ├── NonEmptyString.ts
-│   │   │   │   │   │       ├── NumberValueObject.ts
-│   │   │   │   │   │       ├── Percentage.ts
-│   │   │   │   │   │       ├── PositiveInteger.ts
-│   │   │   │   │   │       ├── PositiveNumber.ts
-│   │   │   │   │   │       ├── RangeInteger.ts
-│   │   │   │   │   │       ├── RangeNumber.ts
-│   │   │   │   │   │       ├── SimpleNumber.ts
-│   │   │   │   │   │       ├── SimpleStringValueObject.ts
-│   │   │   │   │   │       ├── Slug.ts
-│   │   │   │   │   │       ├── TupleNumber.ts
-│   │   │   │   │   │       ├── TupleString.ts
-│   │   │   │   │   │       ├── UniqueID.ts
-│   │   │   │   │   │       ├── Url.ts
-│   │   │   │   │   │       └── index.ts
-│   │   │   │   │   ├── error
-│   │   │   │   │   │   ├── AppError.ts
-│   │   │   │   │   │   ├── UnexpectedError.ts
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── infra
-│   │   │   │   │       ├── Mapper.ts
-│   │   │   │   │       ├── Repo.ts
-│   │   │   │   │       ├── Service.ts
-│   │   │   │   │       └── index.ts
-│   │   │   │   └── utils
-│   │   │   │       ├── __tests__
-│   │   │   │       │   └── date.test.ts
-│   │   │   │       ├── accessibility.ts
-│   │   │   │       ├── array.ts
-│   │   │   │       ├── browser.ts
-│   │   │   │       ├── date.ts
-│   │   │   │       ├── enum.ts
-│   │   │   │       ├── error.ts
-│   │   │   │       ├── feature.ts
-│   │   │   │       ├── form.ts
-│   │   │   │       ├── function.ts
-│   │   │   │       ├── luhn.ts
-│   │   │   │       ├── naf.ts
-│   │   │   │       ├── next.ts
-│   │   │   │       ├── number.ts
-│   │   │   │       ├── object.ts
-│   │   │   │       ├── os.ts
-│   │   │   │       ├── overload.ts
-│   │   │   │       ├── postgres.ts
-│   │   │   │       ├── promise.ts
-│   │   │   │       ├── react-props.ts
-│   │   │   │       ├── string.ts
-│   │   │   │       ├── types.ts
-│   │   │   │       ├── url.ts
-│   │   │   │       ├── zod.ts
-│   │   │   │       └── zustand.ts
-│   │   │   ├── components
-│   │   │   │   ├── Brand.tsx
-│   │   │   │   ├── ParagrapheList.module.css
-│   │   │   │   ├── ParagrapheList.tsx
-│   │   │   │   ├── RHF
-│   │   │   │   │   ├── DeclarantFields.tsx
-│   │   │   │   │   ├── IndicatorNote.module.css
-│   │   │   │   │   ├── IndicatorNoteInput.tsx
-│   │   │   │   │   ├── MotifNC.tsx
-│   │   │   │   │   ├── NumbersPairInputs.tsx
-│   │   │   │   │   ├── PercentageInput.tsx
-│   │   │   │   │   ├── PopulationFavorable.tsx
-│   │   │   │   │   ├── RadioOuiNon.tsx
-│   │   │   │   │   ├── ReactHookFormDebug.tsx
-│   │   │   │   │   └── TextAreaCounter.tsx
-│   │   │   │   ├── aide-simulation
-│   │   │   │   │   ├── IndicateurCinq.tsx
-│   │   │   │   │   ├── IndicateurDeux.tsx
-│   │   │   │   │   ├── IndicateurDeuxEtTrois.tsx
-│   │   │   │   │   ├── IndicateurQuatre.tsx
-│   │   │   │   │   ├── IndicateurTrois.tsx
-│   │   │   │   │   └── IndicateurUn.tsx
-│   │   │   │   └── utils
-│   │   │   │       ├── ClientBodyPortal.tsx
-│   │   │   │       ├── ClientOnly.tsx
-│   │   │   │       ├── ConditionalWrapper.tsx
-│   │   │   │       ├── ConfigProvider.tsx
-│   │   │   │       ├── FeatureStatusProvider.tsx
-│   │   │   │       ├── Matomo.tsx
-│   │   │   │       ├── MatomoPush.tsx
-│   │   │   │       ├── NextLinkOrA.tsx
-│   │   │   │       ├── ReactTooltip.tsx
-│   │   │   │       ├── SentryErrorBoundary.tsx
-│   │   │   │       ├── SentryTest.tsx
-│   │   │   │       ├── TooltipWrapper.tsx
-│   │   │   │       ├── debug
-│   │   │   │       │   └── DebugButton.tsx
-│   │   │   │       ├── getModifiedFormValues.tsx
-│   │   │   │       ├── nbhyp.tsx
-│   │   │   │       └── skeleton
-│   │   │   │           ├── SkeletonFlex.module.css
-│   │   │   │           ├── SkeletonFlex.tsx
-│   │   │   │           └── SkeletonForm.tsx
-│   │   │   ├── design-system
-│   │   │   │   ├── base
-│   │   │   │   │   ├── AlternativeTable.module.css
-│   │   │   │   │   ├── AlternativeTable.tsx
-│   │   │   │   │   ├── BackNextButtonsGroup.tsx
-│   │   │   │   │   ├── BigNote.module.scss
-│   │   │   │   │   ├── BigNote.tsx
-│   │   │   │   │   ├── Box.tsx
-│   │   │   │   │   ├── ContentWithChapter.module.css
-│   │   │   │   │   ├── ContentWithChapter.tsx
-│   │   │   │   │   ├── DetailedDownload.tsx
-│   │   │   │   │   ├── DownloadCard.module.scss
-│   │   │   │   │   ├── DownloadCard.tsx
-│   │   │   │   │   ├── FormFieldset.tsx
-│   │   │   │   │   ├── Grid.tsx
-│   │   │   │   │   ├── Icon.module.scss
-│   │   │   │   │   ├── Icon.tsx
-│   │   │   │   │   ├── IconStyleJsx.tsx
-│   │   │   │   │   ├── IndicatorNote.module.css
-│   │   │   │   │   ├── IndicatorNote.tsx
-│   │   │   │   │   ├── Link.tsx
-│   │   │   │   │   ├── RecapCard.tsx
-│   │   │   │   │   ├── RecapCardCompany.tsx
-│   │   │   │   │   ├── Stat.tsx
-│   │   │   │   │   ├── TableAdmin.module.css
-│   │   │   │   │   ├── TableAdmin.tsx
-│   │   │   │   │   ├── TileCompany.module.css
-│   │   │   │   │   ├── TileCompany.tsx
-│   │   │   │   │   ├── Typography.tsx
-│   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── RecapCardCompany.test.tsx
-│   │   │   │   │   └── client
-│   │   │   │   │       ├── AccessibleInfoIcon.tsx
-│   │   │   │   │       ├── AlertMessage.tsx
-│   │   │   │   │       ├── AnchorLink.tsx
-│   │   │   │   │       ├── TileCompanyIndex.module.css
-│   │   │   │   │       ├── TileCompanyIndex.tsx
-│   │   │   │   │       └── TileCompanyRepeqs.tsx
-│   │   │   │   ├── client.ts
-│   │   │   │   ├── img
-│   │   │   │   │   ├── ImgHome.tsx
-│   │   │   │   │   ├── ImgJDMA.module.scss
-│   │   │   │   │   ├── ImgJDMA.tsx
-│   │   │   │   │   ├── ImgRepresentationEquilibree.tsx
-│   │   │   │   │   ├── ImgSuccess.tsx
-│   │   │   │   │   └── ImgSuccessLight.tsx
-│   │   │   │   ├── layout
-│   │   │   │   │   ├── CenteredContainer.tsx
-│   │   │   │   │   ├── Container.tsx
-│   │   │   │   │   ├── FormLayout.module.css
-│   │   │   │   │   └── FormLayout.tsx
-│   │   │   │   ├── server.ts
-│   │   │   │   └── utils
-│   │   │   │       ├── client
-│   │   │   │       │   ├── ClientAnimate.tsx
-│   │   │   │       │   ├── HoverToggler.tsx
-│   │   │   │       │   ├── NextPageLink.tsx
-│   │   │   │       │   ├── ScrollTopButton.tsx
-│   │   │   │       │   ├── SimpleSubmitForm.tsx
-│   │   │   │       │   └── skeleton
-│   │   │   │       │       ├── Skeleton.scss
-│   │   │   │       │       ├── Skeleton.tsx
-│   │   │   │       │       ├── SkeletonTheme.tsx
-│   │   │   │       │       ├── SkeletonThemeContext.ts
-│   │   │   │       │       ├── index.ts
-│   │   │   │       │       └── types.ts
-│   │   │   │       ├── color-styles.ts
-│   │   │   │       └── spacing.ts
-│   │   │   ├── instrumentation.ts
-│   │   │   ├── model.data
-│   │   │   │   ├── année_indicateurs.json
-│   │   │   │   ├── code_naf.json
-│   │   │   │   ├── code_pays.json
-│   │   │   │   ├── common.json
-│   │   │   │   ├── département.json
-│   │   │   │   ├── indicateurs
-│   │   │   │   │   ├── augmentations.json
-│   │   │   │   │   ├── augmentations_et_promotions.json
-│   │   │   │   │   ├── base_indicateur_noté.json
-│   │   │   │   │   ├── congés_maternité.json
-│   │   │   │   │   ├── hautes_rémunérations.json
-│   │   │   │   │   ├── promotions.json
-│   │   │   │   │   ├── représentation_équilibrée.json
-│   │   │   │   │   └── rémunérations.json
-│   │   │   │   ├── région.json
-│   │   │   │   ├── schema-with-validation.json
-│   │   │   │   └── schema.json
-│   │   │   ├── pages
-│   │   │   │   └── api
-│   │   │   │       └── auth
-│   │   │   │           └── [...nextauth].ts
-│   │   │   ├── proxy.ts
-│   │   │   └── services
-│   │   │       ├── apiClient
-│   │   │       │   ├── useDeclarationFormManager.ts
-│   │   │       │   ├── useIsFirstRender.ts
-│   │   │       │   └── useUserMocked.tsx
-│   │   │       └── server
-│   │   │           ├── getDeclarationStats.ts
-│   │   │           ├── searchDeclaration.ts
-│   │   │           └── searchRepresentationEquilibree.ts
-│   │   ├── tsconfig.json
-│   │   ├── types
-│   │   │   └── augment.d.ts
-│   │   ├── vitest.config.mts
-│   │   └── vitest.setup.ts
-│   ├── files
-│   │   ├── .htpasswd
-│   │   ├── Dockerfile
-│   │   ├── index.js
-│   │   └── package.json
-│   └── nginx
+│   └── app
+│       ├── .env.example
+│       ├── .gitignore
+│       ├── .lighthouserc.json
+│       ├── AGENTS.md
+│       ├── CLAUDE.md
 │       ├── Dockerfile
-│       └── nginx.conf
+│       ├── biome.jsonc
+│       ├── drizzle.config.ts
+│       ├── next.config.js
+│       ├── package.json
+│       ├── playwright.config.ts
+│       ├── scripts
+│       │   └── copy-dsfr.js
+│       ├── sentry.client.config.ts
+│       ├── sentry.edge.config.ts
+│       ├── sentry.server.config.ts
+│       ├── src
+│       │   ├── app
+│       │   │   ├── api
+│       │   │   │   ├── auth
+│       │   │   │   │   └── [...nextauth]
+│       │   │   │   │       └── route.ts
+│       │   │   │   ├── healthz
+│       │   │   │   │   └── route.ts
+│       │   │   │   └── trpc
+│       │   │   │       └── [trpc]
+│       │   │   │           └── route.ts
+│       │   │   ├── global-error.tsx
+│       │   │   ├── layout.tsx
+│       │   │   ├── login
+│       │   │   │   └── page.tsx
+│       │   │   └── page.tsx
+│       │   ├── e2e
+│       │   │   └── home.e2e.ts
+│       │   ├── env.js
+│       │   ├── instrumentation.ts
+│       │   ├── modules
+│       │   │   ├── analytics
+│       │   │   │   ├── MatomoAnalytics.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── home
+│       │   │   │   ├── HomePage.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── HomePage.test.tsx
+│       │   │   │   └── index.ts
+│       │   │   └── layout
+│       │   │       ├── Footer
+│       │   │       │   ├── FooterBody.tsx
+│       │   │       │   ├── FooterBottom.tsx
+│       │   │       │   ├── FooterTopLinks.tsx
+│       │   │       │   ├── ThemeModal.tsx
+│       │   │       │   └── index.tsx
+│       │   │       ├── Header
+│       │   │       │   ├── HeaderBrand.tsx
+│       │   │       │   ├── HeaderQuickAccess.tsx
+│       │   │       │   ├── MobileMenu.tsx
+│       │   │       │   ├── Navigation.tsx
+│       │   │       │   └── index.tsx
+│       │   │       ├── index.ts
+│       │   │       └── shared
+│       │   │           ├── NavLink.tsx
+│       │   │           ├── NewTabNotice.tsx
+│       │   │           ├── SkipLinks.tsx
+│       │   │           └── __tests__
+│       │   │               ├── NavLink.test.tsx
+│       │   │               ├── NewTabNotice.test.tsx
+│       │   │               └── SkipLinks.test.tsx
+│       │   ├── server
+│       │   │   ├── api
+│       │   │   │   ├── root.ts
+│       │   │   │   └── trpc.ts
+│       │   │   ├── auth
+│       │   │   │   ├── config.ts
+│       │   │   │   └── index.ts
+│       │   │   └── db
+│       │   │       ├── index.ts
+│       │   │       └── schema.ts
+│       │   ├── test
+│       │   │   └── setup.ts
+│       │   └── trpc
+│       │       ├── query-client.ts
+│       │       ├── react.tsx
+│       │       └── server.ts
+│       ├── tsconfig.json
+│       ├── tsconfig.test.json
+│       └── vitest.config.ts
 ├── pnpm-lock.yaml
-├── pnpm-workspace.yaml
-└── sonar-project.properties
-159 directories, 604 files
+└── pnpm-workspace.yaml
+40 directories, 117 files
