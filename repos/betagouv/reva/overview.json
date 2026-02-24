@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo qui regroupe les API et applications France VAE ainsi que ses composants comme Keycloak, Metabase et Strapi. Il vise à faciliter la gestion et l'accès aux services liés à la Validation des Acquis de l'Expérience (VAE).",
+  "description": "REVA est un monorepo qui regroupe les API et applications France VAE ainsi que ses composants comme Keycloak, Metabase et Strapi. Il vise à faciliter la gestion de la Validation des Acquis de l'Expérience (VAE) en France.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
-    "Recherche",
     "Gestion des candidatures",
-    "Génération de documents",
+    "Gestion des cohortes VAE collectives",
+    "Génération de documents (DF dématérialisé)",
+    "Suivi de l'état d'avancement",
     "Administration",
-    "Suivi des cohortes VAE collectives"
+    "Interoperabilité avec des acteurs externes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,37 +18,42 @@
     "Next.js",
     "GraphQL",
     "Prisma",
-    "PostgreSQL",
-    "Keycloak",
     "React",
+    "Keycloak",
+    "Metabase",
+    "Strapi",
+    "Outscale",
     "Cypress",
     "Playwright",
+    "Vitest",
     "Datadog",
-    "Metabase",
-    "Brevo",
-    "Strapi"
+    "Brevo"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Keycloak",
-    "Traefik"
+    "Keycloak (Authentification)",
+    "Traefik (Proxy et routage)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "France Connect"
+    ]
   },
   "tests": [
     "Vitest",
     "Cypress",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-20T15:03:03+01:00",
+  "workflows": [
+    "CI/CD workflows (defined in .github/workflows)"
+  ],
+  "lastActivity": "2026-02-23T16:16:18+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -58,7 +64,9 @@
     "Validation des Acquis de l'Expérience",
     "TypeScript",
     "React",
+    "Keycloak",
     "GraphQL",
-    "Keycloak"
+    "Fastify",
+    "Monorepo"
   ]
 }
