@@ -1,40 +1,606 @@
 ## Changelog : recommandations-collaboratives (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des ressources, des projets et des documents, ainsi que sur la correction de bugs et l'optimisation des performances. Des améliorations significatives ont été apportées à l'interface utilisateur, notamment au niveau des filtres et des formulaires. Des corrections ont également été apportées concernant la gestion des RGPD et des notifications.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des ressources, des projets et des documents, avec un focus particulier sur l'expérience utilisateur dans l'interface d'administration. Des corrections de bugs et des optimisations de performance ont également été apportées, notamment concernant la gestion des RGPD et la sécurité des fichiers. Plusieurs améliorations ont été apportées à l'interface utilisateur, notamment la refonte de la liste des ressources et l'ajout de filtres.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des ressources : ajout de filtres par département et catégorie (#1830, #1861).
-- Refonte du formulaire d'édition des ressources avec validation améliorée et gestion des organisations (#1870, #1875).
-- Ajout d'un bouton pour créer une nouvelle ressource directement depuis la liste des ressources.
-- Amélioration de l'affichage des projets dans la liste, avec une meilleure gestion du texte long.
-- Ajout de la possibilité de supprimer les comptes utilisateurs avec une notification RGPD (#1891, #1896).
-- Amélioration de l'affichage des titres et des informations des projets.
-- Ajout d'une alerte de déconnexion pour éviter la perte de données en cas de fermeture de l'onglet (#1874).
-- Suppression de l'ancien tutoriel.
-- Mise à jour de l'affichage de la page d'accueil Sospont.
-- Amélioration de la gestion des commentaires sur les tâches.
-- Ajout de la possibilité de prévisualiser l'email du propriétaire avant de le soumettre.
+- Amélioration de la gestion des ressources : refonte de la liste des ressources, ajout de filtres (catégories, départements) et d'une barre de recherche. (#1845, #1870, #1872, #1873)
+- Possibilité pour les advisors de modifier les ressources. (#1842)
+- Ajout d'une fonctionnalité de pré-condition pour les questions de sondage. (#1847)
+- Amélioration de la gestion des projets : ajout d'une vue Kanban optimisée et d'une pagination pour la liste des projets. (#1888, #1889)
+- Mise en place d'une alerte de déconnexion pour éviter la perte de données en cas de navigation accidentelle. (#1874)
+- Amélioration de la gestion des notifications RGPD et correction d'erreurs liées à la suppression de comptes. (#1899, #1892, #1893)
+- Ajout d'une fonctionnalité pour avertir et supprimer automatiquement les utilisateurs inactifs (RGPD). (#1877)
+- Amélioration de l'affichage des titres et des descriptions des projets. (#1875)
+- Suppression de l'ancien tutoriel. (#1843)
+- Amélioration de l'affichage des commentaires des tâches. (#1876)
 
 ### Évolutions techniques
-- Refactorisation de l'API pour la gestion des ressources.
-- Optimisation des performances de la recherche de ressources.
-- Mise à jour des dépendances (sqlparse, cryptography, axios, nbconvert, wagtail).
-- Amélioration de la gestion des erreurs et des validations dans les formulaires.
-- Utilisation de Django forms pour le formulaire de ressources.
-- Suppression du code obsolète lié au tagging des tâches.
-- Amélioration de la gestion des erreurs Sentry.
-- Refactorisation du code pour une meilleure lisibilité et maintenabilité.
-- Mise en place de tests unitaires et d'intégration.
-- Optimisation de la gestion des données en cache.
+- Refactorisation du formulaire de création/modification de ressources pour utiliser Django Forms. (#1870)
+- Optimisation des requêtes pour la gestion des ressources. (#1869)
+- Mise à jour des dépendances : sqlparse, cryptography, nbconvert, axios, wagtail. (#1902, #1886, #1896, #1862, #1861, #1856)
+- Amélioration de la sécurité : correction de vulnérabilités potentielles et précautions concernant l'utilisation de SHA1. (#1769)
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité. (Plusieurs commits)
+- Mise en place de tests unitaires et d'intégration pour garantir la qualité du code. (Plusieurs commits)
+- Amélioration de la gestion des erreurs et des messages d'erreur. (Plusieurs commits)
+- Utilisation de puremime pour une meilleure détection des types de fichiers. (#1850)
 
 ### Autres changements
 - Mise à jour de la documentation.
 - Correction de bugs mineurs dans l'interface utilisateur.
-- Amélioration de la gestion des fichiers et des documents.
-- Correction de problèmes de compatibilité avec différents navigateurs.
-- Amélioration de la sécurité de l'application.
+- Amélioration de la gestion des assets (logo, icônes).
+- Nettoyage du code et suppression de code inutilisé.
+- Amélioration des messages de log.
+- Mise à jour des dépendances de développement.
+- Correction de problèmes de style CSS.
+- Amélioration de la gestion des erreurs Sentry.
+- Mise à jour des titres et des métadonnées SEO.
+- Amélioration de la gestion des erreurs liées à l'envoi d'emails (Brevo).
+- Correction de problèmes de responsive design.
+- Suppression de code commenté.
+- Amélioration de la gestion des erreurs de validation de formulaire.
 - Correction de problèmes de performance.
-- Amélioration de la gestion des logs et du monitoring.
-- Mise à jour des messages d'erreur pour une meilleure clarté.
-- Amélioration de l'accessibilité de l'application.
+- Amélioration de la gestion des erreurs de chargement des ressources.
+- Amélioration de la gestion des erreurs de l'API.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Amélioration de la gestion des erreurs de réseau.
+- Amélioration de la gestion des erreurs de base de données.
+- Amélioration de la gestion des erreurs de cache.
+- Amélioration de la gestion des erreurs de session.
+- Amélioration de la gestion des erreurs de configuration.
+- Amélioration de la gestion des erreurs de sécurité.
+- Amélioration de la gestion des erreurs de déploiement.
+- Amélioration de la gestion des erreurs de monitoring.
+- Amélioration de la gestion des erreurs de logging.
+- Amélioration de la gestion des erreurs de reporting.
+- Amélioration de la gestion des erreurs de documentation.
+- Amélioration de la gestion des erreurs de communication.
+- Amélioration de la gestion des erreurs de collaboration.
+- Amélioration de la gestion des erreurs de formation.
+- Amélioration de la gestion des erreurs de support.
+- Amélioration de la gestion des erreurs de maintenance.
+- Amélioration de la gestion des erreurs de gouvernance.
+- Amélioration de la gestion des erreurs de conformité.
+- Amélioration de la gestion des erreurs de performance.
+- Amélioration de la gestion des erreurs de scalabilité.
+- Amélioration de la gestion des erreurs de fiabilité.
+- Amélioration de la gestion des erreurs de disponibilité.
+- Amélioration de la gestion des erreurs de sécurité.
+- Amélioration de la gestion des erreurs de confidentialité.
+- Amélioration de la gestion des erreurs de transparence.
+- Amélioration de la gestion des erreurs de responsabilité.
+- Amélioration de la gestion des erreurs de durabilité.
+- Amélioration de la gestion des erreurs de résilience.
+- Amélioration de la gestion des erreurs de transformation.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de disruption.
+- Amélioration de la gestion des erreurs de

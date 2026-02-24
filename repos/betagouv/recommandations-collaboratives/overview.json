@@ -4,12 +4,14 @@
   "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
   "language": "Python",
   "features": [
-    "Gestion de projets",
     "Gestion des ressources",
+    "Gestion des projets",
+    "Gestion des documents",
+    "Authentification utilisateur",
     "Notifications",
-    "Recommandations collaboratives",
+    "Recherche",
     "Gestion des utilisateurs",
-    "Interface utilisateur multi-portails"
+    "RGPD (suppression de compte)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,13 +21,15 @@
     "Bootstrap",
     "DSFR",
     "PostgreSQL",
-    "Redis"
+    "Redis",
+    "Celery"
   ],
   "components": [
     "Backend Python/Django",
     "Frontend AlpineJS/Bootstrap/DSFR",
     "Base de données PostgreSQL",
-    "Cache Redis"
+    "Broker Redis",
+    "API REST"
   ],
   "auth": {
     "methods": [
@@ -35,10 +39,11 @@
   },
   "tests": [
     "Pytest",
-    "Frontend tests"
+    "Tests unitaires Frontend (Yarn)",
+    "Tests bout en bout Frontend (Cypress)"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD (GitHub Actions)"
   ],
   "lastActivity": "2026-02-19T11:56:52+01:00",
   "status": "active",
@@ -55,11 +60,9 @@
     "python",
     "django",
     "alpinejs",
-    "bootstrap",
-    "dsfr",
     "postgresql",
-    "redis",
     "administration",
-    "gestion de projet"
+    "gestion de projet",
+    "gestion de ressources"
   ]
 }
