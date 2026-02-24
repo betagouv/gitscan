@@ -1,18 +1,17 @@
 {
   "url": "https://github.com/betagouv/zacharie",
   "name": "zacharie",
-  "description": "Zacharie est une application web pour la gestion des données relatives aux animaux et aux carcasses, notamment dans le cadre de la filière de la chasse. Elle permet de suivre les informations de traçabilité et de faciliter les échanges entre les différents acteurs.",
+  "description": "Zacharie est une application web pour la gestion des données relatives aux animaux et aux carcasses, notamment dans le cadre de la filière de la chasse. Elle permet de suivre les informations sur les animaux abattus, les carcasses et les intervenants.",
   "language": "TypeScript",
   "features": [
     "Gestion des carcasses",
-    "Gestion des FEIs",
+    "Gestion des FEIs (Fiche d'Évaluation Initiale)",
     "Synchronisation des données",
     "Gestion des utilisateurs",
     "Tableau de bord",
     "Export de données",
-    "Gestion des partenaires",
-    "Suivi de la traçabilité",
-    "Gestion des anomalies"
+    "Gestion des contacts circuit court",
+    "Suivi des SVI (Suivi des Visites d'Inspection)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,15 +19,15 @@
     "Express",
     "PostgreSQL",
     "Prisma",
+    "@getbrevo/brevo",
     "bcryptjs",
     "jsonwebtoken",
     "passport",
-    "dayjs",
     "zod"
   ],
   "components": [
     "Frontend React",
-    "API REST Express",
+    "API REST (Express)",
     "Base de données PostgreSQL",
     "Authentification JWT",
     "Architecture local-first"
@@ -37,15 +36,16 @@
     "methods": [
       "email-password",
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "Vitest",
     "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-20T12:16:22+02:00",
+  "workflows": [
+    "CI/CD (GitHub Actions)"
+  ],
+  "lastActivity": "2026-02-23T15:49:17+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,11 +59,11 @@
     "chasse",
     "carcasse",
     "FEI",
-    "traçabilité",
+    "SVI",
+    "gestion des données",
     "administration",
-    "gestion",
-    "React",
     "TypeScript",
+    "React",
     "PostgreSQL"
   ]
 }
