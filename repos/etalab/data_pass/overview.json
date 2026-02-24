@@ -1,38 +1,38 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les accès et les autorisations, notamment pour les API, et offre une interface pour les utilisateurs et les administrateurs.",
+  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les accès et les autorisations pour les données sensibles, en assurant la conformité juridique.",
   "language": "Ruby",
   "features": [
     "Gestion des habilitations",
     "Authentification utilisateur",
     "Intégration FranceConnect",
-    "Gestion des API",
-    "Gestion des accès",
-    "Suivi des demandes",
-    "Interface d'administration"
+    "Gestion des demandes d'accès",
+    "Historique des validations",
+    "Authentification multi-facteurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
     "PostgreSQL",
     "Redis",
-    "Docker"
+    "Rails"
   ],
   "components": [
-    "Backend Ruby on Rails",
-    "Base de données PostgreSQL",
-    "Frontend (Turbo/Hotwire)",
+    "Frontend Rails",
     "API REST",
-    "Docker pour le développement et le déploiement"
+    "Base de données PostgreSQL",
+    "Redis"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "email-password"
+      "sso"
     ],
     "providers": [
-      "FranceConnect"
+      "FranceConnect",
+      "ProConnect"
     ]
   },
   "tests": [
@@ -54,12 +54,12 @@
     "openIssues": null
   },
   "tags": [
-    "gestion des habilitations",
-    "données à accès restreint",
+    "gestion des données",
+    "habilitation",
+    "accès restreint",
     "FranceConnect",
     "API",
-    "Ruby on Rails",
-    "PostgreSQL",
-    "administration publique"
+    "sécurité",
+    "Ruby on Rails"
   ]
 }
