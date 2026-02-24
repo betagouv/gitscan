@@ -94,6 +94,16 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── _keyrepository.py
 │   │   │   └── entities.py
+│   │   ├── model
+│   │   │   ├── __init__.py
+│   │   │   ├── entities.py
+│   │   │   └── errors.py
+│   │   ├── provider
+│   │   │   ├── __init__.py
+│   │   │   ├── _providergateway.py
+│   │   │   ├── _providerrepository.py
+│   │   │   ├── entities.py
+│   │   │   └── errors.py
 │   │   ├── role
 │   │   │   ├── __init__.py
 │   │   │   ├── _rolerepository.py
@@ -166,18 +176,27 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── access.py
 │   │   │   ├── context.py
+│   │   │   ├── documentation.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── admin_router.py
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── providers.py
+│   │   │   │   │   └── routers.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   └── models.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
 │   │   │       ├── models.py
+│   │   │       ├── providers.py
 │   │   │       └── routers.py
+│   │   ├── model
+│   │   │   ├── __init__.py
+│   │   │   └── _modelprovidergateway.py
 │   │   └── postgres
 │   │       ├── __init__.py
 │   │       ├── _postgreskeyrepository.py
+│   │       ├── _postgresproviderrepository.py
 │   │       ├── _postgresrolesrepository.py
 │   │       ├── _postgresrouterrepository.py
 │   │       ├── _postgresuserinforepository.py
@@ -229,6 +248,7 @@
 │   │   ├── _celery.py
 │   │   └── routing.py
 │   ├── tests
+│   │   ├── __init__.py
 │   │   ├── helpers.py
 │   │   ├── integ
 │   │   │   ├── assets
@@ -281,17 +301,23 @@
 │   │   │   │   ├── test_tei_text_classification.py
 │   │   │   │   └── test_tei_text_embeddings_inference.py
 │   │   │   ├── test_search.py
-│   │   │   ├── test_swagger.py
 │   │   │   ├── utils
 │   │   │   │   └── snapshot_assertions.py
 │   │   │   └── utils.py
 │   │   ├── integration
+│   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
+│   │   │   ├── endpoints
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_admin_providers.py
+│   │   │   │   ├── test_admin_router.py
+│   │   │   │   └── test_models.py
 │   │   │   ├── factories.py
-│   │   │   ├── test_admin_router.py
-│   │   │   ├── test_createapp.py
-│   │   │   ├── test_models.py
-│   │   │   └── test_postgresrouterrepository.py
+│   │   │   ├── postgres
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_postgresproviderrepository.py
+│   │   │   │   └── test_postgresrouterrepository.py
+│   │   │   └── test_createapp.py
 │   │   └── unit
 │   │       ├── test_endpoints
 │   │       │   ├── mock.py
@@ -316,13 +342,17 @@
 │   │       │   └── test_qos.py
 │   │       └── use_case
 │   │           ├── factories.py
+│   │           ├── test_createproviderusecase.py
 │   │           ├── test_createrouterusecase.py
 │   │           └── test_getmodelsusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
-│   │   │   └── _createrouterusecase.py
+│   │   │   ├── _createrouterusecase.py
+│   │   │   └── providers
+│   │   │       ├── __init__.py
+│   │   │       └── _createproviderusecase.py
 │   │   └── models
 │   │       ├── __init__.py
 │   │       └── _getmodelsusecase.py
@@ -627,4 +657,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-136 directories, 493 files
+143 directories, 516 files
