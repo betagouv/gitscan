@@ -1,17 +1,16 @@
 ## Changelog : gitscan (30 derniers jours)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'activité sur le projet gitscan et les nombreux dépôts associés gérés par BetaGouv. La majorité des changements concernent des mises à jour automatiques de dépendances et de versions sur les différents dépôts, assurant leur maintenance et leur sécurité. Quelques corrections et améliorations mineures ont également été apportées.
+Les 30 derniers jours ont été marqués par une activité importante de mise à jour des dépendances de nombreux dépôts gérés par BetaGouv et ses partenaires. Ces mises à jour visent à maintenir la sécurité, la stabilité et la performance des différents services proposés.  De plus, des améliorations ont été apportées à l'infrastructure de gestion des dépôts, notamment avec l'ajout de résumés d'organisation et la correction de problèmes liés à l'exclusion de certains dépôts.
 
 ### Évolutions fonctionnelles
-*   Ajout de résumés d'organisations (#3)
-*   Correction de bugs liés à l'exclusion de certains dépôts (#2)
+*   Correction de bugs liés à l'exclusion de certains dépôts (#2).
+*   Ajout de résumés d'organisation pour une meilleure vue d'ensemble des projets.
 
 ### Évolutions techniques
-*   Mise à jour de nombreuses dépendances et librairies sur l'ensemble des dépôts.
-*   Amélioration de l'infrastructure CI/CD avec des mises à jour de workflows.
+*   Mise à jour de l'infrastructure de gestion des dépôts et des dépendances.
+*   Amélioration de la gestion des dépendances à travers de nombreuses mises à jour de librairies et frameworks.
 
 ### Autres changements
-*   Mise à jour de la documentation README.md.
-*   Ajout de nouveaux dépôts gérés par le bot.
-*   Corrections mineures et refactorisation du code sur certains dépôts.
+*   Mise à jour de la documentation du projet.
+*   Corrections mineures et améliorations diverses.
