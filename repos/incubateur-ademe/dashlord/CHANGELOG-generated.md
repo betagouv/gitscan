@@ -1,13 +1,10 @@
-## Changelog : dashlord (derniers 30 jours)
+## Changelog : dashlord (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise à jour du rapport généré par Dashlord. Cette amélioration vise à fournir des informations plus récentes et pertinentes sur les bonnes pratiques techniques des sites web analysés.
-
-### Évolutions fonctionnelles
-- Mise à jour du rapport généré par Dashlord (#246f0d5).
+Ce changelog couvre une mise à jour mineure de Dashlord, principalement axée sur la maintenance et la préparation de futurs rapports. Aucune nouvelle fonctionnalité n'a été ajoutée durant cette période.
 
 ### Évolutions techniques
-Aucune évolution technique significative à signaler durant cette période.
+- Mise à jour du workflow de génération de rapports (#1 - implicite via le commit)
 
 ### Autres changements
-Aucun autre changement à signaler.
+- Mise à jour de la configuration pour la génération des rapports.
