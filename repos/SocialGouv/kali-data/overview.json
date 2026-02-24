@@ -2,11 +2,12 @@
   "url": "https://github.com/SocialGouv/kali-data",
   "name": "kali-data",
   "description": "Ce projet fournit un dump JSON régulier des conventions collectives publiées par l'API DILA. Il est destiné à un usage interne et expérimental.",
-  "language": "JavaScript",
+  "language": "TypeScript",
   "features": [
-    "Accès aux conventions collectives",
-    "Recherche d'articles",
-    "Extraction de données conventionnelles"
+    "Accès aux données des conventions collectives",
+    "Recherche d'accords et d'articles",
+    "Gestion des identifiants d'accords (ID et IDCC)",
+    "Navigation dans la structure des accords (sections et articles)"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -19,8 +20,8 @@
   ],
   "components": [
     "API pour l'accès aux données",
-    "Scripts de mise à jour des données",
-    "Données JSON stockées localement"
+    "Structure de données JSON (unist)",
+    "Scripts de mise à jour des données"
   ],
   "auth": {
     "methods": [
@@ -34,7 +35,7 @@
   "workflows": [
     "CI/CD (via GitHub Actions)"
   ],
-  "lastActivity": "2026-02-21T00:00:00Z",
+  "lastActivity": "2026-02-22T00:00:00Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -46,10 +47,12 @@
   },
   "tags": [
     "conventions collectives",
-    "dila",
-    "json",
-    "javascript",
-    "api",
-    "data"
+    "DILA",
+    "API",
+    "JSON",
+    "TypeScript",
+    "France",
+    "travail",
+    "législation"
   ]
 }
