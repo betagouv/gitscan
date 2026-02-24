@@ -4,48 +4,47 @@
   "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
   "language": "JavaScript",
   "features": [
-    "Gestion de rendez-vous",
-    "Synchronisation Caldav",
-    "Rendez-vous collectifs",
+    "Gestion des rendez-vous",
+    "Prise de rendez-vous",
+    "Synchronisation CalDAV",
     "Notifications",
-    "API",
-    "Statistiques d'utilisation"
+    "Statistiques d'utilisation",
+    "Authentification",
+    "Gestion des organisations",
+    "Gestion des agents"
   ],
-  "audience": "Administrations de l’État, Opérateurs de services publics, Collectivités territoriales",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Webpack",
+    "FullCalendar",
     "Bootstrap",
     "Chart.js",
-    "FullCalendar",
-    "Stimulus",
-    "Turbo Rails"
+    "jQuery",
+    "Rails"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Agenda",
-    "Interface d'administration"
+    "Calendrier FullCalendar",
+    "Interface utilisateur Bootstrap"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "email-password"
+      "sso"
     ],
-    "providers": [
-      "ProConnect"
-    ]
+    "providers": []
   },
   "tests": [
-    "Jest",
+    "RSpec",
     "Playwright",
-    "RSpec"
+    "Jest"
   ],
-  "workflows": [
-    "CI/CD avec GitHub Actions"
-  ],
-  "lastActivity": "2026-02-21T11:08:34Z",
+  "workflows": [],
+  "lastActivity": "2026-02-23T18:53:18Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -62,7 +61,7 @@
     "javascript",
     "react",
     "caldav",
-    "api",
-    "rdv"
+    "rdv",
+    "numerique"
   ]
 }
