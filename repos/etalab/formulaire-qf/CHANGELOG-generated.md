@@ -1,7 +1,7 @@
 ## Changelog : formulaire-qf (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes mises à jour du projet formulaire-qf, qui permet de gérer des formulaires administratifs en ligne. Les changements concernent principalement des mises à jour de dépendances pour assurer la sécurité et la stabilité de l'application.
+Ce changelog résume les mises à jour récentes du formulaire-qf. Les modifications concernent principalement des mises à jour de dépendances pour assurer la sécurité et la stabilité de l'application. Aucune nouvelle fonctionnalité ou modification majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
 - Mise à jour de la gem `rack` de la version 3.2.4 à la version 3.2.5 (#310)
