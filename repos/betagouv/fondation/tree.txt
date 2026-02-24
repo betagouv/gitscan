@@ -33,10 +33,8 @@
 │   │   │   ├── ingest-jurisdictions-xml.ts
 │   │   │   └── move-files.ts
 │   │   ├── docs
-│   │   │   ├── adr
-│   │   │   │   └── 2025-10-22-sortie-hexa.md
-│   │   │   └── adr-lolfi
-│   │   │       └── magistrat.md
+│   │   │   └── adr
+│   │   │       └── 2025-10-22-sortie-hexa.md
 │   │   ├── drizzle
 │   │   │   ├── 0000_init_contexts.sql
 │   │   │   ├── 0001_reports_context_nullable_biography.sql
@@ -207,12 +205,15 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260210081728_adds_observation_description
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260217155216_adds_lolfi_ingestion
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
 │   │   │   │   ├── data.prisma
 │   │   │   │   ├── files.prisma
 │   │   │   │   ├── identity.prisma
+│   │   │   │   ├── jobs.prisma
 │   │   │   │   ├── magistrat.prisma
 │   │   │   │   ├── nominations.prisma
 │   │   │   │   ├── observation.prisma
@@ -222,6 +223,17 @@
 │   │   │       ├── detailsMemberRawQuery.sql
 │   │   │       ├── findMagistratExternalIdByFullName.sql
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
+│   │   │       ├── insertAdministrativePositionsRawQuery.sql
+│   │   │       ├── insertCandidateWishesRawQuery.sql
+│   │   │       ├── insertCandidatesRawQuery.sql
+│   │   │       ├── insertFunctionsRawQuery.sql
+│   │   │       ├── insertGradesRawQuery.sql
+│   │   │       ├── insertJurisdictionTypesRawQuery.sql
+│   │   │       ├── insertJurisdictionsRawQuery.sql
+│   │   │       ├── insertLolfiSessionRawQuery.sql
+│   │   │       ├── insertMagistratRawQuery.sql
+│   │   │       ├── insertNominationRawQuery.sql
+│   │   │       ├── insertPositionsRawQuery.sql
 │   │   │       ├── listMemberGardeDesSceauxSessions.sql
 │   │   │       └── listMembersRawQuery.sql
 │   │   ├── prisma.config.ts
@@ -281,6 +293,45 @@
 │   │   │   │   │   ├── openapi.ts
 │   │   │   │   │   ├── pagination.ts
 │   │   │   │   │   └── sorting.ts
+│   │   │   │   ├── ingest
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── requirements.spec.ts
+│   │   │   │   │   │   └── requirements.ts
+│   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   ├── ingest.controller.ts
+│   │   │   │   │   │   ├── ingest.dto.ts
+│   │   │   │   │   │   └── ingest.service.ts
+│   │   │   │   │   ├── ingest-cli.module.ts
+│   │   │   │   │   ├── ingest.module.ts
+│   │   │   │   │   ├── jobs
+│   │   │   │   │   │   ├── child-process-job-runner.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── job-errors.ts
+│   │   │   │   │   │   ├── job-runner.ts
+│   │   │   │   │   │   ├── jobs.module.ts
+│   │   │   │   │   │   ├── scalingo-http.ts
+│   │   │   │   │   │   └── scalingo-job-runner.ts
+│   │   │   │   │   └── services
+│   │   │   │   │       ├── ingestors
+│   │   │   │   │       │   ├── job-file-ingestor.ts
+│   │   │   │   │       │   ├── lolfi-candidats.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-desiderata.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-files.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-fonctions.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-grades.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-ingestor.util.ts
+│   │   │   │   │       │   ├── lolfi-juridiction.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-magistrats.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-posads.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-postes.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-sessions.ingestor.ts
+│   │   │   │   │       │   ├── lolfi-transparences.ingestor.ts
+│   │   │   │   │       │   └── lolfi-type-juridiction.ingestor.ts
+│   │   │   │   │       ├── lolfi-archive-ingest.ts
+│   │   │   │   │       ├── lolfi-job.type.ts
+│   │   │   │   │       ├── lolfi-xml-sax-parser.spec.ts
+│   │   │   │   │       ├── lolfi-xml-sax-parser.ts
+│   │   │   │   │       └── passthrough-hash.ts
 │   │   │   │   ├── maintenance
 │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   ├── cli
@@ -462,6 +513,7 @@
 │   │   │       ├── iterables.ts
 │   │   │       ├── noop.ts
 │   │   │       ├── promises.ts
+│   │   │       ├── result.ts
 │   │   │       ├── time.ts
 │   │   │       └── unaccent.ts
 │   │   ├── test
@@ -918,4 +970,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-173 directories, 747 files
+179 directories, 793 files

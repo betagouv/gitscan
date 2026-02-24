@@ -1,53 +1,49 @@
 {
   "url": "https://github.com/betagouv/fondation",
   "name": "fondation",
-  "description": "Donner au CSM les moyens d'un travail efficace et de qualité afin de concourir à la continuité du fonctionnement de l'institution judiciaire et de contribuer à une RH vertueuse du corps de la magistrature.",
+  "description": "La fondation a pour but de fournir au Conseil Supérieur de la Magistrature les outils nécessaires pour un travail efficace et de qualité, contribuant ainsi au bon fonctionnement de l'institution judiciaire et à une gestion des ressources humaines vertueuse.",
   "language": "TypeScript",
   "features": [
-    "Gestion des observations",
-    "Gestion des fichiers",
     "Gestion des affectations",
-    "Import de fichiers Excel",
-    "Gestion des utilisateurs",
-    "Gestion des rôles et permissions",
-    "Suivi des dossiers",
-    "Génération de rapports"
+    "Gestion des fichiers",
+    "Interface utilisateur",
+    "Authentification",
+    "Génération de rapports",
+    "Import/Export de données (Excel)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "NestJS",
     "React",
+    "NestJS",
     "Prisma",
-    "Zod",
+    "PostgreSQL",
     "axios",
-    "bcrypt",
-    "dotenvx",
-    "tailwindcss",
-    "react-dsfr"
+    "zod",
+    "react-hook-form",
+    "date-fns",
+    "@tanstack/react-query"
   ],
   "components": [
     "Frontend React",
-    "API REST (NestJS)",
+    "Backend NestJS",
     "Base de données PostgreSQL",
-    "S3 Storage",
-    "Authentification JWT"
+    "API REST",
+    "S3 Storage"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "jwt"
-    ],
-    "providers": null
+      "email-password"
+    ]
   },
   "tests": [
     "Jest",
-    "Vitest",
-    "Playwright"
+    "Playwright",
+    "Vitest"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD"
   ],
-  "lastActivity": "2026-02-20T15:52:07+01:00",
+  "lastActivity": "2026-02-23T17:54:05Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -59,11 +55,11 @@
   },
   "tags": [
     "administration",
-    "justice",
     "magistrature",
-    "gestion",
+    "gestion de dossiers",
     "typescript",
+    "react",
     "nestjs",
-    "react"
+    "postgresql"
   ]
 }
