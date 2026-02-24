@@ -1,64 +1,69 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Bhasile (anciennement Place d'asile) est un outil pour piloter le parc de logements pour demandeurs d’asile.",
+  "description": "Bhasile (anciennement Place d'asile) est un outil pour piloter le parc de logements pour demandeurs d’asile. Il permet de gérer les structures, les finances et les conventions associées.",
   "language": "TypeScript",
   "features": [
-    "Gestion des structures",
-    "Gestion des CPOM",
-    "Gestion des adresses",
-    "Gestion des documents financiers",
-    "Suivi des activités",
-    "Gestion des utilisateurs"
+    "Gestion des structures d'hébergement",
+    "Suivi des finances",
+    "Gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation)",
+    "Gestion des documents administratifs",
+    "Import de données (Excel)",
+    "Gestion des utilisateurs et des accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@codegouvfr/react-dsfr",
     "Next.js",
-    "Prisma",
-    "Tailwind CSS",
     "React",
-    "Leaflet"
+    "Prisma",
+    "@codegouvfr/react-dsfr",
+    "TailwindCSS",
+    "PostgreSQL"
   ],
   "components": [
-    "Frontend React",
-    "API REST",
+    "Frontend React/TypeScript",
+    "API REST (Next.js)",
     "Base de données PostgreSQL",
-    "Composants React-DSFR"
+    "Authentification (NextAuth.js)",
+    "Gestion des fichiers (MinIO)"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "sso"
     ],
     "providers": []
   },
   "tests": [
     "Jest",
     "Vitest",
+    "Cypress",
     "Playwright"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-02-20T16:27:29+01:00",
+  "lastActivity": "2026-02-23T17:47:55+00:00",
   "status": "active",
-  "license": "GPL-3.0",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 3,
     "forks": 0,
-    "contributors": null,
-    "openIssues": 6
+    "contributors": 10,
+    "openIssues": 0
   },
   "tags": [
+    "hébergement",
+    "demandeur d'asile",
     "logement",
-    "asile",
-    "administration",
     "gestion",
+    "administration",
+    "finances",
+    "CPOM",
     "React",
     "TypeScript",
-    "Next.js",
-    "Prisma"
+    "Next.js"
   ]
 }
