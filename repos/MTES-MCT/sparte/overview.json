@@ -4,44 +4,49 @@
   "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maitriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard des exigences de la loi climat et résilience, et notamment de la ZAN.",
   "language": "Python",
   "features": [
+    "Analyse de la consommation d'espaces",
     "Analyse de l'artificialisation des sols",
-    "Visualisation des données de logement vacant",
-    "Comparaison de territoires",
+    "Visualisation de données",
     "Génération de rapports",
-    "Suivi des liens sortants"
+    "Suivi de l'évolution du logement vacant",
+    "Analyse du carroyage des sols"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Django",
     "PostgreSQL",
     "Redis",
     "React",
-    "Django",
     "Webpack",
-    "Typescript",
+    "Babel",
+    "TypeScript",
     "Highcharts",
     "Maplibre GL",
     "Celery"
   ],
   "components": [
-    "Backend Python/Django",
+    "Backend Django",
     "Frontend React",
     "Base de données PostgreSQL",
+    "API REST",
     "Serveur d'export PDF",
-    "API REST"
+    "Workflows Celery"
   ],
   "auth": {
     "methods": [
-      "none"
+      "email-password"
     ]
   },
   "tests": [
     "Jest",
     "Pytest"
   ],
-  "workflows": [],
+  "workflows": [
+    "CI/CD (via GitHub Actions)"
+  ],
   "lastActivity": "2026-02-12T18:32:56+01:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -50,12 +55,12 @@
     "openIssues": null
   },
   "tags": [
-    "artificialisation",
+    "artificialisation des sols",
     "consommation d'espaces",
-    "ZAN",
-    "diagnostic territorial",
-    "données environnementales",
     "SIG",
-    "géospatial"
+    "données environnementales",
+    "loi climat et résilience",
+    "ZAN",
+    "urbanisme"
   ]
 }
