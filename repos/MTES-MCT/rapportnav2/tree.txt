@@ -72,7 +72,6 @@
 │   │   │   │                   │   ├── SecurityConfig.kt
 │   │   │   │                   │   ├── SentryConfig.kt
 │   │   │   │                   │   ├── SentryUserContextFilter.kt
-│   │   │   │                   │   ├── SpaCrsfTokenRequestHandler.kt
 │   │   │   │                   │   ├── UseCase.kt
 │   │   │   │                   │   └── WireMockConfig.kt
 │   │   │   │                   ├── domain
@@ -222,6 +221,7 @@
 │   │   │   │                   │   │   │       ├── TargetExternalDataEntity.kt
 │   │   │   │                   │   │   │       └── VesselEntity.kt
 │   │   │   │                   │   │   └── user
+│   │   │   │                   │   │       ├── AuthEventTypeEnum.kt
 │   │   │   │                   │   │       ├── RoleTypeEnum.kt
 │   │   │   │                   │   │       └── UserEntity.kt
 │   │   │   │                   │   ├── exceptions
@@ -253,6 +253,7 @@
 │   │   │   │                   │   │   │           ├── IInquiryRepository.kt
 │   │   │   │                   │   │   │           └── ITargetRepository.kt
 │   │   │   │                   │   │   ├── user
+│   │   │   │                   │   │   │   ├── IAuthenticationAuditRepository.kt
 │   │   │   │                   │   │   │   └── IUserRepository.kt
 │   │   │   │                   │   │   └── v2
 │   │   │   │                   │   │       ├── IEnvAdministrationRepository.kt
@@ -284,13 +285,16 @@
 │   │   │   │                   │   │   │   ├── CreateApiKey.kt
 │   │   │   │                   │   │   │   ├── DisableApiKey.kt
 │   │   │   │                   │   │   │   ├── GetAllApiKeys.kt
+│   │   │   │                   │   │   │   ├── GetApiKeyAuditList.kt
 │   │   │   │                   │   │   │   ├── GetApiKeyAuditLogsForPublicId.kt
 │   │   │   │                   │   │   │   ├── LogApiKeyAudit.kt
 │   │   │   │                   │   │   │   ├── RotateApiKey.kt
 │   │   │   │                   │   │   │   ├── UpdateApiKeyLastUsedAt.kt
 │   │   │   │                   │   │   │   └── ValidateApiKey.kt
 │   │   │   │                   │   │   ├── auth
+│   │   │   │                   │   │   │   ├── GetAuthenticationAuditList.kt
 │   │   │   │                   │   │   │   ├── HashService.kt
+│   │   │   │                   │   │   │   ├── LogAuthenticationAudit.kt
 │   │   │   │                   │   │   │   └── TokenService.kt
 │   │   │   │                   │   │   ├── inquiry
 │   │   │   │                   │   │   │   ├── CreateInquiry.kt
@@ -443,6 +447,12 @@
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
 │   │   │   │                       │   │   ├── UserAdminController.kt
+│   │   │   │                       │   │   ├── adapters
+│   │   │   │                       │   │   │   └── outputs
+│   │   │   │                       │   │   │       ├── ApiKeyAuditOutput.kt
+│   │   │   │                       │   │   │       ├── AuthenticationAuditOutput.kt
+│   │   │   │                       │   │   │       ├── PaginatedApiKeyAuditOutput.kt
+│   │   │   │                       │   │   │       └── PaginatedAuthenticationAuditOutput.kt
 │   │   │   │                       │   │   └── input
 │   │   │   │                       │   │       └── AdminGeneralInfosUpdateInput.kt
 │   │   │   │                       │   ├── auth
@@ -587,6 +597,7 @@
 │   │   │   │                       │   │   │       └── v2
 │   │   │   │                       │   │   │           └── TargetModel.kt
 │   │   │   │                       │   │   └── user
+│   │   │   │                       │   │       ├── AuthenticationAuditModel.kt
 │   │   │   │                       │   │       └── UserModel.kt
 │   │   │   │                       │   └── repositories
 │   │   │   │                       │       ├── apikey
@@ -614,6 +625,7 @@
 │   │   │   │                       │       │   │           ├── IDBInquiryRepository.kt
 │   │   │   │                       │       │   │           └── IDBTargetRepository.kt
 │   │   │   │                       │       │   └── user
+│   │   │   │                       │       │       ├── IDBAuthenticationAuditRepository.kt
 │   │   │   │                       │       │       └── IDBUserRepository.kt
 │   │   │   │                       │       ├── mission
 │   │   │   │                       │       │   ├── JPAMissionNavRepository.kt
@@ -632,6 +644,7 @@
 │   │   │   │                       │       │           ├── JPAInquiryRepository.kt
 │   │   │   │                       │       │           └── JPATargetRepository.kt
 │   │   │   │                       │       └── user
+│   │   │   │                       │           ├── JPAAuthenticationAuditRepository.kt
 │   │   │   │                       │           └── JPAUserRepository.kt
 │   │   │   │                       ├── exceptions
 │   │   │   │                       │   ├── BackendRequestErrorCode.kt
@@ -837,7 +850,8 @@
 │   │   │       │       ├── V1.2026.01.26.14.16__alter_table_general_info_to_add_no_resources.sql
 │   │   │       │       ├── V1.2026.02.11.14.16__mission_source_enum.sql
 │   │   │       │       ├── V1.2026.02.11.16.16__target_mission_source_enum.sql
-│   │   │       │       └── V1.2026.02.17.16.16__user_status.sql
+│   │   │       │       ├── V1.2026.02.17.16.16__user_status.sql
+│   │   │       │       └── V1.2026.02.17.17.00__create_authentication_audit_table.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
 │   │   │       │       ├── migration_mission_action.sql
@@ -876,8 +890,7 @@
 │   │       │                   │   ├── PasswordValidatorTest.kt
 │   │       │                   │   ├── RequestLoggingConfigTest.kt
 │   │       │                   │   ├── SecurityConfigTest.kt
-│   │       │                   │   ├── SentryUserContextFilterTest.kt
-│   │       │                   │   └── SpaCsrfTokenRequestHandlerTest.kt
+│   │       │                   │   └── SentryUserContextFilterTest.kt
 │   │       │                   ├── domain
 │   │       │                   │   ├── entities
 │   │       │                   │   │   ├── PatchMissionInputTest.kt
@@ -944,6 +957,7 @@
 │   │       │                   │   │   │   └── ValidateApiKeyTest.kt
 │   │       │                   │   │   ├── auth
 │   │       │                   │   │   │   ├── HashServiceTest.kt
+│   │       │                   │   │   │   ├── LogAuthenticationAuditTest.kt
 │   │       │                   │   │   │   └── TokenServiceTests.kt
 │   │       │                   │   │   ├── inquiry
 │   │       │                   │   │   │   ├── CreateInquiryTest.kt
@@ -1444,6 +1458,8 @@
 │   │   │   │   │   │   │   ├── admin-basic-item-generic.tsx
 │   │   │   │   │   │   │   ├── admin-general-infos-item.tsx
 │   │   │   │   │   │   │   ├── admin-service-item.tsx
+│   │   │   │   │   │   │   ├── admin-user-apikey-logging-item.tsx
+│   │   │   │   │   │   │   ├── admin-user-auth-logging-item.tsx
 │   │   │   │   │   │   │   └── admin-user-item.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── admin-agent-form.tsx
@@ -1456,6 +1472,7 @@
 │   │   │   │   │   │       └── dialog-form.tsx
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── use-admin-agents-service.tsx
+│   │   │   │   │   │   ├── use-admin-apikey-logging-service.tsx
 │   │   │   │   │   │   ├── use-admin-apikeys-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-agents-role-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-agents-service.tsx
@@ -1474,13 +1491,16 @@
 │   │   │   │   │   │   ├── use-admin-services-service.tsx
 │   │   │   │   │   │   ├── use-admin-update-general-infos.tsx
 │   │   │   │   │   │   ├── use-admin-update-user-password-service.tsx
+│   │   │   │   │   │   ├── use-admin-user-auth-logging-service.tsx
 │   │   │   │   │   │   └── use-admin-user-service.tsx
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── admin-action.ts
 │   │   │   │   │       ├── admin-agent-types.ts
+│   │   │   │   │       ├── admin-apikey-logging-types.ts
 │   │   │   │   │       ├── admin-apikey-types.ts
 │   │   │   │   │       ├── admin-general-infos-types.ts
-│   │   │   │   │       └── admin-services-type.ts
+│   │   │   │   │       ├── admin-services-type.ts
+│   │   │   │   │       └── admin-user-auth-logging-types.ts
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── __tests__
@@ -2231,4 +2251,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-441 directories, 1792 files
+443 directories, 1810 files
