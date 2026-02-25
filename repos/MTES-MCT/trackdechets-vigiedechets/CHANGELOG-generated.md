@@ -1,27 +1,21 @@
-## Changelog : trackdechets-vigiedechets (derniers 30 jours)
+## Changelog : trackdechets-vigiedechets (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Vigiedéchets se concentrent sur l'amélioration de la gestion des entreprises inactives, l'enrichissement des fiches d'inspection avec des informations sur les éco-organismes partenaires, et des corrections pour assurer la stabilité et la précision des données affichées. Des améliorations ont également été apportées à la configuration des workers Celery et aux tests unitaires.
+Les dernières mises à jour de Vigiedéchets se concentrent sur l'amélioration de la présentation des données dans les feuilles de rapport, la correction de requêtes pour utiliser les données les plus récentes, et l'ajout de fonctionnalités pour l'export de données et la visualisation cartographique. Des améliorations ont également été apportées à la configuration des workers Celery.
 
 ### Évolutions fonctionnelles
-- Ajout de l'affichage des partenaires éco-organismes sur les fiches d'inspection et les rapports PDF (#430).
-- Ajout d'un champ "est inactif" pour les entreprises dans le modèle CartoCompany, visible dans l'interface utilisateur (#402, #410).
-- Modification de l'ordre des sections dans les fiches d'inspection pour placer la section ICPE avant les données des bordereaux (#426).
-- Mise à jour du texte d'un message concernant les partenaires éco-organismes pour une meilleure clarté (#434).
-- Mise à jour des statistiques cartographiques pour inclure l'année 2026 (#433).
-- Correction de l'affichage des installations dormantes dans les popups (#411).
-- Correction de la date de fin pour la période "cette année" dans les sélections de dates (#403).
-- Mise à jour du texte d'en-tête pour les tableaux de collections de particuliers (#407).
+- Amélioration de l'affichage des origines des déchets par type BSD dans les feuilles de rapport (#446).
+- Ajout du support pour les adresses email autorisées lors de l'export de données (#443).
+- Ajout de statistiques cumulées annuelles aux rubriques cartographiques (#433).
+- Affichage des partenaires des éco-organismes dans les feuilles de rapport et les PDF (#430).
+- Correction de la ponctuation dans le message concernant les partenaires des éco-organismes (#434).
+- Modification de l'ordre des sections dans les feuilles de rapport, plaçant la section ICPE avant les données des bordereaux (#426).
+- Correction de la fonction `build_stats` pour actualiser correctement la carte ICPE (#432).
 
 ### Évolutions techniques
-- Ajout de paramètres de configuration supplémentaires pour les workers Celery afin d'optimiser leur fonctionnement (#424).
-- Correction d'un problème de concurrence des workers Celery en ajoutant des limites de concurrence pour éviter l'épuisement des threads (revert d'une modification précédente puis réimplémentation avec des limites) (#420, #401).
-- Dépendance Kaleido rétrogradée à la version 0.2.1 pour corriger des problèmes de compatibilité (#420).
-- Mise à jour du buildpack Heroku pour utiliser la version 22 (#410).
-- Correction d'une requête SQL pour utiliser le nom de table actuel dans le schéma (#402).
-- Ajout de filtres de date pour le traitement des données ICPE (#404).
+- Correction des requêtes pour utiliser les tables `latest_registry_*` pour toutes les données du registre (NDW, terres excavées, SSD) (#445).
+- Modification du champ `size` dans le modèle `DataExport` pour utiliser `PositiveBigIntegerField` (#436).
+- Ajout de paramètres de configuration supplémentaires pour les workers Celery (#424).
 
 ### Autres changements
-- Ajout de tests unitaires pour les processeurs HTML et Plotly (#405, #406).
-- Ajout de champs manquants pour les détails des exploitants et des émetteurs dans le schéma d'extraction de données (#409).
-- Intégration de la documentation d'utilisation (#385).
+- Rien à signaler.
