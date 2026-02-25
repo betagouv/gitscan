@@ -143,6 +143,7 @@
 │   │   │   │   ├── S3FileData.ts
 │   │   │   │   ├── ScdlDataIntegration.ts
 │   │   │   │   ├── TsoaApiError.ts
+│   │   │   │   ├── WinstonLog.ts
 │   │   │   │   ├── cron.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── utils.ts
@@ -166,21 +167,21 @@
 │   │   │   ├── dataProviders
 │   │   │   │   ├── api
 │   │   │   │   │   ├── dataBretagne
-│   │   │   │   │   │   ├── DataBretagneAdapter.test.ts
-│   │   │   │   │   │   ├── DataBretagneAdapter.ts
 │   │   │   │   │   │   ├── DataBretagneDto.ts
 │   │   │   │   │   │   ├── DataBretagneValidator.test.ts
 │   │   │   │   │   │   ├── DataBretagneValidator.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── DataBretagne.fixture.ts
+│   │   │   │   │   │   ├── data-bretagne.mapper.test.ts
+│   │   │   │   │   │   ├── data-bretagne.mapper.ts
 │   │   │   │   │   │   ├── dataBretagne.port.test.ts
 │   │   │   │   │   │   └── dataBretagne.port.ts
 │   │   │   │   │   ├── rechercheEntreprises
-│   │   │   │   │   │   ├── RechercheEntreprisesAdapter.test.ts
-│   │   │   │   │   │   ├── RechercheEntreprisesAdapter.ts
 │   │   │   │   │   │   ├── RechercheEntreprisesDto.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── RechercheEntreprises.ts
+│   │   │   │   │   │   ├── recherche-entreprises.mapper.test.ts
+│   │   │   │   │   │   ├── recherche-entreprises.mapper.ts
 │   │   │   │   │   │   ├── rechercheEntreprises.port.test.ts
 │   │   │   │   │   │   ├── rechercheEntreprises.port.ts
 │   │   │   │   │   │   ├── rechercheEntreprises.service.test.ts
@@ -206,10 +207,10 @@
 │   │   │   │   │   │   └── amountVSProgramRegion
 │   │   │   │   │   │       └── amountsVsProgramRegion.port.ts
 │   │   │   │   │   ├── deposit-log
-│   │   │   │   │   │   ├── DepositLog.adapter.test.ts
-│   │   │   │   │   │   ├── DepositLog.adapter.ts
 │   │   │   │   │   │   ├── DepositScdlLogDbo.ts
 │   │   │   │   │   │   ├── UploadedFileInfosDbo.ts
+│   │   │   │   │   │   ├── deposit-log.mapper.test.ts
+│   │   │   │   │   │   ├── deposit-log.mapper.ts
 │   │   │   │   │   │   ├── depositLog.port.test.ts
 │   │   │   │   │   │   └── depositLog.port.ts
 │   │   │   │   │   ├── dump
@@ -223,9 +224,9 @@
 │   │   │   │   │   │   ├── paymentFlat.port.test.ts
 │   │   │   │   │   │   └── paymentFlat.port.ts
 │   │   │   │   │   ├── provider-request
-│   │   │   │   │   │   ├── ProviderRequestLog.adapter.test.ts
-│   │   │   │   │   │   ├── ProviderRequestLog.adapter.ts
 │   │   │   │   │   │   ├── ProviderRequestLogDbo.ts
+│   │   │   │   │   │   ├── provider-request-log.mapper.test.ts
+│   │   │   │   │   │   ├── provider-request-log.mapper.ts
 │   │   │   │   │   │   ├── providerRequest.port.test.ts
 │   │   │   │   │   │   └── providerRequest.port.ts
 │   │   │   │   │   ├── providers
@@ -256,11 +257,11 @@
 │   │   │   │   │   │   ├── gispro.port.ts
 │   │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── osiris-action.mapper.ts
 │   │   │   │   │   │   │   ├── osiris.action.port.test.ts
 │   │   │   │   │   │   │   ├── osiris.action.port.ts
 │   │   │   │   │   │   │   ├── osiris.joiner.ts
-│   │   │   │   │   │   │   ├── osiris.request.port.ts
-│   │   │   │   │   │   │   └── osirisAction.adapter.ts
+│   │   │   │   │   │   │   └── osiris.request.port.ts
 │   │   │   │   │   │   ├── scdl
 │   │   │   │   │   │   │   ├── miscScdl.joiner.ts
 │   │   │   │   │   │   │   ├── miscScdlGrant.port.ts
@@ -269,8 +270,8 @@
 │   │   │   │   │   │       ├── subventia.port.test.ts
 │   │   │   │   │   │       └── subventia.port.ts
 │   │   │   │   │   ├── rnaSiren
-│   │   │   │   │   │   ├── RnaSiren.adapter.ts
 │   │   │   │   │   │   ├── RnaSirenDbo.ts
+│   │   │   │   │   │   ├── rna-siren.mapper.ts
 │   │   │   │   │   │   └── rnaSiren.port.ts
 │   │   │   │   │   ├── search
 │   │   │   │   │   │   ├── search.port.ts
@@ -279,12 +280,12 @@
 │   │   │   │   │   │   └── stockUniteLegale
 │   │   │   │   │   │       └── sireneStockUniteLegale.port.ts
 │   │   │   │   │   ├── state-budget-program
-│   │   │   │   │   │   ├── StateBudgetProgram.adapter.test.ts
-│   │   │   │   │   │   ├── StateBudgetProgram.adapter.ts
 │   │   │   │   │   │   ├── StateBudgetProgramDbo.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   ├── StateBudgetProgramDbo.fixture.ts
 │   │   │   │   │   │   │   └── StateBudgetProgramEntities.fixture.ts
+│   │   │   │   │   │   ├── state-budget-program.mapper.test.ts
+│   │   │   │   │   │   ├── state-budget-program.mapper.ts
 │   │   │   │   │   │   ├── stateBudgetProgram.port.test.ts
 │   │   │   │   │   │   └── stateBudgetProgram.port.ts
 │   │   │   │   │   ├── stats
@@ -292,17 +293,18 @@
 │   │   │   │   │   │   │   └── VisitsGroupByAssociationIdentifier.json
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── statsUniqueVisitByDay.port.test.ts.snap
+│   │   │   │   │   │   ├── logs.port.test.ts
 │   │   │   │   │   │   ├── logs.port.ts
 │   │   │   │   │   │   ├── statsAssociationsVisit.port.ts
 │   │   │   │   │   │   ├── statsUniqueVisitByDay.port.test.ts
 │   │   │   │   │   │   └── statsUniqueVisitByDay.port.ts
 │   │   │   │   │   ├── uniteLegalEntreprise
-│   │   │   │   │   │   ├── UniteLegalEntreprise.adapter.ts
 │   │   │   │   │   │   ├── UniteLegalEntrepriseDbo.ts
+│   │   │   │   │   │   ├── unite-legal-entreprise.mapper.ts
 │   │   │   │   │   │   └── uniteLegalEntreprise.port.ts
 │   │   │   │   │   ├── uniteLegalName
-│   │   │   │   │   │   ├── UniteLegalName.adapter.ts
 │   │   │   │   │   │   ├── UniteLegalNameDbo.ts
+│   │   │   │   │   │   ├── unite-legal-name.mapper.ts
 │   │   │   │   │   │   └── uniteLegalName.port.ts
 │   │   │   │   │   └── user
 │   │   │   │   │       ├── UserDbo.ts
@@ -323,17 +325,19 @@
 │   │   │   │   ├── sse.methods.decorator.ts
 │   │   │   │   └── staticImplements.decorator.ts
 │   │   │   ├── entities
-│   │   │   │   ├── ApplicationFlatEntity.ts
 │   │   │   │   ├── DomaineFonctionnelEntity.ts
 │   │   │   │   ├── GrantFlatEntity.ts
 │   │   │   │   ├── MinistryEntity.ts
-│   │   │   │   ├── PaymentFlatEntity.ts
 │   │   │   │   ├── RefProgrammationEntity.ts
 │   │   │   │   ├── RnaSirenEntity.ts
 │   │   │   │   ├── SireneStockUniteLegaleEntity.ts
 │   │   │   │   ├── StateBudgetProgramEntity.ts
 │   │   │   │   ├── UniteLegalEntrepriseEntity.ts
-│   │   │   │   └── UniteLegalNameEntity.ts
+│   │   │   │   ├── UniteLegalNameEntity.ts
+│   │   │   │   └── flats
+│   │   │   │       ├── ApplicationFlatEntity.ts
+│   │   │   │       ├── FlatEntity.ts
+│   │   │   │       └── PaymentFlatEntity.ts
 │   │   │   ├── example.test.ts
 │   │   │   ├── identifierObjects
 │   │   │   │   ├── @types
@@ -429,7 +433,8 @@
 │   │   │   │       ├── Search.http.ts
 │   │   │   │       ├── Tools.http.test.ts
 │   │   │   │       ├── Tools.http.ts
-│   │   │   │       └── User.http.ts
+│   │   │   │       ├── User.http.ts
+│   │   │   │       └── admin.http.test.ts
 │   │   │   ├── middlewares
 │   │   │   │   ├── AssetsMiddleware.ts
 │   │   │   │   ├── BodyParserMiddleware.ts
@@ -462,13 +467,13 @@
 │   │   │   │   ├── applicationFlat
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── applicationFlatProvider.ts
-│   │   │   │   │   ├── ApplicationFlatAdapter.test.ts
-│   │   │   │   │   ├── ApplicationFlatAdapter.ts
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── ApplicationFlatAdapter.test.ts.snap
+│   │   │   │   │   │   ├── application-flat.mapper.test.ts.snap
 │   │   │   │   │   │   └── applicationFlat.service.test.ts.snap
+│   │   │   │   │   ├── application-flat.mapper.test.ts
+│   │   │   │   │   ├── application-flat.mapper.ts
 │   │   │   │   │   ├── applicationFlat.helper.test.ts
 │   │   │   │   │   ├── applicationFlat.helper.ts
 │   │   │   │   │   ├── applicationFlat.service.test.ts
@@ -480,12 +485,12 @@
 │   │   │   │   ├── association-name
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   └── AssociationName.ts
-│   │   │   │   │   ├── adapters
-│   │   │   │   │   │   └── AssociationNameAdapter.ts
 │   │   │   │   │   ├── associationName.service.test.ts
 │   │   │   │   │   ├── associationName.service.ts
-│   │   │   │   │   └── entities
-│   │   │   │   │       └── AssociationNameEntity.ts
+│   │   │   │   │   ├── entities
+│   │   │   │   │   │   └── AssociationNameEntity.ts
+│   │   │   │   │   └── mappers
+│   │   │   │   │       └── association-name.mapper.ts
 │   │   │   │   ├── associations
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── AssociationsProvider.ts
@@ -503,10 +508,10 @@
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── data-log
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── dataLog.adapter.test.ts.snap
+│   │   │   │   │   │   ├── data-log.mapper.test.ts.snap
 │   │   │   │   │   │   └── dataLog.service.test.ts.snap
-│   │   │   │   │   ├── dataLog.adapter.test.ts
-│   │   │   │   │   ├── dataLog.adapter.ts
+│   │   │   │   │   ├── data-log.mapper.test.ts
+│   │   │   │   │   ├── data-log.mapper.ts
 │   │   │   │   │   ├── dataLog.service.test.ts
 │   │   │   │   │   ├── dataLog.service.ts
 │   │   │   │   │   └── entities
@@ -516,9 +521,9 @@
 │   │   │   │   │   └── amountsVsProgramRegion
 │   │   │   │   │       ├── __fixtures__
 │   │   │   │   │       │   └── amountsVSProgramRegion.fixture.ts
-│   │   │   │   │       ├── amountsVSProgramRegion.adapter.test.ts
+│   │   │   │   │       ├── amounts-vs-program-region.mapper.test.ts
+│   │   │   │   │       ├── amounts-vs-program-region.mapper.ts
 │   │   │   │   │       ├── amountsVSProgramRegion.service.test.ts
-│   │   │   │   │       ├── amountsVsProgramRegion.adapter.ts
 │   │   │   │   │       ├── amountsVsProgramRegion.service.ts
 │   │   │   │   │       └── entitiyAndDbo
 │   │   │   │   │           ├── amountsVsProgramRegion.dbo.ts
@@ -531,8 +536,8 @@
 │   │   │   │   │   ├── check
 │   │   │   │   │   │   ├── DepositScdlProcess.check.service.test.ts
 │   │   │   │   │   │   └── DepositScdlProcess.check.service.ts
-│   │   │   │   │   ├── depositScdlLog.dto.adapter.test.ts
-│   │   │   │   │   ├── depositScdlLog.dto.adapter.ts
+│   │   │   │   │   ├── deposit-scdl-log.dto.mapper.test.ts
+│   │   │   │   │   ├── deposit-scdl-log.dto.mapper.ts
 │   │   │   │   │   ├── depositScdlProcess.service.test.ts
 │   │   │   │   │   ├── depositScdlProcess.service.ts
 │   │   │   │   │   ├── entities
@@ -544,7 +549,7 @@
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── DocumentsProvider.ts
-│   │   │   │   │   ├── document.adapter.ts
+│   │   │   │   │   ├── document.mapper.ts
 │   │   │   │   │   ├── documents.service.test.ts
 │   │   │   │   │   └── documents.service.ts
 │   │   │   │   ├── dump
@@ -559,8 +564,8 @@
 │   │   │   │   ├── establishments
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── EstablishmentProvider.ts
-│   │   │   │   │   ├── EstablishmentAdapter.test.ts
-│   │   │   │   │   ├── EstablishmentAdapter.ts
+│   │   │   │   │   ├── establishment.mapper.test.ts
+│   │   │   │   │   ├── establishment.mapper.ts
 │   │   │   │   │   ├── establishment.service.test.ts
 │   │   │   │   │   └── establishment.service.ts
 │   │   │   │   ├── grant
@@ -569,11 +574,11 @@
 │   │   │   │   │   │   ├── GrantToExtract.ts
 │   │   │   │   │   │   └── rawGrant.ts
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   └── grant.adapter.test.ts.snap
+│   │   │   │   │   │   └── grant.mapper.test.ts.snap
 │   │   │   │   │   ├── commonGrant.service.test.ts
 │   │   │   │   │   ├── commonGrant.service.ts
-│   │   │   │   │   ├── grant.adapter.test.ts
-│   │   │   │   │   ├── grant.adapter.ts
+│   │   │   │   │   ├── grant.mapper.test.ts
+│   │   │   │   │   ├── grant.mapper.ts
 │   │   │   │   │   ├── grant.service.test.ts
 │   │   │   │   │   ├── grant.service.ts
 │   │   │   │   │   ├── grantExtract.service.test.ts
@@ -605,14 +610,14 @@
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   └── paymentFlatEntity.fixture.ts
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── paymentFlat.service.test.ts.snap
-│   │   │   │   │   │   └── paymentFlatAdapter.test.ts.snap
+│   │   │   │   │   │   ├── payment-flat.mapper.test.ts.snap
+│   │   │   │   │   │   └── paymentFlat.service.test.ts.snap
+│   │   │   │   │   ├── payment-flat.mapper.test.ts
+│   │   │   │   │   ├── payment-flat.mapper.ts
 │   │   │   │   │   ├── paymentFlat.chorus.service.test.ts
 │   │   │   │   │   ├── paymentFlat.chorus.service.ts
 │   │   │   │   │   ├── paymentFlat.service.test.ts
-│   │   │   │   │   ├── paymentFlat.service.ts
-│   │   │   │   │   ├── paymentFlatAdapter.test.ts
-│   │   │   │   │   └── paymentFlatAdapter.ts
+│   │   │   │   │   └── paymentFlat.service.ts
 │   │   │   │   ├── payments
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── PaymentProvider.ts
@@ -622,11 +627,11 @@
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   ├── RequestConfig.ts
 │   │   │   │   │   │   └── RequestResponse.ts
-│   │   │   │   │   ├── adapters
-│   │   │   │   │   │   ├── RequestConfigAdapter.ts
-│   │   │   │   │   │   └── RequestResponseAdapter.ts
 │   │   │   │   │   ├── entities
 │   │   │   │   │   │   └── ProviderRequestLog.ts
+│   │   │   │   │   ├── mappers
+│   │   │   │   │   │   ├── request-config.mapper.ts
+│   │   │   │   │   │   └── request-response.mapper.ts
 │   │   │   │   │   ├── providerRequest.service.test.ts
 │   │   │   │   │   └── providerRequest.service.ts
 │   │   │   │   ├── providers
@@ -646,39 +651,39 @@
 │   │   │   │   │   │   │   ├── DtoDocumentFixture.ts
 │   │   │   │   │   │   │   ├── RnaStructureFixture.ts
 │   │   │   │   │   │   │   └── SirenStructureFixture.ts
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── ApiAssoDtoAdapter.test.ts
-│   │   │   │   │   │   │   ├── ApiAssoDtoAdapter.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       └── ApiAssoDtoAdapter.test.ts.snap
 │   │   │   │   │   │   ├── apiAsso.service.test.ts
 │   │   │   │   │   │   ├── apiAsso.service.ts
-│   │   │   │   │   │   └── dto
-│   │   │   │   │   │       ├── RnaStructureDto.ts
-│   │   │   │   │   │       ├── SirenStructureDto.ts
-│   │   │   │   │   │       └── StructureDto.ts
+│   │   │   │   │   │   ├── dto
+│   │   │   │   │   │   │   ├── RnaStructureDto.ts
+│   │   │   │   │   │   │   ├── SirenStructureDto.ts
+│   │   │   │   │   │   │   └── StructureDto.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── api-asso-dto.mapper.test.ts.snap
+│   │   │   │   │   │       ├── api-asso-dto.mapper.test.ts
+│   │   │   │   │   │       └── api-asso-dto.mapper.ts
 │   │   │   │   │   ├── apiEntreprise
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── ApiEntrepriseExtraitRcs.ts
 │   │   │   │   │   │   │   └── ApiEntrepriseHeadcount.ts
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── ApiEntrepriseAdapter.test.ts
-│   │   │   │   │   │   │   └── ApiEntrepriseAdapter.ts
 │   │   │   │   │   │   ├── apiEntreprise.service.test.ts
-│   │   │   │   │   │   └── apiEntreprise.service.ts
+│   │   │   │   │   │   ├── apiEntreprise.service.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── api-entreprise.mapper.test.ts
+│   │   │   │   │   │       └── api-entreprise.mapper.ts
 │   │   │   │   │   ├── avisSituationInsee
 │   │   │   │   │   │   ├── avisSituationInsee.service.test.ts
 │   │   │   │   │   │   └── avisSituationInsee.service.ts
 │   │   │   │   │   ├── bodacc
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   │   └── bodacc.adapter.test.ts.snap
-│   │   │   │   │   │   │   ├── bodacc.adapter.test.ts
-│   │   │   │   │   │   │   └── bodacc.adapter.ts
 │   │   │   │   │   │   ├── bodacc.service.test.ts
 │   │   │   │   │   │   ├── bodacc.service.ts
-│   │   │   │   │   │   └── dto
-│   │   │   │   │   │       └── BodaccDto.ts
+│   │   │   │   │   │   ├── dto
+│   │   │   │   │   │   │   └── BodaccDto.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── bodacc.mapper.test.ts.snap
+│   │   │   │   │   │       ├── bodacc.mapper.test.ts
+│   │   │   │   │   │       └── bodacc.mapper.ts
 │   │   │   │   │   ├── chorus
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── ChorusIndexedInformations.ts
@@ -688,18 +693,18 @@
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── ChorusFixtures.ts
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── ChorusAdapter.test.ts
-│   │   │   │   │   │   │   ├── ChorusAdapter.ts
-│   │   │   │   │   │   │   ├── ChorusRegionMapping.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       └── ChorusAdapter.test.ts.snap
 │   │   │   │   │   │   ├── chorus.parser.test.ts
 │   │   │   │   │   │   ├── chorus.parser.ts
 │   │   │   │   │   │   ├── chorus.service.test.ts
 │   │   │   │   │   │   ├── chorus.service.ts
-│   │   │   │   │   │   └── entities
-│   │   │   │   │   │       └── ChorusLineEntity.ts
+│   │   │   │   │   │   ├── entities
+│   │   │   │   │   │   │   └── ChorusLineEntity.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── ChorusRegionMapping.ts
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── chorus.mapper.test.ts.snap
+│   │   │   │   │   │       ├── chorus.mapper.test.ts
+│   │   │   │   │   │       └── chorus.mapper.ts
 │   │   │   │   │   ├── dataBretagne
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   └── DataBretagne.ts
@@ -714,11 +719,6 @@
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   ├── dauphin.flat.service.test.ts.snap
 │   │   │   │   │   │   │   └── dauphin.service.test.ts.snap
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── DauphinDtoAdapter.test.ts
-│   │   │   │   │   │   │   ├── DauphinDtoAdapter.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       └── DauphinDtoAdapter.test.ts.snap
 │   │   │   │   │   │   ├── dauphin.flat.service.test.ts
 │   │   │   │   │   │   ├── dauphin.flat.service.ts
 │   │   │   │   │   │   ├── dauphin.service.test.ts
@@ -729,21 +729,18 @@
 │   │   │   │   │   │   ├── gispro.parser.test.ts
 │   │   │   │   │   │   ├── gispro.parser.ts
 │   │   │   │   │   │   ├── gispro.service.test.ts
-│   │   │   │   │   │   └── gispro.service.ts
+│   │   │   │   │   │   ├── gispro.service.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── dauphin-dto.mapper.test.ts.snap
+│   │   │   │   │   │       ├── dauphin-dto.mapper.test.ts
+│   │   │   │   │   │       └── dauphin-dto.mapper.ts
 │   │   │   │   │   ├── demarchesSimplifiees
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── DemarchesSimplifieesFixture.ts
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── demarchesSimplifiees.service.test.ts.snap
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── DemarchesSimplifieesDtoAdapter.test.ts
-│   │   │   │   │   │   │   ├── DemarchesSimplifieesDtoAdapter.ts
-│   │   │   │   │   │   │   ├── DemarchesSimplifieesEntityAdapter.test.ts
-│   │   │   │   │   │   │   ├── DemarchesSimplifieesEntityAdapter.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       ├── DemarchesSimplifieesDtoAdapter.test.ts.snap
-│   │   │   │   │   │   │       └── DemarchesSimplifieesEntityAdapter.test.ts.snap
 │   │   │   │   │   │   ├── demarchesSimplifiees.service.test.ts
 │   │   │   │   │   │   ├── demarchesSimplifiees.service.ts
 │   │   │   │   │   │   ├── dto
@@ -752,6 +749,14 @@
 │   │   │   │   │   │   │   ├── DemarchesSimplifieesDataEntity.ts
 │   │   │   │   │   │   │   ├── DemarchesSimplifieesSchema.ts
 │   │   │   │   │   │   │   └── DemarchesSimplifieesSchemaSeed.ts
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   ├── demarches-simplifiees-dto.mapper.test.ts.snap
+│   │   │   │   │   │   │   │   └── demarches-simplifiees-entity.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── demarches-simplifiees-dto.mapper.test.ts
+│   │   │   │   │   │   │   ├── demarches-simplifiees-dto.mapper.ts
+│   │   │   │   │   │   │   ├── demarches-simplifiees-entity.mapper.test.ts
+│   │   │   │   │   │   │   └── demarches-simplifiees-entity.mapper.ts
 │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   └── GetDossiersByDemarcheId.ts
 │   │   │   │   │   │   ├── schemaSeeds
@@ -770,11 +775,6 @@
 │   │   │   │   │   │   │   └── fonjepEntities.ts
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── fonjep.service.test.ts.snap
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── FonjepEntityAdapter.test.ts
-│   │   │   │   │   │   │   ├── FonjepEntityAdapter.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       └── FonjepEntityAdapter.test.ts.snap
 │   │   │   │   │   │   ├── entities
 │   │   │   │   │   │   │   ├── FonjepDispositifEntity.ts
 │   │   │   │   │   │   │   ├── FonjepFlatEntity.ts
@@ -785,7 +785,12 @@
 │   │   │   │   │   │   ├── fonjep.parser.test.ts
 │   │   │   │   │   │   ├── fonjep.parser.ts
 │   │   │   │   │   │   ├── fonjep.service.test.ts
-│   │   │   │   │   │   └── fonjep.service.ts
+│   │   │   │   │   │   ├── fonjep.service.ts
+│   │   │   │   │   │   └── mappers
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── fonjep-entity.mapper.test.ts.snap
+│   │   │   │   │   │       ├── fonjep-entity.mapper.test.ts
+│   │   │   │   │   │       └── fonjep-entity.mapper.ts
 │   │   │   │   │   ├── geoApi
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   └── geo.types.ts
@@ -804,23 +809,23 @@
 │   │   │   │   │   │   │   └── osiris.request.fixtures.ts
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── osiris.parser.test.ts.snap
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── OsirisRequestAdapter.test.ts
-│   │   │   │   │   │   │   ├── OsirisRequestAdapter.ts
-│   │   │   │   │   │   │   └── __snapshots__
-│   │   │   │   │   │   │       └── OsirisRequestAdapter.test.ts.snap
 │   │   │   │   │   │   ├── entities
 │   │   │   │   │   │   │   ├── OsirisActionEntity.ts
 │   │   │   │   │   │   │   └── OsirisRequestEntity.ts
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── osiris-request.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── osiris-request.mapper.test.ts
+│   │   │   │   │   │   │   └── osiris-request.mapper.ts
 │   │   │   │   │   │   ├── osiris.migrations.ts
 │   │   │   │   │   │   ├── osiris.parser.test.ts
 │   │   │   │   │   │   ├── osiris.parser.ts
 │   │   │   │   │   │   ├── osiris.service.test.ts
 │   │   │   │   │   │   └── osiris.service.ts
-│   │   │   │   │   ├── providers.adapter.test.ts
-│   │   │   │   │   ├── providers.adapter.ts
 │   │   │   │   │   ├── providers.helper.test.ts
 │   │   │   │   │   ├── providers.helper.ts
+│   │   │   │   │   ├── providers.mapper.test.ts
+│   │   │   │   │   ├── providers.mapper.ts
 │   │   │   │   │   ├── scdl
 │   │   │   │   │   │   ├── @types
 │   │   │   │   │   │   │   ├── MissingHeaders.ts
@@ -851,14 +856,14 @@
 │   │   │   │   │   │   │   └── SCDL_WITH_EXERCICE_ALT.xlsx
 │   │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   │   └── scdl.grant.parser.test.ts.snap
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   └── MiscScdl.adapter.ts
 │   │   │   │   │   │   ├── dbo
 │   │   │   │   │   │   │   └── ScdlGrantDbo.ts
 │   │   │   │   │   │   ├── entities
 │   │   │   │   │   │   │   ├── MiscScdlGrantEntity.ts
 │   │   │   │   │   │   │   ├── MiscScdlGrantProducerEntity.ts
 │   │   │   │   │   │   │   └── MiscScdlProducerEntity.ts
+│   │   │   │   │   │   ├── mappers
+│   │   │   │   │   │   │   └── misc-scdl.mapper.ts
 │   │   │   │   │   │   ├── scdl.grant.parser.test.ts
 │   │   │   │   │   │   ├── scdl.grant.parser.ts
 │   │   │   │   │   │   ├── scdl.grant.service.test.ts
@@ -875,11 +880,11 @@
 │   │   │   │   │   │       ├── @types
 │   │   │   │   │   │       │   ├── SireneUniteLegaleDbo.ts
 │   │   │   │   │   │       │   └── SireneUniteLegaleDto.ts
-│   │   │   │   │   │       ├── adapter
+│   │   │   │   │   │       ├── mappers
 │   │   │   │   │   │       │   ├── __snapshots__
-│   │   │   │   │   │       │   │   └── sireneStockUniteLegale.adapter.test.ts.snap
-│   │   │   │   │   │       │   ├── sireneStockUniteLegale.adapter.test.ts
-│   │   │   │   │   │       │   └── sireneStockUniteLegale.adapter.ts
+│   │   │   │   │   │       │   │   └── sirene-stock-unite-legale.mapper.test.ts.snap
+│   │   │   │   │   │       │   ├── sirene-stock-unite-legale.mapper.test.ts
+│   │   │   │   │   │       │   └── sirene-stock-unite-legale.mapper.ts
 │   │   │   │   │   │       ├── parser
 │   │   │   │   │   │       │   ├── sireneStockUniteLegale.parser.test.ts
 │   │   │   │   │   │       │   └── sireneStockUniteLegale.parser.ts
@@ -897,11 +902,11 @@
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   ├── SUBVENTIA.xlsx
 │   │   │   │   │   │   │   └── subventia.fixture.ts
-│   │   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── mappers
 │   │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   │   └── subventia.adapter.test.ts.snap
-│   │   │   │   │   │   │   ├── subventia.adapter.test.ts
-│   │   │   │   │   │   │   └── subventia.adapter.ts
+│   │   │   │   │   │   │   │   └── subventia.mapper.test.ts.snap
+│   │   │   │   │   │   │   ├── subventia.mapper.test.ts
+│   │   │   │   │   │   │   └── subventia.mapper.ts
 │   │   │   │   │   │   ├── subventia.parser.test.ts
 │   │   │   │   │   │   ├── subventia.parser.ts
 │   │   │   │   │   │   ├── subventia.service.test.ts
@@ -927,13 +932,16 @@
 │   │   │   │   │   │   ├── BudgetLine.ts
 │   │   │   │   │   │   ├── LegalInformations.ts
 │   │   │   │   │   │   └── ProviderInformations.ts
-│   │   │   │   │   ├── adapters
-│   │   │   │   │   │   └── AssociationNameDtoAdapter.ts
+│   │   │   │   │   ├── mappers
+│   │   │   │   │   │   └── association-name-dto.mapper.ts
 │   │   │   │   │   ├── search.service.test.ts
 │   │   │   │   │   └── search.service.ts
 │   │   │   │   ├── stats
 │   │   │   │   │   ├── @types
-│   │   │   │   │   │   └── GroupAssociationVisits.ts
+│   │   │   │   │   │   ├── GroupAssociationVisits.ts
+│   │   │   │   │   │   └── RouteTypesEnum.ts
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── stats.service.test.ts.snap
 │   │   │   │   │   ├── entities
 │   │   │   │   │   │   ├── AssociationVisitEntity.ts
 │   │   │   │   │   │   └── UserWithAssociationVisitsEntity.ts
@@ -1031,9 +1039,6 @@
 │   │   │       │   └── EventManager.ts
 │   │   │       ├── __snapshots__
 │   │   │       │   └── GenericParser.test.ts.snap
-│   │   │       ├── adapters
-│   │   │       │   ├── ProviderValueAdapter.test.ts
-│   │   │       │   └── ProviderValueAdapter.ts
 │   │   │       ├── errors
 │   │   │       │   ├── MongoCnxError.ts
 │   │   │       │   ├── cliErrors
@@ -1042,38 +1047,41 @@
 │   │   │       │   │   └── OutOfRangeDateError.ts
 │   │   │       │   └── dbError
 │   │   │       │       └── DuplicateIndexError.ts
-│   │   │       └── helpers
-│   │   │           ├── ArrayHelper.test.ts
-│   │   │           ├── ArrayHelper.ts
-│   │   │           ├── CliHelper.test.ts
-│   │   │           ├── CliHelper.ts
-│   │   │           ├── DataFormatHelper.ts
-│   │   │           ├── DateHelper.test.ts
-│   │   │           ├── DateHelper.ts
-│   │   │           ├── FileHelper.test.ts
-│   │   │           ├── FileHelper.ts
-│   │   │           ├── FormaterHelper.test.ts
-│   │   │           ├── FormaterHelper.ts
-│   │   │           ├── HttpHelper.test.ts
-│   │   │           ├── HttpHelper.ts
-│   │   │           ├── LogHelper.ts
-│   │   │           ├── MongoHelper.test.ts
-│   │   │           ├── MongoHelper.ts
-│   │   │           ├── NumberHelper.test.ts
-│   │   │           ├── NumberHelper.ts
-│   │   │           ├── ObjectHelper.test.ts
-│   │   │           ├── ObjectHelper.ts
-│   │   │           ├── PortHelper.test.ts
-│   │   │           ├── PortHelper.ts
-│   │   │           ├── StringHelper.test.ts
-│   │   │           ├── StringHelper.ts
-│   │   │           ├── TimeHelper.ts
-│   │   │           ├── UserHelper.test.ts
-│   │   │           ├── UserHelper.ts
-│   │   │           ├── WaitHelper.ts
-│   │   │           ├── __snapshots__
-│   │   │           │   └── PortHelper.test.ts.snap
-│   │   │           └── validation.helper.ts
+│   │   │       ├── helpers
+│   │   │       │   ├── ArrayHelper.test.ts
+│   │   │       │   ├── ArrayHelper.ts
+│   │   │       │   ├── CliHelper.test.ts
+│   │   │       │   ├── CliHelper.ts
+│   │   │       │   ├── DataFormatHelper.ts
+│   │   │       │   ├── DateHelper.test.ts
+│   │   │       │   ├── DateHelper.ts
+│   │   │       │   ├── FileHelper.test.ts
+│   │   │       │   ├── FileHelper.ts
+│   │   │       │   ├── FormaterHelper.test.ts
+│   │   │       │   ├── FormaterHelper.ts
+│   │   │       │   ├── HttpHelper.test.ts
+│   │   │       │   ├── HttpHelper.ts
+│   │   │       │   ├── LogHelper.ts
+│   │   │       │   ├── MongoHelper.test.ts
+│   │   │       │   ├── MongoHelper.ts
+│   │   │       │   ├── NumberHelper.test.ts
+│   │   │       │   ├── NumberHelper.ts
+│   │   │       │   ├── ObjectHelper.test.ts
+│   │   │       │   ├── ObjectHelper.ts
+│   │   │       │   ├── PortHelper.test.ts
+│   │   │       │   ├── PortHelper.ts
+│   │   │       │   ├── StringHelper.test.ts
+│   │   │       │   ├── StringHelper.ts
+│   │   │       │   ├── TimeHelper.ts
+│   │   │       │   ├── UserHelper.test.ts
+│   │   │       │   ├── UserHelper.ts
+│   │   │       │   ├── WaitHelper.ts
+│   │   │       │   ├── __snapshots__
+│   │   │       │   │   └── PortHelper.test.ts.snap
+│   │   │       │   └── validation.helper.ts
+│   │   │       └── mappers
+│   │   │           ├── provider-value.mapper.test.ts
+│   │   │           └── provider-value.mapper.ts
 │   │   ├── tests
 │   │   │   ├── __fixtures__
 │   │   │   │   ├── allocators.fixture.ts
@@ -1650,10 +1658,10 @@
 │   │   │   │   │   ├── associations
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── Association.js
-│   │   │   │   │   │   ├── association.adapter.test.ts
-│   │   │   │   │   │   ├── association.adapter.ts
 │   │   │   │   │   │   ├── association.helper.test.ts
 │   │   │   │   │   │   ├── association.helper.ts
+│   │   │   │   │   │   ├── association.mapper.test.ts
+│   │   │   │   │   │   ├── association.mapper.ts
 │   │   │   │   │   │   ├── association.port.test.ts
 │   │   │   │   │   │   ├── association.port.ts
 │   │   │   │   │   │   ├── association.service.test.ts
@@ -1683,17 +1691,17 @@
 │   │   │   │   │   │   ├── depositLog.service.test.ts
 │   │   │   │   │   │   └── depositLog.service.ts
 │   │   │   │   │   ├── document
-│   │   │   │   │   │   ├── document.adapter.test.ts
-│   │   │   │   │   │   ├── document.adapter.ts
+│   │   │   │   │   │   ├── document.mapper.test.ts
+│   │   │   │   │   │   ├── document.mapper.ts
 │   │   │   │   │   │   ├── document.port.ts
 │   │   │   │   │   │   ├── document.service.test.ts
 │   │   │   │   │   │   └── document.service.ts
 │   │   │   │   │   ├── establishments
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── Etablissement.js
-│   │   │   │   │   │   ├── establishment.adapter.js
 │   │   │   │   │   │   ├── establishment.helper.test.ts
 │   │   │   │   │   │   ├── establishment.helper.ts
+│   │   │   │   │   │   ├── establishment.mapper.js
 │   │   │   │   │   │   ├── establishment.port.test.ts
 │   │   │   │   │   │   ├── establishment.port.ts
 │   │   │   │   │   │   ├── establishment.service.test.js
@@ -1993,4 +2001,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── post-install.bash
-467 directories, 1528 files
+469 directories, 1534 files

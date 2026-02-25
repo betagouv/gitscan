@@ -1,27 +1,26 @@
-## Changelog : api-subventions-asso (derniers 30 jours)
+## Changelog : api-subventions-asso (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'API et de l'interface utilisateur se concentrent sur l'amélioration de la gestion des fichiers SCdL, l'ajout de nouvelles fonctionnalités pour le téléchargement et l'analyse des données, ainsi que sur la correction de bugs pour une meilleure stabilité et expérience utilisateur. Des améliorations ont également été apportées à la documentation et à l'infrastructure.
+Ce mois-ci, l'API a bénéficié d'améliorations significatives en termes de performance, notamment lors de l'importation de fichiers Chorus. Des corrections de bugs ont été apportées pour améliorer la robustesse de l'application, en particulier concernant le parsing des fichiers SCdL et la gestion des données SIREN/RNA. De nouvelles fonctionnalités ont été ajoutées pour faciliter le suivi des données et améliorer la transparence, comme l'export de données vers Metabase.
 
 ### Évolutions fonctionnelles
-- Possibilité de télécharger les subventions au format SCdL (#3794).
-- Affichage des subventions sans année budgétaire (#3792).
-- Ajout d'info-bulles (tooltips) au tableau de bord des subventions (#3779).
-- Troncation des numéros SIRET multiples dans l'interface utilisateur (#3798).
-- Ajout d'une alerte d'erreur globale dans l'interface utilisateur (#3762, #3751).
-- Ajout d'une notification sur Mattermost lors du dépôt d'un fichier SCdL (#3793).
-- Amélioration du comportement des boutons de tri dans le tableau de bord (#3795).
+- Amélioration de la performance lors de l'importation de fichiers Chorus (#3809).
+- Ajout d'informations sur l'administrateur dans les données de suivi (datalog) (#3813).
+- Correction d'un bug qui empêchait la détection correcte des plages de données dans les fichiers XLSX (#3801).
+- Correction d'un problème lié à la gestion des numéros SIREN/RNA multiples et indéfinis (#3797).
+- Troncature des numéros SIRET multiples dans l'interface utilisateur (#3798).
+- Export des données de datalog vers Metabase pour une meilleure analyse (#3796).
+- Ajout d'un mécanisme de "debouncing" pour les notifications de perte de connexion (#3810).
 
 ### Évolutions techniques
-- Refactor de la recherche de SIREN pour une meilleure documentation et simplification (#3787).
-- Utilisation d'opérations `bulkWrite` au lieu de `aggregate merge` pour améliorer les performances de l'API (#3780).
-- Ajout d'un "debounce" pour la notification de perte de connexion (#3810).
-- Suppression de `rm -rf` au profit de `rimraf` dans les scripts pour plus de sécurité (#3776).
-- Amélioration de la gestion des erreurs lors de la migration (#3773).
-- Ajout du nom à la collection `datalog` (#3771).
-- Correction d'un bug empêchant l'écriture en base de données lors de `bulkWrite` si aucun document n'était à mettre à jour (#0000).
+- Refactorisation du code pour améliorer la modularité et la maintenabilité, notamment au niveau des services "plats" (#3815).
+- Refactorisation et documentation améliorée de la logique de recherche SIREN/RNA (#3787).
+- Mise à jour de la configuration TypeScript (#3799).
+- Amélioration de la gestion des écritures en masse dans la base de données pour éviter les erreurs (#3801, #3780).
+- Utilisation de `rimraf` à la place de `rm -rf` dans les scripts pour une meilleure compatibilité (#3776).
+- Refactorisation du mapper, du port et de l'adaptateur (#3828).
+- Ajout de statistiques détaillées sur les consommateurs de l'API (#3826).
 
 ### Autres changements
-- Mise à jour de la documentation concernant la convention de nommage des fichiers (#3680).
-- Dockerisation de l'environnement local pour faciliter le développement (#3754).
-- Publication des versions v0.77.2 et v0.78.0.
+- Correction d'un bug empêchant l'écriture en masse lorsque qu'il n'y avait pas de documents à mettre à jour.
+- Publication des versions v0.78.0 et v0.78.1.
