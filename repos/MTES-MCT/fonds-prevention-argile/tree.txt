@@ -130,6 +130,7 @@
 │           ├── 05-prospects-sans-amo.sql
 │           ├── 06-test-aucun-amo.sql
 │           ├── 07-commentaires.sql
+│           ├── 08-prospect-qualifications.sql
 │           ├── 99-verification.sql
 │           └── README.md
 ├── src
@@ -216,21 +217,31 @@
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── ArchiveDossierButton.tsx
 │   │   │   │   │   │   │   ├── GagnezDuTempsTravaux.tsx
 │   │   │   │   │   │   │   ├── InfoDossierCallout.tsx
 │   │   │   │   │   │   │   ├── PiecesJustificatives.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── DossiersPanel.tsx
 │   │   │   │   │   │   ├── DossiersSuivisHeader.tsx
-│   │   │   │   │   │   ├── DossiersSuivisPanel.tsx
 │   │   │   │   │   │   ├── DossiersSuivisTable.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── edition-donnees-simulation
+│   │   │   │   │   └── [id]
+│   │   │   │   │       └── page.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── prospects
 │   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── ArchiveProspectButton.tsx
+│   │   │   │   │   │   │   └── qualification
+│   │   │   │   │   │   │       ├── QualificationCallout.tsx
+│   │   │   │   │   │   │       ├── QualificationForm.tsx
+│   │   │   │   │   │   │       └── QualificationSection.tsx
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── ProspectsHeader.tsx
@@ -240,10 +251,11 @@
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AFaire.tsx
+│   │   │   │   │   │   ├── ActionMenu.tsx
+│   │   │   │   │   │   ├── ArchiveModal.tsx
 │   │   │   │   │   │   ├── GagnezDuTemps.tsx
 │   │   │   │   │   │   ├── InfoDemandeur.tsx
 │   │   │   │   │   │   ├── InfoLogement.tsx
-│   │   │   │   │   │   ├── LocalisationLogement.tsx
 │   │   │   │   │   │   ├── NotesPartagees
 │   │   │   │   │   │   │   ├── NoteForm.tsx
 │   │   │   │   │   │   │   ├── NoteItem.tsx
@@ -253,6 +265,7 @@
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
 │   │   │   │   │   │   ├── RepartitionCardTile.tsx
 │   │   │   │   │   │   ├── StatTile.tsx
+│   │   │   │   │   │   ├── UnarchiveModal.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── statistiques
@@ -707,6 +720,7 @@
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── archive-dossier.actions.ts
 │   │   │   │   │   │   ├── get-amo-dossiers-data.action.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── domain
@@ -723,18 +737,23 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── prospects
 │   │   │   │   │   ├── actions
-│   │   │   │   │   │   └── get-prospects-list.actions.ts
+│   │   │   │   │   │   ├── archive-prospect.actions.ts
+│   │   │   │   │   │   ├── get-prospects-list.actions.ts
+│   │   │   │   │   │   └── qualify-prospect.actions.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │       └── prospect.types.ts
+│   │   │   │   │   │       ├── prospect.types.ts
+│   │   │   │   │   │       └── qualification.types.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── prospect-detail.service.ts
-│   │   │   │   │       └── prospects-list.service.ts
+│   │   │   │   │       ├── prospects-list.service.ts
+│   │   │   │   │       └── qualification.service.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── commentaires.actions.test.ts
-│   │   │   │   │   │   └── commentaires.actions.ts
+│   │   │   │   │   │   ├── commentaires.actions.ts
+│   │   │   │   │   │   └── update-simulation-data.action.ts
 │   │   │   │   │   ├── context
 │   │   │   │   │   │   └── AmoContext.tsx
 │   │   │   │   │   ├── domain
@@ -748,7 +767,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── commentaires.service.test.ts
-│   │   │   │   │       └── commentaires.service.ts
+│   │   │   │   │       ├── commentaires.service.ts
+│   │   │   │   │       └── edition-simulation.service.ts
 │   │   │   │   └── statistiques
 │   │   │   │       ├── actions
 │   │   │   │       │   ├── get-amo-statistiques.action.test.ts
@@ -876,7 +896,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parcours-permissions.service.ts
 │   │   │   │   │   ├── parcours-progression.service.ts
-│   │   │   │   │   └── parcours-state.service.ts
+│   │   │   │   │   ├── parcours-state.service.ts
+│   │   │   │   │   └── rga-data.service.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── index.ts
 │   │   │   │       └── parcours.validators.ts
@@ -1012,18 +1033,23 @@
 │   │       │   ├── decrypt-rga-data.actions.ts
 │   │       │   └── encrypt-rga-data.actions.ts
 │   │       ├── components
+│   │       │   ├── SimulateurEdition.tsx
 │   │       │   ├── SimulateurFormulaire.tsx
 │   │       │   ├── debug
 │   │       │   │   └── RGATestFiller.tsx
 │   │       │   ├── index.ts
 │   │       │   ├── results
+│   │       │   │   ├── ConfirmationSaveModal.tsx
 │   │       │   │   ├── EligibilityChecksList.tsx
+│   │       │   │   ├── ModificationsSummary.tsx
+│   │       │   │   ├── ResultEdition.tsx
 │   │       │   │   ├── ResultEligible.tsx
 │   │       │   │   ├── ResultNonEligible.tsx
 │   │       │   │   └── index.ts
 │   │       │   ├── shared
 │   │       │   │   ├── NavigationButtons.tsx
 │   │       │   │   ├── ProgressBar.tsx
+│   │       │   │   ├── SimulateurContext.tsx
 │   │       │   │   ├── SimulateurLayout.tsx
 │   │       │   │   └── index.ts
 │   │       │   └── steps
@@ -1075,6 +1101,8 @@
 │   │       │   │   ├── eligibility.service.test.ts
 │   │       │   │   ├── eligibility.service.ts
 │   │       │   │   ├── index.ts
+│   │       │   │   ├── modifications-comparison.service.test.ts
+│   │       │   │   ├── modifications-comparison.service.ts
 │   │       │   │   ├── simulation.service.test.ts
 │   │       │   │   └── simulation.service.ts
 │   │       │   ├── types
@@ -1150,6 +1178,8 @@
 │   │   │   │   └── useMatomo.ts
 │   │   │   ├── Notice
 │   │   │   │   └── Notice.tsx
+│   │   │   ├── Pagination
+│   │   │   │   └── Pagination.tsx
 │   │   │   ├── PostLogoutRedirect
 │   │   │   │   └── PostLogoutRedirect.tsx
 │   │   │   ├── RgaFooter
@@ -1191,6 +1221,8 @@
 │   │   │   │   ├── 0017_gifted_living_mummy.sql
 │   │   │   │   ├── 0018_wide_unus.sql
 │   │   │   │   ├── 0019_aberrant_iron_monger.sql
+│   │   │   │   ├── 0020_peaceful_wolfpack.sql
+│   │   │   │   ├── 0021_sad_captain_marvel.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1212,6 +1244,8 @@
 │   │   │   │       ├── 0017_snapshot.json
 │   │   │   │       ├── 0018_snapshot.json
 │   │   │   │       ├── 0019_snapshot.json
+│   │   │   │       ├── 0020_snapshot.json
+│   │   │   │       ├── 0021_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1226,6 +1260,7 @@
 │   │   │   │   ├── parcours-commentaires.repository.ts
 │   │   │   │   ├── parcours-prevention.repository.test.ts
 │   │   │   │   ├── parcours-prevention.repository.ts
+│   │   │   │   ├── prospect-qualifications.repository.ts
 │   │   │   │   └── user.repository.ts
 │   │   │   └── schema
 │   │   │       ├── agent-permissions.ts
@@ -1243,6 +1278,7 @@
 │   │   │       ├── parcours-amo-validations.ts
 │   │   │       ├── parcours-commentaires.ts
 │   │   │       ├── parcours-prevention.ts
+│   │   │       ├── prospect-qualifications.ts
 │   │   │       └── users.ts
 │   │   ├── domain
 │   │   │   ├── types
@@ -1253,6 +1289,7 @@
 │   │   │       ├── agent-role.enum.ts
 │   │   │       ├── ds-status.enum.ts
 │   │   │       ├── index.ts
+│   │   │       ├── situation-particulier.enum.ts
 │   │   │       ├── status.enum.ts
 │   │   │       ├── statut-validation-amo.enum.ts
 │   │   │       ├── step.enum.ts
@@ -1323,4 +1360,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-392 directories, 933 files
+397 directories, 965 files

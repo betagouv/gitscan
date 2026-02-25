@@ -1,27 +1,28 @@
-## Changelog : fonds-prevention-argile (derniers 30 jours)
+## Changelog : fonds-prevention-argile (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration du simulateur de risques RGA, l'enrichissement de l'espace administrateur (AMO) et la correction de plusieurs bugs liés à l'expérience utilisateur. Des améliorations ont également été apportées à l'intégration de Matomo pour le suivi des statistiques et à la page "Trouver mon conseiller".
+Ce mois-ci, l'application a connu des améliorations significatives concernant la gestion des allers-vers, l'espace Agent et l'espace AMO (Autorité Maitre d'Oeuvre). Des corrections ont également été apportées pour améliorer la stabilité et la qualité de l'expérience utilisateur, notamment au niveau de la simulation et de l'envoi d'emails.
 
 ### Évolutions fonctionnelles
-- Amélioration du simulateur de risques RGA avec une refonte complète (#109).
-- Ajout de la fonctionnalité "Trouver mon conseiller" (#111).
-- Mise à jour des libellés et des données dans l'espace administrateur (AMO) (#124).
-- Correction du comportement du simulateur de revenus (#123).
-- Correction du lien "mailto" qui était vide (#126).
-- Correction du redirect de l'iframe (#125).
-- Ajout de la commune dans le cocon (#117).
-- Mise en avant des allers vers (#112).
+- Ajout de l'éligibilité pour les allers-vers (#140).
+- Implémentation du flow d'archivage des AMO (#139).
+- Mise à jour des designs de l'AMO (#138).
+- Possibilité d'éditer les données de simulation (#137).
+- Ajout du code départemental à la liste des allers-vers dans l'espace administrateur (#136).
+- Ajout d'un espace Agent pour la gestion des allers-vers (#129).
+- Amélioration de la gestion des commentaires (#133).
+- Mise à jour des libellés et des données dans l'espace AMO (#124).
+- Correction d'un bug concernant les revenus dans la simulation (#123).
 
 ### Évolutions techniques
-- Refactorisation des rôles et ajout d'un espace administrateur (backoffice) avec une page de statistiques (#118).
-- Refactorisation de l'intégration Matomo (#116).
-- Refactorisation de la simulation et du mode connecté (#113).
-- Suppression du lien ProConnect (#119).
-- Correction de bugs et améliorations diverses liées à la simulation et aux statuts (#115).
+- Doublement du nombre de communes par département pour une meilleure précision géographique (#134).
+- Correction d'un problème de redirection dans l'iframe de simulation (#125).
+- Correction d'un bug lié à l'iframe et aux données de simulation (#128).
+- Mise à jour de la version de Node et du buildpack pour améliorer la sécurité et la performance (#128).
+- Application d'un mode "white mode" forcé et suppression du paramètre d'affichage du footer (#131).
 
 ### Autres changements
-- Correction d'un problème de style dans le simulateur (#110).
-- Correction d'un bug lié à l'EPCI (#111).
-- Mise à jour des libellés (#114).
-- Correction d'un problème d'envoi d'email (#127).
+- Corrections diverses de l'interface utilisateur et de commentaires (#135).
+- Correction de bugs liés à l'envoi d'emails (mailto) (#126, #127).
+- Amélioration de la qualité (QA) des allers-vers (#130).
+- Implémentation du back-office AMO suite (#120).
