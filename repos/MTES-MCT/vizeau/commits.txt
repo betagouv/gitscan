@@ -1,7 +1,27 @@
+2026-02-24T14:13:37+01:00 - 109381e - Alex Pernot : Merge pull request #299 from MTES-MCT/feat/idempotent-seeders
+2026-02-24T12:15:52+01:00 - 3d51cf3 - Maxine Le Pennec : Merge pull request #296 from MTES-MCT/Maxine/fix-layers-legens-colors
+2026-02-24T12:01:26+01:00 - 5c30a35 - Alex Pernot : Suppression des données de démo du MVP et de l'exploitation démo.
+2026-02-23T17:21:18+01:00 - bdc31a6 - Alex Pernot : Merge pull request #292 from MTES-MCT/fix/npm-audit-fix
+2026-02-23T17:20:59+01:00 - 750ab8f - Alex Pernot : Merge pull request #291 from MTES-MCT/fix/log-polluting-auth-access
+2026-02-23T17:20:10+01:00 - 1aea444 - Alex Pernot : Merge pull request #287 from MTES-MCT/feat/docs-delete-reset
+2026-02-23T17:06:33+01:00 - 83874cd - Alex Pernot : Ajout de la suppression de document
+2026-02-23T16:57:31+01:00 - f13620a - Alex Pernot : Merge pull request #286 from MTES-MCT/feat/docs-log-entry-front
+2026-02-23T16:44:07+01:00 - 80e3ff3 - Maxine : LegendItem accept class and style color
+2026-02-23T15:31:40+01:00 - d69c26c - Maxine Le Pennec : Merge pull request #295 from MTES-MCT/Maxine/fix-legend-colors
+2026-02-23T15:11:23+01:00 - 56f6426 - Maxine : Fix legends colors
+2026-02-23T15:05:17+01:00 - cff6bcf - Alex Pernot : Ajout d'une exception pour les entrées de journal dans les exploitations admin
+2026-02-23T14:46:27+01:00 - 8d0ddb8 - Alex Pernot : Corrections copilot
+2026-02-23T14:46:27+01:00 - 5b3b1c8 - Alex Pernot : Correction d'une valeur par défaut de test
+2026-02-23T14:46:25+01:00 - 87600cb - Alex Pernot : Interface d'upload de documents terminée
+2026-02-23T08:46:19+01:00 - d4404e6 - Maxine Le Pennec : Merge pull request #273 from MTES-MCT/Maxine/display-parcelle-infos
+2026-02-23T08:43:55+01:00 - 50c1996 - Maxine : Merge branch 'main' into Maxine/display-parcelle-infos
+2026-02-20T19:41:13+01:00 - a353f42 - Alex Pernot : Bump de dépendances pour réduire les alertes de sécurité
+2026-02-20T18:52:21+01:00 - 241d031 - Alex Pernot : Correction d'un accès problématique à l'utilisateur dans le front
 2026-02-20T16:58:27+01:00 - 8b59579 - Maxine Le Pennec : Merge pull request #248 from MTES-MCT/Maxine/handle-text-length
 2026-02-20T16:56:53+01:00 - 85ff6ec - Maxine Le Pennec : Merge pull request #289 from MTES-MCT/Maxine/fix-exploitation-center
 2026-02-20T16:12:28+01:00 - cd4ea5a - Maxine Le Pennec : Merge pull request #283 from MTES-MCT/Maxine/fix-empty-contact
 2026-02-20T15:36:40+01:00 - 6e11601 - Maxine Le Pennec : Merge pull request #280 from MTES-MCT/Maxine/improve-tag-creation
+2026-02-20T15:33:23+01:00 - 2621cc1 - Maxine : Replace setTimeout by map.once('load' method
 2026-02-20T12:06:50+01:00 - 481f98f - Alex Pernot : Merge pull request #288 from MTES-MCT/fix/dependencies-fix
 2026-02-20T11:52:51+01:00 - d6515fb - Alex Pernot : Ajout de dépendances manquantes
 2026-02-20T11:42:42+01:00 - 8350e44 - Maxine : Add alert for missing location in exploitation centering button
@@ -9,6 +29,7 @@
 2026-02-19T15:52:21+01:00 - 8fd91f4 - Maxine : Fix copilot review
 2026-02-19T15:39:38+01:00 - 51f6b45 - Maxine : Fix copilot review
 2026-02-19T15:34:51+01:00 - 4d919f7 - Maxine : Fix copilot review
+2026-02-19T15:05:50+01:00 - de07d7e - Maxine : Fix copilot review
 2026-02-19T12:16:46+01:00 - 3e0374d - Maxine Le Pennec : Merge pull request #274 from MTES-MCT/Maxine/delete-legend-picto
 2026-02-19T12:16:25+01:00 - 61007f7 - Maxine Le Pennec : Merge pull request #282 from MTES-MCT/Maxine/fix-edition-breadcrumb
 2026-02-18T15:47:19+01:00 - a979292 - Maxine : Fix contact infos display
@@ -18,6 +39,11 @@
 2026-02-18T14:52:34+01:00 - 0682c94 - Maxine : Improve tag selection system
 2026-02-18T09:25:31+01:00 - 9629df0 - Maxine : Create and use LegendItem UI component
 2026-02-18T08:45:03+01:00 - 10efc4e - Maxine : Enhance map layer filters UI with colored indicators for AAC, PPE, and PPR options
+2026-02-18T08:33:15+01:00 - b35526d - Maxine : Add alert for missing centroid in ParcelleLeftSidebar
+2026-02-18T08:26:43+01:00 - 50e043c - Maxine : Remove editMode prop from ParcelleLeftSidebarProps
+2026-02-17T17:03:04+01:00 - d62b494 - Maxine : Add button to fly to parcelle
+2026-02-17T17:03:04+01:00 - 5de9c58 - Maxine : Center map on parcelle when URL changes, fallback to exploitation if not found
+2026-02-17T15:38:42+01:00 - 700a65e - Maxine : Merge branch 'main' into Maxine/display-parcelle-infos
 2026-02-17T15:37:52+01:00 - 905c379 - Maxine Le Pennec : Merge pull request #279 from MTES-MCT/Maxine/update-FileItem
 2026-02-17T15:35:32+01:00 - 839513b - Maxine : fix: make href prop optional in FileItem and FileItemsList components
 2026-02-17T15:29:16+01:00 - e2b16d3 - Maxine : Rendering FileItem without href
@@ -27,7 +53,11 @@
 2026-02-17T11:56:54+01:00 - 7faedfd - Alex Pernot : On stock maintenant le centroid de la parcelle lors de l'attribution.
 2026-02-17T11:19:00+01:00 - 2d66f56 - Maxine Le Pennec : Merge pull request #275 from MTES-MCT/Maxine/millésime-to-RPG
 2026-02-17T11:06:32+01:00 - 953e4bd - Maxine : Update label for year options in visualisation page to include RPG prefix
+2026-02-17T10:29:42+01:00 - 1c030f6 - Maxine : Refactor visualisation components to manage selected exploitation tab from URL parameters
+2026-02-17T10:18:46+01:00 - 595ded2 - Maxine : Handle click on parcelle
 2026-02-17T09:59:27+01:00 - 7e09364 - Maxine : Delete cultures groups pictos
+2026-02-17T09:20:28+01:00 - b34ed6d - Maxine : Highlight selected parcelle
+2026-02-16T16:28:02+01:00 - ff5d060 - Maxine : Display parcelle info in left sidebar
 2026-02-16T08:49:17+01:00 - d45cd86 - Maxine Le Pennec : Merge pull request #256 from MTES-MCT/Maxine/parcelles-section
 2026-02-13T12:27:41+01:00 - fa25d47 - Alex Pernot : Merge pull request #257 from MTES-MCT/feat/docs-log-entry
 2026-02-13T11:16:12+01:00 - ccc7952 - Alex Pernot : Corrections copilot

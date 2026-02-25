@@ -1,18 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/vizeau",
   "name": "vizeau",
-  "description": "Viz'eau est une application web permettant de visualiser et de gérer des données relatives à l'agriculture. Elle offre des fonctionnalités de cartographie, de gestion des exploitations et des tâches, et permet de suivre l'évolution des cultures.",
+  "description": "Viz'eau est une application web permettant de visualiser et de gérer des données relatives à l'agriculture. Elle offre des fonctionnalités de cartographie, de gestion des exploitations et des tâches, et d'analyse des données.",
   "language": "TypeScript",
   "features": [
     "Gestion des exploitations",
-    "Cartographie",
     "Gestion des tâches",
-    "Visualisation des données",
-    "Gestion des cultures",
+    "Visualisation cartographique",
+    "Gestion des journaux d'activité",
     "Gestion des parcelles",
-    "Journal des actions utilisateurs",
-    "Gestion des types d'agriculture",
-    "Gestion des groupes de cultures"
+    "Gestion des cultures",
+    "Gestion des utilisateurs",
+    "Upload de documents"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,14 +21,15 @@
     "AdonisJS",
     "TailwindCSS",
     "Luxon",
-    "Maplibre GL",
-    "PMTiles"
+    "pmtiles",
+    "maplibre-gl"
   ],
   "components": [
     "Frontend React",
     "API REST (AdonisJS)",
     "Base de données PostgreSQL",
-    "Cartographie Maplibre GL"
+    "Cartographie Maplibre GL",
+    "Interface utilisateur React DSFR"
   ],
   "auth": {
     "methods": [
@@ -37,11 +37,11 @@
     ]
   },
   "tests": [
-    "Vitest",
-    "Playwright"
+    "Jest",
+    "Vitest"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-20T16:58:27+01:00",
+  "lastActivity": "2026-02-24T14:13:37+01:00",
   "status": "active",
   "license": "UNLICENSED",
   "hasDocumentation": true,
@@ -54,11 +54,10 @@
   "tags": [
     "agriculture",
     "cartographie",
-    "données agricoles",
-    "gestion des exploitations",
-    "web mapping",
-    "React",
-    "TypeScript",
-    "PostgreSQL"
+    "gestion de données",
+    "web application",
+    "typescript",
+    "react",
+    "postgresql"
   ]
 }
