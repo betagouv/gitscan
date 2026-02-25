@@ -1,21 +1,19 @@
 ## Changelog : mon-aide-cyber (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à MonAideCyber. Les mises à jour incluent des corrections pour améliorer la sécurité, l'ajout de fonctionnalités pour faciliter la mise en relation entre aidants et demandeurs, ainsi que des améliorations de l'expérience utilisateur avec l'ajout d'encarts de contact et de logs pour le support.
+Ce changelog présente les récentes améliorations apportées à MonAideCyber. Les modifications incluent des mises à jour de sécurité pour corriger des vulnérabilités, des améliorations pour le processus de devenir aidant, et des ajustements pour faciliter la mise en relation entre les demandeurs et les aidants. Des encarts de contact ont également été ajoutés pour faciliter l'assistance aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- Modification du lien du mail de contact MonAideCyber pour rediriger vers la page des relais associatifs. (#5d80e72)
-- Implémentation de la récupération des aidants en fonction de leur numéro SIRET. (#2373273)
-- Mise en place de la fonctionnalité de mise en relation pour les organisations. (#d9c4157)
-- Récupération du numéro SIRET des aidants. (#0d63da4)
-- Ajout d'un encart de contact pour faciliter la communication concernant les fonctionnalités ou la sécurité de MonAideCyber. (#619c732, #f1cb1d0)
+- Amélioration du processus "Devenir aidant" : le lien du mail de contact MAC a été remplacé par un lien vers la page des relais associatifs. (#5d80e72)
+- Mise en relation aidants-demandeurs : implémentation de la récupération des aidants par SIRET et de la mise en relation pour une organisation. (#2373273, #d9c4157, #0d63da4)
+- Ajout d'encarts de contact : des encarts de contact ont été ajoutés pour faciliter la communication concernant les fonctionnalités et la sécurité de MonAideCyber. (#619c732, #f1cb1d0)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `cookie-session` pour corriger une vulnérabilité de sécurité. (https://github.com/betagouv/mon-aide-cyber/security/dependabot/101)
-- Mise à jour de la dépendance `lodash` pour corriger une vulnérabilité de sécurité. (https://github.com/betagouv/mon-aide-cyber/security/dependabot/107)
-- Mise à jour de la dépendance `cros-spawn` pour corriger une vulnérabilité de sécurité. (https://github.com/betagouv/mon-aide-cyber/security/dependabot/100)
-- Mise à jour de la dépendance `react-router` pour corriger une vulnérabilité de sécurité. (https://github.com/betagouv/mon-aide-cyber/security/dependabot/103)
-- Ajout de logs sur les routes Livestorm pour faciliter le débogage et le suivi. (#d593216)
+- Mise à jour de dépendances de sécurité :
+  - Axios a été mis à jour pour corriger une vulnérabilité. (#12b2f07)
+  - cookie-session a été mis à jour pour corriger une vulnérabilité. (#b25c4b1)
+  - lodash a été mis à jour pour corriger une vulnérabilité. (#21a98cd)
+- Préparation de la migration Clever Cloud : mise à jour du bandeau de maintenance. (#b296192)
 
 ### Autres changements
-- Aucun changement significatif à signaler dans cette catégorie.
+- Bump de la dépendance `qs` de la version 6.14.1 à 6.14.2. (#06c8027)
