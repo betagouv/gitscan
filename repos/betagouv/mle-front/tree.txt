@@ -178,6 +178,7 @@
 │   │   │       │   ├── find-student-accomodation-page.module.css
 │   │   │       │   ├── loading.tsx
 │   │   │       │   └── page.tsx
+│   │   │       ├── not-found.tsx
 │   │   │       └── ville
 │   │   │           └── [location]
 │   │   │               └── [slug]
@@ -324,6 +325,7 @@
 │   │   │   │   │   └── find-student-accommodations-cities-autocomplete-results.tsx
 │   │   │   │   └── find-accommodation-form.tsx
 │   │   │   ├── owner-details
+│   │   │   │   ├── consult-offer-button.tsx
 │   │   │   │   ├── owner-details-actions.tsx
 │   │   │   │   ├── owner-details-alert.module.css
 │   │   │   │   ├── owner-details-alert.tsx
@@ -391,7 +393,8 @@
 │   │   ├── reset-password
 │   │   │   └── reset-password-form.tsx
 │   │   ├── shared
-│   │   │   └── availability-badge.tsx
+│   │   │   ├── availability-badge.tsx
+│   │   │   └── waiting-list-badge.tsx
 │   │   ├── sign-up
 │   │   │   └── sign-up-form.tsx
 │   │   ├── signout.tsx
@@ -462,7 +465,8 @@
 │   │       ├── widget-accommodation-filters.tsx
 │   │       ├── widget-accommodation-grid.module.css
 │   │       ├── widget-accommodation-grid.tsx
-│   │       └── widget-body-style.tsx
+│   │       ├── widget-body-style.tsx
+│   │       └── widget-matomo.tsx
 │   ├── dsfr
 │   │   ├── default-color-scheme.ts
 │   │   ├── dsfr-head.tsx
@@ -498,6 +502,7 @@
 │   │   ├── use-search-cities.ts
 │   │   ├── use-student-registration.ts
 │   │   ├── use-territories.ts
+│   │   ├── use-tracking.ts
 │   │   ├── use-update-accommodation.ts
 │   │   ├── use-update-alert.ts
 │   │   ├── use-update-residence-details.ts
@@ -505,8 +510,10 @@
 │   ├── i18n
 │   │   └── request.ts
 │   ├── lib
+│   │   ├── TRACKING.md
 │   │   ├── dev-log.ts
-│   │   └── external-auth-plugin.ts
+│   │   ├── external-auth-plugin.ts
+│   │   └── tracking.ts
 │   ├── providers
 │   │   └── tanstack-client.tsx
 │   ├── proxy.ts
@@ -564,10 +571,11 @@
 │   │       └── get-favorites.ts
 │   └── utils
 │       ├── calculateAvailability.ts
+│       ├── debugPromiseTiming.ts
 │       ├── formatRelativeTime.ts
 │       ├── french-contraction.ts
 │       ├── sPluriel.ts
 │       ├── sanitize-html.ts
 │       └── widget-resize.ts
 └── tsconfig.json
-154 directories, 418 files
+154 directories, 426 files
