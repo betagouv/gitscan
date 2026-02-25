@@ -249,6 +249,7 @@
 │   │   │   │   ├── analysis
 │   │   │   │   │   ├── int_analysis_city_features.sql
 │   │   │   │   │   ├── int_analysis_dvg_wide.sql
+│   │   │   │   │   ├── int_analysis_establishments_zlv_usage.sql
 │   │   │   │   │   ├── int_analysis_housing_owners.sql
 │   │   │   │   │   ├── int_analysis_housing_with_out_flag.sql
 │   │   │   │   │   ├── int_analysis_housing_zlv_usage.sql
@@ -543,38 +544,38 @@
 │   │   │   │   ├── test_housing_geo_code_valid.sql
 │   │   │   │   ├── test_housing_living_area_reasonable.sql
 │   │   │   │   └── test_housing_vacancy_year_reasonable.sql
-│   │   │   ├── production
-│   │   │   │   ├── campaign
-│   │   │   │   │   ├── test_campaign_dates_ordering.sql
-│   │   │   │   │   ├── test_campaign_return_rate_bounds.sql
-│   │   │   │   │   ├── test_campaign_sent_has_housing.sql
-│   │   │   │   │   ├── test_campaign_status_valid.sql
-│   │   │   │   │   └── test_no_null_housing_number_sent.sql
-│   │   │   │   ├── establishment
-│   │   │   │   │   ├── test_establishment_activation_typology_valid.sql
-│   │   │   │   │   ├── test_establishment_active_has_users.sql
-│   │   │   │   │   └── test_establishment_type_valid.sql
-│   │   │   │   ├── events
-│   │   │   │   │   ├── test_events_include_all_versions.sql
-│   │   │   │   │   ├── test_events_type_valid.sql
-│   │   │   │   │   ├── test_events_user_source_valid.sql
-│   │   │   │   │   ├── test_events_version_valid.sql
-│   │   │   │   │   ├── test_marts_housing_has_expected_followup_count.sql
-│   │   │   │   │   ├── test_marts_housing_has_expected_updated_count.sql
-│   │   │   │   │   ├── test_no_orphan_housing_status.sql
-│   │   │   │   │   ├── test_old_events_included_in_last_status.sql
-│   │   │   │   │   ├── test_status_labels_not_null_when_status_exists.sql
-│   │   │   │   │   └── test_unique_last_status_per_housing.sql
-│   │   │   │   ├── housing_status
-│   │   │   │   │   ├── test_housing_status_date_ordering.sql
-│   │   │   │   │   ├── test_housing_status_values_valid.sql
-│   │   │   │   │   └── test_housing_status_zlv_user_consistency.sql
-│   │   │   │   └── stats
-│   │   │   │       ├── test_kpi_events_both_versions_present.sql
-│   │   │   │       ├── test_kpi_followup_ended_minimum.sql
-│   │   │   │       └── test_kpi_housing_with_followup_minimum.sql
-│   │   │   └── utils
-│   │   │       └── same_row_number.sql
+│   │   │   ├── generic
+│   │   │   │   └── same_row_number.sql
+│   │   │   └── production
+│   │   │       ├── campaign
+│   │   │       │   ├── test_campaign_dates_ordering.sql
+│   │   │       │   ├── test_campaign_return_rate_bounds.sql
+│   │   │       │   ├── test_campaign_sent_has_housing.sql
+│   │   │       │   ├── test_campaign_status_valid.sql
+│   │   │       │   └── test_no_null_housing_number_sent.sql
+│   │   │       ├── establishment
+│   │   │       │   ├── test_establishment_activation_typology_valid.sql
+│   │   │       │   ├── test_establishment_active_has_users.sql
+│   │   │       │   └── test_establishment_type_valid.sql
+│   │   │       ├── events
+│   │   │       │   ├── test_events_include_all_versions.sql
+│   │   │       │   ├── test_events_type_valid.sql
+│   │   │       │   ├── test_events_user_source_valid.sql
+│   │   │       │   ├── test_events_version_valid.sql
+│   │   │       │   ├── test_marts_housing_has_expected_followup_count.sql
+│   │   │       │   ├── test_marts_housing_has_expected_updated_count.sql
+│   │   │       │   ├── test_no_orphan_housing_status.sql
+│   │   │       │   ├── test_old_events_included_in_last_status.sql
+│   │   │       │   ├── test_status_labels_not_null_when_status_exists.sql
+│   │   │       │   └── test_unique_last_status_per_housing.sql
+│   │   │       ├── housing_status
+│   │   │       │   ├── test_housing_status_date_ordering.sql
+│   │   │       │   ├── test_housing_status_values_valid.sql
+│   │   │       │   └── test_housing_status_zlv_user_consistency.sql
+│   │   │       └── stats
+│   │   │           ├── test_kpi_events_both_versions_present.sql
+│   │   │           ├── test_kpi_followup_ended_minimum.sql
+│   │   │           └── test_kpi_housing_with_followup_minimum.sql
 │   │   └── uv.lock
 │   ├── docker-compose-metabase.yml
 │   ├── docker-compose.yml
@@ -691,11 +692,12 @@
 │   │   ├── supprimer-les-warnings-not-wrapped-in-act.md
 │   │   └── tester-les-inputs-api.md
 │   ├── performance-improvements.md
-│   └── plans
-│       ├── 2026-01-26-agents-md-configuration-design.md
-│       ├── 2026-01-28-document-upload-refactoring.md
-│       ├── 2026-02-02-document-events-design.md
-│       └── 2026-02-02-frontend-document-api-update.md
+│   ├── plans
+│   │   ├── 2026-01-26-agents-md-configuration-design.md
+│   │   ├── 2026-01-28-document-upload-refactoring.md
+│   │   ├── 2026-02-02-document-events-design.md
+│   │   └── 2026-02-02-frontend-document-api-update.md
+│   └── portail-df-decision-tree.md
 ├── e2e
 │   ├── .env.example
 │   ├── README.md
@@ -959,6 +961,7 @@
 │   │   │   │   ├── OwnerKindSelect.tsx
 │   │   │   │   ├── OwnershipKindSelect.tsx
 │   │   │   │   ├── PerimeterSearchableSelect.tsx
+│   │   │   │   ├── RelativeLocationSelect.tsx
 │   │   │   │   ├── RoomCountSelect.tsx
 │   │   │   │   ├── SurfaceSelect.tsx
 │   │   │   │   ├── TaxSelect.tsx
@@ -1232,13 +1235,6 @@
 │   │   │   │   │   ├── FillLocalId.tsx
 │   │   │   │   │   ├── HousingCreationModal.tsx
 │   │   │   │   │   └── ReviewHousing.tsx
-│   │   │   │   ├── HousingOwnersModal
-│   │   │   │   │   ├── HousingAdditionalOwner.tsx
-│   │   │   │   │   ├── HousingAdditionalOwnerCreation.tsx
-│   │   │   │   │   ├── HousingAdditionalOwnerSearch.tsx
-│   │   │   │   │   ├── HousingAdditionalOwnerSearchResults.tsx
-│   │   │   │   │   ├── HousingOwnersModal.tsx
-│   │   │   │   │   └── housing-owner-modal.module.scss
 │   │   │   │   ├── ModalStepper
 │   │   │   │   │   └── ModalGraphStepper.tsx
 │   │   │   │   ├── OnboardingModal
@@ -1856,7 +1852,9 @@
 │   │   │   ├── signupLinkMissingError.ts
 │   │   │   ├── testAccountError.ts
 │   │   │   ├── unprocessableEntityError.ts
+│   │   │   ├── userDeletedError.ts
 │   │   │   ├── userMissingError.ts
+│   │   │   ├── userSuspendedError.ts
 │   │   │   └── virusDetectedError.ts
 │   │   ├── index.ts
 │   │   ├── infra
@@ -2062,6 +2060,9 @@
 │   │   │   │   │   ├── 20251201123044_documents.ts
 │   │   │   │   │   ├── 20251201123045_documents_housings.ts
 │   │   │   │   │   ├── 20251215164103_dpe-import-optimization-indexes.ts
+│   │   │   │   │   ├── 20251217140000_users-establishments.ts
+│   │   │   │   │   ├── 20251217160000_user_perimeters.ts
+│   │   │   │   │   ├── 20251223100000_user_perimeters_epci.ts
 │   │   │   │   │   ├── 20260122165040_fast-housing-add-actual-dpe.ts
 │   │   │   │   │   ├── 20260127110646_drop-deprecated-precision-fields.ts
 │   │   │   │   │   ├── 20260129092128_documents-add-establishment_id.ts
@@ -2172,6 +2173,7 @@
 │   │   │   ├── SignupLinkApi.ts
 │   │   │   ├── SortApi.ts
 │   │   │   ├── UserApi.ts
+│   │   │   ├── UserPerimeterApi.ts
 │   │   │   └── test
 │   │   │       ├── DocumentApi.test.ts
 │   │   │       ├── EventApi.test.ts
@@ -2230,6 +2232,7 @@
 │   │   │   │   ├── ownerMatchRepository.test.ts
 │   │   │   │   ├── ownerRepository.test.ts
 │   │   │   │   └── precisionRepository.test.ts
+│   │   │   ├── userPerimeterRepository.ts
 │   │   │   └── userRepository.ts
 │   │   ├── routers
 │   │   │   ├── protected.ts
@@ -2345,6 +2348,10 @@
 │   │   │   │           ├── source-owner-file-repository.test.ts
 │   │   │   │           ├── source-owner-processor.test.ts
 │   │   │   │           └── source-owner.test.ts
+│   │   │   ├── import-owners-datafoncier
+│   │   │   │   ├── README.md
+│   │   │   │   ├── import_owners.py
+│   │   │   │   └── requirements.txt
 │   │   │   ├── import-unified-owners
 │   │   │   │   ├── README.md
 │   │   │   │   ├── command.ts
@@ -2376,7 +2383,9 @@
 │   │   │   │   ├── .gitignore
 │   │   │   │   ├── 01-cerema-scraper
 │   │   │   │   │   ├── README.md
-│   │   │   │   │   └── cerema-scraper.py
+│   │   │   │   │   ├── cerema-scraper.py
+│   │   │   │   │   ├── join-groups-structures.py
+│   │   │   │   │   └── merge-all.py
 │   │   │   │   ├── 02-establishment-verifier
 │   │   │   │   │   ├── README.md
 │   │   │   │   │   └── establishment-verifier.py
@@ -2388,6 +2397,7 @@
 │   │   │   │   ├── README.md
 │   │   │   │   ├── cerema-sync.sh
 │   │   │   │   ├── export-lovac-users.py
+│   │   │   │   ├── fetch-groups-perimeters.py
 │   │   │   │   ├── requirements.txt
 │   │   │   │   └── utils
 │   │   │   │       ├── backup_localities.py
@@ -2405,9 +2415,15 @@
 │   │   │   │   │   ├── DatafoncierOwner.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── validator.ts
-│   │   │   └── sync-user-kind
+│   │   │   ├── sync-user-kind
+│   │   │   │   ├── README.md
+│   │   │   │   └── sync_user_kind.py
+│   │   │   └── test-portaildf-rights
 │   │   │       ├── README.md
-│   │   │       └── sync_user_kind.py
+│   │   │       ├── fetch-test-data.ts
+│   │   │       ├── generate-test-cases.ts
+│   │   │       ├── populate_test_db.py
+│   │   │       └── test-portaildf-rights.ts
 │   │   ├── services
 │   │   │   ├── ban
 │   │   │   │   ├── ban-api.ts
@@ -2419,6 +2435,7 @@
 │   │   │   │   ├── consultUserService.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mockCeremaService.ts
+│   │   │   │   ├── perimeterService.ts
 │   │   │   │   └── userKindService.ts
 │   │   │   ├── document-upload.ts
 │   │   │   ├── file-validation.ts
@@ -2430,8 +2447,10 @@
 │   │   │   ├── metabaseService
 │   │   │   │   ├── metabase-api.ts
 │   │   │   │   └── metabase.ts
+│   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── test
-│   │   │   │   └── file-validation.test.ts
+│   │   │   │   ├── file-validation.test.ts
+│   │   │   │   └── ownerDistanceService.test.ts
 │   │   │   └── twoFactorService.ts
 │   │   ├── test
 │   │   │   ├── global-setup.ts
@@ -2522,4 +2541,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-384 directories, 2140 files
+385 directories, 2158 files

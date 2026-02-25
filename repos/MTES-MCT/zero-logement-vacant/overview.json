@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/zero-logement-vacant",
   "name": "zero-logement-vacant",
-  "description": "Zero Logement Vacant est une application web visant à recenser et à suivre les logements vacants pour lutter contre l'habitat indigne et améliorer l'offre de logements. Elle permet aux collectivités de gérer les informations sur les logements et de suivre leur évolution.",
+  "description": "Zero Logement Vacant est une application web permettant de suivre et de gérer les logements vacants. Elle vise à faciliter la mobilisation des logements pour lutter contre la crise du logement en France.",
   "language": "TypeScript",
   "features": [
     "Gestion des logements",
-    "Suivi des logements vacants",
+    "Gestion des documents",
+    "Suivi de la performance énergétique",
     "Import de données",
-    "Gestion des utilisateurs",
-    "Cartographie",
-    "Export de données",
-    "Gestion des documents"
+    "Authentification utilisateur",
+    "Recherche",
+    "Filtrage",
+    "Gestion des utilisateurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,7 +19,7 @@
     "Express",
     "PostgreSQL",
     "Docker",
-    "PostGIS",
+    "S3",
     "Redis",
     "Elasticsearch",
     "DuckDB",
@@ -26,11 +27,11 @@
   ],
   "components": [
     "Frontend React",
-    "API REST (Node.js/Express)",
+    "API REST",
     "Base de données PostgreSQL",
-    "Queue (Redis)",
-    "Elasticsearch pour la recherche",
-    "Docker pour la conteneurisation"
+    "Queue",
+    "Elasticsearch",
+    "Redis"
   ],
   "auth": {
     "methods": [
@@ -39,13 +40,13 @@
   },
   "tests": [
     "Jest",
-    "Cypress",
-    "Vitest"
+    "Vitest",
+    "Cypress"
   ],
   "workflows": [
     "e2e"
   ],
-  "lastActivity": "2026-02-18T14:53:31+01:00",
+  "lastActivity": "2026-02-24T11:12:23+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -58,12 +59,9 @@
   "tags": [
     "logement",
     "vacant",
+    "immobilier",
     "administration",
-    "collectivités",
-    "habitat",
-    "indigne",
-    "données",
-    "cartographie",
+    "France",
     "React",
     "TypeScript",
     "PostgreSQL"

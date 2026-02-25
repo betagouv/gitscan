@@ -1,37 +1,45 @@
 ## Changelog : zero-logement-vacant (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application Zero Logement Vacant se concentrent sur l'amélioration de la gestion des logements, notamment l'édition groupée, la gestion des documents et l'ajout d'informations sur la performance énergétique des bâtiments. Des corrections de bugs et des optimisations de performance ont également été apportées.
+Les dernières mises à jour de l'application Zero Logement Vacant se concentrent sur l'amélioration de la gestion des documents, l'ajout de nouvelles fonctionnalités de filtrage et d'affichage des informations sur les logements, ainsi que des optimisations techniques et des corrections de bugs pour améliorer la performance et la stabilité de la plateforme. Des améliorations ont également été apportées à l'importation de données et à la sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de lier plusieurs documents à un logement (#1597).
-- Amélioration de l'interface pour l'édition groupée des logements, avec affichage des différences et gestion des précisions (#1548).
-- Ajout d'un système de suivi des événements liés aux documents (création, suppression, modification) pour une meilleure auditabilité.
-- Possibilité d'ajouter et de modifier des informations sur la performance énergétique des bâtiments (DPE, GES, RNB) (#1571).
-- Refonte du workflow d'upload des documents, avec une validation par extension de fichier (#1568).
-- Ajout d'un script pour exporter les utilisateurs du système pour le Portail DF (#1583).
-- Mise à jour des libellés et de la terminologie pour plus de clarté (ex: "édition groupée" au lieu de "mise à jour groupée").
-- Ajout de la possibilité de filtrer les logements par consommation d'énergie du bâtiment.
-- Ajout d'un affichage de l'ID de parcelle à la place de la référence cadastrale (#1625).
-- Amélioration de la gestion des années de données pour les fichiers de données, avec l'ajout de l'option 'datafoncier-manual' (#1612).
+- Ajout d'un filtre de localisation relative des logements (#1629).
+- Possibilité de masquer le nom du propriétaire d'un logement (#1635).
+- Amélioration de l'édition des informations DPE (Diagnostic de Performance Énergétique) et affichage de la consommation énergétique réelle (#1571).
+- Ajout d'un onglet pour gérer les documents liés à un logement, avec la possibilité de télécharger, renommer et supprimer des documents (#1577, #1601, #1610).
+- Affichage de l'ID de parcelle à la place de la référence cadastrale (#1625).
+- Amélioration de la gestion des sources de données externes (Insee, DGALN, DGFIP) et correction de bugs associés.
+- Mise à jour de la page 404.
+- Amélioration de la gestion des droits utilisateurs et filtrage des données en fonction du périmètre Portail DF (#1508).
+- Ajout d'un script pour exporter les utilisateurs vers Cerema-scraper (#1633).
+- Import des propriétaires depuis Datafoncier 2024 (#1627).
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances (React, Express, PostgreSQL, Docker, etc.) pour bénéficier des dernières corrections et améliorations de sécurité.
-- Optimisation de la configuration NX pour améliorer l'efficacité du cache et les performances de build.
-- Refactorisation du code pour supprimer les configurations et les dépendances inutiles.
-- Migration de la bibliothèque Highland vers Web Streams pour une meilleure gestion des flux de données.
-- Utilisation d'esbuild pour la compilation du serveur, améliorant ainsi la vitesse de build.
-- Simplification des exports des packages API vers ESM uniquement.
-- Amélioration de la gestion des tests et ajout de tests pour les nouvelles fonctionnalités.
-- Ajout de tests et de configuration pour Dagster.
-- Suppression des champs de précision obsolètes de la base de données et du code.
+- Refactorisation de la gestion des documents pour une meilleure architecture et une plus grande flexibilité.
+- Mise à jour et optimisation de la configuration NX pour améliorer les performances de build et de test.
+- Passage à Vitest 4 et correction des tests associés.
+- Utilisation d'esbuild pour la construction du serveur afin d'améliorer la vitesse de compilation.
+- Suppression de la bibliothèque Highland et migration vers Web Streams.
+- Amélioration de la gestion des événements liés aux documents (création, modification, suppression).
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
+- Mise à jour des dépendances (webpack, axios, express, lodash-es, posthog-js, effect, tar).
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Suppression des champs de précision obsolètes.
+- Ajout de migrations pour supprimer les colonnes de précision obsolètes de la base de données.
 
 ### Autres changements
-- Mise à jour de la documentation avec des informations sur les nouvelles fonctionnalités et les changements d'architecture.
-- Correction de typos et amélioration de la lisibilité du code.
-- Ajout de fichiers de configuration pour les agents d'IA.
-- Mise à jour des configurations des sources externes.
-- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
-- Ajout de la possibilité de spécifier la version de PostgreSQL pour les environnements de revue (#1626).
-- Ajout de la validation du préfixe international +33 pour les numéros de téléphone (#1623).
-- Optimisation de l'import des DPE avec une logique de nouvelle tentative et de limitation du débit (#1515).
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'architecture.
+- Ajout de fichiers de configuration pour les agents IA (AGENTS.md).
+- Correction de problèmes de configuration CI/CD.
+- Mise en production de nouvelles versions de l'application.
+- Amélioration de la gestion des secrets et des variables d'environnement.
+- Correction de problèmes de typage et de linting.
+- Suppression de code inutile et nettoyage du codebase.
+- Mise à jour des configurations de déploiement.
+- Ajout d'un script pour lister les logements potentiellement erronés.
+- Ajout d'un script pour mettre à jour le statut des logements en campagne.
+- Correction de la gestion des fuseaux horaires.
+- Amélioration de la gestion des erreurs de validation.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
