@@ -4,23 +4,25 @@
   "description": "Permet la réalisation de comptes rendus par des agents - Architectes des Bâtiments de France - lors de leurs rencontres avec les usagers.",
   "language": "JavaScript",
   "features": [
-    "Gestion des rapports",
-    "Génération de PDF",
-    "Alertes",
-    "Gestion des notes",
-    "Téléchargement de photos",
-    "Synchronisation en temps réel"
+    "Gestion des alertes",
+    "Génération de rapports PDF",
+    "Synchronisation des données",
+    "Gestion des monuments et mobiliers",
+    "Téléchargement d'images",
+    "Gestion des utilisateurs",
+    "Notes et commentaires"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Node.js",
+    "React",
+    "Vite",
     "PostgreSQL",
-    "Fastify",
-    "Kysely",
-    "Drizzle ORM",
-    "AWS S3",
-    "PowerSync"
+    "kysely",
+    "PowerSync",
+    "fastify",
+    "typebox",
+    "Tanstack Query"
   ],
   "components": [
     "Frontend React",
@@ -28,21 +30,18 @@
     "API REST",
     "Base de données PostgreSQL",
     "Serveur WebSocket PowerSync",
-    "Stockage MinIO",
     "Stockage S3"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "email-password"
     ]
   },
-  "tests": [
-    "Vitest"
-  ],
+  "tests": "Playwright",
   "workflows": [
-    "CI/CD"
+    "CI"
   ],
-  "lastActivity": "2026-02-19T13:07:47+00:00",
+  "lastActivity": "2026-02-24T15:46:21+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -53,11 +52,12 @@
     "openIssues": 1
   },
   "tags": [
+    "gestion de patrimoine",
     "rapports",
     "administration",
     "architecture",
-    "PDF",
-    "synchronisation",
-    "immobilier"
+    "JavaScript",
+    "React",
+    "Node.js"
   ]
 }

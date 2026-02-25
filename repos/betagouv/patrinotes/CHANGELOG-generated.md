@@ -1,103 +1,405 @@
 ## Changelog : patrinotes (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Patrinotes se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des alertes, des rapports et des formulaires. De nombreuses corrections de bugs ont été apportées pour améliorer la stabilité et la fluidité de l'application, ainsi que des améliorations visuelles et fonctionnelles pour faciliter l'utilisation quotidienne.
+Les dernières mises à jour de Patrinotes se concentrent sur l'amélioration de la gestion des alertes et des notes, ainsi que sur des corrections de bugs et des améliorations de l'interface utilisateur, notamment sur les formulaires et la génération de PDF. Plusieurs optimisations ont été apportées pour une meilleure expérience utilisateur sur mobile et pour la gestion des monuments historiques et mobiliers.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de masquer complètement le bouton d'alertes.
-- Désactivation de la longueur minimale du mot de passe lors de l'inscription (#055cc13).
-- Désactivation des alertes sur la page des services (#d7b74c5).
-- Amélioration de l'affichage des boutons "MH non lié" et des alertes sur mobile (#9b0d242).
-- Correction de l'input email CRVIF (#6a4ce40).
-- Affichage de l'adresse complète dans le PDF (#1c23868).
-- Transformation du texte de l'en-tête pour s'adapter à n'importe quel service (#9d86365).
-- Suppression d'image sur le formulaire CRVIF (#9a14574).
-- Ajout d'une confirmation modale lors de la suppression de rapports et de state reports (#20f115d).
-- Ajout d'une section "Profil" dans la page du compte (#0440064).
-- Ajout de la possibilité d'ajouter plusieurs emails aux alertes (#1fa0cc8).
-- Ajout d'un formulaire de notes (#83de982).
-- Ajout d'une popup d'erreur cliquable pour les alertes, avec transmission des données au backend (#0693220).
-- Ajout de la possibilité d'uploader des images pour les alertes (#19b9795).
-- Ajout de la possibilité de sélectionner des objets (#0d5f68f).
-- Ajout d'une barre de navigation collante dans les pages de state report (#11e7e7b).
-- Ajout de tabs pour les constats sur mobile (#a626679).
-- Ajout d'un indicateur de statut de connexion (#dc8ba46).
-- Ajout d'un bouton "clear" dans le constat détaillé (#446ae76).
+- Ajout de la possibilité de gérer plusieurs adresses email pour les alertes (#992d11d).
+- Implémentation d'un formulaire de notes (#83de982).
+- Amélioration de la navigation dans les pages de rapport d'état avec une barre de navigation collante (#11e7e7b).
+- Ajout d'une section "Profil" dans les paramètres du compte (#0440064).
+- Possibilité de définir des services par défaut pour les alertes (#992d11d).
+- Ajout d'un sélecteur d'objets (#0d5f68f).
+- Ajout de la possibilité de supprimer un rapport ou un rapport d'état avec une confirmation (#20f115d).
+- Amélioration de l'affichage des statuts de synchronisation et de la connexion (#dc8ba46).
+- Ajout d'une fonctionnalité de saisie semi-automatique pour les monuments historiques (#f83fda1).
+- Ajout d'une option pour désactiver la génération du PDF du rapport d'état (#321cae5).
+- Ajout d'une fonctionnalité de suppression d'images dans le formulaire CRVIF (#9a14574).
+- Amélioration de l'affichage des adresses complètes dans les PDF (#1c23868).
+- Ajout d'un bouton "Effacer" dans le champ email du constat détaillé (#446ae76).
+- Ajout d'un bouton pour masquer les alertes sur la page service (#79883b3).
+- Amélioration de l'affichage des alertes sur mobile (#9b0d242).
+- Ajout d'une fonctionnalité pour masquer le bouton d'alerte complètement (#79883b3).
 
 ### Évolutions techniques
-- Refactorisation de la gestion des alertes (#ef5c25c).
-- Mise à jour de Tanstack Query vers la version 5 (#c05f1b1).
-- Utilisation de `useInfiniteQuery` pour les objets MH (#418fd6b).
-- Ajout d'une migration (#0fd3134).
-- Ajout d'allowed host (#e403248).
-- Mise à jour de la configuration PWA (#1625f75).
-- Suppression d'une ancienne variable d'environnement (#5257e32).
-- Mise à jour de la CI (#28aa450).
+- Mise à jour de la librairie Tanstack Query vers la version 5 (#c05f1b1).
+- Refactorisation de la récupération des objets et mobiliers pour utiliser `useInfiniteQuery` (#418fd6b).
+- Ajout de migrations (#0fd3134).
+- Correction de plusieurs problèmes liés à l'affichage des PDF, notamment la gestion des titres et des images (#2c9d578, #e3643e0, #3cc89ce).
+- Amélioration de la gestion des erreurs et ajout de logs (#7560f1f).
+- Ajout d'une variable d'environnement pour activer/désactiver les alertes (#8f542fa).
 
 ### Autres changements
-- Correction de plusieurs typos (#3af5fd8, #fda69ba).
-- Mise à jour du nom de l'application en "Patrinotes" dans tout le code (#4397f9d, #e8eb07f).
-- Amélioration de la gestion des erreurs de connexion (#f6b7ae9).
-- Correction de problèmes d'affichage et de style divers (#774c0aa, #bbb7785, #374da39, #6a7284d).
-- Correction de bugs liés à la duplication de state reports (#49fd062).
-- Correction de bugs liés à la suppression de clauses (#e93fa07).
-- Correction de bugs liés à la gestion des emails (#712952d, #8f542fa).
-- Correction de bugs liés à l'affichage des images (#5a94ef6).
-- Correction de bugs liés à la synchronisation du statut (#1421dec).
-- Correction de bugs liés à l'affichage des alertes (#7683715).
-- Correction de bugs liés à la redirection (#7bde432).
-- Ajout de logs d'erreur (#7560f1f).
-- Amélioration de la gestion des erreurs lors de l'inscription (#bf1047b).
-- Correction de problèmes de marge sur les pages service/compte (#bf1047b).
-- Correction de problèmes d'affichage sur mobile (#95b21df).
-- Correction de bugs liés à l'affichage des informations de service (#7e26179).
-- Correction de bugs liés à la gestion des sections de constat détaillé (#712952d).
-- Correction de bugs liés à l'utilisation de "isSectionVisited" (#1c1692a).
-- Correction de bugs liés à l'affichage des emails (#8fd3697).
-- Correction de bugs liés à l'affichage du header PDF (#10d50fb).
-- Correction de bugs liés à l'affichage du texte Marianne dans le PDF (#e3643e0).
-- Ajout de contraintes pour l'en-tête PDF (#ebca782).
-- Correction de bugs liés à la suppression de report modal (#d2c110e).
-- Correction de bugs liés à l'affichage du flicker du destinataire (#9e9b748).
-- Correction de bugs liés à la gestion des objets et mobiliers (#67c7514).
-- Correction de bugs liés à la duplication de state report (#0b58511).
-- Correction de bugs liés à l'édition du profil du compte (#8cb289f).
-- Correction de bugs liés à l'affichage des alertes (#d60e7af).
-- Correction de bugs liés à l'affichage des tuiles de constat détaillé (#fd2068b).
-- Correction de bugs liés à l'affichage des vignettes de photos (#774c0aa).
-- Correction de bugs liés au bouton de canvas de dessin (#bbb7785).
-- Correction de bugs liés à l'ajout de destinataires par défaut (#9775940).
-- Correction de bugs liés à l'affichage des résumés de compte et de service (#99282fa).
-- Correction de bugs liés à la pagination (#c841248).
-- Correction de bugs liés à la sélection de pièces jointes (#687514d).
-- Correction de bugs liés à l'auto-update (#1020e63).
-- Correction de bugs liés à la couverture de la vignette de la photo (#a441af9).
-- Correction de bugs liés au style de la page d'informations MH (#389d434).
-- Correction de bugs liés aux liens PDF (#3cc89ce).
-- Correction de bugs liés à l'affichage des liens PDF (#389d434).
-- Correction de bugs liés à l'affichage de l'adresse complète dans le PDF (#1c23868).
-- Correction de bugs liés à l'affichage des liens dans le PDF (#3cc89ce).
-- Correction de bugs liés à l'affichage du titre et de l'image dans le PDF (#2c9d578).
-- Correction de bugs liés à l'affichage des boutons (#374da39).
-- Correction de bugs liés au style de la page d'informations MH (#d840c7a).
-- Correction de bugs liés à l'espacement entre les vignettes (#6a7284d).
-- Correction de bugs liés à la taille de la vignette de la photo sur mobile (#774c0aa).
-- Correction de bugs liés à la couleur du bouton d'entrée d'email (#3a88914).
-- Correction de bugs liés à l'espacement entre les boutons (#3a88914).
-- Correction de bugs liés à la suppression de l'espace blanc en dessous de l'en-tête bleu et du pied de page (#2f74172).
-- Correction de bugs liés à la largeur des onglets (#66ad435).
-- Correction de bugs liés à l'affichage des onglets CE (#fce1378).
-- Correction de bugs liés à l'affichage des alertes (#faa42e0).
-- Correction de bugs liés à l'affichage des erreurs d'alerte (#373c2e3).
-- Correction de bugs liés à la sauvegarde automatique des alertes (#faa42e0).
-- Correction de bugs liés à l'affichage de la balise d'alerte (#7683715).
-- Correction de bugs liés à la mise à jour des emails du service (#1cb6105).
-- Correction de bugs liés à la largeur maximale du state report (#ee90e75).
-- Correction de bugs liés au style des tuiles de constat détaillé (#fd2068b).
-- Correction de bugs liés à l'ajout d'une ligne blanche si l'emplacement du monument n'est pas spécifié (#bacde31).
-- Correction de bugs liés à la désactivation du défilement lors du changement d'onglet de la page d'accueil (#fba6947).
-- Correction de bugs liés au style de la pagination (#c841248).
-- Correction de bugs liés à l'ajout de la section Profil dans la page du compte (#0440064).
-- Correction de bugs liés à la prévention de la création de clause avec une valeur vide (#2b3f3c0).
-- Correction de bugs liés à la définition des pages de service et de compte avec la même largeur (#bb44761).
-- Correction de bugs liés à la position du bouton Ajouter sur mobile (#151dac8).
+- Corrections de typos et améliorations de la lisibilité du code (#e8aa482, #e93fa07, #fda69ba, #3af5fd8).
+- Mise à jour du nom de l'application en "Patrinotes" dans la configuration PWA (#1625f75, #4397f9d, #e8eb07f).
+- Suppression de variables d'environnement obsolètes (#5257e32).
+- Amélioration de la gestion des emails et des destinataires (#1cb6105).
+- Corrections de bugs mineurs liés à l'interface utilisateur et à la disposition des éléments (#6a4ce40, #7e26179, #bf1047b, #774c0aa, #bbb7785).
+- Amélioration de la gestion des espaces et des marges (#2f74172, #66ad435).
+- Correction de problèmes liés à la duplication de rapports d'état (#49fd062).
+- Correction de problèmes liés à la suppression de clauses (#e931f2f).
+- Correction de problèmes liés à la saisie d'emails (#72f70c4, #b02c271).
+- Suppression de toutes les occurrences de "crvif" (#d07710a).
+- Remplacement de "null" par "" dans les PDF (#d796d8c).
+- Correction de la gestion des états non liés (#9b10aa2).
+- Correction de l'ordre des services (#435a2fd).
+- Correction de la longueur minimale du mot de passe lors de l'inscription (#055cc13).
+- Correction de l'entrée email CRVIF (#6a4ce40).
+- Correction de l'affichage des informations sur les monuments historiques (#7d1daae).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction du style des boutons de pagination (#c841248).
+- Correction de l'affichage des alertes (#5fc2d9c).
+- Correction du tri des alertes (#f3603ab).
+- Correction de l'affichage des étiquettes d'email (#72f70c4).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
+- Correction de la marge entre le service et le compte (#bf1047b).
+- Correction de l'affichage des informations sur les monuments historiques (#6a7284d).
+- Correction de l'affichage des vignettes d'images (#774c0aa).
+- Correction de l'affichage des boutons de dessin (#bbb7785).
+- Correction de l'affichage des erreurs de connexion (#f6b7ae9).
