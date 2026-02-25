@@ -1,44 +1,38 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il met en valeur les données hébergées sur data.gouv.fr, le portail français des données ouvertes.",
+  "description": "Ce projet est le dépôt du Point d'Accès National (NAP) français pour les données de mobilité. Il vise à centraliser et valoriser les données de mobilité hébergées sur data.gouv.fr, le portail français des données ouvertes.",
   "language": "Elixir",
   "features": [
-    "Import de données GTFS",
-    "Validation de données NeTEx",
     "Recherche de jeux de données",
     "Visualisation de données cartographiques",
+    "Validation de données (NeTEx, GTFS)",
     "Gestion des producteurs de données",
-    "Notifications d'erreurs et d'expiration",
-    "API pour accéder aux données",
-    "Proxy pour accéder à des données externes"
+    "Notifications d'expiration de données",
+    "Consolidation de données IRVE",
+    "Statistiques de téléchargement"
   ],
-  "audience": [
-    "Professionnels",
-    "Agents de l'Administration",
-    "Développeurs"
-  ],
+  "audience": "Professionnels",
   "dependencies": [
     "Phoenix",
     "Ecto",
     "PostgreSQL",
     "Leaflet",
     "Vega",
-    "Swoosh",
-    "Docker"
+    "Webpack",
+    "Yarn"
   ],
   "components": [
     "Frontend React",
     "Backend Elixir/Phoenix",
     "Base de données PostgreSQL",
     "API REST",
-    "Proxy HTTP",
-    "Workers pour tâches asynchrones"
+    "Proxy Unlock S3",
+    "Workers (tâches asynchrones)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "oauth2"
     ],
     "providers": [
       "Datagouvfr"
@@ -46,12 +40,13 @@
   },
   "tests": [
     "ExUnit",
-    "Rambo"
+    "Rambo",
+    "Jest"
   ],
   "workflows": [
-    "CI/CD avec CircleCI"
+    "CI/CD (CircleCI)"
   ],
-  "lastActivity": "2026-02-20T11:09:12Z",
+  "lastActivity": "2026-02-23T17:31:51Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -63,13 +58,13 @@
   },
   "tags": [
     "transport",
-    "mobilité",
-    "données ouvertes",
+    "mobility",
+    "open data",
     "GTFS",
     "NeTEx",
-    "API",
     "Elixir",
     "Phoenix",
-    "data.gouv.fr"
+    "data.gouv.fr",
+    "IRVE"
   ]
 }

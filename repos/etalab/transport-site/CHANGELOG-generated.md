@@ -1,41 +1,41 @@
 ## Changelog : transport-site (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées au site transport au cours du dernier mois. Les efforts se sont concentrés sur l'amélioration du support du format de données NeTEx, l'amélioration de la recherche de jeux de données, et l'amélioration de la consolidation des données IRVE. Des corrections et des optimisations diverses ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion et de la validation des données NeTEx et GTFS, ainsi que sur l'enrichissement des fonctionnalités de recherche et de consolidation des données IRVE. Des améliorations de performance et de maintenance ont également été apportées, notamment au niveau du proxy Unlock S3 et de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche de jeux de données avec la possibilité de filtrer par sous-type (#5303).
-- Ajout d'un menu de navigation sur la page de détails des ressources (#5311).
-- Affichage des dates de validité des données NeTEx dans les cartouches (#5331).
-- Ajout d'un indicateur "Périmé" sur les cartouches GTFS Flex (#5332).
-- Notification des ressources NeTEx expirées (#5336).
-- Remontée d'informations supplémentaires dans le cadre de la consolidation IRVE (#5321).
-- Ajout d'un rapport opérationnel global et détaillé (#5285).
-- Ajout de la possibilité d'ajouter des sous-types de catégories de données dans le backoffice (#5283).
+- **Recherche :** Possibilité de rechercher des jeux de données par sous-type (#5303). Cette fonctionnalité a été temporairement revertée puis réintégrée avec des corrections (#5324).
+- **NeTEx :** Amélioration de la robustesse du parseur NeTEx pour gérer les dossiers (#5355).
+- **NeTEx :** Ajout de l'affichage des métadonnées associées aux données NeTEx (#5339).
+- **NeTEx :** Ajout d'un indicateur pour signaler les dates de validité manquantes (#5337) et la notification des ressources expirées (#5336).
+- **NeTEx :** Extraction des métadonnées NeTEx lors de la validation des données (#5323).
+- **GTFS Flex :** Ajout d'un indicateur "Périmé" sur la cartouche des données GTFS Flex (#5332).
+- **IRVE :** Amélioration de la consolidation des données IRVE, avec remontée d'informations supplémentaires (#5321) et identification des datasets présents sur data.gouv.fr mais absents du système (#5276).
+- **Interface utilisateur :** Ajout d'un menu de navigation sur la page de détails des ressources (#5311).
+- **Espace producteur :** Mise à jour du fil d'ariane (#5299).
+- **Backoffice :** Ajout d'un champ pour le sous-type de catégorie de données (#5283).
+- **Rapport opérationnel :** Ajout d'un rapport opérationnel avec un suivi global et détaillé (#5285).
 
 ### Évolutions techniques
-- Amélioration de la robustesse du parseur NeTEx pour gérer les dossiers (#5355).
-- Extraction des métadonnées NeTEx lors de la validation pour faciliter leur utilisation (#5323).
-- Divers refactorings et corrections dans le code NeTEx (#5338).
-- Amélioration des extracteurs NeTEx suite à des tests (#5320).
-- Optimisation de la recherche en mémoire pour les jeux de données (#5345, #5340, #5333).
-- Mise en cache sur disque et vérification ETag pour le proxy Unlock S3 (#5264).
-- Correction de la sérialisation des sous-types de données (#5307).
-- Suppression de code mort dans le DatasetController (#5329).
-- Correction de la valeur de configuration `jsonschema_validator_impl` (#5284).
+- **Proxy Unlock S3 :** Mise en place d'un cache sur disque et vérification de l'ETag pour améliorer les performances (#5264).
+- **Consolidation IRVE :** Modification de l'heure d'exécution du job de consolidation IRVE (#5300).
+- **Refactoring :** Divers refactorings et corrections dans le code NeTEx (#5338).
+- **Configuration :** Actualisation de la configuration ZFE (#5348).
+- **Tests :** Améliorations des extracteurs NeTEx suite à des tests (#5320).
+- **Base de données :** Correction d'un problème de sérialisation des sous-types de données (#5307) et suppression de code mort dans le DatasetController (#5329).
+- **Authentification :** Désactivation du log de requêtes dans le plug TokenAuth pour Unlock (#5314).
 
 ### Autres changements
+- Suppression des pdc avec id_pdc_itinerance "non concerné" de la consolidation IRVE dédoublonnée (#5360).
+- Correction d'une URL de ressource mal encodée (#5363).
+- Renommage du rapport de consolidation IRVE (#5359).
 - Nettoyage de warnings de compilation (#5344).
-- Actualisation de la configuration ZFE (#5348).
-- Suppression d'une fonctionnalité de recherche par sous-type de données qui causait des problèmes (#5324).
 - Nettoyage routinier du code (#5322).
-- Page de nouveautés mise à jour pour janvier 2026 (#5304).
-- Correction d'un problème avec le tag de début dans le feed Atom (#5308).
-- Amélioration de la gestion des points de contact lors de l'import de jeux de données (#5288, #5287).
-- Ajout de statistiques sur le nombre de ressources (#5277).
-- Correction de la gestion des tabulations dans les fichiers IRVE (#5281).
-- Log du début du job de consolidation IRVE (#5286).
-- Export de la base de données IRVE (#5255).
-- Correction d'un bug dans le fil d'ariane de l'espace producteur (#5299).
+- Correction de bugs mineurs et améliorations de la maintenance générale.
+- Correction d'un tag de début dans le feed Atom (#5308).
+- Correction d'un problème avec la population des order_datasets (#5328).
 - Suppression d'un tag saisonnier inutile (#5297).
-- Modification de l'heure d'exécution de la consolidation IRVE (#5300).
+- Amélioration de la gestion des emails nil dans l'import des points de contact (#5288).
+- Ajout du comptage du nombre de ressources dans StatsHandler (#5277).
+- Modification de la gestion des contact_points pour qu'ils soient une liste (#5287).
+- Ajout de logs au début du job de consolidation IRVE (#5286).
