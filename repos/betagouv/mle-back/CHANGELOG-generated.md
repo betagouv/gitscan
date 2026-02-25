@@ -1,24 +1,35 @@
-## Changelog : mle-back (derniers 30 jours)
+## Changelog : mle-back (30 derniers jours)
 
 ### Résumé
-Les dernières évolutions de Mon Logement Étudiant (mle-back) se concentrent sur l'amélioration de la recherche de logements, la gestion des utilisateurs et la correction de bugs. Des améliorations ont été apportées à la recherche de territoires et à la gestion des alertes, ainsi qu'à la robustesse de l'application grâce à des contraintes d'unicité sur les adresses email et des corrections de sérialisation.
+Les dernières semaines ont été marquées par des améliorations significatives de la recherche de logements, notamment l'ajout de critères de prix, l'intégration de nouvelles sources de données (SAIEM Dragouignan, Cardinal Campus, Logis Métropole, ACM Habitat), et l'amélioration de la pertinence des résultats. Des fonctionnalités de notification ont été ajoutées, ainsi qu'un suivi des événements via Matomo pour mieux comprendre l'utilisation de l'application. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance du backend.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche de territoires (#38a5f05)
-- Ajout du nombre d'alertes disponibles pour un utilisateur (#553ff58)
-- Correction de l'affichage de l'URL du site frontal sur l'environnement de staging (#e82d533)
-- Correction de l'ID dans le sérialiseur utilisateur (#b4e88de)
-- Ajout de la bounding box (BBox) au sérialiseur de ville (#f0bd4d6)
+- Ajout de filtres de prix minimum et maximum dans la recherche de logements (#38b7682).
+- Intégration de la source de logements SAIEM Dragouignan (#3574821).
+- Intégration de la source de logements Cardinal Campus (#fbef5a3).
+- Intégration de la source de logements Logis Métropole (#9eacf0e).
+- Intégration de la source de logements ACM Habitat (#0d23ae2).
+- Ajout de la possibilité d'ajouter une image lors de la création d'un logement (#f5c2c71).
+- Ajout d'une fonctionnalité de notification pour informer les utilisateurs des nouvelles offres (#2583247).
+- Ajout du nombre d'alertes pour l'utilisateur (#2d0854e).
+- Ajout d'un service de gestion des villes (#6f4a589).
+- Ajout du champ "wifi" aux logements (#778eb69).
+- Amélioration du classement des logements dans les résultats de recherche (#c0949ff).
 
 ### Évolutions techniques
-- Ajout d'une contrainte d'unicité sur l'adresse email des utilisateurs au niveau de la base de données (#1a058d9)
-- Refactorisation du code et suppression de code inutile (#f0af2eb, #b6129b5)
-- Correction de l'importation des fichiers CSV en supprimant le BOM (Byte Order Mark) (#d5aa3e6)
-- Amélioration des tests et correction de la sérialisation (#1ef61a4, #4ba5fc3, #25af037, #6008e6b)
+- Mise en place d'un suivi des événements via Matomo pour l'analyse de l'utilisation (#3e99f65).
+- Refactorisation du code pour améliorer la qualité et la maintenabilité (#f09a9c1).
+- Amélioration de la recherche avec l'utilisation de FTS et de trigrammes (#0d6bff9).
+- Utilisation de contraintes de base de données pour garantir l'unicité de l'adresse email des utilisateurs (#f58cb4d).
+- Mise à jour des dépendances : Ruff (0.14.10 -> 0.14.11 -> 0.14.13 -> 0.15.0), Sentry SDK (2.48.0 -> 2.49.0 -> 2.50.0 -> 2.51.0 -> 2.52.0), djangorestframework-stubs (3.16.6 -> 3.16.7).
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code (#2352def).
+- Amélioration de la gestion des variables d'environnement (#a32c2e9).
 
 ### Autres changements
-- Mise à jour de la dépendance `sentry-sdk` de la version 2.48.0 à la version 2.49.0 (#0d48cba)
-- Mise à jour de la dépendance `ruff` de la version 0.14.10 à la version 0.14.11 (#f65dc51)
-- Ajout de migrations (#7745c6a)
-- Ajout d'un nouveau test (#25af037)
-- Temporisation à 5 minutes pour les tests (#54d6f65)
+- Correction de bugs liés à l'export Excel, notamment l'affichage de la disponibilité et des prix (#c831251, #d86b071).
+- Correction de problèmes d'URL pour les images (#ea50a3e, #e6c0926).
+- Ajout d'un script pour importer les prix du CROUS (#d37f968).
+- Ajout d'un fichier de verrouillage pour les dépendances (#c5a4245).
+- Suppression de code inutile (#707177b, #67541d0).
+- Amélioration des messages de notification (#47dfda4).
+- Correction de bugs et amélioration des tests (#242af63, #5a3e4d7, #df28500, #d3f16ff, #f955c00, #6008e6b, #38a5f05).

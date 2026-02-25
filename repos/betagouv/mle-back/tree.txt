@@ -98,12 +98,16 @@
 │   │   ├── 0047_alter_externalsource_source.py
 │   │   ├── 0048_alter_externalsource_source.py
 │   │   ├── 0049_alter_externalsource_source.py
+│   │   ├── 0050_accommodation_external_reference_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── pagination.py
 │   ├── pricing.py
 │   ├── queryset.py
 │   ├── serializers.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   └── accommodations_xlsx_export_service.py
 │   ├── services.py
 │   ├── urls.py
 │   ├── utils.py
@@ -221,10 +225,12 @@
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── collect_event_stats.py
 │   │       ├── collect_monthly_stats.py
 │   │       └── collect_weekly_stats.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
+│   │   ├── 0002_add_event_stats.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services.py
@@ -232,6 +238,9 @@
 │   └── views.py
 ├── templates
 │   └── admin
+│       ├── accommodation
+│       │   └── accommodation
+│       │       └── change_list.html
 │       ├── change_form.html
 │       └── login.html
 ├── territories
@@ -275,6 +284,7 @@
     ├── accommodation
     │   ├── __init__.py
     │   ├── factories.py
+    │   ├── test_accommodations_xlsx_export_service.py
     │   ├── test_api.py
     │   ├── test_bootstrap_events.py
     │   ├── test_crous_prices_service.py
@@ -312,4 +322,4 @@
         ├── factories.py
         ├── test_api.py
         └── test_city_search.py
-50 directories, 264 files
+53 directories, 271 files
