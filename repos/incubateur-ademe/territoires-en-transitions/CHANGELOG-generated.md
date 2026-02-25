@@ -1,41 +1,52 @@
 ## Changelog : territoires-en-transitions (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment une refonte de l'onglet budget des Fiches Actions, l'ajout de la gestion des sous-actions et une amélioration de la navigation et de l'édition des plans. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de la plateforme.
+Cette version apporte des améliorations significatives à l'interface utilisateur, notamment une refonte de l'affichage des plans et des axes, avec une nouvelle gestion des sous-actions. De nombreuses corrections de bugs et optimisations de performance ont également été implémentées, ainsi que des améliorations de la sécurité et de la gestion des notifications.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des sous-actions : création, édition, suppression et affichage dans le tableau de bord personnel. (#87ce5d3, #802a2da, #6a90b1f, #5225f23, #4ca1383, #2624f36)
-- Refonte de l'onglet Budget des Fiches Actions. (#79d0d48)
-- Ajout de la possibilité de déplacer des fiches dans le plan. (#1d8e0f2)
-- Ajout de la possibilité de modifier la description des axes. (#3bde1c5)
-- Amélioration de la gestion des notifications : ajout de notifications "toast" et personnalisation des messages. (#97202e3, #601277a)
-- Ajout de l'information COT (Code Type d'Occupation) pour les collectivités et les informations utilisateur. (#ff525e8)
-- Possibilité de masquer les boutons d'édition et de suppression pour les fiches confidentielles en mode visite. (#9f81320)
-- Ajout d'un bouton pour ouvrir/fermer tous les axes/sous-axes d'un plan. (#df37e39)
-- Ajout de la possibilité de lister uniquement les sous-actions. (#a9c0dec)
-- Ajout d'indicateurs liés aux axes dans la liste des indicateurs associés à un plan. (#6e6a041)
+- Ajout de la possibilité de taguer les plans. (#9817db5)
+- Ajout de la gestion des préférences utilisateur, incluant la possibilité de désactiver les notifications d'affectation. (#cfb7699, #b9e0418)
+- Refonte de l'affichage des plans avec une nouvelle arborescence et une gestion améliorée des axes et des sous-actions. (#385ae87, #120b65d)
+- Ajout de la possibilité de déplacer les fiches dans l'arborescence du plan. (#1d8e0f2)
+- Ajout d'un bouton pour ouvrir/fermer tous les axes/sous-axes. (#da66be6)
+- Amélioration de la gestion des indicateurs liés aux axes. (#6866ac0)
+- Ajout de la possibilité d'ajouter une description aux axes. (#1e04138)
+- Ajout de la fonctionnalité de déplacement des axes. (#179ea91)
+- Intégration de l'information COT (Code des Territoires) pour les collectivités et les informations utilisateur. (#ff525e8)
+- Suppression du feature flag de génération de rapports, la fonctionnalité est maintenant activée par défaut. (#6f40d1b)
+- Amélioration de l'affichage des indicateurs dans le détail d'un plan. (#df37e39)
+- Ajout de la gestion des budgets agrégés dans le header du plan. (#1a95013)
+- Ajout de la possibilité de masquer des colonnes dans le tableau des sous-actions. (#802a2da)
+- Ajout d'une modale pour la suppression des sous-actions. (#641685b)
 
 ### Évolutions techniques
-- Mise à jour de Next.js pour corriger les vulnérabilités RSC. (#c08fd38)
-- Migration vers un nouveau système de rôles et permissions. (#90420cc, #cc27e95, #8e4882f)
-- Refactoring de l'import de plan. (#7ec00ab)
-- Utilisation de tRPC pour la mise à jour des documents et des commentaires. (#a218361, #f06cf09, #d5e01e8)
-- Amélioration des performances des suppressions dans `indicateur_source_metadonnee`. (#6c25968)
-- Suppression de l'utilisation de `luxon` et remplacement par des alternatives plus légères. (#2e8d683, #17867e8)
-- Mise à jour des dépendances : Supabase, Storybook, Nx, Vite, TypeScript. (#57ae963, #89425dc, #2825f81)
-- Migration vers echarts pour les graphiques. (#07fca89, #6e065c1, #5bb462f)
-- Suppression du CSS DSFR et remplacement par des composants du design system. (#35bd0c2, #f95d3f0)
+- Migration vers un nouveau système de rôles et permissions pour une gestion plus fine des accès. (#90420cc)
+- Refactor de l'import de plan pour améliorer la performance et la robustesse. (#973e729)
+- Utilisation de tRPC pour la sauvegarde des actions statuts et des commentaires dans les référentiels. (#a218361, #f06cf09)
+- Suppression de l'utilisation de `luxon` au profit de librairies plus performantes. (#c1dec51, #87d7422)
+- Mise à jour de Next.js pour corriger des vulnérabilités liées aux Server Side Components (RSC). (#c08fd38)
+- Refonte de la feature d'import de plan. (#7ec00ab)
+- Suppression de drizzle-zod. (#2e8d683)
+- Migration des charts Nivo vers Echarts pour de meilleures performances et fonctionnalités. (#d3b47c4, #5bb462f)
+- Activation de Turbopack pour l'optimisation des builds en développement et en production. (#d40c948, #6ae6e50)
+- Amélioration de la gestion des erreurs et ajout de logs avec correlation ID. (#3ca7b83)
+- Utilisation de Sentry pour la gestion des erreurs en production. (#95018da)
+- Suppression de Datadog Logs. (#4f6a2b5)
+- Amélioration de la gestion des permissions pour l'accès aux données. (#83e592d)
 
 ### Autres changements
-- Ajout de tests e2e pour les nouvelles fonctionnalités. (#a0cc8b8, #7727929, #24dcf7e)
-- Amélioration de la documentation et des messages d'erreur. (#5ef9207, #0ea2709)
-- Correction de bugs mineurs et améliorations de la qualité du code. (#d245874, #d440905, #6fafe12, #fec4efc, #4eb0a84)
-- Ajout de variables d'environnement pour configurer le délai d'envoi des notifications. (#e9761a5)
-- Ajout de la gestion des préférences utilisateur (notifications, etc.). (#cfb7699, #b9e0418, #8f5f44e, #de2997d)
-- Suppression des tests e2e défaillants pour les actions commentaires. (#d440905)
-- Suppression de code non utilisé. (#2f6c38d, #558a2e7)
-- Amélioration de la gestion des erreurs et des logs. (#3ca7b83, #361d6ba)
-- Ajout de tests unitaires et d'intégration. (#40c2049)
-- Correction de problèmes de typage. (#83e592d)
-- Amélioration de la gestion des permissions. (#9817db5)
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Correction de plusieurs bugs mineurs liés à l'interface utilisateur et à la gestion des données.
+- Amélioration de la documentation et des tests.
+- Mise à jour des dépendances.
+- Amélioration des messages de notification "toast". (#97202e3)
+- Ajout de tests e2e pour les nouvelles fonctionnalités.
+- Correction de problèmes de linting. (#0190f9c)
+- Suppression de code inutilisé.
+- Amélioration de la performance de certaines requêtes. (#6c25968)
+- Correction de problèmes de typage.
+- Ajustement de la taille des boutons et des libellés.
+- Suppression du CSS DSFR et remplacement par des composants du design system. (#9421394)
+- Ajout de la fonte Marianne. (#87fa8b4)
+- Correction de l'affichage des liens. (#f349379)
+- Amélioration de la gestion des erreurs lors de l'import de données. (#79861f5)
+- Correction de coquilles et amélioration de la clarté des messages. (#60054e5, #0ea2709)
