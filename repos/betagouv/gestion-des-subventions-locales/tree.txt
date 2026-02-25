@@ -95,6 +95,9 @@
 │   │   │   ├── header.html
 │   │   │   ├── main_menu.html
 │   │   │   └── messages.html
+│   │   ├── gsl_core
+│   │   │   ├── otp_setup.html
+│   │   │   └── otp_verify.html
 │   │   └── includes
 │   │       ├── _enveloppe_summary.html
 │   │       └── _enveloppe_summary_line.html
@@ -107,6 +110,7 @@
 │   │       └── test_gsl_filters.py
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── conftest.py
 │   │   ├── factories.py
 │   │   ├── test_admin.py
 │   │   ├── test_commands.py
@@ -115,10 +119,13 @@
 │   │   ├── test_middlewares.py
 │   │   ├── test_model_adresse.py
 │   │   ├── test_models.py
+│   │   ├── test_otp.py
 │   │   ├── test_tasks.py
 │   │   ├── test_user_import.py
 │   │   └── test_user_model.py
-│   └── view_mixins.py
+│   ├── urls.py
+│   ├── view_mixins.py
+│   └── views.py
 ├── gsl_demarches_simplifiees
 │   ├── __init__.py
 │   ├── admin.py
@@ -206,6 +213,7 @@
 │   │   ├── 0045_remove_dossierdata_ds_demarche_dossier_ds_demarche_and_more.py
 │   │   ├── 0046_remove_dossier_ds_demarche_number.py
 │   │   ├── 0047_alter_dossier_ds_demarche.py
+│   │   ├── 0048_move_dossier_relation_to_dossierdata.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -752,4 +760,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-143 directories, 611 files
+144 directories, 618 files
