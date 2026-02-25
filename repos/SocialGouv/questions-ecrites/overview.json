@@ -1,0 +1,66 @@
+{
+  "url": "https://github.com/SocialGouv/questions-ecrites",
+  "name": "questions-ecrites",
+  "description": "Ce projet ingère des descriptions de poste dans un vecteur store Qdrant et utilise un rerank augmenté par la récupération pour associer les questions sans réponse aux personnes les plus susceptibles d'avoir l'expertise appropriée.",
+  "language": "Python",
+  "features": [
+    "Ingestion de descriptions de poste",
+    "Recherche vectorielle",
+    "Reranking",
+    "Association de questions à des experts"
+  ],
+  "audience": "Agents de l'Administration",
+  "dependencies": [
+    "pypdf",
+    "python-docx",
+    "requests",
+    "textract",
+    "psycopg",
+    "alembic",
+    "polars",
+    "openpyxl",
+    "Qdrant",
+    "Socle IA",
+    "Albert"
+  ],
+  "components": [
+    "Backend Python",
+    "Base de données PostgreSQL",
+    "Vecteur store Qdrant",
+    "API Socle IA",
+    "API Albert"
+  ],
+  "auth": {
+    "methods": [
+      "api-key"
+    ]
+  },
+  "tests": [
+    "pytest"
+  ],
+  "workflows": [
+    "claude-issue.yml",
+    "claude-pr.yml",
+    "claude-question.yml"
+  ],
+  "lastActivity": "2026-02-23T21:33:34+01:00",
+  "status": "active",
+  "license": null,
+  "hasDocumentation": true,
+  "metrics": {
+    "stars": 0,
+    "forks": 0,
+    "contributors": 1,
+    "openIssues": 0
+  },
+  "tags": [
+    "questions-ecrites",
+    "Qdrant",
+    "Socle IA",
+    "Albert",
+    "PostgreSQL",
+    "Python",
+    "vector store",
+    "reranking"
+  ]
+}
