@@ -4,65 +4,50 @@
   "description": "Plateforme du Service National Universel, organisée en plusieurs services : interface publique, interface de gestion et API.",
   "language": "TypeScript",
   "features": [
-    "Gestion des missions",
-    "Gestion des volontaires",
-    "Gestion des sessions",
-    "Export de données (DSNJ)",
     "Authentification utilisateur",
-    "Gestion des adresses",
-    "Gestion des pièces d'identité"
+    "Gestion des utilisateurs",
+    "Gestion des sessions",
+    "Export de données",
+    "Gestion des candidatures",
+    "Gestion des référents",
+    "Gestion des missions",
+    "Téléchargement de documents"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Express",
-    "PostgreSQL",
-    "turbo",
+    "npm",
     "dotenv-cli",
-    "patch-package",
-    "heic2any",
-    "json-2-csv",
-    "libphonenumber-js",
-    "@bull-board/express"
+    "turbo"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "Base de données PostgreSQL",
-    "Interface de gestion",
-    "Interface publique"
+    "Base de données MongoDB",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
-      "sso"
+      "session"
     ]
   },
-  "tests": "Jest, Pytest, Cypress",
+  "tests": "Tests unitaires et d'intégration",
   "workflows": [
-    "CI",
-    "CD",
-    "Déploiement hebdomadaire"
+    "CI/CD avec GitHub Actions"
   ],
   "lastActivity": "2024-05-10T00:00:00Z",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Service National Universel",
     "SNU",
-    "Engagement Civique",
     "Plateforme",
     "Administration",
+    "Engagement Civique",
     "React",
-    "TypeScript",
-    "API"
+    "TypeScript"
   ]
 }
