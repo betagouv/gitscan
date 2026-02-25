@@ -1,9 +1,14 @@
-## Changelog : lab-anssi-lib (derniers 30 jours)
+## Changelog : lab-anssi-lib (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à la librairie `lab-anssi-lib`. Les changements se concentrent sur la modernisation de la gestion des dépendances du projet en passant de `npm` à `pnpm`, ainsi que sur la stabilisation des versions des dépendances pour garantir une meilleure cohérence et éviter des comportements inattendus.
+Cette nouvelle version de la librairie `lab-anssi-lib` (2.1.5) apporte des mises à jour de sécurité importantes pour plusieurs dépendances, notamment `axios`, `express-ipfilter`, `qs` et `express`. Une option a également été ajoutée pour faciliter la publication sur npm.
 
 ### Évolutions techniques
-- Passage de `npm` à `pnpm` pour la gestion des paquets (#46feea9)
-- Renforcement des contraintes de version des dépendances pour une meilleure stabilité (#a21b766, #7472038)
-- Prévention des erreurs potentielles liées à l'utilisation de `npm` en forçant l'utilisation de `pnpm` (#abe76fb)
+- Mise à jour de `express` en version 5 pour bénéficier des dernières améliorations et correctifs de sécurité.
+- Mise à jour de `axios` suite à une alerte de sécurité dependabot (#13).
+- Mise à jour de `express-ipfilter` suite à une alerte de sécurité dependabot concernant la dépendance `lodash` (#8).
+- Mise à jour de `qs` suite à une alerte de sécurité dependabot (#7).
+- Ajout du paramètre `--no-git-checks` pour permettre la publication sur npm sans vérification de l'état du dépôt git.
+
+### Autres changements
+- Passage à la version 2.1.4 puis 2.1.5.
