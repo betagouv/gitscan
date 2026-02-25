@@ -2,9 +2,29 @@
 
 ## [Unreleased]
 
+## 0.19.9
+
+### Patch Changes
+
+- ignore right-click events from portals for ContextMenu
+
+## 0.19.8
+
+### Patch Changes
+
+- Fix typos
+- Fix the share modal design to match figma sketches
+
+## 0.19.7
+
+### Patch Changes
+
+- remove unused cunningham-react style imports messing css priority
+- fix restricted access french translation
+
 ## 0.19.6
 
-### Minor Changes
+### Patch Changes
 
 - upgrade cunningham-react to 4.2.0
 

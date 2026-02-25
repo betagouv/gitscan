@@ -1,25 +1,31 @@
-## Changelog : ui-kit (derniers 30 jours)
+## Changelog : ui-kit (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à la bibliothèque de composants ui-kit au cours des 30 derniers jours. Les nouveautés incluent l'ajout d'un menu contextuel accessible, d'un modal d'onboarding multi-étapes, et des améliorations apportées à des composants existants comme le menu déroulant, l'arborescence et le partage de contenu. La documentation a également été enrichie et des attributs de test ont été ajoutés pour faciliter les tests automatisés.
+Ce mois-ci, l'équipe a apporté des améliorations significatives à la bibliothèque de composants, notamment l'ajout de nouveaux composants comme le menu contextuel et le modal d'onboarding, ainsi que des corrections de bugs et des améliorations de l'expérience utilisateur sur des composants existants comme le menu de partage et la recherche rapide. Des mises à jour de dépendances et de documentation ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un menu contextuel accessible avec gestion des événements `onFocus` et `onBlur` pour le suivi des interactions (#43f70e6).
-- Ajout d'un modal d'onboarding multi-étapes pour guider les nouveaux utilisateurs (#fec5aee).
-- Amélioration du menu déroulant avec la possibilité d'ajouter des séparateurs et une variante "danger" (#b571ab0, #4d7165b, #f2dda2c).
-- Amélioration du composant TreeView (#dd569de).
-- Ajout de la possibilité d'ajouter un sous-texte aux options du menu déroulant (#d7558cb).
-- Ajout de nouveaux assets SVG pour les différents états d'un lien (#ee8fc80).
-- Amélioration du composant ShareModal avec la prise en charge des props du menu déroulant (#a966bbd).
+- Ajout d'un nouveau composant `ReleaseNoteModal` pour afficher les notes de version.
+- Ajout d'un nouveau composant `OnboardingModal` avec un mode texte uniquement et une animation de description (#175).
+- Amélioration du composant `ShareModal` avec la possibilité de masquer l'option de suppression en fonction d'un booléen `canDelete`.
+- Ajout de séparateurs et d'une variante "danger" au composant `DropdownMenu`.
+- Ajout d'un menu contextuel accessible (`ContextMenu`) avec des callbacks `onFocus` et `onBlur` pour le suivi des interactions.
+- Correction de l'affichage de l'option de suppression dans le menu déroulant des rôles d'accès.
+- Correction du padding du menu utilisateur.
+- Correction de la couleur du placeholder et de l'icône dans la recherche rapide.
+- Correction d'un bug dans `LaGaufreV2` concernant le type `apiUrl`.
 
 ### Évolutions techniques
-- Ajout d'attributs `data-testid` aux composants pour faciliter les tests automatisés (#a06a48d).
-- Ajout d'un type `MenuItem` partagé pour les menus contextuels et déroulants afin d'améliorer la cohérence du code (#4a7cb6a).
-- Exportation de la police Marianne en CSS (#88c3bd7).
-- Ajout d'un accès authentifié aux fichiers de localisation (#4af2171).
-- Suppression du répertoire `openspec` du suivi Git pour nettoyer le dépôt (#f794f31).
+- Mise à jour de la dépendance `cunningham-react` vers la version 4.2.0.
+- Suppression des importations de styles inutilisées de `cunningham-react`.
+- Refactoring du code pour déplacer l'action de suppression dans le composant `AccessRoleDropdown`.
+- Ajout d'un type `MenuItem` partagé pour les composants `ContextMenu` et `DropdownMenu`.
+- Suppression du répertoire `openspec` du suivi Git.
 
 ### Autres changements
-- Ajout d'une documentation README complète (#864ee1f).
-- Publication d'une nouvelle version du package (#3d8d679, #b58ec26).
-- Ajout de spécifications pour le menu contextuel avec le nouveau type `MenuItem` (#02602cc).
+- Amélioration de la documentation du composant `ShareModal` dans Storybook.
+- Ajout de documentation complète au fichier README.
+- Ajout de stories pour la fonctionnalité `can_delete` du composant `ShareModal`.
+- Correction d'une faute de frappe ("Ok" -> "OK") dans les locales.
+- Correction d'une traduction française restreinte.
+- Ajout de documentation d'utilisation pour les composants `DropdownMenu` et `OnboardingModal`.
+- Ajout de specs pour le menu contextuel avec le type `MenuItem` unifié.
