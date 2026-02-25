@@ -86,6 +86,7 @@
 │   │   ├── 0023_formationorganization_users_of.py
 │   │   ├── 0024_halfdayclass.py
 │   │   ├── 0025_halfdayclass_end_time_alter_formation_publish_or_not.py
+│   │   ├── 0026_alter_formation_options_and_more.py
 │   │   └── __init__.py
 │   ├── misc
 │   │   ├── __init__.py
@@ -148,7 +149,8 @@
 │   │   │           ├── accept_form.html
 │   │   │           ├── change_form.html
 │   │   │           ├── change_formation_form.html
-│   │   │           └── refusal_form.html
+│   │   │           ├── refusal_form.html
+│   │   │           └── unaccept_form.html
 │   │   ├── email
 │   │   │   ├── formation_organization_new_attendants.mjml
 │   │   │   ├── formation_organization_new_attendants.txt
@@ -527,6 +529,8 @@
 │   ├── admin
 │   │   ├── __init__.py
 │   │   ├── aidant.py
+│   │   ├── aidant_of.py
+│   │   ├── email_stats.py
 │   │   ├── habilitation_request.py
 │   │   ├── journal.py
 │   │   ├── mandat.py
@@ -656,10 +660,15 @@
 │   │   ├── 0081_aidant_is_admin_metier_aidant_is_of_user_and_more.py
 │   │   ├── 0081_habilitationrequest_email_formateur_and_more.py
 │   │   ├── 0082_merge_20260116_1011.py
+│   │   ├── 0083_habilitationrequest_email_annonce_formateur_pap_send_and_more.py
+│   │   ├── 0084_emailstatistics_aidantemailstats.py
+│   │   ├── 0085_aidantemailstats_infos.py
+│   │   ├── 0086_aidant_is_of_admin.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── aidant.py
+│   │   ├── email_stats.py
 │   │   ├── journal.py
 │   │   ├── mandat.py
 │   │   ├── notification.py
@@ -668,6 +677,7 @@
 │   │   ├── stats.py
 │   │   ├── usager.py
 │   │   └── utils.py
+│   ├── of_forms.py
 │   ├── presenters.py
 │   ├── signals.py
 │   ├── static
@@ -726,6 +736,7 @@
 │   │   │   ├── Aidants Connect_Charte-aidants.pdf
 │   │   │   ├── Aidants Connect_Charte-responsable-aidants-connect.pdf
 │   │   │   ├── AidantsConnect_ModeleRevocationMandat.pdf
+│   │   │   ├── AidantsConnect_support_de_formation.pdf
 │   │   │   ├── Aidants_Connect_-_Impression_du_mandatPachto_.pdf
 │   │   │   ├── Aidants_Connect_-_Impression_du_mandat_Dari.pdf
 │   │   │   ├── Aidants_Connect_-_Impression_du_mandat_arabe.pdf
@@ -741,7 +752,9 @@
 │   │   │   ├── Kit_aidants_2025.pdf
 │   │   │   ├── Kit_referent_2025.pdf
 │   │   │   ├── Mandat type Aidants Connect english.pdf
-│   │   │   └── Mednum_Programme_de_formation_Aidants_Connect.pdf
+│   │   │   ├── Mednum_Programme_de_formation_Aidants_Connect.pdf
+│   │   │   ├── Programme_de_formation_Devenir_Aidants_connect_7h.pdf
+│   │   │   └── Programme_de_formation_etre_aidant_numerique_14h.pdf
 │   │   ├── images
 │   │   │   ├── AC-VignettepourSite-4P-Pref.png
 │   │   │   ├── AC-tuto-ressource.png
@@ -896,7 +909,7 @@
 │   │   │   ├── common
 │   │   │   │   └── resources-block.html
 │   │   │   ├── espace_aidant
-│   │   │   │   ├── formation_continue.html
+│   │   │   │   ├── formation.html
 │   │   │   │   ├── home.html
 │   │   │   │   ├── notifications.html
 │   │   │   │   └── validate_cgu.html
@@ -993,6 +1006,10 @@
 │   │   │   ├── co-referent-cration.txt
 │   │   │   ├── fne_managers_for_connexion_modes.mjml
 │   │   │   ├── fne_managers_for_connexion_modes.txt
+│   │   │   ├── formateur_pap_annonce.mjml
+│   │   │   ├── formateur_pap_annonce.txt
+│   │   │   ├── formateur_pap_detail.mjml
+│   │   │   ├── formateur_pap_detail.txt
 │   │   │   ├── having_formation_unregistered_habilitation_requests.mjml
 │   │   │   ├── having_formation_unregistered_habilitation_requests.txt
 │   │   │   ├── having_formation_unregistered_manager_not_activated.mjml
@@ -1008,7 +1025,9 @@
 │   │   │   ├── old_aidant_deactivation_notice.mjml
 │   │   │   ├── old_aidant_deactivation_notice.txt
 │   │   │   ├── old_aidant_deactivation_warning.mjml
-│   │   │   └── old_aidant_deactivation_warning.txt
+│   │   │   ├── old_aidant_deactivation_warning.txt
+│   │   │   ├── referent_validation_aidant_pap.mjml
+│   │   │   └── referent_validation_aidant_pap.txt
 │   │   ├── layouts
 │   │   │   ├── footer.html
 │   │   │   └── main-legacy.html
@@ -1188,4 +1207,4 @@
 ├── package.json
 ├── pyproject.toml
 └── setup.cfg
-163 directories, 1027 files
+163 directories, 1046 files
