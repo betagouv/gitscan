@@ -1,36 +1,38 @@
 ## Changelog : ecopass (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'Ecopass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'une page de création d'utilisateur et l'amélioration des fonctionnalités existantes comme la déclaration de produits et la gestion des organisations. Des corrections de bugs et des optimisations ont également été apportées pour assurer la stabilité et la fiabilité de la plateforme.
+Les dernières mises à jour d'Ecopass se concentrent sur l'amélioration de l'expérience utilisateur, notamment en facilitant la création de comptes, la déclaration de produits et la gestion des organisations. Des corrections de bugs ont également été apportées pour assurer la stabilité de la plateforme et l'exactitude des données. De nouvelles fonctionnalités ont été implémentées pour permettre la délégation sans SIRET et l'anonymisation des produits.
 
 ### Évolutions fonctionnelles
 - Ajout d'une page de création d'utilisateur (#116).
+- Correction d'un bug empêchant l'affichage du score dans l'interface utilisateur.
+- Correction d'un problème de lien vers la version du produit (#118).
+- Implémentation d'une déconnexion automatique après une période d'inactivité (#119).
+- Ajout du cycle de vie d'un produit (#115).
 - Amélioration de l'explication concernant la connexion par email.
 - Possibilité de déléguer sans SIRET (#111).
-- Ajout de la possibilité de déclarer des produits en batch en production (#110).
-- Ajout d'une notice en anglais (#109).
-- Ajout du cycle de vie d'un produit (#115).
-- Mise à jour des images de la page d'accueil (#114).
+- Autorisation de la déclaration groupée de produits en production (#110).
+- Ajout d'un avis en anglais (#109).
+- Correction d'une erreur d'affichage de la marque dans l'API (#107).
+- Ajout d'informations supplémentaires issues de GS1 (#106, #104, #103).
 - Ajout de produits anonymisés (#112).
-- Interdiction des téléchargements récents (#100).
-- Mise à jour de l'email de bienvenue (#108).
 
 ### Évolutions techniques
-- Correction d'un problème avec le score manquant dans l'interface utilisateur.
+- Intégration de Maildev dans les actions GitHub pour faciliter les tests d'envoi d'emails (#117).
 - Correction d'un problème de build.
-- Correction du seeding.
-- Correction d'un problème avec le score obligatoire pour les AD.
-- Correction de l'énumération des statistiques anonymisées.
-- Correction du slug de catégorie dans l'anonymisation.
-- Correction d'un problème avec l'ID unique en texte.
-- Correction d'un problème avec la marque incorrecte dans l'API (#107).
-- Suppression des codes HTC et HTN (#101).
+- Correction de problèmes liés au seeding de la base de données.
+- Correction d'un problème d'énumération des statistiques anonymisées.
+- Correction d'un bug lié à la suppression d'autres NAFs (#113).
+- Correction d'un problème de slug de catégorie dans l'anonymisation.
+- Empêchement du téléchargement récent de fichiers (#100).
 - Correction d'un script Datagouv.
-- Correction des statistiques indisponibles (#102).
+- Correction d'un problème d'affichage des statistiques indisponibles (#102).
+- Mise à jour de l'email de bienvenue (#108).
+- Possibilité de créer des organisations sans SIRET (#105).
 
 ### Autres changements
-- Ajout d'informations supplémentaires provenant de GS1 (#104, #106).
-- Création d'organisations sans SIRET (#105).
-- Téléchargement des informations GS1 (#103).
-- Suppression d'autres NAF (#113).
-- Amélioration de la gestion des informations GS1 (#104).
+- Mise à jour de la cartographie du navigateur de base (chore).
+- Correction d'un score obligatoire vide.
+- Mise à jour des images de la page d'accueil (#114).
+- Ajout d'un identifiant unique en texte.
+- Remplissage d'informations supplémentaires provenant de GS1.
