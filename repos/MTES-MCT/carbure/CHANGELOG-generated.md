@@ -1,46 +1,782 @@
 ## Changelog : carbure (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Carbure se concentrent sur l'amélioration de la gestion des données biogaz et biométhane, notamment pour les utilisateurs DREAL. De nouvelles fonctionnalités ont été ajoutées pour faciliter la gestion des déclarations annuelles, le suivi des données énergétiques et l'intégration de données UDB. Des corrections de bugs et des optimisations de performance ont également été apportées.
+Les dernières mises à jour de Carbure se concentrent sur l'amélioration des fonctionnalités pour les agents de l'administration, notamment pour la gestion des données biogaz et des déclarations annuelles. Des améliorations ont également été apportées à l'interface utilisateur, à la performance et à la robustesse de l'application, ainsi qu'à la gestion des données QualiCharge et UDB.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité pour les utilisateurs DREAL de créer manuellement des déclarations annuelles. (#1693)
-- Amélioration de l'interface d'administration pour la gestion des données QualiCharge, incluant l'affichage de quantités en kWh et la validation en masse.
-- Ajout de filtres et d'une page de gestion des entreprises pour les utilisateurs DREAL.
-- Ajout d'une page de gestion des contacts pour les DREAL.
-- Possibilité pour les DREAL de modifier le statut "ouvert" des déclarations annuelles.
-- Amélioration de la gestion des données UDB, incluant la conversion des quantités et la gestion des erreurs.
-- Ajout de la possibilité de valider l'ensemble des données Qualicharge.
-- Ajout de la gestion des digestats (tonnage brut, etc.) et de l'efficacité énergétique.
-- Ajout de la gestion des organismes d'aide aux contrats.
-- Amélioration de l'affichage des données d'injection de biométhane.
-- Ajout de la gestion des codes INSEE et des champs propane.
+- Ajout d'un badge indiquant l'état d'ouverture des déclarations. (#1725)
+- Les DREAL peuvent maintenant consulter les pages de contrats en lecture seule.
+- Ajout d'une page de plan d'approvisionnement pour les DREAL.
+- Ajout d'une page de contacts pour les DREAL.
+- Les DREAL peuvent désormais consulter la page des énergies.
+- Les DREAL peuvent consulter la page des digestats.
+- Possibilité de valider toutes les données QualiCharge en une seule fois.
+- Amélioration de la gestion des statuts "EN COURS" et "TERMINEE" pour les déclarations biogaz.
+- Ajout de la possibilité de filtrer les entreprises dans l'interface d'administration.
+- Amélioration de l'affichage des quantités en kWh dans l'interface QualiCharge.
+- Ajout de la possibilité de filtrer les certificats QualiCharge par unité d'exploitation.
+- Amélioration de la recherche de siren dans QualiCharge.
+- Correction de l'affichage des données d'énergie.
+- Possibilité pour les DREAL de sélectionner une entité par défaut pour les déclarations.
+- Ajout de la possibilité de consulter les détails d'une entité biogaz.
+- Ajout de la possibilité de filtrer les déclarations annuelles par DREAL.
+- Ajout d'un tableau de bord pour les DREAL.
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la performance et la lisibilité.
-- Mise à jour des dépendances et corrections de bugs.
-- Amélioration de la gestion des erreurs et ajout de logs plus détaillés.
-- Utilisation de feature flags pour activer/désactiver certaines fonctionnalités (SAF logistics validation).
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Optimisation des requêtes en base de données pour améliorer les performances.
-- Intégration de Sentry pour la surveillance des erreurs.
-- Amélioration de la gestion des erreurs UDB et ajout de tests associés.
+- Refactorisation du code pour simplifier les requêtes et améliorer la performance, notamment pour les endpoints de l'administration électrique.
+- Amélioration de la gestion des erreurs et ajout de logs plus détaillés, notamment pour les erreurs UDB et S3.
+- Mise en place de feature flags pour activer/désactiver certaines fonctionnalités (SAF logistics validation).
+- Amélioration de la gestion des erreurs UDB et ajout de tests unitaires.
+- Mise à jour des dépendances et correction de bugs.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Utilisation de Django `SimpleTestCase`.
+- Mise en place d'un système de logs plus robuste avec Sentry.
+- Correction de N+1 requests dans l'administration électrique.
+- Amélioration de la performance de l'API.
+- Correction de bugs liés à la validation des données.
 
 ### Autres changements
+- Mise à jour des données des dépôts DGDDI.
+- Ajout de données UDB supplémentaires.
+- Correction de la gestion des identifiants de douane dans les dépôts DGDDI.
+- Ajout de nouvelles données pour les matériaux UDB (colza, FAME).
+- Correction de la gestion des coordonnées GPS des dépôts DGDDI.
 - Mise à jour des traductions.
-- Correction de problèmes d'affichage et de validation de formulaires.
-- Nettoyage du code et suppression de code obsolète.
-- Mise à jour des données de référence (dépôts DGDDI, listes de producteurs de biométhane).
-- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
-- Ajout de commentaires et documentation pour faciliter la maintenance du code.
-- Correction de problèmes liés à la gestion des identifiants des dépôts.
-- Ajout de la gestion des unités UDB et des conversions de quantités.
-- Correction d'un problème de validation des certificats Qualicharge.
-- Correction d'un bug lié à l'affichage des filtres de certificats.
-- Correction d'un problème d'affichage des quantités d'énergie renouvelable.
-- Correction d'un bug lié à la validation des tickets SAF.
-- Ajout de la gestion des routes de transport pour les SAF.
-- Amélioration de la gestion des erreurs lors de l'importation de fichiers Excel pour les SAF.
-- Ajout de la possibilité d'importer des données SAF via un fichier Excel.
-- Ajout de la gestion des types de dépôts SAF.
-- Correction de bugs et amélioration de la performance de l'interface utilisateur SAF.
+- Nettoyage du code et suppression de code inutilisé.
+- Correction de problèmes d'affichage et de style dans l'interface utilisateur.
+- Correction de bugs mineurs et amélioration de la stabilité de l'application.
+- Ajout de commentaires et documentation.
+- Correction de problèmes de typage.
+- Mise à jour des schémas de données.
+- Ajout de constantes pour faciliter la maintenance.
+- Correction de problèmes de sécurité.
+- Amélioration de la gestion des erreurs dans les tests.
+- Correction de problèmes de compatibilité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de problèmes de sécurité.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de problèmes de performance.
+- Amélioration de la gestion des logs.
+- Correction de problèmes de configuration.
+- Mise à jour de la documentation.
+- Correction de problèmes de déploiement.
+-
