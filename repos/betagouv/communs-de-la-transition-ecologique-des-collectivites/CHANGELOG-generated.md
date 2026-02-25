@@ -1,17 +1,26 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (derniers 30 jours)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'intégration continue et au déploiement, ainsi qu'une optimisation de l'utilisation du modèle de langage Claude pour l'analyse des projets. Des corrections ont également été apportées pour assurer la cohérence des outils et des processus de build.
+Ce mois-ci, les améliorations se concentrent sur l'espace "Ressources" avec l'ajout d'une page vocabulaire métier et d'une cartographie, ainsi que sur la correction de problèmes liés au proxy et à la conformité CNIL pour le suivi Matomo. Des corrections ont également été apportées au dashboard statistiques et à la gestion des chemins d'assets.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'analyse des projets grâce à l'utilisation du modèle Claude 4.5 Haiku, avec une augmentation du nombre maximal de tokens à 2048 pour une meilleure compréhension du contexte (#364).
+- Ajout d'une page "Vocabulaire métier" dans l'espace Ressources, remplaçant l'ancien iframe Notion par du contenu statique (#378).
+- Ajout d'une cartographie dans l'espace Ressources, accessible via un proxy (#372).
+- Amélioration de la page d'accueil et du proxy cartographie dans l'espace Ressources (#372).
+- Correction d'une erreur CORS sur la page des statistiques (#379).
+- Exclusion des catégories de test du dashboard statistiques pour une meilleure pertinence des données.
+- Conformité CNIL pour le suivi Matomo, sans nécessiter de bannière de consentement (#377).
 
 ### Évolutions techniques
-- Correction dans le processus de CI/CD : utilisation de `ADMIN_PAT` pour contourner la protection des branches (#366) et du `GITHUB_TOKEN` au lieu de la clé SSH Scalingo pour le checkout du code (#365).
-- Optimisation du build du widget en utilisant le nom complet du package dans le filtre pnpm (#363).
-- Correction de l'ordre de build pour Scalingo (#362).
-- Ajout de l'option `--url` à `sentry-cli inject` pour assurer la cohérence de la configuration Sentry (#361).
-- Migration de l'API vers le modèle Claude Haiku 4.5 (#360).
+- Mise en place d'un proxy pour les analyses-convergence (#373).
+- Correction de la réécriture des chemins dans le proxy pour les fichiers JavaScript (#373).
+- Amélioration de la gestion des attributs HTML avec guillemets simples dans le proxy.
+- Déplacement de `openapi-fetch` vers les dépendances pour corriger un problème de build (#376).
+- Correction du script `prepare` pour le déploiement sur Scalingo (#375).
+- Ajout du tracking Matomo sur toutes les pages statiques (#374).
+- Réécriture des chemins d'assets dans le HTML proxié pour assurer le bon fonctionnement des ressources (#368).
 
 ### Autres changements
-- Publication de la version 0.1.7 (#367).
+- Correction de l'URL d'embed Notion (#370).
+- Affichage d'un indicateur de chargement pendant le chargement de l'iframe (#371).
+- Plusieurs releases de version (0.1.8 à 0.1.20) pour intégrer les changements.
