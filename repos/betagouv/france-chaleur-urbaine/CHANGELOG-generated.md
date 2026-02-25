@@ -1,36 +1,35 @@
 ## Changelog : france-chaleur-urbaine (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de france-chaleur-urbaine se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur le formulaire d'éligibilité et les fiches réseaux, ainsi que sur l'ajout de nouvelles fonctionnalités de suivi et d'analyse. Des corrections de bugs et des refactorings techniques ont également été réalisés pour améliorer la stabilité et la maintenabilité du code.
+Les dernières mises à jour de france-chaleur-urbaine se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur le formulaire d'éligibilité et la gestion des commentaires. Des améliorations techniques ont également été apportées pour optimiser la gestion des données, la configuration des tuiles et l'intégration d'outils d'analyse. Enfin, une migration progressive du markdown vers du HTML est en cours pour améliorer la cohérence visuelle.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug sur le flag "ouvert" au raccordements sur la fiche réseau (#1192).
-- Amélioration du formulaire d'éligibilité :
-    - Remplacement des checkbox par une liste déroulante pour une meilleure expérience utilisateur (#1194).
-    - Correction d'un bug de réinitialisation du tag (#1192).
-    - Ajout d'un champ commentaire sur le tag pour la vue statistique par tag.
-- Ajout d'un CTA vers le comparateur de coûts avec suivi analytics (#1199).
+- Le formulaire d'éligibilité a été amélioré avec le remplacement des checkboxes par des listes déroulantes pour une meilleure expérience utilisateur (#1194).
+- Correction d'un bug concernant la réaffection des gestionnaires (#1197).
+- Amélioration du formulaire de test en masse pour corriger l'état initial (#1198).
 - Suppression de la bannière du comparateur de coûts.
-- Correction du test d'adresse, suppression du cas particulier Bordeaux.
+- Ajout d'un champ commentaire sur les tags pour la vue statistiques par tag.
+- Le CTA vers le comparateur affiche maintenant un événement Matomo pour le suivi.
+- Le message d'avertissement pour Paris a été factorisé et amélioré.
 - Masquage de l'encart "non ouvert" pour les réseaux de froid.
-- Ajout d'un grand textarea dans une dialog pour les commentaires longs.
-- Ajout d'un commentaire sur l'état initial du formulaire de test en masse.
 
 ### Évolutions techniques
-- Intégration du suivi analytics via PostHog (#1203).
+- Intégration de PostHog pour le suivi analytics (#1203).
 - Refactorisation du code lié aux données open data (#1205) : déplacement des fichiers dans un module et suppression de documentation obsolète.
-- Refactorisation de la configuration des tuiles API et génération.
 - Passage de TypeScript en dépendances.
-- Suppression de composants inutilisés et de fichiers obsolètes.
-- Utilisation de `cx` pour une meilleure lisibilité du code.
-- Amélioration de la gestion des données et des requêtes.
-- Correction de la gestion de l'affectation des gestionnaires.
+- Harmonisation de la configuration des tuiles API et de leur génération.
+- Extraction des tables synchronisées Airtable dans une structure dédiée.
+- Suppression de tables Airtable obsolètes.
+- Amélioration de la gestion des données lors de la modification d'un commentaire sur un tag.
+- Conversion progressive du markdown en HTML pour les textes d'éligibilité.
+- Utilisation de `cx` pour une meilleure gestion des classes CSS.
+- Remplacement de certains composants par des alternatives plus modernes (FCUArrowIcon, button-link, arrow-item).
 
 ### Autres changements
-- Remplacement du logo de la République Française par une version SVG.
-- Harmonisation des styles suite à la conversion du markdown en HTML.
-- Ajout d'événements Matomo pour le suivi des actions utilisateurs.
-- Suppression d'un fichier de configuration inutile.
+- Ajout du logo de la République Française en SVG pour une meilleure qualité visuelle.
+- Suppression de fichiers inutilisés et de composants non utilisés.
+- Ajout d'un événement à la configuration analytics.
 - Suppression du fichier `CLAUDE.md`.
-- Correction de l'évenement tag_comment_updated.
-- Ajout de l'évenement à la config analytics.
+- Correction d'une adresse de test dans le formulaire d'éligibilité.
+- Ajout d'un libellé pour l'événement `tag_comment_updated`.
+- Suppression de puces inutiles et harmonisation des styles suite au passage markdown -> html.
