@@ -21,8 +21,8 @@
 ├── .storybook
 │   ├── main.github-pages.ts
 │   ├── main.ts
-│   ├── preview.github-pages.ts
-│   ├── preview.ts
+│   ├── preview.github-pages.tsx
+│   ├── preview.tsx
 │   └── vitest.setup.ts
 ├── .vscode
 │   ├── extensions.json
@@ -44,6 +44,7 @@
 │   │   ├── groups.spec.ts
 │   │   ├── organisation-admin.spec.ts
 │   │   ├── poll-creation.ts
+│   │   ├── polls.spec.ts
 │   │   ├── resultat.spec.ts
 │   │   ├── test.spec.ts
 │   │   └── tutorial.spec.ts
@@ -62,6 +63,7 @@
 │   │   ├── carbon-footprint.ts
 │   │   ├── categories
 │   │   │   └── checkIfCategoryOrderIsRespected.ts
+│   │   ├── clipboard.ts
 │   │   ├── save-context.ts
 │   │   └── user-mailbox.ts
 │   ├── pages
@@ -233,6 +235,7 @@
 │   ├── manifest.webmanifest
 │   ├── misc
 │   │   └── 4dc3300c431ca82c00785768559ea871.html
+│   ├── mockServiceWorker.js
 │   ├── robots.txt
 │   └── scripts
 │       ├── iframe.js
@@ -545,27 +548,6 @@
 │   │   │   │   └── layout.tsx
 │   │   │   ├── (simulation)
 │   │   │   │   ├── (large)
-│   │   │   │   │   ├── infos
-│   │   │   │   │   │   ├── [question]
-│   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── _components
-│   │   │   │   │   │   │   ├── InfosProvider.tsx
-│   │   │   │   │   │   │   └── Navigation.tsx
-│   │   │   │   │   │   ├── codepostal
-│   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── commencer
-│   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── email
-│   │   │   │   │   │   │   ├── EmailForm.tsx
-│   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   └── naissance
-│   │   │   │   │   │       ├── layout.tsx
-│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   ├── personas
 │   │   │   │   │   │   ├── _components
@@ -580,6 +562,11 @@
 │   │   │   │   │   │   │   └── questions
 │   │   │   │   │   │   │       └── Question.tsx
 │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── simulateur
+│   │   │   │   │   │   └── email
+│   │   │   │   │   │       ├── EmailForm.tsx
+│   │   │   │   │   │       ├── layout.tsx
+│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   └── tutoriel
 │   │   │   │   │       ├── _components
 │   │   │   │   │       │   ├── AutresQuestions.tsx
@@ -601,9 +588,10 @@
 │   │   │   │   │   │   │   ├── PartnerRedirectionAlert.tsx
 │   │   │   │   │   │   │   ├── Poll.tsx
 │   │   │   │   │   │   │   ├── SaveResultsAndSigninSignUpForm.tsx
-│   │   │   │   │   │   │   ├── TallyForm.tsx
-│   │   │   │   │   │   │   └── __tests__
-│   │   │   │   │   │   │       └── TallyForm.test.tsx
+│   │   │   │   │   │   │   ├── SaveResultsBlock.stories.tsx
+│   │   │   │   │   │   │   ├── SaveResultsBlock.tsx
+│   │   │   │   │   │   │   ├── SaveResultsForm.tsx
+│   │   │   │   │   │   │   └── TallyForm.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   └── skeleton.tsx
@@ -657,7 +645,6 @@
 │   │   │   │   ├── mainLayoutProviders
 │   │   │   │   │   ├── IframeOptionsContext.tsx
 │   │   │   │   │   ├── MainHooks.tsx
-│   │   │   │   │   ├── PreventNavigationProvider.tsx
 │   │   │   │   │   └── QueryClientProviderWrapper.tsx
 │   │   │   │   ├── mobilise
 │   │   │   │   │   ├── CreateGroupLink.tsx
@@ -782,6 +769,7 @@
 │   │   ├── charts
 │   │   │   ├── BilanChart.tsx
 │   │   │   ├── HorizontalBarChartItem.tsx
+│   │   │   ├── HorizontalBarChartItemLegacy.tsx
 │   │   │   ├── RavijenChart.tsx
 │   │   │   ├── ServicesChart.tsx
 │   │   │   ├── VerticalBarChart.tsx
@@ -842,9 +830,7 @@
 │   │   │       │   └── HeadingButtons.tsx
 │   │   │       └── waterTotalChart
 │   │   │           ├── WaterTotalNumber.tsx
-│   │   │           ├── WaveContent.tsx
-│   │   │           └── waveContent
-│   │   │               └── Octopus.tsx
+│   │   │           └── WaveContent.tsx
 │   │   ├── footprints
 │   │   │   └── FootprintSelector.tsx
 │   │   ├── form
@@ -886,6 +872,7 @@
 │   │   │   ├── AmisIcon.tsx
 │   │   │   ├── BilanIcon.tsx
 │   │   │   ├── BookClosedIcon.tsx
+│   │   │   ├── CarIcon.tsx
 │   │   │   ├── ChevronLeft.tsx
 │   │   │   ├── ChevronRight.tsx
 │   │   │   ├── Close.tsx
@@ -894,16 +881,20 @@
 │   │   │   ├── DownloadIcon.tsx
 │   │   │   ├── ExternalLinkIcon.tsx
 │   │   │   ├── FlagIcon.tsx
+│   │   │   ├── FoodIcon.tsx
 │   │   │   ├── HourglassIcon.tsx
+│   │   │   ├── HousingIcon.tsx
 │   │   │   ├── LightBulbIcon.tsx
 │   │   │   ├── ListIcon.tsx
 │   │   │   ├── LockIcon.tsx
 │   │   │   ├── LogOutIcon.tsx
 │   │   │   ├── MessageIcon.tsx
+│   │   │   ├── MiscIcon.tsx
 │   │   │   ├── NewTabSvg.tsx
 │   │   │   ├── PencilIcon.tsx
 │   │   │   ├── PlaySignIcon.tsx
 │   │   │   ├── PlusIcon.tsx
+│   │   │   ├── PublicServicesIcon.tsx
 │   │   │   ├── RestartIcon.tsx
 │   │   │   ├── SaveIcon.tsx
 │   │   │   ├── SearchIcon.tsx
@@ -995,7 +986,6 @@
 │   │   │   ├── ExportDataButton.tsx
 │   │   │   ├── PollLoader.tsx
 │   │   │   ├── PollStatistics.tsx
-│   │   │   ├── QuestionsComplementaires.tsx
 │   │   │   ├── VerificationCodeInput.tsx
 │   │   │   ├── orgaStatistics
 │   │   │   │   ├── DetailedStatistics.tsx
@@ -1025,7 +1015,9 @@
 │   │   │       └── SimulationSyncProvider.tsx
 │   │   ├── results
 │   │   │   ├── Carbone.tsx
+│   │   │   ├── CategoriesAccordion.stories.tsx
 │   │   │   ├── CategoriesAccordion.tsx
+│   │   │   ├── CategoriesAccordionLegacy.tsx
 │   │   │   ├── CategoriesChart.tsx
 │   │   │   ├── DocumentationBlock.tsx
 │   │   │   ├── Eau.tsx
@@ -1060,6 +1052,13 @@
 │   │   │   │           └── actions
 │   │   │   │               └── Action.tsx
 │   │   │   ├── categoriesAccordion
+│   │   │   │   ├── SubcategoriesList.tsx
+│   │   │   │   ├── _client
+│   │   │   │   │   ├── AnimatedAccordionItem.tsx
+│   │   │   │   │   └── ServicesDescription.tsx
+│   │   │   │   └── subcategoriesList
+│   │   │   │       └── SubcategoryItem.tsx
+│   │   │   ├── categoriesAccordionLegacy
 │   │   │   │   ├── AccordionItemWithRule.tsx
 │   │   │   │   └── accordionItemWithRule
 │   │   │   │       ├── SubcategoriesList.tsx
@@ -1092,14 +1091,25 @@
 │   │   │   │       ├── PollsList.tsx
 │   │   │   │       └── pollList
 │   │   │   │           └── OrganisationItem.tsx
-│   │   │   └── informationBlock
-│   │   │       ├── CarboneTargetContent.tsx
-│   │   │       ├── Hedgehog.tsx
-│   │   │       ├── HedgehogAwareness.tsx
-│   │   │       ├── WaterFootprintContent.tsx
-│   │   │       └── carboneTargetContent
-│   │   │           ├── AdditionalQuestions.tsx
-│   │   │           └── TargetChart.tsx
+│   │   │   ├── informationBlock
+│   │   │   │   ├── CarboneTargetContent.tsx
+│   │   │   │   ├── Hedgehog.tsx
+│   │   │   │   ├── HedgehogAwareness.tsx
+│   │   │   │   ├── WaterFootprintContent.tsx
+│   │   │   │   └── carboneTargetContent
+│   │   │   │       ├── AdditionalQuestions.tsx
+│   │   │   │       └── TargetChart.tsx
+│   │   │   └── objective
+│   │   │       ├── Objective.stories.tsx
+│   │   │       ├── Objective.tsx
+│   │   │       ├── _components
+│   │   │       │   ├── CollectiveEffort.tsx
+│   │   │       │   ├── ObjectiveChart.tsx
+│   │   │       │   ├── ObjectiveWithRhythm.tsx
+│   │   │       │   └── _hooks
+│   │   │       │       └── useObjectiveChart.ts
+│   │   │       └── _constants
+│   │   │           └── objectives.ts
 │   │   ├── seo
 │   │   │   └── JSONLD.tsx
 │   │   ├── sharing
@@ -1335,11 +1345,13 @@
 │   │   │   ├── Title.tsx
 │   │   │   ├── accordion
 │   │   │   │   ├── AccordionItem.stories.tsx
-│   │   │   │   └── AccordionItem.tsx
+│   │   │   │   ├── AccordionItem.tsx
+│   │   │   │   └── AccordionItemLegacy.tsx
 │   │   │   └── landingPage
 │   │   │       ├── DynamicCounter.tsx
 │   │   │       ├── Hero.stories.tsx
 │   │   │       └── Hero.tsx
+│   │   ├── marianne.css
 │   │   ├── modals
 │   │   │   ├── ConfirmationModal.stories.tsx
 │   │   │   ├── ConfirmationModal.tsx
@@ -1378,6 +1390,7 @@
 │   │   │   ├── formatCarbonFootprint.ts
 │   │   │   ├── formatFootprint.ts
 │   │   │   └── formatWaterFootprint.ts
+│   │   ├── getCategoriesDisplayData.tsx
 │   │   ├── getCategoryColorClass.ts
 │   │   ├── getColorOfGradient.ts
 │   │   ├── getLocalisedMDX.ts
@@ -1390,7 +1403,7 @@
 │   │   │   ├── shareDataWithIntegrator.ts
 │   │   │   └── verifyIntegratorBypassRights.ts
 │   │   ├── language
-│   │   │   ├── getShouldDisplayLangButtons.ts
+│   │   │   ├── getShouldBeLocalised.ts
 │   │   │   └── updateLangCookie.ts
 │   │   ├── localisation
 │   │   │   └── sortSupportedRegions.ts
@@ -1478,16 +1491,11 @@
 │   │   │   ├── useRemoveParticipant.ts
 │   │   │   └── useUpdateGroup.ts
 │   │   ├── navigation
-│   │   │   ├── useEndGuard.ts
 │   │   │   ├── useEndPage.ts
 │   │   │   ├── useGroupPagesGuard.ts
-│   │   │   ├── useInfosPage.ts
-│   │   │   ├── usePreventNavigation.ts
-│   │   │   ├── useSimulateurGuard.ts
-│   │   │   └── useSimulateurPage.ts
+│   │   │   ├── useSimulateurPage.ts
+│   │   │   └── useSimulatorGuard.ts
 │   │   ├── organisations
-│   │   │   ├── __tests__
-│   │   │   │   └── useSaveAndGoNext.test.ts
 │   │   │   ├── polls
 │   │   │   │   ├── useCreatePoll.ts
 │   │   │   │   ├── useDeletePoll.ts
@@ -1500,7 +1508,6 @@
 │   │   │   ├── useHandleRedirectFromLegacy.ts
 │   │   │   ├── useIsOrganisationAdmin.ts
 │   │   │   ├── usePollQueryParams.ts
-│   │   │   ├── useSaveAndGoNext.ts
 │   │   │   ├── useTimeleft.ts
 │   │   │   └── useUpdateOrganisation.ts
 │   │   ├── partners
@@ -1513,8 +1520,6 @@
 │   │   │   ├── useFetchSimulation.ts
 │   │   │   ├── useGetDifference.ts
 │   │   │   ├── useSaveSimulation.ts
-│   │   │   ├── useSetCurrentSimulationFromParams.ts
-│   │   │   ├── useSimulationIdInQueryParams.ts
 │   │   │   └── useUpdatePageTitle.ts
 │   │   ├── tracking
 │   │   │   ├── useGetTrackedUrl.ts
@@ -1817,4 +1822,4 @@
 ├── vitest-globals.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-441 directories, 1423 files
+440 directories, 1429 files

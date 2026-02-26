@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/incubateur-ademe/nosgestesclimat-site-nextjs",
   "name": "nosgestesclimat-site-nextjs",
-  "description": "Ce site web permet de calculer l'empreinte climat individuelle d'une personne en utilisant le modèle nosgestesclimat. Il vise à sensibiliser et à aider les utilisateurs à réduire leur impact environnemental.",
+  "description": "Ce site web permet de calculer l'empreinte climat individuelle d'une personne en utilisant le modèle nosgestesclimat. Il offre un outil pour évaluer l'impact environnemental de ses habitudes de consommation.",
   "language": "TypeScript",
   "features": [
     "Calculateur d'empreinte carbone",
-    "Questionnaire personnalisé",
-    "Visualisation des résultats",
-    "Suggestions d'actions",
-    "Comptes utilisateurs"
+    "Simulation de scénarios",
+    "Gestion de compte utilisateur",
+    "Suivi des actions",
+    "Interface utilisateur interactive"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -17,37 +17,36 @@
     "React",
     "TailwindCSS",
     "@incubateur-ademe/nosgestesclimat",
-    "Cypress",
-    "PostHog"
+    "PostHog",
+    "Cypress"
   ],
   "components": [
     "Frontend React",
-    "API (via NextJS)",
+    "API (NextJS)",
     "Calculateur d'empreinte carbone (modèle nosgestesclimat)",
-    "Interface utilisateur (TailwindCSS)"
+    "Base de données (implicite via l'API)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ],
-    "providers": null
+    "providers": []
   },
   "tests": [
-    "Cypress (tests end-to-end)",
+    "Cypress",
     "Vitest"
   ],
-  "workflows": [
-    "CI/CD (via GitHub Actions - non spécifié dans les données)"
-  ],
-  "lastActivity": "2026-02-20T11:22:22Z",
+  "workflows": [],
+  "lastActivity": "2026-02-25T17:01:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
+    "stars": 7,
     "forks": 13,
     "contributors": null,
-    "openIssues": 9
+    "openIssues": 10
   },
   "tags": [
     "empreinte carbone",
