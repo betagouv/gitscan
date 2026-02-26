@@ -1,57 +1,58 @@
 {
   "url": "https://github.com/betagouv/jeveuxaider-front",
   "name": "jeveuxaider-front",
-  "description": "Ce projet est le frontend Nuxt pour la plateforme \"Je veux aider\", facilitant la mise en relation entre les citoyens et les missions de bénévolat. Il vise à améliorer l'engagement civique et à répondre aux besoins des associations.",
+  "description": "Ce projet est le frontend de l'application \"Je veux aider\", permettant aux utilisateurs de trouver et de rejoindre des missions de bénévolat. Il vise à faciliter l'engagement citoyen et à répondre aux besoins des associations et des collectivités.",
   "language": "TypeScript",
   "features": [
     "Recherche de missions",
-    "Gestion des associations",
-    "Gestion des profils utilisateurs",
+    "Gestion des organisations",
+    "Gestion des utilisateurs",
+    "Authentification",
     "Notifications",
-    "Inscription aux missions",
-    "Interface d'administration",
-    "Campagnes d'événements (ex: Décembre Ensemble)"
+    "Gestion des témoignages",
+    "Campagnes spéciales (ex: Février pour protéger)"
   ],
   "audience": "Grand public",
   "dependencies": [
     "Nuxt",
     "Vue",
-    "@nuxtjs/strapi",
-    "@nuxtjs/sitemap",
-    "axios",
-    "chart.js",
-    "vue-chartjs",
-    "pinia"
+    "TailwindCSS",
+    "Algolia",
+    "Pinia",
+    "VueUse",
+    "Chart.js"
   ],
   "components": [
     "Frontend Vue.js avec Nuxt",
-    "Composants réutilisables (Alert, Button, Avatar)",
-    "API Strapi pour la gestion du contenu",
-    "Algolia pour la recherche"
+    "Composants d'interface utilisateur réutilisables",
+    "API pour la gestion des données",
+    "Système de recherche Algolia"
   ],
   "auth": {
     "methods": [
-      "none"
-    ]
+      "email-password",
+      "oauth2"
+    ],
+    "providers": []
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-02-20T13:40:17+01:00",
+  "tests": [],
+  "workflows": [],
+  "lastActivity": "2026-02-25T16:47:50+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 6,
     "forks": 0,
-    "contributors": null,
-    "openIssues": 4
+    "contributors": 0,
+    "openIssues": 3
   },
   "tags": [
-    "nuxt",
-    "vuejs",
-    "bénévolat",
-    "missions",
-    "associations",
-    "engagement civique"
+    "Nuxt",
+    "Vue.js",
+    "Bénévolat",
+    "Engagement citoyen",
+    "Frontend",
+    "TypeScript"
   ]
 }
