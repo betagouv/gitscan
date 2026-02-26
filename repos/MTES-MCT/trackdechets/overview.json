@@ -1,65 +1,75 @@
 {
   "url": "https://github.com/MTES-MCT/trackdechets",
   "name": "trackdechets",
-  "description": "Trackdéchets est une solution pour gérer la traçabilité des déchets de manière sécurisée. Ce projet est incubé par la Fabrique Numérique du Ministère de la Transition Écologique et vise à simplifier et sécuriser le suivi des déchets.",
+  "description": "Trackdéchets est une solution pour gérer la traçabilité des déchets en toute sécurité. Ce projet est incubé par la Fabrique Numérique du Ministère de la Transition Écologique et vise à simplifier et sécuriser le suivi des déchets.",
   "language": "TypeScript",
   "features": [
     "Gestion de la traçabilité des déchets",
-    "Création et gestion de bordereaux de déchets (BSDA, BSFF, BSVHU)",
-    "Signature électronique",
-    "Recherche d'entreprises",
-    "Gestion des utilisateurs et des droits d'accès",
-    "Visualisation des données et statistiques",
-    "Intégration avec des services externes (Sendinblue, MySendingBox, etc.)"
+    "Création et gestion des bordereaux de déchets (BSDA, BSVHU, BSFF)",
+    "Import de fichiers Excel",
+    "Gestion des droits d'accès",
+    "Suivi des déchets",
+    "Génération de PDF",
+    "Intégration avec des services externes (Sendinblue, MySendingBox, Gotenberg, Metabase)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Node.js",
+    "TypeScript",
     "Express.js",
+    "Apollo Server",
+    "Prisma ORM",
     "PostgreSQL",
     "Elasticsearch",
     "React.js",
-    "Apollo Server",
-    "Prisma ORM"
+    "Apollo Client",
+    "Docusaurus"
   ],
   "components": [
-    "Back-end Node.js avec Express.js",
-    "Front-end React.js",
+    "Backend Node.js avec Express.js et Apollo Server",
+    "Frontend React.js",
     "Base de données PostgreSQL",
     "Indexation Elasticsearch",
+    "Documentation avec Docusaurus",
     "API REST",
-    "Interface graphique web"
+    "Microservices (backups, etl, sirene-search)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
-    "Tests d'intégration",
-    "Tests unitaires"
+    "Intégration tests (GitHub Actions)",
+    "Build and Test (GitHub Actions)"
   ],
   "workflows": [
     "Build & Test",
     "Integration tests"
   ],
-  "lastActivity": "2026-02-20T10:40:52+01:00",
+  "lastActivity": "2026-02-24T11:00:25+01:00",
   "status": "active",
-  "license": "GNU Affero General Public License v3.0",
+  "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "déchets",
     "traçabilité",
     "environnement",
-    "recyclage",
     "gestion des déchets",
-    "API",
-    "React",
     "Node.js",
+    "TypeScript",
+    "React",
     "PostgreSQL",
-    "Elasticsearch"
+    "Elasticsearch",
+    "API",
+    "Frontend",
+    "Backend"
   ]
 }
