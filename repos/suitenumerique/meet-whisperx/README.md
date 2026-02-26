@@ -1,13 +1,31 @@
 # Whisper OpenAI API
 
-## Contributing
+FastAPI-based ASR (Automatic Speech Recognition) API built on WhisperX. Provides transcription, word-level alignment, and speaker diarization with OpenAI-compatible endpoints.
 
-### Local development
+## Getting Started
+
+### Install uv
+
+NB: This package uses `uv` for package management as a modern alternative to pip. Install instructions [in this link](https://docs.astral.sh/uv/getting-started/installation/).
+
+### API-only Development
+
+Inference libraries (`whisperx`, `pytorch`, etc.) are heavy and may not run on all devices. We provide a `dev` dependency group to allow running API tests locally and IDE autocompletion. To install:
+
 ```bash
-pip install ".[inference]"
+uv sync --group dev
 ```
 
-Run the server on port 8010 (avoid conflict with the default ports 8000, 8001... with other services)
+### Full Inference Development
+
+To develop with a fully functional transcription pipeline:
+
+```bash
+uv sync --group dev --group inference
+```
+
+Run the server locally (port 8010 avoids conflicts with other services):
+
 ```bash
 export PORT=8010
 export RELOAD=true
@@ -15,7 +33,16 @@ export LOGGING_CONFIG=logging-config.yaml
 python app/main.py
 ```
 
-## Environment variables
+## Testing
+
+Tests mock actual inference and can be run locally:
+
+```bash
+cd app
+python -m pytest tests/ -v
+```
+
+## Environment Variables
 
 | Variable | Description | Default |
 | -------- | ----------- | ------- |
@@ -33,5 +60,6 @@ python app/main.py
 | LOGGING_CONFIG | Path to logging config file | `None` |
 | DEBUG | Enable debug logging | `false` |
 
+## Contributing
 
-
+Please follow [these guidelines](https://suitenumerique.gitbook.io/handbook) when contributing to this repo.
