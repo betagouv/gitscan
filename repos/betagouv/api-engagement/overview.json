@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et suivre l'engagement des utilisateurs.",
+  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et de suivre l'engagement des utilisateurs.",
   "language": "TypeScript",
   "features": [
     "Gestion des missions",
     "Tableau de bord",
-    "Widgets",
-    "Suivi de l'engagement",
-    "Modération",
-    "Statistiques"
+    "Widget d'engagement",
+    "Suivi des statistiques",
+    "Gestion des organisations",
+    "Authentification utilisateur"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,37 +18,29 @@
     "React",
     "NextJS",
     "PostgreSQL",
-    "MongoDB",
-    "Docker"
+    "MongoDB"
   ],
   "components": [
     "API REST",
     "Frontend React",
+    "Frontend NextJS",
     "Base de données PostgreSQL",
-    "Base de données MongoDB",
-    "Widgets NextJS"
+    "Base de données MongoDB"
   ],
   "auth": {
     "methods": [
-      "none"
-    ]
+      "email-password",
+      "oauth2"
+    ],
+    "providers": []
   },
   "tests": null,
-  "workflows": [
-    "CI/CD",
-    "Linting",
-    "Testing"
-  ],
+  "workflows": null,
   "lastActivity": "2026-01-05T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "API",
     "Engagement",
@@ -56,7 +48,6 @@
     "React",
     "PostgreSQL",
     "MongoDB",
-    "Docker",
     "Administration"
   ]
 }

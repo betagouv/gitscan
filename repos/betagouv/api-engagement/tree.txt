@@ -483,6 +483,8 @@
 │   │       │   │   └── migration.sql
 │   │       │   ├── 20260203160000_add_mission_activity_junction
 │   │       │   │   └── migration.sql
+│   │       │   ├── 20260206150333_refacto_publisher_organisation
+│   │       │   │   └── migration.sql
 │   │       │   ├── 20260209113005_add_mission_address_composite_geo_index
 │   │       │   │   └── migration.sql
 │   │       │   ├── 20260209113005_alter_mission_address_geo_index
@@ -496,6 +498,7 @@
 │   ├── scripts
 │   │   ├── README.md
 │   │   ├── backfill-mission-jobboard-sync-status.ts
+│   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
 │   │   ├── cleanup-duplicate-organizations.ts
 │   │   ├── cleanup-orphan-activities.ts
@@ -545,7 +548,8 @@
 │   │   │   ├── countries.ts
 │   │   │   ├── departments.ts
 │   │   │   ├── domains.ts
-│   │   │   └── moderation.ts
+│   │   │   ├── moderation.ts
+│   │   │   └── organization-verification.ts
 │   │   ├── controllers
 │   │   │   ├── admin-report.ts
 │   │   │   ├── brevo-webhook
@@ -600,6 +604,7 @@
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── __tests__
+│   │   │   │       │   ├── factories.ts
 │   │   │   │       │   ├── mission.test.ts
 │   │   │   │       │   ├── moderation.test.ts
 │   │   │   │       │   ├── organization.test.ts
@@ -670,6 +675,10 @@
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── types.ts
+│   │   │   ├── verify-publisher-organization
+│   │   │   │   ├── handler.ts
+│   │   │   │   └── utils
+│   │   │   │       └── organization.ts
 │   │   │   └── warnings
 │   │   │       ├── bot.ts
 │   │   │       ├── handler.ts
@@ -739,6 +748,7 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── publisher-diffusion-exclusion.ts
+│   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── reassign-stats.ts
 │   │   │   ├── report.ts
@@ -783,6 +793,7 @@
 │   │   │   │   ├── geo.test.ts
 │   │   │   │   ├── mission.test.ts
 │   │   │   │   ├── organization.test.ts
+│   │   │   │   ├── parser.test.ts
 │   │   │   │   └── string.test.ts
 │   │   │   ├── activity.ts
 │   │   │   ├── array.ts
@@ -793,6 +804,8 @@
 │   │   │   ├── mission.ts
 │   │   │   ├── normalize.ts
 │   │   │   ├── organization.ts
+│   │   │   ├── parser.ts
+│   │   │   ├── publisher-organization.ts
 │   │   │   ├── request-id.ts
 │   │   │   ├── request.ts
 │   │   │   ├── string.ts
@@ -912,19 +925,21 @@
 │   │   │       ├── empty-info.svg
 │   │   │       ├── error-icon.svg
 │   │   │       ├── export-icon.svg
+│   │   │       ├── gouv-devise.svg
 │   │   │       ├── jessica.svg
 │   │   │       ├── jva-logo.svg
 │   │   │       ├── logo.svg
 │   │   │       ├── magnify-icon.svg
+│   │   │       ├── marianne-banner.svg
 │   │   │       ├── moderation-auto.svg
 │   │   │       ├── moderation-manual.svg
 │   │   │       ├── nassim.svg
 │   │   │       └── trash-icon.svg
 │   │   ├── components
 │   │   │   ├── AnalyticsViz.jsx
+│   │   │   ├── Autocomplete.jsx
 │   │   │   ├── Chart.jsx
 │   │   │   ├── DateRangePicker.jsx
-│   │   │   ├── Dropdown.jsx
 │   │   │   ├── ErrorAlert.jsx
 │   │   │   ├── Footer.jsx
 │   │   │   ├── Header.jsx
@@ -934,7 +949,6 @@
 │   │   │   ├── Nav.jsx
 │   │   │   ├── New-Modal.jsx
 │   │   │   ├── Pie.jsx
-│   │   │   ├── RadioInput.jsx
 │   │   │   ├── SearchInput.jsx
 │   │   │   ├── Select.jsx
 │   │   │   ├── Table.jsx
@@ -942,10 +956,17 @@
 │   │   │   ├── Toggle.jsx
 │   │   │   ├── Tooltip.jsx
 │   │   │   ├── WarningAlert.jsx
-│   │   │   └── combobox
-│   │   │       ├── LocationCombobox.jsx
-│   │   │       ├── MissionCombobox.jsx
-│   │   │       └── index.jsx
+│   │   │   ├── combobox
+│   │   │   │   ├── DesignSystem.jsx
+│   │   │   │   ├── LocationCombobox.jsx
+│   │   │   │   ├── MissionCombobox.jsx
+│   │   │   │   └── index.jsx
+│   │   │   └── form
+│   │   │       ├── Checkbox.jsx
+│   │   │       ├── LabelledInput.jsx
+│   │   │       ├── LabelledSelect.jsx
+│   │   │       ├── LabelledTextarea.jsx
+│   │   │       └── RadioInput.jsx
 │   │   ├── constants
 │   │   │   └── index.jsx
 │   │   ├── index.css
@@ -1005,6 +1026,7 @@
 │   │   │   │   ├── Create.jsx
 │   │   │   │   ├── Edit.jsx
 │   │   │   │   ├── components
+│   │   │   │   │   ├── Dropdown.jsx
 │   │   │   │   │   ├── Information.jsx
 │   │   │   │   │   └── Trackers.jsx
 │   │   │   │   └── index.jsx
@@ -1202,4 +1224,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-312 directories, 892 files
+316 directories, 910 files
