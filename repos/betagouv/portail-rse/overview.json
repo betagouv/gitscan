@@ -1,24 +1,27 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE est un service permettant de gérer et de suivre les indicateurs de Responsabilité Sociétale des Entreprises (RSE). Il offre une interface pour la saisie, le suivi et l'export de données relatives à la performance RSE des entreprises.",
+  "description": "Le portail RSE est un service permettant de gérer et de suivre les indicateurs RSE des entreprises. Il offre une interface pour les conseillers RSE et les entreprises pour saisir et visualiser les données.",
   "language": "Python",
   "features": [
-    "Gestion des indicateurs RSE",
-    "Suivi de la performance RSE",
+    "Gestion des utilisateurs",
+    "Gestion des habilitations",
+    "Suivi des indicateurs RSE",
     "Export de données (Excel)",
+    "Tableaux de bord",
     "Calculs d'indicateurs",
-    "Gestion des utilisateurs et des habilitations",
-    "Reporting VSME"
+    "Gestion des entreprises",
+    "Gestion des conseillers RSE"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
+    "PostgreSQL",
+    "Redis",
     "openpyxl",
     "sass",
-    "htmx",
-    "postgresql",
-    "redis"
+    "vite",
+    "svelte"
   ],
   "components": [
     "Backend Django",
@@ -26,7 +29,7 @@
     "Base de données PostgreSQL",
     "Cache Redis",
     "API REST",
-    "Interface utilisateur DSFR"
+    "Interface utilisateur web"
   ],
   "auth": {
     "methods": [
@@ -35,13 +38,12 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Jest"
+    "pytest"
   ],
   "workflows": [
     "test.yml"
   ],
-  "lastActivity": "2026-02-19T15:55:29+01:00",
+  "lastActivity": "2026-02-25T15:11:16+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -53,11 +55,14 @@
   },
   "tags": [
     "RSE",
-    "Responsabilité Sociétale des Entreprises",
     "Développement Durable",
-    "Reporting",
+    "Indicateurs",
+    "Entreprises",
+    "Conseillers",
     "Django",
     "Python",
-    "VSME"
+    "Svelte",
+    "CSRD",
+    "BDESE"
   ]
 }
