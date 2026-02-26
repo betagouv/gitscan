@@ -1,32 +1,28 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
+  "description": "Le service public Conseillers-Entreprises permet de développer le rôle de conseil auprès des TPE & PME. Il est développé de façon ouverte et transparente, avec un code source publié sous licence libre AGPL.",
   "language": "Ruby",
   "features": [
     "Recherche",
-    "Gestion des experts",
-    "Gestion des entreprises",
-    "Suivi des activités de conseil",
-    "Import/Export de données",
     "Gestion des antennes régionales",
-    "Statistiques et rapports"
+    "Suivi des statistiques",
+    "Gestion des experts",
+    "Gestion des sollicitations"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
+    "@gouvfr/dsfr",
     "webpack",
-    "Stimulus",
-    "decoupage-administratif",
-    "aws-sdk-s3"
+    "stimulus"
   ],
   "components": [
     "Application web Ruby on Rails",
     "Base de données PostgreSQL",
     "Frontend JavaScript",
-    "API REST",
-    "Interface d'administration"
+    "API REST"
   ],
   "auth": {
     "methods": [
@@ -38,9 +34,9 @@
     "SimpleCov"
   ],
   "workflows": [
-    "CI/CD (CircleCI)"
+    "CI/CD with CircleCI"
   ],
-  "lastActivity": "2026-02-20T11:41:19+01:00",
+  "lastActivity": "2026-02-25T12:14:32+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -51,13 +47,14 @@
     "openIssues": null
   },
   "tags": [
-    "conseil aux entreprises",
+    "ruby",
+    "rails",
+    "postgresql",
+    "conseil",
+    "entreprises",
     "TPE",
     "PME",
-    "Ruby on Rails",
-    "PostgreSQL",
-    "administration publique",
-    "accompagnement",
-    "développement économique"
+    "administration",
+    "service public"
   ]
 }

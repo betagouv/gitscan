@@ -304,8 +304,8 @@
 │   │   │   ├── iframe_prefix.rb
 │   │   │   ├── inbox.rb
 │   │   │   ├── load_filter_options.rb
-│   │   │   ├── manager_filters.rb
 │   │   │   ├── persisted_search.rb
+│   │   │   ├── search_filters.rb
 │   │   │   └── stats_utilities.rb
 │   │   ├── conseiller
 │   │   │   ├── cooperations_controller.rb
@@ -424,7 +424,6 @@
 │   │   ├── regions_options_helper.rb
 │   │   ├── reminders_helper.rb
 │   │   ├── scripts_snippets_helper.rb
-│   │   ├── search_helper.rb
 │   │   ├── seo_helper.rb
 │   │   ├── sitemap_helper.rb
 │   │   ├── solicitation_helper.rb
@@ -1065,7 +1064,6 @@
 │       │   ├── needs
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _menu.html.haml
-│       │   │   ├── _search.haml
 │       │   │   └── index.html.haml
 │       │   └── stats
 │       │       ├── _stats_search.haml
@@ -1142,6 +1140,7 @@
 │       │   ├── _flashes.html.haml
 │       │   ├── _iframe_resizer.html.erb
 │       │   ├── _matomo.html.erb
+│       │   ├── _needs_search.haml
 │       │   ├── _password_tips.html.haml
 │       │   ├── _skiplinks.html.haml
 │       │   ├── _tarteaucitron.html.erb
@@ -1320,7 +1319,8 @@
 │   │   ├── 20260106153226_fix_schema.rb
 │   │   ├── 20260113150217_add_insee_code_to_solicitations.rb
 │   │   ├── 20260126152754_add_insee_code_format_constraint.rb
-│   │   └── 20260216135245_add_information_banner_to_landing.rb
+│   │   ├── 20260216135245_add_information_banner_to_landing.rb
+│   │   └── 20260218085238_remove_requires_fields.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1400,6 +1400,8 @@
 │   │   │       └── communes_controller_spec.rb
 │   │   ├── badges_controller_spec.rb
 │   │   ├── companies_controller_spec.rb
+│   │   ├── concerns
+│   │   │   └── search_filters_spec.rb
 │   │   ├── conseiller
 │   │   │   ├── cooperations_controller_spec.rb
 │   │   │   ├── diagnoses
@@ -1416,6 +1418,7 @@
 │   │   │   ├── landing_themes_controller_spec.rb
 │   │   │   └── landings_controller_spec.rb
 │   │   ├── manager
+│   │   │   ├── needs_controller_spec.rb
 │   │   │   └── stats_controller_spec.rb
 │   │   ├── matches_controller_spec.rb
 │   │   ├── needs_controller_spec.rb
@@ -1806,4 +1809,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-311 directories, 1506 files
+312 directories, 1508 files
