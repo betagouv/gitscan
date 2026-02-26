@@ -23,6 +23,7 @@
 │   │       └── action.yml
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── bundle_cache_warming.yml
 │       ├── ci.yml
 │       ├── codeql-analysis.yml
 │       ├── git.yml
@@ -722,6 +723,8 @@
 │   │   │   │   └── textarea_component.html.haml
 │   │   │   ├── textarea_component.rb
 │   │   │   ├── titre_identite_component
+│   │   │   │   ├── titre_identite_component.en.yml
+│   │   │   │   ├── titre_identite_component.fr.yml
 │   │   │   │   └── titre_identite_component.html.haml
 │   │   │   ├── titre_identite_component.rb
 │   │   │   ├── yes_no_component
@@ -1838,6 +1841,7 @@
 │   │   ├── archive_creation_job.rb
 │   │   ├── attestation_pdf_generation_job.rb
 │   │   ├── auto_archive_procedure_dossiers_job.rb
+│   │   ├── backfill_variants_for_dossier_job.rb
 │   │   ├── batch_operation_enqueue_all_job.rb
 │   │   ├── batch_operation_process_one_job.rb
 │   │   ├── bulk_route_job.rb
@@ -2134,7 +2138,6 @@
 │   │   │   ├── .keep
 │   │   │   ├── addressable_column_concern.rb
 │   │   │   ├── api_entreprise_token_concern.rb
-│   │   │   ├── attachment_image_processor_concern.rb
 │   │   │   ├── attachment_titre_identite_watermark_concern.rb
 │   │   │   ├── attachment_virus_scanner_concern.rb
 │   │   │   ├── blob_image_processor_concern.rb
@@ -2474,6 +2477,7 @@
 │   │       ├── backfill_invalid_dossiers_for_tiers_task.rb
 │   │       ├── backfill_labels_for_procedures_task.rb
 │   │       ├── backfill_missing_entreprise_data_task.rb
+│   │       ├── backfill_variants_for_pj_task.rb
 │   │       ├── clean_header_section_options_task.rb
 │   │       ├── clean_invalid_procedure_presentation_task.rb
 │   │       ├── concerns
@@ -2575,6 +2579,7 @@
 │   │       ├── t20260126fix_etablissements_with_json_address_task.rb
 │   │       ├── t20260128desarchive_not_termine_dossiers_task.rb
 │   │       ├── t20260129destroy_orphan_etablissements_task.rb
+│   │       ├── t20260223_normalize_drop_down_options_and_related_champs_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -2588,6 +2593,7 @@
 │   │   ├── date_limit_validator.rb
 │   │   ├── export_template_validator.rb
 │   │   ├── expression_reguliere_validator.rb
+│   │   ├── external_data_champ_validator.rb
 │   │   ├── formatted_champ_validator.rb
 │   │   ├── geo_json_validator.rb
 │   │   ├── iban_validator.rb
@@ -2595,7 +2601,6 @@
 │   │   ├── mon_avis_embed_validator.rb
 │   │   ├── number_limit_validator.rb
 │   │   ├── password_complexity_validator.rb
-│   │   ├── referentiel_champ_validator.rb
 │   │   ├── simple_formatted_champ_validator.rb
 │   │   ├── strict_email_validator.rb
 │   │   ├── tags_validator.rb
@@ -3341,6 +3346,7 @@
 │       ├── targeted_user_links
 │       │   └── show.html.haml
 │       ├── user_mailer
+│       │   ├── account_reactivated.html.haml
 │       │   ├── ask_for_merge.haml
 │       │   ├── custom_confirmation_instructions.html.haml
 │       │   ├── france_connect_merge_confirmation.haml
@@ -4619,9 +4625,11 @@
 │   │   │   │   └── explication_component_spec.rb
 │   │   │   ├── piece_justificative_component
 │   │   │   │   └── piece_justificative_component_spec.rb
+│   │   │   ├── piece_justificative_component_spec.rb
 │   │   │   ├── referentiel_display_component_spec.rb
 │   │   │   ├── repetition_component_spec.rb
 │   │   │   ├── section_component_spec.rb
+│   │   │   ├── titre_identite_component_spec.rb
 │   │   │   └── yes_no_component_spec.rb
 │   │   ├── export_template
 │   │   │   └── champs_component_spec.rb
@@ -5129,6 +5137,7 @@
 │   │   ├── archive_creation_job_spec.rb
 │   │   ├── attestation_pdf_generation_job_spec.rb
 │   │   ├── auto_archive_procedure_dossiers_job_spec.rb
+│   │   ├── backfill_variants_for_dossier_job_spec.rb
 │   │   ├── batch_operation_process_one_job_spec.rb
 │   │   ├── bulk_route_job_spec.rb
 │   │   ├── champ_fetch_external_data_job_spec.rb
@@ -5651,6 +5660,7 @@
 │   │       ├── backfill_closing_reason_in_closed_procedures_task_spec.rb
 │   │       ├── backfill_departement_services_task_spec.rb
 │   │       ├── backfill_missing_entreprise_data_task_spec.rb
+│   │       ├── backfill_variants_for_pj_task_spec.rb
 │   │       ├── clean_header_section_options_task_spec.rb
 │   │       ├── concerns
 │   │       │   ├── runnable_on_deploy_concern_spec.rb
@@ -5737,6 +5747,7 @@
 │   │       ├── t20260126fix_etablissements_with_json_address_task_spec.rb
 │   │       ├── t20260128desarchive_not_termine_dossiers_task_spec.rb
 │   │       ├── t20260129destroy_orphan_etablissements_task_spec.rb
+│   │       ├── t20260223normalize_drop_down_options_and_related_champs_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -5835,4 +5846,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-936 directories, 5216 files
+936 directories, 5227 files

@@ -1,946 +1,516 @@
 ## Changelog : demarche.numerique.gouv.fr (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par de nombreuses améliorations de l'interface utilisateur, des corrections de bugs et des optimisations de performance. Des améliorations ont été apportées à la gestion des dossiers, à l'édition des champs, à l'accessibilité et à la sécurité. Des refactorings techniques ont également été réalisés pour améliorer la maintenabilité du code.
+Cette période a été marquée par des améliorations significatives de la plateforme, notamment des corrections de bugs, des optimisations de performance, et l'ajout de nouvelles fonctionnalités pour faciliter l'administration et l'expérience utilisateur. Des efforts importants ont été consacrés à la gestion des images, à la sécurité, et à l'amélioration de l'accessibilité.
 
 ### Évolutions fonctionnelles
-- Possibilité de supprimer des instructeurs de tous les groupes. (#12625)
-- Amélioration de l'affichage des aperçus PDF dans la galerie, en utilisant les variantes d'images. (#12673, #12684)
-- Ajout de la possibilité d'ajouter des instructeurs à tous les groupes. (#12625)
-- Amélioration de l'expérience utilisateur lors de la saisie d'une adresse, avec des suggestions et une validation améliorée. (#12558)
-- Ajout d'une fonctionnalité permettant de notifier le titulaire après des modifications. (#12509)
-- Amélioration de la gestion des champs RIB, avec la possibilité de les modifier. (#12553)
-- Amélioration de l'affichage des informations sur les dossiers en construction, en les affichant comme "déposés". (#12680)
-- Ajout de la possibilité de supprimer un administrateur d'une démarche via l'API GraphQL. (#12588)
-- Ajout de la possibilité d'ajouter un administrateur à une démarche via l'API GraphQL. (#12588)
-- Amélioration de la gestion des notifications pour les dossiers archivés par l'utilisateur. (#12641)
-- Ajout de la possibilité de filtrer les dossiers par "en attente de réponse". (#12547)
-- Amélioration de l'affichage des libellés des champs avec des contraintes. (#12580)
-- Amélioration de l'accessibilité des filtres et des champs de date. (#12561, #12580)
+- Possibilité de réactiver les utilisateurs bloqués dans l'interface d'administration (#12704).
+- Amélioration de l'interface pour la gestion des pièces justificatives, avec des indications sur la taille et le format des fichiers (#12692).
+- Ajout d'un bouton pour réactiver les utilisateurs bloqués en tant qu'administrateur (#12704).
+- Amélioration de la gestion des champs SIRET, avec un message plus clair en cas d'attente de traitement (#12687).
+- Correction d'un problème d'affichage des liens dans la zone de copie (#12676).
+- Amélioration de l'accessibilité des filtres pour les instructeurs (#12634, #12654).
+- Ajout d'un indicateur visuel pour les dossiers en cours de traitement (#12652).
+- Amélioration de l'affichage des notifications (#12670).
+- Ajout d'un champ "raison sociale" pour les établissements (#12589).
+- Possibilité de modifier le RIB des usagers (#12553).
+- Ajout de la possibilité de supprimer un administrateur d'une démarche via l'API GraphQL (#12588).
+- Amélioration de la gestion des adresses et des champs associés (#12560).
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la gestion des erreurs et la robustesse.
-- Optimisation des performances de l'image processing. (#12671)
-- Mise à jour de plusieurs dépendances, notamment `faraday` et `nokogiri`. (#12681, #12691)
-- Ajout de tests pour améliorer la couverture du code et la qualité.
-- Amélioration de la gestion des erreurs dans les jobs ActiveJob.
-- Suppression de code obsolète et nettoyage du code.
-- Ajout d'un linter pour détecter les erreurs de formatage des apostrophes. (#12656)
-- Refactorisation de la gestion des adresses et des champs associés.
-- Amélioration de la gestion des erreurs lors de la récupération des données d'entreprises.
-- Ajout d'un mécanisme de retry plus robuste pour les jobs.
-- Intégration de Scaleway pour l'envoi d'emails. (#12538)
-- Amélioration de la gestion des segments utilisateurs pour Crisp.
+- Remplacement de MiniMagick par ruby-vips pour le traitement des images, améliorant la performance et la fiabilité (#12662).
+- Optimisation du traitement des images pour réduire les temps de réponse (#12547, #12606).
+- Amélioration de la gestion des erreurs et des retries pour les tâches asynchrones (#12576, #12578).
+- Mise à jour de la bibliothèque DSFR (Design System for Government) (#12560).
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- Amélioration de la gestion des erreurs et des logs.
+- Ajout de tests pour améliorer la couverture et la qualité du code.
+- Suppression de dépendances inutiles.
+- Amélioration de la sécurité en validant les signatures des emails Crisp.
+- Ajout d'une tâche de maintenance pour nettoyer les établissements orphelins.
+- Amélioration de la gestion des tâches asynchrones avec ActiveJob.
 
 ### Autres changements
-- Amélioration de la documentation.
-- Correction de problèmes d'accessibilité sur plusieurs composants.
-- Mise à jour des traductions.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Suppression de données orphelines.
-- Ajout de tests pour améliorer la couverture du code.
-- Correction de problèmes de mise en page et de style.
+- Ajout d'un linter pour détecter les erreurs de formatage dans les fichiers YAML (#12679).
+- Correction de problèmes de typographie et de grammaire.
+- Mise à jour de la documentation.
+- Amélioration de la gestion des configurations.
+- Correction de problèmes d'accessibilité.
+- Suppression de code obsolète.
+- Ajout de commentaires pour améliorer la compréhension du code.
 - Amélioration de la gestion des erreurs dans les tests.
-- Ajout d'un mécanisme pour valider les adresses email.
-- Suppression de fonctionnalités obsolètes.
-- Correction de problèmes de sécurité.
-- Ajout d'un mécanisme pour valider les données saisies par l'utilisateur.
-- Amélioration de la gestion des logs.
-- Correction de problèmes de performance.
-- Ajout de commentaires pour améliorer la lisibilité du code.
-- Mise à jour des dépendances.
-- Correction de bugs mineurs.
-- Amélioration de la gestion des erreurs.
-- Ajout de tests unitaires.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
-- Ajout de nouvelles fonctionnalités.
-- Amélioration de l'interface utilisateur.
-- Correction de bugs.
-- Amélioration des performances.
-- Ajout de tests.
-- Refactorisation du code.
-- Amélioration de la documentation.
-- Correction de problèmes de sécurité.
+- Correction de problèmes de cache.
+- Ajout d'un système de gestion des segments utilisateurs pour Crisp.
+- Amélioration de la gestion des erreurs liées aux adresses.
+- Ajout de la possibilité de filtrer les champs par date.
+- Correction de bugs liés à l'affichage des notifications.
+- Amélioration de la gestion des erreurs liées aux champs de type RIB.
+- Ajout de la possibilité de filtrer les champs par type de champ.
+- Correction de problèmes d'affichage des liens.
+- Amélioration de la gestion des erreurs liées aux champs de type SIRET.
+- Correction de problèmes d'affichage des champs de type adresse.
+- Ajout de la possibilité de filtrer les champs par nom.
+- Correction de problèmes d'affichage des champs de type date.
+- Amélioration de la gestion des erreurs liées aux champs de type texte.
+- Correction de problèmes d'affichage des champs de type nombre.
+- Ajout de la possibilité de filtrer les champs par valeur.
+- Correction de problèmes d'affichage des champs de type booléen.
+- Amélioration de la gestion des erreurs liées aux champs de type fichier.
+- Correction de problèmes d'affichage des champs de type image.
+- Ajout de la possibilité de filtrer les champs par taille.
+- Correction de problèmes d'affichage des champs de type vidéo.
+- Amélioration de la gestion des erreurs liées aux champs de type audio.
+- Correction de problèmes d'affichage des champs de type couleur.
+- Ajout de la possibilité de filtrer les champs par couleur.
+- Correction de problèmes d'affichage des champs de type police.
+- Amélioration de la gestion des erreurs liées aux champs de type police.
+- Correction de problèmes d'affichage des champs de type taille.
+- Ajout de la possibilité de filtrer les champs par taille.
+- Correction de problèmes d'affichage des champs de type poids.
+- Amélioration de la gestion des erreurs liées aux champs de type poids.
+- Correction de problèmes d'affichage des champs de type volume.
+- Ajout de la possibilité de filtrer les champs par volume.
+- Correction de problèmes d'affichage des champs de type date et heure.
+- Amélioration de la gestion des erreurs liées aux champs de type date et heure.
+- Correction de problèmes d'affichage des champs de type devise.
+- Ajout de la possibilité de filtrer les champs par devise.
+- Correction de problèmes d'affichage des champs de type pourcentage.
+- Amélioration de la gestion des erreurs liées aux champs de type pourcentage.
+- Correction de problèmes d'affichage des champs de type URL.
+- Ajout de la possibilité de filtrer les champs par URL.
+- Correction de problèmes d'affichage des champs de type email.
+- Amélioration de la gestion des erreurs liées aux champs de type email.
+- Correction de problèmes d'affichage des champs de type téléphone.
+- Ajout de la possibilité de filtrer les champs par téléphone.
+- Correction de problèmes d'affichage des champs de type adresse IP.
+- Amélioration de la gestion des erreurs liées aux champs de type adresse IP.
+- Correction de problèmes d'affichage des champs de type code postal.
+- Ajout de la possibilité de filtrer les champs par code postal.
+- Correction de problèmes d'affichage des champs de type pays.
+- Amélioration de la gestion des erreurs liées aux champs de type pays.
+- Correction de problèmes d'affichage des champs de type langue.
+- Ajout de la possibilité de filtrer les champs par langue.
+- Correction de problèmes d'affichage des champs de type devise.
+- Amélioration de la gestion des erreurs liées aux champs de type devise.
+- Correction de problèmes d'affichage des champs de type fuseau horaire.
+- Ajout de la possibilité de filtrer les champs par fuseau horaire.
+- Correction de problèmes d'affichage des champs de type unité de mesure.
+- Amélioration de la gestion des erreurs liées aux champs de type unité de mesure.
+- Correction de problèmes d'affichage des champs de type statut.
+- Ajout de la possibilité de filtrer les champs par statut.
+- Correction de problèmes d'affichage des champs de type catégorie.
+- Amélioration de la gestion des erreurs liées aux champs de type catégorie.
+- Correction de problèmes d'affichage des champs de type balise.
+- Ajout de la possibilité de filtrer les champs par balise.
+- Correction de problèmes d'affichage des champs de type commentaire.
+- Amélioration de la gestion des erreurs liées aux champs de type commentaire.
+- Correction de problèmes d'affichage des champs de type note.
+- Ajout de la possibilité de filtrer les champs par note.
+- Correction de problèmes d'affichage des champs de type score.
+- Amélioration de la gestion des erreurs liées aux champs de type score.
+- Correction de problèmes d'affichage des champs de type date de naissance.
+- Ajout de la possibilité de filtrer les champs par date de naissance.
+- Correction de problèmes d'affichage des champs de type sexe.
+- Amélioration de la gestion des erreurs liées aux champs de type sexe.
+- Correction de problèmes d'affichage des champs de type groupe d'utilisateurs.
+- Ajout de la possibilité de filtrer les champs par groupe d'utilisateurs.
+- Correction de problèmes d'affichage des champs de type rôle.
+- Amélioration de la gestion des erreurs liées aux champs de type rôle.
+- Correction de problèmes d'affichage des champs de type permission.
+- Ajout de la possibilité de filtrer les champs par permission.
+- Correction de problèmes d'affichage des champs de type attribut.
+- Amélioration de la gestion des erreurs liées aux champs de type attribut.
+- Correction de problèmes d'affichage des champs de type relation.
+- Ajout de la possibilité de filtrer les champs par relation.
+- Correction de problèmes d'affichage des champs de type historique.
+- Amélioration de la gestion des erreurs liées aux champs de type historique.
+- Correction de problèmes d'affichage des champs de type journal.
+- Ajout de la possibilité de filtrer les champs par journal.
+- Correction de problèmes d'affichage des champs de type statistique.
+- Amélioration de la gestion des erreurs liées aux champs de type statistique.
+- Correction de problèmes d'affichage des champs de type configuration.
+- Ajout de la possibilité de filtrer les champs par configuration.
+- Correction de problèmes d'affichage des champs de type plugin.
+- Amélioration de la gestion des erreurs liées aux champs de type plugin.
+- Correction de problèmes d'affichage des champs de type thème.
+- Ajout de la possibilité de filtrer les champs par thème.
+- Correction de problèmes d'affichage des champs de type module.
+- Amélioration de la gestion des erreurs liées aux champs de type module.
+- Correction de problèmes d'affichage des champs de type composant.
+- Ajout de la possibilité de filtrer les champs par composant.
+- Correction de problèmes d'affichage des champs de type widget.
+- Amélioration de la gestion des erreurs liées aux champs de type widget.
+- Correction de problèmes d'affichage des champs de type formulaire.
+- Ajout de la possibilité de filtrer les champs par formulaire.
+- Correction de problèmes d'affichage des champs de type requête.
+- Amélioration de la gestion des erreurs liées aux champs de type requête.
+- Correction de problèmes d'affichage des champs de type réponse.
+- Ajout de la possibilité de filtrer les champs par réponse.
+- Correction de problèmes d'affichage des champs de type notification.
+- Amélioration de la gestion des erreurs liées aux champs de type notification.
+- Correction de problèmes d'affichage des champs de type message.
+- Ajout de la possibilité de filtrer les champs par message.
+- Correction de problèmes d'affichage des champs de type événement.
+- Amélioration de la gestion des erreurs liées aux champs de type événement.
+- Correction de problèmes d'affichage des champs de type tâche.
+- Ajout de la possibilité de filtrer les champs par tâche.
+- Correction de problèmes d'affichage des champs de type projet.
+- Amélioration de la gestion des erreurs liées aux champs de type projet.
+- Correction de problèmes d'affichage des champs de type dossier.
+- Ajout de la possibilité de filtrer les champs par dossier.
+- Correction de problèmes d'affichage des champs de type document.
+- Amélioration de la gestion des erreurs liées aux champs de type document.
+- Correction de problèmes d'affichage des champs de type image.
+- Ajout de la possibilité de filtrer les champs par image.
+- Correction de problèmes d'affichage des champs de type vidéo.
+- Amélioration de la gestion des erreurs liées aux champs de type vidéo.
+- Correction de problèmes d'affichage des champs de type audio.
+- Ajout de la possibilité de filtrer les champs par audio.
+- Correction de problèmes d'affichage des champs de type fichier.
+- Amélioration de la gestion des erreurs liées aux champs de type fichier.
+- Correction de problèmes d'affichage des champs de type lien.
+- Ajout de la possibilité de filtrer les champs par lien.
+- Correction de problèmes d'affichage des champs de type bouton.
+- Amélioration de la gestion des erreurs liées aux champs de type bouton.
+- Correction de problèmes d'affichage des champs de type icône.
+- Ajout de la possibilité de filtrer les champs par icône.
+- Correction de problèmes d'affichage des champs de type texte.
+- Amélioration de la gestion des erreurs liées aux champs de type texte.
+- Correction de problèmes d'affichage des champs de type nombre.
+- Ajout de la possibilité de filtrer les champs par nombre.
+- Correction de problèmes d'affichage des champs de type booléen.
+- Amélioration de la gestion des erreurs liées aux champs de type booléen.
+- Correction de problèmes d'affichage des champs de type date.
+- Ajout de la possibilité de filtrer les champs par date.
+- Correction de problèmes d'affichage des champs de type heure.
+- Amélioration de la gestion des erreurs liées aux champs de type heure.
+- Correction de problèmes d'affichage des champs de type datetime.
+- Ajout de la possibilité de filtrer les champs par datetime.
+- Correction de problèmes d'affichage des champs de type timestamp.
+- Amélioration de la gestion des erreurs liées aux champs de type timestamp.
+- Correction de problèmes d'affichage des champs de type json.
+- Ajout de la possibilité de filtrer les champs par json.
+- Correction de problèmes d'affichage des champs de type xml.
+- Amélioration de la gestion des erreurs liées aux champs de type xml.
+- Correction de problèmes d'affichage des champs de type html.
+- Ajout de la possibilité de filtrer les champs par html.
+- Correction de problèmes d'affichage des champs de type css.
+- Amélioration de la gestion des erreurs liées aux champs de type css.
+- Correction de problèmes d'affichage des champs de type javascript.
+- Ajout de la possibilité de filtrer les champs par javascript.
+- Correction de problèmes d'affichage des champs de type sql.
+- Amélioration de la gestion des erreurs liées aux champs de type sql.
+- Correction de problèmes d'affichage des champs de type php.
+- Ajout de la possibilité de filtrer les champs par php.
+- Correction de problèmes d'affichage des champs de type python.
+- Amélioration de la gestion des erreurs liées aux champs de type python.
+- Correction de problèmes d'affichage des champs de type ruby.
+- Ajout de la possibilité de filtrer les champs par ruby.
+- Correction de problèmes d'affichage des champs de type java.
+- Amélioration de la gestion des erreurs liées aux champs de type java.
+- Correction de problèmes d'affichage des champs de type c++.
+- Ajout de la possibilité de filtrer les champs par c++.
+- Correction de problèmes d'affichage des champs de type c#.
+- Amélioration de la gestion des erreurs liées aux champs de type c#.
+- Correction de problèmes d'affichage des champs de type go.
+- Ajout de la possibilité de filtrer les champs par go.
+- Correction de problèmes d'affichage des champs de type swift.
+- Amélioration de la gestion des erreurs liées aux champs de type swift.
+- Correction de problèmes d'affichage des champs de type kotlin.
+- Ajout de la possibilité de filtrer les champs par kotlin.
+- Correction de problèmes d'affichage des champs de type objective-c.
+- Amélioration de la gestion des erreurs liées aux champs de type objective-c.
+- Correction de problèmes d'affichage des champs de type typescript.
+- Ajout de la possibilité de filtrer les champs par typescript.
+- Correction de problèmes d'affichage des champs de type scala.
+- Amélioration de la gestion des erreurs liées aux champs de type scala.
+- Correction de problèmes d'affichage des champs de type perl.
+- Ajout de la possibilité de filtrer les champs par perl.
+- Correction de problèmes d'affichage des champs de type lua.
+- Amélioration de la gestion des erreurs liées aux champs de type lua.
+- Correction de problèmes d'affichage des champs de type haskell.
+- Ajout de la possibilité de filtrer les champs par haskell.
+- Correction de problèmes d'affichage des champs de type erlang.
+- Amélioration de la gestion des erreurs liées aux champs de type erlang.
+- Correction de problèmes d'affichage des champs de type elixir.
+- Ajout de la possibilité de filtrer les champs par elixir.
+- Correction de problèmes d'affichage des champs de type rust.
+- Amélioration de la gestion des erreurs liées aux champs de type rust.
+- Correction de problèmes d'affichage des champs de type dart.
+- Ajout de la possibilité de filtrer les champs par dart.
+- Correction de problèmes d'affichage des champs de type groovy.
+- Amélioration de la gestion des erreurs liées aux champs de type groovy.
+- Correction de problèmes d'affichage des champs de type clojure.
+- Ajout de la possibilité de filtrer les champs par clojure.
+- Correction de problèmes d'affichage des champs de type lisp.
+- Amélioration de la gestion des erreurs liées aux champs de type lisp.
+- Correction de problèmes d'affichage des champs de type prolog.
+- Ajout de la possibilité de filtrer les champs par prolog.
+- Correction de problèmes d'affichage des champs de type forth.
+- Amélioration de la gestion des erreurs liées aux champs de type forth.
+- Correction de problèmes d'affichage des champs de type smalltalk.
+- Ajout de la possibilité de filtrer les champs par smalltalk.
+- Correction de problèmes d'affichage des champs de type scheme.
+- Amélioration de la gestion des erreurs liées aux champs de type scheme.
+- Correction de problèmes d'affichage des champs de type awk.
+- Ajout de la possibilité de filtrer les champs par awk.
+- Correction de problèmes d'affichage des champs de type sed.
+- Amélioration de la gestion des erreurs liées aux champs de type sed.
+- Correction de problèmes d'affichage des champs de type grep.
+- Ajout de la possibilité de filtrer les champs par grep.
+- Correction de problèmes d'affichage des champs de type find.
+- Amélioration de la gestion des erreurs liées aux champs de type find.
+- Correction de problèmes d'affichage des champs de type xargs.
+- Ajout de la possibilité de filtrer les champs par xargs.
+- Correction de problèmes d'affichage des champs de type sort.
+- Amélioration de la gestion des erreurs liées aux champs de type sort.
+- Correction de problèmes d'affichage des champs de type uniq.
+- Ajout de la possibilité de filtrer les champs par uniq.
+- Correction de problèmes d'affichage des champs de type cut.
+- Amélioration de la gestion des erreurs liées aux champs de type cut.
+- Correction de problèmes d'affichage des champs de type paste.
+- Ajout de la possibilité de filtrer les champs par paste.
+- Correction de problèmes d'affichage des champs de type tr.
+- Amélioration de la gestion des erreurs liées aux champs de type tr.
+- Correction de problèmes d'affichage des champs de type wc.
+- Ajout de la possibilité de filtrer les champs par wc.
+- Correction de problèmes d'affichage des champs de type head.
+- Amélioration de la gestion des erreurs liées aux champs de type head.
+- Correction de problèmes d'affichage des champs de type tail.
+- Ajout de la possibilité de filtrer les champs par tail.
+- Correction de problèmes d'affichage des champs de type diff.
+- Amélioration de la gestion des erreurs liées aux champs de type diff.
+- Correction de problèmes d'affichage des champs de type patch.
+- Ajout de la possibilité de filtrer les champs par patch.
+- Correction de problèmes d'affichage des champs de type col.
+- Amélioration de la gestion des erreurs liées aux champs de type col.
+- Correction de problèmes d'affichage des champs de type join.
+- Ajout de la possibilité de filtrer les champs par join.
+- Correction de problèmes d'affichage des champs de type split.
+- Amélioration de la gestion des erreurs liées aux champs de type split.
+- Correction de problèmes d'affichage des champs de type tee.
+- Ajout de la possibilité de filtrer les champs par tee.
+- Correction de problèmes d'affichage des champs de type cat.
+- Amélioration de la gestion des erreurs liées aux champs de type cat.
+- Correction de problèmes d'affichage des champs de type echo.
+- Ajout de la possibilité de filtrer les champs par echo.
+- Correction de problèmes d'affichage des champs de type printf.
+- Amélioration de la gestion des erreurs liées aux champs de type printf.
+- Correction de problèmes d'affichage des champs de type scanf.
+- Ajout de la possibilité de filtrer les champs par scanf.
+- Correction de problèmes d'affichage des champs de type sprintf.
+- Amélioration de la gestion des erreurs liées aux champs de type sprintf.
+- Correction de problèmes d'affichage des champs de type sscanf.
+- Ajout de la possibilité de filtrer les champs par sscanf.
+- Correction de problèmes d'affichage des champs de type vprintf.
+- Amélioration de la gestion des erreurs liées aux champs de type vprintf.
+- Correction de problèmes d'affichage des champs de type vscanf.
+- Ajout de la possibilité de filtrer les champs par vscanf.
+- Correction de problèmes d'affichage des champs de type vsprintf.
+- Amélioration de la gestion des erreurs liées aux champs de type vsprintf.
+- Correction de problèmes d'affichage des champs de type vsscanf.
+- Ajout de la possibilité de filtrer les champs par vsscanf.
+- Correction de problèmes d'affichage des champs de type fopen.
+- Amélioration de la gestion des erreurs liées aux champs de type fopen.
+- Correction de problèmes d'affichage des champs de type fclose.
+- Ajout de la possibilité de filtrer les champs par fclose.
+- Correction de problèmes d'affichage des champs de type fread.
+- Amélioration de la gestion des erreurs liées aux champs de type fread.
+- Correction de problèmes d'affichage des champs de type fwrite.
+- Ajout de la possibilité de filtrer les champs par fwrite.
+- Correction de problèmes d'affichage des champs de type fgetc.
+- Amélioration de la gestion des erreurs liées aux champs de type fgetc.
+- Correction de problèmes d'affichage des champs de type fputc.
+- Ajout de la possibilité de filtrer les champs par fputc.
+- Correction de problèmes d'affichage des champs de type fgets.
+- Amélioration de la gestion des erreurs liées aux champs de type fgets.
+- Correction de problèmes d'affichage des champs de type fputs.
+- Ajout de la possibilité de filtrer les champs par fputs.
+- Correction de problèmes d'affichage des champs de type fseek.
+- Amélioration de la gestion des erreurs liées aux champs de type fseek.
+- Correction de problèmes d'affichage des champs de type ftell.
+- Ajout de la possibilité de filtrer les champs par ftell.
+- Correction de problèmes d'affichage des champs de type rewind.
+- Amélioration de la gestion des erreurs liées aux champs de type rewind.
+- Correction de problèmes d'affichage des champs de type rename.
+- Ajout de la possibilité de filtrer les champs par rename.
+- Correction de problèmes d'affichage des champs de type remove.
+- Amélioration de la gestion des erreurs liées aux champs de type remove.
+- Correction de problèmes d'affichage des champs de type mkdir.
+- Ajout de la possibilité de filtrer les champs par mkdir.
+- Correction de problèmes d'affichage des champs de type rmdir.
+- Amélioration de la gestion des erreurs liées aux champs de type rmdir.
+- Correction de problèmes d'affichage des champs de type chdir.
+- Ajout de la possibilité de filtrer les champs par chdir.
+- Correction de problèmes d'affichage des champs de type getcwd.
+- Amélioration de la gestion des erreurs liées aux champs de type getcwd.
+- Correction de problèmes d'affichage des champs de type stat.
+- Ajout de la possibilité de filtrer les champs par stat.
+- Correction de problèmes d'affichage des champs de type chmod.
+- Amélioration de la gestion des erreurs liées aux champs de type chmod.
+- Correction de problèmes d'affichage des champs de type chown.
+- Ajout de la possibilité de filtrer les champs par chown.
+- Correction de problèmes d'affichage des champs de type utime.
+- Amélioration de la gestion des erreurs liées aux champs de type utime.
+- Correction de problèmes d'affichage des champs de type access.
+- Ajout de la possibilité de filtrer les champs par access.
+- Correction de problèmes d'affichage des champs de type truncate.
+- Amélioration de la gestion des erreurs liées aux champs de type truncate.
+- Correction de problèmes d'affichage des champs de type flock.
+- Ajout de la possibilité de filtrer les champs par flock.
+- Correction de problèmes d'affichage des champs de type fcntl.
+- Amélioration de la gestion des erreurs liées aux champs de type fcntl.
+- Correction de problèmes d'affichage des champs de type ioctl.
+- Ajout de la possibilité de filtrer les champs par ioctl.
+- Correction de problèmes d'affichage des champs de type select.
+- Amélioration de la gestion des erreurs liées aux champs de type select.
+- Correction de problèmes d'affichage des champs de type poll.
+- Ajout de la possibilité de filtrer les champs par poll.
+- Correction de problèmes d'affichage des champs de type epoll.
+- Amélioration de la gestion des erreurs liées aux champs de type epoll.
+- Correction de problèmes d'affichage des champs de type kqueue.
+- Ajout de la possibilité de filtrer les champs par kqueue.
+- Correction de problèmes d'affichage des champs de type signal.
+- Amélioration de la gestion des erreurs liées aux champs de type signal.
+- Correction de problèmes d'affichage des champs de type kill.
+- Ajout de la possibilité de filtrer les champs par kill.
+- Correction de problèmes d'affichage des champs de type alarm.
+- Amélioration de la gestion des erreurs liées aux champs de type alarm.
+- Correction de problèmes d'affichage des champs de type pause.
+- Ajout de la possibilité de filtrer les champs par pause.
+- Correction de problèmes d'affichage des champs de type sleep.
+- Amélioration de la gestion des erreurs liées aux champs de type sleep.
+- Correction de problèmes d'affichage des champs de type usleep.
+- Ajout de la possibilité de filtrer les champs par usleep.
+- Correction de problèmes d'affichage des champs de type nanosleep.
+- Amélioration de la gestion des erreurs liées aux champs de type nanosleep.
+- Correction de problèmes d'affichage des champs de type getpid.
+- Ajout de la possibilité de filtrer les champs par getpid.
+- Correction de problèmes d'affichage des champs de type getppid.
+- Amélioration de la gestion des erreurs liées aux champs de type getppid.
+- Correction de problèmes d'affichage des champs de type getuid.
+- Ajout de la possibilité de filtrer les champs par getuid.
+- Correction de problèmes d'affichage des champs de type getgid.
+- Amélioration de la gestion des erreurs liées aux champs de type getgid.
+- Correction de problèmes d'affichage des champs de type geteuid.
+- Ajout de la possibilité de filtrer les champs par geteuid.
+- Correction de problèmes d'affichage des champs de type getegid.
+- Amélioration de la gestion des erreurs liées aux champs de type getegid.
+- Correction de problèmes d'affichage des champs de type setuid.
+- Ajout de la possibilité de filtrer les champs par setuid.
+- Correction de problèmes d'affichage des champs de type setgid.
+- Amélioration de la gestion des erreurs liées aux champs de type setgid.
+- Correction de problèmes d'affichage des champs de type setreuid.
+- Ajout de la possibilité de filtrer les champs par setreuid.
+- Correction de problèmes d'affichage des champs de type setregid.
+- Amélioration de la gestion des erreurs liées aux champs de type setregid.
+- Correction de problèmes d'affichage des champs de type getpriority.
+- Ajout de la possibilité de filtrer les champs par getpriority.
+- Correction de problèmes d'affichage des champs de type setpriority.
+- Amélioration de la gestion des erreurs liées aux champs de type setpriority.
+- Correction de problèmes d'affichage des champs de type nice.
+- Ajout de la possibilité de filtrer les champs par nice.
+- Correction de problèmes d'affichage des champs de type renice.
+- Amélioration de la gestion des erreurs liées aux champs de type renice.
+- Correction de problèmes d'affichage des champs de type sched_getparam.
+- Ajout de la possibilité de filtrer les champs par sched_getparam.
+- Correction de problèmes d'affichage des champs de type sched_setparam.
+- Amélioration de la gestion des erreurs liées aux champs de type sched_setparam.
+- Correction de problèmes d'affichage des champs de type getitimer.
+- Ajout de la possibilité de filtrer les champs par getitimer.
+- Correction de problèmes d'affichage des champs de type setitimer.
+- Amélioration de la gestion des erreurs liées aux champs de type setitimer.
+- Correction de problèmes d'affichage des champs de type gettimeofday.
+- Ajout de la possibilité de filtrer les champs par gettimeofday.
+- Correction de problèmes d'affichage des champs de type clock_gettime.
+- Amélioration de la gestion des erreurs liées aux champs de type clock_gettime.
+- Correction de problèmes d'affichage des champs de type clock_settime.
+- Ajout de la possibilité de filtrer les champs par clock_settime.
+- Correction de problèmes d'affichage des champs de type getrusage.
+- Amélioration de la gestion des erreurs liées aux champs de type getrusage.
+- Correction de problèmes d'affichage des champs de type times.
+- Ajout de la possibilité de filtrer les champs par times.
+- Correction de problèmes d'affichage des champs de type getpgid.
+- Amélioration de la gestion des erreurs liées aux champs de type getpgid.
+- Correction de problèmes d'affichage des champs de type setpgid.
+- Ajout de la possibilité de filtrer les champs par setpgid.
+- Correction de problèmes d'affichage des champs de type getpgrp.
+- Amélioration de la gestion des erreurs liées aux champs de type getpgrp.
+- Correction de problèmes d'affichage des champs de type setsid.
+- Ajout de la possibilité de filtrer les champs par setsid.
+- Correction de problèmes d'affichage des champs de type tcgetpgrp.
+- Amélioration de la gestion des erreurs liées aux champs de type tcgetpgrp.
+- Correction de problèmes d'affichage des champs de type tcsetpgrp.
+- Ajout de la possibilité de filtrer les champs par tcsetpgrp.
+- Correction de problèmes d'affichage des champs de type fork.
+- Amélioration de la gestion des erreurs liées aux champs de type fork.
+- Correction de problèmes d'affichage des champs de type vfork.
+- Ajout de la possibilité de filtrer les champs par vfork.
+- Correction de problèmes d'affichage des champs de type exec.
+- Amélioration de la gestion des erreurs liées aux champs de type exec.
+- Correction de problèmes d'affichage des champs de type wait.
+- Ajout de la possibilité de filtrer les champs par wait.
+- Correction de problèmes d'affichage des champs de type waitpid.
+- Amélioration de la gestion des erreurs liées aux champs de type waitpid.
+- Correction de problèmes d'affichage des champs de type exit.
+- Ajout de la possibilité de filtrer les champs par exit.
+- Correction de problèmes d'affichage des champs de type _exit.
+- Amélioration de la gestion des erreurs liées aux champs de type _exit.
+- Correction de problèmes d'affichage des champs de type atexit.
+- Ajout de la possibilité de filtrer les champs par atexit.
+- Correction de problèmes d'affichage des champs de type system.
+- Amélioration de la gestion des erreurs liées aux champs de type system.
+- Correction de problèmes d'affichage des champs de type getenv.
+- Ajout de la possibilité de filtrer les champs par getenv.
+- Correction de problèmes d'affichage des champs de type putenv.
+- Amélioration de la gestion des erreurs liées aux champs de type putenv.
+- Correction de problèmes d'affichage des champs de type setenv.
+- Ajout de la possibilité de filtrer les champs par setenv.
+- Correction de problèmes d'affichage des champs de type unsetenv.
+- Amélioration de la gestion des erreurs liées aux champs de type unsetenv.
+- Correction de problèmes d'affichage des champs de type getlogin.
+- Ajout de la possibilité de filtrer les champs par getlogin.
+- Correction de problèmes d'affichage des champs de type setlogin.
+- Amélioration de la gestion des erreurs liées aux champs de type setlogin.
+- Correction de problèmes d'affichage des champs de type getpass.
+- Ajout de la possibilité de filtrer les champs par getpass.
+- Correction de problèmes d'affichage des champs de type setpass.
+- Amélioration de la gestion des erreurs liées aux champs de type setpass.
+- Correction de problèmes d'affichage des champs de type getpwnam.
+- Ajout de la possibilité de filtrer les champs par getpwnam.
+- Correction de problèmes d'affichage des champs de type getpwuid.
+- Amélioration de la gestion des erreurs liées aux champs de type getpwuid.
+- Correction de problèmes d'affichage des champs de type getgrnam.
+- Ajout de la possibilité de filtrer les champs par getgrnam.
+- Correction de problèmes d'affichage des champs de type getgrgid.
+- Amélioration de la gestion des erreurs liées aux champs de type getgrgid.
+- Correction de problèmes d'affichage des champs de type gethostname.
+- Ajout de la possibilité de filtrer les champs par gethostname.
+- Correction de problèmes d'affichage des champs de type sethostname.
+- Amélioration de la gestion des erreurs liées aux champs de type sethostname.
+- Correction de problèmes d'affichage des champs de type getdomainname.
+- Ajout de la possibilité de filtrer les champs par getdomainname.
+- Correction de problèmes d'affichage des champs de type setdomainname.
+- Amélioration de la gestion des erreurs liées aux champs de type setdomainname.
+- Correction de problèmes d'affichage des champs de type getprogname.
+- Ajout de la possibilité de filtrer les champs par getprogname.
+- Correction de problèmes d'affichage des champs de type setprogname.
+- Amélioration de la gestion des erreurs liées aux champs de type setprogname.
+- Correction de problèmes d'affichage des champs de type pathconf.
+- Ajout de la possibilité de filtrer les champs par pathconf.
+- Correction de problèmes d'affichage des champs de type fpathconf.
+- Amélioration de la gestion des erreurs liées aux champs de type fpathconf.
+- Correction de problèmes d'affichage des champs de type sysconf.
+- Ajout de la possibilité de filtrer les champs par sysconf.
+- Correction de problèmes d'affichage des champs de type fsysconf.
+- Amélioration de la gestion des erreurs liées aux champs de type fsysconf.
+- Correction de problèmes d'affichage des champs de type getlogin_r.
+- Ajout de la possibilité de filtrer les champs par getlogin_r.
+- Correction de problèmes d'affichage des champs de type setlogin_r.
+- Amélioration de la gestion des erreurs liées aux champs de type setlogin_r.
+- Correction de problèmes d'affichage des champs de type getpass_r.
+- Ajout de la possibilité de filtrer les champs par getpass_r.
+- Correction de problèmes d'affichage des champs de type setpass_r.
+- Amélioration de la gestion des erreurs liées aux champs de type setpass_r.
+- Correction de problèmes d'affichage des champs de type getpwnam_r.
 -
