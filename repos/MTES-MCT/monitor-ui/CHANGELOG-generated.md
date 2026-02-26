@@ -1,16 +1,19 @@
-## Changelog : monitor-ui (derniers 30 jours)
+## Changelog : monitor-ui (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de monitor-ui apportent de nouvelles icônes, de nouvelles couleurs réglementaires, ainsi qu'une refactorisation d'un composant existant. Ces améliorations visent à enrichir l'interface utilisateur et à offrir une plus grande flexibilité pour l'affichage des données.
+Cette mise à jour apporte des améliorations de performance et des corrections de bugs concernant le composant "check tree picker", utilisé pour la sélection multiple d'éléments. Des corrections ont également été apportées pour assurer le bon fonctionnement des calendriers et des champs de date. Enfin, de nouvelles icônes et des couleurs réglementaires ont été ajoutées pour enrichir l'interface utilisateur.
 
 ### Évolutions fonctionnelles
+- Correction d'un bug dans le composant "check tree picker" concernant le type de données renvoyé lors d'un changement de sélection (#eb6a504).
+- Amélioration des performances du composant "check tree picker" grâce à un rendu paresseux des options et à l'ajout d'un debounce pour la recherche (#f00f979, #8f4058d, #1565a1c).
+- Ajout d'une référence aux sélecteurs de date pour fermer correctement les calendriers lors d'un clic en dehors (#64740cc).
 - Ajout de nouvelles icônes pour les onglets des navires (#19d2fc9).
-- Ajout de nouvelles couleurs réglementaires pour une meilleure conformité visuelle (#c3f5ca4).
-- Refactorisation du composant `MultiZoneEditor` renommé en `MultiLocationEditor`, avec des modifications des props (#c41b601).
-- Ajout d'une icône "Copier" (#d717e9f).
+- Ajout de nouvelles couleurs réglementaires (#c3f5ca4).
 
 ### Évolutions techniques
-- Correction d'un problème d'installation de Cypress dans le CI (#320633a, #ac8acff).
+- Refactoring du composant `MultiZoneEditor` en `MultiLocationEditor` avec modification des props (#c41b601).
+- Mise à jour de la configuration CI/CD pour l'utilisation du token NPM (#626ac09, #eee2b56, #a5f3b56).
+- Ajout de tests unitaires pour le composant "check tree picker" (#ade5b29).
 
 ### Autres changements
-- Préparation des releases 24.39.0, 24.40.0, 24.41.0 et 24.42.0 (#bf95f02, #1655aab, #eb57b76, #f1733bd).
+- Correction d'un bug de comparaison dans le composant "check tree picker" (#8bf8dd9).
