@@ -113,16 +113,20 @@
 │   │   │   │   │   └── bpe.constants.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── input
-│   │   │   │   │   │   └── enrichir-parcelle.dto.ts
+│   │   │   │   │   │   ├── enrichir-parcelle.dto.ts
+│   │   │   │   │   │   └── enrichir-site.dto.ts
 │   │   │   │   │   └── output
 │   │   │   │   │       └── enrichissement.dto.ts
 │   │   │   │   ├── enrichissement.controller.spec.ts
 │   │   │   │   ├── enrichissement.controller.ts
 │   │   │   │   ├── enrichissement.module.ts
+│   │   │   │   ├── entities
+│   │   │   │   │   └── site.entity.ts
 │   │   │   │   ├── repositories
 │   │   │   │   │   ├── ademe-sites-pollues.repository.ts
 │   │   │   │   │   ├── bpe.repository.ts
 │   │   │   │   │   ├── enrichissement.repository.ts
+│   │   │   │   │   ├── site.repository.ts
 │   │   │   │   │   └── transport-stops.repository.ts
 │   │   │   │   └── services
 │   │   │   │       ├── cadastre
@@ -158,6 +162,8 @@
 │   │   │   │       ├── shared
 │   │   │   │       │   ├── enrichissement.types.ts
 │   │   │   │       │   └── geometry.types.ts
+│   │   │   │       ├── site
+│   │   │   │       │   └── site-geometry.service.ts
 │   │   │   │       ├── transport
 │   │   │   │       │   ├── transport-enrichissement.calculator.ts
 │   │   │   │       │   ├── transport-enrichissement.constants.ts
@@ -207,7 +213,7 @@
 │   │   │   │   │       └── mutabilite.dto.ts
 │   │   │   │   ├── entities
 │   │   │   │   │   ├── evaluation.entity.ts
-│   │   │   │   │   └── parcelle.entity.ts
+│   │   │   │   │   └── site.entity.ts
 │   │   │   │   ├── evaluation.controller.spec.ts
 │   │   │   │   ├── evaluation.controller.ts
 │   │   │   │   ├── evaluation.module.ts
@@ -253,74 +259,97 @@
 │   │   │   │   ├── friches.controller.ts
 │   │   │   │   └── friches.module.ts
 │   │   │   ├── main.ts
+│   │   │   ├── metabase
+│   │   │   │   ├── metabase.controller.ts
+│   │   │   │   ├── metabase.module.ts
+│   │   │   │   ├── metabase.service.spec.ts
+│   │   │   │   └── metabase.service.ts
 │   │   │   ├── scripts
 │   │   │   │   ├── filter-bpe.ts
 │   │   │   │   ├── import-ademe-sites.ts
 │   │   │   │   ├── import-bpe.ts
 │   │   │   │   └── import-transport-stops.ts
-│   │   │   └── shared
-│   │   │       ├── __test-helpers__
-│   │   │       │   ├── common.mocks.ts
-│   │   │       │   ├── origine-detection.mocks.ts
-│   │   │       │   └── test-module.factory.ts
-│   │   │       ├── database
-│   │   │       │   ├── database.module.ts
-│   │   │       │   ├── database.service.ts
-│   │   │       │   ├── migrations
-│   │   │       │   │   ├── 0000_initial.sql
-│   │   │       │   │   ├── 0001_add_centroid_columns.sql
-│   │   │       │   │   ├── 0002_right_roughhouse.sql
-│   │   │       │   │   ├── 0003_wonderful_gladiator.sql
-│   │   │       │   │   ├── 0004_brave_sunspot.sql
-│   │   │       │   │   ├── 0005_fair_millenium_guard.sql
-│   │   │       │   │   ├── 0006_vengeful_nehzno.sql
-│   │   │       │   │   ├── 0007_premium_malice.sql
-│   │   │       │   │   ├── 0008_regular_supernaut.sql
-│   │   │       │   │   ├── 0009_slow_blob.sql
-│   │   │       │   │   ├── 0010_chubby_doctor_strange.sql
-│   │   │       │   │   ├── 0011_friendly_hedge_knight.sql
-│   │   │       │   │   ├── 0012_high_mysterio.sql
-│   │   │       │   │   └── meta
-│   │   │       │   │       ├── 0001_snapshot.json
-│   │   │       │   │       ├── 0002_snapshot.json
-│   │   │       │   │       ├── 0003_snapshot.json
-│   │   │       │   │       ├── 0004_snapshot.json
-│   │   │       │   │       ├── 0005_snapshot.json
-│   │   │       │   │       ├── 0006_snapshot.json
-│   │   │       │   │       ├── 0007_snapshot.json
-│   │   │       │   │       ├── 0008_snapshot.json
-│   │   │       │   │       ├── 0009_snapshot.json
-│   │   │       │   │       ├── 0010_snapshot.json
-│   │   │       │   │       ├── 0011_snapshot.json
-│   │   │       │   │       ├── 0012_snapshot.json
-│   │   │       │   │       └── _journal.json
-│   │   │       │   ├── schema.ts
-│   │   │       │   └── schemas
-│   │   │       │       ├── enrichissements.schema.ts
-│   │   │       │       ├── evaluations.schema.ts
-│   │   │       │       ├── evenements.schema.ts
-│   │   │       │       ├── raw-ademe-sites-pollues.schema.ts
-│   │   │       │       ├── raw-bpe.schema.ts
-│   │   │       │       ├── raw-imports-log.schema.ts
-│   │   │       │       └── raw-transport-stops.schema.ts
-│   │   │       ├── guards
-│   │   │       │   ├── index.ts
-│   │   │       │   ├── integrateur-origin.guard.spec.ts
-│   │   │       │   └── integrateur-origin.guard.ts
-│   │   │       ├── services
-│   │   │       │   ├── index.ts
-│   │   │       │   ├── origine-detection.service.spec.ts
-│   │   │       │   └── origine-detection.service.ts
-│   │   │       ├── shared.module.ts
-│   │   │       ├── types
-│   │   │       │   └── common.types.ts
-│   │   │       ├── utils
-│   │   │       │   ├── environment.utils.ts
-│   │   │       │   ├── index.ts
-│   │   │       │   └── version.utils.ts
-│   │   │       └── validators
-│   │   │           ├── index.ts
-│   │   │           └── is-valid-parcel-id.validator.ts
+│   │   │   ├── shared
+│   │   │   │   ├── __test-helpers__
+│   │   │   │   │   ├── common.mocks.ts
+│   │   │   │   │   ├── origine-detection.mocks.ts
+│   │   │   │   │   └── test-module.factory.ts
+│   │   │   │   ├── database
+│   │   │   │   │   ├── database.module.ts
+│   │   │   │   │   ├── database.service.ts
+│   │   │   │   │   ├── migrations
+│   │   │   │   │   │   ├── 0000_initial.sql
+│   │   │   │   │   │   ├── 0001_add_centroid_columns.sql
+│   │   │   │   │   │   ├── 0002_right_roughhouse.sql
+│   │   │   │   │   │   ├── 0003_wonderful_gladiator.sql
+│   │   │   │   │   │   ├── 0004_brave_sunspot.sql
+│   │   │   │   │   │   ├── 0005_fair_millenium_guard.sql
+│   │   │   │   │   │   ├── 0006_vengeful_nehzno.sql
+│   │   │   │   │   │   ├── 0007_premium_malice.sql
+│   │   │   │   │   │   ├── 0008_regular_supernaut.sql
+│   │   │   │   │   │   ├── 0009_slow_blob.sql
+│   │   │   │   │   │   ├── 0010_chubby_doctor_strange.sql
+│   │   │   │   │   │   ├── 0011_friendly_hedge_knight.sql
+│   │   │   │   │   │   ├── 0012_high_mysterio.sql
+│   │   │   │   │   │   ├── 0013_tranquil_wrecking_crew.sql
+│   │   │   │   │   │   ├── 0014_rename_parcelle_to_site.sql
+│   │   │   │   │   │   ├── 0015_silent_black_panther.sql
+│   │   │   │   │   │   └── meta
+│   │   │   │   │   │       ├── 0001_snapshot.json
+│   │   │   │   │   │       ├── 0002_snapshot.json
+│   │   │   │   │   │       ├── 0003_snapshot.json
+│   │   │   │   │   │       ├── 0004_snapshot.json
+│   │   │   │   │   │       ├── 0005_snapshot.json
+│   │   │   │   │   │       ├── 0006_snapshot.json
+│   │   │   │   │   │       ├── 0007_snapshot.json
+│   │   │   │   │   │       ├── 0008_snapshot.json
+│   │   │   │   │   │       ├── 0009_snapshot.json
+│   │   │   │   │   │       ├── 0010_snapshot.json
+│   │   │   │   │   │       ├── 0011_snapshot.json
+│   │   │   │   │   │       ├── 0012_snapshot.json
+│   │   │   │   │   │       ├── 0013_snapshot.json
+│   │   │   │   │   │       ├── 0014_snapshot.json
+│   │   │   │   │   │       ├── 0015_snapshot.json
+│   │   │   │   │   │       └── _journal.json
+│   │   │   │   │   ├── schema.ts
+│   │   │   │   │   └── schemas
+│   │   │   │   │       ├── enrichissements.schema.ts
+│   │   │   │   │       ├── evaluations.schema.ts
+│   │   │   │   │       ├── evenements.schema.ts
+│   │   │   │   │       ├── raw-ademe-sites-pollues.schema.ts
+│   │   │   │   │       ├── raw-bpe.schema.ts
+│   │   │   │   │       ├── raw-imports-log.schema.ts
+│   │   │   │   │       ├── raw-transport-stops.schema.ts
+│   │   │   │   │       └── sites.schema.ts
+│   │   │   │   ├── guards
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── integrateur-origin.guard.spec.ts
+│   │   │   │   │   └── integrateur-origin.guard.ts
+│   │   │   │   ├── services
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── origine-detection.service.spec.ts
+│   │   │   │   │   └── origine-detection.service.ts
+│   │   │   │   ├── shared.module.ts
+│   │   │   │   ├── types
+│   │   │   │   │   └── common.types.ts
+│   │   │   │   ├── utils
+│   │   │   │   │   ├── environment.utils.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── version.utils.ts
+│   │   │   │   └── validators
+│   │   │   │       ├── index.ts
+│   │   │   │       └── is-valid-parcel-id.validator.ts
+│   │   │   └── stats
+│   │   │       ├── stats.controller.spec.ts
+│   │   │       ├── stats.controller.ts
+│   │   │       ├── stats.module.ts
+│   │   │       ├── stats.service.spec.ts
+│   │   │       ├── stats.service.ts
+│   │   │       └── utils
+│   │   │           ├── gap-fill.utils.spec.ts
+│   │   │           ├── gap-fill.utils.ts
+│   │   │           ├── period.utils.spec.ts
+│   │   │           └── period.utils.ts
 │   │   ├── test
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   ├── enrichissement.e2e-spec.ts
@@ -369,6 +398,21 @@
 │       ├── src
 │       │   ├── App.tsx
 │       │   ├── features
+│       │   │   ├── debug
+│       │   │   │   ├── components
+│       │   │   │   │   ├── DebugPanel.css
+│       │   │   │   │   ├── DebugPanel.tsx
+│       │   │   │   │   ├── DebugPanelGate.tsx
+│       │   │   │   │   └── sections
+│       │   │   │   │       ├── DonneesComplementairesSection.tsx
+│       │   │   │   │       ├── EnrichissementSection.tsx
+│       │   │   │   │       ├── EvaluationSection.tsx
+│       │   │   │   │       ├── RawJsonSection.tsx
+│       │   │   │   │       ├── SiteIdentificationSection.tsx
+│       │   │   │   │       └── SourcesMetadataSection.tsx
+│       │   │   │   └── utils
+│       │   │   │       ├── debug.helpers.spec.ts
+│       │   │   │       └── debug.helpers.ts
 │       │   │   ├── documentation
 │       │   │   │   ├── components
 │       │   │   │   │   ├── DocumentationApi.tsx
@@ -378,10 +422,13 @@
 │       │   │   ├── home
 │       │   │   │   ├── components
 │       │   │   │   │   ├── EnrichmentLoadingCallout.tsx
-│       │   │   │   │   ├── MultiParcelleToggle.tsx
 │       │   │   │   │   ├── MutabilityAccordion.tsx
 │       │   │   │   │   └── parcelle-map
 │       │   │   │   │       ├── AddressSearchBar.tsx
+│       │   │   │   │       ├── MapGuide.tsx
+│       │   │   │   │       ├── MapLayerSelector.css
+│       │   │   │   │       ├── MapLayerSelector.tsx
+│       │   │   │   │       ├── ParcelleActions.css
 │       │   │   │   │       └── ParcelleSelectionMap.tsx
 │       │   │   │   ├── pages
 │       │   │   │   │   ├── EnrichissementPage.tsx
@@ -423,6 +470,9 @@
 │       │   │   │       ├── dynamicTags.types.ts
 │       │   │   │       ├── mutability.mapper.ts
 │       │   │   │       └── usagesLabels.utils.ts
+│       │   │   ├── statistiques
+│       │   │   │   └── pages
+│       │   │   │       └── StatistiquesPage.tsx
 │       │   │   └── tests
 │       │   │       ├── pages
 │       │   │       │   └── TestsPage.tsx
@@ -467,6 +517,7 @@
 │       │   │   │       ├── ThemeModal.tsx
 │       │   │   │       └── index.ts
 │       │   │   ├── config
+│       │   │   │   ├── map-layers.config.ts
 │       │   │   │   └── routes.config.ts
 │       │   │   ├── form
 │       │   │   │   ├── FormContext.ts
@@ -475,7 +526,10 @@
 │       │   │   │   └── useFormContext.ts
 │       │   │   ├── hooks
 │       │   │   │   ├── useEventTracking.ts
-│       │   │   │   └── useLeafletMap.ts
+│       │   │   │   ├── useLeafletMap.ts
+│       │   │   │   ├── useMapBaseLayers.ts
+│       │   │   │   ├── useMapParcelleRenderer.ts
+│       │   │   │   └── useParcelleSelection.ts
 │       │   │   ├── iframe
 │       │   │   │   ├── IframeContext.constants.ts
 │       │   │   │   ├── IframeContext.ts
@@ -492,6 +546,7 @@
 │       │   │   │   │   ├── api.enrichissement.service.ts
 │       │   │   │   │   ├── api.evaluation.service.ts
 │       │   │   │   │   ├── api.evenements.service.ts
+│       │   │   │   │   ├── api.metabase.service.ts
 │       │   │   │   │   ├── api.types.ts
 │       │   │   │   │   └── api.utils.ts
 │       │   │   │   ├── cadastre
@@ -502,6 +557,7 @@
 │       │   │   │       └── api.geocoding.types.ts
 │       │   │   ├── types
 │       │   │   │   ├── callbacks.types.ts
+│       │   │   │   ├── parcelle-selection.types.ts
 │       │   │   │   └── parcelle.models.ts
 │       │   │   └── utils
 │       │   │       ├── distance.formatter.ts
@@ -542,6 +598,7 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── dto
 │       │   │   │   ├── enrichir-parcelle-input.dto.ts
+│       │   │   │   ├── enrichir-site-input.dto.ts
 │       │   │   │   ├── enrichissement-output.dto.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── enums
@@ -597,6 +654,9 @@
 │       │   │       ├── index.ts
 │       │   │       ├── parcelle.utils.spec.ts
 │       │   │       └── parcelle.utils.ts
+│       │   ├── stats
+│       │   │   ├── index.ts
+│       │   │   └── stat.dto.ts
 │       │   └── test-cases
 │       │       ├── config
 │       │       │   ├── excel-structure.config.ts
@@ -669,4 +729,4 @@
 ├── pnpm-workspace.yaml
 ├── scalingo.json
 └── tsconfig.json
-172 directories, 499 files
+184 directories, 547 files
