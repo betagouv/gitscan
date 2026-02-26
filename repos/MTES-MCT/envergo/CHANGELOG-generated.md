@@ -1,47 +1,44 @@
 ## Changelog : envergo (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment au niveau des cartes, des formulaires et des messages. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, en particulier concernant la gestion des haies, des réglementations et des URL. Des optimisations ont également été apportées pour améliorer les performances et la gestion des données.
+Les dernières mises à jour d'envergo incluent des améliorations significatives de l'interface utilisateur, notamment pour la gestion des configurations et des haies, ainsi que des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des optimisations ont également été apportées à la gestion des données et des requêtes, et des mises à jour de sécurité ont été implémentées. Plusieurs améliorations de la documentation et des tests ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des cartes avec la possibilité de visualiser les haies à planter derrière celles à supprimer. (#990)
-- Ajout de la gestion de la date de validité pour certains critères. (#954)
-- Correction de l'affichage des messages d'erreur et des notifications. (#968, #973)
-- Amélioration de l'affichage des projets dans la liste. (#958)
-- Correction du comportement du bouton "copier" pour les URL. (#964)
-- Ajout de la possibilité de filtrer les haies sur la carte. (#972)
-- Correction de l'ordre d'affichage des réglementations. (#976)
-- Amélioration de la gestion des URL pour la FAQ et les pages d'aide. (#974, #966)
-- Correction de bugs liés à la sauvegarde des actions et à la gestion des URL de projet. (#972, #995)
-- Ajout de la possibilité de filtrer les sites inscrits. (#997)
-- Amélioration de l'affichage des informations relatives aux comptes. (#986)
+- Amélioration de l'affichage et de la gestion des configurations, avec l'ajout de plages de validité et de filtres (#1031, #1032).
+- Ajout de la possibilité de visualiser les cartes pour chaque département dans la configuration (#981).
+- Amélioration du calcul et de l'affichage de la densité de haies (#1016, #1018, #1019).
+- Correction d'un bug empêchant l'affichage correct des projets (#999).
+- Amélioration de la gestion des réglementations Natura 2000 (#1008, #1023).
+- Ajout de la possibilité de filtrer les configurations par date (#1033).
+- Correction de l'affichage des boutons "en savoir plus" (#1015).
+- Amélioration de la gestion des URL des projets (#1006).
+- Ajout de la gestion des champs de surface avec unités (#988).
+- Amélioration de l'affichage des comptes (#1020).
 
 ### Évolutions techniques
-- Mise à jour de Django en version 4.2.28.
+- Mise à jour de Django en version 4.2.28 (#989).
+- Optimisation des requêtes pour améliorer les performances (#965).
 - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Optimisation des requêtes SQL pour améliorer les performances.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
 - Amélioration de la gestion des erreurs et des exceptions.
-- Mise en place de tests unitaires et d'intégration pour garantir la qualité du code.
 - Suppression de dépendances inutiles (bs4).
-- Amélioration de la gestion des migrations de base de données.
-- Mise à jour des dépendances et des librairies.
-- Ajout de tests pour la gestion des dates.
-- Correction de problèmes liés à la gestion des URL et des chemins d'accès.
+- Utilisation de filtres plus performants pour la gestion des haies.
+- Amélioration de la gestion des dates et des intervalles de temps.
+- Ajout de contraintes de base de données pour la validation des chevauchements de configurations.
+- Amélioration de la gestion des URL et des liens.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Corrections de fautes de frappe et d'erreurs de syntaxe.
-- Amélioration de la configuration de l'application.
+- Mise à jour de la documentation pour refléter les dernières modifications.
+- Corrections de fautes de frappe et améliorations de la qualité du code.
+- Mise à jour des messages et des textes d'interface utilisateur.
+- Amélioration de la sécurité en supprimant des tokens inutiles et en protégeant contre les attaques XSS.
+- Mise à jour des dépendances et des bibliothèques.
+- Amélioration de la gestion des logs et des erreurs.
 - Ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des définitions de terrain d'assiette.
-- Amélioration de la gestion des logs et du monitoring.
-- Suppression de code obsolète.
-- Mise à jour des messages et des textes de l'interface utilisateur.
-- Amélioration de la sécurité de l'application.
-- Correction de problèmes de linting.
-- Mise à jour des fichiers de configuration.
-- Ajout de nouvelles variables d'environnement.
-- Amélioration de la gestion des secrets.
-- Correction de problèmes liés à l'affichage des cartes.
-- Amélioration de la gestion des erreurs dans les tests.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Mise à jour des définitions terrain et assiette.
+- Amélioration de l'affichage des numéros de page.
+- Suppression de l'analyse des tokens de consultation.
+- Mise à jour de la mise en page de l'historique.
+- Correction de l'affichage de la mention "PAC ou pas PAC".
+- Amélioration de l'affichage de la date d'échéance.
+- Suppression des événements analytics liés aux tokens de consultation.
