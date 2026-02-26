@@ -82,6 +82,7 @@
 │   │   │   ├── MissionsSetFullByTemplate.php
 │   │   │   ├── MissionsSetIsOnline.php
 │   │   │   ├── OneTime
+│   │   │   │   ├── InitializeMissionTemplateIsOpenToMinors.php
 │   │   │   │   ├── MigrateSignaledStatusForOrganisationAndMission.php
 │   │   │   │   ├── NotifyResponsableMissionUserWaitingList.php
 │   │   │   │   ├── OneTimeSendNotificationMissionUserWaitingList3WeeksAgo.php
@@ -128,6 +129,7 @@
 │   │   │   ├── SendinblueSyncUsers.php
 │   │   │   ├── StructuresComputeScore.php
 │   │   │   ├── StructuresRevalidate.php
+│   │   │   ├── TemoignageDelete.php
 │   │   │   ├── TemoignagesSetReviewedAt.php
 │   │   │   ├── TestSendinblueRoute.php
 │   │   │   ├── UserAlertSearchWeeklyNewMissions.php
@@ -727,6 +729,11 @@
 │   ├── migrations
 │   │   ├── 2014_10_12_000000_create_users_table.php
 │   │   ├── 2014_10_12_100000_create_password_resets_table.php
+│   │   ├── 2016_06_01_000001_create_oauth_auth_codes_table.php
+│   │   ├── 2016_06_01_000002_create_oauth_access_tokens_table.php
+│   │   ├── 2016_06_01_000003_create_oauth_refresh_tokens_table.php
+│   │   ├── 2016_06_01_000004_create_oauth_clients_table.php
+│   │   ├── 2016_06_01_000005_create_oauth_personal_access_clients_table.php
 │   │   ├── 2019_06_20_123701_create_missions_table.php
 │   │   ├── 2019_06_21_103808_create_structures_table.php
 │   │   ├── 2019_07_01_095604_create_profiles_table.php
@@ -927,6 +934,7 @@
 │   │   ├── 2025_11_25_105521_remove_likes_from_mission_analyzes_table.php
 │   │   ├── 2026_02_05_000000_add_is_open_to_minors_to_mission_templates_table.php
 │   │   ├── 2026_02_11_120000_create_pending_actions_table.php
+│   │   ├── 2026_02_17_133859_convert_media_manipulations_to_v11_format.php
 │   │   └── 2026_02_20_135323_add_resolved_at_to_temoignages_table.php
 │   ├── seeders
 │   │   ├── DatabaseSeeder.php
@@ -1524,4 +1532,4 @@
     ├── TestCase.php
     └── Unit
         └── ExampleTest.php
-117 directories, 1558 files
+117 directories, 1566 files
