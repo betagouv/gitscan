@@ -1,20 +1,14 @@
 ## Changelog : recosante (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte une nouvelle fonctionnalité permettant aux utilisateurs de signaler la fin du service, ainsi qu'une migration importante des recommandations vers un nouveau format de fichier. Plusieurs corrections de bugs et améliorations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
+Ce changelog présente les récentes mises à jour de Recosanté, l'application qui vous informe sur les risques environnementaux pour votre santé et vous propose des recommandations personnalisées. Les dernières évolutions concernent principalement l'annonce de la fin de service de l'application et l'affichage d'une bannière d'information à ce sujet.
 
 ### Évolutions fonctionnelles
-- Ajout d'une bannière de fin de service pour informer les utilisateurs. (#678)
-- Possibilité d'ajouter des villes et des indices à ses favoris. (#666)
-- Correction de bugs concernant l'affichage de certaines pages et la gestion des erreurs. (#668)
+- Affichage d'une bannière informant les utilisateurs de l'arrêt du service (#678)
+- Ajout d'un message en application informant les utilisateurs de l'arrêt du service (#679)
 
 ### Évolutions techniques
-- Migration des recommandations de Google Sheets vers un fichier plus adapté. (#675)
-- Refactorisation des schémas utilisateur pour améliorer le traitement des données. (#674)
-- Refactorisation des contrôleurs d'utilisateur pour utiliser des schémas plus performants. (#667)
-- Amélioration de la configuration du CI/CD avec l'utilisation de buildkit. (#655)
-- Augmentation des ressources CPU allouées à l'API. (#1fc6f17)
+- Préparation à l'arrêt du service avec mise à jour de la version de l'application.
 
 ### Autres changements
-- Correction d'une faute de frappe dans la configuration du sous-domaine. (#2a164ae)
-- Ajout d'une vérification de l'existence des notifications. (#650)
+- Aucun changement significatif à signaler.
