@@ -1,58 +1,51 @@
 ## Changelog : potentiel (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment en ajoutant de nouvelles fonctionnalités d'export de données, en affinant les permissions d'accès et en corrigeant des bugs. Des efforts importants ont également été déployés pour moderniser l'architecture du projet en migrant vers le format ESM et en optimisant les performances.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment en corrigeant des bugs liés à la modification de documents et à l'affichage d'informations. Des améliorations significatives ont également été apportées aux exports de données, avec l'ajout de filtres et de nouvelles colonnes. Enfin, une migration vers ESM (ECMAScript Modules) est en cours pour moderniser le code et améliorer les performances.
 
 ### Évolutions fonctionnelles
-
-- Ajout d'un bouton administrateur pour supprimer une date de mise en service d'un dossier de raccordement (#4008).
-- Nouveau rôle "Visiteur" implémenté (#4030).
-- Amélioration de l'UX sur la page des exports, la rendant plus intuitive (#4014).
-- Correction du lien vers le modèle de courrier de recours (#4021).
-- Ajout des acteurs manquants dans la frise de raccordement (#4005).
-- Possibilité d'exporter les fournisseurs associés à une candidature (#3856, #3918).
-- Ajout de filtres sur la page d'export et harmonisation des colonnes retournées (#3927).
+- Possibilité de filtrer les données lors de l'export CSV (#3937).
 - Affichage des filtres actifs lors de l'export CSV (#3937).
 - Ajout de la puissance à l'API Achèvement (#3912).
-- Ajout de la traçabilité de la transmission de la PTF (#3914).
-- Affichage des filtres Appel d'Offres en mode multi-sélection (#3901).
-- Mise à jour de l'autorité compétente abandon (#4002).
-- Amélioration de l'affichage de la demande en cours lors de modifications administratives (#4006).
-- Ajout de la date de mise en service aux exports globaux des lauréats (#3997).
-- Utilisation de la mise en service du raccordement dans les étapes du projet (#3994).
-- Ajout de la possibilité de modifier la date de mise en service d'un dossier de raccordement via un usecase dédié (#4007).
-- Correction d'un bug empêchant la modification de DCR ou PTF sans changement (#4012).
-- Correction d'un bug empêchant la modification d'une demande de délai sans modification (#3938).
-- Correction d'un bug empêchant la modification d'une attestation sans changement (#3923).
-- Correction d'un bug lié à l'ordre alphabétique des menus (#3957).
+- Amélioration de l'affichage des étapes du projet avec la mise en service du raccordement (#3994).
+- Ajout d'un bouton pour supprimer une date de mise en service d'un dossier de raccordement pour les administrateurs (#4008).
+- Ajout d'un rôle "Visiteur" (#4030).
+- Correction de l'affichage du lien vers le détail du raccordement (#4043).
+- Correction de l'import des dates de mise en service (GRD) (#4024).
+- Correction de l'affichage de la typologie de projet (#3988, #4016).
+- Amélioration de la page des documents, notamment pour la modification des attestations et des demandes de délai (#3923, #3938, #3945).
+- Ajout d'un événement pour le statut "Lauréat modifié" (#3917).
+- Amélioration de l'UX de la page d'export (#4014).
+- Ajout de la référence dans l'ordre des achèvements (#3969).
+- Correction du format des emails envoyés aux fournisseurs (#3930).
 
 ### Évolutions techniques
-
-- Passage de plusieurs packages (Librairies, Domaine, Infrastructure, Routes, Bootstrap, CLI, Projectors, Statistiques Publiques, ds-api-client, request-context) au format ESM pour une meilleure compatibilité et performance (#3900, #3908, #3909, #3910, #3911, #3960, #3966, #3972, #3973, #3978).
+- Migration progressive du code vers ESM (ECMAScript Modules) pour les packages Bootstrap, Routes, Infrastructure, ds-api-client, request-context et Librairies/Domaine (#3952, #3960, #3966, #3972, #3973, #3978, #3964).
 - Suppression du package `scheduled-tasks` et réorganisation des scripts (#3975).
-- Suppression des utilisations de la variable legacy `MAINTENANCE_MODE` (#4000).
+- Suppression de l'application legacy et configuration du nouveau serveur (#3955).
 - Mise à jour de Typespec (#3941).
-- Suppression de l'adapter legacy aBénéficiéCDC2022 (#4023).
-- Suppression de permissions inutilisées (#4026).
-- Migration des templates de mail (délai, recours) (#3956, #3958).
-- Migration des templates nature de l'exploitation et actionnaire (#3954, #3963, #3989).
-- Migration des notifications domaine installation (#4009).
-- Mise à jour des stats Utilisateur pour supprimer l'usage des tables legacy (#4022).
-- Mise en place d'une vérification des permissions d'exécution des usecases (#3993).
-- DépôtSchéma devient le schéma de référence (#3981).
-- Ajout d'un index sur le champ identifiantProjet (#3968).
-- Réduction de la verbosité des logs pour les résultats des requêtes Liste (#4010).
+- Suppression des utilisations de la variable legacy `MAINTENANCE_MODE` (#3999).
+- Suppression du FF (Feature Flag) export (#3936).
+- Ajout d'un index sur le champ `identifiantProjet` (#3968).
+- Amélioration de la tracabilité de la suppression d'un dossier de raccordement (#3925).
+- Amélioration de la tracabilité de la modification du GRD d'un projet (#3922).
+- Simplification des schémas de correction de candidature (#4045).
+- Ajout d'un usecase dédié à la modification d'une date de mise en service (#4007).
 
 ### Autres changements
-
-- Documentation sur le mode maintenance ajoutée (#3999).
-- Suppression du FF export (#3936).
-- Suppression de la génération de fichier détail lors de l'import / correction de candidature (#3934).
-- Mise à jour des subscribers (#4001).
-- Correction de la technologie des projets PV - Eolien (#3980).
-- Correction d'un bug dans l'ordre des achèvements (#3969).
-- Correction d'un bug lié à l'affichage du coefficient K pour les AOs concernés (#3920).
-- Correction d'un bug lié à l'accès à la page "éliminés" (#3926).
-- Correction d'un bug lié au comportement lors de la sélection d'un cycle sans AO sélectionné (#3916).
-- Correction d'un bug lié à l'import des dates de mise en service (GRD) (#4024).
-- Intégration des modifications de la release 3.70, 3.71, 3.72 et 3.73 (#3921, #3932, #3964, #4013, #4018, #4025).
+- Documentation sur le mode maintenance (#3999).
+- Mise à jour des abonnés (#4001).
+- Correction de la configuration de Mailjet (#4038).
+- Correction du type de la date de MES dans la vue stats (#4037).
+- Suppression de permissions inutilisées (#4026).
+- Suppression de l'adapter legacy aBénéficiéCDC2022 (#4023).
+- Harmonisation de la redirection des mails pour les domaines migrés (#4027, #3934).
+- Ajout de logs pour les requêtes HTTP (#3965).
+- Mise à jour des stats Utilisateur pour supprimer l'usage des tables legacy (#4022).
+- Ajout de la mise en service du raccordement dans les étapes projet (#3994).
+- Ajout des champs AOS dans l'export global des projets (#3970).
+- Correction d'une typo dans l'invitation d'utilisateur (#3929).
+- Ajout de templates pour les producteurs (#3985).
+- Migration des templates de mail pour les délais (#3958) et les recours (#3956).
+- Ajout de la section document (#3954).
+- Correction de bugs mineurs et améliorations de la qualité du code.

@@ -4,43 +4,42 @@
   "description": "Potentiel est le service du Ministère chargé de l'énergie qui connecte les acteurs du parcours administratif des projets d'énergies renouvelables électriques soumis à appel d'offres en France.",
   "language": "TypeScript",
   "features": [
-    "Gestion des projets d'énergies renouvelables",
-    "Suivi des candidatures",
-    "Gestion des autorisations",
+    "Gestion des dossiers de raccordement",
+    "Suivi des projets d'énergies renouvelables",
+    "Gestion des autorisations et des accès",
     "Export de données",
     "Notifications",
-    "Gestion des utilisateurs et des rôles",
-    "Traçabilité des actions"
+    "Gestion des recours"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Next.js",
     "PostgreSQL",
     "MinIO",
-    "Keycloak"
+    "Keycloak",
+    "Typespec"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur d'objets MinIO",
-    "Authentification Keycloak"
+    "Authentification Keycloak",
+    "Stockage objet MinIO"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
-    ]
+      "sso"
+    ],
+    "providers": []
   },
-  "tests": [
-    "Jest",
-    "Cypress"
-  ],
+  "tests": "Jest, Cypress",
   "workflows": [
-    "CI/CD"
+    "build",
+    "test",
+    "lint"
   ],
-  "lastActivity": "2026-02-20T13:34:14Z",
+  "lastActivity": "2026-02-25T11:39:31+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -52,12 +51,13 @@
   },
   "tags": [
     "énergie renouvelable",
-    "gouvernement",
     "administration",
+    "France",
     "TypeScript",
     "React",
     "PostgreSQL",
-    "énergie",
-    "environnement"
+    "Keycloak",
+    "énergies renouvelables",
+    "raccordement électrique"
   ]
 }

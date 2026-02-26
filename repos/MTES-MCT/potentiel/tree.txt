@@ -809,7 +809,7 @@
 │   │   │   │       │   ├── raccordement
 │   │   │   │       │   │   ├── dossier-raccordement
 │   │   │   │       │   │   │   ├── dateMiseEnService
-│   │   │   │       │   │   │   │   ├── dateMiseEnServiceModifiéeV1.projector.ts
+│   │   │   │       │   │   │   │   ├── dateMiseEnServiceModifiée.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceSuppriméeV1.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceTransmiseV1.projector.ts
 │   │   │   │       │   │   │   │   ├── dateMiseEnServiceTransmiseV2.projector.ts
@@ -2131,6 +2131,7 @@
 │   │   │   │   │   │   │   ├── FormActionButtons.tsx
 │   │   │   │   │   │   │   ├── FormAlertError.tsx
 │   │   │   │   │   │   │   ├── FormFeedback.tsx
+│   │   │   │   │   │   │   ├── FormFeedbackCsvColumnErrors.tsx
 │   │   │   │   │   │   │   ├── FormFeedbackCsvErrors.tsx
 │   │   │   │   │   │   │   ├── FormPendingModal.tsx
 │   │   │   │   │   │   │   ├── FormRow.tsx
@@ -2270,7 +2271,9 @@
 │   │   │   │       │   │   ├── fournisseurCsv.test.ts
 │   │   │   │       │   │   ├── fournisseurCsv.ts
 │   │   │   │       │   │   ├── getLocalité.ts
-│   │   │   │       │   │   └── mapCsvToTypologieInstallation.ts
+│   │   │   │       │   │   ├── mapCsvToTypologieInstallation.ts
+│   │   │   │       │   │   ├── récupérerColonnesRequises.test.ts
+│   │   │   │       │   │   └── récupérerColonnesRequises.ts
 │   │   │   │       │   ├── dépôt.schema.test.ts
 │   │   │   │       │   ├── dépôt.schema.ts
 │   │   │   │       │   ├── identifiantProjet.schema.ts
@@ -2280,6 +2283,7 @@
 │   │   │   │       │   ├── nestedKeysForSchema.ts
 │   │   │   │       │   ├── removeEmptyValues.test.ts
 │   │   │   │       │   ├── removeEmptyValues.ts
+│   │   │   │       │   ├── récupérerChampsSupplémentaires.ts
 │   │   │   │       │   ├── schemaBase.ts
 │   │   │   │       │   └── typologieInstallation.schema.ts
 │   │   │   │       ├── csp.ts
@@ -3775,7 +3779,10 @@
 │   │   │   │   │   ├── toCSV.test.ts
 │   │   │   │   │   └── toCSV.ts
 │   │   │   │   ├── import
+│   │   │   │   │   ├── checkDuplicateHeaders.ts
+│   │   │   │   │   ├── checkRequiredColumns.ts
 │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── col-doublon.csv
 │   │   │   │   │   │   ├── utf8-comma.csv
 │   │   │   │   │   │   ├── utf8-tab.csv
 │   │   │   │   │   │   ├── utf8.csv
@@ -4397,4 +4404,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1077 directories, 3322 files
+1077 directories, 3329 files
