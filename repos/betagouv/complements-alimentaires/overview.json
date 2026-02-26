@@ -1,34 +1,33 @@
 {
   "url": "https://github.com/betagouv/complements-alimentaires",
   "name": "complements-alimentaires",
-  "description": "Ce projet gère les compléments alimentaires. Il permet de suivre les déclarations, les entreprises et les substances associées. Il offre également des fonctionnalités d'administration et d'export de données.",
+  "description": "Ce projet gère les compléments alimentaires. Il permet notamment l'import de données, la gestion des déclarations et la création de rapports. Il vise à améliorer la transparence et le suivi de ces produits.",
   "language": "Python",
   "features": [
     "Gestion des déclarations",
-    "Gestion des entreprises",
-    "Gestion des substances",
+    "Import de données",
+    "Création de rapports",
     "Administration",
-    "Export de données",
     "Authentification",
-    "Validation automatique"
+    "Export de données"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Python",
+    "PostgreSQL",
     "Node.js",
     "npm",
-    "PostgreSQL",
+    "Vue.js",
     "Celery",
-    "Sentry",
-    "Matomo"
+    "Sentry"
   ],
   "components": [
     "Backend Python/Django",
     "Frontend Vue.js",
     "Base de données PostgreSQL",
+    "Tâches asynchrones Celery",
     "API REST",
-    "Tâches asynchrones Celery"
+    "Docker"
   ],
   "auth": {
     "methods": [
@@ -36,13 +35,13 @@
     ]
   },
   "tests": [
-    "Python tests",
-    "Vue.js tests"
+    "Tests unitaires Django",
+    "Tests VueJS"
   ],
   "workflows": [
     "CI/CD GitHub Actions"
   ],
-  "lastActivity": "2026-02-20T12:19:53+01:00",
+  "lastActivity": "2026-02-23T13:13:47+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -59,6 +58,7 @@
     "Python",
     "Django",
     "Vue.js",
-    "PostgreSQL"
+    "PostgreSQL",
+    "Open Data"
   ]
 }
