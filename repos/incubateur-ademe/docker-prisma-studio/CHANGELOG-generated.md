@@ -1,7 +1,12 @@
-## Changelog : docker-prisma-studio (derniers 30 jours)
+## Changelog : docker-prisma-studio (30 derniers jours)
 
 ### Résumé
-Ce projet a récemment été mis à jour pour utiliser le gestionnaire de paquets `pnpm` à la place de `npm`. Ce changement technique n'affecte pas directement l'utilisation de Prisma Studio, mais améliore la gestion des dépendances du projet et potentiellement sa performance.
+Cette mise à jour améliore la compatibilité et l'optimisation du conteneur Docker pour Prisma Studio. Elle corrige des problèmes liés à l'utilisation de Prisma 7 et à la configuration de l'URL du schéma, tout en réduisant la taille de l'image Docker pour une meilleure performance. Une nouvelle fonctionnalité permet de configurer l'accès à Prisma Studio via une URL de schéma.
+
+### Évolutions fonctionnelles
+- Ajout de la possibilité de configurer l'accès à Prisma Studio via la variable d'environnement `SCHEMA_URL` (#fecc294).
+- Correction d'un problème de compatibilité avec Prisma 7 lors de l'utilisation du mode `SCHEMA_URL` (#ac814e0).
 
 ### Évolutions techniques
-- Passage à `pnpm` comme gestionnaire de paquets (#Ici le numéro de PR si disponible) : améliore la vitesse d'installation des dépendances et l'utilisation de l'espace disque.
+- Optimisation de l'image Docker pour réduire sa taille (#6b4916c).
+- Suppression des générateurs Prisma pour éviter des problèmes potentiels (#229eb70).
