@@ -540,8 +540,7 @@
 │   │   └── rolesResponsabilites.js
 │   ├── simulationV2.mjs
 │   ├── supervision.mjs
-│   ├── tableauDeBord.mjs
-│   └── uiKit.js
+│   └── tableauDeBord.mjs
 ├── scripts
 │   ├── clever-cloud
 │   │   ├── post-build-clever.sh
@@ -576,22 +575,22 @@
 │   │   ├── adaptateurEnvironnement.interface.ts
 │   │   ├── adaptateurEnvironnement.js
 │   │   ├── adaptateurGestionErreur.interface.ts
-│   │   ├── adaptateurGestionErreurSentry.js
-│   │   ├── adaptateurGestionErreurVide.js
+│   │   ├── adaptateurGestionErreurSentry.ts
+│   │   ├── adaptateurGestionErreurVide.ts
 │   │   ├── adaptateurHorloge.ts
 │   │   ├── adaptateurJWT.interface.ts
-│   │   ├── adaptateurJWT.js
+│   │   ├── adaptateurJWT.ts
 │   │   ├── adaptateurJournalMSS.interface.ts
-│   │   ├── adaptateurJournalMSSMemoire.js
-│   │   ├── adaptateurJournalMSSPostgres.js
+│   │   ├── adaptateurJournalMSSMemoire.ts
+│   │   ├── adaptateurJournalMSSPostgres.ts
 │   │   ├── adaptateurMail.interface.ts
 │   │   ├── adaptateurMailMemoire.js
 │   │   ├── adaptateurMailSendinblue.js
 │   │   ├── adaptateurOidc.interface.ts
 │   │   ├── adaptateurOidc.ts
-│   │   ├── adaptateurPdf.configurationTamponHomologation.js
+│   │   ├── adaptateurPdf.configurationTamponHomologation.ts
 │   │   ├── adaptateurPdf.js
-│   │   ├── adaptateurPdf.puppeteer.js
+│   │   ├── adaptateurPdf.puppeteer.ts
 │   │   ├── adaptateurPersistanceMemoire.js
 │   │   ├── adaptateurPostgres.js
 │   │   ├── adaptateurProfilAnssi.js
@@ -745,33 +744,34 @@
 │   │   │   ├── autorisation.ts
 │   │   │   ├── fabriqueAutorisation.ts
 │   │   │   └── gestionDroits.ts
-│   │   ├── avis.js
+│   │   ├── avis.ts
 │   │   ├── base.ts
 │   │   ├── brouillonService.ts
 │   │   ├── completudeMesures.js
-│   │   ├── contributeur.js
+│   │   ├── contributeur.ts
 │   │   ├── convertisseurDescriptionV1BrouillonV2.ts
-│   │   ├── descriptionService.js
+│   │   ├── descriptionService.ts
+│   │   ├── descriptionService.types.ts
 │   │   ├── descriptionServiceV2.ts
 │   │   ├── donneesSensiblesSpecifiques.js
-│   │   ├── dossier.js
-│   │   ├── dossiers.js
-│   │   ├── elementsConstructibles.js
+│   │   ├── dossier.ts
+│   │   ├── dossiers.ts
+│   │   ├── elementsConstructibles.ts
 │   │   ├── elementsFabricables.js
-│   │   ├── entite.js
+│   │   ├── entite.ts
 │   │   ├── entiteExterne.js
 │   │   ├── entitesExternes.js
 │   │   ├── etapes
 │   │   │   ├── autorite.ts
 │   │   │   ├── dateTelechargement.ts
-│   │   │   ├── decision.js
-│   │   │   ├── documents.js
+│   │   │   ├── decision.ts
+│   │   │   ├── documents.ts
 │   │   │   ├── etape.ts
-│   │   │   └── etapeAvis.js
+│   │   │   └── etapeAvis.ts
 │   │   ├── etatVisiteGuidee.js
 │   │   ├── explicationNouveauReferentiel.ts
 │   │   ├── fonctionnalitesSpecifiques.js
-│   │   ├── identite.js
+│   │   ├── identite.ts
 │   │   ├── indiceCyber.js
 │   │   ├── indiceCyber.type.ts
 │   │   ├── informationsService.ts
@@ -802,15 +802,15 @@
 │   │   │   ├── evenementServiceSupprime.js
 │   │   │   ├── evenementServicesImportes.ts
 │   │   │   └── evenementSimulationMigrationReferentielCreee.ts
-│   │   ├── listeItems.js
+│   │   ├── listeItems.ts
 │   │   ├── listeRisques.js
-│   │   ├── mesure.js
+│   │   ├── mesure.ts
 │   │   ├── mesureGenerale.js
 │   │   ├── mesureGenerale.type.ts
-│   │   ├── mesureSpecifique.js
+│   │   ├── mesureSpecifique.ts
 │   │   ├── mesures.js
 │   │   ├── mesuresGenerales.js
-│   │   ├── mesuresSpecifiques.js
+│   │   ├── mesuresSpecifiques.ts
 │   │   ├── niveauGravite.js
 │   │   ├── notificationExpirationHomologation.js
 │   │   ├── objetsApi
@@ -885,6 +885,7 @@
 │   │       ├── graviteObjectifsVises.ts
 │   │       ├── graviteVecteurs.configuration.ts
 │   │       ├── graviteVecteurs.ts
+│   │       ├── mesuresPourRisque.ts
 │   │       ├── moteurRisques.ts
 │   │       ├── risqueV2.configuration.ts
 │   │       ├── risqueV2.ts
@@ -1117,7 +1118,6 @@
 │       │   ├── tiroirSuppressionDossierCourant.pug
 │       │   ├── tiroirTelechargement.pug
 │       │   └── tiroirTelechargementTamponHomologation.pug
-│       ├── uiKit.pug
 │       └── visiteGuidee
 │           └── creationService.pug
 ├── svelte
@@ -1565,9 +1565,6 @@
 │   │   │   ├── types.d.ts
 │   │   │   └── ui.types.d.ts
 │   │   ├── ui-kit.d.ts
-│   │   ├── uiKit
-│   │   │   ├── UiKit.svelte
-│   │   │   └── uiKit.ts
 │   │   ├── visiteGuidee
 │   │   │   ├── VisiteGuidee.svelte
 │   │   │   ├── etapes
@@ -1619,7 +1616,7 @@
 │   │   ├── adaptateurChiffrement.spec.ts
 │   │   ├── adaptateurChiffrementChaCha20.spec.ts
 │   │   ├── adaptateurEnvironnement.spec.js
-│   │   ├── adaptateurJWT.spec.js
+│   │   ├── adaptateurJWT.spec.ts
 │   │   ├── adaptateurOidc.spec.ts
 │   │   ├── adaptateurPostgres.spec.js
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
@@ -1700,7 +1697,7 @@
 │   │   ├── constructeurDepotDonneesServices.js
 │   │   ├── constructeurDescriptionService.js
 │   │   ├── constructeurDescriptionServiceV2.ts
-│   │   ├── constructeurDossier.js
+│   │   ├── constructeurDossier.ts
 │   │   ├── constructeurMesureGenerale.js
 │   │   ├── constructeurMesures.js
 │   │   ├── constructeurService.js
@@ -1750,31 +1747,31 @@
 │   │   │   ├── ajoutContributeurSurServices.spec.js
 │   │   │   ├── autorisation.spec.ts
 │   │   │   └── gestionDroits.spec.ts
-│   │   ├── avis.spec.js
+│   │   ├── avis.spec.ts
 │   │   ├── base.spec.ts
 │   │   ├── brouillonService.spec.ts
 │   │   ├── completudeMesures.spec.js
-│   │   ├── contributeur.spec.js
+│   │   ├── contributeur.spec.ts
 │   │   ├── convertisseurDescriptionV1BrouillonV2.spec.ts
-│   │   ├── descriptionService.spec.js
+│   │   ├── descriptionService.spec.ts
 │   │   ├── descriptionServiceV2.spec.ts
 │   │   ├── donneesSensiblesSpecifiques.spec.js
-│   │   ├── dossier.spec.js
-│   │   ├── dossiers.spec.js
-│   │   ├── elementsConstructibles.spec.js
-│   │   ├── entite.spec.js
+│   │   ├── dossier.spec.ts
+│   │   ├── dossiers.spec.ts
+│   │   ├── elementsConstructibles.spec.ts
+│   │   ├── entite.spec.ts
 │   │   ├── entiteExterne.spec.js
 │   │   ├── entitesExternes.spec.js
 │   │   ├── etapes
 │   │   │   ├── autorite.spec.ts
 │   │   │   ├── dateTelechargement.spec.ts
-│   │   │   ├── decision.spec.js
-│   │   │   ├── documents.spec.js
-│   │   │   └── etapeAvis.spec.js
+│   │   │   ├── decision.spec.ts
+│   │   │   ├── documents.spec.ts
+│   │   │   └── etapeAvis.spec.ts
 │   │   ├── etatVisiteGuidee.spec.js
 │   │   ├── explicationNouveauReferentiel.spec.ts
 │   │   ├── fonctionnalitesSpecifiques.spec.js
-│   │   ├── identite.spec.js
+│   │   ├── identite.spec.ts
 │   │   ├── indiceCyber.spec.js
 │   │   ├── informationsHomologation.spec.js
 │   │   ├── itemAvecDescription.spec.js
@@ -1798,12 +1795,12 @@
 │   │   │   ├── evenementServicesImportes.spec.ts
 │   │   │   └── evenementSimulationMigrationReferentielCreee.spec.ts
 │   │   ├── listesRisques.spec.js
-│   │   ├── mesure.spec.js
+│   │   ├── mesure.spec.ts
 │   │   ├── mesureGenerale.spec.js
-│   │   ├── mesureSpecifique.spec.js
+│   │   ├── mesureSpecifique.spec.ts
 │   │   ├── mesures.spec.js
 │   │   ├── mesuresGenerales.spec.js
-│   │   ├── mesuresSpecifiques.spec.js
+│   │   ├── mesuresSpecifiques.spec.ts
 │   │   ├── notificationExpirationHomologation.spec.js
 │   │   ├── objetsApi
 │   │   │   ├── objetGetIndicesCyber.spec.js
@@ -1954,4 +1951,4 @@
 │       └── validationMotDePasse.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-262 directories, 1812 files
+261 directories, 1810 files
