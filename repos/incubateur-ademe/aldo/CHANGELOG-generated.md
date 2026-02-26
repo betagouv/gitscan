@@ -1,17 +1,9 @@
-## Changelog : aldo (derniers 30 jours)
+## Changelog : aldo (30 derniers jours)
 
 ### Résumé
-Les récentes mises à jour d'Aldo améliorent l'expérience utilisateur en corrigeant des bugs liés à la navigation et à la soumission de formulaires. De plus, une nouvelle fonctionnalité permet de regrouper les lignes de données similaires pour une meilleure lisibilité, et l'affichage des catégories de réservoir dans les graphiques a été amélioré.
+Cette mise à jour apporte des améliorations à l'expérience utilisateur, notamment en corrigeant un bug sur le bouton de réinitialisation et en améliorant l'ergonomie de l'application. Ces changements visent à faciliter l'utilisation d'Aldo pour l'évaluation du stock de carbone des sols et forêts.
 
 ### Évolutions fonctionnelles
-- Correction du comportement du bouton "réinitialiser" (#147)
-- Le formulaire reste sur la même page après soumission. (#147)
-- Regroupement des lignes de données ayant les mêmes valeurs dans une colonne pour une meilleure lisibilité (#146)
-- Correction de la soumission du formulaire de recherche avec celle de la newsletter (#145)
-- Affichage complet des catégories de réservoir dans les graphiques (#145)
-
-### Évolutions techniques
-Aucune évolution technique significative à signaler durant cette période.
-
-### Autres changements
-- Correction d'une faute de frappe (#146)
+- Correction du comportement du bouton "réinitialiser" pour assurer son bon fonctionnement. (#147)
+- L'application reste sur la même page après la soumission d'un formulaire, améliorant ainsi la fluidité de l'expérience utilisateur. (#147)
+- Amélioration de l'ergonomie avec un regroupement de lignes pour une meilleure lisibilité. (#146)
