@@ -1,18 +1,23 @@
 ## Changelog : depots-sauvages (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'application de signalement des dépôts sauvages, notamment des corrections de fautes d'orthographe, des ajustements de l'interface utilisateur pour une meilleure expérience sur mobile, et l'ajout de nouvelles pages comme "Mes Dossiers". Des modifications liées à l'intégration avec Démarches Numériques ont également été apportées.
+Les dernières mises à jour de l'application de signalement de dépôts sauvages se concentrent sur l'amélioration de la qualité du texte (correction de fautes de français), la correction de bugs affectant l'interface utilisateur (notamment sur mobile) et l'ajout de nouvelles fonctionnalités comme la page "Mes Dossiers". Des améliorations techniques ont également été apportées, notamment l'ajout de Sentry pour le suivi des erreurs et la suppression de code lié à un ancien formulaire.
 
 ### Évolutions fonctionnelles
 - Ajout de la page "Mes Dossiers" permettant aux utilisateurs de consulter leurs signalements. (#109)
 - Amélioration de la page "Dossier sans procédure" avec l'ajout de détails supplémentaires. (#111)
-- Corrections de fautes de français dans le rapport de constatation. (#116)
-- Corrections de fautes de français dans la lettre d'information. (#115)
-- Intégration de gend'élus et ACDéchet dans la page de contact. (#107)
-- Modifications apportées au formulaire Démarches Numériques. (#108)
+- Correction de fautes de français dans le rapport de constatation. (#116)
+- Correction de fautes de français dans la lettre d'information. (#115)
+- Correction d'un bug empêchant l'affichage du bouton de connexion sur mobile. (#110)
+- Suppression des fonctionnalités liées à l'ancien formulaire. (#113)
 
 ### Évolutions techniques
-- Intégration de Sentry pour le suivi des erreurs et la surveillance de l'application. (#117)
+- Ajout de Sentry pour la surveillance des erreurs et l'amélioration de la stabilité de l'application. (#117)
+- Correction des notifications de sécurité. (#121)
+- Ajout de tests unitaires dans la CI pour garantir la qualité du code. (#123)
+- Mise à jour des packages Python et Yarn. (#119, #122)
+- Mise à jour de la documentation et des tests. (#118)
 - Correction d'un bug lié aux variables d'environnement locales et au bouton de connexion. (#112)
-- Correction d'un bug d'affichage du bouton de connexion sur la version mobile. (#110)
-- Suppression des fonctionnalités liées à l'ancien formulaire. (#113)
+
+### Autres changements
+- Modifications du formulaire Démarches Numériques. (#108)
