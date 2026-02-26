@@ -1,20 +1,15 @@
-## Changelog : revu (derniers 30 jours)
+## Changelog : revu (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Revu se concentrent sur l'amélioration de la qualité des suggestions de revue de code, la correction de bugs liés à l'affichage et la gestion des suggestions redondantes, ainsi que des optimisations internes pour une meilleure stabilité et performance.
+Ce changelog présente les améliorations apportées à Revu au cours des 30 derniers jours. Les mises à jour se concentrent principalement sur la correction de bugs et l'amélioration de la qualité des suggestions de revue de code, notamment en réduisant la redondance et en affinant la précision.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème d'affichage des numéros de ligne de début et de fin dans les suggestions (#271).
-- Amélioration de la qualité des suggestions de code grâce à l'ingénierie des prompts (configuration).
-- Suppression des blocs de suggestions redondants (#274).
-- Amélioration de la gestion des interactions avec GitHub et ajout d'informations de débogage.
-- Intégration et tests avec le modèle GPT-5.1 en environnement de pré-production.
-- Avancement du support des discussions sur les pull requests.
+- Correction d'un problème d'incohérence des numéros de ligne de début et de fin dans les suggestions (#271).
+- Amélioration de la qualité des suggestions de code en réduisant les blocs de suggestions redondants (#274).
+- Amélioration des blocs de suggestions via l'ingénierie des prompts.
 
 ### Évolutions techniques
-- Migration vers le gestionnaire de paquets pnpm (#268).
-- Ajout d'une étape de vérification TypeScript avant le commit (#269).
-- Mise à jour de l'infrastructure pour utiliser les nouvelles réponses de l'API OpenAI.
+- Correction d'un problème lié au volume temporaire (#98a3511).
 
 ### Autres changements
-- Correction de bugs divers liés à la version du projet.
+- Aucune information supplémentaire à signaler.
