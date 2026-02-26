@@ -1,13 +1,13 @@
 ## Changelog : boris (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de la plateforme BORIS se concentrent sur l'amélioration de l'expérience utilisateur et la correction de bugs. Des informations spécifiques concernant le dispositif Bail Réel Solidaire, notamment pour le prêt lissé, ont été ajoutées ou corrigées. L'interface a également été simplifiée en supprimant la bannière d'inscription des testeurs bêta.
+Cette mise à jour apporte des améliorations à la plateforme BORIS, notamment l'ajout d'un snippet ADIL pour faciliter l'accès à l'information, la correction d'un problème lié au calcul du prêt lissé dans le simulateur d'acquisition, et la suppression de la bannière d'inscription des testeurs bêta. Une correction de lien vers des ressources a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Ajout d'un snippet informatif concernant l'ADIL (Agence Départementale d'Information sur le Logement) (#483)
-- Correction d'un problème lié au calcul du prêt lissé dans le simulateur d'acquisition (#482)
-- Suppression de la bannière d'inscription des testeurs bêta, simplifiant ainsi l'interface utilisateur (#481)
-- Correction du lien vers les ressources (#479)
+- Ajout d'un snippet ADIL pour fournir des informations complémentaires aux utilisateurs (#483)
+- Correction d'un bug concernant le calcul du prêt lissé dans le simulateur d'acquisition (#482)
+- Suppression de la bannière d'inscription des testeurs bêta (#481)
+- Correction d'un lien vers des ressources (#479)
 
 ### Évolutions techniques
 Aucune évolution technique significative à signaler durant cette période.
