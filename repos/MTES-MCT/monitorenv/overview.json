@@ -8,42 +8,44 @@
     "Suivi des missions de contrôle",
     "Analyse des données de contrôle",
     "Aide à la décision",
-    "Planification des contrôles"
+    "Planification des contrôles",
+    "Visualisation de données géospatiales"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
+    "GeoAlchemy2",
+    "pandas",
+    "GeoPandas",
+    "Prefect",
     "Poetry",
     "Docker",
-    "Kafka",
-    "GeoAlchemy2",
-    "GeoPandas",
-    "SQLAlchemy",
-    "React",
-    "Vite"
+    "Kafka"
   ],
   "components": [
-    "Application web (MonitorEnv)",
-    "Pipeline de traitement de données (datapipeline)",
-    "Frontend React",
-    "Backend Python",
+    "Application web",
+    "Pipeline de traitement de données",
     "Base de données PostgreSQL",
+    "API REST",
+    "Frontend (Vite/React)",
     "Kafka pour le traitement des flux de données"
   ],
   "auth": {
     "methods": [
-      "oauth2"
-    ]
+      "oauth2",
+      "session"
+    ],
+    "providers": []
   },
   "tests": [
-    "Jest",
-    "Pytest",
+    "pytest",
     "Cypress"
   ],
   "workflows": [
-    "CI/CD workflows (GitHub Actions)"
+    "CI/CD avec GitHub Actions",
+    "Déploiement du pipeline de données"
   ],
-  "lastActivity": "2026-02-19T13:12:13+01:00",
+  "lastActivity": "2026-02-26T10:17:08+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -52,10 +54,10 @@
     "environnement marin",
     "surveillance",
     "contrôle",
-    "biodiversité",
-    "données",
+    "données géospatiales",
     "PostgreSQL",
     "Python",
-    "React"
+    "Kafka",
+    "Prefect"
   ]
 }
