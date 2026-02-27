@@ -86,6 +86,7 @@
 │   ├── assets
 │   │   ├── banner-drive.png
 │   │   └── drive-UI.png
+│   ├── customization.md
 │   ├── ds_proxy.md
 │   ├── entitlements.md
 │   ├── env.md
@@ -103,8 +104,7 @@
 │   ├── release.md
 │   ├── resource_server.md
 │   ├── s3_mirroring.md
-│   ├── setup-find.md
-│   └── theming.md
+│   └── setup-find.md
 ├── env.d
 │   └── development
 │       ├── common
@@ -121,6 +121,11 @@
     │   ├── .pylintrc
     │   ├── MANIFEST.in
     │   ├── __init__.py
+    │   ├── assets
+    │   │   └── file_templates
+    │   │       ├── template.odp
+    │   │       ├── template.ods
+    │   │       └── template.odt
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
@@ -230,10 +235,12 @@
     │   │   │   │   ├── test_api_item_upload_ended.py
     │   │   │   │   ├── test_api_items_breadcrumb.py
     │   │   │   │   ├── test_api_items_children_create.py
+    │   │   │   │   ├── test_api_items_children_from_template.py
     │   │   │   │   ├── test_api_items_children_list.py
     │   │   │   │   ├── test_api_items_children_ordering.py
     │   │   │   │   ├── test_api_items_create.py
     │   │   │   │   ├── test_api_items_delete.py
+    │   │   │   │   ├── test_api_items_download.py
     │   │   │   │   ├── test_api_items_favorite.py
     │   │   │   │   ├── test_api_items_favorite_list.py
     │   │   │   │   ├── test_api_items_hard_delete.py
@@ -288,6 +295,7 @@
     │   │   │       └── urls.py
     │   │   ├── urls.py
     │   │   └── utils
+    │   │       ├── analytics.py
     │   │       └── item_title.py
     │   ├── demo
     │   │   ├── __init__.py
@@ -558,6 +566,7 @@
     │   │   │   │   │   │   │   │   ├── ImportDropdown.tsx
     │   │   │   │   │   │   │   │   └── ItemActionDropdown.tsx
     │   │   │   │   │   │   │   ├── modals
+    │   │   │   │   │   │   │   │   ├── ExplorerCreateFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFolderModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerRenameItemModal.tsx
     │   │   │   │   │   │   │   │   ├── HardDeleteConfirmationModal.tsx
@@ -596,9 +605,11 @@
     │   │   │   │   │   │   │       └── WorkspacesExplorer.tsx
     │   │   │   │   │   │   ├── hooks
     │   │   │   │   │   │   │   ├── useBreadcrumb.tsx
+    │   │   │   │   │   │   │   ├── useCreateMenuItems.tsx
     │   │   │   │   │   │   │   ├── useDeleteItem.tsx
     │   │   │   │   │   │   │   ├── useInfiniteChildren.ts
     │   │   │   │   │   │   │   ├── useInfiniteItems.ts
+    │   │   │   │   │   │   │   ├── useItemActionMenuItems.tsx
     │   │   │   │   │   │   │   ├── useMutations.ts
     │   │   │   │   │   │   │   ├── useMutationsAccesses.ts
     │   │   │   │   │   │   │   ├── useOptimisticPagination.ts
@@ -753,6 +764,7 @@
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useCopyToClipboard.tsx
     │   │   │   │   │   ├── useDefaultRoute.tsx
+    │   │   │   │   │   ├── useRedirectAfterLogin.tsx
     │   │   │   │   │   └── useThemeCustomization.tsx
     │   │   │   │   ├── pages
     │   │   │   │   │   ├── 401.tsx
@@ -793,38 +805,53 @@
     │   │   ├── e2e
     │   │   │   ├── .gitignore
     │   │   │   ├── __tests__
-    │   │   │   │   └── app-drive
-    │   │   │   │       ├── assets
-    │   │   │   │       │   ├── pv_cm.pdf
-    │   │   │   │       │   └── test-image.heic
-    │   │   │   │       ├── breadcrumbs-from-page.spec.ts
-    │   │   │   │       ├── create-folder.spec.ts
-    │   │   │   │       ├── db.setup.ts
-    │   │   │   │       ├── delete-item.spec.ts
-    │   │   │   │       ├── heic-file-preview.spec.ts
-    │   │   │   │       ├── item
-    │   │   │   │       │   └── right-content-info.spec.ts
-    │   │   │   │       ├── language-sync.spec.ts
-    │   │   │   │       ├── left-bar.spec.ts
-    │   │   │   │       ├── login.spec.ts
-    │   │   │   │       ├── move-item.spec.ts
-    │   │   │   │       ├── release-note.spec.ts
-    │   │   │   │       ├── search.spec.ts
-    │   │   │   │       ├── share.spec.ts
-    │   │   │   │       ├── silent-login.spec.ts
-    │   │   │   │       ├── starred.spec.ts
-    │   │   │   │       ├── url-file-preview.spec.ts
-    │   │   │   │       ├── utils
-    │   │   │   │       │   ├── move-utils.ts
-    │   │   │   │       │   ├── share-utils.ts
-    │   │   │   │       │   ├── starred-utils.ts
-    │   │   │   │       │   └── types-utils.ts
-    │   │   │   │       ├── utils-common.ts
-    │   │   │   │       ├── utils-embedded-grid.ts
-    │   │   │   │       ├── utils-explorer.ts
-    │   │   │   │       ├── utils-item.ts
-    │   │   │   │       ├── utils-navigate.ts
-    │   │   │   │       └── utils-tree.ts
+    │   │   │   │   ├── app-drive
+    │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   ├── empty_doc.docx
+    │   │   │   │   │   │   ├── pv_cm.pdf
+    │   │   │   │   │   │   └── test-image.heic
+    │   │   │   │   │   ├── breadcrumbs-from-page.spec.ts
+    │   │   │   │   │   ├── config-custom-assets.spec.ts
+    │   │   │   │   │   ├── context-menu.spec.ts
+    │   │   │   │   │   ├── create-file-from-template.spec.ts
+    │   │   │   │   │   ├── create-folder.spec.ts
+    │   │   │   │   │   ├── db.setup.ts
+    │   │   │   │   │   ├── delete-item.spec.ts
+    │   │   │   │   │   ├── heic-file-preview.spec.ts
+    │   │   │   │   │   ├── item
+    │   │   │   │   │   │   └── right-content-info.spec.ts
+    │   │   │   │   │   ├── language-sync.spec.ts
+    │   │   │   │   │   ├── left-bar.spec.ts
+    │   │   │   │   │   ├── login.spec.ts
+    │   │   │   │   │   ├── move-item.spec.ts
+    │   │   │   │   │   ├── redirect-401.spec.ts
+    │   │   │   │   │   ├── release-note.spec.ts
+    │   │   │   │   │   ├── search.spec.ts
+    │   │   │   │   │   ├── share.spec.ts
+    │   │   │   │   │   ├── silent-login.spec.ts
+    │   │   │   │   │   ├── starred.spec.ts
+    │   │   │   │   │   ├── upload.spec.ts
+    │   │   │   │   │   ├── url-file-preview.spec.ts
+    │   │   │   │   │   ├── utils
+    │   │   │   │   │   │   ├── move-utils.ts
+    │   │   │   │   │   │   ├── posthog-utils.ts
+    │   │   │   │   │   │   ├── share-utils.ts
+    │   │   │   │   │   │   ├── starred-utils.ts
+    │   │   │   │   │   │   ├── types-utils.ts
+    │   │   │   │   │   │   ├── upload-utils.ts
+    │   │   │   │   │   │   └── various-utils.ts
+    │   │   │   │   │   ├── utils-common.ts
+    │   │   │   │   │   ├── utils-embedded-grid.ts
+    │   │   │   │   │   ├── utils-explorer.ts
+    │   │   │   │   │   ├── utils-item.ts
+    │   │   │   │   │   ├── utils-navigate.ts
+    │   │   │   │   │   ├── utils-tree.ts
+    │   │   │   │   │   ├── wopi.spec.ts
+    │   │   │   │   │   └── wopi.spec.ts-snapshots
+    │   │   │   │   │       ├── empty-doc-canvas-after-paste-chromium.png
+    │   │   │   │   │       └── empty-doc-canvas-chromium.png
+    │   │   │   │   ├── empty-doc-canvas-after-paste-chromium.png
+    │   │   │   │   └── empty-doc-canvas-chromium.png
     │   │   │   ├── package.json
     │   │   │   ├── playwright.config.ts
     │   │   │   └── tsconfig.json
@@ -917,4 +944,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-232 directories, 687 files
+235 directories, 711 files

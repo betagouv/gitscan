@@ -1,56 +1,61 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité, tout en conservant un contrôle total sur leurs données.",
+  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers qui permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité, tout en conservant un contrôle total sur leurs données.",
   "language": "Python",
   "features": [
     "Stockage de fichiers sécurisé",
     "Partage de fichiers et de dossiers",
+    "Contrôle d'accès granulaire",
     "Collaboration en équipe",
     "Recherche de fichiers",
-    "Gestion des accès",
     "Auto-hébergement",
-    "Synchronisation de la langue",
-    "Notes de version",
-    "Gestion des accès",
-    "Gestion des workspaces"
+    "Gestion des espaces de travail",
+    "Synchronisation de la langue de l'interface",
+    "Création de fichiers à partir de modèles",
+    "Intégration avec des éditeurs externes (WOPI)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django Rest Framework",
     "Next.js",
     "Docker",
     "Docker Compose",
     "Celery",
+    "PostgreSQL",
+    "Redis",
     "Pillow",
-    "mozilla-django-oidc"
+    "cryptography",
+    "@gouvfr-lasuite/ui-kit"
   ],
   "components": [
     "Backend Django",
     "Frontend React (Next.js)",
     "API REST",
-    "Base de données (PostgreSQL)",
+    "Base de données PostgreSQL",
+    "Cache Redis",
     "Stockage Objet (S3)",
-    "Indexer (Find)"
+    "Serveur Nginx"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": [
-    "Jest",
     "Pytest",
-    "Cypress",
-    "Playwright"
+    "Playwright",
+    "E2E tests"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "Docker Hub CI/CD",
+    "Celery beat configuration"
   ],
-  "lastActivity": "2026-02-19T17:38:18+01:00",
+  "lastActivity": "2026-02-26T09:19:43+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -63,10 +68,11 @@
   "tags": [
     "file sharing",
     "collaboration",
+    "self-hosting",
     "django",
     "react",
-    "self-hosting",
-    "open source",
-    "document management"
+    "s3",
+    "docker",
+    "wopi"
   ]
 }

@@ -8,13 +8,37 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- ⚡️(CI) optimize Docker Hub workflow
+
+## [v0.14.0] - 2026-02-25
+
 ### Added
 
 - 👷(docker) add arm64 platform support for image builds
+- ✨(global) add create file from template feature
+- ✨(global) add FRONTEND_CSS_URL and FRONTEND_JS_URL settings
+- ✨(backend) add a download action returning the media url
+- ✨(frontend) add right click feature
+- ✨(backend) allow customization of wopi parameters
+- ✨(backend) expose DATA_UPLOAD_MAX_MEMORY_SIZE in the config endpoint
+- ✨(frontend) stop upload if file higher than DATA_UPLOAD_MAX_MEMORY_SIZE
+- ✨(backend) reject uploaded file higher than DATA_UPLOAD_MAX_MEMORY_SIZE
+
+### Changed
+
+- ✨(backend) allow root item creation on the external API by default
+- ♻️(backend) set item read only in the mirror item admin detail
 
 ### Fixed
 
 - ✨(frontend) sync backend user language to browser on load
+- 🐛(backend) fix WOPI PutFile to check stored file size
+- 🐛(frontend) fix 401 page infinite redirect loop after login
+- 🐛(backend) fix OIDC redirect allowed hosts format in dev config
+- 🐛(global) update ui when renaming file from wopi editor
+- 🐛(frontend) fix clipboard copy-paste in WOPI editor iframe
 
 ## [v0.13.0] - 2026-02-18
 
@@ -25,6 +49,9 @@ and this project adheres to
 - ✨(global) add release notes
 - ✨(front) show root page in breadcrumbs when navigating
 - ✨(front) filter recent items to only show files
+- 📈(backend) add posthog tracking to item actions
+- 📈(front) add posthog tracking to share modal
+- ✅(front) add e2e tests for posthog share events
 
 ### Changed
 
@@ -300,7 +327,8 @@ and this project adheres to
 - 🌐(front) add english translation for rename modal
 - 🐛(global) fix wrong Content-Type on specific s3 implementations
 
-[unreleased]: https://github.com/suitenumerique/drive/compare/v0.13.0...main
+[unreleased]: https://github.com/suitenumerique/drive/compare/v0.14.0...main
+[v0.14.0]: https://github.com/suitenumerique/drive/releases/v0.13.0
 [v0.13.0]: https://github.com/suitenumerique/drive/releases/v0.13.0
 [v0.12.0]: https://github.com/suitenumerique/drive/releases/v0.12.0
 [v0.11.1]: https://github.com/suitenumerique/drive/releases/v0.11.1
@@ -318,4 +346,3 @@ and this project adheres to
 [v0.2.0]: https://github.com/suitenumerique/drive/releases/v0.2.0
 [v0.1.1]: https://github.com/suitenumerique/drive/releases/v0.1.1
 [v0.1.0]: https://github.com/suitenumerique/drive/releases/v0.1.0
-## [v0.11.1] - 2026-01-13
