@@ -1,24 +1,29 @@
 ## Changelog : graal (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Graal se concentrent sur l'amélioration de la gestion des configurations, notamment l'ajout de la prise en charge des fichiers Excel stockés dans S3. Des corrections de bugs ont également été apportées pour améliorer la stabilité du pipeline de traitement et la gestion des manifestes. Enfin, des améliorations de l'interface utilisateur et de l'authentification ont été implémentées.
+Ce mois-ci, l'équipe de développement s'est concentrée sur l'ajout de la gestion de configurations pour les modèles de langage (LLM) et l'amélioration de la gestion des fichiers Excel pour la configuration du système. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface utilisateur pour la configuration des fichiers Excel ([54a38ea](https://github.com/SocialGouv/graal/commit/54a38ea9a98d24df57838af3abc58db9a3265f6e)).
-- Possibilité de supprimer les configurations Excel via le backend ([41a67dd](https://github.com/SocialGouv/graal/commit/41a67dd4a68d291227e4ade8a17cc6dd405606f7)).
-- Ajout d'un titre à l'onglet GRAAL dans l'interface utilisateur ([da392c7](https://github.com/SocialGouv/graal/commit/da392c71f9889492048c8668f5c02476a51b480c)).
-- Les requêtes OAuth sont maintenant stockées dans la base de données PostgreSQL ([81dbcd0](https://github.com/SocialGouv/graal/commit/81dbcd0b3ab37c32b655d7788b0f444bd63dac03)).
+- Ajout d'une interface utilisateur pour la configuration des fichiers Excel (#224).
+- Possibilité de supprimer les configurations Excel via le backend.
+- Ajout de workflows utilisant le modèle de langage Claude.
+- Amélioration de la mise en page de la page d'accueil avec des composants DSFR.
+- Correction d'un bug empêchant la suppression de manifestes de la base de données si le fichier S3 correspondant n'existait pas.
+- Correction d'un bug lié à l'URL de l'API dans les boutons d'authentification.
+- Ajout de la gestion des requêtes OAuth dans la base de données PostgreSQL.
+- Ajout d'un titre à l'onglet du navigateur pour une meilleure identification de l'application.
 
 ### Évolutions techniques
-- Implémentation d'un mécanisme de nouvelle tentative pour la génération de nouveaux types d'API ([506b526](https://github.com/SocialGouv/graal/commit/506b526e52a58e370c310d941d36ba4a29a86b46)).
-- Refactorisation du backend pour la gestion des fichiers de configuration Excel, utilisant les IDs ([bd61f6d](https://github.com/SocialGouv/graal/commit/bd61f6d163922528697395b97760360a1020769d)).
-- Ajout de routes API pour la gestion des fichiers de configuration Excel ([088b79d](https://github.com/SocialGouv/graal/commit/088b79d477b985266de8e14010a5f40fdc369b5e)).
-- Ajout du backend pour la gestion des fichiers de configuration Excel dans S3 ([01077ec](https://github.com/SocialGouv/graal/commit/01077ec874874654577983976831162d428ed9dd)).
-- Correction d'un crash du pipeline lié à la recherche de similarités et à des problèmes asynchrones avec S3 ([7a7bd4e](https://github.com/SocialGouv/graal/commit/7a7bd4eb6082aeeb66fec33a047f3659ac5759df)).
-- Correction d'un problème empêchant la suppression des manifestes de la base de données si le fichier S3 n'existait pas ([d4a18ee](https://github.com/SocialGouv/graal/commit/d4a18ee24d5ab982714fea11f6289835b89a36ac)).
-- Utilisation de variables d'environnement pour les uploads S3 ([d23c618](https://github.com/SocialGouv/graal/commit/d23c61825149923590666452f8f3399186844241)).
-- Amélioration des appels à `require_db_role` en fournissant l'utilisateur ([2f0fb71](https://github.com/SocialGouv/graal/commit/2f0fb71f8368f482277f183097f877d94b67928f)).
+- Ajout d'un backend pour la configuration des modèles de langage (LLM).
+- Ajout des configurations LLM à la base de données.
+- Refactorisation du backend pour la gestion des fichiers de configuration Excel, en utilisant les IDs pour éviter les collisions.
+- Ajout d'un mécanisme de retry pour la génération des types d'API.
+- Amélioration des tests pour éviter les interférences entre les bases de données de test et de développement.
+- Utilisation de variables d'environnement pour les uploads S3.
+- Correction d'un crash du pipeline de traitement lié à S3 et aux opérations asynchrones.
+- Amélioration des appels à la fonction `require_db_role` en fournissant l'utilisateur.
+- Mise à jour de la configuration du CI/CD pour supporter les pull requests labellisées et éviter l'utilisation de la version "latest".
 
 ### Autres changements
-- Corrections mineures diverses ([e396dc1](https://github.com/SocialGouv/graal/commit/e396dc1626472589480074467365435547230623)).
-- Correction de l'utilisation de `config_file_id` ([24cb206](https://github.com/SocialGouv/graal/commit/24cb206c6c8d82d3ee54b645891f0b662f19dcdd)).
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
+- Publication des versions 1.46.0, 1.45.0, 1.44.2, 1.44.1, 1.44.0, 1.43.1, 1.43.0, 1.42.0, 1.41.0 et 1.40.0.

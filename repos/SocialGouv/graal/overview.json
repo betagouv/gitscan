@@ -1,52 +1,49 @@
 {
   "url": "https://github.com/SocialGouv/graal",
   "name": "graal",
-  "description": "GRAAL est un système d'analyse et de traitement automatisé des amendements législatifs. Il vise à simplifier et à accélérer les tâches des agents responsables de ces amendements.",
+  "description": "GRAAL est un système d'analyse et de traitement de documents législatifs, conçu pour simplifier et accélérer le travail des agents chargés de traiter les amendements.",
   "language": "Python",
   "features": [
-    "Traitement automatisé des amendements",
+    "Traitement des amendements",
     "Regroupement d'amendements similaires",
     "Attribution d'amendements",
     "Génération de résumés",
     "Recherche de similarités",
-    "Gestion de la configuration",
-    "Interface web pour le traitement des amendements"
+    "Gestion de configurations",
+    "Analyse de texte"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Poetry",
     "PostgreSQL",
+    "React",
     "FastAPI",
     "Uvicorn",
-    "React",
-    "TypeScript",
-    "DSFR",
     "S3",
-    "Ollama",
-    "Albert API"
+    "Docker",
+    "DSFR"
   ],
   "components": [
-    "Backend API (FastAPI)",
+    "Backend FastAPI",
     "Frontend React",
     "Base de données PostgreSQL",
-    "Pipeline de traitement des amendements",
-    "Interface utilisateur web",
-    "Stockage S3 pour les configurations et les bases de données de similarité"
+    "Pipeline de traitement",
+    "Interface Web",
+    "API REST"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
-    ],
-    "providers": []
+      "oauth2"
+    ]
   },
   "tests": [
     "pytest",
-    "pytest-cov",
-    "pytest-xdist"
+    "pytest-cov"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-18T00:00:00Z",
+  "workflows": [
+    "CI/CD (via GitHub Actions - not explicitly listed, but implied)"
+  ],
+  "lastActivity": "2026-02-27T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,12 +56,12 @@
   "tags": [
     "amendements législatifs",
     "traitement de texte",
-    "intelligence artificielle",
     "analyse de données",
     "administration publique",
     "Python",
     "React",
     "PostgreSQL",
-    "S3"
+    "S3",
+    "Docker"
   ]
 }

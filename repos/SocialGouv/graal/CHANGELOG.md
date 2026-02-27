@@ -1,3 +1,39 @@
+# [1.46.0](https://github.com/SocialGouv/graal/compare/v1.45.0...v1.46.0) (2026-02-27)
+
+
+### Features
+
+* Add llm_configs to db ([93d95c5](https://github.com/SocialGouv/graal/commit/93d95c5c6409459d0af2a9fd22b7038f81cc9290))
+* Backend for llm config ([918d532](https://github.com/SocialGouv/graal/commit/918d532316973da5b19944165f9d129957499713))
+
+# [1.45.0](https://github.com/SocialGouv/graal/compare/v1.44.2...v1.45.0) (2026-02-26)
+
+
+### Features
+
+* **frontend:** improve landing page layout with DSFR Tile components ([b525387](https://github.com/SocialGouv/graal/commit/b5253877539031ee8eae99618f5e8b34066449de)), closes [#224](https://github.com/SocialGouv/graal/issues/224)
+
+## [1.44.2](https://github.com/SocialGouv/graal/compare/v1.44.1...v1.44.2) (2026-02-26)
+
+
+### Bug Fixes
+
+* use fallback empty string for VITE_API_URL in auth buttons ([b5a22db](https://github.com/SocialGouv/graal/commit/b5a22db79d0ddf7d4a5f3afbb6eea65abb5367cc)), closes [#226](https://github.com/SocialGouv/graal/issues/226)
+
+## [1.44.1](https://github.com/SocialGouv/graal/compare/v1.44.0...v1.44.1) (2026-02-26)
+
+
+### Bug Fixes
+
+* Make use of config file IDs instead of their names to avoid "ID" collisions ([3d3051a](https://github.com/SocialGouv/graal/commit/3d3051ad37b66b993debeaabbc2bedaaadf083f5))
+
+# [1.44.0](https://github.com/SocialGouv/graal/compare/v1.43.1...v1.44.0) (2026-02-25)
+
+
+### Features
+
+* Add Claude workflows ([f6cc9f3](https://github.com/SocialGouv/graal/commit/f6cc9f3c223597daf497c76506e31bc906cda329))
+
 ## [1.43.1](https://github.com/SocialGouv/graal/compare/v1.43.0...v1.43.1) (2026-02-18)
 
 
