@@ -1,32 +1,31 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet aux administrateurs de gérer et de modérer les informations des utilisateurs et des organisations.",
+  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet aux administrateurs de gérer et de modérer les informations et les utilisateurs sur la plateforme.",
   "language": "TypeScript",
   "features": [
-    "Gestion des modérations",
-    "Recherche avancée",
-    "Filtrage des domaines",
-    "Gestion des utilisateurs",
+    "Gestion des domaines",
     "Gestion des organisations",
-    "Intégration avec FranceConnect",
-    "Notifications"
+    "Modération des membres",
+    "Intégration FranceConnect",
+    "Suivi des erreurs avec Sentry",
+    "Gestion des utilisateurs autorisés"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "@gouvfr/dsfr",
-    "@preact/signals",
+    "Preact",
+    "htmx",
     "bun",
-    "htmx.org",
     "zod",
-    "drizzle-orm",
-    "tsx"
+    "drizzle-orm"
   ],
   "components": [
     "Frontend Preact",
     "API REST",
     "Base de données PostgreSQL",
-    "Docker containers"
+    "Docker",
+    "CI/CD avec GitHub Actions"
   ],
   "auth": {
     "methods": [
@@ -34,13 +33,13 @@
     ]
   },
   "tests": [
-    "E2E Testing (Cypress)",
-    "Unit tests"
+    "Cypress",
+    "Jest"
   ],
   "workflows": [
     "Release it!"
   ],
-  "lastActivity": "2026-02-19T00:00:00Z",
+  "lastActivity": "2026-02-26T14:38:23Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -51,12 +50,12 @@
     "openIssues": null
   },
   "tags": [
-    "modération",
     "MonComptePro",
-    "administration",
-    "Preact",
+    "Modération",
+    "Administration",
     "TypeScript",
-    "PostgreSQL",
-    "HTMX"
+    "Preact",
+    "htmx",
+    "Sentry"
   ]
 }
