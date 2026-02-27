@@ -49,6 +49,7 @@
 ├── .editorconfig
 ├── .env.development
 ├── .env.production
+├── .gitattributes
 ├── .github
 │   ├── CODEOWNERS
 │   ├── ISSUE_TEMPLATE
@@ -58,23 +59,29 @@
 │   │   └── task.yml
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   ├── filters.yml
+│   ├── scripts
+│   │   ├── ci-gate-release.js
+│   │   └── resolve-deploy.js
 │   ├── skills
 │   │   ├── vercel-composition-patterns -> ../../.agents/skills/vercel-composition-patterns
 │   │   ├── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
 │   │   └── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
 │   └── workflows
 │       ├── build.yml
+│       ├── deploy.yml
 │       ├── lint.yml
+│       ├── release-please.yml
 │       └── test.yml
 ├── .gitignore
 ├── .mcp.json
 ├── .nvmrc
+├── .plan-notion-integration.md
+├── .release-please-manifest.json
 ├── .slugignore
 ├── .vscode
 │   ├── extensions.json
 │   ├── mcp.json
 │   └── settings.json
-├── CHANGELOG.md
 ├── CLAUDE.md
 ├── LICENSE
 ├── Procfile
@@ -128,10 +135,13 @@
 │       └── technical
 │           ├── deployment.mdx
 │           ├── dns.mdx
+│           ├── feature-flags.mdx
 │           ├── index.mdx
 │           ├── meta.json
 │           ├── security.mdx
-│           └── self-hosting.mdx
+│           ├── self-hosting.mdx
+│           └── tracking.mdx
+├── cron.json
 ├── docker-compose.yml
 ├── docs
 │   ├── adr
@@ -155,7 +165,12 @@
 │   │   ├── 0017-dsfr-email-templates.md
 │   │   ├── 0018-2fa-and-oauth-sso.md
 │   │   ├── 0019-test-infrastructure.md
-│   │   └── 0020-embed-iframe-route-group.md
+│   │   ├── 0020-embed-iframe-route-group.md
+│   │   ├── 0021-push-based-deploy.md
+│   │   ├── 0022-integration-provider-pattern.md
+│   │   ├── 0022-s3-storage-and-markdown-editor.md
+│   │   ├── 0023-integration-provider-pattern.md
+│   │   └── 0024-tracking-provider-posthog.md
 │   ├── deploy
 │   │   └── caddy
 │   │       ├── Caddyfile
@@ -226,6 +241,16 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260220000000_add_pinned_tenant_to_app_settings
 │   │   │   └── migration.sql
+│   │   ├── 20260222142936_audit_action_new_values
+│   │   │   └── migration.sql
+│   │   ├── 20260224162627_add_integration_tables
+│   │   │   └── migration.sql
+│   │   ├── 20260224190000_add_image_upload_audit_action
+│   │   │   └── migration.sql
+│   │   ├── 20260225135112_add_feature_flags
+│   │   │   └── migration.sql
+│   │   ├── 20260225150000_add_comment_edit_delete_audit_actions
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.cts
@@ -280,6 +305,9 @@
 │       ├── hero.svg
 │       ├── placeholder.svg
 │       └── roadmaps-faciles.png
+├── release-please-config.alpha.json
+├── release-please-config.beta.json
+├── release-please-config.stable.json
 ├── scalingo.json
 ├── scripts
 │   ├── call_gpg_refresh_webhook.sh
@@ -287,6 +315,7 @@
 │   ├── import_gpg.sh
 │   ├── refresh_gpg_passphrase.sh
 │   ├── seedGit.ts
+│   ├── setup-github-environments.sh
 │   ├── tsconfig.json
 │   ├── worktree-clean.sh
 │   ├── worktree-completion.zsh
@@ -304,6 +333,10 @@
 │   │   │   │   │   ├── actions.ts
 │   │   │   │   │   ├── audit-log
 │   │   │   │   │   │   ├── AuditLogView.tsx
+│   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── feature-flags
+│   │   │   │   │   │   ├── FeatureFlagsForm.tsx
 │   │   │   │   │   │   ├── actions.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── layout.tsx
@@ -361,6 +394,8 @@
 │   │   │   ├── DefaultFooter.tsx
 │   │   │   ├── DefaultHeader.tsx
 │   │   │   ├── Navigation.tsx
+│   │   │   ├── accessibilite
+│   │   │   │   └── page.tsx
 │   │   │   ├── api
 │   │   │   │   ├── 2fa
 │   │   │   │   │   └── email
@@ -375,6 +410,9 @@
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── confirm-em-link
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── cron
+│   │   │   │   │   └── integrations
+│   │   │   │   │       └── route.ts
 │   │   │   │   ├── domains
 │   │   │   │   │   └── check
 │   │   │   │   │       └── route.ts
@@ -398,6 +436,9 @@
 │   │   │   │   │       └── route.ts
 │   │   │   │   ├── test-auth
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── uploads
+│   │   │   │   │   └── [...key]
+│   │   │   │   │       └── route.ts
 │   │   │   │   └── webauthn
 │   │   │   │       ├── authenticate
 │   │   │   │       │   ├── options
@@ -409,6 +450,8 @@
 │   │   │   │           │   └── route.ts
 │   │   │   │           └── verify
 │   │   │   │               └── route.ts
+│   │   │   ├── cgu
+│   │   │   │   └── page.tsx
 │   │   │   ├── error
 │   │   │   │   └── page.tsx
 │   │   │   ├── forbidden.tsx
@@ -425,7 +468,11 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── verify-request
 │   │   │   │       └── page.tsx
+│   │   │   ├── mentions-legales
+│   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
+│   │   │   ├── politique-de-confidentialite
+│   │   │   │   └── page.tsx
 │   │   │   ├── roadmap
 │   │   │   │   └── page.tsx
 │   │   │   ├── stats
@@ -459,6 +506,23 @@
 │   │   │   │   │   │   ├── general
 │   │   │   │   │   │   │   ├── GeneralForm.tsx
 │   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── integrations
+│   │   │   │   │   │   │   ├── IntegrationsList.tsx
+│   │   │   │   │   │   │   ├── [integrationId]
+│   │   │   │   │   │   │   │   ├── IntegrationDetail.tsx
+│   │   │   │   │   │   │   │   ├── SyncLogTable.tsx
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   │   ├── new
+│   │   │   │   │   │   │   │   ├── NotionWizard.tsx
+│   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   ├── steps
+│   │   │   │   │   │   │   │   │   ├── ConfigStep.tsx
+│   │   │   │   │   │   │   │   │   ├── ConnectionStep.tsx
+│   │   │   │   │   │   │   │   │   ├── DatabaseStep.tsx
+│   │   │   │   │   │   │   │   │   └── MappingStep.tsx
+│   │   │   │   │   │   │   │   └── useNotionWizardStore.ts
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── loading.tsx
@@ -532,6 +596,7 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── post
 │   │   │   │   │   └── [postId]
+│   │   │   │   │       ├── CommentForm.tsx
 │   │   │   │   │       ├── PostEditForm.tsx
 │   │   │   │   │       ├── PostEditToggle.tsx
 │   │   │   │   │       ├── PostPageComponent.module.scss
@@ -550,7 +615,8 @@
 │   │   │   │   │       └── page.tsx
 │   │   │   │   ├── roadmap
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── unauthorized.tsx
+│   │   │   │   ├── unauthorized.tsx
+│   │   │   │   └── upload-image.ts
 │   │   │   └── (embed)
 │   │   │       ├── EmbedThemeForcer.tsx
 │   │   │       ├── embed
@@ -647,7 +713,10 @@
 │   │   │       ├── HighlightedTextarea.module.scss
 │   │   │       ├── HighlightedTextarea.tsx
 │   │   │       ├── IconStyleJsx.tsx
-│   │   │       └── ToggleSwitchGroup.tsx
+│   │   │       ├── MarkdownEditor.module.scss
+│   │   │       ├── MarkdownEditor.tsx
+│   │   │       ├── ToggleSwitchGroup.tsx
+│   │   │       └── markdownToolbar.ts
 │   │   ├── client.ts
 │   │   ├── hooks
 │   │   │   └── useBreakpoints.ts
@@ -684,6 +753,12 @@
 │   ├── instrumentation.ts
 │   ├── lib
 │   │   ├── authBridge.ts
+│   │   ├── cron-manager
+│   │   │   ├── ICronManager.ts
+│   │   │   ├── impl
+│   │   │   │   ├── NoopCronManager.ts
+│   │   │   │   └── RouteCronManager.ts
+│   │   │   └── index.ts
 │   │   ├── db
 │   │   │   ├── prisma.ts
 │   │   │   └── redis
@@ -708,6 +783,17 @@
 │   │   │   │   └── ScalingoWildcardDomainProvider.ts
 │   │   │   └── index.ts
 │   │   ├── espaceMembre.ts
+│   │   ├── feature-flags
+│   │   │   ├── client.tsx
+│   │   │   ├── flags.ts
+│   │   │   └── index.ts
+│   │   ├── integration-provider
+│   │   │   ├── IIntegrationProvider.ts
+│   │   │   ├── encryption.ts
+│   │   │   ├── impl
+│   │   │   │   └── NotionIntegrationProvider.ts
+│   │   │   ├── index.ts
+│   │   │   └── types.ts
 │   │   ├── logger.ts
 │   │   ├── mailer.ts
 │   │   ├── matomo.ts
@@ -726,7 +812,8 @@
 │   │   ├── next-auth
 │   │   │   ├── LRUCacheAdapter.ts
 │   │   │   ├── auth.ts
-│   │   │   └── refresh.ts
+│   │   │   ├── refresh.ts
+│   │   │   └── revalidateSessionUser.ts
 │   │   ├── repo
 │   │   │   ├── IApiKeyRepo.ts
 │   │   │   ├── IAppSettingsRepo.ts
@@ -734,6 +821,9 @@
 │   │   │   ├── IBoardRepo.ts
 │   │   │   ├── ICommentRepo.ts
 │   │   │   ├── IFollowRepo.ts
+│   │   │   ├── IIntegrationMappingRepo.ts
+│   │   │   ├── IIntegrationRepo.ts
+│   │   │   ├── IIntegrationSyncLogRepo.ts
 │   │   │   ├── IInvitationRepo.ts
 │   │   │   ├── ILikeRepo.ts
 │   │   │   ├── IOAuthRepo.ts
@@ -753,6 +843,9 @@
 │   │   │   │   ├── BoardRepoPrisma.ts
 │   │   │   │   ├── CommentRepoPrisma.ts
 │   │   │   │   ├── FollowRepoPrisma.ts
+│   │   │   │   ├── IntegrationMappingRepoPrisma.ts
+│   │   │   │   ├── IntegrationRepoPrisma.ts
+│   │   │   │   ├── IntegrationSyncLogRepoPrisma.ts
 │   │   │   │   ├── InvitationRepoPrisma.ts
 │   │   │   │   ├── LikeRepoPrisma.ts
 │   │   │   │   ├── OAuthRepoPrisma.ts
@@ -772,6 +865,32 @@
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
 │   │   ├── source.ts
+│   │   ├── storage-provider
+│   │   │   ├── IStorageProvider.ts
+│   │   │   ├── impl
+│   │   │   │   ├── NoopStorageProvider.ts
+│   │   │   │   └── S3StorageProvider.ts
+│   │   │   ├── index.ts
+│   │   │   └── validation.ts
+│   │   ├── tracking-provider
+│   │   │   ├── IdentifyUser.tsx
+│   │   │   ├── TrackPageView.tsx
+│   │   │   ├── TrackingContext.tsx
+│   │   │   ├── TrackingProvider.tsx
+│   │   │   ├── factory.ts
+│   │   │   ├── index.ts
+│   │   │   ├── matomo
+│   │   │   │   ├── MatomoClient.tsx
+│   │   │   │   └── provider.ts
+│   │   │   ├── noop.ts
+│   │   │   ├── posthog
+│   │   │   │   ├── PostHogReactProvider.tsx
+│   │   │   │   ├── provider.ts
+│   │   │   │   └── server.ts
+│   │   │   ├── serverFactory.ts
+│   │   │   ├── serverTracking.ts
+│   │   │   ├── trackingPlan.ts
+│   │   │   └── types.ts
 │   │   └── utils
 │   │       ├── anonymousId
 │   │       │   ├── config.ts
@@ -798,6 +917,7 @@
 │   │       ├── react-markdown.tsx
 │   │       ├── react.ts
 │   │       ├── requestLogger.ts
+│   │       ├── sentry.ts
 │   │       ├── string.ts
 │   │       ├── tenant.ts
 │   │       ├── types.ts
@@ -824,6 +944,17 @@
 │   │   │   ├── DeleteComment.ts
 │   │   │   ├── ListCommentsForPost.ts
 │   │   │   └── UpdateComment.ts
+│   │   ├── integrations
+│   │   │   ├── CreateIntegration.ts
+│   │   │   ├── DeleteIntegration.ts
+│   │   │   ├── GetIntegrationSyncLogs.ts
+│   │   │   ├── GetNotionDatabaseSchema.ts
+│   │   │   ├── GetNotionDatabases.ts
+│   │   │   ├── ListIntegrationsForTenant.ts
+│   │   │   ├── ResolveSyncConflict.ts
+│   │   │   ├── SyncIntegration.ts
+│   │   │   ├── TestIntegrationConnection.ts
+│   │   │   └── UpdateIntegration.ts
 │   │   ├── invitations
 │   │   │   ├── ListInvitationsForTenant.ts
 │   │   │   ├── RevokeInvitation.ts
@@ -915,6 +1046,7 @@
 │   │   ├── health.spec.ts
 │   │   ├── home.spec.ts
 │   │   ├── i18n.spec.ts
+│   │   ├── legal.spec.ts
 │   │   ├── moderation.spec.ts
 │   │   ├── post.spec.ts
 │   │   ├── profile.spec.ts
@@ -935,6 +1067,14 @@
 │   │   │   ├── AddCommentToPost.test.ts
 │   │   │   └── DeleteComment.test.ts
 │   │   ├── helpers.ts
+│   │   ├── integrations
+│   │   │   ├── CreateIntegration.test.ts
+│   │   │   ├── DeleteIntegration.test.ts
+│   │   │   ├── GetIntegrationSyncLogs.test.ts
+│   │   │   ├── ListIntegrationsForTenant.test.ts
+│   │   │   ├── ResolveSyncConflict.test.ts
+│   │   │   ├── SyncIntegration.test.ts
+│   │   │   └── UpdateIntegration.test.ts
 │   │   ├── invitations
 │   │   │   ├── RevokeInvitation.test.ts
 │   │   │   └── SendInvitation.test.ts
@@ -950,26 +1090,45 @@
 │   │   │   ├── RejectPost.test.ts
 │   │   │   ├── SubmitPost.test.ts
 │   │   │   └── UpdatePostContent.test.ts
+│   │   ├── storage
+│   │   │   └── getStorageProvider.test.ts
 │   │   ├── tenant
 │   │   │   ├── CreateNewTenant.test.ts
 │   │   │   ├── DeleteTenant.test.ts
 │   │   │   ├── GetTenantForDomain.test.ts
 │   │   │   ├── SaveTenantWithSettings.test.ts
 │   │   │   └── UpdateTenantDomain.test.ts
+│   │   ├── tracking
+│   │   │   ├── serverFactory.test.ts
+│   │   │   └── serverTracking.test.ts
 │   │   └── user_on_tenant
 │   │       ├── RemoveMember.test.ts
 │   │       ├── UpdateMemberRole.test.ts
 │   │       └── UpdateMemberStatus.test.ts
 │   ├── testu
 │   │   ├── auth
-│   │   │   └── assertSession.test.ts
+│   │   │   ├── assertSession.test.ts
+│   │   │   └── revalidateSessionUser.test.ts
 │   │   ├── dns
 │   │   │   └── computeDnsNames.test.ts
+│   │   ├── editor
+│   │   │   ├── emojiSearch.test.ts
+│   │   │   └── markdownToolbar.test.ts
+│   │   ├── feature-flags
+│   │   │   ├── featureFlags.test.ts
+│   │   │   └── mergeFlags.test.ts
 │   │   ├── model
 │   │   │   └── Post.test.ts
+│   │   ├── storage
+│   │   │   ├── storageProvider.test.ts
+│   │   │   └── uploadsRoute.test.ts
+│   │   ├── tracking
+│   │   │   ├── providers.test.ts
+│   │   │   └── trackingPlan.test.ts
 │   │   ├── utils
 │   │   │   ├── date.test.ts
 │   │   │   ├── dirtyDomain.test.ts
+│   │   │   ├── encryption.test.ts
 │   │   │   ├── error.test.ts
 │   │   │   ├── function.test.ts
 │   │   │   └── string.test.ts
@@ -993,4 +1152,4 @@
 ├── vitest.config.db.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-236 directories, 803 files
+273 directories, 925 files
