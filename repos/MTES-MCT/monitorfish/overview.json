@@ -4,32 +4,34 @@
   "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé par l'administration française pour le Centre National de Surveillance des Pêches. Il vise à améliorer le suivi et le contrôle des activités de pêche.",
   "language": "JavaScript",
   "features": [
-    "Visualisation des positions des navires de pêche (VMS)",
-    "Visualisation des données d'activité de pêche (ERS et FLUX)",
-    "Vue d'ensemble de l'activité",
+    "Visualisation des positions des navires de pêche en temps réel (VMS)",
+    "Visualisation des données d'activité de pêche déclaratives (ERS et FLUX)",
+    "Aperçu synthétique de l'activité",
     "Rapports d'activité (Act-Rep)",
-    "Saisie de données des rapports d'inspection",
+    "Saisie de données de rapports d'inspection",
     "Visualisation des inspections et infractions historiques",
     "Visualisation des zones de pêche réglementées",
     "Calcul du facteur de risque des navires",
-    "Alertes de fraude en temps réel",
+    "Détection d'alertes de fraude en temps réel",
     "Vérification de la conformité des préavis de retour au port",
     "Création et partage de groupes de navires",
-    "Panneau d'administration pour la gestion des données et des paramètres"
+    "Panneau d'administration pour la gestion des réglementations et des segments de flotte"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "PostgreSQL",
+    "Keycloak",
     "Geoserver",
-    "Keycloak"
+    "Cypress",
+    "React",
+    "Webpack"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Geoserver",
-    "Keycloak"
+    "Keycloak pour l'authentification",
+    "Geoserver pour les données géospatiales"
   ],
   "auth": {
     "methods": [
@@ -45,9 +47,9 @@
     "Jest"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD workflows (GitHub Actions)"
   ],
-  "lastActivity": "2026-02-19T16:22:36+01:00",
+  "lastActivity": "2026-02-26T17:15:19+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -65,8 +67,9 @@
     "ERS",
     "réglementation",
     "fraude",
-    "contrôle",
-    "administration",
-    "géospatial"
+    "géospatial",
+    "PostgreSQL",
+    "React",
+    "JavaScript"
   ]
 }
