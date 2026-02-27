@@ -206,6 +206,7 @@
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   ├── test_add_document_rag_search_tool_from_setting.py
     │   │   │   │   │   ├── test_langfuse_tracing.py
+    │   │   │   │   │   ├── test_smart_web_search.py
     │   │   │   │   │   └── test_stream_methods.py
     │   │   │   │   └── pydantic_ui_message_converter
     │   │   │   │       ├── __init__.py
@@ -328,6 +329,7 @@
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_user_allow_conversation_analytics.py
     │   │   │   ├── 0003_alter_user_short_name.py
+    │   │   │   ├── 0004_user_allow_smart_web_search.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── permissions.py
@@ -402,13 +404,13 @@
     │   │   │   ├── .env
     │   │   │   ├── .env.development
     │   │   │   ├── .env.test
-    │   │   │   ├── .eslintrc.js
     │   │   │   ├── .gitignore
     │   │   │   ├── .prettierignore
     │   │   │   ├── README.md
     │   │   │   ├── conf
     │   │   │   │   └── default.conf
     │   │   │   ├── cunningham.ts
+    │   │   │   ├── eslint.config.mjs
     │   │   │   ├── jest
     │   │   │   │   └── mocks
     │   │   │   │       ├── ComponentMock.js
@@ -764,7 +766,6 @@
     │   │   │   ├── stylelint.config.js
     │   │   │   └── tsconfig.json
     │   │   └── e2e
-    │   │       ├── .eslintrc.js
     │   │       ├── .gitignore
     │   │       ├── __tests__
     │   │       │   ├── app-conversations
@@ -783,6 +784,7 @@
     │   │       │   │   ├── language.spec.ts
     │   │       │   │   └── left-panel.spec.ts
     │   │       │   └── helpers.ts
+    │   │       ├── eslint.config.mjs
     │   │       ├── package.json
     │   │       ├── playwright.config.ts
     │   │       ├── tsconfig.json
@@ -791,18 +793,18 @@
     │   ├── package.json
     │   ├── packages
     │   │   ├── eslint-config-conversations
-    │   │   │   ├── .eslintrc.js
-    │   │   │   ├── common.js
-    │   │   │   ├── jest.js
-    │   │   │   ├── next.js
+    │   │   │   ├── common.mjs
+    │   │   │   ├── eslint.config.mjs
+    │   │   │   ├── jest.mjs
+    │   │   │   ├── next.mjs
     │   │   │   ├── package.json
-    │   │   │   └── playwright.js
+    │   │   │   └── playwright.mjs
     │   │   └── i18n
-    │   │       ├── .eslintrc.js
     │   │       ├── .gitignore
     │   │       ├── __tests__
     │   │       │   ├── i18n.test.ts
     │   │       │   └── translations.test.ts
+    │   │       ├── eslint.config.mjs
     │   │       ├── format-deploy.mjs
     │   │       ├── i18next-parser.config.jest.mjs
     │   │       ├── i18next-parser.config.mjs
@@ -858,4 +860,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-203 directories, 657 files
+203 directories, 659 files

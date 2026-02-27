@@ -1,42 +1,40 @@
 ## Changelog : conversations (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur avec l'ajout d'un mode sombre persistant, une meilleure gestion des fichiers (notamment le support de S3 sans accès externe et un parseur PDF adaptatif) et des optimisations de performance, notamment pour le rendu du markdown en streaming. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur avec l'ajout d'un mode sombre persistant, la gestion des pièces jointes et l'optimisation de l'interface. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, notamment concernant l'affichage des messages en mode sombre, les types de fichiers et les traductions. Des améliorations techniques ont été réalisées pour optimiser les performances et la maintenance du code.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode sombre persistant, conservant le thème choisi par l'utilisateur.
-- Amélioration de la gestion des fichiers : possibilité d'utiliser le stockage S3 sans accès externe (#849).
-- Implémentation d'un parseur PDF adaptatif pour une meilleure extraction du texte et de l'OCR (#209).
-- Ajout d'une interface utilisateur (UI Kit) avec support du mode sombre (#240).
-- Amélioration de l'intégration de l'API Find avec les informations de l'utilisateur et les tags (#209).
-- Possibilité de supprimer des collections temporaires (#209).
-- Ajout d'un bouton de copie pour le code dans les messages.
-- Amélioration de l'affichage des documents PDF et standardisation de l'internationalisation.
+- Possibilité de désactiver la recherche internet automatique pour l'utilisateur. (#4545083)
+- Amélioration de la gestion des pièces jointes avec correction du type MIME pour les fichiers PPTX. (#1088d88)
+- Ajout d'un mode sombre persistant, conservant le thème choisi par l'utilisateur. (#ff9e833)
+- Implémentation de FindRagBackend pour une meilleure intégration de la recherche. (#23fa1d6)
+- Amélioration de l'intégration de l'API Find avec les informations de l'utilisateur et les tags. (#3106d5f)
+- Ajout d'un kit d'interface utilisateur (UI Kit) avec support du mode sombre. (#c231e69)
+- Possibilité d'utiliser le stockage S3 sans accès externe. (#853305a)
+- Ajout d'un bouton de copie pour le code.
+- Ajout d'outils RAG génériques pour la recherche.
 
 ### Évolutions techniques
-- Migration vers `uv` pour améliorer les performances du backend.
-- Optimisation de la taille du bundle de surlignage de syntaxe.
-- Refactorisation du service `AIAgentService` pour une meilleure lisibilité et maintenabilité.
-- Mise à jour de Django.
-- Mise à jour de Pydantic AI.
-- Mise à jour de Next.js (version 5.3.9).
-- Mise à jour de Protobuf (version 6.33.5).
-- Refactorisation des parseurs de documents.
-- Correction de problèmes de liveness et readiness pour le déploiement Helm.
-- Utilisation d'un fichier `mime.types` vendorisé pour éviter les dépendances externes.
+- Refactorisation du service AIAgentService pour une meilleure lisibilité et maintenabilité. (#ba712af)
+- Migration de ESLint vers la version 9 avec une configuration plate. (#9935335)
+- Mise à jour de plusieurs dépendances : Django, pydantic-ai, pillow, django-pydantic-field, pypdf. (#8feed1e, #61f86e1, #224e6f8)
+- Optimisation du rendu Markdown en streaming avec une division en blocs. (#af6facf)
+- Utilisation de `uv` au lieu de `pip` pour Crowdin. (#e925bff)
+- Migration vers `uv` pour une meilleure performance. (#ab2ad03)
+- Correction de l'ordre de liveness et readiness dans les déploiements Helm. (#e60c938)
+- Amélioration de la gestion des types de données pour les collections. (#c87c734)
+- Refactorisation des parsers de documents. (#1c573ad)
+- Optimisation de la taille du bundle de surlignage de syntaxe. (#23964cb)
 
 ### Autres changements
-- Mise à jour des chaînes de traduction (i18n).
-- Bump de la version à 0.0.13.
-- Suppression de l'exécution de Trivy sur `yarn.lock` pour la génération de mails.
-- Correction de problèmes de compatibilité avec les prompts système auto-hébergés.
+- Mise à jour des chaînes de traduction. (#a919d9a)
+- Publication d'une nouvelle version (0.0.13). (#9506df3)
+- Correction de bugs mineurs liés à l'affichage des messages en mode sombre, aux formules mathématiques et aux traductions de la carrousel. (#2b81234, #09dceb5)
+- Correction de l'ignorance de la casse lors de la restauration par email. (#3c3eaf3)
+- Vendorisation du fichier mime.types pour une meilleure gestion des types de fichiers. (#63e0e6c)
 - Suppression de code mort et de fichiers inutilisés.
-- Correction de timeouts lors des appels d'outils.
-- Ajout de tests et corrections de bugs liés à l'internationalisation et au rendu des documents.
-- Correction de problèmes liés à l'hydratation de React et aux erreurs de rendu.
-- Passage de `UUID` à `str` pour l'identifiant utilisateur dans PostHog.
-- Correction de problèmes liés à l'envoi de types de fichiers interdits.
-- Correction de liens `target="_blank"` dans le chat.
-- Activation du tracing Langfuse avec contenu masqué.
-- Correction de l'envoi de messages longs.
-- Correction de problèmes liés à l'affichage des formules mathématiques et des carrousels.
+- Ajustement temporaire du tableau. (#5d895d1)
+- Masquage du "waffle" si le thème n'est pas français. (#96a2963)
+- Correction de l'affichage des boutons en mode sombre. (#8ed72fb)
+- Suppression de l'exécution de Trivy sur yarn.lock pour la génération de mails. (#fb297b9)
+- Mise à jour de la version de Next.js et Protobuf. (#7858476, #c02254e)
