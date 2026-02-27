@@ -78,6 +78,7 @@
 │   │   │   ├── ressourceAnnuaireSecteursActivite.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
+│   │   │   ├── ressourceExigencesNis2.ts
 │   │   │   ├── ressourceFinancement.ts
 │   │   │   ├── ressourceFinancements.ts
 │   │   │   ├── ressourceInformationsCreationCompte.ts
@@ -127,6 +128,7 @@
 │   │   │   └── rapporteEvenementVisaTelechargeDansTraqueur.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
+│   │   │   ├── EntrepotExigenceGrist.ts
 │   │   │   ├── EntrepotSessionDeGroupePostgres.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.ts
 │   │   │   ├── adaptateurAnalytique.ts
@@ -163,6 +165,8 @@
 │   │   │   ├── serviceVerificationCoherenceSecretsHachage.ts
 │   │   │   └── utilisateurBDD.ts
 │   │   ├── metier
+│   │   │   ├── EntrepotExigence.ts
+│   │   │   ├── Exigence.ts
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── entrepotFavori.ts
@@ -219,6 +223,7 @@
 │   │   │   ├── ressourceAnnuaireSecteursActivite.spec.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.spec.ts
 │   │   │   ├── ressourceAvisUtilisateur.spec.ts
+│   │   │   ├── ressourceExigencesNis2.spec.ts
 │   │   │   ├── ressourceFinancement.spec.ts
 │   │   │   ├── ressourceFinancements.spec.ts
 │   │   │   ├── ressourceInformationsCreationCompte.spec.ts
@@ -263,6 +268,7 @@
 │   │   │   ├── adaptateurHachage.spec.ts
 │   │   │   ├── adaptateurMatomo.spec.ts
 │   │   │   ├── cache.spec.ts
+│   │   │   ├── entrepotExigenceGrist.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
 │   │   │   ├── entrepotGuideGrist.spec.ts
@@ -278,6 +284,7 @@
 │   │   │   └── utilisateur.spec.ts
 │   │   ├── mockCmsCrisp.ts
 │   │   ├── persistance
+│   │   │   ├── EntrepotExigenceMemoire.ts
 │   │   │   ├── EntrepotSessionDeGroupeMemoire.ts
 │   │   │   ├── entrepotFavoriMemoire.ts
 │   │   │   ├── entrepotFinancementMemoire.ts
@@ -327,6 +334,8 @@
 │   │   ├── index.ts
 │   │   ├── styles.scss
 │   │   └── vite.d.ts
+│   ├── tests
+│   │   └── page-test-composant.html
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
@@ -791,6 +800,7 @@
 │   │   │   ├── nis2
 │   │   │   │   ├── Accordeon.svelte
 │   │   │   │   ├── DocumentationNis2.svelte
+│   │   │   │   ├── ExigencesNis2.svelte
 │   │   │   │   ├── Marelle.svelte
 │   │   │   │   ├── PageNis2.svelte
 │   │   │   │   ├── Presentation.svelte
@@ -1006,4 +1016,4 @@
     │   ├── recuperateurDAdressesDesGuides.spec.ts
     │   └── recuperateurGuide.spec.ts
     └── tsconfig.json
-156 directories, 896 files
+157 directories, 905 files

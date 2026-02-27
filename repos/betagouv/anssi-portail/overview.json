@@ -1,35 +1,34 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Ce site est le portail de l'ANSSI. Il permet de présenter les différentes solutions et informations relatives à la cybersécurité.",
+  "description": "Ce site est construit avec Jekyll et a pour objectif de fournir un portail d'information et de services de l'ANSSI. Il est en constante évolution avec de nouvelles fonctionnalités et corrections de bugs.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
     "Recherche",
     "Gestion des guides",
-    "Comparaison de guides",
     "Demande de diagnostic cyber",
     "Statistiques",
-    "Gestion des financements"
+    "Gestion des utilisateurs",
+    "Rotation de clé de chiffrement"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Jekyll",
     "React",
-    "Express",
     "PostgreSQL",
-    "Knex",
-    "jsonwebtoken",
-    "bcrypt",
-    "cors",
-    "axios",
+    "Express",
+    "knex",
+    "pnpm",
     "@lab-anssi/ui-kit"
   ],
   "components": [
     "Frontend React",
-    "API REST (Express)",
+    "API REST",
     "Base de données PostgreSQL",
-    "WebComponents",
-    "Jekyll (pour certaines parties)"
+    "Jekyll (pour le site statique)",
+    "Docker",
+    "CI/CD pipeline"
   ],
   "auth": {
     "methods": [
@@ -42,9 +41,11 @@
     "Vitest"
   ],
   "workflows": [
-    "CI/CD (via GitHub Actions)"
+    "build",
+    "test",
+    "deploy"
   ],
-  "lastActivity": "2026-02-19T15:23:30+01:00",
+  "lastActivity": "2026-02-24T10:59:32+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -55,12 +56,14 @@
     "openIssues": null
   },
   "tags": [
-    "cybersécurité",
     "ANSSI",
-    "portail",
-    "gouvernement",
-    "TypeScript",
+    "Cybersécurité",
+    "Jekyll",
     "React",
-    "PostgreSQL"
+    "TypeScript",
+    "PostgreSQL",
+    "Svelte",
+    "CI/CD",
+    "Sécurité informatique"
   ]
 }
