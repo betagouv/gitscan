@@ -1,17 +1,16 @@
 ## Changelog : idp-status-monitoring (30 derniers jours)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières des dépendances du projet, ainsi que de quelques corrections mineures concernant la version de Bun utilisée dans le Dockerfile. L'application continue de fonctionner sans interruption de service et ces changements visent à maintenir la sécurité et la stabilité du projet.
+Les dernières mises à jour de l'application idp-status-monitoring concernent principalement la mise à jour des dépendances utilisées par le projet. Ces mises à jour permettent de bénéficier des dernières corrections de bugs et améliorations de sécurité des librairies utilisées.
 
 ### Évolutions techniques
-- Mise à jour de la version de Bun utilisée dans le Dockerfile pour corriger un problème. (#31cba7e)
-- Mise à jour de l'écosystème de dépendances vers Bun. (#600ba4a)
-- Mises à jour de plusieurs actions utilisées dans les workflows CI/CD (actions/checkout, docker/metadata-action, docker/setup-buildx-action, actions/download-artifact, actions/upload-artifact). (#36, #35, #39, #38, #37)
-- Mises à jour de plusieurs dépendances : hono, @hono/zod-validator, zod, prettier, @types/bun, @types/amqplib, @tsconfig/bun. (#55, #42, #45, #46, #44, #51, #49, #50)
+- Mise à jour de la version de Hono de 4.11.7 à 4.12.0 (#52, #55, #57)
+- Mise à jour de la version de Bun (#48, #53)
+- Mise à jour des dépendances de développement :
+    - `@types/bun` (#51, #56)
+    - `@types/amqplib` (#49)
+    - `@tsconfig/bun` (#50)
+- Mise à jour des actions Docker utilisées pour le build et le login (#47, #54)
 
 ### Autres changements
-- Mises à jour mineures des dépendances de développement (@types/bun, @tsconfig/bun). (#56, #43)
-- Mise à jour de l'action docker/build-push-action. (#54)
-- Mise à jour de l'action docker/login-action. (#47)
-- Mise à jour de l'action oven/bun. (#53, #48)
-- Mise à jour de l'action oven-sh/setup-bun. (#40)
+Aucun autre changement significatif n'a été apporté durant cette période.
