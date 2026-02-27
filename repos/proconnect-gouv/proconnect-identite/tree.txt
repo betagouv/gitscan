@@ -26,6 +26,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── assets
 │   ├── README.md
 │   ├── css
@@ -219,6 +220,10 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── signup_entreprise_unipersonnelle
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── signup_from_standard_client
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -857,7 +862,7 @@
 │       │   │       ├── entreprise.api.gouv.fr
 │       │   │       │   ├── etablissements
 │       │   │       │   │   ├── 1*.json  (11 files)
-│       │   │       │   │   ├── 2*.json  (57 files)
+│       │   │       │   │   ├── 2*.json  (59 files)
 │       │   │       │   │   ├── 31723624800017.json
 │       │   │       │   │   ├── 38529030900454.json
 │       │   │       │   │   ├── 39234600300198.json
@@ -900,13 +905,15 @@
 │       │   │           │   ├── discover.page.tsx
 │       │   │           │   └── index.ts
 │       │   │           └── index.ts
-│       │   └── cli
-│       │       └── entreprise
-│       │           ├── etablissements
-│       │           │   ├── add.ts
-│       │           │   └── index.ts
-│       │           ├── index.ts
-│       │           └── options.ts
+│       │   ├── cli
+│       │   │   └── entreprise
+│       │   │       ├── etablissements
+│       │   │       │   ├── add.ts
+│       │   │       │   └── index.ts
+│       │   │       ├── index.ts
+│       │   │       └── options.ts
+│       │   └── scripts
+│       │       └── copy-json.ts
 │       ├── tests
 │       │   └── integration.test.ts
 │       ├── tsconfig.json
@@ -1100,6 +1107,7 @@
 │       │   ├── header.ejs
 │       │   ├── icon-edit-personal-info-form.ejs
 │       │   ├── notifications.ejs
+│       │   ├── organization-info-tile.ejs
 │       │   ├── password-input-messages.ejs
 │       │   ├── revoke-verification-franceconnect.ejs
 │       │   ├── side-illustration.ejs
@@ -1166,4 +1174,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-205 directories, 1039 files
+207 directories, 1047 files

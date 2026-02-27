@@ -1,6 +1,6 @@
 {
   "name": "@proconnect-gouv/proconnect.testing",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "homepage": "https://github.com/proconnect-gouv/proconnect-identite/tree/main/packages/testing#readme",
   "bugs": "https://github.com/proconnect-gouv/proconnect-identite/issues",
   "repository": {
@@ -15,10 +15,21 @@
     "#src/*": "./src/*/index.ts"
   },
   "exports": {
-    "./*": "./src/*/index.ts"
+    "./*": {
+      "require": "./dist/*/index.js",
+      "import": "./dist/*/index.js",
+      "types": "./dist/*/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*/index.d.ts"
+      ]
+    }
   },
   "scripts": {
-    "build": "tsc --build tsconfig.lib.json",
+    "build": "tsc --build tsconfig.lib.json && node dist/scripts/copy-json.js",
     "dev:test": "tsx --watch --test src/**/*.test.ts tests/**/*.test.ts",
     "test": "npm run test:unit",
     "test:unit": "tsx --test --test-reporter=spec src/**/*.test.ts tests/**/*.test.ts"
@@ -27,7 +38,7 @@
     "@hono/node-server": "^1.19.7",
     "@hono/zod-validator": "^0.7.2",
     "@proconnect-gouv/proconnect.api_entreprise": "1.1.1",
-    "hono": "^4.11.7"
+    "hono": "^4.11.10"
   },
   "devDependencies": {
     "@proconnect-gouv/proconnect.devtools.typescript": "1.0.0",

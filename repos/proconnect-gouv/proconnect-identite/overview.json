@@ -6,43 +6,48 @@
   "features": [
     "Authentification utilisateur",
     "Gestion des organisations",
-    "Modération",
     "Intégration FranceConnect",
-    "Gestion des utilisateurs"
+    "Vérification d'identité",
+    "Gestion des rôles et permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
     "PostgreSQL",
     "Redis",
+    "Node.js",
+    "npm",
+    "Docker",
     "oidc-provider",
-    "nodemailer",
+    "zod",
     "axios"
   ],
   "components": [
-    "Frontend React",
+    "Frontend React (implicite)",
     "API REST",
     "Base de données PostgreSQL",
-    "Microservices",
-    "Monorepo npm workspaces"
+    "Microservices (architecture monorepo)",
+    "Serveur Express.js"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "email-password"
     ],
     "providers": [
       "FranceConnect"
     ]
   },
   "tests": [
-    "Cypress (E2E)",
-    "Jest (Unit)"
+    "Cypress (tests end-to-end)",
+    "Jest (tests unitaires)"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD (défini dans .github/workflows)",
+    "Tests automatisés",
+    "Déploiement"
   ],
-  "lastActivity": "2026-02-20T18:28:20+01:00",
+  "lastActivity": "2026-02-26T16:54:04+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -54,12 +59,12 @@
   },
   "tags": [
     "OpenID Connect",
-    "Identity Provider",
+    "Authentification",
+    "Identité numérique",
     "ProConnect",
     "FranceConnect",
-    "Authentication",
-    "Authorization",
     "TypeScript",
-    "Node.js"
+    "Node.js",
+    "Microservices"
   ]
 }
