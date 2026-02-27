@@ -1,3 +1,35 @@
+2026-02-26T14:12:57+01:00 - 8cca6fe - Elie Gavoty : fix(dataset): update uggingface_hub version
+2026-02-25T23:34:24+01:00 - a187e93 - Elie Gavoty : Merge pull request #350 from betagouv/fix/dataset-date-quality
+2026-02-25T20:40:27+01:00 - 6a4818e - Elie Gavoty : fix(dataset): simplify duckdb with cli and verification sql request
+2026-02-25T19:32:04+01:00 - daf4cce - Elie Gavoty : fix(dataset): export jsonl by chunk to avoid silent OOM kill of the process
+2026-02-25T19:31:31+01:00 - cdf4268 - Elie Gavoty : fix(dataset): ignore .tsv .jsonl dataset files
+2026-02-25T18:12:35+01:00 - 464c5d0 - Elie Gavoty : fix(dataset): fix local folder cli argument + handle ctrl+C
+2026-02-25T17:19:49+01:00 - d0c0272 - Elie Gavoty : enh(dataset): add duckdb local dataset exploration
+2026-02-25T17:16:27+01:00 - 5cac372 - Elie Gavoty : fix(dataset): git ignore dataset files
+2026-02-25T17:15:36+01:00 - 6bfaf07 - Elie Gavoty : fix(dataset): fix python import order + filter out disabled models + use utils/local_dataset folder for dry-run
+2026-02-25T12:21:46+01:00 - 8984aa0 - Axolotle : Merge pull request #333 from weblate/weblate-comparia-develop
+2026-02-25T12:19:22+01:00 - 8c71548 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-25T12:19:22+01:00 - 6ebcc24 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-25T12:13:39+01:00 - 4659957 - axolotle : refactor(back): add is_timeout info in ErrorDetails + throw err on retry if models have already been rerolled
+2026-02-25T11:55:59+01:00 - 35a15d5 - axolotle : fix(back): fix bugs in auto-swap model on first-turn timeout - Cancel pending asyncio tasks after FIRST_COMPLETED to prevent   concurrent anext() on the same generator (RuntimeError) - Preserve conv_id when swapping so conversation_pair_id stays stable   across DB upserts - Emit SSE swap event for frontend observability
+2026-02-25T11:55:25+01:00 - 6474b18 - axolotle : fix(back): retry: use conv_b.model_name instead of conv_b object
+2026-02-25T11:54:59+01:00 - a041f25 - axolotle : refactor(back): Bump API timeouts from 10s to 15s
+2026-02-25T11:49:59+01:00 - 8aeb31e - Axolotle : Merge pull request #351 from betagouv/enh-auto-swap
+2026-02-25T11:41:32+01:00 - d8bad0f - axolotle : fix(back): remove db conv try except since db errors are handle in `db()` context manager
+2026-02-25T11:41:32+01:00 - b219b4d - axolotle : chore(back): format
+2026-02-25T11:28:34+01:00 - 5f32c08 - axolotle : refactor(front): simplify model modal opening
+2026-02-25T11:18:16+01:00 - 0cbc376 - axolotle : fix(front): keep possible hash when removing locale search param
+2026-02-25T10:37:09+01:00 - 14dfd2e - Axolotle : Merge pull request #266 from ronnix/feature/open-model-from-url-hash
+2026-02-25T10:28:26+01:00 - dfc3a81 - Elie Gavoty : update models
+2026-02-25T10:28:26+01:00 - d13ce75 - Simon : Add Gemini 3.1 pro
+2026-02-25T10:09:52+01:00 - 95f3d8e - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-25T09:09:59Z - 2e03fc8 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-24T17:48:36+01:00 - 2ae6bd6 - Elie Gavoty : chore(back): update deps
+2026-02-24T17:45:58+01:00 - 597ec6e - Elie Gavoty : chore(front): update deps
+2026-02-24T17:23:42+01:00 - 5e6d03d - Elie Gavoty : fix(dataset): filter out corrupted or incoherent data from db via sql query
+2026-02-24T15:34:49+01:00 - 1b2338d - Elie Gavoty : Merge pull request #313 from betagouv/rankings-update
+2026-02-21T12:09:54+01:00 - 19ee76b - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-21T11:09:47Z - 9351389 - Simonas : i18n: updated translation for English (Weblate)
 2026-02-20T15:08:08+01:00 - 3091759 - Elie Gavoty : Merge pull request #310 from betagouv/news/arxiv-paper
 2026-02-20T15:05:44+01:00 - c7ea805 - Elie Gavoty : Merge pull request #311 from betagouv/feat/add-matrice-impact-link
 2026-02-20T15:04:49+01:00 - 14b15b1 - Simon Zilinskas : feat(footer): add link to Matrice d'impact dashboard
@@ -7,6 +39,9 @@
 2026-02-20T15:00:09+01:00 - 7e85c8b - Simon : Update README.md
 2026-02-20T15:00:09+01:00 - 12f0e3f - Simon : Update README.md
 2026-02-20T14:57:14+01:00 - 0736255 - Simon Zilinskas : feat(frontend): add Tally feedback popup on French pages
+2026-02-20T10:10:04Z - f19337a - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-20T10:09:51Z - bf021bf - Javier de la Rosa : i18n: updated translation for Norwegian Nynorsk (Weblate)
+2026-02-20T10:09:47Z - fd46d49 - Javier de la Rosa : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-19T18:29:14+01:00 - d6893af - Elie Gavoty : chore(models): update models json
 2026-02-19T18:29:14+01:00 - 8dc07ac - Simon Zilinskas : fix(streaming): read correct reasoning_content field from LiteLLM delta
 2026-02-19T18:29:14+01:00 - 71a3a8e - Elie Gavoty : fix(backend): ModuleNotFoundError: No module named 'google'
@@ -17,6 +52,10 @@
 2026-02-19T15:51:49+01:00 - 5dad018 - Elie Gavoty : devops: improve prd-local docker compose
 2026-02-19T15:51:49+01:00 - 494fa8c - Elie Gavoty : chore(backend): remove sentry test issue
 2026-02-19T15:51:49+01:00 - 0d2e558 - Elie Gavoty : fix(backend): use defaut SENTRY_ENVIRONMENT env var name to avoid magic
+2026-02-19T10:50:21+01:00 - 4c1e6e7 - Javier de la Rosa : i18n: added translation for Norwegian Nynorsk (Weblate)
+2026-02-19T10:49:15+01:00 - 0cd026b - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
+2026-02-19T10:49:10+01:00 - f0c4166 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-19T10:49:07+01:00 - 2f824bc - Javier de la Rosa : i18n: added translation for Norwegian Bokmål (Weblate)
 2026-02-18T11:36:04+01:00 - 8ee7016 - Simon Zilinskas : feat(models): add Claude Sonnet 4.6
 2026-02-16T16:43:22+01:00 - 9a80ded - Elie Gavoty : chore(models): add modified MIT license and update models
 2026-02-16T16:36:27+01:00 - fbb7f84 - Simon Zilinskas : feat(models): add Qwen 3.5 397B & MiniMax M2.5, archive older models
@@ -30,6 +69,7 @@
 2026-02-16T15:18:12+01:00 - ceb9bd6 - Elie Gavoty : Merge branch 'develop'
 2026-02-11T16:01:38+01:00 - 2e8b40b - Elie Gavoty : chore(models): regenerate models
 2026-02-11T16:01:18+01:00 - c742fe0 - Elie Gavoty : fix(modelgeneration): permit endpoint = None for archived models
+2026-02-11T07:47:28Z - 18fa8fd - github-actions[bot] : Update rankings data from build_models script
 2026-02-10T14:40:15+01:00 - 1beaa61 - Elie Gavoty : chore(env): remove sentry dsn from example env file
 2026-02-10T14:35:08+01:00 - f1e2d07 - Elie Gavoty : sentry: set default env in config.py
 2026-02-10T14:35:08+01:00 - e20edd7 - Elie Gavoty : devops: optimise docker bake and dockerfiles
@@ -344,6 +384,8 @@
 2026-01-20T16:02:03Z - 9d70c3b - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-01-20T16:01:59Z - 9223294 - Simonas : i18n: updated translation for English (Weblate)
 2026-01-20T16:01:53Z - f8bb7b7 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
+2026-01-15T16:53:07+01:00 - 0534ff2 - Ronan Amicel : fix(modeles): cleanup event listener on component destroy
+2026-01-15T12:42:47+01:00 - ed37d26 - Ronan Amicel : feat(modeles): open model info modal from URL hash
 2026-01-14T17:08:34+01:00 - 0f3f372 - Elie Gavoty : Merge pull request #264 from betagouv/rankings-update
 2026-01-14T16:21:01+01:00 - fada80d - Elie Gavoty : refacto(ranking): clarify/rename
 2026-01-14T16:03:51Z - c30037c - github-actions[bot] : Update rankings data from build_models script
