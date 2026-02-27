@@ -12,8 +12,6 @@
 │       ├── build-and-test.yml
 │       └── lint.yml
 ├── .gitignore
-├── .husky
-│   └── pre-commit
 ├── .nvmrc
 ├── .vscode
 │   ├── extensions.json
@@ -43,9 +41,9 @@
 │   │   ├── favicon.ico
 │   │   ├── index.html
 │   │   ├── logo-anct.png
-│   │   ├── logo-anct.svg
-│   │   ├── manifest.json
-│   │   └── robots.txt
+│   │   ├── logo-gouv.png
+│   │   ├── logo-projets.png
+│   │   └── manifest.json
 │   ├── src
 │   │   ├── actions
 │   │   │   ├── activities.js
@@ -112,6 +110,7 @@
 │   │   │   │   │   │   ├── CardNameEdit.jsx
 │   │   │   │   │   │   ├── CardNameEdit.module.scss
 │   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── SortableCard.jsx
 │   │   │   │   │   └── index.js
 │   │   │   │   ├── List
 │   │   │   │   │   ├── CardCreate
@@ -119,10 +118,14 @@
 │   │   │   │   │   │   ├── CardCreate.module.scss
 │   │   │   │   │   │   └── index.js
 │   │   │   │   │   ├── List.jsx
+│   │   │   │   │   ├── ListDropTarget
+│   │   │   │   │   │   ├── ListDropTarget.jsx
+│   │   │   │   │   │   └── index.js
 │   │   │   │   │   ├── ListNameEdit
 │   │   │   │   │   │   ├── ListNameEdit.jsx
 │   │   │   │   │   │   ├── ListNameEdit.module.scss
 │   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── SortableList.jsx
 │   │   │   │   │   └── index.js
 │   │   │   │   ├── ListCreate
 │   │   │   │   │   ├── ListCreate.jsx
@@ -263,10 +266,12 @@
 │   │   │   ├── BoardActionsContainer.js
 │   │   │   ├── BoardContainer.js
 │   │   │   ├── BoardListItemContainer.js
+│   │   │   ├── CardContainer.js
 │   │   │   ├── CardModalContainer.js
 │   │   │   ├── CoreContainer.js
 │   │   │   ├── HeaderRightContainer.js
 │   │   │   ├── LeftMenuContainer.js
+│   │   │   ├── ListContainer.js
 │   │   │   ├── LoginContainer.js
 │   │   │   ├── LoginWrapperContainer.js
 │   │   │   └── StaticContainer.js
@@ -699,6 +704,7 @@
 │   │   │   │   ├── show.js
 │   │   │   │   ├── update-background-image.js
 │   │   │   │   └── update.js
+│   │   │   ├── robots.js
 │   │   │   ├── show-config.js
 │   │   │   ├── tasks
 │   │   │   │   ├── create.js
@@ -849,6 +855,7 @@
 │   │   │   │   ├── search-many.js
 │   │   │   │   └── update-one.js
 │   │   │   └── utils
+│   │   │       ├── build-email-html.js
 │   │   │       ├── clear-http-only-token-cookie.js
 │   │   │       ├── create-jwt-token.js
 │   │   │       ├── get-name-from-siren.js
@@ -1017,4 +1024,4 @@
 │   └── views
 │       └── .gitkeep
 └── start.sh
-193 directories, 826 files
+193 directories, 833 files
