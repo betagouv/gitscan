@@ -1,16 +1,14 @@
 ## Changelog : docteur-proconnect (30 derniers jours)
 
 ### Résumé
-Les récentes mises à jour de Docteur ProConnect se concentrent sur la correction de bugs, l'amélioration de la stabilité des tests et la préparation d'une nouvelle version. Des ajustements ont été apportés pour corriger des erreurs dans le code et supprimer des tests automatisés défaillants.
+Les dernières mises à jour de Docteur ProConnect incluent des corrections de tests end-to-end défaillants, une simplification de la configuration en supprimant une variable d'environnement inutile, et des mises à jour de certaines dépendances pour bénéficier des dernières corrections et améliorations de sécurité.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug où `currentUrl` était utilisé avant d'être défini (#29).
-- Préparation de mises à jour pour une future publication (#36).
+- Suppression de la variable d'environnement `title` qui n'était plus utilisée (#35).
+- Correction de tests E2E défaillants (#37).
 
 ### Évolutions techniques
-- Suppression de tests E2E défaillants pour améliorer la fiabilité de la suite de tests (#37).
-- Correction de vulnérabilités identifiées par `npm audit` (#29).
-- Suppression d'une variable d'environnement inutile (`title`) (#35).
-
-### Autres changements
-- Mise à jour de la dépendance `qs` de la version 6.14.1 à la version 6.14.2 (#39).
+- Mise à jour de `express-session` de la version 1.18.2 à la version 1.19.0 (#43).
+- Mise à jour de `ejs` de la version 3.1.10 à la version 4.0.1 (#42).
+- Mise à jour de `qs` de la version 6.14.1 à la version 6.14.2 (#39, #685252b).
+- Regroupement des mises à jour de dépendances mineures et correctives pour une meilleure gestion (#40, #41).
