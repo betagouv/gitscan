@@ -1,7 +1,11 @@
-## Changelog : mes-aides-analytics (derniers 30 jours)
+## Changelog : mes-aides-analytics (30 derniers jours)
 
 ### Résumé
-Ce changelog présente une mise à jour importante des dépendances du projet, visant à assurer la sécurité et la stabilité de l'application. Cette mise à jour ne devrait pas impacter directement l'expérience utilisateur, mais contribue à maintenir la qualité du code et à prévenir d'éventuels problèmes futurs.
+Cette mise à jour apporte une amélioration de l'expérience utilisateur avec l'ajout d'un indicateur de chargement visuel. De plus, des mises à jour de dépendances ont été effectuées pour assurer la sécurité et la stabilité de l'application.
+
+### Évolutions fonctionnelles
+- Ajout d'un indicateur de chargement pour améliorer l'expérience utilisateur lors des opérations longues. (#295)
 
 ### Évolutions techniques
-- Mise à jour massive des dépendances du projet (#294)
+- Mise à jour de dépendances critiques pour corriger des vulnérabilités et améliorer la stabilité. (#297)
+- Mise à jour générale des dépendances du projet. (#294)
