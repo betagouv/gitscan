@@ -125,10 +125,6 @@
 │   │   │   ├── croix.svg
 │   │   │   ├── deconnexion.svg
 │   │   │   ├── demonstration-illustration.svg
-│   │   │   ├── eva-logo-bleu.svg
-│   │   │   ├── eva-logo-dark.svg
-│   │   │   ├── eva-logo-simple.svg
-│   │   │   ├── eva-logo.svg
 │   │   │   ├── favicon.svg
 │   │   │   ├── fleche-droite.svg
 │   │   │   ├── fleche-menu.svg
@@ -176,13 +172,17 @@
 │   │   │   ├── lien.svg
 │   │   │   ├── litteratie_anlci.svg
 │   │   │   ├── litteratie_cefr.svg
-│   │   │   ├── logo-anlci.svg
-│   │   │   ├── logo-evapro.png
-│   │   │   ├── logo-pro-connect-bg.svg
-│   │   │   ├── logo_anlci.svg
-│   │   │   ├── logo_france_relance.svg
-│   │   │   ├── logo_ministere_travail.svg
-│   │   │   ├── logo_union_europeenne.png
+│   │   │   ├── logo
+│   │   │   │   ├── anlci.svg
+│   │   │   │   ├── eva-bleu.svg
+│   │   │   │   ├── eva-dark.svg
+│   │   │   │   ├── eva-simple.svg
+│   │   │   │   ├── eva.svg
+│   │   │   │   ├── evapro.png
+│   │   │   │   ├── france_relance.svg
+│   │   │   │   ├── ministere_travail.svg
+│   │   │   │   ├── pro-connect-bg.svg
+│   │   │   │   └── union_europeenne.png
 │   │   │   ├── loupe-recherche.svg
 │   │   │   ├── numeratie_anlci.svg
 │   │   │   ├── numeratie_cefr.svg
@@ -257,6 +257,8 @@
 │   │       │   ├── _utilities.scss
 │   │       │   ├── _variables.scss
 │   │       │   ├── composants
+│   │       │   │   ├── _active_admin_blank_slate.scss
+│   │       │   │   ├── _active_admin_tableau_dsfr.scss
 │   │       │   │   ├── _alert_incomplete.scss
 │   │       │   │   ├── _alert_interpreter_resultats.scss
 │   │       │   │   ├── _autocomplete.scss
@@ -268,6 +270,7 @@
 │   │       │   │   ├── _card.scss
 │   │       │   │   ├── _card_diagnostique.scss
 │   │       │   │   ├── _card_parcours_type.scss
+│   │       │   │   ├── _card_usage.scss
 │   │       │   │   ├── _card_validation.scss
 │   │       │   │   ├── _carte_partage_code.scss
 │   │       │   │   ├── _carte_prise_en_main.scss
@@ -302,6 +305,7 @@
 │   │       │   │   ├── _rejoindre_structure.scss
 │   │       │   │   ├── _scopes.scss
 │   │       │   │   ├── _score_arrow.scss
+│   │       │   │   ├── _select2.scss
 │   │       │   │   ├── _situation_illustration.scss
 │   │       │   │   ├── _sous_competence.scss
 │   │       │   │   ├── _tableau.scss
@@ -332,7 +336,10 @@
 │   │       │   │   ├── _panels.scss
 │   │       │   │   ├── _pastille_rouge.scss
 │   │       │   │   ├── _shadows.scss
-│   │       │   │   └── _typography.scss
+│   │       │   │   ├── _typography.scss
+│   │       │   │   └── typography
+│   │       │   │       ├── _corps_de_texte.scss
+│   │       │   │       └── _titre.scss
 │   │       │   ├── pages
 │   │       │   │   ├── _actualite.scss
 │   │       │   │   ├── _actualites.scss
@@ -364,12 +371,12 @@
 │   │       │   │   │   ├── _bloc_evaluations.scss
 │   │       │   │   │   └── _dashboard.scss
 │   │       │   │   ├── evaluation
+│   │       │   │   │   ├── _index_evapro.scss
 │   │       │   │   │   └── _sidebar.scss
 │   │       │   │   ├── inscription
 │   │       │   │   │   ├── _informations_compte.scss
 │   │       │   │   │   ├── _nouveau_compte.scss
 │   │       │   │   │   ├── _recherche.scss
-│   │       │   │   │   ├── _selection_usage.scss
 │   │       │   │   │   └── _structure.scss
 │   │       │   │   ├── layouts
 │   │       │   │   │   ├── _connexion_v2.scss
@@ -388,8 +395,7 @@
 │   │       │       ├── _colors.scss
 │   │       │       ├── _fonts.scss
 │   │       │       ├── _sizes.scss
-│   │       │       ├── _spacings.scss
-│   │       │       └── _typographies.scss
+│   │       │       └── _spacings.scss
 │   │       ├── dsfr.scss
 │   │       ├── pdf
 │   │       │   ├── _fonts.scss
@@ -429,6 +435,8 @@
 │   │   ├── card_component.rb
 │   │   ├── card_diagnostique_component.html.erb
 │   │   ├── card_diagnostique_component.rb
+│   │   ├── card_usage_component.html.erb
+│   │   ├── card_usage_component.rb
 │   │   ├── carte_component.html.erb
 │   │   ├── carte_component.rb
 │   │   ├── carte_mise_en_action.html.erb
@@ -569,7 +577,6 @@
 │   │   │   ├── informations_comptes_controller.rb
 │   │   │   ├── nouveaux_comptes_controller.rb
 │   │   │   ├── recherche_structures_controller.rb
-│   │   │   ├── selection_usages_controller.rb
 │   │   │   └── structures_controller.rb
 │   │   ├── nouvelles_structures_controller.rb
 │   │   ├── pro_connect_controller.rb
@@ -912,6 +919,7 @@
 │       │   │   └── pdf.erb
 │       │   ├── comptes
 │       │   │   ├── _demande_acceptation_cgu_creation_compte.html.erb
+│       │   │   ├── _form.html.arb
 │       │   │   ├── _index.html.arb
 │       │   │   ├── _mise_en_avant_comptes_en_attente.html.erb
 │       │   │   ├── _modal_verification.html.erb
@@ -948,7 +956,6 @@
 │       │   ├── evaluations
 │       │   │   ├── _actions_et_date_creation.html.erb
 │       │   │   ├── _aller_plus_loin.erb
-│       │   │   ├── _autopositionnement.arb
 │       │   │   ├── _beneficiaire.erb
 │       │   │   ├── _bilan_evapro.erb
 │       │   │   ├── _communication_ecrite.arb
@@ -984,9 +991,14 @@
 │       │   │   ├── _referentiel_europeen.arb
 │       │   │   ├── _restitution_globale.arb
 │       │   │   ├── _restitution_globale_evapro.arb
+│       │   │   ├── _sante.arb
 │       │   │   ├── _show.html.arb
 │       │   │   ├── _suivi_accompagnement_illettrisme.erb
 │       │   │   ├── _telechargement_reponses.erb
+│       │   │   ├── index_evapro
+│       │   │   │   ├── _lien.html.erb
+│       │   │   │   ├── _sidebar_opco.html.erb
+│       │   │   │   └── _tableau.arb
 │       │   │   ├── positionnement
 │       │   │   │   └── _sous_competences.erb
 │       │   │   └── show.pdf.erb
@@ -1154,12 +1166,11 @@
 │       │   │   └── show.html.erb
 │       │   ├── recherche_structures
 │       │   │   └── show.html.erb
-│       │   ├── selection_usages
-│       │   │   └── show.html.erb
 │       │   └── structures
 │       │       ├── _form_confirmation.html.erb
 │       │       ├── _form_creer.html.erb
 │       │       ├── _form_rejoindre.html.erb
+│       │       ├── _form_usage.html.erb
 │       │       ├── _parametrage_section.html.erb
 │       │       ├── _structure_info_card.html.erb
 │       │       └── show.html.erb
@@ -1186,6 +1197,7 @@
 │           └── index.html.erb
 ├── bin
 │   ├── bundle
+│   ├── lint_locale_typography
 │   ├── postdeploy.sh
 │   ├── rails
 │   ├── rake
@@ -1212,7 +1224,9 @@
 │   │   ├── 00_openssl.rb
 │   │   ├── actions_items_sidebar.rb
 │   │   ├── active_admin.rb
+│   │   ├── active_admin_blank_slate.rb
 │   │   ├── active_admin_evapro_admin_class.rb
+│   │   ├── active_admin_index_as_table.rb
 │   │   ├── active_admin_lower_sorting.rb
 │   │   ├── active_admin_resource_selection_patch.rb
 │   │   ├── activeadmin_addons.rb
@@ -1630,6 +1644,9 @@
 │   │   ├── 20260219120001_ajoute_opco_id_aux_structures.rb
 │   │   ├── 20260219120002_migre_structure_opcos_vers_structures_opco_id.rb
 │   │   ├── 20260219120003_supprime_table_structure_opcos.rb
+│   │   ├── 20260219165557_renomme_questionnaire_autopositionnement_en_autopositionnement_sante.rb
+│   │   ├── 20260219165926_cree_questionnaire_autopositionnement.rb
+│   │   ├── 20260219170150_cree_questionnaire_sante.rb
 │   │   └── 20260220143846_ajoute_champ_url_contact_a_opcos.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -1717,7 +1734,10 @@
 │   ├── active_admin
 │   │   ├── actions_items_sidebar
 │   │   │   └── resource_extension.rb
-│   │   └── actions_items_sidebar.rb
+│   │   ├── actions_items_sidebar.rb
+│   │   └── views
+│   │       ├── blank_slate_override.rb
+│   │       └── index_as_table_override.rb
 │   ├── assets
 │   │   └── illustration.jpg
 │   ├── custom_exceptions_app_wrapper.rb
@@ -1725,6 +1745,8 @@
 │   ├── importeur_commentaires.rb
 │   ├── importeur_opcos.rb
 │   ├── importeur_telephone.rb
+│   ├── linters
+│   │   └── locale_typography.rb
 │   ├── pourcentage.rb
 │   ├── rake_logger.rb
 │   ├── sirene
@@ -1736,10 +1758,12 @@
 │       ├── donnees_socio_demographique.rake
 │       ├── evaluations.rake
 │       ├── importe.rake
+│       ├── locale_typography.rake
 │       ├── nettoyage.rake
 │       ├── reviewapp.rake
 │       ├── stats.rake
-│       └── structure.rake
+│       ├── structure.rake
+│       └── validation.rake
 ├── log
 │   └── .keep
 ├── package-lock.json
@@ -1837,6 +1861,8 @@
 │       ├── tarteaucitron.services.js
 │       └── tarteaucitron.services.min.js
 ├── scalingo.json
+├── script
+│   └── create_structure_siret_non_officiel.rb
 ├── spec
 │   ├── components
 │   │   ├── badge_component_spec.rb
@@ -2061,6 +2087,7 @@
 │   │   ├── question_spec.rb
 │   │   ├── questionnaire_question_spec.rb
 │   │   ├── questionnaire_spec.rb
+│   │   ├── recherche_structure_par_siret_spec.rb
 │   │   ├── restitution
 │   │   │   ├── avec_entrainement
 │   │   │   │   └── temps_entrainement_spec.rb
@@ -2232,4 +2259,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-312 directories, 1984 files
+317 directories, 2006 files

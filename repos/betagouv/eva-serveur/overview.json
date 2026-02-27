@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les campagnes associées.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les données associées.",
   "language": "Ruby",
   "features": [
     "Gestion des évaluations",
-    "Gestion des campagnes",
     "Espace d'administration",
     "Génération de rapports",
     "Intégration avec des services de géolocalisation",
-    "Authentification utilisateur"
+    "Authentification utilisateur",
+    "Gestion des OPCO"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,15 +20,15 @@
     "Rack",
     "Faraday",
     "aws-sdk-s3",
+    "nokogiri",
     "@gouvfr/dsfr"
   ],
   "components": [
-    "Backend Ruby on Rails",
-    "Base de données PostgreSQL",
-    "Cache Redis",
     "API REST",
-    "Interface d'administration",
-    "Intégration avec des services externes (géolocalisation, etc.)"
+    "Base de données PostgreSQL",
+    "Frontend Ruby on Rails",
+    "ActiveAdmin",
+    "DSFR (Design System Fr)"
   ],
   "auth": {
     "methods": [
@@ -36,11 +36,11 @@
     ]
   },
   "tests": [
-    "Rake spec",
+    "RSpec",
     "Guard"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-23T00:08:41+01:00",
+  "lastActivity": "2026-02-26T16:00:44+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -53,12 +53,10 @@
   "tags": [
     "Ruby on Rails",
     "PostgreSQL",
-    "Redis",
     "Administration",
     "Évaluation",
-    "Campagne",
-    "Géolocalisation",
+    "DSFR",
     "API",
-    "DSFR"
+    "OPCO"
   ]
 }
