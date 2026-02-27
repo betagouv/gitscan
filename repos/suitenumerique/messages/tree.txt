@@ -77,7 +77,6 @@
     │   ├── .pylintrc
     │   ├── Dockerfile
     │   ├── README.md
-    │   ├── __init__.py
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
@@ -137,6 +136,7 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── bucket_cors.py
+    │   │   │       ├── create_bucket.py
     │   │   │       ├── createsuperuser.py
     │   │   │       ├── delete_orphan_attachments.py
     │   │   │       ├── dns_check.py
@@ -376,47 +376,6 @@
     │   │           └── e2e_demo.py
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
-    │   ├── locale
-    │   │   ├── br_FR
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── de_DE
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── en_US
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── es_ES
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── fr_FR
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── it_IT
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── nl_NL
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── pt_PT
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   ├── ru_RU
-    │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
-    │   │   │       └── django.po
-    │   │   └── uk_UA
-    │   │       └── LC_MESSAGES
-    │   │           ├── django.mo
-    │   │           └── django.po
     │   ├── manage.py
     │   ├── messages
     │   │   ├── __init__.py
@@ -424,8 +383,8 @@
     │   │   ├── settings.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
-    │   ├── poetry.lock
     │   ├── pyproject.toml
+    │   ├── uv.lock
     │   └── worker.py
     ├── e2e
     │   ├── .dockerignore
@@ -434,10 +393,10 @@
     │   ├── README.md
     │   ├── bin
     │   │   └── backend-manage.sh
-    │   ├── compose.yaml
-    │   ├── nginx
-    │   │   ├── e2e.conf.template
+    │   ├── caddy
+    │   │   ├── Caddyfile
     │   │   └── entrypoint.sh
+    │   ├── compose.yaml
     │   ├── package-lock.json
     │   ├── package.json
     │   ├── playwright.config.ts
@@ -461,13 +420,13 @@
     │   ├── .dockerignore
     │   ├── Dockerfile
     │   ├── README.md
+    │   ├── caddy
+    │   │   └── Caddyfile
     │   ├── cunningham.ts
     │   ├── eslint.config.mjs
     │   ├── i18next.config.ts
     │   ├── instrumentation-client.ts
     │   ├── next.config.ts
-    │   ├── nginx
-    │   │   └── nginx.conf.template
     │   ├── orval.config.ts
     │   ├── package-lock.json
     │   ├── package.json
@@ -1173,18 +1132,18 @@
     │   │   ├── main.cf
     │   │   ├── master.cf
     │   │   └── openssl.cnf
-    │   ├── poetry.lock
     │   ├── pyproject.toml
     │   ├── src
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   └── mda.py
     │   │   └── delivery_milter.py
-    │   └── tests
-    │       ├── conftest.py
-    │       ├── test_attachments.py
-    │       ├── test_email_delivery.py
-    │       └── test_smtp_protocol.py
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── test_attachments.py
+    │   │   ├── test_email_delivery.py
+    │   │   └── test_smtp_protocol.py
+    │   └── uv.lock
     ├── mta-out
     │   ├── Dockerfile
     │   ├── README.md
@@ -1195,14 +1154,14 @@
     │   │   ├── master.cf
     │   │   └── sasl
     │   │       └── smtpd.conf
-    │   ├── poetry.lock
     │   ├── pyproject.toml
-    │   └── tests
-    │       ├── conftest.py
-    │       ├── test_attachments.py
-    │       ├── test_email_sending.py
-    │       ├── test_message_integrity.py
-    │       └── test_smtp_auth.py
+    │   ├── tests
+    │   │   ├── conftest.py
+    │   │   ├── test_attachments.py
+    │   │   ├── test_email_sending.py
+    │   │   ├── test_message_integrity.py
+    │   │   └── test_smtp_auth.py
+    │   └── uv.lock
     └── socks-proxy
         ├── Dockerfile
         ├── README.md
@@ -1214,4 +1173,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-271 directories, 1026 files
+250 directories, 1006 files

@@ -1,47 +1,46 @@
 ## Changelog : messages (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'importation et l'exportation de boîtes aux lettres, ainsi que des optimisations de l'interface utilisateur, notamment pour l'éditeur de signature et la composition de messages. Des corrections de bugs et des améliorations de sécurité ont également été implémentées, ainsi que des améliorations de la surveillance et de la gestion des tâches en arrière-plan.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des pièces jointes, l'ajout de nouvelles fonctionnalités pour l'importation et l'exportation des boîtes aux lettres, ainsi que sur l'amélioration de la sécurité et de la performance de l'application. Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment pour l'éditeur de signature et la gestion des messages.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter une boîte aux lettres au format MBOX, avec prise en charge des libellés (#553).
-- Prise en charge de l'importation de fichiers PST et diffusion des données pour l'importation MBOX (#544).
-- Ajout d'une liste noire pour les préfixes de boîtes aux lettres personnelles (#540).
 - Ajout d'un bouton d'impression dans le menu contextuel des messages (#518).
-- Possibilité d'ajouter des images directement dans le corps des messages via l'éditeur BlockNote (#511, #81db181).
-- Ajout de la possibilité de joindre des pièces jointes lors du renvoi d'un message (#485).
-- Ajout d'une vue "Intégrations" dans les paramètres de la boîte aux lettres (#488).
-- Affichage des invitations de calendrier dans les messages (#481).
-- Ajout d'un dossier "Sortie" conditionnel (#550).
-- Amélioration de la formulation dans la boîte de sortie (#539).
-- Ajout d'une option d'autofocus dans les compositeurs de messages, modèles et signatures (#527).
-- Amélioration de l'éditeur de signature avec une disposition en plusieurs colonnes (#551).
-- Personnalisation des menus de l'éditeur et du panneau latéral (#548).
-- Utilisation du nom d'affichage pour les libellés et dépliement automatique des parents actifs (#547).
+- Ajout de la possibilité d'ajouter des images directement dans le corps des messages via l'éditeur BlockNote (#527, #81db181).
+- Ajout d'un bouton d'aide configurable dans l'en-tête (#537).
+- Ajout d'un dossier "Sortie" conditionnel (#527).
+- Amélioration de la gestion des pièces jointes : suppression des pièces jointes orphelines lors de la suppression d'un brouillon (#532).
+- Amélioration de l'interface utilisateur : utilisation du `display_name` pour les étiquettes et dépliement automatique des parents actifs (#547).
+- Ajout de la possibilité d'exporter une boîte aux lettres au format mbox, avec les étiquettes (#553).
+- Ajout du support de l'importation de fichiers PST et de la diffusion de données pour mbox (#544).
+- Ajout d'une liste noire pour les préfixes de boîtes aux lettres personnelles (#540).
+- Ajout d'une mise en page multicolonne pour l'éditeur de signature (#551).
+- Ajout d'une option d'autofocus dans les compositeurs de messages, de modèles et de signatures.
+- Ajout d'un point de terminaison d'API pour les métriques d'utilisation du stockage (#538).
 
 ### Évolutions techniques
-- Ajout du throttling des destinataires des messages sortants (#506).
-- Utilisation d'un webhook et d'une journalisation au lieu d'une pushgateway pour les auto-vérifications du MDA (#550).
-- Mise à niveau des étapes du workflow GitHub Actions (#555).
-- Ajout de la prise en charge de la plateforme ARM64 pour les builds d'images Docker (#554).
-- Activation des événements de tâches Celery pour la surveillance des workers (#549).
-- Optimisation de la sérialisation de MessageTemplate et de la gestion du corps (#545).
-- Mise à niveau de django-lasuite de 0.0.19 à 0.0.24 (#546).
-- Renforcement des contrôles DNS et ajout d'enregistrements configurables (#522).
-- Ajout de tests de fuzzing et correction de quelques cas limites dans le parser d'emails (#507).
-- Refactorisation du code des permissions pour les viewsets (#503).
-- Ajout d'une commande `worker.py` et amélioration du routage des tâches sur les queues (#504).
-- Utilisation du cache Redis pour le développement (#515).
+- Migration vers un nouveau système d'API Drive externe sans recherche d'espace de travail (#558).
+- Refactorisation du code pour remplacer l'orchestration basée sur des files d'attente par une référence de promesse asynchrone.
+- Mise à jour de Django-lasuite de 0.0.19 à 0.0.24 (#546).
+- Optimisation de la sérialisation et de la gestion du corps de MessageTemplate (#545).
+- Ajout de la prise en charge de la plateforme arm64 pour les constructions d'images Docker (#554).
+- Mise à jour des étapes des actions GitHub vers les dernières versions (#555).
+- Ajout d'événements de tâche Celery pour la surveillance des workers (#549).
+- Amélioration des tests de fuzzing et correction de quelques cas limites (#507).
+- Ajout de tests de fuzzing et correction de quelques cas limites (#507).
+- Remplacement de Nginx par Caddy pour le proxy inverse frontend et le déploiement Scalingo (#556).
+- Remplacement de MinIO par RustFS pour le stockage d'objets en développement (#556).
+- Migration de la gestion des paquets Python de Poetry à uv (#556).
+- Standardisation et renommage des cibles Makefile (#556).
+- Mise à niveau de Python vers la version 3.14 (#556).
+- Suppression des catalogues de traduction i18n Django et backend (#556).
+- Ajout de la gestion des événements de tâche Celery pour la surveillance des workers (#549).
 
 ### Autres changements
-- Correction de bugs liés à la suppression d'attachments orphelins dans les brouillons (#532).
-- Correction d'un bug de positionnement du curseur dans les champs de saisie des combobox (#534).
-- Configuration des en-têtes Orval pour supprimer les informations de version (#530).
-- Correction de problèmes liés aux erreurs SSL et à l'échec de l'authentification (#495).
-- Ajout de protections contre les vulnérabilités XSS (#520).
-- Correction d'une fuite de mémoire lors de l'importation de fichiers MBOX volumineux (#516).
-- Correction de problèmes liés à la surcharge de la variable d'environnement Celery (#76c8dd3).
-- Correction d'un bug lié au nom par défaut des invitations .ics (#27661e7).
-- Traduction de nombreuses variantes françaises (#03387b6).
-- Mise à jour des chaînes de caractères traduites (#ee32351).
-- Bump de Keycloak vers la version 26.5.3 (#543).
+- Correction d'un problème de fuite de mémoire lors de l'importation de fichiers mbox volumineux (#516).
+- Correction d'un problème lié à la variable d'environnement qui remplaçait la valeur par défaut de Celery (#521).
+- Correction d'un problème lié au nom par défaut de "invitation.ics" pour les téléchargements d'invitations (#521).
+- Correction d'un problème lié à la suppression des pièces jointes orphelines lors de la suppression d'un brouillon (#532).
+- Correction d'un problème de position du curseur lors du clic dans un champ de saisie de la zone de combinaison (#534).
+- Mise à jour de la version de Keycloak à 26.5.3 et 26.5.4 (#543, #571).
+- Mise à jour des chaînes de traduction (#527, #1bbd86e).
+- Correction du workflow crowdin_download (#bacc012).
