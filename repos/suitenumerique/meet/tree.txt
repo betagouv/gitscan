@@ -226,6 +226,7 @@
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── invitation.py
+    │   │   │   ├── jwt_token.py
     │   │   │   ├── livekit_events.py
     │   │   │   ├── lobby.py
     │   │   │   ├── marketing.py
@@ -364,7 +365,7 @@
     │   ├── panda.config.ts
     │   ├── postcss.config.cjs
     │   ├── public
-    │   │   ├── .wellknown
+    │   │   ├── .well-known
     │   │   │   └── windows-app-web-link
     │   │   ├── android-chrome-192x192.png
     │   │   ├── android-chrome-512x512.png
@@ -717,6 +718,7 @@
     │   │   │   │   │       ├── AudioTab.tsx
     │   │   │   │   │       ├── GeneralTab.tsx
     │   │   │   │   │       ├── NotificationsTab.tsx
+    │   │   │   │   │       ├── ShortcutTab.tsx
     │   │   │   │   │       ├── TranscriptionTab.tsx
     │   │   │   │   │       ├── VideoTab.tsx
     │   │   │   │   │       └── layout
@@ -728,6 +730,12 @@
     │   │   │   │   └── type.ts
     │   │   │   ├── shortcuts
     │   │   │   │   ├── catalog.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── ShortcutBadge.tsx
+    │   │   │   │   │   └── ShortcutRow.tsx
+    │   │   │   │   ├── formatLabels.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   └── useShortcutFormatting.ts
     │   │   │   │   ├── types.ts
     │   │   │   │   ├── useKeyboardShortcuts.ts
     │   │   │   │   ├── useLongPress.ts
@@ -1047,8 +1055,15 @@
             │   ├── config.py
             │   ├── file_service.py
             │   ├── llm_service.py
+            │   ├── locales
+            │   │   ├── __init__.py
+            │   │   ├── de.py
+            │   │   ├── en.py
+            │   │   ├── fr.py
+            │   │   ├── nl.py
+            │   │   └── strings.py
             │   ├── prompt.py
             │   ├── security.py
             │   └── transcript_formatter.py
             └── main.py
-200 directories, 853 files
+203 directories, 865 files

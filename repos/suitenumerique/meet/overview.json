@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "La Suite Meet offre des performances de niveau Zoom avec une vidéo et un audio de haute qualité. Elle est entièrement auto-hébergeable et est publiée sous licence MIT, assurant un contrôle et une flexibilité complets.",
+  "description": "La Suite Meet offre des performances de niveau Zoom avec une vidéo et un audio de haute qualité. Elle est entièrement auto-hébergeable et publiée sous licence MIT, assurant un contrôle et une flexibilité complets.",
   "language": "TypeScript",
   "features": [
     "Optimisé pour la stabilité dans les grandes réunions (+100 participants)",
@@ -13,21 +13,23 @@
     "Intégration téléphonique",
     "Participation sécurisée avec authentification et contrôle d'accès robustes",
     "Style frontend personnalisable",
-    "Fonctionnalités avancées de LiveKit (détection du locuteur, simulcast, optimisations de bout en bout, abonnement sélectif, codecs SVC)"
+    "Fonctionnalités avancées LiveKit (détection du locuteur, simulcast, optimisations de bout en bout, abonnement sélectif, codecs SVC)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "LiveKit",
-    "Django Rest Framework",
+    "Django",
+    "React",
     "Vite.js",
-    "React Aria"
+    "PostgreSQL",
+    "Redis"
   ],
   "components": [
     "Frontend React",
-    "API REST",
-    "Backend Django",
+    "API REST (Django)",
+    "Base de données PostgreSQL",
     "Agents LiveKit",
-    "Base de données PostgreSQL"
+    "Microservice de résumé"
   ],
   "auth": {
     "methods": [
@@ -36,13 +38,13 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Jest"
+    "Jest",
+    "Pytest"
   ],
   "workflows": [
     "CI/CD GitHub Actions"
   ],
-  "lastActivity": "2026-02-20T18:27:17+01:00",
+  "lastActivity": "2026-02-26T18:35:15+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
