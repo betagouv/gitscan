@@ -1,19 +1,28 @@
 # Synthèse d'activité : betagouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité de l'organisation betagouv au cours des 7 derniers jours a été particulièrement riche et diversifiée. On observe une forte concentration sur l'amélioration de la qualité du code, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment dans les domaines de la gestion des données, de l'accessibilité, et de l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour significatives, comme l'API Aides Simplifiées, le site diagbruit.beta.gouv.fr, et les outils liés à Grist. Des efforts importants ont également été consacrés à la documentation et à la préparation des déploiements sur des plateformes comme Scalingo.
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble de l'organisation betagouv, avec des mises à jour significatives concernant la sécurité, les fonctionnalités et la maintenance technique. Plusieurs projets ont bénéficié d'améliorations de l'interface utilisateur, notamment sur les plateformes "eva", "france-chaleur-urbaine" et "espace-membre-next". Des efforts importants ont été déployés pour renforcer la sécurité de plusieurs applications, avec des corrections de vulnérabilités et des mises à jour de dépendances. Enfin, de nombreux projets ont bénéficié d'optimisations techniques et de corrections de bugs pour améliorer leur stabilité et leur performance.  Des projets comme "comparIA" et "agir-back" ont connu des refontes architecturales majeures.
 
 ## Sécurité
-Plusieurs projets ont bénéficié de mises à jour de sécurité, notamment `dsfr-chart` et `euphrosyne-tools-api`, avec la correction de vulnérabilités et la mise à jour de dépendances. `espace-membre-ruby` a intégré `django-axes` pour une meilleure protection contre les attaques par force brute.
+Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
+- Correction d'une vulnérabilité dans [dsfr-chart](/repos/betagouv/dsfr-chart).
+- Mise à jour de Brakeman dans [acces-cible](/repos/betagouv/acces-cible) pour corriger des vulnérabilités.
+- Renforcement de la sécurité dans [infomedicament](/repos/betagouv/infomedicament) avec l'ajout de mesures contre les abus.
+- Mise à jour de la dépendance `axios` dans [anssi-recommandations-cyber](/repos/betagouv/anssi-recommandations-cyber).
 
 ## Autres changements notables
-Plusieurs projets ont connu des refactorings importants, comme `comparIA` avec une migration vers FastAPI, `archeologia-pipeline` avec l'intégration du traitement en parallèle, et `api_gouv_swaggers` avec la suppression d'APIs obsolètes. L'intégration de nouveaux outils et technologies, comme Azure Blob Storage dans `euphrosyne-tools-api` et Deepseek OCR dans `euphrosyne`, témoigne d'une volonté d'innovation et d'amélioration continue.
+Plusieurs projets ont connu des évolutions techniques majeures :
+- Refonte de l'architecture backend de [ComparIA](/repos/betagouv/ComparIA) avec migration vers Pydantic et amélioration de la journalisation.
+- Refonte de l'infrastructure Docker de [api-subventions-asso](/repos/betagouv/api-subventions-asso).
+- Migration vers RSpec pour les tests dans [espace_membre-ruby](/repos/betagouv/espace_membre-ruby).
+- Suppression de code obsolète et refactorisation dans [dsfr-form-builder](/repos/betagouv/dsfr-form-builder).
+- Simplification du traitement des données et suppression de code obsolète dans [grist-cron-grist-to-brevo](/repos/betagouv/grist-cron-grist-to-brevo).
 
 ## Dépôts les plus actifs
-*   **aides-simplifiees-app** : Amélioration de la robustesse, corrections de bugs et mises à jour de sécurité pour la plateforme Aides Simplifiées.
-*   **diagbruit.beta.gouv.fr** : Corrections de bugs et ajout de nouvelles fonctionnalités, notamment l'intégration de Tally pour la collecte de feedback.
-*   **euphrosyne-tools-api** : Amélioration de la gestion des données avec l'intégration d'Azure Blob Storage et mises à jour de sécurité.
-*   **dsfr-chart** : Correction d'une vulnérabilité de sécurité et mise à jour des dépendances.
-*   **france-chaleur-urbaine** : Amélioration de l'expérience utilisateur et corrections de bugs sur le formulaire d'éligibilité et les fiches réseaux.
-*   **grist-core** : Amélioration de l'interface utilisateur, ajout de nouvelles fonctionnalités et traductions dans plusieurs langues.
-*   **eva** : Amélioration de l'interface utilisateur et correction de bugs graphiques.
+- [Aidants_Connect](/repos/betagouv/Aidants_Connect) : Améliorations de l'interface utilisateur et corrections de bugs.
+- [ComparIA](/repos/betagouv/ComparIA) : Refonte majeure de l'architecture backend et ajout de nouveaux modèles de langage.
+- [agir-back](/repos/betagouv/agir-back) : Préparation pour la gestion des aides vélo et mises à jour de dépendances.
+- [eva](/repos/betagouv/eva) : Amélioration de l'expérience utilisateur et correction de bugs graphiques.
+- [france-chaleur-urbaine](/repos/betagouv/france-chaleur-urbaine) : Ajout d'informations détaillées sur les médicaments et amélioration de la recherche.
+- [dsfr-form-builder](/repos/betagouv/dsfr-form-builder) : Amélioration de la documentation et des fonctionnalités.
+- [espace-membre-next](/repos/betagouv/espace-membre-next) : Amélioration de l'onboarding et correction de bugs.

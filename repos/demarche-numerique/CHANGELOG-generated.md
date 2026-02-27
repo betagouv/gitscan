@@ -1,14 +1,15 @@
 # Synthèse d'activité : demarche-numerique (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité de la semaine a été centrée sur l'amélioration de l'expérience utilisateur de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr). Des améliorations significatives ont été apportées à la gestion des RIB et à l'interface des filtres pour les instructeurs. De nouvelles fonctionnalités ont également été introduites, comme la possibilité de masquer des dossiers aux utilisateurs et la restauration de dossiers expirés, offrant ainsi plus de contrôle et de flexibilité. L'intégration de Scaleway pour l'envoi d'emails vise à améliorer la fiabilité des communications.
+L'organisation "demarche-numerique" a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et de la performance de la plateforme. Des fonctionnalités importantes ont été ajoutées pour faciliter l'administration des comptes utilisateurs et la gestion des pièces justificatives sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).  L'ajout du champ "raison sociale" pour les établissements et la modification du RIB des usagers répondent à des besoins métier spécifiques. Des optimisations significatives du traitement des images ont été réalisées, améliorant la réactivité de la plateforme pour les utilisateurs.
 
 ## Sécurité
-- Correction de problèmes de sécurité liés à l'injection de code HTML dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Amélioration de la sécurité en validant les signatures des emails Crisp ([demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr)).
 
 ## Autres changements notables
-- Intégration de Scaleway pour l'envoi d'emails dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- Optimisation des performances de l'image processing dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Remplacement de MiniMagick par ruby-vips pour le traitement des images, améliorant la performance et la fiabilité ([demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr)).
+- Optimisation du traitement des images pour réduire les temps de réponse ([demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr)).
+- Amélioration de la gestion des erreurs et des retries pour les tâches asynchrones ([demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr)).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des optimisations de performance.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Ce dépôt a été particulièrement actif avec des améliorations significatives de l'interface utilisateur, de la gestion des données et des performances de la plateforme.

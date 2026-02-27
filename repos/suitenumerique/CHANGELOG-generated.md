@@ -1,27 +1,23 @@
 # Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une période d'activité soutenue, avec des améliorations significatives apportées à plusieurs de ses applications. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités comme l'importation de calendriers ([calendars](/repos/suitenumerique/calendars)), le mode sombre persistant ([conversations](/repos/suitenumerique/conversations)), et l'importation de fichiers PST ([messages](/repos/suitenumerique/messages)). Des améliorations de sécurité ont également été apportées, notamment la correction de vulnérabilités XSS dans [projects](/repos/suitenumerique/projects) et [meet](/repos/suitenumerique/meet), ainsi que des mises à jour de dépendances pour corriger des failles de sécurité. L'accent a été mis sur la stabilisation des fonctionnalités (sortie de la version 1 de la visioconférence dans [integration](/repos/suitenumerique/integration)) et l'amélioration de la performance, en particulier dans [conversations](/repos/suitenumerique/conversations).
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités comme la duplication de sous-pages dans [docs](/repos/suitenumerique/docs) et la gestion des modèles de fichiers dans [drive](/repos/suitenumerique/drive).  Des améliorations significatives ont également été apportées à la sécurité, avec des mises à jour de dépendances et des corrections de vulnérabilités dans plusieurs dépôts, notamment [people](/repos/suitenumerique/people) et [meet](/repos/suitenumerique/meet). L'organisation a également continué à optimiser ses infrastructures et ses processus de développement, avec des migrations vers de nouveaux outils et des améliorations de la gestion des dépendances.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-- Correction d'une vulnérabilité XSS dans [projects](/repos/suitenumerique/projects).
-- Correction d'une vulnérabilité XSS dans [meet](/repos/suitenumerique/meet).
-- Mises à jour de dépendances pour corriger des failles de sécurité dans [people](/repos/suitenumerique/people) et [st-deploycenter](/repos/suitenumerique/st-deploycenter).
-- Mise à jour de Django et d'OpenSSL dans [meet](/repos/suitenumerique/meet) pour corriger des vulnérabilités critiques.
+- Correction de vulnérabilités critiques dans Django dans [meet](/repos/suitenumerique/meet).
+- Mise à jour de librairies vulnérables (lodash, pillow, cryptography, next) dans [people](/repos/suitenumerique/people).
+- Configuration de Nginx en front-end de Next.js avec une blocklist dynamique pour améliorer la sécurité dans [st-home](/repos/suitenumerique/st-home).
 
 ## Autres changements notables
-- Refonte de l'interface utilisateur de [calendars](/repos/suitenumerique/calendars) et ajout de nombreuses nouvelles fonctionnalités.
-- Migration vers `uv` pour améliorer les performances du backend de [conversations](/repos/suitenumerique/conversations).
-- Ajout de la variable `st_keycloak_start_command` dans [st-ansible](/repos/suitenumerique/st-ansible) pour une configuration plus flexible de Keycloak.
-- Refactorisation des résolveurs de droits dans [st-deploycenter](/repos/suitenumerique/st-deploycenter) pour une meilleure gestion des autorisations.
-- Configuration de Nginx en front-end de Next.js dans [st-home](/repos/suitenumerique/st-home) pour une meilleure performance et sécurité.
+- Migration de l'outil de gestion des dépendances de `pip` à `uv` dans plusieurs dépôts ([st-ansible](/repos/suitenumerique/st-ansible), [st-deploycenter](/repos/suitenumerique/st-deploycenter), [meet-whisperx](/repos/suitenumerique/meet-whisperx)).
+- Refonte de l'architecture frontend avec une meilleure organisation des composants et des types dans [calendars](/repos/suitenumerique/calendars).
+- Migration vers `uv` pour une meilleure performance dans plusieurs processus dans [conversations](/repos/suitenumerique/conversations).
+- Remplacement de Nginx par Caddy et de MinIO par RustFS dans [st-deploycenter](/repos/suitenumerique/st-deploycenter).
 
 ## Dépôts les plus actifs
-- [calendars](/repos/suitenumerique/calendars) : Refonte majeure de l'interface utilisateur et ajout de nombreuses nouvelles fonctionnalités pour la gestion des calendriers et des événements.
-- [conversations](/repos/suitenumerique/conversations) : Amélioration de l'expérience utilisateur avec le mode sombre persistant, une meilleure gestion des fichiers et des optimisations de performance.
-- [messages](/repos/suitenumerique/messages) : Ajout de l'importation de fichiers PST et de l'exportation de boîtes aux lettres au format MBOX.
-- [projects](/repos/suitenumerique/projects) : Ajout d'indicateurs de nombre d'éléments dans les listes et amélioration de l'assignation automatique de membres et de labels.
+- [calendars](/repos/suitenumerique/calendars) : Refonte majeure de l'interface utilisateur et ajout de nouvelles fonctionnalités comme l'importation de calendriers et le partage.
+- [drive](/repos/suitenumerique/drive) : Ajout de la création de fichiers à partir de modèles et personnalisation de l'interface.
+- [docs](/repos/suitenumerique/docs) : Ajout de la duplication de sous-pages et gestion des requêtes de réconciliation de comptes utilisateurs.
 - [meet](/repos/suitenumerique/meet) : Amélioration de l'accessibilité et correction de vulnérabilités de sécurité.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (menu contextuel, modal d'onboarding) et améliorations des composants existants.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants (ReleaseNoteModal, OnboardingModal, ContextMenu) et améliorations des composants existants.
