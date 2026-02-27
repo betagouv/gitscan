@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/monstagedeseconde",
   "name": "monstagedeseconde",
-  "description": "MonStageDeSeconde est une application web permettant de gérer les conventions de stage pour les élèves de seconde. Elle offre des fonctionnalités pour les établissements scolaires, les entreprises et les élèves.",
+  "description": "MonStageDeSeconde est une plateforme permettant de gérer les conventions de stage, facilitant les échanges entre les établissements scolaires et les entreprises. Elle vise à simplifier le processus de signature et de suivi des stages.",
   "language": "Ruby",
   "features": [
     "Gestion des conventions de stage",
@@ -9,8 +9,9 @@
     "Recherche d'offres de stage",
     "Gestion des établissements scolaires",
     "Gestion des entreprises",
-    "Suivi des candidatures",
-    "Notifications"
+    "Suivi des signatures",
+    "Notifications",
+    "Recherche d'adresses"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,32 +22,32 @@
     "Sidekiq",
     "React",
     "Turbo",
+    "Stimulus",
     "Bootstrap",
-    "Stimulus"
+    "Leaflet",
+    "Geocoder"
   ],
   "components": [
     "Backend Rails",
     "Frontend React/Turbo",
     "Base de données PostgreSQL",
     "API REST",
-    "Serveur d'applications CleverCloud"
+    "Serveur Redis",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "email-password"
     ]
   },
   "tests": [
-    "RSpec",
-    "Minitest",
+    "Unit tests",
     "System tests (Capybara)",
     "W3C validation",
-    "a11y tests (pa11y-ci)"
+    "A11y tests (pa11y-ci)"
   ],
   "workflows": [
-    "CI/CD avec CircleCI",
-    "Déploiement automatique sur CleverCloud"
+    "CI/CD with CircleCI"
   ],
   "lastActivity": "2026-02-19T15:50:19+01:00",
   "status": "active",
@@ -61,11 +62,12 @@
   "tags": [
     "stage",
     "convention",
-    "école",
-    "entreprise",
-    "Rails",
-    "Ruby",
-    "React",
-    "PostgreSQL"
+    "education",
+    "ruby",
+    "rails",
+    "react",
+    "postgresql",
+    "administration",
+    "signature électronique"
   ]
 }
