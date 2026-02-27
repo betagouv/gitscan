@@ -1,16 +1,11 @@
-## Changelog : collecte-pro (derniers 30 jours)
+## Changelog : collecte-pro (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à collecte-pro, notamment des corrections liées au captcha et à l'affichage de liens vidéo, ainsi qu'une mise à jour de la version de Django. Ces changements visent à améliorer l'expérience utilisateur et la sécurité de la plateforme.
-
-### Évolutions fonctionnelles
-- Correction du fonctionnement du captcha (#70)
-- Correction des messages d'erreur du captcha.
-- Correction de l'affichage des liens vidéo.
-- Amélioration de l'accessibilité avec l'ajout d'un captcha conforme aux normes RGAA (#70).
+Les dernières évolutions de collecte-pro se concentrent sur des modifications internes et des corrections mineures. Il n'y a pas de nouvelles fonctionnalités majeures visibles pour les utilisateurs finaux durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de Django de la version 4.2.26 à la version 4.2.27 (CP-209).
+- Merge de la pull request #71 (hbenhmida) : Intégration de modifications non spécifiées.
+- Modifications diverses (Hazem) : Plusieurs commits de modifications mineures ont été effectués par Hazem.
 
 ### Autres changements
-- Mise à jour du fichier changelog.
+Aucun autre changement significatif à signaler.
