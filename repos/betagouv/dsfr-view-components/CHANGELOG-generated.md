@@ -1,7 +1,14 @@
 ## Changelog : dsfr-view-components (30 derniers jours)
 
 ### Résumé
-Ce changelog présente une mise à jour de maintenance pour la gem dsfr-view-components. La principale évolution est la suppression d'un script de déploiement obsolète, ce qui simplifie la structure du projet et réduit les potentiels problèmes de maintenance future.
+Cette nouvelle version apporte des améliorations visuelles et de flexibilité aux composants de la bibliothèque. Une correction a été apportée à l'espacement des tuiles, et il est désormais possible de personnaliser le lien du header. Des mises à jour internes ont également été effectuées pour assurer la compatibilité avec les versions récentes de Ruby.
+
+### Évolutions fonctionnelles
+- Correction de l’espacement au sein des tuiles (#257).
+- Possibilité de modifier ou de retirer le `href` du header (#255).
 
 ### Évolutions techniques
-- Suppression du script de déploiement de la gem inutilisé (#254)
+- Mise à jour des versions de Ruby utilisées pour les tests (#256).
+
+### Autres changements
+- Publication de la version 4.1.3 et 4.1.2.
