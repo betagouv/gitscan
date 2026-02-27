@@ -93,6 +93,7 @@
         ├── cliff.toml
         ├── config
         │   ├── __init__.py
+        │   ├── app_config.py
         │   ├── exception_handler.py
         │   ├── settings
         │   │   ├── __init__.py
@@ -120,6 +121,9 @@
         │   │   ├── document_error.py
         │   │   ├── domain_errors.py
         │   │   └── offer_errors.py
+        │   ├── gateways
+        │   │   ├── __init__.py
+        │   │   └── document_gateway_interface.py
         │   ├── interfaces
         │   │   ├── __init__.py
         │   │   ├── entity_interface.py
@@ -160,6 +164,7 @@
         │       ├── localisation.py
         │       ├── ministry.py
         │       ├── nor.py
+        │       ├── opportunity_type.py
         │       ├── pdf_extractor_type.py
         │       ├── region.py
         │       ├── similarity_type.py
@@ -252,6 +257,7 @@
         │   │       │   ├── 0013_offermodel_archived_at_offermodel_processed_at.py
         │   │       │   ├── 0014_concoursmodel_archived_at_concoursmodel_processed_at.py
         │   │       │   ├── 0015_corpsmodel_archived_at_corpsmodel_processed_at.py
+        │   │       │   ├── 0016_remove_vectorizeddocumentmodel_unique_id_document_type_and_more.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
@@ -266,22 +272,15 @@
         │   ├── external_gateways
         │   │   ├── __init__.py
         │   │   ├── albert_pdf_extractor.py
-        │   │   ├── configs
-        │   │   │   ├── __init__.py
-        │   │   │   ├── albert_config.py
-        │   │   │   ├── openai_config.py
-        │   │   │   ├── pdf_extractor_config.py
-        │   │   │   ├── piste_config.py
-        │   │   │   └── talentsoft_config.py
         │   │   ├── constants
         │   │   │   ├── __init__.py
         │   │   │   └── ocr_cv_prompts.py
-        │   │   ├── document_fetcher.py
         │   │   ├── dtos
         │   │   │   ├── __init__.py
         │   │   │   ├── ingres_corps_dtos.py
         │   │   │   ├── openai_dtos.py
         │   │   │   └── talentsoft_dtos.py
+        │   │   ├── external_document_gateway.py
         │   │   ├── openai_embedding_generator.py
         │   │   ├── openai_pdf_extractor.py
         │   │   ├── piste_client.py
@@ -361,6 +360,7 @@
         │   │       │   └── _index.scss
         │   │       ├── utilities
         │   │       │   ├── _index.scss
+        │   │       │   ├── _position.scss
         │   │       │   ├── _shadow.scss
         │   │       │   ├── _text.scss
         │   │       │   └── _visibility.scss
@@ -369,12 +369,15 @@
         │   │           └── _index.scss
         │   ├── candidate
         │   │   ├── __init__.py
+        │   │   ├── filter_config.py
+        │   │   ├── formatters.py
         │   │   ├── forms
         │   │   │   ├── __init__.py
         │   │   │   ├── corps_search.py
         │   │   │   └── cv_flow.py
         │   │   ├── mappers.py
         │   │   ├── mixins.py
+        │   │   ├── types.py
         │   │   ├── urls.py
         │   │   └── views
         │   │       ├── corps_search.py
@@ -475,7 +478,8 @@
         │   │   ├── cv_metadata_factory.py
         │   │   ├── ingres_factories.py
         │   │   ├── offer_factory.py
-        │   │   └── raw_document_factory.py
+        │   │   ├── raw_document_factory.py
+        │   │   └── vectorized_document_factory.py
         │   ├── fixtures
         │   │   ├── __init__.py
         │   │   ├── candidate_fixtures.py
@@ -499,6 +503,9 @@
         │   │   │   ├── test_clean_documents_command.py
         │   │   │   ├── test_load_documents_command.py
         │   │   │   └── test_vectorize_documents_command.py
+        │   │   ├── repository
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_pgvector_repository.py
         │   │   └── unit
         │   │       ├── test_unit_clean_documents.py
         │   │       ├── test_unit_load_documents.py
@@ -523,4 +530,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-109 directories, 416 files
+110 directories, 422 files
