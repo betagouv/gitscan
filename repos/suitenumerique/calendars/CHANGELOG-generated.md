@@ -1,34 +1,29 @@
 ## Changelog : calendars (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application Calendars a bénéficié d'une refonte majeure de l'interface utilisateur, notamment au niveau de l'affichage des événements et de la gestion des calendriers. De nouvelles fonctionnalités ont été ajoutées, comme l'importation de calendriers, les liens de confirmation de participation aux invitations, et le partage de calendriers. Des améliorations significatives ont également été apportées à la compatibilité et à la performance de l'application.
+Les dernières mises à jour apportent des améliorations significatives à l'application Calendars, notamment de nouvelles fonctionnalités de partage de calendriers, l'ajout de liens de confirmation de participation (RSVP) aux invitations, et des améliorations de l'interface utilisateur pour une meilleure expérience globale. Des corrections de bugs et des optimisations techniques ont également été implémentées.
 
 ### Évolutions fonctionnelles
 - Ajout de liens de confirmation de participation (RSVP) dans les emails d'invitation (#10).
-- Possibilité de partager des calendriers avec d'autres utilisateurs.
-- Ajout d'une fonctionnalité d'importation de calendriers (#10).
-- Amélioration de l'affichage des événements et ajout de nouvelles fonctionnalités à la modale d'événement.
-- Ajout de la génération de liens de visioconférence dans les événements (#8).
-- Amélioration de l'expérience utilisateur du calendrier (Scheduler) avec une nouvelle interface et des performances optimisées.
-- Ajout d'un logo dynamique pour les calendriers.
-- Ajout d'une bannière d'accueil.
+- Implémentation du partage de calendriers avec une nouvelle interface utilisateur (#12).
+- Ajout d'une modale d'importation pour importer des événements (#10).
+- Intégration d'un bouton de visioconférence dans la modale d'événement, avec génération de lien et tests associés (#7, #8).
+- Possibilité d'afficher l'URL ICS dans les emails d'invitation.
+- Ajout d'une couleur par défaut pour les calendriers (#10).
 
 ### Évolutions techniques
-- Ajout du support de l'architecture ARM64 pour les images Docker (#11).
-- Refonte de l'architecture frontend avec une meilleure organisation des composants et des types.
-- Implémentation d'un service CalDAV pour la synchronisation avec des calendriers externes.
-- Ajout de tests Playwright et Cypress pour améliorer la qualité du code et la couverture des tests.
-- Amélioration de la gestion des timezones et correction d'un bug lié à la double conversion.
-- Ajout de plugins SabreDAV pour améliorer la compatibilité et les fonctionnalités.
-- Optimisation des requêtes à la base de données pour améliorer les performances.
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour de la configuration et des outils de développement (OpenSpec).
+- Ajout du support de l'architecture ARM64 pour les images Docker et mise à jour des étapes du workflow CI (#11).
+- Optimisation du chargement des calendriers visibles en utilisant une seule requête SQL (#10).
+- Refactorisation de la modale d'événement en composants plus petits (#7).
+- Suppression des modèles `Calendar` et `CalendarShare` (#10).
+- Amélioration du buildpack Scalingo et ajout d'un favicon dynamique (#10).
+- Correction du CI et nettoyage général du dépôt (#12).
+- Correction d'un problème de double conversion de fuseau horaire dans l'affichage du calendrier (#12).
 
 ### Autres changements
+- Réorganisation de la documentation dans le dossier `docs/`.
 - Correction de textes sur la page d'accueil.
-- Nettoyage du code et suppression de composants inutilisés.
-- Mise à jour de la documentation du projet.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Suppression de modèles de calendriers inutiles.
-- Ajout de variables d'environnement pour la configuration CalDAV.
-- Ajout de modèles d'emails pour les invitations.
+- Corrections mineures de style et de formatage dans le frontend et le backend.
+- Suppression des fichiers OpenSpec du suivi Git.
+- Mise à jour des artefacts OpenSpec pour la correction du fuseau horaire.
+- Mise à jour des compétences et commandes OpenSpec.
