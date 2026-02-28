@@ -1,3 +1,37 @@
+## [2.233.3](https://github.com/SocialGouv/domifa/compare/v2.233.2...v2.233.3) (2026-02-26)
+
+
+### Bug Fixes
+
+* **frontend:** fix update of dates ([30f4218](https://github.com/SocialGouv/domifa/commit/30f421890113c18cbed22b9a51182cbfbb46ba6f))
+
+## [2.233.2](https://github.com/SocialGouv/domifa/compare/v2.233.1...v2.233.2) (2026-02-25)
+
+
+### Bug Fixes
+
+* **frontend:** update date of end ([1a168fc](https://github.com/SocialGouv/domifa/commit/1a168fc93c05f291177984370619638a24d5f808))
+
+## [2.233.1](https://github.com/SocialGouv/domifa/compare/v2.233.0...v2.233.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* **frontend:** fix forms to check duplicates ([2b6f796](https://github.com/SocialGouv/domifa/commit/2b6f796e81290ff021e2084b101a2178abea8024))
+
+# [2.233.0](https://github.com/SocialGouv/domifa/compare/v2.232.10...v2.233.0) (2026-02-24)
+
+
+### Bug Fixes
+
+* **backend:** add label other for cerfa ([bb5734f](https://github.com/SocialGouv/domifa/commit/bb5734f927e5f26ce4a15582f973a0fedb06b054))
+
+
+### Features
+
+* **backend:** refactor cron, add sentry monitoring, add data from 'MSS' ([adf9625](https://github.com/SocialGouv/domifa/commit/adf9625ea4261f5dd3b90bf39c2ebb6d22335005))
+* **frontend:** update docs, add popups ([e36a138](https://github.com/SocialGouv/domifa/commit/e36a138dfe8323c6cd9ba656ecee8af1400b0f37))
+
 ## [2.232.10](https://github.com/SocialGouv/domifa/compare/v2.232.9...v2.232.10) (2026-01-29)
 
 

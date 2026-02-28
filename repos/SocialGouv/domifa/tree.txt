@@ -127,6 +127,7 @@
 │   │   ├── .eslintrc.json
 │   │   ├── .gitignore
 │   │   ├── .prettierignore
+│   │   ├── CRON.md
 │   │   ├── Dockerfile
 │   │   ├── jest.config.js
 │   │   ├── nest-cli.json
@@ -250,6 +251,9 @@
 │   │   │   │   ├── 1766362260648-manual-migration.ts
 │   │   │   │   ├── 1766509336146-auto-migration.ts
 │   │   │   │   ├── 1766509465298-auto-migration.ts
+│   │   │   │   ├── 1771881532113-auto-migration.ts
+│   │   │   │   ├── 1772055733959-manual-migration.ts
+│   │   │   │   ├── 1772055733961-manual-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -592,6 +596,7 @@
 │   │   │   │   │   │   ├── getDomicilieSegment.ts
 │   │   │   │   │   │   ├── getStructureType.ts
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── mapMssTypeToStructureType.ts
 │   │   │   │   │   │   └── tests
 │   │   │   │   │   │       ├── STRUCTURE_NAMES.const.ts
 │   │   │   │   │   │       └── getStructureType.spec.ts
@@ -611,6 +616,7 @@
 │   │   │   │   │       └── import-data
 │   │   │   │   │           ├── load-data-inclusion.ts
 │   │   │   │   │           ├── load-domifa.ts
+│   │   │   │   │           ├── load-mss.ts
 │   │   │   │   │           └── load-soliguide.ts
 │   │   │   │   ├── portail-admin
 │   │   │   │   │   ├── constants
@@ -1615,15 +1621,25 @@
 │   │   │   │   │   │   │   │   ├── plan-site.component.spec.ts
 │   │   │   │   │   │   │   │   └── plan-site.component.ts
 │   │   │   │   │   │   │   ├── static-modals
+│   │   │   │   │   │   │   │   ├── app-tour-modal
+│   │   │   │   │   │   │   │   │   ├── app-tour-modal.component.css
+│   │   │   │   │   │   │   │   │   ├── app-tour-modal.component.html
+│   │   │   │   │   │   │   │   │   ├── app-tour-modal.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── app-tour-modal.component.ts
 │   │   │   │   │   │   │   │   ├── help-modal
 │   │   │   │   │   │   │   │   │   ├── help-modal.component.css
 │   │   │   │   │   │   │   │   │   ├── help-modal.component.html
 │   │   │   │   │   │   │   │   │   ├── help-modal.component.spec.ts
 │   │   │   │   │   │   │   │   │   └── help-modal.component.ts
-│   │   │   │   │   │   │   │   └── idle-manager
-│   │   │   │   │   │   │   │       ├── idle-manager.component.html
-│   │   │   │   │   │   │   │       ├── idle-manager.component.spec.ts
-│   │   │   │   │   │   │   │       └── idle-manager.component.ts
+│   │   │   │   │   │   │   │   ├── idle-manager
+│   │   │   │   │   │   │   │   │   ├── idle-manager.component.html
+│   │   │   │   │   │   │   │   │   ├── idle-manager.component.spec.ts
+│   │   │   │   │   │   │   │   │   └── idle-manager.component.ts
+│   │   │   │   │   │   │   │   └── welcome-modal
+│   │   │   │   │   │   │   │       ├── welcome-modal.component.css
+│   │   │   │   │   │   │   │       ├── welcome-modal.component.html
+│   │   │   │   │   │   │   │       ├── welcome-modal.component.spec.ts
+│   │   │   │   │   │   │   │       └── welcome-modal.component.ts
 │   │   │   │   │   │   │   └── static-pages
 │   │   │   │   │   │   │       ├── cgu
 │   │   │   │   │   │   │       │   ├── cgu.component.html
@@ -1649,7 +1665,9 @@
 │   │   │   │   │   │   ├── general.module.spec.ts
 │   │   │   │   │   │   ├── general.module.ts
 │   │   │   │   │   │   └── services
-│   │   │   │   │   │       └── general.service.ts
+│   │   │   │   │   │       ├── general.service.ts
+│   │   │   │   │   │       ├── welcome.service.spec.ts
+│   │   │   │   │   │       └── welcome.service.ts
 │   │   │   │   │   ├── import-usagers
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   └── import
@@ -2470,6 +2488,11 @@
 │   │   │   │       ├── logo-ministere.svg
 │   │   │   │       ├── logo.png
 │   │   │   │       ├── logo.svg
+│   │   │   │       ├── modals
+│   │   │   │       │   ├── admin.png
+│   │   │   │       │   ├── facteur.png
+│   │   │   │       │   ├── popup.gif
+│   │   │   │       │   └── responsable.png
 │   │   │   │       ├── portail
 │   │   │   │       │   ├── courrier.png
 │   │   │   │       │   ├── no-courrier.png
@@ -3112,4 +3135,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-697 directories, 2417 files
+700 directories, 2437 files
