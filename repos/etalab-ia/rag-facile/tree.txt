@@ -1,9 +1,11 @@
 .
+├── .config
+│   └── wt.toml
 ├── .env.example
-├── .envrc
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── build-release-asset.yml
 │       ├── check-albert-version.yml
 │       ├── check-codebase.yml
 │       ├── check-install.yml
@@ -32,13 +34,49 @@
 │   │   ├── chainlit-chat
 │   │   │   ├── .env.example
 │   │   │   ├── .env.template
-│   │   │   ├── .envrc
 │   │   │   ├── CHANGELOG.md
 │   │   │   ├── README.md
 │   │   │   ├── app.py
 │   │   │   ├── chainlit.md
+│   │   │   ├── chainlit_fr-FR.md
 │   │   │   ├── justfile
 │   │   │   ├── moon.yml
+│   │   │   ├── public
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── dsfr.min.css
+│   │   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   │   ├── dsfr.nomodule.min.js
+│   │   │   │   │   ├── favicon
+│   │   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   │   └── fonts
+│   │   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │   │   │       ├── Marianne-Light.woff
+│   │   │   │   │       ├── Marianne-Light.woff2
+│   │   │   │   │       ├── Marianne-Light_Italic.woff
+│   │   │   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │   │   │       ├── Spectral-ExtraBold.woff
+│   │   │   │   │       ├── Spectral-ExtraBold.woff2
+│   │   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │   │       └── Spectral-Regular.woff2
+│   │   │   │   ├── dsfr-init.js
+│   │   │   │   ├── dsfr-theme.css
+│   │   │   │   └── theme.json
 │   │   │   ├── pyproject.toml
 │   │   │   └── template.yml
 │   │   ├── context
@@ -109,7 +147,6 @@
 │   │   ├── reflex-chat
 │   │   │   ├── .env.example
 │   │   │   ├── .env.template
-│   │   │   ├── .envrc
 │   │   │   ├── .github
 │   │   │   │   └── workflows
 │   │   │   │       └── ci.yml
@@ -126,6 +163,20 @@
 │   │   │   │   │   └── navbar.py
 │   │   │   │   └── state.py
 │   │   │   ├── assets
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── favicon
+│   │   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   │   └── favicon.svg
+│   │   │   │   │   └── fonts
+│   │   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │   │       └── Spectral-Regular.woff2
+│   │   │   │   ├── dsfr-theme.css
 │   │   │   │   └── favicon.ico
 │   │   │   ├── docs
 │   │   │   │   └── demo.gif
@@ -185,6 +236,7 @@
 ├── .release-please-manifest.json
 ├── .vscode
 │   └── settings.json
+├── .worktreeinclude
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -196,13 +248,49 @@
 │   │   ├── .chainlit
 │   │   │   └── config.toml
 │   │   ├── .env.example
-│   │   ├── .envrc
 │   │   ├── CHANGELOG.md
 │   │   ├── README.md
 │   │   ├── app.py
 │   │   ├── chainlit.md
+│   │   ├── chainlit_fr-FR.md
 │   │   ├── justfile
 │   │   ├── moon.yml
+│   │   ├── public
+│   │   │   ├── dsfr
+│   │   │   │   ├── dsfr.min.css
+│   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   ├── dsfr.nomodule.min.js
+│   │   │   │   ├── favicon
+│   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   └── fonts
+│   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │   │       ├── Marianne-Light.woff
+│   │   │   │       ├── Marianne-Light.woff2
+│   │   │   │       ├── Marianne-Light_Italic.woff
+│   │   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │   │       ├── Spectral-ExtraBold.woff
+│   │   │   │       ├── Spectral-ExtraBold.woff2
+│   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │       └── Spectral-Regular.woff2
+│   │   │   ├── dsfr-init.js
+│   │   │   ├── dsfr-theme.css
+│   │   │   └── theme.json
 │   │   └── pyproject.toml
 │   ├── cli
 │   │   ├── .env.example
@@ -215,14 +303,6 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── commands
 │   │   │       │   ├── __init__.py
-│   │   │       │   ├── chat
-│   │   │       │   │   ├── __init__.py
-│   │   │       │   │   ├── _console.py
-│   │   │       │   │   ├── agent.py
-│   │   │       │   │   ├── init.py
-│   │   │       │   │   ├── memory.py
-│   │   │       │   │   ├── skills.py
-│   │   │       │   │   └── tools.py
 │   │   │       │   ├── collections.py
 │   │   │       │   ├── config
 │   │   │       │   │   ├── __init__.py
@@ -232,15 +312,21 @@
 │   │   │       │   │   └── validate.py
 │   │   │       │   ├── gen_template.py
 │   │   │       │   ├── generate_dataset.py
+│   │   │       │   ├── learn
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── _console.py
+│   │   │       │   │   ├── agent.py
+│   │   │       │   │   ├── init.py
+│   │   │       │   │   ├── memory.py
+│   │   │       │   │   ├── skills.py
+│   │   │       │   │   └── tools.py
 │   │   │       │   ├── providers
 │   │   │       │   │   ├── __init__.py
 │   │   │       │   │   ├── albert.py
 │   │   │       │   │   ├── document_preprocessor.py
 │   │   │       │   │   ├── letta.py
 │   │   │       │   │   └── schema.py
-│   │   │       │   ├── setup.py
-│   │   │       │   ├── uninstall.py
-│   │   │       │   └── upgrade.py
+│   │   │       │   └── setup.py
 │   │   │       ├── main.py
 │   │   │       ├── skills
 │   │   │       │   ├── explain-rag
@@ -259,20 +345,17 @@
 │   │   │           └── ragfacile.toml
 │   │   └── tests
 │   │       ├── __init__.py
-│   │       ├── test_chat.py
-│   │       ├── test_chat_init.py
-│   │       ├── test_chat_memory.py
-│   │       ├── test_chat_skills.py
-│   │       ├── test_chat_tools.py
 │   │       ├── test_document_preprocessor.py
 │   │       ├── test_generate_dataset.py
+│   │       ├── test_learn.py
+│   │       ├── test_learn_init.py
+│   │       ├── test_learn_memory.py
+│   │       ├── test_learn_skills.py
+│   │       ├── test_learn_tools.py
 │   │       ├── test_run_rag_facile.py
-│   │       ├── test_setup.py
-│   │       ├── test_uninstall.py
-│   │       └── test_upgrade.py
+│   │       └── test_setup.py
 │   └── reflex-chat
 │       ├── .env.example
-│       ├── .envrc
 │       ├── .github
 │       │   └── workflows
 │       │       └── ci.yml
@@ -281,6 +364,20 @@
 │       ├── LICENSE
 │       ├── README.md
 │       ├── assets
+│       │   ├── dsfr
+│       │   │   ├── favicon
+│       │   │   │   ├── favicon.ico
+│       │   │   │   └── favicon.svg
+│       │   │   └── fonts
+│       │   │       ├── Marianne-Bold.woff
+│       │   │       ├── Marianne-Bold.woff2
+│       │   │       ├── Marianne-Medium.woff
+│       │   │       ├── Marianne-Medium.woff2
+│       │   │       ├── Marianne-Regular.woff
+│       │   │       ├── Marianne-Regular.woff2
+│       │   │       ├── Spectral-Regular.woff
+│       │   │       └── Spectral-Regular.woff2
+│       │   ├── dsfr-theme.css
 │       │   └── favicon.ico
 │       ├── docs
 │       │   └── demo.gif
@@ -311,7 +408,8 @@
 │   │   ├── proxy-setup.md
 │   │   ├── rag-pipeline.md
 │   │   ├── uninstalling.md
-│   │   └── windows-setup.md
+│   │   ├── windows-setup.md
+│   │   └── worktrees.md
 │   ├── reference
 │   │   ├── components.md
 │   │   ├── rag-science.md
@@ -461,19 +559,37 @@
 │   │   └── tests
 │   │       ├── conftest.py
 │   │       └── test_retriever.py
-│   └── storage
+│   ├── storage
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── rag_facile
+│   │   │       ├── __init__.py
+│   │   │       └── storage
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           └── albert.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_albert.py
+│   └── tracing
 │       ├── README.md
 │       ├── pyproject.toml
 │       ├── src
 │       │   └── rag_facile
 │       │       ├── __init__.py
-│       │       └── storage
+│       │       └── tracing
 │       │           ├── __init__.py
 │       │           ├── _base.py
-│       │           └── albert.py
+│       │           ├── _models.py
+│       │           ├── noop.py
+│       │           └── sqlite.py
 │       └── tests
-│           ├── conftest.py
-│           └── test_albert.py
+│           ├── __init__.py
+│           ├── test_init.py
+│           ├── test_models.py
+│           ├── test_noop.py
+│           └── test_sqlite.py
 ├── pyproject.toml
 ├── ragfacile.toml
 ├── release-please-config.json
@@ -483,9 +599,10 @@
 │   ├── fiche_14_vademecum_kit_elections_2014_v2_18.02.14.pdf
 │   └── service_dag_2023-2024.pdf
 ├── tools
+│   ├── build_release_asset.py
 │   ├── generate_templates.py
 │   ├── moon.yml
 │   ├── pyproject.toml
 │   └── uv.lock
 └── uv.lock
-134 directories, 356 files
+154 directories, 453 files
