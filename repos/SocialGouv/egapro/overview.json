@@ -1,40 +1,45 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "EgaPro est un index de l'égalité professionnelle femmes-hommes. Il permet de calculer et de visualiser cet indicateur pour les entreprises.",
+  "description": "EgaPro est une plateforme gouvernementale pour la déclaration de l'index de l'égalité professionnelle femmes-hommes, en application de la directive européenne sur la transparence salariale. Elle permet aux entreprises de mesurer et déclarer les écarts de rémunération entre les femmes et les hommes.",
   "language": "TypeScript",
   "features": [
-    "Calcul de l'index de l'égalité professionnelle",
-    "Visualisation des résultats",
-    "Gestion des données de l'entreprise",
-    "Simulation",
-    "Accès aux informations sur les entreprises"
+    "Déclaration des indicateurs",
+    "Gestion des brouillons",
+    "Validation des données",
+    "Seconde déclaration (indicateur G)",
+    "Avis du CSE",
+    "Consultation publique"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Next.js",
     "PostgreSQL",
-    "Docker",
-    "pnpm"
+    "Drizzle ORM",
+    "ProConnect",
+    "DSFR"
   ],
   "components": [
-    "Frontend React",
+    "Frontend Next.js",
     "API REST",
     "Base de données PostgreSQL",
-    "Docker"
+    "Authentification ProConnect"
   ],
   "auth": {
     "methods": [
       "oauth2"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
-    "Jest",
-    "Vitest",
-    "Cypress",
-    "Playwright"
+    "Tests unitaires",
+    "Tests E2E Playwright",
+    "Audit Lighthouse"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD GitHub Actions"
   ],
   "lastActivity": "2024-10-21T00:00:00Z",
   "status": "active",
@@ -48,10 +53,11 @@
   },
   "tags": [
     "égalité professionnelle",
-    "index",
-    "femmes-hommes",
+    "index égalité",
+    "transparence salariale",
+    "déclaration",
+    "gouvernement",
     "TypeScript",
-    "React",
-    "PostgreSQL"
+    "Next.js"
   ]
 }

@@ -58,7 +58,6 @@
 │   └── values.yaml
 ├── .nvmrc
 ├── .releaserc.json
-├── AGENTS.MD
 ├── CHANGELOG.md
 ├── CLAUDE.md
 ├── LICENSE
@@ -70,16 +69,40 @@
 │       ├── .env.example
 │       ├── .gitignore
 │       ├── .lighthouserc.json
-│       ├── AGENTS.md
 │       ├── CLAUDE.md
 │       ├── Dockerfile
 │       ├── biome.jsonc
+│       ├── drizzle
+│       │   ├── 0000_fuzzy_romulus.sql
+│       │   ├── 0001_worthless_dragon_lord.sql
+│       │   ├── 0002_lean_khan.sql
+│       │   ├── 0003_absurd_komodo.sql
+│       │   ├── 0004_next_jack_murdock.sql
+│       │   └── meta
+│       │       ├── 0000_snapshot.json
+│       │       ├── 0001_snapshot.json
+│       │       ├── 0002_snapshot.json
+│       │       ├── 0003_snapshot.json
+│       │       ├── 0004_snapshot.json
+│       │       └── _journal.json
 │       ├── drizzle.config.ts
 │       ├── next.config.js
 │       ├── package.json
 │       ├── playwright.config.ts
+│       ├── public
+│       │   └── assets
+│       │       └── images
+│       │           ├── error
+│       │           │   └── technical-error-illustration.svg
+│       │           ├── home
+│       │           │   ├── help-illustration.svg
+│       │           │   └── search-illustration.svg
+│       │           ├── login-illustration.svg
+│       │           └── proconnect-logo.svg
 │       ├── scripts
-│       │   └── copy-dsfr.js
+│       │   ├── copy-dsfr.js
+│       │   ├── entrypoint.sh
+│       │   └── migrate.mjs
 │       ├── sentry.client.config.ts
 │       ├── sentry.edge.config.ts
 │       ├── sentry.server.config.ts
@@ -94,56 +117,241 @@
 │       │   │   │   └── trpc
 │       │   │   │       └── [trpc]
 │       │   │   │           └── route.ts
+│       │   │   ├── declaration-remuneration
+│       │   │   │   ├── etape
+│       │   │   │   │   └── [step]
+│       │   │   │   │       ├── StepPageClient.tsx
+│       │   │   │   │       └── page.tsx
+│       │   │   │   ├── layout.tsx
+│       │   │   │   └── page.tsx
+│       │   │   ├── error.tsx
 │       │   │   ├── global-error.tsx
 │       │   │   ├── layout.tsx
 │       │   │   ├── login
+│       │   │   │   ├── LoginButton.tsx
 │       │   │   │   └── page.tsx
+│       │   │   ├── mon-espace
+│       │   │   │   └── mes-entreprises
+│       │   │   │       ├── [siren]
+│       │   │   │       │   └── page.tsx
+│       │   │   │       └── page.tsx
+│       │   │   ├── not-found.tsx
 │       │   │   └── page.tsx
 │       │   ├── e2e
-│       │   │   └── home.e2e.ts
+│       │   │   ├── declaration.e2e.ts
+│       │   │   ├── error-pages.e2e.ts
+│       │   │   ├── helpers
+│       │   │   │   └── login.ts
+│       │   │   ├── home.e2e.ts
+│       │   │   └── login.e2e.ts
 │       │   ├── env.js
 │       │   ├── instrumentation.ts
 │       │   ├── modules
 │       │   │   ├── analytics
 │       │   │   │   ├── MatomoAnalytics.tsx
 │       │   │   │   └── index.ts
-│       │   │   ├── home
-│       │   │   │   ├── HomePage.tsx
+│       │   │   ├── declaration-remuneration
+│       │   │   │   ├── DeclarationIntro.tsx
+│       │   │   │   ├── DeclarationLayout.tsx
+│       │   │   │   ├── MissingSiret.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── shared
+│       │   │   │   │   ├── CompanyBanner.module.scss
+│       │   │   │   │   ├── CompanyBanner.tsx
+│       │   │   │   │   ├── DataTable.tsx
+│       │   │   │   │   ├── DefinitionAccordion.tsx
+│       │   │   │   │   ├── EditDialog.module.scss
+│       │   │   │   │   ├── FormActions.module.scss
+│       │   │   │   │   ├── FormActions.tsx
+│       │   │   │   │   ├── SavedIndicator.module.scss
+│       │   │   │   │   ├── SavedIndicator.tsx
+│       │   │   │   │   ├── StepIndicator.tsx
+│       │   │   │   │   ├── TooltipButton.module.scss
+│       │   │   │   │   ├── TooltipButton.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── CompanyBanner.test.tsx
+│       │   │   │   │   │   ├── DataTable.test.tsx
+│       │   │   │   │   │   ├── FormActions.test.tsx
+│       │   │   │   │   │   ├── StepIndicator.test.tsx
+│       │   │   │   │   │   └── gapUtils.test.ts
+│       │   │   │   │   ├── common.module.scss
+│       │   │   │   │   └── gapUtils.ts
+│       │   │   │   ├── steps
+│       │   │   │   │   ├── Step1Workforce.tsx
+│       │   │   │   │   ├── Step2PayGap.module.scss
+│       │   │   │   │   ├── Step2PayGap.tsx
+│       │   │   │   │   ├── Step3VariablePay.module.scss
+│       │   │   │   │   ├── Step3VariablePay.tsx
+│       │   │   │   │   ├── Step4QuartileDistribution.module.scss
+│       │   │   │   │   ├── Step4QuartileDistribution.tsx
+│       │   │   │   │   ├── Step5EmployeeCategories.module.scss
+│       │   │   │   │   ├── Step5EmployeeCategories.tsx
+│       │   │   │   │   ├── Step6Review.module.scss
+│       │   │   │   │   ├── Step6Review.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── Step1Workforce.test.tsx
+│       │   │   │   │   │   ├── Step2PayGap.test.tsx
+│       │   │   │   │   │   ├── Step3VariablePay.test.tsx
+│       │   │   │   │   │   ├── Step4QuartileDistribution.test.tsx
+│       │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
+│       │   │   │   │   │   └── Step6Review.test.tsx
+│       │   │   │   │   ├── step3
+│       │   │   │   │   │   ├── BeneficiaryEditDialog.tsx
+│       │   │   │   │   │   ├── PayGapEditDialog.tsx
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── step4
+│       │   │   │   │   │   ├── QuartileEditDialog.tsx
+│       │   │   │   │   │   ├── QuartileTable.tsx
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── step5
+│       │   │   │   │   │   ├── CategoryDataTable.tsx
+│       │   │   │   │   │   ├── DeleteCategoryDialog.tsx
+│       │   │   │   │   │   ├── categorySerializer.ts
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   └── step6
+│       │   │   │   │       ├── CardTitle.tsx
+│       │   │   │   │       ├── GapBadge.tsx
+│       │   │   │   │       ├── GapColumn.tsx
+│       │   │   │   │       ├── GapSideBySide.tsx
+│       │   │   │   │       ├── QuartileColumn.tsx
+│       │   │   │   │       ├── SubmitModal.tsx
+│       │   │   │   │       ├── index.ts
+│       │   │   │   │       └── parseStep5Categories.ts
+│       │   │   │   └── types.ts
+│       │   │   ├── error
+│       │   │   │   ├── ErrorImage.module.scss
+│       │   │   │   ├── ErrorPage.tsx
+│       │   │   │   ├── NotFoundPage.tsx
 │       │   │   │   ├── __tests__
-│       │   │   │   │   └── HomePage.test.tsx
+│       │   │   │   │   ├── ErrorPage.test.tsx
+│       │   │   │   │   └── NotFoundPage.test.tsx
 │       │   │   │   └── index.ts
-│       │   │   └── layout
-│       │   │       ├── Footer
-│       │   │       │   ├── FooterBody.tsx
-│       │   │       │   ├── FooterBottom.tsx
-│       │   │       │   ├── FooterTopLinks.tsx
-│       │   │       │   ├── ThemeModal.tsx
-│       │   │       │   └── index.tsx
-│       │   │       ├── Header
-│       │   │       │   ├── HeaderBrand.tsx
-│       │   │       │   ├── HeaderQuickAccess.tsx
-│       │   │       │   ├── MobileMenu.tsx
-│       │   │       │   ├── Navigation.tsx
-│       │   │       │   └── index.tsx
+│       │   │   ├── home
+│       │   │   │   ├── HomeHero.module.scss
+│       │   │   │   ├── HomeHero.tsx
+│       │   │   │   ├── HomeNotice.tsx
+│       │   │   │   ├── HomePage.module.scss
+│       │   │   │   ├── HomePage.tsx
+│       │   │   │   ├── HomePlaceholder.module.scss
+│       │   │   │   ├── HomePlaceholder.tsx
+│       │   │   │   ├── HomeResources.module.scss
+│       │   │   │   ├── HomeResources.tsx
+│       │   │   │   ├── HomeSearch.module.scss
+│       │   │   │   ├── HomeSearch.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── HomeHero.test.tsx
+│       │   │   │   │   ├── HomeNotice.test.tsx
+│       │   │   │   │   ├── HomePage.test.tsx
+│       │   │   │   │   ├── HomePlaceholder.test.tsx
+│       │   │   │   │   ├── HomeResources.test.tsx
+│       │   │   │   │   └── HomeSearch.test.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── layout
+│       │   │   │   ├── Footer
+│       │   │   │   │   ├── FooterBody.tsx
+│       │   │   │   │   ├── FooterBottom.tsx
+│       │   │   │   │   ├── ThemeModal.tsx
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── Header
+│       │   │   │   │   ├── HeaderBrand.tsx
+│       │   │   │   │   ├── HeaderQuickAccess.tsx
+│       │   │   │   │   ├── MobileMenu.tsx
+│       │   │   │   │   ├── Navigation.tsx
+│       │   │   │   │   ├── UserAccountMenu.module.scss
+│       │   │   │   │   ├── UserAccountMenu.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── UserAccountMenu.test.tsx
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── shared
+│       │   │   │       ├── NavLink.tsx
+│       │   │   │       ├── NewTabNotice.tsx
+│       │   │   │       ├── SkipLinks.tsx
+│       │   │   │       └── __tests__
+│       │   │   │           ├── NavLink.test.tsx
+│       │   │   │           ├── NewTabNotice.test.tsx
+│       │   │   │           └── SkipLinks.test.tsx
+│       │   │   ├── login
+│       │   │   │   ├── LoginAccordion.module.scss
+│       │   │   │   ├── LoginAccordion.tsx
+│       │   │   │   ├── LoginForm.module.scss
+│       │   │   │   ├── LoginForm.tsx
+│       │   │   │   ├── LoginPage.module.scss
+│       │   │   │   ├── LoginPage.tsx
+│       │   │   │   ├── ProConnectButton.module.scss
+│       │   │   │   ├── ProConnectButton.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── LoginAccordion.test.tsx
+│       │   │   │   │   ├── LoginForm.test.tsx
+│       │   │   │   │   ├── LoginPage.test.tsx
+│       │   │   │   │   └── ProConnectButton.test.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── my-space
+│       │   │   │   ├── ArchivesSection.tsx
+│       │   │   │   ├── CompanyCard.tsx
+│       │   │   │   ├── CompanyCardList.tsx
+│       │   │   │   ├── CompanyDeclarationsPage.tsx
+│       │   │   │   ├── CompanyInfoBanner.module.scss
+│       │   │   │   ├── CompanyInfoBanner.tsx
+│       │   │   │   ├── CompanyListHeader.tsx
+│       │   │   │   ├── CompanyTable.tsx
+│       │   │   │   ├── DeclarationLink.tsx
+│       │   │   │   ├── DeclarationStepLabel.ts
+│       │   │   │   ├── DeclarationsSection.tsx
+│       │   │   │   ├── MissingInfoModal.tsx
+│       │   │   │   ├── MyCompaniesPage.tsx
+│       │   │   │   ├── StatusBadge.tsx
+│       │   │   │   ├── ViewToggle.tsx
+│       │   │   │   ├── WelcomeBanner.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── ArchivesSection.test.tsx
+│       │   │   │   │   ├── CompanyCard.test.tsx
+│       │   │   │   │   ├── CompanyCardList.test.tsx
+│       │   │   │   │   ├── CompanyDeclarationsPage.test.tsx
+│       │   │   │   │   ├── CompanyInfoBanner.test.tsx
+│       │   │   │   │   ├── CompanyListHeader.test.tsx
+│       │   │   │   │   ├── CompanyTable.test.tsx
+│       │   │   │   │   ├── DeclarationLink.test.tsx
+│       │   │   │   │   ├── DeclarationStepLabel.test.ts
+│       │   │   │   │   ├── DeclarationsSection.test.tsx
+│       │   │   │   │   ├── MyCompaniesPage.test.tsx
+│       │   │   │   │   ├── StatusBadge.test.tsx
+│       │   │   │   │   ├── ViewToggle.test.tsx
+│       │   │   │   │   ├── WelcomeBanner.test.tsx
+│       │   │   │   │   ├── buildDeclarationList.test.ts
+│       │   │   │   │   └── formatSiren.test.ts
+│       │   │   │   ├── buildDeclarationList.ts
+│       │   │   │   ├── declarationStatus.ts
+│       │   │   │   ├── formatSiren.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── types.ts
+│       │   │   └── profile
+│       │   │       ├── ProfileModal.module.scss
+│       │   │       ├── ProfileModal.tsx
+│       │   │       ├── __tests__
+│       │   │       │   └── ProfileModal.test.tsx
 │       │   │       ├── index.ts
-│       │   │       └── shared
-│       │   │           ├── NavLink.tsx
-│       │   │           ├── NewTabNotice.tsx
-│       │   │           ├── SkipLinks.tsx
-│       │   │           └── __tests__
-│       │   │               ├── NavLink.test.tsx
-│       │   │               ├── NewTabNotice.test.tsx
-│       │   │               └── SkipLinks.test.tsx
+│       │   │       └── phone.ts
 │       │   ├── server
 │       │   │   ├── api
 │       │   │   │   ├── root.ts
+│       │   │   │   ├── routers
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── company.test.ts
+│       │   │   │   │   ├── company.ts
+│       │   │   │   │   ├── declaration.ts
+│       │   │   │   │   └── profile.ts
 │       │   │   │   └── trpc.ts
 │       │   │   ├── auth
 │       │   │   │   ├── config.ts
 │       │   │   │   └── index.ts
-│       │   │   └── db
-│       │   │       ├── index.ts
-│       │   │       └── schema.ts
+│       │   │   ├── db
+│       │   │   │   ├── index.ts
+│       │   │   │   └── schema.ts
+│       │   │   └── services
+│       │   │       ├── __tests__
+│       │   │       │   └── weez.test.ts
+│       │   │       └── weez.ts
 │       │   ├── test
 │       │   │   └── setup.ts
 │       │   └── trpc
@@ -151,8 +359,8 @@
 │       │       ├── react.tsx
 │       │       └── server.ts
 │       ├── tsconfig.json
-│       ├── tsconfig.test.json
 │       └── vitest.config.ts
 ├── pnpm-lock.yaml
-└── pnpm-workspace.yaml
-40 directories, 117 files
+├── pnpm-workspace.yaml
+└── sonar-project.properties
+76 directories, 289 files

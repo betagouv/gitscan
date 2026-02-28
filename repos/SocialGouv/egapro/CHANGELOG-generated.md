@@ -1,24 +1,36 @@
 ## Changelog : egapro (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de la qualité du code, l'ajout de tests automatisés, l'optimisation des performances et la correction de bugs liés à l'authentification et à la configuration de l'environnement. Des améliorations ont également été apportées au processus de CI/CD pour garantir une meilleure qualité des déploiements.
+Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de l'expérience utilisateur avec l'ajout de nouvelles fonctionnalités comme la gestion des entreprises et du profil utilisateur, ainsi que sur l'amélioration de la robustesse de l'application avec des corrections de bugs et des améliorations de l'infrastructure CI/CD. L'authentification et la gestion des sessions ont également été optimisées.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion de l'authentification et de la sélection d'organisation, notamment en corrigeant des problèmes de redirection et de nettoyage de session. (#2796)
-- Ajout de la possibilité de se déconnecter avant de sélectionner une organisation.
-- Correction de l'affichage des cartes et des paramètres de cache. (#2776)
+- Ajout de la page "Mes entreprises" (#2850)
+- Ajout de la page "Mes déclarations" (#2852)
+- Ajout de la page "Mon profil" (#2839)
+- Ajout d'un menu dans l'espace personnel ("Mon espace") (#2833)
+- Ajout d'une page de connexion (#2823)
+- Implémentation de la déclaration (#2825)
+- Ajout des pages d'erreurs 404 et 500 (#2832)
+- Amélioration de la page d'accueil avec les retours du designer (#2831)
 
 ### Évolutions techniques
-- Mise en place d'une nouvelle version du projet. (#2797)
-- Ajout de tests Vitest avec support du DSFR pour une meilleure couverture des tests unitaires. (#2794)
-- Optimisation du temps de build Docker via le caching. (#2795)
-- Ajout de workflows GitHub Actions pour l'analyse de l'accessibilité (a11y) et l'évaluation de la qualité du code avec Claude.
-- Ajout de jobs de `review-auto` à chaque nouvelle branche pour une revue de code automatisée. (#2789)
-- Amélioration de la configuration de l'environnement de développement avec Proconnect. (#2770)
-- Ajout de Lighthouse pour vérifier la qualité des déploiements. (#2818)
-- Ajout de `lint` et `format` au processus CI pour garantir la qualité du code. (#2803)
+- Amélioration du workflow CI/CD pour la génération de rapports avec CLAUDE
+- Ajout de tests E2E pour la page de connexion (#2849)
+- Amélioration du workflow CI/CD avec l'ajout de tests d'accessibilité (a11y)
+- Ajout de workflows GitHub Actions pour l'analyse de code avec Claude
+- Optimisation du temps de build Docker via le caching (#2795)
+- Ajout de la configuration Vitest pour les tests avec DSFR (#2794)
+- Mise en place de la nouvelle version de l'application (#2797)
+- Correction de problèmes liés à l'environnement de développement ProConnect (#2770)
+- Correction de problèmes liés à la configuration de l'URL NEXTAUTH (#2796)
+- Correction de problèmes de migration Drizzle (#2819)
+- Ajout de linting et de formatage du code dans le CI/CD (#2803)
 
 ### Autres changements
-- Nettoyage des fichiers de configuration. (#2782)
-- Mise à jour des informations d'identification Proconnect. (#040a098)
-- Correction de la version de l'application (3.15.2).
+- Mise à jour de la documentation (README) (#2830)
+- Utilisation de l'anglais comme langue principale pour les noms des composants et les commentaires (#2820)
+- Nettoyage de fichiers de configuration (#2782)
+- Ajout du job `review-auto` à chaque nouvelle branche dans le CI/CD (#2789)
+- Correction de problèmes de cache et de paramètres invalides (#2776)
+- Correction d'un problème de non-diffusibilité en production (#2774)
+- Publication de la version 3.15.2 (#2774)
