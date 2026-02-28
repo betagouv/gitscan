@@ -1,0 +1,360 @@
+.
+├── .aiignore
+├── .buildpacks
+├── .github
+│   └── workflows
+│       └── django.yml
+├── .gitignore
+├── .python-version
+├── Aptfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── app
+│   ├── __init__.py
+│   ├── ai_models
+│   │   ├── __init__.py
+│   │   └── config_albert.py
+│   ├── config_data.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   └── sql
+│   │       ├── __init__.py
+│   │       └── sql.py
+│   ├── file_manager
+│   │   ├── __init__.py
+│   │   ├── cleaner.py
+│   │   ├── loader.py
+│   │   ├── statistics.py
+│   │   └── utils_file_manager.py
+│   ├── grist
+│   │   ├── __init__.py
+│   │   └── grist_api.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── marche.py
+│   │   └── tiers.py
+│   ├── processor
+│   │   ├── __init__.py
+│   │   ├── select_relevant_content.py
+│   │   └── synthesis.py
+│   └── utils.py
+├── ci.env
+├── docia
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── asgi.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   ├── backends.py
+│   │   └── views.py
+│   ├── celeryapp.py
+│   ├── celeryworker.py
+│   ├── common
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── context_processors.py
+│   ├── documents
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── file_processing
+│   │   ├── __init__.py
+│   │   ├── llm
+│   │   │   ├── __init__.py
+│   │   │   ├── client.py
+│   │   │   └── rategate
+│   │   │       ├── __init__.py
+│   │   │       ├── gate.py
+│   │   │       └── models.py
+│   │   ├── models.py
+│   │   ├── pipeline
+│   │   │   ├── __init__.py
+│   │   │   ├── pipeline.py
+│   │   │   ├── steps
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── classification.py
+│   │   │   │   ├── content_analysis.py
+│   │   │   │   ├── exceptions.py
+│   │   │   │   ├── init_documents.py
+│   │   │   │   └── text_extraction.py
+│   │   │   ├── tasks.py
+│   │   │   └── utils.py
+│   │   ├── processor
+│   │   │   ├── __init__.py
+│   │   │   ├── analyze_content.py
+│   │   │   ├── attributes
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── acte_engagement.py
+│   │   │   │   ├── att_sirene.py
+│   │   │   │   ├── avenant.py
+│   │   │   │   ├── bon_de_commande.py
+│   │   │   │   ├── ccap.py
+│   │   │   │   ├── cctp.py
+│   │   │   │   ├── devis.py
+│   │   │   │   ├── fiche_navette.py
+│   │   │   │   ├── kbis.py
+│   │   │   │   ├── rib.py
+│   │   │   │   └── sous_traitance.py
+│   │   │   ├── attributes_query.py
+│   │   │   ├── classifier.py
+│   │   │   ├── pdf_drawings.py
+│   │   │   ├── post_processing_llm.py
+│   │   │   └── text_extraction
+│   │   │       ├── __init__.py
+│   │   │       ├── text_extract_document.py
+│   │   │       ├── text_extract_excel.py
+│   │   │       └── text_extraction.py
+│   │   └── sync
+│   │       ├── __init__.py
+│   │       └── files_utils.py
+│   ├── forms.py
+│   ├── logging.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── launch_pipeline.py
+│   │       ├── shell.py
+│   │       └── sync_engagement_items.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_dataengagement_dataattachments_databatch.py
+│   │   ├── 0003_ratelimitcount.py
+│   │   ├── 0004_dataprogrammesministeriels_and_more.py
+│   │   ├── 0005_alter_user_email.py
+│   │   ├── 0006_trackingevent.py
+│   │   ├── 0007_alter_dataengagementitems_num_ej.py
+│   │   ├── 0008_dataattachments_file.py
+│   │   ├── 0009_rename_num_ej_dataengagement_ej_and_more.py
+│   │   ├── 0010_dataattachments_created_at_and_more.py
+│   │   ├── 0011_rename_dataattachments_dataattachment.py
+│   │   ├── 0012_alter_trackingevent_id_alter_user_id.py
+│   │   ├── 0013_batch_jobs_steps.py
+│   │   ├── 0014_processdocumentbatch_target_classifications_and_more.py
+│   │   ├── 0015_processdocumentbatch_retry_of.py
+│   │   ├── 0016_processdocumentbatch_steps_processdocumentstep_order.py
+│   │   ├── 0017_rategatestate.py
+│   │   ├── 0018_rename_dataattachment_document_and_more.py
+│   │   ├── 0019_add_document_structured_data_and_rename_infoextraction_to_contentanaltsis.py
+│   │   ├── 0020_remove_document_json_error.py
+│   │   ├── 0021_engagementscope.py
+│   │   ├── 0022_document_engagements.py
+│   │   ├── 0023_auto_20260209_1747.py
+│   │   ├── 0024_remove_document_ej.py
+│   │   ├── 0025_remove_fileinfo_num_ej_alter_document_dossier_and_more.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── permissions
+│   │   ├── __init__.py
+│   │   ├── checks.py
+│   │   └── models.py
+│   ├── ratelimit
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   └── services.py
+│   ├── settings.py
+│   ├── sync
+│   │   ├── __init__.py
+│   │   ├── s3.py
+│   │   └── sync_engagement_items.py
+│   ├── tasks.py
+│   ├── templates
+│   │   └── docia
+│   │       ├── auth
+│   │       │   └── login.html
+│   │       ├── base.html
+│   │       ├── blocks
+│   │       │   ├── button_copy.html
+│   │       │   ├── footer.html
+│   │       │   └── header.html
+│   │       ├── details_ej
+│   │       │   ├── blocks
+│   │       │   │   └── attribute.html
+│   │       │   └── documents
+│   │       │       ├── acte_engagement
+│   │       │       │   └── document_acte_engagement.html
+│   │       │       ├── ccap
+│   │       │       │   ├── ccap_lot.html
+│   │       │       │   └── document_ccap.html
+│   │       │       ├── default
+│   │       │       │   └── document_default.html
+│   │       │       ├── document.html
+│   │       │       ├── fiche_navette
+│   │       │       │   └── document_fiche_navette.html
+│   │       │       └── rib
+│   │       │           └── document_rib.html
+│   │       ├── email_base.html
+│   │       └── home.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   └── docia.py
+│   ├── tracking
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── docker
+│   ├── Dockerfile-githubactions
+│   └── Dockerfile-scalingo
+├── docker-compose.yml
+├── example.env
+├── gunicorn_conf.py
+├── manage.py
+├── poetry.lock
+├── pyproject.toml
+├── scripts
+│   ├── from_scalingo_to_local_sql.py
+│   └── maj_grist_from_scalingo.py
+├── static
+│   ├── css
+│   │   └── main.css
+│   └── js
+│       └── clipboard.js
+├── test.env
+├── tests
+│   ├── __init__.py
+│   ├── app
+│   │   ├── __init__.py
+│   │   └── test_utils.py
+│   ├── conftest.py
+│   ├── docia
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── test_document_admin.py
+│   │   │   ├── test_engagement_scope_admin.py
+│   │   │   └── test_group_admin.py
+│   │   ├── common
+│   │   │   ├── __init__.py
+│   │   │   └── test_models.py
+│   │   ├── file_processing
+│   │   │   ├── __init__.py
+│   │   │   ├── llm
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── rategate
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_gate.py
+│   │   │   │   └── test_client.py
+│   │   │   ├── pipeline
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── steps
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_base.py
+│   │   │   │   │   ├── test_classification.py
+│   │   │   │   │   ├── test_content_analysis.py
+│   │   │   │   │   ├── test_init_documents.py
+│   │   │   │   │   └── test_text_extraction.py
+│   │   │   │   ├── test_pipeline.py
+│   │   │   │   └── test_utils.py
+│   │   │   ├── processor
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── analyze_content
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_analyze_file_text.py
+│   │   │   │   ├── post_processing_llm
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_check_consistency_bank_account.py
+│   │   │   │   │   ├── test_normalize_name.py
+│   │   │   │   │   ├── test_normalize_text.py
+│   │   │   │   │   ├── test_post_processing_amount.py
+│   │   │   │   │   ├── test_post_processing_bank_account.py
+│   │   │   │   │   ├── test_post_processing_bic.py
+│   │   │   │   │   ├── test_post_processing_co_contractors.py
+│   │   │   │   │   ├── test_post_processing_duration.py
+│   │   │   │   │   ├── test_post_processing_iban.py
+│   │   │   │   │   ├── test_post_processing_other_bank_accounts.py
+│   │   │   │   │   ├── test_post_processing_percentage.py
+│   │   │   │   │   ├── test_post_processing_postal_address.py
+│   │   │   │   │   ├── test_post_processing_siret.py
+│   │   │   │   │   └── test_post_processing_subcontractors.py
+│   │   │   │   ├── test_classifier.py
+│   │   │   │   ├── test_pdf_drawings.py
+│   │   │   │   └── text_extraction
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── assets
+│   │   │   │       │   └── documents
+│   │   │   │       │       ├── README.md
+│   │   │   │       │       ├── checkbox.docx
+│   │   │   │       │       ├── checkbox.pdf
+│   │   │   │       │       ├── generate_docs.sh
+│   │   │   │       │       ├── generate_excel_assets.py
+│   │   │   │       │       ├── lettre-ocr.pdf
+│   │   │   │       │       ├── lettre.doc
+│   │   │   │       │       ├── lettre.docx
+│   │   │   │       │       ├── lettre.md
+│   │   │   │       │       ├── lettre.odt
+│   │   │   │       │       ├── lettre.pdf
+│   │   │   │       │       ├── lettre.png
+│   │   │   │       │       ├── sample.ods
+│   │   │   │       │       ├── sample.xls
+│   │   │   │       │       └── sample.xlsx
+│   │   │   │       ├── test_extract_document.py
+│   │   │   │       ├── test_extract_excel.py
+│   │   │   │       ├── test_extract_image.py
+│   │   │   │       ├── test_extract_office.py
+│   │   │   │       ├── test_extraction.py
+│   │   │   │       └── utils.py
+│   │   │   ├── sync
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── files_utils
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── assets
+│   │   │   │       │   ├── calc.ods
+│   │   │   │       │   ├── calc.xls
+│   │   │   │       │   ├── calc.xlsx
+│   │   │   │       │   ├── hello.txt
+│   │   │   │       │   ├── hello.unknown
+│   │   │   │       │   ├── hello.xml
+│   │   │   │       │   ├── image.jpg
+│   │   │   │       │   ├── image.png
+│   │   │   │       │   ├── image.tiff
+│   │   │   │       │   ├── lettre.doc
+│   │   │   │       │   ├── lettre.docx
+│   │   │   │       │   ├── lettre.odt
+│   │   │   │       │   └── lettre.pdf
+│   │   │   │       ├── test_detect_file_extension.py
+│   │   │   │       └── test_get_corrected_extension.py
+│   │   │   └── test_models.py
+│   │   ├── permissions
+│   │   │   ├── __init__.py
+│   │   │   └── test_checks.py
+│   │   ├── ratelimit
+│   │   │   ├── __init__.py
+│   │   │   └── test_ratelimit.py
+│   │   ├── test_urls.py
+│   │   ├── tracking
+│   │   │   ├── __init__.py
+│   │   │   └── test_tracking.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       ├── test_home.py
+│   │       └── test_home_ccap.py
+│   ├── factories
+│   │   ├── __init__.py
+│   │   ├── data.py
+│   │   ├── file_processing.py
+│   │   └── users.py
+│   └── utils.py
+└── tests_e2e
+    ├── __init__.py
+    ├── test_quality_acte_engagement.py
+    ├── test_quality_ccap.py
+    ├── test_quality_classification.py
+    ├── test_quality_dc4.py
+    ├── test_quality_fiche_navette.py
+    ├── test_quality_pipeline_ae.py
+    ├── test_quality_rib.py
+    ├── text_extraction
+    │   ├── __init__.py
+    │   ├── assets
+    │   │   ├── lettre-ocr.pdf
+    │   │   └── lettre.md
+    │   └── test_ocr_api.py
+    └── utils.py
+76 directories, 283 files
