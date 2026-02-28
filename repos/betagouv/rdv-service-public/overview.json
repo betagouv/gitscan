@@ -1,50 +1,48 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l'État, aux opérateurs de services publics et aux collectivités territoriales.",
   "language": "JavaScript",
   "features": [
-    "Gestion des rendez-vous",
     "Prise de rendez-vous",
+    "Gestion des rendez-vous",
     "Synchronisation CalDAV",
     "Notifications",
-    "Statistiques d'utilisation",
-    "Authentification",
+    "Recherche",
     "Gestion des organisations",
-    "Gestion des agents"
+    "Authentification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Webpack",
-    "FullCalendar",
     "Bootstrap",
     "Chart.js",
+    "FullCalendar",
     "jQuery",
-    "Rails"
+    "Webpack",
+    "Yarn"
   ],
   "components": [
-    "Frontend React",
+    "Frontend JavaScript",
     "API REST",
     "Base de données PostgreSQL",
-    "Calendrier FullCalendar",
-    "Interface utilisateur Bootstrap"
+    "Interface utilisateur React",
+    "Calendrier FullCalendar"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
-    ],
-    "providers": []
+      "session"
+    ]
   },
   "tests": [
-    "RSpec",
     "Playwright",
     "Jest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-23T18:53:18Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-02-27T13:58:10+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -62,6 +60,6 @@
     "react",
     "caldav",
     "rdv",
-    "numerique"
+    "service public"
   ]
 }

@@ -293,6 +293,7 @@
 │   │   ├── inbound_emails_controller.rb
 │   │   ├── modal_responder.rb
 │   │   ├── omniauth_callbacks_controller.rb
+│   │   ├── onboarding_controller.rb
 │   │   ├── operator_controller.rb
 │   │   ├── operators
 │   │   │   ├── configuration_controller.rb
@@ -493,6 +494,9 @@
 │   │   │   ├── motif_form_controller.js
 │   │   │   ├── print_controller.js
 │   │   │   └── rdv_plan_controller.js
+│   │   ├── esbuild_plugins
+│   │   │   └── esbuild-select2-plugin.mjs
+│   │   ├── inject-globals.js
 │   │   ├── instance_name.js
 │   │   ├── lieux_map.js
 │   │   ├── mail.js
@@ -1419,6 +1423,13 @@
 │       │           ├── rdv_created.html.slim
 │       │           ├── rdv_upcoming_reminder.html.slim
 │       │           └── rdv_updated.html.slim
+│       ├── onboarding
+│       │   ├── help_needed.html.slim
+│       │   ├── step_1.html.slim
+│       │   ├── step_2.html.slim
+│       │   ├── step_3.html.slim
+│       │   ├── usager.html.slim
+│       │   └── webinaire.html.slim
 │       ├── operators
 │       │   ├── configuration
 │       │   │   └── index.html.slim
@@ -1979,7 +1990,9 @@
 │   │   ├── 20260209094348_remove_connected_with_agent_connect_from_agents.rb
 │   │   ├── 20260219101309_instance_exports_status_without_batches.rb
 │   │   ├── 20260220095942_remove_phone_numbers_in_territory.rb
-│   │   └── 20260220101844_remove_default_service_id_from_oauth_applications.rb
+│   │   ├── 20260220101844_remove_default_service_id_from_oauth_applications.rb
+│   │   ├── 20260223104814_add_caldav_disconnect_in_progress_at_to_agents.rb
+│   │   └── 20260224092756_remove_caldav_disconnect_in_progress_from_agents.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2041,6 +2054,7 @@
 │   │   └── visioplainte.md
 │   ├── legende_flux_de_donnees_personnelles_si.md
 │   └── staging.md
+├── esbuild.config.mjs
 ├── lib
 │   ├── anonymizer
 │   │   ├── README.md
@@ -2858,6 +2872,5 @@
 │       └── .keep
 ├── vendor
 │   └── .keep
-├── webpack.config.js
 └── yarn.lock
-439 directories, 2423 files
+441 directories, 2434 files
