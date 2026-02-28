@@ -4,7 +4,8 @@
 ├── .github
 │   ├── .env.ci.example
 │   ├── ISSUE_TEMPLATE
-│   │   └── feature_request.md
+│   │   ├── ⚙️-feature---improvements---chore.md
+│   │   └── 🐞-bug-report.md
 │   ├── PULL_REQUEST_TEMPLATE
 │   │   └── pull_request_template.md
 │   ├── README_INTEGRATION_TESTS.md
@@ -301,6 +302,7 @@
 │   │   │   │   ├── test_tei_text_classification.py
 │   │   │   │   └── test_tei_text_embeddings_inference.py
 │   │   │   ├── test_search.py
+│   │   │   ├── test_tools.py
 │   │   │   ├── utils
 │   │   │   │   └── snapshot_assertions.py
 │   │   │   └── utils.py
@@ -309,8 +311,15 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── router
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       ├── test_create_router.py
+│   │   │   │   │       ├── test_delete_router.py
+│   │   │   │   │       ├── test_get_router.py
+│   │   │   │   │       └── test_get_routers.py
 │   │   │   │   ├── test_admin_providers.py
-│   │   │   │   ├── test_admin_router.py
 │   │   │   │   └── test_models.py
 │   │   │   ├── factories.py
 │   │   │   ├── postgres
@@ -319,6 +328,7 @@
 │   │   │   │   └── test_postgresrouterrepository.py
 │   │   │   └── test_createapp.py
 │   │   └── unit
+│   │       ├── __init__.py
 │   │       ├── test_endpoints
 │   │       │   ├── mock.py
 │   │       │   └── test_auth.py
@@ -341,18 +351,31 @@
 │   │       │   ├── test_carbon.py
 │   │       │   └── test_qos.py
 │   │       └── use_case
+│   │           ├── __init__.py
+│   │           ├── admin
+│   │           │   ├── __init__.py
+│   │           │   └── routers
+│   │           │       ├── __init__.py
+│   │           │       ├── test_createrouterusecase.py
+│   │           │       ├── test_deleterouterusecase.py
+│   │           │       ├── test_getonerouterusecase.py
+│   │           │       └── test_getroutersusecase.py
 │   │           ├── factories.py
 │   │           ├── test_createproviderusecase.py
-│   │           ├── test_createrouterusecase.py
 │   │           └── test_getmodelsusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
-│   │   │   ├── _createrouterusecase.py
-│   │   │   └── providers
+│   │   │   ├── providers
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── _createproviderusecase.py
+│   │   │   └── routers
 │   │   │       ├── __init__.py
-│   │   │       └── _createproviderusecase.py
+│   │   │       ├── _createrouterusecase.py
+│   │   │       ├── _deleterouterusecase.py
+│   │   │       ├── _getonerouterusecase.py
+│   │   │       └── _getroutersusecase.py
 │   │   └── models
 │   │       ├── __init__.py
 │   │       └── _getmodelsusecase.py
@@ -370,6 +393,7 @@
 │       ├── qos.py
 │       ├── redis.py
 │       ├── routing.py
+│       ├── tools.py
 │       └── variables.py
 ├── compose.example.yml
 ├── config.example.yml
@@ -657,4 +681,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-143 directories, 516 files
+148 directories, 535 files
