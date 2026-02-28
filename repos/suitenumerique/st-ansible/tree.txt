@@ -1,5 +1,11 @@
 .
 ├── .ansible-lint
+├── .github
+│   ├── actions
+│   │   └── vagrant-setup
+│   │       └── action.yml
+│   └── workflows
+│       └── ci.yml
 ├── .gitignore
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -10,6 +16,28 @@
 │   └── monitoring
 │       ├── drive.config.alloy.j2
 │       └── messages.config.alloy.j2
+├── extensions
+│   └── molecule
+│       ├── .env.molecule
+│       ├── alloy
+│       │   ├── converge.yml
+│       │   ├── molecule.yml
+│       │   ├── templates
+│       │   │   └── minimal.j2
+│       │   └── verify.yml
+│       ├── config.yml
+│       ├── podman
+│       │   ├── converge.yml
+│       │   ├── molecule.yml
+│       │   ├── prepare.yml
+│       │   ├── templates
+│       │   │   └── test.compose.yml.j2
+│       │   └── verify.yml
+│       └── restic
+│           ├── converge.yml
+│           ├── molecule.yml
+│           ├── prepare.yml
+│           └── verify.yml
 ├── galaxy.yml
 ├── meta
 │   └── runtime.yml
@@ -164,4 +192,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-51 directories, 115 files
+62 directories, 132 files
