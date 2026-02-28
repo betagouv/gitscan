@@ -1,24 +1,31 @@
 ## Changelog : monprojetsup (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur le module de suggestions de formations (suggestions2) avec l'ajout d'un nouveau score basé sur les données Parcoursup, des corrections de bugs et une meilleure gestion des données. Des améliorations ont également été apportées à l'infrastructure et à la gestion des indicateurs.
+Ce changelog résume les améliorations apportées à Mon Projet Sup au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration des suggestions de formations, notamment grâce à l'intégration de nouvelles données Parcoursup et l'optimisation des performances. Des corrections de bugs et des ajustements techniques ont également été effectués pour améliorer la stabilité et la qualité du service.
 
 ### Évolutions fonctionnelles
-- **Suggestions2 :** Ajout d'un nouveau score de suggestion basé sur les données des vœux Parcoursup, améliorant la pertinence des recommandations. (#1034, #1038)
-- **Suggestions2 :** Amélioration de la tolérance aux valeurs inconnues dans les champs de la base de données (bac, durée, apprentissage, niveau). (#1032)
-- **Indicateurs MPS :** Mise à jour de l'API et du front-end pour les indicateurs Mon Projet Sup. (#1048)
-- **Progression Service :** Restauration du service de progression. (#1047)
+- Amélioration des suggestions de formations avec un nouveau score basé sur les données Parcoursup (#1034, #1038).
+- Mode expert activé et fonctionnel (#1064).
+- Correction d'un bug dans les suggestions2 (#1036, #1037).
+- Restauration du service de progression (#1047).
+- Mise à jour de l'API front (#1048).
 
 ### Évolutions techniques
-- **Suggestions2 :** Optimisation de l'utilisation de la mémoire pour améliorer les performances. (#1040)
-- **Suggestions2 :** Ajout de tests pour la CI afin d'assurer la qualité du code. (#1058)
-- **Suggestions2 :** Pré-calcul du modèle pour améliorer le temps de démarrage. (#1051)
-- **Dépendances :** Mise à jour des versions de Spring Boot et d'autres dépendances. (#1053)
-- **ETL :** Accélération de l'ETL en mode test et simplification du calcul des vœux villes. (#1056)
-- **Infrastructure :** Correction de problèmes de CI et rebasing sur les branches prod et demo. (#1057, #1059)
+- Optimisation de l'utilisation de la mémoire dans les suggestions2 (#1040).
+- Pré-calcul des modèles pour améliorer le temps de démarrage des suggestions2 (#1051).
+- Mise à jour des versions de Spring Boot et d'autres dépendances, incluant la correction de `excludedGroups` et l'accélération de l'ETL en mode test (#1053).
+- Simplification du calcul des vœux villes (#1050).
+- Ajout de tests pour les suggestions2 (#1058).
+- Intégration continue améliorée pour les suggestions2.
+- Refactorisation du code pour réduire l'utilisation de la mémoire dans les suggestions2.
+- Ajout d'une variable d'environnement `MODELS_DIR` pour configurer le répertoire des modèles des suggestions2.
 
 ### Autres changements
-- Documentation du nouveau score Parcoursup dans le README de Suggestions2. (#1038)
-- Correction de bugs divers dans Suggestions2 et l'ETL.
-- Nettoyage du code et suppression de points-virgules inutiles. (#1027, #1023)
-- Ajout de variables d'environnement pour la configuration de Suggestions2. (#1051)
+- Ajout de logs pour le mode expert (#1062).
+- Modification des indicateurs demandés par Laura (#1061).
+- Suppression de code hardcodé pour l'année (#1066, #1067).
+- Correction de tests (#1059, #1066).
+- Rebase des branches `prod` et `demo` (#1068, #1070).
+- Ajout de fichiers manquants (#1044, #1047).
+- Linting du code.
+- Documentation mise à jour pour le nouveau score Parcoursup.
