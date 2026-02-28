@@ -1,52 +1,44 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Ecobalyse accélère la mise en place de l'affichage environnemental. L'application est accessible à l'adresse https://ecobalyse.beta.gouv.fr.",
-  "language": "JavaScript",
+  "description": "Ecobalyse accélère la mise en place de l'affichage environnemental. L'application est accessible à cette adresse.",
+  "language": "Python",
   "features": [
     "Affichage environnemental",
-    "Calcul d'impact",
-    "Comparaison de données",
+    "Calcul d'impacts",
+    "Gestion des favoris",
+    "Comparaison de produits",
+    "Import/Export de données",
     "Gestion des utilisateurs",
-    "Exportation de favoris",
-    "Analyse de données textiles",
-    "Analyse de données alimentaires",
-    "Analyse de données d'objets"
+    "Administration"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "NodeJS",
-    "npm",
-    "Python",
-    "pipenv",
-    "gettext",
-    "transcrypt",
     "Elm",
+    "NodeJS",
+    "Python",
+    "Pipenv",
+    "Gettext",
+    "Transcrypt",
+    "Django",
     "PostgreSQL",
-    "litestar",
+    "Parcel",
+    "Litestar",
     "aiosqlite",
-    "pytest",
     "psycopg",
     "asyncpg",
-    "structlog",
-    "orjson",
-    "aiosmtplib",
-    "emails",
-    "python-stdnum",
-    "pygithub",
-    "typer",
-    "pytest-mock",
-    "asyncstdlib",
-    "sentry-sdk",
-    "pwdlib"
+    "pytest",
+    "Matomo",
+    "Plausible"
   ],
   "components": [
     "Frontend Elm",
-    "Backend Python (Django)",
+    "Backend Python/Django",
     "API REST",
     "Base de données PostgreSQL",
-    "Frontend React",
-    "Serveur Express"
+    "Serveur NodeJS",
+    "Interface utilisateur",
+    "Serveur d'authentification"
   ],
   "auth": {
     "methods": [
@@ -55,10 +47,10 @@
     ]
   },
   "tests": [
-    "Jest",
     "Pytest",
+    "Jest",
     "Playwright",
-    "elm-test"
+    "Elm-test"
   ],
   "workflows": [
     "node.js.yml"
@@ -70,11 +62,14 @@
   "metrics": null,
   "tags": [
     "environnement",
-    "analyse de cycle de vie",
     "impact environnemental",
-    "textile",
-    "alimentaire",
-    "objets",
-    "développement durable"
+    "analyse de cycle de vie",
+    "ACV",
+    "développement durable",
+    "Python",
+    "Elm",
+    "Django",
+    "PostgreSQL",
+    "Agribalyse"
   ]
 }
