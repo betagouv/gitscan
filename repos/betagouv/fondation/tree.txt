@@ -207,6 +207,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260217155216_adds_lolfi_ingestion
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260226083228_adds_admin_role
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260226150442_adds_job_creation_date
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -304,13 +308,20 @@
 │   │   │   │   │   ├── ingest-cli.module.ts
 │   │   │   │   │   ├── ingest.module.ts
 │   │   │   │   │   ├── jobs
-│   │   │   │   │   │   ├── child-process-job-runner.ts
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── job-errors.ts
-│   │   │   │   │   │   ├── job-runner.ts
+│   │   │   │   │   │   ├── jobs.controller.ts
+│   │   │   │   │   │   ├── jobs.dto.ts
 │   │   │   │   │   │   ├── jobs.module.ts
-│   │   │   │   │   │   ├── scalingo-http.ts
-│   │   │   │   │   │   └── scalingo-job-runner.ts
+│   │   │   │   │   │   ├── jobs.service.ts
+│   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   ├── details-job.query.ts
+│   │   │   │   │   │   │   └── list-jobs.query.ts
+│   │   │   │   │   │   └── runner
+│   │   │   │   │   │       ├── child-process-job-runner.ts
+│   │   │   │   │   │       ├── job-errors.ts
+│   │   │   │   │   │       ├── job-runner.ts
+│   │   │   │   │   │       ├── scalingo-http.ts
+│   │   │   │   │   │       └── scalingo-job-runner.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── ingestors
 │   │   │   │   │       │   ├── job-file-ingestor.ts
@@ -407,8 +418,16 @@
 │   │   │   │   ├── root.module.ts
 │   │   │   │   ├── session
 │   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── auto-affectations.spec.ts
-│   │   │   │   │   │   ├── auto-affectations.ts
+│   │   │   │   │   │   ├── auto-affectation
+│   │   │   │   │   │   │   ├── auto-affectation-file-workload.spec.ts
+│   │   │   │   │   │   │   ├── auto-affectation-file-workload.ts
+│   │   │   │   │   │   │   ├── auto-affectation-member-collection.ts
+│   │   │   │   │   │   │   ├── auto-affectation-member.spec.ts
+│   │   │   │   │   │   │   ├── auto-affectation-member.ts
+│   │   │   │   │   │   │   ├── auto-affectation-nomination-file.ts
+│   │   │   │   │   │   │   ├── auto-affectations.spec.ts
+│   │   │   │   │   │   │   ├── auto-affectations.ts
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── lodam-xlsx-to-nomination-session.spec.ts
 │   │   │   │   │   │   ├── lodam-xlsx-to-nomination-session.ts
 │   │   │   │   │   │   ├── nomination-file-outcome.spec.ts
@@ -550,8 +569,6 @@
 │       │   └── nginx.conf.erb
 │       ├── src
 │       │   ├── HomePage.tsx
-│       │   ├── VM
-│       │   │   └── ReportVM.ts
 │       │   ├── assets
 │       │   │   └── react.svg
 │       │   ├── components
@@ -628,6 +645,7 @@
 │       │   │   │   │   │   │   │   └── useMarkPriority.ts
 │       │   │   │   │   │   │   ├── index.tsx
 │       │   │   │   │   │   │   └── markPriorityFactory.ts
+│       │   │   │   │   │   ├── formatters.ts
 │       │   │   │   │   │   └── hooks
 │       │   │   │   │   │       └── useObservedSections.ts
 │       │   │   │   │   └── Transparencies
@@ -827,6 +845,7 @@
 │       │   │       └── useVisibleSummarySections.ts
 │       │   ├── constants
 │       │   │   ├── authorized-roles.constants.ts
+│       │   │   ├── labels.constants.ts
 │       │   │   ├── mimetypes.constants.ts
 │       │   │   ├── sg-anchor-attributes.ts
 │       │   │   └── summary-sections.constants.ts
@@ -868,6 +887,29 @@
 │       │   │   ├── HelpPage.tsx
 │       │   │   ├── LoginPage.tsx
 │       │   │   ├── LolfiRedirectMagistratPage.tsx
+│       │   │   ├── admin
+│       │   │   │   ├── AdminLayout.tsx
+│       │   │   │   ├── ingest
+│       │   │   │   │   └── IngestLolfiArchivePage.tsx
+│       │   │   │   └── jobs
+│       │   │   │       ├── DetailsJobPage.tsx
+│       │   │   │       ├── JobsPage.tsx
+│       │   │   │       ├── common
+│       │   │   │       │   ├── format-job-date.utils.ts
+│       │   │   │       │   ├── format-job-duration.utils.ts
+│       │   │   │       │   ├── job-status.utils.ts
+│       │   │   │       │   ├── job.types.ts
+│       │   │   │       │   ├── jobs-page-outlet-context.type.ts
+│       │   │   │       │   └── tree.utils.ts
+│       │   │   │       ├── components
+│       │   │   │       │   ├── JobFileNode.tsx
+│       │   │   │       │   ├── JobFilesBranch.tsx
+│       │   │   │       │   ├── JobFilesTree.tsx
+│       │   │   │       │   └── JobsListItem.tsx
+│       │   │   │       └── contexts
+│       │   │   │           ├── index.ts
+│       │   │   │           ├── job.context.ts
+│       │   │   │           └── selected-job-provider.tsx
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── ManageSessionPage.tsx
 │       │   │   │   ├── MemberListPage.tsx
@@ -888,6 +930,8 @@
 │       │   │       └── TransparencesLayout.tsx
 │       │   ├── queries
 │       │   │   ├── auth.queries.ts
+│       │   │   ├── ingest.queries.ts
+│       │   │   ├── jobs.queries.ts
 │       │   │   ├── members.queries.ts
 │       │   │   ├── nomination-sessions.queries.ts
 │       │   │   ├── observations.queries.ts
@@ -900,13 +944,13 @@
 │       │   ├── types
 │       │   │   ├── date-only.types.ts
 │       │   │   ├── enums.types.ts
+│       │   │   ├── rules.types.ts
 │       │   │   ├── table.types.ts
 │       │   │   └── utils.types.ts
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
 │       │   │   ├── date-transparence-routes.utils.ts
 │       │   │   ├── deterministicUuidGenerator.ts
-│       │   │   ├── fileProvider.ts
 │       │   │   ├── format-report-list.utils.tsx
 │       │   │   ├── formations-routes.utils.ts
 │       │   │   ├── gds-transparencies-routes.utils.ts
@@ -914,7 +958,6 @@
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── nomination-file.ts
-│       │   │   ├── realFileProvider.ts
 │       │   │   ├── route-path.utils.tsx
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
@@ -955,13 +998,8 @@
 │       │   ├── nomination-file.namespace.ts
 │       │   ├── nomination-file.ts
 │       │   ├── priorite.enum.ts
-│       │   ├── report-retrieval-vm.ts
-│       │   ├── reports-listing-vm.ts
+│       │   ├── report-file-usage.enum.ts
 │       │   ├── role.ts
-│       │   ├── session
-│       │   │   ├── dossier-de-nomination.ts
-│       │   │   ├── session-content.ts
-│       │   │   └── session-metadata.ts
 │       │   ├── transparency.enum.ts
 │       │   └── type-de-saisine.enum.ts
 │       ├── package.json
@@ -970,4 +1008,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-179 directories, 793 files
+188 directories, 822 files

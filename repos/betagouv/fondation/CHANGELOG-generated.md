@@ -1,479 +1,422 @@
 ## Changelog : fondation (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à la fondation au cours des 30 derniers jours. Les principales évolutions concernent l'affectation des magistrats, la gestion des fichiers, l'interface utilisateur et la correction de bugs. De nouvelles fonctionnalités ont été ajoutées, notamment la gestion des commentaires sur les observations et l'affichage d'informations supplémentaires dans les exports Excel. Des améliorations de performance et de stabilité ont également été apportées.
+Cette période a été marquée par une amélioration significative de la fonctionnalité d'affectation des magistrats, avec des corrections et des optimisations pour une distribution plus précise et équitable. De nouvelles fonctionnalités ont été ajoutées pour la gestion des fichiers et des observations, notamment l'ingestion d'archives LOLLI et l'ajout d'indicateurs de commentaires pour les rapporteurs. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées pour une meilleure expérience utilisateur globale.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'ingérer l'archive LoLfi (#229)
-- Amélioration de l'affectation des magistrats :
-    - Correction du calcul de l'arrondi du plancher d'affectation (#226)
-    - Correction de la distribution arithmétique (#225)
-    - Affectation automatique unique par membre et par groupe de grade (#223)
-- Ajout du grade ciblé dans l'export Excel (#224)
-- Amélioration de la gestion des fichiers :
-    - Correction de la récupération de la charge de travail sur les versions non publiées (#222)
-    - Correction de la recherche d'ID externe indépendamment du nom (#220)
-    - Possibilité de supprimer les fichiers de la modale d'observation (#172)
-    - Ajout de badges dynamiques pour l'état du tableau des fichiers (#163)
-    - Ajout de l'acronyme du poste pour les magistrats (#172)
-- Ajout de commentaires et d'un éditeur WYSIWYG pour les observations (#152, #158)
-- Ajout de l'historique des fichiers avec commentaires (#194)
-- Ajout de la description des observations (#193, #233)
-- Ajout d'un indicateur de commentaire du rapporteur d'observation (#198, #214)
-- Ajout de la position actuelle (#218)
-- Ajout d'un indicateur d'alerte de position avec pièce jointe requise (#192, #229)
-- Ajout de la possibilité de publier une version sans affectations (#164)
-- Ajout de la possibilité de ne pas affecter certains membres (#189)
-- Ajout de la possibilité de modifier les priorités des fichiers (#187)
-- Ajout de la version dans le footer (#197)
+- Ajout d'une page d'administration LOLLI pour l'ingestion de données (#237).
+- Implémentation de l'ingestion d'archives LOLLI (#229, #257025).
+- Ajout d'un indicateur de commentaires pour les rapporteurs sur les observations (#198, #124).
+- Ajout de la possibilité d'ajouter une description aux observations (#193, #233, #219).
+- Ajout de la position actuelle dans les informations du magistrat (#218).
+- Ajout d'un badge indiquant le nombre total de candidatures (#190).
+- Ajout d'alertes en cas de position nécessitant un nombre spécifique de rapporteurs (#168).
+- Possibilité de publier une version sans affectations (#164, #201).
+- Amélioration de l'affichage des fichiers nominatifs en fonction des accès utilisateurs.
+- Amélioration de l'affichage des alertes et des messages.
+- Correction d'un bug empêchant l'importation de fichiers en double (#233).
+- Correction d'un bug lié au calcul de l'âge dans la carte récapitulative (#180).
+- Correction d'un bug lié à l'affectation automatique avec des critères exclus (#235).
+- Correction d'un bug lié à la distribution arithmétique de l'affectation automatique (#225).
+- Correction d'un bug lié à la gestion de l'affectation automatique unique par grade et groupe (#223).
+- Correction d'un bug empêchant la récupération de la charge de travail sur les versions non publiées (#222).
+- Correction d'un bug lié à l'arrondi des affectations (#226).
+- Correction d'un bug lié à la recherche d'ID externes (#220).
+- Correction d'un bug lié à l'affichage des affectations (#221).
+- Correction de plusieurs bugs d'affichage et de comportement de l'interface utilisateur.
 
 ### Évolutions techniques
-- Mise à jour de React Router (#183)
-- Suppression de Lodash (#202)
-- Suppression des fichiers en dehors du scope de la requête (#200)
-- Ajout d'un module HTTP (#205)
-- Ajout de tests full-stack basiques (#187)
-- Ajout de l'authentification basique (#156)
-- Ajout d'un hook SG (#157)
-- Intégration de Sentry pour la gestion des erreurs (#159)
-- Amélioration de l'utilisation de React Router (#182)
-- Optimisation des permissions CI pour la production (#186, #184)
-- Ajout de dépendabot pour la gestion des dépendances (#203)
-- Suppression des tests de la release (#191)
-- Correction de l'utilisation de la fonction `login` en mode asynchrone (#221)
+- Refactorisation du code lié à l'affectation automatique pour une meilleure organisation (#236).
+- Ajout de tests full-stack basiques (#187).
+- Mise à jour des dépendances du client et de l'API (#240, #238).
+- Amélioration des permissions des jobs CI/CD pour la production (#186, #184).
+- Suppression de Lodash pour alléger le code (#202).
+- Ajout d'un module HTTP (#205).
+- Suppression des tests de la release (#191).
+- Ajout de dépendabot pour la gestion des dépendances (#203).
+- Amélioration de la gestion des validations de pull requests (#207).
+- Mise à jour de React Router (#183).
+- Promotion de `dotenvx` en dépendance.
 
 ### Autres changements
-- Ajout de tags aux utilisateurs dans les notifications de changelog (#227)
-- Correction de l'affichage des badges (#180)
-- Amélioration des alertes (#199)
-- Amélioration de la modale magistrat (#199)
-- Correction de l'affichage des statuts d'affectation (#220)
-- Correction de l'optimisation de la mise à jour des résultats (#221)
-- Correction de l'affichage des liens actifs dans la navigation (#176)
-- Correction du tri de la liste des sessions (#175, #180)
-- Correction de la copie de la version précédente lors de la publication d'une affectation (#173)
-- Correction de la redirection LoLfi (#155)
-- Amélioration de la modale d'observation (#172)
-- Correction de l'affichage des alertes pour les postes nécessitant 2 rapporteurs (#168)
-- Ajout de la promotion de dotenvx aux dépendances (#178)
-- Correction de l'affichage des libellés de suivi (#181)
-- Correction de l'affichage des étoiles rouges dans le formulaire d'importation de session (#179)
-- Correction de l'affichage des observateurs LODAM (#171)
-- Correction de l'affichage du message de succès lors de la publication d'une session (#170)
-- Correction de l'affichage du code couleur pour les statuts des fichiers (#168)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
-- Correction de l'affichage des informations sur les sessions (#162)
+- Ajout de tags pour les utilisateurs dans les notifications de changelog (#227, #793972d).
+- Ajout de la version dans le footer (#197).
+- Mise à jour des instructions Copilot (#230).
+- Suppression de fichiers inutiles (#200).
+- Mise à jour de l'icône des détails d'observation (#199).
+- Amélioration de l'affichage des badges (#8412b05).
+- Correction de typos et améliorations de la documentation.
+- Suppression de composants SG uniquement pour les membres.
+- Amélioration de l'affichage du modal magistrat.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers (#187).
+- Amélioration de la copie de la version lors de la publication de l'affectation.
+- Ajout de l'acronyme du poste pour les magistrats (#170).
+- Ajout de la possibilité de supprimer des fichiers de la modale d'observation (#170).
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs (#168).
+- Ajout de l'export Excel dans le domaine de l'API (#165).
+- Amélioration de l'affichage des états des fichiers (#68).
+- Correction de la gestion des alertes pour les "premier président de chambre" (#168, #bdfe34f).
+- Amélioration de l'affichage des liens de navigation actifs (#176).
+- Tri de la liste des sessions par date descendante (#175, #186).
+- Amélioration de l'affichage des métadonnées de session.
+- Correction de l'affichage des cellules de résultat.
+- Ajout de l'affichage de l'ID avocat CC PARIS.
+- Amélioration de l'alignement des éléments de session.
+- Amélioration de l'affichage des alertes.
+- Suppression de la mention "restition".
+- Amélioration de la modale magistrat.
+- Correction de l'affichage des observateurs LODAM.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affectation automatique sur les fichiers suivants.
+- Correction de la gestion des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "premier président de chambre".
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Ajout de la possibilité de ne pas définir de priorité aux fichiers.
+- Amélioration de l'affichage des alertes pour les positions nécessitant des rapporteurs.
+- Amélioration de l'affichage des alertes pour les positions nécessitant 2 rapporteurs.
+- Correction de l'affichage des alertes pour les "
