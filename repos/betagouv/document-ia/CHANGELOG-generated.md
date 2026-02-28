@@ -1,13 +1,12 @@
-## Changelog : document-ia (derniers 30 jours)
+## Changelog : document-ia (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'optimisation du traitement des documents et l'ajout de nouvelles capacités d'OCR.  Des corrections ont été apportées pour améliorer la gestion des préfixes S3 et la parallélisation des workers, permettant un traitement plus rapide et fiable des pièces justificatives. L'intégration de Deepseek OCR offre une alternative performante et a entraîné une simplification de l'interface utilisateur en supprimant les workflows rapides.
+Ce mois-ci, les améliorations se concentrent sur l'extraction d'informations à partir de documents, notamment via l'ajout de la date d'émission sur les documents 2ddoc et la correction de problèmes liés à l'OCR avec Mistral. Une correction a également été apportée pour assurer la re-tentative automatique des erreurs temporaires.
 
 ### Évolutions fonctionnelles
-- Implémentation de l'OCR Deepseek, offrant une nouvelle option pour la reconnaissance de texte dans les documents. (#42)
-- Simplification de l'interface utilisateur suite à la suppression des workflows rapides.
-- Correction du format de préfixe S3 utilisé pour les datasets, améliorant la gestion et l'organisation des documents stockés. (#42)
-- Correction du format de préfixe S3 lors de la création de datasets.
+- Amélioration de l'extraction d'informations des documents 2ddoc : la date d'émission est maintenant extraite et disponible. (#46)
+- Correction d'un bug empêchant l'utilisation d'images au lieu de PDF avec l'OCR Mistral. (#45)
+- Correction d'un problème de re-tentative des erreurs : les erreurs temporaires sont maintenant automatiquement re-tentées. (#43)
 
 ### Évolutions techniques
-- Correction de la parallélisation des workers pour une meilleure utilisation des ressources et une accélération du traitement des documents. (#42)
+- Mise à jour de la version du parser 2ddoc dans le worker. (#47)
