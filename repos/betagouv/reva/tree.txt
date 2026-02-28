@@ -33,6 +33,7 @@
 │       ├── certificate.png
 │       └── trophy.png
 ├── docs
+│   ├── architecture-applicative.html
 │   └── keycloak.md
 ├── infra
 │   ├── .gitignore
@@ -611,51 +612,13 @@
     │   │   │   │   │   ├── cgu-certificateur.cy.ts
     │   │   │   │   │   └── fixtures
     │   │   │   │   │       └── cgu-certificateur.json
-    │   │   │   │   ├── fixtures
-    │   │   │   │   │   ├── candidacy-info-for-layout.json
-    │   │   │   │   │   ├── dossier-de-validation-count-by-category.json
-    │   │   │   │   │   ├── feasibility-count-by-category.json
-    │   │   │   │   │   ├── jury-count-by-category.json
-    │   │   │   │   │   ├── maison-mere-cgu.json
-    │   │   │   │   │   └── organism-for-aap-visibility-check.json
-    │   │   │   │   └── settings
-    │   │   │   │       ├── add-local-account
-    │   │   │   │       │   └── certification-authority-settings-add-local-account.cy.ts
-    │   │   │   │       ├── add-local-account-general-information
-    │   │   │   │       │   ├── certification-authority-settings-update-local-account-general-information.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       ├── add-certification-authority-local-account-mutation-response.json
-    │   │   │   │       │       └── certification-authority.json
-    │   │   │   │       ├── main-page
-    │   │   │   │       │   ├── certification-authority-settings-main-page.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       ├── certification-authority-settings-no-contact-info.json
-    │   │   │   │       │       └── certification-authority-settings.json
-    │   │   │   │       ├── update-general-information
-    │   │   │   │       │   ├── certification-authority-settings-update-general-information.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       └── certification-authority-info.json
-    │   │   │   │       ├── update-local-account
-    │   │   │   │       │   ├── certification-authority-settings-update-local-account.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       ├── certification-authority-local-account-no-contact-details.json
-    │   │   │   │       │       ├── certification-authority-local-account.json
-    │   │   │   │       │       └── delete-certification-authority-local-account-mutation-response.json
-    │   │   │   │       ├── update-local-account-certifications
-    │   │   │   │       │   ├── certification-authority-settings-update-local-account-certifications.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       ├── certification-authority-local-account.json
-    │   │   │   │       │       └── update-certification-authority-local-account-certifications-mutation-response.json
-    │   │   │   │       ├── update-local-account-general-information
-    │   │   │   │       │   ├── certification-authority-settings-update-local-account-general-information.cy.ts
-    │   │   │   │       │   └── fixtures
-    │   │   │   │       │       ├── certification-authority-local-account.json
-    │   │   │   │       │       └── update-certification-authority-local-account-mutation-response.json
-    │   │   │   │       └── update-local-account-intervention-area
-    │   │   │   │           ├── certification-authority-settings-update-local-account-intervention-area.cy.ts
-    │   │   │   │           └── fixtures
-    │   │   │   │               ├── certification-authority-local-account.json
-    │   │   │   │               └── update-certification-authority-local-account-departments-mutation-response.json
+    │   │   │   │   └── fixtures
+    │   │   │   │       ├── candidacy-info-for-layout.json
+    │   │   │   │       ├── dossier-de-validation-count-by-category.json
+    │   │   │   │       ├── feasibility-count-by-category.json
+    │   │   │   │       ├── jury-count-by-category.json
+    │   │   │   │       ├── maison-mere-cgu.json
+    │   │   │   │       └── organism-for-aap-visibility-check.json
     │   │   │   ├── admin
     │   │   │   │   └── maison-mere-aap.cy.ts
     │   │   │   ├── candidacies
@@ -1560,6 +1523,9 @@
     │   │   │   │   │   └── settings
     │   │   │   │   │       ├── certificationAuthoritySettingsPage.hook.ts
     │   │   │   │   │       ├── certifications
+    │   │   │   │   │       │   ├── _components
+    │   │   │   │   │       │   │   ├── NoParcoursCertificationCard.tsx
+    │   │   │   │   │       │   │   └── WithParcoursCertificationCard.tsx
     │   │   │   │   │       │   ├── certifications.hooks.ts
     │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │       ├── informations-generales
@@ -1941,10 +1907,27 @@
     │   │   │       └── certification-registry-manager
     │   │   │           └── certification-registry-manager.spec.ts
     │   │   ├── (certificateur)
-    │   │   │   └── candidacies
-    │   │   │       └── candidacy
-    │   │   │           └── feasibility
-    │   │   │               └── feasibility-completion-form-modal.spec.ts
+    │   │   │   ├── candidacies
+    │   │   │   │   └── candidacy
+    │   │   │   │       └── feasibility
+    │   │   │   │           └── feasibility-completion-form-modal.spec.ts
+    │   │   │   └── settings
+    │   │   │       ├── add-local-account
+    │   │   │       │   └── certification-authority-settings-add-local-account.spec.ts
+    │   │   │       ├── add-local-account-general-information
+    │   │   │       │   └── certification-authority-settings-add-local-account-general-information.spec.ts
+    │   │   │       ├── main-page
+    │   │   │       │   └── certification-authority-settings-main-page.spec.ts
+    │   │   │       ├── update-general-information
+    │   │   │       │   └── certification-authority-settings-update-general-information.spec.ts
+    │   │   │       ├── update-local-account
+    │   │   │       │   └── certification-authority-settings-update-local-account.spec.ts
+    │   │   │       ├── update-local-account-certifications
+    │   │   │       │   └── certification-authority-settings-update-local-account-certifications.spec.ts
+    │   │   │       ├── update-local-account-general-information
+    │   │   │       │   └── certification-authority-settings-update-local-account-general-information.spec.ts
+    │   │   │       └── update-local-account-intervention-area
+    │   │   │           └── certification-authority-settings-update-local-account-intervention-area.spec.ts
     │   │   └── shared
     │   │       └── helpers
     │   │           ├── auth
@@ -1963,7 +1946,8 @@
     │   │           │   ├── aap
     │   │           │   │   └── getAapCommon.handlers.ts
     │   │           │   └── certificateur
-    │   │           │       └── getCertificateurCommon.handlers.ts
+    │   │           │       ├── getCertificateurCommon.handlers.ts
+    │   │           │       └── getCertificateurSettingsCommon.handlers.ts
     │   │           └── network
     │   │               ├── msw.ts
     │   │               └── requests.ts
@@ -2707,6 +2691,7 @@
     │   │   │   │   ├── getDropOutReasons.ts
     │   │   │   │   ├── getFormacodes.ts
     │   │   │   │   ├── getGoals.ts
+    │   │   │   │   ├── getParcoursCertificationByCertificationId.ts
     │   │   │   │   ├── getRegionById.ts
     │   │   │   │   ├── getRegions.ts
     │   │   │   │   ├── getReorientationReasonById.ts
@@ -2753,6 +2738,8 @@
     │   │   │   │   └── getKeycloakAdmin.ts
     │   │   │   ├── batch
     │   │   │   │   └── processInBatches.ts
+    │   │   │   ├── config
+    │   │   │   │   └── config.ts
     │   │   │   ├── date
     │   │   │   │   ├── formatDateWithoutTimestamp.ts
     │   │   │   │   └── formatUTCTime.ts
@@ -4132,6 +4119,12 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260218161022_add_nationalite_to_country
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260225145410_remove_candidate_info_france_connect_table_and_add_france_connect_linked_to_candidate_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260226101304_add_parcours_certification_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260226170000_add_has_reduced_requirements_to_certification_authority_structure
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4435,6 +4428,8 @@
     │   ├── src
     │   │   ├── app
     │   │   │   ├── (auth)
+    │   │   │   │   ├── auth-error
+    │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── forgot-password
     │   │   │   │   │   ├── forgot-password.hooks.ts
     │   │   │   │   │   └── page.tsx
@@ -5710,4 +5705,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1919 directories, 3793 files
+1918 directories, 3789 files
