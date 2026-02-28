@@ -1,51 +1,49 @@
 {
   "url": "https://github.com/betagouv/zacharie",
   "name": "zacharie",
-  "description": "Zacharie est une application web pour la gestion des données relatives aux animaux et aux carcasses, notamment dans le cadre de la filière de la chasse. Elle permet de suivre les informations sur les animaux abattus, les carcasses et les intervenants.",
+  "description": "Zacharie est une application de traçabilité du gibier sauvage, de la chasse à la consommation. Elle numérise le processus de suivi sanitaire du gibier, remplaçant les fiches papier par une application utilisable sur le terrain.",
   "language": "TypeScript",
   "features": [
-    "Gestion des carcasses",
-    "Gestion des FEIs (Fiche d'Évaluation Initiale)",
-    "Synchronisation des données",
-    "Gestion des utilisateurs",
-    "Tableau de bord",
-    "Export de données",
-    "Gestion des contacts circuit court",
-    "Suivi des SVI (Suivi des Visites d'Inspection)"
+    "Gestion de l'examen initial des carcasses",
+    "Suivi de la chaîne de détention",
+    "Gestion des décisions vétérinaires",
+    "Synchronisation des données hors ligne",
+    "Gestion des utilisateurs (chasseurs, collecteurs, ETG, SVI, commerces)",
+    "Création de fiches d'examen initial (FEI)",
+    "Gestion des contacts circuit court"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
-    "React",
     "Express",
-    "PostgreSQL",
     "Prisma",
-    "@getbrevo/brevo",
-    "bcryptjs",
-    "jsonwebtoken",
-    "passport",
-    "zod"
+    "PostgreSQL",
+    "React",
+    "React Router",
+    "Vite",
+    "Tailwind CSS",
+    "DSFR",
+    "Expo",
+    "Playwright"
   ],
   "components": [
     "Frontend React",
     "API REST (Express)",
     "Base de données PostgreSQL",
-    "Authentification JWT",
+    "Application mobile (Expo/WebView)",
     "Architecture local-first"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "jwt",
+      "api-key"
     ]
   },
   "tests": [
-    "Vitest",
-    "Cypress"
+    "Tests unitaires (Vitest)",
+    "Tests end-to-end (Playwright)"
   ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-02-23T15:49:17+01:00",
+  "workflows": [],
+  "lastActivity": "2026-02-27T10:46:48+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,14 +54,14 @@
     "openIssues": null
   },
   "tags": [
+    "gibier",
     "chasse",
-    "carcasse",
-    "FEI",
-    "SVI",
-    "gestion des données",
-    "administration",
+    "traçabilité",
+    "sanitaire",
     "TypeScript",
     "React",
-    "PostgreSQL"
+    "PostgreSQL",
+    "local-first",
+    "venaison"
   ]
 }

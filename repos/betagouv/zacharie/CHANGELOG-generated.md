@@ -1,48 +1,49 @@
 ## Changelog : zacharie (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à Zacharie au cours des 30 derniers jours. Les modifications incluent des corrections de bugs, des améliorations de l'interface utilisateur, des optimisations de la synchronisation des données et des fonctionnalités supplémentaires pour la gestion des carcasses, des FEI et des SVI. Des améliorations de la documentation ont également été apportées.
+Ce changelog résume les évolutions récentes de Zacharie, l'application de traçabilité du gibier sauvage. Les dernières mises à jour se concentrent sur l'amélioration de l'interface utilisateur, la correction de bugs, l'optimisation de la synchronisation des données et l'ajout de nouvelles fonctionnalités pour faciliter la gestion des informations relatives au gibier, notamment pour les circuits courts et les utilisateurs administrateurs.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de créer un contact circuit court directement lors du flux de création d'une FEI (#147).
+- Ajout d'une page FAQ avec des guides et des liens de navigation (#201).
+- Amélioration de l'onboarding avec des corrections d'UI/UX (#195).
+- Ajout de la possibilité de créer des contacts circuit court directement pendant le flux de création d'une Fiche d'Examen Initial (FEI) (#147).
 - Synchronisation des contacts circuit court avec Brevo (#144).
-- Ajout de champs de propriété à la modèle Carcasse (#145).
-- Possibilité de sauter des étapes lors de l'onboarding (#138).
-- Acceptation automatique des carcasses (#143).
-- Ajout d'un affichage des motifs SVI dans le tableau de bord.
-- Amélioration de l'affichage des FEI assignées pour les SVI.
-- Correction du tri des FEI (#189).
-- Correction de l'affichage des champs automatiques lors de la fermeture d'une FEI.
-- Amélioration du chargement des entités et des utilisateurs.
-- Ajout d'une vue de débogage FEI.
-- Correction de l'affichage du message d'aide pour les lots.
-- Ajout d'une gestion des utilisateurs administrateurs.
-- Ajout d'un onglet administrateur.
-- Amélioration de la gestion des carcasses et de leur transmission.
-- Correction de la pagination.
-- Amélioration de la gestion des utilisateurs non activés.
+- Ajout de champs de propriété à la fiche Carcasse (#145).
+- Ajout d'un tableau avec des fonctionnalités de recherche et de tri (#168).
+- Ajout de placeholders vides pour améliorer l'expérience utilisateur (#167).
+- Ajout de labels UI améliorés (#164).
+- Ajout d'une barre de recherche UI (#163).
+- Ajout d'un onglet utilisateur dans l'administration (#192).
+- Correction du tri des FEI (#186, #187).
+- Amélioration du chargement des entités et des utilisateurs (#191).
+- Correction de l'affichage des FEI assignés aux SVI (#194).
+- Correction d'un problème de message d'aide pour les lots (#193).
+- Correction de l'affichage du lien actif (#196).
+- Correction de l'obtention de l'entité (#196).
+- Amélioration de la gestion des carcasses en transmission (#180).
+- Amélioration de la pagination (#180).
 
 ### Évolutions techniques
-- Refactorisation de l'architecture de synchronisation locale-first avec un nouveau endpoint `/sync` pour les requêtes en masse.
-- Extraction de la logique de sauvegarde des FEI et des carcasses dans des fonctions dédiées.
-- Amélioration de la gestion des effets de bord dans les contrôleurs FEI et carcasses.
-- Optimisation du chargement des entités pour éviter les problèmes de concurrence.
-- Correction d'une condition de course lors de la transmission des données.
-- Mise à jour de la documentation CLAUDE.md pour refléter l'architecture locale-first.
-- Amélioration de la gestion des données en local pour éviter les problèmes de concurrence.
-- Correction de la gestion des données dans IndexedDB.
-- Suppression de l'utilisation de `stringify` dans IndexedDB.
-- Amélioration de la gestion des relations entre les entités.
-- Correction de la gestion du cache administrateur.
+- Refactorisation de l'extraction des effets secondaires des contrôleurs de carcasse et FEI.
+- Remplacement de la file d'attente PQueue par un appel POST groupé vers /sync pour améliorer la synchronisation des données (#188).
+- Ajout de types SyncRequest/SyncResponse pour la synchronisation.
+- Correction d'un problème de race condition entre ETG et transport (#180).
+- Correction de la gestion des données intermédiaires pour éviter les erreurs de sérialisation.
+- Amélioration de la gestion du cache dans l'administration.
+- Correction de la gestion des données de carcasses en transmission.
+- Amélioration du chargement des entités et des utilisateurs.
+- Correction de la gestion des données intermédiaires.
+- Suppression des FEI terminées de l'application.
+- Mise à jour des dépendances : minimatch, @getbrevo/brevo, tar, ajv (#189, #187, #186).
+- Amélioration de la gestion des relations en tests (#185).
+- Séparation de composants pour une meilleure maintenabilité (#182).
 
 ### Autres changements
-- Mise à jour des dépendances : `minimatch`, `@getbrevo/brevo`, `tar`, `ajv`.
-- Correction de la configuration de gitignore.
-- Ajout de tests pour les relations.
-- Suppression de Cailles et Oies de la liste des espèces.
-- Nettoyage du code et refactorisation de certains composants.
-- Amélioration de la qualité du code avec des linters.
-- Correction de la gestion des types.
+- Mise à jour de la documentation CLAUDE.md (#183).
+- Mise à jour du README.md.
+- Correction de problèmes liés à Brevo (#179).
+- Correction de problèmes de rafraîchissement des utilisateurs (#181).
+- Nettoyage du code et refactoring divers.
+- Correction de problèmes de chargement des entités et des utilisateurs.
 - Suppression de code inutile.
-- Renommage de certains contrôleurs.
-- Ajout de commentaires et de documentation.
+- Correction de tests.
