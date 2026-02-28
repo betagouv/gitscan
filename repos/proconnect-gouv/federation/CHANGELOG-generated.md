@@ -1,33 +1,24 @@
 ## Changelog : federation (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de la solution d'identification des professionnels. Les modifications incluent une refonte de l'interface utilisateur pour une meilleure expérience, des corrections de bugs pour améliorer la stabilité, et des optimisations techniques pour une meilleure performance et sécurité. Des alertes ont également été ajoutées pour l'environnement de test.
+Ce mois-ci, l'équipe a déployé une nouvelle interface utilisateur plus moderne et responsive, améliorant l'expérience utilisateur globale. Des corrections de sécurité et des mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la sécurité de la plateforme. Plusieurs améliorations techniques ont été apportées, notamment au niveau de la configuration et des alertes.
 
 ### Évolutions fonctionnelles
-- Nouvelle interface utilisateur avec une disposition en une seule colonne (#802, #829).
+- Nouvelle interface utilisateur avec une disposition en une seule colonne (#802, #851).
+- Amélioration de la version responsive de la nouvelle interface utilisateur (#868).
 - Ajout d'un bouton de contact pour signaler les erreurs internes (#829).
-- Amélioration de la version responsive de la nouvelle interface (#786, #868).
-- Messages d'erreur améliorés pour les liens "mailto" (#853).
-- Ajout d'une alerte pour l'environnement de test (#848).
+- Amélioration des messages d'erreur liés à la configuration de l'authentification OIDC (#853).
 
 ### Évolutions techniques
-- Passage au module ESNext (#855).
-- Suppression de l'index TTL MongoDB qui supprimait les sous-utilisateurs après 3 ans (#850).
-- Correction d'un problème empêchant le core de planter en cas d'échec du proxy (#869).
-- Correction des tests d'intégration (#832).
-- Optimisation du renouvellement du token CSRF pour éviter des requêtes inutiles (#831).
-- Mise à jour de plusieurs dépendances :
-    - `axios` (versions 1.12.2 -> 1.13.5) (#851, #852)
-    - `pg` (versions 8.16.3 -> 8.18.0) (#858)
-    - `systeminformation` (versions 5.30.5 -> 5.31.1) (#869)
-    - `docker/build-push-action` (version 6.18.0 -> 6.19.2) (#856)
-    - `otpauth` (version 9.4.1 -> 9.5.0) (#857)
-    - `@nestjs/common` (version 11.1.9 -> 11.1.13) (#861)
-    - `jquery` (version 3.7.1 -> 4.0.0) (#863)
-    - `docker/login-action` (version 3.6.0 -> 3.7.0) (#845)
-    - Diverses autres mises à jour de dépendances mineures (#833, #834, #835, #836, #837, #838, #839, #841, #846)
+- Suppression d'un index TTL obsolète dans MongoDB (#849).
+- Correction de la gestion des variables booléennes dans Ansible (#848).
+- Passage au module ESNext pour une meilleure compatibilité et performance (#855).
+- Mise à jour de plusieurs dépendances : Axios, pg, docker/build-push-action, otpauth, eslint-plugin-prettier, body-parser, prettier, @eslint-community/eslint-plugin-eslint-comments, type-fest, @nestjs/common, jquery (#833, #834, #836, #835, #837, #838, #839, #841, #846, #856, #857, #858, #860, #861, #863, #873, #874, #876, #877, #878).
+- Mise à jour des tests Cypress pour l'environnement Kubernetes (#881).
+- Révision de la politique de sécurité et ajout d'un mécanisme de signalement de vulnérabilités (#884).
 
 ### Autres changements
-- Suppression du fichier manifest.webmanifest trompeur (#872).
-- Correction de l'analyse des variables d'environnement booléennes dans Ansible (#849).
-- Suppression d'une exception FranceConnect (#830).
+- Suppression d'un manifeste web misleading (#872).
+- Suppression d'un avis concernant la nouvelle interface utilisateur (#867).
+- Ajout d'une alerte d'avertissement pour l'environnement de test (#848).
+- Suppression d'un revert de correction de crash (#869).
