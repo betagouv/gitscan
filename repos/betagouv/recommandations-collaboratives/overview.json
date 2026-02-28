@@ -1,68 +1,53 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
+  "description": "Le logiciel Recoco est un outil numérique pour aider à la méthodologie de Recommandations Collaboratives, particulièrement pour les problématiques complexes nécessitant de multiples expertises. Il permet d'héberger plusieurs thématiques tout en proposant une porosité entre elles.",
   "language": "Python",
   "features": [
     "Gestion des ressources",
     "Gestion des projets",
-    "Gestion des documents",
-    "Authentification utilisateur",
-    "Notifications",
-    "Recherche",
     "Gestion des utilisateurs",
-    "RGPD (suppression de compte)"
+    "Notifications RGPD",
+    "Alertes de déconnexion"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "Python",
-    "AlpineJS",
-    "Bootstrap",
-    "DSFR",
-    "PostgreSQL",
+    "Celery",
     "Redis",
-    "Celery"
+    "PostgreSQL",
+    "BeautifulSoup4"
   ],
   "components": [
-    "Backend Python/Django",
     "Frontend AlpineJS/Bootstrap/DSFR",
-    "Base de données PostgreSQL",
-    "Broker Redis",
-    "API REST"
+    "Backend Python/Django",
+    "Base de données PostgreSQL"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
-    ]
+      "oauth2",
+      "magic-link",
+      "mfa"
+    ],
+    "providers": []
   },
   "tests": [
     "Pytest",
-    "Tests unitaires Frontend (Yarn)",
-    "Tests bout en bout Frontend (Cypress)"
+    "Tests unitaires frontend (Yarn)"
   ],
-  "workflows": [
-    "CI/CD (GitHub Actions)"
-  ],
-  "lastActivity": "2026-02-19T11:56:52+01:00",
+  "workflows": [],
+  "lastActivity": "2024-05-03T14:42:47Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "recommandations collaboratives",
-    "python",
     "django",
-    "alpinejs",
-    "postgresql",
+    "python",
     "administration",
     "gestion de projet",
-    "gestion de ressources"
+    "RGPD"
   ]
 }
