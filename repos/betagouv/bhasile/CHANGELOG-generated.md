@@ -1,50 +1,51 @@
 ## Changelog : bhasile (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Bhasile au cours des 30 derniers jours. Les principales évolutions concernent la gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation) avec l'ajout de formulaires, de listes et de fonctionnalités de gestion des fichiers associés. Des améliorations ont également été apportées à la gestion des finances, à l'interface utilisateur et à la sécurité. Enfin, le nom de l'application a été mis à jour de "Place d'asile" à "Bhasile".
+Ce changelog présente les évolutions récentes de Bhasile (anciennement Place d'Asile), l'outil de gestion du parc de logements pour demandeurs d’asile. Les dernières mises à jour se concentrent sur l'ajout et l'amélioration de la gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation), avec l'ajout de formulaires, de listes, de liens et de tests associés. Des améliorations ont également été apportées à la gestion des finances, à l'interface utilisateur et à la sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de formulaires pour la création et la modification des CPOM (#947, #978, #981).
-- Affichage des CPOM sur la page de la structure (#990).
-- Ajout d'une liste des CPOM (#988).
-- Possibilité d'ajouter des fichiers (conventions) aux CPOM (#972).
-- Ajout de liens vers les CPOM dans le menu et l'en-tête (#996).
-- Affichage des tableaux financiers sur la page de la structure (#971).
-- Amélioration de la gestion des adresses (#1001).
-- Correction d'un bug empêchant la définition du public à "Tout public" lors des modifications (#1020).
-- Autorisation de valeurs négatives pour certains champs financiers (#1015, #1023).
-- Correction d'un bug lié au crash des activités (#1008).
-- Correction d'un bug de redirection après la déconnexion (#1003).
-- Ajout d'un email de contact sur la page d'erreur 403 (#1009).
-- Ajout de suivi sur la sélection de la carte (#998).
-- Suppression des années du CPOM (#953).
-- Ajout d'indicateurs de conformité (#944).
-- Correction d'un bug lié aux liens de redirection dans les marqueurs de carte (#993).
-- Correction d'un bug lié aux retours du formulaire CPOM (#992, #995).
+- Ajout de la gestion des CPOM : formulaires, listes, liens dans le menu et l'en-tête (#947, #972, #988, #996).
+- Ajout d'un modal de confirmation pour les CPOM (#978).
+- Affichage des CPOM sur la page structure (#990).
+- Amélioration de l'affichage des tableaux financiers (#991).
+- Possibilité d'accepter des résultats nets cumulés négatifs (#1023).
+- Correction de l'affichage de l'année du CPOM dans les documents financiers (#1032).
+- Correction de l'affichage des typologies d'années manquantes dans les formulaires opérateur et agentf (#1030).
+- Correction d'un bug où le public était toujours mis à "Tout public" lors des modifications (#1020).
+- Interdiction des valeurs négatives pour la plupart des champs financiers (#1015) et pour le nombre de places (#1017).
+- Ajout d'un journal d'audit (#1018).
+- Modification de la page 403 pour afficher un email de contact (#1009).
+- Correction d'un bug de redirection des marqueurs sur la carte (#993).
+- Ajout d'indicateurs financiers (#957).
+- Amélioration de l'affichage des adresses (#1001).
 
 ### Évolutions techniques
+- Renommage de "Place d'Asile" en "Bhasile" dans le code et l'interface (#982).
 - Mise à jour de la configuration Next.js (#975).
-- Amélioration de la gestion des brackets et formatage du code avec ESLint et Prettier (#1011).
-- Amélioration des contrôles de bloc (#1005).
+- Refactorisation des uploads de fichiers (#994).
 - Ajout de restrictions sur les utilisateurs autorisés (#950).
-- Suppression de TODOs (#1010).
-- Mise à jour de jsdom et d'autres dépendances (#1007, #1006, #985, #960, #951).
-- Suppression de fichiers inutiles dans le workflow CI/CD (#923).
+- Amélioration des contrôles de bloc (#1005).
+- Ajout de tests E2E pour les formulaires de modification et CPOM (#1019, #984).
+- Correction d'un crash des activités (#1008).
 - Ajout de documentation sur l'architecture backend (#999).
-- Renommage de "demarches simplifiées" en "demarches numeriques" (#965).
-- Suppression des champs "places à créer" et "fermer" (#946).
-- Correction d'un problème de cohérence entre le département et le DNA (#966).
-- Ajout d'un message de chargement pour l'utilisation (#962).
-- Mise à jour du nom du projet de "Place d'Asile" à "Bhasile" (#982).
-- Correction d'un problème de sécurité lié à la construction de commandes shell à partir de variables d'environnement (#949).
+- Mise à jour des dépendances (jsdom, divers paquets mineurs et correctifs) (#1007, #1024, #985, #960).
+- Ajout de règles ESLint et formatage avec Prettier (#1011).
+- Suppression de TODOs (#1010).
+- Suppression de code inutile et nettoyage du code (#963, #923, #819).
 
 ### Autres changements
-- Ajout de tests e2e pour les formulaires de modification et de CPOM (#1019, #936, #984).
-- Inversion des numéros de téléphone (#997).
-- Ajout de couleurs d'arrière-plan aux titres dans le formulaire de finance (#967).
 - Correction de fautes de frappe dans les finances (#969).
-- Augmentation de la limite d'upload de fichiers à 30Mo (#958).
-- Nettoyage du code après la gestion des CPOM (#819).
-- Suppression des logs (#956).
-- Ajout de la possibilité d'uploader des fichiers Excel avec macros (.xlsm) (#945).
-- Autorisation de valeurs négatives pour les affectations de réserves de fonds dédiés (#4ff2ae6).
+- Incohérence entre département et code DNA corrigée (#966).
+- Message de chargement amélioré pour l'utilisation (#962).
+- Suppression des années des CPOM (temporairement réintégrées ensuite) (#964, #953).
+- Suppression de logs inutiles (#956).
+- Ajustement de la taille du logo (#1002).
+- Ajout de tracking sur la sélection de la carte (#998).
+- Ajout de couleurs d'arrière-plan aux titres dans le formulaire financier (#967).
+- Correction d'un bug empêchant le bon fonctionnement du formulaire CPOM (#979, #981).
+- Correction d'un bug empêchant l'envoi des données du formulaire de modification des finances (#87581dd).
+- Correction d'un bug où le département était réinitialisé à chaque montage de formulaire (#983).
+- Ajout de la possibilité d'affecter des réserves de fonds dédiés négatives (#4ff2ae6).
+- Mise à jour des données de test pour 2026 (#1031).
+- Correction d'un bug lié à la récupération des structures (#971).
+- Correction d'un bug empêchant l'affichage correct des structures (#980).

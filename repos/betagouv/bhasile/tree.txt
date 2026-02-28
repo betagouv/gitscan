@@ -158,10 +158,15 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260212142418_allowed_user
 │   │   │   └── migration.sql
+│   │   ├── 20260224090123_refacto_file_uploads
+│   │   │   └── migration.sql
+│   │   ├── 20260227100549_audit_log
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.ts
 │   ├── seeders
+│   │   ├── acte-administratif.seed.ts
 │   │   ├── activite.seed.ts
 │   │   ├── adresse-typologie.seed.ts
 │   │   ├── adresse.seed.ts
@@ -170,12 +175,12 @@
 │   │   ├── controle.seed.ts
 │   │   ├── cpom.seed.ts
 │   │   ├── departements-seed.ts
+│   │   ├── document-financier.ts
 │   │   ├── evaluation.seed.ts
 │   │   ├── evenement-indesirable-grave.seed.ts
 │   │   ├── file-upload.seed.ts
 │   │   ├── form.seed.ts
 │   │   ├── operateur.seed.ts
-│   │   ├── parent-child-file-upload.seed.ts
 │   │   ├── structure-typologie.seed.ts
 │   │   └── structure.seed.ts
 │   └── utils
@@ -198,10 +203,12 @@
 │   │   ├── 20251031-migrate-contact-types.ts
 │   │   ├── 20251203-migrate-structureofii-to-structure.ts
 │   │   ├── 20251204-migrate-placeacreer-fermer-to-typologie.ts
-│   │   └── 20251215-move-date-to-years.ts
+│   │   ├── 20251215-move-date-to-years.ts
+│   │   └── 20260220-move-fileuploads.ts
 │   ├── recurring-scripts
 │   │   ├── activites-extract.ts
 │   │   ├── activites-metadata.ts
+│   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
 │   │   ├── fill-allowed-users.ts
 │   │   ├── fill-cpoms.ts
@@ -271,7 +278,9 @@
 │   │   │       │   │   ├── Structure.tsx
 │   │   │       │   │   ├── StructureContent.tsx
 │   │   │       │   │   ├── _actes-administratifs
-│   │   │       │   │   │   └── ActesAdministratifsBlock.tsx
+│   │   │       │   │   │   ├── ActesAdministratifsBlock.tsx
+│   │   │       │   │   │   ├── ActesAdministratifsCategory.tsx
+│   │   │       │   │   │   └── ActesAdministratifsItem.tsx
 │   │   │       │   │   ├── _activite
 │   │   │       │   │   │   ├── ActiviteBlock.tsx
 │   │   │       │   │   │   ├── ActiviteDurations.tsx
@@ -302,7 +311,7 @@
 │   │   │       │   │   │   ├── BudgetExecutoire.tsx
 │   │   │       │   │   │   ├── CpomStaticTable.tsx
 │   │   │       │   │   │   ├── DetailAffectations.tsx
-│   │   │       │   │   │   ├── DocumentsAdministratifs.tsx
+│   │   │       │   │   │   ├── DocumentsFinanciers.tsx
 │   │   │       │   │   │   ├── DotationChart.tsx
 │   │   │       │   │   │   ├── FinancesBlock.tsx
 │   │   │       │   │   │   ├── HistoriqueIndicateursGeneraux.tsx
@@ -358,7 +367,7 @@
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── 07-notes
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── components
+│   │   │       │   │   ├── _components
 │   │   │       │   │   │   └── ModificationTitle.tsx
 │   │   │       │   │   └── layout.tsx
 │   │   │       │   └── page.tsx
@@ -459,6 +468,8 @@
 │   │   │   └── page.tsx
 │   │   ├── actions.ts
 │   │   ├── api
+│   │   │   ├── actes-administratifs
+│   │   │   │   └── acteAdministratif.repository.ts
 │   │   │   ├── activites
 │   │   │   │   ├── activite.repository.ts
 │   │   │   │   ├── activite.service.ts
@@ -483,6 +494,8 @@
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── cpom.repository.ts
 │   │   │   │   └── route.ts
+│   │   │   ├── documents-financiers
+│   │   │   │   └── documentFinancier.repository.ts
 │   │   │   ├── evaluations
 │   │   │   │   └── evaluation.repository.ts
 │   │   │   ├── files
@@ -503,20 +516,24 @@
 │   │   │   │   └── structure-millesime.repository.ts
 │   │   │   ├── structure-typologies
 │   │   │   │   └── structure-typologie.repository.ts
-│   │   │   └── structures
-│   │   │       ├── [id]
-│   │   │       │   ├── adresses
-│   │   │       │   │   └── route.ts
-│   │   │       │   └── route.ts
-│   │   │       ├── dna
-│   │   │       │   └── [code]
-│   │   │       │       └── route.ts
-│   │   │       ├── route.ts
-│   │   │       ├── stats
-│   │   │       │   └── route.ts
-│   │   │       ├── structure.repository.ts
-│   │   │       ├── structure.service.ts
-│   │   │       └── structure.util.ts
+│   │   │   ├── structures
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── adresses
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── dna
+│   │   │   │   │   └── [code]
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   ├── stats
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── structure.repository.ts
+│   │   │   │   ├── structure.service.ts
+│   │   │   │   └── structure.util.ts
+│   │   │   └── user-action
+│   │   │       ├── user-action.repository.ts
+│   │   │       ├── user-action.service.ts
+│   │   │       └── user-action.util.ts
 │   │   ├── components
 │   │   │   ├── AccordionTitle.tsx
 │   │   │   ├── InformationCard.tsx
@@ -564,6 +581,10 @@
 │   │   │   │   ├── SelectWithValidation.tsx
 │   │   │   │   ├── Upload.tsx
 │   │   │   │   ├── UploadWithValidation.tsx
+│   │   │   │   ├── actesAdministratifs
+│   │   │   │   │   ├── ActeAdministratif.tsx
+│   │   │   │   │   ├── ActesAdministratifs.tsx
+│   │   │   │   │   └── Avenant.tsx
 │   │   │   │   ├── address
 │   │   │   │   │   └── AdressImporter.tsx
 │   │   │   │   ├── cpom
@@ -574,9 +595,7 @@
 │   │   │   │   │   └── StructuresList.tsx
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── Controle.tsx
-│   │   │   │   │   ├── Controles.tsx
-│   │   │   │   │   ├── UploadsByCategory.tsx
-│   │   │   │   │   └── UploadsByCategoryFile.tsx
+│   │   │   │   │   └── Controles.tsx
 │   │   │   │   ├── evaluations
 │   │   │   │   │   ├── Evaluation.tsx
 │   │   │   │   │   ├── Evaluations.tsx
@@ -587,6 +606,7 @@
 │   │   │   │   │   │   ├── FieldSetGeneral.tsx
 │   │   │   │   │   │   └── FieldSetStructures.tsx
 │   │   │   │   │   └── structure
+│   │   │   │   │       ├── FieldSetActeAdministratif.tsx
 │   │   │   │   │       ├── FieldSetAdresseAdministrative.tsx
 │   │   │   │   │       ├── FieldSetCalendrier.tsx
 │   │   │   │   │       ├── FieldSetContacts.tsx
@@ -690,7 +710,6 @@
 │   │       ├── acteAdministratif.util.ts
 │   │       ├── adresse.util.ts
 │   │       ├── budget.util.ts
-│   │       ├── categoryToDisplay.util.ts
 │   │       ├── classname.util.ts
 │   │       ├── collectiveAdress.util.ts
 │   │       ├── common.util.ts
@@ -706,7 +725,6 @@
 │   │       ├── getErrorMessages.util.ts
 │   │       ├── number.util.ts
 │   │       ├── phone.util.ts
-│   │       ├── proxy.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
 │   │       ├── structureMillesime.util.ts
@@ -720,9 +738,12 @@
 │   ├── lib
 │   │   ├── minio.ts
 │   │   ├── next-auth
+│   │   │   ├── auth-util.ts
 │   │   │   └── auth.ts
 │   │   └── prisma.ts
-│   ├── proxy-config.ts
+│   ├── proxy
+│   │   ├── auth-config.ts
+│   │   └── auth-util.ts
 │   ├── proxy.ts
 │   ├── schemas
 │   │   ├── api
@@ -779,15 +800,14 @@
 │   │           └── recoveryAdresses.schema.ts
 │   └── types
 │       ├── ListColumn.ts
+│       ├── acte-administratif.type.ts
 │       ├── adresse.type.ts
-│       ├── categoryToDisplay.type.ts
 │       ├── contact.type.ts
 │       ├── controle.type.ts
 │       ├── cpom.type.ts
 │       ├── departement.type.ts
-│       ├── document-financier.ts
+│       ├── document-financier.type.ts
 │       ├── fetch-state.type.ts
-│       ├── file-upload.type.ts
 │       ├── form.type.ts
 │       ├── global.ts
 │       ├── prisma.type.ts
@@ -930,4 +950,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-245 directories, 687 files
+252 directories, 700 files
