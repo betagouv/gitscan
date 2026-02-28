@@ -8,14 +8,19 @@ and this project adheres to
 
 ### Added
 
+- ✨(frontend) integrate new Blocknote AI feature #1016
 - 👷(docker) add arm64 platform support for image builds
 - ✨(tracking) add UTM parameters to shared document links
 - ✨(frontend) add floating bar with leftpanel collapse button #1876
 - ✨(frontend) Can print a doc #1832
 - ✨(backend) manage reconciliation requests for user accounts #1878
 - 👷(CI) add GHCR workflow for forked repo testing #1851
+- ✨(frontend) Move doc modal #1886
+- ⚡️(backend) remove content from Document serializer when asked #1910
 - ✨(backend) allow the duplication of subpages #1893
 - ✨(backend) Onboarding docs for new users #1891
+- 🩺(trivy) add trivyignore file and add minimatch CVE #1915
+- 🚩 Add feature flags for the AI feature #1922
 
 ### Changed
 
@@ -24,12 +29,15 @@ and this project adheres to
 - 💄(frontend) align colors and logo with ui-kit v2 #1869
 - 🚸(backend) sort user search results by proximity with the active user #1802
 - 🚸(oidc) ignore case when fallback on email #1880
+- ⚡️(CI) optimize Docker Hub workflow #1919
 
 ### Fixed
 
 - 🐛(frontend) fix broadcast store sync #1846
 - 🐛(helm) use celery resources instead of backend resources
 - 🐛(helm) reverse liveness and readiness for backend deployment
+- 🐛(y-provider) use CONVERSION_FILE_MAX_SIZE settings #1913
+- 🐛(frontend) fix callout block spacing for old browsers #1914
 
 ## [v4.5.0] - 2026-01-28
 

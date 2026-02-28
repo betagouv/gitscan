@@ -2,6 +2,7 @@
 ├── .dockerignore
 ├── .gitattributes
 ├── .github
+│   ├── .trivyignore
 │   ├── ISSUE_TEMPLATE
 │   │   ├── Bug_report.md
 │   │   ├── Feature_request.md
@@ -237,6 +238,7 @@
     │   │   │   │   ├── test_api_document_accesses_create.py
     │   │   │   │   ├── test_api_document_invitations.py
     │   │   │   │   ├── test_api_document_versions.py
+    │   │   │   │   ├── test_api_documents_ai_proxy.py
     │   │   │   │   ├── test_api_documents_ai_transform.py
     │   │   │   │   ├── test_api_documents_ai_translate.py
     │   │   │   │   ├── test_api_documents_all.py
@@ -324,6 +326,7 @@
     │   │       └── test_commands_create_demo.py
     │   ├── impress
     │   │   ├── __init__.py
+    │   │   ├── asgi.py
     │   │   ├── celery_app.py
     │   │   ├── configuration
     │   │   │   └── theme
@@ -401,11 +404,12 @@
     │   │   │   │   │   │   └── test_import.md
     │   │   │   │   │   ├── auth.setup.ts
     │   │   │   │   │   ├── config.spec.ts
+    │   │   │   │   │   ├── doc-ai.spec.ts
     │   │   │   │   │   ├── doc-comments.spec.ts
     │   │   │   │   │   ├── doc-create.spec.ts
     │   │   │   │   │   ├── doc-editor.spec.ts
     │   │   │   │   │   ├── doc-export.spec.ts
-    │   │   │   │   │   ├── doc-grid-dnd.spec.ts
+    │   │   │   │   │   ├── doc-grid-move.spec.ts
     │   │   │   │   │   ├── doc-grid.spec.ts
     │   │   │   │   │   ├── doc-header.spec.ts
     │   │   │   │   │   ├── doc-import.spec.ts
@@ -606,17 +610,26 @@
     │   │       │   │   │   │   │   ├── useDocAITransform.tsx
     │   │       │   │   │   │   │   └── useDocAITranslate.tsx
     │   │       │   │   │   │   ├── assets
+    │   │       │   │   │   │   │   ├── IconAI.svg
+    │   │       │   │   │   │   │   ├── ai-loader.svg
     │   │       │   │   │   │   │   ├── doc-found.svg
     │   │       │   │   │   │   │   ├── doc-link.svg
     │   │       │   │   │   │   │   ├── doc-plus.svg
     │   │       │   │   │   │   │   ├── doc-selected.svg
     │   │       │   │   │   │   │   ├── loader.svg
+    │   │       │   │   │   │   │   ├── wand_stars.svg
     │   │       │   │   │   │   │   └── warning.svg
     │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── AI
+    │   │       │   │   │   │   │   │   ├── AIButtonMIT.tsx
+    │   │       │   │   │   │   │   │   ├── AIMenu.tsx
+    │   │       │   │   │   │   │   │   ├── AIToolbarButton.tsx
+    │   │       │   │   │   │   │   │   ├── IconAI.tsx
+    │   │       │   │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   │   └── useAI.tsx
     │   │       │   │   │   │   │   ├── BlockNoteEditor.tsx
     │   │       │   │   │   │   │   ├── BlockNoteSuggestionMenu.tsx
     │   │       │   │   │   │   │   ├── BlockNoteToolBar
-    │   │       │   │   │   │   │   │   ├── AIButton.tsx
     │   │       │   │   │   │   │   │   ├── BlockNoteToolbar.tsx
     │   │       │   │   │   │   │   │   ├── FileDownloadButton.tsx
     │   │       │   │   │   │   │   │   ├── MarkdownButton.tsx
@@ -740,6 +753,7 @@
     │   │       │   │   │   │   │   ├── useDocs.tsx
     │   │       │   │   │   │   │   ├── useDocsFavorite.tsx
     │   │       │   │   │   │   │   ├── useDuplicateDoc.tsx
+    │   │       │   │   │   │   │   ├── useMoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRestoreDoc.tsx
     │   │       │   │   │   │   │   ├── useSubDocs.tsx
@@ -803,6 +817,7 @@
     │   │       │   │   │   │   │   ├── desynchro.svg
     │   │       │   │   │   │   │   └── undo.svg
     │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── AlertModalRequestAccess.tsx
     │   │       │   │   │   │   │   ├── DocDesynchronized.tsx
     │   │       │   │   │   │   │   ├── DocInheritedShareContent.tsx
     │   │       │   │   │   │   │   ├── DocRoleDropdown.tsx
@@ -833,8 +848,7 @@
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useDetach.tsx
     │   │       │   │   │   │   │   ├── useDocChildren.tsx
-    │   │       │   │   │   │   │   ├── useDocTree.tsx
-    │   │       │   │   │   │   │   └── useMove.tsx
+    │   │       │   │   │   │   │   └── useDocTree.tsx
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   ├── doc-extract-bold.svg
     │   │       │   │   │   │   │   └── sub-page-logo.svg
@@ -868,6 +882,7 @@
     │   │       │   │   │       │   └── useImportDoc.tsx
     │   │       │   │   │       ├── components
     │   │       │   │   │       │   ├── DocGridContentList.tsx
+    │   │       │   │   │       │   ├── DocMoveModal.tsx
     │   │       │   │   │       │   ├── DocsGrid.tsx
     │   │       │   │   │       │   ├── DocsGridActions.tsx
     │   │       │   │   │       │   ├── DocsGridItem.tsx
@@ -876,6 +891,7 @@
     │   │       │   │   │       │   ├── DocsGridTrashbinActions.tsx
     │   │       │   │   │       │   ├── Draggable.tsx
     │   │       │   │   │       │   ├── Droppable.tsx
+    │   │       │   │   │       │   ├── ModalConfimationMoveDoc.tsx
     │   │       │   │   │       │   ├── __tests__
     │   │       │   │   │       │   │   └── DocsGridItemDate.test.tsx
     │   │       │   │   │       │   └── index.ts
@@ -1181,4 +1197,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-263 directories, 920 files
+264 directories, 935 files
