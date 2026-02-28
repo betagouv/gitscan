@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.68.0](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.67.2...docker-container@v2.68.0) (2026-02-26)
+
+
+### Features
+
+* **admin:** Add pagination and search on GeneralInfos ([99e14bc](https://github.com/MTES-MCT/rapportnav2/commit/99e14bc4883d6a42dfff7a0e68b448696fec91b2))
+
+
+### Bug Fixes
+
+* bump monitor-ui ([3444f2c](https://github.com/MTES-MCT/rapportnav2/commit/3444f2c175c203e11201cec9fef527bf1015e443))
+* **secu:** npm audit fix ([2151cac](https://github.com/MTES-MCT/rapportnav2/commit/2151cacb5c0d22b5eab8ee37aa1fea75fbd8d631))
+
+## [2.67.2](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.67.1...docker-container@v2.67.2) (2026-02-24)
+
+
+### Bug Fixes
+
+* **frontend:** formik coordonates input ([9d76808](https://github.com/MTES-MCT/rapportnav2/commit/9d768087435d3528b8badc578ed34b9a68d34b67))
+
 ## [2.67.1](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.67.0...docker-container@v2.67.1) (2026-02-23)
 
 

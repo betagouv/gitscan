@@ -442,19 +442,22 @@
 │   │   │   │                       │   │   ├── AgentAdminController.kt
 │   │   │   │                       │   │   ├── AgentRoleAdminController.kt
 │   │   │   │                       │   │   ├── ApiAdminController.kt
-│   │   │   │                       │   │   ├── ApiKey.kt
 │   │   │   │                       │   │   ├── ApiKeysAdminController.kt
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
 │   │   │   │                       │   │   ├── UserAdminController.kt
 │   │   │   │                       │   │   ├── adapters
+│   │   │   │                       │   │   │   ├── input
+│   │   │   │                       │   │   │   │   └── AdminGeneralInfosUpdateInput.kt
 │   │   │   │                       │   │   │   └── outputs
-│   │   │   │                       │   │   │       ├── ApiKeyAuditOutput.kt
-│   │   │   │                       │   │   │       ├── AuthenticationAuditOutput.kt
-│   │   │   │                       │   │   │       ├── PaginatedApiKeyAuditOutput.kt
-│   │   │   │                       │   │   │       └── PaginatedAuthenticationAuditOutput.kt
-│   │   │   │                       │   │   └── input
-│   │   │   │                       │   │       └── AdminGeneralInfosUpdateInput.kt
+│   │   │   │                       │   │   │       ├── AdminApiKeyAuditOutput.kt
+│   │   │   │                       │   │   │       ├── AdminAuthenticationAuditOutput.kt
+│   │   │   │                       │   │   │       ├── AdminGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       ├── AdminPaginatedApiKeyAuditOutput.kt
+│   │   │   │                       │   │   │       ├── AdminPaginatedAuthenticationAuditOutput.kt
+│   │   │   │                       │   │   │       └── AdminPaginatedGeneralInfosOutput.kt
+│   │   │   │                       │   │   └── models
+│   │   │   │                       │   │       └── AdminApiKey.kt
 │   │   │   │                       │   ├── auth
 │   │   │   │                       │   │   ├── ApiAuthController.kt
 │   │   │   │                       │   │   └── adapters
@@ -878,7 +881,7 @@
 │   │       │               └── rapportnav
 │   │       │                   ├── RapportNavApplicationTests.kt
 │   │       │                   ├── config
-│   │       │                   │   ├── ApiKeyAuthenticationFilterTest.kt
+│   │       │                   │   ├── AdminApiKeyAuthenticationFilterTest.kt
 │   │       │                   │   ├── AuditorAwareImplTest.kt
 │   │       │                   │   ├── CorsConfigTest.kt
 │   │       │                   │   ├── CustomAuthenticationFilterTest.kt
@@ -947,14 +950,14 @@
 │   │       │                   │   │   │           ├── ComputeFishOperationalSummaryTests.kt
 │   │       │                   │   │   │           └── ComputeSailingOperationalSummaryTest.kt
 │   │       │                   │   │   ├── apikey
-│   │       │                   │   │   │   ├── CreateApiKeyTest.kt
-│   │       │                   │   │   │   ├── DisableApiKeyTest.kt
-│   │       │                   │   │   │   ├── GetAllApiKeysTest.kt
-│   │       │                   │   │   │   ├── GetApiKeyAuditLogsForPublicIdTest.kt
-│   │       │                   │   │   │   ├── LogApiKeyAuditTest.kt
-│   │       │                   │   │   │   ├── RotateApiKeyTest.kt
-│   │       │                   │   │   │   ├── UpdateApiKeyLastUsedAtTest.kt
-│   │       │                   │   │   │   └── ValidateApiKeyTest.kt
+│   │       │                   │   │   │   ├── CreateAdminApiKeyTest.kt
+│   │       │                   │   │   │   ├── DisableAdminApiKeyTest.kt
+│   │       │                   │   │   │   ├── GetAdminApiKeyAuditLogsForPublicIdTest.kt
+│   │       │                   │   │   │   ├── GetAllAdminApiKeysTest.kt
+│   │       │                   │   │   │   ├── LogAdminApiKeyAuditTest.kt
+│   │       │                   │   │   │   ├── RotateAdminApiKeyTest.kt
+│   │       │                   │   │   │   ├── UpdateAdminApiKeyLastUsedAtTest.kt
+│   │       │                   │   │   │   └── ValidateAdminApiKeyTest.kt
 │   │       │                   │   │   ├── auth
 │   │       │                   │   │   │   ├── HashServiceTest.kt
 │   │       │                   │   │   │   ├── LogAuthenticationAuditTest.kt
@@ -1145,8 +1148,8 @@
 │   │       │                   │   │   │       └── ApiKeyModelTest.kt
 │   │       │                   │   │   └── repositories
 │   │       │                   │   │       ├── apikey
-│   │       │                   │   │       │   ├── JPAApiKeyAuditRepositoryTest.kt
-│   │       │                   │   │       │   └── JPAApiKeyRepositoryTest.kt
+│   │       │                   │   │       │   ├── JPAAdminApiKeyAuditRepositoryTest.kt
+│   │       │                   │   │       │   └── JPAAdminApiKeyRepositoryTest.kt
 │   │       │                   │   │       ├── mission
 │   │       │                   │   │       │   ├── JPAMissionNavRepositoryTest.kt
 │   │       │                   │   │       │   ├── action
@@ -1500,7 +1503,8 @@
 │   │   │   │   │       ├── admin-apikey-types.ts
 │   │   │   │   │       ├── admin-general-infos-types.ts
 │   │   │   │   │       ├── admin-services-type.ts
-│   │   │   │   │       └── admin-user-auth-logging-types.ts
+│   │   │   │   │       ├── admin-user-auth-logging-types.ts
+│   │   │   │   │       └── pagination-types.ts
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── __tests__
@@ -2251,4 +2255,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-443 directories, 1810 files
+444 directories, 1813 files

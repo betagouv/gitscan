@@ -1,21 +1,22 @@
 {
   "url": "https://github.com/MTES-MCT/rapportnav2",
   "name": "rapportnav2",
-  "description": "RapportNav est un outil de rapport de mission développé par l'administration française. Il permet de gérer et de suivre les missions, les informations générales et les rapports.",
+  "description": "RapportNav est un outil de rapport de mission développé par l'administration française. Il permet de gérer et de suivre les opérations et les données associées.",
   "language": "Kotlin",
   "features": [
-    "Gestion des missions",
-    "Rapports de mission",
-    "Gestion des informations générales",
-    "Gestion des cibles",
-    "Suivi des infractions",
+    "Gestion des rapports de mission",
+    "Suivi des opérations",
     "Gestion des ressources",
-    "Statistiques"
+    "Analyse des données",
+    "Gestion des utilisateurs",
+    "Gestion des infractions",
+    "Gestion des navires",
+    "Gestion des équipages"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Spring-boot",
-    "Flyway",
+    "Flyway migrations",
     "PostgreSQL",
     "React",
     "Vite",
@@ -26,23 +27,27 @@
     "Backend Spring-boot",
     "Frontend React",
     "Base de données PostgreSQL",
-    "API REST",
-    "Docker"
+    "API REST"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
+  "auth.providers": [],
   "tests": [
-    "Unit tests",
-    "Integration tests"
+    "Vitest",
+    "CodeQL",
+    "Trivy"
   ],
   "workflows": [
     "Build & Test Frontend",
     "Build & Test Backend"
   ],
-  "lastActivity": "2026-02-23T00:00:00Z",
+  "lastActivity": "2026-02-26T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -53,12 +58,13 @@
     "openIssues": null
   },
   "tags": [
-    "reporting",
-    "missions",
-    "administration",
+    "rapport de mission",
+    "administration française",
+    "gestion de données",
     "Kotlin",
     "React",
     "PostgreSQL",
-    "France"
+    "sécurité",
+    "surveillance"
   ]
 }

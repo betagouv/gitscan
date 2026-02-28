@@ -1,28 +1,33 @@
 ## Changelog : rapportnav2 (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de rapportnav2 apportent des améliorations significatives en matière de sécurité, notamment l'ajout de journaux d'audit pour l'authentification et les clés API, ainsi que le renforcement de la protection contre les vulnérabilités courantes. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été implémentées, notamment concernant la gestion des coordonnées GPS et l'affichage du nombre de cibles.
+Ce changelog résume les améliorations apportées à rapportnav2 au cours des 30 derniers jours. Les mises à jour incluent des corrections de bugs, des améliorations de la sécurité, de nouvelles fonctionnalités pour l'administration et l'interface utilisateur, ainsi que des optimisations techniques pour la gestion des erreurs et des tests.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage du nombre de cibles sur l'interface utilisateur (#1207).
-- Correction d'un bug empêchant la suppression de missions (#1233).
-- Correction d'un bug lié à la gestion des informations générales et des ressources (#1232).
-- Correction d'un problème d'affichage des coordonnées GPS (#1218).
-- Ajout d'une option pour indiquer si une ressource est complète pour les statistiques (#1159).
-- Ajout d'une fonctionnalité de recherche dans le panneau d'administration (#1160).
+- Ajout de la pagination et de la recherche sur la page "Informations générales" dans l'interface d'administration. (#1231)
+- Amélioration de l'interface pour la saisie des coordonnées GPS. (#1217)
+- Implémentation de l'affichage du nombre de cibles sur le titre. (#1206)
+- Ajout de la gestion du nombre de cibles dans l'interface utilisateur. (#1206)
 
 ### Évolutions techniques
-- Renforcement de la sécurité avec l'ajout de journaux d'audit pour l'authentification et les clés API.
-- Amélioration de la configuration CORS et CSRF pour une meilleure sécurité.
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (npm audit fix).
-- Refactorisation du code pour améliorer la gestion des erreurs et l'utilisation de JPA.
-- Amélioration de la gestion des erreurs et implémentation des réponses RFC 7807 pour une meilleure communication des erreurs.
-- Mise à jour des images Docker pour inclure des correctifs de sécurité.
-- Amélioration de la configuration de Sentry pour le suivi des erreurs.
+- Renforcement de la sécurité avec l'ajout de logs d'audit pour les clés API et l'authentification.
+- Amélioration de la configuration de la sécurité CORS et CSRF.
+- Mise en place de la journalisation Sentry pour le suivi des erreurs et des performances.
+- Refactorisation de la gestion des erreurs avec l'implémentation des réponses "Problem Detail" selon RFC 7807.
+- Amélioration des tests unitaires et d'intégration, notamment pour les entités JPA et les cas d'utilisation.
+- Mise à jour des dépendances : `monitor-ui`, `aquasecurity/trivy-action`, `flyway`.
+- Correction de problèmes liés à la configuration de Spring et à l'emplacement des fichiers de configuration.
+- Amélioration de la gestion des erreurs lors de l'exportation de données.
+- Correction d'un problème de chargement des données dans l'interface utilisateur.
+- Correction d'un problème lié à l'utilisation de l'ID de l'unité de contrôle lors de la mise à jour des ressources.
+- Correction d'un bug empêchant la suppression de missions. (#1233)
+- Correction d'un bug lié à la complétion des statistiques de ressources. (#1253)
 
 ### Autres changements
-- Mise à jour des dépendances frontend.
-- Nettoyage du code et suppression de code inutile.
-- Ajout de tests unitaires et d'intégration.
-- Amélioration de la documentation.
-- Correction de bugs mineurs et améliorations de la performance.
+- Ajout de tests pour MonitorEnv.
+- Nettoyage du code et refactorisation de certaines parties du backend.
+- Mise à jour de la documentation.
+- Corrections de vulnérabilités identifiées par les outils d'analyse de sécurité (npm audit, Trivy).
+- Amélioration de la configuration de l'image Docker pour la sécurité.
+- Suppression de données sensibles dans les logs.
+- Ajout de la validation des données sur le contrôleur `MissionGeneralInfoRestController`.
