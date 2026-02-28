@@ -151,7 +151,7 @@ Instructions :
 - Rédige entièrement en français
 - Utilise des puces (tirets) pour lister les changements
 - Ignore les mises à jour de dépendances de routine (bumps dependabot/renovate)
-- Mentionne les numéros de PR/issue quand disponibles avec le lien github (ex: #1234)
+- Mentionne les numéros de PR/issue quand disponibles avec le lien github (ex: [#1234](https://github.com/$ORG_NAME/$REPO_NAME/issues/1234))
 - Regroupe les changements similaires (ex: plusieurs bumps dependabot)
 - Si une section est vide, n'affiche pas la section
 - Ne génère que le markdown, sans blocs de code englobants
