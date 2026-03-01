@@ -1,37 +1,30 @@
 ## Changelog : mon-suivi-justice (30 derniers jours)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'évolution du service mon-suivi-justice. Les modifications portent principalement sur la mise à jour des dépendances techniques du projet, assurant ainsi sa sécurité et sa stabilité. Une correction a également été apportée à la chaîne d'intégration.
+Ce changelog fait état de plusieurs mises à jour techniques apportées à l'application mon-suivi-justice au cours des 30 derniers jours. Ces mises à jour concernent principalement la mise à jour des dépendances du projet, ainsi qu'une correction concernant la chaîne d'intégration. Ces changements visent à améliorer la sécurité, la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Correction de la chaîne d'intégration (#1408, #1414)
+- Correction de la chaîne d'intégration pour la construction de l'application. [#1402](https://github.com/betagouv/mon-suivi-justice/pull/1402)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances Ruby et Rails vers leurs dernières versions stables, incluant :
-  - `faraday` (2.14.0 -> 2.14.1)
-  - `spring` (4.4.0 -> 4.4.2)
-  - `esbuild` (0.27.2 -> 0.27.3, 0.27.0 -> 0.27.2)
-  - `@rails/actioncable` (8.1.100 -> 8.1.200)
-  - `@rails/actiontext` (8.1.100 -> 8.1.200)
-  - `@rails/activestorage` (8.1.100 -> 8.1.200)
-  - `pg` (1.6.2 -> 1.6.3)
-  - `simple_form` (5.4.0 -> 5.4.1)
-  - `trix` (2.1.15 -> 2.1.16)
-  - `uri` (1.0.3 -> 1.0.4)
-  - `faraday-retry` (2.3.2 -> 2.4.0)
-  - `@gouvfr/dsfr` (1.14.2 -> 1.14.3)
-  - `tzinfo-data` (1.2025.2 -> 1.2025.3)
-  - `dotenv-rails` (3.1.8 -> 3.2.0)
-  - `addressable` (2.8.7 -> 2.8.8)
-- Mises à jour de dépendances de développement :
-  - `listen` (3.9.0 -> 3.10.0)
-  - `state_machines-graphviz` (0.0.2 -> 0.1.0)
-  - `debug` (1.11.0 -> 1.11.1)
-- Mises à jour de dépendances diverses :
-  - `autoprefixer` (10.4.23 -> 10.4.24)
-  - `date-holidays` (3.26.5 -> 3.26.8)
-  - `lodash` (4.17.21 -> 4.17.23)
-  - `faker` (3.5.2 -> 3.5.3, 3.5.3 -> 3.6.0)
-
-### Autres changements
-Aucun autre changement significatif n'a été apporté au cours des 30 derniers jours.
+- Mise à jour de Nokogiri de 1.19.0 à 1.19.1. [#1415](https://github.com/betagouv/mon-suivi-justice/pull/1415)
+- Mise à jour de Rubocop de 1.81.7 à 1.84.2. [#1413](https://github.com/betagouv/mon-suivi-justice/pull/1413)
+- Mise à jour de Bootsnap de 1.19.0 à 1.23.0. [#1411](https://github.com/betagouv/mon-suivi-justice/pull/1411)
+- Mise à jour de Faraday de 2.14.0 à 2.14.1. [#1408](https://github.com/betagouv/mon-suivi-justice/pull/1408)
+- Mise à jour de Spring de 4.4.0 à 4.4.2. [#1405](https://github.com/betagouv/mon-suivi-justice/pull/1405)
+- Mise à jour de Esbuild de 0.27.2 à 0.27.3. [#1404](https://github.com/betagouv/mon-suivi-justice/pull/1404)
+- Mise à jour de Faker de 3.5.3 à 3.6.0. [#1402](https://github.com/betagouv/mon-suivi-justice/pull/1402)
+- Mise à jour de Rack de 3.2.4 à 3.2.5. [#1414](https://github.com/betagouv/mon-suivi-justice/pull/1414)
+- Mise à jour d'Autoprefixer de 10.4.23 à 10.4.24. [#1394](https://github.com/betagouv/mon-suivi-justice/pull/1394)
+- Mise à jour de Date-holidays de 3.26.5 à 3.26.8. [#1396](https://github.com/betagouv/mon-suivi-justice/pull/1396)
+- Mise à jour de Lodash de 4.17.21 à 4.17.23. [#1390](https://github.com/betagouv/mon-suivi-justice/pull/1390)
+- Mise à jour de Listen de 3.9.0 à 3.10.0. [#1388](https://github.com/betagouv/mon-suivi-justice/pull/1388)
+- Mise à jour de State_machines-graphviz de 0.0.2 à 0.1.0. [#1383](https://github.com/betagouv/mon-suivi-justice/pull/1383)
+- Mise à jour de `@rails/actioncable` de 8.1.100 à 8.1.200. [#1382](https://github.com/betagouv/mon-suivi-justice/pull/1382)
+- Mise à jour de `@rails/actiontext` de 8.1.100 à 8.1.200. [#1381](https://github.com/betagouv/mon-suivi-justice/pull/1381)
+- Mise à jour de `@rails/activestorage` de 8.1.100 à 8.1.200. [#1380](https://github.com/betagouv/mon-suivi-justice/pull/1380)
+- Mise à jour de PG de 1.6.2 à 1.6.3. [#1379](https://github.com/betagouv/mon-suivi-justice/pull/1379)
+- Mise à jour de Simple_form de 5.4.0 à 5.4.1. [#1378](https://github.com/betagouv/mon-suivi-justice/pull/1378)
+- Mise à jour de Trix de 2.1.15 à 2.1.16. [#1377](https://github.com/betagouv/mon-suivi-justice/pull/1377)
+- Mise à jour de URI de 1.0.3 à 1.0.4. [#1376](https://github.com/betagouv/mon-suivi-justice/pull/1376)
+- Mise à jour de Faraday-retry de 2.3.2 à 2.4.0. [#1374](https://github.com/betagouv/mon-suivi-justice/pull/1374)
