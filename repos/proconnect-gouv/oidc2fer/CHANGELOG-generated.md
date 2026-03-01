@@ -1,7 +1,11 @@
 ## Changelog : oidc2fer (30 derniers jours)
 
 ### Résumé
-Ce projet a récemment été mis à jour pour corriger un problème de secrets et assurer la cohérence avec la branche principale. Cette mise à jour garantit que les informations sensibles sont correctement gérées et que le projet reste sécurisé.
+Ce changelog couvre les mises à jour du projet oidc2fer sur les 30 derniers jours. Les changements se concentrent principalement sur la maintenance de l'infrastructure et la mise à jour des métadonnées Renater, assurant ainsi la continuité du service et sa compatibilité avec les dernières informations disponibles.
 
 ### Évolutions techniques
-- Mise à jour des secrets pour correspondre à la branche principale (#208c446) : Cette modification assure que les informations de configuration sensibles sont synchronisées avec la dernière version du code.
+- Mise à jour de l'URL des métadonnées Renater pour garantir la synchronisation avec les informations les plus récentes.
+- Mise à jour des secrets pour refléter l'état actuel de la branche `main`.
+
+### Autres changements
+Aucun autre changement significatif n'a été apporté durant cette période.
