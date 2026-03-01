@@ -1,10 +1,13 @@
 ## Changelog : calendrier.api.gouv.fr (30 derniers jours)
 
 ### Résumé
-Ce changelog couvre une période de maintenance et de surveillance continue de l'API. La principale évolution est la confirmation du bon fonctionnement de l'infrastructure grâce à une action GitHub qui vérifie régulièrement la disponibilité de l'API. Aucune nouvelle fonctionnalité ou correction de bug visible pour les utilisateurs n'a été déployée durant cette période.
+Ce changelog présente les récentes mises à jour de l'API des jours fériés. La principale évolution est une amélioration de la documentation avec des exemples plus clairs pour faciliter l'utilisation de l'API.
+
+### Évolutions fonctionnelles
+- Mise à jour des exemples dans la documentation OpenAPI pour une meilleure compréhension et utilisation de l'API.  [#27](https://github.com/etalab/calendrier.api.gouv.fr/issues/27)
 
 ### Évolutions techniques
-- Ajout d'une action GitHub pour maintenir l'API active et surveiller sa disponibilité (#I0000000000000000000 - implicite via le commit)
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Aucune autre modification significative n'a été apportée au projet durant cette période.
+- Maintien en vie du workflow GitHub Actions pour assurer la disponibilité continue de l'API.
