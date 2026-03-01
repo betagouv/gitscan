@@ -1,59 +1,63 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant de gérer les prélèvements et les programmations, notamment pour les analyses. Elle offre une interface pour les coordinateurs, les préleveurs et les laboratoires.",
+  "description": "Maestro est une application web permettant de gérer les prélèvements et les analyses. Elle est destinée aux professionnels de l'agriculture et de l'environnement.",
   "language": "TypeScript",
   "features": [
     "Gestion des prélèvements",
     "Gestion des programmations",
-    "Suivi des analyses",
+    "Gestion des analyses",
+    "Suivi des prélèvements",
     "Gestion des utilisateurs",
-    "Interface cartographique"
+    "Gestion des abattoirs",
+    "Génération d'étiquettes"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "React",
-    "PostgreSQL",
     "Node.js",
-    "npm",
-    "Docker"
+    "PostgreSQL",
+    "KnexJS",
+    "Browserless",
+    "Maildev",
+    "S3",
+    "i18next",
+    "react-dsfr"
   ],
   "components": [
     "Frontend React",
     "Backend Node.js",
     "Base de données PostgreSQL",
-    "API REST"
+    "API REST",
+    "Microservices (Browserless, Maildev, S3mock)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "session"
-    ],
-    "providers": []
+      "email-password"
+    ]
   },
   "tests": [
     "Vitest"
   ],
-  "workflows": [
-    "build",
-    "test",
-    "lint"
-  ],
-  "lastActivity": "2026-02-24T18:12:11+00:00",
+  "workflows": [],
+  "lastActivity": "2026-02-26T10:28:52+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 0,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 17
+    "openIssues": null
   },
   "tags": [
+    "agriculture",
+    "environnement",
     "prélèvements",
     "analyses",
-    "programmation",
-    "administration",
-    "laboratoires"
+    "gestion",
+    "web",
+    "typescript",
+    "react"
   ]
 }
