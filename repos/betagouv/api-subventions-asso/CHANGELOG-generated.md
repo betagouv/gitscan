@@ -1,26 +1,20 @@
 ## Changelog : api-subventions-asso (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'API a bénéficié d'améliorations significatives en termes de performance, notamment lors de l'importation de fichiers Chorus. Des corrections de bugs ont été apportées pour améliorer la robustesse de l'application, en particulier concernant le parsing des fichiers SCdL et la gestion des données SIREN/RNA. De nouvelles fonctionnalités ont été ajoutées pour faciliter le suivi des données et améliorer la transparence, comme l'export de données vers Metabase.
+Les dernières mises à jour de l'API apportent des améliorations significatives à l'importation des données Chorus, notamment en termes de performance. Des informations plus détaillées sur les consommateurs de l'API sont désormais disponibles, et des corrections de bugs ont été implémentées pour améliorer la gestion des SIREN/RNA et l'analyse des fichiers XLSX. L'interface de dépôt de fichiers a également été légèrement améliorée.
 
 ### Évolutions fonctionnelles
-- Amélioration de la performance lors de l'importation de fichiers Chorus (#3809).
-- Ajout d'informations sur l'administrateur dans les données de suivi (datalog) (#3813).
-- Correction d'un bug qui empêchait la détection correcte des plages de données dans les fichiers XLSX (#3801).
-- Correction d'un problème lié à la gestion des numéros SIREN/RNA multiples et indéfinis (#3797).
-- Troncature des numéros SIRET multiples dans l'interface utilisateur (#3798).
-- Export des données de datalog vers Metabase pour une meilleure analyse (#3796).
-- Ajout d'un mécanisme de "debouncing" pour les notifications de perte de connexion (#3810).
+- Amélioration de la performance de l'importation des fichiers Chorus [#3809](https://github.com/betagouv/api-subventions-asso/issues/3809).
+- Ajout d'informations sur l'administrateur dans les données de suivi (datalog) [#3813](https://github.com/betagouv/api-subventions-asso/issues/3813).
+- Correction d'un bug concernant la détection de la plage de données dans les fichiers XLSX [#3801](https://github.com/betagouv/api-subventions-asso/issues/3801).
+- Correction d'un bug lié à la gestion des SIREN/RNA multiples avec des valeurs indéfinies [#3797](https://github.com/betagouv/api-subventions-asso/issues/3797).
+- Amélioration de la formulation lors du processus de dépôt de fichiers [#3836](https://github.com/betagouv/api-subventions-asso/issues/3836).
+- Ajout de statistiques détaillées sur les consommateurs de l'API [#3826](https://github.com/betagouv/api-subventions-asso/issues/3826).
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la modularité et la maintenabilité, notamment au niveau des services "plats" (#3815).
-- Refactorisation et documentation améliorée de la logique de recherche SIREN/RNA (#3787).
-- Mise à jour de la configuration TypeScript (#3799).
-- Amélioration de la gestion des écritures en masse dans la base de données pour éviter les erreurs (#3801, #3780).
-- Utilisation de `rimraf` à la place de `rm -rf` dans les scripts pour une meilleure compatibilité (#3776).
-- Refactorisation du mapper, du port et de l'adaptateur (#3828).
-- Ajout de statistiques détaillées sur les consommateurs de l'API (#3826).
+- Refactorisation du code pour homogénéiser les services "plats" [#3815](https://github.com/betagouv/api-subventions-asso/issues/3815).
+- Refactorisation du code avec l'utilisation de patterns Mapper, Port et Adapter [#3828](https://github.com/betagouv/api-subventions-asso/issues/3828).
+- Mise à jour de la configuration TypeScript [#3799](https://github.com/betagouv/api-subventions-asso/issues/3799).
 
 ### Autres changements
-- Correction d'un bug empêchant l'écriture en masse lorsque qu'il n'y avait pas de documents à mettre à jour.
-- Publication des versions v0.78.0 et v0.78.1.
+- Publication des versions 0.80.1, 0.80.0 et 0.79.0.

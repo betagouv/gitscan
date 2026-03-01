@@ -1,50 +1,39 @@
 {
   "url": "https://github.com/betagouv/api-subventions-asso",
   "name": "api-subventions-asso",
-  "description": "Ce projet vise à faciliter l'accès des associations aux subventions publiques en centralisant et en partageant les données, et en réduisant la complexité des démarches administratives. Il permet également d'améliorer la transparence de l'utilisation des fonds publics.",
+  "description": "L'API a pour objectif de mettre en commun les données des subventions publiques aux associations, de faciliter l'accès à ces informations pour les associations et d'accroître la transparence sur l'usage de l'argent public.",
   "language": "TypeScript",
   "features": [
-    "Gestion des subventions",
-    "Import de fichiers SCdL",
+    "Importation de fichiers Chorus",
+    "Export de données vers Metabase",
+    "Gestion des données SIREN/RNA",
     "API pour l'interopérabilité",
-    "Collecte et partage de données",
-    "Suivi des demandes de subvention",
-    "Notifications"
+    "Suivi des données",
+    "Dépôt de fichiers"
   ],
-  "audience": [
-    "Associations",
-    "Agents de l'Administration"
-  ],
+  "audience": "Associations",
   "dependencies": [
-    "Express",
-    "PostgreSQL",
-    "Pnpm",
-    "TypeScript",
-    "Axios",
-    "D3"
+    "axios",
+    "d3",
+    "lerna",
+    "prettier-plugin-svelte"
   ],
   "components": [
     "API REST",
-    "Base de données PostgreSQL",
-    "Frontend (React)",
-    "Microservices",
-    "Interface client web"
+    "Frontend React",
+    "Base de données (non spécifiée)",
+    "Microservices (architecture monorepo)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "none"
     ]
   },
-  "tests": [
-    "Jest",
-    "Pytest",
-    "Cypress"
-  ],
+  "tests": "Jest, Pytest, Cypress (inferred from project structure)",
   "workflows": [
-    "CI/CD"
+    "CI/CD (via .github/workflows)"
   ],
-  "lastActivity": "2026-01-28T00:00:00Z",
+  "lastActivity": "2026-02-25T00:00:00.000Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -57,11 +46,11 @@
   "tags": [
     "subventions",
     "associations",
-    "API",
     "données publiques",
+    "API",
     "TypeScript",
-    "administration",
-    "SCdL",
-    "interopérabilité"
+    "France",
+    "Chorus",
+    "SCDL"
   ]
 }
