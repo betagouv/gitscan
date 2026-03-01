@@ -3,6 +3,8 @@
 │   └── settings.local.json
 ├── .dockerignore
 ├── .env.dist
+├── .env.test
+├── .gitattributes
 ├── .github
 │   └── workflows
 │       └── main.yml
@@ -35,6 +37,9 @@
 │   ├── 0016_pale_rhodey.sql
 │   ├── 0017_overrated_the_professor.sql
 │   ├── 0018_tan_gravity.sql
+│   ├── init
+│   │   ├── 0_create-publication.sql
+│   │   └── 1_create_keycloak.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -56,6 +61,7 @@
 │       ├── 0017_snapshot.json
 │       ├── 0018_snapshot.json
 │       └── _journal.json
+├── docker-compose.test.yaml
 ├── docker-compose.yaml
 ├── images
 │   └── db-workflow.png
@@ -347,7 +353,7 @@
 │   │   │   │   ├── __root.tsx
 │   │   │   │   ├── account.tsx
 │   │   │   │   ├── cgu.tsx
-│   │   │   │   ├── connection.tsx
+│   │   │   │   ├── connexion.tsx
 │   │   │   │   ├── constat.$constatId.tsx
 │   │   │   │   ├── constat_.$constatId.pdf.tsx
 │   │   │   │   ├── edit.$reportId.tsx
@@ -386,6 +392,10 @@
 │   └── clear-db.sh
 └── tests
     ├── app.spec.ts
+    ├── keycloak-entrypoint.sh
+    ├── realm-template.json
+    ├── setup.ts
+    ├── teardown.ts
     ├── user.spec.ts
     └── utils.ts
-63 directories, 327 files
+64 directories, 336 files
