@@ -1,29 +1,32 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Ce service public numérique aide les agriculteurs à trouver les aides financières et les dispositifs adaptés à leur situation. Il propose une interface d'administration pour la gestion des aides et un parcours utilisateur pour les agriculteurs.",
+  "description": "Ce service public numérique permet aux agricultrices et agriculteurs de trouver des dispositifs d’aide adaptés à leur situation et leur besoin. Il propose une interface d'administration pour la gestion des aides et un parcours utilisateur pour les agriculteurs.",
   "language": "Python",
   "features": [
     "Gestion des aides publiques",
     "Parcours utilisateur pour les agriculteurs",
     "Interface d'administration",
-    "Export CSV des aides"
+    "Envoi de courriels",
+    "Suivi de l'activité des utilisateurs",
+    "Suivi des erreurs logicielles"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "StimulusJS",
-    "htmx",
     "Brevo",
     "Matomo",
     "Sentry",
-    "Scalingo"
+    "StimulusJS",
+    "htmx",
+    "django-dsfr"
   ],
   "components": [
-    "Frontend Django",
-    "API REST",
+    "Backend Django",
     "Base de données PostgreSQL",
+    "Frontend avec templates Django et StimulusJS/htmx",
+    "API REST",
     "Interface d'administration Django"
   ],
   "auth": {
