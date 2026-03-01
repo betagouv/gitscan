@@ -1,45 +1,55 @@
 .
-├── .editorconfig
-├── .eslintrc.yml
 ├── .github
 │   ├── matomo.png
 │   ├── renovate.json
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
+├── .npmrc
+├── .nvmrc
 ├── .releaserc.yml
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
 ├── custom.d.ts
 ├── docs
+│   ├── ab-testing.md
 │   ├── advanced.md
 │   ├── events.md
 │   ├── heatmap-session-recording.md
-│   └── security.md
+│   ├── security.md
+│   └── server-side-proxy.md
+├── eslint.config.mjs
 ├── jest.config.js
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── src
 │   ├── __tests__
 │   │   ├── __snapshots__
 │   │   │   ├── matomo.basic.test.ts.snap
 │   │   │   └── matomo.pages-router.test.ts.snap
+│   │   ├── ab-testing.test.ts
 │   │   ├── events.test.ts
 │   │   ├── heatmap.test.ts
 │   │   ├── matomo.app-router.test.ts
 │   │   ├── matomo.basic.test.ts
 │   │   ├── matomo.config.test.ts
 │   │   ├── matomo.pages-router.test.ts
+│   │   ├── server-proxy-handler.test.ts
+│   │   ├── server-proxy.test.ts
 │   │   ├── test-setup.ts
 │   │   └── utils.test.ts
+│   ├── ab-testing.ts
 │   ├── events.ts
 │   ├── heatmap.ts
 │   ├── index.ts
+│   ├── server-proxy.ts
 │   ├── track-app-router.ts
 │   ├── track-pages-router.ts
 │   ├── tracker.ts
 │   ├── types.ts
+│   ├── use-ab-test.ts
 │   └── utils.ts
-├── tsconfig.json
-└── yarn.lock
-7 directories, 37 files
+└── tsconfig.json
+7 directories, 47 files
