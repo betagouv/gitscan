@@ -1,7 +1,4 @@
 .
-├── .cursor
-│   └── rules
-│       └── CLAUDE.md
 ├── .dockerignore
 ├── .env.docker
 ├── .env.example
@@ -144,7 +141,6 @@
 │   │   │   │   ├── aife.jpeg
 │   │   │   │   ├── cisirh.png
 │   │   │   │   ├── cnam.jpg
-│   │   │   │   ├── dge.png
 │   │   │   │   ├── dgfip.jpeg
 │   │   │   │   ├── dila_premier_ministre.jpg
 │   │   │   │   ├── dinum.png
@@ -879,6 +875,7 @@
 │   │   │   └── multi_select_component.rb
 │   │   ├── flash_alert_component.rb
 │   │   ├── habilitation
+│   │   │   ├── origin_header_info.rb
 │   │   │   └── user_alerts_component.rb
 │   │   ├── historical_authorization_request_event_component.html.erb
 │   │   ├── historical_authorization_request_event_component.rb
@@ -888,12 +885,29 @@
 │   │   ├── instructor_menu_component.rb
 │   │   ├── link_component.rb
 │   │   ├── molecules
+│   │   │   ├── duration_card_component.html.erb
+│   │   │   ├── duration_card_component.rb
 │   │   │   ├── instructor_banner_notice_component.rb
+│   │   │   ├── stat_card_component.html.erb
+│   │   │   ├── stat_card_component.rb
 │   │   │   └── update_in_progress_notice_component.rb
 │   │   └── organisms
-│   │       └── authorization_request_forms
-│   │           ├── legal_framework_component.html.erb
-│   │           └── legal_framework_component.rb
+│   │       ├── authorization_request_forms
+│   │       │   ├── legal_framework_component.html.erb
+│   │       │   └── legal_framework_component.rb
+│   │       └── stats
+│   │           ├── duration_cards_component.html.erb
+│   │           ├── duration_cards_component.rb
+│   │           ├── filters_component.html.erb
+│   │           ├── filters_component.rb
+│   │           ├── loading_overlay_component.html.erb
+│   │           ├── loading_overlay_component.rb
+│   │           ├── summary_cards_component.html.erb
+│   │           ├── summary_cards_component.rb
+│   │           ├── time_series_chart_component.html.erb
+│   │           ├── time_series_chart_component.rb
+│   │           ├── transcription_component.html.erb
+│   │           └── transcription_component.rb
 │   ├── controllers
 │   │   ├── admin
 │   │   │   ├── impersonate_controller.rb
@@ -972,6 +986,7 @@
 │   │   │   ├── refuse_authorization_requests_controller.rb
 │   │   │   ├── request_changes_on_authorization_requests_controller.rb
 │   │   │   ├── revoke_authorization_requests_controller.rb
+│   │   │   ├── revoke_authorizations_controller.rb
 │   │   │   └── transfer_authorization_requests_controller.rb
 │   │   ├── instruction_controller.rb
 │   │   ├── manual_transfer_authorization_requests_controller.rb
@@ -1024,7 +1039,9 @@
 │   │   │   ├── api_sfip_r2p_facade.rb
 │   │   │   ├── base.rb
 │   │   │   └── default_facade.rb
-│   │   └── new_authorization_request.rb
+│   │   ├── new_authorization_request.rb
+│   │   └── stats
+│   │       └── filters_facade.rb
 │   ├── form_builders
 │   │   ├── authorization_request_form_builder.rb
 │   │   ├── authorization_request_form_from_instructor_builder.rb
@@ -1064,6 +1081,7 @@
 │   │   ├── application_interactor.rb
 │   │   ├── assign_default_data_to_authorization_request.rb
 │   │   ├── assign_documents_to_instructor_draft_request.rb
+│   │   ├── assign_france_connect_defaults_on_reopening.rb
 │   │   ├── assign_latest_production_data_in_authorization_request.rb
 │   │   ├── assign_params_to_authorization_request.rb
 │   │   ├── build_instructor_draft_request_models.rb
@@ -1119,6 +1137,7 @@
 │   │   ├── find_or_create_user_through_pro_connect.rb
 │   │   ├── find_organization.rb
 │   │   ├── increment_authorization_request_unread_counter.rb
+│   │   ├── mark_authorization_as_revoked.rb
 │   │   ├── mark_authorizations_as_revoked.rb
 │   │   ├── mark_instructor_draft_as_claimed.rb
 │   │   ├── regenerate_instructor_draft_request_public_id.rb
@@ -1128,6 +1147,9 @@
 │   │   ├── save_instructor_draft_request.rb
 │   │   ├── send_authorization_request_transfer_email_to_users.rb
 │   │   ├── send_invitation_email_instructor_draft_request.rb
+│   │   ├── stats
+│   │   │   └── fetch_stats_data.rb
+│   │   ├── transition_authorization_request_to_revoked_if_needed.rb
 │   │   ├── transition_authorization_request_to_stage_of_authorization.rb
 │   │   ├── trigger_authorization_request_event.rb
 │   │   ├── update_applicant_on_authorization_request.rb
@@ -1137,33 +1159,40 @@
 │   │   └── verify_contacts_emails_asynchronously.rb
 │   ├── javascript
 │   │   ├── application.js
-│   │   └── controllers
-│   │       ├── application.js
-│   │       ├── auto_height_controller.js
-│   │       ├── choose_authorization_request_form_controller.js
-│   │       ├── choose_authorization_request_form_with_or_without_editors_controller.js
-│   │       ├── choose_france_connect_controller.js
-│   │       ├── choose_modalite_with_france_connect_controller.js
-│   │       ├── choose_stage_controller.js
-│   │       ├── clickable_rows_controller.js
-│   │       ├── clipboard_controller.js
-│   │       ├── dsfr_multi_select_controller.js
-│   │       ├── dynamic_modal_controller.js
-│   │       ├── fill_contact_data_with_applicant_data_controller.js
-│   │       ├── filter_controller.js
-│   │       ├── form_selector_controller.js
-│   │       ├── index.js
-│   │       ├── individual_email_checker_controller.js
-│   │       ├── justification_controller.js
-│   │       ├── message_template_selector_controller.js
-│   │       ├── modified_form_controller.js
-│   │       ├── remove_attached_file_controller.js
-│   │       ├── scroll_to_controller.js
-│   │       ├── scroll_to_top_controller.js
-│   │       ├── show_and_hide_controller.js
-│   │       ├── sticky_bar_controller.js
-│   │       ├── toggle_element_display_based_on_checkbox_controller.js
-│   │       └── toggle_element_display_based_on_select_options_controller.js
+│   │   ├── controllers
+│   │   │   ├── application.js
+│   │   │   ├── auto_height_controller.js
+│   │   │   ├── choose_authorization_request_form_controller.js
+│   │   │   ├── choose_authorization_request_form_with_or_without_editors_controller.js
+│   │   │   ├── choose_france_connect_controller.js
+│   │   │   ├── choose_modalite_with_france_connect_controller.js
+│   │   │   ├── choose_stage_controller.js
+│   │   │   ├── clickable_rows_controller.js
+│   │   │   ├── clipboard_controller.js
+│   │   │   ├── dsfr_multi_select_controller.js
+│   │   │   ├── dynamic_modal_controller.js
+│   │   │   ├── fill_contact_data_with_applicant_data_controller.js
+│   │   │   ├── filter_controller.js
+│   │   │   ├── form_selector_controller.js
+│   │   │   ├── index.js
+│   │   │   ├── individual_email_checker_controller.js
+│   │   │   ├── justification_controller.js
+│   │   │   ├── message_template_selector_controller.js
+│   │   │   ├── modified_form_controller.js
+│   │   │   ├── remove_attached_file_controller.js
+│   │   │   ├── scroll_to_controller.js
+│   │   │   ├── scroll_to_top_controller.js
+│   │   │   ├── show_and_hide_controller.js
+│   │   │   ├── stats_controller.js
+│   │   │   ├── sticky_bar_controller.js
+│   │   │   ├── toggle_element_display_based_on_checkbox_controller.js
+│   │   │   └── toggle_element_display_based_on_select_options_controller.js
+│   │   └── stats
+│   │       ├── chart_manager.js
+│   │       ├── data_manager.js
+│   │       ├── date_utils.js
+│   │       ├── filter_manager.js
+│   │       └── ui_manager.js
 │   ├── jobs
 │   │   ├── application_job.rb
 │   │   ├── backfill_malware_scan_sha256_job.rb
@@ -1180,7 +1209,8 @@
 │   │   └── update_organization_insee_payload_job.rb
 │   ├── lib
 │   │   ├── seeds
-│   │   │   └── message_templates.rb
+│   │   │   ├── message_templates.rb
+│   │   │   └── stats.rb
 │   │   └── seeds.rb
 │   ├── mailers
 │   │   ├── abstract_instruction_mailer.rb
@@ -1259,7 +1289,6 @@
 │   │   ├── authorization_definition.rb
 │   │   ├── authorization_document.rb
 │   │   ├── authorization_request
-│   │   │   ├── aides_etat.rb
 │   │   │   ├── annuaire_des_entreprises.rb
 │   │   │   ├── api_*.rb  (52 files)
 │   │   │   ├── formulaire_qf.rb
@@ -1374,6 +1403,7 @@
 │   │   ├── reopen_authorization.rb
 │   │   ├── request_changes_on_authorization_request.rb
 │   │   ├── review_authorization_request.rb
+│   │   ├── revoke_authorization.rb
 │   │   ├── revoke_authorization_request.rb
 │   │   ├── send_message_to_applicant.rb
 │   │   ├── send_message_to_instructors.rb
@@ -1406,7 +1436,16 @@
 │   │   ├── authorization_requests_mentions_query.rb
 │   │   ├── authorizations_mentions_query.rb
 │   │   ├── demandes_habilitations_viewable_by_user.rb
-│   │   └── processing_time_query.rb
+│   │   ├── processing_time_query.rb
+│   │   └── stats
+│   │       ├── backlog_evolution_query.rb
+│   │       ├── base_stats_query.rb
+│   │       ├── duration_stats_query.rb
+│   │       ├── time_series_query.rb
+│   │       ├── time_to_final_instruction_query.rb
+│   │       ├── time_to_first_instruction_query.rb
+│   │       ├── time_to_submit_query.rb
+│   │       └── volume_stats_query.rb
 │   ├── serializers
 │   │   ├── api
 │   │   │   └── v1
@@ -1814,7 +1853,6 @@
 │       │   ├── _authorization_badges.html.erb
 │       │   ├── _blocks.html.erb
 │       │   ├── _card.html.erb
-│       │   ├── _instruction_header_info.html.erb
 │       │   ├── _sandbox_production_badge.html.erb
 │       │   ├── _state_badge.html.erb
 │       │   ├── index.html.erb
@@ -1915,6 +1953,8 @@
 │       │   │   └── new.html.erb
 │       │   ├── revoke_authorization_requests
 │       │   │   └── new.html.erb
+│       │   ├── revoke_authorizations
+│       │   │   └── new.html.erb
 │       │   ├── shared
 │       │   │   ├── _email_preview_accordion.html.erb
 │       │   │   └── _message_templates_section.html.erb
@@ -2004,7 +2044,9 @@
 │       │   ├── mentions_legales.html.erb
 │       │   └── politique_confidentialite.html.erb
 │       ├── stats
-│       │   └── index.html.erb
+│       │   ├── index.html.erb
+│       │   └── shared
+│       │       └── _migration_warning.html.erb
 │       ├── transfer_authorization_requests
 │       │   ├── new_to_another.html.erb
 │       │   └── new_to_me.html.erb
@@ -2035,7 +2077,6 @@
 ├── config
 │   ├── application.rb
 │   ├── authorization_definitions
-│   │   ├── aides_etat.yml
 │   │   ├── api_entreprise.yml
 │   │   ├── api_indicateurs_sociaux.yml
 │   │   ├── api_ingres.yml
@@ -2052,7 +2093,6 @@
 │   │   ├── services_cisirh.yml
 │   │   └── urssaf.yml
 │   ├── authorization_request_forms
-│   │   ├── aides_etat.yml
 │   │   ├── annuaire_des_entreprises.yml
 │   │   ├── api_cpr_pro_adelie.yml
 │   │   ├── api_droits_cnam.yml
@@ -2287,8 +2327,12 @@
 │   │   ├── 20260106171655_fix_verified_reason_default.rb
 │   │   ├── 20260127164801_add_parent_authorization_id_to_authorizations.rb
 │   │   ├── 20260130165452_add_auto_generate_constraint_to_authorization_request_events.rb
+│   │   ├── 20260209124241_add_stats_page_indexes.rb
 │   │   ├── 20260209154842_install_rails_pulse_tables.rb
-│   │   └── 20260217150000_migrate_annuaire_entreprises_conformite_scope_to_conformite_fiscale_sociale.rb
+│   │   ├── 20260217150000_migrate_annuaire_entreprises_conformite_scope_to_conformite_fiscale_sociale.rb
+│   │   ├── 20260223202755_add_authorization_to_revocation_of_authorizations.rb
+│   │   ├── 20260224134138_add_form_uid_to_authorizations.rb
+│   │   └── 20260224140002_fill_form_uid_in_existing_authorizations.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2405,6 +2449,7 @@
 │   │   ├── modérer_une_habilitation.feature
 │   │   ├── notifications.feature
 │   │   ├── révocation_habilitation.feature
+│   │   ├── révocation_habilitation_individuelle.feature
 │   │   ├── templates_messages.feature
 │   │   └── transfert_habilitation.feature
 │   ├── liste_des_habilitations.feature
@@ -2416,7 +2461,6 @@
 │   ├── organisation_fermee.feature
 │   ├── page_faq.feature
 │   ├── page_publique_habilitation.feature
-│   ├── page_stats.feature
 │   ├── redirections.feature
 │   ├── reouverture_habilitation.feature
 │   ├── reporters
@@ -2426,6 +2470,7 @@
 │   ├── soumission_demande_scan_antivirus.feature
 │   ├── sous-domaine_nouvelle_habilitation.feature
 │   ├── sous-domaine_tableau_de_bord.feature
+│   ├── stats_page.feature
 │   ├── step_definitions
 │   │   ├── .keep
 │   │   ├── accessibility_steps.rb
@@ -2450,6 +2495,7 @@
 │   │   ├── organizations_steps.rb
 │   │   ├── query_steps.rb
 │   │   ├── settings.rb
+│   │   ├── stats_steps.rb
 │   │   ├── summary_authorization_requests_steps.rb
 │   │   ├── tabs_steps.rb
 │   │   ├── user_steps.rb
@@ -2594,6 +2640,7 @@
 │   │   ├── dsfr
 │   │   │   └── multi_select_component_spec.rb
 │   │   ├── habilitation
+│   │   │   ├── origin_header_info_spec.rb
 │   │   │   └── user_alerts_component_spec.rb
 │   │   ├── historical_authorization_request_event_component_spec.rb
 │   │   ├── historical_authorization_request_event_icon_component_spec.rb
@@ -2609,14 +2656,24 @@
 │   │       │   └── blank_state_component_preview.rb
 │   │       ├── flash_alert_component_preview.rb
 │   │       ├── habilitation
+│   │       │   ├── origin_header_info_preview.rb
 │   │       │   └── user_alerts_component_preview.rb
 │   │       ├── historical_authorization_request_event_icon_component_preview.rb
 │   │       ├── molecules
+│   │       │   ├── duration_card_component_preview.rb
 │   │       │   ├── instructor_banner_notice_component_preview.rb
+│   │       │   ├── stat_card_component_preview.rb
 │   │       │   └── update_in_progress_notice_component_preview.rb
 │   │       └── organisms
-│   │           └── authorization_request_forms
-│   │               └── legal_framework_component_preview.rb
+│   │           ├── authorization_request_forms
+│   │           │   └── legal_framework_component_preview.rb
+│   │           └── stats
+│   │               ├── duration_cards_component_preview.rb
+│   │               ├── filters_component_preview.rb
+│   │               ├── loading_overlay_component_preview.rb
+│   │               ├── summary_cards_component_preview.rb
+│   │               ├── time_series_chart_component_preview.rb
+│   │               └── transcription_component_preview.rb
 │   ├── controllers
 │   │   ├── api
 │   │   │   └── frontal_controller_spec.rb
@@ -2727,6 +2784,7 @@
 │   ├── interactors
 │   │   ├── .gitkeep
 │   │   ├── affect_default_reason_to_instruction_modification_request_spec.rb
+│   │   ├── assign_france_connect_defaults_on_reopening_spec.rb
 │   │   ├── create_authorization_request_changelog_spec.rb
 │   │   ├── create_authorization_spec.rb
 │   │   ├── create_linked_france_connect_authorization_event_spec.rb
@@ -2749,7 +2807,9 @@
 │   │   ├── find_or_create_user_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_user_through_pro_connect_spec.rb
 │   │   ├── restore_authorization_request_to_latest_authorization_spec.rb
-│   │   └── run_malware_scan_on_documents_spec.rb
+│   │   ├── run_malware_scan_on_documents_spec.rb
+│   │   └── stats
+│   │       └── fetch_stats_data_spec.rb
 │   ├── jobs
 │   │   ├── backfill_malware_scan_sha256_job_spec.rb
 │   │   ├── deliver_authorization_request_webhook_job_spec.rb
@@ -2866,6 +2926,7 @@
 │   │   ├── request_changes_on_authorization_request_spec.rb
 │   │   ├── review_authorization_request_spec.rb
 │   │   ├── revoke_authorization_request_spec.rb
+│   │   ├── revoke_authorization_spec.rb
 │   │   ├── send_message_to_applicant_spec.rb
 │   │   ├── send_message_to_instructors_spec.rb
 │   │   ├── start_next_authorization_request_stage_spec.rb
@@ -2882,7 +2943,15 @@
 │   │   ├── authorization_requests_mentions_query_spec.rb
 │   │   ├── authorizations_mentions_query_spec.rb
 │   │   ├── demandes_habilitations_viewable_by_user_spec.rb
-│   │   └── processing_time_query_spec.rb
+│   │   ├── processing_time_query_spec.rb
+│   │   └── stats
+│   │       ├── backlog_evolution_query_spec.rb
+│   │       ├── base_stats_query_spec.rb
+│   │       ├── time_series_query_spec.rb
+│   │       ├── time_to_final_instruction_query_spec.rb
+│   │       ├── time_to_first_instruction_query_spec.rb
+│   │       ├── time_to_submit_query_spec.rb
+│   │       └── volume_stats_query_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── api
@@ -2900,7 +2969,8 @@
 │   │   ├── dashboard_spec.rb
 │   │   ├── instruction
 │   │   │   └── authorization_requests_spec.rb
-│   │   └── instruction_access_spec.rb
+│   │   ├── instruction_access_spec.rb
+│   │   └── stats_spec.rb
 │   ├── serializers
 │   │   ├── api
 │   │   │   └── v1
@@ -2981,4 +3051,4 @@
     ├── .keep
     └── javascript
         └── .keep
-424 directories, 2697 files
+432 directories, 2759 files

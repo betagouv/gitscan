@@ -1,44 +1,40 @@
 ## Changelog : data_pass (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de DataPass se concentrent sur l'amélioration de l'intégration avec FranceConnect, l'ajout de nouvelles fonctionnalités pour les API partenaires, et la correction de bugs pour une meilleure expérience utilisateur. Des améliorations de sécurité ont également été apportées, notamment avec l'implémentation de l'authentification multi-facteurs pour ProConnect.
+Les dernières mises à jour de DataPass se concentrent sur l'amélioration de l'expérience utilisateur, notamment en facilitant la gestion des habilitations et en ajoutant de nouvelles fonctionnalités pour les partenaires API. Des corrections de bugs et des améliorations de la stabilité ont également été apportées, ainsi que des ajustements pour l'intégration avec FranceConnect et d'autres services.
 
 ### Évolutions fonctionnelles
-- Ajout de la page Politique de confidentialité (#1374).
-- Ajout de la page Mentions légales (#1371).
-- Possibilité de sélectionner le texte dans le champ email pour le transférer (#1364).
-- Amélioration de l'historique de validation avec un affichage plus générique pour la consultation (#1349).
-- Précision du type d'habilitation dans la liste des habilitations (#1347).
-- Possibilité de créer deux habilitations depuis une seule demande (#1344).
-- Implémentation des vues pour les champs FranceConnect pour l'API Particulier (#1320).
-- Possibilité de créer automatiquement une habilitation FranceConnect depuis l'API Particulier (#1320).
-- Configuration des scopes FranceConnect pour l'API Particulier et les éditeurs certifiés (#1324).
-- Ajout de nouveaux scopes pour l'API Particulier Extenso (#1338).
-- Ajout de scopes pour l'API Particulier tarification cantine collège/lycée (#1334).
-- Authentification multi-facteurs (MFA) forcée pour les utilisateurs MonComptePro via ProConnect (#1325).
-- Possibilité de changer l'étape de la modalité d'appel (#1327).
+- Possibilité de révoquer une habilitation directement depuis la page d'habilitation. [#1394](https://github.com/etalab/data_pass/issues/1394)
+- Possibilité de rouvrir une habilitation compatible APIP/APIPFC. [#1399](https://github.com/etalab/data_pass/issues/1399)
+- Ajout d'un bouton de révocation sur la page d'une habilitation. [#1391](https://github.com/etalab/data_pass/issues/1391)
+- Amélioration de l'historique des validations et des générations automatiques d'habilitation pour une meilleure lisibilité. [#1349](https://github.com/etalab/data_pass/issues/1349)
+- Ajout de la possibilité de créer deux habilitations à partir d'une seule demande. [#1344](https://github.com/etalab/data_pass/issues/1344)
+- Ajout de champs pré-remplis pour FranceConnect dans le formulaire API Particulier. [#1346](https://github.com/etalab/data_pass/issues/1346)
+- Implémentation des vues pour les champs FranceConnect API Particulier unifiés. [#1332](https://github.com/etalab/data_pass/issues/1332)
+- Ajout d'une page Politique de confidentialité. [#1374](https://github.com/etalab/data_pass/issues/1374)
+- Ajout d'une page Mentions légales. [#1371](https://github.com/etalab/data_pass/issues/1371)
+- Amélioration de la sélection de texte dans le champ email pour le transfert d'habilitation. [#1364](https://github.com/etalab/data_pass/issues/1364)
+- Ajout de la possibilité de sélectionner le type d'habilitation dans la liste. [#1347](https://github.com/etalab/data_pass/issues/1347)
+- Ajout de nouvelles scopes pour les API Particulier Extenso et Tarification cantine collège/lycée. [#1334](https://github.com/etalab/data_pass/issues/1334)
 
 ### Évolutions techniques
-- Amélioration de la gestion des feature flags, notamment pour l'APIPFC (#1379, #1383).
-- Refactoring de la logique d'affichage des scopes FranceConnect (#1351).
-- Amélioration de la gestion des erreurs pour l'API INSEE (#1333).
-- Mise en place de rails_pulse pour le monitoring de l'application (#1359).
-- Amélioration de la configuration pour les tests avec et sans Docker (#1338).
-- Correction de tests suite à des modifications de code (#1366, #1378).
-- Mise à jour des dépendances (Rubocop, Brakeman, Bundler) (#1369, #1368, #1367, #1355, #1354, #1346, #1328).
-- Ajout d'un cooldown de 7 jours pour les mises à jour de dépendances par Dependabot (#1342).
+- Mise en place d'un nouveau dashboard de statistiques natif remplaçant l'iframe Metabase. [#1341](https://github.com/etalab/data_pass/issues/1341)
+- Refactoring de l'affichage des onglets pour améliorer la performance et la maintenabilité.
+- Amélioration de la gestion des erreurs lors de la récupération des données INSEE. [#1333](https://github.com/etalab/data_pass/issues/1333)
+- Mise en place d'un système de feature flags pour l'APIPFC, permettant une activation progressive et contrôlée. [#1383](https://github.com/etalab/data_pass/issues/1383)
+- Suppression de la configuration Rails Pulse obsolète.
+- Amélioration de la robustesse des tests et correction de tests aléatoires. [#1404](https://github.com/etalab/data_pass/issues/1404)
+- Mise à jour des dépendances Ruby et Rubocop.
+- Ajout d'un cooldown de 7 jours à la configuration de Dependabot.
+- Amélioration de la documentation pour l'utilisation de Docker. [#1338](https://github.com/etalab/data_pass/issues/1338)
 
 ### Autres changements
-- Mise à jour de la documentation pour les éditeurs certifiés FranceConnect (#1324).
-- Correction de l'affichage de la raison d'annulation d'une réouverture dans l'historique (#1381).
-- Suppression d'une route inutilisée (#1372).
-- Correction de l'affichage des CGU (#1362).
-- Ajout de factories pour les nouvelles APIs (#1360).
-- Clarification des valeurs par défaut dans la documentation (#1360).
-- Correction de l'accessibilité des liens externes sur la page Accessibilité (#1326).
-- Suppression des scopes DGFIP pour l'API Entreprise Lutte contre la fraude (#1376).
-- Séparation des scopes conformité sociale et fiscale (#1377).
-- Mise à jour des numéros de téléphone des contacts techniques (#1379).
-- Correction d'un bug lié à l'affichage du cadre juridique FranceConnect (#1348).
-- Suppression de l'affichage des scopes FranceConnect sans modalité (#1351).
-- Correction d'un bug lié à la validation du numéro de téléphone mobile (#1352).
+- Suppression de la plateforme "Aides Etat" et du provider "DGE". [#1397](https://github.com/etalab/data_pass/issues/1397)
+- Suppression du provider "ministere_des_armees".
+- Ajout des numéros de téléphone des contacts techniques pour les APIPFC. [#1379](https://github.com/etalab/data_pass/issues/1379)
+- Ajout de l'identifiant du formulaire dans une habilitation. [#1396](https://github.com/etalab/data_pass/issues/1396)
+- Correction de l'affichage du motif d'annulation de la réouverture. [#1381](https://github.com/etalab/data_pass/issues/1381)
+- Ajout de factories pour les nouvelles APIs (api_gunenv et api_inser_jeunes_sup).
+- Correction de l'accessibilité des liens externes sur la page Accessibilité.
+- Suppression de l'ancien fichier CLAUSE.md.
+- Mise à jour de la documentation pour les scopes FranceConnect.
