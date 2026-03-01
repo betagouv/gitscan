@@ -250,6 +250,7 @@
 │   │   │   │   │   ├── int_analysis_city_features.sql
 │   │   │   │   │   ├── int_analysis_dvg_wide.sql
 │   │   │   │   │   ├── int_analysis_establishments_zlv_usage.sql
+│   │   │   │   │   ├── int_analysis_housing_establishment_echelons.sql
 │   │   │   │   │   ├── int_analysis_housing_owners.sql
 │   │   │   │   │   ├── int_analysis_housing_with_out_flag.sql
 │   │   │   │   │   ├── int_analysis_housing_zlv_usage.sql
@@ -370,6 +371,7 @@
 │   │   │   │   │   ├── marts_bi_housing_geography.sql
 │   │   │   │   │   ├── marts_bi_housing_owners.sql
 │   │   │   │   │   ├── marts_bi_housing_zlv_usage.sql
+│   │   │   │   │   ├── marts_zlv_usage.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── common
 │   │   │   │   │   ├── marts_common_cities.sql
@@ -692,12 +694,11 @@
 │   │   ├── supprimer-les-warnings-not-wrapped-in-act.md
 │   │   └── tester-les-inputs-api.md
 │   ├── performance-improvements.md
-│   ├── plans
-│   │   ├── 2026-01-26-agents-md-configuration-design.md
-│   │   ├── 2026-01-28-document-upload-refactoring.md
-│   │   ├── 2026-02-02-document-events-design.md
-│   │   └── 2026-02-02-frontend-document-api-update.md
-│   └── portail-df-decision-tree.md
+│   └── plans
+│       ├── 2026-01-26-agents-md-configuration-design.md
+│       ├── 2026-01-28-document-upload-refactoring.md
+│       ├── 2026-02-02-document-events-design.md
+│       └── 2026-02-02-frontend-document-api-update.md
 ├── e2e
 │   ├── .env.example
 │   ├── README.md
@@ -1852,9 +1853,7 @@
 │   │   │   ├── signupLinkMissingError.ts
 │   │   │   ├── testAccountError.ts
 │   │   │   ├── unprocessableEntityError.ts
-│   │   │   ├── userDeletedError.ts
 │   │   │   ├── userMissingError.ts
-│   │   │   ├── userSuspendedError.ts
 │   │   │   └── virusDetectedError.ts
 │   │   ├── index.ts
 │   │   ├── infra
@@ -2060,9 +2059,6 @@
 │   │   │   │   │   ├── 20251201123044_documents.ts
 │   │   │   │   │   ├── 20251201123045_documents_housings.ts
 │   │   │   │   │   ├── 20251215164103_dpe-import-optimization-indexes.ts
-│   │   │   │   │   ├── 20251217140000_users-establishments.ts
-│   │   │   │   │   ├── 20251217160000_user_perimeters.ts
-│   │   │   │   │   ├── 20251223100000_user_perimeters_epci.ts
 │   │   │   │   │   ├── 20260122165040_fast-housing-add-actual-dpe.ts
 │   │   │   │   │   ├── 20260127110646_drop-deprecated-precision-fields.ts
 │   │   │   │   │   ├── 20260129092128_documents-add-establishment_id.ts
@@ -2173,7 +2169,6 @@
 │   │   │   ├── SignupLinkApi.ts
 │   │   │   ├── SortApi.ts
 │   │   │   ├── UserApi.ts
-│   │   │   ├── UserPerimeterApi.ts
 │   │   │   └── test
 │   │   │       ├── DocumentApi.test.ts
 │   │   │       ├── EventApi.test.ts
@@ -2232,7 +2227,6 @@
 │   │   │   │   ├── ownerMatchRepository.test.ts
 │   │   │   │   ├── ownerRepository.test.ts
 │   │   │   │   └── precisionRepository.test.ts
-│   │   │   ├── userPerimeterRepository.ts
 │   │   │   └── userRepository.ts
 │   │   ├── routers
 │   │   │   ├── protected.ts
@@ -2397,7 +2391,6 @@
 │   │   │   │   ├── README.md
 │   │   │   │   ├── cerema-sync.sh
 │   │   │   │   ├── export-lovac-users.py
-│   │   │   │   ├── fetch-groups-perimeters.py
 │   │   │   │   ├── requirements.txt
 │   │   │   │   └── utils
 │   │   │   │       ├── backup_localities.py
@@ -2415,15 +2408,9 @@
 │   │   │   │   │   ├── DatafoncierOwner.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── validator.ts
-│   │   │   ├── sync-user-kind
-│   │   │   │   ├── README.md
-│   │   │   │   └── sync_user_kind.py
-│   │   │   └── test-portaildf-rights
+│   │   │   └── sync-user-kind
 │   │   │       ├── README.md
-│   │   │       ├── fetch-test-data.ts
-│   │   │       ├── generate-test-cases.ts
-│   │   │       ├── populate_test_db.py
-│   │   │       └── test-portaildf-rights.ts
+│   │   │       └── sync_user_kind.py
 │   │   ├── services
 │   │   │   ├── ban
 │   │   │   │   ├── ban-api.ts
@@ -2435,7 +2422,6 @@
 │   │   │   │   ├── consultUserService.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mockCeremaService.ts
-│   │   │   │   ├── perimeterService.ts
 │   │   │   │   └── userKindService.ts
 │   │   │   ├── document-upload.ts
 │   │   │   ├── file-validation.ts
@@ -2541,4 +2527,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-385 directories, 2158 files
+384 directories, 2145 files
