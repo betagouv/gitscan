@@ -92,11 +92,13 @@
 │   │   │           │   ├── [slug]
 │   │   │           │   │   ├── page.tsx
 │   │   │           │   │   └── residence-details.module.css
+│   │   │           │   ├── get-residences-page-context.ts
 │   │   │           │   ├── nouvelle-residence
 │   │   │           │   │   └── page.tsx
 │   │   │           │   └── page.tsx
 │   │   │           └── tableau-de-bord
 │   │   │               ├── chart.tsx
+│   │   │               ├── get-bailleur-dashboard-page-context.ts
 │   │   │               ├── page.tsx
 │   │   │               └── tableau-de-bord.module.css
 │   │   ├── (public)
@@ -176,6 +178,7 @@
 │   │   │   └── trouver-un-logement-etudiant
 │   │   │       ├── [[...location]]
 │   │   │       │   ├── find-student-accomodation-page.module.css
+│   │   │       │   ├── get-student-accommodation-page-context.ts
 │   │   │       │   ├── loading.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── not-found.tsx
@@ -190,6 +193,7 @@
 │   │   │                   ├── accommodation-map.tsx
 │   │   │                   ├── accommodation-residence.module.css
 │   │   │                   ├── accommodation-residence.tsx
+│   │   │                   ├── get-accommodation-page-context.ts
 │   │   │                   ├── logement.module.css
 │   │   │                   ├── page.tsx
 │   │   │                   └── prepare-student-life-redirection.tsx
@@ -262,6 +266,8 @@
 │   │   ├── alert-accommodation
 │   │   │   └── alert-accommodation-form.tsx
 │   │   ├── bailleur
+│   │   │   ├── calendly-link.tsx
+│   │   │   ├── contact-team-button.tsx
 │   │   │   ├── details
 │   │   │   │   ├── create-residence-accommodation-list.module.css
 │   │   │   │   ├── create-residence-accommodation-list.tsx
@@ -392,6 +398,7 @@
 │   │   │       └── prepare-student-life-summary.tsx
 │   │   ├── reset-password
 │   │   │   └── reset-password-form.tsx
+│   │   ├── search-params-sync.tsx
 │   │   ├── shared
 │   │   │   ├── availability-badge.tsx
 │   │   │   └── waiting-list-badge.tsx
@@ -424,13 +431,13 @@
 │   │   │   ├── navigation
 │   │   │   │   ├── student-space-navigation.tsx
 │   │   │   │   └── student-space-todo-navigation-button.tsx
+│   │   │   ├── student-breadcrumb.tsx
 │   │   │   └── todo
 │   │   │       ├── student-todo-list.module.css
 │   │   │       └── student-todo-list.tsx
 │   │   ├── tooltip-hover-only.tsx
 │   │   ├── ui
 │   │   │   ├── brand-top.tsx
-│   │   │   ├── breadcrumb.tsx
 │   │   │   ├── createToast.tsx
 │   │   │   ├── dropdown.tsx
 │   │   │   ├── footer
@@ -511,6 +518,7 @@
 │   │   └── request.ts
 │   ├── lib
 │   │   ├── TRACKING.md
+│   │   ├── accommodations-search-params.ts
 │   │   ├── dev-log.ts
 │   │   ├── external-auth-plugin.ts
 │   │   └── tracking.ts
@@ -578,4 +586,4 @@
 │       ├── sanitize-html.ts
 │       └── widget-resize.ts
 └── tsconfig.json
-154 directories, 426 files
+154 directories, 434 files
