@@ -1,19 +1,19 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subventions, les enveloppes financières et les décisions d'attribution. Il offre une interface d'administration pour les agents et des fonctionnalités pour le suivi des projets.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers de subventions, les dotations, les projets et les utilisateurs. Il offre des fonctionnalités d'import de données, de gestion des catégories de subventions et d'automatisation des tâches.",
   "language": "Python",
   "features": [
-    "Gestion des dossiers de subvention",
-    "Gestion des enveloppes financières",
-    "Gestion des utilisateurs et des droits d'accès",
-    "Import de données depuis la DN (Données Nationales)",
-    "Calcul et affichage des montants de subvention",
-    "Génération de rapports",
-    "Notifications",
-    "Gestion des catégories DETR/DSIL",
-    "Suivi des projets",
-    "Interface d'administration"
+    "Gestion des dossiers de subventions",
+    "Gestion des dotations",
+    "Gestion des projets",
+    "Gestion des utilisateurs",
+    "Import de données",
+    "Gestion des catégories de subventions (DETR/DSIL)",
+    "Authentification à deux facteurs",
+    "Gestion des annotations",
+    "Calcul de la taille des documents",
+    "Gestion des périmètres utilisateurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -23,31 +23,33 @@
     "Redis",
     "Mozilla-django-oidc",
     "django-htmx",
-    "htmx.org",
-    "tiptap",
+    "requests",
     "boto3",
-    "psycopg"
+    "psycopg",
+    "whitenoise",
+    "django-csp",
+    "django-dsfr"
   ],
   "components": [
     "Backend Django",
     "Base de données PostgreSQL",
     "API REST",
-    "Frontend React (via htmx)",
+    "Interface utilisateur (probablement HTML/CSS/JavaScript)",
     "Tâches asynchrones avec Celery",
     "Cache Redis"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
-    ],
-    "providers": []
+      "email-password",
+      "mfa"
+    ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-24T17:02:39+01:00",
+  "lastActivity": "2026-02-26T16:11:43+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -62,9 +64,11 @@
     "gestion",
     "administration",
     "django",
+    "python",
     "postgresql",
     "celery",
-    "htmx",
-    "python"
+    "dotations",
+    "projets",
+    "administration locale"
   ]
 }
