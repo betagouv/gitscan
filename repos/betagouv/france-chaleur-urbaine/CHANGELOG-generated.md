@@ -1,35 +1,34 @@
 ## Changelog : france-chaleur-urbaine (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de france-chaleur-urbaine se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur le formulaire d'éligibilité et la gestion des commentaires. Des améliorations techniques ont également été apportées pour optimiser la gestion des données, la configuration des tuiles et l'intégration d'outils d'analyse. Enfin, une migration progressive du markdown vers du HTML est en cours pour améliorer la cohérence visuelle.
+Ce changelog présente les améliorations apportées au site france-chaleur-urbaine au cours du dernier mois. Les principales évolutions concernent la mise à jour des données réseaux de chaleur, l'intégration d'un outil d'analyse (PostHog) pour mieux comprendre l'utilisation du site, et une refactorisation du code pour une meilleure maintenabilité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Le formulaire d'éligibilité a été amélioré avec le remplacement des checkboxes par des listes déroulantes pour une meilleure expérience utilisateur (#1194).
-- Correction d'un bug concernant la réaffection des gestionnaires (#1197).
-- Amélioration du formulaire de test en masse pour corriger l'état initial (#1198).
+- Mise à jour des données réseaux de chaleur avec les DLE 2024. [#1207](https://github.com/betagouv/france-chaleur-urbaine/pull/1207)
+- Ajout d'un CTA (Call To Action) spécifique pour les utilisateurs non raccordables. [#1199](https://github.com/betagouv/france-chaleur-urbaine/pull/1199)
+- Correction d'un bug dans le test d'adresse, notamment pour la ville de Bordeaux. [#1203](https://github.com/betagouv/france-chaleur-urbaine/pull/1203)
 - Suppression de la bannière du comparateur de coûts.
-- Ajout d'un champ commentaire sur les tags pour la vue statistiques par tag.
-- Le CTA vers le comparateur affiche maintenant un événement Matomo pour le suivi.
-- Le message d'avertissement pour Paris a été factorisé et amélioré.
-- Masquage de l'encart "non ouvert" pour les réseaux de froid.
+- Ajout d'un commentaire pour les statistiques par tag. [#1196](https://github.com/betagouv/france-chaleur-urbaine/pull/1196)
+- Intégration du suivi analytics via PostHog pour une meilleure compréhension de l'utilisation du site. [#1203](https://github.com/betagouv/france-chaleur-urbaine/pull/1203)
+- Ajout d'événements Matomo pour le CTA vers le comparateur et pour l'analyse des données.
 
 ### Évolutions techniques
-- Intégration de PostHog pour le suivi analytics (#1203).
-- Refactorisation du code lié aux données open data (#1205) : déplacement des fichiers dans un module et suppression de documentation obsolète.
+- Refactorisation du code lié aux données open data, avec déplacement des fichiers dans un module dédié. [#1205](https://github.com/betagouv/france-chaleur-urbaine/pull/1205)
+- Suppression de composants et fichiers inutilisés dans le code frontend.
+- Utilisation de `cx` pour la gestion des classes CSS.
 - Passage de TypeScript en dépendances.
-- Harmonisation de la configuration des tuiles API et de leur génération.
-- Extraction des tables synchronisées Airtable dans une structure dédiée.
-- Suppression de tables Airtable obsolètes.
-- Amélioration de la gestion des données lors de la modification d'un commentaire sur un tag.
-- Conversion progressive du markdown en HTML pour les textes d'éligibilité.
-- Utilisation de `cx` pour une meilleure gestion des classes CSS.
-- Remplacement de certains composants par des alternatives plus modernes (FCUArrowIcon, button-link, arrow-item).
+- Correction d'un bug lié à la réaffection des gestionnaires. [#1197](https://github.com/betagouv/france-chaleur-urbaine/pull/1197)
+- Suppression du markdown au profit du HTML pour certains éléments de l'interface utilisateur. [#1201](https://github.com/betagouv/france-chaleur-urbaine/pull/1201)
 
 ### Autres changements
-- Ajout du logo de la République Française en SVG pour une meilleure qualité visuelle.
-- Suppression de fichiers inutilisés et de composants non utilisés.
+- Mise à jour des textes et des labels pour l'année 2024.
+- Ajout d'un script pour la mise à jour des données avec la bibliothèque fedene.
+- Ajout d'un fichier `.editorconfig` pour la configuration de l'éditeur de code VSCode.
+- Mise à jour de la version de Publicodes.
+- Mise à jour de la documentation avec les étapes de développement et de lancement du serveur.
+- Suppression d'informations MO inutilisées (adresse, code postal, ville).
+- Suppression de la doc obsolète.
+- Ajout d'une ancre sur les Headings pour faciliter la navigation.
+- Suppression d'un localhost utilisé pour les tests.
 - Ajout d'un événement à la configuration analytics.
-- Suppression du fichier `CLAUDE.md`.
-- Correction d'une adresse de test dans le formulaire d'éligibilité.
-- Ajout d'un libellé pour l'événement `tag_comment_updated`.
-- Suppression de puces inutiles et harmonisation des styles suite au passage markdown -> html.
+- Correction de la syntaxe et mise à jour de l'adresse dans un cas de test.
