@@ -1,16 +1,23 @@
 ## Changelog : gitscan (30 derniers jours)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une activité importante de mise à jour des dépendances de nombreux dépôts gérés par BetaGouv et ses partenaires. Ces mises à jour visent à maintenir la sécurité, la stabilité et la performance des différents services proposés.  De plus, des améliorations ont été apportées à l'infrastructure de gestion des dépôts, notamment avec l'ajout de résumés d'organisation et la correction de problèmes liés à l'exclusion de certains dépôts.
+Ce changelog couvre les 30 derniers jours d'activité sur le projet gitscan et ses dépendances. La majorité des changements concernent des mises à jour automatiques de dépendances, reflétant un effort continu de maintenance et de sécurité. Quelques corrections et améliorations mineures ont également été apportées.
 
 ### Évolutions fonctionnelles
-*   Correction de bugs liés à l'exclusion de certains dépôts (#2).
-*   Ajout de résumés d'organisation pour une meilleure vue d'ensemble des projets.
+*   Correction de bugs liés à l'affichage des références (#3).
+*   Ajout d'un fichier `orgas.txt` pour lister les organisations.
 
 ### Évolutions techniques
-*   Mise à jour de l'infrastructure de gestion des dépôts et des dépendances.
-*   Amélioration de la gestion des dépendances à travers de nombreuses mises à jour de librairies et frameworks.
+*   Mise à jour de nombreuses dépendances, incluant des bibliothèques et des outils de build.
+*   Ajout de fichiers de configuration pour les workflows CI/CD.
+*   Ajout de fichiers `overview.json` pour la documentation du projet.
 
 ### Autres changements
 *   Mise à jour de la documentation du projet.
-*   Corrections mineures et améliorations diverses.
+*   Ajout de fichiers de configuration pour les outils d'analyse de code.
+*   Corrections mineures de code et de style.
+*   Ajout de fichiers de configuration pour les tests.
+*   Ajout de fichiers de configuration pour le déploiement.
+*   Mise à jour des fichiers de licence.
+*   Ajout de fichiers de configuration pour les outils de monitoring.
+*   Ajout de fichiers de configuration pour les outils de sécurité.
