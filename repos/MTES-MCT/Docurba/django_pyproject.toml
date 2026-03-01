@@ -5,10 +5,7 @@ requires-python = ">=3.13"
 
 dependencies = [
     "django",
-    "django-browser-reload",
-    "django-debug-toolbar",
     "django-environ",
-    "django-extensions",
     "django-revproxy",
     "gunicorn[gevent]",
     "psycopg[binary,pool]",
@@ -17,18 +14,24 @@ dependencies = [
     "django-datadog-logger", # https://github.com/namespace-ee/django-datadog-logger
 ]
 
+# Scalingo command: `uv sync --locked --no-default-groups`
 [dependency-groups]
 dev = [
+    "django-browser-reload",
+    "django-debug-toolbar",
+    "django-extensions",
     "ptpython",
     "pytest-cov",
+    "pytest>=9.0",
     "pytest-django",
     "ruff",
     "pre-commit>=4.3.0", # https://github.com/pre-commit/pre-commit
 ]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "core.settings"
+DJANGO_SETTINGS_MODULE = "core.settings.test"
 addopts = "--reuse-db --cov=."
+xfail_strict = true
 
 [tool.ruff.lint]
 select = ["ALL"]
