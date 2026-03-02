@@ -1,41 +1,35 @@
 ## Changelog : transport-site (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion et de la validation des données NeTEx et GTFS, ainsi que sur l'enrichissement des fonctionnalités de recherche et de consolidation des données IRVE. Des améliorations de performance et de maintenance ont également été apportées, notamment au niveau du proxy Unlock S3 et de l'interface utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du support des données NeTEx, avec de nouvelles fonctionnalités pour la validation, l'extraction de métadonnées et la gestion des dates de validité. Des améliorations ont également été apportées à la consolidation des données IRVE et à la recherche de jeux de données. Enfin, des corrections et des optimisations diverses ont été réalisées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Recherche :** Possibilité de rechercher des jeux de données par sous-type (#5303). Cette fonctionnalité a été temporairement revertée puis réintégrée avec des corrections (#5324).
-- **NeTEx :** Amélioration de la robustesse du parseur NeTEx pour gérer les dossiers (#5355).
-- **NeTEx :** Ajout de l'affichage des métadonnées associées aux données NeTEx (#5339).
-- **NeTEx :** Ajout d'un indicateur pour signaler les dates de validité manquantes (#5337) et la notification des ressources expirées (#5336).
-- **NeTEx :** Extraction des métadonnées NeTEx lors de la validation des données (#5323).
-- **GTFS Flex :** Ajout d'un indicateur "Périmé" sur la cartouche des données GTFS Flex (#5332).
-- **IRVE :** Amélioration de la consolidation des données IRVE, avec remontée d'informations supplémentaires (#5321) et identification des datasets présents sur data.gouv.fr mais absents du système (#5276).
-- **Interface utilisateur :** Ajout d'un menu de navigation sur la page de détails des ressources (#5311).
-- **Espace producteur :** Mise à jour du fil d'ariane (#5299).
-- **Backoffice :** Ajout d'un champ pour le sous-type de catégorie de données (#5283).
-- **Rapport opérationnel :** Ajout d'un rapport opérationnel avec un suivi global et détaillé (#5285).
+- **NeTEx :** Ajout d'un bouton de téléchargement toujours visible sur les ressources NeTEx [#5374](https://github.com/etalab/transport-site/issues/5374).
+- **NeTEx :** Amélioration de l'affichage des erreurs XSD, regroupées par message pour une meilleure lisibilité [#5369](https://github.com/etalab/transport-site/issues/5369).
+- **NeTEx :** Possibilité de télécharger le rapport de validation NeTEx [#5352](https://github.com/etalab/transport-site/issues/5352).
+- **NeTEx :** Extraction des modes de transport et des réseaux [#5342](https://github.com/etalab/transport-site/issues/5342) et [#5351](https://github.com/etalab/transport-site/issues/5351).
+- **NeTEx :** Ajout d'un flag indiquant l'absence de dates de validité et notification des ressources expirées [#5336](https://github.com/etalab/transport-site/issues/5336) et [#5337](https://github.com/etalab/transport-site/issues/5337).
+- **IRVE :** Amélioration de la consolidation IRVE avec la remontée d'informations supplémentaires [#5321](https://github.com/etalab/transport-site/issues/5321) et la création d'un fichier dédoublonné [#5343](https://github.com/etalab/transport-site/issues/5343). Renommage du rapport de consolidation IRVE [#5359](https://github.com/etalab/transport-site/issues/5359).
+- **Recherche :** Correction du tri des jeux de données (JDD) les plus récents [#5373](https://github.com/etalab/transport-site/issues/5373).
+- **Recherche :** Amélioration de la recherche avec index en mémoire et facets [#5333](https://github.com/etalab/transport-site/issues/5333) et [#5340](https://github.com/etalab/transport-site/issues/5340).
+- **Interface utilisateur :** Ajout d'un menu de navigation sur la page de détails des ressources [#5311](https://github.com/etalab/transport-site/issues/5311).
+- **Géographie :** Ajout de la Suisse dans la liste des divisions administratives [#5367](https://github.com/etalab/transport-site/issues/5367).
 
 ### Évolutions techniques
-- **Proxy Unlock S3 :** Mise en place d'un cache sur disque et vérification de l'ETag pour améliorer les performances (#5264).
-- **Consolidation IRVE :** Modification de l'heure d'exécution du job de consolidation IRVE (#5300).
-- **Refactoring :** Divers refactorings et corrections dans le code NeTEx (#5338).
-- **Configuration :** Actualisation de la configuration ZFE (#5348).
-- **Tests :** Améliorations des extracteurs NeTEx suite à des tests (#5320).
-- **Base de données :** Correction d'un problème de sérialisation des sous-types de données (#5307) et suppression de code mort dans le DatasetController (#5329).
-- **Authentification :** Désactivation du log de requêtes dans le plug TokenAuth pour Unlock (#5314).
+- **Validation IRVE :** Autorisation de plusieurs espaces dans les coordonnées lors de la validation IRVE [#5318](https://github.com/etalab/transport-site/issues/5318).
+- **Architecture :** Utilisation de jeux de données en mémoire pour la recherche, améliorant potentiellement la performance [#5345](https://github.com/etalab/transport-site/issues/5345).
+- **Configuration :** Actualisation de la configuration ZFE [#5348](https://github.com/etalab/transport-site/issues/5348).
+- **Unlock :** Désactivation du log de requêtes dans le plug TokenAuth pour améliorer la performance et la sécurité [#5314](https://github.com/etalab/transport-site/issues/5314).
+- **Rapports :** Mise en place d'un rapport opérationnel avec un suivi global et détaillé [#5285](https://github.com/etalab/transport-site/issues/5285).
 
 ### Autres changements
-- Suppression des pdc avec id_pdc_itinerance "non concerné" de la consolidation IRVE dédoublonnée (#5360).
-- Correction d'une URL de ressource mal encodée (#5363).
-- Renommage du rapport de consolidation IRVE (#5359).
-- Nettoyage de warnings de compilation (#5344).
-- Nettoyage routinier du code (#5322).
-- Correction de bugs mineurs et améliorations de la maintenance générale.
-- Correction d'un tag de début dans le feed Atom (#5308).
-- Correction d'un problème avec la population des order_datasets (#5328).
-- Suppression d'un tag saisonnier inutile (#5297).
-- Amélioration de la gestion des emails nil dans l'import des points de contact (#5288).
-- Ajout du comptage du nombre de ressources dans StatsHandler (#5277).
-- Modification de la gestion des contact_points pour qu'ils soient une liste (#5287).
-- Ajout de logs au début du job de consolidation IRVE (#5286).
+- **Documentation :** Page de nouveautés mise à jour pour janvier 2026 [#5304](https://github.com/etalab/transport-site/issues/5304).
+- **Code :** Nettoyage de code et suppression de code mort dans DatasetController [#5329](https://github.com/etalab/transport-site/issues/5329).
+- **Code :** Correction d'une URL de ressource mal encodée [#5363](https://github.com/etalab/transport-site/issues/5363).
+- **Code :** Suppression des PDC avec id_pdc_itinerance "non concerné" de la consolidation IRVE dédoublonnée [#5360](https://github.com/etalab/transport-site/issues/5360).
+- **Code :** Divers refactorings et corrections [#5338](https://github.com/etalab/transport-site/issues/5338).
+- **Code :** Nettoyage routinier [#5322](https://github.com/etalab/transport-site/issues/5322).
+- **Code :** Correction d'un revert de la recherche par sous-type [#5324](https://github.com/etalab/transport-site/issues/5324).
+- **Code :** Améliorations des extracteurs NeTEx [#5320](https://github.com/etalab/transport-site/issues/5320).
+- **Code :** Correction d'un problème où la population était null dans order_datasets [#5328](https://github.com/etalab/transport-site/issues/5328).
+- **Code :** Correction de warnings de compilation [#5344](https://github.com/etalab/transport-site/issues/5344).
