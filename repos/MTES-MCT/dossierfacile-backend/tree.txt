@@ -223,12 +223,10 @@
 │       │   │                   ├── controller
 │       │   │                   │   ├── ApartmentSharingLinkController.java
 │       │   │                   │   ├── ApplicationController.java
-│       │   │                   │   ├── CoTenantController.java
 │       │   │                   │   ├── DocumentController.java
 │       │   │                   │   ├── FileController.java
 │       │   │                   │   ├── GuarantorController.java
 │       │   │                   │   ├── MessageController.java
-│       │   │                   │   ├── PartnerAccessController.java
 │       │   │                   │   ├── RegisterController.java
 │       │   │                   │   ├── RegisterGuarantorLegalPersonController.java
 │       │   │                   │   ├── RegisterGuarantorNaturalPersonController.java
@@ -270,7 +268,6 @@
 │       │   │                   │   ├── CommentAnalysisForm.java
 │       │   │                   │   ├── ContactForm.java
 │       │   │                   │   ├── DeleteAccountForm.java
-│       │   │                   │   ├── EmailResetForm.java
 │       │   │                   │   ├── MessageForm.java
 │       │   │                   │   ├── PasswordForm.java
 │       │   │                   │   ├── ShareFileByLinkForm.java
@@ -279,7 +276,6 @@
 │       │   │                   │       └── FormWithTenantId.java
 │       │   │                   ├── mapper
 │       │   │                   │   ├── MessageMapper.java
-│       │   │                   │   ├── PartnerAccessMapper.java
 │       │   │                   │   ├── PartnerSettingsMapper.java
 │       │   │                   │   ├── PropertyOMapper.java
 │       │   │                   │   └── TenantMapper.java
@@ -314,7 +310,6 @@
 │       │   │                   │       ├── FranceConnectIdentity.java
 │       │   │                   │       ├── FullFolderFile.java
 │       │   │                   │       ├── GuarantorModel.java
-│       │   │                   │       ├── PartnerAccessModel.java
 │       │   │                   │       ├── SelectedOption.java
 │       │   │                   │       └── TenantModel.java
 │       │   │                   ├── partner
@@ -344,7 +339,6 @@
 │       │   │                   │   │   │   ├── natural_person
 │       │   │                   │   │   │   │   ├── DocumentFinancialGuarantorNaturalPersonForm.java
 │       │   │                   │   │   │   │   ├── DocumentIdentificationGuarantorNaturalPersonFileForm.java
-│       │   │                   │   │   │   │   ├── DocumentIdentificationGuarantorNaturalPersonForm.java
 │       │   │                   │   │   │   │   ├── DocumentProfessionalGuarantorNaturalPersonForm.java
 │       │   │                   │   │   │   │   ├── DocumentResidencyGuarantorNaturalPersonForm.java
 │       │   │                   │   │   │   │   ├── DocumentTaxGuarantorNaturalPersonForm.java
@@ -371,7 +365,6 @@
 │       │   │                   │   │   │   └── NameRepresentantGuarantorLegalPerson.java
 │       │   │                   │   │   ├── natural_person
 │       │   │                   │   │   │   ├── DocumentFinancialGuarantorNaturalPerson.java
-│       │   │                   │   │   │   ├── DocumentIdentificationGuarantorNaturalPerson.java
 │       │   │                   │   │   │   ├── DocumentIdentificationGuarantorNaturalPersonFile.java
 │       │   │                   │   │   │   ├── DocumentProfessionalGuarantorNaturalPerson.java
 │       │   │                   │   │   │   ├── DocumentResidencyGuarantorNaturalPerson.java
@@ -419,7 +412,6 @@
 │       │   │                   │   ├── LinkBruteForceProtectionServiceImpl.java
 │       │   │                   │   ├── MailServiceImpl.java
 │       │   │                   │   ├── MessageServiceImpl.java
-│       │   │                   │   ├── PartnerAccessServiceImpl.java
 │       │   │                   │   ├── PasswordRecoveryTokenServiceImpl.java
 │       │   │                   │   ├── PropertyServiceImpl.java
 │       │   │                   │   ├── ScheduledTasksServiceImpl.java
@@ -440,7 +432,6 @@
 │       │   │                   │       ├── KeycloakService.java
 │       │   │                   │       ├── MailService.java
 │       │   │                   │       ├── MessageService.java
-│       │   │                   │       ├── PartnerAccessService.java
 │       │   │                   │       ├── PasswordRecoveryTokenService.java
 │       │   │                   │       ├── PropertyService.java
 │       │   │                   │       ├── ScheduledTasksService.java
@@ -488,7 +479,6 @@
 │       │   │                       │   │       │   ├── NoDocumentCustomTextFinancialGuarantorNaturalPerson.java
 │       │   │                       │   │       │   └── NumberOfDocumentFinancialGuarantorNaturalPerson.java
 │       │   │                       │   │       ├── identification
-│       │   │                       │   │       │   ├── NumberOfDocumentIdentificationGuarantorNaturalPerson.java
 │       │   │                       │   │       │   └── NumberOfDocumentIdentificationGuarantorNaturalPersonFile.java
 │       │   │                       │   │       ├── professional
 │       │   │                       │   │       │   └── NumberOfDocumentProfessionalGuarantorNaturalPerson.java
@@ -545,8 +535,7 @@
 │       │   │                       │       │   ├── NoDocumentCustomTextFinancialGuarantorNaturalPersonValidator.java
 │       │   │                       │       │   └── NumberOfDocumentFinancialGuarantorNaturalPersonValidator.java
 │       │   │                       │       ├── identification
-│       │   │                       │       │   ├── NumberOfDocumentIdentificationGuarantorNaturalPersonFileValidator.java
-│       │   │                       │       │   └── NumberOfDocumentIdentificationGuarantorNaturalPersonValidator.java
+│       │   │                       │       │   └── NumberOfDocumentIdentificationGuarantorNaturalPersonFileValidator.java
 │       │   │                       │       ├── professional
 │       │   │                       │       │   └── NumberOfDocumentProfessionalGuarantorNaturalPersonValidator.java
 │       │   │                       │       ├── residency
@@ -760,6 +749,7 @@
 │       │   │               │   ├── BODocumentDeniedOptionsController.java
 │       │   │               │   ├── BOE2ETestController.java
 │       │   │               │   ├── BOErrorController.java
+│       │   │               │   ├── BOFeatureFlagsController.java
 │       │   │               │   ├── BOLogController.java
 │       │   │               │   ├── BOMessageController.java
 │       │   │               │   ├── BOOwnerController.java
@@ -1313,6 +1303,7 @@
 │       │       │   │   ├── document-denied-options.html
 │       │       │   │   ├── edit-document-denied-option.html
 │       │       │   │   ├── failed-pdf-tenant.html
+│       │       │   │   ├── feature-flags.html
 │       │       │   │   ├── fragments
 │       │       │   │   │   ├── document-analysis.html
 │       │       │   │   │   ├── pagination-with-parameters.html
@@ -1377,7 +1368,6 @@
 │       │   │               ├── config
 │       │   │               │   ├── AbstractConnectionContextFilter.java
 │       │   │               │   ├── ApiClientConfig.java
-│       │   │               │   ├── ApiVersion.java
 │       │   │               │   ├── DynamicProviderConfig.java
 │       │   │               │   ├── GlobalExceptionHandler.java
 │       │   │               │   ├── ImageIOInitializer.java
@@ -1404,7 +1394,6 @@
 │       │   │               ├── entity
 │       │   │               │   ├── ApartmentSharing.java
 │       │   │               │   ├── ApartmentSharingLink.java
-│       │   │               │   ├── ApplicationLog.java
 │       │   │               │   ├── AuthenticityStatus.java
 │       │   │               │   ├── BOUser.java
 │       │   │               │   ├── BarCodeDocumentType.java
@@ -1423,6 +1412,7 @@
 │       │   │               │   ├── DocumentRuleLevel.java
 │       │   │               │   ├── EncryptionKey.java
 │       │   │               │   ├── EncryptionKeyStatus.java
+│       │   │               │   ├── FeatureFlag.java
 │       │   │               │   ├── Feedback.java
 │       │   │               │   ├── File.java
 │       │   │               │   ├── FileMetadata.java
@@ -1454,6 +1444,9 @@
 │       │   │               │   ├── TenantUserApiKey.java
 │       │   │               │   ├── User.java
 │       │   │               │   ├── UserApi.java
+│       │   │               │   ├── UserFeatureAssignment.java
+│       │   │               │   ├── UserFeatureAssignmentHistory.java
+│       │   │               │   ├── UserFeatureAssignmentId.java
 │       │   │               │   ├── UserRole.java
 │       │   │               │   ├── WatermarkDocument.java
 │       │   │               │   ├── messaging
@@ -1481,6 +1474,8 @@
 │       │   │               │   ├── DocumentCategoryStep.java
 │       │   │               │   ├── DocumentStatus.java
 │       │   │               │   ├── DocumentSubCategory.java
+│       │   │               │   ├── FeatureAssignmentReason.java
+│       │   │               │   ├── FeatureAssignmentSource.java
 │       │   │               │   ├── FileActionUploadType.java
 │       │   │               │   ├── FileAuthenticationStatus.java
 │       │   │               │   ├── FileStatus.java
@@ -1524,9 +1519,7 @@
 │       │   │               │   ├── ApplicationBasicMapper.java
 │       │   │               │   ├── ApplicationFullMapper.java
 │       │   │               │   ├── ApplicationLightMapper.java
-│       │   │               │   ├── CategoriesMapper.java
 │       │   │               │   ├── MapDocumentCategories.java
-│       │   │               │   ├── VersionedCategoriesMapper.java
 │       │   │               │   ├── log
 │       │   │               │   │   ├── DeletedOwnerMapper.java
 │       │   │               │   │   └── DeletedTenantMapper.java
@@ -1574,13 +1567,13 @@
 │       │   │               ├── repository
 │       │   │               │   ├── ApartmentSharingLinkRepository.java
 │       │   │               │   ├── ApartmentSharingRepository.java
-│       │   │               │   ├── ApplicationLogRepository.java
 │       │   │               │   ├── BlurryFileAnalysisRepository.java
 │       │   │               │   ├── CallbackLogRepository.java
 │       │   │               │   ├── ConfirmationTokenRepository.java
 │       │   │               │   ├── DocumentAnalysisReportRepository.java
 │       │   │               │   ├── DocumentCommonRepository.java
 │       │   │               │   ├── EncryptionKeyRepository.java
+│       │   │               │   ├── FeatureFlagRepository.java
 │       │   │               │   ├── FileCommonRepository.java
 │       │   │               │   ├── FileMetadataRepository.java
 │       │   │               │   ├── LinkLogRepository.java
@@ -1596,7 +1589,10 @@
 │       │   │               │   ├── TenantCommonRepository.java
 │       │   │               │   ├── TenantLogRepository.java
 │       │   │               │   ├── TenantUserApiRepository.java
+│       │   │               │   ├── UserAccountRepository.java
 │       │   │               │   ├── UserApiRepository.java
+│       │   │               │   ├── UserFeatureAssignmentHistoryRepository.java
+│       │   │               │   ├── UserFeatureAssignmentRepository.java
 │       │   │               │   ├── WatermarkDocumentRepository.java
 │       │   │               │   └── projection
 │       │   │               │       └── TenantLastStatusProjection.java
@@ -1604,10 +1600,10 @@
 │       │   │               │   ├── AdemeApiServiceImpl.java
 │       │   │               │   ├── ApartmentSharingCommonServiceImpl.java
 │       │   │               │   ├── ApartmentSharingLinkService.java
-│       │   │               │   ├── ApplicationLogServiceImpl.java
 │       │   │               │   ├── ConfirmationTokenServiceImpl.java
 │       │   │               │   ├── DocumentHelperServiceImpl.java
 │       │   │               │   ├── EncryptionKeyServiceImpl.java
+│       │   │               │   ├── FeatureFlagServiceImpl.java
 │       │   │               │   ├── FileBatchDeletionService.java
 │       │   │               │   ├── FileStorageServiceImpl.java
 │       │   │               │   ├── KeycloakCommonServiceImpl.java
@@ -1627,13 +1623,14 @@
 │       │   │               │   ├── SharedFileServiceImpl.java
 │       │   │               │   ├── TenantCommonServiceImpl.java
 │       │   │               │   ├── TenantLogCommonServiceImpl.java
+│       │   │               │   ├── UserFeatureAssignmentServiceImpl.java
 │       │   │               │   ├── interfaces
 │       │   │               │   │   ├── AdemeApiService.java
 │       │   │               │   │   ├── ApartmentSharingCommonService.java
-│       │   │               │   │   ├── ApplicationLogService.java
 │       │   │               │   │   ├── ConfirmationTokenService.java
 │       │   │               │   │   ├── DocumentHelperService.java
 │       │   │               │   │   ├── EncryptionKeyService.java
+│       │   │               │   │   ├── FeatureFlagService.java
 │       │   │               │   │   ├── FileStorageProviderService.java
 │       │   │               │   │   ├── FileStorageService.java
 │       │   │               │   │   ├── KeycloakCommonService.java
@@ -1648,7 +1645,8 @@
 │       │   │               │   │   ├── RequestService.java
 │       │   │               │   │   ├── SharedFileService.java
 │       │   │               │   │   ├── TenantCommonService.java
-│       │   │               │   │   └── TenantLogCommonService.java
+│       │   │               │   │   ├── TenantLogCommonService.java
+│       │   │               │   │   └── UserFeatureAssignmentService.java
 │       │   │               │   ├── model
 │       │   │               │   │   └── BulkDeleteResult.java
 │       │   │               │   └── zxing
@@ -1839,6 +1837,9 @@
 │       │       │       ├── 202501180000-add-brute-force-protection-columns.xml
 │       │       │       ├── 202501290000-add-column-document_category_step.xml
 │       │       │       ├── 202502201000-drop-operation-access-token.xml
+│       │       │       ├── 202502260000-drop-application-log.xml
+│       │       │       ├── 202502260000-drop-user-api-version.xml
+│       │       │       ├── 202502270000-drop-user-api-partner-urls.xml
 │       │       │       ├── 202503170000-set-default-category_step-for-financial-doc.xml
 │       │       │       ├── 20250320170000-add-identity-information-on-tenant.xml
 │       │       │       ├── 202504230000-update-cdi-trial.xml
@@ -1850,7 +1851,8 @@
 │       │       │       ├── 202508260000-new-garbage-collection-strategy.xml
 │       │       │       ├── 202509080000-update-blurry-file-analysis-report.xml
 │       │       │       ├── 202510030000-update-apartment-sharing-link.xml
-│       │       │       └── 202516120000-add-metadata-file-data.xml
+│       │       │       ├── 202516120000-add-metadata-file-data.xml
+│       │       │       └── 202602230000-add-feature-flagging-database.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -1868,6 +1870,9 @@
 │           │               ├── service
 │           │               │   ├── AdemeApiServiceImplTest.java
 │           │               │   ├── ApartmentSharingLinkServiceTest.java
+│           │               │   ├── FeatureFlagServiceImplConcurrencyTest.java
+│           │               │   ├── FeatureFlagServiceImplHashTest.java
+│           │               │   ├── FeatureFlagServiceImplTest.java
 │           │               │   ├── KeycloakCommonServiceImplTest.java
 │           │               │   ├── LinkLogServiceImplTest.java
 │           │               │   ├── LogServiceImplTest.java
@@ -2432,4 +2437,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-573 directories, 1965 files
+573 directories, 1970 files
