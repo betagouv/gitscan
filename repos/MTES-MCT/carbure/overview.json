@@ -1,14 +1,12 @@
 {
   "url": "https://github.com/MTES-MCT/carbure",
   "name": "carbure",
-  "description": "Carbure est une application web pour le suivi et la durabilité des biocarburants, de la production à la distribution. Elle offre des fonctionnalités pour la gestion des données, la validation et le reporting.",
+  "description": "Carbure permet d'assurer la traçabilité et la durabilité des biocarburants, de la production à la distribution.",
   "language": "Python",
   "features": [
-    "Gestion des données biocarburants",
-    "Suivi de la production et de la distribution",
-    "Gestion des déclarations annuelles",
-    "Validation des données",
-    "Reporting",
+    "Gestion des données biogaz",
+    "Suivi des déclarations annuelles",
+    "Consultation des contrats (DREAL)",
     "Gestion des données QualiCharge",
     "Gestion des données UDB"
   ],
@@ -21,45 +19,36 @@
     "Docker Compose"
   ],
   "components": [
-    "Backend Django",
     "Frontend React",
+    "Backend Django",
     "Base de données MySQL",
-    "Cache Redis",
-    "API REST",
-    "nginx (proxy web)"
+    "Serveur Redis",
+    "API REST"
   ],
   "auth": {
     "methods": [
       "email-password"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
-    "Python unit tests",
-    "Integration tests"
+    "Python unit tests"
   ],
   "workflows": [
-    "CI/CD (via GitHub Actions or similar)",
-    "Build and deployment"
+    "CI/CD with GitHub Actions"
   ],
-  "lastActivity": "2026-02-19T15:47:35Z",
+  "lastActivity": "2024-05-03T14:38:11Z",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "biocarburants",
     "énergie",
     "durabilité",
-    "environnement",
-    "Django",
-    "Python",
-    "biomethane",
-    "qualicharge",
-    "UDB"
+    "traçabilité",
+    "administration",
+    "django",
+    "react"
   ]
 }

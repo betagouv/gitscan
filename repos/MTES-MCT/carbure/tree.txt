@@ -363,6 +363,13 @@
 │   │   │   ├── layouts
 │   │   │   │   ├── annual-declaration-layout.tsx
 │   │   │   │   └── page-header
+│   │   │   │       ├── declaration-validated-modal
+│   │   │   │       │   ├── custom-stepper
+│   │   │   │       │   │   ├── custom-stepper.module.css
+│   │   │   │       │   │   ├── custom-stepper.tsx
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   ├── declaration-validated-modal-step1.tsx
+│   │   │   │       │   └── declaration-validated-modal-step2.tsx
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── page-header.hooks.tsx
 │   │   │   │       ├── page-header.stories.tsx
@@ -428,6 +435,7 @@
 │   │   │   │   │   │   ├── api.ts
 │   │   │   │   │   │   └── contract.data.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── customer-satisfaction.tsx
 │   │   │   │   ├── digestate
 │   │   │   │   │   ├── api.ts
 │   │   │   │   │   ├── components
@@ -475,7 +483,6 @@
 │   │   │   │   │   │   │   └── injected-biomethane.utils.ts
 │   │   │   │   │   │   ├── installation-energy-needs
 │   │   │   │   │   │   │   ├── energy-types
-│   │   │   │   │   │   │   │   ├── 2011.txt
 │   │   │   │   │   │   │   │   ├── energy-types.hooks.ts
 │   │   │   │   │   │   │   │   ├── energy-types.stories.tsx
 │   │   │   │   │   │   │   │   ├── energy-types.tsx
@@ -882,6 +889,8 @@
 │   │   │   │   └── tooltip.tsx
 │   │   │   ├── globals.ts
 │   │   │   ├── hooks
+│   │   │   │   ├── api
+│   │   │   │   │   └── use-feedstocks.ts
 │   │   │   │   ├── async-list.ts
 │   │   │   │   ├── async.ts
 │   │   │   │   ├── cache-buster.ts
@@ -975,6 +984,7 @@
 │   │   │   │   ├── README.md
 │   │   │   │   ├── autocomplete-countries.tsx
 │   │   │   │   ├── autocomplete-departments.tsx
+│   │   │   │   ├── autocomplete-feedstocks.tsx
 │   │   │   │   ├── autocomplete-operators.tsx
 │   │   │   │   ├── beta-page
 │   │   │   │   │   ├── beta-page.module.css
@@ -1008,6 +1018,7 @@
 │   │   │   │   │   └── recap-quantity.tsx
 │   │   │   │   ├── siren-picker.tsx
 │   │   │   │   ├── siret-picker.tsx
+│   │   │   │   ├── tally-form.tsx
 │   │   │   │   └── user-rights-table
 │   │   │   │       ├── accept-user-button.tsx
 │   │   │   │       ├── add-user-dialog.tsx
@@ -1064,6 +1075,8 @@
 │   │   │   │   ├── entity-summary.module.css
 │   │   │   │   ├── entity-summary.tsx
 │   │   │   │   └── user-rights.tsx
+│   │   │   ├── hooks
+│   │   │   │   └── useCompanyTypesByEntity.ts
 │   │   │   ├── index.tsx
 │   │   │   ├── routes
 │   │   │   │   └── entity-details.tsx
@@ -1367,7 +1380,10 @@
 │   │   │   │   ├── companies.tsx
 │   │   │   │   ├── depots.tsx
 │   │   │   │   ├── double-counting.tsx
-│   │   │   │   ├── feedstocks.tsx
+│   │   │   │   ├── feedstocks
+│   │   │   │   │   ├── feedstocks.hooks.ts
+│   │   │   │   │   ├── feedstocks.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   └── systeme-national.tsx
 │   │   │   └── index.tsx
 │   │   ├── saf
@@ -1700,11 +1716,15 @@
     │   │   ├── energy_monthly_report.py
     │   │   ├── mixins.py
     │   │   └── supply_input.py
+    │   ├── fixtures
+    │   │   ├── __init__.py
+    │   │   └── biomethane_producers.xlsx
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
     │   │       ├── create_biomethane_annual_declarations.py
+    │   │       ├── import_biomethane_producers.py
     │   │       └── set_biomethane_declarations_open.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
@@ -1749,6 +1769,12 @@
     │   │   ├── 0035_biomethaneenergy_self_consumed_biogas_or_biomethane_kwh.py
     │   │   ├── 0036_remove_biomethaneenergy_injected_biomethane_nm3_per_year_and_more.py
     │   │   ├── 0037_remove_biomethaneproductionunit_digestate_sale_type_and_more.py
+    │   │   ├── 0037_remove_biomethanesupplyinput_input_category_and_more.py
+    │   │   ├── 0038_merge_20260211_1431.py
+    │   │   ├── 0039_convert_biomethaneproductionunit_to_site_inheritance.py
+    │   │   ├── 0040_rename_general_conditions_file_biomethanecontract_conditions_file_and_more.py
+    │   │   ├── 0041_alter_biomethanecontract_tracked_amendment_types.py
+    │   │   ├── 0042_alter_biomethaneproductionunit_unit_type.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -1987,6 +2013,7 @@
     │   │   ├── 0005_alter_doublecountingregistration_options_and_more.py
     │   │   ├── 0006_alter_doublecountingregistration_production_site_and_more.py
     │   │   ├── 0007_alter_doublecountingregistration_options.py
+    │   │   ├── 0008_alter_doublecountingregistration_production_site_and_more.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── serializers.py
@@ -2074,6 +2101,9 @@
     │   │   ├── 0057_merge_20251217_1109.py
     │   │   ├── 0058_carburelot_udb_transaction_id.py
     │   │   ├── 0059_alter_carburelot_pos_number.py
+    │   │   ├── 0060_matierepremiere_is_biofuel_feedstock_and_more.py
+    │   │   ├── 0061_matierepremiere_classification_and_more.py
+    │   │   ├── 0062_remove_entitydepot_depot_remove_entitydepot_blender_and_more.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── notifications.py
@@ -2160,6 +2190,7 @@
     │   │   ├── 0025_resurrect_dc_doc_file_table.py
     │   │   ├── 0026_alter_doublecountingsourcinghistory_supplier_certificate_name.py
     │   │   ├── 0027_alter_doublecountingapplication_status.py
+    │   │   ├── 0028_alter_doublecountingapplication_production_site.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── old_helpers.py
@@ -2259,12 +2290,14 @@
     │   │   ├── ntr.py
     │   │   ├── request_responses.py
     │   │   ├── requests.py
-    │   │   └── response_factory.py
+    │   │   ├── response_factory.py
+    │   │   └── transaction.py
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
     │   │       ├── __init__.py
-    │   │       └── edelivery_listener.py
+    │   │       ├── edelivery_listener.py
+    │   │       └── import_udb_transactions.py
     │   ├── soap
     │   │   ├── __init__.py
     │   │   ├── actions.py
@@ -2275,13 +2308,17 @@
     │       ├── __init__.py
     │       ├── ebms
     │       │   ├── __init__.py
+    │       │   ├── fixtures
+    │       │   │   ├── __init__.py
+    │       │   │   └── udb_xml_data.py
     │       │   ├── test_access_point.py
     │       │   ├── test_converters.py
     │       │   ├── test_error_responses.py
     │       │   ├── test_ntr.py
     │       │   ├── test_request_responses.py
     │       │   ├── test_requests.py
-    │       │   └── test_response_factory.py
+    │       │   ├── test_response_factory.py
+    │       │   └── test_transaction.py
     │       └── soap
     │           ├── __init__.py
     │           ├── test_actions.py
@@ -2396,16 +2433,13 @@
     │   │   └── transport_data_gouv.csv
     │   ├── management
     │   │   ├── __init__.py
-    │   │   ├── commands
-    │   │   │   ├── __init__.py
-    │   │   │   ├── compensate_elec_provision_certificate.py
-    │   │   │   ├── generate_meter_readings_report.py
-    │   │   │   ├── refresh_charge_points.py
-    │   │   │   ├── remove_duplicate_cp.py
-    │   │   │   └── replace_charge_point_id.py
-    │   │   └── scripts
+    │   │   └── commands
     │   │       ├── __init__.py
-    │   │       └── compensate_elec_provision_certificate.py
+    │   │       ├── compensate_elec_provision_certificate.py
+    │   │       ├── generate_meter_readings_report.py
+    │   │       ├── refresh_charge_points.py
+    │   │       ├── remove_duplicate_cp.py
+    │   │       └── replace_charge_point_id.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
     │   │   ├── 0002_alter_elecprovisioncertificate_quarter_and_more.py
@@ -2477,6 +2511,7 @@
     │   │   ├── 0065_remove_elecprovisioncertificate_compensation_and_more.py
     │   │   ├── 0066_eleccertificatereadjustment.py
     │   │   ├── 0067_elecprovisioncertificatequalicharge_enr_ratio.py
+    │   │   ├── 0068_remove_elecprovisioncertificate_remaining_energy_amount_and_more.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -2518,6 +2553,7 @@
     │   │   └── elec_transfer_certificate.py
     │   ├── services
     │   │   ├── __init__.py
+    │   │   ├── certificate_balance.py
     │   │   ├── create_meter_reading_excel.py
     │   │   ├── export_audited_charge_points_sample_to_excel.py
     │   │   ├── export_charge_point_excel.py
@@ -2546,14 +2582,16 @@
     │   │   │   └── test_views.py
     │   │   ├── management
     │   │   │   ├── __init__.py
+    │   │   │   ├── test_compensate_elec_provision_certificate.py
     │   │   │   └── test_generate_meter_readings_report.py
     │   │   ├── repositories
     │   │   │   ├── __init__.py
     │   │   │   └── test_meter_reading_repository.py
-    │   │   └── services
-    │   │       ├── __init__.py
-    │   │       ├── test_meter_readings_application_quarter.py
-    │   │       └── test_readjustment_balance.py
+    │   │   ├── services
+    │   │   │   ├── __init__.py
+    │   │   │   ├── test_meter_readings_application_quarter.py
+    │   │   │   └── test_readjustment_balance.py
+    │   │   └── utils.py
     │   ├── urls.py
     │   └── views
     │       ├── __init__.py
@@ -2731,6 +2769,28 @@
     │           └── users.py
     ├── entrypoint.prod.sh
     ├── entrypoint.sh
+    ├── feedstocks
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── fixtures
+    │   │   ├── __init__.py
+    │   │   └── import-intrants-biomethane.xlsx
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   └── commands
+    │   │       ├── __init__.py
+    │   │       └── import_biomethane_feedstocks_and_classifications.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   └── __init__.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   └── classification.py
+    │   ├── serializers
+    │   │   ├── __init__.py
+    │   │   └── feedstock_classification.py
+    │   └── urls.py
     ├── fixtures
     │   ├── __init__.py
     │   ├── assign_sn_certificates.py
@@ -2842,6 +2902,7 @@
     │   │   ├── 0005_alter_productionsiteinput_production_site_and_more.py
     │   │   ├── 0006_alter_productionsiteinput_production_site_and_more.py
     │   │   ├── 0007_delete_productionsite.py
+    │   │   ├── 0008_alter_productionsiteinput_production_site_and_more.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── tests.py
@@ -3298,6 +3359,7 @@
     │   ├── apps.py
     │   ├── factories
     │   │   ├── __init__.py
+    │   │   ├── airport.py
     │   │   ├── carbure_lot.py
     │   │   ├── carbure_stock.py
     │   │   ├── carbure_stock_transform.py
@@ -3335,6 +3397,9 @@
     │   │   ├── 0013_alter_yearconfig_renewable_share.py
     │   │   ├── 0014_delete_contenttoupdate.py
     │   │   ├── 0015_alter_site_collation.py
+    │   │   ├── 0016_split_site_into_concrete_models.py
+    │   │   ├── 0017_update_site_options.py
+    │   │   ├── 0018_alter_site_site_type.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -3427,4 +3492,4 @@
             ├── request_access.py
             ├── revoke_access.py
             └── user.py
-627 directories, 2802 files
+640 directories, 2854 files
