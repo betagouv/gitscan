@@ -71,7 +71,6 @@
 │       ├── ci.yml
 │       ├── dev.yml
 │       ├── init-db.yml
-│       ├── test-api.yml
 │       ├── test-app.yml
 │       ├── test-backend.yml
 │       ├── test-build.yml
@@ -93,92 +92,6 @@
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
-├── api_tests
-│   ├── .env.example
-│   ├── README.md
-│   ├── deno.json
-│   ├── lib
-│   │   ├── assert.ts
-│   │   ├── auth.ts
-│   │   ├── database.types.ts
-│   │   ├── rpcs
-│   │   │   ├── confidentialite.ts
-│   │   │   ├── labellisationCommencerAudit.ts
-│   │   │   ├── labellisationDemande.ts
-│   │   │   ├── labellisationParcours.ts
-│   │   │   ├── labellisationSubmitDemande.ts
-│   │   │   ├── saveReponse.ts
-│   │   │   ├── testAddRandomUser.ts
-│   │   │   ├── testChangeAccessRestreint.ts
-│   │   │   ├── testCreateCollectivite.ts
-│   │   │   ├── testFullfill.ts
-│   │   │   ├── testMaxFullfill.ts
-│   │   │   ├── testReset.ts
-│   │   │   ├── testSetAuditeur.ts
-│   │   │   └── testSetCot.ts
-│   │   ├── supabase.ts
-│   │   ├── supabase_with_service_role.ts
-│   │   └── types
-│   │       ├── avancement.ts
-│   │       ├── clientScores.ts
-│   │       ├── fiche_action
-│   │       │   ├── enums
-│   │       │   │   ├── ficheActionCibles.ts
-│   │       │   │   ├── ficheActionNiveauxPriorite.ts
-│   │       │   │   ├── ficheActionPiliersEci.ts
-│   │       │   │   ├── ficheActionResultatsAttendus.ts
-│   │       │   │   ├── ficheActionStatuts.ts
-│   │       │   │   └── ficheActionThematiques.ts
-│   │       │   ├── ficheAction.ts
-│   │       │   ├── ficheActionVue.ts
-│   │       │   ├── financeurMontant.ts
-│   │       │   └── personne.ts
-│   │       ├── niveauAcces.ts
-│   │       ├── randomUser.ts
-│   │       ├── referentiel.ts
-│   │       └── saveReponseParams.ts
-│   ├── ressources
-│   │   ├── ImportIndicateurEMT.xlsx
-│   │   ├── ImportStatutEMT.xlsx
-│   │   ├── Plan_erreur_colonnes.xlsx
-│   │   ├── Plan_erreur_montant.xlsx
-│   │   ├── Plan_modifie.xlsx
-│   │   └── Plan_nouveau.xlsx
-│   └── tests
-│       ├── base
-│       │   ├── naturalSort.ts
-│       │   ├── smoke.test.ts
-│       │   └── utilisateur.test.ts
-│       ├── crud
-│       │   └── crud.test.ts
-│       ├── droit
-│       │   └── acces_restreint.test.ts
-│       ├── emt
-│       │   ├── importIndicateur.test.ts
-│       │   └── importStatut.test.ts
-│       ├── historique
-│       │   └── utilisateur.test.ts
-│       ├── indicateurs
-│       │   └── export.test.ts
-│       ├── labellisation
-│       │   └── utils.ts
-│       ├── plan_action
-│       │   ├── ficheAction.test.ts
-│       │   ├── fiche_restreinte.test.ts
-│       │   ├── plan.test.ts
-│       │   └── tableau_de_bord.test.ts
-│       ├── scoring
-│       │   ├── actionStatut.test.ts
-│       │   ├── audit.test.ts
-│       │   ├── audit_scores.test.ts
-│       │   ├── reponse.test.ts
-│       │   └── scoreById.ts
-│       ├── site
-│       │   ├── carto.test.ts
-│       │   ├── page_collectivite.ts
-│       │   └── recherche.test.ts
-│       └── utilisateur
-│           └── usage.test.ts
 ├── apps
 │   ├── app
 │   │   ├── .env.sample
@@ -1290,8 +1203,6 @@
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheActionInfos.ts
-│   │   │   │   │   │   │   ├── useCreateFicheAction.ts
-│   │   │   │   │   │   │   ├── useCreateFicheResume.ts
 │   │   │   │   │   │   │   ├── useFicheActionImpactId.ts
 │   │   │   │   │   │   │   ├── useFicheActionPilote.ts
 │   │   │   │   │   │   │   ├── useFichesActionLiees.ts
@@ -3158,6 +3069,7 @@
 │   │   │   │   │   │   ├── list-users.router.ts
 │   │   │   │   │   │   └── list-users.service.ts
 │   │   │   │   │   ├── update-user
+│   │   │   │   │   │   ├── update-user.errors.ts
 │   │   │   │   │   │   ├── update-user.router.e2e-spec.ts
 │   │   │   │   │   │   ├── update-user.router.ts
 │   │   │   │   │   │   └── update-user.service.ts
@@ -4040,16 +3952,7 @@
 │   │   └── sync-databases.sh
 │   ├── scripts
 │   │   ├── curl_test.sh
-│   │   ├── loaded_auth.sh
-│   │   ├── loaded_content.sh
-│   │   ├── loaded_sqitch.sh
-│   │   ├── loaded_storage.sh
-│   │   ├── loaded_supabase.sh
-│   │   ├── run_tests.sh
-│   │   ├── try_load.sh
-│   │   ├── wait_for_front.sh
-│   │   ├── wait_for_rest.sh
-│   │   └── wait_for_supabase.sh
+│   │   └── run_tests.sh
 │   ├── seed
 │   │   ├── README.md
 │   │   ├── content
@@ -4215,6 +4118,7 @@
 │   │   │   │   ├── send_to_amplitude.sql
 │   │   │   │   ├── send_to_amplitude@v2.41.0.sql
 │   │   │   │   └── update_late_scores.sql
+│   │   │   ├── delete-plans-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
@@ -4587,18 +4491,9 @@
 │   │   │   │   ├── dcp@v2.2.2.sql
 │   │   │   │   ├── dcp@v2.28.0.sql
 │   │   │   │   ├── dcp@v2.60.0.sql
-│   │   │   │   ├── dcp_display.sql
-│   │   │   │   ├── dcp_sync.sql
+│   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
-│   │   │   │   ├── droits_add_edition_fiches_indicateurs.sql
-│   │   │   │   ├── droits_v2.sql
-│   │   │   │   ├── droits_v2@v2.101.0.sql
-│   │   │   │   ├── droits_v2@v2.102.0.sql
-│   │   │   │   ├── droits_v2@v2.37.0.sql
-│   │   │   │   ├── droits_v2@v2.40.0.sql
-│   │   │   │   ├── droits_v2@v2.52.0.sql
-│   │   │   │   ├── droits_v2@v2.62.0.sql
-│   │   │   │   ├── droits_v2@v3.0.0.sql
+│   │   │   │   ├── droits_*.sql  (9 files)
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
 │   │   │   │   ├── invitation_v2.sql
@@ -4613,6 +4508,7 @@
 │   │   │   │   ├── referent_contacts.sql
 │   │   │   │   ├── remove_timescale.sql
 │   │   │   │   ├── schema.sql
+│   │   │   │   ├── test_create_user_sync_dcp.sql
 │   │   │   │   ├── usage.sql
 │   │   │   │   ├── usage@v2.101.0.sql
 │   │   │   │   ├── usage@v2.35.0.sql
@@ -4738,6 +4634,7 @@
 │   │   │   │   ├── send_to_amplitude.sql
 │   │   │   │   ├── send_to_amplitude@v2.41.0.sql
 │   │   │   │   └── update_late_scores.sql
+│   │   │   ├── delete-plans-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
@@ -5110,18 +5007,9 @@
 │   │   │   │   ├── dcp@v2.2.2.sql
 │   │   │   │   ├── dcp@v2.28.0.sql
 │   │   │   │   ├── dcp@v2.60.0.sql
-│   │   │   │   ├── dcp_display.sql
-│   │   │   │   ├── dcp_sync.sql
+│   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
-│   │   │   │   ├── droits_add_edition_fiches_indicateurs.sql
-│   │   │   │   ├── droits_v2.sql
-│   │   │   │   ├── droits_v2@v2.101.0.sql
-│   │   │   │   ├── droits_v2@v2.102.0.sql
-│   │   │   │   ├── droits_v2@v2.37.0.sql
-│   │   │   │   ├── droits_v2@v2.40.0.sql
-│   │   │   │   ├── droits_v2@v2.52.0.sql
-│   │   │   │   ├── droits_v2@v2.62.0.sql
-│   │   │   │   ├── droits_v2@v3.0.0.sql
+│   │   │   │   ├── droits_*.sql  (9 files)
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
 │   │   │   │   ├── invitation_v2.sql
@@ -5136,6 +5024,7 @@
 │   │   │   │   ├── referent_contacts.sql
 │   │   │   │   ├── remove_timescale.sql
 │   │   │   │   ├── schema.sql
+│   │   │   │   ├── test_create_user_sync_dcp.sql
 │   │   │   │   ├── usage.sql
 │   │   │   │   ├── usage@v2.101.0.sql
 │   │   │   │   ├── usage@v2.35.0.sql
@@ -5261,6 +5150,7 @@
 │   │       │   ├── send_to_amplitude.sql
 │   │       │   ├── send_to_amplitude@v2.41.0.sql
 │   │       │   └── update_late_scores.sql
+│   │       ├── delete-plans-old-views.sql
 │   │       ├── delete_navigation_plans-rpc.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
@@ -5633,18 +5523,9 @@
 │   │       │   ├── dcp@v2.2.2.sql
 │   │       │   ├── dcp@v2.28.0.sql
 │   │       │   ├── dcp@v2.60.0.sql
-│   │       │   ├── dcp_display.sql
-│   │       │   ├── dcp_sync.sql
+│   │       │   ├── dcp_*.sql  (5 files)
 │   │       │   ├── droits.sql
-│   │       │   ├── droits_add_edition_fiches_indicateurs.sql
-│   │       │   ├── droits_v2.sql
-│   │       │   ├── droits_v2@v2.101.0.sql
-│   │       │   ├── droits_v2@v2.102.0.sql
-│   │       │   ├── droits_v2@v2.37.0.sql
-│   │       │   ├── droits_v2@v2.40.0.sql
-│   │       │   ├── droits_v2@v2.52.0.sql
-│   │       │   ├── droits_v2@v2.62.0.sql
-│   │       │   ├── droits_v2@v3.0.0.sql
+│   │       │   ├── droits_*.sql  (9 files)
 │   │       │   ├── export_connect.sql
 │   │       │   ├── invitation.sql
 │   │       │   ├── invitation_v2.sql
@@ -5659,6 +5540,7 @@
 │   │       │   ├── referent_contacts.sql
 │   │       │   ├── remove_timescale.sql
 │   │       │   ├── schema.sql
+│   │       │   ├── test_create_user_sync_dcp.sql
 │   │       │   ├── usage.sql
 │   │       │   ├── usage@v2.101.0.sql
 │   │       │   ├── usage@v2.35.0.sql
@@ -5711,10 +5593,6 @@
 │       │   ├── fichier_preuve.sql
 │       │   ├── labellisation.sql
 │       │   └── preuve_v2.sql
-│       ├── plan_action
-│       │   ├── filtres.sql
-│       │   ├── performance.sql
-│       │   └── plan_action.sql
 │       ├── referentiel
 │       │   ├── action_discussion.sql
 │       │   ├── action_precision_historique.sql
@@ -5820,6 +5698,7 @@
 │   │   │   ├── database.service.ts
 │   │   │   ├── dropdown.pom.ts
 │   │   │   ├── fixture-factory.interface.ts
+│   │   │   ├── mailpit.utils.ts
 │   │   │   ├── supabase-client.utils.ts
 │   │   │   └── trpc.utils.ts
 │   │   └── users
@@ -5828,6 +5707,9 @@
 │   │       ├── authorizations
 │   │       │   └── role-edition-fiches-indicateurs.spec.ts
 │   │       ├── users
+│   │       │   ├── signup-user
+│   │       │   │   ├── signup-user.pom.ts
+│   │       │   │   └── signup-user.spec.ts
 │   │       │   └── update-user
 │   │       │       ├── update-user.pom.ts
 │   │       │       └── update-user.spec.ts
@@ -6838,4 +6720,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1204 directories, 5756 files
+1185 directories, 5693 files

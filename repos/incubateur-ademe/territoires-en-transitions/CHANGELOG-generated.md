@@ -1,52 +1,624 @@
 ## Changelog : territoires-en-transitions (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment une refonte de l'affichage des plans et des axes, avec une nouvelle gestion des sous-actions. De nombreuses corrections de bugs et optimisations de performance ont également été implémentées, ainsi que des améliorations de la sécurité et de la gestion des notifications.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans la gestion des référentiels, des rapports et des sous-actions. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de la plateforme. Des optimisations techniques ont également été réalisées, notamment concernant les permissions, les tests et l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de taguer les plans. (#9817db5)
-- Ajout de la gestion des préférences utilisateur, incluant la possibilité de désactiver les notifications d'affectation. (#cfb7699, #b9e0418)
-- Refonte de l'affichage des plans avec une nouvelle arborescence et une gestion améliorée des axes et des sous-actions. (#385ae87, #120b65d)
-- Ajout de la possibilité de déplacer les fiches dans l'arborescence du plan. (#1d8e0f2)
-- Ajout d'un bouton pour ouvrir/fermer tous les axes/sous-axes. (#da66be6)
-- Amélioration de la gestion des indicateurs liés aux axes. (#6866ac0)
-- Ajout de la possibilité d'ajouter une description aux axes. (#1e04138)
-- Ajout de la fonctionnalité de déplacement des axes. (#179ea91)
-- Intégration de l'information COT (Code des Territoires) pour les collectivités et les informations utilisateur. (#ff525e8)
-- Suppression du feature flag de génération de rapports, la fonctionnalité est maintenant activée par défaut. (#6f40d1b)
-- Amélioration de l'affichage des indicateurs dans le détail d'un plan. (#df37e39)
-- Ajout de la gestion des budgets agrégés dans le header du plan. (#1a95013)
-- Ajout de la possibilité de masquer des colonnes dans le tableau des sous-actions. (#802a2da)
-- Ajout d'une modale pour la suppression des sous-actions. (#641685b)
+- Amélioration de la gestion des sous-actions : ajout d'un tableau des sous-actions dans le tableau de bord personnel, avec des options de création, de modification et de suppression. [#7727929](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/7727929)
+- Possibilité d'ajouter des informations COT (Code des Territoires) aux collectivités. [#ff525e8](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/ff525e8)
+- Correction d'un bug empêchant le téléchargement multiple du même rapport. [#c2d30fa](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/c2d30fa)
+- Correction de l'affichage des logos dans les rapports. [#48461ec](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/48461ec)
+- Amélioration de la gestion des préférences utilisateur : ajout d'options pour gérer les notifications et les préférences d'affichage.
+- Ajout d'un lien vers la page de désinscription des notifications dans les emails.
+- Amélioration de l'interface utilisateur pour l'édition des titres de plan.
+- Ajout d'un underline pour les liens dans du markdown. [#3554bf7](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/3554bf7)
+- Ajout de la possibilité de masquer des colonnes dans le tableau des sous-actions.
+- Ajout d'un composant InlineLink au design system. [#ff2d533](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/ff2d533)
 
 ### Évolutions techniques
-- Migration vers un nouveau système de rôles et permissions pour une gestion plus fine des accès. (#90420cc)
-- Refactor de l'import de plan pour améliorer la performance et la robustesse. (#973e729)
-- Utilisation de tRPC pour la sauvegarde des actions statuts et des commentaires dans les référentiels. (#a218361, #f06cf09)
-- Suppression de l'utilisation de `luxon` au profit de librairies plus performantes. (#c1dec51, #87d7422)
-- Mise à jour de Next.js pour corriger des vulnérabilités liées aux Server Side Components (RSC). (#c08fd38)
-- Refonte de la feature d'import de plan. (#7ec00ab)
-- Suppression de drizzle-zod. (#2e8d683)
-- Migration des charts Nivo vers Echarts pour de meilleures performances et fonctionnalités. (#d3b47c4, #5bb462f)
-- Activation de Turbopack pour l'optimisation des builds en développement et en production. (#d40c948, #6ae6e50)
-- Amélioration de la gestion des erreurs et ajout de logs avec correlation ID. (#3ca7b83)
-- Utilisation de Sentry pour la gestion des erreurs en production. (#95018da)
-- Suppression de Datadog Logs. (#4f6a2b5)
-- Amélioration de la gestion des permissions pour l'accès aux données. (#83e592d)
+- Migration de certains composants vers Echarts pour une meilleure performance et flexibilité des graphiques.
+- Refactor de la gestion des permissions pour une granularité plus fine et une meilleure sécurité.
+- Utilisation de tRPC pour la mise à jour des commentaires et des statuts d'actions dans les référentiels.
+- Amélioration des tests unitaires et e2e pour une meilleure couverture du code.
+- Optimisation de l'import de plans.
+- Passage de certaines instances de gouvernance de string à des tags.
+- Mise à jour des dépendances Supabase.
+- Activation de Turbopack pour l'optimisation des builds en développement et en production.
+- Suppression de Datadog Logs et activation de Sentry Logs.
+- Suppression du CSS DSFR et remplacement par des styles manuels.
+- Refactoring de la feature d'import de plan.
 
 ### Autres changements
-- Correction de plusieurs bugs mineurs liés à l'interface utilisateur et à la gestion des données.
-- Amélioration de la documentation et des tests.
-- Mise à jour des dépendances.
-- Amélioration des messages de notification "toast". (#97202e3)
-- Ajout de tests e2e pour les nouvelles fonctionnalités.
-- Correction de problèmes de linting. (#0190f9c)
-- Suppression de code inutilisé.
-- Amélioration de la performance de certaines requêtes. (#6c25968)
-- Correction de problèmes de typage.
-- Ajustement de la taille des boutons et des libellés.
-- Suppression du CSS DSFR et remplacement par des composants du design system. (#9421394)
-- Ajout de la fonte Marianne. (#87fa8b4)
-- Correction de l'affichage des liens. (#f349379)
-- Amélioration de la gestion des erreurs lors de l'import de données. (#79861f5)
-- Correction de coquilles et amélioration de la clarté des messages. (#60054e5, #0ea2709)
+- Mise à jour de la version du référentiel. [#1682e1c](https://github.com/incubateur-ademe/territoires-en-transitions/pulls/1682e1c)
+- Suppression de code et de fichiers inutilisés.
+- Correction de quelques coquilles et amélioration de la documentation.
+- Ajout de logs pour le débogage des requêtes tRPC.
+- Amélioration des performances des suppressions dans la table `indicateur_source_metadonnee`.
+- Correction de l'ordre des migrations Sqitch.
+- Ajout d'un timeout plus élevé pour l'import des référentiels depuis les spreadsheets.
+- Ajout d'un correlationId dans les requêtes tRPC et log des erreurs avec le correlationId.
+- Suppression des tests e2e des actions commentaires qui ne fonctionnaient pas avec le RichTextEditor.
+- Ajout d'un test pour la mise à jour du profil utilisateur.
+- Suppression de l'invalidation de cache lors de l'écriture des commentaires.
+- Correction du lint en CI.
+- Suppression de l'appel à l'ouverture d'une modale.
+- Ajout d'un espace dans InlineLink uniquement lorsque le lien est à ouvrir dans un nouvel onglet.
+- Ajout de la fonte Marianne manuellement.
+- Ajout d'un composant Divider.
+- Suppression des margin-bottom par défaut sur les titres h1, h2, h...
+- Correction des liens après la suppression du CSS DSFR.
+- Ajout d'un test et correction de la mise à jour d'une sous-action.
+- Ajout d'une option permettant de lister uniquement les sous-actions.
+- Utilisation des fonctions fixture plutôt que faire des insertions directement dans la base.
+- Ajout d'une notification quand un utilisateur est rattaché à un tag.
+- Eviter d'afficher "export terminé" de manière impromptue.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout d'un composant SideMenu.
+- Ajout d'un composant SidePanel.
+- Ajout d'un composant Badge.
+- Ajout d'un composant EditableItem.
+- Ajout d'un composant SelectTagsGeneric.
+- Ajout d'un composant InlineLink.
+- Ajout d'un composant Divider.
+- Ajout d'un composant DSFRCompliancyComponent.
+- Ajout d'un composant BadgeFilters.
+- Ajout
