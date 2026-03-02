@@ -1,64 +1,63 @@
 {
   "url": "https://github.com/betagouv/archeologia-pipeline",
   "name": "archeologia-pipeline",
-  "description": "Ce plugin QGIS permet d'exécuter un pipeline de traitement LiDAR et de produire des rasters (MNT, densité, indices RVT) avec une étape optionnelle de détection par computer vision.",
+  "description": "Ce plugin QGIS permet d'exécuter un pipeline de traitement LiDAR pour produire des rasters (MNT, densité, indices RVT) avec une étape optionnelle de détection par computer vision.",
   "language": "Python",
   "features": [
     "Génération de MNT",
-    "Génération de cartes de densité",
+    "Génération de carte de densité",
     "Calcul d'indices RVT (M-HS, SVF, SLO, LD, VAT)",
-    "Détection par computer vision",
-    "Génération de pyramides GDAL",
-    "Téléchargement de tuiles LAZ/LAS"
+    "Détection / segmentation d'instances par computer vision",
+    "Export en JPG + world file",
+    "Génération de pyramides GDAL"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "QGIS",
     "PDAL",
     "GDAL",
-    "Processing",
-    "onnxruntime",
-    "sahi",
+    "ONNX Runtime",
+    "SAHI",
     "Pillow",
-    "geopandas"
+    "Geopandas"
   ],
   "components": [
     "Plugin QGIS",
-    "API REST (pour computer vision)",
-    "Algorithmes RVT (via Processing)",
-    "Runner ONNX (pour computer vision)"
+    "API REST (pour runner ONNX)",
+    "Bibliothèques Python (ONNX Runtime, SAHI, Pillow, Geopandas)",
+    "Outils en ligne de commande (PDAL, GDAL)"
   ],
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "pytest",
     "ruff"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD GitHub Actions"
   ],
-  "lastActivity": "2026-02-19T20:21:49+01:00",
+  "lastActivity": "2026-02-28T11:14:47+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
-    "forks": 1,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": null
   },
   "tags": [
     "QGIS",
     "LiDAR",
-    "traitement de données",
-    "computer vision",
-    "archéologie",
+    "Traitement de données",
+    "Computer Vision",
+    "Archéologie",
     "PDAL",
     "GDAL",
-    "RVT"
+    "ONNX",
+    "Géospatial"
   ]
 }
