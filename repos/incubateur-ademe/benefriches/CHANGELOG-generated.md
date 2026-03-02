@@ -1,35 +1,27 @@
 ## Changelog : benefriches (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a principalement travaillé sur la refonte du processus de création de projets urbains, en améliorant l'expérience utilisateur et en optimisant le code. Des améliorations ont également été apportées aux tests automatisés et à l'infrastructure de développement. Plusieurs corrections de bugs et ajustements de texte ont été effectués pour améliorer la clarté et la précision de l'application.
+Ce changelog présente les améliorations apportées à benefriches au cours des 30 derniers jours. Les modifications incluent des refactorings importants pour améliorer la structure du code et sa maintenabilité, des corrections de bugs pour une meilleure expérience utilisateur, l'ajout de nouvelles fonctionnalités comme l'intégration d'un chat d'assistance, et des améliorations de la documentation pour faciliter la contribution et la compréhension du projet.
 
 ### Évolutions fonctionnelles
-
-- Amélioration du flux de création de projets urbains : ajout de nouveaux types d'usages, simplification des étapes et amélioration de la sélection des espaces. (#20aa39c, #44a3f28, #dd0d369, #945ee20, #0d865db)
-- Ajout de pictogrammes pour les nouveaux usages urbains. (#9c399c9)
-- Possibilité de supprimer des projets depuis la page "Mes évaluations". (#bef2355)
-- Ajout de menus d'actions sur les tuiles de projets et de sites. (#08f10e2)
-- Affichage du séparateur de milliers pour les montants monétaires. (#032146a)
-- Amélioration de la gestion des espaces naturels et des types de sols dans le formulaire de création de projet. (#17cdc68, #4964b57, #95b6e9d, #bbf788e, #69e588d)
-- Correction de l'étiquetage des sols imperméables et perméables. (#95b6e9d)
-- Suppression du lien vers le DVF dans le formulaire de revenus de la revente de site. (#4bfffc8)
-- Ajout de dialogues de blocage de navigation sur les formulaires de création de site et de projet. (#7f91806)
-- Mise à jour des libellés du stepper de création de projet. (#fea9805)
+- Ajout d'un chat d'assistance Crisp pour aider les utilisateurs rencontrant des problèmes d'authentification [#8faf085](https://github.com/incubateur-ademe/benefriches/commit/8faf085).
+- Amélioration de la gestion des types de sols dans les formulaires de projets urbains, avec des affichages plus clairs et des corrections de libellés [#95b6e9d](https://github.com/incubateur-ademe/benefriches/commit/95b6e9d).
+- Ajout de pictogrammes pour les différents usages dans les projets urbains [#9c399c9](https://github.com/incubateur-ademe/benefriches/commit/9c399c9).
+- Possibilité de supprimer des projets depuis les listes et les pages de détails [#bef2355](https://github.com/incubateur-ademe/benefriches/commit/bef2355).
+- Ajout de dialogues de blocage de navigation sur les formulaires de création de site et de projet [#7f91806](https://github.com/incubateur-ademe/benefriches/commit/7f91806).
+- Ajout de séparateurs de milliers pour les montants monétaires [#032146a](https://github.com/incubateur-ademe/benefriches/commit/032146a).
+- Ajout de menus d'actions sur les tuiles de projets [#08f10e2](https://github.com/incubateur-ademe/benefriches/commit/08f10e2).
 
 ### Évolutions techniques
-
-- Refactorisation importante du code lié à la création de projets urbains, avec une meilleure organisation des fichiers et une simplification de la logique. (#3e6f6ed, #a5521dc, #8b886a6, #9b55666, #f5f5d45, #bcc84f4, #c305a91, #24f13a1, #7735097, #4bfffc8, #09288e0, #c20f527, #ff311a4, #f84ecef, #7698b54, #880fc09, #649e03c, #e02a866, #20aa39c, #dd0d369, #945ee20, #0d865db)
-- Amélioration de l'installation des dépendances dans le script `create-worktree.sh`. (#9d2d66d)
-- Simplification du build Scalingo. (#1d47c9d)
-- Mise à jour des dépendances (oxlint, prettier, etc.). (#5fe1745, #e4254ff, #d6a54f7, #dc4dc76)
-- Refactorisation de l'authentification avec l'utilisation de DTOs partagés. (#fc015f1, #a6a2f98)
-- Amélioration de la gestion des tests E2E avec la création d'un client API et l'ajout de tests initiaux. (#eb9b03c, #c355aa6, #2716d6d, #b639a32)
-- Ajout de skills et d'agents pour l'automatisation de la revue de code et des migrations de base de données avec Claude. (#c20f527, #ff311a4, #4c72e0f, #b058552)
+- Refactorings importants de l'architecture du frontend React, notamment l'application du pattern "ViewData" pour une meilleure gestion des données et des tests unitaires plus robustes [#4912b2e](https://github.com/incubateur-ademe/benefriches/commit/4912b2e), [#8cf0735](https://github.com/incubateur-ademe/benefriches/commit/8cf0735), [#26c1a30](https://github.com/incubateur-ademe/benefriches/commit/26c1a30).
+- Simplification du processus de build Scalingo pour une meilleure efficacité [#1d47c9d](https://github.com/incubateur-ademe/benefriches/commit/1d47c9d).
+- Amélioration de la gestion des erreurs et des validations dans les formulaires numériques [#4dcf4cf](https://github.com/incubateur-ademe/benefriches/commit/4dcf4cf).
+- Migration vers `createReducer` pour une meilleure gestion de l'état avec Redux Toolkit [#649e03c](https://github.com/incubateur-ademe/benefriches/commit/649e03c).
+- Mise à jour des dépendances (oxlint, prettier, etc.) [#52bae42](https://github.com/incubateur-ademe/benefriches/commit/52bae42).
 
 ### Autres changements
-
-- Mise à jour de la documentation pour refléter les changements apportés. (#c68670b, #69e588d)
-- Suppression de code mort. (#53b3b80)
-- Correction de typos et amélioration de la formulation. (#4dcf4cf, #efbee4d, #7cc190f, #4eac594)
-- Mise à jour de la commande pour démarrer le serveur API en développement. (#65abc2c)
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
+- Amélioration de la documentation (CLAUDE.md) pour clarifier les exigences de qualité, les définitions des types de sols et l'utilisation de Zod [#e953e04](https://github.com/incubateur-ademe/benefriches/commit/e953e04), [#3b9254d](https://github.com/incubateur-ademe/benefriches/commit/3b9254d), [#b541430](https://github.com/incubateur-ademe/benefriches/commit/b541430).
+- Ajout de nouvelles entrées ADR (Architecture Decision Records) pour documenter les décisions architecturales clés [#cdc0db9](https://github.com/incubateur-ademe/benefriches/commit/cdc0db9), [#ff311a4](https://github.com/incubateur-ademe/benefriches/commit/ff311a4), [#f84ecef](https://github.com/incubateur-ademe/benefriches/commit/f84ecef).
+- Ajout d'outils et de scripts pour améliorer la qualité du code et le processus de revue (code-reviewer, skills) [#c20f527](https://github.com/incubateur-ademe/benefriches/commit/c20f527), [#4e0e25a](https://github.com/incubateur-ademe/benefriches/commit/4e0e25a), [#076fc86](https://github.com/incubateur-ademe/benefriches/commit/076fc86).
+- Corrections de typos et améliorations de la formulation dans la documentation et l'interface utilisateur [#83c58fa](https://github.com/incubateur-ademe/benefriches/commit/83c58fa).
+- Suppression de code mort et nettoyage général du code [#f67cf21](https://github.com/incubateur-ademe/benefriches/commit/f67cf21), [#53b3b80](https://github.com/incubateur-ademe/benefriches/commit/53b3b80), [#20fd9d6](https://github.com/incubateur-ademe/benefriches/commit/20fd9d6).

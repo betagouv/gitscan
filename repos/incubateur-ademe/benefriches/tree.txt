@@ -640,9 +640,6 @@
 │   │   │       ├── urban-project-creation.fixtures.ts
 │   │   │       └── urban-project-creation.spec.ts
 │   │   └── tsconfig.json
-│   ├── stashed
-│   │   └── src
-│   │       └── friche.spec.ts
 │   └── web
 │       ├── .env.example
 │       ├── .gitignore
@@ -850,6 +847,20 @@
 │       │   ├── embed.tsx
 │       │   ├── features
 │       │   │   ├── FeaturesApp.tsx
+│       │   │   ├── analytics
+│       │   │   │   ├── core
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── eventTracked.action.spec.ts
+│       │   │   │   │   │   └── pageViewed.action.spec.ts
+│       │   │   │   │   ├── analyticsEvents.ts
+│       │   │   │   │   ├── eventTracked.action.ts
+│       │   │   │   │   ├── gateways
+│       │   │   │   │   │   └── AnalyticsGateway.ts
+│       │   │   │   │   └── pageViewed.action.ts
+│       │   │   │   └── infrastructure
+│       │   │   │       ├── InMemoryAnalytics.ts
+│       │   │   │       ├── MatomoAnalytics.ts
+│       │   │   │       └── NoopAnalytics.ts
 │       │   │   ├── app-settings
 │       │   │   │   ├── core
 │       │   │   │   │   ├── AppSettingsGateway.ts
@@ -1400,6 +1411,7 @@
 │       │   │   │       └── pages
 │       │   │   │           ├── access-benefriches
 │       │   │   │           │   ├── AuthLinkModal.tsx
+│       │   │   │           │   ├── AuthLinkNotReceivedHelp.tsx
 │       │   │   │           │   ├── AuthLinkRequestError.tsx
 │       │   │   │           │   ├── createAuthLinkModal.ts
 │       │   │   │           │   └── index.tsx
@@ -1951,6 +1963,20 @@
 │       │   │   │       │   ├── SiteFeaturesList.tsx
 │       │   │   │       │   └── SiteFeaturesManagementSection.tsx
 │       │   │   │       └── index.tsx
+│       │   │   ├── support
+│       │   │   │   ├── core
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.spec.ts
+│       │   │   │   │   │   └── authTokenErrorHelpRequested.action.spec.ts
+│       │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.ts
+│       │   │   │   │   ├── authTokenErrorHelpRequested.action.ts
+│       │   │   │   │   └── gateways
+│       │   │   │   │       └── SupportChatGateway.ts
+│       │   │   │   └── infrastructure
+│       │   │   │       └── support-chat-service
+│       │   │   │           ├── CrispSupportChatService.ts
+│       │   │   │           ├── InMemorySupportChatService.ts
+│       │   │   │           └── NoopSupportChatService.ts
 │       │   │   ├── update-project
 │       │   │   │   ├── core
 │       │   │   │   │   ├── helpers
@@ -2067,6 +2093,7 @@
 │       │   │   │   │           │   │   ├── expenses-reinstatement
 │       │   │   │   │           │   │   │   ├── expensesReinstatement.handler.ts
 │       │   │   │   │           │   │   │   ├── expensesReinstatement.schema.ts
+│       │   │   │   │           │   │   │   ├── expensesReinstatement.selector.ts
 │       │   │   │   │           │   │   │   └── expensesReinstatement.stepperConfig.ts
 │       │   │   │   │           │   │   └── expenses-site-purchase-amounts
 │       │   │   │   │           │   │       ├── expensesSitePurchaseAmounts.handler.ts
@@ -2122,6 +2149,7 @@
 │       │   │   │   │           │   │   └── schedule-projection
 │       │   │   │   │           │   │       ├── scheduleProjection.handler.ts
 │       │   │   │   │           │   │       ├── scheduleProjection.schema.ts
+│       │   │   │   │           │   │       ├── scheduleProjection.selector.ts
 │       │   │   │   │           │   │       └── scheduleProjection.stepperConfig.ts
 │       │   │   │   │           │   ├── shared
 │       │   │   │   │           │   │   └── projectStakeholder.schema.ts
@@ -2152,9 +2180,11 @@
 │       │   │   │   │           │   │   ├── soils-decontamination-surface-area
 │       │   │   │   │           │   │   │   ├── soilsDecontaminationSurfaceArea.handler.ts
 │       │   │   │   │           │   │   │   ├── soilsDecontaminationSurfaceArea.schema.ts
+│       │   │   │   │           │   │   │   ├── soilsDecontaminationSurfaceArea.selector.ts
 │       │   │   │   │           │   │   │   └── soilsDecontaminationSurfaceArea.stepperConfig.ts
 │       │   │   │   │           │   │   └── soils-summary
 │       │   │   │   │           │   │       ├── soilsSummary.handler.ts
+│       │   │   │   │           │   │       ├── soilsSummary.selector.ts
 │       │   │   │   │           │   │       └── soilsSummary.stepperConfig.ts
 │       │   │   │   │           │   ├── spaces
 │       │   │   │   │           │   │   ├── getCommonRules.ts
@@ -2187,10 +2217,12 @@
 │       │   │   │   │           │   │   ├── stakeholders-project-developer
 │       │   │   │   │           │   │   │   ├── stakeholdersProjectDeveloper.handler.ts
 │       │   │   │   │           │   │   │   ├── stakeholdersProjectDeveloper.schema.ts
+│       │   │   │   │           │   │   │   ├── stakeholdersProjectDeveloper.selector.ts
 │       │   │   │   │           │   │   │   └── stakeholdersProjectDeveloper.stepperConfig.ts
 │       │   │   │   │           │   │   ├── stakeholders-reinstatement-contract-owner
 │       │   │   │   │           │   │   │   ├── stakeholdersReinstatementContractOwner.handler.ts
 │       │   │   │   │           │   │   │   ├── stakeholdersReinstatementContractOwner.schema.ts
+│       │   │   │   │           │   │   │   ├── stakeholdersReinstatementContractOwner.selector.ts
 │       │   │   │   │           │   │   │   └── stakeholdersReinstatementContractOwner.stepperConfig.ts
 │       │   │   │   │           │   │   └── stakeholders.selector.ts
 │       │   │   │   │           │   ├── stepHandler.type.ts
@@ -2198,6 +2230,7 @@
 │       │   │   │   │           │   ├── summary
 │       │   │   │   │           │   │   └── final-summary
 │       │   │   │   │           │   │       ├── finalSummary.handler.ts
+│       │   │   │   │           │   │       ├── finalSummary.selector.ts
 │       │   │   │   │           │   │       └── finalSummary.stepperConfig.ts
 │       │   │   │   │           │   └── uses
 │       │   │   │   │           │       ├── introduction
@@ -2236,6 +2269,7 @@
 │       │   │   │   ├── duplicate-project-service
 │       │   │   │   │   └── HttpDuplicateProjectService.ts
 │       │   │   │   ├── real-estate-valuation-service
+│       │   │   │   │   ├── DisabledRealEstateValuationService.ts
 │       │   │   │   │   ├── HttpRealEstateValuationService.ts
 │       │   │   │   │   ├── InMemoryRealEstateValuationService.ts
 │       │   │   │   │   └── MockRealEstateValuationService.ts
@@ -2244,8 +2278,6 @@
 │       │   │   │       └── soilsCarbonStorageMock.ts
 │       │   │   └── views
 │       │   │       ├── App.tsx
-│       │   │       ├── MatomoContainer.tsx
-│       │   │       ├── analytics.ts
 │       │   │       ├── charts
 │       │   │       │   ├── index.ts
 │       │   │       │   ├── useChartCustomColors.tsx
@@ -2349,6 +2381,8 @@
 │       │   │       │   ├── useAddressSearch.spec.ts
 │       │   │       │   ├── useAddressSearch.ts
 │       │   │       │   ├── useDebounce.ts
+│       │   │       │   ├── useDelayed.spec.ts
+│       │   │       │   ├── useDelayed.ts
 │       │   │       │   ├── useHeaderHeight.ts
 │       │   │       │   ├── useIsSmallScreen.ts
 │       │   │       │   └── useNavigationBlocker.ts
@@ -2570,6 +2604,7 @@
 │   │   ├── 0002-redux-event-based-state-management.md
 │   │   ├── 0003-shared-package-for-cross-app-types.md
 │   │   ├── 0004-colocate-urban-project-step-definitions.md
+│   │   ├── 0005-gateway-pattern-for-third-party-browser-sdks.md
 │   │   └── README.md
 │   └── feature-example.md
 ├── package.json
@@ -2761,4 +2796,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-782 directories, 1981 files
+791 directories, 2007 files
