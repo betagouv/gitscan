@@ -1,32 +1,33 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-front",
   "name": "prelevements-deau-front",
-  "description": "Cette application est le front-end du projet de gestion des prélèvements d'eau. Elle permet de gérer et visualiser les données relatives aux prélèvements d'eau.",
+  "description": "Cette application est le front-end du projet de gestion des prélèvements d'eau. Elle est basée sur Next.js et utilise le Design System de l'État.",
   "language": "TypeScript",
   "features": [
     "Gestion des prélèvements d'eau",
     "Visualisation de données",
     "Création et modification de prélèvements",
-    "Gestion des exploitations",
-    "Gestion des règles",
-    "Création de documents",
+    "Gestion des documents",
     "Authentification par lien magique"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Next.js",
-    "@codegouvfr/react-dsfr",
-    "NextAuth.js",
     "React",
+    "NextAuth.js",
+    "@codegouvfr/react-dsfr",
     "date-fns",
     "lodash-es",
-    "maplibre-gl"
+    "maplibre-gl",
+    "@emotion/react",
+    "@mui/material"
   ],
   "components": [
     "Frontend React",
     "Next.js",
-    "Design System de l'État (DSFR)",
-    "API REST"
+    "Design System de l'État",
+    "API REST (via NEXT_PUBLIC_API_URL)",
+    "NextAuth.js pour l'authentification"
   ],
   "auth": {
     "methods": [
@@ -38,23 +39,20 @@
     "Ava",
     "XO"
   ],
-  "workflows": [],
+  "workflows": null,
   "lastActivity": "2026-02-16T16:50:09+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "prélèvements d'eau",
     "gestion de l'eau",
-    "environnement",
-    "React",
     "Next.js",
-    "TypeScript"
+    "React",
+    "environnement",
+    "administration",
+    "données",
+    "géolocalisation"
   ]
 }
