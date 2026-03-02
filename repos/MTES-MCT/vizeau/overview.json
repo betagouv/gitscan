@@ -1,28 +1,27 @@
 {
   "url": "https://github.com/MTES-MCT/vizeau",
   "name": "vizeau",
-  "description": "Viz'eau est une application web permettant de visualiser et de gérer des données relatives à l'agriculture. Elle offre des fonctionnalités de cartographie, de gestion des exploitations et des tâches, et d'analyse des données.",
+  "description": "Viz'eau est une application web permettant de visualiser et de gérer des données relatives à l'agriculture et à l'environnement. Elle offre des fonctionnalités de cartographie, de gestion des exploitations et des parcelles, ainsi que le suivi des activités.",
   "language": "TypeScript",
   "features": [
     "Gestion des exploitations",
-    "Gestion des tâches",
-    "Visualisation cartographique",
-    "Gestion des journaux d'activité",
     "Gestion des parcelles",
-    "Gestion des cultures",
-    "Gestion des utilisateurs",
-    "Upload de documents"
+    "Visualisation cartographique",
+    "Gestion des tâches",
+    "Gestion des journaux d'activité",
+    "Téléchargement de documents",
+    "Gestion des tags d'exploitation",
+    "Planification des tâches"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "React",
     "Node.js",
     "PostgreSQL",
-    "AdonisJS",
     "TailwindCSS",
-    "Luxon",
     "pmtiles",
-    "maplibre-gl"
+    "maplibre-gl",
+    "chart.js"
   ],
   "components": [
     "Frontend React",
@@ -34,14 +33,17 @@
   "auth": {
     "methods": [
       "email-password"
-    ]
+    ],
+    "providers": null
   },
   "tests": [
-    "Jest",
-    "Vitest"
+    "Vitest",
+    "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-02-24T14:13:37+01:00",
+  "workflows": [
+    "CI/CD (GitHub Actions)"
+  ],
+  "lastActivity": "2026-02-26T19:31:34+01:00",
   "status": "active",
   "license": "UNLICENSED",
   "hasDocumentation": true,
@@ -53,11 +55,13 @@
   },
   "tags": [
     "agriculture",
+    "environnement",
     "cartographie",
-    "gestion de données",
-    "web application",
-    "typescript",
-    "react",
-    "postgresql"
+    "SIG",
+    "données",
+    "web",
+    "React",
+    "TypeScript",
+    "PostgreSQL"
   ]
 }
