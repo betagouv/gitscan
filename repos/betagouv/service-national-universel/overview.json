@@ -1,40 +1,47 @@
 {
   "url": "https://github.com/betagouv/service-national-universel",
   "name": "service-national-universel",
-  "description": "Plateforme du Service National Universel, organisée en plusieurs services : interface publique, interface de gestion et API.",
+  "description": "Plateforme du Service National Universel. Elle permet de gérer les candidatures, les affectations et le suivi des jeunes en service national universel.",
   "language": "TypeScript",
   "features": [
-    "Authentification utilisateur",
-    "Gestion des utilisateurs",
-    "Gestion des sessions",
-    "Export de données",
     "Gestion des candidatures",
-    "Gestion des référents",
+    "Affectation des jeunes",
+    "Suivi des volontaires",
+    "Gestion des centres",
     "Gestion des missions",
-    "Téléchargement de documents"
+    "Téléchargement de documents",
+    "Envoi d'emails",
+    "Gestion des utilisateurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "npm",
+    "turbo",
     "dotenv-cli",
-    "turbo"
+    "patch-package"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données MongoDB",
-    "Interface d'administration"
+    "Environnements Docker"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "session"
-    ]
+      "oauth2",
+      "sso"
+    ],
+    "providers": []
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": [
+    "Jest",
+    "Cypress"
+  ],
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI",
+    "CD"
   ],
   "lastActivity": "2024-05-10T00:00:00Z",
   "status": "active",
@@ -44,9 +51,9 @@
   "tags": [
     "Service National Universel",
     "SNU",
-    "Plateforme",
-    "Administration",
     "Engagement Civique",
+    "Volontariat",
+    "Administration Publique",
     "React",
     "TypeScript"
   ]
