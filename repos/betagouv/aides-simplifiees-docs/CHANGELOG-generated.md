@@ -1,10 +1,12 @@
-## Changelog : aides-simplifiees-docs (derniers 30 jours)
+## Changelog : aides-simplifiees-docs (30 derniers jours)
 
 ### Résumé
-Ce changelog fait état d'une petite amélioration de la documentation, visant à supprimer des éléments de langage inutiles et à simplifier le contenu. Cette modification contribue à une documentation plus claire et concise pour les équipes qui conçoivent des simulateurs d'éligibilité aux aides publiques.
+Ce changelog présente les premières étapes de développement de la documentation pour la modélisation et la simulation des aides publiques. La documentation a été initialisée et une première version a été déployée grâce à une configuration automatisée via GitHub Actions. Des sections obsolètes concernant la traçabilité ont été supprimées pour recentrer la documentation sur son objectif principal.
+
+### Évolutions fonctionnelles
+- Déploiement initial de la documentation via GitHub Actions.
+- Suppression des sections obsolètes sur la traçabilité.
 
 ### Évolutions techniques
-- Suppression d'artefacts de langage inutiles (#I00000000)
-
-### Autres changements
-- Nettoyage du code en supprimant des éléments de langage superflus.
+- Ajout d'un workflow GitHub Actions pour le déploiement de la documentation VitePress.
+- Initialisation du dépôt et configuration de base de VitePress.
