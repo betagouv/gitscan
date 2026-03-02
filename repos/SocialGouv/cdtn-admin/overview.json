@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/SocialGouv/cdtn-admin",
   "name": "cdtn-admin",
-  "description": "Cet outil d'administration permet de gérer et de publier le contenu du Code du travail numérique. Il offre des fonctionnalités pour ingérer des données, gérer les alertes, et configurer l'affichage des informations.",
+  "description": "Cet outil d'administration permet de gérer le contenu du Code du travail numérique. Il offre des fonctionnalités pour l'ingestion de données, la publication de contenu et la configuration du site.",
   "language": "TypeScript",
   "features": [
-    "Authentification utilisateur",
     "Gestion de contenu",
-    "Publication de contenu",
-    "Gestion des alertes",
-    "Import de données",
+    "Ingestion de données",
+    "Publication",
+    "Configuration",
+    "Alertes",
     "Gestion des thèmes",
-    "Gestion des infographies"
+    "Mise à jour des données"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,14 +20,15 @@
     "Hasura",
     "Elasticsearch",
     "Docker",
-    "MinIO"
+    "tiptap"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Service d'ingestion de données",
-    "Service d'export Elasticsearch"
+    "Hasura GraphQL",
+    "Elasticsearch",
+    "Microservices (ingester, alert-cli, export-elasticsearch)"
   ],
   "auth": {
     "methods": [
@@ -35,20 +36,22 @@
     ]
   },
   "tests": null,
-  "workflows": null,
+  "workflows": [
+    "CI/CD (via GitHub Actions)"
+  ],
   "lastActivity": "2026-02-20T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": null,
   "tags": [
-    "administration",
-    "code du travail",
-    "contenu",
-    "gestion",
-    "typescript",
-    "react",
-    "postgresql",
-    "elasticsearch"
+    "Code du travail",
+    "Administration",
+    "Gestion de contenu",
+    "React",
+    "TypeScript",
+    "PostgreSQL",
+    "Hasura",
+    "Elasticsearch"
   ]
 }
