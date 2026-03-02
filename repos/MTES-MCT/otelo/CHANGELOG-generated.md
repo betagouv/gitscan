@@ -1,41 +1,37 @@
 ## Changelog : otelo (30 derniers jours)
 
 ### Résumé
-Le projet Otelo a connu une période d'activité intense ces dernières semaines, avec des améliorations significatives de l'expérience utilisateur, notamment dans l'export de données, la gestion des utilisateurs et des groupes EPCI, ainsi que l'ajout de nouvelles fonctionnalités comme la visualisation des territoires voisins et l'historique des simulations. Des efforts importants ont également été consacrés à l'amélioration de la stabilité et de la performance de l'application, ainsi qu'à la mise en place d'une infrastructure de déploiement plus robuste.
+Les dernières mises à jour d'otelo se concentrent sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités, notamment la gestion des sources de données, l'exportation de données, et l'ajout de fonctionnalités de test A/B pour l'analyse territoriale. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de retours utilisateurs (#16)
-- Possibilité de supprimer un groupe EPCI (#15)
-- Ajout de la fonctionnalité de territoire voisin avec un test A/B (#2, #1)
-- Amélioration de l'export Excel, notamment la correction des décimales (#18)
-- Ajout d'un bouton d'export des résultats de simulation (#10)
-- Amélioration de l'affichage des logements secondaires (#7d3ad9c)
-- Ajout d'un bandeau de feedback en haut de l'application (#3d2356f)
-- Refonte de la gestion des utilisateurs (#3079a94)
-- Ajout de sources de données (#4)
-- Amélioration du calcul des taux de logements vacants moyens (#38a150d)
-- Ajout de l'exportation en image et amélioration des textes (#e9c6bb3)
-- Ajout de la possibilité de visualiser les offres potentielles RS (#f2ca409)
-- Correction de l'arrondi de la taille des ménages (#457a517)
+- Ajout de la possibilité d'exporter les résultats des simulations sous forme d'image. [#2](https://github.com/MTES-MCT/otelo/pulls/2)
+- Implémentation d'un test A/B pour l'affichage des territoires voisins. [#1](https://github.com/MTES-MCT/otelo/pulls/1) et [#2](https://github.com/MTES-MCT/otelo/pulls/2)
+- Ajout d'une page de retours utilisateurs. [#16](https://github.com/MTES-MCT/otelo/pulls/16)
+- Possibilité de supprimer un groupe EPCI. [#15](https://github.com/MTES-MCT/otelo/pulls/15)
+- Ajout de la gestion des sources de données. [#4](https://github.com/MTES-MCT/otelo/pulls/4)
+- Amélioration de l'affichage des taux d'hébergement secondaire. [#24](https://github.com/MTES-MCT/otelo/pulls/24)
+- Ajout d'un bouton d'exportation des résultats des simulations. [#10](https://github.com/MTES-MCT/otelo/pulls/10)
+- Amélioration de l'affichage des graphiques récapitulatifs. [#20](https://github.com/MTES-MCT/otelo/pulls/20)
+- Ajout de la possibilité d'inclure les EPCI dans la liste d'exportation des statistiques. [#21](https://github.com/MTES-MCT/otelo/pulls/21)
+- Ajout d'une bannière de feedback. [#11](https://github.com/MTES-MCT/otelo/pulls/11)
+- Amélioration de la gestion des utilisateurs. [#17](https://github.com/MTES-MCT/otelo/pulls/17)
+- Ajout d'une page 404 et actualisation automatique après la déconnexion. [#18](https://github.com/MTES-MCT/otelo/pulls/18)
 
 ### Évolutions techniques
-- Migration vers une meilleure solution d'authentification (better-auth) (#3)
-- Mise en place d'un système d'historique des résultats de simulation (#10)
-- Amélioration de la gestion des tests unitaires, notamment pour le moteur de calcul Excel (#4c2ef91)
-- Refactoring de l'architecture pour séparer l'API et l'authentification (#3276fda)
-- Optimisation du build et de la configuration pour le déploiement sur Scalingo (#cc22ce3, #ef78626, #9c07a00)
-- Mise à jour de la configuration de Chromium pour l'export PDF (#997563c)
-- Ajout de tests Prisma (#d473431)
-- Amélioration de la gestion des migrations de la base de données (#7263272)
-- Correction d'un problème de blocage de l'interface lors du défilement vers une projection de ménages (#b8bbfcd)
-- Correction d'un problème de gel de la taille de page (#c52de65)
-- Ajout de tests pour le calcul du logement indigne (#5f5ef12)
+- Migration vers une meilleure solution d'authentification (better-auth). [#3](https://github.com/MTES-MCT/otelo/pulls/3) et [#12](https://github.com/MTES-MCT/otelo/pulls/12)
+- Amélioration de la gestion des versions des données (dataversioning). [#23](https://github.com/MTES-MCT/otelo/pulls/23)
+- Ajout de tests unitaires pour le moteur de calcul Excel. [#25](https://github.com/MTES-MCT/otelo/pulls/25)
+- Refonte du calcul du renouvellement urbain. [#26](https://github.com/MTES-MCT/otelo/pulls/26)
+- Amélioration de la configuration du build et de la gestion des dépendances.
+- Ajout de tests pour la gestion des logements vacants. [#22](https://github.com/MTES-MCT/otelo/pulls/22)
+- Mise en place d'un système de gestion des clés API et de leurs consommateurs. [#22](https://github.com/MTES-MCT/otelo/pulls/22)
 
 ### Autres changements
-- Ajout d'un fichier README (#e71eeb9)
-- Correction de fautes de frappe et amélioration de la lisibilité du code (#515486a, #b0c7e14)
-- Suppression de commandes et de fichiers inutiles (#dd5928c, #4887078)
-- Mise à jour des dépendances et configuration du linting (#ea8fcd7, #29d4710, #6607b63)
-- Ajout de tests pour l'API (#3482e7f)
-- Suppression de la seed data (#4887078)
-- Correction de problèmes de build (#5e4a880, #12ecbcc)
+- Correction de divers bugs et typos.
+- Amélioration de la documentation.
+- Mise à jour des dépendances.
+- Nettoyage du code et refactoring.
+- Ajout de tests et amélioration de la couverture de test.
+- Configuration de l'environnement de développement pour une meilleure gestion de Chromium.
+- Suppression du seed et du client Prisma généré lors du déploiement.
+- Ajout de commentaires et de logs pour faciliter le débogage.

@@ -14,6 +14,7 @@
 │   │   ├── .vscode
 │   │   │   └── settings.json
 │   │   ├── docker-compose.yml
+│   │   ├── import-error.sql
 │   │   ├── jest.config.json
 │   │   ├── nest-cli.json
 │   │   ├── package.json
@@ -78,6 +79,12 @@
 │   │   │   │   ├── 20260217144153_simulation_results_history
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260219101443_remove_unused_exported_col_simulation_results_and_add_deleted_epci_group
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260220092454_apikeys_consumers
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260225170525_delete_unused_column
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260226124519_add_versioning_datapack
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
@@ -168,24 +175,35 @@
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── commands
 │   │   │   │   │   ├── import-backup.command.ts
+│   │   │   │   │   ├── import-csv.command.ts
 │   │   │   │   │   └── recalculate-results.command.ts
 │   │   │   │   └── services
 │   │   │   │       └── scalingo-backup.service.ts
 │   │   │   ├── common
 │   │   │   │   ├── decorators
+│   │   │   │   │   ├── api-consumer.ts
 │   │   │   │   │   ├── authenticated-user.ts
 │   │   │   │   │   ├── control-access.decorator.ts
 │   │   │   │   │   └── public.decorator.ts
 │   │   │   │   ├── exceptions
 │   │   │   │   │   └── auth.exceptions.ts
 │   │   │   │   ├── guards
+│   │   │   │   │   ├── api-key.guard.spec.ts
+│   │   │   │   │   ├── api-key.guard.ts
 │   │   │   │   │   ├── authorization.guard.spec.ts
 │   │   │   │   │   └── authorization.guard.ts
 │   │   │   │   └── utils
-│   │   │   │       └── email-anonymizer.ts
+│   │   │   │       ├── email-anonymizer.ts
+│   │   │   │       └── encryption.ts
 │   │   │   ├── config
 │   │   │   │   ├── env.validation.ts
 │   │   │   │   └── environment.ts
+│   │   │   ├── consumers
+│   │   │   │   ├── consumers.controller.spec.ts
+│   │   │   │   ├── consumers.controller.ts
+│   │   │   │   ├── consumers.module.ts
+│   │   │   │   ├── consumers.service.spec.ts
+│   │   │   │   └── consumers.service.ts
 │   │   │   ├── cron
 │   │   │   │   ├── cron.controller.spec.ts
 │   │   │   │   ├── cron.controller.ts
@@ -194,6 +212,10 @@
 │   │   │   │   ├── cron.service.ts
 │   │   │   │   └── interfaces
 │   │   │   │       └── demarches-simplifiees.interface.ts
+│   │   │   ├── data-pack-versions
+│   │   │   │   ├── data-pack-versions.controller.ts
+│   │   │   │   ├── data-pack-versions.module.ts
+│   │   │   │   └── data-pack-versions.service.ts
 │   │   │   ├── data-visualisation
 │   │   │   │   ├── data-visualisation.controller.spec.ts
 │   │   │   │   ├── data-visualisation.controller.ts
@@ -213,6 +235,8 @@
 │   │   │   │   ├── demographic-evolution-custom.controller.ts
 │   │   │   │   ├── demographic-evolution-custom.module.ts
 │   │   │   │   └── demographic-evolution-custom.service.ts
+│   │   │   ├── docs
+│   │   │   │   └── API_EXTERNAL.md
 │   │   │   ├── email
 │   │   │   │   ├── email.controller.spec.ts
 │   │   │   │   ├── email.controller.ts
@@ -264,6 +288,13 @@
 │   │   │   │       ├── zip.module.ts
 │   │   │   │       ├── zip.service.spec.ts
 │   │   │   │       └── zip.service.ts
+│   │   │   ├── external
+│   │   │   │   ├── external.controller.spec.ts
+│   │   │   │   ├── external.controller.ts
+│   │   │   │   ├── external.dto.ts
+│   │   │   │   ├── external.module.ts
+│   │   │   │   ├── external.service.spec.ts
+│   │   │   │   └── external.service.ts
 │   │   │   ├── feedback
 │   │   │   │   ├── feedback.controller.ts
 │   │   │   │   ├── feedback.module.ts
@@ -414,6 +445,8 @@
 │       │   ├── app
 │       │   │   ├── (authenticated)
 │       │   │   │   ├── admin
+│       │   │   │   │   ├── consommateurs
+│       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── feedbacks
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── page.tsx
@@ -591,6 +624,14 @@
 │       │   │   │   ├── accommodation-rates
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── admin
+│       │   │   │   │   ├── consumers
+│       │   │   │   │   │   ├── [id]
+│       │   │   │   │   │   │   ├── key
+│       │   │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   │   ├── regenerate-key
+│       │   │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── users
 │       │   │   │   │       └── [id]
 │       │   │   │   │           └── access
@@ -604,6 +645,8 @@
 │       │   │   │   ├── cron
 │       │   │   │   │   └── synchro
 │       │   │   │   │       └── route.ts
+│       │   │   │   ├── data-pack-versions
+│       │   │   │   │   └── route.ts
 │       │   │   │   ├── data-visualisation
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── demographic-evolution-custom
@@ -640,6 +683,8 @@
 │       │   │   │   │       └── route.ts
 │       │   │   │   ├── simulations
 │       │   │   │   │   ├── [id]
+│       │   │   │   │   │   ├── actualize
+│       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   ├── clone
 │       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   ├── route.ts
@@ -676,6 +721,9 @@
 │       │   ├── components
 │       │   │   ├── admin
 │       │   │   │   ├── admin-breadcrumb.tsx
+│       │   │   │   ├── consumers
+│       │   │   │   │   ├── consumers-management.tsx
+│       │   │   │   │   └── consumers-table.tsx
 │       │   │   │   ├── feedbacks
 │       │   │   │   │   └── feedbacks-content.tsx
 │       │   │   │   ├── statistics-export-buttons.tsx
@@ -737,7 +785,8 @@
 │       │   │   │   ├── data-visualisation-filters.tsx
 │       │   │   │   ├── data-visualisation-page.tsx
 │       │   │   │   ├── data-visualisation-table.tsx
-│       │   │   │   └── select-data-type.tsx
+│       │   │   │   ├── select-data-type.tsx
+│       │   │   │   └── select-millesime.tsx
 │       │   │   ├── feedback
 │       │   │   │   ├── feedback-banner.module.css
 │       │   │   │   └── feedback-banner.tsx
@@ -883,6 +932,7 @@
 │       │   │   │   │   │   ├── restructuration-disparition-footer.tsx
 │       │   │   │   │   │   └── restructuration-rates-toggle-switch.tsx
 │       │   │   │   │   ├── scenario-naming-modal.tsx
+│       │   │   │   │   ├── select-millesime-modal.tsx
 │       │   │   │   │   ├── select-omphale.tsx
 │       │   │   │   │   ├── select-projection-period.tsx
 │       │   │   │   │   ├── select-territorial-issues.tsx
@@ -945,14 +995,19 @@
 │       │   │   └── text.css
 │       │   ├── hooks
 │       │   │   ├── use-accommodation-rate-epci.ts
+│       │   │   ├── use-actualize-simulation.ts
 │       │   │   ├── use-bassin-epcis.ts
 │       │   │   ├── use-chart-download.ts
 │       │   │   ├── use-clone-simulation.ts
+│       │   │   ├── use-consumers.ts
 │       │   │   ├── use-contact-form.ts
 │       │   │   ├── use-contiguous-epcis.ts
+│       │   │   ├── use-create-consumer.ts
 │       │   │   ├── use-create-simulation.ts
 │       │   │   ├── use-create-user.ts
+│       │   │   ├── use-data-pack-versions.ts
 │       │   │   ├── use-data-visualisation.ts
+│       │   │   ├── use-delete-consumer.ts
 │       │   │   ├── use-delete-simulation.ts
 │       │   │   ├── use-delete-user.ts
 │       │   │   ├── use-demographic-evolution-custom.ts
@@ -968,7 +1023,9 @@
 │       │   │   ├── use-feedback-status.ts
 │       │   │   ├── use-forgot-password.ts
 │       │   │   ├── use-geoapi-search.ts
+│       │   │   ├── use-get-consumer-key.ts
 │       │   │   ├── use-impersonation.ts
+│       │   │   ├── use-regenerate-consumer-key.ts
 │       │   │   ├── use-request-powerpoint.ts
 │       │   │   ├── use-reset-password.ts
 │       │   │   ├── use-scenario.ts
@@ -978,6 +1035,7 @@
 │       │   │   ├── use-statistics.ts
 │       │   │   ├── use-submit-feedback.ts
 │       │   │   ├── use-synchro-ds.ts
+│       │   │   ├── use-update-consumer.ts
 │       │   │   ├── use-update-simulation.ts
 │       │   │   ├── use-update-user-access.ts
 │       │   │   ├── use-update-user-type.ts
@@ -1076,4 +1134,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-311 directories, 767 files
+326 directories, 810 files
