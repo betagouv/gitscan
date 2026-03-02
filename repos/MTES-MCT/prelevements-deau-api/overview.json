@@ -4,11 +4,11 @@
   "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit des scripts pour récupérer les dossiers, extraire des données et générer des rapports.",
   "language": "JavaScript",
   "features": [
-    "Gestion des prélèvements d'eau",
-    "Collecte de données",
-    "Analyse de données",
+    "Collecte de données de prélèvement d'eau",
+    "Extraction de données",
     "Génération de rapports",
     "Synchronisation avec Démarche Simplifiée",
+    "Gestion des pièces jointes",
     "API REST"
   ],
   "audience": "Agents de l'Administration",
@@ -18,6 +18,7 @@
     "Docker",
     "MongoDB",
     "Express",
+    "Redis",
     "bullmq",
     "nodemailer",
     "mjml",
@@ -25,17 +26,19 @@
     "@fabnum/prelevements-deau-timeseries-parsers"
   ],
   "components": [
-    "API REST",
+    "API REST (Node.js/Express)",
     "Base de données MongoDB",
-    "Workers BullMQ",
+    "Queue de messages Redis (BullMQ)",
     "Conteneurs Docker",
-    "Queue Redis"
+    "MinIO (stockage d'objets)",
+    "Workers BullMQ"
   ],
   "auth": {
     "methods": [
       "email-password",
       "jwt"
-    ]
+    ],
+    "providers": null
   },
   "tests": "Ava, Jest",
   "workflows": [
@@ -52,12 +55,12 @@
     "openIssues": null
   },
   "tags": [
-    "prélèvements d'eau",
+    "prélèvement d'eau",
     "données environnementales",
     "API",
     "MongoDB",
-    "JavaScript",
-    "Démarche Simplifiée",
-    "Docker"
+    "Node.js",
+    "Docker",
+    "Démarche Simplifiée"
   ]
 }
