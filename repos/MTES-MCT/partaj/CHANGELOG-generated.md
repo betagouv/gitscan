@@ -1,24 +1,23 @@
 ## Changelog : partaj (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des pièces jointes et des versions de documents, ainsi que des corrections pour assurer la stabilité et la conformité du système. Des mises à jour techniques ont été effectuées pour moderniser l'infrastructure et améliorer les performances.
+Ce changelog présente les améliorations apportées à Partaj au cours du dernier mois. Les modifications incluent des corrections de bugs pour améliorer l'expérience utilisateur, notamment sur l'affichage des saisines liées, ainsi que des mises à jour techniques importantes concernant le stockage des fichiers, l'authentification et la compatibilité avec les dernières versions de Django.
 
 ### Évolutions fonctionnelles
-- Ajout d'une modal pour la validation des pièces jointes (#253fa4d).
-- Ajout de modales de version (#253fa4d).
-- Correction d'un cas particulier concernant les "particuliers" (#7ae0fd4).
-- Suppression de la modal de confirmation de division et sauvegarde en cas de problème réseau (#2fe1f57).
+- Correction du bouton d'affichage des saisines liées [#IS-5](https://github.com/MTES-MCT/partaj/issues/IS-5).
+- Ajout d'une modale pour la validation des pièces jointes.
+- Ajout de modales de version.
+- Correction d'un cas particulier concernant les "particuliers".
 
 ### Évolutions techniques
-- Mise à jour de la gestion du stockage pour supprimer Whitenoise et utiliser `partaj.core.storage.RelaxedCompressedStaticFilesStorage` (#f3650e9, #751c129, #1ef3958).
-- Migration vers `django_cas_ng` pour l'authentification (#8457c3b).
-- Mise à jour de la version de Django (#c391ee4).
-- Correction de problèmes liés aux UUID dans les tests (#8fafae9).
-- Amélioration de la gestion des permissions, remplacement de `has_permission` par `has_object_permission` (#27b8767).
-- Rafraîchissement des données depuis la base de données avant l'assignation de la date de création (#f37ddda).
+- Mise à jour de la méthode d'authentification vers `django_cas_ng`.
+- Mise à jour de la version de Django.
+- Refonte du système de stockage des fichiers : suppression de Whitenoise et utilisation de `partaj.core.storage.RelaxedCompressedStaticFilesStorage`.
+- Correction de problèmes liés à la publication des données en base avant l'assignation de leur date de création.
+- Suppression de la modale de confirmation de division et sauvegarde en cas de problème réseau.
+- Mise à jour de la méthode `has_permission` vers `has_object_permission`.
 
 ### Autres changements
-- Corrections diverses et améliorations suite aux revues de code (#a842265).
-- Corrections de tests pour résoudre des problèmes de clés primaires manquantes et de récursion (#ebc732c, #5428b7e).
-- Corrections de style avec Black et Pylint (#5e402f1, #2bfdd87).
-- Mise à jour du stockage (#a053547, #9508206).
+- Corrections de tests unitaires (problèmes de clés primaires manquantes, UUID invalides, récursivité, etc.).
+- Améliorations du code (linting avec Black et Pylint).
+- Correction de problèmes de style de code.
