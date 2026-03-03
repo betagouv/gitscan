@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/OTP-DS-to-Grist",
   "name": "OTP-DS-to-Grist",
-  "description": "OTP-DS-to-Grist est un gestionnaire de connecteur entre Démarches Simplifiées et Grist. Il permet d'exporter des données de Démarches Simplifiées vers Grist.",
+  "description": "OTP-DS-to-Grist est un gestionnaire de connecteur entre Démarches Simplifiées et Grist. Il permet d'exporter des données de Démarches Simplifiées vers Grist pour les utilisateurs ayant les droits nécessaires.",
   "language": "Python",
   "features": [
-    "Synchronisation de données",
+    "Synchronisation des données",
     "Configuration de filtres",
     "Gestion des connexions API",
-    "Suivi de la progression de la synchronisation",
-    "Affichage des logs"
+    "Interface utilisateur",
+    "Suivi de la progression",
+    "Journalisation des événements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,14 +18,14 @@
     "Requests",
     "SQLAlchemy",
     "APScheduler",
-    "psycopg2-binary",
-    "python-dotenv"
+    "psycopg2-binary"
   ],
   "components": [
-    "API Flask",
-    "Interface utilisateur (JavaScript)",
+    "Backend Flask",
+    "Interface utilisateur",
     "Base de données PostgreSQL",
-    "Planificateur de tâches (APScheduler)"
+    "API REST",
+    "Tâches planifiées (APScheduler)"
   ],
   "auth": {
     "methods": [
@@ -32,8 +33,8 @@
     ]
   },
   "tests": [
-    "Jest",
-    "Pytest"
+    "Pytest",
+    "Jest"
   ],
   "workflows": [
     "ci.yml"
@@ -53,7 +54,7 @@
     "Grist",
     "Synchronisation de données",
     "API",
-    "Flask",
-    "Python"
+    "Python",
+    "Flask"
   ]
 }
