@@ -465,6 +465,10 @@
 │   │   │   │   ├── pending_correction_checkbox_component.fr.yml
 │   │   │   │   └── pending_correction_checkbox_component.html.haml
 │   │   │   ├── pending_correction_checkbox_component.rb
+│   │   │   ├── quotient_familial_component
+│   │   │   │   ├── quotient_familial_component.en.yml
+│   │   │   │   └── quotient_familial_component.fr.yml
+│   │   │   ├── quotient_familial_component.rb
 │   │   │   ├── referentiel_component.rb
 │   │   │   ├── region_component.rb
 │   │   │   ├── rna_component.rb
@@ -679,6 +683,12 @@
 │   │   │   │   ├── pole_emploi_component.fr.yml
 │   │   │   │   └── pole_emploi_component.html.haml
 │   │   │   ├── pole_emploi_component.rb
+│   │   │   ├── quotient_familial_component
+│   │   │   │   ├── preview_quotient_familial_data.json
+│   │   │   │   ├── quotient_familial_component.en.yml
+│   │   │   │   ├── quotient_familial_component.fr.yml
+│   │   │   │   └── quotient_familial_component.html.haml
+│   │   │   ├── quotient_familial_component.rb
 │   │   │   ├── referentiel_component
 │   │   │   │   └── referentiel_component.html.haml
 │   │   │   ├── referentiel_component.rb
@@ -1138,6 +1148,12 @@
 │   │   │   ├── api_token_component
 │   │   │   │   └── api_token_component.html.haml
 │   │   │   └── api_token_component.rb
+│   │   ├── quotient_familial
+│   │   │   ├── quotient_familial_component
+│   │   │   │   ├── quotient_familial_component.en.yml
+│   │   │   │   ├── quotient_familial_component.fr.yml
+│   │   │   │   └── quotient_familial_component.html.haml
+│   │   │   └── quotient_familial_component.rb
 │   │   ├── react_component.rb
 │   │   ├── referentiels
 │   │   │   ├── autocomplete_configuration_component
@@ -1240,6 +1256,9 @@
 │   │   │   ├── info_referentiel_component
 │   │   │   │   └── info_referentiel_component.html.haml
 │   │   │   ├── info_referentiel_component.rb
+│   │   │   ├── quotient_familial_component
+│   │   │   │   └── quotient_familial_component.html.haml
+│   │   │   ├── quotient_familial_component.rb
 │   │   │   ├── select_champ_position_component
 │   │   │   │   └── select_champ_position_component.html.haml
 │   │   │   ├── select_champ_position_component.rb
@@ -1576,6 +1595,7 @@
 │   │       │   │   ├── phone_champ_descriptor_type.rb
 │   │       │   │   ├── piece_justificative_champ_descriptor_type.rb
 │   │       │   │   ├── pole_emploi_champ_descriptor_type.rb
+│   │       │   │   ├── quotient_familial_champ_descriptor_type.rb
 │   │       │   │   ├── referentiel_champ_descriptor_type.rb
 │   │       │   │   ├── region_champ_descriptor_type.rb
 │   │       │   │   ├── repetition_champ_descriptor_type.rb
@@ -1735,6 +1755,7 @@
 │   │   │   ├── checkbox_select_all_controller.ts
 │   │   │   ├── clipboard2_controller.ts
 │   │   │   ├── clipboard_controller.ts
+│   │   │   ├── clipboard_inline_controller.ts
 │   │   │   ├── closing_notification_controller.ts
 │   │   │   ├── closing_reason_controller.ts
 │   │   │   ├── contact_controller.ts
@@ -1985,6 +2006,7 @@
 │   │   │   ├── error.rb
 │   │   │   ├── mesri_adapter.rb
 │   │   │   ├── pole_emploi_adapter.rb
+│   │   │   ├── quotient_familial.rb
 │   │   │   └── services
 │   │   │       └── sources_service.rb
 │   │   ├── api_tchap
@@ -2111,6 +2133,7 @@
 │   │   │   ├── phone_champ.rb
 │   │   │   ├── piece_justificative_champ.rb
 │   │   │   ├── pole_emploi_champ.rb
+│   │   │   ├── quotient_familial_champ.rb
 │   │   │   ├── referentiel_champ.rb
 │   │   │   ├── region_champ.rb
 │   │   │   ├── repetition_champ.rb
@@ -2131,6 +2154,7 @@
 │   │   │   ├── linked_drop_down_column.rb
 │   │   │   ├── multiple_drop_down_column.rb
 │   │   │   ├── piece_justificative_column.rb
+│   │   │   ├── quotient_familial_column.rb
 │   │   │   └── read_agreement_column.rb
 │   │   ├── commentaire.rb
 │   │   ├── commentaire_groupe_gestionnaire.rb
@@ -2226,6 +2250,7 @@
 │   │   ├── instructeur.rb
 │   │   ├── instructeurs_procedure.rb
 │   │   ├── invite.rb
+│   │   ├── justificatif_domicile.rb
 │   │   ├── label.rb
 │   │   ├── label_model.rb
 │   │   ├── llm
@@ -2341,6 +2366,7 @@
 │   │   │   ├── piece_justificative_type_de_champ.rb
 │   │   │   ├── pole_emploi_type_de_champ.rb
 │   │   │   ├── prefill_*.rb  (13 files)
+│   │   │   ├── quotient_familial_type_de_champ.rb
 │   │   │   ├── referentiel_type_de_champ.rb
 │   │   │   ├── region_type_de_champ.rb
 │   │   │   ├── repetition_type_de_champ.rb
@@ -2367,6 +2393,7 @@
 │   │   ├── etablissement-annuaire-education.json
 │   │   ├── etudiants.json
 │   │   ├── geojson.json
+│   │   ├── quotient-familial.json
 │   │   ├── rnf.json
 │   │   ├── service-public.json
 │   │   └── situation-pole-emploi.json
@@ -3614,6 +3641,9 @@
 │   │   │   │   ├── siret_champ
 │   │   │   │   │   ├── en.yml
 │   │   │   │   │   └── fr.yml
+│   │   │   │   ├── textarea_champ
+│   │   │   │   │   ├── en.yml
+│   │   │   │   │   └── fr.yml
 │   │   │   │   └── titre_identite_champ
 │   │   │   │       ├── en.yml
 │   │   │   │       └── fr.yml
@@ -3667,6 +3697,9 @@
 │   │   │   ├── instructeur
 │   │   │   │   └── fr.yml
 │   │   │   ├── invite
+│   │   │   │   ├── en.yml
+│   │   │   │   └── fr.yml
+│   │   │   ├── justificatif_domicile
 │   │   │   │   ├── en.yml
 │   │   │   │   └── fr.yml
 │   │   │   ├── label
@@ -4626,6 +4659,7 @@
 │   │   │   ├── piece_justificative_component
 │   │   │   │   └── piece_justificative_component_spec.rb
 │   │   │   ├── piece_justificative_component_spec.rb
+│   │   │   ├── quotient_familial_component_spec.rb
 │   │   │   ├── referentiel_display_component_spec.rb
 │   │   │   ├── repetition_component_spec.rb
 │   │   │   ├── section_component_spec.rb
@@ -5052,6 +5086,9 @@
 │   │   │   ├── black.png
 │   │   │   ├── data
 │   │   │   │   └── treatment-expected-3months.csv
+│   │   │   ├── doc_ia
+│   │   │   │   ├── failed.json
+│   │   │   │   └── success.json
 │   │   │   ├── dossierPDF.pdf
 │   │   │   ├── file.pdf
 │   │   │   ├── french-flag.gif
@@ -5227,6 +5264,7 @@
 │   │   │   ├── dgfip_adapter_spec.rb
 │   │   │   ├── mesri_adapter_spec.rb
 │   │   │   ├── pole_emploi_adapter_spec.rb
+│   │   │   ├── quotient_familial_spec.rb
 │   │   │   └── services
 │   │   │       └── sources_service_spec.rb
 │   │   ├── api_tchap
@@ -5345,6 +5383,7 @@
 │   │   │   ├── phone_champ_spec.rb
 │   │   │   ├── piece_justificative_champ_spec.rb
 │   │   │   ├── pole_emploi_champ_spec.rb
+│   │   │   ├── quotient_familial_champ_spec.rb
 │   │   │   ├── referentiel_champ_cast_displayable_spec.rb
 │   │   │   ├── referentiel_champ_cast_value_spec.rb
 │   │   │   ├── referentiel_champ_spec.rb
@@ -5492,6 +5531,7 @@
 │   │   │   ├── prefill_region_type_de_champ_spec.rb
 │   │   │   ├── prefill_repetition_type_de_champ_spec.rb
 │   │   │   ├── prefill_type_de_champ_spec.rb
+│   │   │   ├── quotient_familial_type_de_champ_spec.rb
 │   │   │   └── siret_type_de_champ_spec.rb
 │   │   ├── user_spec.rb
 │   │   └── zone_spec.rb
@@ -5846,4 +5886,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-936 directories, 5227 files
+944 directories, 5259 files
