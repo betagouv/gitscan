@@ -1,16 +1,12 @@
 ## Changelog : mutafriches (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'application, notamment la possibilité de gérer plusieurs parcelles simultanément, des corrections concernant l'affichage des statistiques et l'analyse sur la carte Leaflet, ainsi qu'un nettoyage de la documentation. Une nouvelle version (1.6.0) a été publiée.
+Cette mise à jour apporte des améliorations significatives à l'application, notamment la possibilité de gérer et d'analyser plusieurs parcelles simultanément. Des corrections ont également été apportées pour assurer la fiabilité des statistiques affichées. Enfin, la version de l'application a été mise à jour à 1.6.0.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de gestion de multiparcelles (#56).
-- Correction de l'affichage des statistiques de dates (#60, #61).
-- Correction d'un problème d'analyse sur la carte Leaflet (#52).
+- Ajout de la fonctionnalité de gestion de multiparcelles, permettant l'analyse de plusieurs friches urbaines en même temps. [#56](https://github.com/incubateur-ademe/mutafriches/pull/56)
+- Correction de l'affichage des statistiques de dates. [#60](https://github.com/incubateur-ademe/mutafriches/issues/60) et [#61](https://github.com/incubateur-ademe/mutafriches/issues/61)
+- Correction de la route des statistiques. [#59](https://github.com/incubateur-ademe/mutafriches/issues/59)
 
 ### Évolutions techniques
-- Bump de version vers 1.6.0 (#57).
-- Nettoyage de la documentation du projet (#51).
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Mise à jour de la version de l'application à 1.6.0. [#57](https://github.com/incubateur-ademe/mutafriches/pull/57)
