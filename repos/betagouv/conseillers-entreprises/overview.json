@@ -1,28 +1,33 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet de développer le rôle de conseil auprès des TPE & PME. Il est développé de façon ouverte et transparente, avec un code source publié sous licence libre AGPL.",
+  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers.",
   "language": "Ruby",
   "features": [
     "Recherche",
-    "Gestion des antennes régionales",
-    "Suivi des statistiques",
+    "Gestion des sollicitations",
     "Gestion des experts",
-    "Gestion des sollicitations"
+    "Suivi des activités",
+    "Export de données",
+    "Gestion des utilisateurs",
+    "Authentification",
+    "Gestion des partenaires"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
-    "@gouvfr/dsfr",
     "webpack",
-    "stimulus"
+    "stimulus",
+    "accessible-autocomplete",
+    "mjml"
   ],
   "components": [
     "Application web Ruby on Rails",
     "Base de données PostgreSQL",
     "Frontend JavaScript",
-    "API REST"
+    "API REST",
+    "Interface d'administration"
   ],
   "auth": {
     "methods": [
@@ -31,12 +36,13 @@
   },
   "tests": [
     "RSpec",
-    "SimpleCov"
+    "System tests"
   ],
   "workflows": [
-    "CI/CD with CircleCI"
+    "CI/CD (CircleCI)",
+    "Dependency updates"
   ],
-  "lastActivity": "2026-02-25T12:14:32+01:00",
+  "lastActivity": "2026-03-02T14:33:18+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -47,14 +53,12 @@
     "openIssues": null
   },
   "tags": [
-    "ruby",
-    "rails",
-    "postgresql",
-    "conseil",
-    "entreprises",
+    "Ruby on Rails",
+    "PostgreSQL",
+    "Conseil aux entreprises",
     "TPE",
     "PME",
-    "administration",
-    "service public"
+    "Administration publique",
+    "Service public"
   ]
 }
