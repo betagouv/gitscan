@@ -32,8 +32,8 @@
 ├── docker-compose.yml
 ├── donneesComplementairesReferentielMesuresV2.ts
 ├── donneesConversionReferentielMesures.ts
-├── donneesReferentiel.js
-├── donneesReferentielDepartements.js
+├── donneesReferentiel.ts
+├── donneesReferentielDepartements.ts
 ├── donneesReferentielMesuresV2.ts
 ├── knexfile.js
 ├── migrations
@@ -537,6 +537,7 @@
 │   │   ├── indiceCyber.mjs
 │   │   ├── mesures.mjs
 │   │   ├── risques.mjs
+│   │   ├── risquesV2.mjs
 │   │   └── rolesResponsabilites.js
 │   ├── simulationV2.mjs
 │   ├── supervision.mjs
@@ -803,7 +804,7 @@
 │   │   │   ├── evenementServicesImportes.ts
 │   │   │   └── evenementSimulationMigrationReferentielCreee.ts
 │   │   ├── listeItems.ts
-│   │   ├── listeRisques.js
+│   │   ├── listeRisques.ts
 │   │   ├── mesure.ts
 │   │   ├── mesureGenerale.js
 │   │   ├── mesureGenerale.type.ts
@@ -811,7 +812,7 @@
 │   │   ├── mesures.js
 │   │   ├── mesuresGenerales.js
 │   │   ├── mesuresSpecifiques.ts
-│   │   ├── niveauGravite.js
+│   │   ├── niveauGravite.ts
 │   │   ├── notificationExpirationHomologation.js
 │   │   ├── objetsApi
 │   │   │   ├── objetGetAutorisation.js
@@ -843,12 +844,12 @@
 │   │   │   ├── profil.js
 │   │   │   ├── regle.js
 │   │   │   └── regles.js
-│   │   ├── risque.js
-│   │   ├── risqueGeneral.js
-│   │   ├── risqueSpecifique.js
-│   │   ├── risques.js
-│   │   ├── risquesGeneraux.js
-│   │   ├── risquesSpecifiques.js
+│   │   ├── risque.ts
+│   │   ├── risqueGeneral.ts
+│   │   ├── risqueSpecifique.ts
+│   │   ├── risques.ts
+│   │   ├── risquesGeneraux.ts
+│   │   ├── risquesSpecifiques.ts
 │   │   ├── rolesResponsabilites.js
 │   │   ├── service.js
 │   │   ├── sourceAuthentification.ts
@@ -952,7 +953,8 @@
 │   │       ├── tamponHomologation.base64.pug
 │   │       └── tamponHomologation.pug
 │   ├── referentiel.interface.ts
-│   ├── referentiel.js
+│   ├── referentiel.ts
+│   ├── referentiel.types.ts
 │   ├── referentielV2.ts
 │   ├── routes
 │   │   ├── connecte
@@ -1103,6 +1105,7 @@
 │       │   ├── modaleEncartHomologation.pug
 │       │   ├── modaleParcoursHomologation.pug
 │       │   ├── risques.pug
+│       │   ├── risquesV2.pug
 │       │   ├── rolesResponsabilites.pug
 │       │   └── simulation-referentiel-v2.pug
 │       ├── statistiques.pug
@@ -1396,6 +1399,14 @@
 │   │   │   ├── risque.api.ts
 │   │   │   ├── risques.d.ts
 │   │   │   └── risques.ts
+│   │   ├── risquesV2
+│   │   │   ├── MatriceRisquesV2.svelte
+│   │   │   ├── Niveau.svelte
+│   │   │   ├── RisquesV2.svelte
+│   │   │   ├── kit.ts
+│   │   │   ├── risquesV2.api.ts
+│   │   │   ├── risquesV2.d.ts
+│   │   │   └── risquesV2.ts
 │   │   ├── simulationV2
 │   │   │   ├── SimulationV2.svelte
 │   │   │   ├── etapes
@@ -1828,11 +1839,11 @@
 │   │   ├── profils
 │   │   │   ├── profil.spec.js
 │   │   │   └── regles.spec.js
-│   │   ├── risque.spec.js
-│   │   ├── risqueGeneral.spec.js
-│   │   ├── risqueSpecifique.spec.js
-│   │   ├── risques.spec.js
-│   │   ├── risquesSpecifiques.spec.js
+│   │   ├── risque.spec.ts
+│   │   ├── risqueGeneral.spec.ts
+│   │   ├── risqueSpecifique.spec.ts
+│   │   ├── risques.spec.ts
+│   │   ├── risquesSpecifiques.spec.ts
 │   │   ├── rolesResponsabilites.spec.js
 │   │   ├── service.spec.js
 │   │   ├── statistiquesMesuresGenerales.spec.js
@@ -1951,4 +1962,4 @@
 │       └── validationMotDePasse.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-261 directories, 1810 files
+262 directories, 1820 files
