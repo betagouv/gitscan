@@ -1,44 +1,44 @@
 ## Changelog : envergo (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'envergo incluent des améliorations significatives de l'interface utilisateur, notamment pour la gestion des configurations et des haies, ainsi que des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des optimisations ont également été apportées à la gestion des données et des requêtes, et des mises à jour de sécurité ont été implémentées. Plusieurs améliorations de la documentation et des tests ont également été réalisées.
+Cette période a été marquée par de nombreuses améliorations et corrections de bugs, touchant à la fois l'interface utilisateur, la gestion des données et l'infrastructure du projet. Les améliorations concernent notamment la gestion des configurations, l'évaluation de l'impact environnemental des haies, et la correction de problèmes liés à l'affichage et à la manipulation des données. Des efforts ont également été faits pour améliorer la robustesse et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la gestion des configurations, avec l'ajout de plages de validité et de filtres (#1031, #1032).
-- Ajout de la possibilité de visualiser les cartes pour chaque département dans la configuration (#981).
-- Amélioration du calcul et de l'affichage de la densité de haies (#1016, #1018, #1019).
-- Correction d'un bug empêchant l'affichage correct des projets (#999).
-- Amélioration de la gestion des réglementations Natura 2000 (#1008, #1023).
-- Ajout de la possibilité de filtrer les configurations par date (#1033).
-- Correction de l'affichage des boutons "en savoir plus" (#1015).
-- Amélioration de la gestion des URL des projets (#1006).
-- Ajout de la gestion des champs de surface avec unités (#988).
-- Amélioration de l'affichage des comptes (#1020).
+- Amélioration de la gestion des dates de validité des configurations, avec ajout de champs de date de début et de fin de validité et une vérification des chevauchements. [#954](https://github.com/MTES-MCT/envergo/pull/954)
+- Ajout de la possibilité de filtrer les configurations par date. [#971](https://github.com/MTES-MCT/envergo/pull/971)
+- Amélioration de l'affichage des réglementations Natura 2000. [#1008](https://github.com/MTES-MCT/envergo/pull/1008)
+- Correction d'un bug empêchant l'affichage correct des projets. [#1032](https://github.com/MTES-MCT/envergo/pull/1032)
+- Correction d'un bug lié à la synchronisation des données avec Pipedrive. [#1031](https://github.com/MTES-MCT/envergo/pull/1031)
+- Amélioration de l'affichage des informations relatives aux haies sur la carte. [#1018](https://github.com/MTES-MCT/envergo/pull/1018)
+- Ajout de la possibilité d'afficher les sites inscrits. [#997](https://github.com/MTES-MCT/envergo/pull/997)
+- Amélioration de l'affichage de la table récapitulative des haies. [#990](https://github.com/MTES-MCT/envergo/pull/990)
+- Correction de liens incorrects dans les notifications. [#995](https://github.com/MTES-MCT/envergo/pull/995)
+- Ajout de la possibilité d'afficher la carte par département. [#981](https://github.com/MTES-MCT/envergo/pull/981)
+- Suppression des tokens d'analytics liés aux consultations. [#986](https://github.com/MTES-MCT/envergo/pull/986)
 
 ### Évolutions techniques
-- Mise à jour de Django en version 4.2.28 (#989).
-- Optimisation des requêtes pour améliorer les performances (#965).
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Mise à jour de Django en version 4.2.x. [#1009](https://github.com/MTES-MCT/envergo/pull/1009)
+- Refactorisation du code pour améliorer la performance et la maintenabilité.
+- Amélioration des tests unitaires et d'intégration, avec ajout de nouvelles couvertures de tests. [#1028](https://github.com/MTES-MCT/envergo/pull/1028)
+- Correction de problèmes de linting et de conformité au style de code.
 - Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation des requêtes à la base de données.
 - Suppression de dépendances inutiles (bs4).
-- Utilisation de filtres plus performants pour la gestion des haies.
-- Amélioration de la gestion des dates et des intervalles de temps.
-- Ajout de contraintes de base de données pour la validation des chevauchements de configurations.
+- Utilisation de nouveaux widgets pour les champs de surface avec unités.
 - Amélioration de la gestion des URL et des liens.
+- Mise en place de vérifications de sécurité pour prévenir les attaques XSS.
+- Correction de problèmes de syntaxe HTML.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les dernières modifications.
-- Corrections de fautes de frappe et améliorations de la qualité du code.
-- Mise à jour des messages et des textes d'interface utilisateur.
-- Amélioration de la sécurité en supprimant des tokens inutiles et en protégeant contre les attaques XSS.
-- Mise à jour des dépendances et des bibliothèques.
-- Amélioration de la gestion des logs et des erreurs.
-- Ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des définitions terrain et assiette.
-- Amélioration de l'affichage des numéros de page.
-- Suppression de l'analyse des tokens de consultation.
-- Mise à jour de la mise en page de l'historique.
-- Correction de l'affichage de la mention "PAC ou pas PAC".
-- Amélioration de l'affichage de la date d'échéance.
-- Suppression des événements analytics liés aux tokens de consultation.
+- Mise à jour de la documentation.
+- Correction de typos et d'erreurs de texte.
+- Amélioration de la précision des définitions relatives à l'assiette du terrain.
+- Précision sur les droits d'accès à la page de paramétrage.
+- Mise à jour des messages d'erreur pour plus de clarté.
+- Correction de problèmes mineurs d'interface utilisateur.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Amélioration de la gestion des configurations et des paramètres de l'application.
+- Correction de problèmes liés à la gestion des sessions utilisateur.
+- Ajout de logs pour faciliter le débogage.
+- Amélioration de la gestion des erreurs Sentry.
