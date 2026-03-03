@@ -4,42 +4,44 @@
   "description": "Potentiel est le service du Ministère chargé de l'énergie qui connecte les acteurs du parcours administratif des projets d'énergies renouvelables électriques soumis à appel d'offres en France.",
   "language": "TypeScript",
   "features": [
-    "Gestion des dossiers de raccordement",
-    "Suivi des projets d'énergies renouvelables",
-    "Gestion des autorisations et des accès",
+    "Gestion de projets d'énergies renouvelables",
+    "Suivi des étapes administratives",
     "Export de données",
+    "Gestion des utilisateurs et des rôles",
     "Notifications",
-    "Gestion des recours"
+    "Gestion des documents"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "PostgreSQL",
-    "MinIO",
-    "Keycloak",
-    "Typespec"
+    "Redis",
+    "Typespec",
+    "ESM"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Authentification Keycloak",
-    "Stockage objet MinIO"
+    "Microservices",
+    "Docker",
+    "Keycloak"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso"
+      "session"
     ],
     "providers": []
   },
-  "tests": "Jest, Cypress",
-  "workflows": [
-    "build",
-    "test",
-    "lint"
+  "tests": [
+    "Jest",
+    "Cypress"
   ],
-  "lastActivity": "2026-02-25T11:39:31+01:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-03-02T14:36:35+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -56,8 +58,7 @@
     "TypeScript",
     "React",
     "PostgreSQL",
-    "Keycloak",
-    "énergies renouvelables",
-    "raccordement électrique"
+    "Docker",
+    "CI/CD"
   ]
 }

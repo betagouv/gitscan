@@ -383,6 +383,7 @@
 │   │   │   │   │   ├── getCahierDesChargesLauréat.ts
 │   │   │   │   │   ├── getCandidature.ts
 │   │   │   │   │   ├── getLauréat.ts
+│   │   │   │   │   ├── getProjet.ts
 │   │   │   │   │   ├── getÉliminé.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── listerAdminEtValidateursRecipients.ts
@@ -400,12 +401,10 @@
 │   │   │   │   ├── subscribers
 │   │   │   │   │   ├── accès
 │   │   │   │   │   │   ├── accès.notifications.ts
-│   │   │   │   │   │   ├── constant.ts
-│   │   │   │   │   │   ├── handlers
-│   │   │   │   │   │   │   ├── accèsProjetAutoriséSuiteÀRéclamation.handler.ts
-│   │   │   │   │   │   │   ├── accèsProjetRetiré.handler.ts
-│   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   └── type.ts
+│   │   │   │   │   │   └── handlers
+│   │   │   │   │   │       ├── accèsProjetAutoriséSuiteÀRéclamation.handler.ts
+│   │   │   │   │   │       ├── accèsProjetRetiré.handler.ts
+│   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── candidature
 │   │   │   │   │   │   ├── candidature.notifications.ts
 │   │   │   │   │   │   ├── constant.ts
@@ -427,12 +426,10 @@
 │   │   │   │   │   │   │       └── preuveRecandidatureDemandée.handler.ts
 │   │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   │   ├── achèvement.notifications.ts
-│   │   │   │   │   │   │   ├── constant.ts
-│   │   │   │   │   │   │   ├── handlers
-│   │   │   │   │   │   │   │   ├── attestationConformitéTransmise.handler.ts
-│   │   │   │   │   │   │   │   ├── dateAchèvementTransmise.handler.ts
-│   │   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   │   └── type.ts
+│   │   │   │   │   │   │   └── handlers
+│   │   │   │   │   │   │       ├── attestationConformitéTransmise.handler.ts
+│   │   │   │   │   │   │       ├── dateAchèvementTransmise.handler.ts
+│   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   ├── actionnaire
 │   │   │   │   │   │   │   ├── actionnaire.notifications.ts
 │   │   │   │   │   │   │   └── handlers
@@ -511,7 +508,6 @@
 │   │   │   │   │   │   │   │   └── producteurModifié.handler.ts
 │   │   │   │   │   │   │   └── producteur.notifications.ts
 │   │   │   │   │   │   ├── puissance
-│   │   │   │   │   │   │   ├── constant.ts
 │   │   │   │   │   │   │   ├── handlers
 │   │   │   │   │   │   │   │   ├── changementPuissanceAccordé.handler.ts
 │   │   │   │   │   │   │   │   ├── changementPuissanceAnnulé.handler.ts
@@ -520,8 +516,7 @@
 │   │   │   │   │   │   │   │   ├── changementPuissanceRejeté.handler.ts
 │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   └── puissanceModifiée.handler.ts
-│   │   │   │   │   │   │   ├── puissance.notifications.ts
-│   │   │   │   │   │   │   └── type.ts
+│   │   │   │   │   │   │   └── puissance.notifications.ts
 │   │   │   │   │   │   ├── représentant-légal
 │   │   │   │   │   │   │   ├── constant.ts
 │   │   │   │   │   │   │   ├── handlers
@@ -597,6 +592,10 @@
 │   │   │   │       │   │   ├── demander_preuve_recandidature.md
 │   │   │   │       │   │   ├── passer_en_instruction.md
 │   │   │   │       │   │   └── rejeter.md
+│   │   │   │       │   ├── accès
+│   │   │   │       │   │   ├── accès_autorisé_dreal.md
+│   │   │   │       │   │   ├── accès_autorisé_porteur.md
+│   │   │   │       │   │   └── accès_révoqué.md
 │   │   │   │       │   ├── auth
 │   │   │   │       │   │   ├── lien-magique.md
 │   │   │   │       │   │   └── proconnect-obligatoire.md
@@ -608,6 +607,10 @@
 │   │   │   │       │   │   ├── passer_en_instruction.md
 │   │   │   │       │   │   └── rejeter.md
 │   │   │   │       │   ├── lauréat
+│   │   │   │       │   │   ├── achèvement
+│   │   │   │       │   │   │   ├── transmettre_attestation_dreal.md
+│   │   │   │       │   │   │   ├── transmettre_attestation_porteur.md
+│   │   │   │       │   │   │   └── transmettre_date.md
 │   │   │   │       │   │   ├── actionnaire
 │   │   │   │       │   │   │   ├── demande
 │   │   │   │       │   │   │   │   ├── accorder.md
@@ -632,7 +635,15 @@
 │   │   │   │       │   │   ├── nature-de-l-exploitation
 │   │   │   │       │   │   │   ├── enregistrer_changement.md
 │   │   │   │       │   │   │   └── modifier.md
-│   │   │   │       │   │   └── producteur
+│   │   │   │       │   │   ├── producteur
+│   │   │   │       │   │   │   ├── enregistrer_changement.md
+│   │   │   │       │   │   │   └── modifier.md
+│   │   │   │       │   │   └── puissance
+│   │   │   │       │   │       ├── demande
+│   │   │   │       │   │       │   ├── accorder.md
+│   │   │   │       │   │       │   ├── annuler.md
+│   │   │   │       │   │       │   ├── demander.md
+│   │   │   │       │   │       │   └── rejeter.md
 │   │   │   │       │   │       ├── enregistrer_changement.md
 │   │   │   │       │   │       └── modifier.md
 │   │   │   │       │   └── recours
@@ -1789,6 +1800,8 @@
 │   │   │   │   │   │   │   │   │   │   └── rejeter
 │   │   │   │   │   │   │   │   │   │       ├── RejeterChangementPuissance.form.tsx
 │   │   │   │   │   │   │   │   │   │       └── rejeterChangementPuissance.action.ts
+│   │   │   │   │   │   │   │   │   ├── demande
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── demander
 │   │   │   │   │   │   │   │   │   │   ├── DemanderChangementPuissance.form.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DemanderChangementPuissance.page.tsx
@@ -3048,7 +3061,9 @@
 │   │   │   │   │   ├── lauréat.register.ts
 │   │   │   │   │   ├── lister
 │   │   │   │   │   │   ├── listerLauréat.query.ts
-│   │   │   │   │   │   └── listerLauréatEnrichi.query.ts
+│   │   │   │   │   │   ├── listerLauréatEnrichi.query.ts
+│   │   │   │   │   │   ├── mapDétailsToTypeTerrainImplantation.test.ts
+│   │   │   │   │   │   └── mapDétailsToTypeTerrainImplantation.ts
 │   │   │   │   │   ├── listerHistorique
 │   │   │   │   │   │   └── listerHistoriqueLauréat.query.ts
 │   │   │   │   │   ├── nature-de-l-exploitation
@@ -3214,8 +3229,7 @@
 │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   ├── listerDossierRaccordement.query.ts
 │   │   │   │   │   │   │   ├── listerDossierRaccordementEnAttenteMiseEnService.query.ts
-│   │   │   │   │   │   │   ├── listerDossierRaccordementManquants.query.ts
-│   │   │   │   │   │   │   └── listerRaccordement.query.ts
+│   │   │   │   │   │   │   └── listerDossierRaccordementManquants.query.ts
 │   │   │   │   │   │   ├── listerHistorique
 │   │   │   │   │   │   │   └── listerHistoriqueRaccordementProjet.query.ts
 │   │   │   │   │   │   ├── modifier
@@ -3584,7 +3598,7 @@
 │   │   │   │   ├── statistiques
 │   │   │   │   │   └── statistiques.adapter.ts
 │   │   │   │   └── utilisateur
-│   │   │   │       ├── getProjetUtilisateurScope.adapter.ts
+│   │   │   │       ├── getScopeProjetUtilisateur.adapter.ts
 │   │   │   │       └── index.ts
 │   │   │   └── tsconfig.json
 │   │   ├── ds-api-client
@@ -4404,4 +4418,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1077 directories, 3329 files
+1082 directories, 3338 files
