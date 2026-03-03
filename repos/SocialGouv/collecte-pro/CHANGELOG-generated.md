@@ -1,11 +1,15 @@
 ## Changelog : collecte-pro (30 derniers jours)
 
 ### Résumé
-Les dernières évolutions de collecte-pro se concentrent sur des modifications internes et des corrections mineures. Il n'y a pas de nouvelles fonctionnalités majeures visibles pour les utilisateurs finaux durant cette période.
+Ce changelog résume les récentes améliorations apportées à collecte-pro. Les modifications incluent des corrections de bugs, notamment concernant l'export de fichiers, et des améliorations de l'interface utilisateur, comme l'affichage des utilisateurs avec le profil "Inspecteur". Des modifications techniques ont également été apportées pour maintenir la stabilité et la performance de la plateforme.
+
+### Évolutions fonctionnelles
+- Correction d'un bug concernant l'export des fichiers : l'export ne produisait pas de fichier valide. [#71](https://github.com/SocialGouv/collecte-pro/pull/71)
+- Amélioration de la liste des utilisateurs : affichage des utilisateurs avec le profil "Inspecteur". [#71](https://github.com/SocialGouv/collecte-pro/pull/71)
 
 ### Évolutions techniques
-- Merge de la pull request #71 (hbenhmida) : Intégration de modifications non spécifiées.
-- Modifications diverses (Hazem) : Plusieurs commits de modifications mineures ont été effectués par Hazem.
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Mise à jour du fichier changelog et ajout d'un footer.
+- Modifications diverses (sans détails spécifiques) apportées au code.
