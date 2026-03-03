@@ -1,3 +1,17 @@
+## [1.47.1](https://github.com/SocialGouv/graal/compare/v1.47.0...v1.47.1) (2026-02-28)
+
+
+### Bug Fixes
+
+* Make text of dev login buttons appear ([8d4350d](https://github.com/SocialGouv/graal/commit/8d4350d05aeb6079f0bf1a5075f47c3f7a94c2e1))
+
+# [1.47.0](https://github.com/SocialGouv/graal/compare/v1.46.0...v1.47.0) (2026-02-28)
+
+
+### Features
+
+* add dev-only login buttons for review environments ([846fd14](https://github.com/SocialGouv/graal/commit/846fd14f2da9df411fc7e95713b8a6c0b8393a29))
+
 # [1.46.0](https://github.com/SocialGouv/graal/compare/v1.45.0...v1.46.0) (2026-02-27)
 
 

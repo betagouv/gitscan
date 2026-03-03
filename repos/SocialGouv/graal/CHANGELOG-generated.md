@@ -1,29 +1,26 @@
 ## Changelog : graal (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe de développement s'est concentrée sur l'ajout de la gestion de configurations pour les modèles de langage (LLM) et l'amélioration de la gestion des fichiers Excel pour la configuration du système. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées pour une meilleure expérience utilisateur.
+Les dernières mises à jour de Graal se concentrent sur l'amélioration de la gestion des configurations, notamment l'ajout de la prise en charge des fichiers Excel stockés dans S3 et l'intégration de nouveaux modèles de langage (LLM) comme Claude. L'interface utilisateur a également été améliorée avec l'ajout de composants DSFR et des boutons de connexion dédiés pour les environnements de revue. Des corrections de bugs ont été apportées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface utilisateur pour la configuration des fichiers Excel (#224).
+- Ajout de boutons de connexion dédiés pour les environnements de revue, facilitant l'accès pour les développeurs et testeurs.
+- Implémentation d'une interface utilisateur pour la configuration et la gestion des fichiers Excel.
 - Possibilité de supprimer les configurations Excel via le backend.
-- Ajout de workflows utilisant le modèle de langage Claude.
-- Amélioration de la mise en page de la page d'accueil avec des composants DSFR.
-- Correction d'un bug empêchant la suppression de manifestes de la base de données si le fichier S3 correspondant n'existait pas.
-- Correction d'un bug lié à l'URL de l'API dans les boutons d'authentification.
-- Ajout de la gestion des requêtes OAuth dans la base de données PostgreSQL.
-- Ajout d'un titre à l'onglet du navigateur pour une meilleure identification de l'application.
+- Intégration de workflows pour le modèle de langage Claude.
+- Amélioration de la mise en page de la page d'accueil avec des composants DSFR Tile.
+- Ajout de la prise en charge de la configuration de modèles de langage (LLM) avec une interface dédiée.
 
 ### Évolutions techniques
-- Ajout d'un backend pour la configuration des modèles de langage (LLM).
-- Ajout des configurations LLM à la base de données.
-- Refactorisation du backend pour la gestion des fichiers de configuration Excel, en utilisant les IDs pour éviter les collisions.
-- Ajout d'un mécanisme de retry pour la génération des types d'API.
-- Amélioration des tests pour éviter les interférences entre les bases de données de test et de développement.
-- Utilisation de variables d'environnement pour les uploads S3.
-- Correction d'un crash du pipeline de traitement lié à S3 et aux opérations asynchrones.
-- Amélioration des appels à la fonction `require_db_role` en fournissant l'utilisateur.
-- Mise à jour de la configuration du CI/CD pour supporter les pull requests labellisées et éviter l'utilisation de la version "latest".
+- Refactorisation du backend pour la gestion des fichiers de configuration Excel, utilisant les IDs pour éviter les collisions.
+- Ajout d'un mécanisme de nouvelle tentative pour la génération des types d'API.
+- Amélioration de la configuration du pipeline CI/CD pour supporter les pull requests labellisées et éviter l'utilisation de la dernière version des dépendances.
+- Ajout de tests pour s'assurer que la base de données de test n'interfère pas avec la base de données de développement.
+- Mise en place d'une gestion des configurations pour les modèles de langage (LLM) dans la base de données.
+- Augmentation du taux de limitation par défaut pour Albert.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
-- Publication des versions 1.46.0, 1.45.0, 1.44.2, 1.44.1, 1.44.0, 1.43.1, 1.43.0, 1.42.0, 1.41.0 et 1.40.0.
+- Ajout d'un fichier `CLAUDE.md` pour documenter la configuration de Claude.
+- Correction d'un bug où le texte des boutons de connexion en développement n'apparaissait pas.
+- Correction d'un bug lié à l'utilisation de `VITE_API_URL` dans les boutons d'authentification.
+- Petites corrections diverses.
