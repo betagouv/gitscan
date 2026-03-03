@@ -1,16 +1,14 @@
 ## Changelog : matomo-to-pg (30 derniers jours)
 
 ### Résumé
-Ce projet a connu des améliorations significatives concernant la performance et la pagination des requêtes, notamment pour la table `idlink_va`. Des corrections ont également été apportées pour assurer la compatibilité avec PostgreSQL et améliorer la robustesse du processus de synchronisation.
+Ce mois-ci, les améliorations se concentrent sur l'optimisation des performances et la correction de problèmes liés à la pagination des données, notamment pour la table `idlink_va` et `matomo_log_action`. Ces corrections visent à améliorer la vitesse et la fiabilité de la synchronisation des données de Matomo vers PostgreSQL.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème de pagination sur la table `idlink_va` en remplaçant `OFFSET` par une pagination basée sur un curseur, améliorant ainsi les performances pour les grandes tables (#10).
-- Amélioration de la synchronisation de la table `matomo_log_action` en utilisant `lastActionId` (#9).
-- Correction de la syntaxe des contraintes de clé primaire dans le fichier `pg-init.sql` pour une meilleure compatibilité avec PostgreSQL (#6).
+- Correction d'un problème de pagination pour la table `idlink_va` : remplacement de `OFFSET` par une pagination basée sur un curseur, améliorant ainsi les performances.  [#10](https://github.com/betagouv/matomo-to-pg/issues/10)
+- Correction d'un problème lié à l'utilisation de `lastActionId` pour la table `matomo_log_action`. [#9](https://github.com/betagouv/matomo-to-pg/issues/9)
 
 ### Évolutions techniques
-- Optimisation des performances des actions GitHub Actions (#8).
-- Correction d'un problème de release (#5, #7).
+- Correction dans les workflows GitHub pour ignorer l'année 2025.
 
 ### Autres changements
-- Skip de la release 2025 (#4).
+- Aucune information disponible.
