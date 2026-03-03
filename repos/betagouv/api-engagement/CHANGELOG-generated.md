@@ -1,57 +1,48 @@
 ## Changelog : api-engagement (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'accessibilité de l'application, notamment avec l'intégration de composants RGAA-compliant et des corrections pour une meilleure compatibilité avec les lecteurs d'écran.  Des corrections de bugs et des optimisations ont été apportées à l'API et au widget, ainsi que des améliorations de la gestion des erreurs et du monitoring.  Enfin, des refactorings ont été effectués pour simplifier l'architecture et améliorer la performance.
+Cette période a été marquée par une amélioration significative de l'expérience utilisateur du tableau de bord et du widget, avec des corrections de bugs et des améliorations d'accessibilité. Des optimisations ont également été apportées à l'API, notamment en termes de performances et de gestion des erreurs. Enfin, de nouvelles métriques de conversion ont été ajoutées pour l'analyse.
 
 ### Évolutions fonctionnelles
-
-- Ajout d'un bouton "événements en direct" sur les listes de campagnes et du widget (#809).
-- Possibilité d'ajouter un identifiant de publisher en préfixe dans l'URL (#807).
-- Amélioration de la gestion des missions en permettant de refuser automatiquement les missions en modération (#813).
-- Ajout d'un support pour l'ID client d'événement dans l'API (#714).
-- Intégration de nouveaux composants RGAA-compliant pour les tooltips, les tabs et les toasts (#719, #720, #712).
-- Amélioration de l'affichage des organisations désactivées (#771).
-- Ajout de la possibilité de filtrer les missions par adresse (#776).
+- Ajout d'un bouton "événements en direct" sur les listes de campagnes et de widgets. [#809](https://github.com/betagouv/api-engagement/issues/809)
+- Amélioration de l'accessibilité avec l'utilisation d'éléments de bouton sémantiques. [#771](https://github.com/betagouv/api-engagement/issues/771)
+- Ajout d'un préfixe d'URL avec l'ID du publisher. [#807](https://github.com/betagouv/api-engagement/issues/807)
+- Ajout de métriques de taux de conversion pour l'analyse. [#811](https://github.com/betagouv/api-engagement/issues/811)
+- Correction de l'affichage des organisations dans la page "Mes missions".
+- Correction du problème de déconnexion pour les utilisateurs de la page "Mes missions". [#799](https://github.com/betagouv/api-engagement/issues/799)
+- Amélioration de l'interface utilisateur du sélecteur de date.
+- Correction de l'affichage du logo gouvernemental.
+- Amélioration de l'interface utilisateur des filtres et de la navigation.
+- Correction du pointage du curseur sur les liens de navigation et les filtres.
+- Correction du focus sur l'interface utilisateur de feedback.
 
 ### Évolutions techniques
-
-- Mise à jour de Node.js en version 24 (#802).
-- Refactoring du modèle `publisher_organization` dans l'API (#758).
-- Ajout d'alias pour simplifier le code (#810).
-- Amélioration de la logique d'agrégation du widget (#790).
-- Optimisation des requêtes de recherche géographique des missions (#806).
-- Migration des activités de mission vers une table de jointure N-N (#757).
-- Suppression de MongoDB (#761).
-- Ajout d'un middleware de parsing dédié (#800).
-- Ajout de logs plus détaillés et d'un suivi avec Sentry pour le widget (#795, #791, #789).
-- Amélioration de la gestion des erreurs et ajout de logs pour l'envoi d'emails (#814).
-- Ajout d'un header `request-id` avec support Sentry (#780).
-- Ajout de tests d'intégration pour les endpoints du widget (#750).
-- Refactoring de la gestion des statistiques et des vues matérialisées (#792, #788).
-- Ajout d'un index composite sur l'adresse des missions (#774).
-- Mise à jour de Vitest en version 4.0.8 (#749).
-- Ajout de workflows Claude pour la revue de code (#716, #717).
-- Ajout de tests E2E pour le SDK jstag.js (#715).
-- Migration de la page "statistiques publiques" vers des cartes Metabase (#707).
-- Suppression de l'ancien pipeline (#706).
+- Passage à Node 24. [#802](https://github.com/betagouv/api-engagement/issues/802)
+- Ajout d'un middleware dédié pour l'analyse des requêtes. [#800](https://github.com/betagouv/api-engagement/issues/800)
+- Ajout d'un en-tête `request-id` avec support Sentry. [#780](https://github.com/betagouv/api-engagement/issues/780)
+- Refactor de la logique d'agrégation des widgets. [#790](https://github.com/betagouv/api-engagement/issues/790)
+- Optimisation de la recherche de widgets. [#782](https://github.com/betagouv/api-engagement/issues/782)
+- Ajout d'un index partiel sur la mission pour les requêtes de comptage de recherche géographique. [#806](https://github.com/betagouv/api-engagement/issues/806)
+- Migration des activités de mission vers une table de jointure N-N. [#757](https://github.com/betagouv/api-engagement/issues/757)
+- Suppression de MongoDB. [#761](https://github.com/betagouv/api-engagement/issues/761)
+- Amélioration de la gestion des erreurs et ajout de logs Sentry.
+- Correction d'un problème de mismatch du client Prisma.
+- Ajout de tests d'intégration pour les endpoints du widget. [#750](https://github.com/betagouv/api-engagement/issues/750)
+- Refactor de la gestion des adresses et ajout d'alias. [#810](https://github.com/betagouv/api-engagement/issues/810)
+- Correction d'un bug dans le job de modération automatique. [#813](https://github.com/betagouv/api-engagement/issues/813)
+- Ajout de logs pour le widget. [#795](https://github.com/betagouv/api-engagement/issues/795)
+- Correction de la gestion des exceptions non gérées et non capturées vers Sentry. [#797](https://github.com/betagouv/api-engagement/issues/797)
+- Ajout d'un job pour importer les missions réactivées. [#783](https://github.com/betagouv/api-engagement/issues/783)
+- Suppression de l'ancien pipeline. [#706](https://github.com/betagouv/api-engagement/issues/706)
 
 ### Autres changements
-
-- Correction de divers problèmes d'interface utilisateur (couleurs, positionnement, etc.).
-- Amélioration de la gestion des erreurs Sentry (#729, #797).
-- Correction de problèmes liés à la duplication de campagnes (#727).
-- Mise à jour des dépendances (Express, @types/express, NextJS, @sentry/cli, etc.).
-- Correction de problèmes de compatibilité avec les lecteurs d'écran (#770).
-- Amélioration des logs et du monitoring.
-- Suppression de la prise en charge de Letudiant (#756).
-- Correction de problèmes liés à la gestion des événements en direct (#784).
-- Correction de problèmes liés à la gestion des missions supprimées et réactivées (#783).
-- Correction de problèmes liés à la gestion des adresses (#759).
-- Correction de problèmes liés à l'affichage des noms d'organisations et de villes (#759).
-- Amélioration de la gestion des erreurs dans les modèles d'analyse (#760).
-- Correction de problèmes liés à l'optimisation des images dans le widget (#793).
-- Ajout de la configuration des conteneurs du widget (#786).
-- Correction de problèmes liés à la connexion Prisma (#781).
-- Correction de problèmes liés à la synchronisation incrémentale des événements (#753).
-- Ajout de règles AGENTS.md (#734).
-- Mise à jour du CHANGELOG.md.
+- Mise à jour des dépendances (Express, @types/express, NextJS, @types/node, @sentry/cli, globals, @sentry/nextjs).
+- Correction de problèmes liés à Sentry (spaming de messages, configuration DSN).
+- Suppression de la pipeline KPI et des modèles d'analyse associés.
+- Mise à jour de la documentation.
+- Nettoyage du code.
+- Correction de problèmes de zoom dans l'application.
+- Suppression de la logique obsolète de `stat_event`.
+- Correction de l'affichage des missions refusées en modération. [#758](https://github.com/betagouv/api-engagement/issues/758)
+- Correction d'un problème lié à Letudiant. [#784](https://github.com/betagouv/api-engagement/issues/784)
+- Ajout de la possibilité de désactiver les images optimisées pour le widget. [#793](https://github.com/betagouv/api-engagement/issues/793)
