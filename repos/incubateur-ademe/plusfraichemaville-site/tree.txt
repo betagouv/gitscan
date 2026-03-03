@@ -10,6 +10,8 @@
 ├── .npmrc
 ├── .prettierignore
 ├── .prettierrc.json
+├── .vscode
+│   └── launch.json
 ├── CLAUDE.md
 ├── LICENSE
 ├── Procfile
@@ -255,6 +257,14 @@
 │   │   ├── 20260208165236_delete_fiches_solutions_id_column_in_estimation_table
 │   │   │   └── migration.sql
 │   │   ├── 20260212111914_creation_des_tables_epci_et_commune
+│   │   │   └── migration.sql
+│   │   ├── 20260224144355_add_aides_estimation_table
+│   │   │   └── migration.sql
+│   │   ├── 20260224152648_aides_estimations_data_migration
+│   │   │   └── migration.sql
+│   │   ├── 20260226161557_create_new_aides_already_seen_field
+│   │   │   └── migration.sql
+│   │   ├── 20260227092446_add_aides_fs_unselected_in_user_projet_table
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
@@ -556,13 +566,14 @@
 │   │   │   ├── comeback-later-diagnostic-simulation-action.ts
 │   │   │   └── upsert-diagnostic-simulation-action.ts
 │   │   ├── estimation
-│   │   │   ├── add-aide-in-estimation-action.ts
 │   │   │   ├── add-fiches-solutions-to-estimation-action.ts
 │   │   │   ├── create-estimation-action.ts
-│   │   │   ├── delete-aide-in-estimation-action.ts
 │   │   │   ├── delete-estimation-action.ts
 │   │   │   ├── delete-fiche-solution-in-estimation-action.ts
 │   │   │   └── update-estimation-materiaux-action.ts
+│   │   ├── projet
+│   │   │   ├── add-aide-in-projet-action.ts
+│   │   │   └── delete-aide-in-projet-action.ts
 │   │   ├── projets
 │   │   │   ├── delete-projet-action.ts
 │   │   │   ├── generate-annuaire-contacts-csv-action.ts
@@ -581,6 +592,7 @@
 │   │   ├── userProjet
 │   │   │   ├── accept-project-invitation-action.ts
 │   │   │   ├── accept-project-request-action.ts
+│   │   │   ├── add-aide-already-seen-action.ts
 │   │   │   ├── attach-invitation-to-user-action.ts
 │   │   │   ├── decline-project-invitation-action.ts
 │   │   │   ├── decline-project-request-action.ts
@@ -658,11 +670,10 @@
 │   │   │   │   │   │   └── recommandations
 │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   ├── financement
-│   │   │   │   │   │   ├── edit
-│   │   │   │   │   │   │   └── [estimationId]
-│   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── selectionner-aides
+│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   ├── info-projet
 │   │   │   │   │   │   ├── UpdateProjetForm.tsx
 │   │   │   │   │   │   └── page.tsx
@@ -773,7 +784,7 @@
 │   │   │   │   └── route.ts
 │   │   │   ├── revalidate-cache
 │   │   │   │   └── route.ts
-│   │   │   ├── search-aides-for-estimation
+│   │   │   ├── search-aides-for-projet
 │   │   │   │   └── route.ts
 │   │   │   ├── search-climadiag-info
 │   │   │   │   └── route.ts
@@ -1085,31 +1096,28 @@
 │   │   │   └── type-espace-filter-component.tsx
 │   │   ├── financement
 │   │   │   ├── aide
-│   │   │   │   ├── aide-card-save-button.tsx
+│   │   │   │   ├── aide-card-save-button-projet.tsx
 │   │   │   │   ├── aide-card-skeleton.tsx
 │   │   │   │   ├── aide-card-with-fetcher.tsx
 │   │   │   │   ├── aide-card.tsx
 │   │   │   │   ├── aide-edit-filter.tsx
 │   │   │   │   ├── aide-edit-sort-field.tsx
-│   │   │   │   ├── aide-edit.tsx
-│   │   │   │   ├── aide-estimation-liste-link.tsx
-│   │   │   │   ├── aide-estimations-card-deadline.tsx
-│   │   │   │   ├── aide-estimations-card-label-fiche-solution.tsx
-│   │   │   │   ├── aide-estimations-card-label.tsx
-│   │   │   │   ├── aide-estimations-card-warning-remaining-day.tsx
-│   │   │   │   ├── aide-estimations-card-with-selection.tsx
-│   │   │   │   ├── aide-estimations-card-without-selection.tsx
-│   │   │   │   ├── aide-estimations-card.tsx
-│   │   │   │   ├── aide-estimations-liste-empty.tsx
-│   │   │   │   ├── aide-estimations-liste-header.tsx
-│   │   │   │   ├── aide-estimations-liste.tsx
-│   │   │   │   ├── aide-estimations-panel-header.tsx
-│   │   │   │   ├── aide-estimations-recap.tsx
 │   │   │   │   ├── aide-fiche-modal.tsx
 │   │   │   │   ├── aide-fiche-panel-line.tsx
 │   │   │   │   ├── aide-fiche.tsx
 │   │   │   │   ├── aide-info-lines-show-more.tsx
-│   │   │   │   └── aide-info-lines.tsx
+│   │   │   │   ├── aide-info-lines.tsx
+│   │   │   │   ├── aide-projet-aides-liste.tsx
+│   │   │   │   ├── aide-projet-card-deadline.tsx
+│   │   │   │   ├── aide-projet-card-label-fiche-solution.tsx
+│   │   │   │   ├── aide-projet-card-label.tsx
+│   │   │   │   ├── aide-projet-card-warning-remaining-day.tsx
+│   │   │   │   ├── aide-projet-edit.tsx
+│   │   │   │   ├── aide-projet-liste-header.tsx
+│   │   │   │   ├── aide-projet-panel-header.tsx
+│   │   │   │   ├── aide-projet-recap.tsx
+│   │   │   │   ├── aide-solutions-filter.tsx
+│   │   │   │   └── projet-no-aide-overview-card.tsx
 │   │   │   ├── helpers.tsx
 │   │   │   ├── index.tsx
 │   │   │   └── types.ts
@@ -1277,6 +1285,9 @@
 │   │           ├── libquery_engine-debian-openssl-3.0.x.so.node
 │   │           ├── package.json
 │   │           ├── query_engine-windows.dll.node
+│   │           ├── query_engine-windows.dll.node.tmp25644
+│   │           ├── query_engine-windows.dll.node.tmp26896
+│   │           ├── query_engine-windows.dll.node.tmp9728
 │   │           ├── runtime
 │   │           │   ├── edge-esm.js
 │   │           │   ├── edge.js
@@ -1340,13 +1351,13 @@
 │   ├── hooks
 │   │   ├── use-aide-estimation-edit-filter.ts
 │   │   ├── use-aide-estimation-edit-sort-method.ts
-│   │   ├── use-aides-selected-by-estimation.ts
+│   │   ├── use-aides-by-projet-fetcher.ts
 │   │   ├── use-can-edit-projet.ts
 │   │   ├── use-click-outside-management.ts
 │   │   ├── use-delayed-loading.ts
 │   │   ├── use-estimation-fs-global-price.ts
 │   │   ├── use-fiches-solutions-titles.ts
-│   │   ├── use-get-aide-saved-in-estimation-id.ts
+│   │   ├── use-get-aide-saved-in-projet-id.ts
 │   │   ├── use-is-lecteur.ts
 │   │   ├── use-pagination.tsx
 │   │   ├── use-recommandations-for-current-projet.ts
@@ -1370,13 +1381,13 @@
 │   │   ├── next-auth
 │   │   │   └── auth.ts
 │   │   ├── prisma
-│   │   │   ├── prisma-aide-estimation-queries.ts
 │   │   │   ├── prisma-analytics-queries.ts
 │   │   │   ├── prisma-climadiag-queries.ts
 │   │   │   ├── prisma-commune-queries.ts
 │   │   │   ├── prisma-cron-jobs-queries.ts
 │   │   │   ├── prisma-diagnostic-simulation-queries.ts
 │   │   │   ├── prisma-email-queries.ts
+│   │   │   ├── prisma-projet-aides-queries.ts
 │   │   │   ├── prisma-projet-fiche-queries.ts
 │   │   │   ├── prisma-projet-sourcing-contact-queries.ts
 │   │   │   ├── prisma-user-projet-queries.ts
@@ -1478,4 +1489,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-367 directories, 1113 files
+372 directories, 1119 files
