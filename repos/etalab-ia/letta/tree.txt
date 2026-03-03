@@ -1,0 +1,1209 @@
+.
+├── .dockerignore
+├── .env.example
+├── .gitattributes
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── pull_request_template.md
+│   ├── scripts
+│   │   └── model-sweep
+│   │       ├── conftest.py
+│   │       ├── feature_mappings.json
+│   │       ├── generate_model_sweep_markdown.py
+│   │       ├── model_sweep.py
+│   │       └── supported-models.mdx
+│   └── workflows
+│       ├── alembic-validation.yml
+│       ├── close_stale_issues.yml
+│       ├── core-integration-tests.yml
+│       ├── core-lint.yml
+│       ├── core-unit-sqlite-test.yaml
+│       ├── core-unit-test.yml
+│       ├── docker-image.yml
+│       ├── docker-integration-tests.yaml
+│       ├── fern-check.yml
+│       ├── fern-docs-preview.yml
+│       ├── fern-docs-publish.yml
+│       ├── fern-sdk-python-preview.yml
+│       ├── fern-sdk-python-publish.yml
+│       ├── fern-sdk-typescript-preview.yml
+│       ├── fern-sdk-typescript-publish.yml
+│       ├── letta-code-sync.yml
+│       ├── lint-command.yml
+│       ├── manually_clear_old_issues.yml
+│       ├── migration-test.yml
+│       ├── model-sweep.yaml
+│       ├── notify-on-update.yaml
+│       ├── poetry-publish-nightly.yml
+│       ├── poetry-publish.yml
+│       ├── reusable-test-workflow.yml
+│       ├── send-message-integration-tests.yml
+│       ├── test-lmstudio.yml
+│       ├── test-ollama.yml
+│       ├── test-pip-install.yml
+│       ├── test-vllm.yml
+│       └── warn_poetry_updates.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── .skills
+│   ├── db-migrations-schema-changes
+│   │   ├── SKILL.md
+│   │   └── references
+│   │       ├── migration-commands.md
+│   │       └── sqlite-vs-postgres-gotchas.md
+│   └── llm-provider-usage-statistics
+│       ├── SKILL.md
+│       └── references
+│           ├── anthropic.md
+│           ├── gemini.md
+│           └── openai.md
+├── CITATION.cff
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── PRIVACY.md
+├── README.md
+├── TERMS.md
+├── WEBHOOK_SETUP.md
+├── alembic
+│   ├── README
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions
+│       ├── 0335b1eb9c40_add_batch_item_id_to_messages.py
+│       ├── 038e68cdf0df_add_cascades_to_blocks_agents_fks_set_.py
+│       ├── 05c3bc564286_add_metrics_to_agent_loop_runs.py
+│       ├── 066857381578_add_approvals_field_to_messages.py
+│       ├── 068588268b02_add_vector_db_provider_to_archives_table.py
+│       ├── 06fbbf65d4f1_support_for_project_id_for_blocks_and_.py
+│       ├── 08b2f8225812_adding_toolsagents_orm.py
+│       ├── 0b496eae90de_add_file_agent_table.py
+│       ├── 0ceb975e0063_add_llm_batch_jobs_tables.py
+│       ├── 15b577c62f3f_add_hidden_property_to_agents.py
+│       ├── 167491cfb7a8_add_identities_for_blocks.py
+│       ├── 175dd10fb916_add_prompt_tokens_details_to_steps.py
+│       ├── 18e300709530_add_instructions_field_to_sources.py
+│       ├── 18ff61fbc034_add_agent_id_index_to_mapping_tables.py
+│       ├── 1af251a42c06_fix_files_agents_constraints.py
+│       ├── 1c6b6a38b713_add_pip_requirements_to_tools.py
+│       ├── 1c8880d671ee_make_an_blocks_agents_mapping_table.py
+│       ├── 1dc0fee72dea_add_block_related_indexes.py
+│       ├── 1e553a664210_add_metadata_to_tools.py
+│       ├── 220856bbf43b_add_read_only_column.py
+│       ├── 22a6e413d89c_remove_module_field_on_tool.py
+│       ├── 25fc99e97839_fix_alembic_check_warnings.py
+│       ├── 27de0f58e076_add_conversations_tables_and_run_.py
+│       ├── 28b8765bdd0a_add_support_for_structured_outputs_in_.py
+│       ├── 297e8217e952_nullable_embedding_for_archives_and_.py
+│       ├── 2c059cad97cc_create_sqlite_baseline_schema.py
+│       ├── 2cceb07c2384_add_content_parts_to_message.py
+│       ├── 2dbb2cf49e07_add_models_table.py
+│       ├── 2e5e90d3cdf8_add_project_id_to_tools.py
+│       ├── 2f4ede6ae33b_add_otid_and_tool_return_to_message.py
+│       ├── 308a180244fc_last_synced_column_for_providers.py
+│       ├── 341068089f14_add_preserve_on_migration_to_block.py
+│       ├── 348214cbc081_add_org_agent_id_indices.py
+│       ├── 373dabcba6cf_add_byok_fields_and_unique_constraint.py
+│       ├── 39577145c45d_add_project_constraint_on_tools.py
+│       ├── 3bc3c031fbe4_create_new_runs_table_and_remove_legacy_.py
+│       ├── 3c683a662c82_migrate_jobs_to_the_orm.py
+│       ├── 3d2e9fb40a3c_add_indexes_for_feedback.py
+│       ├── 3e54e2fa2f7e_add_usage_columns_to_steps.py
+│       ├── 400501b04bf0_add_per_agent_environment_variables.py
+│       ├── 416b9d2db10b_repurpose_jobusagestatistics_for_new_.py
+│       ├── 4537f0996495_add_start_end_for_agent_file.py
+│       ├── 46699adc71a7_add_unique_constraint_to_source_names_.py
+│       ├── 47d2277e530d_add_total_chunks_and_chunks_embedded_to_.py
+│       ├── 495f3f474131_write_source_id_directly_to_files_agents.py
+│       ├── 4c6c9ef0387d_support_modal_sandbox_type.py
+│       ├── 4e88e702f85e_drop_api_tokens_table_in_oss.py
+│       ├── 51999513bcf1_steps_feedback_field.py
+│       ├── 539afa667cff_add_telemetry_context_fields_to_.py
+│       ├── 549eff097c71_update_identities_unique_constraint_and_.py
+│       ├── 54c76f7cabca_add_tags_to_passages_and_create_passage_.py
+│       ├── 54dec07619c4_divide_passage_table_into_.py
+│       ├── 54f2311edb62_add_args_schema_to_tools.py
+│       ├── 56254216524f_add_custom_headers_to_mcp_server.py
+│       ├── 567e9fe06270_create_new_runs_table_and_remove_legacy_.py
+│       ├── 57bcea83af3f_add_various_indexes.py
+│       ├── 5973fd8b8c60_add_agents_runs_table.py
+│       ├── 5987401b40ae_refactor_agent_memory.py
+│       ├── 5b804970e6a0_add_hidden_property_to_groups_and_blocks.py
+│       ├── 5d27a719b24d_add_organization_id_to_jobs_model.py
+│       ├── 5fb8bba2c373_add_step_metrics.py
+│       ├── 60ed28ee7138_add_project_id_to_step_model.py
+│       ├── 614c4e53b66e_add_unique_constraint_to_file_id_and_.py
+│       ├── 61ee53ec45a5_add_index_on_source_passages_for_files.py
+│       ├── 6756d04c3ddb_add_tools_used_field_to_run_metrics_.py
+│       ├── 6c53224a7a58_add_provider_category_to_steps.py
+│       ├── 6fbe9cace832_adding_indexes_to_models.py
+│       ├── 6fe79c0525f2_enable_sleeptime_agent_fields.py
+│       ├── 74e860718e0d_add_archival_memory_sharing.py
+│       ├── 74f2ede29317_add_background_group_support.py
+│       ├── 750dd87faa12_add_build_request_latency_to_step_.py
+│       ├── 7778731d15e2_added_jobusagestatistics_table.py
+│       ├── 77de976590ae_add_groups_for_multi_agent.py
+│       ├── 7980d239ea08_add_stateless_option_for_agentstate.py
+│       ├── 7b189006c97d_rename_batch_id_to_llm_batch_id_on_llm_.py
+│       ├── 7f652fdd3dba_change_jobmessage_unique_constraint_to_.py
+│       ├── 7f7933666957_add_stop_reason_to_jobs_table.py
+│       ├── 8149a781ac1b_backfill_encrypted_columns_for_.py
+│       ├── 82feb220a9b8_add_source_column_to_provider_traces.py
+│       ├── 878607e41ca4_add_provider_category.py
+│       ├── 887a4367b560_convert_stop_reason_from_enum_to_string.py
+│       ├── 88f9432739a9_add_jobtype_to_job_table.py
+│       ├── 89b595051e48_replace_composite_runs_index.py
+│       ├── 89fd4648866b_add_last_stop_reason_to_agent_state.py
+│       ├── 8d70372ad130_adding_jobmessages_table.py
+│       ├── 90bb156e71df_rename_sleeptime_agent_frequency.py
+│       ├── 90fd814d0cda_add_callback_error_field_to_jobs.py
+│       ├── 915b68780108_add_providers_data_to_orm.py
+│       ├── 9275f62ad282_add_v2_protocol_fields_to_provider_traces.py
+│       ├── 9556081ce65b_add_bedrock_creds_to_byok.py
+│       ├── 95badb46fdf9_migrate_messages_to_the_orm.py
+│       ├── 9758adf8fdd3_add_run_completion_and_duration_to_.py
+│       ├── 9792f94e961d_add_file_processing_status_to_.py
+│       ├── 9a505cc7eca9_create_a_baseline_migrations.py
+│       ├── 9ecbdbaa409f_add_table_to_store_mcp_servers.py
+│       ├── a113caac453e_add_identities_table.py
+│       ├── a1b2c3d4e5f6_add_index_to_step_metrics_run_id.py
+│       ├── a1b2c3d4e5f7_add_blocks_conversations_table.py
+│       ├── a1b2c3d4e5f8_create_provider_trace_metadata_table.py
+│       ├── a3047a624130_add_identifier_key_to_agents.py
+│       ├── a3c7d62e08ca_add_callback_data_to_jobs_table.py
+│       ├── a66510f83fc2_add_ordered_agent_ids_to_groups.py
+│       ├── a91994b9752f_add_column_to_tools_table_to_contain_.py
+│       ├── af842aa6f743_add_tool_indexes_for_organization_id.py
+│       ├── b183663c6769_add_trace_id_to_steps_table.py
+│       ├── b1c2d3e4f5a6_drop_unused_and_redundant_indexes.py
+│       ├── b2c3d4e5f6a8_add_llm_config_to_conversations.py
+│       ├── b6061da886ee_add_encrypted_columns.py
+│       ├── b6d7ca024aa9_add_agents_tags_table.py
+│       ├── b888f21b151f_add_vector_db_provider_to_source.py
+│       ├── bdddd421ec41_add_privileged_tools_to_organization.py
+│       ├── bff040379479_add_block_history_tables.py
+│       ├── c0ef3ff26306_add_token_to_mcp_server.py
+│       ├── c3b1da3d1157_add_sender_id_to_message.py
+│       ├── c41c87205254_add_default_requires_approval_field_on_.py
+│       ├── c4eb5a907b38_add_file_controls_to_agent_state.py
+│       ├── c56081a05371_add_buffer_length_min_max_for_voice_.py
+│       ├── c5d964280dff_add_passages_orm_drop_legacy_passages_.py
+│       ├── c6c43222e2de_add_mcp_tools_table.py
+│       ├── c734cfc0d595_add_runs_metrics_table.py
+│       ├── c7ac45f69849_add_timezone_to_agents_table.py
+│       ├── c85a3d07c028_move_files_to_orm.py
+│       ├── c96263433aef_add_file_name_to_source_passages.py
+│       ├── cc8dc340836d_add_support_for_request_and_response_.py
+│       ├── cce9a6174366_add_stop_reasons_to_steps_and_message_.py
+│       ├── cda66b6cb0d6_move_sources_to_orm.py
+│       ├── cdb3db091113_remove_unique_name_restriction_on_agents.py
+│       ├── cdd4a1c11aee_add_file_name_to_fileagent_association_.py
+│       ├── cf3c4d025dbc_add_blocks_tags_table.py
+│       ├── d007f4ca66bf_npm_requirements_in_tools.py
+│       ├── d05669b60ebe_migrate_agents_to_orm.py
+│       ├── d06594144ef3_add_and_migrate_encrypted_columns_for_.py
+│       ├── d0880aae6cee_add_compaction_settings_to_agents_table.py
+│       ├── d14ae606614c_move_organizations_users_tools_to_orm.py
+│       ├── d211df879a5f_add_agent_id_to_steps.py
+│       ├── d5103ee17ed5_add_template_fields_to_blocks_agents_.py
+│       ├── d6632deac81d_add_composite_index_to_messages_table.py
+│       ├── d798609d65ff_add_index_on_messages_step_id.py
+│       ├── dd049fbec729_add_index_on_agent_id_for_agent_env_var.py
+│       ├── ddb69be34a72_add_vector_db_namespace_fields_to_.py
+│       ├── ddecfe4902bc_add_prompts.py
+│       ├── dfafcf8210ca_add_model_endpoint_to_steps_table.py
+│       ├── e1a625072dbf_tweak_created_at_field_for_messages.py
+│       ├── e20573fe9b86_add_tool_types.py
+│       ├── e67961ed7c32_add_enable_parallel_execution_to_tools_table.py
+│       ├── e78b4e82db30_add_cascading_deletes_for_sources_to_.py
+│       ├── e991d2e3b428_add_monotonically_increasing_ids_to_.py
+│       ├── ee2b43eea55e_add_request_id_to_steps_table.py
+│       ├── eff256d296cb_mcp_encrypted_data_migration.py
+│       ├── f2f78d62005c_add_letta_batch_job_id_to_llm_batch_job.py
+│       ├── f3bf00ef6118_add_approval_fields_to_message_model.py
+│       ├── f55542f37641_add_index_for_agent_tags_reversed_order.py
+│       ├── f595e0e8013e_adding_request_config_to_job_table.py
+│       ├── f5d26b0526e8_add_mcp_oauth.py
+│       ├── f6cd5a1e519d_add_embedding_config_field_to_archives_.py
+│       ├── f7507eab4bb9_migrate_blocks_to_orm_model.py
+│       ├── f7f757414d20_add_error_tracking_to_steps_table.py
+│       ├── f81ceea2c08d_create_sandbox_config_and_sandbox_env_.py
+│       ├── f895232c144a_backfill_composio_tools.py
+│       ├── f922ca16e42c_add_project_and_template_id_to_agent.py
+│       ├── f9ad1c25fd2b_add_query_optimizing_runs_listing.py
+│       ├── fdcdafdb11cf_identity_properties_jsonb_to_json.py
+│       └── ffb17eb241fc_add_api_version_to_byok_providers.py
+├── alembic.ini
+├── assets
+│   ├── Letta-logo-RGB_GreyonOffBlack_cropped_small.png
+│   ├── Letta-logo-RGB_GreyonTransparent_cropped_small.png
+│   ├── Letta-logo-RGB_OffBlackonTransparent_cropped_small.png
+│   ├── example_ade_screenshot.png
+│   ├── example_ade_screenshot_agents.png
+│   ├── example_ade_screenshot_agents_light.png
+│   ├── example_ade_screenshot_light.png
+│   └── letta_ade_screenshot.png
+├── certs
+│   ├── README.md
+│   ├── localhost-key.pem
+│   └── localhost.pem
+├── compose.yaml
+├── conf.yaml
+├── db
+│   ├── Dockerfile.simple
+│   └── run_postgres.sh
+├── dev-compose.yaml
+├── development.compose.yml
+├── docker-compose-vllm.yaml
+├── examples
+│   └── notebooks
+│       └── data
+│           ├── handbook.pdf
+│           ├── shared_memory_system_prompt.txt
+│           └── task_queue_system_prompt.txt
+├── fern
+│   └── openapi.json
+├── init.sql
+├── letta
+│   ├── __init__.py
+│   ├── adapters
+│   │   ├── letta_llm_adapter.py
+│   │   ├── letta_llm_request_adapter.py
+│   │   ├── letta_llm_stream_adapter.py
+│   │   ├── sglang_native_adapter.py
+│   │   ├── simple_llm_request_adapter.py
+│   │   └── simple_llm_stream_adapter.py
+│   ├── agent.py
+│   ├── agents
+│   │   ├── __init__.py
+│   │   ├── agent_loop.py
+│   │   ├── base_agent.py
+│   │   ├── base_agent_v2.py
+│   │   ├── ephemeral_agent.py
+│   │   ├── ephemeral_summary_agent.py
+│   │   ├── exceptions.py
+│   │   ├── helpers.py
+│   │   ├── letta_agent.py
+│   │   ├── letta_agent_batch.py
+│   │   ├── letta_agent_v2.py
+│   │   ├── letta_agent_v3.py
+│   │   ├── voice_agent.py
+│   │   └── voice_sleeptime_agent.py
+│   ├── cli
+│   │   ├── cli.py
+│   │   └── cli_load.py
+│   ├── client
+│   │   ├── __init__.py
+│   │   ├── streaming.py
+│   │   └── utils.py
+│   ├── config.py
+│   ├── config_file.py
+│   ├── constants.py
+│   ├── data_sources
+│   │   ├── __init__.py
+│   │   ├── connectors.py
+│   │   ├── connectors_helper.py
+│   │   └── redis_client.py
+│   ├── database_utils.py
+│   ├── errors.py
+│   ├── exceptions
+│   │   └── logging.py
+│   ├── functions
+│   │   ├── __init__.py
+│   │   ├── ast_parsers.py
+│   │   ├── async_composio_toolset.py
+│   │   ├── composio_helpers.py
+│   │   ├── function_sets
+│   │   │   ├── base.py
+│   │   │   ├── builtin.py
+│   │   │   ├── files.py
+│   │   │   ├── multi_agent.py
+│   │   │   └── voice.py
+│   │   ├── functions.py
+│   │   ├── helpers.py
+│   │   ├── interface.py
+│   │   ├── mcp_client
+│   │   │   ├── exceptions.py
+│   │   │   └── types.py
+│   │   ├── prompts.py
+│   │   ├── schema_generator.py
+│   │   ├── schema_validator.py
+│   │   ├── types.py
+│   │   └── typescript_parser.py
+│   ├── groups
+│   │   ├── dynamic_multi_agent.py
+│   │   ├── helpers.py
+│   │   ├── round_robin_multi_agent.py
+│   │   ├── sleeptime_multi_agent.py
+│   │   ├── sleeptime_multi_agent_v2.py
+│   │   ├── sleeptime_multi_agent_v3.py
+│   │   ├── sleeptime_multi_agent_v4.py
+│   │   └── supervisor_multi_agent.py
+│   ├── helpers
+│   │   ├── __init__.py
+│   │   ├── composio_helpers.py
+│   │   ├── converters.py
+│   │   ├── crypto_utils.py
+│   │   ├── datetime_helpers.py
+│   │   ├── decorators.py
+│   │   ├── json_helpers.py
+│   │   ├── message_helper.py
+│   │   ├── pinecone_utils.py
+│   │   ├── reasoning_helper.py
+│   │   ├── singleton.py
+│   │   ├── tool_execution_helper.py
+│   │   ├── tool_helpers.py
+│   │   ├── tool_rule_solver.py
+│   │   └── tpuf_client.py
+│   ├── humans
+│   │   ├── __init__.py
+│   │   └── examples
+│   │       ├── basic.txt
+│   │       └── cs_phd.txt
+│   ├── interface.py
+│   ├── interfaces
+│   │   ├── __init__.py
+│   │   ├── anthropic_parallel_tool_call_streaming_interface.py
+│   │   ├── anthropic_streaming_interface.py
+│   │   ├── gemini_streaming_interface.py
+│   │   ├── openai_chat_completions_streaming_interface.py
+│   │   ├── openai_streaming_interface.py
+│   │   └── utils.py
+│   ├── jobs
+│   │   ├── __init__.py
+│   │   ├── helpers.py
+│   │   ├── llm_batch_job_polling.py
+│   │   ├── scheduler.py
+│   │   └── types.py
+│   ├── llm_api
+│   │   ├── __init__.py
+│   │   ├── anthropic_client.py
+│   │   ├── anthropic_constants.py
+│   │   ├── azure_client.py
+│   │   ├── bedrock_client.py
+│   │   ├── chatgpt_oauth_client.py
+│   │   ├── deepseek_client.py
+│   │   ├── error_utils.py
+│   │   ├── google_ai_client.py
+│   │   ├── google_constants.py
+│   │   ├── google_vertex_client.py
+│   │   ├── groq_client.py
+│   │   ├── helpers.py
+│   │   ├── llm_api_tools.py
+│   │   ├── llm_client.py
+│   │   ├── llm_client_base.py
+│   │   ├── minimax_client.py
+│   │   ├── mistral.py
+│   │   ├── openai.py
+│   │   ├── openai_client.py
+│   │   ├── sample_response_jsons
+│   │   │   ├── aws_bedrock.json
+│   │   │   ├── lmstudio_embedding_list.json
+│   │   │   └── lmstudio_model_list.json
+│   │   ├── sglang_native_client.py
+│   │   ├── together_client.py
+│   │   ├── xai_client.py
+│   │   └── zai_client.py
+│   ├── local_llm
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── chat_completion_proxy.py
+│   │   ├── constants.py
+│   │   ├── function_parser.py
+│   │   ├── grammars
+│   │   │   ├── __init__.py
+│   │   │   ├── gbnf_grammar_generator.py
+│   │   │   ├── json.gbnf
+│   │   │   └── json_func_calls_with_inner_thoughts.gbnf
+│   │   ├── json_parser.py
+│   │   ├── koboldcpp
+│   │   │   ├── api.py
+│   │   │   └── settings.py
+│   │   ├── llamacpp
+│   │   │   ├── api.py
+│   │   │   └── settings.py
+│   │   ├── llm_chat_completion_wrappers
+│   │   │   ├── __init__.py
+│   │   │   ├── airoboros.py
+│   │   │   ├── chatml.py
+│   │   │   ├── configurable_wrapper.py
+│   │   │   ├── dolphin.py
+│   │   │   ├── llama3.py
+│   │   │   ├── simple_summary_wrapper.py
+│   │   │   ├── wrapper_base.py
+│   │   │   └── zephyr.py
+│   │   ├── lmstudio
+│   │   │   ├── api.py
+│   │   │   └── settings.py
+│   │   ├── ollama
+│   │   │   ├── api.py
+│   │   │   └── settings.py
+│   │   ├── settings
+│   │   │   ├── __init__.py
+│   │   │   ├── deterministic_mirostat.py
+│   │   │   ├── settings.py
+│   │   │   └── simple.py
+│   │   ├── utils.py
+│   │   ├── vllm
+│   │   │   └── api.py
+│   │   └── webui
+│   │       ├── api.py
+│   │       ├── legacy_api.py
+│   │       ├── legacy_settings.py
+│   │       └── settings.py
+│   ├── log.py
+│   ├── log_context.py
+│   ├── main.py
+│   ├── model_specs
+│   │   ├── __init__.py
+│   │   ├── litellm_model_specs.py
+│   │   └── model_prices_and_context_window.json
+│   ├── monitoring
+│   │   ├── __init__.py
+│   │   └── event_loop_watchdog.py
+│   ├── openai_backcompat
+│   │   ├── __init__.py
+│   │   └── openai_object.py
+│   ├── orm
+│   │   ├── __init__.py
+│   │   ├── agent.py
+│   │   ├── agents_tags.py
+│   │   ├── archive.py
+│   │   ├── archives_agents.py
+│   │   ├── base.py
+│   │   ├── block.py
+│   │   ├── block_history.py
+│   │   ├── blocks_agents.py
+│   │   ├── blocks_conversations.py
+│   │   ├── blocks_tags.py
+│   │   ├── conversation.py
+│   │   ├── conversation_messages.py
+│   │   ├── custom_columns.py
+│   │   ├── errors.py
+│   │   ├── file.py
+│   │   ├── files_agents.py
+│   │   ├── group.py
+│   │   ├── groups_agents.py
+│   │   ├── groups_blocks.py
+│   │   ├── identities_agents.py
+│   │   ├── identities_blocks.py
+│   │   ├── identity.py
+│   │   ├── job.py
+│   │   ├── job_messages.py
+│   │   ├── llm_batch_items.py
+│   │   ├── llm_batch_job.py
+│   │   ├── mcp_oauth.py
+│   │   ├── mcp_server.py
+│   │   ├── message.py
+│   │   ├── mixins.py
+│   │   ├── organization.py
+│   │   ├── passage.py
+│   │   ├── passage_tag.py
+│   │   ├── prompt.py
+│   │   ├── provider.py
+│   │   ├── provider_model.py
+│   │   ├── provider_trace.py
+│   │   ├── provider_trace_metadata.py
+│   │   ├── run.py
+│   │   ├── run_metrics.py
+│   │   ├── sandbox_config.py
+│   │   ├── source.py
+│   │   ├── sources_agents.py
+│   │   ├── sqlalchemy_base.py
+│   │   ├── sqlite_functions.py
+│   │   ├── step.py
+│   │   ├── step_metrics.py
+│   │   ├── tool.py
+│   │   ├── tools_agents.py
+│   │   └── user.py
+│   ├── otel
+│   │   ├── __init__.py
+│   │   ├── context.py
+│   │   ├── db_pool_monitoring.py
+│   │   ├── events.py
+│   │   ├── metric_registry.py
+│   │   ├── metrics.py
+│   │   ├── resource.py
+│   │   ├── sqlalchemy_instrumentation.py
+│   │   ├── sqlalchemy_instrumentation_integration.py
+│   │   └── tracing.py
+│   ├── personas
+│   │   ├── __init__.py
+│   │   └── examples
+│   │       ├── anna_pa.txt
+│   │       ├── google_search_persona.txt
+│   │       ├── memgpt_doc.txt
+│   │       ├── memgpt_starter.txt
+│   │       ├── o1_persona.txt
+│   │       ├── sam.txt
+│   │       ├── sam_pov.txt
+│   │       ├── sam_simple_pov_gpt35.txt
+│   │       ├── sleeptime_doc_persona.txt
+│   │       ├── sleeptime_memory_persona.txt
+│   │       ├── sqldb
+│   │       │   └── test.db
+│   │       └── voice_memory_persona.txt
+│   ├── plugins
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── defaults.py
+│   │   └── plugins.py
+│   ├── prompts
+│   │   ├── __init__.py
+│   │   ├── gpt_summarize.py
+│   │   ├── gpt_system.py
+│   │   ├── prompt_generator.py
+│   │   ├── summarizer_prompt.py
+│   │   └── system_prompts
+│   │       ├── __init__.py
+│   │       ├── letta_v1.py
+│   │       ├── memgpt_chat.py
+│   │       ├── memgpt_generate_tool.py
+│   │       ├── memgpt_v2_chat.py
+│   │       ├── react.py
+│   │       ├── sleeptime_doc_ingest.py
+│   │       ├── sleeptime_v2.py
+│   │       ├── summary_system_prompt.py
+│   │       ├── voice_chat.py
+│   │       ├── voice_sleeptime.py
+│   │       └── workflow.py
+│   ├── pytest.ini
+│   ├── schemas
+│   │   ├── agent.py
+│   │   ├── agent_file.py
+│   │   ├── archive.py
+│   │   ├── block.py
+│   │   ├── conversation.py
+│   │   ├── embedding_config.py
+│   │   ├── embedding_config_overrides.py
+│   │   ├── enums.py
+│   │   ├── environment_variables.py
+│   │   ├── file.py
+│   │   ├── folder.py
+│   │   ├── group.py
+│   │   ├── health.py
+│   │   ├── identity.py
+│   │   ├── job.py
+│   │   ├── letta_base.py
+│   │   ├── letta_message.py
+│   │   ├── letta_message_content.py
+│   │   ├── letta_request.py
+│   │   ├── letta_response.py
+│   │   ├── letta_stop_reason.py
+│   │   ├── llm_batch_job.py
+│   │   ├── llm_config.py
+│   │   ├── llm_config_overrides.py
+│   │   ├── llm_trace.py
+│   │   ├── mcp.py
+│   │   ├── mcp_server.py
+│   │   ├── memory.py
+│   │   ├── memory_repo.py
+│   │   ├── message.py
+│   │   ├── model.py
+│   │   ├── npm_requirement.py
+│   │   ├── openai
+│   │   │   ├── chat_completion_request.py
+│   │   │   ├── chat_completion_response.py
+│   │   │   ├── chat_completions.py
+│   │   │   ├── embedding_response.py
+│   │   │   ├── openai.py
+│   │   │   └── responses_request.py
+│   │   ├── organization.py
+│   │   ├── passage.py
+│   │   ├── pip_requirement.py
+│   │   ├── prompt.py
+│   │   ├── provider_model.py
+│   │   ├── provider_trace.py
+│   │   ├── providers
+│   │   │   ├── __init__.py
+│   │   │   ├── anthropic.py
+│   │   │   ├── azure.py
+│   │   │   ├── base.py
+│   │   │   ├── bedrock.py
+│   │   │   ├── cerebras.py
+│   │   │   ├── chatgpt_oauth.py
+│   │   │   ├── deepseek.py
+│   │   │   ├── google_gemini.py
+│   │   │   ├── google_vertex.py
+│   │   │   ├── groq.py
+│   │   │   ├── letta.py
+│   │   │   ├── lmstudio.py
+│   │   │   ├── minimax.py
+│   │   │   ├── mistral.py
+│   │   │   ├── ollama.py
+│   │   │   ├── openai.py
+│   │   │   ├── openrouter.py
+│   │   │   ├── sglang.py
+│   │   │   ├── together.py
+│   │   │   ├── vllm.py
+│   │   │   ├── xai.py
+│   │   │   └── zai.py
+│   │   ├── providers.py
+│   │   ├── response_format.py
+│   │   ├── run.py
+│   │   ├── run_metrics.py
+│   │   ├── sandbox_config.py
+│   │   ├── secret.py
+│   │   ├── source.py
+│   │   ├── source_metadata.py
+│   │   ├── step.py
+│   │   ├── step_metrics.py
+│   │   ├── tool.py
+│   │   ├── tool_execution_result.py
+│   │   ├── tool_rule.py
+│   │   ├── usage.py
+│   │   └── user.py
+│   ├── serialize_schemas
+│   │   ├── __init__.py
+│   │   ├── marshmallow_agent.py
+│   │   ├── marshmallow_agent_environment_variable.py
+│   │   ├── marshmallow_base.py
+│   │   ├── marshmallow_block.py
+│   │   ├── marshmallow_custom_fields.py
+│   │   ├── marshmallow_message.py
+│   │   ├── marshmallow_tag.py
+│   │   ├── marshmallow_tool.py
+│   │   └── pydantic_agent_schema.py
+│   ├── server
+│   │   ├── __init__.py
+│   │   ├── constants.py
+│   │   ├── db.py
+│   │   ├── generate_openapi_schema.sh
+│   │   ├── global_exception_handler.py
+│   │   ├── rest_api
+│   │   │   ├── __init__.py
+│   │   │   ├── app.py
+│   │   │   ├── auth
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── index.py
+│   │   │   ├── auth_token.py
+│   │   │   ├── chat_completions_interface.py
+│   │   │   ├── dependencies.py
+│   │   │   ├── interface.py
+│   │   │   ├── json_parser.py
+│   │   │   ├── middleware
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── check_password.py
+│   │   │   │   ├── logging.py
+│   │   │   │   └── request_id.py
+│   │   │   ├── proxy_helpers.py
+│   │   │   ├── redis_stream_manager.py
+│   │   │   ├── routers
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── openai
+│   │   │   │   │   └── chat_completions
+│   │   │   │   │       └── chat_completions.py
+│   │   │   │   └── v1
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── agents.py
+│   │   │   │       ├── anthropic.py
+│   │   │   │       ├── archives.py
+│   │   │   │       ├── blocks.py
+│   │   │   │       ├── chat_completions.py
+│   │   │   │       ├── conversations.py
+│   │   │   │       ├── embeddings.py
+│   │   │   │       ├── folders.py
+│   │   │   │       ├── git_http.py
+│   │   │   │       ├── groups.py
+│   │   │   │       ├── health.py
+│   │   │   │       ├── identities.py
+│   │   │   │       ├── internal_agents.py
+│   │   │   │       ├── internal_blocks.py
+│   │   │   │       ├── internal_runs.py
+│   │   │   │       ├── internal_templates.py
+│   │   │   │       ├── jobs.py
+│   │   │   │       ├── llms.py
+│   │   │   │       ├── mcp_servers.py
+│   │   │   │       ├── messages.py
+│   │   │   │       ├── organizations.py
+│   │   │   │       ├── passages.py
+│   │   │   │       ├── providers.py
+│   │   │   │       ├── runs.py
+│   │   │   │       ├── sandbox_configs.py
+│   │   │   │       ├── sources.py
+│   │   │   │       ├── steps.py
+│   │   │   │       ├── tags.py
+│   │   │   │       ├── telemetry.py
+│   │   │   │       ├── tools.py
+│   │   │   │       ├── users.py
+│   │   │   │       ├── voice.py
+│   │   │   │       └── zai.py
+│   │   │   ├── static_files.py
+│   │   │   ├── streaming_response.py
+│   │   │   └── utils.py
+│   │   ├── server.py
+│   │   ├── startup.sh
+│   │   ├── utils.py
+│   │   └── ws_api
+│   │       ├── __init__.py
+│   │       ├── example_client.py
+│   │       ├── interface.py
+│   │       ├── protocol.py
+│   │       └── server.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   ├── agent_generate_completion_manager.py
+│   │   ├── agent_manager.py
+│   │   ├── agent_serialization_manager.py
+│   │   ├── archive_manager.py
+│   │   ├── block_manager.py
+│   │   ├── block_manager_git.py
+│   │   ├── clickhouse_otel_traces.py
+│   │   ├── clickhouse_provider_traces.py
+│   │   ├── context_window_calculator
+│   │   │   ├── __init__.py
+│   │   │   ├── context_window_calculator.py
+│   │   │   └── token_counter.py
+│   │   ├── conversation_manager.py
+│   │   ├── credit_verification_service.py
+│   │   ├── file_manager.py
+│   │   ├── file_processor
+│   │   │   ├── __init__.py
+│   │   │   ├── chunker
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── line_chunker.py
+│   │   │   │   └── llama_index_chunker.py
+│   │   │   ├── embedder
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base_embedder.py
+│   │   │   │   ├── openai_embedder.py
+│   │   │   │   ├── pinecone_embedder.py
+│   │   │   │   └── turbopuffer_embedder.py
+│   │   │   ├── file_processor.py
+│   │   │   ├── file_types.py
+│   │   │   ├── parser
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base_parser.py
+│   │   │   │   ├── markitdown_parser.py
+│   │   │   │   └── mistral_parser.py
+│   │   │   └── types.py
+│   │   ├── files_agents_manager.py
+│   │   ├── group_manager.py
+│   │   ├── helpers
+│   │   │   ├── agent_manager_helper.py
+│   │   │   ├── run_manager_helper.py
+│   │   │   ├── tool_execution_helper.py
+│   │   │   └── tool_parser_helper.py
+│   │   ├── identity_manager.py
+│   │   ├── job_manager.py
+│   │   ├── lettuce
+│   │   │   ├── __init__.py
+│   │   │   └── lettuce_client_base.py
+│   │   ├── llm_batch_manager.py
+│   │   ├── llm_trace_reader.py
+│   │   ├── llm_trace_writer.py
+│   │   ├── mcp
+│   │   │   ├── __init__.py
+│   │   │   ├── base_client.py
+│   │   │   ├── fastmcp_client.py
+│   │   │   ├── oauth_utils.py
+│   │   │   ├── server_side_oauth.py
+│   │   │   ├── sse_client.py
+│   │   │   ├── stdio_client.py
+│   │   │   ├── streamable_http_client.py
+│   │   │   └── types.py
+│   │   ├── mcp_manager.py
+│   │   ├── mcp_server_manager.py
+│   │   ├── memory_repo
+│   │   │   ├── __init__.py
+│   │   │   ├── block_markdown.py
+│   │   │   ├── git_operations.py
+│   │   │   ├── memfs_client_base.py
+│   │   │   └── storage
+│   │   │       ├── __init__.py
+│   │   │       ├── base.py
+│   │   │       └── local.py
+│   │   ├── message_manager.py
+│   │   ├── organization_manager.py
+│   │   ├── passage_manager.py
+│   │   ├── provider_manager.py
+│   │   ├── provider_trace_backends
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── clickhouse.py
+│   │   │   ├── factory.py
+│   │   │   ├── postgres.py
+│   │   │   └── socket.py
+│   │   ├── run_manager.py
+│   │   ├── sandbox_config_manager.py
+│   │   ├── sandbox_credentials_service.py
+│   │   ├── sandbox_credentials_service_test.py
+│   │   ├── source_manager.py
+│   │   ├── step_manager.py
+│   │   ├── streaming_service.py
+│   │   ├── summarizer
+│   │   │   ├── __init__.py
+│   │   │   ├── compact.py
+│   │   │   ├── enums.py
+│   │   │   ├── self_summarizer.py
+│   │   │   ├── summarizer.py
+│   │   │   ├── summarizer_all.py
+│   │   │   ├── summarizer_config.py
+│   │   │   └── summarizer_sliding_window.py
+│   │   ├── telemetry_manager.py
+│   │   ├── tool_executor
+│   │   │   ├── __init__.py
+│   │   │   ├── builtin_tool_executor.py
+│   │   │   ├── composio_tool_executor.py
+│   │   │   ├── core_tool_executor.py
+│   │   │   ├── files_tool_executor.py
+│   │   │   ├── mcp_tool_executor.py
+│   │   │   ├── multi_agent_tool_executor.py
+│   │   │   ├── sandbox_tool_executor.py
+│   │   │   ├── tool_execution_manager.py
+│   │   │   ├── tool_execution_sandbox.py
+│   │   │   └── tool_executor_base.py
+│   │   ├── tool_manager.py
+│   │   ├── tool_sandbox
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── e2b_sandbox.py
+│   │   │   ├── local_sandbox.py
+│   │   │   ├── modal_constants.py
+│   │   │   ├── modal_deployment_manager.py
+│   │   │   ├── modal_sandbox.py
+│   │   │   ├── modal_sandbox_v2.py
+│   │   │   ├── modal_version_manager.py
+│   │   │   ├── safe_pickle.py
+│   │   │   └── typescript_generator.py
+│   │   ├── tool_schema_generator.py
+│   │   ├── user_manager.py
+│   │   ├── webhook_service.py
+│   │   └── webhook_service_test.py
+│   ├── settings.py
+│   ├── streaming_interface.py
+│   ├── streaming_utils.py
+│   ├── system.py
+│   ├── templates
+│   │   ├── __init__.py
+│   │   ├── sandbox_code_file.py.j2
+│   │   ├── sandbox_code_file_async.py.j2
+│   │   └── summary_request_text.j2
+│   ├── test_gemini.py
+│   ├── types
+│   │   └── __init__.py
+│   ├── utils.py
+│   └── validators.py
+├── nginx.conf
+├── otel
+│   ├── otel-collector-config-clickhouse-dev.yaml
+│   ├── otel-collector-config-clickhouse-prod.yaml
+│   ├── otel-collector-config-clickhouse.yaml
+│   ├── otel-collector-config-file-dev.yaml
+│   ├── otel-collector-config-file.yaml
+│   ├── otel-collector-config-signoz.yaml
+│   └── start-otel-collector.sh
+├── package-lock.json
+├── project.json
+├── pyproject.toml
+├── sandbox
+│   ├── __init__.py
+│   ├── modal_executor.py
+│   ├── node_server.py
+│   └── resources
+│       └── server
+│           ├── README.md
+│           ├── entrypoint.ts
+│           ├── package-lock.json
+│           ├── package.json
+│           ├── server.ts
+│           ├── tsconfig.json
+│           └── user-function.ts
+├── scripts
+│   ├── docker-compose.yml
+│   ├── migrate_tools.py
+│   ├── pack_docker.sh
+│   └── wait_for_service.sh
+├── test_watchdog_hang.py
+├── tests
+│   ├── __init__.py
+│   ├── adapters
+│   │   └── test_letta_llm_stream_adapter_error_handling.py
+│   ├── clear_postgres_db.py
+│   ├── config.py
+│   ├── configs
+│   │   ├── embedding_model_configs
+│   │   │   ├── azure_embed.json
+│   │   │   ├── local.json
+│   │   │   ├── ollama.json
+│   │   │   └── openai_embed.json
+│   │   ├── letta_hosted.json
+│   │   ├── llm_model_configs
+│   │   │   ├── azure-gpt-4o-mini.json
+│   │   │   ├── bartowski-ministral-8b-instruct-2410.json
+│   │   │   ├── bedrock-claude-4-sonnet.json
+│   │   │   ├── claude-3-5-haiku.json
+│   │   │   ├── claude-3-5-sonnet.json
+│   │   │   ├── claude-3-7-sonnet-extended.json
+│   │   │   ├── claude-3-7-sonnet.json
+│   │   │   ├── claude-4-1-opus.json
+│   │   │   ├── claude-4-5-haiku.json
+│   │   │   ├── claude-4-5-sonnet.json
+│   │   │   ├── claude-4-sonnet-extended.json
+│   │   │   ├── claude-4-sonnet.json
+│   │   │   ├── deepseek-reasoner.json
+│   │   │   ├── gemini-1.5-pro.json
+│   │   │   ├── gemini-2.5-flash-vertex.json
+│   │   │   ├── gemini-2.5-flash.json
+│   │   │   ├── gemini-2.5-pro-vertex.json
+│   │   │   ├── gemini-2.5-pro.json
+│   │   │   ├── groq.json
+│   │   │   ├── lmstudio-meta-llama-3.1-8b-instruct.json
+│   │   │   ├── lmstudio-qwen-2.5-7b-instruct.json
+│   │   │   ├── lmstudio.json
+│   │   │   ├── mlx-meta-llama-3.1-8b-instruct-8bit.json
+│   │   │   ├── mlx-ministral-8b-instruct-2410.json
+│   │   │   ├── mlx-qwen-2.5-7b-instruct.json
+│   │   │   ├── ollama.json
+│   │   │   ├── openai-gpt-3.5-turbo.json
+│   │   │   ├── openai-gpt-4.1.json
+│   │   │   ├── openai-gpt-4o-mini.json
+│   │   │   ├── openai-gpt-4o.json
+│   │   │   ├── openai-gpt-5-mini.json
+│   │   │   ├── openai-gpt-5.1.json
+│   │   │   ├── openai-gpt-5.2-codex.json
+│   │   │   ├── openai-gpt-5.2.json
+│   │   │   ├── openai-gpt-5.json
+│   │   │   ├── openai-o1.json
+│   │   │   ├── openai-o3-mini.json
+│   │   │   ├── openai-o3.json
+│   │   │   ├── openai-o4-mini.json
+│   │   │   ├── sglang.json
+│   │   │   ├── together-llama-3-1-405b.json
+│   │   │   ├── together-llama-3-70b.json
+│   │   │   ├── together-qwen-2.5-72b-instruct.json
+│   │   │   ├── vllm.json
+│   │   │   └── xai-grok-2.json
+│   │   └── openai.json
+│   ├── conftest.py
+│   ├── constants.py
+│   ├── data
+│   │   ├── 1_to_100.py
+│   │   ├── Camponotus_flavomarginatus_ant.jpg
+│   │   ├── api_server.go
+│   │   ├── data_analysis.py
+│   │   ├── data_structures.cpp
+│   │   ├── functions
+│   │   │   └── dump_json.py
+│   │   ├── list_tools.json
+│   │   ├── long_test.txt
+│   │   ├── memgpt-0.2.11
+│   │   │   ├── agents
+│   │   │   │   ├── agent_test
+│   │   │   │   │   ├── agent_state
+│   │   │   │   │   │   ├── 2024-01-11_12_43_57_PM.json
+│   │   │   │   │   │   └── 2024-01-11_12_43_59_PM.json
+│   │   │   │   │   ├── config.json
+│   │   │   │   │   └── persistence_manager
+│   │   │   │   │       ├── 2024-01-11_12_43_57_PM.persistence.pickle
+│   │   │   │   │       ├── 2024-01-11_12_43_59_PM.persistence.pickle
+│   │   │   │   │       └── index
+│   │   │   │   │           └── nodes.pkl
+│   │   │   │   ├── agent_test_attach
+│   │   │   │   │   ├── agent_state
+│   │   │   │   │   │   ├── 2024-01-11_12_42_17_PM.json
+│   │   │   │   │   │   └── 2024-01-11_12_42_19_PM.json
+│   │   │   │   │   ├── config.json
+│   │   │   │   │   └── persistence_manager
+│   │   │   │   │       ├── 2024-01-11_12_42_17_PM.persistence.pickle
+│   │   │   │   │       ├── 2024-01-11_12_42_19_PM.persistence.pickle
+│   │   │   │   │       └── index
+│   │   │   │   │           └── nodes.pkl
+│   │   │   │   └── agent_test_empty_archival
+│   │   │   │       ├── agent_state
+│   │   │   │       │   ├── 2024-01-11_12_44_32_PM.json
+│   │   │   │       │   └── 2024-01-11_12_44_33_PM.json
+│   │   │   │       ├── config.json
+│   │   │   │       └── persistence_manager
+│   │   │   │           ├── 2024-01-11_12_44_32_PM.persistence.pickle
+│   │   │   │           ├── 2024-01-11_12_44_33_PM.persistence.pickle
+│   │   │   │           └── index
+│   │   │   │               └── nodes.pkl
+│   │   │   ├── archival
+│   │   │   │   └── test
+│   │   │   │       └── nodes.pkl
+│   │   │   └── config
+│   │   ├── memgpt-0.3.17
+│   │   │   └── sqlite.db
+│   │   ├── memgpt_paper.pdf
+│   │   ├── philosophical_question.txt
+│   │   ├── react_component.jsx
+│   │   ├── secret.png
+│   │   ├── task_manager.java
+│   │   ├── test.csv
+│   │   ├── test.json
+│   │   ├── test.md
+│   │   ├── test.txt
+│   │   ├── test_embeddings.json
+│   │   └── toy_chat_fine_tuning.jsonl
+│   ├── helpers
+│   │   ├── client_helper.py
+│   │   ├── endpoints_helper.py
+│   │   ├── plugins_helper.py
+│   │   └── utils.py
+│   ├── integration_test_agent_tool_graph.py
+│   ├── integration_test_async_tool_sandbox.py
+│   ├── integration_test_batch_api_cron_jobs.py
+│   ├── integration_test_batch_sdk.py
+│   ├── integration_test_builtin_tools.py
+│   ├── integration_test_cancellation.py
+│   ├── integration_test_chat_completions.py
+│   ├── integration_test_clickhouse_llm_traces.py
+│   ├── integration_test_client_side_tools.py
+│   ├── integration_test_composio.py
+│   ├── integration_test_conversations_sdk.py
+│   ├── integration_test_human_in_the_loop.py
+│   ├── integration_test_mcp.py
+│   ├── integration_test_modal.py
+│   ├── integration_test_modal_sandbox_v2.py
+│   ├── integration_test_multi_agent.py
+│   ├── integration_test_multi_modal_tool_returns.py
+│   ├── integration_test_override_model.py
+│   ├── integration_test_send_message.py
+│   ├── integration_test_send_message_v2.py
+│   ├── integration_test_sleeptime_agent.py
+│   ├── integration_test_summarizer.py
+│   ├── integration_test_system_prompt_prefix_caching.py
+│   ├── integration_test_token_counters.py
+│   ├── integration_test_tool_execution_sandbox.py
+│   ├── integration_test_turbopuffer.py
+│   ├── integration_test_typescript_tool_execution_sandbox.py
+│   ├── integration_test_usage_tracking.py
+│   ├── integration_test_voice_agent.py
+│   ├── locust_test.py
+│   ├── managers
+│   │   ├── conftest.py
+│   │   ├── data
+│   │   │   └── test_embeddings.json
+│   │   ├── test_agent_manager.py
+│   │   ├── test_agent_manager_block_update.py
+│   │   ├── test_agent_tag_manager.py
+│   │   ├── test_archive_manager.py
+│   │   ├── test_block_manager.py
+│   │   ├── test_cancellation.py
+│   │   ├── test_conversation_manager.py
+│   │   ├── test_file_manager.py
+│   │   ├── test_group_manager.py
+│   │   ├── test_identity_manager.py
+│   │   ├── test_job_manager.py
+│   │   ├── test_mcp_manager.py
+│   │   ├── test_message_manager.py
+│   │   ├── test_organization_manager.py
+│   │   ├── test_passage_manager.py
+│   │   ├── test_provider_manager.py
+│   │   ├── test_run_manager.py
+│   │   ├── test_sandbox_manager.py
+│   │   ├── test_source_manager.py
+│   │   ├── test_tool_manager.py
+│   │   └── test_user_manager.py
+│   ├── manual_test_many_messages.py
+│   ├── manual_test_multi_agent_broadcast_large.py
+│   ├── mcp_test.py
+│   ├── mcp_tests
+│   │   ├── __init__.py
+│   │   ├── mcp_config.json
+│   │   ├── test_mcp.py
+│   │   ├── test_mcp_schema_validation.py
+│   │   ├── test_schema_validator.py
+│   │   └── weather
+│   │       ├── requirements.txt
+│   │       └── weather.py
+│   ├── mock_mcp_server.py
+│   ├── model_settings
+│   │   ├── azure-gpt-4o-mini.json
+│   │   ├── bedrock-claude-4-5-opus.json
+│   │   ├── bedrock-claude-4-sonnet.json
+│   │   ├── claude-3-5-sonnet.json
+│   │   ├── claude-3-7-sonnet-extended.json
+│   │   ├── claude-3-7-sonnet.json
+│   │   ├── claude-4-5-sonnet.json
+│   │   ├── claude-4-sonnet-extended.json
+│   │   ├── claude-4-sonnet.json
+│   │   ├── gemini-2.5-flash-vertex.json
+│   │   ├── gemini-2.5-pro-vertex.json
+│   │   ├── gemini-2.5-pro.json
+│   │   ├── groq.json
+│   │   ├── lmstudio.json
+│   │   ├── minimax-m2.1-lightning.json
+│   │   ├── ollama.json
+│   │   ├── openai-gpt-4.1.json
+│   │   ├── openai-gpt-4o-mini.json
+│   │   ├── openai-gpt-5.json
+│   │   ├── openai-o1.json
+│   │   ├── openai-o3.json
+│   │   ├── openai-o4-mini.json
+│   │   ├── together-qwen-2.5-72b-instruct.json
+│   │   ├── vllm.json
+│   │   ├── zai-glm-4.6.json
+│   │   └── zai-glm-5.json
+│   ├── performance_tests
+│   │   ├── test_agent_mass_creation.py
+│   │   ├── test_agent_mass_update.py
+│   │   └── test_insert_archival_memory.py
+│   ├── pytest.ini
+│   ├── sdk
+│   │   ├── agents_test.py
+│   │   ├── blocks_test.py
+│   │   ├── conftest.py
+│   │   ├── groups_test.py
+│   │   ├── identities_test.py
+│   │   ├── mcp_servers_test.py
+│   │   ├── mock_mcp_server.py
+│   │   ├── search_test.py
+│   │   └── tools_test.py
+│   ├── test_agent_files
+│   │   ├── composio_github_star_agent.af
+│   │   ├── customer_service.af
+│   │   ├── deep-thought.af
+│   │   ├── deep_research_agent.af
+│   │   ├── knowledge-base.af
+│   │   ├── long_running_kylie.af
+│   │   ├── max_messages.af
+│   │   ├── memgpt_agent_with_convo.af
+│   │   ├── outreach_workflow_agent.af
+│   │   ├── test_agent.af
+│   │   ├── test_agent_with_files_and_sources.af
+│   │   └── test_basic_agent_with_blocks_tools_messages_v2.af
+│   ├── test_*.py  (51 files)
+│   ├── test_tool_sandbox
+│   │   ├── .gitkeep
+│   │   └── restaurant_management_system
+│   │       ├── __init__.py
+│   │       ├── adjust_menu_prices.py
+│   │       ├── core
+│   │       │   ├── __init__.py
+│   │       │   ├── customers.py
+│   │       │   ├── menu.py
+│   │       │   ├── orders.py
+│   │       │   └── utils.py
+│   │       ├── requirements.txt
+│   │       └── test.py
+│   ├── test_tool_schema_parsing.py
+│   ├── test_tool_schema_parsing_files
+│   │   ├── all_python_complex.json
+│   │   ├── all_python_complex.py
+│   │   ├── all_python_complex_nodict.json
+│   │   ├── all_python_complex_nodict.py
+│   │   ├── all_python_complex_nodict_so.json
+│   │   ├── all_python_complex_so.json
+│   │   ├── expected_base_tool_schemas.py
+│   │   ├── list_of_pydantic_example.json
+│   │   ├── list_of_pydantic_example.py
+│   │   ├── list_of_pydantic_example_so.json
+│   │   ├── nested_pydantic_as_arg_example.json
+│   │   ├── nested_pydantic_as_arg_example.py
+│   │   ├── nested_pydantic_as_arg_example_so.json
+│   │   ├── pydantic_as_single_arg_example.json
+│   │   ├── pydantic_as_single_arg_example.py
+│   │   ├── pydantic_as_single_arg_example_so.json
+│   │   ├── simple_d20.json
+│   │   ├── simple_d20.py
+│   │   └── simple_d20_so.json
+│   ├── test_usage_parsing.py
+│   ├── test_utils.py
+│   └── utils.py
+└── uv.lock
+131 directories, 1127 files
