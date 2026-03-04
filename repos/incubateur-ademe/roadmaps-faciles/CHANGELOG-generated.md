@@ -1,42 +1,39 @@
 ## Changelog : roadmaps-faciles (30 derniers jours)
 
 ### Résumé
-Le projet a connu une période d'évolution très active au cours des 30 derniers jours. De nouvelles fonctionnalités majeures ont été implémentées, notamment l'authentification à deux facteurs, l'intégration SSO, un éditeur Markdown enrichi avec gestion d'images, et la possibilité d'intégrer des roadmaps via iframe. L'infrastructure a également été améliorée avec un nouveau système de CI/CD et une meilleure gestion des tenants. De nombreuses améliorations de la documentation et de l'expérience utilisateur ont également été apportées.
+Le projet a connu une période d'évolution très active ces dernières semaines, avec des améliorations significatives de la sécurité, de l'expérience utilisateur et de l'infrastructure. De nouvelles fonctionnalités ont été ajoutées, notamment l'authentification à deux facteurs, l'intégration de fournisseurs OAuth pour la connexion, un éditeur Markdown enrichi avec gestion des images, et des options d'intégration avec d'autres outils comme Notion. L'application est désormais plus robuste grâce à l'ajout de tests complets et d'une meilleure gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un éditeur Markdown enrichi avec la possibilité de télécharger des images via S3 (#93).
-- Implémentation de l'authentification à deux facteurs (2FA) via passkey, OTP et email (#61).
-- Possibilité d'intégrer des roadmaps et des tableaux de bord via un mode iframe embarquable (#64).
-- Ajout d'un système de feature flags accessible aux super-admins (#97).
-- Refonte de la page de gestion des tenants avec une interface de type GitHub (#60).
-- Ajout d'une page `/roadmap` pour le "dogfooding" (test interne) (#65).
-- Ajout de la possibilité de créer des posts anonymes avec modération et suppression (#32).
-- Ajout d'un journal d'audit pour suivre les actions des utilisateurs (#23).
-- Ajout de la gestion des zones DNS (#92).
-- Implémentation de l'internationalisation avec support du français et de l'anglais (#21).
-- Ajout d'un rôle administrateur root, d'un profil utilisateur, d'un pont SSO et de la gestion des domaines personnalisés (#20).
-- Ajout d'un connecteur pour synchroniser les données avec Notion (#94).
-- Amélioration de la gestion des utilisateurs et des rôles, notamment pour les créateurs de tenants (#65).
-- Ajout d'un système de redirection canonique via le domaine de la plateforme (#92).
-- Ajout d'un tenant épinglé qui remplace la variable d'environnement `ROADMAP_TENANT_SUBDOMAIN` (#83).
+- Ajout de l'authentification à deux facteurs (passkey/OTP/email) et de l'intégration SSO via OAuth2 pour les tenants [#61].
+- Implémentation d'un éditeur Markdown enrichi avec la possibilité de téléverser des images via S3 [#93].
+- Possibilité d'intégrer des roadmaps dans d'autres sites web grâce à un mode iframe embarquable [#64].
+- Amélioration de la page de gestion des tenants avec une interface de type liste GitHub [#60].
+- Ajout d'une page de roadmap accessible en dogfooding [#65].
+- Amélioration de l'expérience utilisateur du wizard d'intégration [#103].
+- Ajout de la possibilité de créer des posts anonymes avec modération et suppression [#32].
+- Ajout d'un système de feature flags pour les super-admins [#97].
+- Ajout d'un redirect canonique via le domaine de la plateforme [#92].
+- Ajout d'un système de journal d'audit (audit log) et d'observabilité [#23].
+- Ajout de la gestion des zones DNS [#92].
+- Ajout de l'internationalisation (français et anglais) [#21].
+- Ajout de la gestion des domaines personnalisés et d'un pont SSO pour l'administration [#20].
+- Ajout d'un administrateur root, d'un profil utilisateur et de la gestion des tenants par l'administrateur [#20].
 
 ### Évolutions techniques
-- Mise en place d'un nouveau système de CI/CD basé sur GitHub Actions et Scalingo (#90, #89, #85).
-- Refonte des emails avec le Design System de l'État (DSFR) et `react-email` (#58).
-- Ajout d'une suite de tests complète avec Vitest et Playwright pour les tests E2E (#63).
-- Amélioration de la configuration du build pour sécuriser les variables d'environnement (#81).
-- Optimisation des jobs CI pour ne déclencher les tests que sur les fichiers modifiés (#80).
-- Mise à jour des dépendances pour corriger des vulnérabilités (hono, lodash) (#79).
-- Utilisation de `release-please` pour automatiser les releases (#86).
-- Amélioration de la gestion des worktrees pour faciliter le développement parallèle (#62).
-- Refonte de la structure des fichiers de documentation (#59).
-- Correction de problèmes liés à l'initialisation du thème DSFR (#51, #53).
-- Ajout d'un provider de tracking Sentry et PostHog (#98).
-- Correction de problèmes de CSP pour les domaines PostHog (#5d99311).
+- Mise en place d'une suite de tests complète avec Vitest et Playwright pour les tests E2E [#63].
+- Refonte des emails avec le framework DSFR Mail et react-email [#58].
+- Amélioration de la sécurité avec le durcissement de Sentry et l'ajout de PostHog pour le suivi [#98].
+- Mise en place d'un système de CI/CD basé sur GitHub Actions et Scalingo avec déploiement basé sur push [#90, #91].
+- Utilisation de release-please pour la gestion des releases [#86].
+- Suppression de NODE_ENV des fichiers .env pour améliorer la sécurité [#81].
+- Filtrage des jobs CI par fichiers modifiés pour optimiser les temps de build [#73].
+- Correction de vulnérabilités identifiées par Dependabot (hono, lodash) [#79].
+- Adaptation du workflow de travail pour permettre des sessions de développement parallèles avec Claude [#62].
 
 ### Autres changements
-- Synchronisation de la documentation avec le stack documentation et ajout de règles de création d'issues GitHub (#244f9f3, #1bdb9a4).
-- Refonte des captures d'écran dans la documentation pour les rendre compatibles avec le thème (#51faffd).
-- Mise à jour du template GitHub (#54a85dc).
-- Ajout de fichiers ADR (Architecture Decision Records) (#f753b27).
-- Mise à jour du fichier `todo.md` (#6094a2e, #8680eda).
+- Synchronisation de la documentation avec les tickets GitHub et ajout de nouvelles sections sur le workflow, Git, GitHub et la sécurité [#85, #1234].
+- Refonte des captures d'écran et de la documentation avec le thème DSFR [#52].
+- Ajout de règles pour la création d'issues GitHub [#82].
+- Mise à jour du template GitHub [#54].
+- Ajout de fichiers ADR (Architecture Decision Records) [#18].
+- Mise à jour du fichier `todo.md` [#66, #67].

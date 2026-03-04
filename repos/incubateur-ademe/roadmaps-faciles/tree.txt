@@ -251,6 +251,14 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260225150000_add_comment_edit_delete_audit_actions
 │   │   │   └── migration.sql
+│   │   ├── 20260226150414_add_cascade_delete_on_post_children
+│   │   │   └── migration.sql
+│   │   ├── 20260226160000_fix_hotness_negative_power
+│   │   │   └── migration.sql
+│   │   ├── 20260226162445_add_post_source_label
+│   │   │   └── migration.sql
+│   │   ├── 20260226170000_add_sync_run_id
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   ├── seed.cts
@@ -418,6 +426,10 @@
 │   │   │   │   │       └── route.ts
 │   │   │   │   ├── healthz
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── integrations
+│   │   │   │   │   └── [integrationId]
+│   │   │   │   │       └── sync
+│   │   │   │   │           └── route.ts
 │   │   │   │   ├── otp
 │   │   │   │   │   ├── pre-login-check
 │   │   │   │   │   │   └── route.ts
@@ -511,7 +523,7 @@
 │   │   │   │   │   │   │   ├── IntegrationsList.tsx
 │   │   │   │   │   │   │   ├── [integrationId]
 │   │   │   │   │   │   │   │   ├── IntegrationDetail.tsx
-│   │   │   │   │   │   │   │   ├── SyncLogTable.tsx
+│   │   │   │   │   │   │   │   ├── SyncRunTable.tsx
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── actions.ts
 │   │   │   │   │   │   │   ├── new
@@ -793,6 +805,7 @@
 │   │   │   ├── impl
 │   │   │   │   └── NotionIntegrationProvider.ts
 │   │   │   ├── index.ts
+│   │   │   ├── sync-types.ts
 │   │   │   └── types.ts
 │   │   ├── logger.ts
 │   │   ├── mailer.ts
@@ -950,6 +963,7 @@
 │   │   │   ├── GetIntegrationSyncLogs.ts
 │   │   │   ├── GetNotionDatabaseSchema.ts
 │   │   │   ├── GetNotionDatabases.ts
+│   │   │   ├── GetSyncRuns.ts
 │   │   │   ├── ListIntegrationsForTenant.ts
 │   │   │   ├── ResolveSyncConflict.ts
 │   │   │   ├── SyncIntegration.ts
@@ -1071,6 +1085,7 @@
 │   │   │   ├── CreateIntegration.test.ts
 │   │   │   ├── DeleteIntegration.test.ts
 │   │   │   ├── GetIntegrationSyncLogs.test.ts
+│   │   │   ├── GetSyncRuns.test.ts
 │   │   │   ├── ListIntegrationsForTenant.test.ts
 │   │   │   ├── ResolveSyncConflict.test.ts
 │   │   │   ├── SyncIntegration.test.ts
@@ -1152,4 +1167,4 @@
 ├── vitest.config.db.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-273 directories, 925 files
+280 directories, 933 files
