@@ -8,6 +8,11 @@
 ├── cms
 │   ├── .env.example
 │   ├── .gitignore
+│   ├── .slugignore
+│   ├── .yarn
+│   │   └── releases
+│   │       └── yarn-4.12.0.cjs
+│   ├── .yarnrc.yml
 │   ├── Dockerfile
 │   ├── README.md
 │   ├── config
@@ -33,6 +38,16 @@
 │   │   │   └── vite.config.example.ts
 │   │   ├── api
 │   │   │   ├── .gitkeep
+│   │   │   ├── accessibility
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── accessibility
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── accessibility.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── accessibility.ts
+│   │   │   │   └── services
+│   │   │   │       └── accessibility.ts
 │   │   │   ├── category
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── category
@@ -63,6 +78,26 @@
 │   │   │   │   │   └── decree.ts
 │   │   │   │   └── services
 │   │   │   │       └── decree.ts
+│   │   │   ├── legal-mention
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── legal-mention
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── legal-mention.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── legal-mention.ts
+│   │   │   │   └── services
+│   │   │   │       └── legal-mention.ts
+│   │   │   ├── local-documentation
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── local-documentation
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── local-documentation.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── local-documentation.ts
+│   │   │   │   └── services
+│   │   │   │       └── local-documentation.ts
 │   │   │   ├── noise-source-category
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── noise-source-category
@@ -73,6 +108,16 @@
 │   │   │   │   │   └── noise-source-category.ts
 │   │   │   │   └── services
 │   │   │   │       └── noise-source-category.ts
+│   │   │   ├── privacy-policy
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── privacy-policy
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── privacy-policy.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── privacy-policy.ts
+│   │   │   │   └── services
+│   │   │   │       └── privacy-policy.ts
 │   │   │   ├── recommendation
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── recommendation
@@ -96,7 +141,8 @@
 │   │   ├── components
 │   │   │   └── global
 │   │   │       ├── conditions.json
-│   │   │       └── link.json
+│   │   │       ├── link.json
+│   │   │       └── local-documentation-code-insee.json
 │   │   ├── extensions
 │   │   │   └── .gitkeep
 │   │   └── index.ts
@@ -383,6 +429,10 @@
 │   ├── .eslintrc.js
 │   ├── .gitignore
 │   ├── .redeploy
+│   ├── .yarn
+│   │   └── releases
+│   │       └── yarn-4.12.0.cjs
+│   ├── .yarnrc.yml
 │   ├── Dockerfile
 │   ├── Procfile
 │   ├── README.md
@@ -411,7 +461,6 @@
 │   │   │   ├── diagnostic
 │   │   │   │   ├── Diagnostic.tsx
 │   │   │   │   ├── DiagnosticDecrees.tsx
-│   │   │   │   ├── DiagnosticDecreesBox.tsx
 │   │   │   │   ├── DiagnosticDocumentation.tsx
 │   │   │   │   ├── DiagnosticEvaluation.tsx
 │   │   │   │   ├── DiagnosticHero.tsx
@@ -425,6 +474,7 @@
 │   │   │   │   ├── DiagnosticParcelleSvgNotice.tsx
 │   │   │   │   ├── DiagnosticPosition.tsx
 │   │   │   │   ├── DiagnosticRecommendations.tsx
+│   │   │   │   ├── DiagnosticReferencesBox.tsx
 │   │   │   │   ├── DiagnosticRegulation.tsx
 │   │   │   │   ├── DiagnosticRegulationBox.tsx
 │   │   │   │   ├── DiagnosticScoreOnScale.tsx
@@ -457,7 +507,9 @@
 │   │   │       └── ScrollToTop.tsx
 │   │   ├── hooks
 │   │   │   ├── previous.ts
+│   │   │   ├── useCmsPage.ts
 │   │   │   ├── useDecrees.ts
+│   │   │   ├── useLocalDocumentation.ts
 │   │   │   ├── useMatomo.ts
 │   │   │   └── useOptimalZone.ts
 │   │   ├── index.css
@@ -466,6 +518,7 @@
 │   │   │   └── PublicLayout.tsx
 │   │   ├── pages
 │   │   │   ├── changelogs.tsx
+│   │   │   ├── cms-page.tsx
 │   │   │   ├── diagnostic.tsx
 │   │   │   ├── home.tsx
 │   │   │   ├── maintenance.tsx
@@ -676,4 +729,4 @@
 │   └── system.properties
 ├── setup-dbt.sh
 └── setup-dev.sh
-210 directories, 503 files
+238 directories, 528 files

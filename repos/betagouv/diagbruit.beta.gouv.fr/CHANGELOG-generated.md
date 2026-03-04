@@ -1,32 +1,33 @@
 ## Changelog : diagbruit.beta.gouv.fr (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de diagbruit.beta.gouv.fr se concentrent sur l'amélioration de la gestion des zones bruyantes, le calcul du score sonore et l'expérience utilisateur. Des corrections de bugs et des refactorisations ont également été apportées pour stabiliser et optimiser la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'ajout de pages légales, l'amélioration de la gestion des zones de bruit et des sources de bruit, ainsi que des corrections et refactorisations pour optimiser l'expérience utilisateur et la stabilité de l'application. Des améliorations ont également été apportées à la gestion des données et à l'infrastructure de déploiement.
 
 ### Évolutions fonctionnelles
-- Ajout d'une alerte spécifique si une zone de bruit est atteinte (#40).
-- Intégration de la ville de Strasbourg à la liste blanche des zones autorisées (#42).
-- Amélioration de l'affichage du résumé des informations, notamment la taille du texte et la présentation générale (#42).
-- Ajout d'un iframe pour afficher un tableau de bord externe (#41).
-- Ajout d'un bouton pour copier l'URL de la page, avec un style visuel amélioré (#35).
-- Ajout d'une gestion des erreurs 500 avec un message d'erreur clair pour l'utilisateur (#35).
-- Amélioration de l'affichage des composants de réglementation (#35).
-- Ajout d'un score global (#35).
-- Calcul du pourcentage de zones impactées (#35).
+- Ajout de toutes les pages légales nécessaires au site [#44](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/44).
+- Amélioration de la gestion des polygones pour les sources de bruit [#41](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/41).
+- Ajout d'une alerte spécifique lorsque la zone de bruit est atteinte [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
+- Ajout d'un iframe pour l'intégration de données de tally [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
+- Refonte de la section "Résumé" pour une meilleure clarté et une expérience utilisateur améliorée [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
+- Amélioration du libellé et de la description des zones de bruit [#43](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/43).
+- Ajout d'une exception pour les topos blocs sonores [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
 
 ### Évolutions techniques
-- Refactorisation du code frontend pour améliorer la lisibilité et la maintenabilité (#42, #35).
-- Ajout de zones de bruit dans la base de données et l'API (#40).
-- Adaptation des scripts d'ingestion de données pour tenir compte des changements en production (#37).
-- Correction de bugs dans les tests d'intégration FastAPI (#38, #35).
-- Mise à jour de la version de l'API (#38, #35).
-- Correction d'une erreur dans les scripts DBT causant des échecs de création d'indices (#35).
-- Ajout de tests pour la gestion de l'isolation acoustique (#35).
-- Suppression de références inutiles au PLU local dans le frontend (#35).
+- Refactorisation des composants de réglementation dans le frontend [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
+- Adaptation des scripts d'ingestion de données aux changements en production [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
+- Mise à jour de la version de l'API [#35](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/35).
+- Amélioration de la gestion des tests d'intégration dans l'API.
+- Ajout de `serve` pour le démarrage en production du frontend.
+- Correction de problèmes liés à Yarn et à la configuration des fichiers.
+- Suppression de références obsolètes au PLU local dans le frontend.
+- Ajout de la prise en charge de la whitelist 35 59 67.
 
 ### Autres changements
-- Correction de bugs mineurs dans l'interface utilisateur, notamment concernant les titres d'accordéon et l'affichage des totaux de zonage (#41).
-- Amélioration du style visuel de certains éléments de l'interface, comme les boutons et le héros (#42).
-- Correction de conflits dans le code (#35).
-- Ajout de la possibilité de gérer des exceptions liées à la représentation des zones (#37).
-- Suppression d'un package `serve` inutilisé dans le frontend (#35).
+- Ajout de documentation locale au CMS et utilisation dans le frontend.
+- Amélioration du texte dynamique concernant l'isolation affectée par le bruit.
+- Corrections mineures de design et d'UX dans le frontend.
+- Correction de titres et de comptages dans l'accordéon du frontend.
+- Mise à jour des étiquettes et des descriptions des zones de bruit dans l'API.
+- Nettoyage et optimisation de la configuration du CMS pour réduire la taille de l'image Docker.
+- Ajout de fichiers `.yarnrc.yml` pour le déploiement sur Scalingo.
+- Suppression de fichiers et de configurations inutiles.
