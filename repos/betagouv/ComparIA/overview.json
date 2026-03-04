@@ -4,18 +4,19 @@
   "description": "ComparIA est une plateforme open source pour collecter des données de préférences humaines sur les LLM, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser à la diversité des modèles, aux biais et à l'impact environnemental.",
   "language": "Python",
   "features": [
-    "Collecte de données de préférences",
     "Comparaison de modèles de langage",
+    "Collecte de données de préférences",
     "Publication de données (Hugging Face)",
     "Interface utilisateur pour les utilisateurs finaux",
-    "Gestion des secteurs d'application",
-    "Support multilingue"
+    "Tableau de bord d'impact",
+    "Prise en charge multilingue (Français, Danois)",
+    "Possibilité de créer des arènes personnalisées"
   ],
   "audience": [
-    "Professionnels",
     "Agents de l'Administration",
+    "Professionnels",
     "Associations",
-    "Développeurs"
+    "Grand public"
   ],
   "dependencies": [
     "FastAPI",
@@ -24,7 +25,8 @@
     "PostgreSQL",
     "Litellm",
     "ecologits",
-    "Sentry"
+    "Sentry",
+    "Docker"
   ],
   "components": [
     "Backend FastAPI",
@@ -32,16 +34,20 @@
     "Base de données PostgreSQL",
     "Cache Redis",
     "API REST",
-    "Système de journalisation Sentry"
+    "Intégration Hugging Face",
+    "CI/CD (GitHub Actions)"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-02-26T14:12:57+01:00",
+  "tests": "Tests unitaires et d'intégration (Pytest probable)",
+  "workflows": [
+    "build_models",
+    "CI/CD (GitHub Actions)"
+  ],
+  "lastActivity": "2026-02-27T18:42:15+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,8 +65,8 @@
     "Préférences",
     "Multilingue",
     "Comparaison",
-    "Evaluation",
-    "Gouvernement",
-    "France"
+    "Hugging Face",
+    "France",
+    "Danois"
   ]
 }
