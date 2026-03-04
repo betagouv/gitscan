@@ -20,7 +20,8 @@
 ├── .gitignore
 ├── .prettierignore
 ├── .release-it-changeset
-│   └── .gitkeep
+│   ├── .gitkeep
+│   └── 1772469440-suppression-zammad.md
 ├── .scalingo
 │   └── buildpack
 │       ├── README.md
@@ -113,8 +114,6 @@
 │   ├── docker-compose.mocks.yaml
 │   ├── entreprise.api.gouv.fr
 │   │   └── mockserverInitialization.json
-│   ├── identite.proconnect.gouv.fr
-│   │   └── mockserverInitialization.json
 │   └── support.etalab.gouv.fr
 │       └── mockserverInitialization.json
 ├── package.json
@@ -171,21 +170,6 @@
 │   │       ├── package.json
 │   │       └── tsx
 │   │           └── tsconfig.json
-│   ├── core
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── config
-│   │   │   │   ├── env.ts
-│   │   │   │   └── index.ts
-│   │   │   ├── index.ts
-│   │   │   └── schema
-│   │   │       ├── index.ts
-│   │   │       ├── z_email_domain.test.ts
-│   │   │       ├── z_email_domain.ts
-│   │   │       ├── z_empty_string_to_undefined.ts
-│   │   │       ├── z_username.test.ts
-│   │   │       └── z_username.ts
-│   │   └── tsconfig.json
 │   ├── identite-proconnect
 │   │   ├── bin
 │   │   │   ├── migration.ts
@@ -223,6 +207,7 @@
 │   │   │   │   │   ├── users
 │   │   │   │   │   │   ├── jeanbon.ts
 │   │   │   │   │   │   ├── jeandre.ts
+│   │   │   │   │   │   ├── jeanyeshack.ts
 │   │   │   │   │   │   ├── mariebon.ts
 │   │   │   │   │   │   ├── pierrebon.ts
 │   │   │   │   │   │   ├── raphael.ts
@@ -236,16 +221,6 @@
 │   │   │   │   └── index.ts
 │   │   │   └── types
 │   │   │       └── index.ts
-│   │   └── tsconfig.json
-│   ├── moderations
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── build_moderation_update.test.ts
-│   │   │   ├── build_moderation_update.ts
-│   │   │   └── comment_message.ts
-│   │   └── tsconfig.json
-│   ├── organizations
-│   │   ├── package.json
 │   │   └── tsconfig.json
 │   └── web
 │       ├── package.json
@@ -273,8 +248,9 @@
 │       │   │   └── sentry.client.ts
 │       │   ├── lib
 │       │   │   ├── create-island
-│       │   │   │   ├── index.test.tsx
-│       │   │   │   └── index.tsx
+│       │   │   │   ├── factory.test.tsx
+│       │   │   │   ├── factory.tsx
+│       │   │   │   └── index.ts
 │       │   │   ├── crisp
 │       │   │   │   ├── api.ts
 │       │   │   │   ├── index.ts
@@ -282,10 +258,9 @@
 │       │   │   │   └── types.ts
 │       │   │   ├── htmx.client.ts
 │       │   │   ├── moderations
+│       │   │   │   ├── build_moderation_update.test.ts
+│       │   │   │   ├── build_moderation_update.ts
 │       │   │   │   ├── comment_message.ts
-│       │   │   │   ├── context
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   └── rejected.ts
 │       │   │   │   ├── entities
 │       │   │   │   │   └── Moderation.ts
 │       │   │   │   ├── event.ts
@@ -297,25 +272,17 @@
 │       │   │   │   │   └── validate.form.ts
 │       │   │   │   ├── types.ts
 │       │   │   │   └── usecase
-│       │   │   │       ├── CreateAndSendEmailToUser.test.ts
-│       │   │   │       ├── CreateAndSendEmailToUser.ts
 │       │   │   │       ├── GetCripsFromSessionId.ts
 │       │   │   │       ├── GetModerationHeader.ts
-│       │   │   │       ├── GetZammadFromTicketId.ts
 │       │   │   │       ├── IsUserExternalMember.ts
-│       │   │   │       ├── RespondToTicket.ts
-│       │   │   │       ├── SendRejectedMessageToUser.ts
 │       │   │   │       ├── ValidateSimilarModerations.test.ts
 │       │   │   │       ├── ValidateSimilarModerations.ts
 │       │   │   │       ├── index.ts
-│       │   │   │       └── mark_moderation_as.ts
+│       │   │   │       └── send_crisp_notification.ts
 │       │   │   ├── organizations
 │       │   │   │   ├── event.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   └── usecase
-│       │   │   │       ├── AddAuthorizedDomain.test.ts
-│       │   │   │       ├── AddAuthorizedDomain.ts
-│       │   │   │       ├── AddVerifiedDomain.test.ts
 │       │   │   │       ├── AddVerifiedDomain.ts
 │       │   │   │       ├── GetBanaticUrl.test.ts
 │       │   │   │       ├── GetBanaticUrl.ts
@@ -323,31 +290,23 @@
 │       │   │   │       ├── RemoveDomainEmailById.test.ts
 │       │   │   │       ├── RemoveDomainEmailById.ts
 │       │   │   │       └── index.ts
-│       │   │   ├── users
-│       │   │   │   ├── entities
-│       │   │   │   │   └── User.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── templates
-│       │   │   │   │   └── index.ts
-│       │   │   │   └── usecase
-│       │   │   │       ├── CountUserMemberships.test.ts
-│       │   │   │       ├── CountUserMemberships.ts
-│       │   │   │       ├── GetUserInfo.ts
-│       │   │   │       ├── ResetMFA.test.ts
-│       │   │   │       ├── ResetMFA.ts
-│       │   │   │       ├── ResetPassword.test.ts
-│       │   │   │       ├── ResetPassword.ts
-│       │   │   │       ├── SuggestSameUserEmails.test.ts
-│       │   │   │       ├── SuggestSameUserEmails.ts
-│       │   │   │       └── index.ts
-│       │   │   └── zammad
-│       │   │       ├── const.ts
-│       │   │       ├── fetch.ts
-│       │   │       ├── get_zammad_attachment.ts
-│       │   │       ├── get_zammad_mail.ts
+│       │   │   └── users
+│       │   │       ├── entities
+│       │   │       │   └── User.ts
 │       │   │       ├── index.ts
-│       │   │       ├── is_zammad_ticket.ts
-│       │   │       └── types.ts
+│       │   │       ├── templates
+│       │   │       │   └── index.ts
+│       │   │       └── usecase
+│       │   │           ├── CountUserMemberships.test.ts
+│       │   │           ├── CountUserMemberships.ts
+│       │   │           ├── GetUserInfo.ts
+│       │   │           ├── ResetMFA.test.ts
+│       │   │           ├── ResetMFA.ts
+│       │   │           ├── ResetPassword.test.ts
+│       │   │           ├── ResetPassword.ts
+│       │   │           ├── SuggestSameUserEmails.test.ts
+│       │   │           ├── SuggestSameUserEmails.ts
+│       │   │           └── index.ts
 │       │   ├── middleware
 │       │   │   ├── auth
 │       │   │   │   ├── AgentConnectUserInfo.ts
@@ -451,10 +410,7 @@
 │       │   │   ├── assets
 │       │   │   │   ├── config.ts
 │       │   │   │   ├── index.ts
-│       │   │   │   ├── rewrite.ts
-│       │   │   │   └── zammad
-│       │   │   │       ├── index.test.ts
-│       │   │   │       └── index.ts
+│       │   │   │   └── rewrite.ts
 │       │   │   ├── auth
 │       │   │   │   ├── agentconnect.ts
 │       │   │   │   ├── index.test.ts
@@ -479,13 +435,9 @@
 │       │   │   │   │   │   ├── get_duplicate_moderations.query.test.ts
 │       │   │   │   │   │   ├── get_duplicate_moderations.query.ts
 │       │   │   │   │   │   ├── get_moderation.query.ts
-│       │   │   │   │   │   ├── get_moderation_tickets.query.ts
-│       │   │   │   │   │   ├── get_user_by_id.query.ts
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.tsx
 │       │   │   │   │   ├── email
-│       │   │   │   │   │   ├── Message.tsx
-│       │   │   │   │   │   ├── Zammad.tsx
 │       │   │   │   │   │   ├── find_moderation_for_email.query.test.ts
 │       │   │   │   │   │   ├── find_moderation_for_email.query.ts
 │       │   │   │   │   │   ├── index.test.ts
@@ -493,7 +445,6 @@
 │       │   │   │   │   ├── get_organization_by_id.query.ts
 │       │   │   │   │   ├── index.test.ts
 │       │   │   │   │   ├── index.tsx
-│       │   │   │   │   ├── mark_as_validated.ts
 │       │   │   │   │   ├── not-found.tsx
 │       │   │   │   │   ├── page.tsx
 │       │   │   │   │   ├── procedures_context.ts
@@ -501,13 +452,14 @@
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── rejected
-│       │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   └── mark_as_rejected.workflow.ts
+│       │   │   │   │   │   ├── index.test.ts
+│       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── reprocess
 │       │   │   │   │   │   ├── index.test.ts
 │       │   │   │   │   │   └── index.ts
-│       │   │   │   │   ├── validate.test.ts
-│       │   │   │   │   └── validate.ts
+│       │   │   │   │   └── validate
+│       │   │   │   │       ├── index.test.ts
+│       │   │   │   │       └── index.ts
 │       │   │   │   ├── ProcessedCheckboxIsland.tsx
 │       │   │   │   ├── SearchEmailIsland.tsx
 │       │   │   │   ├── SearchModeratedByIsland.tsx
@@ -598,6 +550,16 @@
 │       │   │       ├── hyyypertitle.client.ts
 │       │   │       └── index.tsx
 │       │   ├── routes.d.ts
+│       │   ├── schema
+│       │   │   ├── index.ts
+│       │   │   ├── z_email_domain.test.ts
+│       │   │   ├── z_email_domain.ts
+│       │   │   ├── z_empty_string_to_undefined.ts
+│       │   │   ├── z_username.test.ts
+│       │   │   └── z_username.ts
+│       │   ├── testing
+│       │   │   ├── cartesian.ts
+│       │   │   └── index.ts
 │       │   ├── time
 │       │   │   ├── date_format.ts
 │       │   │   └── index.ts
@@ -655,6 +617,9 @@
 │       │   │   │   │   ├── AddAsMemberExternal.tsx
 │       │   │   │   │   ├── AddAsMemberInternal.tsx
 │       │   │   │   │   ├── AddDomain.tsx
+│       │   │   │   │   ├── MemberAndDomainPicker.client.test.tsx
+│       │   │   │   │   ├── MemberAndDomainPicker.client.tsx
+│       │   │   │   │   ├── MemberAndDomainPickerIsland.tsx
 │       │   │   │   │   ├── RefusalModal.tsx
 │       │   │   │   │   ├── ResponseMessageSelector.tsx
 │       │   │   │   │   ├── SendNotification.tsx
@@ -823,17 +788,12 @@
 │       │   │   │   │   ├── Investigation.tsx
 │       │   │   │   │   └── index.ts
 │       │   │   │   └── index.ts
-│       │   │   ├── visually_hidden
-│       │   │   │   └── index.ts
-│       │   │   └── zammad
-│       │   │       └── components
-│       │   │           ├── OpenInZammad.tsx
-│       │   │           ├── SearchInZammad.tsx
-│       │   │           └── index.ts
+│       │   │   └── visually_hidden
+│       │   │       └── index.ts
 │       │   └── urls
 │       │       ├── index.ts
 │       │       ├── urls.test.ts
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-185 directories, 663 files
+175 directories, 633 files

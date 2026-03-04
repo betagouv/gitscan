@@ -1,5 +1,102 @@
 # Changelog
 
+## [2026.3.2](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.1...2026.3.2) (2026-03-03)
+
+### Changements
+
+- 🐛 Mise à jour des membres liés lors du changement de type de vérification d'un domaine
+
+Le PATCH d'un domaine utilise désormais `MarkDomainAsVerified` pour mettre à jour les liens `users_organizations` des membres dont l'email correspond au domaine vérifié. Auparavant, seul le champ `verification_type` du domaine était modifié sans impact sur les membres.
+
+### Corrigé
+
+- 🐛 linked member updated when patching email domain (#1446) (b604e84c)
+
+## [2026.3.1](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.0...2026.3.1) (2026-03-02)
+
+### Changements
+
+- 🐛 Restauration de l'identité opérateur Crisp dans les notifications de modération
+
+Les messages envoyés via Crisp lors de la validation ou du rejet d'une modération incluent désormais l'identité complète de l'opérateur (avec `user_id`), permettant une attribution correcte dans l'interface Crisp.
+
+- 🐛 Retour des prefix devant les filtres qui caches des infos
+
+### Corrigé
+
+- 🐛 restore Crisp moderator identity on notifications (#1444) (27a020ff)
+- 🐛 revert to visible hide prefix on filters (#1443) (4df1b087)
+
+## [2026.3.0](https://github.com/proconnect-gouv/hyyypertool/compare/2026.2.13...2026.3.0) (2026-03-02)
+
+### Changements
+
+- ♻️ Envoie de notification de modération traitée a travers Crisp
+
+La notification de modération traitée est envoyée dans la conversation de Crisp existante.
+
+Commit [439ec12](https://github.com/proconnect-gouv/hyyypertool/commit/439ec12b81cc6b60703f703af49b17b05a62d47d)
+
+### Corrigé
+
+- 🐛 update the moderation ticket if created at processed (#1442) (af6c9dbe)
+
+### Divers
+
+- refactor(moderations): send moderation done through crisp (#1441) (439ec12b)
+
+## [2026.2.13](https://github.com/proconnect-gouv/hyyypertool/compare/2026.2.12...2026.2.13) (2026-02-27)
+
+### Changements
+
+- 🐛 Correction du retraitement des modérations
+
+Lors du retraitement d'une modération, le statut passe désormais à "reopened" au lieu de rester inchangé. Cela permet de mieux suivre les modérations qui ont été rouvertes pour retraitement.
+
+### Corrigé
+
+- 🐛 moderations: set status to reopened when reprocessing (#1440) (3ee50623)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump preact-render-to-string (#1437) (937be5cf)
+- :arrow_upper_right: [patch](deps): Bump @proconnect-gouv/proconnect.api_entreprise (#1435) (db4329ff)
+- :arrow_upper_right: [patch](deps): Bump tailwind-merge (#1436) (cebefd14)
+- :arrow_upper_right: [patch](deps-dev): Bump @happy-dom/global-registrator (#1438) (2d8c4866)
+- :arrow_upper_right: [patch](deps): Bump preact from 10.28.3 to 10.28.4 (#1439) (7a806c58)
+
+## [2026.2.12](https://github.com/proconnect-gouv/hyyypertool/compare/2026.2.11...2026.2.12) (2026-02-27)
+
+### Changements
+
+- 🐛 Correction du doublon add_domain dans le formulaire de validation
+
+Remplacement des composants serveur (radio + checkbox) par un island Preact dans la modale d'acceptation de modération. Cela corrige un bug où deux champs `add_domain` étaient envoyés simultanément, provoquant une erreur de validation Zod.
+
+- 💄 Simplifie les filtres de modération
+
+Supprime les icônes visuelles (œil/œil barré) des cases à cocher des filtres de la page de modération pour simplifier l'interface utilisateur.
+
+### Ajouté
+
+- ✨ Refactor member and domain picker into unified island component (#1432) (ab1cb165)
+
+### Modifié
+
+- 💄 simplify moderations filter (#1434) (0a5eecf9)
+
+## [2026.2.11](https://github.com/proconnect-gouv/hyyypertool/compare/2026.2.10...2026.2.11) (2026-02-27)
+
+### Changements
+
+- 🐛 Correction de la vérification de domaine pour les membres existants
+
+Correction de l'ajout de domaines vérifiés afin que les types de vérification des membres existants soient correctement mis à jour via le mécanisme d'assignation par domaine.
+
+### Ajouté
+
+- ✨ Automate domain verification when adding authorized domains (#1433) (7cdbdb91)
+
 ## [2026.2.10](https://github.com/proconnect-gouv/hyyypertool/compare/2026.2.9...2026.2.10) (2026-02-26)
 
 ### Changements

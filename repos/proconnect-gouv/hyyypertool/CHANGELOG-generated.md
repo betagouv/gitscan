@@ -1,34 +1,54 @@
 ## Changelog : hyyypertool (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Hyyypertool se concentrent sur l'amélioration de l'expérience utilisateur, notamment en matière d'accessibilité et de notifications. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de l'outil, et des mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la performance. L'intégration de Sentry a été améliorée pour un suivi plus précis des erreurs.
+Les dernières mises à jour de Hyyypertool se concentrent sur la correction de bugs, l'amélioration de l'expérience utilisateur et l'optimisation des processus de modération. Des améliorations ont été apportées à la gestion des notifications, au filtrage des données, à la vérification des domaines et à la gestion des statuts de modération. Des refactorings ont également été effectués pour améliorer la maintenance et la performance du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité des tableaux avec des liens d'ancrage appropriés et une navigation au clavier.
-- Ajout de détails d'erreur dans les notifications, avec une section repliable pour plus d'informations.
-- Correction d'un bug empêchant le chargement du script de débogage htmx en préproduction.
-- Correction d'un bug lié à la disparition du tableau des domaines après actualisation et optimisation du filtrage des domaines libres.
-- Correction d'un bug sur la modération des membres déjà liés.
-- Ajout d'une section FranceConnect.
-- Possibilité de définir une liste d'utilisateurs autorisés.
+- Les notifications de modération sont désormais envoyées via Crisp, incluant l'identité de l'opérateur, permettant un suivi plus précis des actions.
+- La vérification automatique des domaines est désormais disponible lors de l'ajout de domaines autorisés.
+- Amélioration de l'accessibilité du tableau des modérations avec des liens d'ancrage et une navigation au clavier.
+- Ajout d'un lien vers EHPAD dans les actions d'investigation.
+- Simplification du filtre de modérations.
+- Refactorisation du sélecteur de membres et de domaines en un composant d'île unifié.
+- Ajout de détails d'erreur dans les notifications avec une section repliable.
+- Correction du comportement du filtre "hide prefix" qui cachait des informations.
+- Correction du statut des modérations lors du retraitement, qui passe désormais à "reopened".
+- Correction d'un bug empêchant la mise à jour des membres liés lors du changement de type de vérification d'un domaine.
+- Correction d'un bug sur la table des domaines qui disparaissait lors du rafraîchissement.
 
 ### Évolutions techniques
-- Intégration de Sentry pour une initialisation précoce via `--import`, ajout du profiling et du SDK navigateur.
-- Mise à jour de plusieurs dépendances : `@gouvfr/dsfr`, `zod`, `@preact/signals`, `pg`, `cypress`, `sentry`, `tailwindcss`, `dotenv`, `@happy-dom/global-registrator`, `type-fest`, `@proconnect-gouv/proconnect.identite`, `@proconnect-gouv/proconnect.identite.database`, `hono`, `hono-sessions`, `openid-client`, `release-it`, `prettier`, `oxc-parser`, `cypress-io/github-action`.
-- Correction d'un problème de version de Node utilisé pour l'exécution.
-- Amélioration de la gestion des scripts d'îlots Preact lors des échanges de contenu HTMX.
-- Suppression d'une dépendance inutile pour `@sentry/profiling-node`.
-- Suppression d'un workflow legacy de jointure d'organisation.
-- Correction de la gestion des statuts de modération inconnus.
-- Mise en place de tests E2E pour la validation des membres externes avec notification et domaine.
-- Utilisation de fast-check pour une couverture de tests plus large.
+- Suppression de l'intégration Zammad.
+- Suppression du module `@~/core`.
+- Refactoring de l'envoi de notifications de modération via Crisp.
+- Mise à jour de plusieurs dépendances (voir section "Autres changements").
+- Amélioration de la gestion des erreurs et des types de vérification.
+- Mise en place de tests E2E pour la validation de membres externes avec notification et domaine.
+- Utilisation de `fast-check` pour une couverture de tests plus large.
+- Suppression de code legacy lié à la jointure forcée d'organisations.
+- Correction de problèmes de permissions et de comportement des workflows de deforestation.
 
 ### Autres changements
-- Mise à jour de la politique de sécurité et ajout de directives de signalement.
-- Mise à jour de la documentation pour refléter les changements apportés.
-- Correction de la configuration de la commande changeset.
-- Amélioration des tests unitaires pour les URLs hx.
-- Suppression de l'extension `chunked-transfer` qui provoquait des erreurs.
-- Correction de l'ordre de chargement du script `htmx-ext-debug`.
-- Ajout de tests E2E pour la validation des membres externes avec notification et domaine.
-- Correction d'un problème de permissions et de comportement d'exécution planifié du workflow de déforestation.
+- Mises à jour de dépendances :
+    - `preact-render-to-string`
+    - `@proconnect-gouv/proconnect.api_entreprise`
+    - `tailwind-merge`
+    - `@happy-dom/global-registrator`
+    - `preact`
+    - `openid-client`
+    - `dotenv`
+    - `@proconnect-gouv/proconnect.identite`
+    - `@proconnect-gouv/proconnect.identite.database`
+    - `pg`
+    - `@types/bun`
+    - `hono`
+    - `hono-sessions`
+    - `oxc-parser`
+    - `@preact/signals`
+    - `@preact/signals-core`
+    - `cypress-io/github-action`
+- Mise à jour de la configuration Tailwind.
+- Ajout d'une politique de sécurité et de directives de signalement.
+- Formatage des fichiers Gherkin avec Prettier.
+- Correction de la version de Node utilisée pour l'environnement de build.
+- Amélioration de la robustesse des tests E2E.
+- Ajout de notes de publication pour la correction du type de vérification.
