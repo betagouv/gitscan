@@ -1,26 +1,26 @@
 ## Changelog : impactco2 (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'impactco2 se concentrent sur l'amélioration de l'expérience utilisateur, notamment en ajoutant de nouvelles données et en corrigeant des bugs liés à l'interface et à la présentation des informations. De nouvelles questions/réponses ont été ajoutées à la FAQ et des valeurs ont été mises à jour pour certains simulateurs.
+Les dernières mises à jour d'impactco2 améliorent l'expérience utilisateur avec de nouvelles questions fréquentes (FAQ) et des exemples plus précis dans le détecteur d'impact carbone. Des corrections de bugs ont été apportées pour améliorer la réactivité de l'interface et la gestion des données, notamment dans les simulateurs et les iframes. De nouvelles données ont également été ajoutées pour affiner les calculs d'empreinte carbone dans différents domaines comme la livraison et le chauffage.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles valeurs pour la livraison (#854).
-- Ajout d'un lien vers l'étiquette dans le pied de page (#857).
-- Amélioration du détecteur pour gérer les nombres écrits (#858).
-- Nouvelle FAQ ajoutée (#859).
-- Ajout d'un titre au simulateur d'alimentation personnalisé (#860).
-- Correction du redimensionnement incorrect des champs numériques (#861).
-- Amélioration de l'organisation de la FAQ dans le simulateur, regroupée par section (#853).
-- Mise à jour des exemples du détecteur (#862).
-- Mise à jour du lien de l'étiquette (#863).
-- Correction d'une faute de frappe (#864).
+- Ajout d'une nouvelle section FAQ pour répondre aux questions courantes des utilisateurs. [#859](https://github.com/incubateur-ademe/impactco2/issues/859)
+- Mise à jour des exemples du détecteur d'impact carbone pour une meilleure illustration. [#862](https://github.com/incubateur-ademe/impactco2/issues/862)
+- Ajout d'un titre au simulateur d'alimentation personnalisé. [#860](https://github.com/incubateur-ademe/impactco2/issues/860)
+- Ajout d'une étiquette (étiquette) dans le pied de page. [#857](https://github.com/incubateur-ademe/impactco2/issues/857)
+- Ajout de nouvelles valeurs pour le mode de livraison. [#854](https://github.com/incubateur-ademe/impactco2/issues/854)
+- Mise à jour des valeurs pour le chauffage. [#855](https://github.com/incubateur-ademe/impactco2/issues/855)
+- Amélioration de la gestion des nombres écrits dans le détecteur. [#858](https://github.com/incubateur-ademe/impactco2/issues/858)
+- Correction du redimensionnement incorrect des champs numériques. [#861](https://github.com/incubateur-ademe/impactco2/issues/861)
+- Correction de l'utilisation de `data-name` pour le script iframe. [#867](https://github.com/incubateur-ademe/impactco2/issues/867)
+- Mise à jour du lien vers l'étiquette. [#863](https://github.com/incubateur-ademe/impactco2/issues/863)
+- Mise à jour de la suggestion FAQ pour le transport. [#864](https://github.com/incubateur-ademe/impactco2/issues/864)
 
 ### Évolutions techniques
-- Rétrogradation de la fonctionnalité html-to-image (#861).
+- Mise à jour des données de cartographie des statistiques mensuelles.
+- Mise à jour de la cartographie des navigateurs de référence.
 
 ### Autres changements
-- Mise à jour des valeurs de chauffage (#855).
+- Correction d'une faute de frappe.
+- Rétrogradation de la fonctionnalité html-to-image.
 - Mise à jour des statistiques mensuelles du simulateur.
-- Correction d'un slug dupliqué (#851).
-- Mise à jour de la cartographie du navigateur de base (#863).
-- Mise à jour de la suggestion FAQ pour le transport (#856).
