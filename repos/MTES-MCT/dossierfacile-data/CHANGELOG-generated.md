@@ -1,15 +1,9 @@
-## Changelog : dossierfacile-data (derniers 30 jours)
+## Changelog : dossierfacile-data (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au projet dossierfacile-data au cours des 30 derniers jours. Les modifications se concentrent sur l'amélioration de la gestion des comptes locataires, la gestion des motifs de refus et l'ajout de nouvelles informations au rapport hebdomadaire des opérations par validation. Ces améliorations visent à fournir des données plus précises et complètes pour l'analyse et le suivi des dossiers.
+Ce mois-ci, les évolutions se concentrent sur l'enrichissement des données disponibles pour l'application DossierFacile. De nouveaux modèles de données ont été ajoutés pour suivre le partage des informations entre les locataires et pour améliorer les informations sur les opérateurs. Des ajustements ont également été faits pour s'adapter à une nouvelle structure de base de données.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des comptes locataires supprimés : une logique a été ajoutée pour gérer correctement les comptes locataires qui ont été supprimés (#56).
-- Gestion améliorée des motifs de refus : en cas d'informations manquantes, le système revient aux options de refus par défaut (#55).
-- Ajout d'informations sur le funnel, l'origine et le statut des locataires au rapport hebdomadaire des opérations par validation (#54).
-
-### Évolutions techniques
-- Refactorisation des tests : le répertoire `tests` a été renommé en `data_tests` dans les modèles YAML pour une meilleure organisation (#58).
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Ajout d'un modèle d'analyse quotidienne pour le suivi du partage des informations entre les locataires. [#60](https://github.com/MTES-MCT/dossierfacile-data/issues/60)
+- Amélioration du modèle de commentaire des opérateurs avec l'ajout de détails sur l'opérateur. [#61](https://github.com/MTES-MCT/dossierfacile-data/issues/61)
+- Mise à jour des modèles `application_link` pour correspondre à la nouvelle structure de la base de données. [#59](https://github.com/MTES-MCT/dossierfacile-data/issues/59)
