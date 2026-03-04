@@ -1,51 +1,39 @@
 ## Changelog : csplab (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à csplab au cours des 30 derniers jours. Les principales évolutions concernent l'ingestion et le traitement des offres d'emploi et des CV, avec des améliorations significatives sur l'interface utilisateur et les fonctionnalités de recherche et de correspondance. Des efforts importants ont également été consacrés à la maintenance technique et à l'amélioration de l'infrastructure.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'ingestion et du traitement des offres d'emploi et des CV, ainsi que sur l'amélioration de l'interface utilisateur pour la recherche et l'affichage des CV. Des refactorings importants ont été réalisés pour préparer le terrain à de nouvelles fonctionnalités et améliorer la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de la page de traitement des CV (candidats) avec de nouveaux styles (#223, #219).
-- Ajout de détails en cas d'erreur lors de l'analyse JSON (#217).
-- Implémentation de la correspondance entre les CV et les offres d'emploi (#167, #183).
-- Ajout d'une page de résultats de CV simple avec une fonctionnalité de filtrage basique via HTMX (#180, #182, #204).
-- Mise en place d'un système de polling pour la mise à jour des résultats de CV (#162, #165).
-- Gestion des erreurs de CV dans le flux candidat (#164).
-- Amélioration de la page d'accueil de Tycho avec de nouveaux styles (#180).
-- Correction d'un bug empêchant le chargement correct des offres (#168).
-- Correction d'un bug lié au remplacement de contenu lors du polling (#165).
-- Correction d'un problème d'unicité dans le modèle VectorizedDocumentModel (#233).
-- Correction de l'affichage des propriétés des cartes concours (#231).
+- Amélioration du processus de vectorisation des documents en attente d'ingestion [#204](https://github.com/betagouv/csplab/issues/204).
+- Correction d'un bug dans l'implémentation de l'OCR Albert [#246](https://github.com/betagouv/csplab/issues/246).
+- Ajout de la prise en charge d'APHP dans la source FPH [#234](https://github.com/betagouv/csplab/issues/234).
+- Correction d'un problème d'affichage des cartes de concours [#231](https://github.com/betagouv/csplab/issues/231).
+- Amélioration du style de la page de traitement des CV [#219](https://github.com/betagouv/csplab/issues/219) et [#223](https://github.com/betagouv/csplab/issues/223).
+- Ajout d'informations de débogage en cas d'erreur de parsing JSON lors du traitement des candidatures [#217](https://github.com/betagouv/csplab/issues/217).
+- Implémentation d'un système de correspondance entre les CV et les offres d'emploi [#167](https://github.com/betagouv/csplab/issues/167).
+- Ajout d'un système de polling pour la mise à jour des résultats de recherche de CV [#162](https://github.com/betagouv/csplab/issues/162).
+- Création d'une page de résultats de recherche de CV avec filtrage basique [#180](https://github.com/betagouv/csplab/issues/180), [#182](https://github.com/betagouv/csplab/issues/182) et [#178](https://github.com/betagouv/csplab/issues/178).
+- Mise en place d'une authentification JWT pour toutes les API [#159](https://github.com/betagouv/csplab/issues/159).
 
 ### Évolutions techniques
-- Refactorisation du dépôt de documents composites en un dépôt de documents et une passerelle de documents (#212).
-- Simplification de la configuration pour les environnements (#215).
-- Remplacement des ID d'entités par des UUID (#201).
-- Mise à jour de la configuration de Sentry (#192).
-- Remplacement de la vérification du format de commit par la vérification du titre de PR (#190).
-- Mise à jour de la configuration pour permettre l'utilisation d'endpoints tiers personnalisés en mode développement et la définition de valeurs factices pour les tests (#188).
-- Ajout de la Django Debug Toolbar en mode développement (#186).
-- Séparation des paramètres de configuration en fonction de l'environnement et configuration de la collecte des fichiers statiques (#159).
-- Refactorisation des administrateurs Django pour rendre certains champs en lecture seule (#184).
-- Mise à jour de Django vers la version 6.0.1 (#143).
-- Mise à jour de psycopg vers la version 3.3.2 (#144).
-- Implémentation de la vectorisation des offres (#166).
-- Amélioration de l'ingestion des offres avec la possibilité de traiter les documents par lots (#208).
-- Amélioration de la robustesse de l'ingestion des offres (#138).
-- Amélioration de l'ingestion des offres en permettant de charger des documents (#120).
-- Mise en place d'une authentification JWT pour toutes les API (#2ce7d1).
-- Alignement de la configuration du hook git avec la nouvelle configuration des emojis cz (#222, #221).
-- Alignement de la configuration de djlint entre VSCode et la CLI (#220).
-- Mise à jour des styles de la page de traitement des CV (#223).
-- Mise à jour des styles de la page de téléchargement des CV (#219).
-- Suppression de la verbosité excessive des tests (#199).
-- Suppression des contraintes excessives dans les docstrings (#205).
-- Ajout de la journalisation des messages dans la console (#194).
+- Refactoring de la gestion des documents et création de repositories dédiés [#212](https://github.com/betagouv/csplab/issues/212).
+- Refactoring de la configuration pour une meilleure gestion des environnements [#215](https://github.com/betagouv/csplab/issues/215).
+- Mise à jour de Django en version 6.0.1 [#143](https://github.com/betagouv/csplab/issues/143).
+- Mise à jour de psycopg en version 3.3.2 [#144](https://github.com/betagouv/csplab/issues/144).
+- Amélioration de la verbosité des tests [#199](https://github.com/betagouv/csplab/issues/199).
+- Ajout de la Django Debug Toolbar en mode développement [#186](https://github.com/betagouv/csplab/issues/186).
+- Refactoring des administrateurs Django pour rendre certains champs en lecture seule [#184](https://github.com/betagouv/csplab/issues/184).
+- Utilisation d'UUID pour l'identification des entités [#201](https://github.com/betagouv/csplab/issues/201).
+- Ajout d'un hook Git pour vérifier le format des commits [#222](https://github.com/betagouv/csplab/issues/222) et [#221](https://github.com/betagouv/csplab/issues/221).
+- Configuration de Sentry [#192](https://github.com/betagouv/csplab/issues/192).
+- Ajout d'un domaine personnalisé autorisé en mode développement [#206](https://github.com/betagouv/csplab/issues/206).
 
 ### Autres changements
-- Mise à jour du fichier CHANGELOG.md pour les versions 0.1.3 et 0.1.2 (#185, #131).
-- Nettoyage du code du repository (#211).
-- Mise à jour des dépendances (#137, #136).
-- Amélioration technique de l'ingestion des offres (#107).
-- Correction de la configuration de Tycho avec Django 6 (#151).
-- Correction de la localisation et du nettoyage des références (#154).
-- Ajout de l'initialisation des métadonnées de CV (#182).
+- Nettoyage du code et des configurations [#211](https://github.com/betagouv/csplab/issues/211).
+- Mise à jour du fichier CHANGELOG.md [#185](https://github.com/betagouv/csplab/issues/185) et [#131](https://github.com/betagouv/csplab/issues/131).
+- Correction de la contrainte d'unicité sur le modèle VectorizedDocumentModel [#233](https://github.com/betagouv/csplab/issues/233).
+- Correction d'un bug lié au swapping de contenu lors du polling [#165](https://github.com/betagouv/csplab/issues/165).
+- Gestion des erreurs lors du traitement des CV [#164](https://github.com/betagouv/csplab/issues/164).
+- Amélioration de l'ingestion des offres d'emploi [#171](https://github.com/betagouv/csplab/issues/171) et [#152](https://github.com/betagouv/csplab/issues/152).
+- Correction de bugs liés à la localisation et au nettoyage des références [#154](https://github.com/betagouv/csplab/issues/154).
+- Correction d'un bug de configuration dans l'environnement Tycho [#151](https://github.com/betagouv/csplab/issues/151).

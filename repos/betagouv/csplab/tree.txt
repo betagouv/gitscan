@@ -258,6 +258,7 @@
         │   │       │   ├── 0014_concoursmodel_archived_at_concoursmodel_processed_at.py
         │   │       │   ├── 0015_corpsmodel_archived_at_corpsmodel_processed_at.py
         │   │       │   ├── 0016_remove_vectorizeddocumentmodel_unique_id_document_type_and_more.py
+        │   │       │   ├── 0017_populate_processed_at.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
@@ -497,7 +498,6 @@
         │   │   ├── integration
         │   │   │   ├── test_integration_clean_documents.py
         │   │   │   ├── test_integration_load_documents.py
-        │   │   │   ├── test_integration_postgres_document_repository.py
         │   │   │   └── test_integration_vectorize_documents.py
         │   │   ├── management
         │   │   │   ├── test_clean_documents_command.py
@@ -505,16 +505,23 @@
         │   │   │   └── test_vectorize_documents_command.py
         │   │   ├── repository
         │   │   │   ├── __init__.py
-        │   │   │   └── test_pgvector_repository.py
+        │   │   │   └── test_postgres_document_repository.py
         │   │   └── unit
         │   │       ├── test_unit_clean_documents.py
-        │   │       ├── test_unit_load_documents.py
-        │   │       └── test_unit_vectorize_documents.py
+        │   │       └── test_unit_load_documents.py
         │   ├── pages
         │   │   ├── __init__.py
         │   │   └── integration
         │   │       ├── __init__.py
         │   │       └── test_home_view.py
+        │   ├── shared
+        │   │   ├── __init__.py
+        │   │   └── repository
+        │   │       ├── __init__.py
+        │   │       ├── test_pgvector_repository.py
+        │   │       ├── test_postgres_concours_repository.py
+        │   │       ├── test_postgres_corps_repository.py
+        │   │       └── test_postgres_offers_repository.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── cv_test_utils.py
@@ -530,4 +537,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-110 directories, 422 files
+112 directories, 427 files
