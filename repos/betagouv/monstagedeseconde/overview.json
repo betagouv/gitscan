@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/betagouv/monstagedeseconde",
   "name": "monstagedeseconde",
-  "description": "MonStageDeSeconde est une plateforme permettant de gérer les conventions de stage, facilitant les échanges entre les établissements scolaires et les entreprises. Elle vise à simplifier le processus de signature et de suivi des stages.",
+  "description": "MonStageDeSeconde est une plateforme permettant de gérer les conventions de stage, facilitant les échanges entre les établissements scolaires, les entreprises et les étudiants.",
   "language": "Ruby",
   "features": [
     "Gestion des conventions de stage",
-    "Signature électronique",
     "Recherche d'offres de stage",
+    "Signature électronique",
     "Gestion des établissements scolaires",
     "Gestion des entreprises",
-    "Suivi des signatures",
     "Notifications",
-    "Recherche d'adresses"
+    "Import de données",
+    "Recherche d'offres par secteur"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,18 +22,18 @@
     "Sidekiq",
     "React",
     "Turbo",
-    "Stimulus",
     "Bootstrap",
-    "Leaflet",
-    "Geocoder"
+    "Stimulus",
+    "Leaflet"
   ],
   "components": [
     "Backend Rails",
-    "Frontend React/Turbo",
+    "Frontend React",
     "Base de données PostgreSQL",
     "API REST",
+    "Interface web Turbo",
     "Serveur Redis",
-    "Interface d'administration"
+    "Workers Sidekiq"
   ],
   "auth": {
     "methods": [
@@ -42,14 +42,17 @@
   },
   "tests": [
     "Unit tests",
-    "System tests (Capybara)",
+    "System tests",
     "W3C validation",
-    "A11y tests (pa11y-ci)"
+    "A11y tests",
+    "Jest",
+    "Capybara",
+    "Selenium"
   ],
   "workflows": [
-    "CI/CD with CircleCI"
+    "CircleCI"
   ],
-  "lastActivity": "2026-02-19T15:50:19+01:00",
+  "lastActivity": "2026-03-03T14:20:45+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -67,7 +70,6 @@
     "rails",
     "react",
     "postgresql",
-    "administration",
-    "signature électronique"
+    "france"
   ]
 }
