@@ -66,6 +66,8 @@
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.ts
 │   │   │   ├── msc.ts
+│   │   │   ├── nis2
+│   │   │   │   └── ressourceExigencesNis2.ts
 │   │   │   ├── oidc
 │   │   │   │   ├── adaptateurOIDC.ts
 │   │   │   │   ├── ressourceApresAuthentificationOIDC.ts
@@ -78,7 +80,6 @@
 │   │   │   ├── ressourceAnnuaireSecteursActivite.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
-│   │   │   ├── ressourceExigencesNis2.ts
 │   │   │   ├── ressourceFinancement.ts
 │   │   │   ├── ressourceFinancements.ts
 │   │   │   ├── ressourceInformationsCreationCompte.ts
@@ -90,6 +91,7 @@
 │   │   │   ├── ressourcePagesJekyllConnectees.ts
 │   │   │   ├── ressourceProfil.ts
 │   │   │   ├── ressourceRetoursExperience.ts
+│   │   │   ├── ressourceSanteGuides.ts
 │   │   │   ├── ressourceStatistiques.ts
 │   │   │   ├── ressourceStatistiquesDiagnostic.ts
 │   │   │   ├── ressourceUtilisateurs.ts
@@ -128,7 +130,6 @@
 │   │   │   └── rapporteEvenementVisaTelechargeDansTraqueur.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
-│   │   │   ├── EntrepotExigenceGrist.ts
 │   │   │   ├── EntrepotSessionDeGroupePostgres.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.ts
 │   │   │   ├── adaptateurAnalytique.ts
@@ -162,11 +163,11 @@
 │   │   │   ├── grist.ts
 │   │   │   ├── markdown.ts
 │   │   │   ├── messagerieMattermost.ts
+│   │   │   ├── nis2
+│   │   │   │   └── entrepotExigenceGrist.ts
 │   │   │   ├── serviceVerificationCoherenceSecretsHachage.ts
 │   │   │   └── utilisateurBDD.ts
 │   │   ├── metier
-│   │   │   ├── EntrepotExigence.ts
-│   │   │   ├── Exigence.ts
 │   │   │   ├── adaptateurEmail.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── entrepotFavori.ts
@@ -180,6 +181,9 @@
 │   │   │   ├── generateurCodeSessionDeGroupe.ts
 │   │   │   ├── guide.ts
 │   │   │   ├── messagerieInstantanee.ts
+│   │   │   ├── nis2
+│   │   │   │   ├── entrepotExigence.ts
+│   │   │   │   └── exigence.ts
 │   │   │   ├── niveauDeSatisfaction.ts
 │   │   │   ├── referentielDepartements.ts
 │   │   │   ├── referentielDomainesDeSpecialite.ts
@@ -188,6 +192,7 @@
 │   │   │   ├── referentielTranchesEffectifEtablissement.ts
 │   │   │   ├── repartitionResultatsTest.ts
 │   │   │   ├── resultatTestMaturite.ts
+│   │   │   ├── serviceSanteGuides.ts
 │   │   │   ├── sessionDeGroupe.ts
 │   │   │   ├── statistiques.ts
 │   │   │   └── utilisateur.ts
@@ -211,6 +216,8 @@
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
+│   │   │   ├── nis2
+│   │   │   │   └── ressourceExigencesNis2.spec.ts
 │   │   │   ├── objetsPretsALEmploi.ts
 │   │   │   ├── oidc
 │   │   │   │   ├── ressourceApresAuthentificationOIDC.spec.ts
@@ -223,7 +230,6 @@
 │   │   │   ├── ressourceAnnuaireSecteursActivite.spec.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.spec.ts
 │   │   │   ├── ressourceAvisUtilisateur.spec.ts
-│   │   │   ├── ressourceExigencesNis2.spec.ts
 │   │   │   ├── ressourceFinancement.spec.ts
 │   │   │   ├── ressourceFinancements.spec.ts
 │   │   │   ├── ressourceInformationsCreationCompte.spec.ts
@@ -235,6 +241,7 @@
 │   │   │   ├── ressourcePagesJekyllConnectees.spec.ts
 │   │   │   ├── ressourceProfil.spec.ts
 │   │   │   ├── ressourceRetoursExperience.spec.ts
+│   │   │   ├── ressourceSanteDesGuides.spec.ts
 │   │   │   ├── ressourceStatistiques.spec.ts
 │   │   │   ├── ressourceStatistiquesDiagnostic.spec.ts
 │   │   │   ├── ressourceUtilisateurs.spec.ts
@@ -268,24 +275,26 @@
 │   │   │   ├── adaptateurHachage.spec.ts
 │   │   │   ├── adaptateurMatomo.spec.ts
 │   │   │   ├── cache.spec.ts
-│   │   │   ├── entrepotExigenceGrist.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
 │   │   │   ├── entrepotGuideGrist.spec.ts
 │   │   │   ├── fournisseurHorlogeDeTest.ts
 │   │   │   ├── markdown.spec.ts
+│   │   │   ├── nis2
+│   │   │   │   └── entrepotExigenceGrist.spec.ts
 │   │   │   └── serviceVerificationCoherenceSecretsHachage.spec.ts
 │   │   ├── metier
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
 │   │   │   ├── repartitionResultatsTest.spec.ts
 │   │   │   ├── resultatTestMaturite.spec.ts
+│   │   │   ├── serviceSanteGuides.spec.ts
 │   │   │   ├── sessionDeGroupe.spec.ts
 │   │   │   └── utilisateur.spec.ts
 │   │   ├── mockCmsCrisp.ts
 │   │   ├── persistance
-│   │   │   ├── EntrepotExigenceMemoire.ts
 │   │   │   ├── EntrepotSessionDeGroupeMemoire.ts
+│   │   │   ├── entrepotExigenceMemoire.ts
 │   │   │   ├── entrepotFavoriMemoire.ts
 │   │   │   ├── entrepotFinancementMemoire.ts
 │   │   │   ├── entrepotGuideMemoire.ts
@@ -783,6 +792,7 @@
 │   │   │   ├── main-page-crisp.ts
 │   │   │   ├── main-page-directive-nis2.ts
 │   │   │   ├── main-resultats-session-groupe.ts
+│   │   │   ├── main-sante.ts
 │   │   │   ├── main-session-groupe.ts
 │   │   │   ├── main-statistiques.ts
 │   │   │   ├── main-test-maturite.ts
@@ -803,8 +813,18 @@
 │   │   │   │   ├── ExigencesNis2.svelte
 │   │   │   │   ├── Marelle.svelte
 │   │   │   │   ├── PageNis2.svelte
+│   │   │   │   ├── PanneauComparaison.svelte
 │   │   │   │   ├── Presentation.svelte
-│   │   │   │   └── Solutions.svelte
+│   │   │   │   ├── Solutions.svelte
+│   │   │   │   ├── exigence.type.ts
+│   │   │   │   └── tableaux
+│   │   │   │       ├── CelluleExigenceISO.svelte
+│   │   │   │       ├── CelluleExigenceNis2.svelte
+│   │   │   │       ├── CelluleExigencesISOCibles.svelte
+│   │   │   │       ├── CelluleExigencesNIS2Cibles.svelte
+│   │   │   │       ├── CelluleNiveauCorrespondance.svelte
+│   │   │   │       ├── TableauCorrespondancesExigences.svelte
+│   │   │   │       └── TableauExigencesNIS2Simple.svelte
 │   │   │   ├── niveaux-maturite
 │   │   │   │   ├── IllustrationNiveauMaturite.svelte
 │   │   │   │   ├── NiveauxMaturite.donnees.ts
@@ -825,6 +845,9 @@
 │   │   │   │   │   └── Solutions.svelte
 │   │   │   │   └── entreprises
 │   │   │   │       └── PresentationEntreprises.svelte
+│   │   │   ├── sante
+│   │   │   │   ├── Sante.svelte
+│   │   │   │   └── TableSanteGuides.svelte
 │   │   │   ├── statistiques
 │   │   │   │   ├── Statistiques.svelte
 │   │   │   │   ├── Tuile.svelte
@@ -881,6 +904,7 @@
 │   │   │   │   ├── BoutonFermerModale.svelte
 │   │   │   │   ├── ChampRecherche.svelte
 │   │   │   │   ├── ChampTexte.svelte
+│   │   │   │   ├── ConteneurLarge.svelte
 │   │   │   │   ├── ConteneurOnglets.svelte
 │   │   │   │   ├── ControleFormulaire.svelte
 │   │   │   │   ├── Etapier.svelte
@@ -893,6 +917,7 @@
 │   │   │   │   ├── Heros.svelte
 │   │   │   │   ├── Icone.svelte
 │   │   │   │   ├── MenuFlottant.svelte
+│   │   │   │   ├── Modale.svelte
 │   │   │   │   ├── Onglet.svelte
 │   │   │   │   ├── SectionAccordeon.svelte
 │   │   │   │   ├── Separateur.svelte
@@ -955,6 +980,7 @@
 │   ├── promouvoir-diagnostic-cyber.html
 │   ├── promouvoir-msc.html
 │   ├── resultats-session-groupe.html
+│   ├── sante.html
 │   ├── scripts
 │   │   ├── apres-authentification.js
 │   │   ├── matomo.js
@@ -1016,4 +1042,4 @@
     │   ├── recuperateurDAdressesDesGuides.spec.ts
     │   └── recuperateurGuide.spec.ts
     └── tsconfig.json
-157 directories, 905 files
+164 directories, 924 files
