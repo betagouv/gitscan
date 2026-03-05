@@ -111,31 +111,13 @@
 │   ├── Version20250912075237.php
 │   ├── Version20251105150646.php
 │   ├── Version20260204081816.php
-│   └── Version20260204135631.php
+│   ├── Version20260204135631.php
+│   └── Version20260211150355.php
 ├── phpunit.xml.dist
 ├── public
 │   ├── .htaccess
 │   ├── apple-touch-icon.png
 │   ├── assets
-│   │   ├── 12
-│   │   │   ├── logo-marianne-pdf.jpg
-│   │   │   ├── logo_smica.png
-│   │   │   └── prefecture.jpg
-│   │   ├── 31
-│   │   │   ├── logo-marianne-pdf.jpg
-│   │   │   └── prefecture.jpg
-│   │   ├── 33
-│   │   │   ├── logo-marianne-pdf.png
-│   │   │   ├── logo_lucci.png
-│   │   │   └── prefecture.jpg
-│   │   ├── 34
-│   │   │   ├── logo-marianne-pdf.png
-│   │   │   └── prefecture.jpg
-│   │   ├── 66
-│   │   │   ├── prefecture.jpg
-│   │   │   └── white.png
-│   │   ├── 84
-│   │   │   └── prefecture.jpg
 │   │   ├── css
 │   │   │   ├── lucca-migration.css
 │   │   │   ├── lucca-print.css
@@ -391,6 +373,7 @@
 │   │   │   ├── datatables_date.js
 │   │   │   ├── lang
 │   │   │   │   ├── dataTables.de.json
+│   │   │   │   ├── dataTables.en.json
 │   │   │   │   ├── dataTables.es.json
 │   │   │   │   ├── dataTables.fr.json
 │   │   │   │   ├── dataTables.gb.json
@@ -541,8 +524,11 @@
 │           │   ├── Controller
 │           │   │   ├── Admin
 │           │   │   │   ├── AdherentController.php
+│           │   │   │   ├── AdvancedAdherentController.php
 │           │   │   │   ├── AgentController.php
 │           │   │   │   └── StatisticsController.php
+│           │   │   ├── Api
+│           │   │   │   └── AdherentController.php
 │           │   │   ├── MyAgent
 │           │   │   │   └── MyAgentController.php
 │           │   │   └── Profile
@@ -588,6 +574,8 @@
 │           │   │       │   ├── Printing
 │           │   │       │   │   ├── header-pdf.html.twig
 │           │   │       │   │   └── logo-header-pdf.html.twig
+│           │   │       │   ├── _actions.html.twig
+│           │   │       │   ├── duplicate.html.twig
 │           │   │       │   ├── edit.html.twig
 │           │   │       │   ├── index.html.twig
 │           │   │       │   ├── new.html.twig
@@ -792,6 +780,8 @@
 │           │   │   ├── ArrayLikeFilterTrait.php
 │           │   │   ├── LuccaRepository.php
 │           │   │   ├── PaginationTrait.php
+│           │   │   ├── Partial
+│           │   │   │   └── DataTableTrait.php
 │           │   │   └── ToggleableRepository.php
 │           │   ├── Resources
 │           │   │   ├── config
@@ -810,6 +800,7 @@
 │           │   │       ├── Dashboard
 │           │   │       │   ├── Js
 │           │   │       │   │   ├── control.js.twig
+│           │   │       │   │   ├── datatable-header-paginate.js.twig
 │           │   │       │   │   ├── decision.js.twig
 │           │   │       │   │   ├── folder.js.twig
 │           │   │       │   │   ├── global.js.twig
@@ -990,6 +981,7 @@
 │           │   │               └── _table-departments.html.twig
 │           │   ├── Service
 │           │   │   ├── DepartmentService.php
+│           │   │   ├── GeoApiService.php
 │           │   │   └── UserDepartmentResolver.php
 │           │   ├── Tests
 │           │   │   └── Controller
@@ -1026,6 +1018,7 @@
 │           │   │       └── FolderController.php
 │           │   ├── Data
 │           │   │   ├── natinfs.json
+│           │   │   ├── proposals.json
 │           │   │   └── tags.json
 │           │   ├── DependencyInjection
 │           │   │   ├── Configuration.php
@@ -1182,6 +1175,7 @@
 │           │   │           └── show.html.twig
 │           │   ├── Service
 │           │   │   ├── NatinfService.php
+│           │   │   ├── ProposalService.php
 │           │   │   ├── SettingService.php
 │           │   │   └── TagService.php
 │           │   ├── Tests
@@ -3029,6 +3023,8 @@
 │               │   ├── Admin
 │               │   │   ├── GroupController.php
 │               │   │   └── UserController.php
+│               │   ├── Api
+│               │   │   └── UserController.php
 │               │   └── Profile
 │               │       └── ProfileController.php
 │               ├── DataFixtures
@@ -3075,6 +3071,7 @@
 │               │       │   ├── badDepartment.html.twig
 │               │       │   └── login.html.twig
 │               │       └── User
+│               │           ├── _actions.html.twig
 │               │           ├── edit.html.twig
 │               │           ├── index.html.twig
 │               │           ├── new.html.twig
@@ -3095,4 +3092,4 @@
 │   └── bootstrap.php
 └── translations
     └── .gitignore
-757 directories, 2459 files
+754 directories, 2459 files
