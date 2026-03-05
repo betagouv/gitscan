@@ -4,29 +4,33 @@
   "description": "RAG Facile permet de construire une application RAG pour l'administration française en moins de 5 minutes, en s'appuyant sur l'API Albert.",
   "language": "Python",
   "features": [
-    "Ingestion de documents",
-    "Recherche sémantique",
-    "Reranking",
-    "Interface de chat",
-    "Intégration Smolagents",
-    "Mémoire de session basée sur Git"
+    "Création rapide d'applications RAG",
+    "Intégration avec l'API Albert",
+    "Gestion de documents (PDF, Markdown, HTML)",
+    "Pipeline de RAG configurable",
+    "Évaluation de la qualité du RAG",
+    "Interface utilisateur (Chainlit, Reflex)",
+    "Mémoire de session basée sur Git",
+    "Système de compétences (skills)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "albert-client",
     "chainlit",
+    "reflex",
     "pypdf",
-    "httpx",
-    "instructor",
+    "tomli-w",
     "pydantic",
-    "tomli-w"
+    "httpx",
+    "instructor"
   ],
   "components": [
-    "API Albert",
-    "Frontend Chainlit",
-    "Pipelines de traitement",
-    "Stockage vectoriel",
-    "Modules d'ingestion et de recherche"
+    "Frontend (Chainlit, Reflex)",
+    "API (Albert)",
+    "Pipeline de RAG",
+    "Gestion de la mémoire (Git)",
+    "Outils d'évaluation",
+    "Système de compétences"
   ],
   "auth": {
     "methods": [
@@ -34,19 +38,28 @@
     ],
     "providers": null
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2024-05-03T14:49:26Z",
+  "tests": "Pytest",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-03-02T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "RAG",
     "IA",
     "Albert",
     "Gouvernement",
     "Python",
-    "NLP"
+    "Chainlit",
+    "Reflex",
+    "API"
   ]
 }
