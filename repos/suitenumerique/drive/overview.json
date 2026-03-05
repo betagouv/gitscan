@@ -1,19 +1,18 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers qui permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité, tout en conservant un contrôle total sur leurs données.",
+  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers qui permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité tout en conservant un contrôle total sur leurs données.",
   "language": "Python",
   "features": [
     "Stockage de fichiers sécurisé",
     "Partage de fichiers et de dossiers",
-    "Contrôle d'accès granulaire",
     "Collaboration en équipe",
     "Recherche de fichiers",
+    "Gestion des accès",
     "Auto-hébergement",
-    "Gestion des espaces de travail",
-    "Synchronisation de la langue de l'interface",
     "Création de fichiers à partir de modèles",
-    "Intégration avec des éditeurs externes (WOPI)"
+    "Personnalisation de l'interface",
+    "Gestion des notes de version"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,40 +21,30 @@
     "Docker",
     "Docker Compose",
     "Celery",
-    "PostgreSQL",
-    "Redis",
-    "Pillow",
-    "cryptography",
-    "@gouvfr-lasuite/ui-kit"
+    "Playwright"
   ],
   "components": [
     "Backend Django",
     "Frontend React (Next.js)",
     "API REST",
-    "Base de données PostgreSQL",
-    "Cache Redis",
+    "Base de données (PostgreSQL)",
     "Stockage Objet (S3)",
-    "Serveur Nginx"
+    "Serveur d'applications (Docker)",
+    "Interface Web"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
     ],
-    "providers": [
-      "Keycloak"
-    ]
+    "providers": []
   },
   "tests": [
-    "Pytest",
     "Playwright",
-    "E2E tests"
+    "pytest"
   ],
-  "workflows": [
-    "Docker Hub CI/CD",
-    "Celery beat configuration"
-  ],
-  "lastActivity": "2026-02-26T09:19:43+01:00",
+  "workflows": [],
+  "lastActivity": "2026-03-03T15:28:32+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -66,13 +55,14 @@
     "openIssues": null
   },
   "tags": [
-    "file sharing",
+    "gestion de fichiers",
     "collaboration",
-    "self-hosting",
-    "django",
-    "react",
-    "s3",
-    "docker",
-    "wopi"
+    "auto-hébergement",
+    "open source",
+    "partage de fichiers",
+    "sécurité",
+    "Django",
+    "React",
+    "Next.js"
   ]
 }

@@ -8,9 +8,23 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(frontend) add create folder and import file actions
+- 🐛(frontend) add action menu to mobile breadcrumbs
+
 ### Changed
 
 - ⚡️(CI) optimize Docker Hub workflow
+- ♻️(frontend) replace WorkspaceIcon with FolderIcon in breadcrumbs
+
+### Removed
+
+- 🔥(backend) remove unused ServerToServerAuthentication backend
+
+### Fixed
+
+- 🐛(backend) allow inviting external person on item with no direct access
 
 ## [v0.14.0] - 2026-02-25
 
