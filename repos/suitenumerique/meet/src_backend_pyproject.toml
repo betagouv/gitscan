@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "meet"
-version = "1.8.0"
+version = "1.9.0"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -17,13 +17,13 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.13",
 ]
 description = "A simple video and phone conferencing tool, powered by LiveKit"
 keywords = ["Django", "Contacts", "Templates", "RBAC"]
 license = { file = "LICENSE" }
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 dependencies = [
     "boto3==1.42.49",
     "Brotli==1.2.0",
@@ -39,6 +39,7 @@ dependencies = [
     "django-redis==6.0.0",
     "django-storages[s3]==1.14.6",
     "django-timezone-field>=5.1",
+    "django-pydantic-field==0.5.4",
     "django==5.2.11",
     "djangorestframework==3.16.1",
     "drf_spectacular==0.29.0",
@@ -50,6 +51,7 @@ dependencies = [
     "markdown==3.10.2",
     "nested-multipart-parser==1.6.0",
     "psycopg[binary]==3.3.2",
+    "pydantic==2.12.4",
     "PyJWT==2.11.0",
     "python-frontmatter==1.1.0",
     "requests==2.32.5",

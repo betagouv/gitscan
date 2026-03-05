@@ -8,6 +8,27 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
+- 🩹(frontend) remove incorrect reference to ProConnect on the prejoin #1080
+- ✨(frontend) add Ctrl+Shift+/ to open shortcuts settings #1050
+- ♿(frontend) announce selected state to screen readers #1081
+
+### Changed
+
+- 🔒️(backend) enhance API input validation to strengthen security #1053
+- 🦺(backend) strengthen API validation for recording options #1063
+- ⚡️(frontend) optimize few performance caveats #1073
+- 🔒️(helm) introduce a dedicated Kubernetes Ingress for webhook-livekit #1066
+
+### Fixed
+
+- 🐛(migrations) use settings in migrations #1058
+- 💄(frontend) truncate pinned participant name with ellipsis on overflow #1056
+- ♿(frontend) prevent focus ring clipping on invite dialog #1078
+
+## [1.9.0] - 2026-03-02
+
 ### Added
 
 - 👷(docker) add arm64 platform support for image builds
@@ -24,6 +45,10 @@ and this project adheres to
 - ⬆️(backend) update python dependencies #1011
 - ♿️(frontend) fix focus ring on tab container components #1012
 - ♿️(frontend) upgrade join meeting modal accessibility #1027
+- ⬆️(python) bump minimal required python version to 3.13 #1033
+- ♿️(frontend) improve accessibility of the IntroSlider carousel #1026
+- ♿️(frontend) add skip link component for keyboard navigation #1019
+- ♿️(frontend) announce mic/camera state to SR on shortcut toggle #1052
 
 ### Fixed
 
