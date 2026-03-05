@@ -1,16 +1,13 @@
 ## Changelog : st-ansible (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la gestion des services et des notifications système, notamment pour les conteneurs Podman. De plus, des tests automatisés ont été ajoutés pour garantir la qualité et la stabilité de la collection Ansible. Une variable a été ajoutée pour configurer la commande de démarrage de Keycloak.
+Les dernières mises à jour de st-ansible améliorent la flexibilité et la configuration des rôles Ansible, notamment pour les services Podman et Messages. L'ajout de tests automatisés via Molecule et GitHub Actions renforce la qualité et la fiabilité de la collection.
 
 ### Évolutions fonctionnelles
-- Possibilité de personnaliser la politique de redémarrage systemd pour les conteneurs Podman (#8).
-- Configuration plus flexible de la notification système (sdnotify) pour les services, avec la possibilité de choisir entre différents modes et un comportement par défaut plus adapté aux conteneurs (#6, #7, #8).
-- Ajout de la variable `st_keycloak_start_command` pour configurer la commande de démarrage de Keycloak (#9).
+- Le rôle `podman` permet désormais de définir une politique de redémarrage Systemd personnalisée via la variable `systemd_restart_policy` [#8](https://github.com/suitenumerique/st-ansible/pull/8).
+- Le rôle `messages` offre plus de contrôle sur le mécanisme de notification `sdnotify`, avec la possibilité de le configurer et de définir une valeur par défaut de `container` [#6](https://github.com/suitenumerique/st-ansible/pull/6).
+- Une nouvelle variable `st_keycloak_start_command` a été ajoutée au rôle `keycloak` pour permettre la personnalisation de la commande de démarrage.
 
 ### Évolutions techniques
-- Ajout de tests automatisés avec Molecule et GitHub Actions (#10).
-- Correction de la valeur par défaut de `sdnotify` pour utiliser `conmon` (#11).
-
-### Autres changements
-- Aucune information disponible.
+- Ajout de tests d'intégration avec Molecule et configuration de GitHub Actions pour l'exécution automatique des tests [#9](https://github.com/suitenumerique/st-ansible/pull/9).
+- Correction de la valeur par défaut de `sdnotify` dans le rôle `messages` pour utiliser `container`.
