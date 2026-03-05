@@ -531,10 +531,19 @@
 │   │       ├── cni.py
 │   │       ├── field_metrics.py
 │   │       ├── passeport.py
-│   │       └── permis_conduire.py
+│   │       ├── permis_conduire.py
+│   │       ├── utils
+│   │       │   ├── __init__.py
+│   │       │   └── pydantic_utils.py
+│   │       └── visale_certificate.py
 │   └── tests
 │       ├── test_avis_imposition_description.py
-│       └── test_avis_imposition_json_schema.py
+│       ├── test_avis_imposition_json_schema.py
+│       └── utils
+│           ├── __init__.py
+│           ├── test_build_response_format.py
+│           ├── test_examples_model.py
+│           └── test_extract_fileds_info.py
 ├── document-ia-worker
 │   ├── .buildpacks
 │   ├── .python-version
@@ -678,4 +687,4 @@
 ├── pyrightconfig.json
 └── scripts
     └── init-s3-bucket.py
-179 directories, 501 files
+181 directories, 508 files
