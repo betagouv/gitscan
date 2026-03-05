@@ -286,6 +286,7 @@
 │   │   │   │                   │   │   │   ├── Reporting.kt
 │   │   │   │                   │   │   │   ├── ReportingActor.kt
 │   │   │   │                   │   │   │   ├── ReportingAndOccurrences.kt
+│   │   │   │                   │   │   │   ├── ReportingPeriod.kt
 │   │   │   │                   │   │   │   ├── ReportingType.kt
 │   │   │   │                   │   │   │   ├── ThreatSummary.kt
 │   │   │   │                   │   │   │   ├── VesselReportings.kt
@@ -520,6 +521,7 @@
 │   │   │   │                   │   │   │   ├── DeleteReportings.kt
 │   │   │   │                   │   │   │   ├── GetAllCurrentReportings.kt
 │   │   │   │                   │   │   │   ├── GetReportingWithDMLAndSeaFront.kt
+│   │   │   │                   │   │   │   ├── GetReportings.kt
 │   │   │   │                   │   │   │   ├── GetVesselReportings.kt
 │   │   │   │                   │   │   │   ├── UpdateReporting.kt
 │   │   │   │                   │   │   │   └── dtos
@@ -645,6 +647,7 @@
 │   │   │   │                   │   │   │   ├── ControlObjectiveDataOutput.kt
 │   │   │   │                   │   │   │   ├── ControlUnitDataOutput.kt
 │   │   │   │                   │   │   │   ├── ControlsSummaryDataOutput.kt
+│   │   │   │                   │   │   │   ├── DisplayedReportingDataOutput.kt
 │   │   │   │                   │   │   │   ├── DynamicVesselGroupDataOutput.kt
 │   │   │   │                   │   │   │   ├── DynamicVesselGroupWithVesselsDataOutput.kt
 │   │   │   │                   │   │   │   ├── EnvMissionActionDataOutput.kt
@@ -1175,6 +1178,9 @@
 │   │   │       │   │   │   ├── V0.35__Create_control_anteriority_table.sql
 │   │   │       │   │   │   ├── V0.360__Update_facade_type.sql
 │   │   │       │   │   │   ├── V0.361__Add_is_inn_control_to_mission_actions.sql
+│   │   │       │   │   │   ├── V0.362__Add_index_to_reportings_search.sql
+│   │   │       │   │   │   ├── V0.363__Add_is_iuu_to_reportings.sql
+│   │   │       │   │   │   ├── V0.364__Add_last_haul_to_mission_actions.sql
 │   │   │       │   │   │   ├── V0.36__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
@@ -1718,6 +1724,9 @@
 │   │   │   ├── nav_monitorfish.spec.ts
 │   │   │   ├── offline
 │   │   │   │   └── load_offline.spec.ts
+│   │   │   ├── reportings
+│   │   │   │   ├── reportings_map_button.spec.ts
+│   │   │   │   └── reportings_overlay.spec.ts
 │   │   │   ├── rgaa.spec.ts
 │   │   │   ├── side_window
 │   │   │   │   ├── alert_list
@@ -1847,7 +1856,7 @@
 │   │       │   ├── getDownloadedFileContent.ts
 │   │       │   ├── getFeaturesFromLayer.ts
 │   │       │   ├── getViewCenter.ts
-│   │       │   ├── hoverVesselByName.ts
+│   │       │   ├── hoverOrClickVesselByName.ts
 │   │       │   ├── injectAxe.ts
 │   │       │   └── login.ts
 │   │       ├── commands.ts
@@ -2394,6 +2403,7 @@
 │   │   │   ├── arrow_green.png
 │   │   │   ├── boat_icons.png
 │   │   │   ├── icon_mission_sprite.png
+│   │   │   ├── icon_reporting_sprite.png
 │   │   │   ├── station-layer-icon-highlighted.svg
 │   │   │   └── station-layer-icon.svg
 │   │   └── robots.txt
@@ -2727,6 +2737,9 @@
 │   │   │   │   ├── controlUnitContactApi.ts
 │   │   │   │   ├── controlUnitResourceApi.ts
 │   │   │   │   ├── legacyControlUnit.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── LegacyControlUnitResourceSchema.ts
+│   │   │   │   │   └── LegacyControlUnitSchema.ts
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── centerOnStation.ts
 │   │   │   │   │   └── createOrUpdateControlUnitContact.ts
@@ -2977,8 +2990,17 @@
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── MapVesselClickAndAnimationHandler.tsx
 │   │   │   │   │   ├── Overlay
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   │   ├── OverlayTrianglePointer.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── index.test.ts
+│   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── useMapOverlay.test.ts
+│   │   │   │   │   │   │   ├── useMapOverlay.ts
+│   │   │   │   │   │   │   ├── useMoveOverlayWhenDragging.ts
+│   │   │   │   │   │   │   └── useMoveOverlayWhenZooming.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── RightClickMapMenu.tsx
 │   │   │   │   │   ├── RightClickMapMenuOverlay.jsx
 │   │   │   │   │   ├── SelectedControlOverlay
@@ -3012,9 +3034,12 @@
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── hoverOnMapFeature.test.ts
 │   │   │   │   │   ├── clickOnMapFeature.ts
 │   │   │   │   │   ├── fitMultiPolygonToExtent.ts
-│   │   │   │   │   └── getCoordinatesExtent.ts
+│   │   │   │   │   ├── getCoordinatesExtent.ts
+│   │   │   │   │   └── hoverOnMapFeature.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── Measurement
 │   │   │   │   ├── components
@@ -3200,10 +3225,20 @@
 │   │   │   │   │   ├── SelectedMissionLayer.tsx
 │   │   │   │   │   └── constants.ts
 │   │   │   │   ├── mission.types.ts
+│   │   │   │   ├── missionAction.constants.ts
 │   │   │   │   ├── missionAction.types.ts
 │   │   │   │   ├── missionActionApi.ts
 │   │   │   │   ├── monitorenvMissionApi.ts
 │   │   │   │   ├── monitorfishMissionApi.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── FleetSegmentSchema.ts
+│   │   │   │   │   ├── GearControlSchema.ts
+│   │   │   │   │   ├── InfractionSchema.ts
+│   │   │   │   │   ├── MissionActionSchema.ts
+│   │   │   │   │   ├── NatinfSchema.ts
+│   │   │   │   │   ├── SpeciesControlSchema.ts
+│   │   │   │   │   ├── ThreatCharacterizationSchema.ts
+│   │   │   │   │   └── ThreatSchema.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── addMission.ts
@@ -3517,6 +3552,14 @@
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── ReportingMapButton.tsx
+│   │   │   │   │   ├── ReportingMapMenuDialog
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── ReportingOverlay
+│   │   │   │   │   │   ├── ReportingDetails.tsx
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── ReportingTable
 │   │   │   │   │   │   ├── EditReporting.tsx
 │   │   │   │   │   │   ├── Filters
@@ -3530,6 +3573,8 @@
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── SelectedReportingOverlay
+│   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   └── VesselReportings
 │   │   │   │   │       ├── ArchivedReportingList
 │   │   │   │   │       │   ├── YearReportings.tsx
@@ -3545,9 +3590,16 @@
 │   │   │   │   │       │   ├── index.tsx
 │   │   │   │   │       │   └── utils.ts
 │   │   │   │   │       └── index.tsx
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── layers
+│   │   │   │   │   ├── ReportingLayer
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   └── style.ts
 │   │   │   │   ├── reportingApi.ts
 │   │   │   │   ├── schemas
 │   │   │   │   │   ├── BaseReportingSchema.ts
+│   │   │   │   │   ├── DisplayedReportingSchema.ts
 │   │   │   │   │   ├── InfractionSuspicionSchema.ts
 │   │   │   │   │   ├── ObservationSchema.ts
 │   │   │   │   │   ├── ReportingCreationSchema.ts
@@ -3562,12 +3614,14 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   └── dummyReporting.ts
-│   │   │   │   │   │   └── archiveReporting.test.ts
+│   │   │   │   │   │   ├── archiveReporting.test.ts
+│   │   │   │   │   │   └── searchAndRenderReportingFeatures.test.ts
 │   │   │   │   │   ├── addReporting.ts
 │   │   │   │   │   ├── archiveReporting.ts
 │   │   │   │   │   ├── archiveReportings.ts
 │   │   │   │   │   ├── deleteReporting.ts
 │   │   │   │   │   ├── deleteReportings.ts
+│   │   │   │   │   ├── searchAndRenderReportingFeatures.ts
 │   │   │   │   │   └── updateReporting.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── RiskFactor
@@ -4042,8 +4096,6 @@
 │   │   │   ├── useMainAppDispatch.ts
 │   │   │   ├── useMainAppSelector.ts
 │   │   │   ├── useMatomo.tsx
-│   │   │   ├── useMoveOverlayWhenDragging.jsx
-│   │   │   ├── useMoveOverlayWhenZooming.jsx
 │   │   │   ├── usePreviousIfTrue.ts
 │   │   │   ├── useSaveInLocalStorage.tsx
 │   │   │   ├── useSmallChat.tsx
@@ -5588,4 +5640,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-757 directories, 5147 files
+769 directories, 5187 files
