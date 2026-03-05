@@ -108,7 +108,11 @@
 │   │   │       └── text_extraction.py
 │   │   └── sync
 │   │       ├── __init__.py
-│   │       └── files_utils.py
+│   │       ├── client.py
+│   │       ├── dns.py
+│   │       ├── downloader.py
+│   │       ├── files_utils.py
+│   │       └── sync_metadata.py
 │   ├── forms.py
 │   ├── logging.py
 │   ├── management
@@ -144,6 +148,7 @@
 │   │   ├── 0023_auto_20260209_1747.py
 │   │   ├── 0024_remove_document_ej.py
 │   │   ├── 0025_remove_fileinfo_num_ej_alter_document_dossier_and_more.py
+│   │   ├── 0026_externaldocumentmetadata_fileinfo_external_id_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions
@@ -302,24 +307,27 @@
 │   │   │   │       └── utils.py
 │   │   │   ├── sync
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── files_utils
-│   │   │   │       ├── __init__.py
-│   │   │   │       ├── assets
-│   │   │   │       │   ├── calc.ods
-│   │   │   │       │   ├── calc.xls
-│   │   │   │       │   ├── calc.xlsx
-│   │   │   │       │   ├── hello.txt
-│   │   │   │       │   ├── hello.unknown
-│   │   │   │       │   ├── hello.xml
-│   │   │   │       │   ├── image.jpg
-│   │   │   │       │   ├── image.png
-│   │   │   │       │   ├── image.tiff
-│   │   │   │       │   ├── lettre.doc
-│   │   │   │       │   ├── lettre.docx
-│   │   │   │       │   ├── lettre.odt
-│   │   │   │       │   └── lettre.pdf
-│   │   │   │       ├── test_detect_file_extension.py
-│   │   │   │       └── test_get_corrected_extension.py
+│   │   │   │   ├── files_utils
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   ├── calc.ods
+│   │   │   │   │   │   ├── calc.xls
+│   │   │   │   │   │   ├── calc.xlsx
+│   │   │   │   │   │   ├── hello.txt
+│   │   │   │   │   │   ├── hello.unknown
+│   │   │   │   │   │   ├── hello.xml
+│   │   │   │   │   │   ├── image.jpg
+│   │   │   │   │   │   ├── image.png
+│   │   │   │   │   │   ├── image.tiff
+│   │   │   │   │   │   ├── lettre.doc
+│   │   │   │   │   │   ├── lettre.docx
+│   │   │   │   │   │   ├── lettre.odt
+│   │   │   │   │   │   └── lettre.pdf
+│   │   │   │   │   ├── test_detect_file_extension.py
+│   │   │   │   │   └── test_get_corrected_extension.py
+│   │   │   │   ├── test_client.py
+│   │   │   │   ├── test_downloader.py
+│   │   │   │   └── test_sync_metadata.py
 │   │   │   └── test_models.py
 │   │   ├── permissions
 │   │   │   ├── __init__.py
@@ -357,4 +365,4 @@
     │   │   └── lettre.md
     │   └── test_ocr_api.py
     └── utils.py
-76 directories, 283 files
+76 directories, 291 files

@@ -1,33 +1,40 @@
 ## Changelog : depenses-eclairees (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de depenses-eclairees se concentrent sur l'amélioration de l'extraction et de l'affichage des données, notamment pour les actes d'engagement, les fiches navettes et les documents CCAP. Des efforts importants ont été réalisés pour optimiser la reconnaissance optique de caractères (OCR) avec l'intégration de Mistral, et pour affiner la classification des documents. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées pour une meilleure expérience utilisateur.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'extraction de données, notamment grâce à l'intégration de l'OCR Mistral, et sur l'amélioration de l'interface utilisateur pour une meilleure expérience de visualisation et de gestion des données. Des corrections de bugs et des refactorisations ont également été apportées pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des actes d'engagement avec ajout de la gestion de l'avance et du montant en annexe. (#76, #68, #53)
-- Prise en charge de l'affichage des fiches navette dans l'interface utilisateur. (#71, #63)
-- Amélioration de la classification des documents et correction de problèmes liés à la reconnaissance des types de fichiers. (#65, #57, #55)
-- Intégration d'un nouvel outil OCR (Mistral) pour une meilleure extraction de texte des documents numérisés. (#51)
-- Amélioration de l'affichage des montants avec ajout du séparateur de milliers. (#53)
-- Ajout de la gestion des documents RIB et amélioration de l'affichage des attributs. (#53)
-- Correction de l'affichage des checkbox décalées. (#57)
-- Correction du login OIDC. (#56)
+- Ajout de la prise en charge de la classification et de l'affichage des "fiches navette" dans l'interface utilisateur.
+- Amélioration de l'extraction de données des actes d'engagement avec l'ajout de champs comme l'avance et le montant annexe.
+- Intégration de l'OCR Mistral pour une meilleure reconnaissance de texte.
+- Amélioration de l'affichage des montants avec un séparateur de milliers.
+- Correction de l'affichage des checkbox et amélioration du design général de l'interface.
+- Possibilité d'accepter les fiches navettes dans le front-end.
+- Correction du calcul des pourcentages dans les actes d'engagement.
+- Amélioration de la gestion des IBAN avec une validation plus stricte.
+- Ajout de la gestion de la classification "fiche_navette".
 
 ### Évolutions techniques
-- Refactorisation des fonctions de comparaison pour utiliser des prompts pour l'évaluation par LLM. (#73)
-- Suppression de la dépendance `odfpy` et refactorisation de l'extraction Excel. (#62)
-- Amélioration de la gestion des timeouts du LLMClient et ajout d'une limitation de débit par modèle. (#53)
-- Refactorisation du code pour une meilleure lisibilité et maintenance, notamment dans les tests et les templates. (#73, #67, #61, #58)
-- Utilisation de variables d'environnement pour la configuration de l'API Grist. (#67)
-- Mise à jour des dépendances du projet. (#61, #56)
-- Amélioration de la gestion des erreurs et des exceptions dans le code. (#51)
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code. (#73, #51)
-- Refactorisation de la base de données pour une meilleure gestion des relations entre les documents et les engagements. (#56)
+- Refactorisation du code d'extraction de texte pour supporter différents formats de fichiers (xls, xlsx, ods).
+- Amélioration de la gestion des timeouts du LLMClient.
+- Refactorisation des fonctions de comparaison pour utiliser des prompts pour l'évaluation par LLM.
+- Suppression de dépendances inutiles (odfpy).
+- Amélioration de la gestion des tests, notamment avec l'intégration de Grist API pour récupérer les données de référence.
+- Refactorisation de la gestion des permissions pour l'affichage des engagements.
+- Mise à jour des dépendances.
+- Amélioration de la gestion des erreurs OCR et ajout de tests algorithmiques.
+- Utilisation de variables d'environnement pour la configuration de l'API Grist.
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+- Refactorisation du code pour une meilleure lisibilité et maintenabilité.
+- Correction de bugs liés à l'authentification OIDC.
 
 ### Autres changements
-- Mise à jour de la documentation et des commentaires dans le code.
-- Amélioration du formatage du code avec `ruff`.
-- Suppression de code obsolète et nettoyage du codebase.
-- Correction de bugs mineurs et amélioration de la stabilité du projet.
-- Ajout de nouvelles variables d'environnement pour la configuration des tests.
-- Suppression de certains documents du front car non prêt à être affichés. (#53)
+- Mise à jour de la documentation.
+- Correction de problèmes de style avec Ruff.
+- Suppression de code obsolète.
+- Amélioration des messages de log.
+- Correction de conflits de merge.
+- Ajout de tests pour les scopes d'administration.
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Suppression de documents non prêts à être affichés dans le front-end.
+- Configuration de la couverture de code avec pytest-cov.
