@@ -1,12 +1,7 @@
-## Changelog : react-dsfr (derniers 30 jours)
+## Changelog : react-dsfr (30 derniers jours)
 
 ### Résumé
-Cette nouvelle version de react-dsfr apporte des améliorations à la documentation avec l'ajout d'une table des matières (TOC) dans le menu latéral de Storybook, ainsi que des corrections d'accessibilité sur le composant `PasswordInput`. Une tentative de mise à jour majeure de Storybook a été annulée suite à des problèmes, mais sera retentée ultérieurement.
-
-### Évolutions fonctionnelles
-- Amélioration de la documentation : ajout d'une table des matières (TOC) dans le menu latéral de Storybook pour une navigation plus facile. (#470, #474)
-- Accessibilité : correction d'un problème d'accessibilité sur le composant `PasswordInput` en ajoutant une information pour les lecteurs d'écrans concernant le picto d'aide à la saisie du mot de passe. (#474)
+Cette nouvelle version apporte des corrections liées à l'issue #481, améliorant ainsi la stabilité et la fiabilité de la bibliothèque.  Il s'agit d'une mise à jour mineure axée sur la résolution de problèmes spécifiques.
 
 ### Évolutions techniques
-- Tentative de mise à jour de Storybook de la version 6 à la version 10. Cette mise à jour a été annulée en raison de problèmes rencontrés. (#470)
-- Mise à jour de la version du package. (#475)
+- Correction d'un problème lié à l'issue [#481](https://github.com/codegouvfr/react-dsfr/issues/481).
