@@ -1,39 +1,35 @@
 ## Changelog : monitorenv (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à monitorenv au cours des 30 derniers jours. Les principales évolutions concernent l'interface utilisateur avec l'ajout d'informations sur l'historique des navires et les signalements, ainsi que des corrections de bugs pour améliorer la stabilité et la fiabilité de l'application. Des mises à jour techniques importantes ont également été effectuées pour moderniser l'infrastructure et les dépendances du projet.
+Ce changelog présente les améliorations apportées à monitorenv au cours des 30 derniers jours. Les principales évolutions concernent l'interface utilisateur, notamment l'amélioration de la gestion des informations sur les navires et des signalements, ainsi que des optimisations techniques pour améliorer la performance et la stabilité de l'application. Des mises à jour de l'infrastructure et des dépendances ont également été réalisées.
 
 ### Évolutions fonctionnelles
-
-- Ajout de l'historique des navires sur la page de résumé du navire. (#7a52b89)
-- Affichage de la dernière position connue d'un navire sur la page de résumé. (#e260f51)
-- Ajout d'un cercle rouge sur la carte pour indiquer les navires ayant un rapport en cours. (#403a3e4)
-- Renommage de "signalement" en "suspicion d'infraction" dans l'interface. (#f54d296)
-- Ajout de la géométrie aux rapports créés directement depuis un navire. (#faf1a31)
-- Ajout de la source "RAPPORT_NAV" aux sources de missions par défaut. (#389a084)
-- Correction pour permettre l'affichage complet des missions. (#65ca6d9)
+- Ajout de l'historique des positions des navires sur la page de résumé du navire. [#2345](https://github.com/MTES-MCT/monitorenv/issues/2345)
+- Affichage de la dernière position connue d'un navire sur sa page de résumé.
+- Renommage de "signalement" en "suspicion d'infraction".
+- Ajout d'un cercle rouge sur la carte pour indiquer les navires ayant un signalement en cours.
+- Amélioration de l'affichage des zones réglementaires et des AMP dans le "brief" et le document éditable.
+- Correction de l'affichage du sélecteur d'unité de contrôle.
+- Ajout de toutes les positions filtrées à la carte et au résumé du navire.
+- Ajout des plannings sur les zones localisées.
+- Affichage des informations du navire même si seul le nom est renseigné.
+- Ajout de la source de mission "RAPPORT_NAV" pour récupérer toutes les missions complètes.
+- Ajout de la géométrie au reporting lors de sa création à partir d'un navire.
 
 ### Évolutions techniques
-
-- Mise à jour de Poetry vers la version 3.6.9. (#9a6880d)
-- Mise à jour de Black vers la version 26.1.0. (#96ab080)
-- Remplacement de la dépendance `cx_oracle` par `oracledb`. (#2d2515f)
-- Suppression du code d'infrastructure legacy et des fichiers Dockerfile obsolètes. (#aececeb, #203e2fe, #03c91be, #503e2fe)
-- Mise à jour des workflows GitHub Actions et du fichier `.gitignore`. (#cd8fe0c, #4d5c3b9)
-- Mise à jour des fichiers Makefile. (#376dca2, #3036a5d)
-- Mise à jour de la configuration de Coderabbit. (#2feb5eb)
-- Suppression du dossier `datascience`. (#2e32bdd)
-- Ajout de volumes pour les certificats Kafka. (#95d038f)
-- Mise à jour des actions GitHub pour la configuration de Java. (#c3c6080)
-- Correction du type `jsonb` dans les modèles. (#044566f)
-- Mise à jour de Cypress dans le workflow GitHub Action. (#de9eb8e)
+- Utilisation du client Oracle "heavy" lors de l'utilisation de FMC.
+- Augmentation de la taille de la mémoire partagée de la base de données à 256 Mo.
+- Mise à jour de Poetry vers la version 3.6.9.
+- Refonte de l'infrastructure : suppression du code infra legacy, des fichiers Dockerfile et des workflows GitHub obsolètes.
+- Mise à jour de la configuration d'environnement et de pre-commit.
+- Ajout de tests unitaires pour l'historique des navires.
+- Remplacement de la dépendance `cx_oracle` par `oracledb`.
+- Ajout de volumes pour les certificats Kafka.
+- Correction de types JSONB dans les modèles.
 
 ### Autres changements
-
-- Correction de tests unitaires et d'intégration. (#bb39824, #ad78352, #8ff992d)
-- Mise à jour de la documentation pour l'installation du worker Prefect 3. (#e69b967)
-- Suppression d'une requête inutilisée. (#991ffe1)
-- Correction d'un problème empêchant l'ouverture d'une fenêtre latérale lors des tests. (#a32c9da)
-- Mise à jour des dépendances non-majeures (plusieurs commits dependabot). (#c1805fb, #ad78352, #9c73b9d)
-- Correction d'un bug dans les tests. (#87f4632)
-- Mise à jour du fichier `poetry.lock`. (#59ac0dd)
+- Mise à jour de plusieurs dépendances (black, css-inline, cypress-io/github-action, kotlin, etc.).
+- Correction de tests unitaires.
+- Mise à jour des actions CI/CD (actions/setup-java).
+- Mise à jour de la documentation (ajout de l'installation du worker Prefect 3).
+- Nettoyage du code et des fichiers de configuration.
