@@ -1,17 +1,7 @@
 ## Changelog : siade_staging_data (30 derniers jours)
 
 ### Résumé
-Ce dépôt a été mis à jour avec de nouvelles données de test pour les API Entreprise et Particulier, notamment pour les profils d'étudiants boursiers et non-boursiers de moins de 16 ans, ainsi que pour le Service Civique. Les jetons d'authentification FranceConnect ont également été mis à jour pour assurer le bon fonctionnement des simulations.
-
-### Évolutions fonctionnelles
-- Ajout de nouveaux payloads pour les étudiants boursiers et non-boursiers de moins de 16 ans (#237).
-- Ajout de payloads pour le profil "Service Civique" (#234).
-- Mise à jour du résumé des données disponibles.
+Ce dépôt a reçu une petite mise à jour pour corriger un problème lié à la documentation "tl;dr" (trop long, pas lu). Cette correction améliore la clarté et l'accessibilité de l'information pour les utilisateurs du dépôt, notamment les développeurs qui utilisent les données de test pour les API Entreprise et Particulier.
 
 ### Évolutions techniques
-- Mise à jour des jetons FranceConnect pour le staging (#236, #235).
-- Régénération des fichiers Swagger (#234).
-- Mise à jour du token de staging (#232).
-
-### Autres changements
-- Fusion de la branche `upstream/develop` dans `develop` (#237, #234).
+- Correction du problème lié à la documentation "tl;dr" [#240](https://github.com/etalab/siade_staging_data/pull/240)
