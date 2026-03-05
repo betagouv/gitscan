@@ -220,6 +220,7 @@
 │   │   │   ├── autocomplete_recherche.js
 │   │   │   ├── bouton_menu_actions.js
 │   │   │   ├── cgu.js
+│   │   │   ├── code_postal_input.js
 │   │   │   ├── comparer_evaluations_positionnement.js
 │   │   │   ├── crisp.js.erb
 │   │   │   ├── evaluation.js.erb
@@ -227,12 +228,14 @@
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── header_menu.js
 │   │   │   ├── hotjar.js.erb
+│   │   │   ├── invitation_modal.js
 │   │   │   ├── liens_evitement.js
 │   │   │   ├── matomo.js.erb
 │   │   │   ├── menu_mobile.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
 │   │   │   ├── nouveau_compte.js
+│   │   │   ├── numero_telephone_input.js
 │   │   │   ├── recherche_structure.js
 │   │   │   ├── simple_mde.js
 │   │   │   ├── siret_input.js
@@ -449,8 +452,12 @@
 │   │   ├── chiffre_cle_component.rb
 │   │   ├── code_component.html.erb
 │   │   ├── code_component.rb
+│   │   ├── code_postal_input_component.html.erb
+│   │   ├── code_postal_input_component.rb
 │   │   ├── ellipse_component.html.erb
 │   │   ├── ellipse_component.rb
+│   │   ├── email_input_component.html.erb
+│   │   ├── email_input_component.rb
 │   │   ├── eva_pro_score_component.html.erb
 │   │   ├── eva_pro_score_component.rb
 │   │   ├── eva_pro_score_item_component.html.erb
@@ -512,6 +519,8 @@
 │   │   ├── navigation_component.rb
 │   │   ├── nom_anonymisable_component.html.erb
 │   │   ├── nom_anonymisable_component.rb
+│   │   ├── numero_telephone_input_component.html.erb
+│   │   ├── numero_telephone_input_component.rb
 │   │   ├── panel_component.html.erb
 │   │   ├── panel_component.rb
 │   │   ├── pastille_component.html.erb
@@ -613,8 +622,10 @@
 │   │   └── url_helper.rb
 │   ├── inputs
 │   │   ├── boolean_input.rb
+│   │   ├── email_input.rb
 │   │   ├── file_input.rb
 │   │   ├── image_file_input.rb
+│   │   ├── numero_telephone_input.rb
 │   │   ├── siret_input.rb
 │   │   └── toggle_input.rb
 │   ├── jobs
@@ -714,6 +725,7 @@
 │   │   │       │   └── question_test.rb
 │   │   │       ├── import.rb
 │   │   │       └── import_export_donnees.rb
+│   │   ├── invitation.rb
 │   │   ├── lanceur_campagne.rb
 │   │   ├── lien_beneficiaires.rb
 │   │   ├── metacompetence.rb
@@ -1057,6 +1069,7 @@
 │       │   │   ├── _cards_validation.html.erb
 │       │   │   ├── _membres.html.erb
 │       │   │   ├── _mes_campagnes.html.arb
+│       │   │   ├── _modal_invitation.html.erb
 │       │   │   ├── _show.html.arb
 │       │   │   ├── _statistiques.html.erb
 │       │   │   └── index.json.jbuilder
@@ -1191,6 +1204,7 @@
 │       │   ├── _modal_mise_en_garde.html.erb
 │       │   └── show.html.erb
 │       ├── structure_mailer
+│       │   ├── invitation_structure.html.erb
 │       │   ├── nouvelle_structure.html.erb
 │       │   └── relance_creation_campagne.erb
 │       └── structures
@@ -1283,6 +1297,8 @@
 │   │   ├── date.yml
 │   │   ├── devise.yml
 │   │   ├── inputs
+│   │   │   ├── email_input.yml
+│   │   │   ├── numero_telephone_input.yml
 │   │   │   └── siret_input.yml
 │   │   ├── models
 │   │   │   ├── actualite.yml
@@ -1647,7 +1663,9 @@
 │   │   ├── 20260219165557_renomme_questionnaire_autopositionnement_en_autopositionnement_sante.rb
 │   │   ├── 20260219165926_cree_questionnaire_autopositionnement.rb
 │   │   ├── 20260219170150_cree_questionnaire_sante.rb
-│   │   └── 20260220143846_ajoute_champ_url_contact_a_opcos.rb
+│   │   ├── 20260220143846_ajoute_champ_url_contact_a_opcos.rb
+│   │   ├── 20260303120000_create_invitations.rb
+│   │   └── 20260304120000_ajoute_email_contact_et_telephone_aux_structures.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1741,6 +1759,7 @@
 │   ├── assets
 │   │   └── illustration.jpg
 │   ├── custom_exceptions_app_wrapper.rb
+│   ├── formatage_numero_telephone.rb
 │   ├── generateur_aleatoire.rb
 │   ├── importeur_commentaires.rb
 │   ├── importeur_opcos.rb
@@ -1867,10 +1886,13 @@
 │   ├── components
 │   │   ├── badge_component_spec.rb
 │   │   ├── barre_segmentee_component_spec.rb
+│   │   ├── code_postal_input_component_spec.rb
+│   │   ├── email_input_component_spec.rb
 │   │   ├── evaluation
 │   │   │   ├── alert_interpreter_resultats_component_spec.rb
 │   │   │   └── numeratie_component_spec.rb
-│   │   └── lien_component_spec.rb
+│   │   ├── lien_component_spec.rb
+│   │   └── numero_telephone_input_component_spec.rb
 │   ├── config
 │   │   └── initializers
 │   │       └── ransack_spec.rb
@@ -1908,6 +1930,7 @@
 │   │   ├── donnee_sociodemographique.rb
 │   │   ├── evaluation.rb
 │   │   ├── evenement.rb
+│   │   ├── invitation.rb
 │   │   ├── mise_en_action.rb
 │   │   ├── opco.rb
 │   │   ├── parcours_type.rb
@@ -1966,7 +1989,8 @@
 │   │   ├── evaluation_helper_spec.rb
 │   │   ├── markdown_helper_spec.rb
 │   │   ├── pro_connect_helper_spec.rb
-│   │   └── pro_connect_recupere_compte_helper_spec.rb
+│   │   ├── pro_connect_recupere_compte_helper_spec.rb
+│   │   └── structure_helper_spec.rb
 │   ├── initializers
 │   │   └── active_admin_lower_sorting_spec.rb
 │   ├── inputs
@@ -2259,4 +2283,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-317 directories, 2006 files
+317 directories, 2030 files
