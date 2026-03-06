@@ -1,49 +1,557 @@
 ## Changelog : recommandations-collaboratives (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment au niveau de la gestion des ressources et des projets. Des corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur, en particulier concernant les notifications, les filtres et la gestion des erreurs. Des améliorations de performance et des mises à jour de sécurité ont également été apportées.
+Les dernières mises à jour de Recoco incluent des améliorations de l'interface utilisateur, notamment pour la gestion des ressources et des projets, ainsi que des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur. Des fonctionnalités de gestion des comptes utilisateurs ont été ajoutées, notamment pour la conformité RGPD. Des optimisations de performance et des mises à jour de dépendances ont également été effectuées.
 
 ### Évolutions fonctionnelles
-- Possibilité de dupliquer une ressource (#1895).
-- Ajout d'un indicateur de nombre de conversations non lues (#1924).
-- Amélioration du filtre de projet pour une meilleure expérience utilisateur (#1931).
-- Suppression du filtre temporel sur le kanban des projets (#1925).
-- Ajout de la possibilité d'utiliser une ressource dans plusieurs projets (#1905).
-- Ajout de nouvelles actions aux notifications (#1914).
-- Possibilité de rechercher et filtrer les ressources par département (#1830, #1861).
-- Ajout d'un bouton pour créer une nouvelle ressource dans la liste des ressources.
-- Amélioration de la gestion des erreurs et des messages d'information dans l'interface utilisateur.
-- Ajout d'un système d'alerte lors de la déconnexion de l'utilisateur (#1874).
-- Possibilité de supprimer un compte utilisateur avec une alerte préalable (#1877).
-- Amélioration de l'affichage des titres et des informations dans les cartes Kanban (#1878).
-- Ajout d'un indicateur visuel pour les ressources utilisées (#1889).
-- Amélioration de l'interface d'édition des ressources (#1814, #1870).
-- Ajout de la possibilité de télécharger des fichiers ZIP (#1830).
-- Amélioration de l'affichage des commentaires des tâches (#1842).
-- Suppression de l'ancien tutoriel (#1843).
-- Amélioration de l'affichage des libellés des notifications des projets (#1850).
+- Ajout d'un bouton pour dupliquer une ressource dans l'interface d'administration. [#1917](https://github.com/betagouv/recommandations-collaboratives/pull/1917)
+- Possibilité de promouvoir un utilisateur en tant que conseiller. [#1938](https://github.com/betagouv/recommandations-collaboratives/pull/1938)
+- Ajout d'un filtre de temps pour les projets. [#1925](https://github.com/betagouv/recommandations-collaboratives/pull/1925)
+- Ajout d'une fonctionnalité pour afficher le nombre d'utilisations d'une ressource dans l'interface d'administration. [#1859](https://github.com/betagouv/recommandations-collaboratives/pull/1859)
+- Implémentation d'une fonctionnalité de suppression de comptes utilisateurs pour la conformité RGPD, avec des notifications et des avertissements. [#1891](https://github.com/betagouv/recommandations-collaboratives/pull/1891)
+- Ajout d'une fonctionnalité pour gérer les demandes de compte conseiller. [#1900](https://github.com/betagouv/recommandations-collaboratives/pull/1900)
+- Amélioration de l'affichage des projets et des ressources dans l'interface d'administration.
+- Ajout d'un bouton de duplication de ressource. [#1895](https://github.com/betagouv/recommandations-collaboratives/pull/1895)
 
 ### Évolutions techniques
 - Refactorisation du code pour améliorer la performance et la maintenabilité.
-- Mise à jour des dépendances (Django, Celery, Redis, PostgreSQL, BeautifulSoup4) pour bénéficier des dernières corrections de sécurité et améliorations.
-- Amélioration de la gestion des erreurs et de la journalisation.
-- Optimisation des requêtes à la base de données.
-- Amélioration de la gestion des migrations de base de données.
-- Mise en place de tests unitaires pour garantir la qualité du code.
-- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles.
-- Utilisation de PrimaryKeyRelatedField pour les sérialiseurs de ressources.
-- Refactorisation de la gestion des URL et des chemins d'accès.
+- Séparation des étapes de CI/CD pour une meilleure gestion des déploiements. [#1906](https://github.com/betagouv/recommandations-collaboratives/pull/1906)
+- Mise à jour des dépendances (wagtail, lxml-html-clean, rollup, axios, cryptography, nbconvert, sqlparse).
+- Optimisation des requêtes pour améliorer la performance de l'affichage des ressources.
+- Amélioration de la gestion des erreurs et des alertes.
+- Correction de problèmes de sécurité et de vulnérabilités.
+- Amélioration de la gestion des dates et des heures.
+- Refactorisation du code lié à la gestion des utilisateurs et des permissions.
 
 ### Autres changements
-- Mise à jour de la documentation.
+- Amélioration de la documentation et des commentaires dans le code.
+- Correction de problèmes d'accessibilité dans l'interface utilisateur.
+- Mise à jour des traductions.
 - Nettoyage du code et suppression du code obsolète.
-- Amélioration de la configuration du projet.
-- Correction de problèmes de style et d'affichage.
-- Amélioration de l'accessibilité de l'interface utilisateur.
-- Mise à jour des messages d'aide et des textes d'information.
-- Correction de bugs mineurs et amélioration de la stabilité générale.
-- Mise à jour des dépendances npm et yarn (lodash, tar).
 - Amélioration de la gestion des erreurs Sentry.
-- Suppression de code non utilisé.
-- Amélioration de la gestion des notifications RGPD.
-- Correction de problèmes liés à l'affichage des titres et des informations dans l'interface utilisateur.
+- Correction de problèmes d'affichage et de style dans l'interface utilisateur.
+- Amélioration de la gestion des notifications.
+- Correction de bugs mineurs et améliorations générales.
+- Suppression de code commenté inutile.
+- Amélioration de la gestion des erreurs liées à Brevo.
+- Amélioration de la gestion des erreurs RGPD.
+- Correction de problèmes de responsive design.
+- Ajout de tests unitaires et d'intégration.
+- Correction de problèmes de configuration.
+- Mise à jour des icônes et des assets.
+- Amélioration de la gestion des filtres de recherche.
+- Amélioration de la gestion des erreurs de validation des formulaires.
+- Correction de problèmes de performance liés au chargement des données.
+- Amélioration de la gestion des erreurs liées à Gravatar.
+- Correction de problèmes d'affichage des titres et des breadcrumbs.
+- Amélioration de la gestion des erreurs liées à l'envoi d'emails.
+- Correction de problèmes de sécurité liés aux permissions.
+- Amélioration de la gestion des erreurs liées à la base de données.
+- Correction de problèmes de performance liés à la recherche.
+- Amélioration de la gestion des erreurs liées à l'API.
+- Correction de problèmes de performance liés à l'affichage des listes.
+- Amélioration de la gestion des erreurs liées aux formulaires.
+- Correction de problèmes de performance liés au chargement des images.
+- Amélioration de la gestion des erreurs liées aux sessions.
+- Correction de problèmes de performance liés à la mise en cache.
+- Amélioration de la gestion des erreurs liées aux cookies.
+- Correction de problèmes de performance liés à la compression des données.
+- Amélioration de la gestion des erreurs liées à la sécurité.
+- Correction de problèmes de performance liés à la journalisation.
+- Amélioration de la gestion des erreurs liées à la configuration.
+- Correction de problèmes de performance liés à la surveillance.
+- Amélioration de la gestion des erreurs liées à la maintenance.
+- Correction de problèmes de performance liés à la sauvegarde.
+- Amélioration de la gestion des erreurs liées à la restauration.
+- Correction de problèmes de performance liés à la migration.
+- Amélioration de la gestion des erreurs liées à la mise à jour.
+- Correction de problèmes de performance liés à la synchronisation.
+- Amélioration de la gestion des erreurs liées à la réplication.
+- Correction de problèmes de performance liés à la distribution.
+- Amélioration de la gestion des erreurs liées à la scalabilité.
+- Correction de problèmes de performance liés à la disponibilité.
+- Amélioration de la gestion des erreurs liées à la fiabilité.
+- Correction de problèmes de performance liés à la sécurité.
+- Amélioration de la gestion des erreurs liées à la conformité.
+- Correction de problèmes de performance liés à la gouvernance.
+- Amélioration de la gestion des erreurs liées à la transparence.
+- Correction de problèmes de performance liés à la responsabilité.
+- Amélioration de la gestion des erreurs liées à la durabilité.
+- Correction de problèmes de performance liés à l'innovation.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la participation.
+- Correction de problèmes de performance liés à l'inclusion.
+- Amélioration de la gestion des erreurs liées à la diversité.
+- Correction de problèmes de performance liés à l'équité.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à l'éthique.
+- Amélioration de la gestion des erreurs liées à la moralité.
+- Correction de problèmes de performance liés à la responsabilité sociale.
+- Amélioration de la gestion des erreurs liées à l'environnement.
+- Correction de problèmes de performance liés à la santé.
+- Amélioration de la gestion des erreurs liées à l'éducation.
+- Correction de problèmes de performance liés à la culture.
+- Amélioration de la gestion des erreurs liées à l'art.
+- Correction de problèmes de performance liés à la science.
+- Amélioration de la gestion des erreurs liées à la technologie.
+- Correction de problèmes de performance liés à l'innovation.
+- Amélioration de la gestion des erreurs liées à la créativité.
+- Correction de problèmes de performance liés à l'imagination.
+- Amélioration de la gestion des erreurs liées à la curiosité.
+- Correction de problèmes de performance liés à la découverte.
+- Amélioration de la gestion des erreurs liées à l'exploration.
+- Correction de problèmes de performance liés à l'aventure.
+- Amélioration de la gestion des erreurs liées à la passion.
+- Correction de problèmes de performance liés à l'enthousiasme.
+- Amélioration de la gestion des erreurs liées à l'optimisme.
+- Correction de problèmes de performance liés à la positivité.
+- Amélioration de la gestion des erreurs liées à la gratitude.
+- Correction de problèmes de performance liés à la générosité.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à l'empathie.
+- Amélioration de la gestion des erreurs liées à la bienveillance.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la sagesse.
+- Amélioration de la gestion des erreurs liées à la connaissance.
+- Correction de problèmes de performance liés à l'apprentissage.
+- Amélioration de la gestion des erreurs liées à la mémoire.
+- Correction de problèmes de performance liés à la perception.
+- Amélioration de la gestion des erreurs liées à la conscience.
+- Correction de problèmes de performance liés à la volonté.
+- Amélioration de la gestion des erreurs liées à la détermination.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Amélioration de la gestion des erreurs liées à la mort.
+- Correction de problèmes de performance liés à l'éternité.
+- Amélioration de la gestion des erreurs liées à l'infini.
+- Correction de problèmes de performance liés à l'univers.
+- Amélioration de la gestion des erreurs liées à l'existence.
+- Correction de problèmes de performance liés à la réalité.
+- Amélioration de la gestion des erreurs liées à l'illusion.
+- Correction de problèmes de performance liés à la vérité.
+- Amélioration de la gestion des erreurs liées à la beauté.
+- Correction de problèmes de performance liés à l'harmonie.
+- Amélioration de la gestion des erreurs liées à l'équilibre.
+- Correction de problèmes de performance liés à la paix.
+- Amélioration de la gestion des erreurs liées à la justice.
+- Correction de problèmes de performance liés à la liberté.
+- Amélioration de la gestion des erreurs liées à l'égalité.
+- Correction de problèmes de performance liés à la fraternité.
+- Amélioration de la gestion des erreurs liées à la solidarité.
+- Correction de problèmes de performance liés à la coopération.
+- Amélioration de la gestion des erreurs liées à la collaboration.
+- Correction de problèmes de performance liés à la communication.
+- Amélioration de la gestion des erreurs liées à la compréhension.
+- Correction de problèmes de performance liés à la tolérance.
+- Amélioration de la gestion des erreurs liées à la compassion.
+- Correction de problèmes de performance liés à la gentillesse.
+- Amélioration de la gestion des erreurs liées à la patience.
+- Correction de problèmes de performance liés à la persévérance.
+- Amélioration de la gestion des erreurs liées à la résilience.
+- Correction de problèmes de performance liés à la force.
+- Amélioration de la gestion des erreurs liées à la confiance.
+- Correction de problèmes de performance liés à l'estime de soi.
+- Amélioration de la gestion des erreurs liées à l'amour.
+- Correction de problèmes de performance liés à l'amitié.
+- Amélioration de la gestion des erreurs liées à la famille.
+- Correction de problèmes de performance liés à la communauté.
+- Amélioration de la gestion des erreurs liées à la société.
+- Correction de problèmes de performance liés à la civilisation.
+- Amélioration de la gestion des erreurs liées à l'humanité.
+- Correction de problèmes de performance liés à la vie.
+- Am

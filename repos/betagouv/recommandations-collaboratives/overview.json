@@ -1,14 +1,18 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique pour aider à la méthodologie de Recommandations Collaboratives, particulièrement pour les problématiques complexes nécessitant de multiples expertises. Il permet d'héberger plusieurs thématiques tout en proposant une porosité entre elles.",
+  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
   "language": "Python",
   "features": [
     "Gestion des ressources",
     "Gestion des projets",
+    "Notifications",
+    "Recherche",
+    "Authentification utilisateur",
     "Gestion des utilisateurs",
-    "Notifications RGPD",
-    "Alertes de déconnexion"
+    "Collaboration",
+    "Gestion des commentaires",
+    "Téléchargement de fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,38 +20,54 @@
     "Celery",
     "Redis",
     "PostgreSQL",
-    "BeautifulSoup4"
+    "BeautifulSoup4",
+    "Django-allauth",
+    "Django-crispy-forms",
+    "Django-leaflet",
+    "Django-magicauth",
+    "Django-reversion",
+    "djangorestframework",
+    "uv"
   ],
   "components": [
-    "Frontend AlpineJS/Bootstrap/DSFR",
     "Backend Python/Django",
-    "Base de données PostgreSQL"
+    "Frontend AlpineJS/Bootstrap/DSFR",
+    "Base de données PostgreSQL",
+    "API REST",
+    "Redis (broker Celery)"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "magic-link",
-      "mfa"
-    ],
-    "providers": []
+      "saml"
+    ]
   },
   "tests": [
-    "Pytest",
-    "Tests unitaires frontend (Yarn)"
+    "pytest",
+    "Tests unitaires frontend (yarn test)",
+    "Tests bout en bout frontend (Cypress)"
   ],
-  "workflows": [],
-  "lastActivity": "2024-05-03T14:42:47Z",
+  "workflows": [
+    "CI/CD (GitHub Actions)"
+  ],
+  "lastActivity": "2026-03-04T15:24:28+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "recommandations collaboratives",
-    "django",
     "python",
+    "django",
     "administration",
+    "collaboration",
     "gestion de projet",
-    "RGPD"
+    "gestion de ressources"
   ]
 }
