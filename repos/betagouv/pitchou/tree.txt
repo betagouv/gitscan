@@ -749,9 +749,11 @@
 │   ├── 20260114103000_ajout-mesures-er-suffisantes.js
 │   ├── 20260126143259_ajout-capability-geomce.js
 │   ├── 20260129095854_commentaire-libre-default-chaine-vide.js
-│   └── 20260211120000_onagre-default-chaine-vide.js
+│   ├── 20260211120000_onagre-default-chaine-vide.js
+│   └── 20260223151046_ajout-notification.js
 ├── outils
 │   ├── aarri
+│   │   ├── constants.js
 │   │   ├── donnees-pour-personne.js
 │   │   └── supprimer-evenements.js
 │   ├── afficher-liens-de-connexion.js
@@ -766,6 +768,7 @@
 │       ├── makeColonnesCommunesDossierPourSynchro88444.js
 │       ├── makeDossiersPourSynchronisation.js
 │       ├── synchronisation-dossier-88444.js
+│       ├── synchronisation-notification.js
 │       ├── trouverCandidatsFichiersÀTélécharger.js
 │       ├── téléchargerFichierDS.js
 │       ├── téléchargerNouveauxFichiers.js
@@ -812,6 +815,7 @@
 │   │   │   ├── importDossierCorse.js
 │   │   │   ├── importDossierUtils.js
 │   │   │   ├── main.js
+│   │   │   ├── notification.js
 │   │   │   ├── prescriptions.js
 │   │   │   ├── stats.js
 │   │   │   └── suiviDossier.js
@@ -935,6 +939,7 @@
 │   │   │   ├── fichier.js
 │   │   │   ├── geomce.js
 │   │   │   ├── groupe_instructeurs.js
+│   │   │   ├── notification.js
 │   │   │   ├── personne.js
 │   │   │   ├── prescription.js
 │   │   │   ├── relation_suivi.js
@@ -979,10 +984,13 @@
 │       │       ├── KnexMigrations.ts
 │       │       ├── KnexMigrationsLock.ts
 │       │       ├── Message.ts
+│       │       ├── Notification.ts
 │       │       ├── Personne.ts
 │       │       ├── Prescription.ts
 │       │       ├── RésultatSynchronisationDS88444.ts
 │       │       ├── TypeDossier.ts
+│       │       ├── supprimer_fichiers_avis_expert.ts
+│       │       ├── supprimer_fichiers_avis_expert_orphelins.ts
 │       │       ├── ÉvènementMétrique.ts
 │       │       └── ÉvènementPhaseDossier.ts
 │       ├── démarche-numérique
@@ -1010,6 +1018,9 @@
 │   │   │   ├── données.sql
 │   │   │   └── test.spec.js
 │   │   ├── global.teardown.js
+│   │   ├── page-mes-dossiers
+│   │   │   ├── données.sql
+│   │   │   └── test.spec.js
 │   │   └── saisie-des-espèces.spec.js
 │   ├── env
 │   ├── fixtures
@@ -1022,4 +1033,4 @@
 │       ├── saisie-espèces.md
 │       └── tableau-suivi.md
 └── tsconfig.json
-79 directories, 986 files
+80 directories, 996 files
