@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à faciliter la gestion et le suivi des demandes de Validation des Acquis de l'Expérience (VAE).",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à faciliter la gestion de la Validation des Acquis de l'Expérience (VAE).",
   "language": "TypeScript",
   "features": [
     "Gestion des candidatures VAE",
-    "Authentification utilisateur",
-    "Administration",
-    "Génération de documents VAE",
+    "Authentification utilisateur (FranceConnect, Keycloak)",
+    "Administration des certifications",
+    "Gestion des organismes certificateurs",
+    "Génération de documents (DF Demat)",
     "Suivi des cohortes VAE collectives",
-    "Interoperabilité avec des acteurs externes"
+    "Observabilité (Datadog, Metabase)"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,29 +20,35 @@
     "GraphQL",
     "Prisma",
     "Keycloak",
+    "Traefik",
     "PostgreSQL",
     "Outscale",
     "Cypress",
     "Playwright",
+    "Vitest",
     "Datadog",
     "Metabase",
+    "Brevo",
     "Strapi"
   ],
   "components": [
     "Frontend React",
-    "API REST",
-    "API GraphQL",
+    "API REST (Fastify)",
+    "API GraphQL (Mercurius)",
     "Base de données PostgreSQL",
     "Keycloak (Authentification)",
-    "Traefik (Proxy et routage)"
+    "Metabase (Observabilité)",
+    "Strapi (CMS)"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "email-password",
+      "jwt",
       "session"
     ],
     "providers": [
-      "France Connect"
+      "FranceConnect"
     ]
   },
   "tests": [
@@ -49,10 +56,8 @@
     "Cypress",
     "Playwright"
   ],
-  "workflows": [
-    "CI/CD workflows (details not fully available)"
-  ],
-  "lastActivity": "2026-02-27T17:15:02+01:00",
+  "workflows": [],
+  "lastActivity": "2026-03-05T19:08:41+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -66,10 +71,11 @@
     "VAE",
     "Validation des Acquis de l'Expérience",
     "France VAE",
-    "Monorepo",
-    "TypeScript",
-    "React",
+    "Keycloak",
     "GraphQL",
-    "Keycloak"
+    "React",
+    "Fastify",
+    "PostgreSQL",
+    "Monorepo"
   ]
 }

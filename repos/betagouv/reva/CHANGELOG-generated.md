@@ -1,35 +1,29 @@
 ## Changelog : reva (30 derniers jours)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'intégration FranceConnect, avec une gestion plus robuste des données utilisateurs et une expérience utilisateur optimisée. Des corrections et des évolutions ont également été apportées à l'administration des certifications, notamment pour les comptes locaux, ainsi qu'à la gestion des cohortes VAE collectives. Enfin, des efforts ont été consentis pour améliorer la documentation et la qualité du code.
+Les dernières semaines ont été marquées par une amélioration significative de l'intégration de FranceConnect, avec des optimisations pour la gestion des utilisateurs et des candidatures. Des améliorations ont également été apportées à l'interface d'administration, notamment pour la gestion des certifications et des organismes certificateurs, ainsi que des corrections de bugs et des refactorings pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'intégration FranceConnect : ajout de champs optionnels (numéro de téléphone, localité, code postal, adresse) et gestion des erreurs améliorée. (#19)
-- Ajout d'une page d'erreur plus informative lors de l'authentification avec FranceConnect. (#19)
-- Possibilité de se déconnecter via Keycloak pour les utilisateurs authentifiés avec FranceConnect. (#19)
-- Amélioration de l'affichage des informations sur les certifications dans l'interface d'administration. (#35, #36)
-- Ajout d'une confirmation lors de la sélection d'une certification non disponible pour une cohorte VAE collective. (#20)
-- Affichage d'un indicateur visuel pour les certifications en mode lecture seule dans l'administration. (#20)
-- Correction de l'affichage du coût du jury dans l'administration et sur le site web. (#12)
-- Ajout d'un message d'information sur FranceConnect sur les pages de connexion et d'inscription. (#19)
-- Amélioration de la gestion des adresses candidates, permettant de gérer le cas où le candidat n'est pas né en France. (#5)
+
+*   **FranceConnect :** Amélioration de l'intégration de FranceConnect pour la gestion des candidatures et de l'authentification, incluant la gestion des erreurs et des messages informatifs. [#153caf0](https://github.com/betagouv/reva/commit/153caf0)
+*   **Admin - Gestion des certifications :** Ajout de la possibilité de filtrer les certifications par organisme certificateur local. [#5471379](https://github.com/betagouv/reva/commit/5471379)
+*   **Admin - Organismes certificateurs :** Amélioration de la page de paramètres des organismes certificateurs avec l'ajout de la liste des parcours de certification et de l'ID de l'organisme certificateur dans l'URL. [#e227f9f](https://github.com/betagouv/reva/commit/e227f9f)
+*   **Admin - Gestion des candidatures :** Ajout d'une vue paginée et filtrable pour l'assignation des certifications aux comptes locaux. [#77f93c8](https://github.com/betagouv/reva/commit/77f93c8)
+*   **Admin - DF Demat :** Ajout d'un modèle de confirmation pour la déclaration de complétude du DF par l'organisme certificateur. [#77c1234](https://github.com/betagouv/reva/commit/77c1234)
+*   **Candidat - Affichage des certifications :** Masquage des onglets de certification pour les exigences réduites. [#d0771e9](https://github.com/betagouv/reva/commit/d0771e9)
+*   **Candidat - Informations personnelles :** Amélioration de l'affichage et de la gestion des informations personnelles, notamment en lien avec FranceConnect. [#3a43553](https://github.com/betagouv/reva/commit/3a43553)
+*   **Candidat - Page d'enregistrement :** Amélioration de la page d'enregistrement avec l'intégration de FranceConnect et des améliorations de la mise en page. [#639ddd8](https://github.com/betagouv/reva/commit/639ddd8)
 
 ### Évolutions techniques
-- Refactorisation de la gestion des callbacks FranceConnect et amélioration de la sécurité avec l'utilisation de JWT. (#19)
-- Mise à jour des dépendances (Next.js, React, Fastify) dans plusieurs packages. (#20, #21, #22)
-- Ajout de tests Playwright pour l'administration des certifications des comptes locaux. (#1)
-- Ajout de tests unitaires pour certaines fonctions API. (#20)
-- Ajout d'une table `parcours_certification` et d'un resolver GraphQL associé. (#6)
-- Ajout d'un champ `franceConnectLinked` au modèle `Candidate`. (#19)
-- Suppression de la table `CandidateInfoFranceConnect` et intégration des informations dans le modèle `Candidate`. (#19)
-- Ajout d'un champ `inseeCode` au modèle `Country`. (#19)
-- Ajout d'un schéma d'architecture applicative. (#7)
-- Refactorisation du code pour simplifier la logique de layout et utiliser de nouveaux composants (Panel). (#8)
+
+*   **Tests :** Migration de nombreux tests Cypress vers Playwright dans l'administration. [#9d19c95](https://github.com/betagouv/reva/commit/9d19c95)
+*   **API :** Refactor de la gestion de l'état de connexion FranceConnect avec l'utilisation de JWT. [#76b0d2e](https://github.com/betagouv/reva/commit/76b0d2e)
+*   **API :** Ajout de nouveaux champs et resolvers GraphQL pour la gestion des parcours de certification. [#2c53216](https://github.com/betagouv/reva/commit/2c53216)
+*   **Frontend :** Mise à jour vers Next.js 16 et React 19. [#2c234e9](https://github.com/betagouv/reva/commit/2c234e9)
+*   **Refactoring général :** Plusieurs refactorings ont été effectués pour simplifier le code, améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Ajout de documentation. (#7)
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Mise à jour des configurations et des fichiers `.gitignore`.
-- Génération des package locks. (#20)
-- Ajout d'une configuration Metabase pour un nouveau dashboard. (#10)
-- Correction d'un problème d'envoi d'emails pour les décisions d'éligibilité. (#9)
+
+*   **Documentation :** Ajout d'un schéma d'architecture applicative. [#c2573e9](https://github.com/betagouv/reva/commit/c2573e9)
+*   **Corrections :** Correction de bugs mineurs dans l'interface d'administration et l'API.
+*   **Dépendances :** Mises à jour de plusieurs dépendances (ajv, basic-ftp, bn.js, rollup, minimatch, jspdf, webpack, @isaacs/brace-expansion, fastify).

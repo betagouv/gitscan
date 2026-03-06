@@ -626,10 +626,6 @@
     │   │   │   ├── candidacy
     │   │   │   │   ├── archive
     │   │   │   │   │   └── archive.cy.ts
-    │   │   │   │   ├── candidate-contact-details
-    │   │   │   │   │   ├── candidate-contact-details.cy.ts
-    │   │   │   │   │   └── fixtures
-    │   │   │   │   │       └── candidacy-with-candidate-contact-details.json
     │   │   │   │   ├── certification.cy.ts
     │   │   │   │   ├── feasibility
     │   │   │   │   │   └── dematerialized-feasibility-file
@@ -1517,47 +1513,52 @@
     │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── certificateur-layout.hook.ts
     │   │   │   │   ├── certification-authorities
-    │   │   │   │   │   ├── help
-    │   │   │   │   │   │   ├── help.hook.ts
-    │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   └── settings
-    │   │   │   │   │       ├── certificationAuthoritySettingsPage.hook.ts
-    │   │   │   │   │       ├── certifications
-    │   │   │   │   │       │   ├── _components
-    │   │   │   │   │       │   │   ├── NoParcoursCertificationCard.tsx
-    │   │   │   │   │       │   │   └── WithParcoursCertificationCard.tsx
-    │   │   │   │   │       │   ├── certifications.hooks.ts
-    │   │   │   │   │       │   └── page.tsx
-    │   │   │   │   │       ├── informations-generales
-    │   │   │   │   │       │   ├── certificationAuthorityGeneralInfo.hooks.ts
-    │   │   │   │   │       │   └── page.tsx
-    │   │   │   │   │       ├── local-account
-    │   │   │   │   │       │   ├── certifications
-    │   │   │   │   │       │   │   ├── certificationsLocalAccountPage.hook.ts
-    │   │   │   │   │       │   │   └── page.tsx
-    │   │   │   │   │       │   ├── general-information
-    │   │   │   │   │       │   │   ├── generalInformationLocalAccountPage.hook.ts
-    │   │   │   │   │       │   │   └── page.tsx
-    │   │   │   │   │       │   ├── localAccountSettingsPage.hook.ts
-    │   │   │   │   │       │   └── page.tsx
-    │   │   │   │   │       ├── local-accounts
-    │   │   │   │   │       │   ├── [certificationAuthorityLocalAccountId]
-    │   │   │   │   │       │   │   ├── certifications
-    │   │   │   │   │       │   │   │   ├── page.tsx
-    │   │   │   │   │       │   │   │   └── updateLocalAccountCertificationsPage.hook.ts
-    │   │   │   │   │       │   │   ├── general-information
-    │   │   │   │   │       │   │   │   ├── page.tsx
-    │   │   │   │   │       │   │   │   └── updateLocalAccountGeneralInformationPage.hook.ts
-    │   │   │   │   │       │   │   ├── intervention-area
-    │   │   │   │   │       │   │   │   ├── page.tsx
-    │   │   │   │   │       │   │   │   └── updateLocalAccountInterventionAreaPage.hook.ts
-    │   │   │   │   │       │   │   ├── page.tsx
-    │   │   │   │   │       │   │   └── updateLocalAccountPage.hook.ts
-    │   │   │   │   │       │   └── add-local-account
-    │   │   │   │   │       │       ├── general-information
-    │   │   │   │   │       │       │   ├── addLocalAccountGeneralInformationPage.hook.ts
-    │   │   │   │   │       │       │   └── page.tsx
-    │   │   │   │   │       │       └── page.tsx
+    │   │   │   │   │   ├── [certificationAuthorityId]
+    │   │   │   │   │   │   └── settings
+    │   │   │   │   │   │       ├── certificationAuthoritySettingsPage.hook.ts
+    │   │   │   │   │   │       ├── certifications
+    │   │   │   │   │   │       │   ├── [certificationId]
+    │   │   │   │   │   │       │   │   └── parcours
+    │   │   │   │   │   │       │   │       ├── page.tsx
+    │   │   │   │   │   │       │   │       └── parcoursCertification.hooks.ts
+    │   │   │   │   │   │       │   ├── _components
+    │   │   │   │   │   │       │   │   ├── NoParcoursCertificationCard.tsx
+    │   │   │   │   │   │       │   │   └── WithParcoursCertificationCard.tsx
+    │   │   │   │   │   │       │   ├── certifications.hooks.ts
+    │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │       ├── informations-generales
+    │   │   │   │   │   │       │   ├── certificationAuthorityGeneralInfo.hooks.ts
+    │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │       ├── local-account
+    │   │   │   │   │   │       │   ├── certifications
+    │   │   │   │   │   │       │   │   ├── certificationsLocalAccountPage.hook.ts
+    │   │   │   │   │   │       │   │   └── page.tsx
+    │   │   │   │   │   │       │   ├── general-information
+    │   │   │   │   │   │       │   │   ├── generalInformationLocalAccountPage.hook.ts
+    │   │   │   │   │   │       │   │   └── page.tsx
+    │   │   │   │   │   │       │   ├── localAccountSettingsPage.hook.ts
+    │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │       ├── local-accounts
+    │   │   │   │   │   │       │   ├── [certificationAuthorityLocalAccountId]
+    │   │   │   │   │   │       │   │   ├── certifications
+    │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │       │   │   │   └── updateLocalAccountCertificationsPage.hook.ts
+    │   │   │   │   │   │       │   │   ├── general-information
+    │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │       │   │   │   └── updateLocalAccountGeneralInformationPage.hook.ts
+    │   │   │   │   │   │       │   │   ├── intervention-area
+    │   │   │   │   │   │       │   │   │   ├── page.tsx
+    │   │   │   │   │   │       │   │   │   └── updateLocalAccountInterventionAreaPage.hook.ts
+    │   │   │   │   │   │       │   │   ├── page.tsx
+    │   │   │   │   │   │       │   │   └── updateLocalAccountPage.hook.ts
+    │   │   │   │   │   │       │   └── add-local-account
+    │   │   │   │   │   │       │       ├── general-information
+    │   │   │   │   │   │       │       │   ├── addLocalAccountGeneralInformationPage.hook.ts
+    │   │   │   │   │   │       │       │   └── page.tsx
+    │   │   │   │   │   │       │       └── page.tsx
+    │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   └── help
+    │   │   │   │   │       ├── help.hook.ts
     │   │   │   │   │       └── page.tsx
     │   │   │   │   ├── dashboard
     │   │   │   │   │   └── page.tsx
@@ -1682,9 +1683,6 @@
     │   │   │   │   │   └── CompetenceBlocForm.tsx
     │   │   │   │   └── prerequisites-form
     │   │   │   │       └── PrerequisitesForm.tsx
-    │   │   │   ├── certifications-form
-    │   │   │   │   ├── CertificationsForm.hook.ts
-    │   │   │   │   └── CertificationsForm.tsx
     │   │   │   ├── cgu
     │   │   │   │   └── Cgu.tsx
     │   │   │   ├── company-preview
@@ -1876,7 +1874,9 @@
     │   │   │           │       ├── dematerialized-feasibility-file.spec.ts
     │   │   │           │       └── dff-mocks.ts
     │   │   │           └── summary
-    │   │   │               └── candidate-information-address.spec.ts
+    │   │   │               ├── candidate-contact-details.spec.ts
+    │   │   │               ├── candidate-information-address.spec.ts
+    │   │   │               └── candidate-information-fc-locking.spec.ts
     │   │   ├── (aap-certificateur)
     │   │   │   └── candidacies
     │   │   │       └── candidacy
@@ -1913,21 +1913,26 @@
     │   │   │   │           └── feasibility-completion-form-modal.spec.ts
     │   │   │   └── settings
     │   │   │       ├── add-local-account
-    │   │   │       │   └── certification-authority-settings-add-local-account.spec.ts
-    │   │   │       ├── add-local-account-general-information
-    │   │   │       │   └── certification-authority-settings-add-local-account-general-information.spec.ts
-    │   │   │       ├── main-page
-    │   │   │       │   └── certification-authority-settings-main-page.spec.ts
-    │   │   │       ├── update-general-information
-    │   │   │       │   └── certification-authority-settings-update-general-information.spec.ts
-    │   │   │       ├── update-local-account
-    │   │   │       │   └── certification-authority-settings-update-local-account.spec.ts
-    │   │   │       ├── update-local-account-certifications
-    │   │   │       │   └── certification-authority-settings-update-local-account-certifications.spec.ts
-    │   │   │       ├── update-local-account-general-information
-    │   │   │       │   └── certification-authority-settings-update-local-account-general-information.spec.ts
-    │   │   │       └── update-local-account-intervention-area
-    │   │   │           └── certification-authority-settings-update-local-account-intervention-area.spec.ts
+    │   │   │       │   ├── certification-authority-settings-add-local-account.spec.ts
+    │   │   │       │   └── general-information
+    │   │   │       │       └── certification-authority-settings-add-local-account-general-information.spec.ts
+    │   │   │       ├── certification-authority-settings-main-page.spec.ts
+    │   │   │       ├── certifications
+    │   │   │       │   ├── certification
+    │   │   │       │   │   └── parcours
+    │   │   │       │   │       └── certification-authority-settings-parcours-certification-page.spec.ts
+    │   │   │       │   └── certification-authority-settings-certifications-page.spec.ts
+    │   │   │       ├── local-account
+    │   │   │       │   ├── update-local-account
+    │   │   │       │   │   └── certification-authority-settings-update-local-account.spec.ts
+    │   │   │       │   ├── update-local-account-certifications
+    │   │   │       │   │   └── certification-authority-settings-update-local-account-certifications.spec.ts
+    │   │   │       │   ├── update-local-account-general-information
+    │   │   │       │   │   └── certification-authority-settings-update-local-account-general-information.spec.ts
+    │   │   │       │   └── update-local-account-intervention-area
+    │   │   │       │       └── certification-authority-settings-update-local-account-intervention-area.spec.ts
+    │   │   │       └── update-general-information
+    │   │   │           └── certification-authority-settings-update-general-information.spec.ts
     │   │   └── shared
     │   │       └── helpers
     │   │           ├── auth
@@ -2027,6 +2032,7 @@
     │   │   │   │   ├── disableAccount.ts
     │   │   │   │   ├── france-connect-authorize.ts
     │   │   │   │   ├── france-connect.errors.ts
+    │   │   │   │   ├── france-connect.utils.test.ts
     │   │   │   │   ├── france-connect.utils.ts
     │   │   │   │   ├── getAccount.ts
     │   │   │   │   ├── getAccountByEmail.ts
@@ -2319,6 +2325,7 @@
     │   │   │       ├── getMetabaseIframeUrl.ts
     │   │   │       ├── getOrganismsByAccountId.ts
     │   │   │       ├── getPaginatedCertifications.ts
+    │   │   │       ├── getParcoursForCertificationAndCertificationAuthority.ts
     │   │   │       ├── isUserCertificationRegistryManagerOfCertification.ts
     │   │   │       ├── searchCertificationAuthoritiesAndLocalAccounts.ts
     │   │   │       ├── sendEmailsForCertificationExpiration.ts
@@ -2333,7 +2340,8 @@
     │   │   │       ├── updateCertificationAuthorityLocalAccountGeneralInformation.ts
     │   │   │       ├── updateCertificationAuthorityStructure.ts
     │   │   │       ├── updateCertificationAuthorityStructureCertifications.ts
-    │   │   │       └── updateCertificationRegistryManager.ts
+    │   │   │       ├── updateCertificationRegistryManager.ts
+    │   │   │       └── updateParcoursForCertificationAndCertificationAuthority.ts
     │   │   ├── dossier-de-validation
     │   │   │   ├── dossier-de-validation.graphql
     │   │   │   ├── dossier-de-validation.resolvers.ts
@@ -4125,6 +4133,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260226170000_add_has_reduced_requirements_to_certification_authority_structure
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260302132011_add_website_to_certification_authority
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260302154331_add_certification_authority_on_certification_on_parcours_certification_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4215,6 +4227,7 @@
     │   │   │   │   ├── create-maison-mere-aap-helper.ts
     │   │   │   │   ├── create-organism-helper.ts
     │   │   │   │   ├── create-organism-on-convention-collective-helper.ts
+    │   │   │   │   ├── create-parcours-certification-helper.ts
     │   │   │   │   ├── create-payment-request-unifvae-helper.ts
     │   │   │   │   ├── create-payment-request-unireva-helper.ts
     │   │   │   │   ├── create-reorientation-reason-helper.ts
@@ -4507,7 +4520,9 @@
     │   │   │   │   │           └── TypeAccompagnementTile.tsx
     │   │   │   │   ├── layout
     │   │   │   │   │   ├── AppLayout.tsx
-    │   │   │   │   │   └── Header.tsx
+    │   │   │   │   │   ├── Header.tsx
+    │   │   │   │   │   ├── UserDropdown.tsx
+    │   │   │   │   │   └── useUserDropdown.ts
     │   │   │   │   └── status-page
     │   │   │   │       ├── StatusPage.tsx
     │   │   │   │       └── assets
@@ -4718,6 +4733,7 @@
     │   │   │   │   │   ├── DocumentationTab.tsx
     │   │   │   │   │   ├── JuryTab.tsx
     │   │   │   │   │   ├── MetierTab.tsx
+    │   │   │   │   │   ├── ParcoursTab.tsx
     │   │   │   │   │   └── PrerequisitesTab.tsx
     │   │   │   │   └── useful-resources
     │   │   │   │       └── UserfulResources.tsx
@@ -4848,6 +4864,7 @@
     │   │   ├── helpers
     │   │   │   ├── auth
     │   │   │   │   └── auth.ts
+    │   │   │   ├── certification-page-tabs-visibility.ts
     │   │   │   ├── entities
     │   │   │   │   ├── create-candidacy.entity.ts
     │   │   │   │   ├── create-candidate.entity.ts
@@ -4862,6 +4879,10 @@
     │   │   │   │   ├── appointments
     │   │   │   │   │   ├── appointment-details.handler.ts
     │   │   │   │   │   └── appointment-list.handler.ts
+    │   │   │   │   ├── candidacies
+    │   │   │   │   │   └── candidacies-guards.handler.ts
+    │   │   │   │   ├── certification-page
+    │   │   │   │   │   └── useful-resources.handler.ts
     │   │   │   │   ├── dashboard.handler.ts
     │   │   │   │   ├── dossier-de-faisabilite
     │   │   │   │   │   └── dossier-de-faisabilite.handler.ts
@@ -4888,6 +4909,8 @@
     │   │       │   ├── create-candidacy-accompagne.spec.ts
     │   │       │   ├── create-candidacy-autonome.spec.ts
     │   │       │   ├── create-candidacy-vae.spec.ts
+    │   │       │   ├── create-certification-page.spec.ts
+    │   │       │   ├── project-certification-page.spec.ts
     │   │       │   └── select-candidacy.spec.ts
     │   │       ├── dashboard
     │   │       │   ├── appointments
@@ -4914,6 +4937,8 @@
     │   │       ├── first-connexion
     │   │       │   └── first-connexion.spec.ts
     │   │       └── profile
+    │   │           ├── civil-informations.spec.ts
+    │   │           ├── profile-fc-locking.spec.ts
     │   │           └── profile.spec.ts
     │   └── tsconfig.json
     ├── reva-interop
@@ -5705,4 +5730,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1918 directories, 3789 files
+1925 directories, 3807 files
