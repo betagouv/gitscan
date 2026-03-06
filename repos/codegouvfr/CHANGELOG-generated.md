@@ -1,18 +1,16 @@
 # Synthèse d'activité : codegouvfr (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation codegouvfr a connu une activité soutenue au cours des dernières semaines, principalement axée sur l'amélioration de l'import de métadonnées depuis les plateformes GitLab et GitHub pour les outils [catalogi](/repos/codegouvfr/catalogi) et [sill-deploy](/repos/codegouvfr/sill-deploy). Ces améliorations permettent d'enrichir les informations disponibles sur les logiciels et de faciliter leur découverte. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées, notamment sur [catalogi](/repos/codegouvfr/catalogi] et [sill-deploy](/repos/codegouvfr/sill-deploy), pour une meilleure expérience utilisateur. Enfin, le thème Keycloak [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) a bénéficié d'une correction de bug améliorant sa robustesse.
+L'organisation codegouvfr a connu une semaine active, principalement axée sur l'amélioration de la stabilité et de la robustesse de ses outils. Des corrections de bugs ont été apportées à plusieurs dépôts, notamment [catalogi](/repos/codegouvfr/catalogi) et [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr), améliorant l'expérience utilisateur et la fiabilité des services. Le projet [sill-deploy](/repos/codegouvfr/sill-deploy) a bénéficié d'importantes améliorations, notamment l'ajout du support pour l'import de métadonnées depuis GitHub et GitLab, ainsi que des améliorations significatives de l'interface utilisateur.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Aucun changement lié à la sécurité n'a été signalé cette semaine.
 
 ## Autres changements notables
-- Une tentative de mise à jour majeure de Storybook dans [react-dsfr](/repos/codegouvfr/react-dsfr) a été annulée en raison de problèmes, mais une nouvelle tentative est prévue.
-- [sill-deploy](/repos/codegouvfr/sill-deploy) a bénéficié de la mise en place d'un environnement de pré-production Scaleway et d'un workflow de déploiement réutilisable.
-- Des migrations de routes ont été effectuées dans [catalogi](/repos/codegouvfr/catalogi) et [sill-deploy](/repos/codegouvfr/sill-deploy) pour utiliser l'ID du logiciel au lieu de son nom.
+Le dépôt [sill-deploy](/repos/codegouvfr/sill-deploy) a subi une refactorisation importante de son code, ainsi qu'une migration des routes des logiciels et de la colonne `versionMin`. Ces changements visent à améliorer la structure, la maintenabilité et la performance du projet. Un environnement de pré-production Scaleway a également été mis en place.
 
 ## Dépôts les plus actifs
-- [catalogi](/repos/codegouvfr/catalogi) : Amélioration de l'import de métadonnées depuis GitLab et GitHub, corrections de bugs et améliorations de l'interface utilisateur.
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Import de métadonnées depuis GitHub et GitLab, amélioration de l'interface utilisateur et refactorisation du code.
-- [react-dsfr](/repos/codegouvfr/react-dsfr) : Amélioration de la documentation et correction d'un problème d'accessibilité sur le composant `PasswordInput`.
-- [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) : Correction d'un bug lié à la redirection lors de l'authentification.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Ce dépôt a été le plus actif, avec des améliorations significatives de l'import de métadonnées, de l'interface utilisateur et de l'infrastructure.
+- [catalogi](/repos/codegouvfr/catalogi) : Correction d'un bug important concernant la gestion des liens externes.
+- [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) : Correction d'un bug lié à la redirection vers la page d'autorisation.
+- [react-dsfr](/repos/codegouvfr/react-dsfr) : Correction d'un problème lié à l'issue #481.

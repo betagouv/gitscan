@@ -1,32 +1,36 @@
 # Synthèse d'activité : MTES-MCT (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation MTES-MCT a connu une semaine riche en activités, marquée par des améliorations significatives sur plusieurs de ses dépôts.  Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les plateformes *Lucca*, *Dossier-Facile*, *acceslibre* et *ecobalyse*, avec des refontes d'interfaces, l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des améliorations de sécurité ont également été apportées, notamment sur *mobilic-api* et *zero-logement-vacant*.  Plusieurs dépôts ont bénéficié de mises à jour techniques importantes, comme *carbure* et *dialog*, avec des refactorings, des optimisations de performance et des mises à jour de dépendances.  L'accent a été mis sur la modernisation des infrastructures et la préparation de nouvelles fonctionnalités.
+L'organisation MTES-MCT a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité (notamment sur *mobilic* et *verseau2*), l'enrichissement des données ( *ecobalyse-data*, *fisheries-and-environment-data-warehouse*), et l'amélioration de l'expérience utilisateur ( *Dossier-Facile-Frontend*, *envergo*, *monitor-ui*). Plusieurs projets ont bénéficié de refactorisations techniques importantes, comme *Lucca* et *mobilic*, visant à améliorer la maintenabilité et la performance. Des nouvelles fonctionnalités ont été ajoutées à *Docurba*, *Lucca*, *acceslibre*, *carbure*, *dialog*, *fonds-prevention-argile* et *potentiel*, offrant ainsi de nouvelles capacités aux utilisateurs.
 
 ## Sécurité
-Des améliorations de sécurité ont été apportées à plusieurs dépôts :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   *mobilic-api* : Restriction de l'IDP du contrôleur pour des raisons de sécurité et correction d'une potentielle vulnérabilité regex.
-*   *zero-logement-vacant* : Ajout d'une expiration sur les hash d'invitation pour renforcer la sécurité.
-*   *vizeau* : Mise à niveau d'AdonisJS pour corriger des failles de sécurité.
+- *mobilic* : Restriction de l'accès à l'authentification ProConnect pour les contrôleurs.
+- *verseau2* : Migration vers une nouvelle architecture d'authentification et correction de failles de sécurité.
+- *td-mass-validator* : Amélioration de la validation des fichiers d'import.
+- *vizeau* : Mise à niveau d'Adonis pour corriger des failles de sécurité.
 
 ## Autres changements notables
-Plusieurs dépôts ont connu des évolutions techniques majeures :
+Plusieurs refactorisations et migrations importantes ont eu lieu :
 
-*   *carbure* : Refactorisation du code pour améliorer la performance des endpoints d'administration électrique et mise en place de *feature flags*.
-*   *dialog* : Suppression de l'utilisation de Bootstrap au profit du DSFR et optimisation des requêtes SQL.
-*   *ecobalyse-method-tooling* : Refactorisation de la fusion des activités et amélioration de la précision de la correspondance sémantique.
-*   *td-mass-validator* : Correction d'un bug empêchant la validation correcte des établissements.
-*   *trackdechets* : Amélioration des indexs sur RegistryLookup pour optimiser les performances.
-*   *verseau2* : Migration des contrôles avec données live vers l'API MASA.
-*   *zero-logement-vacant* : Refactorisation de la gestion des documents et utilisation d'esbuild pour la construction du serveur.
+- *Lucca* : Refactorisation de `AdherentController` et `DataTableTrait`.
+- *acceslibre* : Migration de Bootstrap vers le DSFR.
+- *mobilic* : Refonte de l'architecture et migration vers de nouvelles technologies.
+- *verseau2* : Refonte de l'authentification et migration vers MASA.
+- *td-mass-validator* : Migration vers une nouvelle architecture.
+- *trackdechets-vigiedechets* : Amélioration de l'architecture et ajout de nouvelles fonctionnalités.
+
+Des changements d'infrastructure notables ont également été effectués sur *envergo* et *monitorenv*.
 
 ## Dépôts les plus actifs
-*   [Docurba](/repos/MTES-MCT/Docurba) : Amélioration de l'interface d'administration et reconnaissance des événements structurants.
-*   [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Refonte complète de la page de partage de liens avec de nouvelles fonctionnalités.
-*   [acceslibre](/repos/MTES-MCT/acceslibre) : Amélioration de l'import de données, refactorisation du code et modernisation de l'interface utilisateur.
-*   [carbure](/repos/MTES-MCT/carbure) : Ajout de badges d'état d'ouverture des déclarations et amélioration de l'affichage des informations.
-*   [dialog](/repos/MTES-MCT/dialog) : Amélioration de l'import des données Literalis et de la BDTOPO.
-*   [mobilic](/repos/MTES-MCT/mobilic) : Amélioration de l'interface de gestion des employés et correction de bugs.
-*   [trackdechets](/repos/MTES-MCT/trackdechets) : Corrections de bugs sur les PDF des BSVHU, l'import Excel et l'affichage des informations.
-*   [vizeau](/repos/MTES-MCT/vizeau) : Amélioration de l'interface utilisateur, ajout de la gestion des tags d'exploitation et de la planification des tâches.
+Voici les dépôts les plus actifs de la semaine :
+
+- [Docurba](/repos/MTES-MCT/Docurba) : Amélioration de la gestion des procédures et des événements, correction de bugs.
+- [Dossier-Facile-Frontend](/repos/MTES-MCT/Dossier-Facile-Frontend) : Corrections de bugs, améliorations de l'accessibilité et de l'interface utilisateur.
+- [Lucca](/repos/MTES-MCT/Lucca) : Ajout de la possibilité de cloner un adhérent, amélioration du formulaire de département.
+- [acceslibre](/repos/MTES-MCT/acceslibre) : Ajout de la possibilité d'ajouter une image aux ERPs, migration vers le DSFR.
+- [carbure](/repos/MTES-MCT/carbure) : Ajout de la gestion du biogaz et du biométhane, amélioration de l'interface utilisateur.
+- [mobilic](/repos/MTES-MCT/mobilic) : Refonte de l'interface d'administration, amélioration de la sécurité.
+- [trackdechets](/repos/MTES-MCT/trackdechets) : Ajout de la planification des tâches et de la gestion des tags d'exploitation.
+- [verseau2](/repos/MTES-MCT/verseau2) : Refonte de l'authentification, ajout de nouveaux contrôles.

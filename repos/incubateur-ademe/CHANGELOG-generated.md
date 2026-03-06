@@ -1,18 +1,19 @@
 # Synthèse d'activité : incubateur-ademe (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en évolutions, avec des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les plateformes *benefriches*, *ecopass*, *facili-tacct* et *plusfraichemaville-site*, avec l'ajout de nouvelles fonctionnalités et la correction de bugs. Des mises à jour techniques importantes ont également été déployées, notamment sur *docker-prisma-studio*, *nosgestesclimat-server* et *roadmaps-faciles*, visant à améliorer la performance, la sécurité et la maintenabilité des applications. La mise à niveau de n8n vers la version 2 via le dépôt [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo) représente une avancée majeure pour ce projet.
+L'organisation incubateur-ademe a connu une semaine riche en développement et améliorations sur plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités et la correction de bugs dans des applications comme Ecopass, Facili-tacct, Impactco2 et Nosgestesclimat. Des refactorings importants ont également été réalisés sur Benefriches pour améliorer la gestion des données et la testabilité du code. Plusieurs projets ont bénéficié de mises à jour de sécurité et de dépendances, assurant ainsi la stabilité et la pérennité des outils.
 
 ## Sécurité
-Le dépôt [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) a bénéficié d'une mise à jour de Next.js et jsPDF pour corriger des failles de sécurité. Le dépôt [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a implémenté l'authentification à deux facteurs (2FA) pour renforcer la sécurité des comptes utilisateurs.
+Le projet roadmaps-faciles a bénéficié de corrections de vulnérabilités identifiées par Dependabot (hono, lodash) et d'un durcissement de Sentry et de l'ajout de PostHog pour une meilleure sécurité.
 
 ## Autres changements notables
-Plusieurs dépôts ont subi des refactorisations importantes. *benefriches* a vu une refactorisation du code lié à la création de projets urbains et de l'authentification. *facili-tacct* a refactorisé son code pour préparer le déploiement MEP 16/02/2026. *publicodes-empreinte-carbone-chauffage* a publié une version majeure (1.1.0) avec des corrections et des améliorations du modèle de calcul. *roadmaps-faciles* a entrepris une refonte complète de son infrastructure CI/CD et de ses emails.
+Plusieurs projets ont connu des refactorings importants. Benefriches a vu une refonte majeure de son architecture frontend avec le pattern "ViewData". Nosgestesclimat-server a migré vers Prisma v4.9.0 et a amélioré sa configuration pour une meilleure gestion des cookies.  Le projet thumbnail-generator a été entièrement retravaillé, passant à une nouvelle base technologique (Vite, React 19, TypeScript) et offrant de nouvelles fonctionnalités comme l'exportation PNG et le mode sombre. N8n-scalingo a mis à niveau n8n vers la version 2, apportant ainsi de nouvelles fonctionnalités.
 
 ## Dépôts les plus actifs
-*   [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration significative du flux de création de projets urbains et refactorisation importante du code.
-*   [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles fonctionnalités pour faciliter la création de comptes, la déclaration de produits et la gestion des organisations.
-*   [facili-tacct](/repos/incubateur-ademe/facili-tacct) : Amélioration de la fonctionnalité "patch4" et préparation du déploiement MEP 16/02/2026.
-*   [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) : Corrections de bugs et améliorations de la gestion des newsletters.
-*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Amélioration de l'expérience utilisateur et corrections de bugs concernant les estimations et les projets.
-*   [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Ajout de l'authentification à deux facteurs et refonte de l'infrastructure CI/CD.
+*   **ecopass** : Ajout de nouvelles fonctionnalités pour la gestion des utilisateurs, la déclaration des produits et l'amélioration de l'expérience utilisateur.
+*   **benefriches** : Refactoring majeur de l'architecture frontend pour une meilleure gestion des données et des tests.
+*   **nosgestesclimat** : Corrections de bugs, ajout de traductions et amélioration de la précision des données.
+*   **facili-tacct** : Amélioration de la fonctionnalité "patch 4" et corrections de bugs concernant l'exportation et l'affichage des données.
+*   **impactco2** : Ajout de FAQ, mise à jour des exemples et correction de bugs pour une meilleure expérience utilisateur.
+*   **roadmaps-faciles** : Ajout de l'authentification à deux facteurs, intégration SSO, éditeur Markdown enrichi et tests complets.
+*   **thumbnail-generator**: Refonte complète du projet avec de nouvelles fonctionnalités et une nouvelle base technologique.
