@@ -1,3 +1,39 @@
+## [2.234.1](https://github.com/SocialGouv/domifa/compare/v2.234.0...v2.234.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* **backend:** fix build of backend ([c833b17](https://github.com/SocialGouv/domifa/commit/c833b173ee22a7517c7ca7d294fcc71ba6349e82))
+* **backend:** fix migration reboot ([d097080](https://github.com/SocialGouv/domifa/commit/d097080282785d709e1fef203fef28ff01d9a9d6))
+
+# [2.234.0](https://github.com/SocialGouv/domifa/compare/v2.233.6...v2.234.0) (2026-03-04)
+
+
+### Features
+
+* **backend:** add mondomifa SMS ([c360ffd](https://github.com/SocialGouv/domifa/commit/c360ffdbe8b8dcb0c060e9a5eba51a6c03c23ac9))
+
+## [2.233.6](https://github.com/SocialGouv/domifa/compare/v2.233.5...v2.233.6) (2026-03-04)
+
+
+### Bug Fixes
+
+* **frontend:** fix politique ([5864aad](https://github.com/SocialGouv/domifa/commit/5864aad6ab9fb9603f3cc64e3f5402e44f3743ad))
+
+## [2.233.5](https://github.com/SocialGouv/domifa/compare/v2.233.4...v2.233.5) (2026-03-03)
+
+
+### Bug Fixes
+
+* **backend:** upgrade backend nestjs config ([3d541c7](https://github.com/SocialGouv/domifa/commit/3d541c7415f9d9d4749b343109c7ff960733399c))
+
+## [2.233.4](https://github.com/SocialGouv/domifa/compare/v2.233.3...v2.233.4) (2026-03-03)
+
+
+### Bug Fixes
+
+* **frontend:** fix politique ([fd30c27](https://github.com/SocialGouv/domifa/commit/fd30c27ab63ef946371a41b99d22d4ff5441dd6a))
+
 ## [2.233.3](https://github.com/SocialGouv/domifa/compare/v2.233.2...v2.233.3) (2026-02-26)
 
 
