@@ -1,22 +1,21 @@
 ## Changelog : aides-jeunes (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes mises à jour apportées au simulateur d'aides sociales pour les jeunes. Les changements incluent des mises à jour des aides disponibles, des corrections de noms et de liens, l'ajout d'un bouton d'accompagnement après le sondage utilisateur, ainsi que des améliorations techniques pour la CI et le déploiement.
+Ce changelog présente les améliorations apportées à Aides Jeunes au cours du dernier mois. Les principales évolutions concernent l'ajout de nouvelles aides et accompagnements, des corrections de texte et des améliorations techniques pour la stabilité et le déploiement de l'application.
 
 ### Évolutions fonctionnelles
-- Mise à jour des aides disponibles : les informations sur les aides ont été actualisées. (#5062)
-- Suppression de l'aide des Hauts de France pour les étudiants. (#5071)
-- Suppression de l'aide au permis de conduire pour les apprentis. (#5069)
-- Ajout d'un point de contact pour l'accompagnement par la Maison France Services de Chemillé en Anjou. (#5068)
-- Ajout d'un bouton d'accompagnement à la fin du sondage pour orienter les utilisateurs. (#5046)
-- Correction du nom "Mes-Aides Jeunes" en "Aides Jeunes" dans les Conditions Générales d'Utilisation (CGU). (#5053)
+- Ajout du thème Ville de Vannes avec ses styles et options correspondantes. [#5080](https://github.com/betagouv/aides-jeunes/issues/5080)
+- Ajout d'un accompagnement téléphonique pour la ville de Vannes. [#5083](https://github.com/betagouv/aides-jeunes/issues/5083)
+- Ajout d'un accompagnement du CCAS de Chemillé en Anjou pour une demande de logement social. [#5067](https://github.com/betagouv/aides-jeunes/issues/5067)
+- Ajout d'un rendez-vous d'accompagnement par la Maison France Services de Chemillé en Anjou. [#5068](https://github.com/betagouv/aides-jeunes/issues/5068)
+- Ajout d'un bouton d'accompagnement à la fin du sondage. [#5046](https://github.com/betagouv/aides-jeunes/issues/5046)
+- Mise à jour des aides existantes. [#5062](https://github.com/betagouv/aides-jeunes/issues/5062)
+- Suppression de l'aide des Hauts de France pour les étudiants. [#5071](https://github.com/betagouv/aides-jeunes/issues/5071)
+- Suppression de l'aide au permis de conduire pour les apprentis. [#5069](https://github.com/betagouv/aides-jeunes/issues/5069)
 
 ### Évolutions techniques
-- Amélioration de la configuration de la CI pour une meilleure robustesse. (#5048)
-- Configuration de la version Node.js pour le déploiement afin d'assurer la compatibilité. (#5054)
-- Correction du chemin d'accès pour la génération des statistiques MongoDB, résolvant une erreur signalée par Sentry. (#5066)
-- Mise à jour de la dépendance `openfisca-france` dans le répertoire `/openfisca`. (#5063, #5051)
-- Mise à jour de la dépendance `next` dans le répertoire `/contribuer`. (#5052)
-
-### Autres changements
-- Création de nouvelles entités pour des communautés de communes et des CCAS : Communauté de communes Adour Madiran (#5061) et CCAS de Redon Service Transport Plus Handicap (#5050).
+- Correction des mentions de "Mes-Aides Jeunes" à "Aides Jeunes" dans les CGU. [#5053](https://github.com/betagouv/aides-jeunes/issues/5053)
+- Ajout de la configuration de la version Node.js pour le déploiement. [#5054](https://github.com/betagouv/aides-jeunes/issues/5054)
+- Tentative de correction du chemin d'accès `generateMongoStats` pour corriger une erreur cron signalée par Sentry. [#5066](https://github.com/betagouv/aides-jeunes/issues/5066)
+- Mise à jour de la dépendance `@betagouv/aides-velo` de la version 3.4.0 à la version 3.6.1. [#5081](https://github.com/betagouv/aides-jeunes/issues/5081)
+- Mise à jour de la dépendance `openfisca-france` dans le répertoire `/openfisca`. [#5063](https://github.com/betagouv/aides-jeunes/issues/5063)
