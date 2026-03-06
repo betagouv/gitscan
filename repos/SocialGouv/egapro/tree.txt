@@ -1,4 +1,37 @@
 .
+├── .claude
+│   ├── agents
+│   │   ├── code-reviewer
+│   │   │   └── AGENT.md
+│   │   ├── rgaa-auditor
+│   │   │   └── AGENT.md
+│   │   └── security-auditor
+│   │       └── AGENT.md
+│   ├── hooks
+│   │   ├── auto-lint.sh
+│   │   └── block-bad-patterns.sh
+│   ├── rules
+│   │   ├── automation.md
+│   │   ├── code-quality.md
+│   │   ├── database-drizzle.md
+│   │   ├── react-components.md
+│   │   ├── styling-dsfr.md
+│   │   ├── testing.md
+│   │   └── trpc-api.md
+│   ├── settings.json
+│   └── skills
+│       ├── audit-rgaa
+│       │   └── SKILL.md
+│       ├── audit-secu
+│       │   └── SKILL.md
+│       ├── create-page
+│       │   └── SKILL.md
+│       ├── process-issue
+│       │   └── SKILL.md
+│       ├── review-pr
+│       │   └── SKILL.md
+│       └── validate
+│           └── SKILL.md
 ├── .dockerignore
 ├── .github
 │   ├── CODEOWNERS
@@ -14,48 +47,39 @@
 │       ├── production.yaml
 │       ├── release.yml
 │       ├── review-auto.yaml
-│       └── review.yaml
+│       ├── review.yaml
+│       └── rgaa-audit.yaml
 ├── .gitignore
 ├── .kontinuous
 │   ├── config.yaml
 │   ├── env
 │   │   ├── dev
 │   │   │   ├── templates
-│   │   │   │   ├── basic-auth.sealed-secret.yaml
+│   │   │   │   ├── api.sealed-secret.yaml
 │   │   │   │   ├── egapro-secret.sealed-secret.yaml
-│   │   │   │   ├── egapro.configmap.yaml
-│   │   │   │   ├── github-oauth.sealed-secret.yaml
-│   │   │   │   ├── moncomptepro.sealed-secret.yaml
+│   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
 │   │   │   │   ├── proconnect.sealed-secret.yaml
-│   │   │   │   ├── sentry.sealed-secret.yaml
-│   │   │   │   └── staff.sealed-secret.yaml
+│   │   │   │   └── sentry.sealed-secret.yaml
 │   │   │   └── values.yaml
 │   │   ├── preprod
 │   │   │   ├── templates
-│   │   │   │   ├── basic-auth.sealed-secret.yaml
-│   │   │   │   ├── egapro-secret.sealed-secret.yaml
-│   │   │   │   ├── egapro.configmap.yaml
-│   │   │   │   ├── github-oauth.sealed-secret.yaml
-│   │   │   │   ├── moncomptepro.sealed-secret.yaml
+│   │   │   │   ├── api.sealed-secret.yaml
+│   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
 │   │   │   │   ├── proconnect.sealed-secret.yaml
-│   │   │   │   ├── sentry.sealed-secret.yaml
-│   │   │   │   └── staff.sealed-secret.yaml
+│   │   │   │   └── sentry.sealed-secret.yaml
 │   │   │   └── values.yaml
 │   │   └── prod
 │   │       ├── templates
-│   │       │   ├── basic-auth.sealed-secret.yaml
-│   │       │   ├── egapro-secret.sealed-secret.yaml
-│   │       │   ├── github-oauth.sealed-secret.yaml
-│   │       │   ├── moncomptepro.sealed-secret.yaml
-│   │       │   ├── redirect-index-egapro.ingress.yaml
-│   │       │   ├── sentry.sealed-secret.yaml
-│   │       │   └── staff.sealed-secret.yaml
+│   │       │   ├── api.sealed-secret.yaml
+│   │       │   ├── next-auth.sealed-secret.yaml
+│   │       │   ├── proconnect.configmap.yaml
+│   │       │   ├── proconnect.sealed-secret.yaml
+│   │       │   └── sentry.sealed-secret.yaml
 │   │       └── values.yaml
-│   ├── templates
-│   │   └── egapro.configmap.yaml
 │   └── values.yaml
+├── .mcp.json
 ├── .nvmrc
 ├── .releaserc.json
 ├── CHANGELOG.md
@@ -78,22 +102,27 @@
 │       │   ├── 0002_lean_khan.sql
 │       │   ├── 0003_absurd_komodo.sql
 │       │   ├── 0004_next_jack_murdock.sql
+│       │   ├── 0005_standardize_snake_case.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
 │       │       ├── 0002_snapshot.json
 │       │       ├── 0003_snapshot.json
 │       │       ├── 0004_snapshot.json
+│       │       ├── 0005_snapshot.json
 │       │       └── _journal.json
 │       ├── drizzle.config.ts
 │       ├── next.config.js
 │       ├── package.json
 │       ├── playwright.config.ts
+│       ├── playwright.rgaa.config.ts
 │       ├── public
 │       │   └── assets
 │       │       └── images
-│       │           ├── error
-│       │           │   └── technical-error-illustration.svg
+│       │           ├── aide
+│       │           │   ├── indicateurs-remuneration.png
+│       │           │   ├── indicateurs-representation.png
+│       │           │   └── nouveau-site.png
 │       │           ├── home
 │       │           │   ├── help-illustration.svg
 │       │           │   └── search-illustration.svg
@@ -103,32 +132,45 @@
 │       │   ├── copy-dsfr.js
 │       │   ├── entrypoint.sh
 │       │   └── migrate.mjs
-│       ├── sentry.client.config.ts
-│       ├── sentry.edge.config.ts
-│       ├── sentry.server.config.ts
 │       ├── src
 │       │   ├── app
+│       │   │   ├── aide
+│       │   │   │   ├── nous-contacter
+│       │   │   │   │   └── page.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── api
 │       │   │   │   ├── auth
 │       │   │   │   │   └── [...nextauth]
 │       │   │   │   │       └── route.ts
 │       │   │   │   ├── healthz
 │       │   │   │   │   └── route.ts
+│       │   │   │   ├── test-sentry
+│       │   │   │   │   └── route.ts
 │       │   │   │   └── trpc
 │       │   │   │       └── [trpc]
 │       │   │   │           └── route.ts
+│       │   │   ├── declaration-accessibilite
+│       │   │   │   └── page.tsx
 │       │   │   ├── declaration-remuneration
 │       │   │   │   ├── etape
 │       │   │   │   │   └── [step]
-│       │   │   │   │       ├── StepPageClient.tsx
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── layout.tsx
 │       │   │   │   └── page.tsx
+│       │   │   ├── donnees-personnelles
+│       │   │   │   └── page.tsx
 │       │   │   ├── error.tsx
+│       │   │   ├── faq
+│       │   │   │   └── page.tsx
+│       │   │   ├── gestion-des-cookies
+│       │   │   │   └── page.tsx
 │       │   │   ├── global-error.tsx
 │       │   │   ├── layout.tsx
 │       │   │   ├── login
-│       │   │   │   ├── LoginButton.tsx
+│       │   │   │   └── page.tsx
+│       │   │   ├── maintenance
+│       │   │   │   └── page.tsx
+│       │   │   ├── mentions-legales
 │       │   │   │   └── page.tsx
 │       │   │   ├── mon-espace
 │       │   │   │   └── mes-entreprises
@@ -136,17 +178,39 @@
 │       │   │   │       │   └── page.tsx
 │       │   │   │       └── page.tsx
 │       │   │   ├── not-found.tsx
-│       │   │   └── page.tsx
+│       │   │   ├── page.tsx
+│       │   │   ├── plan-du-site
+│       │   │   │   └── page.tsx
+│       │   │   └── test-error
+│       │   │       └── page.tsx
 │       │   ├── e2e
 │       │   │   ├── declaration.e2e.ts
 │       │   │   ├── error-pages.e2e.ts
 │       │   │   ├── helpers
+│       │   │   │   ├── axe-scan.ts
 │       │   │   │   └── login.ts
 │       │   │   ├── home.e2e.ts
-│       │   │   └── login.e2e.ts
+│       │   │   ├── login.e2e.ts
+│       │   │   └── rgaa-audit.spec.ts
 │       │   ├── env.js
+│       │   ├── instrumentation-client.ts
 │       │   ├── instrumentation.ts
 │       │   ├── modules
+│       │   │   ├── aide
+│       │   │   │   ├── AideCallout.tsx
+│       │   │   │   ├── AideIllustration.tsx
+│       │   │   │   ├── AideLayout.module.scss
+│       │   │   │   ├── AidePage.tsx
+│       │   │   │   ├── AideResourceCards.module.scss
+│       │   │   │   ├── AideResourceCards.tsx
+│       │   │   │   ├── AideTextesReference.tsx
+│       │   │   │   ├── ContactPage.tsx
+│       │   │   │   ├── CopyEmailButton.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── AidePage.test.tsx
+│       │   │   │   │   └── ContactPage.test.tsx
+│       │   │   │   ├── constants.ts
+│       │   │   │   └── index.ts
 │       │   │   ├── analytics
 │       │   │   │   ├── MatomoAnalytics.tsx
 │       │   │   │   └── index.ts
@@ -154,6 +218,7 @@
 │       │   │   │   ├── DeclarationIntro.tsx
 │       │   │   │   ├── DeclarationLayout.tsx
 │       │   │   │   ├── MissingSiret.tsx
+│       │   │   │   ├── StepPageClient.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── shared
 │       │   │   │   │   ├── CompanyBanner.module.scss
@@ -175,6 +240,7 @@
 │       │   │   │   │   │   ├── StepIndicator.test.tsx
 │       │   │   │   │   │   └── gapUtils.test.ts
 │       │   │   │   │   ├── common.module.scss
+│       │   │   │   │   ├── constants.ts
 │       │   │   │   │   └── gapUtils.ts
 │       │   │   │   ├── steps
 │       │   │   │   │   ├── Step1Workforce.tsx
@@ -219,14 +285,30 @@
 │       │   │   │   │       └── parseStep5Categories.ts
 │       │   │   │   └── types.ts
 │       │   │   ├── error
-│       │   │   │   ├── ErrorImage.module.scss
+│       │   │   │   ├── ErrorArtwork.tsx
 │       │   │   │   ├── ErrorPage.tsx
+│       │   │   │   ├── MaintenancePage.tsx
 │       │   │   │   ├── NotFoundPage.tsx
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── ErrorArtwork.test.tsx
 │       │   │   │   │   ├── ErrorPage.test.tsx
+│       │   │   │   │   ├── MaintenancePage.test.tsx
 │       │   │   │   │   └── NotFoundPage.test.tsx
 │       │   │   │   └── index.ts
+│       │   │   ├── faq
+│       │   │   │   ├── FaqAccordionGroup.tsx
+│       │   │   │   ├── FaqContent.module.scss
+│       │   │   │   ├── FaqContent.tsx
+│       │   │   │   ├── FaqPage.module.scss
+│       │   │   │   ├── FaqPage.tsx
+│       │   │   │   ├── FaqSummary.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── FaqPage.test.tsx
+│       │   │   │   ├── faqData.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── types.ts
 │       │   │   ├── home
+│       │   │   │   ├── DsfrPictogram.tsx
 │       │   │   │   ├── HomeHero.module.scss
 │       │   │   │   ├── HomeHero.tsx
 │       │   │   │   ├── HomeNotice.tsx
@@ -247,6 +329,7 @@
 │       │   │   │   │   └── HomeSearch.test.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── layout
+│       │   │   │   ├── Breadcrumb.tsx
 │       │   │   │   ├── Footer
 │       │   │   │   │   ├── FooterBody.tsx
 │       │   │   │   │   ├── FooterBottom.tsx
@@ -262,6 +345,8 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   └── UserAccountMenu.test.tsx
 │       │   │   │   │   └── index.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── Breadcrumb.test.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   └── shared
 │       │   │   │       ├── NavLink.tsx
@@ -271,6 +356,21 @@
 │       │   │   │           ├── NavLink.test.tsx
 │       │   │   │           ├── NewTabNotice.test.tsx
 │       │   │   │           └── SkipLinks.test.tsx
+│       │   │   ├── legal
+│       │   │   │   ├── AccessibilityPage
+│       │   │   │   │   ├── AccessibilityCompliance.tsx
+│       │   │   │   │   ├── AccessibilityContact.tsx
+│       │   │   │   │   ├── AccessibilityEstablishment.tsx
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── CookiesPage.tsx
+│       │   │   │   ├── LegalNoticePage.tsx
+│       │   │   │   ├── PrivacyPolicyPage
+│       │   │   │   │   ├── PrivacyCookies.tsx
+│       │   │   │   │   ├── PrivacyOverview.tsx
+│       │   │   │   │   ├── PrivacyRightsAndData.tsx
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── SitemapPage.tsx
+│       │   │   │   └── index.ts
 │       │   │   ├── login
 │       │   │   │   ├── LoginAccordion.module.scss
 │       │   │   │   ├── LoginAccordion.tsx
@@ -291,6 +391,8 @@
 │       │   │   │   ├── CompanyCard.tsx
 │       │   │   │   ├── CompanyCardList.tsx
 │       │   │   │   ├── CompanyDeclarationsPage.tsx
+│       │   │   │   ├── CompanyEditModal.module.scss
+│       │   │   │   ├── CompanyEditModal.tsx
 │       │   │   │   ├── CompanyInfoBanner.module.scss
 │       │   │   │   ├── CompanyInfoBanner.tsx
 │       │   │   │   ├── CompanyListHeader.tsx
@@ -308,6 +410,7 @@
 │       │   │   │   │   ├── CompanyCard.test.tsx
 │       │   │   │   │   ├── CompanyCardList.test.tsx
 │       │   │   │   │   ├── CompanyDeclarationsPage.test.tsx
+│       │   │   │   │   ├── CompanyEditModal.test.tsx
 │       │   │   │   │   ├── CompanyInfoBanner.test.tsx
 │       │   │   │   │   ├── CompanyListHeader.test.tsx
 │       │   │   │   │   ├── CompanyTable.test.tsx
@@ -325,13 +428,18 @@
 │       │   │   │   ├── formatSiren.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   └── types.ts
-│       │   │   └── profile
-│       │   │       ├── ProfileModal.module.scss
-│       │   │       ├── ProfileModal.tsx
-│       │   │       ├── __tests__
-│       │   │       │   └── ProfileModal.test.tsx
-│       │   │       ├── index.ts
-│       │   │       └── phone.ts
+│       │   │   ├── profile
+│       │   │   │   ├── ProfileModal.module.scss
+│       │   │   │   ├── ProfileModal.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── ProfileModal.test.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   └── phone.ts
+│       │   │   └── testError
+│       │   │       ├── ErrorTrigger.tsx
+│       │   │       └── index.ts
+│       │   ├── sentry.edge.config.ts
+│       │   ├── sentry.server.config.ts
 │       │   ├── server
 │       │   │   ├── api
 │       │   │   │   ├── root.ts
@@ -363,4 +471,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── sonar-project.properties
-76 directories, 289 files
+109 directories, 364 files
