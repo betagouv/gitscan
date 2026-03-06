@@ -6,11 +6,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- 📝(docs) improve README and add documentation hub #1870
+
+## [v4.6.0] - 2026-03-03
+
 ### Added
 
-- ✨(frontend) integrate new Blocknote AI feature #1016
-- 👷(docker) add arm64 platform support for image builds
-- ✨(tracking) add UTM parameters to shared document links
+- ✨(frontend) integrate new Blocknote AI feature #1847
+- 👷(docker) add arm64 platform support for image builds #1901
+- ✨(tracking) add UTM parameters to shared document links #1896
 - ✨(frontend) add floating bar with leftpanel collapse button #1876
 - ✨(frontend) Can print a doc #1832
 - ✨(backend) manage reconciliation requests for user accounts #1878
@@ -21,21 +27,23 @@ and this project adheres to
 - ✨(backend) Onboarding docs for new users #1891
 - 🩺(trivy) add trivyignore file and add minimatch CVE #1915
 - 🚩 Add feature flags for the AI feature #1922
+- 🍱(frontend) add icons ui-kit #1943
 
 ### Changed
 
 - ♿️(frontend) prevent dates from being focusable #1855
-- ♿️(frontend) Focus main container after navigation #1854
+- ♿️(frontend) Focus main container after navigation #1864
 - 💄(frontend) align colors and logo with ui-kit v2 #1869
 - 🚸(backend) sort user search results by proximity with the active user #1802
 - 🚸(oidc) ignore case when fallback on email #1880
 - ⚡️(CI) optimize Docker Hub workflow #1919
+- ♿️(frontend) add focus on open to modals #1948
 
 ### Fixed
 
 - 🐛(frontend) fix broadcast store sync #1846
-- 🐛(helm) use celery resources instead of backend resources
-- 🐛(helm) reverse liveness and readiness for backend deployment
+- 🐛(helm) use celery resources instead of backend resources #1887
+- 🐛(helm) reverse liveness and readiness for backend deployment #1887
 - 🐛(y-provider) use CONVERSION_FILE_MAX_SIZE settings #1913
 - 🐛(frontend) fix callout block spacing for old browsers #1914
 
@@ -1057,7 +1065,8 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v4.5.0...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v4.6.0...main
+[v4.6.0]: https://github.com/suitenumerique/docs/releases/v4.6.0
 [v4.5.0]: https://github.com/suitenumerique/docs/releases/v4.5.0
 [v4.4.0]: https://github.com/suitenumerique/docs/releases/v4.4.0
 [v4.3.0]: https://github.com/suitenumerique/docs/releases/v4.3.0

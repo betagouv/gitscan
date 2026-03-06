@@ -1,52 +1,43 @@
 ## Changelog : docs (30 derniers jours)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par des améliorations significatives en matière d'intelligence artificielle, avec l'intégration de nouvelles fonctionnalités et l'optimisation de l'expérience utilisateur. Des corrections de sécurité ont également été apportées, ainsi que des améliorations de l'interface et de l'accessibilité. Des efforts ont été déployés pour améliorer la gestion des utilisateurs et l'onboarding.
+Les 30 derniers jours ont été marqués par des améliorations significatives de l'expérience utilisateur, notamment l'ajout de la fonctionnalité de déplacement de documents, des améliorations de l'accessibilité et des corrections de bugs. Des efforts ont également été déployés pour améliorer la sécurité et l'infrastructure du projet, ainsi que pour intégrer de nouvelles fonctionnalités d'IA.
 
 ### Évolutions fonctionnelles
-- Ajout d'un modal de demande d'accès lors du déplacement de documents (#1886).
-- Intégration de la nouvelle fonctionnalité Blocknote AI, avec un indicateur d'état accessible (#1016, #1922).
-- Possibilité de dupliquer les sous-pages (#1893).
-- Ajout de documentation pour l'onboarding des nouveaux utilisateurs (#1891).
-- Ajout de paramètres UTM aux liens de partage de documents (#1876).
-- Ajout d'une barre flottante avec un bouton de réduction pour le panneau latéral (#1876).
-- Possibilité d'imprimer un document directement depuis le navigateur (#1832).
-- Gestion des demandes de réconciliation pour les comptes utilisateurs (#1878).
-- Ajout d'un support pour la signature AWS S3 avec la variable d'environnement `AWS_S3_SIGNATURE_VERSION` (#1909).
+- Ajout de la fonctionnalité de déplacement de documents avec confirmation et gestion des demandes d'accès [#1886].
+- Intégration de la nouvelle fonctionnalité Blocknote AI, contrôlée par des flags de fonctionnalité [#1847].
+- Possibilité d'imprimer un document directement depuis le navigateur [#1832].
+- Ajout de paramètres UTM aux liens de partage de documents pour un meilleur suivi [#1896].
+- Barre flottante avec bouton de réduction du panneau latéral [#1876].
+- Gestion des demandes de réconciliation pour les comptes utilisateurs [#1878].
+- Possibilité de dupliquer des sous-pages [#1893].
+- Ajout de documentation pour les nouveaux utilisateurs [#1891].
+- Ajout d'un ensemble d'icônes UI [#1943].
 
 ### Évolutions techniques
-- Utilisation de `uvicorn` pour servir le backend, améliorant potentiellement les performances (#1906).
-- Refonte de la gestion du streaming avec le service d'IA (#1906).
-- Utilisation de pydantic pour gérer le protocole de flux de données Vercel pour l'IA (#1906).
-- Ajout de support pour l'architecture ARM64 dans les builds Docker (#1851).
-- Optimisation du workflow Docker Hub (#1919).
-- Mise à jour des dépendances frontend pour être compatibles avec ESLint v10 (#1913).
-- Configuration personnalisée de la cache (#1905).
-- Correction de l'ordre de priorité des sondes liveness et readiness dans le déploiement Helm (#1849).
-- Utilisation des ressources Celery au lieu de celles du backend dans le déploiement Helm (#1848).
-- Ajout de tests Trivy pour l'image backend (#1909).
-- Activation de la vérification Trivy sur l'image backend (#1909).
+- Amélioration de l'infrastructure CI/CD avec l'ajout d'un workflow GHCR pour les forks [#1851].
+- Optimisation du workflow Docker Hub [#1919].
+- Mise à jour des dépendances frontend pour la compatibilité avec ESLint v10 [#1919].
+- Utilisation de `uvicorn` pour servir le backend, améliorant potentiellement les performances [#1922].
+- Refactorisation du composant `HorizontalSeparator` pour plus de flexibilité [#1943].
+- Utilisation de pydantic AI pour gérer le protocole de flux de données Vercel [#1922].
+- Extraction de la construction Docker dans une tâche dédiée pour une personnalisation plus facile [#1905].
+- Réutilisation de l'architecture amd64 pour construire les images arm64 lorsque possible [#1905].
+- Ajout de support pour la plateforme arm64 dans les builds d'images Docker [#1901].
+- Amélioration de la configuration de l'AI pour le frontend [#1948].
 
 ### Autres changements
-- Corrections de vulnérabilités de sécurité (CVE) (#1915, #1903, #1806).
-- Amélioration de l'accessibilité : prévention de la focalisation sur les dates (#1855), amélioration de la focalisation après la navigation (#1854).
-- Alignement des couleurs avec la nouvelle charte graphique Figma (#1869).
-- Amélioration du système de remplacement de thèmes par configuration (#1869).
-- Ajout de tests de régression pour l'exportation PDF (#1762).
-- Ajout d'un fichier `.trivyignore` pour ignorer certaines vulnérabilités (#1915).
-- Mise à jour des chaînes de traduction (#1925).
-- Remplacement du lien de démonstration dans le README (#1875).
-- Correction de l'affichage du timestamp des documents (#1902).
-- Correction d'un bug lié à la synchronisation du store broadcast (#1846).
-- Correction d'un problème d'espacement des blocs callout pour les anciens navigateurs (#1914).
-- Correction d'un bug lié à l'utilisation de la taille maximale des fichiers de conversion (#1913).
-- Suppression du code lié à l'ancien système de templates (#1780).
-- Suppression des paramètres d'IA obsolètes (#1905).
-- Ajout de la possibilité de configurer le bot IA frontend (#1906).
-- Durcissement de la sécurité du proxy IA backend (#1906).
-- Ajout d'un proxy IA backend (#1906).
-- Suppression de l'affichage du contenu des documents lors de la récupération sans contenu (#1910).
-- Ajout d'annonces d'état de l'IA avec aria-live (#1906).
-- Correction d'un bug dans le workflow CI pour les forks (#1851).
-- Correction d'un bug dans le Dockerfile pour l'utilisateur du hub (#1828).
-- Mise à jour de la dépendance axios vers la version 1.13.5 (correction de sécurité) (#1903).
+- Amélioration de la documentation README et ajout d'un hub de documentation [#1870].
+- Corrections de bugs mineurs d'UX/UI [#1948].
+- Ajout de tests E2E pour améliorer la stabilité [#1948].
+- Ajout de fichiers `.trivyignore` et correction de vulnérabilités de sécurité (CVE) [#1915, #1906].
+- Mise à jour des chaînes de traduction [#1948].
+- Suppression de code obsolète lié aux templates [#1780].
+- Amélioration de l'accessibilité avec la gestion du focus sur les modales et les dates [#1855, #1948].
+- Correction de problèmes d'espacement dans les blocs de citation pour les anciens navigateurs [#1914].
+- Suppression de logs de console inutiles [#1906].
+- Amélioration de l'alignement des couleurs avec le thème Figma [#1869].
+- Correction de bugs liés à l'export PDF [#1913].
+- Mise à jour de la version de `pycrdt` à 0.12.47 [#1905].
+- Suppression de la configuration `AI_STREAM` du backend [#1922].
+- Suppression de code lié à l'ancien système de templates [#1780].
