@@ -1,44 +1,38 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Ecobalyse accélère la mise en place de l'affichage environnemental. L'application est accessible à cette adresse.",
+  "description": "Ecobalyse accélère la mise en place de l’affichage environnemental. L’application est accessible à cette adresse : https://ecobalyse.beta.gouv.fr.",
   "language": "Python",
   "features": [
     "Affichage environnemental",
-    "Calcul d'impacts",
-    "Gestion des favoris",
+    "Calcul d'impact",
     "Comparaison de produits",
-    "Import/Export de données",
     "Gestion des utilisateurs",
-    "Administration"
+    "Exportation de données",
+    "Importation de favoris"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Elm",
     "NodeJS",
     "Python",
-    "Pipenv",
-    "Gettext",
-    "Transcrypt",
-    "Django",
-    "PostgreSQL",
-    "Parcel",
+    "uv",
+    "gettext",
+    "transcrypt",
+    "Docker",
     "Litestar",
-    "aiosqlite",
-    "psycopg",
+    "PostgreSQL",
     "asyncpg",
     "pytest",
-    "Matomo",
-    "Plausible"
+    "Posthog",
+    "Sentry"
   ],
   "components": [
     "Frontend Elm",
-    "Backend Python/Django",
-    "API REST",
+    "Backend Python (Litestar)",
     "Base de données PostgreSQL",
-    "Serveur NodeJS",
-    "Interface utilisateur",
-    "Serveur d'authentification"
+    "API REST",
+    "Interface utilisateur (UI)"
   ],
   "auth": {
     "methods": [
@@ -49,8 +43,7 @@
   "tests": [
     "Pytest",
     "Jest",
-    "Playwright",
-    "Elm-test"
+    "Playwright"
   ],
   "workflows": [
     "node.js.yml"
@@ -59,17 +52,19 @@
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "environnement",
     "impact environnemental",
     "analyse de cycle de vie",
-    "ACV",
     "développement durable",
     "Python",
     "Elm",
-    "Django",
-    "PostgreSQL",
-    "Agribalyse"
+    "PostgreSQL"
   ]
 }
