@@ -4,25 +4,26 @@
   "description": "Mon Diagnostic Artificialisation aide les collectivités à analyser et maîtriser la consommation d'espaces et l'artificialisation des sols, en mettant en perspective des indicateurs chiffrés au regard des exigences de la loi climat et résilience, et notamment de la ZAN.",
   "language": "Python",
   "features": [
-    "Analyse de l'artificialisation des sols",
-    "Suivi de la consommation d'espaces",
+    "Analyse de la consommation d'espaces",
+    "Suivi de l'artificialisation des sols",
     "Visualisation de données cartographiques",
     "Génération de rapports",
     "Suivi du logement vacant",
-    "Territorialisation"
+    "Analyse du carroyage de la consommation d'espaces"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Django",
     "PostgreSQL",
     "Redis",
-    "Django",
     "React",
     "Webpack",
     "Babel",
     "TypeScript",
     "Highcharts",
     "Maplibre GL",
-    "PMTiles"
+    "GDAL",
+    "Celery"
   ],
   "components": [
     "Backend Django",
@@ -34,7 +35,7 @@
   ],
   "auth": {
     "methods": [
-      "none"
+      "email-password"
     ]
   },
   "tests": [
@@ -62,6 +63,6 @@
     "urbanisme",
     "loi climat et résilience",
     "ZAN",
-    "DataGouv"
+    "diagnostic territorial"
   ]
 }

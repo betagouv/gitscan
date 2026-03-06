@@ -1,23 +1,23 @@
 ## Changelog : sparte (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de sparte se concentrent sur l'amélioration de la fonctionnalité de suivi du logement vacant, l'ajout d'une nouvelle fonctionnalité de carroyage pour l'analyse de la consommation d'espaces, et des corrections concernant l'intégration avec DataGouv. Ces améliorations visent à fournir aux collectivités des outils plus performants pour analyser et maîtriser l'artificialisation des sols.
+Les dernières mises à jour de sparte se concentrent sur l'amélioration de l'analyse du logement vacant, l'ajout d'une fonctionnalité d'analyse du carroyage de la consommation d'espaces et des améliorations générales de l'interface utilisateur. Ces évolutions permettent aux collectivités d'avoir une vision plus complète de l'artificialisation des sols et de la gestion du territoire.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle vue pour l'analyse du carroyage de la consommation d'espaces (#1434).
-- Intégration de la configuration du carroyage dans les composants cartographiques et d'information.
-- Ajout d'un composant et d'un graphique pour le suivi de l'évolution du taux de logements vacants (#1439).
-- Amélioration de l'interprétation des messages et de la gestion des ratios dans le composant LogementVacantAutorisation (#1439).
-- Ajout d'une carte pour visualiser les données de logements vacants.
+- Ajout d'une vue pour afficher les détails d'une parcelle de terrain. [#1443](https://github.com/MTES-MCT/sparte/pull/1443)
+- Implémentation de la fonctionnalité de carroyage de la consommation d'espaces, incluant la configuration et l'intégration cartographique. [#1434](https://github.com/MTES-MCT/sparte/pull/1434)
 - Ajout d'une description pour le carroyage de la consommation d'espaces dans le composant Consommation.
+- Ajout d'un composant et d'un graphique pour suivre l'évolution du taux de logements vacants. [#1439](https://github.com/MTES-MCT/sparte/pull/1439)
+- Amélioration de l'interprétation des messages concernant le ratio de logements vacants. [#1439](https://github.com/MTES-MCT/sparte/pull/1439)
+- Ajout d'une carte pour visualiser la répartition des logements vacants.
+- Refonte des composants liés au logement vacant pour une meilleure gestion et affichage des données.
 
 ### Évolutions techniques
-- Refactoring des composants liés au logement vacant pour améliorer la gestion des données et l'affichage.
-- Refactoring des tests pour les graphiques de logements vacants, avec renommage et mise à jour de l'initialisation de `TauxProgressionChart`.
-- Suppression des colonnes `target_2031` et `target_2031_modified` du modèle `project` (#1437).
-- Modification de la structure du payload lors de la création et de la mise à jour des datasets dans `DataGouvHandler` pour encapsuler l'identifiant de l'organisation.
-- Amélioration de la gestion des erreurs et ajout de la journalisation lors de la création et de la mise à jour des datasets dans `DataGouvHandler` (#1436, #1437).
+- Refactoring des tests pour les graphiques liés au logement vacant, incluant la mise à jour de l'initialisation et le renommage.
+- Mise à jour de la gestion des ratios et amélioration des messages d'interprétation dans le composant LogementVacantAutorisation.
+- Amélioration des composants CarroyageLeaMap et Consommation pour une meilleure fonctionnalité et un meilleur style.
+- Intégration de la configuration du carroyage dans les composants CarroyageLeaMap et CarroyageLeaInfo.
 
 ### Autres changements
-- Ajout de la journalisation des réponses lors de la création et de la mise à jour des datasets dans `DataGouvHandler`.
-- Mise à jour des tests `formatNumber` pour retourner "-" pour les entrées `undefined`, `null` et `NaN`.
+- Ajout de la vue CarroyageDestinationConfig.
+- Ajout d'une couche Carroyage Lea et intégration cartographique.
