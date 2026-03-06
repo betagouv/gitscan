@@ -1,51 +1,30 @@
 ## Changelog : bhasile (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de Bhasile (anciennement Place d'Asile), l'outil de gestion du parc de logements pour demandeurs d’asile. Les dernières mises à jour se concentrent sur l'ajout et l'amélioration de la gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation), avec l'ajout de formulaires, de listes, de liens et de tests associés. Des améliorations ont également été apportées à la gestion des finances, à l'interface utilisateur et à la sécurité.
+Ce changelog présente les évolutions récentes de Bhasile (anciennement Place d'Asile), l'outil de gestion du parc de logements pour demandeurs d’asile. Les dernières mises à jour se concentrent sur l'ajout de la gestion des CPOM (Conventions de Partenariat Opérationnel et de Mutualisation), l'amélioration des formulaires financiers, la correction de bugs et l'ajout de tests automatisés. L'interface a également été améliorée avec l'ajout de mentions légales et d'une page 403 plus informative.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des CPOM : formulaires, listes, liens dans le menu et l'en-tête (#947, #972, #988, #996).
-- Ajout d'un modal de confirmation pour les CPOM (#978).
-- Affichage des CPOM sur la page structure (#990).
-- Amélioration de l'affichage des tableaux financiers (#991).
-- Possibilité d'accepter des résultats nets cumulés négatifs (#1023).
-- Correction de l'affichage de l'année du CPOM dans les documents financiers (#1032).
-- Correction de l'affichage des typologies d'années manquantes dans les formulaires opérateur et agentf (#1030).
-- Correction d'un bug où le public était toujours mis à "Tout public" lors des modifications (#1020).
-- Interdiction des valeurs négatives pour la plupart des champs financiers (#1015) et pour le nombre de places (#1017).
-- Ajout d'un journal d'audit (#1018).
-- Modification de la page 403 pour afficher un email de contact (#1009).
-- Correction d'un bug de redirection des marqueurs sur la carte (#993).
-- Ajout d'indicateurs financiers (#957).
-- Amélioration de l'affichage des adresses (#1001).
+- Ajout de la gestion des CPOM : création de formulaires, listes, liens et documents associés. [#947](https://github.com/betagouv/bhasile/issues/947), [#972](https://github.com/betagouv/bhasile/issues/972), [#978](https://github.com/betagouv/bhasile/issues/978), [#980](https://github.com/betagouv/bhasile/issues/980), [#981](https://github.com/betagouv/bhasile/issues/981), [#983](https://github.com/betagouv/bhasile/issues/983), [#984](https://github.com/betagouv/bhasile/issues/984), [#988](https://github.com/betagouv/bhasile/issues/988), [#990](https://github.com/betagouv/bhasile/issues/990), [#992](https://github.com/betagouv/bhasile/issues/992)
+- Ajout des CGU, Mentions légales et politique de confidentialité. [#1041](https://github.com/betagouv/bhasile/issues/1041)
+- Amélioration de l'affichage des données financières et des tableaux de bord. [#971](https://github.com/betagouv/bhasile/issues/971), [#989](https://github.com/betagouv/bhasile/issues/989), [#991](https://github.com/betagouv/bhasile/issues/991)
+- Ajout d'une adresse email de contact sur la page 403 (accès interdit). [#1009](https://github.com/betagouv/bhasile/issues/1009)
+- Renommage de "Place d'Asile" en "Bhasile" dans l'interface. [#982](https://github.com/betagouv/bhasile/issues/982)
+- Ajout de la possibilité de lier des actes administratifs aux CPOM. [#979](https://github.com/betagouv/bhasile/issues/979)
+- Amélioration de l'affichage des adresses. [#1001](https://github.com/betagouv/bhasile/issues/1001)
 
 ### Évolutions techniques
-- Renommage de "Place d'Asile" en "Bhasile" dans le code et l'interface (#982).
-- Mise à jour de la configuration Next.js (#975).
-- Refactorisation des uploads de fichiers (#994).
-- Ajout de restrictions sur les utilisateurs autorisés (#950).
-- Amélioration des contrôles de bloc (#1005).
-- Ajout de tests E2E pour les formulaires de modification et CPOM (#1019, #984).
-- Correction d'un crash des activités (#1008).
-- Ajout de documentation sur l'architecture backend (#999).
-- Mise à jour des dépendances (jsdom, divers paquets mineurs et correctifs) (#1007, #1024, #985, #960).
-- Ajout de règles ESLint et formatage avec Prettier (#1011).
-- Suppression de TODOs (#1010).
-- Suppression de code inutile et nettoyage du code (#963, #923, #819).
+- Augmentation du timeout des transactions Prisma. [#1045](https://github.com/betagouv/bhasile/issues/1045)
+- Ajout d'un audit log. [#1018](https://github.com/betagouv/bhasile/issues/1018)
+- Mise à jour de la configuration Next.js. [#975](https://github.com/betagouv/bhasile/issues/975)
+- Amélioration du contrôle de bloc. [#1005](https://github.com/betagouv/bhasile/issues/1005)
+- Ajout de tests E2E pour le formulaire de modification. [#1019](https://github.com/betagouv/bhasile/issues/1019)
+- Mise à jour des dépendances (Rollup, jsdom, fast-xml-parser, immutable). [#1006](https://github.com/betagouv/bhasile/issues/1006), [#1007](https://github.com/betagouv/bhasile/issues/1007), [#1024](https://github.com/betagouv/bhasile/issues/1024), [#1035](https://github.com/betagouv/bhasile/issues/1035), [#1036](https://github.com/betagouv/bhasile/issues/1036), [#1038](https://github.com/betagouv/bhasile/issues/1038), [#1043](https://github.com/betagouv/bhasile/issues/1043)
+- Ajout de restrictions sur les utilisateurs autorisés. [#950](https://github.com/betagouv/bhasile/issues/950)
+- Mise en place de règles ESLint et Prettier pour améliorer la qualité du code. [#1011](https://github.com/betagouv/bhasile/issues/1011)
 
 ### Autres changements
-- Correction de fautes de frappe dans les finances (#969).
-- Incohérence entre département et code DNA corrigée (#966).
-- Message de chargement amélioré pour l'utilisation (#962).
-- Suppression des années des CPOM (temporairement réintégrées ensuite) (#964, #953).
-- Suppression de logs inutiles (#956).
-- Ajustement de la taille du logo (#1002).
-- Ajout de tracking sur la sélection de la carte (#998).
-- Ajout de couleurs d'arrière-plan aux titres dans le formulaire financier (#967).
-- Correction d'un bug empêchant le bon fonctionnement du formulaire CPOM (#979, #981).
-- Correction d'un bug empêchant l'envoi des données du formulaire de modification des finances (#87581dd).
-- Correction d'un bug où le département était réinitialisé à chaque montage de formulaire (#983).
-- Ajout de la possibilité d'affecter des réserves de fonds dédiés négatives (#4ff2ae6).
-- Mise à jour des données de test pour 2026 (#1031).
-- Correction d'un bug lié à la récupération des structures (#971).
-- Correction d'un bug empêchant l'affichage correct des structures (#980).
+- Ajout de documentation sur l'architecture backend. [#999](https://github.com/betagouv/bhasile/issues/999)
+- Suppression de TODOs dans le code. [#1010](https://github.com/betagouv/bhasile/issues/1010)
+- Corrections de typos dans les finances. [#969](https://github.com/betagouv/bhasile/issues/969)
+- Matrice d'impact ajoutée. [#1039](https://github.com/betagouv/bhasile/issues/1039)
+- Diverses corrections de bugs et améliorations de l'interface. [#993](https://github.com/betagouv/bhasile/issues/993), [#995](https://github.com/betagouv/bhasile/issues/995), [#996](https://github.com/betagouv/bhasile/issues/996), [#998](https://github.com/betagouv/bhasile/issues/998), [#1002](https://github.com/betagouv/bhasile/issues/1002), [#1003](https://github.com/betagouv/bhasile/issues/1003), [#1004](https://github.com/betagouv/bhasile/issues/1004), [#1008](https://github.com/betagouv/bhasile/issues/1008), [#1015](https://github.com/betagouv/bhasile/issues/1015), [#1016](https://github.com/betagouv/bhasile/issues/1016), [#1017](https://github.com/betagouv/bhasile/issues/1017), [#1020](https://github.com/betagouv/bhasile/issues/1020), [#1021](https://github.com/betagouv/bhasile/issues/1021), [#1023](https://github.com/betagouv/bhasile/issues/1023), [#1027](https://github.com/betagouv/bhasile/issues/1027), [#1028](https://github.com/betagouv/bhasile/issues/1028), [#1029](https://github.com/betagouv/bhasile/issues/1029), [#1030](https://github.com/betagouv/bhasile/issues/1030), [#1031](https://github.com/betagouv/bhasile/issues/1031), [#1032](https://github.com/betagouv/bhasile/issues/1032), [#1033](https://github.com/betagouv/bhasile/issues/1033), [#1037](https://github.com/betagouv/bhasile/issues/1037), [#1040](https://github.com/betagouv/bhasile/issues/1040), [#1042](https://github.com/betagouv/bhasile/issues/1042), [#1044](https://github.com/betagouv/bhasile/issues/1046)
