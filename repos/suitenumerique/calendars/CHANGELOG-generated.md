@@ -1,29 +1,27 @@
 ## Changelog : calendars (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'application Calendars, notamment de nouvelles fonctionnalités de partage de calendriers, l'ajout de liens de confirmation de participation (RSVP) aux invitations, et des améliorations de l'interface utilisateur pour une meilleure expérience globale. Des corrections de bugs et des optimisations techniques ont également été implémentées.
+Les dernières semaines ont été marquées par d'importantes améliorations de l'application Calendars, notamment l'ajout de fonctionnalités de partage de calendriers, de liens de confirmation de participation (RSVP) et d'importation d'événements. L'interface utilisateur a également été améliorée, et des corrections ont été apportées pour optimiser les performances et la stabilité de l'application. De plus, le support de l'architecture ARM64 a été ajouté pour les images Docker.
 
 ### Évolutions fonctionnelles
-- Ajout de liens de confirmation de participation (RSVP) dans les emails d'invitation (#10).
-- Implémentation du partage de calendriers avec une nouvelle interface utilisateur (#12).
-- Ajout d'une modale d'importation pour importer des événements (#10).
-- Intégration d'un bouton de visioconférence dans la modale d'événement, avec génération de lien et tests associés (#7, #8).
-- Possibilité d'afficher l'URL ICS dans les emails d'invitation.
-- Ajout d'une couleur par défaut pour les calendriers (#10).
+- Ajout de liens de confirmation de participation (RSVP) dans les emails d'invitation aux événements [#10](https://github.com/suitenumerique/calendars/issues/10).
+- Implémentation du partage de calendriers avec une nouvelle interface utilisateur et suppression de la terminologie "agenda" [#12](https://github.com/suitenumerique/calendars/issues/12).
+- Ajout d'une fonctionnalité d'importation d'événements via un modal dédié.
+- Ajout d'un bouton de visioconférence dans le modal d'événement, avec génération d'un lien [#8](https://github.com/suitenumerique/calendars/issues/8).
+- Ajout d'un backend pour la gestion des "Entitlements" avec support pour Deploy Center [#31](https://github.com/suitenumerique/calendars/issues/31).
+- Ajout d'une couleur par défaut pour les calendriers.
 
 ### Évolutions techniques
-- Ajout du support de l'architecture ARM64 pour les images Docker et mise à jour des étapes du workflow CI (#11).
-- Optimisation du chargement des calendriers visibles en utilisant une seule requête SQL (#10).
-- Refactorisation de la modale d'événement en composants plus petits (#7).
-- Suppression des modèles `Calendar` et `CalendarShare` (#10).
-- Amélioration du buildpack Scalingo et ajout d'un favicon dynamique (#10).
-- Correction du CI et nettoyage général du dépôt (#12).
-- Correction d'un problème de double conversion de fuseau horaire dans l'affichage du calendrier (#12).
+- Ajout du support de l'architecture ARM64 pour les images Docker et amélioration du workflow CI [#11](https://github.com/suitenumerique/calendars/issues/11).
+- Refactoring du `EventModal` en composants de section pour une meilleure organisation du code [#7](https://github.com/suitenumerique/calendars/issues/7).
+- Optimisation de la récupération des calendriers visibles en utilisant une seule requête et en les affichant de manière plus efficace [#12](https://github.com/suitenumerique/calendars/issues/12).
+- Suppression des modèles `Calendar` et `CalendarShare` pour simplifier la structure des données [#12](https://github.com/suitenumerique/calendars/issues/12).
+- Ajout d'un buildpack Scalingo et d'une favicon dynamique.
+- Amélioration du CI et nettoyage général du code [#12](https://github.com/suitenumerique/calendars/issues/12).
 
 ### Autres changements
-- Réorganisation de la documentation dans le dossier `docs/`.
-- Correction de textes sur la page d'accueil.
-- Corrections mineures de style et de formatage dans le frontend et le backend.
-- Suppression des fichiers OpenSpec du suivi Git.
-- Mise à jour des artefacts OpenSpec pour la correction du fuseau horaire.
-- Mise à jour des compétences et commandes OpenSpec.
+- Réorganisation de la documentation dans le dossier `docs/` [#12](https://github.com/suitenumerique/calendars/issues/12).
+- Corrections de textes sur la page d'accueil.
+- Corrections mineures de style et de formatage du code.
+- Ajout de tests pour la fonctionnalité de visioconférence.
+- Extraction de l'URL ICS et affichage dans les emails d'invitation.
