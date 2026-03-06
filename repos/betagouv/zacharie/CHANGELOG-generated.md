@@ -1,49 +1,43 @@
 ## Changelog : zacharie (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les évolutions récentes de Zacharie, l'application de traçabilité du gibier sauvage. Les dernières mises à jour se concentrent sur l'amélioration de l'interface utilisateur, la correction de bugs, l'optimisation de la synchronisation des données et l'ajout de nouvelles fonctionnalités pour faciliter la gestion des informations relatives au gibier, notamment pour les circuits courts et les utilisateurs administrateurs.
+Ce changelog résume les améliorations apportées à Zacharie au cours du dernier mois. Les utilisateurs bénéficieront d'une meilleure expérience grâce à des corrections de bugs, des améliorations de l'interface utilisateur et de nouvelles fonctionnalités comme la création simplifiée de CCG (Circuit Court Groupement) lors du flux de déclaration de FEI (Fiche d'Examen Initiale). Des optimisations techniques ont également été réalisées pour améliorer la synchronisation des données et la gestion des entités.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page FAQ avec des guides et des liens de navigation (#201).
-- Amélioration de l'onboarding avec des corrections d'UI/UX (#195).
-- Ajout de la possibilité de créer des contacts circuit court directement pendant le flux de création d'une Fiche d'Examen Initial (FEI) (#147).
-- Synchronisation des contacts circuit court avec Brevo (#144).
-- Ajout de champs de propriété à la fiche Carcasse (#145).
-- Ajout d'un tableau avec des fonctionnalités de recherche et de tri (#168).
-- Ajout de placeholders vides pour améliorer l'expérience utilisateur (#167).
-- Ajout de labels UI améliorés (#164).
-- Ajout d'une barre de recherche UI (#163).
-- Ajout d'un onglet utilisateur dans l'administration (#192).
-- Correction du tri des FEI (#186, #187).
-- Amélioration du chargement des entités et des utilisateurs (#191).
-- Correction de l'affichage des FEI assignés aux SVI (#194).
-- Correction d'un problème de message d'aide pour les lots (#193).
-- Correction de l'affichage du lien actif (#196).
-- Correction de l'obtention de l'entité (#196).
-- Amélioration de la gestion des carcasses en transmission (#180).
-- Amélioration de la pagination (#180).
+- Correction d'un bug empêchant la création de partenaires avec une adresse email déjà existante. [#159](https://github.com/betagouv/zacharie/issues/159)
+- Amélioration de la gestion des fiches FEI : possibilité de créer un CCG directement pendant le processus. [#147](https://github.com/betagouv/zacharie/issues/147)
+- Synchronisation des contacts des circuits courts avec Brevo (outil de communication). [#144](https://github.com/betagouv/zacharie/issues/144)
+- Correction de l'export des colonnes SVI. [#206](https://github.com/betagouv/zacharie/issues/206)
+- Clôture automatique des fiches circuit court lors de la transmission. [#200](https://github.com/betagouv/zacharie/issues/200)
+- Amélioration du wording du destinataire. [#205](https://github.com/betagouv/zacharie/issues/205)
+- Ajout d'une page FAQ avec des guides et des liens de navigation. [#201](https://github.com/betagouv/zacharie/issues/201)
+- Ajout d'un placeholder pour les vues vides. [#167](https://github.com/betagouv/zacharie/issues/167)
+- Amélioration de la table et de la barre de recherche. [#164](https://github.com/betagouv/zacharie/issues/164)
+- Correction de l'affichage du champ `feisAssigned` pour les SVI.
+- Amélioration de l'interface utilisateur pour l'onboarding. [#195](https://github.com/betagouv/zacharie/issues/195)
+- Ajout d'une nouvelle fonctionnalité pour la création de fiches. [#197](https://github.com/betagouv/zacharie/issues/197)
+- Correction de l'affichage dynamique de la FAQ.
+- Correction du menu responsive.
+- Suppression d'un lien dupliqué.
+- Correction d'un warning lors de la création d'un nouveau partenaire. [#192](https://github.com/betagouv/zacharie/issues/192)
+- Correction de l'affichage des champs sur les carcasses.
+- Correction de la pagination.
+- Amélioration du chargement des entités et des utilisateurs.
+- Correction de la transmission des carcasses.
 
 ### Évolutions techniques
-- Refactorisation de l'extraction des effets secondaires des contrôleurs de carcasse et FEI.
-- Remplacement de la file d'attente PQueue par un appel POST groupé vers /sync pour améliorer la synchronisation des données (#188).
-- Ajout de types SyncRequest/SyncResponse pour la synchronisation.
-- Correction d'un problème de race condition entre ETG et transport (#180).
-- Correction de la gestion des données intermédiaires pour éviter les erreurs de sérialisation.
-- Amélioration de la gestion du cache dans l'administration.
-- Correction de la gestion des données de carcasses en transmission.
-- Amélioration du chargement des entités et des utilisateurs.
-- Correction de la gestion des données intermédiaires.
-- Suppression des FEI terminées de l'application.
-- Mise à jour des dépendances : minimatch, @getbrevo/brevo, tar, ajv (#189, #187, #186).
-- Amélioration de la gestion des relations en tests (#185).
-- Séparation de composants pour une meilleure maintenabilité (#182).
+- Refactorisation de la synchronisation des données hors ligne avec une nouvelle approche utilisant une requête POST en masse pour améliorer les performances.
+- Extraction de la logique de sauvegarde des FEIs et des carcasses dans des fonctions distinctes pour une meilleure organisation du code.
+- Optimisation du chargement des FEIs.
+- Nettoyage du code et suppression de code inutile.
+- Mise à jour de la documentation (CLAUD.md et README.md).
+- Amélioration de la gestion des tests.
+- Correction de problèmes de race condition liés à la transmission des données.
+- Suppression des FEIs terminés de l'application.
 
 ### Autres changements
-- Mise à jour de la documentation CLAUDE.md (#183).
-- Mise à jour du README.md.
-- Correction de problèmes liés à Brevo (#179).
-- Correction de problèmes de rafraîchissement des utilisateurs (#181).
-- Nettoyage du code et refactoring divers.
-- Correction de problèmes de chargement des entités et des utilisateurs.
-- Suppression de code inutile.
-- Correction de tests.
+- Mise à jour des dépendances : minimatch, @getbrevo/brevo, tar, ajv. [#189](https://github.com/betagouv/zacharie/issues/189), [#187](https://github.com/betagouv/zacharie/issues/187), [#186](https://github.com/betagouv/zacharie/issues/186)
+- Correction de la configuration de Brevo.
+- Mise à jour du fichier `.gitignore`.
+- Amélioration de la gestion du cache administrateur.
+- Correction de bugs mineurs et améliorations diverses de l'interface utilisateur.

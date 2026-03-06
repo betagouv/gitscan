@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/betagouv/zacharie",
   "name": "zacharie",
-  "description": "Zacharie est une application de traçabilité du gibier sauvage, de la chasse à la consommation. Elle numérise le processus de suivi sanitaire du gibier, remplaçant les fiches papier par une application utilisable sur le terrain.",
+  "description": "Zacharie est une application de traçabilité du gibier sauvage, de la chasse à la consommation. Elle numérise le processus de traçabilité sanitaire du gibier, remplaçant les fiches papier par une application utilisable sur le terrain.",
   "language": "TypeScript",
   "features": [
     "Gestion de l'examen initial des carcasses",
     "Suivi de la chaîne de détention",
     "Gestion des décisions vétérinaires",
     "Synchronisation des données hors ligne",
-    "Gestion des utilisateurs (chasseurs, collecteurs, ETG, SVI, commerces)",
-    "Création de fiches d'examen initial (FEI)",
-    "Gestion des contacts circuit court"
+    "Gestion des contacts circuit court",
+    "Tableau de bord pour les SVI"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -26,11 +25,11 @@
     "Playwright"
   ],
   "components": [
+    "Backend API (Express + Prisma + PostgreSQL)",
     "Frontend React",
-    "API REST (Express)",
-    "Base de données PostgreSQL",
-    "Application mobile (Expo/WebView)",
-    "Architecture local-first"
+    "Application mobile (Expo / WebView)",
+    "Tests end-to-end (Playwright)",
+    "Vues matérialisées PostgreSQL"
   ],
   "auth": {
     "methods": [
@@ -39,11 +38,11 @@
     ]
   },
   "tests": [
-    "Tests unitaires (Vitest)",
-    "Tests end-to-end (Playwright)"
+    "Vitest",
+    "Playwright"
   ],
   "workflows": [],
-  "lastActivity": "2026-02-27T10:46:48+01:00",
+  "lastActivity": "2026-03-04T17:34:55+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -61,7 +60,7 @@
     "TypeScript",
     "React",
     "PostgreSQL",
-    "local-first",
-    "venaison"
+    "hors-ligne",
+    "administration"
   ]
 }
