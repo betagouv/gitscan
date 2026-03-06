@@ -1,30 +1,25 @@
 ## Changelog : people (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application people se concentrent sur l'amélioration de la gestion des invitations, des alias et des domaines, ainsi que sur la correction de vulnérabilités de sécurité et l'optimisation des performances. Des améliorations de l'interface utilisateur ont également été apportées, notamment l'ajout d'icônes et la correction de problèmes de pagination.
+Les dernières mises à jour de l'application "people" se concentrent sur l'amélioration de la gestion des invitations, des statistiques, et de l'expérience utilisateur, notamment avec l'ajout d'icônes et la suppression d'invitations. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application. Enfin, des mises à jour techniques ont été effectuées pour corriger des vulnérabilités de sécurité et améliorer la configuration de l'environnement de développement.
 
 ### Évolutions fonctionnelles
-- Possibilité de supprimer les invitations par un administrateur (#1052).
-- Ajout d'une icône au bouton de configuration d'un domaine (#1054).
-- Affichage des invitations liées aux domaines dans l'interface (#1040).
+- Ajout d'une icône au bouton de configuration d'un domaine. [#1054](https://github.com/suitenumerique/people/issues/1054)
+- Possibilité pour un administrateur de supprimer des invitations. [#1052](https://github.com/suitenumerique/people/issues/1052)
 - Comptabilisation des alias dans l'endpoint de statistiques.
 - Ajout des alias à la démo.
-- Possibilité de supprimer les invitations expirées.
-- Gestion des alias : création, suppression et affichage.
-- Importation des alias existants depuis Dimail.
-- Synchronisation du mot de passe des nouvelles boîtes aux lettres avec Dimail.
+- Prise en compte de la casse lors de la recherche d'emails existants. [#1056](https://github.com/suitenumerique/people/issues/1056)
 
 ### Évolutions techniques
-- Mise à jour de Python à la version 3.14.2.
-- Migration de l'outil de gestion des dépendances de pip à uv.
-- Mise à jour des dépendances Python pour corriger des vulnérabilités de sécurité (pillow, cryptography, django, next).
 - Déplacement des exceptions liées aux invitations vers le cœur de l'application.
-- Simplification des tests liés aux invitations par email.
-- Correction d'une tentative d'envoi d'invitations à des utilisateurs existants.
+- Simplification des tests liés aux invitations de domaines par email.
+- Mise à jour de la version de Python à 3.14.2 pour la configuration Docker.
+- Mise à jour de la bibliothèque `next` vers la version 15.5.10 pour corriger une vulnérabilité de sécurité.
+- Mise à jour des dépendances Python.
 
 ### Autres changements
-- Correction de warnings linter.
 - Mise à jour des chaînes de traduction.
-- Correction d'un job d'upload Crowdin.
-- Ignorer la casse lors de la recherche d'emails existants (#1056).
-- Correction d'un bug lié à la pagination des domaines dans l'interface (#950, #946).
+- Publication des versions 1.23.1 et 1.23.0.
+- Correction de linter warnings.
+- Correction d'un problème d'upload dans Crowdin.
+- Correction d'une tentative d'envoi d'invitations à des utilisateurs existants.
