@@ -1,19 +1,15 @@
 ## Changelog : mon-aide-cyber (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à MonAideCyber, notamment des mises à jour de sécurité pour corriger des vulnérabilités identifiées, des améliorations pour les aidants et les organisations, et l'ajout d'un point de contact pour l'homologation.
+Les dernières mises à jour de MonAideCyber se concentrent sur la sécurité du service, avec la correction de vulnérabilités identifiées par Dependabot. Des améliorations ont également été apportées à la gestion des aidants et à la mise en relation avec les demandeurs, ainsi qu'un ajout d'un encart de contact pour l'homologation.
 
 ### Évolutions fonctionnelles
-- Les aidants peuvent désormais être récupérés en fonction de leur numéro SIRET. [#2373273](https://github.com/betagouv/mon-aide-cyber/commit/2373273)
-- La mise en relation entre les aidants et les organisations est maintenant possible. [#d9c4157](https://github.com/betagouv/mon-aide-cyber/commit/d9c4157)
-- Le lien du mail de contact "Devenir aidant" a été remplacé par un lien vers la page des relais associatifs. [#5d80e72](https://github.com/betagouv/mon-aide-cyber/commit/5d80e72)
-- Un encart de contact a été ajouté pour les questions concernant les fonctionnalités ou la sécurité de MAC. [#619c732](https://github.com/betagouv/mon-aide-cyber/commit/619c732)
+- Amélioration de la mise en relation entre les aidants et les demandeurs, permettant de récupérer les aidants en fonction de leur SIRET et d'effectuer la mise en relation pour une organisation. [#2373273](https://github.com/betagouv/mon-aide-cyber/pull/2373273), [#0d63da4](https://github.com/betagouv/mon-aide-cyber/commit/0d63da4), [#d9c4157](https://github.com/betagouv/mon-aide-cyber/commit/d9c4157)
+- Mise à jour du lien du mail de contact "Devenir aidant" pour rediriger vers la page des relais associatifs. [#5d80e72](https://github.com/betagouv/mon-aide-cyber/commit/5d80e72)
+- Ajout d'un encart de contact pour les questions relatives aux fonctionnalités ou à la sécurité du service en phase d'homologation. [#619c732](https://github.com/betagouv/mon-aide-cyber/commit/619c732)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `axios` pour corriger une vulnérabilité de sécurité. [#113](https://github.com/betagouv/mon-aide-cyber/security/dependabot/113)
-- Mise à jour de la dépendance `cookie-session` pour corriger une vulnérabilité de sécurité. [#101](https://github.com/betagouv/mon-aide-cyber/security/dependabot/101)
-- Mise à jour de la dépendance `lodash` pour corriger une vulnérabilité de sécurité. [#107](https://github.com/betagouv/mon-aide-cyber/security/dependabot/107)
-- Préparation de la migration vers Clever Cloud avec la mise à jour du bandeau de maintenance. [#b296192](https://github.com/betagouv/mon-aide-cyber/commit/b296192)
-
-### Autres changements
-- Mise à jour de la dépendance `qs` de la version 6.14.1 à la version 6.14.2. [#06c8027](https://github.com/betagouv/mon-aide-cyber/commit/06c8027)
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité : `minimatch` [#115](https://github.com/betagouv/mon-aide-cyber/security/dependabot/115), `basic-ftp` [#120](https://github.com/betagouv/mon-aide-cyber/security/dependabot/120), `axios` [#113](https://github.com/betagouv/mon-aide-cyber/security/dependabot/113), `cookie-session` [#101](https://github.com/betagouv/mon-aide-cyber/security/dependabot/101), `lodash` [#107](https://github.com/betagouv/mon-aide-cyber/security/dependabot/107).
+- Mise à jour de `storybook` de la version 9.1.17 à la version 9.1.19. [#578c017](https://github.com/betagouv/mon-aide-cyber/commit/578c017)
+- Mise à jour de `qs` de la version 6.14.1 à la version 6.14.2. [#06c8027](https://github.com/betagouv/mon-aide-cyber/commit/06c8027)
+- Préparation de l'infrastructure pour la migration vers Clever Cloud en mettant à jour le bandeau de maintenance. [#b296192](https://github.com/betagouv/mon-aide-cyber/commit/b296192)
