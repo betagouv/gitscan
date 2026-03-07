@@ -20,36 +20,52 @@
 │   │   ├── clock.sh
 │   │   ├── post_compile
 │   │   └── post_deploy
-│   ├── core
+│   ├── config
 │   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── management
-│   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       └── collectivites_en_base.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
-│   │   │   ├── 0003_vuecollectiviteadhesionsdeep.py
-│   │   │   ├── 0004_viewcommuneadhesionsdeep.py
-│   │   │   ├── 0005_commune_collectivite_nouvelle_null_idx.py
-│   │   │   ├── 0006_delete_viewcollectiviteadhesionsdeep.py
-│   │   │   ├── 0007_alter_event_options.py
-│   │   │   ├── 0008_alter_communeprocedure_options.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
 │   │   ├── settings
 │   │   │   ├── __init__.py
 │   │   │   ├── base.py
 │   │   │   ├── dev.py
 │   │   │   └── test.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── docurba
+│   │   ├── __init__.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── collectivites_en_base.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
+│   │   │   │   ├── 0003_vuecollectiviteadhesionsdeep.py
+│   │   │   │   ├── 0004_viewcommuneadhesionsdeep.py
+│   │   │   │   ├── 0005_commune_collectivite_nouvelle_null_idx.py
+│   │   │   │   ├── 0006_delete_viewcollectiviteadhesionsdeep.py
+│   │   │   │   ├── 0007_alter_event_options.py
+│   │   │   │   ├── 0008_alter_communeprocedure_options.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   └── views.py
 │   │   ├── templates
 │   │   │   ├── 404.html
-│   │   │   └── collectivite.html
-│   │   ├── urls.py
-│   │   ├── views.py
-│   │   └── wsgi.py
+│   │   │   └── core
+│   │   │       └── collectivite.html
+│   │   └── users
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── enums.py
+│   │       ├── migrations
+│   │       │   ├── 0001_initial.py
+│   │       │   ├── 0002_add_column_departements.py
+│   │       │   └── __init__.py
+│   │       └── models.py
 │   ├── manage.py
 │   ├── pyproject.toml
 │   ├── scalingo.json
@@ -62,7 +78,6 @@
 │   │   └── restore_database.sh
 │   ├── tests
 │   │   ├── __init__.py
-│   │   ├── conftest.py
 │   │   ├── core
 │   │   │   ├── __init__.py
 │   │   │   ├── test_admin.py
@@ -73,16 +88,6 @@
 │   │       ├── __init__.py
 │   │       ├── factories.py
 │   │       └── test_models.py
-│   ├── users
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── enums.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_add_column_departements.py
-│   │   │   └── __init__.py
-│   │   └── models.py
 │   └── uv.lock
 ├── nuxt
 │   ├── .editorconfig
@@ -957,4 +962,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-186 directories, 815 files
+189 directories, 817 files
