@@ -1,22 +1,24 @@
 ## Changelog : nosgestesclimat (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de nosgestesclimat se concentrent sur l'amélioration de la précision des données, la correction de bugs et l'ajout de traductions pour une meilleure expérience utilisateur. Des mises à jour des données CEREN et des services sociétaux ont été intégrées, ainsi que des corrections concernant les funfacts et les personas.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la précision des calculs, la mise à jour des données utilisées pour l'estimation de l'empreinte carbone, et l'amélioration de l'expérience utilisateur grâce à des corrections de texte et des traductions. Une nouvelle version (4.9.0) a été publiée avec ces améliorations.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant le coefficient utilisé dans les calculs [#2727](https://github.com/incubateur-ademe/nosgestesclimat/pull/2727).
-- Mise à jour des données DLUO pour les services sociétaux [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
-- Correction d'un bug concernant les funfacts liés aux repas et aux voyages en avion [#2727](https://github.com/incubateur-ademe/nosgestesclimat/pull/2727).
-- Amélioration de la gestion des personas et correction d'un problème d'affichage dans la mosaïque bois [#2723](https://github.com/incubateur-ademe/nosgestesclimat/pull/2723).
-- Suppression des liens sortants dans la description des éléments [#2725](https://github.com/incubateur-ademe/nosgestesclimat/pull/2725).
-- Ajout de traductions pour les règles et les actions pédagogiques [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
-- Amélioration de la formulation de certains textes [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
+- Correction du coefficient utilisé pour certains calculs [#2726](https://github.com/incubateur-ademe/nosgestesclimat/pull/2726).
+- Mise à jour des données CEREN pour une meilleure précision des calculs [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
+- Amélioration des "fun facts" (informations pédagogiques) concernant les repas et les voyages en avion [#2727](https://github.com/incubateur-ademe/nosgestesclimat/pull/2727).
+- Mise à jour des données des services sociétaux [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
+- Correction de l'affichage des personas (profils types) [#2723](https://github.com/incubateur-ademe/nosgestesclimat/pull/2723).
+- Amélioration de la traduction des règles de calcul [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
+- Correction du wording (libellés) dans l'interface utilisateur [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `publicodes-empreinte-carbone-chauffage` [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
-- Correction de la conversion des unités [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
-- Nettoyage du code et suppression de fichiers obsolètes [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
+- Mise à jour de la librairie `publicodes-empreinte-carbone-chauffage` [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
+- Suppression de fichiers obsolètes [#2722](https://github.com/incubateur-ademe/nosgestesclimat/pull/2722).
+- Correction de la conversion d'unités [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
+- Suppression des liens sortants dans les descriptions [#2725](https://github.com/incubateur-ademe/nosgestesclimat/pull/2725).
 
 ### Autres changements
-- Publication des versions 4.9.0 et 4.9.1.
-- Intégration des données CEREN mises à jour [#2717](https://github.com/incubateur-ademe/nosgestesclimat/pull/2717).
+- Publication de la version 4.9.0 [#2725](https://github.com/incubateur-ademe/nosgestesclimat/pull/2725).
+- Publication de la version 4.9.1 [#2726](https://github.com/incubateur-ademe/nosgestesclimat/pull/2726).
+- Mise à jour des dépendances npm et yarn (routine) [#2726](https://github.com/incubateur-ademe/nosgestesclimat/pull/2726), [#2725](https://github.com/incubateur-ademe/nosgestesclimat/pull/2725).
