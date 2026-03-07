@@ -1,39 +1,43 @@
 {
   "url": "https://github.com/betagouv/api-subventions-asso",
   "name": "api-subventions-asso",
-  "description": "L'API a pour objectif de mettre en commun les données des subventions publiques aux associations, de faciliter l'accès à ces informations pour les associations et d'accroître la transparence sur l'usage de l'argent public.",
+  "description": "L'API a pour objectif de faciliter l'accès des associations aux informations sur les subventions publiques et de rendre plus transparent l'utilisation de l'argent public. Elle collecte, croise et rend consultables les données de subventions via une interface web et une API.",
   "language": "TypeScript",
   "features": [
-    "Importation de fichiers Chorus",
-    "Export de données vers Metabase",
-    "Gestion des données SIREN/RNA",
+    "Importation de données Chorus",
     "API pour l'interopérabilité",
-    "Suivi des données",
-    "Dépôt de fichiers"
+    "Consultation des subventions",
+    "Dépôt de fichiers (SCDL)",
+    "Statistiques et suivi des données"
   ],
-  "audience": "Associations",
+  "audience": [
+    "Associations",
+    "Agents de l'Administration"
+  ],
   "dependencies": [
     "axios",
     "d3",
     "lerna",
-    "prettier-plugin-svelte"
+    "pnpm",
+    "typescript"
   ],
   "components": [
+    "Frontend React (implicite)",
     "API REST",
-    "Frontend React",
-    "Base de données (non spécifiée)",
-    "Microservices (architecture monorepo)"
+    "Base de données (MongoDB implicite)",
+    "Microservices (architecture monorepo)",
+    "S3 pour le stockage des fichiers"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "Jest, Pytest, Cypress (inferred from project structure)",
+  "tests": "Jest, Pytest, Cypress (déduit de la présence de scripts de test)",
   "workflows": [
-    "CI/CD (via .github/workflows)"
+    "CI/CD (défini dans .github/workflows, détails non disponibles)"
   ],
-  "lastActivity": "2026-02-25T00:00:00.000Z",
+  "lastActivity": "2026-02-26T00:00:00.000Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
