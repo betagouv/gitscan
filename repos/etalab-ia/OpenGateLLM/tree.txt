@@ -6,9 +6,7 @@
 │   ├── ISSUE_TEMPLATE
 │   │   ├── ⚙️-feature---improvements---chore.md
 │   │   └── 🐞-bug-report.md
-│   ├── PULL_REQUEST_TEMPLATE
-│   │   └── pull_request_template.md
-│   ├── README_INTEGRATION_TESTS.md
+│   ├── PULL_REQUEST_TEMPLATE.md
 │   ├── assets
 │   │   ├── logo.svg
 │   │   └── playground.config.yml
@@ -20,10 +18,9 @@
 │       ├── build_and_deploy.yml
 │       ├── codeql_scan.yml
 │       ├── deploy_documentation.yml
-│       ├── generate_documentation.yml
+│       ├── release_updates.yml
 │       ├── run_tests.yml
-│       ├── secrets_scan.yml
-│       └── update_pyproject_version.yml
+│       └── secrets_scan.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── CONTRIBUTING.md
@@ -70,7 +67,8 @@
 │   │       ├── 2025_12_16_1535-1db1572f2605_add_unique_constraint_on_provider_by_.py
 │   │       ├── 2025_12_16_1737-d2e9e967501b_add_default_value_carbon_params.py
 │   │       ├── 2025_12_17_0947-551b2920b23c_add_provider_router_list_relationship.py
-│   │       └── 2025_12_22_1507-f02a2525b97c_remove_carbon_footprint_prefix.py
+│   │       ├── 2025_12_22_1507-f02a2525b97c_remove_carbon_footprint_prefix.py
+│   │       └── 2026_02_26_1730-c206a2bfefe9_remove_min_max_carbon_impact.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -130,7 +128,6 @@
 │   │   │   ├── organizations.py
 │   │   │   ├── providers.py
 │   │   │   ├── roles.py
-│   │   │   ├── routers.py
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
 │   │   ├── audio.py
@@ -303,8 +300,6 @@
 │   │   │   │   └── test_tei_text_embeddings_inference.py
 │   │   │   ├── test_search.py
 │   │   │   ├── test_tools.py
-│   │   │   ├── utils
-│   │   │   │   └── snapshot_assertions.py
 │   │   │   └── utils.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
@@ -313,13 +308,19 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── provider
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── test_create_provider.py
+│   │   │   │   │   │   ├── test_delete_provider.py
+│   │   │   │   │   │   ├── test_get_one_provider.py
+│   │   │   │   │   │   └── test_get_providers.py
 │   │   │   │   │   └── router
 │   │   │   │   │       ├── __init__.py
 │   │   │   │   │       ├── test_create_router.py
 │   │   │   │   │       ├── test_delete_router.py
 │   │   │   │   │       ├── test_get_router.py
-│   │   │   │   │       └── test_get_routers.py
-│   │   │   │   ├── test_admin_providers.py
+│   │   │   │   │       ├── test_get_routers.py
+│   │   │   │   │       └── test_update_router.py
 │   │   │   │   └── test_models.py
 │   │   │   ├── factories.py
 │   │   │   ├── postgres
@@ -354,14 +355,20 @@
 │   │           ├── __init__.py
 │   │           ├── admin
 │   │           │   ├── __init__.py
+│   │           │   ├── providers
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── test_createproviderusecase.py
+│   │           │   │   ├── test_deleteproviderusecase.py
+│   │           │   │   ├── test_getoneproviderusecase.py
+│   │           │   │   └── test_getprovidersusecase.py
 │   │           │   └── routers
 │   │           │       ├── __init__.py
 │   │           │       ├── test_createrouterusecase.py
 │   │           │       ├── test_deleterouterusecase.py
 │   │           │       ├── test_getonerouterusecase.py
-│   │           │       └── test_getroutersusecase.py
+│   │           │       ├── test_getroutersusecase.py
+│   │           │       └── test_updaterouterusecase.py
 │   │           ├── factories.py
-│   │           ├── test_createproviderusecase.py
 │   │           └── test_getmodelsusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
@@ -369,13 +376,17 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── _createproviderusecase.py
+│   │   │   │   ├── _createproviderusecase.py
+│   │   │   │   ├── _deleteproviderusecase.py
+│   │   │   │   ├── _getoneproviderusecase.py
+│   │   │   │   └── _getprovidersusecase.py
 │   │   │   └── routers
 │   │   │       ├── __init__.py
 │   │   │       ├── _createrouterusecase.py
 │   │   │       ├── _deleterouterusecase.py
 │   │   │       ├── _getonerouterusecase.py
-│   │   │       └── _getroutersusecase.py
+│   │   │       ├── _getroutersusecase.py
+│   │   │       └── _updaterouterusecase.py
 │   │   └── models
 │   │       ├── __init__.py
 │   │       └── _getmodelsusecase.py
@@ -390,140 +401,89 @@
 │       ├── lifespan.py
 │       ├── load_balancing.py
 │       ├── logging.py
+│       ├── monitoring.py
 │       ├── qos.py
 │       ├── redis.py
 │       ├── routing.py
 │       ├── tools.py
 │       └── variables.py
+├── cli.py
 ├── compose.example.yml
 ├── config.example.yml
 ├── docs
-│   ├── .dockerignore
-│   ├── .gitignore
-│   ├── .prettierignore
-│   ├── .prettierrc
-│   ├── Dockerfile
-│   ├── README.md
-│   ├── blog
-│   │   ├── 2026-01-29-0.4.0-release-note.md
-│   │   ├── authors.yml
-│   │   └── tags.yml
-│   ├── celery.md
-│   ├── docs
-│   │   ├── contributing
-│   │   │   ├── commit-hooks.md
-│   │   │   ├── development-environment.md
-│   │   │   ├── documentation.md
-│   │   │   ├── index.mdx
-│   │   │   ├── sql.md
-│   │   │   └── tests.md
-│   │   ├── dependencies
-│   │   │   ├── celery.md
-│   │   │   ├── postgres.md
-│   │   │   ├── prometheus.md
-│   │   │   ├── redis.md
-│   │   │   ├── sentry.md
-│   │   │   └── vector_store.md
-│   │   ├── functionalities
-│   │   │   ├── budget.md
-│   │   │   ├── document-management
-│   │   │   │   ├── collections.md
-│   │   │   │   ├── index.md
-│   │   │   │   ├── parsing-and-chunking.md
-│   │   │   │   └── search.md
-│   │   │   ├── environmental_footprint.md
-│   │   │   ├── iam
-│   │   │   │   ├── api-keys.md
-│   │   │   │   ├── index.md
-│   │   │   │   ├── organizations-projects-users.md
-│   │   │   │   └── roles-permissions-rate-limitings.md
-│   │   │   ├── rate-limiting.md
-│   │   │   └── usage.md
-│   │   ├── getting-started
-│   │   │   ├── configuration_file.md
-│   │   │   ├── environment_variables.md
-│   │   │   └── quickstart.md
-│   │   ├── guides
-│   │   │   ├── IDE.md
-│   │   │   ├── audio_transcriptions.md
-│   │   │   ├── chat_completions.md
-│   │   │   ├── models.md
-│   │   │   ├── ocr.md
-│   │   │   └── rag.md
-│   │   ├── index.mdx
-│   │   └── models
-│   │       ├── models.md
-│   │       └── routing.md
-│   ├── docusaurus.config.ts
-│   ├── package-lock.json
+│   ├── astro.config.mjs
+│   ├── openapi.json
 │   ├── package.json
-│   ├── sidebars.ts
+│   ├── patches
+│   │   └── @astrojs+starlight+0.35.3.patch
+│   ├── public
+│   │   └── favicon.svg
+│   ├── redoc-static.html
 │   ├── src
+│   │   ├── assets
+│   │   │   ├── icons
+│   │   │   │   ├── elasticsearch.svg
+│   │   │   │   ├── kubernetes.svg
+│   │   │   │   ├── postgres.svg
+│   │   │   │   ├── prometheus.svg
+│   │   │   │   ├── redis.svg
+│   │   │   │   └── sentry.svg
+│   │   │   ├── img
+│   │   │   │   ├── centralsupelec_logo.png
+│   │   │   │   ├── dinum_logo.png
+│   │   │   │   ├── environmental_footprint_1.png
+│   │   │   │   └── environmental_footprint_2.png
+│   │   │   ├── logo.svg
+│   │   │   ├── make_quickstart.cast
+│   │   │   └── make_quickstart.gif
 │   │   ├── components
-│   │   │   ├── Card
-│   │   │   │   ├── CardBody
-│   │   │   │   │   └── index.tsx
-│   │   │   │   ├── CardFooter
-│   │   │   │   │   └── index.tsx
-│   │   │   │   ├── CardHeader
-│   │   │   │   │   └── index.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── ContributorsStatic
-│   │   │   │   └── index.tsx
-│   │   │   └── HomepageFeatures
-│   │   │       ├── index.tsx
-│   │   │       └── styles.module.css
-│   │   ├── css
-│   │   │   └── custom.css
-│   │   ├── data
-│   │   │   └── contributors.json
-│   │   ├── pages
-│   │   │   └── index.mdx
-│   │   ├── scripts
-│   │   │   └── fetch-contributor.js
-│   │   └── theme
-│   │       └── MDXComponents.js
+│   │   │   ├── IconLinkCard.astro
+│   │   │   └── Pagination.astro
+│   │   ├── content
+│   │   │   └── docs
+│   │   │       ├── configuration
+│   │   │       │   ├── configuration_file.md
+│   │   │       │   ├── dependencies
+│   │   │       │   │   ├── elasticsearch.mdx
+│   │   │       │   │   ├── index.mdx
+│   │   │       │   │   ├── postgres.mdx
+│   │   │       │   │   ├── prometheus.mdx
+│   │   │       │   │   ├── redis.mdx
+│   │   │       │   │   └── sentry.mdx
+│   │   │       │   └── environment_variable.md
+│   │   │       ├── contributing
+│   │   │       │   ├── development_environment.mdx
+│   │   │       │   ├── documentation.mdx
+│   │   │       │   ├── index.mdx
+│   │   │       │   ├── sql.mdx
+│   │   │       │   └── tests.mdx
+│   │   │       ├── deployment
+│   │   │       │   ├── kubernetes.mdx
+│   │   │       │   └── production.mdx
+│   │   │       ├── features
+│   │   │       │   ├── supported_models.mdx
+│   │   │       │   ├── usage
+│   │   │       │   │   ├── budget.mdx
+│   │   │       │   │   ├── environmental_footprint.mdx
+│   │   │       │   │   ├── index.mdx
+│   │   │       │   │   ├── inference_monitoring.mdx
+│   │   │       │   │   └── rate_limiting.mdx
+│   │   │       │   └── users_management
+│   │   │       │       └── index.mdx
+│   │   │       ├── getting-started
+│   │   │       │   ├── models.mdx
+│   │   │       │   └── quickstart.mdx
+│   │   │       ├── index.mdx
+│   │   │       └── overview
+│   │   │           └── presentation.mdx
+│   │   ├── content.config.ts
+│   │   └── pages
+│   │       └── reference
+│   │           └── index.html.ts
 │   ├── static
-│   │   ├── .nojekyll
-│   │   ├── functionnalities
-│   │   │   └── document-management
-│   │   │       └── search
-│   │   │           └── semantic_source_priority_boost.png
-│   │   └── img
-│   │       ├── banner.png
-│   │       ├── centralsupelec_logo.png
-│   │       ├── collections_001.png
-│   │       ├── collections_002.png
-│   │       ├── collections_003.png
-│   │       ├── collections_004.png
-│   │       ├── collections_005.png
-│   │       ├── deployment_001.png
-│   │       ├── dinum_logo.png
-│   │       ├── guides
-│   │       │   ├── ocr_10.jpg
-│   │       │   ├── ocr_11.jpg
-│   │       │   ├── ocr_12.jpg
-│   │       │   ├── ocr_13.jpg
-│   │       │   ├── ocr_15.jpg
-│   │       │   ├── ocr_16.jpg
-│   │       │   ├── ocr_17.jpg
-│   │       │   └── ocr_18.jpg
-│   │       ├── logo.svg
-│   │       ├── ogl_architecture.png
-│   │       ├── playground
-│   │       │   ├── environmental_footprint_1.png
-│   │       │   └── environmental_footprint_2.png
-│   │       ├── undraw_docusaurus_mountain.svg
-│   │       ├── undraw_docusaurus_react.svg
-│   │       └── undraw_docusaurus_tree.svg
-│   ├── tsconfig.json
-│   ├── tutorials
-│   │   ├── audio_transcriptions.ipynb
-│   │   ├── chat_completions.ipynb
-│   │   ├── models.ipynb
-│   │   ├── ocr.ipynb
-│   │   └── rag.ipynb
-│   └── yarn.lock
+│   │   ├── make_dev.cast
+│   │   └── make_quickstart.cast
+│   └── tsconfig.json
 ├── playground
 │   ├── Dockerfile
 │   ├── app
@@ -672,13 +632,12 @@
 ├── pyproject.toml
 ├── pytest.ini
 └── scripts
-    ├── create_first_user.py
+    ├── create_admin.py
     ├── docs
     │   ├── configuration_header.md
-    │   ├── convert_notebooks_to_docs.py
     │   └── generate_configuration_documentation.py
     ├── gunicorn.conf.py
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-148 directories, 535 files
+138 directories, 504 files
