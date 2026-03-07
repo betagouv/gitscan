@@ -1,32 +1,28 @@
 ## Changelog : ui-kit (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour du kit d'interface utilisateur se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du partage de données, du menu utilisateur et de l'onboarding. Des corrections de bugs et des améliorations de la documentation ont également été apportées. Plusieurs mises à jour de composants et de dépendances ont été intégrées pour une meilleure performance et stabilité.
+Ce changelog présente les récentes améliorations apportées au kit d'interface utilisateur. Les modifications incluent des corrections de style et d'accessibilité sur le menu utilisateur, des ajustements de design sur le composant de partage, et des corrections de typographie et de traductions. Une mise à jour de la librairie Cunningham a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Correction du padding du menu utilisateur [#175](https://github.com/suitenumerique/ui-kit/issues/175).
-- Amélioration de la visibilité de l'option de suppression dans le menu des rôles d'accès.
-- Ajout d'une propriété `can_delete` au type `AccessData` pour contrôler la visibilité de l'option de suppression.
-- Ajout du composant `ReleaseNoteModal` pour afficher les notes de version.
-- Amélioration du composant `OnboardingModal` avec un mode texte uniquement et une animation de description.
-- Correction de l'affichage de l'option de suppression dans le menu déroulant des rôles d'accès.
-- Correction d'une faute de frappe ("Ok" remplacé par "OK") dans les traductions.
-- Correction du lien dans le pied de page du modal d'onboarding et amélioration du style.
-- Correction du type `apiUrl` dans le composant `LaGaufreV2`.
-- Amélioration de la documentation du composant `ShareModal` dans Storybook.
+- Amélioration du style et de l'accessibilité du menu utilisateur. [#175](https://github.com/suitenumerique/ui-kit/issues/175)
+- Correction de l'affichage du padding du menu utilisateur.
+- Correction de la visibilité de l'option de suppression dans le menu de gestion des accès.
+- Amélioration du composant de partage avec des informations plus complètes et une conformité accrue aux maquettes Figma.
+- Ajout de la propriété `can_delete` et amélioration de la documentation Storybook du composant de partage.
+- Ajout du composant `ReleaseNoteModal`.
+- Déplacement de la gestion des accès dans le composant `AccessRoleDropdown`.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `cunningham-react` vers la version 4.2.0.
-- Suppression d'imports de styles inutilisés de `cunningham-react`.
-- Refactoring du code pour déplacer l'action de suppression dans le composant `AccessRoleDropdown`.
-- Utilisation de composants d'icônes React en ligne au lieu d'images SVG pour le partage.
-- Utilisation du composant `Button` de Cunningham pour le menu d'accès au rôle.
-- Correction d'un problème d'événements de clic droit sur les portails du menu contextuel.
+- Remplacement des images SVG par des composants React pour les icônes du bouton de partage, améliorant ainsi la maintenabilité et la performance.
+- Utilisation du composant `Button` de Cunningham pour le dropdown des rôles d'accès.
+- Suppression d'imports de styles Cunningham inutilisés, optimisant ainsi la taille du bundle et évitant des conflits de priorité CSS.
+- Mise à jour de la librairie `cunningham-react` vers la version 4.2.0.
+- Correction d'un problème d'événements `right-click` interceptés par les portails du menu contextuel.
 
 ### Autres changements
-- Ajout de documentation complète au fichier README.
-- Ajout de stories pour la fonctionnalité `can_delete`.
-- Amélioration de la documentation des stories pour le composant `OnboardingModal`.
-- Correction de la couleur du placeholder et de l'icône dans le champ de recherche rapide.
-- Ajout de documentation sur l'utilisation du composant `ReleaseNoteModal`.
-- Ajout de stories pour la fonctionnalité `can_delete`.
+- Correction d'une faute de typographie ("Ok" remplacé par "OK") dans les locales.
+- Correction d'une traduction française pour l'accès restreint.
+- Correction de la couleur du placeholder et de l'icône dans le composant de recherche rapide.
+- Correction d'un problème de re-rendu du composant `LaGaufreV2`.
+- Correction de la responsivité du menu utilisateur.
+- Ajout de l'export du composant `LaGaufreV2`.
