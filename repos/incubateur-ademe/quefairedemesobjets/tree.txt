@@ -22,6 +22,7 @@
 │   ├── release-config.yml
 │   └── workflows
 │       ├── _airflow-build-and-push-docker.yml
+│       ├── _backend-test-job.yml
 │       ├── _deploy-airflow.yml
 │       ├── _deploy-on-scalingo.yml
 │       ├── _deploy-webapp.yml
@@ -915,6 +916,11 @@
     │   ├── context_processors.py
     │   ├── exceptions.py
     │   ├── logging.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   └── commands
+    │   │       ├── __init__.py
+    │   │       └── createsuperuser_example.py
     │   ├── models
     │   │   ├── constants.py
     │   │   ├── mixin.py
@@ -1017,6 +1023,7 @@
     │   ├── carte.spec.ts
     │   ├── carte_config.spec.ts
     │   ├── copy_controller.spec.ts
+    │   ├── django-admin.spec.ts
     │   ├── embed_scripts.spec.ts
     │   ├── fixtures.ts
     │   ├── formulaire.spec.ts
@@ -1081,6 +1088,7 @@
     │   │       ├── __init__.py
     │   │       ├── create_assistant_permissions.py
     │   │       ├── create_wagtail_pages.py
+    │   │       ├── fix_searchtag_names_from_synonymes.py
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
     │   │       ├── migrate_from_sites_faciles_experiment.py
@@ -1129,6 +1137,7 @@
     │   │   ├── 0072_alter_produitindexpage_body_alter_produitpage_body.py
     │   │   ├── 0073_remove_synonyme_id_and_more.py
     │   │   ├── 0074_synonyme_disabled.py
+    │   │   ├── 0080_remove_synonyme_disabled.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── signals.py
@@ -1228,6 +1237,7 @@
     │   │   ├── 0186_merge_20251219_1026.py
     │   │   ├── 0187_alter_acteur_identifiant_unique_and_more.py
     │   │   ├── 0188_carteconfig_cacher_filtre_objet_carteconfig_test.py
+    │   │   ├── 0189_alter_carteconfig_slug.py
     │   │   ├── __init__.py
     │   │   └── fixtures
     │   │       ├── categorieobjets.json
@@ -1263,6 +1273,7 @@
     │   ├── constants.py
     │   ├── migrations
     │   │   ├── 0001_initial.py
+    │   │   ├── 0002_searchterm_disabled.py
     │   │   └── __init__.py
     │   ├── models.py
     │   └── wagtail_hooks.py
@@ -1297,6 +1308,7 @@
     │       ├── controllers
     │       │   ├── admin
     │       │   │   ├── categorie_widget_controller.ts
+    │       │   │   ├── map_search_controller.ts
     │       │   │   └── suggestion_groupe_row_controller.ts
     │       │   ├── assistant
     │       │   │   ├── blink.ts
@@ -1334,6 +1346,7 @@
     │       │   ├── solution_map.ts
     │       │   ├── types.ts
     │       │   └── url_utils.ts
+    │       ├── ol.d.ts
     │       ├── qfdmd.ts
     │       ├── qfdmo.ts
     │       ├── styles
@@ -1365,7 +1378,7 @@
     │       └── tests
     │           ├── choose_action_controller.test.ts
     │           ├── iframe_functions.test.ts
-    │           └── url_utils.test.ts
+    │           └── map_search_controller.test.ts
     ├── stats
     │   ├── __init__.py
     │   ├── api.py
@@ -1379,7 +1392,6 @@
     │   │   │   └── change_form.html
     │   │   ├── base.html
     │   │   ├── custom-openlayers-with-search.html
-    │   │   ├── custom-openlayers.html
     │   │   ├── input_filter.html
     │   │   ├── nav_sidebar.html
     │   │   ├── qfdmd
@@ -1785,4 +1797,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-338 directories, 1449 files
+340 directories, 1459 files
