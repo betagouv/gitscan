@@ -335,7 +335,6 @@
 │   │   ├── users
 │   │   │   ├── confirmations_controller.rb
 │   │   │   ├── file_attentes_controller.rb
-│   │   │   ├── invitations_controller.rb
 │   │   │   ├── login_codes_controller.rb
 │   │   │   ├── participations_controller.rb
 │   │   │   ├── passwords_controller.rb
@@ -470,7 +469,6 @@
 │   │   │   ├── past-date-alert.js
 │   │   │   ├── places-inputs.js
 │   │   │   ├── plage_ouverture.js
-│   │   │   ├── planning-agent-select.js
 │   │   │   ├── planning-agents-select.js
 │   │   │   ├── prevent-default.js
 │   │   │   ├── rdv-user-select.js
@@ -489,7 +487,6 @@
 │   │   │   ├── dependent_input_controller.js
 │   │   │   ├── destroyable_controller.js
 │   │   │   ├── form_controller.js
-│   │   │   ├── index.js
 │   │   │   ├── lagaufre.js
 │   │   │   ├── motif_form_controller.js
 │   │   │   ├── print_controller.js
@@ -544,6 +541,7 @@
 │   │       │   ├── _bubble.scss
 │   │       │   ├── _button_group_before_card.scss
 │   │       │   ├── _calendar.scss
+│   │       │   ├── _callout.scss
 │   │       │   ├── _cards.scss
 │   │       │   ├── _creneaux.scss
 │   │       │   ├── _dropdown.scss
@@ -722,11 +720,9 @@
 │   │   │   │   ├── using_waiting_room.rb
 │   │   │   │   └── visio_concern.rb
 │   │   │   ├── recurrence_concern.rb
-│   │   │   ├── redis_file_storable.rb
 │   │   │   ├── strong_password_concern.rb
 │   │   │   ├── text_search.rb
 │   │   │   ├── user
-│   │   │   │   ├── devise_invitable_with_domain.rb
 │   │   │   │   ├── franceconnect_frozen_fields_concern.rb
 │   │   │   │   ├── improved_unicity_error_concern.rb
 │   │   │   │   ├── notificable_concern.rb
@@ -736,6 +732,7 @@
 │   │   ├── creneau.rb
 │   │   ├── domain.rb
 │   │   ├── export.rb
+│   │   ├── export_file_blob.rb
 │   │   ├── external_calendar_event.rb
 │   │   ├── external_reference.rb
 │   │   ├── file_attente.rb
@@ -1514,9 +1511,6 @@
 │       │   └── users
 │       │       └── show.html.slim
 │       ├── users
-│       │   ├── invitations
-│       │   │   ├── edit.html.slim
-│       │   │   └── invitation.html.slim
 │       │   ├── organisations
 │       │   │   └── _contact_info.html.slim
 │       │   ├── participations
@@ -1540,8 +1534,7 @@
 │       │   │   └── show.html.slim
 │       │   ├── registrations
 │       │   │   ├── edit.html.slim
-│       │   │   ├── new.html.slim
-│       │   │   └── pending.html.slim
+│       │   │   └── new.html.slim
 │       │   ├── relatives
 │       │   │   ├── _form_fields.html.slim
 │       │   │   ├── edit.html.slim
@@ -1992,7 +1985,9 @@
 │   │   ├── 20260220095942_remove_phone_numbers_in_territory.rb
 │   │   ├── 20260220101844_remove_default_service_id_from_oauth_applications.rb
 │   │   ├── 20260223104814_add_caldav_disconnect_in_progress_at_to_agents.rb
-│   │   └── 20260224092756_remove_caldav_disconnect_in_progress_from_agents.rb
+│   │   ├── 20260224092756_remove_caldav_disconnect_in_progress_from_agents.rb
+│   │   ├── 20260302081619_create_export_file_blobs.rb
+│   │   └── 20260304111613_add_latest_login_at_to_users.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2244,42 +2239,27 @@
 │   │   │   └── users_pages_spec.rb
 │   │   ├── agents
 │   │   │   ├── account
-│   │   │   │   ├── agent_can_accept_invit_spec.rb
+│   │   │   │   ├── agent_can_accept_invite_spec.rb
+│   │   │   │   ├── agent_can_configure_their_preferences_spec.rb
 │   │   │   │   ├── agent_can_login_spec.rb
 │   │   │   │   ├── agent_can_reset_his_password_spec.rb
+│   │   │   │   ├── agent_can_unsync_his_account_to_outlook_spec.rb
 │   │   │   │   ├── agent_session_expires_spec.rb
 │   │   │   │   ├── change_email_spec.rb
 │   │   │   │   └── change_password_spec.rb
-│   │   │   ├── admin_can_configure_the_organisation_spec.rb
-│   │   │   ├── admin_can_configure_the_territory_spec.rb
 │   │   │   ├── admin_can_see_the_organisation_stats_spec.rb
-│   │   │   ├── agent_can_configure_their_preferences_spec.rb
-│   │   │   ├── agent_can_create_rdv_with_creneau_search_spec.rb
-│   │   │   ├── agent_can_create_rdv_with_wizard_spec.rb
-│   │   │   ├── agent_can_create_relative_and_responsible_spec.rb
-│   │   │   ├── agent_can_crud_absences_spec.rb
-│   │   │   ├── agent_can_crud_intervenants_spec.rb
-│   │   │   ├── agent_can_crud_plage_ouvertures_spec.rb
-│   │   │   ├── agent_can_destroy_plage_ouverture_spec.rb
-│   │   │   ├── agent_can_edit_user_referents_spec.rb
-│   │   │   ├── agent_can_export_rdvs_spec.rb
-│   │   │   ├── agent_can_list_rdvs_spec.rb
-│   │   │   ├── agent_can_manage_recurrence_on_plage_ouverture_spec.rb
 │   │   │   ├── agent_can_prescribe_rdvs_spec.rb
-│   │   │   ├── agent_can_search_plage_ouverture_spec.rb
 │   │   │   ├── agent_can_see_stats_spec.rb
 │   │   │   ├── agent_can_see_users_rdv_spec.rb
 │   │   │   ├── agent_can_sync_his_account_to_outlook_spec.rb
-│   │   │   ├── agent_can_test_online_booking_spec.rb
-│   │   │   ├── agent_can_unsync_his_account_to_outlook_spec.rb
-│   │   │   ├── agent_can_update_rdv_spec.rb
-│   │   │   ├── agent_cant_create_duplicate_rdv_spec.rb
-│   │   │   ├── agent_has_a_calendar_spec.rb
 │   │   │   ├── agents
+│   │   │   │   ├── agent_can_crud_intervenants_spec.rb
 │   │   │   │   ├── crud_on_agents_spec.rb
 │   │   │   │   └── with_or_without_service_spec.rb
 │   │   │   ├── calendar_export_spec.rb
-│   │   │   ├── cancel_rdv_spec.rb
+│   │   │   ├── configuration
+│   │   │   │   ├── admin_can_configure_the_organisation_spec.rb
+│   │   │   │   └── admin_can_configure_the_territory_spec.rb
 │   │   │   ├── create_rdv_with_rdv_plan_spec.rb
 │   │   │   ├── disabled_fields_spec.rb
 │   │   │   ├── editing_territorial_admins_spec.rb
@@ -2289,20 +2269,37 @@
 │   │   │   │   ├── crud_spec.rb
 │   │   │   │   ├── duplicate_spec.rb
 │   │   │   │   └── with_or_without_service_spec.rb
-│   │   │   ├── navigation_to_the_agenda_spec.rb
 │   │   │   ├── oauth_provider_spec.rb
 │   │   │   ├── online_booking
+│   │   │   │   ├── agent_can_test_online_booking_spec.rb
 │   │   │   │   ├── configuration_spec.rb
 │   │   │   │   └── motif_spec.rb
 │   │   │   ├── planning
-│   │   │   │   └── keeping_agent_context_spec.rb
+│   │   │   │   ├── agent_can_crud_absences_spec.rb
+│   │   │   │   ├── agent_can_crud_plage_ouvertures_spec.rb
+│   │   │   │   ├── agent_can_destroy_plage_ouverture_spec.rb
+│   │   │   │   ├── agent_can_manage_recurrence_on_plage_ouverture_spec.rb
+│   │   │   │   ├── agent_can_search_plage_ouverture_spec.rb
+│   │   │   │   ├── agent_has_a_calendar_spec.rb
+│   │   │   │   ├── keeping_agent_context_spec.rb
+│   │   │   │   └── navigation_to_the_agenda_spec.rb
 │   │   │   ├── rdv_collectifs
 │   │   │   │   └── finding_creneau_spec.rb
-│   │   │   ├── rdv_details_spec.rb
 │   │   │   ├── rdv_wizard
+│   │   │   │   ├── agent_can_create_rdv_with_wizard_spec.rb
 │   │   │   │   ├── step2_spec.rb
 │   │   │   │   ├── step3_spec.rb
 │   │   │   │   └── step4_spec.rb
+│   │   │   ├── rdvs
+│   │   │   │   ├── agent_can_create_rdv_with_creneau_search_spec.rb
+│   │   │   │   ├── agent_can_export_rdvs_spec.rb
+│   │   │   │   ├── agent_can_list_rdvs_spec.rb
+│   │   │   │   ├── agent_can_update_rdv_spec.rb
+│   │   │   │   ├── agent_cant_create_duplicate_rdv_spec.rb
+│   │   │   │   ├── cancel_rdv_spec.rb
+│   │   │   │   ├── rdv_details_spec.rb
+│   │   │   │   ├── renseigner_rdv_spec.rb
+│   │   │   │   └── visioconference_spec.rb
 │   │   │   ├── rdvs_collectifs
 │   │   │   │   ├── agent_can_add_users_to_rdv_collectif_spec.rb
 │   │   │   │   ├── agent_can_create_and_edit_rdv_collectif_en_visio_spec.rb
@@ -2314,7 +2311,6 @@
 │   │   │   │   ├── agent_can_create_relative_spec.rb
 │   │   │   │   ├── agent_can_delete_relative_spec.rb
 │   │   │   │   └── agent_can_update_relative_spec.rb
-│   │   │   ├── renseigner_rdv_spec.rb
 │   │   │   ├── sectorisation
 │   │   │   │   ├── motifs_spec.rb
 │   │   │   │   └── sectorisation_setup_spec.rb
@@ -2324,10 +2320,10 @@
 │   │   │   │   ├── agent_can_create_user_spec.rb
 │   │   │   │   ├── agent_can_delete_user_spec.rb
 │   │   │   │   ├── agent_can_display_user_spec.rb
+│   │   │   │   ├── agent_can_edit_user_referents_spec.rb
 │   │   │   │   ├── agent_can_merge_users_spec.rb
 │   │   │   │   ├── agent_can_update_user_spec.rb
 │   │   │   │   └── users_spec.rb
-│   │   │   ├── visioconference_spec.rb
 │   │   │   └── visioplainte
 │   │   │       └── sundays_spec.rb
 │   │   ├── allocation_for_search_context_spec.rb
@@ -2480,6 +2476,7 @@
 │   │   │   └── import_absences_from_caldav_job_spec.rb
 │   │   ├── cron_job
 │   │   │   ├── anonymize_old_receipts_spec.rb
+│   │   │   ├── destroy_expired_export_file_blobs_spec.rb
 │   │   │   ├── destroy_inactive_agents_spec.rb
 │   │   │   ├── destroy_old_absences_job_spec.rb
 │   │   │   ├── destroy_old_oauth_objects_spec.rb
@@ -2873,4 +2870,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-441 directories, 2434 files
+442 directories, 2430 files

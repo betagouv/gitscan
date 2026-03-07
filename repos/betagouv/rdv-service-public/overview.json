@@ -4,45 +4,51 @@
   "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l'État, aux opérateurs de services publics et aux collectivités territoriales.",
   "language": "JavaScript",
   "features": [
-    "Prise de rendez-vous",
     "Gestion des rendez-vous",
+    "Prise de rendez-vous en ligne",
     "Synchronisation CalDAV",
     "Notifications",
-    "Recherche",
-    "Gestion des organisations",
-    "Authentification"
+    "Gestion des utilisateurs",
+    "API",
+    "Statistiques d'utilisation",
+    "Intégration avec ProConnect"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Bootstrap",
-    "Chart.js",
     "FullCalendar",
-    "jQuery",
+    "Chart.js",
     "Webpack",
-    "Yarn"
+    "Yarn",
+    "PostgreSQL",
+    "Redis"
   ],
   "components": [
     "Frontend JavaScript",
     "API REST",
     "Base de données PostgreSQL",
-    "Interface utilisateur React",
-    "Calendrier FullCalendar"
+    "Agenda FullCalendar",
+    "Serveur Node.js"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "email-password"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
+    "Jest",
     "Playwright",
-    "Jest"
+    "Cypress"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-27T13:58:10+01:00",
+  "lastActivity": "2026-03-06T14:54:15+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -59,7 +65,8 @@
     "javascript",
     "react",
     "caldav",
+    "proconnect",
     "rdv",
-    "service public"
+    "numerique"
   ]
 }
