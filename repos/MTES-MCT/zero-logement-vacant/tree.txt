@@ -1,4 +1,12 @@
 .
+├── .claude
+│   ├── rules
+│   │   ├── backend-conventions.md
+│   │   ├── frontend-conventions.md
+│   │   └── packages-conventions.md
+│   └── skills
+│       └── implement-feature
+│           └── SKILL.md
 ├── .docker
 │   ├── README.md
 │   ├── dagster
@@ -367,7 +375,6 @@
 │   │   │   │   │   ├── marts_analysis_city_aggregated.sql
 │   │   │   │   │   ├── marts_analysis_housing_out_features.sql
 │   │   │   │   │   ├── marts_bi_housing_characteristics.sql
-│   │   │   │   │   ├── marts_bi_housing_complete.sql
 │   │   │   │   │   ├── marts_bi_housing_geography.sql
 │   │   │   │   │   ├── marts_bi_housing_owners.sql
 │   │   │   │   │   ├── marts_bi_housing_zlv_usage.sql
@@ -587,6 +594,7 @@
 │   ├── explorations
 │   │   ├── Anonymisation.ipynb
 │   │   ├── README_HOUSING_OUT.md
+│   │   ├── Test.ipynb
 │   │   ├── bash.sh
 │   │   ├── establishments
 │   │   │   ├── Fetch establishments.ipynb
@@ -603,6 +611,8 @@
 │   │   │   ├── QUERIES_EXPLORATION_TERRITORIALE.sql
 │   │   │   ├── cohort_overview.png
 │   │   │   ├── paper
+│   │   │   │   ├── PRESENTATION_BRIEF_HOUSING_OUT_ANALYSIS.md
+│   │   │   │   ├── README.md
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── analyze_characteristics.py
 │   │   │   │   ├── analyze_geography.py
@@ -617,9 +627,16 @@
 │   │   │   │   │   ├── deep_analysis_top_features.md
 │   │   │   │   │   ├── geographie_insights.md
 │   │   │   │   │   ├── proprietaires_insights.md
+│   │   │   │   │   ├── stratified_action_coeur_de_ville_caracteristiques.md
+│   │   │   │   │   ├── stratified_action_coeur_de_ville_complete.md
+│   │   │   │   │   ├── stratified_action_coeur_de_ville_geographie.md
+│   │   │   │   │   ├── stratified_action_coeur_de_ville_proprietaires.md
+│   │   │   │   │   ├── stratified_action_coeur_de_ville_zlv_usage.md
 │   │   │   │   │   └── zlv_usage_insights.md
 │   │   │   │   ├── pyproject.toml
 │   │   │   │   ├── run_analysis.py
+│   │   │   │   ├── run_stratified_analysis.py
+│   │   │   │   ├── stratification_config.py
 │   │   │   │   ├── utils.py
 │   │   │   │   └── uv.lock
 │   │   │   ├── queries
@@ -724,8 +741,6 @@
 ├── frontend
 │   ├── .env.example
 │   ├── .gitignore
-│   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── LICENSE
 │   ├── README.md
 │   ├── index.html
@@ -1480,7 +1495,10 @@
 │   │   │   │   ├── HousingListTabs.tsx
 │   │   │   │   ├── HousingListTabsProvider.tsx
 │   │   │   │   ├── HousingListView.test.tsx
-│   │   │   │   └── HousingListView.tsx
+│   │   │   │   ├── HousingListView.tsx
+│   │   │   │   ├── HousingListViewNext.tsx
+│   │   │   │   └── test
+│   │   │   │       └── HousingListViewNext.test.tsx
 │   │   │   ├── Login
 │   │   │   │   ├── LoginView.test.tsx
 │   │   │   │   ├── LoginView.tsx
@@ -1750,8 +1768,6 @@
 │   └── tsconfig.spec.json
 ├── server
 │   ├── .env.example
-│   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── README.md
 │   ├── package.json
 │   ├── project.json
@@ -2527,4 +2543,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-384 directories, 2145 files
+389 directories, 2156 files
