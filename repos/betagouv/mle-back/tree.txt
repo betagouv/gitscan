@@ -99,6 +99,12 @@
 │   │   ├── 0048_alter_externalsource_source.py
 │   │   ├── 0049_alter_externalsource_source.py
 │   │   ├── 0050_accommodation_external_reference_and_more.py
+│   │   ├── 0051_alter_externalsource_source.py
+│   │   ├── 0052_alter_externalsource_source.py
+│   │   ├── 0053_accommodation_target_audience_and_more.py
+│   │   ├── 0054_alter_accommodation_residence_type.py
+│   │   ├── 0055_alter_externalsource_source.py
+│   │   ├── 0056_accommodationapplication.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── pagination.py
@@ -130,6 +136,7 @@
 │   │   ├── 0003_n_users_per_owner.py
 │   │   ├── 0004_student_studentregistrationtoken.py
 │   │   ├── 0005_auto_20260120_1515.py
+│   │   ├── 0006_owner_accept_dossier_facile_applications.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions.py
@@ -175,6 +182,30 @@
 ├── cron.json
 ├── docker
 │   └── docker-compose.local.yml
+├── dossier_facile
+│   ├── README.md
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── event_processor.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       └── cleanup_dossier_facile_oauth_states.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── rules.py
+│   ├── serializers.py
+│   ├── services.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── use_cases
+│   │   ├── __init__.py
+│   │   └── apply_for_housing.py
+│   └── views.py
 ├── institution
 │   ├── __init__.py
 │   ├── admin.py
@@ -231,9 +262,12 @@
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_add_event_stats.py
+│   │   ├── 0003_rename_stats_event_period_idx_stats_event_period_045d19_idx_and_more.py
+│   │   ├── 0004_gestionnaireloginevent_accommodationchangelog.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services.py
+│   ├── signals.py
 │   ├── tests.py
 │   └── views.py
 ├── templates
@@ -305,6 +339,11 @@
     │   ├── __init__.py
     │   ├── factories.py
     │   └── test_api.py
+    ├── dossier_facile
+    │   ├── __init__.py
+    │   ├── test_oauth.py
+    │   ├── test_views.py
+    │   └── test_webhook.py
     ├── institution
     │   ├── __init__.py
     │   ├── factories.py
@@ -322,4 +361,4 @@
         ├── factories.py
         ├── test_api.py
         └── test_city_search.py
-53 directories, 271 files
+59 directories, 304 files
