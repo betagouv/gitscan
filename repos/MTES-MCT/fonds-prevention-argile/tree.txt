@@ -27,6 +27,8 @@
 ├── README.md
 ├── docker-compose.yml
 ├── docs
+│   ├── security
+│   │   └── snyk-accepted-vulnerabilities.md
 │   └── testing
 │       ├── TESTING-AUTH.md
 │       └── TESTING-SIMULATEUR.md
@@ -174,6 +176,8 @@
 │   │   │   │   │   │   ├── InProgress.tsx
 │   │   │   │   │   │   └── StatCard.tsx
 │   │   │   │   │   ├── statistiques
+│   │   │   │   │   │   ├── DepartementSelector.tsx
+│   │   │   │   │   │   ├── StatistiquesDepartement.tsx
 │   │   │   │   │   │   ├── StatistiquesFunnel.tsx
 │   │   │   │   │   │   └── StatistiquesPanel.tsx
 │   │   │   │   │   └── users
@@ -221,6 +225,7 @@
 │   │   │   │   │   │   │   ├── GagnezDuTempsTravaux.tsx
 │   │   │   │   │   │   │   ├── InfoDossierCallout.tsx
 │   │   │   │   │   │   │   ├── PiecesJustificatives.tsx
+│   │   │   │   │   │   │   ├── QualificationAllersVers.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
@@ -679,6 +684,8 @@
 │   │   │   │   │           └── admin-tabs.config.ts
 │   │   │   │   └── statistiques
 │   │   │   │       ├── actions
+│   │   │   │       │   ├── get-agent-departements.action.ts
+│   │   │   │       │   ├── get-statistiques-departement.action.ts
 │   │   │   │       │   ├── get-statistiques.action.test.ts
 │   │   │   │       │   ├── get-statistiques.action.ts
 │   │   │   │       │   └── index.ts
@@ -690,12 +697,14 @@
 │   │   │   │       │       ├── index.ts
 │   │   │   │       │       ├── matomo-funnels.types.ts
 │   │   │   │       │       ├── matomo.types.ts
+│   │   │   │       │       ├── statistiques-departement.types.ts
 │   │   │   │       │       └── statistiques.types.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       └── services
 │   │   │   │           ├── index.ts
 │   │   │   │           ├── matomo-funnel.service.ts
 │   │   │   │           ├── matomo.service.ts
+│   │   │   │           ├── statistiques-departement.service.ts
 │   │   │   │           ├── statistiques.service.test.ts
 │   │   │   │           └── statistiques.service.ts
 │   │   │   ├── espace-agent
@@ -1223,6 +1232,7 @@
 │   │   │   │   ├── 0019_aberrant_iron_monger.sql
 │   │   │   │   ├── 0020_peaceful_wolfpack.sql
 │   │   │   │   ├── 0021_sad_captain_marvel.sql
+│   │   │   │   ├── 0022_bouncy_felicia_hardy.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1246,6 +1256,7 @@
 │   │   │   │       ├── 0019_snapshot.json
 │   │   │   │       ├── 0020_snapshot.json
 │   │   │   │       ├── 0021_snapshot.json
+│   │   │   │       ├── 0022_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1360,4 +1371,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-397 directories, 965 files
+398 directories, 975 files
