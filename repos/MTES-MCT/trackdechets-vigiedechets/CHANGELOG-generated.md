@@ -1,16 +1,14 @@
 ## Changelog : trackdechets-vigiedechets (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la gestion des données de registre, notamment pour les types de déchets et les tables de données les plus récentes. De nouvelles fonctionnalités sont également introduites pour l'exportation de données et la visualisation cartographique, offrant un meilleur contrôle et une analyse plus approfondie des données de déchets.
+Cette mise à jour apporte des améliorations significatives à la préparation des fiches d'inspection, notamment au niveau de la visualisation des origines des déchets. Des corrections ont également été apportées pour assurer l'utilisation des données de registre les plus récentes. Enfin, de nouvelles fonctionnalités ont été ajoutées pour la gestion des exports de données et l'affichage de métriques sur les cartes.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des origines de déchets par type BSD dans les fiches. [#446](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/446)
-- Ajout de la possibilité de spécifier des adresses email autorisées lors de l'exportation de données. [#443](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/443)
-- Ajout de métriques cumulées annuelles aux rubriques quotidiennes sur les cartes.
-- Correction de l'utilisation des tables de registre les plus récentes (ndw, terres excavées, SSD) pour toutes les données de registre. [#445](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/445)
+- Amélioration de l'affichage des origines des déchets sur les fiches d'inspection, regroupées par type de BSD. [#446](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/446)
+- Mise à jour des graphiques d'origines des déchets dans les templates de fiches. [#453](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/453)
+- Ajout de métriques cumulées annuelles aux rubriques affichées sur les cartes. [#443](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/443)
+- Prise en charge de la liste des emails autorisés lors de l'export de données. [#443](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/443)
 
 ### Évolutions techniques
-- Modification du champ `size` dans le modèle `DataExport` pour utiliser `PositiveBigIntegerField` afin de supporter des tailles plus importantes. [#436](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/436)
-
-### Autres changements
-(Aucun changement significatif à signaler)
+- Correction des requêtes pour utiliser les tables `latest_registry_*` pour toutes les données de registre (NDW, terres excavées, SSD). [#445](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/445)
+- Refactorisation de l'affichage des origines des déchets dans les fiches. [#446](https://github.com/MTES-MCT/trackdechets-vigiedechets/issues/446)
