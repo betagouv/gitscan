@@ -976,6 +976,7 @@
 │   │   │   ├── authorization_requests_controller.rb
 │   │   │   ├── authorizations_controller.rb
 │   │   │   ├── cancel_authorization_reopenings_controller.rb
+│   │   │   ├── cancel_next_authorization_request_stages_controller.rb
 │   │   │   ├── dashboard_controller.rb
 │   │   │   ├── france_connected_authorizations_controller.rb
 │   │   │   ├── instructor_draft_requests
@@ -1143,6 +1144,7 @@
 │   │   ├── regenerate_instructor_draft_request_public_id.rb
 │   │   ├── restore_authorization_request_to_authorization.rb
 │   │   ├── restore_authorization_request_to_latest_authorization.rb
+│   │   ├── revoke_child_authorizations.rb
 │   │   ├── run_malware_scan_on_documents.rb
 │   │   ├── save_instructor_draft_request.rb
 │   │   ├── send_authorization_request_transfer_email_to_users.rb
@@ -1927,6 +1929,8 @@
 │       │   │   └── index.html.erb
 │       │   ├── cancel_authorization_reopenings
 │       │   │   └── new.html.erb
+│       │   ├── cancel_next_authorization_request_stages
+│       │   │   └── new.html.erb
 │       │   ├── dashboard
 │       │   │   ├── _authorization_requests.html.erb
 │       │   │   ├── _authorizations.html.erb
@@ -2434,6 +2438,7 @@
 │   ├── habilitations_avec_des_options_sur_les_scopes.feature
 │   ├── instructeurs
 │   │   ├── affichage_messages_historique.feature
+│   │   ├── annuler_une_demande_de_production.feature
 │   │   ├── annuler_une_réouverture.feature
 │   │   ├── brouillons_demandes_instructeurs
 │   │   │   ├── gestion.feature
@@ -2448,6 +2453,7 @@
 │   │   ├── messages.feature
 │   │   ├── modérer_une_habilitation.feature
 │   │   ├── notifications.feature
+│   │   ├── révocation_cascade_apip_fc.feature
 │   │   ├── révocation_habilitation.feature
 │   │   ├── révocation_habilitation_individuelle.feature
 │   │   ├── templates_messages.feature
@@ -2615,7 +2621,8 @@
 │   │       └── presentation_de_l_api_impot_particulier_v2.9.pdf
 │   ├── doc
 │   │   ├── ProtocoleTechniqueFicoba3_v11.pdf
-│   │   └── documentation_api_rial_v2025_07.pdf
+│   │   ├── documentation_api_rial_v2025_07.pdf
+│   │   └── infographie_api_urssaf.pdf
 │   ├── favicon.ico
 │   ├── robots.txt
 │   └── schema_pluriannuel.html
@@ -2807,6 +2814,7 @@
 │   │   ├── find_or_create_user_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_user_through_pro_connect_spec.rb
 │   │   ├── restore_authorization_request_to_latest_authorization_spec.rb
+│   │   ├── revoke_child_authorizations_spec.rb
 │   │   ├── run_malware_scan_on_documents_spec.rb
 │   │   └── stats
 │   │       └── fetch_stats_data_spec.rb
@@ -3051,4 +3059,4 @@
     ├── .keep
     └── javascript
         └── .keep
-432 directories, 2759 files
+433 directories, 2766 files
