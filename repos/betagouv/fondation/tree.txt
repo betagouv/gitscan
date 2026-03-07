@@ -1,7 +1,6 @@
 .
 ├── .github
 │   ├── copilot-instructions.md
-│   ├── dependabot.yml
 │   ├── playwright
 │   │   └── action.yml
 │   └── workflows
@@ -211,6 +210,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260226150442_adds_job_creation_date
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260304123814_adds_outcomes
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260304141410_adds_file_priorities_column
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -238,6 +241,8 @@
 │   │   │       ├── insertMagistratRawQuery.sql
 │   │   │       ├── insertNominationRawQuery.sql
 │   │   │       ├── insertPositionsRawQuery.sql
+│   │   │       ├── internalCountTotalDetailsMemberSessionRawQuery.sql
+│   │   │       ├── internalDetailsMemberSessionRawQuery.sql
 │   │   │       ├── listMemberGardeDesSceauxSessions.sql
 │   │   │       └── listMembersRawQuery.sql
 │   │   ├── prisma.config.ts
@@ -249,11 +254,13 @@
 │   │   │   ├── build-for-scalingo.sh
 │   │   │   ├── import-nominations-from-local-file-to-scalingo.sh
 │   │   │   ├── init-buckets.js
+│   │   │   ├── prisma.js
 │   │   │   ├── register-users-to-scalingo.sh
 │   │   │   └── scalingo-utils.sh
 │   │   ├── src
 │   │   │   ├── app.module.ts
 │   │   │   ├── cli.ts
+│   │   │   ├── instrument.ts
 │   │   │   ├── main.ts
 │   │   │   ├── modules
 │   │   │   │   ├── framework
@@ -534,7 +541,8 @@
 │   │   │       ├── promises.ts
 │   │   │       ├── result.ts
 │   │   │       ├── time.ts
-│   │   │       └── unaccent.ts
+│   │   │       ├── unaccent.ts
+│   │   │       └── zod-to-xml-schema.ts
 │   │   ├── test
 │   │   │   ├── assets
 │   │   │   │   └── lodam
@@ -586,16 +594,12 @@
 │       │   │   ├── reports
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ReportList
-│       │   │   │   │   │   ├── FiltresRapports.tsx
 │       │   │   │   │   │   ├── HeaderReportList.tsx
-│       │   │   │   │   │   ├── NewReportsCount.tsx
 │       │   │   │   │   │   ├── ReportList.tsx
 │       │   │   │   │   │   ├── ReportListPage.tsx
 │       │   │   │   │   │   ├── ReportListViewToggle.tsx
 │       │   │   │   │   │   ├── ReportStateTag.tsx
 │       │   │   │   │   │   ├── ReportsDnVueGenerale.tsx
-│       │   │   │   │   │   ├── ReportsTable.css
-│       │   │   │   │   │   ├── ReportsTable.tsx
 │       │   │   │   │   │   ├── TransparencyAttachmentsSection.tsx
 │       │   │   │   │   │   └── useReportListFocus.ts
 │       │   │   │   │   ├── ReportOverview
@@ -704,6 +708,7 @@
 │       │   │   │   ├── DropdownFilter.tsx
 │       │   │   │   ├── DropdownMenu.tsx
 │       │   │   │   ├── DropdownSelect.tsx
+│       │   │   │   ├── DropdownSelectMultiple.tsx
 │       │   │   │   ├── ErrorMessage.tsx
 │       │   │   │   ├── HintImportXlsxFile.tsx
 │       │   │   │   ├── LolfiMagistratLink.tsx
@@ -756,14 +761,13 @@
 │       │   │   │   │   │   ├── NominationFilesAffectationsStatus.tsx
 │       │   │   │   │   │   ├── NominationFilesAutoAffectationButton.tsx
 │       │   │   │   │   │   ├── NominationFilesBatchOperationsButton.tsx
-│       │   │   │   │   │   ├── NominationFilesPrioritySelector.tsx
 │       │   │   │   │   │   ├── NominationFilesReporterSelector.tsx
 │       │   │   │   │   │   ├── NominationFilesSaveAffectationsButton.tsx
 │       │   │   │   │   │   ├── NominationFilesStatusBadges.tsx
 │       │   │   │   │   │   ├── NominationFilesToggleEditionModeButton.tsx
 │       │   │   │   │   │   └── cells
 │       │   │   │   │   │       ├── NominationFilesPriorityCell.tsx
-│       │   │   │   │   │       ├── NominationFilesPrioritySelector.tsx
+│       │   │   │   │   │       ├── NominationFilesPrioritySelectorCell.tsx
 │       │   │   │   │   │       ├── magistrat-details
 │       │   │   │   │   │       │   ├── MagistratDetails.tsx
 │       │   │   │   │   │       │   ├── MagistratDnModale.tsx
@@ -782,7 +786,8 @@
 │       │   │   │   │   │       │   ├── NominationFileOutcomeCommentModalProvider.tsx
 │       │   │   │   │   │       │   ├── NominationFileOutcomeSelector.tsx
 │       │   │   │   │   │       │   ├── NominationFilesOutcomeCell.tsx
-│       │   │   │   │   │       │   └── OutcomeCommentModalContext.ts
+│       │   │   │   │   │       │   ├── OutcomeCommentModalContext.ts
+│       │   │   │   │   │       │   └── nomination-file-outcome-badge.utils.ts
 │       │   │   │   │   │       ├── observation-follow-up
 │       │   │   │   │   │       │   ├── ObservationFollowUpReminderContext.ts
 │       │   │   │   │   │       │   ├── ObservationFollowUpReminderModal.tsx
@@ -792,7 +797,8 @@
 │       │   │   │   │   │       │   ├── ObservantsCell.tsx
 │       │   │   │   │   │       │   ├── ObservationForm.tsx
 │       │   │   │   │   │       │   ├── ObservationsList.tsx
-│       │   │   │   │   │       │   └── ObservationsModalContext.tsx
+│       │   │   │   │   │       │   ├── ObservationsModalContext.ts
+│       │   │   │   │   │       │   └── ObservationsModalProvider.tsx
 │       │   │   │   │   │       ├── reporters
 │       │   │   │   │   │       │   ├── RapporteursDropdownBase.tsx
 │       │   │   │   │   │       │   ├── ReportersAlert.tsx
@@ -871,7 +877,6 @@
 │       │   ├── hooks
 │       │   │   ├── roles.hook.ts
 │       │   │   ├── useConfirmation.hook.tsx
-│       │   │   ├── useFilterOptions.hook.ts
 │       │   │   ├── useFiltering.hook.ts
 │       │   │   ├── useLocallyStoredState.hook.ts
 │       │   │   ├── usePagination.hook.ts
@@ -884,7 +889,6 @@
 │       │   │   ├── breadcrumb-vm.model.ts
 │       │   │   └── date-only.model.ts
 │       │   ├── pages
-│       │   │   ├── HelpPage.tsx
 │       │   │   ├── LoginPage.tsx
 │       │   │   ├── LolfiRedirectMagistratPage.tsx
 │       │   │   ├── admin
@@ -910,6 +914,9 @@
 │       │   │   │           ├── index.ts
 │       │   │   │           ├── job.context.ts
 │       │   │   │           └── selected-job-provider.tsx
+│       │   │   ├── help
+│       │   │   │   ├── HelpPage.tsx
+│       │   │   │   └── UserManualPage.tsx
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── ManageSessionPage.tsx
 │       │   │   │   ├── MemberListPage.tsx
@@ -944,6 +951,7 @@
 │       │   ├── types
 │       │   │   ├── date-only.types.ts
 │       │   │   ├── enums.types.ts
+│       │   │   ├── icons.types.ts
 │       │   │   ├── rules.types.ts
 │       │   │   ├── table.types.ts
 │       │   │   └── utils.types.ts
@@ -951,7 +959,6 @@
 │       │   │   ├── InvalidMimeType.error.ts
 │       │   │   ├── date-transparence-routes.utils.ts
 │       │   │   ├── deterministicUuidGenerator.ts
-│       │   │   ├── format-report-list.utils.tsx
 │       │   │   ├── formations-routes.utils.ts
 │       │   │   ├── gds-transparencies-routes.utils.ts
 │       │   │   ├── get-initials.ts
@@ -962,6 +969,7 @@
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
 │       │   │   ├── transparences-breadcrumb.utils.tsx
+│       │   │   ├── types.util.ts
 │       │   │   └── user.utils.ts
 │       │   └── vite-env.d.ts
 │       ├── tailwind.config.js
@@ -1008,4 +1016,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-188 directories, 822 files
+191 directories, 827 files
