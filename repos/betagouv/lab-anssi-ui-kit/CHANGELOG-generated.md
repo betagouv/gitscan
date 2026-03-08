@@ -1,38 +1,28 @@
 ## Changelog : lab-anssi-ui-kit (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des thèmes et l'ajout de nouveaux composants du Design System Français (DSFR). Des corrections et améliorations ont également été apportées à certains composants existants, notamment le bouton DSFR et l'alignement des numéros dans le composant Marelle. L'objectif est de proposer une bibliothèque de composants toujours plus complète, personnalisable et accessible.
+Ce changelog présente les évolutions récentes de la bibliothèque de composants lab-anssi-ui-kit. Les principales améliorations concernent l'ajout de nouveaux composants (Table, Range, Transcription), des améliorations sur le composant Table (pagination, gestion d'état vide, contenu riche) et des correctifs liés à la sécurité (nonce et CSP). Des optimisations ont également été apportées pour limiter les déclenchements de la CI et améliorer la documentation.
 
 ### Évolutions fonctionnelles
-- Ajout du composant Range du DSFR [#47823a6](https://github.com/betagouv/lab-anssi-ui-kit/pull/47823a6)
-- Ajout du composant Transcription du DSFR [#0a830e9](https://github.com/betagouv/lab-anssi-ui-kit/pull/0a830e9)
-- Possibilité d'injecter du code HTML dans le footer [#301b90a](https://github.com/betagouv/lab-anssi-ui-kit/pull/301b90a)
-- Ajout d'un slot pour surcharger le texte du composant Highlight du DSFR [#0ce5f84](https://github.com/betagouv/lab-anssi-ui-kit/pull/0ce5f84)
-- Amélioration des couleurs du thème MSC [#16127a8](https://github.com/betagouv/lab-anssi-ui-kit/pull/16127a8)
-- Correction de l'alignement alternatif des numéros dans le composant Marelle [#7efdb55](https://github.com/betagouv/lab-anssi-ui-kit/pull/7efdb55)
-- Ajout de la gestion des tailles au composant Button du DSFR [#adb2476](https://github.com/betagouv/lab-anssi-ui-kit/pull/adb2476)
-- Amélioration de l'état "disabled" de la variation "inverted-secondary" du bouton DSFR [#9a99b19](https://github.com/betagouv/lab-anssi-ui-kit/pull/9a99b19)
+- Ajout du composant `DsfrTable` avec pagination côté client et serveur, gestion de l'état vide, et possibilité d'injecter du contenu riche dans les cellules. [#issue à identifier]
+- Ajout du composant `DsfrRange`. [#issue à identifier]
+- Ajout du composant `DsfrTranscription`. [#issue à identifier]
+- Le composant `DsfrSelect` permet désormais de masquer le label (`hideLabel`) et d'intercepter les changements de valeur (`onvaluechanged`). [#issue à identifier]
+- Le composant `DsfrFooter` permet d'afficher uniquement le bloc du bas. [#issue à identifier]
+- Possibilité d'injecter du code HTML dans le footer via un nouveau slot. [#301b90a](https://github.com/betagouv/lab-anssi-ui-kit/commit/301b90a)
+- Ajout d'un slot pour surcharger le texte du composant `DSFR Highlight`. [#0ce5f84](https://github.com/betagouv/lab-anssi-ui-kit/commit/0ce5f84)
+- Ajout du callback `onpagechange` au composant `DsfrPagination` pour intercepter le clic sur les liens. [#issue à identifier]
 
 ### Évolutions techniques
-- Mise à jour de Vitest vers la version majeure 4 [#1a97fd4](https://github.com/betagouv/lab-anssi-ui-kit/pull/1a97fd4)
-- Mise à jour de ESLint vers la version majeure 10+ [#d1878b7](https://github.com/betagouv/lab-anssi-ui-kit/pull/d1878b7)
-- Amélioration et versionnement du déploiement des styles de thèmes et du DSFR [#49e0b74](https://github.com/betagouv/lab-anssi-ui-kit/pull/49e0b74)
-- Implémentation de Style Dictionary pour transformer les tokens en variables CSS [#8c293b7](https://github.com/betagouv/lab-anssi-ui-kit/pull/8c293b7)
-- Ajout des thèmes du LAB sous la forme de "design tokens" [#fd5f89f](https://github.com/betagouv/lab-anssi-ui-kit/pull/fd5f89f)
-- Construction et envoi des tokens vers le dossier /assets du CDN [#eb1a98b](https://github.com/betagouv/lab-anssi-ui-kit/pull/eb1a98b)
-- Amélioration de l'usage des thèmes dans Storybook [#d5a8a28](https://github.com/betagouv/lab-anssi-ui-kit/pull/d5a8a28)
-- Ajout d'une fonction pour définir un data attribute sur les composants "thémables" [#892c22b](https://github.com/betagouv/lab-anssi-ui-kit/pull/892c22b)
-- Rendre les icônes "check" des composants thémables [#1bae165](https://github.com/betagouv/lab-anssi-ui-kit/pull/1bae165)
-- Amélioration du contenu du fichier de variables DSFR [#c422334](https://github.com/betagouv/lab-anssi-ui-kit/pull/c422334)
-- Thématisation des variables DSFR selon les couleurs MSS [#cb0b633](https://github.com/betagouv/lab-anssi-ui-kit/pull/cb0b633)
-- Thématisation des variables DSFR selon les couleurs MSC [#b70d222](https://github.com/betagouv/lab-anssi-ui-kit/pull/b70d222)
-- Ajout du thème 'DSFR' au 'switcher' de thèmes Storybook [#a545bc3](https://github.com/betagouv/lab-anssi-ui-kit/pull/a545bc3)
+- Mise à jour de Vitest vers la version majeure 4+. [#1a97fd4](https://github.com/betagouv/lab-anssi-ui-kit/commit/1a97fd4)
+- Mise à jour de ESLint vers la version majeure 10+. [#d1878b7](https://github.com/betagouv/lab-anssi-ui-kit/commit/d1878b7)
+- Optimisation de la CI pour limiter les déclenchements aux fichiers impactant le build. [#95eb605](https://github.com/betagouv/lab-anssi-ui-kit/commit/95eb605)
+- Correction des expressions régulières pour l'injection du nonce dans les styles, améliorant la sécurité. [#e5089a3](https://github.com/betagouv/lab-anssi-ui-kit/commit/e5089a3)
+- Correction d'un problème de CSP. [#55d6358](https://github.com/betagouv/lab-anssi-ui-kit/commit/55d6358)
+- Mise à jour des styles du composant `DsfrTable` pour utiliser le CSS minifié. [#ae0f9c1](https://github.com/betagouv/lab-anssi-ui-kit/commit/ae0f9c1)
+- Correction de l'offset de la table pour inclure l'unité 'px'. [#41f38dc](https://github.com/betagouv/lab-anssi-ui-kit/commit/41f38dc)
 
 ### Autres changements
-- Passage en version 1.43.0 [#a78b2d6](https://github.com/betagouv/lab-anssi-ui-kit/pull/a78b2d6)
-- Passage en version 1.42.0 [#8728641](https://github.com/betagouv/lab-anssi-ui-kit/pull/8728641)
-- Passage en version 1.41.4 [#03c0387](https://github.com/betagouv/lab-anssi-ui-kit/pull/03c0387)
-- Passage en version 1.41.3 [#290ab26](https://github.com/betagouv/lab-anssi-ui-kit/pull/290ab26)
-- Passage en version 1.41.2 [#8cd32dd](https://github.com/betagouv/lab-anssi-ui-kit/pull/8cd32dd)
-- Passage en version 1.41.1 [#4ebae37](https://github.com/betagouv/lab-anssi-ui-kit/pull/4ebae37)
-- Passage en version 1.41.0 [#47e2ffd](https://github.com/betagouv/lab-anssi-ui-kit/pull/47e2ffd)
+- Ajout de la documentation concernant la thématisation de la librairie. [#be7987c](https://github.com/betagouv/lab-anssi-ui-kit/commit/be7987c)
+- Passage en version 1.44.2, 1.44.1, 1.44.0, 1.43.0, 1.42.0 et 1.41.4. [#79b4d99](https://github.com/betagouv/lab-anssi-ui-kit/commit/79b4d99), [#8ac5f46](https://github.com/betagouv/lab-anssi-ui-kit/commit/8ac5f46), [#71a4031](https://github.com/betagouv/lab-anssi-ui-kit/commit/71a4031), [#a78b2d6](https://github.com/betagouv/lab-anssi-ui-kit/commit/a78b2d6), [#8728641](https://github.com/betagouv/lab-anssi-ui-kit/commit/8728641), [#03c0387](https://github.com/betagouv/lab-anssi-ui-kit/commit/03c0387)
+- Mise à jour des dépendances. [#a41b1c1](https://github.com/betagouv/lab-anssi-ui-kit/commit/a41b1c1)
