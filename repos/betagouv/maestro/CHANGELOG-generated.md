@@ -1,52 +1,42 @@
 ## Changelog : maestro (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte de nombreuses corrections et améliorations à l'application Maestro, touchant à la gestion des prélèvements, des programmations, des analyses et des utilisateurs. Les modifications visent à améliorer l'expérience utilisateur, corriger des bugs et affiner les droits d'accès en fonction des rôles. Des améliorations techniques ont également été apportées pour optimiser le fonctionnement de l'application et de ses intégrations.
+Cette mise à jour apporte des améliorations significatives à la gestion des prélèvements et des analyses, notamment au niveau de l'interface utilisateur et du traitement des données. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, et de nouvelles fonctionnalités ont été ajoutées pour faciliter le travail des utilisateurs, notamment pour la gestion des programmations et l'intégration avec des systèmes externes comme Sacha et Capinov.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des descripteurs des prélèvements lors de l'export [#581](https://github.com/betagouv/maestro/issues/581).
-- Restauration du champ "numéro de scellé" comme obligatoire pour les prélèvements [#582](https://github.com/betagouv/maestro/issues/582).
-- Correction du nombre de prélèvements et des prélèvements exportés pour les profils départementaux [#578](https://github.com/betagouv/maestro/issues/578).
-- Amélioration de l'affichage du mot de Manon (diminution de la police et gestion des retours à la ligne) [#580](https://github.com/betagouv/maestro/issues/580).
-- Possibilité de modifier le champ "saisie" à l'étape 4 du processus de prélèvement [#577](https://github.com/betagouv/maestro/issues/577).
-- Correction de l'affichage du destinataire de l'exemplaire dans le suivi des prélèvements [#575](https://github.com/betagouv/maestro/issues/575).
-- Correction de la saisie du type de culture (gestion des valeurs vides) [#574](https://github.com/betagouv/maestro/issues/574).
-- Ajout des modalités d'échantillonnage sur le formulaire vierge de prélèvement [#572](https://github.com/betagouv/maestro/issues/572).
-- Nouvelle interface pour le suivi d'un prélèvement [#568](https://github.com/betagouv/maestro/issues/568).
-- Correction des commentaires pour les coordinateurs régionaux dans la gestion des programmations [#570](https://github.com/betagouv/maestro/issues/570).
-- Correction des champs "type de production" et "type de culture" pour la campagne 2026 [#559](https://github.com/betagouv/maestro/issues/559).
-- Suppression des droits de saisie d'un prélèvement pour un coordinateur régional [#558](https://github.com/betagouv/maestro/issues/558).
-- Correction du contenu et des destinataires des notifications lors de la validation de la programmation [#565](https://github.com/betagouv/maestro/issues/565).
-- Amélioration de l'affichage des analyses (rattachement à l'échantillon et non au prélèvement) [#553](https://github.com/betagouv/maestro/issues/553).
-- Amélioration de l'affichage des indicateurs dans les vues tableau et carte de la programmation [#514](https://github.com/betagouv/maestro/issues/514), [#518](https://github.com/betagouv/maestro/issues/518), [#520](https://github.com/betagouv/maestro/issues/520).
-- Amélioration de la recherche d'entreprises.
-- Correction de l'affichage des échantillons.
-- Correction de la connexion lors de l'utilisation de la mascarade.
-- Envoi des notifications de commentaires uniquement aux coordinateurs concernés par les plans [#543](https://github.com/betagouv/maestro/issues/543).
-- Correction des libellés de type de production [#516](https://github.com/betagouv/maestro/issues/516).
-- Correction du DAP (labos des échantillons et adresse d'envoi au labo trop longue) [#532](https://github.com/betagouv/maestro/issues/532).
-- Correction du référentiel PPV 2026 [#536](https://github.com/betagouv/maestro/issues/536).
+- Les coordinateurs régionaux peuvent désormais consulter la répartition des laboratoires pour les programmations. [#571](https://github.com/betagouv/maestro/issues/571)
+- Les administrateurs peuvent accéder à la liste de tous les prélèvements. [#583](https://github.com/betagouv/maestro/issues/583)
+- Amélioration du suivi des prélèvements avec un nouveau design. [#568](https://github.com/betagouv/maestro/issues/568)
+- Possibilité de modifier le champ saisie à l'étape 4 du prélèvement. [#577](https://github.com/betagouv/maestro/issues/577)
+- Correction de l'affichage du numéro de scellé obligatoire lors de la création d'un prélèvement. [#582](https://github.com/betagouv/maestro/issues/582)
+- Correction de l'affichage des descripteurs des prélèvements lors de l'export. [#581](https://github.com/betagouv/maestro/issues/581)
+- Correction du nombre de prélèvements et des prélèvements exportés pour les profils départementaux. [#578](https://github.com/betagouv/maestro/issues/578)
+- Ajout des modalités d'échantillonnage sur le formulaire vierge de prélèvement. [#572](https://github.com/betagouv/maestro/issues/572)
+- Correction de l'affichage de la carte d'un prélèvement sans matrice renseignée.
+- Correction de l'affichage du destinataire de l'exemplaire dans le suivi. [#575](https://github.com/betagouv/maestro/issues/575)
+- Correction de la saisie du type de culture. [#574](https://github.com/betagouv/maestro/issues/574)
+- Correction de la réinitialisation du type de plan suite au téléchargement d'un document vierge. [#573](https://github.com/betagouv/maestro/issues/573)
+- Amélioration de l'affichage et du contenu des notifications de validation de programmation. [#565](https://github.com/betagouv/maestro/issues/565)
+- Message d'information affiché aux préleveurs lorsque la programmation est en cours de répartition. [#560](https://github.com/betagouv/maestro/issues/560)
+- Correction de l'affichage des champs type de production et type de culture pour la campagne 2026. [#559](https://github.com/betagouv/maestro/issues/559)
+- Suppression des droits de saisie d'un prélèvement pour un coordinateur régional. [#558](https://github.com/betagouv/maestro/issues/558)
 
 ### Évolutions techniques
-- Mise à jour de la librairie Knip [#563](https://github.com/betagouv/maestro/issues/563).
-- Mise à jour de la librairie aws-sdk [#556](https://github.com/betagouv/maestro/issues/556).
-- Mise à jour de la librairie fast-xml-parser [#527](https://github.com/betagouv/maestro/issues/527).
-- Mise à jour de la librairie lodash [#528](https://github.com/betagouv/maestro/issues/528).
-- Mise à jour de la librairie workbox [#537](https://github.com/betagouv/maestro/issues/537).
-- Mise à jour de la librairie swc [#538](https://github.com/betagouv/maestro/issues/538).
-- Amélioration de la gestion des connexions à la base de données PostgreSQL.
-- Refactorisation du code pour distinguer l'âge en mois et l'âge en jours [#522](https://github.com/betagouv/maestro/issues/522).
-- Amélioration du CI/CD (suppression de l'installation de toutes les dépendances pour les releases) [#552](https://github.com/betagouv/maestro/issues/552).
+- Suppression de Kafka du projet laboratoires suite à un changement de protocole. [#595](https://github.com/betagouv/maestro/issues/595)
+- Amélioration du typage de l'utilisateur pour éviter l'utilisation de `roles`. [#594](https://github.com/betagouv/maestro/issues/594)
+- Suppression de la librairie `highland` qui n'est plus maintenue. [#605](https://github.com/betagouv/maestro/issues/605)
+- Suppression de l'API Openapi du projet car non utilisée. [#607](https://github.com/betagouv/maestro/issues/607)
+- Correction de l'initialisation des clés GPG. [#615](https://github.com/betagouv/maestro/issues/615)
+- Correction des tests trop lents à cause des départements. [#609](https://github.com/betagouv/maestro/issues/609)
+- Augmentation du nombre de connexions possibles à la base de données PostgreSQL.
+- Intégration des EDI Sacha lors de la création d'une DAI. [#566](https://github.com/betagouv/maestro/issues/566)
+- Correction de l'utilisation de la colonne LMR pour Capinov. [#564](https://github.com/betagouv/maestro/issues/564)
+- Suppression des fichiers du sftp après traitement par Sacha. [#544](https://github.com/betagouv/maestro/issues/544)
 
 ### Autres changements
-- Correction de fautes d'orthographe.
-- Suppression de fichiers temporaires après traitement (Sacha) [#544](https://github.com/betagouv/maestro/issues/544).
-- Ajout de la version du référentiel Prescripteur (Sacha) [#540](https://github.com/betagouv/maestro/issues/540).
-- Ajout de commémoratifs optionnels (Sacha) [#562](https://github.com/betagouv/maestro/issues/562), [#550](https://github.com/betagouv/maestro/issues/550).
-- Mise à jour de la référence Inovalys [#561](https://github.com/betagouv/maestro/issues/561).
-- Ajout d'une ligne pour les consignes de répartition dans la programmation [#529](https://github.com/betagouv/maestro/issues/529).
-- Suppression de l'obligation du numéro de scellé pour le plan de surveillance [#524](https://github.com/betagouv/maestro/issues/524).
-- Initialisation des échantillons en fonction de la programmation [#531](https://github.com/betagouv/maestro/issues/531).
-- Suppression du filtre départements pour certains rôles [#535](https://github.com/betagouv/maestro/issues/535).
-- Correction de l'accès à la programmation départementale pour certains utilisateurs [#513](https://github.com/betagouv/maestro/issues/513).
-- Affichage uniquement des préleveurs rattachés au plan [#525](https://github.com/betagouv/maestro/issues/525).
+- Correction du scroll automatique en haut de la page sur l'étape 2 du prélèvement. [#619](https://github.com/betagouv/maestro/issues/619)
+- Correction de l'ouverture des étiquettes. [#617](https://github.com/betagouv/maestro/issues/617)
+- Correction de l'affichage d'une erreur si le type de fichier n'est pas bon. [#616](https://github.com/betagouv/maestro/issues/616)
+- Ajout du code laboratoire pour les coordinateurs nationaux lors de l'export. [#611](https://github.com/betagouv/maestro/issues/611)
+- Correction des utilisateurs avec plusieurs rôles.
+- Mises à jour de dépendances : openid-client, i18next, mui/material, maplibre, dotenv, helmet, puppeteer, minimatch, rollup, vitest, fast-xml-parser, Knip, aws-sdk.
