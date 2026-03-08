@@ -4,12 +4,13 @@
   "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit des scripts pour récupérer les dossiers, extraire des données et générer des rapports.",
   "language": "JavaScript",
   "features": [
-    "Collecte de données de prélèvement d'eau",
+    "Gestion des données de prélèvement d'eau",
+    "Récupération de dossiers depuis Démarche Simplifiée",
     "Extraction de données",
     "Génération de rapports",
-    "Synchronisation avec Démarche Simplifiée",
-    "Gestion des pièces jointes",
-    "API REST"
+    "API REST",
+    "Authentification",
+    "Gestion des utilisateurs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,7 +19,6 @@
     "Docker",
     "MongoDB",
     "Express",
-    "Redis",
     "bullmq",
     "nodemailer",
     "mjml",
@@ -26,23 +26,25 @@
     "@fabnum/prelevements-deau-timeseries-parsers"
   ],
   "components": [
-    "API REST (Node.js/Express)",
+    "API REST",
     "Base de données MongoDB",
-    "Queue de messages Redis (BullMQ)",
-    "Conteneurs Docker",
-    "MinIO (stockage d'objets)",
-    "Workers BullMQ"
+    "Workers BullMQ",
+    "Frontend (non mentionné explicitement)",
+    "S3 Storage (MinIO)"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "jwt"
+      "oauth2",
+      "jwt",
+      "session",
+      "magic-link"
     ],
-    "providers": null
+    "providers": []
   },
-  "tests": "Ava, Jest",
+  "tests": "Ava, Jest (implicite)",
   "workflows": [
-    "CI/CD (GitHub Actions)"
+    "CI/CD (via GitHub Actions)"
   ],
   "lastActivity": "2026-02-18T11:16:15+01:00",
   "status": "active",
@@ -59,8 +61,9 @@
     "données environnementales",
     "API",
     "MongoDB",
-    "Node.js",
-    "Docker",
-    "Démarche Simplifiée"
+    "JavaScript",
+    "Démarche Simplifiée",
+    "S3",
+    "BullMQ"
   ]
 }
