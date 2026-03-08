@@ -36,6 +36,7 @@
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── auth_backends.py
 │   ├── decorators.py
 │   ├── exceptions.py
 │   ├── management
@@ -75,10 +76,12 @@
 │   │   │   └── refresh-line.svg
 │   │   └── js
 │   │       ├── controllers
+│   │       │   ├── commentArbitrage.js
 │   │       │   ├── doubleDotation.js
 │   │       │   └── formUtils.js
 │   │       ├── gsl.js
 │   │       └── matomo.js
+│   ├── table_columns.py
 │   ├── tasks.py
 │   ├── templates
 │   │   ├── 403.html
@@ -96,8 +99,16 @@
 │   │   │   ├── main_menu.html
 │   │   │   └── messages.html
 │   │   ├── gsl_core
+│   │   │   ├── _column_visibility_dropdown.html
 │   │   │   ├── otp_setup.html
-│   │   │   └── otp_verify.html
+│   │   │   ├── otp_verify.html
+│   │   │   └── table_cells
+│   │   │       ├── _common_cell.html
+│   │   │       ├── _default_header.html
+│   │   │       ├── _other_dotation_cell.html
+│   │   │       ├── _yes_no_cell.html
+│   │   │       ├── date_depot.html
+│   │   │       └── notification.html
 │   │   └── includes
 │   │       ├── _enveloppe_summary.html
 │   │       └── _enveloppe_summary_line.html
@@ -339,8 +350,8 @@
 │   │   │       ├── choose_upload_document_type.html
 │   │   │       └── upload_document.html
 │   │   └── includes
-│   │       ├── _arrete_form.html
 │   │       ├── _document_card.html
+│   │       ├── _generated_document_form.html
 │   │       ├── _generated_document_type_form.html
 │   │       ├── _modele_card.html
 │   │       ├── _not_instructeur_modal.html
@@ -440,15 +451,20 @@
 │   │   │   └── programmation_projet_list.css
 │   │   └── js
 │   │       └── checkboxSelection.js
+│   ├── table_columns.py
 │   ├── templates
 │   │   ├── gsl_programmation
 │   │   │   ├── enveloppe_form.html
 │   │   │   ├── programmation_projet_detail.html
 │   │   │   ├── programmation_projet_list.html
-│   │   │   └── tab_programmation_projet
-│   │   │       ├── tab_notes.html
-│   │   │       ├── tab_projet.html
-│   │   │       └── tabs.html
+│   │   │   ├── tab_programmation_projet
+│   │   │   │   ├── tab_notes.html
+│   │   │   │   ├── tab_projet.html
+│   │   │   │   └── tabs.html
+│   │   │   └── table_cells
+│   │   │       ├── _other_dotation_row.html
+│   │   │       ├── documents.html
+│   │   │       └── notification.html
 │   │   └── includes
 │   │       └── _filter_notified.html
 │   ├── tests
@@ -513,6 +529,8 @@
 │   │   ├── 0030_dotationprojet_created_at_dotationprojet_updated_at_and_more.py
 │   │   ├── 0030_remove_projet_perimetre.py
 │   │   ├── 0031_merge_20260210_1653.py
+│   │   ├── 0032_remove_projet_free_comment_projet_comment_1_and_more.py
+│   │   ├── 0033_projet_dotations_updated_in_app.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services
@@ -526,6 +544,7 @@
 │   │   └── js
 │   │       ├── projectFilters.js
 │   │       └── territoireFilter.js
+│   ├── table_columns.py
 │   ├── tasks.py
 │   ├── templates
 │   │   ├── gsl_projet
@@ -534,8 +553,12 @@
 │   │   │   │   ├── tab_projet.html
 │   │   │   │   └── tabs.html
 │   │   │   ├── projet.html
-│   │   │   └── projet_list.html
+│   │   │   ├── projet_list.html
+│   │   │   ├── projet_missing_annotations_list.html
+│   │   │   └── table_cells
+│   │   │       └── _projet_row.html
 │   │   └── includes
+│   │       ├── _comment_arbitrage_card.html
 │   │       ├── _filter_categorie_detr.html
 │   │       ├── _filter_cout_total.html
 │   │       ├── _filter_dotation.html
@@ -643,16 +666,24 @@
 │   │       └── modules
 │   │           ├── handleDotationUpdate.js
 │   │           └── utils.js
+│   ├── table_columns.py
 │   ├── templates
 │   │   ├── gsl_simulation
 │   │   │   ├── simulation_detail.html
 │   │   │   ├── simulation_form.html
 │   │   │   ├── simulation_list.html
 │   │   │   ├── simulation_projet_detail.html
-│   │   │   └── tab_simulation_projet
-│   │   │       ├── tab_notes.html
-│   │   │       ├── tab_projet.html
-│   │   │       └── tabs.html
+│   │   │   ├── tab_simulation_projet
+│   │   │   │   ├── tab_notes.html
+│   │   │   │   ├── tab_projet.html
+│   │   │   │   └── tabs.html
+│   │   │   └── table_cells
+│   │   │       ├── _other_dotation_row.html
+│   │   │       ├── assiette.html
+│   │   │       ├── dotation.html
+│   │   │       ├── montant_retenu.html
+│   │   │       ├── statut.html
+│   │   │       └── taux.html
 │   │   ├── htmx
 │   │   │   ├── _base_htmx_modal.html
 │   │   │   ├── go_back_to_simulation_state_modal.html
@@ -679,6 +710,7 @@
 │   │       │   ├── _simulation_actions_menu.html
 │   │       │   └── modal_base.html
 │   │       └── table_forms
+│   │           ├── _assiette_form.html
 │   │           ├── _dotation_form.html
 │   │           ├── _montant_form.html
 │   │           └── _taux_form.html
@@ -760,4 +792,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-144 directories, 618 files
+148 directories, 646 files
