@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il centralise et valorise les données de transport hébergées sur data.gouv.fr, offrant ainsi un accès facilité aux informations de mobilité.",
+  "description": "Ce projet fournit un point d'accès national (NAP) pour les données de mobilité en France. Il centralise et valorise les données de mobilité hébergées sur data.gouv.fr, le portail français des données ouvertes.",
   "language": "Elixir",
   "features": [
-    "Recherche",
-    "Validation de données NeTEx et GTFS",
+    "Validation de données NeTEx",
     "Consolidation de données IRVE",
-    "Gestion des jeux de données",
-    "Interface utilisateur pour les producteurs de données",
-    "Notifications",
-    "Téléchargement de données"
+    "Recherche de jeux de données",
+    "Visualisation de données géographiques",
+    "Gestion des ressources et des producteurs",
+    "Notifications de ressources indisponibles",
+    "Suivi des statistiques de téléchargement"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,8 +18,8 @@
     "Ecto",
     "PostgreSQL",
     "Leaflet",
-    "Vega",
     "Webpack",
+    "Node.js",
     "Yarn"
   ],
   "components": [
@@ -27,8 +27,8 @@
     "Backend Elixir",
     "API REST",
     "Base de données PostgreSQL",
-    "Proxy Unlock S3",
-    "Cache disque"
+    "Serveur d'applications Phoenix",
+    "Interface LiveView"
   ],
   "auth": {
     "methods": [
@@ -43,9 +43,9 @@
     "Rambo"
   ],
   "workflows": [
-    "CI/CD (via .circleci/config.yml)"
+    "CI/CD avec CircleCI"
   ],
-  "lastActivity": "2026-02-26T12:49:38Z",
+  "lastActivity": "2026-03-05T13:02:12Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -56,15 +56,14 @@
     "openIssues": null
   },
   "tags": [
+    "mobilité",
+    "données ouvertes",
     "transport",
-    "mobility",
-    "data",
-    "opendata",
-    "france",
-    "elixir",
-    "phoenix",
-    "GTFS",
+    "Elixir",
+    "Phoenix",
     "NeTEx",
-    "IRVE"
+    "IRVE",
+    "GTFS",
+    "data.gouv.fr"
   ]
 }
