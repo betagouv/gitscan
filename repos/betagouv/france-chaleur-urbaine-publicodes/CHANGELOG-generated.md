@@ -1,19 +1,18 @@
 ## Changelog : france-chaleur-urbaine-publicodes (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour du projet se concentrent sur l'amélioration des calculs et des données concernant les systèmes de chauffage, notamment les PAC (Pompes à Chaleur) et le solaire. Une nouvelle version a été publiée (1.4.0) avec des améliorations sur les aides financières pour les solutions collectives. Des ajustements ont également été apportés pour faciliter la publication du projet sur npmjs.
+Cette mise à jour apporte des améliorations au modèle Publicodes pour le comparateur France Chaleur Urbaine, notamment l'ajout de bilans sur une année pour certains types de systèmes de chauffage (PAC hybride, solaire thermique, solaire combiné). Des scripts ont également été ajoutés pour faciliter l'extraction de données intermédiaires et la publication du package sur npmjs.
 
 ### Évolutions fonctionnelles
-- Ajout du bilan sur 1 an pour les PAC hybrides, le solaire thermique et les systèmes solaires combinés (puis annulé par un revert).
-- Mise à jour des données pour le gaz individuel (P1). [#issue à investiguer]
-- Amélioration des données pour le dimensionnement des PAC.
-- Mise à jour des aides pour les solutions collectives à 35%. [#issue à investiguer]
-- Ajout de la situation tertiaire moyenne. [#issue à investiguer]
+- Ajout du bilan sur 1 an pour les systèmes de chauffage suivants : PAC hybride, solaire thermique et système solaire combiné.
+- Amélioration de la documentation et du processus de publication sur npmjs.
 
 ### Évolutions techniques
-- Passage à un "trusted publisher" pour la publication sur npmjs, ce qui permet de supprimer le token d'authentification NODE_AUTH_TOKEN.
-- Publication de la version 1.3.0 et 1.4.0 du projet.
-- Ajout de scripts pour obtenir les tableaux intermédiaires et compléter le script `external-keys` avec les paramètres du simulateur.
+- Mise à jour vers la version 1.4.0 du package.
+- Mise à jour vers la version 1.3.0 du package.
+- Configuration du système de publication pour utiliser un "trusted publisher" sur npmjs, supprimant la nécessité d'un token d'authentification.
+- Ajout d'un script pour obtenir les tableaux intermédiaires de calcul.
+- Complétion du script `external-keys` avec les paramètres du simulateur.
 
 ### Autres changements
-- Documentation mise à jour pour refléter le passage à un "trusted publisher".
+- Rétractation temporaire de l'ajout du bilan 1 an pour la PAC hybride, le solaire thermique et le système solaire combiné (réversion du commit précédent).
