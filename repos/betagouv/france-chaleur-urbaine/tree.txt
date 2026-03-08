@@ -467,42 +467,15 @@
 │   │   ├── cold-network.svg
 │   │   ├── enrr.svg
 │   │   ├── enrr.svgr
-│   │   ├── enrr_mobilisables_datacenter.png
-│   │   ├── enrr_mobilisables_industrie.png
-│   │   ├── enrr_mobilisables_installations_electrogenes.png
-│   │   ├── enrr_mobilisables_stations_epuration.png
-│   │   ├── enrr_mobilisables_unites_incineration.png
+│   │   ├── enrr_*.png  (5 files)
 │   │   ├── github-brands.svg
 │   │   ├── grid-line.svg
+│   │   ├── icon-*.png  (6 files)
 │   │   ├── marker-blue.png
 │   │   ├── marker-green.png
 │   │   ├── marker-red.png
 │   │   ├── outils.svgr
-│   │   ├── picto-arrow.svg
-│   │   ├── picto-carto.svg
-│   │   ├── picto-check.svg
-│   │   ├── picto-compte-pro.svg
-│   │   ├── picto-confort.svg
-│   │   ├── picto-connection.svg
-│   │   ├── picto-copro.svg
-│   │   ├── picto-ecology.svg
-│   │   ├── picto-economic.svg
-│   │   ├── picto-fioul-noir.svg
-│   │   ├── picto-fioul.svg
-│   │   ├── picto-gaz-bleu.svg
-│   │   ├── picto-gaz.svg
-│   │   ├── picto-info.svg
-│   │   ├── picto-invoice.svg
-│   │   ├── picto-network.svg
-│   │   ├── picto-planet.svg
-│   │   ├── picto-relation.svg
-│   │   ├── picto-reseaux-vert.svg
-│   │   ├── picto-resource.svg
-│   │   ├── picto-serenity.svg
-│   │   ├── picto-thumb.svg
-│   │   ├── picto-traces.svg
-│   │   ├── picto-warning.svg
-│   │   ├── picto-white-arrow.svg
+│   │   ├── picto-*.svg  (25 files)
 │   │   ├── picto_warning_white.svg
 │   │   ├── potentiel.svgr
 │   │   ├── reseaux.svgr
@@ -566,6 +539,7 @@
 │   │   ├── copro_*.webp  (11 files)
 │   │   ├── copro_guide.png
 │   │   ├── datacenter_equinix.jpeg
+│   │   ├── demarche_enr_choix.webp
 │   │   ├── enjeu-de-societe-exploitant.svg
 │   │   ├── enjeu-de-societe-particulier.svg
 │   │   ├── enquete.jpg
@@ -737,6 +711,8 @@
 │   │   ├── bases.ts
 │   │   ├── create-modifications-reseau.ts
 │   │   └── dump-schema.ts
+│   ├── batenr
+│   │   └── import-batenr-data.sh
 │   ├── bootstrap
 │   │   └── tables.ts
 │   ├── clean-gitbook-actus.sh
@@ -1010,6 +986,7 @@
 │   │   │   ├── Understanding.tsx
 │   │   │   └── config.tsx
 │   │   ├── SEO.tsx
+│   │   ├── Share.tsx
 │   │   ├── SimulatorCO2
 │   │   │   ├── SimulatorCO2.businessRule.ts
 │   │   │   ├── SimulatorCO2.data.ts
@@ -1069,10 +1046,6 @@
 │   │   │   ├── AssignmentRuleDialog.tsx
 │   │   │   ├── ExpressionTester.tsx
 │   │   │   └── ExpressionValidator.tsx
-│   │   ├── choix-chauffage
-│   │   │   ├── ChoixChauffageForm.tsx
-│   │   │   ├── ChoixChauffageResults.tsx
-│   │   │   └── type-logement.ts
 │   │   ├── connexion
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── NewPasswordForm.tsx
@@ -1160,6 +1133,7 @@
 │   │       ├── Popover.tsx
 │   │       ├── QuickFilterPresets.tsx
 │   │       ├── Resizable.tsx
+│   │       ├── RichSelect.tsx
 │   │       ├── Section.tsx
 │   │       ├── TableBasic.tsx
 │   │       ├── Tag.tsx
@@ -1335,6 +1309,7 @@
 │   │   ├── useHtmlAttributes.ts
 │   │   ├── useInViewport.tsx
 │   │   ├── useInitialSearchParam.ts
+│   │   ├── useIsMobile.tsx
 │   │   ├── useLocalStorage.ts
 │   │   ├── usePreserveScroll.ts
 │   │   ├── useQueryFlag.tsx
@@ -1396,6 +1371,24 @@
 │   │   │   │   │   ├── prepare-batiments-summary-qpv.sh
 │   │   │   │   │   └── readme.md
 │   │   │   │   └── readme.md
+│   │   │   └── server
+│   │   │       ├── service.ts
+│   │   │       └── trpc-routes.ts
+│   │   ├── chaleur-renouvelable
+│   │   │   ├── client
+│   │   │   │   ├── AdemeHelp.tsx
+│   │   │   │   ├── ChoixChauffageForm.tsx
+│   │   │   │   ├── ChoixChauffageResults.tsx
+│   │   │   │   ├── FranceRenovHelp.tsx
+│   │   │   │   ├── ParamsForm.tsx
+│   │   │   │   ├── ResultRowAccordion.tsx
+│   │   │   │   ├── SettingsTopFields.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useAddressEligibility.ts
+│   │   │   │   │   ├── useChoixChauffageQueryParams.ts
+│   │   │   │   │   └── useRemoveHashOnScroll.ts
+│   │   │   │   └── modesChauffageData.tsx
+│   │   │   ├── constants.ts
 │   │   │   └── server
 │   │   │       ├── service.ts
 │   │   │       └── trpc-routes.ts
@@ -1728,7 +1721,12 @@
 │   │   ├── campagnes2024.tsx
 │   │   ├── carte.tsx
 │   │   ├── cgu.tsx
-│   │   ├── chaleur-renouvelable.tsx
+│   │   ├── chaleur-renouvelable
+│   │   │   ├── index.tsx
+│   │   │   ├── methodologie
+│   │   │   │   └── index.tsx
+│   │   │   └── resultat
+│   │   │       └── index.tsx
 │   │   ├── chauffage-urbain.tsx
 │   │   ├── collectivites-et-exploitants
 │   │   │   └── potentiel-creation-reseau
@@ -1820,6 +1818,7 @@
 │   │   │       ├── 20260113150402_add_ouvert_aux_raccordements.ts
 │   │   │       ├── 20260120113715_drop_legacy_eligibility_tables.ts
 │   │   │       ├── 20260126110000_add_comment_au_tags.ts
+│   │   │       ├── 20260226110000_create_batenr_table.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── logger.ts
@@ -1924,4 +1923,4 @@
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── vitest.config.mts
-258 directories, 1954 files
+265 directories, 1979 files

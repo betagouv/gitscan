@@ -1,34 +1,40 @@
 ## Changelog : france-chaleur-urbaine (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au site france-chaleur-urbaine au cours du dernier mois. Les principales évolutions concernent la mise à jour des données réseaux de chaleur, l'intégration d'un outil d'analyse (PostHog) pour mieux comprendre l'utilisation du site, et une refactorisation du code pour une meilleure maintenabilité. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été réalisées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la page de simulation et le formulaire de contact. Des corrections de bugs et des optimisations ont été apportées, ainsi que des mises à jour des données réseaux de chaleur et de la gestion des fichiers pour les contributions. L'intégration de PostHog pour le suivi analytique permet une meilleure compréhension du comportement des utilisateurs.
 
 ### Évolutions fonctionnelles
-- Mise à jour des données réseaux de chaleur avec les DLE 2024. [#1207](https://github.com/betagouv/france-chaleur-urbaine/pull/1207)
-- Ajout d'un CTA (Call To Action) spécifique pour les utilisateurs non raccordables. [#1199](https://github.com/betagouv/france-chaleur-urbaine/pull/1199)
-- Correction d'un bug dans le test d'adresse, notamment pour la ville de Bordeaux. [#1203](https://github.com/betagouv/france-chaleur-urbaine/pull/1203)
-- Suppression de la bannière du comparateur de coûts.
-- Ajout d'un commentaire pour les statistiques par tag. [#1196](https://github.com/betagouv/france-chaleur-urbaine/pull/1196)
-- Intégration du suivi analytics via PostHog pour une meilleure compréhension de l'utilisation du site. [#1203](https://github.com/betagouv/france-chaleur-urbaine/pull/1203)
-- Ajout d'événements Matomo pour le CTA vers le comparateur et pour l'analyse des données.
+- Ajout d'une page de méthodologie expliquant le fonctionnement du simulateur.
+- Amélioration de l'affichage et de la gestion des erreurs sur la page de résultat du simulateur, notamment en mode mobile.
+- Ajout d'un bouton retour sur la page de méthodologie.
+- Simplification du processus de copie de la simulation.
+- Suppression du bouton "Je Donne Mon Avis" remplacé par un sondage PostHog.
+- Ajout d'un formulaire de contact remplaçant l'adresse email.
+- Amélioration du suivi des événements avec PostHog pour une meilleure analyse de l'utilisation du site.
+- Ajout d'un CTA pour les utilisateurs non raccordables.
+- Possibilité de filtrer les fichiers géographiques (shapefile et PDF) pour les contributions.
+- Affichage des réseaux de chaleur non ouverts en gris sur la carte.
+- Ajout de nouveaux modes de chauffage (Pac géo maison et Chaudière biomasse maison) dans le simulateur.
+- Amélioration de l'affichage du gain DPE et du bouton "Comparer les solutions" en mode mobile.
 
 ### Évolutions techniques
-- Refactorisation du code lié aux données open data, avec déplacement des fichiers dans un module dédié. [#1205](https://github.com/betagouv/france-chaleur-urbaine/pull/1205)
-- Suppression de composants et fichiers inutilisés dans le code frontend.
-- Utilisation de `cx` pour la gestion des classes CSS.
-- Passage de TypeScript en dépendances.
-- Correction d'un bug lié à la réaffection des gestionnaires. [#1197](https://github.com/betagouv/france-chaleur-urbaine/pull/1197)
-- Suppression du markdown au profit du HTML pour certains éléments de l'interface utilisateur. [#1201](https://github.com/betagouv/france-chaleur-urbaine/pull/1201)
+- Refactorisation de l'appel à l'API `location-infos` avec trpc pour plus d'efficacité.
+- Utilisation de trpc pour l'appel à Airtable.
+- Transformation de l'appel RNB en trpc.
+- Création de modules pour factoriser le code et améliorer la maintenabilité (chaleur-renouvelable, opendata).
+- Mise à jour de la version de Publicodes.
+- Suppression du markdown dans certains composants et remplacement par du HTML.
+- Ajout de scripts pour la gestion et l'import des données Batenr et des données réseaux de chaleur.
+- Intégration de PostHog pour le suivi analytique.
+- Amélioration de la gestion des types et des paramètres par défaut.
+- Suppression de fichiers et de code inutilisés.
+- Mise à jour des données réseaux de chaleur avec les DLE 2024.
 
 ### Autres changements
-- Mise à jour des textes et des labels pour l'année 2024.
-- Ajout d'un script pour la mise à jour des données avec la bibliothèque fedene.
-- Ajout d'un fichier `.editorconfig` pour la configuration de l'éditeur de code VSCode.
-- Mise à jour de la version de Publicodes.
-- Mise à jour de la documentation avec les étapes de développement et de lancement du serveur.
-- Suppression d'informations MO inutilisées (adresse, code postal, ville).
-- Suppression de la doc obsolète.
-- Ajout d'une ancre sur les Headings pour faciliter la navigation.
-- Suppression d'un localhost utilisé pour les tests.
-- Ajout d'un événement à la configuration analytics.
-- Correction de la syntaxe et mise à jour de l'adresse dans un cas de test.
+- Ajout de documentation sur l'utilisation de Publicodes et le lancement du serveur.
+- Ajout de fichiers `.editorconfig` pour améliorer la cohérence du code.
+- Mise à jour des statistiques mensuelles.
+- Amélioration des commentaires et de la documentation.
+- Correction de bugs mineurs et améliorations de la performance.
+- Ajout de tests pour vérifier l'adresse.
+- Suppression de la bannière du comparateur de coûts.
