@@ -1,19 +1,22 @@
 ## Changelog : espace-membre-next (30 derniers jours)
 
 ### Résumé
-Les dernières améliorations apportées à l'espace membre se concentrent sur l'amélioration de l'expérience utilisateur, notamment concernant l'onboarding des membres et la gestion des invitations par email. Des corrections ont été apportées pour assurer que tous les membres, y compris les anciens, voient l'onboarding et que les invitations par email fonctionnent correctement, même dans des cas spécifiques comme les adresses email supprimées. Une documentation a également été ajoutée pour clarifier le flux de travail.
+Les dernières mises à jour de l'espace membre se concentrent sur l'amélioration de la gestion des membres, notamment l'activation, la vérification et la gestion des missions. Des corrections ont également été apportées pour améliorer l'expérience utilisateur, en particulier concernant l'onboarding et la gestion des invitations par email.
 
 ### Évolutions fonctionnelles
-- Correction : L'onboarding n'était pas affiché pour les membres existants, il est maintenant visible pour tous. [#1222](https://github.com/betagouv/espace-membre-next/issues/1222)
-- Correction : L'affichage des instructions de création d'email a été simplifié. [#1223](https://github.com/betagouv/espace-membre-next/issues/1223)
-- Correction : Affichage correct des invitations dimail même lorsque l'email a été supprimé. [#1216](https://github.com/betagouv/espace-membre-next/issues/1216)
-- Correction : Résolution d'un problème avec l'invitation dimail. [#1215](https://github.com/betagouv/espace-membre-next/issues/1215)
-- Correction : Affichage de l'invitation dimail pour les membres dont l'email est marqué comme supprimé. [#1214](https://github.com/betagouv/espace-membre-next/issues/1214)
-- Correction : Correction de l'affichage de la page de vérification de compte. [#1219](https://github.com/betagouv/espace-membre-next/issues/1219)
+- Les administrateurs et les membres des incubateurs peuvent désormais réduire la date de fin des missions [#1228](https://github.com/betagouv/espace-membre-next/issues/1228).
+- Amélioration de l'activation et de la vérification des membres [#1227](https://github.com/betagouv/espace-membre-next/issues/1227).
+- Possibilité de gérer les membres directement depuis la page de démarrage [#1226](https://github.com/betagouv/espace-membre-next/issues/1226).
+- L'onboarding est maintenant masqué pour les membres existants sur le tableau de bord [#1222](https://github.com/betagouv/espace-membre-next/issues/1222).
+- Correction de l'affichage des invitations par email, même pour les adresses email supprimées [#1216](https://github.com/betagouv/espace-membre-next/issues/1216), [#1215](https://github.com/betagouv/espace-membre-next/issues/1215), [#1214](https://github.com/betagouv/espace-membre-next/issues/1214).
+- L'onboarding est maintenant affiché pour tous les utilisateurs [#1218](https://github.com/betagouv/espace-membre-next/issues/1218).
+- Correction de la page de vérification du compte [#1219](https://github.com/betagouv/espace-membre-next/issues/1219).
 
 ### Évolutions techniques
-- Correction : Format du cron job corrigé. [#1213](https://github.com/betagouv/espace-membre-next/issues/1213)
+- Simplification de la création des instructions d'email [#1223](https://github.com/betagouv/espace-membre-next/issues/1223).
+- Correction du format du cron [#1213](https://github.com/betagouv/espace-membre-next/issues/1213).
 
 ### Autres changements
-- Ajout d'un diagramme de flux pour la documentation. [#1211](https://github.com/betagouv/espace-membre-next/issues/1211)
-- Mise à jour du fichier `checklist.yml`. [#1221](https://github.com/betagouv/espace-membre-next/issues/1221)
+- Ajout d'un diagramme de flux pour la documentation [#1211](https://github.com/betagouv/espace-membre-next/issues/1211).
+- Mise à jour du fichier `checklist.yml` [#1221](https://github.com/betagouv/espace-membre-next/issues/1221).
+- Correction typographique.
