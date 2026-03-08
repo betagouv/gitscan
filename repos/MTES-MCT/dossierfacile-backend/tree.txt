@@ -208,7 +208,6 @@
 │       │   │                   ├── config
 │       │   │                   │   ├── AsyncConfig.java
 │       │   │                   │   ├── AsyncTaskDecorator.java
-│       │   │                   │   ├── CustomHealthIndicator.java
 │       │   │                   │   ├── GeneralConfiguration.java
 │       │   │                   │   ├── KeycloakConfig.java
 │       │   │                   │   ├── MailConfiguration.java
@@ -605,7 +604,9 @@
 │           │                   ├── TestApplication.java
 │           │                   ├── controller
 │           │                   │   ├── ApartmentSharingLinkControllerTest.java
+│           │                   │   ├── ApplicationControllerIntegrationTest.java
 │           │                   │   ├── ApplicationControllerTest.java
+│           │                   │   ├── DocumentControllerTest.java
 │           │                   │   ├── RegisterControllerTest.java
 │           │                   │   ├── TenantControllerTest.java
 │           │                   │   ├── UserControllerTest.java
@@ -620,6 +621,9 @@
 │           │                   │       └── DfcTenantsControllerTest.java
 │           │                   ├── log
 │           │                   │   └── GlobalExceptionHandlerTest.java
+│           │                   ├── mapper
+│           │                   │   ├── TenantGraphBuilder.java
+│           │                   │   └── TenantMapperTest.java
 │           │                   ├── partner
 │           │                   │   └── controller
 │           │                   │       └── ApiPartnerTenantControllerTest.java
@@ -629,6 +633,10 @@
 │           │                   │       ├── ApplicationV2Tests.java
 │           │                   │       ├── NameSaveStepTest.java
 │           │                   │       └── NamesTest.java
+│           │                   ├── repository
+│           │                   │   ├── ApartmentSharingLinkRepositoryTest.java
+│           │                   │   ├── DocumentRepositoryTest.java
+│           │                   │   └── JpaTestApplication.java
 │           │                   ├── security
 │           │                   │   ├── AuthenticationFacadeImplTest.java
 │           │                   │   ├── ClientAuthenticationFacadeImplTest.java
@@ -637,6 +645,7 @@
 │           │                   │   ├── ApartmentSharingServiceImplBruteForceTest.java
 │           │                   │   ├── ApartmentSharingServiceImplTest.java
 │           │                   │   ├── ApartmentSharingTrigramValidationTest.java
+│           │                   │   ├── DocumentServiceImplTest.java
 │           │                   │   ├── FinancialDocumentServiceImplTest.java
 │           │                   │   ├── LinkBruteForceProtectionServiceImplTest.java
 │           │                   │   ├── ScheduledTasksServiceImplTest.java
@@ -1862,6 +1871,7 @@
 │           │           └── common
 │           │               ├── entity
 │           │               │   ├── ApartmentSharingTest.java
+│           │               │   ├── TenantTest.java
 │           │               │   └── UserTest.java
 │           │               ├── mapper
 │           │               │   ├── ApplicationFullMapperTest.java
@@ -2382,6 +2392,7 @@
 │       │   │                   │   ├── DeleteFilesTask.java
 │       │   │                   │   └── DeleteTemporaryFilesTask.java
 │       │   │                   └── tenantwarning
+│       │   │                       ├── TenantArchivingService.java
 │       │   │                       ├── TenantDeletionTask.java
 │       │   │                       ├── TenantRepository.java
 │       │   │                       ├── TenantWarningService.java
@@ -2437,4 +2448,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-573 directories, 1970 files
+575 directories, 1979 files

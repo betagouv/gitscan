@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/MTES-MCT/dossierfacile-backend",
   "name": "dossierfacile-backend",
-  "description": "Ce projet est le backend de DossierFacile.fr, une application web conçue pour aider à la constitution de dossiers de location. Il fournit les API et la logique métier nécessaires au fonctionnement de la plateforme.",
+  "description": "Le backend de DossierFacile.fr est conçu pour aider à la création de dossiers de location. Il fournit une API pour gérer les applications, les documents et les utilisateurs.",
   "language": "Java",
   "features": [
-    "Gestion des dossiers",
+    "Gestion des applications",
+    "Gestion des documents",
     "Authentification utilisateur",
-    "Génération de documents",
-    "Partage de dossiers",
     "Gestion des utilisateurs",
-    "Intégration avec des services tiers (Keycloak, Brevo)"
+    "Génération de PDF",
+    "Intégration avec Keycloak",
+    "Gestion des feature flags"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,12 +20,12 @@
     "Docker",
     "Keycloak",
     "Brevo",
-    "Openstack4j"
+    "FiligraneFacile"
   ],
   "components": [
     "API REST",
     "Base de données PostgreSQL",
-    "Microservices (api-owner, api-tenant, pdf-generator, etc.)",
+    "Microservices",
     "Keycloak pour l'authentification",
     "Docker pour la conteneurisation"
   ],
@@ -39,26 +40,26 @@
   },
   "tests": "Tests unitaires et d'intégration",
   "workflows": [
-    "CI/CD (non spécifié dans les données fournies)"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-02-27T14:38:40+01:00",
+  "lastActivity": "2026-03-06T08:23:59Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 23,
-    "forks": 10,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 17
+    "openIssues": null
   },
   "tags": [
     "Java",
     "Spring Boot",
-    "API",
     "Keycloak",
-    "DossierFacile",
+    "PDF",
     "Location",
-    "Microservices",
-    "Docker"
+    "DossierFacile",
+    "API",
+    "Microservices"
   ]
 }

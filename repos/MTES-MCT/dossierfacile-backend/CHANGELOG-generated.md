@@ -1,34 +1,29 @@
 ## Changelog : dossierfacile-backend (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations et corrections apportées au backend de DossierFacile au cours des 30 derniers jours. Les modifications incluent des améliorations de la robustesse, des corrections de bugs, des refactorings pour simplifier le code et l'ajout de fonctionnalités comme la gestion des feature flags. Plusieurs versions mineures ont été publiées pour intégrer ces changements.
+Ce changelog résume les évolutions récentes du backend de DossierFacile.fr. Les mises à jour incluent des améliorations de la sécurité, des corrections de bugs, des optimisations de performance et des refactorings importants pour simplifier et clarifier le code. Des nouvelles fonctionnalités ont également été ajoutées, notamment la gestion des feature flags et l'accès restreint à certaines fonctionnalités pour les administrateurs.
 
 ### Évolutions fonctionnelles
-
-- Ajout de la fonctionnalité de gestion des *feature flags* pour activer ou désactiver certaines fonctionnalités dynamiquement. [#1150](https://github.com/MTES-MCT/dossierfacile-backend/issues/1150)
-- Amélioration du traitement des fichiers pour éviter les crashes de Tika lors de l'extraction des métadonnées. [#1145](https://github.com/MTES-MCT/dossierfacile-backend/issues/1145)
-- Correction d'un bug empêchant l'envoi correct de l'application au *back office* en cas d'avertissement sur le compte. [#1130](https://github.com/MTES-MCT/dossierfacile-backend/issues/1130)
-- Correction d'un problème empêchant l'ajout correct de fichiers aux documents, ce qui pouvait entraîner des vérifications de duplication incorrectes.
-- Correction d'un bug dans le comptage des visites, afin de ne pas compter les visites du tenant sur son propre lien. [#1119](https://github.com/MTES-MCT/dossierfacile-backend/issues/1119)
+- Les administrateurs peuvent désormais accéder et visualiser les fichiers bruts. [#1156](https://github.com/MTES-MCT/dossierfacile-backend/issues/1156)
+- Ajout d'un nouvel endpoint pour récupérer les documents via un lien spécifique : `/api/application/links/{linkToken}/document/{documentName}` et restriction de l'accès à l'endpoint `/api/document/resource/{uuid}` à une authentification.
+- Gestion améliorée des liens de documents pour les partenaires.
+- Correction d'un bug qui empêchait l'affichage correct des URL de prévisualisation.
+- Ajout de la fonctionnalité de feature flags, permettant d'activer ou de désactiver des fonctionnalités sans redéploiement. [#1150](https://github.com/MTES-MCT/dossierfacile-backend/issues/1150)
+- Amélioration de la gestion des visites de liens par les tenants (éviter le comptage des visites par le tenant lui-même). [#1119](https://github.com/MTES-MCT/dossierfacile-backend/issues/1119)
 
 ### Évolutions techniques
-
-- Refactorisation importante du code pour supprimer des fonctionnalités obsolètes :
-    - Suppression des endpoints et du code liés aux partenaires. [#1147](https://github.com/MTES-MCT/dossierfacile-backend/issues/1147)
-    - Suppression des endpoints et du code liés à FranceConnect. [#1144](https://github.com/MTES-MCT/dossierfacile-backend/issues/1144)
-    - Suppression de la route et du code de régénération de token. [#1128](https://github.com/MTES-MCT/dossierfacile-backend/issues/1128)
-- Amélioration de la gestion des erreurs :
-    - Retour d'une erreur 404 au lieu d'une 500 lors de la recherche d'une propriété par ID. [#1134](https://github.com/MTES-MCT/dossierfacile-backend/issues/1134)
-    - Ajout de logs de diagnostic pour les erreurs de verrouillage optimiste (409). [#1139](https://github.com/MTES-MCT/dossierfacile-backend/issues/1139)
-    - Suppression de l'affichage des traces de pile dans les réponses de l'API. [#1138](https://github.com/MTES-MCT/dossierfacile-backend/issues/1138)
-- Amélioration de la performance en activant l'exécution parallèle des tâches. [#1137](https://github.com/MTES-MCT/dossierfacile-backend/issues/1137)
-- Amélioration de la logique de normalisation des URI dans les logs. [#1140](https://github.com/MTES-MCT/dossierfacile-backend/issues/1140)
-- Mise à jour de la version de Spring Doc pour assurer la compatibilité. [#1125](https://github.com/MTES-MCT/dossierfacile-backend/issues/1125)
-- Correction d'un problème d'encodage de l'en-tête `Content-Disposition`. [#1131](https://github.com/MTES-MCT/dossierfacile-backend/issues/1131)
-- Mise à jour de l'URL du certificat Ants. [#1126](https://github.com/MTES-MCT/dossierfacile-backend/issues/1126)
+- Refactorings importants pour supprimer du code obsolète et simplifier l'architecture, notamment concernant les endpoints liés aux partenaires, FranceConnect et la régénération de tokens. [#1147](https://github.com/MTES-MCT/dossierfacile-backend/issues/1147), [#1145](https://github.com/MTES-MCT/dossierfacile-backend/issues/1145), [#1144](https://github.com/MTES-MCT/dossierfacile-backend/issues/1144), [#1128](https://github.com/MTES-MCT/dossierfacile-backend/issues/1128), [#1129](https://github.com/MTES-MCT/dossierfacile-backend/issues/1129)
+- Amélioration de la gestion des erreurs et ajout de logs de diagnostic pour faciliter le débogage.
+- Optimisation de l'exécution des tâches planifiées pour permettre un traitement parallèle. [#1137](https://github.com/MTES-MCT/dossierfacile-backend/issues/1137)
+- Amélioration de la robustesse de la gestion des erreurs Optimistic Locking. [#1139](https://github.com/MTES-MCT/dossierfacile-backend/issues/1139)
+- Correction d'un problème de crash de Tika lors de l'extraction de métadonnées. [#1125](https://github.com/MTES-MCT/dossierfacile-backend/issues/1125)
+- Mise à jour de la version de spring-doc pour assurer la compatibilité.
+- Amélioration de la gestion des en-têtes `Content-Disposition` pour éviter les erreurs d'encodage. [#1100](https://github.com/MTES-MCT/dossierfacile-backend/issues/1100)
+- Amélioration de la journalisation des adresses IP des clients en utilisant l'en-tête `X-Forwarded-For`. [#1165](https://github.com/MTES-MCT/dossierfacile-backend/issues/1165), [#1164](https://github.com/MTES-MCT/dossierfacile-backend/issues/1164)
 
 ### Autres changements
-
-- Définition des IDs de templates Brevo directement dans le code au lieu des propriétés. [#1102](https://github.com/MTES-MCT/dossierfacile-backend/issues/1102)
-- Publication des versions 3.4.1, 3.4.2, 3.4.3, 3.4.4, 3.4.5 et 3.4.6.
-- Normalisation de l'URI dans les logs. [#1140](https://github.com/MTES-MCT/dossierfacile-backend/issues/1140)
+- Ajout de tests unitaires et d'intégration pour le mapper des tenants.
+- Mise à jour des IDs de templates Brevo en dur dans le code. [#1102](https://github.com/MTES-MCT/dossierfacile-backend/issues/1102)
+- Suppression de la configuration par email des clients partenaires. [#1143](https://github.com/MTES-MCT/dossierfacile-backend/issues/1143)
+- Plusieurs corrections de bugs et améliorations mineures.
+- Mises à jour de version (v3.4.6, v3.4.8, v3.4.9, v3.4.10, v3.4.11, v3.4.12).
