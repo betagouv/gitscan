@@ -1,37 +1,50 @@
 ## Changelog : otelo (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'otelo se concentrent sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités, notamment la gestion des sources de données, l'exportation de données, et l'ajout de fonctionnalités de test A/B pour l'analyse territoriale. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
+Ce changelog résume les améliorations apportées à otelo au cours du dernier mois. Les développements se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la gestion des sources de données, l'historique des simulations, l'exportation de données améliorée et la gestion des utilisateurs. Des corrections de bugs et des optimisations ont également été implémentées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter les résultats des simulations sous forme d'image. [#2](https://github.com/MTES-MCT/otelo/pulls/2)
-- Implémentation d'un test A/B pour l'affichage des territoires voisins. [#1](https://github.com/MTES-MCT/otelo/pulls/1) et [#2](https://github.com/MTES-MCT/otelo/pulls/2)
-- Ajout d'une page de retours utilisateurs. [#16](https://github.com/MTES-MCT/otelo/pulls/16)
-- Possibilité de supprimer un groupe EPCI. [#15](https://github.com/MTES-MCT/otelo/pulls/15)
-- Ajout de la gestion des sources de données. [#4](https://github.com/MTES-MCT/otelo/pulls/4)
-- Amélioration de l'affichage des taux d'hébergement secondaire. [#24](https://github.com/MTES-MCT/otelo/pulls/24)
-- Ajout d'un bouton d'exportation des résultats des simulations. [#10](https://github.com/MTES-MCT/otelo/pulls/10)
-- Amélioration de l'affichage des graphiques récapitulatifs. [#20](https://github.com/MTES-MCT/otelo/pulls/20)
-- Ajout de la possibilité d'inclure les EPCI dans la liste d'exportation des statistiques. [#21](https://github.com/MTES-MCT/otelo/pulls/21)
-- Ajout d'une bannière de feedback. [#11](https://github.com/MTES-MCT/otelo/pulls/11)
-- Amélioration de la gestion des utilisateurs. [#17](https://github.com/MTES-MCT/otelo/pulls/17)
-- Ajout d'une page 404 et actualisation automatique après la déconnexion. [#18](https://github.com/MTES-MCT/otelo/pulls/18)
+- Ajout d'une page de retour utilisateur [#16](https://github.com/MTES-MCT/otelo/pull/16).
+- Implémentation de la suppression de groupes EPCI [#15](https://github.com/MTES-MCT/otelo/pull/15).
+- Ajout de la gestion des sources de données [#4](https://github.com/MTES-MCT/otelo/pull/4).
+- Possibilité d'exporter les résultats des simulations en image.
+- Ajout d'un bouton d'exportation des résultats des simulations.
+- Amélioration de l'affichage des statistiques et ajout de la liste des EPCI dans l'export.
+- Ajout de la gestion des utilisateurs et amélioration de l'interface.
+- Ajout d'une page 404 et actualisation automatique après déconnexion.
+- Amélioration de l'affichage des logements vacants et secondaires.
+- Correction de l'affichage des totaux cumulés pour les logements vacants et secondaires.
+- Correction de l'arrondi de la taille des ménages.
+- Correction de l'affichage des offres potentielles RS.
+- Correction de l'affichage des graphiques récapitulatifs.
+- Correction de l'export Excel pour les décimales.
 
 ### Évolutions techniques
-- Migration vers une meilleure solution d'authentification (better-auth). [#3](https://github.com/MTES-MCT/otelo/pulls/3) et [#12](https://github.com/MTES-MCT/otelo/pulls/12)
-- Amélioration de la gestion des versions des données (dataversioning). [#23](https://github.com/MTES-MCT/otelo/pulls/23)
-- Ajout de tests unitaires pour le moteur de calcul Excel. [#25](https://github.com/MTES-MCT/otelo/pulls/25)
-- Refonte du calcul du renouvellement urbain. [#26](https://github.com/MTES-MCT/otelo/pulls/26)
-- Amélioration de la configuration du build et de la gestion des dépendances.
-- Ajout de tests pour la gestion des logements vacants. [#22](https://github.com/MTES-MCT/otelo/pulls/22)
-- Mise en place d'un système de gestion des clés API et de leurs consommateurs. [#22](https://github.com/MTES-MCT/otelo/pulls/22)
+- Migration vers une meilleure solution d'authentification (Better Auth) [#3](https://github.com/MTES-MCT/otelo/pull/3).
+- Refonte de la gestion des utilisateurs.
+- Ajout de tests unitaires basés sur Excel pour le moteur de calcul.
+- Implémentation du versioning des données (datapack) [#23](https://github.com/MTES-MCT/otelo/pull/23).
+- Ajout de l'historique des résultats des simulations [#10](https://github.com/MTES-MCT/otelo/pull/10) et [#13](https://github.com/MTES-MCT/otelo/pull/13).
+- Amélioration de la gestion des millésimes dans les calculs de taux [#28](https://github.com/MTES-MCT/otelo/pull/28).
+- Correction de l'injection du module CLI.
+- Correction de la configuration des paramètres de millésime.
+- Correction de la gestion des années de base.
+- Amélioration de la gestion des erreurs lors de la migration de la base de données.
+- Ajout de tests Prisma.
+- Amélioration de la configuration Swagger pour les enums.
+- Correction de la construction de l'application.
+- Utilisation de Puppeteer pour gérer Chromium.
 
 ### Autres changements
-- Correction de divers bugs et typos.
-- Amélioration de la documentation.
+- Ajout d'une page de changelog.
+- Ajout d'un script postinstall pour Chromium.
+- Suppression de la commande prune.
+- Nettoyage du code et suppression des logs inutiles.
+- Correction de fautes de frappe.
 - Mise à jour des dépendances.
-- Nettoyage du code et refactoring.
-- Ajout de tests et amélioration de la couverture de test.
-- Configuration de l'environnement de développement pour une meilleure gestion de Chromium.
-- Suppression du seed et du client Prisma généré lors du déploiement.
-- Ajout de commentaires et de logs pour faciliter le débogage.
+- Ajout d'un banner de feedback.
+- Amélioration de la navigation du menu d'en-tête pour les utilisateurs connectés.
+- Correction d'un problème de blocage de l'interface lors du défilement vers un élément spécifique.
+- Ajout d'une limitation de la taille de page pour éviter les blocages.
+- Ajout d'un fichier `.env` local.
+- Ajout de tests pour le calcul des logements indécents.
