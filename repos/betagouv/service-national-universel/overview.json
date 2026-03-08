@@ -1,60 +1,69 @@
 {
   "url": "https://github.com/betagouv/service-national-universel",
   "name": "service-national-universel",
-  "description": "Plateforme du Service National Universel. Elle permet de gérer les candidatures, les affectations et le suivi des jeunes en service national universel.",
+  "description": "Plateforme du Service National Universel. Ce projet fournit une interface publique, une interface de gestion et une API pour gérer les aspects du service national.",
   "language": "TypeScript",
   "features": [
+    "Gestion des utilisateurs",
+    "Gestion des sessions",
     "Gestion des candidatures",
-    "Affectation des jeunes",
-    "Suivi des volontaires",
-    "Gestion des centres",
-    "Gestion des missions",
-    "Téléchargement de documents",
+    "Export de données (DSNJ)",
     "Envoi d'emails",
-    "Gestion des utilisateurs"
+    "Gestion des référents",
+    "Gestion des pièces d'identité",
+    "Suivi des candidatures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "npm",
+    "Express",
+    "PostgreSQL",
     "turbo",
     "dotenv-cli",
-    "patch-package"
+    "patch-package",
+    "@sentry/nextjs"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "Base de données MongoDB",
-    "Environnements Docker"
+    "Base de données PostgreSQL",
+    "Interface d'administration",
+    "Cron jobs",
+    "Microservices"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
-    ],
-    "providers": []
+      "session"
+    ]
   },
-  "tests": [
-    "Jest",
-    "Cypress"
-  ],
+  "tests": "Tests unitaires et d'intégration (Jest, Pytest, Cypress)",
   "workflows": [
     "CI",
-    "CD"
+    "CD",
+    "Déploiement automatique",
+    "Tests automatisés"
   ],
   "lastActivity": "2024-05-10T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Service National Universel",
     "SNU",
-    "Engagement Civique",
-    "Volontariat",
-    "Administration Publique",
+    "Gouvernement",
+    "Administration",
+    "Plateforme",
     "React",
-    "TypeScript"
+    "TypeScript",
+    "API",
+    "France"
   ]
 }
