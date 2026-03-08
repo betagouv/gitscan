@@ -1,56 +1,55 @@
 ## Changelog : seves (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Sèves au cours des 30 derniers jours. Les évolutions incluent des corrections de sécurité, des améliorations de l'interface utilisateur pour faciliter la gestion des documents et des événements, ainsi que des optimisations de performance pour une meilleure réactivité de l'application. Des modifications techniques ont également été apportées pour préparer l'implémentation de nouvelles fonctionnalités, notamment le téléchargement massif de documents.
+Ce changelog présente les améliorations apportées à Sèves au cours des 30 derniers jours. Les évolutions concernent principalement l'interface utilisateur, avec des améliorations de l'expérience utilisateur sur les pages de détail, les listes d'objets et les formulaires. Des corrections de bugs et des optimisations de performance ont également été réalisées, notamment concernant le chargement des pages et la gestion des documents. Enfin, des mises à jour techniques ont été effectuées pour améliorer la sécurité et la qualité du code.
 
 ### Évolutions fonctionnelles
-- Possibilité d'ajouter des agents dans le champ de copie des destinataires des DI.
-- Ajout des numéros de téléphone des agents dans les signatures d'email.
-- Amélioration des cartes d'établissement (etablissement).
-- Ajout de Saint-Pierre-et-Miquelon dans la liste des départements.
+- Ajout du numéro de fiche sur la page de création de message [#1733](https://github.com/betagouv/seves/issues/1733).
+- Ajout de l'Organisme Nuisible pour les SV.
+- Redesign des cartes dans TIAC.
+- Possibilité d'ajouter des agents dans la copie des destinataires des DI.
+- Affichage des numéros de téléphone des agents dans la signature des emails.
+- Ajout d'une option de suivi pour EnregistrementSimple.
+- Ajout d'un nouveau bloc de liens libres avec API sur TIAC.
+- Amélioration de l'UX pour le composant LienLibre.
+- Correction d'une vulnérabilité XSS dans le chargement massif de documents sur fiche.
+- Ajout de Saint-Pierre-et-Miquelon dans les départements.
 - Possibilité d'activer les nouveaux utilisateurs par défaut sur des environnements spécifiques.
-- Ajout d'une option de suivi (FollowUp) pour les EnregistrementSimple.
-- Ajout de liens libres avec une API dédiée pour TIAC.
-- Possibilité de forcer une structure à être disponible en tant que contact.
-- Amélioration de l'historique des investigations TIAC.
-- Ajout de nouveaux types de documents pour TIAC.
-- Possibilité de masquer les membres de l'équipe dans les listes déroulantes.
-- Amélioration de l'affichage des dates dans les TIAC et SSA.
-- Correction d'un bug empêchant la recherche correcte dans les listes ChoicesJs.
-- Correction d'une vulnérabilité XSS dans le téléchargement massif de documents sur les fiches.
-- Correction d'un problème de détection incorrecte des fichiers XLS.
-- Ajout d'un indicateur de progression pour le téléchargement massif de documents.
-- Correction d'un bug lié aux noms de fichiers trop longs pour les Documents.
-- Amélioration de la recherche de liens libres.
-- Ajout d'un indicateur pour les liens d'historique sur les SV.
-- Amélioration de l'affichage des informations sur les établissements dans les SSA.
-- Correction d'un problème de filtrage des agents et des structures pour ICH.
-- Amélioration du temps de chargement des pages de détails pour tous les produits.
-- Correction d'un bug lié à l'affichage des valeurs de suivi pour les événements simples.
+- Amélioration des tests pour les documents.
+- Ajout d'une alerte/warning pour l'équipe sur l'environnement de production.
 
 ### Évolutions techniques
+- Mise à jour de Ruff (0.15.0 -> 0.15.2 -> 0.15.4).
+- Mise à jour de Redis (7.1.1 -> 7.2.1).
+- Mise à jour de django-environ (0.12.0 -> 0.12.1 -> 0.13.0).
+- Mise à jour de django-dsfr (3.3.0 -> 3.3.1).
+- Mise à jour de sentry-sdk[django] (2.49.0 -> 2.51.0 -> 2.53.0).
+- Mise à jour de urllib3 (2.5.0 -> 2.6.3).
+- Mise à jour de django-reversion-compare (0.19.1 -> 0.19.2).
+- Mise à jour de pytest-django (4.11.1 -> 4.12.0).
+- Mise à jour de playwright (1.57.0 -> 1.58.0).
+- Ajout de linting avec Biome.
 - Formatage du code JavaScript et CSS avec Biome.
-- Refactorisation du code pour préparer l'implémentation du téléchargement massif asynchrone de documents.
-- Mise à jour de plusieurs dépendances : Django, django-environ, django-dsfr, sentry-sdk, ruff, sqlparse, virtualenv, urllib3, django-reversion-compare, playwright.
-- Ajout du paramètre `--fix` au hook ruff dans pre-commit pour la correction automatique des erreurs de style.
-- Configuration du fichier `.editorconfig` pour les fichiers YAML et formatage du fichier `.pre-commit-config.yaml`.
-- Utilisation d'une nouvelle fork pour docxcompose.
-- Nettoyage de code ancien lié au téléchargement massif synchronisé de documents.
+- Utilisation de Ruff pour trier les imports.
+- Nettoyage de code ancien lié au chargement massif de documents synchronisés.
+- Refactoring pour préparer le backend au chargement massif de documents asynchrones sur les messages.
+- Configuration du fichier `.editorconfig` pour les fichiers YAML et formatage de `.pre-commit-config.yaml`.
+- Ajout du paramètre `--fix` au hook ruff de pre-commit.
+- Correction d'un problème de détection incorrecte des fichiers XLS.
+- Amélioration de la gestion des types de documents lors de la modification.
 
 ### Autres changements
+- Correction de bugs mineurs sur l'interface utilisateur (UX).
+- Optimisations de performance pour le chargement des pages et les listes d'objets.
+- Suppression de feature flags obsolètes.
+- Amélioration des tests unitaires et d'intégration.
 - Correction d'une vulnérabilité potentielle dans les liens rappel conso.
-- Ajout d'une alerte/avertissement pour l'équipe sur l'environnement de production.
-- Amélioration des tests unitaires pour les Documents et les listes SSA.
-- Modification de l'ordre des champs de filtre dans les TIAC.
-- Ajout de sauts de ligne pour les évaluations dans ICH.
-- Mise à jour de la configuration de Django pour permettre l'utilisation de partials dans les modèles de formulaire.
-- Ajout de nouvelles structures dans l'import agricoll.
-- Amélioration des performances globales de l'application.
-- Suppression d'un ancien flag de fonctionnalité.
-- Correction d'un bug lié à la révision des pages sur SSA/TIAC.
-- Modification du titre des pages de mise à jour TIAC.
-- Suppression d'éléments en double dans la recherche en texte libre.
-- Modification du nombre d'éléments affichés sur les pages de liste.
-- Correction d'un bug lié à l'harmonisation des dates entre TIAC et SSA.
-- Optimisation de l'API FreeLinks.
-- Correction d'un problème lié à la restriction des types de documents lors de la modification d'un document.
+- Suppression des doublons dans la recherche de texte libre.
+- Amélioration de la recherche dans les champs ChoiceJs.
+- Modification de l'ordre des champs de filtre dans TIAC.
+- Ajout de préfixes pour les badges de nombre de participants dans TIAC.
+- Amélioration de l'affichage des établissements sur SSA.
+- Limitation du nombre de caractères dans le nom de fichier des documents.
+- Correction d'erreurs JavaScript.
+- Amélioration de la cohérence des dates entre TIAC et SSA.
+- Suppression d'une vérification redondante dans les contraintes.
