@@ -1,14 +1,14 @@
 ## Changelog : doc.demarches-simplifiees.fr (30 derniers jours)
 
 ### Résumé
-Ce changelog fait état d'une mise à jour importante de la documentation, avec l'ajout de nouvelles pages concernant l'API et la gestion des dossiers. Ces ajouts visent à faciliter la compréhension et l'utilisation de la plateforme par les développeurs et les agents de l'administration.
+Ce changelog présente les récentes mises à jour de la documentation de demarches-simplifiees.fr. Les modifications incluent l'ajout d'une nouvelle documentation concernant l'API, ainsi que des ajustements à la barre latérale pour y intégrer cette nouvelle ressource.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles pages de documentation concernant l'API : création de groupe instructeur, déplacement de dossier dans un groupe, et modification d'annotations. (#10)
-- Ajout d'une nouvelle documentation dans la barre latérale. (#11)
+- Ajout d'une nouvelle documentation concernant l'API, incluant des exemples pour la création de groupes d'instructeurs, le déplacement de dossiers dans des groupes et la modification d'annotations. [#10](https://github.com/betagouv/doc.demarches-simplifiees.fr/pull/10)
+- Intégration de la nouvelle documentation API dans la barre latérale pour une meilleure accessibilité. [#11](https://github.com/betagouv/doc.demarches-simplifiees.fr/pull/11)
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler.
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-- Plusieurs mises à jour de documentation diverses (GITBOOK-1155 à GITBOOK-1166) ont été effectuées, probablement des corrections ou des améliorations de contenu.
+- Modifications diverses de la documentation (GITBOOK-1170, GITBOOK-1171) sans impact visible pour l'utilisateur.
