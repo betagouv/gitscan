@@ -1642,7 +1642,9 @@
 │   │   ├── 20250930175106_add_mcp_to_tokens.rb
 │   │   ├── 20251024094616_add_used_to_tokens.rb
 │   │   ├── 20260114112301_downcase_user_emails.rb
-│   │   └── 20260205164936_create_authorization_request_security_settings.rb
+│   │   ├── 20260205164936_create_authorization_request_security_settings.rb
+│   │   ├── 20260305000000_add_scopes_to_authorization_requests.rb
+│   │   └── 20260305000001_add_index_on_authorization_requests_scopes.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker
@@ -1670,8 +1672,7 @@
 │       ├── .keep
 │       ├── cache.rake
 │       ├── db_seed.rake
-│       ├── import_datapass.rake
-│       └── token.rake
+│       └── import_datapass.rake
 ├── log
 │   └── .keep
 ├── postgresql_setup.txt
@@ -2443,8 +2444,7 @@
 │   │   ├── hub_signature_spec.rb
 │   │   ├── seeds_spec.rb
 │   │   └── tasks
-│   │       ├── sitemap_spec.rb
-│   │       └── token_spec.rb
+│   │       └── sitemap_spec.rb
 │   ├── mailers
 │   │   ├── api_entreprise
 │   │   │   ├── audit_mailer_spec.rb
@@ -2525,8 +2525,6 @@
 │   └── support
 │       ├── hubee_api_mocks.rb
 │       ├── insee_sirene_api_mocks.rb
-│       ├── shared_context
-│       │   └── mute_rake_tasks.rb
 │       └── shared_examples
 │           ├── controllers
 │           │   ├── authenticated_users_controller.rb
@@ -2570,4 +2568,4 @@
 │   └── .gitkeep
 └── vendor
     └── .keep
-303 directories, 2343 files
+302 directories, 2342 files

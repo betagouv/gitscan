@@ -1,24 +1,25 @@
 {
   "url": "https://github.com/etalab/admin_api_entreprise",
   "name": "admin_api_entreprise",
-  "description": "Site vitrine / backoffice de l'API Entreprise et de l'API Particulier. Ce projet fournit une interface d'administration pour gérer et surveiller les API.",
+  "description": "Ce projet est une interface d'administration pour les API Entreprise et Particulier. Il permet de gérer les accès, les requêtes et les configurations des API.",
   "language": "Ruby",
   "features": [
-    "Gestion des requêtes API",
-    "Authentification utilisateur",
-    "Gestion des accès",
-    "Surveillance des performances",
+    "Gestion des accès API",
+    "Surveillance des requêtes API",
     "Gestion des utilisateurs",
-    "Gestion des tokens"
+    "Configuration des API",
+    "Visualisation des données",
+    "Gestion des webhooks"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "Rails",
+    "Docker",
     "RSpec",
-    "Docker"
+    "Rubocop"
   ],
   "components": [
     "Backend Ruby on Rails",
@@ -42,11 +43,11 @@
     "Guard"
   ],
   "workflows": [
-    "tests",
-    "lint",
-    "security"
+    "tests.yml",
+    "lint.yml",
+    "security.yml"
   ],
-  "lastActivity": "2026-02-23T14:27:16+01:00",
+  "lastActivity": "2026-03-06T13:50:27+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -58,11 +59,12 @@
   },
   "tags": [
     "API",
-    "Ruby on Rails",
     "Administration",
-    "FranceConnect",
+    "Ruby on Rails",
     "PostgreSQL",
     "Redis",
-    "Backoffice"
+    "FranceConnect",
+    "API Entreprise",
+    "API Particulier"
   ]
 }
