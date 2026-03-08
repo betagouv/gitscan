@@ -1,12 +1,18 @@
 ## Changelog : plusfraisautravail (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, le projet plusfraisautravail a connu une avancée significative avec la mise en place d'un premier commit initial et des ajustements pour la gestion du contenu dynamique. L'interface a été simplifiée en supprimant l'en-tête et le pied de page, et une configuration de proxy a été ajoutée. Ces changements préparent l'application à l'intégration de contenu et à un déploiement plus flexible.
+Ce mois-ci, l'application plusfraisautravail a connu des améliorations significatives, notamment le déploiement sur GitHub Pages, la mise à jour du contenu et la suppression de l'en-tête et du pied de page pour une expérience utilisateur plus focalisée. Le projet a également été initialisé et configuré pour utiliser un contenu dynamique.
 
 ### Évolutions fonctionnelles
-- Suppression de l'en-tête et du pied de page pour une interface plus épurée.
+- Le contenu de l'application a été mis à jour pour améliorer la pertinence des informations présentées. [#2](https://github.com/incubateur-ademe/plusfraisautravail/pull/2)
+- L'application est maintenant déployée sur GitHub Pages, la rendant accessible en ligne. [#1](https://github.com/incubateur-ademe/plusfraisautravail/pull/1)
+- Suppression de l'en-tête et du pied de page pour une interface plus épurée et centrée sur le questionnaire.
 
 ### Évolutions techniques
-- Initialisation du projet avec un premier commit. [#386b690](https://github.com/incubateur-ademe/plusfraisautravail/commit/386b690)
-- Ajout d'une configuration de proxy pour faciliter le déploiement et la gestion des requêtes. [#11c8ff3](https://github.com/incubateur-ademe/plusfraisautravail/commit/11c8ff3)
-- Implémentation de la gestion de contenu dynamique. [#b8dc7de](https://github.com/incubateur-ademe/plusfraisautravail/commit/b8dc7de)
+- Initialisation du dépôt et configuration de base.
+- Ajout d'un proxy pour gérer les requêtes.
+- Mise en place d'un système de contenu dynamique pour faciliter les mises à jour futures.
+- Modification de l'index.html pour supporter le déploiement.
+
+### Autres changements
+- Mise à jour du fichier `contenu.yaml` pour refléter les nouvelles données. [#2](https://github.com/incubateur-ademe/plusfraisautravail/pull/2)
