@@ -1,15 +1,9 @@
 ## Changelog : prelevements-deau-front (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la gestion des formulaires de prélèvement, notamment l'édition du SIRET et l'affichage des exploitations liées. Une correction a également été apportée à l'axe des X sur les graphiques pour une meilleure visualisation des données mensuelles et trimestrielles.
+Cette mise à jour apporte des améliorations à la gestion des prélèvements d'eau, notamment au niveau de la modification des informations des exploitants et de l'affichage des données sur les graphiques. L'application est plus précise et plus facile à utiliser pour les agents de l'administration.
 
 ### Évolutions fonctionnelles
-- Correction de l'édition du SIRET dans le formulaire de prélèvement [#484](https://github.com/MTES-MCT/prelevements-deau-front/issues/484).
-- Affichage des exploitations liées dans le formulaire de prélèvement [#485](https://github.com/MTES-MCT/prelevements-deau-front/issues/485).
-- Amélioration de la visualisation des données sur les graphiques : normalisation de l'axe des X pour les données mensuelles et trimestrielles, avec priorisation des points de données les plus récents [#481](https://github.com/MTES-MCT/prelevements-deau-front/issues/481).
-
-### Évolutions techniques
-- Aucune évolution technique significative à signaler.
-
-### Autres changements
-- Aucune autre modification à signaler.
+- Correction d'un bug empêchant la modification correcte du numéro SIRET des exploitants. [#484](https://github.com/MTES-MCT/prelevements-deau-front/issues/484)
+- Amélioration de l'affichage des données sur l'axe des X des graphiques, notamment pour les données mensuelles et trimestrielles, en priorisant les points de données les plus récents. [#481](https://github.com/MTES-MCT/prelevements-deau-front/issues/481)
+- Affichage des exploitations liées lors de la modification d'un prélèvement. [#485](https://github.com/MTES-MCT/prelevements-deau-front/issues/485)
