@@ -1,38 +1,33 @@
 ## Changelog : mobilic-api (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'API Mobilic se concentrent sur l'amélioration de la gestion des entreprises, des contrôles et des utilisateurs. Des corrections ont été apportées pour une meilleure gestion des dates, des informations sur les entreprises et des alertes. De nouvelles fonctionnalités ont été ajoutées pour la gestion des employés inactifs et l'intégration avec Brevo pour l'envoi de notifications.
+Les dernières mises à jour de l'API Mobilic se concentrent sur l'amélioration de la gestion des utilisateurs, des contrôles et des entreprises, notamment avec l'intégration d'une nouvelle source de données (BDC) et l'optimisation des alertes. Des corrections de bugs et des améliorations de l'interface ont également été apportées pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-
-- Ajout de la possibilité d'enregistrer le poids du véhicule lors des contrôles, visible sur le bulletin de contrôle. [#668](https://github.com/MTES-MCT/mobilic-api/pull/668)
-- Amélioration de la gestion des entreprises issues de la nouvelle BDC (Base de Données Communale). [#667](https://github.com/MTES-MCT/mobilic-api/pull/667), [#660](https://github.com/MTES-MCT/mobilic-api/pull/660)
-- Ajout d'une sanction en cas d'absence d'activité le jour du contrôle.
-- Possibilité de voir les employés inactifs dans l'interface d'administration. [#653](https://github.com/MTES-MCT/mobilic-api/pull/653)
-- Ajout d'une fonctionnalité pour rattacher un employé, avec envoi d'une notification par email. [#656](https://github.com/MTES-MCT/mobilic-api/pull/656)
-- Amélioration du workflow d'activation via Brevo. [#654](https://github.com/MTES-MCT/mobilic-api/pull/654)
-- Restriction de l'accès à l'authentification ProConnect pour les contrôleurs. [#657](https://github.com/MTES-MCT/mobilic-api/pull/657), [#662](https://github.com/MTES-MCT/mobilic-api/pull/662)
+- Ajout de la possibilité d'enregistrer le poids du véhicule lors d'un contrôle. [#676](https://github.com/MTES-MCT/mobilic-api/pull/676)
+- Amélioration de la gestion des entreprises issues de la nouvelle source de données BDC. [#667](https://github.com/MTES-MCT/mobilic-api/pull/667)
+- Prise en compte de l'absence d'activité lors d'un contrôle, entraînant une sanction. [#657](https://github.com/MTES-MCT/mobilic-api/pull/657)
+- Modification du bouton de détachement pour les administrateurs. [#656](https://github.com/MTES-MCT/mobilic-api/pull/656)
+- Amélioration du modèle d'email pour la création de compte tiers, incluant la validation du consentement. [#676](https://github.com/MTES-MCT/mobilic-api/pull/676)
+- Restriction de l'accès des contrôleurs aux fournisseurs d'identité ProConnect autorisés. [#654](https://github.com/MTES-MCT/mobilic-api/pull/654)
 
 ### Évolutions techniques
-
-- Ajout d'un index à la table `employment` pour optimiser les performances.
-- Refactoring du code pour la gestion des métadonnées NATINF dans le cadre de l'intégration de la nouvelle BDC.
-- Ajout d'une colonne `last_active_at` à la table `employment` avec un trigger PostgreSQL pour la mise à jour automatique.
-- Amélioration de la gestion des transactions concurrentes.
-- Correction d'une erreur de date dans la gestion des contrôles.
-- Suppression de la dépendance `pypdf3`.
-- Optimisation de la logique de calcul des employés inactifs.
-- Correction d'un bug empêchant l'envoi d'emails de rattachement dans une transaction atomique.
+- Refactorisation du code pour la gestion des métadonnées NATINF dans le cadre de l'intégration de la nouvelle source BDC. [#660](https://github.com/MTES-MCT/mobilic-api/pull/660)
+- Optimisation des alertes Scalingo pour éviter les exécutions concurrentes dans les transactions. [#663](https://github.com/MTES-MCT/mobilic-api/pull/663)
+- Ajout d'index à la table des emplois pour améliorer les performances. [#658](https://github.com/MTES-MCT/mobilic-api/pull/658)
+- Amélioration de la gestion des statuts des employés (actif, inactif, licencié). [#658](https://github.com/MTES-MCT/mobilic-api/pull/658)
+- Correction d'une erreur dans la date/heure des contrôles.
+- Ajout de fallbacks pour les contrôles NATINF automatiques.
+- Correction d'un problème de concurrence dans les transactions.
+- Suppression de la dépendance `pypdf3`. [#660](https://github.com/MTES-MCT/mobilic-api/pull/660)
 
 ### Autres changements
-
-- Correction d'un revert de la fusion de la branche `feat/register-vehicle-weight`.
-- Mise à jour de la documentation et ajout de tests unitaires.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de la localisation et de l'heure de début/fin dans la nouvelle BDC.
-- Ajout de l'annexe avec les infractions dans la nouvelle BDC.
-- Ajout de la gestion du cas où la date de naissance ou l'utilisateur contrôleur est manquant dans la nouvelle BDC.
-- Ajout de la possibilité d'exclure les administrateurs du calcul des employés inactifs.
-- Ajout de la possibilité de terminer plusieurs emplois en batch.
-- Ajout de l'API pour la localisation des contrôles. [#651](https://github.com/MTES-MCT/mobilic-api/pull/651)
+- Correction de bugs mineurs et améliorations de la documentation.
+- Mise à jour des tests unitaires et d'intégration.
+- Correction de la logique pour la gestion des entreprises en cas d'absence d'activité.
+- Correction de la gestion des utilisateurs tiers après la validation du consentement.
+- Correction de l'affichage du nom ou de l'identifiant greco dans la nouvelle BDC.
+- Correction de l'affichage de la date de naissance dans la nouvelle BDC.
+- Correction de la gestion des cas où la date de naissance ou l'utilisateur contrôleur est manquant dans la nouvelle BDC.
+- Correction d'un bug lié à la réintégration des emails.
+- Correction d'un bug lié au calcul des employés inactifs.
