@@ -1,13 +1,13 @@
 ## Changelog : betamap (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte une nouvelle fonctionnalité permettant de visualiser les technologies utilisées par les startups d'état, offrant ainsi une vue plus complète de l'écosystème numérique de beta.gouv.fr. Les données des startups ont également été mises à jour.
+Ce changelog couvre les mises à jour de Betamap au cours des 30 derniers jours. La principale évolution concerne la mise à jour régulière de la liste des startups d'État affichées sur la carte, assurant ainsi la pertinence des informations présentées aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un visuel "flare" indiquant les technologies utilisées par les startups. [#6](https://github.com/betagouv/betamap/issues/6)
+- Mise à jour de la liste des startups d'État affichées sur la carte. [#N/A](https://github.com/betagouv/betamap) (Mises à jour répétées les 7, 14, 21 et 28 février, ainsi que le 7 mars)
 
 ### Évolutions techniques
-- Mises à jour régulières des données des startups.
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Aucune autre modification n'a été apportée au projet.
