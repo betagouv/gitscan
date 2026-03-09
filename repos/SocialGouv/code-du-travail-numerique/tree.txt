@@ -262,6 +262,7 @@
 │   │   │   │       ├── fiche-ministere-travail.spec.ts
 │   │   │   │       ├── fiche-service-public.spec.ts
 │   │   │   │       ├── glossaire.spec.ts
+│   │   │   │       ├── header-agreement.spec.ts
 │   │   │   │       ├── header-search.spec.ts
 │   │   │   │       ├── header.spec.ts
 │   │   │   │       ├── home.spec.ts
@@ -367,6 +368,7 @@
 │   │   │   │   │   │   │   ├── simulator.svg
 │   │   │   │   │   │   │   ├── step.svg
 │   │   │   │   │   │   │   └── themes.svg
+│   │   │   │   │   │   ├── search_agreement.svg
 │   │   │   │   │   │   └── tools
 │   │   │   │   │   │       ├── CalendarTime.svg
 │   │   │   │   │   │       ├── FileCheck.svg
@@ -674,11 +676,21 @@
 │   │   │       │   │   │   └── AgreementSearchInput.tsx
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── AgreementSearch.svg
+│   │   │       │   ├── AgreementSelectionModal
+│   │   │       │   │   ├── AgreementModalContext.tsx
+│   │   │       │   │   ├── AgreementSelectionForm.tsx
+│   │   │       │   │   ├── AgreementSelectionModalContent.tsx
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   └── AgreementSelectionModalContent.a11y.test.tsx
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── tracking.ts
+│   │   │       │   │   └── useAgreementStorageSync.ts
 │   │   │       │   ├── Agreements
 │   │   │       │   │   ├── Agreements.tsx
 │   │   │       │   │   ├── AgreementsGlossaire.tsx
 │   │   │       │   │   ├── AgreementsIntro.tsx
 │   │   │       │   │   ├── AgreementsSection.tsx
+│   │   │       │   │   ├── SelectedAgreementBanner.tsx
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── FrequentQuestions.tsx
 │   │   │       │   ├── LegiFranceSearch.tsx
@@ -1020,6 +1032,8 @@
 │   │   │       │   │       ├── index.tsx
 │   │   │       │   │       └── tracking.ts
 │   │   │       │   ├── header
+│   │   │       │   │   ├── AgreementModal.tsx
+│   │   │       │   │   ├── HeaderAgreementButton.tsx
 │   │   │       │   │   ├── HeaderBrand.tsx
 │   │   │       │   │   ├── HeaderDsfr.tsx
 │   │   │       │   │   ├── HeaderNavigation.tsx
@@ -1027,6 +1041,8 @@
 │   │   │       │   │   ├── NavigationLinkItem.tsx
 │   │   │       │   │   ├── NavigationMenuDropdown.tsx
 │   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── AgreementModal.a11y.test.tsx
+│   │   │       │   │   │   ├── HeaderAgreementButton.a11y.test.tsx
 │   │   │       │   │   │   └── fetchSuggestResults.test.ts
 │   │   │       │   │   ├── fetchSuggestResults.ts
 │   │   │       │   │   └── index.tsx
@@ -3791,4 +3807,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-930 directories, 2863 files
+932 directories, 2877 files
