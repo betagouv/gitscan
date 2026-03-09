@@ -1,18 +1,12 @@
 ## Changelog : apilos (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'apilos se concentrent sur l'amélioration de la gestion des conventions APL, notamment en permettant la récupération de toutes les annexes, la correction de bugs liés à la saisie et à la mise à jour des informations sur les logements, ainsi que des adaptations spécifiques pour les conventions outre-mer. Des corrections de bugs et des améliorations de l'interface ont également été apportées pour une meilleure expérience utilisateur.
+Cette mise à jour améliore la génération de documents (templates) pour les conventions APL, notamment pour les foyers et les avenants de logement. Elle corrige également des bugs liés à ces documents et permet une meilleure récupération des annexes. Enfin, la configuration du pipeline CI/CD a été mise à jour pour inclure `setuptools`.
 
 ### Évolutions fonctionnelles
-- Possibilité de récupérer toutes les annexes dans le contexte d'une convention. [#2132](https://github.com/MTES-MCT/apilos/issues/2132)
-- Le champ "nb_logement" est maintenant saisissable après l'upload d'un document. [#2127](https://github.com/MTES-MCT/apilos/issues/2127)
-- Correction d'un bug empêchant la suppression des stationnements. [#2119](https://github.com/MTES-MCT/apilos/issues/2119)
-- Correction d'un blocage de l'interface pour les utilisateurs lecteurs concernant le groupage/dégroupage. [#2123](https://github.com/MTES-MCT/apilos/issues/2123)
-- Correction du problème de mise à jour du champ "nb-logement". [#2126](https://github.com/MTES-MCT/apilos/issues/2126)
-- Adaptation des templates de convention pour l'outre-mer. [#2121](https://github.com/MTES-MCT/apilos/issues/2121)
-- Correction de l'affichage des financements (taille minuscule). [#2120](https://github.com/MTES-MCT/apilos/issues/2120)
-- Modifications des templates HLM, SEM et type 2. [#2118](https://github.com/MTES-MCT/apilos/issues/2118)
+- Correction de bugs et amélioration des templates pour les foyers [#2135](https://github.com/MTES-MCT/apilos/issues/2135).
+- Correction de bugs et amélioration des templates Excel pour les avenants de logement [#2136](https://github.com/MTES-MCT/apilos/issues/2136).
+- Amélioration de la récupération des annexes dans le contexte de génération des documents [#2132](https://github.com/MTES-MCT/apilos/issues/2132).
 
 ### Évolutions techniques
-- Ajout de `setuptools` aux dépendances et compilation avec l'option `--allow-unsafe` pour améliorer la gestion des packages. [#2129](https://github.com/MTES-MCT/apilos/issues/2129)
-- Correction d'une erreur Sentry liée à l'attribut 'financement' manquant dans l'objet 'Annexe'. [#2122](https://github.com/MTES-MCT/apilos/issues/2122)
+- Mise à jour de la configuration du pipeline CI/CD pour inclure `setuptools` et autoriser les compilations non sécurisées [#2129](https://github.com/MTES-MCT/apilos/issues/2129).
