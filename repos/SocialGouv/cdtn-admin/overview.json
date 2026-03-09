@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/SocialGouv/cdtn-admin",
   "name": "cdtn-admin",
-  "description": "Cet outil d'administration permet de gérer le contenu du Code du travail numérique. Il offre des fonctionnalités pour l'ingestion de données, la publication de contenu et la configuration du site.",
+  "description": "Cet outil d'administration permet de gérer le contenu du Code du travail numérique. Il offre des fonctionnalités pour l'ingestion de données, la configuration et l'injection de données personnalisées, ainsi que la mise à jour du site.",
   "language": "TypeScript",
   "features": [
     "Gestion de contenu",
     "Ingestion de données",
-    "Publication",
-    "Configuration",
-    "Alertes",
+    "Publication de contenu",
     "Gestion des thèmes",
-    "Mise à jour des données"
+    "Gestion des contributions",
+    "Mise à jour du site",
+    "Gestion des infographies",
+    "Suivi des NOTA"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,6 +20,7 @@
     "PostgreSQL",
     "Hasura",
     "Elasticsearch",
+    "pnpm",
     "Docker",
     "tiptap"
   ],
@@ -32,7 +34,8 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "session"
     ]
   },
   "tests": null,
@@ -45,13 +48,13 @@
   "hasDocumentation": true,
   "metrics": null,
   "tags": [
-    "Code du travail",
-    "Administration",
-    "Gestion de contenu",
-    "React",
-    "TypeScript",
-    "PostgreSQL",
-    "Hasura",
-    "Elasticsearch"
+    "administration",
+    "code du travail",
+    "gestion de contenu",
+    "typescript",
+    "react",
+    "postgresql",
+    "graphql",
+    "elasticsearch"
   ]
 }
