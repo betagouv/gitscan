@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/MTES-MCT/trackdechets",
   "name": "trackdechets",
-  "description": "Trackdéchets est une solution pour gérer la traçabilité des déchets en toute sécurité. Ce projet est incubé par la Fabrique Numérique du Ministère de la Transition Écologique et vise à simplifier et sécuriser le suivi des déchets.",
+  "description": "Trackdéchets est un projet visant à gérer la traçabilité des déchets en toute sécurité. Il s'agit d'une solution développée dans le cadre de la Fabrique Numérique du Ministère de la Transition Écologique.",
   "language": "TypeScript",
   "features": [
     "Gestion de la traçabilité des déchets",
-    "API",
-    "Interface graphique",
-    "Export de données",
-    "Gestion des utilisateurs et des droits",
-    "Envoi d'e-mails transactionnels",
-    "Génération de PDF"
+    "Interface graphique (SPA)",
+    "API REST",
+    "Exports de données",
+    "Gestion des droits d'accès",
+    "Génération de documents (PDF)",
+    "Recherche d'entreprises",
+    "Gestion des utilisateurs et des invitations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -23,16 +24,17 @@
     "React.js",
     "Apollo Client",
     "Sentry",
-    "Datadog"
+    "Datadog",
+    "Redis"
   ],
   "components": [
-    "Backend Node.js/TypeScript",
-    "Frontend React/TypeScript",
-    "API REST",
+    "Frontend React",
+    "API REST (Node.js/TypeScript)",
     "Base de données PostgreSQL",
     "Elasticsearch",
-    "Serveur Gotenberg",
-    "Serveur Metabase"
+    "Redis",
+    "Serveur Gotenberg (auto-hébergé)",
+    "Serveur Metabase (auto-hébergé)"
   ],
   "auth": {
     "methods": [
@@ -41,14 +43,14 @@
     ]
   },
   "tests": [
-    "Integration tests",
-    "Build and test workflows"
+    "Integration tests (GitHub Actions)",
+    "Build and Test (GitHub Actions)"
   ],
   "workflows": [
     "Build & Test",
     "Integration tests"
   ],
-  "lastActivity": "2026-02-27T14:12:52+01:00",
+  "lastActivity": "2026-03-06T09:21:17+01:00",
   "status": "active",
   "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,

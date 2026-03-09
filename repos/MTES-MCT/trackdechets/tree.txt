@@ -12,7 +12,6 @@
 │       ├── add-ready-to-merge-label.yml
 │       ├── brgm.yml
 │       ├── build-and-test.yml
-│       ├── deploy-recette.yml
 │       ├── deploy.yml
 │       ├── docker-build.yml
 │       ├── e2e.yml
@@ -1729,6 +1728,7 @@
 │   │   │   └── writeErrors.ts
 │   │   ├── forms
 │   │   │   ├── __tests__
+│   │   │   │   ├── bsdSuiteCreation.test.ts
 │   │   │   │   ├── compat.integration.ts
 │   │   │   │   ├── database.integration.ts
 │   │   │   │   ├── edition.integration.ts
@@ -1744,6 +1744,7 @@
 │   │   │   │   ├── recipify.integration.ts
 │   │   │   │   ├── sirenify.integration.ts
 │   │   │   │   └── validation.integration.ts
+│   │   │   ├── bsdSuiteCreation.ts
 │   │   │   ├── compat.ts
 │   │   │   ├── converter.ts
 │   │   │   ├── database.ts
@@ -2139,6 +2140,8 @@
 │   │   │   │   │   ├── addToOutgoingWasteRegistry.ts
 │   │   │   │   │   ├── addToSsdRegistry.ts
 │   │   │   │   │   ├── addToTransportedRegistry.ts
+│   │   │   │   │   ├── cancelRegistryExhaustiveExport.ts
+│   │   │   │   │   ├── cancelRegistryV2Export.ts
 │   │   │   │   │   ├── cancelRegistryV2Lines.ts
 │   │   │   │   │   ├── createTexsAnalysisFile.ts
 │   │   │   │   │   ├── generateRegistryExhaustiveExport.ts
@@ -3898,6 +3901,8 @@
 │   │   │   │   ├── SideMenu.test.tsx
 │   │   │   │   ├── helper.test.ts
 │   │   │   │   └── packagings.test.ts
+│   │   │   ├── api
+│   │   │   │   └── geoApi.ts
 │   │   │   ├── components
 │   │   │   │   ├── ActionButton.module.scss
 │   │   │   │   ├── ActionButton.tsx
@@ -4212,6 +4217,7 @@
 │   │   │   │   │   └── Step.tsx
 │   │   │   │   └── wasteCode.ts
 │   │   │   └── registry
+│   │   │       ├── RegistryForm_docs.md
 │   │   │       ├── builder
 │   │   │       │   ├── FormBuilder.scss
 │   │   │       │   ├── FormBuilder.tsx
@@ -4238,6 +4244,7 @@
 │   │   │       │   │   ├── AddressInput.tsx
 │   │   │       │   │   ├── ClickableTag.module.scss
 │   │   │       │   │   ├── ClickableTag.tsx
+│   │   │       │   │   ├── FormikParcelsVisualizer.tsx
 │   │   │       │   │   ├── ParcelsVisualizer.module.scss
 │   │   │       │   │   ├── ParcelsVisualizer.tsx
 │   │   │       │   │   └── utils.ts
@@ -5258,4 +5265,4 @@
 │   ├── validation-doc.js
 │   └── waste-consistence-migration.sql
 └── tsconfig.base.json
-926 directories, 4371 files
+927 directories, 4377 files
