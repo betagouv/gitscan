@@ -1,23 +1,22 @@
 ## Changelog : partaj (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Partaj au cours du dernier mois. Les modifications incluent des corrections de bugs pour améliorer l'expérience utilisateur, notamment sur l'affichage des saisines liées, ainsi que des mises à jour techniques importantes concernant le stockage des fichiers, l'authentification et la compatibilité avec les dernières versions de Django.
+Les dernières mises à jour de Partaj se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du tableau de bord, de la gestion des saisines et de l'affichage des informations relatives aux dossiers. Des améliorations ont également été apportées à la gestion des pièces jointes et à la communication interne.
 
 ### Évolutions fonctionnelles
-- Correction du bouton d'affichage des saisines liées [#IS-5](https://github.com/MTES-MCT/partaj/issues/IS-5).
-- Ajout d'une modale pour la validation des pièces jointes.
+- Correction de la pagination du tableau de bord [#N997](https://github.com/MTES-MCT/partaj/issues/N997).
+- Amélioration de l'affichage des saisines liées [#IS-5](https://github.com/MTES-MCT/partaj/issues/IS-5).
+- Ajout d'un nouvel onglet "Journal & Discussion" pour faciliter la communication et le suivi des échanges.
+- Affichage des changements de statut KDB dans le chat.
+- Correction de l'actualisation des messages après une mise à jour de l'état KDB via l'affectation d'unité.
+- Correction pour les cas "particuliers".
+- Ajout d'une modale latérale pour la validation des pièces jointes.
 - Ajout de modales de version.
-- Correction d'un cas particulier concernant les "particuliers".
 
 ### Évolutions techniques
-- Mise à jour de la méthode d'authentification vers `django_cas_ng`.
-- Mise à jour de la version de Django.
-- Refonte du système de stockage des fichiers : suppression de Whitenoise et utilisation de `partaj.core.storage.RelaxedCompressedStaticFilesStorage`.
-- Correction de problèmes liés à la publication des données en base avant l'assignation de leur date de création.
+- Correction pour assurer le rafraîchissement des données depuis la base de données avant l'assignation de la date de création.
 - Suppression de la modale de confirmation de division et sauvegarde en cas de problème réseau.
-- Mise à jour de la méthode `has_permission` vers `has_object_permission`.
+- Alignement à gauche du texte sur certains éléments de l'interface.
 
 ### Autres changements
-- Corrections de tests unitaires (problèmes de clés primaires manquantes, UUID invalides, récursivité, etc.).
-- Améliorations du code (linting avec Black et Pylint).
-- Correction de problèmes de style de code.
+- Corrections suite aux revues de code.
