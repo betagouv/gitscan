@@ -1,33 +1,32 @@
 {
   "url": "https://github.com/MTES-MCT/envergo",
   "name": "envergo",
-  "description": "Envergo vise à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Il fournit des outils pour évaluer l'impact environnemental des projets et faciliter la conformité réglementaire.",
+  "description": "Envergo vise à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Il s'agit d'un outil technique qui utilise des frameworks et des standards gouvernementaux pour faciliter l'évaluation environnementale.",
   "language": "Python",
   "features": [
     "Évaluation de l'impact environnemental",
     "Gestion des configurations",
-    "Calcul de la densité de haies",
-    "Gestion des réglementations Natura 2000",
     "Filtrage des configurations par date",
-    "Gestion des utilisateurs et des comptes"
+    "Affichage de cartes géographiques",
+    "Gestion des utilisateurs et des droits d'accès",
+    "Intégration avec Pipedrive"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Cookiecutter-Django",
+    "Systeme de design de l'état français",
     "PostgreSQL",
     "Leaflet",
     "Vue",
-    "pytest",
-    "factory_boy",
-    "Playwright"
+    "geodesy"
   ],
   "components": [
     "Backend Django",
     "Frontend Vue.js",
     "Base de données PostgreSQL",
     "API REST",
-    "Interface utilisateur basée sur le système de design de l'état français"
+    "Cartographie Leaflet"
   ],
   "auth": {
     "methods": [
@@ -36,11 +35,11 @@
   },
   "tests": [
     "pytest",
-    "factory_boy",
     "Playwright"
   ],
   "workflows": [
-    "CI Github Actions"
+    "ci.yml",
+    "s3_backup.yml"
   ],
   "lastActivity": "2026-03-02T15:30:26+01:00",
   "status": "active",
@@ -58,8 +57,8 @@
     "évaluation environnementale",
     "Django",
     "Python",
-    "haies",
-    "Natura 2000",
-    "Loi sur l'eau"
+    "cartographie",
+    "géospatial",
+    "administration publique"
   ]
 }

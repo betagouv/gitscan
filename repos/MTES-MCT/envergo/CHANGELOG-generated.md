@@ -1,44 +1,42 @@
 ## Changelog : envergo (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par de nombreuses améliorations et corrections de bugs, touchant à la fois l'interface utilisateur, la gestion des données et l'infrastructure du projet. Les améliorations concernent notamment la gestion des configurations, l'évaluation de l'impact environnemental des haies, et la correction de problèmes liés à l'affichage et à la manipulation des données. Des efforts ont également été faits pour améliorer la robustesse et la performance de l'application.
+Cette période a été marquée par une amélioration significative de la stabilité et de la fonctionnalité d'envergo. Les efforts se sont concentrés sur la correction de bugs, l'amélioration des tests, l'optimisation de l'interface utilisateur et l'ajout de nouvelles fonctionnalités, notamment concernant la gestion des configurations, la cartographie et l'intégration avec Pipedrive. Des améliorations ont également été apportées à la gestion des données Natura 2000 et à la sécurité.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des dates de validité des configurations, avec ajout de champs de date de début et de fin de validité et une vérification des chevauchements. [#954](https://github.com/MTES-MCT/envergo/pull/954)
-- Ajout de la possibilité de filtrer les configurations par date. [#971](https://github.com/MTES-MCT/envergo/pull/971)
-- Amélioration de l'affichage des réglementations Natura 2000. [#1008](https://github.com/MTES-MCT/envergo/pull/1008)
-- Correction d'un bug empêchant l'affichage correct des projets. [#1032](https://github.com/MTES-MCT/envergo/pull/1032)
-- Correction d'un bug lié à la synchronisation des données avec Pipedrive. [#1031](https://github.com/MTES-MCT/envergo/pull/1031)
-- Amélioration de l'affichage des informations relatives aux haies sur la carte. [#1018](https://github.com/MTES-MCT/envergo/pull/1018)
-- Ajout de la possibilité d'afficher les sites inscrits. [#997](https://github.com/MTES-MCT/envergo/pull/997)
-- Amélioration de l'affichage de la table récapitulative des haies. [#990](https://github.com/MTES-MCT/envergo/pull/990)
-- Correction de liens incorrects dans les notifications. [#995](https://github.com/MTES-MCT/envergo/pull/995)
-- Ajout de la possibilité d'afficher la carte par département. [#981](https://github.com/MTES-MCT/envergo/pull/981)
-- Suppression des tokens d'analytics liés aux consultations. [#986](https://github.com/MTES-MCT/envergo/pull/986)
+- Correction d'un bug lié à l'affichage des liens dans les messages DS, qui étaient parfois mal interprétés par les navigateurs [#1033](https://github.com/MTES-MCT/envergo/issues/1033).
+- Résolution d'un problème avec les réserves naturelles [#1032](https://github.com/MTES-MCT/envergo/issues/1032).
+- Correction d'un problème lié à la synchronisation de Pipedrive [#1031](https://github.com/MTES-MCT/envergo/issues/1031).
+- Amélioration de la gestion des dates de configuration, permettant un filtrage plus précis [#971](https://github.com/MTES-MCT/envergo/issues/971).
+- Ajout de la possibilité de filtrer les départements par date sur la page d'accueil.
+- Amélioration de l'affichage et de la gestion des configurations dans l'interface utilisateur.
+- Ajout de champs de validité (date de début et de fin) aux configurations.
+- Ajout de la possibilité de visualiser les réglementations Natura 2000.
+- Ajout d'un bouton pour accéder à la documentation GPU.
+- Ajout de la gestion des sites inscrits.
+- Mise à jour du champ "PC" (probablement un champ spécifique à l'application).
+- Ajout de boutons de copie pour les URLs courtes.
+- Correction de problèmes liés à l'affichage des polygones et des données géospatiales.
+- Amélioration de la gestion des densités de haies.
 
 ### Évolutions techniques
-- Mise à jour de Django en version 4.2.x. [#1009](https://github.com/MTES-MCT/envergo/pull/1009)
-- Refactorisation du code pour améliorer la performance et la maintenabilité.
-- Amélioration des tests unitaires et d'intégration, avec ajout de nouvelles couvertures de tests. [#1028](https://github.com/MTES-MCT/envergo/pull/1028)
-- Correction de problèmes de linting et de conformité au style de code.
+- Refactorisation et amélioration des tests unitaires et d'intégration, avec l'ajout de nouvelles méthodes de test et la correction de tests existants.
+- Amélioration de la documentation des tests.
+- Mise à jour de Django en 4.2.28.
 - Amélioration de la gestion des erreurs et des exceptions.
-- Optimisation des requêtes à la base de données.
-- Suppression de dépendances inutiles (bs4).
-- Utilisation de nouveaux widgets pour les champs de surface avec unités.
-- Amélioration de la gestion des URL et des liens.
-- Mise en place de vérifications de sécurité pour prévenir les attaques XSS.
-- Correction de problèmes de syntaxe HTML.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Optimisation du code pour éviter les requêtes redondantes.
+- Amélioration de la gestion des migrations de base de données.
+- Utilisation de contraintes de base de données pour valider l'absence de chevauchement des configurations.
+- Amélioration de la sécurité en obscurcissant certaines étapes du processus.
+- Suppression de code obsolète et nettoyage du code.
+- Correction de problèmes de linting et de formatage du code.
+- Amélioration de la gestion des identifiants uniques.
 
 ### Autres changements
 - Mise à jour de la documentation.
-- Correction de typos et d'erreurs de texte.
-- Amélioration de la précision des définitions relatives à l'assiette du terrain.
-- Précision sur les droits d'accès à la page de paramétrage.
-- Mise à jour des messages d'erreur pour plus de clarté.
-- Correction de problèmes mineurs d'interface utilisateur.
-- Ajout de tests pour les nouvelles fonctionnalités.
+- Correction de typos et amélioration de la lisibilité du code et de la documentation.
+- Amélioration des messages d'erreur et des informations affichées à l'utilisateur.
+- Précision des définitions de terrain et d'assiette.
+- Mise à jour des noms de variables et de méthodes pour une meilleure clarté.
+- Ajout de commentaires pour expliquer certaines décisions d'implémentation.
 - Amélioration de la gestion des configurations et des paramètres de l'application.
-- Correction de problèmes liés à la gestion des sessions utilisateur.
-- Ajout de logs pour faciliter le débogage.
-- Amélioration de la gestion des erreurs Sentry.
