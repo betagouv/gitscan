@@ -1,31 +1,32 @@
 {
   "url": "https://github.com/MTES-MCT/potentiel",
   "name": "potentiel",
-  "description": "Potentiel est le service du Ministère chargé de l'énergie qui connecte les acteurs du parcours administratif des projets d'énergies renouvelables électriques soumis à appel d'offres en France.",
+  "description": "Potentiel est le service du Ministère chargé de l'énergie qui connecte les acteurs du parcours administratif des projets d'énergies renouvelables électriques en France.",
   "language": "TypeScript",
   "features": [
     "Gestion de projets d'énergies renouvelables",
     "Suivi des étapes administratives",
+    "Collaboration entre acteurs",
     "Export de données",
-    "Gestion des utilisateurs et des rôles",
-    "Notifications",
-    "Gestion des documents"
+    "Gestion des utilisateurs et des permissions",
+    "Notifications"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "PostgreSQL",
     "Redis",
-    "Typespec",
-    "ESM"
+    "Keycloak",
+    "MinIO",
+    "Typespec"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Microservices",
-    "Docker",
-    "Keycloak"
+    "Authentification Keycloak",
+    "Stockage d'objets MinIO",
+    "Microservices"
   ],
   "auth": {
     "methods": [
@@ -41,7 +42,7 @@
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-03-02T14:36:35+01:00",
+  "lastActivity": "2026-03-05T15:45:18+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -58,7 +59,7 @@
     "TypeScript",
     "React",
     "PostgreSQL",
-    "Docker",
-    "CI/CD"
+    "Keycloak",
+    "MinIO"
   ]
 }

@@ -1,38 +1,49 @@
 ## Changelog : potentiel (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations et corrections apportées à l'application Potentiel au cours des 30 derniers jours. Les modifications incluent des mises à jour de sécurité, des améliorations de l'interface utilisateur, des corrections de bugs, des migrations de templates de mail et de code vers des standards plus récents (ESM), et des ajustements des permissions d'accès pour renforcer la sécurité.
+Ce changelog résume les évolutions apportées à Potentiel au cours des 30 derniers jours. Les mises à jour incluent des améliorations de l'interface utilisateur, des corrections de bugs, des migrations techniques importantes pour moderniser le code et l'infrastructure, ainsi que des ajustements de données et de permissions. Ces changements visent à améliorer la performance, la sécurité et l'expérience utilisateur de la plateforme.
 
 ### Évolutions fonctionnelles
-
-- Ajout d'un bouton administrateur pour supprimer une date de mise en service d'un dossier de raccordement. [#4008](https://github.com/MTES-MCT/potentiel/issues/4008)
-- Ajout d'un rôle "Visiteur" avec des permissions spécifiques. [#4030](https://github.com/MTES-MCT/potentiel/issues/4030)
+- Ajout de la possibilité pour les administrateurs de supprimer une date de mise en service d'un dossier de raccordement. [#4008](https://github.com/MTES-MCT/potentiel/issues/4008)
 - Amélioration de l'affichage des liens de détails de raccordement. [#4043](https://github.com/MTES-MCT/potentiel/issues/4043)
 - Ajout de la vérification des colonnes lors de l'import d'un CSV de candidats. [#3962](https://github.com/MTES-MCT/potentiel/issues/3962)
-- Ajout de la possibilité d'exporter les statistiques des projets. [#4028](https://github.com/MTES-MCT/potentiel/issues/4028)
-- Ajout de la date de mise en service du raccordement dans les étapes du projet. [#3994](https://github.com/MTES-MCT/potentiel/issues/3994)
+- Ajout d'un bouton administrateur pour supprimer une date de mise en service. [#4008](https://github.com/MTES-MCT/potentiel/issues/4008)
+- Ajout de la possibilité de filtrer les projets notifiés dans l'export des fournisseurs. [#3986](https://github.com/MTES-MCT/potentiel/issues/3986)
+- Ajout d'un nouveau rôle "Visiteur". [#4030](https://github.com/MTES-MCT/potentiel/issues/4030)
+- Amélioration de l'affichage de la demande en cours lors de modifications administratives. [#4006](https://github.com/MTES-MCT/potentiel/issues/4006)
+- Ajout de la mise en service du raccordement d'un projet et dans les étapes projet. [#3994](https://github.com/MTES-MCT/potentiel/issues/3994) et [#3984](https://github.com/MTES-MCT/potentiel/issues/3984)
 - Ajout des champs AOS dans l'export global des projets. [#3970](https://github.com/MTES-MCT/potentiel/issues/3970)
-- Ajout d'une nouvelle section "document" dans l'application. [#3954](https://github.com/MTES-MCT/potentiel/issues/3954)
-- Ajout de la possibilité de filtrer les fournisseurs lors de l'export. [#3986](https://github.com/MTES-MCT/potentiel/issues/3986)
-- Ajout d'un utilitaire pour identifier le projet dans les requêtes. [#4041](https://github.com/MTES-MCT/potentiel/issues/4041)
-- Ajout du type de terrain d'implantation dans l'export des lauréats. [#4050](https://github.com/MTES-MCT/potentiel/issues/4050)
+- Amélioration de l'UX de la page d'export. [#4014](https://github.com/MTES-MCT/potentiel/issues/4014)
+- Ajout d'une fonctionnalité pour lister les utilisateurs éliminés. [#4017](https://github.com/MTES-MCT/potentiel/issues/4017)
+- Amélioration des statistiques d'export CSV. [#4028](https://github.com/MTES-MCT/potentiel/issues/4028)
 
 ### Évolutions techniques
-
-- Migration de plusieurs packages vers ESM (EcmaScript Modules) : Routes, Bootstrap, Infrastructure, request-context, ds-api-client, Domaine, Librairies. [#3966](https://github.com/MTES-MCT/potentiel/issues/3966), [#3972](https://github.com/MTES-MCT/potentiel/issues/3972), [#3978](https://github.com/MTES-MCT/potentiel/issues/3978), [#3960](https://github.com/MTES-MCT/potentiel/issues/3960), [#3952](https://github.com/MTES-MCT/potentiel/issues/3952)
-- Mise à jour de Typespec. [#3941](https://github.com/MTES-MCT/potentiel/issues/3941)
-- Suppression de Redis et des variables d'environnement legacy. [#3955](https://github.com/MTES-MCT/potentiel/issues/3955)
+- Migration vers better-auth pour l'authentification. [#4044](https://github.com/MTES-MCT/potentiel/issues/4044)
+- Passage de plusieurs packages (Librairies, Domaine, ds-api-client, document-builder) en ESM (EcmaScript Modules). [#3964](https://github.com/MTES-MCT/potentiel/issues/3964), [#3973](https://github.com/MTES-MCT/potentiel/issues/3973), [#3978](https://github.com/MTES-MCT/potentiel/issues/3978)
 - Suppression du package `scheduled-tasks` et réorganisation des scripts. [#3975](https://github.com/MTES-MCT/potentiel/issues/3975)
-- Migration des templates de mail pour les délais, recours et abandon. [#3958](https://github.com/MTES-MCT/potentiel/issues/3958), [#3956](https://github.com/MTES-MCT/potentiel/issues/3956), [#3949](https://github.com/MTES-MCT/potentiel/issues/3949)
-- Migration des schémas de correction de candidature, d'achèvement et d'accès. [#4045](https://github.com/MTES-MCT/potentiel/issues/4045), [#4048](https://github.com/MTES-MCT/potentiel/issues/4048), [#4046](https://github.com/MTES-MCT/potentiel/issues/4046)
-- Simplification de la logique de vérification d'accès aux requêtes.
-- Ajout d'un index sur le champ `identifiantProjet` dans la base de données. [#3968](https://github.com/MTES-MCT/potentiel/issues/3968)
+- Suppression des utilisations de la variable legacy `MAINTENANCE_MODE`. [#3999](https://github.com/MTES-MCT/potentiel/issues/3999)
+- Suppression de l'adapter legacy `aBénéficiéCDC2022`. [#4023](https://github.com/MTES-MCT/potentiel/issues/4023)
+- Suppression de permissions inutilisées. [#4026](https://github.com/MTES-MCT/potentiel/issues/4026)
+- Simplification des schémas de correction de candidature. [#4045](https://github.com/MTES-MCT/potentiel/issues/4045)
+- Migration des templates pour représentant légal, garanties financières, accès, puissance, achèvement et tâches planifiées. [#4054](https://github.com/MTES-MCT/potentiel/issues/4054), [#4056](https://github.com/MTES-MCT/potentiel/issues/4056), [#4046](https://github.com/MTES-MCT/potentiel/issues/4046), [#4053](https://github.com/MTES-MCT/potentiel/issues/4053), [#4042](https://github.com/MTES-MCT/potentiel/issues/4042)
+- Correction de bugs liés à la transmission de dates MES et à la configuration du timeout de `waitForExpect`. [#4064](https://github.com/MTES-MCT/potentiel/issues/4064), [#4065](https://github.com/MTES-MCT/potentiel/issues/4065)
+- Correction des logs de connexion par lien magique. [#4057](https://github.com/MTES-MCT/potentiel/issues/4057)
+- Correction de la mise à jour des `userInfo` au signin. [#4058](https://github.com/MTES-MCT/potentiel/issues/4058)
 
 ### Autres changements
-
-- Mises à jour de sécurité. [#4047](https://github.com/MTES-MCT/potentiel/issues/4047)
-- Amélioration de la documentation.
-- Ajustements des permissions d'accès pour empêcher la modification de données en cas de projet achevé. [#3948](https://github.com/MTES-MCT/potentiel/issues/3948), [#3944](https://github.com/MTES-MCT/potentiel/issues/3944)
-- Corrections de bugs mineurs et améliorations de la qualité du code.
-- Harmonisation des redirections de mails pour les domaines migrés. [#4027](https://github.com/MTES-MCT/potentiel/issues/4027)
-- Amélioration de l'UX sur la page des exports. [#4014](https://github.com/MTES-MCT/potentiel/issues/4014)
+- Mise à jour des dépendances de sécurité. [#4047](https://github.com/MTES-MCT/potentiel/issues/4047)
+- Correction de typos et amélioration de la terminologie. [#4059](https://github.com/MTES-MCT/potentiel/issues/4059)
+- Mise à jour du dump de la base de données. [#4055](https://github.com/MTES-MCT/potentiel/issues/4055)
+- Ajout d'un utilitaire pour identifier les projets dans les requêtes. [#4041](https://github.com/MTES-MCT/potentiel/issues/4041)
+- Correction d'un bug empêchant la modification d'une DCR ou PTF sans changement. [#4012](https://github.com/MTES-MCT/potentiel/issues/4012)
+- Suppression d'un motif "inconnu" pour le type de demande de GF, remplacé par "non déposé". [#4052](https://github.com/MTES-MCT/potentiel/issues/4052)
+- Ajout d'un event legacy `DateMiseEnServiceModifiée-V1`. [#4035](https://github.com/MTES-MCT/potentiel/issues/4035)
+- Correction d'un bug lié à la puissance des projets PV - Eolien. [#3980](https://github.com/MTES-MCT/potentiel/issues/3980)
+- Correction d'un bug lié à l'affichage du lien détail raccordement. [#4043](https://github.com/MTES-MCT/potentiel/issues/4043)
+- Correction d'un bug lié à l'import des dates de mise en service (GRD). [#4024](https://github.com/MTES-MCT/potentiel/issues/4024)
+- Correction d'un bug lié à l'accès admin à la page lister périodes. [#3991](https://github.com/MTES-MCT/potentiel/issues/3991)
+- Correction d'un bug lié à la correction de candidature puissance. [#4029](https://github.com/MTES-MCT/potentiel/issues/4029)
+- Correction d'un bug lié à la configuration de Mailjet. [#4038](https://github.com/MTES-MCT/potentiel/issues/4038)
+- Correction du type de la date de MES dans la vue stats. [#4037](https://github.com/MTES-MCT/potentiel/issues/4037)
+- Suppression de l'utilisation du LOGGER LEVEL dans les specs. [#3977](https://github.com/MTES-MCT/potentiel/issues/3977)
+- Mise à jour des abonnés. [#4001](https://github.com/MTES-MCT/potentiel/issues/4001)
