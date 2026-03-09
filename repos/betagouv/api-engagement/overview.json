@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/api-engagement",
   "name": "api-engagement",
-  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et de diffuser des informations sur l'engagement.",
+  "description": "L'api engagement regroupe 3 applications : une api, un back office (ou tableau de bord), et un widget. Elle permet de gérer et d'analyser l'engagement autour des missions.",
   "language": "TypeScript",
   "features": [
     "Gestion des missions",
-    "Gestion des organisations",
-    "API",
     "Tableau de bord",
+    "API",
     "Widgets",
-    "Statistiques"
+    "Analyse des données",
+    "Gestion des organisations",
+    "Suivi des événements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,22 +19,26 @@
     "React",
     "NextJS",
     "PostgreSQL",
-    "MongoDB"
+    "MongoDB",
+    "Docker"
   ],
   "components": [
     "API REST",
     "Frontend React",
-    "Frontend NextJS",
+    "Backend NodeJs",
     "Base de données PostgreSQL",
-    "Base de données MongoDB"
+    "Base de données MongoDB",
+    "Widgets NextJS"
   ],
   "auth": {
     "methods": [
-      "none"
+      "email-password"
     ]
   },
   "tests": null,
-  "workflows": null,
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-01-05T00:00:00Z",
   "status": "active",
   "license": null,
@@ -41,13 +46,13 @@
   "metrics": null,
   "tags": [
     "API",
-    "engagement",
-    "missions",
-    "volontariat",
-    "civisme",
-    "TypeScript",
+    "Engagement",
+    "Missions",
     "React",
+    "NodeJS",
     "PostgreSQL",
-    "MongoDB"
+    "MongoDB",
+    "TypeScript",
+    "NextJS"
   ]
 }

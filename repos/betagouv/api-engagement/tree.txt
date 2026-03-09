@@ -73,7 +73,10 @@
 │   │       ├── 20260119153036_add_mission_address_schema.sql
 │   │       ├── 20260126100000_add_client_event_id_to_stat_event.sql
 │   │       ├── 20260209083538_add_mission_activity_schema.sql
-│   │       └── 20260216125629_delete_mission_activity_id.sql
+│   │       ├── 20260216125629_delete_mission_activity_id.sql
+│   │       ├── 20260302154214_rename_organization_client_id.sql
+│   │       ├── 20260305092816_add_publisher_organization_fields.sql
+│   │       └── 20260306090455_add_publisher_organization_id_field.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -97,6 +100,7 @@
 │   │       │   │   ├── organization
 │   │       │   │   │   └── int_organization_active_range.sql
 │   │       │   │   ├── publisher
+│   │       │   │   │   ├── __models.yml
 │   │       │   │   │   └── int_publisher_organization.sql
 │   │       │   │   ├── stat_event
 │   │       │   │   │   └── int_stat_event_global.sql
@@ -273,231 +277,128 @@
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── prisma
-│   │   ├── analytics
-│   │   │   ├── migrations
-│   │   │   │   ├── 0_init
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250122150802_test
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250123093519_add_partner_to_user_widget
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250129104901_add_botlesskpi
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250129134500_add_organization_verification
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250129134800_add_is_verified_boolean
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250203093125_drop_association_id_rna
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250221104718_add_clicks_tags
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250227114543_add_addresses
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250227135627_add_old_id_index_addresses
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250228092002_remove_required_field_address
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250307092738_update_widget_query
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250314102215_add_unique_constraint_to_address
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250314102916_add_ondelete_casade_address
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250320144458_add_widget_props
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250320144636_add_widget_props_2
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250320145546_add_widget_props_3
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250321120223_add_moderation_event
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250321131441_change_moderation_event
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250326101703_udpate_widget_jva_moderation_default
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250403103924_add_click_bot_and_human_flag
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250417134500_init
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250423124203_add_organisation_exclusion
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250430125735_add_unique_constraint
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250506105833_add_kpi_jva
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250507082943_remove_organization_is_rup
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250513094011_review_user_model
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250513095529_fix_kpi_model
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250514152536_organization_exclusion_change
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250522130200_add_campaign_tracker
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250528084329_remove_constraint_organisation_rna
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250603125456_add_delete_contraint_campaign_tracker
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250626133709_add_mission_fields
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250704085553_orga_excl_add_ondelete_behaviour
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250709091913_add_referrer
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250709121908_udpate_mission_type
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250709124300_change_click_url_origin
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250807132133_update_mission_history_event
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250814101406_mission_event_add_fields
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250828090759_remove_mission_event_fields
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250904114530_update_organisation
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20250926234643_update_click_isbot_ishuman
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251101001000_add_custom_attributes_to_apply
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251103170850_add_stat_event_id
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251118081316_drop_moderation_event
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251119152047_add_mission_compensation
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251125104247_add_mission_places_status
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251125105614_drop_import
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251125150449_drop_user_to_partner
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251125172739_drop_login_history
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251201153115_drop_organization_exclusion
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251215135039_drop_kpi_kpibotless
-│   │   │   │   │   └── migration.sql
-│   │   │   │   ├── 20251218150011_drop_widget
-│   │   │   │   │   └── migration.sql
-│   │   │   │   └── migration_lock.toml
-│   │   │   └── schema.analytics.prisma
-│   │   └── core
-│   │       ├── migrations
-│   │       │   ├── 20250910055352_init
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20250916145431_
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20250918090000_create_stats_global_materialized_views
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20250924101754_add_report_indexes
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251002135735_add_export_analytics
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251010120000_create_public_stats_materialized_views
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251020100000_create_stats_admin_materialized_view
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251021000000_update_global_stats_view
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251022090000_add_stat_event_publisher_created_at_idx
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251022090000_delete_admin_stats_view
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251028162024_add_email_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251031130829_add_updated_at_to_stat_event
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251031160429_add_index_update_at_stat_event
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251101000000_add_custom_attributes_to_stat_event
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251103142949_add_publisher_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251104104357_add_moderation_event_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251106143330_add_report_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251110120000_add_organization_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251112155629_add_import
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251114120000_add_stat_event_user_idx
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251114130000_add_stat_event_to_publisher_relationship
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251118151203_add_warning
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251118154856_update_organization_trgm_index
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251119165053_add_publisher_exclusion
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251120090227_add_mission_event_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251121091844_add_import_indexes
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251121111834_add_user_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251125133433_change_publisher_exclusion_name
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251125143127_add_campaign
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251126080725_add_stat_bot
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251126091830_add_import_rna_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251127103329_add_login_history_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251201150726_drop_user_login_at
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251201184857_add_campaign_url_source
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251202122656_add_volontariat_sapeur_pompier_mission_type
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251203145602_add_stat_even_source_idx
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251208100041_add_widget_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20251216141851_add_mission_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260108182037_add_mission_organisation_field
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260109100624_add_geo_indexes
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260112114656_add_default_moderation_status
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260112161750_add_warning_bot_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260115101612_add_jobboard_sync_status
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260115155001_add_publisher_organization_schema
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260119151258_move_domain_logo_to_mission
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260121155507_add_stat_event_index
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260126133726_delete_jobboard_status
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260126213509_add_stat_client_event_id
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260203160000_add_mission_activity_junction
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260206150333_refacto_publisher_organisation
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260209113005_add_mission_address_composite_geo_index
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260209113005_alter_mission_address_geo_index
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260212104747_delete_mission_activity_id
-│   │       │   │   └── migration.sql
-│   │       │   ├── 20260218113134_add_mission_publisher_active_partial_index
-│   │       │   │   └── migration.sql
-│   │       │   └── migration_lock.toml
-│   │       └── schema.core.prisma
+│   │   ├── migrations
+│   │   │   ├── 20250910055352_init
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250916145431_
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250918090000_create_stats_global_materialized_views
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20250924101754_add_report_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251002135735_add_export_analytics
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251010120000_create_public_stats_materialized_views
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251020100000_create_stats_admin_materialized_view
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251021000000_update_global_stats_view
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251022090000_add_stat_event_publisher_created_at_idx
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251022090000_delete_admin_stats_view
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251028162024_add_email_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251031130829_add_updated_at_to_stat_event
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251031160429_add_index_update_at_stat_event
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251101000000_add_custom_attributes_to_stat_event
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251103142949_add_publisher_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251104104357_add_moderation_event_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251106143330_add_report_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251110120000_add_organization_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251112155629_add_import
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251114120000_add_stat_event_user_idx
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251114130000_add_stat_event_to_publisher_relationship
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251118151203_add_warning
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251118154856_update_organization_trgm_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251119165053_add_publisher_exclusion
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251120090227_add_mission_event_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251121091844_add_import_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251121111834_add_user_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251125133433_change_publisher_exclusion_name
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251125143127_add_campaign
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251126080725_add_stat_bot
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251126091830_add_import_rna_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251127103329_add_login_history_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251201150726_drop_user_login_at
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251201184857_add_campaign_url_source
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251202122656_add_volontariat_sapeur_pompier_mission_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251203145602_add_stat_even_source_idx
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251208100041_add_widget_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20251216141851_add_mission_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260108182037_add_mission_organisation_field
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260109100624_add_geo_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260112114656_add_default_moderation_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260112161750_add_warning_bot_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260115101612_add_jobboard_sync_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260115155001_add_publisher_organization_schema
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260119151258_move_domain_logo_to_mission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260121155507_add_stat_event_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260126133726_delete_jobboard_status
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260126213509_add_stat_client_event_id
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260203160000_add_mission_activity_junction
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260206150333_refacto_publisher_organisation
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260209113005_add_mission_address_composite_geo_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260209113005_alter_mission_address_geo_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260212104747_delete_mission_activity_id
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260218113134_add_mission_publisher_active_partial_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260220105009_add_organization_search_text
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260220155441_fix_mission_address_hash_and_jobboard_cascade
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260303120000_mission_address_hash_index_and_jobboard_fk
+│   │   │   │   └── migration.sql
+│   │   │   └── migration_lock.toml
+│   │   └── schema.prisma
+│   ├── prisma.config.ts
 │   ├── scripts
 │   │   ├── README.md
 │   │   ├── backfill-mission-jobboard-sync-status.ts
+│   │   ├── backfill-organization-search-text.ts
 │   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
 │   │   ├── cleanup-duplicate-organizations.ts
@@ -509,6 +410,7 @@
 │   │   │   └── populate-stat-events-from-missions.ts
 │   │   ├── letudiant
 │   │   │   ├── README.md
+│   │   │   ├── archive-phantom-piloty-jobs.ts
 │   │   │   └── archive-piloty-jobs.ts
 │   │   ├── migrate-mission-activities.ts
 │   │   ├── mongo-backfill
@@ -722,7 +624,8 @@
 │   │   │   └── widget.ts
 │   │   ├── services
 │   │   │   ├── __tests__
-│   │   │   │   └── moderation-event.test.ts
+│   │   │   │   ├── moderation-event.test.ts
+│   │   │   │   └── organization.test.ts
 │   │   │   ├── activity.ts
 │   │   │   ├── api-datasubvention.ts
 │   │   │   ├── brevo.ts
@@ -791,11 +694,13 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── activity.test.ts
 │   │   │   │   ├── geo.test.ts
+│   │   │   │   ├── mission-moderation-status.test.ts
 │   │   │   │   ├── mission.test.ts
 │   │   │   │   ├── organization.test.ts
 │   │   │   │   ├── parser.test.ts
 │   │   │   │   └── string.test.ts
 │   │   │   ├── activity.ts
+│   │   │   ├── address.ts
 │   │   │   ├── array.ts
 │   │   │   ├── geo.ts
 │   │   │   ├── index.ts
@@ -835,6 +740,7 @@
 │   │   │   ├── mission.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── stat-event.ts
+│   │   │   ├── user.ts
 │   │   │   └── widget.ts
 │   │   ├── integration
 │   │   │   ├── api
@@ -842,6 +748,7 @@
 │   │   │   │   │   ├── aggs.test.ts
 │   │   │   │   │   ├── search.test.ts
 │   │   │   │   │   └── widget.test.ts
+│   │   │   │   ├── moderation.test.ts
 │   │   │   │   ├── redirect
 │   │   │   │   │   ├── account.test.ts
 │   │   │   │   │   ├── apply.test.ts
@@ -858,12 +765,14 @@
 │   │   │   │   └── v2
 │   │   │   │       └── activity.test.ts
 │   │   │   └── jobs
-│   │   │       └── import-missions
-│   │   │           ├── data
-│   │   │           │   ├── correct-feed.xml
-│   │   │           │   ├── invalid-compensation-feed.xml
-│   │   │           │   └── missing-logo-feed.xml
-│   │   │           └── import-missions.handler.test.ts
+│   │   │       ├── import-missions
+│   │   │       │   ├── data
+│   │   │       │   │   ├── correct-feed.xml
+│   │   │       │   │   ├── invalid-compensation-feed.xml
+│   │   │       │   │   └── missing-logo-feed.xml
+│   │   │       │   └── import-missions.handler.test.ts
+│   │   │       └── moderation
+│   │   │           └── moderation.handler.test.ts
 │   │   ├── mocks
 │   │   │   ├── dataSubventionMock.ts
 │   │   │   ├── index.ts
@@ -947,7 +856,6 @@
 │   │   │   ├── Loader.jsx
 │   │   │   ├── Modal.jsx
 │   │   │   ├── Nav.jsx
-│   │   │   ├── New-Modal.jsx
 │   │   │   ├── Pie.jsx
 │   │   │   ├── SearchInput.jsx
 │   │   │   ├── Select.jsx
@@ -1124,6 +1032,10 @@
 │   ├── containers.tf
 │   ├── data.tf
 │   ├── domains.tf
+│   ├── envs
+│   │   ├── production.tfvars
+│   │   ├── sandbox.tfvars
+│   │   └── staging.tfvars
 │   ├── jobs-analytics.tf
 │   ├── jobs.tf
 │   ├── locals.tf
@@ -1225,4 +1137,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-316 directories, 911 files
+265 directories, 874 files
