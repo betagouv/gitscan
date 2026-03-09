@@ -5,27 +5,33 @@
   "language": "Python",
   "features": [
     "Synchronisation des données",
-    "Configuration de filtres",
-    "Gestion des connexions API",
-    "Interface utilisateur",
-    "Suivi de la progression",
-    "Journalisation des événements"
+    "Configuration de la connexion",
+    "Filtres de données",
+    "Gestion des logs",
+    "Sauvegarde automatique de la configuration"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Flask",
     "Flask-SocketIO",
+    "Python-dotenv",
     "Requests",
-    "SQLAlchemy",
+    "Python-SocketIO",
+    "Eventlet",
+    "Gevent",
+    "Python-dateutil",
+    "Gunicorn",
+    "Cryptography",
+    "Psycopg2-binary",
     "APScheduler",
-    "psycopg2-binary"
+    "SQLAlchemy"
   ],
   "components": [
     "Backend Flask",
-    "Interface utilisateur",
+    "Interface utilisateur web",
     "Base de données PostgreSQL",
-    "API REST",
-    "Tâches planifiées (APScheduler)"
+    "API Démarches Simplifiées",
+    "API Grist"
   ],
   "auth": {
     "methods": [
@@ -33,11 +39,12 @@
     ]
   },
   "tests": [
+    "Jest",
     "Pytest",
-    "Jest"
+    "Coverage reports"
   ],
   "workflows": [
-    "ci.yml"
+    "CI"
   ],
   "lastActivity": "2026-02-16T17:08:58+01:00",
   "status": "active",
