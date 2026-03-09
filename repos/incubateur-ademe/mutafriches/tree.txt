@@ -106,9 +106,12 @@
 │   │   │   │   │   ├── service-public
 │   │   │   │   │   │   ├── service-public.service.ts
 │   │   │   │   │   │   └── service-public.types.ts
-│   │   │   │   │   └── shared
-│   │   │   │   │       ├── api-response.types.ts
-│   │   │   │   │       └── distance.utils.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── api-response.types.ts
+│   │   │   │   │   │   └── distance.utils.ts
+│   │   │   │   │   └── zaer-wfs
+│   │   │   │   │       ├── zaer-wfs.service.ts
+│   │   │   │   │       └── zaer-wfs.types.ts
 │   │   │   │   ├── constants
 │   │   │   │   │   └── bpe.constants.ts
 │   │   │   │   ├── dto
@@ -136,6 +139,8 @@
 │   │   │   │       ├── energie
 │   │   │   │       │   ├── energie-enrichissement.service.spec.ts
 │   │   │   │       │   └── energie-enrichissement.service.ts
+│   │   │   │       ├── enr
+│   │   │   │       │   └── enr-enrichissement.service.ts
 │   │   │   │       ├── enrichissement.service.spec.ts
 │   │   │   │       ├── enrichissement.service.ts
 │   │   │   │       ├── georisques
@@ -161,7 +166,9 @@
 │   │   │   │       │   └── risques-technologiques.types.ts
 │   │   │   │       ├── shared
 │   │   │   │       │   ├── enrichissement.types.ts
-│   │   │   │       │   └── geometry.types.ts
+│   │   │   │       │   ├── geometry.types.ts
+│   │   │   │       │   ├── geometry.utils.spec.ts
+│   │   │   │       │   └── geometry.utils.ts
 │   │   │   │       ├── site
 │   │   │   │       │   └── site-geometry.service.ts
 │   │   │   │       ├── transport
@@ -404,6 +411,9 @@
 │       │   │   │   │   ├── DebugPanel.tsx
 │       │   │   │   │   ├── DebugPanelGate.tsx
 │       │   │   │   │   └── sections
+│       │   │   │   │       ├── DetailAlgorithmeSection.tsx
+│       │   │   │   │       ├── DiagnosticRisquesSection.tsx
+│       │   │   │   │       ├── DiagnosticZonagesSection.tsx
 │       │   │   │   │       ├── DonneesComplementairesSection.tsx
 │       │   │   │   │       ├── EnrichissementSection.tsx
 │       │   │   │   │       ├── EvaluationSection.tsx
@@ -597,6 +607,7 @@
 │       │   │   │   ├── enrichissement.constants.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── dto
+│       │   │   │   ├── diagnostic-zonages.dto.ts
 │       │   │   │   ├── enrichir-parcelle-input.dto.ts
 │       │   │   │   ├── enrichir-site-input.dto.ts
 │       │   │   │   ├── enrichissement-output.dto.ts
@@ -729,4 +740,4 @@
 ├── pnpm-workspace.yaml
 ├── scalingo.json
 └── tsconfig.json
-184 directories, 547 files
+186 directories, 556 files
