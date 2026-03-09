@@ -1,41 +1,27 @@
 ## Changelog : mon-service-securise (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de la gestion des risques, notamment en introduisant une nouvelle version (V2) avec des fonctionnalités de calcul de vraisemblance et de gravité.  De nombreuses améliorations ont également été apportées à l'interface utilisateur pour faciliter la gestion des mesures de sécurité et des thématiques associées.  Enfin, une migration vers TypeScript est en cours pour améliorer la qualité et la maintenabilité du code.
+Ce mois-ci, l'équipe a concentré ses efforts sur la refonte du moteur de risque et l'intégration des nouvelles données de référentiel V2. De nombreuses améliorations ont été apportées à l'interface utilisateur pour faciliter la gestion des risques, des mesures et des services, notamment l'ajout de filtres et d'informations supplémentaires. Des corrections de bugs et des optimisations ont également été réalisées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la colonne de vraisemblance et de gravité dans le tableau des risques V2.
-- Correction de mesures passées en production.
-- Permet la suppression des brouillons de service depuis le tiroir.
-- Correction de la sélection partielle/totale des services et brouillons.
-- Ajout de la thématique et des porteurs singuliers dans le tiroir des mesures et dans les filtres.
-- Ajout de la thématique dans le tableau des mesures.
-- Affichage de la thématique dans le tiroir des mesures.
-- Ajout de filtres par thématique.
-- Affichage des porteurs singuliers dans le tiroir de mesure.
-- Ajout de la transcription de notre tampon d'homologation.
-- Ajout des caractéristiques du service (criticité, exposition) dans le PDF d'annexes et dans l'interface.
-- Ajout de la priorisation de la partie responsable dans le moteur de règle.
-- Ajout du filtrage sur la partie responsable.
-- Ajout des données de porteurs singuliers et de thématiques.
+- Ajout de la possibilité de filtrer les services et brouillons. [#990b104](https://github.com/betagouv/mon-service-securise/commit/990b104)
+- Ajout de la possibilité de supprimer les brouillons de service depuis le tiroir. [#cc883e7](https://github.com/betagouv/mon-service-securise/commit/cc883e7)
+- Affichage de la thématique et des porteurs singuliers dans le tableau des mesures. [#c4b6511](https://github.com/betagouv/mon-service-securise/commit/c4b6511), [#34d082c](https://github.com/betagouv/mon-service-securise/commit/34d082c)
+- Ajout de la partie responsable dans le filtrage et l'affichage. [#cb89feb](https://github.com/betagouv/mon-service-securise/commit/cb89feb), [#6ae94f4](https://github.com/betagouv/mon-service-securise/commit/6ae94f4)
+- Amélioration de l'affichage des filtres. [#f2a1083](https://github.com/betagouv/mon-service-securise/commit/f2a1083)
+- Ajout de la transcription dans le tampon d'homologation. [#fc0c2f4](https://github.com/betagouv/mon-service-securise/commit/fc0c2f4)
+- Ajout des caractéristiques du service (criticité, exposition) dans l'export CSV et le PDF. [#eeec0e3](https://github.com/betagouv/mon-service-securise/commit/eeec0e3), [#df48328](https://github.com/betagouv/mon-service-securise/commit/df48328)
 
 ### Évolutions techniques
-- Migration progressive du code vers TypeScript pour une meilleure typage et maintenabilité.
-- Refonte du moteur de risque pour intégrer la nouvelle version des risques (V2).
-- Mise à jour de plusieurs dépendances : `express`, `knex`, `axios`, `jsonwebtoken`, `bcrypt`, `knex-pglite`, `express-rate-limit`.
-- Amélioration de la gestion des erreurs et des timeouts (ProConnect).
-- Restructuration du code pour une meilleure organisation et lisibilité.
-- Utilisation de configurations "de référence" pour les données de sélection de vecteurs et d'objectifs visés.
-- Amélioration de l'injection de dépendances.
+- Migration vers Express 5. [#67e1591](https://github.com/betagouv/mon-service-securise/commit/67e1591)
+- Refonte du moteur de risque avec intégration des données V2 et calcul de la vraisemblance et de la gravité. [#d0476d3](https://github.com/betagouv/mon-service-securise/commit/d0476d3), [#eab3ad2](https://github.com/betagouv/mon-service-securise/commit/eab3ad2)
+- Conversion de nombreux modèles de données en Typescript pour une meilleure typage et maintenabilité. [#cea0c50](https://github.com/betagouv/mon-service-securise/commit/cea0c50) et beaucoup d'autres commits commençant par "[SOIN]".
+- Suppression du code lié à l'authentification legacy (mot de passe, réinitialisation). [#ee9fc4e](https://github.com/betagouv/mon-service-securise/commit/ee9fc4e) et commits suivants.
+- Mise à jour de plusieurs dépendances : `bcrypt`, `knex`, `knex-pglite`, `axios`, `jsonwebtoken`. [#7513c41](https://github.com/betagouv/mon-service-securise/commit/7513c41), [#f58eda5](https://github.com/betagouv/mon-service-securise/commit/f58eda5), [#cd11bde](https://github.com/betagouv/mon-service-securise/commit/cd11bde), [#189eec6](https://github.com/betagouv/mon-service-securise/commit/189eec6)
+- Ajout de `svelte-check` dans la CI et correction des erreurs associées. [#4ebb5a1](https://github.com/betagouv/mon-service-securise/commit/4ebb5a1)
 
 ### Autres changements
-- Correction de plusieurs bugs mineurs liés à l'affichage et au comportement de l'interface utilisateur.
-- Amélioration de la documentation et des commentaires dans le code.
-- Suppression de code mort et nettoyage du code.
-- Ajout de métadonnées.
-- Suppression du composant "Ui Kit".
-- Limitation de la taille de certains champs de texte pour éviter les erreurs.
-- Ajout de tests unitaires.
-- Correction de problèmes liés à l'export CSV.
-- Amélioration de la gestion des autorisations.
-- Ajout d'un message d'avertissement pour les champs en lecture seule.
+- Suppression du composant et de la page "Ui Kit". [#38854ca](https://github.com/betagouv/mon-service-securise/commit/38854ca)
+- Ajout de métadonnées. [#f0e0c97](https://github.com/betagouv/mon-service-securise/commit/f0e0c97)
+- Nettoyage de code et suppression de code mort. [#f9f660b](https://github.com/betagouv/mon-service-securise/commit/f9f660b) et plusieurs autres commits commençant par "[SOIN]".
+- Correction de plusieurs bugs mineurs et améliorations de la lisibilité du code.

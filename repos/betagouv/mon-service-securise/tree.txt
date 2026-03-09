@@ -28,7 +28,6 @@
 │   └── migrationHash.spec.js
 ├── clevercloud
 │   └── cron.json
-├── creeUtilisateurDemo.js
 ├── docker-compose.yml
 ├── donneesComplementairesReferentielMesuresV2.ts
 ├── donneesConversionReferentielMesures.ts
@@ -163,6 +162,8 @@
 │   ├── 20260106103935_deplaceProprieteVuTableauDeBordDansParcoursUtilisateur.js
 │   ├── 20260109145716_enleveLaVersionServiceDesTeleversements.js
 │   ├── 20260122144155_creationTableRevocationsJwt.js
+│   ├── 20260303153817_suppressionColonneIdResetMotDePasseUtilisateur.js
+│   ├── 20260304142822_suppressionMotDePasseDansDonneesUtilisateurs.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -478,7 +479,6 @@
 │   │   ├── elementsAjoutables.js
 │   │   ├── enregistreRubrique.mjs
 │   │   ├── interactions
-│   │   │   ├── brancheChampsMotDePasse.mjs
 │   │   │   ├── brancheOnglets.mjs
 │   │   │   ├── brancheValidationCasesACocher.mjs
 │   │   │   ├── modale.mjs
@@ -502,13 +502,8 @@
 │   │       │   ├── ActionTelechargement.mjs
 │   │       │   └── ActionTelechargementTamponHomologation.js
 │   │       └── gestionnaireTiroir.mjs
-│   ├── motDePasse
-│   │   ├── brancheValidationMotDePasse.js
-│   │   ├── edition.mjs
-│   │   └── validationMotDePasse.mjs
 │   ├── mssConnecte.mjs
 │   ├── profil.mjs
-│   ├── reinitialisationMotDePasse.js
 │   ├── scripts
 │   │   ├── article.js
 │   │   ├── cgu.js
@@ -731,9 +726,7 @@
 │   │   │   ├── service.schema.ts
 │   │   │   ├── siret.schema.ts
 │   │   │   ├── suggestionAction.schema.ts
-│   │   │   ├── utilisateur.schema.ts
 │   │   │   └── visiteGuidee.schema.ts
-│   │   ├── validationMotDePasse.js
 │   │   └── validePayloads.ts
 │   ├── modeles
 │   │   ├── acteurHomologation.js
@@ -1049,7 +1042,6 @@
 │       │   ├── avancementEtape.pug
 │       │   ├── cartesInformations.pug
 │       │   ├── composantSvelte.pug
-│       │   ├── connexionAgentConnect.pug
 │       │   ├── donneesPartagees.pug
 │       │   ├── elementsAjoutables
 │       │   │   ├── elementsAjoutables.pug
@@ -1066,25 +1058,19 @@
 │       │   ├── lienNouvelOnglet.pug
 │       │   ├── menuNavigation.pug
 │       │   ├── navigationSiteVitrine.pug
-│       │   ├── texteTronque.pug
-│       │   └── utilisateur
-│       │       ├── preferencesCommunication.pug
-│       │       └── questionCgu.pug
+│       │   └── texteTronque.pug
 │       ├── home
 │       │   └── temoignages.pug
 │       ├── home.pug
 │       ├── listeMesures.pug
 │       ├── maintenance.pug
 │       ├── mentionsLegales.pug
-│       ├── motDePasse
-│       │   └── edition.pug
 │       ├── mss.pug
 │       ├── mssConnecte.pug
 │       ├── mssDeconnecte.pug
 │       ├── mssDocumentation.pug
 │       ├── parcoursService.pug
 │       ├── profil.pug
-│       ├── reinitialisationMotDePasse.pug
 │       ├── securite.pug
 │       ├── service
 │       │   ├── creation-v2.pug
@@ -1212,9 +1198,6 @@
 │   │   │   ├── Entete.svelte
 │   │   │   ├── entete.api.ts
 │   │   │   └── entete.ts
-│   │   ├── explicationFinCompteLegacy
-│   │   │   ├── ExplicationFinCompteLegacy.svelte
-│   │   │   └── explicationFinCompteLegacy.ts
 │   │   ├── explicationNouveauReferentiel
 │   │   │   ├── ExplicationNouveauReferentiel.svelte
 │   │   │   ├── donneesEvolutionQuestions.ts
@@ -1530,7 +1513,6 @@
 │   │   │   ├── Loader.svelte
 │   │   │   ├── MenuFlottant.svelte
 │   │   │   ├── Modale.svelte
-│   │   │   ├── MotDePasse.svelte
 │   │   │   ├── Onglet.svelte
 │   │   │   ├── Onglets.svelte
 │   │   │   ├── Pastille.svelte
@@ -1619,6 +1601,7 @@
 │   │           ├── notifications.store.spec.ts
 │   │           └── nouveautesPage.store.spec.ts
 │   ├── tsconfig.json
+│   ├── types.d.ts
 │   └── vite.config.mts
 ├── tdd
 │   └── fil_rouge_decrire_v2.md
@@ -1715,7 +1698,6 @@
 │   │   ├── constructeurStatistiquesMesures.js
 │   │   ├── constructeurTacheDeService.js
 │   │   └── constructeurUtilisateur.js
-│   ├── creeUtilisateurDemo.spec.js
 │   ├── crm
 │   │   └── crmBrevo.spec.js
 │   ├── depotDonnees.spec.js
@@ -1741,8 +1723,7 @@
 │   │   └── depotVide.js
 │   ├── http
 │   │   ├── middleware.spec.js
-│   │   ├── requeteHttp.spec.js
-│   │   └── validationMotDePasse.spec.js
+│   │   └── requeteHttp.spec.js
 │   ├── mocks
 │   │   ├── adaptateurChiffrement.js
 │   │   ├── adaptateurChiffrementQuiWrap.ts
@@ -1951,15 +1932,13 @@
 │   ├── 20221130100733_suppressionStatutMesureNonConcerne.spec.js
 │   └── 20230627141030_archivageDossiersHomologations.spec.js
 ├── test_public
-│   ├── modules
-│   │   ├── arrangeParametresAvis.spec.mjs
-│   │   ├── arrangeParametresPartiesPrenantes.spec.mjs
-│   │   ├── interactions
-│   │   │   ├── brancheOnglets.spec.mjs
-│   │   │   └── brancheValidationCasesACocher.spec.mjs
-│   │   └── parametres.spec.mjs
-│   └── motDePasse
-│       └── validationMotDePasse.spec.mjs
+│   └── modules
+│       ├── arrangeParametresAvis.spec.mjs
+│       ├── arrangeParametresPartiesPrenantes.spec.mjs
+│       ├── interactions
+│       │   ├── brancheOnglets.spec.mjs
+│       │   └── brancheValidationCasesACocher.spec.mjs
+│       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-262 directories, 1820 files
+257 directories, 1804 files
