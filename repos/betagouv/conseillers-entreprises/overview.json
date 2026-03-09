@@ -4,30 +4,29 @@
   "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers.",
   "language": "Ruby",
   "features": [
-    "Recherche",
-    "Gestion des sollicitations",
-    "Gestion des experts",
-    "Suivi des activités",
+    "Gestion des besoins des entreprises",
+    "Mise en relation avec des conseillers",
+    "Suivi des actions de conseil",
     "Export de données",
-    "Gestion des utilisateurs",
-    "Authentification",
-    "Gestion des partenaires"
+    "Gestion des utilisateurs et des experts",
+    "Interface d'administration"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
     "PostgreSQL",
     "webpack",
-    "stimulus",
-    "accessible-autocomplete",
-    "mjml"
+    "Stimulus",
+    "pg_stat_statements",
+    "aws-sdk-s3"
   ],
   "components": [
     "Application web Ruby on Rails",
     "Base de données PostgreSQL",
     "Frontend JavaScript",
     "API REST",
-    "Interface d'administration"
+    "Système d'authentification",
+    "Workflows CI/CD"
   ],
   "auth": {
     "methods": [
@@ -36,13 +35,12 @@
   },
   "tests": [
     "RSpec",
-    "System tests"
+    "CircleCI"
   ],
   "workflows": [
-    "CI/CD (CircleCI)",
-    "Dependency updates"
+    "CI/CD avec CircleCI"
   ],
-  "lastActivity": "2026-03-02T14:33:18+01:00",
+  "lastActivity": "2026-03-04T10:26:30+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -53,12 +51,13 @@
     "openIssues": null
   },
   "tags": [
-    "Ruby on Rails",
-    "PostgreSQL",
-    "Conseil aux entreprises",
+    "conseil aux entreprises",
     "TPE",
     "PME",
-    "Administration publique",
-    "Service public"
+    "Ruby on Rails",
+    "PostgreSQL",
+    "administration publique",
+    "accompagnement",
+    "service public"
   ]
 }

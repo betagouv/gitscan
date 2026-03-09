@@ -1,32 +1,37 @@
 ## Changelog : conseillers-entreprises (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de bugs, l'amélioration de la gestion des données (notamment des codes SIRET et des URL), et l'optimisation de l'interface utilisateur pour les administrateurs. Des efforts ont également été faits pour améliorer la sécurité et la robustesse de l'application, notamment en corrigeant des erreurs liées aux dépendances et en renforçant l'authentification.
+Cette période a été marquée par des améliorations de performance, notamment au niveau des requêtes et du chargement des pages, ainsi que par des corrections de bugs impactant l'expérience utilisateur, comme la gestion des erreurs et l'affichage des informations. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour la gestion des antennes et des optimisations, et à la sécurité avec la suppression de fonctionnalités obsolètes.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug qui transformait des erreurs 404 en erreurs 500. [#4294](https://github.com/betagouv/conseillers-entreprises/pull/4294)
-- Amélioration de la gestion des périodes de monitoring. [#4299](https://github.com/betagouv/conseillers-entreprises/pull/4299)
-- Correction d'un problème empêchant la création de sollicitations sans code INSEE. [#4269](https://github.com/betagouv/conseillers-entreprises/pull/4269)
-- Ajout d'un avertissement de confidentialité dans le modal de personne. [#4263](https://github.com/betagouv/conseillers-entreprises/pull/4263)
-- Ajout d'un nouvel onglet pour le suivi des antennes. [#4230](https://github.com/betagouv/conseillers-entreprises/pull/4230)
-- Unification de l'onglet d'optimisation. [#4203](https://github.com/betagouv/conseillers-entreprises/pull/4203)
-- Ajout de vidéos d'aide. [#4239](https://github.com/betagouv/conseillers-entreprises/pull/4239)
-- Correction de l'export CSV des sollicitations. [#4229](https://github.com/betagouv/conseillers-entreprises/pull/4229)
+- Amélioration de l'affichage de l'URL du partenaire, affichant désormais l'URL complète et non plus seulement un indicateur.
+- Ajout d'une section "Optimisation" unifiée, remplaçant l'ancienne section "Veille".
+- Ajout d'une nouvelle fonctionnalité permettant de suivre les antennes et leurs performances.
+- Ajout d'un bandeau d'information configurable pour afficher des messages importants aux utilisateurs.
+- Amélioration de la gestion des erreurs lors de la suppression d'experts.
+- Possibilité de supprimer des experts individuels lors de la suppression d'un utilisateur.
+- Ajout d'un avertissement de confidentialité dans le modal de présentation des personnes.
+- Correction de l'affichage des URL de sollicitation pour utiliser des paramètres basés sur le slug.
+- Correction d'un bug empêchant la navigation correcte dans le processus de création de sollicitation en mode localisation.
+- Correction d'un bug qui pouvait transformer une erreur 404 en erreur 500.
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la gestion des filtres thématiques dans les besoins. [#4251](https://github.com/betagouv/conseillers-entreprises/pull/4251)
-- Simplification du code pour réduire les chargements inutiles. [#4292](https://github.com/betagouv/conseillers-entreprises/pull/4292)
-- Mise à jour de la gestion des URL des sollicitations pour utiliser des slugs. [#4288](https://github.com/betagouv/conseillers-entreprises/pull/4288)
-- Intégration d'AppSignal pour le monitoring et le suivi des erreurs. [#4265](https://github.com/betagouv/conseillers-entreprises/pull/4265)
-- Passage à gem.coop pour la gestion des dépendances Ruby. [#4232](https://github.com/betagouv/conseillers-entreprises/pull/4232)
-- Mise à jour des dépendances : webpack (5.103.0 -> 5.104.1), rack (3.2.4 -> 3.2.5), nokogiri (1.18.10 -> 1.19.1).
-- Correction d'une régression introduite par une mise à jour de dépendances. [#4236](https://github.com/betagouv/conseillers-entreprises/pull/4236)
+- Ajout de l'intégration avec AppSignal pour le monitoring et le suivi des erreurs.
+- Optimisation des requêtes SQL pour améliorer les performances, notamment au niveau de la récupération des sollicitations.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment au niveau des filtres de recherche de besoins.
+- Mise à jour de plusieurs dépendances, incluant `nokogiri`, `rack` et `webpack`.
+- Amélioration de la couverture des tests unitaires.
+- Suppression de code obsolète et de configurations inutiles.
+- Simplification de la gestion des formulaires et suppression de paramètres inutiles.
+- Utilisation de classes CSS plus modernes pour le style des éléments d'interface.
 
 ### Autres changements
-- Amélioration de la couverture des tests. [#4257](https://github.com/betagouv/conseillers-entreprises/pull/4257)
-- Correction de fautes de frappe dans les workflows CI/CD. [#4233](https://github.com/betagouv/conseillers-entreprises/pull/4233)
-- Suppression de fichiers `.vscode` du suivi Git. [#4277](https://github.com/betagouv/conseillers-entreprises/pull/4277)
-- Ajout d'une mention de sponsoring AppSignal dans le README. [#4278](https://github.com/betagouv/conseillers-entreprises/pull/4278)
-- Désactivation des robots d'indexation en environnement de staging. [#4237](https://github.com/betagouv/conseillers-entreprises/pull/4237)
-- Suppression de code inutile et amélioration de la lisibilité du code.
-- Correction de typos et amélioration de la documentation.
+- Documentation de l'utilisation d'AppSignal dans le guide d'architecture.
+- Mise à jour de la documentation README avec une mention de l'intégration AppSignal.
+- Suppression du dossier `.vscode` du suivi Git.
+- Correction de typos et amélioration de la qualité du code.
+- Amélioration des messages d'internationalisation (i18n).
+- Désactivation de robots d'indexation sur l'environnement de staging.
+- Suppression de l'option `local: true` dans les formulaires.
+- Normalisation du format du code INSEE dans le modèle Solicitation.
+- Ajout de tests pour les nouvelles fonctionnalités.
