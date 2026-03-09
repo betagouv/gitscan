@@ -1,40 +1,43 @@
 ## Changelog : resorption-bidonvilles (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application, notamment en termes de gestion des logs de connexion, de recherche et d'interface utilisateur. Des corrections de bugs et des optimisations de performance ont également été réalisées. L'application continue d'évoluer pour offrir une meilleure expérience aux agents de l'administration dans leur travail de résorption des bidonvilles.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de la gestion des utilisateurs et de l'expérience utilisateur globale de la plateforme. Des corrections de bugs ont été apportées, notamment concernant l'affichage des données, la gestion des erreurs et la validation des entrées. Des améliorations de l'interface utilisateur ont été implémentées, en particulier pour l'alignement avec le Design System de la République Française (DSFR).
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des options de permissions dans la fiche utilisateur.
-- Implémentation de la gestion des logs de connexion : ajout d'une route, d'un modèle, d'un service et d'un composant d'affichage avec filtres, recherche et pagination.
-- Amélioration de la recherche : ajout de la possibilité de rechercher des actions par ID, des localisations géographiques et des structures "opérateurs".
-- Possibilité de filtrer les actions par structure "opérateur".
-- Ajout du taux de MAJ des actions à l'affichage.
-- Amélioration de l'affichage des erreurs et des messages d'information avec l'utilisation de composants DSFR (DsfrAlert).
-- Ajout d'un onglet affichant les taux par département lorsque plusieurs départements sont représentés.
+- Correction d'un bug d'affichage des lieux [#1436](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1436).
+- Simplification de la condition d'affichage d'un élément.
+- Correction de l'affichage du bouton "Modifier les options".
+- Passage à 6 sites affichés par page.
+- Amélioration de l'accessibilité de la liste des sites paginée.
+- Ajout d'un onglet de taux par département si plusieurs départements sont représentés.
+- Gestion des options de permissions dans la fiche utilisateur.
+- Ajout d'une route pour la liste des logs de connexion.
+- Possibilité de filtrer les valeurs `undefined`/`null` pour l'export des données.
+- Amélioration de la gestion des erreurs et des messages d'alerte.
 - Correction de l'alerte "Empty label text".
-- Amélioration de l'icône d'erreur pour une meilleure cohérence chromatique.
-- Correction du problème d'interprétation du code HTML dans les messages d'erreur.
-- Mise à jour du bouton pour l'harmonisation avec le DSFR.
-- Ajout de l'export du tri utilisateur.
-- Application du tri SQL pour l'export des données.
+- Amélioration de l'icône et de l'alignement des champs de formulaire.
+- Ajout d'icônes pour le mot de passe.
+- Correction de l'affichage de l'ID d'action.
+- Ajout de la gestion des erreurs SQL pour sécuriser les requêtes.
 
 ### Évolutions techniques
-- Migration de `isPlural` vers des utilitaires.
-- Refactoring du code pour utiliser des composants DSFR (DsfrInput, DsfrButton, DsfrAlert, DsfrTable).
-- Amélioration du typage du code.
-- Optimisation de la performance de l'affichage des marqueurs sur la carte.
-- Sécurisation de la requête SQL lors de l'export des données.
+- Refactoring et nettoyage des logs de debug.
+- Correction de fautes de frappe.
+- Simplification du code et regroupement de la gestion de copie de parcelle.
+- DSFRisation de plusieurs composants (boutons, tags, etc.).
 - Ajout de tests unitaires.
-- Mise à jour des dépendances.
-- Correction de vulnérabilités de sécurité via Snyk.
+- Création d'une migration pour ajouter le champ de l'ID d'action calculé.
+- Transmission de l'ID depuis la base de données avec backup calculé.
+- Utilisation de `lodash` pour certaines opérations.
+- Amélioration du système de copie.
+- Utilisation de `Set` pour optimiser la vérification d'existence.
+- Utilisation d'un objet `Error` pour une meilleure gestion des erreurs.
+- Utilisation de `formatTimestamp()` pour uniformiser le formatage des dates.
 
 ### Autres changements
-- Modification du wording pour l'affichage d'informations.
-- Suppression de commentaires inutiles.
-- Correction de la police utilisée dans le PDF.
 - Mise à jour de la documentation.
-- Correction de bugs mineurs et améliorations de la lisibilité du code.
-- Suppression de code mort.
-- Ajout de commentaires pour clarifier certaines parties du code.
-- Suppression de console.log inutiles.
-- Amélioration de la structure du code.
+- Suppression de commentaires inutiles.
+- Correction de la mention de désabonnement aux courriels automatiques.
+- Mise à jour des dépendances.
+- Suppression de fichiers inutilisés.
+- Correction de problèmes de style et d'accessibilité.
