@@ -366,36 +366,10 @@
 │   │   │   │   │   │   │   ├── trajectoire
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── users
-│   │   │   │   │   │   │       ├── @tabs
-│   │   │   │   │   │   │       │   ├── _components
-│   │   │   │   │   │   │       │   │   ├── MembreListTable.stories.tsx
-│   │   │   │   │   │   │       │   │   ├── MembreListTable.tsx
-│   │   │   │   │   │   │       │   │   ├── MembreListTableRow.tsx
-│   │   │   │   │   │   │       │   │   ├── link-account-to-tag-modal.tsx
-│   │   │   │   │   │   │       │   │   └── membres-liste-table-row.tsx
-│   │   │   │   │   │   │       │   ├── default.tsx
-│   │   │   │   │   │   │       │   ├── page.tsx
-│   │   │   │   │   │   │       │   └── tags
-│   │   │   │   │   │   │       │       ├── _components
-│   │   │   │   │   │   │       │       │   ├── link-tag-to-account-modal.tsx
-│   │   │   │   │   │   │       │       │   ├── tags-liste-table-row.tsx
-│   │   │   │   │   │   │       │       │   └── tags-liste-table.tsx
-│   │   │   │   │   │   │       │       └── page.tsx
 │   │   │   │   │   │   │       ├── _components
 │   │   │   │   │   │   │       │   ├── ConfirmerChangementNiveau.stories.tsx
 │   │   │   │   │   │   │       │   ├── ConfirmerChangementNiveau.tsx
-│   │   │   │   │   │   │       │   ├── ConfirmerSuppressionMembre.stories.tsx
-│   │   │   │   │   │   │       │   ├── ConfirmerSuppressionMembre.tsx
-│   │   │   │   │   │   │       │   ├── Invite.stories.tsx
-│   │   │   │   │   │   │       │   ├── badge-acces.tsx
-│   │   │   │   │   │   │       │   ├── fakeData.ts
-│   │   │   │   │   │   │       │   ├── invite-member.button.tsx
-│   │   │   │   │   │   │       │   ├── invite-member.form.tsx
-│   │   │   │   │   │   │       │   ├── invite-member.modal.tsx
-│   │   │   │   │   │   │       │   ├── use-create-invitation.ts
-│   │   │   │   │   │   │       │   ├── use-invite-member.ts
-│   │   │   │   │   │   │       │   ├── use-link-tag.ts
-│   │   │   │   │   │   │       │   └── use-list-tags.ts
+│   │   │   │   │   │   │       │   └── badge-acces.tsx
 │   │   │   │   │   │   │       ├── default.tsx
 │   │   │   │   │   │   │       ├── layout.tsx
 │   │   │   │   │   │   │       └── page.tsx
@@ -609,7 +583,8 @@
 │   │   │   │   │       │   ├── chart
 │   │   │   │   │       │   │   ├── DownloadIndicateurChart.tsx
 │   │   │   │   │       │   │   ├── IndicateurChart.tsx
-│   │   │   │   │       │   │   └── layer-parameters.ts
+│   │   │   │   │       │   │   ├── layer-parameters.ts
+│   │   │   │   │       │   │   └── use-resize-graph-on-container-size-update.ts
 │   │   │   │   │       │   ├── components
 │   │   │   │   │       │   │   ├── BadgeIndicateurPerso.tsx
 │   │   │   │   │       │   │   └── BadgeOpenData.tsx
@@ -898,40 +873,35 @@
 │   │   │   │   │       │       ├── save-score.button.tsx
 │   │   │   │   │       │       ├── save-score.modal.tsx
 │   │   │   │   │       │       └── useSaveScore.ts
-│   │   │   │   │       ├── Trajectoire
-│   │   │   │   │       │   ├── AllerPlusLoin.tsx
-│   │   │   │   │       │   ├── CommuneNonSupportee.tsx
-│   │   │   │   │       │   ├── ComparezLaTrajectoire.tsx
-│   │   │   │   │       │   ├── DonneesCollectivite
-│   │   │   │   │       │   │   ├── DonneesCollectivite.tsx
-│   │   │   │   │       │   │   ├── TableauDonnees.stories.tsx
-│   │   │   │   │       │   │   ├── TableauDonnees.tsx
-│   │   │   │   │       │   │   ├── fixture.ts
-│   │   │   │   │       │   │   ├── tabs-properties.tsx
-│   │   │   │   │       │   │   └── useDonneesSectorisees.tsx
-│   │   │   │   │       │   ├── DonneesPartiellementDisponibles.tsx
-│   │   │   │   │       │   ├── Methodologie.tsx
-│   │   │   │   │       │   ├── MethodologieSection.tsx
-│   │   │   │   │       │   ├── Trajectoire.tsx
-│   │   │   │   │       │   ├── TrajectoireCalculee.tsx
-│   │   │   │   │       │   ├── db-error.svg
-│   │   │   │   │       │   ├── graphes
-│   │   │   │   │       │   │   ├── GrapheSecteur.stories.tsx
-│   │   │   │   │       │   │   ├── GrapheSecteur.tsx
-│   │   │   │   │       │   │   ├── GrapheTousSecteurs.stories.tsx
-│   │   │   │   │       │   │   ├── GrapheTousSecteurs.tsx
-│   │   │   │   │       │   │   └── layer-parameters.ts
-│   │   │   │   │       │   ├── trajectoire.svg
-│   │   │   │   │       │   ├── use-get-statut-trajectoire.ts
-│   │   │   │   │       │   ├── use-indicateur-trajectoire.ts
-│   │   │   │   │       │   ├── use-trajectoire.ts
-│   │   │   │   │       │   ├── useTelechargementModele.ts
-│   │   │   │   │       │   └── useTelechargementTrajectoire.ts
-│   │   │   │   │       └── Users
-│   │   │   │   │           ├── types.ts
-│   │   │   │   │           ├── useCollectiviteMembres.ts
-│   │   │   │   │           ├── useRemoveFromCollectivite.tsx
-│   │   │   │   │           └── useUpdateCollectiviteMembre.ts
+│   │   │   │   │       └── Trajectoire
+│   │   │   │   │           ├── AllerPlusLoin.tsx
+│   │   │   │   │           ├── CommuneNonSupportee.tsx
+│   │   │   │   │           ├── ComparezLaTrajectoire.tsx
+│   │   │   │   │           ├── DonneesCollectivite
+│   │   │   │   │           │   ├── DonneesCollectivite.tsx
+│   │   │   │   │           │   ├── TableauDonnees.stories.tsx
+│   │   │   │   │           │   ├── TableauDonnees.tsx
+│   │   │   │   │           │   ├── fixture.ts
+│   │   │   │   │           │   ├── tabs-properties.tsx
+│   │   │   │   │           │   └── useDonneesSectorisees.tsx
+│   │   │   │   │           ├── DonneesPartiellementDisponibles.tsx
+│   │   │   │   │           ├── Methodologie.tsx
+│   │   │   │   │           ├── MethodologieSection.tsx
+│   │   │   │   │           ├── Trajectoire.tsx
+│   │   │   │   │           ├── TrajectoireCalculee.tsx
+│   │   │   │   │           ├── db-error.svg
+│   │   │   │   │           ├── graphes
+│   │   │   │   │           │   ├── GrapheSecteur.stories.tsx
+│   │   │   │   │           │   ├── GrapheSecteur.tsx
+│   │   │   │   │           │   ├── GrapheTousSecteurs.stories.tsx
+│   │   │   │   │           │   ├── GrapheTousSecteurs.tsx
+│   │   │   │   │           │   └── layer-parameters.ts
+│   │   │   │   │           ├── trajectoire.svg
+│   │   │   │   │           ├── use-get-statut-trajectoire.ts
+│   │   │   │   │           ├── use-indicateur-trajectoire.ts
+│   │   │   │   │           ├── use-trajectoire.ts
+│   │   │   │   │           ├── useTelechargementModele.ts
+│   │   │   │   │           └── useTelechargementTrajectoire.ts
 │   │   │   │   ├── paths.ts
 │   │   │   │   ├── static
 │   │   │   │   │   ├── favicons
@@ -948,10 +918,42 @@
 │   │   │   │   │       └── no-results-astronaut-bro.svg
 │   │   │   │   └── theme.ts
 │   │   │   ├── collectivites
-│   │   │   │   └── panier
-│   │   │   │       └── data
-│   │   │   │           ├── fetchCollectivitePanierInfo.ts
-│   │   │   │           └── useGetCollectivitePanierInfo.ts
+│   │   │   │   ├── membres
+│   │   │   │   │   ├── invite-membre
+│   │   │   │   │   │   ├── invite-membre.button.tsx
+│   │   │   │   │   │   ├── invite-membre.form.stories.tsx
+│   │   │   │   │   │   ├── invite-membre.form.tsx
+│   │   │   │   │   │   ├── invite-membre.modal.tsx
+│   │   │   │   │   │   ├── use-invite-membre.ts
+│   │   │   │   │   │   └── use-send-invitation.ts
+│   │   │   │   │   ├── list-invitations
+│   │   │   │   │   │   ├── list-invitations.table-row.tsx
+│   │   │   │   │   │   ├── list-invitations.table.tsx
+│   │   │   │   │   │   └── use-list-pending-invitations.ts
+│   │   │   │   │   ├── list-membres
+│   │   │   │   │   │   ├── link-account-to-tag-modal.tsx
+│   │   │   │   │   │   ├── list-membres.table-row.editable-cell.stories.tsx
+│   │   │   │   │   │   ├── list-membres.table-row.editable-cell.tsx
+│   │   │   │   │   │   ├── list-membres.table-row.tsx
+│   │   │   │   │   │   ├── list-membres.table.tsx
+│   │   │   │   │   │   └── use-list-membres.ts
+│   │   │   │   │   ├── remove-invitation
+│   │   │   │   │   │   ├── confirm-remove-invitation.modal.stories.tsx
+│   │   │   │   │   │   ├── confirm-remove-invitation.modal.tsx
+│   │   │   │   │   │   └── use-remove-invitation.ts
+│   │   │   │   │   ├── remove-membre
+│   │   │   │   │   │   ├── confirm-remove-membre.modal.stories.tsx
+│   │   │   │   │   │   ├── confirm-remove-membre.modal.tsx
+│   │   │   │   │   │   └── use-remove-membre.tsx
+│   │   │   │   │   ├── use-link-membre-to-personne-tag.ts
+│   │   │   │   │   ├── use-update-membre.ts
+│   │   │   │   │   └── use-update-membres.ts
+│   │   │   │   ├── panier
+│   │   │   │   │   └── data
+│   │   │   │   │       ├── fetchCollectivitePanierInfo.ts
+│   │   │   │   │       └── useGetCollectivitePanierInfo.ts
+│   │   │   │   └── tags
+│   │   │   │       └── use-list-personne-tags.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs
 │   │   │   │   │   ├── indicateur-definition-authorization.utils.ts
@@ -1682,8 +1684,7 @@
 │   │   │   │   │   │   ├── ReferentItem.tsx
 │   │   │   │   │   │   ├── ReferentsDropdown.tsx
 │   │   │   │   │   │   ├── ReferentsList.tsx
-│   │   │   │   │   │   ├── useMembres.ts
-│   │   │   │   │   │   └── useUpdateMembres.ts
+│   │   │   │   │   │   └── useMembres.ts
 │   │   │   │   │   ├── useProgressionReferentiel.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── use-action-commentaire.ts
@@ -1859,7 +1860,6 @@
 │   │   │   │   │   │   │   ├── BadgeFinanceur.tsx
 │   │   │   │   │   │   │   ├── BadgePriorite.tsx
 │   │   │   │   │   │   │   ├── BadgeStatut.tsx
-│   │   │   │   │   │   │   ├── BadgeStatutAction.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── Box.tsx
 │   │   │   │   │   │   ├── Card.tsx
@@ -1963,14 +1963,14 @@
 │   │   │   ├── users
 │   │   │   │   ├── BadgeNiveauAcces.tsx
 │   │   │   │   ├── authorizations
-│   │   │   │   │   ├── permission-access-level.utils.ts
+│   │   │   │   │   ├── collectivite-role.utils.ts
 │   │   │   │   │   ├── super-admin-mode
 │   │   │   │   │   │   ├── super-admin-mode-enabled.alert.tsx
 │   │   │   │   │   │   ├── super-admin-mode.provider.tsx
 │   │   │   │   │   │   └── toggle-super-admin-mode.checkbox.tsx
-│   │   │   │   │   ├── use-access-levels.ts
 │   │   │   │   │   ├── use-is-access-edition-fiches-indicateurs-enabled.ts
-│   │   │   │   │   └── use-is-visitor.tsx
+│   │   │   │   │   ├── use-is-visitor.tsx
+│   │   │   │   │   └── use-list-user-collectivite-roles.ts
 │   │   │   │   ├── profil
 │   │   │   │   │   ├── modifier-profil.modal.tsx
 │   │   │   │   │   ├── profil-info.tsx
@@ -2060,7 +2060,6 @@
 │   │   │   └── signup
 │   │   │       ├── page.client.tsx
 │   │   │       ├── page.tsx
-│   │   │       ├── useCollectivites.ts
 │   │   │       └── useSignupState.tsx
 │   │   ├── components
 │   │   │   ├── Login
@@ -2230,12 +2229,32 @@
 │   │   │   │   │   ├── list-collectivites.router.ts
 │   │   │   │   │   └── list-collectivites.service.ts
 │   │   │   │   ├── membres
-│   │   │   │   │   ├── export-connect.service.spec.ts
-│   │   │   │   │   ├── export-connect.service.ts
-│   │   │   │   │   ├── export-connect.table.ts
-│   │   │   │   │   ├── membres.router.e2e-spec.ts
+│   │   │   │   │   ├── invitation.table.ts
+│   │   │   │   │   ├── list-membres
+│   │   │   │   │   │   ├── list-membres.input.ts
+│   │   │   │   │   │   ├── list-membres.router.e2e-spec.ts
+│   │   │   │   │   │   └── list-membres.service.ts
+│   │   │   │   │   ├── list-pending-invitations
+│   │   │   │   │   │   ├── list-pending-invitations.input.ts
+│   │   │   │   │   │   ├── list-pending-invitations.router.e2e-spec.ts
+│   │   │   │   │   │   └── list-pending-invitations.service.ts
+│   │   │   │   │   ├── membre.table.ts
 │   │   │   │   │   ├── membres.router.ts
-│   │   │   │   │   └── membres.service.ts
+│   │   │   │   │   ├── mutate-invitations
+│   │   │   │   │   │   ├── create-invitation.input.ts
+│   │   │   │   │   │   ├── invitation-personne-tag.table.ts
+│   │   │   │   │   │   ├── invitation.router.e2e-spec.ts
+│   │   │   │   │   │   ├── invitation.service.ts
+│   │   │   │   │   │   └── invitations.router.ts
+│   │   │   │   │   ├── mutate-membres
+│   │   │   │   │   │   ├── mutate-membres.errors.ts
+│   │   │   │   │   │   ├── mutate-membres.input.ts
+│   │   │   │   │   │   ├── mutate-membres.router.e2e-spec.ts
+│   │   │   │   │   │   └── mutate-membres.service.ts
+│   │   │   │   │   └── sync-membres-with-crm-connect
+│   │   │   │   │       ├── export-connect.service.spec.ts
+│   │   │   │   │       ├── export-connect.service.ts
+│   │   │   │   │       └── export-connect.table.ts
 │   │   │   │   ├── personnalisations
 │   │   │   │   │   ├── import-personnalisation-questions
 │   │   │   │   │   │   ├── import-personnalisation-question.controller.e2e-spec.ts
@@ -2268,11 +2287,18 @@
 │   │   │   │   │   │       ├── cae-personnalisation-regles.sample.ts
 │   │   │   │   │   │       └── eci-personnalisation-regles.sample.ts
 │   │   │   │   │   ├── personnalisations.module.ts
-│   │   │   │   │   └── services
-│   │   │   │   │       ├── generated-diagrams.html
-│   │   │   │   │       ├── personnalisations-expression.service.spec.ts
-│   │   │   │   │       ├── personnalisations-expression.service.ts
-│   │   │   │   │       └── personnalisations-service.ts
+│   │   │   │   │   ├── personnalisations.router.ts
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── generated-diagrams.html
+│   │   │   │   │   │   ├── personnalisations-expression.service.spec.ts
+│   │   │   │   │   │   ├── personnalisations-expression.service.ts
+│   │   │   │   │   │   └── personnalisations-service.ts
+│   │   │   │   │   └── set-personnalisation-reponse
+│   │   │   │   │       ├── set-personnalisation-reponse.errors.ts
+│   │   │   │   │       ├── set-personnalisation-reponse.input.ts
+│   │   │   │   │       ├── set-personnalisation-reponse.router.e2e-spec.ts
+│   │   │   │   │       ├── set-personnalisation-reponse.router.ts
+│   │   │   │   │       └── set-personnalisation-reponse.service.ts
 │   │   │   │   ├── personnes.router.e2e-spec.ts
 │   │   │   │   ├── personnes.router.ts
 │   │   │   │   ├── recherches
@@ -2295,7 +2321,6 @@
 │   │   │   │   │       ├── collectivite-banatic-competence.table.ts
 │   │   │   │   │       ├── collectivite-banatic-type.table.ts
 │   │   │   │   │       ├── collectivite-bucket.table.ts
-│   │   │   │   │       ├── collectivite-card.view.ts
 │   │   │   │   │       ├── collectivite-relations.table.ts
 │   │   │   │   │       ├── collectivite.table.ts
 │   │   │   │   │       ├── groupement-collectivite.table.ts
@@ -2304,9 +2329,7 @@
 │   │   │   │   │       ├── imports-banatic.table.ts
 │   │   │   │   │       ├── imports-commune.table.ts
 │   │   │   │   │       ├── imports-departement.table.ts
-│   │   │   │   │       ├── imports-region.table.ts
-│   │   │   │   │       ├── membre-fonction.enum.ts
-│   │   │   │   │       └── membre.table.ts
+│   │   │   │   │       └── imports-region.table.ts
 │   │   │   │   ├── tableau-de-bord
 │   │   │   │   │   ├── get-tableau-de-bord-module.request.ts
 │   │   │   │   │   ├── tableau-de-bord-collectivite.router.e2e-spec.ts
@@ -3040,18 +3063,11 @@
 │   │   │   │   │   └── token-info.decorators.ts
 │   │   │   │   ├── guards
 │   │   │   │   │   └── auth.guard.ts
-│   │   │   │   ├── invitations
-│   │   │   │   │   ├── create-invitation.input.ts
-│   │   │   │   │   ├── invitation-personne-tag.table.ts
-│   │   │   │   │   ├── invitation.router.e2e-spec.ts
-│   │   │   │   │   ├── invitation.service.ts
-│   │   │   │   │   └── invitations.router.ts
 │   │   │   │   ├── models
 │   │   │   │   │   ├── auth-users.table.ts
 │   │   │   │   │   ├── auth.models.ts
 │   │   │   │   │   ├── author.utils.ts
-│   │   │   │   │   ├── dcp.table.ts
-│   │   │   │   │   └── invitation.table.ts
+│   │   │   │   │   └── dcp.table.ts
 │   │   │   │   ├── preferences
 │   │   │   │   │   ├── user-preference-key.schema.spec.ts
 │   │   │   │   │   ├── user-preference-key.schema.ts
@@ -3971,7 +3987,6 @@
 │   │   │   ├── 16-insert_fake_plan_action.sql
 │   │   │   ├── 19-insert_fake_labellisation.sql
 │   │   │   ├── 20-insert-fake-reponse.sql
-│   │   │   ├── 21-refresh.sql
 │   │   │   ├── 22-audit_state.sql
 │   │   │   ├── 22-insert_action_discussion.sql
 │   │   │   ├── 23-cot.sql
@@ -3995,20 +4010,15 @@
 │   │   │   ├── 00-pgtap.sql
 │   │   │   ├── 01a-schema.sql
 │   │   │   ├── 01b-reset_table.sql
-│   │   │   ├── 02-droits.sql
-│   │   │   ├── 03-labellisation.sql
 │   │   │   ├── 03-utilisateur.sql
-│   │   │   ├── 04-membre.sql
 │   │   │   ├── 05-history.sql
 │   │   │   ├── 06-auth.sql
 │   │   │   ├── 06-preuves.sql
 │   │   │   ├── 07-audit.sql
 │   │   │   ├── 07-discussion.sql
-│   │   │   ├── 08-notation_service.sql
 │   │   │   ├── 09-reponse.sql
 │   │   │   ├── 10-action.sql
 │   │   │   ├── 11-plan_action_et_indicateur.sql
-│   │   │   ├── 11-scores.sql
 │   │   │   ├── 12-acces_restreint.sql
 │   │   │   ├── 13-collectivite.sql
 │   │   │   ├── 14-groupements.sql
@@ -4094,7 +4104,8 @@
 │   │   │   │   ├── toutes_les_collectivites.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
-│   │   │   │   └── type.sql
+│   │   │   │   ├── type.sql
+│   │   │   │   └── type_add_prefectures.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4119,6 +4130,7 @@
 │   │   │   │   ├── send_to_amplitude@v2.41.0.sql
 │   │   │   │   └── update_late_scores.sql
 │   │   │   ├── delete-plans-old-views.sql
+│   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
@@ -4129,6 +4141,7 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v4.41.0.sql
 │   │   │   │   ├── contenu_json@v4.50.0.sql
+│   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
 │   │   │   │   ├── question_display.sql
@@ -4494,6 +4507,7 @@
 │   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
+│   │   │   │   ├── drop_list_membres_views.sql
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
 │   │   │   │   ├── invitation_v2.sql
@@ -4610,7 +4624,8 @@
 │   │   │   │   ├── toutes_les_collectivites.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
-│   │   │   │   └── type.sql
+│   │   │   │   ├── type.sql
+│   │   │   │   └── type_add_prefectures.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4635,6 +4650,7 @@
 │   │   │   │   ├── send_to_amplitude@v2.41.0.sql
 │   │   │   │   └── update_late_scores.sql
 │   │   │   ├── delete-plans-old-views.sql
+│   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
@@ -4645,6 +4661,7 @@
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v4.41.0.sql
 │   │   │   │   ├── contenu_json@v4.50.0.sql
+│   │   │   │   ├── drop-save-reponse.sql
 │   │   │   │   ├── justification.sql
 │   │   │   │   ├── question.sql
 │   │   │   │   ├── question_display.sql
@@ -5010,6 +5027,7 @@
 │   │   │   │   ├── dcp_*.sql  (5 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
+│   │   │   │   ├── drop_list_membres_views.sql
 │   │   │   │   ├── export_connect.sql
 │   │   │   │   ├── invitation.sql
 │   │   │   │   ├── invitation_v2.sql
@@ -5151,6 +5169,7 @@
 │   │       │   ├── send_to_amplitude@v2.41.0.sql
 │   │       │   └── update_late_scores.sql
 │   │       ├── delete-plans-old-views.sql
+│   │       ├── delete-referentiels-old-views.sql
 │   │       ├── delete_navigation_plans-rpc.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
@@ -5161,6 +5180,7 @@
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v4.41.0.sql
 │   │       │   ├── contenu_json@v4.50.0.sql
+│   │       │   ├── drop-save-reponse.sql
 │   │       │   ├── justification.sql
 │   │       │   ├── question.sql
 │   │       │   ├── question_display.sql
@@ -5526,6 +5546,7 @@
 │   │       │   ├── dcp_*.sql  (5 files)
 │   │       │   ├── droits.sql
 │   │       │   ├── droits_*.sql  (9 files)
+│   │       │   ├── drop_list_membres_views.sql
 │   │       │   ├── export_connect.sql
 │   │       │   ├── invitation.sql
 │   │       │   ├── invitation_v2.sql
@@ -5658,6 +5679,10 @@
 │   │   │   │   └── filter-discussions.pom.ts
 │   │   │   ├── documents
 │   │   │   │   └── documents.pom.ts
+│   │   │   ├── membres
+│   │   │   │   ├── invite-membre.pom.ts
+│   │   │   │   ├── invite-membre.spec.ts
+│   │   │   │   └── list-membres.spec.ts
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── indicateurs
@@ -5702,11 +5727,11 @@
 │   │   │   ├── supabase-client.utils.ts
 │   │   │   └── trpc.utils.ts
 │   │   └── users
-│   │       ├── 01-login-user.spec.ts
-│   │       ├── auth.utils.ts
 │   │       ├── authorizations
 │   │       │   └── role-edition-fiches-indicateurs.spec.ts
 │   │       ├── users
+│   │       │   ├── signin-user.pom.ts
+│   │       │   ├── signin-user.spec.ts
 │   │       │   ├── signup-user
 │   │       │   │   ├── signup-user.pom.ts
 │   │       │   │   └── signup-user.spec.ts
@@ -5952,7 +5977,9 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── instance-gouvernance.schema.ts
 │   │   │   │   ├── libre-tag.schema.ts
-│   │   │   │   ├── membre.schema.ts
+│   │   │   │   ├── membres
+│   │   │   │   │   ├── invitation.schema.ts
+│   │   │   │   │   └── membre.schema.ts
 │   │   │   │   ├── partenaire-tag.schema.ts
 │   │   │   │   ├── personnalisation-reponses-payload.schema.ts
 │   │   │   │   ├── personnalisations
@@ -6209,6 +6236,7 @@
 │       │   │   ├── Badge
 │       │   │   │   ├── Badge.stories.tsx
 │       │   │   │   ├── Badge.tsx
+│       │   │   │   ├── BadgeDouble.tsx
 │       │   │   │   ├── DEPRECATED_BadgesContainer.stories.tsx
 │       │   │   │   ├── DEPRECATED_BadgesContainer.tsx
 │       │   │   │   ├── index.ts
@@ -6720,4 +6748,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1185 directories, 5693 files
+1194 directories, 5712 files
