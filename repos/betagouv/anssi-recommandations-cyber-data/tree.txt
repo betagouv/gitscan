@@ -14,6 +14,7 @@
 ├── documentation
 │   └── context.puml
 ├── donnees
+│   ├── documents_distants.json
 │   ├── jointure-nom-guide.csv
 │   ├── questions_avec_verite_terrain.csv
 │   └── questions_avec_verite_terrain_3.csv
@@ -27,22 +28,32 @@
 │   ├── configuration.py
 │   ├── documents
 │   │   ├── ajoute_document_a_la_collection.py
-│   │   ├── categorise_le_contenu.py
-│   │   ├── chunker_docling.py
-│   │   ├── chunker_docling_mqc.py
-│   │   ├── cree_document_pdf.py
-│   │   ├── document.py
-│   │   ├── document_pdf.py
-│   │   ├── executeur_requete.py
-│   │   ├── extrais_les_chunks.py
-│   │   ├── filtre_resultat.py
-│   │   ├── guides_urls_externes.json
+│   │   ├── collecte
+│   │   │   └── collecte.py
+│   │   ├── docling
+│   │   │   ├── chunker_docling.py
+│   │   │   ├── chunker_docling_mqc.py
+│   │   │   ├── document.py
+│   │   │   ├── filtre_resultat.py
+│   │   │   └── multi_processeur.py
+│   │   ├── documents_distants.json
+│   │   ├── elements_filtres.py
+│   │   ├── generateur_de_pages.py
+│   │   ├── html
+│   │   │   └── document_html.py
 │   │   ├── indexe_documents_rag.py
-│   │   ├── indexeur.py
-│   │   ├── indexeur_albert.py
-│   │   ├── indexeur_docling.py
-│   │   ├── multi_processeur.py
-│   │   └── options_guides.json
+│   │   ├── indexeur
+│   │   │   ├── indexeur.py
+│   │   │   ├── indexeur_albert.py
+│   │   │   └── indexeur_docling.py
+│   │   ├── options_guides.json
+│   │   ├── page.py
+│   │   └── pdf
+│   │       ├── __init__.py
+│   │       ├── categorise_le_contenu.py
+│   │       ├── cree_document_pdf.py
+│   │       ├── document_pdf.py
+│   │       └── extrais_les_chunks.py
 │   ├── evaluation
 │   │   ├── __init__.py
 │   │   ├── client_deepeval_albert.py
@@ -66,6 +77,7 @@
 │   │   ├── evaluateur
 │   │   │   └── deep_eval
 │   │   │       └── evaluateur_deepeval_multi_processus.py
+│   │   ├── executeur_requete.py
 │   │   ├── lecteur_csv.py
 │   │   └── memoire
 │   │       └── ecrivain.py
@@ -90,15 +102,21 @@
 │   │   ├── test_lanceur_deepeval.py
 │   │   └── test_metriques_personalisees.py
 │   ├── documents
+│   │   ├── collecte
+│   │   │   └── test_collecte.py
 │   │   ├── conftest.py
-│   │   ├── test_categorise_le_contenu.py
-│   │   ├── test_chunker_docling_mqc.py
-│   │   ├── test_document_pdf.py
-│   │   ├── test_extrais_les_chunks.py
-│   │   ├── test_filtre_resultat.py
-│   │   ├── test_indexe_documents_rag.py
-│   │   ├── test_indexeur_albert.py
-│   │   └── test_indexeur_docling.py
+│   │   ├── docling
+│   │   │   ├── test_chunker_docling_mqc.py
+│   │   │   └── test_filtre_resultat.py
+│   │   ├── html
+│   │   │   └── test_document_html.py
+│   │   ├── indexeur
+│   │   │   ├── test_indexeur_albert.py
+│   │   │   └── test_indexeur_docling.py
+│   │   └── pdf
+│   │       ├── test_categorise_le_contenu.py
+│   │       ├── test_document_pdf.py
+│   │       └── test_extrais_les_chunks.py
 │   ├── infra
 │   │   └── evaluateur
 │   │       └── deep_eval
@@ -112,4 +130,4 @@
 │   ├── test_main.py
 │   └── test_mapping_noms_documents.py
 └── uv.lock
-26 directories, 88 files
+36 directories, 96 files
