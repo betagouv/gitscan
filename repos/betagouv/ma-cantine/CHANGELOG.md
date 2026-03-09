@@ -6,6 +6,42 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.19.0](https://github.com/betagouv/ma-cantine/compare/v2026.18.0...v2026.19.0) (2026-03-06)
+
+
+### Nouveautés
+
+* **Ressources:** ajout des supports du webinaire grandes collectivités ([#6470](https://github.com/betagouv/ma-cantine/issues/6470)) ([b476c6c](https://github.com/betagouv/ma-cantine/commit/b476c6c7e02613f01baa1f9bf7cf30edf6b34f88))
+
+
+### Améliorations
+
+* **Observatoire:** améliore les filtres avec recherche ([#6465](https://github.com/betagouv/ma-cantine/issues/6465)) ([7716c42](https://github.com/betagouv/ma-cantine/commit/7716c42fe18d8045e4258716b0ef4ceccaed38df))
+
+
+### Technique
+
+* **Diagnostics:** filtrer aussi les armées à partir des infos des canteen_snapshot [1TD1Site] ([#6453](https://github.com/betagouv/ma-cantine/issues/6453)) ([c47e206](https://github.com/betagouv/ma-cantine/commit/c47e20640f4732bc7c314dddefee1afb20614adc))
+* **Tests:** ne pas les lancer si il y a une juste un changement .md ou .pdf ([#6459](https://github.com/betagouv/ma-cantine/issues/6459)) ([5d99b28](https://github.com/betagouv/ma-cantine/commit/5d99b28f0ef3c28c009cada35f2625a14448812a))
+
+## [2026.18.0](https://github.com/betagouv/ma-cantine/compare/v2026.17.0...v2026.18.0) (2026-03-04)
+
+
+### Nouveautés
+
+* **Ressources:** ajout de la présentation et résultat du sondage - webinaire petites collectivités ([#6454](https://github.com/betagouv/ma-cantine/issues/6454)) ([88b119e](https://github.com/betagouv/ma-cantine/commit/88b119e19d410941c6dc128388fa6c64fb8f5c12))
+
+
+### Améliorations
+
+* **Observatoire:** mise à jour de textes ([#6450](https://github.com/betagouv/ma-cantine/issues/6450)) ([a0281f9](https://github.com/betagouv/ma-cantine/commit/a0281f93e369e3fd95edae1e8a5c9bfca3344673))
+
+
+### Corrections (bugs, typos...)
+
+* **Gaspillage alimentaire:** corrige l'erreur d'arrondi des décimales ([#6449](https://github.com/betagouv/ma-cantine/issues/6449)) ([ed122c1](https://github.com/betagouv/ma-cantine/commit/ed122c12f950555a7479c54406f46c2a88c1c71f))
+* **Tests:** répare 2 flaky tests (ils étaient mal mockés) ([#6457](https://github.com/betagouv/ma-cantine/issues/6457)) ([cae15e9](https://github.com/betagouv/ma-cantine/commit/cae15e9308b96220f4feeaba0880ef2dc06071cb))
+
 ## [2026.17.0](https://github.com/betagouv/ma-cantine/compare/v2026.16.1...v2026.17.0) (2026-03-02)
 
 
