@@ -1,33 +1,30 @@
 ## Changelog : diagbruit.beta.gouv.fr (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'ajout de pages légales, l'amélioration de la gestion des zones de bruit et des sources de bruit, ainsi que des corrections et refactorisations pour optimiser l'expérience utilisateur et la stabilité de l'application. Des améliorations ont également été apportées à la gestion des données et à l'infrastructure de déploiement.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des zones bruyantes, l'ajout de pages légales, et la refactorisation de l'interface utilisateur pour une meilleure expérience. Des corrections ont également été apportées pour gérer correctement les polygones de sources de bruit et améliorer la stabilité de l'application.
 
 ### Évolutions fonctionnelles
+- Ajout d'une alerte spécifique si une zone bruyante est atteinte [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
+- Affichage de la recommandation calculée directement sur la page du permis de construire (PEB) [#45](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/45) et [#48](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/48).
 - Ajout de toutes les pages légales nécessaires au site [#44](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/44).
-- Amélioration de la gestion des polygones pour les sources de bruit [#41](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/41).
-- Ajout d'une alerte spécifique lorsque la zone de bruit est atteinte [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
-- Ajout d'un iframe pour l'intégration de données de tally [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
-- Refonte de la section "Résumé" pour une meilleure clarté et une expérience utilisateur améliorée [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
-- Amélioration du libellé et de la description des zones de bruit [#43](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/43).
-- Ajout d'une exception pour les topos blocs sonores [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
+- Amélioration de l'affichage du résumé, avec une refactorisation des composants et du texte [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
+- Ajout d'un iframe pour l'intégration de Tally [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
+- Gestion des sources de bruit avec des polygones [#41](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/41).
 
 ### Évolutions techniques
-- Refactorisation des composants de réglementation dans le frontend [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
-- Adaptation des scripts d'ingestion de données aux changements en production [#37](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/37).
-- Mise à jour de la version de l'API [#35](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/35).
-- Amélioration de la gestion des tests d'intégration dans l'API.
-- Ajout de `serve` pour le démarrage en production du frontend.
-- Correction de problèmes liés à Yarn et à la configuration des fichiers.
-- Suppression de références obsolètes au PLU local dans le frontend.
-- Ajout de la prise en charge de la whitelist 35 59 67.
+- Refactorisation du code frontend pour améliorer la structure et la maintenabilité.
+- Adaptation des scripts d'ingestion pour tenir compte des changements en production.
+- Mise en place d'une configuration pour l'utilisation de Corepack Yarn.
+- Amélioration de la configuration du CMS pour réduire la taille de l'image Docker et optimiser le déploiement.
+- Ajout de la gestion des zones bruyantes dans la base de données et l'API FastAPI [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
+- Correction de bugs et amélioration de la robustesse des tests.
 
 ### Autres changements
-- Ajout de documentation locale au CMS et utilisation dans le frontend.
-- Amélioration du texte dynamique concernant l'isolation affectée par le bruit.
-- Corrections mineures de design et d'UX dans le frontend.
-- Correction de titres et de comptages dans l'accordéon du frontend.
-- Mise à jour des étiquettes et des descriptions des zones de bruit dans l'API.
-- Nettoyage et optimisation de la configuration du CMS pour réduire la taille de l'image Docker.
-- Ajout de fichiers `.yarnrc.yml` pour le déploiement sur Scalingo.
-- Suppression de fichiers et de configurations inutiles.
+- Ajout de fichiers de configuration CLAUDE.md [#47](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/47).
+- Mise à jour des labels et descriptions des zones bruyantes dans l'API [#43](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/43).
+- Ouverture de la whitelist pour les codes 35, 59 et 67 [#39](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/39).
+- Suppression des références aux PLU locaux en attendant une implémentation future.
+- Corrections mineures de design et d'UX sur l'interface utilisateur.
+- Suppression de messages de défense sur la page PEB.
+- Suppression du badge "work in progress".
+- Bump de la version de l'API.
