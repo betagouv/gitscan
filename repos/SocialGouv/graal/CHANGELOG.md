@@ -1,3 +1,31 @@
+# [1.49.0](https://github.com/SocialGouv/graal/compare/v1.48.2...v1.49.0) (2026-03-05)
+
+
+### Features
+
+* Add rate limit per minute to LLM config ([d128676](https://github.com/SocialGouv/graal/commit/d1286766147de46d9a32cc8770a61d7de0719273))
+
+## [1.48.2](https://github.com/SocialGouv/graal/compare/v1.48.1...v1.48.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* Properly update job store when jobs are done ([71cbcfe](https://github.com/SocialGouv/graal/commit/71cbcfe52a3f34afcd4ac14921e4abe13a8c4c6f))
+
+## [1.48.1](https://github.com/SocialGouv/graal/compare/v1.48.0...v1.48.1) (2026-03-04)
+
+
+### Bug Fixes
+
+* Properly configure VITE_ENABLE_DEV_LOGIN ([0190356](https://github.com/SocialGouv/graal/commit/019035628c3560996139d3536cbaab42baceeea0))
+
+# [1.48.0](https://github.com/SocialGouv/graal/compare/v1.47.1...v1.48.0) (2026-03-03)
+
+
+### Features
+
+* allow file deletion from amendment databases with rebuild ([2cda56b](https://github.com/SocialGouv/graal/commit/2cda56b34ade40d22f6dc4c58ae81189e4617c74)), closes [#229](https://github.com/SocialGouv/graal/issues/229)
+
 ## [1.47.1](https://github.com/SocialGouv/graal/compare/v1.47.0...v1.47.1) (2026-02-28)
 
 
