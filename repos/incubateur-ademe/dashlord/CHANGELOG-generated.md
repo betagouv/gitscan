@@ -1,13 +1,7 @@
 ## Changelog : dashlord (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise à jour du rapport généré par Dashlord. Cette amélioration vise à fournir des informations plus précises et pertinentes sur la qualité et la sécurité des sites web analysés.
-
-### Évolutions fonctionnelles
-- Mise à jour du rapport généré pour améliorer la présentation et la clarté des données. [#1](https://github.com/incubateur-ademe/dashlord/pull/1) (basé sur le commit 0ef8c5b)
+Dashlord a bénéficié d'une mise à jour de son système de rapport. Cette évolution permet d'améliorer la présentation et la clarté des informations fournies aux utilisateurs, facilitant ainsi l'interprétation des résultats d'analyse et la prise de décision.
 
 ### Évolutions techniques
-Aucune évolution technique significative à signaler ce mois-ci.
-
-### Autres changements
-Aucun autre changement à signaler.
+- Mise à jour du système de génération de rapports. [#1](https://github.com/incubateur-ademe/dashlord/commit/0ef8c5b)
