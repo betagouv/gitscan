@@ -1,10 +1,11 @@
 ## Changelog : grist-utils (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de `grist-utils` concernent principalement la maintenance des dépendances du projet, notamment pour les tests d'intégration et de déploiement. Ces mises à jour assurent la stabilité et la sécurité des outils fournis pour l'auto-hébergement de Grist.
+Ce changelog présente les récentes modifications apportées aux utilitaires d'administration de Grist. Les changements se concentrent principalement sur la simplification des tests et la mise à jour de certaines dépendances.
+
+### Évolutions fonctionnelles
+- Suppression des tests d'invitation, jugés inutiles. [#71700bc](https://github.com/betagouv/grist-utils/commit/71700bc)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `axios` dans `/grist-deployment-tests` de la version 1.13.4 à la version 1.13.5.
-- Mise à jour de la dépendance `minimatch` dans `/grist-deployment-tests`.
-- Mise à jour de la dépendance `fast-xml-parser` dans `/grist-deployment-tests`.
-- Mise à jour des dépendances de production et de développement.
+- Mise à jour de la dépendance `axios` dans les tests de déploiement de Grist, passant de la version 1.13.4 à 1.13.5. [#8c4222a](https://github.com/betagouv/grist-utils/commit/8c4222a)
+- Mise à jour de la dépendance `minimatch` dans les tests de déploiement de Grist. [#c77fa4f](https://github.com/betagouv/grist-utils/commit/c77fa4f)
