@@ -387,7 +387,7 @@ Grist can be configured in many ways. Here are the main environment variables it
 | GRIST_ENABLE_SERVICE_ACCOUNTS | enables the `service accounts` feature. This feature allows users to create special service accounts that they can manage and to whom they can grant restricted access to chosen resources. Useful as a way to get fine-grained api keys for use with third party automations. Unset by default |
 | GRIST_ENABLE_REQUEST_FUNCTION | enables the REQUEST function. This function performs HTTP requests in a similar way to `requests.request`. This function presents a significant security risk, since it can let users call internal endpoints when Grist is available publicly. This function can also cause performance issues. Unset by default. |
 | GRIST_HEADERS_TIMEOUT_MS | if set, override nodes's server.headersTimeout flag. |
-| GRIST_HIDE_UI_ELEMENTS | comma-separated list of UI features to disable. Allowed names of parts: `helpCenter`, `billing`, `templates`, `createSite`, `multiSite`, `multiAccounts`, `sendToDrive`, `tutorials`, `supportGrist`, `themes`. If a part also exists in GRIST_UI_FEATURES, it will still be disabled. |
+| GRIST_HIDE_UI_ELEMENTS | comma-separated list of UI features to disable. Allowed names of parts: `helpCenter`, `billing`, `templates`, `createSite`, `multiSite`, `multiAccounts`, `importFromAirtable`, `sendToDrive`, `tutorials`, `supportGrist`, `themes`. If a part also exists in GRIST_UI_FEATURES, it will still be disabled. |
 | GRIST_HOST | hostname to use when listening on a port. |
 | GRIST_PROXY_FOR_UNTRUSTED_URLS | Full URL of proxy for delivering webhook payloads. Default value is `direct` for delivering payloads without proxying. |
 | HTTPS_PROXY or https_proxy | Full URL of reverse web proxy (corporate proxy) for fetching the custom widgets repository or the OIDC config from the issuer. |
@@ -416,8 +416,10 @@ Grist can be configured in many ways. Here are the main environment variables it
 | GRIST_SESSION_SECRET | a key used to encode sessions |
 | GRIST_SKIP_BUNDLED_WIDGETS | if set, Grist will ignore any bundled widgets included via NPM packages. |
 | GRIST_SQLITE_MODE | if set to `wal`, use SQLite in [WAL mode](https://www.sqlite.org/wal.html), if set to `sync`, use SQLite with [SYNCHRONOUS=full](https://www.sqlite.org/pragma.html#pragma_synchronous)
-| GRIST_ANON_PLAYGROUND | When set to `false` deny anonymous users access to the home page (but documents can still be shared to anonymous users). Defaults to `true`. |
+| GRIST_ANON_PLAYGROUND | When set to `false` deny anonymous users access to the home page (but documents can still be shared to anonymous users). Defaults to `true`, unless GRIST_ORG_CREATION_ANYONE is `false`. |
 | GRIST_FORCE_LOGIN | Setting it to `true` is similar to setting `GRIST_ANON_PLAYGROUND: false` but it blocks any anonymous access (thus any document shared publicly actually requires the users to be authenticated before consulting them) |
+| GRIST_PERSONAL_ORGS | When set to `false` prevent new personal orgs from being created when a user signs up. Defaults to `true`, unless GRIST_ORG_CREATION_ANYONE is `false`. |
+| GRIST_ORG_CREATION_ANYONE | When set to `false`, prevent new team orgs from being created by non-admin users. Sets default values of `GRIST_ANON_PLAYGROUND` and `GRIST_PERSONAL_ORGS` to `false`. Defaults to `true`. |
 | GRIST_SINGLE_ORG | set to an org "domain" to pin client to that org |
 | GRIST_TEMPLATE_ORG | set to an org "domain" to show public docs from that org |
 | GRIST_HELP_CENTER | set the help center link ref |
@@ -433,7 +435,7 @@ Grist can be configured in many ways. Here are the main environment variables it
 | GRIST_THROTTLE_CPU | if set, CPU throttling is enabled |
 | GRIST_TRUST_PLUGINS | if set, plugins are expect to be served from the same host as the rest of the Grist app, rather than from a distinct host. Ordinarily, plugins are served from a distinct host so that the cookies used by the Grist app are not automatically available to them. Enable this only if you understand the security implications. |
 | GRIST_USER_ROOT | an extra path to look for plugins in - Grist will scan for plugins in `$GRIST_USER_ROOT/plugins`. |
-| GRIST_UI_FEATURES | comma-separated list of UI features to enable. Allowed names of parts: `helpCenter`, `billing`, `templates`, `createSite`, `multiSite`, `multiAccounts`, `sendToDrive`, `tutorials`, `supportGrist`, `themes`. If a part also exists in GRIST_HIDE_UI_ELEMENTS, it won't be enabled. |
+| GRIST_UI_FEATURES | comma-separated list of UI features to enable. Allowed names of parts: `helpCenter`, `billing`, `templates`, `createSite`, `multiSite`, `multiAccounts`, `importFromAirtable`, `sendToDrive`, `tutorials`, `supportGrist`, `themes`. If a part also exists in GRIST_HIDE_UI_ELEMENTS, it won't be enabled. |
 | GRIST_UNTRUSTED_PORT | if set, plugins will be served from the given port. This is an alternative to setting APP_UNTRUSTED_URL. |
 | GRIST_WIDGET_LIST_URL | a url pointing to a widget manifest, by default https://github.com/gristlabs/grist-widget/releases/download/latest/manifest.json is used |
 | GRIST_LOG_HTTP | When set to `true`, log HTTP requests and responses information. Defaults to `false`. |
@@ -471,10 +473,12 @@ It is also known to function against the chat completion endpoint provided by <a
 
 #### Sandbox related variables:
 
-Variable | Purpose
--------- | -------
-GRIST_SANDBOX_FLAVOR | can be gvisor, pynbox, unsandboxed, docker, or macSandboxExec. If set, forces Grist to use the specified kind of sandbox.
-GRIST_SANDBOX | a program or image name to run as the sandbox. See NSandbox.ts for nerdy details.
+Variable | Purpose | Sandbox |
+-------- | ------- | ------- |
+GRIST_SANDBOX_FLAVOR | can be gvisor, pynbox, unsandboxed, docker, or macSandboxExec. If set, forces Grist to use the specified kind of sandbox. | N/A |
+GRIST_SANDBOX | a program or image name to run as the sandbox. See NSandbox.ts for nerdy details. | N/A |
+GVISOR_LIMIT_NPROC | the number of extant processes the sandbox is allowed to spawn when running on Linux. Defaults to 8. | GVisor |
+GVISOR_LIMIT_MEMORY | the maximum size of the sandboxed process's virtual memory (in bytes). No limit by default. | GVisor |
 
 #### Forward authentication variables:
 
@@ -582,6 +586,7 @@ GRIST_DOCKER_GROUP | optional. When the container runs as the root user, this is
 Variable | Purpose
 -------- | -------
 GRIST_TESTING_SOCKET    | a socket used for out-of-channel communication during tests only.
+GRIST_TEST_FORCE_LIGHT_MODE | if set, Grist will use light mode even if system preference is dark. Some tests just assume light mode.
 GRIST_TEST_HTTPS_OFFSET | if set, adds https ports at the specified offset.  This is useful in testing.
 GRIST_TEST_SSL_CERT     | if set, contains filename of SSL certificate.
 GRIST_TEST_SSL_KEY      | if set, contains filename of SSL private key.
