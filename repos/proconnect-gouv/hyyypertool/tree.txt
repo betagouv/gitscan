@@ -21,7 +21,8 @@
 ├── .prettierignore
 ├── .release-it-changeset
 │   ├── .gitkeep
-│   └── 1772469440-suppression-zammad.md
+│   ├── 1772469440-suppression-zammad.md
+│   └── 1772706124-feature.md
 ├── .scalingo
 │   └── buildpack
 │       ├── README.md
@@ -114,6 +115,8 @@
 │   ├── docker-compose.mocks.yaml
 │   ├── entreprise.api.gouv.fr
 │   │   └── mockserverInitialization.json
+│   ├── postgres-hyyyperbase
+│   │   └── init.sql
 │   └── support.etalab.gouv.fr
 │       └── mockserverInitialization.json
 ├── package.json
@@ -149,6 +152,7 @@
 ├── scalingo.json
 ├── scripts
 │   ├── dev.ts
+│   ├── migrate.ts
 │   ├── seed.ts
 │   └── studio.ts
 ├── sources
@@ -170,9 +174,32 @@
 │   │       ├── package.json
 │   │       └── tsx
 │   │           └── tsconfig.json
+│   ├── hyyyperbase
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── bin
+│   │   │   ├── migrate.ts
+│   │   │   └── seed.ts
+│   │   ├── drizzle.config.ts
+│   │   ├── migrations
+│   │   │   ├── 0000_lethal_maggott.sql
+│   │   │   └── meta
+│   │   │       ├── 0000_snapshot.json
+│   │   │       └── _journal.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── index.ts
+│   │   │   ├── migrator.test.ts
+│   │   │   ├── migrator.ts
+│   │   │   ├── schema.ts
+│   │   │   └── testing
+│   │   │       ├── index.ts
+│   │   │       ├── pg.ts
+│   │   │       └── users.ts
+│   │   └── tsconfig.json
 │   ├── identite-proconnect
 │   │   ├── bin
-│   │   │   ├── migration.ts
+│   │   │   ├── migrate.ts
 │   │   │   └── seed.ts
 │   │   ├── package.json
 │   │   ├── src
@@ -312,19 +339,16 @@
 │       │   │   │   ├── AgentConnectUserInfo.ts
 │       │   │   │   ├── NotAuthorized.tsx
 │       │   │   │   ├── authorized.test.ts
-│       │   │   │   ├── authorized.ts
+│       │   │   │   ├── authorized.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── set_userinfo.test#fixture.ts
 │       │   │   │   ├── set_userinfo.test.ts
-│       │   │   │   ├── set_userinfo.ts
-│       │   │   │   ├── vip_list.guard.test.ts
-│       │   │   │   └── vip_list.guard.tsx
+│       │   │   │   └── set_userinfo.ts
 │       │   │   ├── cache
 │       │   │   │   ├── cache_immutable.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── config
 │       │   │   │   ├── index.ts
-│       │   │   │   ├── set_config.test.ts
 │       │   │   │   └── set_config.ts
 │       │   │   ├── context
 │       │   │   │   ├── context.ts
@@ -340,6 +364,9 @@
 │       │   │   ├── fetch
 │       │   │   │   ├── index.ts
 │       │   │   │   └── set_fetch.ts
+│       │   │   ├── hyyyperbase
+│       │   │   │   ├── index.ts
+│       │   │   │   └── set_hyyyperbase.ts
 │       │   │   ├── identite-pg
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── set_identite_pg.test.ts
@@ -408,7 +435,6 @@
 │       │   │   │   ├── live-reload.client.ts
 │       │   │   │   └── reload.tsx
 │       │   │   ├── assets
-│       │   │   │   ├── config.ts
 │       │   │   │   ├── index.ts
 │       │   │   │   └── rewrite.ts
 │       │   │   ├── auth
@@ -469,6 +495,8 @@
 │       │   │   │   ├── filter-signals.client.ts
 │       │   │   │   ├── get_moderations_list.query.test.ts
 │       │   │   │   ├── get_moderations_list.query.ts
+│       │   │   │   ├── get_moderators_list.query.test.ts
+│       │   │   │   ├── get_moderators_list.query.ts
 │       │   │   │   ├── ids.attr.ts
 │       │   │   │   ├── index.test.ts
 │       │   │   │   ├── index.tsx
@@ -796,4 +824,4 @@
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-175 directories, 633 files
+183 directories, 653 files
