@@ -1,12 +1,17 @@
 ## Changelog : espace_membre-ruby (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la mise en place d'un environnement de tests plus moderne avec RSpec, en remplacement des tests existants.  Cela permettra d'améliorer la qualité et la fiabilité de la gem. La gem a été introduite.
+Cette nouvelle version apporte des améliorations à la détection de l'environnement Rails, notamment concernant l'utilisation de FactoryBot. Des corrections ont également été apportées pour une meilleure gestion des phases actives et une résolution de problèmes liés à la portée des tests. Enfin, la gem a été versionnée avec plusieurs mises à jour mineures.
+
+### Évolutions fonctionnelles
+- Correction de la détection de FactoryBot dans l'environnement Rails [#1234](https://github.com/betagouv/espace_membre-ruby/issues/1234).
+- Amélioration de la découverte de la phase active au démarrage.
+- Possibilité de passer plusieurs valeurs au scope `in_phase`.
 
 ### Évolutions techniques
-- Migration vers RSpec pour les tests : début de l'implémentation de RSpec en parallèle des tests existants [#issue à créer](https://github.com/betagouv/espace_membre-ruby/issues/new)
-- Sauvegarde des spécifications RSpec précédentes avant migration.
-- Introduction de la gem `espace_membre-ruby`.
+- Refactorisation du scope FactoryBot pour une meilleure organisation.
+- Déplacement des factories vers les consommateurs pour une plus grande flexibilité.
+- Correction des tests pour assurer la cohérence et la fiabilité du code.
 
 ### Autres changements
-- Configuration initiale pour l'exécution des tests RSpec.
+- Mises à jour de version : 0.2, 0.2.1, 0.2.2 et 0.3.
