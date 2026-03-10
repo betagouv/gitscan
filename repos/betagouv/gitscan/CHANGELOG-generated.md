@@ -1,13 +1,16 @@
 ## Changelog : gitscan (30 derniers jours)
 
 ### Résumé
-Au cours des 30 derniers jours, l'activité principale sur le projet gitscan a consisté en des mises à jour automatisées de nombreux dépôts gérés par l'équipe BetaGouv et ses partenaires. Ces mises à jour régulières permettent de maintenir à jour les informations collectées par gitscan sur ces projets. Une correction concernant le `basePath` a également été effectuée.
+Ce changelog couvre les 30 derniers jours d'activité sur le projet gitscan et les nombreux dépôts associés à beta.gouv.fr. La majorité des changements concernent des mises à jour de dépendances et de versions de librairies au sein de ces dépôts, assurant leur maintenance et leur sécurité. Quelques corrections et améliorations mineures ont également été apportées.
 
 ### Évolutions fonctionnelles
-*   Correction du `basePath` [#4](https://github.com/betagouv/gitscan/issues/4)
+*   Correction de la base path dans gitscan [#4](https://github.com/betagouv/gitscan/issues/4).
 
 ### Évolutions techniques
-*   Aucune évolution technique majeure n'a été identifiée dans les commits récents.
+*   Mise à jour de plusieurs dépendances et librairies dans divers dépôts pour assurer la maintenance et la sécurité.
+*   Amélioration du processus de build et de déploiement.
 
 ### Autres changements
-*   Mises à jour automatisées de la liste des dépôts suivis par gitscan, incluant de nombreux projets BetaGouv et partenaires (plus de 100 mises à jour). Ces mises à jour sont gérées par les bots BetaBot et ne nécessitent pas d'action particulière.
+*   Ajout de 'refugies-info' à la liste des organisations suivies.
+*   Mise à jour de la documentation et des configurations de plusieurs dépôts.
+*   Nettoyage du code et refactoring mineur dans certains projets.
