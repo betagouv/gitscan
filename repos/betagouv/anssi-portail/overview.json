@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Ce site est le portail de l'ANSSI. Il fournit des informations, des guides et des outils pour la cybersécurité. Le projet est en constante évolution avec des ajouts de nouvelles fonctionnalités et des améliorations techniques.",
+  "description": "Ce site est le portail de l'ANSSI. Il fournit des informations, des outils et des services liés à la cybersécurité pour différents publics.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
     "Recherche",
     "Gestion des guides",
-    "Statistiques",
+    "Suivi de la santé des guides",
+    "Comparaison des exigences (ISO/NIS2)",
     "Demande de diagnostic cyber",
-    "Contact DPD",
-    "Documentation NIS2"
+    "Statistiques"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,15 +18,16 @@
     "Express",
     "PostgreSQL",
     "Knex",
-    "Axios",
-    "@lab-anssi/ui-kit"
+    "@lab-anssi/ui-kit",
+    "axios",
+    "jsonwebtoken"
   ],
   "components": [
     "Frontend React",
-    "API REST",
+    "API REST (Express)",
     "Base de données PostgreSQL",
-    "WebComponents",
-    "Jekyll"
+    "Jekyll (pour certaines parties)",
+    "Docker"
   ],
   "auth": {
     "methods": [
@@ -38,8 +39,10 @@
     "Jest",
     "Vitest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-03-03T17:00:14+01:00",
+  "workflows": [
+    "CI/CD (via GitHub Actions)"
+  ],
+  "lastActivity": "2026-03-09T09:19:52+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
