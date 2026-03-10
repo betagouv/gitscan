@@ -1,13 +1,11 @@
 ## Changelog : idp-status-monitoring (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application idp-status-monitoring concernent principalement la mise à jour des dépendances. Ces mises à jour permettent de bénéficier des dernières corrections de bugs et améliorations de sécurité des librairies utilisées par le projet.
+Ce changelog fait état de mises à jour régulières des dépendances du projet, notamment des bibliothèques utilisées pour la gestion de l'API (Hono), l'environnement d'exécution (Bun) et les actions Docker utilisées dans le pipeline CI/CD. Ces mises à jour contribuent à la stabilité et à la sécurité de l'application.
 
 ### Évolutions techniques
-- Mise à jour de la version de Bun (l'environnement d'exécution TypeScript) [#58](https://github.com/proconnect-gouv/idp-status-monitoring/pull/58)
-- Mise à jour de la version de Hono (le framework API) de 4.11.9 à 4.12.3 [#55](https://github.com/proconnect-gouv/idp-status-monitoring/pull/55), [#57](https://github.com/proconnect-gouv/idp-status-monitoring/pull/57), [#61](https://github.com/proconnect-gouv/idp-status-monitoring/pull/61)
-- Mise à jour des actions GitHub utilisées pour le CI/CD : `actions/upload-artifact`, `actions/download-artifact` et `docker/build-push-action` [#54](https://github.com/proconnect-gouv/idp-status-monitoring/pull/54), [#59](https://github.com/proconnect-gouv/idp-status-monitoring/pull/59), [#60](https://github.com/proconnect-gouv/idp-status-monitoring/pull/60)
-- Mise à jour des types pour Bun : `@types/bun` [#56](https://github.com/proconnect-gouv/idp-status-monitoring/pull/56)
-
-### Autres changements
-- Mise à jour mineure de la version de Hono de 4.11.7 à 4.11.8 [#52](https://github.com/proconnect-gouv/idp-status-monitoring/pull/52)
+- Mise à jour de la bibliothèque Hono de la version 4.11.7 à 4.12.5 [#61](https://github.com/proconnect-gouv/idp-status-monitoring/issues/61), [#67](https://github.com/proconnect-gouv/idp-status-monitoring/issues/67)
+- Mise à jour de l'environnement d'exécution Bun [#58](https://github.com/proconnect-gouv/idp-status-monitoring/issues/58)
+- Mise à jour des types pour Bun [#56](https://github.com/proconnect-gouv/idp-status-monitoring/issues/56), [#68](https://github.com/proconnect-gouv/idp-status-monitoring/issues/68)
+- Mise à jour des actions Docker utilisées pour le build, le push, la configuration de Compose, Buildx, les métadonnées et l'authentification [#54](https://github.com/proconnect-gouv/idp-status-monitoring/issues/54), [#62](https://github.com/proconnect-gouv/idp-status-monitoring/issues/62), [#64](https://github.com/proconnect-gouv/idp-status-monitoring/issues/64), [#65](https://github.com/proconnect-gouv/idp-status-monitoring/issues/65), [#66](https://github.com/proconnect-gouv/idp-status-monitoring/issues/66)
+- Mise à jour des actions pour le téléchargement et le téléchargement d'artefacts [#59](https://github.com/proconnect-gouv/idp-status-monitoring/issues/59), [#60](https://github.com/proconnect-gouv/idp-status-monitoring/issues/60)
