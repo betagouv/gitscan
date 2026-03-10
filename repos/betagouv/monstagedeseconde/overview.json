@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/betagouv/monstagedeseconde",
   "name": "monstagedeseconde",
-  "description": "MonStageDeSeconde est une plateforme permettant de gérer les conventions de stage, facilitant les échanges entre les établissements scolaires, les entreprises et les étudiants.",
+  "description": "MonStage est une plateforme permettant de faciliter la mise en relation entre les élèves, les établissements scolaires et les entreprises pour les stages. Elle vise à simplifier la gestion des stages et à améliorer l'expérience utilisateur pour tous les acteurs impliqués.",
   "language": "Ruby",
   "features": [
-    "Gestion des conventions de stage",
     "Recherche d'offres de stage",
-    "Signature électronique",
+    "Gestion des candidatures",
+    "Signature électronique des conventions",
     "Gestion des établissements scolaires",
     "Gestion des entreprises",
+    "Importation de données",
     "Notifications",
-    "Import de données",
-    "Recherche d'offres par secteur"
+    "Recherche d'offres par secteur géographique"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -24,35 +24,33 @@
     "Turbo",
     "Bootstrap",
     "Stimulus",
-    "Leaflet"
+    "Webpack",
+    "CleverCloud"
   ],
   "components": [
     "Backend Rails",
-    "Frontend React",
+    "Frontend React/Turbo",
     "Base de données PostgreSQL",
     "API REST",
-    "Interface web Turbo",
     "Serveur Redis",
-    "Workers Sidekiq"
+    "Serveur d'applications CleverCloud"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Unit tests",
-    "System tests",
+    "System tests (Capybara, Selenium)",
     "W3C validation",
-    "A11y tests",
-    "Jest",
-    "Capybara",
-    "Selenium"
+    "A11y tests (pa11y-ci)"
   ],
   "workflows": [
-    "CircleCI"
+    "CI/CD with CircleCI"
   ],
-  "lastActivity": "2026-03-03T14:20:45+01:00",
+  "lastActivity": "2026-03-09T11:34:19+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -64,12 +62,13 @@
   },
   "tags": [
     "stage",
-    "convention",
+    "internship",
     "education",
     "ruby",
     "rails",
     "react",
     "postgresql",
-    "france"
+    "france",
+    "administration"
   ]
 }
