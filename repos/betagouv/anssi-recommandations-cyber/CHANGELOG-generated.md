@@ -1,39 +1,42 @@
 ## Changelog : anssi-recommandations-cyber (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'application a connu des améliorations significatives concernant la gestion des conversations et des interactions avec le modèle d'IA Albert. L'ajout de la persistance des conversations permet de conserver l'historique des échanges, améliorant ainsi l'expérience utilisateur. Des corrections de bugs et des optimisations ont également été apportées pour une meilleure stabilité et performance.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur en introduisant la notion de conversation avec Albert, le modèle d'IA.  Il est désormais possible de poser des questions dans un contexte conversationnel, avec la possibilité de reformuler les questions pour de meilleurs résultats. Des améliorations de la robustesse et de la sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Possibilité d'interroger Albert en mode conversationnel, permettant un échange plus naturel et contextuel.
-- Ajout de la persistance des conversations : l'historique des questions et réponses est maintenant conservé.
-- Amélioration de la gestion des erreurs : affichage du message d'erreur du backend au frontend.
-- Ajout de la possibilité d'annoter une conversation avec des tags.
-- Ajout de la violation `MECONNAISSANCE`.
-- Retour de l'ID de la conversation après une question posée.
-- Amélioration du prompt de reformulation pour une meilleure compréhension des questions.
+- Possibilité d'interroger Albert en mode conversationnel, permettant de poser des questions dans un contexte et d'obtenir des réponses plus pertinentes.
+- Ajout d'un reformulateur de question pour améliorer la qualité des requêtes envoyées à Albert.
+- En cas d'erreur, le message d'erreur du backend est maintenant affiché sur le frontend pour faciliter le diagnostic.
+- Ajout de tags pour annoter les conversations.
+- Amélioration du prompt de reformulation pour de meilleurs résultats.
+- Ajout d'un filtre pour ne conserver que les N derniers messages d'une conversation.
+- Possibilité de spécifier le modèle à utiliser pour la reformulation.
+- Ajout d'une violation "question non comprise" au reformulateur.
 
 ### Évolutions techniques
-- Refactorisation de l'architecture backend : séparation des routes d'API dans des routeurs distincts.
-- Implémentation d'un outil de migration de base de données personnalisé.
-- Extraction de la logique métier des adaptateurs de base de données pour une meilleure organisation du code.
-- Utilisation d'un constructeur de `ReponseQuestion` pour les tests.
-- Remplacement du service Albert par une implémentation en mémoire pour certains tests et développements.
+- Refactorisation de l'architecture API avec séparation des routes dans des routeurs distincts.
+- Implémentation de la persistance des conversations dans la base de données PostgreSQL.
+- Création de scripts SQL pour la création de la table `conversations` et la migration des interactions.
+- Implémentation d'un outil de migration BDD personnalisé.
+- Encapsulation de l'appel à l'API dans le store Svelte pour une meilleure gestion de l'état.
+- Séparation de la création d'une conversation et de l'ajout d'une interaction en deux étapes distinctes.
+- Journalisation de la question et des sources retournées par Albert lorsque la variable d'environnement `ALPHA_TEST` est activée.
+- Amélioration de la robustesse des prompts utilisés par Albert.
+- Suppression de dépendances inutilisées suite aux alertes de sécurité Dependabot.
+- Mise à jour de plusieurs dépendances (cryptography, rollup, svelte) pour corriger des vulnérabilités de sécurité et améliorer la stabilité.
 - Ajout d'un type utilisateur `EVALUATION`.
-- Mise à jour des dépendances `cryptography`, `eslint` et `pip` pour corriger des vulnérabilités et bénéficier des dernières améliorations.
-- Suppression de code mort et de dépendances inutilisées.
 
 ### Autres changements
-- Journalisation de la question et des sources retournées en mode `ALPHA_TEST`.
-- Ajout d'un check pour les fichiers Svelte lors des tests.
-- Suppression de méthodes obsolètes liées aux retours utilisateurs.
-- Correction de la persistance des violations.
-- Uniformisation du nom des variables d'ID (`*_id` en `id_*`).
-- Suppression du prompt depuis l'interface utilisateur.
-- Renommage de la route `pose_question` en `conversation`.
-- Ajout d'une date de création pour les interactions.
+- Suppression d'un print oublié dans le code.
 - Correction de l'ordre inverse des messages dans le reformulateur de question.
-- Ajout d'un reformulateur de question pour améliorer la compréhension des requêtes.
-- Ajout d'un filtre pour ne conserver que les N derniers messages d'une conversation.
-- Émission d'événements pour les interactions et les conversations.
-- Suppression de la duplication de code lors de la création d'une conversation et de l'ajout d'une interaction.
-- Correction d'un bug lié à l'encodage des URL.
+- Suppression de la notion de prompt depuis l'interface utilisateur.
+- Renommage de la route `pose_question` en `conversation`.
+- Ajout de tests pour les interactions et la création de conversations.
+- Uniformisation du nom des variables `*_id` en `id_*`.
+- Ajout d'un check pour les fichiers Svelte dans le CI.
+- Ajout d'un événement `INTERACTION_AJOUTEE` et `CONVERSATION_CREEE`.
+- Correction de l'injection du DSFR.
+- Fixe prettier.
+- Ajout d'un constructeur de `ReponseQuestion` pour les tests.
+- Ajout d'une date de création pour les interactions.
+- Suppression de méthodes obsolètes pour la gestion des retours utilisateurs.
