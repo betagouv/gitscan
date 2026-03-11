@@ -81,6 +81,8 @@
 │   │   ├── 0025_loving_dark_beast.sql
 │   │   ├── 0026_sour_vermin.sql
 │   │   ├── 0027_sudden_smasher.sql
+│   │   ├── 0028_referentiel_collectivites.sql
+│   │   ├── 0029_pg_trgm_referentiel.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -110,6 +112,7 @@
 │   │       ├── 0025_snapshot.json
 │   │       ├── 0026_snapshot.json
 │   │       ├── 0027_snapshot.json
+│   │       ├── 0028_snapshot.json
 │   │       └── _journal.json
 │   ├── drizzle.config.ts
 │   ├── eslint.config.js
@@ -129,6 +132,17 @@
 │   │   │   └── services-import.csv
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
+│   │   ├── seed-referentiel
+│   │   │   ├── data
+│   │   │   │   ├── banatic-categorie-competences.csv
+│   │   │   │   └── banatic-codes-competences.csv
+│   │   │   ├── import.service.ts
+│   │   │   ├── seed-referentiel.ts
+│   │   │   └── sources
+│   │   │       ├── banatic.source.ts
+│   │   │       ├── geo-api.source.ts
+│   │   │       ├── types.ts
+│   │   │       └── zlv.source.ts
 │   │   └── utils.ts
 │   ├── src
 │   │   ├── analytics
@@ -147,6 +161,7 @@
 │   │   ├── database
 │   │   │   ├── database.module.ts
 │   │   │   ├── database.service.ts
+│   │   │   ├── referentiel-schema.ts
 │   │   │   └── schema.ts
 │   │   ├── exceptions
 │   │   │   ├── global-exception-filter.ts
@@ -157,6 +172,11 @@
 │   │   │   ├── geo-service.ts
 │   │   │   ├── geo.module.ts
 │   │   │   └── openapi-definition.yml
+│   │   ├── health
+│   │   │   └── health.controller.ts
+│   │   ├── landing
+│   │   │   ├── landing-pages.ts
+│   │   │   └── templates.ts
 │   │   ├── logging
 │   │   │   ├── logger.module.ts
 │   │   │   ├── logger.service.ts
@@ -223,6 +243,37 @@
 │   │   │       └── update-projets
 │   │   │           ├── update-projets.service.spec.ts
 │   │   │           └── update-projets.service.ts
+│   │   ├── referentiel
+│   │   │   ├── communes
+│   │   │   │   ├── communes.controller.ts
+│   │   │   │   ├── communes.service.ts
+│   │   │   │   └── dto
+│   │   │   │       ├── commune-query.dto.ts
+│   │   │   │       └── commune.response.ts
+│   │   │   ├── competences
+│   │   │   │   ├── competences.controller.ts
+│   │   │   │   ├── competences.service.ts
+│   │   │   │   └── dto
+│   │   │   │       ├── competence-query.dto.ts
+│   │   │   │       └── competence.response.ts
+│   │   │   ├── groupements
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── groupement-query.dto.ts
+│   │   │   │   │   └── groupement.response.ts
+│   │   │   │   ├── groupements.controller.ts
+│   │   │   │   └── groupements.service.ts
+│   │   │   ├── recherche
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── recherche-query.dto.ts
+│   │   │   │   │   └── recherche.response.ts
+│   │   │   │   ├── recherche.controller.ts
+│   │   │   │   └── recherche.service.ts
+│   │   │   ├── referentiel-doc.setup.ts
+│   │   │   ├── referentiel.module.ts
+│   │   │   ├── referentiel.spec.ts
+│   │   │   └── shared
+│   │   │       └── dto
+│   │   │           └── pagination-query.dto.ts
 │   │   ├── security
 │   │   │   ├── throttler.config.ts
 │   │   │   └── throttler.provider.ts
@@ -268,6 +319,8 @@
 │   │   │   ├── e2e-global-setup.ts
 │   │   │   ├── e2e-global-teardown.ts
 │   │   │   ├── get-formatted-date.ts
+│   │   │   ├── referentiel-test-setup.ts
+│   │   │   ├── referentiel-test-teardown.ts
 │   │   │   ├── test-database.service.ts
 │   │   │   ├── test-module.ts
 │   │   │   ├── unit-test-global-setup.ts
@@ -275,10 +328,12 @@
 │   │   ├── jest-e2e.config.ts
 │   │   ├── jest.common.ts
 │   │   ├── jest.config.ts
+│   │   ├── jest.referentiel.config.ts
 │   │   ├── jest.scripts.config.ts
 │   │   ├── mocks
 │   │   │   ├── mockCollectivites.ts
 │   │   │   ├── mockProjetPayload.ts
+│   │   │   ├── mockReferentielFixtures.ts
 │   │   │   └── mockRequest.ts
 │   │   ├── projets.e2e-spec.ts
 │   │   ├── qualification.e2e-spec.ts
@@ -290,8 +345,11 @@
 ├── archi-macro.png
 ├── commitlint.config.cjs
 ├── docs
-│   └── api
-│       └── leviers-endpoint.md
+│   ├── api
+│   │   └── leviers-endpoint.md
+│   ├── referentiel-api-design.md
+│   ├── referentiel-api-requirements.md
+│   └── referentiel-api-workflow.md
 ├── eslint.base.cjs
 ├── eslint.react.cjs
 ├── package.json
@@ -425,4 +483,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-75 directories, 352 files
+91 directories, 394 files

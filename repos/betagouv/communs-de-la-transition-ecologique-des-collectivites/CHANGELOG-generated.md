@@ -1,28 +1,27 @@
 ## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a principalement travaillé sur la refonte de l'espace "Ressources" avec l'ajout d'une page vocabulaire métier et l'amélioration de la cartographie. Des corrections ont également été apportées pour améliorer la conformité CNIL avec Matomo et résoudre des problèmes de CORS et de proxy. Plusieurs déploiements ont été effectués pour intégrer ces changements.
+Ce mois-ci, le projet a connu des améliorations significatives, notamment l'ajout d'une nouvelle API Référentiel Collectivités et de nouvelles fonctionnalités pour l'API existante, comme la possibilité d'inclure les compétences associées aux communes. L'interface utilisateur a également été améliorée, avec une refonte de la page vocabulaire et des ajustements visuels. Des corrections ont été apportées pour améliorer la robustesse de l'import de données et du proxy.
 
 ### Évolutions fonctionnelles
-- **Espace Ressources :** Refonte complète de la page vocabulaire selon les maquettes Figma [#378](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/378).
-- **Espace Ressources :** Ajout d'un espace "Ressources" avec un proxy pour la cartographie [#367](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/367).
-- **Cartographie :** Améliorations de la page d'accueil et du proxy de cartographie [#372](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/372).
-- **Statistiques :** Correction d'une erreur CORS sur la page des statistiques [#379](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/379).
-- **Statistiques :** Exclusion des catégories de test du dashboard statistiques.
-- **Matomo :** Conformité CNIL de Matomo sans bannière de consentement [#377](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/377).
-- **Matomo :** Ajout du tracking Matomo sur toutes les pages statiques [#374](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/374).
-- **API Projets :** Retrait des badges "nouveau" et renommage de la carte API Projets.
-- **Espace Ressources :** Revoir le titre et le sous-titre de l'espace ressources.
+- Ajout d'une nouvelle API Référentiel Collectivités [#993b043](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/993b043)
+- Possibilité d'inclure les compétences associées aux communes via le paramètre `includeCompetences` dans l'API `/v1/communes/:code` [#3c9df57](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3c9df57) et [#3c47e23](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/3c47e23)
+- Refonte de la page vocabulaire dans l'espace ressources [#eab719b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/eab719b)
+- Ajout d'un endpoint GET pour les catégories de compétences `/v1/competences/categories` [#c4530b6](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/c4530b6)
+- Ajout de pages d'accueil et d'un endpoint health check pour l'API [#e27425f](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/e27425f)
+- Améliorations visuelles : retrait des badges "nouveau" et renommage de la carte API Projets [#ae8cb93](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/ae8cb93) et [#78b6faa](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/78b6faa)
 
 ### Évolutions techniques
-- **Proxy :** Ajout d'un proxy pour analyses-convergence [#373](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/373).
-- **Proxy :** Amélioration du proxy pour supporter les attributs HTML avec guillemets simples.
-- **Proxy :** Réécriture des chemins dans les fichiers JS proxiés [#373](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/373) et des assets dans le HTML proxié [#368](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/368).
-- **Déploiement :** Correction du script `prepare` pour le déploiement Scalingo [#375](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/375).
-- **Dépendances :** Déplacement de `openapi-fetch` vers les dépendances [#376](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/376).
-- **Ressources :** Remplacement de l'iframe Notion par du contenu statique pour la page Vocabulaire [#378](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/378).
+- Amélioration du parsing du fichier XLSX Banatic en streaming pour éviter les erreurs de mémoire [#fb7bd16](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/fb7bd16) et [#cb01e05](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/cb01e05)
+- Correction du décodage des entités HTML dans les données Banatic [#14e6802](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/14e6802)
+- Correction de l'URL de la source ZLV (SIREN→SIRET) [#91ac890](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/91ac890)
+- Refactoring de la migration 0028 pour une meilleure clarté [#6af43d0](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/6af43d0)
+- Séparation des documents Swagger et harmonisation des titres [#4e811b1](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/4e811b1)
+- Ajout d'un proxy pour analyses-convergence [#34f27f7](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/34f27f7)
+- Correction du proxy pour supporter les attributs HTML avec guillemets simples [#f9d4d1a](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/f9d4d1a)
+- Correction de la réécriture des chemins dans le proxy [#fd90aa5](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/fd90aa5)
 
 ### Autres changements
-- Plusieurs releases ont été publiées : 0.1.8, 0.1.9, 0.1.10, 0.1.11, 0.1.12, 0.1.13, 0.1.14, 0.1.15, 0.1.16, 0.1.17, 0.1.18, 0.1.19, 0.1.20, 0.1.21, 0.1.22.
-- Correction de l'URL d'embed Notion [#370](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/370).
-- Affichage de l'iframe pendant le chargement [#371](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/371).
+- Documentation de l'API : ajout de la description de l'endpoint recherche et ajout d'un badge Alpha [#193672e](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/193672e), [#4622849](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/4622849) et [#587c0ed](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/587c0ed)
+- Correction du nom de domaine dans les exemples curl de l'API [#8b6c8cf](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/8b6c8cf)
+- Publication de plusieurs versions (0.1.18, 0.1.19, 0.1.20, 0.1.21, 0.1.22, 0.1.23, 0.1.24) via GitHub Actions.
