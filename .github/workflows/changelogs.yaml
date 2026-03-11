@@ -36,6 +36,7 @@ jobs:
                   CHANGELOG_SKIP_DAYS: ${{ inputs.changelog_skip_days || '7' }}
               run: |
                   ./scripts/generate-changelogs.sh
+                  ./scripts/generate-orgs-changelogs.sh
 
             - name: Commit changes
               run: |
