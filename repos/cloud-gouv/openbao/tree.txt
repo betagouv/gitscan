@@ -1,0 +1,5579 @@
+.
+├── .github
+│   ├── CODE_OF_CONDUCT.md
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   ├── config.yml
+│   │   ├── docs_ecosystem.yaml
+│   │   ├── feature_request.md
+│   │   └── rfc.yml
+│   ├── actionlint.yaml
+│   ├── actions
+│   │   └── set-up-go
+│   │       └── action.yml
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   ├── scripts
+│   │   └── verify_changes.sh
+│   ├── security-insights.yml
+│   └── workflows
+│       ├── changelog-checker.yml
+│       ├── ci.yml
+│       ├── code-checker.yml
+│       ├── codeql.yml
+│       ├── docs-ci.yml
+│       ├── docs-deploy.yml
+│       ├── dummy-dco-merge-queue.yml
+│       ├── go-dependency-submission.yml
+│       ├── mirror.yml
+│       ├── release.yml
+│       ├── scorecard.yml
+│       ├── stable-website.yaml
+│       ├── sync-deps.yaml
+│       ├── test-acc-dockeronly-nightly.yml
+│       ├── test-go.yml
+│       ├── test-run-acc-tests-for-path.yml
+│       ├── verify-commits.yml
+│       └── verify_changes.yml
+├── .gitignore
+├── .go-version
+├── .golangci.deprecations.yml
+├── .golangci.fmt.yml
+├── .golangci.yml
+├── .hooks
+│   └── pre-commit
+├── .release
+│   ├── docker
+│   │   ├── docker-entrypoint.sh
+│   │   └── ubi-docker-entrypoint.sh
+│   └── linux
+│       ├── package
+│       │   ├── etc
+│       │   │   └── openbao
+│       │   │       ├── openbao.env
+│       │   │       └── openbao.hcl
+│       │   └── usr
+│       │       └── lib
+│       │           └── systemd
+│       │               └── system
+│       │                   └── openbao.service
+│       ├── postinst
+│       ├── postrm
+│       └── preinst
+├── CHANGELOG.md
+├── CHARTER.md
+├── CNAME
+├── CODEOWNERS
+├── CONTRIBUTING.md
+├── Dockerfile
+├── GOVERNANCE.md
+├── LICENSE
+├── LICENSE_DEPENDENCIES.tpl
+├── MAINTAINERS.md
+├── Makefile
+├── README.md
+├── api
+│   ├── README.md
+│   ├── api_test.go
+│   ├── auth
+│   │   ├── approle
+│   │   │   ├── approle.go
+│   │   │   ├── approle_test.go
+│   │   │   ├── go.mod
+│   │   │   └── go.sum
+│   │   ├── jwt
+│   │   │   ├── go.mod
+│   │   │   ├── go.sum
+│   │   │   └── jwt.go
+│   │   ├── kubernetes
+│   │   │   ├── go.mod
+│   │   │   ├── go.sum
+│   │   │   └── kubernetes.go
+│   │   ├── ldap
+│   │   │   ├── go.mod
+│   │   │   ├── go.sum
+│   │   │   ├── ldap.go
+│   │   │   └── ldap_test.go
+│   │   └── userpass
+│   │       ├── go.mod
+│   │       ├── go.sum
+│   │       ├── userpass.go
+│   │       └── userpass_test.go
+│   ├── auth.go
+│   ├── auth_test.go
+│   ├── auth_token.go
+│   ├── client.go
+│   ├── client_test.go
+│   ├── env.go
+│   ├── env_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── help.go
+│   ├── kv.go
+│   ├── kv_test.go
+│   ├── kv_v1.go
+│   ├── kv_v2.go
+│   ├── lifetime_watcher.go
+│   ├── logical.go
+│   ├── output_policy.go
+│   ├── output_policy_test.go
+│   ├── output_string.go
+│   ├── output_string_test.go
+│   ├── plugin_helpers.go
+│   ├── plugin_helpers_test.go
+│   ├── plugin_types.go
+│   ├── renewer_test.go
+│   ├── request.go
+│   ├── request_test.go
+│   ├── response.go
+│   ├── rootcerts.go
+│   ├── secret.go
+│   ├── secret_test.go
+│   ├── ssh.go
+│   ├── ssh_agent.go
+│   ├── ssh_agent_test.go
+│   ├── sys.go
+│   ├── sys_*.go  (22 files)
+│   └── test-fixtures
+│       ├── agent_config.hcl
+│       ├── keys
+│       │   ├── cert.pem
+│       │   ├── key.pem
+│       │   └── pkioutput
+│       ├── root
+│       │   ├── pkioutput
+│       │   ├── root.crl
+│       │   ├── rootcacert.pem
+│       │   └── rootcakey.pem
+│       └── vault.crt
+├── audit
+│   ├── audit.go
+│   ├── format.go
+│   ├── format_json.go
+│   ├── format_json_test.go
+│   ├── format_test.go
+│   ├── formatter.go
+│   ├── hashstructure.go
+│   └── hashstructure_test.go
+├── builtin
+│   ├── audit
+│   │   ├── file
+│   │   │   ├── backend.go
+│   │   │   └── backend_test.go
+│   │   ├── http
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   └── testing.go
+│   │   ├── socket
+│   │   │   └── backend.go
+│   │   └── syslog
+│   │       └── backend.go
+│   ├── credential
+│   │   ├── approle
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── approle
+│   │   │   │       └── main.go
+│   │   │   ├── path_login.go
+│   │   │   ├── path_login_test.go
+│   │   │   ├── path_role.go
+│   │   │   ├── path_role_test.go
+│   │   │   ├── path_tidy_user_id.go
+│   │   │   ├── path_tidy_user_id_test.go
+│   │   │   ├── validation.go
+│   │   │   └── validation_test.go
+│   │   ├── cert
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cli.go
+│   │   │   ├── cmd
+│   │   │   │   └── cert
+│   │   │   │       └── main.go
+│   │   │   ├── path_certs.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_crls.go
+│   │   │   ├── path_crls_test.go
+│   │   │   ├── path_login.go
+│   │   │   ├── path_login_test.go
+│   │   │   ├── test-fixtures
+│   │   │   │   ├── cacert.pem
+│   │   │   │   ├── cacert2crl
+│   │   │   │   ├── cakey.pem
+│   │   │   │   ├── generate.txt
+│   │   │   │   ├── issuedcertcrl
+│   │   │   │   ├── keys
+│   │   │   │   │   ├── cert.pem
+│   │   │   │   │   ├── key.pem
+│   │   │   │   │   └── pkioutput
+│   │   │   │   ├── noclientauthcert.pem
+│   │   │   │   ├── root
+│   │   │   │   │   ├── pkioutput
+│   │   │   │   │   ├── root.crl
+│   │   │   │   │   ├── rootcacert.pem
+│   │   │   │   │   ├── rootcacert.srl
+│   │   │   │   │   ├── rootcakey.pem
+│   │   │   │   │   ├── rootcawext.cnf
+│   │   │   │   │   ├── rootcawext.csr
+│   │   │   │   │   ├── rootcawextcert.pem
+│   │   │   │   │   ├── rootcawextkey.pem
+│   │   │   │   │   ├── rootcawou.cnf
+│   │   │   │   │   ├── rootcawou.csr
+│   │   │   │   │   ├── rootcawoucert.pem
+│   │   │   │   │   └── rootcawoukey.pem
+│   │   │   │   ├── testcacert1.pem
+│   │   │   │   ├── testcacert2.pem
+│   │   │   │   ├── testcakey1.pem
+│   │   │   │   ├── testcakey2.pem
+│   │   │   │   ├── testissuedcert4.pem
+│   │   │   │   └── testissuedkey4.pem
+│   │   │   └── test_responder.go
+│   │   ├── jwt
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── claims.go
+│   │   │   ├── claims_test.go
+│   │   │   ├── cli.go
+│   │   │   ├── cli_auth_no_sigtstp.go
+│   │   │   ├── cli_auth_sigtstp.go
+│   │   │   ├── cli_qr.go
+│   │   │   ├── cli_qr_test.go
+│   │   │   ├── cli_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── jwt
+│   │   │   │       └── main.go
+│   │   │   ├── html_responses.go
+│   │   │   ├── path_cel_login.go
+│   │   │   ├── path_cel_login_test.go
+│   │   │   ├── path_cel_role.go
+│   │   │   ├── path_cel_role_test.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_login.go
+│   │   │   ├── path_login_test.go
+│   │   │   ├── path_oidc.go
+│   │   │   ├── path_oidc_test.go
+│   │   │   ├── path_role.go
+│   │   │   ├── path_role_test.go
+│   │   │   ├── provider_azure.go
+│   │   │   ├── provider_azure_test.go
+│   │   │   ├── provider_config.go
+│   │   │   ├── provider_config_test.go
+│   │   │   ├── provider_gsuite.go
+│   │   │   ├── provider_gsuite_test.go
+│   │   │   ├── provider_ibmisam.go
+│   │   │   ├── provider_ibmisam_test.go
+│   │   │   ├── provider_secureauth.go
+│   │   │   ├── provider_secureauth_test.go
+│   │   │   ├── scripts
+│   │   │   │   ├── build.sh
+│   │   │   │   ├── gofmtcheck.sh
+│   │   │   │   └── local_dev.sh
+│   │   │   ├── test_ui.html
+│   │   │   └── tests
+│   │   │       └── test.bats
+│   │   ├── kerberos
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── cli.go
+│   │   │   ├── cli_test.go
+│   │   │   ├── cmd
+│   │   │   │   ├── kerberos
+│   │   │   │   │   └── main.go
+│   │   │   │   └── login-kerb
+│   │   │   │       └── main.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_ldap.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_groups.go
+│   │   │   ├── path_login.go
+│   │   │   ├── path_login_test.go
+│   │   │   ├── scripts
+│   │   │   │   ├── build.sh
+│   │   │   │   ├── dev_env.sh
+│   │   │   │   ├── gofmtcheck.sh
+│   │   │   │   └── integration_env.sh
+│   │   │   └── test
+│   │   │       └── acceptance
+│   │   │           ├── _helpers.bash
+│   │   │           ├── auth-check.py
+│   │   │           └── server-enterprise-basic-tests.bats
+│   │   ├── kubernetes
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── caching_file_reader.go
+│   │   │   ├── caching_file_reader_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── kubernetes
+│   │   │   │       └── main.go
+│   │   │   ├── common_test.go
+│   │   │   ├── helpers.go
+│   │   │   ├── integrationtest
+│   │   │   │   ├── integration_test.go
+│   │   │   │   ├── k8s
+│   │   │   │   │   ├── client.go
+│   │   │   │   │   └── portforward.go
+│   │   │   │   └── vault
+│   │   │   │       ├── Dockerfile
+│   │   │   │       ├── namespaceControllerBinding.yaml
+│   │   │   │       ├── tokenReviewerBinding.yaml
+│   │   │   │       └── tokenReviewerServiceAccount.yaml
+│   │   │   ├── namespace_validator.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_login.go
+│   │   │   ├── path_login_test.go
+│   │   │   ├── path_role.go
+│   │   │   ├── path_role_test.go
+│   │   │   ├── scripts
+│   │   │   │   └── gofmtcheck.sh
+│   │   │   └── token_review.go
+│   │   ├── ldap
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cli.go
+│   │   │   ├── cmd
+│   │   │   │   └── ldap
+│   │   │   │       └── main.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_groups.go
+│   │   │   ├── path_login.go
+│   │   │   └── path_users.go
+│   │   ├── radius
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── radius
+│   │   │   │       └── main.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_login.go
+│   │   │   └── path_users.go
+│   │   ├── token
+│   │   │   └── cli.go
+│   │   └── userpass
+│   │       ├── backend.go
+│   │       ├── backend_test.go
+│   │       ├── cli.go
+│   │       ├── cmd
+│   │       │   └── userpass
+│   │       │       └── main.go
+│   │       ├── path_login.go
+│   │       ├── path_login_test.go
+│   │       ├── path_user_password.go
+│   │       ├── path_user_policies.go
+│   │       ├── path_users.go
+│   │       └── stepwise_test.go
+│   ├── logical
+│   │   ├── database
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── credentials.go
+│   │   │   ├── credentials_test.go
+│   │   │   ├── dbplugin
+│   │   │   │   └── plugin_test.go
+│   │   │   ├── mocks_test.go
+│   │   │   ├── mockv4.go
+│   │   │   ├── mockv5.go
+│   │   │   ├── path_config_connection.go
+│   │   │   ├── path_config_connection_test.go
+│   │   │   ├── path_creds_create.go
+│   │   │   ├── path_roles.go
+│   │   │   ├── path_roles_test.go
+│   │   │   ├── path_rotate_credentials.go
+│   │   │   ├── rollback.go
+│   │   │   ├── rollback_test.go
+│   │   │   ├── rotation.go
+│   │   │   ├── rotation_test.go
+│   │   │   ├── secret_creds.go
+│   │   │   ├── version_wrapper.go
+│   │   │   ├── version_wrapper_test.go
+│   │   │   └── versioning_large_test.go
+│   │   ├── kubernetes
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── kubernetes
+│   │   │   │       └── main.go
+│   │   │   ├── integrationtest
+│   │   │   │   ├── creds_integration_test.go
+│   │   │   │   ├── helpers.go
+│   │   │   │   ├── integration_test.go
+│   │   │   │   ├── kind
+│   │   │   │   │   └── config.yaml
+│   │   │   │   ├── vault
+│   │   │   │   │   ├── Dockerfile
+│   │   │   │   │   ├── hostPortPatch.yaml
+│   │   │   │   │   ├── testBindings.yaml
+│   │   │   │   │   ├── testRoles.yaml
+│   │   │   │   │   └── testServiceAccounts.yaml
+│   │   │   │   └── wal_rollback_test.go
+│   │   │   ├── kube_service_account.go
+│   │   │   ├── path_check.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_creds.go
+│   │   │   ├── path_creds_test.go
+│   │   │   ├── path_roles.go
+│   │   │   ├── path_roles_test.go
+│   │   │   ├── scripts
+│   │   │   │   ├── gofmtcheck.sh
+│   │   │   │   └── local_dev.sh
+│   │   │   └── wal.go
+│   │   ├── kv
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── cmd
+│   │   │   │   └── kv
+│   │   │   │       └── main.go
+│   │   │   ├── delete_version_after.go
+│   │   │   ├── delete_version_after_test.go
+│   │   │   ├── passthrough.go
+│   │   │   ├── passthrough_test.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_data.go
+│   │   │   ├── path_data_test.go
+│   │   │   ├── path_delete.go
+│   │   │   ├── path_delete_test.go
+│   │   │   ├── path_destroy.go
+│   │   │   ├── path_destroy_test.go
+│   │   │   ├── path_metadata.go
+│   │   │   ├── path_metadata_test.go
+│   │   │   ├── path_subkeys.go
+│   │   │   ├── path_subkeys_test.go
+│   │   │   ├── scripts
+│   │   │   │   ├── build.sh
+│   │   │   │   └── gofmtcheck.sh
+│   │   │   ├── types.pb.go
+│   │   │   ├── types.proto
+│   │   │   ├── upgrade.go
+│   │   │   └── upgrade_test.go
+│   │   ├── openldap
+│   │   │   ├── Makefile
+│   │   │   ├── README.md
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── checkout_handler.go
+│   │   │   ├── checkout_handler_test.go
+│   │   │   ├── client
+│   │   │   │   ├── client.go
+│   │   │   │   ├── client_test.go
+│   │   │   │   ├── entry.go
+│   │   │   │   ├── entry_test.go
+│   │   │   │   ├── fieldregistry.go
+│   │   │   │   ├── fieldregistry_test.go
+│   │   │   │   ├── schema.go
+│   │   │   │   └── tools
+│   │   │   │       └── simplecall.go
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── openldap
+│   │   │   │       └── main.go
+│   │   │   ├── dynamic_role.go
+│   │   │   ├── ldapifc
+│   │   │   │   └── fakes.go
+│   │   │   ├── mocks_test.go
+│   │   │   ├── path_checkout_sets.go
+│   │   │   ├── path_checkout_sets_test.go
+│   │   │   ├── path_checkouts.go
+│   │   │   ├── path_checkouts_test.go
+│   │   │   ├── path_config.go
+│   │   │   ├── path_config_test.go
+│   │   │   ├── path_dynamic_creds.go
+│   │   │   ├── path_dynamic_creds_test.go
+│   │   │   ├── path_dynamic_roles.go
+│   │   │   ├── path_dynamic_roles_test.go
+│   │   │   ├── path_rotate.go
+│   │   │   ├── path_rotate_test.go
+│   │   │   ├── path_static_creds.go
+│   │   │   ├── path_static_creds_test.go
+│   │   │   ├── path_static_roles.go
+│   │   │   ├── path_static_roles_test.go
+│   │   │   ├── rotation.go
+│   │   │   ├── rotation_test.go
+│   │   │   └── scripts
+│   │   │       ├── acceptance-tests.bats
+│   │   │       ├── create_entries.ldif
+│   │   │       ├── gofmtcheck.sh
+│   │   │       └── run.sh
+│   │   ├── pki
+│   │   │   ├── acme_authorizations.go
+│   │   │   ├── acme_challenge_engine.go
+│   │   │   ├── acme_challenges.go
+│   │   │   ├── acme_challenges_test.go
+│   │   │   ├── acme_eab_policy.go
+│   │   │   ├── acme_errors.go
+│   │   │   ├── acme_helpers_test.go
+│   │   │   ├── acme_jws.go
+│   │   │   ├── acme_state.go
+│   │   │   ├── acme_state_test.go
+│   │   │   ├── acme_wrappers.go
+│   │   │   ├── acme_wrappers_test.go
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── ca_test.go
+│   │   │   ├── ca_util.go
+│   │   │   ├── cert_template.pb.go
+│   │   │   ├── cert_template.proto
+│   │   │   ├── cert_util.go
+│   │   │   ├── cert_util_test.go
+│   │   │   ├── chain_test.go
+│   │   │   ├── chain_util.go
+│   │   │   ├── cmd
+│   │   │   │   └── pki
+│   │   │   │       └── main.go
+│   │   │   ├── config_util.go
+│   │   │   ├── crl_test.go
+│   │   │   ├── crl_util.go
+│   │   │   ├── dnstest
+│   │   │   │   └── server.go
+│   │   │   ├── fields.go
+│   │   │   ├── integration_test.go
+│   │   │   ├── key_util.go
+│   │   │   ├── path_*.go  (39 files)
+│   │   │   ├── secret_certs.go
+│   │   │   ├── storage.go
+│   │   │   ├── storage_migrations.go
+│   │   │   ├── storage_migrations_test.go
+│   │   │   ├── storage_test.go
+│   │   │   ├── test_helpers.go
+│   │   │   ├── translate_cert.go
+│   │   │   └── util.go
+│   │   ├── pkiext
+│   │   │   ├── README.md
+│   │   │   ├── nginx_test.go
+│   │   │   ├── pkiext_binary
+│   │   │   │   ├── acme_test.go
+│   │   │   │   ├── pki_cluster.go
+│   │   │   │   ├── pki_mount.go
+│   │   │   │   └── testdata
+│   │   │   │       ├── caddy_http.json
+│   │   │   │       ├── caddy_http_eab.json
+│   │   │   │       └── caddy_tls_alpn.json
+│   │   │   ├── test_helpers.go
+│   │   │   └── zlint_test.go
+│   │   ├── rabbitmq
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── rabbitmq
+│   │   │   │       └── main.go
+│   │   │   ├── passwords.go
+│   │   │   ├── path_config_connection.go
+│   │   │   ├── path_config_connection_test.go
+│   │   │   ├── path_config_lease.go
+│   │   │   ├── path_config_lease_test.go
+│   │   │   ├── path_role_create.go
+│   │   │   ├── path_role_create_test.go
+│   │   │   ├── path_roles.go
+│   │   │   └── secret_creds.go
+│   │   ├── ssh
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── ssh
+│   │   │   │       └── main.go
+│   │   │   ├── fields.go
+│   │   │   ├── path_cleanup_dynamic_host_keys.go
+│   │   │   ├── path_config_ca.go
+│   │   │   ├── path_config_ca_test.go
+│   │   │   ├── path_config_issuers.go
+│   │   │   ├── path_config_issuers_test.go
+│   │   │   ├── path_config_zeroaddress.go
+│   │   │   ├── path_creds_create.go
+│   │   │   ├── path_fetch.go
+│   │   │   ├── path_issue.go
+│   │   │   ├── path_issue_sign.go
+│   │   │   ├── path_issuers.go
+│   │   │   ├── path_lookup.go
+│   │   │   ├── path_roles.go
+│   │   │   ├── path_sign.go
+│   │   │   ├── path_verify.go
+│   │   │   ├── secret_otp.go
+│   │   │   ├── storage.go
+│   │   │   ├── storage_migrations.go
+│   │   │   ├── storage_migrations_test.go
+│   │   │   └── util.go
+│   │   ├── totp
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── totp
+│   │   │   │       └── main.go
+│   │   │   ├── path_code.go
+│   │   │   └── path_keys.go
+│   │   └── transit
+│   │       ├── backend.go
+│   │       ├── backend_test.go
+│   │       ├── cmd
+│   │       │   └── transit
+│   │       │       └── main.go
+│   │       ├── path_backup.go
+│   │       ├── path_backup_test.go
+│   │       ├── path_byok.go
+│   │       ├── path_byok_test.go
+│   │       ├── path_cache_config.go
+│   │       ├── path_cache_config_test.go
+│   │       ├── path_certificates.go
+│   │       ├── path_certificates_test.go
+│   │       ├── path_config_keys.go
+│   │       ├── path_config_keys_test.go
+│   │       ├── path_datakey.go
+│   │       ├── path_decrypt.go
+│   │       ├── path_decrypt_bench_test.go
+│   │       ├── path_decrypt_test.go
+│   │       ├── path_derive_key.go
+│   │       ├── path_derive_key_test.go
+│   │       ├── path_encrypt.go
+│   │       ├── path_encrypt_bench_test.go
+│   │       ├── path_encrypt_test.go
+│   │       ├── path_export.go
+│   │       ├── path_export_test.go
+│   │       ├── path_hash.go
+│   │       ├── path_hash_test.go
+│   │       ├── path_hmac.go
+│   │       ├── path_hmac_test.go
+│   │       ├── path_import.go
+│   │       ├── path_import_test.go
+│   │       ├── path_keys.go
+│   │       ├── path_keys_config.go
+│   │       ├── path_keys_config_test.go
+│   │       ├── path_keys_test.go
+│   │       ├── path_random.go
+│   │       ├── path_random_test.go
+│   │       ├── path_restore.go
+│   │       ├── path_restore_test.go
+│   │       ├── path_rewrap.go
+│   │       ├── path_rewrap_test.go
+│   │       ├── path_rotate.go
+│   │       ├── path_sign_verify.go
+│   │       ├── path_sign_verify_test.go
+│   │       ├── path_trim.go
+│   │       ├── path_trim_test.go
+│   │       ├── path_wrapping_key.go
+│   │       ├── path_wrapping_key_test.go
+│   │       └── stepwise_test.go
+│   └── plugin
+│       ├── backend.go
+│       ├── backend_lazyLoad_test.go
+│       ├── backend_test.go
+│       ├── mock_plugin_test.go
+│       └── v5
+│           └── backend.go
+├── changelog
+│   ├── 1*.txt  (120 files)
+│   ├── 2*.txt  (53 files)
+│   ├── 3*.txt  (9 files)
+│   ├── 4*.txt  (10 files)
+│   ├── 5*.txt  (12 files)
+│   ├── 6*.txt  (19 files)
+│   ├── 7*.txt  (10 files)
+│   ├── 8*.txt  (11 files)
+│   ├── 9*.txt  (11 files)
+│   ├── README.md
+│   ├── changelog.tmpl
+│   └── note.tmpl
+├── command
+│   ├── agent
+│   │   ├── README.md
+│   │   ├── approle_end_to_end_test.go
+│   │   ├── auto_auth_preload_token_end_to_end_test.go
+│   │   ├── cache_end_to_end_test.go
+│   │   ├── cert_end_to_end_test.go
+│   │   ├── config
+│   │   │   ├── config.go
+│   │   │   ├── config_test.go
+│   │   │   └── test-fixtures
+│   │   │       ├── bad-config-api_proxy-cache.hcl
+│   │   │       ├── bad-config-auto_auth-nosinks-nocache-notemplates.hcl
+│   │   │       ├── bad-config-auto_auth-wrapped-multiple-sinks.hcl
+│   │   │       ├── bad-config-cache-auto_auth-method-wrapping.hcl
+│   │   │       ├── bad-config-cache-force-token-no-auth-method.hcl
+│   │   │       ├── bad-config-cache-inconsistent-auto_auth.hcl
+│   │   │       ├── bad-config-cache-no-listeners.hcl
+│   │   │       ├── bad-config-disable-idle-connections.hcl
+│   │   │       ├── bad-config-disable-keep-alives.hcl
+│   │   │       ├── bad-config-env-templates-disalowed-fields.hcl
+│   │   │       ├── bad-config-env-templates-invalid-signal.hcl
+│   │   │       ├── bad-config-env-templates-missing-exec.hcl
+│   │   │       ├── bad-config-env-templates-no-name.hcl
+│   │   │       ├── bad-config-env-templates-with-file-templates.hcl
+│   │   │       ├── bad-config-env-templates-with-proxy.hcl
+│   │   │       ├── bad-config-method-wrapping-and-sink-wrapping.hcl
+│   │   │       ├── config-api_proxy-auto_auth-all-api_proxy-config.hcl
+│   │   │       ├── config-cache-auto_auth-false.hcl
+│   │   │       ├── config-cache-auto_auth-force.hcl
+│   │   │       ├── config-cache-auto_auth-no-sink.hcl
+│   │   │       ├── config-cache-auto_auth-true.hcl
+│   │   │       ├── config-cache-embedded-type.hcl
+│   │   │       ├── config-cache-no-auto_auth.hcl
+│   │   │       ├── config-cache-no-listeners.hcl
+│   │   │       ├── config-cache-persist-empty-type.hcl
+│   │   │       ├── config-cache-persist-false.hcl
+│   │   │       ├── config-cache.hcl
+│   │   │       ├── config-dir-auto-auth-and-listener
+│   │   │       │   ├── config1.hcl
+│   │   │       │   └── config2.hcl
+│   │   │       ├── config-dir-cache
+│   │   │       │   ├── config-cache1.hcl
+│   │   │       │   └── config-cache2.hcl
+│   │   │       ├── config-dir-vault-block
+│   │   │       │   ├── config1.hcl
+│   │   │       │   └── config2.hcl
+│   │   │       ├── config-disable-idle-connections-all.hcl
+│   │   │       ├── config-disable-idle-connections-auto-auth.hcl
+│   │   │       ├── config-disable-idle-connections-caching.hcl
+│   │   │       ├── config-disable-idle-connections-empty.hcl
+│   │   │       ├── config-disable-idle-connections-proxying.hcl
+│   │   │       ├── config-disable-idle-connections-templating.hcl
+│   │   │       ├── config-disable-keep-alives-all.hcl
+│   │   │       ├── config-disable-keep-alives-auto-auth.hcl
+│   │   │       ├── config-disable-keep-alives-caching.hcl
+│   │   │       ├── config-disable-keep-alives-empty.hcl
+│   │   │       ├── config-disable-keep-alives-proxying.hcl
+│   │   │       ├── config-disable-keep-alives-templating.hcl
+│   │   │       ├── config-embedded-type.hcl
+│   │   │       ├── config-env-templates-complex.hcl
+│   │   │       ├── config-env-templates-simple.hcl
+│   │   │       ├── config-env-templates-with-source.hcl
+│   │   │       ├── config-method-exit-on-err.hcl
+│   │   │       ├── config-method-initial-backoff.hcl
+│   │   │       ├── config-method-wrapping.hcl
+│   │   │       ├── config-template-full-nosink.hcl
+│   │   │       ├── config-template-full.hcl
+│   │   │       ├── config-template-many-nosink.hcl
+│   │   │       ├── config-template-many.hcl
+│   │   │       ├── config-template-min-nosink.hcl
+│   │   │       ├── config-template-min.hcl
+│   │   │       ├── config-template-with-cache.hcl
+│   │   │       ├── config-template_config-empty.hcl
+│   │   │       ├── config-template_config.hcl
+│   │   │       ├── config-vault-retry-empty.hcl
+│   │   │       ├── config-vault-retry.hcl
+│   │   │       └── config.hcl
+│   │   ├── doc.go
+│   │   ├── exec
+│   │   │   ├── exec.go
+│   │   │   ├── exec_test.go
+│   │   │   └── test-app
+│   │   │       └── main.go
+│   │   ├── internal
+│   │   │   └── ctmanager
+│   │   │       └── runner_config.go
+│   │   ├── jwt_end_to_end_test.go
+│   │   ├── template
+│   │   │   ├── template.go
+│   │   │   └── template_test.go
+│   │   ├── test-fixtures
+│   │   │   └── reload
+│   │   │       ├── reload_bar.key
+│   │   │       ├── reload_bar.pem
+│   │   │       ├── reload_ca.pem
+│   │   │       ├── reload_foo.key
+│   │   │       └── reload_foo.pem
+│   │   ├── testing.go
+│   │   └── token_file_end_to_end_test.go
+│   ├── agent.go
+│   ├── agent_generate_config.go
+│   ├── agent_generate_config_test.go
+│   ├── agent_test.go
+│   ├── agentproxyshared
+│   │   ├── auth
+│   │   │   ├── approle
+│   │   │   │   └── approle.go
+│   │   │   ├── auth.go
+│   │   │   ├── auth_test.go
+│   │   │   ├── cert
+│   │   │   │   ├── cert.go
+│   │   │   │   ├── cert_test.go
+│   │   │   │   └── test-fixtures
+│   │   │   │       ├── keys
+│   │   │   │       │   ├── cert.pem
+│   │   │   │       │   ├── key.pem
+│   │   │   │       │   └── pkioutput
+│   │   │   │       └── root
+│   │   │   │           ├── pkioutput
+│   │   │   │           ├── root.crl
+│   │   │   │           ├── rootcacert.pem
+│   │   │   │           └── rootcakey.pem
+│   │   │   ├── jwt
+│   │   │   │   ├── jwt.go
+│   │   │   │   └── jwt_test.go
+│   │   │   ├── kerberos
+│   │   │   │   ├── integtest
+│   │   │   │   │   └── integrationtest.sh
+│   │   │   │   ├── kerberos.go
+│   │   │   │   └── kerberos_test.go
+│   │   │   ├── kubernetes
+│   │   │   │   ├── kubernetes.go
+│   │   │   │   └── kubernetes_test.go
+│   │   │   └── token-file
+│   │   │       ├── token_file.go
+│   │   │       └── token_file_test.go
+│   │   ├── cache
+│   │   │   ├── api_proxy.go
+│   │   │   ├── api_proxy_test.go
+│   │   │   ├── cache_test.go
+│   │   │   ├── cacheboltdb
+│   │   │   │   ├── bolt.go
+│   │   │   │   └── bolt_test.go
+│   │   │   ├── cachememdb
+│   │   │   │   ├── cache_memdb.go
+│   │   │   │   ├── cache_memdb_test.go
+│   │   │   │   ├── index.go
+│   │   │   │   └── index_test.go
+│   │   │   ├── handler.go
+│   │   │   ├── keymanager
+│   │   │   │   ├── manager.go
+│   │   │   │   ├── passthrough.go
+│   │   │   │   └── passthrough_test.go
+│   │   │   ├── lease_cache.go
+│   │   │   ├── lease_cache_test.go
+│   │   │   ├── listener.go
+│   │   │   ├── proxy.go
+│   │   │   └── testing.go
+│   │   ├── helpers.go
+│   │   ├── helpers_test.go
+│   │   ├── sink
+│   │   │   ├── file
+│   │   │   │   ├── file_sink.go
+│   │   │   │   ├── file_sink_test.go
+│   │   │   │   └── sink_test.go
+│   │   │   ├── inmem
+│   │   │   │   └── inmem_sink.go
+│   │   │   ├── mock
+│   │   │   │   └── mock_sink.go
+│   │   │   └── sink.go
+│   │   └── winsvc
+│   │       ├── service.go
+│   │       └── service_windows.go
+│   ├── approle_concurrency_integ_test.go
+│   ├── audit.go
+│   ├── audit_disable.go
+│   ├── audit_disable_test.go
+│   ├── audit_enable.go
+│   ├── audit_enable_test.go
+│   ├── audit_list.go
+│   ├── audit_list_test.go
+│   ├── auth.go
+│   ├── auth_disable.go
+│   ├── auth_disable_test.go
+│   ├── auth_enable.go
+│   ├── auth_enable_test.go
+│   ├── auth_help.go
+│   ├── auth_help_test.go
+│   ├── auth_list.go
+│   ├── auth_list_test.go
+│   ├── auth_move.go
+│   ├── auth_move_test.go
+│   ├── auth_test.go
+│   ├── auth_tune.go
+│   ├── auth_tune_test.go
+│   ├── base.go
+│   ├── base_flags.go
+│   ├── base_flags_test.go
+│   ├── base_helpers.go
+│   ├── base_helpers_test.go
+│   ├── base_predict.go
+│   ├── base_predict_test.go
+│   ├── base_test.go
+│   ├── command_test.go
+│   ├── commands.go
+│   ├── commands_nonwindows.go
+│   ├── commands_windows.go
+│   ├── config
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── util.go
+│   │   └── validate_listener.go
+│   ├── config.go
+│   ├── config_test.go
+│   ├── debug.go
+│   ├── debug_test.go
+│   ├── delete.go
+│   ├── delete_test.go
+│   ├── format.go
+│   ├── format_test.go
+│   ├── healthcheck
+│   │   ├── healthcheck.go
+│   │   ├── pki.go
+│   │   ├── pki_allow_acme_headers.go
+│   │   ├── pki_allow_if_modified_since.go
+│   │   ├── pki_audit_visibility.go
+│   │   ├── pki_ca_validity_period.go
+│   │   ├── pki_crl_validity_period.go
+│   │   ├── pki_enable_acme_issuance.go
+│   │   ├── pki_enable_auto_tidy.go
+│   │   ├── pki_hardware_backed_root.go
+│   │   ├── pki_role_allows_glob_wildcards.go
+│   │   ├── pki_role_allows_localhost.go
+│   │   ├── pki_role_no_store_false.go
+│   │   ├── pki_root_issued_leaves.go
+│   │   ├── pki_tidy_last_run.go
+│   │   ├── pki_too_many_certs.go
+│   │   ├── shared.go
+│   │   └── util.go
+│   ├── kv.go
+│   ├── kv_*.go  (20 files)
+│   ├── lease.go
+│   ├── lease_*.go  (6 files)
+│   ├── list.go
+│   ├── list_test.go
+│   ├── log_flags.go
+│   ├── log_flags_test.go
+│   ├── login.go
+│   ├── login_test.go
+│   ├── main.go
+│   ├── monitor.go
+│   ├── monitor_test.go
+│   ├── namespace.go
+│   ├── namespace_*.go  (9 files)
+│   ├── operator.go
+│   ├── operator_*.go  (35 files)
+│   ├── patch.go
+│   ├── patch_test.go
+│   ├── path_help.go
+│   ├── path_help_test.go
+│   ├── pgp_test.go
+│   ├── pki.go
+│   ├── pki_*.go  (10 files)
+│   ├── plugin.go
+│   ├── plugin_*.go  (13 files)
+│   ├── policy.go
+│   ├── policy_*.go  (10 files)
+│   ├── print.go
+│   ├── print_token.go
+│   ├── proxy
+│   │   ├── config
+│   │   │   ├── config.go
+│   │   │   ├── config_test.go
+│   │   │   └── test-fixtures
+│   │   │       ├── config-cache-embedded-type.hcl
+│   │   │       └── config-cache.hcl
+│   │   └── test-fixtures
+│   │       └── reload
+│   │           ├── reload_bar.key
+│   │           ├── reload_bar.pem
+│   │           ├── reload_ca.pem
+│   │           ├── reload_foo.key
+│   │           └── reload_foo.pem
+│   ├── proxy.go
+│   ├── proxy_test.go
+│   ├── read.go
+│   ├── read_test.go
+│   ├── rotate.go
+│   ├── rotate_test.go
+│   ├── scan.go
+│   ├── scan_test.go
+│   ├── secrets.go
+│   ├── secrets_disable.go
+│   ├── secrets_disable_test.go
+│   ├── secrets_enable.go
+│   ├── secrets_enable_test.go
+│   ├── secrets_list.go
+│   ├── secrets_list_test.go
+│   ├── secrets_move.go
+│   ├── secrets_move_test.go
+│   ├── secrets_tune.go
+│   ├── secrets_tune_test.go
+│   ├── server
+│   │   ├── config.go
+│   │   ├── config_custom_response_headers_test.go
+│   │   ├── config_oss_test.go
+│   │   ├── config_plugin_test.go
+│   │   ├── config_telemetry_test.go
+│   │   ├── config_test.go
+│   │   ├── config_test_helpers.go
+│   │   ├── config_test_helpers_util.go
+│   │   ├── listener.go
+│   │   ├── listener_tcp.go
+│   │   ├── listener_tcp_test.go
+│   │   ├── listener_test.go
+│   │   ├── listener_unix.go
+│   │   ├── listener_unix_test.go
+│   │   ├── server_seal_transit_acc_test.go
+│   │   ├── test-fixtures
+│   │   │   ├── config-dir
+│   │   │   │   ├── bar.json
+│   │   │   │   ├── baz.hcl
+│   │   │   │   └── foo.hcl
+│   │   │   ├── config.hcl
+│   │   │   ├── config.hcl.json
+│   │   │   ├── config2.hcl
+│   │   │   ├── config2.hcl.json
+│   │   │   ├── config3.hcl
+│   │   │   ├── config4.hcl
+│   │   │   ├── config4.hcl.json
+│   │   │   ├── config5.hcl
+│   │   │   ├── config_bad_https_storage.hcl
+│   │   │   ├── config_custom_response_headers_1.hcl
+│   │   │   ├── config_custom_response_headers_multiple_listeners.hcl
+│   │   │   ├── config_diagnose_hastorage_bad_https.hcl
+│   │   │   ├── config_diagnose_ok.hcl
+│   │   │   ├── config_raft.hcl
+│   │   │   ├── config_seals.hcl
+│   │   │   ├── config_small.hcl
+│   │   │   ├── config_small.json
+│   │   │   ├── diagnose_bad_https_consul_sr.hcl
+│   │   │   ├── diagnose_bad_syntax.hcl
+│   │   │   ├── diagnose_bad_telemetry1.hcl
+│   │   │   ├── diagnose_bad_telemetry2.hcl
+│   │   │   ├── diagnose_bad_telemetry3.hcl
+│   │   │   ├── diagnose_ok_storage_direct_access.hcl
+│   │   │   ├── diagnose_raft_no_bolt_folder.hcl
+│   │   │   ├── diagnose_seal_transit_tls_check.hcl
+│   │   │   ├── diagnose_unknown_property.hcl
+│   │   │   ├── hcp_link_config.hcl
+│   │   │   ├── nostore_config.hcl
+│   │   │   ├── raft_retry_join.hcl
+│   │   │   ├── raft_storage_file.db
+│   │   │   ├── reload
+│   │   │   │   ├── reload_bar.key
+│   │   │   │   ├── reload_bar.pem
+│   │   │   │   ├── reload_ca.pem
+│   │   │   │   ├── reload_foo.key
+│   │   │   │   └── reload_foo.pem
+│   │   │   ├── self-init.hcl
+│   │   │   ├── static-seal.hcl
+│   │   │   ├── storage-listener-config.json
+│   │   │   ├── telemetry
+│   │   │   │   ├── filter_default_override.hcl
+│   │   │   │   └── valid_prefix_filter.hcl
+│   │   │   ├── tls_config_ok.hcl
+│   │   │   └── unauth_in_flight_access.hcl
+│   │   └── tls_util.go
+│   ├── server.go
+│   ├── server_noprofile.go
+│   ├── server_profile.go
+│   ├── server_test.go
+│   ├── ssh.go
+│   ├── ssh_test.go
+│   ├── status.go
+│   ├── status_test.go
+│   ├── test-backend
+│   │   └── main.go
+│   ├── test-fixtures
+│   │   ├── config.hcl
+│   │   └── policy.hcl
+│   ├── token
+│   │   ├── helper.go
+│   │   ├── helper_external.go
+│   │   ├── helper_external_test.go
+│   │   ├── helper_internal.go
+│   │   ├── helper_internal_test.go
+│   │   ├── helper_testing.go
+│   │   └── testing.go
+│   ├── token.go
+│   ├── token_capabilities.go
+│   ├── token_capabilities_test.go
+│   ├── token_create.go
+│   ├── token_create_test.go
+│   ├── token_lookup.go
+│   ├── token_lookup_test.go
+│   ├── token_renew.go
+│   ├── token_renew_test.go
+│   ├── token_revoke.go
+│   ├── token_revoke_test.go
+│   ├── transit.go
+│   ├── transit_import_key.go
+│   ├── transit_import_key_test.go
+│   ├── transit_import_key_version.go
+│   ├── unwrap.go
+│   ├── unwrap_test.go
+│   ├── util.go
+│   ├── version.go
+│   ├── version_history.go
+│   ├── version_history_test.go
+│   ├── version_test.go
+│   ├── write.go
+│   └── write_test.go
+├── go.mod
+├── go.sum
+├── goreleaser.hsm.yaml
+├── goreleaser.linux.yaml
+├── goreleaser.other.yaml
+├── helper
+│   ├── benchhelpers
+│   │   └── benchhelpers.go
+│   ├── buffer
+│   │   └── buffer.go
+│   ├── builtinplugins
+│   │   ├── registry.go
+│   │   └── registry_test.go
+│   ├── configutil
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── encrypt_decrypt.go
+│   │   ├── encrypt_decrypt_test.go
+│   │   ├── http_response_headers.go
+│   │   ├── kms.go
+│   │   ├── lint.go
+│   │   ├── listener.go
+│   │   ├── listener_test.go
+│   │   ├── merge.go
+│   │   ├── no_pkcs11.go
+│   │   ├── pkcs11.go
+│   │   ├── telemetry.go
+│   │   ├── telemetry_test.go
+│   │   ├── userlockout.go
+│   │   └── userlockout_test.go
+│   ├── dhutil
+│   │   ├── dhutil.go
+│   │   └── dhutil_test.go
+│   ├── fairshare
+│   │   ├── fairshare_testing_util.go
+│   │   ├── jobmanager.go
+│   │   ├── jobmanager_test.go
+│   │   ├── simple_job.go
+│   │   ├── workerpool.go
+│   │   └── workerpool_test.go
+│   ├── flag-kv
+│   │   ├── flag.go
+│   │   └── flag_test.go
+│   ├── flag-slice
+│   │   ├── flag.go
+│   │   └── flag_test.go
+│   ├── forwarding
+│   │   ├── types.pb.go
+│   │   ├── types.proto
+│   │   ├── util.go
+│   │   └── util_test.go
+│   ├── homedir
+│   │   ├── LICENSE
+│   │   ├── homedir.go
+│   │   └── homedir_test.go
+│   ├── hostutil
+│   │   ├── hostinfo.go
+│   │   ├── hostinfo_error.go
+│   │   ├── hostinfo_openbsd.go
+│   │   ├── hostinfo_test.go
+│   │   └── hostinfo_util.go
+│   ├── identity
+│   │   ├── identity.go
+│   │   ├── mfa
+│   │   │   ├── mfa.go
+│   │   │   ├── sentinel.go
+│   │   │   ├── types.pb.go
+│   │   │   └── types.proto
+│   │   ├── sentinel.go
+│   │   ├── types.pb.go
+│   │   └── types.proto
+│   ├── listenerutil
+│   │   ├── bufconn.go
+│   │   ├── listener.go
+│   │   ├── listener_test.go
+│   │   └── tls_acme.go
+│   ├── locking
+│   │   └── lock.go
+│   ├── logging
+│   │   ├── logfile.go
+│   │   ├── logfile_test.go
+│   │   ├── logger.go
+│   │   └── logger_test.go
+│   ├── metricsutil
+│   │   ├── bucket.go
+│   │   ├── bucket_test.go
+│   │   ├── gauge_process.go
+│   │   ├── gauge_process_test.go
+│   │   ├── metricsutil.go
+│   │   ├── metricsutil_test.go
+│   │   ├── wrapped_metrics.go
+│   │   └── wrapped_metrics_test.go
+│   ├── monitor
+│   │   ├── monitor.go
+│   │   └── monitor_test.go
+│   ├── namespace
+│   │   ├── namespace.go
+│   │   └── namespace_test.go
+│   ├── osutil
+│   │   ├── fileinfo.go
+│   │   ├── fileinfo_test.go
+│   │   ├── fileinfo_unix.go
+│   │   ├── fileinfo_unix_test.go
+│   │   └── fileinfo_windows.go
+│   ├── parseip
+│   │   ├── parseip.go
+│   │   └── parseip_test.go
+│   ├── pgpkeys
+│   │   ├── encrypt_decrypt.go
+│   │   ├── flag.go
+│   │   ├── flag_test.go
+│   │   ├── keybase.go
+│   │   ├── keybase_test.go
+│   │   └── test_keys.go
+│   ├── pluginutil
+│   │   └── oci
+│   │       └── downloader.go
+│   ├── policies
+│   │   ├── policies.go
+│   │   └── policies_test.go
+│   ├── profiles
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── env_source.go
+│   │   ├── env_source_test.go
+│   │   ├── file_source.go
+│   │   ├── file_source_test.go
+│   │   ├── history.go
+│   │   ├── history_test.go
+│   │   ├── profiles.go
+│   │   ├── profiles_test.go
+│   │   ├── request_source.go
+│   │   ├── request_source_test.go
+│   │   ├── response_source.go
+│   │   └── response_source_test.go
+│   ├── proxyutil
+│   │   └── proxyutil.go
+│   ├── random
+│   │   ├── parser.go
+│   │   ├── parser_test.go
+│   │   ├── random_api.go
+│   │   ├── registry.go
+│   │   ├── registry_test.go
+│   │   ├── rules.go
+│   │   ├── rules_test.go
+│   │   ├── serializing.go
+│   │   ├── serializing_test.go
+│   │   ├── string_generator.go
+│   │   └── string_generator_test.go
+│   ├── storagepacker
+│   │   ├── storagepacker.go
+│   │   ├── storagepacker_test.go
+│   │   ├── types.pb.go
+│   │   └── types.proto
+│   ├── stubbolt
+│   │   ├── go.mod
+│   │   └── stubbolt.go
+│   ├── testhelpers
+│   │   ├── cassandra
+│   │   │   └── cassandrahelper.go
+│   │   ├── certhelpers
+│   │   │   └── cert_helpers.go
+│   │   ├── corehelpers
+│   │   │   └── corehelpers.go
+│   │   ├── ldap
+│   │   │   └── ldaphelper.go
+│   │   ├── logical
+│   │   │   ├── testing.go
+│   │   │   └── testing_test.go
+│   │   ├── mysql
+│   │   │   └── mysqlhelper.go
+│   │   ├── pluginhelpers
+│   │   │   └── pluginhelpers.go
+│   │   ├── seal
+│   │   │   └── sealhelper.go
+│   │   ├── testhelpers.go
+│   │   └── teststorage
+│   │       ├── teststorage.go
+│   │       └── teststorage_reusable.go
+│   ├── timeutil
+│   │   ├── timeutil.go
+│   │   └── timeutil_test.go
+│   ├── tlsdebug
+│   │   ├── dummy_inject.go
+│   │   └── inject.go
+│   ├── useragent
+│   │   ├── useragent.go
+│   │   └── useragent_test.go
+│   └── versions
+│       ├── version.go
+│       └── version_test.go
+├── http
+│   ├── assets.go
+│   ├── assets_stub.go
+│   ├── auth_token_test.go
+│   ├── cors.go
+│   ├── custom_header_test.go
+│   ├── forwarded_for_test.go
+│   ├── forwarding_bench_test.go
+│   ├── forwarding_test.go
+│   ├── handler.go
+│   ├── handler_test.go
+│   ├── help.go
+│   ├── help_test.go
+│   ├── http_test.go
+│   ├── json.go
+│   ├── json_test.go
+│   ├── logical.go
+│   ├── logical_test.go
+│   ├── metrics.go
+│   ├── plugin_test.go
+│   ├── sys_*.go  (31 files)
+│   ├── testing.go
+│   ├── unwrapping_raw_body_test.go
+│   └── util.go
+├── main.go
+├── physical
+│   ├── crosstest
+│   │   └── cross_test.go
+│   ├── postgresql
+│   │   ├── postgresql.go
+│   │   ├── postgresql_test.go
+│   │   ├── testing.go
+│   │   └── transaction.go
+│   └── raft
+│       ├── bolt_32bit_test.go
+│       ├── bolt_64bit_test.go
+│       ├── bolt_linux.go
+│       ├── chunking_test.go
+│       ├── fsm.go
+│       ├── fsm_test.go
+│       ├── io.go
+│       ├── raft.go
+│       ├── raft_autopilot.go
+│       ├── raft_autopilot_delegate.go
+│       ├── raft_autopilot_promoter.go
+│       ├── raft_test.go
+│       ├── snapshot.go
+│       ├── snapshot_test.go
+│       ├── streamlayer.go
+│       ├── streamlayer_test.go
+│       ├── testing.go
+│       ├── transaction.go
+│       ├── types.pb.go
+│       ├── types.proto
+│       ├── varint.go
+│       ├── vars_32bit.go
+│       └── vars_64bit.go
+├── plugins
+│   └── database
+│       ├── cassandra
+│       │   ├── cassandra-database-plugin
+│       │   │   └── main.go
+│       │   ├── cassandra.go
+│       │   ├── cassandra_test.go
+│       │   ├── connection_producer.go
+│       │   ├── connection_producer_test.go
+│       │   ├── test-fixtures
+│       │   │   ├── no_tls
+│       │   │   │   └── cassandra.yaml
+│       │   │   └── with_tls
+│       │   │       ├── bad_ca.pem
+│       │   │       ├── ca.pem
+│       │   │       ├── ca.pem.json
+│       │   │       ├── cassandra.yaml
+│       │   │       ├── cqlshrc
+│       │   │       └── stores
+│       │   │           ├── keystore
+│       │   │           ├── server.p12
+│       │   │           └── truststore
+│       │   └── tls.go
+│       ├── influxdb
+│       │   ├── connection_producer.go
+│       │   ├── influxdb-database-plugin
+│       │   │   └── main.go
+│       │   ├── influxdb.go
+│       │   └── influxdb_test.go
+│       ├── mysql
+│       │   ├── connection_producer.go
+│       │   ├── connection_producer_test.go
+│       │   ├── mysql-database-plugin
+│       │   │   └── main.go
+│       │   ├── mysql-legacy-database-plugin
+│       │   │   └── main.go
+│       │   ├── mysql.go
+│       │   └── mysql_test.go
+│       ├── postgresql
+│       │   ├── passwordauthentication.go
+│       │   ├── postgresql-database-plugin
+│       │   │   └── main.go
+│       │   ├── postgresql.go
+│       │   ├── postgresql_test.go
+│       │   └── scram
+│       │       ├── LICENSE
+│       │       ├── scram.go
+│       │       └── scram_test.go
+│       └── valkey
+│           ├── Makefile
+│           ├── README.md
+│           ├── bootstrap
+│           │   └── terraform
+│           │       ├── docker-compose.yml
+│           │       └── redis.tf
+│           ├── connection_producer.go
+│           ├── scripts
+│           │   ├── configure.sh
+│           │   └── gofmtcheck.sh
+│           ├── valkey-database-plugin
+│           │   └── main.go
+│           ├── valkey.go
+│           └── valkey_test.go
+├── scripts
+│   ├── assetcheck.sh
+│   ├── build.sh
+│   ├── coverage.sh
+│   ├── docker
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.ui
+│   │   └── docker-entrypoint.sh
+│   ├── gen_openapi.sh
+│   ├── gofmtcheck.sh
+│   ├── goversioncheck.sh
+│   ├── nightly_tag.sh
+│   ├── protocversioncheck.sh
+│   ├── sync-deps-gkw.sh
+│   └── sync-deps.sh
+├── sdk
+│   ├── README.md
+│   ├── database
+│   │   ├── dbplugin
+│   │   │   ├── README.md
+│   │   │   ├── client.go
+│   │   │   ├── database.pb.go
+│   │   │   ├── database.proto
+│   │   │   ├── database_grpc.pb.go
+│   │   │   ├── databasemiddleware.go
+│   │   │   ├── grpc_transport.go
+│   │   │   ├── plugin.go
+│   │   │   ├── server.go
+│   │   │   └── v5
+│   │   │       ├── conversions_test.go
+│   │   │       ├── database.go
+│   │   │       ├── grpc_client.go
+│   │   │       ├── grpc_client_test.go
+│   │   │       ├── grpc_database_plugin.go
+│   │   │       ├── grpc_server.go
+│   │   │       ├── grpc_server_test.go
+│   │   │       ├── marshalling.go
+│   │   │       ├── middleware.go
+│   │   │       ├── middleware_test.go
+│   │   │       ├── plugin_client.go
+│   │   │       ├── plugin_client_test.go
+│   │   │       ├── plugin_factory.go
+│   │   │       ├── plugin_server.go
+│   │   │       ├── proto
+│   │   │       │   ├── database.pb.go
+│   │   │       │   ├── database.proto
+│   │   │       │   └── database_grpc.pb.go
+│   │   │       └── testing
+│   │   │           └── test_helpers.go
+│   │   └── helper
+│   │       ├── connutil
+│   │       │   ├── connutil.go
+│   │       │   ├── sql.go
+│   │       │   └── sql_test.go
+│   │       ├── credsutil
+│   │       │   ├── credsutil.go
+│   │       │   ├── credsutil_test.go
+│   │       │   ├── sql.go
+│   │       │   ├── usernames.go
+│   │       │   └── usernames_test.go
+│   │       └── dbutil
+│   │           ├── dbutil.go
+│   │           ├── parseurl.go
+│   │           └── quoteidentifier.go
+│   ├── framework
+│   │   ├── backend.go
+│   │   ├── backend_test.go
+│   │   ├── field_data.go
+│   │   ├── field_data_test.go
+│   │   ├── field_type.go
+│   │   ├── filter.go
+│   │   ├── identity.go
+│   │   ├── identity_test.go
+│   │   ├── lease.go
+│   │   ├── lease_test.go
+│   │   ├── openapi.go
+│   │   ├── openapi_test.go
+│   │   ├── path.go
+│   │   ├── path_map.go
+│   │   ├── path_map_test.go
+│   │   ├── path_struct.go
+│   │   ├── path_struct_test.go
+│   │   ├── path_test.go
+│   │   ├── policy_map.go
+│   │   ├── policy_map_test.go
+│   │   ├── secret.go
+│   │   ├── secret_test.go
+│   │   ├── template.go
+│   │   ├── testdata
+│   │   │   ├── legacy.json
+│   │   │   ├── operations.json
+│   │   │   ├── operations_list.json
+│   │   │   └── responses.json
+│   │   ├── testing.go
+│   │   ├── wal.go
+│   │   └── wal_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── helper
+│   │   ├── authmetadata
+│   │   │   ├── auth_metadata.go
+│   │   │   ├── auth_metadata_acc_test.go
+│   │   │   └── auth_metadata_test.go
+│   │   ├── cel
+│   │   │   ├── helpers.go
+│   │   │   ├── helpers_test.go
+│   │   │   └── program.go
+│   │   ├── certutil
+│   │   │   ├── certutil_test.go
+│   │   │   ├── helpers.go
+│   │   │   └── types.go
+│   │   ├── cidrutil
+│   │   │   ├── cidr.go
+│   │   │   └── cidr_test.go
+│   │   ├── compressutil
+│   │   │   ├── compress.go
+│   │   │   └── compress_test.go
+│   │   ├── consts
+│   │   │   ├── agent.go
+│   │   │   ├── consts.go
+│   │   │   ├── deprecation_status.go
+│   │   │   ├── error.go
+│   │   │   ├── jwt.go
+│   │   │   ├── plugin_types.go
+│   │   │   ├── proxy.go
+│   │   │   ├── replication.go
+│   │   │   └── token_consts.go
+│   │   ├── cryptoutil
+│   │   │   ├── cryptoutil.go
+│   │   │   └── cryptoutil_test.go
+│   │   ├── custommetadata
+│   │   │   ├── custom_metadata.go
+│   │   │   └── custom_metadata_test.go
+│   │   ├── dbtxn
+│   │   │   └── dbtxn.go
+│   │   ├── docker
+│   │   │   └── testhelpers.go
+│   │   ├── errutil
+│   │   │   └── error.go
+│   │   ├── hclutil
+│   │   │   └── hcl.go
+│   │   ├── identitytpl
+│   │   │   ├── templating.go
+│   │   │   └── templating_test.go
+│   │   ├── jsonutil
+│   │   │   ├── json.go
+│   │   │   └── json_test.go
+│   │   ├── kdf
+│   │   │   ├── kdf.go
+│   │   │   └── kdf_test.go
+│   │   ├── keysutil
+│   │   │   ├── cache.go
+│   │   │   ├── consts.go
+│   │   │   ├── encrypted_key_storage.go
+│   │   │   ├── encrypted_key_storage_test.go
+│   │   │   ├── lock_manager.go
+│   │   │   ├── policy.go
+│   │   │   ├── policy_test.go
+│   │   │   ├── transit_lru.go
+│   │   │   ├── transit_syncmap.go
+│   │   │   └── util.go
+│   │   ├── ldaputil
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── config.go
+│   │   │   ├── config_test.go
+│   │   │   ├── connection.go
+│   │   │   └── ldap.go
+│   │   ├── locksutil
+│   │   │   ├── locks.go
+│   │   │   └── locks_test.go
+│   │   ├── logging
+│   │   │   ├── logging.go
+│   │   │   └── logging_test.go
+│   │   ├── ocsp
+│   │   │   ├── client.go
+│   │   │   └── ocsp_test.go
+│   │   ├── pathmanager
+│   │   │   ├── pathmanager.go
+│   │   │   └── pathmanager_test.go
+│   │   ├── pluginutil
+│   │   │   ├── env.go
+│   │   │   ├── multiplexing.go
+│   │   │   ├── multiplexing.pb.go
+│   │   │   ├── multiplexing.proto
+│   │   │   ├── multiplexing_grpc.pb.go
+│   │   │   ├── multiplexing_test.go
+│   │   │   ├── run_config.go
+│   │   │   ├── run_config_test.go
+│   │   │   ├── runner.go
+│   │   │   └── tls.go
+│   │   ├── pointerutil
+│   │   │   └── pointer.go
+│   │   ├── policyutil
+│   │   │   ├── policyutil.go
+│   │   │   └── policyutil_test.go
+│   │   ├── roottoken
+│   │   │   ├── decode.go
+│   │   │   ├── encode.go
+│   │   │   ├── encode_test.go
+│   │   │   ├── otp.go
+│   │   │   └── otp_test.go
+│   │   ├── salt
+│   │   │   ├── salt.go
+│   │   │   └── salt_test.go
+│   │   ├── shamir
+│   │   │   ├── shamir.go
+│   │   │   └── shamir_test.go
+│   │   ├── stepwise
+│   │   │   ├── environments
+│   │   │   │   └── docker
+│   │   │   │       ├── environment.go
+│   │   │   │       └── runner.go
+│   │   │   ├── helpers.go
+│   │   │   ├── stepwise.go
+│   │   │   └── stepwise_test.go
+│   │   ├── structtomap
+│   │   │   ├── structtomap.go
+│   │   │   └── structtomap_test.go
+│   │   ├── template
+│   │   │   ├── funcs.go
+│   │   │   ├── funcs_test.go
+│   │   │   ├── template.go
+│   │   │   └── template_test.go
+│   │   ├── testcluster
+│   │   │   ├── consts.go
+│   │   │   ├── docker
+│   │   │   │   ├── cert.go
+│   │   │   │   └── environment.go
+│   │   │   ├── exec.go
+│   │   │   ├── logging.go
+│   │   │   ├── types.go
+│   │   │   └── util.go
+│   │   ├── testhelpers
+│   │   │   ├── output.go
+│   │   │   ├── output_test.go
+│   │   │   ├── postgresql
+│   │   │   │   └── postgresqlhelper.go
+│   │   │   └── schema
+│   │   │       ├── response_validation.go
+│   │   │       └── response_validation_test.go
+│   │   ├── tokenutil
+│   │   │   └── tokenutil.go
+│   │   ├── useragent
+│   │   │   ├── useragent.go
+│   │   │   └── useragent_test.go
+│   │   ├── wrapping
+│   │   │   └── wrapinfo.go
+│   │   └── xor
+│   │       ├── xor.go
+│   │       └── xor_test.go
+│   ├── logical
+│   │   ├── audit.go
+│   │   ├── auth.go
+│   │   ├── connection.go
+│   │   ├── error.go
+│   │   ├── identity.pb.go
+│   │   ├── identity.proto
+│   │   ├── lease.go
+│   │   ├── lease_test.go
+│   │   ├── logical.go
+│   │   ├── logical_storage.go
+│   │   ├── logical_storage_test.go
+│   │   ├── managed_key.go
+│   │   ├── plugin.pb.go
+│   │   ├── plugin.proto
+│   │   ├── request.go
+│   │   ├── response.go
+│   │   ├── response_util.go
+│   │   ├── response_util_test.go
+│   │   ├── secret.go
+│   │   ├── storage.go
+│   │   ├── storage_inmem.go
+│   │   ├── storage_inmem_test.go
+│   │   ├── storage_test.go
+│   │   ├── storage_transactions.go
+│   │   ├── storage_view.go
+│   │   ├── system_view.go
+│   │   ├── testing.go
+│   │   ├── token.go
+│   │   ├── token_test.go
+│   │   ├── translate_response.go
+│   │   ├── version.pb.go
+│   │   ├── version.proto
+│   │   └── version_grpc.pb.go
+│   ├── physical
+│   │   ├── cache.go
+│   │   ├── encoding.go
+│   │   ├── entry.go
+│   │   ├── error.go
+│   │   ├── file
+│   │   │   ├── file.go
+│   │   │   └── file_test.go
+│   │   ├── inmem
+│   │   │   ├── cache_test.go
+│   │   │   ├── inmem.go
+│   │   │   ├── inmem_ha.go
+│   │   │   ├── inmem_ha_test.go
+│   │   │   ├── inmem_test.go
+│   │   │   └── physical_view_test.go
+│   │   ├── latency.go
+│   │   ├── physical.go
+│   │   ├── physical_access.go
+│   │   ├── physical_view.go
+│   │   ├── testing.go
+│   │   └── transactions.go
+│   ├── plugin
+│   │   ├── backend.go
+│   │   ├── grpc_backend.go
+│   │   ├── grpc_backend_client.go
+│   │   ├── grpc_backend_server.go
+│   │   ├── grpc_backend_test.go
+│   │   ├── grpc_storage.go
+│   │   ├── grpc_system.go
+│   │   ├── grpc_system_test.go
+│   │   ├── logger.go
+│   │   ├── logger_test.go
+│   │   ├── middleware.go
+│   │   ├── mock
+│   │   │   ├── backend.go
+│   │   │   ├── backend_test.go
+│   │   │   ├── path_errors.go
+│   │   │   ├── path_internal.go
+│   │   │   ├── path_kv.go
+│   │   │   ├── path_raw.go
+│   │   │   └── path_special.go
+│   │   ├── pb
+│   │   │   ├── backend.pb.go
+│   │   │   ├── backend.proto
+│   │   │   ├── backend_grpc.pb.go
+│   │   │   ├── translation.go
+│   │   │   └── translation_test.go
+│   │   ├── plugin.go
+│   │   ├── plugin_v5.go
+│   │   ├── serve.go
+│   │   └── storage_test.go
+│   └── queue
+│       ├── README.md
+│       ├── priority_queue.go
+│       └── priority_queue_test.go
+├── serviceregistration
+│   ├── kubernetes
+│   │   ├── client
+│   │   │   ├── client.go
+│   │   │   ├── client_test.go
+│   │   │   ├── cmd
+│   │   │   │   └── kubeclient
+│   │   │   │       └── main.go
+│   │   │   └── config.go
+│   │   ├── retry_handler.go
+│   │   ├── retry_handler_test.go
+│   │   ├── service_registration.go
+│   │   ├── service_registration_test.go
+│   │   └── testing
+│   │       ├── README.md
+│   │       ├── ca.crt
+│   │       ├── resp-get-pod.json
+│   │       ├── resp-not-found.json
+│   │       ├── resp-update-pod.json
+│   │       ├── testserver.go
+│   │       └── token
+│   └── service_registration.go
+├── tools
+│   ├── go.mod
+│   ├── go.sum
+│   ├── semgrep
+│   │   ├── ci
+│   │   │   ├── bad-multierror-append.yml
+│   │   │   ├── bad-nil-guard.yml
+│   │   │   ├── ed25519-pointer.yml
+│   │   │   ├── error-shadowing.yml
+│   │   │   ├── fmt-printf.yml
+│   │   │   ├── hashsum.yml
+│   │   │   ├── hmac-bytes.yml
+│   │   │   ├── hmac-hash.yml
+│   │   │   ├── logger-format-string.yml
+│   │   │   ├── loop-time-after.yml
+│   │   │   ├── loopclosure.yml
+│   │   │   ├── no-nil-check.yml
+│   │   │   ├── oddifsequence.yml
+│   │   │   ├── paths-with-callbacks-and-operations.yml
+│   │   │   ├── paths-with-callbacks.yml
+│   │   │   ├── return-nil-error.yml
+│   │   │   ├── return-nil.yml
+│   │   │   ├── splitn-1.yml
+│   │   │   ├── time-parse-duration.yml
+│   │   │   ├── wrongerrcall.yml
+│   │   │   └── wronglock.yml
+│   │   ├── hostport.yml
+│   │   ├── joinpath.yml
+│   │   ├── lock-not-unlocked-on-return.yml
+│   │   ├── logger-sprintf.yml
+│   │   ├── physical-storage.yml
+│   │   ├── replication-has-state.yml
+│   │   └── self-equals.yml
+│   └── tools.go
+├── ui
+│   ├── .browserslistrc
+│   ├── .editorconfig
+│   ├── .ember-cli
+│   ├── .env
+│   ├── .gitignore
+│   ├── .prettierignore
+│   ├── .prettierrc.js
+│   ├── .template-lintrc.js
+│   ├── .watchmanconfig
+│   ├── .yarn
+│   │   └── releases
+│   │       └── yarn-4.12.0.cjs
+│   ├── .yarnrc
+│   ├── .yarnrc.yml
+│   ├── MODULE_REPORT.md
+│   ├── Makefile
+│   ├── README.md
+│   ├── app
+│   │   ├── adapters
+│   │   │   ├── application.js
+│   │   │   ├── auth-config
+│   │   │   │   ├── _base.js
+│   │   │   │   ├── aws
+│   │   │   │   │   ├── client.js
+│   │   │   │   │   ├── identity-accesslist.js
+│   │   │   │   │   └── roletag-denylist.js
+│   │   │   │   ├── azure.js
+│   │   │   │   ├── jwt.js
+│   │   │   │   ├── kubernetes.js
+│   │   │   │   ├── ldap.js
+│   │   │   │   ├── oidc.js
+│   │   │   │   └── radius.js
+│   │   │   ├── auth-method.js
+│   │   │   ├── aws-credential.js
+│   │   │   ├── capabilities.js
+│   │   │   ├── clients
+│   │   │   │   ├── activity.js
+│   │   │   │   ├── config.js
+│   │   │   │   └── version-history.js
+│   │   │   ├── cluster.js
+│   │   │   ├── console.js
+│   │   │   ├── database
+│   │   │   │   ├── connection.js
+│   │   │   │   ├── credential.js
+│   │   │   │   └── role.js
+│   │   │   ├── generated-item-list.js
+│   │   │   ├── identity
+│   │   │   │   ├── base.js
+│   │   │   │   ├── entity-alias.js
+│   │   │   │   ├── entity-merge.js
+│   │   │   │   ├── entity.js
+│   │   │   │   ├── group-alias.js
+│   │   │   │   └── group.js
+│   │   │   ├── keymgmt
+│   │   │   │   ├── key.js
+│   │   │   │   └── provider.js
+│   │   │   ├── kubernetes
+│   │   │   │   ├── config.js
+│   │   │   │   └── role.js
+│   │   │   ├── lease.js
+│   │   │   ├── mfa-login-enforcement.js
+│   │   │   ├── mfa-method.js
+│   │   │   ├── mfa-setup.js
+│   │   │   ├── named-path.js
+│   │   │   ├── namespace.js
+│   │   │   ├── node.js
+│   │   │   ├── oidc
+│   │   │   │   ├── assignment.js
+│   │   │   │   ├── client.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── provider.js
+│   │   │   │   └── scope.js
+│   │   │   ├── permissions.js
+│   │   │   ├── pki
+│   │   │   │   ├── action.js
+│   │   │   │   ├── cert.js
+│   │   │   │   ├── certificate
+│   │   │   │   │   ├── base.js
+│   │   │   │   │   ├── generate.js
+│   │   │   │   │   └── sign.js
+│   │   │   │   ├── config
+│   │   │   │   │   ├── acme.js
+│   │   │   │   │   ├── base.js
+│   │   │   │   │   ├── cluster.js
+│   │   │   │   │   ├── crl.js
+│   │   │   │   │   └── urls.js
+│   │   │   │   ├── issuer.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── role.js
+│   │   │   │   ├── sign-intermediate.js
+│   │   │   │   └── tidy.js
+│   │   │   ├── policy
+│   │   │   │   ├── acl.js
+│   │   │   │   ├── egp.js
+│   │   │   │   └── rgp.js
+│   │   │   ├── policy.js
+│   │   │   ├── raft-join.js
+│   │   │   ├── role-aws.js
+│   │   │   ├── role-jwt.js
+│   │   │   ├── role-ssh.js
+│   │   │   ├── secret-engine.js
+│   │   │   ├── secret-v2-version.js
+│   │   │   ├── secret-v2.js
+│   │   │   ├── secret.js
+│   │   │   ├── server.js
+│   │   │   ├── ssh-otp-credential.js
+│   │   │   ├── ssh-sign.js
+│   │   │   ├── ssh.js
+│   │   │   ├── tools.js
+│   │   │   └── transit-key.js
+│   │   ├── app.js
+│   │   ├── breakpoints.js
+│   │   ├── components
+│   │   │   ├── .gitkeep
+│   │   │   ├── auth-config-form
+│   │   │   │   ├── config.js
+│   │   │   │   └── options.js
+│   │   │   ├── auth-form-options.js
+│   │   │   ├── auth-form.js
+│   │   │   ├── auth-jwt.js
+│   │   │   ├── b64-toggle.js
+│   │   │   ├── basic-dropdown
+│   │   │   │   └── trigger.js
+│   │   │   ├── calendar-widget.js
+│   │   │   ├── configure-aws-secret.js
+│   │   │   ├── configure-ssh-secret.js
+│   │   │   ├── console
+│   │   │   │   ├── command-input.js
+│   │   │   │   ├── log-json.js
+│   │   │   │   ├── log-list.js
+│   │   │   │   ├── log-object.js
+│   │   │   │   ├── log-text.js
+│   │   │   │   ├── output-log.js
+│   │   │   │   └── ui-panel.js
+│   │   │   ├── database-connection.js
+│   │   │   ├── database-role-edit.js
+│   │   │   ├── database-role-setting-form.js
+│   │   │   ├── date-dropdown.js
+│   │   │   ├── diff-version-selector.js
+│   │   │   ├── file-to-array-buffer.js
+│   │   │   ├── flash-message.js
+│   │   │   ├── generate-credentials-database.js
+│   │   │   ├── generate-credentials.js
+│   │   │   ├── generated-item-list.js
+│   │   │   ├── generated-item.js
+│   │   │   ├── get-credentials-card.js
+│   │   │   ├── hover-copy-button.js
+│   │   │   ├── identity
+│   │   │   │   ├── _popup-base.js
+│   │   │   │   ├── edit-form.js
+│   │   │   │   ├── entity-nav.js
+│   │   │   │   ├── item-details.js
+│   │   │   │   ├── lookup-input.js
+│   │   │   │   ├── popup-alias.js
+│   │   │   │   ├── popup-members.js
+│   │   │   │   ├── popup-metadata.js
+│   │   │   │   └── popup-policy.js
+│   │   │   ├── key-version-select.js
+│   │   │   ├── keymgmt
+│   │   │   │   ├── distribute.js
+│   │   │   │   ├── key-edit.js
+│   │   │   │   └── provider-edit.js
+│   │   │   ├── logo-edition.js
+│   │   │   ├── mfa
+│   │   │   │   ├── method-form.js
+│   │   │   │   ├── mfa-form.js
+│   │   │   │   ├── mfa-login-enforcement-form.js
+│   │   │   │   ├── mfa-login-enforcement-header.js
+│   │   │   │   ├── mfa-setup-step-one.js
+│   │   │   │   └── mfa-setup-step-two.js
+│   │   │   ├── modal-form
+│   │   │   │   ├── FYI.md
+│   │   │   │   ├── oidc-assignment-template.hbs
+│   │   │   │   ├── oidc-assignment-template.js
+│   │   │   │   ├── policy-template.hbs
+│   │   │   │   └── policy-template.js
+│   │   │   ├── mount-accessor-select.js
+│   │   │   ├── mount-backend
+│   │   │   │   ├── type-form.hbs
+│   │   │   │   └── type-form.js
+│   │   │   ├── mount-backend-form.js
+│   │   │   ├── namespace-link.js
+│   │   │   ├── namespace-picker.js
+│   │   │   ├── not-found.js
+│   │   │   ├── oidc
+│   │   │   │   ├── assignment-form.js
+│   │   │   │   ├── client-form.js
+│   │   │   │   ├── key-form.js
+│   │   │   │   ├── provider-form.js
+│   │   │   │   └── scope-form.js
+│   │   │   ├── oidc-consent-block.js
+│   │   │   ├── outer-html.js
+│   │   │   ├── pagination-controls.js
+│   │   │   ├── pgp-file.js
+│   │   │   ├── pgp-list.js
+│   │   │   ├── policy-form.hbs
+│   │   │   ├── policy-form.js
+│   │   │   ├── radial-progress.js
+│   │   │   ├── raft-join.js
+│   │   │   ├── raft-storage-overview.js
+│   │   │   ├── raft-storage-restore.js
+│   │   │   ├── regex-validator.hbs
+│   │   │   ├── regex-validator.js
+│   │   │   ├── role-aws-edit.js
+│   │   │   ├── role-edit.js
+│   │   │   ├── role-ssh-edit.js
+│   │   │   ├── secret-create-or-update.js
+│   │   │   ├── secret-delete-menu.js
+│   │   │   ├── secret-edit-metadata.js
+│   │   │   ├── secret-edit-toolbar.js
+│   │   │   ├── secret-edit.js
+│   │   │   ├── secret-link.js
+│   │   │   ├── secret-list
+│   │   │   │   └── database-list-item.js
+│   │   │   ├── secret-version-menu.js
+│   │   │   ├── section-tabs.js
+│   │   │   ├── selectable-card.js
+│   │   │   ├── shamir-progress.js
+│   │   │   ├── sidebar
+│   │   │   │   ├── frame.hbs
+│   │   │   │   ├── frame.js
+│   │   │   │   ├── header
+│   │   │   │   │   ├── home-link.hbs
+│   │   │   │   │   └── home-link.ts
+│   │   │   │   ├── nav
+│   │   │   │   │   ├── access.hbs
+│   │   │   │   │   ├── cluster.hbs
+│   │   │   │   │   ├── cluster.js
+│   │   │   │   │   ├── policies.hbs
+│   │   │   │   │   └── tools.hbs
+│   │   │   │   ├── user-menu.hbs
+│   │   │   │   └── user-menu.js
+│   │   │   ├── splash-page
+│   │   │   │   ├── splash-content.js
+│   │   │   │   ├── splash-footer.js
+│   │   │   │   └── splash-header.js
+│   │   │   ├── splash-page.js
+│   │   │   ├── token-expire-warning.js
+│   │   │   ├── tool-actions-form.js
+│   │   │   ├── tool-hash.js
+│   │   │   ├── tool-lookup.js
+│   │   │   ├── tool-random.js
+│   │   │   ├── tool-rewrap.js
+│   │   │   ├── tool-unwrap.js
+│   │   │   ├── tool-wrap.js
+│   │   │   ├── toolbar-secret-link.js
+│   │   │   ├── transit-edit.js
+│   │   │   ├── transit-key-action
+│   │   │   │   └── export.js
+│   │   │   ├── transit-key-actions.js
+│   │   │   ├── ui-wizard.js
+│   │   │   ├── wizard
+│   │   │   │   ├── features-selection.js
+│   │   │   │   ├── mounts-wizard.js
+│   │   │   │   └── secrets-keymgmt.js
+│   │   │   ├── wizard-content.js
+│   │   │   ├── wrap-ttl.hbs
+│   │   │   └── wrap-ttl.js
+│   │   ├── config
+│   │   │   └── environment.d.ts
+│   │   ├── controllers
+│   │   │   ├── .gitkeep
+│   │   │   ├── application.js
+│   │   │   ├── vault
+│   │   │   │   ├── cluster
+│   │   │   │   │   ├── access
+│   │   │   │   │   │   ├── identity
+│   │   │   │   │   │   │   ├── aliases
+│   │   │   │   │   │   │   │   ├── add.js
+│   │   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   └── merge.js
+│   │   │   │   │   │   ├── leases
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── list-root.js
+│   │   │   │   │   │   │   ├── list.js
+│   │   │   │   │   │   │   └── show.js
+│   │   │   │   │   │   ├── method
+│   │   │   │   │   │   │   └── item
+│   │   │   │   │   │   │       └── list.js
+│   │   │   │   │   │   ├── methods.js
+│   │   │   │   │   │   ├── mfa
+│   │   │   │   │   │   │   ├── enforcements
+│   │   │   │   │   │   │   │   ├── enforcement
+│   │   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   ├── methods
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   └── method
+│   │   │   │   │   │   │   │       └── index.js
+│   │   │   │   │   │   │   └── methods.js
+│   │   │   │   │   │   ├── namespaces
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── oidc
+│   │   │   │   │   │   │   ├── assignments
+│   │   │   │   │   │   │   │   └── assignment
+│   │   │   │   │   │   │   │       └── details.js
+│   │   │   │   │   │   │   ├── clients
+│   │   │   │   │   │   │   │   ├── client
+│   │   │   │   │   │   │   │   │   └── details.js
+│   │   │   │   │   │   │   │   └── client.js
+│   │   │   │   │   │   │   ├── keys
+│   │   │   │   │   │   │   │   ├── key
+│   │   │   │   │   │   │   │   │   └── details.js
+│   │   │   │   │   │   │   │   └── key.js
+│   │   │   │   │   │   │   ├── providers
+│   │   │   │   │   │   │   │   ├── provider
+│   │   │   │   │   │   │   │   │   └── details.js
+│   │   │   │   │   │   │   │   └── provider.js
+│   │   │   │   │   │   │   └── scopes
+│   │   │   │   │   │   │       └── scope
+│   │   │   │   │   │   │           └── details.js
+│   │   │   │   │   │   └── oidc.js
+│   │   │   │   │   ├── auth.js
+│   │   │   │   │   ├── init.js
+│   │   │   │   │   ├── mfa-setup.js
+│   │   │   │   │   ├── oidc-callback.js
+│   │   │   │   │   ├── oidc-provider-ns.js
+│   │   │   │   │   ├── oidc-provider.js
+│   │   │   │   │   ├── policies
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── policy
+│   │   │   │   │   │   └── edit.js
+│   │   │   │   │   ├── secrets
+│   │   │   │   │   │   ├── backend
+│   │   │   │   │   │   │   ├── actions-root.js
+│   │   │   │   │   │   │   ├── actions.js
+│   │   │   │   │   │   │   ├── configuration.js
+│   │   │   │   │   │   │   ├── create-root.js
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   ├── credentials-root.js
+│   │   │   │   │   │   │   ├── credentials.js
+│   │   │   │   │   │   │   ├── diff.js
+│   │   │   │   │   │   │   ├── edit-root.js
+│   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   ├── list-root.js
+│   │   │   │   │   │   │   ├── list.js
+│   │   │   │   │   │   │   ├── metadata.js
+│   │   │   │   │   │   │   ├── show-root.js
+│   │   │   │   │   │   │   ├── show.js
+│   │   │   │   │   │   │   ├── sign-root.js
+│   │   │   │   │   │   │   └── sign.js
+│   │   │   │   │   │   ├── backend.js
+│   │   │   │   │   │   └── backends.js
+│   │   │   │   │   ├── settings
+│   │   │   │   │   │   ├── auth
+│   │   │   │   │   │   │   └── enable.js
+│   │   │   │   │   │   ├── configure-secret-backend.js
+│   │   │   │   │   │   ├── mount-secret-backend.js
+│   │   │   │   │   │   └── seal.js
+│   │   │   │   │   ├── settings.js
+│   │   │   │   │   └── unseal.js
+│   │   │   │   └── cluster.js
+│   │   │   └── vault.js
+│   │   ├── decorators
+│   │   │   ├── model-expanded-attributes.js
+│   │   │   ├── model-form-fields.js
+│   │   │   └── model-validations.js
+│   │   ├── helpers
+│   │   │   ├── -date-base.js
+│   │   │   ├── .gitkeep
+│   │   │   ├── add-to-array.js
+│   │   │   ├── add.js
+│   │   │   ├── await.js
+│   │   │   ├── aws-regions.js
+│   │   │   ├── coerce-eq.js
+│   │   │   ├── date-from-now.js
+│   │   │   ├── filter-wildcard.js
+│   │   │   ├── has-permission.js
+│   │   │   ├── is-after.js
+│   │   │   ├── is-before.js
+│   │   │   ├── is-empty-value.js
+│   │   │   ├── is-wildcard-string.js
+│   │   │   ├── jsonify.js
+│   │   │   ├── mountable-auth-methods.js
+│   │   │   ├── mountable-secret-engines.js
+│   │   │   ├── multi-line-join.js
+│   │   │   ├── nav-to-route.js
+│   │   │   ├── now.js
+│   │   │   ├── number-to-word.js
+│   │   │   ├── remove-from-array.js
+│   │   │   ├── route-params-for.js
+│   │   │   ├── secret-query-params.js
+│   │   │   ├── sha2-digest-sizes.js
+│   │   │   ├── split-object.js
+│   │   │   ├── stringify.js
+│   │   │   ├── sub.js
+│   │   │   ├── supported-auth-backends.js
+│   │   │   ├── supported-managed-auth-backends.js
+│   │   │   ├── supported-secret-backends.js
+│   │   │   ├── tabs-for-auth-section.js
+│   │   │   ├── tabs-for-identity-show.js
+│   │   │   ├── to-label.js
+│   │   │   ├── tools-actions.js
+│   │   │   └── wizard-constants.js
+│   │   ├── index.html
+│   │   ├── initializers
+│   │   │   ├── deprecation-filter.js
+│   │   │   ├── disable-ember-inspector.js
+│   │   │   ├── ember-data-identifiers.js
+│   │   │   └── enable-engines.js
+│   │   ├── instance-initializers
+│   │   │   └── track-csp-event.js
+│   │   ├── lib
+│   │   │   ├── arg-tokenizer.js
+│   │   │   ├── attach-capabilities.js
+│   │   │   ├── console-helpers.ts
+│   │   │   ├── key-utils.js
+│   │   │   ├── keycodes.js
+│   │   │   ├── kv-object.js
+│   │   │   ├── local-storage.js
+│   │   │   ├── memory-storage.js
+│   │   │   ├── path-to-tree.js
+│   │   │   ├── route-paths.js
+│   │   │   └── token-storage.js
+│   │   ├── machines
+│   │   │   ├── auth-machine.js
+│   │   │   ├── policies-machine.js
+│   │   │   ├── secrets-machine.js
+│   │   │   ├── tools-machine.js
+│   │   │   └── tutorial-machine.js
+│   │   ├── macros
+│   │   │   ├── identity-capabilities.js
+│   │   │   ├── lazy-capabilities.js
+│   │   │   └── maybe-query-record.js
+│   │   ├── mixins
+│   │   │   ├── backend-crumb.js
+│   │   │   ├── cluster-route.js
+│   │   │   ├── focus-on-insert.js
+│   │   │   ├── key-mixin.js
+│   │   │   ├── model-boundary-route.js
+│   │   │   ├── unload-model-route.js
+│   │   │   ├── unsaved-model-route.js
+│   │   │   └── with-nav-to-nearest-ancestor.js
+│   │   ├── models
+│   │   │   ├── .gitkeep
+│   │   │   ├── auth-config
+│   │   │   │   ├── approle.js
+│   │   │   │   ├── aws
+│   │   │   │   │   ├── client.js
+│   │   │   │   │   ├── identity-accesslist.js
+│   │   │   │   │   ├── roletag-denylist.js
+│   │   │   │   │   └── tidy.js
+│   │   │   │   ├── azure.js
+│   │   │   │   ├── cert.js
+│   │   │   │   ├── jwt.js
+│   │   │   │   ├── kubernetes.js
+│   │   │   │   ├── ldap.js
+│   │   │   │   ├── oidc.js
+│   │   │   │   ├── radius.js
+│   │   │   │   └── userpass.js
+│   │   │   ├── auth-config.js
+│   │   │   ├── auth-method.js
+│   │   │   ├── aws-credential.js
+│   │   │   ├── capabilities.js
+│   │   │   ├── cluster.js
+│   │   │   ├── database
+│   │   │   │   ├── connection.js
+│   │   │   │   ├── credential.js
+│   │   │   │   └── role.js
+│   │   │   ├── identity
+│   │   │   │   ├── _base.js
+│   │   │   │   ├── entity-alias.js
+│   │   │   │   ├── entity-merge.js
+│   │   │   │   ├── entity.js
+│   │   │   │   ├── group-alias.js
+│   │   │   │   └── group.js
+│   │   │   ├── keymgmt
+│   │   │   │   ├── key.js
+│   │   │   │   └── provider.js
+│   │   │   ├── kubernetes
+│   │   │   │   ├── config.js
+│   │   │   │   └── role.js
+│   │   │   ├── lease.js
+│   │   │   ├── license.js
+│   │   │   ├── mfa-login-enforcement.js
+│   │   │   ├── mfa-method.js
+│   │   │   ├── mount-config.js
+│   │   │   ├── namespace.js
+│   │   │   ├── node.js
+│   │   │   ├── oidc
+│   │   │   │   ├── assignment.js
+│   │   │   │   ├── client.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── provider.js
+│   │   │   │   └── scope.js
+│   │   │   ├── path-filter-config.js
+│   │   │   ├── pki
+│   │   │   │   ├── action.js
+│   │   │   │   ├── certificate
+│   │   │   │   │   ├── base.js
+│   │   │   │   │   ├── generate.js
+│   │   │   │   │   └── sign.js
+│   │   │   │   ├── config
+│   │   │   │   │   ├── acme.js
+│   │   │   │   │   ├── cluster.js
+│   │   │   │   │   ├── crl.js
+│   │   │   │   │   └── urls.js
+│   │   │   │   ├── issuer.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── role.js
+│   │   │   │   ├── sign-intermediate.js
+│   │   │   │   └── tidy.js
+│   │   │   ├── policy
+│   │   │   │   ├── acl.js
+│   │   │   │   ├── egp.js
+│   │   │   │   └── rgp.js
+│   │   │   ├── policy.js
+│   │   │   ├── raft-join.js
+│   │   │   ├── role-aws.js
+│   │   │   ├── role-jwt.js
+│   │   │   ├── role-ssh.js
+│   │   │   ├── secret-engine.js
+│   │   │   ├── secret-v2-version.js
+│   │   │   ├── secret-v2.js
+│   │   │   ├── secret.js
+│   │   │   ├── server.js
+│   │   │   ├── ssh-otp-credential.js
+│   │   │   ├── ssh-sign.js
+│   │   │   ├── test-form-model.js
+│   │   │   └── transit-key.js
+│   │   ├── router.js
+│   │   ├── routes
+│   │   │   ├── .gitkeep
+│   │   │   ├── application.js
+│   │   │   ├── loading.js
+│   │   │   ├── vault
+│   │   │   │   ├── cluster
+│   │   │   │   │   ├── access
+│   │   │   │   │   │   ├── identity
+│   │   │   │   │   │   │   ├── aliases
+│   │   │   │   │   │   │   │   ├── add.js
+│   │   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   │   └── show.js
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── merge.js
+│   │   │   │   │   │   │   └── show.js
+│   │   │   │   │   │   ├── identity.js
+│   │   │   │   │   │   ├── leases
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── list-root.js
+│   │   │   │   │   │   │   ├── list.js
+│   │   │   │   │   │   │   └── show.js
+│   │   │   │   │   │   ├── leases.js
+│   │   │   │   │   │   ├── method
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── item
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   │   ├── list.js
+│   │   │   │   │   │   │   │   └── show.js
+│   │   │   │   │   │   │   ├── item.js
+│   │   │   │   │   │   │   └── section.js
+│   │   │   │   │   │   ├── method.js
+│   │   │   │   │   │   ├── methods.js
+│   │   │   │   │   │   ├── mfa
+│   │   │   │   │   │   │   ├── enforcements
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   ├── enforcement
+│   │   │   │   │   │   │   │   │   └── edit.js
+│   │   │   │   │   │   │   │   ├── enforcement.js
+│   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   └── methods
+│   │   │   │   │   │   │       ├── create.js
+│   │   │   │   │   │   │       ├── index.js
+│   │   │   │   │   │   │       ├── method
+│   │   │   │   │   │   │       │   └── edit.js
+│   │   │   │   │   │   │       └── method.js
+│   │   │   │   │   │   ├── namespaces
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── oidc
+│   │   │   │   │   │   │   ├── assignments
+│   │   │   │   │   │   │   │   ├── assignment
+│   │   │   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   │   │   └── edit.js
+│   │   │   │   │   │   │   │   ├── assignment.js
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   ├── clients
+│   │   │   │   │   │   │   │   ├── client
+│   │   │   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   │   │   └── providers.js
+│   │   │   │   │   │   │   │   ├── client.js
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── keys
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   │   ├── key
+│   │   │   │   │   │   │   │   │   ├── clients.js
+│   │   │   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   │   │   └── edit.js
+│   │   │   │   │   │   │   │   └── key.js
+│   │   │   │   │   │   │   ├── providers
+│   │   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   │   ├── provider
+│   │   │   │   │   │   │   │   │   ├── clients.js
+│   │   │   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   │   │   └── edit.js
+│   │   │   │   │   │   │   │   └── provider.js
+│   │   │   │   │   │   │   └── scopes
+│   │   │   │   │   │   │       ├── create.js
+│   │   │   │   │   │   │       ├── index.js
+│   │   │   │   │   │   │       ├── scope
+│   │   │   │   │   │   │       │   ├── details.js
+│   │   │   │   │   │   │       │   └── edit.js
+│   │   │   │   │   │   │       └── scope.js
+│   │   │   │   │   │   └── oidc.js
+│   │   │   │   │   ├── access.js
+│   │   │   │   │   ├── auth.js
+│   │   │   │   │   ├── cluster-route-base.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── init.js
+│   │   │   │   │   ├── logout.js
+│   │   │   │   │   ├── mfa-setup.js
+│   │   │   │   │   ├── oidc-callback.js
+│   │   │   │   │   ├── oidc-provider-ns.js
+│   │   │   │   │   ├── oidc-provider.js
+│   │   │   │   │   ├── policies
+│   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── policies.js
+│   │   │   │   │   ├── policy
+│   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── show.js
+│   │   │   │   │   ├── policy.js
+│   │   │   │   │   ├── redirect.js
+│   │   │   │   │   ├── secrets
+│   │   │   │   │   │   ├── backend
+│   │   │   │   │   │   │   ├── actions.js
+│   │   │   │   │   │   │   ├── configuration.js
+│   │   │   │   │   │   │   ├── create-root.js
+│   │   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   │   ├── credentials-root.js
+│   │   │   │   │   │   │   ├── credentials.js
+│   │   │   │   │   │   │   ├── diff.js
+│   │   │   │   │   │   │   ├── edit-metadata.js
+│   │   │   │   │   │   │   ├── edit-root.js
+│   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   ├── list-root.js
+│   │   │   │   │   │   │   ├── list.js
+│   │   │   │   │   │   │   ├── metadata.js
+│   │   │   │   │   │   │   ├── overview.js
+│   │   │   │   │   │   │   ├── secret-edit.js
+│   │   │   │   │   │   │   ├── show-root.js
+│   │   │   │   │   │   │   ├── show.js
+│   │   │   │   │   │   │   ├── sign-root.js
+│   │   │   │   │   │   │   ├── sign.js
+│   │   │   │   │   │   │   ├── versions-root.js
+│   │   │   │   │   │   │   └── versions.js
+│   │   │   │   │   │   ├── backend.js
+│   │   │   │   │   │   └── backends.js
+│   │   │   │   │   ├── secrets.js
+│   │   │   │   │   ├── settings
+│   │   │   │   │   │   ├── auth
+│   │   │   │   │   │   │   ├── configure
+│   │   │   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   │   │   └── section.js
+│   │   │   │   │   │   │   ├── configure.js
+│   │   │   │   │   │   │   ├── enable.js
+│   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── configure-secret-backend.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── mount-secret-backend.js
+│   │   │   │   │   │   └── seal.js
+│   │   │   │   │   ├── settings.js
+│   │   │   │   │   ├── storage.js
+│   │   │   │   │   ├── tools
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── tool.js
+│   │   │   │   │   ├── tools.js
+│   │   │   │   │   └── unseal.js
+│   │   │   │   └── cluster.js
+│   │   │   └── vault.js
+│   │   ├── serializers
+│   │   │   ├── application.js
+│   │   │   ├── auth-method.js
+│   │   │   ├── capabilities.js
+│   │   │   ├── cluster.js
+│   │   │   ├── config.js
+│   │   │   ├── database
+│   │   │   │   ├── connection.js
+│   │   │   │   ├── credential.js
+│   │   │   │   └── role.js
+│   │   │   ├── identity
+│   │   │   │   ├── _base.js
+│   │   │   │   ├── entity-alias.js
+│   │   │   │   ├── entity.js
+│   │   │   │   ├── group-alias.js
+│   │   │   │   └── group.js
+│   │   │   ├── keymgmt
+│   │   │   │   ├── key.js
+│   │   │   │   └── provider.js
+│   │   │   ├── kubernetes
+│   │   │   │   ├── config.js
+│   │   │   │   └── role.js
+│   │   │   ├── lease.js
+│   │   │   ├── license.js
+│   │   │   ├── mfa-login-enforcement.js
+│   │   │   ├── mfa-method.js
+│   │   │   ├── mount-config.js
+│   │   │   ├── namespace.js
+│   │   │   ├── node.js
+│   │   │   ├── oidc
+│   │   │   │   ├── assignment.js
+│   │   │   │   ├── client.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── provider.js
+│   │   │   │   └── scope.js
+│   │   │   ├── path-filter-config.js
+│   │   │   ├── pki
+│   │   │   │   ├── action.js
+│   │   │   │   ├── certificate
+│   │   │   │   │   ├── base.js
+│   │   │   │   │   ├── generate.js
+│   │   │   │   │   └── sign.js
+│   │   │   │   ├── certificate.js
+│   │   │   │   ├── issuer.js
+│   │   │   │   ├── key.js
+│   │   │   │   ├── role.js
+│   │   │   │   └── tidy.js
+│   │   │   ├── policy
+│   │   │   │   ├── acl.js
+│   │   │   │   ├── egp.js
+│   │   │   │   └── rgp.js
+│   │   │   ├── policy.js
+│   │   │   ├── replication-attributes.js
+│   │   │   ├── replication-mode.js
+│   │   │   ├── role-aws.js
+│   │   │   ├── role-ssh.js
+│   │   │   ├── role.js
+│   │   │   ├── secret-engine.js
+│   │   │   ├── secret-v2-version.js
+│   │   │   ├── secret-v2.js
+│   │   │   ├── secret.js
+│   │   │   ├── server.js
+│   │   │   ├── ssh.js
+│   │   │   └── transit-key.js
+│   │   ├── services
+│   │   │   ├── auth.js
+│   │   │   ├── console.js
+│   │   │   ├── csp-event.js
+│   │   │   ├── current-cluster.js
+│   │   │   ├── download.ts
+│   │   │   ├── flash-messages.ts
+│   │   │   ├── namespace.js
+│   │   │   ├── path-help.js
+│   │   │   ├── permissions.js
+│   │   │   ├── replication-mode.js
+│   │   │   ├── secret-mount-path.js
+│   │   │   ├── store.js
+│   │   │   ├── version.js
+│   │   │   └── wizard.js
+│   │   ├── styles
+│   │   │   ├── app.scss
+│   │   │   ├── components
+│   │   │   │   ├── action-block.scss
+│   │   │   │   ├── auth-buttons.scss
+│   │   │   │   ├── auth-form.scss
+│   │   │   │   ├── autocomplete-input.scss
+│   │   │   │   ├── b64-toggle.scss
+│   │   │   │   ├── box-label.scss
+│   │   │   │   ├── box-radio.scss
+│   │   │   │   ├── calendar-widget.scss
+│   │   │   │   ├── codemirror.scss
+│   │   │   │   ├── confirm.scss
+│   │   │   │   ├── console-ui-panel.scss
+│   │   │   │   ├── diff-version-selector.scss
+│   │   │   │   ├── doc-link.scss
+│   │   │   │   ├── empty-state-component.scss
+│   │   │   │   ├── env-banner.scss
+│   │   │   │   ├── features-selection.scss
+│   │   │   │   ├── form-section.scss
+│   │   │   │   ├── global-flash.scss
+│   │   │   │   ├── header.scss
+│   │   │   │   ├── hover-copy-button.scss
+│   │   │   │   ├── icon.scss
+│   │   │   │   ├── info-table-row.scss
+│   │   │   │   ├── init-illustration.scss
+│   │   │   │   ├── known-secondaries-card.scss
+│   │   │   │   ├── linkable-item.scss
+│   │   │   │   ├── linked-block.scss
+│   │   │   │   ├── list-item-row.scss
+│   │   │   │   ├── list-pagination.scss
+│   │   │   │   ├── loader.scss
+│   │   │   │   ├── login-form.scss
+│   │   │   │   ├── logo-edition.scss
+│   │   │   │   ├── masked-input.scss
+│   │   │   │   ├── modal-component.scss
+│   │   │   │   ├── namespace-picker.scss
+│   │   │   │   ├── namespace-reminder.scss
+│   │   │   │   ├── navigate-input.scss
+│   │   │   │   ├── openbao-loading.scss
+│   │   │   │   ├── page-header.scss
+│   │   │   │   ├── popup-menu.scss
+│   │   │   │   ├── radial-progress.scss
+│   │   │   │   ├── radio-card.scss
+│   │   │   │   ├── raft-join.scss
+│   │   │   │   ├── read-more.scss
+│   │   │   │   ├── regex-validator.scss
+│   │   │   │   ├── role-item.scss
+│   │   │   │   ├── search-select.scss
+│   │   │   │   ├── selectable-card-container.scss
+│   │   │   │   ├── selectable-card.scss
+│   │   │   │   ├── shamir-modal-flow.scss
+│   │   │   │   ├── shamir-progress.scss
+│   │   │   │   ├── sidebar.scss
+│   │   │   │   ├── splash-page.scss
+│   │   │   │   ├── stat-text.scss
+│   │   │   │   ├── tabs-component.scss
+│   │   │   │   ├── text-file.scss
+│   │   │   │   ├── token-expire-warning.scss
+│   │   │   │   ├── tool-tip.scss
+│   │   │   │   ├── toolbar.scss
+│   │   │   │   ├── transit-card.scss
+│   │   │   │   ├── ttl-picker.scss
+│   │   │   │   ├── ui-wizard.scss
+│   │   │   │   ├── unseal-warning.scss
+│   │   │   │   ├── vlt-radio.scss
+│   │   │   │   └── vlt-table.scss
+│   │   │   ├── core
+│   │   │   │   ├── alert-banner.scss
+│   │   │   │   ├── box.scss
+│   │   │   │   ├── breadcrumb.scss
+│   │   │   │   ├── buttons.scss
+│   │   │   │   ├── charts.scss
+│   │   │   │   ├── checkbox-and-radio.scss
+│   │   │   │   ├── columns.scss
+│   │   │   │   ├── containers.scss
+│   │   │   │   ├── control.scss
+│   │   │   │   ├── element-styling.scss
+│   │   │   │   ├── field.scss
+│   │   │   │   ├── file.scss
+│   │   │   │   ├── footer.scss
+│   │   │   │   ├── inputs.scss
+│   │   │   │   ├── label.scss
+│   │   │   │   ├── level.scss
+│   │   │   │   ├── link.scss
+│   │   │   │   ├── lists.scss
+│   │   │   │   ├── menu.scss
+│   │   │   │   ├── message.scss
+│   │   │   │   ├── progress.scss
+│   │   │   │   ├── select.scss
+│   │   │   │   ├── switch.scss
+│   │   │   │   ├── tag.scss
+│   │   │   │   ├── title.scss
+│   │   │   │   └── toggle.scss
+│   │   │   ├── core.scss
+│   │   │   ├── helper-classes
+│   │   │   │   ├── colors.scss
+│   │   │   │   ├── flexbox-and-grid.scss
+│   │   │   │   ├── general.scss
+│   │   │   │   ├── layout.scss
+│   │   │   │   ├── spacing.scss
+│   │   │   │   └── typography.scss
+│   │   │   ├── reset.scss
+│   │   │   └── utils
+│   │   │       ├── _box-shadow_variables.scss
+│   │   │       ├── _color_variables.scss
+│   │   │       ├── _font_variables.scss
+│   │   │       ├── _size_variables.scss
+│   │   │       ├── animations.scss
+│   │   │       └── mixins.scss
+│   │   ├── templates
+│   │   │   ├── application.hbs
+│   │   │   ├── components
+│   │   │   │   ├── alphabet-edit.hbs
+│   │   │   │   ├── auth-button-auth0.hbs
+│   │   │   │   ├── auth-button-gitlab.hbs
+│   │   │   │   ├── auth-button-google.hbs
+│   │   │   │   ├── auth-config-form
+│   │   │   │   │   ├── config.hbs
+│   │   │   │   │   └── options.hbs
+│   │   │   │   ├── auth-form-options.hbs
+│   │   │   │   ├── auth-form.hbs
+│   │   │   │   ├── auth-jwt.hbs
+│   │   │   │   ├── auth-method
+│   │   │   │   │   └── configuration.hbs
+│   │   │   │   ├── b64-toggle.hbs
+│   │   │   │   ├── backend-configure.hbs
+│   │   │   │   ├── block-error.hbs
+│   │   │   │   ├── calendar-widget.hbs
+│   │   │   │   ├── configure-aws-secret.hbs
+│   │   │   │   ├── configure-ssh-secret.hbs
+│   │   │   │   ├── console
+│   │   │   │   │   ├── command-input.hbs
+│   │   │   │   │   ├── log-command.hbs
+│   │   │   │   │   ├── log-error-with-html.hbs
+│   │   │   │   │   ├── log-error.hbs
+│   │   │   │   │   ├── log-help.hbs
+│   │   │   │   │   ├── log-json.hbs
+│   │   │   │   │   ├── log-list.hbs
+│   │   │   │   │   ├── log-object.hbs
+│   │   │   │   │   ├── log-success.hbs
+│   │   │   │   │   ├── log-text.hbs
+│   │   │   │   │   ├── output-log.hbs
+│   │   │   │   │   └── ui-panel.hbs
+│   │   │   │   ├── database-connection.hbs
+│   │   │   │   ├── database-role-edit.hbs
+│   │   │   │   ├── database-role-setting-form.hbs
+│   │   │   │   ├── date-dropdown.hbs
+│   │   │   │   ├── diff-version-selector.hbs
+│   │   │   │   ├── file-to-array-buffer.hbs
+│   │   │   │   ├── form-field-from-model.hbs
+│   │   │   │   ├── generate-credentials-database.hbs
+│   │   │   │   ├── generate-credentials.hbs
+│   │   │   │   ├── generated-item-list.hbs
+│   │   │   │   ├── generated-item.hbs
+│   │   │   │   ├── get-credentials-card.hbs
+│   │   │   │   ├── hover-copy-button.hbs
+│   │   │   │   ├── identity
+│   │   │   │   │   ├── edit-form.hbs
+│   │   │   │   │   ├── entity-nav.hbs
+│   │   │   │   │   ├── item-alias
+│   │   │   │   │   │   ├── alias-details.hbs
+│   │   │   │   │   │   └── alias-metadata.hbs
+│   │   │   │   │   ├── item-aliases.hbs
+│   │   │   │   │   ├── item-details.hbs
+│   │   │   │   │   ├── item-groups.hbs
+│   │   │   │   │   ├── item-members.hbs
+│   │   │   │   │   ├── item-metadata.hbs
+│   │   │   │   │   ├── item-parent-groups.hbs
+│   │   │   │   │   ├── item-policies.hbs
+│   │   │   │   │   ├── lookup-input.hbs
+│   │   │   │   │   ├── popup-alias.hbs
+│   │   │   │   │   ├── popup-members.hbs
+│   │   │   │   │   ├── popup-metadata.hbs
+│   │   │   │   │   └── popup-policy.hbs
+│   │   │   │   ├── key-version-select.hbs
+│   │   │   │   ├── keymgmt
+│   │   │   │   │   ├── distribute.hbs
+│   │   │   │   │   ├── key-edit.hbs
+│   │   │   │   │   └── provider-edit.hbs
+│   │   │   │   ├── logo-edition.hbs
+│   │   │   │   ├── logo-splash.hbs
+│   │   │   │   ├── mfa
+│   │   │   │   │   ├── login-enforcement-list-item.hbs
+│   │   │   │   │   ├── method-form.hbs
+│   │   │   │   │   ├── method-list-item.hbs
+│   │   │   │   │   ├── mfa-form.hbs
+│   │   │   │   │   ├── mfa-login-enforcement-form.hbs
+│   │   │   │   │   ├── mfa-login-enforcement-header.hbs
+│   │   │   │   │   ├── mfa-setup-step-one.hbs
+│   │   │   │   │   ├── mfa-setup-step-two.hbs
+│   │   │   │   │   └── nav.hbs
+│   │   │   │   ├── mount-accessor-select.hbs
+│   │   │   │   ├── mount-backend-form.hbs
+│   │   │   │   ├── mount-info.hbs
+│   │   │   │   ├── namespace-link.hbs
+│   │   │   │   ├── namespace-picker.hbs
+│   │   │   │   ├── not-found.hbs
+│   │   │   │   ├── oidc
+│   │   │   │   │   ├── assignment-form.hbs
+│   │   │   │   │   ├── client-form.hbs
+│   │   │   │   │   ├── client-list.hbs
+│   │   │   │   │   ├── key-form.hbs
+│   │   │   │   │   ├── provider-form.hbs
+│   │   │   │   │   ├── provider-list.hbs
+│   │   │   │   │   └── scope-form.hbs
+│   │   │   │   ├── oidc-callback-splash.hbs
+│   │   │   │   ├── oidc-consent-block.hbs
+│   │   │   │   ├── pagination-controls.hbs
+│   │   │   │   ├── pgp-file.hbs
+│   │   │   │   ├── pgp-list.hbs
+│   │   │   │   ├── radial-progress.hbs
+│   │   │   │   ├── raft-join.hbs
+│   │   │   │   ├── raft-storage-overview.hbs
+│   │   │   │   ├── raft-storage-restore.hbs
+│   │   │   │   ├── role-aws-edit.hbs
+│   │   │   │   ├── role-ssh-edit.hbs
+│   │   │   │   ├── secret-create-or-update.hbs
+│   │   │   │   ├── secret-delete-menu.hbs
+│   │   │   │   ├── secret-edit-metadata.hbs
+│   │   │   │   ├── secret-edit-toolbar.hbs
+│   │   │   │   ├── secret-edit.hbs
+│   │   │   │   ├── secret-form-show.hbs
+│   │   │   │   ├── secret-link.hbs
+│   │   │   │   ├── secret-list
+│   │   │   │   │   ├── aws-role-item.hbs
+│   │   │   │   │   ├── database-list-item.hbs
+│   │   │   │   │   ├── item.hbs
+│   │   │   │   │   └── ssh-role-item.hbs
+│   │   │   │   ├── secret-version-menu.hbs
+│   │   │   │   ├── section-tabs.hbs
+│   │   │   │   ├── selectable-card.hbs
+│   │   │   │   ├── shamir-progress.hbs
+│   │   │   │   ├── splash-page.hbs
+│   │   │   │   ├── token-expire-warning.hbs
+│   │   │   │   ├── tool-actions-form.hbs
+│   │   │   │   ├── tool-hash.hbs
+│   │   │   │   ├── tool-lookup.hbs
+│   │   │   │   ├── tool-random.hbs
+│   │   │   │   ├── tool-rewrap.hbs
+│   │   │   │   ├── tool-unwrap.hbs
+│   │   │   │   ├── tool-wrap.hbs
+│   │   │   │   ├── toolbar-secret-link.hbs
+│   │   │   │   ├── transit-edit.hbs
+│   │   │   │   ├── transit-form-create.hbs
+│   │   │   │   ├── transit-form-edit.hbs
+│   │   │   │   ├── transit-form-show.hbs
+│   │   │   │   ├── transit-key-action
+│   │   │   │   │   ├── datakey.hbs
+│   │   │   │   │   ├── decrypt.hbs
+│   │   │   │   │   ├── encrypt.hbs
+│   │   │   │   │   ├── export.hbs
+│   │   │   │   │   ├── hmac.hbs
+│   │   │   │   │   ├── rewrap.hbs
+│   │   │   │   │   ├── sign.hbs
+│   │   │   │   │   └── verify.hbs
+│   │   │   │   ├── transit-key-actions.hbs
+│   │   │   │   ├── ui-wizard.hbs
+│   │   │   │   ├── wizard
+│   │   │   │   │   ├── ad-engine.hbs
+│   │   │   │   │   ├── alicloud-engine.hbs
+│   │   │   │   │   ├── alicloud-method.hbs
+│   │   │   │   │   ├── approle-method.hbs
+│   │   │   │   │   ├── auth-*.hbs  (6 files)
+│   │   │   │   │   ├── aws-engine.hbs
+│   │   │   │   │   ├── aws-method.hbs
+│   │   │   │   │   ├── azure-engine.hbs
+│   │   │   │   │   ├── azure-method.hbs
+│   │   │   │   │   ├── cert-method.hbs
+│   │   │   │   │   ├── ch-engine.hbs
+│   │   │   │   │   ├── consul-engine.hbs
+│   │   │   │   │   ├── database-engine.hbs
+│   │   │   │   │   ├── features-selection.hbs
+│   │   │   │   │   ├── init-login.hbs
+│   │   │   │   │   ├── init-save-keys.hbs
+│   │   │   │   │   ├── init-setup.hbs
+│   │   │   │   │   ├── init-unseal.hbs
+│   │   │   │   │   ├── keymgmt-engine.hbs
+│   │   │   │   │   ├── kubernetes-method.hbs
+│   │   │   │   │   ├── kv-engine.hbs
+│   │   │   │   │   ├── ldap-method.hbs
+│   │   │   │   │   ├── mounts-wizard.hbs
+│   │   │   │   │   ├── nomad-engine.hbs
+│   │   │   │   │   ├── pki-engine.hbs
+│   │   │   │   │   ├── policies-create.hbs
+│   │   │   │   │   ├── policies-delete.hbs
+│   │   │   │   │   ├── policies-details.hbs
+│   │   │   │   │   ├── policies-intro.hbs
+│   │   │   │   │   ├── rabbitmq-engine.hbs
+│   │   │   │   │   ├── radius-method.hbs
+│   │   │   │   │   ├── secrets-*.hbs  (14 files)
+│   │   │   │   │   ├── ssh-engine.hbs
+│   │   │   │   │   ├── tools-*.hbs  (8 files)
+│   │   │   │   │   ├── totp-engine.hbs
+│   │   │   │   │   ├── transit-engine.hbs
+│   │   │   │   │   ├── tutorial-*.hbs  (5 files)
+│   │   │   │   │   └── userpass-method.hbs
+│   │   │   │   ├── wizard-content.hbs
+│   │   │   │   ├── wizard-progress.hbs
+│   │   │   │   └── wizard-section.hbs
+│   │   │   ├── loading.hbs
+│   │   │   ├── vault
+│   │   │   │   ├── cluster
+│   │   │   │   │   ├── access
+│   │   │   │   │   │   ├── error.hbs
+│   │   │   │   │   │   ├── identity
+│   │   │   │   │   │   │   ├── aliases
+│   │   │   │   │   │   │   │   ├── add.hbs
+│   │   │   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   │   └── show.hbs
+│   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   ├── merge.hbs
+│   │   │   │   │   │   │   └── show.hbs
+│   │   │   │   │   │   ├── leases
+│   │   │   │   │   │   │   ├── error.hbs
+│   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   ├── list.hbs
+│   │   │   │   │   │   │   └── show.hbs
+│   │   │   │   │   │   ├── loading.hbs
+│   │   │   │   │   │   ├── method
+│   │   │   │   │   │   │   ├── item
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   │   │   ├── list.hbs
+│   │   │   │   │   │   │   │   └── show.hbs
+│   │   │   │   │   │   │   └── section.hbs
+│   │   │   │   │   │   ├── methods.hbs
+│   │   │   │   │   │   ├── mfa
+│   │   │   │   │   │   │   ├── enforcements
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   ├── enforcement
+│   │   │   │   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   └── methods
+│   │   │   │   │   │   │       ├── create.hbs
+│   │   │   │   │   │   │       ├── index.hbs
+│   │   │   │   │   │   │       └── method
+│   │   │   │   │   │   │           ├── edit.hbs
+│   │   │   │   │   │   │           └── index.hbs
+│   │   │   │   │   │   ├── namespaces
+│   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   ├── oidc
+│   │   │   │   │   │   │   ├── assignments
+│   │   │   │   │   │   │   │   ├── assignment
+│   │   │   │   │   │   │   │   │   ├── details.hbs
+│   │   │   │   │   │   │   │   │   └── edit.hbs
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   │   ├── clients
+│   │   │   │   │   │   │   │   ├── client
+│   │   │   │   │   │   │   │   │   ├── details.hbs
+│   │   │   │   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   │   │   │   └── providers.hbs
+│   │   │   │   │   │   │   │   ├── client.hbs
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   ├── keys
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   │   ├── key
+│   │   │   │   │   │   │   │   │   ├── clients.hbs
+│   │   │   │   │   │   │   │   │   ├── details.hbs
+│   │   │   │   │   │   │   │   │   └── edit.hbs
+│   │   │   │   │   │   │   │   └── key.hbs
+│   │   │   │   │   │   │   ├── providers
+│   │   │   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   │   │   ├── provider
+│   │   │   │   │   │   │   │   │   ├── clients.hbs
+│   │   │   │   │   │   │   │   │   ├── details.hbs
+│   │   │   │   │   │   │   │   │   └── edit.hbs
+│   │   │   │   │   │   │   │   └── provider.hbs
+│   │   │   │   │   │   │   └── scopes
+│   │   │   │   │   │   │       ├── create.hbs
+│   │   │   │   │   │   │       ├── index.hbs
+│   │   │   │   │   │   │       └── scope
+│   │   │   │   │   │   │           ├── details.hbs
+│   │   │   │   │   │   │           └── edit.hbs
+│   │   │   │   │   │   └── oidc.hbs
+│   │   │   │   │   ├── access.hbs
+│   │   │   │   │   ├── auth.hbs
+│   │   │   │   │   ├── error.hbs
+│   │   │   │   │   ├── init.hbs
+│   │   │   │   │   ├── license.hbs
+│   │   │   │   │   ├── loading.hbs
+│   │   │   │   │   ├── mfa-setup.hbs
+│   │   │   │   │   ├── not-found.hbs
+│   │   │   │   │   ├── oidc-callback.hbs
+│   │   │   │   │   ├── oidc-provider-ns.hbs
+│   │   │   │   │   ├── oidc-provider.hbs
+│   │   │   │   │   ├── policies
+│   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   └── loading.hbs
+│   │   │   │   │   ├── policies.hbs
+│   │   │   │   │   ├── policy
+│   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   ├── error.hbs
+│   │   │   │   │   │   ├── loading.hbs
+│   │   │   │   │   │   └── show.hbs
+│   │   │   │   │   ├── policy.hbs
+│   │   │   │   │   ├── redirect.hbs
+│   │   │   │   │   ├── secrets
+│   │   │   │   │   │   ├── backend
+│   │   │   │   │   │   │   ├── configuration.hbs
+│   │   │   │   │   │   │   ├── credentials.hbs
+│   │   │   │   │   │   │   ├── diff.hbs
+│   │   │   │   │   │   │   ├── edit-metadata.hbs
+│   │   │   │   │   │   │   ├── error.hbs
+│   │   │   │   │   │   │   ├── list.hbs
+│   │   │   │   │   │   │   ├── metadata.hbs
+│   │   │   │   │   │   │   ├── overview.hbs
+│   │   │   │   │   │   │   ├── secret-edit-layout.hbs
+│   │   │   │   │   │   │   ├── sign.hbs
+│   │   │   │   │   │   │   ├── transit-actions-layout.hbs
+│   │   │   │   │   │   │   └── versions.hbs
+│   │   │   │   │   │   └── backends.hbs
+│   │   │   │   │   ├── settings
+│   │   │   │   │   │   ├── auth
+│   │   │   │   │   │   │   ├── configure
+│   │   │   │   │   │   │   │   └── section.hbs
+│   │   │   │   │   │   │   ├── configure.hbs
+│   │   │   │   │   │   │   └── enable.hbs
+│   │   │   │   │   │   ├── auth.hbs
+│   │   │   │   │   │   ├── configure-secret-backend.hbs
+│   │   │   │   │   │   ├── mount-secret-backend.hbs
+│   │   │   │   │   │   └── seal.hbs
+│   │   │   │   │   ├── settings.hbs
+│   │   │   │   │   ├── storage-restore.hbs
+│   │   │   │   │   ├── storage.hbs
+│   │   │   │   │   ├── tools
+│   │   │   │   │   │   ├── error.hbs
+│   │   │   │   │   │   └── tool.hbs
+│   │   │   │   │   └── unseal.hbs
+│   │   │   │   ├── cluster.hbs
+│   │   │   │   ├── error.hbs
+│   │   │   │   └── not-found.hbs
+│   │   │   └── vault.hbs
+│   │   ├── transforms
+│   │   │   ├── array.js
+│   │   │   └── object.js
+│   │   └── utils
+│   │       ├── api-path.js
+│   │       ├── camelize-object-keys.js
+│   │       ├── chart-helpers.js
+│   │       ├── clamp.js
+│   │       ├── database-helpers.js
+│   │       ├── error-message.js
+│   │       ├── field-to-attrs.js
+│   │       ├── identity-manager.js
+│   │       ├── openapi-to-attrs.js
+│   │       ├── parse-pki-cert-oids.js
+│   │       ├── parse-pki-cert.js
+│   │       ├── path-encoding-helpers.js
+│   │       ├── remove-record.js
+│   │       ├── sort-objects.js
+│   │       ├── trim-right.js
+│   │       └── validators.js
+│   ├── codemods.log
+│   ├── config
+│   │   ├── content-security-policy.js
+│   │   ├── deprecation-workflow.js
+│   │   ├── ember-cli-update.json
+│   │   ├── environment.js
+│   │   ├── optional-features.json
+│   │   └── targets.js
+│   ├── ember-cli-build.js
+│   ├── eslint.config.mjs
+│   ├── jsconfig.json
+│   ├── lib
+│   │   ├── core
+│   │   │   ├── addon
+│   │   │   │   ├── components
+│   │   │   │   │   ├── alert-banner.hbs
+│   │   │   │   │   ├── alert-banner.js
+│   │   │   │   │   ├── alert-inline.hbs
+│   │   │   │   │   ├── alert-inline.js
+│   │   │   │   │   ├── alert-popup.hbs
+│   │   │   │   │   ├── autocomplete-input.hbs
+│   │   │   │   │   ├── autocomplete-input.js
+│   │   │   │   │   ├── box-radio.hbs
+│   │   │   │   │   ├── box-radio.js
+│   │   │   │   │   ├── checkbox-grid.hbs
+│   │   │   │   │   ├── checkbox-grid.ts
+│   │   │   │   │   ├── chevron.hbs
+│   │   │   │   │   ├── chevron.js
+│   │   │   │   │   ├── confirm
+│   │   │   │   │   │   └── message.js
+│   │   │   │   │   ├── confirm-action.hbs
+│   │   │   │   │   ├── confirm-action.js
+│   │   │   │   │   ├── confirm.js
+│   │   │   │   │   ├── confirmation-modal.hbs
+│   │   │   │   │   ├── confirmation-modal.js
+│   │   │   │   │   ├── doc-link.js
+│   │   │   │   │   ├── download-button.hbs
+│   │   │   │   │   ├── download-button.js
+│   │   │   │   │   ├── edit-form.js
+│   │   │   │   │   ├── empty-state.hbs
+│   │   │   │   │   ├── external-link.hbs
+│   │   │   │   │   ├── external-link.js
+│   │   │   │   │   ├── field-group-show.hbs
+│   │   │   │   │   ├── form-error.hbs
+│   │   │   │   │   ├── form-field-groups-loop.hbs
+│   │   │   │   │   ├── form-field-groups-loop.js
+│   │   │   │   │   ├── form-field-groups.hbs
+│   │   │   │   │   ├── form-field-groups.js
+│   │   │   │   │   ├── form-field-label.hbs
+│   │   │   │   │   ├── form-field-label.js
+│   │   │   │   │   ├── form-field.hbs
+│   │   │   │   │   ├── form-field.js
+│   │   │   │   │   ├── form-save-buttons.js
+│   │   │   │   │   ├── icon.hbs
+│   │   │   │   │   ├── icon.js
+│   │   │   │   │   ├── info-table-item-array.hbs
+│   │   │   │   │   ├── info-table-item-array.js
+│   │   │   │   │   ├── info-table-row.hbs
+│   │   │   │   │   ├── info-table-row.js
+│   │   │   │   │   ├── info-table.hbs
+│   │   │   │   │   ├── info-table.js
+│   │   │   │   │   ├── info-tooltip.hbs
+│   │   │   │   │   ├── info-tooltip.js
+│   │   │   │   │   ├── input-search.hbs
+│   │   │   │   │   ├── input-search.js
+│   │   │   │   │   ├── json-editor.hbs
+│   │   │   │   │   ├── json-editor.js
+│   │   │   │   │   ├── key-value-header.hbs
+│   │   │   │   │   ├── key-value-header.js
+│   │   │   │   │   ├── kv-object-editor.hbs
+│   │   │   │   │   ├── kv-object-editor.js
+│   │   │   │   │   ├── layout-loading.hbs
+│   │   │   │   │   ├── linked-block.hbs
+│   │   │   │   │   ├── linked-block.js
+│   │   │   │   │   ├── list-item
+│   │   │   │   │   │   ├── content.js
+│   │   │   │   │   │   └── popup-menu.js
+│   │   │   │   │   ├── list-item.js
+│   │   │   │   │   ├── list-pagination.js
+│   │   │   │   │   ├── list-view.hbs
+│   │   │   │   │   ├── list-view.js
+│   │   │   │   │   ├── masked-input.hbs
+│   │   │   │   │   ├── masked-input.js
+│   │   │   │   │   ├── menu-loader.hbs
+│   │   │   │   │   ├── message-error.js
+│   │   │   │   │   ├── modal.hbs
+│   │   │   │   │   ├── modal.js
+│   │   │   │   │   ├── namespace-reminder.hbs
+│   │   │   │   │   ├── namespace-reminder.js
+│   │   │   │   │   ├── navigate-input.hbs
+│   │   │   │   │   ├── navigate-input.js
+│   │   │   │   │   ├── object-list-input.hbs
+│   │   │   │   │   ├── object-list-input.js
+│   │   │   │   │   ├── openbao-logo-spinner.hbs
+│   │   │   │   │   ├── overview-card.hbs
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── breadcrumbs.hbs
+│   │   │   │   │   │   ├── breadcrumbs.js
+│   │   │   │   │   │   └── error.hbs
+│   │   │   │   │   ├── page-header-level.hbs
+│   │   │   │   │   ├── page-header.hbs
+│   │   │   │   │   ├── page-header.js
+│   │   │   │   │   ├── popup-menu.hbs
+│   │   │   │   │   ├── radio-button.hbs
+│   │   │   │   │   ├── radio-card.hbs
+│   │   │   │   │   ├── read-more.js
+│   │   │   │   │   ├── readonly-form-field.js
+│   │   │   │   │   ├── search-select-placeholder.hbs
+│   │   │   │   │   ├── search-select-with-modal.hbs
+│   │   │   │   │   ├── search-select-with-modal.js
+│   │   │   │   │   ├── search-select.hbs
+│   │   │   │   │   ├── search-select.js
+│   │   │   │   │   ├── secret-list-header-tab.hbs
+│   │   │   │   │   ├── secret-list-header-tab.js
+│   │   │   │   │   ├── secret-list-header.hbs
+│   │   │   │   │   ├── secret-list-header.js
+│   │   │   │   │   ├── select.js
+│   │   │   │   │   ├── shamir-flow.js
+│   │   │   │   │   ├── shamir-modal-flow.js
+│   │   │   │   │   ├── stat-text.hbs
+│   │   │   │   │   ├── string-list.hbs
+│   │   │   │   │   ├── string-list.js
+│   │   │   │   │   ├── text-file.hbs
+│   │   │   │   │   ├── text-file.js
+│   │   │   │   │   ├── toggle-button.hbs
+│   │   │   │   │   ├── toggle-button.js
+│   │   │   │   │   ├── toggle.hbs
+│   │   │   │   │   ├── toggle.js
+│   │   │   │   │   ├── tool-tip.hbs
+│   │   │   │   │   ├── tool-tip.js
+│   │   │   │   │   ├── toolbar-actions.hbs
+│   │   │   │   │   ├── toolbar-filters.hbs
+│   │   │   │   │   ├── toolbar-link.hbs
+│   │   │   │   │   ├── toolbar-link.js
+│   │   │   │   │   ├── toolbar.hbs
+│   │   │   │   │   ├── ttl-picker.hbs
+│   │   │   │   │   └── ttl-picker.js
+│   │   │   │   ├── decorators
+│   │   │   │   │   └── confirm-leave.js
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── changelog-url-for.js
+│   │   │   │   │   ├── cluster-states.js
+│   │   │   │   │   ├── date-format.js
+│   │   │   │   │   ├── format-duration.js
+│   │   │   │   │   ├── format-number.js
+│   │   │   │   │   ├── img-path.js
+│   │   │   │   │   ├── is-active-route.js
+│   │   │   │   │   ├── loose-equal.js
+│   │   │   │   │   ├── message-types.js
+│   │   │   │   │   ├── options-for-backend.js
+│   │   │   │   │   ├── path-or-array.js
+│   │   │   │   │   ├── sanitized-html.js
+│   │   │   │   │   └── set-flash-message.js
+│   │   │   │   ├── mixins
+│   │   │   │   │   ├── list-controller.js
+│   │   │   │   │   └── list-route.js
+│   │   │   │   ├── modifiers
+│   │   │   │   │   └── code-mirror.js
+│   │   │   │   ├── templates
+│   │   │   │   │   └── components
+│   │   │   │   │       ├── confirm
+│   │   │   │   │       │   └── message.hbs
+│   │   │   │   │       ├── confirm.hbs
+│   │   │   │   │       ├── edit-form.hbs
+│   │   │   │   │       ├── form-save-buttons.hbs
+│   │   │   │   │       ├── list-item
+│   │   │   │   │       │   └── popup-menu.hbs
+│   │   │   │   │       ├── list-item.hbs
+│   │   │   │   │       ├── list-pagination.hbs
+│   │   │   │   │       ├── message-error.hbs
+│   │   │   │   │       ├── read-more.hbs
+│   │   │   │   │       ├── readonly-form-field.hbs
+│   │   │   │   │       ├── select.hbs
+│   │   │   │   │       ├── shamir-flow.hbs
+│   │   │   │   │       └── shamir-modal-flow.hbs
+│   │   │   │   └── utils
+│   │   │   │       ├── b64.js
+│   │   │   │       ├── common-prefix.js
+│   │   │   │       ├── date-formatters.js
+│   │   │   │       ├── duration-utils.ts
+│   │   │   │       ├── parse-url.js
+│   │   │   │       ├── search-select-has-many.js
+│   │   │   │       └── timestamp.js
+│   │   │   ├── app
+│   │   │   │   ├── components
+│   │   │   │   │   ├── alert-banner.js
+│   │   │   │   │   ├── alert-inline.js
+│   │   │   │   │   ├── alert-popup.js
+│   │   │   │   │   ├── autocomplete-input.js
+│   │   │   │   │   ├── box-radio.js
+│   │   │   │   │   ├── checkbox-grid.js
+│   │   │   │   │   ├── chevron.js
+│   │   │   │   │   ├── confirm
+│   │   │   │   │   │   └── message.js
+│   │   │   │   │   ├── confirm-action.js
+│   │   │   │   │   ├── confirm.js
+│   │   │   │   │   ├── confirmation-modal.js
+│   │   │   │   │   ├── doc-link.js
+│   │   │   │   │   ├── download-button.js
+│   │   │   │   │   ├── edit-form.js
+│   │   │   │   │   ├── empty-state.js
+│   │   │   │   │   ├── external-link.js
+│   │   │   │   │   ├── field-group-show.js
+│   │   │   │   │   ├── form-error.js
+│   │   │   │   │   ├── form-field-groups-loop.js
+│   │   │   │   │   ├── form-field-groups.js
+│   │   │   │   │   ├── form-field-label.js
+│   │   │   │   │   ├── form-field.js
+│   │   │   │   │   ├── form-save-buttons.js
+│   │   │   │   │   ├── icon.js
+│   │   │   │   │   ├── info-table-item-array.js
+│   │   │   │   │   ├── info-table-row.js
+│   │   │   │   │   ├── info-table.js
+│   │   │   │   │   ├── info-tooltip.js
+│   │   │   │   │   ├── input-search.js
+│   │   │   │   │   ├── json-editor.js
+│   │   │   │   │   ├── key-value-header.js
+│   │   │   │   │   ├── kv-object-editor.js
+│   │   │   │   │   ├── layout-loading.js
+│   │   │   │   │   ├── linkable-item
+│   │   │   │   │   │   ├── content.js
+│   │   │   │   │   │   └── menu.js
+│   │   │   │   │   ├── linked-block.js
+│   │   │   │   │   ├── list-item
+│   │   │   │   │   │   ├── content.js
+│   │   │   │   │   │   └── popup-menu.js
+│   │   │   │   │   ├── list-item.js
+│   │   │   │   │   ├── list-pagination.js
+│   │   │   │   │   ├── list-view.js
+│   │   │   │   │   ├── masked-input.js
+│   │   │   │   │   ├── menu-loader.js
+│   │   │   │   │   ├── message-error.js
+│   │   │   │   │   ├── modal.js
+│   │   │   │   │   ├── namespace-reminder.js
+│   │   │   │   │   ├── navigate-input.js
+│   │   │   │   │   ├── object-list-input.js
+│   │   │   │   │   ├── overview-card.js
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── breadcrumbs.js
+│   │   │   │   │   │   └── error.js
+│   │   │   │   │   ├── page-header-level.js
+│   │   │   │   │   ├── page-header.js
+│   │   │   │   │   ├── popup-menu.js
+│   │   │   │   │   ├── radio-button.js
+│   │   │   │   │   ├── radio-card.js
+│   │   │   │   │   ├── read-more.js
+│   │   │   │   │   ├── readonly-form-field.js
+│   │   │   │   │   ├── search-select-placeholder.js
+│   │   │   │   │   ├── search-select-with-modal.js
+│   │   │   │   │   ├── search-select.js
+│   │   │   │   │   ├── secret-list-header-tab.js
+│   │   │   │   │   ├── secret-list-header.js
+│   │   │   │   │   ├── select.js
+│   │   │   │   │   ├── shamir-flow.js
+│   │   │   │   │   ├── shamir-modal-flow.js
+│   │   │   │   │   ├── stat-text.js
+│   │   │   │   │   ├── string-list.js
+│   │   │   │   │   ├── text-file.js
+│   │   │   │   │   ├── toggle-button.js
+│   │   │   │   │   ├── toggle.js
+│   │   │   │   │   ├── tool-tip.js
+│   │   │   │   │   ├── toolbar-actions.js
+│   │   │   │   │   ├── toolbar-filters.js
+│   │   │   │   │   ├── toolbar-link.js
+│   │   │   │   │   ├── toolbar.js
+│   │   │   │   │   ├── ttl-picker.js
+│   │   │   │   │   └── vault-logo-spinner.js
+│   │   │   │   ├── decorators
+│   │   │   │   │   └── confirm-leave.js
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── changelog-url-for.js
+│   │   │   │   │   ├── cluster-states.js
+│   │   │   │   │   ├── date-format.js
+│   │   │   │   │   ├── format-duration.js
+│   │   │   │   │   ├── format-number.js
+│   │   │   │   │   ├── img-path.js
+│   │   │   │   │   ├── is-active-route.js
+│   │   │   │   │   ├── loose-equal.js
+│   │   │   │   │   ├── message-types.js
+│   │   │   │   │   ├── options-for-backend.js
+│   │   │   │   │   ├── path-or-array.js
+│   │   │   │   │   ├── sanitized-html.js
+│   │   │   │   │   └── set-flash-message.js
+│   │   │   │   ├── mixins
+│   │   │   │   │   ├── list-controller.js
+│   │   │   │   │   └── list-route.js
+│   │   │   │   ├── modifiers
+│   │   │   │   │   └── code-mirror.js
+│   │   │   │   └── utils
+│   │   │   │       ├── b64.js
+│   │   │   │       └── timestamp.js
+│   │   │   ├── icon-mappings.js
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── css
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── keep-gitkeep
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── kubernetes
+│   │   │   ├── addon
+│   │   │   │   ├── components
+│   │   │   │   │   ├── config-cta.hbs
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── configuration.hbs
+│   │   │   │   │   │   ├── configure.hbs
+│   │   │   │   │   │   ├── configure.js
+│   │   │   │   │   │   ├── credentials.hbs
+│   │   │   │   │   │   ├── credentials.js
+│   │   │   │   │   │   ├── overview.hbs
+│   │   │   │   │   │   ├── overview.js
+│   │   │   │   │   │   ├── role
+│   │   │   │   │   │   │   ├── create-and-edit.hbs
+│   │   │   │   │   │   │   ├── create-and-edit.js
+│   │   │   │   │   │   │   ├── details.hbs
+│   │   │   │   │   │   │   └── details.js
+│   │   │   │   │   │   ├── roles.hbs
+│   │   │   │   │   │   └── roles.js
+│   │   │   │   │   └── tab-page-header.hbs
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── roles
+│   │   │   │   │       └── index.js
+│   │   │   │   ├── decorators
+│   │   │   │   │   └── fetch-config.js
+│   │   │   │   ├── engine.js
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── configuration.js
+│   │   │   │   │   ├── configure.js
+│   │   │   │   │   ├── error.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── overview.js
+│   │   │   │   │   └── roles
+│   │   │   │   │       ├── create.js
+│   │   │   │   │       ├── index.js
+│   │   │   │   │       └── role
+│   │   │   │   │           ├── credentials.js
+│   │   │   │   │           ├── details.js
+│   │   │   │   │           ├── edit.js
+│   │   │   │   │           └── index.js
+│   │   │   │   ├── routes.js
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── configuration.hbs
+│   │   │   │   │   ├── configure.hbs
+│   │   │   │   │   ├── error.hbs
+│   │   │   │   │   ├── overview.hbs
+│   │   │   │   │   └── roles
+│   │   │   │   │       ├── create.hbs
+│   │   │   │   │       ├── index.hbs
+│   │   │   │   │       └── role
+│   │   │   │   │           ├── credentials.hbs
+│   │   │   │   │           ├── details.hbs
+│   │   │   │   │           └── edit.hbs
+│   │   │   │   └── utils
+│   │   │   │       └── generated-role-rules.js
+│   │   │   ├── config
+│   │   │   │   └── environment.js
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── open-api-explorer
+│   │   │   ├── addon
+│   │   │   │   ├── components
+│   │   │   │   │   └── swagger-ui.js
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── engine.js
+│   │   │   │   ├── resolver.js
+│   │   │   │   ├── routes
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── routes.js
+│   │   │   │   ├── styles
+│   │   │   │   │   └── addon.css
+│   │   │   │   └── templates
+│   │   │   │       ├── application.hbs
+│   │   │   │       ├── components
+│   │   │   │       │   └── swagger-ui.hbs
+│   │   │   │       └── index.hbs
+│   │   │   ├── config
+│   │   │   │   └── environment.js
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── pki
+│   │   │   ├── README.md
+│   │   │   ├── addon
+│   │   │   │   ├── components
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── pki-certificate-details.hbs
+│   │   │   │   │   │   ├── pki-certificate-details.ts
+│   │   │   │   │   │   ├── pki-configuration-details.hbs
+│   │   │   │   │   │   ├── pki-configuration-details.ts
+│   │   │   │   │   │   ├── pki-configuration-edit.hbs
+│   │   │   │   │   │   ├── pki-configuration-edit.ts
+│   │   │   │   │   │   ├── pki-configure-create.hbs
+│   │   │   │   │   │   ├── pki-configure-create.ts
+│   │   │   │   │   │   ├── pki-issuer-details.hbs
+│   │   │   │   │   │   ├── pki-issuer-details.ts
+│   │   │   │   │   │   ├── pki-issuer-edit.hbs
+│   │   │   │   │   │   ├── pki-issuer-edit.ts
+│   │   │   │   │   │   ├── pki-issuer-generate-intermediate.hbs
+│   │   │   │   │   │   ├── pki-issuer-generate-intermediate.ts
+│   │   │   │   │   │   ├── pki-issuer-generate-root.hbs
+│   │   │   │   │   │   ├── pki-issuer-generate-root.ts
+│   │   │   │   │   │   ├── pki-issuer-import.hbs
+│   │   │   │   │   │   ├── pki-issuer-import.ts
+│   │   │   │   │   │   ├── pki-issuer-list.hbs
+│   │   │   │   │   │   ├── pki-issuer-rotate-root.hbs
+│   │   │   │   │   │   ├── pki-issuer-rotate-root.ts
+│   │   │   │   │   │   ├── pki-key-details.hbs
+│   │   │   │   │   │   ├── pki-key-details.ts
+│   │   │   │   │   │   ├── pki-key-list.hbs
+│   │   │   │   │   │   ├── pki-overview.hbs
+│   │   │   │   │   │   ├── pki-overview.ts
+│   │   │   │   │   │   ├── pki-role-details.hbs
+│   │   │   │   │   │   ├── pki-role-details.ts
+│   │   │   │   │   │   ├── pki-tidy-auto-configure.hbs
+│   │   │   │   │   │   ├── pki-tidy-auto-settings.hbs
+│   │   │   │   │   │   ├── pki-tidy-manual.hbs
+│   │   │   │   │   │   ├── pki-tidy-status.hbs
+│   │   │   │   │   │   └── pki-tidy-status.ts
+│   │   │   │   │   ├── parsed-certificate-info-rows.hbs
+│   │   │   │   │   ├── parsed-certificate-info-rows.ts
+│   │   │   │   │   ├── pki-generate-csr.hbs
+│   │   │   │   │   ├── pki-generate-csr.ts
+│   │   │   │   │   ├── pki-generate-root.hbs
+│   │   │   │   │   ├── pki-generate-root.ts
+│   │   │   │   │   ├── pki-generate-toggle-groups.hbs
+│   │   │   │   │   ├── pki-generate-toggle-groups.ts
+│   │   │   │   │   ├── pki-import-pem-bundle.hbs
+│   │   │   │   │   ├── pki-import-pem-bundle.ts
+│   │   │   │   │   ├── pki-info-table-rows.hbs
+│   │   │   │   │   ├── pki-issuer-cross-sign.hbs
+│   │   │   │   │   ├── pki-issuer-cross-sign.js
+│   │   │   │   │   ├── pki-key-form.hbs
+│   │   │   │   │   ├── pki-key-form.ts
+│   │   │   │   │   ├── pki-key-import.hbs
+│   │   │   │   │   ├── pki-key-import.ts
+│   │   │   │   │   ├── pki-key-parameters.hbs
+│   │   │   │   │   ├── pki-key-parameters.ts
+│   │   │   │   │   ├── pki-key-usage.hbs
+│   │   │   │   │   ├── pki-key-usage.ts
+│   │   │   │   │   ├── pki-not-valid-after-form.hbs
+│   │   │   │   │   ├── pki-not-valid-after-form.ts
+│   │   │   │   │   ├── pki-role-form.hbs
+│   │   │   │   │   ├── pki-role-form.ts
+│   │   │   │   │   ├── pki-role-generate.hbs
+│   │   │   │   │   ├── pki-role-generate.ts
+│   │   │   │   │   ├── pki-sign-intermediate-form.hbs
+│   │   │   │   │   ├── pki-sign-intermediate-form.ts
+│   │   │   │   │   ├── pki-tidy-form.hbs
+│   │   │   │   │   └── pki-tidy-form.ts
+│   │   │   │   ├── controllers
+│   │   │   │   │   ├── certificates
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── issuers
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── keys
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── roles
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── role
+│   │   │   │   │   │       ├── generate.js
+│   │   │   │   │   │       └── sign.js
+│   │   │   │   │   └── tidy
+│   │   │   │   │       └── index.js
+│   │   │   │   ├── decorators
+│   │   │   │   │   └── check-config.js
+│   │   │   │   ├── engine.js
+│   │   │   │   ├── routes
+│   │   │   │   │   ├── application.js
+│   │   │   │   │   ├── certificates
+│   │   │   │   │   │   ├── certificate
+│   │   │   │   │   │   │   └── details.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── configuration
+│   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── configuration.js
+│   │   │   │   │   ├── error.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── issuers
+│   │   │   │   │   │   ├── generate-intermediate.js
+│   │   │   │   │   │   ├── generate-root.js
+│   │   │   │   │   │   ├── import.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── issuer
+│   │   │   │   │   │   │   ├── cross-sign.js
+│   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   ├── edit.js
+│   │   │   │   │   │   │   ├── rotate-root.js
+│   │   │   │   │   │   │   └── sign.js
+│   │   │   │   │   │   └── issuer.js
+│   │   │   │   │   ├── keys
+│   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   ├── import.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── key
+│   │   │   │   │   │   │   ├── details.js
+│   │   │   │   │   │   │   └── edit.js
+│   │   │   │   │   │   └── key.js
+│   │   │   │   │   ├── overview.js
+│   │   │   │   │   ├── roles
+│   │   │   │   │   │   ├── create.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── role
+│   │   │   │   │   │       ├── details.js
+│   │   │   │   │   │       ├── edit.js
+│   │   │   │   │   │       ├── generate.js
+│   │   │   │   │   │       └── sign.js
+│   │   │   │   │   ├── tidy
+│   │   │   │   │   │   ├── auto
+│   │   │   │   │   │   │   ├── configure.js
+│   │   │   │   │   │   │   └── index.js
+│   │   │   │   │   │   ├── auto.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── manual.js
+│   │   │   │   │   └── tidy.js
+│   │   │   │   ├── routes.js
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── application.hbs
+│   │   │   │   │   ├── certificates
+│   │   │   │   │   │   ├── certificate
+│   │   │   │   │   │   │   └── details.hbs
+│   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   ├── configuration
+│   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   ├── edit.hbs
+│   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   ├── configuration.hbs
+│   │   │   │   │   ├── error.hbs
+│   │   │   │   │   ├── issuers
+│   │   │   │   │   │   ├── generate-intermediate.hbs
+│   │   │   │   │   │   ├── generate-root.hbs
+│   │   │   │   │   │   ├── import.hbs
+│   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   └── issuer
+│   │   │   │   │   │       ├── cross-sign.hbs
+│   │   │   │   │   │       ├── details.hbs
+│   │   │   │   │   │       ├── edit.hbs
+│   │   │   │   │   │       ├── rotate-root.hbs
+│   │   │   │   │   │       └── sign.hbs
+│   │   │   │   │   ├── keys
+│   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   ├── import.hbs
+│   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   └── key
+│   │   │   │   │   │       ├── details.hbs
+│   │   │   │   │   │       └── edit.hbs
+│   │   │   │   │   ├── overview.hbs
+│   │   │   │   │   ├── roles
+│   │   │   │   │   │   ├── create.hbs
+│   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   └── role
+│   │   │   │   │   │       ├── details.hbs
+│   │   │   │   │   │       ├── edit.hbs
+│   │   │   │   │   │       ├── generate.hbs
+│   │   │   │   │   │       └── sign.hbs
+│   │   │   │   │   ├── tidy
+│   │   │   │   │   │   ├── auto
+│   │   │   │   │   │   │   ├── configure.hbs
+│   │   │   │   │   │   │   └── index.hbs
+│   │   │   │   │   │   ├── auto.hbs
+│   │   │   │   │   │   ├── index.hbs
+│   │   │   │   │   │   └── manual.hbs
+│   │   │   │   │   └── tidy.hbs
+│   │   │   │   └── utils
+│   │   │   │       └── action-params.js
+│   │   │   ├── app
+│   │   │   │   └── utils
+│   │   │   │       └── action-params.js
+│   │   │   ├── config
+│   │   │   │   └── environment.js
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   └── service-worker-authenticated-download
+│   │       ├── index.js
+│   │       ├── package.json
+│   │       ├── service-worker
+│   │       │   └── index.js
+│   │       └── service-worker-registration
+│   │           └── index.js
+│   ├── metadata.json
+│   ├── mirage
+│   │   ├── config.js
+│   │   ├── factories
+│   │   │   ├── configuration.js
+│   │   │   ├── kubernetes-config.js
+│   │   │   ├── kubernetes-role.js
+│   │   │   ├── mfa-duo-method.js
+│   │   │   ├── mfa-login-enforcement.js
+│   │   │   ├── mfa-method.js
+│   │   │   ├── mfa-okta-method.js
+│   │   │   ├── mfa-pingid-method.js
+│   │   │   ├── mfa-totp-method.js
+│   │   │   ├── open-api-explorer.js
+│   │   │   ├── secret-engine.js
+│   │   │   └── server.js
+│   │   ├── handlers
+│   │   │   ├── base.js
+│   │   │   ├── clients.js
+│   │   │   ├── db.js
+│   │   │   ├── index.js
+│   │   │   ├── kms.js
+│   │   │   ├── kubernetes.js
+│   │   │   ├── mfa-config.js
+│   │   │   ├── mfa-login.js
+│   │   │   └── oidc-config.js
+│   │   ├── helpers
+│   │   │   └── modify-passthrough-response.js
+│   │   ├── identity-managers
+│   │   │   └── application.js
+│   │   ├── scenarios
+│   │   │   ├── default.js
+│   │   │   └── kubernetes.js
+│   │   └── serializers
+│   │       └── application.js
+│   ├── package.json
+│   ├── public
+│   │   ├── android-sync.svg
+│   │   ├── console.svg
+│   │   ├── duo.svg
+│   │   ├── eco
+│   │   │   ├── ad.svg
+│   │   │   ├── alicloud.svg
+│   │   │   ├── approle.svg
+│   │   │   ├── auth.svg
+│   │   │   ├── aws.svg
+│   │   │   ├── azure.svg
+│   │   │   ├── cert.svg
+│   │   │   ├── consul.svg
+│   │   │   ├── cubbyhole.svg
+│   │   │   ├── database.svg
+│   │   │   ├── generic.svg
+│   │   │   ├── jwt.svg
+│   │   │   ├── kubernetes.svg
+│   │   │   ├── kv.svg
+│   │   │   ├── ldap.svg
+│   │   │   ├── nomad.svg
+│   │   │   ├── oidc.svg
+│   │   │   ├── pki.svg
+│   │   │   ├── rabbitmq.svg
+│   │   │   ├── radius.svg
+│   │   │   ├── secrets.svg
+│   │   │   ├── ssh.svg
+│   │   │   ├── token.svg
+│   │   │   ├── totp.svg
+│   │   │   ├── transform.svg
+│   │   │   ├── transit.svg
+│   │   │   └── userpass.svg
+│   │   ├── favicon.svg
+│   │   ├── file-error.svg
+│   │   ├── file-success.svg
+│   │   ├── fonts
+│   │   │   ├── obscure.woff
+│   │   │   ├── obscure.woff2
+│   │   │   └── text-security-square.woff2
+│   │   ├── hashicorp.svg
+│   │   ├── images
+│   │   │   ├── mfa-landing.png
+│   │   │   ├── oidc-landing.png
+│   │   │   ├── pki-cross-sign.png
+│   │   │   ├── pki-rotate-root.png
+│   │   │   └── pki-tidy.png
+│   │   ├── initialize.svg
+│   │   ├── loop.svg
+│   │   ├── openbao-single.svg
+│   │   ├── openbao-text-color.svg
+│   │   ├── openbao-white.svg
+│   │   ├── openbao.svg
+│   │   ├── perf-replication.svg
+│   │   ├── pingid.svg
+│   │   ├── replication.svg
+│   │   ├── reply.svg
+│   │   ├── robots.txt
+│   │   ├── stopwatch.svg
+│   │   ├── tour.svg
+│   │   └── vault-logo.svg
+│   ├── scripts
+│   │   ├── codemods
+│   │   │   ├── README.md
+│   │   │   ├── dropdown-transform.js
+│   │   │   ├── icon-transform.js
+│   │   │   ├── inject-service.js
+│   │   │   ├── jscodeshift-babylon-parser.js
+│   │   │   ├── linkto-with-on-modifier.js
+│   │   │   ├── no-quoteless-attributes.js
+│   │   │   └── transform-deprecated-args.js
+│   │   ├── enos-test-ember.js
+│   │   ├── gen-story-md.js
+│   │   ├── list-templates.js
+│   │   ├── start-openbao.js
+│   │   └── test-helper.js
+│   ├── stories
+│   │   └── pagination-controls.md
+│   ├── testem.enos.js
+│   ├── testem.js
+│   ├── tests
+│   │   ├── acceptance
+│   │   │   ├── access
+│   │   │   │   ├── identity
+│   │   │   │   │   ├── _shared-alias-tests.js
+│   │   │   │   │   ├── _shared-tests.js
+│   │   │   │   │   ├── entities
+│   │   │   │   │   │   ├── aliases
+│   │   │   │   │   │   │   └── create-test.js
+│   │   │   │   │   │   ├── create-test.js
+│   │   │   │   │   │   └── index-test.js
+│   │   │   │   │   └── groups
+│   │   │   │   │       ├── aliases
+│   │   │   │   │       │   └── create-test.js
+│   │   │   │   │       └── create-test.js
+│   │   │   │   └── methods-test.js
+│   │   │   ├── api-explorer
+│   │   │   │   └── index-test.js
+│   │   │   ├── auth-list-test.js
+│   │   │   ├── auth-test.js
+│   │   │   ├── cluster-test.js
+│   │   │   ├── console-test.js
+│   │   │   ├── init-test.js
+│   │   │   ├── jwt-auth-method-test.js
+│   │   │   ├── leases-test.js
+│   │   │   ├── mfa-login-enforcement-test.js
+│   │   │   ├── mfa-login-test.js
+│   │   │   ├── mfa-method-test.js
+│   │   │   ├── mfa-setup-test.js
+│   │   │   ├── not-found-test.js
+│   │   │   ├── oidc-auth-method-test.js
+│   │   │   ├── oidc-config
+│   │   │   │   ├── clients-assignments-test.js
+│   │   │   │   ├── clients-keys-test.js
+│   │   │   │   └── providers-scopes-test.js
+│   │   │   ├── oidc-provider-test.js
+│   │   │   ├── pki
+│   │   │   │   ├── pki-action-forms-test.js
+│   │   │   │   ├── pki-configuration-test.js
+│   │   │   │   ├── pki-cross-sign-test.js
+│   │   │   │   ├── pki-engine-route-cleanup-test.js
+│   │   │   │   ├── pki-engine-workflow-test.js
+│   │   │   │   ├── pki-overview-test.js
+│   │   │   │   └── pki-tidy-test.js
+│   │   │   ├── policies
+│   │   │   │   └── index-test.js
+│   │   │   ├── policies-acl-old-test.js
+│   │   │   ├── policies-test.js
+│   │   │   ├── policy
+│   │   │   │   ├── edit-test.js
+│   │   │   │   └── show-test.js
+│   │   │   ├── policy-test.js
+│   │   │   ├── raft-storage-test.js
+│   │   │   ├── redirect-to-test.js
+│   │   │   ├── secrets
+│   │   │   │   └── backend
+│   │   │   │       ├── cubbyhole
+│   │   │   │       │   └── secret-test.js
+│   │   │   │       ├── database
+│   │   │   │       │   └── secret-test.js
+│   │   │   │       ├── engines-test.js
+│   │   │   │       ├── generic
+│   │   │   │       │   └── secret-test.js
+│   │   │   │       ├── kubernetes
+│   │   │   │       │   ├── configuration-test.js
+│   │   │   │       │   ├── credentials-test.js
+│   │   │   │       │   ├── overview-test.js
+│   │   │   │       │   └── roles-test.js
+│   │   │   │       ├── kv
+│   │   │   │       │   ├── breadcrumbs-test.js
+│   │   │   │       │   ├── diff-test.js
+│   │   │   │       │   └── secret-test.js
+│   │   │   │       └── ssh
+│   │   │   │           └── role-test.js
+│   │   │   ├── settings
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── configure
+│   │   │   │   │   │   ├── index-test.js
+│   │   │   │   │   │   └── section-test.js
+│   │   │   │   │   └── enable-test.js
+│   │   │   │   ├── configure-secret-backends
+│   │   │   │   │   └── configure-ssh-secret-test.js
+│   │   │   │   └── mount-secret-backend-test.js
+│   │   │   ├── settings-test.js
+│   │   │   ├── sidebar-nav-test.js
+│   │   │   ├── ssh-test.js
+│   │   │   ├── tools-test.js
+│   │   │   ├── transit-test.js
+│   │   │   ├── unseal-test.js
+│   │   │   └── wrapped-token-test.js
+│   │   ├── helpers
+│   │   │   ├── clients.js
+│   │   │   ├── codemirror.js
+│   │   │   ├── components
+│   │   │   │   ├── sidebar-nav.js
+│   │   │   │   └── ttl-picker.js
+│   │   │   ├── flash-message.js
+│   │   │   ├── index.js
+│   │   │   ├── kubernetes
+│   │   │   │   └── overview.js
+│   │   │   ├── mirage-to-models.js
+│   │   │   ├── noop-all-api-requests.js
+│   │   │   ├── oidc-config.js
+│   │   │   ├── oidc-window-stub.js
+│   │   │   ├── pki
+│   │   │   │   ├── overview.js
+│   │   │   │   ├── page
+│   │   │   │   │   ├── pki-configuration-edit.js
+│   │   │   │   │   ├── pki-keys.js
+│   │   │   │   │   ├── pki-role-details.js
+│   │   │   │   │   ├── pki-tidy-form.js
+│   │   │   │   │   └── pki-tidy.js
+│   │   │   │   ├── pki-configure-create.js
+│   │   │   │   ├── pki-delete-all-issuers.js
+│   │   │   │   ├── pki-generate-root.js
+│   │   │   │   ├── pki-issuer-cross-sign.js
+│   │   │   │   ├── pki-issuer-details.js
+│   │   │   │   ├── pki-key-form.js
+│   │   │   │   ├── pki-not-valid-after-form.js
+│   │   │   │   ├── pki-role-form.js
+│   │   │   │   ├── pki-role-generate.js
+│   │   │   │   ├── pki-run-commands.js
+│   │   │   │   ├── values.js
+│   │   │   │   └── workflow.js
+│   │   │   ├── pki.js
+│   │   │   ├── policy-generator
+│   │   │   │   └── pki.js
+│   │   │   ├── poll-cluster.js
+│   │   │   ├── stubs.js
+│   │   │   └── wait-for-error.js
+│   │   ├── index.html
+│   │   ├── integration
+│   │   │   ├── .gitkeep
+│   │   │   ├── components
+│   │   │   │   ├── alert-inline-test.js
+│   │   │   │   ├── alert-popup-test.js
+│   │   │   │   ├── auth-config-form
+│   │   │   │   │   └── options-test.js
+│   │   │   │   ├── auth-form-test.js
+│   │   │   │   ├── auth-jwt-test.js
+│   │   │   │   ├── autocomplete-input-test.js
+│   │   │   │   ├── b64-toggle-test.js
+│   │   │   │   ├── box-radio-test.js
+│   │   │   │   ├── calendar-widget-test.js
+│   │   │   │   ├── checkbox-grid-test.js
+│   │   │   │   ├── chevron-test.js
+│   │   │   │   ├── confirm-action-test.js
+│   │   │   │   ├── confirm-test.js
+│   │   │   │   ├── confirmation-modal-test.js
+│   │   │   │   ├── console
+│   │   │   │   │   ├── log-command-test.js
+│   │   │   │   │   ├── log-error-test.js
+│   │   │   │   │   ├── log-json-test.js
+│   │   │   │   │   ├── log-list-test.js
+│   │   │   │   │   ├── log-object-test.js
+│   │   │   │   │   ├── log-text-test.js
+│   │   │   │   │   └── ui-panel-test.js
+│   │   │   │   ├── database-role-edit-test.js
+│   │   │   │   ├── database-role-setting-form-test.js
+│   │   │   │   ├── date-dropdown-test.js
+│   │   │   │   ├── diff-version-selector-test.js
+│   │   │   │   ├── download-button-test.js
+│   │   │   │   ├── edit-form-test.js
+│   │   │   │   ├── empty-state-test.js
+│   │   │   │   ├── features-selection-test.js
+│   │   │   │   ├── form-error-test.js
+│   │   │   │   ├── form-field-label-test.js
+│   │   │   │   ├── form-field-test.js
+│   │   │   │   ├── get-credentials-card-test.js
+│   │   │   │   ├── hover-copy-button-test.js
+│   │   │   │   ├── icon-test.js
+│   │   │   │   ├── identity
+│   │   │   │   │   └── item-details-test.js
+│   │   │   │   ├── info-table-item-array-test.js
+│   │   │   │   ├── info-table-row-test.js
+│   │   │   │   ├── info-table-test.js
+│   │   │   │   ├── json-editor-test.js
+│   │   │   │   ├── keymgmt
+│   │   │   │   │   ├── distribute-test.js
+│   │   │   │   │   ├── key-edit-test.js
+│   │   │   │   │   └── provider-edit-test.js
+│   │   │   │   ├── kubernetes
+│   │   │   │   │   ├── config-cta-test.js
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── configuration-test.js
+│   │   │   │   │   │   ├── configure-test.js
+│   │   │   │   │   │   ├── credentials-test.js
+│   │   │   │   │   │   ├── overview-test.js
+│   │   │   │   │   │   ├── role
+│   │   │   │   │   │   │   ├── create-and-edit-test.js
+│   │   │   │   │   │   │   └── details-test.js
+│   │   │   │   │   │   └── roles-test.js
+│   │   │   │   │   └── tab-page-header-test.js
+│   │   │   │   ├── kv-object-editor-test.js
+│   │   │   │   ├── masked-input-test.js
+│   │   │   │   ├── mfa
+│   │   │   │   │   └── method-form-test.js
+│   │   │   │   ├── mfa-form-test.js
+│   │   │   │   ├── mfa-login-enforcement-form-test.js
+│   │   │   │   ├── mfa-login-enforcement-header-test.js
+│   │   │   │   ├── mfa-method-list-item-test.js
+│   │   │   │   ├── modal-test.js
+│   │   │   │   ├── mount-accessor-select-test.js
+│   │   │   │   ├── mount-backend
+│   │   │   │   │   └── type-form-test.js
+│   │   │   │   ├── mount-backend-form-test.js
+│   │   │   │   ├── object-list-input-test.js
+│   │   │   │   ├── oidc
+│   │   │   │   │   ├── assignment-form-test.js
+│   │   │   │   │   ├── client-form-test.js
+│   │   │   │   │   ├── key-form-test.js
+│   │   │   │   │   ├── provider-form-test.js
+│   │   │   │   │   └── scope-form-test.js
+│   │   │   │   ├── oidc-consent-block-test.js
+│   │   │   │   ├── overview-card-test.js
+│   │   │   │   ├── page
+│   │   │   │   │   ├── breadcrumbs-test.js
+│   │   │   │   │   └── error-test.js
+│   │   │   │   ├── pagination-controls-test.js
+│   │   │   │   ├── pgp-file-test.js
+│   │   │   │   ├── pgp-list-test.js
+│   │   │   │   ├── pki
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── pki-certificate-details-test.js
+│   │   │   │   │   │   ├── pki-configuration-details-test.js
+│   │   │   │   │   │   ├── pki-configuration-edit-test.js
+│   │   │   │   │   │   ├── pki-configure-create-test.js
+│   │   │   │   │   │   ├── pki-issuer-edit-test.js
+│   │   │   │   │   │   ├── pki-issuer-generate-intermediate-test.js
+│   │   │   │   │   │   ├── pki-issuer-generate-root-test.js
+│   │   │   │   │   │   ├── pki-issuer-import-test.js
+│   │   │   │   │   │   ├── pki-issuer-list-test.js
+│   │   │   │   │   │   ├── pki-issuer-rotate-root-test.js
+│   │   │   │   │   │   ├── pki-key-details-test.js
+│   │   │   │   │   │   ├── pki-key-list-test.js
+│   │   │   │   │   │   ├── pki-overview-test.js
+│   │   │   │   │   │   ├── pki-role-details-test.js
+│   │   │   │   │   │   ├── pki-tidy-auto-settings-test.js
+│   │   │   │   │   │   └── pki-tidy-status-test.js
+│   │   │   │   │   ├── parsed-certificate-info-rows-test.js
+│   │   │   │   │   ├── pki-generate-csr-test.js
+│   │   │   │   │   ├── pki-generate-root-test.js
+│   │   │   │   │   ├── pki-generate-toggle-groups-test.js
+│   │   │   │   │   ├── pki-import-pem-bundle-test.js
+│   │   │   │   │   ├── pki-issuer-cross-sign-test.js
+│   │   │   │   │   ├── pki-issuer-details-test.js
+│   │   │   │   │   ├── pki-key-form-test.js
+│   │   │   │   │   ├── pki-key-parameters-test.js
+│   │   │   │   │   ├── pki-key-usage-test.js
+│   │   │   │   │   ├── pki-not-valid-after-form-test.js
+│   │   │   │   │   ├── pki-role-form-test.js
+│   │   │   │   │   ├── pki-role-generate-test.js
+│   │   │   │   │   ├── pki-sign-intermediate-form-test.js
+│   │   │   │   │   └── pki-tidy-form-test.js
+│   │   │   │   ├── policy-form-test.js
+│   │   │   │   ├── radial-progress-test.js
+│   │   │   │   ├── radio-button-test.js
+│   │   │   │   ├── raft-join-test.js
+│   │   │   │   ├── raft-storage-overview-test.js
+│   │   │   │   ├── raft-storage-restore-test.js
+│   │   │   │   ├── read-more-test.js
+│   │   │   │   ├── readonly-form-field-test.js
+│   │   │   │   ├── regex-validator-test.js
+│   │   │   │   ├── search-select-test.js
+│   │   │   │   ├── search-select-with-modal-test.js
+│   │   │   │   ├── secret-edit-test.js
+│   │   │   │   ├── secret-list-header-test.js
+│   │   │   │   ├── select-test.js
+│   │   │   │   ├── selectable-card-test.js
+│   │   │   │   ├── shamir-flow-test.js
+│   │   │   │   ├── shamir-modal-flow-test.js
+│   │   │   │   ├── sidebar
+│   │   │   │   │   ├── frame-test.js
+│   │   │   │   │   ├── nav
+│   │   │   │   │   │   ├── access-test.js
+│   │   │   │   │   │   ├── cluster-test.js
+│   │   │   │   │   │   ├── policies-test.js
+│   │   │   │   │   │   └── tools-test.js
+│   │   │   │   │   └── user-menu-test.js
+│   │   │   │   ├── stat-text-test.js
+│   │   │   │   ├── string-list-test.js
+│   │   │   │   ├── text-file-test.js
+│   │   │   │   ├── toggle-button-test.js
+│   │   │   │   ├── toggle-test.js
+│   │   │   │   ├── token-expire-warning-test.js
+│   │   │   │   ├── tool-tip-test.js
+│   │   │   │   ├── toolbar-actions-test.js
+│   │   │   │   ├── toolbar-filters-test.js
+│   │   │   │   ├── toolbar-link-test.js
+│   │   │   │   ├── toolbar-test.js
+│   │   │   │   ├── transit-edit-test.js
+│   │   │   │   ├── transit-key-actions-test.js
+│   │   │   │   ├── ttl-picker-test.js
+│   │   │   │   └── wrap-ttl-test.js
+│   │   │   ├── helpers
+│   │   │   │   ├── add-to-array-test.js
+│   │   │   │   ├── changelog-url-for-test.js
+│   │   │   │   ├── date-format-test.js
+│   │   │   │   ├── date-from-now-test.js
+│   │   │   │   ├── format-duration-test.js
+│   │   │   │   ├── has-permission-test.js
+│   │   │   │   ├── is-empty-value-test.js
+│   │   │   │   ├── loose-equal-test.js
+│   │   │   │   ├── remove-from-array-test.js
+│   │   │   │   └── sanitized-html-test.js
+│   │   │   ├── services
+│   │   │   │   └── auth-test.js
+│   │   │   └── utils
+│   │   │       ├── date-formatters-test.js
+│   │   │       ├── field-to-attrs-test.js
+│   │   │       └── parse-pki-cert-test.js
+│   │   ├── pages
+│   │   │   ├── access
+│   │   │   │   ├── identity
+│   │   │   │   │   ├── aliases
+│   │   │   │   │   │   ├── add.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   └── show.js
+│   │   │   │   │   ├── create.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── show.js
+│   │   │   │   ├── methods.js
+│   │   │   │   └── namespaces
+│   │   │   │       └── index.js
+│   │   │   ├── auth.js
+│   │   │   ├── components
+│   │   │   │   ├── alert-banner.js
+│   │   │   │   ├── auth-config-form
+│   │   │   │   │   └── options.js
+│   │   │   │   ├── auth-form.js
+│   │   │   │   ├── auth-jwt.js
+│   │   │   │   ├── calendar-widget.js
+│   │   │   │   ├── console
+│   │   │   │   │   └── ui-panel.js
+│   │   │   │   ├── edit-form.js
+│   │   │   │   ├── flash-message.js
+│   │   │   │   ├── form-field.js
+│   │   │   │   ├── hover-copy-button.js
+│   │   │   │   ├── identity
+│   │   │   │   │   ├── edit-form.js
+│   │   │   │   │   └── item-details.js
+│   │   │   │   ├── info-table-row.js
+│   │   │   │   ├── json-editor.js
+│   │   │   │   ├── kv-object-editor.js
+│   │   │   │   ├── license-info.js
+│   │   │   │   ├── list-view.js
+│   │   │   │   ├── masked-input.js
+│   │   │   │   ├── mount-backend-form.js
+│   │   │   │   ├── radial-progress.js
+│   │   │   │   ├── search-select.js
+│   │   │   │   └── wizard
+│   │   │   │       └── features-selection.js
+│   │   │   ├── init.js
+│   │   │   ├── logout.js
+│   │   │   ├── policies
+│   │   │   │   ├── create.js
+│   │   │   │   └── index.js
+│   │   │   ├── policy
+│   │   │   │   ├── edit.js
+│   │   │   │   └── show.js
+│   │   │   ├── secrets
+│   │   │   │   ├── backend
+│   │   │   │   │   ├── configuration.js
+│   │   │   │   │   ├── create.js
+│   │   │   │   │   ├── credentials.js
+│   │   │   │   │   ├── database
+│   │   │   │   │   │   ├── connection.js
+│   │   │   │   │   │   └── role.js
+│   │   │   │   │   ├── edit.js
+│   │   │   │   │   ├── kv
+│   │   │   │   │   │   ├── edit-secret.js
+│   │   │   │   │   │   └── show.js
+│   │   │   │   │   ├── list.js
+│   │   │   │   │   ├── pki
+│   │   │   │   │   │   ├── edit-role.js
+│   │   │   │   │   │   ├── generate-cert.js
+│   │   │   │   │   │   └── show.js
+│   │   │   │   │   ├── show.js
+│   │   │   │   │   └── ssh
+│   │   │   │   │       ├── edit-role.js
+│   │   │   │   │       ├── generate-otp.js
+│   │   │   │   │       └── show.js
+│   │   │   │   └── backends.js
+│   │   │   └── settings
+│   │   │       ├── auth
+│   │   │       │   ├── configure
+│   │   │       │   │   ├── index.js
+│   │   │       │   │   └── section.js
+│   │   │       │   └── enable.js
+│   │   │       └── mount-secret-backend.js
+│   │   ├── test-helper.js
+│   │   └── unit
+│   │       ├── .gitkeep
+│   │       ├── adapters
+│   │       │   ├── aws-credential-test.js
+│   │       │   ├── capabilities-test.js
+│   │       │   ├── cluster-test.js
+│   │       │   ├── console-test.js
+│   │       │   ├── identity
+│   │       │   │   ├── _test-cases.js
+│   │       │   │   ├── entity-alias-test.js
+│   │       │   │   ├── entity-merge-test.js
+│   │       │   │   ├── entity-test.js
+│   │       │   │   ├── group-alias-test.js
+│   │       │   │   └── group-test.js
+│   │       │   ├── kubernetes
+│   │       │   │   ├── config-test.js
+│   │       │   │   └── role-test.js
+│   │       │   ├── oidc
+│   │       │   │   ├── assignment-test.js
+│   │       │   │   ├── client-test.js
+│   │       │   │   ├── key-test.js
+│   │       │   │   ├── provider-test.js
+│   │       │   │   ├── scope-test.js
+│   │       │   │   └── test-helper.js
+│   │       │   ├── pki
+│   │       │   │   ├── action-test.js
+│   │       │   │   ├── certificate
+│   │       │   │   │   ├── base-test.js
+│   │       │   │   │   ├── generate-test.js
+│   │       │   │   │   └── sign-test.js
+│   │       │   │   ├── config-test.js
+│   │       │   │   ├── key-test.js
+│   │       │   │   ├── role-test.js
+│   │       │   │   ├── sign-intermediate-test.js
+│   │       │   │   └── tidy-test.js
+│   │       │   ├── secret-engine-test.js
+│   │       │   ├── secret-test.js
+│   │       │   ├── secret-v2-test.js
+│   │       │   ├── secret-v2-version-test.js
+│   │       │   ├── tools-test.js
+│   │       │   └── transit-key-test.js
+│   │       ├── components
+│   │       │   ├── auth-form-test.js
+│   │       │   ├── auth-jwt-test.js
+│   │       │   └── identity
+│   │       │       └── edit-form-test.js
+│   │       ├── decorators
+│   │       │   ├── model-expanded-attributes-test.js
+│   │       │   ├── model-form-fields-test.js
+│   │       │   └── model-validations-test.js
+│   │       ├── helpers
+│   │       │   ├── await-test.js
+│   │       │   ├── filter-wildcard-test.js
+│   │       │   └── is-wildcard-string-test.js
+│   │       ├── lib
+│   │       │   ├── attach-capabilities-test.js
+│   │       │   ├── console-helpers-test.js
+│   │       │   ├── kv-object-test.js
+│   │       │   ├── local-storage-test.js
+│   │       │   └── path-to-tree-test.js
+│   │       ├── machines
+│   │       │   ├── auth-machine-test.js
+│   │       │   ├── policies-machine-test.js
+│   │       │   ├── secrets-machine-test.js
+│   │       │   ├── tools-machine-test.js
+│   │       │   └── tutorial-machine-test.js
+│   │       ├── models
+│   │       │   ├── capabilities-test.js
+│   │       │   ├── role-jwt-test.js
+│   │       │   ├── secret-engine-test.js
+│   │       │   ├── secret-v2-version-test.js
+│   │       │   └── transit-key-test.js
+│   │       ├── routes
+│   │       │   └── vault
+│   │       │       └── cluster
+│   │       │           ├── oidc-callback-test.js
+│   │       │           └── redirect-test.js
+│   │       ├── serializers
+│   │       │   ├── mfa-login-enforcement-test.js
+│   │       │   ├── pki
+│   │       │   │   └── action-test.js
+│   │       │   ├── policy-test.js
+│   │       │   └── transit-key-test.js
+│   │       ├── services
+│   │       │   ├── auth-test.js
+│   │       │   ├── console-test.js
+│   │       │   ├── path-helper-test.js
+│   │       │   ├── permissions-test.js
+│   │       │   ├── store-test.js
+│   │       │   └── wizard-test.js
+│   │       └── utils
+│   │           ├── api-path-test.js
+│   │           ├── chart-helpers-test.js
+│   │           ├── common-prefix-test.js
+│   │           ├── openapi-to-attrs-test.js
+│   │           ├── sort-objects-test.js
+│   │           ├── timestamp-test.js
+│   │           ├── trim-right-test.js
+│   │           └── validators-test.js
+│   ├── tsconfig.json
+│   ├── types
+│   │   ├── ember-cli-flash
+│   │   │   └── services
+│   │   │       └── flash-messages.d.ts
+│   │   ├── ember-data
+│   │   │   └── types
+│   │   │       └── registries
+│   │   │           ├── adapter.d.ts
+│   │   │           └── model.d.ts
+│   │   ├── forms.ts
+│   │   ├── generate-declaration.md
+│   │   ├── global.d.ts
+│   │   └── vault
+│   │       ├── adapters
+│   │       │   └── pki
+│   │       │       ├── issuer.d.ts
+│   │       │       ├── role.d.ts
+│   │       │       └── tidy.d.ts
+│   │       ├── app-types.ts
+│   │       ├── index.d.ts
+│   │       ├── models
+│   │       │   ├── capabilities.d.ts
+│   │       │   └── pki
+│   │       │       ├── action.d.ts
+│   │       │       ├── certificate
+│   │       │       │   ├── base.d.ts
+│   │       │       │   ├── generate.d.ts
+│   │       │       │   ├── sign-intermediate.d.ts
+│   │       │       │   └── sign.d.ts
+│   │       │       ├── config
+│   │       │       │   ├── crl.d.ts
+│   │       │       │   └── urls.d.ts
+│   │       │       ├── issuer.d.ts
+│   │       │       ├── key.d.ts
+│   │       │       ├── role.d.ts
+│   │       │       └── tidy.d.ts
+│   │       └── utils
+│   │           ├── camelize-object-keys.d.ts
+│   │           ├── field-to-attrs.d.ts
+│   │           └── parse-pki-cert.d.ts
+│   ├── vendor
+│   │   ├── .gitkeep
+│   │   └── string-includes.js
+│   ├── vercel.json
+│   └── yarn.lock
+├── vault
+│   ├── acl.go
+│   ├── acl_test.go
+│   ├── audit.go
+│   ├── audit_broker.go
+│   ├── audit_test.go
+│   ├── audited_headers.go
+│   ├── audited_headers_test.go
+│   ├── auth.go
+│   ├── auth_test.go
+│   ├── barrier
+│   │   ├── aes_gcm.go
+│   │   ├── aes_gcm_test.go
+│   │   ├── barrier.go
+│   │   ├── barrier_test.go
+│   │   ├── keyring.go
+│   │   ├── keyring_test.go
+│   │   ├── testing.go
+│   │   ├── view.go
+│   │   └── view_test.go
+│   ├── capabilities.go
+│   ├── capabilities_test.go
+│   ├── cluster
+│   │   ├── cluster.go
+│   │   ├── inmem_layer.go
+│   │   ├── inmem_layer_test.go
+│   │   ├── simulations.go
+│   │   └── tcp_layer.go
+│   ├── cluster.go
+│   ├── cluster_test.go
+│   ├── core.go
+│   ├── core_cache_invalidate.go
+│   ├── core_cache_invalidate_test.go
+│   ├── core_metrics.go
+│   ├── core_metrics_test.go
+│   ├── core_test.go
+│   ├── cors.go
+│   ├── counters.go
+│   ├── counters_test.go
+│   ├── custom_response_headers.go
+│   ├── custom_response_headers_test.go
+│   ├── deadlock_test.go
+│   ├── diagnose
+│   │   ├── file_checks.go
+│   │   ├── file_checks_test.go
+│   │   ├── file_checks_unix.go
+│   │   ├── file_checks_windows.go
+│   │   ├── helpers.go
+│   │   ├── helpers_test.go
+│   │   ├── mock_storage_backend.go
+│   │   ├── os_common.go
+│   │   ├── os_openbsd_arm.go
+│   │   ├── os_unix.go
+│   │   ├── os_windows.go
+│   │   ├── output.go
+│   │   ├── raft_checks.go
+│   │   ├── storage_checks.go
+│   │   ├── storage_checks_test.go
+│   │   ├── test-fixtures
+│   │   │   ├── chain.crt.pem
+│   │   │   ├── ecdsa.crt
+│   │   │   ├── ecdsa.key
+│   │   │   ├── expiredcert.pem
+│   │   │   ├── expiredprivatekey.pem
+│   │   │   ├── fakecert.pem
+│   │   │   ├── goodcertbadroot.pem
+│   │   │   ├── goodcertwithroot.pem
+│   │   │   ├── goodkey.pem
+│   │   │   ├── intermediateCert.pem
+│   │   │   ├── selfSignedCert.pem
+│   │   │   ├── selfSignedCertKey.pem
+│   │   │   ├── trailingdatacert.pem
+│   │   │   └── twoRootCA.pem
+│   │   ├── tls_verification.go
+│   │   └── tls_verification_test.go
+│   ├── dynamic_system_view.go
+│   ├── dynamic_system_view_test.go
+│   ├── expiration.go
+│   ├── expiration_integ_test.go
+│   ├── expiration_test.go
+│   ├── expiration_testing_util_common.go
+│   ├── external_plugin_test.go
+│   ├── external_tests
+│   │   ├── api
+│   │   │   ├── api_integration_test.go
+│   │   │   ├── kv_helpers_test.go
+│   │   │   ├── renewer_integration_test.go
+│   │   │   ├── secret_test.go
+│   │   │   ├── sudo_paths_test.go
+│   │   │   └── sys_rotate_ext_test.go
+│   │   ├── approle
+│   │   │   ├── alias_name_panic_test.go
+│   │   │   └── wrapped_secretid_test.go
+│   │   ├── expiration
+│   │   │   └── expiration_test.go
+│   │   ├── identity
+│   │   │   ├── aliases_test.go
+│   │   │   ├── cross_namespace_test.go
+│   │   │   ├── entities_test.go
+│   │   │   ├── group_aliases_test.go
+│   │   │   ├── groups_test.go
+│   │   │   ├── identity_test.go
+│   │   │   ├── login_mfa_duo_test.go
+│   │   │   ├── login_mfa_totp_test.go
+│   │   │   ├── oidc_provider_test.go
+│   │   │   └── userlockouts_test.go
+│   │   ├── kv
+│   │   │   ├── kv_patch_test.go
+│   │   │   ├── kv_subkeys_test.go
+│   │   │   └── kvv2_upgrade_test.go
+│   │   ├── metrics
+│   │   │   └── core_metrics_int_test.go
+│   │   ├── mfa
+│   │   │   └── login_mfa_test.go
+│   │   ├── misc
+│   │   │   ├── misc_binary
+│   │   │   │   └── recovery_test.go
+│   │   │   ├── recover_from_panic_test.go
+│   │   │   └── recovery_test.go
+│   │   ├── plugin
+│   │   │   ├── external_plugin_test.go
+│   │   │   └── plugin_test.go
+│   │   ├── policy
+│   │   │   ├── acl_templating_test.go
+│   │   │   └── policy_test.go
+│   │   ├── postgresql_binary
+│   │   │   └── postgresql_test.go
+│   │   ├── pprof
+│   │   │   ├── pprof.go
+│   │   │   ├── pprof_binary
+│   │   │   │   └── pprof_test.go
+│   │   │   └── pprof_test.go
+│   │   ├── quotas
+│   │   │   └── quotas_test.go
+│   │   ├── raft
+│   │   │   ├── raft.go
+│   │   │   ├── raft_autopilot_test.go
+│   │   │   ├── raft_binary
+│   │   │   │   └── raft_test.go
+│   │   │   └── raft_test.go
+│   │   ├── raftha
+│   │   │   └── raft_ha_test.go
+│   │   ├── response
+│   │   │   └── allowed_response_headers_test.go
+│   │   ├── router
+│   │   │   └── router_ext_test.go
+│   │   ├── sealmigration
+│   │   │   ├── seal_migration_pre14_test.go
+│   │   │   ├── seal_migration_test.go
+│   │   │   └── testshared.go
+│   │   ├── sealmigrationext
+│   │   │   └── seal_migration_pre14_test.go
+│   │   ├── standby
+│   │   │   └── read_only_standby_test.go
+│   │   ├── storage
+│   │   │   └── crosstest
+│   │   │       └── cross_test.go
+│   │   ├── tlslistener_binary
+│   │   │   └── tls_test.go
+│   │   ├── token
+│   │   │   ├── batch_token_test.go
+│   │   │   └── token_test.go
+│   │   └── userpass_binary
+│   │       └── ip_token_binding_test.go
+│   ├── generate_root.go
+│   ├── generate_root_recovery.go
+│   ├── generate_root_test.go
+│   ├── ha.go
+│   ├── ha_test.go
+│   ├── identity_*.go  (20 files)
+│   ├── init.go
+│   ├── init_test.go
+│   ├── inspectable.go
+│   ├── inspectable_test.go
+│   ├── logical_*.go  (16 files)
+│   ├── login_mfa.go
+│   ├── login_mfa_test.go
+│   ├── mfa_auth_resp_priority_queue.go
+│   ├── mfa_auth_resp_priority_queue_test.go
+│   ├── mount.go
+│   ├── mount_entry.go
+│   ├── mount_table.go
+│   ├── mount_test.go
+│   ├── namespace_oss.go
+│   ├── namespace_store.go
+│   ├── namespace_store_test.go
+│   ├── namespace_store_tree.go
+│   ├── plugin_catalog.go
+│   ├── plugin_catalog_oci_test.go
+│   ├── plugin_catalog_test.go
+│   ├── plugin_reload.go
+│   ├── policy.go
+│   ├── policy_store.go
+│   ├── policy_store_test.go
+│   ├── policy_test.go
+│   ├── quotas
+│   │   ├── quotas.go
+│   │   ├── quotas_rate_limit.go
+│   │   ├── quotas_rate_limit_test.go
+│   │   ├── quotas_test.go
+│   │   └── quotas_util.go
+│   ├── raft.go
+│   ├── rekey.go
+│   ├── rekey_test.go
+│   ├── request_forwarding.go
+│   ├── request_forwarding_rpc.go
+│   ├── request_forwarding_service.pb.go
+│   ├── request_forwarding_service.proto
+│   ├── request_forwarding_service_grpc.pb.go
+│   ├── request_handling.go
+│   ├── request_handling_list_filtering.go
+│   ├── request_handling_test.go
+│   ├── rollback.go
+│   ├── rollback_test.go
+│   ├── rotate.go
+│   ├── rotate_test.go
+│   ├── router.go
+│   ├── router_access.go
+│   ├── router_test.go
+│   ├── router_testing.go
+│   ├── seal
+│   │   ├── envelope.go
+│   │   ├── envelope_test.go
+│   │   ├── seal.go
+│   │   └── seal_testing.go
+│   ├── seal.go
+│   ├── seal_access.go
+│   ├── seal_autoseal.go
+│   ├── seal_autoseal_test.go
+│   ├── seal_test.go
+│   ├── seal_testing.go
+│   ├── storage_access.go
+│   ├── test_cluster_detect_deadlock.go
+│   ├── test_cluster_do_not_detect_deadlock.go
+│   ├── testing.go
+│   ├── token_store.go
+│   ├── token_store_test.go
+│   ├── tokens
+│   │   ├── token.pb.go
+│   │   └── token.proto
+│   ├── ui.go
+│   ├── ui_test.go
+│   ├── version_store.go
+│   ├── version_store_test.go
+│   └── wrapping.go
+├── version
+│   ├── cgo.go
+│   ├── version.go
+│   └── version_base.go
+└── website
+    ├── .dir-locals.el
+    ├── .gitignore
+    ├── .markdownlint-cli2.jsonc
+    ├── Dockerfile
+    ├── Makefile
+    ├── README.md
+    ├── babel.config.js
+    ├── content
+    │   ├── api-docs
+    │   │   ├── auth
+    │   │   │   ├── approle.mdx
+    │   │   │   ├── cert.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── jwt.mdx
+    │   │   │   ├── kerberos.mdx
+    │   │   │   ├── kubernetes.mdx
+    │   │   │   ├── ldap.mdx
+    │   │   │   ├── radius.mdx
+    │   │   │   ├── token.mdx
+    │   │   │   └── userpass.mdx
+    │   │   ├── index.mdx
+    │   │   ├── libraries.mdx
+    │   │   ├── relatedtools.mdx
+    │   │   ├── secret
+    │   │   │   ├── cubbyhole.mdx
+    │   │   │   ├── databases
+    │   │   │   │   ├── cassandra.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── influxdb.mdx
+    │   │   │   │   ├── mysql-maria.mdx
+    │   │   │   │   ├── postgresql.mdx
+    │   │   │   │   └── valkey.mdx
+    │   │   │   ├── identity
+    │   │   │   │   ├── entity-alias.mdx
+    │   │   │   │   ├── entity.mdx
+    │   │   │   │   ├── group-alias.mdx
+    │   │   │   │   ├── group.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── lookup.mdx
+    │   │   │   │   ├── mfa
+    │   │   │   │   │   ├── duo.mdx
+    │   │   │   │   │   ├── index.mdx
+    │   │   │   │   │   ├── login-enforcement.mdx
+    │   │   │   │   │   ├── okta.mdx
+    │   │   │   │   │   ├── pingid.mdx
+    │   │   │   │   │   └── totp.mdx
+    │   │   │   │   ├── oidc-provider.mdx
+    │   │   │   │   └── tokens.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── kubernetes.mdx
+    │   │   │   ├── kv
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── kv-v1.mdx
+    │   │   │   │   └── kv-v2.mdx
+    │   │   │   ├── ldap.mdx
+    │   │   │   ├── pki.mdx
+    │   │   │   ├── rabbitmq.mdx
+    │   │   │   ├── ssh.mdx
+    │   │   │   ├── totp.mdx
+    │   │   │   └── transit.mdx
+    │   │   └── system
+    │   │       ├── audit-hash.mdx
+    │   │       ├── audit.mdx
+    │   │       ├── auth.mdx
+    │   │       ├── capabilities-accessor.mdx
+    │   │       ├── capabilities-self.mdx
+    │   │       ├── capabilities.mdx
+    │   │       ├── config-auditing.mdx
+    │   │       ├── config-cors.mdx
+    │   │       ├── config-state.mdx
+    │   │       ├── config-ui.mdx
+    │   │       ├── decode-token.mdx
+    │   │       ├── generate-recovery-token.mdx
+    │   │       ├── generate-root.mdx
+    │   │       ├── ha-status.mdx
+    │   │       ├── health.mdx
+    │   │       ├── host-info.mdx
+    │   │       ├── in-flight-req.mdx
+    │   │       ├── index.mdx
+    │   │       ├── init.mdx
+    │   │       ├── inspect
+    │   │       │   ├── index.mdx
+    │   │       │   ├── request.mdx
+    │   │       │   └── router.mdx
+    │   │       ├── internal-counters.mdx
+    │   │       ├── internal-specs-openapi.mdx
+    │   │       ├── internal-ui-mounts.mdx
+    │   │       ├── internal-ui-namespaces.mdx
+    │   │       ├── internal-ui-resultant-acl.mdx
+    │   │       ├── key-status.mdx
+    │   │       ├── leader.mdx
+    │   │       ├── leases.mdx
+    │   │       ├── loggers.mdx
+    │   │       ├── metrics.mdx
+    │   │       ├── mfa-validate.mdx
+    │   │       ├── monitor.mdx
+    │   │       ├── mounts.mdx
+    │   │       ├── namespaces.mdx
+    │   │       ├── plugins-catalog.mdx
+    │   │       ├── plugins-reload-backend.mdx
+    │   │       ├── policies-password.mdx
+    │   │       ├── policies.mdx
+    │   │       ├── policy.mdx
+    │   │       ├── pprof.mdx
+    │   │       ├── quotas-config.mdx
+    │   │       ├── rate-limit-quotas.mdx
+    │   │       ├── raw.mdx
+    │   │       ├── rekey-recovery-key.mdx
+    │   │       ├── rekey.mdx
+    │   │       ├── remount.mdx
+    │   │       ├── rotate
+    │   │       │   ├── backup.mdx
+    │   │       │   ├── index.mdx
+    │   │       │   ├── init.mdx
+    │   │       │   ├── keyring-config.mdx
+    │   │       │   ├── keyring.mdx
+    │   │       │   ├── root.mdx
+    │   │       │   ├── update.mdx
+    │   │       │   └── verify.mdx
+    │   │       ├── seal-status.mdx
+    │   │       ├── seal.mdx
+    │   │       ├── step-down.mdx
+    │   │       ├── storage
+    │   │       │   ├── index.mdx
+    │   │       │   ├── raft.mdx
+    │   │       │   └── raftautopilot.mdx
+    │   │       ├── tools.mdx
+    │   │       ├── unseal.mdx
+    │   │       ├── user-lockout.mdx
+    │   │       ├── version-history.mdx
+    │   │       ├── wrapping-lookup.mdx
+    │   │       ├── wrapping-rewrap.mdx
+    │   │       ├── wrapping-unwrap.mdx
+    │   │       └── wrapping-wrap.mdx
+    │   ├── blog
+    │   │   ├── 2024-07-25-release-v2-0-0.md
+    │   │   ├── 2024-09-23-kickoff.md
+    │   │   ├── 2024-09-27-profiles.md
+    │   │   ├── 2024-10-03-maintainers.md
+    │   │   ├── 2024-10-11-roadmap.md
+    │   │   ├── 2024-10-16-transactions.md
+    │   │   ├── 2024-10-24-mentees-first-week.md
+    │   │   ├── 2024-10-27-transaction-details.md
+    │   │   ├── 2024-11-29-release-v2-1-0.md
+    │   │   ├── 2024-12-11-rfcs-dec-2024.md
+    │   │   ├── 2025-01-16-fosdem.md
+    │   │   ├── 2025-01-31-bao-at-fosdem.md
+    │   │   ├── 2025-02-07-bao-back-home.md
+    │   │   ├── 2025-02-12-cipherboy-fosdem-25-talk.md
+    │   │   ├── 2025-02-26-vision-for-namespaces.md
+    │   │   ├── 2025-03-18-edgex-selects-openbao.md
+    │   │   ├── 2025-05-30-namespaces-announcement.md
+    │   │   ├── 2025-06-17-openbao-to-openssf.md
+    │   │   ├── 2025-08-19-meet-openbao-oss-europe-2025.md
+    │   │   ├── 2025-08-28-openbao-oss-europe-2025-wrap.md
+    │   │   ├── 2025-09-23-mentorship-program.md
+    │   │   ├── 2025-10-20-roadmap-2.0.md
+    │   │   └── authors.yml
+    │   ├── docs
+    │   │   ├── agent-and-proxy
+    │   │   │   ├── agent
+    │   │   │   │   ├── apiproxy.mdx
+    │   │   │   │   ├── caching
+    │   │   │   │   │   ├── index.mdx
+    │   │   │   │   │   └── persistent-caches
+    │   │   │   │   │       ├── index.mdx
+    │   │   │   │   │       └── kubernetes.mdx
+    │   │   │   │   ├── generate-config
+    │   │   │   │   │   └── index.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── process-supervisor.mdx
+    │   │   │   │   ├── template.mdx
+    │   │   │   │   ├── versions.mdx
+    │   │   │   │   └── winsvc.mdx
+    │   │   │   ├── autoauth
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── methods
+    │   │   │   │   │   ├── approle.mdx
+    │   │   │   │   │   ├── cert.mdx
+    │   │   │   │   │   ├── index.mdx
+    │   │   │   │   │   ├── jwt.mdx
+    │   │   │   │   │   ├── kerberos.mdx
+    │   │   │   │   │   ├── kubernetes.mdx
+    │   │   │   │   │   └── token_file.mdx
+    │   │   │   │   └── sinks
+    │   │   │   │       ├── file.mdx
+    │   │   │   │       └── index.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   └── proxy
+    │   │   │       ├── apiproxy.mdx
+    │   │   │       ├── caching
+    │   │   │       │   ├── index.mdx
+    │   │   │       │   └── persistent-caches
+    │   │   │       │       ├── index.mdx
+    │   │   │       │       └── kubernetes.mdx
+    │   │   │       ├── index.mdx
+    │   │   │       └── versions.mdx
+    │   │   ├── audit
+    │   │   │   ├── file.mdx
+    │   │   │   ├── http.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── socket.mdx
+    │   │   │   └── syslog.mdx
+    │   │   ├── auth
+    │   │   │   ├── approle.mdx
+    │   │   │   ├── cert.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── jwt
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   └── oidc-providers
+    │   │   │   │       ├── auth0.mdx
+    │   │   │   │       ├── azuread.mdx
+    │   │   │   │       ├── forgerock.mdx
+    │   │   │   │       ├── gitlab.mdx
+    │   │   │   │       ├── google.mdx
+    │   │   │   │       ├── ibmisam.mdx
+    │   │   │   │       ├── index.mdx
+    │   │   │   │       ├── keycloak.mdx
+    │   │   │   │       ├── kubernetes.mdx
+    │   │   │   │       ├── okta.mdx
+    │   │   │   │       └── secureauth.mdx
+    │   │   │   ├── kerberos.mdx
+    │   │   │   ├── kubernetes.mdx
+    │   │   │   ├── ldap.mdx
+    │   │   │   ├── login-mfa
+    │   │   │   │   ├── faq.mdx
+    │   │   │   │   └── index.mdx
+    │   │   │   ├── radius.mdx
+    │   │   │   ├── token.mdx
+    │   │   │   └── userpass.mdx
+    │   │   ├── browser-support.mdx
+    │   │   ├── commands
+    │   │   │   ├── agent.mdx
+    │   │   │   ├── audit
+    │   │   │   │   ├── disable.mdx
+    │   │   │   │   ├── enable.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   └── list.mdx
+    │   │   │   ├── auth
+    │   │   │   │   ├── disable.mdx
+    │   │   │   │   ├── enable.mdx
+    │   │   │   │   ├── help.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── list.mdx
+    │   │   │   │   ├── move.mdx
+    │   │   │   │   └── tune.mdx
+    │   │   │   ├── debug.mdx
+    │   │   │   ├── delete.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── kv
+    │   │   │   │   ├── delete.mdx
+    │   │   │   │   ├── destroy.mdx
+    │   │   │   │   ├── enable-versioning.mdx
+    │   │   │   │   ├── get.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── list.mdx
+    │   │   │   │   ├── metadata.mdx
+    │   │   │   │   ├── patch.mdx
+    │   │   │   │   ├── put.mdx
+    │   │   │   │   ├── rollback.mdx
+    │   │   │   │   └── undelete.mdx
+    │   │   │   ├── lease
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── lookup.mdx
+    │   │   │   │   ├── renew.mdx
+    │   │   │   │   └── revoke.mdx
+    │   │   │   ├── list.mdx
+    │   │   │   ├── login.mdx
+    │   │   │   ├── monitor.mdx
+    │   │   │   ├── namespace.mdx
+    │   │   │   ├── operator
+    │   │   │   │   ├── diagnose.mdx
+    │   │   │   │   ├── generate-root.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── init.mdx
+    │   │   │   │   ├── key-status.mdx
+    │   │   │   │   ├── members.mdx
+    │   │   │   │   ├── migrate.mdx
+    │   │   │   │   ├── raft.mdx
+    │   │   │   │   ├── rekey.mdx
+    │   │   │   │   ├── rotate-keys.mdx
+    │   │   │   │   ├── rotate.mdx
+    │   │   │   │   ├── seal.mdx
+    │   │   │   │   ├── step-down.mdx
+    │   │   │   │   ├── unseal.mdx
+    │   │   │   │   └── validate-config.mdx
+    │   │   │   ├── patch.mdx
+    │   │   │   ├── path-help.mdx
+    │   │   │   ├── pki
+    │   │   │   │   ├── health-check.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── issue.mdx
+    │   │   │   │   ├── list-intermediates.mdx
+    │   │   │   │   ├── reissue.mdx
+    │   │   │   │   └── verify-sign.mdx
+    │   │   │   ├── plugin
+    │   │   │   │   ├── deregister.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── info.mdx
+    │   │   │   │   ├── init.mdx
+    │   │   │   │   ├── list.mdx
+    │   │   │   │   ├── register.mdx
+    │   │   │   │   └── reload.mdx
+    │   │   │   ├── policy
+    │   │   │   │   ├── delete.mdx
+    │   │   │   │   ├── fmt.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── list.mdx
+    │   │   │   │   ├── read.mdx
+    │   │   │   │   └── write.mdx
+    │   │   │   ├── print.mdx
+    │   │   │   ├── proxy.mdx
+    │   │   │   ├── read.mdx
+    │   │   │   ├── secrets
+    │   │   │   │   ├── disable.mdx
+    │   │   │   │   ├── enable.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── list.mdx
+    │   │   │   │   ├── move.mdx
+    │   │   │   │   └── tune.mdx
+    │   │   │   ├── server.mdx
+    │   │   │   ├── ssh.mdx
+    │   │   │   ├── status.mdx
+    │   │   │   ├── token
+    │   │   │   │   ├── capabilities.mdx
+    │   │   │   │   ├── create.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── lookup.mdx
+    │   │   │   │   ├── renew.mdx
+    │   │   │   │   └── revoke.mdx
+    │   │   │   ├── token-helper.mdx
+    │   │   │   ├── transit
+    │   │   │   │   ├── import.mdx
+    │   │   │   │   └── index.mdx
+    │   │   │   ├── unwrap.mdx
+    │   │   │   ├── version-history.mdx
+    │   │   │   ├── version.mdx
+    │   │   │   └── write.mdx
+    │   │   ├── concepts
+    │   │   │   ├── auth.mdx
+    │   │   │   ├── cel.mdx
+    │   │   │   ├── dev-server.mdx
+    │   │   │   ├── duration-format.mdx
+    │   │   │   ├── ha.mdx
+    │   │   │   ├── identity.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── integrated-storage
+    │   │   │   │   ├── autopilot.mdx
+    │   │   │   │   └── index.mdx
+    │   │   │   ├── lease.mdx
+    │   │   │   ├── mount-migration.mdx
+    │   │   │   ├── namespaces
+    │   │   │   │   └── index.mdx
+    │   │   │   ├── oidc-provider.mdx
+    │   │   │   ├── password-policies.mdx
+    │   │   │   ├── pgp-gpg-keybase.mdx
+    │   │   │   ├── policies.mdx
+    │   │   │   ├── profiles.mdx
+    │   │   │   ├── recovery-mode.mdx
+    │   │   │   ├── resource-quotas.mdx
+    │   │   │   ├── response-wrapping.mdx
+    │   │   │   ├── seal.mdx
+    │   │   │   ├── storage.mdx
+    │   │   │   ├── tokens.mdx
+    │   │   │   ├── user-lockout.mdx
+    │   │   │   └── username-templating.mdx
+    │   │   ├── configuration
+    │   │   │   ├── audit.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── listener
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── tcp.mdx
+    │   │   │   │   └── unix.mdx
+    │   │   │   ├── log-requests-level.mdx
+    │   │   │   ├── plugins.mdx
+    │   │   │   ├── seal
+    │   │   │   │   ├── alicloudkms.mdx
+    │   │   │   │   ├── awskms.mdx
+    │   │   │   │   ├── azurekeyvault.mdx
+    │   │   │   │   ├── gcpckms.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── kmip.mdx
+    │   │   │   │   ├── ocikms.mdx
+    │   │   │   │   ├── pkcs11.mdx
+    │   │   │   │   ├── static.mdx
+    │   │   │   │   └── transit.mdx
+    │   │   │   ├── self-init.mdx
+    │   │   │   ├── service-registration
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   └── kubernetes.mdx
+    │   │   │   ├── storage
+    │   │   │   │   ├── filesystem.mdx
+    │   │   │   │   ├── in-memory.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── postgresql.mdx
+    │   │   │   │   └── raft.mdx
+    │   │   │   ├── telemetry.mdx
+    │   │   │   ├── ui.mdx
+    │   │   │   └── user-lockout.mdx
+    │   │   ├── contributing
+    │   │   │   ├── code-organization.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   └── packaging.mdx
+    │   │   ├── deprecation
+    │   │   │   ├── faq.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   └── unauthed-rekey.mdx
+    │   │   ├── get-started
+    │   │   │   └── developer-qs.mdx
+    │   │   ├── glossary.mdx
+    │   │   ├── guides
+    │   │   │   ├── migration.mdx
+    │   │   │   └── unseal
+    │   │   │       └── pkcs11
+    │   │   │           ├── securosys.mdx
+    │   │   │           └── utimaco.mdx
+    │   │   ├── index.mdx
+    │   │   ├── install.mdx
+    │   │   ├── internals
+    │   │   │   ├── architecture.mdx
+    │   │   │   ├── high-availability.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── integrated-storage.mdx
+    │   │   │   ├── limits.mdx
+    │   │   │   ├── rotation.mdx
+    │   │   │   ├── security.mdx
+    │   │   │   ├── telemetry
+    │   │   │   │   ├── enable-telemetry.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   └── metrics
+    │   │   │   │       ├── all.mdx
+    │   │   │   │       ├── audit.mdx
+    │   │   │   │       ├── authn.mdx
+    │   │   │   │       ├── availability.mdx
+    │   │   │   │       ├── core-system.mdx
+    │   │   │   │       ├── database.mdx
+    │   │   │   │       ├── index.mdx
+    │   │   │   │       ├── policy.mdx
+    │   │   │   │       ├── postgresql.mdx
+    │   │   │   │       ├── raft.mdx
+    │   │   │   │       ├── secrets.mdx
+    │   │   │   │       └── storage.mdx
+    │   │   │   └── token.mdx
+    │   │   ├── known-issues.mdx
+    │   │   ├── platform
+    │   │   │   ├── index.mdx
+    │   │   │   └── k8s
+    │   │   │       ├── csi
+    │   │   │       │   ├── configurations.mdx
+    │   │   │       │   ├── examples.mdx
+    │   │   │       │   ├── index.mdx
+    │   │   │       │   └── installation.mdx
+    │   │   │       ├── helm
+    │   │   │       │   ├── configuration.mdx
+    │   │   │       │   ├── examples
+    │   │   │       │   │   ├── development.mdx
+    │   │   │       │   │   ├── external.mdx
+    │   │   │       │   │   ├── ha-tls.mdx
+    │   │   │       │   │   ├── ha-with-raft.mdx
+    │   │   │       │   │   ├── index.mdx
+    │   │   │       │   │   ├── injector-tls-cert-manager.mdx
+    │   │   │       │   │   ├── injector-tls.mdx
+    │   │   │       │   │   ├── kubernetes-auth.mdx
+    │   │   │       │   │   ├── snapshot-cronjob.mdx
+    │   │   │       │   │   ├── standalone-audit.mdx
+    │   │   │       │   │   ├── standalone-load-balanced-ui.mdx
+    │   │   │       │   │   └── standalone-tls.mdx
+    │   │   │       │   ├── index.mdx
+    │   │   │       │   ├── openshift.mdx
+    │   │   │       │   ├── run.mdx
+    │   │   │       │   └── terraform.mdx
+    │   │   │       ├── index.mdx
+    │   │   │       ├── injector
+    │   │   │       │   ├── annotations.mdx
+    │   │   │       │   ├── examples.mdx
+    │   │   │       │   ├── index.mdx
+    │   │   │       │   └── installation.mdx
+    │   │   │       ├── injector-csi.mdx
+    │   │   │       └── vso
+    │   │   │           ├── api-reference.mdx
+    │   │   │           ├── examples.mdx
+    │   │   │           ├── helm.mdx
+    │   │   │           ├── index.mdx
+    │   │   │           ├── installation.mdx
+    │   │   │           ├── openshift.mdx
+    │   │   │           ├── sources
+    │   │   │           │   ├── hvs.mdx
+    │   │   │           │   ├── index.mdx
+    │   │   │           │   └── vault.mdx
+    │   │   │           └── telemetry.mdx
+    │   │   ├── plugins
+    │   │   │   ├── index.mdx
+    │   │   │   ├── plugin-architecture.mdx
+    │   │   │   ├── plugin-authors-guide.mdx
+    │   │   │   ├── plugin-development.mdx
+    │   │   │   └── plugin-management.mdx
+    │   │   ├── policies
+    │   │   │   ├── brand.mdx
+    │   │   │   ├── cve.mdx
+    │   │   │   ├── deprecation.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── migration.mdx
+    │   │   │   ├── osps-baseline.mdx
+    │   │   │   ├── plugins.mdx
+    │   │   │   ├── release.mdx
+    │   │   │   ├── repo-setup.mdx
+    │   │   │   └── support.mdx
+    │   │   ├── release-notes
+    │   │   │   ├── 2-0-0.mdx
+    │   │   │   ├── 2-1-0.mdx
+    │   │   │   ├── 2-2-0.mdx
+    │   │   │   ├── 2-3-0.mdx
+    │   │   │   ├── 2-4-0.mdx
+    │   │   │   ├── 2-5-0.mdx
+    │   │   │   └── index.mdx
+    │   │   ├── rfcs
+    │   │   │   ├── acl-paginated-lists.mdx
+    │   │   │   ├── acme-tls-listeners.mdx
+    │   │   │   ├── authenticated-rekey.mdx
+    │   │   │   ├── cel-best-practices.mdx
+    │   │   │   ├── cel-jwt.mdx
+    │   │   │   ├── cel-pki.mdx
+    │   │   │   ├── config-audit-devices.mdx
+    │   │   │   ├── config-plugins.mdx
+    │   │   │   ├── control-groups.mdx
+    │   │   │   ├── efficient-search-components.mdx
+    │   │   │   ├── emergency-seal.mdx
+    │   │   │   ├── external-keys.mdx
+    │   │   │   ├── filtering-list.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── inline-auth.mdx
+    │   │   │   ├── mlock-removal.mdx
+    │   │   │   ├── namespace-sealing.mdx
+    │   │   │   ├── opentelemetry.mdx
+    │   │   │   ├── paginated-lists.mdx
+    │   │   │   ├── postgresql.mdx
+    │   │   │   ├── scan-operation.mdx
+    │   │   │   ├── self-init.mdx
+    │   │   │   ├── signed-commits.mdx
+    │   │   │   ├── split-mount-tables.mdx
+    │   │   │   ├── ssh-ca-multi-issuer.mdx
+    │   │   │   ├── standby-nodes-handle-read-requests.mdx
+    │   │   │   ├── static-auto-unseal.mdx
+    │   │   │   ├── transactions.mdx
+    │   │   │   └── web-ui-modernization.mdx
+    │   │   ├── secrets
+    │   │   │   ├── cubbyhole.mdx
+    │   │   │   ├── databases
+    │   │   │   │   ├── cassandra.mdx
+    │   │   │   │   ├── custom.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── influxdb.mdx
+    │   │   │   │   ├── mysql-maria.mdx
+    │   │   │   │   ├── postgresql.mdx
+    │   │   │   │   └── valkey.mdx
+    │   │   │   ├── identity
+    │   │   │   │   ├── identity-token.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   └── oidc-provider.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   ├── kubernetes.mdx
+    │   │   │   ├── kv
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── kv-v1.mdx
+    │   │   │   │   └── kv-v2.mdx
+    │   │   │   ├── ldap.mdx
+    │   │   │   ├── pki
+    │   │   │   │   ├── cel.mdx
+    │   │   │   │   ├── considerations.mdx
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── quick-start-intermediate-ca.mdx
+    │   │   │   │   ├── quick-start-root-ca.mdx
+    │   │   │   │   ├── rotation-primitives.mdx
+    │   │   │   │   ├── setup.mdx
+    │   │   │   │   └── troubleshooting-acme.mdx
+    │   │   │   ├── rabbitmq.mdx
+    │   │   │   ├── ssh
+    │   │   │   │   ├── index.mdx
+    │   │   │   │   ├── one-time-ssh-passwords.mdx
+    │   │   │   │   └── signed-ssh-certificates.mdx
+    │   │   │   ├── totp.mdx
+    │   │   │   └── transit
+    │   │   │       ├── index.mdx
+    │   │   │       └── key-wrapping-guide.mdx
+    │   │   ├── upgrading
+    │   │   │   ├── ha-upgrade.mdx
+    │   │   │   ├── index.mdx
+    │   │   │   └── plugins.mdx
+    │   │   ├── use-cases.mdx
+    │   │   └── what-is-openbao.mdx
+    │   ├── ecosystem
+    │   │   ├── adopters.mdx
+    │   │   ├── index.mdx
+    │   │   ├── integrators.mdx
+    │   │   ├── lib
+    │   │   │   ├── Member.tsx
+    │   │   │   ├── Randomize.tsx
+    │   │   │   └── styles.module.css
+    │   │   ├── supporters.mdx
+    │   │   └── vendors.mdx
+    │   └── partials
+    │       ├── api
+    │       │   └── restricted-endpoints.mdx
+    │       ├── authn-names.mdx
+    │       ├── db-secrets-credential-types.mdx
+    │       ├── helm
+    │       │   ├── install.mdx
+    │       │   └── repo.mdx
+    │       ├── kubernetes-supported-versions.mdx
+    │       ├── plugin-file-permissions-check.mdx
+    │       ├── plugin-versioning.mdx
+    │       ├── raft-large-snapshots.mdx
+    │       ├── telemetry
+    │       │   └── supported-aggregation-agents.mdx
+    │       ├── telemetry-metrics
+    │       │   ├── database
+    │       │   │   ├── close
+    │       │   │   │   └── error.mdx
+    │       │   │   ├── close.mdx
+    │       │   │   ├── createuser
+    │       │   │   │   └── error.mdx
+    │       │   │   ├── createuser.mdx
+    │       │   │   ├── initialize
+    │       │   │   │   └── error.mdx
+    │       │   │   ├── initialize.mdx
+    │       │   │   ├── name
+    │       │   │   │   ├── close
+    │       │   │   │   │   └── error.mdx
+    │       │   │   │   ├── close.mdx
+    │       │   │   │   ├── createuser
+    │       │   │   │   │   └── error.mdx
+    │       │   │   │   ├── createuser.mdx
+    │       │   │   │   ├── initialize
+    │       │   │   │   │   └── error.mdx
+    │       │   │   │   ├── initialize.mdx
+    │       │   │   │   ├── renewuser
+    │       │   │   │   │   └── error.mdx
+    │       │   │   │   ├── renewuser.mdx
+    │       │   │   │   ├── revokeuser
+    │       │   │   │   │   └── error.mdx
+    │       │   │   │   └── revokeuser.mdx
+    │       │   │   ├── renewuser
+    │       │   │   │   └── error.mdx
+    │       │   │   ├── renewuser.mdx
+    │       │   │   ├── revokeuser
+    │       │   │   │   └── error.mdx
+    │       │   │   └── revokeuser.mdx
+    │       │   ├── device-intro.mdx
+    │       │   ├── quota-intro.mdx
+    │       │   ├── raft-autopilot-note.mdx
+    │       │   ├── raft-leadership-intro.mdx
+    │       │   ├── rollback-intro.mdx
+    │       │   ├── route-intro.mdx
+    │       │   ├── runtime-note.mdx
+    │       │   ├── secrets
+    │       │   │   └── pki
+    │       │   │       └── tidy
+    │       │   │           ├── cert_store_current_entry.mdx
+    │       │   │           ├── cert_store_deleted_count.mdx
+    │       │   │           ├── cert_store_total_entries.mdx
+    │       │   │           ├── cert_store_total_entries_remaining.mdx
+    │       │   │           ├── duration.mdx
+    │       │   │           ├── failure.mdx
+    │       │   │           ├── revoked_cert_current_entry.mdx
+    │       │   │           ├── revoked_cert_deleted_count.mdx
+    │       │   │           ├── revoked_cert_total_entries.mdx
+    │       │   │           ├── revoked_cert_total_entries_fixed_issuers.mdx
+    │       │   │           ├── revoked_cert_total_entries_incorrect_issuers.mdx
+    │       │   │           ├── revoked_cert_total_entries_remaining.mdx
+    │       │   │           ├── start_time_epoch.mdx
+    │       │   │           └── success.mdx
+    │       │   ├── secretsdb-intro.mdx
+    │       │   └── vault
+    │       │       ├── audit
+    │       │       │   ├── device
+    │       │       │   │   ├── log_request.mdx
+    │       │       │   │   ├── log_request_failure.mdx
+    │       │       │   │   ├── log_response.mdx
+    │       │       │   │   └── log_response_failure.mdx
+    │       │       │   ├── log_request.mdx
+    │       │       │   ├── log_request_failure.mdx
+    │       │       │   ├── log_response.mdx
+    │       │       │   └── log_response_failure.mdx
+    │       │       ├── autopilot
+    │       │       │   ├── failure_tolerance.mdx
+    │       │       │   ├── healthy.mdx
+    │       │       │   └── node
+    │       │       │       └── healthy.mdx
+    │       │       ├── barrier
+    │       │       │   ├── delete.mdx
+    │       │       │   ├── get.mdx
+    │       │       │   ├── list.mdx
+    │       │       │   └── put.mdx
+    │       │       ├── cache
+    │       │       │   ├── delete.mdx
+    │       │       │   ├── hit.mdx
+    │       │       │   ├── miss.mdx
+    │       │       │   └── write.mdx
+    │       │       ├── core
+    │       │       │   ├── active.mdx
+    │       │       │   ├── check_token.mdx
+    │       │       │   ├── fetch_acl_and_token.mdx
+    │       │       │   ├── handle_login_request.mdx
+    │       │       │   ├── handle_request.mdx
+    │       │       │   ├── in_flight_requests.mdx
+    │       │       │   ├── leadership_lost.mdx
+    │       │       │   ├── leadership_setup_failed.mdx
+    │       │       │   ├── license
+    │       │       │   │   └── expiration_time_epoch.mdx
+    │       │       │   ├── locked_users.mdx
+    │       │       │   ├── mount_table
+    │       │       │   │   ├── num_entries.mdx
+    │       │       │   │   └── size.mdx
+    │       │       │   ├── post_unseal.mdx
+    │       │       │   ├── pre_seal.mdx
+    │       │       │   ├── seal_internal.mdx
+    │       │       │   ├── seal_with_request.mdx
+    │       │       │   ├── step_down.mdx
+    │       │       │   ├── unseal.mdx
+    │       │       │   └── unsealed.mdx
+    │       │       ├── expire
+    │       │       │   ├── fetch_lease_times.mdx
+    │       │       │   ├── fetch_lease_times_by_token.mdx
+    │       │       │   ├── job_manager
+    │       │       │   │   ├── queue_length.mdx
+    │       │       │   │   └── total_jobs.mdx
+    │       │       │   ├── lease_expiration
+    │       │       │   │   ├── error.mdx
+    │       │       │   │   └── time_in_queue.mdx
+    │       │       │   ├── lease_expiration.mdx
+    │       │       │   ├── leases
+    │       │       │   │   └── by_expiration.mdx
+    │       │       │   ├── num_irrevocable_leases.mdx
+    │       │       │   ├── num_leases.mdx
+    │       │       │   ├── register.mdx
+    │       │       │   ├── register_auth.mdx
+    │       │       │   ├── renew.mdx
+    │       │       │   ├── renew_token.mdx
+    │       │       │   ├── revoke.mdx
+    │       │       │   ├── revoke_by_token.mdx
+    │       │       │   ├── revoke_force.mdx
+    │       │       │   └── revoke_prefix.mdx
+    │       │       ├── ha
+    │       │       │   └── rpc
+    │       │       │       └── client
+    │       │       │           ├── echo
+    │       │       │           │   └── errors.mdx
+    │       │       │           ├── echo.mdx
+    │       │       │           ├── forward
+    │       │       │           │   └── errors.mdx
+    │       │       │           └── forward.mdx
+    │       │       ├── identity
+    │       │       │   ├── entity
+    │       │       │   │   ├── alias
+    │       │       │   │   │   └── count.mdx
+    │       │       │   │   ├── count.mdx
+    │       │       │   │   └── creation.mdx
+    │       │       │   ├── num_entities.mdx
+    │       │       │   ├── upsert_entity_txn.mdx
+    │       │       │   └── upsert_group_txn.mdx
+    │       │       ├── logshipper
+    │       │       │   ├── buffer
+    │       │       │   │   ├── length.mdx
+    │       │       │   │   ├── max_length.mdx
+    │       │       │   │   ├── max_size.mdx
+    │       │       │   │   └── size.mdx
+    │       │       │   └── streamwals
+    │       │       │       ├── guard_found.mdx
+    │       │       │       ├── missing_guard.mdx
+    │       │       │       └── scanned_entries.mdx
+    │       │       ├── merkle
+    │       │       │   ├── flushdirty
+    │       │       │   │   ├── num_pages.mdx
+    │       │       │   │   └── outstanding_pages.mdx
+    │       │       │   ├── flushdirty.mdx
+    │       │       │   ├── savecheckpoint
+    │       │       │   │   └── num_dirty.mdx
+    │       │       │   └── savecheckpoint.mdx
+    │       │       ├── metrics
+    │       │       │   ├── collection
+    │       │       │   │   ├── error.mdx
+    │       │       │   │   └── interval.mdx
+    │       │       │   └── collection.mdx
+    │       │       ├── policy
+    │       │       │   ├── delete_policy.mdx
+    │       │       │   ├── get_policy.mdx
+    │       │       │   ├── list_policies.mdx
+    │       │       │   └── set_policy.mdx
+    │       │       ├── postgresql
+    │       │       │   ├── delete.mdx
+    │       │       │   ├── get.mdx
+    │       │       │   ├── list.mdx
+    │       │       │   └── put.mdx
+    │       │       ├── quota
+    │       │       │   ├── lease_count
+    │       │       │   │   ├── counter.mdx
+    │       │       │   │   ├── max.mdx
+    │       │       │   │   └── violation.mdx
+    │       │       │   └── rate_limit
+    │       │       │       └── violation.mdx
+    │       │       ├── raft
+    │       │       │   ├── apply.mdx
+    │       │       │   ├── barrier.mdx
+    │       │       │   ├── candidate
+    │       │       │   │   └── electself.mdx
+    │       │       │   ├── commitnumlogs.mdx
+    │       │       │   ├── committime.mdx
+    │       │       │   ├── compactlogs.mdx
+    │       │       │   ├── fsm
+    │       │       │   │   ├── apply.mdx
+    │       │       │   │   ├── applybatch.mdx
+    │       │       │   │   ├── applybatchnum.mdx
+    │       │       │   │   ├── enqueue.mdx
+    │       │       │   │   ├── restore.mdx
+    │       │       │   │   ├── snapshot.mdx
+    │       │       │   │   └── store_config.mdx
+    │       │       │   ├── get.mdx
+    │       │       │   ├── leader
+    │       │       │   │   ├── dispatchlog.mdx
+    │       │       │   │   ├── dispatchnumlogs.mdx
+    │       │       │   │   └── lastcontact.mdx
+    │       │       │   ├── list.mdx
+    │       │       │   ├── peers.mdx
+    │       │       │   ├── replication
+    │       │       │   │   ├── appendentries
+    │       │       │   │   │   ├── log.mdx
+    │       │       │   │   │   └── rpc.mdx
+    │       │       │   │   ├── heartbeat.mdx
+    │       │       │   │   └── installsnapshot.mdx
+    │       │       │   ├── restore.mdx
+    │       │       │   ├── restoreusersnapshot.mdx
+    │       │       │   ├── rpc
+    │       │       │   │   ├── appendentries
+    │       │       │   │   │   ├── processlogs.mdx
+    │       │       │   │   │   └── storelogs.mdx
+    │       │       │   │   ├── appendentries.mdx
+    │       │       │   │   ├── installsnapshot.mdx
+    │       │       │   │   ├── processheartbeat.mdx
+    │       │       │   │   └── requestvote.mdx
+    │       │       │   ├── snapshot
+    │       │       │   │   ├── create.mdx
+    │       │       │   │   ├── persist.mdx
+    │       │       │   │   └── takesnapshot.mdx
+    │       │       │   ├── state
+    │       │       │   │   ├── candidate.mdx
+    │       │       │   │   ├── follower.mdx
+    │       │       │   │   └── leader.mdx
+    │       │       │   ├── transition
+    │       │       │   │   ├── heartbeat_timeout.mdx
+    │       │       │   │   └── leader_lease_timeout.mdx
+    │       │       │   └── verify_leader.mdx
+    │       │       ├── raft-storage
+    │       │       │   ├── delete.mdx
+    │       │       │   ├── entry_size.mdx
+    │       │       │   ├── get.mdx
+    │       │       │   ├── list.mdx
+    │       │       │   ├── put.mdx
+    │       │       │   └── transaction.mdx
+    │       │       ├── raft_storage
+    │       │       │   ├── bolt
+    │       │       │   │   ├── cursor
+    │       │       │   │   │   └── count.mdx
+    │       │       │   │   ├── freelist
+    │       │       │   │   │   ├── allocated_bytes.mdx
+    │       │       │   │   │   ├── free_pages.mdx
+    │       │       │   │   │   ├── pending_pages.mdx
+    │       │       │   │   │   └── used_bytes.mdx
+    │       │       │   │   ├── node
+    │       │       │   │   │   ├── count.mdx
+    │       │       │   │   │   └── dereferences.mdx
+    │       │       │   │   ├── page
+    │       │       │   │   │   ├── bytes_allocated.mdx
+    │       │       │   │   │   └── count.mdx
+    │       │       │   │   ├── rebalance
+    │       │       │   │   │   ├── count.mdx
+    │       │       │   │   │   └── time.mdx
+    │       │       │   │   ├── spill
+    │       │       │   │   │   ├── count.mdx
+    │       │       │   │   │   └── time.mdx
+    │       │       │   │   ├── split
+    │       │       │   │   │   └── count.mdx
+    │       │       │   │   ├── transaction
+    │       │       │   │   │   ├── currently_open_read_transactions.mdx
+    │       │       │   │   │   └── started_read_transactions.mdx
+    │       │       │   │   └── write
+    │       │       │   │       ├── count.mdx
+    │       │       │   │       └── time.mdx
+    │       │       │   ├── follower
+    │       │       │   │   ├── applied_index_delta.mdx
+    │       │       │   │   └── last_heartbeat_ms.mdx
+    │       │       │   └── stats
+    │       │       │       ├── applied_index.mdx
+    │       │       │       ├── commit_index.mdx
+    │       │       │       └── fsm_pending.mdx
+    │       │       ├── rollback
+    │       │       │   ├── attempt
+    │       │       │   │   └── mountpoint.mdx
+    │       │       │   ├── inflight.mdx
+    │       │       │   ├── queued.mdx
+    │       │       │   └── waiting.mdx
+    │       │       ├── route
+    │       │       │   ├── create
+    │       │       │   │   └── mountpoint.mdx
+    │       │       │   ├── delete
+    │       │       │   │   └── mountpoint.mdx
+    │       │       │   ├── list
+    │       │       │   │   └── mountpoint.mdx
+    │       │       │   ├── read
+    │       │       │   │   └── mountpoint.mdx
+    │       │       │   └── rollback
+    │       │       │       └── mountpoint.mdx
+    │       │       ├── runtime
+    │       │       │   ├── alloc_bytes.mdx
+    │       │       │   ├── free_count.mdx
+    │       │       │   ├── gc_pause_ns.mdx
+    │       │       │   ├── heap_objects.mdx
+    │       │       │   ├── malloc_count.mdx
+    │       │       │   ├── num_goroutines.mdx
+    │       │       │   ├── sys_bytes.mdx
+    │       │       │   ├── total_gc_pause_ns.mdx
+    │       │       │   └── total_gc_runs.mdx
+    │       │       ├── secret
+    │       │       │   ├── kv
+    │       │       │   │   └── count.mdx
+    │       │       │   └── lease
+    │       │       │       └── creation.mdx
+    │       │       ├── token
+    │       │       │   ├── count
+    │       │       │   │   ├── by_auth.mdx
+    │       │       │   │   ├── by_policy.mdx
+    │       │       │   │   └── by_ttl.mdx
+    │       │       │   ├── count.mdx
+    │       │       │   ├── create.mdx
+    │       │       │   ├── create_root.mdx
+    │       │       │   ├── createaccessor.mdx
+    │       │       │   ├── creation.mdx
+    │       │       │   ├── lookup.mdx
+    │       │       │   ├── revoke.mdx
+    │       │       │   ├── revoke_tree.mdx
+    │       │       │   └── store.mdx
+    │       │       └── wal
+    │       │           ├── deletewals.mdx
+    │       │           ├── flushready
+    │       │           │   └── queue_len.mdx
+    │       │           ├── flushready.mdx
+    │       │           ├── gc
+    │       │           │   ├── deleted.mdx
+    │       │           │   └── total.mdx
+    │       │           ├── loadwal.mdx
+    │       │           └── persistwals.mdx
+    │       ├── tokenfields.mdx
+    │       ├── tokenstorefields.mdx
+    │       └── vso
+    │           └── blurb-api-reference.mdx
+    ├── doc-versions.json
+    ├── docusaurus.config.ts
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── .nojekyll
+    │   ├── CNAME
+    │   ├── assets
+    │   │   └── openbao-gpg-pub-20240618.asc
+    │   ├── img
+    │   │   ├── SOOC-OpenBao-New-Year.png
+    │   │   ├── alex-fosdem-25-speaking.jpg
+    │   │   ├── bao-mascot.jpg
+    │   │   ├── baobao-fosdem-25-airplane.jpg
+    │   │   ├── baobao-fosdem-25-brussels.jpg
+    │   │   ├── baobao-fosdem-25-colleagues.jpg
+    │   │   ├── baobao-fosdem-25-eiffel.jpg
+    │   │   ├── baobao-fosdem-25-louvre.jpg
+    │   │   ├── baobao-fosdem-25-train-paris.jpg
+    │   │   ├── comparison-table.png
+    │   │   ├── diagram-openbao-agent.png
+    │   │   ├── favicon.svg
+    │   │   ├── how-openbao-works.png
+    │   │   ├── k8s-auth-workflow.png
+    │   │   ├── layers.png
+    │   │   ├── lfedge-logo.svg
+    │   │   ├── linux-foundation.svg
+    │   │   ├── logo-black.svg
+    │   │   ├── logo-white.svg
+    │   │   ├── mentee-blog.png
+    │   │   ├── openbao-agent-workflow.png
+    │   │   ├── openbao-auth-workflow.png
+    │   │   ├── openbao-auto-unseal.png
+    │   │   ├── openbao-csi-workflow.png
+    │   │   ├── openbao-identity-doc-1.png
+    │   │   ├── openbao-identity-doc-2.png
+    │   │   ├── openbao-identity-doc-3.png
+    │   │   ├── openbao-identity-doc-4.png
+    │   │   ├── openbao-identity-doc-5.png
+    │   │   ├── openbao-key-rotate.png
+    │   │   ├── openbao-osseu-2025.jpg
+    │   │   ├── openbao-password-policy-chance.svg
+    │   │   ├── openbao-password-policy-flow.svg
+    │   │   ├── openbao-password-policy-performance.svg
+    │   │   ├── openbao-policy-workflow.png
+    │   │   ├── openbao-shamir-seal.png
+    │   │   ├── openbao-sidecar-inject-workflow.png
+    │   │   ├── openbao-sooc-dotan.jpg
+    │   │   ├── openbao-sooc-osacon.jpg
+    │   │   ├── openbao-sooc-percona.jpg
+    │   │   ├── openbao-sooc-sponsor.jpg
+    │   │   ├── openbao-sooc-table.jpg
+    │   │   ├── openssf-logo.svg
+    │   │   ├── ossummit_bao_booth.png
+    │   │   ├── ossummit_meet_bao.png
+    │   │   ├── raft-join-detailed.png
+    │   │   ├── servicenow-vault-credential-resolver-diagram.png
+    │   │   ├── talks
+    │   │   │   └── cipherboy-fosdem-25
+    │   │   │       ├── OpenBao-at-GitLab-Slide-01.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-02.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-03.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-04.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-05.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-06.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-07.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-08.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-09.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-10.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-11.svg
+    │   │   │       ├── OpenBao-at-GitLab-Slide-12.svg
+    │   │   │       └── OpenBao-at-GitLab-Slide-13.svg
+    │   │   └── transit-or-transform.png
+    │   └── robots.txt
+    ├── sidebars.ts
+    ├── sidebarsApi.ts
+    ├── src
+    │   ├── components
+    │   │   ├── Accordion
+    │   │   │   ├── index.tsx
+    │   │   │   └── styles.module.css
+    │   │   ├── Contributing
+    │   │   │   └── index.tsx
+    │   │   ├── FAQSection
+    │   │   │   └── index.tsx
+    │   │   ├── HomepageFeatures
+    │   │   │   └── index.tsx
+    │   │   ├── Releases
+    │   │   │   └── index.tsx
+    │   │   └── Supporters
+    │   │       └── index.tsx
+    │   ├── css
+    │   │   └── custom.css
+    │   ├── docusaurus-plugin-sidebar-json
+    │   │   └── index.ts
+    │   ├── pages
+    │   │   ├── downloads.tsx
+    │   │   ├── index.module.css
+    │   │   └── index.tsx
+    │   └── theme
+    │       └── NavbarItem
+    │           └── DocsVersionDropdownNavbarItem.tsx
+    └── tsconfig.json
+951 directories, 5121 files
