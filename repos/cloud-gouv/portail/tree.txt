@@ -1,0 +1,53 @@
+.
+├── .github
+│   └── workflows
+│       └── test.yaml
+├── .gitignore
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── README.md
+├── examples
+│   ├── config.toml
+│   └── filter.acl
+├── nix
+│   ├── default.nix
+│   ├── module.nix
+│   ├── overlay.nix
+│   ├── package.nix
+│   └── tests
+│       ├── certs
+│       │   ├── hello.corp
+│       │   │   ├── ca.cert.pem
+│       │   │   ├── ca.key.pem
+│       │   │   ├── hello.corp.example.com.cert.pem
+│       │   │   ├── hello.corp.example.com.key.pem
+│       │   │   └── snakeoil-certs.nix
+│       │   ├── portail.corp
+│       │   │   ├── ca.cert.pem
+│       │   │   ├── ca.key.pem
+│       │   │   ├── portail.corp.example.com.cert.pem
+│       │   │   ├── portail.corp.example.com.key.pem
+│       │   │   └── snakeoil-certs.nix
+│       │   └── snakeoil-certs.nix
+│       └── default.nix
+├── renovate.json
+├── run.sh
+└── src
+    ├── acl
+    │   ├── evaluator.rs
+    │   ├── mod.rs
+    │   └── parser.rs
+    ├── config.rs
+    ├── main.rs
+    ├── proxy
+    │   ├── client_tls.rs
+    │   ├── context.rs
+    │   ├── http_connect.rs
+    │   ├── mod.rs
+    │   ├── protocol_detect.rs
+    │   └── socks5.rs
+    ├── rpc.rs
+    ├── state.rs
+    └── systemd.rs
+12 directories, 40 files

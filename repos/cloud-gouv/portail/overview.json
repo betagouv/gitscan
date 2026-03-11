@@ -1,0 +1,59 @@
+{
+  "url": "https://github.com/cloud-gouv/portail",
+  "name": "portail",
+  "description": "Portail est un proxy d'accès pour les terminaux utilisateurs. Il vise à fournir une solution sécurisée et flexible, inspirée des travaux BeyondCorp, pour contrôler l'accès aux ressources.",
+  "language": "Rust",
+  "features": [
+    "Authentification utilisateur",
+    "Contrôle d'accès",
+    "Journalisation",
+    "Redirection",
+    "mTLS"
+  ],
+  "audience": "Professionnels",
+  "dependencies": [
+    "systemd",
+    "FDStore"
+  ],
+  "components": [
+    "Proxy SOCKS5",
+    "Serveur RPC",
+    "Moteur d'évaluation ACL",
+    "Interface CLI"
+  ],
+  "auth": {
+    "methods": [
+      "oauth2",
+      "mfa",
+      "jwt",
+      "session"
+    ],
+    "providers": []
+  },
+  "tests": [
+    "Tests d'intégration",
+    "Tests E2E"
+  ],
+  "workflows": [
+    "test.yaml"
+  ],
+  "lastActivity": "2026-03-11T15:20:22+00:00",
+  "status": "active",
+  "license": "MIT",
+  "hasDocumentation": true,
+  "metrics": {
+    "stars": 2,
+    "forks": 0,
+    "contributors": 1,
+    "openIssues": 40
+  },
+  "tags": [
+    "proxy",
+    "sécurité",
+    "accès",
+    "terminal",
+    "BeyondCorp",
+    "Rust",
+    "systemd"
+  ]
+}
