@@ -1,0 +1,235 @@
+.
+├── .github
+│   └── workflows
+│       ├── publish-http.yaml
+│       ├── publish-oci-dev.yaml
+│       └── publish-oci.yaml
+├── README.md
+├── argocd-apps
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── applications
+│   │   │   ├── additional-resources.yaml
+│   │   │   ├── argocd-app-of-apps.yaml
+│   │   │   ├── cluster-api.yaml
+│   │   │   ├── cluster-core.yaml
+│   │   │   ├── cluster-observability.yaml
+│   │   │   ├── cluster-workload.yaml
+│   │   │   ├── mgmt-step-01-cluster-api-operator.yaml
+│   │   │   ├── mgmt-step-02-cluster-api-operator-provider.yaml
+│   │   │   ├── mgmt-step-03-cluster-api-helm-addons.yaml
+│   │   │   └── root-app.yaml
+│   │   └── configs
+│   │       ├── repository-credentials-externalsecret.yaml
+│   │       ├── repository-credentials-secret.yaml
+│   │       └── repository-secret.yaml
+│   └── values.yaml
+├── cert-manager-issuers
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── cluster-issuers.yaml
+│   │   └── issuers.yaml
+│   └── values.yaml
+├── client-namespaces
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── appprojects.yaml
+│   │   ├── namespaces.yaml
+│   │   ├── networkpolicies.yaml
+│   │   ├── rbac.yaml
+│   │   ├── resourcequotas.yaml
+│   │   └── serviceaccounts.yaml
+│   └── values.yaml
+├── clusterctl-backup
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── scripts
+│   │   ├── backup.sh
+│   │   ├── clusterctl_backup_retention.sh
+│   │   ├── clusterctl_backup_to_s3.sh
+│   │   └── createkubectlconfig.sh
+│   ├── templates
+│   │   ├── application
+│   │   │   ├── cluster-role-binding.yaml
+│   │   │   ├── cluster-role.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── cronjob.yaml
+│   │   │   └── service-account.yaml
+│   │   └── configs
+│   │       └── s3-credentials-secret.yaml
+│   └── values.yaml
+├── clusterctl-restore
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── scripts
+│   │   ├── clusterctl_restore_from_s3.sh
+│   │   ├── createkubectlconfig.sh
+│   │   └── restore.sh
+│   ├── templates
+│   │   ├── application
+│   │   │   ├── cluster-role-binding.yaml
+│   │   │   ├── cluster-role.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── job.yaml
+│   │   │   └── service-account.yaml
+│   │   └── configs
+│   │       └── s3-credentials-secret.yaml
+│   └── values.yaml
+├── docs
+│   ├── argocd-apps-0.1.0.tgz
+│   ├── cert-manager-issuers-0.1.0.tgz
+│   ├── client-namespaces-0.1.0.tgz
+│   ├── clusterctl-backup-0.1.3.tgz
+│   ├── clusterctl-restore-0.1.4.tgz
+│   ├── external-secrets-0.1.0.tgz
+│   ├── grafana-dashboards-0.1.0.tgz
+│   ├── index.yaml
+│   ├── ingress-auth-0.1.0.tgz
+│   ├── matrix-receiver-0.1.0.tgz
+│   ├── minio-backup-0.1.3.tgz
+│   ├── minio-tenant-0.1.0.tgz
+│   ├── raw-0.3.0.tgz
+│   ├── rclone-1.72.0.tgz
+│   └── secrets-0.1.0.tgz
+├── external-secrets
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   └── secret.yaml
+│   └── values.yaml
+├── extra
+│   └── templates
+│       └── secrets.yaml
+├── grafana-dashboards
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── dashboards
+│   │   ├── argocd
+│   │   │   └── argocd.json
+│   │   ├── kube-mixins
+│   │   │   ├── cluster-total.json
+│   │   │   ├── controller-manager.json
+│   │   │   ├── k8s-resources-cluster.json
+│   │   │   ├── k8s-resources-multicluster.json
+│   │   │   ├── k8s-resources-namespace.json
+│   │   │   ├── k8s-resources-node.json
+│   │   │   ├── k8s-resources-pod.json
+│   │   │   ├── k8s-resources-workload.json
+│   │   │   ├── k8s-resources-workloads-namespace.json
+│   │   │   ├── kubelet.json
+│   │   │   ├── namespace-by-pod.json
+│   │   │   ├── namespace-by-workload.json
+│   │   │   ├── persistentvolumesusage.json
+│   │   │   ├── pod-total.json
+│   │   │   ├── proxy.json
+│   │   │   ├── scheduler.json
+│   │   │   └── workload-total.json
+│   │   ├── loki
+│   │   │   ├── loki-chunks.json
+│   │   │   ├── loki-deletion.json
+│   │   │   ├── loki-logs.json
+│   │   │   ├── loki-mixin-recording-rules.json
+│   │   │   ├── loki-operational.json
+│   │   │   ├── loki-reads-resources.json
+│   │   │   ├── loki-reads.json
+│   │   │   ├── loki-retention.json
+│   │   │   ├── loki-writes-resources.json
+│   │   │   └── loki-writes.json
+│   │   ├── mimir
+│   │   │   ├── mimir-alertmanager.json
+│   │   │   ├── mimir-compactor.json
+│   │   │   ├── mimir-object-store.json
+│   │   │   ├── mimir-overview.json
+│   │   │   ├── mimir-queries.json
+│   │   │   ├── mimir-reads.json
+│   │   │   ├── mimir-slow-queries.json
+│   │   │   ├── mimir-tenants.json
+│   │   │   └── mimir-writes.json
+│   │   └── postgres
+│   │       └── postgres-overview.json
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   └── manifests.yaml
+│   └── values.yaml
+├── ingress-auth
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   └── secrets.yaml
+│   └── values.yaml
+├── matrix-receiver
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── NOTES.txt
+│   │   ├── _helpers.tpl
+│   │   ├── configmap.yaml
+│   │   ├── deployment.yaml
+│   │   ├── service.yaml
+│   │   └── serviceaccount.yaml
+│   └── values.yaml
+├── minio-backup
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── cronjob.yaml
+│   │   ├── pvc.yaml
+│   │   └── secret.yaml
+│   └── values.yaml
+├── minio-tenant
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── dashboards.json
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── api-ingress.yaml
+│   │   ├── dashboard.yaml
+│   │   ├── scrapeconfig.yaml
+│   │   ├── secret.yaml
+│   │   └── tenant.yaml
+│   └── values.yaml
+├── raw
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── OWNERS
+│   ├── README.md
+│   ├── ci
+│   │   ├── resources-values.yaml
+│   │   ├── templates-values.yaml
+│   │   └── values.yaml
+│   ├── templates
+│   │   ├── NOTES.txt
+│   │   ├── _helpers.tpl
+│   │   └── resources.yaml
+│   └── values.yaml
+├── rclone
+│   ├── .helmignore
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── deployment.yaml
+│   │   ├── secret.yml
+│   │   ├── service.yaml
+│   │   └── serviceaccount.yaml
+│   └── values.yaml
+└── secrets
+    ├── .helmignore
+    ├── Chart.yaml
+    ├── templates
+    │   ├── _helpers.tpl
+    │   └── secret.yaml
+    └── values.yaml
+49 directories, 185 files
