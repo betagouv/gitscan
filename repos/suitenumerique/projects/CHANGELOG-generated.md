@@ -1,29 +1,25 @@
 ## Changelog : projects (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration des performances de l'application, en particulier lors de la manipulation de listes de tâches importantes. Plusieurs corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant l'édition de contenu, les filtres et l'affichage des commentaires. Enfin, des améliorations ont été apportées à l'interface utilisateur et aux notifications.
+Cette version apporte des améliorations significatives en termes de performance, notamment lors de la manipulation de listes de cartes importantes. Des corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant les filtres, l'édition de contenu et la gestion des erreurs. De plus, des améliorations de l'interface utilisateur et de la documentation ont été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un modèle d'email personnalisé pour les notifications, avec la marque de l'application. [#62](https://github.com/suitenumerique/projects/issues/62) et [#64](https://github.com/suitenumerique/projects/issues/64)
-- Ajout d'un badge indiquant le nombre de tâches dans chaque liste. [#58](https://github.com/suitenumerique/projects/issues/58)
-- Les membres et les étiquettes filtrés sont maintenant automatiquement assignés aux nouvelles tâches créées. [#57](https://github.com/suitenumerique/projects/issues/57)
-- Affichage par défaut de toutes les activités dans le modal d'une tâche, avec possibilité de les masquer. [#56](https://github.com/suitenumerique/projects/issues/56)
-- Ajout d'un bouton avec un lien de partage pour les tâches, incluant une info-bulle explicative.
-- Correction d'un bug empêchant la sélection multiple de filtres. [#60](https://github.com/suitenumerique/projects/issues/60)
-- Correction d'un bug empêchant l'affichage correct des commentaires en Markdown.
-- Correction d'un bug aléatoire lors de la création de tâches.
-- Correction de l'affichage des tableaux partagés dans le menu latéral. [#59](https://github.com/suitenumerique/projects/issues/59)
+- Ajout d'un modèle d'email personnalisé pour les notifications, améliorant ainsi l'expérience utilisateur lors de la réception d'alertes. [#62](https://github.com/suitenumerique/projects/issues/62) et [#64](https://github.com/suitenumerique/projects/issues/64)
+- Ajout d'un tooltip pour le bouton "copier le lien" afin de faciliter son utilisation.
+- Correction d'un bug qui empêchait l'affichage correct du markdown dans les commentaires.
+- Correction d'un bug qui empêchait l'application des modifications lors de l'utilisation de l'éditeur MDX.
+- Correction d'un bug qui empêchait l'affichage correct des paragraphes dans l'éditeur markdown.
+- Correction d'un bug dans les filtres où la sélection multiple et la désélection provoquaient une erreur.
+- Correction d'un bug aléatoire lors de la création de cartes.
+- Correction d'un bug qui cachait la bannière de notification sous le contenu de la page.
 
 ### Évolutions techniques
-- Optimisations significatives des performances lors du déplacement de tâches dans les listes, notamment en utilisant la mémoïsation et des composants intermédiaires.
-- Suppression des hooks lint bloquant les opérations Git et npm, la CI/CD assurant désormais la qualité du code.
-- Possibilité de désactiver l'indexation par les moteurs de recherche pour les environnements non-production.
-- Mise à jour de la librairie de drag-and-drop vers la dernière version pour tenter de résoudre les problèmes de performance.
-- Correction de l'utilisation incorrecte de certains sélecteurs dans les composants, améliorant les performances.
+- Optimisations de performance importantes concernant le drag-and-drop et le rendu des cartes, notamment en utilisant la mémoïsation et des composants intermédiaires pour éviter les rendus inutiles.
+- Migration vers la dernière version de la librairie drag-drop pour tenter de résoudre les problèmes de performance.
+- Suppression des hooks lint qui ralentissaient les opérations Git et npm, la CI/CD assurant désormais la qualité du code.
+- Possibilité de désactiver l'indexation des moteurs de recherche pour les environnements non-production.
+- Amélioration de la structure du code pour une meilleure performance lors du déplacement de cartes dans de longues listes.
 
 ### Autres changements
-- Correction de l'affichage d'une bannière masquée par le contenu de la page.
-- Correction de problèmes liés à l'éditeur Markdown, notamment la séparation des paragraphes et le déclenchement des actions.
-- Mise à jour de la version de l'application à 1.2.0.
-- Corrections et améliorations du kit UI.
+- Correction de quelques erreurs d'utilisation de linter.
 - Mise à jour de la documentation.
