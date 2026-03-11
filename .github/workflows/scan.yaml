@@ -53,7 +53,7 @@ jobs:
               uses: "./.github/actions/init"
               with:
                   count: ${{ inputs.count || '50' }}
-                  exclude: ${{ inputs.exclude || '' }}
+                  exclude: ${{ inputs.exclude || 'betagouv/gitscan,betagouv/dashlord' }}
 
     scans:
         runs-on: ubuntu-latest
