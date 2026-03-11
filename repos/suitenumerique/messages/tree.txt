@@ -199,6 +199,9 @@
     │   │   │   ├── 0014_messagetemplate_is_default_and_more.py
     │   │   │   ├── 0015_attachment_cid.py
     │   │   │   ├── 0016_thread_has_delivery_failed_and_more.py
+    │   │   │   ├── 0017_message_sender_user.py
+    │   │   │   ├── 0018_threadaccess_last_read_and_more.py
+    │   │   │   ├── 0019_remove_message_read_at.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -555,7 +558,8 @@
     │   │   │   │       ├── apple-splash-750-1334.jpg
     │   │   │   │       └── apple-splash-828-1792.jpg
     │   │   │   ├── svg
-    │   │   │   │   └── read-mail.svg
+    │   │   │   │   ├── read-mail.svg
+    │   │   │   │   └── selected-threads.svg
     │   │   │   ├── welcome.webp
     │   │   │   └── white-label
     │   │   │       ├── app-icon-dark.svg
@@ -665,7 +669,7 @@
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
     │   │   │   │   │   │   ├── maildomains_*.ts  (5 files)
     │   │   │   │   │   │   ├── message.ts
-    │   │   │   │   │   │   ├── message_*.ts  (9 files)
+    │   │   │   │   │   │   ├── message_*.ts  (11 files)
     │   │   │   │   │   │   ├── messages_delivery_statuses_partial_update_body_one.ts
     │   │   │   │   │   │   ├── paginated_*.ts  (6 files)
     │   │   │   │   │   │   ├── partial_drive_item.ts
@@ -911,9 +915,8 @@
     │   │   │   │       │   │   │   ├── thread-drag-preview.tsx
     │   │   │   │       │   │   │   └── thread-item-senders.tsx
     │   │   │   │       │   │   └── thread-panel-header.tsx
-    │   │   │   │       │   ├── hooks
-    │   │   │   │       │   │   └── use-thread-selection.ts
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── thread-selection-placeholder.tsx
     │   │   │   │       └── thread-view
     │   │   │   │           ├── _index.scss
     │   │   │   │           ├── components
@@ -978,10 +981,12 @@
     │   │   │   │   │   ├── controlled-modal.tsx
     │   │   │   │   │   ├── global-store.ts
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── scroll-restore.tsx
     │   │   │   │   ├── sent-box
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   └── queued-message.tsx
-    │   │   │   │   └── theme.tsx
+    │   │   │   │   ├── theme.tsx
+    │   │   │   │   └── thread-selection.tsx
     │   │   │   ├── signatures
     │   │   │   │   └── components
     │   │   │   │       └── signature-composer
@@ -1192,4 +1197,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-254 directories, 1021 files
+253 directories, 1029 files
