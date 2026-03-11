@@ -1,0 +1,4171 @@
+.
+├── .agent
+│   └── workflows
+│       ├── bump-app-version.md
+│       └── setup-worktree.md
+├── .biomeignore
+├── .claude
+│   └── settings.json
+├── .config
+│   └── wt.toml
+├── .dockerignore
+├── .editorconfig
+├── .entire
+│   ├── .gitignore
+│   └── settings.json
+├── .gemini
+│   ├── commands
+│   │   ├── speckit.analyze.toml
+│   │   ├── speckit.checklist.toml
+│   │   ├── speckit.clarify.toml
+│   │   ├── speckit.constitution.toml
+│   │   ├── speckit.implement.toml
+│   │   ├── speckit.plan.toml
+│   │   ├── speckit.specify.toml
+│   │   ├── speckit.tasks.toml
+│   │   └── speckit.taskstoissues.toml
+│   ├── config.yaml
+│   └── settings.json
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── checks.yaml
+│       ├── chromatic.yaml
+│       ├── migrate_production.yaml
+│       ├── migrate_staging.yaml
+│       └── release_pipeline.yaml
+├── .gitignore
+├── .husky
+│   ├── .gitignore
+│   └── pre-commit
+├── .npmrc
+├── .prototools
+├── .specify
+│   ├── memory
+│   │   └── constitution.md
+│   ├── scripts
+│   │   └── bash
+│   │       ├── check-prerequisites.sh
+│   │       ├── common.sh
+│   │       ├── create-new-feature.sh
+│   │       ├── setup-plan.sh
+│   │       └── update-agent-context.sh
+│   └── templates
+│       ├── agent-file-template.md
+│       ├── checklist-template.md
+│       ├── plan-template.md
+│       ├── spec-template.md
+│       └── tasks-template.md
+├── .stylelintrc.json
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   ├── tailwind.json
+│   └── tasks.json
+├── .windsurf
+│   ├── rules
+│   │   └── specify-rules.md
+│   └── workflows
+│       ├── analyze.md
+│       ├── clarify.md
+│       ├── constitution.md
+│       ├── implement.md
+│       ├── plan.md
+│       ├── specify.md
+│       ├── speckit.analyze.md
+│       ├── speckit.checklist.md
+│       ├── speckit.clarify.md
+│       ├── speckit.constitution.md
+│       ├── speckit.implement.md
+│       ├── speckit.plan.md
+│       ├── speckit.specify.md
+│       ├── speckit.tasks.md
+│       ├── speckit.taskstoissues.md
+│       └── tasks.md
+├── .windsurfrules
+├── .worktreeinclude
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── apps
+│   ├── client
+│   │   ├── .env.test
+│   │   ├── .gitignore
+│   │   ├── .vscode
+│   │   │   └── settings.json
+│   │   ├── Dockerfile
+│   │   ├── __mocks__
+│   │   │   └── axios.js
+│   │   ├── cloudbuild.yaml
+│   │   ├── development.env
+│   │   ├── eslint.config.mjs
+│   │   ├── example-env-file.env
+│   │   ├── jest
+│   │   │   ├── __mocks__
+│   │   │   │   ├── @refugies-info
+│   │   │   │   │   └── ui.js
+│   │   │   │   ├── MockModal.js
+│   │   │   │   ├── bson.js
+│   │   │   │   ├── fileMock.js
+│   │   │   │   └── styleMock.js
+│   │   │   ├── lib
+│   │   │   │   └── wrapWithProvidersAndRender.tsx
+│   │   │   └── setup.js
+│   │   ├── jest.config.js
+│   │   ├── next-env.d.ts
+│   │   ├── next-i18next.config.js
+│   │   ├── next-sitemap.config.js
+│   │   ├── next.config.js
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── production.env
+│   │   ├── public
+│   │   │   ├── .well-known
+│   │   │   │   ├── apple-app-site-association
+│   │   │   │   ├── assetlinks.json
+│   │   │   │   └── microsoft-identity-association.json
+│   │   │   ├── AMI_REFUGIE_INFO.pdf
+│   │   │   ├── Livret-Impact-Refugies.infos-2024.pdf
+│   │   │   ├── favicon.ico
+│   │   │   ├── fonts
+│   │   │   │   ├── Marianne-Bold.woff
+│   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   │   ├── Marianne-ExtraBold_Italic.woff
+│   │   │   │   ├── Marianne-ExtraBold_Italic.woff2
+│   │   │   │   ├── Marianne-Light.woff
+│   │   │   │   ├── Marianne-Light.woff2
+│   │   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   │   ├── Marianne-Medium.woff
+│   │   │   │   ├── Marianne-Medium.woff2
+│   │   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   │   ├── Marianne-Regular.woff
+│   │   │   │   ├── Marianne-Regular.woff2
+│   │   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   │   ├── Marianne-Thin.woff
+│   │   │   │   ├── Marianne-Thin.woff2
+│   │   │   │   ├── Marianne-Thin_Italic.woff
+│   │   │   │   └── Marianne-Thin_Italic.woff2
+│   │   │   ├── google4bbafba0b0553522.html
+│   │   │   ├── images
+│   │   │   │   ├── 404
+│   │   │   │   │   └── illustration_404.svg
+│   │   │   │   ├── Logo-DIAIR.png
+│   │   │   │   ├── app
+│   │   │   │   │   ├── admin.svg
+│   │   │   │   │   ├── benevolat.svg
+│   │   │   │   │   ├── culture.svg
+│   │   │   │   │   ├── etudes.svg
+│   │   │   │   │   ├── francais.svg
+│   │   │   │   │   ├── logement.svg
+│   │   │   │   │   ├── loisirs.svg
+│   │   │   │   │   ├── metier.svg
+│   │   │   │   │   ├── rencontres.svg
+│   │   │   │   │   ├── sante.svg
+│   │   │   │   │   ├── transport.svg
+│   │   │   │   │   └── travail.svg
+│   │   │   │   ├── app-banner
+│   │   │   │   │   ├── admin.png
+│   │   │   │   │   ├── benevolat.png
+│   │   │   │   │   ├── culture.png
+│   │   │   │   │   ├── etudes.png
+│   │   │   │   │   ├── francais.png
+│   │   │   │   │   ├── logement.png
+│   │   │   │   │   ├── loisirs.png
+│   │   │   │   │   ├── metier.png
+│   │   │   │   │   ├── rencontres.png
+│   │   │   │   │   ├── sante.png
+│   │   │   │   │   ├── transport.png
+│   │   │   │   │   └── travail.png
+│   │   │   │   ├── cards
+│   │   │   │   │   ├── demarche
+│   │   │   │   │   │   ├── administratif.svg
+│   │   │   │   │   │   ├── famille.svg
+│   │   │   │   │   │   ├── formation.svg
+│   │   │   │   │   │   ├── français.svg
+│   │   │   │   │   │   ├── logement.svg
+│   │   │   │   │   │   ├── loisirs.svg
+│   │   │   │   │   │   ├── mobilité.svg
+│   │   │   │   │   │   ├── santé.svg
+│   │   │   │   │   │   ├── travail.svg
+│   │   │   │   │   │   └── études.svg
+│   │   │   │   │   └── dispositif
+│   │   │   │   │       ├── administratif.svg
+│   │   │   │   │       ├── famille.svg
+│   │   │   │   │       ├── formation.svg
+│   │   │   │   │       ├── français.svg
+│   │   │   │   │       ├── logement.svg
+│   │   │   │   │       ├── loisirs.svg
+│   │   │   │   │       ├── mobilité.svg
+│   │   │   │   │       ├── santé.svg
+│   │   │   │   │       ├── travail.svg
+│   │   │   │   │       └── études.svg
+│   │   │   │   ├── icon_briefcase.svg
+│   │   │   │   ├── icon_bus.svg
+│   │   │   │   ├── icon_couple.svg
+│   │   │   │   ├── icon_default.svg
+│   │   │   │   ├── icon_elearning.svg
+│   │   │   │   ├── icon_favorites.svg
+│   │   │   │   ├── icon_flag.svg
+│   │   │   │   ├── icon_glasses.svg
+│   │   │   │   ├── icon_heartBeat.svg
+│   │   │   │   ├── icon_house.svg
+│   │   │   │   ├── icon_measure.svg
+│   │   │   │   ├── icon_office.svg
+│   │   │   │   ├── icon_soccer.svg
+│   │   │   │   ├── icon_triumph.svg
+│   │   │   │   ├── illustration_Administratif.svg
+│   │   │   │   ├── illustration_Bénévolat.svg
+│   │   │   │   ├── illustration_Culture.svg
+│   │   │   │   ├── illustration_Formation-pro.svg
+│   │   │   │   ├── illustration_Français.svg
+│   │   │   │   ├── illustration_Insertion-pro.svg
+│   │   │   │   ├── illustration_Logement.svg
+│   │   │   │   ├── illustration_Loisir.svg
+│   │   │   │   ├── illustration_Mobilité.svg
+│   │   │   │   ├── illustration_Rencontre.svg
+│   │   │   │   ├── illustration_Santé.svg
+│   │   │   │   ├── illustration_Études.svg
+│   │   │   │   ├── logo-navbar-ri.svg
+│   │   │   │   ├── logoRI.svg
+│   │   │   │   ├── map
+│   │   │   │   │   ├── pin-selected.svg
+│   │   │   │   │   └── pin.svg
+│   │   │   │   ├── og-image-refugies.jpg
+│   │   │   │   ├── share
+│   │   │   │   │   ├── ri-administratif.png
+│   │   │   │   │   ├── ri-benevolat.png
+│   │   │   │   │   ├── ri-culture.png
+│   │   │   │   │   ├── ri-etudes.png
+│   │   │   │   │   ├── ri-formation-pro.png
+│   │   │   │   │   ├── ri-francais.png
+│   │   │   │   │   ├── ri-insertion.png
+│   │   │   │   │   ├── ri-logement.png
+│   │   │   │   │   ├── ri-loisirs.png
+│   │   │   │   │   ├── ri-mobilite.png
+│   │   │   │   │   ├── ri-rencontre.png
+│   │   │   │   │   └── ri-sante.png
+│   │   │   │   ├── sources
+│   │   │   │   │   └── carif-oref-logo.png
+│   │   │   │   └── themes
+│   │   │   │       ├── icon_administratif.svg
+│   │   │   │       ├── icon_famille.svg
+│   │   │   │       ├── icon_formation.svg
+│   │   │   │       ├── icon_français.svg
+│   │   │   │       ├── icon_logement.svg
+│   │   │   │       ├── icon_loisirs.svg
+│   │   │   │       ├── icon_mobilité.svg
+│   │   │   │       ├── icon_santé.svg
+│   │   │   │       ├── icon_travail.svg
+│   │   │   │       └── icon_études.svg
+│   │   │   ├── locales
+│   │   │   │   ├── ar
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── en
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── fa
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── fr
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── ps
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── ru
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   ├── ti
+│   │   │   │   │   ├── common.json
+│   │   │   │   │   └── unused.json
+│   │   │   │   └── uk
+│   │   │   │       ├── common.json
+│   │   │   │       └── unused.json
+│   │   │   ├── logo_icon_dark.svg
+│   │   │   ├── logo_icon_dark_512.png
+│   │   │   ├── manifest.json
+│   │   │   ├── politique-confidentialite-mobile.pdf
+│   │   │   └── video
+│   │   │       ├── home-app-video.mp4
+│   │   │       ├── home-video-1.mp4
+│   │   │       ├── home-video-2.mp4
+│   │   │       └── home-video-3.mp4
+│   │   ├── redirects.js
+│   │   ├── scripts
+│   │   │   ├── README.md
+│   │   │   ├── clean-i18n.js
+│   │   │   ├── export-i18n.js
+│   │   │   └── import-i18n.js
+│   │   ├── src
+│   │   │   ├── __fixtures__
+│   │   │   │   ├── activeThemes.ts
+│   │   │   │   ├── arbitraries
+│   │   │   │   │   └── dispositif.arb.ts
+│   │   │   │   ├── dispositifsWithTrad.ts
+│   │   │   │   ├── getDispositifs.ts
+│   │   │   │   ├── reduxStore.ts
+│   │   │   │   ├── search
+│   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   └── legacy-counts.ts
+│   │   │   │   ├── seed-data
+│   │   │   │   │   ├── dispositifs.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── needs.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── themes.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── user.ts
+│   │   │   ├── __mocks__
+│   │   │   │   └── react-google-autocomplete.ts
+│   │   │   ├── __tests__
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   ├── agir.test.tsx.snap
+│   │   │   │   │   ├── index.test.tsx.snap
+│   │   │   │   │   ├── publier.test.tsx.snap
+│   │   │   │   │   ├── recherche.test.tsx.snap
+│   │   │   │   │   └── traduire.test.tsx.snap
+│   │   │   │   ├── agir.test.tsx
+│   │   │   │   ├── api
+│   │   │   │   │   └── webhook
+│   │   │   │   │       └── dispositif
+│   │   │   │   │           └── webhook.test.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── auth.test.tsx.snap
+│   │   │   │   │   │   ├── code-connexion.test.tsx.snap
+│   │   │   │   │   │   ├── code-securite.test.tsx.snap
+│   │   │   │   │   │   └── connexion.test.tsx.snap
+│   │   │   │   │   ├── auth.test.tsx
+│   │   │   │   │   ├── code-connexion.test.tsx
+│   │   │   │   │   ├── code-securite.test.tsx
+│   │   │   │   │   ├── connexion.test.tsx
+│   │   │   │   │   └── reinitialiser-mot-de-passe
+│   │   │   │   │       ├── __snapshots__
+│   │   │   │   │       │   ├── mail-envoye.test.tsx.snap
+│   │   │   │   │       │   └── nouveau.test.tsx.snap
+│   │   │   │   │       ├── mail-envoye.test.tsx
+│   │   │   │   │       ├── nouveau.test.tsx
+│   │   │   │   │       └── reinitialiser-mot-de-passe.test.tsx
+│   │   │   │   ├── counts-mongo-vs-legacy.randomized.test.ts
+│   │   │   │   ├── counts-mongo-vs-legacy.seeded.test.ts
+│   │   │   │   ├── index.test.tsx
+│   │   │   │   ├── publier.test.tsx
+│   │   │   │   ├── recherche.test.tsx
+│   │   │   │   └── traduire.test.tsx
+│   │   │   ├── assets
+│   │   │   │   ├── Placeholder_logo.png
+│   │   │   │   ├── agir
+│   │   │   │   │   ├── acteurs-illu-demarche.png
+│   │   │   │   │   ├── acteurs-illu-dispositifs.png
+│   │   │   │   │   ├── acteurs-illu-recenser.png
+│   │   │   │   │   ├── acteurs-illu-webinaire.png
+│   │   │   │   │   ├── agir-logos.png
+│   │   │   │   │   ├── illu-accompagnement-social.svg
+│   │   │   │   │   ├── illu-emploi.svg
+│   │   │   │   │   └── illu-logement.svg
+│   │   │   │   ├── annuaire
+│   │   │   │   │   ├── GIF-annuaire.gif
+│   │   │   │   │   ├── annuaire_cover.svg
+│   │   │   │   │   ├── annuaire_create.svg
+│   │   │   │   │   ├── annuaire_create_large.svg
+│   │   │   │   │   └── illu_annuaire_big.svg
+│   │   │   │   ├── assetsOnServer.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── goal-icon-structure.svg
+│   │   │   │   │   ├── goal-icon-translate.svg
+│   │   │   │   │   ├── goal-icon-ts.svg
+│   │   │   │   │   ├── goal-icon-user.svg
+│   │   │   │   │   ├── illu-persos.svg
+│   │   │   │   │   ├── login-illu.svg
+│   │   │   │   │   ├── no-icon.svg
+│   │   │   │   │   ├── partners-logo.png
+│   │   │   │   │   ├── providers
+│   │   │   │   │   │   ├── data-inclusion-icon.svg
+│   │   │   │   │   │   ├── gmail-icon.svg
+│   │   │   │   │   │   ├── google-icon.svg
+│   │   │   │   │   │   ├── microsoft-icon.svg
+│   │   │   │   │   │   └── outlook-icon.svg
+│   │   │   │   │   ├── rating-stars.svg
+│   │   │   │   │   └── structure-logos
+│   │   │   │   │       ├── structure-adoma.jpg
+│   │   │   │   │       ├── structure-coallia.png
+│   │   │   │   │       ├── structure-cos.jpg
+│   │   │   │   │       ├── structure-fas.jpg
+│   │   │   │   │       ├── structure-forum-refugies.jpg
+│   │   │   │   │       ├── structure-france-horizon.png
+│   │   │   │   │       ├── structure-ftda.png
+│   │   │   │   │       ├── structure-gip-his.png
+│   │   │   │   │       ├── structure-groupe-sos.png
+│   │   │   │   │       ├── structure-mens.png
+│   │   │   │   │       ├── structure-pierre-valdo.png
+│   │   │   │   │       └── structure-viltais.png
+│   │   │   │   ├── declaration-accessibilite
+│   │   │   │   │   └── conformite-results.svg
+│   │   │   │   ├── diair.svg
+│   │   │   │   ├── dispositif
+│   │   │   │   │   ├── arrow-right.svg
+│   │   │   │   │   ├── bubble-flag.svg
+│   │   │   │   │   ├── crown-high-blue-france.svg
+│   │   │   │   │   ├── crown.svg
+│   │   │   │   │   ├── default-avatar.png
+│   │   │   │   │   ├── feedback-illu.svg
+│   │   │   │   │   ├── form-icons
+│   │   │   │   │   │   ├── conditions-cb.svg
+│   │   │   │   │   │   ├── conditions-driver.svg
+│   │   │   │   │   │   ├── conditions-france-travail.svg
+│   │   │   │   │   │   ├── conditions-ofii.svg
+│   │   │   │   │   │   ├── conditions-ofpra.svg
+│   │   │   │   │   │   ├── conditions-school.svg
+│   │   │   │   │   │   ├── conditions-tse.svg
+│   │   │   │   │   │   ├── location-all.svg
+│   │   │   │   │   │   ├── location-department.svg
+│   │   │   │   │   │   ├── location-internet.svg
+│   │   │   │   │   │   ├── price-free.svg
+│   │   │   │   │   │   └── price-pay.svg
+│   │   │   │   │   ├── google.svg
+│   │   │   │   │   ├── map-icon.png
+│   │   │   │   │   ├── no-icon.svg
+│   │   │   │   │   ├── notheme-banner.svg
+│   │   │   │   │   ├── publish-image.svg
+│   │   │   │   │   ├── quit-image.svg
+│   │   │   │   │   ├── receive-dispositif.svg
+│   │   │   │   │   ├── structure-image.svg
+│   │   │   │   │   ├── thanks-modal-image.svg
+│   │   │   │   │   ├── thumb-down.svg
+│   │   │   │   │   ├── thumb-up-fill.svg
+│   │   │   │   │   ├── thumb-up.svg
+│   │   │   │   │   ├── translation
+│   │   │   │   │   │   ├── houssam.jpg
+│   │   │   │   │   │   ├── kim.jpg
+│   │   │   │   │   │   ├── marianne.jpg
+│   │   │   │   │   │   ├── noor.jpg
+│   │   │   │   │   │   ├── olga.jpg
+│   │   │   │   │   │   ├── rohullah.jpg
+│   │   │   │   │   │   ├── saba.jpg
+│   │   │   │   │   │   ├── translate-step-1.svg
+│   │   │   │   │   │   ├── translate-step-2.svg
+│   │   │   │   │   │   └── translate-step-3.svg
+│   │   │   │   │   ├── tutoriel-image.svg
+│   │   │   │   │   ├── welcome-step-1.svg
+│   │   │   │   │   ├── welcome-step-2.svg
+│   │   │   │   │   ├── welcome-step-5.png
+│   │   │   │   │   └── yes-icon.svg
+│   │   │   │   ├── embed
+│   │   │   │   │   ├── logo-diair.png
+│   │   │   │   │   └── logo-ri-inline.png
+│   │   │   │   ├── empty-image.svg
+│   │   │   │   ├── figma
+│   │   │   │   │   ├── InfoCard
+│   │   │   │   │   │   ├── Acte_naissance
+│   │   │   │   │   │   │   ├── infocard_acteNaissance.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_administratif.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_benelovat.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_culture.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_etudes.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_formationpro.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_francais.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_insertionpro.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_logement.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_loisirs.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_mobilite.svg
+│   │   │   │   │   │   │   ├── infocard_acteNaissance_rencontres.svg
+│   │   │   │   │   │   │   └── infocard_acteNaissance_sante.svg
+│   │   │   │   │   │   ├── Age_requis
+│   │   │   │   │   │   │   ├── infocard_Age_requis.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Age_requis_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Age_requis_Santé.svg
+│   │   │   │   │   │   ├── Duree
+│   │   │   │   │   │   │   ├── infocard_Durée.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Durée_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Durée_Santé.svg
+│   │   │   │   │   │   ├── Francais
+│   │   │   │   │   │   │   ├── infocard_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Français_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Français_Santé.svg
+│   │   │   │   │   │   ├── Geoloc
+│   │   │   │   │   │   │   ├── infocard_Geoloc.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Geoloc_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Geoloc_Santé.svg
+│   │   │   │   │   │   ├── Important
+│   │   │   │   │   │   │   ├── infocard_Important.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Important_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Important_Santé.svg
+│   │   │   │   │   │   ├── Papiers
+│   │   │   │   │   │   │   ├── infocard_Papiers.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Papiers_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Papiers_Santé.svg
+│   │   │   │   │   │   ├── Prix
+│   │   │   │   │   │   │   ├── infocard_Gratuit.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Rencontre.svg
+│   │   │   │   │   │   │   ├── infocard_Gratuit_Santé.svg
+│   │   │   │   │   │   │   ├── infocard_Prix.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Prix_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Prix_Santé.svg
+│   │   │   │   │   │   ├── Public
+│   │   │   │   │   │   │   ├── infocard_Public.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Administratif.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Bénévolat.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Culture.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Etudes.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Formation-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Français.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Insertion-pro.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Logement.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Loisir.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Mobilité.svg
+│   │   │   │   │   │   │   ├── infocard_Public_Rencontre.svg
+│   │   │   │   │   │   │   └── infocard_Public_Santé.svg
+│   │   │   │   │   │   ├── Titre_sejour
+│   │   │   │   │   │   │   ├── infocard_titreSejour.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_administratif.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_benevolat.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_culture.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_etudes.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_formationpro.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_francais.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_insertionpro.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_logement.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_loisir.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_mobilite.svg
+│   │   │   │   │   │   │   ├── infocard_titreSejour_rencontres.svg
+│   │   │   │   │   │   │   └── infocard_titreSejour_sante.svg
+│   │   │   │   │   │   └── background
+│   │   │   │   │   │       ├── bg-infocard.svg
+│   │   │   │   │   │       ├── bg-infocard_Administratif.svg
+│   │   │   │   │   │       ├── bg-infocard_Bénévolat.svg
+│   │   │   │   │   │       ├── bg-infocard_Culture.svg
+│   │   │   │   │   │       ├── bg-infocard_Etudes.svg
+│   │   │   │   │   │       ├── bg-infocard_Formation-pro.svg
+│   │   │   │   │   │       ├── bg-infocard_Français.svg
+│   │   │   │   │   │       ├── bg-infocard_Insertion-pro.svg
+│   │   │   │   │   │       ├── bg-infocard_Logement.svg
+│   │   │   │   │   │       ├── bg-infocard_Loisir.svg
+│   │   │   │   │   │       ├── bg-infocard_Mobilité.svg
+│   │   │   │   │   │       ├── bg-infocard_Rencontre.svg
+│   │   │   │   │   │       └── bg-infocard_Santé.svg
+│   │   │   │   │   ├── home_mobile.svg
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── logoRI.svg
+│   │   │   │   │   ├── logo_google.svg
+│   │   │   │   │   ├── newsletter.svg
+│   │   │   │   │   ├── placeholder_no_theme.svg
+│   │   │   │   │   ├── rejectionFiche.svg
+│   │   │   │   │   ├── responsableFiche.svg
+│   │   │   │   │   ├── sa_custom.svg
+│   │   │   │   │   └── structure_definie.svg
+│   │   │   │   ├── homepage
+│   │   │   │   │   ├── application.png
+│   │   │   │   │   ├── community-ambassadeurs.png
+│   │   │   │   │   ├── community-cda.png
+│   │   │   │   │   ├── community-experts.png
+│   │   │   │   │   ├── community-influenceurs.png
+│   │   │   │   │   ├── community-redacteurs.png
+│   │   │   │   │   ├── community-structures.png
+│   │   │   │   │   ├── community-testeurs.png
+│   │   │   │   │   ├── community-traducteurs.png
+│   │   │   │   │   ├── free-resources.png
+│   │   │   │   │   ├── helpus-icon-1.png
+│   │   │   │   │   ├── helpus-icon-3.svg
+│   │   │   │   │   ├── hero
+│   │   │   │   │   │   ├── background-image.svg
+│   │   │   │   │   │   └── character.svg
+│   │   │   │   │   ├── newsletter-illu.svg
+│   │   │   │   │   ├── structures-logos
+│   │   │   │   │   │   ├── Dispositif-COS.png
+│   │   │   │   │   │   ├── Dispositif-Coallia.png
+│   │   │   │   │   │   ├── Dispositif-FAS.png
+│   │   │   │   │   │   ├── Dispositif-FTDA.png
+│   │   │   │   │   │   ├── Dispositif-Forum-Refugie.png
+│   │   │   │   │   │   ├── Dispositif-France-Travail.png
+│   │   │   │   │   │   ├── Dispositif-France-horizon.png
+│   │   │   │   │   │   ├── Dispositif-Groupe-SOS.png
+│   │   │   │   │   │   ├── Dispositif-HIS.png
+│   │   │   │   │   │   └── Dispositif-Pierre-Valdo.png
+│   │   │   │   │   ├── structures.png
+│   │   │   │   │   ├── usages-mobile.png
+│   │   │   │   │   └── why-accordion
+│   │   │   │   │       ├── demarches-mobile.png
+│   │   │   │   │       ├── demarches.png
+│   │   │   │   │       ├── dispos-mobile.png
+│   │   │   │   │       ├── dispositifs.png
+│   │   │   │   │       └── partage.png
+│   │   │   │   ├── icon_traduction.svg
+│   │   │   │   ├── icon_traduction_blanc.svg
+│   │   │   │   ├── illu_bonasavoir.svg
+│   │   │   │   ├── illu_pasdepanique.svg
+│   │   │   │   ├── important-callout.svg
+│   │   │   │   ├── loader_logo.png
+│   │   │   │   ├── mario-profile.jpg
+│   │   │   │   ├── mobile-app-illustration.png
+│   │   │   │   ├── noStructure.png
+│   │   │   │   ├── no_results.svg
+│   │   │   │   ├── no_results_alt.svg
+│   │   │   │   ├── pictogrammes
+│   │   │   │   │   ├── avatar.svg
+│   │   │   │   │   ├── city-hall.svg
+│   │   │   │   │   ├── community.svg
+│   │   │   │   │   └── location-france.svg
+│   │   │   │   ├── placeholder_annuaire.png
+│   │   │   │   ├── recherche
+│   │   │   │   │   ├── default-structure-image.svg
+│   │   │   │   │   ├── icon-map.svg
+│   │   │   │   │   ├── illu-demarche.svg
+│   │   │   │   │   ├── temp-illu-demarche.png
+│   │   │   │   │   └── temp-illu-dispositif.png
+│   │   │   │   └── staticPages
+│   │   │   │       ├── common
+│   │   │   │       │   ├── bubble-icon-red.svg
+│   │   │   │       │   ├── bubble-icon.svg
+│   │   │   │       │   ├── card-icon-bubble.svg
+│   │   │   │       │   ├── card-icon-calendar.svg
+│   │   │   │       │   └── card-icon-check.svg
+│   │   │   │       ├── mission-et-impact
+│   │   │   │       │   ├── community-ambassadeurs.png
+│   │   │   │       │   ├── community-cda.png
+│   │   │   │       │   ├── community-dinum.png
+│   │   │   │       │   ├── community-dispositifs.png
+│   │   │   │       │   ├── community-experts.png
+│   │   │   │       │   ├── community-influenceurs.png
+│   │   │   │       │   ├── community-partenaires.png
+│   │   │   │       │   ├── community-testeurs.png
+│   │   │   │       │   ├── community-traducteurs.png
+│   │   │   │       │   ├── hero-back.svg
+│   │   │   │       │   ├── hero-illu-mobile.svg
+│   │   │   │       │   ├── icon-administration.svg
+│   │   │   │       │   ├── icon-agir.png
+│   │   │   │       │   ├── icon-operators.png
+│   │   │   │       │   ├── icon-structure.svg
+│   │   │   │       │   ├── icon-translator.svg
+│   │   │   │       │   ├── icon-ts.svg
+│   │   │   │       │   ├── pdf-screenshot.png
+│   │   │   │       │   ├── photo-alain-regnier.png
+│   │   │   │       │   ├── ri-screenshot.png
+│   │   │   │       │   ├── stat-graph.svg
+│   │   │   │       │   ├── stat-podium.svg
+│   │   │   │       │   ├── stat-stars.svg
+│   │   │   │       │   ├── steps-illu-1.png
+│   │   │   │       │   ├── steps-illu-2.png
+│   │   │   │       │   ├── steps-illu-3.png
+│   │   │   │       │   ├── steps-illu-4.png
+│   │   │   │       │   ├── steps-illu-5.png
+│   │   │   │       │   ├── steps-illu-6.png
+│   │   │   │       │   ├── steps-illu-7.png
+│   │   │   │       │   ├── team-alice.png
+│   │   │   │       │   ├── team-andressa.png
+│   │   │   │       │   ├── team-claudia.png
+│   │   │   │       │   ├── team-fatma.png
+│   │   │   │       │   ├── team-jeremie.png
+│   │   │   │       │   ├── team-luis.png
+│   │   │   │       │   ├── team-margot.png
+│   │   │   │       │   ├── team-marianne.png
+│   │   │   │       │   ├── team-matthieu.png
+│   │   │   │       │   ├── team-nour.png
+│   │   │   │       │   ├── team-xavier.png
+│   │   │   │       │   ├── users-graph-1.png
+│   │   │   │       │   └── users-graph-2.svg
+│   │   │   │       ├── publier
+│   │   │   │       │   ├── desktop-register.svg
+│   │   │   │       │   ├── help-icon-webinar.svg
+│   │   │   │       │   ├── icon-calendar.svg
+│   │   │   │       │   ├── icon-hands.svg
+│   │   │   │       │   ├── icon-money.svg
+│   │   │   │       │   ├── mobile-register.png
+│   │   │   │       │   ├── mockups-ri.png
+│   │   │   │       │   ├── orange_bg.svg
+│   │   │   │       │   ├── red_bg.svg
+│   │   │   │       │   ├── step-image-1.png
+│   │   │   │       │   ├── step-image-2.png
+│   │   │   │       │   ├── step-image-3.png
+│   │   │   │       │   ├── step-image-4.png
+│   │   │   │       │   ├── step-image-5.png
+│   │   │   │       │   ├── step-image-6.png
+│   │   │   │       │   ├── testimony-icon.svg
+│   │   │   │       │   ├── why-image-1.png
+│   │   │   │       │   ├── why-image-2.png
+│   │   │   │       │   ├── why-image-3.png
+│   │   │   │       │   └── why-image-4.png
+│   │   │   │       └── traduire
+│   │   │   │           ├── help-icon-tutoriel.svg
+│   │   │   │           ├── mockup-ri.png
+│   │   │   │           ├── share-image.svg
+│   │   │   │           ├── step-image-2.svg
+│   │   │   │           ├── step-image-3.png
+│   │   │   │           └── who-icon-3.svg
+│   │   │   ├── components
+│   │   │   │   ├── Accessibility
+│   │   │   │   │   └── ScreenReaderAnnouncer.tsx
+│   │   │   │   ├── Backend
+│   │   │   │   │   ├── CustomTabPane
+│   │   │   │   │   │   ├── CustomTabPane.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Navigation
+│   │   │   │   │   │   ├── BackendNavItem
+│   │   │   │   │   │   │   ├── BackendNavItem.module.scss
+│   │   │   │   │   │   │   └── useBackendNavItem.tsx
+│   │   │   │   │   │   └── useBackendNavigation.ts
+│   │   │   │   │   ├── TitleWithNumber
+│   │   │   │   │   │   ├── TitleWithNumber.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── UserDetail
+│   │   │   │   │   │   ├── UserDetail.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── screens
+│   │   │   │   │       ├── Admin
+│   │   │   │   │       │   ├── Admin.module.scss
+│   │   │   │   │       │   ├── Admin.tsx
+│   │   │   │   │       │   ├── AdminContenu
+│   │   │   │   │       │   │   ├── AdminContenu.module.scss
+│   │   │   │   │       │   │   ├── AdminContenu.tsx
+│   │   │   │   │       │   │   ├── ChangeStructureModale
+│   │   │   │   │       │   │   │   ├── ChangeStructureModale.module.scss
+│   │   │   │   │       │   │   │   └── ChangeStructureModale.tsx
+│   │   │   │   │       │   │   ├── ContentDetailsModal
+│   │   │   │   │       │   │   │   ├── ContentDetailsModal.module.scss
+│   │   │   │   │       │   │   │   ├── ContentDetailsModal.tsx
+│   │   │   │   │       │   │   │   └── functions.ts
+│   │   │   │   │       │   │   ├── ImprovementsMailModal
+│   │   │   │   │       │   │   │   ├── ImprovementsMailModal.module.scss
+│   │   │   │   │       │   │   │   ├── ImprovementsMailModal.tsx
+│   │   │   │   │       │   │   │   ├── __tests__
+│   │   │   │   │       │   │   │   │   └── functions.test.ts
+│   │   │   │   │       │   │   │   └── functions.ts
+│   │   │   │   │       │   │   ├── NeedsChoiceModal
+│   │   │   │   │       │   │   │   ├── NeedsChoiceModal.module.scss
+│   │   │   │   │       │   │   │   └── NeedsChoiceModal.tsx
+│   │   │   │   │       │   │   ├── components
+│   │   │   │   │       │   │   │   └── LoadingAdminContenu.tsx
+│   │   │   │   │       │   │   ├── data.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── AdminStructures
+│   │   │   │   │       │   │   ├── AdminStructures.module.scss
+│   │   │   │   │       │   │   ├── AdminStructures.tsx
+│   │   │   │   │       │   │   ├── NewStructureModal
+│   │   │   │   │       │   │   │   ├── ChooseResponsableComponent.tsx
+│   │   │   │   │       │   │   │   ├── NewStructureModal.module.scss
+│   │   │   │   │       │   │   │   ├── NewStructureModal.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── SelectFirstResponsableModal
+│   │   │   │   │       │   │   │   ├── SelectFirstResponsableModal.module.scss
+│   │   │   │   │       │   │   │   └── SelectFirstResponsableModal.tsx
+│   │   │   │   │       │   │   ├── StructureDetailsModal
+│   │   │   │   │       │   │   │   ├── StructureDetailsModal.module.scss
+│   │   │   │   │       │   │   │   ├── StructureDetailsModal.tsx
+│   │   │   │   │       │   │   │   └── functions.ts
+│   │   │   │   │       │   │   ├── components
+│   │   │   │   │       │   │   │   ├── AdminStructureComponents.module.scss
+│   │   │   │   │       │   │   │   ├── AdminStructureComponents.tsx
+│   │   │   │   │       │   │   │   └── LoadingAdminStructures.tsx
+│   │   │   │   │       │   │   ├── data.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── AdminUsers
+│   │   │   │   │       │   │   ├── AdminUsers.module.scss
+│   │   │   │   │       │   │   ├── AdminUsers.tsx
+│   │   │   │   │       │   │   ├── UserDetailsModal
+│   │   │   │   │       │   │   │   ├── UserDetailsModal.module.scss
+│   │   │   │   │       │   │   │   └── UserDetailsModal.tsx
+│   │   │   │   │       │   │   ├── components
+│   │   │   │   │       │   │   │   ├── AdminUsersComponent.module.scss
+│   │   │   │   │       │   │   │   ├── AdminUsersComponents.tsx
+│   │   │   │   │       │   │   │   └── LoadingAdminUsers.tsx
+│   │   │   │   │       │   │   ├── data.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Logs
+│   │   │   │   │       │   │   ├── LogLine.module.scss
+│   │   │   │   │       │   │   ├── LogLine.tsx
+│   │   │   │   │       │   │   ├── LogList.module.scss
+│   │   │   │   │       │   │   ├── LogList.tsx
+│   │   │   │   │       │   │   └── functions.tsx
+│   │   │   │   │       │   ├── Needs
+│   │   │   │   │       │   │   ├── LoadingNeeds.tsx
+│   │   │   │   │       │   │   ├── NeedFormModal.module.scss
+│   │   │   │   │       │   │   ├── NeedFormModal.tsx
+│   │   │   │   │       │   │   ├── Needs.module.scss
+│   │   │   │   │       │   │   ├── Needs.tsx
+│   │   │   │   │       │   │   ├── ThemeFormModal.module.scss
+│   │   │   │   │       │   │   ├── ThemeFormModal.tsx
+│   │   │   │   │       │   │   ├── index.ts
+│   │   │   │   │       │   │   └── lib.ts
+│   │   │   │   │       │   ├── Widgets
+│   │   │   │   │       │   │   ├── EditWidgetModal
+│   │   │   │   │       │   │   │   ├── EditWidgetModal.module.scss
+│   │   │   │   │       │   │   │   └── EditWidgetModal.tsx
+│   │   │   │   │       │   │   ├── Widgets.module.scss
+│   │   │   │   │       │   │   ├── Widgets.tsx
+│   │   │   │   │       │   │   ├── components
+│   │   │   │   │       │   │   │   ├── LanguageInput.tsx
+│   │   │   │   │       │   │   │   ├── LocationInput.tsx
+│   │   │   │   │       │   │   │   ├── ThemesInput.tsx
+│   │   │   │   │       │   │   │   ├── TypeContenuInput.tsx
+│   │   │   │   │       │   │   │   ├── WidgetLine.module.scss
+│   │   │   │   │       │   │   │   └── WidgetLine.tsx
+│   │   │   │   │       │   │   ├── functions.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── index.ts
+│   │   │   │   │       │   └── sharedComponents
+│   │   │   │   │       │       ├── DetailsModal.module.scss
+│   │   │   │   │       │       ├── DetailsModal.tsx
+│   │   │   │   │       │       ├── NotesInput.module.scss
+│   │   │   │   │       │       ├── NotesInput.tsx
+│   │   │   │   │       │       ├── SmallDispositif.module.scss
+│   │   │   │   │       │       ├── SmallDispositif.tsx
+│   │   │   │   │       │       ├── StatusRow.module.scss
+│   │   │   │   │       │       ├── StatusRow.tsx
+│   │   │   │   │       │       ├── StructureButton.tsx
+│   │   │   │   │       │       ├── StyledAdmin.ts
+│   │   │   │   │       │       ├── SubComponents.tsx
+│   │   │   │   │       │       ├── UserButton.tsx
+│   │   │   │   │       │       └── __tests__
+│   │   │   │   │       │           ├── SubComponents.test.tsx
+│   │   │   │   │       │           └── __snapshots__
+│   │   │   │   │       │               └── SubComponents.test.tsx.snap
+│   │   │   │   │       ├── Dashboard
+│   │   │   │   │       │   ├── Dashboard.module.scss
+│   │   │   │   │       │   ├── Dashboard.tsx
+│   │   │   │   │       │   ├── NoGeolocModal.module.scss
+│   │   │   │   │       │   ├── NoGeolocModal.tsx
+│   │   │   │   │       │   ├── data.ts
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── UserContributions
+│   │   │   │   │       │   ├── UserContributions.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   ├── UserContributions.component.test.tsx
+│   │   │   │   │       │   │   ├── __snapshots__
+│   │   │   │   │       │   │   │   └── UserContributions.component.test.tsx.snap
+│   │   │   │   │       │   │   └── functions.test.ts
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   ├── NoContribution.tsx
+│   │   │   │   │       │   │   ├── SubComponents.tsx
+│   │   │   │   │       │   │   └── UserContribTable.tsx
+│   │   │   │   │       │   ├── functions.ts
+│   │   │   │   │       │   ├── index.ts
+│   │   │   │   │       │   └── types.ts
+│   │   │   │   │       ├── UserFavorites
+│   │   │   │   │       │   ├── UserFavorites.module.scss
+│   │   │   │   │       │   ├── UserFavorites.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   ├── UserFavorites.component.test.tsx
+│   │   │   │   │       │   │   └── __snapshots__
+│   │   │   │   │       │   │       └── UserFavorites.component.test.tsx.snap
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   ├── FavoritesLoading.tsx
+│   │   │   │   │       │   │   └── NoFavorites.component.tsx
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── UserNotifications
+│   │   │   │   │       │   ├── UserNotifications.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   ├── UserNotifications.test.tsx
+│   │   │   │   │       │   │   └── __snapshots__
+│   │   │   │   │       │   │       └── UserNotifications.test.tsx.snap
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   └── Notification.tsx
+│   │   │   │   │       │   ├── index.ts
+│   │   │   │   │       │   ├── lib.ts
+│   │   │   │   │       │   └── types.ts
+│   │   │   │   │       ├── UserProfile
+│   │   │   │   │       │   ├── UserProfile.module.scss
+│   │   │   │   │       │   ├── UserProfile.tsx
+│   │   │   │   │       │   ├── __test__
+│   │   │   │   │       │   │   ├── UserProfile.component.test.tsx
+│   │   │   │   │       │   │   └── __snapshots__
+│   │   │   │   │       │   │       └── UserProfile.component.test.tsx.snap
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   ├── EditAvatar
+│   │   │   │   │       │   │   │   ├── EditAvatar.module.scss
+│   │   │   │   │       │   │   │   ├── EditAvatar.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── EditButton
+│   │   │   │   │       │   │   │   ├── EditButton.module.scss
+│   │   │   │   │       │   │   │   ├── EditButton.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── LanguageBadge
+│   │   │   │   │       │   │   │   ├── LanguageBadge.module.scss
+│   │   │   │   │       │   │   │   ├── LanguageBadge.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── ModalDeleteAccount
+│   │   │   │   │       │   │   │   ├── ModalDeleteAccount.module.scss
+│   │   │   │   │       │   │   │   ├── ModalDeleteAccount.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── ModalDepartments
+│   │   │   │   │       │   │   │   ├── ModalDepartments.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── ModalEmailCode
+│   │   │   │   │       │   │   │   ├── ModalEmailCode.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── ModalLanguage
+│   │   │   │   │       │   │   │   ├── ModalLanguage.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── ModalResetPassword
+│   │   │   │   │       │   │   │   ├── ModalResetPassword.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── Tag
+│   │   │   │   │       │   │   │   ├── Tag.module.scss
+│   │   │   │   │       │   │   │   ├── Tag.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── UserProfileForm
+│   │   │   │   │       │   │   │   ├── UserProfileForm.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── UserStructure
+│   │   │   │   │       │   ├── UserStructure.component.tsx
+│   │   │   │   │       │   ├── UserStructureAdmin.component.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   ├── UserStructure.test.tsx
+│   │   │   │   │       │   │   └── __snapshots__
+│   │   │   │   │       │   │       └── UserStructure.test.tsx.snap
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   ├── AddMemberModal.tsx
+│   │   │   │   │       │   │   ├── CustomUserSearchBar.module.scss
+│   │   │   │   │       │   │   ├── CustomUserSearchBar.tsx
+│   │   │   │   │       │   │   ├── MemberModal.module.scss
+│   │   │   │   │       │   │   ├── MembresTable.module.scss
+│   │   │   │   │       │   │   ├── MembresTable.tsx
+│   │   │   │   │       │   │   ├── SubComponents.tsx
+│   │   │   │   │       │   │   ├── UserStructureDetails.module.scss
+│   │   │   │   │       │   │   ├── UserStructureDetails.tsx
+│   │   │   │   │       │   │   ├── UserStructureLoading.module.scss
+│   │   │   │   │       │   │   └── UserStructureLoading.tsx
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── UserTranslation
+│   │   │   │   │       │   ├── UserTranslation.module.scss
+│   │   │   │   │       │   ├── UserTranslation.tsx
+│   │   │   │   │       │   ├── __tests__
+│   │   │   │   │       │   │   ├── UserTranslation.component.test.tsx
+│   │   │   │   │       │   │   └── __snapshots__
+│   │   │   │   │       │   │       └── UserTranslation.component.test.tsx.snap
+│   │   │   │   │       │   ├── components
+│   │   │   │   │       │   │   ├── LoadingDispositifsWithTranslationsStatus.tsx
+│   │   │   │   │       │   │   ├── OneNeedTranslationModal
+│   │   │   │   │       │   │   │   ├── OneNeedTranslationModal.module.scss
+│   │   │   │   │       │   │   │   ├── OneNeedTranslationModal.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── StartTranslating.tsx
+│   │   │   │   │       │   │   ├── SubComponents.module.scss
+│   │   │   │   │       │   │   ├── SubComponents.tsx
+│   │   │   │   │       │   │   ├── TranslationAvancementTable.tsx
+│   │   │   │   │       │   │   ├── TranslationLanguagesChoiceModal
+│   │   │   │   │       │   │   │   ├── TranslationLanguagesChoiceModal.module.scss
+│   │   │   │   │       │   │   │   ├── TranslationLanguagesChoiceModal.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── TranslationNeedsList
+│   │   │   │   │       │   │   │   ├── NeedButton
+│   │   │   │   │       │   │   │   │   ├── NeedButton.module.scss
+│   │   │   │   │       │   │   │   │   ├── NeedButton.tsx
+│   │   │   │   │       │   │   │   │   ├── functions.ts
+│   │   │   │   │       │   │   │   │   └── index.ts
+│   │   │   │   │       │   │   │   ├── TranslationNeedsList.module.scss
+│   │   │   │   │       │   │   │   ├── TranslationNeedsList.tsx
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── TranslationsAvancement
+│   │   │   │   │       │   │   │   ├── TranslationsAvancement.tsx
+│   │   │   │   │       │   │   │   ├── __tests__
+│   │   │   │   │       │   │   │   │   └── functions.test.ts
+│   │   │   │   │       │   │   │   ├── functions.ts
+│   │   │   │   │       │   │   │   └── index.ts
+│   │   │   │   │       │   │   ├── __fixtures__
+│   │   │   │   │       │   │   │   └── dispositifs.ts
+│   │   │   │   │       │   │   ├── __tests__
+│   │   │   │   │       │   │   │   └── functions.test.ts
+│   │   │   │   │       │   │   ├── functions.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── index.ts
+│   │   │   │   │       │   └── types.ts
+│   │   │   │   │       └── routes.ts
+│   │   │   │   ├── Content
+│   │   │   │   │   ├── Dispositif
+│   │   │   │   │   │   ├── Dispositif.module.scss
+│   │   │   │   │   │   ├── Dispositif.tsx
+│   │   │   │   │   │   ├── LeftSidebar
+│   │   │   │   │   │   │   ├── LeftSidebar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── RightSidebar
+│   │   │   │   │   │   │   ├── RightSidebar.module.scss
+│   │   │   │   │   │   │   ├── RightSidebar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── Dispositif.rco.parsing.test.tsx
+│   │   │   │   │   │   │   └── Dispositif.rco.test.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── DispositifTranslate
+│   │   │   │   │       ├── DispositifTranslate.module.scss
+│   │   │   │   │       ├── DispositifTranslate.tsx
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── Layout
+│   │   │   │   │   ├── AutoAddFavorite
+│   │   │   │   │   │   ├── AutoAddFavorite.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── DownloadAppBanner
+│   │   │   │   │   │   ├── DownloadAppBanner.module.scss
+│   │   │   │   │   │   ├── DownloadAppBanner.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Footer
+│   │   │   │   │   │   ├── FooterDSFR.module.scss
+│   │   │   │   │   │   ├── FooterDSFR.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Layout.module.scss
+│   │   │   │   │   ├── Layout.tsx
+│   │   │   │   │   ├── LegalPagesLayout.tsx
+│   │   │   │   │   └── Page404Layout.tsx
+│   │   │   │   ├── Modals
+│   │   │   │   │   ├── BookmarkedModal
+│   │   │   │   │   │   ├── BookmarkedModal.module.scss
+│   │   │   │   │   │   ├── BookmarkedModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── DownloadAppModal
+│   │   │   │   │   │   ├── DownloadApp.module.scss
+│   │   │   │   │   │   ├── DownloadAppModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FrameModal
+│   │   │   │   │   │   ├── FrameModal.module.scss
+│   │   │   │   │   │   ├── FrameModal.tsx
+│   │   │   │   │   │   └── data.ts
+│   │   │   │   │   ├── LanguageModal
+│   │   │   │   │   │   ├── LanguageModal.module.scss
+│   │   │   │   │   │   └── LanguageModal.tsx
+│   │   │   │   │   ├── Modal.scss
+│   │   │   │   │   ├── Modal.tsx
+│   │   │   │   │   ├── NewProfileModal
+│   │   │   │   │   │   ├── NewProfileModal.module.scss
+│   │   │   │   │   │   ├── NewProfileModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── PseudoModal
+│   │   │   │   │   │   ├── PseudoModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ReactionLectureModal
+│   │   │   │   │   │   ├── ReactionLectureModal.module.scss
+│   │   │   │   │   │   └── ReactionLectureModal.tsx
+│   │   │   │   │   ├── RejectionModal
+│   │   │   │   │   │   ├── RejectionModal.module.scss
+│   │   │   │   │   │   └── RejectionModal.tsx
+│   │   │   │   │   ├── ResponsableModal
+│   │   │   │   │   │   ├── ResponsableModal.module.scss
+│   │   │   │   │   │   └── ResponsableModal.tsx
+│   │   │   │   │   ├── SubscribeNewsletterModal
+│   │   │   │   │   │   └── SubscribeNewsletterModal.tsx
+│   │   │   │   │   ├── WriteContentModal
+│   │   │   │   │   │   ├── WriteContentCard
+│   │   │   │   │   │   │   ├── WriteContentCard.module.scss
+│   │   │   │   │   │   │   ├── WriteContentCard.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── WriteContentModal.module.scss
+│   │   │   │   │   │   └── WriteContentModal.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Navigation
+│   │   │   │   │   ├── AuthNavbar
+│   │   │   │   │   │   ├── AuthNavbar.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Navbar
+│   │   │   │   │   │   ├── Navbar.module.scss
+│   │   │   │   │   │   ├── Navbar.tsx
+│   │   │   │   │   │   ├── QuickAccessMenu
+│   │   │   │   │   │   │   ├── LanguageMenu.module.scss
+│   │   │   │   │   │   │   ├── LanguageMenu.tsx
+│   │   │   │   │   │   │   ├── LoginButton.module.scss
+│   │   │   │   │   │   │   ├── LoginButton.tsx
+│   │   │   │   │   │   │   └── QuickAccessMenu.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── UnauthorizedAccess
+│   │   │   │   │       ├── UnauthorizedAccess.module.scss
+│   │   │   │   │       └── UnauthorizedAccess.tsx
+│   │   │   │   ├── Pages
+│   │   │   │   │   ├── auth
+│   │   │   │   │   │   ├── CheckCode
+│   │   │   │   │   │   │   ├── CheckCode.test.tsx
+│   │   │   │   │   │   │   ├── CheckCode.tsx
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── CheckCode.test.tsx.snap
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Layout
+│   │   │   │   │   │   │   ├── Layout.module.scss
+│   │   │   │   │   │   │   ├── Layout.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Loader
+│   │   │   │   │   │   │   ├── Loader.module.scss
+│   │   │   │   │   │   │   ├── Loader.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── PartnerRadio
+│   │   │   │   │   │       ├── PartnerRadio.module.scss
+│   │   │   │   │   │       ├── PartnerRadio.tsx
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── dispositif
+│   │   │   │   │   │   ├── AccordionBadge
+│   │   │   │   │   │   │   ├── AccordionBadge.module.scss
+│   │   │   │   │   │   │   ├── AccordionBadge.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Accordions
+│   │   │   │   │   │   │   ├── Accordions.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Banner
+│   │   │   │   │   │   │   ├── Banner.module.scss
+│   │   │   │   │   │   │   ├── Banner.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Breadcrumb
+│   │   │   │   │   │   │   ├── Breadcrumb.tsx
+│   │   │   │   │   │   │   ├── BreadcrumbDetails.tsx
+│   │   │   │   │   │   │   ├── EditModal
+│   │   │   │   │   │   │   │   ├── EditModal.module.scss
+│   │   │   │   │   │   │   │   ├── EditModal.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── StatusAndEditButtons.tsx
+│   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Contributors
+│   │   │   │   │   │   │   ├── ContributorCard
+│   │   │   │   │   │   │   │   ├── ContributorCard.tsx
+│   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── Contributors.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Edition
+│   │   │   │   │   │   │   ├── AccordionsEdit
+│   │   │   │   │   │   │   │   ├── AccordionItem
+│   │   │   │   │   │   │   │   │   ├── AccordionItem.module.scss
+│   │   │   │   │   │   │   │   │   ├── AccordionItem.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── AccordionsEdit.module.scss
+│   │   │   │   │   │   │   │   ├── AccordionsEdit.tsx
+│   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── AddContentButton
+│   │   │   │   │   │   │   │   ├── AddContentButton.module.scss
+│   │   │   │   │   │   │   │   ├── AddContentButton.tsx
+│   │   │   │   │   │   │   │   ├── DeleteContentModal
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── BannerEdition
+│   │   │   │   │   │   │   │   ├── BannerEdition.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── ChoiceButton
+│   │   │   │   │   │   │   │   ├── ChoiceButton.module.scss
+│   │   │   │   │   │   │   │   ├── ChoiceButton.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CustomNavbar
+│   │   │   │   │   │   │   │   ├── CustomNavbar.module.scss
+│   │   │   │   │   │   │   │   ├── CustomNavbar.tsx
+│   │   │   │   │   │   │   │   ├── CustomNavbarEdit
+│   │   │   │   │   │   │   │   │   ├── CustomNavbarEdit.tsx
+│   │   │   │   │   │   │   │   │   ├── PublishModal
+│   │   │   │   │   │   │   │   │   │   ├── CompleteContent
+│   │   │   │   │   │   │   │   │   │   │   ├── BubbleFlags
+│   │   │   │   │   │   │   │   │   │   │   │   ├── BubbleFlags.module.scss
+│   │   │   │   │   │   │   │   │   │   │   │   ├── BubbleFlags.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── CompleteContent.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── CompleteContent.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── PublicationSteps
+│   │   │   │   │   │   │   │   │   │   │   │   ├── PublicationSteps.module.scss
+│   │   │   │   │   │   │   │   │   │   │   │   ├── PublicationSteps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── MissingContent
+│   │   │   │   │   │   │   │   │   │   │   ├── MissingContent.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── MissingContent.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── PublishModal.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── PublishModal.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── QuitModal
+│   │   │   │   │   │   │   │   │   │   ├── QuitModal.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── QuitModal.tsx
+│   │   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   └── useAutosave.ts
+│   │   │   │   │   │   │   │   ├── CustomNavbarTranslate
+│   │   │   │   │   │   │   │   │   ├── CustomNavbarTranslate.tsx
+│   │   │   │   │   │   │   │   │   ├── PublishModal
+│   │   │   │   │   │   │   │   │   │   ├── CompleteContent
+│   │   │   │   │   │   │   │   │   │   │   ├── CompleteContent.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── CompleteContent.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── NotationForm
+│   │   │   │   │   │   │   │   │   │   │   ├── NotationForm.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── NotationForm.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── NotationInput
+│   │   │   │   │   │   │   │   │   │   │   │   ├── NotationInput.module.scss
+│   │   │   │   │   │   │   │   │   │   │   │   ├── NotationInput.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── PublishModal.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── PublishModal.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── QuitModal
+│   │   │   │   │   │   │   │   │   │   ├── QuitModal.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── QuitModal.tsx
+│   │   │   │   │   │   │   │   │   │   ├── data.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   └── useAutosave.ts
+│   │   │   │   │   │   │   │   ├── MissingSteps
+│   │   │   │   │   │   │   │   │   ├── MissingSteps.module.scss
+│   │   │   │   │   │   │   │   │   ├── MissingSteps.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── SaveErrorModal
+│   │   │   │   │   │   │   │   │   ├── SaveErrorModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── SaveErrorModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── StepBar
+│   │   │   │   │   │   │   │   │   ├── StepBar.module.scss
+│   │   │   │   │   │   │   │   │   ├── StepBar.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── DropdownModals
+│   │   │   │   │   │   │   │   ├── DropdownModals.module.scss
+│   │   │   │   │   │   │   │   ├── DropdownModals.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── HelpCard
+│   │   │   │   │   │   │   │   ├── HelpCard.module.scss
+│   │   │   │   │   │   │   │   ├── HelpCard.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── LeftSidebarEdition
+│   │   │   │   │   │   │   │   ├── LeftSidebarEdition.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── LogoInput
+│   │   │   │   │   │   │   │   ├── LogoInput.module.scss
+│   │   │   │   │   │   │   │   ├── LogoInput.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── MapEdit
+│   │   │   │   │   │   │   │   ├── DeleteModal
+│   │   │   │   │   │   │   │   │   ├── DeleteModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── DeleteModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── Header
+│   │   │   │   │   │   │   │   │   ├── Header.module.scss
+│   │   │   │   │   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── MapEdit.module.scss
+│   │   │   │   │   │   │   │   ├── MapEdit.tsx
+│   │   │   │   │   │   │   │   ├── PoiForm
+│   │   │   │   │   │   │   │   │   ├── PoiForm.module.scss
+│   │   │   │   │   │   │   │   │   ├── PoiForm.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── Sidebar
+│   │   │   │   │   │   │   │   │   ├── Sidebar.module.scss
+│   │   │   │   │   │   │   │   │   ├── Sidebar.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── Modals
+│   │   │   │   │   │   │   │   ├── ModalAbstract
+│   │   │   │   │   │   │   │   │   ├── ModalAbstract.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalAbstract.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   └── useSponsorData.ts
+│   │   │   │   │   │   │   │   ├── ModalAccordionsCount
+│   │   │   │   │   │   │   │   │   ├── ModalAccordionsCount.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalAccordionsCount.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalAvailability
+│   │   │   │   │   │   │   │   │   ├── ModalAvailability.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalAvailability.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalConditions
+│   │   │   │   │   │   │   │   │   ├── ModalConditions.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalConditions.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalDemarcheAdministration
+│   │   │   │   │   │   │   │   │   ├── ModalDemarcheAdministration.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalDemarcheAdministration.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalLocation
+│   │   │   │   │   │   │   │   │   ├── DepartmentInput
+│   │   │   │   │   │   │   │   │   │   ├── DepartmentInput.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── DepartmentInput.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── ModalLocation.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalLocation.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalMainSponsor
+│   │   │   │   │   │   │   │   │   ├── AuthorContact
+│   │   │   │   │   │   │   │   │   │   ├── AuthorContact.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── AuthorContact.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── ChooseStructure
+│   │   │   │   │   │   │   │   │   │   ├── ChooseStructure.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── ChooseStructure.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── CreateStructure
+│   │   │   │   │   │   │   │   │   │   ├── CreateStructure.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── CreateStructure.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── MemberOfStructure
+│   │   │   │   │   │   │   │   │   │   ├── MemberOfStructure.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── MemberOfStructure.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── ModalMainSponsor.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalMainSponsor.tsx
+│   │   │   │   │   │   │   │   │   ├── SearchStructure
+│   │   │   │   │   │   │   │   │   │   ├── SearchStructure.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── SearchStructure.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── StructureContact
+│   │   │   │   │   │   │   │   │   │   ├── StructureContact.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── StructureContact.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── ThanksMessage
+│   │   │   │   │   │   │   │   │   │   ├── ThanksMessage.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── ThanksMessage.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── data.tsx
+│   │   │   │   │   │   │   │   │   ├── functions.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalPrice
+│   │   │   │   │   │   │   │   │   ├── ModalPrice.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalPrice.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalPublic
+│   │   │   │   │   │   │   │   │   ├── ModalPublic.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalPublic.tsx
+│   │   │   │   │   │   │   │   │   ├── data.tsx
+│   │   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalSponsors
+│   │   │   │   │   │   │   │   │   ├── ModalSponsors.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalSponsors.tsx
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalThemes
+│   │   │   │   │   │   │   │   │   ├── ModalThemes.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalThemes.tsx
+│   │   │   │   │   │   │   │   │   ├── ThemeSelectButton
+│   │   │   │   │   │   │   │   │   │   ├── ThemeSelectButton.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── ThemeSelectButton.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── ModalWelcome
+│   │   │   │   │   │   │   │   │   ├── ModalWelcome.module.scss
+│   │   │   │   │   │   │   │   │   ├── ModalWelcome.tsx
+│   │   │   │   │   │   │   │   │   ├── TextExampleLine
+│   │   │   │   │   │   │   │   │   │   ├── TextExample
+│   │   │   │   │   │   │   │   │   │   │   ├── TextExample.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── TextExample.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── TextExampleLine.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── TextExampleLine.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   │   ├── InlineForm
+│   │   │   │   │   │   │   │   │   │   ├── InlineForm.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── InlineForm.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── RemovableItem
+│   │   │   │   │   │   │   │   │   │   ├── RemovableItem.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── RemovableItem.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── SimpleFooter
+│   │   │   │   │   │   │   │   │   │   ├── SimpleFooter.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── SponsorForm
+│   │   │   │   │   │   │   │   │   │   ├── SponsorForm.module.scss
+│   │   │   │   │   │   │   │   │   │   ├── SponsorForm.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   ├── StepsFooter
+│   │   │   │   │   │   │   │   │   │   ├── Steps
+│   │   │   │   │   │   │   │   │   │   │   ├── Steps.module.scss
+│   │   │   │   │   │   │   │   │   │   │   ├── Steps.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── StepsFooter.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── RichTextEdit
+│   │   │   │   │   │   │   │   ├── RichTextEdit.module.scss
+│   │   │   │   │   │   │   │   ├── RichTextEdit.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── RightSidebarEdition
+│   │   │   │   │   │   │   │   ├── RightSidebarEdition.module.scss
+│   │   │   │   │   │   │   │   ├── RightSidebarEdition.tsx
+│   │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── SponsorsEdit
+│   │   │   │   │   │   │   │   ├── DeleteContentModal
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── SponsorsEdit.module.scss
+│   │   │   │   │   │   │   │   ├── SponsorsEdit.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── TitleEdit
+│   │   │   │   │   │   │   │   ├── TitleEdit.module.scss
+│   │   │   │   │   │   │   │   ├── TitleEdit.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Header
+│   │   │   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Input
+│   │   │   │   │   │   │   ├── Input.module.scss
+│   │   │   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── LinkedThemes
+│   │   │   │   │   │   │   ├── LinkedThemes.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Map
+│   │   │   │   │   │   │   ├── DynamicMap.tsx
+│   │   │   │   │   │   │   ├── Map.module.scss
+│   │   │   │   │   │   │   ├── Map.tsx
+│   │   │   │   │   │   │   ├── PopupContent
+│   │   │   │   │   │   │   │   ├── PopupContent.module.scss
+│   │   │   │   │   │   │   │   ├── PopupContent.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── Sidebar
+│   │   │   │   │   │   │   │   ├── Sidebar.module.scss
+│   │   │   │   │   │   │   │   ├── Sidebar.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── MapNew
+│   │   │   │   │   │   │   ├── MapNew.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Metadatas
+│   │   │   │   │   │   │   ├── CardConditions
+│   │   │   │   │   │   │   │   ├── CardConditions.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardDemarcheAdministration
+│   │   │   │   │   │   │   │   ├── CardDemarcheAdministration.module.scss
+│   │   │   │   │   │   │   │   ├── CardDemarcheAdministration.tsx
+│   │   │   │   │   │   │   │   ├── DeleteContentModal
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardInfo
+│   │   │   │   │   │   │   │   ├── CardInfo.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardMainSponsor
+│   │   │   │   │   │   │   │   ├── CardMainSponsor.module.scss
+│   │   │   │   │   │   │   │   ├── CardMainSponsor.tsx
+│   │   │   │   │   │   │   │   ├── DeleteContentModal
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.module.scss
+│   │   │   │   │   │   │   │   │   ├── DeleteContentModal.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardPublic
+│   │   │   │   │   │   │   │   ├── CardPublic.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardSessions
+│   │   │   │   │   │   │   │   ├── CardSessions.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── CardTheme
+│   │   │   │   │   │   │   │   ├── CardTheme.module.scss
+│   │   │   │   │   │   │   │   ├── CardTheme.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── Metadatas.tsx
+│   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── NorthStar
+│   │   │   │   │   │   │   ├── NorthStar.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── RichText
+│   │   │   │   │   │   │   ├── RichText.module.scss
+│   │   │   │   │   │   │   ├── RichText.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SMSForm
+│   │   │   │   │   │   │   ├── SMSForm.module.scss
+│   │   │   │   │   │   │   ├── SMSForm.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SaveBookmark
+│   │   │   │   │   │   │   ├── SaveBookmark.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Section
+│   │   │   │   │   │   │   ├── Section.module.scss
+│   │   │   │   │   │   │   ├── Section.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SectionButtons
+│   │   │   │   │   │   │   ├── ReactionModal
+│   │   │   │   │   │   │   │   ├── ReactionModal.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── SectionButtons.module.scss
+│   │   │   │   │   │   │   ├── SectionButtons.tsx
+│   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SectionTitle
+│   │   │   │   │   │   │   ├── SectionTitle.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ShareButtons
+│   │   │   │   │   │   │   ├── ShareButtons.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SourceCard
+│   │   │   │   │   │   │   ├── SourceCard.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Sponsors
+│   │   │   │   │   │   │   ├── Sponsors.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Status
+│   │   │   │   │   │   │   ├── Status.module.scss
+│   │   │   │   │   │   │   ├── Status.tsx
+│   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── StructureReceiveDispositif
+│   │   │   │   │   │   │   ├── StructureReceiveDispositif.module.scss
+│   │   │   │   │   │   │   ├── StructureReceiveDispositif.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Text
+│   │   │   │   │   │   │   ├── Text.module.scss
+│   │   │   │   │   │   │   ├── Text.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Title
+│   │   │   │   │   │   │   ├── Title.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Translation
+│   │   │   │   │   │   │   ├── ModalWelcome
+│   │   │   │   │   │   │   │   ├── ModalWelcome.module.scss
+│   │   │   │   │   │   │   │   ├── ModalWelcome.tsx
+│   │   │   │   │   │   │   │   ├── data.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── SectionTitleAbstract
+│   │   │   │   │   │   │   │   ├── SectionTitleAbstract.module.scss
+│   │   │   │   │   │   │   │   ├── SectionTitleAbstract.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── TranslationInput
+│   │   │   │   │   │   │   │   ├── BottomButtons
+│   │   │   │   │   │   │   │   │   ├── BottomButtons.module.scss
+│   │   │   │   │   │   │   │   │   ├── BottomButtons.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── SuggestionsNavButtons
+│   │   │   │   │   │   │   │   │   ├── SuggestionsNavButtons.module.scss
+│   │   │   │   │   │   │   │   │   ├── SuggestionsNavButtons.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── TranslationEditAuthor
+│   │   │   │   │   │   │   │   │   ├── TranslationEditAuthor.module.scss
+│   │   │   │   │   │   │   │   │   ├── TranslationEditAuthor.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── TranslationEditField
+│   │   │   │   │   │   │   │   │   ├── TranslationEditField.module.scss
+│   │   │   │   │   │   │   │   │   ├── TranslationEditField.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── TranslationInput.module.scss
+│   │   │   │   │   │   │   │   ├── TranslationInput.tsx
+│   │   │   │   │   │   │   │   ├── TranslationStatus
+│   │   │   │   │   │   │   │   │   ├── TranslationStatus.module.scss
+│   │   │   │   │   │   │   │   │   ├── TranslationStatus.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── UserSuggest
+│   │   │   │   │   │   │   │   │   ├── UserSuggest.module.scss
+│   │   │   │   │   │   │   │   │   ├── UserSuggest.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── embed
+│   │   │   │   │   │   └── EmbedHeader
+│   │   │   │   │   │       ├── EmbedHeader.module.scss
+│   │   │   │   │   │       ├── EmbedHeader.tsx
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── homepage
+│   │   │   │   │   │   └── Sections
+│   │   │   │   │   │       ├── FreeResources
+│   │   │   │   │   │       │   ├── FreeResources.tsx
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── Hero
+│   │   │   │   │   │       │   ├── Hero.tsx
+│   │   │   │   │   │       │   ├── WhiteWave.tsx
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── MobileApp
+│   │   │   │   │   │       │   ├── MobileApp.tsx
+│   │   │   │   │   │       │   ├── MobileAppSmsForm
+│   │   │   │   │   │       │   │   ├── MobileAppSmsForm.tsx
+│   │   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── Newsletter
+│   │   │   │   │   │       │   ├── Newsletter.tsx
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── StructuresLogos
+│   │   │   │   │   │       │   ├── StructuresLogos.tsx
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── WhyAccordions
+│   │   │   │   │   │       │   ├── WhyAccordions.tsx
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── recherche
+│   │   │   │   │   │   ├── HelpNotice
+│   │   │   │   │   │   │   ├── HelpNotice.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── LocationMenu
+│   │   │   │   │   │   │   ├── GeoLocationMenuItem.module.css
+│   │   │   │   │   │   │   ├── GeoLocationMenuItem.tsx
+│   │   │   │   │   │   │   ├── LocationMenu.module.css
+│   │   │   │   │   │   │   ├── LocationMenu.tsx
+│   │   │   │   │   │   │   ├── SearchMenuItem.module.css
+│   │   │   │   │   │   │   ├── SearchMenuItem.tsx
+│   │   │   │   │   │   │   ├── functions.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ResultsFilter
+│   │   │   │   │   │   │   ├── ResultsFilter.module.scss
+│   │   │   │   │   │   │   ├── ResultsFilter.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SearchCountsContext.tsx
+│   │   │   │   │   │   ├── SearchHeader
+│   │   │   │   │   │   │   ├── Filter
+│   │   │   │   │   │   │   │   ├── DropdownButton
+│   │   │   │   │   │   │   │   │   ├── DropdownButton.module.scss
+│   │   │   │   │   │   │   │   │   ├── DropdownButton.tsx
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── Filter.module.scss
+│   │   │   │   │   │   │   │   ├── Filter.tsx
+│   │   │   │   │   │   │   │   ├── MenuLayouts
+│   │   │   │   │   │   │   │   │   ├── DialogMenuLayout.module.scss
+│   │   │   │   │   │   │   │   │   ├── DialogMenuLayout.tsx
+│   │   │   │   │   │   │   │   │   ├── DropDownMenuContext.tsx
+│   │   │   │   │   │   │   │   │   ├── DropDownMenuLayout.module.scss
+│   │   │   │   │   │   │   │   │   ├── DropDownMenuLayout.tsx
+│   │   │   │   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── Filters.module.scss
+│   │   │   │   │   │   │   ├── Filters.tsx
+│   │   │   │   │   │   │   ├── SearchHeader.module.scss
+│   │   │   │   │   │   │   ├── SearchHeader.tsx
+│   │   │   │   │   │   │   ├── SearchInput.module.css
+│   │   │   │   │   │   │   ├── SearchInput.tsx
+│   │   │   │   │   │   │   ├── hooks.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SearchResults
+│   │   │   │   │   │   │   ├── SearchResults.module.scss
+│   │   │   │   │   │   │   ├── SearchResults.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SecondaryFilter
+│   │   │   │   │   │   │   └── SecondaryFilter.desktop.module.scss
+│   │   │   │   │   │   └── ThemeMenu
+│   │   │   │   │   │       ├── NeedItem.module.css
+│   │   │   │   │   │       ├── NeedItem.tsx
+│   │   │   │   │   │       ├── Needs.module.css
+│   │   │   │   │   │       ├── Needs.tsx
+│   │   │   │   │   │       ├── ResultsSection.module.css
+│   │   │   │   │   │       ├── ResultsSection.tsx
+│   │   │   │   │   │       ├── SearchResults.module.css
+│   │   │   │   │   │       ├── SearchResults.tsx
+│   │   │   │   │   │       ├── ThemeItem.mobile.module.scss
+│   │   │   │   │   │       ├── ThemeItem.mobile.tsx
+│   │   │   │   │   │       ├── ThemeItem.module.css
+│   │   │   │   │   │       ├── ThemeItem.tsx
+│   │   │   │   │   │       ├── ThemeMenu.module.scss
+│   │   │   │   │   │       ├── ThemeMenu.tsx
+│   │   │   │   │   │       ├── ThemeMenuContext.ts
+│   │   │   │   │   │       ├── Themes.module.css
+│   │   │   │   │   │       ├── Themes.tsx
+│   │   │   │   │   │       ├── functions.ts
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   └── staticPages
+│   │   │   │   │       ├── common
+│   │   │   │   │       │   ├── Accordion
+│   │   │   │   │       │   │   ├── Accordion.module.scss
+│   │   │   │   │       │   │   ├── Accordion.tsx
+│   │   │   │   │       │   │   ├── AccordionRoot.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Anchor
+│   │   │   │   │       │   │   ├── Anchor.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── AutoplayVideo
+│   │   │   │   │       │   │   ├── AutoplayVideo.module.scss
+│   │   │   │   │       │   │   ├── AutoplayVideo.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Card
+│   │   │   │   │       │   │   ├── Card.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── CountUpFigure
+│   │   │   │   │       │   │   ├── CountUpFigure.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Hero
+│   │   │   │   │       │   │   ├── Hero.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── HeroArrow
+│   │   │   │   │       │   │   ├── HeroArrow.module.scss
+│   │   │   │   │       │   │   ├── HeroArrow.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── InlineLink
+│   │   │   │   │       │   │   ├── InlineLink.module.scss
+│   │   │   │   │       │   │   ├── InlineLink.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Register
+│   │   │   │   │       │   │   ├── Register.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── RowCards
+│   │   │   │   │       │   │   ├── RowCards.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── SecondaryNavbar
+│   │   │   │   │       │   │   ├── SecondaryNavbar.module.scss
+│   │   │   │   │       │   │   ├── SecondaryNavbar.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Section
+│   │   │   │   │       │   │   ├── Section.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── SectionHead
+│   │   │   │   │       │   │   ├── SectionHead.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── StepContent
+│   │   │   │   │       │   │   ├── StepContent.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── Title2
+│   │   │   │   │       │   │   ├── Title2.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── TranslationNotice
+│   │   │   │   │       │   │   ├── TranslationNotice.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── WorkTogether
+│   │   │   │   │       │   │   ├── WorkTogether.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── mission-et-impact
+│   │   │   │   │       │   ├── Figure.tsx
+│   │   │   │   │       │   ├── ImageCustomFigure.tsx
+│   │   │   │   │       │   ├── ImpactCol.tsx
+│   │   │   │   │       │   ├── SectionContributors.tsx
+│   │   │   │   │       │   ├── SectionFigures.tsx
+│   │   │   │   │       │   ├── SectionImpact.tsx
+│   │   │   │   │       │   ├── SectionMission.tsx
+│   │   │   │   │       │   ├── SectionSteps.tsx
+│   │   │   │   │       │   ├── SectionTeam.tsx
+│   │   │   │   │       │   ├── SectionUsers.tsx
+│   │   │   │   │       │   ├── TeamCard.tsx
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       ├── publier
+│   │   │   │   │       │   ├── CardExample
+│   │   │   │   │       │   │   ├── CardExample.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── TestimonySlider
+│   │   │   │   │       │   │   ├── TestimonySlider.tsx
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   └── index.ts
+│   │   │   │   │       └── traduire
+│   │   │   │   │           └── LanguageCard
+│   │   │   │   │               ├── LanguageCard.tsx
+│   │   │   │   │               └── index.ts
+│   │   │   │   ├── Seo.tsx
+│   │   │   │   ├── UI
+│   │   │   │   │   ├── AccessibleNavigation
+│   │   │   │   │   │   └── AccessibleNavigation.tsx
+│   │   │   │   │   ├── AdminNeedButton
+│   │   │   │   │   │   ├── AdminNeedButton.module.scss
+│   │   │   │   │   │   ├── AdminNeedButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── AdminThemeButton
+│   │   │   │   │   │   ├── AdminThemeButton.module.scss
+│   │   │   │   │   │   ├── AdminThemeButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Badge
+│   │   │   │   │   │   ├── Badge.module.scss
+│   │   │   │   │   │   ├── Badge.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── BaseModal
+│   │   │   │   │   │   ├── BaseModal.module.scss
+│   │   │   │   │   │   ├── BaseModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── BubbleFlag
+│   │   │   │   │   │   ├── BubbleFlag.module.scss
+│   │   │   │   │   │   ├── BubbleFlag.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Button
+│   │   │   │   │   │   ├── Button.module.scss
+│   │   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Camembert
+│   │   │   │   │   │   ├── Camembert.module.scss
+│   │   │   │   │   │   ├── Camembert.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── CustomSeachBar
+│   │   │   │   │   │   ├── CustomSearchBar.module.scss
+│   │   │   │   │   │   ├── CustomSearchBar.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── DepartmentSelect
+│   │   │   │   │   │   ├── DepartmentSelect.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── DispositifCard
+│   │   │   │   │   │   ├── DispositifCard.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── DropDown
+│   │   │   │   │   │   ├── DropDown.module.scss
+│   │   │   │   │   │   └── DropDown.tsx
+│   │   │   │   │   ├── EVAIcon
+│   │   │   │   │   │   ├── EVAIcon.module.scss
+│   │   │   │   │   │   ├── EVAIcon.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ErrorMessage
+│   │   │   │   │   │   ├── ErrorMessage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FButton
+│   │   │   │   │   │   ├── FButton.module.scss
+│   │   │   │   │   │   ├── FButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FButtonMobile
+│   │   │   │   │   │   ├── FButtonMobile.module.scss
+│   │   │   │   │   │   └── FButtonMobile.tsx
+│   │   │   │   │   ├── FInput
+│   │   │   │   │   │   ├── FInput.module.scss
+│   │   │   │   │   │   ├── FInput.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FRLink
+│   │   │   │   │   │   ├── FRLink.module.scss
+│   │   │   │   │   │   ├── FRLink.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FavoriteButton
+│   │   │   │   │   │   ├── FavoriteButton.module.scss
+│   │   │   │   │   │   ├── FavoriteButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FilterButton
+│   │   │   │   │   │   ├── FilterButton.module.scss
+│   │   │   │   │   │   ├── FilterButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Flag
+│   │   │   │   │   │   ├── Flag.module.scss
+│   │   │   │   │   │   ├── Flag.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Image
+│   │   │   │   │   │   ├── Image.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ImageInput
+│   │   │   │   │   │   ├── ImageInput.module.scss
+│   │   │   │   │   │   ├── ImageInput.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Language
+│   │   │   │   │   │   ├── Language.module.scss
+│   │   │   │   │   │   ├── Language.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── LanguageSelector
+│   │   │   │   │   │   ├── LanguageItem.module.scss
+│   │   │   │   │   │   ├── LanguageItem.tsx
+│   │   │   │   │   │   ├── LanguageSelector.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── MapFrance
+│   │   │   │   │   │   ├── Department.module.scss
+│   │   │   │   │   │   ├── Department.tsx
+│   │   │   │   │   │   ├── MapContext.ts
+│   │   │   │   │   │   ├── MapFrance.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── NewThemeBadge
+│   │   │   │   │   │   ├── NewThemeBadge.module.scss
+│   │   │   │   │   │   ├── NewThemeBadge.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Progress
+│   │   │   │   │   │   ├── Progress.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── RichCheckbox
+│   │   │   │   │   │   ├── RichCheckbox.module.scss
+│   │   │   │   │   │   ├── RichCheckbox.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── RichTextInput
+│   │   │   │   │   │   ├── RichTextInput.module.scss
+│   │   │   │   │   │   ├── RichTextInput.tsx
+│   │   │   │   │   │   ├── ToolbarPlugin
+│   │   │   │   │   │   │   ├── ToolbarButton
+│   │   │   │   │   │   │   │   ├── ToolbarButton.module.scss
+│   │   │   │   │   │   │   │   ├── ToolbarButton.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── ToolbarDropdown
+│   │   │   │   │   │   │   │   ├── ToolbarDropdown.module.scss
+│   │   │   │   │   │   │   │   ├── ToolbarDropdown.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── ToolbarIcon
+│   │   │   │   │   │   │   │   ├── ToolbarIcon.tsx
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── ToolbarPlugin.module.scss
+│   │   │   │   │   │   │   ├── ToolbarPlugin.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── lib.ts
+│   │   │   │   │   │   ├── nodes
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── plugins
+│   │   │   │   │   │       ├── AutoLinkPlugin
+│   │   │   │   │   │       │   └── index.tsx
+│   │   │   │   │   │       ├── CalloutPlugin
+│   │   │   │   │   │       │   ├── CalloutNode.ts
+│   │   │   │   │   │       │   └── index.ts
+│   │   │   │   │   │       ├── FloatingLinkEditorPlugin
+│   │   │   │   │   │       │   ├── FloatinLinkEditorPlugin.module.scss
+│   │   │   │   │   │       │   └── index.tsx
+│   │   │   │   │   │       ├── FocusPlugin
+│   │   │   │   │   │       │   └── index.tsx
+│   │   │   │   │   │       ├── LinkPlugin
+│   │   │   │   │   │       │   └── index.tsx
+│   │   │   │   │   │       └── OnHtmlChangePlugin
+│   │   │   │   │   │           └── index.tsx
+│   │   │   │   │   ├── SearchBar
+│   │   │   │   │   │   ├── SearchBar.scss
+│   │   │   │   │   │   └── SearchBar.tsx
+│   │   │   │   │   ├── SearchButton
+│   │   │   │   │   │   ├── SearchButton.module.css
+│   │   │   │   │   │   ├── SearchButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SearchStructures
+│   │   │   │   │   │   ├── SearchStructureResult
+│   │   │   │   │   │   │   ├── SearchStructureResult.module.scss
+│   │   │   │   │   │   │   ├── SearchStructureResult.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SearchStructures.module.scss
+│   │   │   │   │   │   ├── SearchStructures.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SearchThemeButton
+│   │   │   │   │   │   ├── SearchThemeButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Separator
+│   │   │   │   │   │   ├── Separator.module.css
+│   │   │   │   │   │   ├── Separator.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SkipLinksNavigation
+│   │   │   │   │   │   └── SkipLinksNavigation.tsx
+│   │   │   │   │   ├── Tabs
+│   │   │   │   │   │   ├── TabItem.module.scss
+│   │   │   │   │   │   ├── TabItem.tsx
+│   │   │   │   │   │   ├── TabsBar.module.scss
+│   │   │   │   │   │   ├── TabsBar.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── TagName
+│   │   │   │   │   │   ├── TagName.module.scss
+│   │   │   │   │   │   ├── TagName.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ThemeButton
+│   │   │   │   │   │   └── ThemeButton.tsx
+│   │   │   │   │   ├── ThemeIcon
+│   │   │   │   │   │   ├── ThemeIcon.module.scss
+│   │   │   │   │   │   ├── ThemeIcon.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Toast
+│   │   │   │   │   │   ├── Toast.module.scss
+│   │   │   │   │   │   ├── Toast.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Tooltip
+│   │   │   │   │   │   ├── Tooltip.module.scss
+│   │   │   │   │   │   ├── Tooltip.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── User
+│   │   │   │   │   ├── EditDepartments
+│   │   │   │   │   │   ├── EditDepartments.module.scss
+│   │   │   │   │   │   ├── EditDepartments.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── EditLanguage
+│   │   │   │   │   │   ├── EditLanguage.module.scss
+│   │   │   │   │   │   ├── EditLanguage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── EditPseudo
+│   │   │   │   │   │   ├── EditPseudo.module.scss
+│   │   │   │   │   │   ├── EditPseudo.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ForgotPassword
+│   │   │   │   │   │   ├── ForgotPassword.module.scss
+│   │   │   │   │   │   ├── ForgotPassword.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ForgotPasswordMailSent
+│   │   │   │   │   │   ├── ForgotPasswordMailSent.module.scss
+│   │   │   │   │   │   ├── ForgotPasswordMailSent.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── constants
+│   │   │   │   └── dispositif.ts
+│   │   │   ├── css
+│   │   │   │   ├── custom-icons.css
+│   │   │   │   └── index.css
+│   │   │   ├── data
+│   │   │   │   ├── activatedLanguages.ts
+│   │   │   │   ├── activities.ts
+│   │   │   │   ├── agirOperators.ts
+│   │   │   │   ├── annuaireStepColors.ts
+│   │   │   │   ├── contentSources.ts
+│   │   │   │   ├── days.ts
+│   │   │   │   ├── departments.ts
+│   │   │   │   ├── searchFilters.ts
+│   │   │   │   ├── storeLinks.ts
+│   │   │   │   ├── structurePartners.ts
+│   │   │   │   ├── structureTypes.ts
+│   │   │   │   └── useTeamData.ts
+│   │   │   ├── hooks
+│   │   │   │   ├── dispositif
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useContentType.ts
+│   │   │   │   │   ├── useDispositifForm.ts
+│   │   │   │   │   ├── useDispositifTranslateForm.ts
+│   │   │   │   │   ├── useDispositifTranslation
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── progressFunctions.ts
+│   │   │   │   │   │   ├── suggestionFunctions.ts
+│   │   │   │   │   │   └── useDispositifTranslation.ts
+│   │   │   │   │   └── useDispositifTts.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── useAnonymousUserId.ts
+│   │   │   │   ├── useAuth
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useAuth.tsx
+│   │   │   │   ├── useAuthRedirect.ts
+│   │   │   │   ├── useCardImage.ts
+│   │   │   │   ├── useChangeLanguage.ts
+│   │   │   │   ├── useConsentContext
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useConsentContext.ts
+│   │   │   │   ├── useContentLocale.ts
+│   │   │   │   ├── useDepartmentAutocomplete.ts
+│   │   │   │   ├── useEditionMode.ts
+│   │   │   │   ├── useFavorites.ts
+│   │   │   │   ├── useIsSticky.ts
+│   │   │   │   ├── useLanguages.ts
+│   │   │   │   ├── useLocale.ts
+│   │   │   │   ├── useLogin.ts
+│   │   │   │   ├── useOutsideClick.ts
+│   │   │   │   ├── useParamsFromHistory
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useParamsFromHistory.ts
+│   │   │   │   ├── useRTL.ts
+│   │   │   │   ├── useRegisterFlow.ts
+│   │   │   │   ├── useRouterLocale.ts
+│   │   │   │   ├── useRtriLinks.ts
+│   │   │   │   ├── useSanitizedContent.ts
+│   │   │   │   ├── useScrollDirection.ts
+│   │   │   │   ├── useScrollToAnchor.ts
+│   │   │   │   ├── useScrolledBottomEvent.ts
+│   │   │   │   ├── useSearchEventName.ts
+│   │   │   │   ├── useSendSms.ts
+│   │   │   │   ├── useStyleDisabled.ts
+│   │   │   │   ├── useThemeIcon.ts
+│   │   │   │   ├── useUniqueId.ts
+│   │   │   │   ├── useUser.ts
+│   │   │   │   └── useUtmz.ts
+│   │   │   ├── lib
+│   │   │   │   ├── classname.test.ts
+│   │   │   │   ├── classname.ts
+│   │   │   │   ├── colors.ts
+│   │   │   │   ├── contentParsing.ts
+│   │   │   │   ├── db.ts
+│   │   │   │   ├── departments.ts
+│   │   │   │   ├── dispositif
+│   │   │   │   │   ├── canEdit.ts
+│   │   │   │   │   ├── canTranslate.ts
+│   │   │   │   │   ├── getMetadataText.ts
+│   │   │   │   │   ├── getTranslationPageData.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── isStatus.ts
+│   │   │   │   ├── dispositifForm.test.ts
+│   │   │   │   ├── dispositifForm.ts
+│   │   │   │   ├── dispositifPage.ts
+│   │   │   │   ├── filterStructures.ts
+│   │   │   │   ├── getAdminUrlParams.test.ts
+│   │   │   │   ├── getAdminUrlParams.ts
+│   │   │   │   ├── getBaseUrl.ts
+│   │   │   │   ├── getDefaultStaticProps.ts
+│   │   │   │   ├── getDispositifSectionTitle.ts
+│   │   │   │   ├── getLanguageFromLocale.ts
+│   │   │   │   ├── getReadableText.ts
+│   │   │   │   ├── getRelativeDate.test.ts
+│   │   │   │   ├── getRelativeDate.ts
+│   │   │   │   ├── getTheme.ts
+│   │   │   │   ├── getThemeName.ts
+│   │   │   │   ├── handleApiErrors.ts
+│   │   │   │   ├── hasRole.test.ts
+│   │   │   │   ├── hasRole.ts
+│   │   │   │   ├── index.test.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── isContentPage.ts
+│   │   │   │   ├── loginRedirect.test.ts
+│   │   │   │   ├── loginRedirect.ts
+│   │   │   │   ├── markdown
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── markdown-plugins.test.ts
+│   │   │   │   │   ├── directive-to-component.tsx
+│   │   │   │   │   └── remark-restore-hierarchy.ts
+│   │   │   │   ├── onEnterOrSpace.ts
+│   │   │   │   ├── readAudio.ts
+│   │   │   │   ├── recherche
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── resultsDisplayRules.test.ts
+│   │   │   │   │   ├── buildUrlQuery.ts
+│   │   │   │   │   ├── decodeUrlQuery
+│   │   │   │   │   │   ├── decodeUrlQuery.compatibility.ts
+│   │   │   │   │   │   ├── decodeUrlQuery.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── filterContents.ts
+│   │   │   │   │   ├── functions.ts
+│   │   │   │   │   ├── generateLightResults.ts
+│   │   │   │   │   ├── getAlgoliaSearchableAttributes.ts
+│   │   │   │   │   ├── getThemesFromNeeds.ts
+│   │   │   │   │   ├── queryContents.ts
+│   │   │   │   │   ├── resultsDisplayRules.ts
+│   │   │   │   │   └── sortContents.ts
+│   │   │   │   ├── sanitizeContent.ts
+│   │   │   │   ├── sanitizeUrl.ts
+│   │   │   │   ├── search-helpers.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── sitemap
+│   │   │   │   │   ├── extractIndexFromUrl.ts
+│   │   │   │   │   └── getAllUrls.ts
+│   │   │   │   ├── smoothScroll.ts
+│   │   │   │   ├── sortThemes.ts
+│   │   │   │   ├── statusCompare.ts
+│   │   │   │   ├── string.ts
+│   │   │   │   ├── tracking.ts
+│   │   │   │   ├── typedObjectEntries.ts
+│   │   │   │   ├── validateFields.ts
+│   │   │   │   ├── validatePassword.ts
+│   │   │   │   ├── webhookSchemas.ts
+│   │   │   │   ├── webhookUtils.test.ts
+│   │   │   │   └── webhookUtils.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── middleware.ts
+│   │   │   ├── pages
+│   │   │   │   ├── 404.tsx
+│   │   │   │   ├── _app.tsx
+│   │   │   │   ├── _document.tsx
+│   │   │   │   ├── agir.tsx
+│   │   │   │   ├── api
+│   │   │   │   │   ├── search
+│   │   │   │   │   │   ├── counts.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── webhook
+│   │   │   │   │       ├── dispositif
+│   │   │   │   │       │   ├── archive.ts
+│   │   │   │   │       │   ├── create.ts
+│   │   │   │   │       │   ├── translation.ts
+│   │   │   │   │       │   └── update.ts
+│   │   │   │   │       ├── needs.ts
+│   │   │   │   │       └── themes.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── code-connexion.tsx
+│   │   │   │   │   ├── code-securite.tsx
+│   │   │   │   │   ├── connexion.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── inscription
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── langue.tsx
+│   │   │   │   │   │   ├── objectif.tsx
+│   │   │   │   │   │   ├── partenaire.tsx
+│   │   │   │   │   │   ├── pseudo.tsx
+│   │   │   │   │   │   └── territoire.tsx
+│   │   │   │   │   ├── microsoft-login.tsx
+│   │   │   │   │   └── reinitialiser-mot-de-passe
+│   │   │   │   │       ├── index.tsx
+│   │   │   │   │       ├── mail-envoye.tsx
+│   │   │   │   │       └── nouveau.tsx
+│   │   │   │   ├── backend
+│   │   │   │   │   └── [...backend].tsx
+│   │   │   │   ├── declaration-accessibilite.tsx
+│   │   │   │   ├── demarche
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── edit.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── translate.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── dispositif
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── edit.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── translate.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── preview.tsx
+│   │   │   │   │   └── test-preview.tsx
+│   │   │   │   ├── download-app.tsx
+│   │   │   │   ├── embed.tsx
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── mentions-legales.tsx
+│   │   │   │   ├── mission-et-impact.tsx
+│   │   │   │   ├── plan-du-site.tsx
+│   │   │   │   ├── politique-de-confidentialite.tsx
+│   │   │   │   ├── publier.tsx
+│   │   │   │   ├── recherche.tsx
+│   │   │   │   ├── robots.txt
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── sitemap-index
+│   │   │   │   │   └── [...index].tsx
+│   │   │   │   ├── sitemap-index.xml
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── sitemap.tsx
+│   │   │   │   └── traduire.tsx
+│   │   │   ├── react-app-env.d.ts
+│   │   │   ├── routes.ts
+│   │   │   ├── scss
+│   │   │   │   ├── _bootstrap.scss
+│   │   │   │   ├── _callouts.scss
+│   │   │   │   ├── _colors.scss
+│   │   │   │   ├── _common.scss
+│   │   │   │   ├── _dsfr-fix.scss
+│   │   │   │   ├── _flag-icons.scss
+│   │   │   │   ├── _fonts.scss
+│   │   │   │   ├── _rich-text.scss
+│   │   │   │   ├── _rtl.scss
+│   │   │   │   ├── _variables.scss
+│   │   │   │   ├── components
+│   │   │   │   │   ├── adminTable.module.scss
+│   │   │   │   │   ├── auth.module.scss
+│   │   │   │   │   ├── checkbox.module.scss
+│   │   │   │   │   ├── contentCard.module.scss
+│   │   │   │   │   ├── mobile.module.scss
+│   │   │   │   │   ├── modals.module.scss
+│   │   │   │   │   ├── searchHeader.module.scss
+│   │   │   │   │   ├── staticPages.module.scss
+│   │   │   │   │   └── toast.module.scss
+│   │   │   │   ├── index.scss
+│   │   │   │   ├── mixins
+│   │   │   │   │   ├── _btn.scss
+│   │   │   │   │   ├── _icons.scss
+│   │   │   │   │   ├── _input.scss
+│   │   │   │   │   ├── _links.scss
+│   │   │   │   │   ├── _map.scss
+│   │   │   │   │   ├── _margins.scss
+│   │   │   │   │   ├── _responsive.scss
+│   │   │   │   │   ├── _rtl.scss
+│   │   │   │   │   ├── _text.scss
+│   │   │   │   │   └── _unit.scss
+│   │   │   │   └── pages
+│   │   │   │       ├── agir.module.scss
+│   │   │   │       ├── annuaire-create.module.scss
+│   │   │   │       ├── annuaire-id.module.scss
+│   │   │   │       ├── annuaire.module.scss
+│   │   │   │       ├── backend.module.scss
+│   │   │   │       ├── declaration-accessibilite.module.scss
+│   │   │   │       ├── dispositif.module.scss
+│   │   │   │       ├── legal-pages.module.scss
+│   │   │   │       └── recherche.module.scss
+│   │   │   ├── services
+│   │   │   │   ├── ActiveDispositifs
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── activeDispositifs.saga.test.ts
+│   │   │   │   │   ├── activeDispositifs.actionTypes.ts
+│   │   │   │   │   ├── activeDispositifs.actions.ts
+│   │   │   │   │   ├── activeDispositifs.reducer.ts
+│   │   │   │   │   ├── activeDispositifs.saga.ts
+│   │   │   │   │   └── activeDispositifs.selector.ts
+│   │   │   │   ├── ActiveStructures
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── activeStructures.saga.test.ts
+│   │   │   │   │   ├── activeStructures.actionTypes.ts
+│   │   │   │   │   ├── activeStructures.actions.ts
+│   │   │   │   │   ├── activeStructures.reducer.ts
+│   │   │   │   │   ├── activeStructures.saga.ts
+│   │   │   │   │   └── activeStructures.selector.ts
+│   │   │   │   ├── ActiveUsers
+│   │   │   │   │   ├── activeUsers.actionTypes.ts
+│   │   │   │   │   ├── activeUsers.actions.ts
+│   │   │   │   │   ├── activeUsers.reducer.ts
+│   │   │   │   │   ├── activeUsers.saga.ts
+│   │   │   │   │   └── activeUsers.selector.ts
+│   │   │   │   ├── AllDispositifs
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── allDispositifs.reducer.test.ts
+│   │   │   │   │   │   └── allDispositifs.saga.test.ts
+│   │   │   │   │   ├── allDispositifs.actionTypes.ts
+│   │   │   │   │   ├── allDispositifs.actions.ts
+│   │   │   │   │   ├── allDispositifs.reducer.ts
+│   │   │   │   │   ├── allDispositifs.saga.ts
+│   │   │   │   │   └── allDispositifs.selector.ts
+│   │   │   │   ├── AllStructures
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── allStructures.reducer.test.ts
+│   │   │   │   │   │   └── allStructures.saga.test.ts
+│   │   │   │   │   ├── allStructures.actionTypes.ts
+│   │   │   │   │   ├── allStructures.actions.ts
+│   │   │   │   │   ├── allStructures.reducer.ts
+│   │   │   │   │   ├── allStructures.saga.ts
+│   │   │   │   │   └── allStructures.selector.ts
+│   │   │   │   ├── AllUsers
+│   │   │   │   │   ├── allUsers.actionTypes.ts
+│   │   │   │   │   ├── allUsers.actions.ts
+│   │   │   │   │   ├── allUsers.reducer.ts
+│   │   │   │   │   ├── allUsers.saga.ts
+│   │   │   │   │   └── allUsers.selector.ts
+│   │   │   │   ├── DispositifsWithTranslationsStatus
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── dispositifsWithTranslationsStatus.saga.test.ts
+│   │   │   │   │   ├── dispositifsWithTranslationsStatus.actionTypes.ts
+│   │   │   │   │   ├── dispositifsWithTranslationsStatus.actions.ts
+│   │   │   │   │   ├── dispositifsWithTranslationsStatus.reducer.ts
+│   │   │   │   │   ├── dispositifsWithTranslationsStatus.saga.ts
+│   │   │   │   │   └── dispositifsWithTranslationsStatus.selectors.ts
+│   │   │   │   ├── Langue
+│   │   │   │   │   ├── langue.actionTypes.ts
+│   │   │   │   │   ├── langue.actions.ts
+│   │   │   │   │   ├── langue.reducer.ts
+│   │   │   │   │   ├── langue.saga.ts
+│   │   │   │   │   └── langue.selectors.ts
+│   │   │   │   ├── LoadingStatus
+│   │   │   │   │   ├── loadingStatus.actions.ts
+│   │   │   │   │   ├── loadingStatus.reducer.ts
+│   │   │   │   │   └── loadingStatus.selectors.ts
+│   │   │   │   ├── Miscellaneous
+│   │   │   │   │   ├── miscellaneous.actionTypes.ts
+│   │   │   │   │   ├── miscellaneous.actions.ts
+│   │   │   │   │   ├── miscellaneous.reducer.ts
+│   │   │   │   │   └── miscellaneous.selector.ts
+│   │   │   │   ├── Needs
+│   │   │   │   │   ├── needs.actionTypes.ts
+│   │   │   │   │   ├── needs.actions.ts
+│   │   │   │   │   ├── needs.reducer.ts
+│   │   │   │   │   ├── needs.saga.ts
+│   │   │   │   │   └── needs.selectors.ts
+│   │   │   │   ├── SearchCounts
+│   │   │   │   │   ├── searchCounts.reducer.ts
+│   │   │   │   │   ├── searchCounts.saga.ts
+│   │   │   │   │   ├── searchCounts.selector.ts
+│   │   │   │   │   └── searchCounts.service.ts
+│   │   │   │   ├── SearchResults
+│   │   │   │   │   ├── searchResults.actionTypes.ts
+│   │   │   │   │   ├── searchResults.actions.ts
+│   │   │   │   │   ├── searchResults.reducer.ts
+│   │   │   │   │   └── searchResults.selector.ts
+│   │   │   │   ├── SelectedDispositif
+│   │   │   │   │   ├── selectedDispositif.actionTypes.ts
+│   │   │   │   │   ├── selectedDispositif.actions.ts
+│   │   │   │   │   ├── selectedDispositif.reducer.ts
+│   │   │   │   │   ├── selectedDispositif.saga.ts
+│   │   │   │   │   └── selectedDispositif.selector.ts
+│   │   │   │   ├── SelectedStructure
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── selectedStructure.saga.test.ts
+│   │   │   │   │   ├── selectedStructure.actionTypes.ts
+│   │   │   │   │   ├── selectedStructure.actions.ts
+│   │   │   │   │   ├── selectedStructure.reducer.ts
+│   │   │   │   │   ├── selectedStructure.saga.ts
+│   │   │   │   │   └── selectedStructure.selector.ts
+│   │   │   │   ├── Themes
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── themes.saga.test.ts
+│   │   │   │   │   ├── themes.actionTypes.ts
+│   │   │   │   │   ├── themes.actions.ts
+│   │   │   │   │   ├── themes.reducer.ts
+│   │   │   │   │   ├── themes.saga.ts
+│   │   │   │   │   └── themes.selectors.ts
+│   │   │   │   ├── Tts
+│   │   │   │   │   ├── tts.actionTypes.ts
+│   │   │   │   │   ├── tts.actions.ts
+│   │   │   │   │   ├── tts.reducer.ts
+│   │   │   │   │   └── tts.selector.ts
+│   │   │   │   ├── User
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── user.actions.test.ts
+│   │   │   │   │   │   ├── user.reducer.test.ts
+│   │   │   │   │   │   └── user.saga.test.ts
+│   │   │   │   │   ├── user.actionTypes.ts
+│   │   │   │   │   ├── user.actions.ts
+│   │   │   │   │   ├── user.reducer.ts
+│   │   │   │   │   ├── user.saga.ts
+│   │   │   │   │   └── user.selectors.ts
+│   │   │   │   ├── UserContributions
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── userContributions.saga.test.ts
+│   │   │   │   │   ├── userContributions.actionTypes.ts
+│   │   │   │   │   ├── userContributions.actions.ts
+│   │   │   │   │   ├── userContributions.reducer.ts
+│   │   │   │   │   ├── userContributions.saga.ts
+│   │   │   │   │   └── userContributions.selectors.ts
+│   │   │   │   ├── UserFavoritesInLocale
+│   │   │   │   │   ├── UserFavoritesInLocale.actionTypes.ts
+│   │   │   │   │   ├── UserFavoritesInLocale.actions.ts
+│   │   │   │   │   ├── UserFavoritesInLocale.reducer.ts
+│   │   │   │   │   ├── UserFavoritesInLocale.saga.ts
+│   │   │   │   │   ├── UserFavoritesInLocale.selectors.ts
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       └── UserFavoritesInLocale.saga.test.ts
+│   │   │   │   ├── UserStructure
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── userStructure.saga.test.ts
+│   │   │   │   │   ├── userStructure.actionTypes.ts
+│   │   │   │   │   ├── userStructure.actions.ts
+│   │   │   │   │   ├── userStructure.reducer.ts
+│   │   │   │   │   ├── userStructure.saga.ts
+│   │   │   │   │   └── userStructure.selectors.ts
+│   │   │   │   ├── Widgets
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── widgets.saga.test.ts
+│   │   │   │   │   ├── widgets.actionTypes.ts
+│   │   │   │   │   ├── widgets.actions.ts
+│   │   │   │   │   ├── widgets.reducer.ts
+│   │   │   │   │   ├── widgets.saga.ts
+│   │   │   │   │   └── widgets.selectors.ts
+│   │   │   │   ├── configureStore.ts
+│   │   │   │   ├── rootReducer.ts
+│   │   │   │   └── sagas.ts
+│   │   │   ├── types
+│   │   │   │   ├── eva-icons.d.ts
+│   │   │   │   ├── fonts.d.ts
+│   │   │   │   ├── html2plaintext.d.ts
+│   │   │   │   ├── i18next.d.ts
+│   │   │   │   ├── images.d.ts
+│   │   │   │   ├── interface.d.ts
+│   │   │   │   ├── react-dsfr.d.ts
+│   │   │   │   ├── react-lines-ellipsis.d.ts
+│   │   │   │   ├── react-notifications.d.ts
+│   │   │   │   ├── redux.d.ts
+│   │   │   │   ├── typeGuards.ts
+│   │   │   │   └── window.d.ts
+│   │   │   └── utils
+│   │   │       ├── API.ts
+│   │   │       ├── authToken.ts
+│   │   │       ├── backendHistory.ts
+│   │   │       ├── colors.module.scss
+│   │   │       ├── colors.ts
+│   │   │       ├── googleSignIn.ts
+│   │   │       ├── locale.ts
+│   │   │       └── pageContext.ts
+│   │   ├── sssjsconfig.json
+│   │   └── tsconfig.json
+│   ├── mobile
+│   │   ├── .expo-shared
+│   │   │   ├── README.md
+│   │   │   └── assets.json
+│   │   ├── .gitignore
+│   │   ├── App.tsx
+│   │   ├── androidDeepLinks.js
+│   │   ├── app.config.js
+│   │   ├── axe-linter.yml
+│   │   ├── babel.config.js
+│   │   ├── build-scripts
+│   │   │   └── withM1build.js
+│   │   ├── eas.json
+│   │   ├── eslint.config.mjs
+│   │   ├── example-env-file.env
+│   │   ├── firebase.json
+│   │   ├── index.js
+│   │   ├── jest.config.js
+│   │   ├── jest.setup.js
+│   │   ├── metro.config.js
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── __tests__
+│   │   │   │   └── HomeScreen-test.tsx
+│   │   │   ├── components
+│   │   │   │   ├── BasicComponents.tsx
+│   │   │   │   ├── ConfirmationModal.tsx
+│   │   │   │   ├── ConnexionTest.tsx
+│   │   │   │   ├── Content
+│   │   │   │   │   ├── AccordionAnimated.tsx
+│   │   │   │   │   ├── AccordionHeaderFromHtml.tsx
+│   │   │   │   │   ├── ContentFromHtml.tsx
+│   │   │   │   │   ├── HeaderImage.tsx
+│   │   │   │   │   ├── InfocardImage.tsx
+│   │   │   │   │   ├── InfocardsSection.tsx
+│   │   │   │   │   ├── Map.tsx
+│   │   │   │   │   ├── MapBottomBar.tsx
+│   │   │   │   │   ├── MapContentHtml.tsx
+│   │   │   │   │   ├── MiniMap.tsx
+│   │   │   │   │   ├── TextFromHtml.tsx
+│   │   │   │   │   ├── UpButton.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Contents
+│   │   │   │   │   ├── ContentSummary.tsx
+│   │   │   │   │   ├── DemarcheImage.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── CustomButton.tsx
+│   │   │   │   ├── ErrorComponent.tsx
+│   │   │   │   ├── ErrorScreen.tsx
+│   │   │   │   ├── Explorer
+│   │   │   │   │   ├── CarouselPagination.tsx
+│   │   │   │   │   ├── CarousselCard.tsx
+│   │   │   │   │   ├── LocationWarning
+│   │   │   │   │   │   ├── LocationWarning.tsx
+│   │   │   │   │   │   ├── LocationWarningMessage
+│   │   │   │   │   │   │   ├── LocationWarningMessage.test.tsx
+│   │   │   │   │   │   │   ├── LocationWarningMessage.tsx
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── LocationWarningMessage.test.tsx.snap
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── LocationWarningModal
+│   │   │   │   │   │   │   ├── LocationWarningModal.test.tsx
+│   │   │   │   │   │   │   ├── LocationWarningModal.tsx
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── LocationWarningModal.test.tsx.snap
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── TagButton.tsx
+│   │   │   │   │   ├── TagImage.tsx
+│   │   │   │   │   ├── TagsCarousel.tsx
+│   │   │   │   │   └── ViewChoice.tsx
+│   │   │   │   ├── FixSafeAreaView.tsx
+│   │   │   │   ├── Geoloc
+│   │   │   │   │   ├── CityChoice
+│   │   │   │   │   │   ├── CityChoice.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FilterCityComponent.tsx
+│   │   │   │   │   └── GeolocButton
+│   │   │   │   │       ├── GeolocButton.tsx
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── Language
+│   │   │   │   │   ├── Flag.tsx
+│   │   │   │   │   ├── LanguageDetailsButton
+│   │   │   │   │   │   ├── LanguageDetailsButton.test.tsx
+│   │   │   │   │   │   ├── LanguageDetailsButton.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── LanguageDetailsButton.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── LanguageSwitch.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Needs
+│   │   │   │   │   └── NeedsSummary.tsx
+│   │   │   │   ├── Notifications
+│   │   │   │   │   ├── EnableNotifications.tsx
+│   │   │   │   │   ├── NotificationCard.tsx
+│   │   │   │   │   ├── NotificationsIcon.tsx
+│   │   │   │   │   ├── NotificationsModal
+│   │   │   │   │   │   ├── NotificationsModal.test.tsx
+│   │   │   │   │   │   ├── NotificationsModal.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── NotificationsModal.test.tsx.snap
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── useNotificationsModal.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── OfflinePage.tsx
+│   │   │   │   ├── Onboarding
+│   │   │   │   │   ├── CarouselStepImage.tsx
+│   │   │   │   │   ├── Explaination.tsx
+│   │   │   │   │   ├── OnboardingCarouselData.tsx
+│   │   │   │   │   ├── OnboardingCarouselElement.tsx
+│   │   │   │   │   ├── OnboardingPagination.tsx
+│   │   │   │   │   ├── OnboardingProgressBar.tsx
+│   │   │   │   │   ├── SearchBarCity.tsx
+│   │   │   │   │   └── SharedStyledComponents.tsx
+│   │   │   │   ├── OriginBadge.tsx
+│   │   │   │   ├── Profil
+│   │   │   │   │   ├── ContactButton.tsx
+│   │   │   │   │   ├── FilterAgeComponent.tsx
+│   │   │   │   │   ├── FilterFrenchLevelComponent.tsx
+│   │   │   │   │   ├── IconList.tsx
+│   │   │   │   │   ├── Info.tsx
+│   │   │   │   │   ├── List.tsx
+│   │   │   │   │   ├── MascotteSpeaking.tsx
+│   │   │   │   │   ├── ProfilDetailButton.tsx
+│   │   │   │   │   └── Typography.tsx
+│   │   │   │   ├── ReadableColoredText.tsx
+│   │   │   │   ├── ReadableText.tsx
+│   │   │   │   ├── Search
+│   │   │   │   │   ├── Highlight.tsx
+│   │   │   │   │   ├── Hit.tsx
+│   │   │   │   │   ├── InfiniteHits.tsx
+│   │   │   │   │   ├── NbResults.tsx
+│   │   │   │   │   ├── SearchBox.tsx
+│   │   │   │   │   ├── SearchContentSummary.tsx
+│   │   │   │   │   ├── SearchSuggestions.tsx
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── SmallButton.tsx
+│   │   │   │   ├── StreamlineIcon.tsx
+│   │   │   │   ├── StyledText.tsx
+│   │   │   │   ├── Toast.tsx
+│   │   │   │   ├── UI
+│   │   │   │   │   ├── ReadButton.tsx
+│   │   │   │   │   ├── ToggleButton.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── buttons
+│   │   │   │   │   ├── Button
+│   │   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ButtonDSFR
+│   │   │   │   │   │   ├── ButtonDSFR.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── SkeletonListPage
+│   │   │   │   │   │   ├── SkeletonListPage.test_.tsx
+│   │   │   │   │   │   ├── SkeletonListPage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── formulaire
+│   │   │   │   │   ├── ChoiceButton
+│   │   │   │   │   │   ├── ChoiceButton.test.tsx
+│   │   │   │   │   │   ├── ChoiceButton.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── ChoiceButton.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── FilterButton
+│   │   │   │   │   │   ├── FilterButton.test.tsx
+│   │   │   │   │   │   ├── FilterButton.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── FilterButton.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── RadioButton
+│   │   │   │   │   │   ├── RadioButton.test.tsx
+│   │   │   │   │   │   ├── RadioButton.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── RadioButton.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── RadioGroup
+│   │   │   │   │   │   ├── RadioGroup.test.tsx
+│   │   │   │   │   │   ├── RadioGroup.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── RadioGroup.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Select
+│   │   │   │   │   │   ├── Select.test.tsx
+│   │   │   │   │   │   ├── Select.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Select.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Tag
+│   │   │   │   │   │   ├── Tag.test.tsx
+│   │   │   │   │   │   ├── Tag.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Tag.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── iconography
+│   │   │   │   │   ├── Icon
+│   │   │   │   │   │   ├── Icon.tsx
+│   │   │   │   │   │   ├── IconLoader.tsx
+│   │   │   │   │   │   ├── icons
+│   │   │   │   │   │   │   ├── IconI.tsx
+│   │   │   │   │   │   │   ├── IconProps.ts
+│   │   │   │   │   │   │   ├── IconSkeleton.tsx
+│   │   │   │   │   │   │   ├── IconThumbDown.tsx
+│   │   │   │   │   │   │   ├── IconThumbUp.tsx
+│   │   │   │   │   │   │   └── IconWarning.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── IconButton
+│   │   │   │   │   │   ├── IconButton.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── UriImage
+│   │   │   │   │   │   ├── UriImage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── Card
+│   │   │   │   │   │   ├── Card.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Columns
+│   │   │   │   │   │   ├── Columns.spec.tsx
+│   │   │   │   │   │   ├── Columns.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Columns.spec.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Content
+│   │   │   │   │   │   ├── Content.spec.tsx
+│   │   │   │   │   │   ├── Content.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Content.spec.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Header
+│   │   │   │   │   │   ├── Header.md
+│   │   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   │   ├── HeaderContentContentScreen.tsx
+│   │   │   │   │   │   ├── HeaderContentContentsScreen.tsx
+│   │   │   │   │   │   ├── HeaderContentEmpty.tsx
+│   │   │   │   │   │   ├── HeaderContentProps.tsx
+│   │   │   │   │   │   ├── HeaderContentSearch.tsx
+│   │   │   │   │   │   ├── HeaderContentTitle.tsx
+│   │   │   │   │   │   ├── HeaderTitle
+│   │   │   │   │   │   │   ├── HeaderTitle.test.tsx
+│   │   │   │   │   │   │   ├── HeaderTitle.ts
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── HeaderTitle.test.tsx.snap
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Page
+│   │   │   │   │   │   ├── Page.test.tsx
+│   │   │   │   │   │   ├── Page.tsx
+│   │   │   │   │   │   ├── PageHeader.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Page.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── PageOnboarding
+│   │   │   │   │   │   ├── PageOnboarding.test.tsx
+│   │   │   │   │   │   ├── PageOnboarding.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── PageOnboarding.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Rows
+│   │   │   │   │   │   ├── Rows.spec.tsx
+│   │   │   │   │   │   ├── Rows.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Rows.spec.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SafeAreaViewTopInset
+│   │   │   │   │   │   ├── SafeAreaViewTopInset.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ScrollableContent
+│   │   │   │   │   │   ├── ScrollableContent.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Separator
+│   │   │   │   │   │   ├── Separator.test.tsx
+│   │   │   │   │   │   ├── Separator.ts
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Separator.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SkeletonContent
+│   │   │   │   │   │   ├── Constants.ts
+│   │   │   │   │   │   ├── SkeletonContent.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Spacer
+│   │   │   │   │   │   ├── Spacer.test.tsx
+│   │   │   │   │   │   ├── Spacer.tsx
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Spacer.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   ├── FlexItem
+│   │   │   │   │   │   │   ├── FlexItem.spec.tsx
+│   │   │   │   │   │   │   ├── FlexItem.tsx
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── FlexItem.spec.tsx.snap
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── getFlexValue
+│   │   │   │   │   │   │   ├── getFlexValue.spec.ts
+│   │   │   │   │   │   │   ├── getFlexValue.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── typography
+│   │   │   │   │   ├── Badge
+│   │   │   │   │   │   ├── Badge.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Callout
+│   │   │   │   │   │   ├── Callout.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── SectionTitle
+│   │   │   │   │   │   ├── SectionTitle.test.tsx
+│   │   │   │   │   │   ├── SectionTitle.ts
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── SectionTitle.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Title
+│   │   │   │   │   │   ├── Title.test.tsx
+│   │   │   │   │   │   ├── Title.ts
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── Title.test.tsx.snap
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── utils
+│   │   │   │       ├── array
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── isLastChild
+│   │   │   │       │       ├── index.ts
+│   │   │   │       │       ├── isLastChild.spec.ts
+│   │   │   │       │       └── isLastChild.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── isDarkColor
+│   │   │   │       │   ├── hexToRgb.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── isDarkColor.ts
+│   │   │   │       └── tests
+│   │   │   │           ├── index.ts
+│   │   │   │           └── render.tsx
+│   │   │   ├── config
+│   │   │   │   └── i18n.ts
+│   │   │   ├── data
+│   │   │   │   ├── filtersData.ts
+│   │   │   │   ├── languagesData.ts
+│   │   │   │   ├── searchData.ts
+│   │   │   │   └── storeLinks.ts
+│   │   │   ├── hooks
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── useApi.ts
+│   │   │   │   ├── useColorScheme.ts
+│   │   │   │   ├── useDateDiff.ts
+│   │   │   │   ├── useHeaderAnimation.ts
+│   │   │   │   ├── useNotificationSettings.ts
+│   │   │   │   ├── useNotifications.ts
+│   │   │   │   ├── useNotificationsStatus.ts
+│   │   │   │   ├── useStateOnce
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useStateOnce.ts
+│   │   │   │   ├── useStopVoiceover.ts
+│   │   │   │   ├── useTranslationWithRTL.ts
+│   │   │   │   └── useVoiceover.ts
+│   │   │   ├── index.tsx
+│   │   │   ├── jest
+│   │   │   │   ├── __fixtures__
+│   │   │   │   │   ├── languages.ts
+│   │   │   │   │   ├── selectedContent.ts
+│   │   │   │   │   └── themes.ts
+│   │   │   │   ├── __mocks__
+│   │   │   │   │   ├── @03balogun
+│   │   │   │   │   │   └── react-native-skeleton-content.js
+│   │   │   │   │   ├── @react-native-async-storage
+│   │   │   │   │   │   └── async-storage.js
+│   │   │   │   │   ├── MockBottomSheet.js
+│   │   │   │   │   ├── react-i18next.js
+│   │   │   │   │   ├── react-native-safe-area-context.js
+│   │   │   │   │   └── svgMock.js
+│   │   │   │   └── wrapWithProvidersAndRender.tsx
+│   │   │   ├── libs
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── getScreenFromUrl.test.tsx
+│   │   │   │   ├── backButton.ts
+│   │   │   │   ├── content.tsx
+│   │   │   │   ├── generateId.ts
+│   │   │   │   ├── getEnvironment.ts
+│   │   │   │   ├── getImageUri.ts
+│   │   │   │   ├── getScreenFromUrl.ts
+│   │   │   │   ├── getTabBarIcon.ts
+│   │   │   │   ├── getThemeTag.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── language.ts
+│   │   │   │   ├── noVoiceover.ts
+│   │   │   │   ├── notifications.ts
+│   │   │   │   ├── rtlHorizontalScroll.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   ├── ttsReader.ts
+│   │   │   │   └── wait.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── navigation
+│   │   │   │   ├── BottomTabBar
+│   │   │   │   │   ├── ExplorerNavigator.tsx
+│   │   │   │   │   ├── FavorisNavigator.tsx
+│   │   │   │   │   ├── ProfileNavigator.tsx
+│   │   │   │   │   └── SearchNavigator.tsx
+│   │   │   │   ├── BottomTabNavigator.tsx
+│   │   │   │   ├── OnboardingNavigator.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── FakeTabBar.tsx
+│   │   │   │   │   ├── TabBarIcon.tsx
+│   │   │   │   │   ├── TabBarItem.tsx
+│   │   │   │   │   └── TabBarLabel.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── screens
+│   │   │   │   ├── ContentScreen
+│   │   │   │   │   ├── ContentScreen.tsx
+│   │   │   │   │   ├── ContentTabBar
+│   │   │   │   │   │   ├── ContentTabBar.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ExternalLink
+│   │   │   │   │   │   ├── ExternalLink.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── LanguageUnavailable
+│   │   │   │   │   │   ├── LanguageUnavailable.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── LastModificationDate
+│   │   │   │   │   │   ├── LastModificationDate.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── LinkedThemesNeeds
+│   │   │   │   │   │   ├── LinkedThemesNeeds.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── MapMarkers
+│   │   │   │   │   │   ├── MapMarkers.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Section
+│   │   │   │   │   │   ├── Section.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Sections
+│   │   │   │   │   │   ├── LinkedNeed
+│   │   │   │   │   │   │   ├── LinkedNeed.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── LinkedTheme
+│   │   │   │   │   │   │   ├── LinkedTheme.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Mercis
+│   │   │   │   │   │   │   ├── Background.tsx
+│   │   │   │   │   │   │   ├── Mercis.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── Sponsors
+│   │   │   │   │   │   ├── Sponsors.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── ContentsScreen.tsx
+│   │   │   │   ├── ExplorerTab
+│   │   │   │   │   ├── ExplorerScreen.tsx
+│   │   │   │   │   ├── NearMeCardsScreen
+│   │   │   │   │   │   ├── NearMeCardsScreen.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── NeedsScreen.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── FavorisTab
+│   │   │   │   │   ├── FavorisScreen.tsx
+│   │   │   │   │   └── getContentsToDisplay
+│   │   │   │   │       ├── getContentsToDisplay.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── Modals
+│   │   │   │   │   ├── LanguageChoiceModal.tsx
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       ├── LanguageChoiceModal.test.tsx
+│   │   │   │   │       └── __snapshots__
+│   │   │   │   │           └── LanguageChoiceModal.test.tsx.snap
+│   │   │   │   ├── NotificationsScreen.tsx
+│   │   │   │   ├── Onboarding
+│   │   │   │   │   ├── ActivateNotificationsScreen.tsx
+│   │   │   │   │   ├── FilterAge.tsx
+│   │   │   │   │   ├── FilterCity.tsx
+│   │   │   │   │   ├── FilterFrenchLevel.tsx
+│   │   │   │   │   ├── FinishOnboarding.tsx
+│   │   │   │   │   ├── LanguageChoiceScreen.tsx
+│   │   │   │   │   ├── OnboardingSteps.tsx
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       ├── FilterAge.test.tsx
+│   │   │   │   │       ├── FilterCity.test.tsx
+│   │   │   │   │       ├── FilterFrenchLevel.test.tsx
+│   │   │   │   │       ├── LanguageChoiceScreen.test.tsx
+│   │   │   │   │       └── __snapshots__
+│   │   │   │   │           ├── FilterAge.test.tsx.snap
+│   │   │   │   │           ├── FilterCity.test.tsx.snap
+│   │   │   │   │           ├── FilterFrenchLevel.test.tsx.snap
+│   │   │   │   │           └── LanguageChoiceScreen.test.tsx.snap
+│   │   │   │   ├── ProfilTab
+│   │   │   │   │   ├── AboutScreen.tsx
+│   │   │   │   │   ├── AccessibilityScreen.tsx
+│   │   │   │   │   ├── AgeProfilScreen.tsx
+│   │   │   │   │   ├── CityProfilScreen.tsx
+│   │   │   │   │   ├── FrenchLevelProfilScreen.tsx
+│   │   │   │   │   ├── LangueProfilScreen.tsx
+│   │   │   │   │   ├── LegalNoticeScreen.tsx
+│   │   │   │   │   ├── NotificationsSettingsScreen.tsx
+│   │   │   │   │   ├── PrivacyPolicyScreen.tsx
+│   │   │   │   │   ├── ProfilScreen.tsx
+│   │   │   │   │   ├── ShareScreen.tsx
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       ├── AboutScreen.test.tsx
+│   │   │   │   │       ├── AccessibilityScreen.test.tsx
+│   │   │   │   │       ├── LegalNoticeScreen.test.tsx
+│   │   │   │   │       ├── PrivacyPolicyScreen.test.tsx
+│   │   │   │   │       ├── ProfilScreen.test.tsx
+│   │   │   │   │       └── __snapshots__
+│   │   │   │   │           ├── AboutScreen.test.tsx.snap
+│   │   │   │   │           ├── AccessibilityScreen.test.tsx.snap
+│   │   │   │   │           ├── LegalNoticeScreen.test.tsx.snap
+│   │   │   │   │           ├── PrivacyPolicyScreen.test.tsx.snap
+│   │   │   │   │           └── ProfilScreen.test.tsx.snap
+│   │   │   │   ├── SearchTab
+│   │   │   │   │   ├── ContentScreen
+│   │   │   │   │   │   └── PageSkeleton.tsx
+│   │   │   │   │   ├── SearchResultsScreen.tsx
+│   │   │   │   │   ├── SearchScreen.tsx
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       ├── SearchResultsScreen.test.tsx
+│   │   │   │   │       ├── SearchScreen.test.tsx
+│   │   │   │   │       └── __snapshots__
+│   │   │   │   │           ├── SearchResultsScreen.test.tsx.snap
+│   │   │   │   │           └── SearchScreen.test.tsx.snap
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── ContentScreen.test.tsx
+│   │   │   │   │   └── __snapshots__
+│   │   │   │   │       └── ContentScreen.test.tsx.snap
+│   │   │   │   └── index.ts
+│   │   │   ├── services
+│   │   │   │   ├── i18n
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── translation-loader.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── redux
+│   │   │   │       ├── Contents
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   └── contents.saga.test.ts
+│   │   │   │       │   ├── contents.actionTypes.ts
+│   │   │   │       │   ├── contents.actions.ts
+│   │   │   │       │   ├── contents.reducer.ts
+│   │   │   │       │   ├── contents.saga.ts
+│   │   │   │       │   ├── contents.selectors.ts
+│   │   │   │       │   └── functions.ts
+│   │   │   │       ├── ContentsGroupedByNeeds
+│   │   │   │       │   ├── contentsGroupedByNeeds.actionTypes.ts
+│   │   │   │       │   ├── contentsGroupedByNeeds.actions.ts
+│   │   │   │       │   ├── contentsGroupedByNeeds.reducer.ts
+│   │   │   │       │   └── contentsGroupedByNeeds.selectors.ts
+│   │   │   │       ├── Languages
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── languages.reducer.test.ts
+│   │   │   │       │   │   └── languages.saga.test.ts
+│   │   │   │       │   ├── languages.actionTypes.ts
+│   │   │   │       │   ├── languages.actions.ts
+│   │   │   │       │   ├── languages.reducer.ts
+│   │   │   │       │   ├── languages.saga.ts
+│   │   │   │       │   └── languages.selectors.ts
+│   │   │   │       ├── LoadingStatus
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── loadingStatus.reducer.test.ts
+│   │   │   │       │   │   └── loadingStatus.selectors.test.ts
+│   │   │   │       │   ├── loadingStatus.actions.ts
+│   │   │   │       │   ├── loadingStatus.reducer.ts
+│   │   │   │       │   └── loadingStatus.selectors.ts
+│   │   │   │       ├── Needs
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── needs.actionTypes.ts
+│   │   │   │       │   ├── needs.actions.ts
+│   │   │   │       │   ├── needs.reducer.ts
+│   │   │   │       │   ├── needs.saga.ts
+│   │   │   │       │   └── needs.selectors.ts
+│   │   │   │       ├── SelectedContent
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   └── selectedContent.reducer.test.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── selectedContent.actionTypes.ts
+│   │   │   │       │   ├── selectedContent.actions.ts
+│   │   │   │       │   ├── selectedContent.reducer.ts
+│   │   │   │       │   ├── selectedContent.saga.ts
+│   │   │   │       │   └── selectedContent.selectors.ts
+│   │   │   │       ├── Themes
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── themes.actionTypes.ts
+│   │   │   │       │   ├── themes.actions.ts
+│   │   │   │       │   ├── themes.reducer.ts
+│   │   │   │       │   ├── themes.saga.ts
+│   │   │   │       │   └── themes.selectors.ts
+│   │   │   │       ├── User
+│   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── user.reducer.test.ts
+│   │   │   │       │   │   ├── user.saga.test.ts
+│   │   │   │       │   │   └── user.selectors.test.ts
+│   │   │   │       │   ├── functions.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── user.actionTypes.ts
+│   │   │   │       │   ├── user.actions.ts
+│   │   │   │       │   ├── user.reducer.ts
+│   │   │   │       │   ├── user.saga.ts
+│   │   │   │       │   └── user.selectors.ts
+│   │   │   │       ├── VoiceOver
+│   │   │   │       │   ├── voiceOver.actionTypes.ts
+│   │   │   │       │   ├── voiceOver.actions.ts
+│   │   │   │       │   ├── voiceOver.reducer.ts
+│   │   │   │       │   └── voiceOver.selectors.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── middlewares.ts
+│   │   │   │       ├── reducers.ts
+│   │   │   │       ├── sagas.ts
+│   │   │   │       └── store.ts
+│   │   │   ├── theme
+│   │   │   │   ├── ThemeProvider
+│   │   │   │   │   ├── ThemeProvider.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── Marianne-Bold.otf
+│   │   │   │   │   ├── Marianne-Medium.otf
+│   │   │   │   │   ├── Marianne-MediumItalic.otf
+│   │   │   │   │   ├── Marianne-Regular.otf
+│   │   │   │   │   └── Marianne-RegularItalic.otf
+│   │   │   │   ├── images
+│   │   │   │   │   ├── Flags
+│   │   │   │   │   │   ├── Afghanistan.svg
+│   │   │   │   │   │   ├── Arabe.svg
+│   │   │   │   │   │   ├── Erythree.svg
+│   │   │   │   │   │   ├── France.svg
+│   │   │   │   │   │   ├── GB.svg
+│   │   │   │   │   │   ├── Persan.svg
+│   │   │   │   │   │   ├── Russie.svg
+│   │   │   │   │   │   └── Ukraine.svg
+│   │   │   │   │   ├── aboutUs
+│   │   │   │   │   │   ├── contributif-1.png
+│   │   │   │   │   │   ├── contributif-2.png
+│   │   │   │   │   │   ├── contributif-3.png
+│   │   │   │   │   │   ├── mission-1.png
+│   │   │   │   │   │   ├── mission-2.png
+│   │   │   │   │   │   ├── mission-3.png
+│   │   │   │   │   │   ├── problematique-1.png
+│   │   │   │   │   │   ├── problematique-2.png
+│   │   │   │   │   │   └── problematique-3.png
+│   │   │   │   │   ├── accessibility
+│   │   │   │   │   │   ├── accessibility-android.png
+│   │   │   │   │   │   ├── accessibility-ios.png
+│   │   │   │   │   │   └── not-applicable.svg
+│   │   │   │   │   ├── app-icon-ri-adaptive.png
+│   │   │   │   │   ├── app-icon-ri.png
+│   │   │   │   │   ├── app-in-phone.png
+│   │   │   │   │   ├── contents
+│   │   │   │   │   │   └── structure_no_logo.png
+│   │   │   │   │   ├── demarche
+│   │   │   │   │   │   ├── OFPRA.png
+│   │   │   │   │   │   ├── acte_naissance_OFPRA.png
+│   │   │   │   │   │   ├── ameli.png
+│   │   │   │   │   │   ├── caf.png
+│   │   │   │   │   │   ├── carteBancaire.png
+│   │   │   │   │   │   ├── carteIdentite.png
+│   │   │   │   │   │   ├── carteVitale.png
+│   │   │   │   │   │   ├── covid.png
+│   │   │   │   │   │   ├── ofii.png
+│   │   │   │   │   │   ├── passeport.png
+│   │   │   │   │   │   ├── permisConduire.png
+│   │   │   │   │   │   ├── poleEmploi.png
+│   │   │   │   │   │   └── titreSejour.png
+│   │   │   │   │   ├── error.png
+│   │   │   │   │   ├── favoris
+│   │   │   │   │   │   └── illu-empty-favorites.png
+│   │   │   │   │   ├── infocards
+│   │   │   │   │   │   ├── Age.tsx
+│   │   │   │   │   │   ├── Commitment.tsx
+│   │   │   │   │   │   ├── Durations.tsx
+│   │   │   │   │   │   ├── Free.tsx
+│   │   │   │   │   │   ├── FrenchLevel.tsx
+│   │   │   │   │   │   ├── IconProps.ts
+│   │   │   │   │   │   ├── Location.tsx
+│   │   │   │   │   │   ├── Price.tsx
+│   │   │   │   │   │   ├── Public.tsx
+│   │   │   │   │   │   ├── Status.tsx
+│   │   │   │   │   │   └── conditions
+│   │   │   │   │   │       ├── conditions-cb.svg
+│   │   │   │   │   │       ├── conditions-driver.svg
+│   │   │   │   │   │       ├── conditions-ofii.png
+│   │   │   │   │   │       ├── conditions-ofii.svg
+│   │   │   │   │   │       ├── conditions-ofpra.svg
+│   │   │   │   │   │       ├── conditions-pole-emploi.png
+│   │   │   │   │   │       ├── conditions-pole-emploi.svg
+│   │   │   │   │   │       ├── conditions-school.svg
+│   │   │   │   │   │       ├── conditions-tse.svg
+│   │   │   │   │   │       └── price-pay.svg
+│   │   │   │   │   ├── localizedWarning
+│   │   │   │   │   │   ├── france_map.svg
+│   │   │   │   │   │   └── pin_traffic_cone.svg
+│   │   │   │   │   ├── logo.svg
+│   │   │   │   │   ├── onboarding
+│   │   │   │   │   │   ├── BackStep1.tsx
+│   │   │   │   │   │   ├── BackStep2.tsx
+│   │   │   │   │   │   ├── BackStep3.tsx
+│   │   │   │   │   │   ├── BackStep4.tsx
+│   │   │   │   │   │   ├── city-icon.svg
+│   │   │   │   │   │   ├── end-onboarding-illu.svg
+│   │   │   │   │   │   ├── hello.png
+│   │   │   │   │   │   ├── step0.png
+│   │   │   │   │   │   ├── step1.png
+│   │   │   │   │   │   ├── step2.png
+│   │   │   │   │   │   ├── step3.png
+│   │   │   │   │   │   └── step4.png
+│   │   │   │   │   ├── privacyPolicy
+│   │   │   │   │   │   ├── screenshots.png
+│   │   │   │   │   │   └── statistics.png
+│   │   │   │   │   ├── profile
+│   │   │   │   │   │   ├── TextBubble.tsx
+│   │   │   │   │   │   ├── demarches-icon.svg
+│   │   │   │   │   │   ├── illu-mascotte.png
+│   │   │   │   │   │   ├── local-icon.svg
+│   │   │   │   │   │   ├── no-voiceover.svg
+│   │   │   │   │   │   └── user-profile.svg
+│   │   │   │   │   ├── splash
+│   │   │   │   │   │   ├── splash_hdpi.png
+│   │   │   │   │   │   ├── splash_mdpi.png
+│   │   │   │   │   │   ├── splash_xhdpi.png
+│   │   │   │   │   │   ├── splash_xxhdpi.png
+│   │   │   │   │   │   └── splash_xxxhdpi.png
+│   │   │   │   │   ├── splash-screen-RI.png
+│   │   │   │   │   ├── streamlineIcons
+│   │   │   │   │   │   ├── galerie-fill.svg
+│   │   │   │   │   │   ├── galerie-outline.svg
+│   │   │   │   │   │   ├── list-fill.svg
+│   │   │   │   │   │   └── list-outline.svg
+│   │   │   │   │   └── voiceover
+│   │   │   │   │       ├── PauseIcon.tsx
+│   │   │   │   │       ├── PlayIcon.tsx
+│   │   │   │   │       ├── bg_voiceover.png
+│   │   │   │   │       ├── bg_voiceover@2x.png
+│   │   │   │   │       ├── bg_voiceover@3x.png
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── lottie
+│   │   │   │   │   ├── bell-animation.json
+│   │   │   │   │   └── onboarding-animation.json
+│   │   │   │   └── styles.ts
+│   │   │   ├── translations
+│   │   │   │   ├── ar
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── en
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── fa
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── fr
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── ps
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── ru
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── convertCsvToJson.js
+│   │   │   │   │   ├── convertCsvToJsonFr.mjs
+│   │   │   │   │   ├── convertJsonToCsv.mjs
+│   │   │   │   │   └── convertJsonToCsvFr.mjs
+│   │   │   │   ├── ti
+│   │   │   │   │   └── common.json
+│   │   │   │   └── uk
+│   │   │   │       └── common.json
+│   │   │   ├── types
+│   │   │   │   ├── custom.d.ts
+│   │   │   │   ├── interface.d.ts
+│   │   │   │   ├── navigation.tsx
+│   │   │   │   └── styled-components.ts
+│   │   │   └── utils
+│   │   │       ├── API.ts
+│   │   │       ├── ConfigAPI.ts
+│   │   │       ├── eventsUsedInFirebase.ts
+│   │   │       ├── firebase
+│   │   │       │   ├── GoogleService-Info.plist
+│   │   │       │   └── google-services.json
+│   │   │       ├── index.ts
+│   │   │       ├── invariant
+│   │   │       │   ├── index.ts
+│   │   │       │   └── invariant.ts
+│   │   │       ├── logEvent.ts
+│   │   │       ├── types.ts
+│   │   │       └── withSimulatorExcludedArchitectures.js
+│   │   ├── tsconfig.json
+│   │   └── wdyr.js
+│   ├── server
+│   │   ├── Dockerfile
+│   │   ├── cloudbuild.yaml
+│   │   ├── eslint.config.mjs
+│   │   ├── example-env-file.env
+│   │   ├── jest.config.js
+│   │   ├── jest.setup.ts
+│   │   ├── nodemon.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── __fixtures__
+│   │   │   │   ├── demarche.ts
+│   │   │   │   ├── dispositif.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── logs.ts
+│   │   │   │   ├── structure.ts
+│   │   │   │   ├── theme.ts
+│   │   │   │   └── user.ts
+│   │   │   ├── authentication.ts
+│   │   │   ├── connectors
+│   │   │   │   ├── airtable
+│   │   │   │   │   └── airtable.ts
+│   │   │   │   ├── algolia
+│   │   │   │   │   └── updateAlgoliaData.ts
+│   │   │   │   ├── brevo
+│   │   │   │   │   ├── addToNewsletter.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── sendSMS.ts
+│   │   │   │   ├── sendgrid
+│   │   │   │   │   ├── sendMail.ts
+│   │   │   │   │   ├── sendgrid.types.ts
+│   │   │   │   │   └── templatesIds.ts
+│   │   │   │   ├── slack
+│   │   │   │   │   └── sendSlackNotif.ts
+│   │   │   │   └── twilio
+│   │   │   │       ├── index.ts
+│   │   │   │       └── sendSMS.ts
+│   │   │   ├── controllers
+│   │   │   │   ├── adminOptionController.ts
+│   │   │   │   ├── appusersController.ts
+│   │   │   │   ├── dispositifController.ts
+│   │   │   │   ├── imageController.ts
+│   │   │   │   ├── languesController.ts
+│   │   │   │   ├── logController.ts
+│   │   │   │   ├── mailController.ts
+│   │   │   │   ├── miscController.ts
+│   │   │   │   ├── needController.ts
+│   │   │   │   ├── notificationsController.ts
+│   │   │   │   ├── searchController.ts
+│   │   │   │   ├── smsController.ts
+│   │   │   │   ├── structureController.ts
+│   │   │   │   ├── themeController.ts
+│   │   │   │   ├── traduction
+│   │   │   │   │   └── lib.ts
+│   │   │   │   ├── traductionController.ts
+│   │   │   │   ├── ttsController.ts
+│   │   │   │   ├── userController.ts
+│   │   │   │   └── widgetController.ts
+│   │   │   ├── errors.ts
+│   │   │   ├── libs
+│   │   │   │   ├── __fixtures__
+│   │   │   │   │   ├── activeLanguages.ts
+│   │   │   │   │   ├── besoin.ts
+│   │   │   │   │   ├── demarche.ts
+│   │   │   │   │   ├── dispositif.ts
+│   │   │   │   │   └── theme.ts
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── checkAuthorizations.test.ts
+│   │   │   │   │   ├── formatPhoneNumber.test.ts
+│   │   │   │   │   ├── getDiffAlgoliaObject.test.ts
+│   │   │   │   │   ├── getLocaleString.test.ts
+│   │   │   │   │   ├── isToday.test.ts
+│   │   │   │   │   ├── validatePassword.test.ts
+│   │   │   │   │   └── wordCounter.test.ts
+│   │   │   │   ├── asyncForEach.ts
+│   │   │   │   ├── cache.ts
+│   │   │   │   ├── castToBoolean.ts
+│   │   │   │   ├── checkAuthorizations.ts
+│   │   │   │   ├── cleanupAvis.ts
+│   │   │   │   ├── formatForAlgolia.ts
+│   │   │   │   ├── formatPhoneNumber.ts
+│   │   │   │   ├── generateRandomId.ts
+│   │   │   │   ├── getDiffAlgoliaObject.ts
+│   │   │   │   ├── getDispositifDepartments.ts
+│   │   │   │   ├── getFormattedLocale.ts
+│   │   │   │   ├── getLocaleString.ts
+│   │   │   │   ├── googleIndexingApi.ts
+│   │   │   │   ├── isToday.ts
+│   │   │   │   ├── uniqIds.ts
+│   │   │   │   ├── validateId.ts
+│   │   │   │   ├── validatePassword.ts
+│   │   │   │   └── wordCounter.ts
+│   │   │   ├── locales
+│   │   │   │   ├── ar
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── en
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── fa
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── fr
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── ps
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── ru
+│   │   │   │   │   └── common.json
+│   │   │   │   ├── ti
+│   │   │   │   │   └── common.json
+│   │   │   │   └── uk
+│   │   │   │       └── common.json
+│   │   │   ├── logger.ts
+│   │   │   ├── mappers
+│   │   │   │   └── image-mapper.ts
+│   │   │   ├── modules
+│   │   │   │   ├── adminOptions
+│   │   │   │   │   └── adminOptions.repository.ts
+│   │   │   │   ├── appusers
+│   │   │   │   │   └── appusers.repository.ts
+│   │   │   │   ├── dispositif
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── dispositif.origin.test.ts
+│   │   │   │   │   │   └── dispositif.service.state.tests.ts
+│   │   │   │   │   ├── data.ts
+│   │   │   │   │   ├── dispositif.adapter.ts
+│   │   │   │   │   ├── dispositif.repository.ts
+│   │   │   │   │   ├── dispositif.service.ts
+│   │   │   │   │   ├── log.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── indicators
+│   │   │   │   │   └── indicators.service.ts
+│   │   │   │   ├── langues
+│   │   │   │   │   ├── langues.repository.ts
+│   │   │   │   │   └── langues.service.ts
+│   │   │   │   ├── logs
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── logs.service.test.ts
+│   │   │   │   │   ├── logs.repository.ts
+│   │   │   │   │   └── logs.service.ts
+│   │   │   │   ├── mail
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── helpers.test.ts
+│   │   │   │   │   ├── data.ts
+│   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   ├── mail.repository.ts
+│   │   │   │   │   ├── mail.service.ts
+│   │   │   │   │   ├── mailFunctions.ts
+│   │   │   │   │   ├── sendMailToStructureMembersWhenDispositifEnAttente.ts
+│   │   │   │   │   ├── sendMailWhenDispositifArchived.ts
+│   │   │   │   │   ├── sendMailWhenDispositifPublished.ts
+│   │   │   │   │   ├── sendPublishedTradMailToStructure.ts
+│   │   │   │   │   └── sendPublishedTradMailToTraductors.ts
+│   │   │   │   ├── needs
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── needs.service.test.ts
+│   │   │   │   │   ├── needs.repository.ts
+│   │   │   │   │   └── needs.service.ts
+│   │   │   │   ├── notifications
+│   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   └── targets.ts
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── helpers.test.ts
+│   │   │   │   │   │   └── notifications.service.test.ts
+│   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   └── notifications.service.ts
+│   │   │   │   ├── role
+│   │   │   │   │   └── role.repository.ts
+│   │   │   │   ├── search
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── search.service.test.ts
+│   │   │   │   │   └── search.service.ts
+│   │   │   │   ├── snapshots
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── snapshots.service.state.test.ts
+│   │   │   │   │   ├── snapshots.repository.ts
+│   │   │   │   │   └── snapshots.service.ts
+│   │   │   │   ├── structure
+│   │   │   │   │   ├── structure.repository.ts
+│   │   │   │   │   └── structure.service.ts
+│   │   │   │   ├── themes
+│   │   │   │   │   └── themes.repository.ts
+│   │   │   │   ├── traductions
+│   │   │   │   │   ├── traductions.repository.ts
+│   │   │   │   │   └── traductions.service.ts
+│   │   │   │   ├── users
+│   │   │   │   │   ├── LoginError.ts
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── user.service.test.ts
+│   │   │   │   │   ├── auth.ts
+│   │   │   │   │   ├── login2FA.ts
+│   │   │   │   │   ├── users.repository.ts
+│   │   │   │   │   └── users.service.ts
+│   │   │   │   └── widgets
+│   │   │   │       └── widgets.repository.ts
+│   │   │   ├── scripts
+│   │   │   │   └── print-env.js
+│   │   │   ├── server.ts
+│   │   │   ├── services
+│   │   │   │   ├── index.ts
+│   │   │   │   └── sms.ts
+│   │   │   ├── typegoose
+│   │   │   │   ├── AdminOptions.ts
+│   │   │   │   ├── AppUser.ts
+│   │   │   │   ├── Base.ts
+│   │   │   │   ├── Dispositif.ts
+│   │   │   │   ├── Error.ts
+│   │   │   │   ├── Image.ts
+│   │   │   │   ├── Indicator.ts
+│   │   │   │   ├── Langue.ts
+│   │   │   │   ├── Log.ts
+│   │   │   │   ├── MailEvent.ts
+│   │   │   │   ├── Need.ts
+│   │   │   │   ├── Notification.ts
+│   │   │   │   ├── Role.ts
+│   │   │   │   ├── Snapshot.ts
+│   │   │   │   ├── Structure.ts
+│   │   │   │   ├── Theme.ts
+│   │   │   │   ├── Traductions.test.ts
+│   │   │   │   ├── Traductions.ts
+│   │   │   │   ├── User.ts
+│   │   │   │   ├── Widget.ts
+│   │   │   │   ├── generics.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── types
+│   │   │   │   └── interface.d.ts
+│   │   │   └── workflows
+│   │   │       ├── adminOption
+│   │   │       │   ├── getAdminOptions
+│   │   │       │   │   ├── getAdminOptions.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   └── postAdminOptions
+│   │   │       │       ├── index.ts
+│   │   │       │       └── postAdminOptions.ts
+│   │   │       ├── appusers
+│   │   │       │   ├── getNotificationsSettings
+│   │   │       │   │   ├── getNotificationsSettings.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── postNotificationsSettings
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── postNotificationsSettings.ts
+│   │   │       │   └── updateAppUser
+│   │   │       │       ├── index.ts
+│   │   │       │       └── updateAppUser.ts
+│   │   │       ├── dispositif
+│   │   │       │   ├── addAvis
+│   │   │       │   │   ├── addAvis.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── log.ts
+│   │   │       │   ├── addMerci
+│   │   │       │   │   ├── addMerci.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── log.ts
+│   │   │       │   ├── addNeedsFromAirtable
+│   │   │       │   │   ├── addNeedsFromAirtable.ts
+│   │   │       │   │   ├── data.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── addSuggestion
+│   │   │       │   │   ├── addSuggestion.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── log.ts
+│   │   │       │   ├── createDispositif
+│   │   │       │   │   ├── createDispositif.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteAvis
+│   │   │       │   │   ├── deleteAvis.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteDispositif
+│   │   │       │   │   ├── deleteDispositif.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── log.ts
+│   │   │       │   ├── deleteMerci
+│   │   │       │   │   ├── deleteAvis
+│   │   │       │   │   │   ├── deleteAvis.ts
+│   │   │       │   │   │   └── index.ts
+│   │   │       │   │   ├── deleteMerci.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteSuggestion
+│   │   │       │   │   ├── deleteSuggestion.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── exportDispositifsGeolocalisation
+│   │   │       │   │   ├── exportDispositifsGeolocalisation.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── exportFiches
+│   │   │       │   │   ├── exportFiches.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getAllDispositifs
+│   │   │       │   │   ├── getAllDispositifs.test.ts
+│   │   │       │   │   ├── getAllDispositifs.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getContentById
+│   │   │       │   │   ├── getContentById.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getContentsForApp
+│   │   │       │   │   ├── getContentsForApp.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getCountDispositifs
+│   │   │       │   │   ├── getCountDispositifs.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getDispositifs
+│   │   │       │   │   ├── getDispositifs.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getDispositifsWithTranslationAvancement
+│   │   │       │   │   ├── getDispositifsWithTranslationAvancement.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getFilteredContentsForApp
+│   │   │       │   │   ├── getFilteredContentsForApp.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getHasTextChanges
+│   │   │       │   │   ├── getHasTextChanges.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getNbContentsForCounty
+│   │   │       │   │   ├── getNbContentsForCounty.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getNbDispositifsByRegion
+│   │   │       │   │   ├── getNbDispositifsByRegion.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getStatistics
+│   │   │       │   │   ├── getStatistics.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getUserContributions
+│   │   │       │   │   ├── getUserContributions.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── modifyDispositifMainSponsor
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── modifyDispositifMainSponsor.ts
+│   │   │       │   ├── newsletter
+│   │   │       │   │   ├── constants.ts
+│   │   │       │   │   ├── demarches.ts
+│   │   │       │   │   ├── dispositifs.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── types.ts
+│   │   │       │   ├── patchSuggestion
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── patchSuggestion.ts
+│   │   │       │   ├── publishDispositif
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   ├── publishDispositif.state.test.ts
+│   │   │       │   │   └── publishDispositif.ts
+│   │   │       │   ├── structureReceiveDispositif
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   ├── structureReceiveDispositif.state.test.ts
+│   │   │       │   │   └── structureReceiveDispositif.ts
+│   │   │       │   ├── updateAvis
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── updateAvis.ts
+│   │   │       │   ├── updateDispositif
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   ├── updateDispositif.test.ts
+│   │   │       │   │   └── updateDispositif.ts
+│   │   │       │   ├── updateDispositifAdminComments
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── updateDispositifAdminComments.ts
+│   │   │       │   ├── updateDispositifProperties
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── updateDispositifProperties.ts
+│   │   │       │   ├── updateDispositifStatus
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── updateDispositifStatus.ts
+│   │   │       │   ├── updateDispositifTagsOrNeeds
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── updateDispositifTagsOrNeeds.ts
+│   │   │       │   └── updateNbVuesOrFavoritesOnContent
+│   │   │       │       ├── index.ts
+│   │   │       │       └── updateNbVuesOrFavoritesOnContent.ts
+│   │   │       ├── images
+│   │   │       │   └── postImages
+│   │   │       │       ├── index.ts
+│   │   │       │       └── postImages.ts
+│   │   │       ├── index.ts
+│   │   │       ├── langues
+│   │   │       │   └── getLanguages
+│   │   │       │       ├── getLanguages.ts
+│   │   │       │       └── index.ts
+│   │   │       ├── log
+│   │   │       │   └── getLogs
+│   │   │       │       ├── getLogs.ts
+│   │   │       │       └── index.ts
+│   │   │       ├── mail
+│   │   │       │   ├── addContact
+│   │   │       │   │   ├── addContact.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteContact
+│   │   │       │   │   ├── deleteContact.test.ts
+│   │   │       │   │   ├── deleteContact.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── isInContact
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── isInContact.test.ts
+│   │   │       │   │   └── isInContact.ts
+│   │   │       │   ├── sendAdminImprovementsMail
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── sendAdminImprovementsMail.ts
+│   │   │       │   ├── sendDraftReminderMail
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── sendDraftReminderMail.ts
+│   │   │       │   ├── sendReminderMailToUpdateContents
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── sendReminderMailToUpdateContents.ts
+│   │   │       │   └── sendSubscriptionReminderMail
+│   │   │       │       ├── index.ts
+│   │   │       │       └── sendSubscriptionReminderMail.ts
+│   │   │       ├── misc
+│   │   │       │   ├── index.ts
+│   │   │       │   └── verifyVersion
+│   │   │       │       ├── index.ts
+│   │   │       │       ├── verifyVersion.test.ts
+│   │   │       │       └── verifyVersion.ts
+│   │   │       ├── needs
+│   │   │       │   ├── addView
+│   │   │       │   │   ├── addView.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteNeed
+│   │   │       │   │   ├── deleteNeed.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getNeeds
+│   │   │       │   │   ├── getNeeds.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── patchNeed
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── patchNeed.ts
+│   │   │       │   ├── postNeeds
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── postNeeds.ts
+│   │   │       │   └── updatePositions
+│   │   │       │       ├── index.ts
+│   │   │       │       └── updatePositions.ts
+│   │   │       ├── notifications
+│   │   │       │   ├── getNotifications
+│   │   │       │   │   ├── getNotifications.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── markAsSeen
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── markAsSeen.ts
+│   │   │       │   └── sendNotifications
+│   │   │       │       ├── index.ts
+│   │   │       │       ├── log.ts
+│   │   │       │       └── sendNotifications.ts
+│   │   │       ├── search
+│   │   │       │   └── updateIndex
+│   │   │       │       ├── index.ts
+│   │   │       │       └── updateIndex.ts
+│   │   │       ├── sms
+│   │   │       │   ├── contentLink
+│   │   │       │   │   ├── contentLink.test.ts
+│   │   │       │   │   ├── contentLink.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   └── downloadApp
+│   │   │       │       ├── downloadApp.ts
+│   │   │       │       └── index.ts
+│   │   │       ├── structure
+│   │   │       │   ├── createStructure
+│   │   │       │   │   ├── createStructure.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── log.ts
+│   │   │       │   ├── getActiveStructures
+│   │   │       │   │   ├── getActiveStructures.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getAllStructures
+│   │   │       │   │   ├── getAllStructures.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getStatistics
+│   │   │       │   │   ├── getStatistics.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getStructureById
+│   │   │       │   │   ├── getStructureById.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── modifyUserRoleInStructure
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── log.ts
+│   │   │       │   │   └── modifyUserMembershipInStructure.ts
+│   │   │       │   └── updateStructure
+│   │   │       │       ├── index.ts
+│   │   │       │       ├── log.ts
+│   │   │       │       └── updateStructure.ts
+│   │   │       ├── themes
+│   │   │       │   ├── deleteTheme
+│   │   │       │   │   ├── deleteTheme.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getThemes
+│   │   │       │   │   ├── getThemes.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── patchTheme
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── patchTheme.ts
+│   │   │       │   └── postThemes
+│   │   │       │       ├── index.ts
+│   │   │       │       └── postThemes.ts
+│   │   │       ├── translation
+│   │   │       │   ├── deleteTranslations
+│   │   │       │   │   ├── deleteTranslations.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getDefaultTraduction
+│   │   │       │   │   ├── getDefaultTraduction.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getProgression
+│   │   │       │   │   ├── getProgression.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getTraductionsForReview
+│   │   │       │   │   ├── getTraductionsForReview.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getTranslationStatistics
+│   │   │       │   │   ├── getTranslationStatistics.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── publishTranslation
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── publishTranslation.ts
+│   │   │       │   ├── saveTranslation
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── saveTranslation.ts
+│   │   │       │   ├── sendFeedback
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── sendFeedback.ts
+│   │   │       │   ├── translate
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── translate.ts
+│   │   │       │   └── validateTranslation
+│   │   │       │       ├── index.ts
+│   │   │       │       ├── log.ts
+│   │   │       │       └── validateTranslation.ts
+│   │   │       ├── tts
+│   │   │       │   └── getTts
+│   │   │       │       ├── getTts.ts
+│   │   │       │       ├── index.ts
+│   │   │       │       └── voices.ts
+│   │   │       ├── users
+│   │   │       │   ├── addUserFavorite
+│   │   │       │   │   ├── addUserFavorite.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── changePassword
+│   │   │       │   │   ├── changePassword.test.ts
+│   │   │       │   │   ├── changePassword.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── checkCode
+│   │   │       │   │   ├── checkCode.test.ts
+│   │   │       │   │   ├── checkCode.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── checkResetToken
+│   │   │       │   │   ├── checkResetToken.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── checkUserExists
+│   │   │       │   │   ├── checkUserExists.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteMyAccount
+│   │   │       │   │   ├── deleteMyAccount.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteUser
+│   │   │       │   │   ├── deleteUser.test.ts
+│   │   │       │   │   ├── deleteUser.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── deleteUserFavorites
+│   │   │       │   │   ├── deleteUserFavorites.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── exportUsers
+│   │   │       │   │   ├── exportUsers.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getActiveUsers
+│   │   │       │   │   ├── getActiveUsers.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getAllUsers
+│   │   │       │   │   ├── getAllUsers.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getFiguresOnUsers
+│   │   │       │   │   ├── getFiguresOnUsers.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── getUserFavoritesInLocale
+│   │   │       │   │   ├── getUserFavoritesInLocale.ts
+│   │   │       │   │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── login
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── login.test.ts
+│   │   │       │   │   └── login.ts
+│   │   │       │   ├── register
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── register.test.ts
+│   │   │       │   │   └── register.ts
+│   │   │       │   ├── resetPassword
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── resetPassword.ts
+│   │   │       │   ├── sendCode
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── sendCode.ts
+│   │   │       │   ├── setNewPassword
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── setNewPassword.ts
+│   │   │       │   ├── setSelectedLanguages
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── setSelectedLanguages.ts
+│   │   │       │   └── updateUser
+│   │   │       │       ├── index.ts
+│   │   │       │       ├── log.ts
+│   │   │       │       └── updateUser.ts
+│   │   │       └── widget
+│   │   │           ├── deleteWidget
+│   │   │           │   ├── deleteWidget.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── getWidgets
+│   │   │           │   ├── getWidgets.ts
+│   │   │           │   └── index.ts
+│   │   │           ├── patchWidget
+│   │   │           │   ├── index.ts
+│   │   │           │   └── patchWidget.ts
+│   │   │           └── postWidgets
+│   │   │               ├── index.ts
+│   │   │               └── postWidgets.ts
+│   │   ├── tsconfig.json
+│   │   └── tsoa.json
+│   └── storybook
+│       ├── .gitignore
+│       ├── .storybook
+│       │   ├── DsfrProvider.tsx
+│       │   ├── globals.css
+│       │   ├── main.ts
+│       │   └── preview.ts
+│       ├── README.md
+│       ├── eslint.config.mjs
+│       ├── next.config.mjs
+│       ├── package.json
+│       ├── postcss.config.mjs
+│       ├── src
+│       │   ├── app
+│       │   │   ├── favicon.ico
+│       │   │   ├── fonts
+│       │   │   │   ├── GeistMonoVF.woff
+│       │   │   │   └── GeistVF.woff
+│       │   │   ├── layout.tsx
+│       │   │   └── page.tsx
+│       │   └── stories
+│       │       ├── Button.stories.ts
+│       │       ├── Button.tsx
+│       │       ├── Configure.mdx
+│       │       ├── Header.stories.ts
+│       │       ├── Header.tsx
+│       │       ├── Page.stories.ts
+│       │       ├── Page.tsx
+│       │       ├── assets
+│       │       │   ├── accessibility.png
+│       │       │   ├── accessibility.svg
+│       │       │   ├── addon-library.png
+│       │       │   ├── assets.png
+│       │       │   ├── avif-test-image.avif
+│       │       │   ├── context.png
+│       │       │   ├── discord.svg
+│       │       │   ├── docs.png
+│       │       │   ├── figma-plugin.png
+│       │       │   ├── github.svg
+│       │       │   ├── share.png
+│       │       │   ├── styling.png
+│       │       │   ├── testing.png
+│       │       │   ├── theming.png
+│       │       │   ├── tutorials.svg
+│       │       │   └── youtube.svg
+│       │       ├── button.css
+│       │       ├── header.css
+│       │       ├── page.css
+│       │       └── ui
+│       │           ├── Breadcrumb.stories.tsx
+│       │           ├── DemoComponent.stories.tsx
+│       │           ├── DsfrExample.stories.tsx
+│       │           ├── Map.stories.tsx
+│       │           ├── MetaDataCard.stories.tsx
+│       │           ├── MetaDataItem.stories.tsx
+│       │           ├── Modal.stories.tsx
+│       │           ├── RIAccordion.stories.tsx
+│       │           └── Vote.stories.tsx
+│       └── tsconfig.json
+├── biome.json
+├── documentation
+│   ├── README.md
+│   ├── api-types
+│   │   └── README.md
+│   ├── client
+│   │   ├── README.md
+│   │   ├── accessibility
+│   │   │   └── voiceover.md
+│   │   ├── architecture.md
+│   │   ├── component-composition.md
+│   │   ├── environment.md
+│   │   ├── general.md
+│   │   ├── i18n.md
+│   │   ├── routing.md
+│   │   ├── styling.md
+│   │   └── webhooks.md
+│   ├── images
+│   │   └── SA1.png
+│   ├── mobile
+│   │   └── README.md
+│   └── server
+│       ├── README.md
+│       ├── architecture.md
+│       ├── controllers.md
+│       └── general.md
+├── knip.json
+├── migrations
+│   ├── 1724679900055_ThemesAddMainColor.ts
+│   ├── 1724679986699_ThemesUpdateMainColor.ts
+│   ├── 1724681728662_ThemesUpdateShortNames.ts
+│   ├── 1725277837812_ThemeAddImages.ts
+│   ├── 1726150834082_StructuresNewMembresArray.ts
+│   ├── 1732526870128_RemoveAdminPercentageProgressionStatus.ts
+│   ├── 1732546789247_RemoveUsernameMailEvent.ts
+│   ├── 1733826012000_CreateNewsletterRoleAndUser.ts
+│   ├── 1733826190794_RemoveStuckedToReview.ts
+│   ├── 1734507038000_DeleteOldReadNotifications.ts
+│   ├── 1742918280024_CreateDispositifSnapshotsCollection.ts
+│   ├── 1744895773870_UpdateThemeIcons.ts
+│   ├── 1745023411000_ThemeAddGradientColors.ts
+│   ├── 1754907038000_AddIndexesToTraductions.ts
+│   ├── 1755001200000_AddIndexesToDispositifsSearch.ts
+│   ├── 1755535200000_AddSortIndexesToDispositifs.ts
+│   ├── 1763633316490_backfill-origin-ri.ts
+│   ├── 1772529648826_MigrateSessionsToObject.ts
+│   └── cli.ts
+├── package.json
+├── packages
+│   ├── api-types
+│   │   ├── .gitignore
+│   │   ├── eslint.config.mjs
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── generics.ts
+│   │   │   ├── index.ts
+│   │   │   └── modules
+│   │   │       ├── adminOption.ts
+│   │   │       ├── appuser.ts
+│   │   │       ├── dispositif.ts
+│   │   │       ├── image.ts
+│   │   │       ├── language.ts
+│   │   │       ├── log.ts
+│   │   │       ├── mail.ts
+│   │   │       ├── misc.ts
+│   │   │       ├── need.ts
+│   │   │       ├── notification.ts
+│   │   │       ├── search.ts
+│   │   │       ├── sms.ts
+│   │   │       ├── structure.ts
+│   │   │       ├── theme.ts
+│   │   │       ├── translations.ts
+│   │   │       ├── tts.ts
+│   │   │       ├── user.ts
+│   │   │       └── widget.ts
+│   │   └── tsconfig.json
+│   ├── typescript-config
+│   │   ├── base.json
+│   │   ├── nextjs.json
+│   │   ├── package.json
+│   │   ├── react-library.json
+│   │   └── react-native-library.json
+│   └── ui
+│       ├── README.md
+│       ├── eslint.config.mjs
+│       ├── package.json
+│       ├── scripts
+│       │   ├── generate-tailwind-tokens.ts
+│       │   └── tsconfig.json
+│       ├── src
+│       │   ├── components
+│       │   │   ├── DemoComponent.tsx
+│       │   │   ├── composites
+│       │   │   │   ├── Breadcrumb
+│       │   │   │   │   ├── Breadcrumb.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── Map
+│       │   │   │   │   ├── AdressContent.tsx
+│       │   │   │   │   ├── CopyButton.tsx
+│       │   │   │   │   ├── CustomControls.tsx
+│       │   │   │   │   ├── LeafletMap.tsx
+│       │   │   │   │   ├── Map.tsx
+│       │   │   │   │   ├── MapContext.tsx
+│       │   │   │   │   ├── MapPanel.tsx
+│       │   │   │   │   ├── MapPanelItem.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── MetaData
+│       │   │   │   │   ├── MetaDataCard.tsx
+│       │   │   │   │   ├── MetaDataItem.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── Modal
+│       │   │   │   │   ├── Modal.tsx
+│       │   │   │   │   ├── README.md
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── RIAccordion
+│       │   │   │   │   └── RIAccordion.tsx
+│       │   │   │   ├── annotations-overlay
+│       │   │   │   │   ├── AnnotationsOverlay.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── carrousel
+│       │   │   │   │   ├── Carrousel.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── vote
+│       │   │   │       ├── Vote.tsx
+│       │   │   │       ├── VoteLayoutStandard.tsx
+│       │   │   │       ├── VoteLayoutSticky.tsx
+│       │   │   │       └── index.ts
+│       │   │   ├── index.ts
+│       │   │   └── primitives
+│       │   │       ├── icons
+│       │   │       │   ├── Bookmark.tsx
+│       │   │       │   ├── index.ts
+│       │   │       │   └── thumb-up-animated
+│       │   │       │       ├── ThumbUpAnimated.tsx
+│       │   │       │       ├── assets
+│       │   │       │       │   └── thumb-up.lottie
+│       │   │       │       └── index.ts
+│       │   │       └── index.ts
+│       │   ├── css
+│       │   │   ├── container.css
+│       │   │   ├── dsfr-customisations.css
+│       │   │   ├── dsfr-tokens.css
+│       │   │   ├── globals-ui.css
+│       │   │   ├── prose
+│       │   │   │   └── prose-lists.css
+│       │   │   └── prose.css
+│       │   ├── hooks
+│       │   │   ├── index.ts
+│       │   │   ├── useIsomorphicLayoutEffect.ts
+│       │   │   ├── useRtl.ts
+│       │   │   └── useWindowSize.ts
+│       │   ├── index.ts
+│       │   ├── lib
+│       │   │   ├── cn.ts
+│       │   │   ├── index.ts
+│       │   │   └── isInBrowser.ts
+│       │   └── types
+│       │       └── lottie.d.ts
+│       └── tsconfig.json
+├── patches
+│   └── @codegouvfr__react-dsfr@1.20.2.patch
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── postcss.config.mjs
+├── scripts
+│   ├── generate-newsletter-token.js
+│   ├── rollback-gcp-secrets.sh
+│   └── update-gcp-secrets.sh
+├── specs
+│   ├── 001-redis-search-counts-cache
+│   │   ├── README.md
+│   │   ├── checklists
+│   │   │   └── requirements.md
+│   │   ├── contracts
+│   │   │   └── openapi.yaml
+│   │   ├── data-model.md
+│   │   ├── plan.md
+│   │   ├── quickstart.md
+│   │   ├── research.md
+│   │   ├── spec.md
+│   │   └── tasks.md
+│   ├── 002-enhance-location-search
+│   │   ├── checklists
+│   │   │   └── requirements.md
+│   │   ├── contracts
+│   │   │   ├── department-api.contract.ts
+│   │   │   └── municipality-api.contract.ts
+│   │   ├── data-model.md
+│   │   ├── plan.md
+│   │   ├── quickstart.md
+│   │   ├── research.md
+│   │   ├── spec.md
+│   │   └── tasks.md
+│   └── 003-dispositif-origin-meta
+│       ├── checklists
+│       │   └── requirements.md
+│       ├── contracts
+│       │   └── dispositif-api.md
+│       ├── data-model.md
+│       ├── plan.md
+│       ├── quickstart.md
+│       ├── research.md
+│       ├── spec.md
+│       └── tasks.md
+├── tailwind.config.ts
+└── turbo.json
+943 directories, 3227 files
