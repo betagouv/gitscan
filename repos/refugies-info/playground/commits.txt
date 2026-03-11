@@ -1,0 +1,619 @@
+2026-03-09T18:12:10+01:00 - 546e35d - Luis Arias : fix(scripts): revert Union[str, dict] — Letta schema gen only supports primitives
+2026-03-09T18:05:52+01:00 - dca9169 - Luis Arias : Merge pull request #155 from refugies-info/luis/ri-1131-validator-returns-yaml-frontmatter
+2026-03-09T17:55:47+01:00 - 2a8d910 - Luis Arias : fix: address Gemini review comments on PR #155
+2026-03-09T17:44:02+01:00 - 477ccd8 - Luis Arias : feat(agents): validator tool returns canonical YAML frontmatter on success
+2026-03-09T16:58:25+01:00 - 5cd4454 - Luis Arias : feat(scripts): store endpoint as Letta agent secret instead of hardcoding
+2026-03-09T16:51:39+01:00 - 59a458c - Luis Arias : fix(scripts): handle Python dict repr in validate_metadata_ri tool
+2026-03-09T16:27:14+01:00 - 6305348 - Luis Arias : Merge pull request #154 from refugies-info/luis/ri-1130-renforcer-agathe-avec-un-schema-de-sortie-structuree
+2026-03-09T16:19:08+01:00 - aa1c80d - Luis Arias : fix: address Gemini review comments on PR #154
+2026-03-09T16:08:58+01:00 - 01b76f5 - Luis Arias : feat(agents): wrap metadata schema spec in <system-reminder> tags
+2026-03-09T15:57:39+01:00 - f00840b - Luis Arias : fix(scripts): remove name field from tools.upsert — derived from Python function
+2026-03-09T15:51:38+01:00 - 723da95 - Luis Arias : fix(scripts): update-metadata-schema-block — try/catch instead of .find() on paginated list
+2026-03-09T15:18:19+01:00 - d4dbcfa - Luis Arias : i18n(agents): translate metadata schema spec to French
+2026-03-09T15:15:42+01:00 - d4dc5b0 - Luis Arias : refactor(agents): move schema spec to Letta memory block instead of per-message injection
+2026-03-09T15:07:11+01:00 - 461ec2e - Luis Arias : feat(agents): reinforce metadata agent with output schema spec and validation tool
+2026-03-09T14:28:42+01:00 - d4c60d7 - Luis Arias : Merge pull request #134 from refugies-info/luis/feat-seed-preview-users
+2026-03-09T13:48:41+01:00 - d925390 - Luis Arias : fix: guard SEED_USER_PASSWORD before seeding in Vercel preview builds
+2026-03-09T13:48:41+01:00 - 020fd90 - Luis Arias : feat(vercel): auto-seed users on preview deployments
+2026-03-05T10:52:57+01:00 - 0640be7 - Jérémie Gisserot : Merge pull request #153 from refugies-info/jeremie/better-error-reporting
+2026-03-05T10:38:15+01:00 - cb9f8fc - Jérémie Gisserot : feat: Add metadata validation error display and allow publishing by ignoring invalid fields.
+2026-03-04T15:14:55+01:00 - 4f8541d - Jérémie Gisserot : Merge pull request #152 from refugies-info/jeremie/ri-1126-ajouter-la-map-dans-la-fiche-front
+2026-03-04T15:05:04+01:00 - dc556ea - Jérémie Gisserot : feat: Refine `TranslationPreviewPayload` by basing `dispositif` on `RefugiesInfoDispositif` and explicitly defining multi-language `translations` with a new `TranslationContent` type.
+2026-03-04T13:51:28+01:00 - 0008041 - Jérémie Gisserot : refactor: improve `lat`/`lng` number conversion in `normalizePoi` to handle empty strings and undefined values.
+2026-03-04T13:39:14+01:00 - cc28d70 - Jérémie Gisserot : feat: Refactor `buildTranslationPreviewPayload` to reuse `buildRefugiesInfoPayload` and correctly handle POI map data with `lat`/`lng` type conversions.
+2026-03-04T13:03:21+01:00 - 5885a51 - Jérémie Gisserot : Merge pull request #151 from refugies-info/jeremie/metadata-qa
+2026-03-04T12:58:26+01:00 - d4d0299 - Jérémie Gisserot : feat: Add `label` prop to `DepartmentField` and use it as `aria-label` for the mode selection.
+2026-03-04T12:57:05+01:00 - 077c081 - Jérémie Gisserot : fix: ensure price range values are stored in ascending order and only when both min and max are defined.
+2026-03-04T12:32:38+01:00 - d3b6253 - Jérémie Gisserot : refactor: Update "En ligne" and "Départements spécifiques" labels to "Ressources en ligne" and "Département" respectively in `DepartmentField`.
+2026-03-04T12:24:13+01:00 - a392cfa - Jérémie Gisserot : feat: expand location field to support 'france', 'online', or specific departments in metadata.
+2026-03-04T12:14:54+01:00 - ab19e62 - Jérémie Gisserot : refactor: Revamp `PriceField` to support multiple price modes (free, fixed, range, flexible) using `RadioGroup` and updated state management.
+2026-03-04T12:04:14+01:00 - 491c838 - Jérémie Gisserot : refactor: replace SelectInput with RadioGroup for age type selection in AgeField.
+2026-03-04T11:54:40+01:00 - 44195de - Jérémie Gisserot : feat: Filter available needs in the document editor based on selected primary and secondary themes and refine combobox input display when at max items.
+2026-03-04T11:33:06+01:00 - 4ec0df6 - Jérémie Gisserot : feat: Add `maxItems` prop to `ComboboxInput` to limit selectable items and apply it to `ThemeSelectField`.
+2026-03-04T11:32:10+01:00 - ebd396f - Jérémie Gisserot : feat: Add max item selection to ComboboxInput and character limit with counter to TextareaField.
+2026-03-03T19:30:14+01:00 - bec8769 - Jérémie Gisserot : Merge pull request #150 from refugies-info/jeremie/fix-publication-error-feedback
+2026-03-03T19:27:19+01:00 - e569dcd - Jérémie Gisserot : feat: Implement multi-pass auto-fixing for metadata values to allow rule composition and scope `fix_frequency_format` to the 'frequency' field.
+2026-03-03T19:22:43+01:00 - 195a4c8 - Jérémie Gisserot : fix: improve frequency format autofix to handle array-wrapped values and normalize array-based hours.
+2026-03-03T19:13:04+01:00 - e27aa9d - Jérémie Gisserot : feat: implement fallback polling for publication status in realtime hooks and extract record handling logic.
+2026-03-03T17:03:04+01:00 - 95ce613 - Jérémie Gisserot : Merge pull request #149 from refugies-info/jeremie/ri-1124-les-droits-redacteur-et-traducteurs-sont-trop-restreints
+2026-03-03T17:00:17+01:00 - c0e4b3f - Jérémie Gisserot : fix: hide import for editors
+2026-03-03T16:53:59+01:00 - 214f00f - Jérémie Gisserot : fix: translator filters
+2026-03-03T16:51:30+01:00 - f4a5fd6 - Jérémie Gisserot : feat: Implement real-time publication status for translations, including detailed error handling and necessary Supabase Realtime setup.
+2026-03-03T16:05:43+01:00 - ee9dac5 - Jérémie Gisserot : Merge pull request #148 from refugies-info/jeremie/better-publication-feedback
+2026-03-03T16:03:36+01:00 - a340f16 - Jérémie Gisserot : feat: Conditionally render the online status badge and update `getOnlineStatusLabel` to return `undefined` for an undefined status.
+2026-03-03T15:54:47+01:00 - 0787f85 - Jérémie Gisserot : refactor: replace conditional error message logic with a data-driven mapping in `getUserFriendlyError`.
+2026-03-03T15:54:08+01:00 - 027464c - Jérémie Gisserot : fix: Set `author_id` to `null` when creating an error publication record.
+2026-03-03T15:49:52+01:00 - 013c33f - Jérémie Gisserot : feat: Implement real-time document status updates in the editor and refresh Supabase client in the publication workflow to prevent stale connections."
+2026-03-03T14:11:51+01:00 - 8e46251 - Jérémie Gisserot : feat: Replace document publication polling with real-time updates and enhance success/error dialogs with detailed messages.
+2026-03-03T10:53:49+01:00 - e148fa5 - Jérémie Gisserot : Merge pull request #147 from refugies-info/jeremie/metadata-ui-adjustments
+2026-03-03T10:53:23+01:00 - 1c6c8c6 - Jérémie Gisserot : feat: automatically generate unique IDs for the TextInput component if an id prop is not explicitly provided.
+2026-03-03T10:50:59+01:00 - 620f38c - Jérémie Gisserot : feat: Implement stable IDs for POI items in `PoiField` to improve React key management and prevent re-renders.
+2026-03-03T10:38:06+01:00 - 9559da8 - Jérémie Gisserot : feat: Implement canonical sessions metadata format including `modalitesEntreesSorties` and a new `RadioGroup` component.
+2026-03-03T09:11:47+01:00 - 8bd8c36 - Jérémie Gisserot : feat: Enhance POI editor with new fields and labels, and update TextInput component with label support and improved default styling.
+2026-03-02T18:39:01+01:00 - 497baae - Luis Arias : Merge pull request #146 from refugies-info/luis/feat-seed-preview-data
+2026-03-02T18:27:04+01:00 - 01ab0e8 - Luis Arias : fix(database): use $2a$ bcrypt prefix for GoTrue compatibility
+2026-03-02T17:59:54+01:00 - 42cae25 - Luis Arias : fix(database): use private password for seed users
+2026-03-02T16:57:55+01:00 - 7a276db - Luis Arias : fix(database): replace production password hashes with dummy hash
+2026-03-02T16:46:57+01:00 - 27b92ef - Luis Arias : feat(database): add seed data for Supabase preview branches
+2026-03-02T15:20:27+01:00 - 13e7a8b - Jérémie Gisserot : Merge pull request #145 from refugies-info/ri-1119-resoudre-le-bug-qui-fait-que-les-metadonnees-ne-se-generent-2
+2026-03-02T15:16:17+01:00 - adb25ee - Jérémie Gisserot : Merge branch 'main' into ri-1119-resoudre-le-bug-qui-fait-que-les-metadonnees-ne-se-generent-2
+2026-03-02T15:06:38+01:00 - 4573555 - Jérémie Gisserot : docs: Add links to editorial workflow, quality gating, and metadata mapping documentation.
+2026-03-02T15:00:30+01:00 - 40d3752 - Jérémie Gisserot : docs: improve JSDoc comments for DI ingestion workflow steps and utilities.
+2026-03-02T14:54:47+01:00 - 2228871 - Jérémie Gisserot : refactor: throw RetryableError instead of Error for ingestion audit failures
+2026-03-02T14:51:06+01:00 - 9d4b8a6 - Jérémie Gisserot : fix: Ensure editorial report persistence fails if workflow lacks an editorial record ID.
+2026-03-02T14:44:32+01:00 - e689691 - Jérémie Gisserot : feat: Wrap markdown content in `<document>` tags to prevent prompt injection across agent prompts.
+2026-03-02T14:22:34+01:00 - 824c514 - Jérémie Gisserot : Merge pull request #143 from refugies-info/jeremie/ri-1039-preview-publish-metadonnées
+2026-03-02T14:12:49+01:00 - 6bae297 - Jérémie Gisserot : docs: Add comprehensive documentation for the DI Ingestion Workflow and update the workflows README navigation.
+2026-03-02T13:53:07+01:00 - 94a559f - Jérémie Gisserot : refactor: Categorize workflow pipelines and enhance DI metadata generation with improved retry logic and new ingestion pipelines.
+2026-03-02T13:05:42+01:00 - 64940bb - Jérémie Gisserot : Merge pull request #144 from refugies-info/jeremie/test-deploy
+2026-03-02T12:59:24+01:00 - 6be31ea - Jérémie Gisserot : docs: Remove 🎉 emoji from documentation guidelines.
+2026-03-02T11:18:15+01:00 - ee7bf97 - Jérémie Gisserot : feat: Enforce minimum length for price details, add an autofix to remove empty details, and refine the price value autofix logic.
+2026-02-28T12:12:41+01:00 - f7e1ee7 - Jérémie Gisserot : feat: Enhance publication documentation with create/update details and add new docs for metadata mapping and document editor contexts.
+2026-02-28T12:04:57+01:00 - 49a4e1e - Jérémie Gisserot : feat: Add document publishing functionality and refactor document editor components with new barrel files and improved JSDoc.
+2026-02-28T11:27:59+01:00 - 73aba4b - Jérémie Gisserot : feat: introduce metadata auto-fix utility and UI to correct common data format issues
+2026-02-27T15:48:37+01:00 - 5fb6746 - Luis Arias : Merge pull request #142 from refugies-info/docs/refactor-worktrees-guide
+2026-02-27T15:45:32+01:00 - dd42109 - Luis Arias : Merge branch 'main' into docs/refactor-worktrees-guide
+2026-02-27T15:42:02+01:00 - a2fdbde - Luis Arias : docs: use wt switch ^ for updating main
+2026-02-27T15:40:30+01:00 - 4974e63 - Luis Arias : docs: add warning for Linux/Homebrew worktrunk config corruption
+2026-02-27T15:28:20+01:00 - b463d39 - Luis Arias : fix: use wt switch main (no --create) after bare clone
+2026-02-27T15:23:11+01:00 - 54c92eb - Luis Arias : docs: refactor worktrees guide with simplified 3-step clone
+2026-02-27T13:41:02+01:00 - 84c728c - Luis Arias : Merge pull request #141 from refugies-info/docs/worktree-guide
+2026-02-27T13:37:34+01:00 - 1a5cc75 - Luis Arias : docs: address PR review comments on worktrees guide
+2026-02-27T13:34:42+01:00 - f7582bc - Luis Arias : docs: expand prerequisites with worktrunk user config
+2026-02-27T13:33:01+01:00 - 2836189 - Luis Arias : docs: add worktrees guide for contributors
+2026-02-27T11:59:48+01:00 - e093718 - Luis Arias : Merge pull request #140 from refugies-info/chore/add-wt-config
+2026-02-27T11:50:37+01:00 - 120efff - Luis Arias : chore: use .env* glob in .worktreeinclude
+2026-02-27T11:45:28+01:00 - 278d3d1 - Luis Arias : chore: add worktrunk project config and worktreeinclude
+2026-02-27T11:18:09+01:00 - b5f4d73 - Luis Arias : Merge pull request #139 from refugies-info/chore-remove-envrc
+2026-02-27T11:15:19+01:00 - 8e45551 - Luis Arias : chore: remove .envrc and add to .gitignore
+2026-02-26T20:47:07+01:00 - b7bcc6d - Jérémie Gisserot : feat: add shared utility to build Refugies.info payload with structured metadata for sessions, sponsors, themes, and needs.
+2026-02-26T19:59:58+01:00 - c8a7503 - Jérémie Gisserot : feat: preview with metadatas
+2026-02-26T16:12:51+01:00 - 557ae9d - Luis Arias : Merge pull request #138 from refugies-info/luis/ri-1121-suggestions-doptimisation-supabase
+2026-02-26T16:02:28+01:00 - 56ba3c2 - Luis Arias : Merge pull request #133 from refugies-info/luis/ri-1093-basculer-compliance-status-sur-ingestion-records-pas
+2026-02-26T15:59:58+01:00 - 851d68e - Luis Arias : fix(database): add 'error' to letta_reports status constraint
+2026-02-26T15:59:58+01:00 - 9cf4fcb - Luis Arias : fix(di): process services without ingestion_records instead of filtering by runId
+2026-02-26T15:59:58+01:00 - 4bdb790 - Luis Arias : chore: :wrench: Allow for cascading search for .envrc and .env in bare repo monorepo
+2026-02-26T15:59:58+01:00 - a96c616 - Luis Arias : fix: update handle_new_ingestion_record trigger to remove compliance_status
+2026-02-26T15:59:58+01:00 - 3630e9a - Luis Arias : fix: address PR review feedback
+2026-02-26T15:59:58+01:00 - 64411b6 - Luis Arias : refactor(database): migrate compliance_status from workflows to ingestion_records (RI-1093)
+2026-02-26T15:55:41+01:00 - 13fc862 - Luis Arias : perf(database): add missing FK indexes, drop unused speculative indexes (RI-1121)
+2026-02-26T12:19:31+01:00 - 4db89f6 - Jérémie Gisserot : Merge pull request #135 from refugies-info/jeremie/ri-1039-editer-les-metadonnees
+2026-02-26T12:16:23+01:00 - 7a67bb5 - Jérémie Gisserot : chore: linter fixes + ui opitmizations
+2026-02-25T23:09:39+01:00 - 67eb12f - Jérémie Gisserot : feat: Implement distinct actions for `undefined` and `null` values when saving metadata overrides.
+2026-02-25T22:57:59+01:00 - 2c96530 - Jérémie Gisserot : feat: Implement editorial metadata overrides for document fields, display merged values, and add a Supabase function for updates.
+2026-02-25T21:46:29+01:00 - 5a3732a - Jérémie Gisserot : feat: Add workflow permission verification before allowing metadata field modifications.
+2026-02-25T21:22:08+01:00 - 1a9d7b9 - Jérémie Gisserot : feat: Refactor metadata editing with new state management, field-level persistence, and validation, introducing Refugies.info specific configurations.
+2026-02-25T13:10:08+01:00 - 3276a27 - Jérémie Gisserot : refactor: Implement local state management for editable metadata fields in `FrequencyField` and `PoiField` to improve editing flow.
+2026-02-25T12:42:20+01:00 - 5131720 - Jérémie Gisserot : feat: Introduce dedicated `ThemeSelectField` and `NeedSelectField` components, enhancing theme selection with primary/secondary support and improving the `ComboboxInput` for specific badge labeling.
+2026-02-25T11:57:30+01:00 - 0fce0b3 - Luis Arias : Merge pull request #132 from refugies-info/luis/ri-1117-fix-duplicate-compliance
+2026-02-25T11:36:36+01:00 - 3ff4d52 - Luis Arias : refactor(workflows): move compliance logic to TypeScript, drop DB triggers (RI-1117)
+2026-02-25T11:33:16+01:00 - f2551a9 - Jérémie Gisserot : feat: Implement DepartmentField for metadata and refactor FrequencyField and PriceField to manage editing state locally, saving changes on exit.
+2026-02-25T11:10:02+01:00 - 6c3df38 - Luis Arias : fix(workflows): treat duplicate=true as non_compliant (RI-1117)
+2026-02-25T10:56:12+01:00 - 547c83b - Luis Arias : Merge pull request #129 from refugies-info/luis/ri-1068-airtable-trad-tracking
+2026-02-24T20:24:47+01:00 - 4fdb79b - Jérémie Gisserot : feat: introduce editable SessionField and PoiField components for metadata and enhance EditableField with click-outside detection.
+2026-02-24T19:38:56+01:00 - f3e09f5 - Jérémie Gisserot : feat: Add Age, Frequency, Commitment, and Price metadata fields along with a new DatePicker component.
+2026-02-24T18:26:42+01:00 - 25fd9df - Jérémie Gisserot : feat: Introduce `MultiEnumField` and `EnumField` components for metadata editing, leveraging new `ComboboxInput` and `SelectInput` UI components.
+2026-02-24T17:41:33+01:00 - ae88d58 - Jérémie Gisserot : feat: Introduce metadata context and editable field components for document editing, alongside minor UI styling adjustments and a `Number.isNaN` update.
+2026-02-24T16:13:15+01:00 - 2e5b495 - Jérémie Gisserot : feat: add new form input components (EditableField, NumberInput, TextArea, TextInput) with inline editing support.
+2026-02-24T15:40:25+01:00 - 28a5d4c - Jérémie Gisserot : feat: merge metadata
+2026-02-24T13:35:06+01:00 - 6ff194e - Jérémie Gisserot : Merge pull request #131 from refugies-info/jeremie/fix-404
+2026-02-24T13:33:06+01:00 - 4b7eadc - Jérémie Gisserot : refactor: Update document layout to await async params prop.
+2026-02-24T13:09:09+01:00 - f9cb05d - Jérémie Gisserot : Merge pull request #130 from refugies-info/jeremie/ri-1109-si-on-choisit-le-filtre-a-traiter-dans-le-menu-deroulant-on
+2026-02-24T13:07:07+01:00 - 1bfd3d0 - Jérémie Gisserot : refactor: remove Promise from DocumentLayoutProps params and destructure layout function arguments
+2026-02-24T13:05:06+01:00 - fb1e751 - Jérémie Gisserot : refactor: use `HIGHLIGHT_ANIMATION_DURATION_MS` constant for highlight animation timeout.
+2026-02-24T13:00:29+01:00 - e9ffb6b - Jérémie Gisserot : feat: Add sorting for document ID, quality score, structure name, and session start date, and refactor document table column definitions.
+2026-02-24T12:42:00+01:00 - 63c00a4 - Jérémie Gisserot : feat: Implement real-time updates and highlight animations for workflow documents, and enable sorting by document ID.
+2026-02-24T12:20:40+01:00 - 4369330 - Jérémie Gisserot : chore: cleanup documentation location
+2026-02-24T12:20:18+01:00 - c8fc080 - Jérémie Gisserot : I cannot generate a commit message without the actual file changes to summarize.
+2026-02-24T12:14:41+01:00 - a464016 - Jérémie Gisserot : Merge branch 'main' into jeremie/ri-1109-si-on-choisit-le-filtre-a-traiter-dans-le-menu-deroulant-on
+2026-02-24T12:04:19+01:00 - 5be5792 - Jérémie Gisserot : feat: Add AI-generated metadata reports to document details and improve data parsing robustness by filtering invalid IDs and providing default date values.
+2026-02-24T08:57:32+01:00 - 50d1474 - Luis Arias : fix: address PR review comments
+2026-02-23T18:29:57+01:00 - 21d47a1 - Luis Arias : feat: skip Airtable entry if translation was already published
+2026-02-23T18:18:06+01:00 - 4df676c - Luis Arias : feat: resolve translator name from user profile username
+2026-02-23T18:12:45+01:00 - 9cc10ac - Luis Arias : refactor: use official airtable npm package instead of raw fetch
+2026-02-23T18:12:45+01:00 - d759540 - Luis Arias : feat: add Airtable translation billing tracking (RI-1068)
+2026-02-23T16:47:25+01:00 - 1df7a98 - Jérémie Gisserot : feat: add unique index for username to public.profiles table
+2026-02-23T16:47:25+01:00 - 70eaf94 - Jérémie Gisserot : feat(users): add username field to user profiles
+2026-02-23T16:47:25+01:00 - dcafdcc - Jérémie Gisserot : feat: Allow explicit enabling of the debug panel in non-development environments via `NEXT_PUBLIC_DEBUG_PANEL` environment variable.
+2026-02-23T16:47:25+01:00 - c7e3cfa - Jérémie Gisserot : feat: Add UI and service function to manually trigger metadata generation for documents.
+2026-02-23T16:47:25+01:00 - 4c6f5af - Jérémie Gisserot : style: Adjust font size of primary theme badge text from `text-xxs` to `text-[10px]`.
+2026-02-23T16:47:24+01:00 - c386b3b - Jérémie Gisserot : feat: Add concurrency to metadata and audit LLM calls using `runWithConcurrency` and isolated conversations.
+2026-02-23T16:47:24+01:00 - 9f066a8 - Jérémie Gisserot : feat: Introduce RI reference data fetching for frontend and add workflow steps to force audit and metadata report generation.
+2026-02-23T16:42:29+01:00 - 3ee41c8 - Jérémie Gisserot : feat: Introduce dedicated pages for document compliance and metadata views, and sequentialize ingestion audit and metadata steps.
+2026-02-23T16:36:33+01:00 - 59b1225 - Jérémie Gisserot : feat: Implement metadata and compliance auditing for DI ingestion records with new workflow steps, agent schema.
+2026-02-23T15:46:51+01:00 - 6728c03 - Jérémie Gisserot : refactor: update document fetching to use the new `workflows_enriched` Supabase view.
+2026-02-23T12:14:47+01:00 - 9e5348a - Jérémie Gisserot : Merge pull request #128 from refugies-info/jeremie/ri-1112-ajouter-le-username-des-comptes-utilisateurs
+2026-02-23T12:14:33+01:00 - ba595b2 - Jérémie Gisserot : feat: add unique index for username to public.profiles table
+2026-02-23T12:07:30+01:00 - 9c581dd - Jérémie Gisserot : feat(users): add username field to user profiles
+2026-02-23T11:52:09+01:00 - 150e5ae - Jérémie Gisserot : Merge pull request #127 from refugies-info/jeremie/debug-panel-vars
+2026-02-23T11:49:53+01:00 - c59d013 - Jérémie Gisserot : feat: Allow explicit enabling of the debug panel in non-development environments via `NEXT_PUBLIC_DEBUG_PANEL` environment variable.
+2026-02-23T11:37:40+01:00 - 91c3f59 - Jérémie Gisserot : Merge pull request #126 from refugies-info/jeremie/ri-1038-afficher-les-metadonnees-pre-remplies-par-lia-allege
+2026-02-23T11:34:50+01:00 - 8e5aec6 - Jérémie Gisserot : feat: Add UI and service function to manually trigger metadata generation for documents.
+2026-02-23T11:20:22+01:00 - 71be03c - Jérémie Gisserot : refactor: WIP Rename document filter from `status` to `complianceStatus` and improve backend filtering logic for work and online statuses.
+2026-02-23T09:35:54+01:00 - 1908d84 - Jérémie Gisserot : style: Adjust font size of primary theme badge text from `text-xxs` to `text-[10px]`.
+2026-02-21T13:17:51+01:00 - 81763b7 - Jérémie Gisserot : feat: Add concurrency to metadata and audit LLM calls using `runWithConcurrency` and isolated conversations.
+2026-02-21T10:02:19+01:00 - 7920a7d - Jérémie Gisserot : feat: Introduce RI reference data fetching for frontend and add workflow steps to force audit and metadata report generation.
+2026-02-20T16:03:20+01:00 - beb78b6 - Jérémie Gisserot : feat: Introduce dedicated pages for document compliance and metadata views, and sequentialize ingestion audit and metadata steps.
+2026-02-19T16:19:48+01:00 - de4759a - Jérémie Gisserot : feat: Implement metadata and compliance auditing for DI ingestion records with new workflow steps, agent schema.
+2026-02-19T09:37:22+01:00 - c84f195 - Luis Arias : fix: ignore .letta symlinks in bare repo worktree setup
+2026-02-18T16:35:37+01:00 - 9b4910f - Jérémie Gisserot : Merge pull request #125 from refugies-info/jeremie/ri-1103-la-previsualisation-des-fiches-traduite-nest-pas
+2026-02-18T16:23:31+01:00 - 11ace14 - Jérémie Gisserot : refactor: code clarity
+2026-02-18T16:11:16+01:00 - a4bd002 - Jérémie Gisserot : fix: prevent prototype pollution by validating language input
+2026-02-18T16:08:16+01:00 - f73bc64 - Jérémie Gisserot : fix: Validate preview language parameter to prevent path traversal attacks.
+2026-02-18T16:07:17+01:00 - cfda20a - Jérémie Gisserot : feat: Introduce `NEXT_PUBLIC_RI_BASE_URL` and add language validation to preview URL generation.
+2026-02-18T15:32:09+01:00 - c31359d - Jérémie Gisserot : docs: Add documentation for the translation preview feature, detailing its API, architecture, and implementation.
+2026-02-18T15:03:26+01:00 - 45d13b5 - Jérémie Gisserot : feat: Add translation preview payload builder and submission utility.
+2026-02-18T11:57:32+01:00 - 8020ea6 - Jérémie Gisserot : Merge pull request #124 from refugies-info/jeremie/ri-1102-avoir-la-meme-ux-pour-les-traducteurs-que-pour-les-editeurs
+2026-02-18T11:50:30+01:00 - 09502ae - Jérémie Gisserot : refactor: introduce `failStep` helper to centralize error handling and failed publication record creation.
+2026-02-18T11:35:56+01:00 - 07389ac - Jérémie Gisserot : fix: Prevent state updates on unmounted components, add logging for publication records, and remove the publication records insert policy.
+2026-02-18T11:04:08+01:00 - 6382251 - Jérémie Gisserot : feat: restrict `publication_records` insert operations to `service_role` only
+2026-02-18T10:56:32+01:00 - 3caad07 - Jérémie Gisserot : feat: introduce `buildPublicationUrl` utility to safely construct publication URLs, replacing manual generation in translation services and editor.
+2026-02-18T10:26:40+01:00 - 6ed2026 - Jérémie Gisserot : feat: Implement real-time publication status and actions for translation editor, including error reporting and URL generation.
+2026-02-17T17:11:45+01:00 - 269add2 - Jérémie Gisserot : Merge pull request #123 from refugies-info/jeremie/ri-1105-implementer-lenregistrement-automatique-avant-publication
+2026-02-17T17:09:58+01:00 - 44c5523 - Jérémie Gisserot : feat: Automatically save translations before publishing them and update the publish button's enabled state.
+2026-02-17T16:52:55+01:00 - 074d6c7 - Jérémie Gisserot : Merge pull request #122 from refugies-info/jeremie/ri-1088-mettre-en-conformite-les-statuts-des-fiches-rco-a-traduire
+2026-02-17T16:51:04+01:00 - 26baa59 - Jérémie Gisserot : refactor: Extract online status badge rendering into a constant to reduce duplication.
+2026-02-17T16:48:09+01:00 - e2b9458 - Jérémie Gisserot : refactor: update translation records concurrently using `Promise.all` instead of sequential iteration.
+2026-02-17T16:36:35+01:00 - a5ca2fb - Jérémie Gisserot : feat: Use user role parameter in translation service to prevent non-admin/editors from viewing archived translations and remove corresponding filter option.
+2026-02-17T16:02:29+01:00 - dc67e16 - Jérémie Gisserot : feat: Introduce distinct online_status and work_status for translations, updating publication workflows and frontend filters.
+2026-02-16T16:02:25+01:00 - f9057ac - Luis Arias : Merge pull request #121 from refugies-info/luis/turbo-remote-cache-gitignore
+2026-02-16T15:55:19+01:00 - b93827d - Luis Arias : chore: add .turbo to gitignore for remote cache setup
+2026-02-16T12:52:38+01:00 - 681a544 - Luis Arias : Merge pull request #120 from refugies-info/luis/fix-di-audit-workflow
+2026-02-16T12:49:26+01:00 - e6b1271 - Luis Arias : fix: resolve DI audit workflow failures (count query, scope, FK constraint)
+2026-02-16T12:04:54+01:00 - 107066a - Jérémie Gisserot : Merge pull request #119 from refugies-info/jeremie/fix-ingestion-status
+2026-02-16T11:58:20+01:00 - 7804503 - Jérémie Gisserot : feat: compute document online status based on compliance status when no editorial record is available.
+2026-02-14T09:47:41+01:00 - 072823a - Jérémie Gisserot : Merge pull request #117 from refugies-info/jeremie/ri-1096-si-je-nai-pas-enregistre-la-fiche-la-fonctionnalite
+2026-02-14T09:47:28+01:00 - 4b12227 - Jérémie Gisserot : Merge pull request #118 from refugies-info/jeremie/ri-1094-mettre-le-bon-sens-de-lecture-de-larabe-pour-la-traduction
+2026-02-14T09:38:05+01:00 - 9b225f0 - Jérémie Gisserot : feat: Automatically save document changes before previewing, publishing, or archiving.
+2026-02-14T09:31:53+01:00 - 4e60007 - Jérémie Gisserot : feat: Add `isRtl` property to language constants and dynamically set text direction in the translation editor pane.
+2026-02-14T09:20:36+01:00 - 03c8f57 - Jérémie Gisserot : feat: Automatically save document before publishing or archiving and enable publishing for dirty documents.
+2026-02-14T09:02:10+01:00 - 1e69889 - Jérémie Gisserot : Merge pull request #112 from refugies-info/jeremie/ri-1069-publier-une-fiche-traduite
+2026-02-14T06:16:55+01:00 - da263f7 - Luis Arias : Merge pull request #115 from refugies-info/feat/di-audit-limit-env-var
+2026-02-14T06:16:19+01:00 - f911963 - Luis Arias : Merge pull request #116 from refugies-info/chore/bump-tool-versions
+2026-02-14T06:15:19+01:00 - f04f4a6 - Luis Arias : fix: validate MAX_PENDING_AUDITS env var against invalid values
+2026-02-14T06:03:27+01:00 - 95ff4a7 - Luis Arias : chore: harden vercel-setup.sh per PR review feedback
+2026-02-14T05:50:14+01:00 - 7122f50 - Luis Arias : chore: use proto toolchain for Vercel builds
+2026-02-14T05:36:06+01:00 - 8b97e3c - Luis Arias : chore: use proto toolchain in CI and align pnpm version
+2026-02-14T05:25:19+01:00 - e175173 - Luis Arias : chore: update node, npm, proto, and pnpm versions in .prototools
+2026-02-14T05:17:16+01:00 - b886c3a - Luis Arias : feat: make audit limit configurable via MAX_PENDING_AUDITS env var
+2026-02-14T05:04:02+01:00 - f83982a - Luis Arias : ci: remove manual DI ingestion workflow.
+2026-02-14T05:02:38+01:00 - 9d51468 - Luis Arias : Merge branch 'main' into jeremie/ri-1069-publier-une-fiche-traduite
+2026-02-14T04:52:55+01:00 - a8d58a2 - Luis Arias : Merge pull request #114 from refugies-info/fix/remove-ingestion-workflows
+2026-02-14T04:49:10+01:00 - 7e1058d - Luis Arias : chore: remove DI ingestion triggers from GitHub Actions workflows.
+2026-02-13T20:11:30+01:00 - c92de17 - Luis Arias : Merge pull request #113 from refugies-info/fix/use-gh-variable-for-prod-url
+2026-02-13T19:39:29+01:00 - bdaced8 - Luis Arias : fix: use VERCEL_PROD_URL GitHub variable instead of Vercel API lookup
+2026-02-13T19:27:35+01:00 - 60555c8 - Luis Arias : Merge pull request #111 from refugies-info/fix/vercel-curl-use-rest-api
+2026-02-13T19:23:59+01:00 - 0cff89c - Luis Arias : chore: ignore .vercel directory
+2026-02-13T19:15:01+01:00 - 16fa9b7 - Luis Arias : fix: set empty outputs for type-check-only build tasks in turbo.json
+2026-02-13T18:53:06+01:00 - 5f0b068 - Luis Arias : fix: explicitly set framework to nextjs in vercel.json
+2026-02-13T18:49:22+01:00 - 5b598f3 - Luis Arias : fix: move vercel.json to apps/frontend for correct framework detection
+2026-02-13T18:43:45+01:00 - feaf0e9 - Luis Arias : fix: remove outputDirectory from vercel.json
+2026-02-13T18:40:15+01:00 - e2b43be - Luis Arias : fix: correct outputDirectory in vercel.json
+2026-02-13T17:48:57+01:00 - 3247bdd - Luis Arias : fix: link Vercel project before curl to resolve scope auth error
+2026-02-13T17:48:56+01:00 - ab1f749 - Luis Arias : fix: install Vercel CLI in production release workflow
+2026-02-13T17:48:56+01:00 - 4106031 - Luis Arias : fix: address PR review feedback on cleanup and summary reporting
+2026-02-13T17:48:56+01:00 - dc660e7 - Luis Arias : feat: address PR review with atomic RPC for audit claiming
+2026-02-13T17:48:56+01:00 - ccd9fa2 - Luis Arias : feat: simplify manual workflow by removing the limit flag
+2026-02-13T17:48:55+01:00 - 3014ef7 - Luis Arias : docs: remove DI_INGESTION_AUDIT_LIMIT from .env.example
+2026-02-13T17:48:55+01:00 - 51d7e0e - Luis Arias : feat: add manual DI ingestion workflow
+2026-02-13T17:48:55+01:00 - 629bccc - Luis Arias : feat: remove DI_INGESTION_AUDIT_LIMIT in favor of automatic 50-record safety limit
+2026-02-13T17:48:54+01:00 - cc07571 - Luis Arias : feat: trigger ingestion on deployment and limit pending audits to 50
+2026-02-13T17:48:54+01:00 - 84d8bd7 - Jérémie Gisserot : perf: Optimize Supabase real-time subscription by filtering for pending translation records.
+2026-02-13T17:48:54+01:00 - 2b3ce33 - Jérémie Gisserot : refactor: fetch user role from profiles table and adjust translation status filtering for non-admin/editor roles.
+2026-02-13T17:48:54+01:00 - 24ac450 - Jérémie Gisserot : refactor: Retrieve user role from the profiles table instead of user_metadata.
+2026-02-13T17:48:54+01:00 - fdee5fc - Luis Arias : feat: implement all-or-nothing global deduplication
+2026-02-13T17:48:54+01:00 - 637f19f - Luis Arias : feat: enhance deduplication to use service name and structure ID
+2026-02-13T17:48:54+01:00 - dab7d78 - Luis Arias : feat: add deduplication and filters for RCO ingestion
+2026-02-13T17:48:53+01:00 - ffd26ad - Luis Arias : fix: revoke anon privileges on workflow_ingestion_metadata view
+2026-02-13T17:48:53+01:00 - 9559ba1 - Luis Arias : feat: setup supabase MCP server
+2026-02-13T16:22:34+01:00 - e616c50 - Jérémie Gisserot : feat: Implement translation publication workflow and real-time status updates in the frontend.
+2026-02-13T14:51:20+01:00 - 726bac4 - Luis Arias : fix: add outputDirectory to vercel.json for Next.js monorepo
+2026-02-13T14:36:47+01:00 - 04a034d - Luis Arias : fix: simplify manual DI ingestion to use Vercel REST API curl
+2026-02-13T13:44:31+01:00 - 7d177a7 - Luis Arias : fix: update .env.example to use CRON_SECRET convention
+2026-02-13T13:37:37+01:00 - 885ea39 - Luis Arias : fix: remove invalid headers from vercel.json and use standard CRON_SECRET
+2026-02-13T12:21:53+01:00 - 32f0549 - Luis Arias : fix: replace vercel curl with plain curl via Vercel REST API
+2026-02-13T12:13:38+01:00 - 2cd1a61 - Luis Arias : Merge pull request #110 from refugies-info/fix/vercel-curl-auth
+2026-02-13T12:11:38+01:00 - ce26893 - Luis Arias : fix: link Vercel project before curl to resolve scope auth error
+2026-02-13T11:46:41+01:00 - 251a641 - Luis Arias : Merge pull request #109 from refugies-info/fix/production-workflow-vercel-cli
+2026-02-13T11:33:15+01:00 - 712b27a - Luis Arias : fix: install Vercel CLI in production release workflow
+2026-02-13T09:35:43+01:00 - 3c4d1af - Luis Arias : Merge pull request #108 from refugies-info/luis/ri-1097-import-de-50-fiches-sans-doublons-dans-ingestion-records
+2026-02-12T22:15:02+01:00 - c2f6daf - Luis Arias : fix: address PR review feedback on cleanup and summary reporting
+2026-02-12T21:59:19+01:00 - 13e0b76 - Luis Arias : feat: address PR review with atomic RPC for audit claiming
+2026-02-12T16:52:21+01:00 - 101c47b - Luis Arias : feat: simplify manual workflow by removing the limit flag
+2026-02-12T16:42:42+01:00 - b685aed - Luis Arias : docs: remove DI_INGESTION_AUDIT_LIMIT from .env.example
+2026-02-12T16:41:56+01:00 - a81e550 - Luis Arias : feat: add manual DI ingestion workflow
+2026-02-12T16:35:31+01:00 - 5fece4b - Luis Arias : feat: remove DI_INGESTION_AUDIT_LIMIT in favor of automatic 50-record safety limit
+2026-02-12T16:23:06+01:00 - b3ac5c8 - Luis Arias : feat: trigger ingestion on deployment and limit pending audits to 50
+2026-02-12T16:21:54+01:00 - 06a6d8f - Jérémie Gisserot : Merge pull request #107 from refugies-info/jeremie/ri-1077-inserer-les-traductions-generees-par-letta-dans-lediteur-2
+2026-02-12T16:21:02+01:00 - 78f5a46 - Jérémie Gisserot : perf: Optimize Supabase real-time subscription by filtering for pending translation records.
+2026-02-12T16:20:50+01:00 - 6825c8e - Jérémie Gisserot : Merge pull request #104 from refugies-info/jeremie/ri-1077-inserer-les-traductions-generees-par-letta-dans-lediteur-2
+2026-02-12T15:48:23+01:00 - fb8b284 - Jérémie Gisserot : refactor: fetch user role from profiles table and adjust translation status filtering for non-admin/editor roles.
+2026-02-12T15:46:23+01:00 - 4e2bfe9 - Jérémie Gisserot : refactor: Retrieve user role from the profiles table instead of user_metadata.
+2026-02-12T14:56:57+01:00 - 3e223a3 - Jérémie Gisserot : feat: Enable real-time translation status updates with role-based filtering and centralize language-specific workflow definitions into a registry.
+2026-02-12T14:10:31+01:00 - ffe7238 - Luis Arias : Merge pull request #106 from refugies-info/luis/ri-1095-filtres-supplementaires-lors-de-lingestion-des-fiches-rco
+2026-02-12T13:52:10+01:00 - f8c5a97 - Luis Arias : feat: implement all-or-nothing global deduplication
+2026-02-12T13:41:41+01:00 - d03a29e - Luis Arias : feat: enhance deduplication to use service name and structure ID
+2026-02-12T13:32:37+01:00 - aa0be29 - Luis Arias : feat: add deduplication and filters for RCO ingestion
+2026-02-12T11:06:37+01:00 - 39dfae9 - Jérémie Gisserot : feat: add Russian language agent ID and enhance markdown serializer to process string content.
+2026-02-11T19:43:39+01:00 - 1cd0558 - Luis Arias : Merge pull request #105 from refugies-info/fix/workflow-ingestion-metadata-rls
+2026-02-11T19:39:38+01:00 - 7c0a882 - Luis Arias : fix: revoke anon privileges on workflow_ingestion_metadata view
+2026-02-11T17:47:14+01:00 - 9173192 - Jérémie Gisserot : fix: Correctly check for empty source markdown before AI translation.
+2026-02-11T17:45:25+01:00 - db0df5e - Jérémie Gisserot : refactor: Explicitly type conversation creation parameters with `ConversationCreateParams`.
+2026-02-11T17:20:45+01:00 - 4dc62e1 - Jérémie Gisserot : feat: Implement automated translation workflows using Letta agents and integrate translation triggering into the publication pipeline.
+2026-02-11T17:14:57+01:00 - 7bf6c09 - Jérémie Gisserot : Merge pull request #101 from refugies-info/jeremie/ri-1091-refacto-la-bdd-pour-mettre-en-conformite-les-statuts-qui
+2026-02-11T16:41:08+01:00 - 583d50a - Luis Arias : Merge pull request #103 from refugies-info/luis/setup-supabase-mcp
+2026-02-11T16:38:04+01:00 - f32a580 - Luis Arias : feat: setup supabase MCP server
+2026-02-11T15:41:35+01:00 - 7e68be6 - Jérémie Gisserot : Merge branch 'main' into jeremie/ri-1091-refacto-la-bdd-pour-mettre-en-conformite-les-statuts-qui
+2026-02-11T15:41:07+01:00 - c613316 - Jérémie Gisserot : refactor: simplify editorial record update payload construction by removing conditional assignments.
+2026-02-11T15:39:03+01:00 - 3af1978 - Jérémie Gisserot : feat: Add publication history check to 'to_process' work status fallback logic.
+2026-02-11T15:37:03+01:00 - 70854cb - Jérémie Gisserot : fix: Handle workflow editorial records potentially being an array by extracting the first element.
+2026-02-11T15:32:27+01:00 - 22a8c9a - Jérémie Gisserot : feat: brind back `supabase/seed.sql` for local Supabase development and update `.gitignore` to ignore `.claude/` files.
+2026-02-11T15:15:10+01:00 - 8f628ef - Jérémie Gisserot : feat: add translation save workflow and refactor compliance status updates to use workflows
+2026-02-11T14:11:50+01:00 - 1d6f480 - Jérémie Gisserot : feat: WIP Migrate document `work_status` and `online_status` from `workflows` to `editorial_records` and update all related services and workflows.
+2026-02-11T13:14:23+01:00 - 6bfb402 - Jérémie Gisserot : feat: automate local Supabase seed data generation and add the generated file to .gitignore.
+2026-02-11T13:02:54+01:00 - 072d010 - Luis Arias : Merge pull request #100 from refugies-info/luis/entire-integration
+2026-02-11T13:01:38+01:00 - 7366407 - Luis Arias : feat: integrate Claude Code with Entire CLI
+2026-02-11T12:57:21+01:00 - fc07f35 - Luis Arias : chore: integrate Entire CLI and Gemini settings
+2026-02-11T09:34:26+01:00 - 29ab83a - Luis Arias : Merge pull request #99 from refugies-info/luis/setup-agent-memory
+2026-02-11T09:32:12+01:00 - bd84587 - Luis Arias : docs: clarify current vs planned workflow states in project memory
+2026-02-11T09:24:24+01:00 - 89fb94e - Luis Arias : docs: add recommended MCP servers to agent memory
+2026-02-11T08:49:35+01:00 - 71a3832 - Luis Arias : feat: initialize repo-local agent memory structure
+2026-02-10T16:30:11+01:00 - e35a4e8 - Jérémie Gisserot : Merge pull request #98 from refugies-info/jeremie/ri-1084-laction-darchivage-ne-fonctionne-pas-pour-les-fiches
+2026-02-10T16:28:16+01:00 - 37c2dc8 - Jérémie Gisserot : feat: Allow archiving of documents that were never published by making publication record and remote ID optional in results and conditionally executing webhook, with corresponding UI confirmation.
+2026-02-10T16:09:18+01:00 - f71a428 - Jérémie Gisserot : Merge pull request #97 from refugies-info/jeremie/ri-1083-le-bouton-publier-disparait-si-jai-deja-publier-ma-fiche-que
+2026-02-10T16:04:57+01:00 - f9cad1d - Jérémie Gisserot : refactor: Improve document server actions with `revalidatePath` and JSDoc comments, remove the publication API route, and conditionally display the work status badge.
+2026-02-10T14:30:29+01:00 - 8ba12e9 - Jérémie Gisserot : Merge pull request #96 from refugies-info/jeremie/ri-1085-lorsque-lon-publie-une-fiche-les-messages-affiches-sont
+2026-02-10T14:21:49+01:00 - e19ad85 - Jérémie Gisserot : fix: Conditionally display publish success messages based on `isWaitingForLink` state.
+2026-02-10T13:33:24+01:00 - 3864389 - Jérémie Gisserot : Merge pull request #95 from refugies-info/jeremie/ri-1087-lorsquune-fiche-est-traitee-par-un-redacteur-on-ne-doit-plus
+2026-02-10T13:31:21+01:00 - dfd9fdb - Jérémie Gisserot : feat: Disable document arbitration status changes for drafts and published documents by adding a backend check and conditional UI.
+2026-02-10T13:13:43+01:00 - d4853a7 - Jérémie Gisserot : Merge pull request #94 from refugies-info/jeremie/failsafe-ingestion
+2026-02-10T13:06:39+01:00 - 29d1816 - Jérémie Gisserot : feat: Improve agent response parsing to support conversational text before frontmatter and enhance workflow compliance status updates with robust error handling.
+2026-02-10T11:59:17+01:00 - c52bae6 - Jérémie Gisserot : Merge pull request #93 from refugies-info/jeremie/authors-management
+2026-02-10T11:58:59+01:00 - 0c801d4 - Jérémie Gisserot : feat: restrict public profile viewing to authenticated users by updating the select policy.
+2026-02-10T11:20:46+01:00 - acc5c1a - Jérémie Gisserot : feat: Add permission verification for document actions based on user roles and document authorship.
+2026-02-10T10:56:12+01:00 - ad2fb39 - Jérémie Gisserot : fix: Prevent state updates on unmounted components using an `isMounted` ref.
+2026-02-10T10:40:03+01:00 - c874bdb - Jérémie Gisserot : feat: introduce Avatar component and display document author in tables
+2026-02-09T17:38:09+01:00 - 11932b3 - Jérémie Gisserot : feat: Add `author_id` to editorial, translation, and publication records, integrating it into save and publish workflows.
+2026-02-09T16:49:45+01:00 - 80c77e3 - Jérémie Gisserot : Merge pull request #92 from refugies-info/jeremie/update-docs-2
+2026-02-09T16:47:08+01:00 - 6ee2861 - Jérémie Gisserot : chore: update documentation
+2026-02-09T16:36:30+01:00 - b79e86d - Jérémie Gisserot : Merge pull request #91 from refugies-info/jeremie/db-harmonization
+2026-02-09T16:33:35+01:00 - 82f199b - Jérémie Gisserot : ci: add `SEED_USER_PASSWORD` environment variable to the `seed:users` step in the production release workflow.
+2026-02-09T16:28:54+01:00 - f87bb5b - Jérémie Gisserot : Merge pull request #90 from refugies-info/jeremie/db-harmonization
+2026-02-09T16:28:35+01:00 - 3ddd15c - Jérémie Gisserot : chore: secure medadata
+2026-02-09T16:25:24+01:00 - 217ba06 - Jérémie Gisserot : chore: handle updated_at document field
+2026-02-09T16:22:01+01:00 - 7611401 - Jérémie Gisserot : feat: Add RLS policies for `di_structures` and `di_services` and enable `security_invoker` on `workflow_ingestion_metadata` view.
+2026-02-09T16:07:01+01:00 - 23bf2ef - Jérémie Gisserot : feat: Implement granular document statuses (compliance, work, online) and enable search by ingestion ID.
+2026-02-09T12:27:08+01:00 - 9e6b652 - Jérémie Gisserot : refactor: WIP: replace workflow `status` and `progress` columns with `compliance_status`, `online_status`, and `work_status`.
+2026-02-08T13:01:29+01:00 - be82097 - Luis Arias : Merge pull request #89 from refugies-info/feat/custom-di-client
+2026-02-08T12:59:04+01:00 - b54e061 - Luis Arias : refactor: move dotenv import to top of files
+2026-02-08T12:48:18+01:00 - 37e8131 - Luis Arias : refactor: consolidate environment configuration
+2026-02-08T11:44:36+01:00 - 7282de6 - Luis Arias : Merge pull request #88 from refugies-info/feat/custom-di-client
+2026-02-08T11:42:17+01:00 - 7577abf - Luis Arias : feat(di): add comprehensive Zod schemas from OpenAPI spec
+2026-02-08T11:31:12+01:00 - ec7a497 - Luis Arias : fix(di): re-add zod validation for API responses
+2026-02-08T09:42:10+01:00 - 55fb346 - Luis Arias : fix(di): address PR review comments
+2026-02-08T09:33:32+01:00 - 543725b - Luis Arias : feat(di): migrate to custom API client and types
+2026-02-06T16:32:18+01:00 - bb7fcc0 - Jérémie Gisserot : Merge pull request #87 from refugies-info/jeremie/auth-redirect
+2026-02-06T16:31:02+01:00 - 2ce954b - Jérémie Gisserot : fix: update password reset email redirect to use the auth callback URL
+2026-02-06T16:23:59+01:00 - e148684 - Jérémie Gisserot : Merge pull request #86 from refugies-info/jeremie/beautiful-ci
+2026-02-06T16:23:46+01:00 - 406a664 - Jérémie Gisserot : fix: Ensure markdownPreview is always a string by defaulting to an empty string if markdown is null.
+2026-02-06T16:20:57+01:00 - 1bbda15 - Jérémie Gisserot : ci: add seed_data job to production release workflow.
+2026-02-06T16:20:20+01:00 - 2cd1ee7 - Jérémie Gisserot : chore: fix linter
+2026-02-06T16:08:45+01:00 - a67e761 - Jérémie Gisserot : Merge pull request #85 from refugies-info/jeremie/users-auth
+2026-02-06T16:05:20+01:00 - 765c809 - Jérémie Gisserot : feat: Implement frontmatter content injection for DI records, enable user signups, and enhance Supabase security with revoked anon privileges and RLS policies for `rco_records`.
+2026-02-06T16:01:35+01:00 - 77f16ca - Jérémie Gisserot : feat: Implement Supabase PKCE authentication flow with a new callback route, enhance markdown ingestion with frontmatter utilities, add RLS policies for `rco_records`, and revoke anonymous database privileges.
+2026-02-06T12:31:43+01:00 - a48a48f - Jérémie Gisserot : Merge pull request #84 from refugies-info/jeremie/di-data-front-adjustments
+2026-02-06T12:12:56+01:00 - b4a40c9 - Jérémie Gisserot : chore: update pnpm dependencies
+2026-02-06T11:55:30+01:00 - 6a11298 - Jérémie Gisserot : refactor: remove markdown H1 injection utility and simplify H1 stripping logic by directly manipulating content strings.
+2026-02-06T10:28:58+01:00 - dda6692 - Jérémie Gisserot : docs: Improve comments explaining the default exclusion of 'unknown' and 'error' document statuses in `documents.ts`.
+2026-02-06T10:25:38+01:00 - a6226b6 - Jérémie Gisserot : refactor: Remove redundant `setIsSaving(true)` call from document save `finally` block.
+2026-02-06T10:21:34+01:00 - 6e4ffcc - Jérémie Gisserot : feat: implement reusable pagination controls and enhance translations list with language filtering and sorting
+2026-02-06T09:56:15+01:00 - fd3ff6d - Jérémie Gisserot : refactor: Replace hardcoded page size values with named constants in the workflow page.
+2026-02-06T09:55:14+01:00 - b8a8faf - Jérémie Gisserot : refactor: Use named constants for default, minimum, and maximum page size values.
+2026-02-06T09:52:50+01:00 - f588b2d - Jérémie Gisserot : refactor: Extract quality score badge display logic into a reusable helper function and component.
+2026-02-06T09:46:11+01:00 - ba33cc8 - Jérémie Gisserot : docs: Add architecture documentation detailing the H1 title handling flow within the Content Playground.
+2026-02-05T18:47:30+01:00 - 05f5e22 - Jérémie Gisserot : feat: Refactor title extraction and H1 handling into shared utilities and update database view.
+2026-02-05T17:14:21+01:00 - 1c328df - Jérémie Gisserot : feat: better import screen with force arbitrage and data preview
+2026-02-05T16:25:04+01:00 - d3fc39f - Jérémie Gisserot : feat: bettre pagination + ingestion data on workflow
+2026-02-05T16:20:51+01:00 - 493c6ff - Jérémie Gisserot : fix: normalization errors
+2026-02-05T16:18:59+01:00 - 201f911 - Jérémie Gisserot : feat: Implement auto-archiving for non-compliant workflows, simplify ingestion metadata view to include quality score, and remove RCO record dependencies from document services.
+2026-02-05T14:27:15+01:00 - 175ff9c - Luis Arias : Merge pull request #83 from refugies-info/fix/di-views-security-invoker
+2026-02-05T14:23:49+01:00 - dfed0fa - Luis Arias : refactor: add table aliases to DI view queries
+2026-02-05T14:11:15+01:00 - 8bfa08b - Luis Arias : fix: restore security_invoker on DI views
+2026-02-04T18:04:11+01:00 - 0b7b412 - Jérémie Gisserot : Merge pull request #82 from refugies-info/jeremie/jeremie/harmonize-status-2
+2026-02-04T18:03:39+01:00 - 2dabf7f - Luis Arias : Merge pull request #80 from refugies-info/luis/di-ingestion-audit-cron
+2026-02-04T17:57:55+01:00 - e4c2555 - Luis Arias : fix: address DI audit review comments
+2026-02-04T17:50:46+01:00 - 8d8ee44 - Luis Arias : Update apps/frontend/src/app/api/cron/di-ingestion/route.ts
+2026-02-04T17:41:15+01:00 - 4e33de6 - Luis Arias : chore: add env secret escaping note
+2026-02-04T17:40:40+01:00 - 0f6f522 - Jérémie Gisserot : fix: Set `search_path` for database functions and add error logging to the publication API route.
+2026-02-04T17:19:33+01:00 - cee207a - Jérémie Gisserot : chore: align workflow statuses from specs, update document and translation state management, and add spinner component.
+2026-02-04T17:14:38+01:00 - 9b0ecfc - Luis Arias : chore: document DI cron env vars
+2026-02-04T15:26:46+01:00 - cfe3567 - Luis Arias : feat: cap DI audit reports and add cron trigger
+2026-02-04T14:21:47+01:00 - 3a6023d - Luis Arias : Merge pull request #76 from refugies-info/feat/di-ingestion-record
+2026-02-04T14:20:16+01:00 - f22953b - Luis Arias : Merge branch 'main' into feat/di-ingestion-record
+2026-02-04T14:19:37+01:00 - c32819d - Luis Arias : Update packages/di/src/ingest/transform.ts
+2026-02-04T13:15:47+01:00 - d397599 - Luis Arias : refactor: Rename `ingestion_records.source` column to `origin` and standardize its values to `RCO`/`DI` across schema, code, and documentation.
+2026-02-04T12:47:31+01:00 - 5e51970 - Luis Arias : feat: add script to test the Data Inclusion ingestion workflow.
+2026-02-04T12:45:06+01:00 - 16d28a8 - Luis Arias : feat: add scripts to extract random ingestion records and test the Data Inclusion ingestion workflow.
+2026-02-04T12:01:36+01:00 - 95ab1a4 - Jérémie Gisserot : Merge pull request #79 from refugies-info/jeremie/markdown-normalization-out
+2026-02-04T11:56:44+01:00 - 774f1c5 - Jérémie Gisserot : fix: Normalize markdown directives to prevent parsing ambiguities in the main application.
+2026-02-04T10:41:41+01:00 - 2121223 - Luis Arias : feat(di): implement complete DI ingestion records workflow Implement end-to-end workflow for transforming Data Inclusion API data into markdown ingestion records for editorial workflows. Core Features: - Pagination to handle >1000 records (Supabase limit) - Batch processing (100 items) for structures and inserts - Transform services + structures into markdown with YAML frontmatter - Include nested structure data in metadata JSON - Source column to distinguish RCO vs DI records (uppercase values) Database: - Add source column with CHECK constraint ('RCO' or 'DI') - Default 'RCO' for backward compatibility - Index on source for efficient filtering Scripts: - Rename test-di-ingestion-records.ts → create-di-ingestion-records.ts - Change default to ingest ALL records (remove --all flag) - Add --limit option for testing with small datasets - Ingest both structures and services by default Performance: - Processed 6,103 services + 2,027 structures in ~20 seconds - All records successfully created with source='DI' Documentation: - Complete testing guide with verification queries - Implementation summary with all changes - Updated all examples and references
+2026-02-04T10:33:16+01:00 - 78eb218 - Luis Arias : feat(db): add source column to distinguish RCO and DI records - Add source column with CHECK constraint ('RCO' or 'DI') - Default to 'RCO' for backward compatibility - Index for efficient filtering by source - Enables separate handling of different data sources in workflows
+2026-02-04T10:32:32+01:00 - 1d16650 - Luis Arias : feat(di): implement ingestion records processing with pagination - Add pagination to fetch all services beyond Supabase's 1000-row limit - Batch structure fetches (100 IDs per query) to avoid URI length limits - Batch inserts (100 records per insert) for better performance - Include structure data in metadata JSON alongside service data - Transform service+structure into markdown with YAML frontmatter - Add detailed logging for debugging - TypeScript type safety throughout Tested with 6,103 services and 2,027 structures successfully.
+2026-02-04T09:56:36+01:00 - d16e230 - Luis Arias : docs(di): add ingestion records testing guide Documents the complete DI ingestion records workflow including: - How to run the test script - Expected output and verification steps - SQL queries to validate results in Supabase - Explanation of markdown frontmatter structure
+2026-02-04T09:56:19+01:00 - 59bdd50 - Luis Arias : test(di): add ingestion records creation test script Provides automated testing of the DI ingestion records workflow: - Fetches latest or specified ingestion run - Processes services into markdown ingestion records - Verifies creation with sample output - Can be used for CI/CD validation
+2026-02-04T09:55:47+01:00 - fd7d38e - Luis Arias : fix(di): add pagination and structure metadata to ingestion records - Add pagination to handle >1000 services (Supabase limit) - Include structure data in metadata JSON alongside service data - Batch structure fetches (100 IDs per query) to avoid URI length limits - Batch inserts (100 records per insert) for better performance - Add detailed logging for debugging - Fix TypeScript type safety (remove 'any' usage) This ensures all services are processed and ingestion_records have complete metadata with nested structure information for workflows.
+2026-02-03T11:05:05+01:00 - 7b8789f - Jérémie Gisserot : Merge pull request #77 from refugies-info/jeremie/ri-1056-debug-md-rendering
+2026-02-02T17:26:50+01:00 - 3af481b - Luis Arias : refactor: reimplement DI ingestion as a modular workflow, removing legacy adapter types and scripts.
+2026-02-02T17:13:59+01:00 - e722c63 - Jérémie Gisserot : refactor: improve markdown parser's handling of nested directives and complex content by introducing `normalizeMarkdown`.
+2026-02-02T15:57:01+01:00 - 1b358e6 - Luis Arias : Merge branch 'main' into feat/di-ingestion-record
+2026-02-02T15:29:20+01:00 - 039aebd - Jérémie Gisserot : Merge pull request #71 from refugies-info/jeremie/workflow-refactor
+2026-02-01T11:31:47+01:00 - 31c3dc3 - Luis Arias : feat: Add Vitest configuration for the frontend and include tests in the `di` package's tsconfig.
+2026-01-31T05:16:22+01:00 - 9c54cfa - Luis Arias : feat(di): implement ingestion workflow and record creation
+2026-01-30T06:50:08+01:00 - e5938ac - Luis Arias : Merge pull request #75 from refugies-info/chore/add-tests-to-ci
+2026-01-30T06:48:18+01:00 - ba2d696 - Luis Arias : ci: add test step to checks workflow
+2026-01-30T06:44:41+01:00 - 58f5e4b - Luis Arias : Merge pull request #74 from refugies-info/feat/di-ingest-versioning
+2026-01-30T06:42:55+01:00 - b303f08 - Luis Arias : chore(di): remove unnecessary @types/json-stable-stringify
+2026-01-30T06:38:28+01:00 - b1943cc - Luis Arias : feat(di): use stable stringify for deterministic ingestion hashing
+2026-01-29T17:39:37+01:00 - 0664062 - Luis Arias : Merge pull request #72 from refugies-info/feat/di-ingest-versioning
+2026-01-29T17:37:14+01:00 - 53827c0 - Luis Arias : Update packages/di/src/ingest/generic.ts
+2026-01-29T17:33:58+01:00 - 52a98d9 - Luis Arias : refactor(cli): use commander for robust argument parsing
+2026-01-29T17:30:50+01:00 - 3053a37 - Jérémie Gisserot : Merge pull request #73 from refugies-info/jeremie/lint-errors-fix-2
+2026-01-29T17:29:24+01:00 - 0463c60 - Jérémie Gisserot : refactor: remove redundant React Fragments and add biome-ignore comments for explicit any types.
+2026-01-29T17:23:03+01:00 - 9de05ba - Luis Arias : refactor(db): rename di_ingestion_runs to ingestion_runs with source column
+2026-01-29T17:18:59+01:00 - 1e45009 - Luis Arias : fix(di): add security_invoker to views for RLS compliance
+2026-01-29T17:15:02+01:00 - 76e9210 - Luis Arias : feat(di): add incremental ingestion with version tracking
+2026-01-29T16:51:04+01:00 - 5232b45 - Jérémie Gisserot : fix: Add a check to prevent workflow from starting if `publicationWorkflow` is undefined.
+2026-01-29T16:49:44+01:00 - c26464f - Jérémie Gisserot : refactor: Remove direct Supabase server client initialization from `toggleDocumentStatus`.
+2026-01-29T16:48:04+01:00 - facca2f - Jérémie Gisserot : refactor: abstract webhook payload construction into a dedicated adapter for both publishing and archiving documents.
+2026-01-29T16:43:14+01:00 - 76f1f0c - Jérémie Gisserot : refactor: Update editorialRecordId assignment in report persistence steps.
+2026-01-29T16:29:32+01:00 - 470f3c1 - Jérémie Gisserot : feat: Implement a new Vercel Workflow system with pipelines and steps for document processing, integrating it into agent stream persistence.
+2026-01-29T16:23:28+01:00 - 15c5b24 - Luis Arias : Merge pull request #70 from refugies-info/feat/checks-github-workflow
+2026-01-29T16:18:06+01:00 - 6bb2371 - Luis Arias : chore: update production-release.yml to latest action versions
+2026-01-29T16:16:28+01:00 - 3318d67 - Luis Arias : chore: update GitHub Actions to latest versions
+2026-01-29T16:13:34+01:00 - 5543f07 - Luis Arias : fix: remove explicit pnpm version, use packageManager from package.json
+2026-01-29T16:10:32+01:00 - 4c09f7f - Luis Arias : feat: add GitHub workflow for lint, format and type checks
+2026-01-29T15:35:54+01:00 - 235e68d - Luis Arias : Merge pull request #67 from refugies-info/feature/data-inclusion-connector
+2026-01-29T15:29:21+01:00 - d28d056 - Luis Arias : refactor: update Supabase type definitions to use commas instead of semicolons for consistency.
+2026-01-29T15:24:41+01:00 - 66adf7c - Luis Arias : Merge branch 'main' into feature/data-inclusion-connector
+2026-01-29T14:28:56+01:00 - 3d3a51f - Luis Arias : feat(di): add extra=true query parameter for services API
+2026-01-29T14:12:22+01:00 - 72135ed - Luis Arias : chore: add `supabase/snippets/` to .gitignore
+2026-01-29T13:31:17+01:00 - ccd3b43 - Jérémie Gisserot : Merge pull request #69 from refugies-info/jeremie/users-route
+2026-01-29T13:27:14+01:00 - 7f2b775 - Jérémie Gisserot : feat: Implement user management with new UserCard and AddUserCard components, dedicated user pages, and related actions.
+2026-01-29T11:26:16+01:00 - 06fbc06 - Luis Arias : chore: Switch direnv layout from pnpm to node.
+2026-01-29T11:24:51+01:00 - 4eda0e1 - Jérémie Gisserot : Merge pull request #68 from refugies-info/jeremie/ri-1064-as-translator-consulter-la-liste-des-fiches-rco-a-traduire-dashboard
+2026-01-29T11:23:51+01:00 - 5e8c954 - Jérémie Gisserot : Merge branch 'jeremie/ri-1064-as-translator-consulter-la-liste-des-fiches-rco-a-traduire' into jeremie/ri-1064-as-translator-consulter-la-liste-des-fiches-rco-a-traduire-dashboard
+2026-01-29T11:23:15+01:00 - 27a6387 - Jérémie Gisserot : Merge pull request #65 from refugies-info/jeremie/ri-1064-as-translator-consulter-la-liste-des-fiches-rco-a-traduire
+2026-01-29T11:22:35+01:00 - 3e0f010 - Jérémie Gisserot : fix: Explicitly exclude French from target translation languages and remove Somali from the language list.
+2026-01-28T19:36:33+01:00 - 615b11b - Jérémie Gisserot : refactor: type user language property with LanguageCode
+2026-01-28T19:32:58+01:00 - ddc6e64 - Jérémie Gisserot : Merge branch 'main' into jeremie/ri-1064-as-translator-consulter-la-liste-des-fiches-rco-a-traduire
+2026-01-28T19:18:20+01:00 - 7192a9b - Jérémie Gisserot : feat: Implement a new translation editor with dedicated panes, context, and actions for saving and publishing translations.
+2026-01-28T18:08:22+01:00 - f797038 - Luis Arias : feat(di): add Zod validation for API responses
+2026-01-28T18:04:02+01:00 - 0f087ef - Luis Arias : fix(di): properly type generic endpoint function parameter
+2026-01-28T17:39:09+01:00 - 8ca6bf5 - Luis Arias : fix(di): tighten permissions on DI tables for security
+2026-01-28T17:35:34+01:00 - dddca83 - Luis Arias : chore: Ignore the `.letta` directory.
+2026-01-28T17:22:57+01:00 - 1f64514 - Jérémie Gisserot : feat: Introduce a main layout to fetch user role and dynamically render TopNav links, including a new translations link, while removing the workflow layout.
+2026-01-28T17:13:16+01:00 - be0544e - Luis Arias : docs(di): add comprehensive DI ingestion testing guide
+2026-01-28T17:11:39+01:00 - 9bbaf3f - Jérémie Gisserot : feat: Implement translations dashboard with role-based access control for translators and add related services and UI components.
+2026-01-28T17:10:01+01:00 - 3d28499 - Luis Arias : feat(di): add services support to test ingestion script
+2026-01-28T17:00:03+01:00 - 3fd0910 - Luis Arias : feat(di): add services ingestion and refactor ingestion module
+2026-01-28T16:17:49+01:00 - e073613 - Jérémie Gisserot : feat: Implement automatic creation of missing translation records and refactor workflow database schema.
+2026-01-28T16:07:51+01:00 - cf9ee18 - Luis Arias : feat(di): add GIN and B-tree indexes for di_structures JSONB queries
+2026-01-28T16:05:03+01:00 - 60f1d00 - Luis Arias : feat: Configure pnpm layout in .envrc
+2026-01-28T15:54:42+01:00 - 8b33379 - Luis Arias : docs: update environment variables and DI documentation
+2026-01-28T15:43:04+01:00 - dd3de61 - Luis Arias : feat(di): add limit parameter and smoke test script
+2026-01-28T15:13:49+01:00 - 43fb483 - Jérémie Gisserot : feat: Link `translation_records` to `letta_reports` via new `content_report_id` and `metadata_report_id` columns, and update schema documentation.
+2026-01-28T14:59:40+01:00 - 8c934b3 - Luis Arias : feat(di): add structured logging to ingestion module
+2026-01-28T14:50:48+01:00 - 7bf297b - Luis Arias : feat: add .envrc to enable direnv environment loading
+2026-01-28T14:46:33+01:00 - be23fc7 - Luis Arias : feat(di): add ingestion module for carif-oref structures
+2026-01-28T14:15:17+01:00 - 44dbac1 - Luis Arias : feat: Add `di_structures` table to the database schema and update Supabase type definitions accordingly.
+2026-01-28T11:39:27+01:00 - e5c1cce - Luis Arias : feat(di): exclude v0 endpoints from generated client
+2026-01-28T11:21:15+01:00 - a979284 - Luis Arias : refactor(di): migrate to hey-api client with env-based generation
+2026-01-28T09:38:15+01:00 - 21153a5 - Luis Arias : chore: remove .letta folder from git tracking
+2026-01-27T21:42:09+01:00 - 3e18f13 - Luis Arias : Merge pull request #66 from refugies-info/luis/gitignore-letta-folder
+2026-01-27T21:40:15+01:00 - ed26430 - Luis Arias : chore: gitignore .letta folder
+2026-01-27T18:43:50+01:00 - 8d0fd8e - Jérémie Gisserot : docs: improve database documentation by adding new RLS helper functions and policies, expanding schema with content lifecycle tables, and clarifying migration/seeding practices.
+2026-01-27T18:37:55+01:00 - 2b57db7 - Jérémie Gisserot : feat: Add RLS policies for `ingestion_records` and `letta_reports` tables.
+2026-01-27T18:35:50+01:00 - 994e565 - Jérémie Gisserot : feat: default `get_my_role` and `get_my_language` to 'none' when claims are null or empty.
+2026-01-27T18:34:38+01:00 - 37885bd - Jérémie Gisserot : feat: update existing user passwords in seed script
+2026-01-27T18:32:54+01:00 - 3a91db4 - Jérémie Gisserot : perf: Optimize translator RLS policy by replacing IN subquery with EXISTS.
+2026-01-27T18:31:34+01:00 - 632a114 - Jérémie Gisserot : feat: Add `on delete set null` to the `editorial_record_id` foreign key in the `publication_records` table.
+2026-01-27T18:30:11+01:00 - f302b68 - Jérémie Gisserot : feat: Add optional language field to user type, update user seed script to assign languages to translators and improve type safety.
+2026-01-27T18:14:52+01:00 - 316c447 - Jérémie Gisserot : feat(db): secure core schema, add translation workflow, and optimize RLS/performance
+2026-01-26T14:17:06+01:00 - 1449689 - Luis Arias : Merge pull request #61 from refugies-info/luis/ri-1071-tenir-compte-du-statut-de-doublon-ou-pas-dans-lanalyse-de
+2026-01-26T11:54:53+01:00 - 6b84a74 - Jérémie Gisserot : Merge pull request #63 from refugies-info/jeremie/polish-markdown
+2026-01-26T11:24:35+01:00 - 042d430 - Jérémie Gisserot : feat: Add console error logging to various catch blocks in document editor components for improved debugging.
+2026-01-26T11:18:40+01:00 - fd14127 - Jérémie Gisserot : refactor: Migrate drawer component from `vaul` to `@vladyoslav/drawer` and refine debug panel synchronization for development environments.
+2026-01-23T15:15:31+01:00 - 62d381c - Luis Arias : Setup DI connector using hey-api
+2026-01-23T11:11:17+01:00 - 561c669 - Luis Arias : Merge branch 'main' into luis/ri-1071-tenir-compte-du-statut-de-doublon-ou-pas-dans-lanalyse-de
+2026-01-22T18:30:52+01:00 - d14b6e7 - Jérémie Gisserot : fix(editor): fix callout insertion and improve toggle styling
+2026-01-22T17:25:51+01:00 - 7f42631 - Jérémie Gisserot : feat(markdown): enhance robustness with tests, smart quoting, and refactored parser
+2026-01-22T12:17:36+01:00 - 2caaba6 - Jérémie Gisserot : Merge pull request #59 from refugies-info/jeremie/ri-1056-ajouter-les-accordeons-les-blocs-bon-a-savoir-dans-les
+2026-01-22T12:12:26+01:00 - f16d5ac - Jérémie Gisserot : Merge branch 'main' into jeremie/ri-1056-ajouter-les-accordeons-les-blocs-bon-a-savoir-dans-les
+2026-01-22T12:10:49+01:00 - b5f021d - Luis Arias : feat: enhance agent streams by prepending metadata from editorial or ingestion records to content using gray-matter.
+2026-01-22T12:10:49+01:00 - 6426f96 - Luis Arias : refactor: Simplify Letta client message creation by removing explicit streaming options and streamline report extraction logic.
+2026-01-22T12:10:49+01:00 - 59e07c9 - Luis Arias : fix: add keepalive pings and stream accumulation for Conversations API
+2026-01-22T12:10:49+01:00 - faa3da7 - Luis Arias : feat: migrate to Letta Conversations API\n\n- Add conversation_id to workflows table\n- Update agents to use client.conversations.messages.create\n- Serialize workflow steps to ensure conversation state consistency\n- Update API routes and seed script
+2026-01-22T12:10:49+01:00 - fe0a820 - Luis Arias : feat: improve auto-linking trigger to support updates and picked latest report
+2026-01-22T12:10:49+01:00 - 4424a59 - Luis Arias : fix: use ingestion_record_id for trigger lookup and add workflow_id to ingestion reports
+2026-01-22T12:10:49+01:00 - a1f2dce - Luis Arias : feat: add workflow_id to letta_reports with auto-linking trigger to editorial_records
+2026-01-22T12:10:48+01:00 - 1a075d8 - Luis Arias : fix: always store letta_reports first, then optionally link to editorial_record
+2026-01-22T12:10:48+01:00 - 9ae901b - Luis Arias : refactor: use NoFrontmatterSchema (z.void()) to express no frontmatter expected
+2026-01-22T12:10:48+01:00 - 0eada0d - Luis Arias : feat: add requireFrontmatter option to parser, editorial reports don't need frontmatter
+2026-01-22T12:10:48+01:00 - 11d1b5e - Luis Arias : feat: implement detailed MetadataMetadataSchema based on RI dispositif structure
+2026-01-22T12:10:48+01:00 - ca3f472 - Luis Arias : feat: use generic agent response parser with zod validation and status tracking
+2026-01-22T12:10:48+01:00 - 5db272f - Luis Arias : chore: remove unused rationale column from letta_reports
+2026-01-22T12:10:48+01:00 - 9a590d5 - Luis Arias : refactor: simplify agent stream input to a single content field and remove metadata from document context.
+2026-01-22T12:10:48+01:00 - 0a3c492 - Luis Arias : feat: extract and merge metadata from agent response content before persisting
+2026-01-22T12:10:48+01:00 - c845a14 - Luis Arias : chore: regenerate database types from local supabase
+2026-01-22T12:10:48+01:00 - 5319d26 - Luis Arias : feat: add LettaReportType and persist metadata reports
+2026-01-22T12:10:48+01:00 - 8f68513 - Luis Arias : feat: persist letta_report for editorial stream
+2026-01-22T12:10:48+01:00 - 8c28131 - Luis Arias : feat: add workflow dashboard URL to API response
+2026-01-22T12:10:48+01:00 - 1c319cc - Luis Arias : feat: add structured LLM API error handling
+2026-01-22T12:10:47+01:00 - e99b7e0 - Luis Arias : feat: add zod validation for API request bodies
+2026-01-22T12:09:40+01:00 - d29e8b4 - Luis Arias : fix: throw explicit error for non-string assistant message content
+2026-01-22T12:09:40+01:00 - 90fe618 - Luis Arias : feat: unify agent processing API with slash commands
+2026-01-22T10:59:12+01:00 - 72b5502 - Jérémie Gisserot : chore: better link visualisation inside editor
+2026-01-21T15:54:07+01:00 - e79600c - Jérémie Gisserot : refactor: simplify markdown toggle serialization by removing explicit `isOpen` attribute and improve editor content update synchronization with `requestAnimationFrame`.
+2026-01-21T15:44:08+01:00 - ae1db7e - Luis Arias : fix: prevent duplicate reports from being marked as compliant by updating the compliance value calculation.
+2026-01-21T15:42:01+01:00 - 79442e3 - Jérémie Gisserot : refactor: Consolidate `important` and `goodToKnow` blocks into a single `callout` block with a `variant` prop.
+2026-01-21T15:34:52+01:00 - 8acca20 - Luis Arias : Merge pull request #60 from refugies-info/luis/ri-1070-mise-en-place-de-la-nouvelle-conversations-api-de-letta
+2026-01-21T15:22:22+01:00 - 141bbb1 - Jérémie Gisserot : feat: enhance markdown parsing for nested directives, update testing infrastructure, and refine Blocknote editor components
+2026-01-21T14:40:54+01:00 - 3e28ab7 - Luis Arias : feat: enhance agent streams by prepending metadata from editorial or ingestion records to content using gray-matter.
+2026-01-21T14:03:30+01:00 - 2ba11a9 - Luis Arias : refactor: Simplify Letta client message creation by removing explicit streaming options and streamline report extraction logic.
+2026-01-21T13:33:49+01:00 - 5e5c3f1 - Luis Arias : fix: add keepalive pings and stream accumulation for Conversations API
+2026-01-21T11:00:56+01:00 - 464e0f4 - Luis Arias : feat: migrate to Letta Conversations API\n\n- Add conversation_id to workflows table\n- Update agents to use client.conversations.messages.create\n- Serialize workflow steps to ensure conversation state consistency\n- Update API routes and seed script
+2026-01-20T18:02:54+01:00 - 12130d6 - Jérémie Gisserot : refactor: Reorganize markdown parsing and serialization into a dedicated module, updating editor components and content pipeline documentation.
+2026-01-20T17:52:37+01:00 - 9c9612b - Jérémie Gisserot : feat: Implement custom directive-based blocks (important, good-to-know) with dedicated markdown parsing and serialization.
+2026-01-20T13:51:51+01:00 - efc90e8 - Luis Arias : Merge pull request #57 from refugies-info/luis/ri-1052-garantir-la-continuite-des-metadata-tout-le-long-du
+2026-01-19T17:49:46+01:00 - d286d81 - Luis Arias : feat: improve auto-linking trigger to support updates and picked latest report
+2026-01-19T17:09:42+01:00 - 2d0ac32 - Luis Arias : fix: use ingestion_record_id for trigger lookup and add workflow_id to ingestion reports
+2026-01-19T16:57:52+01:00 - a7305ab - Luis Arias : feat: add workflow_id to letta_reports with auto-linking trigger to editorial_records
+2026-01-19T16:38:35+01:00 - cf020a1 - Luis Arias : fix: always store letta_reports first, then optionally link to editorial_record
+2026-01-19T16:30:53+01:00 - f358c83 - Luis Arias : refactor: use NoFrontmatterSchema (z.void()) to express no frontmatter expected
+2026-01-19T16:27:46+01:00 - 1b18cb5 - Luis Arias : feat: add requireFrontmatter option to parser, editorial reports don't need frontmatter
+2026-01-19T16:24:39+01:00 - 202419b - Luis Arias : feat: implement detailed MetadataMetadataSchema based on RI dispositif structure
+2026-01-19T16:12:56+01:00 - f6a99d3 - Luis Arias : feat: use generic agent response parser with zod validation and status tracking
+2026-01-19T15:59:58+01:00 - 0e6fb7e - Luis Arias : chore: remove unused rationale column from letta_reports
+2026-01-19T15:04:06+01:00 - e5481c5 - Luis Arias : refactor: simplify agent stream input to a single content field and remove metadata from document context.
+2026-01-19T14:45:52+01:00 - 0105ca3 - Luis Arias : feat: extract and merge metadata from agent response content before persisting
+2026-01-19T11:32:28+01:00 - 3bf93f0 - Jérémie Gisserot : feat: Implement a custom BlockNote editor slash menu with item filtering and update pnpm version.
+2026-01-16T09:04:13+01:00 - af097bc - Luis Arias : chore: regenerate database types from local supabase
+2026-01-16T09:02:29+01:00 - d015ca6 - Luis Arias : feat: add LettaReportType and persist metadata reports
+2026-01-15T18:27:32+01:00 - 55a49dc - Luis Arias : feat: persist letta_report for editorial stream
+2026-01-15T18:23:36+01:00 - 03db481 - Luis Arias : feat: add workflow dashboard URL to API response
+2026-01-15T18:00:18+01:00 - 1b6a58a - Luis Arias : feat: add structured LLM API error handling
+2026-01-15T16:13:44+01:00 - bc6ca48 - Luis Arias : feat: add zod validation for API request bodies
+2026-01-15T16:09:04+01:00 - 553ab73 - Luis Arias : fix: throw explicit error for non-string assistant message content
+2026-01-15T16:00:37+01:00 - ad54720 - Luis Arias : feat: unify agent processing API with slash commands
+2026-01-15T14:05:53+01:00 - 30ad708 - Jérémie Gisserot : Merge pull request #56 from refugies-info/jeremie/update-docs
+2026-01-15T13:54:47+01:00 - 7b07d70 - Jérémie Gisserot : chore: update docs
+2026-01-15T13:33:01+01:00 - d2c7c70 - Jérémie Gisserot : Merge pull request #55 from refugies-info/jeremie/fix-migrations
+2026-01-15T13:27:20+01:00 - 5556114 - Jérémie Gisserot : chore: fix migrations conflict
+2026-01-15T12:54:23+01:00 - ef95a9d - Jérémie Gisserot : Merge pull request #54 from refugies-info/jeremie/ri-1028-actions-publier-la-fiche-en-ligne
+2026-01-15T12:05:40+01:00 - d1afab4 - Jérémie Gisserot : chore: code review
+2026-01-15T09:39:49+01:00 - 6072987 - Luis Arias : Merge pull request #52 from refugies-info/luis/ri-1050-creer-le-scenario-derreur-si-letta-ningere-pas-le-contenu
+2026-01-15T09:39:31+01:00 - 20c3ed1 - Luis Arias : Merge pull request #53 from refugies-info/luis/ri-1046-integration-de-lagent-metadonnees
+2026-01-14T16:44:04+01:00 - af5e6b6 - Luis Arias : chore: revert ArbitrationView.tsx to origin/main
+2026-01-14T16:23:23+01:00 - 2d5a89e - Luis Arias : Update packages/agents/src/metadata.ts
+2026-01-14T16:22:24+01:00 - f15d637 - Luis Arias : fix: log server-side errors in agent streaming routes
+2026-01-14T16:09:27+01:00 - b0d42e3 - Luis Arias : fix: handle potential JSON parsing errors in streaming routes
+2026-01-14T15:58:50+01:00 - faaf76d - Jérémie Gisserot : wip: publication links managment
+2026-01-14T15:56:26+01:00 - aac07bb - Luis Arias : chore: remove UI integration for metadata agent (deferred to future PR)
+2026-01-14T15:32:54+01:00 - 2dcc37e - Luis Arias : refactor: simplify metadata agent - add space after slash command, remove unused params
+2026-01-14T15:26:37+01:00 - 3ad2c21 - Luis Arias : feat: integrate Agathe metadata agent for report generation
+2026-01-14T15:04:33+01:00 - 49dac02 - Jérémie Gisserot : feat: archive document feature
+2026-01-14T14:23:13+01:00 - af32f64 - Jérémie Gisserot : feat: new actions toolbar
+2026-01-14T14:18:47+01:00 - 089f0bb - Luis Arias : fix(ingest): default workflow status to non_compliant if not explicit
+2026-01-14T14:13:47+01:00 - 48b6819 - Luis Arias : fix(ri-1050): adjust error alert width to 40px
+2026-01-14T14:07:08+01:00 - a309e1d - Luis Arias : fix(ri-1050): apply precision design fixes
+2026-01-14T13:57:53+01:00 - 30d2930 - Luis Arias : fix(ri-1050): adjust error alert layout per feedback
+2026-01-14T13:51:49+01:00 - c1000eb - Luis Arias : fix(ri-1050): refine error alert design background and icon
+2026-01-14T13:46:01+01:00 - 20c3564 - Luis Arias : fix(ri-1050): update error alert to match design spec
+2026-01-14T11:59:37+01:00 - f1fbee3 - Jérémie Gisserot : feat: add publication feature with webhook integration and update support
+2026-01-14T11:31:02+01:00 - feb9043 - Luis Arias : feat(ri-1050): add error handling for incomplete Letta agent responses
+2026-01-14T09:43:23+01:00 - 21af435 - Jérémie Gisserot : Merge pull request #51 from refugies-info/jeremie/ri-1027-actions-previsualiser-une-fiche-a-letat-de-brouillon
+2026-01-13T18:30:14+01:00 - 7e97b8f - Jérémie Gisserot : chore: update docs
+2026-01-13T18:27:59+01:00 - e3b67df - Jérémie Gisserot : chore: cleanup previewDocumentAction
+2026-01-13T18:26:11+01:00 - 5331097 - Jérémie Gisserot : chore: fix preview port on .env.exemple
+2026-01-13T18:24:40+01:00 - 01528da - Jérémie Gisserot : chore: code refactor
+2026-01-13T18:05:45+01:00 - 77f3e4f - Jérémie Gisserot : fix: switch preview to direct POST form submission with secure webhook token
+2026-01-12T18:33:45+01:00 - f8f1154 - Luis Arias : Merge pull request #50 from refugies-info/luis/letta-code-integration
+2026-01-12T18:26:21+01:00 - d1febd1 - Luis Arias : chore: :wrench: Move devcontainer file to regular location
+2026-01-12T12:07:10+01:00 - f7568eb - Jérémie Gisserot : wip: implement document preview feature
+2026-01-11T18:41:14+01:00 - 0074235 - Luis Arias : chore: fix lint-staged to include all subdirectories
+2026-01-11T18:39:31+01:00 - 96fb3f3 - Luis Arias : fix: address PR review comments concerning safety checks, typos, and translations
+2026-01-11T18:35:07+01:00 - fe82ac1 - Luis Arias : Merge remote-tracking branch 'origin/main' into luis/letta-code-integration
+2026-01-11T18:13:47+01:00 - 7f104c8 - Luis Arias : chore: sync whitespace and settings in .vscode/settings.json
+2026-01-11T15:43:56+01:00 - a316157 - Luis Arias : chore: add turbo to global installations in devcontainer
+2026-01-11T15:39:21+01:00 - 835a70a - Luis Arias : chore: add GitHub CLI and .ssh mount to manual devcontainer
+2026-01-11T15:35:50+01:00 - d546877 - Luis Arias : chore: rename .devcontainer to .devcontainer-manual to prevent auto-prompt
+2026-01-11T15:30:24+01:00 - 7a8d0ae - Luis Arias : chore: make devcontainer prompt optional in workspace settings
+2026-01-10T16:36:48+01:00 - c21de2b - Luis Arias : chore: setup devcontainer with pnpm, credentials, and settings
+2026-01-08T18:57:12+01:00 - d02617d - Luis Arias : feat(commands): add audit, pipeline, and redaction commands; chore: fix linting in map-metadata and simplification
+2026-01-08T15:45:16+01:00 - 97965d0 - Luis Arias : Merge branch 'main' into luis/letta-code-integration
+2026-01-08T15:44:52+01:00 - 4ca474f - Luis Arias : Merge pull request #49 from refugies-info/fix/frontend-type-errors
+2026-01-08T15:42:28+01:00 - fc59b1e - Luis Arias : trigger: vercel preview build
+2026-01-08T15:37:52+01:00 - afe4e3e - Luis Arias : fix: update .gitignore to allow .letta/settings.json while ignoring other .letta files
+2026-01-08T15:36:46+01:00 - cacca4a - Luis Arias : fix: remove .letta settings from git and update .gitignore
+2026-01-08T15:34:44+01:00 - bc4941e - Luis Arias : fix: ensure check:types waiting for dependencies build and cleaned stale next artifacts
+2026-01-08T14:26:00+01:00 - e711cab - Luis Arias : chore: New fake rco xml file
+2026-01-08T13:24:14+01:00 - bd0c7af - Jérémie Gisserot : Merge pull request #48 from refugies-info/jeremie/ri-1047-arbitrage-desactiver-passage-langage-clair-edition-markdown
+2026-01-08T11:25:08+01:00 - a36d534 - Jérémie Gisserot : chore: cleanup
+2026-01-08T11:01:40+01:00 - 3e76edd - Jérémie Gisserot : fix: bugs on compare mode
+2026-01-08T10:50:24+01:00 - a619fd7 - Jérémie Gisserot : feat: disable md editor and ai button in case of non-conform doc
+2026-01-08T06:26:27+01:00 - d5ce485 - Luis Arias : feat(letta): add metadata mapping skill and slash command
+2026-01-08T05:38:24+01:00 - 856d0c7 - Luis Arias : feat: initialize Letta configuration and update .gitignore
+2026-01-07T15:08:34+01:00 - 84df762 - Jérémie Gisserot : Merge pull request #47 from refugies-info/jeremie/ri-1019-consulter-la-decision-de-conformite-de-la-fiche-allege
+2026-01-07T15:06:37+01:00 - 92cf83d - Jérémie Gisserot : refactor: remove unused StateBadge and StatusBadge components
+2026-01-07T15:02:07+01:00 - 2446a75 - Jérémie Gisserot : feat: add `rco`, `ingestion`, and `editorial` document states and update mock document status to `compliant`.
+2026-01-07T15:00:51+01:00 - ffbe86a - Jérémie Gisserot : feat: Standardize document status and state display with new types, helper functions, and badge components, and update data table localization.
+2026-01-07T14:57:53+01:00 - fc02b41 - Jérémie Gisserot : Merge pull request #46 from refugies-info/jeremie/ri-1019-consulter-la-decision-de-conformite-de-la-fiche-allege
+2026-01-07T14:21:26+01:00 - d60d27d - Jérémie Gisserot : feat: Update document progress and state when toggling workflow status between compliant and non-compliant.
+2026-01-07T14:10:19+01:00 - 81a0509 - Jérémie Gisserot : feat: Restrict document editing and saving based on compliance status.
+2026-01-07T14:03:42+01:00 - 4706952 - Jérémie Gisserot : feat: implement arbitration view, refactor editor UI, and document workflow RLS policy.
+2026-01-07T12:27:07+01:00 - a197404 - Jérémie Gisserot : feat: Implement editor tabs for visual/raw markdown and content comparison, extracting markdown utilities and improving document service typing.
+2026-01-06T17:42:03+01:00 - 825c1cf - Jérémie Gisserot : feat: Refactor document editor UI with new markdown viewer, navigation, and arbitration views, enhance document context with workflow status and compliance reports, and add RLS and workflow update policies.
+2025-12-19T16:17:06+01:00 - 1e1ece8 - Jérémie Gisserot : Merge pull request #45 from refugies-info/jerem/editor-to-edwige-plug
+2025-12-19T16:15:02+01:00 - e1d3007 - Jérémie Gisserot : feat: Validate PLAYGROUND_AGENT_ID environment variable and log missing configuration errors.
+2025-12-19T16:09:38+01:00 - 055518d - Jérémie Gisserot : chore: Add biome-ignore comments to suppress noConsole lint rule in error logging.
+2025-12-19T16:08:55+01:00 - 1e7e919 - Jérémie Gisserot : feat: Improve chat stream error handling and enhance editor loading state UI.
+2025-12-19T15:58:17+01:00 - a5de2fa - Jérémie Gisserot : feat: Introduce global TopNav, replace dashboard with documents page, and update authentication redirects.
+2025-12-19T15:39:18+01:00 - c05ae6a - Jérémie Gisserot : feat: set default HTML language to French
+2025-12-19T15:38:57+01:00 - bf54b32 - Jérémie Gisserot : feat: introduce AI suggestion workflow, refine document content management, and update original content rendering
+2025-12-18T21:07:52+01:00 - e9be9fd - Jérémie Gisserot : Merge pull request #44 from refugies-info/jerem/ci-supabase
+2025-12-18T21:05:34+01:00 - f993483 - Jérémie Gisserot : chore: remove commented-out `SEED_USER_PASSWORD` from production release workflow
+2025-12-18T19:37:34+01:00 - 7a6ac20 - Jérémie Gisserot : Merge pull request #43 from refugies-info/jerem/ci-supabase
+2025-12-18T19:37:05+01:00 - 6a5f2c6 - Jérémie Gisserot : feat: Add user seeding to production release workflow and update documentation to reflect new steps and required environment variables.
+2025-12-18T19:25:12+01:00 - 89c4030 - Jérémie Gisserot : Merge pull request #42 from refugies-info/jerem/ci-supabase
+2025-12-18T19:24:29+01:00 - 1cb38b3 - Jérémie Gisserot : fix: Correct `supabase links` command to `supabase link` in production release workflow.
+2025-12-18T19:21:17+01:00 - ff0055b - Jérémie Gisserot : Merge pull request #41 from refugies-info/jerem/ci-supabase
+2025-12-18T18:33:05+01:00 - 608399f - Jérémie Gisserot : feat: introduce automated database migration workflow via GitHub Actions and update migration documentation.
+2025-12-18T18:13:56+01:00 - a284e88 - Jérémie Gisserot : feat: Configure Supabase integration by adding its package to Next.js transpile and global environment variables to Turbo.
+2025-12-18T17:59:41+01:00 - 49accf9 - Jérémie Gisserot : feat: update Next.js dependency and adjust pnpm release age exclusions
+2025-12-12T17:32:05+01:00 - 432e07b - Luis Arias : Merge pull request #38 from refugies-info/feature/ingestion-workflow-update
+2025-12-12T17:31:20+01:00 - 5ea3af8 - Luis Arias : feat: add new RCO sample XML file for LHEO data.
+2025-12-12T17:00:49+01:00 - f03e7af - Luis Arias : fix: workflow args and remove vercel hook
+2025-12-12T16:40:00+01:00 - cf9dbc5 - Luis Arias : Merge main into feature/ingestion-workflow-update
+2025-12-12T16:21:41+01:00 - d50f7e4 - Luis Arias : Merge pull request #40 from refugies-info/feature/refactor-edwige-agent
+2025-12-12T15:50:17+01:00 - af23811 - Luis Arias : refactor: safe frontmatter extraction and extract prompts
+2025-12-12T15:49:00+01:00 - ee92b69 - Luis Arias : fix: improve markdown content extraction by ensuring frontmatter starts at line beginning.
+2025-12-12T15:29:32+01:00 - 298057d - Luis Arias : refactor: rename `PLAYGROUND_AGENT_API_KEY` to `PLAYGROUND_AGENT_ID` in `.env.example`
+2025-12-12T15:29:04+01:00 - 30dacd9 - Luis Arias : Update packages/agents/src/ingestion.ts
+2025-12-12T15:20:49+01:00 - 951aa63 - Luis Arias : feat: refactor agent integration for Edwige
+2025-12-12T15:14:17+01:00 - bed108e - Luis Arias : feat: extract valid markdown content by discarding preamble text before frontmatter parsing
+2025-12-12T14:23:21+01:00 - 236ab7d - Luis Arias : feat: Introduce `LettaMetadata` interface and standardize `agent_id` field for ingestion reports.
+2025-12-12T14:09:19+01:00 - a5b499f - Luis Arias : feat: prepend compliance and duplicate analysis heading to agent message
+2025-12-12T14:09:06+01:00 - 05ce1e7 - Luis Arias : feat: prepend a specific heading to agent messages and update agent environment variables.
+2025-12-12T14:01:38+01:00 - 9f81f0e - Luis Arias : feat: Consolidate compliance and duplicates agents and reports into a unified ingestion agent and database schema.
+2025-12-11T16:46:46+01:00 - 1968fb1 - Luis Arias : Merge pull request #39 from refugies-info/chore/remove-vercel-wait
+2025-12-11T16:45:50+01:00 - 40040a2 - Luis Arias : refactor: destructure `message_type` in `findLast` callback for assistant message lookup.
+2025-12-11T16:40:02+01:00 - a1793be - Luis Arias : chore: rollback to use findLast in agents and update workflows tsconfig
+2025-12-11T16:33:50+01:00 - 942aaa3 - Luis Arias : chore: remove commented out code in process-xml.ts
+2025-12-11T15:50:46+01:00 - 3b77d65 - Jérémie Gisserot : Merge pull request #37 from refugies-info/feat/save-documents
+2025-12-11T14:45:37+01:00 - 381d5d0 - Luis Arias : refactor: use `Array.prototype.findLast` to find the last assistant message
+2025-12-11T14:42:44+01:00 - 0153989 - Luis Arias : refactor: remove explicit `any` type from `findLast` callback.
+2025-12-11T14:34:52+01:00 - 9fcf6ac - Luis Arias : fix(workflows): update tsconfig and parallelize processing
+2025-12-11T14:18:57+01:00 - c222892 - Luis Arias : chore: remove wait on vercel workflow hook and fix build error in agents package
+2025-12-11T14:16:19+01:00 - 419d57f - Luis Arias : fix(agents): natively use findLast by updating tsconfig target
+2025-12-11T14:07:19+01:00 - 3fd4cc2 - Luis Arias : refactor: address PR comments (memory-based workflow, deep clone)
+2025-12-11T13:49:59+01:00 - 77e1d0b - Luis Arias : feat: handle 1-to-N ingestion relationship for RCO actions

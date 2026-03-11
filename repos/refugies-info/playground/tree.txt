@@ -1,0 +1,726 @@
+.
+├── .agents
+│   └── memory
+│       └── system
+│           ├── jeremie.md
+│           ├── luis.md
+│           ├── mcp_servers.md
+│           ├── persona.md
+│           └── project.md
+├── .claude
+│   └── settings.json
+├── .commands
+│   ├── audit.md
+│   ├── metadata.md
+│   ├── pipeline.md
+│   └── redaction.md
+├── .config
+│   └── wt.toml
+├── .devcontainer
+│   └── devcontainer.json
+├── .entire
+│   ├── .gitignore
+│   └── settings.json
+├── .env.example
+├── .gemini
+│   └── settings.json
+├── .github
+│   └── workflows
+│       ├── checks.yml
+│       └── production-release.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
+├── .npmrc
+├── .prototools
+├── .skills
+│   └── metadata
+│       ├── SKILL.md
+│       └── scripts
+│           └── map-metadata.ts
+├── .specify
+│   ├── memory
+│   │   └── constitution.md
+│   ├── scripts
+│   │   └── bash
+│   │       ├── check-prerequisites.sh
+│   │       ├── common.sh
+│   │       ├── create-new-feature.sh
+│   │       ├── setup-plan.sh
+│   │       └── update-agent-context.sh
+│   └── templates
+│       ├── agent-file-template.md
+│       ├── checklist-template.md
+│       ├── plan-template.md
+│       ├── spec-template.md
+│       └── tasks-template.md
+├── .vscode
+│   └── settings.json
+├── .windsurf
+│   └── workflows
+│       ├── speckit.analyze.md
+│       ├── speckit.checklist.md
+│       ├── speckit.clarify.md
+│       ├── speckit.constitution.md
+│       ├── speckit.implement.md
+│       ├── speckit.plan.md
+│       ├── speckit.specify.md
+│       ├── speckit.tasks.md
+│       └── validate-docs.md
+├── .worktreeinclude
+├── AGENTS.md
+├── DOCUMENTATION_GUIDELINES.md
+├── README.md
+├── apps
+│   └── frontend
+│       ├── .env.example
+│       ├── .gitignore
+│       ├── README.md
+│       ├── components.json
+│       ├── next.config.ts
+│       ├── package.json
+│       ├── postcss.config.mjs
+│       ├── public
+│       │   ├── logo-ri.svg
+│       │   └── rco-json-schema.json
+│       ├── src
+│       │   ├── app
+│       │   │   ├── (auth)
+│       │   │   │   ├── auth
+│       │   │   │   │   └── callback
+│       │   │   │   │       └── route.ts
+│       │   │   │   ├── login
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── password-reset
+│       │   │   │   │   └── page.tsx
+│       │   │   │   └── signup
+│       │   │   │       └── page.tsx
+│       │   │   ├── (main)
+│       │   │   │   ├── documents
+│       │   │   │   │   ├── columns.tsx
+│       │   │   │   │   ├── documents-list.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── layout.tsx
+│       │   │   │   ├── translations
+│       │   │   │   │   ├── TranslationsList.tsx
+│       │   │   │   │   ├── columns.tsx
+│       │   │   │   │   ├── error.tsx
+│       │   │   │   │   ├── loading.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── users
+│       │   │   │   │   ├── page.tsx
+│       │   │   │   │   └── user-grid.tsx
+│       │   │   │   └── workflow
+│       │   │   │       ├── document-preview-drawer.tsx
+│       │   │   │       ├── page.tsx
+│       │   │   │       └── workflow-client.tsx
+│       │   │   ├── actions
+│       │   │   │   ├── di.ts
+│       │   │   │   └── users.ts
+│       │   │   ├── api
+│       │   │   │   ├── agents
+│       │   │   │   │   ├── editorial
+│       │   │   │   │   │   └── stream
+│       │   │   │   │   │       └── route.ts
+│       │   │   │   │   └── metadata
+│       │   │   │   │       └── stream
+│       │   │   │   │           └── route.ts
+│       │   │   │   ├── classify
+│       │   │   │   │   └── route.ts
+│       │   │   │   ├── content
+│       │   │   │   │   └── route.ts
+│       │   │   │   ├── cron
+│       │   │   │   │   └── di-ingestion
+│       │   │   │   │       └── route.ts
+│       │   │   │   ├── documents
+│       │   │   │   │   └── route.ts
+│       │   │   │   ├── health
+│       │   │   │   │   └── route.ts
+│       │   │   │   ├── tools
+│       │   │   │   │   └── validate-metadata-ri
+│       │   │   │   │       └── route.ts
+│       │   │   │   └── workflow
+│       │   │   │       └── [id]
+│       │   │   │           └── route.ts
+│       │   │   ├── documents
+│       │   │   │   ├── [id]
+│       │   │   │   │   ├── compliance
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── layout.tsx
+│       │   │   │   │   ├── metadata
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   └── page.tsx
+│       │   │   │   └── layout.tsx
+│       │   │   ├── globals.css
+│       │   │   ├── icon.svg
+│       │   │   ├── layout.tsx
+│       │   │   ├── page.tsx
+│       │   │   └── translations
+│       │   │       └── [id]
+│       │   │           └── page.tsx
+│       │   ├── components
+│       │   │   ├── TopNav.tsx
+│       │   │   ├── auth
+│       │   │   │   ├── LoginForm.tsx
+│       │   │   │   ├── PasswordConfirmForm.tsx
+│       │   │   │   ├── PasswordResetForm.tsx
+│       │   │   │   ├── SignupForm.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── common
+│       │   │   │   └── app-pagination.tsx
+│       │   │   ├── document-editor
+│       │   │   │   ├── DocumentContext.tsx
+│       │   │   │   ├── actions
+│       │   │   │   │   ├── DocumentActionsContext.tsx
+│       │   │   │   │   ├── hooks
+│       │   │   │   │   │   └── usePublicationRealtime.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── ui
+│       │   │   │   │       ├── DocumentActions.tsx
+│       │   │   │   │       ├── PublishConfirmationDialog.tsx
+│       │   │   │   │       └── PublishSuccessDialog.tsx
+│       │   │   │   ├── arbitration
+│       │   │   │   │   ├── ArbitrationView.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── assistant
+│       │   │   │   │   ├── AssistantPanel.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── editor
+│       │   │   │   │   ├── AiSuggestionBanner.tsx
+│       │   │   │   │   ├── EditionView.tsx
+│       │   │   │   │   ├── EditorTabs.tsx
+│       │   │   │   │   ├── OriginalContentView.tsx
+│       │   │   │   │   ├── RawMarkdownView.tsx
+│       │   │   │   │   ├── blocks
+│       │   │   │   │   │   ├── callout-block.tsx
+│       │   │   │   │   │   └── custom-schema.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── slash-menu-config.tsx
+│       │   │   │   ├── metadata
+│       │   │   │   │   ├── FieldBadge.tsx
+│       │   │   │   │   ├── MetadataContext.tsx
+│       │   │   │   │   ├── MetadataRow.tsx
+│       │   │   │   │   ├── MetadataTable.tsx
+│       │   │   │   │   ├── MetadataView.tsx
+│       │   │   │   │   ├── SourceDisplay.tsx
+│       │   │   │   │   ├── fields
+│       │   │   │   │   │   ├── AgeField.tsx
+│       │   │   │   │   │   ├── CommitmentField.tsx
+│       │   │   │   │   │   ├── DepartmentField.tsx
+│       │   │   │   │   │   ├── EnumField.tsx
+│       │   │   │   │   │   ├── FrequencyField.tsx
+│       │   │   │   │   │   ├── MultiEnumField.tsx
+│       │   │   │   │   │   ├── NeedSelectField.tsx
+│       │   │   │   │   │   ├── PoiField.tsx
+│       │   │   │   │   │   ├── PriceField.tsx
+│       │   │   │   │   │   ├── SessionField.tsx
+│       │   │   │   │   │   ├── TextField.tsx
+│       │   │   │   │   │   ├── TextareaField.tsx
+│       │   │   │   │   │   ├── ThemeSelectField.tsx
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── publication-targets
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── refugies-info
+│       │   │   │   │   │       ├── constants.ts
+│       │   │   │   │   │       ├── field-components.tsx
+│       │   │   │   │   │       ├── fields-config.ts
+│       │   │   │   │   │       └── index.ts
+│       │   │   │   │   ├── shared
+│       │   │   │   │   │   ├── helpers.ts
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   └── types.ts
+│       │   │   │   └── shared
+│       │   │   │       ├── DebugPanel.tsx
+│       │   │   │       ├── DocumentLayout.tsx
+│       │   │   │       ├── DocumentStatus.tsx
+│       │   │   │       ├── EditorNavigation.tsx
+│       │   │   │       ├── MarkdownViewer.tsx
+│       │   │   │       ├── TopBar.tsx
+│       │   │   │       ├── hooks
+│       │   │   │       │   └── useDocumentStatusRealtime.ts
+│       │   │   │       └── index.ts
+│       │   │   └── translation-editor
+│       │   │       ├── SourcePane.tsx
+│       │   │       ├── TranslationActions.tsx
+│       │   │       ├── TranslationContext.tsx
+│       │   │       ├── TranslationEditorPane.tsx
+│       │   │       ├── TranslationLayout.tsx
+│       │   │       ├── TranslationSidebar.tsx
+│       │   │       ├── TranslationStatus.tsx
+│       │   │       ├── TranslationTopBar.tsx
+│       │   │       └── hooks
+│       │   │           └── useTranslationPublicationRealtime.ts
+│       │   ├── config
+│       │   │   └── features.ts
+│       │   ├── lib
+│       │   │   ├── document-labels.ts
+│       │   │   ├── markdown
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── normalizeMarkdown.ts
+│       │   │   │   ├── parser.ts
+│       │   │   │   └── serializer.ts
+│       │   │   ├── mock
+│       │   │   │   ├── documents.ts
+│       │   │   │   └── seededRandom.ts
+│       │   │   ├── payload-builder.ts
+│       │   │   ├── preview-utils.ts
+│       │   │   ├── publication-errors.ts
+│       │   │   ├── supabase
+│       │   │   │   └── client.ts
+│       │   │   ├── url-builder.ts
+│       │   │   └── workflow-utils.ts
+│       │   ├── proxy.ts
+│       │   ├── services
+│       │   │   ├── document-actions.ts
+│       │   │   ├── documents.ts
+│       │   │   ├── helpers.ts
+│       │   │   ├── metadata-actions.ts
+│       │   │   ├── permission-helper.ts
+│       │   │   ├── ri-reference-data.ts
+│       │   │   ├── translation-actions.ts
+│       │   │   └── translations.ts
+│       │   └── types
+│       │       └── database.types.ts
+│       ├── tests
+│       │   └── lib
+│       │       └── markdown
+│       │           ├── parser.test.ts
+│       │           └── serializer.test.ts
+│       ├── tsconfig.json
+│       ├── vercel.json
+│       └── vitest.config.ts
+├── biome.json
+├── docs
+│   └── architecture
+│       └── metadata-validation-strategy.md
+├── documentation
+│   ├── README.md
+│   ├── ai
+│   │   └── README.md
+│   ├── api
+│   │   └── README.md
+│   ├── architecture
+│   │   ├── README.md
+│   │   ├── assets
+│   │   │   └── content_pipeline.png
+│   │   ├── content-pipeline.md
+│   │   ├── document-editor-contexts.md
+│   │   ├── h1-title-flow.md
+│   │   ├── monorepo-structure.md
+│   │   └── tech-stack.md
+│   ├── database
+│   │   ├── README.md
+│   │   ├── migrations.md
+│   │   ├── rls-policies.md
+│   │   ├── schema.md
+│   │   └── seed-data.md
+│   ├── frontend
+│   │   ├── README.md
+│   │   ├── component-quick-reference.md
+│   │   ├── component-strategy.md
+│   │   └── publication
+│   │       ├── archive.md
+│   │       ├── index.md
+│   │       ├── preview.md
+│   │       ├── publish.md
+│   │       └── translation-preview.md
+│   ├── guides
+│   │   ├── README.md
+│   │   ├── deployment.md
+│   │   ├── di-ingestion-record-implementation.md
+│   │   ├── di-ingestion-testing.md
+│   │   ├── local-development.md
+│   │   ├── supabase-setup.md
+│   │   ├── testing.md
+│   │   └── worktrees.md
+│   ├── internal
+│   │   ├── README.md
+│   │   ├── doc-creation-checklist.md
+│   │   └── documentation-strategy.md
+│   ├── rco-implementation.md
+│   ├── reference
+│   │   ├── README.md
+│   │   ├── commands.md
+│   │   └── environment-variables.md
+│   ├── roadmaps
+│   │   ├── README.md
+│   │   └── roadmap-mvp.md
+│   ├── troubleshooting
+│   │   └── README.md
+│   └── workflows
+│       ├── README.md
+│       ├── di-ingestion.md
+│       ├── metadata-mapping.md
+│       └── translation-publication.md
+├── knip.json
+├── package.json
+├── packages
+│   ├── agents
+│   │   ├── package.json
+│   │   ├── prompts
+│   │   │   ├── compliance.md
+│   │   │   └── duplicates.md
+│   │   ├── samples
+│   │   │   ├── dispositifs.json
+│   │   │   └── dispositifs.yaml
+│   │   ├── src
+│   │   │   ├── agents.ts
+│   │   │   ├── clients.ts
+│   │   │   ├── index.ts
+│   │   │   ├── ingestion.ts
+│   │   │   ├── metadata-schema-spec.ts
+│   │   │   ├── metadata.ts
+│   │   │   ├── parser.test.ts
+│   │   │   ├── parser.ts
+│   │   │   ├── prompts.ts
+│   │   │   ├── schemas.ts
+│   │   │   ├── simplification.ts
+│   │   │   └── types.ts
+│   │   └── tsconfig.json
+│   ├── airtable
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── client.ts
+│   │   │   ├── index.ts
+│   │   │   ├── word-counter.test.ts
+│   │   │   └── word-counter.ts
+│   │   └── tsconfig.json
+│   ├── di
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── client.ts
+│   │   │   ├── index.ts
+│   │   │   ├── ingest
+│   │   │   │   ├── generic.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── records.ts
+│   │   │   │   ├── services.ts
+│   │   │   │   ├── shared.ts
+│   │   │   │   ├── structures.ts
+│   │   │   │   └── transform.ts
+│   │   │   ├── schemas.ts
+│   │   │   └── types.ts
+│   │   ├── tests
+│   │   │   └── ingest
+│   │   │       ├── shared.test.ts
+│   │   │       └── transform.test.ts
+│   │   └── tsconfig.json
+│   ├── mongo
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── scripts
+│   │   │   └── test-connection.ts
+│   │   ├── src
+│   │   │   ├── client.ts
+│   │   │   ├── dispositifs.ts
+│   │   │   └── index.ts
+│   │   └── tsconfig.json
+│   ├── rco
+│   │   ├── .velite
+│   │   │   ├── formations.json
+│   │   │   ├── index.d.ts
+│   │   │   └── index.js
+│   │   ├── json-schema.json
+│   │   ├── package.json
+│   │   ├── samples
+│   │   │   ├── dummy_data
+│   │   │   │   ├── Actions_socio-linguistiques_complementaires_du_CIR_-_ASL_Francais_langue_etrangere_a_visee_professionnelle__28FLE_29_-_Objectif_A2.xml
+│   │   │   │   ├── Actions_socio-linguistiques_complementaires_du_CIR__28ASL_29_-_Action_pour_les_Primo_Arrivants_a_visee_B1_-_parcours_linguistique_a_visee_dinsertion_sociale_et_professionnelle.xml
+│   │   │   │   ├── Certificat_de_capacite_a_lenseignement_du_francais_langue_etrangere_FLE.xml
+│   │   │   │   └── Cours de FLE - Accompagnement sociolinguistique des primo-arrivants allophones.xml
+│   │   │   ├── rco.xml
+│   │   │   ├── rco_3.xml
+│   │   │   └── rco_30.xml
+│   │   ├── scripts
+│   │   │   └── generate-sample.ts
+│   │   ├── src
+│   │   │   ├── index.ts
+│   │   │   ├── json.ts
+│   │   │   ├── lheo-types.ts
+│   │   │   ├── lheo.ts
+│   │   │   ├── lheo.xsd
+│   │   │   ├── markdown.ts
+│   │   │   ├── splitter.ts
+│   │   │   └── yaml.ts
+│   │   ├── tests
+│   │   │   ├── json.test.ts
+│   │   │   ├── lheo.test.ts
+│   │   │   ├── markdown.test.ts
+│   │   │   └── yaml.test.ts
+│   │   ├── tsconfig.json
+│   │   └── velite.config.ts
+│   ├── shared
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── constants
+│   │   │   │   └── languages.ts
+│   │   │   ├── index.ts
+│   │   │   ├── lib
+│   │   │   │   ├── markdown.ts
+│   │   │   │   ├── metadata-autofix.ts
+│   │   │   │   ├── metadata.ts
+│   │   │   │   └── publication
+│   │   │   │       └── refugies-info.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── schemas
+│   │   │   │   └── metadata-ri.ts
+│   │   │   └── types
+│   │   │       ├── content.ts
+│   │   │       ├── document.ts
+│   │   │       ├── index.ts
+│   │   │       ├── metadata-ri.ts
+│   │   │       └── user.ts
+│   │   ├── tests
+│   │   │   └── metadata.test.ts
+│   │   └── tsconfig.json
+│   ├── supabase
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── clients.ts
+│   │   │   ├── index.ts
+│   │   │   ├── ingestion.ts
+│   │   │   ├── proxy.ts
+│   │   │   └── types.ts
+│   │   └── tsconfig.json
+│   ├── ui
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── composites
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── pagination-controls.tsx
+│   │   │   │   └── user-card
+│   │   │   │       ├── AddUserCard.tsx
+│   │   │   │       └── UserCard.tsx
+│   │   │   ├── forms
+│   │   │   │   ├── ComboboxInput.tsx
+│   │   │   │   ├── DatePicker.tsx
+│   │   │   │   ├── EditableField.tsx
+│   │   │   │   ├── NumberInput.tsx
+│   │   │   │   ├── RadioGroup.tsx
+│   │   │   │   ├── SelectInput.tsx
+│   │   │   │   ├── TextArea.tsx
+│   │   │   │   ├── TextInput.tsx
+│   │   │   │   ├── date-range-picker.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── overlays
+│   │   │   │   ├── drawer
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   └── tooltip.tsx
+│   │   │   ├── primitives
+│   │   │   │   ├── avatar.tsx
+│   │   │   │   ├── badge
+│   │   │   │   │   ├── Badge.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── button
+│   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── callout
+│   │   │   │   │   ├── Callout.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── card
+│   │   │   │   │   ├── Card.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── data-table
+│   │   │   │   │   ├── data-table-column-header.tsx
+│   │   │   │   │   ├── data-table-faceted-filter.tsx
+│   │   │   │   │   ├── data-table-pagination.tsx
+│   │   │   │   │   ├── data-table-toolbar.tsx
+│   │   │   │   │   └── data-table.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── input
+│   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── spinner.tsx
+│   │   │   │   └── table
+│   │   │   │       └── table.tsx
+│   │   │   └── utils
+│   │   │       ├── cn.ts
+│   │   │       └── index.ts
+│   │   └── tsconfig.json
+│   └── workflows
+│       ├── package.json
+│       ├── src
+│       │   ├── index.ts
+│       │   ├── pipelines
+│       │   │   ├── editorial
+│       │   │   │   ├── persist-editorial.ts
+│       │   │   │   ├── persist-metadata.ts
+│       │   │   │   ├── save.ts
+│       │   │   │   └── toggle-status.ts
+│       │   │   ├── ingestion
+│       │   │   │   ├── di-ingestion.ts
+│       │   │   │   ├── di-single-record.ts
+│       │   │   │   └── force-arbitration.ts
+│       │   │   ├── publication
+│       │   │   │   ├── archive.ts
+│       │   │   │   ├── publication.ts
+│       │   │   │   └── translation-publication.ts
+│       │   │   ├── translation
+│       │   │   │   ├── generate-translation.ts
+│       │   │   │   └── translation-save.ts
+│       │   │   └── workflow-registry.ts
+│       │   ├── steps
+│       │   │   ├── common
+│       │   │   │   ├── get-editorial-record-id.ts
+│       │   │   │   └── supabase.ts
+│       │   │   ├── editorial
+│       │   │   │   ├── persist-editorial-report.ts
+│       │   │   │   ├── persist-metadata-report.ts
+│       │   │   │   ├── save-document.ts
+│       │   │   │   └── toggle-status.ts
+│       │   │   ├── ingestion
+│       │   │   │   ├── audit-di-step.ts
+│       │   │   │   ├── di-single-record-steps.ts
+│       │   │   │   ├── ingest-di.ts
+│       │   │   │   ├── metadata-di-step.ts
+│       │   │   │   └── utils.ts
+│       │   │   ├── publication
+│       │   │   │   ├── adapters
+│       │   │   │   │   ├── refugies-info.ts
+│       │   │   │   │   └── types.ts
+│       │   │   │   ├── archive-document.ts
+│       │   │   │   ├── publish-document.ts
+│       │   │   │   └── publish-translation.ts
+│       │   │   └── translation
+│       │   │       ├── add-trad-to-airtable.ts
+│       │   │       ├── create-translation-records.ts
+│       │   │       ├── generate-translation.ts
+│       │   │       ├── get-available-translation-agents.ts
+│       │   │       ├── save-translation.ts
+│       │   │       ├── trigger-translation-workflow.ts
+│       │   │       └── update-status.ts
+│       │   └── types.ts
+│       └── tsconfig.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── scripts
+│   ├── convert-dispositifs.ts
+│   ├── copy-schema.ts
+│   ├── create-di-ingestion-records.ts
+│   ├── extract-random-records.ts
+│   ├── generate-json.ts
+│   ├── generate-md.ts
+│   ├── ingest-di.ts
+│   ├── inspect-workflow.ts
+│   ├── list-agents.ts
+│   ├── register-metadata-validator-tool.ts
+│   ├── run-di-ingestion-workflow.ts
+│   ├── seed-ingestion.ts
+│   ├── seed-users.ts
+│   ├── update-metadata-schema-block.ts
+│   └── validate-docs.ts
+├── specs
+│   ├── 002-turborepo-scaffolding
+│   │   ├── checklists
+│   │   │   └── requirements.md
+│   │   ├── data-model.md
+│   │   ├── plan.md
+│   │   ├── quickstart.md
+│   │   ├── research.md
+│   │   ├── spec.md
+│   │   └── tasks.md
+│   ├── 003-supabase-auth
+│   │   ├── README.md
+│   │   ├── checklists
+│   │   │   └── requirements.md
+│   │   ├── plan.md
+│   │   ├── quickstart.md
+│   │   ├── research.md
+│   │   ├── spec.md
+│   │   └── tasks.md
+│   └── 004-view-rco-list
+│       ├── checklists
+│       │   ├── phase1.md
+│       │   └── requirements.md
+│       ├── contracts
+│       │   └── documents-api.yaml
+│       ├── data-model.md
+│       ├── plan.md
+│       ├── quickstart.md
+│       ├── research.md
+│       ├── spec.md
+│       └── tasks.md
+├── supabase
+│   ├── .gitignore
+│   ├── config.toml
+│   ├── migrations
+│   │   ├── 20251209083837_initial-schema.sql
+│   │   ├── 20251209141626_add.sql
+│   │   ├── 20251209151830_add.sql
+│   │   ├── 20251209181504_create-update-editorial_records.sql
+│   │   ├── 20260106153000_add_rls_policies.sql
+│   │   ├── 20260106162000_add_workflows_update_policy.sql
+│   │   ├── 20260114100000_add_letta_reports_status.sql
+│   │   ├── 20260114100050_create_publication_records.sql
+│   │   ├── 20260114110000_add_update_policy_publication_records.sql
+│   │   ├── 20260119145744_remove_letta_reports_rationale.sql
+│   │   ├── 20260119155552_add_letta_reports_workflow_id_and_trigger.sql
+│   │   ├── 20260121120000_add_conversation_id_to_workflows.sql
+│   │   ├── 20260127160000_secure_rls_roles.sql
+│   │   ├── 20260128131405_create_di_structures.sql
+│   │   ├── 20260128151204_create_di_services.sql
+│   │   ├── 20260128160000_update_translation_workflow_schema.sql
+│   │   ├── 20260129165000_add_di_versioning.sql
+│   │   ├── 20260129171700_fix_di_views_security.sql
+│   │   ├── 20260129172000_rename_to_ingestion_runs.sql
+│   │   ├── 20260131100000_migrate_di_ids_to_uuid.sql
+│   │   ├── 20260131103000_add_generated_cols_and_trigger.sql
+│   │   ├── 20260204090000_add_ingestion_records_source.sql
+│   │   ├── 20260204120000_update_editorial_record_progress.sql
+│   │   ├── 20260204120500_update_workflow_progress_triggers.sql
+│   │   ├── 20260204124000_add_publication_records_mode.sql
+│   │   ├── 20260204125000_create_workflow_ingestion_metadata_view.sql
+│   │   ├── 20260205120000_trigger_di_status_update.sql
+│   │   ├── 20260205130000_auto_archive_non_compliant.sql
+│   │   ├── 20260205140800_fix_di_views_security_invoker.sql
+│   │   ├── 20260205180000_refine_view_di_date_coalesce.sql
+│   │   ├── 20260205183000_simplify_view_score.sql
+│   │   ├── 20260205190000_update_view_with_title.sql
+│   │   ├── 20260206130000_revoke_anon_privileges.sql
+│   │   ├── 20260206140000_add_rco_records_policies.sql
+│   │   ├── 20260209120000_harmonize_workflow_columns.sql
+│   │   ├── 20260209153000_update_workflow_ingestion_metadata_view.sql
+│   │   ├── 20260209162000_add_di_rls_policies.sql
+│   │   ├── 20260209171500_add_author_id.sql
+│   │   ├── 20260209180000_expose_user_profiles.sql
+│   │   ├── 20260210103000_fix_profiles_fkeys.sql
+│   │   ├── 20260211140000_migrate_status_to_records.sql
+│   │   ├── 20260211170000_fix_workflow_ingestion_metadata_rls.sql
+│   │   ├── 20260212100000_update_translation_status_constraint.sql
+│   │   ├── 20260212150000_enable_realtime_translation_records.sql
+│   │   ├── 20260216100000_add_claim_di_audit_targets_rpc.sql
+│   │   ├── 20260217063000_add_error_message_to_publication_records.sql
+│   │   ├── 20260217071000_enable_realtime_publication_records.sql
+│   │   ├── 20260223110000_add_username_to_profiles.sql
+│   │   ├── 20260223130000_create_workflows_enriched_view.sql
+│   │   ├── 20260223140000_drop_workflow_ingestion_metadata_view.sql
+│   │   ├── 20260223150000_enable_realtime_workflows.sql
+│   │   ├── 20260225100000_fix_duplicate_compliance_check.sql
+│   │   ├── 20260225140000_add_update_metadata_field_rpc.sql
+│   │   ├── 20260225160000_migrate_compliance_status_to_ingestion_records.sql
+│   │   ├── 20260226080000_add_error_status_to_letta_reports.sql
+│   │   ├── 20260226100000_optimize_indexes.sql
+│   │   ├── 20260303100000_publication_records_replica_identity.sql
+│   │   └── 20260303110000_translation_records_replica_identity.sql
+│   ├── seed
+│   │   ├── 00_auth_users.sql
+│   │   ├── 02_ingestion_runs.sql
+│   │   ├── 04_di_structures.sql
+│   │   ├── 05_di_services.sql
+│   │   ├── 06_ingestion_records.sql
+│   │   ├── 07_workflows.sql
+│   │   ├── 08_letta_reports.sql
+│   │   ├── 09_editorial_records.sql
+│   │   ├── 10_translation_records.sql
+│   │   ├── 11_publication_records.sql
+│   │   └── 99_backfill_fks.sql
+│   └── seed.sql
+├── tsconfig.json
+├── turbo.json
+└── vercel-setup.sh
+183 directories, 542 files
