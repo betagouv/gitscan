@@ -1,13 +1,7 @@
-## Changelog : albert-data-collections (derniers 30 jours)
+## Changelog : albert-data-collections (30 derniers jours)
 
 ### Résumé
-Ce projet a subi une mise à jour quotidienne des dictionnaires de collections de données. Cette maintenance régulière assure que les informations sur les collections de données ALBERT restent à jour et fiables pour les utilisateurs et les systèmes qui en dépendent.
-
-### Évolutions fonctionnelles
-- Mise à jour quotidienne des dictionnaires de collections de données (#5ee4cf1)
+Ce projet a récemment été mis à jour pour automatiser la mise à jour quotidienne des dictionnaires de collections de données. Cette évolution permet de maintenir les informations sur les collections de données ALBERT à jour de manière régulière et automatisée.
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler.
-
-### Autres changements
-- Aucune autre modification à signaler.
+- Mise en place d'une mise à jour quotidienne des dictionnaires de collections de données. [#1](https://github.com/etalab-ia/albert-data-collections/commit/fbce409)
