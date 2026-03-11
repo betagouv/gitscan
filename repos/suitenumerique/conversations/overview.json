@@ -4,12 +4,12 @@
   "description": "Conversations est un chatbot open-source conçu pour être simple, sécurisé et respectueux de la vie privée. Il vise à offrir un contrôle total sur les données et l'interaction avec l'IA, avec une interface conviviale et une personnalisation facile.",
   "language": "Python",
   "features": [
-    "Chatbot",
+    "Authentification utilisateur",
     "Recherche",
-    "Gestion des pièces jointes",
-    "Mode sombre",
+    "Gestion des fichiers",
     "Intégration avec des LLM",
-    "Authentification utilisateur"
+    "Personnalisation",
+    "Mode sombre"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -22,44 +22,43 @@
   ],
   "components": [
     "Backend Django",
-    "Frontend Next.js",
+    "Frontend React",
+    "API REST",
     "Base de données PostgreSQL",
-    "Cache Redis",
-    "API REST"
+    "Serveur Redis",
+    "Interface utilisateur Next.js"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "saml"
+      "sso"
     ],
-    "providers": [
-      "Google",
-      "GitHub",
-      "Microsoft"
-    ]
+    "providers": []
   },
-  "tests": "Tests unitaires et d'intégration",
-  "workflows": [
-    "CI/CD avec GitHub Actions"
+  "tests": [
+    "pytest"
   ],
-  "lastActivity": "2026-03-02T16:46:43+00:00",
+  "workflows": [],
+  "lastActivity": "2026-03-10T14:17:45+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 45,
+    "stars": 46,
     "forks": 14,
     "contributors": null,
-    "openIssues": 68
+    "openIssues": 69
   },
   "tags": [
     "chatbot",
     "IA",
     "intelligence artificielle",
-    "Python",
-    "Django",
-    "Next.js",
-    "Open Source",
-    "LLM"
+    "open-source",
+    "python",
+    "django",
+    "react",
+    "privacy",
+    "sécurité"
   ]
 }
