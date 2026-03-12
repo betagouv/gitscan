@@ -1181,6 +1181,8 @@
 │   │   │       │   │   │   ├── V0.362__Add_index_to_reportings_search.sql
 │   │   │       │   │   │   ├── V0.363__Add_is_iuu_to_reportings.sql
 │   │   │       │   │   │   ├── V0.364__Add_last_haul_to_mission_actions.sql
+│   │   │       │   │   │   ├── V0.365__Create_risk_elements_table.sql
+│   │   │       │   │   │   ├── V0.366__Create_vessels_risk_elements_table.sql
 │   │   │       │   │   │   ├── V0.36__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
@@ -1322,6 +1324,7 @@
 │   │   │       │       ├── V666.36__Insert_dummy_control_objectives.sql
 │   │   │       │       ├── V666.37__Insert_dummy_infraction_threat_characterization.sql
 │   │   │       │       ├── V666.38__Insert_dummy_eez_areas.sql
+│   │   │       │       ├── V666.39__Insert_dummy_risk_elements.sql
 │   │   │       │       ├── V666.3__Insert_dummy_last_positions.sql
 │   │   │       │       ├── V666.4__Insert_fishing_gear_codes.sql
 │   │   │       │       ├── V666.5.0__Insert_logbook_reports.sql
@@ -1476,6 +1479,7 @@
 │   │       │                   │   │   │   ├── ArchiveOutdatedReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetAllCurrentReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetInfractionSuspicionWithDMLAndSeafrontUTests.kt
+│   │       │                   │   │   │   ├── GetReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselReportingsUTests.kt
 │   │       │                   │   │   │   └── UpdateReportingUTests.kt
 │   │       │                   │   │   ├── species
@@ -3015,6 +3019,8 @@
 │   │   │   │   │   └── map_menu
 │   │   │   │   │       └── TrackRangeModal.tsx
 │   │   │   │   ├── constants.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   └── useMapLayer.ts
 │   │   │   │   ├── layer.slice.backoffice.ts
 │   │   │   │   ├── layer.slice.ts
 │   │   │   │   ├── layers
@@ -3211,6 +3217,7 @@
 │   │   │   │   │   ├── seafrontFilterFunction.ts
 │   │   │   │   │   └── unitFilterFunction.ts
 │   │   │   │   ├── layers
+│   │   │   │   │   ├── HoveredMissionLayer.constants.ts
 │   │   │   │   │   ├── HoveredMissionLayer.tsx
 │   │   │   │   │   ├── MissionLayer
 │   │   │   │   │   │   ├── index.tsx
@@ -3220,8 +3227,10 @@
 │   │   │   │   │   │   ├── types.ts
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── SelectedMissionActionsLayer
+│   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── styles.ts
+│   │   │   │   │   ├── SelectedMissionLayer.constants.ts
 │   │   │   │   │   ├── SelectedMissionLayer.tsx
 │   │   │   │   │   └── constants.ts
 │   │   │   │   ├── mission.types.ts
@@ -3614,14 +3623,12 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   └── dummyReporting.ts
-│   │   │   │   │   │   ├── archiveReporting.test.ts
-│   │   │   │   │   │   └── searchAndRenderReportingFeatures.test.ts
+│   │   │   │   │   │   └── archiveReporting.test.ts
 │   │   │   │   │   ├── addReporting.ts
 │   │   │   │   │   ├── archiveReporting.ts
 │   │   │   │   │   ├── archiveReportings.ts
 │   │   │   │   │   ├── deleteReporting.ts
 │   │   │   │   │   ├── deleteReportings.ts
-│   │   │   │   │   ├── searchAndRenderReportingFeatures.ts
 │   │   │   │   │   └── updateReporting.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── RiskFactor
@@ -4305,6 +4312,11 @@
 │   │   └── init.iml
 │   ├── local
 │   │   ├── README.md
+│   │   ├── backup
+│   │   │   ├── crontab.txt
+│   │   │   ├── pg_backup.config.template
+│   │   │   ├── pg_backup_rotated.sh
+│   │   │   └── pg_restore.sh
 │   │   ├── docker-compose.yml
 │   │   ├── docs
 │   │   │   ├── dump_restore_database.md
@@ -4753,6 +4765,7 @@
 │   │   │   ├── mymaps_manual_anchorages.csv
 │   │   │   ├── pno_type_rules.csv
 │   │   │   ├── pno_types.csv
+│   │   │   ├── risk_elements.csv
 │   │   │   ├── segments_2025.csv
 │   │   │   ├── species_codes_groups.csv
 │   │   │   ├── species_groups.csv
@@ -5060,6 +5073,7 @@
 │   │   │   ├── monitorfish_healthcheck.py
 │   │   │   ├── pnos.py
 │   │   │   ├── prefect.py
+│   │   │   ├── risk_elements.py
 │   │   │   └── vessel_profiles.py
 │   │   ├── exceptions
 │   │   │   ├── __init__.py
@@ -5106,6 +5120,7 @@
 │   │   │   ├── regulations.py
 │   │   │   ├── regulations_checkup.py
 │   │   │   ├── regulations_open_data.py
+│   │   │   ├── risk_elements.py
 │   │   │   ├── risk_factors.py
 │   │   │   ├── scrape_legipeche.py
 │   │   │   ├── species.py
@@ -5195,6 +5210,7 @@
 │   │   │   │   ├── activity_overview.sql
 │   │   │   │   ├── gear_onboard.sql
 │   │   │   │   ├── latest_port_profiles.sql
+│   │   │   │   ├── margin_of_tolerance.sql
 │   │   │   │   ├── port_profiles.sql
 │   │   │   │   ├── profiles.sql
 │   │   │   │   └── trips_snapshot.sql
@@ -5271,6 +5287,7 @@
 │   │   │   │   ├── silenced_alerts_with_alert_id.sql
 │   │   │   │   ├── species_names.sql
 │   │   │   │   ├── suspicions_of_under_declaration.sql
+│   │   │   │   ├── total_trips.sql
 │   │   │   │   ├── trip_dates_of_pnos.sql
 │   │   │   │   ├── usual_segments.sql
 │   │   │   │   └── vessels_*.sql  (7 files)
@@ -5330,6 +5347,7 @@
 │       ├── mocks.py
 │       ├── test_data
 │       │   ├── clickhouse_user_files
+│       │   │   ├── catches.csv
 │       │   │   ├── enriched_catches.csv
 │       │   │   └── landings.csv
 │       │   ├── csv
@@ -5543,6 +5561,8 @@
 │       │   │   ├── V666.43__Reset_test_vessel_profiles.sql
 │       │   │   ├── V666.44__Reset_test_producer_organization_memberships.sql
 │       │   │   ├── V666.45__Reset_test_position_alerts.sql
+│       │   │   ├── V666.46__Reset_test_risk_elements.sql
+│       │   │   ├── V666.47__Reset_test_trips_snapshot.sql
 │       │   │   ├── V666.4__Reset_test_anchorages.sql
 │       │   │   ├── V666.5__Reset_test_logbook.sql
 │       │   │   ├── V666.6__Reset_test_legipeche.sql
@@ -5600,6 +5620,7 @@
 │       │   ├── test_regulations.py
 │       │   ├── test_regulations_checkup.py
 │       │   ├── test_regulations_open_data.py
+│       │   ├── test_risk_elements.py
 │       │   ├── test_risk_factors.py
 │       │   ├── test_species.py
 │       │   ├── test_suspicions_of_under_declaration_alerts.py
@@ -5640,4 +5661,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-769 directories, 5187 files
+771 directories, 5206 files
