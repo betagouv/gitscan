@@ -1,17 +1,8 @@
-## Changelog : OpenMockLLM (derniers 30 jours)
+## Changelog : OpenMockLLM (30 derniers jours)
 
 ### Résumé
-Cette version apporte des améliorations significatives au backend Mistral, notamment la prise en charge du streaming. Des corrections ont également été apportées au backend TEI pour assurer la conformité de la génération de schéma et des tests unitaires ont été ajoutés. Enfin, des mises à jour des endpoints vLLM ont été implémentées.
-
-### Évolutions fonctionnelles
-- Ajout du streaming pour le backend Mistral (#8)
-- Amélioration des endpoints vLLM.
-- Correction de la génération du fichier `openapi.json` pour le backend TEI (#8)
-- Correction de la génération JSON pour le backend TEI (#8)
+Ce mois-ci, les mises à jour se concentrent sur l'amélioration de la compatibilité avec le backend MistralAI. Ces changements permettent d'assurer une simulation plus précise et fiable de ce fournisseur d'API de grands modèles de langage, facilitant ainsi les tests et le prototypage d'applications.
 
 ### Évolutions techniques
-- Génération du schéma TEI à partir de l'OpenAPI specification et ajout de tests unitaires (#8)
-
-### Autres changements
-- Publication de la version 0.1.3
-- Publication de la version 0.1.4
+- Mise à jour de l'intégration du backend MistralAI [#417ff8e](https://github.com/etalab-ia/OpenMockLLM/commit/417ff8e)
+- Nouvelle mise à jour de l'intégration du backend MistralAI [#cb85f93](https://github.com/etalab-ia/OpenMockLLM/commit/cb85f93)
