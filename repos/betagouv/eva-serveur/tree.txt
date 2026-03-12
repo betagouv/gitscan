@@ -222,7 +222,6 @@
 │   │   │   ├── cgu.js
 │   │   │   ├── code_postal_input.js
 │   │   │   ├── comparer_evaluations_positionnement.js
-│   │   │   ├── crisp.js.erb
 │   │   │   ├── evaluation.js.erb
 │   │   │   ├── filtres_dates.js
 │   │   │   ├── form_toggle_submit.js
@@ -230,12 +229,13 @@
 │   │   │   ├── hotjar.js.erb
 │   │   │   ├── invitation_modal.js
 │   │   │   ├── liens_evitement.js
-│   │   │   ├── matomo.js.erb
 │   │   │   ├── menu_mobile.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
+│   │   │   ├── modal_verification_ouverture_evapro.js
 │   │   │   ├── nouveau_compte.js
 │   │   │   ├── numero_telephone_input.js
+│   │   │   ├── plausible.js.erb
 │   │   │   ├── recherche_structure.js
 │   │   │   ├── simple_mde.js
 │   │   │   ├── siret_input.js
@@ -299,6 +299,7 @@
 │   │       │   │   ├── _menu_transverse.scss
 │   │       │   │   ├── _mesure_chiffre_cle.scss
 │   │       │   │   ├── _modal.scss
+│   │       │   │   ├── _modal_invitation.scss
 │   │       │   │   ├── _navigation.scss
 │   │       │   │   ├── _nom_anonymisable.scss
 │   │       │   │   ├── _panel.scss
@@ -636,6 +637,7 @@
 │   │   ├── persiste_collection_evenements_job.rb
 │   │   ├── persiste_metriques_partie_job.rb
 │   │   ├── persiste_restitution_job.rb
+│   │   ├── purge_comptes_supprimes_job.rb
 │   │   ├── redimensionne_illustrations_job.rb
 │   │   ├── reinitialise_compte_demo_job.rb
 │   │   ├── relance_structure_sans_campagne_job.rb
@@ -687,6 +689,7 @@
 │   │   ├── conditions_passation.rb
 │   │   ├── connexion_demo.rb
 │   │   ├── donnee_sociodemographique.rb
+│   │   ├── envoi_invitation_service.rb
 │   │   ├── evaluation.rb
 │   │   ├── evenement.rb
 │   │   ├── evenement_question.rb
@@ -1665,7 +1668,9 @@
 │   │   ├── 20260219170150_cree_questionnaire_sante.rb
 │   │   ├── 20260220143846_ajoute_champ_url_contact_a_opcos.rb
 │   │   ├── 20260303120000_create_invitations.rb
-│   │   └── 20260304120000_ajoute_email_contact_et_telephone_aux_structures.rb
+│   │   ├── 20260304120000_ajoute_email_contact_et_telephone_aux_structures.rb
+│   │   ├── 20260304130000_add_role_to_invitations.rb
+│   │   └── 20260311120000_actualise_email_compte_demo.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -2000,7 +2005,6 @@
 │   │   ├── ability_spec.rb
 │   │   ├── ability_utilisateur_spec.rb
 │   │   ├── anonymisation
-│   │   │   ├── compte_spec.rb
 │   │   │   └── structure_spec.rb
 │   │   ├── campagne_spec.rb
 │   │   ├── compte_spec.rb
@@ -2018,6 +2022,7 @@
 │   │   ├── notification_admin_comptes_en_attente_job_spec.rb
 │   │   ├── persiste_metriques_partie_job_spec.rb
 │   │   ├── persiste_restitution_job_spec.rb
+│   │   ├── purge_comptes_supprimes_job_spec.rb
 │   │   ├── reinitialise_compte_demo_job_spec.rb
 │   │   ├── relance_structure_sans_campagne_job_spec.rb
 │   │   ├── relance_utilisateur_pour_non_activation_job_spec.rb
@@ -2089,6 +2094,7 @@
 │   │   │       │   └── question_sous_consigne_spec.rb
 │   │   │       ├── import_export_donnees_spec.rb
 │   │   │       └── import_spec.rb
+│   │   ├── invitation_spec.rb
 │   │   ├── lanceur_campagne_spec.rb
 │   │   ├── lien_beneficiaires_spec.rb
 │   │   ├── metacompetence_spec.rb
@@ -2283,4 +2289,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-317 directories, 2030 files
+317 directories, 2036 files

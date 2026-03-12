@@ -1,35 +1,36 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les utilisateurs, et offre une API pour accéder aux données.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les utilisateurs.",
   "language": "Ruby",
   "features": [
     "Gestion des évaluations",
-    "Espace d'administration",
-    "API",
     "Gestion des utilisateurs",
-    "Génération de rapports PDF",
-    "Gestion des OPCO"
+    "Administration",
+    "Génération de rapports",
+    "Authentification",
+    "Invitation de collaborateurs",
+    "Gestion des structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "Redis",
-    "Rails",
-    "DSFR",
-    "Vips",
-    "GraphViz"
+    "libvips",
+    "GraphViz",
+    "@gouvfr/dsfr"
   ],
   "components": [
     "Backend Ruby on Rails",
     "Base de données PostgreSQL",
     "Cache Redis",
     "API REST",
-    "Interface d'administration ActiveAdmin"
+    "Frontend (intégration DSFR)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
@@ -37,19 +38,19 @@
     "Guard"
   ],
   "workflows": [],
-  "lastActivity": "2026-03-04T16:53:22+01:00",
+  "lastActivity": "2026-03-11T17:12:39+01:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": null,
   "tags": [
-    "évaluation",
-    "administration",
-    "API",
     "Ruby on Rails",
     "PostgreSQL",
     "Redis",
+    "Administration",
+    "Évaluation",
     "DSFR",
-    "ActiveAdmin"
+    "API",
+    "France"
   ]
 }
