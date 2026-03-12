@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers qui permet aux équipes de stocker, partager et collaborer sur des fichiers en toute sécurité tout en conservant un contrôle total sur leurs données.",
+  "description": "La Suite Drive est une plateforme collaborative de partage de fichiers et de gestion de documents. Elle permet aux équipes de stocker, partager et collaborer sur des fichiers de manière sécurisée, tout en conservant un contrôle total sur leurs données.",
   "language": "Python",
   "features": [
     "Stockage de fichiers sécurisé",
@@ -9,42 +9,51 @@
     "Collaboration en équipe",
     "Recherche de fichiers",
     "Gestion des accès",
-    "Auto-hébergement",
-    "Création de fichiers à partir de modèles",
     "Personnalisation de l'interface",
-    "Gestion des notes de version"
+    "Création de fichiers à partir de modèles",
+    "Gestion des autorisations",
+    "Intégration avec des services tiers (OIDC)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
+    "Django Rest Framework",
     "Next.js",
     "Docker",
     "Docker Compose",
     "Celery",
-    "Playwright"
+    "PostgreSQL",
+    "Restic",
+    "Pillow",
+    "cryptography"
   ],
   "components": [
     "Backend Django",
     "Frontend React (Next.js)",
     "API REST",
-    "Base de données (PostgreSQL)",
+    "Base de données PostgreSQL",
     "Stockage Objet (S3)",
-    "Serveur d'applications (Docker)",
-    "Interface Web"
+    "Serveur d'authentification (OIDC)",
+    "File mirroring"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "OIDC"
+    ]
   },
   "tests": [
     "Playwright",
-    "pytest"
+    "Pytest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-03-03T15:28:32+01:00",
+  "workflows": [
+    "Docker Hub CI/CD",
+    "Celery beat"
+  ],
+  "lastActivity": "2026-03-11T14:57:28+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,14 +64,14 @@
     "openIssues": null
   },
   "tags": [
-    "gestion de fichiers",
+    "file sharing",
     "collaboration",
-    "auto-hébergement",
-    "open source",
-    "partage de fichiers",
-    "sécurité",
-    "Django",
-    "React",
-    "Next.js"
+    "django",
+    "react",
+    "nextjs",
+    "docker",
+    "oidc",
+    "file management",
+    "self-hosting"
   ]
 }

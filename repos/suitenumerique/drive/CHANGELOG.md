@@ -17,6 +17,8 @@ and this project adheres to
 
 - ⚡️(CI) optimize Docker Hub workflow
 - ♻️(frontend) replace WorkspaceIcon with FolderIcon in breadcrumbs
+- ✨(backend) exclude pending items from listing views
+- ✨(frontend) scale upload progress to 90% before completion
 
 ### Removed
 
@@ -25,6 +27,8 @@ and this project adheres to
 ### Fixed
 
 - 🐛(backend) allow inviting external person on item with no direct access
+- 🐛(backend) stop storing numchild in database use annotation instead
+- 🐛(backend) sanitize filename to be compatible with filesystems
 
 ## [v0.14.0] - 2026-02-25
 
@@ -207,7 +211,7 @@ and this project adheres to
 
 ### Fixed
 
-- 🐛(wopi) force updated_at udpate in the viewset
+- 🐛(wopi) force updated_at update in the viewset
 - 🐛(front) fix large uploads progress
 - ♻️(back) improve uploaded ended performance
 - (front) fix large uploads progress
@@ -228,7 +232,7 @@ and this project adheres to
 
 ### Added
 
-- ✨(backend) create wopi applcation #2
+- ✨(backend) create wopi application #2
 - ✨(backend) expose url_preview on item object #355
 - ✨(front) add messages widget #357
 

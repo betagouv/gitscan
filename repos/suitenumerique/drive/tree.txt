@@ -158,11 +158,11 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── bucket_cors.py
+    │   │   │       ├── clean_pending_items.py
     │   │   │       ├── createsuperuser.py
     │   │   │       ├── index.py
     │   │   │       ├── prepare_mirroring_items_history.py
     │   │   │       ├── process_pending_mirror_tasks.py
-    │   │   │       ├── sync_item_numchild.py
     │   │   │       └── update_suspicious_item_file_hash.py
     │   │   ├── migrations
     │   │   │   ├── 00006_create_pg_trgm_extension.py
@@ -184,6 +184,7 @@
     │   │   │   ├── 0017_alter_user_short_name.py
     │   │   │   ├── 0018_mirroritemtask.py
     │   │   │   ├── 0019_user_last_release_note_seen.py
+    │   │   │   ├── 0020_remove_item_numchild_path_nlevel_idx.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -214,10 +215,10 @@
     │   │   │   │   ├── test_backends.py
     │   │   │   │   └── test_views.py
     │   │   │   ├── commands
+    │   │   │   │   ├── test_clean_pending_items.py
     │   │   │   │   ├── test_index.py
     │   │   │   │   ├── test_prepare_mirroring_items_history.py
     │   │   │   │   ├── test_process_pending_mirror_tasks.py
-    │   │   │   │   ├── test_sync_item_numchild.py
     │   │   │   │   └── test_update_suspicious_item_file_hash.py
     │   │   │   ├── conftest.py
     │   │   │   ├── external_api
@@ -282,6 +283,7 @@
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_flat_to_nested.py
     │   │   │   ├── test_api_utils_is_previewable_item.py
+    │   │   │   ├── test_api_utils_sanitize_filename.py
     │   │   │   ├── test_malware_detection.py
     │   │   │   ├── test_models_invitations.py
     │   │   │   ├── test_models_item_accesses.py
@@ -945,4 +947,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-235 directories, 712 files
+235 directories, 714 files
