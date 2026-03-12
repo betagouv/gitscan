@@ -1,0 +1,23 @@
+[project]
+name = "agreste"
+version = "0.1.0"
+description = "Agreste : la statistique agricole"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    "Django>=6,<6.1",
+    "wagtail==7.3rc1",
+]
+
+[dependency-groups]
+dev = [
+  "django-extensions>=4.1",
+  "pygraphviz>=1.14",
+  "pytest",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
