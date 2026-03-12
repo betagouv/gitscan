@@ -1,8 +1,7 @@
-## Changelog : lab-anssi-admin (derniers 30 jours)
+## Changelog : lab-anssi-admin (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, les améliorations apportées au projet se concentrent sur l'amélioration de la qualité du code et la robustesse des tests. Ces changements, bien que techniques, contribuent à la stabilité et à la maintenabilité des outils de sauvegarde, assurant ainsi la protection des données administratives.
+Ce changelog présente l'ajout d'un script permettant de lister la validité des certificats utilisés par les applications de sauvegarde. Cette nouvelle fonctionnalité aide les administrateurs à surveiller et à gérer les certificats pour assurer la sécurité et la disponibilité des sauvegardes.
 
 ### Évolutions techniques
-- Ajout d'une variable obligatoire dans les tests pour renforcer la validation et la fiabilité des tests unitaires. (#issue à déterminer)
-- Amélioration de l'alignement des colonnes dans le code pour une meilleure lisibilité et conformité aux standards de codage. (#issue à déterminer)
+- Ajout d'un script pour lister la validité des certificats [#1](https://github.com/betagouv/lab-anssi-admin/commit/015784b)
