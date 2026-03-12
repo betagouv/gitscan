@@ -1,0 +1,39 @@
+2026-03-11T18:33:27+01:00 - 43ec6bf - Vincent Viers : feat: import ASMR/SMR open data from data.gouv.fr
+2026-03-11T14:47:35+01:00 - 4a43cee - Vincent Viers : ci: add lint and test to CI
+2026-03-11T14:41:18+01:00 - 73dccc6 - Vincent Viers : chore(config): add pre-commit hooks
+2026-03-11T14:30:26+01:00 - 8a2cd66 - Vincent Viers : chore: lint and format
+2026-03-11T13:01:02+01:00 - 689c4a4 - Vincent Viers : doc(README): rework README structure
+2026-03-11T12:47:37+01:00 - 526cf4a - Vincent Viers : doc(README): update project description in README
+2026-03-11T12:42:49+01:00 - 9ce073a - Vincent Viers : chore: rename project to infomedicament-dataeng
+2026-02-18T16:46:16+01:00 - 6ed52a1 - Vincent Viers : Merge pull request #3 from betagouv/feat/import_notice_rcp
+2026-02-18T16:35:43+01:00 - ee13e61 - Vincent Viers : feat: port importNoticeRCP.ts to python - The tests are the same as the ones which were written in the JS project (they were written using Claude Code and reviewed by me) - new CLI command - README
+2026-02-18T16:03:25+01:00 - 1fc9676 - Vincent Viers : refacto(pediatrics): make algorithm more parametrable via conf - create a pediatrics_conf file - mock some stuff in tests so they still pass
+2026-02-18T10:09:02+01:00 - 031a258 - Vincent Viers : fix: revert 18 year old change for >
+2026-02-17T17:17:21+01:00 - 4f84643 - Vincent Viers : fix(pediatrics): add POSITIVE INDICATION PATTERNS
+2026-02-17T17:17:21+01:00 - 78f19c4 - Vincent Viers : feat(pediatrics): match <= and >=
+2026-02-17T17:17:21+01:00 - 8461375 - Vincent Viers : feat(extraction): normalize strings when extracting text - curly quotes - hyphens - ≥ and ≥
+2026-02-17T17:17:21+01:00 - 714e09c - Vincent Viers : fix(pediatrics): "moins de 18ans" included
+2026-02-16T12:41:45+01:00 - 32bac9e - Vincent Viers : fix(pediatrics): "moins de 18ans" included
+2026-02-16T12:41:07+01:00 - 3180c37 - Vincent Viers : fix(pediatrics): class B takes priority over class C
+2026-02-16T11:44:57+01:00 - 223b3fd - Vincent Viers : fix(pediatric): C overrides A and B
+2026-02-16T11:29:57+01:00 - 2181ff5 - Vincent Viers : feat(pediatrics): add debug mode
+2026-02-12T16:41:48+01:00 - 9b5b338 - Vincent Viers : Merge pull request #2 from betagouv/pediatrics_pipeline
+2026-02-12T16:31:19+01:00 - 7b2938a - Vincent Viers : feat(pediatrics): handle RCP not found between test data and available data
+2026-02-12T16:29:05+01:00 - ce2593e - Vincent Viers : feat(db): use postgre to handle CIS-ATC mapping
+2026-02-12T15:38:37+01:00 - 3ff5fb3 - Vincent Viers : feat(pediatrics): add pediatrics classifier and eval pipeline to cli
+2026-02-12T15:33:29+01:00 - 3ce8f6c - Vincent Viers : feat(cli): output to local file in csv mode
+2026-02-09T11:53:11+01:00 - 32a0dcc - Vincent Viers : doc(SQL): copy doesn't support variables interpolation
+2026-02-04T17:06:41+01:00 - ea211eb - Vincent Viers : Merge pull request #1 from betagouv/import_atc_helpers
+2026-02-04T17:00:44+01:00 - ce640de - Vincent Viers : test(SQL parsing): add unit tests to SQL to CSV parser
+2026-02-04T16:53:31+01:00 - 987970b - Vincent Viers : feat(SQL parsing): add SQL to CSV parser to CLI
+2026-02-03T17:56:36+01:00 - f7fc434 - Vincent Viers : doc(deploy): don't scale up services to avoid constant restarts
+2026-02-03T17:39:26+01:00 - 9cdad04 - Vincent Viers : conf(deploy): batch size of 1000 on Scalingo
+2026-02-03T17:32:24+01:00 - 8ebdb72 - Vincent Viers : feat(cli): batching to limit memory usage of Scalingo
+2026-02-03T17:18:46+01:00 - 01f1a4f - Vincent Viers : refacto(app): remove NR mode, use separate s3 folders for notices and rcp
+2026-02-03T16:13:28+01:00 - 42e5e5d - Vincent Viers : feat(s3): check that files exist on the bucket before downloading
+2026-02-03T12:25:43+01:00 - 59682ff - Vincent Viers : doc(deploy): update README
+2026-02-03T12:02:07+01:00 - 068e239 - Vincent Viers : conf(deploy): add web command to ProcFile so build doesn't fail
+2026-02-03T11:36:47+01:00 - bd157a8 - Vincent Viers : cong(deploy): remove comments and hyphens from ProcFile
+2026-02-03T11:22:33+01:00 - 22deb96 - Vincent Viers : conf(deploy) track poetry.lock for scalingo deployment
+2026-02-03T11:11:15+01:00 - 664a34d - Vincent Viers : config(mysql): parse Scalingo connection string if exists
+2026-02-02T17:24:59+01:00 - 885455b - Vincent Viers : Initial Commit
