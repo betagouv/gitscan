@@ -1,55 +1,75 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web développée pour répondre au besoin de numérisation des procédures administratives françaises. Elle est open source et vise à faciliter l'accès aux services publics en ligne.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100% des procédures administratives. Elle est open source sous licence AGPL.",
   "language": "Ruby",
   "features": [
-    "Gestion des pièces justificatives",
-    "Gestion du quotient familial",
-    "Interface pour les instructeurs",
-    "Authentification utilisateur"
+    "Gestion des démarches administratives",
+    "Authentification utilisateur",
+    "Gestion des instructeurs",
+    "Gestion des groupes d'instructeurs",
+    "Intégration avec l'API Part pour le quotient familial",
+    "Gestion des pièces jointes",
+    "Export de données",
+    "Gestion des utilisateurs"
   ],
-  "audience": "Grand public",
+  "audience": "Grand public, Professionnels, Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "Redis",
-    "ruby-vips",
-    "lightgallery",
-    "Bun",
+    "Ruby on Rails",
     "React",
-    "Rails"
+    "Vips",
+    "MiniMagick (en cours de remplacement par Vips)",
+    "Sidekiq",
+    "Chartkick",
+    "lightgallery"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Serveur d'applications Ruby on Rails"
+    "Serveur d'applications Ruby on Rails",
+    "Gestion des tâches asynchrones avec Sidekiq"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "sso"
+    ],
+    "providers": [
+      "FranceConnect",
+      "ProConnect"
     ]
   },
   "tests": [
     "RSpec",
     "Selenium",
-    "Cypress"
+    "Cypress",
+    "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2024-05-03T14:18:29Z",
+  "workflows": [
+    "CI/CD (détails non spécifiés)"
+  ],
+  "lastActivity": "2026-03-12T20:25:35Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
-    "administration",
-    "numérique",
-    "open-source",
-    "France",
-    "services publics",
-    "Rails",
-    "React"
+    "administration numérique",
+    "démarches administratives",
+    "open source",
+    "Ruby on Rails",
+    "React",
+    "FranceConnect",
+    "API Part",
+    "quotient familial"
   ]
 }

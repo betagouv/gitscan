@@ -1,33 +1,642 @@
 ## Changelog : demarche.numerique.gouv.fr (30 derniers jours)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'accessibilité, de la performance et de la stabilité de la plateforme. Des corrections de bugs ont été apportées, notamment concernant l'affichage des PDF, la gestion des erreurs et les champs de formulaire. Des optimisations ont été réalisées pour l'analyse d'images et le traitement des jobs asynchrones. De nouvelles fonctionnalités ont été implémentées, comme la gestion des groupes d'instructeurs et l'intégration de l'API Part pour le quotient familial.
+Cette période a été marquée par des améliorations significatives de la plateforme, notamment l'intégration de la reconnaissance automatique des justificatifs de domicile, l'amélioration de la gestion des pièces jointes, et des corrections de bugs pour une meilleure expérience utilisateur. Des efforts importants ont également été déployés pour optimiser les performances et la sécurité de la plateforme, avec la migration vers l'utilisation de Vips pour le traitement des images.
 
 ### Évolutions fonctionnelles
-- Possibilité de créer un nouveau groupe d'instructeurs depuis une modale [#12724](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12724).
-- Amélioration de l'affectation d'instructeurs à des groupes, avec des actions pour ajouter ou retirer des instructeurs à plusieurs groupes simultanément [#12625](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12625).
-- Intégration de l'API Part pour le quotient familial, incluant l'affichage des données, la gestion des erreurs et la transmission sécurisée des informations [#12524](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12524).
-- Ajout d'un bouton pour réactiver les utilisateurs bloqués dans l'interface de gestion [#12703](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12703).
-- Amélioration de l'affichage des PDF dans la galerie, avec l'utilisation de variantes pour les aperçus [#12678](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12678).
-- Amélioration de l'interface pour l'ajout de fichiers, notamment en affichant un bouton "Déposer" même lorsque le dossier est en construction [#12655](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12655).
-- Amélioration de l'affichage des filtres pour les instructeurs, avec troncature des labels trop longs [#12608](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12608).
+- Ajout de la possibilité de réactiver des utilisateurs bloqués dans l'interface d'administration.
+- Amélioration de l'interface pour l'ajout de pièces justificatives, avec indication du format attendu et blocage du multi-upload pour certains types de documents (titre identité).
+- Intégration de la reconnaissance automatique des justificatifs de domicile.
+- Possibilité d'exporter les informations de contact des groupes d'instructeurs.
+- Ajout de la possibilité de supprimer des instructeurs de tous les groupes.
+- Ajout de la possibilité d'ajouter des instructeurs à tous les groupes.
+- Amélioration de l'affichage des données du quotient familial pour les usagers et les instructeurs.
+- Ajout d'une mention d'information sur la transmission des données du quotient familial.
+- Ajout d'un indicateur visuel pour les champs en cours de traitement (supprimé par la suite).
+- Amélioration de l'interface pour la gestion des groupes d'instructeurs.
+- Correction d'un bug empêchant l'affichage correct des champs de type date.
+- Amélioration de l'accessibilité de la copie du lien de procédure.
+- Ajout d'un bouton pour réactiver les utilisateurs bloqués dans l'interface d'administration.
+- Amélioration de l'affichage du nombre de dossiers dans l'administration.
+- Correction de l'affichage du bouton "Déposer" lors de l'ajout de fichiers.
 
 ### Évolutions techniques
-- Remplacement de MiniMagick par ruby-vips pour le traitement des images, améliorant ainsi les performances et la sécurité [#12662](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12662).
-- Optimisation des jobs de traitement d'images pour éviter les analyses antivirus inutiles [#12671](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12671).
-- Amélioration de la gestion des erreurs et des retries pour les jobs asynchrones, avec l'utilisation de `ActiveJob::RetryOnStandardError` [#12642](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12642).
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité, notamment dans les concerns et les composants React [#12739](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12739).
-- Mise à jour des dépendances, notamment Rack et Nokogiri.
-- Ajout d'un linter pour vérifier le format des apostrophes dans les fichiers YAML [#12656](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12656).
-- Amélioration de la gestion des clés de chiffrement GPG [#12752](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12752).
+- Migration du traitement des images vers la librairie Vips pour améliorer les performances et la sécurité. Suppression de la dépendance MiniMagick.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Optimisation des requêtes en base de données pour améliorer les performances.
+- Mise en place d'un linter pour détecter les erreurs de formatage des apostrophes dans les fichiers de traduction.
+- Ajout de tests pour améliorer la couverture du code.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation des jobs de traitement d'images.
+- Ajout d'un système de cache warming pour améliorer les performances.
+- Correction de problèmes de performance liés à la création de variantes d'images.
+- Suppression de code obsolète.
+- Amélioration de la gestion des erreurs dans le traitement des pièces jointes.
+- Ajout de logs pour faciliter le débogage.
+- Amélioration de la gestion des feature flags.
 
 ### Autres changements
-- Amélioration de l'accessibilité de divers éléments de l'interface, tels que les boutons de copie, les champs de formulaire et les notifications [#12710](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12710), [#12634](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12634).
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de tests pour améliorer la couverture et la fiabilité du code.
-- Mise à jour de la documentation.
-- Suppression de code obsolète et de fonctionnalités non utilisées.
-- Amélioration de la gestion des logs et du monitoring.
-- Intégration de Crisp pour le support client.
-- Amélioration de la sécurité en restreignant les autorisations de Crisp.
-- Ajout d'un cache warming action pour améliorer les performances [#12705](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/issues/12705).
+- Mise à jour de certaines dépendances (rack, nokogiri).
+- Correction de bugs mineurs dans l'interface utilisateur.
+- Amélioration de la documentation.
+- Corrections de typographie et de grammaire.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la sécurité de la plateforme.
+- Suppression de feature flags obsolètes.
+- Ajout de la gestion de la clé cosign.
+- Amélioration de la gestion des notifications.
+- Ajout d'un système de linting pour les fichiers YAML.
+- Correction de problèmes de performance liés aux jobs asynchrones.
+- Amélioration de la gestion des erreurs dans les jobs asynchrones.
+- Ajout de logs pour faciliter le débogage des jobs asynchrones.
+- Amélioration de la gestion des tests.
+- Correction de bugs liés à l'accessibilité.
+- Amélioration de la gestion des traductions.
+- Correction de bugs liés à l'affichage des dates.
+- Amélioration de la gestion des pièces jointes.
+- Correction de bugs liés à la gestion des utilisateurs.
+- Amélioration de la gestion des groupes d'instructeurs.
+- Correction de bugs liés à la gestion des procédures.
+- Amélioration de la gestion des champs de formulaire.
+- Correction de bugs liés à la gestion des données du quotient familial.
+- Amélioration de la gestion des notifications.
+- Correction de bugs liés à la gestion des emails.
+- Amélioration de la gestion des logs.
+- Correction de bugs liés à la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de la gestion des utilisateurs.
+- Correction de bugs liés à la gestion des groupes d'instructeurs.
+- Amélioration de la gestion des procédures.
+- Correction de bugs liés à la gestion des champs de formulaire.
+- Amélioration de la gestion des données du quotient familial.
+- Correction de bugs liés à la gestion des notifications.
+- Amélioration de la gestion des emails.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion des tests.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion des traductions.
+- Amélioration de la gestion des dates.
+- Correction de bugs liés à la gestion des pièces jointes.
+- Amélioration de

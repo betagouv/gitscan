@@ -151,6 +151,9 @@
 │   │   │   ├── liberte2.svg
 │   │   │   ├── logo-france-connect.png
 │   │   │   ├── mailer
+│   │   │   │   ├── Marianne-Dark@2x.png
+│   │   │   │   ├── Marianne-Light@2x.png
+│   │   │   │   ├── logo-demarche-numerique@2x.png
 │   │   │   │   ├── logo-services-plus.png
 │   │   │   │   └── republique-francaise-logo.png
 │   │   │   ├── marianne.png
@@ -351,7 +354,7 @@
 │   │   │   ├── autosave_footer_component
 │   │   │   │   ├── autosave_footer_component.en.yml
 │   │   │   │   ├── autosave_footer_component.fr.yml
-│   │   │   │   └── autosave_footer_component.html.haml
+│   │   │   │   └── autosave_footer_component.html.erb
 │   │   │   ├── autosave_footer_component.rb
 │   │   │   ├── batch_alert_component
 │   │   │   │   ├── batch_alert_component.en.yml
@@ -1898,7 +1901,6 @@
 │   │   │   ├── fallback_fetch_cadastre_real_geometry_job.rb
 │   │   │   ├── fix_missing_antivirus_analysis_job.rb
 │   │   │   ├── instructeur_email_notification_job.rb
-│   │   │   ├── llm_enqueue_nightly_improve_procedure_job.rb
 │   │   │   ├── never_touched_dossiers_brouillon_deletion_job.rb
 │   │   │   ├── notify_draft_not_submitted_job.rb
 │   │   │   ├── operations_signature_job.rb
@@ -2071,6 +2073,8 @@
 │   │   ├── preactivate_users_mailer.rb
 │   │   ├── super_admin_mailer.rb
 │   │   └── user_mailer.rb
+│   ├── middleware
+│   │   └── cookie_overflow_handler.rb
 │   ├── models
 │   │   ├── .keep
 │   │   ├── KeyableModel.rb
@@ -3126,17 +3130,24 @@
 │       │   ├── component_preview.html.haml
 │       │   ├── empty_layout.html.haml
 │       │   ├── login.html.haml
-│       │   ├── mailer.html.haml
 │       │   ├── mailers
 │       │   │   ├── _bizdev_signature.html.haml
 │       │   │   ├── _commentaire_groupe_gestionnaire_footer.html.haml
+│       │   │   ├── _dsfr_button.html.erb
+│       │   │   ├── _dsfr_footer.html.erb
+│       │   │   ├── _dsfr_head.html.erb
+│       │   │   ├── _dsfr_header.html.erb
+│       │   │   ├── _dsfr_identity.html.erb
+│       │   │   ├── _dsfr_instance_logo.html.erb
+│       │   │   ├── _dsfr_marianne_logo.html.erb
 │       │   │   ├── _jdma.html.haml
 │       │   │   ├── _logo.html.haml
+│       │   │   ├── _sent_to.html.haml
 │       │   │   ├── _service_footer.html.haml
 │       │   │   ├── _services_publics_plus.html.haml
 │       │   │   ├── _signature.html.haml
-│       │   │   ├── layout.html.erb
-│       │   │   └── notifications_layout.html.erb
+│       │   │   ├── _vertical_margin.html.erb
+│       │   │   └── layout.html.erb
 │       │   ├── print.html.haml
 │       │   └── procedure_context.html.erb
 │       ├── manager
@@ -3211,7 +3222,7 @@
 │       ├── prefill_type_de_champs
 │       │   └── show.html.haml
 │       ├── pro_connect
-│       │   └── index.html.haml
+│       │   └── required.html.erb
 │       ├── recherche
 │       │   └── index.html.haml
 │       ├── recoveries
@@ -3242,8 +3253,6 @@
 │       │   ├── _footer_content_list.html.haml
 │       │   ├── _footer_copy.html.haml
 │       │   ├── _france_connect_login.html.haml
-│       │   ├── _mailer_round_button.html.haml
-│       │   ├── _mailer_vertical_margin.html.haml
 │       │   ├── _notification_sticker.html.haml
 │       │   ├── _piece_justificative_template.html.haml
 │       │   ├── _procedure_description.html.haml
@@ -4652,6 +4661,7 @@
 │   │   │   ├── editable_champ_component_spec.rb
 │   │   │   ├── explication_component
 │   │   │   │   └── explication_component_spec.rb
+│   │   │   ├── header_section_component_spec.rb
 │   │   │   ├── piece_justificative_component
 │   │   │   │   └── piece_justificative_component_spec.rb
 │   │   │   ├── piece_justificative_component_spec.rb
@@ -5146,6 +5156,7 @@
 │   │   ├── dossier_link_helper_spec.rb
 │   │   ├── etablissement_helper_spec.rb
 │   │   ├── gallery_helper_spec.rb
+│   │   ├── mailer_helper_spec.rb
 │   │   ├── navigation_helper_spec.rb
 │   │   ├── procedure_helper_spec.rb
 │   │   └── release_notes_helper_spec.rb
@@ -5199,7 +5210,6 @@
 │   │   │   ├── enable_procedure_expires_when_termine_enabled_job_spec.rb
 │   │   │   ├── expired_users_deletion_job_spec.rb
 │   │   │   ├── fallback_fetch_cadastre_real_geometry_job_spec.rb
-│   │   │   ├── llm_enqueue_nightly_improve_procedure_job_spec.rb
 │   │   │   ├── operations_signature_job_spec.rb
 │   │   │   ├── procedure_process_sva_svr_job_spec.rb
 │   │   │   ├── purge_manager_administrateur_sessions_job_spec.rb
@@ -5332,6 +5342,7 @@
 │   │   │   └── user_mailer_preview.rb
 │   │   └── user_mailer_spec.rb
 │   ├── middlewares
+│   │   ├── cookie_overflow_handler_spec.rb
 │   │   └── rack_attack_spec.rb
 │   ├── models
 │   │   ├── address_proxy_spec.rb
@@ -5515,6 +5526,7 @@
 │   │   │   ├── commune_type_de_champ_spec.rb
 │   │   │   ├── drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── linked_drop_down_list_type_de_champ_spec.rb
+│   │   │   ├── multiple_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── piece_justificative_type_de_champ_spec.rb
 │   │   │   ├── prefill_address_type_de_champ_spec.rb
 │   │   │   ├── prefill_commune_type_de_champ_spec.rb
@@ -5871,6 +5883,8 @@
 │           │   ├── show_deleted.html.haml_spec.rb
 │           │   ├── show_in_trash.html.haml_spec.rb
 │           │   └── siret.html.haml_spec.rb
+│           ├── registrations
+│           │   └── new.html.haml_spec.rb
 │           ├── sessions
 │           │   └── new.html.haml_spec.rb
 │           └── statistiques
@@ -5882,4 +5896,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-943 directories, 5256 files
+945 directories, 5268 files
