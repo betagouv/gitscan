@@ -1,22 +1,24 @@
 ## Changelog : impactco2 (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour d'impactco2 se concentrent sur l'amélioration de l'intégration via iframes, la correction de bugs et l'enrichissement du contenu de la FAQ. Une source de données a été supprimée et des exemples ont été mis à jour pour le détecteur. Ces améliorations visent à rendre l'application plus fiable et plus informative pour les utilisateurs.
+Ce mois-ci, l'application impactco2 a bénéficié d'améliorations significatives, notamment des corrections de bugs pour une meilleure stabilité, des mises à jour de contenu (FAQ, exemples de détecteur, liens) et des ajustements pour l'intégration via iframes. L'objectif est d'améliorer l'expérience utilisateur et de garantir la fiabilité des informations fournies.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème de redimensionnement sur les champs numériques [#861](https://github.com/incubateur-ademe/impactco2/issues/861).
-- Mise à jour des exemples du détecteur [#862](https://github.com/incubateur-ademe/impactco2/issues/862).
-- Ajout d'une nouvelle FAQ [#859](https://github.com/incubateur-ademe/impactco2/issues/859).
-- Mise à jour du lien vers l'étiquette [#863](https://github.com/incubateur-ademe/impactco2/issues/863).
-- Amélioration de la suggestion pour la FAQ sur le transport [#8bad67](https://github.com/incubateur-ademe/impactco2/commit/d8bad67).
-- Correction de l'utilisation de `data-name` sur le script iframe [#867](https://github.com/incubateur-ademe/impactco2/issues/867).
+- Mise à jour des exemples du détecteur d'impact carbone [#862](https://github.com/incubateur-ademe/impactco2/issues/862).
+- Ajout d'une nouvelle FAQ pour répondre aux questions fréquentes des utilisateurs [#859](https://github.com/incubateur-ademe/impactco2/issues/859).
+- Mise à jour du lien vers l'étiquette énergétique [#863](https://github.com/incubateur-ademe/impactco2/issues/863).
+- Correction d'un bug d'affichage lors de la saisie de nombres [#861](https://github.com/incubateur-ademe/impactco2/issues/861).
+- Correction d'une faute de frappe dans la section habillement.
+- Amélioration de la suggestion pour la FAQ sur le transport.
 
 ### Évolutions techniques
-- Suppression de la source "negaoctet" [#868](https://github.com/incubateur-ademe/impactco2/issues/868).
-- Correction des tests iframe [#68866b2](https://github.com/incubateur-ademe/impactco2/commit/68866b2) et [#b233a3b](https://github.com/incubateur-ademe/impactco2/commit/b233a3b).
-- Ajout de `corepack` pour les iframes [#1d2d311](https://github.com/incubateur-ademe/impactco2/commit/1d2d311).
-- Mise à jour des mappings de statistiques mensuelles [#65b04ec](https://github.com/incubateur-ademe/impactco2/commit/65b04ec) et du mapping de navigateur de référence [#88996f1](https://github.com/incubateur-ademe/impactco2/commit/88996f1).
-- Rétractation de l'implémentation `html-to-image` [#312a285](https://github.com/incubateur-ademe/impactco2/commit/312a285).
+- Correction de problèmes d'initialisation du détecteur, notamment pour éviter les initialisations multiples [#869](https://github.com/incubateur-ademe/impactco2/issues/869).
+- Correction d'une erreur d'expression régulière pour la détection de nombres.
+- Amélioration de la gestion des tests d'intégration via iframes, notamment en attendant que le réseau soit inactif et en corrigeant des erreurs de configuration (corepack).
+- Suppression de la source "negaoctet" en raison de problèmes potentiels [#868](https://github.com/incubateur-ademe/impactco2/issues/868).
+- Utilisation de l'attribut `data-name` pour le script dans les iframes [#867](https://github.com/incubateur-ademe/impactco2/issues/867).
+- Mise à jour des mappings de statistiques mensuelles et de la configuration de la baseline du navigateur.
 
 ### Autres changements
-- Correction d'une faute de frappe [#d0870a7](https://github.com/incubateur-ademe/impactco2/commit/d0870a7).
+- Correction d'une faute de frappe.
+- Correction d'un test iframe défaillant pour la Gaïeté Lyrique.
