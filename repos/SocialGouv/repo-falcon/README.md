@@ -44,16 +44,22 @@ RepoFalcon currently supports:
 
 ## Quickstart
 
-Download the latest binary for your platform:
+**Homebrew** (macOS / Linux):
 
 ```bash
-curl -fsSL "https://github.com/SocialGouv/repo-falcon/releases/latest/download/falcon-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')" -o ./falcon && chmod +x ./falcon
+brew install SocialGouv/repo-falcon/falcon
 ```
 
-Or install it globally:
+Or install the latest binary:
 
 ```bash
-curl -fsSL "https://github.com/SocialGouv/repo-falcon/releases/latest/download/falcon-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')" | sudo tee /usr/local/bin/falcon > /dev/null && sudo chmod +x /usr/local/bin/falcon
+curl -fsSL https://socialgouv.github.io/repo-falcon/install.sh | sh
+```
+
+Or install to a custom directory (no sudo):
+
+```bash
+INSTALL_DIR=. curl -fsSL https://socialgouv.github.io/repo-falcon/install.sh | sh
 ```
 
 **Windows** (PowerShell):
@@ -62,25 +68,44 @@ curl -fsSL "https://github.com/SocialGouv/repo-falcon/releases/latest/download/f
 Invoke-WebRequest -Uri "https://github.com/SocialGouv/repo-falcon/releases/latest/download/falcon-windows-amd64.exe" -OutFile falcon.exe
 ```
 
-The fastest end-to-end setup is:
+You can also download binaries manually from the [latest release page](https://github.com/SocialGouv/repo-falcon/releases/latest).
+
+### Uninstall
+
+Remove the binary and any generated project artifacts:
 
 ```bash
-./falcon init --repo .
+# Remove the binary (default location; adjust if you used a custom INSTALL_DIR)
+sudo rm /usr/local/bin/falcon
+
+# Remove generated artifacts from your projects
+rm -rf .falcon/
+
+# Remove fleet configuration (if you used fleet features)
+rm -rf ~/.falcon/
 ```
+
+**The one command to know:**
+
+```bash
+falcon sync
+```
+
+Run it once to set up, run it again anytime to refresh. It is fully idempotent.
 
 This command:
 
 1. indexes the repository
 2. builds a deterministic snapshot
-3. generates [`.falcon/CONTEXT.md`](.falcon/)
-4. can configure coding-agent integrations
+3. generates [`.falcon/CONTEXT.md`](.falcon/CONTEXT.md)
+4. configures coding-agent integrations (interactive on first run, or pass `--agents claude,cursor,windsurf,copilot,roo,cline`)
 
 If you want to run the steps manually:
 
 ```bash
-./falcon index --repo . --out .falcon/artifacts
-./falcon snapshot --in .falcon/artifacts --out .falcon/artifacts
-./falcon pr-pack --repo . --snapshot .falcon/artifacts --base <base-sha-or-ref> --head <head-sha-or-ref> --out .falcon/artifacts
+falcon index --repo . --out .falcon/artifacts
+falcon snapshot --in .falcon/artifacts --out .falcon/artifacts
+falcon pr-pack --repo . --snapshot .falcon/artifacts --base <base-sha-or-ref> --head <head-sha-or-ref> --out .falcon/artifacts
 ```
 
 Typical generated outputs:
@@ -111,15 +136,15 @@ Without RepoFalcon, an agent usually has to discover architecture by reading fil
 ### Typical workflow
 
 ```bash
-./falcon init --repo . --agents claude
+falcon sync --agents claude
 ```
 
 That setup gives you two useful layers:
 
-1. **Static context** via [`.falcon/CONTEXT.md`](.falcon/)
-2. **Live graph queries** via [`falcon mcp serve`](cmd/falcon/main.go:1)
+1. **Static context** via [`.falcon/CONTEXT.md`](.falcon/CONTEXT.md)
+2. **Live graph queries** via [`falcon mcp serve`](internal/cli/mcp.go)
 
-RepoFalcon can also update Claude Code files such as [`CLAUDE.md`](CLAUDE.md:1) and MCP configuration so the agent knows when to query repository structure instead of relying only on raw file search.
+RepoFalcon can also update Claude Code files such as [`CLAUDE.md`](CLAUDE.md) and MCP configuration so the agent knows when to query repository structure instead of relying only on raw file search.
 
 ### Concrete example
 
@@ -134,7 +159,7 @@ With RepoFalcon in place, Claude Code can:
 
 This makes refactors safer and reduces wasted context-window usage.
 
-For the full integration guide, agent-specific setup, and MCP details, see [`docs/AGENT_INTEGRATION.md`](docs/AGENT_INTEGRATION.md:1).
+For the full integration guide, agent-specific setup, and MCP details, see [`docs/AGENT_INTEGRATION.md`](docs/AGENT_INTEGRATION.md).
 
 ---
 
@@ -162,23 +187,23 @@ Instead of asking downstream tooling to rediscover the repository from scratch, 
 ### Manual CI commands
 
 ```bash
-./falcon index --repo . --out artifacts
-./falcon snapshot --in artifacts --out artifacts
-./falcon pr-pack --repo . --snapshot artifacts --base "$BASE_SHA" --head "$HEAD_SHA" --out artifacts
+falcon index --repo . --out artifacts
+falcon snapshot --in artifacts --out artifacts
+falcon pr-pack --repo . --snapshot artifacts --base "$BASE_SHA" --head "$HEAD_SHA" --out artifacts
 ```
 
-The key step for reproducibility is running [`snapshot`](cmd/falcon/main.go:1) after indexing. More details are available in [`docs/CI.md`](docs/CI.md:1).
+The key step for reproducibility is running [`snapshot`](internal/cli/snapshot.go) after indexing. More details are available in [`docs/CI.md`](docs/CI.md).
 
 ---
 
 ## GitHub Action usage
 
-RepoFalcon ships as a reusable composite action via [`action.yml`](action.yml:1).
+RepoFalcon ships as a reusable composite action via [`action.yml`](action.yml).
 
 Example workflows are included in this repository:
 
-- [`/.github/workflows/repofalcon_pr_context.yml`](.github/workflows/repofalcon_pr_context.yml:1)
-- [`/.github/workflows/repofalcon_then_claude_review.yml`](.github/workflows/repofalcon_then_claude_review.yml:1)
+- [`.github/workflows/repofalcon_pr_context.yml`](.github/workflows/repofalcon_pr_context.yml)
+- [`.github/workflows/repofalcon_then_claude_review.yml`](.github/workflows/repofalcon_then_claude_review.yml)
 
 ### Example: generate PR context artifacts
 
@@ -218,7 +243,7 @@ The typical pattern is:
 2. upload or pass them to a downstream AI review job
 3. let the reviewer consume structured outputs instead of rediscovering the repo
 
-See [`/.github/workflows/repofalcon_then_claude_review.yml`](.github/workflows/repofalcon_then_claude_review.yml:1) for a concrete example of this pipeline shape.
+See [`.github/workflows/repofalcon_then_claude_review.yml`](.github/workflows/repofalcon_then_claude_review.yml) for a concrete example of this pipeline shape.
 
 ---
 
@@ -239,7 +264,7 @@ RepoFalcon generates artifacts that can be consumed by humans, scripts, CI syste
 
 - `pr_context_pack.json` — structured machine-readable context for a PR
 - `review_report.md` — a human-readable review summary
-- [`.falcon/CONTEXT.md`](.falcon/) — a compact repository overview for coding agents
+- [`.falcon/CONTEXT.md`](.falcon/CONTEXT.md) — a compact repository overview for coding agents
 
 ---
 
@@ -276,11 +301,78 @@ Integration tests run the CLI twice on the same fixture repositories and compare
 
 ---
 
+## Use case: multi-repository search (fleet)
+
+When you manage multiple repositories, RepoFalcon can index them all and provide cross-repo search and analysis.
+
+### Setup
+
+Create a fleet manifest listing your repos:
+
+```bash
+mkdir -p ~/.falcon
+cat > ~/.falcon/fleet.json << 'EOF'
+{
+  "version": "1",
+  "repos": [
+    {"path": "/home/user/apps/web-app", "name": "web-app"},
+    {"path": "/home/user/apps/api-server"},
+    {"path": "/home/user/apps/mobile-app"}
+  ]
+}
+EOF
+```
+
+Index all repos at once:
+
+```bash
+falcon fleet sync
+```
+
+### Cross-repo MCP server
+
+Start an MCP server that gives coding agents cross-repo awareness:
+
+```bash
+falcon fleet mcp serve
+```
+
+This exposes fleet-specific tools: `fleet_overview`, `fleet_search`, `fleet_find_repos_by_dependency`, `fleet_symbol_lookup`, `fleet_common_dependencies`, `fleet_repo_architecture`, and `fleet_file_context`.
+
+### Ad-hoc SQL queries via DuckDB
+
+Run SQL directly against all indexed repos (requires the `duckdb` CLI):
+
+```bash
+# Find which apps implemented magic link auth with Next.js
+falcon fleet query "
+  SELECT DISTINCT p._repo
+  FROM all_packages p
+  JOIN all_packages m ON p._repo = m._repo
+  WHERE p.name = 'next' AND m.name = 'magic-sdk'
+"
+
+# Find the loginWithMagicLink call sites
+falcon fleet query "SELECT _repo, qualified_name, kind FROM all_symbols WHERE qualified_name ILIKE '%loginWithMagicLink%'"
+
+# Compare tech stacks across repos
+falcon fleet query "SELECT _repo, name FROM all_packages WHERE is_internal = false ORDER BY _repo, name"
+```
+
+The `--repos` flag can override the manifest for one-off searches:
+
+```bash
+falcon fleet sync --repos ~/apps/web,~/apps/api
+falcon fleet query --repos ~/apps/web,~/apps/api "SELECT _repo, name FROM all_packages WHERE name = 'magic-sdk'"
+```
+
+---
+
 ## Architecture and additional docs
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md:1) — internal architecture and design overview
-- [`docs/AGENT_INTEGRATION.md`](docs/AGENT_INTEGRATION.md:1) — coding-agent setup, MCP, and static context files
-- [`docs/CI.md`](docs/CI.md:1) — deterministic CI guidance and pipeline recommendations
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — internal architecture and design overview
+- [`docs/AGENT_INTEGRATION.md`](docs/AGENT_INTEGRATION.md) — coding-agent setup, MCP, and static context files
+- [`docs/CI.md`](docs/CI.md) — deterministic CI guidance and pipeline recommendations
 
 ---
 
