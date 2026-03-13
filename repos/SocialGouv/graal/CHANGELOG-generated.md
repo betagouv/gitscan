@@ -1,29 +1,29 @@
 ## Changelog : graal (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Graal se concentrent sur l'ajout de fonctionnalités pour la gestion des modèles de langage (LLM) comme Claude, améliorant ainsi les capacités d'analyse et de traitement des amendements législatifs. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées pour une meilleure expérience utilisateur et une plus grande stabilité.
+Les dernières mises à jour de Graal se concentrent sur l'amélioration de la gestion des configurations, notamment l'ajout de la configuration des modèles de langage (LLM) avec des limites de débit et une interface dédiée. Des améliorations ont également été apportées à l'interface utilisateur, notamment sur la page d'accueil, et des corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
 - Ajout de boutons de connexion en mode développement pour faciliter les tests et la revue des environnements.
-- Amélioration de la mise en page de la page d'accueil avec l'utilisation de composants DSFR Tile.
-- Possibilité de supprimer des fichiers de bases de données d'amendements avec une reconstruction.
-- Intégration de workflows pour le modèle de langage Claude.
-- Ajout de la configuration des modèles de langage (LLM) via l'interface utilisateur et l'API.
-- Limitation du nombre de requêtes par minute pour la configuration des LLM afin de prévenir les abus.
+- Amélioration de la mise en page de la page d'accueil avec l'utilisation de composants DSFR Tile [#224](https://github.com/SocialGouv/graal/issues/224).
+- Possibilité de supprimer des fichiers des bases de données d'amendements avec une reconstruction [#229](https://github.com/SocialGouv/graal/issues/229).
+- Ajout d'une configuration pour limiter le nombre de requêtes par minute aux modèles de langage (LLM).
+- Ajout d'une interface pour configurer les modèles de langage (LLM).
 
 ### Évolutions techniques
-- Ajout de variables d'environnement Docker pour la configuration.
-- Génération automatique des types d'API.
-- Amélioration de la configuration des tests pour éviter les interférences entre les bases de données de développement et de test.
-- Mise en place d'un mécanisme de nouvelle tentative pour la génération des types d'API.
-- Correction de la configuration de `VITE_ENABLE_DEV_LOGIN`.
-- Correction de la mise à jour du store de jobs lorsque les tâches sont terminées.
-- Amélioration des permissions pour le webfetch de Claude dans les workflows CI.
-- Correction d'un bug dans le workflow CI de Claude.
-- Utilisation des IDs des fichiers de configuration au lieu de leurs noms pour éviter les collisions.
-- Ajout de support pour les pull requests étiquetées dans les workflows CI.
-- Suppression de l'utilisation de la version `latest` dans les workflows CI.
+- Ajout d'une configuration pour utiliser les IDs des fichiers de configuration au lieu de leurs noms, évitant ainsi des collisions.
+- Refonte du mécanisme de gestion des jobs pour une meilleure mise à jour de l'état.
+- Ajout d'un mécanisme de retry pour la génération des types d'API.
+- Amélioration de la configuration des variables d'environnement pour VITE_ENABLE_DEV_LOGIN.
+- Ajout de workflows pour Claude.
+- Amélioration des permissions webfetch pour Claude.
+- Correction de la configuration du workflow PR pour Claude.
+- Ajout de tests pour s'assurer que la base de données de test n'interfère pas avec la base de données de développement.
 
 ### Autres changements
-- Ajout d'un fichier `CLAUDE.md` pour la documentation de Claude.
+- Ajout d'un fichier `CLAUDE.md` pour documenter la configuration de Claude.
+- Correction d'un problème d'affichage du texte des boutons de connexion en mode développement.
+- Amélioration de la gestion des logs pour les messages d'authentification.
+- Correction de la configuration du workflow CI/CD pour éviter l'utilisation de la dernière version des dépendances.
+- Ajout de support pour les pull requests labellisées dans le workflow CI/CD.
 - Petites corrections diverses.

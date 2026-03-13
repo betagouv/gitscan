@@ -1,40 +1,39 @@
 {
   "url": "https://github.com/SocialGouv/graal",
   "name": "graal",
-  "description": "GRAAL est un système d'analyse et de traitement automatisé des amendements législatifs. Il vise à simplifier et accélérer les tâches des agents responsables de ces amendements.",
+  "description": "GRAAL est un système d'analyse et de traitement automatisé des amendements législatifs, conçu pour simplifier et accélérer le travail des agents chargés de les traiter.",
   "language": "Python",
   "features": [
+    "Traitement des amendements",
+    "Analyse des amendements",
     "Regroupement d'amendements similaires",
     "Attribution d'amendements",
     "Génération de résumés",
-    "Analyse de similarité",
+    "Recherche de similarités",
     "Gestion des configurations",
-    "Traitement de données en masse"
+    "Interface web"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Poetry",
     "PostgreSQL",
     "FastAPI",
-    "Uvicorn",
     "React",
     "TypeScript",
     "DSFR",
-    "Boto3",
-    "Aioboto3",
-    "Pyarrow",
-    "Scikit-learn",
-    "NLTK",
-    "OpenAI",
-    "Ollama"
+    "Docker",
+    "S3",
+    "Ollama",
+    "Albert API"
   ],
   "components": [
-    "Backend API (FastAPI)",
+    "Backend FastAPI",
     "Frontend React",
     "Base de données PostgreSQL",
-    "Pipeline de traitement des amendements",
+    "Pipeline de traitement",
+    "API REST",
     "Interface utilisateur web",
-    "Gestionnaire de configurations"
+    "Stockage S3"
   ],
   "auth": {
     "methods": [
@@ -48,9 +47,9 @@
     "pytest-xdist"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD (GitHub Actions)"
   ],
-  "lastActivity": "2026-03-05T00:00:00Z",
+  "lastActivity": "2026-03-11T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -61,13 +60,15 @@
     "openIssues": null
   },
   "tags": [
-    "législation",
-    "amendements",
+    "amendements législatifs",
     "traitement de texte",
     "analyse de données",
+    "intelligence artificielle",
     "administration publique",
     "Python",
     "React",
-    "PostgreSQL"
+    "PostgreSQL",
+    "S3",
+    "LLM"
   ]
 }
