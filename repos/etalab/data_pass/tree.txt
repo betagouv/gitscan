@@ -845,6 +845,7 @@
 │   │       ├── dsfr-utility.css
 │   │       ├── dsfr.css
 │   │       └── pages
+│   │           ├── admin-habilitation-types-index.css
 │   │           ├── authorization-request-form-new.css
 │   │           ├── authorization-request-forms-api-entreprise-index.css
 │   │           ├── formulaires-index.css
@@ -885,6 +886,15 @@
 │   │   ├── instructor_menu_component.rb
 │   │   ├── link_component.rb
 │   │   ├── molecules
+│   │   │   ├── admin
+│   │   │   │   ├── blocks_selection_component.html.erb
+│   │   │   │   ├── blocks_selection_component.rb
+│   │   │   │   ├── contact_types_selector_component.html.erb
+│   │   │   │   ├── contact_types_selector_component.rb
+│   │   │   │   ├── name_with_uid_preview_component.html.erb
+│   │   │   │   ├── name_with_uid_preview_component.rb
+│   │   │   │   ├── scopes_editor_component.html.erb
+│   │   │   │   └── scopes_editor_component.rb
 │   │   │   ├── duration_card_component.html.erb
 │   │   │   ├── duration_card_component.rb
 │   │   │   ├── instructor_banner_notice_component.rb
@@ -892,6 +902,9 @@
 │   │   │   ├── stat_card_component.rb
 │   │   │   └── update_in_progress_notice_component.rb
 │   │   └── organisms
+│   │       ├── admin
+│   │       │   ├── habilitation_type_form_component.html.erb
+│   │       │   └── habilitation_type_form_component.rb
 │   │       ├── authorization_request_forms
 │   │       │   ├── legal_framework_component.html.erb
 │   │       │   └── legal_framework_component.rb
@@ -910,6 +923,7 @@
 │   │           └── transcription_component.rb
 │   ├── controllers
 │   │   ├── admin
+│   │   │   ├── habilitation_types_controller.rb
 │   │   │   ├── impersonate_controller.rb
 │   │   │   ├── mark_user_organization_as_verified_controller.rb
 │   │   │   ├── transfer_authorization_requests_controller.rb
@@ -1070,12 +1084,16 @@
 │   │   ├── add_user_to_organization.rb
 │   │   ├── admin
 │   │   │   ├── create_impersonation.rb
+│   │   │   ├── destroy_habilitation_type_record.rb
 │   │   │   ├── find_user_for_impersonation.rb
 │   │   │   ├── finish_impersonation_record.rb
 │   │   │   ├── notify_admins_for_roles_update.rb
+│   │   │   ├── persist_new_habilitation_type.rb
+│   │   │   ├── remove_habilitation_type_roles.rb
 │   │   │   ├── track_event.rb
 │   │   │   ├── track_impersonation_stop.rb
 │   │   │   ├── track_organization_user_verification_event.rb
+│   │   │   ├── update_habilitation_type_attributes.rb
 │   │   │   ├── update_organization_user_verification.rb
 │   │   │   └── update_user_roles_attribute.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request.rb
@@ -1164,6 +1182,7 @@
 │   │   ├── controllers
 │   │   │   ├── application.js
 │   │   │   ├── auto_height_controller.js
+│   │   │   ├── blocks_toggle_controller.js
 │   │   │   ├── choose_authorization_request_form_controller.js
 │   │   │   ├── choose_authorization_request_form_with_or_without_editors_controller.js
 │   │   │   ├── choose_france_connect_controller.js
@@ -1181,6 +1200,7 @@
 │   │   │   ├── justification_controller.js
 │   │   │   ├── message_template_selector_controller.js
 │   │   │   ├── modified_form_controller.js
+│   │   │   ├── name_with_uid_preview_controller.js
 │   │   │   ├── remove_attached_file_controller.js
 │   │   │   ├── scroll_to_controller.js
 │   │   │   ├── scroll_to_top_controller.js
@@ -1347,6 +1367,7 @@
 │   │   ├── denial_of_authorization.rb
 │   │   ├── eligibility_option.rb
 │   │   ├── eligibility_rule.rb
+│   │   ├── habilitation_type.rb
 │   │   ├── identity_provider.rb
 │   │   ├── impersonation.rb
 │   │   ├── impersonation_action.rb
@@ -1377,10 +1398,13 @@
 │   │   └── hubee_notifier.rb
 │   ├── organizers
 │   │   ├── admin
+│   │   │   ├── create_habilitation_type.rb
+│   │   │   ├── destroy_habilitation_type.rb
 │   │   │   ├── mark_user_organization_as_verified.rb
 │   │   │   ├── start_impersonation.rb
 │   │   │   ├── stop_impersonation.rb
 │   │   │   ├── transfer_authorization_request.rb
+│   │   │   ├── update_habilitation_type.rb
 │   │   │   └── update_user_roles.rb
 │   │   ├── application_organizer.rb
 │   │   ├── approve_authorization_request.rb
@@ -1481,6 +1505,7 @@
 │   │   ├── authorizations_search_engine_builder.rb
 │   │   ├── bulk_authorization_request_update_notification_extractor.rb
 │   │   ├── dgfip_spreadsheet_generator.rb
+│   │   ├── dynamic_authorization_request_registrar.rb
 │   │   ├── email_preview_renderer.rb
 │   │   ├── email_verifier_api.rb
 │   │   ├── france_connect_data_builder.rb
@@ -1501,6 +1526,10 @@
 │   │   └── siret_validator.rb
 │   └── views
 │       ├── admin
+│       │   ├── habilitation_types
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
 │       │   ├── impersonate
 │       │   │   └── new.html.erb
 │       │   ├── index.html.erb
@@ -2166,6 +2195,7 @@
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
 │   │   ├── doorkeeper.rb
+│   │   ├── dynamic_authorization_types.rb
 │   │   ├── emailable.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── friendly_id.rb
@@ -2336,7 +2366,8 @@
 │   │   ├── 20260217150000_migrate_annuaire_entreprises_conformite_scope_to_conformite_fiscale_sociale.rb
 │   │   ├── 20260223202755_add_authorization_to_revocation_of_authorizations.rb
 │   │   ├── 20260224134138_add_form_uid_to_authorizations.rb
-│   │   └── 20260224140002_fill_form_uid_in_existing_authorizations.rb
+│   │   ├── 20260224140002_fill_form_uid_in_existing_authorizations.rb
+│   │   └── 20260225111739_create_habilitation_types.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2373,6 +2404,7 @@
 │   ├── accessibilite.feature
 │   ├── admin
 │   │   ├── emails_verifies.feature
+│   │   ├── habilitation_types.feature
 │   │   ├── impersonation.feature
 │   │   ├── transfer_authorization_request.feature
 │   │   ├── utilisateurs_avec_roles.feature
@@ -2490,6 +2522,7 @@
 │   │   ├── debug_steps.rb
 │   │   ├── email_steps.rb
 │   │   ├── france_connect_authorizations_steps.rb
+│   │   ├── habilitation_types_steps.rb
 │   │   ├── impersonation_steps.rb
 │   │   ├── instructions_steps.rb
 │   │   ├── instructor_draft_requests_steps.rb
@@ -2667,11 +2700,18 @@
 │   │       │   └── user_alerts_component_preview.rb
 │   │       ├── historical_authorization_request_event_icon_component_preview.rb
 │   │       ├── molecules
+│   │       │   ├── admin
+│   │       │   │   ├── blocks_selection_component_preview.rb
+│   │       │   │   ├── contact_types_selector_component_preview.rb
+│   │       │   │   ├── name_with_uid_preview_component_preview.rb
+│   │       │   │   └── scopes_editor_component_preview.rb
 │   │       │   ├── duration_card_component_preview.rb
 │   │       │   ├── instructor_banner_notice_component_preview.rb
 │   │       │   ├── stat_card_component_preview.rb
 │   │       │   └── update_in_progress_notice_component_preview.rb
 │   │       └── organisms
+│   │           ├── admin
+│   │           │   └── habilitation_type_form_component_preview.rb
 │   │           ├── authorization_request_forms
 │   │           │   └── legal_framework_component_preview.rb
 │   │           └── stats
@@ -2733,6 +2773,7 @@
 │   │   ├── bulk_authorization_request_updates.rb
 │   │   ├── data_providers.rb
 │   │   ├── denial_of_authorizations.rb
+│   │   ├── habilitation_types.rb
 │   │   ├── hubee_payloads.rb
 │   │   ├── impersonation_actions.rb
 │   │   ├── impersonations.rb
@@ -2790,6 +2831,8 @@
 │   ├── i18n_spec.rb
 │   ├── interactors
 │   │   ├── .gitkeep
+│   │   ├── admin
+│   │   │   └── remove_habilitation_type_roles_spec.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request_spec.rb
 │   │   ├── assign_france_connect_defaults_on_reopening_spec.rb
 │   │   ├── create_authorization_request_changelog_spec.rb
@@ -2885,6 +2928,7 @@
 │   │   ├── data_provider_spec.rb
 │   │   ├── denial_of_authorization_spec.rb
 │   │   ├── eligibility_rule_spec.rb
+│   │   ├── habilitation_type_spec.rb
 │   │   ├── identity_provider_spec.rb
 │   │   ├── impersonation_action_spec.rb
 │   │   ├── impersonation_spec.rb
@@ -2910,10 +2954,13 @@
 │   ├── organizers
 │   │   ├── .gitkeep
 │   │   ├── admin
+│   │   │   ├── create_habilitation_type_spec.rb
+│   │   │   ├── destroy_habilitation_type_spec.rb
 │   │   │   ├── mark_user_organization_as_verified_spec.rb
 │   │   │   ├── start_impersonation_spec.rb
 │   │   │   ├── stop_impersonation_spec.rb
 │   │   │   ├── transfer_authorization_request_spec.rb
+│   │   │   ├── update_habilitation_type_spec.rb
 │   │   │   └── update_user_roles_spec.rb
 │   │   ├── approve_authorization_request_spec.rb
 │   │   ├── archive_authorization_request_spec.rb
@@ -2996,6 +3043,7 @@
 │   │   ├── authorization_tabs_builder_spec.rb
 │   │   ├── authorizations_search_engine_builder_spec.rb
 │   │   ├── dgfip_spreadsheet_generator_spec.rb
+│   │   ├── dynamic_authorization_request_registrar_spec.rb
 │   │   ├── email_preview_renderer_spec.rb
 │   │   ├── france_connect_data_builder_spec.rb
 │   │   ├── hubee_api_client_spec.rb
@@ -3059,4 +3107,4 @@
     ├── .keep
     └── javascript
         └── .keep
-433 directories, 2766 files
+439 directories, 2808 files
