@@ -1,34 +1,41 @@
 {
   "url": "https://github.com/incubateur-ademe/roadmaps-faciles",
   "name": "roadmaps-faciles",
-  "description": "Roadmaps et product feedbacks, facilement. Ce projet permet de créer et d'exposer facilement la roadmap d'une startup d'état en regroupant les avis des utilisateurs.",
+  "description": "Ce projet permet de créer et de gérer facilement des roadmaps pour les startups d'État, en regroupant les avis des utilisateurs pour améliorer l'impact des produits.",
   "language": "TypeScript",
   "features": [
     "Gestion de roadmaps",
-    "Collecte de feedback utilisateur",
+    "Collecte d'avis utilisateurs",
     "Authentification",
-    "Intégration avec Notion",
-    "Gestion des tenants",
-    "Gestion des domaines personnalisés"
+    "Gestion multi-tenant",
+    "Intégration Notion",
+    "Synchronisation bidirectionnelle",
+    "Gestion des utilisateurs",
+    "Tableaux de bord",
+    "Publication de posts",
+    "Mode embarquable (iframe)"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
+    "TypeScript",
     "Prisma",
     "Zod",
     "Tailwind CSS",
     "React",
     "NextAuth",
-    "shadcn/ui",
     "PostgreSQL",
-    "Redis"
+    "Redis",
+    "react-email"
   ],
   "components": [
     "Frontend React (Next.js)",
     "API REST",
     "Base de données PostgreSQL",
     "Authentification NextAuth",
-    "Interface utilisateur shadcn/ui"
+    "ORM Prisma",
+    "Système multi-tenant",
+    "Interface utilisateur DSFR et shadcn/ui"
   ],
   "auth": {
     "methods": [
@@ -37,8 +44,7 @@
     ],
     "providers": [
       "GitHub",
-      "Google",
-      "ProConnect"
+      "Google"
     ]
   },
   "tests": [
@@ -46,9 +52,9 @@
     "Playwright"
   ],
   "workflows": [
-    "CI/CD avec GitHub Actions et Scalingo"
+    "CI/CD (GitHub Actions + Scalingo)"
   ],
-  "lastActivity": "2026-03-10T23:03:32+01:00",
+  "lastActivity": "2026-03-11T13:00:13+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -60,14 +66,15 @@
   },
   "tags": [
     "roadmap",
-    "feedback",
+    "product management",
     "typescript",
     "nextjs",
-    "react",
     "prisma",
-    "oauth",
+    "react",
+    "multi-tenant",
+    "feedback",
+    "notion",
     "sso",
-    "startup",
-    "ademe"
+    "oauth2"
   ]
 }

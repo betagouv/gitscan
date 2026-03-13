@@ -1,43 +1,37 @@
 ## Changelog : roadmaps-faciles (30 derniers jours)
 
 ### Résumé
-Le projet a connu une période d'évolution rapide et significative au cours des 30 derniers jours. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, l'ajout de nouvelles fonctionnalités clés comme la synchronisation Notion, l'intégration de l'authentification avancée et la mise en place d'un système de gestion des tenants plus robuste. Des améliorations techniques importantes ont également été apportées, notamment en matière de CI/CD, de tests et de sécurité.
+Les 30 derniers jours ont été marqués par une refonte majeure de l'application, avec l'ajout de nombreuses nouvelles fonctionnalités et améliorations significatives.  Nous avons notamment amélioré l'authentification, l'intégration avec Notion, la gestion des tenants, et ajouté des outils pour faciliter le développement et le déploiement. L'expérience utilisateur a également été améliorée avec une nouvelle interface et des correctifs de bugs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un système de feature flags pour les super-admins [#97](https://github.com/incubateur-ademe/roadmaps-faciles/issues/97).
-- Amélioration de l'expérience utilisateur du wizard d'intégration [#103](https://github.com/incubateur-ademe/roadmaps-faciles/issues/103).
-- Refonte de la page des tenants avec une interface de type GitHub et un formulaire simplifié [#60](https://github.com/incubateur-ademe/roadmaps-faciles/issues/60).
-- Ajout d'un mode iframe embarquable pour les boards et la roadmap [#64](https://github.com/incubateur-ademe/roadmaps-faciles/issues/64).
-- Nouvelle vue liste compacte des posts [#55](https://github.com/incubateur-ademe/roadmaps-faciles/issues/55).
-- Ajout de la possibilité de créer des posts anonymes avec modération et suppression [#32](https://github.com/incubateur-ademe/roadmaps-faciles/issues/32).
-- Implémentation de l'internationalisation (français et anglais) [#21](https://github.com/incubateur-ademe/roadmaps-faciles/issues/21).
-- Ajout d'un site de documentation utilisateur avec Fumadocs [#57](https://github.com/incubateur-ademe/roadmaps-faciles/issues/57).
-- Ajout d'un système d'authentification avancé avec 2FA (passkey/OTP/email) et SSO OAuth pour les tenants [#61](https://github.com/incubateur-ademe/roadmaps-faciles/issues/61).
-- Refonte des emails avec DSFR Mail et react-email [#58](https://github.com/incubateur-ademe/roadmaps-faciles/issues/58).
-- Nouveau thème visuel avec une palette "French Blue" et refonte de la page d'accueil [#104](https://github.com/incubateur-ademe/roadmaps-faciles/issues/104).
+- Ajout d'un mode embarquable (iframe) pour les tableaux de bord et les roadmaps, permettant de les intégrer facilement dans d'autres applications. [#64](https://github.com/incubateur-ademe/roadmaps-faciles/issues/64)
+- Refonte de la page des tenants avec une nouvelle interface utilisateur inspirée de GitHub. [#60](https://github.com/incubateur-ademe/roadmaps-faciles/issues/60)
+- Amélioration de l'intégration avec Notion, avec une synchronisation bidirectionnelle des données. [#94](https://github.com/incubateur-ademe/roadmaps-faciles/issues/94)
+- Ajout de la possibilité de créer des posts anonymes, avec des fonctionnalités de modération et de suppression. [#32](https://github.com/incubateur-ademe/roadmaps-faciles/issues/32)
+- Ajout d'une vue liste compacte des posts sur le tableau de bord. [#55](https://github.com/incubateur-ademe/roadmaps-faciles/issues/55)
+- Ajout d'un système de feature flags pour les super-admins. [#97](https://github.com/incubateur-ademe/roadmaps-faciles/issues/97)
+- Amélioration de l'expérience utilisateur du wizard d'intégration. [#103](https://github.com/incubateur-ademe/roadmaps-faciles/issues/103)
+- Ajout d'un système d'audit log et d'observabilité. [#23](https://github.com/incubateur-ademe/roadmaps-faciles/issues/23)
+- Ajout de la gestion des domaines personnalisés (DNS). [#92](https://github.com/incubateur-ademe/roadmaps-faciles/issues/92)
+- Ajout de l'internationalisation (français et anglais). [#21](https://github.com/incubateur-ademe/roadmaps-faciles/issues/21)
+- Ajout de l'authentification à deux facteurs (2FA) avec passkey, OTP et email. [#61](https://github.com/incubateur-ademe/roadmaps-faciles/issues/61)
+- Refonte des emails avec DSFR Mail et react-email. [#58](https://github.com/incubateur-ademe/roadmaps-faciles/issues/58)
 
 ### Évolutions techniques
-- Mise en place d'un pipeline CI/CD basé sur GitHub Actions et Scalingo [#90](https://github.com/incubateur-ademe/roadmaps-faciles/issues/90).
-- Ajout d'une suite de tests complète avec Vitest et Playwright E2E [#63](https://github.com/incubateur-ademe/roadmaps-faciles/issues/63).
-- Intégration d'un connecteur Notion pour la synchronisation bidirectionnelle [#94](https://github.com/incubateur-ademe/roadmaps-faciles/issues/94).
-- Implémentation d'un éditeur Markdown enrichi avec upload d'images sur S3 [#93](https://github.com/incubateur-ademe/roadmaps-faciles/issues/93).
-- Ajout de Sentry pour le hardening et PostHog pour le tracking [#98](https://github.com/incubateur-ademe/roadmaps-faciles/issues/98).
-- Refonte de l'architecture de l'authentification et ajout d'un pont SSO [#20](https://github.com/incubateur-ademe/roadmaps-faciles/issues/20).
-- Mise en place d'un audit log et d'outils d'observabilité [#23](https://github.com/incubateur-ademe/roadmaps-faciles/issues/23).
-- Correction de vulnérabilités de dépendances (hono, lodash) [#79](https://github.com/incubateur-ademe/roadmaps-faciles/issues/79).
-- Amélioration du script de build pour plus de sécurité et suppression de variables d'environnement sensibles [#81](https://github.com/incubateur-ademe/roadmaps-faciles/issues/81).
-- Mise en place d'un système de release-please pour la gestion des releases [#86](https://github.com/incubateur-ademe/roadmaps-faciles/issues/86).
+- Mise en place d'un système de CI/CD basé sur GitHub Actions et Scalingo. [#90](https://github.com/incubateur-ademe/roadmaps-faciles/issues/90)
+- Ajout d'une suite de tests complète avec Vitest et Playwright (tests E2E). [#63](https://github.com/incubateur-ademe/roadmaps-faciles/issues/63)
+- Refonte de l'architecture d'authentification avec SSO OAuth pour les tenants. [#61](https://github.com/incubateur-ademe/roadmaps-faciles/issues/61)
+- Mise à jour de la bibliothèque d'interface utilisateur avec shadcn/ui et une nouvelle palette de couleurs (French Blue). [#104](https://github.com/incubateur-ademe/roadmaps-faciles/issues/104)
+- Amélioration de la sécurité avec l'ajout de Sentry pour la gestion des erreurs et PostHog pour le suivi des utilisateurs. [#98](https://github.com/incubateur-ademe/roadmaps-faciles/issues/98)
+- Utilisation de release-please pour la gestion des releases. [#86](https://github.com/incubateur-ademe/roadmaps-faciles/issues/86)
+- Mise en place d'un workflow de travail avec worktrees pour les sessions de développement parallèles. [#62](https://github.com/incubateur-ademe/roadmaps-faciles/issues/62)
+- Correction de vulnérabilités identifiées par Dependabot. [#79](https://github.com/incubateur-ademe/roadmaps-faciles/issues/79)
 
 ### Autres changements
-- Synchronisation de la documentation CLAUDE.md et README avec la documentation complète.
-- Refonte des screenshots pour les thèmes et audit de la documentation.
-- Ajout de règles de création d'issues GitHub.
-- Mise à jour du template GitHub.
-- Mise à jour du fichier TODO.md.
-- Correction de problèmes de déploiement liés à Prisma migrate et à l'authentification SSH [#1234](https://github.com/incubateur-ademe/roadmaps-faciles/issues/1234).
-- Correction de problèmes de linting et mise à jour de Storybook.
-- Ajout d'un canonical redirect via PLATFORM_DOMAIN [#92](https://github.com/incubateur-ademe/roadmaps-faciles/issues/92).
-- Correction de problèmes liés au CSP pour les domaines PostHog [#5d99311](https://github.com/incubateur-ademe/roadmaps-faciles/commit/5d99311).
-- Filtrage des jobs CI par fichiers modifiés [#73](https://github.com/incubateur-ademe/roadmaps-faciles/issues/73).
-- Suppression de NODE_ENV des fichiers .env.
-- Correction du filtrage des tests CI pour éviter les déclenchements inutiles [#80](https://github.com/incubateur-ademe/roadmaps-faciles/issues/80).
+- Mise à jour de la documentation avec Fumadocs et synchronisation avec le README. [#57](https://github.com/incubateur-ademe/roadmaps-faciles/issues/57) [#59](https://github.com/incubateur-ademe/roadmaps-faciles/issues/59)
+- Ajout de règles de création d'issues GitHub. [#83](https://github.com/incubateur-ademe/roadmaps-faciles/issues/83)
+- Mise à jour des dépendances et des outils de développement.
+- Corrections de bugs et améliorations de la qualité du code.
+- Amélioration du script de build pour plus de sécurité. [#81](https://github.com/incubateur-ademe/roadmaps-faciles/issues/81)
+- Optimisation des jobs CI pour ne déclencher les tests que sur les fichiers modifiés. [#80](https://github.com/incubateur-ademe/roadmaps-faciles/issues/80)
+- Mise à jour du template GitHub. [#54](https://github.com/incubateur-ademe/roadmaps-faciles/issues/54)
