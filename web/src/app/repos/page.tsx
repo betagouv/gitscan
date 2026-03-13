@@ -71,7 +71,7 @@ export default function ReposPage() {
       const query = searchQuery.toLowerCase();
       repos = repos.filter(
         (repo) =>
-          repo.name.toLowerCase().includes(query) ||
+          repo.name?.toLowerCase().includes(query) ||
           repo.description?.toLowerCase().includes(query) ||
           repo.tags?.some((tag) => tag.toLowerCase().includes(query)) ||
           repo.features?.some((f) => f.toLowerCase().includes(query)) ||
@@ -132,7 +132,16 @@ export default function ReposPage() {
     });
 
     return repos;
-  }, [searchQuery, selectedOrgs, selectedLanguages, selectedAudiences, selectedComponents, selectedAuthMethods, hasDocsOnly, sortBy]);
+  }, [
+    searchQuery,
+    selectedOrgs,
+    selectedLanguages,
+    selectedAudiences,
+    selectedComponents,
+    selectedAuthMethods,
+    hasDocsOnly,
+    sortBy,
+  ]);
 
   const paginatedRepos = filteredRepos.slice(0, page * perPage);
   const hasMore = paginatedRepos.length < filteredRepos.length;

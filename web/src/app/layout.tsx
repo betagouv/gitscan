@@ -184,9 +184,7 @@ export default function RootLayout({
                   {organizations.map((org) => (
                     <li key={org}>
                       <a
-                        href={`https://github.com/${org}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`/org/${org}`}
                         className="hover:text-white transition-colors"
                       >
                         {org}

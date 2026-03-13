@@ -104,6 +104,8 @@ async function buildIndex() {
       if (content) {
         orgChangelogs.push({ organization: org, changelog: content });
       }
+    } else {
+      orgChangelogs.push({ organization: org, changelog: "" });
     }
   }
   orgChangelogs.sort((a, b) => a.organization.localeCompare(b.organization));

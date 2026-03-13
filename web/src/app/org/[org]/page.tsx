@@ -99,9 +99,11 @@ export default async function OrgActivityPage({ params }: PageProps) {
       </div>
 
       {/* Changelog */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8">
-        <Changelog content={entry.changelog} />
-      </div>
+      {entry.changelog && (
+        <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8">
+          <Changelog content={entry.changelog} />
+        </div>
+      )}
 
       {/* Repos */}
       {orgRepos.length > 0 && (
@@ -121,7 +123,6 @@ export default async function OrgActivityPage({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  console.log("orgChangelogs", orgChangelogs.length);
   return orgChangelogs.map((entry) => ({
     org: entry.organization,
   }));
