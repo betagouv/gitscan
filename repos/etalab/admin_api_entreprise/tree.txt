@@ -762,6 +762,7 @@
 │   │   │   │   ├── array_field_controller.js
 │   │   │   │   ├── clipboard_controller.js
 │   │   │   │   ├── datetime_now_controller.js
+│   │   │   │   ├── scopes_display_controller.js
 │   │   │   │   └── search_catalogue_controller.js
 │   │   │   ├── dsfr.module.js
 │   │   │   └── utils
@@ -848,6 +849,7 @@
 │   │   │   ├── authorization_requests_controller.rb
 │   │   │   ├── blog_posts_controller.rb
 │   │   │   ├── cas_usages_controller.rb
+│   │   │   ├── delegations_controller.rb
 │   │   │   ├── documentation_controller.rb
 │   │   │   ├── download_attestations_controller.rb
 │   │   │   ├── endpoints_controller.rb
@@ -867,6 +869,7 @@
 │   │   │   ├── authorization_requests_controller.rb
 │   │   │   ├── blog_posts_controller.rb
 │   │   │   ├── cas_usages_controller.rb
+│   │   │   ├── delegations_controller.rb
 │   │   │   ├── documentation_controller.rb
 │   │   │   ├── endpoints_controller.rb
 │   │   │   ├── errors_controller.rb
@@ -888,6 +891,7 @@
 │   │   │   ├── authorization_requests_management.rb
 │   │   │   ├── cas_usages_management.rb
 │   │   │   ├── datapass_webhooks.rb
+│   │   │   ├── delegations_management.rb
 │   │   │   ├── global_http_errors_management.rb
 │   │   │   ├── prolong_token_wizard_management.rb
 │   │   │   ├── public_token_magic_links_management.rb
@@ -896,7 +900,8 @@
 │   │   │   ├── transfer_tokens_management.rb
 │   │   │   └── user_management.rb
 │   │   ├── editor
-│   │   │   └── authorization_requests_controller.rb
+│   │   │   ├── authorization_requests_controller.rb
+│   │   │   └── delegations_controller.rb
 │   │   ├── editor_controller.rb
 │   │   ├── provider
 │   │   │   └── dashboard_controller.rb
@@ -930,8 +935,10 @@
 │   │   │   │   └── send_email.rb
 │   │   │   └── tokens
 │   │   │       ├── ban_token.rb
+│   │   │       ├── create_token.rb
 │   │   │       ├── regenerate_token.rb
-│   │   │       └── send_ban_email.rb
+│   │   │       ├── send_ban_email.rb
+│   │   │       └── validate_expiration.rb
 │   │   ├── application_interactor.rb
 │   │   ├── datapass_webhook
 │   │   │   ├── adapt_v2_to_v1.rb
@@ -952,6 +959,9 @@
 │   │   │   ├── schedule_authorization_request_emails.rb
 │   │   │   ├── schedule_create_formulaire_qf_resources_job.rb
 │   │   │   └── update_mailjet_contacts.rb
+│   │   ├── editor_delegation
+│   │   │   ├── create.rb
+│   │   │   └── revoke.rb
 │   │   ├── magic_link
 │   │   │   └── create_model.rb
 │   │   ├── token
@@ -1027,6 +1037,7 @@
 │   │   │   └── abstract_api_class.rb
 │   │   ├── documentation_searchable_chunk.rb
 │   │   ├── editor.rb
+│   │   ├── editor_delegation.rb
 │   │   ├── entreprise.rb
 │   │   ├── magic_link.rb
 │   │   ├── organization.rb
@@ -1039,7 +1050,8 @@
 │   │   │   ├── audit_notifications
 │   │   │   │   └── create.rb
 │   │   │   └── tokens
-│   │   │       └── ban.rb
+│   │   │       ├── ban.rb
+│   │   │       └── create.rb
 │   │   ├── application_organizer.rb
 │   │   ├── datapass_webhook
 │   │   │   ├── api_entreprise.rb
@@ -1101,7 +1113,8 @@
 │       │   ├── tokens
 │       │   │   ├── bans
 │       │   │   │   └── new.html.erb
-│       │   │   └── index.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
 │       │   └── users
 │       │       ├── edit.html.erb
 │       │       └── index.html.erb
@@ -1285,7 +1298,9 @@
 │       │       ├── transfer_ownership.html.mjml
 │       │       └── transfer_ownership.text.erb
 │       ├── editor
-│       │   └── authorization_requests
+│       │   ├── authorization_requests
+│       │   │   └── index.html.erb
+│       │   └── delegations
 │       │       └── index.html.erb
 │       ├── errors
 │       │   └── show.html.erb
@@ -1371,7 +1386,8 @@
 │           │   └── _header.html.erb
 │           ├── endpoints
 │           │   ├── _property.html.erb
-│           │   └── example.html.erb
+│           │   ├── example.html.erb
+│           │   └── status.html.erb
 │           ├── faq
 │           │   └── _faq_entry.html.erb
 │           ├── pages
@@ -1644,7 +1660,10 @@
 │   │   ├── 20260114112301_downcase_user_emails.rb
 │   │   ├── 20260205164936_create_authorization_request_security_settings.rb
 │   │   ├── 20260305000000_add_scopes_to_authorization_requests.rb
-│   │   └── 20260305000001_add_index_on_authorization_requests_scopes.rb
+│   │   ├── 20260305000001_add_index_on_authorization_requests_scopes.rb
+│   │   ├── 20260305100000_create_editor_delegations.rb
+│   │   ├── 20260305100001_add_delegations_enabled_to_editors.rb
+│   │   └── 20260305100002_validate_editor_delegations_foreign_keys.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker
@@ -2325,6 +2344,7 @@
 │   │   ├── authorization_requests.rb
 │   │   ├── datapass_webhooks.rb
 │   │   ├── datapass_webhooks_v2.rb
+│   │   ├── editor_delegations.rb
 │   │   ├── editors.rb
 │   │   ├── entreprises.rb
 │   │   ├── magic_links.rb
@@ -2383,11 +2403,14 @@
 │   │   │   ├── show_token_spec.rb
 │   │   │   ├── signin_process_datapass_spec.rb
 │   │   │   └── stats_spec.rb
+│   │   ├── authorization_requests
+│   │   │   └── delegations_spec.rb
 │   │   ├── datapass_webhooks
 │   │   │   └── mails_spec.rb
 │   │   ├── editor
 │   │   │   ├── access_spec.rb
-│   │   │   └── authorization_requests_spec.rb
+│   │   │   ├── authorization_requests_spec.rb
+│   │   │   └── delegations_spec.rb
 │   │   ├── prolong_token_build_spec.rb
 │   │   ├── prolong_token_spec.rb
 │   │   ├── prolong_token_start_spec.rb
@@ -2411,8 +2434,10 @@
 │   ├── i18n_spec.rb
 │   ├── interactors
 │   │   ├── admin
-│   │   │   └── audit_notifications
-│   │   │       └── create_model_spec.rb
+│   │   │   ├── audit_notifications
+│   │   │   │   └── create_model_spec.rb
+│   │   │   └── tokens
+│   │   │       └── validate_expiration_spec.rb
 │   │   ├── datapass_webhook
 │   │   │   ├── api_particulier
 │   │   │   │   ├── create_formulaire_qf_collectivity_spec.rb
@@ -2429,6 +2454,9 @@
 │   │   │   ├── revoke_current_token_spec.rb
 │   │   │   ├── schedule_authorization_request_emails_spec.rb
 │   │   │   └── update_mailjet_contacts_spec.rb
+│   │   ├── editor_delegation
+│   │   │   ├── create_spec.rb
+│   │   │   └── revoke_spec.rb
 │   │   └── user
 │   │       └── proconnect_login_spec.rb
 │   ├── jobs
@@ -2482,6 +2510,7 @@
 │   │   ├── authorization_request_security_settings_spec.rb
 │   │   ├── authorization_request_spec.rb
 │   │   ├── documentation_searchable_chunk_spec.rb
+│   │   ├── editor_delegation_spec.rb
 │   │   ├── editor_spec.rb
 │   │   ├── entreprise_spec.rb
 │   │   ├── magic_link_spec.rb
@@ -2568,4 +2597,4 @@
 │   └── .gitkeep
 └── vendor
     └── .keep
-302 directories, 2342 files
+307 directories, 2366 files
