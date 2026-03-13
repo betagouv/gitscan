@@ -97,6 +97,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260205151009_anonymized_stats
 │   │   │   └── migration.sql
+│   │   ├── 20260211082635_dgccrf
+│   │   │   └── migration.sql
 │   │   ├── 20260217085946_add_life_cycle_score
 │   │   │   └── migration.sql
 │   │   ├── 20260217172805_mandatory_score
@@ -128,6 +130,7 @@
 │   │   └── tshirt.svg
 │   ├── images
 │   │   ├── catalog.svg
+│   │   ├── conclusion.svg
 │   │   ├── contract.svg
 │   │   ├── distributor.png
 │   │   ├── document.svg
@@ -227,9 +230,14 @@
 │   │   │   └── page.tsx
 │   │   ├── mentions-legales
 │   │   │   └── page.tsx
+│   │   ├── ordres-de-grandeur
+│   │   │   └── page.tsx
 │   │   ├── organisation
 │   │   │   ├── page.tsx
 │   │   │   └── type
+│   │   │       └── page.tsx
+│   │   ├── organisations
+│   │   │   └── [organizationId]
 │   │   │       └── page.tsx
 │   │   ├── page.tsx
 │   │   ├── plan-du-site
@@ -269,12 +277,20 @@
 │   │   │   ├── BrandProductsTable.module.css
 │   │   │   ├── BrandProductsTable.tsx
 │   │   │   ├── BrandsList.module.css
-│   │   │   └── BrandsList.tsx
+│   │   │   ├── BrandsList.tsx
+│   │   │   ├── DGCCRFBrandProductsTable.tsx
+│   │   │   ├── DGCCRFExportButton.tsx
+│   │   │   ├── DGCCRFFilter.module.css
+│   │   │   └── DGCCRFFilter.tsx
 │   │   ├── Button
 │   │   │   ├── Loading.module.css
 │   │   │   ├── Loading.tsx
 │   │   │   ├── LoadingButton.tsx
 │   │   │   └── ProConnect.tsx
+│   │   ├── Dgccrf
+│   │   │   ├── Informations.tsx
+│   │   │   ├── Search.tsx
+│   │   │   └── SearchResult.tsx
 │   │   ├── Documentation
 │   │   │   ├── AllDocs.tsx
 │   │   │   ├── Default.tsx
@@ -333,6 +349,7 @@
 │   │   │   ├── DistributorOrganization.tsx
 │   │   │   ├── Informations.module.css
 │   │   │   ├── Informations.tsx
+│   │   │   ├── Links.tsx
 │   │   │   ├── MyOrganization.tsx
 │   │   │   ├── OrganizationName.module.css
 │   │   │   ├── OrganizationName.tsx
@@ -378,6 +395,8 @@
 │   │   ├── Statistics
 │   │   │   ├── StatsList.module.css
 │   │   │   └── StatsList.tsx
+│   │   ├── Stats
+│   │   │   └── Metabase.tsx
 │   │   ├── Table
 │   │   │   ├── Table.module.css
 │   │   │   └── Table.tsx
@@ -435,7 +454,9 @@
 │   ├── serverFunctions
 │   │   ├── admin.ts
 │   │   ├── brand.ts
+│   │   ├── dgccrf.ts
 │   │   ├── export.ts
+│   │   ├── metabase.ts
 │   │   ├── organization.ts
 │   │   ├── product.ts
 │   │   ├── siret.ts
@@ -553,6 +574,8 @@
 │       ├── BrandDetail.tsx
 │       ├── Brands.tsx
 │       ├── ConditionsGeneralesUtilisation.tsx
+│       ├── DGCCRFHome.tsx
+│       ├── DGCCRFStats.tsx
 │       ├── Declarations.tsx
 │       ├── Documentation.tsx
 │       ├── EmptyProduct.tsx
@@ -564,7 +587,8 @@
 │       ├── Login.tsx
 │       ├── Logout.tsx
 │       ├── MentionsLegales.tsx
-│       ├── Organization.tsx
+│       ├── MyOrganization.tsx
+│       ├── OrganizationDetail.tsx
 │       ├── OrganizationType.tsx
 │       ├── PlanDuSite.tsx
 │       ├── PolitiqueDeConfidentialite.tsx
@@ -574,4 +598,4 @@
 │       ├── SearchProducts.tsx
 │       └── Statistics.tsx
 └── tsconfig.json
-145 directories, 431 files
+151 directories, 449 files
