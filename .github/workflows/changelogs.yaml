@@ -43,6 +43,7 @@ jobs:
                   git config user.name "BetaBot"
                   git config user.email "infra@incubateur.net"
                   git add ./repos/*/*/CHANGELOG-generated.md
+                  git add ./repos/*/CHANGELOG-generated.md
 
                   if git diff --staged --quiet; then
                     echo "No changes to commit"
