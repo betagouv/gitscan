@@ -1,20 +1,20 @@
 # Synthèse d'activité : etalab (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations significatives sur plusieurs fronts chez etalab. L'API d'administration ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)) a été enrichie avec de nouvelles intégrations d'API (CNOUS, CNAV/PSU) et des fonctionnalités d'administration des tokens et de visualisation des requêtes.  Le Data Pass ([data_pass](/repos/etalab/data_pass)) a vu des améliorations de l'expérience utilisateur avec la gestion des habilitations et l'ajout de pages légales, ainsi que des optimisations techniques.  Des efforts importants ont également été déployés pour améliorer la qualité et la normalisation des données de transport, notamment via le profil NeTEx ([transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr)) et le site transport ([transport-site](/repos/etalab/transport-site)).
+La semaine écoulée a été marquée par une activité soutenue sur plusieurs fronts chez etalab. L'API d'administration ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)) a connu des évolutions majeures avec l'intégration de nouvelles API gouvernementales (CNOUS, DGFIP, MSA, CNAV) et l'amélioration de la gestion des tokens et des autorisations.  L'accent a également été mis sur l'amélioration de l'expérience utilisateur avec l'ajout de tableaux de bord et d'interfaces plus conviviales.  Dans le domaine du transport, des améliorations significatives ont été apportées à la recherche de données et à la validation des données NeTEx et GTFS, renforçant la qualité et l'accessibilité des informations pour les acteurs du secteur.
 
 ## Sécurité
-Des contrôles d'accès renforcés ont été implémentés dans l'API d'administration ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)).
+- Rotation annuelle du token webhook pour renforcer la sécurité dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) et [data_pass](/repos/etalab/data_pass).
+- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
 
 ## Autres changements notables
-- Refactorisation de la gestion des requêtes API avec un pattern facade dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
-- Remplacement du dashboard Metabase par un dashboard natif dans [data_pass](/repos/etalab/data_pass).
-- Restructuration des fichiers et publication de la version 2.4.0 du profil France NeTEx dans [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr).
-- Amélioration significative du support NeTEx sur le site transport ([transport-site](/repos/etalab/transport-site)).
-- Désactivation du log de requêtes dans le plug TokenAuth pour améliorer la performance et la sécurité dans [transport-site](/repos/etalab/transport-site).
+- Mise à jour de Postgres et TimescaleDB dans l'environnement CI de [transport-site](/repos/etalab/transport-site).
+- Publication de la v2.4.0 du profil France NeTEx dans [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) avec des modifications structurelles et des clarifications importantes.
+- Amélioration de la gestion des erreurs XSD dans le traitement NeTEx dans [transport-site](/repos/etalab/transport-site).
 
 ## Dépôts les plus actifs
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles intégrations d'API et amélioration de la sécurité et de l'administration.
-- [data_pass](/repos/etalab/data_pass) : Amélioration de l'expérience utilisateur et optimisations techniques.
-- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Préparation et publication de la nouvelle version du profil NeTEx France.
-- [transport-site](/repos/etalab/transport-site) : Amélioration du support NeTEx et de la consolidation IRVE.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nombreuses intégrations d'API et amélioration de la gestion des autorisations.
+- [data_pass](/repos/etalab/data_pass) : Amélioration de la gestion des habilitations FranceConnect et ajout de fonctionnalités de révocation.
+- [transport-site](/repos/etalab/transport-site) : Amélioration significative de la recherche de données et ajout de rapports de validation NeTEx.
+- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication d'une nouvelle version majeure du profil France NeTEx.
+- [transport-validator](/repos/etalab/transport-validator) : Amélioration de la validation des données GTFS, notamment pour le calendrier et la langue.

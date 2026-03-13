@@ -2,33 +2,32 @@
 
 ## Résumé de l'activité
 
-L'organisation suitenumerique a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses projets phares. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités dans Calendars, Drive, Meet et Messages. La sécurité a également été une priorité, avec des correctifs apportés à st-deploycenter et meet. Des optimisations techniques ont été réalisées dans de nombreux dépôts pour améliorer les performances et la stabilité, ainsi que pour faciliter le développement et le déploiement. L'accent a été mis sur l'amélioration de l'accessibilité et l'ajout de fonctionnalités pour faciliter le partage et la collaboration.
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Les efforts se sont concentrés sur l'amélioration de la sécurité, de l'accessibilité et des performances des applications existantes, notamment Calendars, Meet, Messages et Docs. Plusieurs dépôts ont bénéficié de mises à jour techniques importantes, comme la migration vers de nouvelles versions de librairies et l'optimisation du code. L'ajout de nouvelles fonctionnalités, comme le partage de calendriers ([calendars](/repos/suitenumerique/calendars)) et l'importation de fichiers ([messages](/repos/suitenumerique/messages)), témoigne d'une volonté constante d'améliorer l'expérience utilisateur.
 
 ## Sécurité
 
 Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
 
-- **st-deploycenter**: Correction d'un contournement des vérifications frontend des domaines ProConnect et implémentation de `can_admin_maildomains` pour Messages.
-- **meet**: Renforcement de la validation des entrées API pour prévenir les vulnérabilités et correction de failles XSS et IDOR dans **messages**.
-- **st-home**: Ajout d'une liste noire de domaines pour renforcer la sécurité et prévenir l'utilisation de liens potentiellement dangereux.
+- Correction de vulnérabilités dans Django dans [django-lasuite](/repos/suitenumerique/django-lasuite) et [find](/repos/suitenumerique/find).
+- Mise à jour de la librairie Next dans [st-deploycenter](/repos/suitenumerique/st-deploycenter) pour corriger une vulnérabilité.
+- Blocage des domaines potentiellement dangereux et des URL non sécurisées provenant de DILA dans [st-home](/repos/suitenumerique/st-home).
 
 ## Autres changements notables
 
-Plusieurs évolutions techniques majeures ont été apportées :
+Plusieurs changements techniques majeurs ont été effectués :
 
-- **docs**: Migration vers `uvicorn` pour potentiellement améliorer les performances et ajout de support pour la plateforme arm64 dans les builds Docker. Correction de vulnérabilités de sécurité avec l'ajout de fichiers `.trivyignore`.
-- **conversations**: Migration de ESLint vers la version 9 et optimisation du rendu du markdown en streaming.
-- **drive**: Refactorisation de l'architecture de gestion des accès pour une meilleure performance et amélioration de la gestion des tâches asynchrones avec Celery.
-- **livekit-sip**: Amélioration de la gestion des paquets RTP et ajout de logs plus détaillés pour faciliter le diagnostic.
-- **st-ansible**: Ajout de tests d'intégration avec Molecule et configuration de GitHub Actions pour l'exécution automatique des tests.
-- **st-home**: Ajout d'une commande `make db-restore` pour faciliter la restauration de la base de données et désactivation des logs Nginx.
+- Migration de ESLint vers la version 9 dans [conversations](/repos/suitenumerique/conversations).
+- Refonte de l'architecture de [messages](/repos/suitenumerique/messages) avec uv, rustfs et caddy.
+- Ajout du support de l'architecture ARM64 dans plusieurs dépôts : [calendars](/repos/suitenumerique/calendars), [docs](/repos/suitenumerique/docs), [drive](/repos/suitenumerique/drive), [find](/repos/suitenumerique/find), [st-home](/repos/suitenumerique/st-home).
+- Mise en place de tests automatisés avec Molecule et GitHub Actions dans [st-ansible](/repos/suitenumerique/st-ansible).
+- Utilisation de `uvicorn` pour le backend de [docs](/repos/suitenumerique/docs) pour potentiellement améliorer les performances.
 
 ## Dépôts les plus actifs
 
-- **calendars**: Ajout de fonctionnalités de partage de calendriers, de liens RSVP et d'importation d'événements, ainsi que l'ajout de support ARM64 pour les images Docker.
-- **messages**: Ajout de l'importation de fichiers PST et mbox, d'images dans le corps des messages et correction de failles XSS.
-- **meet**: Amélioration de l'accessibilité, correction de bugs et renforcement de la sécurité.
-- **drive**: Amélioration de la gestion des partages de fichiers et dossiers, ajout de la création de fichiers à partir de modèles et refactorisation de l'architecture de gestion des accès.
-- **docs**: Ajout de la fonctionnalité de déplacement de documents, intégration de Blocknote AI et amélioration de l'accessibilité.
-- **st-deploycenter**: Amélioration de l'administration et de l'import de données pour les organisations et les rôles.
-- **ui-kit**: Amélioration de l'expérience utilisateur avec des corrections de bugs et des améliorations de la documentation.
+- [calendars](/repos/suitenumerique/calendars) : Ajout de fonctionnalités de partage de calendriers, d'importation d'événements et de liens RSVP.
+- [docs](/repos/suitenumerique/docs) : Ajout de la fonctionnalité de déplacement de documents et intégration de Blocknote AI.
+- [messages](/repos/suitenumerique/messages) : Ajout de la possibilité d'exporter des boîtes aux lettres au format mbox et d'ajouter des images via BlockNote.
+- [meet](/repos/suitenumerique/meet) : Amélioration de la sécurité, de l'accessibilité et correction de bugs.
+- [drive](/repos/suitenumerique/drive) : Ajout de la création de fichiers à partir de modèles et implémentation du mirroring de fichiers vers S3.
+- [django-lasuite](/repos/suitenumerique/django-lasuite) : Amélioration de l'interface d'administration et gestion des types de fichiers.
+- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de l'administration et de l'import de données pour les organisations et les rôles.

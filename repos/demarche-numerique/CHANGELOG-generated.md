@@ -1,14 +1,15 @@
 # Synthèse d'activité : demarche-numerique (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation "demarche-numerique" a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités clés pour les instructeurs et les utilisateurs finaux. L'intégration du traitement du quotient familial via l'API Particulier est une avancée significative, simplifiant la gestion des dossiers. Les améliorations apportées à l'interface d'administration, notamment la réactivation des utilisateurs et la gestion des groupes d'instructeurs, facilitent le travail des équipes. Enfin, des optimisations techniques ont été réalisées pour améliorer les performances globales de la plateforme.
+La semaine écoulée a été marquée par des améliorations significatives pour l'expérience utilisateur sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr). L'intégration de la reconnaissance automatique des justificatifs de domicile simplifie grandement le processus de soumission des demandes pour les citoyens. Des améliorations de l'interface et la possibilité de réactiver des utilisateurs bloqués renforcent également les capacités d'administration du service. Parallèlement, des optimisations techniques ont été apportées pour améliorer les performances globales de la plateforme.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé cette semaine.
+- Migration du traitement des images vers la librairie Vips dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), supprimant MiniMagick et améliorant ainsi la sécurité.
 
 ## Autres changements notables
-- Migration de MiniMagick vers ruby-vips dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour optimiser le traitement des images en termes de performances et de robustesse.
-- Optimisation des requêtes SQL dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour améliorer les performances globales de l'application.
+- Optimisation des requêtes en base de données pour améliorer les performances sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Construction d'images Docker publiques à partir de paquets Debian pour [ds_proxy](/repos/demarche-numerique/ds_proxy), facilitant le déploiement et la maintenance.
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Ce dépôt a été le plus actif, avec des améliorations significatives de l'interface utilisateur, l'intégration du quotient familial et des optimisations techniques.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration de l'expérience utilisateur et optimisation des performances de la plateforme principale.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration du processus de construction et de déploiement du proxy de chiffrement.

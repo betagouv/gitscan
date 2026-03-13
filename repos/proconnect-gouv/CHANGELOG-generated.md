@@ -1,19 +1,25 @@
 # Synthèse d'activité : proconnect-gouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur, la sécurité et la maintenance technique de ses différentes plateformes.  Une refonte majeure de l'interface utilisateur de [federation](/repos/proconnect-gouv/federation) a été déployée, rendant la plateforme plus accessible et réactive.  Des améliorations significatives ont également été apportées à [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec l'ajout de nouvelles fonctionnalités pour la gestion des organisations et des utilisateurs, ainsi que l'amélioration de la sécurité avec l'ajout d'une politique de vulnérabilité. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour renforcer la sécurité et la stabilité.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur, la correction de bugs et le renforcement de la sécurité. Des améliorations significatives ont été apportées à [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec de nouvelles fonctionnalités pour les mairies et une interface utilisateur remaniée.  [hyyypertool](/repos/proconnect-gouv/hyyypertool) a bénéficié d'une refonte de la gestion des accès et de la sécurité. Plusieurs dépôts ont également reçu des mises à jour de dépendances pour maintenir la stabilité et la sécurité des applications.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de dépendances visant à corriger des vulnérabilités et améliorer la sécurité globale.  [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) a notamment ajouté une politique de vulnérabilité et un point de contact pour le signalement. [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) a également ajouté un fichier `SECURITY.md` pour le signalement des vulnérabilités.
+Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
+- Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
+- Ajout d'une politique de sécurité et d'un moyen de signaler les vulnérabilités dans [federation](/repos/proconnect-gouv/federation).
+- Ajout d'un fichier `SECURITY.md` et d'une politique de sécurité pour la signalisation des vulnérabilités dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Mise à jour des actions GitHub pour une meilleure sécurité dans [oidc2fer](/repos/proconnect-gouv/oidc2fer).
 
 ## Autres changements notables
-- Passage à l'utilisation de modules ESNext dans [federation](/repos/proconnect-gouv/federation).
-- Suppression de l'authentification à deux facteurs (2FA) dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
 - Migration de la vérification des petites associations vers le domaine dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Suppression de l'intégration Zammad dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- Passage au module ESNext dans [federation](/repos/proconnect-gouv/federation).
+- Suppression de l'intégration Zammad et remplacement par Crisp dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- Suppression de la sécurité au niveau des lignes (Row-Level Security) dans Hyperbase dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).
+- Mise à jour de Next.js dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
 
 ## Dépôts les plus actifs
-- [federation](/repos/proconnect-gouv/federation) : Refonte majeure de l'interface utilisateur et corrections de bugs liés à l'authentification et à la gestion des erreurs.
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Ajout de nouvelles fonctionnalités pour la gestion des organisations et des utilisateurs, et amélioration de la sécurité.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la sécurité, ajout d'un ID de token Entra et mise à jour de la documentation.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Amélioration de l'accessibilité et corrections de bugs liés à la modération.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration significative de l'interface utilisateur et ajout de nouvelles fonctionnalités pour les mairies.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Refonte de la gestion des accès et de la sécurité, avec suppression de dépendances obsolètes.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et amélioration de la validation des données.
+- [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) : Mises à jour des actions Docker et des dépendances pour maintenir un environnement de test stable.
+- [federation](/repos/proconnect-gouv/federation) : Nouvelle interface d'administration et corrections de bugs.
