@@ -190,7 +190,7 @@ yarn test
 ### Prerequisites
 
 ```bash
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn install --frozen-lockfile
 ```
 
@@ -198,7 +198,7 @@ yarn install --frozen-lockfile
 
 ```bash
 dks switch medium
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn start:low
 ```
 
@@ -214,7 +214,7 @@ yarn test:e2e:open
 
 ```bash
 dks switch medium
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn test:low:chrome-desktop --env TAGS='not @hybridge and not @ignore'
 ```
 
@@ -222,7 +222,7 @@ yarn test:low:chrome-desktop --env TAGS='not @hybridge and not @ignore'
 
 ```bash
 dks switch hybridge
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn test:low:chrome-desktop --env TAGS='@hybridge'
 ```
 
@@ -230,14 +230,14 @@ yarn test:low:chrome-desktop --env TAGS='@hybridge'
 
 ```bash
 dks switch small
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn test:low:snapshot
 ```
 
 ## Run other tests
 
 ```bash
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 yarn lint --fix
 yarn prettier --write
 cd $PC_ROOT/federation/back
@@ -249,7 +249,7 @@ yarn lint --fix
 ## Run test against integ01 env
 
 ```bash
-cd $PC_ROOT/federation/quality/fca
+cd $PC_ROOT/federation/quality
 # Get the credentials from a team member
 CYPRESS_TEST_ENV=integ01 CYPRESS_EXPLOIT_USER_NAME=proconnect-test-local CYPRESS_EXPLOIT_USER_PASS='xxx' CYPRESS_EXPLOIT_USER_TOTP='xxx' yarn start:low
 ```
@@ -284,7 +284,7 @@ $ docker compose run --rm init-core
 > It will run the migration script every time the `core-fca-low` container is started.  
 > No need to do it manually when using the `dks switch`
 
-## Generate a new version of class-validator-0.14.2
+## Generate a new version of class-validator-0.15.1
 
 We forked the class-validator package because we needed inhertiance features and is not yet merged [into the main branch](https://github.com/typestack/class-validator/pull/2641).
 
@@ -301,7 +301,7 @@ Update the version attribute of `class-validator/package.json`:
 ```json
 {
   "name": "class-validator",
-  "version": "0.14.2-proconnect.1",
+  "version": "0.15.1-proconnect.1",
   "...": "..."
 }
 ```
@@ -328,7 +328,7 @@ npm pack ./build
 Then push the built package in a dedicated branch:
 
 ```bash
-git checkout -b build-0.14.2-proconnect.1
+git checkout -b build-0.15.1-proconnect.1
 find . -mindepth 1 -maxdepth 1 \
   ! -name '.git' \
   ! -name '.idea' \
@@ -338,7 +338,7 @@ find . -mindepth 1 -maxdepth 1 \
 mv build/* .
 rmdir build
 git add .
-git commit -m "Build version 0.14.2-proconnect.1"
+git commit -m "Build version 0.15.1-proconnect.1"
 git push
 ```
 
@@ -347,7 +347,7 @@ Update `federation/back/package.json`:
 ```json
 {
   "dependencies": {
-    "class-validator": "git+https://github.com/proconnect-gouv/class-validator.git#build-0.14.2-proconnect.1"
+    "class-validator": "git+https://github.com/proconnect-gouv/class-validator.git#build-0.15.1-proconnect.1"
   }
 }
 ```

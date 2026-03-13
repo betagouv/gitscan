@@ -1,28 +1,27 @@
 ## Changelog : federation (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a déployé une refonte majeure de l'interface utilisateur, améliorant significativement l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant la gestion des erreurs et l'authentification. Des améliorations techniques ont également été réalisées pour optimiser la performance et la sécurité de la plateforme.
+Ce mois-ci, l'équipe a déployé une nouvelle interface utilisateur pour l'administration, améliorant l'expérience utilisateur et la réactivité. Des corrections de bugs ont également été apportées, notamment concernant la gestion des identifiants et la compatibilité avec Kubernetes. De nombreuses dépendances ont été mises à jour pour assurer la sécurité et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Nouvelle interface utilisateur avec une mise en page à une colonne, améliorant la réactivité et l'accessibilité. [#802](https://github.com/proconnect-gouv/federation/pull/802)
-- Ajout d'un bouton de contact pour signaler les problèmes lors d'erreurs internes (500). [#829](https://github.com/proconnect-gouv/federation/pull/829)
-- Amélioration de la gestion des erreurs et des messages d'information liés à l'authentification OIDC. [#853](https://github.com/proconnect-gouv/federation/pull/853)
-- Possibilité d'utiliser la touche "autocomplete" sur les formulaires d'administration. [#865](https://github.com/proconnect-gouv/federation/pull/865)
-- Correction d'un bug empêchant la connexion des administrateurs. [#898](https://github.com/proconnect-gouv/federation/pull/898)
-- Suppression du support email par défaut pour l'IDP par défaut. [#886](https://github.com/proconnect-gouv/federation/pull/886)
+- Nouvelle interface utilisateur pour l'administration, avec une mise en page en une seule colonne. [#802](https://github.com/proconnect-gouv/federation/pull/802)
+- Amélioration de la réactivité de l'interface d'administration sur les différents appareils. [#868](https://github.com/proconnect-gouv/federation/pull/868)
+- Correction d'un bug empêchant la connexion à l'administration après être revenu en arrière. [#898](https://github.com/proconnect-gouv/federation/pull/898)
+- Correction de la sensibilité à la casse lors de la réconciliation des identifiants. [#867](https://github.com/proconnect-gouv/federation/pull/867)
+- Suppression de l'affichage d'un message d'erreur obsolète concernant l'email par défaut. [#882](https://github.com/proconnect-gouv/federation/pull/882)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances, notamment Cypress (14.5.4 -> 15.1.0), Prettier (3.6.2 -> 3.8.1), Docker Compose, et diverses bibliothèques JavaScript et Node.js.
-- Passage à l'utilisation de modules ESNext. [#855](https://github.com/proconnect-gouv/federation/pull/855)
-- Amélioration de la gestion des variables booléennes dans Ansible. [#849](https://github.com/proconnect-gouv/federation/pull/849)
-- Ajout d'une alerte en cas d'utilisation de l'environnement de test. [#848](https://github.com/proconnect-gouv/federation/pull/848)
-- Suppression d'un index TTL obsolète sur MongoDB. [#850](https://github.com/proconnect-gouv/federation/pull/850)
-- Ajout de tests Cypress pour Kubernetes. [#903](https://github.com/proconnect-gouv/federation/pull/903) et [#899](https://github.com/proconnect-gouv/federation/pull/899)
-- Augmentation du timeout de Mongoose watcher. [#904](https://github.com/proconnect-gouv/federation/pull/904)
+- Mise à jour de nombreuses dépendances (Node.js, TypeScript, Docker, Express, Mongoose, Passport, bcryptjs, class-validator, amqplib, ioredis, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Amélioration de la configuration de Dependabot pour une gestion plus efficace des mises à jour de dépendances. [#975](https://github.com/proconnect-gouv/federation/pull/975)
+- Ajout de tests Cypress pour la réconciliation PCI et l'exploitation en environnement Kubernetes. [#963](https://github.com/proconnect-gouv/federation/pull/963), [#924](https://github.com/proconnect-gouv/federation/pull/924), [#903](https://github.com/proconnect-gouv/federation/pull/903)
+- Mise à jour de la configuration de l'environnement Kubernetes pour les tests. [#960](https://github.com/proconnect-gouv/federation/pull/960)
+- Nettoyage du code et suppression de fichiers inutilisés.
+- Passage au module ESNext. [#855](https://github.com/proconnect-gouv/federation/pull/855)
+- Correction d'un avertissement du compilateur TypeScript. [#962](https://github.com/proconnect-gouv/federation/pull/962)
 
 ### Autres changements
-- Suppression de code inutilisé (FSA5, SP3).
-- Suppression du fichier manifest.webmanifest.
-- Mise à jour de la politique de sécurité et ajout d'un rapport de vulnérabilités. [#867](https://github.com/proconnect-gouv/federation/pull/867) et [#868](https://github.com/proconnect-gouv/federation/pull/868)
-- Amélioration des tests unitaires et d'intégration.
-- Nettoyage du code et refactoring.
+- Mise à jour de la documentation de qualité. [#925](https://github.com/proconnect-gouv/federation/pull/925)
+- Ajout d'une politique de sécurité et d'un moyen de signaler les vulnérabilités. [#869](https://github.com/proconnect-gouv/federation/pull/869)
+- Mise à jour de la configuration ESLint. [#908](https://github.com/proconnect-gouv/federation/pull/908)
+- Suppression du fichier manifest.webmanifest. [#872](https://github.com/proconnect-gouv/federation/pull/872)
+- Augmentation du délai d'attente de Mongoose. [#855](https://github.com/proconnect-gouv/federation/pull/855)

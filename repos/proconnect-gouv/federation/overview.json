@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification pour les professionnels, avec une nouvelle interface utilisateur moderne et responsive.",
+  "description": "La solution qui vous identifie en tant que professionnel. Cette solution permet l'identification des professionnels et offre une interface d'administration pour la gestion des utilisateurs et des configurations.",
   "language": "TypeScript",
   "features": [
     "Authentification utilisateur",
-    "Gestion des identités",
-    "Intégration avec des fournisseurs d'identité",
-    "Gestion des erreurs et alertes",
-    "Configuration de l'authentification OIDC"
+    "Gestion des erreurs",
+    "Authentification OIDC",
+    "Interface d'administration",
+    "Gestion des utilisateurs",
+    "Gestion des configurations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,34 +21,31 @@
     "Passport",
     "bcryptjs",
     "class-validator",
-    "amqp-connection-manager",
+    "amqplib",
     "ioredis"
   ],
   "components": [
     "Backend Node.js",
     "API REST",
     "Base de données MongoDB",
-    "Interface utilisateur React (en cours de développement)",
     "Docker containers",
-    "CI/CD workflows"
+    "Frontend React (admin)",
+    "Tests Cypress"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "email-password"
     ]
   },
   "tests": [
     "Jest",
-    "Cypress",
-    "Tests d'intégration",
-    "Tests unitaires"
+    "Cypress"
   ],
   "workflows": [
-    "docker-stack",
-    "CI/CD pipelines (GitHub Actions)"
+    "CI/CD with GitHub Actions"
   ],
-  "lastActivity": "2026-03-05T20:23:47+01:00",
+  "lastActivity": "2026-03-12T19:11:19+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -58,14 +56,14 @@
     "openIssues": null
   },
   "tags": [
-    "authentification",
-    "identité numérique",
-    "professionnels",
-    "administration",
+    "ProConnect",
+    "FranceConnect",
+    "Authentification",
+    "Administration",
     "Node.js",
     "TypeScript",
     "Docker",
-    "OIDC",
-    "SAML"
+    "MongoDB",
+    "OIDC"
   ]
 }
