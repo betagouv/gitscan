@@ -1,33 +1,39 @@
 ## Changelog : benefriches (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur une refonte significative de l'expérience utilisateur pour la création de projets, notamment pour les projets urbains et photovoltaïques. Des améliorations ont été apportées à l'interface, à la logique de création, et à la gestion des erreurs. Des efforts ont également été déployés pour améliorer la qualité du code, la documentation et l'infrastructure de test.
+Ce mois-ci, l'équipe a concentré ses efforts sur la refonte du processus de création de projets, en particulier pour les zones urbaines. De nombreuses améliorations ont été apportées à l'interface utilisateur, à la gestion des données et à l'expérience globale de création de projet. Des corrections de bugs et des optimisations ont également été réalisées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une intégration avec un chat d'assistance (Crisp) pour aider les utilisateurs rencontrant des problèmes d'authentification. [#84f110f](https://github.com/incubateur-ademe/benefriches/commit/84f110f)
-- Amélioration de la recherche d'adresse avec une mise en cache des résultats pour éviter les problèmes de concurrence. [#d2bc5e3](https://github.com/incubateur-ademe/benefriches/commit/d2bc5e3)
-- Ajout de pictogrammes pour les différents types d'usages dans la création de projets urbains. [#9c399c9](https://github.com/incubateur-ademe/benefriches/commit/9c399c9)
-- Possibilité de supprimer des projets depuis les listes et la page d'impacts. [#bef2355](https://github.com/incubateur-ademe/benefriches/commit/bef2355)
-- Ajout de dialogues de blocage de navigation lors de la création de sites et de projets pour éviter les pertes de données. [#7f91806](https://github.com/incubateur-ademe/benefriches/commit/7f91806)
-- Mise à jour de l'affichage des types de sols pour assurer une cohérence dans les vues avec les diagrammes circulaires. [#86dbd6d](https://github.com/incubateur-ademe/benefriches/commit/86dbd6d)
-- Ajout de la possibilité de créer des projets agricoles et des friches personnalisés via les tests E2E. [#9f15613](https://github.com/incubateur-ademe/benefriches/commit/9f15613) et [#7cc2d58](https://github.com/incubateur-ademe/benefriches/commit/7cc2d58)
-- Amélioration de l'affichage des données dans les formulaires de surface au sol des projets urbains. [#1ab513a](https://github.com/incubateur-ademe/benefriches/commit/1ab513a)
-- Ajout de la possibilité d'archiver un projet de reconversion via l'API. [#d8b3adb](https://github.com/incubateur-ademe/benefriches/commit/d8b3adb)
+- Ajout d'une intégration avec Crisp pour l'assistance utilisateur, notamment en cas de problème avec la réception des liens d'authentification.
+- Amélioration du processus de création de projets en zone urbaine avec l'ajout de nouvelles étapes : gestion, introduction, espaces vacants, emplois à temps plein, contamination des sols, stockage du carbone dans les sols, et distribution des surfaces.
+- Ajout de pictogrammes pour les différents types d'usage dans la création de projets urbains.
+- Possibilité de supprimer des projets et leurs impacts directement depuis l'interface.
+- Ajout de tests E2E pour la création de sites personnalisés (friches et agricoles).
+- Mise à jour de la version de l'API PVGIS.
+- Ajout d'un indicateur "projet non modifiable" pour les projets de démonstration.
+- Amélioration de la gestion des types de sols et des surfaces dans les formulaires.
+- Modification des libellés et de l'ordre des étapes dans le processus de création de projet.
+- Ajout d'une option pour sauter certaines étapes de création de projet en fonction du type de site.
+- Amélioration de la recherche d'adresse avec une fonction de détection automatique et un délai pour éviter les requêtes excessives.
 
 ### Évolutions techniques
-- Refactorisation importante du code de création de projets urbains pour une meilleure organisation et maintenabilité.
-- Déplacement des factories de création de sites vers l'API pour une meilleure séparation des préoccupations. [#34d7f51](https://github.com/incubateur-ademe/benefriches/commit/34d7f51)
-- Utilisation du pattern ViewData pour simplifier la gestion des données dans les composants web.
-- Amélioration des tests unitaires et E2E pour une meilleure couverture et fiabilité.
-- Mise en place d'un pattern de gateway pour l'intégration de services tiers (analytics, Crisp chat).
-- Refactorisation de la structure des dossiers pour une meilleure organisation du code.
-- Amélioration de l'installation des dépendances dans le script `create-worktree.sh`.
-- Mise à jour des dépendances (oxlint, prettier, etc.). [#52bae42](https://github.com/incubateur-ademe/benefriches/commit/52bae42)
+- Refactorisation importante du code de création de projet, notamment pour les zones urbaines, avec une meilleure organisation et une séparation des préoccupations.
+- Migration de la logique de création de site vers l'API pour une meilleure cohérence.
+- Utilisation du pattern ViewData pour une gestion plus centralisée des données affichées dans l'interface utilisateur.
+- Amélioration de la gestion des états avec Redux et l'utilisation de sélecteurs typés.
+- Mise à jour des dépendances (NestJS, oxlint, prettier, pnpm).
+- Amélioration des tests E2E avec l'ajout de nouvelles assertions et la correction de problèmes de concurrence.
+- Amélioration de l'infrastructure CI/CD avec la configuration des variables d'environnement et la simplification des scripts.
+- Mise en place d'un système de gestion des décisions d'architecture (ADR).
+- Refonte de l'organisation des dossiers et des fichiers pour une meilleure maintenabilité.
 
 ### Autres changements
-- Ajout de documentation sur les décisions architecturales (ADR).
-- Mise à jour de la documentation CLAUDE.md pour refléter les changements et les bonnes pratiques.
-- Amélioration des scripts d'outils pour faciliter le développement et la revue de code.
-- Correction de plusieurs erreurs mineures et améliorations de la qualité du code.
-- Clarification des messages et des libellés dans l'interface utilisateur.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
+- Documentation : Mise à jour de la documentation interne (CLAUDE.md) pour refléter les changements apportés au code et à l'architecture.
+- Nettoyage du code et suppression du code mort.
+- Amélioration des messages d'erreur et des indications pour l'utilisateur.
+- Correction de problèmes de configuration et de dépendances.
+- Ajout d'un script pour faciliter la création d'environnements de travail locaux.
+- Correction de problèmes de performance et de stabilité.
+- Mise à jour des scripts de déploiement.
+- Ajout d'un skill pour la planification de features.
+- Correction de la configuration du Content Security Policy (CSP) pour autoriser les domaines de Crisp.

@@ -42,7 +42,9 @@
 │       │   └── SKILL.md
 │       ├── security-review
 │       │   └── SKILL.md
-│       └── worktree
+│       ├── worktree
+│       │   └── SKILL.md
+│       └── worktree-merge
 │           └── SKILL.md
 ├── .dockerignore
 ├── .env.e2e
@@ -59,6 +61,17 @@
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
+├── .planning
+│   ├── PROJECT.md
+│   ├── codebase
+│   │   ├── ARCHITECTURE.md
+│   │   ├── CONCERNS.md
+│   │   ├── CONVENTIONS.md
+│   │   ├── INTEGRATIONS.md
+│   │   ├── STACK.md
+│   │   ├── STRUCTURE.md
+│   │   └── TESTING.md
+│   └── config.json
 ├── .tooling
 │   ├── prettierrc.js
 │   └── tsconfig.base.json
@@ -629,6 +642,8 @@
 │   │   │   ├── UrbanZoneSiteCreationPage.ts
 │   │   │   └── urbanProjectCategoryLabels.ts
 │   │   ├── playwright.config.ts
+│   │   ├── scripts
+│   │   │   └── wait-for-stack.js
 │   │   ├── tests
 │   │   │   ├── homepage
 │   │   │   │   └── homepage.spec.ts
@@ -1474,13 +1489,120 @@
 │       │   │   │   │   │   │   ├── siteManagement.actions.ts
 │       │   │   │   │   │   │   ├── siteManagement.handlers.ts
 │       │   │   │   │   │   │   └── siteManagement.selectors.ts
-│       │   │   │   │   │   └── spaces
+│       │   │   │   │   │   ├── spaces
+│       │   │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   │   └── spacesSteps.spec.ts
+│       │   │   │   │   │   │   ├── spaces.actions.ts
+│       │   │   │   │   │   │   ├── spaces.handlers.ts
+│       │   │   │   │   │   │   └── spaces.selectors.ts
+│       │   │   │   │   │   └── urban-zone
 │       │   │   │   │   │       ├── __tests__
-│       │   │   │   │   │       │   └── spacesSteps.spec.ts
-│       │   │   │   │   │       ├── spaces.actions.ts
-│       │   │   │   │   │       ├── spaces.handlers.ts
-│       │   │   │   │   │       └── spaces.selectors.ts
+│       │   │   │   │   │       │   └── urbanZoneSteps.spec.ts
+│       │   │   │   │   │       ├── urbanZone.actions.ts
+│       │   │   │   │   │       ├── urbanZone.handlers.ts
+│       │   │   │   │   │       └── urbanZoneType.selectors.ts
 │       │   │   │   │   └── urban-zone
+│       │   │   │   │       ├── __tests__
+│       │   │   │   │       │   └── _testStoreHelpers.ts
+│       │   │   │   │       ├── helpers
+│       │   │   │   │       │   ├── completeStep.ts
+│       │   │   │   │       │   ├── navigateToStep.ts
+│       │   │   │   │       │   ├── stateHelpers.ts
+│       │   │   │   │       │   └── stepsSequence.ts
+│       │   │   │   │       ├── step-handlers
+│       │   │   │   │       │   ├── stepHandler.type.ts
+│       │   │   │   │       │   ├── stepHandlerRegistry.ts
+│       │   │   │   │       │   └── urbanZoneStepperConfig.ts
+│       │   │   │   │       ├── steps
+│       │   │   │   │       │   ├── contamination
+│       │   │   │   │       │   │   ├── soilsContamination.handler.ts
+│       │   │   │   │       │   │   ├── soilsContamination.schema.ts
+│       │   │   │   │       │   │   ├── soilsContamination.selectors.ts
+│       │   │   │   │       │   │   ├── soilsContamination.step.spec.ts
+│       │   │   │   │       │   │   ├── soilsContamination.stepperConfig.ts
+│       │   │   │   │       │   │   ├── soilsContaminationIntroduction.handler.ts
+│       │   │   │   │       │   │   └── soilsContaminationIntroduction.stepperConfig.ts
+│       │   │   │   │       │   ├── creation-result
+│       │   │   │   │       │   │   ├── creationResult.handler.ts
+│       │   │   │   │       │   │   └── creationResult.stepperConfig.ts
+│       │   │   │   │       │   ├── final-summary
+│       │   │   │   │       │   │   ├── finalSummary.handler.ts
+│       │   │   │   │       │   │   ├── finalSummary.selectors.ts
+│       │   │   │   │       │   │   └── finalSummary.stepperConfig.ts
+│       │   │   │   │       │   ├── land-parcels
+│       │   │   │   │       │   │   ├── land-parcels-selection
+│       │   │   │   │       │   │   │   ├── landParcelsSelection.handler.ts
+│       │   │   │   │       │   │   │   ├── landParcelsSelection.schema.ts
+│       │   │   │   │       │   │   │   ├── landParcelsSelection.selectors.ts
+│       │   │   │   │       │   │   │   ├── landParcelsSelection.step.spec.ts
+│       │   │   │   │       │   │   │   └── landParcelsSelection.stepperConfig.ts
+│       │   │   │   │       │   │   └── land-parcels-surface-distribution
+│       │   │   │   │       │   │       ├── landParcelsSurfaceDistribution.handler.ts
+│       │   │   │   │       │   │       ├── landParcelsSurfaceDistribution.schema.ts
+│       │   │   │   │       │   │       ├── landParcelsSurfaceDistribution.selectors.ts
+│       │   │   │   │       │   │       ├── landParcelsSurfaceDistribution.step.spec.ts
+│       │   │   │   │       │   │       └── landParcelsSurfaceDistribution.stepperConfig.ts
+│       │   │   │   │       │   ├── management
+│       │   │   │   │       │   │   ├── full-time-jobs-equivalent
+│       │   │   │   │       │   │   │   ├── fullTimeJobsEquivalent.handler.ts
+│       │   │   │   │       │   │   │   ├── fullTimeJobsEquivalent.schema.ts
+│       │   │   │   │       │   │   │   ├── fullTimeJobsEquivalent.selectors.ts
+│       │   │   │   │       │   │   │   └── fullTimeJobsEquivalent.stepperConfig.ts
+│       │   │   │   │       │   │   ├── management-introduction
+│       │   │   │   │       │   │   │   ├── managementIntroduction.handler.ts
+│       │   │   │   │       │   │   │   └── managementIntroduction.stepperConfig.ts
+│       │   │   │   │       │   │   ├── management-remaining.step.spec.ts
+│       │   │   │   │       │   │   ├── manager
+│       │   │   │   │       │   │   │   ├── manager.handler.ts
+│       │   │   │   │       │   │   │   ├── manager.schema.ts
+│       │   │   │   │       │   │   │   ├── manager.selectors.ts
+│       │   │   │   │       │   │   │   ├── manager.step.spec.ts
+│       │   │   │   │       │   │   │   └── manager.stepperConfig.ts
+│       │   │   │   │       │   │   ├── vacant-commercial-premises-floor-area
+│       │   │   │   │       │   │   │   ├── vacantCommercialPremisesFloorArea.handler.ts
+│       │   │   │   │       │   │   │   ├── vacantCommercialPremisesFloorArea.schema.ts
+│       │   │   │   │       │   │   │   ├── vacantCommercialPremisesFloorArea.selectors.ts
+│       │   │   │   │       │   │   │   └── vacantCommercialPremisesFloorArea.stepperConfig.ts
+│       │   │   │   │       │   │   └── vacant-commercial-premises-footprint
+│       │   │   │   │       │   │       ├── vacantCommercialPremisesFootprint.handler.ts
+│       │   │   │   │       │   │       ├── vacantCommercialPremisesFootprint.schema.ts
+│       │   │   │   │       │   │       ├── vacantCommercialPremisesFootprint.selectors.ts
+│       │   │   │   │       │   │       └── vacantCommercialPremisesFootprint.stepperConfig.ts
+│       │   │   │   │       │   ├── naming
+│       │   │   │   │       │   │   ├── naming.handler.ts
+│       │   │   │   │       │   │   ├── naming.schema.ts
+│       │   │   │   │       │   │   ├── naming.selectors.ts
+│       │   │   │   │       │   │   ├── naming.step.spec.ts
+│       │   │   │   │       │   │   ├── naming.stepperConfig.ts
+│       │   │   │   │       │   │   ├── namingIntroduction.handler.ts
+│       │   │   │   │       │   │   └── namingIntroduction.stepperConfig.ts
+│       │   │   │   │       │   ├── per-parcel-soils
+│       │   │   │   │       │   │   ├── commercialActivityArea.step.spec.ts
+│       │   │   │   │       │   │   ├── land-parcel-buildings-floor-area
+│       │   │   │   │       │   │   │   └── landParcelBuildingsFloorArea.schema.ts
+│       │   │   │   │       │   │   ├── land-parcel-soils-distribution
+│       │   │   │   │       │   │   │   └── landParcelSoilsDistribution.schema.ts
+│       │   │   │   │       │   │   ├── multiParcelNavigation.step.spec.ts
+│       │   │   │   │       │   │   ├── parcelBuildingsFloorArea.selectors.ts
+│       │   │   │   │       │   │   ├── parcelBuildingsFloorArea.stepperConfig.ts
+│       │   │   │   │       │   │   ├── parcelSoilsDistribution.selectors.ts
+│       │   │   │   │       │   │   ├── parcelSoilsDistribution.stepperConfig.ts
+│       │   │   │   │       │   │   ├── parcelSoilsHandlerFactory.ts
+│       │   │   │   │       │   │   └── parcelStepMapping.ts
+│       │   │   │   │       │   ├── soils-and-spaces-introduction
+│       │   │   │   │       │   │   ├── soilsAndSpacesIntroduction.handler.ts
+│       │   │   │   │       │   │   └── soilsAndSpacesIntroduction.stepperConfig.ts
+│       │   │   │   │       │   └── summary
+│       │   │   │   │       │       ├── soils-carbon-storage
+│       │   │   │   │       │       │   ├── soilsCarbonStorage.handler.ts
+│       │   │   │   │       │       │   ├── soilsCarbonStorage.step.spec.ts
+│       │   │   │   │       │       │   └── soilsCarbonStorage.stepperConfig.ts
+│       │   │   │   │       │       └── soils-summary
+│       │   │   │   │       │           ├── soilsSummary.handler.ts
+│       │   │   │   │       │           ├── soilsSummary.selectors.ts
+│       │   │   │   │       │           └── soilsSummary.stepperConfig.ts
+│       │   │   │   │       ├── urban-zone.actions.ts
+│       │   │   │   │       ├── urbanZone.reducer.ts
 │       │   │   │   │       └── urbanZoneSteps.ts
 │       │   │   │   ├── infrastructure
 │       │   │   │   │   ├── address-service
@@ -1621,6 +1743,64 @@
 │       │   │   │       ├── routes.ts
 │       │   │   │       ├── site-nature
 │       │   │   │       │   ├── SiteNatureForm.tsx
+│       │   │   │       │   └── index.tsx
+│       │   │   │       ├── urban-zone
+│       │   │   │       │   ├── StepContent.tsx
+│       │   │   │       │   ├── UrbanZoneStepper.tsx
+│       │   │   │       │   ├── creation-result
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── final-summary
+│       │   │   │       │   │   ├── UrbanZoneFinalSummary.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── full-time-jobs-equivalent
+│       │   │   │       │   │   ├── FullTimeJobsEquivalentForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── land-parcel-buildings-floor-area
+│       │   │   │       │   │   ├── LandParcelBuildingsFloorAreaForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── land-parcel-soils-distribution
+│       │   │   │       │   │   ├── LandParcelSoilsDistributionForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── land-parcels-introduction
+│       │   │   │       │   │   ├── LandParcelsIntroduction.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── land-parcels-selection
+│       │   │   │       │   │   ├── LandParcelsSelectionForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── land-parcels-surface-distribution
+│       │   │   │       │   │   ├── LandParcelsSurfaceDistributionForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── management-introduction
+│       │   │   │       │   │   ├── UrbanZoneManagementIntroduction.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── manager
+│       │   │   │       │   │   ├── ManagerForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── naming
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── naming-introduction
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── parcelTypeLabels.ts
+│       │   │   │       │   ├── soils-and-spaces-introduction
+│       │   │   │       │   │   ├── SoilsAndSpacesIntroduction.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── soils-carbon-storage
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── soils-contamination
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── soils-contamination-introduction
+│       │   │   │       │   │   ├── UrbanZoneSoilsContaminationIntroduction.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── soils-summary
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── vacant-commercial-premises-floor-area
+│       │   │   │       │   │   ├── VacantCommercialPremisesFloorAreaForm.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   └── vacant-commercial-premises-footprint
+│       │   │   │       │       ├── VacantCommercialPremisesFootprintForm.tsx
+│       │   │   │       │       └── index.tsx
+│       │   │   │       ├── urban-zone-type
+│       │   │   │       │   ├── UrbanZoneTypeForm.tsx
 │       │   │   │       │   └── index.tsx
 │       │   │   │       ├── use-mutability
 │       │   │   │       │   ├── UseMutabilityForm.tsx
@@ -2320,6 +2500,7 @@
 │       │   │   │   │       ├── soilsCarbonStorage.action.ts
 │       │   │   │   │       └── urban-project
 │       │   │   │   │           ├── helpers
+│       │   │   │   │           │   ├── completeStep.spec.ts
 │       │   │   │   │           │   ├── completeStep.ts
 │       │   │   │   │           │   ├── mutateState.spec.ts
 │       │   │   │   │           │   ├── mutateState.ts
@@ -2869,6 +3050,7 @@
 │   │   ├── 0005-gateway-pattern-for-third-party-browser-sdks.md
 │   │   ├── 0006-step-handler-pattern-for-renewable-energy-wizard.md
 │   │   ├── 0007-move-api-only-domain-code-out-of-shared.md
+│   │   ├── 0008-static-per-parcel-type-step-ids-for-urban-zone.md
 │   │   └── README.md
 │   └── feature-example.md
 ├── package.json
@@ -3063,4 +3245,4 @@
 └── scripts
     ├── create-worktree.sh
     └── remove-worktree.sh
-852 directories, 2213 files
+903 directories, 2344 files
