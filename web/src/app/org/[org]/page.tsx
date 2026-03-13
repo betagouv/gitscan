@@ -42,9 +42,6 @@ export default async function OrgActivityPage({ params }: PageProps) {
         <h1 className="text-2xl font-bold text-slate-900 mb-2">
           Organisation introuvable
         </h1>
-        <p className="text-slate-600 mb-6">
-          Pas de changelog disponible pour {org}.
-        </p>
       </div>
     );
   }
@@ -112,8 +109,8 @@ export default async function OrgActivityPage({ params }: PageProps) {
             Dépôts ({orgRepos.length})
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {orgRepos.map((repo) => (
-              <RepoCard key={repo.name} repo={repo} />
+            {orgRepos.map((repo, i) => (
+              <RepoCard key={repo.name + i} repo={repo} />
             ))}
           </div>
         </div>
