@@ -2,7 +2,6 @@
 ├── .buildpacks
 ├── .editorconfig
 ├── .env
-├── .eslintrc
 ├── .github
 │   ├── Charco - Security.png
 │   ├── ISSUE_TEMPLATE
@@ -20,9 +19,7 @@
 ├── .gitignore
 ├── .prettierignore
 ├── .release-it-changeset
-│   ├── .gitkeep
-│   ├── 1772469440-suppression-zammad.md
-│   └── 1772706124-feature.md
+│   └── .gitkeep
 ├── .scalingo
 │   └── buildpack
 │       ├── README.md
@@ -100,6 +97,9 @@
 │   │   │   ├── domains_copy_button_after_refresh.feature
 │   │   │   ├── member_actions.feature
 │   │   │   └── yes_we_hack_domain_verification.feature
+│   │   ├── team
+│   │   │   ├── acces_equipe.feature
+│   │   │   └── gestion_equipe.feature
 │   │   └── users
 │   │       ├── jean_bon.feature
 │   │       ├── raphael_alpha.feature
@@ -183,8 +183,10 @@
 │   │   ├── drizzle.config.ts
 │   │   ├── migrations
 │   │   │   ├── 0000_lethal_maggott.sql
+│   │   │   ├── 0001_abandoned_apocalypse.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
+│   │   │       ├── 0001_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── package.json
 │   │   ├── src
@@ -431,9 +433,14 @@
 │       │   │       ├── get_authenticators_by_user_id.test.ts
 │       │   │       └── index.ts
 │       │   ├── routes
-│       │   │   ├── __dev__
+│       │   │   ├── ___dev___
+│       │   │   │   ├── auth.agentconnect.gouv.fr
+│       │   │   │   │   └── index.tsx
+│       │   │   │   ├── index.ts
 │       │   │   │   ├── live-reload.client.ts
 │       │   │   │   └── reload.tsx
+│       │   │   ├── admin
+│       │   │   │   └── index.ts
 │       │   │   ├── assets
 │       │   │   │   ├── index.ts
 │       │   │   │   └── rewrite.ts
@@ -547,6 +554,11 @@
 │       │   │   │   └── index.tsx
 │       │   │   ├── readyz
 │       │   │   │   └── index.ts
+│       │   │   ├── team
+│       │   │   │   ├── context.ts
+│       │   │   │   ├── get_team_list.query.ts
+│       │   │   │   ├── index.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── users
 │       │   │   │   ├── :id
 │       │   │   │   │   ├── get_authenticators_by_user_id.query.ts
@@ -824,4 +836,4 @@
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-183 directories, 653 files
+187 directories, 661 files

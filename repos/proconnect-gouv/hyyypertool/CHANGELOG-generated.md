@@ -1,31 +1,33 @@
 ## Changelog : hyyypertool (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de Hyyypertool se concentrent sur l'amélioration de la gestion des modérations, la correction de bugs et l'optimisation de la sécurité. Des améliorations ont été apportées à la gestion des notifications, à la vérification des domaines et à l'interface utilisateur, notamment au niveau des filtres et des composants. De nombreuses mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la sécurité de l'application.
+Cette version apporte des améliorations significatives à la gestion des équipes et des accès, ainsi qu'à la sécurité et la robustesse de l'application. Des corrections de bugs ont été implémentées pour améliorer l'expérience utilisateur, notamment concernant la gestion des modérations et des domaines. Des mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la performance de l'outil.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers les EHPAD dans les actions d'investigation [#1383](https://github.com/proconnect-gouv/hyyypertool/pull/1383).
-- Automatisation de la vérification des domaines lors de l'ajout de domaines autorisés [#1433](https://github.com/proconnect-gouv/hyyypertool/pull/1433).
-- Simplification des filtres de modération pour une meilleure lisibilité [#1434](https://github.com/proconnect-gouv/hyyypertool/pull/1434).
-- Refonte du composant de sélection des membres et des domaines en un composant "island" unifié [#1432](https://github.com/proconnect-gouv/hyyypertool/pull/1432).
-- Amélioration de l'accessibilité du tableau avec des liens d'ancrage corrects et une navigation au clavier [#1429](https://github.com/proconnect-gouv/hyyypertool/pull/1429).
-- Envoi des notifications de modération traitées via Crisp [#1441](https://github.com/proconnect-gouv/hyyypertool/pull/1441).
+- Ajout de la gestion des équipes avec contrôle d'accès basé sur les rôles [#1477](https://github.com/proconnect-gouv/hyyypertool/pull/1477)
+- Automatisation de la vérification de domaine lors de l'ajout de domaines autorisés [#1433](https://github.com/proconnect-gouv/hyyypertool/issues/1433)
+- Amélioration du filtre de modération avec la population depuis la base de données et les variables d'environnement.
+- Ajout de l'affichage de la tranche d'effectifs de l'unité légale dans le composant organisation.
+- Amélioration de l'accessibilité des tableaux avec des liens d'ancrage appropriés et une navigation au clavier.
+- Correction d'un bug empêchant la réinitialisation de la page lors de la recherche dans des listes paginées.
+- Correction d'un bug lié à la mise à jour des membres liés lors de la modification du domaine email.
+- Correction d'un bug empêchant l'affichage correct du tableau lors d'un rafraîchissement.
 
 ### Évolutions techniques
-- Suppression de la gestion des Row-Level Security (RLS) dans la base de données [#1475](https://github.com/proconnect-gouv/hyyypertool/pull/1475).
-- Refactor de la configuration et de la structure des middlewares [#1474](https://github.com/proconnect-gouv/hyyypertool/pull/1474).
-- Mise en place d'une double authentification via l'environnement et la base de données [#1476](https://github.com/proconnect-gouv/hyyypertool/pull/1476).
-- Création d'une couche de données "hyperbase" pour une meilleure abstraction de la base de données [#867](https://github.com/proconnect-gouv/hyyypertool/pull/867).
-- Suppression de l'intégration Zammad [#1445](https://github.com/proconnect-gouv/hyyypertool/pull/1445).
-- Suppression du module `@~/core` [#1447](https://github.com/proconnect-gouv/hyyypertool/pull/1447).
-- Mise en place de tests E2E plus robustes avec un mockserver [#1384](https://github.com/proconnect-gouv/hyyypertool/pull/1384).
+- Refactorisation de la configuration et de la structure des middlewares.
+- Suppression de l'intégration Zammad et remplacement par Crisp pour la gestion des tickets de modération.
+- Suppression de la sécurité au niveau des lignes (Row-Level Security) dans Hyperbase.
+- Simplification de la fonction `set_hyyyper_pg` pour accepter une instance Drizzle pré-créée.
+- Mise en place d'une authentification duale via les variables d'environnement et les utilisateurs Hyperbase.
+- Suppression du fichier `.eslintrc`.
+- Intégration de Sentry pour l'initiation précoce et l'ajout de profiling et du SDK navigateur.
+- Mise à jour de la couche d'abstraction de la base de données Hyperbase.
 
 ### Autres changements
-- Suppression d'une URL obsolète vers sirene.fr [#1450](https://github.com/proconnect-gouv/hyyypertool/pull/1450).
+- Mise à jour des dépendances : hono, preact, sentry, tailwindcss, etc. (plusieurs commits dependabot)
 - Correction de bugs mineurs et améliorations de la qualité du code.
-- Mises à jour de nombreuses dépendances (voir l'historique des commits pour plus de détails).
-- Ajout de documentation et de commentaires pour améliorer la maintenabilité du code.
-- Suppression de l'utilisation de `hx-include` pour les éléments DOM inexistants [#1431](https://github.com/proconnect-gouv/hyyypertool/pull/1431).
-- Ajout de tests unitaires et E2E pour améliorer la couverture de test.
-- Amélioration de la gestion des erreurs et des notifications.
-- Ajout de profiling Sentry pour une meilleure analyse des performances [#1406](https://github.com/proconnect-gouv/hyyypertool/pull/1406).
+- Suppression de code legacy lié à l'intégration Zammad.
+- Amélioration de la gestion des erreurs et ajout de détails dans les notifications.
+- Simplification du filtre de modération.
+- Suppression de la fonction force join organization.
+- Mise à jour de la documentation.

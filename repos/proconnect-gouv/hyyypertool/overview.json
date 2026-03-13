@@ -1,50 +1,68 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les signalements et les modérations de manière efficace.",
+  "description": "Hyyypertool est un outil de modération backoffice pour MonComptePro. Il permet de gérer et de traiter les modérations, d'automatiser des tâches et d'assurer la sécurité de la plateforme.",
   "language": "TypeScript",
   "features": [
-    "Gestion des notifications",
-    "Filtrage des données",
-    "Vérification des domaines",
-    "Gestion des statuts de modération"
+    "Gestion des modérations",
+    "Vérification de domaine",
+    "Notifications",
+    "Gestion des utilisateurs et des organisations",
+    "Recherche avancée",
+    "Authentification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
+    "Express",
+    "PostgreSQL",
     "Bun",
     "Hono",
-    "Preact",
     "Zod",
-    "htmx",
+    "@gouvfr/dsfr",
+    "htmx.org",
     "Crisp"
   ],
   "components": [
     "Frontend Preact",
     "API REST",
-    "Base de données PostgreSQL"
+    "Base de données PostgreSQL",
+    "Architecture microservices",
+    "Composants HTMX",
+    "Hyperbase (couche d'abstraction de la base de données)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
-    "E2E Testing (Cypress)",
+    "Cypress",
+    "E2E tests",
     "Unit tests"
   ],
   "workflows": [
     "Release it!"
   ],
-  "lastActivity": "2026-03-03T00:00:00Z",
+  "lastActivity": "2026-03-10T00:00:00.000Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "modération",
-    "MonComptePro",
     "administration",
+    "MonComptePro",
     "sécurité",
-    "backoffice"
+    "TypeScript",
+    "Preact",
+    "HTMX",
+    "PostgreSQL"
   ]
 }
