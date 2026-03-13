@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/SocialGouv/cdtn-admin",
   "name": "cdtn-admin",
-  "description": "Cet outil d'administration permet de gérer le contenu du Code du travail numérique. Il offre des fonctionnalités pour l'ingestion de données, la configuration et l'injection de données personnalisées, ainsi que la mise à jour du site.",
+  "description": "Cet outil d'administration permet de gérer le contenu du Code du travail numérique. Il offre des fonctionnalités pour la publication, la mise à jour et la gestion des données, ainsi que l'importation de données externes.",
   "language": "TypeScript",
   "features": [
+    "Authentification utilisateur",
     "Gestion de contenu",
-    "Ingestion de données",
-    "Publication de contenu",
-    "Gestion des thèmes",
-    "Gestion des contributions",
-    "Mise à jour du site",
+    "Publication de données",
+    "Import de données",
     "Gestion des infographies",
-    "Suivi des NOTA"
+    "Gestion des contributions",
+    "Gestion des thèmes",
+    "Gestion des outils"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,42 +19,37 @@
     "Next.js",
     "PostgreSQL",
     "Hasura",
+    "MinIO",
     "Elasticsearch",
-    "pnpm",
-    "Docker",
-    "tiptap"
+    "pnpm"
   ],
   "components": [
     "Frontend React",
     "API REST",
     "Base de données PostgreSQL",
-    "Hasura GraphQL",
     "Elasticsearch",
-    "Microservices (ingester, alert-cli, export-elasticsearch)"
+    "Backend Node.js"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "session"
+      "email-password"
     ]
   },
   "tests": null,
-  "workflows": [
-    "CI/CD (via GitHub Actions)"
-  ],
-  "lastActivity": "2026-02-20T00:00:00Z",
+  "workflows": null,
+  "lastActivity": "2026-03-11T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": null,
   "tags": [
-    "administration",
-    "code du travail",
-    "gestion de contenu",
-    "typescript",
-    "react",
-    "postgresql",
-    "graphql",
-    "elasticsearch"
+    "Code du travail",
+    "Administration",
+    "Gestion de contenu",
+    "TypeScript",
+    "React",
+    "PostgreSQL",
+    "Hasura",
+    "Elasticsearch"
   ]
 }
