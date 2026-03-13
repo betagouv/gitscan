@@ -39,6 +39,17 @@ const sortedComponents = Object.entries(componentStats)
   .sort((a, b) => b[1] - a[1])
   .map(([name]) => name);
 
+const featureStats: Record<string, number> = {};
+data.repos.forEach((repo) => {
+  repo.features?.forEach((c) => {
+    featureStats[c] = (featureStats[c] || 0) + 1;
+  });
+});
+const sortedFeatures = Object.entries(featureStats)
+  .filter(([, count]) => count >= 3)
+  .sort((a, b) => b[1] - a[1])
+  .map(([name]) => name);
+
 // Compute auth method stats
 const authMethodStats: Record<string, number> = {};
 data.repos.forEach((repo) => {
@@ -58,6 +69,7 @@ export default function ReposPage() {
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
   const [selectedAudiences, setSelectedAudiences] = useState<string[]>([]);
   const [selectedComponents, setSelectedComponents] = useState<string[]>([]);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [selectedAuthMethods, setSelectedAuthMethods] = useState<string[]>([]);
   const [hasDocsOnly, setHasDocsOnly] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>("lastActivity");
@@ -106,6 +118,12 @@ export default function ReposPage() {
       );
     }
 
+    if (selectedFeatures.length > 0) {
+      repos = repos.filter((repo) =>
+        selectedFeatures.some((c) => repo.features?.includes(c)),
+      );
+    }
+
     if (selectedAuthMethods.length > 0) {
       repos = repos.filter((repo) =>
         selectedAuthMethods.some((m) => repo.auth?.methods?.includes(m)),
@@ -138,6 +156,7 @@ export default function ReposPage() {
     selectedLanguages,
     selectedAudiences,
     selectedComponents,
+    selectedFeatures,
     selectedAuthMethods,
     hasDocsOnly,
     sortBy,
@@ -151,6 +170,7 @@ export default function ReposPage() {
     selectedLanguages.length > 0 ||
     selectedAudiences.length > 0 ||
     selectedComponents.length > 0 ||
+    selectedFeatures.length > 0 ||
     selectedAuthMethods.length > 0 ||
     hasDocsOnly;
 
@@ -175,23 +195,27 @@ export default function ReposPage() {
               languages={data.languages}
               audiences={sortedAudiences}
               components={sortedComponents}
+              features={sortedFeatures}
               authMethods={sortedAuthMethods}
               selectedOrgs={selectedOrgs}
               selectedLanguages={selectedLanguages}
               selectedAudiences={selectedAudiences}
               selectedComponents={selectedComponents}
+              selectedFeatures={selectedFeatures}
               selectedAuthMethods={selectedAuthMethods}
               hasDocsOnly={hasDocsOnly}
               onOrgChange={setSelectedOrgs}
               onLanguageChange={setSelectedLanguages}
               onAudienceChange={setSelectedAudiences}
               onComponentChange={setSelectedComponents}
+              onFeatureChange={setSelectedFeatures}
               onAuthMethodChange={setSelectedAuthMethods}
               onHasDocsChange={setHasDocsOnly}
               stats={{
                 ...data.stats,
                 byAudience: audienceStats,
                 byComponent: componentStats,
+                byFeature: featureStats,
                 byAuthMethod: authMethodStats,
               }}
             />
@@ -243,6 +267,7 @@ export default function ReposPage() {
                   setSelectedLanguages([]);
                   setSelectedAudiences([]);
                   setSelectedComponents([]);
+                  setSelectedFeatures([]);
                   setSelectedAuthMethods([]);
                   setHasDocsOnly(false);
                 }}
