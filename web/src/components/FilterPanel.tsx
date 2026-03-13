@@ -7,17 +7,20 @@ interface FilterPanelProps {
   languages: string[];
   audiences: string[];
   components: string[];
+  features: string[];
   authMethods: string[];
   selectedOrgs: string[];
   selectedLanguages: string[];
   selectedAudiences: string[];
   selectedComponents: string[];
+  selectedFeatures: string[];
   selectedAuthMethods: string[];
   hasDocsOnly: boolean;
   onOrgChange: (orgs: string[]) => void;
   onLanguageChange: (languages: string[]) => void;
   onAudienceChange: (audiences: string[]) => void;
   onComponentChange: (components: string[]) => void;
+  onFeatureChange: (features: string[]) => void;
   onAuthMethodChange: (methods: string[]) => void;
   onHasDocsChange: (value: boolean) => void;
   stats: {
@@ -25,6 +28,7 @@ interface FilterPanelProps {
     byLanguage: Record<string, number>;
     byAudience: Record<string, number>;
     byComponent: Record<string, number>;
+    byFeature: Record<string, number>;
     byAuthMethod: Record<string, number>;
   };
 }
@@ -34,23 +38,28 @@ export function FilterPanel({
   languages,
   audiences,
   components,
+  features,
   authMethods,
   selectedOrgs,
   selectedLanguages,
   selectedAudiences,
   selectedComponents,
+  selectedFeatures,
   selectedAuthMethods,
   hasDocsOnly,
   onOrgChange,
   onLanguageChange,
   onAudienceChange,
   onComponentChange,
+  onFeatureChange,
   onAuthMethodChange,
   onHasDocsChange,
   stats,
 }: FilterPanelProps) {
   const [showAllComponents, setShowAllComponents] = useState(false);
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
   const componentLimit = 15;
+  const featureLimit = 15;
 
   const handleOrgToggle = (org: string) => {
     if (selectedOrgs.includes(org)) {
@@ -84,6 +93,14 @@ export function FilterPanel({
     }
   };
 
+  const handleFeatureToggle = (feature: string) => {
+    if (selectedFeatures.includes(feature)) {
+      onFeatureChange(selectedFeatures.filter((c) => c !== feature));
+    } else {
+      onFeatureChange([...selectedFeatures, feature]);
+    }
+  };
+
   const handleAuthMethodToggle = (method: string) => {
     if (selectedAuthMethods.includes(method)) {
       onAuthMethodChange(selectedAuthMethods.filter((m) => m !== method));
@@ -95,6 +112,9 @@ export function FilterPanel({
   const visibleComponents = showAllComponents
     ? components
     : components.slice(0, componentLimit);
+  const visibleFeatures = showAllFeatures
+    ? features
+    : features.slice(0, featureLimit);
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-5">
@@ -181,6 +201,44 @@ export function FilterPanel({
               </label>
             ))}
         </div>
+      </div>
+
+      {/* Features */}
+      <div className="mb-6">
+        <h3 className="text-sm font-medium text-slate-700 mb-3">
+          Fonctionnalités
+        </h3>
+        <div className="space-y-2">
+          {visibleFeatures.map((feature) => (
+            <label
+              key={feature}
+              className="flex items-center gap-3 cursor-pointer group"
+            >
+              <input
+                type="checkbox"
+                checked={selectedFeatures.includes(feature)}
+                onChange={() => handleFeatureToggle(feature)}
+                className="checkbox"
+              />
+              <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors flex-1">
+                {feature}
+              </span>
+              <span className="text-xs text-slate-400 tabular-nums">
+                {stats.byFeature[feature] || 0}
+              </span>
+            </label>
+          ))}
+        </div>
+        {components.length > featureLimit && (
+          <button
+            onClick={() => setShowAllFeatures(!showAllFeatures)}
+            className="text-sm text-primary-600 hover:text-primary-700 font-medium mt-2"
+          >
+            {showAllFeatures
+              ? "Voir moins"
+              : `Voir plus (${features.length - featureLimit})`}
+          </button>
+        )}
       </div>
 
       {/* Components */}
