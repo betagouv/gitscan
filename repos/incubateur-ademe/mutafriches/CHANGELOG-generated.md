@@ -1,13 +1,19 @@
 ## Changelog : mutafriches (30 derniers jours)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'application, notamment l'ajout de la fonctionnalité de gestion de zones urbaines et de parcelles multiples, ainsi que des corrections concernant l'affichage des statistiques de dates. Une nouvelle version (1.6.0) a été publiée.
+Les dernières mises à jour de Mutafriches améliorent significativement les fonctionnalités d'analyse des friches urbaines.  De nouvelles données (ZAER, zones urbaines, inondations) ont été intégrées, permettant une évaluation plus précise de la mutabilité.  Des corrections ont été apportées pour améliorer la fiabilité des statistiques et une nouvelle fonctionnalité de gestion de multiparcelles a été ajoutée.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de gestion des zones urbaines [#62](https://github.com/incubateur-ademe/mutafriches/issues/62)
-- Ajout de la fonctionnalité de gestion de parcelles multiples [#56](https://github.com/incubateur-ademe/mutafriches/issues/56)
-- Correction de l'affichage des dates dans les statistiques [#60](https://github.com/incubateur-ademe/mutafriches/issues/60), [#61](https://github.com/incubateur-ademe/mutafriches/issues/61)
-- Correction d'un problème sur la route des statistiques [#59](https://github.com/incubateur-ademe/mutafriches/issues/59)
+- Intégration des données ZAER (Zones d'Aménagement Exceptionnel) et des zones inondables pour une analyse plus complète. [#63](https://github.com/incubateur-ademe/mutafriches/issues/63)
+- Ajout de la gestion des zones urbaines. [#62](https://github.com/incubateur-ademe/mutafriches/issues/62)
+- Implémentation de la fonctionnalité de gestion de multiparcelles, permettant d'analyser plusieurs parcelles simultanément. [#56](https://github.com/incubateur-ademe/mutafriches/issues/56)
+- Correction de bugs liés à l'affichage des dates dans les statistiques. [#60](https://github.com/incubateur-ademe/mutafriches/issues/60), [#61](https://github.com/incubateur-ademe/mutafriches/issues/61)
+- Correction de la route des statistiques. [#59](https://github.com/incubateur-ademe/mutafriches/issues/59)
 
 ### Évolutions techniques
-- Publication de la version 1.6.0 [#57](https://github.com/incubateur-ademe/mutafriches/issues/57)
+- Mise à jour des dépendances (correctifs et versions mineures). [#65](https://github.com/incubateur-ademe/mutafriches/issues/65)
+- Bump de la version à 1.6.0. [#57](https://github.com/incubateur-ademe/mutafriches/issues/57)
+- Ajout d'un script de configuration pour faciliter l'installation. [#66](https://github.com/incubateur-ademe/mutafriches/issues/66)
+
+### Autres changements
+- Mise à jour de la documentation. [#64](https://github.com/incubateur-ademe/mutafriches/issues/64)

@@ -2,6 +2,7 @@
 ├── .claude
 │   ├── settings.json
 │   └── settings.local.json
+├── .env.example
 ├── .gitattributes
 ├── .github
 │   ├── dependabot.yml
@@ -140,7 +141,9 @@
 │   │   │   │       │   ├── energie-enrichissement.service.spec.ts
 │   │   │   │       │   └── energie-enrichissement.service.ts
 │   │   │   │       ├── enr
-│   │   │   │       │   └── enr-enrichissement.service.ts
+│   │   │   │       │   ├── enr-enrichissement.service.ts
+│   │   │   │       │   ├── enr.calculator.spec.ts
+│   │   │   │       │   └── enr.calculator.ts
 │   │   │   │       ├── enrichissement.service.spec.ts
 │   │   │   │       ├── enrichissement.service.ts
 │   │   │   │       ├── georisques
@@ -615,13 +618,17 @@
 │       │   │   ├── enums
 │       │   │   │   ├── code-erreur.enum.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── risque-cavites-souterraines.enum.ts
+│       │   │   │   ├── risque-inondation.enum.ts
 │       │   │   │   ├── risque-naturel.enum.ts
+│       │   │   │   ├── risque-retrait-gonflement-argile.enum.ts
 │       │   │   │   ├── source.enum.ts
 │       │   │   │   ├── statut-enrichissement.enum.ts
 │       │   │   │   ├── trame-verte-bleue.enum.ts
 │       │   │   │   ├── zonage-environnemental.enum.ts
 │       │   │   │   ├── zonage-patrimonial.enum.ts
-│       │   │   │   └── zonage-reglementaire.enum.ts
+│       │   │   │   ├── zonage-reglementaire.enum.ts
+│       │   │   │   └── zone-acceleration-enr.enum.ts
 │       │   │   └── index.ts
 │       │   ├── evaluation
 │       │   │   ├── constants
@@ -739,5 +746,7 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scalingo.json
+├── scripts
+│   └── setup.sh
 └── tsconfig.json
-186 directories, 556 files
+187 directories, 564 files
