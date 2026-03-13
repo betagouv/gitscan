@@ -95,6 +95,7 @@
 │   │   │   │   │   ├── creation
 │   │   │   │   │   │   ├── tables
 │   │   │   │   │   │   │   ├── create_table_ae_etablissement.sql
+│   │   │   │   │   │   │   ├── create_table_ae_lien_succession.sql
 │   │   │   │   │   │   │   ├── create_table_ae_unite_legale.sql
 │   │   │   │   │   │   │   ├── create_table_ban_adresses.sql
 │   │   │   │   │   │   │   ├── create_table_ban_lieux_dits.sql
@@ -108,6 +109,7 @@
 │   │   │   │   │   │   │   └── create_table_laposte_code_postal.sql
 │   │   │   │   │   │   └── views
 │   │   │   │   │   │       ├── create_view_ae_etablissement_in_use.sql
+│   │   │   │   │   │       ├── create_view_ae_lien_succession_in_use.sql
 │   │   │   │   │   │       ├── create_view_ae_unite_legale_in_use.sql
 │   │   │   │   │   │       ├── create_view_ban_adresses_in_use.sql
 │   │   │   │   │   │       ├── create_view_ban_lieux_dits_in_use.sql
@@ -134,6 +136,7 @@
 │   │   │   │   └── xcoms.py
 │   │   │   ├── dags
 │   │   │   │   ├── clone_ae_etablissement.py
+│   │   │   │   ├── clone_ae_lien_succession.py
 │   │   │   │   ├── clone_ae_unite_legale.py
 │   │   │   │   ├── clone_ban_adresses.py
 │   │   │   │   ├── clone_ban_lieux_dits.py
@@ -559,25 +562,14 @@
 │   │   │   │   │   ├── exposure_epci.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
+│   │   │   │       ├── exposure_stats_acteur_no_siren_actif.sql
+│   │   │   │       ├── exposure_stats_acteur_no_siret_actif.sql
 │   │   │   │       ├── exposure_stats_acteur_revision_siren.sql
 │   │   │   │       ├── exposure_stats_acteur_revision_siret.sql
 │   │   │   │       ├── exposure_stats_acteur_revision_statut.sql
 │   │   │   │       ├── exposure_stats_acteur_siren_siret_history.sql
 │   │   │   │       ├── exposure_stats_acteur_stacked_history.sql
 │   │   │   │       ├── exposure_stats_distance_nb_acteur_by_action.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_stacked_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_stacked_rounded_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_visible_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_visible_with_siren_actif_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_visible_with_siren_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_visible_with_siret_actif_history.sql
-│   │   │   │       ├── exposure_stats_nb_acteur_visible_with_siret_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_stacked_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_stacked_rounded_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_visible_with_siren_actif_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_visible_with_siren_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_visible_with_siret_actif_history.sql
-│   │   │   │       ├── exposure_stats_rate_acteur_visible_with_siret_history.sql
 │   │   │   │       └── schema.yml
 │   │   │   ├── intermediate
 │   │   │   │   ├── acteurs
@@ -671,6 +663,8 @@
 │   │   │   │   │   ├── marts_enrich_acteurs_villes_suggest_typo.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
+│   │   │   │       ├── marts_acteur_no_siren_actif.sql
+│   │   │   │       ├── marts_acteur_no_siret_actif.sql
 │   │   │   │       ├── marts_acteur_revision.sql
 │   │   │   │       ├── marts_acteur_revision_statut.sql
 │   │   │   │       ├── marts_acteur_siren_actif.sql
@@ -698,7 +692,9 @@
 │   │           └── test_not_empty_string.sql
 │   ├── notebooks
 │   │   ├── 20241031_acteurs_inactifs_reparation_lvao_ancien_cma.ipynb
+│   │   ├── README.md
 │   │   ├── __init__.py
+│   │   ├── clustering_from_file.ipynb
 │   │   └── depuplicate_from_xlsx.ipynb
 │   ├── plugins
 │   │   └── .gitkeep
@@ -1766,6 +1762,8 @@
     │   ├── qfdmo
     │   │   ├── acteur_factory.py
     │   │   ├── action_factory.py
+    │   │   ├── admin
+    │   │   │   └── test_source_export.py
     │   │   ├── carte_config_factory.py
     │   │   ├── sscatobj_factory.py
     │   │   ├── test_acteur.py
@@ -1797,4 +1795,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-340 directories, 1459 files
+341 directories, 1456 files
