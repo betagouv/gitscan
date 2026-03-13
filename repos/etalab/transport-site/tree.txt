@@ -269,6 +269,7 @@
 │       │   │   ├── autocomplete.ex
 │       │   │   ├── breaking_news.ex
 │       │   │   ├── commune.ex
+│       │   │   ├── company.ex
 │       │   │   ├── contact.ex
 │       │   │   ├── data_conversion.ex
 │       │   │   ├── data_import.ex
@@ -390,10 +391,9 @@
 │       │   │   │   ├── bnlc_to_geo_data.ex
 │       │   │   │   ├── gbfs_stations_to_geo_data.ex
 │       │   │   │   ├── irve_to_geo_data.ex
-│       │   │   │   ├── lez_to_geo_data.ex
-│       │   │   │   └── parkings_relais_to_geo_data.ex
+│       │   │   │   └── lez_to_geo_data.ex
 │       │   │   ├── gtfs_*.ex  (6 files)
-│       │   │   ├── import_*.ex  (7 files)
+│       │   │   ├── import_*.ex  (8 files)
 │       │   │   ├── irve_raw_consolidation_job.ex
 │       │   │   ├── irve_simple_consolidation_job.ex
 │       │   │   ├── multi_validation_with_error_notification_job.ex
@@ -1046,6 +1046,7 @@
 │       │   │   ├── validation.pot
 │       │   │   ├── validations-explanations.pot
 │       │   │   └── validations.pot
+│       │   ├── irve_prioritary_datasets.yml
 │       │   ├── mobilitydata_gtfs_rules.json
 │       │   ├── repo
 │       │   │   └── migrations
@@ -1289,6 +1290,7 @@
 │       │   │       ├── 20260122180704_create_dataset_subtype.exs
 │       │   │       ├── 20260205144049_rename_irve_valid_file_columns.exs
 │       │   │       ├── 20260209120000_add_missing_fields_to_irve_valid_file.exs
+│       │   │       ├── 20260311000000_create_company.exs
 │       │   │       └── sql
 │       │   │           ├── autocomplete_add_dataset.sql
 │       │   │           ├── autocomplete_add_format.sql
@@ -1497,14 +1499,14 @@
 │           │   │   │   ├── bnlc_to_geodata_test.exs
 │           │   │   │   ├── gbfs_stations_to_geo_data_test.exs
 │           │   │   │   ├── irve_to_geodata_test.exs
-│           │   │   │   ├── lez_to_geo_data_test.exs
-│           │   │   │   └── parkings_relais_to_geo_data_test.exs
+│           │   │   │   └── lez_to_geo_data_test.exs
 │           │   │   ├── gtfs_diff_job_test.exs
 │           │   │   ├── gtfs_import_stops_job_test.exs
 │           │   │   ├── gtfs_import_stops_test.exs
 │           │   │   ├── gtfs_rt_metadata_test.exs
 │           │   │   ├── gtfs_rt_multi_validation_job_test.exs
 │           │   │   ├── gtfs_to_db_test.exs
+│           │   │   ├── import_companies_job_test.exs
 │           │   │   ├── import_dataset_contact_points_job_test.exs
 │           │   │   ├── import_dataset_follower_reuser_improved_data_job_test.exs
 │           │   │   ├── import_dataset_followers_job_test.exs
@@ -1780,4 +1782,4 @@
     │   ├── siri_create_doc.exs
     │   └── siri_request_parsing.exs
     └── subquery.exs
-174 directories, 1627 files
+174 directories, 1630 files

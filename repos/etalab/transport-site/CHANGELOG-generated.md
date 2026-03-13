@@ -1,31 +1,41 @@
 ## Changelog : transport-site (30 derniers jours)
 
 ### Résumé
-Le projet transport-site a connu une période d'amélioration continue au cours des 30 derniers jours, avec un accent particulier sur l'amélioration de la validation et de la gestion des données NeTEx, ainsi que sur l'optimisation de la recherche et de l'affichage des jeux de données. Des améliorations ont également été apportées à la consolidation des données IRVE et à l'interface utilisateur, notamment pour l'affichage des métadonnées et la navigation.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la recherche de jeux de données et de ressources, notamment grâce à l'utilisation de données en mémoire pour une meilleure performance. Des améliorations significatives ont également été apportées au traitement et à la validation des données NeTEx, avec l'ajout de rapports téléchargeables et une meilleure gestion des erreurs. Enfin, des corrections et des améliorations diverses ont été apportées à l'interface utilisateur et à l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Possibilité de passer le dashboard Metabase en plein écran. [#5399](https://github.com/etalab/transport-site/issues/5399)
-- Correction d'un overflow des titres de ressources pour une meilleure lisibilité. [#5397](https://github.com/etalab/transport-site/issues/5397)
-- Ajout d'une barre de recherche sur les datasets et les ressources. [#5380](https://github.com/etalab/transport-site/issues/5380)
-- Ajout de la Suisse dans la liste des divisions administratives. [#5367](https://github.com/etalab/transport-site/issues/5367)
-- Amélioration de la recherche : correction du tri sur les jeux de données les plus récents. [#5373](https://github.com/etalab/transport-site/issues/5373)
-- Ajout d'un menu de navigation sur la page de détails des ressources. [#5311](https://github.com/etalab/transport-site/issues/5311)
-- Possibilité de télécharger les rapports NeTEx au format Parquet. [#5375](https://github.com/etalab/transport-site/issues/5375)
-- Ajout d'un indicateur "Périmé" sur les cartouches GTFS Flex. [#5332](https://github.com/etalab/transport-site/issues/5332)
-- Affichage des dates de validité dans les cartouches NeTEx. [#5331](https://github.com/etalab/transport-site/issues/5331)
+- Amélioration de la recherche de jeux de données et de ressources, avec la possibilité de filtrer par sous-type et l'utilisation de données en mémoire pour une meilleure performance. [#5380] [#5340] [#5333]
+- Ajout d'une barre de recherche sur les pages de jeux de données et de ressources. [#5380]
+- Possibilité de passer le dashboard Metabase en plein écran. [#5399]
+- Ajout de la Suisse à la liste des divisions administratives. [#5367]
+- Les jeux de données IRVE dédoublonnés sont maintenant disponibles avec des informations supplémentaires. [#5360]
+- Téléchargement des rapports de validation NeTEx au format Parquet. [#5375]
+- Téléchargement des rapports NeTEx via une modale. [#5419]
+- Affichage des métadonnées NeTEx. [#5339]
+- Notifications pour les ressources NeTEx expirées. [#5336]
+- Correction du tri sur les jeux de données les plus récents dans la recherche. [#5373]
 
 ### Évolutions techniques
-- Mise à jour de PostgreSQL de la version 14 à la version 18 et de TimescaleDB à la version 2.23 pour l'environnement CI. [#5027](https://github.com/etalab/transport-site/issues/5027)
-- Amélioration de la performance de la recherche en utilisant des index en mémoire et en optimisant la gestion des facets. [#5340](https://github.com/etalab/transport-site/issues/5340), [#5333](https://github.com/etalab/transport-site/issues/5333)
-- Refactoring et corrections diverses dans le code NeTEx pour améliorer la robustesse et la maintenabilité. [#5338](https://github.com/etalab/transport-site/issues/5338), [#5368](https://github.com/etalab/transport-site/issues/5368), [#5344](https://github.com/etalab/transport-site/issues/5344)
-- Amélioration de la gestion des URL de ressources pour éviter les problèmes d'encodage. [#5363](https://github.com/etalab/transport-site/issues/5363)
-- Optimisation de la consolidation IRVE pour la suppression des doublons et la remontée d'informations supplémentaires. [#5360](https://github.com/etalab/transport-site/issues/5360), [#5343](https://github.com/etalab/transport-site/issues/5343), [#5359](https://github.com/etalab/transport-site/issues/5359)
+- Mise à jour de Postgres de la version 14 à 18 et de TimescaleDB à la version 2.23 dans l'environnement CI. [#5027]
+- Refactoring et corrections diverses dans le code NeTEx pour améliorer la robustesse et la maintenabilité. [#5344] [#5338]
+- Amélioration de la configuration des datasets prioritaires pour le dédoublonnage IRVE, en utilisant un fichier de configuration dédié. [#5409]
+- Ajout d'un job pour créer des bases de données Company. [#5423]
+- Amélioration de la gestion des erreurs XSD dans le traitement NeTEx, avec regroupement des messages d'erreur. [#5369]
+- Stabilisation des tests de navigation. [#5392]
+- Montée de version de stylelint de 15 à 17. [#5403]
 
 ### Autres changements
-- Mise à jour du logo et de la référence textuelle vers "Ministère des Transports". [#5386](https://github.com/etalab/transport-site/issues/5386)
-- Ajout de la configuration pour le dashboard Metabase pour public-transit. [#5394](https://github.com/etalab/transport-site/issues/5394)
-- Stabilisation des tests de navigation. [#5392](https://github.com/etalab/transport-site/issues/5392)
-- Ajustement du menu principal pour les langues. [#5389](https://github.com/etalab/transport-site/issues/5389)
-- Suppression de code mort dans le DatasetController. [#5329](https://github.com/etalab/transport-site/issues/5329)
-- Correction d'un revert de la recherche par sous-type de données. [#5324](https://github.com/etalab/transport-site/issues/5324)
-- Nettoyage routinier du code. [#5322](https://github.com/etalab/transport-site/issues/5322)
+- Mise à jour du logo et de la référence textuelle vers "Ministère des Transports". [#5386]
+- Page "Nouveautés" mise à jour pour février 2026. [#5381]
+- Ajout de documentation pour le test de disponibilité. [#5398]
+- Ajout de dashboards Metabase pour les statistiques de la plateforme Public Transit. [#5394] [#5390]
+- Correction d'un overflow des titres de ressources. [#5397]
+- Amélioration du menu principal. [#5405]
+- Correction d'une URL de ressource mal encodée. [#5363]
+- Suppression d'un jeu de données Parkings Relais obsolète. [#5417]
+- Correction de la localisation manquante. [#5416]
+- Dédoublonnage des IRVE : Qualicharge est maintenant prioritaire. [#5414]
+- FollowDatasetLive : redirection vers la gestion du JDD concerné. [#5418]
+- Validation GTFS-RT : ajout d'un avertissement quand les IDs ne correspondent pas. [#5400]
+- Date de dernière historisation : compte dès la première historisation. [#5402]
+- Consolidation IRVE : élimination des derniers doublons. [#5365]
