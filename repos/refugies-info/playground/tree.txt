@@ -461,8 +461,9 @@
 │   │   │   │   ├── markdown.ts
 │   │   │   │   ├── metadata-autofix.ts
 │   │   │   │   ├── metadata.ts
-│   │   │   │   └── publication
-│   │   │   │       └── refugies-info.ts
+│   │   │   │   ├── publication
+│   │   │   │   │   └── refugies-info.ts
+│   │   │   │   └── workflow-status.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── schemas
 │   │   │   │   └── metadata-ri.ts
@@ -473,7 +474,8 @@
 │   │   │       ├── metadata-ri.ts
 │   │   │       └── user.ts
 │   │   ├── tests
-│   │   │   └── metadata.test.ts
+│   │   │   ├── metadata.test.ts
+│   │   │   └── workflow-status.test.ts
 │   │   └── tsconfig.json
 │   ├── supabase
 │   │   ├── README.md
@@ -611,7 +613,6 @@
 │   ├── register-metadata-validator-tool.ts
 │   ├── run-di-ingestion-workflow.ts
 │   ├── seed-ingestion.ts
-│   ├── seed-users.ts
 │   ├── update-metadata-schema-block.ts
 │   └── validate-docs.ts
 ├── specs
@@ -706,7 +707,8 @@
 │   │   ├── 20260226080000_add_error_status_to_letta_reports.sql
 │   │   ├── 20260226100000_optimize_indexes.sql
 │   │   ├── 20260303100000_publication_records_replica_identity.sql
-│   │   └── 20260303110000_translation_records_replica_identity.sql
+│   │   ├── 20260303110000_translation_records_replica_identity.sql
+│   │   └── 20260311120000_fix_workflow_status_terminal_states.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -723,4 +725,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-183 directories, 542 files
+183 directories, 544 files
