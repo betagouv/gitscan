@@ -56,11 +56,11 @@
 │   │   ├── dev
 │   │   │   ├── templates
 │   │   │   │   ├── api.sealed-secret.yaml
-│   │   │   │   ├── egapro-secret.sealed-secret.yaml
 │   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
 │   │   │   │   ├── proconnect.sealed-secret.yaml
-│   │   │   │   └── sentry.sealed-secret.yaml
+│   │   │   │   ├── sentry.sealed-secret.yaml
+│   │   │   │   └── suit.configmap.yaml
 │   │   │   └── values.yaml
 │   │   ├── preprod
 │   │   │   ├── templates
@@ -68,7 +68,8 @@
 │   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
 │   │   │   │   ├── proconnect.sealed-secret.yaml
-│   │   │   │   └── sentry.sealed-secret.yaml
+│   │   │   │   ├── sentry.sealed-secret.yaml
+│   │   │   │   └── suit.configmap.yaml
 │   │   │   └── values.yaml
 │   │   └── prod
 │   │       ├── templates
@@ -76,7 +77,8 @@
 │   │       │   ├── next-auth.sealed-secret.yaml
 │   │       │   ├── proconnect.configmap.yaml
 │   │       │   ├── proconnect.sealed-secret.yaml
-│   │       │   └── sentry.sealed-secret.yaml
+│   │       │   ├── sentry.sealed-secret.yaml
+│   │       │   └── suit.configmap.yaml
 │   │       └── values.yaml
 │   └── values.yaml
 ├── .mcp.json
@@ -103,6 +105,8 @@
 │       │   ├── 0003_absurd_komodo.sql
 │       │   ├── 0004_next_jack_murdock.sql
 │       │   ├── 0005_standardize_snake_case.sql
+│       │   ├── 0006_lovely_korath.sql
+│       │   ├── 0007_gigantic_doctor_faustus.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
@@ -110,6 +114,8 @@
 │       │       ├── 0003_snapshot.json
 │       │       ├── 0004_snapshot.json
 │       │       ├── 0005_snapshot.json
+│       │       ├── 0006_snapshot.json
+│       │       ├── 0007_snapshot.json
 │       │       └── _journal.json
 │       ├── drizzle.config.ts
 │       ├── next.config.js
@@ -118,6 +124,8 @@
 │       ├── playwright.rgaa.config.ts
 │       ├── public
 │       │   └── assets
+│       │       ├── declaration-remuneration
+│       │       │   └── cloud-check.svg
 │       │       └── images
 │       │           ├── aide
 │       │           │   ├── indicateurs-remuneration.png
@@ -140,8 +148,12 @@
 │       │   │   │   └── page.tsx
 │       │   │   ├── api
 │       │   │   │   ├── auth
-│       │   │   │   │   └── [...nextauth]
+│       │   │   │   │   ├── [...nextauth]
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   └── logout
 │       │   │   │   │       └── route.ts
+│       │   │   │   ├── declaration-pdf
+│       │   │   │   │   └── route.ts
 │       │   │   │   ├── healthz
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── test-sentry
@@ -149,6 +161,14 @@
 │       │   │   │   └── trpc
 │       │   │   │       └── [trpc]
 │       │   │   │           └── route.ts
+│       │   │   ├── avis-cse
+│       │   │   │   ├── confirmation
+│       │   │   │   │   └── page.tsx
+│       │   │   │   ├── etape
+│       │   │   │   │   └── [step]
+│       │   │   │   │       └── page.tsx
+│       │   │   │   ├── layout.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── declaration-accessibilite
 │       │   │   │   └── page.tsx
 │       │   │   ├── declaration-remuneration
@@ -156,7 +176,14 @@
 │       │   │   │   │   └── [step]
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── layout.tsx
-│       │   │   │   └── page.tsx
+│       │   │   │   ├── page.tsx
+│       │   │   │   └── parcours-conformite
+│       │   │   │       ├── etape
+│       │   │   │       │   └── [step]
+│       │   │   │       │       └── page.tsx
+│       │   │   │       ├── evaluation-conjointe
+│       │   │   │       │   └── page.tsx
+│       │   │   │       └── page.tsx
 │       │   │   ├── donnees-personnelles
 │       │   │   │   └── page.tsx
 │       │   │   ├── error.tsx
@@ -173,10 +200,9 @@
 │       │   │   ├── mentions-legales
 │       │   │   │   └── page.tsx
 │       │   │   ├── mon-espace
-│       │   │   │   └── mes-entreprises
-│       │   │   │       ├── [siren]
-│       │   │   │       │   └── page.tsx
-│       │   │   │       └── page.tsx
+│       │   │   │   ├── mes-entreprises
+│       │   │   │   │   └── page.tsx
+│       │   │   │   └── page.tsx
 │       │   │   ├── not-found.tsx
 │       │   │   ├── page.tsx
 │       │   │   ├── plan-du-site
@@ -184,13 +210,17 @@
 │       │   │   └── test-error
 │       │   │       └── page.tsx
 │       │   ├── e2e
+│       │   │   ├── auth.setup.ts
+│       │   │   ├── constants.ts
 │       │   │   ├── declaration.e2e.ts
 │       │   │   ├── error-pages.e2e.ts
+│       │   │   ├── global-setup.ts
 │       │   │   ├── helpers
 │       │   │   │   ├── axe-scan.ts
 │       │   │   │   └── login.ts
 │       │   │   ├── home.e2e.ts
 │       │   │   ├── login.e2e.ts
+│       │   │   ├── logout.e2e.ts
 │       │   │   └── rgaa-audit.spec.ts
 │       │   ├── env.js
 │       │   ├── instrumentation-client.ts
@@ -214,8 +244,40 @@
 │       │   │   ├── analytics
 │       │   │   │   ├── MatomoAnalytics.tsx
 │       │   │   │   └── index.ts
+│       │   │   ├── cseOpinion
+│       │   │   │   ├── ConfirmationPage.module.scss
+│       │   │   │   ├── ConfirmationPage.tsx
+│       │   │   │   ├── CseOpinionLayout.module.scss
+│       │   │   │   ├── CseOpinionLayout.tsx
+│       │   │   │   ├── Step1Opinions.module.scss
+│       │   │   │   ├── Step1Opinions.tsx
+│       │   │   │   ├── Step2Upload.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── AccuracyOpinionCard.test.tsx
+│       │   │   │   │   ├── ConfirmationPage.test.tsx
+│       │   │   │   │   ├── GapConsultationCard.test.tsx
+│       │   │   │   │   ├── OpinionSummaryBox.test.tsx
+│       │   │   │   │   ├── Step1Opinions.test.tsx
+│       │   │   │   │   ├── Step2Upload.test.tsx
+│       │   │   │   │   ├── SubmitConfirmationModal.test.tsx
+│       │   │   │   │   └── mapOpinionsFromDb.test.ts
+│       │   │   │   ├── components
+│       │   │   │   │   ├── AccuracyOpinionCard.tsx
+│       │   │   │   │   ├── CseStepIndicator.tsx
+│       │   │   │   │   ├── GapConsultationCard.tsx
+│       │   │   │   │   ├── OpinionSummaryBox.module.scss
+│       │   │   │   │   ├── OpinionSummaryBox.tsx
+│       │   │   │   │   ├── SubmissionBanner.module.scss
+│       │   │   │   │   ├── SubmissionBanner.tsx
+│       │   │   │   │   └── SubmitConfirmationModal.tsx
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── mapOpinionsFromDb.ts
+│       │   │   │   ├── schemas.ts
+│       │   │   │   ├── shared
+│       │   │   │   │   └── formActions.module.scss
+│       │   │   │   └── types.ts
 │       │   │   ├── declaration-remuneration
-│       │   │   │   ├── DeclarationIntro.tsx
+│       │   │   │   ├── DeclarationLayout.module.scss
 │       │   │   │   ├── DeclarationLayout.tsx
 │       │   │   │   ├── MissingSiret.tsx
 │       │   │   │   ├── StepPageClient.tsx
@@ -225,9 +287,12 @@
 │       │   │   │   │   ├── CompanyBanner.tsx
 │       │   │   │   │   ├── DataTable.tsx
 │       │   │   │   │   ├── DefinitionAccordion.tsx
+│       │   │   │   │   ├── DevFillButton.tsx
 │       │   │   │   │   ├── EditDialog.module.scss
 │       │   │   │   │   ├── FormActions.module.scss
 │       │   │   │   │   ├── FormActions.tsx
+│       │   │   │   │   ├── PayGapTable.module.scss
+│       │   │   │   │   ├── PayGapTable.tsx
 │       │   │   │   │   ├── SavedIndicator.module.scss
 │       │   │   │   │   ├── SavedIndicator.tsx
 │       │   │   │   │   ├── StepIndicator.tsx
@@ -236,15 +301,21 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── CompanyBanner.test.tsx
 │       │   │   │   │   │   ├── DataTable.test.tsx
+│       │   │   │   │   │   ├── DevFillButton.test.tsx
 │       │   │   │   │   │   ├── FormActions.test.tsx
 │       │   │   │   │   │   ├── StepIndicator.test.tsx
+│       │   │   │   │   │   ├── devFillData.test.ts
 │       │   │   │   │   │   └── gapUtils.test.ts
 │       │   │   │   │   ├── common.module.scss
 │       │   │   │   │   ├── constants.ts
-│       │   │   │   │   └── gapUtils.ts
+│       │   │   │   │   ├── devFillData.ts
+│       │   │   │   │   ├── gapUtils.ts
+│       │   │   │   │   └── mapDbCategories.ts
 │       │   │   │   ├── steps
+│       │   │   │   │   ├── CompliancePathChoice.tsx
+│       │   │   │   │   ├── CompliancePathPage.tsx
+│       │   │   │   │   ├── Step1Workforce.module.scss
 │       │   │   │   │   ├── Step1Workforce.tsx
-│       │   │   │   │   ├── Step2PayGap.module.scss
 │       │   │   │   │   ├── Step2PayGap.tsx
 │       │   │   │   │   ├── Step3VariablePay.module.scss
 │       │   │   │   │   ├── Step3VariablePay.tsx
@@ -255,22 +326,52 @@
 │       │   │   │   │   ├── Step6Review.module.scss
 │       │   │   │   │   ├── Step6Review.tsx
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── CompliancePathChoice.test.tsx
+│       │   │   │   │   │   ├── Step1DevFill.test.tsx
 │       │   │   │   │   │   ├── Step1Workforce.test.tsx
+│       │   │   │   │   │   ├── Step2DevFill.test.tsx
 │       │   │   │   │   │   ├── Step2PayGap.test.tsx
+│       │   │   │   │   │   ├── Step3DevFill.test.tsx
 │       │   │   │   │   │   ├── Step3VariablePay.test.tsx
+│       │   │   │   │   │   ├── Step4DevFill.test.tsx
 │       │   │   │   │   │   ├── Step4QuartileDistribution.test.tsx
+│       │   │   │   │   │   ├── Step5DevFill.test.tsx
 │       │   │   │   │   │   ├── Step5EmployeeCategories.test.tsx
 │       │   │   │   │   │   └── Step6Review.test.tsx
+│       │   │   │   │   ├── compliancePath
+│       │   │   │   │   │   ├── CompliancePathOption.tsx
+│       │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
+│       │   │   │   │   │   └── constants.ts
+│       │   │   │   │   ├── jointEvaluation
+│       │   │   │   │   │   ├── JointEvaluationForm.tsx
+│       │   │   │   │   │   ├── JointEvaluationPage.tsx
+│       │   │   │   │   │   ├── JointEvaluationSubmitModal.tsx
+│       │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   ├── JointEvaluationForm.test.tsx
+│       │   │   │   │   │   │   └── JointEvaluationPage.test.tsx
+│       │   │   │   │   │   └── index.ts
+│       │   │   │   │   ├── secondDeclaration
+│       │   │   │   │   │   ├── NextStepsSection.tsx
+│       │   │   │   │   │   ├── ReferencePeriodPicker.tsx
+│       │   │   │   │   │   ├── SecondDeclarationStep1Info.tsx
+│       │   │   │   │   │   ├── SecondDeclarationStep2Form.tsx
+│       │   │   │   │   │   ├── SecondDeclarationStep3Review.tsx
+│       │   │   │   │   │   ├── SecondDeclarationStepIndicator.tsx
+│       │   │   │   │   │   ├── SecondDeclarationStepPage.tsx
+│       │   │   │   │   │   ├── __tests__
+│       │   │   │   │   │   │   ├── SecondDeclarationStep1Info.test.tsx
+│       │   │   │   │   │   │   ├── SecondDeclarationStep2Form.test.tsx
+│       │   │   │   │   │   │   └── SecondDeclarationStep3Review.test.tsx
+│       │   │   │   │   │   ├── constants.ts
+│       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── step3
-│       │   │   │   │   │   ├── BeneficiaryEditDialog.tsx
-│       │   │   │   │   │   ├── PayGapEditDialog.tsx
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── step4
-│       │   │   │   │   │   ├── QuartileEditDialog.tsx
 │       │   │   │   │   │   ├── QuartileTable.tsx
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   ├── step5
 │       │   │   │   │   │   ├── CategoryDataTable.tsx
+│       │   │   │   │   │   ├── CategoryForm.tsx
 │       │   │   │   │   │   ├── DeleteCategoryDialog.tsx
 │       │   │   │   │   │   ├── categorySerializer.ts
 │       │   │   │   │   │   └── index.ts
@@ -283,6 +384,24 @@
 │       │   │   │   │       ├── SubmitModal.tsx
 │       │   │   │   │       ├── index.ts
 │       │   │   │   │       └── parseStep5Categories.ts
+│       │   │   │   └── types.ts
+│       │   │   ├── declarationPdf
+│       │   │   │   ├── DeclarationPdfDocument.tsx
+│       │   │   │   ├── DownloadDeclarationPdfButton.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── DeclarationPdfDocument.test.tsx
+│       │   │   │   │   └── buildPdfData.test.ts
+│       │   │   │   ├── buildPdfData.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── pdfFonts.ts
+│       │   │   │   ├── pdfStyles.ts
+│       │   │   │   ├── sections
+│       │   │   │   │   ├── CategorySection.tsx
+│       │   │   │   │   ├── GapCell.tsx
+│       │   │   │   │   ├── PayGapTable.tsx
+│       │   │   │   │   ├── QuartileSection.tsx
+│       │   │   │   │   ├── VariablePaySection.tsx
+│       │   │   │   │   └── WorkforceSection.tsx
 │       │   │   │   └── types.ts
 │       │   │   ├── error
 │       │   │   │   ├── ErrorArtwork.tsx
@@ -401,6 +520,7 @@
 │       │   │   │   ├── DeclarationStepLabel.ts
 │       │   │   │   ├── DeclarationsSection.tsx
 │       │   │   │   ├── MissingInfoModal.tsx
+│       │   │   │   ├── MonEspacePage.tsx
 │       │   │   │   ├── MyCompaniesPage.tsx
 │       │   │   │   ├── StatusBadge.tsx
 │       │   │   │   ├── ViewToggle.tsx
@@ -417,6 +537,7 @@
 │       │   │   │   │   ├── DeclarationLink.test.tsx
 │       │   │   │   │   ├── DeclarationStepLabel.test.ts
 │       │   │   │   │   ├── DeclarationsSection.test.tsx
+│       │   │   │   │   ├── MonEspacePage.test.tsx
 │       │   │   │   │   ├── MyCompaniesPage.test.tsx
 │       │   │   │   │   ├── StatusBadge.test.tsx
 │       │   │   │   │   ├── ViewToggle.test.tsx
@@ -435,6 +556,15 @@
 │       │   │   │   │   └── ProfileModal.test.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   └── phone.ts
+│       │   │   ├── shared
+│       │   │   │   ├── PdfFileUpload.module.scss
+│       │   │   │   ├── PdfFileUpload.tsx
+│       │   │   │   ├── SubmitModal.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── getDsfrModal.test.ts
+│       │   │   │   ├── getDsfrModal.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── usePdfUploadForm.ts
 │       │   │   └── testError
 │       │   │       ├── ErrorTrigger.tsx
 │       │   │       └── index.ts
@@ -447,18 +577,26 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   └── company.test.ts
 │       │   │   │   │   ├── company.ts
+│       │   │   │   │   ├── cseOpinion.ts
 │       │   │   │   │   ├── declaration.ts
-│       │   │   │   │   └── profile.ts
+│       │   │   │   │   ├── declarationHelpers.ts
+│       │   │   │   │   ├── profile.ts
+│       │   │   │   │   └── schemas.ts
 │       │   │   │   └── trpc.ts
 │       │   │   ├── auth
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── proconnect-logout.test.ts
 │       │   │   │   ├── config.ts
-│       │   │   │   └── index.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── proconnect-logout.ts
 │       │   │   ├── db
 │       │   │   │   ├── index.ts
 │       │   │   │   └── schema.ts
 │       │   │   └── services
 │       │   │       ├── __tests__
+│       │   │       │   ├── suit.test.ts
 │       │   │       │   └── weez.test.ts
+│       │   │       ├── suit.ts
 │       │   │       └── weez.ts
 │       │   ├── test
 │       │   │   └── setup.ts
@@ -471,4 +609,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── sonar-project.properties
-109 directories, 364 files
+134 directories, 477 files
