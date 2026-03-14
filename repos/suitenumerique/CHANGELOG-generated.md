@@ -1,33 +1,30 @@
 # Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Les efforts se sont concentrés sur l'amélioration de la sécurité, de l'accessibilité et des performances des applications existantes, notamment Calendars, Meet, Messages et Docs. Plusieurs dépôts ont bénéficié de mises à jour techniques importantes, comme la migration vers de nouvelles versions de librairies et l'optimisation du code. L'ajout de nouvelles fonctionnalités, comme le partage de calendriers ([calendars](/repos/suitenumerique/calendars)) et l'importation de fichiers ([messages](/repos/suitenumerique/messages)), témoigne d'une volonté constante d'améliorer l'expérience utilisateur.
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Les efforts se sont concentrés sur l'amélioration de la sécurité, de l'accessibilité et des performances des différentes applications.  Des fonctionnalités importantes ont été ajoutées à Calendars (partage de calendriers, RSVP, importation d'événements) et à Drive (création de fichiers à partir de modèles, mirroring vers S3).  L'application Meet a bénéficié de correctifs de sécurité et d'améliorations de l'interface utilisateur, tandis que st-deploycenter a vu des améliorations significatives dans la gestion des organisations et des rôles.
 
 ## Sécurité
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
-
-- Correction de vulnérabilités dans Django dans [django-lasuite](/repos/suitenumerique/django-lasuite) et [find](/repos/suitenumerique/find).
-- Mise à jour de la librairie Next dans [st-deploycenter](/repos/suitenumerique/st-deploycenter) pour corriger une vulnérabilité.
-- Blocage des domaines potentiellement dangereux et des URL non sécurisées provenant de DILA dans [st-home](/repos/suitenumerique/st-home).
+- Correction de vulnérabilités dans [django-lasuite](/repos/suitenumerique/django-lasuite).
+- Mise à jour de la librairie `next` dans [people](/repos/suitenumerique/people) pour corriger une vulnérabilité.
+- Blocage de domaines potentiellement dangereux dans [st-home](/repos/suitenumerique/st-home).
+- Renforcement de la validation des entrées API dans [meet](/repos/suitenumerique/meet).
+- Correction de vulnérabilités de sécurité (CVE) dans [docs](/repos/suitenumerique/docs).
 
 ## Autres changements notables
-
-Plusieurs changements techniques majeurs ont été effectués :
-
 - Migration de ESLint vers la version 9 dans [conversations](/repos/suitenumerique/conversations).
-- Refonte de l'architecture de [messages](/repos/suitenumerique/messages) avec uv, rustfs et caddy.
-- Ajout du support de l'architecture ARM64 dans plusieurs dépôts : [calendars](/repos/suitenumerique/calendars), [docs](/repos/suitenumerique/docs), [drive](/repos/suitenumerique/drive), [find](/repos/suitenumerique/find), [st-home](/repos/suitenumerique/st-home).
-- Mise en place de tests automatisés avec Molecule et GitHub Actions dans [st-ansible](/repos/suitenumerique/st-ansible).
-- Utilisation de `uvicorn` pour le backend de [docs](/repos/suitenumerique/docs) pour potentiellement améliorer les performances.
+- Refactorisation du service `AIAgentService` dans [conversations](/repos/suitenumerique/conversations).
+- Passage à `uv` pour la gestion des dépendances dans [meet-whisperx](/repos/suitenumerique/meet-whisperx).
+- Remplacement de Nginx par Caddy et de MinIO par RustFS dans [st-deploycenter](/repos/suitenumerique/st-deploycenter).
+- Utilisation de `uvicorn` pour le backend dans [docs](/repos/suitenumerique/docs).
+- Optimisations de performance importantes dans [projects](/repos/suitenumerique/projects) concernant le drag-and-drop et le rendu des cartes.
 
 ## Dépôts les plus actifs
-
-- [calendars](/repos/suitenumerique/calendars) : Ajout de fonctionnalités de partage de calendriers, d'importation d'événements et de liens RSVP.
-- [docs](/repos/suitenumerique/docs) : Ajout de la fonctionnalité de déplacement de documents et intégration de Blocknote AI.
-- [messages](/repos/suitenumerique/messages) : Ajout de la possibilité d'exporter des boîtes aux lettres au format mbox et d'ajouter des images via BlockNote.
-- [meet](/repos/suitenumerique/meet) : Amélioration de la sécurité, de l'accessibilité et correction de bugs.
-- [drive](/repos/suitenumerique/drive) : Ajout de la création de fichiers à partir de modèles et implémentation du mirroring de fichiers vers S3.
-- [django-lasuite](/repos/suitenumerique/django-lasuite) : Amélioration de l'interface d'administration et gestion des types de fichiers.
-- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de l'administration et de l'import de données pour les organisations et les rôles.
+- [calendars](/repos/suitenumerique/calendars) : Ajout de nombreuses fonctionnalités, notamment le partage de calendriers, les RSVP et l'importation d'événements.
+- [drive](/repos/suitenumerique/drive) : Amélioration significative avec l'ajout de la création de fichiers à partir de modèles et du mirroring vers S3.
+- [meet](/repos/suitenumerique/meet) : Corrections de sécurité, améliorations de l'interface utilisateur et de l'accessibilité.
+- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de la gestion des organisations, des rôles et de l'import de données.
+- [docs](/repos/suitenumerique/docs) : Ajout de nouvelles fonctionnalités et corrections de sécurité.
+- [conversations](/repos/suitenumerique/conversations) : Corrections de bugs et améliorations techniques.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Améliorations de style, d'accessibilité et corrections de typographie.
