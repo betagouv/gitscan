@@ -29,6 +29,10 @@
 │   │   └── mongoose.ts
 │   ├── configure.ts
 │   ├── controllers
+│   │   ├── contributions
+│   │   │   ├── contribution-data.ts
+│   │   │   └── github.ts
+│   │   ├── contributions.ts
 │   │   ├── data.ts
 │   │   ├── emails.ts
 │   │   ├── followups.ts
@@ -140,11 +144,14 @@
 │   │   └── utils.ts
 │   ├── mock.ts
 │   ├── models
+│   │   ├── contribution-schema.ts
+│   │   ├── contribution.ts
 │   │   ├── followup-schema.ts
 │   │   ├── followup.ts
 │   │   ├── simulation.ts
 │   │   └── survey-schema.ts
 │   ├── routes
+│   │   ├── contributions.ts
 │   │   ├── data.ts
 │   │   ├── emails.ts
 │   │   ├── followup-redirect.ts
@@ -504,6 +511,7 @@
 │   ├── enums
 │   │   ├── activite.ts
 │   │   ├── chapter.ts
+│   │   ├── contribution.ts
 │   │   ├── cta.ts
 │   │   ├── error.ts
 │   │   ├── event.ts
@@ -517,6 +525,7 @@
 │   │   ├── themes.ts
 │   │   └── velo.ts
 │   ├── grist.ts
+│   ├── image-utils.ts
 │   ├── individu.ts
 │   ├── logement.ts
 │   ├── mutualized-steps.ts
@@ -551,6 +560,7 @@
 │   │   ├── blocks.d.ts
 │   │   ├── chapters.d.ts
 │   │   ├── commune.d.ts
+│   │   ├── contributions.d.ts
 │   │   ├── dates.d.ts
 │   │   ├── details.d.ts
 │   │   ├── download-incitations-covoiturage.d.ts
@@ -715,10 +725,13 @@
 │   │   ├── input-error.vue
 │   │   ├── input-month.vue
 │   │   ├── input-number.vue
+│   │   ├── institution-logo-upload.vue
+│   │   ├── institution-select.vue
 │   │   ├── lieu-informations.vue
 │   │   ├── lieu-light.vue
 │   │   ├── lieu.vue
 │   │   ├── loading-modal.vue
+│   │   ├── loading-overlay.vue
 │   │   ├── matomo-opt-out.vue
 │   │   ├── mes-aides
 │   │   │   ├── header-mes-aides.vue
@@ -762,6 +775,7 @@
 │   │   ├── progress.ts
 │   │   ├── use-benefits.ts
 │   │   ├── use-followup-survey-data.ts
+│   │   ├── use-institution-logo.ts
 │   │   ├── use-lieux.ts
 │   │   └── use-voluntary-organisations.ts
 │   ├── context
@@ -836,6 +850,8 @@
 │       ├── cgu.vue
 │       ├── confidentialite.vue
 │       ├── contact.vue
+│       ├── contribuer-institution.vue
+│       ├── contribuer.vue
 │       ├── faq.vue
 │       ├── france-connect-callback.vue
 │       ├── home.vue
@@ -976,4 +992,4 @@
 ├── tsconfig.server.json
 ├── vite.config.ts
 └── vitest.config.ts
-116 directories, 2898 files
+117 directories, 2913 files
