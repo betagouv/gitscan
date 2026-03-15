@@ -1,25 +1,24 @@
 ## Changelog : people (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de l'application "people" se concentrent sur l'amélioration de la gestion des invitations, des statistiques, et de l'expérience utilisateur, notamment avec l'ajout d'icônes et la suppression d'invitations. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application. Enfin, des mises à jour techniques ont été effectuées pour corriger des vulnérabilités de sécurité et améliorer la configuration de l'environnement de développement.
+Ce changelog présente les récentes améliorations apportées à l'application de gestion des utilisateurs et des équipes. Les changements incluent des corrections de sécurité, des améliorations de l'interface utilisateur, des corrections de bugs et des optimisations techniques. L'application continue d'évoluer pour offrir une meilleure expérience utilisateur et une sécurité renforcée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une icône au bouton de configuration d'un domaine. [#1054](https://github.com/suitenumerique/people/issues/1054)
-- Possibilité pour un administrateur de supprimer des invitations. [#1052](https://github.com/suitenumerique/people/issues/1052)
-- Comptabilisation des alias dans l'endpoint de statistiques.
-- Ajout des alias à la démo.
-- Prise en compte de la casse lors de la recherche d'emails existants. [#1056](https://github.com/suitenumerique/people/issues/1056)
+- Correction d'un bug concernant les traductions manquantes pour les étiquettes de statut [#74ada8f](https://github.com/suitenumerique/people/commit/74ada8f).
+- Correction d'un bug forçant les boîtes aux lettres à être en minuscules [#bc0dbcb](https://github.com/suitenumerique/people/commit/bc0dbcb).
+- Correction d'un bug lié à l'actualisation des invitations [#3b58fb7](https://github.com/suitenumerique/people/commit/3b58fb7).
 
 ### Évolutions techniques
-- Déplacement des exceptions liées aux invitations vers le cœur de l'application.
-- Simplification des tests liés aux invitations de domaines par email.
-- Mise à jour de la version de Python à 3.14.2 pour la configuration Docker.
-- Mise à jour de la bibliothèque `next` vers la version 15.5.10 pour corriger une vulnérabilité de sécurité.
-- Mise à jour des dépendances Python.
+- Mise à jour de la dépendance `tornado` pour corriger une vulnérabilité (CVE) [#ca754d5](https://github.com/suitenumerique/people/commit/ca754d5).
+- Mise à jour de la dépendance `django` vers la version 5.2.12 pour corriger une vulnérabilité de sécurité [#0c123bb](https://github.com/suitenumerique/people/commit/0c123bb).
+- Mise à jour de la dépendance `joserfc` vers la version 1.6.3 pour corriger une vulnérabilité de sécurité [#2a6367c](https://github.com/suitenumerique/people/commit/2a6367c).
+- Mise à jour des actions GitHub pour utiliser les dernières versions [#68ec85e](https://github.com/suitenumerique/people/commit/68ec85e).
+- Refactorisation : Déplacement de l'exception liée aux invitations vers le cœur de l'application [#d0e5aa5](https://github.com/suitenumerique/people/commit/d0e5aa5).
+- Migration vers la librairie `django-lasuite` pour la personnalisation de l'administration [#c534344](https://github.com/suitenumerique/people/commit/c534344).
+- Correction de warnings linter [#b9c69e7](https://github.com/suitenumerique/people/commit/b9c69e7).
 
 ### Autres changements
-- Mise à jour des chaînes de traduction.
-- Publication des versions 1.23.1 et 1.23.0.
-- Correction de linter warnings.
-- Correction d'un problème d'upload dans Crowdin.
-- Correction d'une tentative d'envoi d'invitations à des utilisateurs existants.
+- Correction d'une faute de frappe dans le fichier README [#da1a9e1](https://github.com/suitenumerique/people/commit/da1a9e1).
+- Publication de la version 1.23.1 [#e1a8cc3](https://github.com/suitenumerique/people/commit/e1a8cc3).
+- Mise à jour des chaînes de caractères traduites [#a1b58fb](https://github.com/suitenumerique/people/commit/a1b58fb).
+- Mise à jour de la dépendance `django-lasuite` vers la version 0.0.25 [#79bdc66](https://github.com/suitenumerique/people/commit/79bdc66).
