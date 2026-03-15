@@ -1,17 +1,16 @@
 ## Changelog : portail (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, le portail a bénéficié d'améliorations significatives en matière de connectivité et de sécurité. L'ajout du support mTLS et de la connexion HTTP permet une plus grande flexibilité et une meilleure protection des accès. Des bases pour les tests end-to-end ont également été posées.
+Ce mois-ci, le portail a bénéficié d'améliorations significatives en matière de sécurité et de fonctionnalités réseau. L'ajout du support mTLS et de la redirection HTTP CONNECT renforce la sécurité et la flexibilité du proxy, permettant une meilleure intégration avec différents environnements.
 
 ### Évolutions fonctionnelles
-- Ajout du support pour les connexions HTTP via `http connect` [#30](https://github.com/cloud-gouv/portail/issues/30).
-- Activation du support mTLS (mutual TLS) côté serveur pour une sécurité renforcée [#27](https://github.com/cloud-gouv/portail/issues/27).
+- Ajout du support pour la redirection HTTP CONNECT, permettant de proxyfier des connexions HTTP standards [#30](https://github.com/cloud-gouv/portail/issues/30).
+- Activation du support mTLS (mutual TLS) côté serveur pour une communication plus sécurisée [#27](https://github.com/cloud-gouv/portail/issues/27).
 
 ### Évolutions techniques
-- Initialisation des tests end-to-end (E2E) via le proxy.
-- Le démon peut maintenant créer optionnellement les sockets proxy et RPC.
-- Passage du backend par défaut depuis les paramètres de configuration.
+- Initialisation des tests E2E pour la connexion via le proxy.
+- Passage de la configuration du backend par défaut via les paramètres.
 
 ### Autres changements
-- Ajout du fichier de configuration Renovate pour la gestion automatique des dépendances.
+- Ajout du fichier de configuration Renovate (`renovate.json`).
 - Mise à jour de l'action `samueldr/lix-gha-installer-action`.
