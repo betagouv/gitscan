@@ -12,8 +12,8 @@
     "console": "node dist/console.js",
     "console:dev": "ts-node -r tsconfig-paths/register src/console.ts",
     "fixtures:load": "fixtures load fixtures --dataSource src/dataSource.ts --require=ts-node/register --require=tsconfig-paths/register",
-    "format": "prettier --write \"src/**/*.ts\" \"cypress/**/*.js\" \"public/**/*.js\" ",
-    "lint": "eslint && tsc --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint && tsc --noEmit && prettier --check .",
     "migrations:run": "yarn typeorm migration:run && echo '\n\n ***Make sure to load fixtures and create backup DB for E2E***\n from you host run:\n > ./cypress/support/db.sh exploitation create'",
     "prestart": "yarn run prebuild",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
@@ -51,7 +51,7 @@
     "@nestjs/core": "^11.1.15",
     "@nestjs/microservices": "^11.1.15",
     "@nestjs/passport": "^11.0.5",
-    "@nestjs/platform-express": "^11.1.15",
+    "@nestjs/platform-express": "^11.1.16",
     "@nestjs/typeorm": "^11.0.0",
     "@popperjs/core": "^2.11.8",
     "amqp-connection-manager": "^5.0.0",
@@ -95,7 +95,7 @@
     "validator": "^13.15.26"
   },
   "devDependencies": {
-    "@nestjs/testing": "^11.1.15",
+    "@nestjs/testing": "^11.1.16",
     "@parcel/transformer-less": "2.16.4",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.6",

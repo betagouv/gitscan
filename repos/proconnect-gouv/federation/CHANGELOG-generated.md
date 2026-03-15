@@ -1,27 +1,36 @@
 ## Changelog : federation (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a déployé une nouvelle interface utilisateur pour l'administration, améliorant l'expérience utilisateur et la réactivité. Des corrections de bugs ont également été apportées, notamment concernant la gestion des identifiants et la compatibilité avec Kubernetes. De nombreuses dépendances ont été mises à jour pour assurer la sécurité et la stabilité de la plateforme.
+Ce mois-ci, l'équipe a déployé une nouvelle interface utilisateur pour améliorer l'expérience utilisateur. Des corrections de bugs ont également été apportées, notamment pour l'affichage responsive et la gestion des erreurs. Des mises à jour de sécurité et des améliorations de l'infrastructure ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Nouvelle interface utilisateur pour l'administration, avec une mise en page en une seule colonne. [#802](https://github.com/proconnect-gouv/federation/pull/802)
-- Amélioration de la réactivité de l'interface d'administration sur les différents appareils. [#868](https://github.com/proconnect-gouv/federation/pull/868)
-- Correction d'un bug empêchant la connexion à l'administration après être revenu en arrière. [#898](https://github.com/proconnect-gouv/federation/pull/898)
-- Correction de la sensibilité à la casse lors de la réconciliation des identifiants. [#867](https://github.com/proconnect-gouv/federation/pull/867)
-- Suppression de l'affichage d'un message d'erreur obsolète concernant l'email par défaut. [#882](https://github.com/proconnect-gouv/federation/pull/882)
+- Nouvelle interface utilisateur déployée [#802](https://github.com/proconnect-gouv/federation/pull/802).
+- Amélioration de l'affichage responsive de l'interface utilisateur [#868](https://github.com/proconnect-gouv/federation/pull/868).
+- Correction d'un bug empêchant le bouton de se désactiver correctement après une action [#962](https://github.com/proconnect-gouv/federation/issues/962).
+- Suppression du message d'information concernant la nouvelle interface utilisateur, maintenant intégrée [#872](https://github.com/proconnect-gouv/federation/pull/872).
+- Possibilité d'utiliser la complétion automatique sur les formulaires d'administration [#900](https://github.com/proconnect-gouv/federation/pull/900).
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances (Node.js, TypeScript, Docker, Express, Mongoose, Passport, bcryptjs, class-validator, amqplib, ioredis, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- Amélioration de la configuration de Dependabot pour une gestion plus efficace des mises à jour de dépendances. [#975](https://github.com/proconnect-gouv/federation/pull/975)
-- Ajout de tests Cypress pour la réconciliation PCI et l'exploitation en environnement Kubernetes. [#963](https://github.com/proconnect-gouv/federation/pull/963), [#924](https://github.com/proconnect-gouv/federation/pull/924), [#903](https://github.com/proconnect-gouv/federation/pull/903)
-- Mise à jour de la configuration de l'environnement Kubernetes pour les tests. [#960](https://github.com/proconnect-gouv/federation/pull/960)
-- Nettoyage du code et suppression de fichiers inutilisés.
-- Passage au module ESNext. [#855](https://github.com/proconnect-gouv/federation/pull/855)
-- Correction d'un avertissement du compilateur TypeScript. [#962](https://github.com/proconnect-gouv/federation/pull/962)
+- Mise à jour de plusieurs dépendances : `ioredis`, `pg`, `express`, `mongoose`, `uuid`, `pino`, `jest-extended`, `eslint-plugin-prettier`, `systeminformation`, `dotenv`, `cryptography`, `ajv`, `jquery`, `prettier`, `typescript-eslint`, `eslint-plugin-eslint-comments`, `multiple-cucumber-html-reporter`, `commander`, `otpauth`, `docker/build-push-action`, `docker/setup-compose-action`, `actions/upload-artifact`, `actions/attest-build-provenance`, `actions/download-artifact`.
+- Simplification de la configuration des assets et ajout de la favicon [#986](https://github.com/proconnect-gouv/federation/pull/986).
+- Utilisation de la configuration par défaut de Prettier dans le projet `admin` [#974](https://github.com/proconnect-gouv/federation/pull/974).
+- Mise à jour de la librairie `otplib` pour améliorer la sécurité [#911](https://github.com/proconnect-gouv/federation/pull/911).
+- Mise à jour de la politique de sécurité et ajout d'un rapport de vulnérabilité [#884](https://github.com/proconnect-gouv/federation/pull/884).
+- Passage au module ESNext [#855](https://github.com/proconnect-gouv/federation/pull/855).
+- Ajout de tests Cypress pour l'environnement Kubernetes [#924](https://github.com/proconnect-gouv/federation/pull/924), [#963](https://github.com/proconnect-gouv/federation/pull/963).
+- Correction d'un problème de crash du core en cas d'échec du proxy [#786](https://github.com/proconnect-gouv/federation/pull/786).
 
 ### Autres changements
-- Mise à jour de la documentation de qualité. [#925](https://github.com/proconnect-gouv/federation/pull/925)
-- Ajout d'une politique de sécurité et d'un moyen de signaler les vulnérabilités. [#869](https://github.com/proconnect-gouv/federation/pull/869)
-- Mise à jour de la configuration ESLint. [#908](https://github.com/proconnect-gouv/federation/pull/908)
-- Suppression du fichier manifest.webmanifest. [#872](https://github.com/proconnect-gouv/federation/pull/872)
-- Augmentation du délai d'attente de Mongoose. [#855](https://github.com/proconnect-gouv/federation/pull/855)
+- Ajout de tests unitaires pour Kubernetes.
+- Mise à jour de la documentation de qualité.
+- Nettoyage du code et suppression de fichiers inutiles.
+- Correction d'un problème avec la configuration de Dependabot.
+- Mise à jour de la configuration de CI/CD.
+- Correction d'un warning du compilateur.
+- Suppression du manifest web.
+- Ajout de tests de réconciliation PCI pour Kubernetes.
+- Suppression de directives Crisp inutiles.
+- Mise à jour de la configuration pip pour pcdbapi.
+- Déduplication du `yarn.lock` dans le projet `quality`.
+- Ajout de tests pour l'exploitation en environnement k8s.
+- Suppression de tests obsolètes.
