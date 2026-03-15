@@ -8,9 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.14] - 2026-03-11
+
 ### Added
 
 - ✨(user) allow disabling automatic internet search
+- ✨(search) add searchModal and modify leftPanel
 - ✨(waffle) hide the waffle if not fr theme
 - ✨(front) allow pasting an attachment from clipboard
 - ✨(array) temporarily adjust array
@@ -23,15 +26,16 @@ and this project adheres to
 - 🚸(oidc) ignore case when fallback on email #281
 - ⬆️(back) update pillow, django-pydantic-field, pypdf
 - ♻️(front) migrate from ESLint 8 to ESLint 9 flat config
+- ⬆️(back) update django and pypdf
 
 ### Fixed
-
 
 - 💚(docker) vendor mime.types file instead of fetching from Apache SVN
 - 🚑️(back) fix mime type for pptx
 - 🐛(front) fix math formulas and carousel translations
 - 🐛(helm) reverse liveness and readiness for backend deployment
 - 🐛(front) fix dark mode styling on chat messages
+- 🐛(front) fixed inverted toast for setting changes
 
 ## [0.0.13] - 2026-02-09
 
@@ -240,7 +244,8 @@ and this project adheres to
 - 💄(chat) add code highlighting for LLM responses #67
 
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.13...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.14...main
+[0.0.14]: https://github.com/suitenumerique/conversations/releases/v0.0.14
 [0.0.13]: https://github.com/suitenumerique/conversations/releases/v0.0.13
 [0.0.12]: https://github.com/suitenumerique/conversations/releases/v0.0.12
 [0.0.11]: https://github.com/suitenumerique/conversations/releases/v0.0.11
