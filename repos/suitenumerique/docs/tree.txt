@@ -200,6 +200,8 @@
     │   │   │   ├── 0027_auto_20251120_0956.py
     │   │   │   ├── 0028_remove_templateaccess_template_and_more.py
     │   │   │   ├── 0029_userreconciliationcsvimport_userreconciliation.py
+    │   │   │   ├── 0030_user_is_first_connection.py
+    │   │   │   ├── 0031_clean_onboarding_accesses.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -280,7 +282,9 @@
     │   │   │   ├── migrations
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_migrations_0018_update_blank_title.py
-    │   │   │   │   └── test_migrations_0020_remove_is_public_add_field_attachments_and_duplicated_from.py
+    │   │   │   │   ├── test_migrations_0020_remove_is_public_add_field_attachments_and_duplicated_from.py
+    │   │   │   │   ├── test_migrations_0030_user_is_first_connection.py
+    │   │   │   │   └── test_migrations_0031_clean_onboarding_accesses.py
     │   │   │   ├── serializers
     │   │   │   │   └── test_user_light_serializer.py
     │   │   │   ├── swagger
@@ -428,6 +432,7 @@
     │   │   │   │   │   ├── doc-visibility.spec.ts
     │   │   │   │   │   ├── footer.spec.ts
     │   │   │   │   │   ├── header.spec.ts
+    │   │   │   │   │   ├── help.spec.ts
     │   │   │   │   │   ├── home.spec.ts
     │   │   │   │   │   ├── language.spec.ts
     │   │   │   │   │   ├── left-panel.spec.ts
@@ -456,7 +461,6 @@
     │   │       │   └── default.conf
     │   │       ├── cunningham.ts
     │   │       ├── eslint.config.mjs
-    │   │       ├── next-env.d.ts
     │   │       ├── next.config.js
     │   │       ├── package.json
     │   │       ├── public
@@ -479,7 +483,20 @@
     │   │       │       ├── logo-gouv.png
     │   │       │       ├── logo-gouv.svg
     │   │       │       ├── logo-suite-numerique.png
-    │   │       │       └── mail-header-background.png
+    │   │       │       ├── mail-header-background.png
+    │   │       │       └── on-boarding
+    │   │       │           ├── step_1_EN.gif
+    │   │       │           ├── step_1_FR.gif
+    │   │       │           ├── step_2_EN.gif
+    │   │       │           ├── step_2_FR.gif
+    │   │       │           ├── step_3_EN.png
+    │   │       │           ├── step_3_FR.png
+    │   │       │           ├── step_4_EN.png
+    │   │       │           └── step_4_FR.png
+    │   │       ├── scripts
+    │   │       │   ├── copy-emoji.mjs
+    │   │       │   ├── postbuild.mjs
+    │   │       │   └── prebuild.mjs
     │   │       ├── src
     │   │       │   ├── api
     │   │       │   │   ├── APIError.ts
@@ -903,6 +920,7 @@
     │   │       │   │   │   └── useUserUpdate.ts
     │   │       │   │   ├── config
     │   │       │   │   │   ├── ConfigProvider.tsx
+    │   │       │   │   │   ├── ThemeProvider.tsx
     │   │       │   │   │   ├── api
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   └── useConfig.tsx
@@ -930,6 +948,7 @@
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   ├── types.ts
     │   │       │   │   │   │   ├── useAuthQuery.tsx
+    │   │       │   │   │   │   ├── useOnboardingDone.tsx
     │   │       │   │   │   │   └── useUserReconciliations.tsx
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   ├── button-proconnect.svg
@@ -938,6 +957,7 @@
     │   │       │   │   │   │   ├── Auth.tsx
     │   │       │   │   │   │   ├── AvatarSvg.tsx
     │   │       │   │   │   │   ├── ButtonLogin.tsx
+    │   │       │   │   │   │   ├── FirstConnection.tsx
     │   │       │   │   │   │   ├── UserAvatar.tsx
     │   │       │   │   │   │   ├── UserReconciliation.tsx
     │   │       │   │   │   │   └── index.ts
@@ -1259,7 +1279,6 @@
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── header
     │   │       │   │   │   ├── components
-    │   │       │   │   │   │   ├── ButtonTogglePanel.tsx
     │   │       │   │   │   │   ├── Header.tsx
     │   │       │   │   │   │   ├── Title.tsx
     │   │       │   │   │   │   ├── Waffle.tsx
@@ -1267,6 +1286,21 @@
     │   │       │   │   │   ├── conf.ts
     │   │       │   │   │   ├── index.ts
     │   │       │   │   │   └── types.ts
+    │   │       │   │   ├── help
+    │   │       │   │   │   ├── assets
+    │   │       │   │   │   │   ├── drag_indicator.svg
+    │   │       │   │   │   │   ├── file-share.svg
+    │   │       │   │   │   │   ├── format-text.svg
+    │   │       │   │   │   │   ├── help-outline.svg
+    │   │       │   │   │   │   ├── stack-template.svg
+    │   │       │   │   │   │   └── wand-and-stars.svg
+    │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── HelpMenu.tsx
+    │   │       │   │   │   │   ├── OnBoarding.tsx
+    │   │       │   │   │   │   └── OnboardingStepIcon.tsx
+    │   │       │   │   │   ├── hooks
+    │   │       │   │   │   │   └── useOnboardingSteps.tsx
+    │   │       │   │   │   └── index.ts
     │   │       │   │   ├── home
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   ├── SC1-responsive-en.png
@@ -1315,6 +1349,7 @@
     │   │       │   │   │   │   ├── LeftPanelFavorites.tsx
     │   │       │   │   │   │   ├── LeftPanelHeader.tsx
     │   │       │   │   │   │   ├── LeftPanelHeaderButton.tsx
+    │   │       │   │   │   │   ├── LeftPanelToggleMobile.tsx
     │   │       │   │   │   │   ├── ResizableLeftPanel.tsx
     │   │       │   │   │   │   └── index.tsx
     │   │       │   │   │   ├── index.ts
@@ -1362,7 +1397,8 @@
     │   │       │   ├── i18n
     │   │       │   │   ├── config.ts
     │   │       │   │   ├── initI18n.ts
-    │   │       │   │   └── translations.json
+    │   │       │   │   ├── translations.json
+    │   │       │   │   └── useLocale.ts
     │   │       │   ├── layouts
     │   │       │   │   ├── MainLayout.tsx
     │   │       │   │   ├── PageLayout.tsx
@@ -1370,6 +1406,8 @@
     │   │       │   │   └── index.ts
     │   │       │   ├── libs
     │   │       │   │   ├── Analytics.tsx
+    │   │       │   │   ├── __tests__
+    │   │       │   │   │   └── Analytics.spec.tsx
     │   │       │   │   └── index.ts
     │   │       │   ├── pages
     │   │       │   │   ├── 401.tsx
@@ -1405,6 +1443,7 @@
     │   │       │   ├── stores
     │   │       │   │   ├── index.ts
     │   │       │   │   ├── useBroadcastStore.tsx
+    │   │       │   │   ├── useFocusStore.tsx
     │   │       │   │   ├── useResponsiveStore.tsx
     │   │       │   │   └── useSentryStore.tsx
     │   │       │   ├── tests
@@ -1547,4 +1586,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-265 directories, 1357 files
+272 directories, 1389 files

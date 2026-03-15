@@ -6,9 +6,47 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) add a is_first_connection flag to the User model #1938
+- ✨(frontend) add onboarding modal with help menu button #1868
+
+### Changed
+
+- ♿(frontend) localize LaGaufre label fallback in Docs #1979
+- ✨(backend) add a migration cleaning on-boarding document accesses
+- ⬆️(frontend) upgrade Next.js to v16 #1980
+- ♿️(frontend) fix aria-label and landmark on document banner state #1986
+- 🌐(i18n) add "new window" translation key for waffle aria-label #1984
+
+### Fixed
+
+- 🐛(backend) create a link_trace record for on-boarding documents
+- 🐛(backend) manage race condition when creating sandbox document
+- 🐛(frontend) fix flickering left panel #1989
+- ♿️(frontend) improve doc tree keyboard navigation #1981
+
+## [v4.7.0] - 2026-03-09
+
+### Added
+
+- ✨(helm) allow all keys in configMap as env var #1872
+
 ### Changed
 
 - 📝(docs) improve README and add documentation hub #1870
+- ♿️(frontend) restore focus to triggers after closing menus and modals #1863
+- 🚸(frontend) change position elements toolbar #1957
+- ♿️(frontend) add focus on open to modals #1948
+
+### Fixed
+
+- 🐛(frontend) analytic feature flags problem #1953
+- 🐛(frontend) fix home collapsing panel #1954
+- 🐛(frontend) fix disabled color on icon Dropdown #1950
+- 🐛(frontend) fix zIndex table of content #1949
+- 🐛(frontend) fix bug when language not supported by BN #1957
+- 🐛 (backend) prevent privileged users from requesting access #1898
 
 ## [v4.6.0] - 2026-03-03
 
@@ -37,7 +75,6 @@ and this project adheres to
 - 🚸(backend) sort user search results by proximity with the active user #1802
 - 🚸(oidc) ignore case when fallback on email #1880
 - ⚡️(CI) optimize Docker Hub workflow #1919
-- ♿️(frontend) add focus on open to modals #1948
 
 ### Fixed
 
@@ -286,7 +323,7 @@ and this project adheres to
 - ♻️(frontend) Refactor Auth component for improved redirection logic #1461
 - ♻️(frontend) replace Arial font-family with token font #1411
 - ♿(frontend) improve accessibility:
-  - ♿(frontend) enable enter key to open documentss #1354
+  - ♿(frontend) enable enter key to open documents #1354
   - ♿(frontend) improve modal a11y: structure, labels, title #1349
   - ♿improve NVDA navigation in DocShareModal #1396
   - ♿ improve accessibility by adding landmark roles to layout #1394
@@ -494,10 +531,10 @@ and this project adheres to
 
 - ✨(backend) add endpoint checking media status #984
 - ✨(backend) allow setting session cookie age via env var #977
-- ✨(backend) allow theme customnization using a configuration file #948
+- ✨(backend) allow theme customization using a configuration file #948
 - ✨(frontend) Add a custom callout block to the editor #892
 - 🚩(frontend) version MIT only #911
-- ✨(backend) integrate maleware_detection from django-lasuite #936
+- ✨(backend) integrate malware_detection from django-lasuite #936
 - 🏗️(frontend) Footer configurable #959
 - 🩺(CI) add lint spell mistakes #954
 - ✨(frontend) create generic theme #792
@@ -1065,7 +1102,8 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v4.6.0...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v4.7.0...main
+[v4.7.0]: https://github.com/suitenumerique/docs/releases/v4.7.0
 [v4.6.0]: https://github.com/suitenumerique/docs/releases/v4.6.0
 [v4.5.0]: https://github.com/suitenumerique/docs/releases/v4.5.0
 [v4.4.0]: https://github.com/suitenumerique/docs/releases/v4.4.0
