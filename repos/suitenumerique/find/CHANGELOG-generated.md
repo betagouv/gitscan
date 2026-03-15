@@ -1,16 +1,16 @@
 ## Changelog : find (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à find au cours des 30 derniers jours. Les principales évolutions concernent l'ajout de support pour l'architecture ARM64, des corrections de bugs et des ajustements de l'infrastructure CI/CD. Une fonctionnalité de filtrage par chemin de fichier a été implémentée puis temporairement annulée, et est en cours de stabilisation.
+Ce changelog présente les améliorations apportées à find au cours du dernier mois. Les principales évolutions concernent l'amélioration des capacités de recherche, notamment la gestion des types de recherche, ainsi que des optimisations techniques pour l'infrastructure et les processus de développement.
 
 ### Évolutions fonctionnelles
-- Ajout du filtrage sur le chemin des fichiers [#53](https://github.com/suitenumerique/find/issues/53). *Note : cette fonctionnalité a été brièvement déployée puis rétractée pour correction.*
-- Amélioration de la compatibilité en ajoutant le support de l'architecture ARM64 pour la construction des images Docker.
+- Amélioration de la recherche : prise en charge de différents types de recherche. [#51](https://github.com/suitenumerique/find/issues/51)
 
 ### Évolutions techniques
-- Mise à jour de Django vers la version 5.2.11, incluant des correctifs de sécurité [#35e308f](https://github.com/suitenumerique/find/commit/35e308f).
-- Suppression d'un workflow de déploiement obsolète [#195722b](https://github.com/suitenumerique/find/commit/195722b).
-- Mise à jour des actions GitHub pour utiliser les dernières versions [#71744cc](https://github.com/suitenumerique/find/commit/71744cc).
+- Mise à jour de Django : la version de Django a été mise à jour vers la version 5.2.12 et 5.2.11, incluant des correctifs de sécurité.
+- Amélioration du CI/CD : les étapes des workflows GitHub Actions ont été mises à jour vers les dernières versions.
+- Support ARM64 : ajout du support de la plateforme ARM64 pour la construction des images Docker.
+- Suppression d'un workflow de déploiement obsolète.
 
 ### Autres changements
 - Aucun autre changement significatif à signaler.
