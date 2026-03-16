@@ -113,7 +113,6 @@
 │   │   │   │   │   ├── form_cloture_modal.js
 │   │   │   │   │   ├── form_upload_documents.js
 │   │   │   │   │   ├── input_autocomplete_bailleur.js
-│   │   │   │   │   ├── pick-localisation.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
 │   │   │   │   ├── back_territory_management_document
@@ -133,8 +132,12 @@
 │   │   │   │   │   └── front_demande_lien_signalement.js
 │   │   │   │   ├── front_dossier_bailleur
 │   │   │   │   │   └── front_dossier_bailleur.js
+│   │   │   │   ├── front_service_secours
+│   │   │   │   │   ├── front_service_secours.js
+│   │   │   │   │   └── front_service_secours_install.js
 │   │   │   │   └── front_suivi_signalement
 │   │   │   │       ├── front_suivi_signalement.js
+│   │   │   │       ├── front_suivi_signalement_editor.js
 │   │   │   │       └── front_suivi_signalement_message.js
 │   │   │   └── services
 │   │   │       ├── bo_modales.js
@@ -145,7 +148,8 @@
 │   │   │       │   ├── component_search_and_select_badges.js
 │   │   │       │   ├── component_search_autocomplete.js
 │   │   │       │   ├── component_search_checkbox.js
-│   │   │       │   └── component_select_all_checkbox.js
+│   │   │       │   ├── component_select_all_checkbox.js
+│   │   │       │   └── pick-localisation.js
 │   │   │       ├── cookie
 │   │   │       │   ├── cookie_banner.js
 │   │   │       │   ├── cookie_matomo_tracking.js
@@ -396,7 +400,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (80 files)
+│   └── Version*.php  (84 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -653,6 +657,7 @@
 │   │   ├── SignalementController.php
 │   │   ├── SignalementEditController.php
 │   │   ├── SignalementFileController.php
+│   │   ├── SignalementInvitationController.php
 │   │   ├── StatistiquesController.php
 │   │   ├── SuiviBailleurController.php
 │   │   └── Webhook
@@ -839,6 +844,7 @@
 │   │   │   ├── AffectationStatus.php
 │   │   │   ├── Api
 │   │   │   │   └── PersonneType.php
+│   │   │   ├── AppContext.php
 │   │   │   ├── BrevoEvent.php
 │   │   │   ├── ChauffageType.php
 │   │   │   ├── CreationSource.php
@@ -851,6 +857,7 @@
 │   │   │   ├── InterfacageType.php
 │   │   │   ├── InterventionType.php
 │   │   │   ├── MotifCloture.php
+│   │   │   ├── MotifClotureUsager.php
 │   │   │   ├── MotifRefus.php
 │   │   │   ├── MoyenContact.php
 │   │   │   ├── NotificationType.php
@@ -866,6 +873,7 @@
 │   │   │   ├── SignalementDraftStatus.php
 │   │   │   ├── SignalementStatus.php
 │   │   │   ├── SuiviCategory.php
+│   │   │   ├── TiersInvitationStatus.php
 │   │   │   ├── UserStatus.php
 │   │   │   ├── VisiteStatus.php
 │   │   │   └── ZoneType.php
@@ -893,6 +901,7 @@
 │   │   ├── SuiviFile.php
 │   │   ├── Tag.php
 │   │   ├── Territory.php
+│   │   ├── TiersInvitation.php
 │   │   ├── User.php
 │   │   ├── UserApiPermission.php
 │   │   ├── UserPartner.php
@@ -1003,6 +1012,7 @@
 │   │   ├── SignalementQualificationFactory.php
 │   │   ├── SignalementSearchQueryFactory.php
 │   │   ├── SignalementVisiteRequestFactory.php
+│   │   ├── TiersInvitationFactory.php
 │   │   └── UserFactory.php
 │   ├── Form
 │   │   ├── AddSuiviType.php
@@ -1013,6 +1023,7 @@
 │   │   ├── ClotureType.php
 │   │   ├── ClubEventType.php
 │   │   ├── CommuneType.php
+│   │   ├── CoordonneesAgenceType.php
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── EditTagType.php
 │   │   ├── MessageUsagerType.php
@@ -1057,8 +1068,11 @@
 │   │   ├── SignalementDraftLogementType.php
 │   │   ├── SignalementDraftSituationType.php
 │   │   ├── SignalementeEditFO
+│   │   │   ├── AdresseLogementType.php
 │   │   │   ├── CoordonneesAgenceType.php
-│   │   │   └── CoordonneesBailleurType.php
+│   │   │   ├── CoordonneesBailleurType.php
+│   │   │   ├── ProcedureAssuranceType.php
+│   │   │   └── UsagerSituationFoyerType.php
 │   │   ├── StopProcedureType.php
 │   │   ├── SuiviSummariesType.php
 │   │   ├── TerritoryFileType.php
@@ -1189,6 +1203,7 @@
 │   │   ├── SuiviRepository.php
 │   │   ├── TagRepository.php
 │   │   ├── TerritoryRepository.php
+│   │   ├── TiersInvitationRepository.php
 │   │   ├── UserApiPermissionRepository.php
 │   │   ├── UserPartnerRepository.php
 │   │   ├── UserRepository.php
@@ -1459,6 +1474,7 @@
 │   │   │   │   │   ├── SignalementRefusalMailer.php
 │   │   │   │   │   ├── SignalementReminderInjonctionBailleurMailer.php
 │   │   │   │   │   ├── SignalementSuiviSummariesExportMailer.php
+│   │   │   │   │   ├── SignalementUsagerCloseInjonctionBailleurMailer.php
 │   │   │   │   │   ├── SignalementUserExportMailer.php
 │   │   │   │   │   └── SignalementValidationMailer.php
 │   │   │   │   ├── SignalementDraft
@@ -1535,6 +1551,8 @@
 │   │   │   │   ├── SignalementExportLoader.php
 │   │   │   │   ├── SignalementExportPdfGenerator.php
 │   │   │   │   └── SignalementExportSelectableColumns.php
+│   │   │   ├── InputValue
+│   │   │   │   └── SituationFoyerProcessor.php
 │   │   │   ├── PhotoHelper.php
 │   │   │   ├── PostalCodeHomeChecker.php
 │   │   │   ├── Qualification
@@ -1620,6 +1638,7 @@
 │   │   ├── CommuneHelper.php
 │   │   ├── DataPropertyArrayFilter.php
 │   │   ├── DateHelper.php
+│   │   ├── DictionaryProvider.php
 │   │   ├── Enum
 │   │   │   └── ExtensionAdresse.php
 │   │   ├── EscalierParser.php
@@ -1629,6 +1648,8 @@
 │   │   ├── Phone.php
 │   │   └── TrimHelper.php
 │   └── Validator
+│       ├── AdresseOccupant.php
+│       ├── AdresseOccupantValidator.php
 │       ├── ApiDesordreRequest.php
 │       ├── ApiDesordreRequestValidator.php
 │       ├── Behaviour
@@ -1641,6 +1662,8 @@
 │       ├── InseeToIncludeValidator.php
 │       ├── IsTerritoryActive.php
 │       ├── IsTerritoryActiveValidator.php
+│       ├── NatureLogementAutreRequired.php
+│       ├── NatureLogementAutreRequiredValidator.php
 │       ├── PartnerToExclude.php
 │       ├── PartnerToExcludeValidator.php
 │       ├── PostalCodeInseeCoherence.php
@@ -1936,6 +1959,8 @@
 │   │   │   │       └── visites-list.html.twig
 │   │   │   └── view.html.twig
 │   │   ├── signalement-injonction
+│   │   │   ├── _courrier-bailleur-header.html.twig
+│   │   │   ├── courrier-bailleur-injonction-closed.html.twig
 │   │   │   ├── courrier-bailleur.html.twig
 │   │   │   ├── engagement-travaux-bailleur.html.twig
 │   │   │   └── index.html.twig
@@ -2075,8 +2100,11 @@
 │   │   ├── cgu_agents.html.twig
 │   │   ├── dossier_bailleur.html.twig
 │   │   ├── edit-signalement
+│   │   │   ├── adresse-logement.html.twig
 │   │   │   ├── coordonnees-agence.html.twig
-│   │   │   └── coordonnees-bailleur.html.twig
+│   │   │   ├── coordonnees-bailleur.html.twig
+│   │   │   ├── procedure-assurance.html.twig
+│   │   │   └── situation-foyer.html.twig
 │   │   ├── flash-messages.html.twig
 │   │   ├── formulaire_signalement.html.twig
 │   │   ├── statistiques.html.twig
@@ -2113,6 +2141,7 @@
 │   │   └── reset_password_new.html.twig
 │   ├── service_secours
 │   │   ├── _header.html.twig
+│   │   ├── _install.html.twig
 │   │   ├── base.html.twig
 │   │   ├── index.html.twig
 │   │   └── success.html.twig
@@ -2178,6 +2207,7 @@
 │   │   │   │   ├── SignalementEditControllerTest.php
 │   │   │   │   ├── SignalementFileControllerTest.php
 │   │   │   │   ├── SignalementFileGenerateZipControllerTest.php
+│   │   │   │   ├── SignalementInjonctionControllerTest.php
 │   │   │   │   ├── SignalementListControllerTest.php
 │   │   │   │   ├── SignalementVisitesControllerTest.php
 │   │   │   │   ├── TerritoryFilesControllerTest.php
@@ -2202,6 +2232,7 @@
 │   │   │   ├── SignalementControllerTest.php
 │   │   │   ├── SignalementEditControllerTest.php
 │   │   │   ├── SignalementFileControllerTest.php
+│   │   │   ├── SignalementInvitationControllerTest.php
 │   │   │   ├── StatistiquesControllerTest.php
 │   │   │   ├── SuiviBailleurControllerTest.php
 │   │   │   ├── UserAccountControllerTest.php
@@ -2551,6 +2582,7 @@
 │   │   │   ├── CommuneHelperTest.php
 │   │   │   ├── DataPropertyArrayFilterTest.php
 │   │   │   ├── DateHelperTest.php
+│   │   │   ├── DictionaryProviderTest.php
 │   │   │   ├── EscalierParserTest.php
 │   │   │   ├── EtageParserTest.php
 │   │   │   ├── JsonTest.php
@@ -2695,4 +2727,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-456 directories, 2338 files
+458 directories, 2372 files
