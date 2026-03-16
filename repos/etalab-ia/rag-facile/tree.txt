@@ -98,7 +98,6 @@
 │   │   │   │       └── ingestion
 │   │   │   │           ├── __init__.py
 │   │   │   │           ├── _base.py
-│   │   │   │           ├── albert.py
 │   │   │   │           └── local.py
 │   │   │   └── template.yml
 │   │   ├── orchestration
@@ -119,9 +118,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       └── pipelines
 │   │   │   │           ├── __init__.py
-│   │   │   │           ├── _base.py
-│   │   │   │           ├── albert.py
-│   │   │   │           └── basic.py
+│   │   │   │           └── _base.py
 │   │   │   └── template.yml
 │   │   ├── rag-core
 │   │   │   ├── README.md
@@ -195,6 +192,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       └── reranking
 │   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
 │   │   │   │           └── albert.py
 │   │   │   └── template.yml
 │   │   ├── retrieval
@@ -205,6 +203,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       └── retrieval
 │   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
 │   │   │   │           ├── albert.py
 │   │   │   │           └── fusion.py
 │   │   │   └── template.yml
@@ -414,6 +413,7 @@
 │   │   ├── how-rag-works.md
 │   │   ├── proxy-setup.md
 │   │   ├── rag-pipeline.md
+│   │   ├── supabase-setup.md
 │   │   ├── uninstalling.md
 │   │   ├── windows-setup.md
 │   │   └── worktrees.md
@@ -423,7 +423,6 @@
 │   │   └── ragfacile-toml.md
 │   └── troubleshooting
 │       └── proxy.md
-├── install.ps1
 ├── install.sh
 ├── justfile
 ├── packages
@@ -495,7 +494,6 @@
 │   │   │       └── ingestion
 │   │   │           ├── __init__.py
 │   │   │           ├── _base.py
-│   │   │           ├── albert.py
 │   │   │           └── local.py
 │   │   └── tests
 │   │       ├── __init__.py
@@ -509,16 +507,20 @@
 │   │   │       └── memory
 │   │   │           ├── __init__.py
 │   │   │           ├── _paths.py
+│   │   │           ├── albert_search.py
 │   │   │           ├── consolidation.py
 │   │   │           ├── context.py
 │   │   │           ├── lifecycle.py
+│   │   │           ├── search.py
 │   │   │           ├── stores.py
 │   │   │           └── tool.py
 │   │   └── tests
 │   │       ├── __init__.py
+│   │       ├── test_albert_search.py
 │   │       ├── test_consolidation.py
 │   │       ├── test_context.py
 │   │       ├── test_lifecycle.py
+│   │       ├── test_search.py
 │   │       ├── test_stores.py
 │   │       └── test_tool.py
 │   ├── pipelines
@@ -529,9 +531,7 @@
 │   │   │       ├── __init__.py
 │   │   │       └── pipelines
 │   │   │           ├── __init__.py
-│   │   │           ├── _base.py
-│   │   │           ├── albert.py
-│   │   │           └── basic.py
+│   │   │           └── _base.py
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       └── test_pipelines.py
@@ -586,6 +586,7 @@
 │   │   │       ├── __init__.py
 │   │   │       └── reranking
 │   │   │           ├── __init__.py
+│   │   │           ├── _base.py
 │   │   │           └── albert.py
 │   │   └── tests
 │   │       ├── conftest.py
@@ -598,6 +599,7 @@
 │   │   │       ├── __init__.py
 │   │   │       └── retrieval
 │   │   │           ├── __init__.py
+│   │   │           ├── _base.py
 │   │   │           ├── albert.py
 │   │   │           └── fusion.py
 │   │   └── tests
@@ -627,12 +629,14 @@
 │       │           ├── _base.py
 │       │           ├── _models.py
 │       │           ├── noop.py
+│       │           ├── postgres.py
 │       │           └── sqlite.py
 │       └── tests
 │           ├── __init__.py
 │           ├── test_init.py
 │           ├── test_models.py
 │           ├── test_noop.py
+│           ├── test_postgres.py
 │           └── test_sqlite.py
 ├── pyproject.toml
 ├── ragfacile.toml
@@ -642,6 +646,11 @@
 │   ├── INTRODSP.pdf
 │   ├── fiche_14_vademecum_kit_elections_2014_v2_18.02.14.pdf
 │   └── service_dag_2023-2024.pdf
+├── supabase
+│   ├── config.toml
+│   └── migrations
+│       ├── 00000000000000_tracing.sql
+│       └── 00000000000001_chainlit.sql
 ├── tools
 │   ├── build_release_asset.py
 │   ├── generate_templates.py
@@ -649,4 +658,4 @@
 │   ├── pyproject.toml
 │   └── uv.lock
 └── uv.lock
-168 directories, 483 files
+170 directories, 490 files

@@ -1,35 +1,34 @@
 ## Changelog : rag-facile (30 derniers jours)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une amélioration significative de l'expérience utilisateur et de la robustesse de rag-facile. Les principales évolutions incluent l'ajout d'un système de configuration, l'amélioration du support de l'API Albert, l'ajout de thèmes visuels conformes aux standards gouvernementaux (DSFR), et l'implémentation d'un système de traçabilité des pipelines RAG. Des efforts importants ont également été consacrés à l'amélioration de l'installation et de la compatibilité avec différents environnements, notamment Windows.
+Les 30 derniers jours ont été marqués par d'importantes améliorations de la plateforme rag-facile, notamment l'ajout de l'authentification et de la persistance des conversations via Supabase, une refonte de l'architecture interne pour une meilleure modularité, et l'ajout de nouvelles fonctionnalités comme l'intégration de l'IA Inspect pour l'évaluation de la qualité des réponses et un système de compétences pour l'agent conversationnel. De nombreuses corrections de bugs et améliorations de l'expérience utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un système de configuration pour personnaliser le comportement de rag-facile.
-- Intégration d'un thème visuel DSFR (Design Système Français) pour les interfaces Chainlit et Reflex.
-- Amélioration de l'intégration avec l'API Albert, incluant la gestion des erreurs et l'utilisation des modèles disponibles.
-- Ajout d'un système de traçabilité des pipelines RAG pour faciliter le débogage et l'analyse des performances.
-- Possibilité de générer des jeux de données synthétiques pour l'évaluation des performances.
-- Amélioration des commandes CLI pour une meilleure expérience utilisateur.
-- Ajout de la gestion des proxies pour l'installation dans des environnements restreints.
-- Ajout de la possibilité d'utiliser Just pour la gestion des dépendances et l'exécution des tâches.
+- Ajout de l'authentification via Supabase et persistance des conversations. Les utilisateurs peuvent maintenant se connecter et retrouver leurs conversations précédentes.
+- Intégration de l'IA Inspect pour l'évaluation de la qualité des réponses (précision, rappel, fidélité).
+- Système de compétences pour l'agent conversationnel, permettant d'étendre ses capacités.
+- Amélioration de l'interface utilisateur avec l'ajout d'un thème DSFR (Design Système Français).
+- Ajout d'un nouveau flux d'installation avec une interface plus conviviale et la possibilité de choisir la langue.
+- Possibilité de configurer et de personnaliser le système via des commandes CLI.
+- Ajout de la gestion des collections de documents (ajout, suppression, activation/désactivation).
+- Amélioration de la recherche avec l'ajout de l'expansion de requête et de stratégies HyDE.
+- Ajout de la possibilité d'utiliser des collections publiques Albert.
 
 ### Évolutions techniques
-- Refactorisation de l'architecture pour une meilleure modularité et maintenabilité.
-- Migration vers l'utilisation de `uv` pour la gestion des dépendances.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Refonte de l'architecture interne pour une meilleure modularité et maintenabilité, avec l'extraction de packages pour l'ingestion, le contexte, le reranking et l'orchestration.
+- Utilisation de `uv` pour la gestion des dépendances et des environnements virtuels.
+- Amélioration du système de tests avec l'ajout de tests d'intégration et de tests unitaires.
 - Mise à jour des dépendances vers les dernières versions stables.
-- Amélioration de la documentation et des guides d'utilisation.
-- Ajout de workflows CI/CD pour automatiser les tests et le déploiement.
-- Implémentation d'un système de gestion des versions avec `release-please`.
-- Ajout de support pour Windows, incluant l'installation et l'exécution de rag-facile.
-- Refactorisation du code pour améliorer la lisibilité et la conformité aux bonnes pratiques.
-- Ajout de la gestion de l'encodage des caractères pour une meilleure compatibilité avec différents systèmes d'exploitation.
+- Ajout d'un système de tracing pour le débogage et l'analyse des performances.
+- Utilisation de worktrees pour un développement plus efficace.
+- Amélioration du script d'installation pour une meilleure compatibilité avec différents systèmes d'exploitation.
+- Ajout de la gestion des secrets via des variables d'environnement.
+- Utilisation de git pour la gestion des sessions et la persistance des données.
 
 ### Autres changements
-- Ajout d'un fichier CHANGELOG pour documenter les modifications apportées au projet.
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés au code.
-- Correction de bugs mineurs et amélioration de la stabilité du code.
-- Amélioration des messages d'erreur pour faciliter le débogage.
-- Ajout de commentaires et de documentation pour améliorer la compréhension du code.
-- Organisation du code et des fichiers pour une meilleure structure du projet.
+- Ajout de documentation sur l'utilisation de la plateforme et le développement.
+- Amélioration des messages d'erreur et des messages d'aide.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout d'un guide pour les contributeurs.
+- Ajout d'un fichier `.gitignore` pour ignorer les fichiers inutiles.
+- Mise à jour des badges de version et des liens vers les dépôts.
