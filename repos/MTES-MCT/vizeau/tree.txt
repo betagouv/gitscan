@@ -157,6 +157,7 @@
 │   │   │   ├── TagSelector.tsx
 │   │   │   └── exploitation-left-sidebar.tsx
 │   │   ├── exploitations
+│   │   │   ├── exploitation-other-contacts.tsx
 │   │   │   ├── exploitations-list.tsx
 │   │   │   ├── exploitations-table.tsx
 │   │   │   └── form
@@ -229,105 +230,113 @@
 │   │   ├── login.tsx
 │   │   └── visualisation.tsx
 │   ├── tsconfig.json
-│   └── ui
-│       ├── AlertDrawer
-│       │   ├── alert-drawer.stories.tsx
-│       │   ├── custom.css
-│       │   └── index.tsx
-│       ├── ButtonWithSelector
-│       │   ├── button-with-selector.stories.tsx
-│       │   └── index.tsx
-│       ├── Charts
-│       │   └── Doughnut
-│       │       ├── doughnut.stories.tsx
-│       │       └── index.tsx
-│       ├── CustomTag
-│       │   ├── custom-tag.stories.tsx
-│       │   └── index.tsx
-│       ├── DeleteAlert
-│       │   ├── delete-alert.stories.tsx
-│       │   └── index.tsx
-│       ├── Divider
-│       │   ├── divider.stories.tsx
-│       │   └── index.tsx
-│       ├── EmptyPlaceholder
-│       │   ├── empty-placeholder.css
-│       │   ├── empty-placeholder.stories.tsx
-│       │   └── index.tsx
-│       ├── FileItemList
-│       │   ├── file-item.tsx
-│       │   ├── file-items-list.stories.tsx
-│       │   └── index.tsx
-│       ├── InputWithSelector
-│       │   ├── dropdown-item.tsx
-│       │   ├── index.tsx
-│       │   └── input-with-selector.stories.tsx
-│       ├── LabelInfo
-│       │   ├── index.tsx
-│       │   └── label-info.stories.tsx
-│       ├── LabeledProgressBar
-│       │   ├── index.tsx
-│       │   └── labeled-progress-bar.stories.tsx
-│       ├── LegendItem
-│       │   ├── index.tsx
-│       │   └── legend-item.stories.tsx
-│       ├── ListItem
-│       │   ├── index.tsx
-│       │   ├── list-item.css
-│       │   └── list-item.stories.tsx
-│       ├── Loader
-│       │   ├── index.tsx
-│       │   ├── loader.stories.tsx
-│       │   └── spinner-animation.css
-│       ├── MajorSelector
-│       │   ├── index.css
-│       │   ├── index.tsx
-│       │   └── major-selector.stories.tsx
-│       ├── MetasList
-│       │   ├── index.tsx
-│       │   └── metas-list.stories.tsx
-│       ├── MoreButton
-│       │   ├── index.tsx
-│       │   └── more-button.stories.tsx
-│       ├── ProgressBar
-│       │   ├── index.tsx
-│       │   └── progress-bar.stories.tsx
-│       ├── SectionCard
-│       │   ├── index.tsx
-│       │   └── section-card.stories.tsx
-│       ├── SelectorMenu
-│       │   ├── index.tsx
-│       │   └── selector-menu.stories.tsx
-│       ├── SmallSection
-│       │   ├── index.tsx
-│       │   └── small-section.stories.tsx
-│       ├── Tabs
-│       │   ├── index.tsx
-│       │   ├── tab.tsx
-│       │   └── tabs.stories.tsx
-│       ├── TagsList
-│       │   ├── index.tsx
-│       │   └── tags-list.stories.tsx
-│       ├── Timeline
-│       │   ├── index.tsx
-│       │   ├── timeline-animation.css
-│       │   └── timeline.stories.tsx
-│       ├── Toaster
-│       │   ├── index.tsx
-│       │   └── toaster.stories.tsx
-│       ├── TruncatedText
-│       │   ├── index.tsx
-│       │   └── truncated-text.stories.tsx
-│       ├── cultures-pictos.stories.tsx
-│       ├── example
-│       │   ├── example.stories.js
-│       │   └── index.tsx
-│       └── layouts
-│           ├── MapLayout
-│           │   ├── index.tsx
-│           │   └── map-layout.stories.tsx
-│           ├── layout.stories.tsx
-│           └── layout.tsx
+│   ├── ui
+│   │   ├── AlertDrawer
+│   │   │   ├── alert-drawer.stories.tsx
+│   │   │   ├── custom.css
+│   │   │   └── index.tsx
+│   │   ├── ButtonWithSelector
+│   │   │   ├── button-with-selector.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── Charts
+│   │   │   ├── Doughnut
+│   │   │   │   ├── doughnut.stories.tsx
+│   │   │   │   └── index.tsx
+│   │   │   └── EvolutiveChartLine
+│   │   │       ├── evolutive-chart-line.stories.tsx
+│   │   │       └── index.tsx
+│   │   ├── CustomTag
+│   │   │   ├── custom-tag.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── DeleteAlert
+│   │   │   ├── delete-alert.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── Divider
+│   │   │   ├── divider.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── EmptyPlaceholder
+│   │   │   ├── empty-placeholder.css
+│   │   │   ├── empty-placeholder.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── FileItemList
+│   │   │   ├── file-item.tsx
+│   │   │   ├── file-items-list.stories.tsx
+│   │   │   └── index.tsx
+│   │   ├── InputWithSelector
+│   │   │   ├── dropdown-item.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── input-with-selector.stories.tsx
+│   │   ├── LabelInfo
+│   │   │   ├── index.tsx
+│   │   │   └── label-info.stories.tsx
+│   │   ├── LabeledProgressBar
+│   │   │   ├── index.tsx
+│   │   │   └── labeled-progress-bar.stories.tsx
+│   │   ├── LegendItem
+│   │   │   ├── index.tsx
+│   │   │   └── legend-item.stories.tsx
+│   │   ├── ListItem
+│   │   │   ├── index.tsx
+│   │   │   ├── list-item.css
+│   │   │   └── list-item.stories.tsx
+│   │   ├── Loader
+│   │   │   ├── index.tsx
+│   │   │   ├── loader.stories.tsx
+│   │   │   └── spinner-animation.css
+│   │   ├── MajorSelector
+│   │   │   ├── index.css
+│   │   │   ├── index.tsx
+│   │   │   └── major-selector.stories.tsx
+│   │   ├── MetasList
+│   │   │   ├── index.tsx
+│   │   │   └── metas-list.stories.tsx
+│   │   ├── MoreButton
+│   │   │   ├── index.tsx
+│   │   │   └── more-button.stories.tsx
+│   │   ├── ProgressBar
+│   │   │   ├── index.tsx
+│   │   │   └── progress-bar.stories.tsx
+│   │   ├── ResumeCard
+│   │   │   ├── index.tsx
+│   │   │   └── resume-card.stories.tsx
+│   │   ├── SectionCard
+│   │   │   ├── index.tsx
+│   │   │   └── section-card.stories.tsx
+│   │   ├── SelectorMenu
+│   │   │   ├── index.tsx
+│   │   │   └── selector-menu.stories.tsx
+│   │   ├── SmallSection
+│   │   │   ├── index.tsx
+│   │   │   └── small-section.stories.tsx
+│   │   ├── Tabs
+│   │   │   ├── index.tsx
+│   │   │   ├── tab.tsx
+│   │   │   └── tabs.stories.tsx
+│   │   ├── TagsList
+│   │   │   ├── index.tsx
+│   │   │   └── tags-list.stories.tsx
+│   │   ├── Timeline
+│   │   │   ├── index.tsx
+│   │   │   ├── timeline-animation.css
+│   │   │   └── timeline.stories.tsx
+│   │   ├── Toaster
+│   │   │   ├── index.tsx
+│   │   │   └── toaster.stories.tsx
+│   │   ├── TruncatedText
+│   │   │   ├── index.tsx
+│   │   │   └── truncated-text.stories.tsx
+│   │   ├── cultures-pictos.stories.tsx
+│   │   ├── example
+│   │   │   ├── example.stories.js
+│   │   │   └── index.tsx
+│   │   └── layouts
+│   │       ├── MapLayout
+│   │       │   ├── index.tsx
+│   │       │   └── map-layout.stories.tsx
+│   │       ├── layout.stories.tsx
+│   │       └── layout.tsx
+│   └── utils
+│       └── group-colors.tsx
 ├── package-lock.json
 ├── package.json
 ├── public
@@ -361,7 +370,8 @@
 │       │   └── contact.spec.ts
 │       ├── exploitation
 │       │   ├── exploitation.spec.ts
-│       │   └── exploitation_service.spec.ts
+│       │   ├── exploitation_service.spec.ts
+│       │   └── exploitation_service_contacts.spec.ts
 │       └── log_entry
 │           ├── log_entry_document_service.spec.ts
 │           ├── log_entry_service.spec.ts
@@ -373,4 +383,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-82 directories, 293 files
+85 directories, 300 files
