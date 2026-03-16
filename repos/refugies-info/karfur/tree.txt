@@ -100,7 +100,6 @@
 │   │   │   └── axios.js
 │   │   ├── cloudbuild.yaml
 │   │   ├── development.env
-│   │   ├── eslint.config.mjs
 │   │   ├── example-env-file.env
 │   │   ├── jest
 │   │   │   ├── __mocks__
@@ -2517,7 +2516,6 @@
 │   │   ├── build-scripts
 │   │   │   └── withM1build.js
 │   │   ├── eas.json
-│   │   ├── eslint.config.mjs
 │   │   ├── example-env-file.env
 │   │   ├── firebase.json
 │   │   ├── index.js
@@ -3289,7 +3287,6 @@
 │   ├── server
 │   │   ├── Dockerfile
 │   │   ├── cloudbuild.yaml
-│   │   ├── eslint.config.mjs
 │   │   ├── example-env-file.env
 │   │   ├── jest.config.js
 │   │   ├── jest.setup.ts
@@ -3361,7 +3358,6 @@
 │   │   │   │   │   ├── validatePassword.test.ts
 │   │   │   │   │   └── wordCounter.test.ts
 │   │   │   │   ├── asyncForEach.ts
-│   │   │   │   ├── cache.ts
 │   │   │   │   ├── castToBoolean.ts
 │   │   │   │   ├── checkAuthorizations.ts
 │   │   │   │   ├── cleanupAvis.ts
@@ -3374,6 +3370,7 @@
 │   │   │   │   ├── getLocaleString.ts
 │   │   │   │   ├── googleIndexingApi.ts
 │   │   │   │   ├── isToday.ts
+│   │   │   │   ├── pictureUtils.ts
 │   │   │   │   ├── uniqIds.ts
 │   │   │   │   ├── validateId.ts
 │   │   │   │   ├── validatePassword.ts
@@ -3409,6 +3406,7 @@
 │   │   │   │   │   │   └── dispositif.service.state.tests.ts
 │   │   │   │   │   ├── data.ts
 │   │   │   │   │   ├── dispositif.adapter.ts
+│   │   │   │   │   ├── dispositif.business.ts
 │   │   │   │   │   ├── dispositif.repository.ts
 │   │   │   │   │   ├── dispositif.service.ts
 │   │   │   │   │   ├── log.ts
@@ -3466,6 +3464,7 @@
 │   │   │   │   ├── themes
 │   │   │   │   │   └── themes.repository.ts
 │   │   │   │   ├── traductions
+│   │   │   │   │   ├── traductions.business.ts
 │   │   │   │   │   ├── traductions.repository.ts
 │   │   │   │   │   └── traductions.service.ts
 │   │   │   │   ├── users
@@ -3484,29 +3483,6 @@
 │   │   │   ├── services
 │   │   │   │   ├── index.ts
 │   │   │   │   └── sms.ts
-│   │   │   ├── typegoose
-│   │   │   │   ├── AdminOptions.ts
-│   │   │   │   ├── AppUser.ts
-│   │   │   │   ├── Base.ts
-│   │   │   │   ├── Dispositif.ts
-│   │   │   │   ├── Error.ts
-│   │   │   │   ├── Image.ts
-│   │   │   │   ├── Indicator.ts
-│   │   │   │   ├── Langue.ts
-│   │   │   │   ├── Log.ts
-│   │   │   │   ├── MailEvent.ts
-│   │   │   │   ├── Need.ts
-│   │   │   │   ├── Notification.ts
-│   │   │   │   ├── Role.ts
-│   │   │   │   ├── Snapshot.ts
-│   │   │   │   ├── Structure.ts
-│   │   │   │   ├── Theme.ts
-│   │   │   │   ├── Traductions.test.ts
-│   │   │   │   ├── Traductions.ts
-│   │   │   │   ├── User.ts
-│   │   │   │   ├── Widget.ts
-│   │   │   │   ├── generics.ts
-│   │   │   │   └── index.ts
 │   │   │   ├── types
 │   │   │   │   └── interface.d.ts
 │   │   │   └── workflows
@@ -3912,7 +3888,6 @@
 │       │   ├── main.ts
 │       │   └── preview.ts
 │       ├── README.md
-│       ├── eslint.config.mjs
 │       ├── next.config.mjs
 │       ├── package.json
 │       ├── postcss.config.mjs
@@ -3984,6 +3959,12 @@
 │   │   └── worktrees.md
 │   ├── images
 │   │   └── SA1.png
+│   ├── migration
+│   │   ├── 01_redux_examples.md
+│   │   ├── 01_redux_plan.md
+│   │   ├── 02_app_dir_examples.md
+│   │   ├── 02_app_dir_plan.md
+│   │   └── README.md
 │   ├── mobile
 │   │   └── README.md
 │   └── server
@@ -4011,12 +3992,12 @@
 │   ├── 1755535200000_AddSortIndexesToDispositifs.ts
 │   ├── 1763633316490_backfill-origin-ri.ts
 │   ├── 1772529648826_MigrateSessionsToObject.ts
+│   ├── 1773564860648_sanitize-nan-age-values.ts
 │   └── cli.ts
 ├── package.json
 ├── packages
 │   ├── api-types
 │   │   ├── .gitignore
-│   │   ├── eslint.config.mjs
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── generics.ts
@@ -4041,6 +4022,33 @@
 │   │   │       ├── user.ts
 │   │   │       └── widget.ts
 │   │   └── tsconfig.json
+│   ├── mongo
+│   │   ├── .gitignore
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── cache.ts
+│   │   │   ├── index.ts
+│   │   │   └── schemas
+│   │   │       ├── AdminOptions.ts
+│   │   │       ├── AppUser.ts
+│   │   │       ├── Dispositif.ts
+│   │   │       ├── Error.ts
+│   │   │       ├── Image.ts
+│   │   │       ├── Indicator.ts
+│   │   │       ├── Langue.ts
+│   │   │       ├── Log.ts
+│   │   │       ├── MailEvent.ts
+│   │   │       ├── Need.ts
+│   │   │       ├── Notification.ts
+│   │   │       ├── Role.ts
+│   │   │       ├── Snapshot.ts
+│   │   │       ├── Structure.ts
+│   │   │       ├── Theme.ts
+│   │   │       ├── Traductions.ts
+│   │   │       ├── User.ts
+│   │   │       ├── Widget.ts
+│   │   │       └── generics.ts
+│   │   └── tsconfig.json
 │   ├── typescript-config
 │   │   ├── base.json
 │   │   ├── nextjs.json
@@ -4049,7 +4057,6 @@
 │   │   └── react-native-library.json
 │   └── ui
 │       ├── README.md
-│       ├── eslint.config.mjs
 │       ├── package.json
 │       ├── scripts
 │       │   ├── generate-tailwind-tokens.ts
@@ -4172,4 +4179,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-944 directories, 3230 files
+947 directories, 3234 files

@@ -1,3 +1,51 @@
+2026-03-15T22:27:47+01:00 - 7fb677dae - Luis Arias : Merge pull request #3562 from refugies-info/fix/frontend-search-runtime-fallback
+2026-03-15T22:25:10+01:00 - 42caf6d51 - Luis Arias : fix(client): use any param type for cache wrappers (speedgoose augments Aggregate)
+2026-03-15T22:22:00+01:00 - f24c15b7c - Luis Arias : refactor(client): export cache/model helpers from search-helpers, DRY counts.ts
+2026-03-15T22:18:20+01:00 - a27b2f579 - Luis Arias : fix(client): add runtime fallback models and cache-safe query execution
+2026-03-15T21:25:59+01:00 - 3188b3e32 - Luis Arias : Merge pull request #3560 from refugies-info/fix/client-build-recherche-zod
+2026-03-15T21:23:17+01:00 - 6c12d0e26 - Luis Arias : refactor(client): use Next build phase constant in db init guard
+2026-03-15T21:19:17+01:00 - d9e510198 - Luis Arias : fix(client): prevent recherche build crash from eager mongo schema loading
+2026-03-15T18:58:34+01:00 - d53245d3c - Luis Arias : Merge pull request #3558 from refugies-info/feat/cloudbuild-redis-phase4
+2026-03-15T18:55:18+01:00 - b7986c031 - Luis Arias : docs(workspace): document REDIS_URI in client and server env templates
+2026-03-15T18:28:58+01:00 - 23e750cb3 - Luis Arias : ci(workspace): wire Redis secret and private VPC egress for Cloud Run deploys
+2026-03-15T14:57:19+01:00 - 2d7c88011 - Luis Arias : Merge pull request #3557 from refugies-info/feat/speedgoose-phase3
+2026-03-15T14:54:23+01:00 - 99f09a0a0 - Luis Arias : fix(client): restore language tooltip labels in admin users table
+2026-03-15T14:48:44+01:00 - bd8347dc1 - Luis Arias : fix(server): avoid /user/all crash when user has no structures
+2026-03-15T10:03:58+01:00 - 08a7dad7f - Luis Arias : fix(workspace): prevent NaN age conversion crashes in search
+2026-03-14T18:53:16+01:00 - 5e7d86a98 - Luis Arias : fix(mongo): restore theme translated labels in runtime responses
+2026-03-14T18:40:54+01:00 - e99da62fd - Luis Arias : fix(client): harden theme/need ObjectId parsing in search filters
+2026-03-14T18:37:02+01:00 - 81f748280 - Luis Arias : fix(client): correct Mongo $in usage in location sort aggregation
+2026-03-14T18:27:53+01:00 - c4b6f28c0 - Luis Arias : fix(server): add explicit return annotations for dispositif repository queries
+2026-03-14T18:14:58+01:00 - 515c5fffc - Luis Arias : test(server): refactor changePassword tests for Zod-based User model
+2026-03-14T17:12:20+01:00 - d59b3933c - Luis Arias : fix(mongo): add HMR-safe model exports to prevent OverwriteModelError
+2026-03-14T16:26:10+01:00 - 5a25c0d98 - Luis Arias : refactor(server): address review comments — add type safety and cast explanations
+2026-03-14T16:09:15+01:00 - b2eb21196 - Luis Arias : feat(server,client): add speedgoose caching to high-traffic query paths
+2026-03-14T15:51:26+01:00 - 76d8e720c - Luis Arias : Merge pull request #3556 from refugies-info/feat/speedgoose-cache
+2026-03-14T15:47:42+01:00 - 708f90322 - Luis Arias : refactor(server): address review comments — replace aggregate<any> with typed result
+2026-03-14T15:32:05+01:00 - 5b0e0e239 - Luis Arias : feat(mongo,server,client): add speedgoose write-through MongoDB cache
+2026-03-14T15:07:55+01:00 - bfe8a1b7b - Luis Arias : Merge pull request #3555 from refugies-info/feat/client-shared-mongo-models
+2026-03-14T15:04:40+01:00 - 5873adda1 - Luis Arias : fix(client): replace `any` with inferred types in webhook handlers
+2026-03-14T14:55:48+01:00 - a5dba823c - Luis Arias : refactor(client): replace inline MongoDB schemas with shared @refugies-info/mongo models
+2026-03-13T18:30:51+01:00 - 9b1cffb79 - Luis Arias : Merge pull request #3553 from refugies-info/chore/storybook-10.2
+2026-03-13T18:28:02+01:00 - e55466d88 - Luis Arias : refactor(storybook): simplify viteFinal assetsInclude spread using flat()
+2026-03-13T18:26:40+01:00 - bd46a38b4 - Luis Arias : chore(workspace): upgrade turborepo from 2.6.0 to 2.8.14
+2026-03-13T18:05:40+01:00 - 3b93629ee - Luis Arias : chore(storybook): upgrade to v10.2.17 with Vite framework migration
+2026-03-13T16:09:45+01:00 - f3d712c2c - Luis Arias : Merge pull request #3550 from refugies-info/fix/brevo-v5-migration
+2026-03-13T14:31:41+01:00 - 5976c9b9e - Luis Arias : fix(server): use error code instead of message for Brevo duplicate contact check
+2026-03-13T14:22:07+01:00 - bc05590b9 - Luis Arias : feat(server): migrate brevo connector to @getbrevo/brevo v5 SDK
+2026-03-13T14:15:37+01:00 - 5c688bbc8 - Luis Arias : fix(workspace): bump undici override to ^7.21.0 to satisfy jsdom 28 requirement
+2026-03-13T11:30:55+01:00 - ac95c9b06 - Luis Arias : Merge pull request #3548 from refugies-info/chore/dependency-updates
+2026-03-13T11:04:25+01:00 - 4dcd521f0 - Luis Arias : chore(workspace): bump next to 15.5.12 and add minimumReleaseAge exclusions
+2026-03-13T10:50:28+01:00 - 00253fc6b - Luis Arias : fix(server): resolve dual-mongoose instance causing test failures
+2026-03-13T09:56:42+01:00 - 3e319f6d3 - Luis Arias : fix(server): downgrade @types/express to v4 to match express ^4.22.1
+2026-03-13T09:45:19+01:00 - 48119b643 - Luis Arias : chore(workspace): update dependencies and remove deprecated PR scripts
+2026-03-13T09:34:49+01:00 - 8bddbb7c9 - Luis Arias : chore(workspace): update .prototools to node 24.14.0, pnpm 10.32.1, proto 0.55.4
+2026-03-13T09:34:16+01:00 - b6fe403f7 - Luis Arias : chore(workspace): bump node to 24.14.0 and pnpm to 10.32.1
+2026-03-13T09:19:14+01:00 - b2e9aabc0 - Luis Arias : chore(workspace): update Node 24.14.0 and pnpm 10.32.1 across codebase
+2026-03-13T08:42:51+01:00 - 0c734ecd3 - Luis Arias : Merge pull request #3375 from refugies-info/plan/client-refactor
+2026-03-13T08:41:57+01:00 - c30f6e073 - Luis Arias : Merge pull request #3348 from refugies-info/feature/mongo-migration
+2026-03-12T18:19:00+01:00 - db4f06a1d - Luis Arias : fix(server): fix check:types failures after merge
+2026-03-12T18:14:02+01:00 - d6056a592 - Luis Arias : chore: resolve merge conflicts with dev branch
 2026-03-12T18:00:50+01:00 - c2d80a199 - Luis Arias : docs: add worktrees guide and fix .worktreeinclude
 2026-03-12T16:37:20+01:00 - d4acc53a7 - Luis Arias : Merge pull request #3546 from refugies-info/luis/ri-1129-changer-le-logo-dune-structure-depuis-mongodb-car-on-a
 2026-03-12T16:17:33+01:00 - 4f74f374d - Luis Arias : refactor(client): extract shared logo button styles into SCSS placeholder
@@ -106,10 +154,17 @@
 2026-01-28T16:12:25+01:00 - 78ae74982 - Luis Arias : Merge pull request #3475 from refugies-info/feat/direnv-integration
 2026-01-28T16:03:10+01:00 - 784b0b899 - Luis Arias : chore: add pnpm layout to .envrc
 2026-01-28T15:03:21+01:00 - 7e18f7ad7 - Luis Arias : chore: Add .envrc for direnv integration.
+2026-01-28T11:05:33+01:00 - 5472c429d - Luis Arias : fix(server): remove all `as any` casts from structure and user workflows
+2026-01-28T06:23:08+01:00 - d80356b26 - Luis Arias : fix(server): resolve Zod/Mongoose validation issues via type patching
 2026-01-27T22:07:31+01:00 - 3adf21427 - Luis Arias : Merge pull request #3473 from refugies-info/chore/gitignore-letta-folder
 2026-01-27T22:04:03+01:00 - 5daf69054 - Luis Arias : chore: anchor AI assistant patterns to repository root
 2026-01-27T21:58:58+01:00 - a6935e01a - Luis Arias : chore(workspace): add .letta/ to .gitignore
+2026-01-26T18:33:28+01:00 - 8d615a30d - Luis Arias : feat: Add utility functions for flexible dispositif translation retrieval and language availability, and improve content type guards for content and markdown.
 2026-01-26T18:29:01+01:00 - de5afa538 - Jérémie Gisserot : Merge pull request #3471 from refugies-info/jeremie/debug-markdown-directives
+2026-01-26T18:18:19+01:00 - c5fb59797 - Luis Arias : feat: flatten Dispositif schema maps and add robust translation handling to `getContentById` workflow.
+2026-01-26T18:00:55+01:00 - e05da835a - Luis Arias : refactor: derive TranslationContent type from Zod schema
+2026-01-26T17:58:21+01:00 - e77dfcfe0 - Luis Arias : feat: introduce `I18nCodeZodSchema` and apply it to `Dispositif` translations and `Langue` i18nCode fields.
+2026-01-26T17:33:41+01:00 - 7f3fda6a2 - Luis Arias : Merge branch 'dev' into feature/mongo-migration
 2026-01-26T15:01:40+01:00 - 5444c30d6 - Jérémie Gisserot : feat: add Storybook stories for the RIAccordion component and initialize the DSFR React library in Storybook.
 2026-01-26T14:38:56+01:00 - 21fb9ac09 - Jérémie Gisserot : feat: Introduce RIAccordion component with custom styling and step number support, replacing direct DSFR Accordion usage in client and markdown directives.
 2026-01-26T12:23:00+01:00 - 4f6730dcd - Jérémie Gisserot : feat: Add remark plugin to restore markdown hierarchy for container directives in `Section.tsx`.
@@ -230,6 +285,12 @@
 2025-12-18T11:28:51+01:00 - 01e649708 - Jérémie Gisserot : feat: Display loading and error states for themes in the selection modal and refactor theme button styled-component props.
 2025-12-17T18:00:43+01:00 - d7435db3b - Jérémie Gisserot : Merge pull request #3376 from refugies-info/jerem/security-updates
 2025-12-17T17:55:39+01:00 - ba616654c - Jérémie Gisserot : chore: Update Next.js to 15.5.9 and add pnpm overrides for various dependencies.
+2025-12-17T17:33:01+01:00 - 3e392b813 - Jérémie Gisserot : Update documentation/migration/02_app_dir_examples.md
+2025-12-17T17:32:30+01:00 - 71b126e1c - Jérémie Gisserot : Update documentation/migration/02_app_dir_examples.md
+2025-12-17T17:32:19+01:00 - 31651beef - Jérémie Gisserot : Update documentation/migration/01_redux_plan.md
+2025-12-17T17:31:50+01:00 - ac76c722e - Jérémie Gisserot : Update documentation/migration/01_redux_examples.md
+2025-12-17T17:29:46+01:00 - 1ceb064be - Jérémie Gisserot : feat: add detailed testing strategy to Redux migration plan and estimated project timeline
+2025-12-17T17:17:26+01:00 - d14bbec18 - Jérémie Gisserot : feat: Add architectural migration guide and plans for Redux and App Router adoption.
 2025-12-17T16:41:15+01:00 - 200e98b05 - Jérémie Gisserot : Merge pull request #3373 from refugies-info/fix/themes-hydration
 2025-12-17T16:34:51+01:00 - 463442bb9 - Jérémie Gisserot : refactor: update rootReducer to use @reduxjs/toolkit's combineReducers and improve data fetching robustness in homepage's getStaticProps.
 2025-12-17T16:05:08+01:00 - 4443c08ce - Jérémie Gisserot : Merge pull request #3371 from refugies-info/fix/navabar-hilight
