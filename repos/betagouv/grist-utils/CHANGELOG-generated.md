@@ -1,11 +1,10 @@
 ## Changelog : grist-utils (30 derniers jours)
 
 ### Résumé
-Ce changelog présente les récentes modifications apportées aux utilitaires d'administration de Grist. Les changements se concentrent principalement sur la simplification des tests et la mise à jour de certaines dépendances.
-
-### Évolutions fonctionnelles
-- Suppression des tests d'invitation, jugés inutiles. [#71700bc](https://github.com/betagouv/grist-utils/commit/71700bc)
+Ce mois-ci, les modifications apportées à `grist-utils` concernent principalement la simplification des tests automatisés. Des tests d'invitation jugés inutiles ont été supprimés, allégeant ainsi la suite de tests et améliorant potentiellement sa rapidité.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `axios` dans les tests de déploiement de Grist, passant de la version 1.13.4 à 1.13.5. [#8c4222a](https://github.com/betagouv/grist-utils/commit/8c4222a)
-- Mise à jour de la dépendance `minimatch` dans les tests de déploiement de Grist. [#c77fa4f](https://github.com/betagouv/grist-utils/commit/c77fa4f)
+- Suppression des tests d'invitation, considérés comme superflus. [#71700bc](https://github.com/betagouv/grist-utils/commit/71700bc)
+
+### Autres changements
+- Mise à jour de la dépendance `minimatch` via Dependabot. [#c77fa4f](https://github.com/betagouv/grist-utils/commit/c77fa4f)
