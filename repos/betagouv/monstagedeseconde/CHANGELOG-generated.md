@@ -1,48 +1,35 @@
 ## Changelog : monstagedeseconde (30 derniers jours)
 
 ### Résumé
-Les dernières mises à jour de MonStage se concentrent sur la correction de bugs et l'amélioration de la gestion des données, notamment concernant les offres de stages, les établissements scolaires et les conventions. Des améliorations ont également été apportées à l'importation de données et à la gestion des signatures électroniques. Enfin, des ajustements ont été faits pour optimiser la performance et la stabilité de la plateforme.
+Ce changelog couvre les 30 derniers jours d'évolution de MonStage. Les améliorations concernent principalement des corrections de bugs et des améliorations de la gestion des offres de stage et des établissements scolaires. Des scripts d'importation ont été améliorés et des corrections ont été apportées aux emails et aux notifications. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'affichage correct des candidatures ([#777](https://github.com/betagouv/monstagedeseconde/issues/777)).
-- Amélioration de la gestion des codes CEDEX pour la région de la Réunion, assurant une redirection correcte vers le code départemental approprié ([#782](https://github.com/betagouv/monstagedeseconde/issues/782)).
-- Correction de l'affichage des descriptions d'entreprises tronquées dans l'API.
-- Correction d'un bug dans le script de duplication d'offres, qui manquait de la description de l'employeur.
-- Amélioration de la gestion des erreurs lors de l'analyse JSON dans le contrôleur `ApiEntrepriseProxyController`.
-- Correction d'une erreur liée à un attribut manquant dans le modèle `User` lors de la gestion des établissements scolaires ([#778](https://github.com/betagouv/monstagedeseconde/issues/778)).
-- Correction d'un bug lié à l'affichage des signatures pour les gestionnaires d'établissements scolaires ([#752](https://github.com/betagouv/monstagedeseconde/issues/752)).
-- Amélioration de l'envoi d'emails pour les signatures de conventions ([#771](https://github.com/betagouv/monstagedeseconde/issues/771)).
-- Correction de l'affichage des accords multiples.
-- Amélioration de la gestion des places disponibles pour les offres de stages collège et lycée.
-- Ajout de la gem `letter_thief` pour la gestion des emails ([#750](https://github.com/betagouv/monstagedeseconde/issues/750)).
-- Correction de l'affichage des accents dans l'interface.
-- Correction d'un bug lié à la recherche mobile.
-- Correction de l'importation des classes des élèves depuis Sygne.
-- Amélioration de la gestion des offres inappropriées.
-- Correction d'un bug dans le script de duplication d'offres, permettant de gérer les offres qui ne peuvent pas être sauvegardées.
-- Correction de l'affichage des offres de stages sur mobile.
-- Amélioration du wording de l'application.
-- Correction de l'importation des écoles.
+- Correction d'un bug empêchant l'affichage correct des conventions pour les gestionnaires d'établissement scolaire. [#752](https://github.com/betagouv/monstagedeseconde/pulls/752)
+- Amélioration de la fonction de signalement des offres inappropriées. [#770](https://github.com/betagouv/monstagedeseconde/pulls/770)
+- Correction d'un bug empêchant l'affichage correct d'une seule convention pour un élève. [#1580](https://github.com/betagouv/monstagedeseconde/issues/1580)
+- Correction d'un bug lié aux établissements scolaires sans département associé. [#1579](https://github.com/betagouv/monstagedeseconde/issues/1579)
+- Correction d'un bug lié aux membres sans zone géographique associée. [#1581](https://github.com/betagouv/monstagedeseconde/issues/1581)
+- Amélioration de l'affichage des offres de stage pour les collèges et lycées. [#756](https://github.com/betagouv/monstagedeseconde/pulls/756)
+- Ajout d'une notification par email pour le lancement des signatures de conventions. [#771](https://github.com/betagouv/monstagedeseconde/pulls/771)
+- Correction du captcha [#1584](https://github.com/betagouv/monstagedeseconde/pulls/1584)
+- Correction du code postal de la réunion [#760](https://github.com/betagouv/monstagedeseconde/pulls/760)
 
 ### Évolutions techniques
-- Mise à jour de la gem `nokogiri` vers la version 1.19.1.
-- Mise à jour de la gem `immutable` vers la version 5.1.5.
-- Mise à jour de la gem `qs` vers la version 6.14.2.
-- Mise à jour de la gem `faraday` vers la version 2.14.1.
-- Mise à jour de la gem `rack` vers la version 3.2.5.
-- Configuration de Ruby LSP.
-- Amélioration de la gestion des paramètres de production dans le fichier `structure.sql`.
-- Refactoring du code pour supprimer les assignations vides.
+- Amélioration de la gestion des erreurs lors de l'analyse JSON dans le contrôleur `ApiEntrepriseProxyController`. [#776](https://github.com/betagouv/monstagedeseconde/pulls/776)
+- Correction d'une erreur `ActiveModel::MissingAttributeError` dans la gestion des utilisateurs et des établissements scolaires. [#778](https://github.com/betagouv/monstagedeseconde/pulls/778)
+- Amélioration du script de duplication des offres de stage pour gérer les erreurs et les offres non valides. [#772](https://github.com/betagouv/monstagedeseconde/pulls/772)
+- Mise à jour de plusieurs dépendances :
+    - `nokogiri` de 1.19.0 à 1.19.1 [#767](https://github.com/betagouv/monstagedeseconde/pulls/767)
+    - `immutable` de 5.1.4 à 5.1.5 [#767](https://github.com/betagouv/monstagedeseconde/pulls/767)
+    - `qs` de 6.14.1 à 6.14.2 [#767](https://github.com/betagouv/monstagedeseconde/pulls/767)
+    - `faraday` de 2.14.0 à 2.14.1 [#769](https://github.com/betagouv/monstagedeseconde/pulls/769)
+    - `rack` de 3.2.4 à 3.2.5 [#769](https://github.com/betagouv/monstagedeseconde/pulls/769)
+- Amélioration de la configuration Ruby LSP.
 
 ### Autres changements
-- Synchronisation des fichiers de configuration traditionnels et masquage des fichiers de versionnement.
-- Correction de tests unitaires et système.
-- Mise à jour de la documentation.
-- Intégration continue et déploiement (CI/CD) avec CircleCI.
-- Amélioration de la gestion des tests KPI.
-- Ajout de la configuration pour Ruby LSP.
-- Suppression de dépendances inutiles dans le Gemfile.
-- Correction de tests.
-- Merge de branches staging et review.
-- Correction de wording.
-- Fix Prismic.
+- Ajout de la gem `letter_thief`. [#750](https://github.com/betagouv/monstagedeseconde/pulls/750)
+- Amélioration de la documentation et des tests unitaires.
+- Corrections de typographie et d'accents.
+- Nettoyage du code et refactoring de certaines parties de l'application.
+- Mise à jour des paramètres de production dans la base de données.
+- Amélioration des scripts d'importation des établissements scolaires.
