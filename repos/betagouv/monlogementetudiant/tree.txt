@@ -1,0 +1,763 @@
+.
+├── .circleci
+│   └── config.yml
+├── .env.dist
+├── .gitignore
+├── .vscode
+│   └── settings.json
+├── README.md
+├── biome.json
+├── cli
+│   ├── commands
+│   │   ├── __tests__
+│   │   │   ├── import-arpej-ibail.integration.test.ts
+│   │   │   ├── import-csv.integration.test.ts
+│   │   │   ├── import-fac-habitat.integration.test.ts
+│   │   │   ├── sync-cities.integration.test.ts
+│   │   │   ├── sync-rents.integration.test.ts
+│   │   │   ├── sync-rents.test.ts
+│   │   │   ├── sync-stats.integration.test.ts
+│   │   │   ├── sync-stats.test.ts
+│   │   │   ├── sync-students.integration.test.ts
+│   │   │   └── sync-students.test.ts
+│   │   ├── import-arpej-ibail.ts
+│   │   ├── import-backup.ts
+│   │   ├── import-crous.ts
+│   │   ├── import-csv.ts
+│   │   ├── import-fac-habitat.ts
+│   │   ├── migrate-users.ts
+│   │   ├── sync-cities.ts
+│   │   ├── sync-rents.ts
+│   │   ├── sync-stats.ts
+│   │   └── sync-students.ts
+│   ├── factory.ts
+│   ├── index.ts
+│   ├── lib
+│   │   ├── __tests__
+│   │   │   ├── geocoder.test.ts
+│   │   │   └── matomo.test.ts
+│   │   ├── db-utils.ts
+│   │   ├── db.ts
+│   │   ├── geocoder.ts
+│   │   ├── matomo.ts
+│   │   └── scalingo-backup.ts
+│   ├── types.ts
+│   └── utils
+│       └── get-or-create-owner.ts
+├── cron.json
+├── docker-compose.yml
+├── drizzle
+│   ├── 0000_initial.sql
+│   ├── 0001_cleanup.sql
+│   ├── 0002_silky_virginia_dare.sql
+│   ├── 0003_redundant_pestilence.sql
+│   ├── 0004_add-unique-slug-constraints.sql
+│   ├── 0005_overrated_sentinels.sql
+│   ├── 0006_productive_blur.sql
+│   ├── 0007_curly_the_leader.sql
+│   ├── 0008_icy_shiva.sql
+│   └── meta
+│       ├── 0000_snapshot.json
+│       ├── 0001_snapshot.json
+│       ├── 0002_snapshot.json
+│       ├── 0003_snapshot.json
+│       ├── 0004_snapshot.json
+│       ├── 0005_snapshot.json
+│       ├── 0006_snapshot.json
+│       ├── 0007_snapshot.json
+│       ├── 0008_snapshot.json
+│       └── _journal.json
+├── drizzle.config.ts
+├── messages
+│   ├── en.json
+│   └── fr.json
+├── next.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── public
+│   ├── images
+│   │   ├── 404.svg
+│   │   ├── agefo.svg
+│   │   ├── al.svg
+│   │   ├── apl.svg
+│   │   ├── aquitanis.svg
+│   │   ├── arpej.svg
+│   │   ├── avatar-cecilia.svg
+│   │   ├── avatar-yasmine.svg
+│   │   ├── background-credentials.webp
+│   │   ├── background-owner.webp
+│   │   ├── background.webp
+│   │   ├── caf.svg
+│   │   ├── compteur.png
+│   │   ├── espacil.svg
+│   │   ├── explore-cities.webp
+│   │   ├── heneo.svg
+│   │   ├── home-bg.webp
+│   │   ├── landing-step-1.svg
+│   │   ├── landing-step-2.svg
+│   │   ├── landing-step-3.svg
+│   │   ├── landing.webp
+│   │   ├── logo-beta-gouv.svg
+│   │   ├── logo-crous.svg
+│   │   ├── logo-esr.svg
+│   │   ├── logo.svg
+│   │   ├── mmh.svg
+│   │   ├── mmn.svg
+│   │   ├── placeholder
+│   │   │   ├── logement-etudiant-chambre-1.jpg
+│   │   │   ├── logement-etudiant-chambre-2.jpg
+│   │   │   ├── logement-etudiant-chambre-3.jpg
+│   │   │   ├── logement-etudiant-chambre-4.jpg
+│   │   │   └── logement-etudiant-chambre-5.jpg
+│   │   ├── poing-ferme.svg
+│   │   ├── prepare-budget-content.webp
+│   │   ├── prepare-budget.webp
+│   │   ├── preparer-sa-vie-etudiante.webp
+│   │   ├── sogima.svg
+│   │   ├── studefi.svg
+│   │   ├── visale.svg
+│   │   └── visibility.webp
+│   ├── loyers.json
+│   ├── test-widget.html
+│   └── widget
+│       ├── embed.js
+│       └── test.html
+├── src
+│   ├── __tests__
+│   │   ├── accommodations.integration.test.ts
+│   │   ├── admin-users.integration.test.ts
+│   │   ├── alerts.integration.test.ts
+│   │   ├── bailleur.integration.test.ts
+│   │   ├── dossier-facile.integration.test.ts
+│   │   ├── favorites.integration.test.ts
+│   │   ├── fixtures
+│   │   │   └── factories.ts
+│   │   ├── helpers
+│   │   │   ├── setup-integration.ts
+│   │   │   ├── test-caller.ts
+│   │   │   ├── test-db-module.ts
+│   │   │   └── test-db.ts
+│   │   ├── mattermost.integration.test.ts
+│   │   ├── password-verify.integration.test.ts
+│   │   ├── territories-list.integration.test.ts
+│   │   └── territories-search.integration.test.ts
+│   ├── app
+│   │   ├── (authenticated)
+│   │   │   ├── (espace-etudiant)
+│   │   │   │   └── mon-espace
+│   │   │   │       ├── alertes
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── favoris
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── layout.tsx
+│   │   │   │       ├── mon-espace.module.css
+│   │   │   │       ├── page.tsx
+│   │   │   │       ├── tableau-de-bord
+│   │   │   │       │   └── page.tsx
+│   │   │   │       └── to-do
+│   │   │   │           └── page.tsx
+│   │   │   ├── (gestion-bailleur)
+│   │   │   │   └── bailleur
+│   │   │   │       ├── candidatures
+│   │   │   │       │   ├── filters.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── centre-d-aide
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── layout.module.css
+│   │   │   │       ├── layout.tsx
+│   │   │   │       ├── page.tsx
+│   │   │   │       ├── residences
+│   │   │   │       │   ├── [slug]
+│   │   │   │       │   │   ├── page.tsx
+│   │   │   │       │   │   └── residence-details.module.css
+│   │   │   │       │   ├── get-residences-page-context.ts
+│   │   │   │       │   ├── nouvelle-residence
+│   │   │   │       │   │   └── page.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       └── tableau-de-bord
+│   │   │   │           ├── chart.tsx
+│   │   │   │           ├── get-bailleur-dashboard-page-context.ts
+│   │   │   │           ├── page.tsx
+│   │   │   │           └── tableau-de-bord.module.css
+│   │   │   └── administration
+│   │   │       ├── administration.module.css
+│   │   │       ├── bailleurs
+│   │   │       │   ├── [id]
+│   │   │       │   │   ├── owner-detail.tsx
+│   │   │       │   │   ├── owner-map-tab.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── nouveau
+│   │   │       │   │   └── page.tsx
+│   │   │       │   └── page.tsx
+│   │   │       ├── candidatures
+│   │   │       │   └── page.tsx
+│   │   │       ├── comptes-gestionnaires
+│   │   │       │   ├── owner-accounts-list.tsx
+│   │   │       │   └── page.tsx
+│   │   │       ├── journaux
+│   │   │       │   └── page.tsx
+│   │   │       ├── layout.tsx
+│   │   │       ├── page.tsx
+│   │   │       ├── residences
+│   │   │       │   └── page.tsx
+│   │   │       ├── tableau-de-bord
+│   │   │       │   └── page.tsx
+│   │   │       └── utilisateurs
+│   │   │           ├── [id]
+│   │   │           │   ├── page.tsx
+│   │   │           │   └── user-detail.tsx
+│   │   │           ├── nouveau
+│   │   │           │   └── page.tsx
+│   │   │           ├── page.tsx
+│   │   │           └── users-list.tsx
+│   │   ├── (public)
+│   │   │   ├── (auth)
+│   │   │   │   ├── administration
+│   │   │   │   │   └── se-connecter
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── auth.module.css
+│   │   │   │   ├── gestionnaire
+│   │   │   │   │   └── se-connecter
+│   │   │   │   │       ├── login.module.css
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── layout.module.css
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── mot-de-passe-oublie
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── reinitialiser-son-mot-de-passe
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── s-inscrire
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── se-connecter
+│   │   │   │   │   ├── login.module.css
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── verification
+│   │   │   │       ├── erreur
+│   │   │   │       │   └── page.tsx
+│   │   │   │       └── page.tsx
+│   │   │   ├── (utils-pages)
+│   │   │   │   ├── accessibilite
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── budget
+│   │   │   │   │   ├── budget.module.css
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── donnees-personnelles
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── gestion-des-cookies
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── mentions-legales
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── pages.module.css
+│   │   │   │   ├── plan-du-site
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── politique-de-confidentialite
+│   │   │   │       └── page.tsx
+│   │   │   ├── alerte-logement
+│   │   │   │   ├── alert-logement.module.css
+│   │   │   │   └── page.tsx
+│   │   │   ├── dossier-facile
+│   │   │   │   └── error
+│   │   │   │       └── page.tsx
+│   │   │   ├── home.module.css
+│   │   │   ├── landing
+│   │   │   │   ├── landing.module.css
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.module.css
+│   │   │   ├── layout.tsx
+│   │   │   ├── not-found.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── preparer-mon-budget-etudiant
+│   │   │   │   ├── components
+│   │   │   │   │   ├── prepare-budget-aids-table.tsx
+│   │   │   │   │   ├── prepare-budget-chart.module.css
+│   │   │   │   │   ├── prepare-budget-chart.tsx
+│   │   │   │   │   ├── prepare-budget-content-card.module.css
+│   │   │   │   │   ├── prepare-budget-content-card.tsx
+│   │   │   │   │   ├── prepare-budget-content-header.tsx
+│   │   │   │   │   ├── prepare-budget-content.tsx
+│   │   │   │   │   ├── prepare-budget-redirection-card.module.css
+│   │   │   │   │   ├── prepare-budget-redirection-card.tsx
+│   │   │   │   │   ├── prepare-budget-sidemenu.tsx
+│   │   │   │   │   ├── prepare-budget-simulate-aids-card.module.css
+│   │   │   │   │   └── prepare-budget-simulate-aids-card.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── preparer-mon-budget-etudiant.module.css
+│   │   │   ├── simuler-budget
+│   │   │   │   ├── budget-simulator-content.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── simuler-budget.module.css
+│   │   │   ├── simuler-mes-aides-au-logement
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── simuler-mes-aides-au-logement.module.css
+│   │   │   │   └── wrapper-simulator.tsx
+│   │   │   └── trouver-un-logement-etudiant
+│   │   │       ├── [[...location]]
+│   │   │       │   ├── find-student-accomodation-page.module.css
+│   │   │       │   ├── get-student-accommodation-page-context.ts
+│   │   │       │   ├── loading.tsx
+│   │   │       │   └── page.tsx
+│   │   │       ├── not-found.tsx
+│   │   │       └── ville
+│   │   │           └── [location]
+│   │   │               └── [slug]
+│   │   │                   ├── accommodation-availability.module.css
+│   │   │                   ├── accommodation-availability.tsx
+│   │   │                   ├── accommodation-description.tsx
+│   │   │                   ├── accommodation-equipments.tsx
+│   │   │                   ├── accommodation-localisation.tsx
+│   │   │                   ├── accommodation-map.tsx
+│   │   │                   ├── accommodation-residence.module.css
+│   │   │                   ├── accommodation-residence.tsx
+│   │   │                   ├── get-accommodation-page-context.ts
+│   │   │                   ├── logement.module.css
+│   │   │                   ├── page.tsx
+│   │   │                   └── prepare-student-life-redirection.tsx
+│   │   ├── (widget)
+│   │   │   ├── layout.module.css
+│   │   │   ├── layout.tsx
+│   │   │   └── widget
+│   │   │       └── logements
+│   │   │           ├── loading.tsx
+│   │   │           └── page.tsx
+│   │   ├── api
+│   │   │   ├── accommodations
+│   │   │   │   └── my
+│   │   │   │       └── [slug]
+│   │   │   │           └── upload
+│   │   │   │               └── route.ts
+│   │   │   ├── auth
+│   │   │   │   └── [...all]
+│   │   │   │       └── route.ts
+│   │   │   ├── dossier-facile
+│   │   │   │   └── webhook
+│   │   │   │       └── route.ts
+│   │   │   └── trpc
+│   │   │       └── [trpc]
+│   │   │           └── route.ts
+│   │   ├── connexion
+│   │   │   └── dossierfacile
+│   │   │       └── callback
+│   │   │           └── route.ts
+│   │   ├── layout.tsx
+│   │   ├── matomo.tsx
+│   │   ├── not-found.tsx
+│   │   └── sitemap.ts
+│   ├── components
+│   │   ├── accommodation
+│   │   │   ├── accommodation-image.tsx
+│   │   │   ├── accommodation-images-modal.tsx
+│   │   │   ├── accommodation-images.module.css
+│   │   │   ├── accommodation-images.tsx
+│   │   │   └── nearby-accommodations.tsx
+│   │   ├── administration
+│   │   │   ├── admin-data-table.module.css
+│   │   │   ├── admin-data-table.tsx
+│   │   │   ├── admin-header.tsx
+│   │   │   ├── admin-navigation.tsx
+│   │   │   ├── link-user-owner-dialog.tsx
+│   │   │   ├── link-user-to-owner-dialog.tsx
+│   │   │   ├── owner-form.tsx
+│   │   │   ├── role-badge.tsx
+│   │   │   └── user-form.tsx
+│   │   ├── alert-accommodation
+│   │   │   └── alert-accommodation-form.tsx
+│   │   ├── bailleur
+│   │   │   ├── calendly-link.tsx
+│   │   │   ├── contact-team-button.tsx
+│   │   │   ├── details
+│   │   │   │   ├── create-residence-accommodation-list.module.css
+│   │   │   │   ├── create-residence-accommodation-list.tsx
+│   │   │   │   ├── create-residence-equipments.tsx
+│   │   │   │   ├── create-residence-form.tsx
+│   │   │   │   ├── create-residence-location.module.css
+│   │   │   │   ├── create-residence-location.tsx
+│   │   │   │   ├── create-residence-pictures.tsx
+│   │   │   │   ├── create-residence-publication.tsx
+│   │   │   │   ├── residence-accommodation-list.tsx
+│   │   │   │   ├── residence-details.tsx
+│   │   │   │   ├── residence-equipments.tsx
+│   │   │   │   ├── residence-location.tsx
+│   │   │   │   ├── residence-pictures.tsx
+│   │   │   │   ├── residence-redirection.tsx
+│   │   │   │   ├── residence-summary.tsx
+│   │   │   │   ├── update-residence-form.module.css
+│   │   │   │   ├── update-residence-form.tsx
+│   │   │   │   └── update-residence-publication.tsx
+│   │   │   ├── residence-card.tsx
+│   │   │   ├── residence-filters.tsx
+│   │   │   ├── residence-list.tsx
+│   │   │   ├── update-residence-list.module.css
+│   │   │   └── update-residence-list.tsx
+│   │   ├── budget-simulation
+│   │   │   ├── budget-section.tsx
+│   │   │   ├── budget-simulator-context.tsx
+│   │   │   ├── budget-summary.module.css
+│   │   │   ├── budget-summary.tsx
+│   │   │   ├── expense-form.tsx
+│   │   │   ├── expenses-pie-chart.tsx
+│   │   │   ├── forms.module.css
+│   │   │   └── income-form.tsx
+│   │   ├── credentials-sign-in
+│   │   │   └── credentials-sign-in.tsx
+│   │   ├── dossier-facile
+│   │   │   └── dossier-facile-success-toast.tsx
+│   │   ├── faq
+│   │   │   ├── faq-content.tsx
+│   │   │   ├── faq-questions-answers.module.css
+│   │   │   └── faq-questions-answers.tsx
+│   │   ├── favorites
+│   │   │   └── save-accommodation-favorite-button.tsx
+│   │   ├── find-student-accomodation
+│   │   │   ├── autocomplete
+│   │   │   │   ├── find-student-accomodation-autocomplete-input.tsx
+│   │   │   │   └── find-student-accomodation-autocomplete-results.tsx
+│   │   │   ├── card
+│   │   │   │   ├── find-student-accommodation-image-card.tsx
+│   │   │   │   ├── find-student-accomodation-card.module.css
+│   │   │   │   └── find-student-accomodation-card.tsx
+│   │   │   ├── find-student-accommodation-banner.tsx
+│   │   │   ├── header
+│   │   │   │   ├── find-student-accessible-accomodation-switch.tsx
+│   │   │   │   ├── find-student-accommodation-crous-filter.tsx
+│   │   │   │   ├── find-student-accommodation-price.tsx
+│   │   │   │   ├── find-student-accommodation-title.tsx
+│   │   │   │   ├── find-student-accomodation-header.module.css
+│   │   │   │   ├── find-student-accomodation-header.tsx
+│   │   │   │   └── find-student-coliving-accomodation.tsx
+│   │   │   ├── home
+│   │   │   │   ├── autocomplete
+│   │   │   │   │   ├── find-student-accommodations-cities-autocomplete-input.tsx
+│   │   │   │   │   └── find-student-accommodations-cities-autocomplete-results.tsx
+│   │   │   │   └── find-accommodation-form.tsx
+│   │   │   ├── owner-details
+│   │   │   │   ├── consult-offer-button.tsx
+│   │   │   │   ├── dossier-facile-candidate-button.tsx
+│   │   │   │   ├── owner-details-actions.tsx
+│   │   │   │   ├── owner-details-alert.module.css
+│   │   │   │   ├── owner-details-alert.tsx
+│   │   │   │   ├── owner-details.module.css
+│   │   │   │   └── owner-details.tsx
+│   │   │   ├── qa
+│   │   │   │   ├── find-student-accommodation-qa.module.css
+│   │   │   │   └── find-student-accommodation-qa.tsx
+│   │   │   ├── results
+│   │   │   │   └── find-student-accomodation-results.tsx
+│   │   │   └── sort-view
+│   │   │       └── find-student-accomodation-sort-view.tsx
+│   │   ├── forgot-password
+│   │   │   └── forgot-password-form.tsx
+│   │   ├── helps-simulator
+│   │   │   ├── help-simulator-cta.module.css
+│   │   │   ├── help-simulator-form.tsx
+│   │   │   ├── help-simulator-header.tsx
+│   │   │   ├── help-simulator-schema.ts
+│   │   │   ├── help-simulator.tsx
+│   │   │   ├── helps-simulator-stepper.tsx
+│   │   │   ├── required-label.tsx
+│   │   │   ├── results
+│   │   │   │   ├── aid-calculator.ts
+│   │   │   │   ├── aid-card.module.css
+│   │   │   │   ├── aid-card.tsx
+│   │   │   │   ├── help-simulator-header-results.module.css
+│   │   │   │   ├── help-simulator-results-header.tsx
+│   │   │   │   ├── help-simulator-results.tsx
+│   │   │   │   └── zone-utils.ts
+│   │   │   ├── steps
+│   │   │   │   ├── help-simulator-step-1.tsx
+│   │   │   │   ├── help-simulator-step-2.tsx
+│   │   │   │   └── help-simulator-step-3.tsx
+│   │   │   ├── use-help-simulator-data.ts
+│   │   │   └── use-help-simulator-step.tsx
+│   │   ├── magic-link-sign-in
+│   │   │   ├── actions.ts
+│   │   │   └── magic-link-sign-in.tsx
+│   │   ├── map
+│   │   │   ├── accomodation-map.tsx
+│   │   │   ├── accomodations-map.tsx
+│   │   │   ├── city-map.tsx
+│   │   │   ├── map-skeleton.tsx
+│   │   │   ├── map-utils.ts
+│   │   │   └── prepare-student-life-map.tsx
+│   │   ├── prepare-student-life
+│   │   │   ├── autocomplete
+│   │   │   │   ├── cities-autocomplete-input.tsx
+│   │   │   │   └── cities-autocomplete-results.tsx
+│   │   │   ├── nearby
+│   │   │   │   ├── prepare-student-life-nearby-accommodations.module.css
+│   │   │   │   └── prepare-student-life-nearby-accommodations.tsx
+│   │   │   ├── popular-cities
+│   │   │   │   └── popular-cities.module.css
+│   │   │   ├── popular-cities.tsx
+│   │   │   ├── stats
+│   │   │   │   ├── prepare-student-life-accommodation-residence.module.css
+│   │   │   │   ├── prepare-student-life-accommodation-residence.tsx
+│   │   │   │   ├── prepare-student-life-stats.module.css
+│   │   │   │   └── prepare-student-life-stats.tsx
+│   │   │   └── summary
+│   │   │       ├── prepare-student-life-summary.module.css
+│   │   │       └── prepare-student-life-summary.tsx
+│   │   ├── reset-password
+│   │   │   └── reset-password-form.tsx
+│   │   ├── search-params-sync.tsx
+│   │   ├── shared
+│   │   │   ├── availability-badge.tsx
+│   │   │   └── waiting-list-badge.tsx
+│   │   ├── sign-up
+│   │   │   └── sign-up-form.tsx
+│   │   ├── signout.tsx
+│   │   ├── student-space
+│   │   │   ├── alerts
+│   │   │   │   ├── create-student-alert.tsx
+│   │   │   │   ├── delete-student-alert.tsx
+│   │   │   │   ├── student-alert-count-button.module.css
+│   │   │   │   ├── student-alert-count-button.tsx
+│   │   │   │   ├── student-alert-location.tsx
+│   │   │   │   ├── student-alert.tsx
+│   │   │   │   ├── student-alerts.module.css
+│   │   │   │   ├── student-alerts.tsx
+│   │   │   │   └── update-student-alert.tsx
+│   │   │   ├── dashboard
+│   │   │   │   ├── student-maximize-chances.module.css
+│   │   │   │   ├── student-maximize-chances.tsx
+│   │   │   │   ├── student-news.module.css
+│   │   │   │   ├── student-news.tsx
+│   │   │   │   ├── student-summary.module.css
+│   │   │   │   ├── student-summary.tsx
+│   │   │   │   └── student-welcome.tsx
+│   │   │   ├── favorites
+│   │   │   │   ├── student-accommodation-favorite.tsx
+│   │   │   │   ├── student-favorites.module.css
+│   │   │   │   └── student-favorites.tsx
+│   │   │   ├── navigation
+│   │   │   │   ├── student-space-navigation.tsx
+│   │   │   │   └── student-space-todo-navigation-button.tsx
+│   │   │   ├── student-breadcrumb.tsx
+│   │   │   └── todo
+│   │   │       ├── student-todo-list.module.css
+│   │   │       └── student-todo-list.tsx
+│   │   ├── tooltip-hover-only.tsx
+│   │   ├── ui
+│   │   │   ├── brand-top.tsx
+│   │   │   ├── createToast.tsx
+│   │   │   ├── dropdown.tsx
+│   │   │   ├── footer
+│   │   │   │   ├── footer.module.css
+│   │   │   │   └── footer.tsx
+│   │   │   ├── header
+│   │   │   │   ├── banner
+│   │   │   │   │   ├── banner.module.css
+│   │   │   │   │   └── banner.tsx
+│   │   │   │   ├── common-header.tsx
+│   │   │   │   ├── langage-selection
+│   │   │   │   │   ├── language-link.tsx
+│   │   │   │   │   └── language-select.tsx
+│   │   │   │   ├── navigation.module.css
+│   │   │   │   ├── navigation.tsx
+│   │   │   │   ├── user-connected-dropdown.tsx
+│   │   │   │   ├── user-sign-in-dropdown.tsx
+│   │   │   │   ├── workspace-header.tsx
+│   │   │   │   └── workspace-navigation.tsx
+│   │   │   ├── logo.tsx
+│   │   │   ├── rent-search-modal.tsx
+│   │   │   ├── rich-text-editor.module.css
+│   │   │   ├── rich-text-editor.tsx
+│   │   │   ├── skeleton
+│   │   │   │   ├── card-skeleton.module.css
+│   │   │   │   ├── card-skeleton.tsx
+│   │   │   │   ├── skeleton.module.css
+│   │   │   │   └── skeleton.tsx
+│   │   │   ├── toaster.module.css
+│   │   │   └── toaster.tsx
+│   │   └── widget
+│   │       ├── widget-accommodation-filters.tsx
+│   │       ├── widget-accommodation-grid.module.css
+│   │       ├── widget-accommodation-grid.tsx
+│   │       ├── widget-body-style.tsx
+│   │       └── widget-matomo.tsx
+│   ├── dsfr
+│   │   ├── default-color-scheme.ts
+│   │   ├── dsfr-head.tsx
+│   │   └── dsfr-provider.tsx
+│   ├── enums
+│   │   ├── apartment-type.ts
+│   │   ├── residence-type.ts
+│   │   └── target-audience.ts
+│   ├── globals.css
+│   ├── helpers
+│   │   ├── border.css
+│   │   ├── colors.css
+│   │   ├── cursor.css
+│   │   ├── display.css
+│   │   ├── dropdown.css
+│   │   ├── equipments.ts
+│   │   ├── flex.css
+│   │   ├── link.css
+│   │   ├── position.css
+│   │   ├── size.css
+│   │   ├── skeleton.css
+│   │   └── text.css
+│   ├── hooks
+│   │   ├── use-accomodations.ts
+│   │   ├── use-address-autocomplete.ts
+│   │   ├── use-admin-create-owner.ts
+│   │   ├── use-admin-create-user.ts
+│   │   ├── use-admin-delete-owner.ts
+│   │   ├── use-admin-delete-user.ts
+│   │   ├── use-admin-owner.ts
+│   │   ├── use-admin-owners.ts
+│   │   ├── use-admin-stats.ts
+│   │   ├── use-admin-update-owner.ts
+│   │   ├── use-admin-update-user.ts
+│   │   ├── use-admin-user.ts
+│   │   ├── use-admin-users.ts
+│   │   ├── use-alert-accommodation.ts
+│   │   ├── use-cities.ts
+│   │   ├── use-create-alert.ts
+│   │   ├── use-create-favorite.ts
+│   │   ├── use-create-residence.ts
+│   │   ├── use-delete-alert.ts
+│   │   ├── use-delete-favorite.ts
+│   │   ├── use-favorites.ts
+│   │   ├── use-forgot-password.ts
+│   │   ├── use-my-accommodations.ts
+│   │   ├── use-rent-search.ts
+│   │   ├── use-reset-password.ts
+│   │   ├── use-search-cities.ts
+│   │   ├── use-student-registration.ts
+│   │   ├── use-territories.ts
+│   │   ├── use-tracking.ts
+│   │   ├── use-update-accommodation.ts
+│   │   ├── use-update-alert.ts
+│   │   ├── use-update-residence-details.ts
+│   │   └── use-upload-residence-images.ts
+│   ├── i18n
+│   │   └── request.ts
+│   ├── lib
+│   │   ├── TRACKING.md
+│   │   ├── accommodations-search-params.ts
+│   │   ├── django-password.ts
+│   │   ├── tracking.ts
+│   │   └── types.ts
+│   ├── providers
+│   │   └── trpc-client.tsx
+│   ├── schemas
+│   │   ├── accommodations
+│   │   │   ├── accommodations.ts
+│   │   │   ├── create-residence.ts
+│   │   │   ├── get-accommodations.ts
+│   │   │   ├── update-residence-list.ts
+│   │   │   └── update-residence.ts
+│   │   ├── alert-accommodation
+│   │   │   ├── alert-accommodation.ts
+│   │   │   └── autocomplete
+│   │   │       ├── alert-accomodation-autocomplete-input.tsx
+│   │   │       └── alert-accomodation-autocomplete-results.tsx
+│   │   ├── alerts
+│   │   │   ├── create-alert.ts
+│   │   │   ├── delete-alert.ts
+│   │   │   ├── get-alerts.ts
+│   │   │   └── update-alert.ts
+│   │   ├── credentials-sign-in
+│   │   │   └── credentials-sign-in.ts
+│   │   ├── faq
+│   │   │   └── faq-questions-answers.ts
+│   │   ├── favorites
+│   │   │   ├── create-favorite.ts
+│   │   │   └── get-favorites.ts
+│   │   ├── forgot-password
+│   │   │   └── forgot-password.ts
+│   │   ├── magic-link-sign-in
+│   │   │   └── magic-link-sign-in.ts
+│   │   ├── owner-form.ts
+│   │   ├── questions-answers
+│   │   │   └── question-answers.ts
+│   │   ├── reset-password
+│   │   │   └── reset-password.ts
+│   │   ├── sign-up
+│   │   │   └── sign-up.ts
+│   │   └── territories.ts
+│   ├── server
+│   │   ├── accommodations
+│   │   │   ├── get-accommodation-by-id.ts
+│   │   │   └── get-accommodations.ts
+│   │   ├── bailleur
+│   │   │   ├── get-accommodation-my-by-id.ts
+│   │   │   └── get-my-accommodations.ts
+│   │   ├── db
+│   │   │   ├── index.ts
+│   │   │   └── schema
+│   │   │       ├── academies.ts
+│   │   │       ├── accommodations.ts
+│   │   │       ├── auth.ts
+│   │   │       ├── cities.ts
+│   │   │       ├── departments.ts
+│   │   │       ├── dossier-facile.ts
+│   │   │       ├── event-stats.ts
+│   │   │       ├── external-sources.ts
+│   │   │       ├── favorite-accommodations.ts
+│   │   │       ├── index.ts
+│   │   │       ├── newsletter-subscriptions.ts
+│   │   │       ├── owners.ts
+│   │   │       ├── questions-answers.ts
+│   │   │       ├── relations.ts
+│   │   │       ├── stats.ts
+│   │   │       └── student-alerts.ts
+│   │   ├── questions-answers
+│   │   │   └── get-global-questions-answers.ts
+│   │   ├── services
+│   │   │   ├── brevo.test.ts
+│   │   │   ├── brevo.ts
+│   │   │   ├── dossier-facile.ts
+│   │   │   ├── mattermost.ts
+│   │   │   ├── s3.test.ts
+│   │   │   └── s3.ts
+│   │   ├── student
+│   │   │   ├── get-alerts.ts
+│   │   │   └── get-favorites.ts
+│   │   ├── territories
+│   │   │   ├── get-academies.ts
+│   │   │   ├── get-city-details.ts
+│   │   │   ├── get-popular-cities.ts
+│   │   │   └── get-territories.ts
+│   │   ├── trpc
+│   │   │   ├── client.ts
+│   │   │   ├── init.ts
+│   │   │   ├── query-client.ts
+│   │   │   ├── router.ts
+│   │   │   ├── routers
+│   │   │   │   ├── accommodations.ts
+│   │   │   │   ├── admin.ts
+│   │   │   │   ├── alerts.ts
+│   │   │   │   ├── bailleur.ts
+│   │   │   │   ├── dossier-facile.ts
+│   │   │   │   ├── favorites.ts
+│   │   │   │   ├── questions-answers.ts
+│   │   │   │   └── territories.ts
+│   │   │   ├── server.ts
+│   │   │   └── utils
+│   │   │       ├── accommodation-helpers.ts
+│   │   │       ├── field-mapping.ts
+│   │   │       └── spatial-helpers.ts
+│   │   └── utils
+│   │       ├── normalize-city-search.test.ts
+│   │       ├── normalize-city-search.ts
+│   │       ├── slug.ts
+│   │       ├── sort-cities-by-relevance.test.ts
+│   │       └── sort-cities-by-relevance.ts
+│   ├── services
+│   │   ├── better-auth-client.ts
+│   │   └── better-auth.ts
+│   └── utils
+│       ├── calculateAvailability.ts
+│       ├── debugPromiseTiming.ts
+│       ├── formatDate.ts
+│       ├── formatRelativeTime.ts
+│       ├── french-contraction.ts
+│       ├── get-favicon-url.ts
+│       ├── sPluriel.ts
+│       ├── sanitize-html.ts
+│       └── widget-resize.ts
+├── tsconfig.json
+└── vitest.config.ts
+182 directories, 580 files
