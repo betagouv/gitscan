@@ -2,12 +2,12 @@
 # Meet package
 #
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.10.9,<0.11.0"]
+build-backend = "uv_build"
 
 [project]
 name = "meet"
-version = "1.9.0"
+version = "1.10.0"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -21,8 +21,7 @@ classifiers = [
 ]
 description = "A simple video and phone conferencing tool, powered by LiveKit"
 keywords = ["Django", "Contacts", "Templates", "RBAC"]
-license = { file = "LICENSE" }
-readme = "README.md"
+license = "MIT"
 requires-python = ">=3.13"
 dependencies = [
     "boto3==1.42.49",
@@ -33,6 +32,7 @@ dependencies = [
     "django-configurations==2.5.1",
     "django-cors-headers==4.9.0",
     "django-countries==8.2.0",
+    "django-filter==25.2",
     "django-lasuite[all]==0.0.24",
     "django-parler==2.3",
     "redis==5.2.1",
@@ -40,7 +40,7 @@ dependencies = [
     "django-storages[s3]==1.14.6",
     "django-timezone-field>=5.1",
     "django-pydantic-field==0.5.4",
-    "django==5.2.11",
+    "django==5.2.12",
     "djangorestframework==3.16.1",
     "drf_spectacular==0.29.0",
     "dockerflow==2026.1.26",
@@ -54,6 +54,7 @@ dependencies = [
     "pydantic==2.12.4",
     "PyJWT==2.11.0",
     "python-frontmatter==1.1.0",
+    "python-magic==0.4.27",
     "requests==2.32.5",
     "sentry-sdk==2.53.0",
     "whitenoise==6.11.0",
@@ -68,7 +69,7 @@ dependencies = [
 "Homepage" = "https://github.com/suitenumerique/meet"
 "Repository" = "https://github.com/suitenumerique/meet"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "django-extensions==4.1",
     "drf-spectacular-sidecar==2026.1.1",
@@ -88,12 +89,13 @@ dev = [
     "types-requests==2.32.4.20260107",
 ]
 
-[tool.setuptools]
-packages = { find = { where = ["."], exclude = ["tests"] } }
-zip-safe = true
-
-[tool.distutils.bdist_wheel]
-universal = true
+[tool.uv.build-backend]
+module-root = ""
+source-exclude = [
+    "**/tests/**",
+    "**/test_*.py",
+    "**/tests.py",
+]
 
 [tool.ruff]
 exclude = [

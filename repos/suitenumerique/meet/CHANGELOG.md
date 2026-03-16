@@ -8,11 +8,36 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(helm) support celery with our Django backend #1124
+- ✨(helm) support ingress for custom background image #1124
+- ✨(backend) add authenticated user rate throttling on request-entry #1129
+- ✨(backend) expose `is_active` field for Application in Django admin #1133
+- ✨(file-upload) disable by default & limit count by user #1141
+
+### Changed
+
+- ♿️(frontend) Caption text size setting for accessibility #1062
+- ♿️(frontend) sync html lang attribute with i18n for screen readers #1111
+- ♿️(frontend) improve MoreLink a11y and UX on home page #1112
+- ♿(frontend) improve chat toast a11y for screen readers #1109
+- ♿(frontend) improve ui and aria labels for help article links #1108
+- 🌐(frontend) improve German translation #1125
+- 🔨(python-env) migrate meet main app to UV #1120
+- ♻️(backend) align Application model field with `is_active` convention #1133
+- 🔐(backend) avoids revealing the inactive status of an application #1135
+- ⚡️(helm) reduce initialDelaySeconds and add periods seconds #1139
+- 🔒️(backend) avoid information exposure through exception messages #1144
+
 ### Fixed
 
-- 🩹(frontend) remove incorrect reference to ProConnect on the prejoin #1080
-- ✨(frontend) add Ctrl+Shift+/ to open shortcuts settings #1050
-- ♿(frontend) announce selected state to screen readers #1081
+- 🐛(frontend) fix hand icon and queue position alignment and position #1119
+- 🩹(backend) add page_size to pagination for room endpoints #1131
+- 🐛(backend) refactor lobby throttling to use participant id #1129
+- 🩹(backend) ignore non-recording uploads in storage webhook handler #1142
+
+## [1.10.0] - 2026-03-05
 
 ### Changed
 
@@ -20,12 +45,22 @@ and this project adheres to
 - 🦺(backend) strengthen API validation for recording options #1063
 - ⚡️(frontend) optimize few performance caveats #1073
 - 🔒️(helm) introduce a dedicated Kubernetes Ingress for webhook-livekit #1066
+- ⬆️(deps) bump rollup from 4.44.2 to 4.59.0 in /src/frontend #1088
 
 ### Fixed
 
 - 🐛(migrations) use settings in migrations #1058
 - 💄(frontend) truncate pinned participant name with ellipsis on overflow #1056
 - ♿(frontend) prevent focus ring clipping on invite dialog #1078
+- ♿(frontend) dynamic tab title when connected to meeting #1060
+- 🩹(frontend) remove incorrect reference to ProConnect on the prejoin #1080
+- ✨(frontend) add Ctrl+Shift+/ to open shortcuts settings #1050
+- ♿(frontend) announce selected state to screen readers #1081
+- 💄(frontend) truncate long names with ellipsis in reaction overlay #1099
+
+### Added
+
+- ✨(backend) add file upload feature #1030
 
 ## [1.9.0] - 2026-03-02
 

@@ -1,38 +1,46 @@
 ## Changelog : meet (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de l'accessibilité et des performances de Meet. Des correctifs ont été apportés pour résoudre des vulnérabilités, améliorer la navigation au clavier et optimiser l'efficacité du code. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'accès aux paramètres et améliorer l'expérience utilisateur globale.
+Les dernières mises à jour de Meet se concentrent sur l'amélioration de la sécurité, de l'accessibilité et de la performance. De nouvelles fonctionnalités comme le chargement de fichiers ont été ajoutées, tandis que des corrections de bugs et des optimisations ont été apportées pour une meilleure expérience utilisateur. L'infrastructure a également été renforcée avec des mises à jour de sécurité et des améliorations de la configuration.
 
 ### Évolutions fonctionnelles
-- Ajout d'un raccourci clavier (Ctrl+Shift+/) pour ouvrir les paramètres des raccourcis [#1050](https://github.com/suitenumerique/meet/issues/1050).
-- Amélioration de l'accessibilité du dialogue de participation à une réunion.
-- Ajout d'un lien cliquable vers les paramètres généraux dans la fenêtre d'inactivité.
-- Possibilité d'utiliser les touches Shift et Alt dans la configuration des raccourcis.
-- Ajout de raccourcis supplémentaires pour améliorer l'accessibilité.
-- Exposition du lien vers l'application Windows.
+- Ajout de la possibilité de télécharger les enregistrements même avec un statut "échec d'arrêt" [#1129](https://github.com/suitenumerique/meet/issues/1129).
+- Ajout d'une fonctionnalité de chargement de fichiers, désactivée par défaut avec une limite de nombre configurable [#1141](https://github.com/suitenumerique/meet/issues/1141).
+- Ajout d'un lien vers l'application Windows web dans l'interface.
+- Ajout d'un raccourci clavier pour ouvrir les paramètres (Ctrl+Shift+/).
+- Possibilité d'afficher le statut actif/inactif d'une application dans l'interface d'administration.
 
 ### Évolutions techniques
-- Renforcement de la validation des entrées API pour améliorer la sécurité [#1053](https://github.com/suitenumerique/meet/issues/1053).
-- Refactorisation de la gestion des permissions au niveau de l'API backend.
-- Optimisation des requêtes SQL dans l'interface d'administration pour améliorer les performances.
-- Mise à jour de Django pour corriger plusieurs vulnérabilités de sécurité.
-- Passage à une image de base Alpine pour le microservice de résumé, améliorant la sécurité et la taille de l'image.
-- Amélioration de la gestion des erreurs liées aux fichiers dans le microservice de résumé.
-- Introduction d'un Ingress Kubernetes dédié pour le webhook LiveKit.
-- Refactorisation des tests d'API externes.
-- Amélioration de la configuration de l'environnement pour les déploiements Scalingo.
-- Mise à jour des dépendances Python et JavaScript.
-- Optimisation du code frontend pour éviter les recalculs inutiles.
-- Suppression de `curl` de l'image de production frontend.
-- Utilisation de la même identité utilisateur en production et en développement pour Tilt.
-- Ajout de support pour la plateforme ARM64 dans les builds Docker.
-- Mise à jour des étapes des actions GitHub pour utiliser les dernières versions.
+- Renforcement de la validation des entrées API pour améliorer la sécurité.
+- Mise à jour de plusieurs dépendances frontend (Rollup, @hono/node-server, minimatch, undici, prettier, tanstack, panda-related, i18next, vite, livekit).
+- Passage de l'application principale Python à UV.
+- Amélioration de la stabilité du stack Tilt.
+- Configuration de Celery avec une file d'attente dédiée.
+- Mise à jour de la configuration Helm pour inclure Celery et l'image de fond personnalisée.
+- Utilisation d'une image de base Alpine pour améliorer la sécurité.
+- Mise à jour de la version de Django (avec correctif de sécurité).
+- Amélioration de la configuration CI/CD (permissions Docker Hub, actions de revue de sécurité Claude).
+- Refactorisation de la gestion des fichiers téléchargés (regex, format des clés).
+- Amélioration de la gestion du throttling dans le lobby (utilisation de l'ID participant).
+- Suppression de pip des images de production et agents pour renforcer la sécurité.
+- Mise à jour de protobuf pour corriger une vulnérabilité.
 
 ### Autres changements
-- Mise à jour de la documentation pour inclure les instructions de déploiement sur Scalingo.
-- Correction de fautes de frappe dans la documentation.
-- Mise à jour des termes juridiques.
-- Correction de problèmes d'accessibilité liés aux focus rings et aux lecteurs d'écran.
-- Amélioration de la localisation des étiquettes des modificateurs de lecteur d'écran.
-- Correction d'un bug empêchant la mise à jour des préférences linguistiques en allemand.
-- Mise à jour du changelog.
+- Améliorations de l'accessibilité :
+    - Annonce de l'état du microphone/caméra aux lecteurs d'écran lors de l'utilisation des raccourcis.
+    - Amélioration de la structure sémantique et des étiquettes ARIA pour les liens d'aide.
+    - Amélioration de l'accessibilité du chat pour les lecteurs d'écran.
+    - Amélioration de l'accessibilité du carrousel.
+    - Ajout d'un lien de contournement pour la navigation au clavier.
+    - Amélioration de l'accessibilité de la boîte de dialogue de connexion.
+    - Ajout de la possibilité de modifier la taille du texte des sous-titres.
+- Corrections de la documentation et des commentaires.
+- Amélioration des traductions allemandes.
+- Corrections de bugs mineurs dans l'interface utilisateur (overflow, raccourcis, focus).
+- Corrections de l'organisation du changelog.
+- Ajout de tests unitaires.
+- Suppression de références à ProConnect dans l'interface utilisateur.
+- Amélioration de la configuration de Tilt pour l'environnement de développement.
+- Correction de problèmes liés aux caractères spéciaux dans le Makefile.
+- Mise à jour de la configuration Renovate.
+- Suppression de curl de l'image de production frontend.

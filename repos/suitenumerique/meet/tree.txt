@@ -170,6 +170,7 @@
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   ├── feature_flag.py
+    │   │   │   ├── filters.py
     │   │   │   ├── permissions.py
     │   │   │   ├── serializers.py
     │   │   │   ├── throttling.py
@@ -204,6 +205,8 @@
     │   │   │   ├── 0014_room_pin_code.py
     │   │   │   ├── 0015_application_and_more.py
     │   │   │   ├── 0016_recording_options.py
+    │   │   │   ├── 0017_file.py
+    │   │   │   ├── 0018_rename_active_application_is_active.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -240,6 +243,9 @@
     │   │   │       ├── logo-suite-numerique.png
     │   │   │       ├── logo.png
     │   │   │       └── mail-header-background.png
+    │   │   ├── tasks
+    │   │   │   ├── _task.py
+    │   │   │   └── file.py
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
     │   │   │   └── extra_tags.py
@@ -249,6 +255,16 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
     │   │   │   ├── conftest.py
+    │   │   │   ├── files
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_api_files_create.py
+    │   │   │   │   ├── test_api_files_delete.py
+    │   │   │   │   ├── test_api_files_list.py
+    │   │   │   │   ├── test_api_files_list_filters.py
+    │   │   │   │   ├── test_api_files_list_ordering.py
+    │   │   │   │   ├── test_api_files_media_auth.py
+    │   │   │   │   ├── test_api_files_update.py
+    │   │   │   │   └── test_api_files_upload_ended.py
     │   │   │   ├── recording
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── event
@@ -304,7 +320,8 @@
     │   │   │   ├── test_models_resource_accesses.py
     │   │   │   ├── test_models_rooms.py
     │   │   │   ├── test_models_users.py
-    │   │   │   └── test_utils.py
+    │   │   │   ├── test_utils.py
+    │   │   │   └── test_utils_detect_mimetype.py
     │   │   ├── urls.py
     │   │   └── utils.py
     │   ├── demo
@@ -326,19 +343,15 @@
     │   ├── locale
     │   │   ├── de_DE
     │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
     │   │   │       └── django.po
     │   │   ├── en_US
     │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
     │   │   │       └── django.po
     │   │   ├── fr_FR
     │   │   │   └── LC_MESSAGES
-    │   │   │       ├── django.mo
     │   │   │       └── django.po
     │   │   └── nl_NL
     │   │       └── LC_MESSAGES
-    │   │           ├── django.mo
     │   │           └── django.po
     │   ├── manage.py
     │   ├── meet
@@ -347,7 +360,8 @@
     │   │   ├── settings.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
-    │   └── pyproject.toml
+    │   ├── pyproject.toml
+    │   └── uv.lock
     ├── frontend
     │   ├── .env.development
     │   ├── .env.production
@@ -667,6 +681,7 @@
     │   │   │   │   │   │   ├── useResolveInitiallyDefaultDeviceId.ts
     │   │   │   │   │   │   ├── useRoomData.ts
     │   │   │   │   │   │   ├── useRoomId.ts
+    │   │   │   │   │   │   ├── useRoomPageTitle.ts
     │   │   │   │   │   │   ├── useSidePanel.ts
     │   │   │   │   │   │   ├── useTelephony.ts
     │   │   │   │   │   │   └── useVideoResolutionSubscription.ts
@@ -746,6 +761,7 @@
     │   │   │   │   ├── api
     │   │   │   │   │   └── startSubtitle.ts
     │   │   │   │   ├── component
+    │   │   │   │   │   ├── CaptionsSettings.tsx
     │   │   │   │   │   └── Subtitles.tsx
     │   │   │   │   └── hooks
     │   │   │   │       ├── useAreSubtitlesAvailable.ts
@@ -944,6 +960,7 @@
     │       │   ├── backend_job_createsuperuser.yaml
     │       │   ├── backend_job_migrate.yaml
     │       │   ├── backend_svc.yaml
+    │       │   ├── celery_backend_deployment.yaml
     │       │   ├── celery_summarize_deployment.yaml
     │       │   ├── celery_transcribe_deployment.yaml
     │       │   ├── extra-objects.yaml
@@ -952,9 +969,11 @@
     │       │   ├── ingress.yaml
     │       │   ├── ingress_admin.yaml
     │       │   ├── ingress_media.yaml
+    │       │   ├── ingress_media_files.yaml
     │       │   ├── ingress_posthog.yaml
     │       │   ├── ingress_posthog_assets.yaml
     │       │   ├── ingress_webhook.yaml
+    │       │   ├── media_files_svc.yaml
     │       │   ├── media_svc.yaml
     │       │   ├── posthog_assets_svc.yaml
     │       │   ├── posthog_svc.yaml
@@ -1070,4 +1089,4 @@
             │   ├── transcript_formatter.py
             │   └── webhook_service.py
             └── main.py
-203 directories, 869 files
+205 directories, 886 files
