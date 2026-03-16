@@ -1,50 +1,35 @@
 ## Changelog : otelo (30 derniers jours)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à otelo au cours du dernier mois. Les développements se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la gestion des sources de données, l'historique des simulations, l'exportation de données améliorée et la gestion des utilisateurs. Des corrections de bugs et des optimisations ont également été implémentées pour améliorer la stabilité et l'expérience utilisateur.
+Le projet Otelo a connu un mois de février et début mars riche en améliorations et nouvelles fonctionnalités. Les efforts se sont concentrés sur l'amélioration de la gestion des données (versioning, import), l'expérience utilisateur (gestion des utilisateurs, simulations, affichage des résultats) et la correction de bugs pour une application plus stable et performante. Une page de feedback utilisateur a également été ajoutée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de retour utilisateur [#16](https://github.com/MTES-MCT/otelo/pull/16).
-- Implémentation de la suppression de groupes EPCI [#15](https://github.com/MTES-MCT/otelo/pull/15).
-- Ajout de la gestion des sources de données [#4](https://github.com/MTES-MCT/otelo/pull/4).
-- Possibilité d'exporter les résultats des simulations en image.
-- Ajout d'un bouton d'exportation des résultats des simulations.
-- Amélioration de l'affichage des statistiques et ajout de la liste des EPCI dans l'export.
-- Ajout de la gestion des utilisateurs et amélioration de l'interface.
-- Ajout d'une page 404 et actualisation automatique après déconnexion.
-- Amélioration de l'affichage des logements vacants et secondaires.
-- Correction de l'affichage des totaux cumulés pour les logements vacants et secondaires.
-- Correction de l'arrondi de la taille des ménages.
-- Correction de l'affichage des offres potentielles RS.
-- Correction de l'affichage des graphiques récapitulatifs.
+- Ajout d'une page de feedback utilisateur pour recueillir les retours des utilisateurs. [#16](https://github.com/MTES-MCT/otelo/pull/16)
+- Possibilité de supprimer un groupe d'EPCI. [#15](https://github.com/MTES-MCT/otelo/pull/15)
+- Amélioration de l'affichage des résultats des simulations avec un bouton d'export. [#10](https://github.com/MTES-MCT/otelo/pull/10)
+- Ajout d'un historique des résultats des simulations, permettant de suivre l'évolution des données. [#10](https://github.com/MTES-MCT/otelo/pull/10)
+- Amélioration de la gestion des utilisateurs avec un refonte de l'interface et du tri.
+- Correction de l'affichage des logements secondaires.
+- Correction de l'affichage des données cumulées pour les logements vacants et secondaires.
 - Correction de l'export Excel pour les décimales.
+- Correction de l'affichage des données dans les graphiques récapitulatifs.
+- Correction d'un bug lié à la projection du scroll dans la liste des ménages.
+- Correction d'un bug lié au gel de la taille de page.
 
 ### Évolutions techniques
-- Migration vers une meilleure solution d'authentification (Better Auth) [#3](https://github.com/MTES-MCT/otelo/pull/3).
-- Refonte de la gestion des utilisateurs.
-- Ajout de tests unitaires basés sur Excel pour le moteur de calcul.
-- Implémentation du versioning des données (datapack) [#23](https://github.com/MTES-MCT/otelo/pull/23).
-- Ajout de l'historique des résultats des simulations [#10](https://github.com/MTES-MCT/otelo/pull/10) et [#13](https://github.com/MTES-MCT/otelo/pull/13).
-- Amélioration de la gestion des millésimes dans les calculs de taux [#28](https://github.com/MTES-MCT/otelo/pull/28).
-- Correction de l'injection du module CLI.
-- Correction de la configuration des paramètres de millésime.
-- Correction de la gestion des années de base.
-- Amélioration de la gestion des erreurs lors de la migration de la base de données.
-- Ajout de tests Prisma.
-- Amélioration de la configuration Swagger pour les enums.
-- Correction de la construction de l'application.
-- Utilisation de Puppeteer pour gérer Chromium.
+- Implémentation du versioning des datapacks. [#23](https://github.com/MTES-MCT/otelo/pull/23)
+- Ajout d'un CLI pour importer des données. [#25](https://github.com/MTES-MCT/otelo/pull/25)
+- Gestion des clés API et des consommateurs. [#20](https://github.com/MTES-MCT/otelo/pull/20)
+- Refactorisation de la gestion des mises à jour de la base de données pour éviter les erreurs.
+- Suppression du module d'authentification de l'API.
+- Amélioration de la gestion des énumérations dans Swagger.
+- Ajout de tests et de linting pour améliorer la qualité du code.
 
 ### Autres changements
-- Ajout d'une page de changelog.
-- Ajout d'un script postinstall pour Chromium.
-- Suppression de la commande prune.
-- Nettoyage du code et suppression des logs inutiles.
-- Correction de fautes de frappe.
-- Mise à jour des dépendances.
-- Ajout d'un banner de feedback.
-- Amélioration de la navigation du menu d'en-tête pour les utilisateurs connectés.
-- Correction d'un problème de blocage de l'interface lors du défilement vers un élément spécifique.
-- Ajout d'une limitation de la taille de page pour éviter les blocages.
-- Ajout d'un fichier `.env` local.
-- Ajout de tests pour le calcul des logements indécents.
+- Ajout d'une page changelog. [#6](https://github.com/MTES-MCT/otelo/pull/6)
+- Correction de divers typos et améliorations de la documentation.
+- Correction de l'année du millésime dans différentes parties de l'application.
+- Correction de la gestion du millésime dans le provider de taux.
+- Correction de la restructuration liée à la disparition des données.
+- Amélioration de la gestion des injections de modules CLI.
+- Ajout d'un fichier README et configuration du mode "dry run" par défaut pour le CLI.
