@@ -1525,6 +1525,7 @@
 │   │   │   ├── geo
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── getCodeCommune.test.ts
+│   │   │   │   ├── geoCommune.ts
 │   │   │   │   ├── geocode.ts
 │   │   │   │   ├── getCodeCommune.ts
 │   │   │   │   └── getDepartement.ts
@@ -1945,13 +1946,17 @@
 │   │   │   │       │   ├── formPdf.integration.ts
 │   │   │   │       │   ├── formRevisionRequests.integration.ts
 │   │   │   │       │   ├── forms.integration.ts
-│   │   │   │       │   └── formsLifeCycle.integration.ts
+│   │   │   │       │   ├── formsLifeCycle.integration.ts
+│   │   │   │       │   ├── getCityNameByInseeCode.integration.ts
+│   │   │   │       │   └── getCommuneByCoordinates.integration.ts
 │   │   │   │       ├── appendixForms.ts
 │   │   │   │       ├── form.ts
 │   │   │   │       ├── formPdf.ts
 │   │   │   │       ├── formRevisionRequests.ts
 │   │   │   │       ├── forms.ts
-│   │   │   │       └── formsLifeCycle.ts
+│   │   │   │       ├── formsLifeCycle.ts
+│   │   │   │       ├── getCityNameByInseeCode.ts
+│   │   │   │       └── getCommuneByCoordinates.ts
 │   │   │   ├── sirenify.ts
 │   │   │   ├── typeDefs
 │   │   │   │   ├── bsdd.enums.graphql
@@ -1959,7 +1964,10 @@
 │   │   │   │   ├── bsdd.mutations.graphql
 │   │   │   │   ├── bsdd.objects.graphql
 │   │   │   │   ├── bsdd.queries.graphql
-│   │   │   │   └── bsdd.subscriptions.graphql
+│   │   │   │   ├── bsdd.subscriptions.graphql
+│   │   │   │   └── private
+│   │   │   │       ├── bsdd.objects.graphql
+│   │   │   │       └── bsdd.queries.graphql
 │   │   │   ├── types.ts
 │   │   │   ├── updateAppendix2.ts
 │   │   │   ├── validation.ts
@@ -2448,7 +2456,8 @@
 ├── docs
 │   ├── RegistryExportV2.md
 │   ├── SecondFactor.md
-│   └── ZodValidation.md
+│   ├── ZodValidation.md
+│   └── archi_td_2025.png
 ├── e2e
 │   ├── .eslintrc.json
 │   ├── .gitignore
@@ -3901,8 +3910,6 @@
 │   │   │   │   ├── SideMenu.test.tsx
 │   │   │   │   ├── helper.test.ts
 │   │   │   │   └── packagings.test.ts
-│   │   │   ├── api
-│   │   │   │   └── geoApi.ts
 │   │   │   ├── components
 │   │   │   │   ├── ActionButton.module.scss
 │   │   │   │   ├── ActionButton.tsx
@@ -4151,7 +4158,8 @@
 │   │   │   │   │   │   ├── EcoOrganismes.module.scss
 │   │   │   │   │   │   └── EcoOrganismes.tsx
 │   │   │   │   │   ├── parcel-number
-│   │   │   │   │   │   └── ParcelNumber.tsx
+│   │   │   │   │   │   ├── ParcelNumber.tsx
+│   │   │   │   │   │   └── queries.ts
 │   │   │   │   │   ├── temporaryStorage
 │   │   │   │   │   │   ├── TemporaryStorage.module.scss
 │   │   │   │   │   │   └── TemporaryStorage.tsx
@@ -5001,6 +5009,8 @@
 │   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   ├── 20260129233644_registry_texs_files_unique_key
 │   │   │   │   │   │   └── migration.sql
+│   │   │   │   │   ├── 20260226085645_add_family_code_waste_family_code
+│   │   │   │   │   │   └── migration.sql
 │   │   │   │   │   └── migration_lock.toml
 │   │   │   │   ├── models
 │   │   │   │   │   ├── main.prisma
@@ -5265,4 +5275,4 @@
 │   ├── validation-doc.js
 │   └── waste-consistence-migration.sql
 └── tsconfig.base.json
-927 directories, 4377 files
+928 directories, 4386 files
