@@ -1,39 +1,39 @@
 ## Changelog : quefairedemesobjets (30 derniers jours)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la qualité du code, la correction de bugs et l'optimisation des performances, notamment au niveau du moteur de recherche et de l'administration. Des améliorations ont également été apportées à l'infrastructure et aux tests, ainsi qu'à la documentation pour faciliter le déploiement. Une migration vers Django 6.0 a été effectuée, avec un rollback ultérieur dû à des problèmes d'interface.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration du moteur de recherche, la correction de bugs et la mise à jour des dépendances pour assurer la stabilité et la performance de la plateforme. Des améliorations ont également été apportées à l'administration et à l'intégration de nouveaux services comme Sites Conformes. Des efforts ont été déployés pour optimiser les données et les processus de clonage de tables.
 
 ### Évolutions fonctionnelles
-- Amélioration du moteur de recherche avec prise en compte des synonymes et variantes pour des résultats plus pertinents. [#2435](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2435)
-- Correction d'un bug empêchant l'affichage correct des acteurs en mode liste. [#2521](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2521)
-- Correction de l'affichage des icônes dans le générateur d'infotri. [#2543](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2543)
-- Correction d'une erreur de géolocalisation sur Chrome. [#2596](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2596)
-- Correction de bugs et améliorations des tests e2e pour une meilleure stabilité. [#2595](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2595) et [#2598](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2598)
-- Correction du script de génération de la base de données de test. [#2592](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2592)
-- Mise à jour de Sites Faciles vers Sites Conformes pour bénéficier de nouvelles fonctionnalités et corrections. [#2585](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2585) et [#2586](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2586)
-- Amélioration de l'administration avec des corrections et des ajouts pour faciliter la gestion du contenu. [#2584](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2584)
-- La fonctionnalité de redirection de l'admin Django vers Wagtail est de nouveau fonctionnelle. [#2589](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2589)
+- Amélioration du moteur de recherche avec l'ajout de synonymes et de variantes pour une recherche plus pertinente [#2435](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2435).
+- Correction d'un bug empêchant la redirection vers les acteurs affichés [#2514](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2514).
+- Correction de l'affichage des icônes dans le générateur d'infotri [#2543](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2543).
+- Mise à jour de l'intégration avec Sites Conformes (anciennement Sites Faciles) [#2544](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2544), [#2585](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2585).
+- Correction d'une erreur de géolocalisation sur Chrome [#2596](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2596).
+- Amélioration des tests e2e pour une meilleure couverture et fiabilité [#2588](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2588), [#2595](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2595).
+- Correction de la fonctionnalité de redirection de l'admin Django vers Wagtail [#2589](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2589).
+- Mise à jour de Wagtailmenus et Django [#2578](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2578).
+- Correction de bugs sur le moteur de recherche dans l'administration [#2584](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2584) et [#2591](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2591).
 
 ### Évolutions techniques
-- Mise à jour de Django en version 6.0 (rollback effectué en raison de problèmes d'interface). [#2588](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2588)
-- Refactorisation des tables `exposure_stats` pour faciliter la maintenance. [#2523](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2523)
-- Suppression de code obsolète (modèle dbt). [#2576](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2576)
-- Ajout d'un DAG Airflow pour cloner les tables des liens de succession d'entreprise. [#2579](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2579)
-- Amélioration de la vitesse de la CI/CD. [#2583](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2583)
-- Suppression de PurgeCSS. [#2551](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2551)
-- Ajout d'espace de stockage pour supporter les DAG de clone de Annuaire Entreprise. [#2577](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2577)
+- Mise à jour de Django vers la version 6.0 [#2588](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2588).
+- Refactorisation des tables `exposure_stats` pour faciliter la maintenance [#2523](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2523).
+- Création de DAGs Airflow pour cloner les tables des liens de succession d'entreprise [#2579](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2579).
+- Suppression de modèles DBT obsolètes et alignement des noms par convention [#2576](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2576).
+- Correction du notebook de clustering pour la localisation et le type d'acteur [#2610](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2610).
+- Ajout d'un notebook pour générer des suggestions de cluster à partir d'un CSV [#2609](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2609).
+- Amélioration de la vitesse de la CI/CD [#2583](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2583).
+- Suppression de la librairie `tqdm` non utilisée [#2542](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2542).
+- Correction des permissions de la CD [#2571](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2571).
+- Suppression de purgecss [#2551](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2551).
 
 ### Autres changements
-- Mise à jour de la documentation pour le déploiement des containers Scaleway. [#2468](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2468)
-- Ajout d'une section "comment tester" dans le template des pull requests. [#2520](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2520)
-- Proposition de nouvelle stratégie de tagging pour les versions de déploiement. [#2494](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2494)
-- Correction du notebook de clustering pour la localisation et le type d'acteur. [#2610](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2610)
-- Création d'un notebook pour générer des suggestions de cluster à partir d'un CSV. [#2609](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2609)
-- Correction de la validation des formulaires Wagtail. [#2607](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2607)
-- Correction de l'export de l'URL des objets de type Source. [#2608](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2608)
-- Suppression de l'affichage des identifiants dans les dataframes vides. [#2602](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2602)
-- Modification du titre pour afficher la réparation avant le réemploi. [#2603](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2603)
-- Renommage de LVAO en "Que faire de mes objets et déchets". [#2600](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2600)
-- Suppression du soulignement des liens dans l'admin. [#2601](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2601)
-- Correction de l'affichage des acteurs inactifs. [#2522](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2522)
-- Suppression de la variante touch n drag de la fiche acteur en mobile. [#2515](https://github.com/incubateur-ademe/quefairedemesobjets/pull/2515)
+- Mise à jour de la documentation pour le déploiement des containers Scaleway [#2468](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2468).
+- Renommage de LVAO en "Que faire de mes objets et déchets" [#2600](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2600).
+- Mise à jour de la documentation pour la résolution de la CI [#2570](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2570).
+- Correction pour ne pas valider les formulaires Wagtail sans validateur [#2607](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2607).
+- Correction pour ne pas collecter les identifiants des dataframes vides [#2602](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2602).
+- Mise à jour de l'URL des objets de type Source [#2608](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2608).
+- Mise à jour de l'ordre d'affichage : réparation avant réemploi [#2603](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2603).
+- Correction pour ne pas souligner les liens dans l'admin [#2601](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2601).
+- Correction de la détection des corrections affichées avec des acteurs inactifs [#2522](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2522).
+- Mise à jour de diverses dépendances (eslint, playwright, posthog-js, sentry-sdk, apache-airflow-providers-postgres, django-admin-sortable2, etc.).
