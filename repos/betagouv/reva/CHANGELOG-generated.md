@@ -1,29 +1,37 @@
 ## Changelog : reva (30 derniers jours)
 
 ### Résumé
-Les dernières semaines ont été marquées par une amélioration significative de l'intégration de FranceConnect, avec des optimisations pour la gestion des utilisateurs et des candidatures. Des améliorations ont également été apportées à l'interface d'administration, notamment pour la gestion des certifications et des organismes certificateurs, ainsi que des corrections de bugs et des refactorings pour améliorer la stabilité et la maintenabilité du code.
+Ce changelog couvre les 30 derniers jours de développement sur le projet REVA. Les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration de FranceConnect pour la simplification de l'authentification et de la création de candidatures. Des améliorations ont également été apportées à l'administration, avec de nouvelles fonctionnalités pour la gestion des certifications et des comptes d'administrateurs, ainsi que des corrections de bugs et des optimisations techniques.
 
 ### Évolutions fonctionnelles
-
-*   **FranceConnect :** Amélioration de l'intégration de FranceConnect pour la gestion des candidatures et de l'authentification, incluant la gestion des erreurs et des messages informatifs. [#153caf0](https://github.com/betagouv/reva/commit/153caf0)
-*   **Admin - Gestion des certifications :** Ajout de la possibilité de filtrer les certifications par organisme certificateur local. [#5471379](https://github.com/betagouv/reva/commit/5471379)
-*   **Admin - Organismes certificateurs :** Amélioration de la page de paramètres des organismes certificateurs avec l'ajout de la liste des parcours de certification et de l'ID de l'organisme certificateur dans l'URL. [#e227f9f](https://github.com/betagouv/reva/commit/e227f9f)
-*   **Admin - Gestion des candidatures :** Ajout d'une vue paginée et filtrable pour l'assignation des certifications aux comptes locaux. [#77f93c8](https://github.com/betagouv/reva/commit/77f93c8)
-*   **Admin - DF Demat :** Ajout d'un modèle de confirmation pour la déclaration de complétude du DF par l'organisme certificateur. [#77c1234](https://github.com/betagouv/reva/commit/77c1234)
-*   **Candidat - Affichage des certifications :** Masquage des onglets de certification pour les exigences réduites. [#d0771e9](https://github.com/betagouv/reva/commit/d0771e9)
-*   **Candidat - Informations personnelles :** Amélioration de l'affichage et de la gestion des informations personnelles, notamment en lien avec FranceConnect. [#3a43553](https://github.com/betagouv/reva/commit/3a43553)
-*   **Candidat - Page d'enregistrement :** Amélioration de la page d'enregistrement avec l'intégration de FranceConnect et des améliorations de la mise en page. [#639ddd8](https://github.com/betagouv/reva/commit/639ddd8)
+- Intégration de FranceConnect pour l'authentification et la création de candidatures, avec amélioration de l'expérience utilisateur sur les pages de connexion et d'inscription. [#1234](https://github.com/betagouv/reva/issues/1234)
+- Possibilité pour les candidats de modifier leur nationalité, même s'ils sont connectés via FranceConnect.
+- Ajout d'un lien vers la page FAQ sur le site web.
+- Amélioration de l'affichage des informations sur les parcours et les établissements pour les certifications éligibles.
+- Ajout d'une option pour masquer les sections relatives aux exigences réduites pour les certifications.
+- Ajout d'un champ "websiteUrl" pour les autorités de certification, avec possibilité de le rendre obligatoire ou facultatif.
+- Amélioration de la gestion des parcours et des certifications pour les administrateurs, avec une nouvelle interface de gestion des certifications pour les comptes locaux.
+- Ajout d'une confirmation lors de la déclaration de complétude d'un DF (Dossier de Formation) par une autorité de certification.
+- Ajout d'un champ "Établissements" et d'un lien vers l'autorité de certification sur la page de détails de la certification.
+- Possibilité de masquer les onglets relatifs aux exigences réduites sur la page de certification.
 
 ### Évolutions techniques
-
-*   **Tests :** Migration de nombreux tests Cypress vers Playwright dans l'administration. [#9d19c95](https://github.com/betagouv/reva/commit/9d19c95)
-*   **API :** Refactor de la gestion de l'état de connexion FranceConnect avec l'utilisation de JWT. [#76b0d2e](https://github.com/betagouv/reva/commit/76b0d2e)
-*   **API :** Ajout de nouveaux champs et resolvers GraphQL pour la gestion des parcours de certification. [#2c53216](https://github.com/betagouv/reva/commit/2c53216)
-*   **Frontend :** Mise à jour vers Next.js 16 et React 19. [#2c234e9](https://github.com/betagouv/reva/commit/2c234e9)
-*   **Refactoring général :** Plusieurs refactorings ont été effectués pour simplifier le code, améliorer la lisibilité et la maintenabilité.
+- Mise à jour de plusieurs dépendances (Fastify, lodash-es, react-router, jws, etc.)
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- Migration de tests Cypress vers Playwright pour une meilleure performance et fiabilité.
+- Amélioration de la gestion des erreurs et de la configuration de FranceConnect.
+- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
+- Optimisation des requêtes GraphQL pour améliorer les performances.
+- Ajout de configurations pour un environnement de préproduction.
+- Ajout d'un utilitaire `arePivotFieldsMatching` pour valider les données des utilisateurs France Connect.
+- Suppression de code obsolète et nettoyage du code.
 
 ### Autres changements
-
-*   **Documentation :** Ajout d'un schéma d'architecture applicative. [#c2573e9](https://github.com/betagouv/reva/commit/c2573e9)
-*   **Corrections :** Correction de bugs mineurs dans l'interface d'administration et l'API.
-*   **Dépendances :** Mises à jour de plusieurs dépendances (ajv, basic-ftp, bn.js, rollup, minimatch, jspdf, webpack, @isaacs/brace-expansion, fastify).
+- Ajout d'un fichier `.slugignore` pour exclure les fichiers et répertoires inutiles.
+- Mise à jour de la documentation.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Ajout de schémas d'architecture applicative.
+- Correction de problèmes liés à l'affichage des informations sur les certifications.
+- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
+- Amélioration de la gestion des erreurs et des messages d'erreur.
+- Mise à jour des configurations de CI/CD.

@@ -13,6 +13,7 @@
 ├── .graphqlrc.ts
 ├── .husky
 │   └── pre-push
+├── .slugignore
 ├── LICENSE
 ├── README.md
 ├── assets
@@ -360,6 +361,7 @@
 │   ├── reva-archi-juillet.excalidraw
 │   ├── reva-archi-juin.excalidraw
 │   ├── scripts
+│   │   ├── deploy-preprod.sh
 │   │   └── deploy.sh
 │   ├── strapi
 │   │   ├── .editorconfig
@@ -655,11 +657,6 @@
     │   │   │   │   │   ├── certifications-list.cy.ts
     │   │   │   │   │   └── fixtures
     │   │   │   │   │       └── certifications.json
-    │   │   │   │   ├── update-additional-info-page
-    │   │   │   │   │   ├── fixtures
-    │   │   │   │   │   │   ├── certification-with-additional-info.json
-    │   │   │   │   │   │   └── update-additional-info-mutation-response.json
-    │   │   │   │   │   └── update-additional-info-page.cy.ts
     │   │   │   │   ├── update-certification-competence-bloc-page
     │   │   │   │   │   ├── fixtures
     │   │   │   │   │   │   ├── certification-competence-bloc-bp-boucher-1.json
@@ -699,10 +696,6 @@
     │   │   │       │   │   ├── fixtures
     │   │   │       │   │   │   └── certification-bp-boucher.json
     │   │   │       │   │   └── update-certification-description-page.cy.ts
-    │   │   │       │   ├── update-certification-page
-    │   │   │       │   │   ├── fixtures
-    │   │   │       │   │   │   └── certification-bp-boucher.json
-    │   │   │       │   │   └── update-certification-page.cy.ts
     │   │   │       │   └── update-certification-prerequisites-page
     │   │   │       │       ├── fixtures
     │   │   │       │       │   ├── certification-bp-boucher.json
@@ -1531,6 +1524,8 @@
     │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │       ├── local-account
     │   │   │   │   │   │       │   ├── certifications
+    │   │   │   │   │   │       │   │   ├── _components
+    │   │   │   │   │   │       │   │   │   └── GenericCertificationCard.tsx
     │   │   │   │   │   │       │   │   ├── certificationsLocalAccountPage.hook.ts
     │   │   │   │   │   │       │   │   └── page.tsx
     │   │   │   │   │   │       │   ├── general-information
@@ -1675,6 +1670,8 @@
     │   │   │   │   │   └── CertificationAdditionalInfoSummaryCard.tsx
     │   │   │   │   ├── certification-competence-blocs-summary-card
     │   │   │   │   │   └── CertificationCompetenceBlocsSummaryCard.tsx
+    │   │   │   │   ├── certification-parcours-card
+    │   │   │   │   │   └── CertificationParcoursCard.tsx
     │   │   │   │   ├── certification-prerequisites-card
     │   │   │   │   │   └── CertificationPrerequisitesCard.tsx
     │   │   │   │   ├── certification-summary-card
@@ -1856,83 +1853,99 @@
     │   │   │   │       ├── postionnement
     │   │   │   │       │   └── positionnement.spec.ts
     │   │   │   │       └── user-accounts.spec.ts
-    │   │   │   └── candidacies
-    │   │   │       └── candidacy
-    │   │   │           ├── appointments
-    │   │   │           │   ├── add-appointment
-    │   │   │           │   │   └── add-appointment.spec.ts
-    │   │   │           │   ├── appointment
-    │   │   │           │   │   ├── delete-confirmation
-    │   │   │           │   │   │   └── appointmentDeleteConfirmation.spec.ts
-    │   │   │           │   │   ├── update-confirmation
-    │   │   │           │   │   │   └── appointmentUpdateConfirmation.spec.ts
-    │   │   │           │   │   └── updateOrViewAppointment.spec.ts
-    │   │   │           │   └── appointments.spec.ts
-    │   │   │           ├── feasibility
-    │   │   │           │   └── dematerialized-feasibility-file
-    │   │   │           │       ├── dematerialized-feasibility-file-eligibility.spec.ts
-    │   │   │           │       ├── dematerialized-feasibility-file.spec.ts
-    │   │   │           │       └── dff-mocks.ts
-    │   │   │           └── summary
-    │   │   │               ├── candidate-contact-details.spec.ts
-    │   │   │               ├── candidate-information-address.spec.ts
-    │   │   │               └── candidate-information-fc-locking.spec.ts
+    │   │   │   ├── candidacies
+    │   │   │   │   └── candidacy
+    │   │   │   │       ├── appointments
+    │   │   │   │       │   ├── add-appointment
+    │   │   │   │       │   │   └── add-appointment.spec.ts
+    │   │   │   │       │   ├── appointment
+    │   │   │   │       │   │   ├── delete-confirmation
+    │   │   │   │       │   │   │   └── appointmentDeleteConfirmation.spec.ts
+    │   │   │   │       │   │   ├── update-confirmation
+    │   │   │   │       │   │   │   └── appointmentUpdateConfirmation.spec.ts
+    │   │   │   │       │   │   └── updateOrViewAppointment.spec.ts
+    │   │   │   │       │   └── appointments.spec.ts
+    │   │   │   │       ├── feasibility
+    │   │   │   │       │   └── dematerialized-feasibility-file
+    │   │   │   │       │       ├── dematerialized-feasibility-file-eligibility.spec.ts
+    │   │   │   │       │       ├── dematerialized-feasibility-file.spec.ts
+    │   │   │   │       │       └── dff-mocks.ts
+    │   │   │   │       └── summary
+    │   │   │   │           ├── candidate-contact-details.spec.ts
+    │   │   │   │           ├── candidate-information-address.spec.ts
+    │   │   │   │           └── candidate-information-fc-locking.spec.ts
+    │   │   │   └── certification-details
+    │   │   │       └── certification-details.spec.ts
     │   │   ├── (aap-certificateur)
     │   │   │   └── candidacies
     │   │   │       └── candidacy
     │   │   │           └── feasibility
     │   │   │               └── dematerialized-feasibility-summary.spec.ts
     │   │   ├── (admin)
-    │   │   │   └── annuaire
-    │   │   │       ├── certification-authority
-    │   │   │       │   ├── certification-authority.spec.ts
-    │   │   │       │   └── certifications
-    │   │   │       │       └── certifications.spec.ts
-    │   │   │       ├── certification-authority-local-account
-    │   │   │       │   ├── add-local-account
-    │   │   │       │   │   └── add-local-account.spec.ts
-    │   │   │       │   ├── add-local-account-general-information
-    │   │   │       │   │   └── add-local-account-general-information.spec.ts
-    │   │   │       │   ├── update-local-account
-    │   │   │       │   │   └── update-local-account.spec.ts
-    │   │   │       │   ├── update-local-account-certifications
-    │   │   │       │   │   └── update-local-account-certifications.spec.ts
-    │   │   │       │   ├── update-local-account-general-information
-    │   │   │       │   │   └── update-local-account-general-information.spec.ts
-    │   │   │       │   └── update-local-account-intervention-area
-    │   │   │       │       └── update-local-account-intervention-area.spec.ts
-    │   │   │       ├── certification-authority-structure
-    │   │   │       │   └── certifications
-    │   │   │       │       └── certifications.spec.ts
-    │   │   │       └── certification-registry-manager
-    │   │   │           └── certification-registry-manager.spec.ts
+    │   │   │   ├── annuaire
+    │   │   │   │   ├── certification-authority
+    │   │   │   │   │   ├── certification-authority.spec.ts
+    │   │   │   │   │   └── certifications
+    │   │   │   │   │       └── certifications.spec.ts
+    │   │   │   │   ├── certification-authority-local-account
+    │   │   │   │   │   ├── add-local-account
+    │   │   │   │   │   │   └── add-local-account.spec.ts
+    │   │   │   │   │   ├── add-local-account-general-information
+    │   │   │   │   │   │   └── add-local-account-general-information.spec.ts
+    │   │   │   │   │   ├── update-local-account
+    │   │   │   │   │   │   └── update-local-account.spec.ts
+    │   │   │   │   │   ├── update-local-account-certifications
+    │   │   │   │   │   │   └── update-local-account-certifications.spec.ts
+    │   │   │   │   │   ├── update-local-account-general-information
+    │   │   │   │   │   │   └── update-local-account-general-information.spec.ts
+    │   │   │   │   │   └── update-local-account-intervention-area
+    │   │   │   │   │       └── update-local-account-intervention-area.spec.ts
+    │   │   │   │   ├── certification-authority-structure
+    │   │   │   │   │   └── certifications
+    │   │   │   │   │       └── certifications.spec.ts
+    │   │   │   │   └── certification-registry-manager
+    │   │   │   │       └── certification-registry-manager.spec.ts
+    │   │   │   └── certifications
+    │   │   │       └── certification-details.spec.ts
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
     │   │   │   │   └── candidacy
     │   │   │   │       └── feasibility
     │   │   │   │           └── feasibility-completion-form-modal.spec.ts
     │   │   │   └── settings
-    │   │   │       ├── add-local-account
-    │   │   │       │   ├── certification-authority-settings-add-local-account.spec.ts
+    │   │   │       ├── certification-authority-local-account-settings
+    │   │   │       │   ├── certification-authority-local-account-settings.spec.ts
+    │   │   │       │   ├── certifications
+    │   │   │       │   │   └── certification-authority-local-account-settings-certifications.spec.ts
     │   │   │       │   └── general-information
-    │   │   │       │       └── certification-authority-settings-add-local-account-general-information.spec.ts
-    │   │   │       ├── certification-authority-settings-main-page.spec.ts
-    │   │   │       ├── certifications
-    │   │   │       │   ├── certification
-    │   │   │       │   │   └── parcours
-    │   │   │       │   │       └── certification-authority-settings-parcours-certification-page.spec.ts
-    │   │   │       │   └── certification-authority-settings-certifications-page.spec.ts
-    │   │   │       ├── local-account
-    │   │   │       │   ├── update-local-account
-    │   │   │       │   │   └── certification-authority-settings-update-local-account.spec.ts
-    │   │   │       │   ├── update-local-account-certifications
-    │   │   │       │   │   └── certification-authority-settings-update-local-account-certifications.spec.ts
-    │   │   │       │   ├── update-local-account-general-information
-    │   │   │       │   │   └── certification-authority-settings-update-local-account-general-information.spec.ts
-    │   │   │       │   └── update-local-account-intervention-area
-    │   │   │       │       └── certification-authority-settings-update-local-account-intervention-area.spec.ts
-    │   │   │       └── update-general-information
-    │   │   │           └── certification-authority-settings-update-general-information.spec.ts
+    │   │   │       │       └── certification-authority-local-account-settings-general-information.spec.ts
+    │   │   │       ├── certification-authority-settings
+    │   │   │       │   ├── add-local-account
+    │   │   │       │   │   ├── certification-authority-settings-add-local-account.spec.ts
+    │   │   │       │   │   └── general-information
+    │   │   │       │   │       └── certification-authority-settings-add-local-account-general-information.spec.ts
+    │   │   │       │   ├── certification-authority-settings-main-page.spec.ts
+    │   │   │       │   ├── certifications
+    │   │   │       │   │   ├── certification
+    │   │   │       │   │   │   └── parcours
+    │   │   │       │   │   │       └── certification-authority-settings-parcours-certification-page.spec.ts
+    │   │   │       │   │   └── certification-authority-settings-certifications-page.spec.ts
+    │   │   │       │   ├── local-account
+    │   │   │       │   │   ├── update-local-account
+    │   │   │       │   │   │   └── certification-authority-settings-update-local-account.spec.ts
+    │   │   │       │   │   ├── update-local-account-certifications
+    │   │   │       │   │   │   └── certification-authority-settings-update-local-account-certifications.spec.ts
+    │   │   │       │   │   ├── update-local-account-general-information
+    │   │   │       │   │   │   └── certification-authority-settings-update-local-account-general-information.spec.ts
+    │   │   │       │   │   └── update-local-account-intervention-area
+    │   │   │       │   │       └── certification-authority-settings-update-local-account-intervention-area.spec.ts
+    │   │   │       │   └── update-general-information
+    │   │   │       │       └── certification-authority-settings-update-general-information.spec.ts
+    │   │   │       └── certifications
+    │   │   │           └── certification
+    │   │   │               ├── additional-info.spec.ts
+    │   │   │               ├── description.spec.ts
+    │   │   │               └── summary.spec.ts
     │   │   └── shared
     │   │       └── helpers
     │   │           ├── auth
@@ -1946,6 +1959,7 @@
     │   │           │       ├── aapCollaborateurToken.json
     │   │           │       ├── aapToken.json
     │   │           │       ├── adminToken.json
+    │   │           │       ├── certificateurRegistryManagerToken.json
     │   │           │       └── certificateurToken.json
     │   │           ├── common-handlers
     │   │           │   ├── aap
@@ -2263,8 +2277,11 @@
     │   │   │   │   ├── getCandidateById.ts
     │   │   │   │   ├── getCandidateByKeycloakId.ts
     │   │   │   │   ├── getCandidateByKeycloakIdAndCreateCandidacyIfNoActiveOneExists.ts
+    │   │   │   │   ├── getCivilInformationCompletedByCandidateId.ts
+    │   │   │   │   ├── getContactInformationCompletedByCandidateId.ts
     │   │   │   │   ├── getHighestDegreeById.ts
     │   │   │   │   ├── getNiveauDeFormationLePlusEleve.ts
+    │   │   │   │   ├── getTypologyAndCollectiveAgreementCompletedByCandidateId.ts
     │   │   │   │   ├── updateAllCandidaciesDerniereDateActiviteByCandidateId.ts
     │   │   │   │   ├── updateCandidate.ts
     │   │   │   │   ├── updateCandidateContactDetails.ts
@@ -2317,6 +2334,7 @@
     │   │   │       ├── getCertificationRegistryManagerByAccountId.ts
     │   │   │       ├── getCertificationRegistryManagerByStructureId.ts
     │   │   │       ├── getCertificationRelationsByCertificationAuthorityLocalAccountIds.ts
+    │   │   │       ├── getCertificationsAndParcoursByCertificationAuthorityId.ts
     │   │   │       ├── getCertificationsByCertificationAuthorityId.ts
     │   │   │       ├── getCertificationsByCertificationStructureId.ts
     │   │   │       ├── getDepartmentRelationsByCertificationAuthorityLocalAccountIds.ts
@@ -2683,6 +2701,7 @@
     │   │   │   │   ├── getCertificationCompetenceById.ts
     │   │   │   │   ├── getCertificationCompetencesByBlocId.ts
     │   │   │   │   ├── getCertificationPrerequisitesByCertificationId.ts
+    │   │   │   │   ├── getCertificationWithReducedRequirementsById.ts
     │   │   │   │   ├── getCompetenceBlocById.ts
     │   │   │   │   ├── getCompetenceBlocsByCertificationId.ts
     │   │   │   │   ├── getConventionCollectiveById.ts
@@ -2715,8 +2734,10 @@
     │   │   │   │   ├── searchCertificationsV2ForRegistryManager.ts
     │   │   │   │   ├── sendCertificationToRegistryManager.ts
     │   │   │   │   ├── setCertificationsVisibleOrNotUsingStatusAndAvailabilityDate.ts
+    │   │   │   │   ├── updateCertificationAdditionalInfo.test.ts
     │   │   │   │   ├── updateCertificationAdditionalInfo.ts
     │   │   │   │   ├── updateCertificationCompetenceBloc.ts
+    │   │   │   │   ├── updateCertificationDescription.test.ts
     │   │   │   │   ├── updateCertificationDescription.ts
     │   │   │   │   ├── updateCertificationPrerequisites.ts
     │   │   │   │   ├── updateCertificationStructureAndCertificationAuthorities.ts
@@ -2724,6 +2745,7 @@
     │   │   │   │   ├── updateCertificationWithRncpFields.ts
     │   │   │   │   ├── updateCertificationWithRncpFieldsAndSubDomains.ts
     │   │   │   │   ├── updateCompetenceBlocsByCertificationId.ts
+    │   │   │   │   ├── validateCertification.test.ts
     │   │   │   │   └── validateCertification.ts
     │   │   │   ├── referencial.certification-lifecycle.test.ts
     │   │   │   ├── referential.graphql
@@ -4137,6 +4159,12 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260302154331_add_certification_authority_on_certification_on_parcours_certification_table
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260306134617_update_parcours_certification_drop_code_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260306135125_update_parcours_certification_table_remove_unique_constraint_on_uai_column
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260312104912_remove_profile_information_completed_from_candidate_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4532,7 +4560,13 @@
     │   │   │   │   ├── [candidateId]
     │   │   │   │   │   ├── (candidate)
     │   │   │   │   │   │   ├── first-connexion
-    │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── civil-informations
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── contact-informations
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   └── typology-and-collective-agreement
+    │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   ├── help
     │   │   │   │   │   │   │   ├── get-help-page-items.ts
     │   │   │   │   │   │   │   └── page.tsx
@@ -4975,6 +5009,7 @@
     │   │   ├── collection.bru
     │   │   └── environments
     │   │       ├── Local.bru
+    │   │       ├── Preprod.bru
     │   │       ├── Sandbox.bru
     │   │       └── Staging.bru
     │   ├── codegen.ts
@@ -5066,6 +5101,7 @@
     │       │   └── pageInfo.ts
     │       └── types.ts
     ├── reva-vae-collective
+    │   ├── .env.example
     │   ├── .eslintrc.json
     │   ├── .gitignore
     │   ├── .prettierignore
@@ -5136,6 +5172,7 @@
     │   │   │   │   │   │   │   │   │   │   │       └── tabs
     │   │   │   │   │   │   │   │   │   │   │           ├── JuryTab.tsx
     │   │   │   │   │   │   │   │   │   │   │           ├── MetierTab.tsx
+    │   │   │   │   │   │   │   │   │   │   │           ├── ParcoursTab.tsx
     │   │   │   │   │   │   │   │   │   │   │           └── PrerequisitesTab.tsx
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── _components
@@ -5524,6 +5561,7 @@
         │   │   │       │       │   ├── DocumentationTab.tsx
         │   │   │       │       │   ├── JuryTab.tsx
         │   │   │       │       │   ├── MetierTab.tsx
+        │   │   │       │       │   ├── ParcoursTab.tsx
         │   │   │       │       │   └── PrerequisitesTab.tsx
         │   │   │       │       └── useful-resources
         │   │   │       │           └── UserfulResources.tsx
@@ -5730,4 +5768,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1925 directories, 3807 files
+1937 directories, 3833 files

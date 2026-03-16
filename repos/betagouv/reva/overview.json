@@ -1,49 +1,43 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à faciliter la gestion de la Validation des Acquis de l'Expérience (VAE).",
+  "description": "REVA est un monorepo regroupant les API et applications France VAE, ainsi que ses composants d'infrastructure comme Keycloak, Metabase et Strapi. Il vise à gérer les processus de Validation des Acquis de l'Expérience (VAE).",
   "language": "TypeScript",
   "features": [
-    "Formulaires & Démarches",
     "Authentification & Accès",
-    "Administration & Backoffice",
-    "Gestion des organismes certificateurs",
-    "Intelligence Artificielle & NLP",
-    "Suivi & Traçabilité",
-    "Observabilité (Datadog, Metabase)"
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Notifications & Alertes",
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Fastify",
     "Next.js",
-    "React",
     "GraphQL",
     "Prisma",
     "Keycloak",
-    "Traefik",
+    "React",
     "PostgreSQL",
     "Outscale",
-    "Cypress",
-    "Playwright",
-    "Vitest",
+    "Traefik",
     "Datadog",
     "Metabase",
     "Brevo",
     "Strapi"
   ],
   "components": [
-    "React / Next.js",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Authentification (composant)",
-    "Reporting & BI",
-    "CMS (Strapi, Wagtail…)"
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "email-password",
-      "jwt",
       "session"
     ],
     "providers": [
@@ -55,8 +49,10 @@
     "Cypress",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-03-05T19:08:41+01:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-03-13T15:19:34+01:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -67,14 +63,13 @@
     "openIssues": null
   },
   "tags": [
-    "VAE",
-    "Validation des Acquis de l'Expérience",
-    "France VAE",
-    "Sécurité & Auth",
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "React & Next.js",
-    "Fastify",
+    "TypeScript",
+    "Déploiement & Hosting",
+    "Python",
     "Bases de données SQL",
-    "Monorepo"
+    "Sécurité & Auth"
   ]
 }
