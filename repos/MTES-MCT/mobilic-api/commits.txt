@@ -1,8 +1,32 @@
+2026-03-16T03:50:18+01:00 - f00e5c8 - Gaspard "Sarp" Lonchampt : Merge pull request #683 from MTES-MCT/prod
+2026-03-16T01:36:35+01:00 - 7ff90cb - Gaspard "Sarp" Lonchampt : Merge pull request #682 from MTES-MCT/hotfix/employee_validation_autoflush_crash
+2026-03-16T00:58:56+01:00 - a40167e - Gaspard Lonchampt : fix(regulations): disable employee_version during mission validation
+2026-03-12T22:15:50+01:00 - f101d8e - Gaspard "Sarp" Lonchampt : Merge pull request #681 from MTES-MCT/master
+2026-03-12T18:14:29+01:00 - d675cfd - Redwane Zafari : Merge pull request #679 from MTES-MCT/feat/register-vehicle-weight
+2026-03-12T12:56:36+01:00 - 9ed49c9 - Redwane : fix(control-bulletin): real_vehicle_weight can be a float value
+2026-03-11T15:43:15+01:00 - 9db6605 - Gaspard "Sarp" Lonchampt : Merge pull request #680 from MTES-MCT/chore/add-commitlint
+2026-03-11T15:35:15+01:00 - a75082b - Gaspard Lonchampt : chore(dx): add conventional-pre-commit hook for commit message linting
+2026-03-10T11:16:38+01:00 - 0329bb6 - Gaspard "Sarp" Lonchampt : Merge pull request #675 from MTES-MCT/feat/batch-invite-by-id
+2026-03-10T10:58:49+01:00 - 3b79459 - Gaspard Lonchampt : fix(employment): send invite email for ID-based batch invitations
+2026-03-10T10:38:36+01:00 - 752adfb - Gaspard "Sarp" Lonchampt : Merge pull request #665 from MTES-MCT/fix/employee-version-regulatory-alerts
+2026-03-09T18:01:26+01:00 - bbfa8e3 - Redwane Zafari : Merge pull request #674 from MTES-MCT/feat/skip-validation-email-clean
+2026-03-09T13:15:25+01:00 - 6c09cb5 - Redwane Zafari : Merge pull request #673 from MTES-MCT/feat/register-vehicle-weight
+2026-03-09T13:07:28+01:00 - 5cc6251 - Redwane : Refactor: clarify vehicle weight display logic in control bulletin
+2026-03-05T18:07:31+01:00 - c57a1e3 - Redwane : Print vehicle weight (PV OR PTAC OR "XX tonnes" if selected value for vehicleWeight is "Poids réel constaté") on BDC
 2026-03-05T14:49:15+01:00 - cf6c820 - Gaspard "Sarp" Lonchampt : Merge pull request #676 from MTES-MCT/fix/email_template_for_third_party_consent
 2026-03-05T14:43:50+01:00 - 82014b4 - Gaspard Lonchampt : fix(email): address review feedback on third party account creation template
+2026-03-04T17:16:51+01:00 - 310fb1f - Gaspard Lonchampt : test(employment): add batch invite tests for user IDs
+2026-03-04T17:16:34+01:00 - b4cff5f - Gaspard Lonchampt : feat(employment): accept user IDs in batch invite mutation
+2026-03-04T16:09:40+01:00 - e6caf9f - Gaspard Lonchampt : test(regulations): add inverse test and regulation_computations assertions
 2026-03-04T13:04:04+01:00 - 6a1887b - Gaspard "Sarp" Lonchampt : Merge pull request #664 from MTES-MCT/fix/third_party_consent_email_and_user_status
+2026-03-02T14:52:14+01:00 - 395138a - Redwane : Simplify user signup for employer invites: if the user registers with an email different from the one provided by the employer, send an activation email; otherwise, auto-activate the account.
+2026-02-27T17:42:51+01:00 - 0688ca1 - Redwane : On "User" table, set has_activated_email and activation_email_token if invited user do not change email
+2026-02-27T15:45:21+01:00 - 9e93fee - Redwane : Do not send the activation email if the user registers with the same email set by the employer. If the email is different: - Update the email in the Employment table - Update the employment_id for the new email in the Email table - Remove the incorrect email from the Email table
+2026-02-26T22:09:23+01:00 - c5d5cb4 - Redwane : add vehicle weight to controllers, domain and data access files
+2026-02-26T18:25:36+01:00 - 8df4c9e - Redwane : Add vehicle weight to BDC
 2026-02-26T16:27:35+01:00 - d124fc1 - Redwane : Revert "Merge branch 'feat/register-vehicle-weight' into master"
 2026-02-26T15:58:15+01:00 - 3d99e05 - Redwane Zafari : Merge branch 'feat/register-vehicle-weight' into master
+2026-02-25T20:26:33+01:00 - 210010c - Gaspard "Sarp" Lonchampt : Merge pull request #669 from MTES-MCT/master
 2026-02-25T17:46:49+01:00 - d2cd7bc - Gaspard "Sarp" Lonchampt : Merge pull request #668 from MTES-MCT/fix/brevo-acquisition-pipeline-name
 2026-02-25T17:28:59+01:00 - e0d3525 - Gaspard Lonchampt : fix(brevo): rename default acquisition pipeline from "Acquisition V2" to "Acquisition"
 2026-02-25T16:28:15+01:00 - 7a16e64 - donia benharara : Merge branch 'master' of github.com:MTES-MCT/mobilic-api
@@ -25,11 +49,13 @@
 2026-02-20T16:08:30+01:00 - 56c8378 - Redwane : Add vehicle weight info to control_bulletin pdf
 2026-02-20T11:59:56+01:00 - 6e282c7 - donia benharara : add tests for no activity control
 2026-02-19T17:15:45+01:00 - a58994c - Redwane : Add vehicle weight field to control bulletin
+2026-02-19T16:05:34+01:00 - ba8ce4a - Gaspard Lonchampt : fix(regulations): use employee_version when computing employee regulatory alerts
 2026-02-18T17:30:31+01:00 - 3573133 - Gaspard Lonchampt : feat(email): rewrite third party account creation email template
 2026-02-18T17:29:20+01:00 - e3a2e1c - Gaspard Lonchampt : fix(user): activate third party users after consent validation
 2026-02-18T15:39:09+01:00 - 74af1b7 - donia benharara : add index to employment table
 2026-02-17T13:30:18+01:00 - 94b1f9f - Gaspard Lonchampt : fix(auth): hide idp_id from error message and add tests
 2026-02-16T18:41:44+01:00 - b824a33 - Gaspard Lonchampt : feat(auth): restrict controller login to allowed ProConnect identity providers
+2026-02-12T21:17:06+01:00 - 769ff19 - Gaspard "Sarp" Lonchampt : Merge pull request #661 from MTES-MCT/master
 2026-02-12T12:45:53+01:00 - 15f11b3 - Gaspard "Sarp" Lonchampt : Merge pull request #654 from MTES-MCT/feat/brevo_activation_new_worfklow
 2026-02-11T17:08:17+01:00 - f244b04 - tristan-gueguen : feat(new-bdc): first page
 2026-02-11T17:08:17+01:00 - d86d5cd - tristan-gueguen : feat(new-bdc): style first page
@@ -64,21 +90,25 @@
 2026-01-27T17:27:52+01:00 - abda462 - Gaspard Lonchampt : feat(brevo): implement activation pipeline stages based on email status
 2026-01-27T17:27:41+01:00 - 5111d9b - Gaspard Lonchampt : refactor(email): change first activity email from J+10 to J+7
 2026-01-27T17:27:31+01:00 - 4b282e5 - Gaspard Lonchampt : feat(email): add J+14 reminder email for companies without activity
+2026-01-20T17:43:07+01:00 - bfb5933 - Gaspard "Sarp" Lonchampt : Merge pull request #652 from MTES-MCT/master
 2026-01-19T10:59:49+01:00 - acb084b - Gaspard "Sarp" Lonchampt : Merge pull request #647 from MTES-MCT/fix/user_schedulate_anonymization_date
 2026-01-19T10:58:59+01:00 - 940bd3b - Gaspard "Sarp" Lonchampt : Merge pull request #641 from MTES-MCT/feat/brevo_update_all_deal_attributes
 2026-01-18T15:56:12+01:00 - f186ea1 - donia benharara : update greco export to use new api location's values
 2026-01-17T16:48:02+01:00 - 3dce730 - donia benharara : remove unecessary lookback
 2026-01-17T16:12:17+01:00 - dd65a94 - donia benharara : fix alert night work and long break calculation
+2026-01-15T18:11:53+01:00 - 08a407d - Gaspard "Sarp" Lonchampt : Merge pull request #649 from MTES-MCT/master
 2026-01-13T18:38:51+01:00 - b061032 - tristan-gueguen : Merge pull request #646 from MTES-MCT/fix/certificate-mattermost-message
 2026-01-13T18:37:41+01:00 - 1403e17 - tristan-gueguen : Merge pull request #645 from MTES-MCT/fix/add-links-to-reminder-invitations
 2026-01-13T18:37:09+01:00 - 9082ad5 - Tristan Gueguen : fix(mails): remove unused f-string
 2026-01-13T13:44:51+01:00 - 610c6c6 - Gaspard Lonchampt : fix(brevo): improve deal attributes comparison and counting
+2026-01-08T22:11:50+01:00 - cdc474c - Doniaab : Merge pull request #648 from MTES-MCT/master
 2026-01-08T11:01:39+01:00 - 3d550e3 - Gaspard Lonchampt : fix(anonymization): use future date in warning emails instead of past cutoff date
 2026-01-07T15:30:59+01:00 - 1493eca - Tristan Gueguen : fix(certificate): fixed query when sending results to mattermost
 2026-01-07T14:07:04+01:00 - 8e69d3c - Tristan Gueguen : fix(bizdev,email): add install links to reminder email
 2026-01-06T09:47:56+01:00 - 9136f3e - Tristan Gueguen : fix(exports,controls): fixed merging excel error
 2026-01-05T16:03:08+01:00 - 92a2f27 - tristan-gueguen : Merge pull request #643 from MTES-MCT/fix/controllers-export-excel
 2026-01-05T16:02:36+01:00 - e1a8e55 - tristan-gueguen : Merge pull request #642 from MTES-MCT/fix/invitation-email-wording-and-link
+2025-12-22T21:17:28+01:00 - 21bf5a7 - tristan-gueguen : Merge pull request #644 from MTES-MCT/master
 2025-12-22T12:17:40+01:00 - 670b59f - Tristan Gueguen : fix(controllers,exports): fixed import function excel export
 2025-12-22T12:04:02+01:00 - 0c832ae - Tristan Gueguen : fix(emails,invitations): wording + add login button in invitation email
 2025-12-18T14:34:13+01:00 - 0276116 - tristan-gueguen : Merge pull request #640 from MTES-MCT/fix/missions-alerts-refresh
