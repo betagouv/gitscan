@@ -125,7 +125,7 @@ CURRENT_DATE=date
 echo "Context size: ${#CONTEXT} chars" >&2
 
 # Prepare the prompt
-PROMPT="Tu es un analyste logiciel spécialisé dans la rédaction de changelogs clairs et accessibles.
+PROMPT="Tu es un analyste logiciel spécialisé dans la rédaction de changelogs clairs, concis et accessibles.
 
 Analyse les commits récents (derniers $DAYS jours) du dépôt $ORG_NAME/$REPO_NAME et génère un changelog complet en français.
 
@@ -133,13 +133,13 @@ Date actuelle: $CURRENT_DATE
 
 Utilise la structure suivante en markdown :
 
-## Changelog : $REPO_NAME ($DAYS derniers jours)
+## Changelog : $REPO_NAME ($DAYS derniers jours, au $CURRENT_DATE)
 
 ### Résumé
-Un paragraphe d'introduction non technique résumant les évolutions récentes du projet. Ce résumé doit être compréhensible par une personne non technique (product owner, décideur, utilisateur final).
+Un paragraphe d'introduction non technique résumant les évolutions récentes notables du projet. Ce résumé doit être compréhensible par une personne non technique (product owner, décideur, utilisateur final) mais va à l'essentiel.
 
 ### Évolutions fonctionnelles
-Les changements visibles pour les utilisateurs : nouvelles fonctionnalités, améliorations de l'interface, corrections de bugs impactant l'expérience utilisateur.
+Les changements visibles pour les utilisateurs : nouvelles fonctionnalités, améliorations, corrections impactant l'expérience utilisateur.
 
 ### Évolutions techniques
 Les changements d'architecture, refactoring, optimisations de performance, mises à jour d'infrastructure, CI/CD, etc.
@@ -152,8 +152,8 @@ Instructions :
 - Utilise des puces (tirets) pour lister les changements
 - Ignore les mises à jour de dépendances de routine (bumps dependabot/renovate)
 - Mentionne les numéros de PR/issue quand disponibles avec le lien github (ex: [#1234](https://github.com/$ORG_NAME/$REPO_NAME/issues/1234))
-- Regroupe les changements similaires (ex: plusieurs bumps dependabot)
-- Si une section est vide, n'affiche pas la section
+- Regroupe les changements similaires
+- Ne génère pas de contenu ou structure vide ou inutile
 - Ne génère que le markdown, sans blocs de code englobants
 - Sois concis mais informatif
 
@@ -199,7 +199,7 @@ if [ "$HTTP_CODE" != "200" ]; then
 fi
 
 # Extract the generated content from the response
-CHANGELOG=$(echo "$RESPONSE_BODY" | jq -r '.choices[0].message.content')
+CHANGELOG=$(echo "$RESPONSE_BODY" | jq -r '.choices[0].message.content' | head -n 100)
 
 if [ -z "$CHANGELOG" ] || [ "$CHANGELOG" = "null" ]; then
     echo "Error: Failed to extract generated content from response" >&2

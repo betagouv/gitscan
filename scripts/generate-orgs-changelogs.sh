@@ -139,7 +139,7 @@ Génère une synthèse globale en français avec la structure markdown suivante 
 # Synthèse d'activité : $ORG_NAME (derniers $DAYS jours)
 
 ## Résumé de l'activité
-Un ou deux paragraphes résumant l'activité récente de l'organisation de manière accessible pour des décideurs, product owners ou parties prenantes non techniques. Mets en avant les évolutions produit, les nouveaux usages, et l'impact pour les utilisateurs finaux. Cite les dépôts avec [nom du repo](/repos/$ORG_NAME/[repo]).
+Un ou deux paragraphes résumant l'activité récente de l'organisation de manière accessible pour des décideurs, product owners ou parties prenantes non techniques en allant a l'essentielle. Mets en avant les évolutions produit, les nouveaux usages, et l'impact pour les utilisateurs finaux et reste concis. Cite les dépôts avec [nom du repo](/repos/$ORG_NAME/[repo]).
 
 ## Sécurité
 Les changements liés à la sécurité : corrections de vulnérabilités, améliorations de l'authentification, etc. Cite les dépôts avec [nom du repo](/repos/$ORG_NAME/[repo]).  Omets cette section s'il n'y a rien à signaler.
