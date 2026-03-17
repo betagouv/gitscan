@@ -67,7 +67,9 @@
 │   │   │   │   └── ressourceDemandesAide.ts
 │   │   │   ├── msc.ts
 │   │   │   ├── nis2
-│   │   │   │   └── ressourceExigencesNis2.ts
+│   │   │   │   ├── ressourceExigencesNis2.ts
+│   │   │   │   ├── ressourceExigencesNis2Csv.ts
+│   │   │   │   └── strategieExportCsvUneLigneParExigence.ts
 │   │   │   ├── oidc
 │   │   │   │   ├── adaptateurOIDC.ts
 │   │   │   │   ├── ressourceApresAuthentificationOIDC.ts
@@ -218,7 +220,9 @@
 │   │   │   │   └── ressourceDemandesAide.spec.ts
 │   │   │   ├── msc.spec.ts
 │   │   │   ├── nis2
-│   │   │   │   └── ressourceExigencesNis2.spec.ts
+│   │   │   │   ├── ressourceExigencesNis2.spec.ts
+│   │   │   │   ├── ressourceExigencesNis2Csv.spec.ts
+│   │   │   │   └── strategieExportCsvUneLigneParExigence.spec.ts
 │   │   │   ├── objetsPretsALEmploi.ts
 │   │   │   ├── oidc
 │   │   │   │   ├── ressourceApresAuthentificationOIDC.spec.ts
@@ -475,14 +479,15 @@
 │   │   │   │   └── encartHomologation.tablette.png
 │   │   │   ├── erreur.svg
 │   │   │   ├── floriane-bizdev.jpg
+│   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-remplissant-ecran-login.svg
 │   │   │   ├── icone-*.svg  (32 files)
 │   │   │   ├── icone_loupe.svg
-│   │   │   ├── illustration-*.svg  (14 files)
+│   │   │   ├── illustration-*.svg  (13 files)
 │   │   │   ├── illustration-faq-NIS2.avif
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
-│   │   │   │   │   └── ads.png
+│   │   │   │   │   └── active-directory-security.png
 │   │   │   │   ├── assistance-reponse-incidents
 │   │   │   │   │   └── assistance-reponse-incidents.png
 │   │   │   │   ├── avis-bulletin
@@ -540,7 +545,7 @@
 │   │   │   │   ├── pack-parcours-secu
 │   │   │   │   │   └── pack-parcours-secu.png
 │   │   │   │   ├── panorama
-│   │   │   │   │   └── panorama.png
+│   │   │   │   │   └── panorama.avif
 │   │   │   │   ├── pix
 │   │   │   │   │   └── pix.png
 │   │   │   │   ├── prestas-ebios
@@ -810,26 +815,43 @@
 │   │   │   │   └── NavigationTertiaire.svelte
 │   │   │   ├── nis2
 │   │   │   │   ├── Accordeon.svelte
+│   │   │   │   ├── Avertissements.svelte
 │   │   │   │   ├── DocumentationNis2.svelte
 │   │   │   │   ├── ExigencesNis2.svelte
 │   │   │   │   ├── Marelle.svelte
 │   │   │   │   ├── PageNis2.svelte
-│   │   │   │   ├── PanneauComparaison.svelte
 │   │   │   │   ├── Presentation.svelte
 │   │   │   │   ├── Solutions.svelte
 │   │   │   │   ├── exigence.type.ts
+│   │   │   │   ├── panneau
+│   │   │   │   │   ├── BoutonReinitialisation.svelte
+│   │   │   │   │   ├── Panneau.svelte
+│   │   │   │   │   ├── PanneauComparaison.svelte
+│   │   │   │   │   └── PanneauFiltres.svelte
 │   │   │   │   ├── stores
+│   │   │   │   │   ├── etatPanneau.store.ts
 │   │   │   │   │   ├── exigences.store.ts
 │   │   │   │   │   ├── exigencesFiltrees.store.ts
-│   │   │   │   │   └── rechercheParCorrespondance.ts
+│   │   │   │   │   ├── rechercheParCorrespondance.ts
+│   │   │   │   │   ├── rechercheParEntiteNis2.ts
+│   │   │   │   │   ├── rechercheParFonctionCyFun23.ts
+│   │   │   │   │   ├── rechercheParNiveauAssuranceCyFun23.ts
+│   │   │   │   │   ├── rechercheParNormeISO.ts
+│   │   │   │   │   ├── rechercheParObjectifNis2.ts
+│   │   │   │   │   └── rechercheParThematiqueNis2.ts
 │   │   │   │   └── tableaux
+│   │   │   │       ├── AucunResultat.svelte
+│   │   │   │       ├── CelluleExigenceAE.svelte
+│   │   │   │       ├── CelluleExigenceCyFun23.svelte
 │   │   │   │       ├── CelluleExigenceISO.svelte
 │   │   │   │       ├── CelluleExigenceNis2.svelte
 │   │   │   │       ├── CelluleExigencesISOCibles.svelte
-│   │   │   │       ├── CelluleExigencesNIS2Cibles.svelte
 │   │   │   │       ├── CelluleNiveauCorrespondance.svelte
+│   │   │   │       ├── CelluleSimpleExigencesCibles.svelte
+│   │   │   │       ├── ContenuExigenceFormate.svelte
 │   │   │   │       ├── TableauCorrespondancesExigences.svelte
-│   │   │   │       └── TableauExigencesNIS2Simple.svelte
+│   │   │   │       ├── TableauExigencesSimple.svelte
+│   │   │   │       └── configuration.type.ts
 │   │   │   ├── niveaux-maturite
 │   │   │   │   ├── IllustrationNiveauMaturite.svelte
 │   │   │   │   ├── NiveauxMaturite.donnees.ts
@@ -966,9 +988,16 @@
 │   │   │   │       └── rechercheParTypeOrgnanisation.store.spec.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── exigence.spec.ts
+│   │   │   │   ├── objetsPretsALEmploi.ts
 │   │   │   │   └── stores
 │   │   │   │       ├── exigencesFiltrees.store.spec.ts
-│   │   │   │       └── rechercheParCorrespondance.store.spec.ts
+│   │   │   │       ├── rechercheParCorrespondance.store.spec.ts
+│   │   │   │       ├── rechercheParEntiteNis2.store.spec.ts
+│   │   │   │       ├── rechercheParFonctionCyFun23.store.spec.ts
+│   │   │   │       ├── rechercheParNiveauAssuranceCyFun23.store.spec.ts
+│   │   │   │       ├── rechercheParNormeISO.store.spec.ts
+│   │   │   │       ├── rechercheParObjectifNis2.store.spec.ts
+│   │   │   │       └── rechercheParThematiqueNis2.store.spec.ts
 │   │   │   ├── stores
 │   │   │   │   └── profil.store.spec.ts
 │   │   │   └── test-maturite
@@ -1053,4 +1082,4 @@
     │   ├── recuperateurDAdressesDesGuides.spec.ts
     │   └── recuperateurGuide.spec.ts
     └── tsconfig.json
-167 directories, 932 files
+168 directories, 959 files
