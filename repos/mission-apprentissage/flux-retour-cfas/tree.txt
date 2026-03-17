@@ -1,0 +1,1985 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-tdb
+│   ├── scripts
+│   │   ├── build-images.sh
+│   │   ├── buildkitd.toml
+│   │   ├── check-dependencies.sh
+│   │   ├── deploy-app.sh
+│   │   ├── deploy-log-decrypt.sh
+│   │   ├── deploy-log-encrypt.sh
+│   │   ├── edit-vault.sh
+│   │   ├── get-vault-password-client.sh
+│   │   ├── get-version.sh
+│   │   ├── merge-vault.sh
+│   │   ├── release-app.sh
+│   │   ├── release-interactive.sh
+│   │   ├── run-playbook.sh
+│   │   ├── seed-apply.sh
+│   │   ├── seed-update.sh
+│   │   ├── sentry-deploy.sh
+│   │   ├── sentry-release.sh
+│   │   └── setup-local-env.sh
+│   └── zsh-completion
+├── .dockerignore
+├── .editorconfig
+├── .eslintrc.cjs
+├── .gitattributes
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Acquisition_Territoire
+│   │   ├── bug.md
+│   │   ├── carte-par-d-faut.md
+│   │   ├── creation_user_tdb
+│   │   └── feedback.md
+│   ├── pr-title-checker-config.json
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── _build.yml
+│       ├── _deploy.yml
+│       ├── ci.yml
+│       ├── codeql.yml
+│       ├── cron.mjs
+│       ├── cron.yml
+│       ├── merge_queue.yml
+│       ├── pr-title-check.yml
+│       ├── pull_request.yml
+│       ├── release.yml
+│       └── sync-preprod.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   ├── commitlint.config.js
+│   ├── post-checkout
+│   ├── post-commit
+│   ├── post-merge
+│   ├── pre-commit
+│   ├── pre-push
+│   └── preventSensibleFilesCommit.sh
+├── .infra
+│   ├── .env_server
+│   ├── .env_ui
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── preview.yml
+│   │   ├── preview_cleanup.yml
+│   │   ├── sync-preprod.yml
+│   │   └── tasks
+│   │       ├── files_copy.yml
+│   │       └── preview_pr.yml
+│   ├── docker-compose.preview-system.yml
+│   ├── docker-compose.preview.yml
+│   ├── docker-compose.production.yml
+│   ├── docker-compose.recette.yml
+│   ├── env.ini
+│   ├── files
+│   │   ├── configs
+│   │   │   ├── mailpit
+│   │   │   │   ├── .gitkeep
+│   │   │   │   └── auth
+│   │   │   ├── metabase
+│   │   │   │   └── setup-metabase.sh
+│   │   │   ├── mongodb
+│   │   │   │   └── seed.gpg
+│   │   │   └── reverse_proxy
+│   │   │       ├── locations
+│   │   │       │   ├── 10_api.conf.template
+│   │   │       │   ├── 70_smtp.conf.template
+│   │   │       │   ├── 80_metabase.conf.template
+│   │   │       │   └── 90_location_ui.conf.template
+│   │   │       ├── owasp-crs
+│   │   │       │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │       └── system
+│   │   │           ├── 503.html
+│   │   │           ├── 503.svg
+│   │   │           ├── 5xx.html
+│   │   │           ├── 5xx.svg
+│   │   │           ├── favicon.svg
+│   │   │           └── marianne.svg
+│   │   ├── data
+│   │   │   ├── server
+│   │   │   │   └── .gitkeep
+│   │   │   └── smtp
+│   │   │       └── .gitkeep
+│   │   └── scripts
+│   │       ├── cli.sh
+│   │       ├── migrations-status.sh
+│   │       ├── migrations-up.sh
+│   │       ├── run-dummy-outside-job.sh
+│   │       ├── seed.sh
+│   │       ├── sync-preprod.sh
+│   │       └── trigger-indexes-creation.sh
+│   └── vault
+│       └── vault.yml
+├── .node-version
+├── .prettierignore
+├── .talismanrc
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── terminals.json
+├── .yarn
+│   ├── plugins
+│   │   └── @yarnpkg
+│   │       ├── plugin-version.cjs
+│   │       └── plugin-workspace-tools.cjs
+│   └── releases
+│       └── yarn-3.6.1.cjs
+├── .yarnrc.yml
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── docker-bake.json
+├── docker-compose.yml
+├── docs
+│   ├── CLI-JOBS.md
+│   ├── DATASOURCES.md
+│   ├── Vault.md
+│   ├── deploy.md
+│   ├── developpement
+│   │   └── developpement.md
+│   ├── infrastructure
+│   │   ├── architecture.md
+│   │   ├── manage.md
+│   │   └── preview.md
+│   ├── infrastructure.md
+│   └── securite.md
+├── knip.json
+├── package.json
+├── release.config.js
+├── server
+│   ├── .env.test
+│   ├── .eslintrc.cjs
+│   ├── outputs
+│   │   └── .gitkeep
+│   ├── package.json
+│   ├── scripts
+│   │   ├── commands
+│   │   │   └── generate-import-effectif.ts
+│   │   ├── extract-arborescence-rome.ts
+│   │   ├── index.ts
+│   │   └── main.ts
+│   ├── sentry-deploy-server.sh
+│   ├── sentry-release-server.sh
+│   ├── src
+│   │   ├── commands.ts
+│   │   ├── common
+│   │   │   ├── actions
+│   │   │   │   ├── account.actions.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   └── mission-locale
+│   │   │   │   │       └── mission-locale.admin.actions.ts
+│   │   │   │   ├── affelnet.actions.ts
+│   │   │   │   ├── brevo
+│   │   │   │   │   └── brevo.actions.ts
+│   │   │   │   ├── campagnes
+│   │   │   │   │   └── campagnes.actions.ts
+│   │   │   │   ├── cfa
+│   │   │   │   │   └── cfa-daily-recap.actions.ts
+│   │   │   │   ├── effectif.legacy_schema.ts
+│   │   │   │   ├── effectifs
+│   │   │   │   │   ├── __obsolete__
+│   │   │   │   │   ├── effectifs.actions.ts
+│   │   │   │   │   ├── export.ts
+│   │   │   │   │   ├── indicator.ts
+│   │   │   │   │   └── indicators.ts
+│   │   │   │   ├── effectifs.actions.ts
+│   │   │   │   ├── effectifs.duplicates.actions.ts
+│   │   │   │   ├── effectifs.statut.actions.ts
+│   │   │   │   ├── emails.actions.ts
+│   │   │   │   ├── engine
+│   │   │   │   │   ├── engine.actions.test.ts
+│   │   │   │   │   └── engine.actions.ts
+│   │   │   │   ├── erp.actions.ts
+│   │   │   │   ├── formations.actions-struct.d.ts
+│   │   │   │   ├── formations.actions.ts
+│   │   │   │   ├── franceTravail
+│   │   │   │   │   └── franceTravailEffectif.actions.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── filters.ts
+│   │   │   │   │   ├── permissions-organisme.ts
+│   │   │   │   │   └── permissions.ts
+│   │   │   │   ├── indicateurs
+│   │   │   │   │   ├── effectifs
+│   │   │   │   │   │   ├── effectifs-filters.test.ts
+│   │   │   │   │   │   └── effectifs-filters.ts
+│   │   │   │   │   ├── indicateurs-national.actions.ts
+│   │   │   │   │   ├── indicateurs-with-deca.actions.ts
+│   │   │   │   │   ├── indicateurs.actions.ts
+│   │   │   │   │   ├── organismes
+│   │   │   │   │   │   ├── organismes-filters.test.ts
+│   │   │   │   │   │   └── organismes-filters.ts
+│   │   │   │   │   └── transmissions
+│   │   │   │   │       └── transmission.action.ts
+│   │   │   │   ├── infoSiret.actions-struct.d.ts
+│   │   │   │   ├── infoSiret.actions.ts
+│   │   │   │   ├── lba
+│   │   │   │   │   └── lba.actions.ts
+│   │   │   │   ├── maintenances.actions.ts
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   ├── mission-locale-daily-recap.actions.ts
+│   │   │   │   │   ├── mission-locale-logs.actions.ts
+│   │   │   │   │   ├── mission-locale-stats.actions.ts
+│   │   │   │   │   ├── mission-locale-stats.helpers.ts
+│   │   │   │   │   ├── mission-locale-weekly-recap.actions.ts
+│   │   │   │   │   └── mission-locale.actions.ts
+│   │   │   │   ├── opcos
+│   │   │   │   │   └── opcos.actions.ts
+│   │   │   │   ├── organisations.actions.ts
+│   │   │   │   ├── organismes
+│   │   │   │   │   ├── mission-locale.actions.ts
+│   │   │   │   │   ├── organismes.actions.ts
+│   │   │   │   │   ├── organismes.admin.actions.ts
+│   │   │   │   │   ├── organismes.duplicates.actions.ts
+│   │   │   │   │   └── organismes.formations.actions.ts
+│   │   │   │   ├── personV2
+│   │   │   │   │   └── personV2.actions.ts
+│   │   │   │   ├── reseaux
+│   │   │   │   │   └── reseaux.actions.ts
+│   │   │   │   ├── rncp.actions.ts
+│   │   │   │   ├── rome
+│   │   │   │   │   └── rome.actions.ts
+│   │   │   │   ├── sessions.actions.ts
+│   │   │   │   ├── telechargementListeNomLogs.actions.ts
+│   │   │   │   └── users.actions.ts
+│   │   │   ├── apis
+│   │   │   │   ├── ApiEntreprise.ts
+│   │   │   │   ├── apiAlternance
+│   │   │   │   │   ├── apiAlternance.ts
+│   │   │   │   │   └── client.ts
+│   │   │   │   ├── apiReferentielMna.ts
+│   │   │   │   ├── bal
+│   │   │   │   │   └── bal.api.ts
+│   │   │   │   ├── client.ts
+│   │   │   │   └── lba
+│   │   │   │       └── lba.api.ts
+│   │   │   ├── constants
+│   │   │   │   ├── cookieName.ts
+│   │   │   │   └── effectif.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── model
+│   │   │   │   ├── collections.ts
+│   │   │   │   ├── effectifs.model
+│   │   │   │   │   └── effectifs.model.ts
+│   │   │   │   ├── effectifsQueue.model.ts
+│   │   │   │   ├── indexes
+│   │   │   │   │   ├── createCollectionIndexes.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── internal
+│   │   │   │   │   └── AuthContext.ts
+│   │   │   │   └── maintenanceMessages.model.ts
+│   │   │   ├── mongodb
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── validationSchema.test.ts.snap
+│   │   │   │   └── validationSchema.test.ts
+│   │   │   ├── mongodb.ts
+│   │   │   ├── services
+│   │   │   │   ├── brevo
+│   │   │   │   │   ├── brevo.ts
+│   │   │   │   │   └── whatsapp
+│   │   │   │   │       ├── brevoApi.ts
+│   │   │   │   │       ├── database.ts
+│   │   │   │   │       ├── eligibility.ts
+│   │   │   │   │       ├── handlers.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── messages.ts
+│   │   │   │   │       ├── notifications.ts
+│   │   │   │   │       ├── phone.ts
+│   │   │   │   │       └── types.ts
+│   │   │   │   ├── mailer
+│   │   │   │   │   └── mailer.ts
+│   │   │   │   └── sentry
+│   │   │   │       └── sentry.ts
+│   │   │   ├── utils
+│   │   │   │   ├── adresseUtils.ts
+│   │   │   │   ├── apiUtils.ts
+│   │   │   │   ├── asyncUtils.ts
+│   │   │   │   ├── cacheUtils.ts
+│   │   │   │   ├── cryptoUtils.ts
+│   │   │   │   ├── dateUtils.ts
+│   │   │   │   ├── emailsUtils.ts
+│   │   │   │   ├── errorUtils.ts
+│   │   │   │   ├── esmUtils.ts
+│   │   │   │   ├── fileUtils.ts
+│   │   │   │   ├── getStaticFilePath.ts
+│   │   │   │   ├── httpUtils.ts
+│   │   │   │   ├── jwtUtils.ts
+│   │   │   │   ├── mergeIgnoringNullPreferringNewArray.ts
+│   │   │   │   ├── miscUtils.ts
+│   │   │   │   ├── mongoUtils.ts
+│   │   │   │   ├── passwordUtils.ts
+│   │   │   │   ├── regexUtils.ts
+│   │   │   │   ├── stringUtils.ts
+│   │   │   │   ├── stripNullProperties.ts
+│   │   │   │   ├── timeUtils.ts
+│   │   │   │   ├── usersFiltersUtils.ts
+│   │   │   │   ├── validationUtils.ts
+│   │   │   │   └── xlsxUtils.ts
+│   │   │   └── validation
+│   │   │       ├── ApiERPSchema.ts
+│   │   │       ├── configurationERPSchema.ts
+│   │   │       ├── contratsDossierApprenantSchemaV3.ts
+│   │   │       ├── effectifsFilterSchema.ts
+│   │   │       ├── objectIdSchema.ts
+│   │   │       ├── organismesFilterSchema.ts
+│   │   │       ├── paginationSchema.ts
+│   │   │       ├── registrationSchema.ts
+│   │   │       ├── searchSchema.ts
+│   │   │       ├── userProfileSchema.ts
+│   │   │       ├── userSchema.ts
+│   │   │       └── usersFiltersSchema.ts
+│   │   ├── config.ts
+│   │   ├── db
+│   │   │   └── migrations
+│   │   │       ├── 20241205165023-formation-certification.ts
+│   │   │       ├── 20241211154816-deduplication-effectifs-auto.ts
+│   │   │       ├── 20241211160015-effectifs-duree_formation_relle.ts
+│   │   │       ├── 20241213131919-ajout-organisme-id-sur-organisation.ts
+│   │   │       ├── 20250103092228-suppression-des-vielles-valeurs-dans.ts
+│   │   │       ├── 20250109133022-update-rncp-cfd-effectif.ts
+│   │   │       ├── 20250114192232-migration-mission-locale.ts
+│   │   │       ├── 20250115130637-migration-mission-locale-deca.ts
+│   │   │       ├── 20250116165545-ajout-responsable-reseaux.ts
+│   │   │       ├── 20250120140331-update-computed-type.ts
+│   │   │       ├── 20250122130004-remove-effectif-duplicat.ts
+│   │   │       ├── 20250123090419-format-adresse-naissance.ts
+│   │   │       ├── 20250123125404-unused-fields.ts
+│   │   │       ├── 20250124123720-clean-formation-catalogue.ts
+│   │   │       ├── 20250127123931-organisme-relations.ts
+│   │   │       ├── 20250127142056-mission-locale-commune.ts
+│   │   │       ├── 20250129084803-organisme-contacts.ts
+│   │   │       ├── 20250129084803-organisme-from-api.ts
+│   │   │       ├── 20250129141930-effectifs-transmitted-at.ts
+│   │   │       ├── 20250131160038-transmistted-at-deca.ts
+│   │   │       ├── 20250201124924-remove-user-coll.ts
+│   │   │       ├── 20250201131136-clean-organisme-model.ts
+│   │   │       ├── 20250207140624-formation-collection.ts
+│   │   │       ├── 20250218150753-creation-organisation-ml.ts
+│   │   │       ├── 20250220121038-hydrate-organisme-opcos.ts
+│   │   │       ├── 20250220130054-reset-v2.ts
+│   │   │       ├── 20250221153836-organisme-related-formations.ts
+│   │   │       ├── 20250227154518-telechargement-liste-nom-logs-move-effectifs-to-element-list.ts
+│   │   │       ├── 20250304133346-add-region.ts
+│   │   │       ├── 20250305140803-change-key-name-reseau.ts
+│   │   │       ├── 20250306115746-ingestion-v2.ts
+│   │   │       ├── 20250312165841-mise-a-jour-effectif-ml.ts
+│   │   │       ├── 20250324191608-hydrate-new-mission-locale.ts
+│   │   │       ├── 20250327172314-ajout-du-token-pour-les-eff-ml.ts
+│   │   │       ├── 20250403132324-fix-abandon-ml.ts
+│   │   │       ├── 20250411083053-effectif-statut.ts
+│   │   │       ├── 20250425071224-ajout-des-adresses-sur-les-ml.ts
+│   │   │       ├── 20250427175855-add-effectif-ml-log.ts
+│   │   │       ├── 20250430104645-ml-effectif-change-situation.ts
+│   │   │       ├── 20250516131104-ajout-des-template-brevo.ts
+│   │   │       ├── 20250519120811-ajout-contact-organisation-mission-locale.ts
+│   │   │       ├── 20250603092601-ajout-du-current-status.ts
+│   │   │       ├── 20250604123144-ajout-date-transmission-eff-queue.ts
+│   │   │       ├── 20250604144858-create-all-transmissions-log.ts
+│   │   │       ├── 20250612144253-suppresion-ml-id-template.ts
+│   │   │       ├── 20250620135231-ajout-des-armls.ts
+│   │   │       ├── 20250624083706-join-ml-arml.ts
+│   │   │       ├── 20250625083933-create-ml-stats.ts
+│   │   │       ├── 20250630142000-add-activation-date-to-ml.ts
+│   │   │       ├── 20250702082149-remove-invalided.ts
+│   │   │       ├── 20250702154744-restrict-register-arml.ts
+│   │   │       ├── 20250710080830-sync-voeux-affelnet.ts
+│   │   │       ├── 20250711121124-maj-stat-ml.ts
+│   │   │       ├── 20250715130938-fix-ml-cp.ts
+│   │   │       ├── 20250715135822-join-ml-arml.ts
+│   │   │       ├── 20250716144740-maj-effectif-voeux.ts
+│   │   │       ├── 20250717122238-update-organisation-organisme.ts
+│   │   │       ├── 20250718071607-recompute-ml-stats.ts
+│   │   │       ├── 20250722090948-ajout-date-rupture.ts
+│   │   │       ├── 20250724095542-update-current-status.ts
+│   │   │       ├── 20250827124247-fix-display-cfa-not-activated-ml.ts
+│   │   │       ├── 20250829122651-soft-delete-doublon-effectif-ml.ts
+│   │   │       ├── 20250901123215-mise-a-jour-des-status-mission-locale.ts
+│   │   │       ├── 20250912100151-update-ml-eff-snapshot.ts
+│   │   │       ├── 20250915145019-suppressions-des-n-uplet-des-organisation-organisme.ts
+│   │   │       ├── 20250924160000-update-effectif-current-status.ts
+│   │   │       ├── 20251003150807-add-read-by-to-mission-locale-effectif-log.ts
+│   │   │       ├── 20251008073543-setup-organisation.ts
+│   │   │       ├── 20251013081701-create-france-travail.ts
+│   │   │       ├── 20251015081623-add-rome-secteur-activites.ts
+│   │   │       ├── 20251022122921-add-inscrit-sans-contrat.ts
+│   │   │       ├── 20251028090748-hydrate-organisme-id-v2.ts
+│   │   │       ├── 20251029160433-fix-acc-conjoint-by-missing.ts
+│   │   │       ├── 20251106142428-fix-mission-locale-stats-index.ts
+│   │   │       ├── 20251106142429-hydrate-ml-stats.ts
+│   │   │       ├── 20260102153101-update-stats-ml-fix.ts
+│   │   │       ├── 20260123091419-update-mission-locale-orga.ts
+│   │   │       ├── 20260202100614-add-ml-identifiant-normalise.ts
+│   │   │       ├── 20260216190000-clean-failed-whatsapp-contacts.ts
+│   │   │       └── 20260305120000-fix-ml-effectif-doublons.ts
+│   │   ├── dev.ts
+│   │   ├── http
+│   │   │   ├── helpers
+│   │   │   │   └── passport-handlers.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── errorMiddleware.ts
+│   │   │   │   ├── helpers.ts
+│   │   │   │   ├── logMiddleware.ts
+│   │   │   │   ├── requireApiKeyAuthentication.ts
+│   │   │   │   ├── requireBearerAuthentication.ts
+│   │   │   │   ├── requireMissionLocaleTokenAuthentication.ts
+│   │   │   │   └── validateRequestMiddleware.ts
+│   │   │   ├── open-api-path.ts
+│   │   │   ├── routes
+│   │   │   │   ├── admin.routes
+│   │   │   │   │   ├── affelnet.routes.ts
+│   │   │   │   │   ├── effectifs.routes.ts
+│   │   │   │   │   ├── erps.routes.ts
+│   │   │   │   │   ├── maintenances.routes.ts
+│   │   │   │   │   ├── mission-locale.routes.ts
+│   │   │   │   │   ├── opcos.routes.ts
+│   │   │   │   │   ├── organismes.routes.ts
+│   │   │   │   │   ├── reseaux.routes.ts
+│   │   │   │   │   ├── transmissions.routes.ts
+│   │   │   │   │   └── users.routes.ts
+│   │   │   │   ├── campagne.routes
+│   │   │   │   │   ├── campagne.routes.ts
+│   │   │   │   │   └── mission-locale
+│   │   │   │   │       └── mission-locale-campagne.route.ts
+│   │   │   │   ├── emails.routes.ts
+│   │   │   │   ├── organisations.routes
+│   │   │   │   │   ├── france-travail
+│   │   │   │   │   │   └── france-travail.routes.ts
+│   │   │   │   │   ├── indicateurs-ml
+│   │   │   │   │   │   └── indicateurs-ml.routes.ts
+│   │   │   │   │   └── mission-locale
+│   │   │   │   │       └── mission-locale.routes.ts
+│   │   │   │   ├── organismes.routes
+│   │   │   │   │   ├── effectifs.routes.ts
+│   │   │   │   │   └── mission-locale.routes.ts
+│   │   │   │   ├── public.routes
+│   │   │   │   │   ├── france-travail.routes.ts
+│   │   │   │   │   ├── mission-locale.routes.ts
+│   │   │   │   │   └── reseaux.routes.ts
+│   │   │   │   ├── specific.routes
+│   │   │   │   │   ├── affelnet.routes.ts
+│   │   │   │   │   ├── dossiers-apprenants.routes.ts
+│   │   │   │   │   ├── erps.routes.ts
+│   │   │   │   │   ├── organisme.routes.ts
+│   │   │   │   │   ├── organismes.routes.ts
+│   │   │   │   │   └── transmission.routes.ts
+│   │   │   │   └── webhooks.routes
+│   │   │   │       └── brevo-whatsapp.routes.ts
+│   │   │   └── server.ts
+│   │   ├── jobs
+│   │   │   ├── bal
+│   │   │   │   └── bal.job.ts
+│   │   │   ├── clear
+│   │   │   │   └── purge-queues.ts
+│   │   │   ├── computed
+│   │   │   │   └── update-computed.ts
+│   │   │   ├── db
+│   │   │   │   ├── findInvalidDocuments.ts
+│   │   │   │   ├── recreateIndexes.ts
+│   │   │   │   └── schemaValidation.ts
+│   │   │   ├── emails
+│   │   │   │   ├── cfa-daily-recap.ts
+│   │   │   │   ├── mission-locale-daily-recap.ts
+│   │   │   │   ├── mission-locale-weekly-recap.ts
+│   │   │   │   └── reminder.ts
+│   │   │   ├── fiabilisation
+│   │   │   │   ├── certification
+│   │   │   │   │   ├── fiabilisation-certification.test.ts
+│   │   │   │   │   └── fiabilisation-certification.ts
+│   │   │   │   ├── effectifs
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── ofa-inconnus
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── uai-siret
+│   │   │   │       ├── update.utils.ts
+│   │   │   │       ├── updateFiabilisation.test.ts
+│   │   │   │       └── updateFiabilisation.ts
+│   │   │   ├── hydrate
+│   │   │   │   ├── affelnet
+│   │   │   │   │   └── hydrate-voeux-effectifs.ts
+│   │   │   │   ├── deca
+│   │   │   │   │   └── hydrate-deca-raw.ts
+│   │   │   │   ├── effectifs
+│   │   │   │   │   ├── hydrate-effectifs-computed-types.ts
+│   │   │   │   │   ├── hydrate-effectifs-formations-niveaux.ts
+│   │   │   │   │   ├── hydrate-effectifs-statut.ts
+│   │   │   │   │   └── update-effectifs-lieu-de-formation.ts
+│   │   │   │   ├── formations
+│   │   │   │   │   ├── hydrate-formation-v2.test.ts
+│   │   │   │   │   └── hydrate-formation-v2.ts
+│   │   │   │   ├── france-travail
+│   │   │   │   │   └── hydrate-france-travail.ts
+│   │   │   │   ├── hydrate-formations-catalogue.ts
+│   │   │   │   ├── hydrate-organismes-opcos.ts
+│   │   │   │   ├── hydrate-rncp.ts
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   └── hydrate-mission-locale.ts
+│   │   │   │   ├── open-api
+│   │   │   │   │   ├── hydrate-open-api.ts
+│   │   │   │   │   └── schema.ts
+│   │   │   │   ├── organismes
+│   │   │   │   │   ├── hydrate-effectifs_count.ts
+│   │   │   │   │   ├── hydrate-organismes-formations.ts
+│   │   │   │   │   ├── hydrate-organismes-relations.ts
+│   │   │   │   │   ├── hydrate-organismes.test.ts
+│   │   │   │   │   ├── hydrate-organismes.ts
+│   │   │   │   │   ├── organisme-cleanup.test.ts
+│   │   │   │   │   └── organisme-cleanup.ts
+│   │   │   │   ├── reseaux
+│   │   │   │   │   └── hydrate-reseaux.ts
+│   │   │   │   ├── rome
+│   │   │   │   │   └── hydrate-rome.ts
+│   │   │   │   └── transmissions
+│   │   │   │       └── hydrate-transmissions.ts
+│   │   │   ├── ingestion
+│   │   │   │   ├── adresse
+│   │   │   │   │   ├── adresse.builder.test.ts
+│   │   │   │   │   └── adresse.builder.ts
+│   │   │   │   ├── effectif
+│   │   │   │   │   ├── effectif.ingestion.test.ts
+│   │   │   │   │   └── effectif.ingestion.ts
+│   │   │   │   ├── formationV2
+│   │   │   │   │   ├── formationV2.ingestion.test.ts
+│   │   │   │   │   └── formationV2.ingestion.ts
+│   │   │   │   ├── migration
+│   │   │   │   │   └── effectif-queue.ts
+│   │   │   │   ├── person
+│   │   │   │   │   ├── person.ingestion.test.ts
+│   │   │   │   │   └── person.ingestion.ts
+│   │   │   │   ├── process-effectifs-queue-remove-duplicates.ts
+│   │   │   │   ├── process-ingestion.ts
+│   │   │   │   ├── process-ingestion.v2.test.ts
+│   │   │   │   ├── process-ingestion.v2.ts
+│   │   │   │   └── status
+│   │   │   │       ├── effectif_status.builder.test.ts
+│   │   │   │       └── effectif_status.builder.ts
+│   │   │   ├── jobs.ts
+│   │   │   ├── migrations
+│   │   │   │   └── migrations.ts
+│   │   │   ├── organisations
+│   │   │   │   └── organisation.job.ts
+│   │   │   ├── territoire
+│   │   │   │   └── validationTerritoire.ts
+│   │   │   └── whatsapp
+│   │   │       └── send-whatsapp-injoignables.ts
+│   │   ├── main.ts
+│   │   ├── services.ts
+│   │   └── types.d.ts
+│   ├── static
+│   │   ├── bassins_emploi_communes.json
+│   │   ├── emails
+│   │   │   ├── activation_user.mjml.ejs
+│   │   │   ├── cfa_daily_recap.mjml.ejs
+│   │   │   ├── common
+│   │   │   │   ├── footer.ejs
+│   │   │   │   ├── head.ejs
+│   │   │   │   ├── header.ejs
+│   │   │   │   └── signature.ejs
+│   │   │   ├── invitation_organisation.mjml.ejs
+│   │   │   ├── mission_locale_daily_recap.mjml.ejs
+│   │   │   ├── mission_locale_weekly_recap.mjml.ejs
+│   │   │   ├── notify_access_granted.mjml.ejs
+│   │   │   ├── notify_access_granted_ofa.mjml.ejs
+│   │   │   ├── notify_access_rejected.mjml.ejs
+│   │   │   ├── notify_invitation_rejected.mjml.ejs
+│   │   │   ├── register_unknown_network.mjml.ejs
+│   │   │   ├── reminder_missing_configuration_and_data.mjml.ejs
+│   │   │   ├── reminder_missing_data.mjml.ejs
+│   │   │   ├── reset_password.mjml.ejs
+│   │   │   ├── validation_user_by_orga_gestionnaire.mjml.ejs
+│   │   │   ├── validation_user_by_tdb_team.mjml.ejs
+│   │   │   ├── whatsapp_callback_notification.mjml.ejs
+│   │   │   └── whatsapp_nohelp_notification.mjml.ejs
+│   │   ├── mission-locale
+│   │   │   ├── modele-arml.xlsx
+│   │   │   ├── modele-inscrit-sans-contrat-ft.xlsx
+│   │   │   └── modele-rupturant-ml.xlsx
+│   │   ├── opcos
+│   │   │   ├── 2i.csv
+│   │   │   ├── afdas.csv
+│   │   │   ├── akto.csv
+│   │   │   ├── atlas.csv
+│   │   │   ├── ep.csv
+│   │   │   ├── mobilite.csv
+│   │   │   ├── ocapiat.csv
+│   │   │   ├── readme.md
+│   │   │   └── uniformation.csv
+│   │   ├── open-api.json
+│   │   ├── organismes
+│   │   │   ├── SOLTEA_extrac_etab_bene.csv
+│   │   │   └── organismes-prepa-apprentissage.csv
+│   │   ├── reseaux
+│   │   │   ├── readMe.txt
+│   │   │   ├── referentiel-reseau-aden.csv
+│   │   │   ├── referentiel-reseau-afpa.csv
+│   │   │   ├── referentiel-reseau-aftral.csv
+│   │   │   ├── referentiel-reseau-agri.csv
+│   │   │   ├── referentiel-reseau-amue.csv
+│   │   │   ├── referentiel-reseau-cci.csv
+│   │   │   ├── referentiel-reseau-cfa-ec.csv
+│   │   │   ├── referentiel-reseau-cma.csv
+│   │   │   ├── referentiel-reseau-compagnons-du-devoir.csv
+│   │   │   ├── referentiel-reseau-compagnons-du-tour-de-france.csv
+│   │   │   ├── referentiel-reseau-cr-normandie.csv
+│   │   │   ├── referentiel-reseau-eduservice.csv
+│   │   │   ├── referentiel-reseau-en.csv
+│   │   │   ├── referentiel-reseau-greta.csv
+│   │   │   ├── referentiel-reseau-mfr.csv
+│   │   │   └── referentiel-reseau-uimm.csv
+│   │   ├── seed
+│   │   │   └── readMe.txt
+│   │   └── unix_arborescence_secteur_activite_v460.json
+│   ├── tests
+│   │   ├── data
+│   │   │   ├── api.apprentissage.beta.gouv.fr
+│   │   │   │   └── certification
+│   │   │   │       ├── apiApprentissage.certification.mock.ts
+│   │   │   │       ├── cfd-50033610.ts
+│   │   │   │       ├── cfd-50033616.ts
+│   │   │   │       ├── rncp-34670.ts
+│   │   │   │       └── rncp-5364.ts
+│   │   │   ├── entreprise.api.gouv.fr
+│   │   │   │   └── etablissements
+│   │   │   │       ├── 19040492100016.json
+│   │   │   │       ├── 41461021200014.json
+│   │   │   │       ├── 77568013501089.json
+│   │   │   │       ├── 77568013501139.json
+│   │   │   │       ├── 77937827200016.json
+│   │   │   │       ├── 78354361400029.json
+│   │   │   │       └── 78370584100063.json
+│   │   │   ├── historySequenceSamples.ts
+│   │   │   ├── randomizedSample.ts
+│   │   │   ├── sample-import-of-test.csv
+│   │   │   ├── sampleEtablissements.ts
+│   │   │   └── sampleLibelles.ts
+│   │   ├── integration
+│   │   │   ├── common
+│   │   │   │   ├── actions
+│   │   │   │   │   ├── effectifs.duplicates.actions.test.ts
+│   │   │   │   │   ├── effectifs.types.actions.test.ts
+│   │   │   │   │   ├── formations.actions.test.ts
+│   │   │   │   │   ├── franceTravailEffectif.actions.test.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   └── flatPathsWithoutEmpty.test.ts
+│   │   │   │   │   └── organismes.actions.test.ts
+│   │   │   │   ├── constants
+│   │   │   │   │   └── validation.test.ts
+│   │   │   │   ├── services
+│   │   │   │   │   └── brevo
+│   │   │   │   │       └── whatsapp.test.ts
+│   │   │   │   ├── utils
+│   │   │   │   │   ├── cacheUtils.test.ts
+│   │   │   │   │   ├── errorUtils.test.ts
+│   │   │   │   │   ├── mergeIgnoringNullPreferringNewArray.test.ts
+│   │   │   │   │   ├── miscUtils.test.ts
+│   │   │   │   │   ├── regexUtils.test.ts
+│   │   │   │   │   ├── timeUtils.test.ts
+│   │   │   │   │   └── validationUtils.test.ts
+│   │   │   │   └── validation
+│   │   │   │       ├── paginationSchema.test.ts
+│   │   │   │       └── zodPrimitives.test.ts
+│   │   │   ├── external
+│   │   │   │   └── zod.test.ts
+│   │   │   ├── http
+│   │   │   │   ├── admin.routes.test.ts
+│   │   │   │   ├── authentication.routes.test.ts
+│   │   │   │   ├── brevo-whatsapp.routes.test.ts
+│   │   │   │   ├── cfd.routes.test.ts
+│   │   │   │   ├── dossierApprenantsV3.route.test.ts
+│   │   │   │   ├── effectif.routes.test.ts
+│   │   │   │   ├── impersonation.routes.test.ts
+│   │   │   │   ├── indicateurs-deca.route.test.ts
+│   │   │   │   ├── indicateurs-national.route.test.ts
+│   │   │   │   ├── indicateurs.route.test.ts
+│   │   │   │   ├── misc.routes.test.ts
+│   │   │   │   ├── mission-locale.routes.test.ts
+│   │   │   │   ├── organisme.routes.test.ts
+│   │   │   │   ├── organismes.routes.test.ts
+│   │   │   │   ├── password.route.test.ts
+│   │   │   │   ├── rncp.routes.test.ts
+│   │   │   │   ├── users.routes.test.ts
+│   │   │   │   └── utils
+│   │   │   │       └── validators.test.ts
+│   │   │   └── jobs
+│   │   │       ├── emails
+│   │   │       │   └── reminder.test.ts
+│   │   │       ├── fiabilisation
+│   │   │       │   └── uai-siret
+│   │   │       │       └── update-fiabilisation-uai-siret.test.ts
+│   │   │       ├── hydrate
+│   │   │       │   ├── hydrate-formations-catalogue.test.ts
+│   │   │       │   └── hydrate-organismes-relations.test.ts
+│   │   │       └── ingestion
+│   │   │           ├── mergeEffectif.test.ts
+│   │   │           ├── mission-locale-deca.test.ts
+│   │   │           ├── mission-locale-ingestion.test.ts
+│   │   │           └── process-ingestion.test.ts
+│   │   ├── jest
+│   │   │   ├── globalSetup.ts
+│   │   │   ├── setupFiles.ts
+│   │   │   ├── setupMongo.ts
+│   │   │   └── setupNock.ts
+│   │   ├── unit
+│   │   │   └── common
+│   │   │       └── actions
+│   │   │           └── personV2
+│   │   │               └── personV2.actions.test.ts
+│   │   └── utils
+│   │       ├── mongoUtils.ts
+│   │       ├── nockApis
+│   │       │   ├── index.ts
+│   │       │   └── nock-apiEntreprise.ts
+│   │       ├── permissions.ts
+│   │       └── testUtils.ts
+│   ├── tsconfig.json
+│   └── tsup.config.ts
+├── shared
+│   ├── .eslintrc.cjs
+│   ├── actions
+│   │   ├── index.ts
+│   │   └── organisations.actions.ts
+│   ├── constants
+│   │   ├── aide.ts
+│   │   ├── deployedRegions.ts
+│   │   ├── dossierApprenant.ts
+│   │   ├── effectifs.ts
+│   │   ├── fiabilisation.ts
+│   │   ├── franceTravail.ts
+│   │   ├── index.ts
+│   │   ├── indicateurs.ts
+│   │   ├── link.ts
+│   │   ├── organisations.ts
+│   │   ├── organisme.ts
+│   │   ├── organismes.ts
+│   │   ├── pays.ts
+│   │   ├── permissions.ts
+│   │   ├── plausible-goals.ts
+│   │   ├── support.ts
+│   │   ├── territoires.ts
+│   │   └── validations.ts
+│   ├── index.ts
+│   ├── models
+│   │   ├── apis
+│   │   │   └── @types
+│   │   │       ├── ApiAlternance.ts
+│   │   │       ├── ApiDeca.d.ts
+│   │   │       ├── ApiEntEtablissement.d.ts
+│   │   │       ├── CatalogueFormation.d.ts
+│   │   │       ├── CatalogueFormations.d.ts
+│   │   │       └── MnaOrganisme.d.ts
+│   │   ├── data
+│   │   │   ├── @types
+│   │   │   │   └── OffreFormation.ts
+│   │   │   ├── airbyteRawBalDeca.model.ts
+│   │   │   ├── auditLogs.model.ts
+│   │   │   ├── brevoMissionLocaleList.model.ts
+│   │   │   ├── brevoMissionLocaleTemplate.model.ts
+│   │   │   ├── common.ts
+│   │   │   ├── effectifs
+│   │   │   │   ├── apprenant.part.ts
+│   │   │   │   ├── contrat.part.ts
+│   │   │   │   └── formation.part.ts
+│   │   │   ├── effectifs.model.ts
+│   │   │   ├── effectifsArchive.model.ts
+│   │   │   ├── effectifsDECA.model.ts
+│   │   │   ├── effectifsQueue.model.ts
+│   │   │   ├── erp.model.ts
+│   │   │   ├── formations.model.ts
+│   │   │   ├── formationsCatalogue.model.ts
+│   │   │   ├── franceTravailEffectif.model.ts
+│   │   │   ├── index.ts
+│   │   │   ├── invitations.model.ts
+│   │   │   ├── invitationsArchive.model.ts
+│   │   │   ├── jwtSessions.model.ts
+│   │   │   ├── maintenanceMessages.model.ts
+│   │   │   ├── missionLocaleEffectif.model.ts
+│   │   │   ├── missionLocaleEffectifLog.model.ts
+│   │   │   ├── missionLocaleStats.model.ts
+│   │   │   ├── nationalStats.model.ts
+│   │   │   ├── opco
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── opcos.model.ts
+│   │   │   │   └── opcosRncp.model.ts
+│   │   │   ├── organisations.model.ts
+│   │   │   ├── organismes.model.ts
+│   │   │   ├── organismesReferentiel.model.ts
+│   │   │   ├── regions.model.ts
+│   │   │   ├── reseaux.model.ts
+│   │   │   ├── rncp.model.ts
+│   │   │   ├── romeSecteurActivites.model.ts
+│   │   │   ├── telechargementListesNomLogs.model.ts
+│   │   │   ├── transmissionDailyReport.model.ts
+│   │   │   ├── usersMigration.model.ts
+│   │   │   ├── v2
+│   │   │   │   ├── effectif.v2.model.ts
+│   │   │   │   ├── formation.v2.model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── organisme.v2.model.ts
+│   │   │   │   ├── person.v2.model.ts
+│   │   │   │   └── transmission.v2.model.ts
+│   │   │   ├── voeuxAffelnet.model.ts
+│   │   │   └── whatsappContact.model.ts
+│   │   ├── duplicates.ts
+│   │   ├── fixtures
+│   │   │   ├── formation.v2.fixture.ts
+│   │   │   ├── formationsCatalogue.fixture.ts
+│   │   │   └── organisme.fixture.ts
+│   │   ├── index.ts
+│   │   ├── indicateurs.ts
+│   │   ├── parts
+│   │   │   ├── adresseSchema.ts
+│   │   │   ├── dossierApprenantSchemaV3.ts
+│   │   │   └── zodPrimitives.ts
+│   │   ├── routes
+│   │   │   ├── OrganismeSupportInfo.ts
+│   │   │   ├── admin
+│   │   │   │   ├── organismes.api.ts
+│   │   │   │   └── users.api.ts
+│   │   │   ├── formations
+│   │   │   │   └── formations.api.ts
+│   │   │   ├── france-travail
+│   │   │   │   └── franceTravail.api.ts
+│   │   │   ├── index.ts
+│   │   │   ├── mission-locale
+│   │   │   │   ├── MissionLocaleEffectif.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── missionLocale.api.ts
+│   │   │   ├── organismes
+│   │   │   │   ├── OrganismeFormationEffectif.ts
+│   │   │   │   ├── effectifs
+│   │   │   │   │   └── effectifs.api.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── mission-locale
+│   │   │   │       ├── index.ts
+│   │   │   │       └── missions-locale.api.ts
+│   │   │   └── pagination
+│   │   │       └── index.ts
+│   │   └── zodOpenApi.ts
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── utils
+│       ├── anneeScolaire.test.ts
+│       ├── anneeScolaire.ts
+│       ├── date.ts
+│       ├── frenchTelephoneNumber.ts
+│       ├── index.ts
+│       ├── organisationRegions.ts
+│       ├── phone.ts
+│       ├── regex.ts
+│       ├── sortAlphabetically.test.ts
+│       ├── sortAlphabetically.ts
+│       ├── stats.ts
+│       ├── stringUtils.ts
+│       ├── tsHelper.ts
+│       └── zodHelper.ts
+├── tsconfig.json
+├── ui
+│   ├── .env.example.local
+│   ├── .env.test
+│   ├── .eslintrc.json
+│   ├── .yarnrc
+│   ├── app
+│   │   ├── (campagnes)
+│   │   │   ├── campagnes
+│   │   │   │   └── mission-locale
+│   │   │   │       ├── [token]
+│   │   │   │       │   ├── CampagneMissionLocaleClient.tsx
+│   │   │   │       │   ├── accompagnement-valide
+│   │   │   │       │   │   ├── AccompagnementValideClient.tsx
+│   │   │   │       │   │   └── page.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── _components
+│   │   │   │       │   ├── faq.tsx
+│   │   │   │       │   └── question.tsx
+│   │   │   │       ├── accompagnement-refuse
+│   │   │   │       │   ├── AccompagnementRefuseClient.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       └── lien-invalide
+│   │   │   │           ├── LienInvalideClient.tsx
+│   │   │   │           └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (cfa)
+│   │   │   ├── cfa
+│   │   │   │   ├── CfaClient.tsx
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── CfaDetailClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── parametres
+│   │   │   │       ├── ParametresClient.tsx
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (decommissionnement)
+│   │   │   ├── DecommissionnementHeader.tsx
+│   │   │   ├── decommissionnement
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (france-travail)
+│   │   │   ├── FranceTravailLayoutClient.tsx
+│   │   │   ├── france-travail
+│   │   │   │   ├── [secteurId]
+│   │   │   │   │   ├── SecteurClient.tsx
+│   │   │   │   │   ├── effectif
+│   │   │   │   │   │   └── [id]
+│   │   │   │   │   │       ├── EffectifDetailClient.module.css
+│   │   │   │   │   │       ├── EffectifDetailClient.tsx
+│   │   │   │   │   │       ├── FTEffectifForm.module.css
+│   │   │   │   │   │       ├── FTEffectifForm.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── deja-traites
+│   │   │   │   │   ├── DejaTraitesClient.module.css
+│   │   │   │   │   ├── DejaTraitesClient.tsx
+│   │   │   │   │   ├── MoisSection.tsx
+│   │   │   │   │   ├── effectif
+│   │   │   │   │   │   └── [id]
+│   │   │   │   │   │       ├── EffectifTraiteDetailClient.module.css
+│   │   │   │   │   │       ├── EffectifTraiteDetailClient.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (home)
+│   │   │   ├── HomeClient.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── connexion
+│   │   │   │   │   ├── ConnexionClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── mot-de-passe-oublie
+│   │   │   │       ├── ForgotPasswordClient.tsx
+│   │   │   │       └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── (mission-locale)
+│   │   │   ├── layout.tsx
+│   │   │   └── mission-locale
+│   │   │       ├── MissionLocaleClient.tsx
+│   │   │       ├── [id]
+│   │   │       │   ├── MissionLocaleDetailClient.tsx
+│   │   │       │   └── page.tsx
+│   │   │       ├── error.tsx
+│   │   │       ├── page.tsx
+│   │   │       └── validation
+│   │   │           ├── ValidationClient.tsx
+│   │   │           ├── page.tsx
+│   │   │           └── prioritaire
+│   │   │               ├── ValidationPrioritaireClient.tsx
+│   │   │               └── page.tsx
+│   │   ├── _components
+│   │   │   ├── ConnectedHeader.tsx
+│   │   │   ├── CrispChat.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── HeaderCampagnes.tsx
+│   │   │   ├── Impersonate.tsx
+│   │   │   ├── PublicHeader.tsx
+│   │   │   ├── PublicHeaderWithoutAuth.tsx
+│   │   │   ├── ServiceDiscontinuedPage.module.css
+│   │   │   ├── ServiceDiscontinuedPage.tsx
+│   │   │   ├── UserConnectedHeader.tsx
+│   │   │   ├── admin
+│   │   │   │   ├── MultiSelectDropdown.tsx
+│   │   │   │   ├── UserForm.tsx
+│   │   │   │   ├── UserTableCells.tsx
+│   │   │   │   ├── UsersFiltersPanel.tsx
+│   │   │   │   └── impostures
+│   │   │   │       └── ARMLSelect.tsx
+│   │   │   ├── card
+│   │   │   │   ├── MlCard.module.css
+│   │   │   │   ├── MlCard.tsx
+│   │   │   │   ├── MlSuccessCard.module.css
+│   │   │   │   └── MlSuccessCard.tsx
+│   │   │   ├── carousel
+│   │   │   │   └── HomeCarousel.tsx
+│   │   │   ├── cfa
+│   │   │   │   ├── CfaHeader.module.css
+│   │   │   │   ├── CfaHeader.tsx
+│   │   │   │   ├── FeedbackForm.module.css
+│   │   │   │   └── FeedbackForm.tsx
+│   │   │   ├── common
+│   │   │   │   └── Spinner.tsx
+│   │   │   ├── context
+│   │   │   │   └── UserContext.tsx
+│   │   │   ├── france-travail
+│   │   │   │   ├── DepartementButtonGroup.module.css
+│   │   │   │   ├── DepartementButtonGroup.tsx
+│   │   │   │   ├── DepartementMultiSelect.module.css
+│   │   │   │   ├── DepartementMultiSelect.tsx
+│   │   │   │   ├── FTEffectifPageHeader.module.css
+│   │   │   │   ├── FTEffectifPageHeader.tsx
+│   │   │   │   ├── FTEffectifParcours.tsx
+│   │   │   │   ├── FTEffectifsTable.module.css
+│   │   │   │   ├── FTEffectifsTable.tsx
+│   │   │   │   ├── FTEffectifsTraitesTable.module.css
+│   │   │   │   ├── FTEffectifsTraitesTable.tsx
+│   │   │   │   ├── FTHeader.module.css
+│   │   │   │   ├── FTHeader.tsx
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── effectif
+│   │   │   │   │   ├── EffectifCoordonnees.tsx
+│   │   │   │   │   ├── EffectifDetail.module.css
+│   │   │   │   │   ├── EffectifFormationInfo.tsx
+│   │   │   │   │   └── EffectifPersonalInfo.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useFranceTravailQueries.ts
+│   │   │   │   │   └── useFranceTravailQueryParams.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   ├── utils
+│   │   │   │   │   ├── dateFormatting.ts
+│   │   │   │   │   └── departements.ts
+│   │   │   │   └── utils.ts
+│   │   │   ├── link
+│   │   │   │   └── DsfrLink.tsx
+│   │   │   ├── mission-locale
+│   │   │   │   ├── MLHeader.module.css
+│   │   │   │   ├── MLHeader.tsx
+│   │   │   │   └── modal
+│   │   │   │       └── ModalAdminSyncBrevo.tsx
+│   │   │   ├── ruptures
+│   │   │   │   ├── cfa
+│   │   │   │   │   ├── CfaFeedback.tsx
+│   │   │   │   │   ├── EffectifParcoursCfa.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   ├── DownloadSection.tsx
+│   │   │   │   │   ├── EffectifParcoursMissionLocale.tsx
+│   │   │   │   │   ├── EffectifsListView.module.css
+│   │   │   │   │   ├── EffectifsListView.tsx
+│   │   │   │   │   ├── WhatsAppCallbackBanner.module.css
+│   │   │   │   │   ├── WhatsAppCallbackBanner.tsx
+│   │   │   │   │   ├── contact
+│   │   │   │   │   │   ├── ContactForm.module.css
+│   │   │   │   │   │   ├── ContactForm.tsx
+│   │   │   │   │   │   ├── SecondAttemptGuidance.module.css
+│   │   │   │   │   │   └── SecondAttemptGuidance.tsx
+│   │   │   │   │   ├── feedback
+│   │   │   │   │   │   └── MissionLocaleFeedback.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── useMonthDownload.ts
+│   │   │   │   └── shared
+│   │   │   │       ├── constants.ts
+│   │   │   │       ├── hooks
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── useContactMutations.ts
+│   │   │   │       │   ├── useEffectifQueries.ts
+│   │   │   │       │   └── useNotificationMutations.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── types.ts
+│   │   │   │       ├── ui
+│   │   │   │       │   ├── ConfirmReset.module.css
+│   │   │   │       │   ├── ConfirmReset.tsx
+│   │   │   │       │   ├── EffectifDetail.tsx
+│   │   │   │       │   ├── EffectifDetailDisplay.tsx
+│   │   │   │       │   ├── EffectifInfo.module.css
+│   │   │   │       │   ├── EffectifInfo.tsx
+│   │   │   │       │   ├── EffectifInfoDetails.module.css
+│   │   │   │       │   ├── EffectifInfoDetails.tsx
+│   │   │   │       │   ├── EffectifParcours.module.css
+│   │   │   │       │   ├── EffectifStatusBadge.module.css
+│   │   │   │       │   ├── EffectifStatusBadge.tsx
+│   │   │   │       │   ├── EffectifsMonthTable.tsx
+│   │   │   │       │   ├── EffectifsPriorityTable.tsx
+│   │   │   │       │   ├── EffectifsSearchableTable.tsx
+│   │   │   │       │   ├── Feedback.module.css
+│   │   │   │       │   ├── FeedbackForm.tsx
+│   │   │   │       │   ├── MissionLocaleContact.tsx
+│   │   │   │       │   ├── MonthTable.module.css
+│   │   │   │       │   ├── NotificationBadge.module.css
+│   │   │   │       │   ├── PageHeader.module.css
+│   │   │   │       │   ├── PageHeader.tsx
+│   │   │   │       │   ├── PriorityTable.module.css
+│   │   │   │       │   ├── ProblematiquesJeune.tsx
+│   │   │   │       │   ├── RightColumnSkeleton.tsx
+│   │   │   │       │   └── WhatsAppBadge.module.css
+│   │   │   │       ├── utils
+│   │   │   │       │   └── searchUtils.ts
+│   │   │   │       └── utils.ts
+│   │   │   ├── statistiques
+│   │   │   │   ├── cards
+│   │   │   │   │   ├── DeploymentRow.module.css
+│   │   │   │   │   ├── DeploymentRow.tsx
+│   │   │   │   │   ├── StatCard.module.css
+│   │   │   │   │   ├── StatCard.tsx
+│   │   │   │   │   ├── TraitementCards.module.css
+│   │   │   │   │   └── TraitementCards.tsx
+│   │   │   │   ├── charts
+│   │   │   │   │   ├── ChartLegend.tsx
+│   │   │   │   │   ├── ChartTooltip.module.css
+│   │   │   │   │   ├── ChartTooltip.tsx
+│   │   │   │   │   ├── DejaConnuMiniChart.module.css
+│   │   │   │   │   ├── DejaConnuMiniChart.tsx
+│   │   │   │   │   ├── DetailsDossiersTraitesPieChart.module.css
+│   │   │   │   │   ├── DetailsDossiersTraitesPieChart.tsx
+│   │   │   │   │   ├── MotifsBarChart.module.css
+│   │   │   │   │   ├── MotifsBarChart.tsx
+│   │   │   │   │   ├── RupturantsBarChart.tsx
+│   │   │   │   │   ├── RupturantsPieChart.module.css
+│   │   │   │   │   ├── RupturantsPieChart.tsx
+│   │   │   │   │   ├── WhatsAppOutcomesPieChart.tsx
+│   │   │   │   │   ├── WhatsAppPieChart.module.css
+│   │   │   │   │   ├── WhatsAppResponsePieChart.tsx
+│   │   │   │   │   └── legend.module.css
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useLoadingVariation.ts
+│   │   │   │   │   ├── useSortableTable.ts
+│   │   │   │   │   ├── useStatsQueries.ts
+│   │   │   │   │   ├── useTraitementExport.ts
+│   │   │   │   │   └── useUserRegions.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── sections
+│   │   │   │   │   ├── AccompagnementConjointSection.module.css
+│   │   │   │   │   ├── AccompagnementConjointSection.tsx
+│   │   │   │   │   ├── CouvertureRegionsSection.tsx
+│   │   │   │   │   ├── DeploymentSection.module.css
+│   │   │   │   │   ├── DeploymentSection.tsx
+│   │   │   │   │   ├── DossiersTraitesSection.module.css
+│   │   │   │   │   ├── DossiersTraitesSection.tsx
+│   │   │   │   │   ├── IdentificationSuiviSection.module.css
+│   │   │   │   │   ├── IdentificationSuiviSection.tsx
+│   │   │   │   │   ├── RupturantsSection.module.css
+│   │   │   │   │   ├── RupturantsSection.tsx
+│   │   │   │   │   ├── StatisticsSection.module.css
+│   │   │   │   │   ├── StatisticsSection.tsx
+│   │   │   │   │   ├── SuiviTraitementSection.tsx
+│   │   │   │   │   ├── WhatsAppSection.module.css
+│   │   │   │   │   ├── WhatsAppSection.tsx
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── tables
+│   │   │   │   │   ├── NationalRegionTable.module.css
+│   │   │   │   │   ├── NationalRegionTable.tsx
+│   │   │   │   │   ├── RegionTable.module.css
+│   │   │   │   │   ├── RegionTable.tsx
+│   │   │   │   │   ├── SortableTableHeader.tsx
+│   │   │   │   │   ├── TraitementDetailsBar.tsx
+│   │   │   │   │   ├── TraitementMLTable.tsx
+│   │   │   │   │   ├── TraitementRegionTable.tsx
+│   │   │   │   │   ├── TraitementTable.module.css
+│   │   │   │   │   └── common.module.css
+│   │   │   │   ├── ui
+│   │   │   │   │   ├── DecaAlert.tsx
+│   │   │   │   │   ├── FranceIcon.tsx
+│   │   │   │   │   ├── FranceMapSVG.tsx
+│   │   │   │   │   ├── FranceMapSVGLazy.tsx
+│   │   │   │   │   ├── MenuLabels.module.css
+│   │   │   │   │   ├── MenuLabels.tsx
+│   │   │   │   │   ├── NoDataMessage.module.css
+│   │   │   │   │   ├── NoDataMessage.tsx
+│   │   │   │   │   ├── PeriodSelector.module.css
+│   │   │   │   │   ├── PeriodSelector.tsx
+│   │   │   │   │   ├── RegionSVG.tsx
+│   │   │   │   │   ├── Skeleton.module.css
+│   │   │   │   │   ├── Skeleton.tsx
+│   │   │   │   │   ├── StatsErrorHandler.tsx
+│   │   │   │   │   ├── ViewHeader.tsx
+│   │   │   │   │   └── common.module.css
+│   │   │   │   ├── utils.tsx
+│   │   │   │   └── views
+│   │   │   │       ├── MissionLocaleDetailView.module.css
+│   │   │   │       ├── MissionLocaleDetailView.tsx
+│   │   │   │       ├── NationalView.module.css
+│   │   │   │       ├── NationalView.tsx
+│   │   │   │       ├── RegionView.module.css
+│   │   │   │       ├── RegionView.tsx
+│   │   │   │       ├── SyntheseView.module.css
+│   │   │   │       ├── SyntheseView.tsx
+│   │   │   │       └── tabs
+│   │   │   │           ├── MLEquipeTab.module.css
+│   │   │   │           ├── MLEquipeTab.tsx
+│   │   │   │           ├── MLSuiviTraitementTab.module.css
+│   │   │   │           └── MLSuiviTraitementTab.tsx
+│   │   │   ├── suspense
+│   │   │   │   ├── LoadingSkeletons.tsx
+│   │   │   │   └── SuspenseWrapper.tsx
+│   │   │   └── table
+│   │   │       ├── FullTable.tsx
+│   │   │       ├── SimpleTable.module.css
+│   │   │       ├── SimpleTable.tsx
+│   │   │       ├── hooks.ts
+│   │   │       └── types.ts
+│   │   ├── _constants
+│   │   │   └── localStorage.ts
+│   │   ├── _context
+│   │   │   └── UserContext.ts
+│   │   ├── _dsfr-setup
+│   │   │   ├── default-color-scheme.ts
+│   │   │   └── start-dsfr.tsx
+│   │   ├── _hooks
+│   │   │   ├── plausible.ts
+│   │   │   ├── useAllUsers.ts
+│   │   │   └── useVirtualizedPagination.tsx
+│   │   ├── _utils
+│   │   │   ├── date.utils.ts
+│   │   │   ├── hooks.utils.ts
+│   │   │   ├── phone.utils.ts
+│   │   │   ├── ruptures.utils.ts
+│   │   │   └── session.utils.ts
+│   │   ├── admin
+│   │   │   ├── error.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── suivi-des-indicateurs
+│   │   │   │   ├── StatistiquesLayoutClient.module.css
+│   │   │   │   ├── StatistiquesLayoutClient.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   ├── [mlId]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── page.module.css
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── national
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── region
+│   │   │   │       └── [code]
+│   │   │   │           └── page.tsx
+│   │   │   └── users
+│   │   │       ├── UsersAdminClient.tsx
+│   │   │       ├── [id]
+│   │   │       │   ├── UserAdminClient.tsx
+│   │   │       │   └── page.tsx
+│   │   │       └── page.tsx
+│   │   ├── global-error.tsx
+│   │   ├── global.css
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── providers.tsx
+│   │   └── suivi-des-indicateurs
+│   │       ├── StatistiquesLayoutBase.tsx
+│   │       ├── StatistiquesMLLayoutClient.module.css
+│   │       ├── StatistiquesMLLayoutClient.tsx
+│   │       ├── StatistiquesPublicLayoutClient.tsx
+│   │       ├── layout.tsx
+│   │       ├── mission-locale
+│   │       │   ├── [mlId]
+│   │       │   │   └── page.tsx
+│   │       │   ├── page.module.css
+│   │       │   └── page.tsx
+│   │       ├── national
+│   │       │   └── page.tsx
+│   │       ├── page.tsx
+│   │       └── region
+│   │           ├── [code]
+│   │           │   └── page.tsx
+│   │           └── page.tsx
+│   ├── common
+│   │   ├── SSR
+│   │   │   └── getAuthServerSideProps.ts
+│   │   ├── actions
+│   │   │   └── organisation.actions.ts
+│   │   ├── constants
+│   │   │   ├── organismes.ts
+│   │   │   ├── product.ts
+│   │   │   ├── televersementHeaders.ts
+│   │   │   └── usersConstants.ts
+│   │   ├── domain
+│   │   │   ├── siret.ts
+│   │   │   └── uai.ts
+│   │   ├── emitter.ts
+│   │   ├── exports.ts
+│   │   ├── httpClient.ts
+│   │   ├── internal
+│   │   │   ├── AuthContext.ts
+│   │   │   ├── Organisme.ts
+│   │   │   └── User.ts
+│   │   ├── queryClient.ts
+│   │   ├── types
+│   │   │   ├── infoSiret.ts
+│   │   │   └── ruptures.ts
+│   │   └── utils
+│   │       ├── accountUtils.ts
+│   │       ├── browser.ts
+│   │       ├── dateUtils.ts
+│   │       ├── exportUtils.ts
+│   │       ├── markdownUtils.ts
+│   │       ├── misc.ts
+│   │       ├── parseExcelBoolean.test.ts
+│   │       ├── parseExcelBoolean.ts
+│   │       ├── parseExcelDate.test.ts
+│   │       ├── parseExcelDate.ts
+│   │       ├── stringUtils.test.ts
+│   │       ├── stringUtils.ts
+│   │       └── televersement.ts
+│   ├── components
+│   │   ├── Accordion
+│   │   │   ├── Accordion.tsx
+│   │   │   └── CustomAccordion.tsx
+│   │   ├── AlertMessage
+│   │   │   └── AlertMessage.tsx
+│   │   ├── Autocomplete
+│   │   │   └── Organismes.tsx
+│   │   ├── BaseAccordionGroup
+│   │   │   └── BaseAccordionGroup.tsx
+│   │   ├── Breadcrumb
+│   │   │   └── Breadcrumb.tsx
+│   │   ├── Card
+│   │   │   └── IndicatorCard.tsx
+│   │   ├── Cerfa
+│   │   │   └── CerfaLink.tsx
+│   │   ├── Effectif
+│   │   │   ├── EffectifErrorsMessage.tsx
+│   │   │   └── EffectifQueueItemView.tsx
+│   │   ├── Filter
+│   │   │   ├── FilterList.tsx
+│   │   │   ├── FilterListSearchable.tsx
+│   │   │   └── FilterRadioList.tsx
+│   │   ├── FilterButton
+│   │   │   └── FilterButton.tsx
+│   │   ├── InformationMessage
+│   │   │   └── InformationMessage.tsx
+│   │   ├── InputLegend
+│   │   │   └── InputLegend.tsx
+│   │   ├── Links
+│   │   │   ├── DownloadLink.tsx
+│   │   │   ├── Link.tsx
+│   │   │   ├── MenuItem.tsx
+│   │   │   └── SupportLink.tsx
+│   │   ├── Modals
+│   │   │   ├── AcknowledgeModal.tsx
+│   │   │   └── BasicModal.tsx
+│   │   ├── Notifications
+│   │   │   └── TransmissionErrors.tsx
+│   │   ├── Page
+│   │   │   ├── AidePage.tsx
+│   │   │   ├── Page.tsx
+│   │   │   ├── SimplePage.tsx
+│   │   │   ├── UnauthorizedPage.tsx
+│   │   │   └── components
+│   │   │       ├── Footer.tsx
+│   │   │       ├── Header.tsx
+│   │   │       ├── LoaderFullScreen.tsx
+│   │   │       └── NavigationMenu.tsx
+│   │   ├── Ribbons
+│   │   │   └── Ribbons.tsx
+│   │   ├── ScrollShadowBox
+│   │   │   └── ScrollShadowBox.tsx
+│   │   ├── Section
+│   │   │   └── Section.tsx
+│   │   ├── SelectButton
+│   │   │   └── SecondarySelectButton.tsx
+│   │   ├── Sommaire
+│   │   │   └── Sommaire.tsx
+│   │   ├── SuggestFeature
+│   │   │   └── SuggestFeature.tsx
+│   │   ├── Table
+│   │   │   ├── ConditionalScrollShadowBox.tsx
+│   │   │   ├── CustomTable.tsx
+│   │   │   ├── Table.tsx
+│   │   │   ├── TableWithApi.tsx
+│   │   │   └── TableWithPagination.tsx
+│   │   ├── Tag
+│   │   │   └── Tag.tsx
+│   │   ├── Televersement
+│   │   │   ├── DocumentsActionButtons.tsx
+│   │   │   ├── FileUploadComponent.tsx
+│   │   │   └── InfoBetaPanel.tsx
+│   │   ├── Text
+│   │   │   └── Highlight.tsx
+│   │   ├── Tooltip
+│   │   │   ├── InfoTooltip.tsx
+│   │   │   ├── InputTooltip.tsx
+│   │   │   └── NatureOrganismeTooltip.tsx
+│   │   ├── Tuile
+│   │   │   └── Tuile.tsx
+│   │   ├── UserWrapper
+│   │   │   └── UserWrapper.tsx
+│   │   ├── admin
+│   │   │   ├── organismes
+│   │   │   │   └── recherche
+│   │   │   │       ├── CarInfo.tsx
+│   │   │   │       ├── EtablissementInfo.tsx
+│   │   │   │       ├── FormationDetails.tsx
+│   │   │   │       ├── FormationsInfo.tsx
+│   │   │   │       ├── FormationsPanel.tsx
+│   │   │   │       ├── Label.tsx
+│   │   │   │       ├── ReferentielInfo.tsx
+│   │   │   │       ├── RelatedOrganismePanel.tsx
+│   │   │   │       ├── TdbInfo.tsx
+│   │   │   │       ├── TransmissionsPanel.tsx
+│   │   │   │       └── UsersList.tsx
+│   │   │   └── reseaux
+│   │   │       ├── AddOrganisme.tsx
+│   │   │       └── RemoveOrganisme.tsx
+│   │   ├── buttons
+│   │   │   ├── Button.tsx
+│   │   │   ├── ButtonTeleversement.tsx
+│   │   │   └── DownloadButton.tsx
+│   │   ├── legal
+│   │   │   ├── Accessibilite.tsx
+│   │   │   └── Cgu.tsx
+│   │   ├── skeletons
+│   │   │   ├── RowsSkeleton.tsx
+│   │   │   └── TableSkeleton.tsx
+│   │   ├── tables
+│   │   │   └── Table.tsx
+│   │   └── withAuth.tsx
+│   ├── config.public.ts
+│   ├── hooks
+│   │   ├── organismeAtoms.ts
+│   │   ├── organismes.ts
+│   │   ├── plausible.ts
+│   │   ├── tranmissions.ts
+│   │   ├── useAuth.ts
+│   │   ├── useDraggableScroll.ts
+│   │   ├── useErp.ts
+│   │   ├── useExcelFileProcessor.ts
+│   │   ├── useMaintenanceMessages.ts
+│   │   ├── usePagination.ts
+│   │   ├── useToaster.ts
+│   │   └── useTopScrollSync.ts
+│   ├── icons
+│   │   └── NotFound.tsx
+│   ├── middleware.ts
+│   ├── modules
+│   │   ├── admin
+│   │   │   ├── DashboardAdministrateur.tsx
+│   │   │   ├── InfosTransmissionEtParametrageOFA.tsx
+│   │   │   ├── OrganismeDetail.tsx
+│   │   │   ├── fusion-organismes
+│   │   │   │   ├── OrganismeDoublonDeleteAlertDialog.tsx
+│   │   │   │   ├── OrganismeDoublonDetailModal.tsx
+│   │   │   │   ├── OrganismesDoublonsList.tsx
+│   │   │   │   ├── OrganismesDoublonsPage.tsx
+│   │   │   │   └── models
+│   │   │   │       ├── DuplicateOrganismeDetail.ts
+│   │   │   │       └── DuplicateOrganismeGroup.ts
+│   │   │   ├── transmissions
+│   │   │   │   ├── AdminListeTransmissionsParOrganisme.tsx
+│   │   │   │   └── AdminTransmissionsByDayTable.tsx
+│   │   │   ├── userSchema.ts
+│   │   │   └── users
+│   │   │       └── models
+│   │   │           ├── users-filters.ts
+│   │   │           └── users.ts
+│   │   ├── auth
+│   │   │   ├── connexion
+│   │   │   │   └── Connexion.tsx
+│   │   │   └── inscription
+│   │   │       ├── InscriptionCarifOref.tsx
+│   │   │       ├── InscriptionFranceTravail.tsx
+│   │   │       ├── InscriptionML.tsx
+│   │   │       ├── InscriptionMissionLocale.tsx
+│   │   │       ├── InscriptionOF.tsx
+│   │   │       ├── InscriptionOperateurPublic.tsx
+│   │   │       ├── InscriptionTeteDeReseau.tsx
+│   │   │       ├── InscriptionWrapper.tsx
+│   │   │       ├── categories.ts
+│   │   │       ├── common.ts
+│   │   │       └── components
+│   │   │           ├── MissionLocaleSelect.tsx
+│   │   │           ├── OrganismeDetails.tsx
+│   │   │           ├── SearchBySIRETForm.tsx
+│   │   │           └── SearchByUAIForm.tsx
+│   │   ├── dashboard
+│   │   │   ├── CarteFrance.tsx
+│   │   │   ├── ContactsModal.tsx
+│   │   │   ├── DashboardMissionLocale.tsx
+│   │   │   ├── DashboardNational.tsx
+│   │   │   ├── DashboardOrganisme.tsx
+│   │   │   ├── DashboardTransverse.tsx
+│   │   │   ├── IndicateursGrid.tsx
+│   │   │   ├── IndicateursOrganisme.tsx
+│   │   │   ├── Pie.tsx
+│   │   │   ├── SimpleOverlayMenu.tsx
+│   │   │   ├── hooks
+│   │   │   │   ├── useIndicateursEffectifsParDepartement.tsx
+│   │   │   │   ├── useIndicateursNational.tsx
+│   │   │   │   ├── useIndicateursOrganismesParDepartement.tsx
+│   │   │   │   └── useTeteDeReseaux.tsx
+│   │   │   └── icons.tsx
+│   │   ├── effectifs
+│   │   │   ├── BandeauDuplicatsEffectifs.tsx
+│   │   │   └── EffectifsPage.tsx
+│   │   ├── indicateurs
+│   │   │   ├── FilterAccordion.tsx
+│   │   │   ├── FilterButton.tsx
+│   │   │   ├── FilterInfoLock.tsx
+│   │   │   ├── IndicateursForm.tsx
+│   │   │   ├── IndicateursGraphs.tsx
+│   │   │   ├── NatureOrganismeTag.tsx
+│   │   │   ├── NewTable.tsx
+│   │   │   ├── OngletsIndicateurs.tsx
+│   │   │   ├── filters
+│   │   │   │   ├── FiltreAffelnetDate.tsx
+│   │   │   │   ├── FiltreAffelnetDepartement.tsx
+│   │   │   │   ├── FiltreApprenantTrancheAge.tsx
+│   │   │   │   ├── FiltreDate.tsx
+│   │   │   │   ├── FiltreFormationAnnee.tsx
+│   │   │   │   ├── FiltreFormationCFD.tsx
+│   │   │   │   ├── FiltreFormationNiveau.tsx
+│   │   │   │   ├── FiltreFormationSecteurProfessionnel.tsx
+│   │   │   │   ├── FiltreOrganismeAcademie.tsx
+│   │   │   │   ├── FiltreOrganismeBassinEmploi.tsx
+│   │   │   │   ├── FiltreOrganismeDepartement.tsx
+│   │   │   │   ├── FiltreOrganismeRegion.tsx
+│   │   │   │   ├── FiltreOrganismeReseau.tsx
+│   │   │   │   ├── FiltreOrganismeSearch.tsx
+│   │   │   │   ├── FiltreOrganismeTerritoire.tsx
+│   │   │   │   └── secteur-professionnel
+│   │   │   │       └── arborescence-rome.ts
+│   │   │   └── permissions-onglet-graphique.ts
+│   │   ├── models
+│   │   │   ├── effectifs-filters.ts
+│   │   │   ├── graphs.test.ts
+│   │   │   ├── graphs.ts
+│   │   │   └── pagination.ts
+│   │   ├── mon-compte
+│   │   │   ├── NavigationCompte.tsx
+│   │   │   └── ProfileInformation.tsx
+│   │   ├── mon-espace
+│   │   │   ├── effectifs
+│   │   │   │   ├── doublons
+│   │   │   │   │   ├── EffectifDoublonDeleteAlertDialog.tsx
+│   │   │   │   │   ├── EffectifDoublonDeleteAllAlertDialog.tsx
+│   │   │   │   │   ├── EffectifsDoublonsDetailTable.tsx
+│   │   │   │   │   ├── EffectifsDoublonsList.tsx
+│   │   │   │   │   └── EffectifsDoublonsPage.tsx
+│   │   │   │   ├── engine
+│   │   │   │   │   ├── Effectif.tsx
+│   │   │   │   │   ├── EffectifsTableDetails.tsx
+│   │   │   │   │   ├── atoms.ts
+│   │   │   │   │   ├── effectifForm
+│   │   │   │   │   │   ├── EffectifForm.tsx
+│   │   │   │   │   │   ├── blocks
+│   │   │   │   │   │   │   ├── apprenant
+│   │   │   │   │   │   │   │   ├── EffectifApprenant.tsx
+│   │   │   │   │   │   │   │   ├── apprenantSchema.ts
+│   │   │   │   │   │   │   │   └── domain
+│   │   │   │   │   │   │   │       ├── shouldAskRepresentantLegal.ts
+│   │   │   │   │   │   │   │       └── shouldAskResponsalLegalAdresse.ts
+│   │   │   │   │   │   │   ├── contrats
+│   │   │   │   │   │   │   │   ├── EffectifContrats.tsx
+│   │   │   │   │   │   │   │   └── contratsSchema.ts
+│   │   │   │   │   │   │   ├── formation
+│   │   │   │   │   │   │   │   ├── EffectifFormation.tsx
+│   │   │   │   │   │   │   │   └── formationSchema.ts
+│   │   │   │   │   │   │   ├── lieu-de-formation
+│   │   │   │   │   │   │   │   └── lieuDeFormationSchema.ts
+│   │   │   │   │   │   │   └── statuts
+│   │   │   │   │   │   │       └── statutSchema.ts
+│   │   │   │   │   │   └── domain
+│   │   │   │   │   │       └── indiceDeRepetionOptions.ts
+│   │   │   │   │   ├── effectifsTable
+│   │   │   │   │   │   ├── EffectifsColumns.tsx
+│   │   │   │   │   │   ├── EffectifsFilterComponent.tsx
+│   │   │   │   │   │   ├── EffectifsFilterPanel.tsx
+│   │   │   │   │   │   └── EffectifsTable.tsx
+│   │   │   │   │   ├── formEngine
+│   │   │   │   │   │   ├── EffectifFormControllerContext.tsx
+│   │   │   │   │   │   ├── atoms.ts
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   ├── CollapseController.tsx
+│   │   │   │   │   │   │   └── Input
+│   │   │   │   │   │   │       ├── ConsentInput.tsx
+│   │   │   │   │   │   │       ├── DateInput.tsx
+│   │   │   │   │   │   │       ├── Input.tsx
+│   │   │   │   │   │   │       ├── InputController.tsx
+│   │   │   │   │   │   │       ├── InputWrapper.tsx
+│   │   │   │   │   │   │       ├── NumberInput.tsx
+│   │   │   │   │   │   │       ├── PhoneInput.tsx
+│   │   │   │   │   │   │       ├── RadioInput.tsx
+│   │   │   │   │   │   │       ├── Select.tsx
+│   │   │   │   │   │   │       └── TextInput.tsx
+│   │   │   │   │   │   ├── controls
+│   │   │   │   │   │   │   ├── apprenantCodePostalDeNaissance.control.ts
+│   │   │   │   │   │   │   ├── apprenantNouveauStatut.control.ts
+│   │   │   │   │   │   │   ├── apprenantUAI.control.ts
+│   │   │   │   │   │   │   ├── employeurSiret.control.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── effectifFormSchema.ts
+│   │   │   │   │   │   ├── form_engine.md
+│   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   ├── useAutoSave.ts
+│   │   │   │   │   │   │   └── useInitEffectifForm.ts
+│   │   │   │   │   │   ├── initFields.tsx
+│   │   │   │   │   │   ├── useEffectifForm.ts
+│   │   │   │   │   │   ├── utils
+│   │   │   │   │   │   │   ├── findLogicErrors.ts
+│   │   │   │   │   │   │   ├── getValues.ts
+│   │   │   │   │   │   │   ├── isEmptyValue.ts
+│   │   │   │   │   │   │   └── validField.ts
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   └── services
+│   │   │   │   │       └── api.service.ts
+│   │   │   │   └── useEffectifsOrganisme.ts
+│   │   │   ├── organisation
+│   │   │   │   ├── InvitationForm.tsx
+│   │   │   │   └── InvitationFormAdmin.tsx
+│   │   │   └── organismes
+│   │   │       └── organismesTable
+│   │   │           ├── OrganismesColumns.tsx
+│   │   │           └── OrganismesTable.tsx
+│   │   ├── organismes
+│   │   │   ├── AlertDuplicatsEffectifs.tsx
+│   │   │   ├── BandeauTransmission.tsx
+│   │   │   ├── CertificationDetails
+│   │   │   │   ├── CertificationDetails.tsx
+│   │   │   │   ├── CfdDetails.tsx
+│   │   │   │   └── RncpDetails.tsx
+│   │   │   ├── IndicateursEffectifsParFormationTable.tsx
+│   │   │   ├── InfoFiabilisationOrganisme.tsx
+│   │   │   ├── InfoTeleversement.tsx
+│   │   │   ├── InfoTransmissionDeca.tsx
+│   │   │   ├── InfoTransmissionDonnees.tsx
+│   │   │   ├── ListeOrganismesPage.tsx
+│   │   │   ├── ListeOrganismesReseauxPage.tsx
+│   │   │   ├── OrganismesFilterPanel.tsx
+│   │   │   ├── OrganismesTable.tsx
+│   │   │   ├── Televersement.tsx
+│   │   │   ├── TeleversementTable.tsx
+│   │   │   ├── TeleversementValide.tsx
+│   │   │   ├── filters
+│   │   │   │   ├── FiltreOrganismeDepartements.tsx
+│   │   │   │   ├── FiltreOrganismeEtat.tsx
+│   │   │   │   ├── FiltreOrganismeNature.tsx
+│   │   │   │   ├── FiltreOrganismeRegions.tsx
+│   │   │   │   ├── FiltreOrganismeTransmission.tsx
+│   │   │   │   ├── FiltreOrganismeUai.tsx
+│   │   │   │   └── FiltreYesNo.tsx
+│   │   │   ├── headerTooltips.tsx
+│   │   │   └── models
+│   │   │       └── organismes-filters.ts
+│   │   ├── referencement-organisme
+│   │   │   ├── ReferencementOrganisme.tsx
+│   │   │   └── tabs
+│   │   │       ├── AideCodeRncp.tsx
+│   │   │       ├── AideNature.tsx
+│   │   │       ├── AideQualiopi.tsx
+│   │   │       ├── AideRelationsOrganismes.tsx
+│   │   │       ├── AideSiret.tsx
+│   │   │       └── AideUai.tsx
+│   │   ├── transmissions
+│   │   │   ├── ListeTransmissionsDetails.tsx
+│   │   │   ├── ListeTransmissionsPage.tsx
+│   │   │   ├── TransmissionByDayTable.tsx
+│   │   │   ├── TransmissionErrorDetailsTable.tsx
+│   │   │   ├── TransmissionsErrorSummary.tsx
+│   │   │   ├── TransmissionsErrorTab.tsx
+│   │   │   └── TransmissionsSuccessDetailsTable.tsx
+│   │   └── voeux
+│   │       ├── AffelnetChart.tsx
+│   │       └── AffelnetPage.tsx
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── pages
+│   │   ├── 404.tsx
+│   │   ├── _app.tsx
+│   │   ├── _document.tsx
+│   │   ├── _error.tsx
+│   │   ├── accessibilite.tsx
+│   │   ├── admin
+│   │   │   ├── fusion-organismes
+│   │   │   │   └── index.tsx
+│   │   │   ├── impostures
+│   │   │   │   └── index.tsx
+│   │   │   ├── maintenance.tsx
+│   │   │   ├── organismes
+│   │   │   │   ├── gestion.tsx
+│   │   │   │   └── recherche.tsx
+│   │   │   ├── reseaux
+│   │   │   │   ├── [id].tsx
+│   │   │   │   └── index.tsx
+│   │   │   └── transmissions
+│   │   │       ├── [date].tsx
+│   │   │       └── index.tsx
+│   │   ├── auth
+│   │   │   ├── en-attente-confirmation.tsx
+│   │   │   ├── finalisation.tsx
+│   │   │   ├── inscription
+│   │   │   │   ├── [typeOrganisation].tsx
+│   │   │   │   ├── bravo.tsx
+│   │   │   │   ├── organisme-inconnu.tsx
+│   │   │   │   ├── profil.tsx
+│   │   │   │   └── reseau-autre.tsx
+│   │   │   ├── inscription.tsx
+│   │   │   ├── modifier-mot-de-passe.tsx
+│   │   │   └── refus-invitation.tsx
+│   │   ├── cgu.tsx
+│   │   ├── comprendre-les-donnees.tsx
+│   │   ├── connexion-api.tsx
+│   │   ├── contact.tsx
+│   │   ├── docs
+│   │   │   ├── [id].tsx
+│   │   │   ├── faq.tsx
+│   │   │   ├── kit-deploiement-tba-op.tsx
+│   │   │   └── kit-deploiement-tba-reseaux.tsx
+│   │   ├── effectifs
+│   │   │   ├── doublons.tsx
+│   │   │   └── televersement.tsx
+│   │   ├── effectifs.tsx
+│   │   ├── en-maintenance.tsx
+│   │   ├── enquete-sifa.tsx
+│   │   ├── glossaire.tsx
+│   │   ├── home.tsx
+│   │   ├── indicateurs
+│   │   │   └── graphiques.tsx
+│   │   ├── indicateurs.tsx
+│   │   ├── mentions-legales.tsx
+│   │   ├── mon-compte
+│   │   │   └── index.tsx
+│   │   ├── national
+│   │   │   └── indicateurs.tsx
+│   │   ├── organisation
+│   │   │   └── membres.tsx
+│   │   ├── organismes
+│   │   │   ├── [organismeId]
+│   │   │   │   ├── effectifs
+│   │   │   │   │   ├── doublons.tsx
+│   │   │   │   │   └── televersement.tsx
+│   │   │   │   ├── effectifs.tsx
+│   │   │   │   ├── enquete-sifa.tsx
+│   │   │   │   ├── indicateurs.tsx
+│   │   │   │   ├── organismes.tsx
+│   │   │   │   └── transmissions
+│   │   │   │       ├── [date].tsx
+│   │   │   │       └── index.tsx
+│   │   │   ├── [organismeId].tsx
+│   │   │   ├── a-completer.tsx
+│   │   │   └── non-retenus.tsx
+│   │   ├── organismes.tsx
+│   │   ├── parametres.tsx
+│   │   ├── politique-de-confidentialite.tsx
+│   │   ├── questions-reponses
+│   │   │   ├── comment-fonctionne-le-tableau-de-bord.tsx
+│   │   │   ├── contacter-l-equipe.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── qu-est-ce-que-le-tableau-de-bord.tsx
+│   │   ├── referencement-organisme.tsx
+│   │   ├── reinscription.tsx
+│   │   ├── stats
+│   │   │   ├── [tab].tsx
+│   │   │   └── index.tsx
+│   │   ├── test-erp.tsx
+│   │   ├── transmissions
+│   │   │   └── [date].tsx
+│   │   ├── transmissions.tsx
+│   │   └── voeux-affelnet.tsx
+│   ├── public
+│   │   ├── Aimaira-2024.pdf
+│   │   ├── Ammon-2025.pdf
+│   │   ├── Gestibase-2024.pdf
+│   │   ├── InstructionsSIFA_31122022.pdf
+│   │   ├── InstructionsSIFA_31122023.pdf
+│   │   ├── InstructionsSIFA_31122024.pdf
+│   │   ├── SC-form-2024.pdf
+│   │   ├── Ypareo-2024.pdf
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── arborescence-rome-14-06-2021.json
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── fonts
+│   │   │   ├── .gitattributes
+│   │   │   ├── Marianne-Bold.woff
+│   │   │   ├── Marianne-Bold.woff2
+│   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-ExtraBold_Italic.woff
+│   │   │   ├── Marianne-ExtraBold_Italic.woff2
+│   │   │   ├── Marianne-Light.woff
+│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   ├── Marianne-Regular.woff
+│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   └── fonts.css
+│   │   ├── france.png
+│   │   ├── images
+│   │   │   ├── CSV-delimiter.png
+│   │   │   ├── advancedOutline.svg
+│   │   │   ├── aide
+│   │   │   │   ├── correction_informations.png
+│   │   │   │   ├── nature.png
+│   │   │   │   ├── nature_formation.png
+│   │   │   │   ├── nature_inconnue.png
+│   │   │   │   ├── relations_organismes.png
+│   │   │   │   ├── siret.png
+│   │   │   │   ├── uai.png
+│   │   │   │   └── verifier_formation.png
+│   │   │   ├── ampoule.png
+│   │   │   ├── attente_validation_compte.png
+│   │   │   ├── campagne
+│   │   │   │   └── mission-locale
+│   │   │   │       ├── 271
+│   │   │   │       │   └── header.png
+│   │   │   │       ├── 320
+│   │   │   │       │   └── header.png
+│   │   │   │       ├── 323
+│   │   │   │       │   └── header.png
+│   │   │   │       └── 377
+│   │   │   │           └── header.png
+│   │   │   ├── cerfa
+│   │   │   │   └── avatar.svg
+│   │   │   ├── computer-woman.svg
+│   │   │   ├── contact.svg
+│   │   │   ├── dashboard-illustration.svg
+│   │   │   ├── eclair.svg
+│   │   │   ├── emails
+│   │   │   │   ├── action-ml.png
+│   │   │   │   ├── collaboration-cfa.png
+│   │   │   │   ├── marianne.png
+│   │   │   │   └── screen-ml-recontacter.png
+│   │   │   ├── france-icon.svg
+│   │   │   ├── france-travail-select-secteur.png
+│   │   │   ├── france_relance.svg
+│   │   │   ├── home
+│   │   │   │   ├── slide1.png
+│   │   │   │   ├── slide2.png
+│   │   │   │   └── slide3.png
+│   │   │   ├── info-nouveau-contrat.svg
+│   │   │   ├── landing-cards
+│   │   │   │   ├── alarm-warning.svg
+│   │   │   │   ├── bar-chart.svg
+│   │   │   │   ├── city-hall.svg
+│   │   │   │   ├── community.svg
+│   │   │   │   ├── file-damaged.svg
+│   │   │   │   ├── info.svg
+│   │   │   │   ├── linkedin.svg
+│   │   │   │   ├── network.svg
+│   │   │   │   ├── school.svg
+│   │   │   │   ├── shield-user.svg
+│   │   │   │   └── timer-flash.svg
+│   │   │   ├── landing-missions-jeunes.svg
+│   │   │   ├── landing-missions-organismes.svg
+│   │   │   ├── landing-missions-services-publics.svg
+│   │   │   ├── landing-ofa-designer.svg
+│   │   │   ├── landing-ofa-protection.svg
+│   │   │   ├── landing-ofa-timeline.svg
+│   │   │   ├── landing-operateurs-publics-beta-testeurs.svg
+│   │   │   ├── landing-operateurs-publics-parcours.svg
+│   │   │   ├── landing-operateurs-publics-slide1.jpg
+│   │   │   ├── landing-operateurs-publics-slide2.jpg
+│   │   │   ├── landing-operateurs-publics-slide3.jpg
+│   │   │   ├── landing-operateurs-publics.svg
+│   │   │   ├── landing-presentation-tdb.svg
+│   │   │   ├── landing-work-1.svg
+│   │   │   ├── landing-work-2.svg
+│   │   │   ├── landing-work-3.svg
+│   │   │   ├── magnifyingPlus.svg
+│   │   │   ├── maintenance.svg
+│   │   │   ├── marianne.svg
+│   │   │   ├── mission-locale-not-treated.svg
+│   │   │   ├── mission-locale-treated.svg
+│   │   │   ├── mission-locale-valid-tick.svg
+│   │   │   ├── mission-locale-validation.svg
+│   │   │   ├── ml_recontacter_traiter.png
+│   │   │   ├── parametres-choix-transmission.svg
+│   │   │   ├── parcours-contacte-sans-reponse.svg
+│   │   │   ├── parcours-dossier-traite.svg
+│   │   │   ├── parcours-en-cours-traitement.svg
+│   │   │   ├── parcours-france-travail-contact.svg
+│   │   │   ├── parcours-partage-mission-locale.svg
+│   │   │   ├── parcours-rupture.svg
+│   │   │   ├── refus-invitation.svg
+│   │   │   ├── supportOutline.svg
+│   │   │   ├── supportOutline_III.svg
+│   │   │   ├── support_solid.svg
+│   │   │   ├── teamSolid0.svg
+│   │   │   ├── televersement-manuel-success.svg
+│   │   │   └── televersement.svg
+│   │   ├── modele-import-29012025.xlsx
+│   │   ├── pdf
+│   │   │   ├── Carif-Oref-contacts.pdf
+│   │   │   ├── Contact-Rectorat-UAI-RAMSESE.pdf
+│   │   │   ├── Vadémécum-RNCP-V1.1-VF-.pdf
+│   │   │   ├── formulaire-immatriculation-uai-pour-of_cfa.pdf
+│   │   │   ├── vademecum-rco.pdf
+│   │   │   └── vademecum.pdf
+│   │   └── sitemap.xml
+│   ├── sentry.client.config.ts
+│   ├── sentry.edge.config.ts
+│   ├── sentry.properties
+│   ├── sentry.server.config.ts
+│   ├── styles
+│   │   ├── MonthSelect.css
+│   │   └── globals.css
+│   ├── tests
+│   │   └── setup.ts
+│   ├── theme
+│   │   ├── Fonts.tsx
+│   │   ├── components
+│   │   │   ├── accordion.js
+│   │   │   ├── badge.js
+│   │   │   ├── breadcrumb.js
+│   │   │   ├── button.js
+│   │   │   ├── checkbox.js
+│   │   │   ├── heading.js
+│   │   │   ├── icons
+│   │   │   │   ├── AccountFill.tsx
+│   │   │   │   ├── AccountUnfill.tsx
+│   │   │   │   ├── AddFill.tsx
+│   │   │   │   ├── Alert.tsx
+│   │   │   │   ├── AlertRounded.tsx
+│   │   │   │   ├── ArrowDropRightLine.tsx
+│   │   │   │   ├── ArrowRightLine.tsx
+│   │   │   │   ├── BonusAvatar.tsx
+│   │   │   │   ├── Book.tsx
+│   │   │   │   ├── Check.tsx
+│   │   │   │   ├── Checkbox.tsx
+│   │   │   │   ├── CheckboxCircke.tsx
+│   │   │   │   ├── Close.tsx
+│   │   │   │   ├── CloseCircle.tsx
+│   │   │   │   ├── DashboardWelcome.tsx
+│   │   │   │   ├── DataVisualisation.tsx
+│   │   │   │   ├── DocumentFile.tsx
+│   │   │   │   ├── DownloadLine.tsx
+│   │   │   │   ├── DownloadSimple.tsx
+│   │   │   │   ├── Edition.tsx
+│   │   │   │   ├── ErrorIcon.tsx
+│   │   │   │   ├── ErrorPill.tsx
+│   │   │   │   ├── ExitIcon.tsx
+│   │   │   │   ├── ExternalLinkLine.tsx
+│   │   │   │   ├── Eye.tsx
+│   │   │   │   ├── InfoCircle.tsx
+│   │   │   │   ├── InfoSquare.tsx
+│   │   │   │   ├── InformationAvatar.tsx
+│   │   │   │   ├── Interrogation.tsx
+│   │   │   │   ├── IoArrowBackward.tsx
+│   │   │   │   ├── IoArrowForward.tsx
+│   │   │   │   ├── LockFill.tsx
+│   │   │   │   ├── MenuFill.tsx
+│   │   │   │   ├── NotFound.tsx
+│   │   │   │   ├── Notification.tsx
+│   │   │   │   ├── Parametre.tsx
+│   │   │   │   ├── ParentGroupIcon.tsx
+│   │   │   │   ├── PlainArrowRight.tsx
+│   │   │   │   ├── Settings4Fill.tsx
+│   │   │   │   ├── ShowPassword.tsx
+│   │   │   │   ├── SpyLine.tsx
+│   │   │   │   ├── SubtractLine.tsx
+│   │   │   │   ├── Support.tsx
+│   │   │   │   ├── TechnicalError.tsx
+│   │   │   │   ├── Trash.tsx
+│   │   │   │   ├── UploadLine.tsx
+│   │   │   │   ├── UserFill.tsx
+│   │   │   │   ├── ValidateIcon.tsx
+│   │   │   │   ├── Video.tsx
+│   │   │   │   ├── Warning.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── index.js
+│   │   │   ├── input.js
+│   │   │   ├── link.js
+│   │   │   ├── numberInput.js
+│   │   │   ├── radio.js
+│   │   │   ├── select.js
+│   │   │   ├── switch.js
+│   │   │   ├── table.js
+│   │   │   ├── tabs.js
+│   │   │   ├── tag.js
+│   │   │   ├── text.js
+│   │   │   └── textarea.js
+│   │   ├── index.ts
+│   │   └── theme-beta.ts
+│   ├── tsconfig.json
+│   └── types.d.ts
+├── vitest.workspace.ts
+└── yarn.lock
+420 directories, 1564 files
