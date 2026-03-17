@@ -57,7 +57,9 @@ export type DependencyType =
   | "npm-dev"
   | "pypi"
   | "pypi-dev"
-  | "docker";
+  | "docker"
+  | "gem"
+  | "gem-dev";
 
 export interface DependencyUsage {
   organization: string;

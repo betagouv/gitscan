@@ -103,6 +103,14 @@ find . -name "docker-compose.yml" -type f | while read -r file; do
     echo "✓ Copié: $rel_path -> $(basename $dest_path)"
 done
 
+# Gemfile
+find . -name "Gemfile" -type f | while read -r file; do
+    rel_path="${file#./}"
+    dest_path="$RESULTS_DIR/${rel_path//\//_}"
+    cp "$file" "$dest_path"
+    echo "✓ Copié: $rel_path -> $(basename $dest_path)"
+done
+
 # Génération de l'arborescence avec tree
 echo "Génération de l'arborescence..."
 if command -v tree &> /dev/null; then
