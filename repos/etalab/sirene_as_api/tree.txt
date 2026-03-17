@@ -11,13 +11,6 @@
 ├── .rubocop.yml
 ├── .ruby-version
 ├── .travis.yml
-├── Dockerfile
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
-├── LICENSE.md
-├── README.md
-├── Rakefile
 ├── app
 │   ├── api
 │   │   └── ovh_api.rb
@@ -29,8 +22,8 @@
 │   │   ├── daily_update
 │   │   │   ├── operation
 │   │   │   │   ├── post_update.rb
-│   │   │   │   ├── update.rb
-│   │   │   │   └── update_database.rb
+│   │   │   │   ├── update_database.rb
+│   │   │   │   └── update.rb
 │   │   │   └── task
 │   │   │       ├── create_associations.rb
 │   │   │       └── current_stock_completed.rb
@@ -143,16 +136,16 @@
 │   │   ├── application_record.rb
 │   │   ├── concerns
 │   │   │   └── .keep
-│   │   ├── daily_update.rb
-│   │   ├── daily_update_etablissement.rb
 │   │   ├── daily_update_etablissement_non_diffusable.rb
-│   │   ├── daily_update_unite_legale.rb
+│   │   ├── daily_update_etablissement.rb
 │   │   ├── daily_update_unite_legale_non_diffusable.rb
-│   │   ├── etablissement.rb
+│   │   ├── daily_update_unite_legale.rb
+│   │   ├── daily_update.rb
 │   │   ├── etablissement_v2.rb
-│   │   ├── stock.rb
+│   │   ├── etablissement.rb
 │   │   ├── stock_etablissement.rb
 │   │   ├── stock_unite_legale.rb
+│   │   ├── stock.rb
 │   │   └── unite_legale.rb
 │   ├── serializers
 │   │   ├── api
@@ -180,8 +173,8 @@
 │   ├── application.rb
 │   ├── boot.rb
 │   ├── cable.yml
-│   ├── database.yml
 │   ├── database_indexes.yml
+│   ├── database.yml
 │   ├── deploy.rb
 │   ├── docker
 │   │   ├── database.yml
@@ -250,18 +243,25 @@
 │   ├── seeds.rb
 │   └── structure.sql
 ├── docker-compose.yml
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
 ├── lib
 │   ├── string.rb
 │   └── tasks
 │       ├── checks_db.rake
 │       ├── server.rake
-│       ├── sirene.rake
-│       └── sirene_as_api.rake
+│       ├── sirene_as_api.rake
+│       └── sirene.rake
+├── LICENSE.md
 ├── log
 │   └── .keep
 ├── postgresql_setup.txt
 ├── public
 │   └── robots.txt
+├── Rakefile
+├── README.md
 ├── solr
 │   ├── configsets
 │   │   └── sunspot
@@ -380,25 +380,24 @@
 │   │   ├── example.csv.zip
 │   │   ├── files_for_deletion_test
 │   │   │   └── .keep
-│   │   ├── sample_etablissements.csv.gz
 │   │   ├── sample_etablissements_KO_missing_header.csv
 │   │   ├── sample_etablissements_OK.csv
+│   │   ├── sample_etablissements.csv.gz
 │   │   ├── sample_patches
 │   │   │   ├── geo-sirene_2017024_E_Q.csv.gz
 │   │   │   ├── import_last_monthly_stock_test.csv
 │   │   │   ├── import_monthly_csv_query.txt
 │   │   │   └── test_file.csv
-│   │   ├── sample_unites_legales.csv.zip
 │   │   ├── sample_unites_legales_KO.csv
 │   │   ├── sample_unites_legales_OK.csv
+│   │   ├── sample_unites_legales.csv.zip
 │   │   ├── samples_insee
 │   │   │   ├── api_results.json
-│   │   │   ├── etablissement.json
 │   │   │   ├── etablissement_non_diffusable.json
-│   │   │   ├── unite_legale.json
-│   │   │   └── unite_legale_non_diffusable.json
+│   │   │   ├── etablissement.json
+│   │   │   ├── unite_legale_non_diffusable.json
+│   │   │   └── unite_legale.json
 │   │   └── vcr_cassettes
-│   │       ├── OvhAPI_check_current_service.yml
 │   │       ├── check_stock_availability.yml
 │   │       ├── data_gouv_geo_sirene_may_KO.yml
 │   │       ├── data_gouv_geo_sirene_may_OK.yml
@@ -406,18 +405,18 @@
 │   │       ├── data_gouv_sirene_july_OK.yml
 │   │       ├── download_failed.yml
 │   │       ├── download_success.yml
+│   │       ├── geo_sirene_v3_may_KO.yml
+│   │       ├── geo_sirene_v3_may_OK.yml
 │   │       ├── geo-sirene_1_april_no_stock_yet.yml
 │   │       ├── geo-sirene_20181215.yml
 │   │       ├── geo-sirene_file_index_20170330_22_links_since_LM.yml
 │   │       ├── geo-sirene_file_index_20190102.yml
 │   │       ├── geo-sirene_file_index_4_links_since_LM.yml
 │   │       ├── geo-sirene_january_2018.yml
-│   │       ├── geo-sirene_march.yml
 │   │       ├── geo-sirene_march_link_not_available.yml
+│   │       ├── geo-sirene_march.yml
 │   │       ├── geo-sirene_post_july.yml
 │   │       ├── geo-sirene_server_KO.yml
-│   │       ├── geo_sirene_v3_may_KO.yml
-│   │       ├── geo_sirene_v3_may_OK.yml
 │   │       ├── insee
 │   │       │   ├── renew_token.yml
 │   │       │   ├── siren_full_update_OK.yml
@@ -428,6 +427,7 @@
 │   │       │   ├── siren_updates_wrong_filter.yml
 │   │       │   ├── siret_non_diffusable_small_update_OK.yml
 │   │       │   └── siret_small_update_OK.yml
+│   │       ├── OvhAPI_check_current_service.yml
 │   │       ├── update_database.yml
 │   │       └── update_empty_database.yml
 │   ├── interactors

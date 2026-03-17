@@ -1,34 +1,27 @@
 .
 ├── .github
 │   ├── CONTRIBUTING.md
+│   ├── dependabot.yml
 │   ├── FUNDING.yml
 │   ├── ISSUE_TEMPLATE.md
 │   ├── PULL_REQUEST_TEMPLATE.md
-│   ├── dependabot.yml
 │   └── workflows
 │       └── ruby.yml
 ├── .gitignore
-├── .rubocop.yml
 ├── .rubocop_todo.yml
+├── .rubocop.yml
 ├── .ruby-version
 ├── CODE_OF_CONDUCT.md
-├── Gemfile
-├── LICENSE
-├── README.md
-├── Rakefile
 ├── common
 │   └── spec
-│       ├── spec_helper_foot.rb
 │       ├── spec_helper_foot_core.rb
-│       ├── spec_helper_head.rb
-│       └── spec_helper_head_core.rb
+│       ├── spec_helper_foot.rb
+│       ├── spec_helper_head_core.rb
+│       └── spec_helper_head.rb
 ├── ddenv.yaml
+├── Gemfile
 ├── guard-nanoc
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── guard-nanoc.gemspec
 │   ├── lib
 │   │   ├── guard
@@ -39,6 +32,10 @@
 │   │   │   │   └── version.rb
 │   │   │   └── nanoc.rb
 │   │   └── guard-nanoc.rb
+│   ├── LICENSE
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── lib
@@ -47,12 +44,9 @@
 │       │       │   └── live_command_spec.rb
 │       │       └── nanoc_spec.rb
 │       └── spec_helper.rb
+├── LICENSE
 ├── nanoc
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── bin
 │   │   └── nanoc
 │   ├── lib
@@ -127,21 +121,25 @@
 │   │   │   │   ├── action_provider.rb
 │   │   │   │   ├── action_recorder.rb
 │   │   │   │   ├── action_sequence_calculator.rb
-│   │   │   │   ├── compilation_rule.rb
 │   │   │   │   ├── compilation_rule_context.rb
+│   │   │   │   ├── compilation_rule.rb
 │   │   │   │   ├── compiler_dsl.rb
 │   │   │   │   ├── errors.rb
-│   │   │   │   ├── routing_rule.rb
 │   │   │   │   ├── routing_rule_context.rb
-│   │   │   │   ├── rule.rb
+│   │   │   │   ├── routing_rule.rb
 │   │   │   │   ├── rule_context.rb
+│   │   │   │   ├── rule.rb
 │   │   │   │   ├── rules_collection.rb
 │   │   │   │   └── rules_loader.rb
 │   │   │   ├── rule_dsl.rb
 │   │   │   └── version.rb
 │   │   └── nanoc.rb
+│   ├── LICENSE
 │   ├── nanoc.gemspec
 │   ├── nanoc.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   ├── spec
 │   │   ├── contributors_spec.rb
 │   │   ├── gem_spec.rb
@@ -203,8 +201,8 @@
 │       │   ├── test_compiler.rb
 │       │   └── test_site.rb
 │       ├── data_sources
-│       │   ├── test_filesystem.rb
-│       │   └── test_filesystem_tools.rb
+│       │   ├── test_filesystem_tools.rb
+│       │   └── test_filesystem.rb
 │       ├── extra
 │       │   └── core_ext
 │       │       └── test_time.rb
@@ -258,10 +256,6 @@
 │           └── test_rules_collection.rb
 ├── nanoc-checking
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── checking
@@ -288,8 +282,12 @@
 │   │   │   │   └── version.rb
 │   │   │   └── checking.rb
 │   │   └── nanoc-checking.rb
+│   ├── LICENSE
 │   ├── nanoc-checking.gemspec
 │   ├── nanoc-checking.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   ├── spec
 │   │   ├── fixtures
 │   │   │   └── vcr_cassettes
@@ -323,10 +321,6 @@
 │               └── test_link_collector.rb
 ├── nanoc-cli
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── cli
@@ -360,8 +354,12 @@
 │   │   │   │   └── version.rb
 │   │   │   └── cli.rb
 │   │   └── nanoc-cli.rb
+│   ├── LICENSE
 │   ├── nanoc-cli.gemspec
 │   ├── nanoc-cli.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -391,17 +389,13 @@
 │       └── spec_helper.rb
 ├── nanoc-core
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── core
 │   │   │   │   ├── action_provider.rb
-│   │   │   │   ├── action_sequence.rb
 │   │   │   │   ├── action_sequence_builder.rb
 │   │   │   │   ├── action_sequence_store.rb
+│   │   │   │   ├── action_sequence.rb
 │   │   │   │   ├── aggregate_data_source.rb
 │   │   │   │   ├── assertions.rb
 │   │   │   │   ├── basic_item_rep_collection_view.rb
@@ -443,8 +437,8 @@
 │   │   │   │   │   └── store_pre_compilation_state.rb
 │   │   │   │   ├── compiled_content_cache.rb
 │   │   │   │   ├── compiled_content_store.rb
-│   │   │   │   ├── compiler.rb
 │   │   │   │   ├── compiler_loader.rb
+│   │   │   │   ├── compiler.rb
 │   │   │   │   ├── config_loader.rb
 │   │   │   │   ├── config_view.rb
 │   │   │   │   ├── configuration-schema.json
@@ -457,37 +451,37 @@
 │   │   │   │   │   ├── hash.rb
 │   │   │   │   │   └── string.rb
 │   │   │   │   ├── data_source.rb
-│   │   │   │   ├── dependency.rb
 │   │   │   │   ├── dependency_props.rb
 │   │   │   │   ├── dependency_store.rb
 │   │   │   │   ├── dependency_tracker.rb
+│   │   │   │   ├── dependency.rb
 │   │   │   │   ├── directed_graph.rb
-│   │   │   │   ├── document.rb
 │   │   │   │   ├── document_view_mixin.rb
+│   │   │   │   ├── document.rb
 │   │   │   │   ├── error.rb
 │   │   │   │   ├── errors.rb
 │   │   │   │   ├── executor.rb
 │   │   │   │   ├── feature.rb
 │   │   │   │   ├── filter.rb
-│   │   │   │   ├── identifiable_collection.rb
 │   │   │   │   ├── identifiable_collection_view.rb
+│   │   │   │   ├── identifiable_collection.rb
 │   │   │   │   ├── identifier.rb
 │   │   │   │   ├── in_memory_data_source.rb
 │   │   │   │   ├── instrumentor.rb
-│   │   │   │   ├── item.rb
-│   │   │   │   ├── item_collection.rb
 │   │   │   │   ├── item_collection_with_reps_view.rb
 │   │   │   │   ├── item_collection_without_reps_view.rb
-│   │   │   │   ├── item_rep.rb
+│   │   │   │   ├── item_collection.rb
 │   │   │   │   ├── item_rep_builder.rb
 │   │   │   │   ├── item_rep_repo.rb
 │   │   │   │   ├── item_rep_router.rb
 │   │   │   │   ├── item_rep_selector.rb
 │   │   │   │   ├── item_rep_writer.rb
-│   │   │   │   ├── layout.rb
-│   │   │   │   ├── layout_collection.rb
+│   │   │   │   ├── item_rep.rb
+│   │   │   │   ├── item.rb
 │   │   │   │   ├── layout_collection_view.rb
+│   │   │   │   ├── layout_collection.rb
 │   │   │   │   ├── layout_view.rb
+│   │   │   │   ├── layout.rb
 │   │   │   │   ├── lazy_value.rb
 │   │   │   │   ├── mutable_config_view.rb
 │   │   │   │   ├── mutable_document_view_mixin.rb
@@ -525,8 +519,8 @@
 │   │   │   │   ├── processing_actions.rb
 │   │   │   │   ├── pruner.rb
 │   │   │   │   ├── regexp_pattern.rb
-│   │   │   │   ├── site.rb
 │   │   │   │   ├── site_loader.rb
+│   │   │   │   ├── site.rb
 │   │   │   │   ├── snapshot_def.rb
 │   │   │   │   ├── store.rb
 │   │   │   │   ├── string_pattern.rb
@@ -536,15 +530,19 @@
 │   │   │   │   ├── trivial_error.rb
 │   │   │   │   ├── utils.rb
 │   │   │   │   ├── version.rb
-│   │   │   │   ├── view.rb
 │   │   │   │   ├── view_context_for_compilation.rb
 │   │   │   │   ├── view_context_for_pre_compilation.rb
 │   │   │   │   ├── view_context_for_shell.rb
+│   │   │   │   ├── view.rb
 │   │   │   │   └── yaml_loader.rb
 │   │   │   └── core.rb
 │   │   └── nanoc-core.rb
+│   ├── LICENSE
 │   ├── nanoc-core.gemspec
 │   ├── nanoc-core.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── manifest_spec.rb
 │       ├── meta_spec.rb
@@ -659,20 +657,20 @@
 │       └── spec_helper.rb
 ├── nanoc-dart-sass
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
-│   │   │   ├── dart-sass.rb
 │   │   │   ├── dart_sass
 │   │   │   │   ├── filter.rb
 │   │   │   │   └── version.rb
-│   │   │   └── dart_sass.rb
+│   │   │   ├── dart_sass.rb
+│   │   │   └── dart-sass.rb
 │   │   └── nanoc-dart-sass.rb
+│   ├── LICENSE
 │   ├── nanoc-dart-sass.gemspec
 │   ├── nanoc-dart-sass.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -684,10 +682,6 @@
 │       └── spec_helper.rb
 ├── nanoc-deploying
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── deploying
@@ -705,8 +699,12 @@
 │   │   │   │   └── version.rb
 │   │   │   └── deploying.rb
 │   │   └── nanoc-deploying.rb
+│   ├── LICENSE
 │   ├── nanoc-deploying.gemspec
 │   ├── nanoc-deploying.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -721,10 +719,6 @@
 │       └── spec_helper.rb
 ├── nanoc-external
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── external
@@ -732,8 +726,12 @@
 │   │   │   │   └── version.rb
 │   │   │   └── external.rb
 │   │   └── nanoc-external.rb
+│   ├── LICENSE
 │   ├── nanoc-external.gemspec
 │   ├── nanoc-external.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── filter_spec.rb
 │       ├── gem_spec.rb
@@ -741,10 +739,6 @@
 │       └── spec_helper.rb
 ├── nanoc-live
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   └── nanoc
 │   │       ├── live
@@ -755,8 +749,12 @@
 │   │       │   ├── live_recompiler.rb
 │   │       │   └── version.rb
 │   │       └── live.rb
+│   ├── LICENSE
 │   ├── nanoc-live.gemspec
 │   ├── nanoc-live.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -769,20 +767,20 @@
 │       └── spec_helper.rb
 ├── nanoc-org-mode
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
-│   │   │   ├── org-mode.rb
 │   │   │   ├── org_mode
 │   │   │   │   ├── filter.rb
 │   │   │   │   └── version.rb
-│   │   │   └── org_mode.rb
+│   │   │   ├── org_mode.rb
+│   │   │   └── org-mode.rb
 │   │   └── nanoc-org-mode.rb
+│   ├── LICENSE
 │   ├── nanoc-org-mode.gemspec
 │   ├── nanoc-org-mode.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -792,18 +790,18 @@
 │       └── spec_helper.rb
 ├── nanoc-spec
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── spec
 │   │   │   │   └── version.rb
 │   │   │   └── spec.rb
 │   │   └── nanoc-spec.rb
+│   ├── LICENSE
 │   ├── nanoc-spec.gemspec
 │   ├── nanoc-spec.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -813,10 +811,6 @@
 │       └── spec_helper.rb
 ├── nanoc-tilt
 │   ├── .rspec
-│   ├── LICENSE
-│   ├── NEWS.md
-│   ├── README.md
-│   ├── Rakefile
 │   ├── lib
 │   │   ├── nanoc
 │   │   │   ├── tilt
@@ -824,8 +818,12 @@
 │   │   │   │   └── version.rb
 │   │   │   └── tilt.rb
 │   │   └── nanoc-tilt.rb
+│   ├── LICENSE
 │   ├── nanoc-tilt.gemspec
 │   ├── nanoc-tilt.manifest
+│   ├── NEWS.md
+│   ├── Rakefile
+│   ├── README.md
 │   └── spec
 │       ├── gem_spec.rb
 │       ├── manifest_spec.rb
@@ -833,6 +831,8 @@
 │       │   └── tilt
 │       │       └── filter_spec.rb
 │       └── spec_helper.rb
+├── Rakefile
+├── README.md
 └── scripts
     └── release
 160 directories, 751 files

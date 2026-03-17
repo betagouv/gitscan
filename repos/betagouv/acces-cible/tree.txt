@@ -4,31 +4,19 @@
 ├── .git-blame-ignore-revs
 ├── .gitattributes
 ├── .github
+│   ├── codeql
+│   │   └── codeql-config.yml
+│   ├── dependabot.yml
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug.md
 │   │   ├── chore.md
 │   │   └── feature.md
-│   ├── codeql
-│   │   └── codeql-config.yml
-│   ├── dependabot.yml
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
-├── Dockerfile
-├── Dockerfile.dev
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
-├── LICENSE
-├── Makefile
-├── Procfile
-├── Procfile.dev
-├── README.md
-├── Rakefile
-├── SECURITY.md
 ├── app
 │   ├── assets
 │   │   ├── builds
@@ -100,9 +88,9 @@
 │   │   ├── audit.rb
 │   │   ├── axe_violation.rb
 │   │   ├── browser.rb
-│   │   ├── check.rb
 │   │   ├── check_state_machine.rb
 │   │   ├── check_transition.rb
+│   │   ├── check.rb
 │   │   ├── checks
 │   │   │   ├── accessibility_mention.rb
 │   │   │   ├── accessibility_page_heading.rb
@@ -119,14 +107,14 @@
 │   │   ├── current.rb
 │   │   ├── link
 │   │   │   └── invalid_uri_error.rb
-│   │   ├── link.rb
 │   │   ├── link_list.rb
-│   │   ├── page.rb
+│   │   ├── link.rb
 │   │   ├── page_heading_status.rb
+│   │   ├── page.rb
 │   │   ├── session.rb
-│   │   ├── site.rb
 │   │   ├── site_tag.rb
 │   │   ├── site_upload.rb
+│   │   ├── site.rb
 │   │   ├── tag.rb
 │   │   ├── team.rb
 │   │   └── user.rb
@@ -307,6 +295,8 @@
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
+├── Dockerfile
+├── Dockerfile.dev
 ├── features
 │   ├── ajout_d_un_site.feature
 │   ├── export_csv.feature
@@ -329,13 +319,20 @@
 │   ├── verification_de_site.feature
 │   ├── verification_du_plan_d_action.feature
 │   └── verification_du_schema_pluriannuel.feature
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
 ├── lib
 │   └── tasks
 │       ├── .keep
 │       ├── cucumber.rake
 │       └── vendor.rake
+├── LICENSE
 ├── log
 │   └── .keep
+├── Makefile
+├── Procfile
+├── Procfile.dev
 ├── public
 │   ├── 400.html
 │   ├── 406-unsupported-browser.html
@@ -344,8 +341,11 @@
 │   ├── icon.png
 │   ├── icon.svg
 │   └── robots.txt
+├── Rakefile
+├── README.md
 ├── script
 │   └── .keep
+├── SECURITY.md
 ├── spec
 │   ├── components
 │   │   └── dsfr
@@ -370,8 +370,8 @@
 │   │   └── files
 │   │       ├── declarations
 │   │       │   ├── invalid.html
-│   │       │   ├── valid.html
-│   │       │   └── valid_with_shift.html
+│   │       │   ├── valid_with_shift.html
+│   │       │   └── valid.html
 │   │       └── sites.csv
 │   ├── helpers
 │   │   ├── application_helper_spec.rb

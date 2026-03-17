@@ -9,16 +9,9 @@
 ├── .gitignore
 ├── .haml-lint.yml
 ├── .rspec
-├── .rubocop.yml
 ├── .rubocop_todo.yml
+├── .rubocop.yml
 ├── .semgrepignore
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
-├── LICENCE
-├── Makefile
-├── README.md
-├── Rakefile
 ├── app
 │   ├── components
 │   │   ├── .keep
@@ -81,8 +74,10 @@
 ├── config
 │   └── routes.rb
 ├── dsfr-view-components.gemspec
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
 ├── guide
-│   ├── Rules
 │   ├── content
 │   │   ├── _highlight.scss
 │   │   ├── application.scss
@@ -167,7 +162,8 @@
 │   │   └── suppress_listen_symlink_errors.rb
 │   ├── nanoc.yaml
 │   ├── package-lock.json
-│   └── package.json
+│   ├── package.json
+│   └── Rules
 ├── lib
 │   ├── dsfr
 │   │   ├── components
@@ -178,16 +174,20 @@
 │   │   └── components.rb
 │   ├── generators
 │   │   └── dsfr_component
-│   │       ├── USAGE
 │   │       ├── dsfr_component_generator.rb
-│   │       └── templates
-│   │           ├── component.haml.erb
-│   │           ├── component.rb.erb
-│   │           ├── component_helper.rb.erb
-│   │           └── component_spec.rb.erb
+│   │       ├── templates
+│   │       │   ├── component_helper.rb.erb
+│   │       │   ├── component_spec.rb.erb
+│   │       │   ├── component.haml.erb
+│   │       │   └── component.rb.erb
+│   │       └── USAGE
 │   └── tasks
 │       └── dsfr
 │           └── components_tasks.rake
+├── LICENCE
+├── Makefile
+├── Rakefile
+├── README.md
 └── spec
     ├── components
     │   ├── dsfr_component
@@ -220,7 +220,6 @@
     │       └── setup.rb
     ├── dummy
     │   ├── .ruby-version
-    │   ├── Rakefile
     │   ├── app
     │   │   ├── assets
     │   │   │   ├── builds
@@ -302,17 +301,18 @@
     │   │       └── generate_examples.rake
     │   ├── log
     │   │   └── .keep
-    │   └── public
-    │       ├── 404.html
-    │       ├── 422.html
-    │       ├── 500.html
-    │       ├── apple-touch-icon-precomposed.png
-    │       ├── apple-touch-icon.png
-    │       ├── favicon.ico
-    │       ├── fonts -> ../node_modules/@gouvfr/dsfr/dist/fonts
-    │       ├── icons -> ../node_modules/@gouvfr/dsfr/dist/icons
-    │       └── images
-    │           └── govuk-crest.png
+    │   ├── public
+    │   │   ├── 404.html
+    │   │   ├── 422.html
+    │   │   ├── 500.html
+    │   │   ├── apple-touch-icon-precomposed.png
+    │   │   ├── apple-touch-icon.png
+    │   │   ├── favicon.ico
+    │   │   ├── fonts -> ../node_modules/@gouvfr/dsfr/dist/fonts
+    │   │   ├── icons -> ../node_modules/@gouvfr/dsfr/dist/icons
+    │   │   └── images
+    │   │       └── govuk-crest.png
+    │   └── Rakefile
     ├── helpers
     │   ├── dsfr_components_helper_spec.rb
     │   └── dsfr_link_helper_spec.rb

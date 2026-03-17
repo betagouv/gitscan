@@ -8,11 +8,11 @@
 ├── .erdconfig
 ├── .gitguardian.yml
 ├── .github
-│   ├── ISSUE_TEMPLATE
-│   │   └── nouveau-besoin.md
 │   ├── actions
 │   │   └── setup-playwright
 │   │       └── action.yml
+│   ├── ISSUE_TEMPLATE
+│   │   └── nouveau-besoin.md
 │   ├── issue_template.md
 │   ├── pull_request_template.md
 │   └── workflows
@@ -30,18 +30,6 @@
 ├── .slim-lint.yml
 ├── .slugignore
 ├── .yarnrc.yml
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── Gemfile
-├── Gemfile.lock
-├── INSTALL.md
-├── LICENSE.txt
-├── Makefile
-├── Procfile
-├── Procfile.dev
-├── README.md
-├── Rakefile
-├── SECURITY.md
 ├── app
 │   ├── assets
 │   │   ├── builds
@@ -63,8 +51,6 @@
 │   │       │   ├── favicon-32x32.png
 │   │       │   └── favicon.ico
 │   │       ├── logos
-│   │       │   ├── logo-rdv-clair.svg
-│   │       │   ├── logo-rdv-sombre.svg
 │   │       │   ├── logo_aide_numerique.svg
 │   │       │   ├── logo_anct.png
 │   │       │   ├── logo_calendrier.svg
@@ -74,6 +60,8 @@
 │   │       │   ├── logo_sombre_aide_numerique.svg
 │   │       │   ├── logo_sombre_rdv_service_public.svg
 │   │       │   ├── logo_sombre_solidarites.svg
+│   │       │   ├── logo-rdv-clair.svg
+│   │       │   ├── logo-rdv-sombre.svg
 │   │       │   └── republique-francaise-logo.svg
 │   │       ├── motif_form
 │   │       │   ├── custom_cancel_warning_message.png
@@ -333,11 +321,9 @@
 │   │   │   └── users_controller.rb
 │   │   ├── user_auth_controller.rb
 │   │   ├── users
-│   │   │   ├── confirmations_controller.rb
 │   │   │   ├── file_attentes_controller.rb
 │   │   │   ├── login_codes_controller.rb
 │   │   │   ├── participations_controller.rb
-│   │   │   ├── passwords_controller.rb
 │   │   │   ├── rdv_wizard_steps_controller.rb
 │   │   │   ├── rdvs_controller.rb
 │   │   │   ├── registrations_controller.rb
@@ -406,8 +392,7 @@
 │   │   ├── users
 │   │   │   ├── edit_form.rb
 │   │   │   ├── login_code_request_form.rb
-│   │   │   ├── rdv_booking_form.rb
-│   │   │   └── registration_form.rb
+│   │   │   └── rdv_booking_form.rb
 │   │   └── zone_import_form.rb
 │   ├── helpers
 │   │   ├── absences_helper.rb
@@ -438,10 +423,10 @@
 │   │   └── users_helper.rb
 │   ├── javascript
 │   │   ├── administrate.js
-│   │   ├── application.js
-│   │   ├── application_agent.js
 │   │   ├── application_agent_config.js
+│   │   ├── application_agent.js
 │   │   ├── application_test.js
+│   │   ├── application.js
 │   │   ├── cable
 │   │   │   └── consumer.js
 │   │   ├── charts.js
@@ -471,9 +456,9 @@
 │   │   │   ├── plage_ouverture.js
 │   │   │   ├── planning-agents-select.js
 │   │   │   ├── prevent-default.js
-│   │   │   ├── rdv-user-select.js
 │   │   │   ├── rdv_lieu.js
 │   │   │   ├── rdv_wizard_step2.js
+│   │   │   ├── rdv-user-select.js
 │   │   │   ├── recurrence-form.js
 │   │   │   ├── sector-attribution-form.js
 │   │   │   ├── select2-inputs.js
@@ -499,8 +484,8 @@
 │   │   ├── mail.js
 │   │   ├── rdv_plan.js
 │   │   └── stylesheets
-│   │       ├── _variables.scss
 │   │       ├── _variables_dsfr.scss
+│   │       ├── _variables.scss
 │   │       ├── administrate
 │   │       │   ├── application.scss
 │   │       │   ├── base
@@ -529,15 +514,15 @@
 │   │       │   │   └── _normalize.scss
 │   │       │   └── utilities
 │   │       │       └── _text-color.scss
-│   │       ├── application.scss
-│   │       ├── application_agent.scss
 │   │       ├── application_agent_config.scss
+│   │       ├── application_agent.scss
+│   │       ├── application.scss
 │   │       ├── components
 │   │       │   ├── _alert.scss
 │   │       │   ├── _arrow_list.scss
 │   │       │   ├── _autocomplete.scss
-│   │       │   ├── _backgrounds.scss
 │   │       │   ├── _backgrounds_dsfr.scss
+│   │       │   ├── _backgrounds.scss
 │   │       │   ├── _bubble.scss
 │   │       │   ├── _button_group_before_card.scss
 │   │       │   ├── _calendar.scss
@@ -559,8 +544,8 @@
 │   │       │   ├── _stats.scss
 │   │       │   ├── _tables.scss
 │   │       │   ├── _types.scss
-│   │       │   ├── _utilities.scss
 │   │       │   ├── _utilities_dsfr.scss
+│   │       │   ├── _utilities.scss
 │   │       │   └── _zones_map.scss
 │   │       ├── instance_name.scss
 │   │       ├── mail.scss
@@ -569,13 +554,13 @@
 │   │       ├── structure
 │   │       │   ├── _authentication.scss
 │   │       │   ├── _bootstrap_overrides.scss
-│   │       │   ├── _footer.scss
 │   │       │   ├── _footer_dsfr.scss
+│   │       │   ├── _footer.scss
 │   │       │   ├── _general.scss
 │   │       │   ├── _header.scss
 │   │       │   ├── _left-menu.scss
-│   │       │   ├── _misc.scss
 │   │       │   ├── _misc_agent_config.scss
+│   │       │   ├── _misc.scss
 │   │       │   └── _page-head.scss
 │   │       └── vendor
 │   │           └── proconnect_button_dsfr.scss
@@ -600,13 +585,13 @@
 │   │   │   ├── import_caldav_absences.rb
 │   │   │   ├── notify_sms_factor_low_credits.rb
 │   │   │   ├── refresh_agents_sensitive_account_job.rb
-│   │   │   ├── refresh_cached_stats.rb
 │   │   │   ├── refresh_cached_stats_queries
-│   │   │   │   ├── both_instances.lieux_map_data.sql
 │   │   │   │   ├── both_instances_1_month_active_agents_count.sql
 │   │   │   │   ├── both_instances_1_month_active_organisations_count.sql
 │   │   │   │   ├── both_instances_1_month_rdvs_count.sql
-│   │   │   │   └── both_instances_1_year_rdvs_count.sql
+│   │   │   │   ├── both_instances_1_year_rdvs_count.sql
+│   │   │   │   └── both_instances.lieux_map_data.sql
+│   │   │   ├── refresh_cached_stats.rb
 │   │   │   ├── refresh_carto_anct_stats_job.rb
 │   │   │   ├── send_mattermost_notifications_for_zammad_tickets_job.rb
 │   │   │   └── synchronize_crm.rb
@@ -663,8 +648,8 @@
 │   │   │   ├── territory_creation_request_mailer.rb
 │   │   │   ├── waiting_room_mailer.rb
 │   │   │   └── webhook_mailer.rb
-│   │   ├── application_mailer.rb
 │   │   ├── application_mailer_delivery_job.rb
+│   │   ├── application_mailer.rb
 │   │   ├── concerns
 │   │   │   └── ics_multipart_attached.rb
 │   │   ├── custom_devise_mailer.rb
@@ -675,7 +660,6 @@
 │   │       └── rdv_mailer.rb
 │   ├── models
 │   │   ├── absence.rb
-│   │   ├── agent.rb
 │   │   ├── agent_agenda.rb
 │   │   ├── agent_role.rb
 │   │   ├── agent_service.rb
@@ -683,6 +667,7 @@
 │   │   ├── agent_territorial_access_right.rb
 │   │   ├── agent_territorial_role.rb
 │   │   ├── agent_with_token_auth.rb
+│   │   ├── agent.rb
 │   │   ├── agents_rdv.rb
 │   │   ├── annotation.rb
 │   │   ├── api_call.rb
@@ -716,6 +701,7 @@
 │   │   │   │   ├── authored_concern.rb
 │   │   │   │   ├── caldav_concern.rb
 │   │   │   │   ├── hardcoded_attribute_names_concern.rb
+│   │   │   │   ├── timezone_concern.rb
 │   │   │   │   ├── updatable.rb
 │   │   │   │   ├── using_waiting_room.rb
 │   │   │   │   └── visio_concern.rb
@@ -724,15 +710,14 @@
 │   │   │   ├── text_search.rb
 │   │   │   ├── user
 │   │   │   │   ├── franceconnect_frozen_fields_concern.rb
-│   │   │   │   ├── improved_unicity_error_concern.rb
 │   │   │   │   ├── notificable_concern.rb
 │   │   │   │   ├── responsability_concern.rb
 │   │   │   │   └── soft_delete_concern.rb
 │   │   │   └── webhook_deliverable.rb
 │   │   ├── creneau.rb
 │   │   ├── domain.rb
-│   │   ├── export.rb
 │   │   ├── export_file_blob.rb
+│   │   ├── export.rb
 │   │   ├── external_calendar_event.rb
 │   │   ├── external_reference.rb
 │   │   ├── file_attente.rb
@@ -740,37 +725,37 @@
 │   │   ├── invitation.rb
 │   │   ├── lieu.rb
 │   │   ├── login_code.rb
-│   │   ├── motif.rb
 │   │   ├── motif_category.rb
+│   │   ├── motif.rb
 │   │   ├── motifs_plage_ouverture.rb
 │   │   ├── oauth_application.rb
-│   │   ├── operator.rb
 │   │   ├── operator_manager.rb
+│   │   ├── operator.rb
 │   │   ├── organisation.rb
 │   │   ├── outlook
 │   │   │   └── api_client.rb
 │   │   ├── participation.rb
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
-│   │   ├── rdv.rb
 │   │   ├── rdv_plan.rb
+│   │   ├── rdv.rb
 │   │   ├── receipt.rb
 │   │   ├── recurrence
 │   │   │   └── occurrence.rb
 │   │   ├── referent_assignation.rb
-│   │   ├── sector.rb
 │   │   ├── sector_attribution.rb
+│   │   ├── sector.rb
 │   │   ├── service.rb
 │   │   ├── stat.rb
 │   │   ├── super_admin.rb
 │   │   ├── tag.rb
 │   │   ├── team.rb
-│   │   ├── territory.rb
 │   │   ├── territory_creation_request.rb
 │   │   ├── territory_service.rb
 │   │   ├── territory_tag.rb
-│   │   ├── user.rb
+│   │   ├── territory.rb
 │   │   ├── user_profile.rb
+│   │   ├── user.rb
 │   │   ├── webhook_endpoint.rb
 │   │   └── zone.rb
 │   ├── policies
@@ -862,13 +847,18 @@
 │   │   │       ├── motif_selection.rb
 │   │   │       └── organisation_selection.rb
 │   │   ├── creneaux_search
+│   │   │   ├── calculator
+│   │   │   │   ├── free_times_from_plage_ouverture_and_busy_times.rb
+│   │   │   │   └── split_free_time_ranges_into_creneaux.rb
 │   │   │   ├── calculator.rb
 │   │   │   ├── for_agent.rb
 │   │   │   ├── for_user.rb
 │   │   │   ├── next_availability.rb
+│   │   │   ├── old_calculator.rb
 │   │   │   ├── range.rb
 │   │   │   └── rdv_collectif_for_agent.rb
 │   │   ├── duplicate_users_finder_service.rb
+│   │   ├── espace_operateur_anct.rb
 │   │   ├── export_zones_service.rb
 │   │   ├── france_connect_v2_open_id_client
 │   │   │   ├── auth.rb
@@ -919,7 +909,7 @@
 │   │   ├── users
 │   │   │   ├── contactable_organisations.rb
 │   │   │   ├── geo_search.rb
-│   │   │   ├── login_service.rb
+│   │   │   ├── login_code_validator.rb
 │   │   │   └── rdv_builder.rb
 │   │   ├── verified_service_public_domain_names.rb
 │   │   ├── web_invitation_search_context.rb
@@ -961,8 +951,8 @@
 │       │   │       ├── plage_ouvertures
 │       │   │       │   └── index.json.jb
 │       │   │       └── rdvs
-│       │   │           ├── _rdv.json.jb
 │       │   │           ├── _rdv_without_details.json.jb
+│       │   │           ├── _rdv.json.jb
 │       │   │           └── index.json.jb
 │       │   ├── creneaux_search
 │       │   │   ├── _lieu_search_results.html.slim
@@ -980,8 +970,8 @@
 │       │   │   └── index.html.slim
 │       │   ├── lieux
 │       │   │   ├── _fil_ariane.html.slim
-│       │   │   ├── _lieu.html.slim
 │       │   │   ├── _lieu_fields.html.slim
+│       │   │   ├── _lieu.html.slim
 │       │   │   ├── edit.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   └── new.html.slim
@@ -1036,8 +1026,8 @@
 │       │   │   ├── _notifications_email.html.slim
 │       │   │   ├── _notifications_lifecycle.html.slim
 │       │   │   ├── _notifications_sms.html.slim
-│       │   │   ├── _participation_status_dropdown.html.slim
 │       │   │   ├── _participation_status_dropdown_item.html.slim
+│       │   │   ├── _participation_status_dropdown.html.slim
 │       │   │   ├── _user_card.html.slim
 │       │   │   ├── _user_details.html.slim
 │       │   │   └── _user_row.html.slim
@@ -1086,17 +1076,17 @@
 │       │   │   └── step4.html.slim
 │       │   ├── rdvs
 │       │   │   ├── _bouton_retour_agenda.html.slim
-│       │   │   ├── _collective_rdv_status_dropdown.html.slim
 │       │   │   ├── _collective_rdv_status_dropdown_item.html.slim
-│       │   │   ├── _individual_rdv_status_dropdown.html.slim
+│       │   │   ├── _collective_rdv_status_dropdown.html.slim
 │       │   │   ├── _individual_rdv_status_dropdown_item.html.slim
+│       │   │   ├── _individual_rdv_status_dropdown.html.slim
 │       │   │   ├── _participants_count.html.slim
-│       │   │   ├── _rdv.html.slim
 │       │   │   ├── _rdv_collectif_add_participant.html.slim
 │       │   │   ├── _rdv_details.html.slim
 │       │   │   ├── _rdv_search_form.html.slim
 │       │   │   ├── _rdv_visibility.html.slim
 │       │   │   ├── _rdv_with_quick_update.html.slim
+│       │   │   ├── _rdv.html.slim
 │       │   │   ├── _short_rdv.html.slim
 │       │   │   ├── _short_rdvs_list.html.slim
 │       │   │   ├── _update_error.html.slim
@@ -1121,13 +1111,12 @@
 │       │   │   └── new.html.slim
 │       │   ├── receipts
 │       │   │   ├── _receipt_row.html.slim
-│       │   │   ├── _receipts.html.slim
-│       │   │   └── _receipts_table.html.slim
+│       │   │   ├── _receipts_table.html.slim
+│       │   │   └── _receipts.html.slim
 │       │   ├── referent_assignations
 │       │   │   ├── _referent_assignation_row.html.slim
 │       │   │   └── index.html.slim
 │       │   ├── static_pages
-│       │   │   ├── _instatus_iframe.html.erb
 │       │   │   └── support.html.slim
 │       │   ├── territories
 │       │   │   ├── agents
@@ -1163,8 +1152,8 @@
 │       │   │   ├── sectors
 │       │   │   │   ├── _form.html.slim
 │       │   │   │   ├── edit.html.slim
-│       │   │   │   ├── index.html.slim
 │       │   │   │   ├── index_map.html.slim
+│       │   │   │   ├── index.html.slim
 │       │   │   │   ├── new.html.slim
 │       │   │   │   └── show.html.slim
 │       │   │   ├── services
@@ -1279,8 +1268,8 @@
 │       │   ├── _franceconnect_button.html.slim
 │       │   ├── _head_agent.html.slim
 │       │   ├── _meta.html.slim
-│       │   ├── _modal.html.slim
 │       │   ├── _modal_confirmation.html.slim
+│       │   ├── _modal.html.slim
 │       │   ├── _proconnect_button_dsfr.html.slim
 │       │   ├── _recurrence.html.slim
 │       │   ├── _stepper.html.slim
@@ -1293,8 +1282,8 @@
 │       │   │   ├── confirmation_instructions_email_update.html.slim
 │       │   │   ├── confirmation_instructions_signup.html.slim
 │       │   │   ├── email_changed.html.slim
-│       │   │   ├── invitation_instructions.html.erb
 │       │   │   ├── invitation_instructions_cnfs.html.erb
+│       │   │   ├── invitation_instructions.html.erb
 │       │   │   ├── password_change.html.slim
 │       │   │   ├── reset_password_instructions.html.slim
 │       │   │   └── unlock_instructions.html.slim
@@ -1356,13 +1345,13 @@
 │       │   ├── _rdv_a_renseigner.html.slim
 │       │   ├── _rdv_solidarites_instance_name.html.slim
 │       │   ├── _super_admin_sign_in_as_warning.html.slim
-│       │   ├── application.html.slim
-│       │   ├── application_agent.html.slim
 │       │   ├── application_agent_config.html.slim
+│       │   ├── application_agent.html.slim
 │       │   ├── application_base.html.slim
 │       │   ├── application_configuration.html.slim
 │       │   ├── application_narrow.html.slim
 │       │   ├── application_operator.html.slim
+│       │   ├── application.html.slim
 │       │   ├── left_menu
 │       │   │   └── _organisation_switcher.html.slim
 │       │   ├── mailer.html.slim
@@ -1451,9 +1440,9 @@
 │       │   ├── _lieu_selection.html.slim
 │       │   ├── _motif_card.html.slim
 │       │   ├── _motif_selection.html.slim
-│       │   ├── _nothing_to_show.html.slim
 │       │   ├── _nothing_to_show_contactable_organisation.html.slim
 │       │   ├── _nothing_to_show_invitation.html.slim
+│       │   ├── _nothing_to_show.html.slim
 │       │   ├── _organisation_card_subtitles.html.slim
 │       │   ├── _organisation_selection.html.slim
 │       │   ├── _prescription_banner.html.slim
@@ -1473,8 +1462,8 @@
 │       │   └── search_rdv.html.slim
 │       ├── static_pages
 │       │   ├── accessibilite.html.slim
-│       │   ├── cgu.html.slim
 │       │   ├── cgu_agent.html.slim
+│       │   ├── cgu.html.slim
 │       │   ├── mds.html.slim
 │       │   ├── mentions_legales.html.slim
 │       │   ├── microsoft_domain_verification.json.erb
@@ -1515,9 +1504,6 @@
 │       │   │   └── _contact_info.html.slim
 │       │   ├── participations
 │       │   │   └── index.html.slim
-│       │   ├── passwords
-│       │   │   ├── edit.html.slim
-│       │   │   └── new.html.slim
 │       │   ├── rdv_wizard_steps
 │       │   │   ├── _rdv_wizard_summary.html.slim
 │       │   │   ├── step1.html.slim
@@ -1533,8 +1519,7 @@
 │       │   │   ├── index.html.slim
 │       │   │   └── show.html.slim
 │       │   ├── registrations
-│       │   │   ├── edit.html.slim
-│       │   │   └── new.html.slim
+│       │   │   └── edit.html.slim
 │       │   ├── relatives
 │       │   │   ├── _form_fields.html.slim
 │       │   │   ├── edit.html.slim
@@ -1542,6 +1527,7 @@
 │       │   ├── sessions
 │       │   │   └── new.html.slim
 │       │   ├── sessions_by_code
+│       │   │   ├── liste_fiches_usagers.html.slim
 │       │   │   └── new.html.slim
 │       │   ├── user_name_initials_verification
 │       │   │   └── new.html.slim
@@ -1562,6 +1548,7 @@
 │   ├── test_boot
 │   ├── update
 │   └── yarn
+├── CHANGELOG.md
 ├── config
 │   ├── anonymizer.yml
 │   ├── application.rb
@@ -1583,8 +1570,8 @@
 │   │   ├── cors.rb
 │   │   ├── css_color_names.rb
 │   │   ├── css_hex_color_validator.rb
-│   │   ├── devise.rb
 │   │   ├── devise_token_auth.rb
+│   │   ├── devise.rb
 │   │   ├── doorkeeper.rb
 │   │   ├── dsfr_assets.rb
 │   │   ├── faraday.rb
@@ -1609,11 +1596,11 @@
 │   │   ├── redis.rb
 │   │   ├── rswag_api.rb
 │   │   ├── rswag_ui.rb
-│   │   ├── sentry.rb
 │   │   ├── sentry_job_retries_subscriber.rb
-│   │   ├── simple_form.rb
+│   │   ├── sentry.rb
 │   │   ├── simple_form_bootstrap.rb
 │   │   ├── simple_form_dsfr.rb
+│   │   ├── simple_form.rb
 │   │   ├── strong_migrations.rb
 │   │   ├── typhoeus.rb
 │   │   └── wrap_parameters.rb
@@ -1625,30 +1612,30 @@
 │   │   ├── mailers.fr.yml
 │   │   ├── models
 │   │   │   ├── absence.fr.yml
-│   │   │   ├── agent.fr.yml
 │   │   │   ├── agent_role.fr.yml
+│   │   │   ├── agent.fr.yml
 │   │   │   ├── attributes.fr.yml
 │   │   │   ├── export.fr.yml
 │   │   │   ├── lieu.fr.yml
-│   │   │   ├── motif.fr.yml
 │   │   │   ├── motif_category.fr.yml
-│   │   │   ├── operator.fr.yml
+│   │   │   ├── motif.fr.yml
 │   │   │   ├── operator_manager.fr.yml
+│   │   │   ├── operator.fr.yml
 │   │   │   ├── organisation.fr.yml
 │   │   │   ├── participation.fr.yml
 │   │   │   ├── plage_ouverture.fr.yml
-│   │   │   ├── rdv.fr.yml
 │   │   │   ├── rdv_plan.yml
+│   │   │   ├── rdv.fr.yml
 │   │   │   ├── receipt.fr.yml
 │   │   │   ├── referent_assignation.fr.yml
-│   │   │   ├── sector.fr.yml
 │   │   │   ├── sector_attribution.fr.yml
+│   │   │   ├── sector.fr.yml
 │   │   │   ├── service.fr.yml
 │   │   │   ├── stats.fr.yml
 │   │   │   ├── super_admin.fr.yml
 │   │   │   ├── team.fr.yml
-│   │   │   ├── territory.fr.yml
 │   │   │   ├── territory_creation_request.fr.yml
+│   │   │   ├── territory.fr.yml
 │   │   │   ├── user.fr.yml
 │   │   │   ├── webhook_endpoint.fr.yml
 │   │   │   └── zone.fr.yml
@@ -1664,9 +1651,9 @@
 │   │       ├── absence.fr.yml
 │   │       ├── admin_motifs.fr.yml
 │   │       ├── admin_rdvs.fr.yml
-│   │       ├── admin_territories.fr.yml
 │   │       ├── admin_territories_agents.yml
 │   │       ├── admin_territories_sectors.fr.yml
+│   │       ├── admin_territories.fr.yml
 │   │       ├── admin_users.fr.yml
 │   │       ├── agent_searches.fr.yml
 │   │       ├── agents.fr.yml
@@ -1690,6 +1677,7 @@
 │   ├── skylight.yml
 │   └── spring.rb
 ├── config.ru
+├── CONTRIBUTING.md
 ├── cron.json
 ├── db
 │   ├── migrate
@@ -1987,7 +1975,11 @@
 │   │   ├── 20260223104814_add_caldav_disconnect_in_progress_at_to_agents.rb
 │   │   ├── 20260224092756_remove_caldav_disconnect_in_progress_from_agents.rb
 │   │   ├── 20260302081619_create_export_file_blobs.rb
-│   │   └── 20260304111613_add_latest_login_at_to_users.rb
+│   │   ├── 20260304111613_add_latest_login_at_to_users.rb
+│   │   ├── 20260304120000_backfill_latest_login_at_from_confirmed_at.rb
+│   │   ├── 20260304145918_remove_unique_index_on_users_email.rb
+│   │   ├── 20260313100202_add_public_stats_to_territories.rb
+│   │   └── 20260316144148_add_display_extended_hours_to_agents.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2019,6 +2011,7 @@
 │   ├── bonnes-pratiques-de-tests.md
 │   ├── charger-territoire-sur-review-app.md
 │   ├── decisions
+│   │   ├── _template.md
 │   │   ├── 2021-05-06-enum-dans-rails.md
 │   │   ├── 2021-05-06.md
 │   │   ├── 2021-05-20-supprimer-bootstrap-et-webpack.md
@@ -2035,8 +2028,7 @@
 │   │   ├── 2022-11-24-soft-delete-rdv-and-other.md
 │   │   ├── 2022-12-12-migrer-sentry-vers-instance-incubateur-beta.md
 │   │   ├── 2023-04-24-politique-maj-gems.md
-│   │   ├── 2025-02-24-diminution-du-nombre-de-connexions-pg.md
-│   │   └── _template.md
+│   │   └── 2025-02-24-diminution-du-nombre-de-connexions-pg.md
 │   ├── flux_de_donnees_personnelles_si.svg
 │   ├── guide_integration.md
 │   ├── homepage.png
@@ -2050,17 +2042,20 @@
 │   ├── legende_flux_de_donnees_personnelles_si.md
 │   └── staging.md
 ├── esbuild.config.mjs
+├── Gemfile
+├── Gemfile.lock
+├── INSTALL.md
 ├── lib
 │   ├── anonymizer
-│   │   ├── README.md
 │   │   ├── anonymizer.gemspec
-│   │   └── lib
-│   │       ├── anonymizer
-│   │       │   ├── column.rb
-│   │       │   ├── config.rb
-│   │       │   ├── table.rb
-│   │       │   └── version.rb
-│   │       └── anonymizer.rb
+│   │   ├── lib
+│   │   │   ├── anonymizer
+│   │   │   │   ├── column.rb
+│   │   │   │   ├── config.rb
+│   │   │   │   ├── table.rb
+│   │   │   │   └── version.rb
+│   │   │   └── anonymizer.rb
+│   │   └── README.md
 │   ├── assets
 │   │   ├── .keep
 │   │   └── departements_fr.csv
@@ -2073,10 +2068,14 @@
 │       │   │   └── version.rb
 │       │   └── omniauth-rdv-service-public.rb
 │       └── omniauth-rdv-service-public.gemspec
+├── LICENSE.txt
 ├── log
 │   └── .keep
+├── Makefile
 ├── package.json
 ├── postcss.config.js
+├── Procfile
+├── Procfile.dev
 ├── public
 │   ├── .well-known
 │   │   └── security.txt
@@ -2092,14 +2091,17 @@
 │   ├── zones_example.csv
 │   └── zones_example.xls
 ├── publiccode.yml
+├── Rakefile
+├── README.md
 ├── scalingo.json
 ├── scripts
 │   ├── agent_et_motif_changent_de_service.rb
 │   ├── blocked_contacts_stats.rb
 │   ├── copy_users_between_orgas.rb
 │   ├── create_oauth_application.rb
+│   ├── creneaux_search_rdv_mairie_benchmark.rb
+│   ├── creneaux_search_review_app_benchmark.rb
 │   ├── devtools
-│   │   ├── README.md
 │   │   ├── anonymize_database.rb
 │   │   ├── anonymize_user_data.rb
 │   │   ├── ants_app.rb
@@ -2108,6 +2110,7 @@
 │   │   ├── db_dump_load.sh
 │   │   ├── enable_emails_on_review_app.sh
 │   │   ├── mon_suivi_social_local.rb
+│   │   ├── README.md
 │   │   ├── replace_string_in_file_names.rb
 │   │   ├── review_app_super_admin_password.sh
 │   │   ├── run_on_both_instances
@@ -2121,6 +2124,7 @@
 │   ├── migrate_email_to_notification_email.rb
 │   ├── move_organisation_to_other_territory.rb
 │   └── split_territory.rb
+├── SECURITY.md
 ├── spec
 │   ├── anonymizer
 │   │   └── config_spec.rb
@@ -2183,17 +2187,18 @@
 │   │       ├── rdv_wizard_steps_controller_spec.rb
 │   │       ├── rdvs_controller_spec.rb
 │   │       ├── relatives_controller_spec.rb
+│   │       ├── sessions_by_code_controller_spec.rb
 │   │       ├── sessions_controller_spec.rb
 │   │       ├── user_name_initials_verification_controller_spec.rb
 │   │       └── users_controller_spec.rb
 │   ├── factories
 │   │   ├── absence.rb
 │   │   ├── access_token.rb
-│   │   ├── agent.rb
 │   │   ├── agent_role.rb
 │   │   ├── agent_service.rb
 │   │   ├── agent_territorial_access_right.rb
 │   │   ├── agent_territorial_role.rb
+│   │   ├── agent.rb
 │   │   ├── agents_rdv.rb
 │   │   ├── annotations.rb
 │   │   ├── blog_post.rb
@@ -2205,30 +2210,30 @@
 │   │   ├── instance_export.rb
 │   │   ├── lieu.rb
 │   │   ├── login_code.rb
-│   │   ├── motif.rb
 │   │   ├── motif_category.rb
+│   │   ├── motif.rb
 │   │   ├── oauth_application.rb
-│   │   ├── operator.rb
 │   │   ├── operator_manager.rb
+│   │   ├── operator.rb
 │   │   ├── organisation.rb
 │   │   ├── participation.rb
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
-│   │   ├── rdv.rb
 │   │   ├── rdv_plan.rb
+│   │   ├── rdv.rb
 │   │   ├── receipt.rb
 │   │   ├── referent_assignation.rb
-│   │   ├── sector.rb
 │   │   ├── sector_attribution.rb
+│   │   ├── sector.rb
 │   │   ├── service.rb
 │   │   ├── super_admin.rb
 │   │   ├── tag.rb
 │   │   ├── team.rb
-│   │   ├── territory.rb
 │   │   ├── territory_creation_request.rb
 │   │   ├── territory_service.rb
-│   │   ├── user.rb
+│   │   ├── territory.rb
 │   │   ├── user_profile.rb
+│   │   ├── user.rb
 │   │   ├── webhook_endpoint.rb
 │   │   └── zone.rb
 │   ├── features
@@ -2380,8 +2385,6 @@
 │   │       │   ├── user_can_delete_account_spec.rb
 │   │       │   ├── user_can_login_using_code_spec.rb
 │   │       │   ├── user_can_login_using_france_connect_spec.rb
-│   │       │   ├── user_can_login_using_password_spec.rb
-│   │       │   ├── user_can_reset_his_password_spec.rb
 │   │       │   ├── user_can_update_their_information_spec.rb
 │   │       │   ├── user_is_redirected_back_after_login_spec.rb
 │   │       │   ├── user_session_expires_spec.rb
@@ -2390,6 +2393,7 @@
 │   │       │   ├── creneaux_selection_spec.rb
 │   │       │   ├── default_spec.rb
 │   │       │   ├── link_to_take_rdv_in_organisation_spec.rb
+│   │       │   ├── login_multi_fiche_spec.rb
 │   │       │   ├── motif_selection_spec.rb
 │   │       │   ├── on_rdv_mairie_spec.rb
 │   │       │   ├── on_rdv_service_public_spec.rb
@@ -2425,13 +2429,18 @@
 │   │   │   ├── jwks.json
 │   │   │   └── openid-configuration.json
 │   │   └── vcr_cassettes
-│   │       └── caldav
-│   │           ├── event_list_weekly_and_daily.yml
-│   │           ├── no_event.yml
-│   │           ├── token_via_propfind.yml
-│   │           ├── transparent_event.yml
-│   │           ├── transparent_recur_event.yml
-│   │           └── transparent_recur_event_with_one_opaque_exception.yml
+│   │       ├── caldav
+│   │       │   ├── event_list_weekly_and_daily.yml
+│   │       │   ├── no_event.yml
+│   │       │   ├── token_via_propfind.yml
+│   │       │   ├── transparent_event.yml
+│   │       │   ├── transparent_recur_event_with_one_opaque_exception.yml
+│   │       │   └── transparent_recur_event.yml
+│   │       └── espace_operateur_anct
+│   │           ├── entitlements_admin.yml
+│   │           ├── entitlements_api_error.yml
+│   │           ├── entitlements_no_access.yml
+│   │           └── entitlements_success.yml
 │   ├── form_models
 │   │   ├── admin
 │   │   │   ├── create_motifs_spec.rb
@@ -2451,8 +2460,7 @@
 │   │   └── users
 │   │       ├── login_code_request_form_spec.rb
 │   │       ├── rdv_booking_form_spec.rb
-│   │       ├── rdv_builder_spec.rb
-│   │       └── registration_form_spec.rb
+│   │       └── rdv_builder_spec.rb
 │   ├── helpers
 │   │   ├── absences_helper_spec.rb
 │   │   ├── agents_helper_spec.rb
@@ -2473,6 +2481,7 @@
 │   │   ├── application_job_spec.rb
 │   │   ├── application_mailer_delivery_job_spec.rb
 │   │   ├── caldav
+│   │   │   ├── export_rdv_to_caldav_job_spec.rb
 │   │   │   └── import_absences_from_caldav_job_spec.rb
 │   │   ├── cron_job
 │   │   │   ├── anonymize_old_receipts_spec.rb
@@ -2585,7 +2594,6 @@
 │   │   │   ├── text_search_spec.rb
 │   │   │   ├── user
 │   │   │   │   ├── franceconnect_frozen_fields_concern_spec.rb
-│   │   │   │   ├── improved_unicity_error_concern_spec.rb
 │   │   │   │   ├── notificable_concern_spec.rb
 │   │   │   │   └── soft_delete_concern_spec.rb
 │   │   │   └── webhook_deliverable_spec.rb
@@ -2762,7 +2770,8 @@
 │   │   │       └── motif_selection_spec.rb
 │   │   ├── creneaux_search
 │   │   │   ├── calculator
-│   │   │   │   └── busy_time_preloader_spec.rb
+│   │   │   │   ├── free_times_from_plage_ouverture_and_busy_times_spec.rb
+│   │   │   │   └── split_free_time_ranges_into_creneaux_spec.rb
 │   │   │   ├── calculator_spec.rb
 │   │   │   ├── for_agent_spec.rb
 │   │   │   ├── for_user_spec.rb
@@ -2770,6 +2779,7 @@
 │   │   │   └── range_spec.rb
 │   │   ├── cron_monitor_spec.rb
 │   │   ├── duplicate_users_finder_service_spec.rb
+│   │   ├── espace_operateur_anct_spec.rb
 │   │   ├── export_zones_service_spec.rb
 │   │   ├── ical
 │   │   │   ├── rrule_expander_spec.rb
@@ -2802,7 +2812,7 @@
 │   │   ├── users
 │   │   │   ├── geo_search_cases_spec.rb
 │   │   │   ├── geo_search_spec.rb
-│   │   │   └── login_service_spec.rb
+│   │   │   └── login_code_validator_spec.rb
 │   │   ├── verified_service_public_domain_names_spec.rb
 │   │   ├── web_invitation_search_context_spec.rb
 │   │   ├── web_search_context_spec.rb
@@ -2826,8 +2836,8 @@
 │   │   │   ├── layout.html.slim
 │   │   │   └── scenario.html.slim
 │   │   ├── autodoc.rb
-│   │   ├── calendar.ics
 │   │   ├── calendar_guadeloupe.ics
+│   │   ├── calendar.ics
 │   │   ├── capybara_config.rb
 │   │   ├── cookies.rb
 │   │   ├── datetime_helpers.rb
@@ -2870,4 +2880,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-442 directories, 2430 files
+443 directories, 2439 files

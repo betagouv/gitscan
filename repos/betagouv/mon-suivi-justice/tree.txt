@@ -19,14 +19,6 @@
 ├── .talismanrc
 ├── .vscode
 │   └── settings.json
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
-├── LICENCE.txt
-├── Procfile
-├── Procfile.dev
-├── README.md
-├── Rakefile
 ├── app
 │   ├── assets
 │   │   ├── builds
@@ -34,26 +26,26 @@
 │   │   ├── config
 │   │   │   └── manifest.js
 │   │   ├── fonts
-│   │   │   ├── Marianne-Bold.woff
-│   │   │   ├── Marianne-Bold.woff2
 │   │   │   ├── Marianne-Bold_Italic.woff
 │   │   │   ├── Marianne-Bold_Italic.woff2
-│   │   │   ├── Marianne-ExtraBold.woff
-│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-Bold.woff
+│   │   │   ├── Marianne-Bold.woff2
 │   │   │   ├── Marianne-ExtraBold_Italic.woff
 │   │   │   ├── Marianne-ExtraBold_Italic.woff2
-│   │   │   ├── Marianne-Light.woff
-│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   ├── Marianne-ExtraBold.woff2
 │   │   │   ├── Marianne-Light_Italic.woff
 │   │   │   ├── Marianne-Light_Italic.woff2
-│   │   │   ├── Marianne-Medium.woff
-│   │   │   ├── Marianne-Medium.woff2
+│   │   │   ├── Marianne-Light.woff
+│   │   │   ├── Marianne-Light.woff2
 │   │   │   ├── Marianne-Medium_Italic.woff
 │   │   │   ├── Marianne-Medium_Italic.woff2
-│   │   │   ├── Marianne-Regular.woff
-│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Medium.woff
+│   │   │   ├── Marianne-Medium.woff2
 │   │   │   ├── Marianne-Regular_Italic.woff
 │   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   ├── Marianne-Regular.woff
+│   │   │   ├── Marianne-Regular.woff2
 │   │   │   ├── Spectral-ExtraBold.woff
 │   │   │   ├── Spectral-ExtraBold.woff2
 │   │   │   ├── Spectral-Regular.woff
@@ -100,11 +92,11 @@
 │   │       │       └── _text-color.scss
 │   │       ├── application.postcss.css
 │   │       ├── appointment_types.css
-│   │       ├── appointments.css
 │   │       ├── appointments_pdf.css
+│   │       ├── appointments.css
 │   │       ├── authentication.css
-│   │       ├── bex.css
 │   │       ├── bex_pdf.css
+│   │       ├── bex.css
 │   │       ├── convicts.css
 │   │       ├── dsfr_custom.css
 │   │       ├── errors.css
@@ -112,8 +104,8 @@
 │   │       ├── forms.css
 │   │       ├── home.css
 │   │       ├── ie.css
-│   │       ├── index.css
 │   │       ├── index_cards.css
+│   │       ├── index.css
 │   │       ├── layout.css
 │   │       ├── main.css
 │   │       ├── mixins.css
@@ -298,9 +290,9 @@
 │   │   │   ├── event.rb
 │   │   │   └── visit.rb
 │   │   ├── application_record.rb
-│   │   ├── appointment.rb
 │   │   ├── appointment_extra_field.rb
 │   │   ├── appointment_type.rb
+│   │   ├── appointment.rb
 │   │   ├── city.rb
 │   │   ├── concerns
 │   │   │   ├── deployment_environment.rb
@@ -313,20 +305,20 @@
 │   │   ├── headquarter.rb
 │   │   ├── history_item.rb
 │   │   ├── metabase_dashboard.rb
-│   │   ├── notification.rb
 │   │   ├── notification_type.rb
-│   │   ├── organization.rb
+│   │   ├── notification.rb
 │   │   ├── organization_divestment.rb
-│   │   ├── place.rb
+│   │   ├── organization.rb
 │   │   ├── place_appointment_type.rb
 │   │   ├── place_transfert.rb
-│   │   ├── slot.rb
+│   │   ├── place.rb
 │   │   ├── slot_type.rb
+│   │   ├── slot.rb
 │   │   ├── srj_spip.rb
 │   │   ├── srj_tj.rb
-│   │   ├── user.rb
 │   │   ├── user_alert.rb
-│   │   └── user_user_alert.rb
+│   │   ├── user_user_alert.rb
+│   │   └── user.rb
 │   ├── policies
 │   │   ├── agenda_policy.rb
 │   │   ├── application_policy.rb
@@ -459,8 +451,8 @@
 │       │   ├── _convict_phone_status.html.erb
 │       │   ├── _missed_appointment_modal.html.erb
 │       │   ├── _rebook_missed_appointment_modal.html.erb
-│       │   ├── index.html.erb
 │       │   ├── index_pdf.html.erb
+│       │   ├── index.html.erb
 │       │   ├── new.html.erb
 │       │   └── show.html.erb
 │       ├── appointments_bookings
@@ -483,12 +475,12 @@
 │       ├── appointments_reschedules
 │       │   └── new.html.erb
 │       ├── bex
-│       │   ├── agenda_jap.html.erb
 │       │   ├── agenda_jap_pdf.html.erb
-│       │   ├── agenda_sap_ddse.html.erb
+│       │   ├── agenda_jap.html.erb
 │       │   ├── agenda_sap_ddse_pdf.html.erb
-│       │   ├── agenda_spip.html.erb
-│       │   └── agenda_spip_pdf.html.erb
+│       │   ├── agenda_sap_ddse.html.erb
+│       │   ├── agenda_spip_pdf.html.erb
+│       │   └── agenda_spip.html.erb
 │       ├── cities
 │       │   └── search.html.erb
 │       ├── convicts
@@ -557,8 +549,8 @@
 │       │   └── _prev_page.html.erb
 │       ├── layouts
 │       │   ├── _breadcrumb.html.erb
-│       │   ├── _header.html.erb
 │       │   ├── _header_no_auth.html.erb
+│       │   ├── _header.html.erb
 │       │   ├── _ie_warning.html.erb
 │       │   ├── _main_navigation.html.erb
 │       │   ├── _support_modal.html.erb
@@ -572,10 +564,10 @@
 │       │   ├── pdf.html.erb
 │       │   └── public_pages.erb
 │       ├── organization_divestments
-│       │   ├── _divestments.html.erb
 │       │   ├── _divestments_table.html.erb
-│       │   ├── _organization_divestments.html.erb
+│       │   ├── _divestments.html.erb
 │       │   ├── _organization_divestments_table.html.erb
+│       │   ├── _organization_divestments.html.erb
 │       │   ├── edit.html.erb
 │       │   ├── index.html.erb
 │       │   └── show.html.erb
@@ -670,8 +662,8 @@
 │   │   ├── backtrace_silencers.rb
 │   │   ├── content_security_policy.rb
 │   │   ├── cookies_serializer.rb
-│   │   ├── devise.rb
 │   │   ├── devise_security.rb
+│   │   ├── devise.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
 │   │   ├── kaminari.rb
@@ -686,9 +678,9 @@
 │   │   └── wrap_parameters.rb
 │   ├── locales
 │   │   ├── dates.fr.yml
+│   │   ├── devise_invitable.fr.yml
 │   │   ├── devise.security_extension.fr.yml
 │   │   ├── devise.views.fr.yml
-│   │   ├── devise_invitable.fr.yml
 │   │   ├── fr.yml
 │   │   ├── secure_password.fr.yml
 │   │   └── simple_form.en.yml
@@ -863,22 +855,25 @@
 │   │   └── 7_setup_notifications.rb
 │   └── seeds.rb
 ├── docs
-│   ├── Appointment_state.png
-│   ├── CONTRIBUTING.md
-│   ├── INSTALL.md
-│   ├── Notification_state.png
 │   ├── ajouter_communes_srj.md
 │   ├── ajouter_un_type_de_rdv.md
+│   ├── Appointment_state.png
 │   ├── conseils_divers.md
+│   ├── CONTRIBUTING.md
 │   ├── deployer_un_nouveau_service.md
 │   ├── erd.png
 │   ├── fusionner_agendas.md
+│   ├── INSTALL.md
 │   ├── inviter_des_agents_en_masse.md
 │   ├── manipulation_de_creneaux.md
 │   ├── mise_en_production.md
 │   ├── modification_creneaux_recurents.png
+│   ├── Notification_state.png
 │   ├── obtenir_infos_sur_utilisation.md
 │   └── recuperer_service_supprime.md
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
 ├── lib
 │   ├── assets
 │   │   └── .keep
@@ -890,13 +885,18 @@
 │       ├── import_service_mail.rake
 │       ├── invite_agents.rake
 │       └── merge_convicts.rake
+├── LICENCE.txt
 ├── log
 │   └── .keep
 ├── package.json
 ├── postcss.config.js
+├── Procfile
+├── Procfile.dev
 ├── public
 │   ├── maintenance.html
 │   └── robots.txt
+├── Rakefile
+├── README.md
 ├── scalingo.json
 ├── scripts
 │   ├── deploy-prod
@@ -911,9 +911,9 @@
 │   │   └── divestments_controller_spec.rb
 │   ├── factories
 │   │   ├── agendas.rb
-│   │   ├── appointment.rb
 │   │   ├── appointment_extra_fields.rb
 │   │   ├── appointment_types.rb
+│   │   ├── appointment.rb
 │   │   ├── cities.rb
 │   │   ├── convict.rb
 │   │   ├── divestment.rb
@@ -930,8 +930,8 @@
 │   │   ├── slots.rb
 │   │   ├── srj_spips.rb
 │   │   ├── srj_tjs.rb
-│   │   ├── user.rb
-│   │   └── user_alerts.rb
+│   │   ├── user_alerts.rb
+│   │   └── user.rb
 │   ├── features
 │   │   ├── appointment_extra_fields_spec.rb
 │   │   ├── appointment_types_spec.rb

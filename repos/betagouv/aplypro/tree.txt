@@ -10,18 +10,9 @@
 ├── .gitignore
 ├── .gitmodules
 ├── .rspec
-├── .rubocop.yml
 ├── .rubocop_todo.yml
+├── .rubocop.yml
 ├── .ruby-version
-├── Dockerfile
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
-├── LICENSE.md
-├── Makefile
-├── Procfile
-├── README.md
-├── Rakefile
 ├── app
 │   ├── apis
 │   │   ├── data_education_api
@@ -193,10 +184,10 @@
 │   │   ├── application_record.rb
 │   │   ├── asp
 │   │   │   ├── errors.rb
-│   │   │   ├── payment_request.rb
 │   │   │   ├── payment_request_state_machine.rb
 │   │   │   ├── payment_request_transition.rb
 │   │   │   ├── payment_request_validator.rb
+│   │   │   ├── payment_request.rb
 │   │   │   ├── payment_return.rb
 │   │   │   ├── request.rb
 │   │   │   └── user.rb
@@ -212,16 +203,16 @@
 │   │   │   ├── report_validation.rb
 │   │   │   ├── state_machinable.rb
 │   │   │   └── user_authorisation.rb
-│   │   ├── establishment.rb
 │   │   ├── establishment_invitation.rb
 │   │   ├── establishment_user_role.rb
+│   │   ├── establishment.rb
 │   │   ├── exclusion.rb
 │   │   ├── insee_exception_codes.rb
 │   │   ├── invitation.rb
 │   │   ├── mef.rb
-│   │   ├── pfmp.rb
 │   │   ├── pfmp_state_machine.rb
 │   │   ├── pfmp_transition.rb
+│   │   ├── pfmp.rb
 │   │   ├── report.rb
 │   │   ├── rib.rb
 │   │   ├── school_year.rb
@@ -235,18 +226,18 @@
 │   │   │   │   │   ├── payment_requests_integrated.rb
 │   │   │   │   │   ├── payment_requests_paid.rb
 │   │   │   │   │   ├── payment_requests_sent.rb
-│   │   │   │   │   ├── pfmps.rb
 │   │   │   │   │   ├── pfmps_completed.rb
 │   │   │   │   │   ├── pfmps_extended.rb
 │   │   │   │   │   ├── pfmps_incompleted.rb
 │   │   │   │   │   ├── pfmps_paid.rb
 │   │   │   │   │   ├── pfmps_payable.rb
 │   │   │   │   │   ├── pfmps_validated.rb
+│   │   │   │   │   ├── pfmps.rb
 │   │   │   │   │   ├── ribs.rb
 │   │   │   │   │   ├── schoolings.rb
-│   │   │   │   │   ├── students.rb
 │   │   │   │   │   ├── students_data.rb
-│   │   │   │   │   └── students_paid.rb
+│   │   │   │   │   ├── students_paid.rb
+│   │   │   │   │   └── students.rb
 │   │   │   │   ├── ratio
 │   │   │   │   │   ├── attributive_decisions.rb
 │   │   │   │   │   ├── pfmps_paid_payable.rb
@@ -327,9 +318,9 @@
 │   │   │   ├── progression_comparator.rb
 │   │   │   └── stats_extractor.rb
 │   │   ├── reprocessor
-│   │   │   ├── payment_request.rb
 │   │   │   ├── payment_request_incomplete.rb
-│   │   │   └── payment_request_rejected.rb
+│   │   │   ├── payment_request_rejected.rb
+│   │   │   └── payment_request.rb
 │   │   ├── student_merger.rb
 │   │   └── updaters
 │   │       └── student_schoolings_updater.rb
@@ -338,12 +329,12 @@
 │       │   └── index.html.haml
 │       ├── academic
 │       │   ├── application
-│       │   │   ├── _academic_map.html.haml
 │       │   │   ├── _academic_map_error.html.haml
 │       │   │   ├── _academic_map_missing_report.html.haml
-│       │   │   ├── academic_map.html.haml
+│       │   │   ├── _academic_map.html.haml
 │       │   │   ├── academic_map_error.html.haml
 │       │   │   ├── academic_map_missing_report.html.haml
+│       │   │   ├── academic_map.html.haml
 │       │   │   ├── home.html.haml
 │       │   │   └── login.html.haml
 │       │   ├── classes
@@ -360,8 +351,8 @@
 │       │   │   ├── _report_comparison_form.html.haml
 │       │   │   ├── _stats_cards.html.haml
 │       │   │   ├── establishments_table.html.haml
-│       │   │   ├── global.html.haml
 │       │   │   ├── global_evolution.html.haml
+│       │   │   ├── global.html.haml
 │       │   │   ├── index.html.haml
 │       │   │   └── show.html.haml
 │       │   ├── school_years
@@ -409,8 +400,8 @@
 │       │   ├── _pfmps_payments_table.html.haml
 │       │   ├── _students_removed_table.html.haml
 │       │   ├── _students_table.html.haml
-│       │   ├── bulk_pfmp.html.haml
 │       │   ├── bulk_pfmp_completion.html.haml
+│       │   ├── bulk_pfmp.html.haml
 │       │   ├── index.html.haml
 │       │   └── show.html.haml
 │       ├── devise
@@ -461,8 +452,8 @@
 │       │   ├── _create_payment_request.html.haml
 │       │   ├── _dates_warning.html.haml
 │       │   ├── _failed_pfmps.html.haml
-│       │   ├── _form.html.haml
 │       │   ├── _form_content_payment_request.html.haml
+│       │   ├── _form.html.haml
 │       │   ├── _payment_panel.html.haml
 │       │   ├── _payment_requests_history.html.haml
 │       │   ├── _pfmp_badges.html.haml
@@ -492,8 +483,8 @@
 │       │   ├── confirm_abrogation.html.haml
 │       │   ├── confirm_cancellation_decision.html.haml
 │       │   ├── confirm_da_extension.haml
-│       │   ├── confirm_removal.html.haml
-│       │   └── confirm_removal_cancellation.html.haml
+│       │   ├── confirm_removal_cancellation.html.haml
+│       │   └── confirm_removal.html.haml
 │       ├── shared
 │       │   ├── _confirmed_director.html.haml
 │       │   ├── _connection_panel.html.haml
@@ -555,8 +546,8 @@
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
 │   │   ├── new_framework_defaults_8_0.rb
-│   │   ├── omniauth.rb
 │   │   ├── omniauth_form.rb
+│   │   ├── omniauth.rb
 │   │   ├── openid_connect.rb
 │   │   ├── permissions_policy.rb
 │   │   ├── rack_attack.rb
@@ -711,6 +702,7 @@
 │   ├── seeds.rb
 │   └── wage_seeder.rb
 ├── docker-compose.yml
+├── Dockerfile
 ├── docs
 │   ├── apis_élèves.md
 │   ├── fusion_élèves.md
@@ -719,31 +711,31 @@
 ├── entrypoint.sh
 ├── features
 │   ├── abrogations.feature
-│   ├── accueil.feature
 │   ├── accueil_status_des_paiements.feature
+│   ├── accueil.feature
 │   ├── anciens_eleves.feature
 │   ├── asp_consultation_de_dossier.feature
 │   ├── calcul_des_montants.feature
 │   ├── changement_annee.feature
 │   ├── completion_de_pfmps.feature
 │   ├── consultation_des_listes.feature
-│   ├── delegations_menj.feature
 │   ├── décisions_d_attributions.feature
+│   ├── delegations_menj.feature
 │   ├── eleves.feature
 │   ├── gestion_de_pfmp.feature
 │   ├── invitations.feature
 │   ├── modification_des_montants.feature
 │   ├── paiements.feature
-│   ├── personnel_academique.feature
 │   ├── personnel_academique_admin.feature
+│   ├── personnel_academique.feature
 │   ├── premiere_connexion.feature
 │   ├── profil_autorisé_masa.feature
 │   ├── profil_autorisé_menj.feature
 │   ├── recherche.feature
 │   ├── recuperation_eleves.feature
 │   ├── regénérer_les_décisions_d_attributions.feature
-│   ├── saisie_de_coordonnees_bancaires.feature
 │   ├── saisie_de_coordonnées_bancaires_manquantes_pour_une_classe.feature
+│   ├── saisie_de_coordonnees_bancaires.feature
 │   ├── step_definitions
 │   │   ├── .gitkeep
 │   │   ├── academic_steps.rb
@@ -773,6 +765,9 @@
 │   │   ├── omniauth.rb
 │   │   └── webmock.rb
 │   └── validation_en_masse_de_pfmps.feature
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
 ├── lib
 │   ├── asp
 │   │   ├── builder.rb
@@ -796,8 +791,8 @@
 │   │   │   ├── fichier.rb
 │   │   │   ├── pers_physique.rb
 │   │   │   └── prestadoss.rb
-│   │   ├── schema.xsd
 │   │   ├── schema_validator.rb
+│   │   ├── schema.xsd
 │   │   └── server.rb
 │   ├── assets
 │   │   └── .keep
@@ -827,18 +822,20 @@
 │       ├── keycloak.rake
 │       ├── schedule.rake
 │       └── students.rake
+├── LICENSE.md
 ├── log
 │   └── .keep
+├── Makefile
 ├── mock
 ├── package-lock.json
 ├── package.json
+├── Procfile
 ├── public
 │   ├── 400.html
 │   ├── 404.html
 │   ├── 406-unsupported-browser.html
 │   ├── 422.html
 │   ├── 500.html
-│   ├── Liste des pays de la zone SEPA.pdf
 │   ├── apple-touch-icon-precomposed.png
 │   ├── apple-touch-icon.png
 │   ├── data
@@ -879,7 +876,10 @@
 │   ├── favicon.ico
 │   ├── icon.png
 │   ├── icon.svg
+│   ├── Liste des pays de la zone SEPA.pdf
 │   └── robots.txt
+├── Rakefile
+├── README.md
 ├── script
 │   ├── cucumber
 │   └── stats
