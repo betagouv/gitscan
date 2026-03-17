@@ -1,0 +1,1001 @@
+.
+├── .gitattributes
+├── .gitbook
+│   └── assets
+│       ├── apientreprise.png
+│       ├── apigeo2.png
+│       ├── archi-1-.png
+│       ├── archi-2-.png
+│       ├── archi.png
+│       ├── architecture-*.png  (8 files)
+│       ├── catagene.png
+│       ├── cccp.png
+│       ├── cfd.png
+│       ├── cfdbcn.png
+│       ├── conventionnement.png
+│       ├── convertir.png
+│       ├── convertirverifier.png
+│       ├── e (1).png
+│       ├── e.png
+│       ├── e2 (1).png
+│       ├── e2 (2).png
+│       ├── e2.png
+│       ├── e3.png
+│       ├── e4.png
+│       ├── e5.png
+│       ├── eta.png
+│       ├── f.png
+│       ├── f1.png
+│       ├── f2.png
+│       ├── geo.png
+│       ├── geoapi.png
+│       ├── image (1).png
+│       ├── image (2).png
+│       ├── image (3).png
+│       ├── image (4).png
+│       ├── image (5).png
+│       ├── image (6).png
+│       ├── image (7).png
+│       ├── image (8).png
+│       ├── image.png
+│       ├── mise-a-jour-etablissement (1).png
+│       ├── mise-a-jour-etablissement.png
+│       ├── mise-a-jour-formation (1).png
+│       ├── mise-a-jour-formation.png
+│       ├── onisep.png
+│       ├── onisepformation.png
+│       ├── publis.png
+│       ├── rncpeta.png
+│       ├── rncpformation.png
+│       ├── s1-2 (1).png
+│       ├── s1-2.png
+│       ├── s*.png  (9 files)
+│       ├── s2 (1).png
+│       ├── schema-simplifie-juin-2021.png
+│       ├── scripts.png
+│       ├── trait1.png
+│       ├── traitementformation.png
+│       ├── traitements.png
+│       ├── traitementseta.png
+│       ├── verifications-etablissements.png
+│       ├── verifications-formations.png
+│       ├── vue-ensemble-etablissements.png
+│       ├── workflowtraitements-convertir.png
+│       ├── workflowtraitements.png
+│       └── workflowtraitementsverifenrichir.png
+├── .gitbook.yml
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── codeql-analysis.yml
+│       ├── yarn-ci-server.yml
+│       └── yarn-ci-ui.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── docker-compose.override.yml
+├── docker-compose.yml
+├── docs
+│   ├── .gitbook
+│   │   └── assets
+│   │       └── Architecture passation - février 2022.png
+│   ├── README.md
+│   ├── SUMMARY.md
+│   ├── architecture
+│   │   ├── traitements-sur-la-donnees-pour-lapprentissage
+│   │   │   ├── README.md
+│   │   │   ├── convertir.md
+│   │   │   └── verifier-et-corriger.md
+│   │   ├── traitements-sur-la-donnees-pour-lapprentissage-en-cours
+│   │   │   ├── README.md
+│   │   │   ├── convertir.md
+│   │   │   ├── enrichir.md
+│   │   │   └── verifier-et-corriger.md
+│   │   └── vue-densemble.md
+│   ├── architecture-technique
+│   │   └── traitements-sur-la-donnees-pour-lapprentissage-en-cours.md
+│   ├── integration
+│   │   ├── api.md
+│   │   ├── architecture-technique-pour-la-passation.md
+│   │   ├── architecture-technique.md
+│   │   └── f.a.q.md
+│   ├── tables-de-correspondances
+│   │   ├── codes-et-tutti-quanti.md
+│   │   ├── documentation
+│   │   │   ├── README.md
+│   │   │   ├── annuaire-draft.md
+│   │   │   ├── cfd-code-formation-diplome.md
+│   │   │   ├── codes-postaux.md
+│   │   │   ├── coordonnees-gps.md
+│   │   │   ├── etablissements.md
+│   │   │   ├── mef.md
+│   │   │   ├── rncp.md
+│   │   │   ├── siret.md
+│   │   │   └── swagger
+│   │   │       ├── README.md
+│   │   │       └── api-etablissement.md
+│   │   └── f.a.q.md
+│   └── traitements-scripts
+│       ├── etablissements.md
+│       ├── traitements-lies-a-la-collecte.md
+│       ├── traitements-lies-a-la-modification-dun-champs.md
+│       └── traitements-lies-aux-formations
+│           ├── README.md
+│           ├── publication-sur-affelnet.md
+│           └── publication-sur-parcoursup.md
+├── elasticsearch
+│   └── kibana.yml
+├── reverse_proxy
+│   ├── Dockerfile
+│   └── app
+│       ├── logrotate.d
+│       │   └── logrotate.conf
+│       ├── nginx
+│       │   ├── conf.d
+│       │   │   ├── default.conf
+│       │   │   └── locations
+│       │   │       ├── api.inc
+│       │   │       ├── es.inc
+│       │   │       ├── fragments
+│       │   │       │   └── proxy_api.inc
+│       │   │       ├── kibana.inc
+│       │   │       ├── metabase.inc
+│       │   │       ├── smtp.inc
+│       │   │       ├── ui.inc
+│       │   │       └── upload.inc
+│       │   └── nginx.conf
+│       └── start.sh
+├── server
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .eslintrc
+│   ├── .gitignore
+│   ├── .husky
+│   │   └── pre-commit
+│   ├── .yarnrc.yml.template
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── config
+│   │   ├── custom-environment-variables.json
+│   │   └── default.json
+│   ├── eslint.config.mjs
+│   ├── jsconfig.json
+│   ├── migrate-mongo-config.js
+│   ├── migrations
+│   │   ├── 20220111133352-change-type-annee-duree-from-number-to-string.js
+│   │   ├── 20220112154411-delete-etablissement-history.js
+│   │   ├── 20220119104025-periode-as-date-array.js
+│   │   ├── 20220203083809-trim-etablissement-uai.js
+│   │   ├── 20220203083818-trim-formation-uai.js
+│   │   ├── 20220204150036-remove-computed-field-in-etablissements.js
+│   │   ├── 20220204162750-match-validated-fill-ps-id.js
+│   │   ├── 20220207094442-drop-afreconciliation.js
+│   │   ├── 20220207094834-rm-fields-afformations.js
+│   │   ├── 20220207134405-remove-info-depp-dgefp.js
+│   │   ├── 20220208093220-remove-unpublished-formations.js
+│   │   ├── 20220208130238-rename-affelnet-formations.js
+│   │   ├── 20220208130845-rename-parcoursup-formations.js
+│   │   ├── 20220210102043-check-uai.js
+│   │   ├── 20220210132306-clean-formation-updates-history.js
+│   │   ├── 20220210162942-clean-parcoursup-formation-statuts-history.js
+│   │   ├── 20220215091117-clean-stats-counter.js
+│   │   ├── 20220215110549-limit-history-affelnet-parcoursup.js
+│   │   ├── 20220215135326-limit-rcoformation-updates-history.js
+│   │   ├── 20220215151050-unique-index-consumption.js
+│   │   ├── 20220215165043-remove-unused-fields.js
+│   │   ├── 20220216111515-add-published-dates.js
+│   │   ├── 20220221101750-update-consumption.js
+│   │   ├── 20220225150135-etablissement-unique-siret.js
+│   │   ├── 20220225162358-rm-opco-empty-data.js
+│   │   ├── 20220303135125-rename-alert.js
+│   │   ├── 20220311100939-formation-last-statut-update.js
+│   │   ├── 20220315144541-formation-intitule-rco.js
+│   │   ├── 20220315144707-unique-cle-ministere-educatif.js
+│   │   ├── 20220316165000-rncp-date.js
+│   │   ├── 20220331135324-catalogue-published.js
+│   │   ├── 20220414084257-dual-control-early-reports.js
+│   │   ├── 20220922000000-convert-to-new-rco-flux.js
+│   │   ├── 20221207103102-remove-formation-nX.js
+│   │   ├── 20221207150026-fix-updates-history-date.js
+│   │   ├── 20221207150126-fix-updates-history-date-etablissement.js
+│   │   ├── 20221213150126-fix-dates.js
+│   │   ├── 20230105150751-remove-idea_geo_coordonnees_etablissement.js
+│   │   ├── 20230908123052-clean-histories.js
+│   │   ├── 20230908123053-clean-histories-rome_codes.js
+│   │   ├── 20231031114408-rename-hors-perimetre.js
+│   │   ├── 20241002135131-create-last-campagne-start-date.js
+│   │   ├── 20241009135543-remove-unused-acls.js
+│   │   ├── 20241011131016-add-roles.js
+│   │   ├── 20241018112404-remove-ps-af-tags.js
+│   │   ├── 20241018114733-update-lecteur-af-ps.js
+│   │   ├── 20241106114408-rename-en-attente.js
+│   │   ├── 20241126091557-restore-raison-depublication.js
+│   │   ├── 20250129144950-status-regles-affelnet.js
+│   │   ├── 20250619122355-remove-unused-tco-tables.js
+│   │   ├── 20250926081319-remove-unused-formation-fields.js
+│   │   ├── 20251001155021-add-region-stats.js
+│   │   ├── 20251014083536-restore-raison-depublication.js
+│   │   ├── 20251031122819-reinit-statut-non-publie.js
+│   │   ├── 20251118142558-migrate-user-tags.js
+│   │   ├── 20260121115422-regles-perimetre-acls.js
+│   │   ├── 20260209125311-fix-updates-history.js
+│   │   ├── 20260216142334-rattrapage-status.js
+│   │   ├── 20260219100229-rattrapage-status.js
+│   │   └── 20260305120147-rattrapage-status-campagne.js
+│   ├── package.json
+│   ├── scripts
+│   │   └── preventSensibleFilesCommit.sh
+│   ├── src
+│   │   ├── assets
+│   │   │   └── templates
+│   │   │       ├── forgotten-password.mjml.ejs
+│   │   │       ├── grettings.mjml.ejs
+│   │   │       ├── oneshot-jobs.mjml.ejs
+│   │   │       └── pending-formations-export.mjml.ejs
+│   │   ├── common
+│   │   │   ├── apis
+│   │   │   │   ├── ApiError.js
+│   │   │   │   ├── ApiGeoAdresse.js
+│   │   │   │   └── apiRateLimiter.js
+│   │   │   ├── components
+│   │   │   │   ├── components.js
+│   │   │   │   └── users.js
+│   │   │   ├── esClient
+│   │   │   │   └── index.js
+│   │   │   ├── logger.js
+│   │   │   ├── mailer.js
+│   │   │   ├── models
+│   │   │   │   ├── createModel.js
+│   │   │   │   ├── format.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── plugins
+│   │   │   │   │   ├── diffHistory
+│   │   │   │   │   │   ├── diffHistory.js
+│   │   │   │   │   │   └── diffHistoryModel.js
+│   │   │   │   │   └── mongoosastic
+│   │   │   │   │       ├── index.js
+│   │   │   │   │       ├── mongoosastic.test.js
+│   │   │   │   │       └── serialize.js
+│   │   │   │   ├── schema
+│   │   │   │   │   ├── affelnetFormation.d.ts
+│   │   │   │   │   ├── affelnetFormation.js
+│   │   │   │   │   ├── alert.d.ts
+│   │   │   │   │   ├── alert.js
+│   │   │   │   │   ├── bcnFormationDiplomes.d.ts
+│   │   │   │   │   ├── bcnFormationDiplomes.js
+│   │   │   │   │   ├── bcnLettreSpecialite.d.ts
+│   │   │   │   │   ├── bcnLettreSpecialite.js
+│   │   │   │   │   ├── bcnNDispositifFormation.d.ts
+│   │   │   │   │   ├── bcnNDispositifFormation.js
+│   │   │   │   │   ├── bcnNMef.d.ts
+│   │   │   │   │   ├── bcnNMef.js
+│   │   │   │   │   ├── bcnNNiveauFormationDiplome.d.ts
+│   │   │   │   │   ├── bcnNNiveauFormationDiplome.js
+│   │   │   │   │   ├── campagneStart.d.ts
+│   │   │   │   │   ├── campagneStart.js
+│   │   │   │   │   ├── candidatureFormation.d.ts
+│   │   │   │   │   ├── candidatureFormation.js
+│   │   │   │   │   ├── candidatureRelation.d.ts
+│   │   │   │   │   ├── candidatureRelation.js
+│   │   │   │   │   ├── config.d.ts
+│   │   │   │   │   ├── config.js
+│   │   │   │   │   ├── consoleStat.d.ts
+│   │   │   │   │   ├── consoleStat.js
+│   │   │   │   │   ├── consumption.d.ts
+│   │   │   │   │   ├── consumption.js
+│   │   │   │   │   ├── dualControlEtablissement.d.ts
+│   │   │   │   │   ├── dualControlEtablissement.js
+│   │   │   │   │   ├── dualControlFormation.d.ts
+│   │   │   │   │   ├── etablissement.d.ts
+│   │   │   │   │   ├── etablissement.js
+│   │   │   │   │   ├── formation
+│   │   │   │   │   │   ├── affelnet.js
+│   │   │   │   │   │   ├── dualControlFormation.js
+│   │   │   │   │   │   ├── etablissement.formateur.sub.js
+│   │   │   │   │   │   ├── etablissement.gestionnaire.sub.js
+│   │   │   │   │   │   ├── etablissement.reference.sub.js
+│   │   │   │   │   │   ├── formation.js
+│   │   │   │   │   │   ├── mef.js
+│   │   │   │   │   │   ├── modalite.js
+│   │   │   │   │   │   ├── parcoursup.js
+│   │   │   │   │   │   ├── rncpDetails
+│   │   │   │   │   │   │   ├── certificateur.js
+│   │   │   │   │   │   │   ├── partenaire.js
+│   │   │   │   │   │   │   ├── rncpDetails.js
+│   │   │   │   │   │   │   └── rome.js
+│   │   │   │   │   │   └── statutReinitialisation.js
+│   │   │   │   │   ├── formation.d.ts
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── log.d.ts
+│   │   │   │   │   ├── log.js
+│   │   │   │   │   ├── parcoursupFormation.d.ts
+│   │   │   │   │   ├── parcoursupFormation.js
+│   │   │   │   │   ├── parcoursupFormationCheck.d.ts
+│   │   │   │   │   ├── parcoursupFormationCheck.js
+│   │   │   │   │   ├── previousSeasonFormation.d.ts
+│   │   │   │   │   ├── previousSeasonFormation.js
+│   │   │   │   │   ├── previousSeasonFormationStat.d.ts
+│   │   │   │   │   ├── previousSeasonFormationStat.js
+│   │   │   │   │   ├── reglePerimetre.d.ts
+│   │   │   │   │   ├── reglePerimetre.js
+│   │   │   │   │   ├── role.d.ts
+│   │   │   │   │   ├── role.js
+│   │   │   │   │   ├── statistique.d.ts
+│   │   │   │   │   ├── statistique.js
+│   │   │   │   │   ├── updateHistory.js
+│   │   │   │   │   ├── user.d.ts
+│   │   │   │   │   └── user.js
+│   │   │   │   └── swaggerSchema
+│   │   │   │       ├── etablissement.js
+│   │   │   │       ├── formation.js
+│   │   │   │       ├── index.js
+│   │   │   │       └── session.js
+│   │   │   ├── mongodb.js
+│   │   │   ├── passport-config.js
+│   │   │   └── utils
+│   │   │       ├── arrayUtils.js
+│   │   │       ├── asyncUtils.js
+│   │   │       ├── csvUtils.js
+│   │   │       ├── cursor.js
+│   │   │       ├── dateUtils.js
+│   │   │       ├── distanceUtils.js
+│   │   │       ├── esUtils.js
+│   │   │       ├── fileUtils.js
+│   │   │       ├── historyUtils.js
+│   │   │       ├── httpUtils.js
+│   │   │       ├── jwtUtils.js
+│   │   │       ├── mongooseUtils.js
+│   │   │       ├── objectUtils.js
+│   │   │       ├── paginator.js
+│   │   │       ├── parcoursupUtils.js
+│   │   │       ├── rcoUtils.js
+│   │   │       ├── reportUtils.js
+│   │   │       ├── rolesUtils.js
+│   │   │       ├── rulesUtils.js
+│   │   │       ├── sanitizeUtils.js
+│   │   │       ├── sha512Utils.js
+│   │   │       └── uaiUtils.js
+│   │   ├── constants
+│   │   │   ├── academies.js
+│   │   │   ├── certificateurs.js
+│   │   │   ├── parcoursupErrors.js
+│   │   │   ├── regions.js
+│   │   │   └── status.js
+│   │   ├── http
+│   │   │   ├── middlewares
+│   │   │   │   ├── anyAuthMiddleware.js
+│   │   │   │   ├── apiKeyAuthMiddleware.js
+│   │   │   │   ├── authMiddleware.js
+│   │   │   │   ├── consumptionMiddleware.js
+│   │   │   │   ├── corsMiddleware.js
+│   │   │   │   ├── errorMiddleware.js
+│   │   │   │   ├── logMiddleware.js
+│   │   │   │   ├── permissionsMiddleware.js
+│   │   │   │   └── tryCatchMiddleware.js
+│   │   │   ├── routes
+│   │   │   │   ├── alert.js
+│   │   │   │   ├── auth.js
+│   │   │   │   ├── authSecure.js
+│   │   │   │   ├── candidature.js
+│   │   │   │   ├── config.js
+│   │   │   │   ├── dates.js
+│   │   │   │   ├── esMultiSearchNoIndex.js
+│   │   │   │   ├── esSearch.js
+│   │   │   │   ├── etablissement.js
+│   │   │   │   ├── formation.js
+│   │   │   │   ├── parcoursup.js
+│   │   │   │   ├── password.js
+│   │   │   │   ├── perimetrePriseRdv.js
+│   │   │   │   ├── reglePerimetre.js
+│   │   │   │   ├── reglePerimetreSecure.js
+│   │   │   │   ├── report.js
+│   │   │   │   ├── role.js
+│   │   │   │   ├── stats.js
+│   │   │   │   ├── uaiAffelnet.js
+│   │   │   │   ├── upload.js
+│   │   │   │   └── user.js
+│   │   │   ├── server.js
+│   │   │   └── utils
+│   │   │       └── validators.js
+│   │   ├── index.js
+│   │   ├── jobs
+│   │   │   ├── affelnet
+│   │   │   │   ├── coverage.js
+│   │   │   │   ├── import
+│   │   │   │   │   ├── importCandidatureFormations.js
+│   │   │   │   │   ├── importCandidatureRelations.js
+│   │   │   │   │   ├── importFormations.js
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── perimetre
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── academie.js
+│   │   │   │   │   ├── controller.js
+│   │   │   │   │   ├── counter.js
+│   │   │   │   │   ├── differences.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── initial.js
+│   │   │   │   │   ├── perimetre.js
+│   │   │   │   │   ├── previousSession.js
+│   │   │   │   │   ├── replace.js
+│   │   │   │   │   └── session.js
+│   │   │   │   ├── reinitStatus
+│   │   │   │   │   ├── controller.js
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── startCampagne
+│   │   │   │   │   ├── checkUai.js
+│   │   │   │   │   ├── controller.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── previousStatus.js
+│   │   │   │   │   └── removeCandidatureItems.js
+│   │   │   │   ├── stats.js
+│   │   │   │   └── tests
+│   │   │   │       ├── coverage.test.js
+│   │   │   │       ├── perimetre.test.js
+│   │   │   │       └── reinitStatus.test.js
+│   │   │   ├── bcn
+│   │   │   │   ├── assets
+│   │   │   │   │   ├── .gitignore
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── downloader
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── importer
+│   │   │   │   │   ├── FileManager.js
+│   │   │   │   │   ├── createBcnFormation.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── updateBcnFormation.js
+│   │   │   │   └── index.js
+│   │   │   ├── checkUai
+│   │   │   │   └── index.js
+│   │   │   ├── conventionFilesImporter
+│   │   │   │   └── assets
+│   │   │   │       └── .gitkeep
+│   │   │   ├── doc
+│   │   │   │   ├── generateSwaggerSchema.js
+│   │   │   │   ├── generateTypes.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── mongooseUtils.js
+│   │   │   ├── elastic
+│   │   │   │   ├── esDeleteIndex.js
+│   │   │   │   ├── esPauseHook.js
+│   │   │   │   ├── esStartHook.js
+│   │   │   │   ├── esSyncIndex.js
+│   │   │   │   └── index.js
+│   │   │   ├── etablissements
+│   │   │   │   ├── importer
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   ├── .gitignore
+│   │   │   │   │   │   └── .gitkeep
+│   │   │   │   │   ├── converter.js
+│   │   │   │   │   ├── downloader.js
+│   │   │   │   │   └── index.js
+│   │   │   │   └── index.js
+│   │   │   ├── formations
+│   │   │   │   ├── importer
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   ├── .gitignore
+│   │   │   │   │   │   └── .gitkeep
+│   │   │   │   │   ├── converter.js
+│   │   │   │   │   ├── downloader.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── parser.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── previousSeasonStats
+│   │   │   │       ├── index.js
+│   │   │   │       └── tests
+│   │   │   │           └── previousSeasonStats.test.js
+│   │   │   ├── index.js
+│   │   │   ├── parcoursup
+│   │   │   │   ├── clean
+│   │   │   │   │   ├── CLEAN.md
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   └── .gitignore
+│   │   │   │   │   ├── clean.js
+│   │   │   │   │   ├── erase.js.DEPRECATED
+│   │   │   │   │   ├── importListeFormation.js
+│   │   │   │   │   ├── integrate.js.DEPRECATED
+│   │   │   │   │   ├── sendWs.js.DEPRECATED
+│   │   │   │   │   └── updateUais.js.DEPRECATED
+│   │   │   │   ├── export
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── import
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── parcoursupApi.js
+│   │   │   │   ├── perimetre
+│   │   │   │   │   ├── aDistance.js
+│   │   │   │   │   ├── controller.js
+│   │   │   │   │   ├── counter.js
+│   │   │   │   │   ├── differences.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── initial.js
+│   │   │   │   │   ├── perimetre.js
+│   │   │   │   │   ├── previousSession.js
+│   │   │   │   │   ├── replace.js
+│   │   │   │   │   └── session.js
+│   │   │   │   ├── startCampagne
+│   │   │   │   │   ├── checkUai.js
+│   │   │   │   │   ├── controller.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── previousStatus.js
+│   │   │   │   ├── stats.js
+│   │   │   │   └── tests
+│   │   │   │       ├── export.test.js
+│   │   │   │       └── perimetre.test.js
+│   │   │   ├── scriptWrapper.js
+│   │   │   └── startCampagne.js
+│   │   └── logic
+│   │       ├── common
+│   │       │   └── utils
+│   │       │       └── diffUtils.js
+│   │       ├── controller
+│   │       │   ├── bcn
+│   │       │   │   └── Constants.js
+│   │       │   ├── coverage.js
+│   │       │   ├── formater.js
+│   │       │   ├── geo
+│   │       │   │   ├── assets
+│   │       │   │   │   └── dataDepartements.json
+│   │       │   │   ├── geoAdressData.test.js
+│   │       │   │   ├── geoAdresseData.js
+│   │       │   │   ├── geoController.js
+│   │       │   │   └── geoController.test.js
+│   │       │   └── reconciliation.js
+│   │       ├── finder
+│   │       │   ├── cfdEntreeFinder.js
+│   │       │   ├── mefsFinder.js
+│   │       │   └── migrationFinder.js
+│   │       ├── handlers
+│   │       │   ├── bcnHandler.js
+│   │       │   └── geoHandler.js
+│   │       └── updaters
+│   │           └── tagsHistoryUpdater.js
+│   ├── tests
+│   │   ├── globalSetup.js
+│   │   ├── helpers
+│   │   │   └── setup.js
+│   │   ├── integration
+│   │   │   ├── common
+│   │   │   │   └── users.test.js
+│   │   │   └── http
+│   │   │       ├── etablissement.test.js
+│   │   │       ├── formation.test.js
+│   │   │       ├── healthcheck.test.js
+│   │   │       ├── login.test.js
+│   │   │       └── password.test.js
+│   │   ├── unit
+│   │   │   ├── common
+│   │   │   │   └── utils
+│   │   │   │       ├── dateUtils.test.js
+│   │   │   │       ├── distanceUtils.test.js
+│   │   │   │       ├── historyUtils.test.js
+│   │   │   │       ├── parcoursupUtils.test.js
+│   │   │   │       ├── rcoUtils.test.js
+│   │   │   │       ├── rulesUtils.test.js
+│   │   │   │       └── sanitizeUtils.test.js
+│   │   │   └── logic
+│   │   │       ├── common
+│   │   │       │   └── utils
+│   │   │       │       ├── diffUtils.test.js
+│   │   │       │       └── historyUtils.test.js
+│   │   │       └── updaters
+│   │   │           └── tagsHistoryUpdater.test.js
+│   │   └── utils
+│   │       ├── fixtures.js
+│   │       ├── httpTests.js
+│   │       ├── integrationTests.js
+│   │       └── testUtils.js
+│   └── yarn.lock
+└── ui
+    ├── .dockerignore
+    ├── .env.example
+    ├── .eslintrc
+    ├── .gitignore
+    ├── .husky
+    │   └── pre-commit
+    ├── Dockerfile
+    ├── Dockerfile.dev
+    ├── craco.config.js
+    ├── eslint.config.mjs
+    ├── package.json
+    ├── public
+    │   ├── .gitattributes
+    │   ├── assets
+    │   │   └── parcoursup
+    │   │       ├── 4.1.Filtres-role-Parcoursup.gif
+    │   │       ├── 4.1.b.filtres-role-mixte.gif
+    │   │       ├── 5.1.a.Recherche-libre.gif
+    │   │       ├── 5.1.b.Recherche-libre-textuelle.gif
+    │   │       ├── 5.2.Recherche-multicriteres.gif
+    │   │       ├── 5.3.a-Combinaison-de-filtres.gif
+    │   │       ├── 5.3.b.Combinaison-de-filtres-compteurs-statuts.gif
+    │   │       ├── 6.1.3.Rejet-de-publication.png
+    │   │       ├── 6.4.1.2.UAI-du-lieu-a-renseigner.gif
+    │   │       ├── 6.4.1.3.UAI-formateur-inconnu.gif
+    │   │       ├── 6.4.1.a-UAI-lieu-repris-du-formateur.gif
+    │   │       ├── 6.4.1.b-UAI-lieu-repris-du-formateur-mais-incoherence-adresse-non-bloquante.gif
+    │   │       ├── 6.4.2.Demander-la-publication.gif
+    │   │       ├── 6.4.3.Specifier-la-non-publication.gif
+    │   │       ├── 6.Filtres-statuts.gif
+    │   │       ├── 8.2.1.Offres-publiees-N-1-non-publiables-en-letat.gif
+    │   │       ├── 8.2.2.Consulter-lintegralite-de-l-offre-d-un-organisme.gif
+    │   │       ├── 8.2.3.Offres-hors-perimètre-niveau-5.gif
+    │   │       ├── 8.2.4.Offres-non-reglementaires.gif
+    │   │       └── 9.1.Offres-remplacees.gif
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── manifest.json
+    │   ├── robots.txt
+    │   └── sitemap.xml
+    ├── setupTests.js
+    ├── src
+    │   ├── App.js
+    │   ├── CHANGELOG.js
+    │   ├── DateContext.js
+    │   ├── common
+    │   │   ├── api
+    │   │   │   ├── formation.js
+    │   │   │   ├── organisme.js
+    │   │   │   ├── perimetre.js
+    │   │   │   └── perimetre.test.js
+    │   │   ├── auth.js
+    │   │   ├── components
+    │   │   │   ├── ActifBadge.jsx
+    │   │   │   ├── Alert.jsx
+    │   │   │   ├── AnneeBadge.jsx
+    │   │   │   ├── Breadcrumb.jsx
+    │   │   │   ├── Card.jsx
+    │   │   │   ├── CardListEtablissement
+    │   │   │   │   ├── CardListEtablissement.js
+    │   │   │   │   └── index.js
+    │   │   │   ├── CardListFormation
+    │   │   │   │   ├── CardListFormation.js
+    │   │   │   │   └── index.js
+    │   │   │   ├── Changelog
+    │   │   │   │   ├── Changelog.jsx
+    │   │   │   │   ├── changelog.css
+    │   │   │   │   └── components
+    │   │   │   │       ├── ChangelogFilter.js
+    │   │   │   │       ├── ChangelogList.js
+    │   │   │   │       ├── ChangelogVersion.js
+    │   │   │   │       ├── FeatureItem.js
+    │   │   │   │       ├── ScrollToVersion.js
+    │   │   │   │       └── ScrollToVersionItem.js
+    │   │   │   ├── DangerBox.jsx
+    │   │   │   ├── DureeBadge.jsx
+    │   │   │   ├── EllipsisText.jsx
+    │   │   │   ├── HabiliteBadge.jsx
+    │   │   │   ├── HowToReglement
+    │   │   │   │   └── HowToReglement.jsx.DEPRECATED
+    │   │   │   ├── InfoTooltip.jsx
+    │   │   │   ├── PasswordInput.jsx
+    │   │   │   ├── QualiteBadge.jsx
+    │   │   │   ├── ScrollToTop.js
+    │   │   │   ├── Search
+    │   │   │   │   ├── HardFiltersEtablissement.jsx
+    │   │   │   │   ├── HardFiltersFormation.jsx
+    │   │   │   │   ├── SearchEtablissement.jsx
+    │   │   │   │   ├── SearchFormation.jsx
+    │   │   │   │   ├── SearchUser.jsx
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── AffelnetMissingSession.jsx
+    │   │   │   │   │   ├── ExportButton.jsx
+    │   │   │   │   │   ├── Facet.jsx
+    │   │   │   │   │   ├── Pagination.jsx
+    │   │   │   │   │   ├── ParcoursupMissingSession.jsx
+    │   │   │   │   │   ├── QueryBuilder
+    │   │   │   │   │   │   ├── index.js
+    │   │   │   │   │   │   ├── rule.js
+    │   │   │   │   │   │   └── utils.js
+    │   │   │   │   │   ├── QuickFilters.jsx
+    │   │   │   │   │   ├── facet.css
+    │   │   │   │   │   └── index.js
+    │   │   │   │   ├── constantsEtablissements.js
+    │   │   │   │   ├── constantsFormations.js
+    │   │   │   │   ├── constantsReglesPerimetre.js
+    │   │   │   │   ├── constantsUsers.js
+    │   │   │   │   └── search.css
+    │   │   │   ├── StatusBadge.jsx
+    │   │   │   ├── WarningBox.jsx
+    │   │   │   ├── formation
+    │   │   │   │   ├── DescriptionBlock.jsx
+    │   │   │   │   ├── DescriptionBlock.test.js
+    │   │   │   │   ├── EditableField.jsx
+    │   │   │   │   ├── EditableField.test.js
+    │   │   │   │   ├── FormationDate.jsx
+    │   │   │   │   ├── FormationPeriode.jsx
+    │   │   │   │   ├── FormationPeriode.test.js
+    │   │   │   │   ├── HabilitationPartenaire.jsx
+    │   │   │   │   ├── HabilitationPartenaire.test.js
+    │   │   │   │   ├── HistoryBlock.jsx
+    │   │   │   │   ├── HistoryBlock.test.js
+    │   │   │   │   ├── HowToAddModal.jsx
+    │   │   │   │   ├── HowToAddModal.test.js
+    │   │   │   │   ├── OrganismesBlock.jsx
+    │   │   │   │   ├── OrganismesBlock.test.js
+    │   │   │   │   ├── PublishModal.jsx
+    │   │   │   │   ├── PublishModal.test.js
+    │   │   │   │   ├── PublishModalButton.jsx
+    │   │   │   │   ├── ReinitStatutModal.jsx
+    │   │   │   │   ├── ReinitStatutModalButton.jsx
+    │   │   │   │   ├── RejectionBlock.jsx
+    │   │   │   │   ├── ResponsableEmailModal.jsx
+    │   │   │   │   ├── ResponsableEmailModalButton.jsx
+    │   │   │   │   ├── UaiHistoryModal.jsx
+    │   │   │   │   └── UaiHistoryModalButton.jsx
+    │   │   │   └── organisme
+    │   │   │       └── HowToFixModal.jsx
+    │   │   ├── emitter.js
+    │   │   ├── hooks
+    │   │   │   ├── useAuth.js
+    │   │   │   ├── useConfig.js
+    │   │   │   ├── useEtablissementSearch.js
+    │   │   │   ├── useFetch.js
+    │   │   │   ├── useFormationSearch.js
+    │   │   │   └── useUserSearch.js
+    │   │   ├── httpClient.js
+    │   │   ├── store
+    │   │   │   └── alertStore.js
+    │   │   └── utils
+    │   │       ├── decodeJWT.js
+    │   │       ├── downloadUtils.js
+    │   │       ├── historyUtils.js
+    │   │       ├── historyUtils.test.js
+    │   │       ├── mapUtils.js
+    │   │       ├── metabaseUtils.js
+    │   │       ├── pageUtils.js
+    │   │       ├── rolesUtils.js
+    │   │       ├── rulesUtils.js
+    │   │       ├── rulesUtils.test.js
+    │   │       └── testUtils.js
+    │   ├── constants
+    │   │   ├── academies.js
+    │   │   ├── annees.js
+    │   │   ├── catalogueLabels.js
+    │   │   ├── certificateurs.js
+    │   │   ├── conditionsIntegration.js
+    │   │   ├── context.js
+    │   │   ├── departements.js
+    │   │   ├── es.js
+    │   │   ├── plateforme.js
+    │   │   ├── regions.js
+    │   │   ├── report.js
+    │   │   └── status.js
+    │   ├── fonts
+    │   │   ├── .gitattributes
+    │   │   ├── Marianne-Bold.woff
+    │   │   ├── Marianne-Bold.woff2
+    │   │   ├── Marianne-Bold_Italic.woff
+    │   │   ├── Marianne-Bold_Italic.woff2
+    │   │   ├── Marianne-ExtraBold.woff
+    │   │   ├── Marianne-ExtraBold.woff2
+    │   │   ├── Marianne-ExtraBold_Italic.woff
+    │   │   ├── Marianne-ExtraBold_Italic.woff2
+    │   │   ├── Marianne-Light.woff
+    │   │   ├── Marianne-Light.woff2
+    │   │   ├── Marianne-Light_Italic.woff
+    │   │   ├── Marianne-Light_Italic.woff2
+    │   │   ├── Marianne-Regular.woff
+    │   │   ├── Marianne-Regular.woff2
+    │   │   ├── Marianne-Regular_Italic.woff
+    │   │   └── Marianne-Regular_Italic.woff2
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── locales
+    │   │   └── helpText.json
+    │   ├── pages
+    │   │   ├── 404.jsx
+    │   │   ├── Catalogue
+    │   │   │   ├── Catalogue.jsx
+    │   │   │   └── Catalogue.test.js
+    │   │   ├── ConsolesPilotage
+    │   │   │   ├── Affelnet.js
+    │   │   │   ├── Parcoursup.js
+    │   │   │   └── index.js
+    │   │   ├── Dashboard
+    │   │   │   └── index.js
+    │   │   ├── Etablissement
+    │   │   │   ├── Etablissement.jsx
+    │   │   │   ├── Etablissement.test.js
+    │   │   │   └── index.js
+    │   │   ├── Formation
+    │   │   │   ├── Formation.jsx
+    │   │   │   ├── Formation.test.js
+    │   │   │   └── index.js
+    │   │   ├── HomePage.jsx
+    │   │   ├── HomePage.test.js
+    │   │   ├── InstructionManual
+    │   │   │   ├── assets
+    │   │   │   │   └── parcoursup.md
+    │   │   │   └── index.jsx
+    │   │   ├── Journal
+    │   │   │   └── Journal.jsx
+    │   │   ├── LoginPage.jsx
+    │   │   ├── Organismes
+    │   │   │   └── Organismes.jsx
+    │   │   ├── ReglesPerimetre
+    │   │   │   ├── Plateforme.jsx
+    │   │   │   ├── Plateforme.test.js
+    │   │   │   ├── ReglesPerimetre.jsx
+    │   │   │   ├── ReglesPerimetre.test.js
+    │   │   │   └── components
+    │   │   │       ├── AcademiesSelect.jsx
+    │   │   │       ├── AcademiesSelect.test.js
+    │   │   │       ├── ActionsSelect.jsx
+    │   │   │       ├── ActionsSelect.test.js
+    │   │   │       ├── Diplome.jsx
+    │   │   │       ├── Diplome.test.js
+    │   │   │       ├── DiplomesAutosuggest.jsx
+    │   │   │       ├── DiplomesAutosuggest.test.js
+    │   │   │       ├── ExportButton.jsx
+    │   │   │       ├── ExportButton.test.js
+    │   │   │       ├── Headline.jsx
+    │   │   │       ├── Line.jsx
+    │   │   │       ├── Line.test.js
+    │   │   │       ├── RuleBuilder.jsx
+    │   │   │       ├── RuleModal.jsx
+    │   │   │       ├── RuleModal.test.js
+    │   │   │       ├── RuleUpdatesHistory.jsx
+    │   │   │       ├── RuleUpdatesHistory.test.js
+    │   │   │       └── StatusSelect.jsx
+    │   │   ├── admin
+    │   │   │   ├── Alert.jsx
+    │   │   │   ├── Config.jsx
+    │   │   │   ├── Roles.jsx
+    │   │   │   ├── UploadFiles.jsx
+    │   │   │   ├── Users.jsx
+    │   │   │   └── acl.js
+    │   │   ├── layout
+    │   │   │   ├── Layout.jsx
+    │   │   │   └── components
+    │   │   │       ├── AlertMessage.jsx
+    │   │   │       ├── AlertMessage.test.js
+    │   │   │       ├── Footer.jsx
+    │   │   │       ├── Header.jsx
+    │   │   │       ├── Logo.jsx
+    │   │   │       └── NavigationMenu.jsx
+    │   │   ├── legal
+    │   │   │   ├── Accessibilite.jsx
+    │   │   │   ├── Contact.jsx
+    │   │   │   ├── Cookies.jsx
+    │   │   │   ├── DonneesPersonnelles.jsx
+    │   │   │   └── MentionsLegales.jsx
+    │   │   └── password
+    │   │       ├── ForgottenPasswordPage.jsx
+    │   │       └── ResetPasswordPage.jsx
+    │   ├── scripts
+    │   │   ├── sitemap-generator.js
+    │   │   └── sitemap-routes.js
+    │   ├── setupTests.js
+    │   └── theme
+    │       ├── assets
+    │       │   ├── account-fill.svg
+    │       │   ├── add-circle.svg
+    │       │   ├── add-fill.svg
+    │       │   ├── arrow-down-line.svg
+    │       │   ├── arrow-drop-right-line.svg
+    │       │   ├── arrow-right-down-line.svg
+    │       │   ├── arrow-right-line.svg
+    │       │   ├── clipboard-fill.svg
+    │       │   ├── clipboard-line.svg
+    │       │   ├── close-circle-line.svg
+    │       │   ├── close.svg
+    │       │   ├── cloud-slashed.svg
+    │       │   ├── cloud.svg
+    │       │   ├── double-arrows.svg
+    │       │   ├── download-line.svg
+    │       │   ├── edit-2-fill.svg
+    │       │   ├── emoji-flat.svg
+    │       │   ├── emoji-smile.svg
+    │       │   ├── error-fill.svg
+    │       │   ├── error-line.svg
+    │       │   ├── error.svg
+    │       │   ├── exclamation-circle.svg
+    │       │   ├── external-link-line.svg
+    │       │   ├── eye-fill.svg
+    │       │   ├── eye-off-fill.svg
+    │       │   ├── flashlight-fill.svg
+    │       │   ├── flashlight-line.svg
+    │       │   ├── folder-line.svg
+    │       │   ├── folder-open-line.svg
+    │       │   ├── info-circle.svg
+    │       │   ├── info-fill.svg
+    │       │   ├── info-line.svg
+    │       │   ├── information-line.svg
+    │       │   ├── link-line.svg
+    │       │   ├── lock-fill.svg
+    │       │   ├── map-pin-2-fill.svg
+    │       │   ├── menu-fill.svg
+    │       │   ├── minus-circle.svg
+    │       │   ├── parametre.svg
+    │       │   ├── processing copy.svg
+    │       │   ├── processing.svg
+    │       │   ├── question.svg
+    │       │   ├── reject.svg
+    │       │   ├── search-line.svg
+    │       │   ├── sent-paper-plane.svg
+    │       │   ├── substract-line.svg
+    │       │   ├── success-fill.svg
+    │       │   ├── success-line.svg
+    │       │   ├── tick.svg
+    │       │   ├── trash.svg
+    │       │   ├── validate.svg
+    │       │   ├── warning-fill.svg
+    │       │   ├── warning-line.svg
+    │       │   ├── zoom-in.svg
+    │       │   └── zoom-out.svg
+    │       ├── components
+    │       │   ├── accordion.js
+    │       │   ├── badge.js
+    │       │   ├── button.js
+    │       │   ├── icons
+    │       │   │   ├── AccountFill.jsx
+    │       │   │   ├── AddCircle.jsx
+    │       │   │   ├── AddFill.jsx
+    │       │   │   ├── ArrowDownLine.jsx
+    │       │   │   ├── ArrowDropRightLine.jsx
+    │       │   │   ├── ArrowRightDownLine.jsx
+    │       │   │   ├── ArrowRightLine.jsx
+    │       │   │   ├── CheckLine.jsx
+    │       │   │   ├── ClipboardFill.jsx
+    │       │   │   ├── ClipboardLine.jsx
+    │       │   │   ├── Close.jsx
+    │       │   │   ├── CloseCircleLine.jsx
+    │       │   │   ├── Cloud.jsx
+    │       │   │   ├── CloudSlashed.jsx
+    │       │   │   ├── CrossLine.jsx
+    │       │   │   ├── Danger.jsx
+    │       │   │   ├── DoubleArrows.jsx
+    │       │   │   ├── DownloadLine.jsx
+    │       │   │   ├── Edit2Fill.jsx
+    │       │   │   ├── EmojiFlat.jsx
+    │       │   │   ├── EmojiSmile.jsx
+    │       │   │   ├── Error.jsx
+    │       │   │   ├── ErrorFill.jsx
+    │       │   │   ├── ErrorLine.jsx
+    │       │   │   ├── ExclamationCircle.jsx
+    │       │   │   ├── ExternalLinkLine.jsx
+    │       │   │   ├── EyeFill.jsx
+    │       │   │   ├── EyeOffFill.jsx
+    │       │   │   ├── FolderLine.jsx
+    │       │   │   ├── FolderOpenLine.jsx
+    │       │   │   ├── InfoCircle.jsx
+    │       │   │   ├── InfoFill.jsx
+    │       │   │   ├── InfoLine.jsx
+    │       │   │   ├── InformationLine.jsx
+    │       │   │   ├── LinkLine.jsx
+    │       │   │   ├── LockFill.jsx
+    │       │   │   ├── MapPin2Fill.jsx
+    │       │   │   ├── MenuFill.jsx
+    │       │   │   ├── MinusCircle.jsx
+    │       │   │   ├── Parametre.jsx
+    │       │   │   ├── Processing.jsx
+    │       │   │   ├── Question.jsx
+    │       │   │   ├── Reject.jsx
+    │       │   │   ├── SearchLine.jsx
+    │       │   │   ├── SentPaperPlane.jsx
+    │       │   │   ├── SubtractLine.jsx
+    │       │   │   ├── SuccessFill.jsx
+    │       │   │   ├── SuccessLine.jsx
+    │       │   │   ├── Tick.jsx
+    │       │   │   ├── Trash.jsx
+    │       │   │   ├── Validate.jsx
+    │       │   │   ├── WarningFill.jsx
+    │       │   │   ├── WarningLine.jsx
+    │       │   │   ├── ZoomIn.jsx
+    │       │   │   ├── ZoomOut.jsx
+    │       │   │   └── index.js
+    │       │   ├── index.js
+    │       │   ├── input.js
+    │       │   ├── link.js
+    │       │   ├── radio.js
+    │       │   ├── select.js
+    │       │   ├── switch.js
+    │       │   ├── tabs.js
+    │       │   ├── text.js
+    │       │   └── textarea.js
+    │       ├── index.js
+    │       └── theme-beta.js
+    └── yarn.lock
+154 directories, 861 files
