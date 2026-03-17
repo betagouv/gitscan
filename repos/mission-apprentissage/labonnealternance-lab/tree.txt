@@ -1,0 +1,97 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-lab
+│   ├── scripts
+│   │   ├── app-build.sh
+│   │   ├── app-release-interactive.sh
+│   │   ├── app-release.sh
+│   │   ├── buildkitd.toml
+│   │   ├── env-init.sh
+│   │   └── get-version.sh
+│   └── shared
+├── .dockerignore
+├── .gitattributes
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── _deploy.yml
+│       ├── codeql.yml
+│       └── release.yml
+├── .gitignore
+├── .gitmodules
+├── .infra
+│   ├── .env_server
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── initialize-env.yml
+│   │   └── tasks
+│   │       └── files_copy.yml
+│   ├── authorizations
+│   ├── docker-compose.production.yml
+│   ├── env.global.yml
+│   ├── env.local.yml
+│   ├── env.production.yml
+│   ├── files
+│   │   ├── configs
+│   │   │   └── reverse_proxy
+│   │   │       ├── locations
+│   │   │       │   └── 10_api.conf.template
+│   │   │       ├── owasp-crs
+│   │   │       │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │       └── system
+│   │   │           ├── 503.html
+│   │   │           ├── 503.svg
+│   │   │           ├── 5xx.html
+│   │   │           ├── 5xx.svg
+│   │   │           ├── favicon.svg
+│   │   │           └── marianne.svg
+│   │   ├── data
+│   │   │   └── server
+│   │   │       └── .gitkeep
+│   │   └── scripts
+│   │       └── .gitkeep
+│   ├── inventories
+│   └── local
+│       └── .gitkeep
+├── .prettierignore
+├── .talismanrc
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── terminals.json
+├── Dockerfile
+├── Dockerfile.local
+├── LICENSE
+├── Makefile
+├── README.md
+├── docker-bake.json
+├── docker-compose.yml
+├── docs
+│   └── model-training.md
+├── release.config.js
+└── server
+    ├── __init__.py
+    ├── classifier.py
+    ├── config.py
+    ├── data
+    │   └── validation-dataset.json
+    ├── main.py
+    ├── model_manager.py
+    ├── models
+    │   ├── 2025-07-28 offres_ft_rf.pkl
+    │   ├── 2025-07-28 offres_ft_svc.pkl
+    │   └── 2025-08-06 offres_ft_svc.pkl
+    ├── requirements-local.txt
+    ├── requirements.txt
+    └── routes
+        ├── __init__.py
+        ├── evaluation.py
+        ├── health.py
+        ├── inference.py
+        ├── model.py
+        └── training.py
+27 directories, 69 files
