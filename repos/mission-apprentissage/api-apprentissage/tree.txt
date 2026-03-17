@@ -1,0 +1,1489 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-api
+│   ├── scripts
+│   │   ├── app-build.sh
+│   │   ├── buildkitd.toml
+│   │   ├── env-init.sh
+│   │   ├── sdk-release.sh
+│   │   ├── sentry-deploy.sh
+│   │   └── sentry-release.sh
+│   └── shared
+├── .dockerignore
+├── .gitattributes
+├── .github
+│   ├── CODEOWNERS
+│   ├── release.yml
+│   └── workflows
+│       ├── _build.yml
+│       ├── _deploy.yml
+│       ├── ci.yml
+│       ├── codeql.yml
+│       ├── deploy_preview.yml
+│       ├── doc_update.yml
+│       ├── labels.yml
+│       ├── merge_queue.yml
+│       ├── preview_cleanup.yml
+│       ├── pull_request.yml
+│       ├── recette.yml
+│       └── release.yml
+├── .gitignore
+├── .gitmodules
+├── .husky
+│   ├── post-checkout
+│   ├── post-commit
+│   ├── post-merge
+│   ├── pre-commit
+│   ├── pre-push
+│   └── preventSensibleFilesCommit.sh
+├── .infra
+│   ├── .env_server
+│   ├── .env_ui
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── initialize-env.yml
+│   │   └── tasks
+│   │       └── files_copy.yml
+│   ├── authorizations
+│   ├── docker-compose.preview-system.yml
+│   ├── docker-compose.preview.yml
+│   ├── docker-compose.production.yml
+│   ├── env.global.yml
+│   ├── env.local.yml
+│   ├── env.production.yml
+│   ├── env.recette.yml
+│   ├── files
+│   │   ├── configs
+│   │   │   ├── mailpit
+│   │   │   │   ├── .gitkeep
+│   │   │   │   └── auth
+│   │   │   ├── metabase
+│   │   │   │   └── setup-metabase.sh
+│   │   │   ├── mongodb
+│   │   │   │   ├── mongo_keyfile.txt
+│   │   │   │   ├── mongod.conf
+│   │   │   │   └── seed.gpg
+│   │   │   └── reverse_proxy
+│   │   │       ├── locations
+│   │   │       │   ├── 10_api.conf.template
+│   │   │       │   ├── 70_smtp.conf.template
+│   │   │       │   ├── 80_metabase.conf.template
+│   │   │       │   └── 90_location_ui.conf.template
+│   │   │       ├── owasp-crs
+│   │   │       │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │       └── system
+│   │   │           ├── 503.html
+│   │   │           ├── 503.svg
+│   │   │           ├── 5xx.html
+│   │   │           ├── 5xx.svg
+│   │   │           ├── favicon.svg
+│   │   │           └── marianne.svg
+│   │   ├── data
+│   │   │   ├── server
+│   │   │   │   └── .gitkeep
+│   │   │   └── smtp
+│   │   │       └── .gitkeep
+│   │   └── scripts
+│   │       ├── cli.sh
+│   │       ├── docker-compose.sh
+│   │       ├── migrations-status.sh
+│   │       ├── migrations-up.sh
+│   │       ├── seed.sh
+│   │       └── trigger-indexes-creation.sh
+│   ├── inventories
+│   └── local
+│       ├── Dockerfile
+│       ├── mongo_keyfile
+│       └── mongod.conf
+├── .node-version
+├── .prettierignore
+├── .talismanrc
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── terminals.json
+├── .yarn
+│   ├── patches
+│   │   └── exceljs-npm-4.4.0-15bcfdd142.patch
+│   ├── plugins
+│   │   └── @yarnpkg
+│   │       ├── plugin-interactive-tools.cjs
+│   │       ├── plugin-version.cjs
+│   │       └── plugin-workspace-tools.cjs
+│   └── releases
+│       └── yarn-3.6.1.cjs
+├── .yarnrc.yml
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── docker-bake.json
+├── docker-compose.yml
+├── docs
+│   ├── Vault.md
+│   ├── deploy.md
+│   ├── developpement
+│   │   ├── 1password.md
+│   │   ├── creer-route.md
+│   │   ├── developpement.md
+│   │   ├── modifier-documentation.md
+│   │   └── pre-requesites.md
+│   ├── infrastructure
+│   │   ├── architecture.md
+│   │   ├── manage.md
+│   │   └── preview.md
+│   ├── infrastructure.md
+│   └── jobs.md
+├── eslint.config.mjs
+├── package.json
+├── sdk
+│   ├── README.md
+│   ├── package.json
+│   ├── scripts
+│   │   └── transpile-markdown.mjs
+│   ├── src
+│   │   ├── client
+│   │   │   ├── client.test.ts
+│   │   │   ├── client.ts
+│   │   │   ├── index.ts
+│   │   │   ├── internal
+│   │   │   │   ├── apiError.ts
+│   │   │   │   ├── certification
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── certification.module.test.ts.snap
+│   │   │   │   │   │   └── organisme.module.test.ts.snap
+│   │   │   │   │   ├── certification.module.test.ts
+│   │   │   │   │   └── certification.module.ts
+│   │   │   │   ├── formation
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── formation.module.test.ts.snap
+│   │   │   │   │   ├── formation.module.test.ts
+│   │   │   │   │   └── formation.module.ts
+│   │   │   │   ├── generateUri
+│   │   │   │   │   ├── generateUri.test.ts
+│   │   │   │   │   └── generateUri.ts
+│   │   │   │   ├── geographie
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── geographie.module.test.ts.snap
+│   │   │   │   │   ├── geographie.module.test.ts
+│   │   │   │   │   └── geographie.module.ts
+│   │   │   │   ├── organisme
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── organisme.module.test.ts.snap
+│   │   │   │   │   ├── organisme.module.test.ts
+│   │   │   │   │   └── organisme.module.ts
+│   │   │   │   └── parser
+│   │   │   │       └── response.parser.ts
+│   │   │   └── internal.ts
+│   │   ├── docs
+│   │   │   ├── internal.ts
+│   │   │   ├── markdown.test.ts
+│   │   │   ├── metier
+│   │   │   │   ├── candidature-offre
+│   │   │   │   │   └── candidature-offre.doc.ts
+│   │   │   │   ├── certifications
+│   │   │   │   │   ├── certifications.doc.ts
+│   │   │   │   │   └── fr
+│   │   │   │   │       ├── continuite.description.md
+│   │   │   │   │       ├── continuite.description.md.ts
+│   │   │   │   │       ├── domaines.description.md
+│   │   │   │   │       ├── domaines.description.md.ts
+│   │   │   │   │       ├── identifiant.information.md
+│   │   │   │   │       ├── identifiant.information.md.ts
+│   │   │   │   │       ├── identifiant.tip.md
+│   │   │   │   │       ├── identifiant.tip.md.ts
+│   │   │   │   │       ├── intitule.description.md
+│   │   │   │   │       ├── intitule.description.md.ts
+│   │   │   │   │       ├── intitule.niveau.tip.md
+│   │   │   │   │       ├── intitule.niveau.tip.md.ts
+│   │   │   │   │       ├── periode_validite.cfd.description.md
+│   │   │   │   │       ├── periode_validite.cfd.description.md.ts
+│   │   │   │   │       ├── periode_validite.rncp.description.md
+│   │   │   │   │       ├── periode_validite.rncp.description.md.ts
+│   │   │   │   │       ├── type.description.md
+│   │   │   │   │       └── type.description.md.ts
+│   │   │   │   ├── depot-offre
+│   │   │   │   │   ├── depot-offre.doc.ts
+│   │   │   │   │   ├── en
+│   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   └── apply.description.md.ts
+│   │   │   │   │   └── fr
+│   │   │   │   │       ├── apply.description.md
+│   │   │   │   │       └── apply.description.md.ts
+│   │   │   │   ├── generation-lien-prise-rdv-formation
+│   │   │   │   │   └── generation-lien-prise-rdv-formation.doc.ts
+│   │   │   │   ├── internal.ts
+│   │   │   │   ├── recherche-commune
+│   │   │   │   │   ├── en
+│   │   │   │   │   │   ├── localisation.description.md
+│   │   │   │   │   │   └── localisation.description.md.ts
+│   │   │   │   │   ├── fr
+│   │   │   │   │   │   ├── localisation.description.md
+│   │   │   │   │   │   └── localisation.description.md.ts
+│   │   │   │   │   └── recherche-commune.doc.ts
+│   │   │   │   ├── recherche-formation
+│   │   │   │   │   └── recherche-formation.doc.ts
+│   │   │   │   ├── recherche-offre
+│   │   │   │   │   ├── en
+│   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   ├── contract.description.md
+│   │   │   │   │   │   ├── contract.description.md.ts
+│   │   │   │   │   │   ├── description.md
+│   │   │   │   │   │   ├── description.md.ts
+│   │   │   │   │   │   ├── identifier.description.md
+│   │   │   │   │   │   ├── identifier.description.md.ts
+│   │   │   │   │   │   ├── offer.description.md
+│   │   │   │   │   │   ├── offer.description.md.ts
+│   │   │   │   │   │   ├── offer.publication.description.md
+│   │   │   │   │   │   ├── offer.publication.description.md.ts
+│   │   │   │   │   │   ├── offer.status.description.md
+│   │   │   │   │   │   ├── offer.status.description.md.ts
+│   │   │   │   │   │   ├── workplace.description.md
+│   │   │   │   │   │   ├── workplace.description.md.ts
+│   │   │   │   │   │   ├── workplace.domain.description.md
+│   │   │   │   │   │   ├── workplace.domain.description.md.ts
+│   │   │   │   │   │   ├── workplace.location.description.md
+│   │   │   │   │   │   └── workplace.location.description.md.ts
+│   │   │   │   │   ├── fr
+│   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   ├── contract.description.md
+│   │   │   │   │   │   ├── contract.description.md.ts
+│   │   │   │   │   │   ├── description.md
+│   │   │   │   │   │   ├── description.md.ts
+│   │   │   │   │   │   ├── identifier.description.md
+│   │   │   │   │   │   ├── identifier.description.md.ts
+│   │   │   │   │   │   ├── offer.description.md
+│   │   │   │   │   │   ├── offer.description.md.ts
+│   │   │   │   │   │   ├── offer.publication.description.md
+│   │   │   │   │   │   ├── offer.publication.description.md.ts
+│   │   │   │   │   │   ├── offer.status.description.md
+│   │   │   │   │   │   ├── offer.status.description.md.ts
+│   │   │   │   │   │   ├── workplace.description.md
+│   │   │   │   │   │   ├── workplace.description.md.ts
+│   │   │   │   │   │   ├── workplace.domain.description.md
+│   │   │   │   │   │   ├── workplace.domain.description.md.ts
+│   │   │   │   │   │   ├── workplace.location.description.md
+│   │   │   │   │   │   └── workplace.location.description.md.ts
+│   │   │   │   │   └── recherche-offre.doc.ts
+│   │   │   │   ├── recuperation-departements
+│   │   │   │   │   └── recuperation-departements.doc.ts
+│   │   │   │   ├── recuperation-detail-offre
+│   │   │   │   │   ├── en
+│   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   ├── contract.description.md
+│   │   │   │   │   │   ├── contract.description.md.ts
+│   │   │   │   │   │   ├── description.md
+│   │   │   │   │   │   ├── description.md.ts
+│   │   │   │   │   │   ├── identifier.description.md
+│   │   │   │   │   │   ├── identifier.description.md.ts
+│   │   │   │   │   │   ├── offer.description.md
+│   │   │   │   │   │   ├── offer.description.md.ts
+│   │   │   │   │   │   ├── offer.publication.description.md
+│   │   │   │   │   │   ├── offer.publication.description.md.ts
+│   │   │   │   │   │   ├── offer.status.description.md
+│   │   │   │   │   │   ├── offer.status.description.md.ts
+│   │   │   │   │   │   ├── workplace.description.md
+│   │   │   │   │   │   ├── workplace.description.md.ts
+│   │   │   │   │   │   ├── workplace.domain.description.md
+│   │   │   │   │   │   ├── workplace.domain.description.md.ts
+│   │   │   │   │   │   ├── workplace.location.description.md
+│   │   │   │   │   │   └── workplace.location.description.md.ts
+│   │   │   │   │   ├── fr
+│   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   ├── contract.description.md
+│   │   │   │   │   │   ├── contract.description.md.ts
+│   │   │   │   │   │   ├── description.md
+│   │   │   │   │   │   ├── description.md.ts
+│   │   │   │   │   │   ├── identifier.description.md
+│   │   │   │   │   │   ├── identifier.description.md.ts
+│   │   │   │   │   │   ├── offer.description.md
+│   │   │   │   │   │   ├── offer.description.md.ts
+│   │   │   │   │   │   ├── offer.publication.description.md
+│   │   │   │   │   │   ├── offer.publication.description.md.ts
+│   │   │   │   │   │   ├── offer.status.description.md
+│   │   │   │   │   │   ├── offer.status.description.md.ts
+│   │   │   │   │   │   ├── workplace.description.md
+│   │   │   │   │   │   ├── workplace.description.md.ts
+│   │   │   │   │   │   ├── workplace.domain.description.md
+│   │   │   │   │   │   ├── workplace.domain.description.md.ts
+│   │   │   │   │   │   ├── workplace.location.description.md
+│   │   │   │   │   │   └── workplace.location.description.md.ts
+│   │   │   │   │   └── recuperation-detail-offre.doc.ts
+│   │   │   │   ├── recuperation-formation
+│   │   │   │   │   └── recuperation-formation.doc.ts
+│   │   │   │   ├── recuperation-mission-locales
+│   │   │   │   │   └── recuperation-mission-locales.doc.ts
+│   │   │   │   └── recuperation-organismes
+│   │   │   │       └── recuperation-organismes.doc.ts
+│   │   │   ├── models
+│   │   │   │   ├── certification
+│   │   │   │   │   ├── certification.model.doc.ts
+│   │   │   │   │   └── fr
+│   │   │   │   │       ├── base_legale.cfd.abrogation.notes.md
+│   │   │   │   │       ├── base_legale.cfd.abrogation.notes.md.ts
+│   │   │   │   │       ├── base_legale.cfd.creation.notes.md
+│   │   │   │   │       ├── base_legale.cfd.creation.notes.md.ts
+│   │   │   │   │       ├── continuite.description.cfd.notes.md
+│   │   │   │   │       ├── continuite.description.cfd.notes.md.ts
+│   │   │   │   │       ├── continuite.rncp.notes.md
+│   │   │   │   │       ├── continuite.rncp.notes.md.ts
+│   │   │   │   │       ├── domaines.nsf.cfd.notes.md
+│   │   │   │   │       ├── domaines.nsf.cfd.notes.md.ts
+│   │   │   │   │       ├── identifiant.cfd.notes.md
+│   │   │   │   │       ├── identifiant.cfd.notes.md.ts
+│   │   │   │   │       ├── identifiant.rncp.notes.md
+│   │   │   │   │       ├── identifiant.rncp.notes.md.ts
+│   │   │   │   │       ├── identifiant.rncp_anterieur_2019.notes.md
+│   │   │   │   │       ├── identifiant.rncp_anterieur_2019.notes.md.ts
+│   │   │   │   │       ├── intitule.niveau.cfd.europeen.notes.md
+│   │   │   │   │       ├── intitule.niveau.cfd.europeen.notes.md.ts
+│   │   │   │   │       ├── periode_validite.rncp.activation.notes.md
+│   │   │   │   │       └── periode_validite.rncp.activation.notes.md.ts
+│   │   │   │   ├── commune
+│   │   │   │   │   └── commune.model.doc.ts
+│   │   │   │   ├── departement
+│   │   │   │   │   └── departement.model.doc.ts
+│   │   │   │   ├── formation
+│   │   │   │   │   └── formation.model.doc.ts
+│   │   │   │   ├── geoJson
+│   │   │   │   │   └── geoJson.model.doc.ts
+│   │   │   │   ├── job
+│   │   │   │   │   ├── JobOfferExport.doc.ts
+│   │   │   │   │   ├── JobOfferPublishing.doc.ts
+│   │   │   │   │   ├── application.model.doc.ts
+│   │   │   │   │   ├── offer_read.model.doc.ts
+│   │   │   │   │   ├── offer_write.model.doc.ts
+│   │   │   │   │   ├── offer_write_docs
+│   │   │   │   │   │   ├── en
+│   │   │   │   │   │   │   ├── apply.description.md
+│   │   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   │   ├── offer.description.md
+│   │   │   │   │   │   │   └── offer.description.md.ts
+│   │   │   │   │   │   └── fr
+│   │   │   │   │   │       ├── apply.description.md
+│   │   │   │   │   │       ├── apply.description.md.ts
+│   │   │   │   │   │       ├── offer.description.md
+│   │   │   │   │   │       └── offer.description.md.ts
+│   │   │   │   │   └── recruiter.model.doc.ts
+│   │   │   │   ├── mission-locale
+│   │   │   │   │   └── mission-locale.model.doc.ts
+│   │   │   │   ├── organisme
+│   │   │   │   │   └── organisme.model.doc.ts
+│   │   │   │   └── pagination
+│   │   │   │       └── pagination.model.doc.ts
+│   │   │   ├── routes
+│   │   │   │   ├── communeSearch
+│   │   │   │   │   └── communeSearch.route.doc.ts
+│   │   │   │   ├── exportOrganismes
+│   │   │   │   │   └── exportOrganismes.route.doc.ts
+│   │   │   │   ├── generateFormationAppointmentLink
+│   │   │   │   │   └── generateFormationAppointmentLink.doc.ts
+│   │   │   │   ├── getCertifications
+│   │   │   │   │   └── getCertifications.route.doc.ts
+│   │   │   │   ├── jobApply
+│   │   │   │   │   ├── docs
+│   │   │   │   │   │   ├── en
+│   │   │   │   │   │   │   ├── description.doc.md
+│   │   │   │   │   │   │   └── description.doc.md.ts
+│   │   │   │   │   │   └── fr
+│   │   │   │   │   │       ├── description.doc.md
+│   │   │   │   │   │       └── description.doc.md.ts
+│   │   │   │   │   └── jobApply.route.doc.ts
+│   │   │   │   ├── jobOfferCreate
+│   │   │   │   │   └── jobOfferCreate.route.doc.ts
+│   │   │   │   ├── jobOfferUpdate
+│   │   │   │   │   └── jobOfferUpdate.route.doc.ts
+│   │   │   │   ├── jobSearch
+│   │   │   │   │   ├── en
+│   │   │   │   │   │   ├── parameters
+│   │   │   │   │   │   │   ├── department.md
+│   │   │   │   │   │   │   ├── department.md.ts
+│   │   │   │   │   │   │   ├── latitude.md
+│   │   │   │   │   │   │   ├── latitude.md.ts
+│   │   │   │   │   │   │   ├── longitude.md
+│   │   │   │   │   │   │   ├── longitude.md.ts
+│   │   │   │   │   │   │   ├── opco.md
+│   │   │   │   │   │   │   ├── opco.md.ts
+│   │   │   │   │   │   │   ├── radius.md
+│   │   │   │   │   │   │   ├── radius.md.ts
+│   │   │   │   │   │   │   ├── rncp.md
+│   │   │   │   │   │   │   ├── rncp.md.ts
+│   │   │   │   │   │   │   ├── romes.md
+│   │   │   │   │   │   │   ├── romes.md.ts
+│   │   │   │   │   │   │   ├── target_diploma_level.md
+│   │   │   │   │   │   │   └── target_diploma_level.md.ts
+│   │   │   │   │   │   └── response
+│   │   │   │   │   │       ├── jobs.md
+│   │   │   │   │   │       ├── jobs.md.ts
+│   │   │   │   │   │       ├── recruiters.md
+│   │   │   │   │   │       ├── recruiters.md.ts
+│   │   │   │   │   │       ├── warnings.md
+│   │   │   │   │   │       └── warnings.md.ts
+│   │   │   │   │   ├── fr
+│   │   │   │   │   │   ├── parameters
+│   │   │   │   │   │   │   ├── departements.md
+│   │   │   │   │   │   │   ├── departements.md.ts
+│   │   │   │   │   │   │   ├── latitude.md
+│   │   │   │   │   │   │   ├── latitude.md.ts
+│   │   │   │   │   │   │   ├── longitude.md
+│   │   │   │   │   │   │   ├── longitude.md.ts
+│   │   │   │   │   │   │   ├── opco.md
+│   │   │   │   │   │   │   ├── opco.md.ts
+│   │   │   │   │   │   │   ├── radius.md
+│   │   │   │   │   │   │   ├── radius.md.ts
+│   │   │   │   │   │   │   ├── rncp.md
+│   │   │   │   │   │   │   ├── rncp.md.ts
+│   │   │   │   │   │   │   ├── romes.md
+│   │   │   │   │   │   │   ├── romes.md.ts
+│   │   │   │   │   │   │   ├── target_diploma_level.md
+│   │   │   │   │   │   │   └── target_diploma_level.md.ts
+│   │   │   │   │   │   └── response
+│   │   │   │   │   │       ├── jobs.md
+│   │   │   │   │   │       ├── jobs.md.ts
+│   │   │   │   │   │       ├── recruiters.md
+│   │   │   │   │   │       ├── recruiters.md.ts
+│   │   │   │   │   │       ├── warnings.md
+│   │   │   │   │   │       └── warnings.md.ts
+│   │   │   │   │   └── jobSearch.route.doc.ts
+│   │   │   │   ├── jobSearchById
+│   │   │   │   │   └── jobSearchById.route.doc.ts
+│   │   │   │   ├── jobsExport
+│   │   │   │   │   └── jobsExport.route.doc.ts
+│   │   │   │   ├── listDepartements
+│   │   │   │   │   └── listDepartements.route.doc.ts
+│   │   │   │   ├── listMissionLocales
+│   │   │   │   │   └── listMissionLocales.route.doc.ts
+│   │   │   │   ├── searchFormationById
+│   │   │   │   │   └── searchFormationById.route.doc.ts
+│   │   │   │   ├── searchFormations
+│   │   │   │   │   └── searchFormations.route.doc.ts
+│   │   │   │   └── searchOrganisme
+│   │   │   │       └── searchOrganisme.route.doc.ts
+│   │   │   └── types.ts
+│   │   ├── fixtures
+│   │   │   ├── certification.model.fixture.ts
+│   │   │   ├── cfd.fixture.ts
+│   │   │   ├── formation.model.fixture.ts
+│   │   │   ├── organisme.model.fixture.ts
+│   │   │   ├── rncp.fixture.ts
+│   │   │   ├── siret.fixture.ts
+│   │   │   └── uai.fixture.ts
+│   │   ├── fixtures.ts
+│   │   ├── index.ts
+│   │   ├── internal.ts
+│   │   ├── jwt
+│   │   │   └── jwtAuthToken.ts
+│   │   ├── models
+│   │   │   ├── certification
+│   │   │   │   ├── certification.model.openapi.ts
+│   │   │   │   ├── certification.model.ts
+│   │   │   │   ├── certification.primitives.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── internal.ts
+│   │   │   ├── errors
+│   │   │   │   ├── errors.model.openapi.ts
+│   │   │   │   ├── errors.model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── internal.ts
+│   │   │   ├── formation
+│   │   │   │   ├── formation.model.openapi.ts
+│   │   │   │   ├── formation.model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── internal.ts
+│   │   │   ├── geographie
+│   │   │   │   ├── commune.model.openapi.ts
+│   │   │   │   ├── commune.model.ts
+│   │   │   │   ├── departement.model.openapi.ts
+│   │   │   │   ├── departement.model.ts
+│   │   │   │   ├── geoJson.model.openapi.ts
+│   │   │   │   ├── geoJson.model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── internal.ts
+│   │   │   │   ├── mission-locale.model.openapi.ts
+│   │   │   │   └── mission-locale.model.ts
+│   │   │   ├── index.ts
+│   │   │   ├── internal.ts
+│   │   │   ├── job
+│   │   │   │   ├── internal.ts
+│   │   │   │   ├── job.export.model.openapi.ts
+│   │   │   │   ├── job.model.openapi.ts
+│   │   │   │   └── job.publishing.model.openapi.ts
+│   │   │   ├── organisme
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── internal.ts
+│   │   │   │   ├── organisme.model.openapi.ts
+│   │   │   │   ├── organisme.model.ts
+│   │   │   │   ├── organismes.primitives.test.ts
+│   │   │   │   └── organismes.primitives.ts
+│   │   │   ├── pagination
+│   │   │   │   ├── pagination.model.openapi.ts
+│   │   │   │   └── pagination.model.ts
+│   │   │   ├── primitives
+│   │   │   │   └── primitives.model.ts
+│   │   │   └── system
+│   │   │       └── organisation.model.ts
+│   │   ├── openapi
+│   │   │   ├── __snapshots__
+│   │   │   │   └── openapiSpec.test.ts.snap
+│   │   │   ├── builder
+│   │   │   │   └── openapi.builder.ts
+│   │   │   ├── compare
+│   │   │   │   └── compareOpenapiSchema.ts
+│   │   │   ├── internal.ts
+│   │   │   ├── openapiSpec.test.ts
+│   │   │   ├── openapiSpec.ts
+│   │   │   ├── tags.openapi.ts
+│   │   │   ├── tools
+│   │   │   │   └── initTechnicalDocFromSource.openapi.ts
+│   │   │   ├── types.ts
+│   │   │   └── utils
+│   │   │       ├── openapi.uils.ts
+│   │   │       ├── stripDescriptions.openapi.ts
+│   │   │       └── zodWithOpenApi.ts
+│   │   ├── routes
+│   │   │   ├── certification
+│   │   │   │   ├── certification.routes.openapi.ts
+│   │   │   │   └── certification.routes.ts
+│   │   │   ├── common.routes.ts
+│   │   │   ├── formation
+│   │   │   │   ├── formation.routes.openapi.ts
+│   │   │   │   └── formation.routes.ts
+│   │   │   ├── geographie
+│   │   │   │   ├── geographie.routes.openapi.ts
+│   │   │   │   └── geographie.routes.ts
+│   │   │   ├── healthcheck.routes.ts
+│   │   │   ├── index.ts
+│   │   │   ├── internal.ts
+│   │   │   ├── jobs
+│   │   │   │   ├── job.routes.openapi.ts
+│   │   │   │   └── job.routes.ts
+│   │   │   ├── organisme
+│   │   │   │   ├── organisme.routes.openapi.ts
+│   │   │   │   └── organisme.routes.ts
+│   │   │   └── security
+│   │   │       └── permissions.ts
+│   │   └── utils
+│   │       ├── date.primitives.test.ts
+│   │       ├── date.primitives.ts
+│   │       ├── esmUtils.ts
+│   │       └── index.ts
+│   ├── tsconfig.json
+│   └── tsconfig.prod.json
+├── server
+│   ├── .dockerignore
+│   ├── .env.local.example
+│   ├── .env.test
+│   ├── package.json
+│   ├── sentry-deploy-server.sh
+│   ├── sentry-release-server.sh
+│   ├── src
+│   │   ├── actions
+│   │   │   ├── auth.actions.ts
+│   │   │   ├── emails.actions.ts
+│   │   │   ├── organisations.actions.ts
+│   │   │   ├── sessions.actions.ts
+│   │   │   └── users.actions.ts
+│   │   ├── commands.ts
+│   │   ├── config.ts
+│   │   ├── index.ts
+│   │   ├── jobs
+│   │   │   ├── apiKey
+│   │   │   │   ├── apiKeyExpiration.notifier.test.ts
+│   │   │   │   └── apiKeyExpiration.notifier.ts
+│   │   │   ├── db
+│   │   │   │   └── schemaValidation.ts
+│   │   │   ├── importer
+│   │   │   │   ├── acce
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── acce.test.ts.snap
+│   │   │   │   │   ├── acce.test.ts
+│   │   │   │   │   ├── acce.ts
+│   │   │   │   │   └── fixtures
+│   │   │   │   │       └── acce_data.zip
+│   │   │   │   ├── bcn
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── bcn.importer.test.ts.snap
+│   │   │   │   │   ├── bcn.importer.test.ts
+│   │   │   │   │   ├── bcn.importer.ts
+│   │   │   │   │   └── fixtures
+│   │   │   │   │       ├── original
+│   │   │   │   │       │   ├── N_FORMATION_DIPLOME.csv
+│   │   │   │   │       │   ├── N_FORMATION_DIPLOME_ENQUETE_51.csv
+│   │   │   │   │       │   ├── N_NIVEAU_FORMATION_DIPLOME.csv
+│   │   │   │   │       │   └── V_FORMATION_DIPLOME.csv
+│   │   │   │   │       └── sample
+│   │   │   │   │           ├── N_FORMATION_DIPLOME.csv
+│   │   │   │   │           ├── N_FORMATION_DIPLOME_ENQUETE_51.csv
+│   │   │   │   │           ├── N_NIVEAU_FORMATION_DIPLOME.csv
+│   │   │   │   │           └── V_FORMATION_DIPLOME.csv
+│   │   │   │   ├── catalogue
+│   │   │   │   │   ├── catalogue.importer.test.ts
+│   │   │   │   │   ├── catalogue.importer.ts
+│   │   │   │   │   └── fixtures
+│   │   │   │   │       └── sample.ts
+│   │   │   │   ├── certifications
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── certifications.importer.test.ts.snap
+│   │   │   │   │   ├── builder
+│   │   │   │   │   │   ├── base_legale
+│   │   │   │   │   │   │   ├── certification.base_legale.builder.test.ts
+│   │   │   │   │   │   │   └── certification.base_legale.builder.ts
+│   │   │   │   │   │   ├── blocs_competences
+│   │   │   │   │   │   │   ├── certification.blocs_competences.builder.test.ts
+│   │   │   │   │   │   │   └── certification.blocs_competences.builder.ts
+│   │   │   │   │   │   ├── certification.builder.test.ts
+│   │   │   │   │   │   ├── certification.builder.ts
+│   │   │   │   │   │   ├── convention_collectives
+│   │   │   │   │   │   │   ├── certification.convention_collectives.builder.test.ts
+│   │   │   │   │   │   │   └── certification.convention_collectives.builder.ts
+│   │   │   │   │   │   ├── domaines
+│   │   │   │   │   │   │   ├── certification.domaines.builder.test.ts
+│   │   │   │   │   │   │   └── certification.domaines.builder.ts
+│   │   │   │   │   │   ├── intitule
+│   │   │   │   │   │   │   ├── certification.intitule.builder.test.ts
+│   │   │   │   │   │   │   └── certification.intitule.builder.ts
+│   │   │   │   │   │   ├── periode_validite
+│   │   │   │   │   │   │   ├── certification.periode_validite.builder.test.ts
+│   │   │   │   │   │   │   └── certification.periode_validite.builder.ts
+│   │   │   │   │   │   └── type
+│   │   │   │   │   │       ├── certification.type.builder.test.ts
+│   │   │   │   │   │       └── certification.type.builder.ts
+│   │   │   │   │   ├── certifications.importer.test.ts
+│   │   │   │   │   ├── certifications.importer.ts
+│   │   │   │   │   └── process
+│   │   │   │   │       ├── continuite.process.test.ts
+│   │   │   │   │       ├── continuite.process.ts
+│   │   │   │   │       ├── coverage.process.test.ts
+│   │   │   │   │       └── coverage.process.ts
+│   │   │   │   ├── commune
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── commune.importer.test.ts.snap
+│   │   │   │   │   ├── commune.importer.test.ts
+│   │   │   │   │   └── commune.importer.ts
+│   │   │   │   ├── dares
+│   │   │   │   │   ├── ape_idcc
+│   │   │   │   │   │   ├── dares.ape_idcc.importer.test.ts
+│   │   │   │   │   │   ├── dares.ape_idcc.importer.ts
+│   │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   │   ├── article.html
+│   │   │   │   │   │   │   └── sample.xlsx
+│   │   │   │   │   │   └── scraper
+│   │   │   │   │   │       ├── dares.ape_idcc.scraper.test.ts
+│   │   │   │   │   │       └── dares.ape_idcc.scraper.ts
+│   │   │   │   │   └── ccn
+│   │   │   │   │       ├── dares.ccn.importer.test.ts
+│   │   │   │   │       ├── dares.ccn.importer.ts
+│   │   │   │   │       ├── fixtures
+│   │   │   │   │       │   ├── article.html
+│   │   │   │   │       │   └── sample.xlsx
+│   │   │   │   │       └── scraper
+│   │   │   │   │           ├── dares.ccn.scraper.test.ts
+│   │   │   │   │           └── dares.ccn.scraper.ts
+│   │   │   │   ├── formation
+│   │   │   │   │   ├── builder
+│   │   │   │   │   │   ├── _.formation.builder.test.ts
+│   │   │   │   │   │   ├── _.formation.builder.ts
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   └── certification.formation.builder.test.ts.snap
+│   │   │   │   │   │   ├── certification.formation.builder.test.ts
+│   │   │   │   │   │   ├── certification.formation.builder.ts
+│   │   │   │   │   │   ├── lieu.formation.builder.test.ts
+│   │   │   │   │   │   ├── lieu.formation.builder.ts
+│   │   │   │   │   │   ├── modalite.formation.builder.test.ts
+│   │   │   │   │   │   ├── modalite.formation.builder.ts
+│   │   │   │   │   │   ├── organisme.formation.builder.test.ts
+│   │   │   │   │   │   ├── organisme.formation.builder.ts
+│   │   │   │   │   │   ├── session.formation.builder.test.ts
+│   │   │   │   │   │   └── session.formation.builder.ts
+│   │   │   │   │   ├── formation.importer.test.ts
+│   │   │   │   │   └── formation.importer.ts
+│   │   │   │   ├── france_competence
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── france_competence.importer.test.ts.snap
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── continuity_fix
+│   │   │   │   │   │   │   └── export-fiches-csv-2024-02-22.zip
+│   │   │   │   │   │   └── sample
+│   │   │   │   │   │       └── export-fiches-csv-2024-02-22.zip
+│   │   │   │   │   ├── france_competence.importer.test.ts
+│   │   │   │   │   └── france_competence.importer.ts
+│   │   │   │   ├── importers.ts
+│   │   │   │   ├── kali
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── kali.ccn.importer.test.ts.snap
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   └── sample.xlsx
+│   │   │   │   │   ├── kali.ccn.importer.test.ts
+│   │   │   │   │   └── kali.ccn.importer.ts
+│   │   │   │   ├── kit
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── kitApprentissage.importer.test.ts.snap
+│   │   │   │   │   ├── builder
+│   │   │   │   │   │   ├── kit_apprentissage.builder.test.ts
+│   │   │   │   │   │   └── kit_apprentissage.builder.ts
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── empty
+│   │   │   │   │   │   │   └── kit_apprentissage
+│   │   │   │   │   │   │       └── .gitkeep
+│   │   │   │   │   │   ├── juin_2024
+│   │   │   │   │   │   │   └── kit_apprentissage
+│   │   │   │   │   │   │       └── Kit_apprentissage_20240625.xlsx
+│   │   │   │   │   │   ├── multiple_files
+│   │   │   │   │   │   │   └── kit_apprentissage
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.0.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.1.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.2.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.3.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.4.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.5.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.6.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.7.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.8.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v1.9.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.0.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.1.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.2.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.3.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.4.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.5.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.6.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.7.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.8.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v2.9.csv
+│   │   │   │   │   │   │       ├── Kit apprentissage et RNCP v3.0.csv
+│   │   │   │   │   │   │       ├── Kit_apprentissage_20240119.csv
+│   │   │   │   │   │   │       ├── Kit_apprentissage_20240223.csv
+│   │   │   │   │   │   │       └── Kit_apprentissage_20240329.csv
+│   │   │   │   │   │   ├── single_file
+│   │   │   │   │   │   │   └── kit_apprentissage
+│   │   │   │   │   │   │       └── Kit_apprentissage_20240119.csv
+│   │   │   │   │   │   └── xlsx
+│   │   │   │   │   │       └── kit_apprentissage
+│   │   │   │   │   │           └── Kit_apprentissage_20240119.xlsx
+│   │   │   │   │   ├── kitApprentissage.importer.test.ts
+│   │   │   │   │   └── kitApprentissage.importer.ts
+│   │   │   │   ├── mission_locale
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── mission_locale.importer.test.ts.snap
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── couverture.csv
+│   │   │   │   │   │   └── geopoints.csv
+│   │   │   │   │   ├── mission_locale.importer.test.ts
+│   │   │   │   │   └── mission_locale.importer.ts
+│   │   │   │   ├── npec
+│   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── Referentiel-des-NPEC-15.07.2024_vMAJ-18.07.2024.xlsx
+│   │   │   │   │   │   ├── Referentiel-des-NPEC_vMAJ-09.04.2024.xlsx
+│   │   │   │   │   │   ├── VF_11.02.2021_Référentiel-NPEC-20192020_avec_idcc.xlsx
+│   │   │   │   │   │   ├── referentiel_des_npec-2-1.xlsx
+│   │   │   │   │   │   └── vf_referentiel_avec_idcc_oct_2019.xlsx
+│   │   │   │   │   ├── normalizer
+│   │   │   │   │   │   ├── npec.normalizer.test.ts
+│   │   │   │   │   │   └── npec.normalizer.ts
+│   │   │   │   │   ├── npec.importer.test.ts
+│   │   │   │   │   ├── npec.importer.ts
+│   │   │   │   │   └── scraper
+│   │   │   │   │       ├── fixtures
+│   │   │   │   │       │   └── file.txt
+│   │   │   │   │       ├── npec.scraper.test.ts
+│   │   │   │   │       └── npec.scraper.ts
+│   │   │   │   ├── organisme
+│   │   │   │   │   ├── builder
+│   │   │   │   │   │   └── organisme.builder.ts
+│   │   │   │   │   ├── organisme.importer.fixtures.ts
+│   │   │   │   │   ├── organisme.importer.test.ts
+│   │   │   │   │   └── organisme.importer.ts
+│   │   │   │   ├── referentiel
+│   │   │   │   │   └── referentiel.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils
+│   │   │   │       └── areSourcesUpdated.ts
+│   │   │   ├── indicateurs
+│   │   │   │   └── source
+│   │   │   │       ├── kitApprentissage.source.indicateur.test.ts
+│   │   │   │       └── kitApprentissage.source.indicateur.ts
+│   │   │   ├── jobs.ts
+│   │   │   └── migrations
+│   │   │       └── migrations.ts
+│   │   ├── main.ts
+│   │   ├── migrations
+│   │   │   ├── 20230511154647-example.ts
+│   │   │   ├── 20240314050516-france_competence_activation_timezone.ts
+│   │   │   ├── 20240319112656-certification-model.ts
+│   │   │   ├── 20240322110602-multiple-api-keys.ts
+│   │   │   ├── 20240328160237-update-certification-model.ts
+│   │   │   ├── 20240402084648-remove-files-field.ts
+│   │   │   ├── 20240402154038-kit-apprentissage-history.ts
+│   │   │   ├── 20240416142339-bcn_continuity.ts
+│   │   │   ├── 20240425094027-update-certifications.ts
+│   │   │   ├── 20240502083524-import-fc-status.ts
+│   │   │   ├── 20240522132333-import-acce.ts
+│   │   │   ├── 20240530090830-npec-import.ts
+│   │   │   ├── 20240531101133-reset-npec-import.ts
+│   │   │   ├── 20240613150910-npec-normlized.ts
+│   │   │   ├── 20240614071740-import-meta.ts
+│   │   │   ├── 20240617102601-idcc-number.ts
+│   │   │   ├── 20240624131542-import-meta.ts
+│   │   │   ├── 20240816122136-kit_apprentissage_import_meta.ts
+│   │   │   ├── 20240816145239-kit_apprentissage_xlsx.ts
+│   │   │   ├── 20240819143147-certification-import-meta.ts
+│   │   │   ├── 20240904102312-update-mia-users.ts
+│   │   │   ├── 20240904153957-add-organisation.ts
+│   │   │   ├── 20240916062602-habilitations.ts
+│   │   │   ├── 20240924074628-utf-8-validation.ts
+│   │   │   ├── 20241008164612-referentiel-commune.ts
+│   │   │   ├── 20241010164812-geographie-api.ts
+│   │   │   ├── 20241017075143-import-communes.ts
+│   │   │   ├── 20241128145114-mission-locales.ts
+│   │   │   ├── 20250102153339-commune.ts
+│   │   │   ├── 20250103130705-catalogue.ts
+│   │   │   ├── 20250107232416-yop.ts
+│   │   │   ├── 20250121143330-lieu-formation-uai.ts
+│   │   │   ├── 20250129090921-contact-migration.ts
+│   │   │   ├── 20250205153716-kit-apprentissage.ts
+│   │   │   ├── 20250212130220-organisme-location.ts
+│   │   │   ├── 20250212160910-organisme-geopoint.ts
+│   │   │   ├── 20250218100831-indicateur_usage.ts
+│   │   │   ├── 20250218152657-organisme-enseigne.ts
+│   │   │   ├── 20250219094006-personne_physique.ts
+│   │   │   ├── 20250219120014-cache_entreprise_validation.ts
+│   │   │   ├── 20250523140713-key-notif-expire.ts
+│   │   │   └── 20260204163600-import-mission-locale.ts
+│   │   ├── server
+│   │   │   ├── middlewares
+│   │   │   │   ├── apiKeyUsageMiddleware.test.ts
+│   │   │   │   ├── apiKeyUsageMiddleware.ts
+│   │   │   │   ├── authMiddleware.ts
+│   │   │   │   ├── errorMiddleware.ts
+│   │   │   │   └── logMiddleware.ts
+│   │   │   ├── routes
+│   │   │   │   ├── _private
+│   │   │   │   │   ├── admin
+│   │   │   │   │   │   ├── importer.routes.ts
+│   │   │   │   │   │   ├── organisations.routes.ts
+│   │   │   │   │   │   ├── processor.admin.routes.ts
+│   │   │   │   │   │   └── user.routes.ts
+│   │   │   │   │   ├── auth.route.test.ts
+│   │   │   │   │   ├── auth.routes.ts
+│   │   │   │   │   ├── emails.routes.ts
+│   │   │   │   │   ├── simulateur
+│   │   │   │   │   │   └── simulateur.routes.ts
+│   │   │   │   │   ├── user.route.test.ts
+│   │   │   │   │   └── user.routes.ts
+│   │   │   │   ├── certification.route.test.ts
+│   │   │   │   ├── certification.routes.ts
+│   │   │   │   ├── experimental
+│   │   │   │   │   └── sources
+│   │   │   │   │       ├── acce.routes.test.ts
+│   │   │   │   │       └── acce.routes.ts
+│   │   │   │   ├── formations
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── formations.route.test.ts.snap
+│   │   │   │   │   ├── formations.route.test.ts
+│   │   │   │   │   └── formations.routes.ts
+│   │   │   │   ├── geographie.route.test.ts
+│   │   │   │   ├── geographie.route.ts
+│   │   │   │   ├── healthcheck.routes.ts
+│   │   │   │   ├── job
+│   │   │   │   │   ├── job.route.test.ts
+│   │   │   │   │   └── job.routes.ts
+│   │   │   │   ├── organisme.routes.ts
+│   │   │   │   ├── organismes.routes.test.ts
+│   │   │   │   └── routes.ts
+│   │   │   ├── server.test.ts
+│   │   │   └── server.ts
+│   │   ├── services
+│   │   │   ├── apis
+│   │   │   │   ├── acce
+│   │   │   │   │   ├── acce.test.ts
+│   │   │   │   │   └── acce.ts
+│   │   │   │   ├── adresse
+│   │   │   │   │   ├── adresse.api.test.ts
+│   │   │   │   │   └── adresse.api.ts
+│   │   │   │   ├── bcn
+│   │   │   │   │   ├── bcn.test.ts
+│   │   │   │   │   └── bcn.ts
+│   │   │   │   ├── catalogue
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── catalogue.test.ts.snap
+│   │   │   │   │   ├── catalogue.test.ts
+│   │   │   │   │   ├── catalogue.ts
+│   │   │   │   │   └── catalogueEducatif.ts
+│   │   │   │   ├── data_gouv
+│   │   │   │   │   ├── data_gouv.api.test.ts
+│   │   │   │   │   └── data_gouv.api.ts
+│   │   │   │   ├── enseignementSup
+│   │   │   │   │   ├── enseignementSup.test.ts
+│   │   │   │   │   └── enseignementSup.ts
+│   │   │   │   ├── entreprise
+│   │   │   │   │   ├── entreprise.test.ts
+│   │   │   │   │   └── entreprise.ts
+│   │   │   │   ├── geo
+│   │   │   │   │   ├── geo.test.ts
+│   │   │   │   │   └── geo.ts
+│   │   │   │   ├── insee
+│   │   │   │   │   ├── insee.test.ts
+│   │   │   │   │   └── insee.ts
+│   │   │   │   ├── kit_apprentissage
+│   │   │   │   │   ├── kit_apprentissage.api.test.ts
+│   │   │   │   │   └── kit_apprentissage.api.ts
+│   │   │   │   ├── referentiel
+│   │   │   │   │   ├── referentiel.test.ts
+│   │   │   │   │   └── referentiel.ts
+│   │   │   │   └── unml
+│   │   │   │       ├── unml.test.ts
+│   │   │   │       └── unml.ts
+│   │   │   ├── documentation
+│   │   │   │   ├── checkDocumentationSync.ts
+│   │   │   │   └── expectedDocumentationDelta.ts
+│   │   │   ├── errors
+│   │   │   │   └── withCause.ts
+│   │   │   ├── excel
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── excel.parser.test.ts.snap
+│   │   │   │   ├── excel.parser.test.ts
+│   │   │   │   ├── excel.parser.ts
+│   │   │   │   └── fixtures
+│   │   │   │       └── file.xlsx
+│   │   │   ├── formation
+│   │   │   │   ├── formation.service.test.ts
+│   │   │   │   └── formation.service.ts
+│   │   │   ├── forward
+│   │   │   │   ├── forwardApi.service.test.ts
+│   │   │   │   └── forwardApi.service.ts
+│   │   │   ├── geographie
+│   │   │   │   ├── geographie.service.test.ts
+│   │   │   │   └── geographie.service.ts
+│   │   │   ├── inactiveAccounts
+│   │   │   │   ├── inactiveAccounts.service.test.ts
+│   │   │   │   └── inactiveAccounts.service.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── mailer
+│   │   │   │   └── mailer.ts
+│   │   │   ├── mongodb
+│   │   │   │   ├── mongodbService.ts
+│   │   │   │   └── schemaValidation.test.ts
+│   │   │   ├── organisme
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── organisme.service.test.ts.snap
+│   │   │   │   ├── fixtures
+│   │   │   │   │   └── tdb
+│   │   │   │   │       ├── fiabilisation.fixture.json
+│   │   │   │   │       └── referentiel.fixture.json
+│   │   │   │   ├── organisme.service.test.ts
+│   │   │   │   └── organisme.service.ts
+│   │   │   ├── pagination
+│   │   │   │   └── pagination.service.ts
+│   │   │   ├── security
+│   │   │   │   ├── accessTokenService.test.ts
+│   │   │   │   ├── accessTokenService.ts
+│   │   │   │   ├── authenticationService.test.ts
+│   │   │   │   ├── authenticationService.ts
+│   │   │   │   ├── authorisationService.test.ts
+│   │   │   │   └── authorisationService.ts
+│   │   │   └── sentry
+│   │   │       ├── sentry.fastify.ts
+│   │   │       └── sentry.ts
+│   │   └── utils
+│   │       ├── apiUtils.test.ts
+│   │       ├── apiUtils.ts
+│   │       ├── asyncUtils.ts
+│   │       ├── cryptoUtils.ts
+│   │       ├── getStaticFilePath.ts
+│   │       ├── jwtUtils.ts
+│   │       ├── streamUtils.ts
+│   │       └── xml
+│   │           ├── __snapshots__
+│   │           │   └── xmlUtils.test.ts.snap
+│   │           ├── fixtures
+│   │           │   └── file.xml
+│   │           ├── xmlUtils.test.ts
+│   │           └── xmlUtils.ts
+│   ├── static
+│   │   ├── .gitkeep
+│   │   ├── emails
+│   │   │   ├── api-key-will-expire.mjml.ejs
+│   │   │   ├── common
+│   │   │   │   ├── footer.ejs
+│   │   │   │   ├── head.ejs
+│   │   │   │   ├── header.ejs
+│   │   │   │   └── signature.ejs
+│   │   │   ├── magic-link.mjml.ejs
+│   │   │   ├── register-feedback.mjml.ejs
+│   │   │   └── register.mjml.ejs
+│   │   ├── kit_apprentissage
+│   │   │   ├── Kit apprentissage et RNCP v1.0.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.1.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.2.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.3.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.4.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.5.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.6.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.7.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.8.csv
+│   │   │   ├── Kit apprentissage et RNCP v1.9.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.0.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.1.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.2.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.3.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.4.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.5.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.6.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.7.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.8.csv
+│   │   │   ├── Kit apprentissage et RNCP v2.9.csv
+│   │   │   ├── Kit apprentissage et RNCP v3.0.csv
+│   │   │   ├── Kit_apprentissage_20240119.xlsx
+│   │   │   ├── Kit_apprentissage_20240223.xlsx
+│   │   │   ├── Kit_apprentissage_20240329.xlsx
+│   │   │   ├── Kit_apprentissage_20240426.xlsx
+│   │   │   ├── Kit_apprentissage_20240530.xlsx
+│   │   │   ├── Kit_apprentissage_20240625.xlsx
+│   │   │   ├── Kit_apprentissage_20240731.xlsx
+│   │   │   ├── Kit_apprentissage_20240827.xlsx
+│   │   │   ├── Kit_apprentissage_20240930.xlsx
+│   │   │   ├── Kit_apprentissage_20241025.xlsx
+│   │   │   ├── Kit_apprentissage_20241129.xlsx
+│   │   │   └── Kit_apprentissage_20250131.xlsx
+│   │   ├── mission_locales
+│   │   │   ├── geopoints_mission_locale.csv
+│   │   │   ├── zones_de_couverture_janvier_2025.csv
+│   │   │   └── zones_de_couverture_janvier_2026.csv
+│   │   └── npec
+│   │       ├── Referentiel-NPEC-20222023_v24.08.203.xlsx
+│   │       └── VF_17.03.2021_Référentiel-NPEC-20192020_avec_idcc.xlsx
+│   ├── tests
+│   │   ├── globalSetup.ts
+│   │   ├── mongo.test.utils.ts
+│   │   └── setup.ts
+│   ├── tsconfig.json
+│   ├── tsup.config.ts
+│   └── types
+│       ├── lil-http-terminator.d.ts
+│       └── oleoduc.d.ts
+├── shared
+│   ├── package.json
+│   ├── src
+│   │   ├── apis
+│   │   │   ├── adresse_gouv.ts
+│   │   │   ├── data_gouv.ts
+│   │   │   ├── geo_gouv.ts
+│   │   │   ├── index.ts
+│   │   │   ├── insee.ts
+│   │   │   └── unml.ts
+│   │   ├── helpers
+│   │   │   └── mongoSchema
+│   │   │       ├── __snapshots__
+│   │   │       │   └── mongoSchemaBuilder.test.ts.snap
+│   │   │       └── mongoSchemaBuilder.test.ts
+│   │   ├── index.ts
+│   │   ├── models
+│   │   │   ├── cache
+│   │   │   │   ├── cache.adresse.model.ts
+│   │   │   │   └── cache.entreprise.model.ts
+│   │   │   ├── certification.model.ts
+│   │   │   ├── common.ts
+│   │   │   ├── commune.model.ts
+│   │   │   ├── email_denied.model.ts
+│   │   │   ├── email_event
+│   │   │   │   └── email_templates.ts
+│   │   │   ├── email_event.model.ts
+│   │   │   ├── fixtures
+│   │   │   │   ├── certification.model.fixture.ts
+│   │   │   │   ├── commune.model.fixture.ts
+│   │   │   │   ├── fixture_helper.ts
+│   │   │   │   ├── formation.model.fixture.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── organisation.model.fixture.ts
+│   │   │   │   ├── organisme.model.fixture.ts
+│   │   │   │   ├── source.acce.model.fixture.ts
+│   │   │   │   ├── source.bcn.model.fixture.ts
+│   │   │   │   ├── source.france_competence.model.fixture.ts
+│   │   │   │   ├── source.kit_apprentissage.model.fixture.ts
+│   │   │   │   ├── source.npec.model.fixture.ts
+│   │   │   │   ├── source.referentiel.model.fixture.ts
+│   │   │   │   └── user.model.fixture.ts
+│   │   │   ├── formation.model.ts
+│   │   │   ├── import.meta.model.ts
+│   │   │   ├── indicateurs
+│   │   │   │   ├── source_kit_apprentissage.model.ts
+│   │   │   │   └── usage_api.model.ts
+│   │   │   ├── models.ts
+│   │   │   ├── organisation.model.ts
+│   │   │   ├── organisme.model.ts
+│   │   │   ├── session.model.ts
+│   │   │   ├── source
+│   │   │   │   ├── acce
+│   │   │   │   │   └── source.acce.model.ts
+│   │   │   │   ├── bcn
+│   │   │   │   │   ├── bcn.n51_formation_diplome.model.ts
+│   │   │   │   │   ├── bcn.n_formation_diplome.model.ts
+│   │   │   │   │   ├── bcn.n_niveau_formation_diplome.model.ts
+│   │   │   │   │   ├── bcn.v_formation_diplome.model.ts
+│   │   │   │   │   └── source.bcn.model.ts
+│   │   │   │   ├── catalogue
+│   │   │   │   │   └── source.catalogue.model.ts
+│   │   │   │   ├── dares
+│   │   │   │   │   ├── source.dares.ape_idcc.model.ts
+│   │   │   │   │   └── source.dares.ccn.model.ts
+│   │   │   │   ├── france_competence
+│   │   │   │   │   ├── parts
+│   │   │   │   │   │   ├── source.france_competence.ancienne_nouvelle.model.ts
+│   │   │   │   │   │   ├── source.france_competence.bloc_de_competences.model.ts
+│   │   │   │   │   │   ├── source.france_competence.ccn.model.ts
+│   │   │   │   │   │   ├── source.france_competence.certificateurs.model.ts
+│   │   │   │   │   │   ├── source.france_competence.formacode.model.ts
+│   │   │   │   │   │   ├── source.france_competence.nsf.model.ts
+│   │   │   │   │   │   ├── source.france_competence.partenaires.model.ts
+│   │   │   │   │   │   ├── source.france_competence.rome.model.ts
+│   │   │   │   │   │   ├── source.france_competence.standard.model.ts
+│   │   │   │   │   │   └── source.france_competence.voix_acces.model.ts
+│   │   │   │   │   └── source.france_competence.model.ts
+│   │   │   │   ├── kali
+│   │   │   │   │   └── source.kali.ccn.model.ts
+│   │   │   │   ├── kitApprentissage
+│   │   │   │   │   └── source.kit_apprentissage.model.ts
+│   │   │   │   ├── mission_locale
+│   │   │   │   │   └── source.mission_locale.model.ts
+│   │   │   │   ├── npec
+│   │   │   │   │   ├── source.npec.model.ts
+│   │   │   │   │   └── source.npec.normalized.model.ts
+│   │   │   │   └── referentiel
+│   │   │   │       └── source.referentiel.model.ts
+│   │   │   └── user.model.ts
+│   │   ├── openapi
+│   │   │   ├── __snapshots__
+│   │   │   │   └── generateOpenapi.test.ts.snap
+│   │   │   ├── generateOpenapi.test.ts
+│   │   │   └── generateOpenapi.ts
+│   │   ├── routes
+│   │   │   ├── _private
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── importers.admin.routes.ts
+│   │   │   │   │   ├── organisation.admin.routes.ts
+│   │   │   │   │   ├── processor.admin.routes.ts
+│   │   │   │   │   └── users.admin.routes.ts
+│   │   │   │   ├── auth.routes.ts
+│   │   │   │   ├── emails.routes.ts
+│   │   │   │   ├── simulateur
+│   │   │   │   │   └── simulateur.routes.ts
+│   │   │   │   └── user.routes.ts
+│   │   │   ├── common.routes.ts
+│   │   │   ├── experimental
+│   │   │   │   └── source
+│   │   │   │       └── acce.routes.ts
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   ├── utils
+│   │   │   ├── assertUnreachable.ts
+│   │   │   ├── diacritics
+│   │   │   │   ├── diacritics.test.ts
+│   │   │   │   └── diacritics.ts
+│   │   │   ├── index.ts
+│   │   │   ├── intervals
+│   │   │   │   ├── intervals.utils.test.ts
+│   │   │   │   └── intervals.utils.ts
+│   │   │   ├── sortAlphabetically.test.ts
+│   │   │   └── sortAlphabetically.ts
+│   │   └── zod
+│   │       ├── date.primitives.test.ts
+│   │       └── date.primitives.ts
+│   └── tsconfig.json
+├── tsconfig.json
+├── ui
+│   ├── .env.local.example
+│   ├── .env.test
+│   ├── app
+│   │   ├── [lang]
+│   │   │   ├── DsfrProvider.tsx
+│   │   │   ├── [...rest]
+│   │   │   │   └── page.tsx
+│   │   │   ├── accessibilite
+│   │   │   │   ├── components
+│   │   │   │   │   └── Accessibilite.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── admin
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useDeleteOrganisation.ts
+│   │   │   │   │   └── useImporterStatus.ts
+│   │   │   │   ├── importers
+│   │   │   │   │   ├── [name]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── organisations
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   └── OrganisationView.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── CreateOrganisation.tsx
+│   │   │   │   │   │   └── OrganisationList.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── processeur
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── ProcessorStatusProvider.tsx
+│   │   │   │   │   ├── cron
+│   │   │   │   │   │   └── [name]
+│   │   │   │   │   │       ├── [id]
+│   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── job
+│   │   │   │   │   │   └── [name]
+│   │   │   │   │   │       ├── [id]
+│   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── utilisateurs
+│   │   │   │       ├── [id]
+│   │   │   │       │   ├── components
+│   │   │   │       │   │   └── UserView.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── components
+│   │   │   │       │   └── UserList.tsx
+│   │   │   │       └── page.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── inscription
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── refus-inscription
+│   │   │   │       └── page.tsx
+│   │   │   ├── cgu
+│   │   │   │   ├── components
+│   │   │   │   │   └── Cgu.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── compte
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── profil
+│   │   │   │       ├── components
+│   │   │   │       │   ├── ApiKeyAction.tsx
+│   │   │   │       │   ├── GenerateApiKey.tsx
+│   │   │   │       │   └── ManageApiKeysBanner.tsx
+│   │   │   │       ├── hooks
+│   │   │   │       │   ├── useApiKeys.ts
+│   │   │   │       │   ├── useCreateApiKeyMutation.ts
+│   │   │   │       │   └── useDeleteApiKeyMutation.ts
+│   │   │   │       ├── page.tsx
+│   │   │   │       └── profil.css
+│   │   │   ├── defaultColorScheme.ts
+│   │   │   ├── doc
+│   │   │   │   └── [[...slug]]
+│   │   │   │       └── page.tsx
+│   │   │   ├── documentation-technique
+│   │   │   │   ├── components
+│   │   │   │   │   └── redoc.tsx
+│   │   │   │   ├── overwride.css
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── try
+│   │   │   │       ├── overwride.css
+│   │   │   │       └── page.tsx
+│   │   │   ├── error.tsx
+│   │   │   ├── explorer
+│   │   │   │   ├── candidature-offre
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── certifications
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── BesoinDesDonnees.tsx
+│   │   │   │   │   ├── CatalogueData.tsx
+│   │   │   │   │   ├── CatalogueHeadline.tsx
+│   │   │   │   │   ├── CataloguePage.tsx
+│   │   │   │   │   ├── DataSources.tsx
+│   │   │   │   │   ├── GoodToKnow.tsx
+│   │   │   │   │   ├── HabilitationRequise.tsx
+│   │   │   │   │   └── SwaggerLink.tsx
+│   │   │   │   ├── depot-offre
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── generation-lien-prise-rdv-formation
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── recherche-commune
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recherche-formation
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recherche-offre
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recuperation-departements
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recuperation-detail-offre
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recuperation-formation
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recuperation-mission-locales
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── recuperation-organismes
+│   │   │   │       └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── loading.tsx
+│   │   │   ├── mentions-legales
+│   │   │   │   ├── components
+│   │   │   │   │   └── MentionLegales.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── not-found.tsx
+│   │   │   ├── notion
+│   │   │   │   └── [id]
+│   │   │   │       └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── politique-confidentialite
+│   │   │   │   ├── components
+│   │   │   │   │   └── PolitiqueConfidentialite.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── template.tsx
+│   │   ├── global-error.tsx
+│   │   ├── i18n
+│   │   │   ├── StartIntl.tsx
+│   │   │   ├── i18next.ts
+│   │   │   ├── index.ts
+│   │   │   ├── locales
+│   │   │   │   ├── en
+│   │   │   │   │   ├── documentation-technique.json
+│   │   │   │   │   ├── explorer.json
+│   │   │   │   │   ├── global.json
+│   │   │   │   │   └── inscription-connexion.json
+│   │   │   │   └── fr
+│   │   │   │       ├── documentation-technique.json
+│   │   │   │       ├── explorer.json
+│   │   │   │       ├── global.json
+│   │   │   │       └── inscription-connexion.json
+│   │   │   └── settings.ts
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   └── sitemap.ts
+│   ├── components
+│   │   ├── Footer.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── artwork
+│   │   │   └── Artwork.tsx
+│   │   ├── breadcrumb
+│   │   │   └── Breadcrumb.tsx
+│   │   ├── header
+│   │   │   ├── Header.tsx
+│   │   │   ├── MonCompteQuickAccess.tsx
+│   │   │   └── header.utils.ts
+│   │   ├── link
+│   │   │   └── DsfrLink.tsx
+│   │   ├── login
+│   │   │   ├── LoginEmailSent.tsx
+│   │   │   ├── LoginModal.tsx
+│   │   │   └── withAuth.tsx
+│   │   ├── markdown
+│   │   │   └── DsfrMarkdown.tsx
+│   │   ├── notion
+│   │   │   ├── NotionDocClientSide.tsx
+│   │   │   └── NotionPage.tsx
+│   │   ├── section
+│   │   │   └── Section.tsx
+│   │   ├── select
+│   │   │   └── AutocompleteSelect.tsx
+│   │   ├── table
+│   │   │   └── Table.tsx
+│   │   ├── tag
+│   │   │   └── Tag.tsx
+│   │   └── toast
+│   │       └── Toast.tsx
+│   ├── config.public.ts
+│   ├── context
+│   │   └── AuthContext.tsx
+│   ├── hooks
+│   │   └── useJwtToken.ts
+│   ├── icons
+│   │   └── NotFound.tsx
+│   ├── instrumentation-client.ts
+│   ├── instrumentation.ts
+│   ├── middleware.ts
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── public
+│   │   ├── apple-touch-icon.png
+│   │   ├── asset
+│   │   │   ├── artwork
+│   │   │   │   ├── avatar.svg
+│   │   │   │   ├── brainstorming.svg
+│   │   │   │   ├── data-security.svg
+│   │   │   │   ├── designer.svg
+│   │   │   │   ├── mail-sent.svg
+│   │   │   │   ├── man.svg
+│   │   │   │   ├── not-found-solid-iii-0.svg
+│   │   │   │   ├── process
+│   │   │   │   │   └── solide_II.svg
+│   │   │   │   ├── product_launch
+│   │   │   │   │   └── outline_III.svg
+│   │   │   │   ├── theme-clair-money.svg
+│   │   │   │   └── thinking-woman-2.svg
+│   │   │   └── logo
+│   │   │       ├── carif-oref-onisep.png
+│   │   │       ├── carif-oref.png
+│   │   │       ├── education_nationale.png
+│   │   │       ├── enseigne-sup.png
+│   │   │       ├── etalab.png
+│   │   │       ├── france_competences.png
+│   │   │       ├── insee.png
+│   │   │       ├── la_bonne_alternance.png
+│   │   │       ├── la_bonne_alternance.svg
+│   │   │       ├── onisep.png
+│   │   │       └── unml.svg
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── fonts
+│   │   │   └── Marianne
+│   │   │       ├── .gitattributes
+│   │   │       ├── Marianne-Bold.woff
+│   │   │       ├── Marianne-Bold.woff2
+│   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │       ├── Marianne-ExtraBold.woff
+│   │   │       ├── Marianne-ExtraBold.woff2
+│   │   │       ├── Marianne-ExtraBold_Italic.woff
+│   │   │       ├── Marianne-ExtraBold_Italic.woff2
+│   │   │       ├── Marianne-Light.woff
+│   │   │       ├── Marianne-Light.woff2
+│   │   │       ├── Marianne-Light_Italic.woff
+│   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │       ├── Marianne-Medium.woff
+│   │   │       ├── Marianne-Medium.woff2
+│   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │       ├── Marianne-Regular.woff
+│   │   │       ├── Marianne-Regular.woff2
+│   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │       ├── Marianne-Thin.woff
+│   │   │       ├── Marianne-Thin.woff2
+│   │   │       ├── Marianne-Thin_Italic.woff
+│   │   │       └── Marianne-Thin_Italic.woff2
+│   │   └── images
+│   │       ├── emails
+│   │       │   ├── beta.png
+│   │       │   ├── marianne.png
+│   │       │   └── marianne.svg
+│   │       ├── france_relance.svg
+│   │       ├── logo_LBA.svg
+│   │       ├── logo_gouvernement.svg
+│   │       └── marianne.svg
+│   ├── robots.ts
+│   ├── sentry.edge.config.ts
+│   ├── sentry.server.config.ts
+│   ├── tests
+│   │   └── setup.ts
+│   ├── theme
+│   │   └── defaultColorScheme.ts
+│   ├── tsconfig.json
+│   ├── types
+│   │   └── svg.d.ts
+│   └── utils
+│       ├── api.utils.test.ts
+│       ├── api.utils.ts
+│       ├── date.utils.ts
+│       ├── query.utils.ts
+│       ├── routes.utils.test.ts
+│       └── routes.utils.ts
+├── vitest.config.ts
+└── yarn.lock
+401 directories, 1087 files

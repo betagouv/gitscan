@@ -1,0 +1,53 @@
+{
+  "name": "api-alternance-sdk",
+  "version": "0.0.0",
+  "author": "Mission interministérielle pour l’apprentissage",
+  "license": "MIT",
+  "sideEffects": [],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./internal": {
+      "import": "./dist/src/internal.js",
+      "types": "./dist/src/internal.d.ts"
+    },
+    "./fixtures": {
+      "import": "./dist/src/fixtures.js",
+      "types": "./dist/src/fixtures.d.ts"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "typecheck": "tsc -b",
+    "build": "tsc -b tsconfig.prod.json",
+    "prepack": "yarn build",
+    "dev": "tsc -b -w",
+    "markdown:transpile": "node ./scripts/transpile-markdown.mjs"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.2",
+    "@types/node": "^24.2.1",
+    "nock": "^14.0.10",
+    "type-fest": "^4.41.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "jose": "^6.0.12",
+    "lru-cache": "^11.1.0",
+    "luhn": "^2.4.1",
+    "luxon": "^3.7.1",
+    "microdiff": "^1.5.0",
+    "openapi3-ts": "^4.5.0",
+    "safe-stable-stringify": "^2.5.0",
+    "zod": "^4.0.17"
+  }
+}
