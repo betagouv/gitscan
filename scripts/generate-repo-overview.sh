@@ -72,7 +72,7 @@ gather_context() {
     # Priority files to include first
     local priority_files=(
         "README.md" "README" "readme.md"
-        "package.json" "Cargo.toml" "go.mod" "pyproject.toml" "setup.py" "composer.json" "pom.xml" "build.gradle"
+        "package.json" "Gemfile" "Cargo.toml" "go.mod" "pyproject.toml" "setup.py" "composer.json" "pom.xml" "build.gradle"
         ".env.example" "Dockerfile" "docker-compose.yml" "docker-compose.yaml"
     )
 

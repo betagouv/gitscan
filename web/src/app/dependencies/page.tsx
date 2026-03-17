@@ -14,6 +14,8 @@ const typeLabels: Record<DependencyType, string> = {
   pypi: "PyPI",
   "pypi-dev": "PyPI (dev)",
   docker: "Docker",
+  gem: "Gem",
+  "gem-dev": "Gem (dev)",
 };
 
 const typeColors: Record<DependencyType, string> = {
@@ -22,6 +24,8 @@ const typeColors: Record<DependencyType, string> = {
   pypi: "bg-blue-100 text-blue-800",
   "pypi-dev": "bg-blue-50 text-blue-600",
   docker: "bg-purple-100 text-purple-800",
+  gem: "bg-green-100 text-green-800",
+  "gem-dev": "bg-green-50 text-green-600",
 };
 
 type SortOption = "usages" | "name";
@@ -125,7 +129,7 @@ export default function DependenciesPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
         {(Object.keys(typeLabels) as DependencyType[]).map((type) => (
           <button
             key={type}

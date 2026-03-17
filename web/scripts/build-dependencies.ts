@@ -197,6 +197,62 @@ async function parsePyprojectToml(
   return usages;
 }
 
+async function parseGemfile(
+  filePath: string,
+  org: string,
+  repoName: string,
+): Promise<DependencyUsage[]> {
+  const usages: DependencyUsage[] = [];
+  try {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const lines = content.split("\n");
+    let inDevGroup = false;
+    let groupDepth = 0;
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+
+      // Detect group :development / :test blocks
+      if (trimmed.match(/^group\s+.*:(?:development|test)/)) {
+        inDevGroup = true;
+        groupDepth++;
+        continue;
+      }
+      if (trimmed.match(/^group\s+/)) {
+        groupDepth++;
+        continue;
+      }
+      if (trimmed === "end" && groupDepth > 0) {
+        groupDepth--;
+        if (groupDepth === 0) inDevGroup = false;
+        continue;
+      }
+
+      // Skip comments and empty lines
+      if (!trimmed || trimmed.startsWith("#")) continue;
+
+      // Match: gem 'name' or gem 'name', '~> version'
+      const gemMatch = trimmed.match(
+        /^gem\s+['"]([^'"]+)['"]\s*(?:,\s*['"]([^'"]+)['"])?/,
+      );
+      if (gemMatch) {
+        const name = gemMatch[1];
+        const version = gemMatch[2]
+          ? gemMatch[2].replace(/^[~^>=< ]+/, "").trim()
+          : "*";
+        const type: DependencyType = inDevGroup ? "gem-dev" : "gem";
+        usages.push({ organization: org, repo: repoName, version, type });
+        (
+          usages[usages.length - 1] as DependencyUsage & { _name: string }
+        )._name = name;
+      }
+    }
+  } catch (error) {
+    console.error(`Error parsing ${filePath}:`, error);
+  }
+  return usages;
+}
+
 async function parseComposeYml(
   filePath: string,
   org: string,
@@ -261,6 +317,8 @@ async function buildDependencyIndex() {
     pypi: 0,
     "pypi-dev": 0,
     docker: 0,
+    gem: 0,
+    "gem-dev": 0,
   };
   let totalUsages = 0;
 
@@ -270,6 +328,7 @@ async function buildDependencyIndex() {
     "**/*requirements.txt",
     "**/*pyproject.toml",
     "**/*compose.yml",
+    "**/*Gemfile",
   ];
 
   for (const pattern of patterns) {
@@ -295,6 +354,8 @@ async function buildDependencyIndex() {
         usages = await parsePyprojectToml(filePath, org, repoName);
       } else if (file.endsWith("compose.yml")) {
         usages = await parseComposeYml(filePath, org, repoName);
+      } else if (file.endsWith("Gemfile")) {
+        usages = await parseGemfile(filePath, org, repoName);
       }
 
       for (const usage of usages) {
