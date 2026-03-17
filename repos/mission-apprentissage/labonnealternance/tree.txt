@@ -1,0 +1,2183 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-lba
+│   ├── scripts
+│   │   ├── app-build.sh
+│   │   ├── app-release-interactive.sh
+│   │   ├── app-release.sh
+│   │   ├── buildkitd.toml
+│   │   ├── env-init.sh
+│   │   ├── get-version.sh
+│   │   ├── gitleaks-add-exceptions.sh
+│   │   ├── gitleaks-check.sh
+│   │   ├── sentry-deploy.sh
+│   │   └── sentry-release.sh
+│   └── shared
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .gitguardian.yml
+├── .github
+│   ├── CODEOWNERS
+│   ├── copilot-instructions.md
+│   ├── pr-title-checker-config.json
+│   └── workflows
+│       ├── _build.yml
+│       ├── _deploy.yml
+│       ├── ci.yml
+│       ├── codeql.yml
+│       ├── deploy_preview.yml
+│       ├── merge_queue.yml
+│       ├── pr-title-check.yml
+│       ├── preview.yml
+│       ├── preview_cleanup.yml
+│       └── release.yml
+├── .gitignore
+├── .gitleaks.toml
+├── .gitmodules
+├── .husky
+│   ├── commit-msg
+│   ├── commitlint.config.js
+│   ├── post-checkout
+│   ├── post-commit
+│   ├── post-merge
+│   ├── pre-commit
+│   ├── pre-push
+│   └── preventSensibleFilesCommit.sh
+├── .infra
+│   ├── .env_server
+│   ├── .env_ui
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── initialize-env.yml
+│   │   ├── preview.yml
+│   │   ├── preview_cleanup.yml
+│   │   └── tasks
+│   │       ├── files_copy.yml
+│   │       └── preview_pr.yml
+│   ├── authorizations
+│   ├── docker-compose.preview-system.yml
+│   ├── docker-compose.preview.yml
+│   ├── docker-compose.production.yml
+│   ├── docker-compose.recette.yml
+│   ├── env.global.yml
+│   ├── env.local.yml
+│   ├── env.pentest.yml
+│   ├── env.preview.yml
+│   ├── env.production.yml
+│   ├── env.recette.yml
+│   ├── files
+│   │   ├── configs
+│   │   │   ├── clamav
+│   │   │   │   └── clamd.conf
+│   │   │   ├── mailpit
+│   │   │   │   ├── .gitkeep
+│   │   │   │   └── auth.jinja2
+│   │   │   ├── metabase
+│   │   │   │   ├── add-preview-database.sh
+│   │   │   │   ├── cleanup-preview-databases.sh
+│   │   │   │   ├── remove-preview-database.sh
+│   │   │   │   ├── setup-metabase-preview.sh
+│   │   │   │   └── setup-metabase.sh
+│   │   │   ├── mongodb
+│   │   │   │   ├── mongo_keyfile.txt
+│   │   │   │   ├── mongod.conf
+│   │   │   │   └── seed.gpg
+│   │   │   └── reverse_proxy
+│   │   │       ├── extra-conf.d
+│   │   │       │   ├── alias.conf.template
+│   │   │       │   ├── preview.conf
+│   │   │       │   └── server_name.conf.template
+│   │   │       ├── extra-includes
+│   │   │       │   └── proxy-iframe.conf.template
+│   │   │       ├── locations
+│   │   │       │   ├── 10_api.conf.template
+│   │   │       │   ├── 70_smtp.conf.template
+│   │   │       │   ├── 80_metabase.conf.template
+│   │   │       │   └── 90_location_ui.conf.template
+│   │   │       ├── owasp-crs
+│   │   │       │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │       └── system
+│   │   │           ├── 503.html
+│   │   │           ├── 503.svg
+│   │   │           ├── 5xx.html
+│   │   │           ├── 5xx.svg
+│   │   │           ├── logo-violet-seul.svg
+│   │   │           └── logo_LBA.svg
+│   │   ├── data
+│   │   │   ├── clamav
+│   │   │   │   └── .gitkeep
+│   │   │   ├── server
+│   │   │   │   └── .gitkeep
+│   │   │   └── smtp
+│   │   │       └── .gitkeep
+│   │   └── scripts
+│   │       ├── cli.sh
+│   │       ├── migrations-status.sh
+│   │       ├── migrations-up.sh
+│   │       ├── seed.sh
+│   │       └── sync-index.sh
+│   ├── inventories
+│   └── local
+│       ├── Dockerfile
+│       ├── mongo_keyfile
+│       └── mongod.conf
+├── .talismanrc
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── terminals.json
+├── .yarn
+│   ├── patches
+│   │   └── zod-npm-3.21.4-9f570b215c.patch
+│   ├── plugins
+│   │   └── @yarnpkg
+│   │       ├── plugin-version.cjs
+│   │       └── plugin-workspace-tools.cjs
+│   └── releases
+│       └── yarn-3.8.7.cjs
+├── .yarnrc.yml
+├── CHANGELOG.md
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── artillery-test
+│   ├── metiers.csv
+│   ├── readme.md
+│   ├── recherche-candidat.yml
+│   ├── recherche-jobs_et_formations.yml
+│   └── romesandgeolocs.csv
+├── biome.json
+├── docker-bake.json
+├── docker-compose.yml
+├── docs
+│   ├── CLI-JOBS.md
+│   ├── DATASOURCES.md
+│   ├── deploy.md
+│   ├── developpement
+│   │   └── developpement.md
+│   ├── infrastructure
+│   │   ├── architecture.md
+│   │   ├── manage.md
+│   │   └── preview.md
+│   ├── infrastructure.md
+│   ├── migration-temp
+│   │   ├── 00-README.md
+│   │   ├── 01-overview.md
+│   │   ├── 02-schema-migration.md
+│   │   ├── 03-file-changes.md
+│   │   ├── 04-background-jobs.md
+│   │   ├── 05-feature-migration.md
+│   │   ├── 06-testing-rollback.md
+│   │   ├── 07-feature-flags.md
+│   │   ├── 08-ai-prompts-timeline.md
+│   │   ├── 09-decision-matrix.md
+│   │   └── establishment-id-analysis
+│   │       ├── 01-README.md
+│   │       ├── 02-server-impact.md
+│   │       ├── 03-ui-impact.md
+│   │       └── 04-migration-recommendations.md
+│   └── securite.md
+├── gitleaks-fingerprints-baseline.txt
+├── knip.json
+├── package.json
+├── release.config.js
+├── server
+│   ├── .env.local.example
+│   ├── .env.test
+│   ├── .gitignore
+│   ├── CHANGELOG.md
+│   ├── package.json
+│   ├── sentry-deploy-server.sh
+│   ├── sentry-release-server.sh
+│   ├── src
+│   │   ├── commands.ts
+│   │   ├── common
+│   │   │   ├── apis
+│   │   │   │   ├── apec
+│   │   │   │   │   ├── apec.client.test.ts
+│   │   │   │   │   └── apec.client.ts
+│   │   │   │   ├── apiEntreprise
+│   │   │   │   │   ├── apiEntreprise.client.fixture.ts
+│   │   │   │   │   ├── apiEntreprise.client.test.ts
+│   │   │   │   │   └── apiEntreprise.client.ts
+│   │   │   │   ├── apiReferentielCatalogue.fixture.ts
+│   │   │   │   ├── classification
+│   │   │   │   │   ├── classification.client.fixture.ts
+│   │   │   │   │   ├── classification.client.test.ts
+│   │   │   │   │   └── classification.client.ts
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── diagoriente
+│   │   │   │   │   ├── diagoriente.client.fixture.ts
+│   │   │   │   │   ├── diagoriente.client.test.ts
+│   │   │   │   │   └── diagoriente.client.ts
+│   │   │   │   ├── emploiInclusion
+│   │   │   │   │   ├── emploi-inclusion.client.fixture.ts
+│   │   │   │   │   ├── emploi-inclusion.client.test.ts
+│   │   │   │   │   └── emploi-inclusion.client.ts
+│   │   │   │   ├── franceCompetences
+│   │   │   │   │   ├── franceCompetencesClient.fixture.ts
+│   │   │   │   │   ├── franceCompetencesClient.test.ts
+│   │   │   │   │   └── franceCompetencesClient.ts
+│   │   │   │   ├── franceTravail
+│   │   │   │   │   ├── franceTravail.client.fixture.ts
+│   │   │   │   │   ├── franceTravail.client.test.ts
+│   │   │   │   │   └── franceTravail.client.ts
+│   │   │   │   ├── geoApiGouv
+│   │   │   │   │   ├── geoApiGouv.test.ts
+│   │   │   │   │   └── geoApiGouv.ts
+│   │   │   │   └── inserjeunes
+│   │   │   │       ├── inserjeunes.client.fixture.ts
+│   │   │   │       ├── inserjeunes.client.test.ts
+│   │   │   │       └── inserjeunes.client.ts
+│   │   │   ├── filename.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── sentry
+│   │   │   │   ├── sentry.fastify.ts
+│   │   │   │   └── sentry.ts
+│   │   │   ├── territoires.ts
+│   │   │   └── utils
+│   │   │       ├── apiUtils.ts
+│   │   │       ├── array.test.ts
+│   │   │       ├── array.ts
+│   │   │       ├── asyncUtils.ts
+│   │   │       ├── awsUtils.ts
+│   │   │       ├── dirname.ts
+│   │   │       ├── encryptString.ts
+│   │   │       ├── errorManager.ts
+│   │   │       ├── fileUtils.ts
+│   │   │       ├── ftpUtils.ts
+│   │   │       ├── geolib.ts
+│   │   │       ├── getStaticFilePath.ts
+│   │   │       ├── httpUtils.ts
+│   │   │       ├── isAllowedSource.ts
+│   │   │       ├── isOriginLocal.ts
+│   │   │       ├── isValidEmail.ts
+│   │   │       ├── jwtUtils.ts
+│   │   │       ├── logMessage.ts
+│   │   │       ├── mailUtils.ts
+│   │   │       ├── mongodbUtils.ts
+│   │   │       ├── regionInseeCodes.ts
+│   │   │       ├── sendTrackingEvent.ts
+│   │   │       ├── sentryUtils.ts
+│   │   │       ├── session.service.ts
+│   │   │       ├── slackUtils.ts
+│   │   │       ├── streamUtils.ts
+│   │   │       ├── stringUtils.test.ts
+│   │   │       └── stringUtils.ts
+│   │   ├── config.ts
+│   │   ├── global.d.ts
+│   │   ├── http
+│   │   │   ├── StreamProcessorServer.ts
+│   │   │   ├── controllers
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── etablissementRecruteur.controller.test.ts.snap
+│   │   │   │   ├── _private
+│   │   │   │   │   ├── admin
+│   │   │   │   │   │   └── processor.admin.routes.ts
+│   │   │   │   │   ├── geo.private.controller.ts
+│   │   │   │   │   └── seo.private.controller.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── eligibleTrainingsForAppointment.controller.ts
+│   │   │   │   │   ├── etablissement.controller.ts
+│   │   │   │   │   └── formations.controller.ts
+│   │   │   │   ├── application.controller.test.ts
+│   │   │   │   ├── application.controller.ts
+│   │   │   │   ├── appointmentRequest.controller.ts
+│   │   │   │   ├── classification.controller.ts
+│   │   │   │   ├── core.controller.ts
+│   │   │   │   ├── emails.controller.ts
+│   │   │   │   ├── etablissement.controller.ts
+│   │   │   │   ├── etablissementRecruteur.controller.test.ts
+│   │   │   │   ├── etablissementRecruteur.controller.ts
+│   │   │   │   ├── formation.controller.test.ts
+│   │   │   │   ├── formationRegion.controller.test.ts
+│   │   │   │   ├── formationRegion.controller.ts
+│   │   │   │   ├── formations.controller.ts
+│   │   │   │   ├── formulaire.controller.test.ts
+│   │   │   │   ├── formulaire.controller.ts
+│   │   │   │   ├── inserjeunes.controller.test.ts
+│   │   │   │   ├── inserjeunes.controller.ts
+│   │   │   │   ├── jobs.controller.test.ts
+│   │   │   │   ├── jobs.controller.ts
+│   │   │   │   ├── jobsEtFormations.controller.test.ts
+│   │   │   │   ├── jobsEtFormations.controller.ts
+│   │   │   │   ├── login.controller.ts
+│   │   │   │   ├── metiers.controller.test.ts
+│   │   │   │   ├── metiers.controller.ts
+│   │   │   │   ├── reportedCompany.controller.ts
+│   │   │   │   ├── rolesRoutes.test.ts
+│   │   │   │   ├── rome.controller.ts
+│   │   │   │   ├── sitemap.controller.ts
+│   │   │   │   ├── trainingLinks.controller.ts
+│   │   │   │   ├── unsubscribeRecruteurLba.controller.ts
+│   │   │   │   ├── updateRecruteurLba.controller.ts
+│   │   │   │   ├── user.controller.test.ts
+│   │   │   │   ├── user.controller.ts
+│   │   │   │   ├── v2
+│   │   │   │   │   ├── application.controller.v2.ts
+│   │   │   │   │   ├── applications.controller.v2.test.ts
+│   │   │   │   │   ├── appointment.controller.v2.test.ts
+│   │   │   │   │   ├── appointment.controller.v2.ts
+│   │   │   │   │   └── jobs.controller.v2.ts
+│   │   │   │   ├── v3
+│   │   │   │   │   └── jobs
+│   │   │   │   │       ├── jobs.controller.v3.test.ts
+│   │   │   │   │       └── jobs.controller.v3.ts
+│   │   │   │   ├── version.controller.test.ts
+│   │   │   │   └── version.controller.ts
+│   │   │   ├── healthcheck.test.ts
+│   │   │   ├── jobProcessorServer.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── OneLinerLogger.ts
+│   │   │   │   ├── authMiddleware.ts
+│   │   │   │   ├── errorMiddleware.ts
+│   │   │   │   └── logMiddleware.ts
+│   │   │   ├── server.test.ts
+│   │   │   └── server.ts
+│   │   ├── index.ts
+│   │   ├── jobs
+│   │   │   ├── anonymization
+│   │   │   │   ├── anonimizeUsersWithAccounts.ts
+│   │   │   │   ├── anonymizeApplicantAndApplications.ts
+│   │   │   │   ├── anonymizeApplications.ts
+│   │   │   │   ├── anonymizeAppointments.ts
+│   │   │   │   ├── anonymizeIndividual.ts
+│   │   │   │   ├── anonymizeReportedReasons.ts
+│   │   │   │   ├── anonymizeUsers.ts
+│   │   │   │   └── removeBrevoContacts.ts
+│   │   │   ├── applications
+│   │   │   │   ├── processApplications.ts
+│   │   │   │   └── processRecruiterIntentions.ts
+│   │   │   ├── database
+│   │   │   │   ├── obfuscateCollections.ts
+│   │   │   │   ├── recreateIndexes.ts
+│   │   │   │   └── schemaValidation.ts
+│   │   │   ├── diplomesMetiers
+│   │   │   │   └── updateDiplomesMetiers.ts
+│   │   │   ├── domainesMetiers
+│   │   │   │   ├── assets
+│   │   │   │   │   └── .gitignore
+│   │   │   │   ├── buildMappingRomeRNCP.ts
+│   │   │   │   ├── classifyRomesForDomainesMetiers.ts
+│   │   │   │   ├── domaineMetiersFixRomes.ts
+│   │   │   │   ├── importFichesRncp.ts
+│   │   │   │   ├── updateRomesForDomainesMetiers.ts
+│   │   │   │   └── validateDomaineMetiers.ts
+│   │   │   ├── formationsCatalogue
+│   │   │   │   ├── formationsCatalogue.ts
+│   │   │   │   └── updateParcoursupAndAffelnetInfoOnFormationCatalogue.ts
+│   │   │   ├── franceTravail
+│   │   │   │   └── generateFranceTravailAccess.ts
+│   │   │   ├── jobs.ts
+│   │   │   ├── metabase
+│   │   │   │   ├── metabaseJobsCollection.ts
+│   │   │   │   └── metabaseRoleManagement360.ts
+│   │   │   ├── migrations
+│   │   │   │   └── migrations.ts
+│   │   │   ├── miseEnRelation
+│   │   │   │   └── sendMiseEnRelation.ts
+│   │   │   ├── offrePartenaire
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── fillSiretInfosForPartners.test.ts.snap
+│   │   │   │   ├── apec
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importApec.test.ts.snap
+│   │   │   │   │   ├── apecMapper.ts
+│   │   │   │   │   ├── importApec.test.input.xml
+│   │   │   │   │   ├── importApec.test.ts
+│   │   │   │   │   ├── importApec.ts
+│   │   │   │   │   └── processApec.ts
+│   │   │   │   ├── blockBadRomeJobsPartners.ts
+│   │   │   │   ├── blockJobsPartnersFromCfaList.test.ts
+│   │   │   │   ├── blockJobsPartnersFromCfaList.ts
+│   │   │   │   ├── blockJobsPartnersWithNaf85.ts
+│   │   │   │   ├── cancelRemovedJobsPartners.test.ts
+│   │   │   │   ├── cancelRemovedJobsPartners.ts
+│   │   │   │   ├── clever-connect
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importCleverConnect.test.ts.snap
+│   │   │   │   │   ├── cleverConnectMapper.test.ts
+│   │   │   │   │   ├── cleverConnectMapper.ts
+│   │   │   │   │   ├── importCleverConnect.test.input.xml
+│   │   │   │   │   ├── importCleverConnect.test.ts
+│   │   │   │   │   ├── importCleverConnect.ts
+│   │   │   │   │   └── processCleverConnect.ts
+│   │   │   │   ├── decathlon
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importDecathlon.test.ts.snap
+│   │   │   │   │   ├── decathlon.test.input.json
+│   │   │   │   │   ├── decathlonMapper.test.ts
+│   │   │   │   │   ├── decathlonMapper.ts
+│   │   │   │   │   ├── importDecathlon.test.ts
+│   │   │   │   │   └── importDecathlon.ts
+│   │   │   │   ├── detectClassificationJobsPartners.test.ts
+│   │   │   │   ├── detectClassificationJobsPartners.ts
+│   │   │   │   ├── detectDuplicateJobPartners.test.ts
+│   │   │   │   ├── detectDuplicateJobPartners.ts
+│   │   │   │   ├── emploi-inclusion
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── emploi-inclusion.mapper.test.ts.snap
+│   │   │   │   │   ├── emploi-inclusion.mapper.test.ts
+│   │   │   │   │   ├── emploi-inclusion.mapper.ts
+│   │   │   │   │   └── importEmploiInclusion.ts
+│   │   │   │   ├── engagementJeunes
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── engagementJeunesMapper.test.ts.snap
+│   │   │   │   │   │   └── importEngagementJeunes.test.ts.snap
+│   │   │   │   │   ├── engagementJeunes.test.input.json
+│   │   │   │   │   ├── engagementJeunesMapper.test.ts
+│   │   │   │   │   ├── engagementJeunesMapper.ts
+│   │   │   │   │   ├── importEngagementJeunes.test.ts
+│   │   │   │   │   └── importEngagementJeunes.ts
+│   │   │   │   ├── expireJobsPartners.ts
+│   │   │   │   ├── fillComputedJobsPartners.test.ts
+│   │   │   │   ├── fillComputedJobsPartners.ts
+│   │   │   │   ├── fillComputedRecruteursLba.ts
+│   │   │   │   ├── fillEntrepriseEngagementComputedJobsPartners.ts
+│   │   │   │   ├── fillEntrepriseEngagementJobsPartners.ts
+│   │   │   │   ├── fillFieldsForPartnersFactory.ts
+│   │   │   │   ├── fillLbaUrl.ts
+│   │   │   │   ├── fillLocationInfosForPartners.test.ts
+│   │   │   │   ├── fillLocationInfosForPartners.ts
+│   │   │   │   ├── fillOpcoInfosForPartners.test.ts
+│   │   │   │   ├── fillOpcoInfosForPartners.ts
+│   │   │   │   ├── fillRomeForPartners.test.ts
+│   │   │   │   ├── fillRomeForPartners.ts
+│   │   │   │   ├── fillSiretInfosForPartners.test.ts
+│   │   │   │   ├── fillSiretInfosForPartners.ts
+│   │   │   │   ├── formatTextFieldsJobsPartners.ts
+│   │   │   │   ├── france-travail
+│   │   │   │   │   ├── franceTravailMapper.ts
+│   │   │   │   │   ├── importJobsFranceTravail.ts
+│   │   │   │   │   └── processFranceTravail.ts
+│   │   │   │   ├── france-travail-CEGID
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── franceTravailCEGIDMapper.test.ts.snap
+│   │   │   │   │   │   └── importFranceTravailCEGID.test.ts.snap
+│   │   │   │   │   ├── franceTravailCEGIDMapper.test.input.json
+│   │   │   │   │   ├── franceTravailCEGIDMapper.test.ts
+│   │   │   │   │   ├── franceTravailCEGIDMapper.ts
+│   │   │   │   │   ├── importFranceTravailCEGID.test.input.json
+│   │   │   │   │   ├── importFranceTravailCEGID.test.ts
+│   │   │   │   │   ├── importFranceTravailCEGID.ts
+│   │   │   │   │   └── mappingAgences.ts
+│   │   │   │   ├── hellowork
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importHelloWork.test.ts.snap
+│   │   │   │   │   ├── helloWorkMapper.test.ts
+│   │   │   │   │   ├── helloWorkMapper.ts
+│   │   │   │   │   ├── importHelloWork.test.input.xml
+│   │   │   │   │   ├── importHelloWork.test.ts
+│   │   │   │   │   ├── importHelloWork.ts
+│   │   │   │   │   └── processHellowork.ts
+│   │   │   │   ├── importFromComputedToJobsPartners.test.ts
+│   │   │   │   ├── importFromComputedToJobsPartners.ts
+│   │   │   │   ├── importFromStreamInCsv.ts
+│   │   │   │   ├── importFromStreamInJson.ts
+│   │   │   │   ├── importFromStreamInXml.ts
+│   │   │   │   ├── importFromUrlInCsv.ts
+│   │   │   │   ├── importFromUrlInXml.ts
+│   │   │   │   ├── isCompanyInBlockedCfaList.test.ts
+│   │   │   │   ├── isCompanyInBlockedCfaList.ts
+│   │   │   │   ├── jobPartnersRankConfig.ts
+│   │   │   │   ├── jobsPartners.importer.ts
+│   │   │   │   ├── jobteaser
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importJobteaser.test.ts.snap
+│   │   │   │   │   ├── importJobteaser.test.input.xml
+│   │   │   │   │   ├── importJobteaser.test.ts
+│   │   │   │   │   ├── importJobteaser.ts
+│   │   │   │   │   ├── jobteaserMapper.ts
+│   │   │   │   │   └── processJobteaser.ts
+│   │   │   │   ├── jooble
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importJooble.test.ts.snap
+│   │   │   │   │   ├── importJooble.test.input.xml
+│   │   │   │   │   ├── importJooble.test.ts
+│   │   │   │   │   ├── importJooble.ts
+│   │   │   │   │   ├── joobleMapper.ts
+│   │   │   │   │   └── processJooble.ts
+│   │   │   │   ├── kelio
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importKelio.test.ts.snap
+│   │   │   │   │   ├── importKelio.test.input.xml
+│   │   │   │   │   ├── importKelio.test.ts
+│   │   │   │   │   ├── importKelio.ts
+│   │   │   │   │   ├── kelioMapper.ts
+│   │   │   │   │   └── processKelio.ts
+│   │   │   │   ├── laposte
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importLaposte.test.ts.snap
+│   │   │   │   │   ├── importLaposte.test.input.xml
+│   │   │   │   │   ├── importLaposte.test.ts
+│   │   │   │   │   ├── importLaposte.ts
+│   │   │   │   │   ├── laposteMapper.ts
+│   │   │   │   │   └── processLaposte.ts
+│   │   │   │   ├── lbaJobToJobsPartners.ts
+│   │   │   │   ├── leboncoin
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importLeboncoin.test.ts.snap
+│   │   │   │   │   ├── importLeboncoin.test.input.csv
+│   │   │   │   │   ├── importLeboncoin.test.ts
+│   │   │   │   │   ├── importLeboncoin.ts
+│   │   │   │   │   ├── leboncoinMapper.ts
+│   │   │   │   │   └── processLeboncoin.ts
+│   │   │   │   ├── pass
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importPass.test.ts.snap
+│   │   │   │   │   ├── importPass.test.input.rss
+│   │   │   │   │   ├── importPass.test.ts
+│   │   │   │   │   ├── importPass.ts
+│   │   │   │   │   ├── passMapper.ts
+│   │   │   │   │   └── processPass.ts
+│   │   │   │   ├── processFillRomeStandalone.ts
+│   │   │   │   ├── processJobPartners.ts
+│   │   │   │   ├── processJobPartnersForApi.ts
+│   │   │   │   ├── rankJobPartners.ts
+│   │   │   │   ├── rawToComputedJobsPartners.ts
+│   │   │   │   ├── recruteur-lba
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── processRecruteursLba.test.ts.snap
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── processRecruteursLba.test.1.json
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   └── .gitignore
+│   │   │   │   │   ├── importRecruteursLbaRaw.ts
+│   │   │   │   │   ├── processRecruteursLba.test.ts
+│   │   │   │   │   ├── processRecruteursLba.ts
+│   │   │   │   │   └── recruteursLbaMapper.ts
+│   │   │   │   ├── rh-alternance
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importRHAlternance.test.ts.snap
+│   │   │   │   │   ├── importRHAlternance.test.ts
+│   │   │   │   │   ├── importRHAlternance.ts
+│   │   │   │   │   └── processRhAlternance.ts
+│   │   │   │   ├── validateComputedJobPartners.test.ts
+│   │   │   │   └── validateComputedJobPartners.ts
+│   │   │   ├── oneTimeJob
+│   │   │   │   ├── addNafDataToCacheEntreprise.ts
+│   │   │   │   ├── analyzeClosedCompanies.ts
+│   │   │   │   ├── cleanClosedCompanies.test.ts
+│   │   │   │   ├── cleanClosedCompanies.ts
+│   │   │   │   └── renvoiMailCreationCompte.ts
+│   │   │   ├── partenaireExport
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── exportJobsToS3V2.test.ts.snap
+│   │   │   │   ├── exportBlacklistAlgo.ts
+│   │   │   │   ├── exportContactsToBrevo.ts
+│   │   │   │   ├── exportJobsToS3.ts
+│   │   │   │   ├── exportJobsToS3V2.test.ts
+│   │   │   │   ├── exportJobsToS3V2.ts
+│   │   │   │   ├── exportRecrutersToBrevo.ts
+│   │   │   │   └── exportToFranceTravail.ts
+│   │   │   ├── rdv
+│   │   │   │   ├── activateOptoutOnEtablissementAndUpdateReferrersOnETFA.ts
+│   │   │   │   ├── eligibleTrainingsForAppointmentsHistoryWithCatalogue.ts
+│   │   │   │   ├── importReferentielOnisep.ts
+│   │   │   │   ├── inviteEtablissementAffelnetToPremium.ts
+│   │   │   │   ├── inviteEtablissementAffelnetToPremiumFollowUp.ts
+│   │   │   │   ├── inviteEtablissementParcoursupToPremium.ts
+│   │   │   │   ├── inviteEtablissementParcoursupToPremiumFollowUp.ts
+│   │   │   │   ├── inviteEtablissementToOptOut.ts
+│   │   │   │   ├── premiumActivatedReminder.test.ts
+│   │   │   │   ├── premiumActivatedReminder.ts
+│   │   │   │   ├── removeDuplicateEtablissements.ts
+│   │   │   │   ├── repriseEnvoiPRDV.ts
+│   │   │   │   ├── resetInvitationDates.ts
+│   │   │   │   ├── syncEtablissementDates.ts
+│   │   │   │   └── syncEtablissementsAndFormations.ts
+│   │   │   ├── recruiters
+│   │   │   │   ├── cancelOfferJob.ts
+│   │   │   │   ├── createApiUser.ts
+│   │   │   │   ├── disableApiUser.ts
+│   │   │   │   ├── fixJobExpirationDateJob.ts
+│   │   │   │   ├── fixRecruiterDataValidationJob.ts
+│   │   │   │   ├── opcoReminderJob.ts
+│   │   │   │   ├── recruiterOfferExpirationReminderJob.ts
+│   │   │   │   ├── removeDuplicatesRecruiters.ts
+│   │   │   │   ├── resetApiKey.ts
+│   │   │   │   ├── updateMissingStartDateJob.ts
+│   │   │   │   └── updateSiretInfosInErrorJob.ts
+│   │   │   ├── referentielRome
+│   │   │   │   └── referentielRome.ts
+│   │   │   ├── seo
+│   │   │   │   └── updateSEO.ts
+│   │   │   ├── simpleJobDefinitions.ts
+│   │   │   ├── updateBrevoBlockedEmails
+│   │   │   │   └── updateBrevoBlockedEmails.ts
+│   │   │   └── verifications
+│   │   │       ├── controlApplications.ts
+│   │   │       └── controlAppointments.ts
+│   │   ├── main.ts
+│   │   ├── migrations
+│   │   │   ├── 20251031112120-initialisation-seo-ville.ts
+│   │   │   ├── 20251110154539-clean-migration.ts
+│   │   │   ├── 20251110163231-clean-recruteurslbalegacies.ts
+│   │   │   ├── 20251117180055-reset-pending-jobs.ts
+│   │   │   ├── 20251119174516-drop-referentielopcos.ts
+│   │   │   ├── 20251120025212-update-rome.ts
+│   │   │   ├── 20251204025232-fill-last-action-date.ts
+│   │   │   ├── 20251212155522-remove-metadata-ft-model.ts
+│   │   │   ├── 20260115190052-unset-lba-url.ts
+│   │   │   ├── 20260119151900-reset-lba-url.ts
+│   │   │   ├── 20260121150000-ajout-2-domaines-metiers.ts
+│   │   │   ├── 20260121150000-fix-5-domainesmetiers.ts
+│   │   │   ├── 20260121150000-fix-domainemetier-sans-solution.ts
+│   │   │   ├── 20260122140000-renommage-romes.ts
+│   │   │   ├── 20260122150000-classification-domaine-metier-new copy.ts
+│   │   │   ├── 20260122160000-regeneration-rome-label.ts
+│   │   │   ├── 20260127123456-clean-rolemanagement.ts
+│   │   │   ├── 20260129123456-mise-a-jour-diplomes-metiers.ts
+│   │   │   ├── 20260129123457-export-recruteurs-s3.ts
+│   │   │   ├── 20260129161156-maj-handi-engagement.ts
+│   │   │   ├── 20260205123456-maj-handi-engagement-offres-actives.ts
+│   │   │   ├── 20260212150000-classification-domaine-metier.ts
+│   │   │   ├── 20260218011730-initialisation-seo-metier.ts
+│   │   │   ├── 20260218174124-update-indexes.ts
+│   │   │   └── 20260226120000-classification-publish-unpublish.ts
+│   │   ├── security
+│   │   │   ├── accessLog.service.ts
+│   │   │   ├── accessLog.types.ts
+│   │   │   ├── accessTokenService.test.ts
+│   │   │   ├── accessTokenService.ts
+│   │   │   ├── authenticationService.ts
+│   │   │   ├── authorisationService.test.ts
+│   │   │   └── authorisationService.ts
+│   │   └── services
+│   │       ├── __snapshots__
+│   │       │   ├── application.service.test.ts.snap
+│   │       │   ├── formulaire.service.test.ts.snap
+│   │       │   └── partnerJob.service.test.ts.snap
+│   │       ├── appLinks.service.ts
+│   │       ├── applicant.service.ts
+│   │       ├── application.service.test.ts
+│   │       ├── application.service.ts
+│   │       ├── appointment.service.ts
+│   │       ├── bal.service.ts
+│   │       ├── brevo.service.ts
+│   │       ├── cacheClassification.service.ts
+│   │       ├── cacheDiagoriente.service.ts
+│   │       ├── cacheGeolocation.service.ts
+│   │       ├── cacheInfosSiret.service.ts
+│   │       ├── catalogue.service.ts
+│   │       ├── cfa.service.ts
+│   │       ├── clamav.service.ts
+│   │       ├── domainesmetiers.service.ts
+│   │       ├── eligibleTrainingsForAppointment.service.test.ts
+│   │       ├── eligibleTrainingsForAppointment.service.ts
+│   │       ├── emails.service.test.ts
+│   │       ├── emails.service.ts
+│   │       ├── etablissement.service.ts
+│   │       ├── etablissement.service.types.ts
+│   │       ├── external
+│   │       │   └── api-alternance
+│   │       │       ├── certification.fixture.ts
+│   │       │       └── certification.service.ts
+│   │       ├── formation.service.ts
+│   │       ├── formulaire.service.test.ts
+│   │       ├── formulaire.service.ts
+│   │       ├── ftjob.service.ts
+│   │       ├── ftjob.service.types.ts
+│   │       ├── geolocation.service.ts
+│   │       ├── handiEngagement.service.ts
+│   │       ├── jobOpportunity.service.types.ts
+│   │       ├── jobs
+│   │       │   └── jobOpportunity
+│   │       │       ├── JobOpportunityRequestContext.ts
+│   │       │       ├── __snapshots__
+│   │       │       │   └── jobOpportunity.service.test.ts.snap
+│   │       │       ├── jobOpportunity.service.test.ts
+│   │       │       └── jobOpportunity.service.ts
+│   │       ├── lbaitem.shared.service.types.ts
+│   │       ├── lbajob.service.ts
+│   │       ├── login.service.ts
+│   │       ├── mailer.service.ts
+│   │       ├── metiers.service.ts
+│   │       ├── mistralai
+│   │       │   └── mistralai.service.ts
+│   │       ├── opco.service.ts
+│   │       ├── organization.service.ts
+│   │       ├── partnerJob.service.test.ts
+│   │       ├── partnerJob.service.ts
+│   │       ├── queryValidator.service.ts
+│   │       ├── queryValidator.service.types.ts
+│   │       ├── recruteurLba.service.test.ts
+│   │       ├── recruteurLba.service.ts
+│   │       ├── referentiel
+│   │       │   └── commune
+│   │       │       ├── commune.referentiel.service.test.ts
+│   │       │       └── commune.referentiel.service.ts
+│   │       ├── referentielEngagementEntreprise.service.ts
+│   │       ├── referrers.service.ts
+│   │       ├── reportedCompany.service.ts
+│   │       ├── resumeToken.service.test.ts
+│   │       ├── resumeToken.service.ts
+│   │       ├── roleManagement.service.test.ts
+│   │       ├── roleManagement.service.ts
+│   │       ├── rome.service.ts
+│   │       ├── rome.service.types.ts
+│   │       ├── seo.service.ts
+│   │       ├── sessions.service.ts
+│   │       ├── sitemap.service.ts
+│   │       ├── trafficSource.service.test.ts
+│   │       ├── trafficSource.service.ts
+│   │       ├── trainingLinks.service.ts
+│   │       ├── unsubscribeRecruteurLba.service.ts
+│   │       ├── user.service.ts
+│   │       ├── userRecruteur.service.ts
+│   │       └── userWithAccount.service.ts
+│   ├── static
+│   │   ├── .gitkeep
+│   │   ├── companies-to-close.csv
+│   │   ├── contrats_30j.csv
+│   │   ├── referentiel
+│   │   │   ├── 20260129 Liste handi engages LBA.csv
+│   │   │   ├── Flux FT Alternance_Table de transcodage des villes.xlsx - Table de transcodage des villes.csv
+│   │   │   ├── code_rome_sans_domaine_solution_13.01.26.csv
+│   │   │   ├── labonnealternance.referentielromes_classification_new_21.01.26.csv
+│   │   │   ├── romes renommées_changement de sous-domaines.csv
+│   │   │   └── unix_referentiel_code_rome_v460_utf8.csv
+│   │   └── templates
+│   │       ├── mail-bienvenue-entreprise-sans-offre.mjml.ejs
+│   │       ├── mail-bienvenue.mjml.ejs
+│   │       ├── mail-candidat-confirmation-rdv.mjml.ejs
+│   │       ├── mail-candidat-entretien.mjml.ejs
+│   │       ├── mail-candidat-hardbounce.mjml.ejs
+│   │       ├── mail-candidat-offre-emploi.mjml.ejs
+│   │       ├── mail-candidat-recruteur-lba.mjml.ejs
+│   │       ├── mail-candidat-refus.mjml.ejs
+│   │       ├── mail-candidature-partenaire.mjml.ejs
+│   │       ├── mail-candidature-spontanee.mjml.ejs
+│   │       ├── mail-candidature.mjml.ejs
+│   │       ├── mail-cfa-delegation.mjml.ejs
+│   │       ├── mail-cfa-demande-de-contact.mjml.ejs
+│   │       ├── mail-cfa-notification-hardbounce-cfa.mjml.ejs
+│   │       ├── mail-cfa-optout-activated.mjml.ejs
+│   │       ├── mail-cfa-optout-invitation.mjml.ejs
+│   │       ├── mail-cfa-optout-start.mjml.ejs
+│   │       ├── mail-cfa-optout-unsubscription.mjml.ejs
+│   │       ├── mail-cfa-premium-activated-reminder.mjml.ejs
+│   │       ├── mail-cfa-premium-activated.mjml.ejs
+│   │       ├── mail-cfa-premium-invite-followup.mjml.ejs
+│   │       ├── mail-cfa-premium-invite.mjml.ejs
+│   │       ├── mail-cfa-premium-refused.mjml.ejs
+│   │       ├── mail-cfa-premium-start.mjml.ejs
+│   │       ├── mail-compte-desactive.mjml.ejs
+│   │       ├── mail-confirmation-email.mjml.ejs
+│   │       ├── mail-connexion.mjml.ejs
+│   │       ├── mail-desinscription-algo.mjml.ejs
+│   │       ├── mail-echec-envoi-candidature.mjml.ejs
+│   │       ├── mail-expiration-offres.mjml.ejs
+│   │       ├── mail-mer-confirmation.mjml.ejs
+│   │       ├── mail-mer-invitation.mjml.ejs
+│   │       ├── mail-nouvelle-offre-depot-simplifie.mjml.ejs
+│   │       ├── mail-nouvelle-offre.mjml.ejs
+│   │       ├── mail-rdva-optout-unsubscription-question.mjml.ejs
+│   │       ├── mail-relance-opco.mjml.ejs
+│   │       ├── mail-reponse-cfa.mjml.ejs
+│   │       └── mail-sensibilisation-handi-engagement.mjml.ejs
+│   ├── tests
+│   │   ├── fixture
+│   │   │   ├── connectedUser.fixture.ts
+│   │   │   ├── givenSomeComputedJobPartners.ts
+│   │   │   └── givenSomeJobPartners.ts
+│   │   ├── integration
+│   │   │   └── common
+│   │   │       └── model.test.ts
+│   │   ├── unit
+│   │   │   ├── external
+│   │   │   │   └── zod.test.ts
+│   │   │   ├── formation.test.ts
+│   │   │   ├── util.test.ts
+│   │   │   ├── utils
+│   │   │   │   └── isValidEmail.test.ts
+│   │   │   └── validateSendApplication.test.ts
+│   │   └── utils
+│   │       ├── globalSetup.ts
+│   │       ├── jobsPartners.test.utils.ts
+│   │       ├── jwt.test.utils.ts
+│   │       ├── loadEnvForTests.ts
+│   │       ├── login.test.utils.ts
+│   │       ├── mongo.test.utils.ts
+│   │       ├── server.test.utils.ts
+│   │       ├── setup.ts
+│   │       └── user.test.utils.ts
+│   ├── tsconfig.json
+│   └── tsup.config.ts
+├── shared
+│   ├── package.json
+│   ├── src
+│   │   ├── constants
+│   │   │   ├── application.ts
+│   │   │   ├── appointment.ts
+│   │   │   ├── diffusibleStatus.ts
+│   │   │   ├── errorCodes.ts
+│   │   │   ├── geolocation.ts
+│   │   │   ├── index.ts
+│   │   │   ├── lbaitem.ts
+│   │   │   ├── rdva.ts
+│   │   │   ├── recruteur.ts
+│   │   │   ├── referers.ts
+│   │   │   └── regex.ts
+│   │   ├── fixtures
+│   │   │   ├── application.fixture.ts
+│   │   │   ├── appointment.fixture.ts
+│   │   │   ├── cacheDiagoriente.fixture.ts
+│   │   │   ├── cacheInfoSiret.fixture.ts
+│   │   │   ├── cfa.fixture.ts
+│   │   │   ├── entreprise.fixture.ts
+│   │   │   ├── fixture_helper.ts
+│   │   │   ├── geolocation.fixture.ts
+│   │   │   ├── jobPartners.fixture.ts
+│   │   │   ├── rawRHAlternanceJob.fixture.ts
+│   │   │   ├── recruiter.fixture.ts
+│   │   │   ├── recruiterRaw.fixture.ts
+│   │   │   ├── referentiel
+│   │   │   │   ├── commune.fixture.ts
+│   │   │   │   └── onisep.fixture.ts
+│   │   │   ├── roleManagement.fixture.ts
+│   │   │   ├── rome.fixture.ts
+│   │   │   ├── user.fixture.ts
+│   │   │   └── userWithAccount.fixture.ts
+│   │   ├── global.d.ts
+│   │   ├── helpers
+│   │   │   ├── common.ts
+│   │   │   ├── dayjs.ts
+│   │   │   ├── generateUri.test.ts
+│   │   │   ├── generateUri.ts
+│   │   │   ├── locale
+│   │   │   │   └── locale.fr.ts
+│   │   │   ├── openapi
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── generateOpenapi.test.ts.snap
+│   │   │   │   ├── generateOpenapi.test.ts
+│   │   │   │   └── generateOpenapi.ts
+│   │   │   ├── zodHelpers
+│   │   │   │   ├── setupZodErrorMap.ts
+│   │   │   │   └── zodPrimitives.ts
+│   │   │   └── zodWithOpenApi.ts
+│   │   ├── index.ts
+│   │   ├── interface
+│   │   │   └── etablissement.types.ts
+│   │   ├── metier
+│   │   │   ├── lbaitemutils.test.ts
+│   │   │   └── lbaitemutils.ts
+│   │   ├── models
+│   │   │   ├── address.model.ts
+│   │   │   ├── anonymizedApplicant.model.ts
+│   │   │   ├── anonymizedApplications.model.ts
+│   │   │   ├── anonymizedAppointments.model.ts
+│   │   │   ├── anonymizedRecruiters.model.ts
+│   │   │   ├── anonymizedUsers.model.ts
+│   │   │   ├── anonymizedUsersWithAccounts.model.ts
+│   │   │   ├── apicalls.model.ts
+│   │   │   ├── applicant.model.ts
+│   │   │   ├── applicantEmailLog.model.ts
+│   │   │   ├── applications.model.ts
+│   │   │   ├── appointments.model.ts
+│   │   │   ├── cacheClassification.model.ts
+│   │   │   ├── cacheDiagoriente.model.ts
+│   │   │   ├── cacheGeolocation.model.ts
+│   │   │   ├── cacheInfosSiret.model.ts
+│   │   │   ├── cfa.model.ts
+│   │   │   ├── common.ts
+│   │   │   ├── computedUserAccess.model.ts
+│   │   │   ├── credentials.model.ts
+│   │   │   ├── customEmailETFA.model.ts
+│   │   │   ├── diplomesMetiers.model.ts
+│   │   │   ├── domainesMetiers.model.ts
+│   │   │   ├── elligibleTraining.model.ts
+│   │   │   ├── elligibleTrainingHistory.model.ts
+│   │   │   ├── emailBlacklist.model.ts
+│   │   │   ├── entreprise.model.ts
+│   │   │   ├── errors.model.ts
+│   │   │   ├── etablissement.model.ts
+│   │   │   ├── formation.model.ts
+│   │   │   ├── franceTravailAccess.model.ts
+│   │   │   ├── geolocations.model.ts
+│   │   │   ├── index.ts
+│   │   │   ├── job.model.test.ts
+│   │   │   ├── job.model.ts
+│   │   │   ├── jobPartners
+│   │   │   │   └── jobPartners.model.test.ts
+│   │   │   ├── jobPartners.model.test.ts
+│   │   │   ├── jobPartnersDuplicateRef.ts
+│   │   │   ├── jobs.model.ts
+│   │   │   ├── jobsPartners.model.ts
+│   │   │   ├── jobsPartnersComputed.model.ts
+│   │   │   ├── lbaItem.model.ts
+│   │   │   ├── lbacError.model.ts
+│   │   │   ├── model-to-keep.model.ts
+│   │   │   ├── models.ts
+│   │   │   ├── opco.model.ts
+│   │   │   ├── rawApec.model.ts
+│   │   │   ├── rawAtlas.model.ts
+│   │   │   ├── rawDecathlon.model.ts
+│   │   │   ├── rawEmploiInclusion.model.ts
+│   │   │   ├── rawEngagementJeunes.model.ts
+│   │   │   ├── rawFranceTravail.model.ts
+│   │   │   ├── rawFranceTravailCEGID.model.ts
+│   │   │   ├── rawHelloWork.model.ts
+│   │   │   ├── rawJobteaser.model.ts
+│   │   │   ├── rawJooble.model.ts
+│   │   │   ├── rawKelio.model.ts
+│   │   │   ├── rawLaposte.model.ts
+│   │   │   ├── rawLeboncoin.model.ts
+│   │   │   ├── rawMeteojob.model.ts
+│   │   │   ├── rawMonster.model.ts
+│   │   │   ├── rawNosTalentsNosEmplois.model.ts
+│   │   │   ├── rawPass.model.ts
+│   │   │   ├── rawRHAlternance.model.ts
+│   │   │   ├── rawRecruteursLba.model.ts
+│   │   │   ├── rawToulouseMetropole.model.ts
+│   │   │   ├── rawViteUnEmploi.model.ts
+│   │   │   ├── recruiter.model.ts
+│   │   │   ├── recruteurLbaUpdateEvent.model.ts
+│   │   │   ├── referentiel
+│   │   │   │   └── communes.model.ts
+│   │   │   ├── referentielEngagementEntreprise.model.ts
+│   │   │   ├── referentielOnisep.model.ts
+│   │   │   ├── reportedCompany.model.ts
+│   │   │   ├── resumeTokens.model.ts
+│   │   │   ├── roleManagement.model.ts
+│   │   │   ├── roleManagement360.model.ts
+│   │   │   ├── rome.model.ts
+│   │   │   ├── seoMetier.model.ts
+│   │   │   ├── seoVille.model.ts
+│   │   │   ├── session.model.ts
+│   │   │   ├── sitemap.model.ts
+│   │   │   ├── trafficSources.model.ts
+│   │   │   ├── unsubscribeOF.model.ts
+│   │   │   ├── unsubscribedRecruteurLba.model.ts
+│   │   │   ├── user.model.ts
+│   │   │   ├── userWithAccount.model.ts
+│   │   │   └── usersRecruteur.model.ts
+│   │   ├── routes
+│   │   │   ├── _params.ts
+│   │   │   ├── _private
+│   │   │   │   ├── admin
+│   │   │   │   │   └── processor.admin.routes.ts
+│   │   │   │   ├── geo.routes.ts
+│   │   │   │   └── seo.routes.ts
+│   │   │   ├── application.routes.ts
+│   │   │   ├── appointments.routes.ts
+│   │   │   ├── classification.routes.ts
+│   │   │   ├── common.routes.ts
+│   │   │   ├── core.routes.ts
+│   │   │   ├── eligibleTrainingsForAppointment.routes.ts
+│   │   │   ├── emails.routes.ts
+│   │   │   ├── etablissement.routes.ts
+│   │   │   ├── formations.routes.ts
+│   │   │   ├── formationsParRegion.routes.ts
+│   │   │   ├── formulaire.route.ts
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── inserjeunes.routes.ts
+│   │   │   ├── jobs.routes.ts
+│   │   │   ├── jobsEtFormations.routes.ts
+│   │   │   ├── login.routes.ts
+│   │   │   ├── metiers.routes.ts
+│   │   │   ├── recruiters.routes.ts
+│   │   │   ├── reportedCompany.routes.ts
+│   │   │   ├── rome.routes.ts
+│   │   │   ├── sitemap.routes.ts
+│   │   │   ├── trainingLinks.routes.ts
+│   │   │   ├── unsubscribe.routes.ts
+│   │   │   ├── updateLbaCompany.routes.ts
+│   │   │   ├── user.routes.ts
+│   │   │   ├── v2
+│   │   │   │   ├── application.routes.v2.ts
+│   │   │   │   ├── appointments.routes.v2.ts
+│   │   │   │   └── jobs.routes.v2.ts
+│   │   │   └── v3
+│   │   │       └── jobs
+│   │   │           ├── jobs.routes.v3.model.test.ts
+│   │   │           ├── jobs.routes.v3.model.ts
+│   │   │           └── jobs.routes.v3.ts
+│   │   ├── security
+│   │   │   └── permissions.ts
+│   │   ├── utils
+│   │   │   ├── assertUnreachable.ts
+│   │   │   ├── detectUrlAndEmails.test.ts
+│   │   │   ├── detectUrlAndEmails.ts
+│   │   │   ├── enumUtils.ts
+│   │   │   ├── getLastStatusEvent.test.ts
+│   │   │   ├── getLastStatusEvent.ts
+│   │   │   ├── index.ts
+│   │   │   ├── objectUtils.ts
+│   │   │   ├── rateLimitDescription.ts
+│   │   │   ├── sitemapUtils.ts
+│   │   │   ├── stringUtils.test.ts
+│   │   │   └── stringUtils.ts
+│   │   └── validators
+│   │       ├── phoneValidator.test.ts
+│   │       ├── phoneValidator.ts
+│   │       ├── siretValidator.test.ts
+│   │       └── siretValidator.ts
+│   └── tsconfig.json
+├── tsconfig.json
+├── ui
+│   ├── .env.test
+│   ├── .gitignore
+│   ├── app
+│   │   ├── (candidat)
+│   │   │   ├── (recherche)
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── recherche
+│   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── CandidatRechercheFilters.tsx
+│   │   │   │   │   │   ├── CandidatRechercheForm.tsx
+│   │   │   │   │   │   ├── RechercheInputs
+│   │   │   │   │   │   │   ├── RechercheElligibleHandicapCheckbox.tsx
+│   │   │   │   │   │   │   ├── RechercheInputsLayout.tsx
+│   │   │   │   │   │   │   ├── RechercheLieuAutocomplete.tsx
+│   │   │   │   │   │   │   ├── RechercheMetierAutocomplete.tsx
+│   │   │   │   │   │   │   ├── RechercheNiveauSelect.tsx
+│   │   │   │   │   │   │   ├── RechercheRayonSelect.tsx
+│   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox.tsx
+│   │   │   │   │   │   │   ├── RechercheSubmitButton.tsx
+│   │   │   │   │   │   │   └── RechercheToggleMap.tsx
+│   │   │   │   │   │   ├── RecherchePageComponent.tsx
+│   │   │   │   │   │   ├── RecherchePageComponentServer.tsx
+│   │   │   │   │   │   ├── RechercheResultats
+│   │   │   │   │   │   │   ├── CardStyling.tsx
+│   │   │   │   │   │   │   ├── LbaItemCard.tsx
+│   │   │   │   │   │   │   ├── RechercheBackToTopButton.tsx
+│   │   │   │   │   │   │   ├── RechercheHeader.tsx
+│   │   │   │   │   │   │   ├── RechercheMap
+│   │   │   │   │   │   │   │   ├── RechercheMapIci.tsx
+│   │   │   │   │   │   │   │   └── RechercheMapPopup.tsx
+│   │   │   │   │   │   │   ├── RechercheMap.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileEmpty.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileForm.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileFormUpdate.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileHome.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileToggleMapButton.tsx
+│   │   │   │   │   │   │   ├── RecherchePageEmpty.tsx
+│   │   │   │   │   │   │   ├── RecherchePageHome.tsx
+│   │   │   │   │   │   │   ├── RechercheResultatsFooter.tsx
+│   │   │   │   │   │   │   ├── RechercheResultatsList.tsx
+│   │   │   │   │   │   │   ├── ResultCardData.ts
+│   │   │   │   │   │   │   ├── VirtualContainer.tsx
+│   │   │   │   │   │   │   └── Whisper.tsx
+│   │   │   │   │   │   ├── RechercheResultatsPlaceholder.tsx
+│   │   │   │   │   │   ├── hasValidEmail.ts
+│   │   │   │   │   │   └── isOfferActive.ts
+│   │   │   │   │   ├── _hooks
+│   │   │   │   │   │   ├── useNavigateToRecherchePage.ts
+│   │   │   │   │   │   ├── useNavigateToResultItemDetail.ts
+│   │   │   │   │   │   ├── useRechercheResults.ts
+│   │   │   │   │   │   ├── useResultItemUrl.ts
+│   │   │   │   │   │   ├── useSearchViewNotifier.ts
+│   │   │   │   │   │   └── useWhispers.ts
+│   │   │   │   │   ├── _utils
+│   │   │   │   │   │   └── recherche.route.utils.ts
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── recherche-emploi
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── recherche-formation
+│   │   │   │       └── page.tsx
+│   │   │   ├── detail-rendez-vous
+│   │   │   │   └── [id]
+│   │   │   │       ├── DetailRendezVousRendererClient.tsx
+│   │   │   │       ├── layout.tsx
+│   │   │   │       └── page.tsx
+│   │   │   ├── emploi
+│   │   │   │   └── [type]
+│   │   │   │       └── [id]
+│   │   │   │           └── [intitule-offre]
+│   │   │   │               ├── CandidaterButton.tsx
+│   │   │   │               ├── JobDetailRendererClient.tsx
+│   │   │   │               ├── loading.tsx
+│   │   │   │               └── page.tsx
+│   │   │   ├── formation
+│   │   │   │   └── [id]
+│   │   │   │       └── [intitule-formation]
+│   │   │   │           ├── TrainingDetailRendererClient.tsx
+│   │   │   │           ├── loading.tsx
+│   │   │   │           └── page.tsx
+│   │   │   ├── formulaire-intention
+│   │   │   │   ├── FormulaireIntentionPage.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── postuler
+│   │   │       ├── PostulerPage.tsx
+│   │   │       ├── layout.tsx
+│   │   │       └── page.tsx
+│   │   ├── (creation-compte-widget)
+│   │   │   ├── espace-pro
+│   │   │   │   └── widget
+│   │   │   │       ├── [origin]
+│   │   │   │       │   └── page.tsx
+│   │   │   │       └── entreprise
+│   │   │   │           ├── detail
+│   │   │   │           │   ├── DetailPage.tsx
+│   │   │   │           │   └── page.tsx
+│   │   │   │           ├── fin
+│   │   │   │           │   ├── FinPage.tsx
+│   │   │   │           │   └── page.tsx
+│   │   │   │           └── offre
+│   │   │   │               └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (editorial)
+│   │   │   ├── a-propos
+│   │   │   │   └── page.tsx
+│   │   │   ├── alternance
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── metier_data.tsx
+│   │   │   │   │   └── ville_data.tsx
+│   │   │   │   ├── metier
+│   │   │   │   │   └── [metier]
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── ville
+│   │   │   │       └── [ville]
+│   │   │   │           └── page.tsx
+│   │   │   ├── contact
+│   │   │   │   └── page.tsx
+│   │   │   ├── desinscription
+│   │   │   │   ├── Desinscription.tsx
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── FormulaireDesinscription.tsx
+│   │   │   │   │   └── SuccesDesinscription.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── espace-developpeurs
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── metiers
+│   │   │   │   ├── [slug]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── plan-du-site
+│   │   │   │   └── page.tsx
+│   │   │   ├── ressources
+│   │   │   │   ├── RessourcePage.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── statistiques
+│   │   │       ├── StatistiquesClient.tsx
+│   │   │       └── page.tsx
+│   │   ├── (editorial-with-notion)
+│   │   │   ├── accessibilite
+│   │   │   │   ├── AccessibilitePage.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── conditions-generales-utilisation
+│   │   │   │   ├── CGURendererClient.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── faq
+│   │   │   │   ├── FAQRendererClient.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── mentions-legales
+│   │   │   │   ├── MentionLegalesRendererClient.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── politique-de-confidentialite
+│   │   │       ├── PDCRendererClient.tsx
+│   │   │       └── page.tsx
+│   │   ├── (espace-pro)
+│   │   │   ├── _components
+│   │   │   │   ├── AutocompleteAsync.tsx
+│   │   │   │   ├── Badge.tsx
+│   │   │   │   ├── Bandeau.tsx
+│   │   │   │   ├── ConnectionActions.tsx
+│   │   │   │   ├── CustomTooltip.tsx
+│   │   │   │   ├── DepotRapideFin.tsx
+│   │   │   │   ├── FieldWithValue.tsx
+│   │   │   │   ├── FollowLinkedIn.tsx
+│   │   │   │   ├── InfoToolTip.tsx
+│   │   │   │   ├── LoadingEmptySpace.tsx
+│   │   │   │   ├── MiseEnRelation.tsx
+│   │   │   │   ├── OpcoSelect.tsx
+│   │   │   │   ├── PopoverMenu.tsx
+│   │   │   │   ├── Table.tsx
+│   │   │   │   ├── TableWithPagination.tsx
+│   │   │   │   └── promoRessources.tsx
+│   │   │   └── espace-pro
+│   │   │       ├── (connected)
+│   │   │       │   ├── _components
+│   │   │       │   │   ├── AdminLayout.tsx
+│   │   │       │   │   ├── AnimationContainer.tsx
+│   │   │       │   │   ├── BackEntrepriseUpsertOffre.tsx
+│   │   │       │   │   ├── CfaHome.tsx
+│   │   │       │   │   ├── CfaHomeEntrepriseMenu.tsx
+│   │   │       │   │   ├── ChampNombre.tsx
+│   │   │       │   │   ├── CompteRenderer.tsx
+│   │   │       │   │   ├── ConfirmationSuppressionEntreprise.tsx
+│   │   │       │   │   ├── ConfirmationSuppressionOffre.tsx
+│   │   │       │   │   ├── ConnectedHeader.tsx
+│   │   │       │   │   ├── DetailEntreprise.tsx
+│   │   │       │   │   ├── DropdownCombobox.tsx
+│   │   │       │   │   ├── FormulaireEditionOffre.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreButtons.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreFields.tsx
+│   │   │       │   │   ├── InformationLegaleEntreprise.tsx
+│   │   │       │   │   ├── ListeOffres.tsx
+│   │   │       │   │   ├── ModificationCompteEmail.tsx
+│   │   │       │   │   ├── OffresTabs.tsx
+│   │   │       │   │   ├── OffresTabsMenu.tsx
+│   │   │       │   │   └── UpsertOffre.tsx
+│   │   │       │   ├── administration
+│   │   │       │   │   ├── _components
+│   │   │       │   │   │   └── EtablissementComponent.tsx
+│   │   │       │   │   ├── compte
+│   │   │       │   │   │   ├── layout.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── gestion-des-administrateurs
+│   │   │       │   │   │   ├── _components
+│   │   │       │   │   │   │   └── AdminUserForm.tsx
+│   │   │       │   │   │   ├── gestionDesAdministrateurs.tsx
+│   │   │       │   │   │   ├── page.tsx
+│   │   │       │   │   │   └── user
+│   │   │       │   │   │       └── [userId]
+│   │   │       │   │   │           ├── editAdministrateur.tsx
+│   │   │       │   │   │           └── page.tsx
+│   │   │       │   │   ├── gestion-des-entreprises
+│   │   │       │   │   │   ├── gestionEntreprises.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── layout.tsx
+│   │   │       │   │   ├── processeur
+│   │   │       │   │   │   ├── ProcesseurPage.tsx
+│   │   │       │   │   │   ├── components
+│   │   │       │   │   │   │   └── ProcessorStatusProvider.tsx
+│   │   │       │   │   │   ├── cron
+│   │   │       │   │   │   │   └── [name]
+│   │   │       │   │   │   │       ├── ProcesseurCronPage.tsx
+│   │   │       │   │   │   │       ├── [id]
+│   │   │       │   │   │   │       │   ├── ProcesseurCronTaskPage.tsx
+│   │   │       │   │   │   │       │   └── page.tsx
+│   │   │       │   │   │   │       └── page.tsx
+│   │   │       │   │   │   ├── job
+│   │   │       │   │   │   │   └── [name]
+│   │   │       │   │   │   │       ├── ProcesseurJobPage.tsx
+│   │   │       │   │   │   │       ├── [id]
+│   │   │       │   │   │   │       │   ├── ProcesseurJobInstancePage.tsx
+│   │   │       │   │   │   │       │   └── page.tsx
+│   │   │       │   │   │   │       └── page.tsx
+│   │   │       │   │   │   ├── layout.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── rendez-vous-apprentissage
+│   │   │       │   │   │   ├── RendezVousApprentissagePage.tsx
+│   │   │       │   │   │   ├── [siret]
+│   │   │       │   │   │   │   ├── RendezVousApprentissageDetailRendererClient.tsx
+│   │   │       │   │   │   │   └── page.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   └── users
+│   │   │       │   │       ├── UsersList.tsx
+│   │   │       │   │       ├── [userId]
+│   │   │       │   │       │   ├── User.tsx
+│   │   │       │   │       │   ├── entreprise
+│   │   │       │   │       │   │   └── [establishment_id]
+│   │   │       │   │       │   │       └── offre
+│   │   │       │   │       │   │           └── [job_id]
+│   │   │       │   │       │   │               ├── AdminOffrePage.tsx
+│   │   │       │   │       │   │               ├── layout.tsx
+│   │   │       │   │       │   │               └── page.tsx
+│   │   │       │   │       │   └── page.tsx
+│   │   │       │   │       ├── _component
+│   │   │       │   │       │   └── UserMenu.tsx
+│   │   │       │   │       └── page.tsx
+│   │   │       │   ├── cfa
+│   │   │       │   │   ├── compte
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── creation-entreprise
+│   │   │       │   │   │   ├── CreationEntreprisePage.tsx
+│   │   │       │   │   │   ├── [siret]
+│   │   │       │   │   │   │   ├── CreationEntrepriseDetailPage.tsx
+│   │   │       │   │   │   │   └── page.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── entreprise
+│   │   │       │   │   │   └── [establishment_id]
+│   │   │       │   │   │       ├── CfaEntreprisePage.tsx
+│   │   │       │   │   │       ├── creation-offre
+│   │   │       │   │   │       │   ├── CfaCreationOffrePage.tsx
+│   │   │       │   │   │       │   └── page.tsx
+│   │   │       │   │   │       ├── informations
+│   │   │       │   │   │       │   ├── EntrepriseInformationsPage.tsx
+│   │   │       │   │   │       │   └── page.tsx
+│   │   │       │   │   │       ├── offre
+│   │   │       │   │   │       │   └── [jobId]
+│   │   │       │   │   │       │       ├── CfaOffrePage.tsx
+│   │   │       │   │   │       │       └── page.tsx
+│   │   │       │   │   │       └── page.tsx
+│   │   │       │   │   ├── layout.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── entreprise
+│   │   │       │   │   ├── compte
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── creation-offre
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── layout.tsx
+│   │   │       │   │   ├── offre
+│   │   │       │   │   │   └── [job_id]
+│   │   │       │   │   │       ├── PageWithParams.tsx
+│   │   │       │   │   │       ├── mise-en-relation
+│   │   │       │   │   │       │   └── page.tsx
+│   │   │       │   │   │       └── page.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── layout.tsx
+│   │   │       │   └── opco
+│   │   │       │       ├── OpcoPage.tsx
+│   │   │       │       ├── _component
+│   │   │       │       │   └── UserMenu.tsx
+│   │   │       │       ├── compte
+│   │   │       │       │   └── page.tsx
+│   │   │       │       ├── layout.tsx
+│   │   │       │       ├── page.tsx
+│   │   │       │       └── users
+│   │   │       │           └── [userId]
+│   │   │       │               ├── User.tsx
+│   │   │       │               ├── entreprise
+│   │   │       │               │   └── [establishment_id]
+│   │   │       │               │       └── offre
+│   │   │       │               │           └── [jobId]
+│   │   │       │               │               ├── OpcoOffrePage.tsx
+│   │   │       │               │               ├── layout.tsx
+│   │   │       │               │               └── page.tsx
+│   │   │       │               └── page.tsx
+│   │   │       ├── (from-mail)
+│   │   │       │   ├── layout.tsx
+│   │   │       │   ├── mise-en-relation
+│   │   │       │   │   └── [establishment_id]
+│   │   │       │   │       └── [job_id]
+│   │   │       │   │           └── page.tsx
+│   │   │       │   ├── offre
+│   │   │       │   │   └── [jobType]
+│   │   │       │   │       └── [jobId]
+│   │   │       │   │           ├── OffreActionPage.tsx
+│   │   │       │   │           ├── cancel
+│   │   │       │   │           │   └── page.tsx
+│   │   │       │   │           └── provided
+│   │   │       │   │               └── page.tsx
+│   │   │       │   └── proposition
+│   │   │       │       └── formulaire
+│   │   │       │           └── [idFormulaire]
+│   │   │       │               └── offre
+│   │   │       │                   └── [jobId]
+│   │   │       │                       └── siret
+│   │   │       │                           └── [siretFormateur]
+│   │   │       │                               ├── PropositionOffreId.tsx
+│   │   │       │                               └── page.tsx
+│   │   │       ├── authentification
+│   │   │       │   ├── AuthentificationPage.tsx
+│   │   │       │   ├── confirmation
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── en-attente
+│   │   │       │   │   ├── CompteEnAttente.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── layout.tsx
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── validation
+│   │   │       │       └── [id]
+│   │   │       │           ├── ValidationPage.tsx
+│   │   │       │           └── page.tsx
+│   │   │       └── contexts
+│   │   │           └── userContext.tsx
+│   │   ├── (espace-pro-creation-compte)
+│   │   │   ├── _components
+│   │   │   │   ├── DepotSimplifieCreationOffre.tsx
+│   │   │   │   ├── InformationCreationCompte
+│   │   │   │   │   └── InformationCreationCompte.tsx
+│   │   │   │   └── InformationOpco.tsx
+│   │   │   └── espace-pro
+│   │   │       ├── creation
+│   │   │       │   ├── cfa
+│   │   │       │   │   ├── [origin]
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── detail
+│   │   │       │   │   ├── CreationDetailPage.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── entreprise
+│   │   │       │   │   ├── [origin]
+│   │   │       │   │   │   ├── CreationWithOriginPage.tsx
+│   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   └── page.tsx
+│   │   │       │   ├── fin
+│   │   │       │   │   └── page.tsx
+│   │   │       │   └── offre
+│   │   │       │       └── page.tsx
+│   │   │       └── layout.tsx
+│   │   ├── (espace-pro-impression)
+│   │   │   └── espace-pro
+│   │   │       └── offre
+│   │   │           └── impression
+│   │   │               └── [jobId]
+│   │   │                   ├── ImpressionPage.tsx
+│   │   │                   └── page.tsx
+│   │   ├── (home)
+│   │   │   ├── _components
+│   │   │   │   ├── AlgoHome.tsx
+│   │   │   │   ├── AmeliorerLBA.tsx
+│   │   │   │   ├── HomeCircleImageDecoration.tsx
+│   │   │   │   ├── HomeRechercheForm.tsx
+│   │   │   │   ├── HowTo.tsx
+│   │   │   │   ├── home_form_decoration.svg
+│   │   │   │   └── seo_decoration.svg
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── (landing-pages)
+│   │   │   ├── acces-recruteur
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── AlgoRecruter.tsx
+│   │   │   │   │   ├── Entreprise.tsx
+│   │   │   │   │   ├── GerezOffres.tsx
+│   │   │   │   │   ├── HeroRecruteur.tsx
+│   │   │   │   │   ├── OffresGratuites.tsx
+│   │   │   │   │   ├── OrganismesMandataires.tsx
+│   │   │   │   │   └── PostezVotreOffre.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── organisme-de-formation
+│   │   │       ├── _components
+│   │   │       │   ├── BientotCFA.tsx
+│   │   │       │   ├── CFA.tsx
+│   │   │       │   ├── FacilitezRDVA.tsx
+│   │   │       │   ├── GerezEntreprise.tsx
+│   │   │       │   ├── HeroCFA.tsx
+│   │   │       │   └── OffresAutoExposees.tsx
+│   │   │       └── page.tsx
+│   │   ├── (rdva)
+│   │   │   ├── layout.tsx
+│   │   │   ├── optout
+│   │   │   │   └── unsubscribe
+│   │   │   │       └── [id]
+│   │   │   │           ├── OptoutUnsubscribePage.tsx
+│   │   │   │           └── page.tsx
+│   │   │   ├── premium
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── PremiumParcoursupPage.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── affelnet
+│   │   │   │       └── [id]
+│   │   │   │           ├── PremiumAffelnetPage.tsx
+│   │   │   │           └── page.tsx
+│   │   │   └── rdva
+│   │   │       ├── RdvaPage.tsx
+│   │   │       └── page.tsx
+│   │   ├── _components
+│   │   │   ├── ArrowDownLine.tsx
+│   │   │   ├── ArrowUpDownLine.tsx
+│   │   │   ├── ArrowUpLine.tsx
+│   │   │   ├── AuthWatcher.tsx
+│   │   │   ├── Breadcrumb.tsx
+│   │   │   ├── ClientOnly.tsx
+│   │   │   ├── CustomDSFRInput.tsx
+│   │   │   ├── CustomFormControl.tsx
+│   │   │   ├── CustomInput.tsx
+│   │   │   ├── CustomRadio.tsx
+│   │   │   ├── ErrorComponent.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── FormComponents
+│   │   │   │   ├── AutocompleteAsync.tsx
+│   │   │   │   ├── InputFormField.tsx
+│   │   │   │   ├── SelectField.tsx
+│   │   │   │   └── SelectFormField.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Layout
+│   │   │   │   ├── DefaultContainer.tsx
+│   │   │   │   ├── NavigationAdmin.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── ModalCloseButton.tsx
+│   │   │   ├── NotFound.tsx
+│   │   │   ├── PublicHeader.tsx
+│   │   │   ├── RechercheForm
+│   │   │   │   ├── RechercheForm.tsx
+│   │   │   │   └── RechercheFormTitle.tsx
+│   │   │   └── WidgetTester.tsx
+│   │   ├── client_only_providers.tsx
+│   │   ├── dsfr-setup
+│   │   │   ├── defaultColorScheme.ts
+│   │   │   ├── index.tsx
+│   │   │   └── server-only-index.tsx
+│   │   ├── error.tsx
+│   │   ├── global-error.css
+│   │   ├── global-error.tsx
+│   │   ├── healthcheck
+│   │   │   └── route.ts
+│   │   ├── hooks
+│   │   │   ├── useBuildNavigation.ts
+│   │   │   ├── useFormationPrdvTracker.ts
+│   │   │   ├── useIsMobileDevice.ts
+│   │   │   ├── useLocalStorage.ts
+│   │   │   ├── useToast.tsx
+│   │   │   └── useUrlHash.ts
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   ├── not-found.tsx
+│   │   ├── robots.ts
+│   │   ├── sitemap-index.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-main.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-offers.xml
+│   │   │   └── route.ts
+│   │   └── test-widget
+│   │       └── page.tsx
+│   ├── common
+│   │   ├── contants.ts
+│   │   ├── dayjs.ts
+│   │   ├── hooks
+│   │   │   ├── useDisclosure.ts
+│   │   │   ├── useUserHistoryUpdate.ts
+│   │   │   └── useUserPermissionsActions.ts
+│   │   ├── utils
+│   │   │   ├── dateUtils.ts
+│   │   │   └── debounce.ts
+│   │   └── validation
+│   │       └── fieldValidations.ts
+│   ├── components
+│   │   ├── DepotOffre
+│   │   │   ├── InfosDiffusionOffre.tsx
+│   │   │   ├── RomeDetail.tsx
+│   │   │   ├── RomeDetailReadOnly.tsx
+│   │   │   └── RomeDetailWithQuery.tsx
+│   │   ├── DsfrIcon.tsx
+│   │   ├── ErrorMessage
+│   │   │   ├── ErrorMessage.tsx
+│   │   │   └── index.ts
+│   │   ├── InfoBanner
+│   │   │   └── InfoBanner.tsx
+│   │   ├── InfoTooltipOrModal.tsx
+│   │   ├── IntentionPage
+│   │   │   ├── IntensionPageResult.tsx
+│   │   │   ├── IntentionPage.tsx
+│   │   │   └── IntentionPageForm.tsx
+│   │   ├── ItemDetail
+│   │   │   ├── AideApprentissage.tsx
+│   │   │   ├── CandidatureLba
+│   │   │   │   ├── CandidatureLba.tsx
+│   │   │   │   ├── CandidatureLbaFailed.tsx
+│   │   │   │   ├── CandidatureLbaFileDropzone.tsx
+│   │   │   │   ├── CandidatureLbaMandataireMessage.tsx
+│   │   │   │   ├── CandidatureLbaMessage.tsx
+│   │   │   │   ├── CandidatureLbaModal.tsx
+│   │   │   │   ├── CandidatureLbaModalBody.tsx
+│   │   │   │   ├── CandidatureLbaWorked.tsx
+│   │   │   │   ├── CandidatureTasksChecklist.tsx
+│   │   │   │   ├── WidgetCandidatureLba.tsx
+│   │   │   │   ├── WidgetPostulerError.tsx
+│   │   │   │   └── services
+│   │   │   │       ├── getSchema.ts
+│   │   │   │       └── submitCandidature.ts
+│   │   │   ├── CandidatureParTelephone.tsx
+│   │   │   ├── DidYouKnow.tsx
+│   │   │   ├── GoingToContactQuestion.tsx
+│   │   │   ├── ItemDetailLoading.css
+│   │   │   ├── ItemDetailLoading.tsx
+│   │   │   ├── ItemDetailServices
+│   │   │   │   ├── ItemDetailApplicationStatus.tsx
+│   │   │   │   ├── ItemDetailCard.tsx
+│   │   │   │   ├── ItemDistanceToCenter.tsx
+│   │   │   │   ├── ItemGoogleSearchLink.tsx
+│   │   │   │   ├── ItemLocalisation.tsx
+│   │   │   │   ├── ItemWebsiteLink.tsx
+│   │   │   │   ├── JobAccordion.tsx
+│   │   │   │   ├── JobDescription.tsx
+│   │   │   │   ├── JobItemCardHeader.tsx
+│   │   │   │   ├── LbaItemTags.tsx
+│   │   │   │   ├── NavigationButtons.tsx
+│   │   │   │   ├── getCompanyGoogleSearchLink.ts
+│   │   │   │   ├── getCompanySize.ts
+│   │   │   │   └── getJobPublishedTimeAndApplications.tsx
+│   │   │   ├── JobPostingSchema.tsx
+│   │   │   ├── LbaJobComponents
+│   │   │   │   ├── LbaJobAcces.tsx
+│   │   │   │   ├── LbaJobCompetences.tsx
+│   │   │   │   ├── LbaJobDetail.tsx
+│   │   │   │   ├── LbaJobEngagement.tsx
+│   │   │   │   ├── LbaJobEngagementTag.tsx
+│   │   │   │   ├── LbaJobQualites.tsx
+│   │   │   │   ├── LbaJobReportTooltip.tsx
+│   │   │   │   └── LbaJobTechniques.tsx
+│   │   │   ├── PartnerJobComponents
+│   │   │   │   ├── PartnerJobDetail.tsx
+│   │   │   │   └── PartnerJobPostuler.tsx
+│   │   │   ├── RecruteurLbaComponents
+│   │   │   │   ├── RecruteurLbaCandidater.tsx
+│   │   │   │   ├── RecruteurLbaDetail.tsx
+│   │   │   │   └── RecruteurLbaNoContactModal.tsx
+│   │   │   ├── ReportJobLink.tsx
+│   │   │   ├── ShareLink.tsx
+│   │   │   ├── StatsInserJeunes.tsx
+│   │   │   ├── TagCandidatureSpontanee.tsx
+│   │   │   ├── TagCfaDEntreprise.tsx
+│   │   │   ├── TagEcole.tsx
+│   │   │   ├── TagFormation.tsx
+│   │   │   ├── TagFormationAssociee.tsx
+│   │   │   ├── TagLaBonneAlternance.tsx
+│   │   │   ├── TagOffreEmploi.tsx
+│   │   │   ├── TagPartenaire.tsx
+│   │   │   └── ValorisationCandidatureSpontanee.tsx
+│   │   ├── MailCard.tsx
+│   │   ├── ModalReadOnly.tsx
+│   │   ├── RDV
+│   │   │   ├── DemandeDeContact.tsx
+│   │   │   ├── DemandeDeContactButton.tsx
+│   │   │   ├── DemandeDeContactConfirmation.tsx
+│   │   │   ├── DemandeDeContactForm.tsx
+│   │   │   ├── DemandeDeContactModal.tsx
+│   │   │   └── RdvReasons.ts
+│   │   ├── Ressources
+│   │   │   ├── CardForLink.tsx
+│   │   │   ├── conseilsEtAstuces.tsx
+│   │   │   ├── fonctionnementPlateforme.tsx
+│   │   │   ├── misesEnSituation.tsx
+│   │   │   ├── ressourcesCFA.tsx
+│   │   │   ├── ressourcesCandidat.tsx
+│   │   │   └── ressourcesRecruteur.tsx
+│   │   ├── SearchForTrainingsAndJobs
+│   │   │   ├── components
+│   │   │   │   ├── CustomTag.tsx
+│   │   │   │   ├── LbaItemTag.tsx
+│   │   │   │   ├── ResultListsLoading.tsx
+│   │   │   │   └── rechercheCDDCDI.tsx
+│   │   │   └── services
+│   │   │       └── utils.ts
+│   │   ├── dsfr
+│   │   │   └── DsfrLink.tsx
+│   │   ├── espace_pro
+│   │   │   ├── Authentification
+│   │   │   │   ├── CreationCompte.tsx
+│   │   │   │   └── SiretAutocomplete.tsx
+│   │   │   ├── Candidat
+│   │   │   │   └── layout
+│   │   │   │       ├── ContactCfaSummary.tsx
+│   │   │   │       ├── FormHeaderComponent.tsx
+│   │   │   │       └── FormLayoutComponent.tsx
+│   │   │   ├── CfaCandidatInformationPage
+│   │   │   │   ├── CfaCandidatInformationAnswered.tsx
+│   │   │   │   ├── CfaCandidatInformationForm.tsx
+│   │   │   │   ├── CfaCandidatInformationOther.tsx
+│   │   │   │   └── CfaCandidatInformationUnreachable.tsx
+│   │   │   ├── ConfirmationActivationUtilisateur.tsx
+│   │   │   ├── ConfirmationDesactivationUtilisateur.tsx
+│   │   │   ├── ConfirmationModificationOpco.tsx
+│   │   │   ├── CreationRecruteur
+│   │   │   │   ├── CustomTabs.tsx
+│   │   │   │   └── InformationsSiret.tsx
+│   │   │   ├── ExportButton
+│   │   │   │   └── ExportButtonNew.tsx
+│   │   │   ├── LoadingEmptySpace.tsx
+│   │   │   ├── PaginationReactQuery.tsx
+│   │   │   ├── UserValidationHistory.tsx
+│   │   │   ├── assets
+│   │   │   │   └── images
+│   │   │   │       ├── Illustration-hero.svg
+│   │   │   │       ├── add-offer.svg
+│   │   │   │       ├── archive
+│   │   │   │       │   ├── logo-matcha-old-2.svg
+│   │   │   │       │   └── logo-matcha-old.svg
+│   │   │   │       ├── close.svg
+│   │   │   │       ├── delete.svg
+│   │   │   │       ├── edit.svg
+│   │   │   │       ├── enter.svg
+│   │   │   │       ├── illustration-cfa.svg
+│   │   │   │       ├── lba-new.svg
+│   │   │   │       ├── leaf-bubble.svg
+│   │   │   │       ├── leaf.svg
+│   │   │   │       ├── left.svg
+│   │   │   │       ├── logo-ministere.svg
+│   │   │   │       ├── logo.svg
+│   │   │   │       └── right.svg
+│   │   │   ├── common
+│   │   │   │   └── components
+│   │   │   │       ├── BorderedBox.tsx
+│   │   │   │       └── DepotSimplifieLayout.tsx
+│   │   │   └── index.ts
+│   │   ├── head.tsx
+│   │   ├── index.ts
+│   │   └── tsconfig.json
+│   ├── config
+│   │   ├── config.ts
+│   │   ├── metiers.txt
+│   │   └── villes.txt
+│   ├── config.public.ts
+│   ├── context
+│   │   ├── DisplayContextProvider.tsx
+│   │   ├── Providers.tsx
+│   │   ├── UserContext.tsx
+│   │   ├── contextLogo.tsx
+│   │   └── contextWidget.tsx
+│   ├── images.d.ts
+│   ├── instrumentation-client.ts
+│   ├── instrumentation.ts
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── proxy.ts
+│   ├── public
+│   │   ├── assets
+│   │   │   ├── checkbox-list.webp
+│   │   │   ├── exemple_integration_affelnet.webp
+│   │   │   ├── exemple_integration_parcoursup.webp
+│   │   │   ├── icon-information-blue.webp
+│   │   │   ├── logo-republique-francaise-short.svg
+│   │   │   ├── logo-republique-francaise.webp
+│   │   │   └── people-laptop.webp
+│   │   ├── favicon
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── browserconfig.xml
+│   │   │   ├── favicon-16x16.png
+│   │   │   ├── favicon-32x32.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── mstile-150x150.png
+│   │   │   └── site.webmanifest
+│   │   ├── favicon.ico
+│   │   ├── fonts
+│   │   │   ├── Inter
+│   │   │   │   ├── Inter-Black.ttf
+│   │   │   │   ├── Inter-Bold.ttf
+│   │   │   │   ├── Inter-ExtraBold.ttf
+│   │   │   │   ├── Inter-ExtraLight.ttf
+│   │   │   │   ├── Inter-Light.ttf
+│   │   │   │   ├── Inter-Medium.ttf
+│   │   │   │   ├── Inter-Regular.ttf
+│   │   │   │   ├── Inter-SemiBold.ttf
+│   │   │   │   └── Inter-Thin.ttf
+│   │   │   └── Marianne
+│   │   │       ├── .gitattributes
+│   │   │       ├── Marianne-Bold.woff
+│   │   │       ├── Marianne-Bold.woff2
+│   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │       ├── Marianne-ExtraBold.woff
+│   │   │       ├── Marianne-ExtraBold.woff2
+│   │   │       ├── Marianne-ExtraBold_Italic.woff
+│   │   │       ├── Marianne-ExtraBold_Italic.woff2
+│   │   │       ├── Marianne-Light.woff
+│   │   │       ├── Marianne-Light.woff2
+│   │   │       ├── Marianne-Light_Italic.woff
+│   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │       ├── Marianne-Medium.woff
+│   │   │       ├── Marianne-Medium.woff2
+│   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │       ├── Marianne-Regular.woff
+│   │   │       ├── Marianne-Regular.woff2
+│   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │       ├── Marianne-Thin.woff
+│   │   │       ├── Marianne-Thin.woff2
+│   │   │       ├── Marianne-Thin_Italic.woff
+│   │   │       └── Marianne-Thin_Italic.woff2
+│   │   ├── images
+│   │   │   ├── 5xx.svg
+│   │   │   ├── aucunCfa.svg
+│   │   │   ├── book.svg
+│   │   │   ├── breadcrumb_separator.svg
+│   │   │   ├── briefcase.svg
+│   │   │   ├── chevronleft.svg
+│   │   │   ├── chevronright.svg
+│   │   │   ├── close.svg
+│   │   │   ├── dame_papier_coche_verte.svg
+│   │   │   ├── domain_error_main.svg
+│   │   │   ├── domain_error_notice.svg
+│   │   │   ├── dosearch.svg
+│   │   │   ├── eclair.svg
+│   │   │   ├── emails
+│   │   │   │   ├── handimatch.png
+│   │   │   │   ├── icone_bin.png
+│   │   │   │   ├── icone_candidat.png
+│   │   │   │   ├── icone_check.png
+│   │   │   │   ├── icone_edit.png
+│   │   │   │   ├── icone_enveloppe.png
+│   │   │   │   ├── icone_idee.png
+│   │   │   │   ├── icone_info.png
+│   │   │   │   ├── logo_LBA.png
+│   │   │   │   ├── logo_grimp.png
+│   │   │   │   ├── logo_parcoursup.png
+│   │   │   │   ├── logo_rf.png
+│   │   │   │   ├── neutre.png
+│   │   │   │   ├── nspp.png
+│   │   │   │   ├── optout_cfa.png
+│   │   │   │   ├── pasUtile.png
+│   │   │   │   ├── recrute.png
+│   │   │   │   ├── recrutePas.png
+│   │   │   │   ├── recu-candidature.png
+│   │   │   │   └── utile.png
+│   │   │   ├── error_solid.png
+│   │   │   ├── espace_pro
+│   │   │   │   ├── Illustration-hero.svg
+│   │   │   │   ├── add-offer.svg
+│   │   │   │   ├── archive
+│   │   │   │   │   ├── logo-matcha-old-2.svg
+│   │   │   │   │   └── logo-matcha-old.svg
+│   │   │   │   ├── close.svg
+│   │   │   │   ├── delete.svg
+│   │   │   │   ├── edit.svg
+│   │   │   │   ├── enter.svg
+│   │   │   │   ├── illustration-cfa.svg
+│   │   │   │   ├── images
+│   │   │   │   │   ├── Illustration-hero.svg
+│   │   │   │   │   ├── add-offer.svg
+│   │   │   │   │   ├── archive
+│   │   │   │   │   │   ├── logo-matcha-old-2.svg
+│   │   │   │   │   │   └── logo-matcha-old.svg
+│   │   │   │   │   ├── close.svg
+│   │   │   │   │   ├── delete.svg
+│   │   │   │   │   ├── edit.svg
+│   │   │   │   │   ├── enter.svg
+│   │   │   │   │   ├── illustration-cfa.svg
+│   │   │   │   │   ├── illustration-impression.svg
+│   │   │   │   │   ├── lba-new.svg
+│   │   │   │   │   ├── leaf-bubble.svg
+│   │   │   │   │   ├── leaf.svg
+│   │   │   │   │   ├── left.svg
+│   │   │   │   │   ├── logo-ministere.svg
+│   │   │   │   │   ├── logo.svg
+│   │   │   │   │   └── right.svg
+│   │   │   │   ├── lba-new.svg
+│   │   │   │   ├── leaf-bubble.svg
+│   │   │   │   ├── leaf.svg
+│   │   │   │   ├── left.svg
+│   │   │   │   ├── logo-ministere.svg
+│   │   │   │   ├── logo.svg
+│   │   │   │   ├── mailcloud.svg
+│   │   │   │   ├── miseEnRelationEnvoyee.svg
+│   │   │   │   ├── no-job.svg
+│   │   │   │   └── right.svg
+│   │   │   ├── femmeMontrantNavigateur.svg
+│   │   │   ├── financement_ue.png
+│   │   │   ├── france_relance.svg
+│   │   │   ├── fuseeDecollant.svg
+│   │   │   ├── glass.svg
+│   │   │   ├── glass_white.svg
+│   │   │   ├── head_with_bulb.svg
+│   │   │   ├── home_hero_background.svg
+│   │   │   ├── home_pics
+│   │   │   │   ├── facilitezRDVA.svg
+│   │   │   │   ├── illu-candidatures.svg
+│   │   │   │   ├── illu-candidatures@2x.png
+│   │   │   │   ├── illu-entreprisesmandatees.svg
+│   │   │   │   ├── illu-entreprisesmandatees@2x.png
+│   │   │   │   ├── illu-listeoffres.svg
+│   │   │   │   ├── illu-listeoffres@2x.png
+│   │   │   │   ├── illu-offreemploi.svg
+│   │   │   │   ├── illu-offreemploi@2x.png
+│   │   │   │   ├── illu-offreformation.svg
+│   │   │   │   ├── illu-plateformesjeunes.svg
+│   │   │   │   ├── illu-solliciterCFA.svg
+│   │   │   │   ├── illu-solliciterCFA@2x.png
+│   │   │   │   ├── illu-support.svg
+│   │   │   │   ├── illu-support@2x.png
+│   │   │   │   ├── illu-votrebesoin.svg
+│   │   │   │   ├── illu-votrebesoin@2x.png
+│   │   │   │   ├── mail-in-clouds.svg
+│   │   │   │   └── parcoursup.svg
+│   │   │   ├── homereview.svg
+│   │   │   ├── hommeAuTelephone.svg
+│   │   │   ├── hommeFemmeDiscutentAssisATable.svg
+│   │   │   ├── howto1.svg
+│   │   │   ├── howto2.svg
+│   │   │   ├── howto3.svg
+│   │   │   ├── howtocircle1.png
+│   │   │   ├── howtocircle1.svg
+│   │   │   ├── howtocircle2.png
+│   │   │   ├── howtocircle2.svg
+│   │   │   ├── howtocircle3.png
+│   │   │   ├── howtocircle3.svg
+│   │   │   ├── howtocircle4.png
+│   │   │   ├── howtocircle4.svg
+│   │   │   ├── howtocircle5.png
+│   │   │   ├── howtocircle5.svg
+│   │   │   ├── howtoline1.svg
+│   │   │   ├── howtoline2a.svg
+│   │   │   ├── howtoline3a.svg
+│   │   │   ├── howtoline3b.svg
+│   │   │   ├── icons
+│   │   │   │   ├── algo-home.png
+│   │   │   │   ├── algo_home.svg
+│   │   │   │   ├── algo_recruiter.svg
+│   │   │   │   ├── arrow_right.svg
+│   │   │   │   ├── blue_lock.svg
+│   │   │   │   ├── book.svg
+│   │   │   │   ├── bulb.svg
+│   │   │   │   ├── candidature_file_upload.svg
+│   │   │   │   ├── chainlink.svg
+│   │   │   │   ├── chrono.svg
+│   │   │   │   ├── coche_verte.svg
+│   │   │   │   ├── contact_icon.svg
+│   │   │   │   ├── crossInOctogon.svg
+│   │   │   │   ├── domain_error_main.svg
+│   │   │   │   ├── domain_error_notice.svg
+│   │   │   │   ├── download_ico.svg
+│   │   │   │   ├── employees.svg
+│   │   │   │   ├── errorAlert.svg
+│   │   │   │   ├── error_info.svg
+│   │   │   │   ├── error_stop.svg
+│   │   │   │   ├── fake_feature_btn.svg
+│   │   │   │   ├── fake_feature_thumbup.svg
+│   │   │   │   ├── fake_feature_wip.svg
+│   │   │   │   ├── filter.svg
+│   │   │   │   ├── filter_white.svg
+│   │   │   │   ├── formation.png
+│   │   │   │   ├── formation.svg
+│   │   │   │   ├── formation_large_shadow.png
+│   │   │   │   ├── goto.svg
+│   │   │   │   ├── info.svg
+│   │   │   │   ├── input_value_error.svg
+│   │   │   │   ├── job.png
+│   │   │   │   ├── job.svg
+│   │   │   │   ├── jobPin.svg
+│   │   │   │   ├── job_filter.svg
+│   │   │   │   ├── job_filter_inactive.svg
+│   │   │   │   ├── job_large.png
+│   │   │   │   ├── job_large_shadow.png
+│   │   │   │   ├── lightbulb.svg
+│   │   │   │   ├── link.svg
+│   │   │   │   ├── linkedin.svg
+│   │   │   │   ├── magnifyingglass.svg
+│   │   │   │   ├── pin.svg
+│   │   │   │   ├── print.svg
+│   │   │   │   ├── purpleFilter.svg
+│   │   │   │   ├── question_mark.svg
+│   │   │   │   ├── questionmark.svg
+│   │   │   │   ├── questionmark2.svg
+│   │   │   │   ├── refreshSearchOnMap.svg
+│   │   │   │   ├── school.png
+│   │   │   │   ├── school.svg
+│   │   │   │   ├── search-eye-line.svg
+│   │   │   │   ├── searchingPeople.svg
+│   │   │   │   ├── share_copied_icon.svg
+│   │   │   │   ├── share_icon.svg
+│   │   │   │   ├── small_email.svg
+│   │   │   │   ├── small_info.svg
+│   │   │   │   ├── small_map_point.svg
+│   │   │   │   ├── small_phone.svg
+│   │   │   │   ├── static_map_search.svg
+│   │   │   │   ├── tete.svg
+│   │   │   │   ├── toggleCard.svg
+│   │   │   │   ├── toggleList.svg
+│   │   │   │   ├── training-academic-cap.svg
+│   │   │   │   ├── training-sablier.svg
+│   │   │   │   ├── training-target.svg
+│   │   │   │   ├── trainingPin.svg
+│   │   │   │   ├── training_filter.svg
+│   │   │   │   ├── training_filter_inactive.svg
+│   │   │   │   ├── traning-clipboard-list.svg
+│   │   │   │   └── world.svg
+│   │   │   ├── info.svg
+│   │   │   ├── launching_rocket.svg
+│   │   │   ├── lba_recruteur_advice.svg
+│   │   │   ├── loading
+│   │   │   │   ├── hourglass.svg
+│   │   │   │   ├── job_contact_info.svg
+│   │   │   │   ├── job_description.svg
+│   │   │   │   ├── job_help.svg
+│   │   │   │   ├── search_companies.svg
+│   │   │   │   ├── search_partners.svg
+│   │   │   │   ├── search_qualiopi.svg
+│   │   │   │   ├── search_trainings.svg
+│   │   │   │   ├── training_description.svg
+│   │   │   │   └── training_help.svg
+│   │   │   ├── localisation.svg
+│   │   │   ├── logo-violet-seul.svg
+│   │   │   ├── logoIdea.svg
+│   │   │   ├── logo_LBA.svg
+│   │   │   ├── logo_fse.svg
+│   │   │   ├── logo_relance.svg
+│   │   │   ├── logo_sirius.svg
+│   │   │   ├── logosPartenaires
+│   │   │   │   ├── logo-employeur-handi-engage.jpg
+│   │   │   │   ├── minimal
+│   │   │   │   │   ├── affelnet.svg
+│   │   │   │   │   ├── france-travail.svg
+│   │   │   │   │   ├── logo-hellowork.svg
+│   │   │   │   │   ├── logo-meteojob.svg
+│   │   │   │   │   ├── mon-master.svg
+│   │   │   │   │   └── parcoursup.svg
+│   │   │   │   ├── partenaire-1j1s.webp
+│   │   │   │   ├── partenaire-affelnet.webp
+│   │   │   │   ├── partenaire-catalogue.webp
+│   │   │   │   ├── partenaire-diagoriente.webp
+│   │   │   │   ├── partenaire-france-travail.webp
+│   │   │   │   ├── partenaire-onisep.webp
+│   │   │   │   ├── partenaire-opco-2i.webp
+│   │   │   │   ├── partenaire-opco-afdas.webp
+│   │   │   │   ├── partenaire-opco-akto.webp
+│   │   │   │   ├── partenaire-opco-atlas.webp
+│   │   │   │   ├── partenaire-opco-commerce.webp
+│   │   │   │   ├── partenaire-opco-constructys.webp
+│   │   │   │   ├── partenaire-opco-ep.webp
+│   │   │   │   ├── partenaire-opco-mobilite.webp
+│   │   │   │   ├── partenaire-opco-ocapiat.webp
+│   │   │   │   ├── partenaire-opco-sante.webp
+│   │   │   │   ├── partenaire-opco-uniformation.webp
+│   │   │   │   ├── partenaire-parcoursup.webp
+│   │   │   │   ├── partenaire-portail-alternance.webp
+│   │   │   │   └── partenaire-tdb.webp
+│   │   │   ├── lostCat.svg
+│   │   │   ├── marianne.svg
+│   │   │   ├── pages_ressources
+│   │   │   │   ├── FAQ.svg
+│   │   │   │   ├── conseils et astuces.svg
+│   │   │   │   ├── didask-module1.svg
+│   │   │   │   ├── didask-module2.svg
+│   │   │   │   ├── didask-module3.svg
+│   │   │   │   ├── didask-module4.svg
+│   │   │   │   ├── offres completes.svg
+│   │   │   │   ├── outils.svg
+│   │   │   │   ├── recruteur.svg
+│   │   │   │   └── tableau de suivi.svg
+│   │   │   ├── paperplane.svg
+│   │   │   ├── paperplane2.svg
+│   │   │   ├── recherche_cdd_cdi.svg
+│   │   │   ├── seo
+│   │   │   │   ├── candidature-spontanee.svg
+│   │   │   │   ├── logement
+│   │   │   │   │   ├── studio.svg
+│   │   │   │   │   └── t2.svg
+│   │   │   │   ├── loisirs
+│   │   │   │   │   ├── beach.svg
+│   │   │   │   │   ├── boat.svg
+│   │   │   │   │   ├── cinema.svg
+│   │   │   │   │   ├── culture_alternative.svg
+│   │   │   │   │   ├── gastronomie.svg
+│   │   │   │   │   ├── machine.svg
+│   │   │   │   │   ├── mountain.svg
+│   │   │   │   │   ├── musees.svg
+│   │   │   │   │   ├── music.svg
+│   │   │   │   │   ├── port.svg
+│   │   │   │   │   ├── promenade.svg
+│   │   │   │   │   ├── quai.svg
+│   │   │   │   │   ├── rugby.svg
+│   │   │   │   │   ├── shopping.svg
+│   │   │   │   │   ├── ski.svg
+│   │   │   │   │   ├── sports.svg
+│   │   │   │   │   ├── theatre.svg
+│   │   │   │   │   └── vie_nocturne.svg
+│   │   │   │   ├── metier
+│   │   │   │   │   ├── competence.svg
+│   │   │   │   │   ├── ecosystem.svg
+│   │   │   │   │   ├── france.svg
+│   │   │   │   │   ├── malette.svg
+│   │   │   │   │   ├── mission.svg
+│   │   │   │   │   ├── monnaie.svg
+│   │   │   │   │   └── usine.svg
+│   │   │   │   ├── offre-emploi.svg
+│   │   │   │   ├── transports
+│   │   │   │   │   ├── avion.svg
+│   │   │   │   │   ├── bus.svg
+│   │   │   │   │   ├── funiculaire.svg
+│   │   │   │   │   ├── metro.svg
+│   │   │   │   │   ├── tgv.svg
+│   │   │   │   │   ├── train.svg
+│   │   │   │   │   ├── tramway.svg
+│   │   │   │   │   ├── trottinette.svg
+│   │   │   │   │   ├── velo.svg
+│   │   │   │   │   ├── voiture.svg
+│   │   │   │   │   └── walk.svg
+│   │   │   │   └── ville
+│   │   │   │       ├── bordeaux.png
+│   │   │   │       ├── grenoble.png
+│   │   │   │       ├── lyon.png
+│   │   │   │       ├── marseille.png
+│   │   │   │       ├── montpellier.png
+│   │   │   │       ├── nantes.png
+│   │   │   │       ├── paris.png
+│   │   │   │       ├── rennes.png
+│   │   │   │       ├── strasbourg.png
+│   │   │   │       └── toulouse.png
+│   │   │   ├── serrage-main.svg
+│   │   │   ├── smiley.svg
+│   │   │   ├── square_link.svg
+│   │   │   ├── square_link_blue.svg
+│   │   │   ├── static_map.svg
+│   │   │   ├── switch-off.svg
+│   │   │   ├── switch-on.svg
+│   │   │   ├── tada.svg
+│   │   │   ├── thumbdown.svg
+│   │   │   ├── thumbup.svg
+│   │   │   └── whisper.svg
+│   │   ├── ressources
+│   │   │   ├── Tableau de suivi des candidatures - La bonne alternance - Excel.xlsx
+│   │   │   ├── Tableau de suivi des candidatures - La bonne alternance - LibreOffice.ods
+│   │   │   ├── Tableau de suivi des candidatures - La bonne alternance - Numbers.numbers
+│   │   │   ├── Tableau de suivi des candidatures à imprimer - La bonne alternance - PDF.pdf
+│   │   │   ├── Tableau-de-suivi-des-candidatures-a-imprimer_La-bonne-alternance_PDF.pdf
+│   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Excel.xlsx
+│   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_LibreOffice.ods
+│   │   │   └── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Numbers.numbers
+│   │   └── styles
+│   │       ├── application.css
+│   │       ├── fonts.css
+│   │       └── notion.css
+│   ├── sentry-deploy-ui.sh
+│   ├── sentry-release-ui.sh
+│   ├── sentry.edge.config.ts
+│   ├── sentry.server.config.ts
+│   ├── services
+│   │   ├── arrondissements.ts
+│   │   ├── baseAdresse.ts
+│   │   ├── cfaEntreprise.ts
+│   │   ├── fetchInserJeuneStats.ts
+│   │   ├── fetchLbaCompanyDetails.ts
+│   │   ├── fetchLbaJobDetails.ts
+│   │   ├── fetchNotionPage.ts
+│   │   ├── fetchPartnerJobDetails.ts
+│   │   ├── generateMainSitemap.ts
+│   │   └── searchEntreprises.ts
+│   ├── styles
+│   │   ├── search.css
+│   │   └── webkitLineClamp.ts
+│   ├── tests
+│   │   └── setup.ts
+│   ├── theme
+│   │   └── components
+│   │       ├── icons
+│   │       │   ├── Arrow-right-line.tsx
+│   │       │   ├── ArrowRightLine.tsx
+│   │       │   ├── BarberGuy.tsx
+│   │       │   ├── ChevronLeft.tsx
+│   │       │   ├── ChevronRight.tsx
+│   │       │   ├── CircleCheck.tsx
+│   │       │   ├── Close.tsx
+│   │       │   ├── Disquette.tsx
+│   │       │   ├── Download-line.tsx
+│   │       │   ├── Edit-2-fill.tsx
+│   │       │   ├── IconeLogo.tsx
+│   │       │   ├── Info-circle.tsx
+│   │       │   ├── Map-pin-2-fill.tsx
+│   │       │   ├── MenuFill.tsx
+│   │       │   ├── Minus.tsx
+│   │       │   ├── OctogoneCross.tsx
+│   │       │   ├── Parametre.tsx
+│   │       │   ├── Plus.tsx
+│   │       │   ├── SearchLine.tsx
+│   │       │   ├── SuccessCircle.tsx
+│   │       │   ├── Warning.tsx
+│   │       │   └── index.ts
+│   │       └── logos
+│   │           ├── LbaNew.tsx
+│   │           └── infosOpcos.ts
+│   ├── tracking
+│   │   ├── trackingCookieUtils.ts
+│   │   └── trackingMatomo.tsx
+│   ├── tsconfig.json
+│   ├── types
+│   │   └── svg.d.ts
+│   └── utils
+│       ├── addressUtils.ts
+│       ├── api.ts
+│       ├── api.utils.test.ts
+│       ├── api.utils.ts
+│       ├── classNames.ts
+│       ├── dateUtils.ts
+│       ├── getItemId.ts
+│       ├── getSession.ts
+│       ├── getStaticData.ts
+│       ├── isWidget.utils.ts
+│       ├── localStorage.ts
+│       ├── plausible.ts
+│       ├── requestUtils.ts
+│       ├── routes.utils.ts
+│       ├── strutils.ts
+│       ├── tools.ts
+│       └── useSearchParamsRecord.ts
+├── vitest.config.ts
+└── yarn.lock
+418 directories, 1764 files

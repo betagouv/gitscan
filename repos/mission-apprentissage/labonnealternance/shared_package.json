@@ -1,0 +1,54 @@
+{
+  "name": "shared",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "mna",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "./dist/src/helpers/zodWithOpenApi.js"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/src/*.js",
+      "types": "./dist/src/*.d.ts"
+    }
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": "please-use-yarn"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b",
+    "dev": "tsc -b -w"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^7.3.4",
+    "@fastify/swagger": "^9.5.2",
+    "bson": "^6.10.4",
+    "change-case": "5.4.4",
+    "dayjs": "^1.11.19",
+    "i18next": "^25.6.0",
+    "libphonenumber-js": "^1.12.25",
+    "lodash-es": "^4.17.21",
+    "luhn": "^2.4.1",
+    "openapi3-ts": "^4.5.0",
+    "type-fest": "^5.2.0",
+    "zod": "^3.24.3",
+    "zod-i18n-map": "^2.27.0",
+    "zod-mongodb-schema": "^1.0.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.3",
+    "@types/node": "^24.10.0",
+    "mongodb": "^6.20.0",
+    "typescript": "^5.9.3"
+  }
+}

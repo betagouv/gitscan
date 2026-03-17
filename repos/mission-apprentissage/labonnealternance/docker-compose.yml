@@ -1,0 +1,53 @@
+services:
+  mongodb:
+    build: ./.infra/local/
+    restart: unless-stopped
+    hostname: mongodb
+    mem_limit: 5g
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - lba_mongodb_data:/data
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", '''db.runCommand("ping").ok''', "--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  clamav:
+    image: clamav/clamav:stable
+    platform: linux/amd64
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/clamdcheck.sh"]
+      interval: 60s
+      retries: 3
+      start_period: 6m
+    ports:
+      - 3310:3310
+    volumes:
+      - lba_clamav_data:/var/lib/clamav
+      - ./.infra/files/configs/clamav/clamd.conf:/etc/clamav/clamd.conf
+
+  smtp:
+    image: axllent/mailpit:v1.15
+    restart: unless-stopped
+    ports:
+      - 1025:1025
+      - 8025:8025
+    environment:
+      - MP_DATA_FILE=/data/mailpit.db
+    volumes:
+      - lba_smtp_data:/data
+
+volumes:
+  lba_mongodb_data:
+    driver: local
+    name: lba_mongodb_data
+  lba_smtp_data:
+    driver: local
+    name: lba_smtp_data
+  lba_clamav_data:
+    driver: local
+    name: lba_clamav_data

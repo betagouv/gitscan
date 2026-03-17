@@ -1,0 +1,104 @@
+{
+  "name": "mna-lba",
+  "description": "Plateforme de recherche de formation et d'offres en apprentissage",
+  "repository": "https://github.com/mission-apprentissage/labonnealternance.git",
+  "version": "0.0.0",
+  "author": "MNA",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@3.8.7",
+  "engines": {
+    "node": ">=24",
+    "npm": "please-use-yarn"
+  },
+  "workspaces": [
+    "ui",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "setup": ".bin/mna-lba env:init",
+    "setup:mongodb": "docker compose exec -it mongodb mongosh --eval \"try { rs.status().ok } catch (e) { if (e.code === 94) {rs.initiate();} else {throw e} }\" --quiet",
+    "dev": "yarn services:start; yarn foreach:parallel run dev",
+    "cli": "yarn workspace server cli",
+    "seed": ".bin/mna-lba seed:apply",
+    "deploy": ".bin/mna-lba app:deploy",
+    "build": "yarn foreach:seq run build",
+    "migrations:status": "yarn cli migrations:status",
+    "migrations:up": "yarn cli migrations:up",
+    "migration:create": "yarn cli migrations:create",
+    "server:dev": "yarn workspace server dev",
+    "ui:dev": "yarn workspace ui dev",
+    "services:start": "docker compose up --build --remove-orphans -d --wait",
+    "services:stop": "docker compose down",
+    "services:clean": "yarn services:stop; docker system prune --volumes",
+    "seed:update": ".bin/mna-lba seed:update",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "biome check .",
+    "check:ci": "biome ci .",
+    "check:fix": "biome check --write .",
+    "release": "semantic-release",
+    "release:interactive": ".bin/mna-lba app:release:interactive",
+    "postinstall": "husky install",
+    "gitleaks:check": ".bin/scripts/gitleaks-check.sh",
+    "gitleaks:update-ignore": ".bin/scripts/gitleaks-add-exceptions.sh",
+    "test": "vitest",
+    "test:openapi": "vitest helpers/openapi/generateOpenapi.test.ts",
+    "test:ci": "yarn test --run",
+    "test:ci:coverage": "yarn test:ci --coverage.include='ui' --coverage.include='server/src' --coverage.include='shared' --coverage.provider='v8' --coverage.enabled --coverage.all --coverage.exclude='**/tests' --coverage.exclude='**/.next'",
+    "test:watch": "vitest --watch",
+    "typecheck": "tsc -b ui/tsconfig.json server/tsconfig.json shared/tsconfig.json",
+    "vault:edit": ".bin/mna-lba vault:edit",
+    "foreach:seq": "yarn workspaces foreach -Av --exclude mna-lba",
+    "foreach:parallel": "yarn foreach:seq -pi",
+    "foreach:ci": "yarn foreach:seq -p",
+    "knip": "knip"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.6",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@types/clamscan": "^2.4.1",
+    "@types/node": "^24.10.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "gitleaks-secret-scanner": "^2.1.1",
+    "husky": "^9.1.7",
+    "knip": "^5.67.1",
+    "lint-staged": "^16.2.6",
+    "semantic-release": "^25.0.1",
+    "semantic-release-slack-bot": "^4.0.2",
+    "sharp": "^0.34.1",
+    "stream-json": "^1.9.1",
+    "ts-node": "^10.9.2",
+    "type-fest": "^5.2.0",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.5"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,jsx,json,jsonc}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ],
+    "yarn.lock": [
+      "yarn dedupe"
+    ]
+  },
+  "resolutions": {
+    "zod@3.21.4": "patch:zod@npm%3A3.21.4#./.yarn/patches/zod-npm-3.21.4-9f570b215c.patch"
+  }
+}
