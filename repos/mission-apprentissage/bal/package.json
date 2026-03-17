@@ -1,0 +1,112 @@
+{
+  "name": "mna-bal",
+  "description": "[MNA] BAL",
+  "repository": "https://github.com/mission-apprentissage/bal.git",
+  "version": "0.0.0",
+  "author": "MNA",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
+  "engines": {
+    "node": ">=24",
+    "npm": "please-use-pnpm"
+  },
+  "pnpm": {
+    "overrides": {
+      "chokidar": "^5.0.0"
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@sentry-internal/node-cpu-profiler",
+      "@sentry/cli",
+      "canvas",
+      "dtrace-provider",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
+  "dependencies": {
+    "@sentry/cli": "^2.56.1",
+    "dotenv": "^17.2.3",
+    "husky": "^9.1.7"
+  },
+  "scripts": {
+    "setup:env": ".bin/mna-bal env:init",
+    "setup:mongodb": "docker compose exec -it mongodb mongosh \"mongodb://__system:password@localhost:27017/mna-bal?authSource=local&directConnection=true\" --eval \"try { rs.status().ok } catch (e) { if (e.code === 94) {rs.initiate();} else {throw e} }\" --quiet",
+    "dev": "pnpm services:start && pnpm -r --parallel run dev",
+    "cli": "pnpm --filter server cli",
+    "seed": ".bin/mna-bal seed:apply",
+    "deploy": ".bin/mna-bal app:deploy",
+    "build": "pnpm -r run build",
+    "migrations:status": "pnpm cli migrations:status",
+    "migrations:up": "pnpm cli migrations:up",
+    "migrations:create": "pnpm cli migrations:create",
+    "server:dev": "pnpm --filter server dev",
+    "ui:dev": "pnpm --filter ui dev",
+    "services:start": "docker compose up --build --remove-orphans -d --wait",
+    "services:stop": "docker compose down",
+    "services:clean": "pnpm services:stop && docker system prune --volumes",
+    "seed:update": ".bin/mna-bal seed:update",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm lint --fix",
+    "prettier:fix": "prettier --write -u .",
+    "prettier:check": "prettier --check -u .",
+    "release": "semantic-release",
+    "release:interactive": ".bin/mna-bal app:release:interactive",
+    "postinstall": "husky install",
+    "talisman:add-exception": "pnpm node-talisman --githook pre-commit -i",
+    "test": "vitest",
+    "test:ci": "pnpm test --run",
+    "test:ci:coverage": "pnpm test:ci --coverage.include='ui' --coverage.include='server/src' --coverage.include='shared' --coverage.provider='v8' --coverage.enabled --coverage.all --coverage.exclude='**/tests' --coverage.exclude='**/.next'",
+    "test:watch": "vitest --watch",
+    "typecheck": "pnpm -r --parallel run typecheck",
+    "typecheck:ci": "pnpm -r run typecheck",
+    "vault:edit": ".bin/mna-bal vault:edit",
+    "product:access:update": ".bin/mna-bal product:access:update"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@dword-design/eslint-plugin-import-alias": "~6.0.3",
+    "@eslint/compat": "^1.4.0",
+    "@eslint/js": "^9.37.0",
+    "@next/eslint-plugin-next": "^15.5.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@tanstack/eslint-plugin-query": "5.91.0",
+    "commander": "^14.0.1",
+    "eslint": "^9.37.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.4.0",
+    "lint-staged": "^16.2.4",
+    "node-talisman": "^1.29.22",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.2.9",
+    "semantic-release-slack-bot": "^4.0.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^3.2.4"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "bracketSpacing": true,
+    "trailingComma": "es5",
+    "arrowParens": "always"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --cache --fix",
+      "prettier --write -u"
+    ],
+    "!(*.{js,jsx,ts,tsx,mjs,cjs})": [
+      "prettier --write -u"
+    ],
+    "pnpm-lock.yaml": [
+      "pnpm dedupe"
+    ]
+  }
+}

@@ -1,0 +1,668 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-bal
+│   ├── scripts
+│   │   ├── app-build.sh
+│   │   ├── app-release-interactive.sh
+│   │   ├── app-release.sh
+│   │   ├── buildkitd.toml
+│   │   ├── env-init.sh
+│   │   └── get-version.sh
+│   └── shared
+├── .dockerignore
+├── .gitattributes
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.md
+│   │   ├── carte-par-d-faut.md
+│   │   ├── creation_user_tdb
+│   │   └── feedback.md
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── _deploy.yml
+│       ├── ci.yml
+│       ├── codeql.yml
+│       ├── merge_queue.yml
+│       ├── pull_request.yml
+│       └── release.yml
+├── .gitignore
+├── .gitmodules
+├── .husky
+│   ├── commit-msg
+│   ├── commitlint.config.js
+│   ├── post-checkout
+│   ├── post-commit
+│   ├── post-merge
+│   ├── pre-commit
+│   └── pre-push
+├── .infra
+│   ├── .env_server
+│   ├── .env_ui
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── initialize-env.yml
+│   │   └── tasks
+│   │       └── files_copy.yml
+│   ├── authorizations
+│   ├── docker-compose.production.yml
+│   ├── docker-compose.recette.yml
+│   ├── env.global.yml
+│   ├── env.local.yml
+│   ├── env.production.yml
+│   ├── env.recette.yml
+│   ├── files
+│   │   ├── configs
+│   │   │   ├── clamav
+│   │   │   │   └── clamd.conf
+│   │   │   ├── mailpit
+│   │   │   │   ├── .gitkeep
+│   │   │   │   └── auth
+│   │   │   ├── metabase
+│   │   │   │   └── setup-metabase.sh
+│   │   │   ├── mongodb
+│   │   │   │   ├── mongo_keyfile.txt
+│   │   │   │   ├── mongod.conf
+│   │   │   │   └── seed.gpg
+│   │   │   └── reverse_proxy
+│   │   │       ├── locations
+│   │   │       │   ├── 10_api.conf.template
+│   │   │       │   ├── 70_smtp.conf.template
+│   │   │       │   ├── 80_metabase.conf.template
+│   │   │       │   └── 90_location_ui.conf.template
+│   │   │       ├── owasp-crs
+│   │   │       │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │       └── system
+│   │   │           ├── 503.html
+│   │   │           ├── 503.svg
+│   │   │           ├── 5xx.html
+│   │   │           ├── 5xx.svg
+│   │   │           ├── favicon.svg
+│   │   │           └── marianne.svg
+│   │   ├── data
+│   │   │   ├── clamav
+│   │   │   │   └── .gitkeep
+│   │   │   ├── server
+│   │   │   │   └── .gitkeep
+│   │   │   └── smtp
+│   │   │       └── .gitkeep
+│   │   └── scripts
+│   │       ├── cli.sh
+│   │       ├── migrations-status.sh
+│   │       ├── migrations-up.sh
+│   │       ├── run-dummy-outside-job.sh
+│   │       ├── seed.sh
+│   │       └── trigger-indexes-creation.sh
+│   ├── inventories
+│   └── local
+│       ├── Dockerfile
+│       ├── mongo_keyfile
+│       └── mongod.conf
+├── .node-version
+├── .npmrc
+├── .prettierignore
+├── .talismanrc
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   ├── settings.json
+│   └── terminals.json
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── docker-bake.json
+├── docker-compose.yml
+├── docs
+│   ├── DATASOURCES.md
+│   ├── deploy.md
+│   ├── developpement
+│   │   └── developpement.md
+│   ├── infrastructure
+│   │   ├── architecture.md
+│   │   ├── manage.md
+│   │   └── preview.md
+│   ├── infrastructure.md
+│   ├── securite.md
+│   └── sops.md
+├── eslint.config.mjs
+├── knip.json
+├── package-lock.json
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── release.config.js
+├── server
+│   ├── .dockerignore
+│   ├── .env.local.example
+│   ├── .env.test
+│   ├── package.json
+│   ├── src
+│   │   ├── commands.ts
+│   │   ├── common
+│   │   │   ├── apis
+│   │   │   │   ├── akto.ts
+│   │   │   │   ├── catalogue.ts
+│   │   │   │   ├── deca.ts
+│   │   │   │   ├── lba.ts
+│   │   │   │   └── opcoEp.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── services
+│   │   │   │   ├── brevo
+│   │   │   │   │   ├── brevo.ts
+│   │   │   │   │   └── exportContactsToBrevo.ts
+│   │   │   │   ├── clamav.ts
+│   │   │   │   ├── errors
+│   │   │   │   │   └── withCause.ts
+│   │   │   │   ├── mailer
+│   │   │   │   │   ├── mailBouncer.ts
+│   │   │   │   │   ├── mailer.ts
+│   │   │   │   │   └── smtpConnection.ts
+│   │   │   │   └── sentry
+│   │   │   │       ├── sentry.fastify.ts
+│   │   │   │       └── sentry.ts
+│   │   │   └── utils
+│   │   │       ├── apiUtils.ts
+│   │   │       ├── asyncUtils.ts
+│   │   │       ├── awsUtils.ts
+│   │   │       ├── cryptoUtils.ts
+│   │   │       ├── esmUtils.ts
+│   │   │       ├── getStaticFilePath.ts
+│   │   │       ├── httpUtils.ts
+│   │   │       ├── jwtUtils.ts
+│   │   │       ├── mongodbUtils.ts
+│   │   │       ├── ovhUtils.ts
+│   │   │       └── streamUtils.ts
+│   │   ├── config.ts
+│   │   ├── index.ts
+│   │   ├── main.ts
+│   │   ├── migrations
+│   │   │   ├── 20230511154647-example.ts
+│   │   │   ├── 20230613154714-documentType.ts
+│   │   │   ├── 20230629143820-move_mailing_lists_to_jobs.ts
+│   │   │   ├── 20230713062934-deca_import_persons.ts
+│   │   │   ├── 20230713103545-validation.ts
+│   │   │   ├── 20230802071547-job_type.ts
+│   │   │   ├── 20230829073910-transform_job_to_mailing_list.ts
+│   │   │   ├── 20230905150329-organisation_person_sources.ts
+│   │   │   ├── 20230915092918-remove_person_organisation.ts
+│   │   │   ├── 20231109102140-remove-email-events.ts
+│   │   │   ├── 20231109131100-clear-sessions.ts
+│   │   │   ├── 20231109212409-job-discriminator.ts
+│   │   │   ├── 20231114155041-job_processor.ts
+│   │   │   ├── 20240627194235-grouped-column.ts
+│   │   │   ├── 20240628000000-deca.ts
+│   │   │   ├── 20240722133614-document-import-status.ts
+│   │   │   ├── 20250210145240-deca-created-at.ts
+│   │   │   ├── 20250221232622-bouncer-improvments.ts
+│   │   │   ├── 20250414104214-deca-history.ts
+│   │   │   ├── 20250414152301-ajout-liste-brevo-recette-tdb.ts
+│   │   │   ├── 20250522124940-suppression-collection-brevo.ts
+│   │   │   ├── 20250610142544-bouncer-ttl.ts
+│   │   │   ├── 20250815154802-cleanup-collections.ts
+│   │   │   ├── 20250911210905-mailing-list-status-error.ts
+│   │   │   ├── 20250913000429-user-model.ts
+│   │   │   ├── 20250913001842-person-model.ts
+│   │   │   ├── 20250913010451-catalogueEmailSirets-collection.ts
+│   │   │   ├── 20250914011025-remove-unsued-collections.ts
+│   │   │   ├── 20250919224512-csv-encoding.ts
+│   │   │   ├── 20251002113947-date-signature-contrat-null.ts
+│   │   │   └── 20251022000543-remove-liste-diffusion-v1.ts
+│   │   ├── modules
+│   │   │   ├── actions
+│   │   │   │   ├── auth.actions.ts
+│   │   │   │   ├── brevo.actions.ts
+│   │   │   │   ├── documents.actions.ts
+│   │   │   │   ├── emails.actions.ts
+│   │   │   │   ├── organisations.actions.ts
+│   │   │   │   ├── persons.actions.ts
+│   │   │   │   ├── sessions.actions.ts
+│   │   │   │   ├── users.actions.ts
+│   │   │   │   └── validation.action.ts
+│   │   │   ├── jobs
+│   │   │   │   ├── anonymisation
+│   │   │   │   │   ├── anonymisation.deca.ts
+│   │   │   │   │   └── anonymisation.service.ts
+│   │   │   │   ├── catalogueSiretEmailImport.ts
+│   │   │   │   ├── db
+│   │   │   │   │   ├── recreateIndexes.ts
+│   │   │   │   │   └── schemaValidation.ts
+│   │   │   │   ├── deca
+│   │   │   │   │   ├── decaToS3.ts
+│   │   │   │   │   ├── hydrate-deca-history.ts
+│   │   │   │   │   ├── hydrate-deca.ts
+│   │   │   │   │   └── update-deca-specific-fields.ts
+│   │   │   │   ├── jobs.ts
+│   │   │   │   ├── lba
+│   │   │   │   │   ├── enrichCompanyEmails.ts
+│   │   │   │   │   ├── hydrate-companyEmailList.ts
+│   │   │   │   │   ├── hydrate-datagouv.ts
+│   │   │   │   │   ├── hydrate-email-blacklisted.ts
+│   │   │   │   │   ├── hydrate-siretlist.ts
+│   │   │   │   │   └── verifyCompanyEmails.ts
+│   │   │   │   ├── mailing-list
+│   │   │   │   │   ├── exporter
+│   │   │   │   │   │   └── mailing-list-exporter.ts
+│   │   │   │   │   ├── generator
+│   │   │   │   │   │   ├── mailing-list-generator.test.ts
+│   │   │   │   │   │   └── mailing-list-generator.ts
+│   │   │   │   │   ├── importer
+│   │   │   │   │   │   └── mailing-list.importer.ts
+│   │   │   │   │   ├── mailing-list.processor.ts
+│   │   │   │   │   ├── parsing
+│   │   │   │   │   │   └── mailing-list-parser.ts
+│   │   │   │   │   └── storage
+│   │   │   │   │       └── mailing-list-storage.ts
+│   │   │   │   ├── migrations
+│   │   │   │   │   └── migrations.ts
+│   │   │   │   └── validation
+│   │   │   │       └── hydrate-from-deca.ts
+│   │   │   └── server
+│   │   │       ├── _private
+│   │   │       │   ├── mailing-list.routes.ts
+│   │   │       │   └── user.routes.ts
+│   │   │       ├── admin
+│   │   │       │   ├── organisation.routes.ts
+│   │   │       │   ├── person.routes.ts
+│   │   │       │   ├── processor.admin.routes.ts
+│   │   │       │   └── user.routes.ts
+│   │   │       ├── auth.routes.ts
+│   │   │       ├── core.routes.ts
+│   │   │       ├── emails.routes.ts
+│   │   │       ├── middlewares
+│   │   │       │   ├── authMiddleware.ts
+│   │   │       │   ├── errorMiddleware.ts
+│   │   │       │   └── logMiddleware.ts
+│   │   │       ├── server.ts
+│   │   │       ├── upload.support.routes.ts
+│   │   │       ├── user.routes.ts
+│   │   │       ├── utils
+│   │   │       │   ├── password.utils.ts
+│   │   │       │   └── upload.utils.ts
+│   │   │       ├── v1
+│   │   │       │   ├── bouncer.routes.ts
+│   │   │       │   ├── deca.routes.ts
+│   │   │       │   └── organisation.routes.ts
+│   │   │       ├── webhooks
+│   │   │       │   └── brevo.routes.ts
+│   │   │       └── webhooks.routes.ts
+│   │   ├── security
+│   │   │   ├── accessTokenService.ts
+│   │   │   ├── authenticationService.ts
+│   │   │   └── authorisationService.ts
+│   │   └── services.ts
+│   ├── static
+│   │   ├── .gitkeep
+│   │   └── emails
+│   │       ├── common
+│   │       │   ├── footer.ejs
+│   │       │   ├── head.ejs
+│   │       │   ├── header.ejs
+│   │       │   └── signature.ejs
+│   │       └── reset_password.mjml.ejs
+│   ├── tests
+│   │   ├── data
+│   │   │   ├── DECA_Extraction MIA-Fake.csv
+│   │   │   ├── akto.ts
+│   │   │   └── opcoEp.ts
+│   │   ├── globalSetup.ts
+│   │   ├── integration
+│   │   │   └── server.test.ts
+│   │   ├── modules
+│   │   │   └── jobs
+│   │   │       └── db
+│   │   │           └── schemaValidation.test.ts
+│   │   ├── routes
+│   │   │   ├── auth.route.test.ts
+│   │   │   ├── organisations.route.test.ts
+│   │   │   └── users.route.test.ts
+│   │   ├── setup.ts
+│   │   └── utils
+│   │       ├── mocks
+│   │       │   ├── akto.mock.ts
+│   │       │   └── opcoEp.mock.ts
+│   │       └── mongo.utils.ts
+│   ├── tsconfig.json
+│   ├── tsup.config.ts
+│   └── types
+│       ├── checksum-stream.d.ts
+│       ├── lil-http-terminator.d.ts
+│       └── oleoduc.d.ts
+├── shared
+│   ├── apis
+│   │   └── deca.ts
+│   ├── constants
+│   │   ├── index.ts
+│   │   ├── mailingList.ts
+│   │   └── regex.ts
+│   ├── helpers
+│   │   ├── common.ts
+│   │   ├── mongoSchema
+│   │   │   ├── __snapshots__
+│   │   │   │   └── mongoSchemaBuilder.test.ts.snap
+│   │   │   └── mongoSchemaBuilder.test.ts
+│   │   ├── openapi
+│   │   │   ├── __snapshots__
+│   │   │   │   └── generateOpenapi.test.ts.snap
+│   │   │   ├── generateOpenapi.test.ts
+│   │   │   ├── openapi.builder.ts
+│   │   │   └── openapi.compare.dev.ts
+│   │   └── zodHelpers
+│   │       └── zodPrimitives.ts
+│   ├── index.ts
+│   ├── mailer.ts
+│   ├── mailing-list
+│   │   └── mailing-list.utils.ts
+│   ├── models
+│   │   ├── bouncer.domain.model.ts
+│   │   ├── bouncer.email.model.ts
+│   │   ├── catalogue.api.model.ts
+│   │   ├── common.ts
+│   │   ├── data
+│   │   │   ├── lba.emailBlacklist.model.ts
+│   │   │   └── lba.mailingList.model.ts
+│   │   ├── deca.model
+│   │   │   ├── deca.anonymized.model.ts
+│   │   │   ├── deca.model.ts
+│   │   │   ├── decaHistory.model.ts
+│   │   │   ├── decaImportJobResult.model.ts
+│   │   │   ├── decaImportJobResultSpecific.model.ts
+│   │   │   └── parts
+│   │   │       ├── deca.apprenant.part.ts
+│   │   │       ├── deca.employeur.part.ts
+│   │   │       ├── deca.etablissementFormation.part.ts
+│   │   │       ├── deca.formation.part.ts
+│   │   │       └── deca.organismeFormation.part.ts
+│   │   ├── emailDenied.model.ts
+│   │   ├── events
+│   │   │   ├── bal_emails.event.ts
+│   │   │   └── event.model.ts
+│   │   ├── mailingList.computed.model.ts
+│   │   ├── mailingList.source.model.ts
+│   │   ├── mailingListV2.model.ts
+│   │   ├── models.ts
+│   │   ├── organisation.model.ts
+│   │   ├── person.model.ts
+│   │   ├── session.model.ts
+│   │   └── user.model.ts
+│   ├── package.json
+│   ├── routes
+│   │   ├── _private
+│   │   │   ├── mailing-list.routes.ts
+│   │   │   └── user.routes.ts
+│   │   ├── admin
+│   │   │   └── processor.admin.routes.ts
+│   │   ├── auth.routes.ts
+│   │   ├── common.routes.ts
+│   │   ├── core.routes.ts
+│   │   ├── emails.routes.ts
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── organisation.routes.ts
+│   │   ├── person.routes.ts
+│   │   ├── upload.support.routes.ts
+│   │   ├── user.routes.ts
+│   │   └── v1
+│   │       ├── bouncer.routes.ts
+│   │       ├── brevo.routes.ts
+│   │       ├── deca.routes.ts
+│   │       └── organisation.routes.ts
+│   ├── security
+│   │   └── permissions.ts
+│   ├── tsconfig.json
+│   ├── utils
+│   │   └── assertUnreachable.ts
+│   └── validators
+│       ├── siretValidator.test.ts
+│       └── siretValidator.ts
+├── tsconfig.json
+├── ui
+│   ├── .env.local.example
+│   ├── .env.test
+│   ├── README.md
+│   ├── app
+│   │   ├── DsfrProvider.tsx
+│   │   ├── accessibilite
+│   │   │   ├── components
+│   │   │   │   └── Accessibilite.tsx
+│   │   │   └── page.tsx
+│   │   ├── admin
+│   │   │   ├── layout.tsx
+│   │   │   ├── organisations
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── OrganisationView.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   └── OrganisationList.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── personnes
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── PersonView.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   └── PersonList.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── processeur
+│   │   │   │   ├── components
+│   │   │   │   │   └── ProcessorStatusProvider.tsx
+│   │   │   │   ├── cron
+│   │   │   │   │   └── [name]
+│   │   │   │   │       ├── [id]
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── job
+│   │   │   │   │   └── [name]
+│   │   │   │   │       ├── [id]
+│   │   │   │   │       │   └── page.tsx
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── utilisateurs
+│   │   │       ├── [id]
+│   │   │       │   ├── components
+│   │   │       │   │   └── UserView.tsx
+│   │   │       │   └── page.tsx
+│   │   │       ├── components
+│   │   │       │   └── UserList.tsx
+│   │   │       └── page.tsx
+│   │   ├── auth
+│   │   │   ├── components
+│   │   │   │   └── FormContainer.tsx
+│   │   │   ├── connexion
+│   │   │   │   └── page.tsx
+│   │   │   ├── modifier-mot-de-passe
+│   │   │   │   └── page.tsx
+│   │   │   └── mot-de-passe-oublie
+│   │   │       └── page.tsx
+│   │   ├── cgu
+│   │   │   ├── components
+│   │   │   │   └── Cgu.tsx
+│   │   │   └── page.tsx
+│   │   ├── components
+│   │   │   ├── Footer.tsx
+│   │   │   ├── breadcrumb
+│   │   │   │   └── Breadcrumb.tsx
+│   │   │   ├── header
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── header.utils.ts
+│   │   │   └── section
+│   │   │       └── Section.tsx
+│   │   ├── compte
+│   │   │   ├── layout.tsx
+│   │   │   └── profil
+│   │   │       └── page.tsx
+│   │   ├── defaultColorScheme.ts
+│   │   ├── donnees-personnelles
+│   │   │   ├── components
+│   │   │   │   └── DonneesPersonnelles.tsx
+│   │   │   └── page.tsx
+│   │   ├── error.tsx
+│   │   ├── global-error.tsx
+│   │   ├── layout.tsx
+│   │   ├── liste-diffusion
+│   │   │   └── nouvelle-liste
+│   │   │       ├── components
+│   │   │       │   ├── EmailSample.tsx
+│   │   │       │   ├── MailingListSectionCell.tsx
+│   │   │       │   ├── MailingListSectionRow.tsx
+│   │   │       │   ├── Sample.tsx
+│   │   │       │   └── WarningEmail.tsx
+│   │   │       └── mailingLists.utils.ts
+│   │   ├── loading.tsx
+│   │   ├── mailing-list
+│   │   │   ├── _components
+│   │   │   │   ├── AddedBy.tsx
+│   │   │   │   └── MailingListStepper.tsx
+│   │   │   ├── create
+│   │   │   │   ├── MailingListCreateSource.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── view
+│   │   │       └── [id]
+│   │   │           ├── _components
+│   │   │           │   ├── KillJob.tsx
+│   │   │           │   ├── MailingListConfig.tsx
+│   │   │           │   ├── MailingListDownload.tsx
+│   │   │           │   ├── MailingListExtracting.tsx
+│   │   │           │   ├── MailingListGenerating.tsx
+│   │   │           │   ├── MailingListSource.tsx
+│   │   │           │   ├── MailingListSourceSample.tsx
+│   │   │           │   ├── MailingListView.tsx
+│   │   │           │   ├── PreviewColonnesSortie.tsx
+│   │   │           │   ├── configuration
+│   │   │           │   │   ├── ChoixColonnesFormation.tsx
+│   │   │           │   │   ├── ChoixColonnesFormationRow.tsx
+│   │   │           │   │   ├── ChoixColonnesIdentifiant.tsx
+│   │   │           │   │   ├── ChoixColonnesSortie.tsx
+│   │   │           │   │   ├── MailingListBuildForm.tsx
+│   │   │           │   │   └── MailingListResetConfig.tsx
+│   │   │           │   └── source
+│   │   │           │       ├── MailingListEditSourceForm.tsx
+│   │   │           │       ├── MailingListResetSource.tsx
+│   │   │           │       └── MailingListSourceReadonly.tsx
+│   │   │           ├── _hooks
+│   │   │           │   ├── useMailingListConfigMutation.tsx
+│   │   │           │   ├── useMailingListRetry.tsx
+│   │   │           │   └── useMailingListSample.tsx
+│   │   │           └── page.tsx
+│   │   ├── mentions-legales
+│   │   │   ├── components
+│   │   │   │   └── MentionLegales.tsx
+│   │   │   └── page.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── politique-confidentialite
+│   │   │   ├── components
+│   │   │   │   └── PolitiqueConfidentialite.tsx
+│   │   │   └── page.tsx
+│   │   ├── sentry
+│   │   │   └── page.tsx
+│   │   ├── support
+│   │   │   ├── depot
+│   │   │   │   └── page.tsx
+│   │   │   └── liste-fichiers
+│   │   │       ├── components
+│   │   │       │   └── supportFileList.tsx
+│   │   │       ├── layout.tsx
+│   │   │       └── page.tsx
+│   │   ├── template.tsx
+│   │   └── usage
+│   │       ├── components
+│   │       │   └── ViewData.tsx
+│   │       ├── healthcheck
+│   │       │   └── page.tsx
+│   │       ├── layout.tsx
+│   │       ├── page.tsx
+│   │       └── validation
+│   │           └── page.tsx
+│   ├── components
+│   │   ├── SearchBar.tsx
+│   │   ├── connexion
+│   │   │   ├── ConnexionComponent.tsx
+│   │   │   └── LoggedUser.tsx
+│   │   ├── form
+│   │   │   └── ToggleSwitchInput.tsx
+│   │   ├── infoDetails
+│   │   │   └── InfoDetails.tsx
+│   │   ├── table
+│   │   │   └── Table.tsx
+│   │   └── toast
+│   │       └── Toast.tsx
+│   ├── config.public.ts
+│   ├── context
+│   │   └── AuthContext.tsx
+│   ├── global-error.tsx
+│   ├── icons
+│   │   └── NotFound.tsx
+│   ├── instrumentation.ts
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── public
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── fonts
+│   │   │   ├── Inter
+│   │   │   │   ├── Inter-Black.ttf
+│   │   │   │   ├── Inter-Bold.ttf
+│   │   │   │   ├── Inter-ExtraBold.ttf
+│   │   │   │   ├── Inter-ExtraLight.ttf
+│   │   │   │   ├── Inter-Light.ttf
+│   │   │   │   ├── Inter-Medium.ttf
+│   │   │   │   ├── Inter-Regular.ttf
+│   │   │   │   ├── Inter-SemiBold.ttf
+│   │   │   │   └── Inter-Thin.ttf
+│   │   │   └── Marianne
+│   │   │       ├── .gitattributes
+│   │   │       ├── Marianne-Bold.woff
+│   │   │       ├── Marianne-Bold.woff2
+│   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │       ├── Marianne-ExtraBold.woff
+│   │   │       ├── Marianne-ExtraBold.woff2
+│   │   │       ├── Marianne-ExtraBold_Italic.woff
+│   │   │       ├── Marianne-ExtraBold_Italic.woff2
+│   │   │       ├── Marianne-Light.woff
+│   │   │       ├── Marianne-Light.woff2
+│   │   │       ├── Marianne-Light_Italic.woff
+│   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │       ├── Marianne-Medium.woff
+│   │   │       ├── Marianne-Medium.woff2
+│   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │       ├── Marianne-Regular.woff
+│   │   │       ├── Marianne-Regular.woff2
+│   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │       ├── Marianne-Thin.woff
+│   │   │       ├── Marianne-Thin.woff2
+│   │   │       ├── Marianne-Thin_Italic.woff
+│   │   │       └── Marianne-Thin_Italic.woff2
+│   │   ├── images
+│   │   │   ├── emails
+│   │   │   │   └── marianne.png
+│   │   │   ├── footer_logo.png
+│   │   │   ├── france_relance.svg
+│   │   │   ├── logo_gouvernement.svg
+│   │   │   ├── marianne.svg
+│   │   │   └── televersement.svg
+│   │   └── sitemap.xml
+│   ├── sentry.client.config.ts
+│   ├── sentry.edge.config.ts
+│   ├── sentry.server.config.ts
+│   ├── tests
+│   │   └── setup.ts
+│   ├── tsconfig.json
+│   └── utils
+│       ├── api.utils.test.ts
+│       ├── api.utils.ts
+│       ├── date.utils.ts
+│       └── query.utils.ts
+└── vitest.config.ts
+183 directories, 484 files

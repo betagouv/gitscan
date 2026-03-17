@@ -1,0 +1,53 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Mission apprentissage",
+  "repository": "https://github.com/mission-apprentissage/bal.git",
+  "engines": {
+    "node": ">=24",
+    "npm": "please-use-pnpm"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm predev && next dev",
+    "build": "pnpm prebuild && next build",
+    "typecheck": "tsc --noEmit",
+    "predev": "only-include-used-icons",
+    "prebuild": "only-include-used-icons"
+  },
+  "dependencies": {
+    "@codegouvfr/react-dsfr": "^1.28.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.4",
+    "@mui/material-nextjs": "^7.3.3",
+    "@mui/x-data-grid": "^8.14.0",
+    "@sentry/nextjs": "^10.19.0",
+    "@tanstack/react-query": "^5.90.2",
+    "@types/node": "^24.7.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "byte-size": "^9.0.1",
+    "crypto-random-string": "^5.0.0",
+    "date-fns": "^4.1.0",
+    "job-processor": "^2.1.0-next.3",
+    "next": "^16.0.10",
+    "next-plausible": "^3.12.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-hook-form": "^7.65.0",
+    "react-notion-x": "^7.7.1",
+    "shared": "workspace:*",
+    "typescript": "^5.9.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/byte-size": "^8.1.2",
+    "dotenv": "^17.2.3",
+    "sass": "^1.93.2",
+    "type-fest": "^5.0.1",
+    "vitest": "^3.2.4"
+  }
+}
