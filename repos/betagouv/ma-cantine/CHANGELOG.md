@@ -6,6 +6,65 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.20.1](https://github.com/betagouv/ma-cantine/compare/v2026.20.0...v2026.20.1) (2026-03-16)
+
+
+### Améliorations
+
+* **API Stats:** utiliser le nouveau champ 'objectifs_egalim_atteints' pour calculer le pourcentage de 'Télédéclarations qui ont atteint l'objectif EGalim' ([#6501](https://github.com/betagouv/ma-cantine/issues/6501)) ([5fd9135](https://github.com/betagouv/ma-cantine/commit/5fd9135a0f9a29635e04a27a5ca1664fca7c84b2))
+* **Celery:** config supplémentaire pour tenter de mieux gérer le timeout ([#6444](https://github.com/betagouv/ma-cantine/issues/6444)) ([1e42d64](https://github.com/betagouv/ma-cantine/commit/1e42d64b74d42b3b04c11561c84e1380aa3f5494))
+* **Metabase:** Télédéclarations: utiliser les nouveaux champs pourcentage_* pour les ratio_* au lieu de les recalculer ([#6502](https://github.com/betagouv/ma-cantine/issues/6502)) ([c1924a5](https://github.com/betagouv/ma-cantine/commit/c1924a5b8fdbdcec9142a355e11b4f246e7072d3))
+* **Observatoire:** prend en compte la date de suppression d'une cantine pour le filtre année ([#6504](https://github.com/betagouv/ma-cantine/issues/6504)) ([fd7adf7](https://github.com/betagouv/ma-cantine/commit/fd7adf7b3a0f3477c19892fdf1fc56ad00a14434))
+* **Open Data:** Télédéclarations: utiliser les nouveaux champs pourcentage_* pour les ratio_* au lieu de les recalculer ([#6503](https://github.com/betagouv/ma-cantine/issues/6503)) ([62c64b6](https://github.com/betagouv/ma-cantine/commit/62c64b6e4c52236fb5b432490d64e96e4895cfe9))
+* **Télédéclarations:** pour les TD des campagnes 2023 à 2025, remplir leur sector_list à partir de leur sectors ([#6400](https://github.com/betagouv/ma-cantine/issues/6400)) ([497fc79](https://github.com/betagouv/ma-cantine/commit/497fc7908591d1855eea220685a05d3818790fd2))
+* **Télédéclarations:** remplir les canteen_snapshot avec les epci & pat_list (à partir de leur city_insee_code) ([#6475](https://github.com/betagouv/ma-cantine/issues/6475)) ([2cfe61c](https://github.com/betagouv/ma-cantine/commit/2cfe61cbf28cea3633afa4b51c4ebfbd5ffec9b9))
+
+
+### Corrections (bugs, typos...)
+
+* **Observatoire:** affiche la date du jour si la date de fin de la campagne est supérieure ([#6505](https://github.com/betagouv/ma-cantine/issues/6505)) ([93c0993](https://github.com/betagouv/ma-cantine/commit/93c0993cec62c490c61b6a5468096ec5bba99fc4))
+
+## [2026.20.0](https://github.com/betagouv/ma-cantine/compare/v2026.19.1...v2026.20.0) (2026-03-16)
+
+
+### Nouveautés
+
+* **Tableau de bord:** remplacer le badge "À compléter" par un bouton qui renvoit vers le bilan ([#6492](https://github.com/betagouv/ma-cantine/issues/6492)) ([e623dd6](https://github.com/betagouv/ma-cantine/commit/e623dd611bdc00613e29d197b86effec146fb268))
+* **Télédéclarations:** stocker le pourcentage_bio, pourcentage_egalim, pourcentage_egalim_hors_bio & objectifs_egalim_atteints + afficher dans l'admin + calculer à chaque TD + commande pour remplir les anciennes TD ([#6481](https://github.com/betagouv/ma-cantine/issues/6481)) ([903ee65](https://github.com/betagouv/ma-cantine/commit/903ee65096a541d26b5bb2290fd1abc433bb2e2f))
+
+
+### Améliorations
+
+* **Admin:** Cantines: ajout d'une phrase d'explication pour le champs declaration_donnees_2025 (frequence nuit) ([#6495](https://github.com/betagouv/ma-cantine/issues/6495)) ([84f260f](https://github.com/betagouv/ma-cantine/commit/84f260fa048518ac3cc45ec1216201b159f7589a))
+* **Admin:** Cantines: ajout des phrases explicatives pour les champs géo et le code insee ([#6493](https://github.com/betagouv/ma-cantine/issues/6493)) ([afd81db](https://github.com/betagouv/ma-cantine/commit/afd81dbb77aabb151af46e18848e6a28a291ea8a))
+* **Metabase:** Télédéclarations: rajoute le champ is_filled aux exports ([#6491](https://github.com/betagouv/ma-cantine/issues/6491)) ([f6b8930](https://github.com/betagouv/ma-cantine/commit/f6b8930aa329afe9989503b739f7f021d4db073f))
+
+
+### Corrections (bugs, typos...)
+
+* **Suivi des achats:** augmente la pagination de 10 à 500 ([#6489](https://github.com/betagouv/ma-cantine/issues/6489)) ([96d6dd0](https://github.com/betagouv/ma-cantine/commit/96d6dd01eeb7da1736a1edbfdaa2902e87daff0c))
+
+
+### Technique
+
+* **Brevo:** simplifie le code d'inscription à la newsletter ([#6486](https://github.com/betagouv/ma-cantine/issues/6486)) ([9679ac9](https://github.com/betagouv/ma-cantine/commit/9679ac9061251dff3f3b8df9a1df9466e63bc28d))
+
+## [2026.19.1](https://github.com/betagouv/ma-cantine/compare/v2026.19.0...v2026.19.1) (2026-03-13)
+
+
+### Améliorations
+
+* **Données Géo:** nouveau script pour récupérer toutes les communes AVEC leur codes EPCI ([#6476](https://github.com/betagouv/ma-cantine/issues/6476)) ([5da578d](https://github.com/betagouv/ma-cantine/commit/5da578d8b8d4fabcae5847da3758f2390662c229))
+
+
+### Technique
+
+* **API:** Swagger: répare tous les warnings renvoyés quand la page est chargée ([#6482](https://github.com/betagouv/ma-cantine/issues/6482)) ([544df18](https://github.com/betagouv/ma-cantine/commit/544df185a4f3ba0f70be996923916fcab7dfee8e))
+* **Cantines:** rajoute un prefetch_related sur annotate_with_is_managed_by_user ([#6487](https://github.com/betagouv/ma-cantine/issues/6487)) ([657932f](https://github.com/betagouv/ma-cantine/commit/657932f39bb348d7b1d335f4831e9fc9017bc0ff))
+* **ETL:** afficher la durée prise par pandas pour insert l'export. Améliorer le dataset_name ([#6485](https://github.com/betagouv/ma-cantine/issues/6485)) ([81ddb65](https://github.com/betagouv/ma-cantine/commit/81ddb6560df3608b310de4ef90266348bdfbe32a))
+* **Tests:** les faire tourner 2x plus rapidement grâce à --parallel ([#6483](https://github.com/betagouv/ma-cantine/issues/6483)) ([b8307c4](https://github.com/betagouv/ma-cantine/commit/b8307c4332be17953ac21b7f2389fd549ddc434a))
+* **Tests:** rajouter SKIP_TESTS_THAT_REQUIRE_INTERNET aux récentes suites de tests liés aux imports ([#6484](https://github.com/betagouv/ma-cantine/issues/6484)) ([98e2e88](https://github.com/betagouv/ma-cantine/commit/98e2e888f2f04617a2f8533a1532c2828540c970))
+
 ## [2026.19.0](https://github.com/betagouv/ma-cantine/compare/v2026.18.0...v2026.19.0) (2026-03-06)
 
 
