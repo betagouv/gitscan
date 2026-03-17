@@ -1,0 +1,75 @@
+{
+  "url": "https://github.com/mission-apprentissage/infra",
+  "name": "infra",
+  "description": "Ce dépôt contient la configuration de base des serveurs ainsi que des images Docker personnalisées pour l'infrastructure Mna.",
+  "language": "Shell",
+  "features": [
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "Monitoring & Logs",
+    "Gestion documentaire & Fichiers"
+  ],
+  "audience": "Professionnels",
+  "dependencies": [
+    "Ansible",
+    "Docker",
+    "Nginx",
+    "Fluentd",
+    "Prometheus",
+    "fail2ban",
+    "modsecurity"
+  ],
+  "components": [
+    "API REST & GraphQL",
+    "Docker & Conteneurs",
+    "Ansible",
+    "Reverse Proxy",
+    "Fluentd",
+    "Monitoring",
+    "Configuration des serveurs"
+  ],
+  "auth": {
+    "methods": [
+      "ssh"
+    ]
+  },
+  "tests": "Tests Docker Compose pour le reverse proxy.",
+  "workflows": [
+    "_password-rotate.yml",
+    "_reboot.yml",
+    "_setup.yml",
+    "all-servers-unban-ip.yml",
+    "cluster-reboot-batch.yml",
+    "cluster-reboot.yml",
+    "cluster-setup-batch.yml",
+    "cluster-setup.yml",
+    "one-server-reboot-batch.yml",
+    "one-server-reboot.yml",
+    "one-server-setup-batch.yml",
+    "one-server-setup.yml",
+    "scheduled-all-servers-password-rotate.yml",
+    "scheduled-all-servers-reboot.yml"
+  ],
+  "lastActivity": "2026-03-05T22:01:24+01:00",
+  "status": "active",
+  "license": null,
+  "hasDocumentation": true,
+  "metrics": {
+    "stars": 3,
+    "forks": 2,
+    "contributors": 1,
+    "openIssues": 1
+  },
+  "tags": [
+    "Docker",
+    "Ansible",
+    "Nginx",
+    "Reverse Proxy",
+    "Monitoring",
+    "Sécurité",
+    "Infrastructure",
+    "Fluentd",
+    "Logs",
+    "Fail2ban"
+  ]
+}

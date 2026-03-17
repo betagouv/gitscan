@@ -1,0 +1,296 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── infra
+│   ├── scripts
+│   │   ├── check-dependencies.sh
+│   │   ├── create-product.sh
+│   │   ├── deploy-log-decrypt.sh
+│   │   ├── deploy-log-encrypt.sh
+│   │   ├── deploy_ssh_keyfile.sh
+│   │   ├── edit-vault.sh
+│   │   ├── ensure-gh-op-auth.sh
+│   │   ├── generate-vault-password.sh
+│   │   ├── get-product-env-ip.sh
+│   │   ├── get-product-repo.sh
+│   │   ├── get-vault-password-client.sh
+│   │   ├── known_hosts
+│   │   │   ├── get_ansible_var.sh
+│   │   │   └── list_ips.sh
+│   │   ├── merge-vault.sh
+│   │   ├── ovh
+│   │   │   ├── close-service.sh
+│   │   │   ├── create-firewall.sh
+│   │   │   ├── ovh-nodejs-client
+│   │   │   │   ├── .eslintrc
+│   │   │   │   ├── api.js
+│   │   │   │   ├── firewall.js
+│   │   │   │   ├── getConfig.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── package-lock.json
+│   │   │   │   ├── package.json
+│   │   │   │   └── utils.js
+│   │   │   └── ping-ovh-api.sh
+│   │   ├── release
+│   │   │   ├── build-image.sh
+│   │   │   └── get-version.sh
+│   │   ├── run-playbook.sh
+│   │   ├── update-infra-access.sh
+│   │   ├── update-product-access.sh
+│   │   └── validate-product-name.sh
+│   ├── vault-password-file.sh
+│   └── zsh-completion
+├── .gitattributes
+├── .github
+│   └── workflows
+│       ├── _password-rotate.yml
+│       ├── _reboot.yml
+│       ├── _setup.yml
+│       ├── all-servers-unban-ip.yml
+│       ├── cluster-reboot-batch.yml
+│       ├── cluster-reboot.yml
+│       ├── cluster-setup-batch.yml
+│       ├── cluster-setup.yml
+│       ├── one-server-reboot-batch.yml
+│       ├── one-server-reboot.yml
+│       ├── one-server-setup-batch.yml
+│       ├── one-server-setup.yml
+│       ├── scheduled-all-servers-password-rotate.yml
+│       └── scheduled-all-servers-reboot.yml
+├── .gitignore
+├── .gitmodules
+├── .infra
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── clean.yml
+│   │   ├── password-rotate.yml
+│   │   ├── reboot.yml
+│   │   ├── setup
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       ├── _create-sudoers.yml
+│   │   │       ├── configure-auth.yml
+│   │   │       ├── configure-dns.yml
+│   │   │       ├── configure-docker.yml
+│   │   │       ├── configure-fail2ban.yml
+│   │   │       ├── configure-firewall.yml
+│   │   │       ├── configure-ips-blacklist.yml
+│   │   │       ├── configure-kernel.yml
+│   │   │       ├── configure-logrotate.yml
+│   │   │       ├── configure-network.yml
+│   │   │       ├── configure-nvidia-gpu.yml
+│   │   │       ├── configure-ssh.yml
+│   │   │       ├── configure-swap.yml
+│   │   │       ├── configure-system.yml
+│   │   │       ├── configure-users.yml
+│   │   │       ├── external-variables.yml
+│   │   │       ├── generate-gpg-key.yml
+│   │   │       ├── install-app.yml
+│   │   │       ├── main.yml
+│   │   │       └── renew-ssl-certificate.yml
+│   │   ├── setup.yml
+│   │   └── unban.yml
+│   ├── ansible.cfg
+│   └── files
+│       ├── app
+│       │   ├── configs
+│       │   │   ├── fluentd
+│       │   │   │   └── .gitkeep
+│       │   │   └── reverse_proxy
+│       │   │       ├── extra-conf.d
+│       │   │       │   ├── .gitkeep
+│       │   │       │   └── limit_req.conf.template.jinja2
+│       │   │       ├── extra-includes
+│       │   │       │   └── .gitkeep
+│       │   │       ├── locations
+│       │   │       │   ├── .gitkeep
+│       │   │       │   └── 00_location_robots.conf.template.jinja2
+│       │   │       ├── owasp-crs
+│       │   │       │   └── .gitkeep
+│       │   │       └── system
+│       │   │           └── .gitkeep
+│       │   ├── docker-compose.system.yml.jinja2
+│       │   ├── system
+│       │   │   ├── certbot
+│       │   │   │   ├── conf
+│       │   │   │   │   └── .gitkeep
+│       │   │   │   └── www
+│       │   │   │       └── .gitkeep
+│       │   │   ├── cron
+│       │   │   │   └── .gitkeep
+│       │   │   ├── fluentd
+│       │   │   │   └── .gitkeep
+│       │   │   └── nginx
+│       │   │       └── .gitkeep
+│       │   └── tools
+│       │       ├── docker-compose.sh
+│       │       ├── gpg
+│       │       │   ├── decrypt.sh
+│       │       │   ├── encrypt.sh.jinja2
+│       │       │   └── generate-gpg-key.sh.jinja2
+│       │       ├── jail
+│       │       │   ├── ban-ip.sh
+│       │       │   ├── blacklist-ips.sh
+│       │       │   ├── list-ban-ip.sh
+│       │       │   └── unban-ip.sh
+│       │       ├── maintenance
+│       │       │   ├── maintenance-off.sh.jinja2
+│       │       │   └── maintenance-on.sh.jinja2
+│       │       ├── monitoring
+│       │       │   ├── check-reboot-status.sh
+│       │       │   └── export-cron-status-prom.sh
+│       │       ├── reload-containers.sh
+│       │       ├── reload-proxy.sh.jinja2
+│       │       ├── send-to-slack.sh.jinja2
+│       │       ├── ssh
+│       │       │   ├── moduli_file.sh
+│       │       │   └── regen-host-key.sh
+│       │       ├── ssl
+│       │       │   ├── reload-proxy.sh.jinja2
+│       │       │   └── renew-certificate.sh.jinja2
+│       │       ├── stop-containers.sh.jinja2
+│       │       ├── tail-logs.sh.jinja2
+│       │       ├── update-stack.sh.jinja2
+│       │       ├── wait-deployment.sh.jinja2
+│       │       └── workaround
+│       │           └── apt-daily.sh
+│       ├── fail2ban
+│       │   ├── action.d
+│       │   │   └── slack-notify.conf
+│       │   ├── filter.d
+│       │   │   ├── nginx-conn-limit-long.conf
+│       │   │   ├── nginx-conn-limit.conf
+│       │   │   └── nginx-req-limit.conf
+│       │   └── jail.d
+│       │       ├── nginx.local
+│       │       ├── sshd.local
+│       │       └── whitelist.local
+│       ├── logrotate.d
+│       │   └── nginx
+│       ├── sshd
+│       │   └── sshd_config.jinja2
+│       ├── systemd
+│       │   ├── 10-wan.link.jinja2
+│       │   ├── 10-wan.network.jinja2
+│       │   ├── nftables.service
+│       │   └── resolved.conf
+│       └── tmux
+│           └── tmux.conf.template.jinja2
+├── .vscode
+│   └── settings.json
+├── README.md
+├── docker-stack-wait
+│   ├── Dockerfile
+│   └── docker-stack-wait.sh
+├── docs
+│   ├── gpg.md
+│   ├── manage_access.md
+│   ├── pre-requisites.md
+│   ├── provisionning.md
+│   └── yubikey.md
+├── fluentd
+│   ├── Dockerfile
+│   ├── conf.d
+│   │   ├── 00_docker.conf
+│   │   ├── 02_prometheus.conf
+│   │   ├── 03_nginx.conf
+│   │   ├── 04_fail2ban.conf
+│   │   ├── 05_host_auth.conf
+│   │   ├── 05_host_syslog.conf
+│   │   ├── 20_labels.conf
+│   │   ├── 50_parse_json.conf
+│   │   └── 90_output.conf
+│   └── fluent.conf
+├── products
+│   ├── api
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   ├── nftables.production.conf.jinja2
+│   │   └── nftables.recette.conf.jinja2
+│   ├── bal
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   ├── nftables.production.conf.jinja2
+│   │   └── nftables.recette.conf.jinja2
+│   ├── data
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   └── nftables.production.conf.jinja2
+│   ├── infra
+│   │   ├── infra-env.ini
+│   │   ├── infra-meta.sh
+│   │   └── vault
+│   │       └── vault.yml
+│   ├── lab
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   └── nftables.production.conf.jinja2
+│   ├── lba
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   ├── nftables.preview.conf.jinja2
+│   │   ├── nftables.production.conf.jinja2
+│   │   └── nftables.recette.conf.jinja2
+│   ├── mongodb
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   ├── nftables.api.conf.jinja2
+│   │   ├── nftables.bal.conf.jinja2
+│   │   ├── nftables.lba.conf.jinja2
+│   │   ├── nftables.recette.conf.jinja2
+│   │   └── nftables.tdb.conf.jinja2
+│   ├── monitoring
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   └── nftables.production.conf.jinja2
+│   ├── sandbox
+│   │   ├── env.ini
+│   │   └── nftables.production.conf.jinja2
+│   ├── tdb
+│   │   ├── authorizations
+│   │   ├── inventories
+│   │   ├── nftables.preprod.conf.jinja2
+│   │   ├── nftables.production.conf.jinja2
+│   │   └── nftables.recette.conf.jinja2
+│   └── vpn
+│       ├── authorizations
+│       ├── inventories
+│       └── nftables.production.conf.jinja2
+└── reverse_proxy
+    ├── Dockerfile
+    ├── files
+    │   ├── reload.sh
+    │   └── templates
+    │       ├── conf.d
+    │       │   ├── default.conf.template
+    │       │   ├── expires.conf.template
+    │       │   ├── gzip.conf.template
+    │       │   ├── headers.conf.template
+    │       │   ├── logging.conf.template
+    │       │   └── maintenance_ips.conf.template
+    │       ├── includes
+    │       │   ├── error_page_json.conf.template
+    │       │   ├── location_acme.conf.template
+    │       │   ├── location_common.conf.template
+    │       │   ├── location_maintenance.conf.template
+    │       │   ├── location_monitoring.conf.template
+    │       │   ├── proxy.conf.template
+    │       │   ├── proxy_sub_path.conf.template
+    │       │   └── ssl.conf.template
+    │       ├── modsecurity.d
+    │       │   └── modsecurity-override.conf.template
+    │       └── nginx.conf.template
+    └── tests
+        ├── docker-compose.yml
+        ├── locations
+        │   └── 01_demo.conf.template
+        ├── maintenance-on.sh
+        └── system
+            ├── 503.html
+            ├── 503.svg
+            ├── 5xx.html
+            ├── 5xx.svg
+            ├── favicon.svg
+            └── marianne.svg
+92 directories, 203 files
