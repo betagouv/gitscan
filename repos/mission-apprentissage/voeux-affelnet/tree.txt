@@ -1,0 +1,688 @@
+.
+├── .gitattributes
+├── .github
+│   └── workflows
+│       ├── codeql-analysis.yml
+│       ├── yarn-ci-server.yml
+│       └── yarn-ci-ui.yml
+├── .gitignore
+├── .local
+│   └── .keep
+├── Makefile
+├── README.md
+├── codecov.yml
+├── docker-compose.override.yml
+├── docker-compose.yml
+├── misc
+│   ├── doc
+│   │   └── voeux-affelnet-fonctionnement.drawio.png
+│   └── git-hooks
+│       └── pre-commit
+├── reverse_proxy
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── logrotate.d
+│   │   │   └── logrotate.conf
+│   │   └── nginx
+│   │       └── templates
+│   │           ├── conf.d
+│   │           │   ├── default.conf.template
+│   │           │   ├── gzip.conf.template
+│   │           │   ├── headers.conf.template
+│   │           │   ├── limit_req.conf.template
+│   │           │   └── logging.conf.template
+│   │           ├── includes
+│   │           │   ├── location_api.conf.template
+│   │           │   ├── location_ui.conf.template
+│   │           │   └── proxy.conf.template
+│   │           └── nginx.conf.template
+│   └── optional
+│       └── includes
+│           ├── location_smtp.conf.template
+│           └── location_sockjs.conf.template
+├── server
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .eslintrc
+│   ├── .gitignore
+│   ├── .mocharc.json
+│   ├── .prettierrc
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── migrate-mongo-config.js
+│   ├── migrations
+│   │   └── 20250321105512-initialisation-2025.js
+│   ├── package.json
+│   ├── src
+│   │   ├── actions.js
+│   │   ├── cli.js
+│   │   ├── common
+│   │   │   ├── academies.js
+│   │   │   ├── actions
+│   │   │   │   ├── activateUser.js
+│   │   │   │   ├── addEmail.js
+│   │   │   │   ├── addEmailError.js
+│   │   │   │   ├── addEmailMessageId.js
+│   │   │   │   ├── addEmailSendDate.js
+│   │   │   │   ├── cancelUnsubscription.js
+│   │   │   │   ├── changeEmail.js
+│   │   │   │   ├── changePassword.js
+│   │   │   │   ├── checkIfEmailExists.js
+│   │   │   │   ├── confirm.js
+│   │   │   │   ├── createEmailActions.js
+│   │   │   │   ├── findDossiers.js.DEPRECATED
+│   │   │   │   ├── getLatestImportDate.js
+│   │   │   │   ├── getUser.js
+│   │   │   │   ├── getVoeuxStream.js
+│   │   │   │   ├── history
+│   │   │   │   │   ├── delegue
+│   │   │   │   │   │   ├── accountActivated.js
+│   │   │   │   │   │   ├── accountActivationEmailAutomaticResent.js
+│   │   │   │   │   │   ├── accountActivationEmailAutomaticSent.js
+│   │   │   │   │   │   ├── accountActivationEmailManualResent.js
+│   │   │   │   │   │   ├── accountActivationEmailManualSent.js
+│   │   │   │   │   │   ├── accountConfirmationEmailAutomaticResent.js
+│   │   │   │   │   │   ├── accountConfirmationEmailAutomaticSent.js
+│   │   │   │   │   │   ├── accountConfirmationEmailManualResent.js
+│   │   │   │   │   │   ├── accountConfirmationEmailManualSent.js
+│   │   │   │   │   │   ├── accountConfirmed.js
+│   │   │   │   │   │   ├── accountEmailUpdatedByAccount.js
+│   │   │   │   │   │   ├── accountEmailUpdatedByAdmin.js
+│   │   │   │   │   │   └── index.js
+│   │   │   │   │   ├── relation
+│   │   │   │   │   │   ├── delegationCancelledByAdmin.js
+│   │   │   │   │   │   ├── delegationCancelledByResponsable.js
+│   │   │   │   │   │   ├── delegationCreatedByAdmin.js
+│   │   │   │   │   │   ├── delegationCreatedByResponsable.js
+│   │   │   │   │   │   ├── delegationUpdatedByAdmin.js
+│   │   │   │   │   │   ├── delegationUpdatedByResponsable.js
+│   │   │   │   │   │   ├── index.js
+│   │   │   │   │   │   ├── listAvailable.js
+│   │   │   │   │   │   ├── listAvailableEmailAutomaticResentToDelegue.js
+│   │   │   │   │   │   ├── listAvailableEmailAutomaticResentToResponsable.js
+│   │   │   │   │   │   ├── listAvailableEmailAutomaticSentToDelegue.js
+│   │   │   │   │   │   ├── listAvailableEmailAutomaticSentToResponsable.js
+│   │   │   │   │   │   ├── listAvailableEmailManualResentToDelegue.js
+│   │   │   │   │   │   ├── listAvailableEmailManualResentToResponsable.js
+│   │   │   │   │   │   ├── listAvailableEmailManualSentToDelegue.js
+│   │   │   │   │   │   ├── listAvailableEmailManualSentToResponsable.js
+│   │   │   │   │   │   ├── listDownloadedByAcademie.js
+│   │   │   │   │   │   ├── listDownloadedByAdmin.js
+│   │   │   │   │   │   ├── listDownloadedByDelegue.js
+│   │   │   │   │   │   ├── listDownloadedByResponsable.js
+│   │   │   │   │   │   ├── updatedListAvailable.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailAutomaticResentToDelegue.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailAutomaticResentToResponsable.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailAutomaticSentToDelegue.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailAutomaticSentToResponsable.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailManualResentToDelegue.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailManualResentToResponsable.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailManualSentToDelegue.js
+│   │   │   │   │   │   ├── updatedListAvailableEmailManualSentToResponsable.js
+│   │   │   │   │   │   ├── updatedListDownloadedByAcademie.js
+│   │   │   │   │   │   ├── updatedListDownloadedByAdmin.js
+│   │   │   │   │   │   ├── updatedListDownloadedByDelegue.js
+│   │   │   │   │   │   └── updatedListDownloadedByResponsable.js
+│   │   │   │   │   └── responsable
+│   │   │   │   │       ├── accountActivated.js
+│   │   │   │   │       ├── accountActivationEmailAutomaticResent.js
+│   │   │   │   │       ├── accountActivationEmailAutomaticSent.js
+│   │   │   │   │       ├── accountActivationEmailManualResent.js
+│   │   │   │   │       ├── accountActivationEmailManualSent.js
+│   │   │   │   │       ├── accountConfirmationEmailAutomaticResent.js
+│   │   │   │   │       ├── accountConfirmationEmailAutomaticSent.js
+│   │   │   │   │       ├── accountConfirmationEmailManualResent.js
+│   │   │   │   │       ├── accountConfirmationEmailManualSent.js
+│   │   │   │   │       ├── accountConfirmed.js
+│   │   │   │   │       ├── accountEmailUpdatedByAccount.js
+│   │   │   │   │       ├── accountEmailUpdatedByAdmin.js
+│   │   │   │   │       └── index.js
+│   │   │   │   ├── markAsNonConcerne.js
+│   │   │   │   ├── markEmailAsDelivered.js
+│   │   │   │   ├── markEmailAsFailed.js
+│   │   │   │   ├── markEmailAsOpened.js
+│   │   │   │   ├── markVoeuxAsDownloaded.js
+│   │   │   │   ├── markVoeuxUniquementEnApprentissage.js
+│   │   │   │   ├── removePassword.js
+│   │   │   │   ├── removeUser.js
+│   │   │   │   ├── renderEmail.js
+│   │   │   │   ├── streamCroisementVoeux.js.DEPRECATED
+│   │   │   │   ├── streamSyntheseApprenants.js.DEPRECATED
+│   │   │   │   └── unsubscribeUser.js
+│   │   │   ├── api
+│   │   │   │   ├── ApiError.js
+│   │   │   │   ├── CatalogueApi.js
+│   │   │   │   ├── RateLimitedApi.js
+│   │   │   │   ├── RateLimiter.js
+│   │   │   │   ├── ReferentielApi.js.DEPRECATED
+│   │   │   │   └── TableauDeBordApi.js.DEPRECATED
+│   │   │   ├── constants
+│   │   │   │   ├── ContactStatus.js
+│   │   │   │   ├── ContactType.js
+│   │   │   │   ├── History.js
+│   │   │   │   ├── RelationType.js
+│   │   │   │   ├── UserStatus.js
+│   │   │   │   └── UserType.js
+│   │   │   ├── emails
+│   │   │   │   ├── activation_academie.mjml.ejs
+│   │   │   │   ├── activation_admin.mjml.ejs
+│   │   │   │   ├── activation_csaio.mjml.ejs
+│   │   │   │   ├── activation_delegue.mjml.ejs
+│   │   │   │   ├── activation_responsable.mjml.ejs
+│   │   │   │   ├── common
+│   │   │   │   │   ├── arrete.ejs
+│   │   │   │   │   ├── engagement.ejs
+│   │   │   │   │   ├── footer.ejs
+│   │   │   │   │   ├── head.ejs
+│   │   │   │   │   ├── header.ejs
+│   │   │   │   │   ├── procedure.ejs
+│   │   │   │   │   ├── signature.ejs
+│   │   │   │   │   └── support.ejs
+│   │   │   │   ├── confirmation_delegue.mjml.ejs
+│   │   │   │   ├── confirmation_responsable.mjml.ejs
+│   │   │   │   ├── confirmed.mjml.ejs
+│   │   │   │   ├── notification_delegue.mjml.ejs.DEPRECATED
+│   │   │   │   ├── notification_relation_delegue.mjml.ejs
+│   │   │   │   ├── notification_relation_responsable.mjml.ejs
+│   │   │   │   ├── notification_responsable.mjml.ejs.DEPRECATED
+│   │   │   │   ├── reset_password.mjml.ejs
+│   │   │   │   ├── templates.js
+│   │   │   │   ├── update_delegue.mjml.ejs.DEPRECATED
+│   │   │   │   ├── update_relation_delegue.mjml.ejs
+│   │   │   │   ├── update_relation_responsable.mjml.ejs
+│   │   │   │   └── update_responsable.mjml.ejs.DEPRECATED
+│   │   │   ├── logger.js
+│   │   │   ├── mailer.js
+│   │   │   ├── model
+│   │   │   │   ├── Academie.js
+│   │   │   │   ├── Admin.js
+│   │   │   │   ├── Alert.js
+│   │   │   │   ├── Config.js
+│   │   │   │   ├── Csaio.js
+│   │   │   │   ├── Delegue.js
+│   │   │   │   ├── Dossier.js
+│   │   │   │   ├── Etablissement.js
+│   │   │   │   ├── Formateur.js.DEPRECATED
+│   │   │   │   ├── Formation.js
+│   │   │   │   ├── Log.js
+│   │   │   │   ├── Mef.js
+│   │   │   │   ├── Relation.js
+│   │   │   │   ├── Responsable.js.DEPRECATED
+│   │   │   │   ├── User.js
+│   │   │   │   ├── Voeu.js
+│   │   │   │   ├── events.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── schemas
+│   │   │   │       ├── academieSchema.js
+│   │   │   │       ├── delegueHistorySchema.js
+│   │   │   │       ├── formateurHistorySchema.js
+│   │   │   │       ├── relationHistorySchema.js
+│   │   │   │       └── responsableHistorySchema.js
+│   │   │   ├── mongodb.js
+│   │   │   ├── regions.js
+│   │   │   ├── utils
+│   │   │   │   ├── aclUtils.js
+│   │   │   │   ├── asyncUtils.js
+│   │   │   │   ├── cleMinistereEducatifUtils.js
+│   │   │   │   ├── csvUtils.js
+│   │   │   │   ├── dataUtils.js.DEPRECATED
+│   │   │   │   ├── dateUtils.js
+│   │   │   │   ├── emailsUtils.js
+│   │   │   │   ├── fileUtils.js
+│   │   │   │   ├── format.js
+│   │   │   │   ├── httpUtils.js
+│   │   │   │   ├── jwtUtils.js
+│   │   │   │   ├── mongooseUtils.js
+│   │   │   │   ├── objectUtils.js
+│   │   │   │   ├── ovhUtils.js.DEPRECATED
+│   │   │   │   ├── passwordUtils.js
+│   │   │   │   ├── streamUtils.js
+│   │   │   │   ├── stringUtils.js
+│   │   │   │   ├── validationUtils.js
+│   │   │   │   └── voeuxUtils.js
+│   │   │   └── validators.js
+│   │   ├── config.js
+│   │   ├── http
+│   │   │   ├── middlewares
+│   │   │   │   ├── authMiddleware.js
+│   │   │   │   ├── corsMiddleware.js
+│   │   │   │   ├── errorMiddleware.js
+│   │   │   │   ├── logMiddleware.js
+│   │   │   │   ├── permissionsMiddleware.js
+│   │   │   │   ├── sentry.js
+│   │   │   │   └── tryCatchMiddleware.js
+│   │   │   ├── routes
+│   │   │   │   ├── activationRoutes.js
+│   │   │   │   ├── adminRoutes.js
+│   │   │   │   ├── alertRoutes.js
+│   │   │   │   ├── configRoutes.js
+│   │   │   │   ├── confirmationRoutes.js
+│   │   │   │   ├── constantRoutes.js
+│   │   │   │   ├── csaioRoutes.js.DEPRECATED
+│   │   │   │   ├── deleguesRoutes.js
+│   │   │   │   ├── emailsRoutes.js
+│   │   │   │   ├── healthcheckRoutes.js
+│   │   │   │   ├── loginRoutes.js
+│   │   │   │   ├── passwordRoutes.js
+│   │   │   │   ├── relationRoutes.js.DEPRECATED
+│   │   │   │   ├── responsablesRoutes.js
+│   │   │   │   └── statsRoutes.js
+│   │   │   ├── server.js
+│   │   │   └── utils
+│   │   │       ├── httpUtils.js
+│   │   │       └── sanitizeUtils.js
+│   │   ├── index.js
+│   │   └── jobs
+│   │       ├── README.md
+│   │       ├── activateDelegues.js
+│   │       ├── buildRelationCsv.js
+│   │       ├── cleanEtablissements.js
+│   │       ├── computeStats.js
+│   │       ├── createAcademie.js
+│   │       ├── createAdmin.js
+│   │       ├── createCsaio.js
+│   │       ├── downloadByFormation.js
+│   │       ├── downloadByRelation.js
+│   │       ├── exportEtablissementsInconnus.js
+│   │       ├── exportResponsables.js
+│   │       ├── exportStatutVoeux.js.TODO
+│   │       ├── exportVoeuxRecensement.js
+│   │       ├── importDossiers.js.DEPRECATED
+│   │       ├── importEtablissements.js
+│   │       ├── importEtablissementsRelations.js
+│   │       ├── importFormations.js
+│   │       ├── importJeunesUniquementEnApprentissage.js.DEPRECATED
+│   │       ├── importMefs.js
+│   │       ├── importVoeux.js
+│   │       ├── removeAcademie.js
+│   │       ├── sendActivationEmails.js
+│   │       ├── sendConfirmationEmails.js
+│   │       ├── sendNotificationEmails.js
+│   │       ├── sendUpdateEmails.js
+│   │       └── utils
+│   │           ├── catalogue.js
+│   │           ├── csv.js
+│   │           ├── extractionVoeux.js
+│   │           ├── offreDeFormation.js
+│   │           ├── referentiel.js.DEPRECATED
+│   │           └── runScript.js
+│   ├── tests
+│   │   ├── common
+│   │   │   ├── academies-test.js
+│   │   │   ├── actions
+│   │   │   │   ├── activate-test.js
+│   │   │   │   ├── changePassword-test.js
+│   │   │   │   ├── confirm-test.js
+│   │   │   │   ├── emailActions-test.js
+│   │   │   │   ├── removeUser-test.js
+│   │   │   │   └── unsubscribeUser-test.js
+│   │   │   ├── cleMinistereEducatifUtils-test.js
+│   │   │   ├── dateUtils-test.js
+│   │   │   ├── passwordUtils-test.js
+│   │   │   ├── regions-test.js
+│   │   │   └── validationUtils-test.js
+│   │   ├── dataset
+│   │   │   └── injectDataset.js
+│   │   ├── http
+│   │   │   ├── activationRoutes-test.js
+│   │   │   ├── adminRoutes-test.js
+│   │   │   ├── confirmationRoutes-test.js
+│   │   │   ├── csaioRoutes-test.js
+│   │   │   ├── emailsRoutes-test.js
+│   │   │   ├── healthcheckRoutes-test.js
+│   │   │   ├── loginRoutes-test.js
+│   │   │   ├── passwordRoutes-test.js
+│   │   │   ├── responsableRoutes-test.js
+│   │   │   └── statsRoutes-test.js
+│   │   ├── jobs
+│   │   │   ├── buildRelationCsv-test.js
+│   │   │   ├── computeStats-test.js
+│   │   │   ├── createAdmin-test.js
+│   │   │   ├── createCsaio-test.js.DEPRECATED
+│   │   │   ├── importDossiers-test.js.DEPRECATED
+│   │   │   ├── importJeunesUniquementEnApprentissage-test.js.DEPRECATED
+│   │   │   ├── importMefs-test.js
+│   │   │   ├── importResponsables-test.js.DEPRECATED
+│   │   │   ├── importVoeux-test.js
+│   │   │   ├── resendActivationEmails-test.js.DEPRECATED
+│   │   │   ├── resendConfirmationEmails-test.js.DEPRECATED
+│   │   │   ├── resendNotificationEmails-test.js.DEPRECATED
+│   │   │   ├── sendActivationEmails-test.js
+│   │   │   ├── sendConfirmationEmails-test.js
+│   │   │   └── sendNotificationEmails-test.js
+│   │   └── utils
+│   │       ├── FakeReferentielApi.js
+│   │       ├── apiMocks.js
+│   │       ├── fakeConfig.js
+│   │       ├── fakeData.js
+│   │       ├── fakeMailer.js
+│   │       ├── mochaGlobalFixtures.js
+│   │       ├── mongoMemoryServer.js
+│   │       └── testUtils.js
+│   └── yarn.lock
+└── ui
+    ├── .dockerignore
+    ├── .env.example
+    ├── .eslintrc
+    ├── .gitignore
+    ├── .prettierrc
+    ├── .yarn
+    │   └── install-state.gz
+    ├── Dockerfile
+    ├── Dockerfile.dev
+    ├── craco.config.js
+    ├── package.json
+    ├── public
+    │   ├── docs
+    │   │   ├── 03bis_Mode_Op_GESTI_Importation.pdf
+    │   │   └── Les_services_proposes_aux_CFA_par_la_mission_interministerielle_pour_l_apprentissage.pdf
+    │   ├── favicon.ico
+    │   ├── images
+    │   │   └── emails
+    │   │       ├── MEN.png
+    │   │       ├── marianne.png
+    │   │       └── presentation-pdrv-exemple.png
+    │   ├── index.html
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src
+    │   ├── App.js
+    │   ├── App.test.js
+    │   ├── common
+    │   │   ├── Yup.js
+    │   │   ├── auth.js
+    │   │   ├── components
+    │   │   │   ├── Breadcrumb.jsx
+    │   │   │   ├── Centered.jsx
+    │   │   │   ├── ErrorMessage.jsx
+    │   │   │   ├── MiddleCenteredCol.jsx
+    │   │   │   ├── Pagination.jsx
+    │   │   │   ├── StatutBadge.jsx
+    │   │   │   ├── SuccessMessage.jsx
+    │   │   │   ├── TablerIcon.jsx
+    │   │   │   ├── ValidationModal.jsx
+    │   │   │   ├── admin
+    │   │   │   │   ├── fields
+    │   │   │   │   │   ├── ContactStatut.jsx
+    │   │   │   │   │   ├── RelationEmail.jsx
+    │   │   │   │   │   ├── RelationStatut.jsx
+    │   │   │   │   │   ├── RelationsStatut.jsx
+    │   │   │   │   │   └── ResponsableStatut.jsx
+    │   │   │   │   └── modals
+    │   │   │   │       ├── ConfirmDelegationModal.jsx
+    │   │   │   │       ├── DelegationModal.jsx
+    │   │   │   │       ├── DownloadModal.jsx
+    │   │   │   │       ├── UpdateDelegationModal.jsx
+    │   │   │   │       └── UpdateResponsableEmailModal.jsx
+    │   │   │   ├── delegue
+    │   │   │   │   ├── fields
+    │   │   │   │   │   └── RelationStatut.jsx
+    │   │   │   │   └── modals
+    │   │   │   │       ├── DownloadVoeuxModal.jsx
+    │   │   │   │       └── UpdateDelegueEmailModal.jsx
+    │   │   │   ├── etablissement
+    │   │   │   │   └── fields
+    │   │   │   │       └── EtablissementLibelle.jsx
+    │   │   │   ├── formateur
+    │   │   │   │   └── fields
+    │   │   │   │       ├── FormateurEmail.jsx.DEPRECATED
+    │   │   │   │       ├── FormateurLocalite.jsx
+    │   │   │   │       └── ResponsableEmail.jsx.DEPRECATED
+    │   │   │   ├── history
+    │   │   │   │   ├── HistoryBlock.jsx
+    │   │   │   │   ├── HistoryItem.jsx
+    │   │   │   │   ├── HistoryList.jsx
+    │   │   │   │   └── HistoryModal.jsx
+    │   │   │   ├── layout
+    │   │   │   │   ├── AlertMessage.jsx
+    │   │   │   │   ├── Footer.jsx
+    │   │   │   │   ├── Header.jsx
+    │   │   │   │   ├── Layout.jsx
+    │   │   │   │   ├── Logo.jsx
+    │   │   │   │   ├── NavigationMenu.jsx
+    │   │   │   │   ├── Page.jsx
+    │   │   │   │   └── RequireAuth.jsx
+    │   │   │   ├── responsable
+    │   │   │   │   ├── fields
+    │   │   │   │   │   ├── ContactStatut.jsx
+    │   │   │   │   │   ├── EtablissementLibelle.jsx
+    │   │   │   │   │   ├── FormateurEmail.jsx.DEPRECATED
+    │   │   │   │   │   ├── RelationEmail.jsx
+    │   │   │   │   │   ├── RelationStatut.jsx
+    │   │   │   │   │   └── ResponsableEmail.jsx.DEPRECATED
+    │   │   │   │   └── modals
+    │   │   │   │       ├── ConfirmDelegationModal.jsx
+    │   │   │   │       ├── DelegationModal.jsx
+    │   │   │   │       ├── DownloadVoeuxModal.jsx
+    │   │   │   │       ├── UpdateDelegationModal.jsx
+    │   │   │   │       └── UpdateResponsableEmailModal.jsx
+    │   │   │   └── tags
+    │   │   │       ├── ContactDelegue.jsx
+    │   │   │       ├── ContactResponsable.jsx
+    │   │   │       ├── OrganismeFormateur.jsx
+    │   │   │       ├── OrganismeResponsable.jsx
+    │   │   │       └── OrganismeResponsableFormateur.jsx
+    │   │   ├── constants
+    │   │   │   ├── ContactStatus.js
+    │   │   │   ├── ContactType.js
+    │   │   │   ├── History.js
+    │   │   │   ├── RelationType.js
+    │   │   │   ├── UserStatus.js
+    │   │   │   └── UserType.js
+    │   │   ├── emitter.js
+    │   │   ├── hooks
+    │   │   │   ├── adminHooks.js
+    │   │   │   ├── delegueHooks.js
+    │   │   │   ├── formateurHooks.js.DEPRECATED
+    │   │   │   ├── httpHooks.js
+    │   │   │   ├── responsableHooks.js
+    │   │   │   ├── useAuth.js
+    │   │   │   ├── useConfig.js
+    │   │   │   ├── useDocumentVisibilty.js
+    │   │   │   ├── useFetch.js
+    │   │   │   └── useQuery.js
+    │   │   ├── httpClient.js
+    │   │   ├── sentry.js
+    │   │   └── utils
+    │   │       ├── aclUtils.js
+    │   │       ├── dateUtils.js
+    │   │       ├── decodeJWT.js
+    │   │       ├── downloadUtils.js
+    │   │       ├── format.js
+    │   │       ├── getUserType.js
+    │   │       ├── pageUtils.js
+    │   │       ├── setYupLocale.js
+    │   │       ├── tablerReactUtils.js
+    │   │       └── validationUtils.js
+    │   ├── fonts
+    │   │   ├── .gitattributes
+    │   │   ├── Marianne-Bold.woff
+    │   │   ├── Marianne-Bold.woff2
+    │   │   ├── Marianne-Bold_Italic.woff
+    │   │   ├── Marianne-Bold_Italic.woff2
+    │   │   ├── Marianne-ExtraBold.woff
+    │   │   ├── Marianne-ExtraBold.woff2
+    │   │   ├── Marianne-ExtraBold_Italic.woff
+    │   │   ├── Marianne-ExtraBold_Italic.woff2
+    │   │   ├── Marianne-Light.woff
+    │   │   ├── Marianne-Light.woff2
+    │   │   ├── Marianne-Light_Italic.woff
+    │   │   ├── Marianne-Light_Italic.woff2
+    │   │   ├── Marianne-Regular.woff
+    │   │   ├── Marianne-Regular.woff2
+    │   │   ├── Marianne-Regular_Italic.woff
+    │   │   └── Marianne-Regular_Italic.woff2
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── pages
+    │   │   ├── ActivationPage.jsx
+    │   │   ├── AnomaliePage.jsx
+    │   │   ├── ConfirmationPage.jsx
+    │   │   ├── CsaioPage.jsx.DEPRECATED
+    │   │   ├── LoginPage.jsx
+    │   │   ├── LogoutPage.jsx
+    │   │   ├── PreviewEmail.jsx
+    │   │   ├── ProfilPage.jsx
+    │   │   ├── ReceptionVoeuxPage.jsx
+    │   │   ├── StatsPage.jsx
+    │   │   ├── YmagPage.jsx
+    │   │   ├── admin
+    │   │   │   ├── Alert.jsx
+    │   │   │   ├── Config.jsx
+    │   │   │   ├── Etablissement.jsx
+    │   │   │   ├── Etablissements.jsx
+    │   │   │   └── Routes.jsx
+    │   │   ├── delegue
+    │   │   │   ├── Delegue.jsx
+    │   │   │   └── Routes.jsx
+    │   │   ├── legal
+    │   │   │   ├── Accessibilite.jsx
+    │   │   │   ├── Contact.jsx
+    │   │   │   ├── Cookies.jsx
+    │   │   │   ├── DonneesPersonnelles.jsx
+    │   │   │   └── MentionsLegales.jsx
+    │   │   ├── password
+    │   │   │   ├── ForgottenPasswordPage.jsx
+    │   │   │   └── ResetPasswordPage.jsx
+    │   │   └── responsable
+    │   │       ├── Responsable.jsx
+    │   │       └── Routes.jsx
+    │   ├── scripts
+    │   │   ├── sitemap-generator.js
+    │   │   └── sitemap-routes.js
+    │   ├── serviceWorker.js
+    │   ├── setupTests.js
+    │   └── theme
+    │       ├── assets
+    │       │   ├── account-fill.svg
+    │       │   ├── add-circle.svg
+    │       │   ├── add-fill.svg
+    │       │   ├── arrow-*.svg  (5 files)
+    │       │   ├── check-line.svg
+    │       │   ├── close-circle-line.svg
+    │       │   ├── close.svg
+    │       │   ├── cloud-slashed.svg
+    │       │   ├── cloud.svg
+    │       │   ├── cross-line.svg
+    │       │   ├── delete-line.svg
+    │       │   ├── double-arrows.svg
+    │       │   ├── download-line.svg
+    │       │   ├── draft-line.svg
+    │       │   ├── edit-2-fill.svg
+    │       │   ├── emoji-flat.svg
+    │       │   ├── emoji-smile.svg
+    │       │   ├── error-fill.svg
+    │       │   ├── error-line.svg
+    │       │   ├── error-warning-line.svg
+    │       │   ├── error.svg
+    │       │   ├── exclamation-circle.svg
+    │       │   ├── external-link-line.svg
+    │       │   ├── eye-fill.svg
+    │       │   ├── eye-off-fill.svg
+    │       │   ├── file-download-line.svg
+    │       │   ├── file-line.svg
+    │       │   ├── file-text-line.svg
+    │       │   ├── flashlight-fill.svg
+    │       │   ├── flashlight-line.svg
+    │       │   ├── folder-2-line.svg
+    │       │   ├── info-circle.svg
+    │       │   ├── info-fill.svg
+    │       │   ├── info-line.svg
+    │       │   ├── information-line.svg
+    │       │   ├── link-line.svg
+    │       │   ├── lock-fill.svg
+    │       │   ├── map-pin-2-fill.svg
+    │       │   ├── menu-fill.svg
+    │       │   ├── minus-circle.svg
+    │       │   ├── parametre.svg
+    │       │   ├── processing.svg
+    │       │   ├── question.svg
+    │       │   ├── reject.svg
+    │       │   ├── search-line.svg
+    │       │   ├── send-plane-line.svg
+    │       │   ├── substract-line.svg
+    │       │   ├── success-fill.svg
+    │       │   ├── success-line.svg
+    │       │   ├── validate.svg
+    │       │   ├── warning-fill.svg
+    │       │   ├── warning-line.svg
+    │       │   ├── zoom-in.svg
+    │       │   └── zoom-out.svg
+    │       ├── components
+    │       │   ├── accordion.js
+    │       │   ├── alert.js
+    │       │   ├── badge.js
+    │       │   ├── button.js
+    │       │   ├── icons
+    │       │   │   ├── AccountFill.jsx
+    │       │   │   ├── AddCircle.jsx
+    │       │   │   ├── AddFill.jsx
+    │       │   │   ├── ArrowDownLine.jsx
+    │       │   │   ├── ArrowDropRightLine.jsx
+    │       │   │   ├── ArrowLeftLine.jsx
+    │       │   │   ├── ArrowRightDownLine.jsx
+    │       │   │   ├── ArrowRightLine.jsx
+    │       │   │   ├── CheckLine.jsx
+    │       │   │   ├── Close.jsx
+    │       │   │   ├── CloseCircleLine.jsx
+    │       │   │   ├── Cloud.jsx
+    │       │   │   ├── CloudSlashed.jsx
+    │       │   │   ├── CrossLine.jsx
+    │       │   │   ├── Danger.jsx
+    │       │   │   ├── DeleteLine.jsx
+    │       │   │   ├── DoubleArrows.jsx
+    │       │   │   ├── DownloadLine.jsx
+    │       │   │   ├── DraftLine.jsx
+    │       │   │   ├── Edit2Fill.jsx
+    │       │   │   ├── EmojiFlat.jsx
+    │       │   │   ├── EmojiSmile.jsx
+    │       │   │   ├── Error.jsx
+    │       │   │   ├── ErrorFill.jsx
+    │       │   │   ├── ErrorLine.jsx
+    │       │   │   ├── ErrorWarningLine.jsx
+    │       │   │   ├── ExclamationCircle.jsx
+    │       │   │   ├── ExternalLinkLine.jsx
+    │       │   │   ├── EyeFill.jsx
+    │       │   │   ├── EyeOffFill.jsx
+    │       │   │   ├── FileDownloadLine.jsx
+    │       │   │   ├── FileLine.jsx
+    │       │   │   ├── FileTextLine.jsx
+    │       │   │   ├── Folder2Line.jsx
+    │       │   │   ├── InfoCircle.jsx
+    │       │   │   ├── InfoFill.jsx
+    │       │   │   ├── InfoLine.jsx
+    │       │   │   ├── InformationLine.jsx
+    │       │   │   ├── LinkLine.jsx
+    │       │   │   ├── LockFill.jsx
+    │       │   │   ├── MapPin2Fill.jsx
+    │       │   │   ├── MenuFill.jsx
+    │       │   │   ├── MinusCircle copy.jsx
+    │       │   │   ├── MinusCircle.jsx
+    │       │   │   ├── Parametre.jsx
+    │       │   │   ├── Processing.jsx
+    │       │   │   ├── Question.jsx
+    │       │   │   ├── Reject.jsx
+    │       │   │   ├── SearchLine.jsx
+    │       │   │   ├── SendPlaneLine.jsx
+    │       │   │   ├── SubtractLine.jsx
+    │       │   │   ├── SuccessFill.jsx
+    │       │   │   ├── SuccessLine.jsx
+    │       │   │   ├── Validate.jsx
+    │       │   │   ├── WarningFill.jsx
+    │       │   │   ├── WarningLine.jsx
+    │       │   │   ├── ZoomIn.jsx
+    │       │   │   ├── ZoomOut.jsx
+    │       │   │   └── index.js
+    │       │   ├── index.js
+    │       │   ├── input.js
+    │       │   ├── link.js
+    │       │   ├── radio.js
+    │       │   ├── select.js
+    │       │   ├── switch.js
+    │       │   ├── tabs.js
+    │       │   ├── text.js
+    │       │   └── textarea.js
+    │       ├── index.js
+    │       └── theme-beta.js
+    └── yarn.lock
+85 directories, 606 files
