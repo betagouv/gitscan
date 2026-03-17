@@ -1,0 +1,128 @@
+.
+├── .bin
+│   ├── commands.sh
+│   ├── mna-mongodb
+│   ├── scripts
+│   │   ├── app-deploy-cluster-node-remove.sh
+│   │   ├── app-deploy-cluster-node-update.sh
+│   │   ├── backup-decrypt.sh
+│   │   ├── backup-download.sh
+│   │   ├── backup-list.sh
+│   │   ├── backup-restore.sh
+│   │   ├── product-validate-env.sh
+│   │   └── s3.sh
+│   └── shared
+├── .gitattributes
+├── .github
+│   └── workflows
+│       ├── _deploy.yml
+│       ├── batch_update_cluster.yml
+│       └── update_cluster.yml
+├── .gitignore
+├── .gitmodules
+├── .infra
+│   ├── .gitignore
+│   ├── ansible
+│   │   ├── ansible.cfg
+│   │   ├── deploy.yml
+│   │   ├── remove_node.yml
+│   │   └── tasks
+│   │       ├── _ensure_s3_bucket.yml
+│   │       ├── config_replicat_set.yml
+│   │       ├── configure-mongodb-backup.yml
+│   │       ├── create_role.yml
+│   │       ├── create_user.yml
+│   │       ├── create_users.yml
+│   │       ├── files_copy.yml
+│   │       ├── install_mongodb.yml
+│   │       ├── install_tls.yml
+│   │       ├── mount_volume.yml
+│   │       ├── percona.yml
+│   │       ├── start_mongodb.yml
+│   │       ├── system.yml
+│   │       └── tweaks
+│   │           ├── network.yml
+│   │           ├── numa.yml
+│   │           └── ulimit.yml
+│   ├── authorizations
+│   ├── env.api.yml
+│   ├── env.bal.yml
+│   ├── env.global.yml
+│   ├── env.lba.yml
+│   ├── env.recette.yml
+│   ├── env.tdb.yml
+│   ├── files
+│   │   ├── configs
+│   │   │   ├── fluentd
+│   │   │   │   └── 01_mongodb.conf
+│   │   │   ├── mongodb
+│   │   │   │   ├── create_roles.js
+│   │   │   │   ├── create_user.js
+│   │   │   │   ├── disable-transparent-huge-pages.service
+│   │   │   │   ├── init_rs.js.jinja2
+│   │   │   │   ├── mongod.service
+│   │   │   │   └── register_member.js.jinja2
+│   │   │   ├── reverse_proxy
+│   │   │   │   ├── locations
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── owasp-crs
+│   │   │   │   │   └── REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+│   │   │   │   └── system
+│   │   │   │       ├── 503.html
+│   │   │   │       ├── 503.svg
+│   │   │   │       ├── 5xx.html
+│   │   │   │       ├── 5xx.svg
+│   │   │   │       ├── favicon.svg
+│   │   │   │       └── marianne.svg
+│   │   │   └── s3cmd
+│   │   │       └── s3cfg.template.jinja2
+│   │   ├── data
+│   │   │   ├── server
+│   │   │   │   └── .gitkeep
+│   │   │   └── smtp
+│   │   │       └── .gitkeep
+│   │   ├── keyfile.jinja2
+│   │   ├── logrotate.d
+│   │   │   └── mongod
+│   │   ├── mongod.conf.jinja2
+│   │   └── scripts
+│   │       ├── .gitkeep
+│   │       ├── backup-database.sh.jinja2
+│   │       ├── list-backups.sh.jinja2
+│   │       ├── migrate.sh.jinja2
+│   │       ├── mongo.sh.jinja2
+│   │       ├── mongo_local.sh.jinja2
+│   │       ├── register_member.sh.jinja2
+│   │       ├── remove_member.sh.jinja2
+│   │       ├── restore-database.sh.jinja2
+│   │       ├── rotate-mongod.sh
+│   │       ├── rotate_cert.sh.jinja2
+│   │       ├── update_cert.sh.jinja2
+│   │       └── upload-backups.sh.jinja2
+│   └── inventories
+├── LICENSE
+├── README.md
+└── docs
+    ├── backup
+    │   ├── backup.md
+    │   └── restore.md
+    ├── deploy
+    │   ├── add_member.md
+    │   ├── initial.md
+    │   ├── instance.md
+    │   ├── migration.md
+    │   └── update.md
+    ├── developpement
+    │   ├── 1password.md
+    │   ├── developpement.md
+    │   ├── gpg.md
+    │   └── pre-requesites.md
+    ├── infrastructure.md
+    ├── monitoring.md
+    ├── training
+    │   └── training.md
+    └── troubleshooting
+        ├── increase_volume.md
+        ├── lost_node.md
+        └── update_primary.md
+32 directories, 95 files
