@@ -100,8 +100,6 @@
 │   │   │   │   └── DocumentLink.tsx
 │   │   │   ├── EditableNumberCell
 │   │   │   │   └── EditableNumberCell.tsx
-│   │   │   ├── FetchInterceptor
-│   │   │   │   └── FetchInterceptor.tsx
 │   │   │   ├── FilterTags
 │   │   │   │   └── FiltersTags.tsx
 │   │   │   ├── Footer
@@ -112,6 +110,8 @@
 │   │   │   │   ├── Header.stories.tsx
 │   │   │   │   ├── Header.tsx
 │   │   │   │   └── HeaderMenu.tsx
+│   │   │   ├── LaboratorySelect
+│   │   │   │   └── LaboratorySelect.tsx
 │   │   │   ├── LocalPrescription
 │   │   │   │   ├── LocalPrescriptionButtons
 │   │   │   │   │   ├── LocalPrescriptionButtons.scss
@@ -128,8 +128,7 @@
 │   │   │   │   ├── LocalPrescriptionSlaughterhouseDistribution
 │   │   │   │   │   └── LocalPrescriptionSlaughterhouseDistribution.tsx
 │   │   │   │   └── LocalPrescriptionSubstanceKindsLaboratories
-│   │   │   │       ├── LocalPrescriptionSubstanceKindsLaboratories.tsx
-│   │   │   │       └── SubstanceKindLaboratorySelect.tsx
+│   │   │   │       └── LocalPrescriptionSubstanceKindsLaboratories.tsx
 │   │   │   ├── Mascarade
 │   │   │   │   ├── MascaradeButton.tsx
 │   │   │   │   ├── MascaradeModal.tsx
@@ -284,6 +283,7 @@
 │   │   │   ├── sampleSpecificData.service.ts
 │   │   │   └── user.service.ts
 │   │   ├── store
+│   │   │   ├── localStorage.ts
 │   │   │   ├── reducers
 │   │   │   │   ├── authSlice.tsx
 │   │   │   │   ├── prescriptionsSlice.tsx
@@ -581,7 +581,12 @@
 │   │   │   ├── 077-analysis-by-items.ts
 │   │   │   ├── 077-fix-sacha-residue-mappings-unique.ts
 │   │   │   ├── 078-sample-specific-data-attribute-optional.ts
-│   │   │   └── 079-sacha-gpg-public-key-text.ts
+│   │   │   ├── 079-sacha-gpg-public-key-text.ts
+│   │   │   ├── 079-sample-items-budget-shipping.ts
+│   │   │   ├── 080-analysis-sample-items-cascade.ts
+│   │   │   ├── 080-sample-items-admissibility.ts
+│   │   │   ├── 081-programming-plan-kinds.ts
+│   │   │   └── 082-rename-daoa-kinds.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -654,6 +659,7 @@
 │   │   ├── sachaConfRepository.ts
 │   │   ├── sachaResidueMappingRepository.test.ts
 │   │   ├── sachaResidueMappingRepository.ts
+│   │   ├── sampleItemRepository.test.ts
 │   │   ├── sampleItemRepository.ts
 │   │   ├── sampleRepository.test.ts
 │   │   ├── sampleRepository.ts
@@ -992,4 +998,4 @@
     ├── env.d.ts
     └── express-jwt
         └── index.d.ts
-198 directories, 796 files
+198 directories, 802 files
