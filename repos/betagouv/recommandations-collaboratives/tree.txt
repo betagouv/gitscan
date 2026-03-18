@@ -361,6 +361,7 @@
 │   │   │   ├── brevo.py
 │   │   │   ├── constants.py
 │   │   │   ├── digests.py
+│   │   │   ├── helpers.py
 │   │   │   ├── management
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
@@ -414,14 +415,18 @@
 │   │   │   │           │   ├── confirm_delete_message.html
 │   │   │   │           │   ├── conversation_topic.html
 │   │   │   │           │   ├── conversations_new_feed.html
+│   │   │   │           │   ├── created_by_reply.html
 │   │   │   │           │   ├── empty_message_list.html
 │   │   │   │           │   ├── node_contact.html
 │   │   │   │           │   ├── node_document.html
 │   │   │   │           │   ├── node_markdown.html
 │   │   │   │           │   ├── node_recommendation.html
+│   │   │   │           │   ├── preview_panel_message.html
+│   │   │   │           │   ├── resource_preview_panel.html
 │   │   │   │           │   ├── tasks_status_buttons_js.html
 │   │   │   │           │   └── type_followup_item.html
-│   │   │   │           └── message_item.html
+│   │   │   │           ├── message_item.html
+│   │   │   │           └── message_item_content.html
 │   │   │   ├── tests.py
 │   │   │   └── utils.py
 │   │   ├── crm
@@ -747,6 +752,7 @@
 │   │   │   │       ├── cleanuporgs.py
 │   │   │   │       ├── create_site.py
 │   │   │   │       ├── update_permissions.py
+│   │   │   │       ├── update_verbs.py
 │   │   │   │       └── warn_delete_users.py
 │   │   │   ├── middlewares.py
 │   │   │   ├── migrations
@@ -792,6 +798,7 @@
 │   │   │   │   ├── 0039_rename_previous_login_at_userprofile_previous_activity_at_and_more.py
 │   │   │   │   ├── 0040_fill_profile_previous_activity_site.py
 │   │   │   │   ├── 0041_fill_profile_previous_activity_at.py
+│   │   │   │   ├── 0042_notification_splits.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── password_validation.py
@@ -1626,11 +1633,15 @@
 │   │   ├── postcss.config.mjs
 │   │   ├── src
 │   │   │   ├── assets
+│   │   │   │   ├── answer-arrows.svg
+│   │   │   │   ├── attention-indicator.svg
 │   │   │   │   ├── building.svg
 │   │   │   │   ├── calendar.svg
+│   │   │   │   ├── chat-1-line.svg
 │   │   │   │   ├── check-double-line.svg
 │   │   │   │   ├── contacts-book-line.svg
 │   │   │   │   ├── corner-down-right-line.svg
+│   │   │   │   ├── delete.svg
 │   │   │   │   ├── file-copy-2-line.svg
 │   │   │   │   ├── line-chart-off-line.svg
 │   │   │   │   ├── line-chart-on-line.svg
@@ -1638,6 +1649,8 @@
 │   │   │   │   ├── magic-fill.svg
 │   │   │   │   ├── notification-off-line.svg
 │   │   │   │   ├── notification-on-line.svg
+│   │   │   │   ├── reply-line.svg
+│   │   │   │   ├── send-message-paper-plan.svg
 │   │   │   │   ├── tag-line.svg
 │   │   │   │   ├── target.svg
 │   │   │   │   └── tools-line.svg
@@ -1723,6 +1736,7 @@
 │   │   │   │   │   │   │   └── personnal_dashboard.scss
 │   │   │   │   │   │   ├── project_banner
 │   │   │   │   │   │   │   └── project_banner.scss
+│   │   │   │   │   │   ├── resource_preview_panel.scss
 │   │   │   │   │   │   ├── survey_grid.scss
 │   │   │   │   │   │   ├── switchtender-list.scss
 │   │   │   │   │   │   └── tasks_modal
@@ -1928,6 +1942,7 @@
 │   │   │       │   ├── previewModal.js
 │   │   │       │   ├── projectQueue.js
 │   │   │       │   ├── projects.js
+│   │   │       │   ├── resourcePreviewPanel.js
 │   │   │       │   ├── showRole.js
 │   │   │       │   ├── tasks.js
 │   │   │       │   ├── tasksData.js
@@ -1958,6 +1973,7 @@
 │   │   │       │   ├── project-details.css.js
 │   │   │       │   ├── projects-*.js  (14 files)
 │   │   │       │   ├── resource-card.css.js
+│   │   │       │   ├── resource-preview-panel.css.js
 │   │   │       │   ├── resources.css.js
 │   │   │       │   ├── segmented_ctrl.css.js
 │   │   │       │   ├── survey-grid.css.js
@@ -2195,4 +2211,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-367 directories, 1852 files
+367 directories, 1868 files
