@@ -83,6 +83,8 @@
 │   │   ├── 0027_sudden_smasher.sql
 │   │   ├── 0028_referentiel_collectivites.sql
 │   │   ├── 0029_pg_trgm_referentiel.sql
+│   │   ├── 0030_plans_transition_fiches_action.sql
+│   │   ├── 0031_schema_separation.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -113,6 +115,8 @@
 │   │       ├── 0026_snapshot.json
 │   │       ├── 0027_snapshot.json
 │   │       ├── 0028_snapshot.json
+│   │       ├── 0030_snapshot.json
+│   │       ├── 0031_snapshot.json
 │   │       └── _journal.json
 │   ├── drizzle.config.ts
 │   ├── eslint.config.js
@@ -130,6 +134,8 @@
 │   │   │   ├── parse-service-and-service-context.ts
 │   │   │   ├── services-context-import.csv
 │   │   │   └── services-import.csv
+│   │   ├── import-tc-opendata
+│   │   │   └── import-tc-opendata.ts
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
 │   │   ├── seed-referentiel
@@ -161,6 +167,7 @@
 │   │   ├── database
 │   │   │   ├── database.module.ts
 │   │   │   ├── database.service.ts
+│   │   │   ├── plans-fiches-schema.ts
 │   │   │   ├── referentiel-schema.ts
 │   │   │   └── schema.ts
 │   │   ├── exceptions
@@ -190,6 +197,26 @@
 │   │   ├── middleware
 │   │   │   ├── cors.middleware.spec.ts
 │   │   │   └── cors.middleware.ts
+│   │   ├── plans-fiches
+│   │   │   ├── dto
+│   │   │   │   ├── fiche-action.dto.ts
+│   │   │   │   └── plan-transition.dto.ts
+│   │   │   ├── opendata-doc.setup.ts
+│   │   │   ├── plans-fiches.controller.ts
+│   │   │   ├── plans-fiches.module.ts
+│   │   │   ├── services
+│   │   │   │   ├── get-fiches.service.spec.ts
+│   │   │   │   ├── get-fiches.service.ts
+│   │   │   │   ├── get-plans.service.spec.ts
+│   │   │   │   └── get-plans.service.ts
+│   │   │   └── tc-import
+│   │   │       ├── tc-fetch.service.spec.ts
+│   │   │       ├── tc-fetch.service.ts
+│   │   │       ├── tc-import.constants.ts
+│   │   │       ├── tc-import.processor.spec.ts
+│   │   │       ├── tc-import.processor.ts
+│   │   │       ├── tc-import.service.ts
+│   │   │       └── tc-import.types.ts
 │   │   ├── projet-qualification
 │   │   │   ├── const.ts
 │   │   │   ├── dto
@@ -243,6 +270,9 @@
 │   │   │       └── update-projets
 │   │   │           ├── update-projets.service.spec.ts
 │   │   │           └── update-projets.service.ts
+│   │   ├── projets-v2
+│   │   │   ├── projets-v2.controller.ts
+│   │   │   └── projets-v2.module.ts
 │   │   ├── referentiel
 │   │   │   ├── communes
 │   │   │   │   ├── communes.controller.ts
@@ -254,7 +284,6 @@
 │   │   │   │   ├── competences.controller.ts
 │   │   │   │   ├── competences.service.ts
 │   │   │   │   └── dto
-│   │   │   │       ├── competence-query.dto.ts
 │   │   │   │       └── competence.response.ts
 │   │   │   ├── groupements
 │   │   │   │   ├── dto
@@ -295,22 +324,23 @@
 │   │   │   ├── services.service.spec.ts
 │   │   │   └── services.service.ts
 │   │   ├── setup-app.ts
-│   │   └── shared
-│   │       ├── const
-│   │       │   ├── competences-list.ts
-│   │       │   ├── leviers.ts
-│   │       │   └── region-codes.ts
-│   │       ├── decorator
-│   │       │   ├── api-response.decorator.ts
-│   │       │   ├── projetId-decorator.ts
-│   │       │   └── track-api-usage.decorator.ts
-│   │       ├── dto
-│   │       │   ├── error.response.ts
-│   │       │   └── uuid.ts
-│   │       ├── types.ts
-│   │       └── utils
-│   │           ├── currentEnv.ts
-│   │           └── remove-undefined.ts
+│   │   ├── shared
+│   │   │   ├── const
+│   │   │   │   ├── competences-list.ts
+│   │   │   │   ├── leviers.ts
+│   │   │   │   └── region-codes.ts
+│   │   │   ├── decorator
+│   │   │   │   ├── api-response.decorator.ts
+│   │   │   │   ├── projetId-decorator.ts
+│   │   │   │   └── track-api-usage.decorator.ts
+│   │   │   ├── dto
+│   │   │   │   ├── error.response.ts
+│   │   │   │   └── uuid.ts
+│   │   │   ├── types.ts
+│   │   │   └── utils
+│   │   │       ├── currentEnv.ts
+│   │   │       └── remove-undefined.ts
+│   │   └── swagger-hub.ts
 │   ├── test
 │   │   ├── analytics.e2e-spec.ts
 │   │   ├── generated-types.ts
@@ -362,10 +392,14 @@
 │   ├── package.json
 │   ├── src
 │   │   ├── App.tsx
+│   │   ├── components
+│   │   │   ├── FaqSection.tsx
+│   │   │   └── SchemaConceptuel.tsx
 │   │   ├── main.tsx
 │   │   ├── pages
 │   │   │   ├── Confidentialite.tsx
 │   │   │   ├── Home.tsx
+│   │   │   ├── Methodologie.tsx
 │   │   │   └── Vocabulaire.tsx
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.app.json
@@ -483,4 +517,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-91 directories, 394 files
+98 directories, 421 files
