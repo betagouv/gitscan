@@ -1,43 +1,33 @@
-## Changelog : zacharie (30 derniers jours)
+## Changelog : zacharie (30 derniers jours, au 17 mars 2026)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à Zacharie au cours du dernier mois. Les utilisateurs bénéficieront d'une meilleure expérience grâce à des corrections de bugs, des améliorations de l'interface utilisateur et de nouvelles fonctionnalités comme la création simplifiée de CCG (Circuit Court Groupement) lors du flux de déclaration de FEI (Fiche d'Examen Initiale). Des optimisations techniques ont également été réalisées pour améliorer la synchronisation des données et la gestion des entités.
+Ce mois-ci, l'application Zacharie a bénéficié d'améliorations significatives, notamment au niveau de l'interface d'administration, de la gestion des carcasses et de la synchronisation des données hors ligne. Des corrections de sécurité importantes ont également été apportées pour protéger les données des utilisateurs. Enfin, l'expérience utilisateur a été améliorée grâce à l'ajout d'une FAQ et d'une meilleure gestion de l'affichage sur mobile.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la création de partenaires avec une adresse email déjà existante. [#159](https://github.com/betagouv/zacharie/issues/159)
-- Amélioration de la gestion des fiches FEI : possibilité de créer un CCG directement pendant le processus. [#147](https://github.com/betagouv/zacharie/issues/147)
-- Synchronisation des contacts des circuits courts avec Brevo (outil de communication). [#144](https://github.com/betagouv/zacharie/issues/144)
-- Correction de l'export des colonnes SVI. [#206](https://github.com/betagouv/zacharie/issues/206)
-- Clôture automatique des fiches circuit court lors de la transmission. [#200](https://github.com/betagouv/zacharie/issues/200)
-- Amélioration du wording du destinataire. [#205](https://github.com/betagouv/zacharie/issues/205)
-- Ajout d'une page FAQ avec des guides et des liens de navigation. [#201](https://github.com/betagouv/zacharie/issues/201)
-- Ajout d'un placeholder pour les vues vides. [#167](https://github.com/betagouv/zacharie/issues/167)
-- Amélioration de la table et de la barre de recherche. [#164](https://github.com/betagouv/zacharie/issues/164)
-- Correction de l'affichage du champ `feisAssigned` pour les SVI.
-- Amélioration de l'interface utilisateur pour l'onboarding. [#195](https://github.com/betagouv/zacharie/issues/195)
-- Ajout d'une nouvelle fonctionnalité pour la création de fiches. [#197](https://github.com/betagouv/zacharie/issues/197)
-- Correction de l'affichage dynamique de la FAQ.
-- Correction du menu responsive.
-- Suppression d'un lien dupliqué.
-- Correction d'un warning lors de la création d'un nouveau partenaire. [#192](https://github.com/betagouv/zacharie/issues/192)
-- Correction de l'affichage des champs sur les carcasses.
-- Correction de la pagination.
-- Amélioration du chargement des entités et des utilisateurs.
-- Correction de la transmission des carcasses.
+- Ajout d'une page FAQ avec des guides et des liens de navigation pour aider les utilisateurs. [#201](https://github.com/betagouv/zacharie/issues/201)
+- Amélioration de l'interface d'administration pour une meilleure gestion des carcasses intermédiaires et des rôles circuit court. [#226](https://github.com/betagouv/zacharie/issues/226), [#230](https://github.com/betagouv/zacharie/issues/230), [#232](https://github.com/betagouv/zacharie/issues/232)
+- Possibilité d'envoyer des carcasses à plusieurs destinataires. [#188](https://github.com/betagouv/zacharie/issues/188)
+- Amélioration de la gestion de la transmission des carcasses, notamment en clôturant automatiquement les fiches circuit court lors de la transmission. [#200](https://github.com/betagouv/zacharie/issues/200)
+- Amélioration de l'affichage sur mobile et adaptation de l'interface. [#184](https://github.com/betagouv/zacharie/issues/184)
+- Possibilité d'éditer le nom de l'inspecteur. [#212](https://github.com/betagouv/zacharie/issues/212)
+- Amélioration de la gestion des dates de mise à mort. [#221](https://github.com/betagouv/zacharie/issues/221)
 
 ### Évolutions techniques
-- Refactorisation de la synchronisation des données hors ligne avec une nouvelle approche utilisant une requête POST en masse pour améliorer les performances.
-- Extraction de la logique de sauvegarde des FEIs et des carcasses dans des fonctions distinctes pour une meilleure organisation du code.
-- Optimisation du chargement des FEIs.
-- Nettoyage du code et suppression de code inutile.
-- Mise à jour de la documentation (CLAUD.md et README.md).
-- Amélioration de la gestion des tests.
-- Correction de problèmes de race condition liés à la transmission des données.
-- Suppression des FEIs terminés de l'application.
+- Correction de plusieurs vulnérabilités XSS pour améliorer la sécurité de l'application.
+- Amélioration du chargement des entités et des utilisateurs pour optimiser les performances.
+- Refonte de la synchronisation des données hors ligne. [#202](https://github.com/betagouv/zacharie/issues/202)
+- Mise à jour des dépendances (minimatch, @getbrevo/brevo, ajv, tar).
+- Amélioration de la structure du code et refactoring de certains composants.
+- Ajout de tests pour améliorer la couverture et la qualité du code.
+- Amélioration de la gestion du cache dans l'administration.
 
 ### Autres changements
-- Mise à jour des dépendances : minimatch, @getbrevo/brevo, tar, ajv. [#189](https://github.com/betagouv/zacharie/issues/189), [#187](https://github.com/betagouv/zacharie/issues/187), [#186](https://github.com/betagouv/zacharie/issues/186)
-- Correction de la configuration de Brevo.
-- Mise à jour du fichier `.gitignore`.
-- Amélioration de la gestion du cache administrateur.
-- Correction de bugs mineurs et améliorations diverses de l'interface utilisateur.
+- Simplification de l'importation de code CCG. [#234](https://github.com/betagouv/zacharie/issues/234)
+- Correction de l'affichage des homonymes de villes.
+- Amélioration de la formulation de certains textes dans l'interface utilisateur. [#216](https://github.com/betagouv/zacharie/issues/216), [#210](https://github.com/betagouv/zacharie/issues/210), [#205](https://github.com/betagouv/zacharie/issues/205), [#197](https://github.com/betagouv/zacharie/issues/197)
+- Mise à jour de la documentation (README.md, CLAUDE.md).
+- Correction de liens dupliqués et amélioration de la navigation.
+- Suppression de code inutile et nettoyage général du code.
+- Ajout d'une variable d'environnement pour la clé SENTRY.
+- Correction de l'affichage des champs SVI.
+- Correction de bugs divers liés à l'interface utilisateur et à la gestion des données.
