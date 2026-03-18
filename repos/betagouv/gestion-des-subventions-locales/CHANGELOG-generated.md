@@ -1,43 +1,54 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 17 mars 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment avec l'ajout de fonctionnalités de tri, de filtrage et de personnalisation des tableaux de données. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des améliorations de sécurité et de performance. L'authentification à deux facteurs a été implémentée pour les utilisateurs staff.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, de la performance et de l'expérience utilisateur. Des correctifs ont été apportés pour la gestion des données, l'import depuis DN, et l'affichage des tableaux. L'ajout de l'authentification à deux facteurs pour les utilisateurs staff renforce la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de réinitialiser l'affichage des colonnes dans les tableaux de données. [#565](https://github.com/betagouv/gestion-des-subventions-locales/issues/565)
-- Ajout de la possibilité de filtrer les dossiers et projets par arrondissement dans l'interface d'administration. [#522](https://github.com/betagouv/gestion-des-subventions-locales/issues/522)
-- Ajout d'une colonne "N° D.N." avec un lien vers la D.N. dans les tableaux des dossiers, projets et programmations. [#548](https://github.com/betagouv/gestion-des-subventions-locales/issues/548)
-- Ajout d'une page permettant d'afficher les projets ayant des annotations manquantes. [#555](https://github.com/betagouv/gestion-des-subventions-locales/issues/555)
-- Ajout de la possibilité de supprimer un projet depuis l'interface d'administration Django. [#520](https://github.com/betagouv/gestion-des-subventions-locales/issues/520)
-- Ajout d'une vidéo de démonstration sur la page d'aide. [#526](https://github.com/betagouv/gestion-des-subventions-locales/issues/526)
-- Implémentation de l'authentification à deux facteurs (OTP) pour les utilisateurs staff. [#537](https://github.com/betagouv/gestion-des-subventions-locales/issues/537)
-- Ajout de colonnes "Commentaires" et "Champs libres" (annotations) dans les tableaux. [#563](https://github.com/betagouv/gestion-des-subventions-locales/issues/563)
-- Ajout d'une colonne "Assiette" dans les tableaux. [#561](https://github.com/betagouv/gestion-des-subventions-locales/issues/561)
-- Amélioration de l'affichage du nombre de décimales pour les taux. [#557](https://github.com/betagouv/gestion-des-subventions-locales/issues/557)
-- Correction pour permettre l'acceptation des taux supérieurs à 100% depuis les annotations DN. [#513](https://github.com/betagouv/gestion-des-subventions-locales/issues/513)
-- Renommage de l'onglet "Annotations" en "Notes". [#507](https://github.com/betagouv/gestion-des-subventions-locales/issues/507)
-- Renommage des messages de succès des projets acceptés et refusés provisoirement. [#516](https://github.com/betagouv/gestion-des-subventions-locales/issues/516)
+- Ajout de l'authentification à deux facteurs (OTP) pour les utilisateurs staff [#537](https://github.com/betagouv/gestion-des-subventions-locales/pull/537).
+- Possibilité de renommer les simulations [#568](https://github.com/betagouv/gestion-des-subventions-locales/pull/568).
+- Ajout de pages Mentions légales et Données personnelles [#571](https://github.com/betagouv/gestion-des-subventions-locales/pull/571).
+- Ajout d'une page listant les projets avec des annotations manquantes sur DN [#555](https://github.com/betagouv/gestion-des-subventions-locales/pull/555).
+- Possibilité de modifier les données d'un dossier via l'interface d'administration.
+- Ajout de colonnes "Commentaires" et "Champs libres" dans les tableaux [#563](https://github.com/betagouv/gestion-des-subventions-locales/pull/563).
+- Ajout de la colonne "N° D.N." avec lien vers D.N. dans les tableaux [#548](https://github.com/betagouv/gestion-des-subventions-locales/pull/548).
+- Correction de l'affichage des taux avec le bon nombre de décimales [#557](https://github.com/betagouv/gestion-des-subventions-locales/pull/557).
+- Correction de la persistance de la visibilité des colonnes masquées par défaut [#564](https://github.com/betagouv/gestion-des-subventions-locales/pull/564).
 
 ### Évolutions techniques
-- Migration des tableaux vers la structure DSFR et application du nommage BEM. [#544](https://github.com/betagouv/gestion-des-subventions-locales/issues/544)
-- Refactorisation du code pour utiliser `BaseModel` au lieu de `TimestampedModel`.
-- Optimisation des performances des pages d'administration de `Collegue` et `FieldMapping` en corrigeant les requêtes N+1. [#518](https://github.com/betagouv/gestion-des-subventions-locales/issues/518)
-- Déplacement de la relation entre `Dossier` et `DossierData` vers `DossierData`.
-- Déplacement de la relation de `Demarche` depuis `DossierData` vers `Dossier`.
-- Ajout des dates de création et de modification sur `Projet` et `DotationProjet`. [#504](https://github.com/betagouv/gestion-des-subventions-locales/issues/504)
-- Ajout de la possibilité de rafraîchir tous les dossiers de toutes les démarches depuis DN. [#533](https://github.com/betagouv/gestion-des-subventions-locales/issues/533)
-- Ajout d'une tâche pour rafraîchir les dossiers d'une démarche depuis une date donnée. [#538](https://github.com/betagouv/gestion-des-subventions-locales/issues/538)
-- Ajout d'une protection contre les attaques par force brute avec django-axes. [#524](https://github.com/betagouv/gestion-des-subventions-locales/issues/524)
-- Suppression de la connexion par username/mot de passe.
-- Correction d'un test flaky.
-- Correction de la création des catégories DETR lorsqu'elles ne sont pas trouvées.
-- Correction pour éviter la suppression des dotations projets programmés lors d'une mise à jour depuis un dossier DN accepté. [#521](https://github.com/betagouv/gestion-des-subventions-locales/issues/521)
+- Activation du cache-busting pour les fichiers statiques [#589](https://github.com/betagouv/gestion-des-subventions-locales/pull/589).
+- Synchronisation incrémentale des dossiers DN par curseur [#579](https://github.com/betagouv/gestion-des-subventions-locales/pull/579).
+- Mise en place d'événements Matomo pour le suivi analytique [#581](https://github.com/betagouv/gestion-des-subventions-locales/pull/581).
+- Refactorisation de l'édition inline des simulations avec des Class-Based Views (CBV) et des formulaires DSFR [#576](https://github.com/betagouv/gestion-des-subventions-locales/pull/576).
+- Migration des tableaux vers la structure DSFR et application du nommage BEM [#544](https://github.com/betagouv/gestion-des-subventions-locales/pull/544).
+- Ajout d'un scan antivirus ClamAV pour les logos des modèles et les documents uploadés [#525](https://github.com/betagouv/gestion-des-subventions-locales/pull/525).
+- Ajout d'une tâche pour rafraîchir les dossiers de toutes les démarches depuis DN [#538](https://github.com/betagouv/gestion-des-subventions-locales/pull/538).
+- Ajout d'une tâche pour rafraîchir les dossiers d'une démarche depuis une date donnée [#533](https://github.com/betagouv/gestion-des-subventions-locales/pull/533).
+- Amélioration du style des filtres [#587](https://github.com/betagouv/gestion-des-subventions-locales/pull/587).
 
 ### Autres changements
-- Ajout d'identifiants Matomo aux formulaires pour le suivi analytique. [#532](https://github.com/betagouv/gestion-des-subventions-locales/issues/532)
-- Ajout de la possibilité de configurer un identifiant Matomo différent pour l'environnement de staging.
-- Correction de la persistance de la visibilité des colonnes masquées par défaut. [#564](https://github.com/betagouv/gestion-des-subventions-locales/issues/564)
-- Blocage des comptes utilisateurs qui ne se sont pas connectés depuis plus d'un an. [#552](https://github.com/betagouv/gestion-des-subventions-locales/issues/552)
-- Correction de problèmes de CSS et d'alignement dans l'interface utilisateur.
-- Suppression de code mort.
-- Mise à jour de la documentation.
+- Ajout d'une vidéo de démo sur la page d'aide [#526](https://github.com/betagouv/gestion-des-subventions-locales/pull/526).
+- Correction des pages d'erreur 403, 404 et 500 pour qu'elles soient conformes au modèle DSFR [#528](https://github.com/betagouv/gestion-des-subventions-locales/pull/528).
+- Suppression de code mort (processModal.js) [#534](https://github.com/betagouv/gestion-des-subventions-locales/pull/534).
+- Correction de divers bugs et améliorations de la stabilité.
+- Suppression des warnings de django-axes [#584](https://github.com/betagouv/gestion-des-subventions-locales/pull/584).
+- Ajout d'un bouton de réinitialisation des colonnes [#565](https://github.com/betagouv/gestion-des-subventions-locales/pull/565).
+- Correction de la notification pour un projet accepté [#578](https://github.com/betagouv/gestion-des-subventions-locales/pull/578).
+- Ajout d'un paramètre pour relancer une tâche [#580](https://github.com/betagouv/gestion-des-subventions-locales/pull/580).
+- Correction de l'export CSV pour afficher les nombres décimaux avec une virgule [#577](https://github.com/betagouv/gestion-des-subventions-locales/pull/577).
+- Correction de la mise en page du dropdown de visibilité des colonnes [#583](https://github.com/betagouv/gestion-des-subventions-locales/pull/583).
+- Correction du style du bouton de confirmation de suppression d'une enveloppe [#586](https://github.com/betagouv/gestion-des-subventions-locales/pull/586).
+- Correction des bordures du tableau d'enveloppes et ajout de marge [#573](https://github.com/betagouv/gestion-des-subventions-locales/pull/573).
+- Ajout de la possibilité de configurer un ID Matomo spécifique pour l'environnement de staging [#532](https://github.com/betagouv/gestion-des-subventions-locales/pull/532).
+- Correction d'un problème de scroll lié au bloc enveloppe [#558](https://github.com/betagouv/gestion-des-subventions-locales/pull/558).
+- Ajout d'une protection contre les attaques par force brute [#524](https://github.com/betagouv/gestion-des-subventions-locales/pull/524).
+- Correction de l'import d'un dossier qui ne s'interrompait pas en cas d'erreur sur un champ [#574](https://github.com/betagouv/gestion-des-subventions-locales/pull/574).
+- Correction d'un problème de récupération des catégories DETR pour les territoires non gérés [#552](https://github.com/betagouv/gestion-des-subventions-locales/pull/552).
+- Ajout d'une limite de 3 lignes maximum pour les cellules du tableau [#553](https://github.com/betagouv/gestion-des-subventions-locales/pull/553).
+- Correction d'un bug empêchant la suppression de projets via l'admin.
+- Ajout de droits pour les utilisateurs "équipe" pour modifier les périmètres des autres utilisateurs [#531](https://github.com/betagouv/gestion-des-subventions-locales/pull/531).
+- Correction de l'export des noms de colonnes [#580](https://github.com/betagouv/gestion-des-subventions-locales/pull/580).
+- Ajout de la possibilité de ne pas interrompre l'import d'un dossier en cas d'erreur sur un champ [#561](https://github.com/betagouv/gestion-des-subventions-locales/pull/561).
+- Ajout d'un trigger `merge_group` au workflow CI [#572](https://github.com/betagouv/gestion-des-subventions-locales/pull/572).
+- Correction du dropdown de colonnes en mode sombre [#570](https://github.com/betagouv/gestion-des-subventions-locales/pull/570).
+- Correction de tests et ajout de tests manquants.
+- Diverses corrections de style et améliorations de la lisibilité du code.

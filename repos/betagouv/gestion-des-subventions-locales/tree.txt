@@ -1,4 +1,5 @@
 .
+├── .buildpacks
 ├── .env.example
 ├── .github
 │   ├── pull_request_template.md
@@ -44,6 +45,7 @@
 │   │       ├── __init__.py
 │   │       ├── create_perimetres.py
 │   │       └── init_document_sizes.py
+│   ├── matomo.py
 │   ├── middlewares.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -100,6 +102,8 @@
 │   │   │   └── messages.html
 │   │   ├── gsl_core
 │   │   │   ├── _column_visibility_dropdown.html
+│   │   │   ├── donnees_personnelles.html
+│   │   │   ├── mentions_legales.html
 │   │   │   ├── otp_setup.html
 │   │   │   ├── otp_verify.html
 │   │   │   └── table_cells
@@ -225,6 +229,7 @@
 │   │   ├── 0046_remove_dossier_ds_demarche_number.py
 │   │   ├── 0047_alter_dossier_ds_demarche.py
 │   │   ├── 0048_move_dossier_relation_to_dossierdata.py
+│   │   ├── 0049_demarche_sync_cursor_alter_demarche_updated_since.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -295,6 +300,8 @@
 │   │   ├── 0012_arreteetlettresignes_delete_arretesigne.py
 │   │   ├── 0013_alter_annexe_file_alter_arreteetlettresignes_file_and_more.py
 │   │   ├── 0014_arrete_size_lettrenotification_size.py
+│   │   ├── 0015_add_antivirus_scan_fields.py
+│   │   ├── 0016_modelearrete_is_infected_modelearrete_last_scan_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── signals.py
@@ -320,6 +327,7 @@
 │   │       ├── deleteNotificationDocumentModal.js
 │   │       ├── modeleArreteForm.js
 │   │       └── notification.js
+│   ├── tasks.py
 │   ├── templates
 │   │   ├── gsl_notification
 │   │   │   ├── generated_document
@@ -360,6 +368,7 @@
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
+│   │   ├── test_antivirus.py
 │   │   ├── test_factories.py
 │   │   ├── test_forms.py
 │   │   ├── test_models.py
@@ -531,6 +540,8 @@
 │   │   ├── 0031_merge_20260210_1653.py
 │   │   ├── 0032_remove_projet_free_comment_projet_comment_1_and_more.py
 │   │   ├── 0033_projet_dotations_updated_in_app.py
+│   │   ├── 0034_alter_dotationprojet_assiette.py
+│   │   ├── 0035_alter_dotationprojet_assiette.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services
@@ -645,6 +656,8 @@
 │   │   ├── 0019_alter_simulation_enveloppe.py
 │   │   ├── 0020_alter_simulation_slug.py
 │   │   ├── 0021_alter_simulation_created_at_and_more.py
+│   │   ├── 0022_simulation_columns_visibility.py
+│   │   ├── 0023_alter_simulationprojet_montant.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -662,7 +675,6 @@
 │   │       │   └── dotationDropdown.js
 │   │       ├── handleInteractionInSimulationProjet.js
 │   │       ├── handleInteractionInSimulationProjetAnnotations.js
-│   │       ├── handleInteractionsInSimulation.js
 │   │       └── modules
 │   │           ├── handleDotationUpdate.js
 │   │           └── utils.js
@@ -673,6 +685,7 @@
 │   │   │   ├── simulation_form.html
 │   │   │   ├── simulation_list.html
 │   │   │   ├── simulation_projet_detail.html
+│   │   │   ├── simulation_rename.html
 │   │   │   ├── tab_simulation_projet
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
@@ -681,6 +694,10 @@
 │   │   │       ├── _other_dotation_row.html
 │   │   │       ├── assiette.html
 │   │   │       ├── dotation.html
+│   │   │       ├── edit_forms
+│   │   │       │   ├── _assiette_edit_form.html
+│   │   │       │   ├── _montant_edit_form.html
+│   │   │       │   └── _taux_edit_form.html
 │   │   │       ├── montant_retenu.html
 │   │   │       ├── statut.html
 │   │   │       └── taux.html
@@ -710,10 +727,7 @@
 │   │       │   ├── _simulation_actions_menu.html
 │   │       │   └── modal_base.html
 │   │       └── table_forms
-│   │           ├── _assiette_form.html
-│   │           ├── _dotation_form.html
-│   │           ├── _montant_form.html
-│   │           └── _taux_form.html
+│   │           └── _dotation_form.html
 │   ├── templatetags
 │   │   └── simulation_filters.py
 │   ├── tests
@@ -722,18 +736,18 @@
 │   │   ├── forms
 │   │   │   ├── test_double_dotation_status_forms.py
 │   │   │   ├── test_projet_status_forms.py
-│   │   │   └── test_simulation_projet_form.py
+│   │   │   ├── test_simulation_projet_form.py
+│   │   │   └── test_single_field_forms.py
 │   │   ├── models
 │   │   │   └── test_simulation_manager.py
 │   │   ├── services
 │   │   │   └── test_simulation_projet_services.py
+│   │   ├── test_columns_visibility.py
 │   │   ├── test_factories.py
 │   │   ├── test_form_helpers.py
 │   │   ├── test_models.py
-│   │   ├── test_resources.py
 │   │   ├── test_simuprojet_constraints.py
 │   │   ├── test_urls.py
-│   │   ├── test_utils.py
 │   │   └── views
 │   │       ├── test_double_dotation_view_form_selection.py
 │   │       ├── test_filters.py
@@ -748,9 +762,9 @@
 │   │       ├── test_simulation_detail_view.py
 │   │       ├── test_simulation_projet_notes_view.py
 │   │       ├── test_simulation_projet_view.py
+│   │       ├── test_simulation_rename_view.py
 │   │       └── test_status_modal_view.py
 │   ├── urls.py
-│   ├── utils.py
 │   └── views
 │       ├── decorators.py
 │       ├── simulation_projet_notes_views.py
@@ -792,4 +806,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-148 directories, 646 files
+149 directories, 659 files

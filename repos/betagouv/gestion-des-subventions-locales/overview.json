@@ -1,15 +1,18 @@
 {
   "url": "https://github.com/betagouv/gestion-des-subventions-locales",
   "name": "gestion-des-subventions-locales",
-  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers, les projets et les programmations de subventions. Il offre des fonctionnalités d'administration et d'import de données.",
+  "description": "Outil de gestion des subventions locales. Permet de gérer les dossiers, les projets et les dotations associées, avec des fonctionnalités d'import depuis des sources externes comme DN.",
   "language": "Python",
   "features": [
-    "Formulaires & Démarches",
-    "Collaboration & Workflow",
-    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
+    "Gestion des établissements & Structures",
+    "Aides & Éligibilité",
     "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Notifications & Alertes",
-    "Gestion des catégories de subventions (DETR/DSIL)"
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,30 +21,32 @@
     "Celery",
     "Redis",
     "Mozilla-django-oidc",
-    "htmx.org",
+    "django-htmx",
+    "django-csp",
     "django-dsfr"
   ],
   "components": [
-    "Django",
-    "PostgreSQL & SQL",
-    "Design System (DSFR & UI libs)",
     "API REST & GraphQL",
-    "Celery & Queue asynchrone",
-    "MongoDB & NoSQL"
+    "PostgreSQL & SQL",
+    "Python (scripts & backend)",
+    "Django",
+    "Frontend React",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "saml",
       "session"
     ]
   },
   "tests": [
-    "pytest"
+    "Pytest"
   ],
   "workflows": [
-    "CI/CD (détails non spécifiés)"
+    "CI/CD"
   ],
-  "lastActivity": "2026-03-06T11:23:51+01:00",
+  "lastActivity": "2026-03-17T16:58:36Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -52,12 +57,11 @@
     "openIssues": null
   },
   "tags": [
-    "Subventions & Finances publiques",
-    "gestion",
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Django & FastAPI",
+    "Python",
     "Bases de données SQL",
-    "Celery",
-    "Design System & UI"
+    "Sécurité & Auth",
+    "Subventions & Finances publiques"
   ]
 }
