@@ -6,7 +6,10 @@
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
+│       ├── build-deploy-dev.yml
+│       ├── deploy-prd.yml
 │       ├── models-update.yml
+│       ├── promote-deploy-stg.yml
 │       └── rankings-update.yml
 ├── .gitignore
 ├── .gitmodules
@@ -24,6 +27,7 @@
 │   ├── __init__.py
 │   ├── arena
 │   │   ├── __init__.py
+│   │   ├── cache.py
 │   │   ├── conversation.py
 │   │   ├── litellm.py
 │   │   ├── models.py
@@ -45,7 +49,6 @@
 │   ├── logger.py
 │   ├── main.py
 │   ├── sentry.py
-│   ├── session.py
 │   └── utils
 │       ├── __init__.py
 │       ├── countries.py
@@ -62,6 +65,15 @@
 │   ├── docker-bake.yml
 │   ├── docker-compose.yml
 │   ├── generate-init-db.sh
+│   ├── jenkins
+│   │   ├── trigger_backend_build.py
+│   │   ├── trigger_check_images_prd.py
+│   │   ├── trigger_check_images_stg.py
+│   │   ├── trigger_deploy_dev.py
+│   │   ├── trigger_deploy_prd.py
+│   │   ├── trigger_deploy_stg.py
+│   │   ├── trigger_frontend_build.py
+│   │   └── trigger_image_promotion.py
 │   ├── list-harbor-tags.sh
 │   └── restore-backup.sh
 ├── frontend
@@ -549,9 +561,6 @@
 │   │   ├── archs.json
 │   │   ├── archs.py
 │   │   ├── build_models.py
-│   │   ├── build_simplified_llm_list_ranking.py
-│   │   ├── dataset_data.py
-│   │   ├── generated-models-extra-data.json
 │   │   ├── generated-models.json
 │   │   ├── licenses.json
 │   │   ├── licenses.py
@@ -568,6 +577,13 @@
 │   ├── news
 │   │   ├── build_news.py
 │   │   └── fr.json
+│   ├── ranking
+│   │   ├── __init__.py
+│   │   ├── bradley_terry.py
+│   │   ├── compute.py
+│   │   ├── monitor.py
+│   │   ├── queries.py
+│   │   └── run.py
 │   ├── ranking_methods
 │   ├── schemas
 │   │   ├── conversations.sql
@@ -577,6 +593,10 @@
 │   │   │   └── reactions_13102025.sql
 │   │   ├── reactions.sql
 │   │   └── votes.sql
+│   ├── storage
+│   │   ├── db.py
+│   │   ├── queries.py
+│   │   └── redis.py
 │   ├── suggestions
 │   │   ├── build_suggestions.py
 │   │   ├── da.json
@@ -585,4 +605,4 @@
 │   ├── topics_pii.py
 │   └── utils.py
 └── uv.lock
-87 directories, 500 files
+90 directories, 517 files

@@ -1,4 +1,82 @@
+2026-03-17T18:23:50+01:00 - 3b78c54 - Elie Gavoty : Merge pull request #392 from betagouv/add-mistral-small-4
+2026-03-17T17:46:28+01:00 - fca5f87 - Elie Gavoty : chore(models): models-build
+2026-03-17T17:44:15+01:00 - b623816 - Simon Zilinskas : feat(models): add Mistral Small 4 (119B MoE)
+2026-03-17T17:43:02+01:00 - cba1f0c - Elie Gavoty : Merge pull request #268 from betagouv/ranking-consolidation
+2026-03-17T12:04:57+01:00 - fd2e72d - axolotle : feat(utils): add db_cursor helper
+2026-03-17T12:04:57+01:00 - fb54f25 - axolotle : refactor(back): remove no longer used validation alias in DatasetData model
+2026-03-17T12:04:57+01:00 - f3906ff - axolotle : refactor(back): use db helpers in get_country_portal_count
+2026-03-17T12:04:57+01:00 - dcaaaad - axolotle : refactor: move pref types to config
+2026-03-17T12:04:57+01:00 - d72e3a8 - axolotle : refactor(back): rename generic reaction to pref
+2026-03-17T12:04:57+01:00 - d1d8e6e - axolotle : refactor(utils): move ranking data monitoring to 'ranking"
+2026-03-17T12:04:57+01:00 - d028b4a - axolotle : refactor(front): rename reaction to pref
+2026-03-17T12:04:57+01:00 - ab2dc1f - axolotle : refactor(utils): use settings in get_db_engine()
+2026-03-17T12:04:57+01:00 - a7f8e71 - axolotle : refactor(ranking): add DataGroup type
+2026-03-17T12:04:57+01:00 - a7d9de2 - axolotle : feat(ranking): improve monitoring
+2026-03-17T12:04:57+01:00 - a79728b - axolotle : fix(back): revert get_country_portal_count ttl
+2026-03-17T12:04:57+01:00 - a4f7543 - axolotle : chore: format python
+2026-03-17T12:04:57+01:00 - 9c39b9b - Simon Zilinskas : feat(ranking): compute rankings in-app from DB instead of static files
+2026-03-17T12:04:57+01:00 - 91f6a23 - axolotle : refactor(ranking): set "redis" as default ranking computation storage mode
+2026-03-17T12:04:57+01:00 - 91e22ee - axolotle : feat(back): use redis cached ranking data in get_available_models
+2026-03-17T12:04:57+01:00 - 8b1f2d7 - axolotle : refactor: remove no longer used ranking_scheduler
+2026-03-17T12:04:57+01:00 - 7454074 - axolotle : fix(back): cache: fix import and add REDIS_LLM_RESPONSES_KEY
+2026-03-17T12:04:57+01:00 - 7090776 - axolotle : refactor(ranking): use db helpers in queries
+2026-03-17T12:04:57+01:00 - 6bfd2d7 - axolotle : refactor: move ranking computation code to utils/
+2026-03-17T12:04:57+01:00 - 654d019 - axolotle : chore(data): update generated-models.json with removed 'data' and 'prefs' keys
+2026-03-17T12:04:57+01:00 - 647f757 - axolotle : chore(data): update generated-models.json
+2026-03-17T12:04:57+01:00 - 5f23a21 - axolotle : chore(utils): add cyclopts dep
+2026-03-17T12:04:57+01:00 - 59ae868 - axolotle : refactor(front): ranking: display message if leaderboard not available
+2026-03-17T12:04:57+01:00 - 58ceb81 - Elie Gavoty : fix(front): ranking avoid error if no models data yet
+2026-03-17T12:04:57+01:00 - 56c5571 - axolotle : feat(ranking): also compute reaction for preferences
+2026-03-17T12:04:57+01:00 - 4e6d39a - axolotle : refactor(ranking): update logger
+2026-03-17T12:04:57+01:00 - 3d49570 - axolotle : chore: remove no longer needed model generation from 'compute-rankings'
+2026-03-17T12:04:57+01:00 - 3a70a23 - axolotle : refactor: use globals vars for redis cache keys
+2026-03-17T12:04:57+01:00 - 367530b - axolotle : fix: update module path to ranking
+2026-03-17T12:04:57+01:00 - 33d0fd4 - axolotle : refactor(llms): remove 'data' and 'prefs' from llms generation
+2026-03-17T12:04:57+01:00 - 2f442b3 - axolotle : refactor: move get_redis_client() to utils/storage
+2026-03-17T12:04:57+01:00 - 2d96ec9 - axolotle : chore: update makefile 'compute-rankings' command
+2026-03-17T12:04:57+01:00 - 25606b1 - axolotle : feat(ranking): add 'run' script to compute ranking and store results in redis cache
+2026-03-17T12:04:57+01:00 - 154d1c6 - axolotle : refactor(back): no longer fallback to json ranking data
+2026-03-17T12:04:57+01:00 - 0e1a283 - axolotle : fix(back): update comment
+2026-03-17T12:04:57+01:00 - 054f13b - axolotle : feat(utils): add modular db queries for conversations, votes and reactions
+2026-03-17T12:04:57+01:00 - 04efa6d - axolotle : refactor: remove no longer used ranking data files
+2026-03-16T16:35:23+01:00 - 8cc9ae4 - axolotle : fix(back): remove logging of asyncio.CancelledError
+2026-03-16T16:29:10+01:00 - 6bb3bb1 - Axolotle : Merge pull request #379 from betagouv/feat/response-cache
+2026-03-16T14:51:11+01:00 - b58a727 - axolotle : fix(back): typing
+2026-03-16T14:51:11+01:00 - 83eb461 - Simon Zilinskas : feat(backend): add probabilistic response caching for first-turn messages
+2026-03-16T14:51:11+01:00 - 7de5965 - axolotle : fix(back): remove is_cache default value in MessageMetadata to make sure those are defined at build
+2026-03-16T14:51:11+01:00 - 7d5db50 - axolotle : fix(back): save CachedResponse with current_msg data
+2026-03-16T14:51:11+01:00 - 4fbb56d - axolotle : fix(back): use same logic for gathering has_cached_response
+2026-03-16T14:51:11+01:00 - 4929015 - axolotle : fix(back): remove cached_response_* default values in ConversationsRecord to make sure those are defined at build
+2026-03-16T14:51:11+01:00 - 26233d1 - axolotle : fix(streaming): silence CancelledError in _stream_cached_response to avoid breaking the whole conversation
+2026-03-16T14:48:30+01:00 - 7c53a21 - axolotle : fix(front): fix newsletter tally form darkmode
+2026-03-16T10:49:10+01:00 - aba2c34 - Axolotle : Merge pull request #390 from betagouv/i18n-parameter-count-fix
+2026-03-16T10:42:26+01:00 - 51b9c82 - Simon : Fix number of parameters
+2026-03-16T10:37:44+01:00 - 083a9aa - Axolotle : Merge pull request #365 from betagouv/feat/newsletter-brevo-tally
+2026-03-16T10:25:14+01:00 - cab51ad - axolotle : fix(front): remove iframe outline
+2026-03-13T08:45:26+01:00 - 35caca2 - Simon Zilinskas : fix(models): use free tier endpoint for Nemotron 3 Super (paid variant not yet available on OpenRouter)
+2026-03-13T08:34:38+01:00 - b19bc8f - Simon Zilinskas : chore(models): build/update models
+2026-03-12T15:31:33+01:00 - ba114c9 - Simon : Merge pull request #386 from betagouv/add-nemotron-3-super
+2026-03-12T13:48:38+01:00 - ad68dee - Simon Zilinskas : feat(models): enrich Nemotron 3 Super fyi with expert count, synthetic data provenance and verbosity note
+2026-03-12T10:34:41+01:00 - e4abe58 - Simon Zilinskas : feat(models): add Nemotron 3 Super 120B-A12B
+2026-03-11T16:56:36+01:00 - a7dff13 - Elie Gavoty : fix(devops): prd deploy job name
+2026-03-11T15:59:13+01:00 - d8341cd - Elie Gavoty : Merge branch 'archive-cohere-command-a' into develop
+2026-03-11T15:51:56+01:00 - 3fe1afa - Elie Gavoty : chore(models): update
+2026-03-11T15:39:29+01:00 - 3e52990 - Elie Gavoty : Merge pull request #383 from betagouv/fix/block-role-prefixed-bot-spam
+2026-03-11T14:58:16+01:00 - 6266ee4 - Simon Zilinskas : chore(models): archive Cohere Command A
+2026-03-11T11:38:29+01:00 - 4c1a773 - Simon Zilinskas : fix(spam): block role-prefixed bot commands like 'User: say ok'
+2026-03-10T12:15:57+01:00 - 4378026 - Elie Gavoty : Merge pull request #356 from betagouv/dev
 2026-03-09T18:45:12+01:00 - 167c789 - Elie Gavoty : chore(models): disable oding large and medium temporarily waiting to fix api networl error
+2026-03-09T18:19:24+01:00 - 2b718a4 - Elie Gavoty : enh(devops): setup deploy-prd
+2026-03-09T17:45:15+01:00 - 69b07d7 - Elie Gavoty : enh(devops): fix check images job name
+2026-03-09T17:41:06+01:00 - 7241042 - Elie Gavoty : enh(devops): fix check images job name
+2026-03-09T17:35:03+01:00 - d81f010 - Elie Gavoty : enh(devops): add stg pipeline
+2026-03-09T16:38:59+01:00 - aa7f8c3 - Elie Gavoty : enh(devops): fix deploy dev
+2026-03-09T16:31:43+01:00 - 5c2f4f4 - Elie Gavoty : enh(devops): add deploy dev if both builds have succeded
+2026-03-09T15:16:50+01:00 - ba12d54 - Elie Gavoty : enh(devops): add frontend image build trigger
+2026-03-09T15:02:58+01:00 - ba21371 - Elie Gavoty : enh(devops): python script to trigger backend image build in jenkins
+2026-03-09T15:02:58+01:00 - 8189677 - Elie Gavoty : enh(devops): limit permission for github workflow repo access
+2026-03-09T15:02:58+01:00 - 1bc2671 - Elie Gavoty : enh(devops): add github workflow to build backend image
+2026-03-09T15:02:58+01:00 - 09f083a - Elie Gavoty : enh(devops): ajouter la librairie jenkins pour les automatisation devops
 2026-03-09T14:37:46+01:00 - 7bbab4b - Elie Gavoty : Merge pull request #374 from betagouv/add-gpt-5.4
 2026-03-09T14:36:07+01:00 - 4ca4989 - Elie Gavoty : chore(models): build update models
 2026-03-09T14:10:28+01:00 - c225098 - Elie Gavoty : Merge pull request #353 from weblate/weblate-comparia-develop
@@ -29,6 +107,7 @@
 2026-03-04T11:16:47+01:00 - 62fd28b - Elie Gavoty : Merge pull request #349 from betagouv/enh-ecologits
 2026-03-04T11:14:49+01:00 - 2d4a397 - Elie Gavoty : Merge pull request #360 from betagouv/add-qwen3.5-35b-a3b
 2026-03-04T11:14:06+01:00 - fc0ca2b - Elie Gavoty : Merge pull request #363 from betagouv/fix/block-prompt-injection-spam
+2026-03-03T15:45:48+01:00 - b1157c2 - Simon Zilinskas : feat(newsletter): migrate to Brevo via Tally and update privacy policy
 2026-03-03T13:30:23+01:00 - 050c6fb - Simon Zilinskas : refactor(backend): consolidate prompt injection regex and move import to top
 2026-03-03T11:07:04+01:00 - 3447ab2 - Simon Zilinskas : fix(backend): block prompt injection spam via XML tag detection
 2026-03-03T09:09:49Z - 0e694b7 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
