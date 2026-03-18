@@ -21,7 +21,8 @@
     "test:e2e": "dotenvx run -f .env.e2e -f .env -- jest --runInBand --config ./test/jest/jest-e2e.config.ts",
     "test:all": "dotenvx run -f .env.e2e -f .env -- jest --runInBand --config ./test/jest/jest-all.config.ts",
     "cli": "dotenvx run -- ts-node -r tsconfig-paths/register src/cli.ts",
-    "prisma": "dotenvx run -- prisma"
+    "prisma": "dotenvx run -- prisma",
+    "sentry": "sentry-cli"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.999.0",
@@ -62,6 +63,7 @@
     "@nestjs/cli": "^11.0.16",
     "@nestjs/schematics": "^11.0.9",
     "@nestjs/testing": "^11.1.14",
+    "@sentry/cli": "^3.3.0",
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",

@@ -29,8 +29,7 @@
 │   │   ├── .vscode
 │   │   │   └── settings.json
 │   │   ├── cli
-│   │   │   ├── ingest-jurisdictions-xml.ts
-│   │   │   └── move-files.ts
+│   │   │   └── ingest-jurisdictions-xml.ts
 │   │   ├── docs
 │   │   │   └── adr
 │   │   │       └── 2025-10-22-sortie-hexa.md
@@ -214,6 +213,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260304141410_adds_file_priorities_column
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260305162823_clean_deprecated_tables
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260317111530_adds_detected_fields
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -224,9 +227,9 @@
 │   │   │   │   ├── magistrat.prisma
 │   │   │   │   ├── nominations.prisma
 │   │   │   │   ├── observation.prisma
-│   │   │   │   ├── reports.prisma
-│   │   │   │   └── shared-kernel.prisma
+│   │   │   │   └── reports.prisma
 │   │   │   └── sql
+│   │   │       ├── deleteReportsAfterAffectationPublicationRawQuery.sql
 │   │   │       ├── detailsMemberRawQuery.sql
 │   │   │       ├── findMagistratExternalIdByFullName.sql
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
@@ -237,6 +240,7 @@
 │   │   │       ├── insertGradesRawQuery.sql
 │   │   │       ├── insertJurisdictionTypesRawQuery.sql
 │   │   │       ├── insertJurisdictionsRawQuery.sql
+│   │   │       ├── insertLodamNominationFilesRawQuery.sql
 │   │   │       ├── insertLolfiSessionRawQuery.sql
 │   │   │       ├── insertMagistratRawQuery.sql
 │   │   │       ├── insertNominationRawQuery.sql
@@ -256,7 +260,8 @@
 │   │   │   ├── init-buckets.js
 │   │   │   ├── prisma.js
 │   │   │   ├── register-users-to-scalingo.sh
-│   │   │   └── scalingo-utils.sh
+│   │   │   ├── scalingo-utils.sh
+│   │   │   └── send-to-scalingo.sh
 │   │   ├── src
 │   │   │   ├── app.module.ts
 │   │   │   ├── cli.ts
@@ -346,6 +351,7 @@
 │   │   │   │   │       │   ├── lolfi-transparences.ingestor.ts
 │   │   │   │   │       │   └── lolfi-type-juridiction.ingestor.ts
 │   │   │   │   │       ├── lolfi-archive-ingest.ts
+│   │   │   │   │       ├── lolfi-crypto.service.ts
 │   │   │   │   │       ├── lolfi-job.type.ts
 │   │   │   │   │       ├── lolfi-xml-sax-parser.spec.ts
 │   │   │   │   │       ├── lolfi-xml-sax-parser.ts
@@ -424,6 +430,7 @@
 │   │   │   │   │   └── report.service.ts
 │   │   │   │   ├── root.module.ts
 │   │   │   │   ├── session
+│   │   │   │   │   ├── affectation.e2e-spec.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── auto-affectation
 │   │   │   │   │   │   │   ├── auto-affectation-file-workload.spec.ts
@@ -517,6 +524,7 @@
 │   │   │   │       │   ├── queries
 │   │   │   │       │   │   ├── details-user-from-session-id.query.ts
 │   │   │   │       │   │   ├── details-user.query.ts
+│   │   │   │       │   │   ├── find-machine.query.ts
 │   │   │   │       │   │   └── list-users.query.ts
 │   │   │   │       │   └── repositories
 │   │   │   │       │       └── auth-user.repository.ts
@@ -546,8 +554,7 @@
 │   │   ├── test
 │   │   │   ├── assets
 │   │   │   │   └── lodam
-│   │   │   │       ├── lodam_transparence.xlsx
-│   │   │   │       └── lodam_transparence_observers_updated.xlsx
+│   │   │   │       └── lodam_transparence.xlsx
 │   │   │   ├── docker-compose-test.yaml
 │   │   │   └── jest
 │   │   │       ├── jest-all.config.ts
@@ -992,6 +999,8 @@
 │       ├── tsconfig.json
 │       ├── tsconfig.node.json
 │       └── vite.config.ts
+├── bin
+│   └── api.sh
 ├── package.json
 ├── packages
 │   └── shared-models
@@ -1016,4 +1025,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-191 directories, 827 files
+194 directories, 833 files
