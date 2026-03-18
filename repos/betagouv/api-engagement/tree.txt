@@ -21,12 +21,12 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── build-check.yml
-│       ├── changelog.yml
 │       ├── claude.yml
 │       ├── docker-build-push.yml
 │       ├── lint.yml
 │       ├── main-pipeline.yml
 │       ├── pr-title-lint.yml
+│       ├── release.yml
 │       ├── terraform-deploy.yml
 │       └── tests.yml
 ├── .gitignore
@@ -95,7 +95,7 @@
 │   │       │   │   │   ├── int_mission_active_department_range.sql
 │   │       │   │   │   ├── int_mission_active_range.sql
 │   │       │   │   │   ├── int_mission_address.sql
-│   │       │   │   │   ├── int_mission_first_events.sql
+│   │       │   │   │   ├── int_mission_click_apply_metrics.sql
 │   │       │   │   │   └── int_mission_moderation_status.sql
 │   │       │   │   ├── organization
 │   │       │   │   │   └── int_organization_active_range.sql
@@ -103,6 +103,8 @@
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   └── int_publisher_organization.sql
 │   │       │   │   ├── stat_event
+│   │       │   │   │   ├── __models.yml
+│   │       │   │   │   ├── int_stat_event_click_metrics.sql
 │   │       │   │   │   └── int_stat_event_global.sql
 │   │       │   │   └── widget
 │   │       │   │       └── int_widget.sql
@@ -392,6 +394,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260303120000_mission_address_hash_index_and_jobboard_fk
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260304100000_add_mission_address_geoloc_failure_count
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260304104852_link_publisher_exlcusion_and_publisher_organization
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -399,6 +405,7 @@
 │   │   ├── README.md
 │   │   ├── backfill-mission-jobboard-sync-status.ts
 │   │   ├── backfill-organization-search-text.ts
+│   │   ├── backfill-publisher-organizations-exclusion.ts
 │   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
 │   │   ├── cleanup-duplicate-organizations.ts
@@ -425,7 +432,6 @@
 │   │   │   ├── backfill-mission.ts
 │   │   │   ├── backfill-moderation-event.ts
 │   │   │   ├── backfill-organization.ts
-│   │   │   ├── backfill-publisher-diffusion-exclusion.ts
 │   │   │   ├── backfill-publisher.ts
 │   │   │   ├── backfill-report.ts
 │   │   │   ├── backfill-stat-bot.ts
@@ -491,6 +497,8 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── enrich-missions-geoloc
+│   │   │   │   └── handler.ts
 │   │   │   ├── grimpio
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── transformers.test.ts
@@ -513,7 +521,6 @@
 │   │   │   │       │   └── publisher.test.ts
 │   │   │   │       ├── address.ts
 │   │   │   │       ├── db.ts
-│   │   │   │       ├── geoloc.ts
 │   │   │   │       ├── mission.ts
 │   │   │   │       ├── moderation.ts
 │   │   │   │       ├── organization.ts
@@ -528,11 +535,15 @@
 │   │   │   │   └── handler.ts
 │   │   │   ├── letudiant
 │   │   │   │   ├── __tests__
-│   │   │   │   │   ├── handler.test.ts
 │   │   │   │   │   ├── transformers.test.ts
 │   │   │   │   │   └── utils.test.ts
 │   │   │   │   ├── config.ts
 │   │   │   │   ├── handler.ts
+│   │   │   │   ├── phases
+│   │   │   │   │   ├── archive-expired.ts
+│   │   │   │   │   ├── publish-new.ts
+│   │   │   │   │   ├── sync-mission.ts
+│   │   │   │   │   └── update-modified.ts
 │   │   │   │   ├── transformers.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── linkedin
@@ -594,7 +605,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── passport.ts
-│   │   │   ├── rate-limite.ts
+│   │   │   ├── rate-limit.ts
 │   │   │   └── request-id.ts
 │   │   ├── repositories
 │   │   │   ├── activity.ts
@@ -634,6 +645,7 @@
 │   │   │   │   ├── api.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── email.ts
+│   │   │   ├── geoloc.ts
 │   │   │   ├── geopf.ts
 │   │   │   ├── import-rna.ts
 │   │   │   ├── import.ts
@@ -706,6 +718,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── job.ts
 │   │   │   ├── mission-moderation-status.ts
+│   │   │   ├── mission-moderation.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── normalize.ts
 │   │   │   ├── organization.ts
@@ -733,11 +746,15 @@
 │   │   └── v2
 │   │       ├── activity.ts
 │   │       ├── jobteaser.ts
-│   │       └── leboncoin.ts
+│   │       ├── leboncoin.ts
+│   │       └── mission
+│   │           ├── controller.ts
+│   │           └── helpers.ts
 │   ├── tests
 │   │   ├── fixtures
 │   │   │   ├── index.ts
 │   │   │   ├── mission.ts
+│   │   │   ├── publisher-organization.ts
 │   │   │   ├── publisher.ts
 │   │   │   ├── stat-event.ts
 │   │   │   ├── user.ts
@@ -763,20 +780,28 @@
 │   │   │   │   │   ├── myorganization.test.ts
 │   │   │   │   │   └── view.test.ts
 │   │   │   │   └── v2
-│   │   │   │       └── activity.test.ts
+│   │   │   │       ├── activity.test.ts
+│   │   │   │       └── mission.test.ts
+│   │   │   ├── dashboard
+│   │   │   │   └── user-access.test.ts
 │   │   │   └── jobs
 │   │   │       ├── import-missions
 │   │   │       │   ├── data
 │   │   │       │   │   ├── correct-feed.xml
+│   │   │       │   │   ├── invalid-address-feed.xml
 │   │   │       │   │   ├── invalid-compensation-feed.xml
 │   │   │       │   │   └── missing-logo-feed.xml
 │   │   │       │   └── import-missions.handler.test.ts
+│   │   │       ├── letudiant
+│   │   │       │   └── letudiant.handler.test.ts
 │   │   │       └── moderation
 │   │   │           └── moderation.handler.test.ts
 │   │   ├── mocks
 │   │   │   ├── dataSubventionMock.ts
 │   │   │   ├── index.ts
 │   │   │   ├── pgMock.ts
+│   │   │   ├── pilotyMock.ts
+│   │   │   ├── s3Mock.ts
 │   │   │   └── sentryMock.ts
 │   │   ├── testApp.ts
 │   │   └── vitest
@@ -1012,6 +1037,9 @@
 │   │       └── url.js
 │   ├── tests
 │   │   └── e2e
+│   │       ├── dashboard
+│   │       │   ├── fixtures.ts
+│   │       │   └── user-navigation.spec.ts
 │   │       ├── fixtures
 │   │       │   └── mockData.ts
 │   │       ├── jstag
@@ -1137,4 +1165,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-265 directories, 874 files
+273 directories, 894 files
