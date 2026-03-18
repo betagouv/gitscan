@@ -1,22 +1,14 @@
-## Changelog : euphrosyne-tools-api (30 derniers jours)
+## Changelog : euphrosyne-tools-api (30 derniers jours, au 17 mars 2026)
 
 ### Résumé
-Ce changelog résume les mises à jour récentes de l'API Euphrosyne Tools. Les changements principaux concernent la mise à jour des dépendances du projet, notamment les librairies Python utilisées pour le développement et l'infrastructure Azure. Une migration vers Python 3.14 a également été effectuée pour bénéficier des dernières améliorations et corrections de sécurité.
+Ce changelog fait état d'une période d'activité principalement axée sur la maintenance et la mise à jour des dépendances du projet. De nombreuses bibliothèques utilisées par l'API ont été mises à jour vers leurs dernières versions, améliorant ainsi la sécurité, la stabilité et les performances globales.
+
+### Évolutions fonctionnelles
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Migration vers Python 3.14 : Le projet a été mis à jour pour utiliser Python 3.14, améliorant ainsi la compatibilité et la sécurité. [#695](https://github.com/betagouv/euphrosyne-tools-api/pull/695)
-- Mise à jour des workflows CI/CD : Les workflows de tests et de mise à jour des caches ont été adaptés pour utiliser Python 3.14. [#693](https://github.com/betagouv/euphrosyne-tools-api/pull/693)
-- Remplacement de `azure-mgmt-resource` par `azure-mgmt-resource-deployments` :  Simplification de la gestion des ressources Azure. [#689](https://github.com/betagouv/euphrosyne-tools-api/pull/689)
+- Mise à jour de plusieurs dépendances Python, incluant `fastapi` (de 0.128.5 à 0.135.1), `azure-identity` (de 1.25.1 à 1.25.3), `sentry-sdk[fastapi]` (de 2.52.0 à 2.54.0), `pydantic-settings` (de 2.12.0 à 2.13.1), `uvicorn[standard]` (de 0.40.0 à 0.41.0), `isort` (de 7.0.0 à 8.0.1), `ruff` (de 0.14.14 à 0.15.6) et `python-dotenv` (de 1.2.1 à 1.2.2).
+- Mise à jour des outils de développement : `black` (de 26.1.0 à 26.3.1) et `stream-zip` (de 0.0.83 à 0.0.84).
 
 ### Autres changements
-- Mises à jour de dépendances : De nombreuses dépendances ont été mises à jour vers leurs dernières versions, incluant :
-    - `fastapi` (0.128.0 -> 0.135.1)
-    - `uvicorn[standard]` (0.38.0 -> 0.41.0)
-    - `azure-mgmt-compute` (37.1.0 -> 37.2.0)
-    - `azure-identity` (1.25.1 -> 1.25.2)
-    - `sentry-sdk[fastapi]` (2.51.0 -> 2.53.0)
-    - `pydantic-settings` (2.12.0 -> 2.13.1)
-    - `ruff` (0.14.14 -> 0.15.4)
-    - `isort` (7.0.0 -> 8.0.1)
-    - `python-dotenv` (1.2.1 -> 1.2.2)
-    - `stream-zip` (0.0.83 -> 0.0.84)
+Aucun autre changement significatif n'a été apporté au projet durant cette période.
