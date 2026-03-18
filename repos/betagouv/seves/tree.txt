@@ -56,6 +56,7 @@
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── audit.py
 │   ├── auth_views.py
 │   ├── constants.py
 │   ├── content_types.py
@@ -134,6 +135,11 @@
 │   │   ├── 0051_auto_20260212_0918.py
 │   │   ├── 0052_alter_message_status.py
 │   │   ├── 0053_alter_document_file.py
+│   │   ├── 0054_document_notification_sent.py
+│   │   ├── 0055_auditlog.py
+│   │   ├── 0056_alter_document_file.py
+│   │   ├── 0057_structure_departement_structure_region.py
+│   │   ├── 0058_alter_document_is_deleted.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -141,6 +147,8 @@
 │   ├── notifications.py
 │   ├── pages.py
 │   ├── redirect.py
+│   ├── seeds
+│   │   └── codes-postaux.json
 │   ├── signals.py
 │   ├── soft_delete_mixins.py
 │   ├── static
@@ -168,7 +176,11 @@
 │   │       │   ├── document_uploads.css
 │   │       │   ├── document_uploads.mjs
 │   │       │   ├── fiche_document_uploads.mjs
-│   │       │   └── message_document_uploads.mjs
+│   │       │   ├── message_document_uploads.mjs
+│   │       │   └── widgets
+│   │       │       ├── treeselect.mjs
+│   │       │       ├── treeselect_dsfr.css
+│   │       │       └── treeselect_dsfr.mjs
 │   │       ├── forms.js
 │   │       ├── forms.mjs
 │   │       ├── free_links.js
@@ -182,6 +194,7 @@
 │   │       ├── sidebar.js
 │   │       ├── siret.mjs
 │   │       ├── stimulus_app.mjs
+│   │       ├── utils.mjs
 │   │       └── view_manager.js
 │   ├── storage.py
 │   ├── tasks.py
@@ -220,7 +233,9 @@
 │   │   │   ├── base.html
 │   │   │   ├── form
 │   │   │   │   ├── document_upload.html
-│   │   │   │   └── document_uploads.html
+│   │   │   │   ├── document_uploads.html
+│   │   │   │   └── widgets
+│   │   │   │       └── treeselect.html
 │   │   │   ├── login.html
 │   │   │   ├── message_detail.html
 │   │   │   ├── message_form.html
@@ -249,6 +264,7 @@
 │   │   ├── __init__.py
 │   │   ├── generic_tests
 │   │   │   ├── actions.py
+│   │   │   ├── bloc_commun.py
 │   │   │   ├── contacts.py
 │   │   │   ├── documents.py
 │   │   │   ├── fin_suivi.py
@@ -267,7 +283,8 @@
 │   ├── urls.py
 │   ├── validators.py
 │   ├── versions.py
-│   └── views.py
+│   ├── views.py
+│   └── widgets.py
 ├── cron.json
 ├── fake_contacts.csv
 ├── fake_contacts_structures.csv
@@ -303,6 +320,9 @@
 │   ├── form_mixins.py
 │   ├── forms.py
 │   ├── formsets.py
+│   ├── management
+│   │   └── commands
+│   │       └── send_document_emails_batch.py
 │   ├── managers.py
 │   ├── migrations
 │   │   ├── 00011_evenementproduit_is_deleted.py
@@ -366,6 +386,9 @@
 │   │   ├── 0059_alter_evenementproduit_categorie_produit.py
 │   │   ├── 0060_alter_evenementproduit_actions_engagees.py
 │   │   ├── 0061_evenementproduitreadonly.py
+│   │   ├── 0062_auto_20260309_1039.py
+│   │   ├── 0063_etablissement_code_postal.py
+│   │   ├── 0064_evenementinvestigationcashumain_last_updated_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -448,6 +471,7 @@
 │   │   ├── test_investigation_cas_humain_fin_de_suivi.py
 │   │   ├── test_investigation_cas_humain_message.py
 │   │   ├── test_investigation_cas_humain_update.py
+│   │   ├── test_management_command.py
 │   │   └── test_models.py
 │   ├── urls.py
 │   ├── views
@@ -470,6 +494,9 @@
 │   ├── api_views.py
 │   ├── apps.py
 │   ├── constants.py
+│   ├── doc_templates
+│   │   ├── detection.docx
+│   │   └── evenement.docx
 │   ├── export.py
 │   ├── factories.py
 │   ├── filters.py
@@ -596,6 +623,8 @@
 │   │   ├── 0111_auto_20260108_1316.py
 │   │   ├── 0112_auto_20260114_1435.py
 │   │   ├── 0113_auto_20260303_1550.py
+│   │   ├── 0114_auto_20260309_1114.py
+│   │   ├── 0115_lieu_code_postal.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -633,7 +662,6 @@
 │   │       ├── _delete_fichezonedelimitee_modal.html
 │   │       ├── _evenement_action_navigation.html
 │   │       ├── _evenement_badges.html
-│   │       ├── _extract_modal.html
 │   │       ├── _fichedetection_detail.html
 │   │       ├── _fichedetection_form__lieu_cant_delete_modal.html
 │   │       ├── _fichedetection_form__lieu_card.html
@@ -773,6 +801,8 @@
     │   ├── 0044_remove_investigationtiac_repas_ailment_only_if_conclusion_known_and_more.py
     │   ├── 0045_alter_alimentsuspect_categorie_produit.py
     │   ├── 0046_alter_evenementsimple_follow_up.py
+    │   ├── 0047_etablissement_code_postal.py
+    │   ├── 0048_evenementsimple_last_updated_and_more.py
     │   └── __init__.py
     ├── mixins.py
     ├── model_mixins.py
@@ -872,4 +902,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-65 directories, 809 files
+71 directories, 833 files
