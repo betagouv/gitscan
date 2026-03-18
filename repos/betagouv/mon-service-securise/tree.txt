@@ -1,7 +1,6 @@
 .
 ├── .dockerignore
 ├── .env.template
-├── .eslintrc.cjs
 ├── .github
 │   └── workflows
 │       ├── checkov.yml
@@ -21,6 +20,7 @@
 ├── admin
 │   ├── consoleAdministration.js
 │   ├── consoleAnalyseDonnees.js
+│   ├── consoleBrevo.ts
 │   ├── duplicationEnMasseDeServices
 │   │   ├── cli.js
 │   │   └── duplicationEnMasseDeServices.js
@@ -34,6 +34,8 @@
 ├── donneesReferentiel.ts
 ├── donneesReferentielDepartements.ts
 ├── donneesReferentielMesuresV2.ts
+├── donneesReferentielRisquesV2.ts
+├── eslint.config.cjs
 ├── knexfile.js
 ├── migrations
 │   ├── 20210826150716_creationTableUtilisateur.js
@@ -543,6 +545,7 @@
 │   │   └── pre-run-clever.sh
 │   ├── console-admin.sh
 │   ├── console-analyse-donnees.sh
+│   ├── console-brevo.sh
 │   ├── dev-init-sel.js
 │   ├── dev_init_sel.sh
 │   ├── get-node-version.sh
@@ -580,8 +583,8 @@
 │   │   ├── adaptateurJournalMSSMemoire.ts
 │   │   ├── adaptateurJournalMSSPostgres.ts
 │   │   ├── adaptateurMail.interface.ts
-│   │   ├── adaptateurMailMemoire.js
-│   │   ├── adaptateurMailSendinblue.js
+│   │   ├── adaptateurMailMemoire.ts
+│   │   ├── adaptateurMailSendinblue.ts
 │   │   ├── adaptateurOidc.interface.ts
 │   │   ├── adaptateurOidc.ts
 │   │   ├── adaptateurPdf.configurationTamponHomologation.ts
@@ -883,6 +886,8 @@
 │   │       ├── moteurRisques.ts
 │   │       ├── risqueV2.configuration.ts
 │   │       ├── risqueV2.ts
+│   │       ├── risquesV2.ts
+│   │       ├── risquesV2.types.ts
 │   │       ├── selectionObjectifsVises.configuration.ts
 │   │       ├── selectionObjectifsVises.ts
 │   │       ├── selectionObjectifsVises.types.ts
@@ -911,6 +916,9 @@
 │   ├── mss.js
 │   ├── notifications
 │   │   └── centreNotifications.js
+│   ├── oidc
+│   │   ├── cookies.ts
+│   │   └── serviceForceMFA.ts
 │   ├── pdf
 │   │   ├── graphiques
 │   │   │   └── camembert.js
@@ -1110,7 +1118,7 @@
 │       └── visiteGuidee
 │           └── creationService.pug
 ├── svelte
-│   ├── .eslintrc.cjs
+│   ├── eslint.config.js
 │   ├── lib
 │   │   ├── accueilInscription
 │   │   │   ├── AccueilInscription.svelte
@@ -1283,7 +1291,8 @@
 │   │   │   │   ├── modification
 │   │   │   │   │   └── ConfirmationModificationModeleMesureSpecifique.svelte
 │   │   │   │   └── suppression
-│   │   │   │       └── TiroirSuppressionModeleMesureSpecifique.svelte
+│   │   │   │       ├── TiroirSuppressionModeleMesureSpecifique.svelte
+│   │   │   │       └── modeSuppression.ts
 │   │   │   ├── modificationStatutPrecision
 │   │   │   │   ├── EtapierTiroir.svelte
 │   │   │   │   ├── etapes
@@ -1310,8 +1319,7 @@
 │   │   │   ├── Mesure.svelte
 │   │   │   ├── commentaire
 │   │   │   │   ├── CommentaireMesure.svelte
-│   │   │   │   ├── ListeSuggestionsMention.svelte
-│   │   │   │   └── suggestion.ts
+│   │   │   │   └── ListeSuggestionsMention.svelte
 │   │   │   ├── contenus
 │   │   │   │   ├── ContenuOngletActivite.svelte
 │   │   │   │   ├── ContenuOngletMesure.svelte
@@ -1864,6 +1872,7 @@
 │   │       ├── graviteVecteurs.spec.ts
 │   │       ├── moteurRisques.spec.ts
 │   │       ├── risqueV2.spec.ts
+│   │       ├── risquesV2.spec.ts
 │   │       ├── selectionObjectifsVises.spec.ts
 │   │       ├── selectionVecteurs.spec.ts
 │   │       ├── vraisemblance.predicats.spec.ts
@@ -1871,6 +1880,8 @@
 │   ├── mss.spec.js
 │   ├── notifications
 │   │   └── centreNotifications.spec.js
+│   ├── oidc
+│   │   └── serviceForceMFA.spec.ts
 │   ├── pdf
 │   │   └── graphiques
 │   │       └── camembert.spec.js
@@ -1941,4 +1952,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-257 directories, 1804 files
+259 directories, 1813 files

@@ -1,27 +1,100 @@
-## Changelog : mon-service-securise (30 derniers jours)
+## Changelog : mon-service-securise (30 derniers jours, au 17 mars 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur la refonte du moteur de risque et l'intégration des nouvelles données de référentiel V2. De nombreuses améliorations ont été apportées à l'interface utilisateur pour faciliter la gestion des risques, des mesures et des services, notamment l'ajout de filtres et d'informations supplémentaires. Des corrections de bugs et des optimisations ont également été réalisées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les évolutions se concentrent sur la gestion des risques, avec l'introduction d'une nouvelle version (V2) des risques, incluant la gestion de leur activation/désactivation, l'ajout de propriétés comme la vraisemblance et la gravité, et une refonte du moteur de calcul des risques. Des améliorations ont également été apportées à l'interface utilisateur pour afficher et manipuler ces nouveaux risques. Enfin, plusieurs suppressions de code obsolète liées à l'ancien système d'authentification ont été effectuées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de filtrer les services et brouillons. [#990b104](https://github.com/betagouv/mon-service-securise/commit/990b104)
-- Ajout de la possibilité de supprimer les brouillons de service depuis le tiroir. [#cc883e7](https://github.com/betagouv/mon-service-securise/commit/cc883e7)
-- Affichage de la thématique et des porteurs singuliers dans le tableau des mesures. [#c4b6511](https://github.com/betagouv/mon-service-securise/commit/c4b6511), [#34d082c](https://github.com/betagouv/mon-service-securise/commit/34d082c)
-- Ajout de la partie responsable dans le filtrage et l'affichage. [#cb89feb](https://github.com/betagouv/mon-service-securise/commit/cb89feb), [#6ae94f4](https://github.com/betagouv/mon-service-securise/commit/6ae94f4)
-- Amélioration de l'affichage des filtres. [#f2a1083](https://github.com/betagouv/mon-service-securise/commit/f2a1083)
-- Ajout de la transcription dans le tampon d'homologation. [#fc0c2f4](https://github.com/betagouv/mon-service-securise/commit/fc0c2f4)
-- Ajout des caractéristiques du service (criticité, exposition) dans l'export CSV et le PDF. [#eeec0e3](https://github.com/betagouv/mon-service-securise/commit/eeec0e3), [#df48328](https://github.com/betagouv/mon-service-securise/commit/df48328)
+
+*   Possibilité de désactiver un risque directement depuis le tableau des risques.
+*   Ajout d'une colonne de vraisemblance et de gravité dans le tableau des risques.
+*   Affichage des risques désactivés dans les matrices.
+*   Ajout d'une propriété "commentaire" aux risques V2.
+*   Mise à jour des données d'un risque V2 via le dépôt de données.
+*   Affichage de la thématique et des porteurs singuliers dans le tiroir des mesures et dans le tableau des mesures.
+*   Ajout de la transcription dans le tampon d'homologation.
+*   Amélioration de l'affichage des filtres dans le tableau des données brutes (TDB).
+*   Possibilité de supprimer les brouillons de service depuis le tiroir.
+*   Amélioration de la sélection des services et des brouillons.
 
 ### Évolutions techniques
-- Migration vers Express 5. [#67e1591](https://github.com/betagouv/mon-service-securise/commit/67e1591)
-- Refonte du moteur de risque avec intégration des données V2 et calcul de la vraisemblance et de la gravité. [#d0476d3](https://github.com/betagouv/mon-service-securise/commit/d0476d3), [#eab3ad2](https://github.com/betagouv/mon-service-securise/commit/eab3ad2)
-- Conversion de nombreux modèles de données en Typescript pour une meilleure typage et maintenabilité. [#cea0c50](https://github.com/betagouv/mon-service-securise/commit/cea0c50) et beaucoup d'autres commits commençant par "[SOIN]".
-- Suppression du code lié à l'authentification legacy (mot de passe, réinitialisation). [#ee9fc4e](https://github.com/betagouv/mon-service-securise/commit/ee9fc4e) et commits suivants.
-- Mise à jour de plusieurs dépendances : `bcrypt`, `knex`, `knex-pglite`, `axios`, `jsonwebtoken`. [#7513c41](https://github.com/betagouv/mon-service-securise/commit/7513c41), [#f58eda5](https://github.com/betagouv/mon-service-securise/commit/f58eda5), [#cd11bde](https://github.com/betagouv/mon-service-securise/commit/cd11bde), [#189eec6](https://github.com/betagouv/mon-service-securise/commit/189eec6)
-- Ajout de `svelte-check` dans la CI et correction des erreurs associées. [#4ebb5a1](https://github.com/betagouv/mon-service-securise/commit/4ebb5a1)
+
+*   Migration vers Svelte 5.
+*   Refonte du moteur de calcul des risques pour utiliser la version V2 des risques.
+*   Conversion de nombreux modèles de données et adaptateurs en TypeScript pour une meilleure typage et maintenabilité.
+*   Suppression du code lié à l'ancien système d'authentification MSS et à la gestion des mots de passe.
+*   Mise à jour de plusieurs dépendances (Express, knex, jsonwebtoken, axios, etc.).
+*   Amélioration de la gestion des erreurs et ajout de tests.
+*   Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+*   Ajout de `svelte-check` dans la CI pour garantir la qualité du code Svelte.
+*   Utilisation d'Express 5.
 
 ### Autres changements
-- Suppression du composant et de la page "Ui Kit". [#38854ca](https://github.com/betagouv/mon-service-securise/commit/38854ca)
-- Ajout de métadonnées. [#f0e0c97](https://github.com/betagouv/mon-service-securise/commit/f0e0c97)
-- Nettoyage de code et suppression de code mort. [#f9f660b](https://github.com/betagouv/mon-service-securise/commit/f9f660b) et plusieurs autres commits commençant par "[SOIN]".
-- Correction de plusieurs bugs mineurs et améliorations de la lisibilité du code.
+
+*   Ajout de métadonnées.
+*   Suppression du composant et de la page "Ui Kit".
+*   Ajout d'un script pour générer les données de référence des vraisemblances de risques.
+*   Correction de plusieurs erreurs et warnings dans le code.
+*   Amélioration de la configuration et des processus de déploiement.
+*   Ajout de la ConsoleBrevo pour migrer l'attribut SMS.
+*   Mise à jour de l'UI Kit.
+*   Correction de l'avance rapide sur décrireV2.
+*   Correction de l'application des filtres et des onglets aux brouillons.
+*   Correction de la mise en avant du bouton de création de service.
+*   Correction de l'imbrication de balises `<a>`.
+*   Correction des erreurs liées à `svelte-check`.
+*   Correction des propriétés CSS.
+*   Correction du typage.
+*   Correction des erreurs suite à la migration automatisée.
+*   Correction des select et des champs texte.
+*   Correction des erreurs de `runtime`.
+*   Correction du fichier de sortie des styles compilés.
+*   Correction des warnings de `svelte-check`.
+*   Correction des erreurs de typage.
+*   Correction de l'affichage des filtres du TDB.
+*   Correction de l'affichage des filtres du TDB.
+*   Correction des erreurs liées à `svelte-check`.
+*   Correction des erreurs liées à `svelte-check`.
+*   Correction de l'imbrication de balises `<a>`.
+*   Correction de l'intitulé du risque.
+*   Correction de la suppression des mesures.
+*   Correction de l'affichage du contenu.
+*   Correction de la limite de caractères pour l'intitulé du risque.
+*   Correction de l'erreur de suppression.
+*   Correction de l'erreur de validation de payload.
+*   Correction du calcul de vraisemblance.
+*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
+*   Correction de l'intégration des données de référence des intitulés de risques.
+*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
+*   Correction de la génération de l'intitulé d'un risque.
+*   Correction de l'utilisation de la vraisemblance.
+*   Correction de l'utilisation des niveaux de sécurité.
+*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
+*   Correction de l'utilisation des opérateurs "+".
+*   Correction de la sécurité des mesures personnalisées.
+*   Correction de l'ajout du prédicat "siPasTout".
+*   Correction de l'ajout des configurations pour le calcul des vraisemblances.
+*   Correction de l'autorisation du groupe de mesure 'g'.
+*   Correction de la gestion des erreurs qui ne proviennent pas d'axios.
+*   Correction de la gestion des erreurs.
+*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
+*   Correction de l'intégration des données de référence des intitulés de risques.
+*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
+*   Correction de la génération de l'intitulé d'un risque.
+*   Correction de l'utilisation de la vraisemblance.
+*   Correction de l'utilisation des niveaux de sécurité.
+*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
+*   Correction de l'utilisation des opérateurs "+".
+*   Correction de la sécurité des mesures personnalisées.
+*   Correction de l'ajout du prédicat "siPasTout".
+*   Correction de l'ajout des configurations pour le calcul des vraisemblances.
+*   Correction de l'autorisation du groupe de mesure 'g'.
+*   Correction de la gestion des erreurs qui ne proviennent pas d'axios.
+*   Correction de la gestion des erreurs.
+*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
+*   Correction de l'intégration des données de référence des intitulés de risques.
+*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
+*   Correction de la génération de l'intitulé d'un risque.
+*   Correction de l'utilisation de la vraisemblance.
+*   Correction de l'utilisation des niveaux de sécurité.
+*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
+*   Correction de l'utilisation des opérateurs "+".
