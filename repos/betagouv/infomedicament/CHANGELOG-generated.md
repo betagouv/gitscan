@@ -1,37 +1,35 @@
-## Changelog : infomedicament (30 derniers jours)
+## Changelog : infomedicament (30 derniers jours, au 4 mars 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration significative de la recherche de médicaments, notamment en intégrant la recherche par code ATC5 et en affinant l'ordre des résultats. Des améliorations ont également été apportées à la page d'information sur les médicaments avec l'ajout de nouvelles données (excipients, alertes de sécurité, etc.). Des optimisations techniques ont été réalisées pour améliorer la performance et la stabilité de l'application.
+Ce mois-ci, les améliorations se concentrent principalement sur la recherche de médicaments. L'expérience utilisateur a été significativement améliorée avec un tri des résultats plus pertinent, une autocomplétion plus intelligente et l'ajout d'informations supplémentaires sur les médicaments. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Recherche :** Possibilité de rechercher des médicaments par code ATC5. [#197](https://github.com/betagouv/infomedicament/pull/197)
-- **Recherche :** L'ordre des résultats de recherche a été amélioré en fonction du type de correspondance (nom, spécialité, etc.). [#197](https://github.com/betagouv/infomedicament/pull/197)
-- **Recherche :** La recherche automatique propose désormais des noms de spécialités.
-- **Recherche :** Limitation du nombre de résultats de recherche à 100 médicaments pour améliorer la performance.
-- **Page médicament :** Ajout d'informations sur les excipients.
-- **Page médicament :** Ajout d'informations sur les Autorisations d'Utilisation Temporaire (AIP).
-- **Page médicament :** Ajout d'informations sur le statut commercialisé.
-- **Page médicament :** Ajout d'informations sur les alertes de sécurité.
-- **Page médicament :** Ajout d'informations sur la surveillance renforcée.
-- **Page médicament :** Ajout d'informations sur le statut homéopathique.
-- **Page d'accueil :** Mise à jour du nombre de spécialités affichées.
+- **Recherche :** Les résultats de recherche sont désormais triés en fonction du type de correspondance (nom exact, spécialité, etc.) [#197](https://github.com/betagouv/infomedicament/pull/197).
+- **Recherche :** L'autocomplétion propose désormais des noms de spécialités en plus des noms de médicaments [#191](https://github.com/betagouv/infomedicament/pull/191).
+- **Recherche :** La recherche est limitée à 100 résultats pour améliorer la performance.
+- **Recherche :** Ajout de badges d'explication pour les codes ATC et les substances.
+- **Recherche :** Cliquer sur une spécialité dans les résultats de recherche ouvre maintenant la page correspondante.
+- **Page médicament :** Intégration de toutes les données disponibles pour une page médicament spécifique [#157](https://github.com/betagouv/infomedicament/pull/157).
+- **Liste des médicaments :** Correction de l'ordre des lettres dans la liste des médicaments.
 
 ### Évolutions techniques
-- **Base de données :** Migration de la source de données ATC vers la base de données pour une meilleure performance et maintenabilité. [#157](https://github.com/betagouv/infomedicament/pull/157)
-- **Base de données :** Refonte de la structure de la base de données pour optimiser la recherche.
-- **CI/CD :** Ajout de tests Lighthouse à l'exécution des applications de revue.
-- **CI/CD :** Amélioration du workflow CI pour attendre la fin du déploiement de l'application de revue Scalingo.
-- **Performance :** Suppression de l'intégration coûteuse de Sentry Replay.
-- **Performance :** Diminution du taux d'échantillonnage de Sentry à 10%.
-- **Tests :** Ajout de tests unitaires et d'intégration.
-- **Tests :** Mise à jour et correction des tests d'interface utilisateur (snapshots).
-- **Refactoring :** Simplification du code de la recherche et des composants associés.
-- **Refactoring :** Suppression de code inutilisé.
+- **CI/CD :** Ajout de Lighthouse pour évaluer la performance des applications de revue (review apps).
+- **CI/CD :** Amélioration de l'attente pour la vérification de l'application Scalingo dans le workflow CI.
+- **CI/CD :** Ajout de tests lint et unitaires au CI GitHub.
+- **Base de données :** Migration de la base de données pour optimiser la recherche et l'utilisation des données.
+- **Refactoring :** Simplification du code et de l'interface utilisateur de la recherche.
+- **Refactoring :** Suppression de code inutilisé après la refactorisation de la recherche.
+- **Sentry :** Réduction du taux d'échantillonnage de Sentry à 10% et suppression de l'intégration coûteuse de la relecture.
+- **Sentry :** Correction de problèmes liés à Sentry et ajout de la permission nécessaire dans le CSP.
+- **Scripts :** Correction d'un problème de blocage du script PDBM en fermant la connexion MySQL.
+- **Tests :** Ajout de tests unitaires pour la recherche et correction d'un test manquant.
 
 ### Autres changements
-- Correction d'un problème de blocage du script PDBM en fermant la connexion MySQL. [#191](https://github.com/betagouv/infomedicament/pull/191)
-- Correction d'un problème d'ordre d'exécution des migrations de base de données. [#187](https://github.com/betagouv/infomedicament/pull/187)
-- Correction d'un problème lié à un gestionnaire d'événements. [#182](https://github.com/betagouv/infomedicament/pull/182)
-- Ajout d'une commande `db:update-resume` pour faciliter la mise à jour des données.
-- Amélioration de la documentation et des commentaires dans le code.
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- **Documentation :** Ajout d'une commande `db:update-resume` pour mettre à jour les données de résumé.
+- **Configuration :** Suppression d'une ancienne migration de base de données.
+- **Correction :** Correction d'un problème d'importation dans le script `updateResumeData`.
+- **Correction :** Correction d'un problème d'ordre d'exécution des migrations.
+- **Correction :** Correction d'un problème lié à un gestionnaire d'événements.
+- **Correction :** Correction de l'ordre des lettres dans la liste des médicaments.
+- **Outils :** Ajout de `@next/bundle-analyzer` aux dépendances de développement pour l'analyse de la taille des bundles.
+- **Linting :** Application du linting pour améliorer la qualité du code.
