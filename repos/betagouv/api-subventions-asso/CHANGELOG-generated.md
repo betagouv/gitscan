@@ -1,20 +1,25 @@
-## Changelog : api-subventions-asso (30 derniers jours)
+## Changelog : api-subventions-asso (30 derniers jours, au 16 mars 2026)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à l'API au cours du dernier mois. Les principales évolutions concernent l'amélioration des performances de l'importation des données Chorus, l'ajout d'informations administratives dans les journaux de données, ainsi que des refactorings internes pour une meilleure maintenabilité et une plus grande clarté du code. Des corrections de bugs et des ajustements de l'interface utilisateur ont également été effectués.
+Ce mois-ci, les évolutions se concentrent sur des améliorations de la robustesse de l'API, notamment dans la gestion des erreurs et des données, ainsi que sur des corrections d'affichage et de formulation dans l'interface utilisateur. Des refactorings importants ont été entrepris pour améliorer la structure interne de l'API et préparer de futures évolutions.
 
 ### Évolutions fonctionnelles
-- Amélioration de la formulation du processus de dépôt de fichiers sur l'interface utilisateur. [#3836](https://github.com/betagouv/api-subventions-asso/issues/3836)
-- Ajout d'informations sur l'administrateur dans les données enregistrées (datalog). [#3756](https://github.com/betagouv/api-subventions-asso/issues/3756)
+- Correction d'un bug d'affichage des en-têtes de modales de paiement sur l'interface utilisateur. [#3852](https://github.com/betagouv/api-subventions-asso/issues/3852)
+- Correction de la formulation concernant le processus de dépôt sur l'interface utilisateur. [#3836](https://github.com/betagouv/api-subventions-asso/issues/3836) et [#3843](https://github.com/betagouv/api-subventions-asso/issues/3843)
+- Ajout de la possibilité d'activer les notifications pour les dépôts partiels.
+- Implémentation du support des paiements européens Chorus. [#3839](https://github.com/betagouv/api-subventions-asso/issues/3839)
+- Amélioration de la gestion des statistiques détaillées des consommateurs. [#3826](https://github.com/betagouv/api-subventions-asso/issues/3826)
 
 ### Évolutions techniques
-- Refactorisation de l'interface `port` de l'API, incluant l'introduction de `mapper` et `adapter`. [#3803](https://github.com/betagouv/api-subventions-asso/issues/3803) [#3828](https://github.com/betagouv/api-subventions-asso/issues/3828)
-- Amélioration des performances de l'importation des données Chorus. [#3808](https://github.com/betagouv/api-subventions-asso/issues/3808) [#3809](https://github.com/betagouv/api-subventions-asso/issues/3809)
-- Refactorisation des services plats pour une meilleure homogénéité. [#3663](https://github.com/betagouv/api-subventions-asso/issues/3663) [#3815](https://github.com/betagouv/api-subventions-asso/issues/3815)
-- Ajout de statistiques détaillées sur les consommateurs de l'API. [#3733](https://github.com/betagouv/api-subventions-asso/issues/3733) [#3826](https://github.com/betagouv/api-subventions-asso/issues/3826)
+- Refactoring majeur de l'architecture de l'API avec introduction de patterns Mapper, Port et Adapter. [#3803](https://github.com/betagouv/api-subventions-asso/issues/3803) et [#3828](https://github.com/betagouv/api-subventions-asso/issues/3828)
 - Mise à jour de la configuration TypeScript. [#3799](https://github.com/betagouv/api-subventions-asso/issues/3799)
+- Homogénéisation des services "plats" dans l'API. [#3815](https://github.com/betagouv/api-subventions-asso/issues/3815)
+- Correction d'une erreur d'importation du module "core".
+- Suppression de l'alias "dev.local" pour une meilleure cohérence de l'environnement. [#3851](https://github.com/betagouv/api-subventions-asso/issues/3851)
+- Correction d'un problème d'accès à une propriété sur un DTO non défini.
+- Correction d'un bug où une erreur `NotAssociationError` était levée incorrectement en l'absence de numéro RNA.
 
 ### Autres changements
-- Correction d'un bug concernant le renommage d'un mapper. [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000)
-- Renommage de l'adaptateur en mapper dans les tests.
-- Publication des versions 0.81.0, 0.80.1, 0.80.0 et 0.79.0.
+- Correction de noms d'imports dans les tests.
+- Renommage du "port" en "adapter" dans le cadre du refactoring. [#3861](https://github.com/betagouv/api-subventions-asso/issues/3861)
+- Ajout d'une configuration d'environnement pour filtrer les notifications. [#3820](https://github.com/betagouv/api-subventions-asso/issues/3820)

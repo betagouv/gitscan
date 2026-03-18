@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.81.5](https://github.com/betagouv/api-subventions-asso/compare/v0.81.4...v0.81.5) (2026-03-16)
+
+### Bug Fixes
+
+- **api:** do not throw NotAssociationError based on missing RNA ([94ead13](https://github.com/betagouv/api-subventions-asso/commit/94ead13170858ca1f3f15cbc09709c781e15ef3d))
+
+## [0.81.4](https://github.com/betagouv/api-subventions-asso/compare/v0.81.3...v0.81.4) (2026-03-13)
+
+### Bug Fixes
+
+- **front:** [#3852](https://github.com/betagouv/api-subventions-asso/issues/3852) display payment modal headers again ([#3854](https://github.com/betagouv/api-subventions-asso/issues/3854)) ([84a2a02](https://github.com/betagouv/api-subventions-asso/commit/84a2a02f80cefd5d8e9c50387ea186070145b039))
+
+## [0.81.3](https://github.com/betagouv/api-subventions-asso/compare/v0.81.1...v0.81.3) (2026-03-11)
+
+### Bug Fixes
+
+- **api:** import core as module ([385f8a5](https://github.com/betagouv/api-subventions-asso/commit/385f8a5588f9e209290078c14c239c997bea1bb2))
+
+### Features
+
+- **api:** enable user notification partial deposit ([320d95b](https://github.com/betagouv/api-subventions-asso/commit/320d95b56200ae28615afffc01d2ecc68b8fd469))
+- **front:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) hotfix wording deposit process 2 ([#3843](https://github.com/betagouv/api-subventions-asso/issues/3843)) ([adc6330](https://github.com/betagouv/api-subventions-asso/commit/adc6330d722c6542e7fef23d253e619b9b11e475))
+
+## [0.81.2](https://github.com/betagouv/api-subventions-asso/compare/v0.81.1...v0.81.2) (2026-03-09)
+
+### Bug Fixes
+
+- **api:** import core as module ([385f8a5](https://github.com/betagouv/api-subventions-asso/commit/385f8a5588f9e209290078c14c239c997bea1bb2))
+
+### Features
+
+- **front:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) hotfix wording deposit process 2 ([49d559c](https://github.com/betagouv/api-subventions-asso/commit/49d559cee20f6f5b7be6eda681bcd2af7a047b16))
+- **front:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) hotfix wording deposit process 2 ([3484b34](https://github.com/betagouv/api-subventions-asso/commit/3484b342b3b51970625866cc72aba8e91ad1fb45))
+
+## [0.81.1](https://github.com/betagouv/api-subventions-asso/compare/v0.81.0...v0.81.1) (2026-03-09)
+
+### Bug Fixes
+
+- **api:** only check for category legal when query is a siren ([2ae2b17](https://github.com/betagouv/api-subventions-asso/commit/2ae2b179e03e7d8e6dc7ea9755b3a9a522b8ef18))
+
 # [0.81.0](https://github.com/betagouv/api-subventions-asso/compare/v0.80.1...v0.81.0) (2026-02-26)
 
 ### Features

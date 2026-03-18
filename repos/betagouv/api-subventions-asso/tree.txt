@@ -144,6 +144,7 @@
 │   │   │   │   ├── ScdlDataIntegration.ts
 │   │   │   │   ├── TsoaApiError.ts
 │   │   │   │   ├── WinstonLog.ts
+│   │   │   │   ├── XlsxPage.ts
 │   │   │   │   ├── cron.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── utils.ts
@@ -174,38 +175,38 @@
 │   │   │   │   │   │   │   └── DataBretagne.fixture.ts
 │   │   │   │   │   │   ├── data-bretagne.mapper.test.ts
 │   │   │   │   │   │   ├── data-bretagne.mapper.ts
-│   │   │   │   │   │   ├── dataBretagne.port.test.ts
-│   │   │   │   │   │   └── dataBretagne.port.ts
+│   │   │   │   │   │   ├── dataBretagne.adapter.test.ts
+│   │   │   │   │   │   └── dataBretagne.adapter.ts
 │   │   │   │   │   ├── rechercheEntreprises
 │   │   │   │   │   │   ├── RechercheEntreprisesDto.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── RechercheEntreprises.ts
 │   │   │   │   │   │   ├── recherche-entreprises.mapper.test.ts
 │   │   │   │   │   │   ├── recherche-entreprises.mapper.ts
-│   │   │   │   │   │   ├── rechercheEntreprises.port.test.ts
-│   │   │   │   │   │   ├── rechercheEntreprises.port.ts
+│   │   │   │   │   │   ├── rechercheEntreprises.adapter.test.ts
+│   │   │   │   │   │   ├── rechercheEntreprises.adapter.ts
 │   │   │   │   │   │   ├── rechercheEntreprises.service.test.ts
 │   │   │   │   │   │   └── rechercheEntreprises.service.ts
 │   │   │   │   │   └── sirene
-│   │   │   │   │       ├── sireneStockUniteLegale.port.test.ts
-│   │   │   │   │       └── sireneStockUniteLegale.port.ts
+│   │   │   │   │       ├── sireneStockUniteLegale.adapter.test.ts
+│   │   │   │   │       └── sireneStockUniteLegale.adapter.ts
 │   │   │   │   ├── db
 │   │   │   │   │   ├── @types
 │   │   │   │   │   │   └── FlatDbo.ts
 │   │   │   │   │   ├── COMMITTEE-STATS.md
 │   │   │   │   │   ├── admin-structure
-│   │   │   │   │   │   └── adminStructure.port.ts
+│   │   │   │   │   │   └── adminStructure.adapter.ts
 │   │   │   │   │   ├── applicationFlat
 │   │   │   │   │   │   ├── ApplicationFlatDbo.ts
-│   │   │   │   │   │   └── applicationFlat.port.ts
+│   │   │   │   │   │   └── applicationFlat.adapter.ts
 │   │   │   │   │   ├── configurations
-│   │   │   │   │   │   ├── configurations.port.test.ts
-│   │   │   │   │   │   └── configurations.port.ts
+│   │   │   │   │   │   ├── configurations.adapter.test.ts
+│   │   │   │   │   │   └── configurations.adapter.ts
 │   │   │   │   │   ├── data-log
-│   │   │   │   │   │   └── dataLog.port.ts
+│   │   │   │   │   │   └── dataLog.adapter.ts
 │   │   │   │   │   ├── dataViz
 │   │   │   │   │   │   └── amountVSProgramRegion
-│   │   │   │   │   │       └── amountsVsProgramRegion.port.ts
+│   │   │   │   │   │       └── amountsVsProgramRegion.adapter.ts
 │   │   │   │   │   ├── deposit-log
 │   │   │   │   │   │   ├── DepositScdlLogDbo.ts
 │   │   │   │   │   │   ├── UploadedFileInfosDbo.ts
@@ -215,31 +216,33 @@
 │   │   │   │   │   │   ├── depositLog.adapter.test.ts
 │   │   │   │   │   │   └── depositLog.port.ts
 │   │   │   │   │   ├── dump
-│   │   │   │   │   │   └── metabase-dump.port.ts
+│   │   │   │   │   │   └── metabase-dump.adapter.ts
 │   │   │   │   │   ├── paymentFlat
 │   │   │   │   │   │   ├── PaymentFlatDbo.ts
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── paymentFlatDbo.fixture.ts
 │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── paymentFlat.port.test.ts.snap
-│   │   │   │   │   │   ├── paymentFlat.port.test.ts
-│   │   │   │   │   │   └── paymentFlat.port.ts
+│   │   │   │   │   │   │   └── paymentFlat.adapter.test.ts.snap
+│   │   │   │   │   │   ├── paymentFlat.adapter.test.ts
+│   │   │   │   │   │   └── paymentFlat.adapter.ts
 │   │   │   │   │   ├── provider-request
 │   │   │   │   │   │   ├── ProviderRequestLogDbo.ts
 │   │   │   │   │   │   ├── provider-request-log.mapper.test.ts
 │   │   │   │   │   │   ├── provider-request-log.mapper.ts
-│   │   │   │   │   │   ├── providerRequest.port.test.ts
-│   │   │   │   │   │   └── providerRequest.port.ts
+│   │   │   │   │   │   ├── providerRequest.adapter.test.ts
+│   │   │   │   │   │   └── providerRequest.adapter.ts
 │   │   │   │   │   ├── providers
 │   │   │   │   │   │   ├── chorus
-│   │   │   │   │   │   │   ├── chorus.line.port.test.ts
-│   │   │   │   │   │   │   └── chorus.line.port.ts
+│   │   │   │   │   │   │   ├── chorus.fse.adapter.test.ts
+│   │   │   │   │   │   │   ├── chorus.fse.adapter.ts
+│   │   │   │   │   │   │   ├── chorus.line.adapter.test.ts
+│   │   │   │   │   │   │   └── chorus.line.adapter.ts
 │   │   │   │   │   │   ├── dauphin
 │   │   │   │   │   │   │   ├── DauphinGisproDbo.ts
-│   │   │   │   │   │   │   └── dauphin.port.ts
+│   │   │   │   │   │   │   └── dauphin.adapter.ts
 │   │   │   │   │   │   ├── demarchesSimplifiees
-│   │   │   │   │   │   │   ├── demarchesSimplifieesData.port.ts
-│   │   │   │   │   │   │   └── demarchesSimplifieesSchema.port.ts
+│   │   │   │   │   │   │   ├── demarchesSimplifieesData.adapter.ts
+│   │   │   │   │   │   │   └── demarchesSimplifieesSchema.adapter.ts
 │   │   │   │   │   │   ├── fonjep
 │   │   │   │   │   │   │   ├── dto
 │   │   │   │   │   │   │   │   ├── fonjepDispositifDto.ts
@@ -247,39 +250,39 @@
 │   │   │   │   │   │   │   │   ├── fonjepTiersDto.ts
 │   │   │   │   │   │   │   │   ├── fonjepTypePosteDto.ts
 │   │   │   │   │   │   │   │   └── fonjepVersementDto.ts
-│   │   │   │   │   │   │   ├── fonjep.core.port.ts
-│   │   │   │   │   │   │   ├── fonjep.dispositif.port.ts
-│   │   │   │   │   │   │   ├── fonjep.postes.port.ts
-│   │   │   │   │   │   │   ├── fonjep.tiers.port.ts
-│   │   │   │   │   │   │   ├── fonjep.typePoste.port.ts
-│   │   │   │   │   │   │   └── fonjep.versements.port.ts
+│   │   │   │   │   │   │   ├── fonjep.core.adapter.ts
+│   │   │   │   │   │   │   ├── fonjep.dispositif.adapter.ts
+│   │   │   │   │   │   │   ├── fonjep.postes.adapter.ts
+│   │   │   │   │   │   │   ├── fonjep.tiers.adapter.ts
+│   │   │   │   │   │   │   ├── fonjep.typePoste.adapter.ts
+│   │   │   │   │   │   │   └── fonjep.versements.adapter.ts
 │   │   │   │   │   │   ├── geoApi
-│   │   │   │   │   │   │   └── geo.port.ts
-│   │   │   │   │   │   ├── gispro.port.ts
+│   │   │   │   │   │   │   └── geo.adapter.ts
+│   │   │   │   │   │   ├── gispro.adapter.ts
 │   │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   ├── osiris-action.mapper.ts
-│   │   │   │   │   │   │   ├── osiris.action.port.test.ts
-│   │   │   │   │   │   │   ├── osiris.action.port.ts
+│   │   │   │   │   │   │   ├── osiris.action.adapter.test.ts
+│   │   │   │   │   │   │   ├── osiris.action.adapter.ts
 │   │   │   │   │   │   │   ├── osiris.joiner.ts
-│   │   │   │   │   │   │   └── osiris.request.port.ts
+│   │   │   │   │   │   │   └── osiris.request.adapter.ts
 │   │   │   │   │   │   ├── scdl
 │   │   │   │   │   │   │   ├── miscScdl.joiner.ts
-│   │   │   │   │   │   │   ├── miscScdlGrant.port.ts
-│   │   │   │   │   │   │   └── miscScdlProducers.port.ts
+│   │   │   │   │   │   │   ├── miscScdlGrant.adapter.ts
+│   │   │   │   │   │   │   └── miscScdlProducers.adapter.ts
 │   │   │   │   │   │   └── subventia
-│   │   │   │   │   │       ├── subventia.port.test.ts
-│   │   │   │   │   │       └── subventia.port.ts
+│   │   │   │   │   │       ├── subventia.adapter.test.ts
+│   │   │   │   │   │       └── subventia.adapter.ts
 │   │   │   │   │   ├── rnaSiren
 │   │   │   │   │   │   ├── RnaSirenDbo.ts
 │   │   │   │   │   │   ├── rna-siren.mapper.ts
-│   │   │   │   │   │   └── rnaSiren.port.ts
+│   │   │   │   │   │   └── rnaSiren.adapter.ts
 │   │   │   │   │   ├── search
-│   │   │   │   │   │   ├── search.port.ts
+│   │   │   │   │   │   ├── search.adapter.ts
 │   │   │   │   │   │   └── searchCacheDbo.ts
 │   │   │   │   │   ├── sirene
 │   │   │   │   │   │   └── stockUniteLegale
-│   │   │   │   │   │       └── sireneStockUniteLegale.port.ts
+│   │   │   │   │   │       └── sireneStockUniteLegale.adapter.ts
 │   │   │   │   │   ├── state-budget-program
 │   │   │   │   │   │   ├── StateBudgetProgramDbo.ts
 │   │   │   │   │   │   ├── __fixtures__
@@ -287,37 +290,37 @@
 │   │   │   │   │   │   │   └── StateBudgetProgramEntities.fixture.ts
 │   │   │   │   │   │   ├── state-budget-program.mapper.test.ts
 │   │   │   │   │   │   ├── state-budget-program.mapper.ts
-│   │   │   │   │   │   ├── stateBudgetProgram.port.test.ts
-│   │   │   │   │   │   └── stateBudgetProgram.port.ts
+│   │   │   │   │   │   ├── stateBudgetProgram.adapter.test.ts
+│   │   │   │   │   │   └── stateBudgetProgram.adapter.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── VisitsGroupByAssociationIdentifier.json
 │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── statsUniqueVisitByDay.port.test.ts.snap
-│   │   │   │   │   │   ├── logs.port.test.ts
-│   │   │   │   │   │   ├── logs.port.ts
-│   │   │   │   │   │   ├── statsAssociationsVisit.port.ts
-│   │   │   │   │   │   ├── statsUniqueVisitByDay.port.test.ts
-│   │   │   │   │   │   └── statsUniqueVisitByDay.port.ts
+│   │   │   │   │   │   │   └── statsUniqueVisitByDay.adapter.test.ts.snap
+│   │   │   │   │   │   ├── logs.adapter.test.ts
+│   │   │   │   │   │   ├── logs.adapter.ts
+│   │   │   │   │   │   ├── statsAssociationsVisit.adapter.ts
+│   │   │   │   │   │   ├── statsUniqueVisitByDay.adapter.test.ts
+│   │   │   │   │   │   └── statsUniqueVisitByDay.adapter.ts
 │   │   │   │   │   ├── uniteLegalEntreprise
 │   │   │   │   │   │   ├── UniteLegalEntrepriseDbo.ts
 │   │   │   │   │   │   ├── unite-legal-entreprise.mapper.ts
-│   │   │   │   │   │   └── uniteLegalEntreprise.port.ts
+│   │   │   │   │   │   └── uniteLegalEntreprise.adapter.ts
 │   │   │   │   │   ├── uniteLegalName
 │   │   │   │   │   │   ├── UniteLegalNameDbo.ts
 │   │   │   │   │   │   ├── unite-legal-name.mapper.ts
-│   │   │   │   │   │   └── uniteLegalName.port.ts
+│   │   │   │   │   │   └── uniteLegalName.adapter.ts
 │   │   │   │   │   └── user
 │   │   │   │   │       ├── UserDbo.ts
 │   │   │   │   │       ├── UserUpdateError.ts
-│   │   │   │   │       ├── acToken.port.ts
-│   │   │   │   │       ├── consumer-token.port.ts
-│   │   │   │   │       ├── user-reset.port.ts
-│   │   │   │   │       └── user.port.ts
+│   │   │   │   │       ├── acToken.adapter.ts
+│   │   │   │   │       ├── consumer-token.adapter.ts
+│   │   │   │   │       ├── user-reset.adapter.ts
+│   │   │   │   │       └── user.adapter.ts
 │   │   │   │   ├── port.list.ts
 │   │   │   │   └── s3
-│   │   │   │       ├── s3.port.test.ts
-│   │   │   │       ├── s3.port.ts
+│   │   │   │       ├── s3.adapter.test.ts
+│   │   │   │       ├── s3.adapter.ts
 │   │   │   │       └── s3Errors.ts
 │   │   │   ├── decorators
 │   │   │   │   ├── controllerSSE.decorator.ts
@@ -594,6 +597,7 @@
 │   │   │   │   │   │   ├── NotificationDataTypes.ts
 │   │   │   │   │   │   ├── NotificationType.ts
 │   │   │   │   │   │   └── NotifyOutPipe.ts
+│   │   │   │   │   ├── NotificationEnvConfig.ts
 │   │   │   │   │   ├── notify.service.test.ts
 │   │   │   │   │   ├── notify.service.ts
 │   │   │   │   │   └── outPipes
@@ -692,7 +696,8 @@
 │   │   │   │   │   │   │   ├── ChorusIndexedInformations.ts
 │   │   │   │   │   │   │   ├── ChorusLineDto.ts
 │   │   │   │   │   │   │   ├── ChorusPaymentFlat.ts
-│   │   │   │   │   │   │   └── ChorusPaymentFlatRaw.ts
+│   │   │   │   │   │   │   ├── ChorusPaymentFlatRaw.ts
+│   │   │   │   │   │   │   └── StrictChorusLineDto.ts
 │   │   │   │   │   │   ├── README.md
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── ChorusFixtures.ts
@@ -701,11 +706,15 @@
 │   │   │   │   │   │   ├── chorus.service.test.ts
 │   │   │   │   │   │   ├── chorus.service.ts
 │   │   │   │   │   │   ├── entities
+│   │   │   │   │   │   │   ├── ChorusFseEntity.ts
 │   │   │   │   │   │   │   └── ChorusLineEntity.ts
 │   │   │   │   │   │   └── mappers
 │   │   │   │   │   │       ├── ChorusRegionMapping.ts
 │   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   ├── chorus.fse.mapper.test.ts.snap
 │   │   │   │   │   │       │   └── chorus.mapper.test.ts.snap
+│   │   │   │   │   │       ├── chorus.fse.mapper.test.ts
+│   │   │   │   │   │       ├── chorus.fse.mapper.ts
 │   │   │   │   │   │       ├── chorus.mapper.test.ts
 │   │   │   │   │   │       └── chorus.mapper.ts
 │   │   │   │   │   ├── dataBretagne
@@ -1191,7 +1200,7 @@
 │   │   │       │   ├── apiEntreprise
 │   │   │       │   │   └── apiEntreprise.service.spec.ts
 │   │   │       │   ├── dauphin-gispro
-│   │   │       │   │   └── dauphin-gispro.port.spec.ts
+│   │   │       │   │   └── dauphin-gispro.adapter.spec.ts
 │   │   │       │   ├── fonjep
 │   │   │       │   │   ├── __fixtures__
 │   │   │       │   │   │   ├── fonjep-new.xlsx
@@ -2012,4 +2021,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── post-install.bash
-473 directories, 1541 files
+473 directories, 1550 files
