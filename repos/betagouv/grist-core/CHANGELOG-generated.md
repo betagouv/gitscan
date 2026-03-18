@@ -1,26 +1,30 @@
-## Changelog : grist-core (30 derniers jours)
+## Changelog : grist-core (30 derniers jours, au 03 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe de Grist s'est concentrée sur l'amélioration de l'importation de données depuis Airtable, l'amélioration de l'expérience utilisateur avec des corrections de couleurs et de l'interface, ainsi que des améliorations de la sécurité et de la configuration. Plusieurs traductions ont également été mises à jour grâce à la communauté Weblate.
+Cette version apporte des améliorations significatives à l'importation depuis Airtable, notamment le support des pièces jointes et des champs de type "multiple lookup". Des corrections ont été apportées pour améliorer la stabilité et l'expérience utilisateur, notamment concernant l'affichage des couleurs en mode sombre, la comparaison de documents et la gestion des organisations. Des options de configuration supplémentaires ont été ajoutées, comme la limitation du nombre d'options dans les formulaires.
 
 ### Évolutions fonctionnelles
-- **Importation Airtable :** Ajout de la fonctionnalité d'importation de données depuis Airtable, incluant le support des champs de type "multipleLookupValue" et des pièces jointes. [#2137](https://github.com/betagouv/grist-core/issues/2137), [#2119](https://github.com/betagouv/grist-core/issues/2119), [#2120](https://github.com/betagouv/grist-core/issues/2120), [#2111](https://github.com/betagouv/grist-core/issues/2111)
-- **Comparaison avec l'original :** Amélioration de la fonctionnalité de comparaison avec la version originale d'un document. [#2068](https://github.com/betagouv/grist-core/issues/2068)
-- **Limitation des options de formulaire :** Possibilité de configurer une limite au nombre d'options dans les formulaires. [#2100](https://github.com/betagouv/grist-core/issues/2100)
-- **Accès conditionnel :** Ajout d'informations sur les commentaires dans l'accès granulaire. [#15dc0520](https://github.com/betagouv/grist-core/commit/15dc0520)
-- **Déclencheurs :** Ajout de la condition de formule aux déclencheurs. [#e48c84f5](https://github.com/betagouv/grist-core/commit/e48c84f5)
+- **Importation Airtable :** Ajout du support des pièces jointes et des champs de type "multiple lookup" lors de l'importation de données depuis Airtable. [#2111](https://github.com/betagouv/grist-core/issues/2111), [#2119](https://github.com/betagouv/grist-core/issues/2119), [#2120](https://github.com/betagouv/grist-core/issues/2120)
+- **Comparaison de documents :** Amélioration de la fonctionnalité de comparaison avec le document original. [#2068](https://github.com/betagouv/grist-core/issues/2068)
+- **Gestion des organisations :** Possibilité de désactiver la création d'organisations. [#2124](https://github.com/betagouv/grist-core/issues/2124)
+- **Options de formulaire :** Ajout d'une limite configurable au nombre d'options dans les formulaires. [#2100](https://github.com/betagouv/grist-core/issues/2100)
+- **Accès aux pièces jointes :** Amélioration de la cohérence de l'accès aux pièces jointes via l'API. [#2116](https://github.com/betagouv/grist-core/issues/2116)
+- **Importation depuis Desktop :** Extraction de la méthode d'importation `.grist` pour une utilisation dans l'application Desktop. [#2128](https://github.com/betagouv/grist-core/issues/2128)
+- **Authentification OAuth2 :** Correction pour assurer le bon fonctionnement d'OAuth2 sur les sous-domaines autorisés. [#25ea37c8](https://github.com/betagouv/grist-core/commit/25ea37c8)
+- **Affichage :** Correction d'un problème d'affichage des couleurs en mode sombre pour les bannières. [#2138](https://github.com/betagouv/grist-core/issues/2138)
+- **Notifications :** Masquage de l'icône de cloche lorsque la connexion est normale. [#ef087643](https://github.com/betagouv/grist-core/commit/ef087643)
 
 ### Évolutions techniques
-- **OAuth2 :** Correction pour assurer le bon fonctionnement d'OAuth2 sur les sous-domaines autorisés. [#25ea37c8](https://github.com/betagouv/grist-core/commit/25ea37c8)
-- **Sécurité :** Amélioration de la cohérence du contrôle d'accès sur les endpoints d'attachements. [#0fbc3bc8](https://github.com/betagouv/grist-core/commit/0fbc3bc8)
-- **GVisor :** Limitation du nombre de processus dans GVisor pour améliorer la stabilité. [#392fba9d](https://github.com/betagouv/grist-core/commit/392fba9d)
-- **Mise à jour de dépendances :** Mise à jour de `webpack` vers la version 5.104.1 et `lazy-object-proxy` vers la version 1.12.0. [#2099](https://github.com/betagouv/grist-core/issues/2099), [#2105](https://github.com/betagouv/grist-core/issues/2105)
-- **Refactoring :** Refactorisation des tests `DocApi.ts` et `DocApi2.ts`. [#bfda58fc](https://github.com/betagouv/grist-core/commit/bfda58fc)
-- **Amélioration de l'interface :** Correction des couleurs illisibles en mode sombre pour les bannières. [#42bf3fe8](https://github.com/betagouv/grist-core/commit/42bf3fe8)
-- **Correction d'un bug Firefox :** Correction d'un espace de 1px en bas de l'éditeur de cellule dans Firefox. [#b102b038](https://github.com/betagouv/grist-core/commit/b102b038)
+- **OAuth2 :** Déplacement des tokens OAuth2 vers l'objet utilisateur de session. [#f81a4262](https://github.com/betagouv/grist-core/commit/f81a4262)
+- **GVisor :** Limitation du nombre de processus dans GVisor pour améliorer la stabilité. [#2106](https://github.com/betagouv/grist-core/issues/2106)
+- **Tests :** Suppression d'un test GVisor qui échoue. [#90789095](https://github.com/betagouv/grist-core/commit/90789095)
+- **Refactoring :** Refactorisation des tests DocApi.ts et DocApi2.ts. [#2092](https://github.com/betagouv/grist-core/issues/2092)
+- **Corrections :** Correction d'un espace de 1px en bas de l'éditeur de cellule dans Firefox. [#b102b038](https://github.com/betagouv/grist-core/commit/b102b038)
 
 ### Autres changements
-- **Traductions :** Mises à jour des traductions en français, suédois, tchèque, hongrois, arabe et slovaque grâce à la communauté Weblate.
-- **Gestion des organisations :** Masquage des organisations personnelles si elles sont désactivées sur le serveur. [#2129](https://github.com/betagouv/grist-core/issues/2129)
-- **Création d'organisations :** Ajout de flags pour désactiver la création d'organisations. [#2124](https://github.com/betagouv/grist-core/issues/2124)
-- **Version EE :** Mise à jour de la version Enterprise Edition. [#f70c5035](https://github.com/betagouv/grist-core/commit/f70c5035)
+- **Traduction :** Mises à jour des traductions en français, suédois, tchèque, slovaque et arabe.
+- **Accessibilité :** Ajout d'informations manquantes sur les commentaires pour l'accès granulaire. [#15dc0520](https://github.com/betagouv/grist-core/commit/15dc0520)
+- **Version :** Publication de la version v1.7.11. [#2133](https://github.com/betagouv/grist-core/issues/2133)
+- **Comportement :** Correction d'un bug concernant le nombre de suggestions sur un document copié et auto-forké. [#2117](https://github.com/betagouv/grist-core/issues/2117)
+- **Organisation :** Masquage des organisations personnelles si elles sont désactivées sur le serveur. [#2129](https://github.com/betagouv/grist-core/issues/2129)
+- **Normalisation :** Normalisation de l'adresse e-mail de l'utilisateur administrateur lors des comparaisons. [#2115](https://github.com/betagouv/grist-core/issues/2115)
