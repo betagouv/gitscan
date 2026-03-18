@@ -1,39 +1,30 @@
-## Changelog : mon-entreprise (30 derniers jours)
+## Changelog : mon-entreprise (30 derniers jours, au 12 mars 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du comparateur de statuts, notamment en intégrant des informations plus précises sur la retraite et en simplifiant l'affichage des données. Des corrections de bugs ont également été apportées pour améliorer l'expérience utilisateur sur mobile et résoudre des problèmes d'affichage. Enfin, des refactorings techniques ont été réalisés pour préparer le projet à de futures évolutions, notamment une potentielle migration vers Next.js.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration du comparateur de statuts, notamment en matière de droits à la retraite. Des corrections ont été apportées pour une meilleure précision des calculs et une présentation plus claire des informations. Des refactorings techniques ont également été réalisés pour préparer l'avenir du projet, notamment en vue d'une migration vers Next.js.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers le simulateur de l'Assurance retraite dans le comparateur de statuts.
-- Affichage de la valeur du point dans la section retraite complémentaire du comparateur.
-- Remplacement des montants retraite par des informations sur les trimestres et les points acquis dans le comparateur.
-- Correction de l'affichage mobile du montant des cotisations [#4290](https://github.com/betagouv/mon-entreprise/issues/4290).
-- Ajout d'un message informant les utilisateurs des mises à jour 2026 pour le simulateur de salarié.
-- Correction de la formule de calcul du RGDU.
-- Ajout d'un lien vers le simulateur de l'Assurance retraite dans la section Droits Retraite.
+- **Comparateur de statuts :** Ajout de la comparaison du revenu cotisé et des droits à la retraite (trimestres et points) dans le comparateur. [#4361](https://github.com/betagouv/mon-entreprise/issues/4361)
+- **Comparateur de statuts :** Ajout de liens vers les simulateurs de l'Assurance retraite et de la Cnav pour faciliter l'estimation des droits.
+- **Comparateur de statuts :** Correction de l'unité d'affichage du revenu cotisé retraite de base.
+- **Comparateur de statuts :** Amélioration de l'affichage de la valeur du point dans la section retraite complémentaire (espace insécable, format "€ par an").
+- **Salarié :** Ajout d'un message informant les utilisateurs des mises à jour pour 2026.
+- **Droits Retraite :** Suppression de l'ACRE comme condition bloquant l'affichage des droits retraite.
+- **Statistiques :** Correction du débordement de la pagination sur mobile et correction de la pagination qui revenait à la page 1.
 
 ### Évolutions techniques
-- Refactorings importants pour préparer une potentielle migration vers Next.js :
-    - Création d'un adaptateur de navigation pour gérer les routes et les paramètres.
-    - Utilisation de hooks React Router pour accéder aux informations de navigation.
-    - Suppression de code mort et de directives 'use client' inutiles.
-    - Normalisation des noms de variables et amélioration de la structure du code.
-- Amélioration de la gestion des conditions dans les composants DetailsRowCards.
-- Amélioration du typage de certains composants de la librairie `logic-fabric`.
-- Suppression de la fonction `inIframe` obsolète et remplacement par une approche basée sur le thème.
-- Ajout de guards pour éviter les erreurs lors de l'accès à `window` dans l'environnement serveur.
-- Correction d'un typo et d'un import implicite dans la librairie `logic-fabric`.
+- **Refactoring Navigation :** Préparation de la migration vers Next.js avec la création d'un adaptateur de navigation et la centralisation des hooks React Router.
+- **Refactoring :** Suppression de code mort et simplification de certaines logiques pour améliorer la maintenabilité.
+- **Design System :** Migration des composants Link et NavLink vers l'adaptateur de navigation.
+- **Typage :** Amélioration du typage de certains composants.
+- **Logic Fabric :** Ajout de nouveaux composants minimalist (ToggleGroup, YesOrNoToggleGroup, RadioGroup) et amélioration du typage.
 
 ### Autres changements
-- Mise à jour de l'Acre.
-- Hausse de la CSG non déductible sur dividendes soumises au barème.
-- Correction de l'affichage du séparateur dans le comparateur (espace insécable avant le deux-points).
-- Correction du format d'affichage de la valeur du point (remplacement de "€/an" par "€ par an").
-- Suppression du lien vers le simulateur Cnav du comparateur.
-- Suppression de l'objectif retraite de base de la configuration du comparateur.
-- Suppression des objectifs de projection retraite base et complémentaire de la configuration PL.
-- Correction d'un typo "Embeded" -> "Embedded" dans plusieurs fichiers.
-- Ajout de commentaires pour référencer des issues (ex: #4323).
-- Amélioration de la documentation concernant les droits à la retraite.
-- Application du formatage Prettier.
-- Ajout de nouveaux composants minimalist dans `logic-fabric` (ToggleGroup, YesOrNoToggleGroup, RadioGroup).
+- **Documentation :** Précision dans la documentation concernant la dépendance des droits à la retraite au montant cotisé.
+- **Mise à jour :** Mise à jour de l'Acre et de la CSG non déductible sur dividendes.
+- **Normalisation :** Normalisation des caractères dans le fichier de traduction ui-fr.yaml.
+- **Correction :** Correction de typos (Embeded -> Embedded).
+- **Correction :** Suppression du lien vers le simulateur Cnav du comparateur.
+- **Correction :** Suppression de la projection de montant de retraite des simulateurs indépendants.
+- **Correction :** Suppression des objectifs de projection retraite base et complémentaire de la config PL.
+- **Correction :** Correction de l'affichage mobile du montant des cotisations [#4290](https://github.com/betagouv/mon-entreprise/issues/4290)
