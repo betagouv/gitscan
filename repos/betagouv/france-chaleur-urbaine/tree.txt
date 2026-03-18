@@ -121,6 +121,7 @@
 ├── next-sitemap.config.js
 ├── next.config.ts
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── postcss.config.mjs
@@ -1032,16 +1033,6 @@
 │   │   │   ├── WrappedText.style.tsx
 │   │   │   ├── WrappedText.tsx
 │   │   │   └── index.tsx
-│   │   ├── addressAutocomplete
-│   │   │   ├── AddressAutocomplete.style.tsx
-│   │   │   ├── AddressAutocomplete.tsx
-│   │   │   ├── components
-│   │   │   │   ├── AddressAutocompleteLabel.tsx
-│   │   │   │   ├── AddressInput.tsx
-│   │   │   │   ├── Suggestions.tsx
-│   │   │   │   └── index.ts
-│   │   │   ├── index.ts
-│   │   │   └── useSuggestions.tsx
 │   │   ├── assignment-rules
 │   │   │   ├── AssignmentRuleDialog.tsx
 │   │   │   ├── ExpressionTester.tsx
@@ -1059,11 +1050,8 @@
 │   │   ├── dsfr
 │   │   │   └── README.md
 │   │   ├── form
-│   │   │   ├── AddressAutocomplete.tsx
-│   │   │   ├── Autocomplete.tsx
 │   │   │   ├── FCUTagAutocomplete.tsx
 │   │   │   ├── dsfr
-│   │   │   │   ├── AddressAutocompleteInput.tsx
 │   │   │   │   ├── Checkbox.tsx
 │   │   │   │   ├── Checkboxes.tsx
 │   │   │   │   ├── FCUTagAutocompleteInput.tsx
@@ -1110,7 +1098,6 @@
 │   │       ├── ChipAutoComplete.tsx
 │   │       ├── ComboBox.spec.tsx
 │   │       ├── ComboBox.tsx
-│   │       ├── ComboboxText.tsx
 │   │       ├── CrudDropdown.tsx
 │   │       ├── Dialog.tsx
 │   │       ├── Divider.tsx
@@ -1354,7 +1341,11 @@
 │   │   │       ├── trpc-routes.integration.spec.ts
 │   │   │       └── trpc-routes.ts
 │   │   ├── ban
+│   │   │   ├── client.spec.ts
 │   │   │   ├── client.ts
+│   │   │   ├── server
+│   │   │   │   ├── service.spec.ts
+│   │   │   │   └── service.ts
 │   │   │   └── types.ts
 │   │   ├── bdnb
 │   │   │   ├── commands.ts
@@ -1498,6 +1489,15 @@
 │   │   │   └── server
 │   │   │       ├── api.ts
 │   │   │       └── service.ts
+│   │   ├── form
+│   │   │   ├── AGENTS.md
+│   │   │   ├── AddressField.tsx
+│   │   │   ├── AddressSearch.spec.tsx
+│   │   │   ├── AddressSearch.tsx
+│   │   │   ├── Autocomplete.spec.tsx
+│   │   │   ├── Autocomplete.tsx
+│   │   │   ├── useDebouncedSwitchMap.spec.ts
+│   │   │   └── useDebouncedSwitchMap.ts
 │   │   ├── geo
 │   │   │   ├── README.md
 │   │   │   ├── client
@@ -1553,6 +1553,7 @@
 │   │   │   │   ├── jobs.ts
 │   │   │   │   ├── service.spec.ts
 │   │   │   │   ├── service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
 │   │   │   ├── types.ts
 │   │   │   └── utils
@@ -1826,7 +1827,6 @@
 │   │   └── services
 │   │       ├── addresseInformation.ts
 │   │       ├── airtable.ts
-│   │       ├── api-adresse.ts
 │   │       ├── communeAPotentiel.ts
 │   │       ├── comparateur
 │   │       │   └── configuration.ts
@@ -1846,6 +1846,9 @@
 │   │   │   └── cors.ts
 │   │   └── eligibility.ts
 │   ├── tests
+│   │   ├── a11y
+│   │   │   ├── axe-test.ts
+│   │   │   └── homepage.spec.ts
 │   │   ├── api
 │   │   │   └── admin
 │   │   │       └── users-stats.integration.spec.ts
@@ -1923,4 +1926,4 @@
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── vitest.config.mts
-265 directories, 1979 files
+266 directories, 1981 files
