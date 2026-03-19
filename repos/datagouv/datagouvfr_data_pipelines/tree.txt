@@ -1,0 +1,353 @@
+.
+├── .circleci
+│   └── config.yml
+├── .github
+│   └── workflows
+│       └── simplifions_tests.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── config.py
+├── data_processing
+│   ├── README.md
+│   ├── assemblee_nationale
+│   │   └── petitions
+│   │       ├── README.md
+│   │       ├── dag.py
+│   │       └── task_functions.py
+│   ├── carburants
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   ├── scripts
+│   │   │   ├── __init__.py
+│   │   │   ├── generate_kpis_and_files.py
+│   │   │   ├── generate_kpis_rupture.py
+│   │   │   ├── reformat_prix.py
+│   │   │   └── utils.py
+│   │   ├── task_functions.py
+│   │   └── utils
+│   │       └── deps_regs.csv
+│   ├── dfi
+│   │   ├── README.md
+│   │   ├── config.json
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── dvf
+│   │   ├── README.md
+│   │   ├── config.json
+│   │   ├── dag.py
+│   │   ├── scripts
+│   │   │   ├── script_dl_copro.sh
+│   │   │   ├── script_dl_dpe.sh
+│   │   │   └── script_dl_dvf.sh
+│   │   ├── sql
+│   │   │   ├── alter_dvf_table.sql
+│   │   │   ├── create_copro_table.sql
+│   │   │   ├── create_distribution_table.sql
+│   │   │   ├── create_dpe_table.sql
+│   │   │   ├── create_dvf_table.sql
+│   │   │   ├── create_stats_dvf_table.sql
+│   │   │   ├── create_whole_period_table.sql
+│   │   │   ├── index_dpe_table.sql
+│   │   │   └── index_dvf_table.sql
+│   │   └── task_functions.py
+│   ├── elections
+│   │   ├── aggregation
+│   │   │   ├── README.md
+│   │   │   ├── config.json
+│   │   │   ├── dag.py
+│   │   │   ├── scripts
+│   │   │   │   └── script_dl_elections.sh
+│   │   │   └── task_functions.py
+│   │   └── miom_mirroring
+│   │       ├── config.json
+│   │       ├── dag.py
+│   │       └── task_functions.py
+│   ├── formation
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── geozones
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── insee
+│   │   ├── deces
+│   │   │   ├── README.md
+│   │   │   ├── config.json
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   └── sirene
+│   │       ├── geocodage
+│   │       │   ├── README.md
+│   │       │   ├── dag.py
+│   │       │   └── scripts
+│   │       │       ├── 1_download_last_sirene_batch.sh
+│   │       │       ├── 2_split_departments_files.sh
+│   │       │       ├── 3_geocoding_by_increasing_size.sh
+│   │       │       ├── 4a_split_by_locality.sh
+│   │       │       ├── 4b_geocode_stats.sh
+│   │       │       ├── 4c_check_stats_coherence.py
+│   │       │       ├── 5_national_files_agregation.sh
+│   │       │       ├── 6_prepare_to_rsync.sh
+│   │       │       ├── 7_rsync_to_files_data_gouv.sh
+│   │       │       ├── README.md
+│   │       │       ├── communes_split.sh
+│   │       │       ├── geocode-requirements.txt
+│   │       │       ├── geocode.py
+│   │       │       ├── normadresse.py
+│   │       │       ├── normadresse_tests.py
+│   │       │       ├── normadresse_tests.yml
+│   │       │       └── resources
+│   │       │           ├── France2018.tsv
+│   │       │           ├── README.md
+│   │       │           ├── communes-plus-20140630.csv
+│   │       │           └── normadresse.csv
+│   │       └── stock
+│   │           ├── README.md
+│   │           ├── config
+│   │           │   ├── config_geoloc.json
+│   │           │   └── config_stock.json
+│   │           ├── dag_geoloc.py
+│   │           ├── dag_stock.py
+│   │           └── task_functions.py
+│   ├── irve
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   ├── geo_utils
+│   │   │   ├── france_bbox.geojson
+│   │   │   ├── geo.py
+│   │   │   └── geo_data_quality.md
+│   │   └── task_functions.py
+│   ├── meteo
+│   │   ├── config.json
+│   │   ├── ftp_processing
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── hydra_and_previz
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── pg_processing
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   ├── sql
+│   │   │   │   └── create.sql.jinja
+│   │   │   └── task_functions.py
+│   │   ├── pnt_monitor
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── previsions_densemble
+│   │   │   ├── README.md
+│   │   │   ├── config.json
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── previsions_numeriques_temps
+│   │   │   ├── README.md
+│   │   │   ├── config.py
+│   │   │   ├── dag.py
+│   │   │   ├── task_functions.py
+│   │   │   └── utils.py
+│   │   └── stats_meteo
+│   │       ├── README.md
+│   │       ├── dag.py
+│   │       └── task_functions.py
+│   ├── rna
+│   │   ├── README.md
+│   │   ├── config.json
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── sante
+│   │   ├── controle_sanitaire_eau
+│   │   │   ├── README.md
+│   │   │   ├── config.json
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   └── finess
+│   │       ├── README.md
+│   │       ├── config.json
+│   │       ├── dag.py
+│   │       └── task_functions.py
+│   └── senat
+│       └── petitions
+│           ├── README.md
+│           ├── dag.py
+│           └── task_functions.py
+├── dgv
+│   ├── README.md
+│   ├── apigouv
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── edito
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── harvester
+│   │   ├── README.md
+│   │   └── dag.py
+│   ├── impact
+│   │   ├── README.md
+│   │   ├── config.json
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── metrics
+│   │   ├── README.md
+│   │   ├── config.py
+│   │   ├── config.yaml
+│   │   ├── dag.png
+│   │   ├── dag.py
+│   │   ├── sql
+│   │   │   ├── create_tables.sql
+│   │   │   ├── refresh_materialized_views.sql
+│   │   │   ├── remove_matomo_metrics.sql
+│   │   │   └── remove_visit_metrics.sql
+│   │   ├── task.py
+│   │   ├── task_functions.py
+│   │   └── test
+│   │       ├── task_functions_test.py
+│   │       ├── test_dataservices_catalog.csv
+│   │       ├── test_dataservices_expected.csv
+│   │       ├── test_dataservices_found_expected.csv
+│   │       ├── test_datasets_catalog.csv
+│   │       ├── test_datasets_expected.csv
+│   │       ├── test_datasets_found_expected.csv
+│   │       ├── test_organizations_catalog.csv
+│   │       ├── test_organizations_expected.csv
+│   │       ├── test_organizations_found_expected.csv
+│   │       ├── test_raw.log
+│   │       ├── test_resources_catalog.csv
+│   │       ├── test_resources_expected.csv
+│   │       ├── test_resources_found_expected.csv
+│   │       ├── test_reuses_catalog.csv
+│   │       ├── test_reuses_expected.csv
+│   │       └── test_reuses_found_expected.csv
+│   ├── monitoring
+│   │   ├── README.md
+│   │   ├── activites
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── bizdev
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── dag_administrateur.py
+│   │   ├── dag_moderation_utilisateur.py
+│   │   ├── dashboard
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   ├── digest
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   ├── digest-api.ipynb
+│   │   │   ├── digest.ipynb
+│   │   │   └── task_functions.py
+│   │   ├── hvd
+│   │   │   ├── README.md
+│   │   │   ├── dag.py
+│   │   │   └── task_functions.py
+│   │   └── tops
+│   │       ├── README.md
+│   │       ├── dag.py
+│   │       └── task_functions.py
+│   ├── stats
+│   │   ├── README.md
+│   │   ├── config.json
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   └── tabular_metrics
+│       ├── README.md
+│       ├── dag.py
+│       ├── sql
+│       │   └── create_tables.sql
+│       └── task_functions.py
+├── maintenance
+│   └── dag_clean_logs_and_runs.py
+├── meta
+│   ├── README.md
+│   ├── config.json
+│   ├── dag.py
+│   └── task_functions.py
+├── schema
+│   ├── README.md
+│   ├── consolidation
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   ├── schemas_consolidation.md
+│   │   └── task_functions.py
+│   ├── recommendations
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   └── task_functions.py
+│   ├── utils
+│   │   └── jsonschema.py
+│   └── website
+│       ├── README.md
+│       ├── dag.py
+│       └── task_functions.py
+├── utils
+│   ├── conversions.py
+│   ├── crisp.py
+│   ├── datagouv.py
+│   ├── download.py
+│   ├── filesystem.py
+│   ├── grist.py
+│   ├── mails.py
+│   ├── mattermost.py
+│   ├── notebook.py
+│   ├── postgres.py
+│   ├── retry.py
+│   ├── s3.py
+│   ├── schema.py
+│   ├── sftp.py
+│   ├── tasks.py
+│   ├── utils.py
+│   └── utils_test.py
+└── verticales
+    ├── culture
+    │   ├── README.md
+    │   ├── dag.py
+    │   └── task_functions.py
+    └── simplifions
+        ├── README.md
+        ├── dag.py
+        ├── delete_demo_topics.py
+        ├── diff_manager.py
+        ├── grist_v2_manager.py
+        ├── task_functions.py
+        ├── tests
+        │   ├── conftest.py
+        │   ├── factories
+        │   │   ├── external_resources_factory.py
+        │   │   ├── grist_factory.py
+        │   │   ├── task_instance_factory.py
+        │   │   └── topics_factory.py
+        │   ├── fixtures
+        │   │   ├── grist
+        │   │   │   ├── cas_d_usages.json
+        │   │   │   ├── categories_de_solution.json
+        │   │   │   ├── fournisseurs_de_services.json
+        │   │   │   ├── generate_fixtures_from_grist.py
+        │   │   │   ├── solutions.json
+        │   │   │   ├── types_de_simplification.json
+        │   │   │   └── usagers.json
+        │   │   └── topics
+        │   │       ├── generate_fixtures_from_datagouv_topics.py
+        │   │       ├── simplifions_v2_cas_d_usages.json
+        │   │       └── simplifions_v2_solutions.json
+        │   ├── mocks
+        │   │   ├── datagouvfr_mock.py
+        │   │   ├── external_resources_mock.py
+        │   │   └── grist_mock.py
+        │   ├── test-requirements.txt
+        │   ├── test_diff_manager.py
+        │   ├── test_grist_v2_manager.py
+        │   ├── test_task_functions.py
+        │   ├── test_topics_api.py
+        │   └── test_topics_v2_manager.py
+        ├── topics_api.py
+        └── topics_v2_manager.py
+80 directories, 272 files
