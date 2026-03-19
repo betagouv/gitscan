@@ -1,0 +1,292 @@
+# Changelog
+
+## 0.11.0 (2026-03-09)
+
+- Add `code_epci` format ([#214](https://github.com/etalab/csv-detective/pull/214))
+- Add a test to assert all formats have labels ([#231](https://github.com/etalab/csv-detective/pull/231))
+- Allow to set custom format proportions ([#213](https://github.com/etalab/csv-detective/pull/213))
+- Change encoding detection lib ([#218](https://github.com/etalab/csv-detective/pull/218))
+- Fix `datetime_aware.py` regex pattern ([#227](https://github.com/etalab/csv-detective/pull/227))
+- Fix `datetime_rfc822.py` regex pattern ([#226](https://github.com/etalab/csv-detective/pull/226))
+- Fix examples in schema output ([#224](https://github.com/etalab/csv-detective/pull/224))
+- Fix nb_distinct in chunked profile ([#219](https://github.com/etalab/csv-detective/pull/219))
+- Fix nb_missing_values always returning 0 in chunked profile
+- Fix scientific notation detection for negative numbers ([#229](https://github.com/etalab/csv-detective/pull/229))
+- Fix scientific notation regex pattern ([#225](https://github.com/etalab/csv-detective/pull/225))
+- Fix sheet name in export file name ([#230](https://github.com/etalab/csv-detective/pull/230))
+- Fix typo in date regex pattern ([#223](https://github.com/etalab/csv-detective/pull/223))
+- Handle empty string in percent and money detection ([#222](https://github.com/etalab/csv-detective/pull/222))
+- Only publish when commit on main ([#216](https://github.com/etalab/csv-detective/pull/216))
+- Remove dead code in `siret.py` ([#228](https://github.com/etalab/csv-detective/pull/228))
+- Rename `code_commune_insee` into `code_commune` for better consistency ([#215](https://github.com/etalab/csv-detective/pull/215))
+- Restrain the number of positional arguments of the main functions ([#217](https://github.com/etalab/csv-detective/pull/217))
+- Skip step in validation if detected format is string ([#232](https://github.com/etalab/csv-detective/pull/232))
+- Use the new kwarg name in CLI and add tests ([#221](https://github.com/etalab/csv-detective/pull/221))
+- fix lint
+
+
+## 0.10.4 (2026-02-09)
+
+- Handle full `NaN`  in short files ([#210](https://github.com/etalab/csv-detective/pull/210))
+- Improve wording ([#211](https://github.com/etalab/csv-detective/pull/211))
+- Upgrade minimal `pandas` version ([#212](https://github.com/etalab/csv-detective/pull/212))
+
+
+## 0.10.3 (2026-01-27)
+
+- Avoid considering floats as dates ([#202](https://github.com/etalab/csv-detective/pull/202))
+- Fix casting for NaN-like values ([#208](https://github.com/etalab/csv-detective/pull/208))
+- Fix streaming issue when analyzing from URL ([#204](https://github.com/etalab/csv-detective/pull/204))
+- Fix validation ([#205](https://github.com/etalab/csv-detective/pull/205))
+- Prevent `NaN` in headers ([#209](https://github.com/etalab/csv-detective/pull/209))
+- Stricter column detection ([#207](https://github.com/etalab/csv-detective/pull/207))
+- Use dependency-groups in pyproject ([#203](https://github.com/etalab/csv-detective/pull/203))
+
+
+## 0.10.2 (2026-01-16)
+
+- Dynamic versionning ([#198](https://github.com/etalab/csv-detective/pull/198))
+- Fix `tag_version.py` script from template ([#199](https://github.com/etalab/csv-detective/pull/199))
+- Handle deprecated or unknown format in validation ([#200](https://github.com/etalab/csv-detective/pull/200))
+- Update lock ([#201](https://github.com/etalab/csv-detective/pull/201))
+
+
+## 0.10.1 (2026-01-15)
+
+- Add missing casting types ([#197](https://github.com/etalab/csv-detective/pull/197))
+- Fix `latlon` labels ([#195](https://github.com/etalab/csv-detective/pull/195))
+- Fix count in profile when chunking ([#196](https://github.com/etalab/csv-detective/pull/196))
+- Fix hint type ([#187](https://github.com/etalab/csv-detective/pull/187))
+- Fix references ([#194](https://github.com/etalab/csv-detective/pull/194))
+- Improve codes ISO alpha ([#192](https://github.com/etalab/csv-detective/pull/192))
+- Improve header score ([#190](https://github.com/etalab/csv-detective/pull/190))
+- Improve latitude and longitude detection ([#191](https://github.com/etalab/csv-detective/pull/191))
+- Less strict datetimes prefix ([#188](https://github.com/etalab/csv-detective/pull/188))
+- Move stuff to `Format`'s attributes ([#189](https://github.com/etalab/csv-detective/pull/189))
+- Update to version 0.10.1.dev for next development cycle
+
+
+## 0.10.0 (2025-12-04)
+
+- Better email detection [#151](https://github.com/datagouv/csv-detective/pull/151)
+- Sample can handle full NaN columns [#152](https://github.com/datagouv/csv-detective/pull/152)
+- Update .gitignore [#153](https://github.com/datagouv/csv-detective/pull/153)
+- Fix allowed valid proportions for geo float columns [#157](https://github.com/datagouv/csv-detective/pull/157)
+- Remove Minio-related parts of the code [#158](https://github.com/datagouv/csv-detective/pull/158)
+- Handle midnight in datetimes [commit](https://github.com/datagouv/csv-detective/commit/78e632878dccb005f7dee1a3e3afae696d8611eb)
+- Fix datetime differentiation [#162](https://github.com/datagouv/csv-detective/pull/162)
+- Bump minimum Python version from 3.9 to 3.10 [#163](https://github.com/datagouv/csv-detective/pull/163)
+- New `tag_version.sh` script to replace Bump'x [#161](https://github.com/datagouv/csv-detective/pull/161)
+- Better labels detection for some formats [#168](https://github.com/datagouv/csv-detective/pull/168)
+- Restore `update_version.py` script and workflow [#169](https://github.com/datagouv/csv-detective/pull/169)
+- Process big csv files in chunks (/!\ breaking changes) [#159](https://github.com/datagouv/csv-detective/pull/159)
+- Handle column named `count` in profile creation [#171](https://github.com/datagouv/csv-detective/pull/171)
+- Prevent `NaN` in headers [#173](https://github.com/datagouv/csv-detective/pull/173)
+- Refactor formats structure in the repo (/!\ breaking changes) [#170](https://github.com/datagouv/csv-detective/pull/170)
+- Adapt to main branch change [#177](https://github.com/datagouv/csv-detective/pull/177)
+- Add lock file and unpin dependencies [#166](https://github.com/datagouv/csv-detective/pull/166)
+- Use uv as the build backend instead of setuptools [#165](https://github.com/datagouv/csv-detective/pull/165)
+- Allow accents and spaces in URLs [#178](https://github.com/datagouv/csv-detective/pull/178)
+- Add new `binary` format [#176](https://github.com/datagouv/csv-detective/pull/176)
+- Performances improvements [#179](https://github.com/datagouv/csv-detective/pull/179) [#180](https://github.com/datagouv/csv-detective/pull/180) [#181](https://github.com/datagouv/csv-detective/pull/181) [#182](https://github.com/datagouv/csv-detective/pull/182) [#183](https://github.com/datagouv/csv-detective/pull/183)
+- `float` accepts scientific notation [commit](https://github.com/datagouv/csv-detective/commit/8171d9983daecee8a4a44e67c00eca63b08debfc)
+- More early stops for datetimes [#184](https://github.com/datagouv/csv-detective/pull/184)
+
+## 0.9.2 (2025-08-26)
+
+- Fix profile creation [#150](https://github.com/datagouv/csv-detective/pull/150)
+
+## 0.9.1 /!\ YANKED (2025-08-26)
+
+- Remove `create_example_csv_file` from __init__ to avoid noise from `faker` in production logs [#145](https://github.com/datagouv/csv-detective/pull/145)
+- Cast columns in place and restore early detection for date(time) to cut processing time [#144](https://github.com/datagouv/csv-detective/pull/144)
+- Load data with `dtype=str` instead of deprecated "unicode" [#149](https://github.com/datagouv/csv-detective/pull/149)
+- Better sample for analysis if file is too big and therefore reduce sample size [#143](https://github.com/datagouv/csv-detective/pull/143)
+- Refactor profile creation for more efficiency [#145](https://github.com/datagouv/csv-detective/pull/145)
+
+## 0.9.0 (2025-07-31)
+
+- Refactor label testing [#119](https://github.com/datagouv/csv-detective/pull/119)
+- Refactor repo metadata and requirements [#120](https://github.com/datagouv/csv-detective/pull/120) [#122](https://github.com/datagouv/csv-detective/pull/122) [#135](https://github.com/datagouv/csv-detective/pull/135) [#136](https://github.com/datagouv/csv-detective/pull/136) [#138](https://github.com/datagouv/csv-detective/pull/138)
+- Better URL detection [#121](https://github.com/datagouv/csv-detective/pull/121)
+- For big files, analyse on sample then validate on whole file [#124](https://github.com/datagouv/csv-detective/pull/124) [#129](https://github.com/datagouv/csv-detective/pull/129)
+- Fix imports [#125](https://github.com/datagouv/csv-detective/pull/125) [#126](https://github.com/datagouv/csv-detective/pull/126) [#127](https://github.com/datagouv/csv-detective/pull/127) [#128](https://github.com/datagouv/csv-detective/pull/128)
+- Split aware and naive datetimes for hydra to cast them separately [#130](https://github.com/datagouv/csv-detective/pull/130)
+- Validate using the testing function, to consider PROPORTIONS [#131](https://github.com/datagouv/csv-detective/pull/131)
+- Remove `datetime_iso` format due to ambiguous cast in db (can be naive or aware) [#132](https://github.com/datagouv/csv-detective/pull/132)
+- Add `lonlat_wgs` format and handle optional brackets for `latlon_wgs` [#133](https://github.com/datagouv/csv-detective/pull/133)
+- Refactor format prioritizing [#134](https://github.com/datagouv/csv-detective/pull/134)
+- Switch to pyproject [#139](https://github.com/datagouv/csv-detective/pull/139)
+- Lint with ruff [#140](https://github.com/datagouv/csv-detective/pull/140) [#141](https://github.com/datagouv/csv-detective/pull/141)
+
+## 0.8.0 (2025-05-20)
+
+- New function that creates a csv from a list of fields and constraints, or from a TableSchema [#101](https://github.com/datagouv/csv-detective/pull/101)
+- Enable outputing loaded dataframe [#102](https://github.com/datagouv/csv-detective/pull/102)
+- Better naming, hint types and minor refactors [#103](https://github.com/datagouv/csv-detective/pull/103)
+- The returned dataframe has its columns properly cast to the detected types [#104](https://github.com/datagouv/csv-detective/pull/104)
+- Raise an error if the encoding could not be guessed [#106](https://github.com/datagouv/csv-detective/pull/106)
+- Fix CLI and minio routine [#107](https://github.com/datagouv/csv-detective/pull/107)
+- Allow to only specify tests to skip ("all but...") [#108](https://github.com/datagouv/csv-detective/pull/108)
+- Fix bool casting [#109](https://github.com/datagouv/csv-detective/pull/109)
+- Handle csv.gz files [#110](https://github.com/datagouv/csv-detective/pull/110)
+- Refactor file tests [#110](https://github.com/datagouv/csv-detective/pull/110)
+- Restructure repo (breaking changes) [#111](https://github.com/datagouv/csv-detective/pull/111)
+- Add validation function and associated flow [#112](https://github.com/datagouv/csv-detective/pull/112)
+- Better float detection [#113](https://github.com/datagouv/csv-detective/pull/113)
+- Refactor fields tests [#114](https://github.com/datagouv/csv-detective/pull/114)
+- Better code waldec and add code import [#116](https://github.com/datagouv/csv-detective/pull/116)
+- Better validation and refactors [#117](https://github.com/datagouv/csv-detective/pull/117)
+- Fix validation [#118](https://github.com/datagouv/csv-detective/pull/118)
+
+## 0.7.4 (2024-11-15)
+
+- Enable calling main functions from base [#97](https://github.com/datagouv/csv-detective/pull/97)
+- Better detection of ints and floats [#94](https://github.com/datagouv/csv-detective/pull/94)
+- Better handle NaN values [#96](https://github.com/datagouv/csv-detective/pull/96)
+- Reshape exemple.py, clean up code and improve changelog [#98](https://github.com/datagouv/csv-detective/pull/98)
+
+## 0.7.3 (2024-10-07)
+
+- Refactor tests import, now using folder arborescence instead of pre-made file [#93](https://github.com/datagouv/csv-detective/pull/93)
+- Fix inversion (count<=>value) in profile [#95](https://github.com/datagouv/csv-detective/pull/95)
+
+## 0.7.2 (2024-08-27)
+
+- Outsource many formats to fr-format library [#87](https://github.com/datagouv/csv-detective/pull/87)
+- Better date detection [#89](https://github.com/datagouv/csv-detective/pull/89)
+- Update dependencies to make tests pass [#81](https://github.com/datagouv/csv-detective/pull/81)
+- Update readme [#81](https://github.com/datagouv/csv-detective/pull/81)
+- Hint type [#81](https://github.com/datagouv/csv-detective/pull/81)
+- Minor refactors [#81](https://github.com/datagouv/csv-detective/pull/81)
+
+## 0.7.1 (2024-03-27)
+
+- Fixes after production release in hydra [#80](https://github.com/datagouv/csv-detective/pull/80)
+
+## 0.7.0 (2024-03-21)
+
+- Handle other file formats: xls, xlsx, ods (and more) and analysis through URLs [#73](https://github.com/datagouv/csv-detective/pull/73)
+- Handle files with no extension (cc hydra) [#79](https://github.com/datagouv/csv-detective/pull/79)
+
+## 0.6.8 (2024-01-18)
+
+- prevent exporting NaN values in profile [#72](https://github.com/datagouv/csv-detective/pull/72)
+- raise ValueError if analyzed file has various number of columns across first rows [#72](https://github.com/datagouv/csv-detective/pull/72)
+
+## 0.6.7 (2024-01-15)
+
+- Add logs for columns that would take too much time within a specific test [#70](https://github.com/datagouv/csv-detective/pull/70)
+- Refactor some tests to improve performances and make detection more accurate [#69](https://github.com/datagouv/csv-detective/pull/69)
+- Try alternative ways to clean text [#71](https://github.com/datagouv/csv-detective/pull/71)
+
+## 0.6.6 (2023-11-24)
+
+- Change setup.py to better convey dependencies [#67](https://github.com/datagouv/csv-detective/pull/67)
+
+## 0.6.5 (2023-11-17)
+
+- Change encoding detection for faust-cchardet (forked from cchardet) [#66](https://github.com/etalab/csv-detective/pull/66)
+
+## 0.6.4 (2023-10-18)
+
+- Better handling of ints and floats (now not accepting blanks and "+" in string) [#62](https://github.com/etalab/csv-detective/pull/62)
+
+## 0.6.3 (2023-03-23)
+
+- Faster routine [#59](https://github.com/etalab/csv-detective/pull/59)
+
+## 0.6.2 (2023-02-10)
+
+- Catch OverflowError for latitude and longitude checks [#58](https://github.com/etalab/csv-detective/pull/58)
+
+## 0.6.0 (2023-02-10)
+
+- Add CI and upgrade dependencies [#49](https://github.com/etalab/csv-detective/pull/49)
+- Shuffle data before analysis [#56](https://github.com/etalab/csv-detective/pull/56)
+- Better discrimination between `code_departement` and `code_region` [#56](https://github.com/etalab/csv-detective/pull/56)
+- Add schema in output analysis [#57](https://github.com/etalab/csv-detective/pull/57)
+
+## 0.4.7 [#51](https://github.com/etalab/csv-detective/pull/51)
+
+- Allow possibility to analyze entire file instead of a limited number of rows [#48](https://github.com/etalab/csv-detective/pull/48)
+- Better boolean detection [#42](https://github.com/etalab/csv-detective/issues/42)
+- Differentiate python types and format for `date` and `datetime` [#43](https://github.com/etalab/csv-detective/issues/43)
+- Better `code_departement` and `code_commune_insee` detection [#44](https://github.com/etalab/csv-detective/issues/44)
+- Fix header line (`header_row_idx`) detection [#44](https://github.com/etalab/csv-detective/issues/44)
+- Allow possibility to get profile of csv [#46](https://github.com/etalab/csv-detective/issues/46)
+
+## 0.4.6 [#39](https://github.com/etalab/csv-detective/pull/39)
+
+- Fix tests
+- Prioritise lat / lon FR detection over more generic lat / lon.
+- To reduce false positives, prevent detection of the following if label detection is missing: `['code_departement', 'code_commune_insee', 'code_postal', 'latitude_wgs', 'longitude_wgs', 'latitude_wgs_fr_metropole', 'longitude_wgs_fr_metropole', 'latitude_l93', 'longitude_l93']`
+- Lower threshold of label detection so that if one relevant is detected in the label, it boosts the detection score.
+- Add ISO country alpha-3 and numeric detection
+- include camel case parsing in _process_text function
+- Support optional brackets in latlon format
+
+## 0.4.5 [#29](https://github.com/etalab/csv-detective/pull/29)
+
+- Use `netloc` instead of `url` in location dict
+
+## 0.4.4 [#24] (https://github.com/etalab/csv-detective/pull/28)
+
+- Prevent crash on empty CSVs
+- Add optional arguments encoding and sep to routine and routine_minio functions
+- Field detection improvements (code_csp_insee and datetime RFC 822)
+- Schema generation improvements with examples
+
+
+## 0.4.3 [#24] (https://github.com/etalab/csv-detective/pull/24)
+
+- Add uuid and MongoID detection
+- Add new function dedicated to interaction with minio data
+- Add table schema automatic generation (only on minio data)
+- Modification of calculated score (consider label detection as a boost for score)
+
+## 0.4.2 [#22] (https://github.com/etalab/csv-detective/pull/22)
+
+Add type detection by header name
+
+## 0.4.1 [#19] (https://github.com/etalab/csv-detective/pull/19)
+
+Fix bug
+ * num_rows was causing problem when it was fix to other value than default - Fixed
+
+## 0.4.0 [#18] (https://github.com/etalab/csv-detective/pull/18)
+
+Add detailed output possibility
+
+Details :
+ * two modes now for output report : "LIMITED" and "ALL"
+ * "ALL" option give user information on found proportion for each column types and each columns
+
+## 0.3.0 [#15] (https://github.com/etalab/csv-detective/pull/15)
+
+Fix bugs
+
+Details :
+ * Facilitate ML Integration
+ * Add column types detection
+ * Fix documentation
+
+## 0.2.1 - [#2](https://github.com/etalab/csv-detective/pull/2)
+
+Add continuous integration
+
+Details :
+ * Add configuration for CircleCI
+ * Add `CONTRIBUTING.md`
+ * Push automatically new versions to PyPI
+ * Use semantic versioning
+
+## 0.2 - [#1](https://github.com/etalab/csv-detective/pull/1)
+
+Port from python2 to python3
+
+Details :
+ * Add license AGPLv3
+ * Update requirements
+
+## 0.1

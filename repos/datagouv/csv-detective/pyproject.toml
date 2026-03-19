@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csv-detective"
+dynamic = ["version"]
+description = "Detect tabular files column content"
+authors = [{ name = "data.gouv.fr", email = "opendatateam@data.gouv.fr" }]
+dependencies = [
+    "dateparser>=1.2.0,<2",
+    "charset-normalizer>=3.4.4,<4",
+    "pandas>=2.3.0,<3",
+    "python-dateutil>=2.8.2,<3",
+    "Unidecode>=1.3.6,<2",
+    "openpyxl>=3.1.5",
+    "xlrd>=2.0.1",
+    "odfpy>=1.4.1",
+    "requests>=2.32.3,<3",
+    "python-magic>=0.4.27",
+    "frformat==0.5.0",
+    "Faker>=33.0.0",
+    "rstr>=3.2.2",
+    "more-itertools>=10.8.0",
+]
+requires-python = ">=3.10,<3.15"
+license = { text = "MIT" }
+readme = "README.md"
+keywords = ["CSV", "data processing", "encoding", "guess", "parser", "tabular"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "responses>=0.25.0",
+    "ruff>=0.9.3",
+]
+
+[project.urls]
+Source = "https://github.com/datagouv/csv-detective"
+
+[project.scripts]
+csv_detective = "csv_detective.cli:run"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+csv_detective = ["CHANGELOG.md", "LICENSE", "README.md"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[tool.ruff]
+lint = { extend-select = ["I"] } # ["I"] is to also sort imports with an isort rule
+line-length = 100
+
+[tool.uv.build-backend]
+module-name = "csv_detective"
+module-root = ""
