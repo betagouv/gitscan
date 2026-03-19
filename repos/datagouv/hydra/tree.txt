@@ -1,0 +1,165 @@
+.
+├── .benchmarks
+│   └── benchmarks.csv
+├── .circleci
+│   └── config.yml
+├── .github
+│   └── workflows
+│       └── benchmark.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CHANGELOG.md
+├── Procfile
+├── README.md
+├── banner.png
+├── docker-compose.yml
+├── docs
+│   ├── archi-idd-IDD.drawio.png
+│   ├── hydra.drawio.png
+│   └── screenshot.png
+├── pyproject.toml
+├── scripts
+│   └── probe_cors_sample.py
+├── tag_version.sh
+├── tests
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── data
+│   │   ├── 20190618-annuaire-diagnostiqueurs.csv
+│   │   ├── 20190618-annuaire-diagnostiqueurs_compressed.csv.gz
+│   │   ├── H_01_1990-1999.csv.gz
+│   │   ├── catalog.csv
+│   │   ├── catalog.xls
+│   │   ├── catalog.xlsx
+│   │   ├── catalog_harvested.csv
+│   │   ├── invalid.geojson
+│   │   └── valid.geojson
+│   ├── test_analysis
+│   │   ├── test_analysis_csv.py
+│   │   ├── test_analysis_csv_exceptions.py
+│   │   ├── test_analysis_other_formats.py
+│   │   ├── test_analysis_parquet.py
+│   │   ├── test_change_detections.py
+│   │   ├── test_geojson.py
+│   │   ├── test_ogc.py
+│   │   └── test_parquet_export.py
+│   ├── test_api
+│   │   ├── test_api_checks.py
+│   │   ├── test_api_resources.py
+│   │   ├── test_api_resources_exceptions.py
+│   │   └── test_api_statuses.py
+│   ├── test_cli
+│   │   ├── __init__.py
+│   │   ├── test_analysis.py
+│   │   ├── test_catalog.py
+│   │   ├── test_probe_cors.py
+│   │   └── test_purge.py
+│   ├── test_crawl
+│   │   ├── test_backoff.py
+│   │   └── test_crawl.py
+│   ├── test_db
+│   │   ├── test_db_checks.py
+│   │   └── test_db_resources.py
+│   └── test_utils
+│       ├── test_compute_checksum_from_file.py
+│       └── test_sentry_error.py
+├── udata_hydra
+│   ├── __init__.py
+│   ├── analysis
+│   │   ├── __init__.py
+│   │   ├── csv.py
+│   │   ├── geojson.py
+│   │   ├── helpers.py
+│   │   ├── ogc.py
+│   │   ├── parquet.py
+│   │   └── resource.py
+│   ├── app.py
+│   ├── cli.py
+│   ├── config_default.toml
+│   ├── context.py
+│   ├── crawl
+│   │   ├── __init__.py
+│   │   ├── calculate_next_check.py
+│   │   ├── check_resources.py
+│   │   ├── helpers.py
+│   │   ├── preprocess_check_data.py
+│   │   └── select_batch.py
+│   ├── db
+│   │   ├── __init__.py
+│   │   ├── check.py
+│   │   ├── resource.py
+│   │   └── resource_exception.py
+│   ├── logger.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   ├── csv
+│   │   │   ├── 20221205_initial_up_rev1.sql
+│   │   │   ├── 20230130_drop_migrations.sql
+│   │   │   ├── 20230206_datetime_aware.sql
+│   │   │   ├── 20240827_add_indexes_column_to_tables_index_table.sql
+│   │   │   ├── 20250610_migrate_resources_exception.sql
+│   │   │   ├── 20250626_delete_datetime_iso_references.sql
+│   │   │   ├── 20250902_delete_analyses_too_long_column_names.sql
+│   │   │   ├── 20250911_add_deleted_column_to_tables_index.sql
+│   │   │   ├── 20250916_add_dataset_id_to_tables_index.sql
+│   │   │   └── 20251103_add_indexes.sql
+│   │   └── main
+│   │       ├── 20221205_initial_up_rev1.sql
+│   │       ├── 20221206_rev1_up_rev2.sql
+│   │       ├── 20221206_rev2_up_rev3.sql
+│   │       ├── 20221208_rev3_up_rev4.sql
+│   │       ├── 20221208_rev4_up_rev5.sql
+│   │       ├── 20230119_rev5_up_rev6.sql
+│   │       ├── 20230121_rev6_up_rev7.sql
+│   │       ├── 20230121_rev7_up_rev8.sql
+│   │       ├── 20230130_drop_migrations.sql
+│   │       ├── 20230206_datetime_aware.sql
+│   │       ├── 20230515_rev8_up_rev9.sql
+│   │       ├── 20230606_rev9_up_rev10.sql
+│   │       ├── 20231102_drop_csv_analysis.sql
+│   │       ├── 20240827_add_resources_exceptions_table.sql
+│   │       ├── 20240926_add_indexes.sql
+│   │       ├── 20241004_add_comment_column_to_resources_exceptions.sql
+│   │       ├── 20241021_add_parquet_columns.sql
+│   │       ├── 20241023_alter_foreign_key.sql
+│   │       ├── 20241025_add_next_check_column.sql
+│   │       ├── 20250108_add_indexes.sql
+│   │       ├── 20250130_add_pmtiles_fields.sql
+│   │       ├── 20250519_add_format_column_catalog.sql
+│   │       ├── 20250610_migrate_resources_exception.sql
+│   │       ├── 20250611_add_status_since_catalog.sql
+│   │       ├── 20250615_add_geojson_fields.sql
+│   │       ├── 20251103_add_parsing_table_index_on_checks.sql
+│   │       ├── 20260119_add_cors_headers_column.sql
+│   │       ├── 20260202_add_wfs_metadata.sql
+│   │       └── 20260209_add_title_column_catalog.sql
+│   ├── routes
+│   │   ├── __init__.py
+│   │   ├── checks.py
+│   │   ├── resources.py
+│   │   ├── resources_exceptions.py
+│   │   └── status.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   ├── check.py
+│   │   ├── resource.py
+│   │   └── resource_exception.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── casting.py
+│   │   ├── csv.py
+│   │   ├── db.py
+│   │   ├── errors.py
+│   │   ├── file.py
+│   │   ├── geojson.py
+│   │   ├── http.py
+│   │   ├── minio.py
+│   │   ├── ogc.py
+│   │   ├── parquet.py
+│   │   ├── queue.py
+│   │   ├── reader.py
+│   │   └── timer.py
+│   └── worker.py
+└── uv.lock
+25 directories, 139 files
