@@ -1,0 +1,44 @@
+{
+  "name": "@etalab/decoupage-administratif",
+  "version": "6.0.0",
+  "description": "API JavaScript permettant d'interroger le découpage administratif français",
+  "main": "index.js",
+  "repository": "https://github.com/etalab/decoupage-administratif",
+  "author": "Jérôme Desboeufs <jerome.desboeufs@data.gouv.fr>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "data",
+    "*.js"
+  ],
+  "scripts": {
+    "build": "node build",
+    "lint": "xo",
+    "test": "xo",
+    "prepare": "node build",
+    "download-cp-la-poste": "./download-codes-postaux-la-poste.sh"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "csv-parser": "^2.3.2",
+    "fs-extra": "^8.1.0",
+    "get-stream": "^5.1.0",
+    "lodash": "^4.17.15",
+    "node-xlsx": "^0.15.0",
+    "pumpify": "^2.0.1",
+    "xo": "^0.25.3"
+  },
+  "xo": {
+    "semicolon": false,
+    "space": 2,
+    "rules": {
+      "unicorn/prefer-string-slice": "off"
+    }
+  },
+  "engines": {
+    "node": ">= 10"
+  }
+}
