@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "udata-hydra-csvapi"
+dynamic = ["version"]
+description = "API for CSV converted by udata-hydra"
+authors = [
+    {name = "data.gouv.fr", email = "opendatateam@data.gouv.fr"},
+]
+dependencies = [
+    "aiohttp>=3.13.3,<4.0.0",
+    "aiohttp-swagger>=1.0.16,<2.0.0",
+    "gunicorn<24.0.0,>=23.0.0",
+    "sentry-sdk>=2.49.0,<3.0.0",
+]
+requires-python = "<3.14,>=3.11"
+license = "MIT"
+readme = "README.md"
+
+[dependency-groups]
+dev = [
+    "aiohttp-devtools<2.0.0,>=1.0.post0",
+    "aioresponses<1.0.0,>=0.7.4",
+    "pytest<8.0.0,>=7.2.1",
+    "pytest-asyncio<1.0.0,>=0.20.3",
+    "pytest-mock<4.0.0,>=3.10.0",
+    "ruff<1.0.0,>=0.6.5",
+    "ty>=0.0.17",
+]
+
+[tool.ruff]
+lint = { extend-select = ["I"], ignore = ["F401"] } # ["I"] is to also sort imports with an isort rule # TODO: remove ignore F401 later
+line-length = 100
+
+[tool.setuptools.packages.find]
+include = ["api_tabular*"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
