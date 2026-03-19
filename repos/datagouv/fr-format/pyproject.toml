@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frformat"
+dynamic = ["version"]
+description = "Validation of strings regarding French formats"
+authors = [{ name = "data.gouv.fr", email = "opendatateam@data.gouv.fr" }]
+dependencies = [
+  "python-stdnum>=1.19,<2",
+  "shapely>=2.0.2,<3",
+]
+requires-python = ">=3.10,<3.15"
+license = { text = "MIT" }
+readme = "README.md"
+keywords = ["format", "french", "validation"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3.0",
+  "jinja2>=3.1.4",
+  "ruff>=0.9.3",
+]
+
+[project.urls]
+Source = "https://github.com/datagouv/fr-format"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+frformat = ["CHANGELOG.md", "LICENSE", "README.md"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[tool.ruff]
+lint = { extend-select = ["I"] } # ["I"] is to also sort imports with an isort rule
+line-length = 100
+
+[tool.uv.build-backend]
+module-name = "frformat"
+module-root = ""
