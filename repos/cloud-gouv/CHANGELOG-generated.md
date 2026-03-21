@@ -1,22 +1,23 @@
 # Synthèse d'activité : cloud-gouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation cloud-gouv a connu une activité soutenue cette semaine, avec des améliorations significatives en matière de sécurité, de gestion de clusters Kubernetes et de simplification du déploiement d'applications. L'ajout de support mTLS et HTTP au [portail](/repos/cloud-gouv/portail) renforce la sécurité et la flexibilité d'accès. Des corrections importantes ont été apportées à [openbao](/repos/cloud-gouv/openbao) pour résoudre des problèmes de déverrouillage et d'invalidation de cache, tout en améliorant la sécurité via des mises à jour de dépendances. L'écosystème Kubernetes est également renforcé avec des corrections et des améliorations apportées aux charts pour Cluster API via [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts). Enfin, les fondations pour un catalogue de charts Helm préconfigurés sont posées avec l'initialisation du dépôt [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
+L'organisation cloud-gouv a connu une semaine riche en développement, avec des contributions notables à la sécurité, à l'amélioration des outils de gestion de clusters Kubernetes et à la simplification du déploiement d'applications. L'initialisation du dépôt [common-helm-charts](/repos/cloud-gouv/common-helm-charts) marque le début d'une initiative pour faciliter le déploiement d'applications sur Kubernetes. Des améliorations significatives ont également été apportées à [openbao](/repos/cloud-gouv/openbao) et [portail](/repos/cloud-gouv/portail) en matière de sécurité et de fonctionnalités réseau.
 
 ## Sécurité
-Plusieurs changements ont été apportés pour renforcer la sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-- Mise à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2025-68121, GO-2026-4337, CVE-2026-24051, GO-2026-4394, GHSA-9h8m-3fm2-qjrq).
-- Activation du support mTLS (mutual TLS) côté serveur dans [portail](/repos/cloud-gouv/portail) pour une authentification plus robuste.
-- Suppression du mode développeur dans [securix](/repos/cloud-gouv/securix) pour une configuration plus sécurisée.
+- [openbao](/repos/cloud-gouv/openbao) a été mis à jour vers Go 1.25.7 et a corrigé des vulnérabilités dans `go.opentelemetry.io/otel/sdk` (CVE-2026-24051, CVE-2026-4394, GHSA-9h8m-3fm2-qjrq).
+- [portail](/repos/cloud-gouv/portail) a activé le support mTLS (mutual TLS) côté serveur pour une communication plus sécurisée.
+- [securix](/repos/cloud-gouv/securix) a corrigé un bug empêchant l'acceptation de mots de passe hachés vides et supprimé le mode développeur pour une meilleure sécurité.
 
 ## Autres changements notables
-- Ajout de l'outil `kustomize` à l'image `k8s-tools` dans [dockerfiles](/repos/cloud-gouv/dockerfiles) pour faciliter la personnalisation des configurations Kubernetes.
-- Initialisation du dépôt [common-helm-charts](/repos/cloud-gouv/common-helm-charts) pour centraliser les charts Helm préconfigurés.
-- Suppression de l'overlay g3proxy dans [securix](/repos/cloud-gouv/securix) et simplification de la documentation.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) a apporté des corrections et des améliorations à la gestion des clusters Kubernetes sur Openstack et Outscale, notamment pour CoreDNS et les addons CAPI.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) a ajouté l'outil `kustomize` à l'image `k8s-tools` et mis à niveau les versions des outils inclus.
+- [securix](/repos/cloud-gouv/securix) a ajouté la prise en charge de qrencode pour faciliter l'authentification.
 
 ## Dépôts les plus actifs
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et améliorations de la sécurité liées au déverrouillage, à la révocation de baux et à l'invalidation de cache.
-- [portail](/repos/cloud-gouv/portail) : Ajout du support mTLS et HTTP pour une connectivité et une sécurité améliorées.
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Corrections et améliorations pour la gestion des clusters Kubernetes sur Openstack et Outscale.
-- [securix](/repos/cloud-gouv/securix) : Corrections de bugs, ajout de la prise en charge de qrencode et améliorations de la configuration.
+- [openbao](/repos/cloud-gouv/openbao) : Correction de bugs et améliorations de sécurité, notamment la mise à jour de Go et des dépendances.
+- [portail](/repos/cloud-gouv/portail) : Ajout du support mTLS et de la redirection HTTP CONNECT pour une communication plus sécurisée et flexible.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations de la gestion des clusters Kubernetes sur différentes plateformes.
+- [securix](/repos/cloud-gouv/securix) : Corrections de bugs, améliorations de la configuration et ajout de nouvelles fonctionnalités comme la prise en charge de qrencode.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Ajout de nouveaux outils et mise à niveau des versions existantes pour faciliter le déploiement d'applications.

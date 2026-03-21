@@ -1,17 +1,14 @@
 # Synthèse d'activité : refugies-info (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation refugies-info a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités à ses plateformes principales. Les améliorations apportées à [karfur](/repos/refugies-info/karfur) facilitent la gestion des structures et l'accès aux informations, notamment grâce à une meilleure recherche et à l'affichage des sessions de formation.  Le [playground](/repos/refugies-info/playground) a bénéficié de mises à jour significatives pour l'édition et la publication de documents, incluant une intégration de l'IA avec la prise en charge du russe, et l'ajout de la visualisation de cartes. Ces évolutions visent à rendre les outils plus performants et accessibles à un public plus large.
+La semaine écoulée a été marquée par des améliorations significatives sur les plateformes [karfur](/repos/refugies-info/karfur) et [playground](/repos/refugies-info/playground).  [Karfur](/repos/refugies-info/karfur) a bénéficié d'optimisations de performance grâce à l'implémentation de Speedgoose et d'une refactorisation de la recherche, améliorant l'expérience utilisateur et la scalabilité.  [Playground](/repos/refugies-info/playground) a quant à lui vu l'ajout de fonctionnalités importantes pour l'édition et la publication de documents, notamment la gestion des métadonnées, l'intégration de l'IA en russe et l'amélioration de la gestion des agents conversationnels. Ces évolutions permettent une meilleure organisation et diffusion de l'information aux utilisateurs finaux.
 
 ## Sécurité
-- Amélioration de la sécurité des webhooks avec validation du format des ObjectId dans [karfur](/repos/refugies-info/karfur).
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Mise à jour de Next.js vers la version 15.5.10 dans [karfur](/repos/refugies-info/karfur).
-- Intégration de Claude Code avec Entire CLI dans [playground](/repos/refugies-info/playground).
-- Optimisation des requêtes Supabase pour améliorer la performance des workflows dans [playground](/repos/refugies-info/playground).
-- Amélioration de la gestion de la mémoire des agents Letta pour une meilleure performance et scalabilité dans [playground](/repos/refugies-info/playground).
+Plusieurs refactorisations techniques ont eu lieu, notamment dans [karfur](/repos/refugies-info/karfur) avec la migration des schémas MongoDB vers des modèles partagés et l'unification des branches de production et de staging. Ces changements visent à améliorer la cohérence des données et à simplifier le processus de déploiement.  [Playground](/repos/refugies-info/playground) a également bénéficié d'une refactorisation de la gestion des statuts des documents.
 
 ## Dépôts les plus actifs
-- [karfur](/repos/refugies-info/karfur) : Amélioration de l'interface d'administration et correction de bugs pour une meilleure gestion des données des structures et des RCO.
-- [playground](/repos/refugies-info/playground) : Ajout de fonctionnalités d'édition de documents, d'intégration de l'IA et d'optimisation des performances.
+- [karfur](/repos/refugies-info/karfur) : Amélioration des performances et correction de bugs d'affichage, avec une refactorisation importante de la recherche et de la gestion des données.
+- [playground](/repos/refugies-info/playground) : Ajout de nouvelles fonctionnalités d'édition de documents, d'intégration de l'IA et d'amélioration de la gestion des agents conversationnels.

@@ -1,26 +1,30 @@
 # Synthèse d'activité : betagouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation betagouv a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. Plusieurs projets ont bénéficié d'améliorations de l'interface utilisateur et de l'expérience utilisateur, notamment *diagbruit.beta.gouv.fr*, *espace-membre-next* et *france-chaleur-urbaine*.  Des efforts importants ont été consacrés à l'amélioration de la qualité du code, à la correction de bugs et à l'ajout de nouvelles fonctionnalités, comme l'intégration de l'OCR Mistral dans *document-ia* ou la gestion des CPOM dans *bhasile*.  La sécurité a également été une priorité, avec des mises à jour de dépendances et l'ajout de systèmes de surveillance comme Sentry dans *depots-sauvages*.
+L'activité récente de l'organisation betagouv est marquée par une forte concentration sur l'amélioration et l'enrichissement des outils existants. On observe des efforts importants pour renforcer la sécurité (authentification à deux facteurs, suppression de fonctionnalités obsolètes), améliorer l'expérience utilisateur (nouvelles fonctionnalités, corrections de bugs, accessibilité), et optimiser les performances (refactorisation de code, optimisation de requêtes). Plusieurs projets ont bénéficié de mises à jour de dépendances pour assurer la stabilité et la sécurité. L'intégration de nouveaux services et API, ainsi que l'amélioration de la gestion des données, sont également des thèmes récurrents. Les dépôts [Aidants_Connect](/repos/betagouv/Aidants_Connect), [ComparIA](/repos/betagouv/ComparIA), [api-subventions-asso](/repos/betagouv/api-subventions-asso) et [euphrosyne](/repos/betagouv/euphrosyne) ont été particulièrement actifs.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités de sécurité, notamment *dsfr-assets*, *dsfr-form-builder*, *euphrosyne-tools-api* et *depots-sauvages*. L'intégration de Sentry dans *depots-sauvages* permet également une meilleure surveillance des erreurs et une réaction plus rapide aux incidents de sécurité.
+Plusieurs dépôts ont mis l'accent sur la sécurité :
+
+*   [bhasile](/repos/betagouv/bhasile) a ajouté un mécanisme de feedback utilisateur pour les résultats de CV.
+*   [dsfr-form-builder](/repos/betagouv/dsfr-form-builder) a corrigé des failles de sécurité.
+*   [gestion-des-subventions-locales](/repos/betagouv/gestion-des-subventions-locales) a implémenté l'authentification à deux facteurs (OTP) et une protection contre les attaques par force brute.
+*   [grist-core](/repos/betagouv/grist-core) a amélioré la sécurité OAuth2.
 
 ## Autres changements notables
-*   *ComparIA* a subi une refonte majeure de son architecture backend, passant à FastAPI et Pydantic pour une meilleure performance.
-*   *a-just* a vu des améliorations significatives de son extracteur de données pour la collecte 2026.
-*   *api-subventions-asso* a vu une refonte de son interface `port` et une amélioration de la gestion des erreurs.
-*   *archeologia-pipeline* a bénéficié d'une refonte majeure pour améliorer ses performances grâce à l'utilisation du traitement parallèle et de l'inférence ONNX.
-*   *doc.incubateur.net-communaute* a connu une restructuration complète de sa documentation.
+Plusieurs changements techniques majeurs ont été effectués :
+
+*   [Resultats-Elections-FPT](/repos/betagouv/Resultats-Elections-FPT) a migré vers Vue.js et mis en place une CI/CD.
+*   [ComparIA](/repos/betagouv/ComparIA) a refactorisé le calcul des classements et implémenté un filtre anti-spam.
+*   [a-just](/repos/betagouv/a-just) a mis à jour l'extracteur de données pour la collecte 2026 et refactorisé l'architecture des tests E2E.
+*   [api-subventions-asso](/repos/betagouv/api-subventions-asso) a refactorisé son architecture avec des patterns Mapper, Port et Adapter.
+*   [france-chaleur-urbaine](/repos/betagouv/france-chaleur-urbaine) a intégré PostHog pour le suivi analytics.
 
 ## Dépôts les plus actifs
-*   **aides-jeunes**: Amélioration de l'expérience utilisateur avec l'ajout de nouveaux accompagnements personnalisés et la simplification du formulaire de contribution.
-*   **api-engagement**: Ajout de nouvelles fonctionnalités pour la gestion des campagnes et des missions, ainsi que des améliorations de l'interface de modération.
-*   **diagbruit.beta.gouv.fr**: Amélioration de l'interface utilisateur, ajout de pages légales et gestion des polygones de sources de bruit.
-*   **depots-sauvages**: Corrections de bugs, amélioration de la gestion des erreurs et ajout d'un système de surveillance avec Sentry.
-*   **document-ia**: Ajout de la prise en charge de l'OCR Mistral avec des images et amélioration de la gestion des schémas complexes.
-*   **euphrosyne**: Intégration progressive du Design System de la République Française (DSFR) et correction de bugs graphiques.
-*   **france-chaleur-urbaine**: Amélioration de l'expérience utilisateur sur la page de simulation et le formulaire de contact, ainsi que des mises à jour des données réseaux de chaleur.
-*   **espace-membre-next**: Amélioration de la gestion des membres, de l'activation et de la vérification des comptes.
-*   **bhasile**: Ajout de la gestion des CPOM et amélioration de l'interface utilisateur.
-*   **dsfr-form-builder**: Corrections de bugs, amélioration de la gestion des champs de formulaire et ajout d'une documentation et d'un site de démonstration.
+*   [Aidants\_Connect](/repos/betagouv/Aidants_Connect) : Ajout de nouvelles fonctionnalités pour la gestion des aidants et des formations.
+*   [ComparIA](/repos/betagouv/ComparIA) : Ajout de nouveaux modèles de langage et amélioration de la réactivité.
+*   [api-subventions-asso](/repos/betagouv/api-subventions-asso) : Amélioration de la robustesse, ajout de nouvelles fonctionnalités et refactorisation de l'architecture.
+*   [euphrosyne](/repos/betagouv/euphrosyne) : Amélioration de l'interface utilisateur, correction de bugs et préparation pour la compatibilité avec Django 6.
+*   [gestion-des-subventions-locales](/repos/betagouv/gestion-des-subventions-locales) : Ajout de l'authentification à deux facteurs et amélioration de la gestion des données.
+*   [france-chaleur-urbaine](/repos/betagouv/france-chaleur-urbaine) : Simplification du modèle de simulation et ajout de nouveaux modes de chauffage.
+*   [dsfr-form-builder](/repos/betagouv/dsfr-form-builder) : Corrections de bugs et amélioration de la gestion des champs de formulaire.

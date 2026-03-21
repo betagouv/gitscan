@@ -1,19 +1,24 @@
 # Synthèse d'activité : incubateur-ademe (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les plateformes ecopass, nosgestesclimat-site et plusfraichemaville-site, avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des avancées importantes ont également été réalisées sur mutafriches avec l'intégration de nouvelles données pour une analyse plus précise des friches urbaines. Plusieurs projets ont bénéficié d'améliorations techniques, comme docker-prisma-studio et nosgestesclimat-server, renforçant la stabilité et la performance des applications.
+L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur (notamment sur [ecopass](/repos/incubateur-ademe/ecopass), [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) et [facili-tacct](/repos/incubateur-ademe/facili-tacct)), l'ajout de nouvelles fonctionnalités (comme la gestion de multiparcelles sur [mutafriches](/repos/incubateur-ademe/mutafriches) et le mode embarquable sur [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles)), et l'amélioration de la robustesse et de la sécurité de ses outils (notamment [vaultwarden](/repos/incubateur-ademe/vaultwarden) et [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server)).  Plusieurs projets ont également bénéficié de mises à jour de leurs dépendances et de refactorisations de code pour une meilleure maintenabilité.
 
 ## Sécurité
-Le projet [vaultwarden](/repos/incubateur-ademe/vaultwarden) a bénéficié de mises à jour de ses dépendances et de son infrastructure, contribuant à améliorer sa sécurité et sa stabilité.
+- Correction d'un bug lié à l'authentification dans [benefriches](/repos/incubateur-ademe/benefriches) avec l'intégration de Crisp pour l'assistance utilisateur.
+- Amélioration de la sécurité de [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) avec la configuration du nom du cookie d'authentification via une variable d'environnement.
+- Mise en place d'une authentification à deux facteurs (2FA) avec passkey, OTP et email sur [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles).
+- Mises à jour de Rust et des crates pour [vaultwarden](/repos/incubateur-ademe/vaultwarden) pour bénéficier des derniers correctifs de sécurité.
 
 ## Autres changements notables
-Plusieurs projets ont connu des refactorings importants et des mises à jour d'infrastructure. [benefriches](/repos/incubateur-ademe/benefriches) a refactorisé sa logique de création de site et adopté un système de gestion des décisions d'architecture (ADR). [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) a migré vers de nouveaux buildpacks et a amélioré sa configuration.  [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) a changé d'API adresse pour une meilleure fiabilité.  [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a connu une refonte majeure de son architecture d'authentification et a intégré un système d'audit log. Enfin, [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a été entièrement retravaillé et est désormais fonctionnel.
+- Refactorisation majeure du code de création de projet urbain dans [benefriches](/repos/incubateur-ademe/benefriches).
+- Mise à niveau de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
+- Migration de Django vers la version 6.0 dans [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets).
+- Refonte complète du générateur de vignettes [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) avec une nouvelle interface et des fonctionnalités d'exportation.
+- Mise à jour du modèle Prisma dans [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs).
 
 ## Dépôts les plus actifs
-*   [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages et correction de bugs pour améliorer l'expérience utilisateur.
-*   [nosgestesclimat-site](/repos/incubateur-ademe/nosgestesclimat-site) : Amélioration de l'interface utilisateur, ajout de nouvelles fonctionnalités et correction de bugs.
-*   [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration du processus de création de projets et refactoring du code.
-*   [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données et ajout de la gestion de multiparcelles.
-*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Amélioration du moteur de recherche et de l'interface utilisateur.
-*   [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Correction de bugs, mise à jour des données et amélioration de la traduction.
-*   [vaultwarden](/repos/incubateur-ademe/vaultwarden) : Corrections de bugs et mises à jour de sécurité.
+- [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages et correction de bugs pour améliorer l'expérience utilisateur.
+- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'interface utilisateur, ajout de nouvelles fonctionnalités et corrections de bugs.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration significative du processus de création de projets et refactorisation du code.
+- [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données et ajout de la gestion de multiparcelles.
+- [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Ajout du mode embarquable, refonte de l'interface et amélioration de l'intégration avec Notion.
