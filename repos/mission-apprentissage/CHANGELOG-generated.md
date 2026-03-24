@@ -1,23 +1,24 @@
 # Synthèse d'activité : mission-apprentissage (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation "mission-apprentissage" a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité (migration des secrets vers SOPS dans [infra](/repos/mission-apprentissage/infra) et [mongodb](/repos/mission-apprentissage/mongodb)), l'enrichissement des fonctionnalités (ajout de la classification des contacts dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) et intégration de WhatsApp dans [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas)), et l'optimisation des performances (indexation dans [bal](/repos/mission-apprentissage/bal) et correction d'un problème d'OOM dans [labonnealternance](/repos/mission-apprentissage/labonnealternance)). Des efforts importants ont également été déployés pour moderniser les outils de développement et améliorer la qualité du code (migration vers Biome dans [labonnealternance](/repos/mission-apprentissage/labonnealternance)).
+L'organisation "mission-apprentissage" a connu une semaine riche en améliorations et corrections, touchant à la fois l'infrastructure, les applications métier et les outils de développement.  Les efforts se sont concentrés sur l'amélioration de la sécurité (migration des secrets vers SOPS dans plusieurs dépôts), l'optimisation des performances (indexation dans [bal](/repos/mission-apprentissage/bal) et [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage)), et l'ajout de nouvelles fonctionnalités (automatisation des listes de contact dans [bal](/repos/mission-apprentissage/bal), intégration de WhatsApp dans [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas), classification des contacts dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab)).  Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de refactorisations pour une meilleure maintenabilité.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de la sécurité :
-- Migration des secrets vers SOPS dans [infra](/repos/mission-apprentissage/infra) et [mongodb](/repos/mission-apprentissage/mongodb) pour une gestion plus sécurisée des informations sensibles.
-- Mise à jour des habilitations dans [mongodb](/repos/mission-apprentissage/mongodb) pour renforcer la sécurité des accès aux bases de données.
-- Authentification par token pour l'API Emploi Inclusion dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) pour une intégration plus sécurisée.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- Mise à jour des habilitations dans [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
+- Migration des secrets vers SOPS dans [infra](/repos/mission-apprentissage/infra) et [mongodb](/repos/mission-apprentissage/mongodb).
+- Mise à jour des images Nginx et ModSecurity-CRS dans [infra](/repos/mission-apprentissage/infra).
+- Authentification par token pour l'API Emploi Inclusion dans [labonnealternance](/repos/mission-apprentissage/labonnealternance).
 
 ## Autres changements notables
-- Refonte de la gestion des secrets avec SOPS dans plusieurs dépôts ([infra](/repos/mission-apprentissage/infra), [mongodb](/repos/mission-apprentissage/mongodb)).
 - Migration vers Biome pour le linting du code dans [labonnealternance](/repos/mission-apprentissage/labonnealternance).
 - Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
-- Suppression de l'environnement de pentest dans [mongodb](/repos/mission-apprentissage/mongodb) pour simplifier l'infrastructure.
+- Remplacement de Mailhog par Mailpit pour les tests SMTP dans [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
+- Décommissionnement de l'environnement de pentest dans [mongodb](/repos/mission-apprentissage/mongodb).
 
 ## Dépôts les plus actifs
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout et amélioration de l'intégration de WhatsApp pour la messagerie et le suivi des retours.
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration de l'intégration avec l'API Emploi Inclusion, ajout de pages SEO et modernisation des outils de développement.
-- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections de bugs et améliorations de la configuration et de la synchronisation avec Elasticsearch.
-- [infra](/repos/mission-apprentissage/infra) : Amélioration de la sécurité et de la stabilité de l'infrastructure.
-- [bal](/repos/mission-apprentissage/bal) : Optimisation des performances et correction de bugs liés à la gestion des listes de diffusion.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout et amélioration de l'intégration WhatsApp pour la messagerie et les notifications.
+- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections de bugs, amélioration de la synchronisation avec Elasticsearch et modernisation de la stack technique.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration de l'intégration avec l'API Emploi Inclusion, ajout de pages SEO et migration vers Biome.
+- [infra](/repos/mission-apprentissage/infra) : Améliorations de la sécurité et de la gestion de l'infrastructure avec la migration vers SOPS et la mise à jour des images de sécurité.
+- [bal](/repos/mission-apprentissage/bal) : Optimisation des performances et ajout de l'automatisation de la constitution de listes de contact.

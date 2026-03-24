@@ -1,20 +1,20 @@
 # Synthèse d'activité : etalab-ia (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été riche en évolutions pour l'organisation etalab-ia, avec des améliorations significatives sur plusieurs de ses projets. On observe un fort accent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités d'authentification et de persistance des conversations dans [lettabot](/repos/etalab-ia/lettabot) et [rag-facile](/repos/etalab-ia/rag-facile).  Des avancées notables ont également été réalisées dans le domaine de la recherche et de la gestion des données, avec l'ajout de nouveaux endpoints et l'amélioration des capacités de recherche dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et [mediatech](/repos/etalab-ia/mediatech). Enfin, des efforts importants ont été consacrés à l'optimisation des processus de déploiement et à la refonte de l'architecture interne de certains projets, comme [OpenGateLLM-helm](/repos/etalab-ia/opengatellm-helm) et [rag-facile](/repos/etalab-ia/rag-facile).
+La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts d'etalab-ia. OpenGateLLM a connu une refonte architecturale majeure, améliorant sa maintenabilité et ajoutant de nouvelles fonctionnalités de recherche et de gestion de documents. BlockNote a bénéficié de corrections de bugs et d'améliorations de l'expérience utilisateur, notamment concernant les tableaux et l'IA.  Rag-facile a progressé significativement avec l'ajout de l'authentification, de la persistance des conversations et de l'intégration d'IA Inspect pour l'évaluation de la qualité des réponses. Ces évolutions renforcent la capacité d'etalab-ia à fournir des outils performants et conviviaux pour le traitement du langage naturel et la gestion de l'information.
 
 ## Sécurité
-- Ajout de l'authentification via Supabase dans [lettabot](/repos/etalab-ia/lettabot), améliorant la sécurité et la gestion des accès.
+Aucun changement lié à la sécurité n'a été rapporté durant cette période.
 
 ## Autres changements notables
-- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité et maintenabilité.
-- Migration vers la version 6 du SDK IA dans [BlockNote](/repos/etalab-ia/BlockNote).
-- Refactorisation majeure de l'architecture d'[OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure maintenabilité.
-- Optimisation de l'image Docker de [marker-serve](/repos/etalab-ia/marker-serve) pour des déploiements plus rapides.
+- Refonte majeure de l'architecture d' [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure maintenabilité.
+- Migration de BlockNote vers la version 6 du SDK IA : [BlockNote](/repos/etalab-ia/BlockNote).
+- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité.
+- Automatisation de la mise à jour quotidienne des dictionnaires de collections de données dans [albert-data-collections](/repos/etalab-ia/albert-data-collections).
 
 ## Dépôts les plus actifs
-- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration significative de la plateforme avec l'ajout d'authentification, de persistance des conversations et de nouvelles fonctionnalités d'IA.
-- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de l'intégration avec d'autres plateformes de messagerie.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Ajout de nouveaux endpoints pour la gestion des données et amélioration des capacités de recherche.
-- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur, notamment concernant les tableaux et l'IA.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et amélioration de la documentation.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Ajout de nouvelles fonctionnalités de recherche, de gestion des chunks de documents et d'intégration de modèles de rerank.
+- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur.
+- [rag-facile](/repos/etalab-ia/rag-facile) : Ajout de l'authentification, de la persistance des conversations et de l'intégration d'IA Inspect.
+- [letta-code](/repos/etalab-ia/letta-code) : Intégration de nouveaux modèles de langage (Kimi K2.5, Bedrock Opus 4.5) et amélioration de la gestion des agents.
+- [evalap](/repos/etalab-ia/evalap) : Ajout de l'export des résultats vers Hugging Face Hub et amélioration de la documentation.

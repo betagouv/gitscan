@@ -1,25 +1,25 @@
 # Synthèse d'activité : SocialGouv (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de SocialGouv, avec un focus particulier sur la sécurité, la correction de bugs et l'amélioration de l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour importantes, notamment `cdtn-admin` avec une migration vers pnpm et une mise à jour majeure des technologies utilisées, et `domifa` avec des corrections de bugs et l'ajout de l'envoi de SMS. L'intégration de modèles de langage (LLM) progresse dans plusieurs projets comme `questions-ecrites` et `repo-falcon`, ouvrant la voie à de nouvelles fonctionnalités d'assistance au développement. Plusieurs dépôts ont également mis l'accent sur la préparation à des arrêts de service ou des transitions importantes, comme `recosante` et `vao`.
+Au cours des 7 derniers jours, l'organisation SocialGouv a connu une activité soutenue, avec des mises à jour portant sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités. Plusieurs projets ont bénéficié d'améliorations significatives, notamment [cdtn-admin](/repos/SocialGouv/cdtn-admin) avec une migration vers pnpm et une mise à jour majeure des technologies, et [domifa](/repos/SocialGouv/domifa) avec l'ajout de l'envoi de SMS et l'amélioration de la surveillance. L'accent a également été mis sur la préparation à l'arrêt de certains services, comme [recosante](/repos/SocialGouv/recosante), et l'intégration de nouveaux outils comme [charon](/repos/SocialGouv/charon) avec le provider Proconnect.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 - Correction d'une vulnérabilité de sécurité dans [archifiltre-docs](/repos/SocialGouv/archifiltre-docs).
 - Correction d'une vulnérabilité de sécurité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-- Renforcement de la sécurité des API dans [srdt](/repos/SocialGouv/srdt).
-- Correction de vulnérabilités dans [matomo-next](/repos/SocialGouv/matomo-next).
+- Amélioration de la sécurité des API dans [srdt](/repos/SocialGouv/srdt).
+- Correction de vulnérabilités dans [matomo-next](/repos/SocialGouv/matomo-next) et [revu](/repos/SocialGouv/revu).
 
 ## Autres changements notables
 - Migration vers pnpm dans plusieurs dépôts : [cdtn-admin](/repos/SocialGouv/cdtn-admin), [domifa](/repos/SocialGouv/domifa), [revu](/repos/SocialGouv/revu), [token-bureau](/repos/SocialGouv/token-bureau).
-- Intégration de Claude pour l'automatisation et l'assistance au développement dans [repo-falcon](/repos/SocialGouv/repo-falcon).
-- Mise en place de *feature flags* dans [vao](/repos/SocialGouv/vao) pour une gestion plus flexible des fonctionnalités.
-- Migration vers Drizzle ORM dans [egapro](/repos/SocialGouv/egapro).
-- Intégration de Sentry pour la surveillance des erreurs dans [domifa](/repos/SocialGouv/domifa) et [egapro](/repos/SocialGouv/egapro).
+- Intégration de feature flags dans [vao](/repos/SocialGouv/vao) pour une gestion plus flexible des fonctionnalités.
+- Mise à jour de Next.js, React et React-DSFR dans [cdtn-admin](/repos/SocialGouv/cdtn-admin).
+- Intégration de Claude pour la revue de code et la gestion des pull requests dans [da-manager](/repos/SocialGouv/da-manager).
+- Refactorisation du code et ajout de tests dans [llm-coding-agents-prompt-comparison](/repos/SocialGouv/llm-coding-agents-prompt-comparison).
 
 ## Dépôts les plus actifs
 - [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Corrections de bugs, migration vers pnpm et mise à jour des technologies.
-- [domifa](/repos/SocialGouv/domifa) : Corrections de bugs, ajout de l'envoi de SMS et amélioration de la surveillance.
-- [vao](/repos/SocialGouv/vao) : Améliorations de l'interface utilisateur, corrections de bugs et intégration de *feature flags*.
-- [questions-ecrites](/repos/SocialGouv/questions-ecrites) : Intégration de modèles de langage et refactoring du code.
-- [repo-falcon](/repos/SocialGouv/repo-falcon) : Amélioration de l'intégration avec les agents de codage et automatisation des processus.
+- [domifa](/repos/SocialGouv/domifa) : Ajout de l'envoi de SMS, corrections de bugs et amélioration de la surveillance.
+- [vao](/repos/SocialGouv/vao) : Améliorations de l'interface utilisateur, corrections de bugs et intégration de feature flags.
+- [revu](/repos/SocialGouv/revu) : Corrections de bugs, migration vers pnpm et mise à jour du modèle Anthropic.
+- [srdt](/repos/SocialGouv/srdt) : Amélioration de la sécurité, sauvegarde des discussions et intégration avec le stockage S3.

@@ -1,20 +1,21 @@
 # Synthèse d'activité : datagouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation datagouv a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses outils et pipelines de données. On note des avancées majeures dans l'amélioration de la qualité des données (normalisation des noms de lieux avec [api-geo](/repos/datagouv/api-geo), correction des formats de dates avec [csv-detective](/repos/datagouv/csv-detective)), la robustesse des pipelines (gestion des erreurs et migration vers OVH S3 avec [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines)), et la mise à jour des données de référence (découpage administratif avec [decoupage-administratif](/repos/datagouv/decoupage-administratif) et schéma de métadonnées avec [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr)). L'API [api-tabular](/repos/datagouv/api-tabular) a également été renforcée en termes de sécurité et de flexibilité.
+L'organisation datagouv a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les pipelines de données ([datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines)) ont été renforcés en termes de robustesse et de gestion des erreurs, notamment pour les données électorales, Finess et SIREN, avec l'ajout de la gestion des pétitions du Sénat et une migration vers OVH S3.  La bibliothèque `fr-format` ([fr-format](/repos/datagouv/fr-format)) a été modernisée avec l'ajout d'un nouveau format de validation (IdRNB) et une meilleure compatibilité Python. Des mises à jour des données administratives ont été intégrées dans [contours-administratifs](/repos/datagouv/contours-administratifs) et des améliorations continues ont été apportées à la qualité des métadonnées via [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr).
 
 ## Sécurité
-L'API [api-tabular](/repos/datagouv/api-tabular) a bénéficié d'une correction des en-têtes CORS pour améliorer la compatibilité et la sécurité.
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Migration du système de documentation vers GitBook pour [guides.data.gouv.fr](/repos/datagouv/guides.data.gouv.fr).
-- Refactorisation des interactions avec S3 dans [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) pour une meilleure gestion et performance.
-- Modernisation de la bibliothèque `fr-format` ([fr-format](/repos/datagouv/fr-format)) pour supporter Python 3.10 et supérieur.
-- Ajout d'un champ `uptime_since` à l'API de santé de [hydra](/repos/datagouv/hydra) pour une information plus précise sur la durée de fonctionnement.
+- L'API [api-tabular](/repos/datagouv/api-tabular) a bénéficié d'améliorations en termes de flexibilité des requêtes, de sécurité (CORS) et de robustesse.
+- Le dépôt [guides.data.gouv.fr](/repos/datagouv/guides.data.gouv.fr) a entamé une migration vers un nouveau système de documentation basé sur GitBook.
+- L'API [hydra](/repos/datagouv/hydra) a été améliorée avec la prise en charge de l'analyse des WFS et l'ajout d'un indicateur d'uptime.
+- [csv-detective](/repos/datagouv/csv-detective) a vu des améliorations dans la détection de formats de données et la gestion des nombres.
+- [decoupage-administratif](/repos/datagouv/decoupage-administratif) a été mis à jour avec les données de 2026.
 
 ## Dépôts les plus actifs
-- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Amélioration de la robustesse des pipelines de données et ajout de nouvelles fonctionnalités pour la gestion des pétitions du Sénat.
-- [csv-detective](/repos/datagouv/csv-detective) : Ajout de nouveaux formats de détection et amélioration de la précision de la détection des nombres et des dates.
-- [fr-format](/repos/datagouv/fr-format) : Modernisation de la bibliothèque et ajout de nouveaux formats de validation.
-- [hydra](/repos/datagouv/hydra) : Amélioration de la gestion des données WFS et correction de l'insertion de données dans la table `tables_index`.
+- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Amélioration de la robustesse et de la gestion des erreurs des pipelines de données, ajout de nouvelles fonctionnalités pour les pétitions du Sénat et migration vers OVH S3.
+- [fr-format](/repos/datagouv/fr-format) : Modernisation de la bibliothèque avec l'ajout d'un nouveau format de validation et une meilleure compatibilité Python.
+- [hydra](/repos/datagouv/hydra) : Amélioration de la gestion des données et de la stabilité du processus de publication.
 - [schema.data.gouv.fr](/repos/datagouv/schema.data.gouv.fr) : Mises à jour régulières des recommandations du schéma de métadonnées.
+- [guides.data.gouv.fr](/repos/datagouv/guides.data.gouv.fr) : Migration vers un nouveau système de documentation (GitBook).
