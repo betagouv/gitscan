@@ -1,0 +1,649 @@
+.
+├── .commitlintrc.mjs
+├── .dependency-cruiser.cjs
+├── .editorconfig
+├── .env.example
+├── .folderslintrc
+├── .github
+│   ├── actions
+│   │   └── setup
+│   │       └── action.yml
+│   └── workflows
+│       ├── deploy.yml
+│       ├── release-and-publish.yml
+│       └── validate-feature-branch.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .lintstagedrc
+├── .npmrc
+├── CHANGELOG.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE.md
+├── README.md
+├── biome.json
+├── docker-compose.matomo.yml
+├── docs
+│   ├── codes-territoires.md
+│   ├── integration-url.md
+│   └── integration-web-component.md
+├── e2e
+│   ├── filtering.spec.ts
+│   ├── geographic-navigation.spec.ts
+│   └── search.spec.ts
+├── infrastructure
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── Pulumi.yaml
+│   ├── README.md
+│   ├── package.json
+│   ├── src
+│   │   ├── config.ts
+│   │   ├── env.ts
+│   │   ├── index.ts
+│   │   ├── resources
+│   │   │   ├── container.ts
+│   │   │   ├── image.ts
+│   │   │   ├── network.ts
+│   │   │   ├── scaleway.provider.ts
+│   │   │   └── static.ts
+│   │   └── utils
+│   │       └── name.ts
+│   └── tsconfig.json
+├── next-sitemap.config.js
+├── next.config.ts
+├── package.json
+├── playwright.config.ts
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── postcss.config.mjs
+├── public
+│   ├── icons
+│   │   ├── apple-touch-icon-114x114.png
+│   │   ├── apple-touch-icon-120x120.png
+│   │   ├── apple-touch-icon-144x144.png
+│   │   ├── apple-touch-icon-152x152.png
+│   │   ├── apple-touch-icon-57x57.png
+│   │   ├── apple-touch-icon-60x60.png
+│   │   ├── apple-touch-icon-72x72.png
+│   │   ├── apple-touch-icon-76x76.png
+│   │   ├── favicon-128x128.png
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-196x196.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon-96x96.png
+│   │   ├── favicon.ico
+│   │   ├── mstile-144x144.png
+│   │   ├── mstile-150x150.png
+│   │   ├── mstile-310x150.png
+│   │   ├── mstile-310x310.png
+│   │   └── mstile-70x70.png
+│   └── images
+│       └── app-logo.svg
+├── release.config.cjs
+├── scripts
+│   └── update-doc-version.js
+├── src
+│   ├── @types
+│   │   ├── env.d.ts
+│   │   └── supercluster.d.ts
+│   ├── app
+│   │   ├── (full-page)
+│   │   │   ├── (regions)
+│   │   │   │   ├── [region]
+│   │   │   │   │   ├── [departement]
+│   │   │   │   │   │   └── lieux
+│   │   │   │   │   │       ├── [id]
+│   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │       ├── exporter
+│   │   │   │   │   │       │   └── route.ts
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── lieux
+│   │   │   │   │       ├── exporter
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── lieux
+│   │   │   │       ├── [id]
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── exporter
+│   │   │   │       │   └── route.ts
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (with-map)
+│   │   │   ├── (regions)
+│   │   │   │   ├── [region]
+│   │   │   │   │   ├── [departement]
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── client.layout.tsx
+│   │   │   └── layout.tsx
+│   │   ├── api
+│   │   │   ├── [region]
+│   │   │   │   ├── [departement]
+│   │   │   │   │   └── lieux
+│   │   │   │   │       └── exporter
+│   │   │   │   │           └── route.ts
+│   │   │   │   └── lieux
+│   │   │   │       └── exporter
+│   │   │   │           └── route.ts
+│   │   │   ├── fragilite-numerique
+│   │   │   │   └── [...params]
+│   │   │   │       └── route.ts
+│   │   │   ├── lieux
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── chunk
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── departement
+│   │   │   │   │   └── [code]
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── exporter
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── region
+│   │   │   │   │   └── [slug]
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   └── search
+│   │   │   │       └── route.ts
+│   │   │   ├── mediateurs
+│   │   │   │   └── search
+│   │   │   │       └── route.ts
+│   │   │   └── stats
+│   │   │       ├── departements
+│   │   │       │   └── route.ts
+│   │   │       ├── regions
+│   │   │       │   ├── [slug]
+│   │   │       │   │   └── route.ts
+│   │   │       │   └── route.ts
+│   │   │       └── total
+│   │   │           └── route.ts
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── manifest.ts
+│   │   ├── metadata.ts
+│   │   └── not-found.tsx
+│   ├── env.client.ts
+│   ├── env.client.wc.ts
+│   ├── env.server.ts
+│   ├── features
+│   │   ├── brand
+│   │   │   ├── abilities
+│   │   │   │   └── layout
+│   │   │   │       ├── index.ts
+│   │   │   │       └── navbar.tsx
+│   │   │   ├── index.ts
+│   │   │   └── injection
+│   │   │       ├── index.ts
+│   │   │       └── navbar-config.key.ts
+│   │   ├── cartographie
+│   │   │   ├── abilities
+│   │   │   │   ├── controls
+│   │   │   │   │   ├── geolocate.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── map-view
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── ui
+│   │   │   │   │       ├── cartographie.tsx
+│   │   │   │   │       ├── departements-on-map.tsx
+│   │   │   │   │       ├── fragilite-numerique-layers.tsx
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── pages
+│   │   │   │   │       │   ├── departements.page.tsx
+│   │   │   │   │       │   ├── index.ts
+│   │   │   │   │       │   └── regions.page.tsx
+│   │   │   │   │       └── regions-on-map.tsx
+│   │   │   │   └── search
+│   │   │   │       ├── address-combobox.tsx
+│   │   │   │       ├── index.ts
+│   │   │   │       └── search-address.tsx
+│   │   │   ├── index.ts
+│   │   │   └── injection
+│   │   │       └── index.ts
+│   │   ├── collectivites-territoriales
+│   │   │   ├── abilities
+│   │   │   │   ├── append-collectivites
+│   │   │   │   │   ├── append-collectivites.spec.ts
+│   │   │   │   │   ├── append-collectivites.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── stats-query
+│   │   │   │       ├── index.ts
+│   │   │   │       └── stats.ts
+│   │   │   ├── index.ts
+│   │   │   └── middlewares
+│   │   │       ├── page
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── with-departement.ts
+│   │   │       │   └── with-region.ts
+│   │   │       └── route
+│   │   │           ├── index.ts
+│   │   │           ├── with-departement.ts
+│   │   │           └── with-region.ts
+│   │   └── lieux-inclusion-numerique
+│   │       ├── abilities
+│   │       │   ├── count
+│   │       │   │   └── count-lieux.ts
+│   │       │   ├── detail-view
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── presenter
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── opening-hours.presenter.spec.ts
+│   │       │   │   │   └── opening-hours.presenter.ts
+│   │       │   │   ├── query
+│   │       │   │   │   ├── fetch-lieu-details.ts
+│   │       │   │   │   └── index.ts
+│   │       │   │   └── ui
+│   │       │   │       ├── fiche-lieu.page.tsx
+│   │       │   │       ├── index.ts
+│   │       │   │       └── sections
+│   │       │   │           ├── accompagnement.tsx
+│   │       │   │           ├── contact-card.tsx
+│   │       │   │           ├── currently-open.tsx
+│   │       │   │           ├── description.tsx
+│   │       │   │           ├── index.ts
+│   │       │   │           ├── informations-generales.tsx
+│   │       │   │           ├── mediateurs.tsx
+│   │       │   │           ├── mobilisation.tsx
+│   │       │   │           └── time-table.tsx
+│   │       │   ├── export
+│   │       │   │   └── query
+│   │       │   │       ├── fetch-all-lieux.ts
+│   │       │   │       └── index.ts
+│   │       │   ├── exporters
+│   │       │   │   └── to-csv
+│   │       │   │       ├── index.ts
+│   │       │   │       ├── mediation-numerique.to-csv.spec.ts
+│   │       │   │       └── mediation-numerique.to-csv.ts
+│   │       │   ├── filters
+│   │       │   │   ├── index.ts
+│   │       │   │   └── ui
+│   │       │   │       ├── besoins-filters.tsx
+│   │       │   │       ├── disponibilite-filters.tsx
+│   │       │   │       ├── dispositifs-filters.tsx
+│   │       │   │       ├── index.ts
+│   │       │   │       ├── public-cible-filters.tsx
+│   │       │   │       └── territoires-prioritaires-filters.tsx
+│   │       │   ├── list-view
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── query
+│   │       │   │   │   ├── fetch-lieu-by-id.ts
+│   │       │   │   │   ├── fetch-lieux.ts
+│   │       │   │   │   └── index.ts
+│   │       │   │   └── ui
+│   │       │   │       ├── departement-lieux.page.tsx
+│   │       │   │       ├── export-lieux.tsx
+│   │       │   │       ├── index.ts
+│   │       │   │       ├── lieu-card.tsx
+│   │       │   │       ├── lieux-count.tsx
+│   │       │   │       ├── lieux-list.tsx
+│   │       │   │       └── lieux.page.tsx
+│   │       │   ├── map-view
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── query
+│   │       │   │   │   ├── fetch-lieux-for-chunk.server.ts
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── lieu.ts
+│   │       │   │   │   ├── lieux-for-chunk.fetch.ts
+│   │       │   │   │   ├── lieux.cache.ts
+│   │       │   │   │   ├── lieux.stream.ts
+│   │       │   │   │   └── search-lieux-by-name.server.ts
+│   │       │   │   └── ui
+│   │       │   │       ├── index.ts
+│   │       │   │       └── lieux-on-map.tsx
+│   │       │   └── mediateurs-search
+│   │       │       └── query
+│   │       │           └── search-mediateurs-by-name.ts
+│   │       ├── index.ts
+│   │       └── injection
+│   │           ├── index.ts
+│   │           ├── lieux-cache.key.ts
+│   │           └── lieux-for-chunk.key.ts
+│   ├── libraries
+│   │   ├── analytics
+│   │   │   ├── index.ts
+│   │   │   ├── index.wc.ts
+│   │   │   ├── matomo-config.key.ts
+│   │   │   ├── matomo-tracker.tsx
+│   │   │   ├── matomo-tracker.wc.tsx
+│   │   │   └── tracking
+│   │   │       └── events.ts
+│   │   ├── api
+│   │   │   ├── index.ts
+│   │   │   ├── options.spec.ts
+│   │   │   └── options.ts
+│   │   ├── ban
+│   │   │   ├── address.ts
+│   │   │   ├── ban.source.ts
+│   │   │   └── index.ts
+│   │   ├── collectivites
+│   │   │   ├── departement.spec.ts
+│   │   │   ├── departement.ts
+│   │   │   ├── departements.json
+│   │   │   ├── filter-by-territoire.spec.ts
+│   │   │   ├── filter-by-territoire.ts
+│   │   │   ├── france.json
+│   │   │   ├── get-departement-code.spec.ts
+│   │   │   ├── get-departement-code.ts
+│   │   │   ├── index.ts
+│   │   │   ├── region.spec.ts
+│   │   │   ├── region.ts
+│   │   │   └── regions.json
+│   │   ├── form
+│   │   │   ├── fields
+│   │   │   │   ├── checkbox-group.field.tsx
+│   │   │   │   ├── has-error.spec.ts
+│   │   │   │   ├── has-error.ts
+│   │   │   │   └── label.field.tsx
+│   │   │   ├── form-context.ts
+│   │   │   ├── index.ts
+│   │   │   └── use-app-form.ts
+│   │   ├── inclusion-numerique-api
+│   │   │   ├── filter-templates
+│   │   │   │   ├── autres-formations-labels.ts
+│   │   │   │   ├── code-insee.ts
+│   │   │   │   ├── dispositif-programmes-nationaux.ts
+│   │   │   │   ├── frais-a-charge.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── prise-en-charge-specifique.ts
+│   │   │   │   ├── publics-specifiquement-adresses.ts
+│   │   │   │   └── services.ts
+│   │   │   ├── filters
+│   │   │   │   ├── apply-filters.spec.ts
+│   │   │   │   ├── apply-filters.ts
+│   │   │   │   ├── apply-territoire-filter.spec.ts
+│   │   │   │   ├── apply-territoire-filter.ts
+│   │   │   │   ├── collectivite-filter.ts
+│   │   │   │   ├── filters.schema.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── inclusion-numerique.fetch-api.ts
+│   │   │   ├── index.ts
+│   │   │   ├── pagination.ts
+│   │   │   ├── routes
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── lieux.ts
+│   │   │   │   └── mediateurs.ts
+│   │   │   ├── search
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── lieux.source.ts
+│   │   │   │   └── mediateurs.source.ts
+│   │   │   ├── transfer
+│   │   │   │   ├── add-nombre-lieux.spec.ts
+│   │   │   │   ├── add-nombre-lieux.ts
+│   │   │   │   ├── format-phone-number.spec.ts
+│   │   │   │   ├── format-phone-number.ts
+│   │   │   │   ├── geographic-distance.spec.ts
+│   │   │   │   ├── geographic-distance.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── is-open-now.spec.ts
+│   │   │   │   ├── is-open-now.ts
+│   │   │   │   ├── to-lieu-details.spec.ts
+│   │   │   │   ├── to-lieu-details.ts
+│   │   │   │   ├── to-lieu-list-item.spec.ts
+│   │   │   │   ├── to-lieu-list-item.ts
+│   │   │   │   ├── to-schema-lieu-mediation-numerique.ts
+│   │   │   │   ├── total-lieux.spec.ts
+│   │   │   │   └── total-lieux.ts
+│   │   │   └── types
+│   │   │       ├── index.ts
+│   │   │       ├── lieu-details.ts
+│   │   │       └── lieu-list-item.ts
+│   │   ├── injection
+│   │   │   ├── container.ts
+│   │   │   ├── index.ts
+│   │   │   └── with-injectable.ts
+│   │   ├── map
+│   │   │   ├── geo
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── map-chunk-options.ts
+│   │   │   │   ├── map-chunk.spec.ts
+│   │   │   │   ├── map-chunk.ts
+│   │   │   │   └── position-2d.ts
+│   │   │   ├── index.ts
+│   │   │   ├── layers
+│   │   │   │   ├── highlight-layer.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── streams
+│   │   │   │   ├── bounding-box.stream.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── load.stream.ts
+│   │   │   │   ├── map.stream.ts
+│   │   │   │   └── zoom.stream.ts
+│   │   │   ├── theme-colors.key.ts
+│   │   │   └── use-map-location.ts
+│   │   ├── nextjs
+│   │   │   ├── cache
+│   │   │   │   ├── cached.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── href-with-search-params.spec.ts
+│   │   │   ├── href-with-search-params.ts
+│   │   │   ├── index.ts
+│   │   │   ├── layout
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── layout-builder.ts
+│   │   │   │   └── middlewares
+│   │   │   │       ├── index.ts
+│   │   │   │       └── with-search-params-from-headers.ts
+│   │   │   ├── page
+│   │   │   │   ├── apply-providers.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── middlewares
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── with-client-binder.tsx
+│   │   │   │   │   ├── with-pagination.ts
+│   │   │   │   │   ├── with-params.ts
+│   │   │   │   │   ├── with-required.ts
+│   │   │   │   │   ├── with-search-params.ts
+│   │   │   │   │   └── with-url-search-params.ts
+│   │   │   │   ├── page-builder.ts
+│   │   │   │   └── page-props.ts
+│   │   │   ├── route
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── middlewares
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── with-error-handler.ts
+│   │   │   │   │   ├── with-path-params.ts
+│   │   │   │   │   ├── with-required.ts
+│   │   │   │   │   └── with-search-params.ts
+│   │   │   │   ├── response
+│   │   │   │   │   ├── csv-response.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── route-builder.ts
+│   │   │   ├── search.key.ts
+│   │   │   ├── server-action
+│   │   │   │   ├── action.ts
+│   │   │   │   ├── handle-server-action-error.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── server-action-result.ts
+│   │   │   ├── shared
+│   │   │   │   ├── middlewares
+│   │   │   │   │   ├── create-required-middleware.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── with-derive.ts
+│   │   │   │   │   ├── with-fetch.ts
+│   │   │   │   │   └── with-map.ts
+│   │   │   │   └── types.ts
+│   │   │   └── shim
+│   │   │       ├── index.ts
+│   │   │       ├── link.tsx
+│   │   │       ├── link.wc.tsx
+│   │   │       ├── navigation.tsx
+│   │   │       ├── navigation.wc.tsx
+│   │   │       ├── query-state.tsx
+│   │   │       └── query-state.wc.tsx
+│   │   ├── reactivity
+│   │   │   ├── Subscribe.tsx
+│   │   │   └── index.ts
+│   │   ├── ui
+│   │   │   ├── backgrounds
+│   │   │   │   └── ovoid.background.tsx
+│   │   │   ├── blocks
+│   │   │   │   ├── breadcrumbs
+│   │   │   │   │   ├── breadcrumb-item.ts
+│   │   │   │   │   ├── breadcrumbs.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── clipboard-button.tsx
+│   │   │   │   ├── export-button.tsx
+│   │   │   │   ├── footer
+│   │   │   │   │   ├── footer-legal.tsx
+│   │   │   │   │   ├── footer-links.tsx
+│   │   │   │   │   ├── footer-social-links.tsx
+│   │   │   │   │   ├── footer.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── pagination
+│   │   │   │   │   ├── page-link.tsx
+│   │   │   │   │   ├── paginate.spec.ts
+│   │   │   │   │   ├── paginate.ts
+│   │   │   │   │   └── pagination.tsx
+│   │   │   │   ├── skip-links
+│   │   │   │   │   ├── skip-links-portal.tsx
+│   │   │   │   │   └── skip-links.tsx
+│   │   │   │   ├── theme-changer.tsx
+│   │   │   │   └── toaster.tsx
+│   │   │   ├── headless
+│   │   │   │   └── collapse-controller.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── logos
+│   │   │   │   ├── conum.logo.tsx
+│   │   │   │   ├── france-services.logo.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── lieu.logo.tsx
+│   │   │   │   └── republique-francaise.logo.tsx
+│   │   │   ├── map
+│   │   │   │   ├── dropdown-controls.tsx
+│   │   │   │   ├── markers
+│   │   │   │   │   ├── cluster.marker.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── lieu.marker.tsx
+│   │   │   │   └── react-control.ts
+│   │   │   ├── pictograms
+│   │   │   │   ├── digital
+│   │   │   │   │   └── InternetIcon.tsx
+│   │   │   │   ├── map
+│   │   │   │   │   └── location-france.illustration.tsx
+│   │   │   │   ├── pictogram.ts
+│   │   │   │   ├── system
+│   │   │   │   │   └── technical-error.illustration.tsx
+│   │   │   │   ├── user
+│   │   │   │   │   ├── SittingAtATableIcon.tsx
+│   │   │   │   │   └── TeacherIcon.tsx
+│   │   │   │   └── work
+│   │   │   │       └── PairIcon.tsx
+│   │   │   ├── primitives
+│   │   │   │   ├── alert.tsx
+│   │   │   │   ├── badge.tsx
+│   │   │   │   ├── button-link.tsx
+│   │   │   │   ├── button.tsx
+│   │   │   │   ├── card.tsx
+│   │   │   │   ├── checkbox.tsx
+│   │   │   │   ├── color.ts
+│   │   │   │   ├── combobox.tsx
+│   │   │   │   ├── direction.ts
+│   │   │   │   ├── dropdown.tsx
+│   │   │   │   ├── indicator-badge.tsx
+│   │   │   │   ├── indicator.tsx
+│   │   │   │   ├── input.tsx
+│   │   │   │   ├── kind.ts
+│   │   │   │   ├── link.tsx
+│   │   │   │   ├── loading-button.tsx
+│   │   │   │   ├── loading.tsx
+│   │   │   │   ├── options.tsx
+│   │   │   │   ├── placement.ts
+│   │   │   │   ├── popover.tsx
+│   │   │   │   ├── scale.ts
+│   │   │   │   ├── tag.tsx
+│   │   │   │   └── tooltip.tsx
+│   │   │   └── theme
+│   │   │       └── providers
+│   │   │           ├── index.ts
+│   │   │           └── theme.provider.tsx
+│   │   └── utils
+│   │       ├── app-page-title.util.ts
+│   │       ├── array
+│   │       │   ├── arrays-equal.spec.ts
+│   │       │   ├── arrays-equal.tsx
+│   │       │   └── index.ts
+│   │       ├── client-only.tsx
+│   │       ├── cn.ts
+│   │       ├── fetch-api.ts
+│   │       ├── index.ts
+│   │       ├── page.schema.ts
+│   │       ├── string
+│   │       │   ├── index.ts
+│   │       │   └── no-empty-string.ts
+│   │       └── use-transition-with-callback.ts
+│   ├── proxy.ts
+│   ├── shared
+│   │   ├── hooks
+│   │   │   ├── index.ts
+│   │   │   ├── territoire-filter-to-params.ts
+│   │   │   └── use-filtered-search-params.ts
+│   │   ├── injection
+│   │   │   ├── index.ts
+│   │   │   ├── keys
+│   │   │   │   ├── api-base-url.key.ts
+│   │   │   │   ├── map-config.key.ts
+│   │   │   │   ├── map-position.schema.ts
+│   │   │   │   └── territoire-filter.key.ts
+│   │   │   └── providers
+│   │   │       └── config.provider.tsx
+│   │   └── ui
+│   │       ├── highlight-decoupage-administratif.ts
+│   │       ├── index.ts
+│   │       └── theme-colors.ts
+│   ├── styles
+│   │   ├── components
+│   │   │   ├── _artwork.css
+│   │   │   ├── _badge.css
+│   │   │   ├── _input.css
+│   │   │   ├── _marker.css
+│   │   │   ├── _skip-links.css
+│   │   │   ├── _tag.css
+│   │   │   └── components.css
+│   │   ├── dsfr
+│   │   │   ├── _badge.css
+│   │   │   ├── _button.css
+│   │   │   ├── _input.css
+│   │   │   └── dsfr.css
+│   │   ├── globals.css
+│   │   └── globals.wc.css
+│   └── web-components
+│       ├── api
+│       │   ├── index.ts
+│       │   └── stats.ts
+│       ├── app.tsx
+│       ├── breadcrumb
+│       │   ├── filter-breadcrumb-items.spec.ts
+│       │   ├── filter-breadcrumb-items.ts
+│       │   └── use-breadcrumb-items.ts
+│       ├── components
+│       │   └── load-stream-sync.tsx
+│       ├── demo
+│       │   ├── index.html
+│       │   └── main.ts
+│       ├── index.ts
+│       ├── layout.tsx
+│       ├── layouts
+│       │   └── with-map.layout.tsx
+│       ├── pages
+│       │   ├── departement-lieux.page.tsx
+│       │   ├── departement.page.tsx
+│       │   ├── departements.page.tsx
+│       │   ├── lieu-redirect.page.tsx
+│       │   ├── lieu.page.tsx
+│       │   ├── lieux.page.tsx
+│       │   ├── region-lieux.page.tsx
+│       │   └── regions.page.tsx
+│       ├── router.tsx
+│       └── search-params.schema.ts
+├── tailwind.config.ts
+├── tailwind.safelist
+├── tsconfig.json
+├── vite-plugin-file-replacement.ts
+├── vite.config.wc.ts
+└── vitest.config.mjs
+176 directories, 472 files
