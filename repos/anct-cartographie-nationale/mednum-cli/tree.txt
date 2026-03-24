@@ -1,0 +1,577 @@
+.
+├── .editorconfig
+├── .env.example
+├── .github
+│   └── workflows
+│       ├── nightly-publish.yml
+│       ├── process-data.reusable.yml
+│       ├── release.yml
+│       └── validate.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .lintstagedrc
+├── .prettierignore
+├── .prettierrc
+├── .tooling
+│   └── .semantic-release
+│       ├── .npmignore
+│       └── .semantic-release.config.cjs
+├── .tsconfig
+│   ├── tsconfig.base.json
+│   ├── tsconfig.json
+│   └── tsconfig.test.json
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── assets
+│   └── input
+│       ├── Readme.md
+│       ├── addresses.json
+│       ├── aidants-connect
+│       │   └── aidants-connect.config.json
+│       ├── aix-en-provence
+│       │   ├── aix-en-provence.config.json
+│       │   └── aix-en-provence.json
+│       ├── angers
+│       │   ├── angers.config.json
+│       │   └── angers.json
+│       ├── bus-france-services-charente
+│       │   ├── bus-france-services-charente.config.json
+│       │   └── bus-france-services-charente.json
+│       ├── charente-maritime
+│       │   └── charente-maritime.config.json
+│       ├── conseiller-numerique
+│       │   └── conseiller-numerique.config.json
+│       ├── coop-numerique
+│       │   └── coop-numerique.config.json
+│       ├── corse
+│       │   ├── corse.config.json
+│       │   └── corse.json
+│       ├── data-inclusion
+│       │   └── data-inclusion.config.json
+│       ├── dora
+│       │   └── dora.config.json
+│       ├── epernay
+│       │   ├── epernay.config.json
+│       │   └── epernay.json
+│       ├── etapes-numerique
+│       │   ├── etapes-numerique.config.json
+│       │   └── etapes-numerique.json
+│       ├── eure-et-loir
+│       │   └── eure-et-loir.config.json
+│       ├── fibre-64
+│       │   ├── fibre-64.config.json
+│       │   └── fibre-64.json
+│       ├── france-services
+│       │   └── france-services.config.json
+│       ├── france-travail
+│       │   └── france-travail.config.json
+│       ├── francil-in
+│       │   ├── francil-in.config.json
+│       │   └── services.francil-in.md
+│       ├── fredo
+│       │   └── fredo.config.json
+│       ├── gironde
+│       │   ├── gironde.config.json
+│       │   └── gironde.json
+│       ├── grand-paris-sud
+│       │   └── grand-paris-sud.config.json
+│       ├── haute-vienne
+│       │   └── haute-vienne.config.json
+│       ├── herault
+│       │   └── herault.config.json
+│       ├── hinaura
+│       │   └── hinaura.config.json
+│       ├── hub-bretagne
+│       │   └── hub-bretagne.config.json
+│       ├── hub-lo
+│       │   ├── hub-lo.config.json
+│       │   └── hub-lo.json
+│       ├── la-creuse
+│       │   ├── la-creuse.config.json
+│       │   └── la-creuse.json
+│       ├── les-landes
+│       │   └── les-landes.config.json
+│       ├── loire-atlantique
+│       │   └── loire-atlantique.config.json
+│       ├── maine-et-loire
+│       │   ├── maine-et-loire.config.json
+│       │   └── maine-et-loire.json
+│       ├── mednum-bfc
+│       │   └── mednum-bfc.config.json
+│       ├── mednum-hub-antilles
+│       │   └── mednum-hub-antilles.config.json
+│       ├── mulhouse
+│       │   └── mulhouse.config.json
+│       ├── nouvelle-caledonie
+│       │   ├── nouvelle-caledonie.config.json
+│       │   └── nouvelle-caledonie.json
+│       ├── numi
+│       │   └── numi.config.json
+│       ├── paca
+│       │   └── paca.config.json
+│       ├── paris
+│       │   └── paris.config.json
+│       ├── res-in
+│       │   └── res-in.config.json
+│       ├── rhin-occ
+│       │   └── rhin-occ.config.json
+│       ├── savoie-extraction
+│       │   └── savoie-extraction.config.json
+│       ├── siilab
+│       │   └── siilab.config.json
+│       ├── soliguide
+│       │   └── soliguide.config.json
+│       ├── ultra-num
+│       │   ├── ultra-num.config.json
+│       │   └── ultra-num.json
+│       ├── vendee
+│       │   └── vendee.config.json
+│       ├── vendee-extraction
+│       │   └── vendee-extraction.config.json
+│       └── vosges
+│           └── vosges.config.json
+├── bin
+│   └── mednum
+├── commitlint.config.js
+├── eslint.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── src
+│   ├── common
+│   │   ├── data-inclusion
+│   │   │   ├── file-name
+│   │   │   │   ├── data-inclusion.file-name.spec.ts
+│   │   │   │   └── data-inclusion.file-name.ts
+│   │   │   ├── index.ts
+│   │   │   └── write
+│   │   │       └── data-inclusion.write.ts
+│   │   ├── http
+│   │   │   ├── headers.ts
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── mediation-numerique
+│   │   │   ├── file-name
+│   │   │   │   ├── mediation-numerique.file-name.spec.ts
+│   │   │   │   └── mediation-numerique.file-name.ts
+│   │   │   ├── index.ts
+│   │   │   ├── to-csv
+│   │   │   │   ├── mediation-numerique.to-csv.spec.ts
+│   │   │   │   └── mediation-numerique.to-csv.ts
+│   │   │   └── write
+│   │   │       └── mediation-numerique.write.ts
+│   │   ├── output-file
+│   │   │   ├── file-name.ts
+│   │   │   ├── index.ts
+│   │   │   ├── output.ts
+│   │   │   └── write-file.ts
+│   │   ├── pagination
+│   │   │   └── pagination.ts
+│   │   └── publish-metadata
+│   │       ├── generate-publish-metadata
+│   │       │   ├── generate-publish-metadata.spec.ts
+│   │       │   └── generate-publish-metadata.ts
+│   │       ├── index.ts
+│   │       └── publish-metadata.ts
+│   ├── data
+│   │   └── anciennes-communes.ts
+│   ├── data-inclusion
+│   │   ├── cli
+│   │   │   ├── action
+│   │   │   │   ├── data-inclusion.action.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── data-inclusion-options.ts
+│   │   │   ├── data-inclusion.ts
+│   │   │   ├── index.ts
+│   │   │   ├── options
+│   │   │   │   ├── api-key.options.ts
+│   │   │   │   ├── filter.option.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── output-file.option.ts
+│   │   │   └── questions
+│   │   │       ├── api-key.question.ts
+│   │   │       ├── index.ts
+│   │   │       └── output-file.question.ts
+│   │   ├── data-inclusion-merged.ts
+│   │   ├── fields
+│   │   │   ├── adresse
+│   │   │   │   ├── adresse.field.spec.ts
+│   │   │   │   └── adresse.field.ts
+│   │   │   └── index.ts
+│   │   ├── merge-services-in-structure.spec.ts
+│   │   └── merge-services-in-structure.ts
+│   ├── dedupliquer
+│   │   ├── cli
+│   │   │   ├── action
+│   │   │   │   ├── append-coop-id.spec.ts
+│   │   │   │   ├── append-coop-id.ts
+│   │   │   │   ├── deduplication-comparisons-to-csv
+│   │   │   │   │   ├── deduplication-comparisons-to-csv.spec.ts
+│   │   │   │   │   ├── deduplication-comparisons-to-csv.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── deduplication.repository.ts
+│   │   │   │   ├── dedupliquer.action.ts
+│   │   │   │   ├── exclude-by-id
+│   │   │   │   │   ├── exclude-by-id.spec.ts
+│   │   │   │   │   └── exclude-by-id.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── data
+│   │   │   │   ├── index.ts
+│   │   │   │   └── save
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── save-in-files.ts
+│   │   │   │       ├── save-with-api.spec.ts
+│   │   │   │       └── save-with-api.ts
+│   │   │   ├── dedupliquer-options.ts
+│   │   │   ├── dedupliquer.ts
+│   │   │   ├── index.ts
+│   │   │   ├── options
+│   │   │   │   ├── allow-internal.option.ts
+│   │   │   │   ├── api-key.option.ts
+│   │   │   │   ├── base.source.option.ts
+│   │   │   │   ├── cutoff.option.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── output-directory.option.ts
+│   │   │   │   ├── source-name.option.ts
+│   │   │   │   ├── source.option.ts
+│   │   │   │   └── territory.option.ts
+│   │   │   └── questions
+│   │   │       ├── index.ts
+│   │   │       ├── output-directory.question.ts
+│   │   │       ├── source-name.question.ts
+│   │   │       ├── source.question.ts
+│   │   │       └── territory.question.ts
+│   │   ├── data
+│   │   │   ├── index.ts
+│   │   │   └── merge-group.transfer.ts
+│   │   ├── index.ts
+│   │   ├── repositories
+│   │   │   ├── deduplication.repository.ts
+│   │   │   └── index.ts
+│   │   └── steps
+│   │       ├── duplication-comparisons
+│   │       │   ├── duplication-comparisons.spec.ts
+│   │       │   ├── duplication-comparisons.ts
+│   │       │   └── index.ts
+│   │       ├── find-duplicates
+│   │       │   ├── find-duplicates.spec.ts
+│   │       │   ├── find-duplicates.ts
+│   │       │   └── index.ts
+│   │       ├── group-duplicates
+│   │       │   ├── group-duplicates.spec.ts
+│   │       │   └── group-duplicates.ts
+│   │       ├── index.ts
+│   │       ├── merge-duplicates
+│   │       │   ├── index.ts
+│   │       │   ├── merge-duplicates.spec.ts
+│   │       │   ├── merge-duplicates.ts
+│   │       │   └── merge-lieux.ts
+│   │       ├── merge-group
+│   │       │   ├── merge-group.spec.ts
+│   │       │   └── merge-group.ts
+│   │       └── remove-merged
+│   │           ├── remove-merged.spec.ts
+│   │           └── remove-merged.ts
+│   ├── extract
+│   │   ├── cli
+│   │   │   ├── action
+│   │   │   │   ├── build-api-url
+│   │   │   │   │   ├── extract-query-string.spec.ts
+│   │   │   │   │   ├── extract-query-string.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── extract.action.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── extract-options.ts
+│   │   │   ├── extract.ts
+│   │   │   ├── index.ts
+│   │   │   ├── options
+│   │   │   │   ├── departements.option.ts
+│   │   │   │   ├── duplicates.option.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── output-directory.option.ts
+│   │   │   │   ├── source-name.option.ts
+│   │   │   │   └── territory.option.ts
+│   │   │   └── questions
+│   │   │       ├── index.ts
+│   │   │       ├── output-directory.question.ts
+│   │   │       ├── source-name.question.ts
+│   │   │       └── territory.question.ts
+│   │   └── index.ts
+│   ├── fusionner
+│   │   ├── cli
+│   │   │   ├── action
+│   │   │   │   ├── fusionner.action.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── fusionner-options.ts
+│   │   │   ├── fusionner.ts
+│   │   │   ├── index.ts
+│   │   │   ├── options
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── input-files-pattern.option.ts
+│   │   │   │   └── output-directory.option.ts
+│   │   │   └── questions
+│   │   │       ├── index.ts
+│   │   │       ├── input-files-pattern.question.ts
+│   │   │       └── output-directory.question.ts
+│   │   └── index.ts
+│   ├── index.ts
+│   ├── publier
+│   │   ├── cli
+│   │   │   ├── action
+│   │   │   │   ├── index.ts
+│   │   │   │   └── publier.action.ts
+│   │   │   ├── index.ts
+│   │   │   ├── options
+│   │   │   │   ├── api-key.option.ts
+│   │   │   │   ├── api-url.option.ts
+│   │   │   │   ├── id-type.option.ts
+│   │   │   │   ├── id-value.option.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── metdata-file.option.ts
+│   │   │   │   └── zone.option.ts
+│   │   │   ├── publier-options.ts
+│   │   │   ├── publier.ts
+│   │   │   └── questions
+│   │   │       ├── api-key.question.ts
+│   │   │       ├── id-type.question.spec.ts
+│   │   │       ├── id-type.question.ts
+│   │   │       ├── id-value.question.ts
+│   │   │       ├── index.ts
+│   │   │       ├── metdata-file.question.ts
+│   │   │       └── zone.question.ts
+│   │   ├── index.ts
+│   │   ├── models
+│   │   │   ├── dataset.ts
+│   │   │   ├── index.ts
+│   │   │   ├── organization.ts
+│   │   │   ├── publish-dataset.ts
+│   │   │   ├── publish-ressource.ts
+│   │   │   ├── reference.ts
+│   │   │   └── ressource.ts
+│   │   ├── publish-dataset.spec.ts
+│   │   ├── publish-dataset.ts
+│   │   └── repositories
+│   │       ├── index.ts
+│   │       ├── publish-dataset
+│   │       │   ├── get-dataset.ts
+│   │       │   ├── index.ts
+│   │       │   ├── post-dataset.ts
+│   │       │   └── update-dataset.ts
+│   │       └── publish-dataset.repository.ts
+│   └── transformer
+│       ├── cli
+│       │   ├── action
+│       │   │   ├── index.ts
+│       │   │   ├── transformation.respository.ts
+│       │   │   └── transformer.action.ts
+│       │   ├── diff-since-last-transform.spec.ts
+│       │   ├── diff-since-last-transform.ts
+│       │   ├── index.ts
+│       │   ├── options
+│       │   │   ├── api-key.option.ts
+│       │   │   ├── config-file.option.ts
+│       │   │   ├── delimiter.option.ts
+│       │   │   ├── encoding.option.ts
+│       │   │   ├── env-key.option.ts
+│       │   │   ├── force.option.ts
+│       │   │   ├── index.ts
+│       │   │   ├── output-directory.option.ts
+│       │   │   ├── source-name.option.ts
+│       │   │   ├── source.option.ts
+│       │   │   └── territory.option.ts
+│       │   ├── questions
+│       │   │   ├── config-file.question.ts
+│       │   │   ├── index.ts
+│       │   │   ├── output-directory.question.ts
+│       │   │   ├── source-name.question.ts
+│       │   │   ├── source.question.ts
+│       │   │   └── territory.question.ts
+│       │   ├── transformer-options.ts
+│       │   └── transformer.ts
+│       ├── data
+│       │   ├── addresses
+│       │   │   └── write-addresses-in-file.ts
+│       │   ├── communes
+│       │   │   └── commune-from-geo-api.ts
+│       │   ├── errors
+│       │   │   └── write-errors-in-files.ts
+│       │   ├── fingerprints
+│       │   │   ├── fingerprints-from-file.ts
+│       │   │   ├── fingerprints-from-lieux-mediation-numerique-api.ts
+│       │   │   ├── index.ts
+│       │   │   ├── save-fingerprints-in-file.ts
+│       │   │   └── save-fingerprints-with-lieux-mediation-numerique-api.ts
+│       │   ├── index.ts
+│       │   ├── localisation
+│       │   │   ├── localisation-from-geo.spec.ts
+│       │   │   └── localisation-from-geo.ts
+│       │   ├── qpv
+│       │   │   ├── index.ts
+│       │   │   ├── is-in-qpv.spec.ts
+│       │   │   ├── is-in-qpv.ts
+│       │   │   ├── qpv-from-data-gouv.ts
+│       │   │   └── transfer
+│       │   │       ├── index.ts
+│       │   │       ├── qpv.transfer.spec.ts
+│       │   │       └── qpv.transfer.ts
+│       │   ├── save-outputs
+│       │   │   ├── index.ts
+│       │   │   ├── save-outputs-in-files.ts
+│       │   │   └── save-outputs-with-lieux-inclusion-numerique-api.ts
+│       │   ├── source
+│       │   │   ├── api-or-csv.ts
+│       │   │   ├── index.ts
+│       │   │   ├── sources-from-cartographie-nationale-api.ts
+│       │   │   ├── transfer
+│       │   │   │   ├── source.transfer.spec.ts
+│       │   │   │   └── source.transfer.ts
+│       │   │   └── update-source-with-cartographie-nationale-api.ts
+│       │   └── zrr
+│       │       ├── index.ts
+│       │       ├── is-in-zrr.spec.ts
+│       │       ├── is-in-zrr.ts
+│       │       ├── transfer
+│       │       │   ├── index.ts
+│       │       │   ├── zrr.transfer.spec.ts
+│       │       │   └── zrr.transfer.ts
+│       │       └── zrr-from-equipements-sports-gouv-api.ts
+│       ├── fields
+│       │   ├── adresse
+│       │   │   ├── adresse.field.spec.ts
+│       │   │   ├── adresse.field.ts
+│       │   │   ├── anciennes-communes.spec.ts
+│       │   │   ├── anciennes-communes.ts
+│       │   │   ├── clean-code-postal.ts
+│       │   │   ├── clean-commune.spec.ts
+│       │   │   ├── clean-commune.ts
+│       │   │   ├── clean-operations.ts
+│       │   │   ├── clean-voie.ts
+│       │   │   ├── find-commune.spec.ts
+│       │   │   └── find-commune.ts
+│       │   ├── autres-formations-labels
+│       │   │   ├── autres-formations-labels.field.spec.ts
+│       │   │   ├── autres-formations-labels.field.ts
+│       │   │   ├── index.ts
+│       │   │   ├── qpv.ts
+│       │   │   └── zrr.ts
+│       │   ├── contact
+│       │   │   ├── clean-operations.ts
+│       │   │   ├── contact.field.spec.ts
+│       │   │   └── contact.field.ts
+│       │   ├── date
+│       │   │   ├── date.field.spec.ts
+│       │   │   └── date.field.ts
+│       │   ├── dispositifs-programmes-nationaux
+│       │   │   ├── dispositifs-programmes-nationaux.field.spec.ts
+│       │   │   └── dispositifs-programmes-nationaux.field.ts
+│       │   ├── fiche-acces-libre
+│       │   │   ├── fiche-acces-libre.field.spec.ts
+│       │   │   └── fiche-acces-libre.field.ts
+│       │   ├── formations-labels
+│       │   │   ├── formations-labels.field.spec.ts
+│       │   │   └── formations-labels.field.ts
+│       │   ├── frais-a-charge
+│       │   │   ├── frais-a-charge.field.spec.ts
+│       │   │   └── frais-a-charge.field.ts
+│       │   ├── horaires
+│       │   │   ├── errors
+│       │   │   │   └── invalid-hours-error.ts
+│       │   │   ├── horaires.field.clean-operations.ts
+│       │   │   ├── horaires.field.extract-operations.ts
+│       │   │   ├── horaires.field.spec.ts
+│       │   │   ├── horaires.field.ts
+│       │   │   ├── opening-hours-from-week.ts
+│       │   │   └── process-horaires.field.ts
+│       │   ├── id
+│       │   │   ├── id.field.spec.ts
+│       │   │   └── id.field.ts
+│       │   ├── index.ts
+│       │   ├── itinerance
+│       │   │   ├── itinerance.field.spec.ts
+│       │   │   └── itinerance.field.ts
+│       │   ├── localisation
+│       │   │   ├── geocode.ts
+│       │   │   ├── index.ts
+│       │   │   ├── localisation.field.spec.ts
+│       │   │   └── localisation.field.ts
+│       │   ├── modalites-acces
+│       │   │   ├── modalites-acces.field.spec.ts
+│       │   │   └── modalites-acces.field.ts
+│       │   ├── modalites-accompagnement
+│       │   │   ├── modalites-accompagnement.field.spec.ts
+│       │   │   └── modalites-accompagnement.field.ts
+│       │   ├── nom
+│       │   │   ├── clean-operations.ts
+│       │   │   ├── nom.field.spec.ts
+│       │   │   └── nom.field.ts
+│       │   ├── pivot
+│       │   │   ├── pivot.field.spec.ts
+│       │   │   └── pivot.field.ts
+│       │   ├── presentation
+│       │   │   ├── presentation.field.spec.ts
+│       │   │   └── presentation.field.ts
+│       │   ├── prise-rdv
+│       │   │   ├── prise-rdv.field.spec.ts
+│       │   │   └── prise-rdv.field.ts
+│       │   ├── prises-en-charge-specifiques
+│       │   │   ├── prises-en-charge-specifiques.field.spec.ts
+│       │   │   └── prises-en-charge-specifiques.field.ts
+│       │   ├── prive
+│       │   │   ├── prive.field.spec.ts
+│       │   │   └── prive.field.ts
+│       │   ├── publics-specifiquement-adresses
+│       │   │   ├── publics-specifiquement-adresses.field.spec.ts
+│       │   │   └── publics-specifiquement-adresses.field.ts
+│       │   ├── services
+│       │   │   ├── services.field.spec.ts
+│       │   │   └── services.field.ts
+│       │   ├── source
+│       │   │   ├── source.field.spec.ts
+│       │   │   └── source.field.ts
+│       │   └── typologies
+│       │       ├── name-to-typologie.ts
+│       │       ├── typologies.field.spec.ts
+│       │       └── typologies.field.ts
+│       ├── index.ts
+│       ├── input
+│       │   ├── index.ts
+│       │   ├── lieux-mediation-numerique-matching.ts
+│       │   └── to-lieux-mediation-numerique.ts
+│       ├── merge-hours-ranges
+│       │   ├── merge-hours-ranges.spec.ts
+│       │   └── merge-hours-ranges.ts
+│       ├── output
+│       │   ├── address-storage
+│       │   │   ├── index.ts
+│       │   │   └── write
+│       │   │       └── address.write.ts
+│       │   ├── error-report
+│       │   │   ├── index.ts
+│       │   │   ├── to-csv
+│       │   │   │   ├── error-report.to-csv.spec.ts
+│       │   │   │   └── error-report.to-csv.ts
+│       │   │   └── write
+│       │   │       └── error-report.write.ts
+│       │   ├── index.ts
+│       │   └── write-output-files.ts
+│       ├── report
+│       │   ├── index.ts
+│       │   ├── report.spec.ts
+│       │   └── report.ts
+│       ├── repositories
+│       │   ├── index.ts
+│       │   └── transformation.repository.ts
+│       ├── storage
+│       │   ├── index.ts
+│       │   ├── storage.spec.ts
+│       │   └── storage.ts
+│       └── to-osm-hours
+│           ├── clean-operations.ts
+│           ├── to-osm-hours.spec.ts
+│           └── to-osm-hours.ts
+├── vitest.config.ts
+└── vitest.global-setup.ts
+170 directories, 406 files
