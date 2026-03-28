@@ -1,14 +1,17 @@
 # Synthèse d'activité : refugies-info (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine a été marquée par des améliorations significatives sur les plateformes [karfur](/repos/refugies-info/karfur) et [playground](/repos/refugies-info/playground).  [karfur](/repos/refugies-info/karfur) bénéficie d'optimisations de performance grâce à l'implémentation de Speedgoose et d'une refactorisation de la recherche, rendant l'application plus réactive et scalable. [playground](/repos/refugies-info/playground) a vu l'ajout de fonctionnalités importantes pour l'édition et la publication de documents, notamment l'édition des métadonnées, la visualisation de cartes et la prise en charge de la langue russe pour l'IA, améliorant ainsi l'expérience utilisateur et l'accessibilité de l'information.
+L'activité de la semaine a été marquée par des améliorations significatives sur les plateformes [karfur](/repos/refugies-info/karfur) et [playground](/repos/refugies-info/playground).  [Karfur](/repos/refugies-info/karfur) a bénéficié d'optimisations de performance grâce à l'implémentation de Speedgoose et une refactorisation de l'architecture de recherche, améliorant ainsi l'expérience utilisateur et la scalabilité.  [Playground](/repos/refugies-info/playground) a vu l'ajout de nouvelles fonctionnalités d'édition de métadonnées, de publication de traductions en temps réel et d'intégration de l'IA en russe, élargissant ainsi les capacités de la plateforme et son accessibilité.
 
 ## Sécurité
 Aucun changement lié à la sécurité n'a été signalé cette semaine.
 
 ## Autres changements notables
-Plusieurs refactorisations techniques ont été menées sur [karfur](/repos/refugies-info/karfur) et [playground](/repos/refugies-info/playground).  [karfur](/repos/refugies-info/karfur) a migré ses schémas MongoDB vers des modèles partagés pour une meilleure cohérence des données et unifié ses branches de production et de staging.  [playground](/repos/refugies-info/playground) a optimisé ses requêtes Supabase et amélioré la gestion de la mémoire des agents Letta pour une meilleure performance globale.
+- Refactorisation importante de l'architecture de recherche dans [karfur](/repos/refugies-info/karfur) avec pagination côté serveur pour une meilleure réactivité et scalabilité.
+- Migration des schémas MongoDB vers des modèles partagés dans [karfur](/repos/refugies-info/karfur) pour une meilleure cohérence des données.
+- Unification des branches de production et de staging dans [karfur](/repos/refugies-info/karfur) pour simplifier le processus de déploiement.
+- Intégration de Claude Code avec l'outil Entire CLI dans [playground](/repos/refugies-info/playground) pour étendre les capacités de l'IA.
 
 ## Dépôts les plus actifs
-- [karfur](/repos/refugies-info/karfur) : Amélioration des performances, corrections de bugs d'affichage et refactorisation de la recherche.
-- [playground](/repos/refugies-info/playground) : Ajout de nouvelles fonctionnalités d'édition de documents, intégration de l'IA en russe et optimisations techniques pour la performance.
+- [karfur](/repos/refugies-info/karfur) : Amélioration des performances et refactorisation de l'architecture pour une meilleure expérience utilisateur et scalabilité.
+- [playground](/repos/refugies-info/playground) : Ajout de nouvelles fonctionnalités d'édition, de traduction et d'intégration de l'IA pour élargir les capacités de la plateforme.
