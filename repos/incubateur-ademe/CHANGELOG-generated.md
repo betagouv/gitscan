@@ -1,22 +1,21 @@
 # Synthèse d'activité : incubateur-ademe (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts.  Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [ecopass](/repos/incubateur-ademe/ecopass) et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des avancées notables ont également été réalisées sur [mutafriches](/repos/incubateur-ademe/mutafriches) avec l'intégration de nouvelles données pour une analyse plus précise des friches urbaines, et sur [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) avec l'ajout de fonctionnalités d'embarquement et d'authentification à deux facteurs.  Enfin, plusieurs dépôts ont bénéficié de mises à jour techniques pour améliorer la performance, la sécurité et la maintenance.
+L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses projets phares. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les plateformes ecopass, nosgestesclimat-site-nextjs et mutafriches, avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des mises à jour techniques importantes ont également été réalisées sur des projets comme dashlord, docker-prisma-studio et nosgestesclimat-server, visant à optimiser les performances, la sécurité et la maintenabilité du code. Le lancement du projet nosgestesclimat-aides marque une nouvelle étape dans l'offre de services de l'organisation.
 
 ## Sécurité
-- Correction d'un bug lié à l'authentification à deux facteurs sur [vaultwarden](/repos/incubateur-ademe/vaultwarden).
-- Refonte de l'architecture d'authentification avec SSO OAuth sur [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles).
-- Remplacement de Datadog Logs par Sentry Logs sur [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions).
+- Le projet [vaultwarden](/repos/incubateur-ademe/vaultwarden) a bénéficié de mises à jour de ses dépendances et de GitHub Actions pour améliorer la sécurité et corriger des vulnérabilités potentielles.
+- Le projet [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) a configuré le nom du cookie d'authentification via une variable d'environnement pour une meilleure sécurité.
 
 ## Autres changements notables
-- Refonte de la logique de création de site sur [benefriches](/repos/incubateur-ademe/benefriches) migrée vers l'API.
-- Mise à niveau de n8n vers la version 2 sur [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
-- Mise à jour de Django vers la version 6.0 sur [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets).
-- Refonte complète du générateur de vignettes sur [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator).
+- Le projet [benefriches](/repos/incubateur-ademe/benefriches) a connu une refonte importante de sa logique de création de site, migrée vers l'API, et une refactorisation du code de création de projet urbain.
+- Le projet [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a vu une refonte majeure de son architecture d'authentification et l'ajout d'un système d'audit log.
+- Le projet [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a été entièrement retravaillé et est désormais fonctionnel, avec un workflow de déploiement automatique.
+- Le projet [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) a publié des versions 1.0.0 et 1.1.0 avec des corrections et des améliorations du calcul de l'empreinte carbone.
 
 ## Dépôts les plus actifs
-- [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages, correction de bugs et améliorations de l'expérience utilisateur.
-- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'interface pour la sélection des aides, ajout de la consultation des projets associés aux collectivités et correction de bugs.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration du processus de création de projets en zone urbaine et refonte de la logique de création de site.
-- [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données (ZAER, zones urbaines, inondations) et ajout de la gestion de multiparcelles.
-- [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Ajout de fonctionnalités d'embarquement, d'authentification à deux facteurs et d'intégration avec Notion.
+- [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages et correction de bugs pour améliorer l'expérience utilisateur.
+- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'UX, correction de bugs et mises à jour techniques pour une meilleure performance.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Refonte de la logique de création de site et refactorisation du code.
+- [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données et ajout de la gestion de multiparcelles.
+- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Corrections de bugs, mises à jour de données et améliorations de l'interface utilisateur.

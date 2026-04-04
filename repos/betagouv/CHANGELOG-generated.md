@@ -1,32 +1,22 @@
 # Synthèse d'activité : betagouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité de betagouv sur les 7 derniers jours a été très riche, touchant un grand nombre de dépôts. On observe une forte concentration sur l'amélioration de l'expérience utilisateur, avec des refontes d'interface (diagbruit.beta.gouv.fr, espace-membre-next), l'ajout de nouvelles fonctionnalités (Aidants_Connect, api-subventions-asso, anssi-portail), et des corrections de bugs pour une meilleure stabilité. La sécurité est également un point d'attention, avec l'ajout de l'authentification à deux facteurs (gestion-des-subventions-locales) et des mises à jour de dépendances pour corriger des vulnérabilités (dsfr-assets, anssi-recommandations-cyber-data). Plusieurs dépôts ont bénéficié de mises à jour techniques importantes, comme des refactorings d'architecture (api-subventions-asso, resultats-Elections-FPT) et l'intégration de nouveaux outils (PostHog sur france-chaleur-urbaine).
+L'organisation betagouv a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. On observe une forte concentration sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration du Design System de l'État (DSFR) sur plusieurs projets, et des corrections de bugs pour améliorer la stabilité et l'accessibilité.  Plusieurs projets ont bénéficié d'améliorations techniques, comme la refonte de l'architecture de certains dépôts (archeologia-pipeline, dsfr-renderer) et la mise à jour des dépendances pour assurer la sécurité et la performance. L'ajout de nouvelles fonctionnalités, comme la gestion des données LoLfi dans "fondation" et l'ajout de nouveaux types de systèmes de chauffage dans "france-chaleur-urbaine", témoigne d'une dynamique d'innovation continue.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- **anssi-recommandations-cyber-data** : Mise à jour de dépendances vulnérables (deepeval, protobuf).
-- **gestion-des-subventions-locales** : Ajout de l'authentification à deux facteurs (OTP) et protection contre les attaques par force brute.
-- **dsfr-assets** : Mise à jour vers la version 1.14.3 pour corriger des failles de sécurité.
-- **euphrosyne-digilab** : Mise à jour des dépendances.
-- **grist-budget-agriculture** : Ajout d'un scan antivirus ClamAV pour les fichiers uploadés.
+Plusieurs dépôts ont bénéficié de mises à jour de dépendances, contribuant à améliorer la sécurité globale des projets.  L'ajout de Sentry pour la surveillance des erreurs dans "depots-sauvages" et "euphrosyne-tools-api" renforce également la capacité à identifier et à corriger les vulnérabilités.  "dsfr-assets" a été mis à jour vers la version 1.14.3, incluant des corrections de sécurité.
 
 ## Autres changements notables
-- **resultats-Elections-FPT** : Migration vers Vue.js et mise en place d'une CI/CD.
-- **api-subventions-asso** : Refactoring majeur de l'architecture avec l'introduction de patterns Mapper, Port et Adapter.
-- **ComparIA** : Ajout de nouveaux modèles de langage (Mistral Small 4, GPT-5.4, Gemini 3.1 Flash Lite, etc.) et implémentation d'un filtre anti-spam.
-- **diagbruit.beta.gouv.fr** : Refonte de l'interface utilisateur et ajout de nouvelles fonctionnalités.
-- **a-just** : Mise à jour de l'extracteur de données pour la collecte 2026.
-- **france-chaleur-urbaine** : Intégration de PostHog pour le suivi analytics et l'autocapture.
-- **dsfr-form-builder** : Ajout d'un site de documentation et de démonstration.
+Plusieurs projets ont connu des refontes architecturales importantes, notamment "archeologia-pipeline" avec l'adoption de Playwright et l'inférence ONNX, et "dsfr-renderer" avec la migration vers une structure monorepo basée sur Turborepo.  "api-subventions-asso" a entrepris un refactoring majeur de son architecture.  La gem "dsfr-form-builder" a bénéficié d'une documentation et d'un site de démonstration.  "france-chaleur-urbaine" a intégré PostHog pour le suivi analytics.
 
 ## Dépôts les plus actifs
-- **Aidants_Connect** : Ajout de nouvelles fonctionnalités pour les conseillers numériques et les aidants.
-- **ComparIA** : Ajout de nouveaux modèles de langage et amélioration de la réactivité.
-- **a-just** : Corrections et améliorations pour la collecte de données 2026.
-- **api-subventions-asso** : Refactoring majeur et ajout de nouvelles fonctionnalités.
-- **diagbruit.beta.gouv.fr** : Refonte de l'interface utilisateur et ajout de nouvelles fonctionnalités.
-- **france-chaleur-urbaine** : Ajout de nouveaux modes de chauffage et amélioration de l'interface utilisateur.
-- **gestion-des-subventions-locales** : Amélioration de la sécurité et ajout de nouvelles fonctionnalités.
-- **euphrosyne** : Amélioration de l'interface utilisateur et intégration du DSFR.
-- **grist-budget-agriculture** : Amélioration du traitement des informations budgétaires.
+*   [2ddoc-parser](/repos/betagouv/2ddoc-parser) : Ajout du support pour les avis d'imposition version 1.
+*   [Aidants_Connect](/repos/betagouv/Aidants_Connect) : Nombreuses améliorations fonctionnelles pour la gestion des aidants et des formations.
+*   [ComparIA](/repos/betagouv/ComparIA) : Ajout de nouveaux modèles de langage et améliorations de la performance.
+*   [acces-cible](/repos/betagouv/acces-cible) : Améliorations de la robustesse, ajout de nouvelles fonctionnalités et mises à jour techniques.
+*   [a-just](/repos/betagouv/a-just) : Corrections et améliorations de l'interface et de l'extraction de données.
+*   [api-subventions-asso](/repos/betagouv/api-subventions-asso) : Refactoring majeur de l'architecture et ajout de nouvelles fonctionnalités.
+*   [euphrosyne](/repos/betagouv/euphrosyne) : Intégration du DSFR et corrections de bugs.
+*   [france-chaleur-urbaine](/repos/betagouv/france-chaleur-urbaine) : Ajout de nouveaux modes de chauffage et améliorations de l'expérience utilisateur.
+*   [dsfr-form-builder](/repos/betagouv/dsfr-form-builder) : Amélioration de la documentation et ajout d'un site de démonstration.
+*   [depots-sauvages](/repos/betagouv/depots-sauvages) : Ajout de Sentry pour la surveillance des erreurs et corrections de bugs.
