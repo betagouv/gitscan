@@ -1,11 +1,16 @@
-## Changelog : 2ddoc-parser (30 derniers jours)
+## Changelog : 2ddoc-parser (30 derniers jours, au 27 mars 2026)
 
 ### Résumé
-Cette nouvelle version apporte la prise en charge du parsing des 2D-DOC pour les avis d'imposition version 1. De plus, des corrections de style de code ont été effectuées pour améliorer la qualité du projet.
+Cette version apporte le support du type de 2D-DOC 06 (Bulletin de salaire) et améliore la compatibilité avec différentes versions des documents. Des corrections et optimisations internes ont également été réalisées pour améliorer la qualité du code et la robustesse de la bibliothèque.
 
 ### Évolutions fonctionnelles
-- Ajout du modèle 2D-DOC pour les avis d'imposition version 1 (#4c3d3c7).
+- Ajout du support pour le type de 2D-DOC 06 (Bulletin de salaire) [#7](https://github.com/betagouv/2ddoc-parser/issues/7).
+- Amélioration du support pour différentes versions de 2D-DOC [#4](https://github.com/betagouv/2ddoc-parser/issues/4).
+
+### Évolutions techniques
+- Remplacement des anciennes dataclasses par des modèles Pydantic [#6](https://github.com/betagouv/2ddoc-parser/issues/6).
+- Intégration de `pyright` pour l'analyse statique du code et correction des problèmes identifiés [#3](https://github.com/betagouv/2ddoc-parser/issues/3).
 
 ### Autres changements
-- Correction de problèmes de linting avec Ruff (#4c3d3c7).
-- Mise à jour de la version du projet à 1.0.3 (#8cc960a).
+- Mise à jour de la version de la bibliothèque à 1.0.5.
+- Mise à jour de la version de la bibliothèque à 1.0.4.
