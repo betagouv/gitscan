@@ -1,6 +1,6 @@
 services:
   dsc-journal-db:
-    image: postgres
+    image: docker.io/postgres
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
@@ -13,7 +13,7 @@ services:
 
 
   node:
-    image: node:24
+    image: docker.io/node:${NODE_VERSION:-latest}
     volumes:
       - ./:/home/node/app
     working_dir: /home/node/app
