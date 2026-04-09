@@ -32,9 +32,117 @@
 │   │   ├── utils.py
 │   │   └── views.py
 │   ├── manage.py
+│   ├── organisation_specific
+│   │   └── dsf
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── migrations
+│   │       │   └── __init__.py
+│   │       ├── models.py
+│   │       ├── tests.py
+│   │       └── views.py
+│   ├── organisations
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── membership.py
+│   │   │   ├── organisation.py
+│   │   │   └── pole.py
+│   │   ├── apps.py
+│   │   ├── factories
+│   │   │   ├── __init__.py
+│   │   │   ├── membership.py
+│   │   │   ├── organisation.py
+│   │   │   └── pole.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_membership_unique_together.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── membership.py
+│   │   │   ├── organisation.py
+│   │   │   └── pole.py
+│   │   ├── serializers
+│   │   │   ├── __init__.py
+│   │   │   ├── membership.py
+│   │   │   ├── organisation.py
+│   │   │   └── pole.py
+│   │   ├── tests.py
+│   │   └── views.py
 │   ├── requirements.txt
+│   ├── responses
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   └── response.py
+│   │   ├── apps.py
+│   │   ├── factories
+│   │   │   ├── __init__.py
+│   │   │   └── response.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_historicalresponse.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   └── response.py
+│   │   ├── permissions.py
+│   │   ├── serializers
+│   │   │   ├── __init__.py
+│   │   │   └── response.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_create_response.py
+│   │   │   ├── test_get_responses.py
+│   │   │   └── test_retrieve_response.py
+│   │   ├── urls.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       └── response.py
 │   ├── static
 │   │   └── .keep
+│   ├── surveys
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── campaign.py
+│   │   │   ├── survey.py
+│   │   │   ├── vocabularyentry.py
+│   │   │   └── vocabularyset.py
+│   │   ├── apps.py
+│   │   ├── factories
+│   │   │   ├── __init__.py
+│   │   │   ├── campaign.py
+│   │   │   ├── survey.py
+│   │   │   ├── vocabularyentry.py
+│   │   │   └── vocabularyset.py
+│   │   ├── metaschema.json
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_historicalcampaign_historicalsurvey_and_more.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── campaign.py
+│   │   │   ├── survey.py
+│   │   │   ├── vocabularyentry.py
+│   │   │   └── vocabularyset.py
+│   │   ├── permissions.py
+│   │   ├── serializers
+│   │   │   ├── __init__.py
+│   │   │   └── survey.py
+│   │   ├── surveytype.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_create_survey.py
+│   │   │   ├── test_list_survey.py
+│   │   │   └── test_retrieve_survey.py
+│   │   ├── urls.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       └── survey.py
 │   ├── sylvasan
 │   │   ├── __init__.py
 │   │   ├── asgi.py
@@ -68,12 +176,14 @@
 │           └── authentication.py
 ├── doc
 │   └── adr
-│       ├── .keep
-│       └── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
+│       ├── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
+│       ├── 0002-architecture-multi-organisation-avec-extensions-specifiques.md
+│       └── 0003-partage-de-types-entre-applications-ts.md
 ├── mobile
 │   ├── .gitignore
 │   ├── .vscode
 │   │   └── extensions.json
+│   ├── README.md
 │   ├── android
 │   │   ├── .gitignore
 │   │   ├── app
@@ -217,18 +327,31 @@
 │   │   │   │   └── thumbnail-3.jpg
 │   │   │   └── vue.svg
 │   │   ├── components
-│   │   │   └── HelloWorld.vue
+│   │   │   ├── HelloWorld.vue
+│   │   │   └── MapDownloader.vue
+│   │   ├── composables
+│   │   │   ├── offlineMapMetadata.ts
+│   │   │   ├── useOfflineMap.ts
+│   │   │   └── useOfflineMaps.ts
 │   │   ├── main.ts
 │   │   ├── pages
 │   │   │   ├── AppShell.vue
 │   │   │   ├── LoginPage.vue
-│   │   │   ├── MapsPage.vue
+│   │   │   ├── MapDownloadPage.vue
+│   │   │   ├── MapsPage
+│   │   │   │   ├── MapListEmpty.vue
+│   │   │   │   ├── MapListError.vue
+│   │   │   │   ├── MapListItem.vue
+│   │   │   │   ├── MapListLoading.vue
+│   │   │   │   └── index.vue
 │   │   │   ├── ProfilePage.vue
-│   │   │   └── ProjectsPage.vue
+│   │   │   ├── SurveyListPage.vue
+│   │   │   └── SurveyPage.vue
 │   │   ├── router
 │   │   │   └── root.ts
 │   │   ├── stores
-│   │   │   └── auth.ts
+│   │   │   ├── auth.ts
+│   │   │   └── surveys.ts
 │   │   ├── style.css
 │   │   └── utils
 │   │       ├── data-fetching.ts
@@ -236,13 +359,23 @@
 │   ├── tests
 │   │   ├── .keep
 │   │   └── stores
-│   │       └── auth.test.ts
+│   │       ├── auth.test.ts
+│   │       └── mocks
+│   │           └── api.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
 │   ├── vite.config.ts
 │   └── vitest.config.ts
 ├── pyproject.toml
+├── shared
+│   ├── components
+│   │   └── SurveyRenderer.vue
+│   └── types
+│       ├── api.d.ts
+│       ├── maps.d.ts
+│       ├── survey.d.ts
+│       └── window.d.ts
 └── web
     ├── .gitignore
     ├── .htaccess
@@ -264,6 +397,16 @@
     │   ├── components
     │   │   ├── AppHeader.vue
     │   │   ├── ImageAttribution.vue
+    │   │   ├── SurveyBuilder
+    │   │   │   ├── CheckboxOption.vue
+    │   │   │   ├── ChoiceCard.vue
+    │   │   │   ├── FieldCard.vue
+    │   │   │   ├── NewFieldModal.vue
+    │   │   │   ├── RadioOption.vue
+    │   │   │   ├── SelectOption.vue
+    │   │   │   ├── TextInputBlock.vue
+    │   │   │   ├── index.vue
+    │   │   │   └── mappings.ts
     │   │   └── ToastContainer.vue
     │   ├── main.ts
     │   ├── pages
@@ -275,6 +418,16 @@
     │   │   ├── LoginPage.vue
     │   │   ├── NotFoundPage.vue
     │   │   ├── PrivacyPolicyPage.vue
+    │   │   ├── ResponseListPage
+    │   │   │   └── index.vue
+    │   │   ├── ResponsePage
+    │   │   │   └── index.vue
+    │   │   ├── SurveyCreationPage
+    │   │   │   └── index.vue
+    │   │   ├── SurveyListPage
+    │   │   │   └── index.vue
+    │   │   ├── SurveyPage
+    │   │   │   └── index.vue
     │   │   └── index.vue
     │   ├── router
     │   │   └── root.ts
@@ -282,9 +435,6 @@
     │   │   ├── root.ts
     │   │   └── toast.ts
     │   ├── styles.css
-    │   ├── types
-    │   │   ├── api.d.ts
-    │   │   └── window.d.ts
     │   └── utils
     │       └── data-fetching.ts
     ├── tests
@@ -296,4 +446,4 @@
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-106 directories, 192 files
+142 directories, 306 files
