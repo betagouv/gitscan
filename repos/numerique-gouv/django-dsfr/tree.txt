@@ -1,0 +1,1796 @@
+.
+├── .editorconfig
+├── .gitattributes
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── 1-bug.md
+│   │   ├── 2-suggestion.md
+│   │   └── 3-doc.md
+│   ├── PULL_REQUEST_TEMPLATE
+│   └── workflows
+│       ├── ci-3-10-11.yml
+│       ├── ci-3-12-14.yml
+│       ├── codeql-analysis.yml
+│       ├── deploy-doc.yml
+│       └── publish-package.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CONTRIBUTING.md
+├── INSTALL.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── config
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── doc
+│   ├── components.md
+│   ├── follow.md
+│   ├── footer.md
+│   ├── forms.md
+│   ├── header.md
+│   └── usage.md
+├── dsfr
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── checksums.py
+│   ├── constants.py
+│   ├── context_processors.py
+│   ├── enums.py
+│   ├── extras
+│   │   ├── __init__.py
+│   │   └── markdown
+│   │       ├── __init__.py
+│   │       ├── apps.py
+│   │       └── templatetags
+│   │           ├── __init__.py
+│   │           └── dsfr_md_tags.py
+│   ├── fields.py
+│   ├── fixtures
+│   │   └── init.json
+│   ├── forms.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── integrity_checksums.py
+│   │       ├── make_icon_picker_files.py
+│   │       └── trim_dist.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20211209_1557.py
+│   │   ├── 0003_alter_dsfrconfig_accessibility_status.py
+│   │   ├── 0004_dsfrconfig_beta_tag_dsfrconfig_operator_logo_alt_and_more.py
+│   │   ├── 0005_dsfrconfig_notice.py
+│   │   ├── 0006_alter_dsfrconfig_accessibility_status.py
+│   │   ├── 0007_dsfrconfig_newsletter_description_and_more.py
+│   │   ├── 0008_alter_dsfrsocialmedia_options_dsfrconfig_language_and_more.py
+│   │   ├── 0009_dsfrconfig_notice_type_alter_dsfrconfig_notice.py
+│   │   ├── 0010_dsfrconfig_notice_icon_class_alter_dsfrconfig_notice_and_more.py
+│   │   ├── 0011_rename_notice_dsfrconfig_notice_title.py
+│   │   ├── 0012_dsfrconfig_notice_description_and_more.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── dsfr-code.css
+│   │   │   └── dsfr-django-overrides.css
+│   │   ├── django-dsfr
+│   │   │   └── icon-picker
+│   │   │       ├── README.md
+│   │   │       └── assets
+│   │   │           ├── icons-libraries
+│   │   │           │   ├── dsfr-arrows.json
+│   │   │           │   ├── dsfr-buildings.json
+│   │   │           │   ├── dsfr-business.json
+│   │   │           │   ├── dsfr-communication.json
+│   │   │           │   ├── dsfr-design.json
+│   │   │           │   ├── dsfr-development.json
+│   │   │           │   ├── dsfr-device.json
+│   │   │           │   ├── dsfr-document.json
+│   │   │           │   ├── dsfr-editor.json
+│   │   │           │   ├── dsfr-finance.json
+│   │   │           │   ├── dsfr-health.json
+│   │   │           │   ├── dsfr-logo.json
+│   │   │           │   ├── dsfr-map.json
+│   │   │           │   ├── dsfr-media.json
+│   │   │           │   ├── dsfr-others.json
+│   │   │           │   ├── dsfr-system.json
+│   │   │           │   ├── dsfr-user.json
+│   │   │           │   └── dsfr-weather.json
+│   │   │           ├── images
+│   │   │           │   ├── magnifying-glass-solid.svg
+│   │   │           │   ├── star-of-life-solid.svg
+│   │   │           │   └── xmark-solid.svg
+│   │   │           ├── js
+│   │   │           │   ├── universal-icon-picker.js
+│   │   │           │   └── universal-icon-picker.min.js
+│   │   │           ├── scss
+│   │   │           │   └── universal-icon-picker.scss
+│   │   │           └── stylesheets
+│   │   │               ├── universal-icon-picker.css
+│   │   │               └── universal-icon-picker.min.css
+│   │   ├── dsfr
+│   │   │   ├── dist
+│   │   │   │   ├── README.md
+│   │   │   │   ├── analytics
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── analytics.module.min.js
+│   │   │   │   │   └── analytics.nomodule.min.js
+│   │   │   │   ├── artwork
+│   │   │   │   │   ├── background
+│   │   │   │   │   │   └── ovoid.svg
+│   │   │   │   │   ├── dark.svg
+│   │   │   │   │   ├── light.svg
+│   │   │   │   │   ├── pictograms
+│   │   │   │   │   │   ├── accessibility
+│   │   │   │   │   │   │   ├── accessibility.svg
+│   │   │   │   │   │   │   ├── ear-off.svg
+│   │   │   │   │   │   │   ├── eye-off.svg
+│   │   │   │   │   │   │   ├── mental-disabilities.svg
+│   │   │   │   │   │   │   └── wheelchair.svg
+│   │   │   │   │   │   ├── buildings
+│   │   │   │   │   │   │   ├── base.svg
+│   │   │   │   │   │   │   ├── city-hall.svg
+│   │   │   │   │   │   │   ├── companie.svg
+│   │   │   │   │   │   │   ├── factory.svg
+│   │   │   │   │   │   │   ├── house.svg
+│   │   │   │   │   │   │   ├── nuclear-plant.svg
+│   │   │   │   │   │   │   └── school.svg
+│   │   │   │   │   │   ├── digital
+│   │   │   │   │   │   │   ├── application.svg
+│   │   │   │   │   │   │   ├── avatar.svg
+│   │   │   │   │   │   │   ├── calendar.svg
+│   │   │   │   │   │   │   ├── coding.svg
+│   │   │   │   │   │   │   ├── data-visualization.svg
+│   │   │   │   │   │   │   ├── ecosystem.svg
+│   │   │   │   │   │   │   ├── in-progress.svg
+│   │   │   │   │   │   │   ├── innovation.svg
+│   │   │   │   │   │   │   ├── internet.svg
+│   │   │   │   │   │   │   ├── mail-send.svg
+│   │   │   │   │   │   │   ├── search.svg
+│   │   │   │   │   │   │   ├── self-training.svg
+│   │   │   │   │   │   │   └── smartphone.svg
+│   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   ├── archive.svg
+│   │   │   │   │   │   │   ├── binders.svg
+│   │   │   │   │   │   │   ├── conclusion.svg
+│   │   │   │   │   │   │   ├── contract.svg
+│   │   │   │   │   │   │   ├── document-add.svg
+│   │   │   │   │   │   │   ├── document-download.svg
+│   │   │   │   │   │   │   ├── document-search.svg
+│   │   │   │   │   │   │   ├── document-signature.svg
+│   │   │   │   │   │   │   ├── document.svg
+│   │   │   │   │   │   │   ├── driving-licence.svg
+│   │   │   │   │   │   │   ├── driving-license-new.svg
+│   │   │   │   │   │   │   ├── international-driving-license-new.svg
+│   │   │   │   │   │   │   ├── international-driving-license.svg
+│   │   │   │   │   │   │   ├── national-identity-card-passport.svg
+│   │   │   │   │   │   │   ├── national-identity-card.svg
+│   │   │   │   │   │   │   ├── passport.svg
+│   │   │   │   │   │   │   ├── presse-card.svg
+│   │   │   │   │   │   │   ├── sign-document.svg
+│   │   │   │   │   │   │   ├── tax-stamp.svg
+│   │   │   │   │   │   │   └── vehicle-registration.svg
+│   │   │   │   │   │   ├── environment
+│   │   │   │   │   │   │   ├── environment.svg
+│   │   │   │   │   │   │   ├── food.svg
+│   │   │   │   │   │   │   ├── grocery.svg
+│   │   │   │   │   │   │   ├── human-cooperation.svg
+│   │   │   │   │   │   │   ├── leaf.svg
+│   │   │   │   │   │   │   ├── moon.svg
+│   │   │   │   │   │   │   ├── mountain.svg
+│   │   │   │   │   │   │   ├── sun.svg
+│   │   │   │   │   │   │   └── tree.svg
+│   │   │   │   │   │   ├── health
+│   │   │   │   │   │   │   ├── doctor.svg
+│   │   │   │   │   │   │   ├── health.svg
+│   │   │   │   │   │   │   ├── hospital.svg
+│   │   │   │   │   │   │   ├── medical-research.svg
+│   │   │   │   │   │   │   ├── vaccine.svg
+│   │   │   │   │   │   │   └── virus.svg
+│   │   │   │   │   │   ├── institutions
+│   │   │   │   │   │   │   ├── army-tank.svg
+│   │   │   │   │   │   │   ├── astronaut.svg
+│   │   │   │   │   │   │   ├── firefighter.svg
+│   │   │   │   │   │   │   ├── gendarmerie.svg
+│   │   │   │   │   │   │   ├── justice.svg
+│   │   │   │   │   │   │   ├── money.svg
+│   │   │   │   │   │   │   ├── navy-anchor.svg
+│   │   │   │   │   │   │   ├── navy-bachi.svg
+│   │   │   │   │   │   │   └── police.svg
+│   │   │   │   │   │   ├── leisure
+│   │   │   │   │   │   │   ├── art.svg
+│   │   │   │   │   │   │   ├── audio.svg
+│   │   │   │   │   │   │   ├── book.svg
+│   │   │   │   │   │   │   ├── catalog.svg
+│   │   │   │   │   │   │   ├── community.svg
+│   │   │   │   │   │   │   ├── culture.svg
+│   │   │   │   │   │   │   ├── digital-art.svg
+│   │   │   │   │   │   │   ├── paint.svg
+│   │   │   │   │   │   │   ├── pictures.svg
+│   │   │   │   │   │   │   ├── podcast.svg
+│   │   │   │   │   │   │   ├── video-games.svg
+│   │   │   │   │   │   │   └── video.svg
+│   │   │   │   │   │   ├── map
+│   │   │   │   │   │   │   ├── airport.svg
+│   │   │   │   │   │   │   ├── backpack.svg
+│   │   │   │   │   │   │   ├── compass.svg
+│   │   │   │   │   │   │   ├── location-france.svg
+│   │   │   │   │   │   │   ├── location-overseas-france.svg
+│   │   │   │   │   │   │   ├── luggage.svg
+│   │   │   │   │   │   │   ├── map-pin.svg
+│   │   │   │   │   │   │   ├── map.svg
+│   │   │   │   │   │   │   └── travel-back.svg
+│   │   │   │   │   │   └── system
+│   │   │   │   │   │       ├── connection-lost.svg
+│   │   │   │   │   │       ├── error.svg
+│   │   │   │   │   │       ├── flow-list.svg
+│   │   │   │   │   │       ├── flow-settings.svg
+│   │   │   │   │   │       ├── information.svg
+│   │   │   │   │   │       ├── language.svg
+│   │   │   │   │   │       ├── notification.svg
+│   │   │   │   │   │       ├── padlock.svg
+│   │   │   │   │   │       ├── success.svg
+│   │   │   │   │   │       ├── system.svg
+│   │   │   │   │   │       ├── technical-error.svg
+│   │   │   │   │   │       └── warning.svg
+│   │   │   │   │   └── system.svg
+│   │   │   │   ├── component
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── accordion
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── accordion.legacy.min.css
+│   │   │   │   │   │   ├── accordion.main.min.css
+│   │   │   │   │   │   ├── accordion.min.css
+│   │   │   │   │   │   ├── accordion.module.min.js
+│   │   │   │   │   │   ├── accordion.nomodule.min.js
+│   │   │   │   │   │   └── accordion.print.min.css
+│   │   │   │   │   ├── alert
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── alert.legacy.min.css
+│   │   │   │   │   │   ├── alert.main.min.css
+│   │   │   │   │   │   ├── alert.min.css
+│   │   │   │   │   │   └── alert.print.min.css
+│   │   │   │   │   ├── badge
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── badge.legacy.min.css
+│   │   │   │   │   │   ├── badge.main.min.css
+│   │   │   │   │   │   ├── badge.min.css
+│   │   │   │   │   │   └── badge.print.min.css
+│   │   │   │   │   ├── breadcrumb
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── breadcrumb.legacy.min.css
+│   │   │   │   │   │   ├── breadcrumb.main.min.css
+│   │   │   │   │   │   ├── breadcrumb.min.css
+│   │   │   │   │   │   ├── breadcrumb.module.min.js
+│   │   │   │   │   │   ├── breadcrumb.nomodule.min.js
+│   │   │   │   │   │   └── breadcrumb.print.min.css
+│   │   │   │   │   ├── button
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── button.legacy.min.css
+│   │   │   │   │   │   ├── button.main.min.css
+│   │   │   │   │   │   ├── button.min.css
+│   │   │   │   │   │   ├── button.module.min.js
+│   │   │   │   │   │   ├── button.nomodule.min.js
+│   │   │   │   │   │   └── button.print.min.css
+│   │   │   │   │   ├── callout
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── callout.legacy.min.css
+│   │   │   │   │   │   ├── callout.main.min.css
+│   │   │   │   │   │   ├── callout.min.css
+│   │   │   │   │   │   └── callout.print.min.css
+│   │   │   │   │   ├── card
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── card.legacy.min.css
+│   │   │   │   │   │   ├── card.main.min.css
+│   │   │   │   │   │   ├── card.min.css
+│   │   │   │   │   │   ├── card.module.min.js
+│   │   │   │   │   │   ├── card.nomodule.min.js
+│   │   │   │   │   │   └── card.print.min.css
+│   │   │   │   │   ├── checkbox
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── checkbox.legacy.min.css
+│   │   │   │   │   │   ├── checkbox.main.min.css
+│   │   │   │   │   │   ├── checkbox.min.css
+│   │   │   │   │   │   ├── checkbox.module.min.js
+│   │   │   │   │   │   ├── checkbox.nomodule.min.js
+│   │   │   │   │   │   └── checkbox.print.min.css
+│   │   │   │   │   ├── component.legacy.min.css
+│   │   │   │   │   ├── component.main.min.css
+│   │   │   │   │   ├── component.min.css
+│   │   │   │   │   ├── component.module.min.js
+│   │   │   │   │   ├── component.nomodule.min.js
+│   │   │   │   │   ├── component.print.min.css
+│   │   │   │   │   ├── connect
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── connect.legacy.min.css
+│   │   │   │   │   │   ├── connect.main.min.css
+│   │   │   │   │   │   ├── connect.min.css
+│   │   │   │   │   │   └── connect.print.min.css
+│   │   │   │   │   ├── consent
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── consent.legacy.min.css
+│   │   │   │   │   │   ├── consent.main.min.css
+│   │   │   │   │   │   ├── consent.min.css
+│   │   │   │   │   │   └── consent.print.min.css
+│   │   │   │   │   ├── content
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── content.legacy.min.css
+│   │   │   │   │   │   ├── content.main.min.css
+│   │   │   │   │   │   ├── content.min.css
+│   │   │   │   │   │   └── content.print.min.css
+│   │   │   │   │   ├── display
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── display.module.min.js
+│   │   │   │   │   │   └── display.nomodule.min.js
+│   │   │   │   │   ├── download
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   └── download.min.css
+│   │   │   │   │   ├── follow
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── follow.legacy.min.css
+│   │   │   │   │   │   ├── follow.main.min.css
+│   │   │   │   │   │   ├── follow.min.css
+│   │   │   │   │   │   └── follow.print.min.css
+│   │   │   │   │   ├── footer
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── footer.legacy.min.css
+│   │   │   │   │   │   ├── footer.main.min.css
+│   │   │   │   │   │   ├── footer.min.css
+│   │   │   │   │   │   └── footer.print.min.css
+│   │   │   │   │   ├── form
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── form.legacy.min.css
+│   │   │   │   │   │   ├── form.main.min.css
+│   │   │   │   │   │   ├── form.min.css
+│   │   │   │   │   │   └── form.print.min.css
+│   │   │   │   │   ├── header
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── header.legacy.min.css
+│   │   │   │   │   │   ├── header.main.min.css
+│   │   │   │   │   │   ├── header.min.css
+│   │   │   │   │   │   ├── header.module.min.js
+│   │   │   │   │   │   ├── header.nomodule.min.js
+│   │   │   │   │   │   └── header.print.min.css
+│   │   │   │   │   ├── highlight
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── highlight.legacy.min.css
+│   │   │   │   │   │   ├── highlight.main.min.css
+│   │   │   │   │   │   ├── highlight.min.css
+│   │   │   │   │   │   └── highlight.print.min.css
+│   │   │   │   │   ├── input
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── input.legacy.min.css
+│   │   │   │   │   │   ├── input.main.min.css
+│   │   │   │   │   │   ├── input.min.css
+│   │   │   │   │   │   └── input.print.min.css
+│   │   │   │   │   ├── link
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── link.legacy.min.css
+│   │   │   │   │   │   ├── link.main.min.css
+│   │   │   │   │   │   ├── link.min.css
+│   │   │   │   │   │   └── link.print.min.css
+│   │   │   │   │   ├── logo
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── logo.legacy.min.css
+│   │   │   │   │   │   ├── logo.main.min.css
+│   │   │   │   │   │   ├── logo.min.css
+│   │   │   │   │   │   └── logo.print.min.css
+│   │   │   │   │   ├── modal
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── modal.legacy.min.css
+│   │   │   │   │   │   ├── modal.main.min.css
+│   │   │   │   │   │   ├── modal.min.css
+│   │   │   │   │   │   ├── modal.module.min.js
+│   │   │   │   │   │   ├── modal.nomodule.min.js
+│   │   │   │   │   │   └── modal.print.min.css
+│   │   │   │   │   ├── navigation
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── navigation.legacy.min.css
+│   │   │   │   │   │   ├── navigation.main.min.css
+│   │   │   │   │   │   ├── navigation.min.css
+│   │   │   │   │   │   ├── navigation.module.min.js
+│   │   │   │   │   │   ├── navigation.nomodule.min.js
+│   │   │   │   │   │   └── navigation.print.min.css
+│   │   │   │   │   ├── notice
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── notice.legacy.min.css
+│   │   │   │   │   │   ├── notice.main.min.css
+│   │   │   │   │   │   ├── notice.min.css
+│   │   │   │   │   │   └── notice.print.min.css
+│   │   │   │   │   ├── pagination
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── pagination.legacy.min.css
+│   │   │   │   │   │   ├── pagination.main.min.css
+│   │   │   │   │   │   ├── pagination.min.css
+│   │   │   │   │   │   └── pagination.print.min.css
+│   │   │   │   │   ├── password
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── password.legacy.min.css
+│   │   │   │   │   │   ├── password.main.min.css
+│   │   │   │   │   │   ├── password.min.css
+│   │   │   │   │   │   ├── password.module.min.js
+│   │   │   │   │   │   ├── password.nomodule.min.js
+│   │   │   │   │   │   └── password.print.min.css
+│   │   │   │   │   ├── quote
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── quote.legacy.min.css
+│   │   │   │   │   │   ├── quote.main.min.css
+│   │   │   │   │   │   ├── quote.min.css
+│   │   │   │   │   │   └── quote.print.min.css
+│   │   │   │   │   ├── radio
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── radio.legacy.min.css
+│   │   │   │   │   │   ├── radio.main.min.css
+│   │   │   │   │   │   ├── radio.min.css
+│   │   │   │   │   │   └── radio.print.min.css
+│   │   │   │   │   ├── range
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── range.legacy.min.css
+│   │   │   │   │   │   ├── range.main.min.css
+│   │   │   │   │   │   ├── range.min.css
+│   │   │   │   │   │   ├── range.module.min.js
+│   │   │   │   │   │   ├── range.nomodule.min.js
+│   │   │   │   │   │   └── range.print.min.css
+│   │   │   │   │   ├── search
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── search.legacy.min.css
+│   │   │   │   │   │   ├── search.main.min.css
+│   │   │   │   │   │   ├── search.min.css
+│   │   │   │   │   │   └── search.print.min.css
+│   │   │   │   │   ├── segmented
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── segmented.legacy.min.css
+│   │   │   │   │   │   ├── segmented.main.min.css
+│   │   │   │   │   │   ├── segmented.min.css
+│   │   │   │   │   │   ├── segmented.module.min.js
+│   │   │   │   │   │   └── segmented.nomodule.min.js
+│   │   │   │   │   ├── select
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── select.legacy.min.css
+│   │   │   │   │   │   ├── select.main.min.css
+│   │   │   │   │   │   ├── select.min.css
+│   │   │   │   │   │   └── select.print.min.css
+│   │   │   │   │   ├── share
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── share.legacy.min.css
+│   │   │   │   │   │   ├── share.main.min.css
+│   │   │   │   │   │   ├── share.min.css
+│   │   │   │   │   │   └── share.print.min.css
+│   │   │   │   │   ├── sidemenu
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── sidemenu.legacy.min.css
+│   │   │   │   │   │   ├── sidemenu.main.min.css
+│   │   │   │   │   │   ├── sidemenu.min.css
+│   │   │   │   │   │   ├── sidemenu.module.min.js
+│   │   │   │   │   │   ├── sidemenu.nomodule.min.js
+│   │   │   │   │   │   └── sidemenu.print.min.css
+│   │   │   │   │   ├── skiplink
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── skiplink.legacy.min.css
+│   │   │   │   │   │   ├── skiplink.main.min.css
+│   │   │   │   │   │   ├── skiplink.min.css
+│   │   │   │   │   │   └── skiplink.print.min.css
+│   │   │   │   │   ├── stepper
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── stepper.legacy.min.css
+│   │   │   │   │   │   ├── stepper.main.min.css
+│   │   │   │   │   │   ├── stepper.min.css
+│   │   │   │   │   │   └── stepper.print.min.css
+│   │   │   │   │   ├── summary
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── summary.legacy.min.css
+│   │   │   │   │   │   ├── summary.main.min.css
+│   │   │   │   │   │   ├── summary.min.css
+│   │   │   │   │   │   └── summary.print.min.css
+│   │   │   │   │   ├── tab
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── tab.legacy.min.css
+│   │   │   │   │   │   ├── tab.main.min.css
+│   │   │   │   │   │   ├── tab.min.css
+│   │   │   │   │   │   ├── tab.module.min.js
+│   │   │   │   │   │   ├── tab.nomodule.min.js
+│   │   │   │   │   │   └── tab.print.min.css
+│   │   │   │   │   ├── table
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── table.legacy.min.css
+│   │   │   │   │   │   ├── table.main.min.css
+│   │   │   │   │   │   ├── table.min.css
+│   │   │   │   │   │   ├── table.module.min.js
+│   │   │   │   │   │   ├── table.nomodule.min.js
+│   │   │   │   │   │   └── table.print.min.css
+│   │   │   │   │   ├── tag
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── tag.legacy.min.css
+│   │   │   │   │   │   ├── tag.main.min.css
+│   │   │   │   │   │   ├── tag.min.css
+│   │   │   │   │   │   ├── tag.module.min.js
+│   │   │   │   │   │   ├── tag.nomodule.min.js
+│   │   │   │   │   │   └── tag.print.min.css
+│   │   │   │   │   ├── tile
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── tile.legacy.min.css
+│   │   │   │   │   │   ├── tile.main.min.css
+│   │   │   │   │   │   ├── tile.min.css
+│   │   │   │   │   │   ├── tile.module.min.js
+│   │   │   │   │   │   ├── tile.nomodule.min.js
+│   │   │   │   │   │   └── tile.print.min.css
+│   │   │   │   │   ├── toggle
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── toggle.legacy.min.css
+│   │   │   │   │   │   ├── toggle.main.min.css
+│   │   │   │   │   │   ├── toggle.min.css
+│   │   │   │   │   │   ├── toggle.module.min.js
+│   │   │   │   │   │   ├── toggle.nomodule.min.js
+│   │   │   │   │   │   └── toggle.print.min.css
+│   │   │   │   │   ├── tooltip
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── tooltip.legacy.min.css
+│   │   │   │   │   │   ├── tooltip.main.min.css
+│   │   │   │   │   │   ├── tooltip.min.css
+│   │   │   │   │   │   ├── tooltip.module.min.js
+│   │   │   │   │   │   ├── tooltip.nomodule.min.js
+│   │   │   │   │   │   └── tooltip.print.min.css
+│   │   │   │   │   ├── transcription
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── transcription.legacy.min.css
+│   │   │   │   │   │   ├── transcription.main.min.css
+│   │   │   │   │   │   ├── transcription.min.css
+│   │   │   │   │   │   ├── transcription.module.min.js
+│   │   │   │   │   │   ├── transcription.nomodule.min.js
+│   │   │   │   │   │   └── transcription.print.min.css
+│   │   │   │   │   ├── translate
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── translate.legacy.min.css
+│   │   │   │   │   │   ├── translate.main.min.css
+│   │   │   │   │   │   ├── translate.min.css
+│   │   │   │   │   │   └── translate.print.min.css
+│   │   │   │   │   └── upload
+│   │   │   │   │       ├── README.md
+│   │   │   │   │       ├── upload.main.min.css
+│   │   │   │   │       ├── upload.min.css
+│   │   │   │   │       └── upload.print.min.css
+│   │   │   │   ├── core
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── core.legacy.min.css
+│   │   │   │   │   ├── core.main.min.css
+│   │   │   │   │   ├── core.min.css
+│   │   │   │   │   ├── core.module.min.js
+│   │   │   │   │   ├── core.nomodule.min.js
+│   │   │   │   │   └── core.print.min.css
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── dsfr.legacy.min.css
+│   │   │   │   │   ├── dsfr.main.min.css
+│   │   │   │   │   ├── dsfr.min.css
+│   │   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   │   └── dsfr.nomodule.min.js
+│   │   │   │   ├── dsfr.legacy.min.css
+│   │   │   │   ├── dsfr.main.min.css
+│   │   │   │   ├── dsfr.min.css
+│   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   ├── dsfr.nomodule.min.js
+│   │   │   │   ├── dsfr.print.min.css
+│   │   │   │   ├── favicon
+│   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── Marianne-Bold.woff
+│   │   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   │   │   ├── Marianne-Light.woff
+│   │   │   │   │   ├── Marianne-Light.woff2
+│   │   │   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   │   │   ├── Marianne-Medium.woff
+│   │   │   │   │   ├── Marianne-Medium.woff2
+│   │   │   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   │   │   ├── Marianne-Regular.woff
+│   │   │   │   │   ├── Marianne-Regular.woff2
+│   │   │   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   │   │   ├── Spectral-ExtraBold.woff
+│   │   │   │   │   ├── Spectral-ExtraBold.woff2
+│   │   │   │   │   ├── Spectral-Regular.woff
+│   │   │   │   │   └── Spectral-Regular.woff2
+│   │   │   │   ├── icons
+│   │   │   │   │   ├── arrows
+│   │   │   │   │   │   ├── arrow-*.svg  (44 files)
+│   │   │   │   │   │   ├── contract-*.svg  (8 files)
+│   │   │   │   │   │   ├── corner-*.svg  (16 files)
+│   │   │   │   │   │   ├── expand-*.svg  (8 files)
+│   │   │   │   │   │   ├── fr--arrow-left-s-first-line.svg
+│   │   │   │   │   │   ├── fr--arrow-left-s-line-double.svg
+│   │   │   │   │   │   ├── fr--arrow-right-s-last-line.svg
+│   │   │   │   │   │   ├── fr--arrow-right-s-line-double.svg
+│   │   │   │   │   │   ├── skip-down-fill.svg
+│   │   │   │   │   │   ├── skip-down-line.svg
+│   │   │   │   │   │   ├── skip-up-fill.svg
+│   │   │   │   │   │   └── skip-up-line.svg
+│   │   │   │   │   ├── buildings
+│   │   │   │   │   │   ├── ancient-gate-fill.svg
+│   │   │   │   │   │   ├── ancient-gate-line.svg
+│   │   │   │   │   │   ├── ancient-pavilion-fill.svg
+│   │   │   │   │   │   ├── ancient-pavilion-line.svg
+│   │   │   │   │   │   ├── bank-fill.svg
+│   │   │   │   │   │   ├── bank-line.svg
+│   │   │   │   │   │   ├── building-4-fill.svg
+│   │   │   │   │   │   ├── building-4-line.svg
+│   │   │   │   │   │   ├── building-fill.svg
+│   │   │   │   │   │   ├── building-line.svg
+│   │   │   │   │   │   ├── community-fill.svg
+│   │   │   │   │   │   ├── community-line.svg
+│   │   │   │   │   │   ├── government-fill.svg
+│   │   │   │   │   │   ├── government-line.svg
+│   │   │   │   │   │   ├── home-4-fill.svg
+│   │   │   │   │   │   ├── home-4-line.svg
+│   │   │   │   │   │   ├── home-office-fill.svg
+│   │   │   │   │   │   ├── home-office-line.svg
+│   │   │   │   │   │   ├── hospital-fill.svg
+│   │   │   │   │   │   ├── hospital-line.svg
+│   │   │   │   │   │   ├── hotel-fill.svg
+│   │   │   │   │   │   ├── hotel-line.svg
+│   │   │   │   │   │   ├── school-fill.svg
+│   │   │   │   │   │   ├── school-line.svg
+│   │   │   │   │   │   ├── store-fill.svg
+│   │   │   │   │   │   ├── store-line.svg
+│   │   │   │   │   │   ├── tent-fill.svg
+│   │   │   │   │   │   └── tent-line.svg
+│   │   │   │   │   ├── business
+│   │   │   │   │   │   ├── archive-drawer-fill.svg
+│   │   │   │   │   │   ├── archive-drawer-line.svg
+│   │   │   │   │   │   ├── archive-fill.svg
+│   │   │   │   │   │   ├── archive-line.svg
+│   │   │   │   │   │   ├── at-fill.svg
+│   │   │   │   │   │   ├── at-line.svg
+│   │   │   │   │   │   ├── attachment-fill.svg
+│   │   │   │   │   │   ├── attachment-line.svg
+│   │   │   │   │   │   ├── award-fill.svg
+│   │   │   │   │   │   ├── award-line.svg
+│   │   │   │   │   │   ├── bar-*.svg  (8 files)
+│   │   │   │   │   │   ├── bookmark-fill.svg
+│   │   │   │   │   │   ├── bookmark-line.svg
+│   │   │   │   │   │   ├── briefcase-fill.svg
+│   │   │   │   │   │   ├── briefcase-line.svg
+│   │   │   │   │   │   ├── bubble-chart-fill.svg
+│   │   │   │   │   │   ├── bubble-chart-line.svg
+│   │   │   │   │   │   ├── calculator-fill.svg
+│   │   │   │   │   │   ├── calculator-line.svg
+│   │   │   │   │   │   ├── calendar-*.svg  (12 files)
+│   │   │   │   │   │   ├── cloud-fill.svg
+│   │   │   │   │   │   ├── cloud-line.svg
+│   │   │   │   │   │   ├── cloud-off-fill.svg
+│   │   │   │   │   │   ├── cloud-off-line.svg
+│   │   │   │   │   │   ├── copyright-fill.svg
+│   │   │   │   │   │   ├── copyright-line.svg
+│   │   │   │   │   │   ├── customer-service-fill.svg
+│   │   │   │   │   │   ├── customer-service-line.svg
+│   │   │   │   │   │   ├── donut-chart-fill.svg
+│   │   │   │   │   │   ├── donut-chart-line.svg
+│   │   │   │   │   │   ├── flag-fill.svg
+│   │   │   │   │   │   ├── flag-line.svg
+│   │   │   │   │   │   ├── global-fill.svg
+│   │   │   │   │   │   ├── global-line.svg
+│   │   │   │   │   │   ├── honour-fill.svg
+│   │   │   │   │   │   ├── honour-line.svg
+│   │   │   │   │   │   ├── inbox-*.svg  (8 files)
+│   │   │   │   │   │   ├── line-chart-fill.svg
+│   │   │   │   │   │   ├── line-chart-line.svg
+│   │   │   │   │   │   ├── links-fill.svg
+│   │   │   │   │   │   ├── links-line.svg
+│   │   │   │   │   │   ├── mail-*.svg  (26 files)
+│   │   │   │   │   │   ├── medal-fill.svg
+│   │   │   │   │   │   ├── medal-line.svg
+│   │   │   │   │   │   ├── megaphone-fill.svg
+│   │   │   │   │   │   ├── megaphone-line.svg
+│   │   │   │   │   │   ├── pass-*.svg  (6 files)
+│   │   │   │   │   │   ├── pie-*.svg  (6 files)
+│   │   │   │   │   │   ├── presentation-fill.svg
+│   │   │   │   │   │   ├── presentation-line.svg
+│   │   │   │   │   │   ├── printer-cloud-fill.svg
+│   │   │   │   │   │   ├── printer-cloud-line.svg
+│   │   │   │   │   │   ├── printer-fill.svg
+│   │   │   │   │   │   ├── printer-line.svg
+│   │   │   │   │   │   ├── profil-fill.svg
+│   │   │   │   │   │   ├── profil-line.svg
+│   │   │   │   │   │   ├── projector-2-fill.svg
+│   │   │   │   │   │   ├── projector-2-line.svg
+│   │   │   │   │   │   ├── record-mail-fill.svg
+│   │   │   │   │   │   ├── record-mail-line.svg
+│   │   │   │   │   │   ├── reply-all-fill.svg
+│   │   │   │   │   │   ├── reply-all-line.svg
+│   │   │   │   │   │   ├── reply-fill.svg
+│   │   │   │   │   │   ├── reply-line.svg
+│   │   │   │   │   │   ├── send-plane-fill.svg
+│   │   │   │   │   │   ├── send-plane-line.svg
+│   │   │   │   │   │   ├── seo-fill.svg
+│   │   │   │   │   │   ├── seo-line.svg
+│   │   │   │   │   │   ├── service-fill.svg
+│   │   │   │   │   │   ├── service-line.svg
+│   │   │   │   │   │   ├── shake-hands-fill.svg
+│   │   │   │   │   │   ├── shake-hands-line.svg
+│   │   │   │   │   │   ├── slideshow-fill.svg
+│   │   │   │   │   │   ├── slideshow-line.svg
+│   │   │   │   │   │   ├── stack-fill.svg
+│   │   │   │   │   │   ├── stack-line.svg
+│   │   │   │   │   │   ├── window-2-fill.svg
+│   │   │   │   │   │   ├── window-2-line.svg
+│   │   │   │   │   │   ├── window-fill.svg
+│   │   │   │   │   │   └── window-line.svg
+│   │   │   │   │   ├── communication
+│   │   │   │   │   │   ├── chat-*.svg  (32 files)
+│   │   │   │   │   │   ├── discuss-fill.svg
+│   │   │   │   │   │   ├── discuss-line.svg
+│   │   │   │   │   │   ├── emoji-sticker-fill.svg
+│   │   │   │   │   │   ├── emoji-sticker-line.svg
+│   │   │   │   │   │   ├── feedback-fill.svg
+│   │   │   │   │   │   ├── feedback-line.svg
+│   │   │   │   │   │   ├── message-2-fill.svg
+│   │   │   │   │   │   ├── message-2-line.svg
+│   │   │   │   │   │   ├── message-3-fill.svg
+│   │   │   │   │   │   ├── message-3-line.svg
+│   │   │   │   │   │   ├── question-answer-fill.svg
+│   │   │   │   │   │   ├── question-answer-line.svg
+│   │   │   │   │   │   ├── questionnaire-fill.svg
+│   │   │   │   │   │   ├── questionnaire-line.svg
+│   │   │   │   │   │   ├── speak-fill.svg
+│   │   │   │   │   │   ├── speak-line.svg
+│   │   │   │   │   │   ├── video-chat-fill.svg
+│   │   │   │   │   │   └── video-chat-line.svg
+│   │   │   │   │   ├── design
+│   │   │   │   │   │   ├── anticlockwise-fill.svg
+│   │   │   │   │   │   ├── anticlockwise-line.svg
+│   │   │   │   │   │   ├── artboard-fill.svg
+│   │   │   │   │   │   ├── artboard-line.svg
+│   │   │   │   │   │   ├── ball-pen-fill.svg
+│   │   │   │   │   │   ├── ball-pen-line.svg
+│   │   │   │   │   │   ├── blur-off-fill.svg
+│   │   │   │   │   │   ├── blur-off-line.svg
+│   │   │   │   │   │   ├── brush-3-fill.svg
+│   │   │   │   │   │   ├── brush-3-line.svg
+│   │   │   │   │   │   ├── brush-fill.svg
+│   │   │   │   │   │   ├── brush-line.svg
+│   │   │   │   │   │   ├── circle-fill.svg
+│   │   │   │   │   │   ├── circle-line.svg
+│   │   │   │   │   │   ├── clockwise-fill.svg
+│   │   │   │   │   │   ├── clockwise-line.svg
+│   │   │   │   │   │   ├── collage-fill.svg
+│   │   │   │   │   │   ├── collage-line.svg
+│   │   │   │   │   │   ├── compasses-2-fill.svg
+│   │   │   │   │   │   ├── compasses-2-line.svg
+│   │   │   │   │   │   ├── contrast-drop-2-fill.svg
+│   │   │   │   │   │   ├── contrast-drop-2-line.svg
+│   │   │   │   │   │   ├── contrast-fill.svg
+│   │   │   │   │   │   ├── contrast-line.svg
+│   │   │   │   │   │   ├── crop-fill.svg
+│   │   │   │   │   │   ├── crop-line.svg
+│   │   │   │   │   │   ├── crosshair-2-fill.svg
+│   │   │   │   │   │   ├── crosshair-2-line.svg
+│   │   │   │   │   │   ├── drag-drop-fill.svg
+│   │   │   │   │   │   ├── drag-drop-line.svg
+│   │   │   │   │   │   ├── drag-move-2-fill.svg
+│   │   │   │   │   │   ├── drag-move-2-line.svg
+│   │   │   │   │   │   ├── drop-fill.svg
+│   │   │   │   │   │   ├── drop-line.svg
+│   │   │   │   │   │   ├── edit-*.svg  (6 files)
+│   │   │   │   │   │   ├── eraser-fill-1.svg
+│   │   │   │   │   │   ├── eraser-fill.svg
+│   │   │   │   │   │   ├── eraser-line-1.svg
+│   │   │   │   │   │   ├── eraser-line.svg
+│   │   │   │   │   │   ├── focus-3-fill.svg
+│   │   │   │   │   │   ├── focus-3-line.svg
+│   │   │   │   │   │   ├── grid-fill.svg
+│   │   │   │   │   │   ├── grid-line.svg
+│   │   │   │   │   │   ├── hammer-fill.svg
+│   │   │   │   │   │   ├── hammer-line.svg
+│   │   │   │   │   │   ├── hexagon-fill.svg
+│   │   │   │   │   │   ├── hexagon-line.svg
+│   │   │   │   │   │   ├── ink-bottle-fill.svg
+│   │   │   │   │   │   ├── ink-bottle-line.svg
+│   │   │   │   │   │   ├── layout-*.svg  (18 files)
+│   │   │   │   │   │   ├── magic-fill.svg
+│   │   │   │   │   │   ├── magic-line.svg
+│   │   │   │   │   │   ├── mark-pen-fill.svg
+│   │   │   │   │   │   ├── mark-pen-line.svg
+│   │   │   │   │   │   ├── markup-fill.svg
+│   │   │   │   │   │   ├── markup-line.svg
+│   │   │   │   │   │   ├── octagon-fill.svg
+│   │   │   │   │   │   ├── octagon-line.svg
+│   │   │   │   │   │   ├── paint-brush-fill.svg
+│   │   │   │   │   │   ├── paint-brush-line.svg
+│   │   │   │   │   │   ├── paint-fill.svg
+│   │   │   │   │   │   ├── paint-line.svg
+│   │   │   │   │   │   ├── palette-fill.svg
+│   │   │   │   │   │   ├── palette-line.svg
+│   │   │   │   │   │   ├── pantone-fill.svg
+│   │   │   │   │   │   ├── pantone-line.svg
+│   │   │   │   │   │   ├── pen-nib-fill.svg
+│   │   │   │   │   │   ├── pen-nib-line.svg
+│   │   │   │   │   │   ├── pencil-fill.svg
+│   │   │   │   │   │   ├── pencil-line.svg
+│   │   │   │   │   │   ├── pencil-ruler-fill.svg
+│   │   │   │   │   │   ├── pencil-ruler-line.svg
+│   │   │   │   │   │   ├── pentagon-fill.svg
+│   │   │   │   │   │   ├── pentagon-line.svg
+│   │   │   │   │   │   ├── quill-pen-fill.svg
+│   │   │   │   │   │   ├── quill-pen-line.svg
+│   │   │   │   │   │   ├── rectangle-fill.svg
+│   │   │   │   │   │   ├── rectangle-line.svg
+│   │   │   │   │   │   ├── ruler-fill.svg
+│   │   │   │   │   │   ├── ruler-line.svg
+│   │   │   │   │   │   ├── scissors-cut-fill.svg
+│   │   │   │   │   │   ├── scissors-cut-line.svg
+│   │   │   │   │   │   ├── scissors-fill.svg
+│   │   │   │   │   │   ├── scissors-line.svg
+│   │   │   │   │   │   ├── screenshot-2-fill.svg
+│   │   │   │   │   │   ├── screenshot-2-line.svg
+│   │   │   │   │   │   ├── shape-fill.svg
+│   │   │   │   │   │   ├── shape-line.svg
+│   │   │   │   │   │   ├── shapes-fill.svg
+│   │   │   │   │   │   ├── shapes-line.svg
+│   │   │   │   │   │   ├── sip-fill.svg
+│   │   │   │   │   │   ├── sip-line.svg
+│   │   │   │   │   │   ├── slice-fill.svg
+│   │   │   │   │   │   ├── slice-line.svg
+│   │   │   │   │   │   ├── square-fill.svg
+│   │   │   │   │   │   ├── square-line.svg
+│   │   │   │   │   │   ├── table-alt-fill.svg
+│   │   │   │   │   │   ├── table-alt-line.svg
+│   │   │   │   │   │   ├── table-fill.svg
+│   │   │   │   │   │   ├── table-line.svg
+│   │   │   │   │   │   ├── tools-fill.svg
+│   │   │   │   │   │   ├── tools-line.svg
+│   │   │   │   │   │   ├── triangle-fill.svg
+│   │   │   │   │   │   └── triangle-line.svg
+│   │   │   │   │   ├── development
+│   │   │   │   │   │   ├── braces-fill.svg
+│   │   │   │   │   │   ├── braces-line.svg
+│   │   │   │   │   │   ├── brackets-fill.svg
+│   │   │   │   │   │   ├── brackets-line.svg
+│   │   │   │   │   │   ├── bug-fill.svg
+│   │   │   │   │   │   ├── bug-line.svg
+│   │   │   │   │   │   ├── code-box-fill.svg
+│   │   │   │   │   │   ├── code-box-line.svg
+│   │   │   │   │   │   ├── code-fill.svg
+│   │   │   │   │   │   ├── code-line.svg
+│   │   │   │   │   │   ├── code-s-slash-fill.svg
+│   │   │   │   │   │   ├── code-s-slash-line.svg
+│   │   │   │   │   │   ├── command-fill.svg
+│   │   │   │   │   │   ├── command-line.svg
+│   │   │   │   │   │   ├── css3-fill.svg
+│   │   │   │   │   │   ├── css3-line.svg
+│   │   │   │   │   │   ├── cursor-fill.svg
+│   │   │   │   │   │   ├── cursor-line.svg
+│   │   │   │   │   │   ├── git-branch-fill.svg
+│   │   │   │   │   │   ├── git-branch-line.svg
+│   │   │   │   │   │   ├── git-close-pull-request-fill.svg
+│   │   │   │   │   │   ├── git-close-pull-request-line.svg
+│   │   │   │   │   │   ├── git-commit-fill.svg
+│   │   │   │   │   │   ├── git-commit-line.svg
+│   │   │   │   │   │   ├── git-merge-fill.svg
+│   │   │   │   │   │   ├── git-merge-line.svg
+│   │   │   │   │   │   ├── git-pull-request-fill.svg
+│   │   │   │   │   │   ├── git-pull-request-line.svg
+│   │   │   │   │   │   ├── git-repository-commits-fill.svg
+│   │   │   │   │   │   ├── git-repository-commits-line.svg
+│   │   │   │   │   │   ├── git-repository-fill.svg
+│   │   │   │   │   │   ├── git-repository-line.svg
+│   │   │   │   │   │   ├── git-repository-private-fill.svg
+│   │   │   │   │   │   ├── git-repository-private-line.svg
+│   │   │   │   │   │   ├── html5-fill.svg
+│   │   │   │   │   │   ├── html5-line.svg
+│   │   │   │   │   │   ├── javascript-fill.svg
+│   │   │   │   │   │   ├── javascript-line.svg
+│   │   │   │   │   │   ├── parentheses-fill.svg
+│   │   │   │   │   │   ├── parentheses-line.svg
+│   │   │   │   │   │   ├── terminal-box-fill.svg
+│   │   │   │   │   │   ├── terminal-box-line.svg
+│   │   │   │   │   │   ├── terminal-fill.svg
+│   │   │   │   │   │   ├── terminal-line.svg
+│   │   │   │   │   │   ├── terminal-window-fill.svg
+│   │   │   │   │   │   └── terminal-window-line.svg
+│   │   │   │   │   ├── device
+│   │   │   │   │   │   ├── airplay-fill.svg
+│   │   │   │   │   │   ├── airplay-line.svg
+│   │   │   │   │   │   ├── barcode-box-fill.svg
+│   │   │   │   │   │   ├── barcode-box-line.svg
+│   │   │   │   │   │   ├── barcode-fill.svg
+│   │   │   │   │   │   ├── barcode-line.svg
+│   │   │   │   │   │   ├── base-station-fill.svg
+│   │   │   │   │   │   ├── base-station-line.svg
+│   │   │   │   │   │   ├── battery-*.svg  (6 files)
+│   │   │   │   │   │   ├── bluetooth-connect-fill.svg
+│   │   │   │   │   │   ├── bluetooth-connect-line.svg
+│   │   │   │   │   │   ├── bluetooth-fill.svg
+│   │   │   │   │   │   ├── bluetooth-line.svg
+│   │   │   │   │   │   ├── cast-fill.svg
+│   │   │   │   │   │   ├── cast-line.svg
+│   │   │   │   │   │   ├── cellphone-fill.svg
+│   │   │   │   │   │   ├── cellphone-line.svg
+│   │   │   │   │   │   ├── computer-fill.svg
+│   │   │   │   │   │   ├── computer-line.svg
+│   │   │   │   │   │   ├── cpu-fill.svg
+│   │   │   │   │   │   ├── cpu-line.svg
+│   │   │   │   │   │   ├── dashboard-3-fill.svg
+│   │   │   │   │   │   ├── dashboard-3-line.svg
+│   │   │   │   │   │   ├── database-fill.svg
+│   │   │   │   │   │   ├── database-line.svg
+│   │   │   │   │   │   ├── device-fill.svg
+│   │   │   │   │   │   ├── device-line.svg
+│   │   │   │   │   │   ├── device-recover-fill.svg
+│   │   │   │   │   │   ├── device-recover-line.svg
+│   │   │   │   │   │   ├── fingerprint-fill.svg
+│   │   │   │   │   │   ├── fingerprint-line.svg
+│   │   │   │   │   │   ├── gamepad-fill.svg
+│   │   │   │   │   │   ├── gamepad-line.svg
+│   │   │   │   │   │   ├── gps-fill.svg
+│   │   │   │   │   │   ├── gps-line.svg
+│   │   │   │   │   │   ├── gradienter-fill.svg
+│   │   │   │   │   │   ├── gradienter-line.svg
+│   │   │   │   │   │   ├── hard-drive-2-fill.svg
+│   │   │   │   │   │   ├── hard-drive-2-line.svg
+│   │   │   │   │   │   ├── hotspot-fill.svg
+│   │   │   │   │   │   ├── hotspot-line.svg
+│   │   │   │   │   │   ├── install-fill.svg
+│   │   │   │   │   │   ├── install-line.svg
+│   │   │   │   │   │   ├── instance-fill.svg
+│   │   │   │   │   │   ├── instance-line.svg
+│   │   │   │   │   │   ├── keyboard-fill.svg
+│   │   │   │   │   │   ├── keyboard-line.svg
+│   │   │   │   │   │   ├── mac-fill.svg
+│   │   │   │   │   │   ├── mac-line.svg
+│   │   │   │   │   │   ├── macbook-fill.svg
+│   │   │   │   │   │   ├── macbook-line.svg
+│   │   │   │   │   │   ├── mouse-fill.svg
+│   │   │   │   │   │   ├── mouse-line.svg
+│   │   │   │   │   │   ├── phone-*.svg  (6 files)
+│   │   │   │   │   │   ├── qr-code-fill.svg
+│   │   │   │   │   │   ├── qr-code-line.svg
+│   │   │   │   │   │   ├── qr-scan-fill.svg
+│   │   │   │   │   │   ├── qr-scan-line.svg
+│   │   │   │   │   │   ├── radar-fill.svg
+│   │   │   │   │   │   ├── radar-line.svg
+│   │   │   │   │   │   ├── remote-control-2-fill.svg
+│   │   │   │   │   │   ├── remote-control-2-line.svg
+│   │   │   │   │   │   ├── remote-control-fill.svg
+│   │   │   │   │   │   ├── remote-control-line.svg
+│   │   │   │   │   │   ├── restart-fill.svg
+│   │   │   │   │   │   ├── restart-line.svg
+│   │   │   │   │   │   ├── rfid-fill.svg
+│   │   │   │   │   │   ├── rfid-line.svg
+│   │   │   │   │   │   ├── rotate-lock-fill.svg
+│   │   │   │   │   │   ├── rotate-lock-line.svg
+│   │   │   │   │   │   ├── router-fill.svg
+│   │   │   │   │   │   ├── router-line.svg
+│   │   │   │   │   │   ├── rss-fill.svg
+│   │   │   │   │   │   ├── rss-line.svg
+│   │   │   │   │   │   ├── save-3-fill.svg
+│   │   │   │   │   │   ├── save-3-line.svg
+│   │   │   │   │   │   ├── save-fill.svg
+│   │   │   │   │   │   ├── save-line.svg
+│   │   │   │   │   │   ├── scan-fill.svg
+│   │   │   │   │   │   ├── scan-line.svg
+│   │   │   │   │   │   ├── sd-card-fill.svg
+│   │   │   │   │   │   ├── sd-card-line.svg
+│   │   │   │   │   │   ├── sd-card-mini-fill.svg
+│   │   │   │   │   │   ├── sd-card-mini-line.svg
+│   │   │   │   │   │   ├── sensor-fill.svg
+│   │   │   │   │   │   ├── sensor-line.svg
+│   │   │   │   │   │   ├── server-fill.svg
+│   │   │   │   │   │   ├── server-line.svg
+│   │   │   │   │   │   ├── shut-down-fill.svg
+│   │   │   │   │   │   ├── shut-down-line.svg
+│   │   │   │   │   │   ├── signal-*.svg  (6 files)
+│   │   │   │   │   │   ├── sim-card-2-fill.svg
+│   │   │   │   │   │   ├── sim-card-2-line.svg
+│   │   │   │   │   │   ├── smartphone-fill.svg
+│   │   │   │   │   │   ├── smartphone-line.svg
+│   │   │   │   │   │   ├── tablet-fill.svg
+│   │   │   │   │   │   ├── tablet-line.svg
+│   │   │   │   │   │   ├── tv-fill.svg
+│   │   │   │   │   │   ├── tv-line.svg
+│   │   │   │   │   │   ├── u-disk-fill.svg
+│   │   │   │   │   │   ├── u-disk-line.svg
+│   │   │   │   │   │   ├── uninstall-fill.svg
+│   │   │   │   │   │   ├── uninstall-line.svg
+│   │   │   │   │   │   ├── usb-fill.svg
+│   │   │   │   │   │   ├── usb-line.svg
+│   │   │   │   │   │   ├── wifi-fill.svg
+│   │   │   │   │   │   ├── wifi-line.svg
+│   │   │   │   │   │   ├── wifi-off-fill.svg
+│   │   │   │   │   │   ├── wifi-off-line.svg
+│   │   │   │   │   │   ├── wireless-charging-fill.svg
+│   │   │   │   │   │   └── wireless-charging-line.svg
+│   │   │   │   │   ├── document
+│   │   │   │   │   │   ├── article-fill.svg
+│   │   │   │   │   │   ├── article-line.svg
+│   │   │   │   │   │   ├── book-2-fill.svg
+│   │   │   │   │   │   ├── book-2-line.svg
+│   │   │   │   │   │   ├── booklet-fill.svg
+│   │   │   │   │   │   ├── booklet-line.svg
+│   │   │   │   │   │   ├── clipboard-fill.svg
+│   │   │   │   │   │   ├── clipboard-line.svg
+│   │   │   │   │   │   ├── draft-fill.svg
+│   │   │   │   │   │   ├── draft-line.svg
+│   │   │   │   │   │   ├── file-add-fill.svg
+│   │   │   │   │   │   ├── file-add-line.svg
+│   │   │   │   │   │   ├── file-download-fill.svg
+│   │   │   │   │   │   ├── file-download-line.svg
+│   │   │   │   │   │   ├── file-fill.svg
+│   │   │   │   │   │   ├── file-line.svg
+│   │   │   │   │   │   ├── file-pdf-fill.svg
+│   │   │   │   │   │   ├── file-pdf-line.svg
+│   │   │   │   │   │   ├── file-text-fill.svg
+│   │   │   │   │   │   ├── file-text-line.svg
+│   │   │   │   │   │   ├── folder-2-fill.svg
+│   │   │   │   │   │   ├── folder-2-line.svg
+│   │   │   │   │   │   ├── newspaper-fill.svg
+│   │   │   │   │   │   ├── newspaper-line.svg
+│   │   │   │   │   │   ├── survey-fill.svg
+│   │   │   │   │   │   ├── survey-line.svg
+│   │   │   │   │   │   ├── todo-fill.svg
+│   │   │   │   │   │   └── todo-line.svg
+│   │   │   │   │   ├── editor
+│   │   │   │   │   │   ├── align-center.svg
+│   │   │   │   │   │   ├── align-justify.svg
+│   │   │   │   │   │   ├── align-left.svg
+│   │   │   │   │   │   ├── align-right.svg
+│   │   │   │   │   │   ├── code-block.svg
+│   │   │   │   │   │   ├── code-view.svg
+│   │   │   │   │   │   ├── font-color.svg
+│   │   │   │   │   │   ├── font-size.svg
+│   │   │   │   │   │   ├── format-clear.svg
+│   │   │   │   │   │   ├── fr--bold.svg
+│   │   │   │   │   │   ├── fr--highlight.svg
+│   │   │   │   │   │   ├── fr--quote-fill.svg
+│   │   │   │   │   │   ├── fr--quote-line.svg
+│   │   │   │   │   │   ├── h-1.svg
+│   │   │   │   │   │   ├── h-2.svg
+│   │   │   │   │   │   ├── h-3.svg
+│   │   │   │   │   │   ├── h-4.svg
+│   │   │   │   │   │   ├── h-5.svg
+│   │   │   │   │   │   ├── h-6.svg
+│   │   │   │   │   │   ├── hashtag.svg
+│   │   │   │   │   │   ├── indent-decrease.svg
+│   │   │   │   │   │   ├── indent-increase.svg
+│   │   │   │   │   │   ├── italic.svg
+│   │   │   │   │   │   ├── link-unlink.svg
+│   │   │   │   │   │   ├── link.svg
+│   │   │   │   │   │   ├── list-check.svg
+│   │   │   │   │   │   ├── list-ordered.svg
+│   │   │   │   │   │   ├── list-unordered.svg
+│   │   │   │   │   │   ├── question-mark.svg
+│   │   │   │   │   │   ├── separator.svg
+│   │   │   │   │   │   ├── sort-asc.svg
+│   │   │   │   │   │   ├── sort-desc.svg
+│   │   │   │   │   │   ├── space.svg
+│   │   │   │   │   │   ├── strikethrough.svg
+│   │   │   │   │   │   ├── subscript.svg
+│   │   │   │   │   │   ├── superscript.svg
+│   │   │   │   │   │   ├── table-2.svg
+│   │   │   │   │   │   ├── text-direction-r.svg
+│   │   │   │   │   │   ├── translate-2.svg
+│   │   │   │   │   │   └── underline.svg
+│   │   │   │   │   ├── finance
+│   │   │   │   │   │   ├── bank-card-fill.svg
+│   │   │   │   │   │   ├── bank-card-line.svg
+│   │   │   │   │   │   ├── coin-fill.svg
+│   │   │   │   │   │   ├── gift-fill.svg
+│   │   │   │   │   │   ├── gift-line.svg
+│   │   │   │   │   │   ├── money-euro-box-fill.svg
+│   │   │   │   │   │   ├── money-euro-box-line.svg
+│   │   │   │   │   │   ├── money-euro-circle-fill.svg
+│   │   │   │   │   │   ├── money-euro-circle-line.svg
+│   │   │   │   │   │   ├── secure-payment-fill.svg
+│   │   │   │   │   │   ├── secure-payment-line.svg
+│   │   │   │   │   │   ├── shopping-bag-fill.svg
+│   │   │   │   │   │   ├── shopping-bag-line.svg
+│   │   │   │   │   │   ├── shopping-cart-2-fill.svg
+│   │   │   │   │   │   ├── shopping-cart-2-line.svg
+│   │   │   │   │   │   ├── trophy-fill.svg
+│   │   │   │   │   │   └── trophy-line.svg
+│   │   │   │   │   ├── health
+│   │   │   │   │   │   ├── capsule-fill.svg
+│   │   │   │   │   │   ├── capsule-line.svg
+│   │   │   │   │   │   ├── dislike-fill.svg
+│   │   │   │   │   │   ├── dislike-line.svg
+│   │   │   │   │   │   ├── dossier-fill.svg
+│   │   │   │   │   │   ├── dossier-line.svg
+│   │   │   │   │   │   ├── first-aid-kit-fill.svg
+│   │   │   │   │   │   ├── first-aid-kit-line.svg
+│   │   │   │   │   │   ├── hand-sanitizer-fill.svg
+│   │   │   │   │   │   ├── hand-sanitizer-line.svg
+│   │   │   │   │   │   ├── health-book-fill.svg
+│   │   │   │   │   │   ├── health-book-line.svg
+│   │   │   │   │   │   ├── heart-fill.svg
+│   │   │   │   │   │   ├── heart-line.svg
+│   │   │   │   │   │   ├── heart-pulse-fill.svg
+│   │   │   │   │   │   ├── heart-pulse-line.svg
+│   │   │   │   │   │   ├── lungs-fill.svg
+│   │   │   │   │   │   ├── lungs-line.svg
+│   │   │   │   │   │   ├── medicine-bottle-fill.svg
+│   │   │   │   │   │   ├── medicine-bottle-line.svg
+│   │   │   │   │   │   ├── mental-health-fill.svg
+│   │   │   │   │   │   ├── mental-health-line.svg
+│   │   │   │   │   │   ├── microscope-fill.svg
+│   │   │   │   │   │   ├── microscope-line.svg
+│   │   │   │   │   │   ├── psychotherapy-fill.svg
+│   │   │   │   │   │   ├── psychotherapy-line.svg
+│   │   │   │   │   │   ├── pulse-line.svg
+│   │   │   │   │   │   ├── stethoscope-fill.svg
+│   │   │   │   │   │   ├── stethoscope-line.svg
+│   │   │   │   │   │   ├── surgical-mask-fill.svg
+│   │   │   │   │   │   ├── surgical-mask-line.svg
+│   │   │   │   │   │   ├── syringe-fill.svg
+│   │   │   │   │   │   ├── syringe-line.svg
+│   │   │   │   │   │   ├── test-tube-fill.svg
+│   │   │   │   │   │   ├── test-tube-line.svg
+│   │   │   │   │   │   ├── thermometer-fill.svg
+│   │   │   │   │   │   ├── thermometer-line.svg
+│   │   │   │   │   │   ├── virus-fill.svg
+│   │   │   │   │   │   └── virus-line.svg
+│   │   │   │   │   ├── logo
+│   │   │   │   │   │   ├── bluesky-fill.svg
+│   │   │   │   │   │   ├── bluesky-line.svg
+│   │   │   │   │   │   ├── chrome-fill.svg
+│   │   │   │   │   │   ├── chrome-line.svg
+│   │   │   │   │   │   ├── edge-fill.svg
+│   │   │   │   │   │   ├── edge-line.svg
+│   │   │   │   │   │   ├── facebook-circle-fill.svg
+│   │   │   │   │   │   ├── facebook-circle-line.svg
+│   │   │   │   │   │   ├── firefox-fill.svg
+│   │   │   │   │   │   ├── firefox-line.svg
+│   │   │   │   │   │   ├── fr--dailymotion-fill.svg
+│   │   │   │   │   │   ├── fr--dailymotion-line.svg
+│   │   │   │   │   │   ├── fr--tiktok-fill.svg
+│   │   │   │   │   │   ├── fr--tiktok-line.svg
+│   │   │   │   │   │   ├── github-fill.svg
+│   │   │   │   │   │   ├── github-line.svg
+│   │   │   │   │   │   ├── google-fill.svg
+│   │   │   │   │   │   ├── google-line.svg
+│   │   │   │   │   │   ├── ie-fill.svg
+│   │   │   │   │   │   ├── ie-line.svg
+│   │   │   │   │   │   ├── instagram-fill.svg
+│   │   │   │   │   │   ├── instagram-line.svg
+│   │   │   │   │   │   ├── linkedin-box-fill.svg
+│   │   │   │   │   │   ├── linkedin-box-line.svg
+│   │   │   │   │   │   ├── mastodon-fill.svg
+│   │   │   │   │   │   ├── mastodon-line.svg
+│   │   │   │   │   │   ├── npmjs-fill.svg
+│   │   │   │   │   │   ├── npmjs-line.svg
+│   │   │   │   │   │   ├── remixicon-fill.svg
+│   │   │   │   │   │   ├── remixicon-line.svg
+│   │   │   │   │   │   ├── safari-fill.svg
+│   │   │   │   │   │   ├── safari-line.svg
+│   │   │   │   │   │   ├── slack-fill.svg
+│   │   │   │   │   │   ├── slack-line.svg
+│   │   │   │   │   │   ├── snapchat-fill.svg
+│   │   │   │   │   │   ├── snapchat-line.svg
+│   │   │   │   │   │   ├── telegram-fill.svg
+│   │   │   │   │   │   ├── telegram-line.svg
+│   │   │   │   │   │   ├── threads-fill.svg
+│   │   │   │   │   │   ├── threads-line.svg
+│   │   │   │   │   │   ├── twitch-fill.svg
+│   │   │   │   │   │   ├── twitch-line.svg
+│   │   │   │   │   │   ├── twitter-fill.svg
+│   │   │   │   │   │   ├── twitter-line.svg
+│   │   │   │   │   │   ├── twitter-x-fill.svg
+│   │   │   │   │   │   ├── twitter-x-line.svg
+│   │   │   │   │   │   ├── vimeo-fill.svg
+│   │   │   │   │   │   ├── vimeo-line.svg
+│   │   │   │   │   │   ├── vuejs-fill.svg
+│   │   │   │   │   │   ├── vuejs-line.svg
+│   │   │   │   │   │   ├── whatsapp-fill.svg
+│   │   │   │   │   │   ├── whatsapp-line.svg
+│   │   │   │   │   │   ├── youtube-fill.svg
+│   │   │   │   │   │   └── youtube-line.svg
+│   │   │   │   │   ├── map
+│   │   │   │   │   │   ├── anchor-fill.svg
+│   │   │   │   │   │   ├── anchor-line.svg
+│   │   │   │   │   │   ├── bike-fill.svg
+│   │   │   │   │   │   ├── bike-line.svg
+│   │   │   │   │   │   ├── bus-fill.svg
+│   │   │   │   │   │   ├── bus-line.svg
+│   │   │   │   │   │   ├── car-fill.svg
+│   │   │   │   │   │   ├── car-line.svg
+│   │   │   │   │   │   ├── caravan-fill.svg
+│   │   │   │   │   │   ├── caravan-line.svg
+│   │   │   │   │   │   ├── charging-pile-2-fill.svg
+│   │   │   │   │   │   ├── charging-pile-2-line.svg
+│   │   │   │   │   │   ├── compass-3-fill.svg
+│   │   │   │   │   │   ├── compass-3-line.svg
+│   │   │   │   │   │   ├── cup-fill.svg
+│   │   │   │   │   │   ├── cup-line.svg
+│   │   │   │   │   │   ├── earth-fill.svg
+│   │   │   │   │   │   ├── earth-line.svg
+│   │   │   │   │   │   ├── france-fill.svg
+│   │   │   │   │   │   ├── france-line.svg
+│   │   │   │   │   │   ├── gas-station-fill.svg
+│   │   │   │   │   │   ├── gas-station-line.svg
+│   │   │   │   │   │   ├── goblet-fill.svg
+│   │   │   │   │   │   ├── goblet-line.svg
+│   │   │   │   │   │   ├── map-pin-2-fill.svg
+│   │   │   │   │   │   ├── map-pin-2-line.svg
+│   │   │   │   │   │   ├── map-pin-user-fill.svg
+│   │   │   │   │   │   ├── map-pin-user-line.svg
+│   │   │   │   │   │   ├── motorbike-fill.svg
+│   │   │   │   │   │   ├── motorbike-line.svg
+│   │   │   │   │   │   ├── passport-fill.svg
+│   │   │   │   │   │   ├── passport-line.svg
+│   │   │   │   │   │   ├── restaurant-fill.svg
+│   │   │   │   │   │   ├── restaurant-line.svg
+│   │   │   │   │   │   ├── road-map-fill.svg
+│   │   │   │   │   │   ├── road-map-line.svg
+│   │   │   │   │   │   ├── sailboat-fill.svg
+│   │   │   │   │   │   ├── sailboat-line.svg
+│   │   │   │   │   │   ├── ship-2-fill.svg
+│   │   │   │   │   │   ├── ship-2-line.svg
+│   │   │   │   │   │   ├── signal-tower-fill.svg
+│   │   │   │   │   │   ├── signal-tower-line.svg
+│   │   │   │   │   │   ├── suitcase-2-fill.svg
+│   │   │   │   │   │   ├── suitcase-2-line.svg
+│   │   │   │   │   │   ├── taxi-fill.svg
+│   │   │   │   │   │   ├── taxi-line.svg
+│   │   │   │   │   │   ├── train-fill.svg
+│   │   │   │   │   │   └── train-line.svg
+│   │   │   │   │   ├── media
+│   │   │   │   │   │   ├── camera-fill.svg
+│   │   │   │   │   │   ├── camera-line.svg
+│   │   │   │   │   │   ├── clapperboard-fill.svg
+│   │   │   │   │   │   ├── clapperboard-line.svg
+│   │   │   │   │   │   ├── equalizer-fill.svg
+│   │   │   │   │   │   ├── equalizer-line.svg
+│   │   │   │   │   │   ├── film-fill.svg
+│   │   │   │   │   │   ├── film-line.svg
+│   │   │   │   │   │   ├── fullscreen-line.svg
+│   │   │   │   │   │   ├── gallery-fill.svg
+│   │   │   │   │   │   ├── gallery-line.svg
+│   │   │   │   │   │   ├── headphone-fill.svg
+│   │   │   │   │   │   ├── headphone-line.svg
+│   │   │   │   │   │   ├── image-add-fill.svg
+│   │   │   │   │   │   ├── image-add-line.svg
+│   │   │   │   │   │   ├── image-edit-fill.svg
+│   │   │   │   │   │   ├── image-edit-line.svg
+│   │   │   │   │   │   ├── image-fill.svg
+│   │   │   │   │   │   ├── image-line.svg
+│   │   │   │   │   │   ├── live-fill.svg
+│   │   │   │   │   │   ├── live-line.svg
+│   │   │   │   │   │   ├── mic-fill.svg
+│   │   │   │   │   │   ├── mic-line.svg
+│   │   │   │   │   │   ├── music-2-fill.svg
+│   │   │   │   │   │   ├── music-2-line.svg
+│   │   │   │   │   │   ├── notification-3-fill.svg
+│   │   │   │   │   │   ├── notification-3-line.svg
+│   │   │   │   │   │   ├── pause-circle-fill.svg
+│   │   │   │   │   │   ├── pause-circle-line.svg
+│   │   │   │   │   │   ├── play-circle-fill.svg
+│   │   │   │   │   │   ├── play-circle-line.svg
+│   │   │   │   │   │   ├── stop-circle-fill.svg
+│   │   │   │   │   │   ├── stop-circle-line.svg
+│   │   │   │   │   │   ├── volume-down-fill.svg
+│   │   │   │   │   │   ├── volume-down-line.svg
+│   │   │   │   │   │   ├── volume-mute-fill.svg
+│   │   │   │   │   │   ├── volume-mute-line.svg
+│   │   │   │   │   │   ├── volume-up-fill.svg
+│   │   │   │   │   │   └── volume-up-line.svg
+│   │   │   │   │   ├── others
+│   │   │   │   │   │   ├── fr--accessibility-fill.svg
+│   │   │   │   │   │   ├── fr--accessibility-line.svg
+│   │   │   │   │   │   ├── fr--ear-off-fill.svg
+│   │   │   │   │   │   ├── fr--ear-off-line.svg
+│   │   │   │   │   │   ├── fr--mental-disabilities-fill.svg
+│   │   │   │   │   │   ├── fr--mental-disabilities-line.svg
+│   │   │   │   │   │   ├── fr--sign-language-fill.svg
+│   │   │   │   │   │   ├── fr--sign-language-line.svg
+│   │   │   │   │   │   ├── leaf-fill.svg
+│   │   │   │   │   │   ├── leaf-line.svg
+│   │   │   │   │   │   ├── lightbulb-fill.svg
+│   │   │   │   │   │   ├── lightbulb-line.svg
+│   │   │   │   │   │   ├── plant-fill.svg
+│   │   │   │   │   │   ├── plant-line.svg
+│   │   │   │   │   │   ├── recycle-fill.svg
+│   │   │   │   │   │   ├── recycle-line.svg
+│   │   │   │   │   │   ├── scales-3-fill.svg
+│   │   │   │   │   │   ├── scales-3-line.svg
+│   │   │   │   │   │   ├── seedling-fill.svg
+│   │   │   │   │   │   ├── seedling-line.svg
+│   │   │   │   │   │   ├── umbrella-fill.svg
+│   │   │   │   │   │   ├── umbrella-line.svg
+│   │   │   │   │   │   ├── wheelchair-fill.svg
+│   │   │   │   │   │   └── wheelchair-line.svg
+│   │   │   │   │   ├── system
+│   │   │   │   │   │   ├── add-circle-fill.svg
+│   │   │   │   │   │   ├── add-circle-line.svg
+│   │   │   │   │   │   ├── add-line.svg
+│   │   │   │   │   │   ├── alarm-warning-fill.svg
+│   │   │   │   │   │   ├── alarm-warning-line.svg
+│   │   │   │   │   │   ├── alert-fill.svg
+│   │   │   │   │   │   ├── alert-line.svg
+│   │   │   │   │   │   ├── check-line.svg
+│   │   │   │   │   │   ├── checkbox-circle-fill.svg
+│   │   │   │   │   │   ├── checkbox-circle-line.svg
+│   │   │   │   │   │   ├── checkbox-fill.svg
+│   │   │   │   │   │   ├── checkbox-line.svg
+│   │   │   │   │   │   ├── close-circle-fill.svg
+│   │   │   │   │   │   ├── close-circle-line.svg
+│   │   │   │   │   │   ├── close-line.svg
+│   │   │   │   │   │   ├── delete-bin-fill.svg
+│   │   │   │   │   │   ├── delete-bin-line.svg
+│   │   │   │   │   │   ├── download-fill.svg
+│   │   │   │   │   │   ├── download-line.svg
+│   │   │   │   │   │   ├── error-warning-fill.svg
+│   │   │   │   │   │   ├── error-warning-line.svg
+│   │   │   │   │   │   ├── external-link-fill.svg
+│   │   │   │   │   │   ├── external-link-line.svg
+│   │   │   │   │   │   ├── eye-fill.svg
+│   │   │   │   │   │   ├── eye-line.svg
+│   │   │   │   │   │   ├── eye-off-fill.svg
+│   │   │   │   │   │   ├── eye-off-line.svg
+│   │   │   │   │   │   ├── filter-fill.svg
+│   │   │   │   │   │   ├── filter-line.svg
+│   │   │   │   │   │   ├── fr-*.svg  (13 files)
+│   │   │   │   │   │   ├── information-fill.svg
+│   │   │   │   │   │   ├── information-line.svg
+│   │   │   │   │   │   ├── lock-fill.svg
+│   │   │   │   │   │   ├── lock-line.svg
+│   │   │   │   │   │   ├── lock-unlock-fill.svg
+│   │   │   │   │   │   ├── lock-unlock-line.svg
+│   │   │   │   │   │   ├── logout-box-r-fill.svg
+│   │   │   │   │   │   ├── logout-box-r-line.svg
+│   │   │   │   │   │   ├── menu-2-fill.svg
+│   │   │   │   │   │   ├── menu-fill.svg
+│   │   │   │   │   │   ├── more-fill.svg
+│   │   │   │   │   │   ├── more-line.svg
+│   │   │   │   │   │   ├── notification-badge-fill.svg
+│   │   │   │   │   │   ├── notification-badge-line.svg
+│   │   │   │   │   │   ├── question-fill.svg
+│   │   │   │   │   │   ├── question-line.svg
+│   │   │   │   │   │   ├── refresh-fill.svg
+│   │   │   │   │   │   ├── refresh-line.svg
+│   │   │   │   │   │   ├── search-fill.svg
+│   │   │   │   │   │   ├── search-line.svg
+│   │   │   │   │   │   ├── settings-5-fill.svg
+│   │   │   │   │   │   ├── settings-5-line.svg
+│   │   │   │   │   │   ├── share-fill.svg
+│   │   │   │   │   │   ├── share-forward-fill.svg
+│   │   │   │   │   │   ├── share-forward-line.svg
+│   │   │   │   │   │   ├── share-line.svg
+│   │   │   │   │   │   ├── shield-fill.svg
+│   │   │   │   │   │   ├── shield-line.svg
+│   │   │   │   │   │   ├── star-fill.svg
+│   │   │   │   │   │   ├── star-line.svg
+│   │   │   │   │   │   ├── star-s-fill.svg
+│   │   │   │   │   │   ├── star-s-line.svg
+│   │   │   │   │   │   ├── subtract-line.svg
+│   │   │   │   │   │   ├── thumb-down-fill.svg
+│   │   │   │   │   │   ├── thumb-down-line.svg
+│   │   │   │   │   │   ├── thumb-up-fill.svg
+│   │   │   │   │   │   ├── thumb-up-line.svg
+│   │   │   │   │   │   ├── time-fill.svg
+│   │   │   │   │   │   ├── time-line.svg
+│   │   │   │   │   │   ├── timer-fill.svg
+│   │   │   │   │   │   ├── timer-line.svg
+│   │   │   │   │   │   ├── upload-2-fill.svg
+│   │   │   │   │   │   ├── upload-2-line.svg
+│   │   │   │   │   │   ├── upload-fill.svg
+│   │   │   │   │   │   ├── upload-line.svg
+│   │   │   │   │   │   ├── zoom-in-fill.svg
+│   │   │   │   │   │   ├── zoom-in-line.svg
+│   │   │   │   │   │   ├── zoom-out-fill.svg
+│   │   │   │   │   │   └── zoom-out-line.svg
+│   │   │   │   │   ├── user
+│   │   │   │   │   │   ├── account-circle-fill.svg
+│   │   │   │   │   │   ├── account-circle-line.svg
+│   │   │   │   │   │   ├── account-pin-circle-fill.svg
+│   │   │   │   │   │   ├── account-pin-circle-line.svg
+│   │   │   │   │   │   ├── admin-fill.svg
+│   │   │   │   │   │   ├── admin-line.svg
+│   │   │   │   │   │   ├── group-fill.svg
+│   │   │   │   │   │   ├── group-line.svg
+│   │   │   │   │   │   ├── parent-fill.svg
+│   │   │   │   │   │   ├── parent-line.svg
+│   │   │   │   │   │   ├── team-fill.svg
+│   │   │   │   │   │   ├── team-line.svg
+│   │   │   │   │   │   ├── user-add-fill.svg
+│   │   │   │   │   │   ├── user-add-line.svg
+│   │   │   │   │   │   ├── user-fill.svg
+│   │   │   │   │   │   ├── user-heart-fill.svg
+│   │   │   │   │   │   ├── user-heart-line.svg
+│   │   │   │   │   │   ├── user-line.svg
+│   │   │   │   │   │   ├── user-search-fill.svg
+│   │   │   │   │   │   ├── user-search-line.svg
+│   │   │   │   │   │   ├── user-setting-fill.svg
+│   │   │   │   │   │   ├── user-setting-line.svg
+│   │   │   │   │   │   ├── user-star-fill.svg
+│   │   │   │   │   │   └── user-star-line.svg
+│   │   │   │   │   └── weather
+│   │   │   │   │       ├── cloudy-2-fill.svg
+│   │   │   │   │       ├── cloudy-2-line.svg
+│   │   │   │   │       ├── fire-fill.svg
+│   │   │   │   │       ├── fire-line.svg
+│   │   │   │   │       ├── flashlight-fill.svg
+│   │   │   │   │       ├── flashlight-line.svg
+│   │   │   │   │       ├── flood-fill.svg
+│   │   │   │   │       ├── flood-line.svg
+│   │   │   │   │       ├── fr--avalanches-fill.svg
+│   │   │   │   │       ├── fr--avalanches-line.svg
+│   │   │   │   │       ├── fr--submersion-fill.svg
+│   │   │   │   │       ├── fr--submersion-line.svg
+│   │   │   │   │       ├── heavy-showers-fill.svg
+│   │   │   │   │       ├── heavy-showers-line.svg
+│   │   │   │   │       ├── moon-fill.svg
+│   │   │   │   │       ├── moon-line.svg
+│   │   │   │   │       ├── snowy-fill.svg
+│   │   │   │   │       ├── snowy-line.svg
+│   │   │   │   │       ├── sparkling-2-fill.svg
+│   │   │   │   │       ├── sparkling-2-line.svg
+│   │   │   │   │       ├── sun-fill.svg
+│   │   │   │   │       ├── sun-line.svg
+│   │   │   │   │       ├── temp-cold-fill.svg
+│   │   │   │   │       ├── temp-cold-line.svg
+│   │   │   │   │       ├── thunderstorms-fill.svg
+│   │   │   │   │       ├── thunderstorms-line.svg
+│   │   │   │   │       ├── tornado-fill.svg
+│   │   │   │   │       ├── tornado-line.svg
+│   │   │   │   │       ├── typhoon-fill.svg
+│   │   │   │   │       ├── typhoon-line.svg
+│   │   │   │   │       ├── windy-fill.svg
+│   │   │   │   │       └── windy-line.svg
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── page
+│   │   │   │   │   │   ├── README.md
+│   │   │   │   │   │   ├── login
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   ├── register
+│   │   │   │   │   │   │   └── README.md
+│   │   │   │   │   │   └── response
+│   │   │   │   │   │       ├── README.md
+│   │   │   │   │   │       ├── not-found
+│   │   │   │   │   │       │   └── README.md
+│   │   │   │   │   │       ├── unavailable
+│   │   │   │   │   │       │   └── README.md
+│   │   │   │   │   │       └── unexpected
+│   │   │   │   │   │           └── README.md
+│   │   │   │   │   └── pattern
+│   │   │   │   │       ├── README.md
+│   │   │   │   │       ├── address
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── civility
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── company
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── date
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── email
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── name
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       ├── nationality
+│   │   │   │   │       │   └── README.md
+│   │   │   │   │       └── tel
+│   │   │   │   │           └── README.md
+│   │   │   │   ├── legacy
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── legacy.nomodule.min.js
+│   │   │   │   ├── scheme
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── scheme.min.css
+│   │   │   │   │   └── scheme.module.min.js
+│   │   │   │   └── utility
+│   │   │   │       ├── README.md
+│   │   │   │       ├── colors
+│   │   │   │       │   ├── README.md
+│   │   │   │       │   ├── colors.legacy.min.css
+│   │   │   │       │   ├── colors.main.min.css
+│   │   │   │       │   ├── colors.min.css
+│   │   │   │       │   └── colors.print.min.css
+│   │   │   │       ├── icons
+│   │   │   │       │   ├── README.md
+│   │   │   │       │   ├── icons-arrows
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-arrows.legacy.min.css
+│   │   │   │       │   │   ├── icons-arrows.main.min.css
+│   │   │   │       │   │   └── icons-arrows.min.css
+│   │   │   │       │   ├── icons-buildings
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-buildings.legacy.min.css
+│   │   │   │       │   │   ├── icons-buildings.main.min.css
+│   │   │   │       │   │   └── icons-buildings.min.css
+│   │   │   │       │   ├── icons-business
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-business.legacy.min.css
+│   │   │   │       │   │   ├── icons-business.main.min.css
+│   │   │   │       │   │   └── icons-business.min.css
+│   │   │   │       │   ├── icons-communication
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-communication.legacy.min.css
+│   │   │   │       │   │   ├── icons-communication.main.min.css
+│   │   │   │       │   │   └── icons-communication.min.css
+│   │   │   │       │   ├── icons-design
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-design.legacy.min.css
+│   │   │   │       │   │   ├── icons-design.main.min.css
+│   │   │   │       │   │   └── icons-design.min.css
+│   │   │   │       │   ├── icons-development
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-development.legacy.min.css
+│   │   │   │       │   │   ├── icons-development.main.min.css
+│   │   │   │       │   │   └── icons-development.min.css
+│   │   │   │       │   ├── icons-device
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-device.legacy.min.css
+│   │   │   │       │   │   ├── icons-device.main.min.css
+│   │   │   │       │   │   └── icons-device.min.css
+│   │   │   │       │   ├── icons-document
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-document.legacy.min.css
+│   │   │   │       │   │   ├── icons-document.main.min.css
+│   │   │   │       │   │   └── icons-document.min.css
+│   │   │   │       │   ├── icons-editor
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-editor.legacy.min.css
+│   │   │   │       │   │   ├── icons-editor.main.min.css
+│   │   │   │       │   │   └── icons-editor.min.css
+│   │   │   │       │   ├── icons-finance
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-finance.legacy.min.css
+│   │   │   │       │   │   ├── icons-finance.main.min.css
+│   │   │   │       │   │   └── icons-finance.min.css
+│   │   │   │       │   ├── icons-health
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-health.legacy.min.css
+│   │   │   │       │   │   ├── icons-health.main.min.css
+│   │   │   │       │   │   └── icons-health.min.css
+│   │   │   │       │   ├── icons-logo
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-logo.legacy.min.css
+│   │   │   │       │   │   ├── icons-logo.main.min.css
+│   │   │   │       │   │   └── icons-logo.min.css
+│   │   │   │       │   ├── icons-map
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-map.legacy.min.css
+│   │   │   │       │   │   ├── icons-map.main.min.css
+│   │   │   │       │   │   └── icons-map.min.css
+│   │   │   │       │   ├── icons-media
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-media.legacy.min.css
+│   │   │   │       │   │   ├── icons-media.main.min.css
+│   │   │   │       │   │   └── icons-media.min.css
+│   │   │   │       │   ├── icons-others
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-others.legacy.min.css
+│   │   │   │       │   │   ├── icons-others.main.min.css
+│   │   │   │       │   │   └── icons-others.min.css
+│   │   │   │       │   ├── icons-system
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-system.legacy.min.css
+│   │   │   │       │   │   ├── icons-system.main.min.css
+│   │   │   │       │   │   └── icons-system.min.css
+│   │   │   │       │   ├── icons-user
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-user.legacy.min.css
+│   │   │   │       │   │   ├── icons-user.main.min.css
+│   │   │   │       │   │   └── icons-user.min.css
+│   │   │   │       │   ├── icons-weather
+│   │   │   │       │   │   ├── README.md
+│   │   │   │       │   │   ├── icons-weather.legacy.min.css
+│   │   │   │       │   │   ├── icons-weather.main.min.css
+│   │   │   │       │   │   └── icons-weather.min.css
+│   │   │   │       │   ├── icons.legacy.min.css
+│   │   │   │       │   ├── icons.main.min.css
+│   │   │   │       │   └── icons.min.css
+│   │   │   │       ├── pictograms
+│   │   │   │       │   ├── README.md
+│   │   │   │       │   ├── pictograms-accessibility
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-buildings
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-digital
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-document
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-environment
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-health
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-institutions
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-leisure
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   ├── pictograms-map
+│   │   │   │       │   │   └── README.md
+│   │   │   │       │   └── pictograms-system
+│   │   │   │       │       └── README.md
+│   │   │   │       ├── utility.legacy.min.css
+│   │   │   │       ├── utility.main.min.css
+│   │   │   │       ├── utility.min.css
+│   │   │   │       └── utility.print.min.css
+│   │   │   └── dsfr_version
+│   │   └── js
+│   │       └── formsets.js
+│   ├── templates
+│   │   ├── django
+│   │   │   └── forms
+│   │   │       ├── errors
+│   │   │       │   ├── dict
+│   │   │       │   │   └── ul.html
+│   │   │       │   └── list
+│   │   │       │       └── ul.html
+│   │   │       └── widgets
+│   │   │           ├── checkbox_option.html
+│   │   │           ├── input_option.html
+│   │   │           ├── multiple_input.html
+│   │   │           └── radio_option.html
+│   │   └── dsfr
+│   │       ├── accordion.html
+│   │       ├── accordion_group.html
+│   │       ├── alert.html
+│   │       ├── badge.html
+│   │       ├── badge_group.html
+│   │       ├── base.html
+│   │       ├── breadcrumb.html
+│   │       ├── button.html
+│   │       ├── button_group.html
+│   │       ├── callout.html
+│   │       ├── card.html
+│   │       ├── consent.html
+│   │       ├── content.html
+│   │       ├── favicon.html
+│   │       ├── follow.html
+│   │       ├── footer.html
+│   │       ├── form_base.html
+│   │       ├── form_field_snippets
+│   │       │   ├── checkbox_snippet.html
+│   │       │   ├── checkboxselectmultiple_snippet.html
+│   │       │   ├── field_snippet.html
+│   │       │   ├── input_snippet.html
+│   │       │   ├── numbercursor_snippet.html
+│   │       │   ├── radioselect_snippet.html
+│   │       │   ├── richradioselect_snippet.html
+│   │       │   └── segmented_control_snippet.html
+│   │       ├── form_snippet.html
+│   │       ├── formset_base.html
+│   │       ├── france_connect.html
+│   │       ├── global_css.html
+│   │       ├── global_js.html
+│   │       ├── header.html
+│   │       ├── highlight.html
+│   │       ├── input.html
+│   │       ├── link.html
+│   │       ├── notice.html
+│   │       ├── pagination.html
+│   │       ├── quote.html
+│   │       ├── select.html
+│   │       ├── sidemenu.html
+│   │       ├── skiplinks.html
+│   │       ├── stepper.html
+│   │       ├── summary.html
+│   │       ├── summary_list.html
+│   │       ├── table.html
+│   │       ├── tag.html
+│   │       ├── theme_modale.html
+│   │       ├── tile.html
+│   │       ├── toggle.html
+│   │       ├── tooltip.html
+│   │       ├── transcription.html
+│   │       └── widgets
+│   │           ├── number_cursor.html
+│   │           ├── rich_radio.html
+│   │           ├── rich_radio_option.html
+│   │           ├── segmented_control.html
+│   │           └── segmented_control_option.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   └── dsfr_tags.py
+│   ├── test
+│   │   ├── __init__.py
+│   │   ├── test_config.py
+│   │   ├── test_enums.py
+│   │   ├── test_fields.py
+│   │   ├── test_form_field_snippets.py
+│   │   ├── test_forms.py
+│   │   ├── test_templatetags.py
+│   │   ├── test_templatetags_md.py
+│   │   └── test_utils.py
+│   ├── utils.py
+│   └── widgets.py
+├── example_app
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── dsfr_components.py
+│   ├── forms.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── export_json.py
+│   │       ├── import_sample_data.py
+│   │       └── shell.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_author_options_alter_book_options_and_more.py
+│   │   ├── 0003_alter_book_author.py
+│   │   ├── 0004_alter_book_number_of_pages.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── img
+│   │   │   ├── gouvernement.svg
+│   │   │   ├── placeholder.16x9.png
+│   │   │   ├── placeholder.16x9.svg
+│   │   │   ├── placeholder.1x1.png
+│   │   │   ├── placeholder.1x1.svg
+│   │   │   ├── placeholder.9x16.png
+│   │   │   └── placeholder.9x16.svg
+│   │   ├── js
+│   │   │   └── common.js
+│   │   ├── json
+│   │   │   └── search_data.json
+│   │   └── lib
+│   │       └── fuse.min.js
+│   ├── templates
+│   │   └── example_app
+│   │       ├── base.html
+│   │       ├── blocks
+│   │       │   ├── follow.html
+│   │       │   ├── footer.html
+│   │       │   ├── header.html
+│   │       │   ├── language_selector.html
+│   │       │   ├── main_menu.html
+│   │       │   └── page_markdown_example.html
+│   │       ├── components_index.html
+│   │       ├── doc_follow.html
+│   │       ├── doc_markdown.html
+│   │       ├── doc_markdown_with_sidebar.html
+│   │       ├── example_consent_modale.html
+│   │       ├── formsets
+│   │       │   └── book.html
+│   │       ├── index.html
+│   │       ├── not_yet.html
+│   │       ├── page_colors.html
+│   │       ├── page_component.html
+│   │       ├── page_form.html
+│   │       ├── page_formset_main_form.html
+│   │       ├── page_icons.html
+│   │       ├── page_markdown.html
+│   │       ├── page_pictograms.html
+│   │       ├── page_templatetags.html
+│   │       └── search.html
+│   ├── test
+│   │   ├── __init__.py
+│   │   └── test_views.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── justfile
+├── manage.py
+├── publiccode.yml
+├── pyproject.toml
+├── scripts
+│   └── download_latest.sh
+└── uv.lock
+195 directories, 1812 files
