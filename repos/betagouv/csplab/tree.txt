@@ -11,6 +11,7 @@
 │       ├── chore_require_labels.yml
 │       ├── dev.yml
 │       ├── notebook.yml
+│       ├── ocr.yml
 │       └── tycho.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
@@ -35,6 +36,10 @@
 │   └── uv.lock
 ├── docker-compose.yml
 ├── docs
+│   ├── ADR
+│   │   └── ADR-001-testing-strategy.md
+│   ├── accessibility_testing.md
+│   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
 │   ├── docker_compose_override.md
 │   ├── sass_configuration.md
@@ -42,6 +47,7 @@
 │   └── scss_style_guide.md
 ├── env.d
 │   ├── notebook-example
+│   ├── ocr-example
 │   ├── postgresql-example
 │   └── tycho-example
 └── src
@@ -52,7 +58,6 @@
     │   ├── data
     │   │   └── README.md
     │   ├── greco.md
-    │   ├── hello_es.md
     │   ├── ingres.md
     │   ├── legifrance.md
     │   ├── matcher.md
@@ -60,6 +65,55 @@
     │   ├── pipelines_cv.md
     │   ├── pyproject.toml
     │   ├── talentsoft.md
+    │   └── uv.lock
+    ├── ocr
+    │   ├── .buildpacks
+    │   ├── .envrc.sample
+    │   ├── .python-version
+    │   ├── Aptfile
+    │   ├── Procfile
+    │   ├── README.md
+    │   ├── api
+    │   │   ├── __init__.py
+    │   │   ├── _sentry.py
+    │   │   ├── auth.py
+    │   │   ├── config.py
+    │   │   ├── main.py
+    │   │   └── routes.py
+    │   ├── application
+    │   │   ├── __init__.py
+    │   │   └── usecases
+    │   │       ├── __init__.py
+    │   │       └── extract_text_usecase.py
+    │   ├── bin
+    │   │   └── start_web.sh
+    │   ├── domain
+    │   │   ├── __init__.py
+    │   │   └── interfaces
+    │   │       ├── __init__.py
+    │   │       ├── pdf_extractor.py
+    │   │       └── pdf_validator.py
+    │   ├── infrastructure
+    │   │   ├── __init__.py
+    │   │   ├── di
+    │   │   │   ├── __init__.py
+    │   │   │   └── container.py
+    │   │   └── gateways
+    │   │       ├── __init__.py
+    │   │       ├── pypdf_validator.py
+    │   │       └── tesseract_extractor.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── conftest.py
+    │   │   ├── fixtures
+    │   │   │   └── test_sample.pdf
+    │   │   ├── integration
+    │   │   │   ├── __init__.py
+    │   │   │   └── test_extract_text.py
+    │   │   └── unit
+    │   │       ├── __init__.py
+    │   │       └── test_extract_text.py
     │   └── uv.lock
     └── tycho
         ├── .envrc.sample
@@ -89,6 +143,7 @@
         │           ├── __init__.py
         │           ├── clean_documents.py
         │           ├── load_documents.py
+        │           ├── load_offers.py
         │           └── vectorize_documents.py
         ├── cliff.toml
         ├── config
@@ -101,6 +156,7 @@
         │   │   ├── base.py
         │   │   ├── dev.py
         │   │   └── test.py
+        │   ├── setup-qdrant.py
         │   ├── urls.py
         │   └── wsgi.py
         ├── domain
@@ -127,6 +183,7 @@
         │   ├── interfaces
         │   │   ├── __init__.py
         │   │   ├── entity_interface.py
+        │   │   ├── mapper_interface.py
         │   │   └── usecase_interface.py
         │   ├── repositories
         │   │   ├── __init__.py
@@ -145,9 +202,11 @@
         │   │   ├── embedding_generator_interface.py
         │   │   ├── http_client_interface.py
         │   │   ├── logger_interface.py
-        │   │   ├── pdf_text_extractor_interface.py
+        │   │   ├── ocr_interface.py
+        │   │   ├── pdf_extractor_interface.py
         │   │   ├── query_builder_interface.py
-        │   │   └── text_extractor_interface.py
+        │   │   ├── text_extractor_interface.py
+        │   │   └── text_formatter_interface.py
         │   ├── types.py
         │   └── value_objects
         │       ├── __init__.py
@@ -165,7 +224,6 @@
         │       ├── ministry.py
         │       ├── nor.py
         │       ├── opportunity_type.py
-        │       ├── pdf_extractor_type.py
         │       ├── region.py
         │       ├── similarity_type.py
         │       └── verse.py
@@ -216,6 +274,7 @@
         │   │   │   │       ├── __init__.py
         │   │   │   │       ├── clean_documents.py
         │   │   │   │       ├── load_documents.py
+        │   │   │   │       ├── load_offers.py
         │   │   │   │       └── vectorize_documents.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
@@ -235,6 +294,7 @@
         │   │   │   │   ├── 0016_convert_document_id_to_uuid.py
         │   │   │   │   ├── 0017_rawdocument_error_msg.py
         │   │   │   │   ├── 0018_rawdocument_processed_at.py
+        │   │   │   │   ├── 0019_rawdocument_processing.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -273,16 +333,19 @@
         │   │   └── ingestion_exceptions.py
         │   ├── external_gateways
         │   │   ├── __init__.py
-        │   │   ├── albert_pdf_extractor.py
+        │   │   ├── albert_embedding_generator.py
+        │   │   ├── albert_text_formatter.py
         │   │   ├── constants
         │   │   │   ├── __init__.py
         │   │   │   └── ocr_cv_prompts.py
         │   │   ├── dtos
         │   │   │   ├── __init__.py
+        │   │   │   ├── albert_types.py
         │   │   │   ├── ingres_corps_dtos.py
         │   │   │   ├── openai_dtos.py
         │   │   │   └── talentsoft_dtos.py
         │   │   ├── external_document_gateway.py
+        │   │   ├── ocr_extractor.py
         │   │   ├── openai_embedding_generator.py
         │   │   ├── openai_pdf_extractor.py
         │   │   ├── piste_client.py
@@ -307,6 +370,9 @@
         │   │       ├── async_http_client.py
         │   │       ├── http_client.py
         │   │       └── logger.py
+        │   ├── mappers
+        │   │   ├── __init__.py
+        │   │   └── qdrant_filters_mapper.py
         │   └── repositories
         │       ├── __init__.py
         │       ├── candidate
@@ -322,7 +388,8 @@
         │           ├── pgvector_repository.py
         │           ├── postgres_concours_repository.py
         │           ├── postgres_corps_repository.py
-        │           └── postgres_offers_repository.py
+        │           ├── postgres_offers_repository.py
+        │           └── qdrant_repository.py
         ├── locale
         │   └── .keep
         ├── manage.py
@@ -345,12 +412,14 @@
         │   │       │       ├── _index.scss
         │   │       │       └── _spacing.scss
         │   │       ├── components
+        │   │       │   ├── _candidate-results-filters.scss
         │   │       │   ├── _drawer.scss
         │   │       │   ├── _dropzone.scss
         │   │       │   ├── _feedback-modal.scss
         │   │       │   ├── _feedback.scss
         │   │       │   ├── _file-card.scss
         │   │       │   ├── _index.scss
+        │   │       │   ├── _results-loading.scss
         │   │       │   ├── _spinner.scss
         │   │       │   └── _toast.scss
         │   │       ├── layouts
@@ -382,6 +451,7 @@
         │   │   │   └── cv_flow.py
         │   │   ├── mappers.py
         │   │   ├── mixins.py
+        │   │   ├── presenters.py
         │   │   ├── types.py
         │   │   ├── urls.py
         │   │   └── views
@@ -418,20 +488,28 @@
         │   │   │   │       ├── concours-card-2.png
         │   │   │   │       └── screenshot-cv-results.png
         │   │   │   └── js
+        │   │   │       ├── candidate-tracking.js
         │   │   │       ├── cv-upload.js
-        │   │   │       └── opportunity-feedback.js
+        │   │   │       ├── opportunity-feedback.js
+        │   │   │       └── results-announcer.js
         │   │   ├── css
         │   │   │   └── main.css
         │   │   └── js
-        │   │       └── drawer.js
+        │   │       ├── drawer.js
+        │   │       ├── matomo-tracking.js
+        │   │       └── toast.js
         │   └── templates
         │       ├── 403.html
         │       ├── 404.html
         │       ├── 500.html
         │       ├── candidate
         │       │   ├── components
+        │       │   │   ├── _filter_fieldset.html
         │       │   │   ├── _filters_content.html
         │       │   │   ├── _no_results_content.html
+        │       │   │   ├── _opportunity_body.html
+        │       │   │   ├── _opportunity_cta.html
+        │       │   │   ├── _opportunity_detail_content.html
         │       │   │   ├── _opportunity_drawer_content.html
         │       │   │   ├── _opportunity_feedback.html
         │       │   │   ├── _processing_content.html
@@ -445,6 +523,7 @@
         │       │   ├── cv_processing.html
         │       │   ├── cv_results.html
         │       │   ├── cv_upload.html
+        │       │   ├── opportunity_detail.html
         │       │   └── search.html
         │       ├── components
         │       │   ├── _drawer.html
@@ -462,6 +541,10 @@
         ├── start.sh
         ├── tests
         │   ├── __init__.py
+        │   ├── accessibility
+        │   │   ├── __init__.py
+        │   │   ├── conftest.py
+        │   │   └── test_home_a11y.py
         │   ├── api
         │   │   ├── __init__.py
         │   │   └── test_endpoints.py
@@ -498,6 +581,7 @@
         │   │   ├── ingres_factories.py
         │   │   ├── offer_factory.py
         │   │   ├── raw_document_factory.py
+        │   │   ├── talentsoft_factories.py
         │   │   └── vectorized_document_factory.py
         │   ├── fixtures
         │   │   ├── __init__.py
@@ -508,7 +592,7 @@
         │   │   ├── embedding_fixtures.json
         │   │   ├── fixture_loader.py
         │   │   ├── ingestion_fixtures.py
-        │   │   ├── offers_talentsoft_20260124.json
+        │   │   ├── shared_fixtures.py
         │   │   └── vectorize_test_factories.py
         │   ├── ingestion
         │   │   ├── __init__.py
@@ -516,10 +600,12 @@
         │   │   ├── integration
         │   │   │   ├── test_integration_clean_documents.py
         │   │   │   ├── test_integration_load_documents.py
+        │   │   │   ├── test_integration_load_offers.py
         │   │   │   └── test_integration_vectorize_documents.py
         │   │   ├── management
         │   │   │   ├── test_clean_documents_command.py
         │   │   │   ├── test_load_documents_command.py
+        │   │   │   ├── test_load_offers_command.py
         │   │   │   └── test_vectorize_documents_command.py
         │   │   ├── repository
         │   │   │   ├── __init__.py
@@ -556,4 +642,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-113 directories, 445 files
+130 directories, 514 files
