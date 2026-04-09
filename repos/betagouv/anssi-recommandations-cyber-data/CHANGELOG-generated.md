@@ -1,29 +1,32 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 09 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'indexation des documents, en particulier des PDF, et sur la préparation de l'intégration de documents HTML. Des refactorings importants ont été effectués pour rendre le code plus modulaire et maintenable, facilitant ainsi l'ajout de nouvelles fonctionnalités et l'amélioration de la gestion des documents. Des corrections de bugs ont également été apportées pour améliorer la fiabilité du système.
+Ce mois-ci, le projet a connu des avancées significatives dans l'automatisation de l'évaluation et de l'amélioration des données, notamment avec l'introduction d'un système de "jeopardy" pour identifier les points faibles des documents et un travail important sur la reformulation des questions. Des améliorations ont également été apportées à l'infrastructure et à la sécurité du projet.
 
 ### Évolutions fonctionnelles
-- Possibilité de spécifier un fichier PDF lors de la création d'une collection. [#fc09c5d](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/fc09c5d)
-- Ajout de la prise en charge de la transmission d'un fichier JSON. [#f0a200d](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/f0a200d)
-- Ajout des options pour le document `anssi-fondamentaux-securisation-poste-multi-environnements-v1-0.pdf`. [#60048f4](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/60048f4)
-- Correction d'un bug lors de la création d'une collection, améliorant la fiabilité du processus. [#6b324b3](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/6b324b3)
+- Implémentation d'un système de "jeopardy" pour rechercher des documents par leur nom et générer des questions associées. [#1]
+- Ajout de la possibilité de lancer la génération de questions sur une collection de documents via une nouvelle route API.
+- Amélioration du prompt utilisé pour le "jeopardy" afin d'optimiser la qualité des questions générées.
+- Ajout de la possibilité d'ajouter des chunks (fragments) à un document existant.
+- Intégration de nouveaux documents de sources importantes comme le CERT-FR et la CNIL.
+- Mise en place d'un système d'évaluation de la reformulation des questions, avec publication des résultats via un bus d'événements.
+- Exposition d'une API pour exécuter des évaluations de reformulation.
 
 ### Évolutions techniques
-- Refactorisation majeure du package d'indexation des documents pour une meilleure organisation et maintenabilité. [#2f8604d](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/2f8604d)
-- Extraction d'une abstraction `DocumentAIndexer` pour faciliter l'intégration de nouveaux types de documents (HTML). [#29c3a3a](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/29c3a3a)
-- Création d'une abstraction `Page` avec une implémentation `PagePDF` pour une meilleure gestion des pages PDF. [#1b4f703](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/1b4f703)
-- Déplacement de la gestion des documents PDF dans un package dédié `documents/pdf`. [#9b22a4b](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/9b22a4b)
-- Génération des pages directement depuis le document pour une meilleure performance. [#135b765](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/135b765)
-- Extraction d'un générateur de page pour une meilleure réutilisabilité. [#b90d373](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/b90d373)
-- Correction de la valeur du type utilisateur envoyé à MQC pour une meilleure intégration. [#e8b3881](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/e8b3881)
-- Ajout du type utilisateur `EVALUATION` lors de l’appel à MQC. [#a30eea0](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/a30eea0)
+- Refactorisation du code pour séparer les responsabilités et améliorer la maintenabilité, notamment concernant l'évaluation et l'indexation.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (requests, svelte, flatted, pyasn1).
+- Amélioration de l'intégration avec l'API Albert, notamment pour l'ajout de chunks et la recherche de documents.
+- Utilisation de Uvicorn pour la gestion des logs.
+- Configuration de la CI/CD pour automatiser le déploiement du serveur MQC Data.
+- Ajout de tests unitaires pour valider l'ajout de questions comme chunks.
+- Introduction de nouvelles métriques pour évaluer la qualité de la reformulation (MetriqueSuppressionParasites et autres).
 
 ### Autres changements
-- Mise à jour de `deepeval` et `protobuf` suite à une alerte de sécurité dependabot. [#45e637e](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/45e637e)
-- Fourniture du fichier servant la liste des documents distants à intégrer. [#88b18f6](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/88b18f6)
-- Suppression de méthodes et de fixtures inutiles pour nettoyer le code. [#9c93f01](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/9c93f01), [#1586927](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/1586927), [#58c64e8](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/58c64e8)
-- Passage de certains champs de `DocumePDF` en privé. [#ec591e5](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/ec591e5)
-- Renommage de `guide` en `document` pour une meilleure cohérence. [#73daa42](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/73daa42)
-- Suppression du chunker docling hierarchique. [#1b72e26](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/1b72e26)
-- Extraction de la fonction `cree_document_pdf` et déplacement de `collecte_document_pdf` dans son script. [#d328a5c](https://github.com/betagouv/anssi-recommandations-cyber-data/commit/d328a5c)
+- Ajout de documentation sur la solution de génération de questions.
+- Mise à jour de la documentation HyDE.
+- Ajout de logs pour faciliter le suivi du processus de "jeopardy".
+- Correction de bugs mineurs et améliorations de la performance.
+- Suppression de dépendances inutiles (openai du client d’indexation).
+- Amélioration de la gestion des erreurs lors de l'ajout de documents et de chunks.
+
+[#1]:  Référence aux commits concernant le jeopardy (dc3158b, 0b536f9, 5cc06b9, 2a45eb5, 0cb89f4, a466988, 4b0bcd5, 7512a38, 533e03d, 04643c7)

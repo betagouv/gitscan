@@ -6,25 +6,47 @@
 │       ├── ci.yml
 │       ├── codeql-analysis.yml
 │       ├── deploie_evaluation.yml
-│       └── lance_evaluation_manuelle.yml
+│       ├── lance_evaluation_manuelle_mqc.yml
+│       └── lance_evaluation_manuelle_reformulation.yml
 ├── .gitignore
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── docker-compose.yml
 ├── documentation
-│   └── context.puml
+│   ├── README.md
+│   ├── evaluation
+│   │   ├── README.md
+│   │   ├── context.puml
+│   │   └── evaluation_context.png
+│   └── jeopardy
+│       ├── HyDE.md
+│       ├── README.md
+│       ├── context.puml
+│       └── jeopardy_context.png
 ├── donnees
+│   ├── dataset_reformulation.csv
 │   ├── documents_distants.json
 │   ├── jointure-nom-guide.csv
 │   ├── questions_avec_verite_terrain.csv
 │   └── questions_avec_verite_terrain_3.csv
 ├── pyproject.toml
+├── scripts
+│   ├── clever-cloud
+│   │   └── pre-run-clever.sh
+│   └── puppeteer.js
 ├── src
 │   ├── adaptateurs
 │   │   ├── __init__.py
-│   │   ├── client_albert.py
-│   │   ├── client_albert_reel.py
+│   │   ├── client_albert_indexation_reel.py
+│   │   ├── client_albert_reformulation_reel.py
+│   │   ├── clients_albert.py
 │   │   └── journal.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── api.py
+│   │   ├── api_evaluation.py
+│   │   └── api_jeopardy.py
 │   ├── configuration.py
 │   ├── documents
 │   │   ├── ajoute_document_a_la_collection.py
@@ -36,7 +58,6 @@
 │   │   │   ├── document.py
 │   │   │   ├── filtre_resultat.py
 │   │   │   └── multi_processeur.py
-│   │   ├── documents_distants.json
 │   │   ├── elements_filtres.py
 │   │   ├── generateur_de_pages.py
 │   │   ├── html
@@ -56,51 +77,82 @@
 │   │       └── extrais_les_chunks.py
 │   ├── evaluation
 │   │   ├── __init__.py
-│   │   ├── client_deepeval_albert.py
-│   │   ├── lance_experience.py
-│   │   ├── lanceur_deepeval.py
-│   │   ├── metriques.py
-│   │   └── metriques_personnalisees
-│   │       ├── __init__.py
-│   │       └── de_deepeval
-│   │           ├── __init__.py
-│   │           ├── metrique_bon_nom_document.py
-│   │           ├── metrique_bons_numeros_pages.py
-│   │           ├── metrique_longueur_reponse.py
-│   │           └── metrique_score_numero_page.py
-│   ├── experience
+│   │   ├── evaluateur_deepeval.py
+│   │   ├── evaluateur_mqc.py
+│   │   ├── evaluateur_reformulation.py
+│   │   ├── evaluation_en_cours.py
+│   │   ├── mqc
+│   │   │   ├── __init__.py
+│   │   │   ├── client_deepeval_albert.py
+│   │   │   ├── collecte_reponses_mqc.py
+│   │   │   ├── dataframe.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── fabrique_lanceur_evaluation.py
+│   │   │   ├── lanceur_deepeval.py
+│   │   │   ├── metriques
+│   │   │   │   ├── metrique_bon_nom_document.py
+│   │   │   │   ├── metrique_bons_numeros_pages.py
+│   │   │   │   ├── metrique_longueur_reponse.py
+│   │   │   │   └── metrique_score_numero_page.py
+│   │   │   ├── metriques_mqc.py
+│   │   │   ├── remplisseur_reponses.py
+│   │   │   └── traite_csv_par_lots_en_parallele.py
+│   │   ├── reformulation
+│   │   │   ├── __init__.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── evenements
+│   │   │   │   ├── evenements_publies.py
+│   │   │   │   └── journal.py
+│   │   │   └── metriques
+│   │   │       ├── metrique_autoportance.py
+│   │   │       ├── metrique_conservation_contraintes.py
+│   │   │       ├── metrique_fidelite_metier.py
+│   │   │       └── metrique_suppression_parasites.py
+│   │   └── service_evaluation.py
+│   ├── evenement
 │   │   ├── __init__.py
-│   │   ├── experience.py
-│   │   └── fabrique_lanceur_experience.py
+│   │   ├── bus.py
+│   │   └── fabrique_bus_evenements.py
 │   ├── infra
 │   │   ├── connexion_base_de_donnees.py
-│   │   ├── evaluateur
-│   │   │   └── deep_eval
-│   │   │       └── evaluateur_deepeval_multi_processus.py
+│   │   ├── ecrivain_sortie.py
+│   │   ├── evaluation
+│   │   │   └── evaluateur_deepeval_multi_processus.py
 │   │   ├── executeur_requete.py
+│   │   ├── horloge.py
+│   │   ├── interval.py
 │   │   ├── lecteur_csv.py
-│   │   └── memoire
-│   │       └── ecrivain.py
+│   │   ├── lecteur_dataset_reformulation.py
+│   │   ├── memoire
+│   │   │   ├── ecrivain.py
+│   │   │   └── executeur_de_requete_memoire.py
+│   │   └── ui_kit
+│   │       └── version_ui_kit.py
+│   ├── jeopardy
+│   │   ├── client_albert_jeopardy.py
+│   │   ├── client_albert_jeopardy_reel.py
+│   │   ├── collecteur.py
+│   │   ├── consommateurs_jeopardy.py
+│   │   ├── evenements.py
+│   │   ├── prompt_generation_question.py
+│   │   ├── questions.py
+│   │   ├── service.py
+│   │   ├── service_jeopardyse_collection_entiere.py
+│   │   └── service_jeopardyse_liste_de_documents.py
 │   ├── journalisation
 │   │   ├── __init__.py
 │   │   ├── consignateur_evaluation.py
-│   │   └── experience.py
+│   │   └── evaluation.py
 │   ├── main.py
-│   └── mqc
-│       ├── __init__.py
-│       ├── collecte_reponses_mqc.py
-│       ├── ecrivain_sortie.py
-│       ├── remplisseur_reponses.py
-│       └── traite_csv_par_lots_en_parallele.py
+│   └── serveur.py
 ├── tests
 │   ├── adaptateurs
-│   │   └── test_client_albert_reel.py
-│   ├── conftest.py
-│   ├── deepeval
+│   │   └── test_client_albert_indexation_reel.py
+│   ├── api
 │   │   ├── conftest.py
-│   │   ├── test_client_deepeval_albert.py
-│   │   ├── test_lanceur_deepeval.py
-│   │   └── test_metriques_personalisees.py
+│   │   ├── test_api_evaluation_reformulation.py
+│   │   └── test_api_jeopardy.py
+│   ├── conftest.py
 │   ├── documents
 │   │   ├── collecte
 │   │   │   └── test_collecte.py
@@ -117,17 +169,83 @@
 │   │       ├── test_categorise_le_contenu.py
 │   │       ├── test_document_pdf.py
 │   │       └── test_extrais_les_chunks.py
-│   ├── infra
-│   │   └── evaluateur
-│   │       └── deep_eval
-│   │           └── test_evaluateur_deepeval_multi_processes.py
-│   ├── mqc
+│   ├── evaluation
 │   │   ├── conftest.py
-│   │   ├── test_ecrivain_sortie.py
-│   │   └── test_remplisseur_pose_question.py
+│   │   ├── mqc
+│   │   │   ├── conftest.py
+│   │   │   ├── test_client_deepeval_albert.py
+│   │   │   ├── test_ecrivain_sortie.py
+│   │   │   ├── test_lanceur_deepeval.py
+│   │   │   ├── test_mapping_noms_documents.py
+│   │   │   ├── test_metriques_personalisees.py
+│   │   │   └── test_remplisseur_pose_question.py
+│   │   ├── reformulation
+│   │   │   ├── evenements
+│   │   │   │   └── test_journalisation.py
+│   │   │   ├── test_evaluation.py
+│   │   │   └── test_metriques_reformulation.py
+│   │   ├── test_evaluateur_mqc.py
+│   │   └── test_service_evaluation.py
+│   ├── evenement
+│   │   ├── test_bus.py
+│   │   └── test_fabrique_bus_evenements.py
+│   ├── infra
+│   │   ├── dataset_reformulation_de_test.csv
+│   │   ├── evaluateur
+│   │   │   └── deep_eval
+│   │   │       └── test_evaluateur_deepeval_multi_processes.py
+│   │   └── test_lecteur_dataset_reformulation.py
+│   ├── jeopardy
+│   │   ├── conftest.py
+│   │   ├── test_collecteur_de_questions.py
+│   │   ├── test_service_jeopardyse_collection_entiere.py
+│   │   └── test_service_jeopardyse_liste_documents.py
 │   ├── test_consignateur_evaluation.py
-│   ├── test_lecteur_csv.py
-│   ├── test_main.py
-│   └── test_mapping_noms_documents.py
+│   └── test_lecteur_csv.py
+├── ui
+│   ├── .gitignore
+│   ├── .nvmrc
+│   ├── .prettierignore
+│   ├── .prettierrc
+│   ├── Dockerfile
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
+│   ├── public
+│   │   ├── fonts
+│   │   │   ├── Marianne-Bold.woff
+│   │   │   ├── Marianne-Bold.woff2
+│   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-Light.woff
+│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   ├── Marianne-Medium.woff
+│   │   │   ├── Marianne-Medium.woff2
+│   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-Regular.woff
+│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   └── Marianne-Regular_Italic.woff2
+│   │   ├── icons
+│   │   │   └── favicon.ico
+│   │   └── images
+│   │       └── ANSSI.svg
+│   ├── src
+│   │   ├── App.svelte
+│   │   ├── app.css
+│   │   ├── fonts.css
+│   │   └── main.ts
+│   ├── svelte.config.js
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
 └── uv.lock
-36 directories, 96 files
+55 directories, 195 files

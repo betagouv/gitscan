@@ -1,3 +1,94 @@
+2026-04-09T15:25:28+02:00 - f084a46 - Bertrand Bougon : [REMANIEMENT] Extrais une classe abstraite afin de faire émerger un service pour jeopardyser des documents ciblés
+2026-04-09T15:25:28+02:00 - dc3158b - Bertrand Bougon : Jeopardyse une liste de documents en les recherchant par leurs noms
+2026-04-09T15:25:28+02:00 - dbabc38 - Bertrand Bougon : [REMANIEMENT] Type la méthode jeopardyse
+2026-04-09T15:25:28+02:00 - 0b536f9 - Bertrand Bougon : Implémente la recherche par noms de documents dans le client Albert
+2026-04-07T17:36:26+02:00 - e44c694 - Bertrand Bougon : Corrige le modèle d’évaluation pour faire référence à deepeval
+2026-04-07T17:36:26+02:00 - b9f8421 - Bertrand Bougon : Ajoute le modèle C4 du Jeopardy
+2026-04-07T09:49:45+02:00 - 5cc06b9 - Bertrand Bougon : Demande à l’entrepôt de questiont générée les questions pour un document donné
+2026-04-03T10:04:49+02:00 - e5939de - Bertrand Bougon : [DEBUG] Investigue la non prolifération des logs sur CC
+2026-04-03T09:24:09+02:00 - c9a6d99 - Bertrand Bougon : Laisse uvicorn gérer l’initialisation des logs
+2026-04-02T17:25:36+02:00 - d50fdb5 - Bertrand Bougon : Mets à jour les droits d’exécution du script clever
+2026-04-02T17:14:55+02:00 - f3f2df2 - Pierre Leroy : Ajoute le script pre-run pour build le front
+2026-04-02T17:06:49+02:00 - 88e903f - Pierre Leroy : Configure la CI pour lancer le déploiement depuis github
+2026-04-02T17:04:51+02:00 - 391d750 - Pierre Leroy : Déploie et démarre le serveur MQC Data.
+2026-04-02T16:48:17+02:00 - ff086df - Pierre Leroy : Ajoute des logs pour le suivi de jeopardy
+2026-04-02T16:48:17+02:00 - d5e33a2 - Pierre Leroy : Améliore le prompt jeopardy
+2026-04-02T12:03:22+02:00 - 80e1ec3 - Bertrand Bougon : [SECURITE] Mets à jour requests suite à l’alerte dependabot https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/31
+2026-04-02T12:03:22+02:00 - 1b2c047 - Bertrand Bougon : [SECURITE] Mets à jour svelte suite à l’alerte dependabot https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/24
+2026-04-02T11:06:53+02:00 - 99a29ca - Pierre Leroy : Ajoute les logs lors du traitement de jeopardy
+2026-04-02T09:08:18+02:00 - 5925f9a - Bertrand Bougon : Publie les événements lors de la génération de questions
+2026-04-02T09:05:40+02:00 - 1d43111 - Bertrand Bougon : [CORRECTION] Ajoute le document docling lors de l’extraction
+2026-04-01T12:08:45+02:00 - 3f539f1 - Bertrand Bougon : Mets à jour la documentation HyDE :
+2026-04-01T11:57:11+02:00 - 71c00f1 - Bertrand Bougon : Expose une route POST jeopardy pour lancer la génération de question sur une collection
+2026-04-01T11:57:11+02:00 - 5f44ac4 - Bertrand Bougon : Gère les cas d’erreur lors de la génération de questions
+2026-03-31T12:17:35+02:00 - 82920a9 - Bertrand Bougon : Continue l’ajout de documents de la nouvelle collection lorsque des erreurs sont remontées lors de l’appel à Albert
+2026-03-31T12:17:35+02:00 - 5284885 - Pierre Leroy : [SOIN] Refacto l'appel d'albert pour éviter la duplication de code
+2026-03-31T12:17:35+02:00 - 4903a1f - Bertrand Bougon : Continue l’ajout des chunks dans les documents de la nouvelle collection lorsque des erreurs sont remontées lors de l’appel à Albert
+2026-03-31T12:17:35+02:00 - 2a45eb5 - Bertrand Bougon : [REFACTO] Fournis directement les id de collection et de document pour l’ajout des chunks
+2026-03-31T12:17:35+02:00 - 1eb0372 - Bertrand Bougon : Débute la jeopardisation par collection
+2026-03-31T12:17:35+02:00 - 0cb89f4 - Pierre Leroy : Modifie le main de jeopardy pour jeopardyser une collection
+2026-03-31T12:17:35+02:00 - 02608cc - Bertrand Bougon : Continue la récupération des chunks lorsque des erreurs sont remontées lors de l’appel à Albert
+2026-03-30T12:03:44+02:00 - a466988 - Pierre Leroy : Ajoute un test pour l ajout des questions comme chunks
+2026-03-30T12:03:44+02:00 - 769bef4 - Pierre Leroy : Permets de lire un document à partir de son id
+2026-03-30T12:03:44+02:00 - 41b6c07 - Bertrand Bougon : [REFACTO] Extrais un service ayant la responsabilité de :
+2026-03-30T12:03:44+02:00 - 1d50375 - Pierre Leroy : ajoute_chunks_dans_document pour le client reel
+2026-03-30T11:13:42+02:00 - a407555 - Pierre Leroy : Implémente le client jeopardy albert cible et ajoute le prompt
+2026-03-30T10:03:14+02:00 - e3bcd05 - Pierre Leroy : Transmets le multiprocesseur au collecteur de questions
+2026-03-30T10:03:14+02:00 - 71438ba - Bertrand Bougon : [SOIN] Type fortement la création d’un Document
+2026-03-30T10:03:14+02:00 - 5bfd5bd - Bertrand Bougon : Persiste les questions générées
+2026-03-25T09:57:39+01:00 - aa06938 - Bertrand Bougon : Initie la génération des questions
+2026-03-25T09:57:39+01:00 - 9c26ac6 - Pierre Leroy : Permets d'ajouter des chunks à un document
+2026-03-25T09:57:39+01:00 - 68e16c3 - Pierre Leroy : On passe le prompt pour générer la question
+2026-03-25T09:57:39+01:00 - 1dbfffd - Bertrand Bougon : [DOC] Décris la réflexion sur la solution de génération de questions
+2026-03-25T09:57:39+01:00 - 094003f - Bertrand Bougon : Ajoute un nom et une description à la collection Jeopardy
+2026-03-24T12:17:09+01:00 - 792fad4 - Bertrand Bougon : [SECURITE] Mets à jour la dépendance flatted suite à l’alerte dependabot https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/27
+2026-03-24T12:07:28+01:00 - 01ed8ed - Bertrand Bougon : [SECURITE] Mets à jour la dépendance pyasn1 suite à l’alerte dependabot https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/26
+2026-03-24T12:05:03+01:00 - c26c996 - Bertrand Bougon : Ajoute les rapports sur les menaces du CERT-FR
+2026-03-24T12:05:03+01:00 - 6298740 - Bertrand Bougon : Ajoute les fiches réflexes du CERT-FR
+2026-03-24T12:05:03+01:00 - 2796f44 - Bertrand Bougon : Ajoute les documents de la CNIL
+2026-03-24T12:05:03+01:00 - 23e19d7 - Bertrand Bougon : Ajoute les documents des sites du LAB et le panorama de la menace 2025
+2026-03-24T12:05:03+01:00 - 01bc121 - Bertrand Bougon : Ajoute les recommandations et durcissements du CERT-FR
+2026-03-24T09:46:36+01:00 - bae6c49 - Bertrand Bougon : Utilise le numéro de page du bloc en lieu et place de la page
+2026-03-24T09:46:36+01:00 - 7d16bbd - Bertrand Bougon : Indexe tous les blocs d'un document
+2026-03-24T09:46:36+01:00 - 598dccc - Bertrand Bougon : Ajoute le numéro de page au niveau du bloc
+2026-03-23T19:20:45+01:00 - dae30ff - Bertrand Bougon : Corrige l'exécuteur de requête
+2026-03-18T12:32:38+01:00 - e9b2c88 - Bertrand Bougon : Retourne une réponse 404 si le prompt ne peut être récupéré
+2026-03-18T12:32:38+01:00 - 8c6be90 - Bertrand Bougon : Exécute l’évaluation de la reformulation via un service
+2026-03-18T12:32:38+01:00 - 2893338 - Bertrand Bougon : Expose une route pour exécuter une évaluation sur la reformulation
+2026-03-18T12:32:38+01:00 - 251ffd7 - Bertrand Bougon : Retourne l’id d’évaluation en cours et le nombre de questions sur la route POST /api/evaluation/reformulation
+2026-03-18T09:10:56+01:00 - bf15805 - Bertrand Bougon : [SOIN] Reformate les métriques
+2026-03-17T15:20:04+01:00 - 5627f45 - Pierre Leroy : Amélioration des métriques du reformulateur
+2026-03-17T14:59:29+01:00 - b8b46fe - Bertrand Bougon : Expose un serveur en prévision de l’APIsation de MQC-Data
+2026-03-17T09:08:06+01:00 - 3c54083 - Bertrand Bougon : [SOIN] Supprime openai du client d’indexation
+2026-03-16T17:26:05+01:00 - 948c2a1 - Pierre Leroy : Modifie la github action avec `l'env set`
+2026-03-16T16:21:02+01:00 - b91ea79 - Bertrand Bougon : Ajoute une github action pour lancer une reformulation manuellement
+2026-03-16T15:53:02+01:00 - cd8f84d - Bertrand Bougon : Consomme un événement publié
+2026-03-16T15:53:02+01:00 - a396e11 - Bertrand Bougon : Implémente un consommateur pour la journalisation d’une évaluation de reformulation
+2026-03-16T15:53:02+01:00 - 0b95026 - Bertrand Bougon : Publie les résultats d’une évaluation sur la reformulation sur un bus d’événements
+2026-03-16T14:07:39+01:00 - 930fff5 - Pierre Leroy : Ajoute un première version du dataset de reformulation
+2026-03-16T13:04:30+01:00 - b6b15e5 - Bertrand Bougon : Réordonne l’arborescence d’évaluation en séparant l’évaluation de MQC de l’évaluation de la reformulation
+2026-03-16T09:43:31+01:00 - d403b5b - Pierre Leroy : Introduit la métrique MetriqueSuppressionParasites
+2026-03-16T09:43:31+01:00 - bc93150 - Pierre Leroy : Ajoute les 3 métriques complémentaires
+2026-03-16T09:43:31+01:00 - 95d7746 - Pierre Leroy : Initie un dataset de reformulation
+2026-03-16T09:43:31+01:00 - 3289eb7 - Pierre Leroy : Renomme le package interne deepeval pour éviter les confusions
+2026-03-16T09:43:31+01:00 - 27b7953 - Bertrand Bougon : Ajoute les résultats des cas de tests dans le résultat final
+2026-03-16T09:43:31+01:00 - 1564bff - Pierre Leroy : Améliore le prompt pour la suppression des parasites
+2026-03-13T12:02:26+01:00 - 4b0bcd5 - Bertrand Bougon : Expose un script exécutable pour lancer une évaluation de la reformulation
+2026-03-13T08:48:28+01:00 - ab7d0b4 - Bertrand Bougon : Fournis le prompt au client Albert de reformulation
+2026-03-13T08:48:28+01:00 - 7512a38 - Bertrand Bougon : Implémente un client Albert de reforumalition avec OpenAI
+2026-03-13T08:48:28+01:00 - 533e03d - Bertrand Bougon : Reformule toutes les questions fournies
+2026-03-13T08:48:28+01:00 - 04643c7 - Bertrand Bougon : Initie l’évaluation de la reformulation
+2026-03-12T17:12:01+01:00 - 77c9b65 - Bertrand Bougon : [REFACTO] Renomme ClientAlbert en ClientAlbertIndexation
+2026-03-12T17:12:01+01:00 - 1f5143f - Bertrand Bougon : [REFACTO] Renomme toute notion d’expérience en évaluation
+2026-03-12T15:50:10+01:00 - bf63abf - Bertrand Bougon : [REFACTO] Réorganise toute la structure de l’évaluation
+2026-03-12T12:12:57+01:00 - 875ba0e - Bertrand Bougon : Ajoute le référentiel des exigences SecNumCloud dans les documents distants
+2026-03-12T12:11:24+01:00 - 26f3490 - Bertrand Bougon : Remplace le paramètre obsolète de chunker à Albert API
+2026-03-11T11:59:18+01:00 - 1bfde12 - Bertrand Bougon : Adapte l’indexeur pour utiliser la nouvelle ressource d’ajout de chunk d’Albert API
+2026-03-11T11:59:18+01:00 - 142e2b8 - Bertrand Bougon : [REFACTO] Adapte l’exécuteur de requête pour tester le futur ajout des chunks dans un document
+2026-03-11T11:59:18+01:00 - 03b08fd - Bertrand Bougon : Envoie les chunks d’un document par paquet de 64 chunks
+2026-03-10T09:36:04+01:00 - 9c8d870 - Pierre Leroy : WIP :
+2026-03-10T09:36:04+01:00 - 4c2379c - Pierre Leroy : [SOIN] Supprime un fichier json déplacé, plus utilisé
+2026-03-10T09:36:04+01:00 - 3d91699 - Pierre Leroy : Ajoute un fichier js pour enregistrer les pages dynamiques
 2026-03-05T18:37:32+01:00 - 88b18f6 - Bertrand Bougon : Fournis le fichier servant la liste des documents distants à intégrer
 2026-03-05T18:25:49+01:00 - 2f8604d - Bertrand Bougon : [SOIN] Réorganise tout le package d’indexation des documents
 2026-03-05T09:10:29+01:00 - ec591e5 - Bertrand Bougon : [SOIN] Passe en privé certains champs de DocumePDF
