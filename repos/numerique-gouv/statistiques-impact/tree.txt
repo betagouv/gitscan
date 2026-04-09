@@ -1,0 +1,98 @@
+.
+├── .github
+│   └── workflows
+│       └── tests.yml
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+└── django
+    ├── .env.example
+    ├── .gitignore
+    ├── .python-version
+    ├── Makefile
+    ├── Procfile
+    ├── config
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── core
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── api
+    │   │   ├── permissions.py
+    │   │   ├── serializers.py
+    │   │   └── viewsets.py
+    │   ├── api_urls.py
+    │   ├── apps.py
+    │   ├── clients
+    │   │   ├── __init__.py
+    │   │   ├── client_base.py
+    │   │   ├── datagouv.py
+    │   │   ├── metabase.py
+    │   │   └── posthog.py
+    │   ├── factories.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   └── commands
+    │   │       ├── __init__.py
+    │   │       ├── demo.py
+    │   │       ├── fetch_new_data.py
+    │   │       ├── import-stock.py
+    │   │       └── merge_daily_FT_data.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   ├── 0002_alter_indicator_options_alter_product_options.py
+    │   │   ├── 0003_alter_indicator_options_alter_product_options.py
+    │   │   ├── 0004_product_slug.py
+    │   │   ├── 0005_alter_product_slug.py
+    │   │   ├── 0006_productapikey.py
+    │   │   ├── 0007_alter_indicator_options.py
+    │   │   ├── 0008_product_dataset_id.py
+    │   │   ├── 0009_indicator_created_at_indicator_updated_at.py
+    │   │   ├── 0010_alter_indicator_created_at.py
+    │   │   ├── 0011_alter_indicator_est_automatise_and_more.py
+    │   │   ├── 0012_adaptor.py
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── templates
+    │   │   └── core
+    │   │       ├── accessibility.html
+    │   │       ├── base.html
+    │   │       ├── blocks
+    │   │       │   ├── footer.html
+    │   │       │   └── header.html
+    │   │       ├── index.html
+    │   │       ├── last_indicators.html
+    │   │       ├── legal_notice.html
+    │   │       └── products_details.html
+    │   ├── tests
+    │   │   ├── adaptors
+    │   │   │   ├── test_commands.py
+    │   │   │   ├── test_datagouv_client.py
+    │   │   │   ├── test_metabase_client.py
+    │   │   │   └── test_posthog_client.py
+    │   │   ├── api
+    │   │   │   ├── examples
+    │   │   │   │   ├── ip-127-0-0-1_FranceTransfert_2025-05-11_download_stats.csv
+    │   │   │   │   └── ip-127-0-0-1_FranceTransfert_2025-07-23_upload_stats.csv
+    │   │   │   ├── indicators
+    │   │   │   │   └── test_api_indicators.py
+    │   │   │   ├── products
+    │   │   │   │   └── test_api_products.py
+    │   │   │   ├── test_schema.py
+    │   │   │   └── test_submissions.py
+    │   │   └── conftest.py
+    │   ├── urls.py
+    │   ├── utils
+    │   │   └── utils.py
+    │   └── views.py
+    ├── cron.json
+    ├── docs
+    │   └── envoi_de_fichiers.md
+    ├── manage.py
+    ├── pytest.ini
+    ├── requirements.txt
+    └── schema.yml
+22 directories, 75 files
