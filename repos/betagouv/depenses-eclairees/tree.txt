@@ -40,6 +40,7 @@
 │   │   └── synthesis.py
 │   └── utils.py
 ├── ci.env
+├── cron.json
 ├── docia
 │   ├── __init__.py
 │   ├── admin.py
@@ -112,13 +113,16 @@
 │   │       ├── dns.py
 │   │       ├── downloader.py
 │   │       ├── files_utils.py
-│   │       └── sync_metadata.py
+│   │       ├── sync_engagements.py
+│   │       ├── sync_metadata.py
+│   │       └── workflow.py
 │   ├── forms.py
 │   ├── logging.py
 │   ├── management
 │   │   ├── __init__.py
 │   │   └── commands
 │   │       ├── __init__.py
+│   │       ├── display_batch_progress.py
 │   │       ├── launch_pipeline.py
 │   │       ├── shell.py
 │   │       └── sync_engagement_items.py
@@ -149,6 +153,9 @@
 │   │   ├── 0024_remove_document_ej.py
 │   │   ├── 0025_remove_fileinfo_num_ej_alter_document_dossier_and_more.py
 │   │   ├── 0026_externaldocumentmetadata_fileinfo_external_id_and_more.py
+│   │   ├── 0027_alter_engagementscope_options_and_more.py
+│   │   ├── 0028_document_analyzed_at_externaldocumentmetadata_date_and_more.py
+│   │   ├── 0029_fileinfo_root_external_id.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── permissions
@@ -188,8 +195,10 @@
 │   │       │       ├── document.html
 │   │       │       ├── fiche_navette
 │   │       │       │   └── document_fiche_navette.html
-│   │       │       └── rib
-│   │       │           └── document_rib.html
+│   │       │       ├── rib
+│   │       │       │   └── document_rib.html
+│   │       │       └── sous_traitance
+│   │       │           └── document_sous_traitance.html
 │   │       ├── email_base.html
 │   │       └── home.html
 │   ├── templatetags
@@ -265,6 +274,7 @@
 │   │   │   │   ├── post_processing_llm
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_check_consistency_bank_account.py
+│   │   │   │   │   ├── test_clean_llm_response.py
 │   │   │   │   │   ├── test_normalize_name.py
 │   │   │   │   │   ├── test_normalize_text.py
 │   │   │   │   │   ├── test_post_processing_amount.py
@@ -273,10 +283,12 @@
 │   │   │   │   │   ├── test_post_processing_co_contractors.py
 │   │   │   │   │   ├── test_post_processing_duration.py
 │   │   │   │   │   ├── test_post_processing_iban.py
+│   │   │   │   │   ├── test_post_processing_object_ccap.py
 │   │   │   │   │   ├── test_post_processing_other_bank_accounts.py
 │   │   │   │   │   ├── test_post_processing_percentage.py
 │   │   │   │   │   ├── test_post_processing_postal_address.py
 │   │   │   │   │   ├── test_post_processing_siret.py
+│   │   │   │   │   ├── test_post_processing_societe_principale.py
 │   │   │   │   │   └── test_post_processing_subcontractors.py
 │   │   │   │   ├── test_classifier.py
 │   │   │   │   ├── test_pdf_drawings.py
@@ -327,7 +339,9 @@
 │   │   │   │   │   └── test_get_corrected_extension.py
 │   │   │   │   ├── test_client.py
 │   │   │   │   ├── test_downloader.py
-│   │   │   │   └── test_sync_metadata.py
+│   │   │   │   ├── test_sync_engagements.py
+│   │   │   │   ├── test_sync_metadata.py
+│   │   │   │   └── test_workflow.py
 │   │   │   └── test_models.py
 │   │   ├── permissions
 │   │   │   ├── __init__.py
@@ -355,6 +369,7 @@
     ├── test_quality_ccap.py
     ├── test_quality_classification.py
     ├── test_quality_dc4.py
+    ├── test_quality_devis.py
     ├── test_quality_fiche_navette.py
     ├── test_quality_pipeline_ae.py
     ├── test_quality_rib.py
@@ -365,4 +380,4 @@
     │   │   └── lettre.md
     │   └── test_ocr_api.py
     └── utils.py
-76 directories, 291 files
+77 directories, 305 files

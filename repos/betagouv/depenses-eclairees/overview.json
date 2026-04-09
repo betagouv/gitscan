@@ -1,35 +1,45 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees",
   "name": "depenses-eclairees",
-  "description": "Ce projet vise à extraire et analyser des données à partir de documents financiers, tels que des actes d'engagement et des fiches navette, en utilisant l'OCR et des modèles de langage pour une meilleure compréhension des dépenses publiques.",
+  "description": "Ce projet vise à éclaircir les dépenses publiques en extrayant et en analysant des données à partir de divers documents. Il utilise l'OCR et des modèles de langage pour structurer et rendre accessibles ces informations. L'objectif est de favoriser la transparence et la compréhension des finances publiques.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Intelligence Artificielle & NLP",
+    "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
     "Statistiques & Rapports",
-    "Visualisation de données & Cartographie"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels",
+    "Associations"
+  ],
   "dependencies": [
     "Poetry",
     "Django",
     "djangorestframework",
     "celery",
     "psycopg",
-    "Pillow",
+    "PyCryptodome",
+    "PyMuPDF",
     "python-magic",
     "tesserocr",
     "openai",
     "mozilla-django-oidc",
-    "whitenoise"
+    "whitenoise",
+    "gunicorn"
   ],
   "components": [
-    "Django",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Microservices & Architecture",
-    "Celery & Queue asynchrone",
-    "Webhooks & Événements"
+    "Django",
+    "Python (scripts & backend)",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -37,20 +47,17 @@
       "session"
     ],
     "providers": [
-      "Google",
-      "GitHub",
-      "Microsoft"
+      "OIDC"
     ]
   },
   "tests": [
     "pytest",
-    "pytest-cov",
-    "pytest-django"
+    "pytest-cov"
   ],
   "workflows": [
-    "CI/CD (non spécifié)"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-03-04T11:36:27+01:00",
+  "lastActivity": "2026-04-02T18:53:27+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,11 +68,12 @@
     "openIssues": null
   },
   "tags": [
-    "dépenses publiques",
-    "Subventions & Finances publiques",
-    "NLP & ML",
     "Données & Open Data",
-    "Django & FastAPI",
-    "Python"
+    "Écosystème beta.gouv / État",
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Intelligence Artificielle & NLP",
+    "Subventions & Finances publiques"
   ]
 }
