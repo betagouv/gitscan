@@ -1,11 +1,10 @@
-## Changelog : base-agrement-back (30 derniers jours)
+## Changelog : base-agrement-back (30 derniers jours, au 24 mars 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place des premières bases de données et de l'initialisation des données, ainsi que sur l'amélioration de la gestion du schéma de la base de données. Des corrections mineures ont également été apportées pour stabiliser le projet.
+Ce changelog présente des corrections et des mises à jour de schémas de données. Ces modifications améliorent la stabilité et la cohérence du backend, sans impact direct sur l'interface utilisateur.
+
+### Évolutions fonctionnelles
+- Correction d'un bug non spécifié. [#7bc9d4d](https://github.com/betagouv/base-agrement-back/commit/7bc9d4d)
 
 ### Évolutions techniques
-- Ajout de seeders pour l'initialisation de la base de données.
-- Refactorisation des tables et ajout d'un générateur de diagramme entité-relation (ERD).
-- Exclusion du générateur ERD de l'environnement de production.
-- Mise à jour du schéma de la base de données.
-- Corrections diverses pour stabiliser le code.
+- Mise à jour des schémas de données. [#6abdeaf](https://github.com/betagouv/base-agrement-back/commit/6abdeaf)
