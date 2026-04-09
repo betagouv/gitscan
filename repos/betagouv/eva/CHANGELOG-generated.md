@@ -1,29 +1,15 @@
-## Changelog : eva (derniers 30 jours)
+## Changelog : eva (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Les dernières mises à jour d'eva se concentrent sur l'amélioration de l'interface utilisateur, notamment avec l'intégration progressive du Design System de la République Française (DSFR). Des corrections de bugs graphiques et des ajustements d'accessibilité ont également été apportés, ainsi que des améliorations concernant le parcours utilisateur et la gestion des réponses aux questions.
-
-### Évolutions fonctionnelles
-- Remplacement du bouton "Je passe" par une case à cocher "Je ne sais pas" (#a1dd529)
-- Possibilité de décocher "Je ne sais pas" si un choix est effectué (#e800906)
-- Amélioration de l'accessibilité : les liens d'accès aux situations sont maintenant des boutons pour la page de résultat (#4dcc3d4) et le bouton de déconnexion sur l'écran final est maintenant un bouton (#0e9c170).
-- Ajout du hash 'toutes' pour la numératie et le positionnement en littératie (#4d78b6a, #1709071)
-- Correction du bouton de lecture (#02339a7)
-- Les questions de type "clique-sur-mot" et les consignes sont maintenant passables (#ff65e1c, #812d584, #0780efc)
-- Effacement des choix précédents lors du cocher de "Je ne sais pas" (#559c912)
+Ce mois-ci, l'équipe a principalement travaillé sur la mise à jour des dépendances du projet, notamment les outils de développement et de test. Ces mises à jour visent à améliorer la stabilité, la sécurité et les performances de la plateforme. Une correction a également été apportée pour restaurer une fonctionnalité précédente concernant les consignes d'objets.
 
 ### Évolutions techniques
-- Intégration du Design System de la République Française (DSFR) (#a0cdc00, #97cc303) et mock des scripts JS du DSFR pendant les tests (#ce28c4b)
-- Factorisation de la méthode `carteSuivanteParcours` entre "Café de la place" et "Place du marché" (#64e33a9)
-- Renommage de `carteActive` en `questionActive` sur "Café de la place" (#aaeed94)
-- Correction des erreurs du linter (#688f5f3)
-- Affichage de l'ID de la question courante dans la console navigateur pour le débogage (#e9a3e31)
+- Mise à jour de Jest de la version 27 à la version 29, incluant la correction des tests associés. [#92b5e82](https://github.com/betagouv/eva/commit/92b5e82)
+- Migration de `sass-loader` vers l'API moderne pour une meilleure compatibilité et performance. [#da9a778](https://github.com/betagouv/eva/commit/da9a778)
+- Mise à jour de Webpack Dev Server de la version 4.15.2 à la version 5.2.1. [#c1b4893](https://github.com/betagouv/eva/commit/c1b4893)
+- Actualisation de plusieurs dépendances mineures (lint-staged, webpack-node-externals, workbox-webpack-plugin). [#2a179ea](https://github.com/betagouv/eva/commit/2a179ea)
+- Mise à jour d'ESLint vers la version 10. [#231042e](https://github.com/betagouv/eva/commit/231042e)
+- Actualisation des fichiers SCSS pour supprimer les alertes de dépréciation. [#12768dc](https://github.com/betagouv/eva/commit/12768dc)
 
 ### Autres changements
-- Correction de divers bugs graphiques liés à l'introduction du DSFR (#8bb5ea5, #802a157)
-- Ajustements de l'aspect visuel : remplacement d'une constante de couleur par une variable, correction de l'aspect des icônes des réponses audios, suppression du soulignement du lien "Je donne mon avis" sur l'écran final, correction de l'aspect des boutons de déconnexion (#cb79bf6, #e013845, #b35d2d7, #60e2cea)
-- Changement du texte explicatif d'introduction de la littératie pour clarifier l'option "Je ne sais pas" (#98bdabf)
-- Correction d'une faute de frappe et formatage d'un fichier de test (#a576c25)
-- Changement de la couleur du haut-parleur et de la pagination (#22ec573)
-- Passage de la palette de couleurs au bleu France (#02718eb)
-- Revert d'un changement de couleur sur la calculatrice (#917b903)
+- Restauration de la consigne d'objet précédente. [#cb57c4b](https://github.com/betagouv/eva/commit/cb57c4b)
