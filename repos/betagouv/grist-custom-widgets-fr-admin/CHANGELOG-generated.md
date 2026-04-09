@@ -1,10 +1,12 @@
-## Changelog : grist-custom-widgets-fr-admin (30 derniers jours)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 31 mars 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées aux widgets personnalisés pour Grist, utilisés par l'administration française. Les modifications incluent une correction concernant le lien vers l'API de géocodage et une mise à jour de la version de Next.js.
-
-### Évolutions fonctionnelles
-- Correction du lien vers l'API utilisé pour le géocodage, améliorant ainsi la fiabilité de la fonctionnalité. [#167](https://github.com/betagouv/grist-custom-widgets-fr-admin/pull/167)
+Ce changelog fait état de mises à jour techniques concernant les dépendances du projet. Les versions de plusieurs librairies ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité. Aucune nouvelle fonctionnalité ou correction visible pour l'utilisateur n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de Next.js vers la version 16.1.5. [#164](https://github.com/betagouv/grist-custom-widgets-fr-admin/pull/164)
+- Mise à jour de Next.js vers la version 16.1.7.
+- Mise à jour de la librairie `flatted` vers la version 3.4.2.
+- Mise à jour de la librairie `picomatch`.
+
+### Autres changements
+Aucun autre changement significatif n'a été apporté durant cette période.
