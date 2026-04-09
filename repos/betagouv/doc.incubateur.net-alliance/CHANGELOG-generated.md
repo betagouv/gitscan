@@ -1,7 +1,13 @@
-## Changelog : doc.incubateur.net-alliance (30 derniers jours)
+## Changelog : doc.incubateur.net-alliance (30 derniers jours, au 19 mars 2026)
 
 ### Résumé
-Ce mois-ci, la documentation de l'alliance a subi une restructuration globale pour améliorer sa clarté et sa navigabilité. Cette réorganisation vise à faciliter l'accès à l'information pour les équipes produits, les innovateurs et les décideurs publics intéressés par l'utilisation de l'IA au service public.
+Ce changelog fait suite à une mise à jour de la documentation concernant le guide de ré-évaluation des LLM. Cette mise à jour vise à améliorer la clarté et l'accessibilité des informations pour les équipes travaillant avec l'intelligence artificielle au sein de l'administration.
 
 ### Évolutions fonctionnelles
-- Restructuration complète de la documentation pour une meilleure organisation et accessibilité. [#211](https://github.com/betagouv/doc.incubateur.net-alliance/issues/211)
+- Mise à jour du guide de ré-évaluation des LLM. [#1](https://github.com/betagouv/doc.incubateur.net-alliance/pull/1)
+
+### Évolutions techniques
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Aucune autre modification n'a été apportée au dépôt.
