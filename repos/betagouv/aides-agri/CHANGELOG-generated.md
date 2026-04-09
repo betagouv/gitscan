@@ -1,32 +1,27 @@
-## Changelog : aides-agri (30 derniers jours)
+## Changelog : aides-agri (30 derniers jours, au 9 avril 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de la plateforme d'aides agricoles. Les principales nouveautés concernent l'ajout d'une page de statistiques pour le suivi des données, des améliorations de l'interface d'administration pour la gestion des aides, et des corrections et mises à jour pour assurer la stabilité et la sécurité de la plateforme. Plusieurs améliorations ont également été apportées au parcours utilisateur et à l'affichage des informations sur les aides.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité du site, avec l'ajout d'une politique de sécurité et la correction de vulnérabilités. Des améliorations ont également été apportées à l'interface d'administration pour faciliter la gestion des aides, notamment la duplication d'aides et l'export de données. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et fonctionnalités.
 
 ### Évolutions fonctionnelles
-- Ajout d'une première version de la page de statistiques, permettant un suivi des données de la plateforme. [#387](https://github.com/betagouv/aides-agri/pull/387)
-- Amélioration du parcours utilisateur v1. [#363](https://github.com/betagouv/aides-agri/pull/363)
-- Mise à jour de la page des fonds d'urgence DNC. [#370](https://github.com/betagouv/aides-agri/pull/370)
-- Les bureaux valideurs peuvent désormais voir les aides avant leur publication. [#371](https://github.com/betagouv/aides-agri/pull/371)
-- Export CSV de la base édito : ajout de l'URL de la fiche édito. [#393](https://github.com/betagouv/aides-agri/pull/393)
-- Ajustement mineur de l'administration des aides. [#372](https://github.com/betagouv/aides-agri/pull/372)
+- **Administration :** Possibilité de dupliquer une aide existante depuis l'interface d'administration. [#448](https://github.com/betagouv/aides-agri/issues/448)
+- **Administration :** Réorganisation des champs dans le formulaire d'édition d'une aide pour une meilleure ergonomie. [#446](https://github.com/betagouv/aides-agri/issues/446)
+- **Administration :** Ajout de la possibilité d'exporter les données de toutes les tables de référence au format CSV. [#424](https://github.com/betagouv/aides-agri/issues/424)
+- **Interface utilisateur :** Correction de la mise en page lors de l'impression de la recommandation. [#425](https://github.com/betagouv/aides-agri/issues/425)
+- **Interface utilisateur :** Ajout d'une mention de non-opposabilité sur les fiches d'aides. [#432](https://github.com/betagouv/aides-agri/issues/432)
+- **Statistiques :** Ajout d'une page de statistiques basée sur la matrice d'impact. [#413](https://github.com/betagouv/aides-agri/issues/413)
+- **Filtres :** Correction d'un bug sur le filtre d'aides par zone géographique. [#423](https://github.com/betagouv/aides-agri/issues/423)
 
 ### Évolutions techniques
-- Amélioration du script de mises à jour. [#381](https://github.com/betagouv/aides-agri/pull/381)
-- Configuration d'un "cooldown" pour les mises à jour automatiques de dépendances (dependabot) afin d'éviter des interruptions de service trop fréquentes. [#374](https://github.com/betagouv/aides-agri/pull/374)
-- Mises à jour de plusieurs dépendances :
-    - `gunicorn` de 25.0.1 à 25.0.3 puis à 25.1.0 [#367](https://github.com/betagouv/aides-agri/pull/367) et [#386](https://github.com/betagouv/aides-agri/pull/386)
-    - `faker` de 40.1.2 à 40.4.0 [#366](https://github.com/betagouv/aides-agri/pull/366)
-    - `sentry-sdk` de 2.51.0 à 2.52.0 puis à 2.53.0 [#364](https://github.com/betagouv/aides-agri/pull/364) et [#395](https://github.com/betagouv/aides-agri/pull/395)
-    - `psycopg` de 3.3.2 à 3.3.3 [#398](https://github.com/betagouv/aides-agri/pull/398)
-    - `django-dsfr` de 3.3.0 à 3.3.1 [#355](https://github.com/betagouv/aides-agri/pull/355)
-    - `coverage` de 7.13.3 à 7.13.4 [#383](https://github.com/betagouv/aides-agri/pull/383)
-    - `whitenoise` de 6.11.0 à 6.12.0 [#403](https://github.com/betagouv/aides-agri/pull/403)
-    - `@sentry/browser` de 10.37.0 à 10.38.0 puis à 10.39.0 et 10.40.0 [#373](https://github.com/betagouv/aides-agri/pull/373), [#389](https://github.com/betagouv/aides-agri/pull/389), [#399](https://github.com/betagouv/aides-agri/pull/399)
-    - `djade` de 1.7.0 à 1.8.0 puis à 1.9.0 [#394](https://github.com/betagouv/aides-agri/pull/394) et [#402](https://github.com/betagouv/aides-agri/pull/402)
-    - `ruff` de 0.15.0 à 0.15.1, 0.15.2, 0.15.3 et 0.15.4 [#385](https://github.com/betagouv/aides-agri/pull/385), [#391](https://github.com/betagouv/aides-agri/pull/391), [#400](https://github.com/betagouv/aides-agri/pull/400) et [#401](https://github.com/betagouv/aides-agri/pull/401)
+- **Sécurité :** Correction d'une vulnérabilité open-redirection. [#441](https://github.com/betagouv/aides-agri/issues/441) et [#442](https://github.com/betagouv/aides-agri/issues/442)
+- **Sécurité :** Mise en place d'une surveillance des attaques brute-force. [#440](https://github.com/betagouv/aides-agri/issues/440)
+- **Sécurité :** Ajout d'un fichier `security.txt` pour la divulgation responsable des vulnérabilités. [#414](https://github.com/betagouv/aides-agri/issues/414) et [#415](https://github.com/betagouv/aides-agri/issues/415)
+- **Dépendances :** Mise à jour de Django-DSFR vers la version 3.4.0. [#459](https://github.com/betagouv/aides-agri/issues/459)
+- **CI/CD :** Optimisation du workflow Github. [#467](https://github.com/betagouv/aides-agri/issues/467)
+- **CI/CD :** Mise à jour de certaines actions Github pour éviter les avertissements liés à Node.js 20. [#436](https://github.com/betagouv/aides-agri/issues/436)
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Mises à jour de dépendances de développement (pytest-django, js-yaml, lodash-es, tar-fs, minimatch, systeminformation, esbuild).
+- **Documentation :** Ajout de tests sur l'export CSV dans l'admin. [#438](https://github.com/betagouv/aides-agri/issues/438)
+- **Code :** Obfuscation des données personnelles dans la base de données après l'envoi d'un email. [#439](https://github.com/betagouv/aides-agri/issues/439)
+- **Code :** Diverses petites améliorations et corrections mineures. [#419](https://github.com/betagouv/aides-agri/issues/419), [#420](https://github.com/betagouv/aides-agri/issues/420), [#421](https://github.com/betagouv/aides-agri/issues/421)
+- **Configuration :** Déplacement de l'information légale en bas de la page Aide. [#466](https://github.com/betagouv/aides-agri/issues/466)
