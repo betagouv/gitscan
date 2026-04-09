@@ -11,21 +11,37 @@
 │   └── has.yml
 ├── poetry.lock
 ├── pyproject.toml
+├── scripts
+│   └── explore_opensearch_sections.py
 ├── sql
-│   └── import_atc.sql
+│   ├── import_atc.sql
+│   └── import_presentations.sql
 ├── src
 │   └── infomedicament_dataeng
 │       ├── __init__.py
 │       ├── cli.py
 │       ├── config.py
-│       ├── datagouv.py
+│       ├── convert
+│       │   ├── __init__.py
+│       │   └── sql_to_csv.py
+│       ├── datagouv
+│       │   ├── __init__.py
+│       │   └── importer.py
 │       ├── db.py
 │       ├── io.py
-│       ├── parser.py
-│       ├── pediatric.py
-│       ├── pediatric_config.py
-│       ├── s3.py
-│       └── sql_to_csv.py
+│       ├── opensearch
+│       │   ├── __init__.py
+│       │   ├── client.py
+│       │   ├── sections.py
+│       │   └── specialites.py
+│       ├── parsing
+│       │   ├── __init__.py
+│       │   └── parser.py
+│       ├── pediatric
+│       │   ├── __init__.py
+│       │   ├── config.py
+│       │   └── pediatric.py
+│       └── s3.py
 └── tests
     ├── __init__.py
     ├── conftest.py
@@ -35,7 +51,8 @@
     │   └── test_datagouv.yml
     ├── test_datagouv.py
     ├── test_db_import.py
+    ├── test_opensearch_etl.py
     ├── test_parser.py
     ├── test_pediatric.py
     └── test_sql_to_csv.py
-9 directories, 31 files
+15 directories, 42 files

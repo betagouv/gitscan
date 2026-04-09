@@ -6,6 +6,7 @@ Data engineering tools for ANSM's [infomedicament](https://infomedicament.beta.g
 
 - [HTML Parsing](#html-parsing) — parse ANSM Notice/RCP HTML files from local disk or S3
 - [DB Import](#db-import) — import parsed JSONL files into PostgreSQL
+- [OpenSearch Indexing](#opensearch-indexing) — index parsed sections into OpenSearch for full-text search
 - [SQL to CSV](#sql-to-csv-conversion) — convert T-SQL/MySQL dump files to CSV
 - [Pediatric Classification](#pediatric-classification) — classify RCPs for pediatric use
 - [Import from data.gouv.fr](#import-from-datagouvfr) — fetch open datasets and load them into PostgreSQL
@@ -62,10 +63,15 @@ Options:
 - `--limite`: Limit number of files to process (for testing)
 - `--pattern`: File pattern - N=Notice, R=RCP (default: N)
 - `--batch-size`: Files per batch (default: 500). Results are written after each batch to limit memory usage.
+- `--staging`: Process only files in the staging subdirectory (`imports/notice/staging/` or `imports/rcp/staging/`). After each batch is parsed, files are moved to the main prefix.
 
 Example:
 ```bash
+# Full reprocessing of all files
 poetry run infomedicament-dataeng s3 --pattern R --limite 100
+
+# Delta: parse only newly uploaded files from staging
+poetry run infomedicament-dataeng s3 --pattern N --staging
 ```
 
 #### Global Options
@@ -83,17 +89,85 @@ poetry run infomedicament-dataeng db-import --pattern <N|R> [options]
 Options:
 - `--pattern`: N=Notices, R=RCPs (required)
 - `--limite`: Limit number of records to import (for testing)
+- `--since YYYY-MM-DD`: Only import JSONL files whose filename timestamp is on or after this date.
 
 Example:
 ```bash
 # Import all RCP records
 poetry run infomedicament-dataeng db-import --pattern R
 
+# Import only JSONL files produced on or after a given date
+poetry run infomedicament-dataeng db-import --pattern N --since 2026-03-18
+
 # Test with 10 records
 poetry run infomedicament-dataeng db-import --pattern N --limite 10
 ```
 
-The command lists all `parsed_<pattern>_*.jsonl` files under `S3_OUTPUT_PREFIX`, downloads each one, and upserts the records into PostgreSQL (by `codeCIS`). Existing content trees are deleted before re-inserting.
+The command lists `parsed_<pattern>_*.jsonl` files under `S3_OUTPUT_PREFIX`, downloads each one, and upserts the records into PostgreSQL (by `codeCIS`). Existing content trees are deleted before re-inserting.
+
+### OpenSearch Indexing
+
+Two separate indices power search:
+
+- **`specialites`** — one document per CIS code, used for the main medication search. Matches on specialité name, active substances, pathologies, and ATC classes.
+- **`specialite_sections`** — one document per notice/RCP section, used for deep search within documents.
+
+Both use a French analyzer (elision, stopwords, stemming).
+
+#### Specialités index
+
+```bash
+poetry run infomedicament-dataeng index-opensearch specialites [options]
+```
+
+Options:
+- `--index`: OpenSearch index name (default: `specialites`)
+- `--limite`: Cap on documents indexed (for testing)
+
+Examples:
+```bash
+# Full index from PostgreSQL
+poetry run infomedicament-dataeng index-opensearch specialites
+
+# Test with 100 documents
+poetry run infomedicament-dataeng index-opensearch specialites --limite 100
+```
+
+Re-indexing is idempotent — `_id` is the CIS code, so re-running overwrites existing documents.
+
+#### Sections index
+
+Index parsed Notice/RCP sections into OpenSearch. Each section of a notice or RCP becomes one document (~40 sections × ~15k medications ≈ 600k documents).
+
+```bash
+poetry run infomedicament-dataeng index-opensearch sections --doc-type <notice|rcp> [options]
+```
+
+Options:
+- `--doc-type`: `notice` or `rcp` (required)
+- `--index`: OpenSearch index name (default: `specialite_sections`)
+- `--input`: Local JSONL file to index (mutually exclusive with `--s3`)
+- `--s3`: Read from S3 parsed files instead of a local file (mutually exclusive with `--input`)
+- `--since YYYY-MM-DD`: S3 mode only — only index JSONL files dated on or after this date
+- `--limite`: Cap on number of records indexed (for testing)
+
+Examples:
+```bash
+# Index a local JSONL file (development)
+poetry run infomedicament-dataeng index-opensearch sections --doc-type notice --input output.jsonl
+
+# Index with a record limit for testing
+poetry run infomedicament-dataeng index-opensearch sections --doc-type notice --input output.jsonl --limite 100
+
+# Index from S3 (production)
+poetry run infomedicament-dataeng index-opensearch sections --doc-type notice --s3
+poetry run infomedicament-dataeng index-opensearch sections --doc-type rcp --s3
+
+# Delta: only index JSONL files produced since a given date
+poetry run infomedicament-dataeng index-opensearch sections --doc-type notice --s3 --since 2026-03-01
+```
+
+Re-indexing is idempotent — each document has a deterministic ID (`{cis}_{anchor}_{doc_type}`), so re-running overwrites existing documents without creating duplicates.
 
 ### SQL to CSV Conversion
 
@@ -206,6 +280,27 @@ datasets:
 
 The table must be created first via a Kysely migration in the [`infomedicament`](https://github.com/betagouv/infomed) NextJS project.
 
+## Delta workflow (monthly updates)
+
+When only a small number of new or updated HTML files arrive, avoid reprocessing everything:
+
+1. **Upload new HTML files to the staging subdirectory** (instead of the main prefix):
+   - Notices: `imports/notice/staging/`
+   - RCPs: `imports/rcp/staging/`
+
+2. **Parse only the staged files:**
+   ```bash
+   poetry run infomedicament-dataeng s3 --pattern N --staging
+   poetry run infomedicament-dataeng s3 --pattern R --staging
+   ```
+   Files are automatically moved from staging to the main prefix after each batch.
+
+3. **Import only the new JSONL output:**
+   ```bash
+   poetry run infomedicament-dataeng db-import --pattern N --since YYYY-MM-DD
+   poetry run infomedicament-dataeng db-import --pattern R --since YYYY-MM-DD
+   ```
+
 ## Configuration
 
 ### S3/Cellar
@@ -242,6 +337,11 @@ Two configuration formats are supported:
 - `POSTGRES_DATABASE` (default: postgres)
 - `POSTGRES_PORT` (default: 5432)
 
+### OpenSearch
+
+- `SCALINGO_OPENSEARCH_URL` or `OPENSEARCH_URL`: Full connection URL including credentials (e.g. `http://user:pass@host:port`). Scalingo provides this automatically when an OpenSearch addon is attached.
+- `OPENSEARCH_HOST`: Fallback for local development (default: `http://localhost:9200`)
+
 ### Application
 
 - `LOG_LEVEL`: Logging level (default: INFO)
@@ -264,20 +364,37 @@ scalingo --app your-app scale web:0
 Run tasks as one-off containers:
 
 ```bash
-# Parse Notice files (N*.htm)
-scalingo --app your-app run --size 2XL "python -m infomedicament_dataeng.cli s3 --pattern N --batch-size 1000"
+# Delta parse: only staged files (recommended for monthly updates)
+scalingo --app your-app run --size 2XL "python -m infomedicament_dataeng.cli s3 --pattern N --staging"
+scalingo --app your-app run --size 2XL "python -m infomedicament_dataeng.cli s3 --pattern R --staging"
 
-# Parse RCP files (R*.htm)
+# Full reparse: all files (initial load or full reprocessing)
+scalingo --app your-app run --size 2XL "python -m infomedicament_dataeng.cli s3 --pattern N --batch-size 1000"
 scalingo --app your-app run --size 2XL "python -m infomedicament_dataeng.cli s3 --pattern R --batch-size 1000"
 
 # Test with a limit
 scalingo --app your-app run "python -m infomedicament_dataeng.cli s3 --pattern N --limite 10"
 
-# Import Notices into PostgreSQL
-scalingo --app your-app run "python -m infomedicament_dataeng.cli db-import --pattern N"
+# Import Notices into PostgreSQL (delta: only today's JSONL files)
+scalingo --app your-app run "python -m infomedicament_dataeng.cli db-import --pattern N --since $(date +%Y-%m-%d)"
 
-# Import RCPs into PostgreSQL
+# Import RCPs into PostgreSQL (delta)
+scalingo --app your-app run "python -m infomedicament_dataeng.cli db-import --pattern R --since $(date +%Y-%m-%d)"
+
+# Full import: all JSONL files
+scalingo --app your-app run "python -m infomedicament_dataeng.cli db-import --pattern N"
 scalingo --app your-app run "python -m infomedicament_dataeng.cli db-import --pattern R"
+
+# Index specialités into OpenSearch (full reindex from PostgreSQL)
+scalingo --app your-app run "python -m infomedicament_dataeng.cli index-opensearch specialites"
+
+# Index notices and RCPs into OpenSearch (delta)
+scalingo --app your-app run "python -m infomedicament_dataeng.cli index-opensearch sections --doc-type notice --s3 --since $(date +%Y-%m-%d)"
+scalingo --app your-app run "python -m infomedicament_dataeng.cli index-opensearch sections --doc-type rcp --s3 --since $(date +%Y-%m-%d)"
+
+# Full reindex
+scalingo --app your-app run "python -m infomedicament_dataeng.cli index-opensearch sections --doc-type notice --s3"
+scalingo --app your-app run "python -m infomedicament_dataeng.cli index-opensearch sections --doc-type rcp --s3"
 ```
 
 For automated execution, we will use [Scalingo Scheduler](https://doc.scalingo.com/platform/app/task-scheduling/scalingo-scheduler) with a `cron.json` file.

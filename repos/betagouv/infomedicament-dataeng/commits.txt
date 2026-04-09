@@ -1,3 +1,12 @@
+2026-04-02T14:54:37+02:00 - e5b01c3 - Vincent Viers : fix: type warning in sql_to_csv
+2026-04-02T14:54:37+02:00 - a2beb83 - Vincent Viers : refactor(db): replace psycopg2/pymysql with SQLAlchemy
+2026-04-02T14:54:37+02:00 - 895841b - Vincent Viers : refactor: reorganize src into one subpackage per CLI use case
+2026-03-27T12:46:10+01:00 - b4b28a1 - Vincent Viers : feat: clean notice and rcp sections anchors
+2026-03-23T16:45:11+01:00 - b5d7bf2 - Vincent Viers : refactor(opensearch): prepare for multiple opensearch indices
+2026-03-23T16:45:11+01:00 - 933983c - Vincent Viers : feat(OpenSearch): add ETL command for OpenSearch
+2026-03-23T16:45:11+01:00 - 92ef447 - Vincent Viers : feat(opensearch): index specialités using PostgreSQL db
+2026-03-18T17:00:30+01:00 - 1299063 - Vincent Viers : db: document how to import the presentations csv in postgres
+2026-03-18T16:59:39+01:00 - efab280 - Vincent Viers : feat: add delta parse/import workflow for monthly HTML updates
 2026-03-11T18:33:27+01:00 - 43ec6bf - Vincent Viers : feat: import ASMR/SMR open data from data.gouv.fr
 2026-03-11T14:47:35+01:00 - 4a43cee - Vincent Viers : ci: add lint and test to CI
 2026-03-11T14:41:18+01:00 - 73dccc6 - Vincent Viers : chore(config): add pre-commit hooks
@@ -9,10 +18,10 @@
 2026-02-18T16:35:43+01:00 - ee13e61 - Vincent Viers : feat: port importNoticeRCP.ts to python - The tests are the same as the ones which were written in the JS project (they were written using Claude Code and reviewed by me) - new CLI command - README
 2026-02-18T16:03:25+01:00 - 1fc9676 - Vincent Viers : refacto(pediatrics): make algorithm more parametrable via conf - create a pediatrics_conf file - mock some stuff in tests so they still pass
 2026-02-18T10:09:02+01:00 - 031a258 - Vincent Viers : fix: revert 18 year old change for >
-2026-02-17T17:17:21+01:00 - 4f84643 - Vincent Viers : fix(pediatrics): add POSITIVE INDICATION PATTERNS
-2026-02-17T17:17:21+01:00 - 78f19c4 - Vincent Viers : feat(pediatrics): match <= and >=
 2026-02-17T17:17:21+01:00 - 8461375 - Vincent Viers : feat(extraction): normalize strings when extracting text - curly quotes - hyphens - ≥ and ≥
+2026-02-17T17:17:21+01:00 - 78f19c4 - Vincent Viers : feat(pediatrics): match <= and >=
 2026-02-17T17:17:21+01:00 - 714e09c - Vincent Viers : fix(pediatrics): "moins de 18ans" included
+2026-02-17T17:17:21+01:00 - 4f84643 - Vincent Viers : fix(pediatrics): add POSITIVE INDICATION PATTERNS
 2026-02-16T12:41:45+01:00 - 32bac9e - Vincent Viers : fix(pediatrics): "moins de 18ans" included
 2026-02-16T12:41:07+01:00 - 3180c37 - Vincent Viers : fix(pediatrics): class B takes priority over class C
 2026-02-16T11:44:57+01:00 - 223b3fd - Vincent Viers : fix(pediatric): C overrides A and B
