@@ -1,11 +1,7 @@
-## Changelog : oauth2-deploy-demo (30 derniers jours)
+## Changelog : oauth2-deploy-demo (30 derniers jours, au 19 mars 2026)
 
 ### Résumé
-Ce projet de démonstration a reçu quelques améliorations concernant la configuration et la documentation de l'authentification OAuth2. Plus précisément, la documentation a été mise à jour pour inclure des détails sur la variable d'environnement `OAUTH2_PROXY_FOOTER`, et l'expression régulière utilisée pour ignorer certaines routes lors de l'authentification a été affinée pour une meilleure flexibilité.
-
-### Évolutions fonctionnelles
-- Amélioration de la documentation pour inclure des informations sur la variable `OAUTH2_PROXY_FOOTER` permettant de personnaliser le pied de page OAuth2 Proxy. (#2)
-- Affinement de l'expression régulière pour la variable `OAUTH2_PROXY_SKIP_AUTH_ROUTES` afin de permettre une configuration plus précise des routes exemptées d'authentification. (be57911)
+Cette mise à jour apporte un ajustement de logging pour faciliter le débogage et la compréhension du fonctionnement de l'application. Plus précisément, les en-têtes JSON sont désormais affichés dans les logs, ce qui peut être utile pour diagnostiquer des problèmes liés à l'authentification ou à la communication avec le proxy OAuth2.
 
 ### Évolutions techniques
-- Fusion de la pull request #1 apportant une correction sur l'expression régulière `OAUTH2_PROXY_SKIP_AUTH_ROUTES`. (#1)
+- Activation du logging des en-têtes JSON dans `index.js` pour une meilleure traçabilité des requêtes et réponses. [#1](https://github.com/betagouv/oauth2-deploy-demo/commit/d441291)
