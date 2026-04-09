@@ -1,0 +1,1098 @@
+.
+├── .buildpacks
+├── .githooks
+│   ├── pre-commit
+│   └── pre-push
+├── .github
+│   ├── actions
+│   │   └── setvars
+│   │       └── action.yml
+│   ├── dependabot.yml
+│   ├── variables
+│   │   └── myvars.env
+│   └── workflows
+│       ├── analyse_and_test.yml
+│       └── build_and_deploy.yml
+├── .gitignore
+├── .metadata
+├── .run
+│   ├── Dev.run.xml
+│   ├── Local.run.xml
+│   ├── Prod.run.xml
+│   └── Sandbox.run.xml
+├── LICENSE
+├── Makefile
+├── Procfile
+├── README.md
+├── analysis_options.yaml
+├── android
+│   ├── .gitignore
+│   ├── app
+│   │   ├── build.gradle
+│   │   └── src
+│   │       ├── debug
+│   │       │   └── AndroidManifest.xml
+│   │       ├── dev
+│   │       │   ├── google-services.json
+│   │       │   └── res
+│   │       │       ├── mipmap-hdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-mdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xxhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       └── mipmap-xxxhdpi
+│   │       │           └── ic_launcher.png
+│   │       ├── local
+│   │       │   ├── google-services.json
+│   │       │   └── res
+│   │       │       ├── mipmap-hdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-mdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xxhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       └── mipmap-xxxhdpi
+│   │       │           └── ic_launcher.png
+│   │       ├── main
+│   │       │   ├── AndroidManifest.xml
+│   │       │   ├── kotlin
+│   │       │   │   └── fr
+│   │       │   │       └── social
+│   │       │   │           └── gouv
+│   │       │   │               └── agora
+│   │       │   │                   └── MainActivity.kt
+│   │       │   └── res
+│   │       │       ├── drawable
+│   │       │       │   └── launch_background.xml
+│   │       │       ├── drawable-v21
+│   │       │       │   └── launch_background.xml
+│   │       │       ├── mipmap-hdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-mdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xxhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xxxhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── values
+│   │       │       │   └── styles.xml
+│   │       │       └── values-night
+│   │       │           └── styles.xml
+│   │       ├── prod
+│   │       │   ├── google-services.json
+│   │       │   └── res
+│   │       │       ├── mipmap-hdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-mdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       ├── mipmap-xxhdpi
+│   │       │       │   └── ic_launcher.png
+│   │       │       └── mipmap-xxxhdpi
+│   │       │           └── ic_launcher.png
+│   │       ├── profile
+│   │       │   └── AndroidManifest.xml
+│   │       └── sandbox
+│   │           ├── google-services.json
+│   │           └── res
+│   │               ├── mipmap-hdpi
+│   │               │   └── ic_launcher.png
+│   │               ├── mipmap-mdpi
+│   │               │   └── ic_launcher.png
+│   │               ├── mipmap-xhdpi
+│   │               │   └── ic_launcher.png
+│   │               ├── mipmap-xxhdpi
+│   │               │   └── ic_launcher.png
+│   │               └── mipmap-xxxhdpi
+│   │                   └── ic_launcher.png
+│   ├── build
+│   │   └── ios
+│   │       └── XCBuildData
+│   │           └── PIFCache
+│   │               ├── project
+│   │               │   └── PROJECT@v11_mod=f5657b7cf7afdb149bdf0c6e2e6edd07_hash=bfdfe7dc352907fc980b868725387e98plugins=1OJSG6M1FOV3XYQCBH7Z29RZ0FPR9XDE1-json
+│   │               ├── target
+│   │               │   ├── TARGET@v11_hash=059ef38eb976457bd807a09848483a28-json
+│   │               │   ├── TARGET@v11_hash=05b43caf7859191d457cf630f2f56b0c-json
+│   │               │   ├── TARGET@v11_hash=0f3a23b5597e78028dc75cdbcfddf96d-json
+│   │               │   ├── TARGET@v11_hash=139050cbeb4a60c79959594fc8b239f2-json
+│   │               │   ├── TARGET@v11_hash=1b1183fa08f24a0018a860205fc90aea-json
+│   │               │   ├── TARGET@v11_hash=1e40cdff1f151c9cf1763c511636871c-json
+│   │               │   ├── TARGET@v11_hash=211339563e9277d07cb51a2700a360e8-json
+│   │               │   ├── TARGET@v11_hash=297e5ca004cfda45553d7f6e91d6d503-json
+│   │               │   ├── TARGET@v11_hash=2ab2a34b4cceb44ca47c4039c0537cfd-json
+│   │               │   ├── TARGET@v11_hash=3ca06b71d64437d65b8b5397c726268e-json
+│   │               │   ├── TARGET@v11_hash=46ca71a5bc0e7992a75bed9cd2247d48-json
+│   │               │   ├── TARGET@v11_hash=50b0c0e10b1e4e0bc8aa8ff3cd771c27-json
+│   │               │   ├── TARGET@v11_hash=529d79f1b538d40b2f1d6182bd43c0c2-json
+│   │               │   ├── TARGET@v11_hash=533b38e7ffad0453344e15a285a967e3-json
+│   │               │   ├── TARGET@v11_hash=5403cf60e477d64575f56da0a0afc161-json
+│   │               │   ├── TARGET@v11_hash=59f6072cbaf1849da6913fee01fd276f-json
+│   │               │   ├── TARGET@v11_hash=5d0f17493c62ef124675a44479205696-json
+│   │               │   ├── TARGET@v11_hash=5e9171f03f01efab56e7f1a0db6d5a37-json
+│   │               │   ├── TARGET@v11_hash=6018e73de1597e75411404fb787afcde-json
+│   │               │   ├── TARGET@v11_hash=6159efde489f1ac5238bbd5fba965eab-json
+│   │               │   ├── TARGET@v11_hash=6308a2469e3161e92f23b23a00925db3-json
+│   │               │   ├── TARGET@v11_hash=642f986f08c18448a0506df76e5bb407-json
+│   │               │   ├── TARGET@v11_hash=653aab5f40e06b8d8df751c867e4cb50-json
+│   │               │   ├── TARGET@v11_hash=6815caa98164dec0e7826d119c8d8cb6-json
+│   │               │   ├── TARGET@v11_hash=6c1399f1e1b2a8064eee5025357854f4-json
+│   │               │   ├── TARGET@v11_hash=6f17cd437e07d441484a3485e49b3d7a-json
+│   │               │   ├── TARGET@v11_hash=7092287e56b2f6f22099d0da21c11bd6-json
+│   │               │   ├── TARGET@v11_hash=74e86bf3ebae3199f59f037c4fde6559-json
+│   │               │   ├── TARGET@v11_hash=76d1921af7282118e4500f507e9ceeec-json
+│   │               │   ├── TARGET@v11_hash=784ead5ce7f77391ebad24dc27437a17-json
+│   │               │   ├── TARGET@v11_hash=83e46173b6d369b804618b0da2bd9471-json
+│   │               │   ├── TARGET@v11_hash=83fbfe8e47db2efa1a16412e32a5cfca-json
+│   │               │   ├── TARGET@v11_hash=876a609d644a95108d2f4299edb222a0-json
+│   │               │   ├── TARGET@v11_hash=9b233bb56acc69d90367ba420c141a09-json
+│   │               │   ├── TARGET@v11_hash=9e5c1f330b6a1ab8a0964c8fc654c924-json
+│   │               │   ├── TARGET@v11_hash=9e9022a86f7dd5c16f2643bae66d7b1e-json
+│   │               │   ├── TARGET@v11_hash=a1d83169d32a98295aa7fa0a0071b90e-json
+│   │               │   ├── TARGET@v11_hash=a509507dc2a5b969bad1a69371391426-json
+│   │               │   ├── TARGET@v11_hash=aafc977827b43c09ad555d8ba2939eab-json
+│   │               │   ├── TARGET@v11_hash=ac0af29467c861d2b63161349069422f-json
+│   │               │   ├── TARGET@v11_hash=b39ecf87041033e7bbc9e1fe998ec128-json
+│   │               │   ├── TARGET@v11_hash=b582b592bd90add0337eebf29886eac0-json
+│   │               │   ├── TARGET@v11_hash=bb9eb9027168dcdea1d0a19381608dfc-json
+│   │               │   ├── TARGET@v11_hash=bbd76f4fc2820632773241f4dfcf5599-json
+│   │               │   ├── TARGET@v11_hash=be78ccc3f2f5afe869d1621de90aad68-json
+│   │               │   ├── TARGET@v11_hash=beb4f98cd17cbbda2602f9ac6e1f01af-json
+│   │               │   ├── TARGET@v11_hash=c2b6040be13b2977b946de97dbee63f5-json
+│   │               │   ├── TARGET@v11_hash=d3aa62effe490d1bb9a481d467100daa-json
+│   │               │   ├── TARGET@v11_hash=d3bcc857f766f726c1aa34aae5315f9d-json
+│   │               │   ├── TARGET@v11_hash=d6f34ac6139b5961bffe30e7bb6ac25c-json
+│   │               │   ├── TARGET@v11_hash=dbe5d78a35d2f0a0d7055ed09cb6a5e1-json
+│   │               │   ├── TARGET@v11_hash=de7c0367b727d31918317bf695d551c0-json
+│   │               │   ├── TARGET@v11_hash=ed8d405e2fc4a1c169581e68f4430880-json
+│   │               │   ├── TARGET@v11_hash=edde03853796785643fedcec08ad3cb9-json
+│   │               │   ├── TARGET@v11_hash=f3170f5d06fbefe15c1d9fb932c8d7bb-json
+│   │               │   └── TARGET@v11_hash=f9be9d405fcdbb4abf4fa4a84c9830a0-json
+│   │               └── workspace
+│   │                   └── WORKSPACE@v11_hash=(null)_subobjects=142939cfdcfa9cc8b19ce49209aaf4aa-json
+│   ├── build.gradle
+│   ├── gradle
+│   │   └── wrapper
+│   │       └── gradle-wrapper.properties
+│   ├── gradle.properties
+│   ├── key.properties.template
+│   └── settings.gradle
+├── assets
+│   ├── animations
+│   │   ├── check.json
+│   │   ├── confetti.json
+│   │   ├── consultation_success.json
+│   │   ├── like.json
+│   │   └── loading_consultation.json
+│   ├── certificates
+│   │   ├── certigna-rootca.cer
+│   │   ├── letsencrypt-e5.pem
+│   │   ├── letsencrypt-e6.pem
+│   │   ├── letsencrypt-e7.pem
+│   │   ├── letsencrypt-e8.pem
+│   │   ├── letsencrypt-isrg-root-x1.pem
+│   │   ├── letsencrypt-isrg-root-x2.pem
+│   │   ├── letsencrypt-r10.pem
+│   │   ├── letsencrypt-r11.pem
+│   │   ├── letsencrypt-r12.pem
+│   │   └── letsencrypt-r13.pem
+│   ├── force_update.png
+│   ├── ic_*.svg  (54 files)
+│   ├── ic_consultation_ongoing_empty.png
+│   ├── ic_onboarding_web.png
+│   ├── launcher_icons
+│   │   ├── ic_agora_dev_logo.png
+│   │   ├── ic_agora_local_logo.png
+│   │   ├── ic_agora_logo.png
+│   │   └── ic_agora_sandbox_logo.png
+│   ├── tuto_consultations.png
+│   ├── tuto_questions.png
+│   └── tuto_reponses.png
+├── bin
+│   └── setup-htpasswd.sh
+├── devtools_options.yaml
+├── docs
+│   ├── 2_git.md
+│   ├── 3_coding_convention.md
+│   ├── 4_hive.md
+│   ├── 5_generate_app_logo.md
+│   ├── 6_strategie_cache.md
+│   └── image
+│       ├── configuration_example.png
+│       ├── edit_configuration.png
+│       ├── main_dev.png
+│       ├── main_prod.png
+│       ├── main_sandbox.png
+│       ├── rebase_and_merge_option.png
+│       └── xcode_scheme.png
+├── flutter_launcher_icons-dev.yaml
+├── flutter_launcher_icons-local.yaml
+├── flutter_launcher_icons-prod.yaml
+├── flutter_launcher_icons-sandbox.yaml
+├── fonts
+│   └── Marianne
+│       ├── italic
+│       │   ├── Marianne-BoldItalic.otf
+│       │   ├── Marianne-ExtraBoldItalic.otf
+│       │   ├── Marianne-LightItalic.otf
+│       │   ├── Marianne-MediumItalic.otf
+│       │   ├── Marianne-RegularItalic.otf
+│       │   └── Marianne-ThinItalic.otf
+│       └── normal
+│           ├── Marianne-Bold.otf
+│           ├── Marianne-ExtraBold.otf
+│           ├── Marianne-Light.otf
+│           ├── Marianne-Medium.otf
+│           ├── Marianne-Regular.otf
+│           └── Marianne-Thin.otf
+├── ios
+│   ├── .gitignore
+│   ├── Config
+│   │   ├── dev
+│   │   │   └── GoogleService-Info.plist
+│   │   ├── prod
+│   │   │   └── GoogleService-Info.plist
+│   │   └── sandbox
+│   │       └── GoogleService-Info.plist
+│   ├── Flutter
+│   │   ├── AppFrameworkInfo.plist
+│   │   ├── Debug.xcconfig
+│   │   └── Release.xcconfig
+│   ├── Params
+│   │   ├── ExportOptionsAdHoc.plist
+│   │   └── ExportOptionsProd.plist
+│   ├── Podfile
+│   ├── Podfile.lock
+│   ├── Runner
+│   │   ├── AppDelegate.swift
+│   │   ├── Assets.xcassets
+│   │   │   ├── AppIcon-dev.appiconset
+│   │   │   │   ├── AppIcon-dev-1024x1024@1x.png
+│   │   │   │   ├── AppIcon-dev-20x20@1x.png
+│   │   │   │   ├── AppIcon-dev-20x20@2x.png
+│   │   │   │   ├── AppIcon-dev-20x20@3x.png
+│   │   │   │   ├── AppIcon-dev-29x29@1x.png
+│   │   │   │   ├── AppIcon-dev-29x29@2x.png
+│   │   │   │   ├── AppIcon-dev-29x29@3x.png
+│   │   │   │   ├── AppIcon-dev-40x40@1x.png
+│   │   │   │   ├── AppIcon-dev-40x40@2x.png
+│   │   │   │   ├── AppIcon-dev-40x40@3x.png
+│   │   │   │   ├── AppIcon-dev-50x50@1x.png
+│   │   │   │   ├── AppIcon-dev-50x50@2x.png
+│   │   │   │   ├── AppIcon-dev-57x57@1x.png
+│   │   │   │   ├── AppIcon-dev-57x57@2x.png
+│   │   │   │   ├── AppIcon-dev-60x60@2x.png
+│   │   │   │   ├── AppIcon-dev-60x60@3x.png
+│   │   │   │   ├── AppIcon-dev-72x72@1x.png
+│   │   │   │   ├── AppIcon-dev-72x72@2x.png
+│   │   │   │   ├── AppIcon-dev-76x76@1x.png
+│   │   │   │   ├── AppIcon-dev-76x76@2x.png
+│   │   │   │   ├── AppIcon-dev-83.5x83.5@2x.png
+│   │   │   │   └── Contents.json
+│   │   │   ├── AppIcon-local.appiconset
+│   │   │   │   ├── AppIcon-local-1024x1024@1x.png
+│   │   │   │   ├── AppIcon-local-20x20@1x.png
+│   │   │   │   ├── AppIcon-local-20x20@2x.png
+│   │   │   │   ├── AppIcon-local-20x20@3x.png
+│   │   │   │   ├── AppIcon-local-29x29@1x.png
+│   │   │   │   ├── AppIcon-local-29x29@2x.png
+│   │   │   │   ├── AppIcon-local-29x29@3x.png
+│   │   │   │   ├── AppIcon-local-40x40@1x.png
+│   │   │   │   ├── AppIcon-local-40x40@2x.png
+│   │   │   │   ├── AppIcon-local-40x40@3x.png
+│   │   │   │   ├── AppIcon-local-50x50@1x.png
+│   │   │   │   ├── AppIcon-local-50x50@2x.png
+│   │   │   │   ├── AppIcon-local-57x57@1x.png
+│   │   │   │   ├── AppIcon-local-57x57@2x.png
+│   │   │   │   ├── AppIcon-local-60x60@2x.png
+│   │   │   │   ├── AppIcon-local-60x60@3x.png
+│   │   │   │   ├── AppIcon-local-72x72@1x.png
+│   │   │   │   ├── AppIcon-local-72x72@2x.png
+│   │   │   │   ├── AppIcon-local-76x76@1x.png
+│   │   │   │   ├── AppIcon-local-76x76@2x.png
+│   │   │   │   ├── AppIcon-local-83.5x83.5@2x.png
+│   │   │   │   └── Contents.json
+│   │   │   ├── AppIcon-prod.appiconset
+│   │   │   │   ├── AppIcon-prod-1024x1024@1x.png
+│   │   │   │   ├── AppIcon-prod-20x20@1x.png
+│   │   │   │   ├── AppIcon-prod-20x20@2x.png
+│   │   │   │   ├── AppIcon-prod-20x20@3x.png
+│   │   │   │   ├── AppIcon-prod-29x29@1x.png
+│   │   │   │   ├── AppIcon-prod-29x29@2x.png
+│   │   │   │   ├── AppIcon-prod-29x29@3x.png
+│   │   │   │   ├── AppIcon-prod-40x40@1x.png
+│   │   │   │   ├── AppIcon-prod-40x40@2x.png
+│   │   │   │   ├── AppIcon-prod-40x40@3x.png
+│   │   │   │   ├── AppIcon-prod-50x50@1x.png
+│   │   │   │   ├── AppIcon-prod-50x50@2x.png
+│   │   │   │   ├── AppIcon-prod-57x57@1x.png
+│   │   │   │   ├── AppIcon-prod-57x57@2x.png
+│   │   │   │   ├── AppIcon-prod-60x60@2x.png
+│   │   │   │   ├── AppIcon-prod-60x60@3x.png
+│   │   │   │   ├── AppIcon-prod-72x72@1x.png
+│   │   │   │   ├── AppIcon-prod-72x72@2x.png
+│   │   │   │   ├── AppIcon-prod-76x76@1x.png
+│   │   │   │   ├── AppIcon-prod-76x76@2x.png
+│   │   │   │   ├── AppIcon-prod-83.5x83.5@2x.png
+│   │   │   │   └── Contents.json
+│   │   │   ├── AppIcon-sandbox.appiconset
+│   │   │   │   ├── AppIcon-sandbox-1024x1024@1x.png
+│   │   │   │   ├── AppIcon-sandbox-20x20@1x.png
+│   │   │   │   ├── AppIcon-sandbox-20x20@2x.png
+│   │   │   │   ├── AppIcon-sandbox-20x20@3x.png
+│   │   │   │   ├── AppIcon-sandbox-29x29@1x.png
+│   │   │   │   ├── AppIcon-sandbox-29x29@2x.png
+│   │   │   │   ├── AppIcon-sandbox-29x29@3x.png
+│   │   │   │   ├── AppIcon-sandbox-40x40@1x.png
+│   │   │   │   ├── AppIcon-sandbox-40x40@2x.png
+│   │   │   │   ├── AppIcon-sandbox-40x40@3x.png
+│   │   │   │   ├── AppIcon-sandbox-50x50@1x.png
+│   │   │   │   ├── AppIcon-sandbox-50x50@2x.png
+│   │   │   │   ├── AppIcon-sandbox-57x57@1x.png
+│   │   │   │   ├── AppIcon-sandbox-57x57@2x.png
+│   │   │   │   ├── AppIcon-sandbox-60x60@2x.png
+│   │   │   │   ├── AppIcon-sandbox-60x60@3x.png
+│   │   │   │   ├── AppIcon-sandbox-72x72@1x.png
+│   │   │   │   ├── AppIcon-sandbox-72x72@2x.png
+│   │   │   │   ├── AppIcon-sandbox-76x76@1x.png
+│   │   │   │   ├── AppIcon-sandbox-76x76@2x.png
+│   │   │   │   ├── AppIcon-sandbox-83.5x83.5@2x.png
+│   │   │   │   └── Contents.json
+│   │   │   └── LaunchImage.imageset
+│   │   │       ├── Contents.json
+│   │   │       ├── LaunchImage.png
+│   │   │       ├── LaunchImage@2x.png
+│   │   │       ├── LaunchImage@3x.png
+│   │   │       └── README.md
+│   │   ├── Base.lproj
+│   │   │   ├── LaunchScreen.storyboard
+│   │   │   └── Main.storyboard
+│   │   ├── Info.plist
+│   │   ├── Runner-Bridging-Header.h
+│   │   ├── Runner-DEV.entitlements
+│   │   ├── Runner-PROD.entitlements
+│   │   └── Runner-SANDBOX.entitlements
+│   ├── Runner.xcodeproj
+│   │   ├── project.pbxproj
+│   │   ├── project.xcworkspace
+│   │   │   ├── contents.xcworkspacedata
+│   │   │   └── xcshareddata
+│   │   │       ├── IDEWorkspaceChecks.plist
+│   │   │       └── WorkspaceSettings.xcsettings
+│   │   └── xcshareddata
+│   │       └── xcschemes
+│   │           ├── Dev.xcscheme
+│   │           ├── Prod.xcscheme
+│   │           └── Sandbox.xcscheme
+│   └── Runner.xcworkspace
+│       ├── contents.xcworkspacedata
+│       └── xcshareddata
+│           └── IDEWorkspaceChecks.plist
+├── lib
+│   ├── agora_app.dart
+│   ├── agora_app_initializer.dart
+│   ├── agora_app_router.dart
+│   ├── common
+│   │   ├── analytics
+│   │   │   ├── analytics_event_names.dart
+│   │   │   ├── analytics_screen_names.dart
+│   │   │   └── matomo_config.dart
+│   │   ├── client
+│   │   │   ├── agora_http_client.dart
+│   │   │   ├── agora_http_client_adapter.dart
+│   │   │   ├── auth_interceptor.dart
+│   │   │   └── user_agent_builder.dart
+│   │   ├── extension
+│   │   │   ├── consultation_question_type_extension.dart
+│   │   │   ├── date_extension.dart
+│   │   │   ├── demographic_question_type_extension.dart
+│   │   │   ├── list_extension.dart
+│   │   │   ├── notification_message_type_extension.dart
+│   │   │   ├── qag_list_filter_extension.dart
+│   │   │   ├── qag_paginated_filter_extension.dart
+│   │   │   ├── string_extension.dart
+│   │   │   └── thematique_extension.dart
+│   │   ├── helper
+│   │   │   ├── all_purpose_status.dart
+│   │   │   ├── app_version_helper.dart
+│   │   │   ├── clipboard_helper.dart
+│   │   │   ├── deeplink_helper.dart
+│   │   │   ├── device_info_helper.dart
+│   │   │   ├── emoji_helper.dart
+│   │   │   ├── feature_flipping_helper.dart
+│   │   │   ├── flavor_helper.dart
+│   │   │   ├── jwt_helper.dart
+│   │   │   ├── launch_url_helper.dart
+│   │   │   ├── main_color_helper.dart
+│   │   │   ├── notification_helper.dart
+│   │   │   ├── permission_helper.dart
+│   │   │   ├── platform_helper.dart
+│   │   │   ├── responsive_helper.dart
+│   │   │   ├── role_helper.dart
+│   │   │   ├── semantics_helper.dart
+│   │   │   ├── share_helper.dart
+│   │   │   ├── thematique_helper.dart
+│   │   │   ├── timer_helper.dart
+│   │   │   └── tracker_helper.dart
+│   │   ├── log
+│   │   │   ├── log.dart
+│   │   │   └── sentry_wrapper.dart
+│   │   ├── manager
+│   │   │   ├── config_manager.dart
+│   │   │   ├── helper_manager.dart
+│   │   │   ├── repository_manager.dart
+│   │   │   ├── service_manager.dart
+│   │   │   └── storage_manager.dart
+│   │   ├── navigator
+│   │   │   └── navigator_key.dart
+│   │   ├── observer
+│   │   │   ├── event_observer.dart
+│   │   │   ├── matomo_route_observer.dart
+│   │   │   └── navigation_observer.dart
+│   │   ├── parser
+│   │   │   ├── simple_html_parser.dart
+│   │   │   └── string_parser.dart
+│   │   ├── storage
+│   │   │   └── secure_storage_client.dart
+│   │   ├── strings
+│   │   │   ├── consultation_strings.dart
+│   │   │   ├── demographic_strings.dart
+│   │   │   ├── feedback_strings.dart
+│   │   │   ├── generic_strings.dart
+│   │   │   ├── profile_strings.dart
+│   │   │   ├── qag_strings.dart
+│   │   │   ├── reponse_strings.dart
+│   │   │   ├── semantics_strings.dart
+│   │   │   ├── string_utils.dart
+│   │   │   └── tutoriel_strings.dart
+│   │   └── uuid
+│   │       └── uuid_utils.dart
+│   ├── concertation
+│   │   └── repository
+│   │       ├── concertation_cache_repository.dart
+│   │       └── concertation_repository.dart
+│   ├── consultation
+│   │   ├── bloc
+│   │   │   ├── consultation_bloc.dart
+│   │   │   ├── consultation_event.dart
+│   │   │   ├── consultation_questions_state.dart
+│   │   │   ├── consultation_state.dart
+│   │   │   └── consultation_view_model.dart
+│   │   ├── domain
+│   │   │   ├── consultation.dart
+│   │   │   ├── consultation_summary_results.dart
+│   │   │   └── consultations_error_type.dart
+│   │   ├── dynamic
+│   │   │   ├── bloc
+│   │   │   │   ├── dynamic_consultation_bloc.dart
+│   │   │   │   ├── dynamic_consultation_events.dart
+│   │   │   │   ├── dynamic_consultation_state.dart
+│   │   │   │   ├── responses
+│   │   │   │   │   ├── dynamic_consultation_results_state.dart
+│   │   │   │   │   └── dynamic_consultations_results_bloc.dart
+│   │   │   │   └── updates
+│   │   │   │       ├── dynamic_consultation_update_state.dart
+│   │   │   │       └── dynamic_consultation_updates_bloc.dart
+│   │   │   ├── domain
+│   │   │   │   ├── dynamic_consultation.dart
+│   │   │   │   └── dynamic_consultation_section.dart
+│   │   │   ├── pages
+│   │   │   │   ├── dynamic_consultation_page.dart
+│   │   │   │   ├── dynamic_consultation_presenter.dart
+│   │   │   │   ├── dynamic_consultation_section_widgets.dart
+│   │   │   │   ├── dynamic_consultation_view_model.dart
+│   │   │   │   ├── results
+│   │   │   │   │   ├── consultation_summary_view_model.dart
+│   │   │   │   │   ├── dynamic_consultation_results_page.dart
+│   │   │   │   │   ├── dynamic_consultation_results_presenter.dart
+│   │   │   │   │   └── dynamic_consultation_results_view_model.dart
+│   │   │   │   └── updates
+│   │   │   │       ├── dynamic_consultation_update_page.dart
+│   │   │   │       ├── dynamic_consultation_update_presenter.dart
+│   │   │   │       └── dynamic_consultation_update_view_model.dart
+│   │   │   └── repository
+│   │   │       └── dynamic_consultation_mapper.dart
+│   │   ├── finished_paginated
+│   │   │   ├── bloc
+│   │   │   │   ├── consultation_finished_paginated_bloc.dart
+│   │   │   │   ├── consultation_finished_paginated_event.dart
+│   │   │   │   ├── consultation_finished_paginated_state.dart
+│   │   │   │   └── consultation_finished_paginated_view_model.dart
+│   │   │   ├── domain
+│   │   │   │   ├── consultation_finished_paginated.dart
+│   │   │   │   └── consultation_paginated.dart
+│   │   │   └── pages
+│   │   │       └── consultation_finished_paginated_page.dart
+│   │   ├── pages
+│   │   │   ├── consultations_page.dart
+│   │   │   └── widgets
+│   │   │       ├── consultations_answered_section.dart
+│   │   │       ├── consultations_finished_section.dart
+│   │   │       ├── consultations_loading_skeleton.dart
+│   │   │       └── consultations_ongoing_section.dart
+│   │   ├── question
+│   │   │   ├── bloc
+│   │   │   │   ├── consultation_questions_bloc.dart
+│   │   │   │   ├── consultation_questions_event.dart
+│   │   │   │   ├── consultation_questions_view_model.dart
+│   │   │   │   └── response
+│   │   │   │       ├── send
+│   │   │   │       │   ├── consultation_questions_responses_bloc.dart
+│   │   │   │       │   ├── consultation_questions_responses_builder.dart
+│   │   │   │       │   ├── consultation_questions_responses_event.dart
+│   │   │   │       │   └── consultation_questions_responses_state.dart
+│   │   │   │       └── stock
+│   │   │   │           ├── consultation_question_response_hive.dart
+│   │   │   │           ├── consultation_question_response_hive.g.dart
+│   │   │   │           ├── consultation_questions_responses_stock_bloc.dart
+│   │   │   │           ├── consultation_questions_responses_stock_event.dart
+│   │   │   │           └── consultation_questions_responses_stock_state.dart
+│   │   │   ├── domain
+│   │   │   │   ├── consultation_question.dart
+│   │   │   │   ├── consultation_question_response.dart
+│   │   │   │   ├── consultation_question_response_choice.dart
+│   │   │   │   ├── consultation_question_type.dart
+│   │   │   │   └── consultation_questions.dart
+│   │   │   ├── pages
+│   │   │   │   ├── consultation_question_confirmation_page.dart
+│   │   │   │   ├── consultation_question_helper.dart
+│   │   │   │   ├── consultation_question_page.dart
+│   │   │   │   └── question_type_view
+│   │   │   │       ├── consultation_question_chapter_view.dart
+│   │   │   │       ├── consultation_question_multiple_choices_view.dart
+│   │   │   │       ├── consultation_question_opened_view.dart
+│   │   │   │       ├── consultation_question_unique_choice_view.dart
+│   │   │   │       ├── consultation_question_view.dart
+│   │   │   │       └── consultation_question_with_conditions_view.dart
+│   │   │   └── repository
+│   │   │       └── consultation_question_storage_client.dart
+│   │   └── repository
+│   │       ├── consultation_cache_repository.dart
+│   │       ├── consultation_finished_paginated_presenter.dart
+│   │       ├── consultation_mapper.dart
+│   │       ├── consultation_presenter.dart
+│   │       ├── consultation_questions_builder.dart
+│   │       ├── consultation_questions_presenter.dart
+│   │       ├── consultation_repository.dart
+│   │       ├── consultation_responses.dart
+│   │       └── mock_consultation_repository.dart
+│   ├── design
+│   │   ├── custom_view
+│   │   │   ├── agora_alert_dialog.dart
+│   │   │   ├── agora_badge.dart
+│   │   │   ├── agora_checkbox.dart
+│   │   │   ├── agora_collapse_view.dart
+│   │   │   ├── agora_consultation_result_bar.dart
+│   │   │   ├── agora_consultation_result_view.dart
+│   │   │   ├── agora_demographic_simple_view.dart
+│   │   │   ├── agora_filtre.dart
+│   │   │   ├── agora_focus_helper.dart
+│   │   │   ├── agora_like_animation_view.dart
+│   │   │   ├── agora_like_view.dart
+│   │   │   ├── agora_little_separator.dart
+│   │   │   ├── agora_main_toolbar.dart
+│   │   │   ├── agora_menu_item.dart
+│   │   │   ├── agora_more_information.dart
+│   │   │   ├── agora_pull_to_refresh.dart
+│   │   │   ├── agora_qag_header.dart
+│   │   │   ├── agora_question_response_choice_view.dart
+│   │   │   ├── agora_questions_progress_bar.dart
+│   │   │   ├── agora_responsive_view.dart
+│   │   │   ├── agora_rounded_image.dart
+│   │   │   ├── agora_scaffold.dart
+│   │   │   ├── agora_search_bar.dart
+│   │   │   ├── agora_step_circle.dart
+│   │   │   ├── agora_toolbar.dart
+│   │   │   ├── agora_top_diagonal.dart
+│   │   │   ├── agora_tracker.dart
+│   │   │   ├── bottom_navigation_bar
+│   │   │   │   ├── agora_bottom_navigation_bar.dart
+│   │   │   │   ├── agora_bottom_navigation_bar_item.dart
+│   │   │   │   └── main_bottom_navigation_bar.dart
+│   │   │   ├── bottom_sheet
+│   │   │   │   └── agora_bottom_sheet.dart
+│   │   │   ├── button
+│   │   │   │   ├── agora_button.dart
+│   │   │   │   ├── agora_icon_button.dart
+│   │   │   │   ├── agora_next_button.dart
+│   │   │   │   ├── agora_secondary_style_view_button.dart
+│   │   │   │   └── agora_thematique_toggle_button.dart
+│   │   │   ├── card
+│   │   │   │   ├── agora_consultation_answered_card.dart
+│   │   │   │   ├── agora_consultation_finished_card.dart
+│   │   │   │   ├── agora_consultation_ongoing_card.dart
+│   │   │   │   ├── agora_highlight_card.dart
+│   │   │   │   ├── agora_notification_card.dart
+│   │   │   │   ├── agora_qag_moderation_card.dart
+│   │   │   │   ├── agora_qag_reponse_a_venir_card.dart
+│   │   │   │   ├── agora_qag_response_card.dart
+│   │   │   │   ├── agora_question_card.dart
+│   │   │   │   ├── agora_rounded_card.dart
+│   │   │   │   └── agora_thematique_card.dart
+│   │   │   ├── error
+│   │   │   │   ├── agora_error_text.dart
+│   │   │   │   └── agora_error_view.dart
+│   │   │   ├── fullscreen_animation_view.dart
+│   │   │   ├── scroll
+│   │   │   │   ├── agora_horizontal_scroll_helper.dart
+│   │   │   │   └── agora_single_scroll_view.dart
+│   │   │   ├── shake_widget.dart
+│   │   │   ├── skeletons.dart
+│   │   │   ├── text
+│   │   │   │   ├── agora_html.dart
+│   │   │   │   ├── agora_link_text.dart
+│   │   │   │   ├── agora_read_more_text.dart
+│   │   │   │   ├── agora_rich_text.dart
+│   │   │   │   └── agora_text_field.dart
+│   │   │   └── unread_check.dart
+│   │   ├── style
+│   │   │   ├── agora_colors.dart
+│   │   │   ├── agora_corners.dart
+│   │   │   ├── agora_html_styles.dart
+│   │   │   ├── agora_spacings.dart
+│   │   │   └── agora_text_styles.dart
+│   │   └── video
+│   │       ├── agora_video_controls.dart
+│   │       ├── agora_video_progress_bar.dart
+│   │       └── agora_video_view.dart
+│   ├── firebase_options_dev.dart
+│   ├── firebase_options_prod.dart
+│   ├── login
+│   │   ├── bloc
+│   │   │   ├── login_bloc.dart
+│   │   │   ├── login_event.dart
+│   │   │   └── login_state.dart
+│   │   ├── domain
+│   │   │   └── login_error_type.dart
+│   │   └── repository
+│   │       ├── login_repository.dart
+│   │       ├── login_storage_client.dart
+│   │       └── mocks_login_repository.dart
+│   ├── main_dev.dart
+│   ├── main_local.dart
+│   ├── main_prod.dart
+│   ├── main_sandbox.dart
+│   ├── profil
+│   │   ├── app_feedback
+│   │   │   ├── bloc
+│   │   │   │   ├── app_feedback_bloc.dart
+│   │   │   │   ├── app_feedback_event.dart
+│   │   │   │   └── app_feedback_state.dart
+│   │   │   ├── domain
+│   │   │   │   ├── app_feedback.dart
+│   │   │   │   └── device_informations.dart
+│   │   │   ├── pages
+│   │   │   │   ├── app_feedback_first_step.dart
+│   │   │   │   ├── app_feedback_open_questions.dart
+│   │   │   │   └── app_feedback_page.dart
+│   │   │   └── repository
+│   │   │       ├── app_feedback_repository.dart
+│   │   │       └── mocks_app_feedback_repository.dart
+│   │   ├── demographic
+│   │   │   ├── bloc
+│   │   │   │   ├── get
+│   │   │   │   │   ├── demographic_information_bloc.dart
+│   │   │   │   │   ├── demographic_information_event.dart
+│   │   │   │   │   ├── demographic_information_state.dart
+│   │   │   │   │   └── demographic_information_view_model.dart
+│   │   │   │   ├── send
+│   │   │   │   │   ├── demographic_responses_send_bloc.dart
+│   │   │   │   │   ├── demographic_responses_send_event.dart
+│   │   │   │   │   └── demographic_responses_send_state.dart
+│   │   │   │   └── stock
+│   │   │   │       ├── demographic_responses_stock_bloc.dart
+│   │   │   │       ├── demographic_responses_stock_event.dart
+│   │   │   │       └── demographic_responses_stock_state.dart
+│   │   │   ├── domain
+│   │   │   │   ├── demographic_information.dart
+│   │   │   │   ├── demographic_question_type.dart
+│   │   │   │   ├── demographic_response.dart
+│   │   │   │   └── demographic_response_choice.dart
+│   │   │   ├── pages
+│   │   │   │   ├── demographic_confirmation_page.dart
+│   │   │   │   ├── demographic_information_page.dart
+│   │   │   │   ├── demographic_profil_page.dart
+│   │   │   │   ├── demographic_question_page.dart
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── demographic_helper.dart
+│   │   │   │   │   └── demographic_response_helper.dart
+│   │   │   │   └── question_view
+│   │   │   │       ├── demographic_birth_view.dart
+│   │   │   │       ├── demographic_common_view.dart
+│   │   │   │       ├── demographic_department_view.dart
+│   │   │   │       └── demographic_vote_view.dart
+│   │   │   └── repository
+│   │   │       ├── demographic_information_presenter.dart
+│   │   │       ├── demographic_repository.dart
+│   │   │       ├── demographic_storage_client.dart
+│   │   │       └── mocks_demographic_repository.dart
+│   │   ├── notification
+│   │   │   ├── bloc
+│   │   │   │   ├── get
+│   │   │   │   │   ├── notification_bloc.dart
+│   │   │   │   │   ├── notification_event.dart
+│   │   │   │   │   ├── notification_state.dart
+│   │   │   │   │   └── notification_view_model.dart
+│   │   │   │   └── permission
+│   │   │   │       ├── notification_permission_bloc.dart
+│   │   │   │       ├── notification_permission_event.dart
+│   │   │   │       └── notification_permission_state.dart
+│   │   │   ├── domain
+│   │   │   │   ├── notification.dart
+│   │   │   │   └── notification_information.dart
+│   │   │   ├── pages
+│   │   │   │   └── notification_page.dart
+│   │   │   └── repository
+│   │   │       ├── mocks_notification_repository.dart
+│   │   │       ├── notification_first_request_permission_storage_client.dart
+│   │   │       ├── notification_presenter.dart
+│   │   │       └── notification_repository.dart
+│   │   ├── onboarding
+│   │   │   ├── pages
+│   │   │   │   ├── onboarding_auto_scroll_page.dart
+│   │   │   │   ├── onboarding_page.dart
+│   │   │   │   ├── onboarding_step_view.dart
+│   │   │   │   ├── onboarding_thematique_card.dart
+│   │   │   │   └── onboarding_view.dart
+│   │   │   └── repository
+│   │   │       └── onboarding_storage_client.dart
+│   │   ├── pages
+│   │   │   ├── delete_account_page.dart
+│   │   │   ├── profil_information_page.dart
+│   │   │   └── profil_page.dart
+│   │   ├── participation_charter
+│   │   │   ├── bloc
+│   │   │   │   ├── participation_charter_bloc.dart
+│   │   │   │   ├── participation_charter_event.dart
+│   │   │   │   └── participation_charter_state.dart
+│   │   │   ├── pages
+│   │   │   │   └── participation_charter_page.dart
+│   │   │   └── repository
+│   │   │       ├── mocks_participation_charter_repository.dart
+│   │   │       └── participation_charter_repository.dart
+│   │   └── territoire
+│   │       ├── bloc
+│   │       │   ├── territoire_info_bloc.dart
+│   │       │   ├── territoire_info_event.dart
+│   │       │   └── territoire_info_state.dart
+│   │       └── pages
+│   │           ├── territoire_editing_page.dart
+│   │           └── territoire_info_page.dart
+│   ├── push_notification
+│   │   ├── notification_message_type.dart
+│   │   ├── push_notification_service.dart
+│   │   └── push_notification_storage_client.dart
+│   ├── qag
+│   │   ├── ask
+│   │   │   ├── bloc
+│   │   │   │   ├── ask_qag_status_bloc.dart
+│   │   │   │   ├── ask_qag_status_event.dart
+│   │   │   │   ├── ask_qag_status_state.dart
+│   │   │   │   ├── create
+│   │   │   │   │   ├── qag_create_bloc.dart
+│   │   │   │   │   ├── qag_create_event.dart
+│   │   │   │   │   └── qag_create_state.dart
+│   │   │   │   ├── info
+│   │   │   │   │   ├── ask_qag_info_bloc.dart
+│   │   │   │   │   ├── ask_qag_info_event.dart
+│   │   │   │   │   └── ask_qag_info_state.dart
+│   │   │   │   └── search
+│   │   │   │       ├── qag_search_bloc.dart
+│   │   │   │       ├── qag_search_event.dart
+│   │   │   │       └── qag_search_state.dart
+│   │   │   └── pages
+│   │   │       ├── ask_question_qag_search.dart
+│   │   │       ├── qag_ask_question_page.dart
+│   │   │       ├── qag_search_input_utils.dart
+│   │   │       ├── qag_thematiques_drop_down.dart
+│   │   │       └── qags_search.dart
+│   │   ├── details
+│   │   │   ├── bloc
+│   │   │   │   ├── delete
+│   │   │   │   │   ├── qag_delete_bloc.dart
+│   │   │   │   │   ├── qag_delete_event.dart
+│   │   │   │   │   └── qag_delete_state.dart
+│   │   │   │   ├── qag_details_bloc.dart
+│   │   │   │   ├── qag_details_event.dart
+│   │   │   │   ├── qag_details_state.dart
+│   │   │   │   ├── qag_details_view_model.dart
+│   │   │   │   └── support
+│   │   │   │       ├── qag_support_bloc.dart
+│   │   │   │       ├── qag_support_event.dart
+│   │   │   │       └── qag_support_state.dart
+│   │   │   └── pages
+│   │   │       ├── qag_details_delete_confirmation_page.dart
+│   │   │       ├── qag_details_feedback_widget.dart
+│   │   │       ├── qag_details_page.dart
+│   │   │       ├── qag_details_response_view.dart
+│   │   │       ├── qag_details_support_view.dart
+│   │   │       ├── qag_details_text_response_view.dart
+│   │   │       └── qags_moderated_error_content.dart
+│   │   ├── domain
+│   │   │   ├── header_qag.dart
+│   │   │   ├── qag.dart
+│   │   │   ├── qag_details.dart
+│   │   │   ├── qag_list_extension.dart
+│   │   │   ├── qag_moderation_list.dart
+│   │   │   ├── qag_paginated.dart
+│   │   │   ├── qag_paginated_filter.dart
+│   │   │   ├── qag_response.dart
+│   │   │   ├── qag_response_paginated.dart
+│   │   │   ├── qag_similar.dart
+│   │   │   ├── qag_support.dart
+│   │   │   ├── qags_error_type.dart
+│   │   │   └── qas_list_filter.dart
+│   │   ├── info
+│   │   │   └── bloc
+│   │   │       ├── qags_info_bloc.dart
+│   │   │       ├── qags_info_event.dart
+│   │   │       └── qags_info_state.dart
+│   │   ├── list
+│   │   │   ├── bloc
+│   │   │   │   ├── qag_list_bloc.dart
+│   │   │   │   ├── qag_list_event.dart
+│   │   │   │   └── qag_list_state.dart
+│   │   │   └── pages
+│   │   │       ├── qag_list_section.dart
+│   │   │       └── qags_list_loading.dart
+│   │   ├── moderation
+│   │   │   ├── bloc
+│   │   │   │   ├── list
+│   │   │   │   │   ├── qag_moderation_list_bloc.dart
+│   │   │   │   │   ├── qag_moderation_list_event.dart
+│   │   │   │   │   ├── qag_moderation_list_state.dart
+│   │   │   │   │   └── qag_moderation_list_view_model.dart
+│   │   │   │   └── moderate
+│   │   │   │       ├── qag_moderate_bloc.dart
+│   │   │   │       ├── qag_moderate_event.dart
+│   │   │   │       └── qag_moderate_state.dart
+│   │   │   └── pages
+│   │   │       └── moderation_page.dart
+│   │   ├── pages
+│   │   │   └── qags_page.dart
+│   │   ├── repository
+│   │   │   ├── dto
+│   │   │   │   └── qag_content_dto.dart
+│   │   │   ├── header_qag_repository.dart
+│   │   │   ├── mocks_qag_repository.dart
+│   │   │   ├── presenter
+│   │   │   │   ├── qag_details_presenter.dart
+│   │   │   │   ├── qag_display_model.dart
+│   │   │   │   ├── qag_moderation_list_presenter.dart
+│   │   │   │   ├── qag_presenter.dart
+│   │   │   │   ├── qag_response_paginated_presenter.dart
+│   │   │   │   └── qag_response_presenter.dart
+│   │   │   ├── qag_cache_repository.dart
+│   │   │   └── qag_repository.dart
+│   │   └── widgets
+│   │       ├── qags_section.dart
+│   │       ├── qags_supportable_card.dart
+│   │       ├── qags_thematique_loading.dart
+│   │       └── qags_thematique_section.dart
+│   ├── referentiel
+│   │   ├── bloc
+│   │   │   ├── referentiel_bloc.dart
+│   │   │   ├── referentiel_event.dart
+│   │   │   └── referentiel_state.dart
+│   │   ├── departement.dart
+│   │   ├── pays.dart
+│   │   ├── region.dart
+│   │   ├── repository
+│   │   │   ├── referentiel_cache_repository.dart
+│   │   │   └── referentiel_repository.dart
+│   │   ├── territoire.dart
+│   │   └── territoire_helper.dart
+│   ├── reponse
+│   │   ├── bloc
+│   │   │   ├── paginated
+│   │   │   │   ├── qag_response_paginated_bloc.dart
+│   │   │   │   ├── qag_response_paginated_event.dart
+│   │   │   │   ├── qag_response_paginated_state.dart
+│   │   │   │   └── qag_response_paginated_view_model.dart
+│   │   │   ├── qag_response_a_venir_view_model.dart
+│   │   │   ├── qag_response_bloc.dart
+│   │   │   ├── qag_response_event.dart
+│   │   │   └── qag_response_state.dart
+│   │   ├── info
+│   │   │   └── bloc
+│   │   │       ├── reponse_info_bloc.dart
+│   │   │       ├── reponse_info_event.dart
+│   │   │       └── reponse_info_state.dart
+│   │   ├── pages
+│   │   │   └── reponses_page.dart
+│   │   └── widgets
+│   │       ├── qag_reponse_a_venir_section.dart
+│   │       └── qags_response_loading.dart
+│   ├── splash_page.dart
+│   ├── thematique
+│   │   ├── bloc
+│   │   │   ├── thematique_bloc.dart
+│   │   │   ├── thematique_event.dart
+│   │   │   ├── thematique_state.dart
+│   │   │   ├── thematique_view_model.dart
+│   │   │   └── thematique_with_id_view_model.dart
+│   │   ├── domain
+│   │   │   ├── thematique.dart
+│   │   │   └── thematique_with_id.dart
+│   │   └── repository
+│   │       ├── thematique_presenter.dart
+│   │       └── thematique_repository.dart
+│   ├── webview
+│   │   └── webview_page.dart
+│   └── welcome
+│       ├── bloc
+│       │   ├── welcome_bloc.dart
+│       │   ├── welcome_event.dart
+│       │   └── welcome_state.dart
+│       ├── domain
+│       │   └── welcome_a_la_une.dart
+│       ├── pages
+│       │   ├── welcome_a_la_une_presenter.dart
+│       │   ├── welcome_a_la_une_view_model.dart
+│       │   ├── welcome_card.dart
+│       │   └── welcome_page.dart
+│       └── repository
+│           ├── mocks_welcome_repository.dart
+│           └── welcome_repository.dart
+├── pubspec.lock
+├── pubspec.yaml
+├── scripts
+│   ├── buildIPA.sh
+│   ├── dev
+│   │   ├── createAppDistribRelease.sh
+│   │   ├── extractApkFromBundle.sh
+│   │   ├── generateApk.sh
+│   │   ├── generateBundle.sh
+│   │   └── generateIpa.sh
+│   ├── extractApkFromBundle.sh
+│   ├── extractVersion.sh
+│   ├── release
+│   │   ├── extractApkFromBundle.sh
+│   │   ├── generateBundle.sh
+│   │   └── generateIpa.sh
+│   └── sandbox
+│       ├── generateApk.sh
+│       └── generateIpa.sh
+├── servers.conf.erb
+├── test
+│   ├── bloc
+│   │   ├── app_feedback
+│   │   │   └── app_feedback_bloc_test.dart
+│   │   ├── consultation
+│   │   │   ├── consultation_bloc_test.dart
+│   │   │   ├── consultation_finished_paginated_bloc_test.dart
+│   │   │   ├── consultation_questions_bloc_test.dart
+│   │   │   ├── consultation_questions_responses_bloc_test.dart
+│   │   │   ├── consultation_questions_responses_builder_test.dart
+│   │   │   ├── consultation_questions_responses_stock_bloc_test.dart
+│   │   │   ├── dynamic_consultation_bloc.dart
+│   │   │   └── results
+│   │   │       └── dynamic_consultation_results_bloc.dart
+│   │   ├── demographic
+│   │   │   ├── demographic_information_bloc_test.dart
+│   │   │   ├── demographic_responses_send_bloc_test.dart
+│   │   │   └── demographic_responses_stock_bloc_test.dart
+│   │   ├── login
+│   │   │   └── login_bloc_test.dart
+│   │   ├── notification
+│   │   │   ├── notification_bloc_test.dart
+│   │   │   └── notification_permission_bloc_test.dart
+│   │   ├── participation_charter
+│   │   │   └── participation_charter_test.dart
+│   │   ├── qag
+│   │   │   ├── ask_qag_status_bloc_test.dart
+│   │   │   ├── qag_create_bloc_test.dart
+│   │   │   ├── qag_delete_bloc_test.dart
+│   │   │   ├── qag_details_bloc_test.dart
+│   │   │   ├── qag_list_bloc_test.dart
+│   │   │   ├── qag_moderate_bloc_test.dart
+│   │   │   ├── qag_moderation_list_bloc_test.dart
+│   │   │   ├── qag_response_bloc_test.dart
+│   │   │   ├── qag_response_paginated_bloc_test.dart
+│   │   │   ├── qag_search_bloc_test.dart
+│   │   │   └── qag_support_bloc_test.dart
+│   │   ├── thematique
+│   │   │   └── thematique_bloc_test.dart
+│   │   └── welcome
+│   │       └── welcome_bloc_test.dart
+│   ├── fakes
+│   │   ├── common
+│   │   │   ├── fake_app_version_helper.dart
+│   │   │   ├── fake_jwt_helper.dart
+│   │   │   ├── fake_platform_helper.dart
+│   │   │   └── fake_role_helper.dart
+│   │   ├── concertation
+│   │   │   └── fakes_concertation_repository.dart
+│   │   ├── consultation
+│   │   │   ├── fake_consultation_cache_repository.dart
+│   │   │   ├── fake_consultation_question_storage_client.dart
+│   │   │   └── fakes_consultation_repository.dart
+│   │   ├── demographic
+│   │   │   ├── fake_profile_demographic_storage_client.dart
+│   │   │   └── fakes_demographic_repository.dart
+│   │   ├── fakes_participation_charter_repository.dart
+│   │   ├── login
+│   │   │   ├── fake_login_storage_client.dart
+│   │   │   └── fakes_login_repository.dart
+│   │   ├── notification
+│   │   │   ├── fake_notification_first_request_permission_storage_client.dart
+│   │   │   ├── fake_permission_helper.dart
+│   │   │   └── fakes_notification_repository.dart
+│   │   ├── push_notification
+│   │   │   └── fakes_push_notification_service.dart
+│   │   ├── qag
+│   │   │   ├── fake_device_id_helper.dart
+│   │   │   ├── fake_qag_repository.dart
+│   │   │   ├── fakes_qag_repository.dart
+│   │   │   └── header_qag_storage_client_stub.dart
+│   │   ├── referentiel
+│   │   │   └── fakes_referentiel_repository.dart
+│   │   ├── storage
+│   │   │   └── fake_secure_storage_client.dart
+│   │   ├── thematique
+│   │   │   └── fakes_thematique_repository.dart
+│   │   └── welcome
+│   │       └── fakes_welcome_repository.dart
+│   ├── infrastructure
+│   │   ├── app_feedback
+│   │   │   └── app_feedback_repository_test.dart
+│   │   ├── concertation
+│   │   │   └── concertation_repository_test.dart
+│   │   ├── consultation
+│   │   │   └── consultation_repository_test.dart
+│   │   ├── demographic
+│   │   │   └── demographic_repository_test.dart
+│   │   ├── login
+│   │   │   └── login_repository_test.dart
+│   │   ├── notification
+│   │   │   └── notification_repository_test.dart
+│   │   ├── qag
+│   │   │   └── qag_repository_test.dart
+│   │   ├── territorialisation
+│   │   │   └── referentiel_repository_test.dart
+│   │   ├── thematique
+│   │   │   └── thematique_repository_test.dart
+│   │   └── welcome
+│   │       └── welcome_repository_test.dart
+│   └── utils
+│       ├── dio_utils.dart
+│       ├── simple_html_parser_test.dart
+│       └── string_parser_test.dart
+└── web
+    ├── favicon.png
+    ├── icons
+    │   ├── Icon-192.png
+    │   ├── Icon-512.png
+    │   ├── Icon-maskable-192.png
+    │   └── Icon-maskable-512.png
+    ├── index.html
+    └── manifest.json
+284 directories, 866 files
