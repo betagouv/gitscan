@@ -1,28 +1,33 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de la bibliothèque de composants lab-anssi-ui-kit. Les principales améliorations concernent l'ajout de nouveaux composants (Table, Range, Transcription), des améliorations sur le composant Table (pagination, gestion d'état vide, contenu riche) et des correctifs liés à la sécurité (nonce et CSP). Des optimisations ont également été apportées pour limiter les déclenchements de la CI et améliorer la documentation.
+Ce mois-ci, la bibliothèque a bénéficié d'une série d'améliorations axées sur la performance, la sécurité et l'enrichissement des composants. Des correctifs de sécurité ont été appliqués, l'optimisation du bundle a été améliorée, et de nouveaux composants et options de personnalisation ont été ajoutés pour offrir plus de flexibilité aux développeurs. Plusieurs mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la compatibilité.
 
 ### Évolutions fonctionnelles
-- Ajout du composant `DsfrTable` avec pagination côté client et serveur, gestion de l'état vide, et possibilité d'injecter du contenu riche dans les cellules. [#issue à identifier]
-- Ajout du composant `DsfrRange`. [#issue à identifier]
-- Ajout du composant `DsfrTranscription`. [#issue à identifier]
-- Le composant `DsfrSelect` permet désormais de masquer le label (`hideLabel`) et d'intercepter les changements de valeur (`onvaluechanged`). [#issue à identifier]
-- Le composant `DsfrFooter` permet d'afficher uniquement le bloc du bas. [#issue à identifier]
-- Possibilité d'injecter du code HTML dans le footer via un nouveau slot. [#301b90a](https://github.com/betagouv/lab-anssi-ui-kit/commit/301b90a)
-- Ajout d'un slot pour surcharger le texte du composant `DSFR Highlight`. [#0ce5f84](https://github.com/betagouv/lab-anssi-ui-kit/commit/0ce5f84)
-- Ajout du callback `onpagechange` au composant `DsfrPagination` pour intercepter le clic sur les liens. [#issue à identifier]
+- Ajout du composant `DsfrNotice` pour afficher des messages d'information ou d'alerte. [#81b185f](https://github.com/betagouv/lab-anssi-ui-kit/commit/81b185f)
+- Le composant `DsfrCheckbox` dispose maintenant d'un slot `hint` pour ajouter une aide contextuelle. [#633d112](https://github.com/betagouv/lab-anssi-ui-kit/commit/633d112)
+- Le composant `DsfrLink` a reçu une nouvelle prop `neutral` pour modifier son apparence. [#c7d38ae](https://github.com/betagouv/lab-anssi-ui-kit/commit/c7d38ae)
+- Le composant `DsfrFooter` permet désormais d'ajouter une description via un nouveau slot. [#05a842b](https://github.com/betagouv/lab-anssi-ui-kit/commit/05a842b)
+- Le composant `DsfrStepper` permet de masquer les détails avec la prop `hideDetails`. [#63f0e0e](https://github.com/betagouv/lab-anssi-ui-kit/commit/63f0e0e)
+- Le composant `DsfrRange` permet de masquer le label de sortie avec la prop `hideOutputLabel`. [#eee6764](https://github.com/betagouv/lab-anssi-ui-kit/commit/eee6764)
+- Le composant `DsfrBadgesGroup` prend désormais en compte les champs `icon` et `hasIcon`. [#71e7f58](https://github.com/betagouv/lab-anssi-ui-kit/commit/71e7f58)
+- Correction de l'affichage des icônes. [#2f99f4e](https://github.com/betagouv/lab-anssi-ui-kit/commit/2f99f4e)
+- Correction du mode téléchargement du `dsfr-link`. [#b9ed0ef](https://github.com/betagouv/lab-anssi-ui-kit/commit/b9ed0ef)
 
 ### Évolutions techniques
-- Mise à jour de Vitest vers la version majeure 4+. [#1a97fd4](https://github.com/betagouv/lab-anssi-ui-kit/commit/1a97fd4)
-- Mise à jour de ESLint vers la version majeure 10+. [#d1878b7](https://github.com/betagouv/lab-anssi-ui-kit/commit/d1878b7)
-- Optimisation de la CI pour limiter les déclenchements aux fichiers impactant le build. [#95eb605](https://github.com/betagouv/lab-anssi-ui-kit/commit/95eb605)
-- Correction des expressions régulières pour l'injection du nonce dans les styles, améliorant la sécurité. [#e5089a3](https://github.com/betagouv/lab-anssi-ui-kit/commit/e5089a3)
-- Correction d'un problème de CSP. [#55d6358](https://github.com/betagouv/lab-anssi-ui-kit/commit/55d6358)
-- Mise à jour des styles du composant `DsfrTable` pour utiliser le CSS minifié. [#ae0f9c1](https://github.com/betagouv/lab-anssi-ui-kit/commit/ae0f9c1)
-- Correction de l'offset de la table pour inclure l'unité 'px'. [#41f38dc](https://github.com/betagouv/lab-anssi-ui-kit/commit/41f38dc)
+- Optimisation du bundle grâce au partage des styles d'icônes DSFR via `adoptedStyleSheets`, améliorant ainsi les performances. [#2899155](https://github.com/betagouv/lab-anssi-ui-kit/commit/2899155)
+- Refactorisation des composants pour utiliser la fonction `withIconsStyleSheet`. [#1f03fb4](https://github.com/betagouv/lab-anssi-ui-kit/commit/1f03fb4)
+- Optimisation des imports CSS des composants DSFR pour utiliser les versions `.main`. [#5ac21b8](https://github.com/betagouv/lab-anssi-ui-kit/commit/5ac21b8)
+- Remplacement des imports Core par des imports ciblés dans plusieurs composants (`DsfrLink`, `DsfrBreadcrumb`, `DsfrRange`). [#84c0edd, #741e910, #195257e](https://github.com/betagouv/lab-anssi-ui-kit/commits)
+- Mise à jour des dépendances : Svelte (5.55.0), TypeScript (6.0.2), Storybook (10.3.3), Vitest (4.1.1), DSFR (1.14.4). [#6b96626, #880b624, #654d7b0, #b29cdff, #15f4801]
+- Application des patchs de sécurité suite aux alertes dependabot. [#c63aaef, #d88cbe1](https://github.com/betagouv/lab-anssi-ui-kit/commit/c63aaef)
 
 ### Autres changements
-- Ajout de la documentation concernant la thématisation de la librairie. [#be7987c](https://github.com/betagouv/lab-anssi-ui-kit/commit/be7987c)
-- Passage en version 1.44.2, 1.44.1, 1.44.0, 1.43.0, 1.42.0 et 1.41.4. [#79b4d99](https://github.com/betagouv/lab-anssi-ui-kit/commit/79b4d99), [#8ac5f46](https://github.com/betagouv/lab-anssi-ui-kit/commit/8ac5f46), [#71a4031](https://github.com/betagouv/lab-anssi-ui-kit/commit/71a4031), [#a78b2d6](https://github.com/betagouv/lab-anssi-ui-kit/commit/a78b2d6), [#8728641](https://github.com/betagouv/lab-anssi-ui-kit/commit/8728641), [#03c0387](https://github.com/betagouv/lab-anssi-ui-kit/commit/03c0387)
-- Mise à jour des dépendances. [#a41b1c1](https://github.com/betagouv/lab-anssi-ui-kit/commit/a41b1c1)
+- Amélioration de l'affichage du code source des webcomponents dans la page Autodocs des stories. [#9b604de](https://github.com/betagouv/lab-anssi-ui-kit/commit/9b604de)
+- Suppression du bloc de lien "NIS2". [#6de23ff](https://github.com/betagouv/lab-anssi-ui-kit/commit/6de23ff)
+- Modification du mixin `set-shadow-host` pour piloter l'application du `font-size` dans `DsfrLink`. [#1d1f2ec](https://github.com/betagouv/lab-anssi-ui-kit/commit/1d1f2ec)
+- Amélioration de la gestion de l'attribut `data-themeable` dans `DsfrHeader` et `setThemeable`. [#9ea4a47, #7e79174](https://github.com/betagouv/lab-anssi-ui-kit/commit/9ea4a47)
+- Correction de l'application des props `fint` et `radio` sur les éléments radio dans `DsfrRadiosGroup`. [#271443a](https://github.com/betagouv/lab-anssi-ui-kit/commit/271443a)
+- Suppression des déclarations de police inutiles. [#f240fd0](https://github.com/betagouv/lab-anssi-ui-kit/commit/f240fd0)
+- Suppression des imports inutiles des variables DSFR. [#5afdf9b](https://github.com/betagouv/lab-anssi-ui-kit/commit/5afdf9b)
+- Revert d'une modification de la publication NPM. [#f022064](https://github.com/betagouv/lab-anssi-ui-kit/commit/f022064)
