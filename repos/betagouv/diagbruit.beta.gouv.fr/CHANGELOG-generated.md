@@ -1,30 +1,35 @@
-## Changelog : diagbruit.beta.gouv.fr (30 derniers jours)
+## Changelog : diagbruit.beta.gouv.fr (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des zones bruyantes, l'ajout de pages légales, et la refactorisation de l'interface utilisateur pour une meilleure expérience. Des corrections ont également été apportées pour gérer correctement les polygones de sources de bruit et améliorer la stabilité de l'application.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en intégrant une fonctionnalité de médiathèque pour les préconisations, en optimisant les performances des requêtes de données et en améliorant le formulaire de feedback avec l'envoi d'emails directement depuis la préproduction. Des corrections de bugs et des améliorations techniques ont également été apportées pour stabiliser et sécuriser la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'une alerte spécifique si une zone bruyante est atteinte [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
-- Affichage de la recommandation calculée directement sur la page du permis de construire (PEB) [#45](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/45) et [#48](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/48).
-- Ajout de toutes les pages légales nécessaires au site [#44](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/44).
-- Amélioration de l'affichage du résumé, avec une refactorisation des composants et du texte [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
-- Ajout d'un iframe pour l'intégration de Tally [#42](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/42).
-- Gestion des sources de bruit avec des polygones [#41](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/41).
+- Ajout d'une médiathèque pour les préconisations, permettant de gérer et d'afficher des contenus enrichis (images, textes formatés) dans les recommandations. [#56](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/56)
+- Intégration de données scolaires (écoles) pour affiner l'analyse et les préconisations. [#57](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/57)
+- Mise en place d'un formulaire de feedback avec envoi d'emails directement depuis l'environnement de préproduction. [#51](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/51)
+- Ajout de liens "Donner mon avis" et "Contact" pour faciliter la communication avec les utilisateurs.
+- Amélioration de la présentation des recommandations avec l'ajout de points clés ("keyPoints") et d'une section "à retenir".
+- Ajout d'un compteur d'envois d'emails de diagnostic pour suivi.
+- Ajout d'un lien vers les engagements de service.
+- Amélioration de la recherche avec une barre de recherche et un état vide géré.
 
 ### Évolutions techniques
-- Refactorisation du code frontend pour améliorer la structure et la maintenabilité.
-- Adaptation des scripts d'ingestion pour tenir compte des changements en production.
-- Mise en place d'une configuration pour l'utilisation de Corepack Yarn.
-- Amélioration de la configuration du CMS pour réduire la taille de l'image Docker et optimiser le déploiement.
-- Ajout de la gestion des zones bruyantes dans la base de données et l'API FastAPI [#40](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/40).
-- Correction de bugs et amélioration de la robustesse des tests.
+- Optimisation des requêtes de données, notamment pour l'affichage des données OSM et des nuisances sonores, afin d'améliorer les performances.
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité, notamment en découpant les composants et en supprimant le code inutilisé.
+- Mise en place d'une configuration Biome pour le linting et le formatage du code.
+- Migration vers un nouveau contrôleur d'envoi d'emails en Node.js, remplaçant l'ancien contrôleur Python.
+- Amélioration de la sécurité en ajoutant une limitation du taux d'envoi d'emails pour éviter le spam.
+- Correction de vulnérabilités potentielles (CVE) et renforcement de la sécurité des URLs.
+- Mise à jour des pipelines CI/CD pour l'automatisation des déploiements.
+- Utilisation de slugs pour les données, améliorant l'URL et l'accessibilité.
+- Correction de problèmes liés aux index géométriques dans la base de données.
 
 ### Autres changements
-- Ajout de fichiers de configuration CLAUDE.md [#47](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/47).
-- Mise à jour des labels et descriptions des zones bruyantes dans l'API [#43](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/43).
-- Ouverture de la whitelist pour les codes 35, 59 et 67 [#39](https://github.com/betagouv/diagbruit.beta.gouv.fr/pulls/39).
-- Suppression des références aux PLU locaux en attendant une implémentation future.
-- Corrections mineures de design et d'UX sur l'interface utilisateur.
-- Suppression de messages de défense sur la page PEB.
-- Suppression du badge "work in progress".
-- Bump de la version de l'API.
+- Mise à jour de la documentation.
+- Corrections de typographie et d'erreurs de wording.
+- Amélioration de l'accessibilité (a11y) de certains composants.
+- Ajout de logs pour faciliter le débogage et le suivi des performances.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout de variables d'environnement pour la configuration de l'application.
+- Suppression de collections Strapi inutilisées.
+- Amélioration des noms de composants pour plus de clarté.

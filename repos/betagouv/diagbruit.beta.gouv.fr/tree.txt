@@ -1,11 +1,19 @@
 .
 ├── .github
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       ├── deploy-cms-preprod.yml
+│       ├── deploy-cms-prod.yml
+│       ├── deploy-fastapi-preprod.yml
+│       ├── deploy-fastapi-prod.yml
+│       ├── deploy-frontend-preprod.yml
+│       ├── deploy-frontend-prod.yml
+│       └── deploy-metabase.yml
 ├── .gitignore
 ├── CLAUDE.md
 ├── LICENSE
 ├── README.md
+├── biome.json
 ├── cms
 │   ├── .env.example
 │   ├── .gitignore
@@ -29,12 +37,17 @@
 │   ├── favicon.png
 │   ├── package.json
 │   ├── public
+│   │   ├── images
+│   │   │   ├── btnIcon.svg
+│   │   │   └── footerImage.svg
 │   │   ├── robots.txt
 │   │   └── uploads
 │   │       └── .gitkeep
 │   ├── src
 │   │   ├── admin
 │   │   │   ├── app.example.tsx
+│   │   │   ├── app.tsx
+│   │   │   ├── editor.css
 │   │   │   ├── tsconfig.json
 │   │   │   └── vite.config.example.ts
 │   │   ├── api
@@ -49,16 +62,6 @@
 │   │   │   │   │   └── accessibility.ts
 │   │   │   │   └── services
 │   │   │   │       └── accessibility.ts
-│   │   │   ├── category
-│   │   │   │   ├── content-types
-│   │   │   │   │   └── category
-│   │   │   │   │       └── schema.json
-│   │   │   │   ├── controllers
-│   │   │   │   │   └── category.ts
-│   │   │   │   ├── routes
-│   │   │   │   │   └── category.ts
-│   │   │   │   └── services
-│   │   │   │       └── category.ts
 │   │   │   ├── changelog
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── changelog
@@ -79,6 +82,18 @@
 │   │   │   │   │   └── decree.ts
 │   │   │   │   └── services
 │   │   │   │       └── decree.ts
+│   │   │   ├── email
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── email
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── email.tsx
+│   │   │   │   ├── routes
+│   │   │   │   │   └── email.ts
+│   │   │   │   ├── services
+│   │   │   │   │   └── email.ts
+│   │   │   │   └── templates
+│   │   │   │       └── DiagnosticEmail.tsx
 │   │   │   ├── legal-mention
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── legal-mention
@@ -141,12 +156,15 @@
 │   │   │           └── setting.ts
 │   │   ├── components
 │   │   │   └── global
-│   │   │       ├── conditions.json
+│   │   │       ├── array.json
 │   │   │       ├── link.json
-│   │   │       └── local-documentation-code-insee.json
+│   │   │       ├── local-documentation-code-insee.json
+│   │   │       └── title-text-array.json
 │   │   ├── extensions
 │   │   │   └── .gitkeep
-│   │   └── index.ts
+│   │   ├── index.ts
+│   │   └── middlewares
+│   │       └── rate-limit.ts
 │   ├── tsconfig.json
 │   ├── types
 │   │   └── generated
@@ -181,6 +199,22 @@
 │   │   │   └── staging
 │   │   │       ├── schema.yml
 │   │   │       └── stg_noisemap.sql
+│   │   ├── osm
+│   │   │   ├── intermediate
+│   │   │   │   ├── int_foods_filter.sql
+│   │   │   │   ├── int_foods_slug.sql
+│   │   │   │   ├── int_foods_validate.sql
+│   │   │   │   ├── int_schools_dep.sql
+│   │   │   │   ├── int_schools_filter.sql
+│   │   │   │   ├── int_schools_slug.sql
+│   │   │   │   └── schema.yml
+│   │   │   ├── marts
+│   │   │   │   ├── noisesource.sql
+│   │   │   │   └── schema.yml
+│   │   │   └── staging
+│   │   │       ├── schema.yml
+│   │   │       ├── stg_foods.sql
+│   │   │       └── stg_schools.sql
 │   │   ├── peb
 │   │   │   ├── intermediate
 │   │   │   │   ├── int_peb_fixed.sql
@@ -211,6 +245,16 @@
 │   │   │   └── staging
 │   │   │       ├── schema.yml
 │   │   │       └── stg_soundclassification.sql
+│   │   ├── strasbourg
+│   │   │   ├── intermediate
+│   │   │   │   ├── int_stras_slug.sql
+│   │   │   │   └── schema.yml
+│   │   │   ├── marts
+│   │   │   │   ├── noisesource_stras.sql
+│   │   │   │   └── schema.yml
+│   │   │   └── staging
+│   │   │       ├── schema.yml
+│   │   │       └── stg_stras.sql
 │   │   └── topo
 │   │       ├── intermediate
 │   │       │   ├── int_topo_fixed.sql
@@ -447,6 +491,7 @@
 │   │   ├── images
 │   │   │   ├── cerema.svg
 │   │   │   ├── connection-lost.svg
+│   │   │   ├── document-download.svg
 │   │   │   ├── document.svg
 │   │   │   ├── health.svg
 │   │   │   ├── homehero.svg
@@ -466,6 +511,7 @@
 │   │   │   │   ├── Diagnostic.tsx
 │   │   │   │   ├── DiagnosticDecrees.tsx
 │   │   │   │   ├── DiagnosticDocumentation.tsx
+│   │   │   │   ├── DiagnosticEmailForm.tsx
 │   │   │   │   ├── DiagnosticEvaluation.tsx
 │   │   │   │   ├── DiagnosticHero.tsx
 │   │   │   │   ├── DiagnosticIsolationBadge.tsx
@@ -477,6 +523,7 @@
 │   │   │   │   ├── DiagnosticParcelleSvg.tsx
 │   │   │   │   ├── DiagnosticParcelleSvgNotice.tsx
 │   │   │   │   ├── DiagnosticPosition.tsx
+│   │   │   │   ├── DiagnosticReceiveByMail.tsx
 │   │   │   │   ├── DiagnosticRecommendations.tsx
 │   │   │   │   ├── DiagnosticReferencesBox.tsx
 │   │   │   │   ├── DiagnosticRegulation.tsx
@@ -489,6 +536,7 @@
 │   │   │   │   ├── DiagnosticSummarySourceAction.tsx
 │   │   │   │   ├── DiagnosticVerificationNotice.tsx
 │   │   │   │   ├── DiagnsoticSummaryPosition.tsx
+│   │   │   │   ├── NoiseSourcesModal.tsx
 │   │   │   │   └── regulation
 │   │   │   │       ├── RegulationCls.tsx
 │   │   │   │       ├── RegulationIsolation.tsx
@@ -498,6 +546,7 @@
 │   │   │   │   └── HomeHero.tsx
 │   │   │   ├── map
 │   │   │   │   ├── MapComponent.tsx
+│   │   │   │   ├── NoisePinModal.tsx
 │   │   │   │   ├── styles
 │   │   │   │   │   └── ortho.json
 │   │   │   │   ├── useDiagnostics.ts
@@ -506,8 +555,12 @@
 │   │   │   │   ├── AddressSearch.tsx
 │   │   │   │   └── ParcelleSearch.tsx
 │   │   │   ├── ui
-│   │   │   │   └── Loader.tsx
+│   │   │   │   ├── CardPreco.tsx
+│   │   │   │   ├── FakeLinkComponent.tsx
+│   │   │   │   ├── Loader.tsx
+│   │   │   │   └── RichContent.tsx
 │   │   │   └── utils
+│   │   │       ├── CheckTexts.tsx
 │   │   │       └── ScrollToTop.tsx
 │   │   ├── hooks
 │   │   │   ├── previous.ts
@@ -515,7 +568,8 @@
 │   │   │   ├── useDecrees.ts
 │   │   │   ├── useLocalDocumentation.ts
 │   │   │   ├── useMatomo.ts
-│   │   │   └── useOptimalZone.ts
+│   │   │   ├── useOptimalZone.ts
+│   │   │   └── usePreco.ts
 │   │   ├── index.css
 │   │   ├── index.tsx
 │   │   ├── layouts
@@ -526,6 +580,7 @@
 │   │   │   ├── diagnostic.tsx
 │   │   │   ├── home.tsx
 │   │   │   ├── maintenance.tsx
+│   │   │   ├── preco.tsx
 │   │   │   └── stats.tsx
 │   │   ├── react-app-env.d.ts
 │   │   ├── reportWebVitals.ts
@@ -551,6 +606,7 @@
 ├── ingestion
 │   ├── .env.example
 │   ├── CLAUDE.md
+│   ├── ingest_geojson.py
 │   ├── ingest_shapefiles.py
 │   ├── inputs
 │   │   ├── PEB
@@ -694,32 +750,37 @@
 │   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.qml
 │   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.shp
 │   │   │           └── l_bruit_zbr_infra_r_autoroute_c_ln_d33.shx
-│   │   └── soundclassification
-│   │       └── AGGLO_033
-│   │           ├── FER
-│   │           │   ├── Class_sonore_DDTM33_SNCF.cpg
-│   │           │   ├── Class_sonore_DDTM33_SNCF.dbf
-│   │           │   ├── Class_sonore_DDTM33_SNCF.prj
-│   │           │   ├── Class_sonore_DDTM33_SNCF.shp
-│   │           │   └── Class_sonore_DDTM33_SNCF.shx
-│   │           ├── LGV
-│   │           │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.cpg
-│   │           │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.dbf
-│   │           │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.prj
-│   │           │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.shp
-│   │           │   └── Class_sonore_DDTM33_LGV-SEA_LISEA.shx
-│   │           ├── ROUTIER
-│   │           │   ├── Class_sonore_DDTM33_routier.cpg
-│   │           │   ├── Class_sonore_DDTM33_routier.dbf
-│   │           │   ├── Class_sonore_DDTM33_routier.prj
-│   │           │   ├── Class_sonore_DDTM33_routier.shp
-│   │           │   └── Class_sonore_DDTM33_routier.shx
-│   │           └── TRAMWAY
-│   │               ├── Class_sonore_DDTM33_tramway.cpg
-│   │               ├── Class_sonore_DDTM33_tramway.dbf
-│   │               ├── Class_sonore_DDTM33_tramway.prj
-│   │               ├── Class_sonore_DDTM33_tramway.shp
-│   │               └── Class_sonore_DDTM33_tramway.shx
+│   │   ├── osm
+│   │   │   ├── osm_food_service_bordeaux_strasbourg.geojson
+│   │   │   └── osm_schools_bordeaux_strasbourg.geojson
+│   │   ├── soundclassification
+│   │   │   └── AGGLO_033
+│   │   │       ├── FER
+│   │   │       │   ├── Class_sonore_DDTM33_SNCF.cpg
+│   │   │       │   ├── Class_sonore_DDTM33_SNCF.dbf
+│   │   │       │   ├── Class_sonore_DDTM33_SNCF.prj
+│   │   │       │   ├── Class_sonore_DDTM33_SNCF.shp
+│   │   │       │   └── Class_sonore_DDTM33_SNCF.shx
+│   │   │       ├── LGV
+│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.cpg
+│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.dbf
+│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.prj
+│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.shp
+│   │   │       │   └── Class_sonore_DDTM33_LGV-SEA_LISEA.shx
+│   │   │       ├── ROUTIER
+│   │   │       │   ├── Class_sonore_DDTM33_routier.cpg
+│   │   │       │   ├── Class_sonore_DDTM33_routier.dbf
+│   │   │       │   ├── Class_sonore_DDTM33_routier.prj
+│   │   │       │   ├── Class_sonore_DDTM33_routier.shp
+│   │   │       │   └── Class_sonore_DDTM33_routier.shx
+│   │   │       └── TRAMWAY
+│   │   │           ├── Class_sonore_DDTM33_tramway.cpg
+│   │   │           ├── Class_sonore_DDTM33_tramway.dbf
+│   │   │           ├── Class_sonore_DDTM33_tramway.prj
+│   │   │           ├── Class_sonore_DDTM33_tramway.shp
+│   │   │           └── Class_sonore_DDTM33_tramway.shx
+│   │   └── strasbourg
+│   │       └── strasbourg-terrasses-autorisees-2025.geojson
 │   ├── launch-ingestion.sh
 │   └── requirements.txt
 ├── metabase
@@ -734,4 +795,4 @@
 │   └── system.properties
 ├── setup-dbt.sh
 └── setup-dev.sh
-238 directories, 533 files
+251 directories, 581 files
