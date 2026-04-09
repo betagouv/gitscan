@@ -1,0 +1,533 @@
+.
+├── .env.example
+├── .eslintrc.json
+├── .git-blame-ignore-revs
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       └── lasuite.yaml
+├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   ├── codeStyles
+│   │   ├── Project.xml
+│   │   └── codeStyleConfig.xml
+│   ├── inspectionProfiles
+│   │   └── Project_Default.xml
+│   ├── jsLinters
+│   │   └── eslint.xml
+│   ├── lasuite-landingpage.iml
+│   ├── misc.xml
+│   ├── modules.xml
+│   ├── ruff.xml
+│   └── vcs.xml
+├── .prettierignore
+├── .prettierrc.json
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── content
+│   ├── .examples
+│   │   └── service-page.yml
+│   ├── content-pages
+│   │   ├── de
+│   │   │   ├── .gitkeep
+│   │   │   ├── accessibilite.yml
+│   │   │   ├── mentions-legales.yml
+│   │   │   ├── services-en-beta.yml
+│   │   │   └── suivi.yml
+│   │   ├── en
+│   │   │   ├── .gitkeep
+│   │   │   ├── accessibilite.yml
+│   │   │   ├── mentions-legales.yml
+│   │   │   ├── services-en-beta.yml
+│   │   │   └── suivi.yml
+│   │   ├── fr
+│   │   │   ├── .gitkeep
+│   │   │   ├── accessibilite.yml
+│   │   │   ├── mentions-legales.yml
+│   │   │   ├── services-en-beta.yml
+│   │   │   └── suivi.yml
+│   │   └── nl
+│   │       ├── .gitkeep
+│   │       ├── accessibilite.yml
+│   │       ├── mentions-legales.yml
+│   │       └── suivi.yml
+│   ├── custom-pages
+│   │   ├── .gitkeep
+│   │   ├── communs.yml
+│   │   └── homepage.yml
+│   └── service-pages
+│       ├── de
+│       │   ├── .gitkeep
+│       │   └── grist.yml
+│       ├── en
+│       │   ├── .gitkeep
+│       │   └── grist.yml
+│       ├── fr
+│       │   ├── .gitkeep
+│       │   └── grist.yml
+│       └── nl
+│           ├── .gitkeep
+│           └── nl.yaml
+├── manifest.json
+├── next.config.mjs
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── assets
+│   │   ├── .gitkeep
+│   │   ├── bg-nid-abeille.webp
+│   │   ├── cms
+│   │   │   └── dsfr
+│   │   │       └── .gitkeep
+│   │   ├── devise.svg
+│   │   ├── fonts
+│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-Medium.woff2
+│   │   │   └── Marianne-Regular.woff2
+│   │   ├── icons
+│   │   │   ├── anct.svg
+│   │   │   ├── arrow-squarepath.svg
+│   │   │   ├── building.svg
+│   │   │   ├── curlybraces-simple.svg
+│   │   │   ├── curlybraces.svg
+│   │   │   ├── edic.svg
+│   │   │   ├── g5393.svg
+│   │   │   ├── gauge.svg
+│   │   │   ├── git.svg
+│   │   │   ├── globe.svg
+│   │   │   ├── grist-simple.svg
+│   │   │   ├── hands-clap.svg
+│   │   │   ├── headset.svg
+│   │   │   ├── identity.svg
+│   │   │   ├── livekit.svg
+│   │   │   ├── matrix.svg
+│   │   │   ├── megaphone-fill.svg
+│   │   │   ├── puzzle.svg
+│   │   │   ├── puzzlefill.svg
+│   │   │   ├── securite.svg
+│   │   │   ├── securityfill.svg
+│   │   │   ├── server.svg
+│   │   │   ├── simple.svg
+│   │   │   └── solo.svg
+│   │   ├── lasuite.svg
+│   │   ├── link-black.svg
+│   │   ├── link-blue.svg
+│   │   ├── link-grey.svg
+│   │   ├── logo
+│   │   │   ├── cnd.png
+│   │   │   ├── cnrs.svg
+│   │   │   ├── dgfp.svg
+│   │   │   ├── education-nationale.svg
+│   │   │   ├── gendarmerienationale.svg
+│   │   │   ├── inrae.svg
+│   │   │   ├── ministere-agriculture.svg
+│   │   │   └── ministere-interieur.svg
+│   │   ├── marianne.svg
+│   │   ├── proconnect.svg
+│   │   └── products
+│   │       ├── demarches.svg
+│   │       ├── docs
+│   │       │   ├── ai.png
+│   │       │   ├── context.png
+│   │       │   ├── cta
+│   │       │   │   └── image_cta.png
+│   │       │   ├── docs_hero.png
+│   │       │   ├── export.png
+│   │       │   ├── lasuite.png
+│   │       │   ├── roadmap
+│   │       │   │   ├── collab.png
+│   │       │   │   ├── export.png
+│   │       │   │   ├── formules.png
+│   │       │   │   ├── import.png
+│   │       │   │   ├── more.png
+│   │       │   │   └── suivi.png
+│   │       │   ├── share.png
+│   │       │   ├── sousdocs.png
+│   │       │   └── testimonials
+│   │       │       ├── antoine-bouffard.jpg
+│   │       │       ├── guillaume-payan.jpg
+│   │       │       ├── honore-mendy.jpg
+│   │       │       ├── james-chaineau.png
+│   │       │       └── maxime-velon.jpg
+│   │       ├── docs.svg
+│   │       ├── fichiers
+│   │       │   ├── collab.png
+│   │       │   ├── cta.png
+│   │       │   ├── fichiers_hero.png
+│   │       │   ├── preview.png
+│   │       │   ├── roadmap
+│   │       │   │   ├── find.png
+│   │       │   │   ├── interopdocsvisio.png
+│   │       │   │   └── more.png
+│   │       │   ├── search.png
+│   │       │   ├── share.png
+│   │       │   └── stockage.png
+│   │       ├── fichiers.svg
+│   │       ├── france_transfert.svg
+│   │       ├── grist.svg
+│   │       ├── home
+│   │       │   └── testimonials
+│   │       │       ├── cecile_roung.png
+│   │       │       ├── david_bell.jpeg
+│   │       │       ├── david_pinaud.png
+│   │       │       ├── eric_hazane.png
+│   │       │       └── marc_shapiro.jpg
+│   │       ├── rdv.svg
+│   │       ├── resana.svg
+│   │       ├── tchap.svg
+│   │       ├── visio
+│   │       │   ├── 150.png
+│   │       │   ├── cta.png
+│   │       │   ├── record.png
+│   │       │   ├── roadmap
+│   │       │   │   ├── moderation.png
+│   │       │   │   ├── permanentes.png
+│   │       │   │   ├── physique.png
+│   │       │   │   └── planification.png
+│   │       │   ├── security.png
+│   │       │   ├── sous_titre.png
+│   │       │   ├── testimonials
+│   │       │   │   ├── dimitri.jpeg
+│   │       │   │   ├── jeanbaptiste.jpeg
+│   │       │   │   └── moussa_souare.jpeg
+│   │       │   ├── transcription.png
+│   │       │   └── visio_hero.png
+│   │       └── visio.svg
+│   ├── content
+│   │   └── uploads
+│   │       ├── .gitkeep
+│   │       ├── anct.svg
+│   │       ├── anssi.svg
+│   │       ├── article-line.svg
+│   │       ├── chat-1-line.svg
+│   │       ├── education-nationale.svg
+│   │       ├── folder-video-line.svg
+│   │       ├── france-2030.svg
+│   │       ├── logo_grist_marianne.svg
+│   │       ├── mail-line.svg
+│   │       ├── ministere-interieur.svg
+│   │       ├── questionnaire-line.svg
+│   │       └── slideshow-3-line.svg
+│   ├── favicon-dark.ico
+│   ├── favicon.ico
+│   ├── lasuite.png
+│   ├── lasuite.webp
+│   ├── lasuite_logo.png
+│   ├── numeriquegouv.png
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── suite-numerique.png
+├── renovate.json
+├── src
+│   ├── assets
+│   │   ├── ai.png
+│   │   ├── bundles+matrix.png
+│   │   ├── grist
+│   │   │   ├── before-contact-block.png
+│   │   │   ├── cards
+│   │   │   │   ├── 1.png
+│   │   │   │   ├── 2.png
+│   │   │   │   └── 3.png
+│   │   │   ├── grist-logo-lasuite.svg
+│   │   │   ├── grist-logo.png
+│   │   │   ├── key-features.png
+│   │   │   ├── lasuite-logo.png
+│   │   │   ├── mosaic
+│   │   │   │   ├── 1.png
+│   │   │   │   ├── 2.png
+│   │   │   │   ├── 3.png
+│   │   │   │   └── 4.png
+│   │   │   ├── pattern-cubes.png
+│   │   │   ├── resources
+│   │   │   │   ├── forum.png
+│   │   │   │   ├── github.png
+│   │   │   │   ├── peertube.png
+│   │   │   │   └── tchap.png
+│   │   │   ├── users
+│   │   │   │   ├── academie-versailles.png
+│   │   │   │   ├── anct.png
+│   │   │   │   ├── cnil.png
+│   │   │   │   ├── cnrs.png
+│   │   │   │   └── ministere-affaires-etrangeres.png
+│   │   │   └── why-grist
+│   │   │       ├── 1.png
+│   │   │       ├── 2.png
+│   │   │       ├── 3.png
+│   │   │       ├── 4.png
+│   │   │       └── 5.png
+│   │   ├── grist-clever-cloud.png
+│   │   ├── grist-summit
+│   │   │   ├── ffg.png
+│   │   │   ├── grist-and-dinum.png
+│   │   │   └── gristgouv-hex.svg
+│   │   ├── hero-home-mobile.png
+│   │   ├── hero-home.png
+│   │   ├── i18n.svg
+│   │   ├── link-white.svg
+│   │   ├── logo
+│   │   │   ├── LaSuiteShadow.svg
+│   │   │   ├── LogoLasuiteAnime.gif
+│   │   │   ├── anct.svg
+│   │   │   ├── anssi.svg
+│   │   │   ├── cnrs.svg
+│   │   │   ├── commons
+│   │   │   │   ├── big-blue-button.png
+│   │   │   │   ├── collabora.png
+│   │   │   │   ├── grist.png
+│   │   │   │   ├── jitsi.png
+│   │   │   │   ├── matrix.png
+│   │   │   │   ├── only-office.png
+│   │   │   │   └── ox.png
+│   │   │   ├── dgfp.svg
+│   │   │   ├── education-nationale.svg
+│   │   │   ├── france-2030.svg
+│   │   │   ├── gendarmerienationale.svg
+│   │   │   ├── gouv.svg
+│   │   │   ├── inrae.svg
+│   │   │   ├── lasuite-anime.gif
+│   │   │   ├── lasuite.svg
+│   │   │   ├── ministere-agriculture.svg
+│   │   │   └── ministere-interieur.svg
+│   │   ├── miniature_video.png
+│   │   ├── proconnect
+│   │   │   └── logomark-proconnect.svg
+│   │   ├── products
+│   │   │   ├── app-docs-desktop.png
+│   │   │   ├── app-docs.png
+│   │   │   ├── app-fichiers.png
+│   │   │   ├── app-francetransfert.png
+│   │   │   ├── app-grist-desktop.png
+│   │   │   ├── app-grist.png
+│   │   │   ├── app-ia.png
+│   │   │   ├── app-messagerie.png
+│   │   │   ├── app-tchap.png
+│   │   │   ├── app-visio.png
+│   │   │   ├── banners
+│   │   │   │   ├── docs.svg
+│   │   │   │   ├── fichiers.svg
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── messagerie.svg
+│   │   │   │   ├── regie.svg
+│   │   │   │   ├── tchap.svg
+│   │   │   │   └── visio.svg
+│   │   │   ├── grist.svg
+│   │   │   ├── index.tsx
+│   │   │   ├── logo-docs.svg
+│   │   │   ├── logo-fichiers.svg
+│   │   │   ├── logo-ft.svg
+│   │   │   ├── logo-grist.svg
+│   │   │   ├── logo-messagerie.svg
+│   │   │   ├── logo-tchap.svg
+│   │   │   ├── logo-text-docs.svg
+│   │   │   ├── logo-text-fichiers.svg
+│   │   │   ├── logo-text-ft.svg
+│   │   │   ├── logo-text-grist.svg
+│   │   │   ├── logo-text-messagerie.svg
+│   │   │   ├── logo-text-tchap.svg
+│   │   │   ├── logo-text-visio.svg
+│   │   │   ├── logo-visio.svg
+│   │   │   ├── logosfull
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── logofull-docs.svg
+│   │   │   │   ├── logofull-fichiers.svg
+│   │   │   │   ├── logofull-messagerie.svg
+│   │   │   │   ├── logofull-regie.svg
+│   │   │   │   └── logofull-visio.svg
+│   │   │   ├── visio-white.svg
+│   │   │   └── visio.svg
+│   │   └── question-mark.svg
+│   ├── cms
+│   │   ├── collections
+│   │   │   ├── README.md
+│   │   │   ├── content-page.tsx
+│   │   │   ├── index.ts
+│   │   │   └── service-page.tsx
+│   │   ├── commonFields.ts
+│   │   ├── config.common.ts
+│   │   ├── config.dev.ts
+│   │   ├── config.prod.ts
+│   │   ├── createCollection.tsx
+│   │   ├── getEntry.ts
+│   │   ├── getSlugs.ts
+│   │   ├── types.ts
+│   │   └── withImageDimensions.ts
+│   ├── components
+│   │   ├── Br.tsx
+│   │   ├── Button.tsx
+│   │   ├── Callout.tsx
+│   │   ├── Card.tsx
+│   │   ├── CmsImage.tsx
+│   │   ├── ContentSection.tsx
+│   │   ├── DsfrFooter.tsx
+│   │   ├── DsfrHeader.tsx
+│   │   ├── ExternalLink.tsx
+│   │   ├── FadeInSection.tsx
+│   │   ├── FeatureExcerpt.tsx
+│   │   ├── Footer.tsx
+│   │   ├── HomepageContent.tsx
+│   │   ├── Input.tsx
+│   │   ├── LaGaufre.tsx
+│   │   ├── Layout.tsx
+│   │   ├── LayoutProducts.tsx
+│   │   ├── LocaleSwitcher.tsx
+│   │   ├── MetaHeader.tsx
+│   │   ├── NavBar.tsx
+│   │   ├── PageContent.tsx
+│   │   ├── Paragraph.tsx
+│   │   ├── ProConnectButton.tsx
+│   │   ├── ProConnectSvg.tsx
+│   │   ├── ProductCard.tsx
+│   │   ├── Raw.tsx
+│   │   ├── ServicePageContent.tsx
+│   │   ├── Tag.tsx
+│   │   ├── ZoomableImage.tsx
+│   │   ├── cms-blocks
+│   │   │   ├── Cards.tsx
+│   │   │   ├── Content.tsx
+│   │   │   ├── CtaBlock.tsx
+│   │   │   ├── FAQ.tsx
+│   │   │   ├── FollowUs.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   ├── Pictures.tsx
+│   │   │   ├── Screenshot.tsx
+│   │   │   ├── SuiteNumerique.tsx
+│   │   │   └── Testimonies.tsx
+│   │   ├── content-blocks
+│   │   │   ├── Advantages.tsx
+│   │   │   ├── Block2Col.tsx
+│   │   │   ├── BlockFAQ.tsx
+│   │   │   ├── BlockFull.tsx
+│   │   │   ├── BlockFull3Col.tsx
+│   │   │   ├── BlockHero.tsx
+│   │   │   ├── CTA.tsx
+│   │   │   ├── CardFeature.tsx
+│   │   │   ├── Decisions.tsx
+│   │   │   ├── FAQLinks.tsx
+│   │   │   ├── Features.tsx
+│   │   │   ├── ProductsFooter.tsx
+│   │   │   ├── ProductsHeader.tsx
+│   │   │   ├── RoadMap.tsx
+│   │   │   ├── SocialProof.tsx
+│   │   │   ├── Testimonials.tsx
+│   │   │   └── index.tsx
+│   │   └── ui-kit-v2
+│   │       └── Button.tsx
+│   ├── constant.ts
+│   ├── content
+│   │   ├── homepage.json
+│   │   └── products
+│   │       ├── docs.json
+│   │       ├── fichiers.json
+│   │       ├── regie.json
+│   │       └── visio.json
+│   ├── fonts
+│   │   ├── README.md
+│   │   ├── sources
+│   │   │   ├── Marianne-Bold.woff2
+│   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   ├── Marianne-ExtraBold_Italic.woff2
+│   │   │   ├── Marianne-Light.woff2
+│   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   ├── Marianne-Medium.woff2
+│   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   ├── Marianne-Thin.woff2
+│   │   │   └── Marianne-Thin_Italic.woff2
+│   │   └── subsetted
+│   │       ├── Marianne-Bold-subset.woff2
+│   │       ├── Marianne-Bold_Italic-subset.woff2
+│   │       ├── Marianne-ExtraBold-subset.woff2
+│   │       ├── Marianne-ExtraBold_Italic-subset.woff2
+│   │       ├── Marianne-Light-subset.woff2
+│   │       ├── Marianne-Light_Italic-subset.woff2
+│   │       ├── Marianne-Medium-subset.woff2
+│   │       ├── Marianne-Medium_Italic-subset.woff2
+│   │       ├── Marianne-Regular-subset.woff2
+│   │       ├── Marianne-Regular_Italic-subset.woff2
+│   │       ├── Marianne-Thin-subset.woff2
+│   │       └── Marianne-Thin_Italic-subset.woff2
+│   ├── hooks
+│   │   └── useLiveAnnouncer.ts
+│   ├── locales
+│   │   ├── de.yml
+│   │   ├── en.yml
+│   │   ├── fr.yml
+│   │   ├── nl.yml
+│   │   └── useTranslations.tsx
+│   ├── pages
+│   │   ├── 404.tsx
+│   │   ├── [slug].tsx
+│   │   ├── _app.tsx
+│   │   ├── _document.tsx
+│   │   ├── admin.tsx
+│   │   ├── api
+│   │   │   ├── logout.ts
+│   │   │   ├── produits
+│   │   │   │   └── grist
+│   │   │   │       └── contact.ts
+│   │   │   └── services.ts
+│   │   ├── grist-2024-qr.tsx
+│   │   ├── grist-paris-summit-2024.tsx
+│   │   ├── index.tsx
+│   │   ├── produits
+│   │   │   ├── docs.tsx
+│   │   │   ├── fichiers.tsx
+│   │   │   ├── grist.tsx
+│   │   │   └── visio.tsx
+│   │   └── services
+│   │       └── [service].tsx
+│   ├── sections
+│   │   ├── DoubleBlock.tsx
+│   │   ├── Homepage
+│   │   │   ├── CoupDOeil.tsx
+│   │   │   ├── Ecosystem.tsx
+│   │   │   ├── FooterLaSuite.tsx
+│   │   │   ├── ForTeams.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   ├── NewProducts.tsx
+│   │   │   ├── PlatformInformations.tsx
+│   │   │   ├── Proconnect.tsx
+│   │   │   ├── Products.tsx
+│   │   │   └── UsersTeams.tsx
+│   │   ├── Newsletter.tsx
+│   │   └── produits
+│   │       └── grist
+│   │           ├── Contact.tsx
+│   │           ├── Cta.tsx
+│   │           ├── Footer.tsx
+│   │           ├── Hero.tsx
+│   │           ├── KeyFeatures.tsx
+│   │           ├── Markdown.tsx
+│   │           ├── Mosaic.tsx
+│   │           ├── Resources.tsx
+│   │           ├── Users.tsx
+│   │           └── WhyGrist.tsx
+│   ├── styles
+│   │   ├── app.css
+│   │   ├── base-app.css
+│   │   ├── base-dsfr.css
+│   │   ├── base-tailwind.css
+│   │   ├── cms.css
+│   │   ├── cunningham-tokens-sass.scss
+│   │   ├── cunningham-tokens.css
+│   │   ├── dsfr.css
+│   │   ├── globals.css
+│   │   └── tailwind.css
+│   └── utils
+│       ├── get.ts
+│       ├── inject-crisp.ts
+│       ├── markdown.ts
+│       └── products.tsx
+├── tailwind.config.ts
+├── tsconfig.json
+└── yarn.lock
+82 directories, 450 files
