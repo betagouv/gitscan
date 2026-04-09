@@ -1,13 +1,19 @@
-## Changelog : k8s-cluster-api-helm-charts (30 derniers jours)
+## Changelog : k8s-cluster-api-helm-charts (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la gestion des clusters Kubernetes déployés via Cluster API sur Openstack et Outscale. Les changements incluent une correction pour la configuration de CoreDNS, une modernisation des addons CAPI et la prise en charge du multi-tenant sur Outscale.
+Ce mois-ci, les charts Helm pour Cluster API ont bénéficié d'améliorations axées sur la flexibilité et la correction de bugs. Les utilisateurs peuvent désormais injecter des règles de sécurité supplémentaires pour les nœuds worker, et des corrections ont été apportées pour permettre la modification des secrets et la gestion des configurations de nœuds. Des améliorations ont également été apportées à la gestion des CIDR et de l'anti-affinité de CoreDNS.
 
 ### Évolutions fonctionnelles
-- **Outscale:** Ajout de la possibilité de référencer un secret pour les déploiements multi-tenant. [#67](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/67)
-- **CoreDNS:** Correction d'un problème d'anti-affinité pour CoreDNS, améliorant potentiellement sa stabilité et sa disponibilité. [#66](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/66)
-- **Addons CAPI:** Correction d'une erreur de syntaxe YAML dans les addons CAPI, assurant un fonctionnement correct. [#68](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/issues/68)
-- **Openstack:** Application de la correction d'anti-affinité CoreDNS également pour Openstack.
+- **Sécurité des nœuds worker :** Possibilité d'injecter des règles de sécurité supplémentaires (Security Groups) pour les nœuds worker via le chart `capi-cluster`. [#76](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/76)
+- **Gestion des secrets :** Suppression des hooks qui empêchaient la modification des secrets, permettant ainsi une meilleure gestion des informations sensibles. [#72](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/72) et [#70](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/70)
+- **Provisionnement de secrets :** Amélioration du provisionnement des secrets via l'utilisation de `ResourceSet`. [#71](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/71)
 
 ### Évolutions techniques
-- **Addons CAPI:** Modernisation des addons CAPI pour améliorer la maintenabilité et la lisibilité du code. [#65](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/65)
+- **Gestion des CIDR :** Correction d'un problème lié à la gestion des CIDR. [#75](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/75) et [#74](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/74)
+- **Gestion des NodePools :** Correction d'un bug empêchant la configuration correcte des NodePools sans contenu spécifique. [#73](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/73)
+- **Anti-affinité CoreDNS :** Correction de la configuration de l'anti-affinité pour CoreDNS. [#66](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/66)
+
+### Autres changements
+- Ajout de tests pour la gestion des CIDR. [#74](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/74)
+- Ajout d'un test pour l'ajout d'un role-id.
+- Correction d'un problème de configuration par défaut.
