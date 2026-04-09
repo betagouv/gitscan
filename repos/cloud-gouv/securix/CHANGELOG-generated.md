@@ -1,25 +1,19 @@
-## Changelog : securix (30 derniers jours)
+## Changelog : securix (30 derniers jours, au 11 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à securix au cours des 30 derniers jours. Les mises à jour se concentrent sur la correction de bugs, l'amélioration de la configuration du système, l'ajout de nouvelles fonctionnalités comme la prise en charge de qrencode et l'optimisation de la documentation.
+Ce changelog présente des améliorations concernant la configuration du système, notamment la gestion des scripts de mise à niveau et l'activation forcée de `boot.initrd.systemd.enable`. Des corrections ont également été apportées pour éviter des avertissements d'obsolescence et améliorer la documentation. Un module Openstack a été supprimé.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'acceptation de mots de passe hachés vides [#109](https://github.com/cloud-gouv/securix/issues/109).
-- Suppression du mode développeur et du flag associé, le rendant ainsi plus sécurisé.
-- Ajout de la prise en charge de qrencode pour faciliter l'authentification et le partage de clés.
-- Correction de la configuration VPN [#102](https://github.com/cloud-gouv/securix/issues/102).
-- Suppression de la documentation Linux manuelle, simplifiant ainsi l'expérience utilisateur.
-- Suppression de l'overlay g3proxy.
-- Correction de fautes de frappe dans le fichier README.md [#99](https://github.com/cloud-gouv/securix/issues/99).
+- Correction : Suppression du module Openstack, simplifiant la configuration par défaut et réduisant la surface d'attaque. [#112](https://github.com/cloud-gouv/securix/issues/112)
+- Amélioration : Ajout d'une commande de mise à niveau documentée pour faciliter la maintenance du système. [#110](https://github.com/cloud-gouv/securix/issues/110)
 
 ### Évolutions techniques
-- Suppression de l'option `noexec` des options de montage du système de fichiers, améliorant potentiellement la flexibilité du système [#105](https://github.com/cloud-gouv/securix/issues/105).
-- Amélioration de la fonction `readInventory2` pour supporter le mapping d'équipe.
-- Amélioration de `mkTerminal` pour offrir un manuel.
-- Refactoring partiel du fichier `lib/default`.
+- Modification : Utilisation de `mkDefault` pour une meilleure gestion des valeurs par défaut dans la configuration.
+- Modification : Activation forcée de `boot.initrd.systemd.enable` à `true` pour garantir un démarrage correct du système.
+- Correction : Reversion d'une modification précédente concernant la fonction `readInventory2` afin de corriger un problème potentiel.
+- Amélioration : Mise à jour de `self.nix` pour refléter les dernières modifications.
+- Refactoring : Application de suggestions de style pour améliorer la lisibilité du code.
 
 ### Autres changements
-- Ajout d'un dossier "communauté" et d'un script d'enregistrement Grist [#98](https://github.com/cloud-gouv/securix/issues/98).
-- Ajout d'une commande pour mettre à jour la documentation [#110](https://github.com/cloud-gouv/securix/issues/110).
-- Améliorations du style de code (rfc style) dans plusieurs commits.
-- Corrections de linting.
+- Documentation : Ajout de valeurs par défaut pour certains paramètres de configuration.
+- Nettoyage : Corrections mineures de style et de formatage du code.
