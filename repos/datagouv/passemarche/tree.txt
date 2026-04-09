@@ -1,0 +1,1348 @@
+.
+├── .dockerignore
+├── .gitattributes
+├── .gitbook
+│   └── assets
+│       ├── image
+│       ├── image (1)
+│       ├── image (10)
+│       ├── image (11)
+│       ├── image (12)
+│       ├── image (13)
+│       ├── image (14)
+│       ├── image (15)
+│       ├── image (16)
+│       ├── image (17)
+│       ├── image (18)
+│       ├── image (19)
+│       ├── image (2)
+│       ├── image (20)
+│       ├── image (21)
+│       ├── image (22)
+│       ├── image (23)
+│       ├── image (24)
+│       ├── image (3)
+│       ├── image (4)
+│       ├── image (5)
+│       ├── image (6)
+│       ├── image (7)
+│       ├── image (8)
+│       └── image (9)
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── claude.yml
+│       ├── https-deploy-fake-editor-sandbox.yaml
+│       ├── https-deploy-fake-editor-staging.yaml
+│       ├── https-deploy-preprod.yaml
+│       ├── https-deploy-production.yaml
+│       ├── https-deploy-sandbox.yaml
+│       ├── https-deploy-staging.yaml
+│       ├── linting.yml
+│       └── test.yml
+├── .gitignore
+├── .kamal
+│   ├── hooks
+│   │   ├── docker-setup.sample
+│   │   ├── post-app-boot.sample
+│   │   ├── post-deploy.sample
+│   │   ├── post-proxy-reboot.sample
+│   │   ├── pre-app-boot.sample
+│   │   ├── pre-build.sample
+│   │   ├── pre-connect.sample
+│   │   ├── pre-deploy.sample
+│   │   └── pre-proxy-reboot.sample
+│   └── secrets
+├── .rspec
+├── .rubocop.yml
+├── .ruby-version
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── SUMMARY.md
+├── apis-disponibles
+│   ├── 1.-fonctionnement-des-apis-integrees.md
+│   ├── 2.-apis-integrees.md
+│   └── README.md
+├── app
+│   ├── README.md
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── .keep
+│   │   │   ├── buyer_screenshot.png
+│   │   │   ├── candidate_screenshot.png
+│   │   │   ├── form-logo.png
+│   │   │   ├── icon-alert-error.svg
+│   │   │   ├── icon-api-error.svg
+│   │   │   ├── icon-api-success.svg
+│   │   │   ├── icon-info.svg
+│   │   │   ├── icon-target.svg
+│   │   │   ├── icon-warning-triangle.svg
+│   │   │   ├── passe-marche-logo-email.jpg
+│   │   │   ├── passe-marche-logo.png
+│   │   │   ├── passport-check-blue.svg
+│   │   │   ├── passport-check-white.svg
+│   │   │   ├── passport.svg
+│   │   │   ├── sync_loader_sprite.png
+│   │   │   ├── sync_status_error.png
+│   │   │   └── sync_status_success.png
+│   │   └── stylesheets
+│   │       ├── application.css
+│   │       ├── attestation_pdf.css
+│   │       └── motifs_exclusion_accordion.css
+│   ├── components
+│   │   ├── README.md
+│   │   ├── alert_icon_component.html.erb
+│   │   ├── alert_icon_component.rb
+│   │   ├── check_icon_component.html.erb
+│   │   ├── check_icon_component.rb
+│   │   ├── icon_component.html.erb
+│   │   ├── icon_component.rb
+│   │   ├── magic_link_email_component.html.erb
+│   │   ├── magic_link_email_component.rb
+│   │   ├── market_attribute_response
+│   │   │   ├── api_display
+│   │   │   │   ├── base_component.rb
+│   │   │   │   ├── ess_component.html.erb
+│   │   │   │   ├── ess_component.rb
+│   │   │   │   ├── france_competences_component.html.erb
+│   │   │   │   ├── france_competences_component.rb
+│   │   │   │   ├── opqibi_component.html.erb
+│   │   │   │   ├── opqibi_component.rb
+│   │   │   │   ├── qualiopi_component.html.erb
+│   │   │   │   └── qualiopi_component.rb
+│   │   │   ├── base_component.rb
+│   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component.html.erb
+│   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component.rb
+│   │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_component.html.erb
+│   │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_component.rb
+│   │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_component.html.erb
+│   │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_component.rb
+│   │   │   ├── checkbox_with_document_component.html.erb
+│   │   │   ├── checkbox_with_document_component.rb
+│   │   │   ├── email_input_component.html.erb
+│   │   │   ├── email_input_component.rb
+│   │   │   ├── fields
+│   │   │   │   ├── file_upload_field_component.html.erb
+│   │   │   │   ├── file_upload_field_component.rb
+│   │   │   │   ├── textarea_field_component.html.erb
+│   │   │   │   └── textarea_field_component.rb
+│   │   │   ├── file_or_textarea_component.html.erb
+│   │   │   ├── file_or_textarea_component.rb
+│   │   │   ├── file_upload_component.html.erb
+│   │   │   ├── file_upload_component.rb
+│   │   │   ├── inline_file_upload_component.html.erb
+│   │   │   ├── inline_file_upload_component.rb
+│   │   │   ├── inline_url_input_component.html.erb
+│   │   │   ├── inline_url_input_component.rb
+│   │   │   ├── phone_input_component.html.erb
+│   │   │   ├── phone_input_component.rb
+│   │   │   ├── presentation_intervenants_component.html.erb
+│   │   │   ├── presentation_intervenants_component.rb
+│   │   │   ├── radio_with_file_and_text_component.html.erb
+│   │   │   ├── radio_with_file_and_text_component.rb
+│   │   │   ├── realisations_livraisons_component.html.erb
+│   │   │   ├── realisations_livraisons_component.rb
+│   │   │   ├── shared
+│   │   │   │   ├── document_item_component.html.erb
+│   │   │   │   ├── document_item_component.rb
+│   │   │   │   ├── progress_bar_component.html.erb
+│   │   │   │   └── progress_bar_component.rb
+│   │   │   ├── text_input
+│   │   │   │   ├── auto_form_component.html.erb
+│   │   │   │   ├── auto_form_component.rb
+│   │   │   │   ├── display_component.html.erb
+│   │   │   │   ├── display_component.rb
+│   │   │   │   ├── manual_form_component.html.erb
+│   │   │   │   └── manual_form_component.rb
+│   │   │   ├── text_input_component
+│   │   │   │   ├── _display.html.erb
+│   │   │   │   └── _form.html.erb
+│   │   │   ├── text_input_component.html.erb
+│   │   │   ├── text_input_component.rb
+│   │   │   ├── textarea_component.html.erb
+│   │   │   ├── textarea_component.rb
+│   │   │   ├── url_input_component.html.erb
+│   │   │   └── url_input_component.rb
+│   │   ├── source_badge_component.html.erb
+│   │   └── source_badge_component.rb
+│   ├── components.md
+│   ├── controllers
+│   │   ├── admin
+│   │   │   ├── application_controller.rb
+│   │   │   ├── audit_logs_controller.rb
+│   │   │   ├── categories_controller.rb
+│   │   │   ├── dashboards_controller.rb
+│   │   │   ├── editors_controller.rb
+│   │   │   ├── socle_de_base_controller.rb
+│   │   │   ├── subcategories_controller.rb
+│   │   │   └── webhook_secrets_controller.rb
+│   │   ├── api
+│   │   │   └── v1
+│   │   │       ├── base_controller.rb
+│   │   │       ├── market_applications_controller.rb
+│   │   │       └── public_markets_controller.rb
+│   │   ├── application_controller.rb
+│   │   ├── buyer
+│   │   │   ├── public_markets_controller.rb
+│   │   │   └── sync_status_controller.rb
+│   │   ├── candidate
+│   │   │   ├── application_controller.rb
+│   │   │   ├── attachments_controller.rb
+│   │   │   ├── market_applications_controller.rb
+│   │   │   ├── sessions_controller.rb
+│   │   │   └── sync_status_controller.rb
+│   │   ├── concerns
+│   │   │   ├── .keep
+│   │   │   ├── admin
+│   │   │   │   ├── authorization.rb
+│   │   │   │   └── csv_import_handling.rb
+│   │   │   └── candidate
+│   │   │       └── authentication.rb
+│   │   ├── home_controller.rb
+│   │   └── robots_txt_controller.rb
+│   ├── exceptions
+│   │   ├── api_data_mapping_error.rb
+│   │   ├── application_error.rb
+│   │   ├── authorization_error.rb
+│   │   ├── document_download_error.rb
+│   │   ├── not_found_error.rb
+│   │   ├── pdf_generation_error.rb
+│   │   ├── rake_task_error.rb
+│   │   ├── validation_error.rb
+│   │   ├── webhook_non_retryable_error.rb
+│   │   ├── webhook_retryable_error.rb
+│   │   └── zip_generation_error.rb
+│   ├── helpers
+│   │   ├── admin
+│   │   │   ├── audit_logs_helper.rb
+│   │   │   ├── authorization_helper.rb
+│   │   │   └── editors_helper.rb
+│   │   ├── application_helper.rb
+│   │   ├── category_label_helper.rb
+│   │   ├── dsfr_file_helper.rb
+│   │   ├── home_helper.rb
+│   │   ├── market_attribute_grouping.rb
+│   │   ├── market_attribute_responses_helper.rb
+│   │   ├── sidemenu_helper.rb
+│   │   ├── siret_helpers.rb
+│   │   └── stepper_helper.rb
+│   ├── interactors
+│   │   ├── actes_bilans
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── admin
+│   │   │   ├── calculate_dashboard_statistics.rb
+│   │   │   └── export_dashboard_statistics.rb
+│   │   ├── application_interactor.rb
+│   │   ├── bodacc
+│   │   │   ├── build_resource.rb
+│   │   │   └── make_request.rb
+│   │   ├── build_resource.rb
+│   │   ├── candidate
+│   │   │   ├── delete_attached_file.rb
+│   │   │   ├── delete_unattached_blob.rb
+│   │   │   ├── find_market_application_by_siret.rb
+│   │   │   ├── find_or_create_user.rb
+│   │   │   ├── generate_and_send_magic_link.rb
+│   │   │   ├── prepare_document_scan_status.rb
+│   │   │   ├── validate_email_format.rb
+│   │   │   └── validate_siret.rb
+│   │   ├── carif_oref
+│   │   │   ├── build_resource.rb
+│   │   │   └── make_request.rb
+│   │   ├── cibtp
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── cnetp
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── cotisation_retraite
+│   │   │   └── merge_resources.rb
+│   │   ├── create_market_application.rb
+│   │   ├── create_public_market.rb
+│   │   ├── dgfip
+│   │   │   ├── build_resource.rb
+│   │   │   ├── chiffres_affaires
+│   │   │   │   ├── build_resource.rb
+│   │   │   │   └── make_request.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── download_document.rb
+│   │   ├── fntp
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── generate_attestation_pdf.rb
+│   │   ├── generate_buyer_attestation_pdf.rb
+│   │   ├── generate_documents_package.rb
+│   │   ├── insee
+│   │   │   ├── build_resource.rb
+│   │   │   ├── make_request.rb
+│   │   │   └── map_insee_api_data.rb
+│   │   ├── make_request.rb
+│   │   ├── map_api_data.rb
+│   │   ├── mark_application_as_completed.rb
+│   │   ├── opqibi
+│   │   │   ├── build_resource.rb
+│   │   │   └── make_request.rb
+│   │   ├── probtp
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── qualibat
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── qualifelec
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── rge
+│   │   │   ├── build_resource.rb
+│   │   │   ├── download_document.rb
+│   │   │   └── make_request.rb
+│   │   ├── rne
+│   │   │   ├── build_resource.rb
+│   │   │   └── make_request.rb
+│   │   └── urssaf
+│   │       ├── build_resource.rb
+│   │       ├── download_document.rb
+│   │       ├── make_request.rb
+│   │       └── map_urssaf_api_data.rb
+│   ├── javascript
+│   │   ├── application.js
+│   │   └── controllers
+│   │       ├── accordion_controller.js
+│   │       ├── additional_fields_controller.js
+│   │       ├── application.js
+│   │       ├── clipboard_controller.js
+│   │       ├── conditional_fields_controller.js
+│   │       ├── configuration_toggle_controller.js
+│   │       ├── dialog_trigger_controller.js
+│   │       ├── direct_upload_controller.js
+│   │       ├── drag_reorder_controller.js
+│   │       ├── dropdown_controller.js
+│   │       ├── file_delete_controller.js
+│   │       ├── hello_controller.js
+│   │       ├── index.js
+│   │       ├── input_type_hint_controller.js
+│   │       ├── input_validation_controller.js
+│   │       ├── modal_controller.js
+│   │       ├── subcategory_filter_controller.js
+│   │       ├── summary_scan_refresh_controller.js
+│   │       ├── sync_status_controller.js
+│   │       └── webhook_secret_toggle_controller.js
+│   ├── jobs
+│   │   ├── application_job.rb
+│   │   ├── concerns
+│   │   │   ├── api_fetchable.rb
+│   │   │   └── webhook_syncable.rb
+│   │   ├── fetch_actes_bilans_data_job.rb
+│   │   ├── fetch_api_data_coordinator_job.rb
+│   │   ├── fetch_bodacc_data_job.rb
+│   │   ├── fetch_carif_oref_data_job.rb
+│   │   ├── fetch_chiffres_affaires_data_job.rb
+│   │   ├── fetch_cotisation_retraite_data_job.rb
+│   │   ├── fetch_dgfip_data_job.rb
+│   │   ├── fetch_fntp_data_job.rb
+│   │   ├── fetch_insee_data_job.rb
+│   │   ├── fetch_opqibi_data_job.rb
+│   │   ├── fetch_probtp_data_job.rb
+│   │   ├── fetch_qualibat_data_job.rb
+│   │   ├── fetch_qualifelec_data_job.rb
+│   │   ├── fetch_rge_data_job.rb
+│   │   ├── fetch_rne_data_job.rb
+│   │   ├── fetch_urssaf_data_job.rb
+│   │   ├── market_application_webhook_job.rb
+│   │   ├── public_market_webhook_job.rb
+│   │   ├── scan_document_job.rb
+│   │   └── webhook_job.rb
+│   ├── mailers
+│   │   ├── application_mailer.rb
+│   │   └── auth_mailer.rb
+│   ├── models
+│   │   ├── admin_user.rb
+│   │   ├── application_record.rb
+│   │   ├── bundled_data.rb
+│   │   ├── category.rb
+│   │   ├── concerns
+│   │   │   ├── completable.rb
+│   │   │   ├── market_attribute_response
+│   │   │   │   ├── checkbox_field_behavior.rb
+│   │   │   │   ├── file_attachable.rb
+│   │   │   │   ├── json_validatable.rb
+│   │   │   │   ├── radio_field_behavior.rb
+│   │   │   │   ├── repeatable_field.rb
+│   │   │   │   ├── text_field_behavior.rb
+│   │   │   │   ├── text_validatable.rb
+│   │   │   │   └── yearly_data_validatable.rb
+│   │   │   ├── syncable.rb
+│   │   │   └── unique_association_validator.rb
+│   │   ├── custom_doorkeeper_application.rb
+│   │   ├── editor.rb
+│   │   ├── lot.rb
+│   │   ├── market_application.rb
+│   │   ├── market_application_lot.rb
+│   │   ├── market_attribute.rb
+│   │   ├── market_attribute_response
+│   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel.rb
+│   │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels.rb
+│   │   │   ├── capacites_techniques_professionnelles_outillage_echantillons.rb
+│   │   │   ├── checkbox_with_document.rb
+│   │   │   ├── email_input.rb
+│   │   │   ├── file_or_textarea.rb
+│   │   │   ├── file_upload.rb
+│   │   │   ├── inline_file_upload.rb
+│   │   │   ├── inline_url_input.rb
+│   │   │   ├── phone_input.rb
+│   │   │   ├── presentation_intervenants.rb
+│   │   │   ├── radio_with_file_and_text.rb
+│   │   │   ├── realisations_livraisons.rb
+│   │   │   ├── text_input.rb
+│   │   │   ├── textarea.rb
+│   │   │   └── url_input.rb
+│   │   ├── market_attribute_response.rb
+│   │   ├── market_type.rb
+│   │   ├── public_market.rb
+│   │   ├── resource.rb
+│   │   ├── subcategory.rb
+│   │   └── user.rb
+│   ├── organizers
+│   │   ├── actes_bilans.rb
+│   │   ├── application_organizer.rb
+│   │   ├── bodacc.rb
+│   │   ├── candidate
+│   │   │   ├── delete_file.rb
+│   │   │   └── request_magic_link.rb
+│   │   ├── carif_oref.rb
+│   │   ├── chiffres_affaires.rb
+│   │   ├── cibtp.rb
+│   │   ├── cnetp.rb
+│   │   ├── complete_market_application.rb
+│   │   ├── cotisation_retraite.rb
+│   │   ├── dgfip.rb
+│   │   ├── fntp.rb
+│   │   ├── insee.rb
+│   │   ├── opqibi.rb
+│   │   ├── probtp.rb
+│   │   ├── qualibat.rb
+│   │   ├── qualifelec.rb
+│   │   ├── rge.rb
+│   │   ├── rne.rb
+│   │   └── urssaf.rb
+│   ├── policies
+│   │   ├── application_policy.rb
+│   │   └── editor_policy.rb
+│   ├── presenters
+│   │   ├── admin
+│   │   │   └── dashboard_presenter.rb
+│   │   ├── api_block_status_presenter.rb
+│   │   ├── market_application_presenter.rb
+│   │   ├── public_market_presenter.rb
+│   │   └── socle_de_base_presenter.rb
+│   ├── services
+│   │   ├── antivirus_service.rb
+│   │   ├── application_service.rb
+│   │   ├── bug_tracker_service.rb
+│   │   ├── candidate
+│   │   │   └── prefill_email_attribute_responses.rb
+│   │   ├── category_export_service.rb
+│   │   ├── clamav_service.rb
+│   │   ├── document_naming_service.rb
+│   │   ├── editor_sync_service.rb
+│   │   ├── export_socle_de_base_csv_service.rb
+│   │   ├── file_security_scanner.rb
+│   │   ├── identifier_generation_service.rb
+│   │   ├── import_socle_de_base_csv_service.rb
+│   │   ├── import_upload_store.rb
+│   │   ├── market_application_step_update_service.rb
+│   │   ├── market_attribute_archive_service.rb
+│   │   ├── market_attribute_creation_service.rb
+│   │   ├── market_attribute_filtering_service.rb
+│   │   ├── market_attribute_query_service.rb
+│   │   ├── market_attribute_update_service.rb
+│   │   ├── market_configuration_service.rb
+│   │   ├── pdf_watermark_service.rb
+│   │   └── socle_de_base_stats_service.rb
+│   ├── validators
+│   │   ├── email_validator.rb
+│   │   └── siret_validator.rb
+│   └── views
+│       ├── admin
+│       │   ├── audit_logs
+│       │   │   ├── _archive_details.html.erb
+│       │   │   ├── _creation_changes_table.html.erb
+│       │   │   ├── _creation_details.html.erb
+│       │   │   ├── _filters.html.erb
+│       │   │   ├── _modification_details.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── categories
+│       │   │   ├── _categories_table.html.erb
+│       │   │   ├── _subcategories_table.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── dashboards
+│       │   │   └── show.html.erb
+│       │   ├── editors
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── shared
+│       │   │   └── _navigation.html.erb
+│       │   ├── socle_de_base
+│       │   │   ├── _attributes_table.html.erb
+│       │   │   ├── _drag_handle_icon.html.erb
+│       │   │   ├── _filters.html.erb
+│       │   │   ├── _form_configuration.html.erb
+│       │   │   ├── _form_descriptions.html.erb
+│       │   │   ├── _form_general_info.html.erb
+│       │   │   ├── _import_modal.html.erb
+│       │   │   ├── _stats_cards.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   ├── preview_import.html.erb
+│       │   │   └── show.html.erb
+│       │   └── subcategories
+│       │       ├── edit.html.erb
+│       │       └── new.html.erb
+│       ├── auth_mailer
+│       │   ├── magic_link.html.erb
+│       │   └── magic_link.text.erb
+│       ├── buyer
+│       │   ├── attestations
+│       │   │   └── show.html.erb
+│       │   ├── public_markets
+│       │   │   ├── _card_header.html.erb
+│       │   │   ├── _category_accordion.html.erb
+│       │   │   ├── _field_checkbox.html.erb
+│       │   │   ├── _field_display.html.erb
+│       │   │   ├── _subcategory_section.html.erb
+│       │   │   ├── generic_step.html.erb
+│       │   │   ├── motifs_exclusion.html.erb
+│       │   │   ├── setup.html.erb
+│       │   │   └── summary.html.erb
+│       │   └── sync_status
+│       │       └── show.html.erb
+│       ├── candidate
+│       │   ├── attestations
+│       │   │   └── show.html.erb
+│       │   ├── market_applications
+│       │   │   ├── _field_display.html.erb
+│       │   │   ├── _motifs_exclusion_contestation.html.erb
+│       │   │   ├── _sidemenu_subcategories.html.erb
+│       │   │   ├── _stepper.html.erb
+│       │   │   ├── _wizard_nav.html.erb
+│       │   │   ├── api_data_recovery_status.html.erb
+│       │   │   ├── attestation_motifs_exclusion.html.erb
+│       │   │   ├── company_identification.html.erb
+│       │   │   ├── generic_step.html.erb
+│       │   │   ├── market_information.html.erb
+│       │   │   └── summary.html.erb
+│       │   ├── sessions
+│       │   │   ├── new.html.erb
+│       │   │   └── sent.html.erb
+│       │   └── sync_status
+│       │       └── show.html.erb
+│       ├── home
+│       │   ├── _advantages_section.html.erb
+│       │   ├── buyer.html.erb
+│       │   ├── candidate.html.erb
+│       │   └── index.html.erb
+│       ├── layouts
+│       │   ├── application.html.erb
+│       │   ├── mailer.html.erb
+│       │   └── mailer.text.erb
+│       ├── market_attribute_response
+│       │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── capacite_economique_financiere_effectifs_moyens_annuels_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── capacites_techniques_professionnelles_outillage_echantillons_component
+│       │   │   ├── _display.html.erb
+│       │   │   ├── _echantillon_fields.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── checkbox_with_document_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── email_input_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── file_or_textarea_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── file_upload_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── inline_file_upload_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── inline_url_input_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── phone_input_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── presentation_intervenants_component
+│       │   │   ├── _display.html.erb
+│       │   │   ├── _form.html.erb
+│       │   │   └── _person_fields.html.erb
+│       │   ├── radio_with_file_and_text_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── realisations_livraisons_component
+│       │   │   ├── _display.html.erb
+│       │   │   ├── _form.html.erb
+│       │   │   └── _realisation_fields.html.erb
+│       │   ├── text_input_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   ├── textarea_component
+│       │   │   ├── _display.html.erb
+│       │   │   └── _form.html.erb
+│       │   └── url_input_component
+│       │       ├── _display.html.erb
+│       │       └── _form.html.erb
+│       ├── pwa
+│       │   ├── manifest.json.erb
+│       │   └── service-worker.js
+│       └── shared
+│           ├── _application_summary_content.html.erb
+│           ├── _candidate_attestation_motifs_exclusion.html.erb
+│           ├── _card_header.html.erb
+│           ├── _card_sub_header.html.erb
+│           ├── _certification_notice.html.erb
+│           ├── _environment_banner.html.erb
+│           ├── _footer.html.erb
+│           ├── _header.html.erb
+│           ├── _market_info_summary.html.erb
+│           ├── _motif_exclusion_contestation_content.html.erb
+│           ├── _notice.html.erb
+│           ├── _pdf_environment_indicator.html.erb
+│           ├── _renamed_documents_section.html.erb
+│           ├── _subcategory_attributes.html.erb
+│           └── _value_with_badge.html.erb
+├── bin
+│   ├── brakeman
+│   ├── bundle
+│   ├── cucumber
+│   ├── dev
+│   ├── docker-entrypoint
+│   ├── importmap
+│   ├── install
+│   ├── jobs
+│   ├── kamal
+│   ├── rails
+│   ├── rake
+│   ├── rubocop
+│   ├── setup
+│   └── thrust
+├── claude.md
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── cable.yml
+│   ├── cache.yml
+│   ├── credentials
+│   │   ├── development.key
+│   │   ├── development.yml.enc
+│   │   ├── preprod.yml.enc
+│   │   ├── production.key -> ../master.key
+│   │   ├── production.yml.enc -> ../credentials.yml.enc
+│   │   ├── sandbox.yml.enc
+│   │   ├── staging.yml.enc
+│   │   ├── test.key -> development.key
+│   │   └── test.yml.enc -> development.yml.enc
+│   ├── credentials.yml.enc
+│   ├── cucumber.yml
+│   ├── database.yml
+│   ├── deploy.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── sandbox.rb
+│   │   └── test.rb
+│   ├── importmap.rb
+│   ├── initializers
+│   │   ├── active_storage.rb
+│   │   ├── assets.rb
+│   │   ├── brevo_smtp.rb
+│   │   ├── clamby.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── devise.rb
+│   │   ├── doorkeeper.rb
+│   │   ├── dsfr_version.rb
+│   │   ├── file_upload_config.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   ├── pagy.rb
+│   │   ├── sentry.rb
+│   │   └── wicked_pdf.rb
+│   ├── locales
+│   │   ├── devise.en.yml
+│   │   ├── doorkeeper.en.yml
+│   │   ├── en.yml
+│   │   └── fr.yml
+│   ├── puma.rb
+│   ├── queue.yml
+│   ├── recurring.yml
+│   ├── routes.rb
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── cable_schema.rb
+│   ├── cache_schema.rb
+│   ├── migrate
+│   │   ├── 20250718091906_create_doorkeeper_tables.rb
+│   │   ├── 20250718092448_create_editors.rb
+│   │   ├── 20250722080739_create_public_markets.rb
+│   │   ├── 20250723103134_add_market_info_to_public_markets.rb
+│   │   ├── 20250724144245_add_defense_to_public_markets.rb
+│   │   ├── 20250725090252_add_form_field_configuration_to_public_markets.rb
+│   │   ├── 20250728135544_rename_defense_to_defense_industry_in_public_markets.rb
+│   │   ├── 20250729125349_devise_create_admins.rb
+│   │   ├── 20250731091338_create_market_types.rb
+│   │   ├── 20250731091454_create_market_attributes.rb
+│   │   ├── 20250731102121_remove_obsolete_columns_from_public_markets.rb
+│   │   ├── 20250801120632_remove_selected_optional_fields_from_public_markets.rb
+│   │   ├── 20250809072430_add_webhook_sync_system_to_voie_rapide.rb
+│   │   ├── 20250809155526_add_solid_queue_tables.rb
+│   │   ├── 20250811193554_create_market_applications.rb
+│   │   ├── 20250822123114_add_complete_notion_to_market_application.rb
+│   │   ├── 20250823090633_create_active_storage_tables.active_storage.rb
+│   │   ├── 20250827090812_create_market_attribute_response.rb
+│   │   ├── 20251013131631_add_api_fields_to_market_attributes.rb
+│   │   ├── 20251014094858_add_source_to_market_attribute_responses_and_remove_from_api_from_market_attributes.rb
+│   │   ├── 20251021200037_add_api_fetch_status_to_market_applications.rb
+│   │   ├── 20251030132224_add_subject_to_prohibition_to_market_applications.rb
+│   │   ├── 20251119105437_add_siret_to_public_markets.rb
+│   │   ├── 20251126104707_add_attests_no_exclusion_motifs_to_market_applications.rb
+│   │   ├── 20251126113519_remove_subject_to_prohibition_from_market_applications.rb
+│   │   ├── 20251209101110_rename_required_to_mandatory_in_market_attributes.rb
+│   │   ├── 20251210102632_add_position_to_market_attributes.rb
+│   │   ├── 20251210103027_backfill_market_attribute_positions.rb
+│   │   ├── 20251211085746_add_can_create_defense_markets_to_editors.rb
+│   │   ├── 20260112090608_add_hidden_to_market_attribute_responses.rb
+│   │   ├── 20260206094451_add_provider_user_id_to_public_markets.rb
+│   │   ├── 20260206094456_add_provider_user_id_to_market_applications.rb
+│   │   ├── 20260210111340_add_role_to_admins.rb
+│   │   ├── 20260213163210_create_categories_and_subcategories.rb
+│   │   ├── 20260214121821_create_versions.rb
+│   │   ├── 20260219154222_backfill_hidden_for_bodacc_market_attribute_responses.rb
+│   │   ├── 20260220144046_add_buyer_and_candidate_fields_to_market_attributes.rb
+│   │   ├── 20260302000001_create_users.rb
+│   │   ├── 20260303000001_add_user_to_market_applications.rb
+│   │   ├── 20260310142919_create_or_fix_solid_cache_entries.rb
+│   │   ├── 20260407000001_create_lots.rb
+│   │   ├── 20260407000002_create_market_application_lots.rb
+│   │   └── 20260407000003_add_lot_limit_to_public_markets.rb
+│   ├── postgresql_setup.txt
+│   ├── queue_schema.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── docs
+│   ├── 00_guide_de_demarrage.md
+│   ├── 01_demarrage_rapide.md
+│   ├── 02_authentification_oauth.md
+│   ├── 03_flux_acheteur.md
+│   ├── 04_flux_candidat.md
+│   ├── 05_reference_api.md
+│   ├── 06_schemas_integration.md
+│   ├── 07_webhooks.md
+│   ├── 08_environnements.md
+│   ├── 09_securite_fichiers.md
+│   ├── 99_scripts_reference.md
+│   ├── README.md
+│   ├── file-deletion-feature-plan.md
+│   └── sfd_editeurs.md
+├── fake_editor_app
+│   ├── .env
+│   ├── .env.example
+│   ├── Gemfile
+│   ├── Gemfile.lock
+│   ├── README.md
+│   ├── app.rb
+│   ├── config.ru
+│   ├── lib
+│   │   ├── database.rb
+│   │   └── fast_track_client.rb
+│   ├── public
+│   │   ├── app.js
+│   │   └── style.css
+│   └── views
+│       ├── buyer
+│       │   ├── _market_form_help.erb
+│       │   ├── application_detail.erb
+│       │   ├── dashboard.erb
+│       │   ├── market_created.erb
+│       │   ├── market_detail.erb
+│       │   └── market_new.erb
+│       ├── candidate
+│       │   ├── application_detail.erb
+│       │   ├── dashboard.erb
+│       │   ├── market_show.erb
+│       │   └── markets_list.erb
+│       ├── home.erb
+│       ├── layout.erb
+│       ├── shared
+│       │   ├── _application_status.erb
+│       │   ├── _market_card.erb
+│       │   └── _nav.erb
+│       └── technical
+│           ├── application_detail.erb
+│           └── dashboard.erb
+├── fake_editor_app.md
+├── features
+│   ├── admin_archive_market_attribute.feature
+│   ├── admin_audit_logs.feature
+│   ├── admin_authorization.feature
+│   ├── admin_categories.feature
+│   ├── admin_dashboard.feature
+│   ├── admin_edit_category.feature
+│   ├── admin_edit_subcategory.feature
+│   ├── admin_import_configuration.feature
+│   ├── admin_socle_de_base.feature
+│   ├── admin_socle_de_base_creation.feature
+│   ├── admin_socle_de_base_export.feature
+│   ├── admin_socle_de_base_field_detail.feature
+│   ├── admin_socle_de_base_filters.feature
+│   ├── admin_socle_de_base_reorder.feature
+│   ├── api_public_markets.feature
+│   ├── buyer_flow.feature
+│   ├── candidate_authentication.feature
+│   ├── candidate_file_deletion.feature
+│   ├── candidate_flow.feature
+│   ├── candidate_flow_comprehensive.feature
+│   ├── candidate_flow_with_soft_deleted_attributes.feature
+│   ├── capacite_economique_financiere_chiffre_affaires_global_annuel.feature
+│   ├── capacite_economique_financiere_effectifs_moyens_annuels.feature
+│   ├── capacites_techniques_professionnelles_outillage_echantillons.feature
+│   ├── carif_oref_integration.feature
+│   ├── dgfip_chiffres_affaires_hybrid_mode.feature
+│   ├── document_display_naming.feature
+│   ├── ess_integration.feature
+│   ├── motifs_exclusion_accordion.feature
+│   ├── motifs_exclusion_attestation_display.feature
+│   ├── motifs_exclusion_badge_colors.feature
+│   ├── motifs_exclusion_contestation.feature
+│   ├── oauth_authentication.feature
+│   ├── passemarche_home.feature
+│   ├── presentation_intervenants.feature
+│   ├── radio_with_file_and_text.feature
+│   ├── realisations_livraisons.feature
+│   ├── step_definitions
+│   │   ├── .keep
+│   │   ├── admin_archive_market_attribute_steps.rb
+│   │   ├── admin_audit_logs_steps.rb
+│   │   ├── admin_authorization_steps.rb
+│   │   ├── admin_categories_steps.rb
+│   │   ├── admin_dashboard_steps.rb
+│   │   ├── admin_edit_category_steps.rb
+│   │   ├── admin_edit_subcategory_steps.rb
+│   │   ├── admin_import_configuration_steps.rb
+│   │   ├── admin_socle_de_base_creation_steps.rb
+│   │   ├── admin_socle_de_base_export_steps.rb
+│   │   ├── admin_socle_de_base_field_detail_steps.rb
+│   │   ├── admin_socle_de_base_filters_steps.rb
+│   │   ├── admin_socle_de_base_reorder_steps.rb
+│   │   ├── admin_socle_de_base_steps.rb
+│   │   ├── api_public_markets_steps.rb
+│   │   ├── buyer_flow_steps.rb
+│   │   ├── candidate_authentication_steps.rb
+│   │   ├── candidate_flow_comprehensive_steps.rb
+│   │   ├── candidate_flow_steps.rb
+│   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
+│   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
+│   │   ├── capacites_techniques_professionnelles_outillage_echantillons_steps.rb
+│   │   ├── carif_oref_steps.rb
+│   │   ├── dgfip_hybrid_mode_steps.rb
+│   │   ├── document_display_naming_steps.rb
+│   │   ├── ess_steps.rb
+│   │   ├── fast_track_steps.rb
+│   │   ├── motifs_exclusion_accordion_steps.rb
+│   │   ├── motifs_exclusion_attestation_steps.rb
+│   │   ├── motifs_exclusion_badge_colors_steps.rb
+│   │   ├── motifs_exclusion_contestation_steps.rb
+│   │   ├── oauth_steps.rb
+│   │   ├── presentation_intervenants_steps.rb
+│   │   ├── radio_with_file_and_text_steps.rb
+│   │   ├── realisations_livraisons_steps.rb
+│   │   ├── setup_steps.rb
+│   │   ├── soft_delete_steps.rb
+│   │   ├── summary_page_banners_steps.rb
+│   │   └── urssaf_steps.rb
+│   ├── summary_page_banners.feature
+│   ├── support
+│   │   ├── active_job.rb
+│   │   ├── api_helpers.rb
+│   │   ├── candidate_auth_helper.rb
+│   │   ├── capybara.rb
+│   │   ├── env.rb
+│   │   └── warden.rb
+│   └── urssaf_attestation_vigilance.feature
+├── lib
+│   ├── assets
+│   │   └── pdf_stylesheets
+│   │       └── attestation_summary_pdf.css
+│   └── tasks
+│       ├── .keep
+│       ├── attestation.rake
+│       └── cucumber.rake
+├── log
+│   └── .keep
+├── parcours-acheteur
+│   ├── 1.-presentation-generale-de-passe-marche.md
+│   ├── 2.-role-de-lacheteur-dans-passe-marche.md
+│   ├── 3.-parametrer-les-exigences-de-candidature.md
+│   ├── 4.-verifier-et-valider-la-configuration-du-marche.md
+│   ├── 5.-finaliser-la-configuration-et-revenir-sur-votre-plateforme.md
+│   ├── 6.-consulter-une-candidature-deposee.md
+│   ├── 7.-telecharger-et-analyser-le-dossier-de-candidature-zip.md
+│   ├── 8.-comprendre-lattestation-acheteur-pdf.md
+│   └── README.md
+├── parcours-candidat
+│   ├── 1.-presentation-generale-du-parcours-candidat.md
+│   ├── 10.-transmettre-la-candidature.md
+│   ├── 11.-telecharger-lattestation-de-candidature-pdf.md
+│   ├── 2.-comprendre-la-structure-du-formulaire-et-progresser-etape-par-etape.md
+│   ├── 3.-renseigner-les-informations-du-marche-et-de-votre-entreprise.md
+│   ├── 4.-declarer-les-motifs-dexclusion.md
+│   ├── 5.-gerer-les-justificatifs-lies-aux-motifs-dexclusion.md
+│   ├── 6.-renseigner-les-capacites-economiques-et-financieres.md
+│   ├── 7.-renseigner-les-capacites-techniques-et-professionnelles.md
+│   ├── 8.-ajouter-remplacer-ou-supprimer-un-document.md
+│   ├── 9.-verifier-la-synthese-avant-transmission.md
+│   └── README.md
+├── public
+│   ├── 400.html
+│   ├── 404.html
+│   ├── 406-unsupported-browser.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── icon.png
+│   └── icon.svg
+├── script
+│   └── .keep
+├── spec
+│   ├── components
+│   │   ├── alert_icon_component_spec.rb
+│   │   ├── check_icon_component_spec.rb
+│   │   ├── market_attribute_response
+│   │   │   ├── base_component_spec.rb
+│   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_spec.rb
+│   │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_component_spec.rb
+│   │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_component_spec.rb
+│   │   │   ├── checkbox_with_document_component_spec.rb
+│   │   │   ├── email_input_component_spec.rb
+│   │   │   ├── fields
+│   │   │   │   ├── file_upload_field_component_spec.rb
+│   │   │   │   └── textarea_field_component_spec.rb
+│   │   │   ├── file_or_textarea_component_spec.rb
+│   │   │   ├── file_upload_component_spec.rb
+│   │   │   ├── inline_file_upload_component_spec.rb
+│   │   │   ├── inline_url_input_component_spec.rb
+│   │   │   ├── phone_input_component_spec.rb
+│   │   │   ├── presentation_intervenants_component_spec.rb
+│   │   │   ├── radio_with_file_and_text_component_spec.rb
+│   │   │   ├── realisations_livraisons_component_spec.rb
+│   │   │   ├── shared
+│   │   │   │   ├── document_item_component_spec.rb
+│   │   │   │   └── progress_bar_component_spec.rb
+│   │   │   ├── text_input_component_spec.rb
+│   │   │   └── textarea_component_spec.rb
+│   │   ├── previews
+│   │   │   └── market_attribute_response
+│   │   │       ├── api_display
+│   │   │       │   ├── france_competences_component_preview.rb
+│   │   │       │   ├── opqibi_component_preview.rb
+│   │   │       │   └── qualiopi_component_preview.rb
+│   │   │       ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_preview.rb
+│   │   │       ├── capacite_economique_financiere_effectifs_moyens_annuels_component_preview.rb
+│   │   │       ├── capacites_techniques_professionnelles_outillage_echantillons_component_preview.rb
+│   │   │       ├── checkbox_with_document_component_preview.rb
+│   │   │       ├── email_input_component_preview.rb
+│   │   │       ├── fields
+│   │   │       │   ├── file_upload_field_component_preview.rb
+│   │   │       │   └── textarea_field_component_preview.rb
+│   │   │       ├── file_or_textarea_component_preview.rb
+│   │   │       ├── file_upload_component_preview.rb
+│   │   │       ├── inline_file_upload_component_preview.rb
+│   │   │       ├── inline_url_input_component_preview.rb
+│   │   │       ├── phone_input_component_preview.rb
+│   │   │       ├── presentation_intervenants_component_preview.rb
+│   │   │       ├── radio_with_file_and_text_component_preview.rb
+│   │   │       ├── realisations_livraisons_component_preview.rb
+│   │   │       ├── shared
+│   │   │       │   ├── document_item_component_preview.rb
+│   │   │       │   └── progress_bar_component_preview.rb
+│   │   │       ├── text_input_component_preview.rb
+│   │   │       └── textarea_component_preview.rb
+│   │   └── source_badge_component_spec.rb
+│   ├── controllers
+│   │   └── concerns
+│   │       └── admin
+│   │           └── authorization_spec.rb
+│   ├── exceptions
+│   │   ├── api_data_mapping_error_spec.rb
+│   │   ├── application_error_spec.rb
+│   │   ├── authorization_error_spec.rb
+│   │   ├── document_download_error_spec.rb
+│   │   ├── not_found_error_spec.rb
+│   │   ├── pdf_generation_error_spec.rb
+│   │   ├── rake_task_error_spec.rb
+│   │   ├── validation_error_spec.rb
+│   │   ├── webhook_non_retryable_error_spec.rb
+│   │   ├── webhook_retryable_error_spec.rb
+│   │   └── zip_generation_error_spec.rb
+│   ├── factories
+│   │   ├── admin_users.rb
+│   │   ├── categories.rb
+│   │   ├── editors.rb
+│   │   ├── lots.rb
+│   │   ├── market_application_lots.rb
+│   │   ├── market_applications.rb
+│   │   ├── market_attribute_responses.rb
+│   │   ├── market_attributes.rb
+│   │   ├── market_types.rb
+│   │   ├── public_markets.rb
+│   │   ├── subcategories.rb
+│   │   └── users.rb
+│   ├── features
+│   │   ├── buyer_sync_status_success_failure_handling_spec.rb
+│   │   └── candidate_attestation_download_spec.rb
+│   ├── fixtures
+│   │   ├── files
+│   │   │   ├── document.pdf
+│   │   │   ├── photo1.jpg
+│   │   │   ├── photo2.jpg
+│   │   │   ├── socle_de_base_import.csv
+│   │   │   └── test.pdf
+│   │   └── translation_test_cleaned.csv
+│   ├── helpers
+│   │   ├── admin
+│   │   │   ├── audit_logs_helper_spec.rb
+│   │   │   ├── authorization_helper_spec.rb
+│   │   │   └── editors_helper_spec.rb
+│   │   ├── application_helper_spec.rb
+│   │   ├── category_label_helper_spec.rb
+│   │   ├── dsfr_file_helper_spec.rb
+│   │   ├── home_helper_spec.rb
+│   │   └── market_attribute_responses_helper_spec.rb
+│   ├── interactors
+│   │   ├── actes_bilans
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── admin
+│   │   │   ├── calculate_dashboard_statistics_spec.rb
+│   │   │   └── export_dashboard_statistics_spec.rb
+│   │   ├── bodacc
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── candidate
+│   │   │   ├── delete_attached_file_spec.rb
+│   │   │   ├── delete_unattached_blob_spec.rb
+│   │   │   ├── find_market_application_by_siret_spec.rb
+│   │   │   ├── prepare_document_scan_status_spec.rb
+│   │   │   ├── request_magic_link_spec.rb
+│   │   │   ├── validate_email_format_spec.rb
+│   │   │   └── validate_siret_spec.rb
+│   │   ├── carif_oref
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── chiffres_affaires
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── cibtp
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── cnetp
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── cotisation_retraite
+│   │   │   └── merge_resources_spec.rb
+│   │   ├── create_market_application_spec.rb
+│   │   ├── create_public_market_spec.rb
+│   │   ├── dgfip
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── download_document_spec.rb
+│   │   ├── fntp
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── generate_attestation_pdf_spec.rb
+│   │   ├── generate_buyer_attestation_pdf_spec.rb
+│   │   ├── generate_documents_package_spec.rb
+│   │   ├── insee
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── map_api_data_spec.rb
+│   │   ├── mark_application_as_completed_spec.rb
+│   │   ├── opqibi
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── probtp
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── qualibat
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── qualifelec
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── rge
+│   │   │   ├── build_resource_spec.rb
+│   │   │   ├── download_document_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   ├── rne
+│   │   │   ├── build_resource_spec.rb
+│   │   │   └── make_request_spec.rb
+│   │   └── urssaf
+│   │       ├── build_resource_spec.rb
+│   │       ├── download_document_spec.rb
+│   │       ├── make_request_spec.rb
+│   │       └── map_urssaf_api_data_spec.rb
+│   ├── jobs
+│   │   ├── concerns
+│   │   │   ├── api_fetchable_spec.rb
+│   │   │   └── webhook_syncable_spec.rb
+│   │   ├── fetch_actes_bilans_data_job_spec.rb
+│   │   ├── fetch_api_data_coordinator_job_spec.rb
+│   │   ├── fetch_bodacc_data_job_spec.rb
+│   │   ├── fetch_carif_oref_data_job_spec.rb
+│   │   ├── fetch_chiffres_affaires_data_job_spec.rb
+│   │   ├── fetch_cotisation_retraite_data_job_spec.rb
+│   │   ├── fetch_dgfip_data_job_spec.rb
+│   │   ├── fetch_fntp_data_job_spec.rb
+│   │   ├── fetch_insee_data_job_spec.rb
+│   │   ├── fetch_opqibi_data_job_spec.rb
+│   │   ├── fetch_probtp_data_job_spec.rb
+│   │   ├── fetch_qualibat_data_job_spec.rb
+│   │   ├── fetch_qualifelec_data_job_spec.rb
+│   │   ├── fetch_rge_data_job_spec.rb
+│   │   ├── fetch_rne_data_job_spec.rb
+│   │   ├── fetch_urssaf_data_job_spec.rb
+│   │   ├── market_application_webhook_job_spec.rb
+│   │   ├── public_market_webhook_job_spec.rb
+│   │   └── scan_document_job_spec.rb
+│   ├── mailers
+│   │   ├── auth_mailer_spec.rb
+│   │   └── previews
+│   │       └── auth_mailer_preview.rb
+│   ├── models
+│   │   ├── admin_spec.rb
+│   │   ├── admin_user_spec.rb
+│   │   ├── category_spec.rb
+│   │   ├── concerns
+│   │   │   ├── market_attribute_response
+│   │   │   │   ├── checkbox_field_behavior_spec.rb
+│   │   │   │   ├── file_attachable_spec.rb
+│   │   │   │   ├── radio_field_behavior_spec.rb
+│   │   │   │   └── repeatable_field_spec.rb
+│   │   │   └── unique_association_validator_spec.rb
+│   │   ├── editor_spec.rb
+│   │   ├── editor_webhook_spec.rb
+│   │   ├── lot_spec.rb
+│   │   ├── market_application_lot_spec.rb
+│   │   ├── market_application_spec.rb
+│   │   ├── market_attribute_response
+│   │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_spec.rb
+│   │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_spec.rb
+│   │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_spec.rb
+│   │   │   ├── checkbox_with_document_spec.rb
+│   │   │   ├── email_input_spec.rb
+│   │   │   ├── file_or_textarea_spec.rb
+│   │   │   ├── file_upload_spec.rb
+│   │   │   ├── inline_file_upload_spec.rb
+│   │   │   ├── inline_url_input_spec.rb
+│   │   │   ├── phone_input_spec.rb
+│   │   │   ├── presentation_intervenants_spec.rb
+│   │   │   ├── radio_with_file_and_text_spec.rb
+│   │   │   ├── realisations_livraisons_spec.rb
+│   │   │   ├── text_input_spec.rb
+│   │   │   ├── textarea_spec.rb
+│   │   │   └── url_input_spec.rb
+│   │   ├── market_attribute_response_spec.rb
+│   │   ├── market_attribute_spec.rb
+│   │   ├── public_market_spec.rb
+│   │   ├── resource.rb
+│   │   ├── subcategory_spec.rb
+│   │   └── user_spec.rb
+│   ├── organizers
+│   │   ├── actes_bilans_spec.rb
+│   │   ├── candidate
+│   │   │   └── delete_file_spec.rb
+│   │   ├── carif_oref_spec.rb
+│   │   ├── chiffres_affaires_spec.rb
+│   │   ├── cibtp_spec.rb
+│   │   ├── cnetp_spec.rb
+│   │   ├── complete_market_application_spec.rb
+│   │   ├── cotisation_retraite_spec.rb
+│   │   ├── dgfip_spec.rb
+│   │   ├── fntp_spec.rb
+│   │   ├── insee_spec.rb
+│   │   ├── opqibi_spec.rb
+│   │   ├── probtp_spec.rb
+│   │   ├── qualibat_spec.rb
+│   │   ├── qualifelec_spec.rb
+│   │   ├── rge_spec.rb
+│   │   ├── rne_spec.rb
+│   │   └── urssaf_spec.rb
+│   ├── presenters
+│   │   ├── admin
+│   │   │   └── dashboard_presenter_spec.rb
+│   │   ├── api_block_status_presenter_spec.rb
+│   │   ├── market_application_presenter_spec.rb
+│   │   ├── public_market_presenter_spec.rb
+│   │   └── socle_de_base_presenter_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   ├── admin
+│   │   │   ├── audit_logs_spec.rb
+│   │   │   ├── categories_spec.rb
+│   │   │   ├── dashboards_spec.rb
+│   │   │   ├── editor_webhook_configuration_spec.rb
+│   │   │   ├── editors_spec.rb
+│   │   │   ├── socle_de_base_spec.rb
+│   │   │   └── subcategories_spec.rb
+│   │   ├── api
+│   │   │   └── v1
+│   │   │       ├── market_applications
+│   │   │       │   └── attestation_spec.rb
+│   │   │       ├── market_applications_spec.rb
+│   │   │       └── public_markets_spec.rb
+│   │   ├── buyer
+│   │   │   ├── public_markets_spec.rb
+│   │   │   └── sync_status_spec.rb
+│   │   ├── candidate
+│   │   │   ├── market_applications_spec.rb
+│   │   │   ├── sessions_spec.rb
+│   │   │   └── sync_status_spec.rb
+│   │   ├── oauth_token_spec.rb
+│   │   └── robots_txt_spec.rb
+│   ├── services
+│   │   ├── antivirus_service_spec.rb
+│   │   ├── application_service_spec.rb
+│   │   ├── bug_tracker_service_spec.rb
+│   │   ├── category_export_service_spec.rb
+│   │   ├── clamav_service_spec.rb
+│   │   ├── document_naming_service_spec.rb
+│   │   ├── editor_sync_service_spec.rb
+│   │   ├── export_socle_de_base_csv_service_spec.rb
+│   │   ├── file_security_scanner_spec.rb
+│   │   ├── identifier_generation_service_spec.rb
+│   │   ├── import_socle_de_base_csv_service_spec.rb
+│   │   ├── import_upload_store_spec.rb
+│   │   ├── market_application_step_update_service_spec.rb
+│   │   ├── market_attribute_archive_service_spec.rb
+│   │   ├── market_attribute_creation_service_spec.rb
+│   │   ├── market_attribute_filtering_service_spec.rb
+│   │   ├── market_attribute_query_service_spec.rb
+│   │   ├── market_attribute_update_service_spec.rb
+│   │   ├── market_configuration_service_spec.rb
+│   │   ├── pdf_watermark_service_spec.rb
+│   │   └── socle_de_base_stats_service_spec.rb
+│   ├── spec_helper.rb
+│   ├── support
+│   │   ├── api_responses
+│   │   │   ├── actes_bilans_responses.rb
+│   │   │   ├── bodacc_responses.rb
+│   │   │   ├── carif_oref_responses.rb
+│   │   │   ├── chiffres_affaires_responses.rb
+│   │   │   ├── dgfip_responses.rb
+│   │   │   ├── fntp_responses.rb
+│   │   │   ├── insee_responses.rb
+│   │   │   ├── opqibi_responses.rb
+│   │   │   ├── probtp_responses.rb
+│   │   │   ├── qualibat_responses.rb
+│   │   │   ├── qualifelec_responses.rb
+│   │   │   ├── rge_responses.rb
+│   │   │   ├── rne_responses.rb
+│   │   │   └── urssaf_responses.rb
+│   │   ├── candidate_session_helpers.rb
+│   │   ├── oauth_helpers.rb
+│   │   ├── shared_examples
+│   │   │   ├── build_resource_shared_examples.rb
+│   │   │   └── make_request_shared_examples.rb
+│   │   ├── time_helpers.rb
+│   │   └── webmock.rb
+│   ├── validators
+│   │   ├── email_validator_spec.rb
+│   │   └── siret_validator_spec.rb
+│   └── views
+│       ├── admin
+│       │   └── editors
+│       │       ├── create.html.erb_spec.rb
+│       │       ├── destroy.html.erb_spec.rb
+│       │       ├── edit.html.erb_spec.rb
+│       │       ├── index.html.erb_spec.rb
+│       │       ├── new.html.erb_spec.rb
+│       │       ├── show.html.erb_spec.rb
+│       │       └── update.html.erb_spec.rb
+│       ├── home
+│       │   └── index.html.erb_spec.rb
+│       └── shared
+│           ├── _environment_banner_spec.rb
+│           └── _pdf_environment_indicator_spec.rb
+├── storage
+│   └── .keep
+├── test
+│   └── components
+│       └── previews
+│           ├── capacite_economique_financiere_chiffre_affaires_global_annuel_component_preview.rb
+│           ├── capacite_economique_financiere_effectifs_moyens_annuels_component_preview.rb
+│           ├── capacites_techniques_professionnelles_outillage_echantillons_component_preview.rb
+│           ├── checkbox_with_document_component_preview.rb
+│           ├── document_item_component_preview.rb
+│           ├── email_input_component_preview.rb
+│           ├── file_or_textarea_component_preview.rb
+│           ├── file_upload_component_preview.rb
+│           ├── file_upload_field_component_preview.rb
+│           ├── france_competences_component_preview.rb
+│           ├── inline_file_upload_component_preview.rb
+│           ├── inline_url_input_component_preview.rb
+│           ├── magic_link_email_component_preview.rb
+│           ├── opqibi_component_preview.rb
+│           ├── phone_input_component_preview.rb
+│           ├── presentation_intervenants_component_preview.rb
+│           ├── progress_bar_component_preview.rb
+│           ├── qualiopi_component_preview.rb
+│           ├── radio_with_file_and_text_component_preview.rb
+│           ├── realisations_livraisons_component_preview.rb
+│           ├── text_input_component_preview.rb
+│           ├── textarea_component_preview.rb
+│           └── textarea_field_component_preview.rb
+├── tmp
+│   ├── .keep
+│   ├── pids
+│   │   └── .keep
+│   └── storage
+│       └── .keep
+└── vendor
+    ├── .keep
+    └── javascript
+        ├── .keep
+        ├── @hotwired--stimulus.js
+        ├── @rails--activestorage.js
+        ├── sortablejs.js
+        └── stimulus-rails-nested-form.js
+215 directories, 1132 files
