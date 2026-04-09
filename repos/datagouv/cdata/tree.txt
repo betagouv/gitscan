@@ -1,0 +1,1427 @@
+.
+├── .dockerignore
+├── .github
+│   └── workflows
+│       ├── ci.yml
+│       └── create-deploy-release.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
+├── .npmrc
+├── .nvmrc
+├── .vscode
+│   └── settings.json
+├── Dockerfile
+├── E2E-TESTING.md
+├── LICENSE
+├── README.md
+├── api
+│   ├── badges.ts
+│   ├── organizations.ts
+│   └── users.ts
+├── app
+│   └── router.options.ts
+├── app.vue
+├── assets
+│   ├── config
+│   │   ├── answers
+│   │   │   ├── api_api-acces-restreint.md
+│   │   │   ├── api_api-specifique.md
+│   │   │   ├── api_other.md
+│   │   │   ├── api_recherche-api-non-referencee.md
+│   │   │   ├── api_referencer-api.md
+│   │   │   ├── ban.md
+│   │   │   ├── cadastre.md
+│   │   │   ├── contenu.md
+│   │   │   ├── deces.md
+│   │   │   ├── decoupe.md
+│   │   │   ├── demande_donnees.md
+│   │   │   ├── demarches_admin.md
+│   │   │   ├── dvf.md
+│   │   │   ├── formation.md
+│   │   │   ├── irve.md
+│   │   │   ├── numero_rna.md
+│   │   │   ├── question_donnees.md
+│   │   │   └── siret.md
+│   │   └── support.toml
+│   └── css
+│       ├── fonts-without-marianne.css
+│       ├── forms.css
+│       ├── main.css
+│       └── overrides.css
+├── components
+│   ├── AccessType
+│   │   └── AccessTypeForm.vue
+│   ├── AccessTypes
+│   │   ├── AccessTypeBadge.vue
+│   │   └── AccessTypePanel.vue
+│   ├── Accordion
+│   │   ├── Accordion.global.vue
+│   │   ├── AccordionGroup.global.vue
+│   │   └── injectionKey.ts
+│   ├── ActionCard
+│   │   └── ActionCard.vue
+│   ├── Admin
+│   │   └── AdminDeleteModal.vue
+│   ├── AdminBadge
+│   │   ├── AdminBadge.vue
+│   │   ├── DataserviceBadge.vue
+│   │   ├── DatasetBadge.vue
+│   │   └── ReuseBadge.vue
+│   ├── AdminContentWithTooltip
+│   │   └── AdminContentWithTooltip.vue
+│   ├── AdminEmail.vue
+│   ├── AdminInput.vue
+│   ├── AdminMembershipRequest
+│   │   └── AdminMembershipRequest.vue
+│   ├── AdminOrgInvitation
+│   │   └── AdminOrgInvitation.vue
+│   ├── AdminPublishButton
+│   │   └── AdminPublishButton.vue
+│   ├── AdminSidebar
+│   │   ├── AdminSidebarLink
+│   │   │   └── AdminSidebarLink.vue
+│   │   └── AdminSidebarMenu
+│   │       └── AdminSidebarMenu.vue
+│   ├── AdminTable
+│   │   ├── AdminCommunityResourcesTable
+│   │   │   └── AdminCommunityResourcesTable.vue
+│   │   ├── AdminContactPointsTable
+│   │   │   └── AdminContactPointsTable.vue
+│   │   ├── AdminDataservicesTable
+│   │   │   └── AdminDataservicesTable.vue
+│   │   ├── AdminDatasetsTable
+│   │   │   └── AdminDatasetsTable.vue
+│   │   ├── AdminDiscussionsTable
+│   │   │   └── AdminDiscussionsTable.vue
+│   │   ├── AdminReusesTable
+│   │   │   └── AdminReusesTable.vue
+│   │   └── Table
+│   │       ├── AdminTable.vue
+│   │       └── AdminTableTh.vue
+│   ├── Alert
+│   │   └── Alert.vue
+│   ├── BadgeSelect.vue
+│   ├── BannerNotif.vue
+│   ├── BannerReadOnly.vue
+│   ├── Brand
+│   │   ├── BrandBanner.vue
+│   │   └── BrandCard.vue
+│   ├── Breadcrumb
+│   │   └── Breadcrumb.vue
+│   ├── Breadcrumbs
+│   │   ├── AdminBreadcrumb.vue
+│   │   └── BreadcrumbItem.vue
+│   ├── Buttons
+│   │   └── EditButton.vue
+│   ├── Captchetat.client.vue
+│   ├── CdataLink.vue
+│   ├── CommunityResources
+│   │   └── AdminCommunityResourcesPage.vue
+│   ├── ContactPoint.vue
+│   ├── ContactPointSelect.vue
+│   ├── Dataservices
+│   │   ├── AccessAudienceCondition.vue
+│   │   ├── AdminDataservicesPage.vue
+│   │   ├── AdminUpdateDataserviceDatasetsPage.vue
+│   │   ├── AdminUpdateDataservicePage.vue
+│   │   ├── Card
+│   │   │   └── Card.vue
+│   │   ├── DescribeDataservice.vue
+│   │   └── New
+│   │       ├── Step2AddDatasets.vue
+│   │       └── Step3CompletePublication.vue
+│   ├── DataservicesSelect.vue
+│   ├── DatasetAssignmentSelector.vue
+│   ├── Datasets
+│   │   ├── AdminDatasetResourcesPage.vue
+│   │   ├── AdminDatasetsPage.vue
+│   │   ├── AdminUpdateDatasetPage.vue
+│   │   ├── CompleteResourcePublicationStep.vue
+│   │   ├── DatasetsMetrics.vue
+│   │   ├── DescribeDataset.vue
+│   │   ├── DescribeResource.vue
+│   │   ├── FileEditModal.vue
+│   │   ├── FileEditModalFromQueryString.client.vue
+│   │   ├── New
+│   │   │   ├── Step1PublishingType.vue
+│   │   │   ├── Step3AddResources.vue
+│   │   │   └── Step4CompletePublication.vue
+│   │   ├── Structured
+│   │   │   ├── Step1AssociateSchema.vue
+│   │   │   ├── Step2LoadData.vue
+│   │   │   ├── Step2Sheet.vue
+│   │   │   └── Step3DescribeDataset.vue
+│   │   ├── TabularEditor.client.vue
+│   │   └── UploadResourceModal.vue
+│   ├── DatasetsSelect.vue
+│   ├── DescriptionList
+│   │   ├── DescriptionList.vue
+│   │   ├── DescriptionListDetails.vue
+│   │   └── DescriptionListTerm.vue
+│   ├── Discussions
+│   │   ├── CommentBlock.vue
+│   │   ├── DeleteCommentModal.vue
+│   │   ├── DeleteThreadModal.vue
+│   │   ├── DiscussionCard.vue
+│   │   ├── DiscussionCommentHeader.vue
+│   │   ├── DiscussionsList.vue
+│   │   ├── DiscussionsPage.vue
+│   │   ├── EditCommentModal.vue
+│   │   ├── NewDiscussionForm.vue
+│   │   ├── RespondForm.vue
+│   │   ├── RespondModal.vue
+│   │   └── ThreadHeader.vue
+│   ├── Divider.vue
+│   ├── Elections
+│   │   └── ElectionCard.vue
+│   ├── Embeds
+│   │   ├── DataserviceCard.global.vue
+│   │   ├── DatasetCard.global.vue
+│   │   ├── ListReuse.global.vue
+│   │   ├── OrganizationCard.global.vue
+│   │   ├── ReuseCard.global.vue
+│   │   ├── SearchDataservice.global.vue
+│   │   └── SearchDataset.global.vue
+│   ├── FileCard
+│   │   ├── FileCard.vue
+│   │   └── FileLoader.vue
+│   ├── FollowButton.vue
+│   ├── Form
+│   │   ├── FieldsetElement.vue
+│   │   ├── FormFieldset.vue
+│   │   ├── FormWithAccordions.vue
+│   │   ├── HelpAccordion.vue
+│   │   └── ToggleSwitch.vue
+│   ├── FullPageTabs
+│   │   └── FullPageTabs.vue
+│   ├── GristTableViewer
+│   │   └── GristTableViewer.vue
+│   ├── Harvesters
+│   │   ├── AdminHarvestersPage.vue
+│   │   ├── CompletePublicationStep.vue
+│   │   ├── DescribeHarvester.vue
+│   │   ├── HarvesterBadge.vue
+│   │   ├── JobBadge.vue
+│   │   ├── JobPage.vue
+│   │   ├── PreviewLoader.vue
+│   │   └── PreviewStep.vue
+│   ├── InputGroup
+│   │   └── InputGroup.vue
+│   ├── LinkToSubject.vue
+│   ├── LinkedToAccordion
+│   │   └── LinkedToAccordion.vue
+│   ├── LogoAsText.vue
+│   ├── LogoImage.vue
+│   ├── LogoOnly.vue
+│   ├── MarkdownEditor
+│   │   ├── EditorButton.vue
+│   │   ├── ImageModal
+│   │   │   └── ImageModalButton.vue
+│   │   ├── InternalEditor.vue
+│   │   ├── MarkdownEditor.vue
+│   │   ├── Milkdown
+│   │   │   ├── LinkEdit
+│   │   │   │   ├── LinkEditTooltip.vue
+│   │   │   │   ├── configureEditTooltip.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── insertLink.ts
+│   │   │   │   └── linkEditTooltipCtx.ts
+│   │   │   ├── LinkPreview
+│   │   │   │   ├── LinkPreviewTooltip.vue
+│   │   │   │   ├── configurePreviewTooltip.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── linkPreviewTooltipCtx.ts
+│   │   │   │   ├── shouldShowPreview.ts
+│   │   │   │   └── useLinkPreview.ts
+│   │   │   ├── TableSelector
+│   │   │   │   ├── TableSelectorWidget.vue
+│   │   │   │   └── tableSelectorPlugin.ts
+│   │   │   ├── TableTooltip
+│   │   │   │   ├── TableTooltip.vue
+│   │   │   │   ├── TooltipButton.vue
+│   │   │   │   └── tableTooltipCtx.ts
+│   │   │   ├── Tooltip
+│   │   │   │   ├── EditorTooltip.vue
+│   │   │   │   └── useTooltipProvider.ts
+│   │   │   └── dsfrColumnResizingPlugin.ts
+│   │   ├── ProseMirror
+│   │   │   ├── DSFRTableView.ts
+│   │   │   ├── findMarkPosition.ts
+│   │   │   ├── getMarkInNode.ts
+│   │   │   ├── getNodeAtCoords.ts
+│   │   │   └── handleLink.ts
+│   │   └── types.ts
+│   ├── MenuSearch
+│   │   └── MenuSearch.vue
+│   ├── Metrics
+│   │   ├── AdminDataservicesPage.vue
+│   │   ├── AdminDatasetsPage.vue
+│   │   ├── AdminIndexPage.vue
+│   │   ├── AdminPage.vue
+│   │   └── AdminReusesPage.vue
+│   ├── Modal
+│   │   ├── Modal.client.vue
+│   │   └── ModalWithButton.vue
+│   ├── Notifications
+│   │   ├── Discussion.vue
+│   │   ├── MembershipAccepted.vue
+│   │   ├── MembershipRefused.vue
+│   │   ├── MembershipRequest.vue
+│   │   ├── NewBadge.vue
+│   │   ├── NotificationsList.vue
+│   │   ├── TransferRequest.vue
+│   │   └── ValidateHarvester.vue
+│   ├── ObjectsSelect.vue
+│   ├── OgImage
+│   │   ├── Default.takumi.vue
+│   │   ├── MainPage.takumi.vue
+│   │   └── ObjectPage.takumi.vue
+│   ├── Onboarding
+│   │   ├── OnboardingAudienceCard.vue
+│   │   ├── OnboardingCTA.vue
+│   │   ├── OnboardingFeatureCard.vue
+│   │   ├── OnboardingHero.vue
+│   │   ├── OnboardingLogoGrid.vue
+│   │   ├── OnboardingParagraph.vue
+│   │   ├── OnboardingSection.vue
+│   │   ├── OnboardingTitle.vue
+│   │   └── SmallCapsLabel.vue
+│   ├── Organization
+│   │   ├── AdminContactPointsPage.vue
+│   │   ├── ListPage.vue
+│   │   ├── New
+│   │   │   ├── Step1CreateOrJoinOrganization.vue
+│   │   │   ├── Step2DescribeOrganization.vue
+│   │   │   └── Step3CompleteTheOrganization.vue
+│   │   └── Search.vue
+│   ├── OrganizationOwner.vue
+│   ├── Pages
+│   │   ├── AccordionBlocEditor.vue
+│   │   ├── AddBlocDropdown.vue
+│   │   ├── AddObjectCard.vue
+│   │   ├── BlocWithTitleAndSubtitle.vue
+│   │   ├── BrandedButtonEditor.vue
+│   │   ├── DataservicesListBloc.vue
+│   │   ├── DatasetsListBloc.vue
+│   │   ├── EditableText.vue
+│   │   ├── EditoBlocs.vue
+│   │   ├── EditoFooter.vue
+│   │   ├── EditoHeader.vue
+│   │   ├── HeroBloc.vue
+│   │   ├── LinksListBloc.vue
+│   │   ├── MarkdownBloc.vue
+│   │   ├── ReusesListBloc.vue
+│   │   └── SiteEditoPage.vue
+│   ├── Post
+│   │   └── card.vue
+│   ├── Posts
+│   │   ├── DescribePost.vue
+│   │   └── PostContentForm.vue
+│   ├── ProducerSelect.vue
+│   ├── RadioButtons.vue
+│   ├── RecommendationExternal.vue
+│   ├── RecommendationsDatasets.vue
+│   ├── RecommendationsReuses.vue
+│   ├── Required
+│   │   └── Required.vue
+│   ├── RequiredExplanation
+│   │   └── RequiredExplanation.vue
+│   ├── Reuses
+│   │   ├── AdminReusesPage.vue
+│   │   ├── AdminUpdateReuseDataservicesPage.vue
+│   │   ├── AdminUpdateReuseDatasetsPage.vue
+│   │   ├── AdminUpdateReusePage.vue
+│   │   ├── DescribeReuse.vue
+│   │   ├── New
+│   │   │   ├── Step2AddDatasetsAndDataservices.vue
+│   │   │   └── Step3CompletePublication.vue
+│   │   └── ReuseCard.vue
+│   ├── ReusesSelect.vue
+│   ├── Search
+│   │   └── NoResults.vue
+│   ├── SectionCollapse.vue
+│   ├── SelectAudiencesTypes.vue
+│   ├── Sidemenu
+│   │   └── Sidemenu.global.vue
+│   ├── SiteFooter
+│   │   └── SiteFooter.vue
+│   ├── SiteHeader
+│   │   └── SiteHeader.vue
+│   ├── Spam
+│   │   └── ReportModal.vue
+│   ├── Stepper
+│   │   └── Stepper.vue
+│   ├── Support
+│   │   ├── Card.vue
+│   │   ├── Choice.vue
+│   │   ├── Choices.vue
+│   │   └── Title.vue
+│   ├── TabLinks.vue
+│   ├── TagsSelect.vue
+│   ├── TextClamp.client.vue
+│   ├── TransferBanner.vue
+│   ├── TransferRequest.vue
+│   ├── TransferRequestList.vue
+│   ├── UploadGroup
+│   │   └── UploadGroup.vue
+│   ├── User
+│   │   ├── AdminUserProfileHeader.vue
+│   │   ├── AdminUserProfilePage.vue
+│   │   ├── ApiTokensSection.vue
+│   │   ├── ChangeEmailModal.vue
+│   │   ├── ChangePasswordModal.vue
+│   │   ├── CreateApiTokenModal.vue
+│   │   ├── DeleteUserModal.vue
+│   │   └── TwoFactorSetupModal.vue
+│   └── dataset
+│       └── card-lg.vue
+├── composables
+│   ├── useAccessAudience.ts
+│   ├── useBlocSortable.ts
+│   ├── useCurrentOwned.ts
+│   ├── useDeleteMailto.ts
+│   ├── useForm.ts
+│   ├── useMarkAsRead.ts
+│   ├── useNotifications.client.ts
+│   ├── useRecommendationReason.ts
+│   ├── useSiteBlocs.ts
+│   ├── useTranslation.ts
+│   └── useTwoFactorSetup.ts
+├── datagouv-components
+│   ├── .editorconfig
+│   ├── .gitattributes
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .prettierrc.json
+│   ├── .vscode
+│   │   └── extensions.json
+│   ├── README.md
+│   ├── assets
+│   │   ├── illustrations
+│   │   │   ├── _bag.svg
+│   │   │   ├── _balls.svg
+│   │   │   ├── _bike.svg
+│   │   │   ├── _blackboard.svg
+│   │   │   ├── _book.svg
+│   │   │   ├── _box.svg
+│   │   │   ├── _brain.svg
+│   │   │   ├── _bublle.svg
+│   │   │   ├── _bus.svg
+│   │   │   ├── _calculus.svg
+│   │   │   ├── _camera.svg
+│   │   │   ├── _chart.svg
+│   │   │   ├── _cheese.svg
+│   │   │   ├── _cinema.svg
+│   │   │   ├── _clock.svg
+│   │   │   ├── _coffee.svg
+│   │   │   ├── _community.svg
+│   │   │   ├── _computer.svg
+│   │   │   ├── _confined.svg
+│   │   │   ├── _cook.svg
+│   │   │   ├── _cow.svg
+│   │   │   ├── _crane.svg
+│   │   │   ├── _curious.svg
+│   │   │   ├── _draggable.svg
+│   │   │   ├── _drill.svg
+│   │   │   ├── _earth.svg
+│   │   │   ├── _effeil.svg
+│   │   │   ├── _elected.svg
+│   │   │   ├── _elections.svg
+│   │   │   ├── _euro-icon.svg
+│   │   │   ├── _experiment.svg
+│   │   │   ├── _explore.svg
+│   │   │   ├── _feet.svg
+│   │   │   ├── _file.svg
+│   │   │   ├── _fish.svg
+│   │   │   ├── _france-2.svg
+│   │   │   ├── _france.svg
+│   │   │   ├── _france_with_magnifying_glass.svg
+│   │   │   ├── _fruits.svg
+│   │   │   ├── _gear.svg
+│   │   │   ├── _gel.svg
+│   │   │   ├── _grapes.svg
+│   │   │   ├── _ground.svg
+│   │   │   ├── _hammer.svg
+│   │   │   ├── _hands.svg
+│   │   │   ├── _hat.svg
+│   │   │   ├── _home-hero.svg
+│   │   │   ├── _home.svg
+│   │   │   ├── _hospital.svg
+│   │   │   ├── _hospitalbed.svg
+│   │   │   ├── _illustration.svg
+│   │   │   ├── _judge.svg
+│   │   │   ├── _justice.svg
+│   │   │   ├── _keyboard.svg
+│   │   │   ├── _keys-2.svg
+│   │   │   ├── _keys.svg
+│   │   │   ├── _laptop.svg
+│   │   │   ├── _learn.svg
+│   │   │   ├── _lock.svg
+│   │   │   ├── _love.svg
+│   │   │   ├── _machine-learning.svg
+│   │   │   ├── _magnifying.svg
+│   │   │   ├── _map.svg
+│   │   │   ├── _mask.svg
+│   │   │   ├── _math.svg
+│   │   │   ├── _metro.svg
+│   │   │   ├── _mic.svg
+│   │   │   ├── _mobility.svg
+│   │   │   ├── _money.svg
+│   │   │   ├── _music.svg
+│   │   │   ├── _news.svg
+│   │   │   ├── _newspaper-with-id.svg
+│   │   │   ├── _newspaper.svg
+│   │   │   ├── _notebook.svg
+│   │   │   ├── _notes.svg
+│   │   │   ├── _official.svg
+│   │   │   ├── _oil.svg
+│   │   │   ├── _piggybank.svg
+│   │   │   ├── _pills.svg
+│   │   │   ├── _police.svg
+│   │   │   ├── _real-estate.svg
+│   │   │   ├── _robot.svg
+│   │   │   ├── _safe.svg
+│   │   │   ├── _saw.svg
+│   │   │   ├── _scientist.svg
+│   │   │   ├── _search.svg
+│   │   │   ├── _search2.svg
+│   │   │   ├── _stethoscope.svg
+│   │   │   ├── _study.svg
+│   │   │   ├── _sun.svg
+│   │   │   ├── _table.svg
+│   │   │   ├── _telescope.svg
+│   │   │   ├── _tie.svg
+│   │   │   ├── _tissue.svg
+│   │   │   ├── _townhall.svg
+│   │   │   ├── _traffic.svg
+│   │   │   ├── _treasure.svg
+│   │   │   ├── _tree.svg
+│   │   │   ├── _village.svg
+│   │   │   ├── _virus.svg
+│   │   │   ├── _visio.svg
+│   │   │   ├── _wallet.svg
+│   │   │   ├── _wind.svg
+│   │   │   ├── administration.svg
+│   │   │   ├── bikelane.svg
+│   │   │   ├── book-2.svg
+│   │   │   ├── briefcase.svg
+│   │   │   ├── business.svg
+│   │   │   ├── dataservice.svg
+│   │   │   ├── dataset.svg
+│   │   │   ├── discussion.svg
+│   │   │   ├── edit.svg
+│   │   │   ├── harvester.svg
+│   │   │   ├── heart.svg
+│   │   │   ├── house.svg
+│   │   │   ├── journal.svg
+│   │   │   ├── lightbulb.svg
+│   │   │   ├── list.svg
+│   │   │   ├── magnifying_glass.svg
+│   │   │   ├── microscope.svg
+│   │   │   ├── newspaper-black.svg
+│   │   │   ├── newspapper.svg
+│   │   │   ├── organization.svg
+│   │   │   ├── people.svg
+│   │   │   ├── pin.svg
+│   │   │   ├── reuse.svg
+│   │   │   ├── schema.svg
+│   │   │   ├── show.svg
+│   │   │   ├── success.svg
+│   │   │   ├── truck.svg
+│   │   │   └── users.svg
+│   │   ├── json
+│   │   │   └── vector.json
+│   │   ├── labels
+│   │   │   ├── hvd.svg
+│   │   │   ├── inspire.svg
+│   │   │   ├── sl.svg
+│   │   │   ├── spd.svg
+│   │   │   └── sr.svg
+│   │   ├── main.css
+│   │   ├── swagger-themes
+│   │   │   └── newspaper.css
+│   │   └── tailwind.config.js
+│   ├── env.d.ts
+│   ├── eslint.config.ts
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   └── favicon.ico
+│   ├── src
+│   │   ├── components
+│   │   │   ├── ActivityList
+│   │   │   │   ├── ActivityList.vue
+│   │   │   │   └── UserActivityList.vue
+│   │   │   ├── AnimatedLoader.vue
+│   │   │   ├── AppLink.vue
+│   │   │   ├── Avatar.vue
+│   │   │   ├── AvatarWithName.vue
+│   │   │   ├── BannerAction.vue
+│   │   │   ├── BouncingDots.vue
+│   │   │   ├── BrandedButton.vue
+│   │   │   ├── ClientOnly.vue
+│   │   │   ├── CopyButton.vue
+│   │   │   ├── DataserviceCard.vue
+│   │   │   ├── DatasetCard.vue
+│   │   │   ├── DatasetInformation
+│   │   │   │   ├── DatasetEmbedSection.vue
+│   │   │   │   ├── DatasetInformationSection.vue
+│   │   │   │   ├── DatasetSchemaSection.vue
+│   │   │   │   ├── DatasetSpatialSection.vue
+│   │   │   │   ├── DatasetTemporalitySection.vue
+│   │   │   │   └── index.ts
+│   │   │   ├── DatasetLabelTag.vue
+│   │   │   ├── DatasetQuality.vue
+│   │   │   ├── DatasetQualityInline.vue
+│   │   │   ├── DatasetQualityItem.vue
+│   │   │   ├── DatasetQualityItemWarning.vue
+│   │   │   ├── DatasetQualityScore.vue
+│   │   │   ├── DatasetQualityTooltipContent.vue
+│   │   │   ├── DateRangeDetails.vue
+│   │   │   ├── DescriptionDetails.vue
+│   │   │   ├── DescriptionList.vue
+│   │   │   ├── DescriptionListDetails.vue
+│   │   │   ├── DescriptionListTerm.vue
+│   │   │   ├── DescriptionTerm.vue
+│   │   │   ├── DiscussionMessageCard.vue
+│   │   │   ├── ExtraAccordion.vue
+│   │   │   ├── Form
+│   │   │   │   ├── BadgeSelect.vue
+│   │   │   │   ├── FormatSelect.vue
+│   │   │   │   ├── GeozoneSelect.vue
+│   │   │   │   ├── GranularitySelect.vue
+│   │   │   │   ├── LicenseSelect.vue
+│   │   │   │   ├── OrganizationSelect.vue
+│   │   │   │   ├── OrganizationTypeSelect.vue
+│   │   │   │   ├── ReuseTopicSelect.vue
+│   │   │   │   ├── SchemaSelect.vue
+│   │   │   │   ├── SearchableSelect.vue
+│   │   │   │   ├── SelectGroup.vue
+│   │   │   │   └── TagSelect.vue
+│   │   │   ├── Icons
+│   │   │   │   ├── Archive.vue
+│   │   │   │   ├── Code.vue
+│   │   │   │   ├── Documentation.vue
+│   │   │   │   ├── File.vue
+│   │   │   │   ├── Image.vue
+│   │   │   │   ├── Link.vue
+│   │   │   │   └── Table.vue
+│   │   │   ├── LeafletMap.vue
+│   │   │   ├── LicenseBadge.vue
+│   │   │   ├── LoadingBlock.vue
+│   │   │   ├── MarkdownViewer.vue
+│   │   │   ├── ObjectCard.vue
+│   │   │   ├── ObjectCardBadge.vue
+│   │   │   ├── ObjectCardHeader.vue
+│   │   │   ├── ObjectCardOwner.vue
+│   │   │   ├── ObjectCardShortDescription.vue
+│   │   │   ├── OrganizationCard.vue
+│   │   │   ├── OrganizationHorizontalCard.vue
+│   │   │   ├── OrganizationLogo.vue
+│   │   │   ├── OrganizationNameWithCertificate.vue
+│   │   │   ├── OwnerType.vue
+│   │   │   ├── OwnerTypeIcon.vue
+│   │   │   ├── PaddedContainer.vue
+│   │   │   ├── Pagination.vue
+│   │   │   ├── Placeholder.vue
+│   │   │   ├── PostCard.vue
+│   │   │   ├── ProgressBar.vue
+│   │   │   ├── RadioGroup.vue
+│   │   │   ├── RadioInput.vue
+│   │   │   ├── ReadMore.vue
+│   │   │   ├── ResourceAccordion
+│   │   │   │   ├── DataStructure.vue
+│   │   │   │   ├── Datafair.client.vue
+│   │   │   │   ├── EditButton.vue
+│   │   │   │   ├── JsonPreview.client.vue
+│   │   │   │   ├── MapContainer.client.vue
+│   │   │   │   ├── Metadata.vue
+│   │   │   │   ├── PdfPreview.client.vue
+│   │   │   │   ├── Pmtiles.client.vue
+│   │   │   │   ├── Preview.vue
+│   │   │   │   ├── PreviewLoader.vue
+│   │   │   │   ├── PreviewUnavailable.vue
+│   │   │   │   ├── PreviewWrapper.vue
+│   │   │   │   ├── ResourceAccordion.vue
+│   │   │   │   ├── ResourceIcon.vue
+│   │   │   │   ├── SchemaBadge.vue
+│   │   │   │   ├── SchemaLoader.vue
+│   │   │   │   ├── Swagger.client.vue
+│   │   │   │   ├── XmlPreview.client.vue
+│   │   │   │   └── france.svg
+│   │   │   ├── ResourceExplorer
+│   │   │   │   ├── ResourceExplorer.vue
+│   │   │   │   ├── ResourceExplorerSidebar.vue
+│   │   │   │   └── ResourceExplorerViewer.vue
+│   │   │   ├── ReuseCard.vue
+│   │   │   ├── ReuseDetails.vue
+│   │   │   ├── ReuseHorizontalCard.vue
+│   │   │   ├── SchemaCard.vue
+│   │   │   ├── Search
+│   │   │   │   ├── BasicAndAdvancedFilters.vue
+│   │   │   │   ├── Filter
+│   │   │   │   │   ├── AccessTypeFilter.vue
+│   │   │   │   │   ├── DatasetBadgeFilter.vue
+│   │   │   │   │   ├── FilterButtonGroup.vue
+│   │   │   │   │   ├── FormatFamilyFilter.vue
+│   │   │   │   │   ├── LastUpdateRangeFilter.vue
+│   │   │   │   │   ├── ProducerTypeFilter.vue
+│   │   │   │   │   └── ReuseTypeFilter.vue
+│   │   │   │   ├── GlobalSearch.vue
+│   │   │   │   ├── SearchInput.vue
+│   │   │   │   └── Sidemenu.vue
+│   │   │   ├── SimpleBanner.vue
+│   │   │   ├── SmallChart.vue
+│   │   │   ├── StatBox.vue
+│   │   │   ├── Tabs
+│   │   │   │   ├── Tab.vue
+│   │   │   │   ├── TabGroup.vue
+│   │   │   │   ├── TabList.vue
+│   │   │   │   ├── TabPanel.vue
+│   │   │   │   └── TabPanels.vue
+│   │   │   ├── Tag.vue
+│   │   │   ├── Toggletip.vue
+│   │   │   ├── Tooltip.vue
+│   │   │   ├── TopicCard.vue
+│   │   │   ├── TranslationT.vue
+│   │   │   ├── ValueWatcher.vue
+│   │   │   └── radioGroupContext.ts
+│   │   ├── composables
+│   │   │   ├── useActiveDescendant.ts
+│   │   │   ├── useDebouncedRef.ts
+│   │   │   ├── useHasTabularData.ts
+│   │   │   ├── useMetrics.ts
+│   │   │   ├── useResourceCapabilities.ts
+│   │   │   ├── useReuseType.ts
+│   │   │   ├── useRouteQueryBoolean.ts
+│   │   │   ├── useSelectModelSync.ts
+│   │   │   ├── useStableQueryParams.ts
+│   │   │   └── useTranslation.ts
+│   │   ├── config.ts
+│   │   ├── functions
+│   │   │   ├── activities.ts
+│   │   │   ├── api.ts
+│   │   │   ├── api.types.ts
+│   │   │   ├── datasets.ts
+│   │   │   ├── dates.ts
+│   │   │   ├── description.ts
+│   │   │   ├── helpers.ts
+│   │   │   ├── markdown.ts
+│   │   │   ├── matomo.ts
+│   │   │   ├── metrics.ts
+│   │   │   ├── never.ts
+│   │   │   ├── organizations.ts
+│   │   │   ├── owned.ts
+│   │   │   ├── resourceCapabilities.ts
+│   │   │   ├── resources.ts
+│   │   │   ├── reuses.ts
+│   │   │   ├── schemas.ts
+│   │   │   ├── tabularApi.ts
+│   │   │   └── users.ts
+│   │   ├── main.ts
+│   │   └── types
+│   │       ├── access_types.ts
+│   │       ├── activity.ts
+│   │       ├── api.ts
+│   │       ├── badges.ts
+│   │       ├── contact_point.ts
+│   │       ├── dataservices.ts
+│   │       ├── datasets.ts
+│   │       ├── discussions.ts
+│   │       ├── frequency.ts
+│   │       ├── granularity.ts
+│   │       ├── harvest.ts
+│   │       ├── keyboard.ts
+│   │       ├── licenses.ts
+│   │       ├── organizations.ts
+│   │       ├── owned.ts
+│   │       ├── pages.ts
+│   │       ├── posts.ts
+│   │       ├── reports.ts
+│   │       ├── resources.ts
+│   │       ├── reuses.ts
+│   │       ├── schemas.ts
+│   │       ├── search.ts
+│   │       ├── site.ts
+│   │       ├── topics.ts
+│   │       ├── ui.ts
+│   │       ├── users.ts
+│   │       └── vue3-xml-viewer.d.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── design-system
+│   ├── AdminBadge.vue
+│   ├── BannerAction.vue
+│   ├── BannerNotif.vue
+│   ├── BrandedButton.vue
+│   ├── FullPageTabs.vue
+│   ├── OrganizationNameWithCertificate.vue
+│   └── SearchInput.vue
+├── error.vue
+├── eslint.config.mjs
+├── layouts
+│   ├── brand.vue
+│   ├── default.vue
+│   ├── embed.vue
+│   └── fluid.vue
+├── locales
+│   └── en.json
+├── middleware
+│   ├── auth.ts
+│   ├── guest.ts
+│   ├── me.global.ts
+│   └── redirect.global.ts
+├── nuxt.config.ts
+├── package.json
+├── pages
+│   ├── a-propos.vue
+│   ├── admin
+│   │   ├── community-resources
+│   │   │   └── new.vue
+│   │   ├── dataservices
+│   │   │   ├── [id]
+│   │   │   │   ├── activities.vue
+│   │   │   │   ├── datasets.vue
+│   │   │   │   ├── discussions.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── [id].vue
+│   │   │   └── new.vue
+│   │   ├── datasets
+│   │   │   ├── [id]
+│   │   │   │   ├── activities.vue
+│   │   │   │   ├── discussions.vue
+│   │   │   │   ├── files.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── [id].vue
+│   │   │   ├── new.vue
+│   │   │   └── structured.vue
+│   │   ├── harvesters
+│   │   │   ├── [id]
+│   │   │   │   ├── configuration.vue
+│   │   │   │   ├── index.vue
+│   │   │   │   └── jobs
+│   │   │   │       └── [jobid].vue
+│   │   │   ├── [id].vue
+│   │   │   └── new.vue
+│   │   ├── me
+│   │   │   ├── community-resources.vue
+│   │   │   ├── dataservices.vue
+│   │   │   ├── datasets.vue
+│   │   │   ├── metrics
+│   │   │   │   ├── dataservices.vue
+│   │   │   │   ├── datasets.vue
+│   │   │   │   ├── index.vue
+│   │   │   │   └── reuses.vue
+│   │   │   ├── metrics.vue
+│   │   │   ├── profile
+│   │   │   │   ├── activities.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── profile.vue
+│   │   │   └── reuses.vue
+│   │   ├── organizations
+│   │   │   ├── [oid]
+│   │   │   │   ├── community-resources.vue
+│   │   │   │   ├── dataservices
+│   │   │   │   │   └── index.vue
+│   │   │   │   ├── datasets
+│   │   │   │   │   └── index.vue
+│   │   │   │   ├── discussions.vue
+│   │   │   │   ├── harvesters.vue
+│   │   │   │   ├── members.vue
+│   │   │   │   ├── metrics
+│   │   │   │   │   ├── dataservices.vue
+│   │   │   │   │   ├── datasets.vue
+│   │   │   │   │   ├── index.vue
+│   │   │   │   │   └── reuses.vue
+│   │   │   │   ├── metrics.vue
+│   │   │   │   ├── profile
+│   │   │   │   │   ├── activities.vue
+│   │   │   │   │   ├── contacts.vue
+│   │   │   │   │   └── index.vue
+│   │   │   │   ├── profile.vue
+│   │   │   │   └── reuses
+│   │   │   │       ├── [id]
+│   │   │   │       │   ├── dataservices.vue
+│   │   │   │       │   ├── datasets.vue
+│   │   │   │       │   └── index.vue
+│   │   │   │       ├── [id].vue
+│   │   │   │       └── index.vue
+│   │   │   ├── [oid].vue
+│   │   │   └── new.vue
+│   │   ├── posts
+│   │   │   ├── [id]
+│   │   │   │   ├── content.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── [id].vue
+│   │   │   └── new.vue
+│   │   ├── reuses
+│   │   │   ├── [id]
+│   │   │   │   ├── activities.vue
+│   │   │   │   ├── dataservices.vue
+│   │   │   │   ├── datasets.vue
+│   │   │   │   ├── discussions.vue
+│   │   │   │   └── index.vue
+│   │   │   ├── [id].vue
+│   │   │   └── new.vue
+│   │   ├── site
+│   │   │   ├── community-resources.vue
+│   │   │   ├── dataservices.vue
+│   │   │   ├── datasets.vue
+│   │   │   ├── edito
+│   │   │   │   ├── dataservices.vue
+│   │   │   │   ├── datasets.vue
+│   │   │   │   └── reuses.vue
+│   │   │   ├── harvesters.vue
+│   │   │   ├── moderation.vue
+│   │   │   ├── organizations.vue
+│   │   │   ├── posts.vue
+│   │   │   ├── reuses.vue
+│   │   │   ├── topics.vue
+│   │   │   └── users.vue
+│   │   ├── topics
+│   │   │   ├── [id]
+│   │   │   │   ├── activities.vue
+│   │   │   │   ├── datasets.vue
+│   │   │   │   ├── index.vue
+│   │   │   │   └── reuses.vue
+│   │   │   └── [id].vue
+│   │   └── users
+│   │       ├── [uid]
+│   │       │   ├── community-resources.vue
+│   │       │   ├── dataservices.vue
+│   │       │   ├── datasets.vue
+│   │       │   ├── metrics
+│   │       │   │   ├── dataservices.vue
+│   │       │   │   ├── datasets.vue
+│   │       │   │   ├── index.vue
+│   │       │   │   └── reuses.vue
+│   │       │   ├── metrics.vue
+│   │       │   ├── profile
+│   │       │   │   ├── activities.vue
+│   │       │   │   └── index.vue
+│   │       │   ├── profile.vue
+│   │       │   └── reuses.vue
+│   │       └── [uid].vue
+│   ├── admin.vue
+│   ├── dashboard.vue
+│   ├── dataservices
+│   │   ├── [did]
+│   │   │   ├── discussions.vue
+│   │   │   └── index.vue
+│   │   ├── [did].vue
+│   │   └── index.vue
+│   ├── datasets
+│   │   ├── [did]
+│   │   │   ├── community-resources.vue
+│   │   │   ├── discussions.vue
+│   │   │   ├── index.vue
+│   │   │   ├── informations.vue
+│   │   │   └── reuses_and_dataservices.vue
+│   │   ├── [did].vue
+│   │   ├── index.vue
+│   │   └── search.vue
+│   ├── design
+│   │   ├── buttons.vue
+│   │   ├── cards.vue
+│   │   ├── dataservice-search.vue
+│   │   ├── dataset-search.vue
+│   │   ├── index.vue
+│   │   ├── logos.vue
+│   │   ├── oembeds.vue
+│   │   ├── organization-search.vue
+│   │   ├── previews.vue
+│   │   ├── reuse-search.vue
+│   │   └── translations.vue
+│   ├── design.vue
+│   ├── elections.vue
+│   ├── embeds
+│   │   ├── dataservices
+│   │   │   └── [slug].vue
+│   │   ├── datasets
+│   │   │   └── [slug].vue
+│   │   ├── list-reuses
+│   │   │   └── [slug].vue
+│   │   ├── organizations
+│   │   │   └── [slug].vue
+│   │   ├── reuses
+│   │   │   └── [slug].vue
+│   │   ├── search-dataservices
+│   │   │   └── [slug].vue
+│   │   └── search-datasets
+│   │       └── [slug].vue
+│   ├── embeds.vue
+│   ├── events
+│   │   └── rentree-data-gouv.vue
+│   ├── index.vue
+│   ├── login.vue
+│   ├── oauth
+│   │   └── authorize.vue
+│   ├── organizations
+│   │   ├── [oid]
+│   │   │   ├── dataservices.vue
+│   │   │   ├── datasets.vue
+│   │   │   ├── index.vue
+│   │   │   ├── information.vue
+│   │   │   └── reuses.vue
+│   │   ├── [oid].vue
+│   │   └── index.vue
+│   ├── pages
+│   │   └── [...slug].vue
+│   ├── posts
+│   │   ├── [id].vue
+│   │   └── index.vue
+│   ├── producteurs.vue
+│   ├── products
+│   │   ├── [id]
+│   │   │   └── index.vue
+│   │   └── index.vue
+│   ├── register.vue
+│   ├── resend-confirm-email.vue
+│   ├── reset
+│   │   ├── [token].vue
+│   │   └── index.vue
+│   ├── reuses
+│   │   ├── [rid]
+│   │   │   ├── discussions.vue
+│   │   │   └── index.vue
+│   │   ├── [rid].vue
+│   │   └── index.vue
+│   ├── reutilisateurs.vue
+│   ├── setup-two-factor.vue
+│   ├── support
+│   │   └── [...path].vue
+│   ├── tf-validate.vue
+│   ├── users
+│   │   └── [id].vue
+│   └── verify.vue
+├── patches
+│   └── nuxt.patch
+├── playwright
+│   └── .auth
+│       └── .gitkeep
+├── playwright.config.ts
+├── plugins
+│   ├── api.ts
+│   ├── matomo.client.ts
+│   └── translation.ts
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── public
+│   ├── favicon.ico
+│   ├── fonts
+│   │   ├── Marianne-300-Italic.woff
+│   │   ├── Marianne-300-Italic.woff2
+│   │   ├── Marianne-300.woff
+│   │   ├── Marianne-300.woff2
+│   │   ├── Marianne-400-Italic.woff
+│   │   ├── Marianne-400-Italic.woff2
+│   │   ├── Marianne-400.woff
+│   │   ├── Marianne-400.woff2
+│   │   ├── Marianne-500-Italic.woff
+│   │   ├── Marianne-500-Italic.woff2
+│   │   ├── Marianne-500.woff
+│   │   ├── Marianne-500.woff2
+│   │   ├── Marianne-700-Italic.woff
+│   │   ├── Marianne-700-Italic.woff2
+│   │   ├── Marianne-700.woff
+│   │   ├── Marianne-700.woff2
+│   │   ├── Marianne-800.woff
+│   │   ├── Marianne-800.woff2
+│   │   ├── Spectral-200-Italic.woff
+│   │   ├── Spectral-200-Italic.woff2
+│   │   ├── Spectral-200.woff
+│   │   ├── Spectral-200.woff2
+│   │   ├── Spectral-300-Italic.woff
+│   │   ├── Spectral-300-Italic.woff2
+│   │   ├── Spectral-300.woff
+│   │   ├── Spectral-300.woff2
+│   │   ├── Spectral-400-Italic.woff
+│   │   ├── Spectral-400-Italic.woff2
+│   │   ├── Spectral-400.woff
+│   │   ├── Spectral-400.woff2
+│   │   ├── Spectral-500-Italic.woff
+│   │   ├── Spectral-500-Italic.woff2
+│   │   ├── Spectral-500.woff
+│   │   ├── Spectral-500.woff2
+│   │   ├── Spectral-600-Italic.woff
+│   │   ├── Spectral-600-Italic.woff2
+│   │   ├── Spectral-600.woff
+│   │   ├── Spectral-600.woff2
+│   │   ├── Spectral-700-Italic.woff
+│   │   ├── Spectral-700-Italic.woff2
+│   │   ├── Spectral-700.woff
+│   │   ├── Spectral-700.woff2
+│   │   ├── Spectral-800-Italic.woff
+│   │   ├── Spectral-800-Italic.woff2
+│   │   ├── Spectral-800.woff
+│   │   ├── Spectral-800.woff2
+│   │   ├── URWGothic-SemiBold.woff
+│   │   └── URWGothic-SemiBold.woff2
+│   ├── illustrations
+│   │   ├── _bag.svg
+│   │   ├── _balls.svg
+│   │   ├── _bike.svg
+│   │   ├── _blackboard.svg
+│   │   ├── _book.svg
+│   │   ├── _box.svg
+│   │   ├── _brain.svg
+│   │   ├── _bublle.svg
+│   │   ├── _bus.svg
+│   │   ├── _calculus.svg
+│   │   ├── _camera.svg
+│   │   ├── _chart.svg
+│   │   ├── _cheese.svg
+│   │   ├── _cinema.svg
+│   │   ├── _clock.svg
+│   │   ├── _community.svg
+│   │   ├── _computer.svg
+│   │   ├── _confined.svg
+│   │   ├── _cook.svg
+│   │   ├── _cow.svg
+│   │   ├── _crane.svg
+│   │   ├── _curious.svg
+│   │   ├── _draggable.svg
+│   │   ├── _drill.svg
+│   │   ├── _earth.svg
+│   │   ├── _effeil.svg
+│   │   ├── _elected.svg
+│   │   ├── _elections.svg
+│   │   ├── _euro-icon.svg
+│   │   ├── _experiment.svg
+│   │   ├── _explore.svg
+│   │   ├── _feet.svg
+│   │   ├── _file.svg
+│   │   ├── _fish.svg
+│   │   ├── _france-2.svg
+│   │   ├── _france.svg
+│   │   ├── _france_with_magnifying_glass.svg
+│   │   ├── _fruits.svg
+│   │   ├── _gear.svg
+│   │   ├── _gel.svg
+│   │   ├── _grapes.svg
+│   │   ├── _ground.svg
+│   │   ├── _hammer.svg
+│   │   ├── _hands.svg
+│   │   ├── _hat.svg
+│   │   ├── _home-hero.svg
+│   │   ├── _home.svg
+│   │   ├── _hospital.svg
+│   │   ├── _hospitalbed.svg
+│   │   ├── _illustration.svg
+│   │   ├── _judge.svg
+│   │   ├── _justice.svg
+│   │   ├── _keyboard.svg
+│   │   ├── _keys-2.svg
+│   │   ├── _keys.svg
+│   │   ├── _laptop.svg
+│   │   ├── _learn.svg
+│   │   ├── _lock.svg
+│   │   ├── _love.svg
+│   │   ├── _machine-learning.svg
+│   │   ├── _magnifying.svg
+│   │   ├── _map.svg
+│   │   ├── _mask.svg
+│   │   ├── _math.svg
+│   │   ├── _metro.svg
+│   │   ├── _mic.svg
+│   │   ├── _microscope.svg
+│   │   ├── _mobility.svg
+│   │   ├── _money.svg
+│   │   ├── _music.svg
+│   │   ├── _news.svg
+│   │   ├── _newspaper-with-id.svg
+│   │   ├── _newspaper.svg
+│   │   ├── _notebook.svg
+│   │   ├── _notes.svg
+│   │   ├── _official.svg
+│   │   ├── _oil.svg
+│   │   ├── _piggybank.svg
+│   │   ├── _pills.svg
+│   │   ├── _police.svg
+│   │   ├── _real-estate.svg
+│   │   ├── _robot.svg
+│   │   ├── _safe.svg
+│   │   ├── _saw.svg
+│   │   ├── _scientist.svg
+│   │   ├── _search.svg
+│   │   ├── _search2.svg
+│   │   ├── _stethoscope.svg
+│   │   ├── _study.svg
+│   │   ├── _sun.svg
+│   │   ├── _table.svg
+│   │   ├── _telescope.svg
+│   │   ├── _tie.svg
+│   │   ├── _tissue.svg
+│   │   ├── _townhall.svg
+│   │   ├── _traffic.svg
+│   │   ├── _treasure.svg
+│   │   ├── _tree.svg
+│   │   ├── _village.svg
+│   │   ├── _virus.svg
+│   │   ├── _visio.svg
+│   │   ├── _wallet.svg
+│   │   ├── _wind.svg
+│   │   ├── administration.svg
+│   │   ├── bikelane.svg
+│   │   ├── book-2.svg
+│   │   ├── briefcase.svg
+│   │   ├── business.svg
+│   │   ├── coffee.svg
+│   │   ├── dataservice.svg
+│   │   ├── dataset.svg
+│   │   ├── discussion.svg
+│   │   ├── edit.svg
+│   │   ├── harvester.svg
+│   │   ├── heart.svg
+│   │   ├── house.svg
+│   │   ├── journal.svg
+│   │   ├── lightbulb.svg
+│   │   ├── list.svg
+│   │   ├── magnifying_glass.svg
+│   │   ├── newspaper-black.svg
+│   │   ├── newspapper.svg
+│   │   ├── organization.svg
+│   │   ├── people.svg
+│   │   ├── pin.svg
+│   │   ├── reuse.svg
+│   │   ├── schema.svg
+│   │   ├── show.svg
+│   │   ├── success.svg
+│   │   ├── truck.svg
+│   │   └── users.svg
+│   ├── nuxt_images
+│   │   ├── autres.png
+│   │   ├── background.svg
+│   │   ├── elections.svg
+│   │   ├── errors
+│   │   │   ├── 403.svg
+│   │   │   ├── 404.svg
+│   │   │   ├── 410.svg
+│   │   │   └── 500.svg
+│   │   ├── favicon.svg
+│   │   ├── forum.svg
+│   │   ├── guides.svg
+│   │   ├── homepage
+│   │   │   ├── annuaire.png
+│   │   │   ├── annuaire@2x.png
+│   │   │   ├── datasets.png
+│   │   │   ├── datasets@2x.png
+│   │   │   ├── datasets@3x.png
+│   │   │   ├── dvf.png
+│   │   │   ├── dvf@2x.png
+│   │   │   ├── hero-background.png
+│   │   │   ├── hero_1.png
+│   │   │   ├── hero_10.png
+│   │   │   ├── hero_11.png
+│   │   │   ├── hero_12.png
+│   │   │   ├── hero_13.png
+│   │   │   ├── hero_14.png
+│   │   │   ├── hero_15.png
+│   │   │   ├── hero_2.png
+│   │   │   ├── hero_3.png
+│   │   │   ├── hero_4.png
+│   │   │   ├── hero_5.png
+│   │   │   ├── hero_6.png
+│   │   │   ├── hero_7.png
+│   │   │   ├── hero_8.png
+│   │   │   ├── hero_9.png
+│   │   │   ├── reuses.png
+│   │   │   ├── reuses@2x.png
+│   │   │   └── reuses@3x.png
+│   │   ├── legislative.png
+│   │   ├── logo_horizontal.svg
+│   │   ├── logo_only.svg
+│   │   ├── logo_text.svg
+│   │   ├── logo_text_and_icon.png
+│   │   ├── municipales.png
+│   │   ├── onboarding
+│   │   │   ├── api.svg
+│   │   │   ├── discussions.svg
+│   │   │   ├── explorer.svg
+│   │   │   ├── guides.svg
+│   │   │   ├── harvesting.svg
+│   │   │   ├── logo-ademe.png
+│   │   │   ├── logo-blablacar.png
+│   │   │   ├── logo-googlemaps.png
+│   │   │   ├── logo-ign.png
+│   │   │   ├── logo-ina.png
+│   │   │   ├── logo-infoclimat.png
+│   │   │   ├── logo-insee.png
+│   │   │   ├── logo-lambersart.png
+│   │   │   ├── logo-lemonde.png
+│   │   │   ├── logo-maif.png
+│   │   │   ├── logo-meilleursagents.png
+│   │   │   ├── logo-minint.png
+│   │   │   ├── logo-pappers.png
+│   │   │   ├── logo-santepubliquefrance.png
+│   │   │   ├── logo-sncf.png
+│   │   │   ├── logo-wikimedia.png
+│   │   │   ├── restricted.svg
+│   │   │   ├── schema.svg
+│   │   │   ├── score.svg
+│   │   │   ├── stats-datasets.svg
+│   │   │   └── stats-reuses.svg
+│   │   ├── organizations
+│   │   │   ├── cnil.png
+│   │   │   ├── cnil@2x.png
+│   │   │   ├── cnil@3x.png
+│   │   │   ├── googlemaps.png
+│   │   │   ├── googlemaps@2x.png
+│   │   │   ├── googlemaps@3x.png
+│   │   │   ├── insee.png
+│   │   │   ├── insee@2x.png
+│   │   │   ├── insee@3x.png
+│   │   │   ├── lemonde.png
+│   │   │   ├── lemonde@2x.png
+│   │   │   ├── lemonde@3x.png
+│   │   │   ├── liberation.png
+│   │   │   ├── liberation@2x.png
+│   │   │   ├── liberation@3x.png
+│   │   │   ├── minedu.png
+│   │   │   ├── minedu@2x.png
+│   │   │   ├── minedu@3x.png
+│   │   │   ├── spf.png
+│   │   │   ├── spf@2x.png
+│   │   │   ├── spf@3x.png
+│   │   │   ├── wikimedia.png
+│   │   │   ├── wikimedia@2x.png
+│   │   │   └── wikimedia@3x.png
+│   │   ├── presidentielles.png
+│   │   ├── products
+│   │   │   ├── annuaire-des-entreprises.png
+│   │   │   ├── annuaire-des-entreprises@2x.png
+│   │   │   ├── api-entreprise.png
+│   │   │   ├── api-entreprise@2x.png
+│   │   │   ├── api-particulier.png
+│   │   │   ├── api-particulier@2x.png
+│   │   │   ├── datagouv.png
+│   │   │   ├── datagouv@2x.png
+│   │   │   ├── datapass.png
+│   │   │   ├── datapass@2x.png
+│   │   │   ├── hubee.png
+│   │   │   └── hubee@2x.png
+│   │   └── udata_mails_external_logo.png
+│   ├── oembed.js
+│   └── robots.txt
+├── rollup-plugin-smol-toml.ts
+├── sentry.client.config.ts
+├── sentry.server.config.ts
+├── server
+│   ├── routes
+│   │   ├── health.ts
+│   │   └── nuxt-api
+│   │       ├── albert
+│   │       │   ├── generate-dataset-short-description.post.ts
+│   │       │   ├── generate-dataset-tags.post.ts
+│   │       │   ├── generate-reuse-tags.post.ts
+│   │       │   └── utils
+│   │       │       └── albert-helpers.ts
+│   │       ├── oembed.get.ts
+│   │       ├── pages
+│   │       │   └── [...slug].get.ts
+│   │       ├── send-message.post.ts
+│   │       └── sitemaps
+│   │           ├── pages.ts
+│   │           └── urls.ts
+│   ├── tsconfig.json
+│   └── utils
+│       └── albert-api-client.ts
+├── tests
+│   ├── admin
+│   │   ├── badges.spec.ts
+│   │   ├── delete-modal.normal-user.spec.ts
+│   │   ├── delete-with-legal-mail.spec.ts
+│   │   └── metrics-datasets.spec.ts
+│   ├── api
+│   │   └── redirect_on_different_slug.spec.ts
+│   ├── auth-normal-user.setup.ts
+│   ├── auth.2fa-user.spec.ts
+│   ├── auth.setup.ts
+│   ├── base.ts
+│   ├── dataservices
+│   │   ├── [did].spec.ts
+│   │   ├── add-dataset.spec.ts
+│   │   ├── creation.spec.ts
+│   │   └── search.spec.ts
+│   ├── datasets
+│   │   ├── [did].spec.ts
+│   │   ├── chunked-upload.spec.ts
+│   │   ├── creation.spec.ts
+│   │   └── search.spec.ts
+│   ├── discussions
+│   │   └── discussions.normal-user.spec.ts
+│   ├── edito
+│   │   ├── pages-editor.spec.ts
+│   │   └── pages-editor.spec.ts-snapshots
+│   │       ├── edito-page-final-chromium-linux.png
+│   │       └── edito-page-final-firefox-linux.png
+│   ├── helpers.ts
+│   ├── homepage.spec.ts
+│   ├── homepage.spec.ts-snapshots
+│   │   ├── homepage-is-working-1-chromium-linux.png
+│   │   └── homepage-is-working-1-firefox-linux.png
+│   ├── legacy
+│   │   ├── edito_redirects_to_search.spec.ts
+│   │   └── redirect_trailing_slash.spec.ts
+│   ├── og-images.spec.ts
+│   ├── og-images.spec.ts-snapshots
+│   │   ├── og-dataset-sirene-chromium-linux.png
+│   │   ├── og-dataset-sirene-firefox-linux.png
+│   │   ├── og-datasets-chromium-linux.png
+│   │   ├── og-datasets-firefox-linux.png
+│   │   ├── og-homepage-chromium-linux.png
+│   │   └── og-homepage-firefox-linux.png
+│   ├── organizations
+│   │   ├── [oid].spec.ts
+│   │   ├── index.spec.ts
+│   │   ├── invitations.spec.ts
+│   │   ├── organizations.spec.ts
+│   │   └── partial-editor.spec.ts
+│   ├── posts
+│   │   ├── blocs.spec.ts
+│   │   └── kind.spec.ts
+│   ├── resources
+│   │   └── use-resource-capabilities.spec.ts
+│   ├── reuses
+│   │   ├── [rid].spec.ts
+│   │   ├── creation.spec.ts
+│   │   └── search.spec.ts
+│   └── translation.spec.ts
+├── tsconfig.json
+├── types
+│   ├── alert.ts
+│   ├── api-tokens.ts
+│   ├── delete.ts
+│   ├── discussions.ts
+│   ├── form.ts
+│   ├── harvesters.d.ts
+│   ├── html.ts
+│   ├── notifications.ts
+│   ├── pages.ts
+│   ├── posts.ts
+│   ├── recommendations.ts
+│   ├── schema.ts
+│   ├── shims.d.ts
+│   ├── support.ts
+│   └── types.d.ts
+└── utils
+    ├── activities.ts
+    ├── api.ts
+    ├── auth.ts
+    ├── contacts.ts
+    ├── dataservices.ts
+    ├── datasets.ts
+    ├── discussions.ts
+    ├── harvesters.ts
+    ├── helpers.ts
+    ├── navigation.ts
+    ├── organizations.ts
+    ├── owner.ts
+    ├── pages.ts
+    ├── paginate.ts
+    ├── posts.ts
+    └── reuses.ts
+214 directories, 1212 files

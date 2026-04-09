@@ -1,0 +1,121 @@
+{
+  "name": "@datagouv/components-next",
+  "version": "1.0.1",
+  "private": false,
+  "type": "module",
+  "packageManager": "pnpm@10.23.0",
+  "engines": {
+    "node": ">= 20.0.0",
+    "pnpm": ">= 10.0.0",
+    "npm": "use-pnpm-instead",
+    "yarn": "use-pnpm-instead"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "cypress",
+      "husky"
+    ]
+  },
+  "main": "./src/main.ts",
+  "files": [
+    "assets",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p typecheck \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "typecheck": "vue-tsc --build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write src/",
+    "css": "tailwindcss -i ./assets/main.css -o ./dist/components.css --minify --optimize",
+    "preversion": "pnpm run build && pnpm run css",
+    "publish-dev": "pnpm publish --tag dev --access public",
+    "publish-stable": "pnpm publish --access public"
+  },
+  "dependencies": {
+    "@floating-ui/vue": "^1.1.11",
+    "@headlessui/vue": "^1.7.23",
+    "@remixicon/vue": "^4.5.0",
+    "@types/hast": "^3.0.4",
+    "@types/leaflet": "^1.9.17",
+    "@vueuse/core": "^14.2.1",
+    "@vueuse/router": "^14.2.1",
+    "chart.js": "^4.4.8",
+    "dompurify": "^3.2.5",
+    "geopf-extensions-openlayers": "^1.0.0-beta.5",
+    "leaflet": "^1.9.4",
+    "maplibre-gl": "^5.6.2",
+    "ofetch": "^1.4.1",
+    "ol": "^10.6.1",
+    "pdfjs-dist": "^4.10.38",
+    "pmtiles": "^4.3.0",
+    "popmotion": "^11.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-behead": "^3.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "strip-markdown": "^6.0.0",
+    "stylefire": "^7.0.3",
+    "swagger-ui-dist": "^5.27.1",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
+    "vue-content-loader": "^2.0.1",
+    "vue-sonner": "^2.0.9",
+    "vue3-json-viewer": "^2.4.1",
+    "vue3-text-clamp": "^0.1.2",
+    "vue3-xml-viewer": "^0.0.14"
+  },
+  "devDependencies": {
+    "@intlify/cli": "^0.13.1",
+    "@tailwindcss/cli": "^4.0.8",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^22.13.1",
+    "@vitejs/plugin-vue": "^6.0",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.3.0",
+    "@vue/tsconfig": "^0.8.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-vue": "^10.0",
+    "jiti": "^2.4.2",
+    "npm-run-all2": "^8.0",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^4.0.8",
+    "typescript": "^5.7.3",
+    "vite": "^7.0",
+    "vite-plugin-vue-devtools": "^8.0",
+    "vue": "^3.5.31",
+    "vue-router": "^5.0.4",
+    "vue-tsc": "^3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0 || ^5.0.0"
+  },
+  "scarfSettings": {
+    "enabled": false
+  },
+  "author": {
+    "name": "DINUM"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datagouv/cdata.git"
+  },
+  "bugs": {
+    "url": "https://github.com/datagouv/cdata/issues"
+  },
+  "homepage": "https://github.com/datagouv/cdata#readme"
+}
