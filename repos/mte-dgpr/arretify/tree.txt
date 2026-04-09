@@ -1,0 +1,1968 @@
+.
+├── .flake8
+├── .github
+│   └── workflows
+│       ├── ci.yml
+│       └── publish.yml
+├── .gitignore
+├── .gitmodules
+├── .pre-commit-config.yaml
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── arretify
+│   ├── __init__.py
+│   ├── _vendor
+│   │   ├── README.md
+│   │   ├── clients_api_droit
+│   │   └── mistralai.py
+│   ├── errors.py
+│   ├── law_data
+│   │   ├── __init__.py
+│   │   ├── apis
+│   │   │   ├── __init__.py
+│   │   │   ├── eurlex.py
+│   │   │   ├── legifrance.py
+│   │   │   └── mistral.py
+│   │   ├── eurlex_constants.py
+│   │   ├── french_addresses
+│   │   │   └── street_names.json
+│   │   ├── french_addresses.py
+│   │   ├── legifrance
+│   │   │   ├── code_index_LEGITEXT000006072050.json
+│   │   │   ├── code_index_LEGITEXT000006074220.json
+│   │   │   └── codes.json
+│   │   └── legifrance_constants.py
+│   ├── main.py
+│   ├── main_test.py
+│   ├── parsing_utils
+│   │   ├── __init__.py
+│   │   ├── dates.py
+│   │   ├── dates_test.py
+│   │   ├── numbering.py
+│   │   ├── numbering_test.py
+│   │   ├── patterns.py
+│   │   └── patterns_test.py
+│   ├── pipeline.py
+│   ├── pipeline_test.py
+│   ├── regex_utils
+│   │   ├── __init__.py
+│   │   ├── core.py
+│   │   ├── core_test.py
+│   │   ├── functional.py
+│   │   ├── functional_test.py
+│   │   ├── helpers.py
+│   │   ├── helpers_test.py
+│   │   ├── regex_tree
+│   │   │   ├── __init__.py
+│   │   │   ├── compile.py
+│   │   │   ├── compile_test.py
+│   │   │   └── types.py
+│   │   ├── split.py
+│   │   ├── split_test.py
+│   │   └── types.py
+│   ├── semantic_tag_specs.py
+│   ├── semantic_tag_specs_test.py
+│   ├── settings.py
+│   ├── step_consolidation
+│   │   ├── __init__.py
+│   │   ├── __step__.py
+│   │   ├── operands_detection.py
+│   │   ├── operands_detection_test.py
+│   │   ├── operations_detection.py
+│   │   └── operations_detection_test.py
+│   ├── step_ocr
+│   │   ├── __init__.py
+│   │   ├── __step__.py
+│   │   ├── mistral_ocr.py
+│   │   └── mistral_ocr_test.py
+│   ├── step_references_detection
+│   │   ├── __init__.py
+│   │   ├── __step__.py
+│   │   ├── arretes_detection.py
+│   │   ├── arretes_detection_test.py
+│   │   ├── circulaires_detection.py
+│   │   ├── circulaires_detection_test.py
+│   │   ├── codes_detection.py
+│   │   ├── codes_detection_test.py
+│   │   ├── decrets_detection.py
+│   │   ├── decrets_detection_test.py
+│   │   ├── eu_acts_detection.py
+│   │   ├── eu_acts_detection_test.py
+│   │   ├── match_sections_with_documents.py
+│   │   ├── match_sections_with_documents_test.py
+│   │   ├── sections_detection.py
+│   │   ├── sections_detection_test.py
+│   │   ├── self_detection.py
+│   │   ├── self_detection_test.py
+│   │   ├── unknown_sections_resolution.py
+│   │   └── unknown_sections_resolution_test.py
+│   ├── step_references_resolution
+│   │   ├── __init__.py
+│   │   ├── __step__.py
+│   │   ├── arretes_resolution.py
+│   │   ├── arretes_resolution_test.py
+│   │   ├── circulaires_resolution.py
+│   │   ├── circulaires_resolution_test.py
+│   │   ├── codes_resolution.py
+│   │   ├── codes_resolution_test.py
+│   │   ├── core.py
+│   │   ├── decrets_resolution.py
+│   │   ├── decrets_resolution_test.py
+│   │   ├── eu_acts_resolution.py
+│   │   └── eu_acts_resolution_test.py
+│   ├── step_segmentation
+│   │   ├── __init__.py
+│   │   ├── __step__.py
+│   │   ├── basic_elements.py
+│   │   ├── basic_elements_test.py
+│   │   ├── core.py
+│   │   ├── core_test.py
+│   │   ├── header.py
+│   │   ├── header_test.py
+│   │   ├── main_or_appendix.py
+│   │   ├── main_or_appendix_test.py
+│   │   ├── parse_arrete.py
+│   │   ├── parse_arrete_test.py
+│   │   ├── pre_processing
+│   │   │   ├── __init__.py
+│   │   │   ├── basic_elements.py
+│   │   │   ├── basic_elements_test.py
+│   │   │   ├── ocr_cleaning.py
+│   │   │   ├── ocr_cleaning_test.py
+│   │   │   ├── step_segmentation_pre_processing.py
+│   │   │   └── step_segmentation_pre_processing_test.py
+│   │   ├── render_contents.py
+│   │   ├── render_contents_test.py
+│   │   ├── semantic_tag_specs.py
+│   │   ├── testing.py
+│   │   ├── titles_detection.py
+│   │   ├── titles_detection_test.py
+│   │   └── types.py
+│   ├── templates
+│   │   └── arrete.html
+│   ├── types.py
+│   ├── types_test.py
+│   └── utils
+│       ├── __init__.py
+│       ├── dates.py
+│       ├── dates_test.py
+│       ├── dev_cache.json
+│       ├── dev_cache.py
+│       ├── element_ranges.py
+│       ├── element_ranges_test.py
+│       ├── functional.py
+│       ├── functional_test.py
+│       ├── generators.py
+│       ├── html.py
+│       ├── html_create.py
+│       ├── html_create_test.py
+│       ├── html_element_ranges.py
+│       ├── html_semantic.py
+│       ├── html_semantic_test.py
+│       ├── html_split_merge.py
+│       ├── html_split_merge_test.py
+│       ├── html_test.py
+│       ├── html_tree_navigation.py
+│       ├── html_tree_navigation_test.py
+│       ├── markdown_parsing.py
+│       ├── markdown_parsing_test.py
+│       ├── ocr_document.py
+│       ├── ocr_document_test.py
+│       ├── references.py
+│       ├── references_test.py
+│       ├── sentinel.py
+│       ├── split.py
+│       ├── split_merge.py
+│       ├── split_merge_test.py
+│       ├── split_test.py
+│       ├── strings.py
+│       ├── strings_test.py
+│       ├── testing.py
+│       └── testing_test.py
+├── datasets
+│   ├── quality_evaluation
+│   │   ├── 0d89233b35434aca8e0feb66f0070319.pdf
+│   │   ├── 132b73899fc04fd4b3f9a175c3ad99f2.pdf
+│   │   ├── 36abc4f0ccf7402f9bb0095611023c69.pdf
+│   │   ├── 4d94deab64c4403c8c8bbfd767f9e8f3.pdf
+│   │   ├── 52bbb18e3ccc44989b537974c540d711.pdf
+│   │   ├── 7eYWqgFO5BP6B2Q8jP0Pu8zFXRVPp0Js.pdf
+│   │   ├── 8a8d1b975968c75b015968e98f970023.pdf
+│   │   ├── 8aa100b1428f9a9201428fa0a7890004.pdf
+│   │   ├── 8aa100b1556dfefc01556e13dd85000b.pdf
+│   │   ├── 8aa100b17c2b8961017c2c2be0a50031.pdf
+│   │   ├── 8aac03246f425aac016f4292ab0e0018.pdf
+│   │   ├── 8ab308a944bbb1fc0144bbe573a00012.pdf
+│   │   ├── 8accf0a64e1a05f4014e1b56a6e30027.pdf
+│   │   ├── 8accf0a66012c450016012ddbc2b001e.pdf
+│   │   ├── IPmRif7o4vBlabCre3XVyLjtoaqZdOEs.pdf
+│   │   ├── _index.csv
+│   │   ├── a11b5efd01cf4396924ee8fcf8d68394.pdf
+│   │   ├── baW25WFrv7WZankfo7C9pf3MpRH5HA6G.pdf
+│   │   ├── ground_truth_segmentation_in_sections
+│   │   │   ├── 0d89233b35434aca8e0feb66f0070319.json
+│   │   │   ├── 132b73899fc04fd4b3f9a175c3ad99f2.json
+│   │   │   ├── 36abc4f0ccf7402f9bb0095611023c69.json
+│   │   │   ├── 4d94deab64c4403c8c8bbfd767f9e8f3.json
+│   │   │   ├── 52bbb18e3ccc44989b537974c540d711.json
+│   │   │   ├── 7eYWqgFO5BP6B2Q8jP0Pu8zFXRVPp0Js.json
+│   │   │   ├── 8a8d1b975968c75b015968e98f970023.json
+│   │   │   ├── 8aa100b1428f9a9201428fa0a7890004.json
+│   │   │   ├── 8aa100b1556dfefc01556e13dd85000b.json
+│   │   │   ├── 8aa100b17c2b8961017c2c2be0a50031.json
+│   │   │   ├── 8aac03246f425aac016f4292ab0e0018.json
+│   │   │   ├── 8ab308a944bbb1fc0144bbe573a00012.json
+│   │   │   ├── 8accf0a64e1a05f4014e1b56a6e30027.json
+│   │   │   ├── 8accf0a66012c450016012ddbc2b001e.json
+│   │   │   ├── IPmRif7o4vBlabCre3XVyLjtoaqZdOEs.json
+│   │   │   ├── a11b5efd01cf4396924ee8fcf8d68394.json
+│   │   │   ├── baW25WFrv7WZankfo7C9pf3MpRH5HA6G.json
+│   │   │   ├── is5mJTxzlwvMwDEbhaEUooOL2fnlbw0b.json
+│   │   │   └── uFQnkRvFgpYTpldGIoI6AWFaTnRAJQXz.json
+│   │   ├── ground_truth_tables_detection
+│   │   │   ├── 0d89233b35434aca8e0feb66f0070319.json
+│   │   │   ├── 132b73899fc04fd4b3f9a175c3ad99f2.json
+│   │   │   ├── 36abc4f0ccf7402f9bb0095611023c69.json
+│   │   │   ├── 4d94deab64c4403c8c8bbfd767f9e8f3.json
+│   │   │   ├── 52bbb18e3ccc44989b537974c540d711.json
+│   │   │   ├── 7eYWqgFO5BP6B2Q8jP0Pu8zFXRVPp0Js.json
+│   │   │   ├── 8a8d1b975968c75b015968e98f970023.json
+│   │   │   ├── 8aa100b1428f9a9201428fa0a7890004.json
+│   │   │   ├── 8aa100b1556dfefc01556e13dd85000b.json
+│   │   │   ├── 8aa100b17c2b8961017c2c2be0a50031.json
+│   │   │   ├── 8aac03246f425aac016f4292ab0e0018.json
+│   │   │   ├── 8ab308a944bbb1fc0144bbe573a00012.json
+│   │   │   ├── 8accf0a64e1a05f4014e1b56a6e30027.json
+│   │   │   ├── 8accf0a66012c450016012ddbc2b001e.json
+│   │   │   ├── IPmRif7o4vBlabCre3XVyLjtoaqZdOEs.json
+│   │   │   ├── a11b5efd01cf4396924ee8fcf8d68394.json
+│   │   │   ├── baW25WFrv7WZankfo7C9pf3MpRH5HA6G.json
+│   │   │   ├── is5mJTxzlwvMwDEbhaEUooOL2fnlbw0b.json
+│   │   │   └── uFQnkRvFgpYTpldGIoI6AWFaTnRAJQXz.json
+│   │   ├── is5mJTxzlwvMwDEbhaEUooOL2fnlbw0b.pdf
+│   │   └── uFQnkRvFgpYTpldGIoI6AWFaTnRAJQXz.pdf
+│   └── snapshots
+│       ├── arretes_html
+│       │   ├── arrete_bilan_ars.html
+│       │   ├── arrete_chambre_agriculture.html
+│       │   ├── arrete_circulation.html
+│       │   ├── arrete_nomination.html
+│       │   ├── arrete_ppr.html
+│       │   ├── arrete_rectorat.html
+│       │   ├── arrete_sentiers_randonnee.html
+│       │   └── arretes_icpe
+│       │       ├── 0003013459
+│       │       │   ├── 2020-04-20.html
+│       │       │   ├── 2021-09-24.html
+│       │       │   └── 2023-02-22.html
+│       │       ├── 0005302394
+│       │       │   ├── 2008-12-10.html
+│       │       │   ├── 2009-12-18.html
+│       │       │   ├── 2010-12-24.html
+│       │       │   ├── 2012-04-03.html
+│       │       │   ├── 2012-12-07.html
+│       │       │   └── 2020-12-22.html
+│       │       ├── 0005800425
+│       │       │   ├── 2003-09-09.html
+│       │       │   ├── 2005-11-08.html
+│       │       │   ├── 2007-04-19.html
+│       │       │   ├── 2010-03-29.html
+│       │       │   ├── 2012-09-03.html
+│       │       │   └── 2025-02-24.html
+│       │       └── 0005804239
+│       │           ├── 2009-12-08.html
+│       │           ├── 2012-04-02.html
+│       │           ├── 2014-01-09.html
+│       │           ├── 2014-12-11.html
+│       │           ├── 2020-04-30.html
+│       │           ├── 2023-12-04.html
+│       │           └── 2024-09-27.html
+│       ├── arretes_ocr
+│       │   ├── arrete_bilan_ars
+│       │   │   ├── 1
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 10
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-4.html
+│       │   │   ├── 11
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-5.html
+│       │   │   ├── 12
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-6.html
+│       │   │   ├── 13
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-7.html
+│       │   │   ├── 14
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-8.html
+│       │   │   ├── 15
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-9.html
+│       │   │   ├── 16
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-10.html
+│       │   │   ├── 17
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-11.html
+│       │   │   ├── 18
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 19
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-12.html
+│       │   │   ├── 2
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── img-0.jpeg
+│       │   │   │   └── main.md
+│       │   │   ├── 20
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-13.html
+│       │   │   ├── 21
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-14.html
+│       │   │   ├── 22
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 23
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-15.html
+│       │   │   ├── 24
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   └── main.md
+│       │   │   ├── 4
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 5
+│       │   │   │   ├── footer.md
+│       │   │   │   └── main.md
+│       │   │   ├── 6
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-0.html
+│       │   │   ├── 7
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-1.html
+│       │   │   ├── 8
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-2.html
+│       │   │   ├── 9
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-3.html
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_chambre_agriculture
+│       │   │   ├── 1
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 2
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 4
+│       │   │   │   └── main.md
+│       │   │   ├── 5
+│       │   │   │   └── main.md
+│       │   │   ├── 6
+│       │   │   │   ├── main.md
+│       │   │   │   └── tbl-0.html
+│       │   │   ├── 7
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_circulation
+│       │   │   ├── 1
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 2
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_nomination
+│       │   │   ├── 1
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   ├── img-0.jpeg
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_ppr
+│       │   │   ├── 1
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 2
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   ├── header.md
+│       │   │   │   ├── main.md
+│       │   │   │   ├── tbl-0.html
+│       │   │   │   ├── tbl-1.html
+│       │   │   │   ├── tbl-2.html
+│       │   │   │   ├── tbl-3.html
+│       │   │   │   ├── tbl-4.html
+│       │   │   │   └── tbl-5.html
+│       │   │   ├── 4
+│       │   │   │   ├── img-0.jpeg
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_rectorat
+│       │   │   ├── 1
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 2
+│       │   │   │   ├── footer.md
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   ├── footer.md
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   ├── arrete_sentiers_randonnee
+│       │   │   ├── 1
+│       │   │   │   ├── header.md
+│       │   │   │   └── main.md
+│       │   │   ├── 2
+│       │   │   │   ├── footer.md
+│       │   │   │   └── main.md
+│       │   │   ├── 3
+│       │   │   │   ├── footer.md
+│       │   │   │   └── main.md
+│       │   │   ├── 4
+│       │   │   │   ├── footer.md
+│       │   │   │   ├── img-0.jpeg
+│       │   │   │   └── main.md
+│       │   │   └── ocr_document.json
+│       │   └── arretes_icpe
+│       │       ├── 0003013459
+│       │       │   ├── 2020-04-20
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 14
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-4.html
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 16
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-6.html
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-7.html
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-8.html
+│       │       │   │   ├── 19
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-10.html
+│       │       │   │   │   └── tbl-9.html
+│       │       │   │   ├── 21
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-11.html
+│       │       │   │   ├── 22
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-12.html
+│       │       │   │   │   └── tbl-13.html
+│       │       │   │   ├── 23
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 24
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-14.html
+│       │       │   │   ├── 25
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 26
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-15.html
+│       │       │   │   ├── 27
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-16.html
+│       │       │   │   ├── 28
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 29
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 30
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 31
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 32
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 33
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 34
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 35
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-17.html
+│       │       │   │   ├── 36
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 37
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 38
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 39
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 40
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 41
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-18.html
+│       │       │   │   │   ├── tbl-19.html
+│       │       │   │   │   └── tbl-20.html
+│       │       │   │   ├── 42
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-21.html
+│       │       │   │   ├── 43
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-22.html
+│       │       │   │   ├── 44
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 45
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 46
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-23.html
+│       │       │   │   ├── 47
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 48
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 49
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   ├── img-1.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 50
+│       │       │   │   │   ├── img-2.jpeg
+│       │       │   │   │   ├── img-3.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 51
+│       │       │   │   │   ├── img-4.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2021-09-24
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 14
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 16
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 19
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-4.html
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-6.html
+│       │       │   │   ├── 21
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 22
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-7.html
+│       │       │   │   ├── 23
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 24
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 25
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-8.html
+│       │       │   │   │   └── tbl-9.html
+│       │       │   │   ├── 26
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 27
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-10.html
+│       │       │   │   │   └── tbl-11.html
+│       │       │   │   ├── 28
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 29
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 30
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-12.html
+│       │       │   │   ├── 31
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 32
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 33
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-13.html
+│       │       │   │   │   └── tbl-14.html
+│       │       │   │   ├── 34
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 35
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 36
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 37
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 38
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 39
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 40
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 41
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 42
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 43
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 44
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-15.html
+│       │       │   │   ├── 45
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 46
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 47
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 48
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 49
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 50
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-16.html
+│       │       │   │   ├── 51
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-17.html
+│       │       │   │   │   ├── tbl-18.html
+│       │       │   │   │   └── tbl-19.html
+│       │       │   │   ├── 52
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-20.html
+│       │       │   │   ├── 53
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-21.html
+│       │       │   │   ├── 54
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 55
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 56
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-22.html
+│       │       │   │   ├── 57
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 58
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 7
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   └── 2023-02-22
+│       │       │       ├── 1
+│       │       │       │   ├── header.md
+│       │       │       │   └── main.md
+│       │       │       ├── 2
+│       │       │       │   └── main.md
+│       │       │       ├── 3
+│       │       │       │   └── main.md
+│       │       │       ├── 4
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-0.html
+│       │       │       ├── 5
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-1.html
+│       │       │       ├── 6
+│       │       │       │   ├── img-0.jpeg
+│       │       │       │   └── main.md
+│       │       │       └── ocr_document.json
+│       │       ├── 0005302394
+│       │       │   ├── 2008-12-10
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-5.html
+│       │       │   │   │   └── tbl-6.html
+│       │       │   │   ├── 14
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-7.html
+│       │       │   │   │   └── tbl-8.html
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-9.html
+│       │       │   │   ├── 16
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-10.html
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-11.html
+│       │       │   │   ├── 19
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-12.html
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-13.html
+│       │       │   │   │   └── tbl-14.html
+│       │       │   │   ├── 21
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 22
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 23
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 24
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 25
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 26
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 27
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 28
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 29
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-0.html
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 30
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 31
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 32
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 33
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 34
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 35
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 36
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 37
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 38
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 39
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-15.html
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 40
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-16.html
+│       │       │   │   ├── 41
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-17.html
+│       │       │   │   ├── 42
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-18.html
+│       │       │   │   │   └── tbl-19.html
+│       │       │   │   ├── 43
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 44
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 45
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 46
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 47
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-1.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 48
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 49
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 50
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 51
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-2.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 52
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-4.html
+│       │       │   │   ├── 7
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2009-12-18
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2010-12-24
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 11
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 12
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── img-1.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 14
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-4.html
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 16
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-2.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 19
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 21
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 22
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 23
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 24
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 25
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 26
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-6.html
+│       │       │   │   ├── 27
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-7.html
+│       │       │   │   ├── 28
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-8.html
+│       │       │   │   ├── 29
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-9.html
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 30
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-10.html
+│       │       │   │   ├── 31
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-11.html
+│       │       │   │   ├── 32
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-12.html
+│       │       │   │   ├── 33
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-13.html
+│       │       │   │   ├── 34
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-14.html
+│       │       │   │   ├── 35
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-15.html
+│       │       │   │   ├── 36
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-16.html
+│       │       │   │   │   └── tbl-17.html
+│       │       │   │   ├── 37
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 38
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-18.html
+│       │       │   │   ├── 39
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-19.html
+│       │       │   │   ├── 4
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 40
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-20.html
+│       │       │   │   ├── 41
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 42
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 8
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2012-04-03
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2012-12-07
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   └── 2020-12-22
+│       │       │       ├── 1
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   └── main.md
+│       │       │       ├── 10
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-2.jpeg
+│       │       │       │   ├── img-3.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 11
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-4.jpeg
+│       │       │       │   ├── img-5.jpeg
+│       │       │       │   ├── img-6.jpeg
+│       │       │       │   ├── img-7.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 12
+│       │       │       │   └── main.md
+│       │       │       ├── 13
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-8.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 14
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-10.jpeg
+│       │       │       │   ├── img-9.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 15
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-11.jpeg
+│       │       │       │   ├── img-12.jpeg
+│       │       │       │   ├── img-13.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 16
+│       │       │       │   └── main.md
+│       │       │       ├── 17
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-14.jpeg
+│       │       │       │   ├── img-15.jpeg
+│       │       │       │   ├── img-16.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 18
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-17.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 19
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-18.jpeg
+│       │       │       │   ├── img-19.jpeg
+│       │       │       │   └── main.md
+│       │       │       ├── 2
+│       │       │       │   ├── main.md
+│       │       │       │   ├── tbl-0.html
+│       │       │       │   └── tbl-1.html
+│       │       │       ├── 20
+│       │       │       │   └── main.md
+│       │       │       ├── 3
+│       │       │       │   ├── header.md
+│       │       │       │   ├── main.md
+│       │       │       │   ├── tbl-2.html
+│       │       │       │   └── tbl-3.html
+│       │       │       ├── 4
+│       │       │       │   ├── header.md
+│       │       │       │   ├── main.md
+│       │       │       │   ├── tbl-4.html
+│       │       │       │   └── tbl-5.html
+│       │       │       ├── 5
+│       │       │       │   ├── header.md
+│       │       │       │   └── main.md
+│       │       │       ├── 6
+│       │       │       │   ├── header.md
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-6.html
+│       │       │       ├── 7
+│       │       │       │   ├── img-0.jpeg
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-7.html
+│       │       │       ├── 8
+│       │       │       │   └── main.md
+│       │       │       ├── 9
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   ├── img-1.jpeg
+│       │       │       │   └── main.md
+│       │       │       └── ocr_document.json
+│       │       ├── 0005800425
+│       │       │   ├── 2003-09-09
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 14
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 16
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-3.html
+│       │       │   │   │   └── tbl-4.html
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 19
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 21
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 22
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 23
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 24
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 25
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 26
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2005-11-08
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-4.html
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 14
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 16
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 17
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 18
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 19
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-1.html
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 4
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 5
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 9
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2007-04-19
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2010-03-29
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 11
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-6.html
+│       │       │   │   │   └── tbl-7.html
+│       │       │   │   ├── 13
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 14
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 16
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 17
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 18
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 19
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 20
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-8.html
+│       │       │   │   ├── 21
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-9.html
+│       │       │   │   ├── 22
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-10.html
+│       │       │   │   ├── 23
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-11.html
+│       │       │   │   ├── 24
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-12.html
+│       │       │   │   ├── 25
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-13.html
+│       │       │   │   ├── 26
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-14.html
+│       │       │   │   ├── 27
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-15.html
+│       │       │   │   ├── 28
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-16.html
+│       │       │   │   ├── 29
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-17.html
+│       │       │   │   ├── 3
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 30
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-18.html
+│       │       │   │   ├── 31
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-19.html
+│       │       │   │   ├── 32
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-20.html
+│       │       │   │   ├── 33
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-2.html
+│       │       │   │   ├── 6
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 8
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-4.html
+│       │       │   │   └── ocr_document.json
+│       │       │   ├── 2012-09-03
+│       │       │   │   ├── 1
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 10
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 11
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 12
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 13
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-0.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 14
+│       │       │   │   │   ├── footer.md
+│       │       │   │   │   ├── img-1.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 15
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── img-2.jpeg
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 2
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 3
+│       │       │   │   │   └── main.md
+│       │       │   │   ├── 4
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-0.html
+│       │       │   │   ├── 5
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-1.html
+│       │       │   │   ├── 6
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-2.html
+│       │       │   │   │   └── tbl-3.html
+│       │       │   │   ├── 7
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   ├── tbl-4.html
+│       │       │   │   │   └── tbl-5.html
+│       │       │   │   ├── 8
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-6.html
+│       │       │   │   ├── 9
+│       │       │   │   │   ├── header.md
+│       │       │   │   │   ├── main.md
+│       │       │   │   │   └── tbl-7.html
+│       │       │   │   └── ocr_document.json
+│       │       │   └── 2025-02-24
+│       │       │       ├── 1
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   └── main.md
+│       │       │       ├── 2
+│       │       │       │   ├── footer.md
+│       │       │       │   └── main.md
+│       │       │       ├── 3
+│       │       │       │   ├── header.md
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-0.html
+│       │       │       ├── 4
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── main.md
+│       │       │       │   └── tbl-1.html
+│       │       │       ├── 5
+│       │       │       │   ├── footer.md
+│       │       │       │   └── main.md
+│       │       │       ├── 6
+│       │       │       │   ├── footer.md
+│       │       │       │   ├── header.md
+│       │       │       │   └── main.md
+│       │       │       └── ocr_document.json
+│       │       └── 0005804239
+│       │           ├── 2009-12-08
+│       │           │   ├── 1
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 10
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-1.html
+│       │           │   ├── 11
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 12
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-2.html
+│       │           │   ├── 13
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-3.html
+│       │           │   ├── 14
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-4.html
+│       │           │   ├── 15
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 16
+│       │           │   │   └── main.md
+│       │           │   ├── 17
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 18
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 19
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   └── main.md
+│       │           │   ├── 20
+│       │           │   │   ├── footer.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-5.html
+│       │           │   │   ├── tbl-6.html
+│       │           │   │   └── tbl-7.html
+│       │           │   ├── 21
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-8.html
+│       │           │   │   └── tbl-9.html
+│       │           │   ├── 22
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 23
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-10.html
+│       │           │   ├── 24
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-11.html
+│       │           │   │   └── tbl-12.html
+│       │           │   ├── 25
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 26
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   ├── 27
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-13.html
+│       │           │   │   └── tbl-14.html
+│       │           │   ├── 28
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-15.html
+│       │           │   ├── 29
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-16.html
+│       │           │   │   └── tbl-17.html
+│       │           │   ├── 3
+│       │           │   │   └── main.md
+│       │           │   ├── 30
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-18.html
+│       │           │   │   ├── tbl-19.html
+│       │           │   │   └── tbl-20.html
+│       │           │   ├── 31
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-21.html
+│       │           │   │   └── tbl-22.html
+│       │           │   ├── 32
+│       │           │   │   └── main.md
+│       │           │   ├── 33
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   ├── 34
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 35
+│       │           │   │   └── main.md
+│       │           │   ├── 36
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   ├── 37
+│       │           │   │   └── main.md
+│       │           │   ├── 38
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 39
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   ├── 4
+│       │           │   │   ├── img-0.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 40
+│       │           │   │   └── main.md
+│       │           │   ├── 41
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 42
+│       │           │   │   └── main.md
+│       │           │   ├── 43
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-23.html
+│       │           │   │   ├── tbl-24.html
+│       │           │   │   └── tbl-25.html
+│       │           │   ├── 44
+│       │           │   │   ├── footer.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-26.html
+│       │           │   ├── 5
+│       │           │   │   └── main.md
+│       │           │   ├── 6
+│       │           │   │   └── main.md
+│       │           │   ├── 7
+│       │           │   │   └── main.md
+│       │           │   ├── 8
+│       │           │   │   └── main.md
+│       │           │   ├── 9
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-0.html
+│       │           │   └── ocr_document.json
+│       │           ├── 2012-04-02
+│       │           │   ├── 1
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 10
+│       │           │   │   ├── header.md
+│       │           │   │   ├── img-1.jpeg
+│       │           │   │   ├── img-2.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 11
+│       │           │   │   ├── header.md
+│       │           │   │   ├── img-3.jpeg
+│       │           │   │   ├── img-4.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   └── main.md
+│       │           │   ├── 3
+│       │           │   │   ├── img-0.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 4
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-0.html
+│       │           │   │   └── tbl-1.html
+│       │           │   ├── 5
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 6
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 7
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 8
+│       │           │   │   └── main.md
+│       │           │   ├── 9
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   └── ocr_document.json
+│       │           ├── 2014-01-09
+│       │           │   ├── 1
+│       │           │   │   ├── footer.md
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   └── main.md
+│       │           │   ├── 3
+│       │           │   │   ├── img-0.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 4
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-0.html
+│       │           │   └── ocr_document.json
+│       │           ├── 2014-12-11
+│       │           │   ├── 1
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   ├── footer.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-0.html
+│       │           │   ├── 3
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-1.html
+│       │           │   ├── 4
+│       │           │   │   ├── footer.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-2.html
+│       │           │   ├── 5
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   ├── 6
+│       │           │   │   ├── footer.md
+│       │           │   │   └── main.md
+│       │           │   └── ocr_document.json
+│       │           ├── 2020-04-30
+│       │           │   ├── 1
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-0.html
+│       │           │   ├── 3
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-1.html
+│       │           │   ├── 4
+│       │           │   │   └── main.md
+│       │           │   ├── 5
+│       │           │   │   └── main.md
+│       │           │   ├── 6
+│       │           │   │   ├── img-0.jpeg
+│       │           │   │   └── main.md
+│       │           │   └── ocr_document.json
+│       │           ├── 2023-12-04
+│       │           │   ├── 1
+│       │           │   │   ├── header.md
+│       │           │   │   └── main.md
+│       │           │   ├── 2
+│       │           │   │   └── main.md
+│       │           │   ├── 3
+│       │           │   │   ├── img-0.jpeg
+│       │           │   │   └── main.md
+│       │           │   ├── 4
+│       │           │   │   ├── header.md
+│       │           │   │   ├── main.md
+│       │           │   │   ├── tbl-0.html
+│       │           │   │   └── tbl-1.html
+│       │           │   ├── 5
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-2.html
+│       │           │   ├── 6
+│       │           │   │   ├── main.md
+│       │           │   │   └── tbl-3.html
+│       │           │   ├── 7
+│       │           │   │   └── main.md
+│       │           │   └── ocr_document.json
+│       │           └── 2024-09-27
+│       │               ├── 1
+│       │               │   ├── header.md
+│       │               │   └── main.md
+│       │               ├── 2
+│       │               │   ├── header.md
+│       │               │   └── main.md
+│       │               ├── 3
+│       │               │   ├── img-0.jpeg
+│       │               │   └── main.md
+│       │               ├── 4
+│       │               │   ├── header.md
+│       │               │   ├── main.md
+│       │               │   └── tbl-0.html
+│       │               ├── 5
+│       │               │   ├── main.md
+│       │               │   └── tbl-1.html
+│       │               └── ocr_document.json
+│       ├── arretes_pdf
+│       │   ├── arrete_bilan_ars.pdf
+│       │   ├── arrete_chambre_agriculture.pdf
+│       │   ├── arrete_circulation.pdf
+│       │   ├── arrete_nomination.pdf
+│       │   ├── arrete_ppr.pdf
+│       │   ├── arrete_rectorat.pdf
+│       │   ├── arrete_sentiers_randonnee.pdf
+│       │   └── arretes_icpe
+│       │       ├── 0003013459
+│       │       │   ├── 2020-04-20.pdf
+│       │       │   ├── 2021-09-24.pdf
+│       │       │   └── 2023-02-22.pdf
+│       │       ├── 0005302394
+│       │       │   ├── 2008-12-10.pdf
+│       │       │   ├── 2009-12-18.pdf
+│       │       │   ├── 2010-12-24.pdf
+│       │       │   ├── 2012-04-03.pdf
+│       │       │   ├── 2012-12-07.pdf
+│       │       │   └── 2020-12-22.pdf
+│       │       ├── 0005800425
+│       │       │   ├── 2003-09-09.pdf
+│       │       │   ├── 2005-11-08.pdf
+│       │       │   ├── 2007-04-19.pdf
+│       │       │   ├── 2010-03-29.pdf
+│       │       │   ├── 2012-09-03.pdf
+│       │       │   └── 2025-02-24.pdf
+│       │       └── 0005804239
+│       │           ├── 2009-12-08.pdf
+│       │           ├── 2012-04-02.pdf
+│       │           ├── 2014-01-09.pdf
+│       │           ├── 2014-12-11.pdf
+│       │           ├── 2020-04-30.pdf
+│       │           ├── 2023-12-04.pdf
+│       │           └── 2024-09-27.pdf
+│       └── index.html
+├── images
+│   └── cover.svg
+├── pyproject.toml
+├── quality_evaluation
+│   ├── main.py
+│   ├── main_test.py
+│   ├── segmentation_in_sections.json
+│   ├── segmentation_in_sections.py
+│   ├── segmentation_in_sections_test.py
+│   ├── tables_detection.json
+│   ├── tables_detection.py
+│   ├── tables_detection_test.py
+│   └── types.py
+└── scripts
+    ├── apache-2.tmpl
+    ├── download_data_georisques.py
+    ├── download_data_legifrance.py
+    ├── generate_snapshots_index.py
+    ├── generate_snapshots_index.tmpl.html
+    └── preprocess_french_addresses.py
+553 directories, 1414 files
