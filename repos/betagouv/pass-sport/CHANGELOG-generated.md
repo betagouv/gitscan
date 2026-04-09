@@ -1,12 +1,13 @@
-## Changelog : pass-sport (30 derniers jours)
+## Changelog : pass-sport (30 derniers jours, au 18 mars 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la préparation du site pour des évolutions futures et la maintenance des données. Une pagination a été ajoutée à la FAQ pour faciliter la navigation, et les scripts d'importation des données de l'INJEP ont été affinés.
+Cette mise à jour apporte une modification de la notice d'information concernant le dispositif Pass'Sport. Cette modification vise à assurer que les utilisateurs disposent des informations les plus récentes et précises concernant l'éligibilité et l'utilisation du pass.
 
 ### Évolutions fonctionnelles
-- Ajout d'une pagination à la FAQ pour une meilleure expérience utilisateur. (#496)
+- Mise à jour de la notice d'information sur le Pass'Sport [#497](https://github.com/betagouv/pass-sport/pull/497).
 
 ### Évolutions techniques
-- Refactorisation en préparation de la pagination de la FAQ. (#496)
-- Amélioration des scripts d'importation des données de l'INJEP. (#495)
-- Ajustements finaux des scripts d'importation des données de l'INJEP. (#0f2a2c9)
+- Aucune évolution technique significative.
+
+### Autres changements
+- Aucune autre modification à signaler.
