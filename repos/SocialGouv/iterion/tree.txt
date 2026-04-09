@@ -1,0 +1,2249 @@
+.
+├── .claude
+│   └── settings.json
+├── .devcontainer
+│   └── devcontainer.json
+├── .env.example
+├── .envrc
+├── .github
+│   └── workflows
+│       ├── release.yml
+│       ├── tests.yml
+│       └── version.yml
+├── .gitignore
+├── .mcp.json
+├── .npmrc
+├── .release-it.json
+├── CLAUDE.md
+├── README.md
+├── SKILL.md
+├── Taskfile.yml
+├── ast
+│   ├── ast.go
+│   ├── ast_test.go
+│   ├── helpers.go
+│   └── pos.go
+├── astjson
+│   ├── astjson.go
+│   └── astjson_test.go
+├── benchmark
+│   ├── benchmark_test.go
+│   ├── metrics.go
+│   ├── report.go
+│   ├── runner.go
+│   └── store.go
+├── cli
+│   ├── cli_test.go
+│   ├── diagram.go
+│   ├── editor.go
+│   ├── init.go
+│   ├── init_test.go
+│   ├── inspect.go
+│   ├── output.go
+│   ├── report.go
+│   ├── resume.go
+│   ├── run.go
+│   ├── templates
+│   │   ├── pr_refine_single_model.iter
+│   │   └── pr_refine_single_model_backend.iter
+│   ├── tty.go
+│   ├── tty_darwin.go
+│   ├── tty_linux.go
+│   ├── tty_windows.go
+│   └── validate.go
+├── cmd
+│   └── iterion
+│       ├── diagram.go
+│       ├── editor.go
+│       ├── init_cmd.go
+│       ├── inspect.go
+│       ├── main.go
+│       ├── report.go
+│       ├── resume.go
+│       ├── run.go
+│       ├── validate.go
+│       └── version.go
+├── delegate
+│   ├── claude_code.go
+│   ├── codex.go
+│   ├── delegate.go
+│   ├── delegate_test.go
+│   ├── parse.go
+│   └── registry.go
+├── devbox.json
+├── devbox.lock
+├── docs
+│   ├── adr
+│   │   └── 001-round-robin-router-mode.md
+│   ├── install.sh
+│   ├── persisted-formats.md
+│   ├── resume.md
+│   └── routers.md
+├── e2e
+│   ├── REPORT_TODO_APP_FULL.md
+│   ├── SCENARIOS.md
+│   ├── e2e_test.go
+│   ├── live_results
+│   │   ├── code_review_roulette_2026-04-04
+│   │   │   ├── analysis.md
+│   │   │   ├── index_final.html
+│   │   │   ├── index_v1_implement.html
+│   │   │   ├── index_v2_codex_fix.html
+│   │   │   └── report.md
+│   │   └── kanban_2026-04-03
+│   │       ├── comparison.md
+│   │       ├── index_final.html
+│   │       ├── index_v1_claude_implement.html
+│   │       ├── index_v2_codex_implement.html
+│   │       └── report.md
+│   └── live_test.go
+├── editor
+│   ├── index.html
+│   ├── package.json
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── api
+│   │   │   ├── client.ts
+│   │   │   ├── types.ts
+│   │   │   └── ws.ts
+│   │   ├── app.css
+│   │   ├── components
+│   │   │   ├── Canvas
+│   │   │   │   ├── AuxiliaryNode.tsx
+│   │   │   │   ├── BreadcrumbBar.tsx
+│   │   │   │   ├── Canvas.tsx
+│   │   │   │   ├── CanvasToolbar.tsx
+│   │   │   │   ├── ConditionalEdge.tsx
+│   │   │   │   ├── DetailSubNode.tsx
+│   │   │   │   ├── GroupNode.tsx
+│   │   │   │   ├── NodeContextMenu.tsx
+│   │   │   │   ├── QuickAddMenu.tsx
+│   │   │   │   ├── ReferenceEdge.tsx
+│   │   │   │   ├── SchemaRoleDialog.tsx
+│   │   │   │   ├── SearchOverlay.tsx
+│   │   │   │   ├── SubNodePalette.tsx
+│   │   │   │   ├── ToolPalette.tsx
+│   │   │   │   ├── WorkflowNode.tsx
+│   │   │   │   └── handlePositions.ts
+│   │   │   ├── Diagnostics
+│   │   │   │   └── DiagnosticsPanel.tsx
+│   │   │   ├── Library
+│   │   │   │   ├── LibraryItemCard.tsx
+│   │   │   │   └── LibraryPanel.tsx
+│   │   │   ├── Modals
+│   │   │   │   ├── EditEdgeModal.tsx
+│   │   │   │   ├── EditItemModal.tsx
+│   │   │   │   ├── EditPromptModal.tsx
+│   │   │   │   ├── EditSchemaModal.tsx
+│   │   │   │   └── EditVarModal.tsx
+│   │   │   ├── Panels
+│   │   │   │   ├── CommentsEditor.tsx
+│   │   │   │   ├── PromptEditor.tsx
+│   │   │   │   ├── PropertiesPanel.tsx
+│   │   │   │   ├── SchemaEditor.tsx
+│   │   │   │   ├── SidebarTabs.tsx
+│   │   │   │   ├── VarsEditor.tsx
+│   │   │   │   ├── WorkflowSettingsForm.tsx
+│   │   │   │   └── forms
+│   │   │   │       ├── AgentForm.tsx
+│   │   │   │       ├── EdgeForm.tsx
+│   │   │   │       ├── FormField.tsx
+│   │   │   │       ├── HumanForm.tsx
+│   │   │   │       ├── RouterForm.tsx
+│   │   │   │       └── ToolForm.tsx
+│   │   │   ├── SourceView
+│   │   │   │   └── SourceView.tsx
+│   │   │   ├── Toolbar
+│   │   │   │   └── Toolbar.tsx
+│   │   │   ├── icons
+│   │   │   │   ├── ProviderIcon.tsx
+│   │   │   │   └── providerDetect.ts
+│   │   │   └── shared
+│   │   │       ├── ConfirmDialog.tsx
+│   │   │       ├── ShortcutsHelp.tsx
+│   │   │       └── Toast.tsx
+│   │   ├── hooks
+│   │   │   ├── useActiveWorkflow.ts
+│   │   │   ├── useAddFromLibrary.ts
+│   │   │   ├── useAddNode.ts
+│   │   │   ├── useAddSubNode.ts
+│   │   │   ├── useAutoValidation.ts
+│   │   │   ├── useCanvasConnections.ts
+│   │   │   ├── useCanvasKeyboard.ts
+│   │   │   ├── useCanvasLayout.ts
+│   │   │   ├── useCanvasSearch.ts
+│   │   │   ├── useEscapeStack.ts
+│   │   │   ├── useFileWatcher.ts
+│   │   │   └── useFullscreen.ts
+│   │   ├── lib
+│   │   │   ├── autoLayout.ts
+│   │   │   ├── computeEdgeHandles.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── defaults.ts
+│   │   │   ├── docMutations.ts
+│   │   │   ├── documentToGraph.ts
+│   │   │   ├── groups.ts
+│   │   │   ├── iterLanguage.ts
+│   │   │   ├── library
+│   │   │   │   ├── presets.ts
+│   │   │   │   └── types.ts
+│   │   │   └── nodeDetailGraph.ts
+│   │   ├── main.tsx
+│   │   ├── store
+│   │   │   ├── document.ts
+│   │   │   ├── groups.ts
+│   │   │   ├── library.ts
+│   │   │   ├── selection.ts
+│   │   │   └── ui.ts
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── examples
+│   ├── FIXTURES.md
+│   ├── ci_fix_until_green.iter
+│   ├── dual_model_plan_implement_review.iter
+│   ├── exhaustive_dsl_coverage.iter
+│   ├── feature_request_dual_model.iter
+│   ├── github-actions
+│   │   └── iterion-hitl.yml
+│   ├── llm_router_task_dispatch.iter
+│   ├── pr_refine_dual_model_parallel.iter
+│   ├── pr_refine_dual_model_parallel_compliance.iter
+│   ├── pr_refine_single_model.iter
+│   ├── pr_review.iter
+│   ├── pr_review_fix.iter
+│   ├── recipe_benchmark.iter
+│   ├── rust_to_go_port.iter
+│   ├── session_fork.iter
+│   ├── session_review_fix.iter
+│   ├── skill
+│   │   ├── human_gate.iter
+│   │   ├── loop_with_judge.iter
+│   │   ├── minimal_linear.iter
+│   │   └── parallel_fan_out_join.iter
+│   └── validate_syntax.js
+├── go.mod
+├── go.sum
+├── grammar
+│   ├── V1_SCOPE.md
+│   └── iterion_v1.ebnf
+├── internal
+│   └── appinfo
+│       └── appinfo.go
+├── ir
+│   ├── bench_test.go
+│   ├── compile.go
+│   ├── compile_test.go
+│   ├── ir.go
+│   ├── mermaid.go
+│   ├── mermaid_test.go
+│   ├── ref.go
+│   ├── ref_test.go
+│   ├── validate.go
+│   └── validate_test.go
+├── log
+│   └── log.go
+├── marketplace.json
+├── mcp
+│   ├── cache.go
+│   ├── cache_test.go
+│   ├── config.go
+│   ├── config_test.go
+│   ├── fingerprint.go
+│   ├── fingerprint_test.go
+│   ├── manager.go
+│   ├── rpc.go
+│   ├── sanitize.go
+│   └── sanitize_test.go
+├── model
+│   ├── delegate_test.go
+│   ├── events.go
+│   ├── executor.go
+│   ├── executor_act_test.go
+│   ├── executor_mcp_test.go
+│   ├── executor_test.go
+│   ├── goai_backend.go
+│   ├── hooks.go
+│   ├── registry.go
+│   ├── schema.go
+│   └── validate.go
+├── package.json
+├── parser
+│   ├── bench_test.go
+│   ├── diagnostic.go
+│   ├── fuzz_test.go
+│   ├── lexer.go
+│   ├── parser.go
+│   ├── parser_test.go
+│   └── token.go
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── recipe
+│   ├── recipe.go
+│   └── recipe_test.go
+├── references
+│   ├── diagnostics.md
+│   ├── dsl-grammar.md
+│   └── patterns.md
+├── runtime
+│   ├── budget.go
+│   ├── budget_test.go
+│   ├── chaos_test.go
+│   ├── engine.go
+│   ├── engine_test.go
+│   ├── errors.go
+│   ├── fan_out.go
+│   ├── hardening_test.go
+│   ├── helpers.go
+│   ├── llm_router_test.go
+│   ├── parallel_test.go
+│   ├── recipe_test.go
+│   ├── resume.go
+│   ├── round_robin_test.go
+│   ├── routing.go
+│   ├── session_test.go
+│   └── validation_test.go
+├── scripts
+│   └── build.sh
+├── server
+│   ├── filter.go
+│   ├── hub.go
+│   ├── server.go
+│   ├── static
+│   │   └── .gitkeep
+│   └── watcher.go
+├── store
+│   ├── event.go
+│   ├── lock.go
+│   ├── lock_test.go
+│   ├── lock_unix.go
+│   ├── lock_windows.go
+│   ├── run.go
+│   ├── store.go
+│   └── store_test.go
+├── tool
+│   ├── adapter.go
+│   ├── policy.go
+│   ├── policy_test.go
+│   ├── registry.go
+│   ├── registry_test.go
+│   ├── rule_policy.go
+│   ├── rule_policy_test.go
+│   ├── schema.go
+│   └── schema_test.go
+├── types
+│   └── types.go
+├── unparse
+│   ├── roundtrip_test.go
+│   ├── unparse.go
+│   └── unparse_test.go
+└── vendor
+    ├── github.com
+    │   ├── dustin
+    │   │   └── go-humanize
+    │   │       ├── .travis.yml
+    │   │       ├── LICENSE
+    │   │       ├── README.markdown
+    │   │       ├── big.go
+    │   │       ├── bigbytes.go
+    │   │       ├── bytes.go
+    │   │       ├── comma.go
+    │   │       ├── commaf.go
+    │   │       ├── ftoa.go
+    │   │       ├── humanize.go
+    │   │       ├── number.go
+    │   │       ├── ordinals.go
+    │   │       ├── si.go
+    │   │       └── times.go
+    │   ├── ethpandaops
+    │   │   └── codex-agent-sdk-go
+    │   │       ├── .gitignore
+    │   │       ├── .golangci.yml
+    │   │       ├── CLAUDE.md
+    │   │       ├── LICENSE
+    │   │       ├── Makefile
+    │   │       ├── README.md
+    │   │       ├── client.go
+    │   │       ├── client_impl.go
+    │   │       ├── doc.go
+    │   │       ├── errors.go
+    │   │       ├── hooks.go
+    │   │       ├── input.go
+    │   │       ├── internal
+    │   │       │   ├── cli
+    │   │       │   │   ├── command.go
+    │   │       │   │   ├── discovery.go
+    │   │       │   │   └── doc.go
+    │   │       │   ├── client
+    │   │       │   │   ├── client.go
+    │   │       │   │   └── doc.go
+    │   │       │   ├── config
+    │   │       │   │   ├── capability.go
+    │   │       │   │   ├── options.go
+    │   │       │   │   ├── preset.go
+    │   │       │   │   ├── tool_permissions.go
+    │   │       │   │   └── transport.go
+    │   │       │   ├── errors
+    │   │       │   │   ├── doc.go
+    │   │       │   │   └── errors.go
+    │   │       │   ├── hook
+    │   │       │   │   └── hook.go
+    │   │       │   ├── mcp
+    │   │       │   │   ├── config.go
+    │   │       │   │   ├── doc.go
+    │   │       │   │   ├── sdk_server.go
+    │   │       │   │   └── status.go
+    │   │       │   ├── message
+    │   │       │   │   ├── codex_event.go
+    │   │       │   │   ├── content.go
+    │   │       │   │   ├── message.go
+    │   │       │   │   └── parse.go
+    │   │       │   ├── model
+    │   │       │   │   └── model.go
+    │   │       │   ├── permission
+    │   │       │   │   └── permission.go
+    │   │       │   ├── protocol
+    │   │       │   │   ├── doc.go
+    │   │       │   │   ├── protocol.go
+    │   │       │   │   ├── request.go
+    │   │       │   │   └── session.go
+    │   │       │   ├── sandbox
+    │   │       │   │   └── sandbox.go
+    │   │       │   ├── schema
+    │   │       │   │   └── enforce.go
+    │   │       │   ├── session
+    │   │       │   │   └── session.go
+    │   │       │   ├── subprocess
+    │   │       │   │   ├── appserver.go
+    │   │       │   │   ├── appserver_adapter.go
+    │   │       │   │   ├── cli.go
+    │   │       │   │   ├── doc.go
+    │   │       │   │   ├── jsonrpc.go
+    │   │       │   │   ├── process_group_unix.go
+    │   │       │   │   └── process_group_windows.go
+    │   │       │   ├── userinput
+    │   │       │   │   └── userinput.go
+    │   │       │   └── version
+    │   │       │       └── version.go
+    │   │       ├── logger.go
+    │   │       ├── mcp.go
+    │   │       ├── models.go
+    │   │       ├── options.go
+    │   │       ├── options.md
+    │   │       ├── query.go
+    │   │       ├── sdk_mcp_server.go
+    │   │       ├── sdk_mcp_tool.go
+    │   │       ├── session_stat.go
+    │   │       ├── sessions.go
+    │   │       ├── stream.go
+    │   │       ├── transport.go
+    │   │       ├── types.go
+    │   │       ├── version.go
+    │   │       └── with_client.go
+    │   ├── fsnotify
+    │   │   └── fsnotify
+    │   │       ├── .cirrus.yml
+    │   │       ├── .gitignore
+    │   │       ├── .mailmap
+    │   │       ├── CHANGELOG.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── backend_fen.go
+    │   │       ├── backend_inotify.go
+    │   │       ├── backend_kqueue.go
+    │   │       ├── backend_other.go
+    │   │       ├── backend_windows.go
+    │   │       ├── fsnotify.go
+    │   │       ├── internal
+    │   │       │   ├── darwin.go
+    │   │       │   ├── debug_darwin.go
+    │   │       │   ├── debug_dragonfly.go
+    │   │       │   ├── debug_freebsd.go
+    │   │       │   ├── debug_kqueue.go
+    │   │       │   ├── debug_linux.go
+    │   │       │   ├── debug_netbsd.go
+    │   │       │   ├── debug_openbsd.go
+    │   │       │   ├── debug_solaris.go
+    │   │       │   ├── debug_windows.go
+    │   │       │   ├── freebsd.go
+    │   │       │   ├── internal.go
+    │   │       │   ├── unix.go
+    │   │       │   ├── unix2.go
+    │   │       │   └── windows.go
+    │   │       ├── shared.go
+    │   │       ├── staticcheck.conf
+    │   │       ├── system_bsd.go
+    │   │       └── system_darwin.go
+    │   ├── glebarez
+    │   │   └── go-sqlite
+    │   │       ├── AUTHORS
+    │   │       ├── CONTRIBUTORS
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── SQLITE-LICENSE
+    │   │       ├── embed.db
+    │   │       ├── embed2.db
+    │   │       ├── mutex.go
+    │   │       ├── norlimit.go
+    │   │       ├── rlimit.go
+    │   │       ├── rulimit.go
+    │   │       ├── sqlite.go
+    │   │       └── sqlite_go18.go
+    │   ├── google
+    │   │   ├── jsonschema-go
+    │   │   │   ├── LICENSE
+    │   │   │   └── jsonschema
+    │   │   │       ├── annotations.go
+    │   │   │       ├── doc.go
+    │   │   │       ├── infer.go
+    │   │   │       ├── json_pointer.go
+    │   │   │       ├── resolve.go
+    │   │   │       ├── schema.go
+    │   │   │       ├── util.go
+    │   │   │       └── validate.go
+    │   │   └── uuid
+    │   │       ├── CHANGELOG.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── CONTRIBUTORS
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── dce.go
+    │   │       ├── doc.go
+    │   │       ├── hash.go
+    │   │       ├── marshal.go
+    │   │       ├── node.go
+    │   │       ├── node_js.go
+    │   │       ├── node_net.go
+    │   │       ├── null.go
+    │   │       ├── sql.go
+    │   │       ├── time.go
+    │   │       ├── util.go
+    │   │       ├── uuid.go
+    │   │       ├── version1.go
+    │   │       ├── version4.go
+    │   │       ├── version6.go
+    │   │       └── version7.go
+    │   ├── gorilla
+    │   │   └── websocket
+    │   │       ├── .gitignore
+    │   │       ├── AUTHORS
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── client.go
+    │   │       ├── compression.go
+    │   │       ├── conn.go
+    │   │       ├── doc.go
+    │   │       ├── join.go
+    │   │       ├── json.go
+    │   │       ├── mask.go
+    │   │       ├── mask_safe.go
+    │   │       ├── prepared.go
+    │   │       ├── proxy.go
+    │   │       ├── server.go
+    │   │       ├── tls_handshake.go
+    │   │       ├── tls_handshake_116.go
+    │   │       ├── util.go
+    │   │       └── x_net_proxy.go
+    │   ├── inconshreveable
+    │   │   └── mousetrap
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── trap_others.go
+    │   │       └── trap_windows.go
+    │   ├── mattn
+    │   │   └── go-isatty
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── doc.go
+    │   │       ├── go.test.sh
+    │   │       ├── isatty_bsd.go
+    │   │       ├── isatty_others.go
+    │   │       ├── isatty_plan9.go
+    │   │       ├── isatty_solaris.go
+    │   │       ├── isatty_tcgets.go
+    │   │       └── isatty_windows.go
+    │   ├── modelcontextprotocol
+    │   │   └── go-sdk
+    │   │       ├── LICENSE
+    │   │       ├── auth
+    │   │       │   ├── auth.go
+    │   │       │   ├── authorization_code.go
+    │   │       │   ├── client.go
+    │   │       │   └── client_private.go
+    │   │       ├── internal
+    │   │       │   ├── json
+    │   │       │   │   └── json.go
+    │   │       │   ├── jsonrpc2
+    │   │       │   │   ├── conn.go
+    │   │       │   │   ├── frame.go
+    │   │       │   │   ├── jsonrpc2.go
+    │   │       │   │   ├── messages.go
+    │   │       │   │   ├── net.go
+    │   │       │   │   ├── serve.go
+    │   │       │   │   └── wire.go
+    │   │       │   ├── mcpgodebug
+    │   │       │   │   └── mcpgodebug.go
+    │   │       │   ├── util
+    │   │       │   │   ├── net.go
+    │   │       │   │   └── util.go
+    │   │       │   └── xcontext
+    │   │       │       └── xcontext.go
+    │   │       ├── jsonrpc
+    │   │       │   └── jsonrpc.go
+    │   │       ├── mcp
+    │   │       │   ├── client.go
+    │   │       │   ├── cmd.go
+    │   │       │   ├── content.go
+    │   │       │   ├── event.go
+    │   │       │   ├── features.go
+    │   │       │   ├── logging.go
+    │   │       │   ├── mcp.go
+    │   │       │   ├── prompt.go
+    │   │       │   ├── protocol.go
+    │   │       │   ├── requests.go
+    │   │       │   ├── resource.go
+    │   │       │   ├── schema_cache.go
+    │   │       │   ├── server.go
+    │   │       │   ├── session.go
+    │   │       │   ├── shared.go
+    │   │       │   ├── sse.go
+    │   │       │   ├── streamable.go
+    │   │       │   ├── streamable_client.go
+    │   │       │   ├── streamable_server.go
+    │   │       │   ├── tool.go
+    │   │       │   ├── transport.go
+    │   │       │   └── util.go
+    │   │       └── oauthex
+    │   │           ├── auth_meta.go
+    │   │           ├── dcr.go
+    │   │           ├── oauth2.go
+    │   │           ├── oauthex.go
+    │   │           ├── resource_meta.go
+    │   │           └── resource_meta_public.go
+    │   ├── ncruces
+    │   │   └── go-strftime
+    │   │       ├── .gitignore
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── parser.go
+    │   │       ├── pkg.go
+    │   │       ├── specifiers.go
+    │   │       └── strftime.go
+    │   ├── partio-io
+    │   │   └── claude-agent-sdk-go
+    │   │       ├── .editorconfig
+    │   │       ├── .gitignore
+    │   │       ├── .golangci.yml
+    │   │       ├── CLAUDE.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── Makefile
+    │   │       ├── README.md
+    │   │       ├── SECURITY.md
+    │   │       ├── agent.go
+    │   │       ├── channel.go
+    │   │       ├── claude.go
+    │   │       ├── content.go
+    │   │       ├── doc.go
+    │   │       ├── error.go
+    │   │       ├── hook.go
+    │   │       ├── internal
+    │   │       │   ├── process
+    │   │       │   │   ├── args.go
+    │   │       │   │   ├── cli.go
+    │   │       │   │   └── process.go
+    │   │       │   └── protocol
+    │   │       │       ├── control.go
+    │   │       │       └── parser.go
+    │   │       ├── mcp.go
+    │   │       ├── message.go
+    │   │       ├── option.go
+    │   │       ├── session.go
+    │   │       └── uuid.go
+    │   ├── remyoudompheng
+    │   │   └── bigfft
+    │   │       ├── LICENSE
+    │   │       ├── README
+    │   │       ├── arith_decl.go
+    │   │       ├── fermat.go
+    │   │       ├── fft.go
+    │   │       └── scan.go
+    │   ├── segmentio
+    │   │   ├── asm
+    │   │   │   ├── LICENSE
+    │   │   │   ├── ascii
+    │   │   │   │   ├── ascii.go
+    │   │   │   │   ├── equal_fold.go
+    │   │   │   │   ├── equal_fold_amd64.go
+    │   │   │   │   ├── equal_fold_amd64.s
+    │   │   │   │   ├── equal_fold_default.go
+    │   │   │   │   ├── valid.go
+    │   │   │   │   ├── valid_amd64.go
+    │   │   │   │   ├── valid_amd64.s
+    │   │   │   │   ├── valid_default.go
+    │   │   │   │   ├── valid_print.go
+    │   │   │   │   ├── valid_print_amd64.go
+    │   │   │   │   ├── valid_print_amd64.s
+    │   │   │   │   └── valid_print_default.go
+    │   │   │   ├── base64
+    │   │   │   │   ├── base64.go
+    │   │   │   │   ├── base64_amd64.go
+    │   │   │   │   ├── base64_arm64.go
+    │   │   │   │   ├── base64_asm.go
+    │   │   │   │   ├── base64_default.go
+    │   │   │   │   ├── decode_amd64.go
+    │   │   │   │   ├── decode_amd64.s
+    │   │   │   │   ├── decode_arm64.go
+    │   │   │   │   ├── decode_arm64.s
+    │   │   │   │   ├── encode_amd64.go
+    │   │   │   │   ├── encode_amd64.s
+    │   │   │   │   ├── encode_arm64.go
+    │   │   │   │   └── encode_arm64.s
+    │   │   │   ├── cpu
+    │   │   │   │   ├── arm
+    │   │   │   │   │   └── arm.go
+    │   │   │   │   ├── arm64
+    │   │   │   │   │   └── arm64.go
+    │   │   │   │   ├── cpu.go
+    │   │   │   │   ├── cpuid
+    │   │   │   │   │   └── cpuid.go
+    │   │   │   │   └── x86
+    │   │   │   │       └── x86.go
+    │   │   │   ├── internal
+    │   │   │   │   └── unsafebytes
+    │   │   │   │       └── unsafebytes.go
+    │   │   │   └── keyset
+    │   │   │       ├── keyset.go
+    │   │   │       ├── keyset_amd64.go
+    │   │   │       ├── keyset_amd64.s
+    │   │   │       ├── keyset_arm64.go
+    │   │   │       ├── keyset_arm64.s
+    │   │   │       └── keyset_default.go
+    │   │   └── encoding
+    │   │       ├── LICENSE
+    │   │       ├── ascii
+    │   │       │   ├── equal_fold.go
+    │   │       │   ├── valid.go
+    │   │       │   └── valid_print.go
+    │   │       ├── iso8601
+    │   │       │   ├── parse.go
+    │   │       │   └── valid.go
+    │   │       └── json
+    │   │           ├── README.md
+    │   │           ├── codec.go
+    │   │           ├── decode.go
+    │   │           ├── encode.go
+    │   │           ├── int.go
+    │   │           ├── json.go
+    │   │           ├── parse.go
+    │   │           ├── reflect.go
+    │   │           ├── reflect_optimize.go
+    │   │           ├── string.go
+    │   │           └── token.go
+    │   ├── spf13
+    │   │   ├── cobra
+    │   │   │   ├── .gitignore
+    │   │   │   ├── .golangci.yml
+    │   │   │   ├── .mailmap
+    │   │   │   ├── CONDUCT.md
+    │   │   │   ├── CONTRIBUTING.md
+    │   │   │   ├── LICENSE.txt
+    │   │   │   ├── MAINTAINERS
+    │   │   │   ├── Makefile
+    │   │   │   ├── README.md
+    │   │   │   ├── SECURITY.md
+    │   │   │   ├── active_help.go
+    │   │   │   ├── args.go
+    │   │   │   ├── bash_completions.go
+    │   │   │   ├── bash_completionsV2.go
+    │   │   │   ├── cobra.go
+    │   │   │   ├── command.go
+    │   │   │   ├── command_notwin.go
+    │   │   │   ├── command_win.go
+    │   │   │   ├── completions.go
+    │   │   │   ├── fish_completions.go
+    │   │   │   ├── flag_groups.go
+    │   │   │   ├── powershell_completions.go
+    │   │   │   ├── shell_completions.go
+    │   │   │   └── zsh_completions.go
+    │   │   └── pflag
+    │   │       ├── .editorconfig
+    │   │       ├── .gitignore
+    │   │       ├── .golangci.yaml
+    │   │       ├── .travis.yml
+    │   │       ├── LICENSE
+    │   │       ├── README.md
+    │   │       ├── bool.go
+    │   │       ├── bool_func.go
+    │   │       ├── bool_slice.go
+    │   │       ├── bytes.go
+    │   │       ├── count.go
+    │   │       ├── duration.go
+    │   │       ├── duration_slice.go
+    │   │       ├── errors.go
+    │   │       ├── flag.go
+    │   │       ├── float32.go
+    │   │       ├── float32_slice.go
+    │   │       ├── float64.go
+    │   │       ├── float64_slice.go
+    │   │       ├── func.go
+    │   │       ├── golangflag.go
+    │   │       ├── int.go
+    │   │       ├── int16.go
+    │   │       ├── int32.go
+    │   │       ├── int32_slice.go
+    │   │       ├── int64.go
+    │   │       ├── int64_slice.go
+    │   │       ├── int8.go
+    │   │       ├── int_slice.go
+    │   │       ├── ip.go
+    │   │       ├── ip_slice.go
+    │   │       ├── ipmask.go
+    │   │       ├── ipnet.go
+    │   │       ├── ipnet_slice.go
+    │   │       ├── string.go
+    │   │       ├── string_array.go
+    │   │       ├── string_slice.go
+    │   │       ├── string_to_int.go
+    │   │       ├── string_to_int64.go
+    │   │       ├── string_to_string.go
+    │   │       ├── text.go
+    │   │       ├── time.go
+    │   │       ├── uint.go
+    │   │       ├── uint16.go
+    │   │       ├── uint32.go
+    │   │       ├── uint64.go
+    │   │       ├── uint8.go
+    │   │       └── uint_slice.go
+    │   ├── yosida95
+    │   │   └── uritemplate
+    │   │       └── v3
+    │   │           ├── LICENSE
+    │   │           ├── README.rst
+    │   │           ├── compile.go
+    │   │           ├── equals.go
+    │   │           ├── error.go
+    │   │           ├── escape.go
+    │   │           ├── expression.go
+    │   │           ├── machine.go
+    │   │           ├── match.go
+    │   │           ├── parse.go
+    │   │           ├── prog.go
+    │   │           ├── uritemplate.go
+    │   │           └── value.go
+    │   └── zendev-sh
+    │       └── goai
+    │           ├── .gitignore
+    │           ├── AGENTS.md
+    │           ├── CLAUDE.md
+    │           ├── CONTRIBUTING.md
+    │           ├── LICENSE
+    │           ├── Makefile
+    │           ├── README.md
+    │           ├── ROADMAP.md
+    │           ├── agent-loop
+    │           ├── caching.go
+    │           ├── chat
+    │           ├── cov.html
+    │           ├── embed.go
+    │           ├── errors.go
+    │           ├── generate.go
+    │           ├── goai.go
+    │           ├── goai.png
+    │           ├── hooks.go
+    │           ├── image.go
+    │           ├── internal
+    │           │   ├── httpc
+    │           │   │   └── httpc.go
+    │           │   ├── openaicompat
+    │           │   │   ├── messages.go
+    │           │   │   └── openaicompat.go
+    │           │   └── sse
+    │           │       └── sse.go
+    │           ├── messages.go
+    │           ├── object.go
+    │           ├── options.go
+    │           ├── package-lock.json
+    │           ├── package.json
+    │           ├── partial_json.go
+    │           ├── provider
+    │           │   ├── anthropic
+    │           │   │   ├── anthropic.go
+    │           │   │   └── tools.go
+    │           │   ├── openai
+    │           │   │   ├── embedding.go
+    │           │   │   ├── image.go
+    │           │   │   ├── openai.go
+    │           │   │   ├── responses.go
+    │           │   │   └── tools.go
+    │           │   ├── provider.go
+    │           │   ├── token.go
+    │           │   └── types.go
+    │           ├── retry.go
+    │           ├── schema.go
+    │           ├── streaming
+    │           ├── tools
+    │           └── types.go
+    ├── golang.org
+    │   └── x
+    │       ├── oauth2
+    │       │   ├── .travis.yml
+    │       │   ├── CONTRIBUTING.md
+    │       │   ├── LICENSE
+    │       │   ├── README.md
+    │       │   ├── deviceauth.go
+    │       │   ├── internal
+    │       │   │   ├── doc.go
+    │       │   │   ├── oauth2.go
+    │       │   │   ├── token.go
+    │       │   │   └── transport.go
+    │       │   ├── oauth2.go
+    │       │   ├── pkce.go
+    │       │   ├── token.go
+    │       │   └── transport.go
+    │       ├── sync
+    │       │   ├── LICENSE
+    │       │   ├── PATENTS
+    │       │   └── errgroup
+    │       │       └── errgroup.go
+    │       └── sys
+    │           ├── LICENSE
+    │           ├── PATENTS
+    │           ├── cpu
+    │           │   ├── asm_aix_ppc64.s
+    │           │   ├── asm_darwin_arm64_gc.s
+    │           │   ├── asm_darwin_x86_gc.s
+    │           │   ├── byteorder.go
+    │           │   ├── cpu.go
+    │           │   ├── cpu_*.go  (40 files)
+    │           │   ├── cpu_*.s  (5 files)
+    │           │   ├── cpu_gccgo_x86.c
+    │           │   ├── endian_big.go
+    │           │   ├── endian_little.go
+    │           │   ├── hwcap_linux.go
+    │           │   ├── parse.go
+    │           │   ├── proc_cpuinfo_linux.go
+    │           │   ├── runtime_auxv.go
+    │           │   ├── runtime_auxv_go121.go
+    │           │   ├── syscall_aix_gccgo.go
+    │           │   ├── syscall_aix_ppc64_gc.go
+    │           │   ├── syscall_darwin_arm64_gc.go
+    │           │   └── syscall_darwin_x86_gc.go
+    │           ├── unix
+    │           │   ├── .gitignore
+    │           │   ├── README.md
+    │           │   ├── affinity_linux.go
+    │           │   ├── aliases.go
+    │           │   ├── asm_*.s  (20 files)
+    │           │   ├── auxv.go
+    │           │   ├── auxv_unsupported.go
+    │           │   ├── bluetooth_linux.go
+    │           │   ├── bpxsvc_zos.go
+    │           │   ├── bpxsvc_zos.s
+    │           │   ├── cap_freebsd.go
+    │           │   ├── constants.go
+    │           │   ├── dev_*.go  (9 files)
+    │           │   ├── dirent.go
+    │           │   ├── endian_big.go
+    │           │   ├── endian_little.go
+    │           │   ├── env_unix.go
+    │           │   ├── fcntl.go
+    │           │   ├── fcntl_darwin.go
+    │           │   ├── fcntl_linux_32bit.go
+    │           │   ├── fdset.go
+    │           │   ├── gccgo.go
+    │           │   ├── gccgo_c.c
+    │           │   ├── gccgo_linux_amd64.go
+    │           │   ├── ifreq_linux.go
+    │           │   ├── ioctl_linux.go
+    │           │   ├── ioctl_signed.go
+    │           │   ├── ioctl_unsigned.go
+    │           │   ├── ioctl_zos.go
+    │           │   ├── mkall.sh
+    │           │   ├── mkerrors.sh
+    │           │   ├── mmap_nomremap.go
+    │           │   ├── mremap.go
+    │           │   ├── pagesize_unix.go
+    │           │   ├── pledge_openbsd.go
+    │           │   ├── ptrace_darwin.go
+    │           │   ├── ptrace_ios.go
+    │           │   ├── race.go
+    │           │   ├── race0.go
+    │           │   ├── readdirent_getdents.go
+    │           │   ├── readdirent_getdirentries.go
+    │           │   ├── sockcmsg_*.go  (5 files)
+    │           │   ├── symaddr_zos_s390x.s
+    │           │   ├── syscall.go
+    │           │   ├── syscall_*.go  (59 files)
+    │           │   ├── sysvshm_linux.go
+    │           │   ├── sysvshm_unix.go
+    │           │   ├── sysvshm_unix_other.go
+    │           │   ├── timestruct.go
+    │           │   ├── unveil_openbsd.go
+    │           │   ├── vgetrandom_linux.go
+    │           │   ├── vgetrandom_unsupported.go
+    │           │   ├── xattr_bsd.go
+    │           │   ├── zerrors_*.go  (39 files)
+    │           │   ├── zptrace_*.go  (5 files)
+    │           │   ├── zsymaddr_zos_s390x.s
+    │           │   ├── zsyscall_*.go  (42 files)
+    │           │   ├── zsyscall_*.s  (9 files)
+    │           │   ├── zsysctl_*.go  (7 files)
+    │           │   ├── zsysnum_*.go  (35 files)
+    │           │   └── ztypes_*.go  (39 files)
+    │           └── windows
+    │               ├── aliases.go
+    │               ├── dll_windows.go
+    │               ├── env_windows.go
+    │               ├── eventlog.go
+    │               ├── exec_windows.go
+    │               ├── memory_windows.go
+    │               ├── mkerrors.bash
+    │               ├── mkknownfolderids.bash
+    │               ├── mksyscall.go
+    │               ├── race.go
+    │               ├── race0.go
+    │               ├── security_windows.go
+    │               ├── service.go
+    │               ├── setupapi_windows.go
+    │               ├── str.go
+    │               ├── syscall.go
+    │               ├── syscall_windows.go
+    │               ├── types_windows.go
+    │               ├── types_windows_386.go
+    │               ├── types_windows_amd64.go
+    │               ├── types_windows_arm.go
+    │               ├── types_windows_arm64.go
+    │               ├── zerrors_windows.go
+    │               ├── zknownfolderids_windows.go
+    │               └── zsyscall_windows.go
+    ├── modernc.org
+    │   ├── libc
+    │   │   ├── .gitignore
+    │   │   ├── AUTHORS
+    │   │   ├── CONTRIBUTING.md
+    │   │   ├── CONTRIBUTORS
+    │   │   ├── LICENSE
+    │   │   ├── LICENSE-3RD-PARTY.md
+    │   │   ├── Makefile
+    │   │   ├── README.md
+    │   │   ├── abi0_linux_amd64.go
+    │   │   ├── abi0_linux_amd64.s
+    │   │   ├── aliases.go
+    │   │   ├── asm_386.s
+    │   │   ├── atomic.go
+    │   │   ├── atomic32.go
+    │   │   ├── atomic64.go
+    │   │   ├── build_all_targets.sh
+    │   │   ├── builder.json
+    │   │   ├── builtin.go
+    │   │   ├── builtin32.go
+    │   │   ├── builtin64.go
+    │   │   ├── builtin_all.go
+    │   │   ├── capi_*.go  (24 files)
+    │   │   ├── ccgo.go
+    │   │   ├── ccgo_*.go  (8 files)
+    │   │   ├── dmesg.go
+    │   │   ├── errno
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── errno_darwin_amd64.go
+    │   │   │   ├── errno_darwin_arm64.go
+    │   │   │   ├── errno_freebsd_386.go
+    │   │   │   ├── errno_freebsd_amd64.go
+    │   │   │   ├── errno_freebsd_arm.go
+    │   │   │   ├── errno_freebsd_arm64.go
+    │   │   │   ├── errno_illumos_amd64.go
+    │   │   │   ├── errno_linux_386.go
+    │   │   │   ├── errno_linux_amd64.go
+    │   │   │   ├── errno_linux_arm.go
+    │   │   │   ├── errno_linux_arm64.go
+    │   │   │   ├── errno_linux_loong64.go
+    │   │   │   ├── errno_linux_mips64le.go
+    │   │   │   ├── errno_linux_ppc64le.go
+    │   │   │   ├── errno_linux_riscv64.go
+    │   │   │   ├── errno_linux_s390x.go
+    │   │   │   ├── errno_netbsd_amd64.go
+    │   │   │   ├── errno_netbsd_arm.go
+    │   │   │   ├── errno_openbsd_386.go
+    │   │   │   ├── errno_openbsd_amd64.go
+    │   │   │   ├── errno_openbsd_arm64.go
+    │   │   │   ├── errno_windows_386.go
+    │   │   │   ├── errno_windows_amd64.go
+    │   │   │   └── errno_windows_arm64.go
+    │   │   ├── etc.go
+    │   │   ├── etc_musl.go
+    │   │   ├── fcntl
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── fcntl_darwin_amd64.go
+    │   │   │   ├── fcntl_darwin_arm64.go
+    │   │   │   ├── fcntl_freebsd_386.go
+    │   │   │   ├── fcntl_freebsd_amd64.go
+    │   │   │   ├── fcntl_freebsd_arm.go
+    │   │   │   ├── fcntl_freebsd_arm64.go
+    │   │   │   ├── fcntl_illumos_amd64.go
+    │   │   │   ├── fcntl_linux_386.go
+    │   │   │   ├── fcntl_linux_amd64.go
+    │   │   │   ├── fcntl_linux_arm.go
+    │   │   │   ├── fcntl_linux_arm64.go
+    │   │   │   ├── fcntl_linux_loong64.go
+    │   │   │   ├── fcntl_linux_mips64le.go
+    │   │   │   ├── fcntl_linux_ppc64le.go
+    │   │   │   ├── fcntl_linux_riscv64.go
+    │   │   │   ├── fcntl_linux_s390x.go
+    │   │   │   ├── fcntl_netbsd_amd64.go
+    │   │   │   ├── fcntl_netbsd_arm.go
+    │   │   │   ├── fcntl_openbsd_386.go
+    │   │   │   ├── fcntl_openbsd_amd64.go
+    │   │   │   ├── fcntl_openbsd_arm64.go
+    │   │   │   ├── fcntl_windows_386.go
+    │   │   │   ├── fcntl_windows_amd64.go
+    │   │   │   └── fcntl_windows_arm64.go
+    │   │   ├── fsync.go
+    │   │   ├── fts
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── fts_darwin_amd64.go
+    │   │   │   ├── fts_darwin_arm64.go
+    │   │   │   ├── fts_freebsd_386.go
+    │   │   │   ├── fts_freebsd_amd64.go
+    │   │   │   ├── fts_freebsd_arm.go
+    │   │   │   ├── fts_freebsd_arm64.go
+    │   │   │   ├── fts_illumos_amd64.go
+    │   │   │   ├── fts_linux_386.go
+    │   │   │   ├── fts_linux_amd64.go
+    │   │   │   ├── fts_linux_arm.go
+    │   │   │   ├── fts_linux_arm64.go
+    │   │   │   ├── fts_linux_loong64.go
+    │   │   │   ├── fts_linux_mips64le.go
+    │   │   │   ├── fts_linux_ppc64le.go
+    │   │   │   ├── fts_linux_riscv64.go
+    │   │   │   ├── fts_linux_s390x.go
+    │   │   │   ├── fts_netbsd_amd64.go
+    │   │   │   ├── fts_netbsd_arm.go
+    │   │   │   ├── fts_openbsd_386.go
+    │   │   │   ├── fts_openbsd_amd64.go
+    │   │   │   └── fts_openbsd_arm64.go
+    │   │   ├── grp
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── grp_darwin_amd64.go
+    │   │   │   ├── grp_darwin_arm64.go
+    │   │   │   ├── grp_freebsd_386.go
+    │   │   │   ├── grp_freebsd_amd64.go
+    │   │   │   ├── grp_freebsd_arm.go
+    │   │   │   ├── grp_freebsd_arm64.go
+    │   │   │   ├── grp_illumos_amd64.go
+    │   │   │   ├── grp_linux_386.go
+    │   │   │   ├── grp_linux_amd64.go
+    │   │   │   ├── grp_linux_arm.go
+    │   │   │   ├── grp_linux_arm64.go
+    │   │   │   ├── grp_linux_loong64.go
+    │   │   │   ├── grp_linux_mips64le.go
+    │   │   │   ├── grp_linux_ppc64le.go
+    │   │   │   ├── grp_linux_riscv64.go
+    │   │   │   ├── grp_linux_s390x.go
+    │   │   │   ├── grp_netbsd_amd64.go
+    │   │   │   ├── grp_netbsd_arm.go
+    │   │   │   ├── grp_openbsd_386.go
+    │   │   │   ├── grp_openbsd_amd64.go
+    │   │   │   └── grp_openbsd_arm64.go
+    │   │   ├── honnef.co
+    │   │   │   └── go
+    │   │   │       └── netdb
+    │   │   │           ├── README.md
+    │   │   │           └── netdb.go
+    │   │   ├── int128.go
+    │   │   ├── ioutil_darwin.go
+    │   │   ├── ioutil_freebsd.go
+    │   │   ├── ioutil_illumos.go
+    │   │   ├── ioutil_linux.go
+    │   │   ├── ioutil_netbsd.go
+    │   │   ├── ioutil_openbsd.go
+    │   │   ├── langinfo
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── langinfo_darwin_amd64.go
+    │   │   │   ├── langinfo_darwin_arm64.go
+    │   │   │   ├── langinfo_freebsd_386.go
+    │   │   │   ├── langinfo_freebsd_amd64.go
+    │   │   │   ├── langinfo_freebsd_arm.go
+    │   │   │   ├── langinfo_freebsd_arm64.go
+    │   │   │   ├── langinfo_illumos_amd64.go
+    │   │   │   ├── langinfo_linux_386.go
+    │   │   │   ├── langinfo_linux_amd64.go
+    │   │   │   ├── langinfo_linux_arm.go
+    │   │   │   ├── langinfo_linux_arm64.go
+    │   │   │   ├── langinfo_linux_loong64.go
+    │   │   │   ├── langinfo_linux_mips64le.go
+    │   │   │   ├── langinfo_linux_ppc64le.go
+    │   │   │   ├── langinfo_linux_riscv64.go
+    │   │   │   ├── langinfo_linux_s390x.go
+    │   │   │   ├── langinfo_netbsd_amd64.go
+    │   │   │   ├── langinfo_netbsd_arm.go
+    │   │   │   ├── langinfo_openbsd_386.go
+    │   │   │   ├── langinfo_openbsd_amd64.go
+    │   │   │   └── langinfo_openbsd_arm64.go
+    │   │   ├── libc.go
+    │   │   ├── libc32.go
+    │   │   ├── libc64.go
+    │   │   ├── libc_386.go
+    │   │   ├── libc_all.go
+    │   │   ├── libc_amd64.go
+    │   │   ├── libc_arm.go
+    │   │   ├── libc_arm64.go
+    │   │   ├── libc_darwin.go
+    │   │   ├── libc_darwin_amd64.go
+    │   │   ├── libc_darwin_arm64.go
+    │   │   ├── libc_freebsd.go
+    │   │   ├── libc_freebsd_386.go
+    │   │   ├── libc_freebsd_amd64.go
+    │   │   ├── libc_freebsd_arm.go
+    │   │   ├── libc_freebsd_arm64.go
+    │   │   ├── libc_illumos.go
+    │   │   ├── libc_illumos_amd64.go
+    │   │   ├── libc_linux.go
+    │   │   ├── libc_linux_amd64.go
+    │   │   ├── libc_linux_mips64le.go
+    │   │   ├── libc_mips64le.go
+    │   │   ├── libc_musl.go
+    │   │   ├── libc_musl_linux_386.go
+    │   │   ├── libc_musl_linux_amd64.go
+    │   │   ├── libc_musl_linux_arm.go
+    │   │   ├── libc_musl_linux_arm64.go
+    │   │   ├── libc_musl_linux_loong64.go
+    │   │   ├── libc_musl_linux_ppc64le.go
+    │   │   ├── libc_musl_linux_riscv64.go
+    │   │   ├── libc_musl_linux_s390x.go
+    │   │   ├── libc_netbsd.go
+    │   │   ├── libc_netbsd_amd64.go
+    │   │   ├── libc_netbsd_arm.go
+    │   │   ├── libc_openbsd.go
+    │   │   ├── libc_openbsd_386.go
+    │   │   ├── libc_openbsd_amd64.go
+    │   │   ├── libc_openbsd_arm64.go
+    │   │   ├── libc_unix.go
+    │   │   ├── libc_unix1.go
+    │   │   ├── libc_unix2.go
+    │   │   ├── libc_unix3.go
+    │   │   ├── libc_windows.go
+    │   │   ├── libc_windows_386.go
+    │   │   ├── libc_windows_386.s
+    │   │   ├── libc_windows_amd64.go
+    │   │   ├── libc_windows_arm64.go
+    │   │   ├── libc_windows_arm64.s
+    │   │   ├── limits
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── limits_darwin_amd64.go
+    │   │   │   ├── limits_darwin_arm64.go
+    │   │   │   ├── limits_freebsd_386.go
+    │   │   │   ├── limits_freebsd_amd64.go
+    │   │   │   ├── limits_freebsd_arm.go
+    │   │   │   ├── limits_freebsd_arm64.go
+    │   │   │   ├── limits_illumos_amd64.go
+    │   │   │   ├── limits_linux_386.go
+    │   │   │   ├── limits_linux_amd64.go
+    │   │   │   ├── limits_linux_arm.go
+    │   │   │   ├── limits_linux_arm64.go
+    │   │   │   ├── limits_linux_loong64.go
+    │   │   │   ├── limits_linux_mips64le.go
+    │   │   │   ├── limits_linux_ppc64le.go
+    │   │   │   ├── limits_linux_riscv64.go
+    │   │   │   ├── limits_linux_s390x.go
+    │   │   │   ├── limits_netbsd_amd64.go
+    │   │   │   ├── limits_netbsd_arm.go
+    │   │   │   ├── limits_openbsd_386.go
+    │   │   │   ├── limits_openbsd_amd64.go
+    │   │   │   ├── limits_openbsd_arm64.go
+    │   │   │   ├── limits_windows_386.go
+    │   │   │   ├── limits_windows_amd64.go
+    │   │   │   └── limits_windows_arm64.go
+    │   │   ├── mem.go
+    │   │   ├── mem_brk.go
+    │   │   ├── mem_brk_musl.go
+    │   │   ├── mem_expvar.go
+    │   │   ├── mem_musl.go
+    │   │   ├── memgrind.go
+    │   │   ├── memgrind_musl.go
+    │   │   ├── musl_darwin_amd64.go
+    │   │   ├── musl_darwin_arm64.go
+    │   │   ├── musl_freebsd_386.go
+    │   │   ├── musl_freebsd_amd64.go
+    │   │   ├── musl_freebsd_arm.go
+    │   │   ├── musl_freebsd_arm64.go
+    │   │   ├── musl_illumos_amd64.go
+    │   │   ├── musl_linux_mips64le.go
+    │   │   ├── musl_netbsd_amd64.go
+    │   │   ├── musl_netbsd_arm.go
+    │   │   ├── musl_openbsd_386.go
+    │   │   ├── musl_openbsd_amd64.go
+    │   │   ├── musl_openbsd_arm64.go
+    │   │   ├── musl_windows_386.go
+    │   │   ├── musl_windows_amd64.go
+    │   │   ├── musl_windows_arm64.go
+    │   │   ├── netdb
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── netdb_darwin_amd64.go
+    │   │   │   ├── netdb_darwin_arm64.go
+    │   │   │   ├── netdb_freebsd_386.go
+    │   │   │   ├── netdb_freebsd_amd64.go
+    │   │   │   ├── netdb_freebsd_arm.go
+    │   │   │   ├── netdb_freebsd_arm64.go
+    │   │   │   ├── netdb_illumos_amd64.go
+    │   │   │   ├── netdb_linux_386.go
+    │   │   │   ├── netdb_linux_amd64.go
+    │   │   │   ├── netdb_linux_arm.go
+    │   │   │   ├── netdb_linux_arm64.go
+    │   │   │   ├── netdb_linux_loong64.go
+    │   │   │   ├── netdb_linux_mips64le.go
+    │   │   │   ├── netdb_linux_ppc64le.go
+    │   │   │   ├── netdb_linux_riscv64.go
+    │   │   │   ├── netdb_linux_s390x.go
+    │   │   │   ├── netdb_netbsd_amd64.go
+    │   │   │   ├── netdb_netbsd_arm.go
+    │   │   │   ├── netdb_openbsd_386.go
+    │   │   │   ├── netdb_openbsd_amd64.go
+    │   │   │   └── netdb_openbsd_arm64.go
+    │   │   ├── netinet
+    │   │   │   └── in
+    │   │   │       ├── capi_darwin_amd64.go
+    │   │   │       ├── capi_darwin_arm64.go
+    │   │   │       ├── capi_freebsd_386.go
+    │   │   │       ├── capi_freebsd_amd64.go
+    │   │   │       ├── capi_freebsd_arm.go
+    │   │   │       ├── capi_freebsd_arm64.go
+    │   │   │       ├── capi_illumos_amd64.go
+    │   │   │       ├── capi_linux_386.go
+    │   │   │       ├── capi_linux_amd64.go
+    │   │   │       ├── capi_linux_arm.go
+    │   │   │       ├── capi_linux_arm64.go
+    │   │   │       ├── capi_linux_loong64.go
+    │   │   │       ├── capi_linux_mips64le.go
+    │   │   │       ├── capi_linux_ppc64le.go
+    │   │   │       ├── capi_linux_riscv64.go
+    │   │   │       ├── capi_linux_s390x.go
+    │   │   │       ├── capi_netbsd_amd64.go
+    │   │   │       ├── capi_netbsd_arm.go
+    │   │   │       ├── capi_openbsd_386.go
+    │   │   │       ├── capi_openbsd_amd64.go
+    │   │   │       ├── capi_openbsd_arm64.go
+    │   │   │       ├── in_darwin_amd64.go
+    │   │   │       ├── in_darwin_arm64.go
+    │   │   │       ├── in_freebsd_386.go
+    │   │   │       ├── in_freebsd_amd64.go
+    │   │   │       ├── in_freebsd_arm.go
+    │   │   │       ├── in_freebsd_arm64.go
+    │   │   │       ├── in_illumos_amd64.go
+    │   │   │       ├── in_linux_386.go
+    │   │   │       ├── in_linux_amd64.go
+    │   │   │       ├── in_linux_arm.go
+    │   │   │       ├── in_linux_arm64.go
+    │   │   │       ├── in_linux_loong64.go
+    │   │   │       ├── in_linux_mips64le.go
+    │   │   │       ├── in_linux_ppc64le.go
+    │   │   │       ├── in_linux_riscv64.go
+    │   │   │       ├── in_linux_s390x.go
+    │   │   │       ├── in_netbsd_amd64.go
+    │   │   │       ├── in_netbsd_arm.go
+    │   │   │       ├── in_openbsd_386.go
+    │   │   │       ├── in_openbsd_amd64.go
+    │   │   │       └── in_openbsd_arm64.go
+    │   │   ├── nodmesg.go
+    │   │   ├── nofsync.go
+    │   │   ├── poll
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── poll_darwin_amd64.go
+    │   │   │   ├── poll_darwin_arm64.go
+    │   │   │   ├── poll_freebsd_386.go
+    │   │   │   ├── poll_freebsd_amd64.go
+    │   │   │   ├── poll_freebsd_arm.go
+    │   │   │   ├── poll_freebsd_arm64.go
+    │   │   │   ├── poll_illumos_amd64.go
+    │   │   │   ├── poll_linux_386.go
+    │   │   │   ├── poll_linux_amd64.go
+    │   │   │   ├── poll_linux_arm.go
+    │   │   │   ├── poll_linux_arm64.go
+    │   │   │   ├── poll_linux_loong64.go
+    │   │   │   ├── poll_linux_mips64le.go
+    │   │   │   ├── poll_linux_ppc64le.go
+    │   │   │   ├── poll_linux_riscv64.go
+    │   │   │   ├── poll_linux_s390x.go
+    │   │   │   ├── poll_netbsd_amd64.go
+    │   │   │   ├── poll_netbsd_arm.go
+    │   │   │   ├── poll_openbsd_386.go
+    │   │   │   ├── poll_openbsd_amd64.go
+    │   │   │   └── poll_openbsd_arm64.go
+    │   │   ├── printf.go
+    │   │   ├── probes.go
+    │   │   ├── pthread
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── pthread_darwin_amd64.go
+    │   │   │   ├── pthread_darwin_arm64.go
+    │   │   │   ├── pthread_freebsd_386.go
+    │   │   │   ├── pthread_freebsd_amd64.go
+    │   │   │   ├── pthread_freebsd_arm.go
+    │   │   │   ├── pthread_freebsd_arm64.go
+    │   │   │   ├── pthread_illumos_amd64.go
+    │   │   │   ├── pthread_linux_386.go
+    │   │   │   ├── pthread_linux_amd64.go
+    │   │   │   ├── pthread_linux_arm.go
+    │   │   │   ├── pthread_linux_arm64.go
+    │   │   │   ├── pthread_linux_loong64.go
+    │   │   │   ├── pthread_linux_mips64le.go
+    │   │   │   ├── pthread_linux_ppc64le.go
+    │   │   │   ├── pthread_linux_riscv64.go
+    │   │   │   ├── pthread_linux_s390x.go
+    │   │   │   ├── pthread_netbsd_amd64.go
+    │   │   │   ├── pthread_netbsd_arm.go
+    │   │   │   ├── pthread_openbsd_386.go
+    │   │   │   ├── pthread_openbsd_amd64.go
+    │   │   │   ├── pthread_openbsd_arm64.go
+    │   │   │   ├── pthread_windows_386.go
+    │   │   │   ├── pthread_windows_amd64.go
+    │   │   │   └── pthread_windows_arm64.go
+    │   │   ├── pthread.go
+    │   │   ├── pthread_all.go
+    │   │   ├── pthread_musl.go
+    │   │   ├── pwd
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── pwd_darwin_amd64.go
+    │   │   │   ├── pwd_darwin_arm64.go
+    │   │   │   ├── pwd_freebsd_386.go
+    │   │   │   ├── pwd_freebsd_amd64.go
+    │   │   │   ├── pwd_freebsd_arm.go
+    │   │   │   ├── pwd_freebsd_arm64.go
+    │   │   │   ├── pwd_illumos_amd64.go
+    │   │   │   ├── pwd_linux_386.go
+    │   │   │   ├── pwd_linux_amd64.go
+    │   │   │   ├── pwd_linux_arm.go
+    │   │   │   ├── pwd_linux_arm64.go
+    │   │   │   ├── pwd_linux_loong64.go
+    │   │   │   ├── pwd_linux_mips64le.go
+    │   │   │   ├── pwd_linux_ppc64le.go
+    │   │   │   ├── pwd_linux_riscv64.go
+    │   │   │   ├── pwd_linux_s390x.go
+    │   │   │   ├── pwd_netbsd_amd64.go
+    │   │   │   ├── pwd_netbsd_arm.go
+    │   │   │   ├── pwd_openbsd_386.go
+    │   │   │   ├── pwd_openbsd_amd64.go
+    │   │   │   └── pwd_openbsd_arm64.go
+    │   │   ├── rtl.go
+    │   │   ├── scanf.go
+    │   │   ├── signal
+    │   │   │   ├── capi_*.go  (24 files)
+    │   │   │   ├── more_*.go  (21 files)
+    │   │   │   └── signal_*.go  (24 files)
+    │   │   ├── stdatomic.go
+    │   │   ├── stdio
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── stdio_darwin_amd64.go
+    │   │   │   ├── stdio_darwin_arm64.go
+    │   │   │   ├── stdio_freebsd_386.go
+    │   │   │   ├── stdio_freebsd_amd64.go
+    │   │   │   ├── stdio_freebsd_arm.go
+    │   │   │   ├── stdio_freebsd_arm64.go
+    │   │   │   ├── stdio_illumos_amd64.go
+    │   │   │   ├── stdio_linux_386.go
+    │   │   │   ├── stdio_linux_amd64.go
+    │   │   │   ├── stdio_linux_arm.go
+    │   │   │   ├── stdio_linux_arm64.go
+    │   │   │   ├── stdio_linux_loong64.go
+    │   │   │   ├── stdio_linux_mips64le.go
+    │   │   │   ├── stdio_linux_ppc64le.go
+    │   │   │   ├── stdio_linux_riscv64.go
+    │   │   │   ├── stdio_linux_s390x.go
+    │   │   │   ├── stdio_netbsd_amd64.go
+    │   │   │   ├── stdio_netbsd_arm.go
+    │   │   │   ├── stdio_openbsd_386.go
+    │   │   │   ├── stdio_openbsd_amd64.go
+    │   │   │   ├── stdio_openbsd_arm64.go
+    │   │   │   ├── stdio_windows_386.go
+    │   │   │   ├── stdio_windows_amd64.go
+    │   │   │   └── stdio_windows_arm64.go
+    │   │   ├── stdlib
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── stdlib_darwin_amd64.go
+    │   │   │   ├── stdlib_darwin_arm64.go
+    │   │   │   ├── stdlib_freebsd_386.go
+    │   │   │   ├── stdlib_freebsd_amd64.go
+    │   │   │   ├── stdlib_freebsd_arm.go
+    │   │   │   ├── stdlib_freebsd_arm64.go
+    │   │   │   ├── stdlib_illumos_amd64.go
+    │   │   │   ├── stdlib_linux_386.go
+    │   │   │   ├── stdlib_linux_amd64.go
+    │   │   │   ├── stdlib_linux_arm.go
+    │   │   │   ├── stdlib_linux_arm64.go
+    │   │   │   ├── stdlib_linux_loong64.go
+    │   │   │   ├── stdlib_linux_mips64le.go
+    │   │   │   ├── stdlib_linux_ppc64le.go
+    │   │   │   ├── stdlib_linux_riscv64.go
+    │   │   │   ├── stdlib_linux_s390x.go
+    │   │   │   ├── stdlib_netbsd_amd64.go
+    │   │   │   ├── stdlib_netbsd_arm.go
+    │   │   │   ├── stdlib_openbsd_386.go
+    │   │   │   ├── stdlib_openbsd_amd64.go
+    │   │   │   ├── stdlib_openbsd_arm64.go
+    │   │   │   ├── stdlib_windows_386.go
+    │   │   │   ├── stdlib_windows_amd64.go
+    │   │   │   └── stdlib_windows_arm64.go
+    │   │   ├── straceoff.go
+    │   │   ├── straceon.go
+    │   │   ├── surface.new
+    │   │   ├── surface.old
+    │   │   ├── sync.go
+    │   │   ├── sys
+    │   │   │   ├── socket
+    │   │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   │   ├── capi_freebsd_386.go
+    │   │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   │   ├── capi_linux_386.go
+    │   │   │   │   ├── capi_linux_amd64.go
+    │   │   │   │   ├── capi_linux_arm.go
+    │   │   │   │   ├── capi_linux_arm64.go
+    │   │   │   │   ├── capi_linux_loong64.go
+    │   │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   │   ├── capi_linux_s390x.go
+    │   │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   │   ├── capi_openbsd_386.go
+    │   │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   │   ├── socket_darwin_amd64.go
+    │   │   │   │   ├── socket_darwin_arm64.go
+    │   │   │   │   ├── socket_freebsd_386.go
+    │   │   │   │   ├── socket_freebsd_amd64.go
+    │   │   │   │   ├── socket_freebsd_arm.go
+    │   │   │   │   ├── socket_freebsd_arm64.go
+    │   │   │   │   ├── socket_illumos_amd64.go
+    │   │   │   │   ├── socket_linux_386.go
+    │   │   │   │   ├── socket_linux_amd64.go
+    │   │   │   │   ├── socket_linux_arm.go
+    │   │   │   │   ├── socket_linux_arm64.go
+    │   │   │   │   ├── socket_linux_loong64.go
+    │   │   │   │   ├── socket_linux_mips64le.go
+    │   │   │   │   ├── socket_linux_ppc64le.go
+    │   │   │   │   ├── socket_linux_riscv64.go
+    │   │   │   │   ├── socket_linux_s390x.go
+    │   │   │   │   ├── socket_netbsd_amd64.go
+    │   │   │   │   ├── socket_netbsd_arm.go
+    │   │   │   │   ├── socket_openbsd_386.go
+    │   │   │   │   ├── socket_openbsd_amd64.go
+    │   │   │   │   └── socket_openbsd_arm64.go
+    │   │   │   ├── stat
+    │   │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   │   ├── capi_freebsd_386.go
+    │   │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   │   ├── capi_linux_386.go
+    │   │   │   │   ├── capi_linux_amd64.go
+    │   │   │   │   ├── capi_linux_arm.go
+    │   │   │   │   ├── capi_linux_arm64.go
+    │   │   │   │   ├── capi_linux_loong64.go
+    │   │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   │   ├── capi_linux_s390x.go
+    │   │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   │   ├── capi_openbsd_386.go
+    │   │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   │   ├── capi_windows_386.go
+    │   │   │   │   ├── capi_windows_amd64.go
+    │   │   │   │   ├── capi_windows_arm64.go
+    │   │   │   │   ├── stat_darwin_amd64.go
+    │   │   │   │   ├── stat_darwin_arm64.go
+    │   │   │   │   ├── stat_freebsd_386.go
+    │   │   │   │   ├── stat_freebsd_amd64.go
+    │   │   │   │   ├── stat_freebsd_arm.go
+    │   │   │   │   ├── stat_freebsd_arm64.go
+    │   │   │   │   ├── stat_illumos_amd64.go
+    │   │   │   │   ├── stat_linux_386.go
+    │   │   │   │   ├── stat_linux_amd64.go
+    │   │   │   │   ├── stat_linux_arm.go
+    │   │   │   │   ├── stat_linux_arm64.go
+    │   │   │   │   ├── stat_linux_loong64.go
+    │   │   │   │   ├── stat_linux_mips64le.go
+    │   │   │   │   ├── stat_linux_ppc64le.go
+    │   │   │   │   ├── stat_linux_riscv64.go
+    │   │   │   │   ├── stat_linux_s390x.go
+    │   │   │   │   ├── stat_netbsd_amd64.go
+    │   │   │   │   ├── stat_netbsd_arm.go
+    │   │   │   │   ├── stat_openbsd_386.go
+    │   │   │   │   ├── stat_openbsd_amd64.go
+    │   │   │   │   ├── stat_openbsd_arm64.go
+    │   │   │   │   ├── stat_windows_386.go
+    │   │   │   │   ├── stat_windows_amd64.go
+    │   │   │   │   └── stat_windows_arm64.go
+    │   │   │   └── types
+    │   │   │       ├── capi_darwin_amd64.go
+    │   │   │       ├── capi_darwin_arm64.go
+    │   │   │       ├── capi_freebsd_386.go
+    │   │   │       ├── capi_freebsd_amd64.go
+    │   │   │       ├── capi_freebsd_arm.go
+    │   │   │       ├── capi_freebsd_arm64.go
+    │   │   │       ├── capi_illumos_amd64.go
+    │   │   │       ├── capi_linux_386.go
+    │   │   │       ├── capi_linux_amd64.go
+    │   │   │       ├── capi_linux_arm.go
+    │   │   │       ├── capi_linux_arm64.go
+    │   │   │       ├── capi_linux_loong64.go
+    │   │   │       ├── capi_linux_mips64le.go
+    │   │   │       ├── capi_linux_ppc64le.go
+    │   │   │       ├── capi_linux_riscv64.go
+    │   │   │       ├── capi_linux_s390x.go
+    │   │   │       ├── capi_netbsd_amd64.go
+    │   │   │       ├── capi_netbsd_arm.go
+    │   │   │       ├── capi_openbsd_386.go
+    │   │   │       ├── capi_openbsd_amd64.go
+    │   │   │       ├── capi_openbsd_arm64.go
+    │   │   │       ├── capi_windows_386.go
+    │   │   │       ├── capi_windows_amd64.go
+    │   │   │       ├── capi_windows_arm64.go
+    │   │   │       ├── types_darwin_amd64.go
+    │   │   │       ├── types_darwin_arm64.go
+    │   │   │       ├── types_freebsd_386.go
+    │   │   │       ├── types_freebsd_amd64.go
+    │   │   │       ├── types_freebsd_arm.go
+    │   │   │       ├── types_freebsd_arm64.go
+    │   │   │       ├── types_illumos_amd64.go
+    │   │   │       ├── types_linux_386.go
+    │   │   │       ├── types_linux_amd64.go
+    │   │   │       ├── types_linux_arm.go
+    │   │   │       ├── types_linux_arm64.go
+    │   │   │       ├── types_linux_loong64.go
+    │   │   │       ├── types_linux_mips64le.go
+    │   │   │       ├── types_linux_ppc64le.go
+    │   │   │       ├── types_linux_riscv64.go
+    │   │   │       ├── types_linux_s390x.go
+    │   │   │       ├── types_netbsd_amd64.go
+    │   │   │       ├── types_netbsd_arm.go
+    │   │   │       ├── types_openbsd_386.go
+    │   │   │       ├── types_openbsd_amd64.go
+    │   │   │       ├── types_openbsd_arm64.go
+    │   │   │       ├── types_windows_386.go
+    │   │   │       ├── types_windows_amd64.go
+    │   │   │       └── types_windows_arm64.go
+    │   │   ├── syscall_musl.go
+    │   │   ├── termios
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── termios_darwin_amd64.go
+    │   │   │   ├── termios_darwin_arm64.go
+    │   │   │   ├── termios_freebsd_386.go
+    │   │   │   ├── termios_freebsd_amd64.go
+    │   │   │   ├── termios_freebsd_arm.go
+    │   │   │   ├── termios_freebsd_arm64.go
+    │   │   │   ├── termios_illumos_amd64.go
+    │   │   │   ├── termios_linux_386.go
+    │   │   │   ├── termios_linux_amd64.go
+    │   │   │   ├── termios_linux_arm.go
+    │   │   │   ├── termios_linux_arm64.go
+    │   │   │   ├── termios_linux_loong64.go
+    │   │   │   ├── termios_linux_mips64le.go
+    │   │   │   ├── termios_linux_ppc64le.go
+    │   │   │   ├── termios_linux_riscv64.go
+    │   │   │   ├── termios_linux_s390x.go
+    │   │   │   ├── termios_netbsd_amd64.go
+    │   │   │   ├── termios_netbsd_arm.go
+    │   │   │   ├── termios_openbsd_386.go
+    │   │   │   ├── termios_openbsd_amd64.go
+    │   │   │   └── termios_openbsd_arm64.go
+    │   │   ├── time
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── time_darwin_amd64.go
+    │   │   │   ├── time_darwin_arm64.go
+    │   │   │   ├── time_freebsd_386.go
+    │   │   │   ├── time_freebsd_amd64.go
+    │   │   │   ├── time_freebsd_arm.go
+    │   │   │   ├── time_freebsd_arm64.go
+    │   │   │   ├── time_illumos_amd64.go
+    │   │   │   ├── time_linux_386.go
+    │   │   │   ├── time_linux_amd64.go
+    │   │   │   ├── time_linux_arm.go
+    │   │   │   ├── time_linux_arm64.go
+    │   │   │   ├── time_linux_loong64.go
+    │   │   │   ├── time_linux_mips64le.go
+    │   │   │   ├── time_linux_ppc64le.go
+    │   │   │   ├── time_linux_riscv64.go
+    │   │   │   ├── time_linux_s390x.go
+    │   │   │   ├── time_netbsd_amd64.go
+    │   │   │   ├── time_netbsd_arm.go
+    │   │   │   ├── time_openbsd_386.go
+    │   │   │   ├── time_openbsd_amd64.go
+    │   │   │   ├── time_openbsd_arm64.go
+    │   │   │   ├── time_windows_386.go
+    │   │   │   ├── time_windows_amd64.go
+    │   │   │   └── time_windows_arm64.go
+    │   │   ├── tls_linux_amd64.go
+    │   │   ├── tls_linux_amd64.s
+    │   │   ├── unistd
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── unistd_darwin_amd64.go
+    │   │   │   ├── unistd_darwin_arm64.go
+    │   │   │   ├── unistd_freebsd_386.go
+    │   │   │   ├── unistd_freebsd_amd64.go
+    │   │   │   ├── unistd_freebsd_arm.go
+    │   │   │   ├── unistd_freebsd_arm64.go
+    │   │   │   ├── unistd_illumos_amd64.go
+    │   │   │   ├── unistd_linux_386.go
+    │   │   │   ├── unistd_linux_amd64.go
+    │   │   │   ├── unistd_linux_arm.go
+    │   │   │   ├── unistd_linux_arm64.go
+    │   │   │   ├── unistd_linux_loong64.go
+    │   │   │   ├── unistd_linux_mips64le.go
+    │   │   │   ├── unistd_linux_ppc64le.go
+    │   │   │   ├── unistd_linux_riscv64.go
+    │   │   │   ├── unistd_linux_s390x.go
+    │   │   │   ├── unistd_netbsd_amd64.go
+    │   │   │   ├── unistd_netbsd_arm.go
+    │   │   │   ├── unistd_openbsd_386.go
+    │   │   │   ├── unistd_openbsd_amd64.go
+    │   │   │   ├── unistd_openbsd_arm64.go
+    │   │   │   ├── unistd_windows_386.go
+    │   │   │   ├── unistd_windows_amd64.go
+    │   │   │   └── unistd_windows_arm64.go
+    │   │   ├── utime
+    │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   ├── capi_linux_386.go
+    │   │   │   ├── capi_linux_amd64.go
+    │   │   │   ├── capi_linux_arm.go
+    │   │   │   ├── capi_linux_arm64.go
+    │   │   │   ├── capi_linux_loong64.go
+    │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   ├── capi_linux_s390x.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── capi_windows_386.go
+    │   │   │   ├── capi_windows_amd64.go
+    │   │   │   ├── capi_windows_arm64.go
+    │   │   │   ├── utime_darwin_amd64.go
+    │   │   │   ├── utime_darwin_arm64.go
+    │   │   │   ├── utime_freebsd_386.go
+    │   │   │   ├── utime_freebsd_amd64.go
+    │   │   │   ├── utime_freebsd_arm.go
+    │   │   │   ├── utime_freebsd_arm64.go
+    │   │   │   ├── utime_illumos_amd64.go
+    │   │   │   ├── utime_linux_386.go
+    │   │   │   ├── utime_linux_amd64.go
+    │   │   │   ├── utime_linux_arm.go
+    │   │   │   ├── utime_linux_arm64.go
+    │   │   │   ├── utime_linux_loong64.go
+    │   │   │   ├── utime_linux_mips64le.go
+    │   │   │   ├── utime_linux_ppc64le.go
+    │   │   │   ├── utime_linux_riscv64.go
+    │   │   │   ├── utime_linux_s390x.go
+    │   │   │   ├── utime_netbsd_amd64.go
+    │   │   │   ├── utime_netbsd_arm.go
+    │   │   │   ├── utime_openbsd_386.go
+    │   │   │   ├── utime_openbsd_amd64.go
+    │   │   │   ├── utime_openbsd_arm64.go
+    │   │   │   ├── utime_windows_386.go
+    │   │   │   ├── utime_windows_amd64.go
+    │   │   │   └── utime_windows_arm64.go
+    │   │   ├── uuid
+    │   │   │   ├── capi_freebsd_386.go
+    │   │   │   ├── capi_freebsd_amd64.go
+    │   │   │   ├── capi_freebsd_arm.go
+    │   │   │   ├── capi_freebsd_arm64.go
+    │   │   │   ├── capi_netbsd_amd64.go
+    │   │   │   ├── capi_netbsd_arm.go
+    │   │   │   ├── capi_openbsd_386.go
+    │   │   │   ├── capi_openbsd_amd64.go
+    │   │   │   ├── capi_openbsd_arm64.go
+    │   │   │   ├── uuid
+    │   │   │   │   ├── capi_darwin_amd64.go
+    │   │   │   │   ├── capi_darwin_arm64.go
+    │   │   │   │   ├── capi_illumos_amd64.go
+    │   │   │   │   ├── capi_linux_386.go
+    │   │   │   │   ├── capi_linux_amd64.go
+    │   │   │   │   ├── capi_linux_arm.go
+    │   │   │   │   ├── capi_linux_arm64.go
+    │   │   │   │   ├── capi_linux_loong64.go
+    │   │   │   │   ├── capi_linux_mips64le.go
+    │   │   │   │   ├── capi_linux_ppc64le.go
+    │   │   │   │   ├── capi_linux_riscv64.go
+    │   │   │   │   ├── capi_linux_s390x.go
+    │   │   │   │   ├── uuid_darwin_amd64.go
+    │   │   │   │   ├── uuid_darwin_arm64.go
+    │   │   │   │   ├── uuid_illumos_amd64.go
+    │   │   │   │   ├── uuid_linux_386.go
+    │   │   │   │   ├── uuid_linux_amd64.go
+    │   │   │   │   ├── uuid_linux_arm.go
+    │   │   │   │   ├── uuid_linux_arm64.go
+    │   │   │   │   ├── uuid_linux_loong64.go
+    │   │   │   │   ├── uuid_linux_mips64le.go
+    │   │   │   │   ├── uuid_linux_ppc64le.go
+    │   │   │   │   ├── uuid_linux_riscv64.go
+    │   │   │   │   └── uuid_linux_s390x.go
+    │   │   │   ├── uuid_freebsd_386.go
+    │   │   │   ├── uuid_freebsd_amd64.go
+    │   │   │   ├── uuid_freebsd_arm.go
+    │   │   │   ├── uuid_freebsd_arm64.go
+    │   │   │   ├── uuid_netbsd_amd64.go
+    │   │   │   ├── uuid_netbsd_arm.go
+    │   │   │   ├── uuid_openbsd_386.go
+    │   │   │   ├── uuid_openbsd_amd64.go
+    │   │   │   └── uuid_openbsd_arm64.go
+    │   │   ├── watch.go
+    │   │   └── wctype
+    │   │       ├── capi_darwin_amd64.go
+    │   │       ├── capi_darwin_arm64.go
+    │   │       ├── capi_freebsd_386.go
+    │   │       ├── capi_freebsd_amd64.go
+    │   │       ├── capi_freebsd_arm.go
+    │   │       ├── capi_freebsd_arm64.go
+    │   │       ├── capi_illumos_amd64.go
+    │   │       ├── capi_linux_386.go
+    │   │       ├── capi_linux_amd64.go
+    │   │       ├── capi_linux_arm.go
+    │   │       ├── capi_linux_arm64.go
+    │   │       ├── capi_linux_loong64.go
+    │   │       ├── capi_linux_mips64le.go
+    │   │       ├── capi_linux_ppc64le.go
+    │   │       ├── capi_linux_riscv64.go
+    │   │       ├── capi_linux_s390x.go
+    │   │       ├── capi_netbsd_amd64.go
+    │   │       ├── capi_netbsd_arm.go
+    │   │       ├── capi_openbsd_386.go
+    │   │       ├── capi_openbsd_amd64.go
+    │   │       ├── capi_openbsd_arm64.go
+    │   │       ├── capi_windows_386.go
+    │   │       ├── capi_windows_amd64.go
+    │   │       ├── capi_windows_arm64.go
+    │   │       ├── wctype_darwin_amd64.go
+    │   │       ├── wctype_darwin_arm64.go
+    │   │       ├── wctype_freebsd_386.go
+    │   │       ├── wctype_freebsd_amd64.go
+    │   │       ├── wctype_freebsd_arm.go
+    │   │       ├── wctype_freebsd_arm64.go
+    │   │       ├── wctype_illumos_amd64.go
+    │   │       ├── wctype_linux_386.go
+    │   │       ├── wctype_linux_amd64.go
+    │   │       ├── wctype_linux_arm.go
+    │   │       ├── wctype_linux_arm64.go
+    │   │       ├── wctype_linux_loong64.go
+    │   │       ├── wctype_linux_mips64le.go
+    │   │       ├── wctype_linux_ppc64le.go
+    │   │       ├── wctype_linux_riscv64.go
+    │   │       ├── wctype_linux_s390x.go
+    │   │       ├── wctype_netbsd_amd64.go
+    │   │       ├── wctype_netbsd_arm.go
+    │   │       ├── wctype_openbsd_386.go
+    │   │       ├── wctype_openbsd_amd64.go
+    │   │       ├── wctype_openbsd_arm64.go
+    │   │       ├── wctype_windows_386.go
+    │   │       ├── wctype_windows_amd64.go
+    │   │       └── wctype_windows_arm64.go
+    │   ├── mathutil
+    │   │   ├── AUTHORS
+    │   │   ├── CONTRIBUTORS
+    │   │   ├── LICENSE
+    │   │   ├── Makefile
+    │   │   ├── README
+    │   │   ├── binarylog.go
+    │   │   ├── bits.go
+    │   │   ├── builder.json
+    │   │   ├── envelope.go
+    │   │   ├── int.go
+    │   │   ├── mathutil.go
+    │   │   ├── nist-sts-2-1-1-report
+    │   │   ├── permute.go
+    │   │   ├── poly.go
+    │   │   ├── primes.go
+    │   │   ├── rat.go
+    │   │   ├── rnd.go
+    │   │   ├── sqr.go
+    │   │   ├── sqr_std.go
+    │   │   ├── tables.go
+    │   │   └── test_deps.go
+    │   ├── memory
+    │   │   ├── AUTHORS
+    │   │   ├── CONTRIBUTORS
+    │   │   ├── LICENSE
+    │   │   ├── LICENSE-GO
+    │   │   ├── LICENSE-LOGO
+    │   │   ├── LICENSE-MMAP-GO
+    │   │   ├── Makefile
+    │   │   ├── README.md
+    │   │   ├── builder.json
+    │   │   ├── counters.go
+    │   │   ├── logo.png
+    │   │   ├── memory.go
+    │   │   ├── memory32.go
+    │   │   ├── memory64.go
+    │   │   ├── mmap_unix.go
+    │   │   ├── mmap_windows.go
+    │   │   ├── nocounters.go
+    │   │   ├── trace_disabled.go
+    │   │   └── trace_enabled.go
+    │   └── sqlite
+    │       ├── AUTHORS
+    │       ├── CONTRIBUTORS
+    │       ├── LICENSE
+    │       └── lib
+    │           ├── defs.go
+    │           ├── hooks.go
+    │           ├── hooks_linux_arm64.go
+    │           ├── mutex.go
+    │           ├── sqlite_darwin_amd64.go
+    │           ├── sqlite_darwin_arm64.go
+    │           ├── sqlite_freebsd_386.go
+    │           ├── sqlite_freebsd_amd64.go
+    │           ├── sqlite_freebsd_arm.go
+    │           ├── sqlite_freebsd_arm64.go
+    │           ├── sqlite_linux_386.go
+    │           ├── sqlite_linux_amd64.go
+    │           ├── sqlite_linux_arm.go
+    │           ├── sqlite_linux_arm64.go
+    │           ├── sqlite_linux_loong64.go
+    │           ├── sqlite_linux_ppc64le.go
+    │           ├── sqlite_linux_riscv64.go
+    │           ├── sqlite_linux_s390x.go
+    │           ├── sqlite_netbsd_amd64.go
+    │           ├── sqlite_openbsd_amd64.go
+    │           ├── sqlite_openbsd_arm64.go
+    │           ├── sqlite_windows.go
+    │           └── sqlite_windows_386.go
+    └── modules.txt
+193 directories, 2452 files
