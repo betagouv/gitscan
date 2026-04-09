@@ -1,6 +1,6 @@
 [project]
 name = "otp-ds-to-grist"
-version = "0.6.0"
+version = "0.7.0"
 description = "Ce projet permet de synchroniser plusieurs démarches Démarches Simplifiées vers différents documents Grist avec des paramètres de filtrage spécifiques à chaque démarche."
 authors = [
     {name = "tarik.amar@multi.coop"}
@@ -32,17 +32,21 @@ build-backend = "poetry.core.masonry.api"
 package-mode = false
 
 [tool.poetry.group.dev.dependencies]
-commitizen = "^4.12.1"
-poethepoet = "^0.40.0"
+commitizen = "^4.13.9"
+poethepoet = "^0.42.1"
 pytest = "^9.0.2"
-pytest-cov = "^7.0.0"
-ruff = "^0.15.0"
+pytest-cov = "^7.1.0"
+ruff = "^0.15.9"
 
 [tool.poe.tasks.dev]
 shell = "python app.py"
 
 [tool.poe.tasks.test]
-shell = "pytest"
+cmd = "pytest"
+
+[tool.poe.tasks.test-coverage]
+help = "Lance les tests avec rapport de couverture"
+cmd = "pytest --cov=. --cov-report=term"
 
 [tool.poe.tasks.generate-secret]
 help = "Génère une clé secrète sécurisée pour Flask"
@@ -51,10 +55,6 @@ shell = "python3 -c \"import secrets; print('FLASK_SECRET_KEY=' + secrets.token_
 [tool.poe.tasks.generate-encryption-key]
 help = "Génère une clé secrète de cryptage"
 shell = "python3 -c \"import secrets, base64; print('ENCRYPTION_KEY=' + base64.urlsafe_b64encode(secrets.token_bytes(32)).decode())\""
-
-[tool.poe.tasks.test-coverage]
-help = "Lance les tests avec rapport de couverture"
-shell = "pytest --cov=. --cov-report=term"
 
 [tool.ruff]
 line-length = 88

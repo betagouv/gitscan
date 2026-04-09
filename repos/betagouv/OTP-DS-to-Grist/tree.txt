@@ -1,4 +1,8 @@
 .
+├── .devcontainer
+│   ├── devcontainer.json
+│   └── docker-compose.override.yml
+├── .dockerignore
 ├── .env.example
 ├── .eslintrc.json
 ├── .github
@@ -18,10 +22,14 @@
 │   ├── settings.json
 │   └── tasks.json
 ├── CHANGELOG.md
+├── Dockerfile
 ├── LICENSE
 ├── Procfile
 ├── README.md
+├── api_validator.py
 ├── app.py
+├── build
+│   └── .zshrc
 ├── configuration
 │   ├── __init__.py
 │   └── config_manager.py
@@ -30,10 +38,13 @@
 │   ├── __init__.py
 │   ├── database_manager.py
 │   └── models.py
+├── docker-compose.override.yml
+├── docker-compose.yml
 ├── docs
 │   ├── deploy.md
 │   ├── install.md
 │   └── technique.md
+├── formatter.py
 ├── grist_processor_working_all.py
 ├── jest.config.js
 ├── jest.setup.js
@@ -78,31 +89,36 @@
 │   ├── index.html
 │   ├── sync_progression.html
 │   └── use-otp.html
-└── tests
+├── tests
+│   ├── __init__.py
+│   ├── js
+│   │   ├── config.test.js
+│   │   ├── connections.test.js
+│   │   ├── filters.test.js
+│   │   ├── form.test.js
+│   │   ├── gristContext.test.js
+│   │   ├── logs.test.js
+│   │   ├── notifications.test.js
+│   │   ├── sync.test.js
+│   │   └── utils.test.js
+│   └── python
+│       ├── __init__.py
+│       ├── conftest.py
+│       ├── integration
+│       │   ├── __init__.py
+│       │   └── test_app.py
+│       └── unit
+│           ├── __init__.py
+│           ├── test_api_validator.py
+│           ├── test_config_manager.py
+│           ├── test_database_manager.py
+│           ├── test_grist_processor.py
+│           ├── test_models.py
+│           ├── test_queries_util.py
+│           ├── test_schema_utils.py
+│           ├── test_sync_task_manager.py
+│           └── test_unwrap_json_list.py
+└── utils
     ├── __init__.py
-    ├── js
-    │   ├── config.test.js
-    │   ├── connections.test.js
-    │   ├── filters.test.js
-    │   ├── form.test.js
-    │   ├── gristContext.test.js
-    │   ├── logs.test.js
-    │   ├── notifications.test.js
-    │   ├── sync.test.js
-    │   └── utils.test.js
-    └── python
-        ├── __init__.py
-        ├── conftest.py
-        ├── integration
-        │   ├── __init__.py
-        │   └── test_app.py
-        └── unit
-            ├── __init__.py
-            ├── test_config_manager.py
-            ├── test_database_manager.py
-            ├── test_grist_processor.py
-            ├── test_models.py
-            ├── test_queries_util.py
-            ├── test_schema_utils.py
-            └── test_sync_task_manager.py
-17 directories, 90 files
+    └── log_progress.py
+20 directories, 103 files
