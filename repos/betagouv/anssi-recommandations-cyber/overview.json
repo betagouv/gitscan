@@ -1,32 +1,34 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber",
   "name": "anssi-recommandations-cyber",
-  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI. Elle offre un accès aux recommandations de cybersécurité de l'ANSSI via une interface utilisateur et une API.",
+  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.",
   "language": "Python",
   "features": [
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Recherche & Filtres",
-    "Pose de questions",
-    "Copie de réponses",
-    "Gestion des retours utilisateurs",
-    "Données & Schémas"
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "cryptography",
+    "dpath",
     "fastapi",
     "httpx",
     "openai",
     "psycopg2-binary",
+    "pytest",
     "requests",
     "sentry-sdk",
-    "uvicorn",
-    "zod"
+    "slowapi",
+    "starlette",
+    "uvicorn"
   ],
   "components": [
-    "Python (scripts & backend)",
-    "Angular / Svelte / Autres SPA",
+    "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Modèle d'IA Albert"
+    "Python (scripts & backend)",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -35,15 +37,10 @@
   },
   "tests": [
     "pytest",
-    "svelte-check"
+    "mypy"
   ],
-  "workflows": [
-    "checkov.yml",
-    "ci.yml",
-    "codeql-analysis.yml",
-    "deploiement.yml"
-  ],
-  "lastActivity": "2026-03-09T14:38:48Z",
+  "workflows": [],
+  "lastActivity": "2026-04-08T08:26:59+00:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -51,16 +48,11 @@
     "stars": 2,
     "forks": 0,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": 3
   },
   "tags": [
-    "Sécurité & Auth",
-    "Écosystème beta.gouv / État",
-    "Intelligence Artificielle & LLM",
-    "recommandations",
     "Données & Open Data",
-    "Python",
-    "Angular, Svelte & autres SPA",
-    "Bases de données SQL"
+    "Sécurité & Conformité",
+    "Intelligence Artificielle & NLP"
   ]
 }
