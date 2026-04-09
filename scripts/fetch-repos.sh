@@ -48,7 +48,7 @@ function fetch_org_repos() {
     log INFO "Fetching repository list from GitHub API (up to $PAGES_COUNT pages)"
     for i in $(seq 1 $PAGES_COUNT); do
         log DEBUG "Fetching page $i/$PAGES_COUNT for org '$ORG_NAME'"
-        RESPONSE=$(curl -s -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" "https://api.github.com/orgs/$ORG_NAME/repos?page=$i&type=public&per_page=100")
+        RESPONSE=$(curl -s -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" "https://api.github.com/orgs/$ORG_NAME/repos?page=$i&type=public&per_page=100&sort=updated&direction=desc")
 
         # Check if response is an error (has "message" field indicating API error)
         if echo "$RESPONSE" | jq -e 'type == "object" and has("message")' > /dev/null 2>&1; then
