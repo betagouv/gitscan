@@ -24,6 +24,7 @@
 │   └── MIT.txt
 ├── README.md
 ├── REUSE.toml
+├── ROADMAP-SOFTWARE-TYPES.md
 ├── api
 │   ├── .config
 │   │   └── kysely.config.ts
@@ -110,11 +111,14 @@
 │   │   │   │   │       │   ├── 1759498443784_make-timestamps-columns-human-readable.ts
 │   │   │   │   │       │   ├── 1760101353900_add-custom-attributes.ts
 │   │   │   │   │       │   ├── 1769169466300_migrate-version-min-to-custom-attributes.ts
-│   │   │   │   │       │   └── 1769773451027_add-repo-metadata.ts
+│   │   │   │   │       │   ├── 1769773451027_add-repo-metadata.ts
+│   │   │   │   │       │   ├── 1771584277207_rename-external-data-columns-to-canonical.ts
+│   │   │   │   │       │   ├── 1771586790756_rename-softwares-columns-to-canonical.ts
+│   │   │   │   │       │   ├── 1772105164020_rename-softwares-logourl-to-image.ts
+│   │   │   │   │       │   └── 1773933947738_add-override-fields-to-softwares.ts
 │   │   │   │   │       └── pgDbApi.integration.test.ts
 │   │   │   │   ├── doiResolver.ts
 │   │   │   │   ├── getCnllPrestatairesSill.ts
-│   │   │   │   ├── getServiceProviders.ts
 │   │   │   │   ├── hal
 │   │   │   │   │   ├── CrossRef
 │   │   │   │   │   │   ├── api
@@ -160,15 +164,17 @@
 │   │   │   ├── ports
 │   │   │   │   ├── CompileData.ts
 │   │   │   │   ├── ComptoirDuLibreApi.ts
-│   │   │   │   ├── DbApi.ts
 │   │   │   │   ├── DbApiV2.ts
 │   │   │   │   ├── GetCnllPrestatairesSill.ts
 │   │   │   │   ├── GetScholarlyArticle.ts
-│   │   │   │   ├── GetServiceProviders.ts
+│   │   │   │   ├── GetSoftwareExternal.ts
 │   │   │   │   ├── GetSoftwareExternalData.ts
 │   │   │   │   ├── GetSoftwareExternalDataOptions.ts
 │   │   │   │   ├── GetSoftwareFormData.ts
 │   │   │   │   └── SourceGateway.ts
+│   │   │   ├── types
+│   │   │   │   ├── SoftwareTypes.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── uiConfigSchema.ts
 │   │   │   ├── usecases
 │   │   │   │   ├── auth
@@ -228,7 +234,6 @@
 │   │   │   └── update.ts
 │   │   ├── tools
 │   │   │   ├── OptionalIfCanBeUndefined.ts
-│   │   │   ├── PartialNoOptional.ts
 │   │   │   ├── WikidataEntity.ts
 │   │   │   ├── identifiersTools.ts
 │   │   │   ├── projectVersion.ts
@@ -905,8 +910,23 @@
 │   ├── charts
 │   │   └── index.yaml
 │   ├── index.html
+│   ├── issue-491-context.md
+│   ├── issue-491-plan.md
+│   ├── issue-491-worklog.md
 │   ├── sill.en.md
 │   └── sill.md
+├── e2e
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── scripts
+│   │   └── start-e2e.ts
+│   ├── tests
+│   │   ├── add-software.auth.spec.ts
+│   │   ├── auth.setup.ts
+│   │   ├── declaration.auth.spec.ts
+│   │   ├── software-catalog.spec.ts
+│   │   └── software-details.spec.ts
+│   └── tsconfig.json
 ├── helm-charts
 │   └── catalogi
 │       ├── Chart.yaml
@@ -926,9 +946,12 @@
 │       │   └── web-service.yaml
 │       └── values.yaml
 ├── lefthook.yml
+├── migration-plan.md
 ├── nginx
 │   └── default.conf
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── renovate.json
 ├── scripts
 │   ├── bump-helm-chart-version.js
@@ -1221,12 +1244,12 @@
 │   │   │   │   ├── LoadingFallback.tsx
 │   │   │   │   ├── LogoURLButton.tsx
 │   │   │   │   ├── MarkdownPage.tsx
+│   │   │   │   ├── OperatingSystemsTable.tsx
 │   │   │   │   ├── PromptForOrganization.tsx
 │   │   │   │   ├── SearchInput.tsx
 │   │   │   │   ├── SearchMultiInput.tsx
 │   │   │   │   ├── SelectNext.tsx
-│   │   │   │   ├── SmartLogo.tsx
-│   │   │   │   └── SoftwareTypeTable.tsx
+│   │   │   │   └── SmartLogo.tsx
 │   │   │   └── tools
 │   │   │       ├── isStorybook.ts
 │   │   │       ├── typeRouteMock.ts
@@ -1238,6 +1261,5 @@
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── yarn-error.log
-└── yarn.lock
-126 directories, 1157 files
+└── yarn-error.log
+130 directories, 1175 files

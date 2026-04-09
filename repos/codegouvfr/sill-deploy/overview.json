@@ -1,50 +1,46 @@
 {
   "url": "https://github.com/codegouvfr/sill-deploy",
   "name": "sill-deploy",
-  "description": "Ce dépôt contient le déploiement de Catalogi, une application web pour gérer les catalogues de logiciels. Il s'agit d'un fork du dépôt principal, maintenu à jour avec les modifications en amont.",
+  "description": "Ce dépôt contient Catalogi, une application web pour gérer les catalogues de logiciels. Il s'agit d'un déploiement spécifique de Catalogi pour le SILL, avec quelques ajustements pour rester synchronisé avec le projet principal.",
   "language": "TypeScript",
-  "features": [],
+  "features": [
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
+    "Recherche & Filtres"
+  ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "@codegouvfr/react-dsfr",
-    "@emotion/react",
-    "@emotion/styled",
-    "@mui/icons-material",
-    "@mui/material",
-    "@sentry/react",
-    "@tanstack/react-virtual",
-    "@trpc/client",
-    "i18next",
-    "i18next-browser-languagedetector",
-    "i18next-http-backend",
-    "react",
-    "react-dom",
-    "react-hook-form",
-    "react-i18next",
-    "redux-clean-architecture",
-    "zod",
-    "kysely",
-    "postgres"
+    "PostgreSQL",
+    "Docker",
+    "Keycloak"
   ],
   "components": [
-    "React / Next.js",
     "API REST & GraphQL",
-    "PostgreSQL & SQL"
+    "PostgreSQL & SQL",
+    "React / Next.js",
+    "Docker & Conteneurs",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
-      "none"
+      "oauth2",
+      "sso"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
-    "Vitest"
+    "Playwright",
+    "Testcontainers"
   ],
   "workflows": [
-    "ci.yaml",
-    "sync-upstream.yaml",
-    "trigger-deploy.yaml"
+    "CI/CD",
+    "Déploiement"
   ],
-  "lastActivity": "2026-01-31T07:20:01Z",
+  "lastActivity": "2026-03-19T21:00:36+01:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,11 +51,12 @@
     "openIssues": 0
   },
   "tags": [
-    "logiciels libres",
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "catalogage",
-    "Déploiement & Hosting",
+    "React & Next.js",
     "TypeScript",
-    "React & Next.js"
+    "Déploiement & Hosting",
+    "Python",
+    "Bases de données SQL"
   ]
 }
