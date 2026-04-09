@@ -1,7 +1,11 @@
-## Changelog : anssi-mes-questions-cyber-journal (30 derniers jours)
+## Changelog : anssi-mes-questions-cyber-journal (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce journal des événements de MesQuestionsCyber a été mis à jour techniquement pour utiliser le gestionnaire de paquets pnpm à la place de npm. Ce changement améliore la sécurité et la performance de la gestion des dépendances du projet.
+Ce changelog fait état d'améliorations de la configuration et de la portabilité du projet. Les modifications concernent principalement l'environnement de développement et visent à assurer une meilleure reproductibilité et compatibilité des déploiements.
 
 ### Évolutions techniques
-- Passage à pnpm pour la gestion des dépendances [#1](https://github.com/betagouv/anssi-mes-questions-cyber-journal/commit/c63c510)
+- Paramétrisation de la version de Node.js utilisée par le projet.
+- Spécification explicite de la version de PostgreSQL pour l'environnement de développement.
+- Définition du registre à utiliser pour récupérer les images de conteneur.
+- Amélioration de la portabilité des scripts.
+- Mise à jour de la version de Node.js.
