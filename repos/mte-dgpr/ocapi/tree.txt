@@ -1,0 +1,170 @@
+.
+├── .env.example
+├── .flake8
+├── .github
+│   └── workflows
+│       ├── ci.yml
+│       └── pages.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .vscode
+│   └── settings.json
+├── LICENSE
+├── Makefile
+├── README.md
+├── config
+│   ├── llm_models.json
+│   ├── llm_rate_limit.json
+│   └── llm_resilience.json
+├── conftest.py
+├── examples
+│   ├── arretes_history
+│   │   ├── 0003013459
+│   │   │   └── history.json
+│   │   ├── 0005302394
+│   │   │   └── history.json
+│   │   ├── 0005800425
+│   │   │   └── history.json
+│   │   └── 0005804239
+│   │       └── history.json
+│   ├── arretes_html
+│   │   ├── 0003013459
+│   │   │   ├── 2020-04-20.html
+│   │   │   ├── 2021-09-24.html
+│   │   │   └── 2023-02-22.html
+│   │   ├── 0005302394
+│   │   │   ├── 2008-12-10.html
+│   │   │   ├── 2009-12-18.html
+│   │   │   ├── 2010-12-24.html
+│   │   │   ├── 2012-04-03.html
+│   │   │   ├── 2012-12-07.html
+│   │   │   └── 2020-12-22.html
+│   │   ├── 0005800425
+│   │   │   ├── 2003-09-09.html
+│   │   │   ├── 2005-11-08.html
+│   │   │   ├── 2007-04-19.html
+│   │   │   ├── 2010-03-29.html
+│   │   │   ├── 2012-09-03.html
+│   │   │   └── 2025-02-24.html
+│   │   └── 0005804239
+│   │       ├── 2009-12-08.html
+│   │       ├── 2012-04-02.html
+│   │       ├── 2014-01-09.html
+│   │       ├── 2014-12-11.html
+│   │       ├── 2020-04-30.html
+│   │       ├── 2023-12-04.html
+│   │       └── 2024-09-27.html
+│   ├── arretes_operations
+│   │   ├── 0003013459
+│   │   │   └── operations.json
+│   │   ├── 0005302394
+│   │   │   └── operations.json
+│   │   ├── 0005800425
+│   │   │   └── operations.json
+│   │   └── 0005804239
+│   │       └── operations.json
+│   ├── consolidated_permit
+│   │   ├── 0003013459
+│   │   │   └── permis.html
+│   │   ├── 0005302394
+│   │   │   └── permis.html
+│   │   ├── 0005800425
+│   │   │   └── permis.html
+│   │   └── 0005804239
+│   │       └── permis.html
+│   ├── ground-truth
+│   │   ├── 0003013459
+│   │   │   └── operations.json
+│   │   ├── 0005302394
+│   │   │   └── operations.json
+│   │   ├── 0005800425
+│   │   │   └── operations.json
+│   │   └── 0005804239
+│   │       └── operations.json
+│   └── index.html
+├── ocapi
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── cli_flake.py
+│   ├── cli_test.py
+│   ├── config.py
+│   ├── config_test.py
+│   ├── exceptions.py
+│   ├── exceptions_test.py
+│   ├── main.py
+│   ├── pipeline.py
+│   ├── pipeline_test.py
+│   ├── snapshot_test.py
+│   ├── snapshots
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── expected
+│   │   │   ├── 0003013459
+│   │   │   │   ├── history.json
+│   │   │   │   ├── operations.json
+│   │   │   │   └── permis.html
+│   │   │   ├── 0005302394
+│   │   │   │   ├── history.json
+│   │   │   │   ├── operations.json
+│   │   │   │   └── permis.html
+│   │   │   ├── 0005800425
+│   │   │   │   ├── history.json
+│   │   │   │   ├── operations.json
+│   │   │   │   └── permis.html
+│   │   │   └── 0005804239
+│   │   │       ├── history.json
+│   │   │       ├── operations.json
+│   │   │       └── permis.html
+│   │   └── llm_mock.py
+│   ├── step_chunking
+│   │   ├── __init__.py
+│   │   ├── step_chunking.py
+│   │   └── step_chunking_test.py
+│   ├── step_detection
+│   │   ├── __init__.py
+│   │   ├── extract_operand.py
+│   │   ├── extract_operand_test.py
+│   │   ├── prompts.py
+│   │   ├── step_detection.py
+│   │   └── step_detection_test.py
+│   ├── step_rendering
+│   │   ├── __init__.py
+│   │   ├── make_header.py
+│   │   ├── make_main_content.py
+│   │   ├── make_other.py
+│   │   ├── step_rendering.py
+│   │   └── step_rendering_test.py
+│   ├── step_resolution
+│   │   ├── __init__.py
+│   │   ├── apply_ops.py
+│   │   ├── apply_ops_test.py
+│   │   ├── build_op_graph.py
+│   │   ├── build_op_graph_test.py
+│   │   ├── step_resolution.py
+│   │   └── step_resolution_test.py
+│   ├── types.py
+│   ├── types_test.py
+│   └── utils
+│       ├── README_LOGGING.md
+│       ├── arretify_utils.py
+│       ├── arretify_utils_test.py
+│       ├── documents.py
+│       ├── error_handling.py
+│       ├── io_utils.py
+│       ├── io_utils_test.py
+│       ├── llm_utils.py
+│       ├── llm_utils_test.py
+│       ├── logging_utils.py
+│       ├── logging_utils_test.py
+│       ├── subtarget_utils.py
+│       ├── subtarget_utils_test.py
+│       └── utils.py
+├── pyproject.toml
+├── scripts
+│   ├── apache-2.tmpl
+│   ├── evaluate_detection.py
+│   ├── evaluate_detection_test.py
+│   └── generate_docs_index.py
+└── templates
+    └── permis_consolide.html
+45 directories, 124 files
