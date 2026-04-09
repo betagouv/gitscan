@@ -1,27 +1,21 @@
-## Changelog : monprojetsup (30 derniers jours)
+## Changelog : monprojetsup (30 derniers jours, au 24 mars 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de Mon Projet Sup, avec un focus sur l'amélioration des suggestions de formations, la gestion des indicateurs et des corrections pour stabiliser l'application. Des améliorations techniques ont également été apportées pour optimiser les performances et faciliter le développement.
+Les dernières évolutions de MonProjetSup se concentrent sur l'amélioration de la fonctionnalité de suggestions, notamment en corrigeant des problèmes de calcul et en ajoutant des tests. Des ajustements ont également été apportés à la gestion des indicateurs et à l'identification des experts, avec un accent sur la journalisation pour faciliter le débogage et le suivi.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la gestion des indicateurs, suite aux demandes de Laura. [#1061](https://github.com/betagouv/monprojetsup/issues/1061)
-- Ajout d'un mode expert avec affichage d'informations détaillées sur les JWT. [#1064](https://github.com/betagouv/monprojetsup/issues/1064) et [#1059](https://github.com/betagouv/monprojetsup/issues/1059)
-- Restauration du service de progression. [#1047](https://github.com/betagouv/monprojetsup/issues/1047)
-- Mise à jour de l'API front-end. [#1048](https://github.com/betagouv/monprojetsup/issues/1048)
-- Amélioration du chargement initial des modèles pour les suggestions2, optimisant ainsi la performance. [#1051](https://github.com/betagouv/monprojetsup/issues/1051)
+- Correction du calcul de lissage de Laplace dans les suggestions, améliorant ainsi la pertinence des recommandations. [#1071](https://github.com/betagouv/monprojetsup/issues/1071)
+- Désactivation de la corbeille des formations dans le cadre des suggestions. [#1071](https://github.com/betagouv/monprojetsup/issues/1071)
+- Amélioration de l'affichage des explications détaillées, avec une inclusion dynamique.
+- Correction d'un bug lié à l'année hardcodée.
+- Les indicateurs sont maintenant correctement maintenus actifs. [#1078](https://github.com/betagouv/monprojetsup/issues/1078)
 
 ### Évolutions techniques
-- Mise à jour des versions de Spring Boot et d'autres dépendances, corrigeant des problèmes et améliorant la stabilité. [#1053](https://github.com/betagouv/monprojetsup/issues/1053)
-- Optimisation du calcul des villes-voeux. [#1050](https://github.com/betagouv/monprojetsup/issues/1050)
-- Réduction de l'utilisation de la mémoire pour les suggestions2. [#1040](https://github.com/betagouv/monprojetsup/issues/1040)
-- Ajout de tests pour la CI pour les suggestions2. [#1058](https://github.com/betagouv/monprojetsup/issues/1058)
-- Simplification du code pour le calcul des villes-voeux.
-- Correction de tests et suppression de logs inutiles.
-- Rebase de la branche `prod` sur `demo`. [#1070](https://github.com/betagouv/monprojetsup/issues/1070)
-
-### Autres changements
-- Modification du niveau de log d'une erreur en information pour un comportement nominal. [#1069](https://github.com/betagouv/monprojetsup/issues/1069)
-- Suppression de valeurs codées en dur pour l'année. [#1066](https://github.com/betagouv/monprojetsup/issues/1066)
-- Ajout de logs pour le mode expert.
-- Ajout de fichiers manquants.
-- Correction de bugs divers et amélioration de la qualité du code.
+- Ajout de tests pour la CI (Continuous Integration) pour la fonctionnalité "suggestions2". [#1075](https://github.com/betagouv/monprojetsup/issues/1075)
+- Refactorisation de l'extraction des informations de l'expert depuis le JWT (JSON Web Token).
+- Injection d'un booléen pour identifier si l'utilisateur est un expert.
+- Ajout de logs plus détaillés pour le processus d'authentification et l'identification des experts, facilitant le débogage. [#1073](https://github.com/betagouv/monprojetsup/issues/1073)
+- Rebase de la branche `demo` sur `prod2` et `demo`. [#1074](https://github.com/betagouv/monprojetsup/issues/1074)
+- Amélioration de la verbosité des claims JWT.
+- Corrections de tests unitaires.
+- Application de règles de linting pour améliorer la qualité du code.
