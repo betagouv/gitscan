@@ -1,0 +1,177 @@
+[build-system]
+requires = ["uv_build>=0.8.9,<0.9.0"]
+build-backend = "uv_build"
+
+[project]
+name = "b3desk"
+version = "1.6.1dev"
+description = "Outil de visioconférence pour les agents de l'Education Nationale et de l'Etat en général."
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.15"
+dependencies = [
+    "celery>=5.2.7,<6.0.0",
+    "filetype>=1.2.0,<2.0.0",
+    "flask>=3.0.0,<4.0.0",
+    "flask-babel>=4.0.0,<5.0.0",
+    "flask-caching>=2.0.2,<3.0.0",
+    "flask-uploads==0.2.1",
+    "flask-migrate>=4.0.5,<5.0.0",
+    "flask-pyoidc>=3.14.2,<4.0.0",
+    "flask-sqlalchemy>=3.0.3,<4.0.0",
+    "flask-wtf>=1.2.1,<2.0.0",
+    "gunicorn>=23.0.0",
+    "joserfc>=1.1.0,<2.0.0",
+    "netaddr>=1.2.1,<2.0.0",
+    "psycopg2>=2.9.3,<3.0.0",
+    "pydantic>=2.12.0,<3.0.0",
+    "pydantic-settings>=2.10.0,<3.0.0",
+    "python-slugify>=8.0.4,<9.0.0",
+    "redis>=7.0.0,<8.0.0",
+    "requests>=2.32.4,<3.0.0",
+    "sentry-sdk>=2.3.1,<3.0.0",
+    "sqlalchemy>=1.4.31,<2.0.0",
+    "sqlalchemy-json>=0.7.0,<0.8.0",
+    "sqlalchemy-utils>=0.41.1,<0.50.0",
+    "webdavclient3==3.14.6",
+]
+
+[tool.uv]
+package = true
+
+[tool.uv.build-backend]
+module-root = "web"
+
+[project.scripts]
+b3desk = "b3desk.cli:main"
+
+[dependency-groups]
+dev = [
+    "coverage>=7.2.2,<8.0.0",
+    "flake8>=7.0.0,<8.0.0",
+    "Flask-WebTest>=0.1.6,<0.2.0",
+    "prek>=0.2.0,<1.0.0",
+    "pyquery>=2.0.0,<3.0.0",
+    "pytest>=9.0.0,<10.0.0",
+    "pytest-cov>=6.0.0",
+    "pytest-dotenv>=0.5.2,<0.6.0",
+    "pytest-iam>=0.2.4",
+    "pytest-lazy-fixtures>=1.0.0,<2.0.0",
+    "pytest-mock>=3.11.1,<4.0.0",
+    "pytest-postgresql>=7.0.0,<8.0.0",
+    "pytest-smtpd>=0.1.0,<0.2.0",
+    "time-machine>=3.0.0,<4.0.0",
+    "wsgidav>=4.3.1,<5.0.0",
+    # This is used to allow flask-webtest > webtest > webob to be compatible with py3.13+
+    "legacy-cgi>=2.6.3,<3.0.0 ; python_version>='3.13'",
+    "tox-uv>=1.28.0",
+    "diff-cover>=9.7.2",
+    "pytest-xdist>=3.8.0",
+]
+doc = [
+    "autodoc-pydantic>=2.2.0,<3.0.0",
+    "myst-parser>=2.0.0,<3.0.0",
+    "sphinx>=7.0.0,<8.0.0",
+    "sphinx-rtd-theme>=2.0.0,<3.0.0",
+    "sphinx-issues>=4.0.0,<5.0.0",
+]
+worker = [
+    "celery>=5.2.7,<6.0.0",
+    "redis>=7.0.0,<8.0.0",
+    "requests>=2.32.4,<3.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = "web"
+markers = [
+    "secure: cloud auth responds with a https url",
+    "no_scheme: cloud auth responds without any scheme for url",
+]
+filterwarnings = [
+    "ignore::joserfc.errors.SecurityWarning",
+]
+
+[tool.ruff.lint]
+select = [
+    "B", # flake8-bugbear
+    "D", # pydocstyle
+    "E", # pycodestyle
+    "F", # pyflakes
+    "I", # isort
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line-too-long
+    "E722", # bare-except
+    "D100", # public module
+    "D101", # public class
+    "D102", # public method
+    "D103", # public function
+    "D104", # public package
+    "D105", # magic method
+    "D106", # nested class
+    "D107", # public init
+    "D203", # no-blank-line-before-class
+    "D213", # multi-line-summary-second-line
+]
+
+
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.tox]
+requires = ["tox>=4.19"]
+env_list = ["style", "py310", "py311", "py312", "py313", "py314", "coverage", "doc"]
+
+[tool.tox.env_run_base]
+uv_seed = true
+dependency_groups = ["dev"]
+commands = [["pytest", "--db=sqlite", "--db=postgresql", "{posargs:web}"]]
+
+[tool.tox.env.style]
+dependency_groups = ["dev"]
+commands = [["prek", "run", "--all-files"]]
+
+[tool.tox.env.coverage]
+dependency_groups = ["dev"]
+commands = [
+    ["pytest", "--cov", "--cov-report", "term:skip-covered", "--db=sqlite", "--db=postgresql", "{posargs:web}"],
+    ["coverage", "html"],
+]
+
+[tool.tox.env.doc]
+dependency_groups = ["doc"]
+commands = [["sphinx-build", "-W", "--keep-going", "documentation", "build/sphinx/html"]]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "except ImportError",
+]
+partial_branches = [
+    "pragma: no branch",
+    "if app.debug",
+    "if app.testing",
+]
+
+[[tool.babel.mappings]]
+method = "python"
+pattern = "**.py"
+
+[[tool.babel.mappings]]
+method = "jinja2"
+pattern = "**/templates/**.html"
+
+[[tool.babel.mappings]]
+method = "jinja2"
+pattern = "**/templates/**.txt"
