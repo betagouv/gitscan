@@ -1,22 +1,16 @@
-## Changelog : depots-sauvages (30 derniers jours)
+## Changelog : depots-sauvages (30 derniers jours, au 2 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de l'application de signalement des dépôts sauvages se concentrent sur l'amélioration de la qualité du texte, la correction de bugs affectant l'expérience utilisateur, et l'ajout d'outils de surveillance pour une meilleure maintenance. Des améliorations ont également été apportées aux templates de documents générés par l'application.
+Cette mise à jour apporte des améliorations significatives à la gestion des signalements de dépôts sauvages. Les agents des communes peuvent désormais bénéficier d'informations plus complètes sur les signalements, notamment sur le constatant et l'auteur présumé, ainsi que d'une meilleure visualisation des étapes de la procédure. Des options de configuration ont également été ajoutées pour personnaliser l'accès à l'interface d'administration.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'apparition du bouton de connexion sur la version mobile [#110](https://github.com/betagouv/depots-sauvages/issues/110).
-- Amélioration de la page "Dossier sans procédure" avec l'ajout de détails supplémentaires [#111](https://github.com/betagouv/depots-sauvages/issues/111).
-- Correction de fautes de français dans le rapport de constatation [#116](https://github.com/betagouv/depots-sauvages/issues/116).
-- Correction de fautes de français dans la lettre d'information [#115](https://github.com/betagouv/depots-sauvages/issues/115).
-- Modification du texte sur la page "comprendre la procédure" [#126](https://github.com/betagouv/depots-sauvages/issues/126).
-- Mise à jour des templates du rapport de constatation et de la lettre d'information [#125](https://github.com/betagouv/depots-sauvages/issues/125).
+- Ajout des informations sur le constatant d'un dépôt sauvage. [#135](https://github.com/betagouv/depots-sauvages/issues/135)
+- Ajout des informations sur l'auteur présumé d'un dépôt sauvage. [#133](https://github.com/betagouv/depots-sauvages/issues/133)
+- La page de détail d'une procédure affiche maintenant les étapes de la procédure. [#129](https://github.com/betagouv/depots-sauvages/issues/129)
+- Redirection de l'ancienne page de téléchargement de documents vers la nouvelle page de suivi de procédure. [#131](https://github.com/betagouv/depots-sauvages/issues/131)
+- Activation du menu "Mes procédures" lorsque l'utilisateur est sur la nouvelle page de suivi de procédure. [#130](https://github.com/betagouv/depots-sauvages/issues/130)
 
 ### Évolutions techniques
-- Ajout de Sentry pour la surveillance des erreurs et des performances [#117](https://github.com/betagouv/depots-sauvages/issues/117).
-- Ajout de tests unitaires dans la CI pour améliorer la qualité du code [#123](https://github.com/betagouv/depots-sauvages/issues/123).
-- Correction des notifications de sécurité [#121](https://github.com/betagouv/depots-sauvages/issues/121).
-- Correction d'un bug lié aux variables d'environnement locales et au bouton de connexion [#112](https://github.com/betagouv/depots-sauvages/issues/112).
-- Retrait des fonctionnalités liées à l'ancien formulaire [#113](https://github.com/betagouv/depots-sauvages/issues/113).
-- Mise à jour des packages Python et Yarn [#119](https://github.com/betagouv/depots-sauvages/issues/119), [#122](https://github.com/betagouv/depots-sauvages/issues/122).
-- Mise à jour de la documentation et des tests [#118](https://github.com/betagouv/depots-sauvages/issues/118).
-- Changement de configurations par défaut [#124](https://github.com/betagouv/depots-sauvages/issues/124).
+- Simplification des modèles de données des signalements. [#136](https://github.com/betagouv/depots-sauvages/issues/136)
+- Mise à jour de l'add-on PostgreSQL sur Scalingo. [#134](https://github.com/betagouv/depots-sauvages/issues/134)
+- Possibilité de désactiver la page d'administration et de modifier son URL. [#132](https://github.com/betagouv/depots-sauvages/issues/132)
