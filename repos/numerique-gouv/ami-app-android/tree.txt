@@ -1,0 +1,172 @@
+.
+├── .gitignore
+├── README.md
+├── app
+│   ├── .gitignore
+│   ├── build.gradle.kts
+│   ├── google-services.json
+│   ├── proguard-rules.pro
+│   └── src
+│       ├── androidTest
+│       │   └── java
+│       │       └── fr
+│       │           └── gouv
+│       │               └── ami
+│       │                   └── ExampleInstrumentedTest.kt
+│       ├── debug
+│       │   └── java
+│       │       └── fr
+│       │           └── gouv
+│       │               └── ami
+│       │                   ├── api
+│       │                   │   └── OkHttpClientBuilderExt.kt
+│       │                   └── components
+│       │                       └── SslErrorHandlerExt.kt
+│       ├── main
+│       │   ├── AndroidManifest.xml
+│       │   ├── ic_launcher-playstore.png
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── gouv
+│       │   │           └── ami
+│       │   │               ├── MainActivity.kt
+│       │   │               ├── MainApp.kt
+│       │   │               ├── api
+│       │   │               │   ├── ApiService.kt
+│       │   │               │   └── NetworkService.kt
+│       │   │               ├── components
+│       │   │               │   ├── BackBar.kt
+│       │   │               │   ├── Buttons.kt
+│       │   │               │   ├── DownloadLogsButton.kt
+│       │   │               │   ├── DownloadLogsViewModel.kt
+│       │   │               │   ├── InformationBanner.kt
+│       │   │               │   ├── MainWebViewClient.kt
+│       │   │               │   └── Tile.kt
+│       │   │               ├── data
+│       │   │               │   ├── AppDataBase.kt
+│       │   │               │   ├── dao
+│       │   │               │   │   └── NotificationDao.kt
+│       │   │               │   ├── dto
+│       │   │               │   │   └── NotificationDto.kt
+│       │   │               │   ├── entity
+│       │   │               │   │   └── NotificationEntity.kt
+│       │   │               │   ├── models
+│       │   │               │   │   ├── AuthenticationOutput.kt
+│       │   │               │   │   ├── Notification.kt
+│       │   │               │   │   ├── Registration.kt
+│       │   │               │   │   ├── Review.kt
+│       │   │               │   │   └── Subscription.kt
+│       │   │               │   └── repository
+│       │   │               │       ├── AuthenticationFlow.kt
+│       │   │               │       └── ReviewAppsFlow.kt
+│       │   │               ├── dev
+│       │   │               │   └── home
+│       │   │               │       └── ReviewAppsScreen.kt
+│       │   │               ├── dsfr
+│       │   │               │   ├── GenerateDsfrColor.kt
+│       │   │               │   ├── colorsDark.xml
+│       │   │               │   └── colorsLight.xml
+│       │   │               ├── global
+│       │   │               │   ├── BaseScreen.kt
+│       │   │               │   └── BaseViewModel.kt
+│       │   │               ├── home
+│       │   │               │   ├── FranceConnexionScreen.kt
+│       │   │               │   ├── HomeScreen.kt
+│       │   │               │   ├── NotificationPermissionHandler.kt
+│       │   │               │   ├── WebViewScreen.kt
+│       │   │               │   └── WebViewViewModel.kt
+│       │   │               ├── networkManager
+│       │   │               │   └── WifiErrorScreen.kt
+│       │   │               ├── notifications
+│       │   │               │   ├── FirebaseService.kt
+│       │   │               │   └── TokenManager.kt
+│       │   │               ├── settings
+│       │   │               │   ├── OnboardingNotificationScreen.kt
+│       │   │               │   └── SettingsScreen.kt
+│       │   │               ├── ui
+│       │   │               │   └── theme
+│       │   │               │       ├── Color.kt
+│       │   │               │       ├── DsfrColors.kt
+│       │   │               │       ├── Theme.kt
+│       │   │               │       └── Type.kt
+│       │   │               └── utils
+│       │   │                   ├── LogsExporter.kt
+│       │   │                   ├── ManagerLocalStorage.kt
+│       │   │                   └── NetworkMonitor.kt
+│       │   └── res
+│       │       ├── drawable
+│       │       │   ├── connection_lost.xml
+│       │       │   ├── dsfr_*.xml  (400 files)
+│       │       │   ├── franceconnect_btn_principal.xml
+│       │       │   ├── franceconnect_btn_principal_hover.xml
+│       │       │   ├── ic_*.xml  (11 files)
+│       │       │   └── img_notification.xml
+│       │       ├── font
+│       │       │   ├── marianne_bold.ttf
+│       │       │   ├── marianne_bold_italic.ttf
+│       │       │   ├── marianne_extra_bold.ttf
+│       │       │   ├── marianne_extra_bold_italic.ttf
+│       │       │   ├── marianne_light.ttf
+│       │       │   ├── marianne_light_italic.ttf
+│       │       │   ├── marianne_medium.ttf
+│       │       │   ├── marianne_medium_italic.ttf
+│       │       │   ├── marianne_regular.ttf
+│       │       │   ├── marianne_regular_italic.ttf
+│       │       │   ├── marianne_thin.ttf
+│       │       │   └── marianne_thin_italic.ttf
+│       │       ├── mipmap-anydpi-v26
+│       │       │   ├── ic_launcher.xml
+│       │       │   └── ic_launcher_round.xml
+│       │       ├── mipmap-hdpi
+│       │       │   ├── ic_launcher.webp
+│       │       │   └── ic_launcher_round.webp
+│       │       ├── mipmap-mdpi
+│       │       │   ├── ic_launcher.webp
+│       │       │   └── ic_launcher_round.webp
+│       │       ├── mipmap-xhdpi
+│       │       │   ├── ic_launcher.webp
+│       │       │   └── ic_launcher_round.webp
+│       │       ├── mipmap-xxhdpi
+│       │       │   ├── ic_launcher.webp
+│       │       │   └── ic_launcher_round.webp
+│       │       ├── mipmap-xxxhdpi
+│       │       │   ├── ic_launcher.webp
+│       │       │   └── ic_launcher_round.webp
+│       │       ├── raw
+│       │       │   └── sectigo_root_r46.pem
+│       │       ├── values
+│       │       │   ├── colors.xml
+│       │       │   ├── ic_launcher_background.xml
+│       │       │   ├── strings.xml
+│       │       │   └── themes.xml
+│       │       └── xml
+│       │           ├── backup_rules.xml
+│       │           ├── data_extraction_rules.xml
+│       │           ├── file_paths.xml
+│       │           └── network_security_config.xml
+│       ├── release
+│       │   └── java
+│       │       └── fr
+│       │           └── gouv
+│       │               └── ami
+│       │                   ├── api
+│       │                   │   └── OkHttpClientBuilderExt.kt
+│       │                   └── components
+│       │                       └── SslErrorHandlerExt.kt
+│       └── test
+│           └── java
+│               └── fr
+│                   └── gouv
+│                       └── ami
+│                           └── ExampleUnitTest.kt
+├── build.gradle.kts
+├── gradle
+│   ├── libs.versions.toml
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle.kts
+65 directories, 515 files
