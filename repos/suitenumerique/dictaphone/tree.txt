@@ -1,0 +1,415 @@
+.
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── crowdin-download.yml
+│       ├── dictaphone.yml
+│       ├── docker-hub.yml
+│       └── release-helm-chart.yaml
+├── .gitignore
+├── .gitlint
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE.md
+├── LICENSES
+│   ├── LICENSE.Etalab-2.0.md
+│   └── LICENSE.MIT.md
+├── Makefile
+├── README.md
+├── SECURITY.md
+├── UPGRADE.md
+├── bin
+│   ├── Tiltfile
+│   ├── _config.sh
+│   ├── compose
+│   ├── manage
+│   ├── prepare-release.sh
+│   ├── pytest
+│   ├── start-kind.sh
+│   ├── update-git-submodule.sh
+│   ├── update-keys.sh
+│   ├── update-openapi-schema
+│   └── validate-helm-configuration.sh
+├── compose.yml
+├── crowdin
+│   └── config.yml
+├── docker
+│   ├── auth
+│   │   └── realm.json
+│   ├── dinum-frontend
+│   │   ├── Dockerfile
+│   │   ├── assets
+│   │   │   ├── devise.svg
+│   │   │   ├── gouvernement.svg
+│   │   │   └── marianne.svg
+│   │   ├── dinum-styles.css
+│   │   ├── fonts
+│   │   │   ├── Marianne-Bold-subset.woff2
+│   │   │   ├── Marianne-Bold_Italic-subset.woff2
+│   │   │   ├── Marianne-ExtraBold-subset.woff2
+│   │   │   ├── Marianne-ExtraBold_Italic-subset.woff2
+│   │   │   ├── Marianne-Light-subset.woff2
+│   │   │   ├── Marianne-Light_Italic-subset.woff2
+│   │   │   ├── Marianne-Medium-subset.woff2
+│   │   │   ├── Marianne-Medium_Italic-subset.woff2
+│   │   │   ├── Marianne-Regular-subset.woff2
+│   │   │   ├── Marianne-Regular_Italic-subset.woff2
+│   │   │   ├── Marianne-Thin-subset.woff2
+│   │   │   └── Marianne-Thin_Italic-subset.woff2
+│   │   └── logo.svg
+│   ├── files
+│   │   ├── etc
+│   │   │   └── nginx
+│   │   │       └── conf.d
+│   │   │           └── default.conf
+│   │   ├── production
+│   │   │   └── default.conf.template
+│   │   └── usr
+│   │       └── local
+│   │           ├── bin
+│   │           │   └── entrypoint
+│   │           └── etc
+│   │               └── gunicorn
+│   │                   └── dictaphone.py
+│   └── resource-server
+│       └── compose.yml
+├── docs
+│   └── developping_locally.md
+├── env.d
+│   ├── development
+│   │   ├── common.dist
+│   │   ├── common.e2e.dist
+│   │   ├── crowdin.dist
+│   │   ├── kc_postgresql.dist
+│   │   └── postgresql.dist
+│   └── production.dist
+│       ├── common
+│       ├── hosts
+│       ├── kc_postgresql
+│       ├── keycloak
+│       └── postgresql
+├── gitlint
+│   └── gitlint_emoji.py
+├── renovate.json
+└── src
+    ├── backend
+    │   ├── .pylintrc
+    │   ├── MANIFEST.in
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── filters.py
+    │   │   │   ├── permissions.py
+    │   │   │   ├── serializers.py
+    │   │   │   ├── throttling.py
+    │   │   │   └── viewsets.py
+    │   │   ├── authentication
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends.py
+    │   │   │   └── webhooks.py
+    │   │   ├── enums.py
+    │   │   ├── factories.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   ├── 0002_create_pg_trgm_extension.py
+    │   │   │   ├── 0003_aifilejob.py
+    │   │   │   ├── 0004_file_duration_seconds.py
+    │   │   │   ├── 0005_alter_aifilejob_file.py
+    │   │   │   ├── 0006_alter_aifilejob_remote_job_id.py
+    │   │   │   ├── 0007_aifilejob_docs_app_id.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── static
+    │   │   │   └── images
+    │   │   │       ├── logo-suite-numerique.png
+    │   │   │       ├── logo.png
+    │   │   │       └── mail-header-background.png
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   └── file.py
+    │   │   ├── templates
+    │   │   │   └── mobile_redirect.html
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── ai_jobs
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_api_ai_jobs_open_in_docs.py
+    │   │   │   │   ├── test_api_ai_jobs_results.py
+    │   │   │   │   └── test_api_files_ai_api_webhook.py
+    │   │   │   ├── authentication
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_backends.py
+    │   │   │   │   └── test_mobile_redirect.py
+    │   │   │   ├── conftest.py
+    │   │   │   ├── files
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_api_files_create.py
+    │   │   │   │   ├── test_api_files_delete.py
+    │   │   │   │   ├── test_api_files_get.py
+    │   │   │   │   ├── test_api_files_list.py
+    │   │   │   │   ├── test_api_files_list_filters.py
+    │   │   │   │   ├── test_api_files_list_ordering.py
+    │   │   │   │   ├── test_api_files_media_auth.py
+    │   │   │   │   ├── test_api_files_update.py
+    │   │   │   │   ├── test_api_files_upload_ended.py
+    │   │   │   │   ├── test_api_items_hard_delete.py
+    │   │   │   │   └── test_api_items_restore.py
+    │   │   │   ├── swagger
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_models_ai_jobs.py
+    │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_tasks.py
+    │   │   │   └── test_utils_detect_mimetype.py
+    │   │   ├── urls.py
+    │   │   ├── utils.py
+    │   │   └── webhook_models.py
+    │   ├── demo
+    │   │   ├── __init__.py
+    │   │   ├── data
+    │   │   │   └── template
+    │   │   │       ├── code.txt
+    │   │   │       └── css.txt
+    │   │   ├── defaults.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── create_demo.py
+    │   │   │       └── createsuperuser.py
+    │   │   └── tests
+    │   │       ├── __init__.py
+    │   │       └── test_commands_create_demo.py
+    │   ├── dictaphone
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── locale
+    │   │   ├── en_US
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   └── fr_FR
+    │   │       └── LC_MESSAGES
+    │   │           └── django.po
+    │   ├── manage.py
+    │   ├── pyproject.toml
+    │   └── uv.lock
+    ├── frontend
+    │   ├── .env.development
+    │   ├── .env.production
+    │   ├── .gitignore
+    │   ├── .prettierrc
+    │   ├── @types
+    │   │   └── react-query.d.ts
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── cunningham.ts
+    │   ├── default.conf
+    │   ├── eslint.config.js
+    │   ├── i18next-parser.config.json
+    │   ├── index.html
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── public
+    │   │   └── assets
+    │   │       ├── files
+    │   │       │   └── icons
+    │   │       │       ├── mime-audio-mini.svg
+    │   │       │       └── mime-audio.svg
+    │   │       ├── hero-beta.png
+    │   │       └── logo-dictaphone-beta.svg
+    │   ├── src
+    │   │   ├── App.tsx
+    │   │   ├── api
+    │   │   │   ├── ApiError.ts
+    │   │   │   ├── apiUrl.ts
+    │   │   │   ├── fetchApi.ts
+    │   │   │   ├── queryClient.ts
+    │   │   │   ├── queryKeys.ts
+    │   │   │   └── useConfig.ts
+    │   │   ├── components
+    │   │   │   ├── AppInitialization.tsx
+    │   │   │   ├── Card.scss
+    │   │   │   ├── Card.tsx
+    │   │   │   ├── NotFoundScreen.tsx
+    │   │   │   ├── Pagination.scss
+    │   │   │   ├── Pagination.tsx
+    │   │   │   ├── ProgressBar.scss
+    │   │   │   └── ProgressBar.tsx
+    │   │   ├── features
+    │   │   │   ├── ai-jobs
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── fetch.ts
+    │   │   │   │   │   └── types.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── getMainAiJobs.test.ts
+    │   │   │   │       ├── getMainAiJobs.ts
+    │   │   │   │       ├── transcript.test.ts
+    │   │   │   │       └── transcript.ts
+    │   │   │   ├── auth
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── ApiUser.ts
+    │   │   │   │   │   ├── fetchUser.ts
+    │   │   │   │   │   ├── updateUserPreferences.ts
+    │   │   │   │   │   └── useUser.tsx
+    │   │   │   │   ├── index.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── authUrl.ts
+    │   │   │   │       ├── logoutUrl.ts
+    │   │   │   │       └── silentLogin.ts
+    │   │   │   ├── files
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── createFile.ts
+    │   │   │   │   │   ├── deleteFile.ts
+    │   │   │   │   │   ├── getFile.ts
+    │   │   │   │   │   ├── hardDeleteFile.ts
+    │   │   │   │   │   ├── listFiles.ts
+    │   │   │   │   │   ├── partialUpdateFile.ts
+    │   │   │   │   │   ├── restoreFile.ts
+    │   │   │   │   │   └── types.ts
+    │   │   │   │   └── components
+    │   │   │   │       ├── FileUploadToast.scss
+    │   │   │   │       └── FileUploadToast.tsx
+    │   │   │   ├── recordings
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── FileActionMenu.tsx
+    │   │   │   │   │   ├── ListRecordings.scss
+    │   │   │   │   │   ├── ListRecordings.tsx
+    │   │   │   │   │   ├── RecordComponent.scss
+    │   │   │   │   │   ├── RecordComponent.tsx
+    │   │   │   │   │   ├── Summary.tsx
+    │   │   │   │   │   ├── Transcript.scss
+    │   │   │   │   │   ├── Transcript.tsx
+    │   │   │   │   │   └── TranscriptSegment.tsx
+    │   │   │   │   └── utils
+    │   │   │   │       ├── formatFileSize.ts
+    │   │   │   │       └── getAudioDuration.ts
+    │   │   │   ├── support
+    │   │   │   │   └── hooks
+    │   │   │   │       └── useSupport.tsx
+    │   │   │   └── ui
+    │   │   │       ├── components
+    │   │   │       │   ├── circular-progress
+    │   │   │       │   │   └── CircularProgress.tsx
+    │   │   │       │   ├── icon
+    │   │   │       │   │   └── CheckIcon.tsx
+    │   │   │       │   └── toaster
+    │   │   │       │       ├── Toaster.tsx
+    │   │   │       │       └── index.scss
+    │   │   │       └── preview
+    │   │   │           ├── audio-player
+    │   │   │           │   ├── AudioPlayer.tsx
+    │   │   │           │   └── audio-player.scss
+    │   │   │           ├── components
+    │   │   │           │   ├── controls
+    │   │   │           │   │   ├── PreviewControls.scss
+    │   │   │           │   │   └── PreviewControls.tsx
+    │   │   │           │   ├── duration-bar
+    │   │   │           │   │   ├── DurationBar.scss
+    │   │   │           │   │   └── DurationBar.tsx
+    │   │   │           │   └── volume-bar
+    │   │   │           │       ├── VolumeBar.scss
+    │   │   │           │       └── VolumeBar.tsx
+    │   │   │           └── preview.scss
+    │   │   ├── hooks
+    │   │   │   ├── disablePageRegresh.ts
+    │   │   │   └── useUpload.tsx
+    │   │   ├── i18n
+    │   │   │   └── init.ts
+    │   │   ├── layout
+    │   │   │   ├── ConnectedLayout.scss
+    │   │   │   ├── ConnectedLayout.tsx
+    │   │   │   ├── HeaderRight.scss
+    │   │   │   ├── HeaderRight.tsx
+    │   │   │   ├── Layout.tsx
+    │   │   │   ├── LeftPanel.scss
+    │   │   │   ├── LeftPanel.tsx
+    │   │   │   ├── LogoApp.scss
+    │   │   │   └── LogoApp.tsx
+    │   │   ├── locales
+    │   │   │   ├── en
+    │   │   │   │   ├── home.json
+    │   │   │   │   ├── layout.json
+    │   │   │   │   ├── record.json
+    │   │   │   │   ├── recordings.json
+    │   │   │   │   ├── shared.json
+    │   │   │   │   └── upload.json
+    │   │   │   └── fr
+    │   │   │       ├── home.json
+    │   │   │       ├── layout.json
+    │   │   │       ├── record.json
+    │   │   │       ├── recordings.json
+    │   │   │       ├── shared.json
+    │   │   │       └── upload.json
+    │   │   ├── main.tsx
+    │   │   ├── pages
+    │   │   │   ├── DeletedRecordingsPage.tsx
+    │   │   │   ├── HomePage.tsx
+    │   │   │   ├── RecordingPage.scss
+    │   │   │   ├── RecordingPage.tsx
+    │   │   │   ├── RecordingsPage.scss
+    │   │   │   └── RecordingsPage.tsx
+    │   │   ├── styles
+    │   │   │   ├── cunningham-tokens-sass.scss
+    │   │   │   ├── cunningham-tokens.css
+    │   │   │   ├── cunningham-tokens.ts
+    │   │   │   └── globals.scss
+    │   │   └── vite-env.d.ts
+    │   ├── tsconfig.app.json
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
+    └── helm
+        ├── dictaphone
+        │   ├── Chart.yaml
+        │   ├── README.md
+        │   ├── generate-readme.sh
+        │   ├── templates
+        │   │   ├── _helpers.tpl
+        │   │   ├── backend_deployment.yaml
+        │   │   ├── backend_job_createsuperuser.yaml
+        │   │   ├── backend_job_migrate.yaml
+        │   │   ├── backend_svc.yaml
+        │   │   ├── celery_backend_deployment.yaml
+        │   │   ├── extra-objects.yaml
+        │   │   ├── frontend_deployment.yaml
+        │   │   ├── frontend_svc.yaml
+        │   │   ├── ingress.yaml
+        │   │   ├── ingress_admin.yaml
+        │   │   ├── ingress_media_files.yaml
+        │   │   ├── ingress_posthog.yaml
+        │   │   ├── ingress_posthog_assets.yaml
+        │   │   ├── media_files_svc.yaml
+        │   │   ├── posthog_assets_svc.yaml
+        │   │   └── posthog_svc.yaml
+        │   └── values.yaml
+        ├── env.d
+        │   └── dev-keycloak
+        │       ├── values.dictaphone.yaml.gotmpl
+        │       ├── values.egress.yaml.gotmpl
+        │       └── values.secrets.yaml
+        ├── extra
+        │   ├── Chart.yaml
+        │   └── templates
+        │       ├── clustersecretstore.yaml
+        │       ├── external_secret.yaml
+        │       ├── external_secret_deployment.yaml
+        │       ├── kc-postgresql-sts.yaml
+        │       ├── keycloak-sts.yaml
+        │       ├── minio.yaml
+        │       ├── postgresql-sts.yaml
+        │       └── redis.yaml
+        └── helmfile.yaml.gotmpl
+105 directories, 309 files
