@@ -1,56 +1,47 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère, avec des fonctionnalités d'extraction de données, de simulation et de gestion des droits d'accès.",
-  "language": "JavaScript",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère.",
+  "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Gestion documentaire & Fichiers",
-    "Simulation & Calcul",
-    "SSO (Single Sign-On)"
+    "API & Intégrations",
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Visualisation de données & Cartographie"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Node.js",
+    "Koa",
     "PostgreSQL",
     "Redis",
-    "bcryptjs",
     "jsonwebtoken",
-    "koa",
+    "bcryptjs",
     "sequelize",
-    "axios",
-    "sib-api-v3-sdk",
-    "csv-parse",
-    "csv-writer"
+    "nodemailer"
   ],
   "components": [
-    "React / Next.js",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "MongoDB & NoSQL",
+    "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Tests"
+    "Node.js / NestJS"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "session"
-    ],
-    "providers": []
+      "saml"
+    ]
   },
   "tests": [
     "Mocha",
-    "Cypress",
-    "Jest"
+    "Cypress"
   ],
   "workflows": [
-    "CI/CD (GitHub Actions)",
-    "Tests unitaires",
-    "Tests d'intégration",
-    "Tests E2E",
-    "Anonymisation de la base de données"
+    "CI/CD"
   ],
-  "lastActivity": "2026-02-20T16:09:08+01:00",
+  "lastActivity": "2026-04-09T12:52:57+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -61,15 +52,12 @@
     "openIssues": null
   },
   "tags": [
-    "justice",
-    "Écosystème beta.gouv / État",
     "Données & Open Data",
-    "Node.js, NestJS & Express",
+    "Écosystème beta.gouv / État",
+    "TypeScript",
+    "Déploiement & Hosting",
+    "Python",
     "Bases de données SQL",
-    "React & Next.js",
-    "SSO & Identité fédérée",
-    "Sécurité & Auth",
-    "Tests & Qualité",
-    "Docker & Conteneurs"
+    "Sécurité & Auth"
   ]
 }
