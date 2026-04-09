@@ -1,0 +1,1067 @@
+.
+├── .github
+│   └── workflows
+│       ├── backupimage.yml
+│       ├── build-front.yml
+│       ├── core.yml
+│       ├── download.yml
+│       ├── front.yml
+│       ├── generic-build.yml
+│       ├── main.yml
+│       ├── release.yml
+│       ├── upload.yml
+│       └── worker.yml
+├── .gitignore
+├── CONTRIBUTING.md
+├── LICENSE.txt
+├── README.md
+├── francetransfert-backup
+│   └── Dockerfile
+├── francetransfert-core
+│   ├── .gitignore
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── pom.xml
+│   ├── renovate.json
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── gouv
+│       │   │           └── culture
+│       │   │               └── francetransfert
+│       │   │                   └── core
+│       │   │                       ├── enums
+│       │   │                       │   ├── AppSyncKeysEnum.java
+│       │   │                       │   ├── CaptchaTypeEnum.java
+│       │   │                       │   ├── CheckMailKeysEnum.java
+│       │   │                       │   ├── EnclosureKeysEnum.java
+│       │   │                       │   ├── FileKeysEnum.java
+│       │   │                       │   ├── GlimpsHealthCheckEnum.java
+│       │   │                       │   ├── PliKeysEnum.java
+│       │   │                       │   ├── RecipientKeysEnum.java
+│       │   │                       │   ├── RedisKeysEnum.java
+│       │   │                       │   ├── RedisQueueEnum.java
+│       │   │                       │   ├── RootDirKeysEnum.java
+│       │   │                       │   ├── RootFileKeysEnum.java
+│       │   │                       │   ├── SenderKeysEnum.java
+│       │   │                       │   ├── SizeIndexEnum.java
+│       │   │                       │   ├── SourceEnum.java
+│       │   │                       │   ├── StatutEnum.java
+│       │   │                       │   ├── TokenConfirmationKeysEnum.java
+│       │   │                       │   ├── TypeCanalEnum.java
+│       │   │                       │   ├── TypePliEnum.java
+│       │   │                       │   ├── TypeStat.java
+│       │   │                       │   └── ValidationErrorEnum.java
+│       │   │                       ├── error
+│       │   │                       │   ├── ApiError.java
+│       │   │                       │   ├── ApiErrorFranceTransfert.java
+│       │   │                       │   ├── ApiValidationError.java
+│       │   │                       │   └── ApiValidationErrorReturn.java
+│       │   │                       ├── exception
+│       │   │                       │   ├── ApiValidationException.java
+│       │   │                       │   ├── ErrorEnum.java
+│       │   │                       │   ├── MetaloadException.java
+│       │   │                       │   ├── RetryException.java
+│       │   │                       │   ├── RetryGlimpsException.java
+│       │   │                       │   ├── RetryStorageException.java
+│       │   │                       │   ├── StatException.java
+│       │   │                       │   └── StorageException.java
+│       │   │                       ├── model
+│       │   │                       │   ├── FormulaireContactData.java
+│       │   │                       │   ├── HealthCheckRepresentation.java
+│       │   │                       │   ├── NewRecipient.java
+│       │   │                       │   ├── RateRepresentation.java
+│       │   │                       │   ├── StatModel.java
+│       │   │                       │   ├── TokenEnclosureData.java
+│       │   │                       │   ├── TokenEnclosureDataDownload.java
+│       │   │                       │   └── UpDownRepresentation.java
+│       │   │                       ├── services
+│       │   │                       │   ├── MimeService.java
+│       │   │                       │   ├── RedisManager.java
+│       │   │                       │   └── StorageManager.java
+│       │   │                       └── utils
+│       │   │                           ├── AmazonS3Utils.java
+│       │   │                           ├── Base64CryptoService.java
+│       │   │                           ├── DateUtils.java
+│       │   │                           ├── FTFileUtils.java
+│       │   │                           ├── RedisUtils.java
+│       │   │                           ├── SanitizerUtil.java
+│       │   │                           └── StringUploadUtils.java
+│       │   └── resources
+│       │       └── logback.xml
+│       └── test
+│           └── java
+│               └── fr
+│                   └── gouv
+│                       └── culture
+│                           └── francetransfert
+│                               └── AppTest.java
+├── francetransfert-download-api
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── HELP.md
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── lombok.config
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── pom.xml
+│   ├── renovate.json
+│   └── src
+│       ├── build
+│       │   ├── assembly
+│       │   │   └── delivery-descriptor.xml
+│       │   ├── dist
+│       │   │   └── conf
+│       │   │       ├── application.properties
+│       │   │       └── logback.xml
+│       │   └── filters
+│       │       └── application-prod.properties
+│       ├── it
+│       │   └── resources
+│       │       └── test.properties
+│       ├── main
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── gouv
+│       │   │           └── culture
+│       │   │               └── francetransfert
+│       │   │                   ├── FranceTransfertDownloadStarter.java
+│       │   │                   ├── application
+│       │   │                   │   ├── configuration
+│       │   │                   │   │   ├── LoadDataOnStartUp.java
+│       │   │                   │   │   └── SecurityConfiguration.java
+│       │   │                   │   ├── error
+│       │   │                   │   │   ├── ErrorEnum.java
+│       │   │                   │   │   ├── FranceTransfertDownloadExceptionHandler.java
+│       │   │                   │   │   ├── MaxTryException.java
+│       │   │                   │   │   ├── PasswordException.java
+│       │   │                   │   │   ├── UnauthorizedAccessException.java
+│       │   │                   │   │   ├── UnauthorizedApiAccessException.java
+│       │   │                   │   │   └── WrongCodeError.java
+│       │   │                   │   ├── resources
+│       │   │                   │   │   ├── download
+│       │   │                   │   │   │   ├── DownloadRessources.java
+│       │   │                   │   │   │   └── PublicRessources.java
+│       │   │                   │   │   └── model
+│       │   │                   │   │       ├── DataRepresentation.java
+│       │   │                   │   │       ├── DirectoryRepresentation.java
+│       │   │                   │   │       ├── Download.java
+│       │   │                   │   │       ├── DownloadPasswordMetaData.java
+│       │   │                   │   │       ├── DownloadRepresentation.java
+│       │   │                   │   │       ├── FileRepresentation.java
+│       │   │                   │   │       ├── RecipientInfo.java
+│       │   │                   │   │       ├── ValidatePasswordMetaData.java
+│       │   │                   │   │       └── ValidatePasswordRepresentation.java
+│       │   │                   │   └── services
+│       │   │                   │       ├── ConfirmationServices.java
+│       │   │                   │       ├── DownloadServices.java
+│       │   │                   │       └── RateServices.java
+│       │   │                   └── domain
+│       │   │                       └── exceptions
+│       │   │                           ├── BusinessDomainException.java
+│       │   │                           ├── DomainNotFoundException.java
+│       │   │                           ├── DownloadException.java
+│       │   │                           ├── ExpirationEnclosureException.java
+│       │   │                           └── InvalidHashException.java
+│       │   └── resources
+│       │       ├── .gitignore
+│       │       ├── logback.xml
+│       │       ├── modele.properties
+│       │       └── security
+│       │           ├── .keys
+│       │           └── README.md
+│       └── test
+│           ├── java
+│           │   └── fr
+│           │       └── gouv
+│           │           └── culture
+│           │               └── francetransfert
+│           │                   └── DownloadServiceTest.java
+│           └── perf
+│               ├── resources
+│               │   ├── bodies
+│               │   │   └── .keep
+│               │   └── data
+│               │       └── .keep
+│               └── scala
+│                   ├── EndPointSimulation.scala
+│                   ├── PerfTestConfig.scala
+│                   ├── SystemPropertiesUtil.scala
+│                   └── parameters
+│                       ├── DeleteParametersSimulation.scala
+│                       ├── GetParametersSimulation.scala
+│                       └── PostParametersSimulation.scala
+├── francetransfert-upload-api
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── HELP.md
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── lombok.config
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── pom.xml
+│   ├── renovate.json
+│   └── src
+│       ├── build
+│       │   ├── assembly
+│       │   │   └── delivery-descriptor.xml
+│       │   ├── dist
+│       │   │   └── conf
+│       │   │       ├── application.properties
+│       │   │       └── logback.xml
+│       │   └── filters
+│       │       └── application-prod.properties
+│       ├── it
+│       │   └── resources
+│       │       └── test.properties
+│       ├── main
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── gouv
+│       │   │           └── culture
+│       │   │               └── francetransfert
+│       │   │                   ├── FranceTransfertUploadStarter.java
+│       │   │                   ├── application
+│       │   │                   │   ├── error
+│       │   │                   │   │   ├── DateUpdateException.java
+│       │   │                   │   │   ├── ErrorEnum.java
+│       │   │                   │   │   ├── FranceTransertUploadExceptionHandler.java
+│       │   │                   │   │   ├── UnauthorizedAccessException.java
+│       │   │                   │   │   ├── UnauthorizedApiAccessException.java
+│       │   │                   │   │   └── WrongCodeError.java
+│       │   │                   │   ├── resources
+│       │   │                   │   │   ├── confirmation
+│       │   │                   │   │   │   └── ConfirmationCodeResources.java
+│       │   │                   │   │   ├── healthcheck
+│       │   │                   │   │   │   └── HeathCheckResources.java
+│       │   │                   │   │   ├── model
+│       │   │                   │   │   │   ├── AddNewRecipientRequest.java
+│       │   │                   │   │   │   ├── CaptchaRequest.java
+│       │   │                   │   │   │   ├── ConfigRepresentation.java
+│       │   │                   │   │   │   ├── ConfigUpdate.java
+│       │   │                   │   │   │   ├── DataRepresentation.java
+│       │   │                   │   │   │   ├── DataRepresentationApi.java
+│       │   │                   │   │   │   ├── DateUpdateRequest.java
+│       │   │                   │   │   │   ├── DeleteRepresentation.java
+│       │   │                   │   │   │   ├── DeleteRequest.java
+│       │   │                   │   │   │   ├── DirectoryRepresentation.java
+│       │   │                   │   │   │   ├── EnclosureRepresentation.java
+│       │   │                   │   │   │   ├── FileInfoRepresentation.java
+│       │   │                   │   │   │   ├── FileRepresentation.java
+│       │   │                   │   │   │   ├── FileRepresentationApi.java
+│       │   │                   │   │   │   ├── FilesInfosApi.java
+│       │   │                   │   │   │   ├── FranceTransfertDataRepresentation.java
+│       │   │                   │   │   │   ├── HealthCheckRepresentation.java
+│       │   │                   │   │   │   ├── InitialisationInfo.java
+│       │   │                   │   │   │   ├── PackageInfoRepresentation.java
+│       │   │                   │   │   │   ├── PliInfoRepresentation.java
+│       │   │                   │   │   │   ├── PliRepresentation.java
+│       │   │                   │   │   │   ├── PlisPaginated.java
+│       │   │                   │   │   │   ├── PreferencesRepresentation.java
+│       │   │                   │   │   │   ├── RecieverInfoRepresentationApi.java
+│       │   │                   │   │   │   ├── RecipientInfo.java
+│       │   │                   │   │   │   ├── RecipientInfoApi.java
+│       │   │                   │   │   │   ├── SenderInfoRepresentationApi.java
+│       │   │                   │   │   │   ├── StatusInfo.java
+│       │   │                   │   │   │   ├── StatusRepresentation.java
+│       │   │                   │   │   │   ├── TmpEnclosure.java
+│       │   │                   │   │   │   ├── UploadInfo.java
+│       │   │                   │   │   │   ├── ValidateCanal.java
+│       │   │                   │   │   │   ├── ValidateCodeMetaData.java
+│       │   │                   │   │   │   ├── ValidateCodeResponse.java
+│       │   │                   │   │   │   ├── ValidateData.java
+│       │   │                   │   │   │   └── ValidateUpload.java
+│       │   │                   │   │   └── upload
+│       │   │                   │   │       ├── PublicResources.java
+│       │   │                   │   │       └── UploadResources.java
+│       │   │                   │   └── services
+│       │   │                   │       ├── CaptchaService.java
+│       │   │                   │       ├── ConfigService.java
+│       │   │                   │       ├── ConfirmationServices.java
+│       │   │                   │       ├── CustomMetricsService.java
+│       │   │                   │       ├── HealthCheckService.java
+│       │   │                   │       ├── RateServices.java
+│       │   │                   │       ├── UploadServices.java
+│       │   │                   │       └── ValidationMailService.java
+│       │   │                   ├── configuration
+│       │   │                   │   ├── ExtensionProperties.java
+│       │   │                   │   ├── LoadDataOnStartUp.java
+│       │   │                   │   ├── RestTemplateConfig.java
+│       │   │                   │   └── SecurityConfiguration.java
+│       │   │                   ├── domain
+│       │   │                   │   ├── enums
+│       │   │                   │   │   └── CookiesEnum.java
+│       │   │                   │   ├── exceptions
+│       │   │                   │   │   ├── BusinessDomainException.java
+│       │   │                   │   │   ├── ConfirmationCodeException.java
+│       │   │                   │   │   ├── DomainNotFoundException.java
+│       │   │                   │   │   ├── ExtensionNotFoundException.java
+│       │   │                   │   │   ├── FlowChunkNotExistException.java
+│       │   │                   │   │   ├── InvalidCaptchaException.java
+│       │   │                   │   │   ├── MaxTryException.java
+│       │   │                   │   │   ├── UnauthorizedMailAddressException.java
+│       │   │                   │   │   ├── UploadException.java
+│       │   │                   │   │   └── ValidationException.java
+│       │   │                   │   ├── redis
+│       │   │                   │   │   └── entity
+│       │   │                   │   │       └── FileDomain.java
+│       │   │                   │   ├── soap
+│       │   │                   │   │   └── EnvelopeUtils.java
+│       │   │                   │   └── utils
+│       │   │                   │       ├── DateUtils.java
+│       │   │                   │       ├── ExtensionFileUtils.java
+│       │   │                   │       ├── FileUtils.java
+│       │   │                   │       ├── RedisForUploadUtils.java
+│       │   │                   │       └── UploadUtils.java
+│       │   │                   └── validator
+│       │   │                       ├── DateUpdateConstraint.java
+│       │   │                       ├── DateUpdateValidator.java
+│       │   │                       ├── EmailFranceTransfertValidator.java
+│       │   │                       └── EmailsFranceTransfert.java
+│       │   └── resources
+│       │       ├── .gitignore
+│       │       ├── ValidationMessages.properties
+│       │       ├── extension.properties
+│       │       ├── logback.xml
+│       │       ├── modele.properties
+│       │       └── security
+│       │           ├── .keys
+│       │           └── README.md
+│       └── test
+│           ├── java
+│           │   └── fr
+│           │       └── gouv
+│           │           └── culture
+│           │               └── francetransfert
+│           │                   ├── DateUtilsTest.java
+│           │                   ├── ExtensionFileUtilsTest.java
+│           │                   └── validator
+│           │                       └── EmailFranceTransfertValidatorTest.java
+│           └── perf
+│               ├── resources
+│               │   ├── bodies
+│               │   │   └── .keep
+│               │   └── data
+│               │       └── .keep
+│               └── scala
+│                   ├── EndPointSimulation.scala
+│                   ├── PerfTestConfig.scala
+│                   ├── SystemPropertiesUtil.scala
+│                   └── parameters
+│                       ├── DeleteParametersSimulation.scala
+│                       ├── GetParametersSimulation.scala
+│                       └── PostParametersSimulation.scala
+├── francetransfert-upload-download-gui
+│   ├── .dockerignore
+│   ├── .editorconfig
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── LICENSE.txt
+│   ├── README
+│   ├── README.md
+│   ├── angular.json
+│   ├── docker
+│   │   ├── ft.conf
+│   │   └── statics
+│   │       ├── email-contents
+│   │       │   ├── Dossier_white.png
+│   │       │   ├── Fichier_white.png
+│   │       │   ├── acceder-fichiers.png
+│   │       │   ├── france_transfert_logo.svg
+│   │       │   └── logo-ft.png
+│   │       ├── flags
+│   │       │   ├── flag_de.svg
+│   │       │   ├── flag_en.svg
+│   │       │   ├── flag_es.svg
+│   │       │   └── flag_fr.svg
+│   │       ├── fonts
+│   │       │   └── Marianne-Regular.otf
+│   │       ├── icons
+│   │       │   ├── icon-128x128.png
+│   │       │   ├── icon-144x144.png
+│   │       │   ├── icon-152x152.png
+│   │       │   ├── icon-192x192.png
+│   │       │   ├── icon-384x384.png
+│   │       │   ├── icon-512x512.png
+│   │       │   ├── icon-72x72.png
+│   │       │   ├── icon-96x96.png
+│   │       │   ├── ios-add-btn.png
+│   │       │   └── ios-menu-btn.png
+│   │       ├── images
+│   │       │   └── image_fond.png
+│   │       ├── logos
+│   │       │   ├── france_transfert_logo.svg
+│   │       │   ├── monogramme_ft.png
+│   │       │   └── republique_francaise_logo.svg
+│   │       └── page-contents
+│   │           └── security.txt
+│   ├── karma.conf.js
+│   ├── ngsw-config.json
+│   ├── package.json
+│   ├── renovate.json
+│   ├── sonar-project.properties
+│   ├── src
+│   │   ├── app
+│   │   │   ├── app-routing.module.ts
+│   │   │   ├── app.component.html
+│   │   │   ├── app.component.scss
+│   │   │   ├── app.component.spec.ts
+│   │   │   ├── app.component.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── components
+│   │   │   │   ├── accessibilite
+│   │   │   │   │   ├── accessibilite.component.html
+│   │   │   │   │   ├── accessibilite.component.scss
+│   │   │   │   │   ├── accessibilite.component.spec.ts
+│   │   │   │   │   └── accessibilite.component.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── admin-alert-dialog
+│   │   │   │   │   │   ├── admin-alert-dialog.component.html
+│   │   │   │   │   │   ├── admin-alert-dialog.component.scss
+│   │   │   │   │   │   ├── admin-alert-dialog.component.spec.ts
+│   │   │   │   │   │   └── admin-alert-dialog.component.ts
+│   │   │   │   │   ├── admin-end-msg
+│   │   │   │   │   │   ├── admin-end-msg.component.html
+│   │   │   │   │   │   ├── admin-end-msg.component.scss
+│   │   │   │   │   │   ├── admin-end-msg.component.spec.ts
+│   │   │   │   │   │   └── admin-end-msg.component.ts
+│   │   │   │   │   ├── admin.component.html
+│   │   │   │   │   ├── admin.component.scss
+│   │   │   │   │   ├── admin.component.spec.ts
+│   │   │   │   │   └── admin.component.ts
+│   │   │   │   ├── cgu
+│   │   │   │   │   ├── cgu.component.html
+│   │   │   │   │   ├── cgu.component.scss
+│   │   │   │   │   ├── cgu.component.spec.ts
+│   │   │   │   │   └── cgu.component.ts
+│   │   │   │   ├── check-validation-code
+│   │   │   │   │   ├── check-validation-code.component.html
+│   │   │   │   │   ├── check-validation-code.component.scss
+│   │   │   │   │   ├── check-validation-code.component.spec.ts
+│   │   │   │   │   ├── check-validation-code.component.ts
+│   │   │   │   │   └── confirm-alert-dialog
+│   │   │   │   │       ├── confirm-alert-dialog.component.html
+│   │   │   │   │       ├── confirm-alert-dialog.component.scss
+│   │   │   │   │       ├── confirm-alert-dialog.component.spec.ts
+│   │   │   │   │       └── confirm-alert-dialog.component.ts
+│   │   │   │   ├── connect
+│   │   │   │   │   ├── connect.component.html
+│   │   │   │   │   ├── connect.component.scss
+│   │   │   │   │   ├── connect.component.spec.ts
+│   │   │   │   │   └── connect.component.ts
+│   │   │   │   ├── connect-end-message
+│   │   │   │   │   ├── connect-end-message.component.html
+│   │   │   │   │   ├── connect-end-message.component.scss
+│   │   │   │   │   ├── connect-end-message.component.spec.ts
+│   │   │   │   │   └── connect-end-message.component.ts
+│   │   │   │   ├── contact
+│   │   │   │   │   ├── contact.component.html
+│   │   │   │   │   ├── contact.component.scss
+│   │   │   │   │   ├── contact.component.spec.ts
+│   │   │   │   │   └── contact.component.ts
+│   │   │   │   ├── contact-end-message
+│   │   │   │   │   ├── contact-end-message.component.html
+│   │   │   │   │   ├── contact-end-message.component.scss
+│   │   │   │   │   ├── contact-end-message.component.spec.ts
+│   │   │   │   │   └── contact-end-message.component.ts
+│   │   │   │   ├── destinataires-end-message
+│   │   │   │   │   ├── destinataires-end-message.component.html
+│   │   │   │   │   ├── destinataires-end-message.component.scss
+│   │   │   │   │   ├── destinataires-end-message.component.spec.ts
+│   │   │   │   │   └── destinataires-end-message.component.ts
+│   │   │   │   ├── download
+│   │   │   │   │   ├── download-elements
+│   │   │   │   │   │   ├── download-elements.component.html
+│   │   │   │   │   │   ├── download-elements.component.scss
+│   │   │   │   │   │   ├── download-elements.component.spec.ts
+│   │   │   │   │   │   └── download-elements.component.ts
+│   │   │   │   │   ├── download-error
+│   │   │   │   │   │   ├── download-error.component.html
+│   │   │   │   │   │   ├── download-error.component.scss
+│   │   │   │   │   │   ├── download-error.component.spec.ts
+│   │   │   │   │   │   └── download-error.component.ts
+│   │   │   │   │   ├── download.component.html
+│   │   │   │   │   ├── download.component.scss
+│   │   │   │   │   ├── download.component.spec.ts
+│   │   │   │   │   ├── download.component.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── download-end-message
+│   │   │   │   │   ├── download-end-message.component.html
+│   │   │   │   │   ├── download-end-message.component.scss
+│   │   │   │   │   ├── download-end-message.component.spec.ts
+│   │   │   │   │   └── download-end-message.component.ts
+│   │   │   │   ├── end-message
+│   │   │   │   │   ├── end-message.component.html
+│   │   │   │   │   ├── end-message.component.scss
+│   │   │   │   │   ├── end-message.component.spec.ts
+│   │   │   │   │   └── end-message.component.ts
+│   │   │   │   ├── faq
+│   │   │   │   │   ├── faq.component.html
+│   │   │   │   │   ├── faq.component.scss
+│   │   │   │   │   ├── faq.component.spec.ts
+│   │   │   │   │   └── faq.component.ts
+│   │   │   │   ├── footer
+│   │   │   │   │   ├── footer.component.html
+│   │   │   │   │   ├── footer.component.scss
+│   │   │   │   │   ├── footer.component.spec.ts
+│   │   │   │   │   └── footer.component.ts
+│   │   │   │   ├── header
+│   │   │   │   │   ├── header.component.html
+│   │   │   │   │   ├── header.component.scss
+│   │   │   │   │   ├── header.component.spec.ts
+│   │   │   │   │   └── header.component.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── info-msg
+│   │   │   │   │   ├── info-msg.component.html
+│   │   │   │   │   ├── info-msg.component.scss
+│   │   │   │   │   ├── info-msg.component.spec.ts
+│   │   │   │   │   └── info-msg.component.ts
+│   │   │   │   ├── language-selector
+│   │   │   │   │   ├── language-selector.component.html
+│   │   │   │   │   ├── language-selector.component.scss
+│   │   │   │   │   ├── language-selector.component.spec.ts
+│   │   │   │   │   └── language-selector.component.ts
+│   │   │   │   ├── list-elements
+│   │   │   │   │   ├── file-item
+│   │   │   │   │   │   ├── file-item.component.html
+│   │   │   │   │   │   ├── file-item.component.scss
+│   │   │   │   │   │   ├── file-item.component.spec.ts
+│   │   │   │   │   │   └── file-item.component.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── list-elements.component.html
+│   │   │   │   │   ├── list-elements.component.scss
+│   │   │   │   │   ├── list-elements.component.spec.ts
+│   │   │   │   │   └── list-elements.component.ts
+│   │   │   │   ├── loader
+│   │   │   │   │   ├── loader.component.html
+│   │   │   │   │   ├── loader.component.scss
+│   │   │   │   │   ├── loader.component.spec.ts
+│   │   │   │   │   └── loader.component.ts
+│   │   │   │   ├── mailing-list-manager
+│   │   │   │   │   ├── mailing-list-manager.component.html
+│   │   │   │   │   ├── mailing-list-manager.component.scss
+│   │   │   │   │   ├── mailing-list-manager.component.spec.ts
+│   │   │   │   │   └── mailing-list-manager.component.ts
+│   │   │   │   ├── mentions-legales
+│   │   │   │   │   ├── mentions-legales.component.html
+│   │   │   │   │   ├── mentions-legales.component.scss
+│   │   │   │   │   ├── mentions-legales.component.spec.ts
+│   │   │   │   │   └── mentions-legales.component.ts
+│   │   │   │   ├── menu
+│   │   │   │   │   ├── menu.component.html
+│   │   │   │   │   ├── menu.component.scss
+│   │   │   │   │   ├── menu.component.spec.ts
+│   │   │   │   │   └── menu.component.ts
+│   │   │   │   ├── plis
+│   │   │   │   │   ├── plis-envoyes
+│   │   │   │   │   │   ├── plis-envoyes.component.html
+│   │   │   │   │   │   ├── plis-envoyes.component.scss
+│   │   │   │   │   │   ├── plis-envoyes.component.spec.ts
+│   │   │   │   │   │   └── plis-envoyes.component.ts
+│   │   │   │   │   ├── plis-recus
+│   │   │   │   │   │   ├── plis-recus.component.html
+│   │   │   │   │   │   ├── plis-recus.component.scss
+│   │   │   │   │   │   ├── plis-recus.component.spec.ts
+│   │   │   │   │   │   └── plis-recus.component.ts
+│   │   │   │   │   ├── plis.component.html
+│   │   │   │   │   ├── plis.component.scss
+│   │   │   │   │   ├── plis.component.spec.ts
+│   │   │   │   │   └── plis.component.ts
+│   │   │   │   ├── politique-protection-donnees
+│   │   │   │   │   ├── politique-protection-donnees.component.html
+│   │   │   │   │   ├── politique-protection-donnees.component.scss
+│   │   │   │   │   ├── politique-protection-donnees.component.spec.ts
+│   │   │   │   │   └── politique-protection-donnees.component.ts
+│   │   │   │   ├── pwa
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── pwa-prompt-install
+│   │   │   │   │   │   ├── pwa-prompt-install.component.html
+│   │   │   │   │   │   ├── pwa-prompt-install.component.scss
+│   │   │   │   │   │   ├── pwa-prompt-install.component.spec.ts
+│   │   │   │   │   │   └── pwa-prompt-install.component.ts
+│   │   │   │   │   └── pwa-prompt-update
+│   │   │   │   │       ├── pwa-prompt-update.component.html
+│   │   │   │   │       ├── pwa-prompt-update.component.scss
+│   │   │   │   │       ├── pwa-prompt-update.component.spec.ts
+│   │   │   │   │       └── pwa-prompt-update.component.ts
+│   │   │   │   ├── satisfaction-check
+│   │   │   │   │   ├── satisfaction-check.component.html
+│   │   │   │   │   ├── satisfaction-check.component.scss
+│   │   │   │   │   ├── satisfaction-check.component.spec.ts
+│   │   │   │   │   └── satisfaction-check.component.ts
+│   │   │   │   ├── satisfaction-message
+│   │   │   │   │   ├── satisfaction-message.component.html
+│   │   │   │   │   ├── satisfaction-message.component.scss
+│   │   │   │   │   ├── satisfaction-message.component.spec.ts
+│   │   │   │   │   └── satisfaction-message.component.ts
+│   │   │   │   └── upload
+│   │   │   │       ├── envelope
+│   │   │   │       │   ├── envelope-link-form
+│   │   │   │       │   │   ├── envelope-link-form.component.html
+│   │   │   │       │   │   ├── envelope-link-form.component.scss
+│   │   │   │       │   │   ├── envelope-link-form.component.spec.ts
+│   │   │   │       │   │   └── envelope-link-form.component.ts
+│   │   │   │       │   ├── envelope-mail-form
+│   │   │   │       │   │   ├── envelope-mail-form.component.html
+│   │   │   │       │   │   ├── envelope-mail-form.component.scss
+│   │   │   │       │   │   ├── envelope-mail-form.component.spec.ts
+│   │   │   │       │   │   └── envelope-mail-form.component.ts
+│   │   │   │       │   ├── envelope-parameters-form
+│   │   │   │       │   │   ├── envelope-parameters-form.component.html
+│   │   │   │       │   │   ├── envelope-parameters-form.component.scss
+│   │   │   │       │   │   ├── envelope-parameters-form.component.spec.ts
+│   │   │   │       │   │   ├── envelope-parameters-form.component.ts
+│   │   │   │       │   │   └── my-date-adapter.ts
+│   │   │   │       │   ├── envelope.component.html
+│   │   │   │       │   ├── envelope.component.scss
+│   │   │   │       │   ├── envelope.component.spec.ts
+│   │   │   │       │   ├── envelope.component.ts
+│   │   │   │       │   └── index.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── upload.component.html
+│   │   │   │       ├── upload.component.scss
+│   │   │   │       ├── upload.component.spec.ts
+│   │   │   │       └── upload.component.ts
+│   │   │   ├── material.module.ts
+│   │   │   ├── models
+│   │   │   │   ├── category.model.ts
+│   │   │   │   ├── envelope-infos.model.ts
+│   │   │   │   ├── ft-error.model.ts
+│   │   │   │   ├── ft-transfer.model.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── language.model.ts
+│   │   │   │   ├── pli-destinataires.model.ts
+│   │   │   │   ├── pli-recu.model.ts
+│   │   │   │   ├── pli.model.ts
+│   │   │   │   ├── token.model.ts
+│   │   │   │   └── upload-infos.model.ts
+│   │   │   ├── services
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── admin.service.spec.ts
+│   │   │   │   │   └── admin.service.ts
+│   │   │   │   ├── background-selection
+│   │   │   │   │   ├── background-selection.service.spec.ts
+│   │   │   │   │   └── background-selection.service.ts
+│   │   │   │   ├── config
+│   │   │   │   │   ├── config.service.spec.ts
+│   │   │   │   │   └── config.service.ts
+│   │   │   │   ├── contact
+│   │   │   │   │   ├── contact.service.spec.ts
+│   │   │   │   │   └── contact.service.ts
+│   │   │   │   ├── download
+│   │   │   │   │   ├── download.service.spec.ts
+│   │   │   │   │   └── download.service.ts
+│   │   │   │   ├── download-manager
+│   │   │   │   │   ├── download-manager.service.spec.ts
+│   │   │   │   │   └── download-manager.service.ts
+│   │   │   │   ├── file-manager
+│   │   │   │   │   ├── file-manager.service.spec.ts
+│   │   │   │   │   └── file-manager.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── language-selection
+│   │   │   │   │   ├── language-selection.service.spec.ts
+│   │   │   │   │   └── language-selection.service.ts
+│   │   │   │   ├── loader
+│   │   │   │   │   ├── loader.service.spec.ts
+│   │   │   │   │   └── loader.service.ts
+│   │   │   │   ├── login
+│   │   │   │   │   ├── login.service.spec.ts
+│   │   │   │   │   └── login.service.ts
+│   │   │   │   ├── mailing-list
+│   │   │   │   │   ├── mailing-list.service.spec.ts
+│   │   │   │   │   └── mailing-list.service.ts
+│   │   │   │   ├── pwa
+│   │   │   │   │   ├── pwa.service.spec.ts
+│   │   │   │   │   └── pwa.service.ts
+│   │   │   │   ├── responsive
+│   │   │   │   │   ├── responsive.service.spec.ts
+│   │   │   │   │   └── responsive.service.ts
+│   │   │   │   ├── tarteaucitron
+│   │   │   │   │   ├── tarteaucitron.service.spec.ts
+│   │   │   │   │   └── tarteaucitron.service.ts
+│   │   │   │   ├── upload
+│   │   │   │   │   ├── upload.service.spec.ts
+│   │   │   │   │   └── upload.service.ts
+│   │   │   │   └── upload-manager
+│   │   │   │       ├── upload-manager.service.spec.ts
+│   │   │   │       └── upload-manager.service.ts
+│   │   │   └── shared
+│   │   │       ├── config
+│   │   │       │   └── flow-config.ts
+│   │   │       ├── custom-DateAdapter
+│   │   │       │   └── custom-date-adapter.ts
+│   │   │       ├── custom-paginator
+│   │   │       │   ├── custom-paginator.service.spec.ts
+│   │   │       │   └── custom-paginator.service.ts
+│   │   │       ├── directives
+│   │   │       │   ├── drag-drop-file-upload.directive.ts
+│   │   │       │   └── index.ts
+│   │   │       ├── guards
+│   │   │       │   ├── download.guard.spec.ts
+│   │   │       │   ├── download.guard.ts
+│   │   │       │   └── index.ts
+│   │   │       ├── index.ts
+│   │   │       ├── interceptors
+│   │   │       │   ├── auth-interceptor.ts
+│   │   │       │   └── index.ts
+│   │   │       ├── pipes
+│   │   │       │   ├── FilterPipe.pipe.ts
+│   │   │       │   ├── FilterQuestionsPipe.pipe.ts
+│   │   │       │   ├── custom-paginator.ts
+│   │   │       │   ├── custom.datepipe.ts
+│   │   │       │   ├── file-multiple-size.pipe.ts
+│   │   │       │   ├── file-name.pipe.ts
+│   │   │       │   ├── file-size.pipe.ts
+│   │   │       │   ├── file-type.pipe.ts
+│   │   │       │   ├── file-unit.pipe.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── safe-html.pipe.ts
+│   │   │       │   └── transfer-mapping.pipe.ts
+│   │   │       └── validators
+│   │   │           ├── forms-validator.ts
+│   │   │           ├── mail-validator.ts
+│   │   │           └── quota-validator.ts
+│   │   ├── assets
+│   │   │   ├── .gitkeep
+│   │   │   ├── flags
+│   │   │   │   ├── flag_de.svg
+│   │   │   │   ├── flag_en.svg
+│   │   │   │   ├── flag_es.svg
+│   │   │   │   └── flag_fr.svg
+│   │   │   ├── fonts
+│   │   │   │   └── Marianne-Regular.otf
+│   │   │   ├── i18n
+│   │   │   │   ├── en-GB.json
+│   │   │   │   ├── es-ES.json
+│   │   │   │   └── fr-FR.json
+│   │   │   ├── icons
+│   │   │   │   ├── icon-128x128.png
+│   │   │   │   ├── icon-144x144.png
+│   │   │   │   ├── icon-152x152.png
+│   │   │   │   ├── icon-192x192.png
+│   │   │   │   ├── icon-384x384.png
+│   │   │   │   ├── icon-512x512.png
+│   │   │   │   ├── icon-72x72.png
+│   │   │   │   ├── icon-96x96.png
+│   │   │   │   ├── ios-add-btn.png
+│   │   │   │   └── ios-menu-btn.png
+│   │   │   ├── images
+│   │   │   │   ├── FT_Envoyer des dossiers ou des fichiers_V2.png
+│   │   │   │   ├── FT_Être connecté à France Transfert V3.png
+│   │   │   │   ├── FT_France Transfert_V2.png
+│   │   │   │   ├── FT_Telecharger un pli_V2.png
+│   │   │   │   ├── FT_Utiliser une liste de diffusion_V2.png
+│   │   │   │   ├── agentconnect-btn-hover.png
+│   │   │   │   ├── agentconnect-btn.png
+│   │   │   │   ├── bg1.webp
+│   │   │   │   ├── bg2.webp
+│   │   │   │   ├── image_fond.min.png
+│   │   │   │   └── test.png
+│   │   │   └── logos
+│   │   │       ├── Republique_Francaise_N.png
+│   │   │       ├── france_transfert_logo.svg
+│   │   │       ├── monogramme_ft.png
+│   │   │       └── republique_francaise_logo.svg
+│   │   ├── environments
+│   │   │   ├── environment.int.ts
+│   │   │   ├── environment.prod.ts
+│   │   │   ├── environment.test.ts
+│   │   │   └── environment.ts
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   ├── manifest.webmanifest
+│   │   ├── polyfills.ts
+│   │   ├── styles.scss
+│   │   ├── test.ts
+│   │   └── theme
+│   │       └── variables.scss
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+├── francetransfert-worker
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── pom.xml
+│   ├── renovate.json
+│   └── src
+│       ├── build
+│       │   ├── assembly
+│       │   │   └── delivery-descriptor.xml
+│       │   ├── dist
+│       │   │   └── conf
+│       │   │       ├── application.properties
+│       │   │       └── logback.xml
+│       │   └── filters
+│       │       └── application-prod.properties
+│       ├── main
+│       │   ├── java
+│       │   │   └── fr
+│       │   │       └── gouv
+│       │   │           └── culture
+│       │   │               └── francetransfert
+│       │   │                   ├── FranceTransfertWorkerStarter.java
+│       │   │                   ├── configuration
+│       │   │                   │   ├── HttpClientConfig.java
+│       │   │                   │   ├── LoadDataOnStartUp.java
+│       │   │                   │   ├── MailConfiguration.java
+│       │   │                   │   ├── RestClientConfig.java
+│       │   │                   │   └── SSLDisableUtils.java
+│       │   │                   ├── exception
+│       │   │                   │   ├── ClamAVClientNotAvailableException.java
+│       │   │                   │   ├── ClamAVException.java
+│       │   │                   │   ├── ClamAVSizeLimitException.java
+│       │   │                   │   └── InvalidSizeTypeException.java
+│       │   │                   ├── healthcheck
+│       │   │                   │   └── services
+│       │   │                   │       └── HealthCheckService.java
+│       │   │                   ├── model
+│       │   │                   │   ├── ConfirmationCode.java
+│       │   │                   │   ├── Enclosure.java
+│       │   │                   │   ├── GlimpsInitResponse.java
+│       │   │                   │   ├── GlimpsResultResponse.java
+│       │   │                   │   ├── NotificationContent.java
+│       │   │                   │   ├── OsmoseResponse.java
+│       │   │                   │   ├── OsmoseUser.java
+│       │   │                   │   ├── Rate.java
+│       │   │                   │   ├── Recipient.java
+│       │   │                   │   ├── RefDomainResponse.java
+│       │   │                   │   ├── RizomoSynchro.java
+│       │   │                   │   ├── RootData.java
+│       │   │                   │   ├── ScanInfo.java
+│       │   │                   │   ├── SnapResponse.java
+│       │   │                   │   └── enums
+│       │   │                   │       ├── ErrorEnum.java
+│       │   │                   │       └── ScanResponseEnum.java
+│       │   │                   ├── security
+│       │   │                   │   ├── GlimpsException.java
+│       │   │                   │   ├── JwtRequest.java
+│       │   │                   │   └── WorkerException.java
+│       │   │                   ├── services
+│       │   │                   │   ├── app
+│       │   │                   │   │   └── sync
+│       │   │                   │   │       └── AppSyncServices.java
+│       │   │                   │   ├── clamav
+│       │   │                   │   │   └── ClamAVScannerManager.java
+│       │   │                   │   ├── cleanup
+│       │   │                   │   │   └── CleanUpServices.java
+│       │   │                   │   ├── glimps
+│       │   │                   │   │   └── GlimpsService.java
+│       │   │                   │   ├── mail
+│       │   │                   │   │   ├── MailCheckService.java
+│       │   │                   │   │   ├── SnapService.java
+│       │   │                   │   │   └── notification
+│       │   │                   │   │       ├── MailAvailbleEnclosureServices.java
+│       │   │                   │   │       ├── MailConfirmationCodeServices.java
+│       │   │                   │   │       ├── MailContentBuilder.java
+│       │   │                   │   │       ├── MailDownloadServices.java
+│       │   │                   │   │       ├── MailEnclosureNoLongerAvailbleServices.java
+│       │   │                   │   │       ├── MailFormulaireContactServices.java
+│       │   │                   │   │       ├── MailNotificationServices.java
+│       │   │                   │   │       ├── MailRelaunchServices.java
+│       │   │                   │   │       ├── MailVirusFoundServices.java
+│       │   │                   │   │       └── enums
+│       │   │                   │   │           └── NotificationTemplateEnum.java
+│       │   │                   │   ├── metrics
+│       │   │                   │   │   └── CustomMetricsService.java
+│       │   │                   │   ├── referentiel
+│       │   │                   │   │   ├── ApiSendErrorHandler.java
+│       │   │                   │   │   ├── ReferentielServices.java
+│       │   │                   │   │   └── RestClientUtils.java
+│       │   │                   │   ├── satisfaction
+│       │   │                   │   │   └── SatisfactionService.java
+│       │   │                   │   ├── sequestre
+│       │   │                   │   │   └── SequestreService.java
+│       │   │                   │   ├── stat
+│       │   │                   │   │   └── StatServices.java
+│       │   │                   │   └── zipworker
+│       │   │                   │       └── ZipWorkerServices.java
+│       │   │                   ├── utils
+│       │   │                   │   ├── MonitorRunnable.java
+│       │   │                   │   └── WorkerUtils.java
+│       │   │                   └── worker
+│       │   │                       ├── CleanEnclosureTask.java
+│       │   │                       ├── FormulaireContactTask.java
+│       │   │                       ├── SatisfactionTask.java
+│       │   │                       ├── ScheduledTasks.java
+│       │   │                       ├── SendEmailConfirmationCodeTask.java
+│       │   │                       ├── SendEmailNotificationUploadDownloadTask.java
+│       │   │                       ├── SequestreWorkerTask.java
+│       │   │                       ├── StatTask.java
+│       │   │                       ├── TempDataCleanupTask.java
+│       │   │                       ├── ZipWorkerTask.java
+│       │   │                       └── config
+│       │   │                           ├── AsyncConfig.java
+│       │   │                           └── SchedulerConfig.java
+│       │   └── resources
+│       │       ├── .gitignore
+│       │       ├── lang
+│       │       │   ├── messages.properties
+│       │       │   ├── messages_en.properties
+│       │       │   ├── messages_es.properties
+│       │       │   └── messages_fr.properties
+│       │       ├── logback.xml
+│       │       ├── modele-dev.properties
+│       │       ├── security
+│       │       │   ├── .keys
+│       │       │   └── README.md
+│       │       ├── static
+│       │       │   └── images
+│       │       │       ├── Dossier_white.png
+│       │       │       ├── Fichier_white.png
+│       │       │       ├── acceder-fichiers.png
+│       │       │       ├── logo-ft-379.png
+│       │       │       ├── logo-ft.png
+│       │       │       ├── root-dir.png
+│       │       │       └── root-file.png
+│       │       └── templates
+│       │           ├── mail-administration-pli.html
+│       │           ├── mail-available-recipient-password-template.html
+│       │           ├── mail-available-recipient-template.html
+│       │           ├── mail-available-sender-password-template.html
+│       │           ├── mail-available-sender-template.html
+│       │           ├── mail-button-acceder.html
+│       │           ├── mail-confirmation-code-template.html
+│       │           ├── mail-contact-template.html
+│       │           ├── mail-destinataires.html
+│       │           ├── mail-download-sender-template.html
+│       │           ├── mail-enclosure-no-availble-recipient-template.html
+│       │           ├── mail-enclosure-no-availble-sender-template.html
+│       │           ├── mail-error-sender-template.html
+│       │           ├── mail-header.html
+│       │           ├── mail-invalid-sender-template.html
+│       │           ├── mail-lien-telechargement-public.html
+│       │           ├── mail-message.html
+│       │           ├── mail-nom-pli.html
+│       │           ├── mail-password.html
+│       │           ├── mail-pli-content.html
+│       │           ├── mail-pli-scan.html
+│       │           ├── mail-recipient-download-list.html
+│       │           ├── mail-recipient-undownload-list.html
+│       │           ├── mail-relaunch-recipient-template.html
+│       │           ├── mail-relaunch-sender-template.html
+│       │           ├── mail-sender.html
+│       │           ├── mail-template.html
+│       │           ├── mail-validate-date.html
+│       │           ├── mail-virus-error-sender-template.html
+│       │           ├── mail-virus-indisp-sender-template.html
+│       │           └── mail-virus-sender-template.html
+│       └── test
+│           ├── java
+│           │   ├── cleanup
+│           │   │   └── CleanUpServicesTest.java
+│           │   ├── mail
+│           │   │   ├── MailConfirmationCodeNotificationTest.java
+│           │   │   └── MailNotificationServicesTest.java
+│           │   ├── stat
+│           │   │   └── StatServicesTests.java
+│           │   └── upload
+│           │       └── zip
+│           │           └── UploadZipInOSUTest.java
+│           └── resources
+│               └── images
+│                   ├── Dossier_white.png
+│                   ├── Fichier_white.png
+│                   ├── france_transfert.PNG
+│                   └── logo-ft.png
+├── ft-dashboard
+│   ├── FT - IopsWorker.json
+│   ├── FT - Logs Dashboard.json
+│   ├── FT - Metrics.json
+│   └── FT - Uploaded_Finish.json
+└── ft-helm
+    ├── .gitignore
+    ├── .helmignore
+    ├── .sops.yaml
+    ├── LICENSE.txt
+    ├── environments
+    │   ├── default
+    │   │   ├── secrets.enc.yaml
+    │   │   └── values.ft.yaml
+    │   ├── ppr
+    │   │   ├── secrets.enc.yaml
+    │   │   └── values.ft.yaml
+    │   ├── ppr2
+    │   │   ├── secrets.enc.yaml
+    │   │   └── values.ft.yaml
+    │   ├── prod
+    │   │   ├── secrets.enc.yaml
+    │   │   └── values.ft.yaml
+    │   └── staging
+    │       ├── secrets.enc.yaml
+    │       └── values.ft.yaml
+    ├── ft
+    │   ├── Chart.yaml
+    │   ├── scripts
+    │   │   ├── backup.sh
+    │   │   ├── getbackup.sh
+    │   │   ├── index.html
+    │   │   ├── lockenclosure.sh
+    │   │   ├── redisdump.sh
+    │   │   ├── redisdump_delta.sh
+    │   │   ├── restoreredis.sh
+    │   │   └── sequestrequeue.sh
+    │   └── templates
+    │       ├── _helpers.tpl
+    │       ├── app-keystore.yaml
+    │       ├── app-secret.yaml
+    │       ├── backupredis.yaml
+    │       ├── backupredisdelta.yaml
+    │       ├── benchmark
+    │       │   └── job.yaml
+    │       ├── clamav
+    │       │   └── hpa.yaml
+    │       ├── configMap.yaml
+    │       ├── download
+    │       │   ├── configMap.yaml
+    │       │   ├── deployment.yaml
+    │       │   ├── hpa.yaml
+    │       │   ├── pdb.yaml
+    │       │   └── service.yaml
+    │       ├── front
+    │       │   ├── deployment.yaml
+    │       │   ├── hpa.yaml
+    │       │   ├── pdb.yaml
+    │       │   └── service.yaml
+    │       ├── ingress.yaml
+    │       ├── lockenclosure.yaml
+    │       ├── mailhog
+    │       │   ├── deployment.yaml
+    │       │   └── service.yaml
+    │       ├── maintenance
+    │       │   ├── configmap.yaml
+    │       │   ├── deployement.yaml
+    │       │   └── service.yaml
+    │       ├── promadapter.yaml
+    │       ├── rbbackup.yaml
+    │       ├── restoreredis.yaml
+    │       ├── scriptscm.yaml
+    │       ├── sequestrequeue.yaml
+    │       ├── upload
+    │       │   ├── configMap.yaml
+    │       │   ├── deployment.yaml
+    │       │   ├── hpa.yaml
+    │       │   ├── pdb.yaml
+    │       │   ├── service.yaml
+    │       │   └── servicemonitor.yaml
+    │       └── worker
+    │           ├── configMap.yaml
+    │           ├── cspheader.yaml
+    │           ├── deployement-scaler.yaml
+    │           ├── deployement.yaml
+    │           ├── dummy.yaml
+    │           ├── hpa.yaml
+    │           ├── pdb.yaml
+    │           ├── service.yaml
+    │           ├── servicemonitor.yaml
+    │           └── sts.yaml
+    ├── helmfile.yaml
+    └── helmfile.yaml.gotmpl
+274 directories, 792 files
