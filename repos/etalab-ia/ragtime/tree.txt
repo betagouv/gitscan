@@ -1,0 +1,615 @@
+.
+├── .config
+│   └── wt.toml
+├── .env.example
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── build-release-asset.yml
+│       ├── check-albert-version.yml
+│       ├── check-codebase.yml
+│       ├── check-install.yml
+│       ├── release.yml
+│       └── sync-templates-on-release.yml
+├── .gitignore
+├── .moon
+│   ├── templates
+│   │   ├── albert-client
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── albert
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _async_client.py
+│   │   │   │       ├── _models.py
+│   │   │   │       ├── _version.py
+│   │   │   │       ├── client.py
+│   │   │   │       └── types
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── collections.py
+│   │   │   │           ├── search.py
+│   │   │   │           └── tools.py
+│   │   │   └── template.yml
+│   │   ├── chainlit-chat
+│   │   │   ├── .env.example
+│   │   │   ├── .env.template
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── README.md
+│   │   │   ├── app.py
+│   │   │   ├── chainlit.md
+│   │   │   ├── chainlit_fr-FR.md
+│   │   │   ├── justfile
+│   │   │   ├── moon.yml
+│   │   │   ├── public
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── dsfr.min.css
+│   │   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   │   ├── dsfr.nomodule.min.js
+│   │   │   │   │   ├── favicon
+│   │   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   │   └── fonts
+│   │   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │   │   │       ├── Marianne-Light.woff
+│   │   │   │   │       ├── Marianne-Light.woff2
+│   │   │   │   │       ├── Marianne-Light_Italic.woff
+│   │   │   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │   │   │       ├── Spectral-ExtraBold.woff
+│   │   │   │   │       ├── Spectral-ExtraBold.woff2
+│   │   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │   │       └── Spectral-Regular.woff2
+│   │   │   │   ├── dsfr-init.js
+│   │   │   │   ├── dsfr-theme.css
+│   │   │   │   └── theme.json
+│   │   │   ├── pyproject.toml
+│   │   │   └── template.yml
+│   │   ├── context
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── context
+│   │   │   │           ├── __init__.py
+│   │   │   │           └── formatter.py
+│   │   │   └── template.yml
+│   │   ├── ingestion
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── ingestion
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
+│   │   │   │           └── local.py
+│   │   │   └── template.yml
+│   │   ├── orchestration
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── orchestration
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _base.py
+│   │   │   │       ├── albert.py
+│   │   │   │       └── basic.py
+│   │   │   └── template.yml
+│   │   ├── pipelines
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── pipelines
+│   │   │   │           ├── __init__.py
+│   │   │   │           └── _base.py
+│   │   │   └── template.yml
+│   │   ├── rag-core
+│   │   │   ├── README.md
+│   │   │   ├── presets
+│   │   │   │   ├── accurate.toml
+│   │   │   │   ├── balanced.toml
+│   │   │   │   ├── fast.toml
+│   │   │   │   ├── hr.toml
+│   │   │   │   └── legal.toml
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── core
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── loader.py
+│   │   │   │           ├── mediatech.py
+│   │   │   │           ├── pdf.py
+│   │   │   │           ├── presets.py
+│   │   │   │           ├── runtime.py
+│   │   │   │           └── schema.py
+│   │   │   └── template.yml
+│   │   ├── reflex-chat
+│   │   │   ├── .env.example
+│   │   │   ├── .env.template
+│   │   │   ├── .github
+│   │   │   │   └── workflows
+│   │   │   │       └── ci.yml
+│   │   │   ├── .gitignore
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── app
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── app.py
+│   │   │   │   ├── components
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── chat.py
+│   │   │   │   │   └── navbar.py
+│   │   │   │   └── state.py
+│   │   │   ├── assets
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── favicon
+│   │   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   │   └── favicon.svg
+│   │   │   │   │   └── fonts
+│   │   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │   │       └── Spectral-Regular.woff2
+│   │   │   │   ├── dsfr-theme.css
+│   │   │   │   └── favicon.ico
+│   │   │   ├── docs
+│   │   │   │   └── demo.gif
+│   │   │   ├── justfile
+│   │   │   ├── moon.yml
+│   │   │   ├── pyproject.toml
+│   │   │   ├── rxconfig.py
+│   │   │   ├── scripts
+│   │   │   │   └── open_browser.py
+│   │   │   └── template.yml
+│   │   ├── reranking
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── reranking
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
+│   │   │   │           └── albert.py
+│   │   │   └── template.yml
+│   │   ├── retrieval
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── retrieval
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
+│   │   │   │           ├── albert.py
+│   │   │   │           └── fusion.py
+│   │   │   └── template.yml
+│   │   ├── storage
+│   │   │   ├── README.md
+│   │   │   ├── pyproject.toml
+│   │   │   ├── src
+│   │   │   │   └── ragtime
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── storage
+│   │   │   │           ├── __init__.py
+│   │   │   │           ├── _base.py
+│   │   │   │           └── albert.py
+│   │   │   └── template.yml
+│   │   └── sys-config
+│   │       ├── .moon
+│   │       │   ├── toolchain.yml
+│   │       │   └── workspace.yml
+│   │       ├── .prototools
+│   │       ├── .python-version
+│   │       ├── justfile
+│   │       ├── pyproject.toml
+│   │       └── template.yml
+│   ├── toolchain.yml
+│   └── workspace.yml
+├── .pre-commit-config.yaml
+├── .prototools
+├── .python-version
+├── .release-please-manifest.json
+├── .vscode
+│   └── settings.json
+├── .worktreeinclude
+├── AGENTS.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── TEST_PLAN.md
+├── apps
+│   ├── chainlit-chat
+│   │   ├── .chainlit
+│   │   │   └── config.toml
+│   │   ├── .env.example
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── app.py
+│   │   ├── chainlit.md
+│   │   ├── chainlit_fr-FR.md
+│   │   ├── justfile
+│   │   ├── moon.yml
+│   │   ├── public
+│   │   │   ├── dsfr
+│   │   │   │   ├── dsfr.min.css
+│   │   │   │   ├── dsfr.module.min.js
+│   │   │   │   ├── dsfr.nomodule.min.js
+│   │   │   │   ├── favicon
+│   │   │   │   │   ├── android-chrome-192x192.png
+│   │   │   │   │   ├── android-chrome-512x512.png
+│   │   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   │   ├── favicon.ico
+│   │   │   │   │   ├── favicon.svg
+│   │   │   │   │   └── manifest.webmanifest
+│   │   │   │   └── fonts
+│   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │   │       ├── Marianne-Light.woff
+│   │   │   │       ├── Marianne-Light.woff2
+│   │   │   │       ├── Marianne-Light_Italic.woff
+│   │   │   │       ├── Marianne-Light_Italic.woff2
+│   │   │   │       ├── Marianne-Medium.woff
+│   │   │   │       ├── Marianne-Medium.woff2
+│   │   │   │       ├── Marianne-Medium_Italic.woff
+│   │   │   │       ├── Marianne-Medium_Italic.woff2
+│   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │   │       ├── Marianne-Regular_Italic.woff2
+│   │   │   │       ├── Spectral-ExtraBold.woff
+│   │   │   │       ├── Spectral-ExtraBold.woff2
+│   │   │   │       ├── Spectral-Regular.woff
+│   │   │   │       └── Spectral-Regular.woff2
+│   │   │   ├── dsfr-init.js
+│   │   │   ├── dsfr-theme.css
+│   │   │   └── theme.json
+│   │   └── pyproject.toml
+│   ├── cli
+│   │   ├── .env.example
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── moon.yml
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── cli
+│   │   │       ├── __init__.py
+│   │   │       ├── commands
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── collections
+│   │   │       │   │   └── __init__.py
+│   │   │       │   ├── config
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── preset.py
+│   │   │       │   │   ├── set_value.py
+│   │   │       │   │   ├── show.py
+│   │   │       │   │   └── validate.py
+│   │   │       │   ├── eval.py
+│   │   │       │   ├── gen_template.py
+│   │   │       │   ├── generate_dataset.py
+│   │   │       │   ├── providers
+│   │   │       │   │   ├── __init__.py
+│   │   │       │   │   ├── albert.py
+│   │   │       │   │   ├── document_preprocessor.py
+│   │   │       │   │   ├── letta.py
+│   │   │       │   │   └── schema.py
+│   │   │       │   ├── setup.py
+│   │   │       │   └── traces.py
+│   │   │       ├── main.py
+│   │   │       └── templates
+│   │   │           └── ragtime.toml
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_collections.py
+│   │       ├── test_document_preprocessor.py
+│   │       ├── test_setup.py
+│   │       └── test_traces.py
+│   └── reflex-chat
+│       ├── .env.example
+│       ├── .github
+│       │   └── workflows
+│       │       └── ci.yml
+│       ├── .gitignore
+│       ├── CHANGELOG.md
+│       ├── LICENSE
+│       ├── README.md
+│       ├── assets
+│       │   ├── dsfr
+│       │   │   ├── favicon
+│       │   │   │   ├── favicon.ico
+│       │   │   │   └── favicon.svg
+│       │   │   └── fonts
+│       │   │       ├── Marianne-Bold.woff
+│       │   │       ├── Marianne-Bold.woff2
+│       │   │       ├── Marianne-Medium.woff
+│       │   │       ├── Marianne-Medium.woff2
+│       │   │       ├── Marianne-Regular.woff
+│       │   │       ├── Marianne-Regular.woff2
+│       │   │       ├── Spectral-Regular.woff
+│       │   │       └── Spectral-Regular.woff2
+│       │   ├── dsfr-theme.css
+│       │   └── favicon.ico
+│       ├── docs
+│       │   └── demo.gif
+│       ├── justfile
+│       ├── moon.yml
+│       ├── pyproject.toml
+│       ├── reflex_chat
+│       │   ├── __init__.py
+│       │   ├── components
+│       │   │   ├── __init__.py
+│       │   │   ├── chat.py
+│       │   │   └── navbar.py
+│       │   ├── reflex_chat.py
+│       │   └── state.py
+│       ├── rxconfig.py
+│       └── scripts
+│           └── open_browser.py
+├── data
+│   ├── .gitignore
+│   ├── datasets
+│   │   └── .gitkeep
+│   └── documents
+│       ├── .DS_Store
+│       └── raw
+│           ├── .gitkeep
+│           └── Hub-France-IA-Les-risques-de-lIA-Generative.txt
+├── docs
+│   ├── README.md
+│   ├── guides
+│   │   ├── ci-cd-linux.md
+│   │   ├── ci-cd-macos.md
+│   │   ├── ci-cd-windows.md
+│   │   ├── developer-setup-windows.md
+│   │   ├── evaluation.md
+│   │   ├── getting-started.md
+│   │   ├── how-rag-works.md
+│   │   ├── proxy-setup.md
+│   │   ├── rag-pipeline.md
+│   │   ├── supabase-setup.md
+│   │   ├── uninstalling.md
+│   │   ├── windows-setup.md
+│   │   └── worktrees.md
+│   ├── reference
+│   │   ├── components.md
+│   │   ├── rag-science.md
+│   │   └── ragfacile-toml.md
+│   └── troubleshooting
+│       └── proxy.md
+├── install.sh
+├── justfile
+├── packages
+│   ├── albert-client
+│   │   ├── CHANGELOG.md
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── albert
+│   │   │       ├── __init__.py
+│   │   │       ├── _async_client.py
+│   │   │       ├── _models.py
+│   │   │       ├── _version.py
+│   │   │       ├── client.py
+│   │   │       └── types
+│   │   │           ├── __init__.py
+│   │   │           ├── collections.py
+│   │   │           ├── search.py
+│   │   │           └── tools.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       ├── test_async_client.py
+│   │       ├── test_async_collections_documents.py
+│   │       ├── test_async_rerank.py
+│   │       ├── test_async_search.py
+│   │       ├── test_async_tools.py
+│   │       ├── test_chunks.py
+│   │       ├── test_client.py
+│   │       ├── test_collections.py
+│   │       ├── test_documents.py
+│   │       ├── test_models.py
+│   │       ├── test_rerank.py
+│   │       ├── test_search.py
+│   │       └── test_tools.py
+│   ├── context
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── context
+│   │   │           ├── __init__.py
+│   │   │           └── formatter.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_formatter.py
+│   ├── evaluation
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── evaluation
+│   │   │           ├── __init__.py
+│   │   │           ├── _dataset.py
+│   │   │           ├── _scorers.py
+│   │   │           ├── _solvers.py
+│   │   │           └── _tasks.py
+│   │   └── tests
+│   │       ├── test_dataset.py
+│   │       ├── test_scorers.py
+│   │       └── test_solvers.py
+│   ├── ingestion
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── ingestion
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           └── local.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_ingestion.py
+│   ├── pipelines
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── pipelines
+│   │   │           ├── __init__.py
+│   │   │           └── _base.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_pipelines.py
+│   ├── query
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       └── query
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           ├── _models.py
+│   │   │           ├── hyde.py
+│   │   │           └── multi_query.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_query_expansion.py
+│   ├── rag-core
+│   │   ├── README.md
+│   │   ├── presets
+│   │   │   ├── accurate.toml
+│   │   │   ├── balanced.toml
+│   │   │   ├── fast.toml
+│   │   │   ├── hr.toml
+│   │   │   └── legal.toml
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── core
+│   │   │           ├── __init__.py
+│   │   │           ├── loader.py
+│   │   │           ├── mediatech.py
+│   │   │           ├── pdf.py
+│   │   │           ├── presets.py
+│   │   │           ├── runtime.py
+│   │   │           └── schema.py
+│   │   └── tests
+│   │       ├── test_loader.py
+│   │       ├── test_mediatech.py
+│   │       ├── test_presets.py
+│   │       ├── test_runtime.py
+│   │       └── test_schema.py
+│   ├── ragtime-lib
+│   │   ├── README.md
+│   │   └── pyproject.toml
+│   ├── reranking
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── reranking
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           └── albert.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_albert.py
+│   ├── retrieval
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── retrieval
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           ├── albert.py
+│   │   │           └── fusion.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_retriever.py
+│   ├── storage
+│   │   ├── README.md
+│   │   ├── pyproject.toml
+│   │   ├── src
+│   │   │   └── ragtime
+│   │   │       ├── __init__.py
+│   │   │       └── storage
+│   │   │           ├── __init__.py
+│   │   │           ├── _base.py
+│   │   │           └── albert.py
+│   │   └── tests
+│   │       ├── conftest.py
+│   │       └── test_albert.py
+│   └── tracing
+│       ├── README.md
+│       ├── pyproject.toml
+│       ├── src
+│       │   └── ragtime
+│       │       ├── __init__.py
+│       │       └── tracing
+│       │           ├── __init__.py
+│       │           ├── _base.py
+│       │           ├── _models.py
+│       │           ├── noop.py
+│       │           ├── postgres.py
+│       │           └── sqlite.py
+│       └── tests
+│           ├── __init__.py
+│           ├── test_init.py
+│           ├── test_models.py
+│           ├── test_noop.py
+│           ├── test_postgres.py
+│           └── test_sqlite.py
+├── pyproject.toml
+├── ragfacile.toml
+├── release-please-config.json
+├── samples
+│   ├── 9782340040069_extrait.pdf
+│   ├── INTRODSP.pdf
+│   ├── fiche_14_vademecum_kit_elections_2014_v2_18.02.14.pdf
+│   └── service_dag_2023-2024.pdf
+├── supabase
+│   ├── config.toml
+│   └── migrations
+│       ├── 00000000000000_tracing.sql
+│       └── 00000000000001_chainlit.sql
+├── tools
+│   ├── build_release_asset.py
+│   ├── generate_templates.py
+│   ├── moon.yml
+│   ├── pyproject.toml
+│   └── uv.lock
+└── uv.lock
+158 directories, 456 files
