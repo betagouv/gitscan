@@ -1,41 +1,18 @@
-## Changelog : euphrosyne (30 derniers jours)
+## Changelog : euphrosyne (30 derniers jours, au 9 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Euphrosyne au cours des 30 derniers jours. Les modifications incluent des mises à jour de sécurité, des corrections de bugs, des améliorations de l'interface utilisateur, l'ajout de nouvelles fonctionnalités comme le filtrage étendu des tables de données et la préparation pour la compatibilité avec Django 6. Des mises à jour de dépendances ont également été effectuées pour assurer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur la correction de bugs, l'amélioration de la stabilité et la mise à jour des dépendances du projet. Une nouvelle fonctionnalité permettant d'exempter un plan de prévention a été ajoutée dans l'interface d'administration. Des améliorations ont également été apportées à la gestion de l'authentification ORCID.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de filtrer les extensions dans les tables de fichiers ([#1767](https://github.com/betagouv/euphrosyne/pull/1767)).
-- Intégration de liens vers un visualiseur HDF5 pour les données de run ([#1739](https://github.com/betagouv/euphrosyne/pull/1739)).
-- Correction d'un bug empêchant la planification de runs sans employeur pour les participations sur site ([#1772](https://github.com/betagouv/euphrosyne/pull/1772)).
-- Correction de l'affichage de balises `div` non fermées dans les templates de run ([#1771](https://github.com/betagouv/euphrosyne/pull/1771)).
-- Ajout de la configuration de Sentry pour le frontend, permettant une meilleure surveillance des erreurs et des performances.
-- Correction d'un bug lié à l'absence de l'ID de workflow dans Goodflag ([#1731](https://github.com/betagouv/euphrosyne/pull/1731)).
+- Ajout d'un commutateur pour exempter un plan de prévention dans l'interface d'administration. [#1807](https://github.com/betagouv/euphrosyne/pull/1807)
+- Correction d'un bug empêchant la bonne configuration du statut "is_staff" lors de la vérification ORCID. [#1808](https://github.com/betagouv/euphrosyne/pull/1808)
+- Correction d'un test instable lié à la factory de projets. [#1822](https://github.com/betagouv/euphrosyne/pull/1822)
 
 ### Évolutions techniques
-- Mise à jour de la version de Node.js à la version 24 et ajustement des exigences npm correspondantes ([#1770](https://github.com/betagouv/euphrosyne/pull/1770)).
-- Préparation pour la migration vers Django 6, incluant des corrections et des ajustements nécessaires ([#1619](https://github.com/betagouv/euphrosyne/pull/1619)).
-- Mise à jour de plusieurs dépendances npm et pip, notamment :
-    - `react` et `@types/react`
-    - `webpack`
-    - `@typescript-eslint/eslint-plugin`
-    - `jsdom`
-    - `fast-xml-parser`
-    - `rollup`
-    - `css-loader`
-    - `@azure/storage-blob`
-    - `purgecss-webpack-plugin`
-    - `remixicon`
-    - `@sentry/browser`
-    - `social-auth-app-django`
-    - `django-debug-toolbar`
-    - `sentry-sdk`
-    - `drf-spectacular`
-    - `brace-expansion`
-- Correction de styles CSS spécifiques à Django pour assurer la compatibilité et une meilleure apparence.
+- Mise à jour de Django en version 6.0.3 pour bénéficier des dernières corrections et améliorations. [#1795](https://github.com/betagouv/euphrosyne/pull/1795)
+- Mises à jour de plusieurs dépendances npm (webpack, axios, typescript-eslint, vitest, etc.) pour améliorer la sécurité et les performances.
+- Mises à jour de plusieurs dépendances Python (pytest, isort, python-dotenv, dj-database-url, etc.) pour bénéficier des dernières corrections et améliorations.
 
 ### Autres changements
-- Ajout de paramètres de Content Security Policy (CSP) et mise à jour de la documentation.
-- Synchronisation du fichier `package.lock`.
-- Suppression temporaire de l'application H5web et restauration ultérieure avec une version compatible React 19.
-- Suppression du flag de fonctionnalité HDF5.
-- Mise à jour de la documentation et des dépendances de développement.
+- Exécution de `npm audit fix` pour corriger les vulnérabilités détectées dans les dépendances npm. [#1799](https://github.com/betagouv/euphrosyne/pull/1799)
+- Amélioration de la position des objectools dans la liste des éléments. [#1820](https://github.com/betagouv/euphrosyne/pull/1820)
