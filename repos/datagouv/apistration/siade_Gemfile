@@ -1,0 +1,123 @@
+source 'https://rubygems.org'
+
+version = '~> 8.1'
+[
+'activesupport',
+'actionpack',
+#'actionview',
+'activemodel',
+'activerecord',
+#'actionmailer',
+#'activejob',
+#'actioncable',
+#'activestorage',
+#'actionmailbox',
+#'actiontext',
+'railties'
+].each do |rails_subgem|
+  gem rails_subgem, version
+end
+
+gem 'pg'
+
+gem 'puma'
+
+gem 'rest-client'
+
+gem 'uri', '1.1.1'
+
+gem 'active_model_serializers', '~> 0.10.15', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
+gem 'logstasher'
+gem 'nokogiri'
+gem 'oauth2', '~> 2.0'
+gem 'ox'
+gem 'redis'
+gem 'connection_pool', '< 4.0'
+gem 'unindent'
+gem 'rack-cors'
+gem 'utf8-cleaner'
+gem 'rack-attack'
+gem 'marcel'
+gem 'rexml'
+gem 'hexapdf'
+
+gem 'csv'
+
+gem 'fog-openstack', '1.1.5'
+
+gem 'interactor'
+
+gem 'jwt', '~> 3.1'
+gem 'jwe'
+
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
+gem 'rswag-api'
+gem 'rswag-ui'
+
+gem 'lockbox'
+
+gem 'octokit', '~> 10.0'
+gem 'faraday-retry'
+
+gem 'pdf-reader'
+
+gem 'gpgme'
+
+gem 'mcp'
+
+gem 'bigdecimal'
+
+group :test do
+  gem 'rswag-specs'
+
+  gem 'json-schema'
+  gem 'timecop'
+  gem 'vcr'
+  gem 'webmock', '~> 3.26'
+
+  gem 'ammeter'
+  gem 'rspec-rails'
+  gem 'rspec-retry'
+  gem 'rspec-its'
+  gem 'rspec-json_expectations'
+  gem 'rspec-collection_matchers'
+  gem 'shoulda-matchers'
+
+  gem 'rails-controller-testing'
+
+  gem 'simplecov', require: false
+  gem 'simplecov-cobertura'
+  gem 'super_diff'
+end
+
+group :development, :test, :sandbox do
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'rb-readline'
+end
+
+group :development, :test do
+  gem 'colorize'
+
+  gem 'guard'
+  gem 'guard-rspec', require: false
+
+  gem "openapi3_parser", "~> 0.10.1"
+
+  gem "xml-simple"
+end
+
+group :development do
+  gem 'brakeman', require: false
+
+  gem 'derailed_benchmarks'
+
+  # ruby syntax analyze
+  gem 'rubocop', require: false
+  gem 'rubocop-checkstyle_formatter', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec_rails', require: false
+end
