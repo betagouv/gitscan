@@ -103,6 +103,9 @@
 │   │   │   ├── gestion-demandes
 │   │   │   │   ├── activation-compte
 │   │   │   │   │   └── commande.ts
+│   │   │   │   ├── aides
+│   │   │   │   │   ├── aidesNonPourvues.ts
+│   │   │   │   │   └── commande.ts
 │   │   │   │   ├── demandes-en-cours
 │   │   │   │   │   └── commande.ts
 │   │   │   │   ├── recherche
@@ -758,6 +761,9 @@
 │   │   │   │   └── rattrapage
 │   │   │   │       ├── metAJourLesGendarmesSansEntite.spec.ts
 │   │   │   │       └── trouveLesAidantsGendarmes.spec.ts
+│   │   │   ├── gestion-demandes
+│   │   │   │   └── aides
+│   │   │   │       └── aidesNonPourvues.spec.ts
 │   │   │   ├── lie-diagnostic
 │   │   │   │   ├── AdaptateurRelationsEnErreur.ts
 │   │   │   │   └── lieDiagnostic.spec.ts
@@ -961,119 +967,117 @@
 │   │   │   └── Charte_MonAideCyber.pdf
 │   │   ├── fontes
 │   │   │   └── Marianne-ExtraBold.woff2
-│   │   ├── images
-│   │   │   ├── Quotes.svg
-│   │   │   ├── chemin-etape.svg
-│   │   │   ├── devenir-aidant.svg
-│   │   │   ├── devise.svg
-│   │   │   ├── diagnostic
-│   │   │   │   ├── contexte
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   ├── gouvernance
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   ├── reaction
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   ├── securite-acces
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   ├── securite-infrastructures
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   ├── securite-postes
-│   │   │   │   │   ├── icone-navigation.svg
-│   │   │   │   │   └── illustration.svg
-│   │   │   │   └── sensibilisation
-│   │   │   │       ├── icone-navigation.svg
-│   │   │   │       └── illustration.svg
-│   │   │   ├── diagnostics-par-departement.png
-│   │   │   ├── favicons
-│   │   │   │   └── favicon.ico
-│   │   │   ├── homologation
-│   │   │   │   ├── encart-homologation.desktop.png
-│   │   │   │   ├── encart-homologation.mobile.png
-│   │   │   │   └── encart-homologation.tablette.png
-│   │   │   ├── icone_sandwich.svg
-│   │   │   ├── icones
-│   │   │   │   ├── accompagnement-personnalise.svg
-│   │   │   │   ├── ampoule.svg
-│   │   │   │   ├── burger.svg
-│   │   │   │   ├── communaute-aidants.svg
-│   │   │   │   ├── communaute.svg
-│   │   │   │   ├── deconnecter.svg
-│   │   │   │   ├── diagnostic-cyber.svg
-│   │   │   │   ├── dispositif-etatique.svg
-│   │   │   │   ├── ellipse.svg
-│   │   │   │   ├── fleche-bas.svg
-│   │   │   │   ├── gauche.svg
-│   │   │   │   ├── guillemets.svg
-│   │   │   │   ├── icone-aide.svg
-│   │   │   │   ├── icone-menu-lateral.svg
-│   │   │   │   ├── icone-statistique-nombre-aidants.svg
-│   │   │   │   ├── icone-statistiques-mesures-appliquees.svg
-│   │   │   │   ├── icone-statistiques-nombre-diagnostics.svg
-│   │   │   │   ├── icone-statistiques-satisfaction-diagnostic.svg
-│   │   │   │   ├── icone-telecharger.svg
-│   │   │   │   ├── interet-general.svg
-│   │   │   │   ├── mail-send-line.svg
-│   │   │   │   ├── moins.svg
-│   │   │   │   └── plus.svg
-│   │   │   ├── illustration-accueil.svg
-│   │   │   ├── illustration-annuaire-aidant.svg
-│   │   │   ├── illustration-autodiag.svg
-│   │   │   ├── illustration-cadre-professionnel-mac.svg
-│   │   │   ├── illustration-cadre-professionnel.svg
-│   │   │   ├── illustration-deux-personnes.svg
-│   │   │   ├── illustration-devenir-aidant.svg
-│   │   │   ├── illustration-dg-anssi.png
-│   │   │   ├── illustration-dialogue-mac.svg
-│   │   │   ├── illustration-dino-cyberdepart.svg
-│   │   │   ├── illustration-echange.svg
-│   │   │   ├── illustration-faq-femme.svg
-│   │   │   ├── illustration-general-gendarmerie.png
-│   │   │   ├── illustration-homepage-aides.svg
-│   │   │   ├── illustration-indicateurs-maturite.svg
-│   │   │   ├── illustration-interet-general-mac.svg
-│   │   │   ├── illustration-interet-general.svg
-│   │   │   ├── illustration-marelle-etape-1.svg
-│   │   │   ├── illustration-marelle-etape-2.svg
-│   │   │   ├── illustration-marelle-etape-3.svg
-│   │   │   ├── illustration-marelle-etape-4.svg
-│   │   │   ├── illustration-marelle.svg
-│   │   │   ├── illustration-mesures.svg
-│   │   │   ├── illustration-qui-est-concerne-etre-aide.svg
-│   │   │   ├── illustration-qui-est-concerne.svg
-│   │   │   ├── illustration-securite-des-acces.svg
-│   │   │   ├── illustration-securite-des-postes.svg
-│   │   │   ├── illustration-statistiques.svg
-│   │   │   ├── illustration-suivi.svg
-│   │   │   ├── illustration-tornade.svg
-│   │   │   ├── logo_acyma.svg
-│   │   │   ├── logo_anssi.svg
-│   │   │   ├── logo_anssi_complet.svg
-│   │   │   ├── logo_cnil.svg
-│   │   │   ├── logo_comcybermi.svg
-│   │   │   ├── logo_gendarmerie_nationale.svg
-│   │   │   ├── logo_mac.svg
-│   │   │   ├── logo_police_nationale.svg
-│   │   │   ├── logo_republique_française.png
-│   │   │   ├── marianne.svg
-│   │   │   ├── top_aidants
-│   │   │   │   ├── benoit_lejeunes.png
-│   │   │   │   ├── kim_guerin.png
-│   │   │   │   ├── laurier_d.svg
-│   │   │   │   ├── laurier_g.svg
-│   │   │   │   ├── pierre_borie.png
-│   │   │   │   └── willy_robert.png
-│   │   │   ├── video-atelier-diag-dating-apercu.png
-│   │   │   ├── video-comment-trouver-des-aides.png
-│   │   │   ├── video-naviguer-sur-mac-apercu.png
-│   │   │   └── video-presentation-mac
-│   │   │       └── apercu-video-mon-aide-cyber.jpg
-│   │   └── lab-anssi-ui-kit
-│   │       └── lab-anssi-ui-kit.iife.v1.1.1.js
+│   │   └── images
+│   │       ├── Quotes.svg
+│   │       ├── chemin-etape.svg
+│   │       ├── devenir-aidant.svg
+│   │       ├── devise.svg
+│   │       ├── diagnostic
+│   │       │   ├── contexte
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   ├── gouvernance
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   ├── reaction
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   ├── securite-acces
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   ├── securite-infrastructures
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   ├── securite-postes
+│   │       │   │   ├── icone-navigation.svg
+│   │       │   │   └── illustration.svg
+│   │       │   └── sensibilisation
+│   │       │       ├── icone-navigation.svg
+│   │       │       └── illustration.svg
+│   │       ├── diagnostics-par-departement.png
+│   │       ├── favicons
+│   │       │   └── favicon.ico
+│   │       ├── homologation
+│   │       │   ├── encart-homologation.desktop.png
+│   │       │   ├── encart-homologation.mobile.png
+│   │       │   └── encart-homologation.tablette.png
+│   │       ├── icone_sandwich.svg
+│   │       ├── icones
+│   │       │   ├── accompagnement-personnalise.svg
+│   │       │   ├── ampoule.svg
+│   │       │   ├── burger.svg
+│   │       │   ├── communaute-aidants.svg
+│   │       │   ├── communaute.svg
+│   │       │   ├── deconnecter.svg
+│   │       │   ├── diagnostic-cyber.svg
+│   │       │   ├── dispositif-etatique.svg
+│   │       │   ├── ellipse.svg
+│   │       │   ├── fleche-bas.svg
+│   │       │   ├── gauche.svg
+│   │       │   ├── guillemets.svg
+│   │       │   ├── icone-aide.svg
+│   │       │   ├── icone-menu-lateral.svg
+│   │       │   ├── icone-statistique-nombre-aidants.svg
+│   │       │   ├── icone-statistiques-mesures-appliquees.svg
+│   │       │   ├── icone-statistiques-nombre-diagnostics.svg
+│   │       │   ├── icone-statistiques-satisfaction-diagnostic.svg
+│   │       │   ├── icone-telecharger.svg
+│   │       │   ├── interet-general.svg
+│   │       │   ├── mail-send-line.svg
+│   │       │   ├── moins.svg
+│   │       │   └── plus.svg
+│   │       ├── illustration-accueil.svg
+│   │       ├── illustration-annuaire-aidant.svg
+│   │       ├── illustration-autodiag.svg
+│   │       ├── illustration-cadre-professionnel-mac.svg
+│   │       ├── illustration-cadre-professionnel.svg
+│   │       ├── illustration-deux-personnes.svg
+│   │       ├── illustration-devenir-aidant.svg
+│   │       ├── illustration-dg-anssi.png
+│   │       ├── illustration-dialogue-mac.svg
+│   │       ├── illustration-dino-cyberdepart.svg
+│   │       ├── illustration-echange.svg
+│   │       ├── illustration-faq-femme.svg
+│   │       ├── illustration-general-gendarmerie.png
+│   │       ├── illustration-homepage-aides.svg
+│   │       ├── illustration-indicateurs-maturite.svg
+│   │       ├── illustration-interet-general-mac.svg
+│   │       ├── illustration-interet-general.svg
+│   │       ├── illustration-marelle-etape-1.svg
+│   │       ├── illustration-marelle-etape-2.svg
+│   │       ├── illustration-marelle-etape-3.svg
+│   │       ├── illustration-marelle-etape-4.svg
+│   │       ├── illustration-marelle.svg
+│   │       ├── illustration-mesures.svg
+│   │       ├── illustration-qui-est-concerne-etre-aide.svg
+│   │       ├── illustration-qui-est-concerne.svg
+│   │       ├── illustration-securite-des-acces.svg
+│   │       ├── illustration-securite-des-postes.svg
+│   │       ├── illustration-statistiques.svg
+│   │       ├── illustration-suivi.svg
+│   │       ├── illustration-tornade.svg
+│   │       ├── logo_acyma.svg
+│   │       ├── logo_anssi.svg
+│   │       ├── logo_anssi_complet.svg
+│   │       ├── logo_cnil.svg
+│   │       ├── logo_comcybermi.svg
+│   │       ├── logo_gendarmerie_nationale.svg
+│   │       ├── logo_mac.svg
+│   │       ├── logo_police_nationale.svg
+│   │       ├── logo_republique_française.png
+│   │       ├── marianne.svg
+│   │       ├── top_aidants
+│   │       │   ├── benoit_lejeunes.png
+│   │       │   ├── kim_guerin.png
+│   │       │   ├── laurier_d.svg
+│   │       │   ├── laurier_g.svg
+│   │       │   ├── pierre_borie.png
+│   │       │   └── willy_robert.png
+│   │       ├── video-atelier-diag-dating-apercu.png
+│   │       ├── video-comment-trouver-des-aides.png
+│   │       ├── video-naviguer-sur-mac-apercu.png
+│   │       └── video-presentation-mac
+│   │           └── apercu-video-mon-aide-cyber.jpg
 │   ├── src
 │   │   ├── Accueil.tsx
 │   │   ├── RouteurPrive.tsx
@@ -1570,4 +1574,4 @@
 ├── package.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-353 directories, 1219 files
+355 directories, 1221 files
