@@ -1,0 +1,299 @@
+.
+├── .ai
+│   ├── AGENTS.md
+│   ├── agents
+│   │   ├── .gitkeep
+│   │   └── core
+│   │       ├── deep-search.md
+│   │       ├── explore-codebase.md
+│   │       ├── fast-coder.md
+│   │       ├── prompt-engineering.md
+│   │       └── websearch.md
+│   ├── avatars
+│   │   ├── README.md
+│   │   ├── product-owner.md
+│   │   └── ux-designer.md
+│   ├── cli
+│   ├── commands
+│   │   ├── .gitkeep
+│   │   ├── code-quality
+│   │   │   ├── code-analyse.md
+│   │   │   ├── code-ci.md
+│   │   │   ├── code-clean.md
+│   │   │   ├── code-explain.md
+│   │   │   ├── code-optimize.md
+│   │   │   └── code-review.md
+│   │   ├── core
+│   │   │   ├── agent-create.md
+│   │   │   ├── avatar-create.md
+│   │   │   ├── command-create.md
+│   │   │   ├── context-cleanup.md
+│   │   │   ├── deep-search.md
+│   │   │   ├── dev-docs-save.md
+│   │   │   ├── feature-create.md
+│   │   │   └── migrate.md
+│   │   ├── git
+│   │   │   └── code-commit.md
+│   │   └── github
+│   │       ├── code-issue-process.md
+│   │       ├── code-pr-create.md
+│   │       └── code-pr-process-comments.md
+│   ├── config.jsonc
+│   ├── context
+│   │   ├── API.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── CODE_STYLE.md
+│   │   ├── DATABASE.md
+│   │   ├── DEVELOPMENT_WORKFLOW.md
+│   │   ├── OVERVIEW.md
+│   │   ├── SECURITY_CHECKS.md
+│   │   ├── TESTING.md
+│   │   └── git
+│   │       └── GIT-WORKFLOW.md
+│   ├── media
+│   │   ├── finish.mp3
+│   │   └── need-human.mp3
+│   └── scripts
+│       ├── claude
+│       │   ├── statusline-ccusage.sh
+│       │   └── statusline.readme.md
+│       ├── validate-command.mjs
+│       └── validate-command.readme.md
+├── .bundler-audit.yml
+├── .devcontainer
+│   ├── Dockerfile
+│   ├── compose.yaml
+│   └── devcontainer.json
+├── .dockerignore
+├── .gitattributes
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── project-pitch.yml
+│   │   └── task.yml
+│   └── dependabot.yml
+├── .gitignore
+├── .rspec
+├── .rubocop.yml
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── ONBOARDING_DEVELOPER.md
+├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── images
+│   │   │   └── .keep
+│   │   └── stylesheets
+│   │       └── application.css
+│   ├── controllers
+│   │   ├── api
+│   │   │   ├── base_controller.rb
+│   │   │   └── v1
+│   │   │       ├── data_packages
+│   │   │       │   └── subscriptions_controller.rb
+│   │   │       ├── data_packages_controller.rb
+│   │   │       ├── data_streams_controller.rb
+│   │   │       ├── organizations_controller.rb
+│   │   │       ├── subscriptions_controller.rb
+│   │   │       └── transmissions_controller.rb
+│   │   ├── application_controller.rb
+│   │   └── concerns
+│   │       └── .keep
+│   ├── helpers
+│   │   └── application_helper.rb
+│   ├── interactors
+│   │   └── data_packages
+│   │       ├── transmit
+│   │       │   ├── create_notifications.rb
+│   │       │   ├── resolve_recipients.rb
+│   │       │   ├── transition_to_transmitted.rb
+│   │       │   └── validate_transmission.rb
+│   │       └── transmit.rb
+│   ├── javascript
+│   │   ├── application.js
+│   │   └── controllers
+│   │       ├── application.js
+│   │       ├── hello_controller.js
+│   │       └── index.js
+│   ├── jobs
+│   │   └── application_job.rb
+│   ├── mailers
+│   │   └── application_mailer.rb
+│   ├── models
+│   │   ├── application_record.rb
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   ├── data_package.rb
+│   │   ├── data_stream.rb
+│   │   ├── notification.rb
+│   │   ├── organization.rb
+│   │   └── subscription.rb
+│   ├── queries
+│   │   └── delivery_criteria_resolver.rb
+│   ├── validators
+│   │   └── delivery_criteria_validator.rb
+│   └── views
+│       ├── api
+│       │   └── v1
+│       │       ├── data_packages
+│       │       │   ├── _data_package.json.jbuilder
+│       │       │   ├── index.json.jbuilder
+│       │       │   ├── show.json.jbuilder
+│       │       │   └── subscriptions
+│       │       │       └── index.json.jbuilder
+│       │       ├── data_streams
+│       │       │   ├── _data_stream.json.jbuilder
+│       │       │   ├── index.json.jbuilder
+│       │       │   └── show.json.jbuilder
+│       │       ├── organizations
+│       │       │   ├── _organization.json.jbuilder
+│       │       │   ├── index.json.jbuilder
+│       │       │   └── show.json.jbuilder
+│       │       └── subscriptions
+│       │           ├── _subscription.json.jbuilder
+│       │           ├── index.json.jbuilder
+│       │           └── show.json.jbuilder
+│       ├── layouts
+│       │   ├── application.html.erb
+│       │   ├── mailer.html.erb
+│       │   └── mailer.text.erb
+│       └── pwa
+│           ├── manifest.json.erb
+│           └── service-worker.js
+├── bin
+│   ├── brakeman
+│   ├── bundler-audit
+│   ├── ci
+│   ├── cucumber
+│   ├── dev
+│   ├── docker-entrypoint
+│   ├── importmap
+│   ├── jobs
+│   ├── rails
+│   ├── rake
+│   ├── rubocop
+│   └── setup
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── bundler-audit.yml
+│   ├── cable.yml
+│   ├── cache.yml
+│   ├── ci.rb
+│   ├── credentials.yml.enc
+│   ├── cucumber.yml
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── importmap.rb
+│   ├── initializers
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   ├── pagy.rb
+│   │   └── strong_migrations.rb
+│   ├── locales
+│   │   └── en.yml
+│   ├── puma.rb
+│   ├── queue.yml
+│   ├── recurring.yml
+│   ├── routes.rb
+│   └── storage.yml
+├── config.ru
+├── db
+│   ├── cable_schema.rb
+│   ├── cache_schema.rb
+│   ├── migrate
+│   │   ├── 20251027135101_create_organizations.rb
+│   │   ├── 20251028002505_create_data_streams.rb
+│   │   ├── 20251031184929_create_subscriptions.rb
+│   │   ├── 20251102100410_create_data_packages.rb
+│   │   ├── 20251116105107_replace_permission_type_with_booleans.rb
+│   │   ├── 20251116180937_create_notifications.rb
+│   │   └── 20251116183502_add_delivery_criteria_to_data_packages.rb
+│   ├── queue_schema.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── features
+│   ├── step_definitions
+│   │   └── .keep
+│   └── support
+│       └── env.rb
+├── lib
+│   └── tasks
+│       ├── .keep
+│       ├── cucumber.rake
+│       └── security.rake
+├── log
+│   └── .keep
+├── public
+│   ├── 400.html
+│   ├── 404.html
+│   ├── 406-unsupported-browser.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── icon.png
+│   ├── icon.svg
+│   └── robots.txt
+├── script
+│   └── .keep
+├── spec
+│   ├── factories
+│   │   ├── data_packages.rb
+│   │   ├── data_streams.rb
+│   │   ├── notifications.rb
+│   │   ├── organizations.rb
+│   │   └── subscriptions.rb
+│   ├── interactors
+│   │   └── data_packages
+│   │       ├── transmit
+│   │       │   ├── create_notifications_spec.rb
+│   │       │   ├── resolve_recipients_spec.rb
+│   │       │   ├── transition_to_transmitted_spec.rb
+│   │       │   └── validate_transmission_spec.rb
+│   │       └── transmit_spec.rb
+│   ├── models
+│   │   ├── data_package_spec.rb
+│   │   ├── data_stream_spec.rb
+│   │   ├── notification_spec.rb
+│   │   ├── organization_spec.rb
+│   │   └── subscription_spec.rb
+│   ├── queries
+│   │   └── delivery_criteria_resolver_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   └── api
+│   │       └── v1
+│   │           ├── data_packages
+│   │           │   └── subscriptions_spec.rb
+│   │           ├── data_packages_spec.rb
+│   │           ├── data_streams_spec.rb
+│   │           ├── organizations_spec.rb
+│   │           ├── subscriptions_spec.rb
+│   │           └── transmissions_spec.rb
+│   ├── spec_helper.rb
+│   ├── support
+│   │   ├── shared_examples_for_boolean_filter_scope.rb
+│   │   ├── shared_examples_for_pagination.rb
+│   │   └── shared_examples_for_uuid_v7.rb
+│   └── validators
+│       └── delivery_criteria_validator_spec.rb
+├── storage
+│   └── .keep
+├── tmp
+│   ├── .keep
+│   ├── pids
+│   │   └── .keep
+│   └── storage
+│       └── .keep
+└── vendor
+    ├── .keep
+    └── javascript
+        └── .keep
+83 directories, 215 files
