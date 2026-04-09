@@ -1,0 +1,76 @@
+{
+  "name": "cadastre.data.gouv.fr",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page pour le cadastre",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server",
+    "build": "node build/index.mjs && next build",
+    "export": "next export",
+    "start": "NODE_ENV=production node server",
+    "lint": "xo",
+    "test": "ava",
+    "heroku-postbuild": "next build"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "css-loader": "^6.7.3",
+    "debounce": "^1.2.0",
+    "express": "^4.17.1",
+    "html-react-parser": "^4.0.0",
+    "lodash": "^4.17.20",
+    "mapbox-gl": "npm:empty-npm-package@^1.0.0",
+    "maplibre-gl": "^2.4.0",
+    "next": "11",
+    "piwik-react-router": "^0.12.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-autocomplete": "^1.8.1",
+    "react-autosuggest": "^10.1.0",
+    "react-dom": "^17.0.1",
+    "react-feather": "^2.0.9",
+    "react-map-gl": "^7.0.21",
+    "style-loader": "^3.3.1",
+    "underscore.string": "^3.3.5"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^10.0.2",
+    "ava": "^3.3.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-inline-import": "^3.0.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "eslint-config-xo-nextjs": "^1.5.0",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.4.0",
+    "xo": "^0.26.1"
+  },
+  "xo": {
+    "extends": "xo-nextjs",
+    "semicolon": false,
+    "space": 2,
+    "env": [
+      "browser"
+    ],
+    "rules": {
+      "unicorn/catch-error-name": "off",
+      "react/jsx-sort-props": "off",
+      "react/jsx-child-element-spacing": "off",
+      "react/boolean-prop-naming": "off",
+      "react/static-property-placement": "off",
+      "react/state-in-constructor": "off",
+      "react/no-unknown-property": [
+        "error",
+        {
+          "ignore": [
+            "jsx",
+            "global"
+          ]
+        }
+      ],
+      "react/jsx-no-bind": "off"
+    }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
