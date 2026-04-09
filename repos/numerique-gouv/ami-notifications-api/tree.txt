@@ -1,0 +1,452 @@
+.
+├── .buildpacks
+├── .env
+├── .env.development
+├── .github
+│   └── workflows
+│       ├── check_push.yml
+│       └── pytest.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── .stylelintrc.json
+├── .vscode
+│   └── settings.json
+├── AMI-technical architecture.excalidraw.svg
+├── CONTRIBUTING-BEHAVIOR.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── Makefile
+├── Procfile
+├── README.md
+├── ami
+│   ├── __init__.py
+│   ├── agenda
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── data
+│   │   │   ├── __init__.py
+│   │   │   ├── holidays.py
+│   │   │   ├── internal.py
+│   │   │   └── schemas.py
+│   │   ├── schemas.py
+│   │   ├── serializers.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_all.py
+│   │       ├── test_holidays_utils.py
+│   │       ├── test_internal.py
+│   │       ├── test_public_holidays.py
+│   │       └── test_school_holidays.py
+│   ├── agent
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── auth.py
+│   │   ├── decorators.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_agent.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_auth_middleware.py
+│   ├── agent_admin
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_audit_entry.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── static
+│   │   │   ├── css
+│   │   │   │   └── agent-admin-styles.scss
+│   │   │   ├── img
+│   │   │   │   ├── chevron.svg
+│   │   │   │   └── logo_marianne_square.svg
+│   │   │   └── js
+│   │   │       └── agent-admin-scripts.js
+│   │   ├── templates
+│   │   │   └── agent_admin
+│   │   │       ├── access_denied.html
+│   │   │       ├── base.html
+│   │   │       ├── blocks
+│   │   │       │   └── header.html
+│   │   │       ├── home.html
+│   │   │       ├── login.html
+│   │   │       └── manage_access.html
+│   │   ├── tests
+│   │   │   ├── conftest.py
+│   │   │   ├── test_access_denied.py
+│   │   │   ├── test_audit_entry.py
+│   │   │   ├── test_home.py
+│   │   │   ├── test_login.py
+│   │   │   ├── test_logout.py
+│   │   │   ├── test_manage.py
+│   │   │   └── utils.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   └── views.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── templates
+│   │   │   └── rapidoc.html
+│   │   └── urls.py
+│   ├── asgi.py
+│   ├── authentication
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── auth.py
+│   │   ├── decorators.py
+│   │   ├── exception.py
+│   │   ├── middleware.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_sa_orm_sentinel.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── test_all.py
+│   │   │   ├── test_check_auth.py
+│   │   │   ├── test_login.py
+│   │   │   ├── test_login_callback.py
+│   │   │   ├── test_login_callback_address.py
+│   │   │   ├── test_login_callback_error.py
+│   │   │   └── test_logout.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── conftest.py
+│   ├── followup
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── data
+│   │   │   ├── __init__.py
+│   │   │   └── notification.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── schemas.py
+│   │   ├── serializers.py
+│   │   └── tests
+│   │       ├── test_all.py
+│   │       └── test_notification_data.py
+│   ├── notification
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── channel_consumer.py
+│   │   ├── channel_routing.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── delete-published-scheduled-notifications.py
+│   │   │       └── publish-scheduled-notifications.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_internal_url.py
+│   │   │   ├── 0003_internal_url.py
+│   │   │   ├── 0004_remove_sa_orm_sentinel.py
+│   │   │   ├── 0005_remove_sender.py
+│   │   │   ├── 0006_remove_sender.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── push.py
+│   │   ├── serializers.py
+│   │   ├── tasks.py
+│   │   └── tests
+│   │       ├── api
+│   │       │   ├── __init__.py
+│   │       │   ├── test_notification.py
+│   │       │   ├── test_partner_notifications.py
+│   │       │   └── test_scheduled_notification.py
+│   │       ├── test_delete-published-scheduled-notifications_command.py
+│   │       ├── test_publish-scheduled-notifications_command.py
+│   │       ├── test_scheduled_notification.py
+│   │       └── test_websocket.py
+│   ├── partner
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── auth.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_api_views.py
+│   ├── settings.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── utils.py
+│   ├── urls.py
+│   ├── user
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── data.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_sa_orm_sentinel.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test.csv
+│   │   │   ├── test_create_hashes.py
+│   │   │   ├── test_registration.py
+│   │   │   ├── test_results.csv
+│   │   │   └── test_utils.py
+│   │   └── utils.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── api_urls.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── httpx.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── generate-identity-tokens.py
+│   │   ├── schemas.py
+│   │   ├── sentry.py
+│   │   ├── serializers.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_all.py
+│   │       ├── test_expiration_rules.py
+│   │       ├── test_generate-identity-tokens.py
+│   │       └── test_generate_identity_tokens_in_file.py
+│   └── wsgi.py
+├── bin
+│   ├── check-no-vanilla-httpx-usage.sh
+│   └── start.sh
+├── biome.json
+├── cron.json
+├── manage.py
+├── package-lock.json
+├── package.json
+├── public
+│   ├── 404.html
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   ├── icon-192.png
+│   ├── icon-512.png
+│   ├── icon-mask.png
+│   ├── icon.svg
+│   ├── mobile-app
+│   │   ├── .claude
+│   │   │   └── settings.local.json
+│   │   ├── .gitignore
+│   │   ├── .npmrc
+│   │   ├── .prettierignore
+│   │   ├── .prettierrc
+│   │   ├── README.md
+│   │   ├── e2e
+│   │   │   └── demo.test.ts
+│   │   ├── eslint.config.js
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── playwright.config.ts
+│   │   ├── src
+│   │   │   ├── app.css
+│   │   │   ├── app.d.ts
+│   │   │   ├── app.html
+│   │   │   ├── demo.spec.ts
+│   │   │   ├── lib
+│   │   │   │   ├── ConnectedHomepage.svelte
+│   │   │   │   ├── ConnectedHomepage.svelte.test.ts
+│   │   │   │   ├── Installation.svelte
+│   │   │   │   ├── Installation.svelte.test.ts
+│   │   │   │   ├── address.test.ts
+│   │   │   │   ├── address.ts
+│   │   │   │   ├── addressesFromBAN.test.ts
+│   │   │   │   ├── addressesFromBAN.ts
+│   │   │   │   ├── agenda.test.ts
+│   │   │   │   ├── agenda.ts
+│   │   │   │   ├── api-catalog.test.ts
+│   │   │   │   ├── api-catalog.ts
+│   │   │   │   ├── api-inventory.test.ts
+│   │   │   │   ├── api-inventory.ts
+│   │   │   │   ├── assets
+│   │   │   │   │   └── installation
+│   │   │   │   │       ├── ajout_icone.png
+│   │   │   │   │       ├── ajouter_ecran_accueil.png
+│   │   │   │   │       ├── ecran_accueil.png
+│   │   │   │   │       ├── nom_app.png
+│   │   │   │   │       └── partager.png
+│   │   │   │   ├── auth.test.js
+│   │   │   │   ├── auth.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── AgendaItem.svelte
+│   │   │   │   │   ├── AgendaItem.svelte.test.ts
+│   │   │   │   │   ├── BackButton.svelte
+│   │   │   │   │   ├── BackButton.svelte.test.ts
+│   │   │   │   │   ├── Card.svelte
+│   │   │   │   │   ├── Icon.svelte
+│   │   │   │   │   ├── NavWithBackButton.svelte
+│   │   │   │   │   ├── NavWithBackButton.svelte.test.ts
+│   │   │   │   │   ├── Navigation.svelte
+│   │   │   │   │   ├── Navigation.svelte.test.ts
+│   │   │   │   │   ├── NotificationIcon.svelte
+│   │   │   │   │   ├── NotificationIcon.svelte.test.ts
+│   │   │   │   │   ├── RequestItem.svelte
+│   │   │   │   │   ├── RequestItem.svelte.test.ts
+│   │   │   │   │   ├── Toast.svelte
+│   │   │   │   │   ├── Toast.svelte.test.ts
+│   │   │   │   │   ├── Toasts.svelte
+│   │   │   │   │   └── Toasts.svelte.test.ts
+│   │   │   │   ├── dsfr.ts
+│   │   │   │   ├── follow-up.test.ts
+│   │   │   │   ├── follow-up.ts
+│   │   │   │   ├── france-connect.test.js
+│   │   │   │   ├── france-connect.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── initializeDataFromAPI.test.ts
+│   │   │   │   ├── initializeDataFromAPI.ts
+│   │   │   │   ├── matomo.ts
+│   │   │   │   ├── nativeEvents.test.ts
+│   │   │   │   ├── nativeEvents.ts
+│   │   │   │   ├── notifications.test.ts
+│   │   │   │   ├── notifications.ts
+│   │   │   │   ├── prettyDate.test.js
+│   │   │   │   ├── prettyDate.ts
+│   │   │   │   ├── procedure.test.ts
+│   │   │   │   ├── procedure.ts
+│   │   │   │   ├── registration.test.js
+│   │   │   │   ├── registration.ts
+│   │   │   │   ├── scheduled-notifications.test.ts
+│   │   │   │   ├── scheduled-notifications.ts
+│   │   │   │   ├── state
+│   │   │   │   │   ├── User.svelte.test.ts
+│   │   │   │   │   ├── User.svelte.ts
+│   │   │   │   │   ├── toast.svelte.test.ts
+│   │   │   │   │   └── toast.svelte.ts
+│   │   │   │   ├── utils.test.ts
+│   │   │   │   └── utils.ts
+│   │   │   └── routes
+│   │   │       ├── +layout.svelte
+│   │   │       ├── +layout.ts
+│   │   │       ├── +page.svelte
+│   │   │       ├── agenda
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── contact
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── edit-address
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── edit-email
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── edit-preferred-username
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── forbidden
+│   │   │       │   └── +page.svelte
+│   │   │       ├── layout.svelte.test.ts
+│   │   │       ├── layout.test.ts
+│   │   │       ├── network-error
+│   │   │       │   └── +page.svelte
+│   │   │       ├── notifications
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── notifications-welcome-page
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── page.svelte.test.ts
+│   │   │       ├── procedure
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── profile
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── requests
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       ├── settings
+│   │   │       │   ├── +page.svelte
+│   │   │       │   └── page.svelte.test.ts
+│   │   │       └── technical-error
+│   │   │           └── +page.svelte
+│   │   ├── static
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.png
+│   │   │   ├── icon-192.png
+│   │   │   ├── icon-512.png
+│   │   │   ├── icon-mask.png
+│   │   │   ├── icon.svg
+│   │   │   ├── icons
+│   │   │   │   ├── community.svg
+│   │   │   │   ├── custom
+│   │   │   │   │   └── infinity-line.svg
+│   │   │   │   ├── fr--success-line-green.svg
+│   │   │   │   ├── otv-logo.svg
+│   │   │   │   ├── pro-connect-logo.svg
+│   │   │   │   ├── rvo-logo-connected.svg
+│   │   │   │   └── rvo-logo-not-connected.svg
+│   │   │   ├── manifest.json
+│   │   │   ├── remixicons
+│   │   │   │   ├── account-circle-line.svg
+│   │   │   │   ├── arrow-line-disabled.svg
+│   │   │   │   ├── arrow-line.svg
+│   │   │   │   ├── calendar-event-line.svg
+│   │   │   │   ├── calendar.svg
+│   │   │   │   ├── connection-lost.svg
+│   │   │   │   ├── file-copy-line.svg
+│   │   │   │   ├── home-4-fill.svg
+│   │   │   │   ├── house.svg
+│   │   │   │   ├── mail-line.svg
+│   │   │   │   ├── map-pin-user-line.svg
+│   │   │   │   ├── notification-3.svg
+│   │   │   │   ├── notification.svg
+│   │   │   │   ├── qr-code.svg
+│   │   │   │   ├── question-answer-line.svg
+│   │   │   │   ├── settings-3-line.svg
+│   │   │   │   ├── settings.svg
+│   │   │   │   ├── shut-down-line.svg
+│   │   │   │   ├── technical-error.svg
+│   │   │   │   ├── tracking.svg
+│   │   │   │   ├── user-line.svg
+│   │   │   │   └── vector.svg
+│   │   │   └── service-worker.js
+│   │   ├── svelte.config.js
+│   │   ├── tests
+│   │   │   ├── features
+│   │   │   │   ├── france-connexion.feature
+│   │   │   │   ├── notifications.feature
+│   │   │   │   ├── step_definitions
+│   │   │   │   │   └── default-steps.cjs
+│   │   │   │   └── thesaurus.feature
+│   │   │   └── utils.ts
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   └── vitest-setup-client.ts
+│   └── pico.min.css
+├── pyproject.toml
+├── pyrightconfig.json
+├── scalingo.json
+├── uv.lock
+└── vapid_keys.py
+81 directories, 370 files
