@@ -434,7 +434,7 @@
 │   │       │       │   └── workflow_dto.py
 │   │       │       └── repository
 │   │       │           ├── __init__.py
-│   │       │           └── worflow.py
+│   │       │           └── workflow.py
 │   │       ├── exception
 │   │       │   ├── __init__.py
 │   │       │   ├── entity_not_found_exception.py
@@ -502,6 +502,8 @@
 │           │       └── repository
 │           │           ├── __init__.py
 │           │           └── test_workflow_repository.py
+│           ├── openai
+│           │   └── test_response_format.py
 │           ├── redis
 │           │   ├── __init__.py
 │           │   ├── test_consumer.py
@@ -539,6 +541,8 @@
 │   └── tests
 │       ├── test_avis_imposition_description.py
 │       ├── test_avis_imposition_json_schema.py
+│       ├── test_fuzzy_date.py
+│       ├── test_supported_document_type.py
 │       └── utils
 │           ├── __init__.py
 │           ├── test_build_response_format.py
@@ -582,6 +586,7 @@
 │   │       ├── core
 │   │       │   ├── __init__.py
 │   │       │   ├── aggregator_log.py
+│   │       │   ├── barcode_settings.py
 │   │       │   ├── ocr
 │   │       │   │   ├── __init__.py
 │   │       │   │   ├── base_http_ocr_service.py
@@ -632,7 +637,11 @@
 │   │           │   │   └── download_file.py
 │   │           │   ├── extract_barcode_data
 │   │           │   │   ├── __init__.py
-│   │           │   │   └── extract_barcode_data.py
+│   │           │   │   ├── base_extract_barcode.py
+│   │           │   │   ├── base_extract_barcode_2ddoc.py
+│   │           │   │   ├── extract_barcode_2ddoc_data.py
+│   │           │   │   ├── extract_barcode_data.py
+│   │           │   │   └── extract_barcode_raw_data.py
 │   │           │   ├── extract_content_ocr
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── extract_content_http_ocr.py
@@ -687,4 +696,4 @@
 ├── pyrightconfig.json
 └── scripts
     └── init-s3-bucket.py
-181 directories, 508 files
+182 directories, 516 files
