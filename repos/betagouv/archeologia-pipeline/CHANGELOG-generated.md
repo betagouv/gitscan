@@ -1,14 +1,11 @@
-## Changelog : archeologia-pipeline (30 derniers jours)
+## Changelog : archeologia-pipeline (30 derniers jours, au 26 mars 2026)
 
 ### Résumé
-Ce pipeline de traitement LiDAR a bénéficié d'une refonte majeure, améliorant significativement ses performances grâce à l'utilisation du traitement parallèle (SMP) et de l'inférence ONNX. De plus, la gestion des couleurs pour la détection par computer vision a été améliorée, permettant une meilleure visualisation et consolidation des résultats dans QGIS. La documentation a également été mise à jour pour refléter ces changements.
+Ce pipeline a été amélioré avec l'ajout d'un nouvel algorithme de clustering spatial (DBSCAN) et une amélioration de la visualisation des clusters. Des corrections ont également été apportées au post-traitement du modèle de détection RF-DETR, et des optimisations de performance ont été réalisées pour le post-traitement, notamment grâce à l'utilisation d'un index spatial STRtree.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des couleurs pour les modèles de détection par computer vision, avec propagation de la carte de couleurs globale et consolidation du projet QGIS. [#1234](https://github.com/betagouv/archeologia-pipeline/pull/1234) (impliqué)
-- Mise à jour du diagramme de flux du pipeline pour refléter l'inférence ONNX.
+- Ajout d'un algorithme de clustering spatial DBSCAN avec un style de quadrillage noir pour la visualisation des clusters. [#N/A](https://github.com/betagouv/archeologia-pipeline/commit/d475a02)
 
 ### Évolutions techniques
-- Refactoring majeur du pipeline pour améliorer la performance et l'efficacité.
-- Intégration du traitement parallèle (SMP) pour accélérer les opérations.
-- Utilisation de l'inférence ONNX pour optimiser la vitesse d'exécution des modèles de computer vision.
-- Prise en charge de plusieurs modèles de computer vision.
+- Correction d'un problème de post-traitement du modèle de détection RF-DETR. [#N/A](https://github.com/betagouv/archeologia-pipeline/commit/05c549a)
+- Optimisation du post-traitement avec l'utilisation d'un index spatial STRtree pour améliorer les performances, avec ajout de logs de temps d'exécution. [#N/A](https://github.com/betagouv/archeologia-pipeline/commit/2ba5f0d)
