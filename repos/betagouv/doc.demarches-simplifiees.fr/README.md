@@ -1,12 +1,14 @@
 ---
-description: "Cette page présente l'objectif de demarches-simplifiees.fr\_: la dématérialisation des procédures."
+description: "Cette page présente l'objectif de demarche.numerique.gouv.fr\_: la dématérialisation des procédures."
 ---
 
 # Généralités
 
-« Démarches simplifiées » permet de dématérialiser des démarches administratives grâce à un générateur de formulaires et une plateforme d'instruction de dossiers. Il s'agit d'une application en ligne prête à l'emploi développée, hébergée et maintenue par la Direction Interministérielle du Numérique (DINUM), mise à disposition de l'ensemble des organismes publics. Elle est interconnectée à de nombreux services de l'État, notamment France Connect, API Entreprise, API Géo et BAN.
+« Démarche numérique » permet de dématérialiser des démarches administratives grâce à un générateur de formulaires et une plateforme d'instruction de dossiers. Il s'agit d'une application en ligne prête à l'emploi développée, hébergée et maintenue par la Direction Interministérielle du Numérique (DINUM), mise à disposition de l'ensemble des organismes publics. Elle est interconnectée à de nombreux services de l'État, notamment France Connect, API Entreprise, API Géo et BAN.
 
-### Retrouvez le guide pratique pour dématérialiser vos démarches avec «Démarches simplifiées »
+### Pour rappel : La plateforme demarches-simplifiees.fr a changé de nom et s’appelle désormais demarche.numerique.gouv.fr.
+
+### Retrouvez le guide pratique pour dématérialiser vos démarches avec « Démarche numérique »
 
 {% file src=".gitbook/assets/Guide des bonnes pratiques démarches-simplifiees.pdf" %}
 
@@ -24,15 +26,15 @@ Nous organisons, chaque premier jeudi du mois, des webinaires de présentation p
 
 ### Support de présentation :&#x20;
 
-{% file src=".gitbook/assets/Présentation  Démarche numérique décembre 2025(2.pdf" %}
+{% file src=".gitbook/assets/Webinaire Démarche numérique avril 2026 v2.pdf" %}
 
 ### Objectif
 
-L'objectif principal de cette documentation est de permettre aux organismes publics ayant des besoins de dématérialisation de déterminer si demarches-simplifiees.fr constitue une solution adaptée.
+L'objectif principal de cette documentation est de permettre aux organismes publics ayant des besoins de dématérialisation de déterminer si demarche.numerique.gouv.fr constitue une solution adaptée.
 
 L'ensemble des utilisateurs y trouvera des informations visant à faciliter la prise en main de l'application.
 
-La plateforme demarches-simplifiees.fr comporte quatre rôles :
+La plateforme demarche.numerique.gouv.fr comporte quatre rôles :
 
 * Administrateurs : création et publication des démarches
 * Usagers : dépôt et suivi des dossiers

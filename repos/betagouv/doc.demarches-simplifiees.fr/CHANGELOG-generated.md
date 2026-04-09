@@ -1,14 +1,13 @@
-## Changelog : doc.demarches-simplifiees.fr (30 derniers jours)
+## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 9 avril 2026)
 
 ### Résumé
-Ce changelog présente les récentes mises à jour de la documentation de demarches-simplifiees.fr. Les modifications incluent l'ajout d'une nouvelle documentation concernant l'API, ainsi que des ajustements à la barre latérale pour y intégrer cette nouvelle ressource.
+Ce changelog fait état de plusieurs mises à jour de la documentation, principalement liées à l'amélioration du tutoriel utilisateur et à des ajustements de contenu. Ces modifications visent à rendre la documentation plus claire et plus à jour pour les utilisateurs et les organismes publics intéressés par la plateforme de démarches simplifiées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle documentation concernant l'API, incluant des exemples pour la création de groupes d'instructeurs, le déplacement de dossiers dans des groupes et la modification d'annotations. [#10](https://github.com/betagouv/doc.demarches-simplifiees.fr/pull/10)
-- Intégration de la nouvelle documentation API dans la barre latérale pour une meilleure accessibilité. [#11](https://github.com/betagouv/doc.demarches-simplifiees.fr/pull/11)
+- Mise à jour des captures d'écran de la page de connexion dans le tutoriel utilisateur [#12](https://github.com/betagouv/doc.demarches-simplifiees.fr/pull/12).
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler durant cette période.
+- Exclusion de la capture et de la gestion de version de France Connect, car cela sort du périmètre du projet.
 
 ### Autres changements
-- Modifications diverses de la documentation (GITBOOK-1170, GITBOOK-1171) sans impact visible pour l'utilisateur.
+- Multiples mises à jour de contenu et de structure de la documentation (GITBOOK-1172 à GITBOOK-1189), sans détails spécifiques fournis dans les commits. Ces changements concernent probablement des corrections, des améliorations de la clarté et des ajustements de la documentation existante.
