@@ -1,19 +1,21 @@
 # Synthèse d'activité : etalab-ia (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des avancées significatives sur plusieurs fronts. OpenGateLLM a connu une refonte architecturale majeure et l'ajout de nouvelles fonctionnalités de recherche et d'intégration, notamment avec vLLM et un CLI. BlockNote a bénéficié d'améliorations de stabilité et d'expérience utilisateur, ainsi que d'une migration vers une nouvelle version du SDK IA.  Lettabot a progressé avec un assistant de configuration interactif et une meilleure gestion des modèles, tandis que rag-facile a vu l'ajout d'authentification, de persistance des conversations et de l'IA Inspect pour l'évaluation de la qualité des réponses. Ces évolutions renforcent la capacité d'étalab-ia à fournir des outils performants et accessibles pour l'IA open-source.
+La semaine écoulée a été marquée par une activité soutenue sur plusieurs dépôts d'etalab-ia, avec un focus sur l'amélioration de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités.  Des avancées significatives ont été réalisées sur les plateformes OpenGateLLM et rag-facile (maintenant ragtime) avec des refactorisations architecturales, l'ajout de l'authentification et de nouvelles compétences pour les agents conversationnels.  L'intégration de données publiques, notamment via mediatech et albert-data-collections, a également été un axe important, visant à enrichir les capacités de recherche et de génération de contenu.  BlockNote a bénéficié de corrections de bugs et d'améliorations de l'interface utilisateur.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Aucun changement lié à la sécurité n'a été spécifié dans les changelogs.
 
 ## Autres changements notables
-- Refactorisation majeure de l'architecture des routes et des endpoints dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure maintenabilité.
-- Migration vers la version 6 du SDK IA dans [BlockNote](/repos/etalab-ia/BlockNote).
-- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité, avec extraction de packages pour l'ingestion, le contexte, le reranking et l'orchestration.
-- Séparation du chart Helm d'OpenGateLLM en deux parties (core et stack) dans [opengatellm-helm](/repos/etalab-ia/opengatellm-helm) pour une plus grande flexibilité de déploiement.
+Plusieurs refactorisations architecturales importantes ont été menées :
+- Une refonte de l'architecture d'OpenGateLLM ([OpenGateLLM](/repos/etalab-ia/OpenGateLLM)) pour une meilleure maintenabilité.
+- Une refonte de l'architecture de rag-facile (ragtime) ([rag-facile](/repos/etalab-ia/rag-facile)) pour une modularité accrue, incluant l'extraction de packages dédiés.
+- Migration de la base de données de mediatech-to-albert-api vers une architecture serverless ([mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api)).
+- Refactorisation de la structure du projet skills ([skills](/repos/etalab-ia/skills)) pour la conformité avec la spécification Agent Skills.
 
 ## Dépôts les plus actifs
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Ajout de fonctionnalités de recherche avancées, d'un CLI et d'une refonte architecturale.
-- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et amélioration de la stabilité, migration du SDK IA.
-- [rag-facile](/repos/etalab-ia/rag-facile) : Ajout d'authentification, de persistance des conversations, d'IA Inspect et d'un système de compétences.
-- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de la gestion des modèles.
+- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'interface utilisateur, incluant la gestion des tableaux et de l'IA.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Refactorisation majeure de l'architecture et ajout d'un endpoint pour la gestion des chunks de documents.
+- [rag-facile](/repos/etalab-ia/rag-facile) (maintenant ragtime) : Ajout de l'authentification, de la persistance des conversations et de nouvelles compétences pour l'agent conversationnel.
+- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et amélioration de la documentation pour l'IA et la vectorisation.
+- [letta-code](/repos/etalab-ia/letta-code) : Ajout du support de nouveaux modèles de langage (Kimi K2.5, Bedrock Opus 4.5) et intégration de l'API OpenRouter.

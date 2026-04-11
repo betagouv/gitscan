@@ -1,24 +1,30 @@
 # Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités dans Calendars, Conversations et Drive, ainsi que des corrections de bugs et des optimisations de performance. La sécurité a également été une priorité, avec des mises à jour de dépendances et des corrections de vulnérabilités dans People et d'autres composants. Plusieurs dépôts ont bénéficié d'améliorations techniques significatives, comme la migration vers des outils plus performants (uv, RustFS) et l'ajout de support pour l'architecture ARM64.
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation. Les améliorations se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités comme le partage de calendriers ([calendars](/repos/suitenumerique/calendars)), la recherche améliorée dans les conversations ([conversations](/repos/suitenumerique/conversations)), et la corbeille dans Dictaphone ([dictaphone](/repos/suitenumerique/dictaphone)).  Des efforts importants ont également été déployés pour renforcer la sécurité, avec des mises à jour de dépendances et des corrections de vulnérabilités dans plusieurs dépôts, dont [people](/repos/suitenumerique/people). L'organisation continue d'investir dans l'infrastructure et les outils de développement, avec des migrations vers des technologies plus performantes et des améliorations des processus CI/CD.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- Correction de vulnérabilités dans [django-lasuite](/repos/suitenumerique/django-lasuite) et [people](/repos/suitenumerique/people).
-- Blocage de domaines potentiellement dangereux dans [st-home](/repos/suitenumerique/st-home) pour renforcer la sécurité.
+
+- Correction de vulnérabilités dans [people](/repos/suitenumerique/people) avec la mise à jour de Django, joserfc et tornado.
+- Blocage des domaines potentiellement dangereux dans [st-home](/repos/suitenumerique/st-home) pour renforcer la sécurité.
 
 ## Autres changements notables
+Plusieurs changements techniques majeurs ont été effectués :
+
 - Migration vers `uv` et RustFS dans [messages](/repos/suitenumerique/messages) pour améliorer la performance et la sécurité.
-- Refonte de l'architecture et ajout de tests automatisés dans [st-ansible](/repos/suitenumerique/st-ansible).
-- Mise à jour de Django et de plusieurs dépendances dans divers dépôts, notamment [conversations](/repos/suitenumerique/conversations) et [django-lasuite](/repos/suitenumerique/django-lasuite).
-- Ajout de support ARM64 dans plusieurs dépôts : [calendars](/repos/suitenumerique/calendars), [drive](/repos/suitenumerique/drive], [meet-whisperx](/repos/suitenumerique/meet-whisperx) et [st-ansible](/repos/suitenumerique/st-ansible).
+- Refonte de l'architecture avec uv, rustfs et caddy dans [messages](/repos/suitenumerique/messages).
+- Passage de Django à la version 5.2.12 dans [drive](/repos/suitenumerique/drive) et [st-deploycenter](/repos/suitenumerique/st-deploycenter).
+- Adoption de Lima pour les tests Molecule dans [st-ansible](/repos/suitenumerique/st-ansible).
+- Mise à jour de Next.js vers la version 16 dans [docs](/repos/suitenumerique/docs).
 
 ## Dépôts les plus actifs
-- [calendars](/repos/suitenumerique/calendars) : Ajout de fonctionnalités de partage, RSVP, importation d'événements et amélioration de l'interface utilisateur.
-- [conversations](/repos/suitenumerique/conversations) : Amélioration de la recherche et correction de bugs liés à l'interface et au mode sombre.
-- [docs](/repos/suitenumerique/docs) : Ajout d'un modal d'onboarding, intégration de l'IA et améliorations de l'accessibilité.
-- [drive](/repos/suitenumerique/drive) : Ajout de la création de fichiers à partir de modèles et amélioration de la gestion des fichiers volumineux.
-- [meet](/repos/suitenumerique/meet) : Amélioration de la sécurité en bloquant les domaines dangereux et en empêchant l'utilisation d'URL non sécurisées.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Corrections de style et d'accessibilité sur le menu utilisateur et ajustements de design sur le composant de partage.
-- [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de l'administration et de l'import de données pour les organisations et les rôles.
+Voici les dépôts les plus actifs de la semaine :
+
+- [docs](/repos/suitenumerique/docs) : Amélioration significative de l'expérience utilisateur avec l'ajout d'un modal d'onboarding et l'intégration de l'IA.
+- [messages](/repos/suitenumerique/messages) : Refonte de l'architecture pour améliorer la performance et la sécurité.
+- [people](/repos/suitenumerique/people) : Corrections de sécurité et améliorations de l'interface utilisateur.
+- [calendars](/repos/suitenumerique/calendars) : Ajout de fonctionnalités de partage de calendriers et d'importation d'événements.
+- [drive](/repos/suitenumerique/drive) : Amélioration de la gestion des fichiers volumineux et ajout de menus contextuels.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Ajout d'une fonctionnalité de corbeille et intégration de la documentation.
+- [meet](/repos/suitenumerique/meet) : Amélioration de la sécurité et de l'interface utilisateur.

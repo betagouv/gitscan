@@ -1,21 +1,17 @@
 # Synthèse d'activité : incubateur-ademe (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives apportées à plusieurs de ses projets phares. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les plateformes ecopass, nosgestesclimat-site-nextjs et mutafriches, avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des mises à jour techniques importantes ont également été réalisées sur des projets comme dashlord, docker-prisma-studio et nosgestesclimat-server, visant à optimiser les performances, la sécurité et la maintenabilité du code. Le lancement du projet nosgestesclimat-aides marque une nouvelle étape dans l'offre de services de l'organisation.
+L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [ecopass](/repos/incubateur-ademe/ecopass) et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Plusieurs dépôts ont bénéficié de mises à jour techniques importantes, comme [benefriches](/repos/incubateur-ademe/benefriches) avec une refactorisation majeure, et [docker-prisma-studio](/repos/incubateur-ademe/docker-prisma-studio) pour une meilleure compatibilité.  De nouveaux projets ont également été initialisés, comme [nosgestesclimat-aides](/repos/incubateur-ademe/nosgestesclimat-aides), marquant le début de nouvelles initiatives.
 
 ## Sécurité
-- Le projet [vaultwarden](/repos/incubateur-ademe/vaultwarden) a bénéficié de mises à jour de ses dépendances et de GitHub Actions pour améliorer la sécurité et corriger des vulnérabilités potentielles.
-- Le projet [nosgestesclimat-server](/repos/incubateur-ademe/nosgestesclimat-server) a configuré le nom du cookie d'authentification via une variable d'environnement pour une meilleure sécurité.
+[vaultwarden](/repos/incubateur-ademe/vaultwarden) a bénéficié de mises à jour de ses dépendances et de son code pour assurer la stabilité et la performance du serveur, incluant des correctifs de sécurité.
 
 ## Autres changements notables
-- Le projet [benefriches](/repos/incubateur-ademe/benefriches) a connu une refonte importante de sa logique de création de site, migrée vers l'API, et une refactorisation du code de création de projet urbain.
-- Le projet [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a vu une refonte majeure de son architecture d'authentification et l'ajout d'un système d'audit log.
-- Le projet [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a été entièrement retravaillé et est désormais fonctionnel, avec un workflow de déploiement automatique.
-- Le projet [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) a publié des versions 1.0.0 et 1.1.0 avec des corrections et des améliorations du calcul de l'empreinte carbone.
+[benefriches](/repos/incubateur-ademe/benefriches) a subi une refactorisation majeure de son code, notamment pour la création de projets urbains. [territoires-en-transitions](/repos/incubateur-ademe/territories-en-transitions) a migré ses endpoints de gestion des membres vers tRPC. [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a été entièrement retravaillé et est désormais fonctionnel, permettant la création de vignettes personnalisées. [tacct](/repos/incubateur-ademe/tacct) a connu une refonte importante avec la suppression de fonctionnalités obsolètes.
 
 ## Dépôts les plus actifs
-- [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages et correction de bugs pour améliorer l'expérience utilisateur.
-- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'UX, correction de bugs et mises à jour techniques pour une meilleure performance.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Refonte de la logique de création de site et refactorisation du code.
-- [mutafriches](/repos/incubateur-ademe/mutafriches) : Intégration de nouvelles données et ajout de la gestion de multiparcelles.
-- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Corrections de bugs, mises à jour de données et améliorations de l'interface utilisateur.
+*   [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles pages et correction de bugs pour améliorer la plateforme.
+*   [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités et corrections de bugs.
+*   [benefriches](/repos/incubateur-ademe/benefriches) : Refactorisation majeure du code et ajout de nouvelles fonctionnalités pour l'analyse de friches urbaines.
+*   [tacct](/repos/incubateur-ademe/tacct) : Refonte importante de l'infrastructure et du code, avec suppression de fonctionnalités obsolètes et mises à jour de données.
+*   [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) : Développement complet d'un nouveau générateur de vignettes.
