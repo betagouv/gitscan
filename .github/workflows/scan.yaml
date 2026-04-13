@@ -90,8 +90,10 @@ jobs:
                   overview_content=$(./scripts/generate-repo-overview.sh ./repos/"${{ matrix.sites.full_name }}")
                   [ -n "$overview_content" ] && echo "$overview_content" > ./repos/"${{ matrix.sites.full_name }}"/overview.json
 
+                  cat ./repos/"${{ matrix.sites.full_name }}"/overview.json
+
                   changelog_content=$(./scripts/generate-repo-changelog.sh ./repos/"${{ matrix.sites.full_name }}")
-                  [ -n "$changelog_content" ] && echo "$changelog_content" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.md
+                  [ -n "$changelog_content" ] && echo "$changelog_content" > ./repos/"${{ matrix.sites.full_name }}"/CHANGELOG-generated.md || true
 
             - name: Commit changes
               run: |

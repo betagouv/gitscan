@@ -1,11 +1,24 @@
 import { glob } from "glob";
 import * as fs from "fs";
 import * as path from "path";
+import { execSync } from "child_process";
 import type {
   Repository,
   AggregatedData,
   OrgChangelog,
 } from "../src/lib/types";
+
+function getGitLastModified(filePath: string): string | null {
+  try {
+    const result = execSync(
+      `git log -1 --format="%aI" -- "${filePath}"`,
+      { encoding: "utf-8", stdio: ["pipe", "pipe", "ignore"] }
+    ).trim();
+    return result || null;
+  } catch {
+    return null;
+  }
+}
 
 async function buildIndex() {
   const reposDir = path.resolve(__dirname, "../../repos");
@@ -62,7 +75,7 @@ async function buildIndex() {
       if (fs.existsSync(changelogPath)) {
         changelog = fs.readFileSync(changelogPath, "utf-8").trim() || null;
         if (changelog) {
-          changelogGeneratedAt = fs.statSync(changelogPath).mtime.toISOString();
+          changelogGeneratedAt = getGitLastModified(changelogPath);
         }
       }
 
@@ -108,7 +121,7 @@ async function buildIndex() {
     if (fs.existsSync(orgChangelogPath)) {
       const content = fs.readFileSync(orgChangelogPath, "utf-8").trim();
       if (content) {
-        const generatedAt = fs.statSync(orgChangelogPath).mtime.toISOString();
+        const generatedAt = getGitLastModified(orgChangelogPath);
         orgChangelogs.push({ organization: org, changelog: content, changelogGeneratedAt: generatedAt });
       }
     } else {

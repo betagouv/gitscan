@@ -37,7 +37,7 @@ export interface Repository {
 export interface OrgChangelog {
   organization: string;
   changelog: string;
-  changelogGeneratedAt?: string;
+  changelogGeneratedAt?: string | null;
 }
 
 export interface AggregatedData {
