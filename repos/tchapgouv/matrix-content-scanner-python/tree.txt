@@ -1,0 +1,82 @@
+.
+├── .dockerignore
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── ci.yml
+│       └── docker.yaml
+├── .gitignore
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── LICENSE-COMMERCIAL
+├── README.md
+├── build_rust.py
+├── config.sample.yaml
+├── docker
+│   └── Dockerfile
+├── docs
+│   └── api.md
+├── mypy.ini
+├── perf
+│   ├── .gitignore
+│   ├── config.yaml
+│   ├── dummy_scan.sh
+│   └── scanner_perf.py
+├── poetry.lock
+├── pyproject.toml
+├── rust
+│   ├── Cargo.toml
+│   ├── build.rs
+│   └── src
+│       ├── crypto
+│       │   └── mod.rs
+│       └── lib.rs
+├── scripts-dev
+│   └── lint.sh
+├── src
+│   └── matrix_content_scanner
+│       ├── __init__.py
+│       ├── config.py
+│       ├── httpserver.py
+│       ├── logutils.py
+│       ├── mcs.py
+│       ├── mcs_rust
+│       │   ├── __init__.pyi
+│       │   └── crypto.pyi
+│       ├── py.typed
+│       ├── scanner
+│       │   ├── __init__.py
+│       │   ├── file_downloader.py
+│       │   └── scanner.py
+│       ├── servlets
+│       │   ├── __init__.py
+│       │   ├── download.py
+│       │   ├── public_key.py
+│       │   ├── scan.py
+│       │   └── thumbnail.py
+│       └── utils
+│           ├── __init__.py
+│           ├── constants.py
+│           ├── encrypted_file_metadata.py
+│           ├── errors.py
+│           ├── rust.py
+│           └── types.py
+├── tests
+│   ├── __init__.py
+│   ├── scanner
+│   │   ├── __init__.py
+│   │   ├── test_file_downloader.py
+│   │   └── test_scanner.py
+│   ├── servlets
+│   │   ├── __init__.py
+│   │   ├── test_headers.py
+│   │   ├── test_scan.py
+│   │   └── test_servlets.py
+│   ├── test_crypto.py
+│   ├── testutils.py
+│   └── utils
+│       ├── __init__.py
+│       └── test_encrypted_file_metadata.py
+└── tox.ini
+20 directories, 61 files
