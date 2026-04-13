@@ -1,0 +1,1179 @@
+.
+├── .circleci
+│   └── config.yml
+├── .editorconfig
+├── .gitignore
+├── .lighthouseci
+│   └── front-plugin-udata.cfg
+├── .nvmrc
+├── .postcssrc
+├── .pre-commit-config.yaml
+├── .pyup.yml
+├── .storybook
+│   ├── custom-runner.js
+│   ├── load-theme-preview-preset.ts
+│   ├── main.ts
+│   ├── msw
+│   │   └── mockServiceWorker.js
+│   ├── preview-head.html
+│   └── preview.ts
+├── CHANGELOG.md
+├── LICENSE
+├── MANIFEST.in
+├── README.md
+├── babel.cfg
+├── bumpr.rc
+├── coverage.rc
+├── crowdin.yml
+├── cypress
+│   ├── cypress.config.js
+│   ├── e2e
+│   │   ├── a11y.cy.js
+│   │   ├── datasets.cy.js
+│   │   ├── discussions.cy.js
+│   │   ├── home.cy.js
+│   │   ├── menu-search.cy.js
+│   │   └── register.cy.js
+│   ├── fixtures
+│   │   ├── dataset.json
+│   │   ├── example.json
+│   │   └── organization.json
+│   ├── support
+│   │   ├── commands.js
+│   │   ├── component-index.html
+│   │   ├── component.js
+│   │   └── e2e.js
+│   └── udata-front-e2e.cfg.example
+├── cypress.config.js
+├── jsconfig.json
+├── lighthouserc.js
+├── package-lock.json
+├── package.json
+├── pep8.rc
+├── public
+│   └── mockServiceWorker.js
+├── requirements
+│   ├── develop.in
+│   ├── develop.pip
+│   ├── install.in
+│   ├── install.pip
+│   ├── test.in
+│   ├── test.pip
+│   ├── udata.in
+│   └── udata.pip
+├── setup.cfg
+├── setup.py
+├── svgo.config.js
+├── tasks.py
+├── test-runner-jest.config.js
+├── tox.ini
+├── tsconfig.json
+├── udata-front-plugins-helper
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── src
+│   │   ├── env.d.ts
+│   │   └── index.ts
+│   ├── test
+│   │   ├── index.test-d.ts
+│   │   └── index.test.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── udata_front
+│   ├── __init__.py
+│   ├── api.py
+│   ├── forms.py
+│   ├── frontend
+│   │   ├── __init__.py
+│   │   ├── error_handlers.py
+│   │   ├── helpers.py
+│   │   ├── markdown.py
+│   │   ├── menu_helpers.py
+│   │   └── resource_helpers.py
+│   ├── migrations
+│   │   ├── 2015-07-07-C3-datasets-titles.txt
+│   │   ├── 2015-07-10-dataconnexions-badges.js
+│   │   ├── 2015-09-14-dataconnexions-6.js
+│   │   ├── 2015-09-28-fix-maaf-harvester-doublouns.js
+│   │   ├── 2016-04-05-deactivate-datapublica.js
+│   │   ├── 2017-01-05-geozones-admin-levels-fr.js
+│   │   ├── 2017-08-04-fix-wrong-spatial-coverages.js
+│   │   ├── 2018-04-09-normalize-resource-filetype.js
+│   │   └── 2018-04-18-migrate-active-users.js
+│   ├── models.py
+│   ├── settings.py
+│   ├── static
+│   │   ├── c3
+│   │   │   └── logo-c3.png
+│   │   ├── dataconnexions
+│   │   │   ├── dataconnexions6-logo-couleur.png
+│   │   │   ├── logo-blanc-rouge.png
+│   │   │   ├── logo-blanc.png
+│   │   │   ├── logo-couleur-rouge.png
+│   │   │   ├── logo-couleur.png
+│   │   │   └── logo-transparent.png
+│   │   ├── faq
+│   │   │   ├── integration
+│   │   │   │   └── exemple-integration-blog-etalab.png
+│   │   │   └── outils
+│   │   │       ├── 800px-CartePOI.png
+│   │   │       ├── 800px-Evolutionbio.png
+│   │   │       ├── 800px-Inventaire_du_patrimoine_Poitou-Chatrentes.png
+│   │   │       ├── 800px-Inventaire_du_patrimoine_vecteurs.png
+│   │   │       ├── 800px-OSM-cadastre.png
+│   │   │       ├── 800px-TileMill.png
+│   │   │       ├── Alluvial.png
+│   │   │       ├── Dependencies.png
+│   │   │       ├── Heatmap-salons-coiffure-paris-opendatasoft.png
+│   │   │       └── PAC2012.jpg
+│   │   ├── licences
+│   │   │   ├── ETALAB-Licence-Ouverte-v2.0.pdf
+│   │   │   ├── description-contenu.pdf
+│   │   │   ├── homologation-licences-2017-05-05.pdf
+│   │   │   ├── homologation-licences-2017-09-26.pdf
+│   │   │   ├── homologation-licences-2017-09-29.pdf
+│   │   │   ├── homologation-licences-2019-04-17.pdf
+│   │   │   ├── homologation-licences-2019-05-29.pdf
+│   │   │   ├── licence-d-utilisation-a-titre-gratuit-de-l-IGN-2017-05-05.pdf
+│   │   │   ├── licence-de-reutilisation-des-informations-de-l-INPI-pour-les-donnees-de-PI-2019-04-17.pdf
+│   │   │   ├── licence-de-reutilisation-des-informations-de-l-INPI-pour-les-donnees-du-RNCS-2019-04-17.pdf
+│   │   │   ├── licence-du-produit-gratuit-issu-de-la-Base-Adresse-Nationale-2017-05-05.pdf
+│   │   │   └── licence-du-produit-gratuit-issu-de-la-Base-Adresse-Nationale-2019-05-29.pdf
+│   │   ├── nec_mergitur
+│   │   │   └── logo_nec_mergitur.png
+│   │   └── openfield16
+│   │       └── logo.jpg
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── frontend
+│   │   │   ├── __init__.py
+│   │   │   └── test_frontend_filters.py
+│   │   ├── test_api.py
+│   │   ├── test_discussions.py
+│   │   ├── test_error.py
+│   │   ├── test_forms.py
+│   │   ├── test_security.py
+│   │   ├── test_sitemap.py
+│   │   ├── test_static_pages.py
+│   │   ├── tests.py
+│   │   └── views
+│   │       ├── __init__.py
+│   │       ├── test_dataset.py
+│   │       ├── test_oembed.py
+│   │       ├── test_organization.py
+│   │       ├── test_post.py
+│   │       ├── test_reuse.py
+│   │       ├── test_security.py
+│   │       ├── test_site.py
+│   │       ├── test_territories.py
+│   │       ├── test_topic.py
+│   │       └── test_user.py
+│   ├── theme
+│   │   ├── __init__.py
+│   │   ├── gouvfr
+│   │   │   ├── __init__.py
+│   │   │   ├── assets
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── Marianne-ExtraBold.woff
+│   │   │   │   │   ├── Marianne-ExtraBold.woff2
+│   │   │   │   │   ├── Spectral-Italic.woff
+│   │   │   │   │   └── Spectral-Italic.woff2
+│   │   │   │   ├── img
+│   │   │   │   │   ├── favicon.png
+│   │   │   │   │   ├── homepage
+│   │   │   │   │   │   ├── annuaire.png
+│   │   │   │   │   │   ├── annuaire@2x.png
+│   │   │   │   │   │   ├── datasets.png
+│   │   │   │   │   │   ├── datasets@2x.png
+│   │   │   │   │   │   ├── datasets@3x.png
+│   │   │   │   │   │   ├── dvf.png
+│   │   │   │   │   │   ├── dvf@2x.png
+│   │   │   │   │   │   ├── hero-background.png
+│   │   │   │   │   │   ├── reuses.png
+│   │   │   │   │   │   ├── reuses@2x.png
+│   │   │   │   │   │   └── reuses@3x.png
+│   │   │   │   │   ├── logo-social.png
+│   │   │   │   │   ├── organizations
+│   │   │   │   │   │   ├── cnil.png
+│   │   │   │   │   │   ├── cnil@2x.png
+│   │   │   │   │   │   ├── cnil@3x.png
+│   │   │   │   │   │   ├── googlemaps.png
+│   │   │   │   │   │   ├── googlemaps@2x.png
+│   │   │   │   │   │   ├── googlemaps@3x.png
+│   │   │   │   │   │   ├── insee.png
+│   │   │   │   │   │   ├── insee@2x.png
+│   │   │   │   │   │   ├── insee@3x.png
+│   │   │   │   │   │   ├── lemonde.png
+│   │   │   │   │   │   ├── lemonde@2x.png
+│   │   │   │   │   │   ├── lemonde@3x.png
+│   │   │   │   │   │   ├── liberation.png
+│   │   │   │   │   │   ├── liberation@2x.png
+│   │   │   │   │   │   ├── liberation@3x.png
+│   │   │   │   │   │   ├── minedu.png
+│   │   │   │   │   │   ├── minedu@2x.png
+│   │   │   │   │   │   ├── minedu@3x.png
+│   │   │   │   │   │   ├── spf.png
+│   │   │   │   │   │   ├── spf@2x.png
+│   │   │   │   │   │   ├── spf@3x.png
+│   │   │   │   │   │   ├── wikimedia.png
+│   │   │   │   │   │   ├── wikimedia@2x.png
+│   │   │   │   │   │   └── wikimedia@3x.png
+│   │   │   │   │   └── placeholders
+│   │   │   │   │       ├── author.png
+│   │   │   │   │       ├── dataset.png
+│   │   │   │   │       ├── news.png
+│   │   │   │   │       ├── organization.png
+│   │   │   │   │       └── reuse.png
+│   │   │   │   ├── js
+│   │   │   │   │   ├── Introduction.mdx
+│   │   │   │   │   ├── admin.ts
+│   │   │   │   │   ├── api
+│   │   │   │   │   │   ├── dataservices.ts
+│   │   │   │   │   │   ├── datasets.ts
+│   │   │   │   │   │   ├── discussions.ts
+│   │   │   │   │   │   ├── harvesters.ts
+│   │   │   │   │   │   ├── licenses.ts
+│   │   │   │   │   │   ├── me.ts
+│   │   │   │   │   │   ├── organizations.ts
+│   │   │   │   │   │   ├── posts.ts
+│   │   │   │   │   │   ├── reports.ts
+│   │   │   │   │   │   ├── resources.ts
+│   │   │   │   │   │   ├── reuses.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── users.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── Accordion
+│   │   │   │   │   │   │   ├── Accordion.mdx
+│   │   │   │   │   │   │   ├── Accordion.stories.ts
+│   │   │   │   │   │   │   ├── Accordion.vue
+│   │   │   │   │   │   │   ├── AccordionGroup.mdx
+│   │   │   │   │   │   │   ├── AccordionGroup.stories.ts
+│   │   │   │   │   │   │   └── AccordionGroup.vue
+│   │   │   │   │   │   ├── AdminAddMember
+│   │   │   │   │   │   │   ├── AdminAddMemberButton.vue
+│   │   │   │   │   │   │   └── AdminAddMemberModal.vue
+│   │   │   │   │   │   ├── AdminBadge
+│   │   │   │   │   │   │   ├── AdminBadge.mdx
+│   │   │   │   │   │   │   ├── AdminBadge.stories.ts
+│   │   │   │   │   │   │   └── AdminBadge.vue
+│   │   │   │   │   │   ├── AdminContentWithTooltip
+│   │   │   │   │   │   │   ├── AdminContentWithTooltip.mdx
+│   │   │   │   │   │   │   ├── AdminContentWithTooltip.stories.ts
+│   │   │   │   │   │   │   └── AdminContentWithTooltip.vue
+│   │   │   │   │   │   ├── AdminDangerZone
+│   │   │   │   │   │   │   ├── AdminDangerZone.mdx
+│   │   │   │   │   │   │   ├── AdminDangerZone.stories.ts
+│   │   │   │   │   │   │   └── AdminDangerZone.vue
+│   │   │   │   │   │   ├── AdminEditMember
+│   │   │   │   │   │   │   ├── AdminEditMemberButton.vue
+│   │   │   │   │   │   │   └── AdminEditMemberModal.vue
+│   │   │   │   │   │   ├── AdminEmail
+│   │   │   │   │   │   │   └── AdminEmail.vue
+│   │   │   │   │   │   ├── AdminLoader
+│   │   │   │   │   │   │   ├── AdminLoader.stories.ts
+│   │   │   │   │   │   │   └── AdminLoader.vue
+│   │   │   │   │   │   ├── AdminMembershipRequest
+│   │   │   │   │   │   │   ├── AdminMembershipRequest.mdx
+│   │   │   │   │   │   │   ├── AdminMembershipRequest.stories.ts
+│   │   │   │   │   │   │   └── AdminMembershipRequest.vue
+│   │   │   │   │   │   ├── AdminSidebar
+│   │   │   │   │   │   │   ├── AdminSidebarLink
+│   │   │   │   │   │   │   │   ├── AdminSidebarLink.mdx
+│   │   │   │   │   │   │   │   ├── AdminSidebarLink.stories.ts
+│   │   │   │   │   │   │   │   └── AdminSidebarLink.vue
+│   │   │   │   │   │   │   └── AdminSidebarMenu
+│   │   │   │   │   │   │       ├── AdminSidebarMenu.mdx
+│   │   │   │   │   │   │       ├── AdminSidebarMenu.stories.ts
+│   │   │   │   │   │   │       └── AdminSidebarMenu.vue
+│   │   │   │   │   │   ├── AdminTable
+│   │   │   │   │   │   │   ├── AdminCommunityResourcesTable
+│   │   │   │   │   │   │   │   ├── AdminCommunityResourcesTable.stories.ts
+│   │   │   │   │   │   │   │   └── AdminCommunityResourcesTable.vue
+│   │   │   │   │   │   │   ├── AdminDatasetsTable
+│   │   │   │   │   │   │   │   ├── AdminDatasetsTable.stories.ts
+│   │   │   │   │   │   │   │   └── AdminDatasetsTable.vue
+│   │   │   │   │   │   │   ├── AdminDiscussionsTable
+│   │   │   │   │   │   │   │   └── AdminDiscussionsTable.vue
+│   │   │   │   │   │   │   ├── AdminReusesTable
+│   │   │   │   │   │   │   │   ├── AdminReusesTable.stories.ts
+│   │   │   │   │   │   │   │   └── AdminReusesTable.vue
+│   │   │   │   │   │   │   ├── AdminTable.mdx
+│   │   │   │   │   │   │   └── Table
+│   │   │   │   │   │   │       ├── AdminTable.stories.ts
+│   │   │   │   │   │   │       ├── AdminTable.vue
+│   │   │   │   │   │   │       └── AdminTableTh.vue
+│   │   │   │   │   │   ├── Alert
+│   │   │   │   │   │   │   ├── Alert.stories.js
+│   │   │   │   │   │   │   └── Alert.vue
+│   │   │   │   │   │   ├── Breadcrumb
+│   │   │   │   │   │   │   └── Breadcrumb.vue
+│   │   │   │   │   │   ├── ContactPointSelector
+│   │   │   │   │   │   │   ├── ContactPointSelector.stories.ts
+│   │   │   │   │   │   │   └── ContactPointSelector.vue
+│   │   │   │   │   │   ├── DataservicesSearch
+│   │   │   │   │   │   │   ├── DataservicesSearch.stories.ts
+│   │   │   │   │   │   │   └── DataservicesSearch.vue
+│   │   │   │   │   │   ├── Form
+│   │   │   │   │   │   │   ├── ActionCard
+│   │   │   │   │   │   │   │   ├── ActionCard.mdx
+│   │   │   │   │   │   │   │   ├── ActionCard.stories.js
+│   │   │   │   │   │   │   │   └── ActionCard.vue
+│   │   │   │   │   │   │   ├── ButtonLoader.vue
+│   │   │   │   │   │   │   ├── FileCard
+│   │   │   │   │   │   │   │   ├── FileCard.mdx
+│   │   │   │   │   │   │   │   ├── FileCard.stories.js
+│   │   │   │   │   │   │   │   ├── FileCard.vue
+│   │   │   │   │   │   │   │   └── FileLoader.vue
+│   │   │   │   │   │   │   ├── InputGroup
+│   │   │   │   │   │   │   │   ├── InputGroup.mdx
+│   │   │   │   │   │   │   │   ├── InputGroup.stories.ts
+│   │   │   │   │   │   │   │   └── InputGroup.vue
+│   │   │   │   │   │   │   ├── LinkedToAccordion
+│   │   │   │   │   │   │   │   ├── LinkedToAccordion.mdx
+│   │   │   │   │   │   │   │   ├── LinkedToAccordion.stories.js
+│   │   │   │   │   │   │   │   └── LinkedToAccordion.vue
+│   │   │   │   │   │   │   ├── NoSearchResults.vue
+│   │   │   │   │   │   │   ├── SelectGroup
+│   │   │   │   │   │   │   │   ├── SelectGroup.mdx
+│   │   │   │   │   │   │   │   ├── SelectGroup.stories.ts
+│   │   │   │   │   │   │   │   └── SelectGroup.vue
+│   │   │   │   │   │   │   ├── Stepper
+│   │   │   │   │   │   │   │   ├── Stepper.mdx
+│   │   │   │   │   │   │   │   ├── Stepper.stories.ts
+│   │   │   │   │   │   │   │   └── Stepper.vue
+│   │   │   │   │   │   │   └── UploadGroup
+│   │   │   │   │   │   │       ├── UploadGroup.mdx
+│   │   │   │   │   │   │       ├── UploadGroup.stories.js
+│   │   │   │   │   │   │       ├── UploadGroup.vue
+│   │   │   │   │   │   │       ├── UploadModal.vue
+│   │   │   │   │   │   │       ├── UploadModalButton.mdx
+│   │   │   │   │   │   │       ├── UploadModalButton.stories.ts
+│   │   │   │   │   │   │       └── UploadModalButton.vue
+│   │   │   │   │   │   ├── MarkAsNoSpam
+│   │   │   │   │   │   │   ├── MarkAsNoSpam.mdx
+│   │   │   │   │   │   │   ├── MarkAsNoSpam.stories.ts
+│   │   │   │   │   │   │   └── MarkAsNoSpam.vue
+│   │   │   │   │   │   ├── MarkdownEditor
+│   │   │   │   │   │   │   ├── EditorButton.vue
+│   │   │   │   │   │   │   ├── ImageModal
+│   │   │   │   │   │   │   │   ├── ImageModal.vue
+│   │   │   │   │   │   │   │   ├── ImageModalButton.mdx
+│   │   │   │   │   │   │   │   ├── ImageModalButton.stories.ts
+│   │   │   │   │   │   │   │   └── ImageModalButton.vue
+│   │   │   │   │   │   │   ├── InternalEditor.mdx
+│   │   │   │   │   │   │   ├── InternalEditor.stories.ts
+│   │   │   │   │   │   │   ├── InternalEditor.vue
+│   │   │   │   │   │   │   ├── MarkdownEditor.mdx
+│   │   │   │   │   │   │   ├── MarkdownEditor.stories.ts
+│   │   │   │   │   │   │   ├── MarkdownEditor.vue
+│   │   │   │   │   │   │   ├── Milkdown
+│   │   │   │   │   │   │   │   ├── LinkEdit
+│   │   │   │   │   │   │   │   │   ├── LinkEditTooltip.vue
+│   │   │   │   │   │   │   │   │   ├── configureEditTooltip.ts
+│   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   ├── insertLink.ts
+│   │   │   │   │   │   │   │   │   └── linkEditTooltip.ts
+│   │   │   │   │   │   │   │   ├── LinkPreview
+│   │   │   │   │   │   │   │   │   ├── LinkPreviewTooltip.vue
+│   │   │   │   │   │   │   │   │   ├── configurePreviewTooltip.ts
+│   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   ├── linkPreviewTooltip.ts
+│   │   │   │   │   │   │   │   │   ├── shouldShowPreview.ts
+│   │   │   │   │   │   │   │   │   └── useLinkPreview.ts
+│   │   │   │   │   │   │   │   ├── TableSelector
+│   │   │   │   │   │   │   │   │   ├── TableSelectorWidget.vue
+│   │   │   │   │   │   │   │   │   └── tableSelectorPlugin.ts
+│   │   │   │   │   │   │   │   ├── TableTooltip
+│   │   │   │   │   │   │   │   │   ├── TableTooltip.vue
+│   │   │   │   │   │   │   │   │   ├── TooltipButton.vue
+│   │   │   │   │   │   │   │   │   └── tableTooltip.ts
+│   │   │   │   │   │   │   │   ├── Tooltip
+│   │   │   │   │   │   │   │   │   ├── EditorTooltip.vue
+│   │   │   │   │   │   │   │   │   └── useTooltipProvider.ts
+│   │   │   │   │   │   │   │   └── dsfrColumnResizingPlugin.ts
+│   │   │   │   │   │   │   ├── ProseMirror
+│   │   │   │   │   │   │   │   ├── DSFRTableView.ts
+│   │   │   │   │   │   │   │   ├── findMarkPosition.ts
+│   │   │   │   │   │   │   │   ├── getMarkInNode.ts
+│   │   │   │   │   │   │   │   ├── getNodeAtCoords.ts
+│   │   │   │   │   │   │   │   └── handleLink.ts
+│   │   │   │   │   │   │   └── types.ts
+│   │   │   │   │   │   ├── MultiSelect
+│   │   │   │   │   │   │   ├── MultiSelect.mdx
+│   │   │   │   │   │   │   ├── MultiSelect.stories.js
+│   │   │   │   │   │   │   └── MultiSelect.vue
+│   │   │   │   │   │   ├── ProducerSelector
+│   │   │   │   │   │   │   ├── ProducerSelector.stories.ts
+│   │   │   │   │   │   │   └── ProducerSelector.vue
+│   │   │   │   │   │   ├── RangePicker
+│   │   │   │   │   │   │   ├── RangePicker.mdx
+│   │   │   │   │   │   │   ├── RangePicker.stories.js
+│   │   │   │   │   │   │   └── RangePicker.vue
+│   │   │   │   │   │   ├── Report
+│   │   │   │   │   │   │   ├── ReportModal.vue
+│   │   │   │   │   │   │   ├── ReportModalButton.stories.ts
+│   │   │   │   │   │   │   ├── ReportModalButton.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Reuse
+│   │   │   │   │   │   │   ├── NewReuseLoader.vue
+│   │   │   │   │   │   │   ├── Reuse.mdx
+│   │   │   │   │   │   │   ├── Reuse.stories.ts
+│   │   │   │   │   │   │   ├── Reuse.vue
+│   │   │   │   │   │   │   ├── ReuseList.mdx
+│   │   │   │   │   │   │   ├── ReuseList.stories.ts
+│   │   │   │   │   │   │   ├── ReuseList.vue
+│   │   │   │   │   │   │   ├── ReuseLoader.vue
+│   │   │   │   │   │   │   └── loader.vue
+│   │   │   │   │   │   ├── SchemaSelect
+│   │   │   │   │   │   │   ├── SchemaSelect.mdx
+│   │   │   │   │   │   │   ├── SchemaSelect.stories.js
+│   │   │   │   │   │   │   └── SchemaSelect.vue
+│   │   │   │   │   │   ├── Sidemenu
+│   │   │   │   │   │   │   ├── Sidemenu.mdx
+│   │   │   │   │   │   │   ├── Sidemenu.stories.js
+│   │   │   │   │   │   │   └── Sidemenu.vue
+│   │   │   │   │   │   ├── Tooltip
+│   │   │   │   │   │   │   ├── Tooltip.stories.ts
+│   │   │   │   │   │   │   └── Tooltip.vue
+│   │   │   │   │   │   ├── Ui
+│   │   │   │   │   │   │   ├── Container
+│   │   │   │   │   │   │   │   ├── Container.mdx
+│   │   │   │   │   │   │   │   ├── Container.stories.js
+│   │   │   │   │   │   │   │   └── Container.vue
+│   │   │   │   │   │   │   ├── Required
+│   │   │   │   │   │   │   │   ├── Required.mdx
+│   │   │   │   │   │   │   │   ├── Required.stories.ts
+│   │   │   │   │   │   │   │   └── Required.vue
+│   │   │   │   │   │   │   └── RequiredExplanation
+│   │   │   │   │   │   │       ├── RequiredExplanation.mdx
+│   │   │   │   │   │   │       ├── RequiredExplanation.stories.ts
+│   │   │   │   │   │   │       └── RequiredExplanation.vue
+│   │   │   │   │   │   ├── UserDatasetList
+│   │   │   │   │   │   │   └── UserDatasetList.vue
+│   │   │   │   │   │   ├── UserReuseList
+│   │   │   │   │   │   │   └── UserReuseList.vue
+│   │   │   │   │   │   ├── charts
+│   │   │   │   │   │   │   └── chart.vue
+│   │   │   │   │   │   ├── dataset
+│   │   │   │   │   │   │   ├── CardLG.mdx
+│   │   │   │   │   │   │   ├── CardLG.stories.ts
+│   │   │   │   │   │   │   ├── CardList.mdx
+│   │   │   │   │   │   │   ├── CardList.stories.ts
+│   │   │   │   │   │   │   ├── CardList.vue
+│   │   │   │   │   │   │   ├── card-lg.vue
+│   │   │   │   │   │   │   ├── loader.vue
+│   │   │   │   │   │   │   └── resource
+│   │   │   │   │   │   │       ├── resourceFromHash.vue
+│   │   │   │   │   │   │       └── resources.vue
+│   │   │   │   │   │   ├── discussions
+│   │   │   │   │   │   │   ├── Author
+│   │   │   │   │   │   │   │   ├── Author.mdx
+│   │   │   │   │   │   │   │   ├── Author.stories.js
+│   │   │   │   │   │   │   │   └── Author.vue
+│   │   │   │   │   │   │   ├── Thread
+│   │   │   │   │   │   │   │   ├── Loader.vue
+│   │   │   │   │   │   │   │   ├── Thread.mdx
+│   │   │   │   │   │   │   │   ├── Thread.stories.ts
+│   │   │   │   │   │   │   │   └── Thread.vue
+│   │   │   │   │   │   │   ├── ThreadCreate
+│   │   │   │   │   │   │   │   ├── ThreadCreate.mdx
+│   │   │   │   │   │   │   │   ├── ThreadCreate.stories.js
+│   │   │   │   │   │   │   │   ├── ThreadCreate.vue
+│   │   │   │   │   │   │   │   ├── ThreadCreateButton.mdx
+│   │   │   │   │   │   │   │   ├── ThreadCreateButton.stories.js
+│   │   │   │   │   │   │   │   └── ThreadCreateButton.vue
+│   │   │   │   │   │   │   ├── ThreadReply
+│   │   │   │   │   │   │   │   ├── ThreadReply.mdx
+│   │   │   │   │   │   │   │   ├── ThreadReply.stories.js
+│   │   │   │   │   │   │   │   └── ThreadReply.vue
+│   │   │   │   │   │   │   ├── Threads.mdx
+│   │   │   │   │   │   │   ├── Threads.stories.ts
+│   │   │   │   │   │   │   └── Threads.vue
+│   │   │   │   │   │   ├── organization
+│   │   │   │   │   │   │   └── request-membership.vue
+│   │   │   │   │   │   ├── search
+│   │   │   │   │   │   │   ├── MenuSearch
+│   │   │   │   │   │   │   │   ├── MenuSearch.mdx
+│   │   │   │   │   │   │   │   ├── MenuSearch.stories.ts
+│   │   │   │   │   │   │   │   ├── MenuSearch.vue
+│   │   │   │   │   │   │   │   └── MenuSearchOption.vue
+│   │   │   │   │   │   │   ├── OrganizationSearch
+│   │   │   │   │   │   │   │   ├── OrganizationSearch.stories.ts
+│   │   │   │   │   │   │   │   ├── OrganizationSearch.vue
+│   │   │   │   │   │   │   │   ├── OrganizationSearchOption.stories.ts
+│   │   │   │   │   │   │   │   └── OrganizationSearchOption.vue
+│   │   │   │   │   │   │   ├── Search
+│   │   │   │   │   │   │   │   ├── Search.mdx
+│   │   │   │   │   │   │   │   ├── Search.stories.ts
+│   │   │   │   │   │   │   │   └── Search.vue
+│   │   │   │   │   │   │   └── search-input.vue
+│   │   │   │   │   │   ├── utils
+│   │   │   │   │   │   │   ├── DeleteButton
+│   │   │   │   │   │   │   │   ├── DeleteButton.mdx
+│   │   │   │   │   │   │   │   ├── DeleteButton.stories.ts
+│   │   │   │   │   │   │   │   ├── DeleteButton.vue
+│   │   │   │   │   │   │   │   ├── DeleteUserButton.stories.ts
+│   │   │   │   │   │   │   │   └── DeleteUserButton.vue
+│   │   │   │   │   │   │   ├── featured.vue
+│   │   │   │   │   │   │   ├── follow-button.vue
+│   │   │   │   │   │   │   ├── placeholder.vue
+│   │   │   │   │   │   │   └── search-bar.vue
+│   │   │   │   │   │   └── vanilla
+│   │   │   │   │   │       ├── accordion.ts
+│   │   │   │   │   │       ├── clipboard.js
+│   │   │   │   │   │       ├── dialog.js
+│   │   │   │   │   │       ├── fixup-tabs-on-startup.js
+│   │   │   │   │   │       ├── sort-search.js
+│   │   │   │   │   │       └── tabs.js
+│   │   │   │   │   ├── composables
+│   │   │   │   │   │   ├── admin
+│   │   │   │   │   │   │   └── useCurrentOrganization.ts
+│   │   │   │   │   │   ├── form
+│   │   │   │   │   │   │   ├── useFileValidation.js
+│   │   │   │   │   │   │   ├── useFileValidation.mdx
+│   │   │   │   │   │   │   ├── useFileValidation.stories.js
+│   │   │   │   │   │   │   ├── useFilesUpload.ts
+│   │   │   │   │   │   │   └── useFunctionalState.js
+│   │   │   │   │   │   ├── useActiveDescendant.ts
+│   │   │   │   │   │   ├── useCollapse.ts
+│   │   │   │   │   │   ├── useDebouncedRef.js
+│   │   │   │   │   │   ├── useDropdown.ts
+│   │   │   │   │   │   ├── useHash.ts
+│   │   │   │   │   │   ├── useIdFromHash.js
+│   │   │   │   │   │   ├── useLicense.ts
+│   │   │   │   │   │   ├── useSearchUrl.ts
+│   │   │   │   │   │   ├── useToast.js
+│   │   │   │   │   │   └── useUid.js
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── dsfr.ts
+│   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   ├── i18n.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── locales
+│   │   │   │   │   │   ├── de.json
+│   │   │   │   │   │   ├── en.json
+│   │   │   │   │   │   ├── es.json
+│   │   │   │   │   │   ├── fr.json
+│   │   │   │   │   │   ├── it.json
+│   │   │   │   │   │   ├── pt.json
+│   │   │   │   │   │   └── sr.json
+│   │   │   │   │   ├── plugins
+│   │   │   │   │   │   ├── api.ts
+│   │   │   │   │   │   ├── auth.ts
+│   │   │   │   │   │   └── eventbus.ts
+│   │   │   │   │   ├── sentry.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── less
+│   │   │   │       ├── components
+│   │   │   │       │   ├── accordion.less
+│   │   │   │       │   ├── alert.less
+│   │   │   │       │   ├── animations.less
+│   │   │   │       │   ├── badge.less
+│   │   │   │       │   ├── borders.less
+│   │   │   │       │   ├── breadcrumbs.less
+│   │   │   │       │   ├── buttons.less
+│   │   │   │       │   ├── callout.less
+│   │   │   │       │   ├── card.less
+│   │   │   │       │   ├── dataset.less
+│   │   │   │       │   ├── discussions.less
+│   │   │   │       │   ├── embed.less
+│   │   │   │       │   ├── follow-button.less
+│   │   │   │       │   ├── forms.less
+│   │   │   │       │   ├── highlight.less
+│   │   │   │       │   ├── logo.less
+│   │   │   │       │   ├── markdown-editor.less
+│   │   │   │       │   ├── markdown.less
+│   │   │   │       │   ├── multiselect.less
+│   │   │   │       │   ├── notice.less
+│   │   │   │       │   ├── organization-search.less
+│   │   │   │       │   ├── pagination.less
+│   │   │   │       │   ├── quality-score.less
+│   │   │   │       │   ├── quote.less
+│   │   │   │       │   ├── rangepicker.less
+│   │   │   │       │   ├── read-more.less
+│   │   │   │       │   ├── search-input.less
+│   │   │   │       │   ├── segmented-control.less
+│   │   │   │       │   ├── sidemenu.less
+│   │   │   │       │   ├── stepper.less
+│   │   │   │       │   ├── summary.less
+│   │   │   │       │   ├── table.less
+│   │   │   │       │   ├── tabs-full-page.less
+│   │   │   │       │   ├── tabs-home.less
+│   │   │   │       │   ├── tabs-no-js.less
+│   │   │   │       │   ├── tabs.less
+│   │   │   │       │   ├── tags.less
+│   │   │   │       │   ├── tile.less
+│   │   │   │       │   ├── toast.less
+│   │   │   │       │   ├── tooltip.less
+│   │   │   │       │   └── well.less
+│   │   │   │       ├── content
+│   │   │   │       │   ├── colors.less
+│   │   │   │       │   ├── hero-image.less
+│   │   │   │       │   ├── links.less
+│   │   │   │       │   ├── nav-link.less
+│   │   │   │       │   ├── not-enlarged-links.less
+│   │   │   │       │   ├── typography.less
+│   │   │   │       │   └── visibility.less
+│   │   │   │       ├── examples.css
+│   │   │   │       ├── font.less
+│   │   │   │       ├── icons.less
+│   │   │   │       ├── images
+│   │   │   │       │   ├── chevron.svg
+│   │   │   │       │   └── logo.png
+│   │   │   │       ├── layout
+│   │   │   │       │   ├── grid.less
+│   │   │   │       │   ├── responsive.less
+│   │   │   │       │   └── rhythm.less
+│   │   │   │       ├── override.less
+│   │   │   │       ├── specific
+│   │   │   │       │   ├── buttons-venti.less
+│   │   │   │       │   ├── footer.less
+│   │   │   │       │   ├── header.less
+│   │   │   │       │   ├── hero.less
+│   │   │   │       │   ├── metrics-bar.less
+│   │   │   │       │   ├── oauth.less
+│   │   │   │       │   ├── oembed.less
+│   │   │   │       │   ├── search.less
+│   │   │   │       │   └── translate.less
+│   │   │   │       ├── style.less
+│   │   │   │       ├── theme.css
+│   │   │   │       └── variables.less
+│   │   │   ├── babel.cfg
+│   │   │   ├── datagouv-components
+│   │   │   │   ├── .env
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .npmrc
+│   │   │   │   ├── .nvmrc
+│   │   │   │   ├── .storybook
+│   │   │   │   │   ├── main.ts
+│   │   │   │   │   ├── manager.ts
+│   │   │   │   │   ├── msw
+│   │   │   │   │   │   └── mockServiceWorker.js
+│   │   │   │   │   ├── msw-requests.ts
+│   │   │   │   │   ├── preview.tsx
+│   │   │   │   │   ├── previewBody.ts
+│   │   │   │   │   └── theme.ts
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── README.md
+│   │   │   │   ├── demo
+│   │   │   │   │   ├── App.vue
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── demo-vue-router
+│   │   │   │   │   ├── Details.vue
+│   │   │   │   │   ├── View.vue
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.html
+│   │   │   │   ├── package-lock.json
+│   │   │   │   ├── package.json
+│   │   │   │   ├── postcss.config.js
+│   │   │   │   ├── src
+│   │   │   │   │   ├── api
+│   │   │   │   │   │   ├── api.ts
+│   │   │   │   │   │   ├── frequency.ts
+│   │   │   │   │   │   ├── granularity.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── licenses.ts
+│   │   │   │   │   │   ├── reuses.ts
+│   │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   │   ├── tabularApi.ts
+│   │   │   │   │   │   └── zones.ts
+│   │   │   │   │   ├── assets
+│   │   │   │   │   │   └── img
+│   │   │   │   │   │       └── placeholders
+│   │   │   │   │   │           ├── author.png
+│   │   │   │   │   │           ├── dataset.png
+│   │   │   │   │   │           ├── news.png
+│   │   │   │   │   │           ├── organization.png
+│   │   │   │   │   │           └── reuse.png
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AppLink
+│   │   │   │   │   │   │   ├── AppLink.stories.ts
+│   │   │   │   │   │   │   ├── AppLink.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── AsyncTextClamp
+│   │   │   │   │   │   │   └── AsyncTextClamp.vue
+│   │   │   │   │   │   ├── Avatar
+│   │   │   │   │   │   │   ├── Avatar.stories.ts
+│   │   │   │   │   │   │   ├── Avatar.vue
+│   │   │   │   │   │   │   ├── AvatarWithName.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── CopyButton
+│   │   │   │   │   │   │   ├── CopyButton.stories.ts
+│   │   │   │   │   │   │   ├── CopyButton.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── DataserviceCard
+│   │   │   │   │   │   │   ├── DataserviceCard.stories.ts
+│   │   │   │   │   │   │   ├── DataserviceCard.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── DataserviceLinks
+│   │   │   │   │   │   │   ├── DataserviceLinks.stories.ts
+│   │   │   │   │   │   │   ├── DataserviceLinks.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── DatasetCard
+│   │   │   │   │   │   │   ├── DatasetCard.stories.ts
+│   │   │   │   │   │   │   ├── DatasetCard.vue
+│   │   │   │   │   │   │   ├── TestComponent.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── DescriptionList
+│   │   │   │   │   │   │   ├── DescriptionDetails.stories.ts
+│   │   │   │   │   │   │   ├── DescriptionDetails.vue
+│   │   │   │   │   │   │   ├── DescriptionList.stories.ts
+│   │   │   │   │   │   │   ├── DescriptionList.vue
+│   │   │   │   │   │   │   ├── DescriptionTerm.stories.ts
+│   │   │   │   │   │   │   └── DescriptionTerm.vue
+│   │   │   │   │   │   ├── ExtraAccordion
+│   │   │   │   │   │   │   ├── ExtraAccordion.stories.ts
+│   │   │   │   │   │   │   ├── ExtraAccordion.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── InformationPanel
+│   │   │   │   │   │   │   ├── InformationPanel.stories.ts
+│   │   │   │   │   │   │   ├── InformationPanel.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Organization
+│   │   │   │   │   │   │   ├── OrganizationNameWithCertificate.stories.ts
+│   │   │   │   │   │   │   ├── OrganizationNameWithCertificate.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Owner
+│   │   │   │   │   │   │   ├── OwnerType.stories.ts
+│   │   │   │   │   │   │   ├── OwnerType.vue
+│   │   │   │   │   │   │   ├── OwnerTypeIcon.stories.ts
+│   │   │   │   │   │   │   ├── OwnerTypeIcon.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Pagination
+│   │   │   │   │   │   │   ├── Pagination.stories.ts
+│   │   │   │   │   │   │   ├── Pagination.vue
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── paginate.ts
+│   │   │   │   │   │   ├── Placeholder
+│   │   │   │   │   │   │   ├── Placeholder.stories.ts
+│   │   │   │   │   │   │   ├── Placeholder.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── QualityComponent
+│   │   │   │   │   │   │   ├── QualityComponent.stories.ts
+│   │   │   │   │   │   │   ├── QualityComponent.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── QualityComponentInline
+│   │   │   │   │   │   │   ├── QualityComponentInline.stories.ts
+│   │   │   │   │   │   │   ├── QualityComponentInline.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── QualityItem
+│   │   │   │   │   │   │   ├── QualityItem.stories.ts
+│   │   │   │   │   │   │   ├── QualityItem.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── QualityItemWarning
+│   │   │   │   │   │   │   ├── QualityItemWarning.stories.ts
+│   │   │   │   │   │   │   ├── QualityItemWarning.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── QualityScore
+│   │   │   │   │   │   │   ├── QualityScore.stories.ts
+│   │   │   │   │   │   │   ├── QualityScore.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ReadMore
+│   │   │   │   │   │   │   ├── ReadMore.stories.ts
+│   │   │   │   │   │   │   ├── ReadMore.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ResourceAccordion
+│   │   │   │   │   │   │   ├── DataStructure
+│   │   │   │   │   │   │   │   ├── DataStructure.stories.ts
+│   │   │   │   │   │   │   │   ├── DataStructure.vue
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── EditButton.stories.ts
+│   │   │   │   │   │   │   ├── EditButton.vue
+│   │   │   │   │   │   │   ├── Loader.stories.ts
+│   │   │   │   │   │   │   ├── Loader.vue
+│   │   │   │   │   │   │   ├── Metadata.vue
+│   │   │   │   │   │   │   ├── Preview
+│   │   │   │   │   │   │   │   ├── Loader.vue
+│   │   │   │   │   │   │   │   ├── Preview.stories.ts
+│   │   │   │   │   │   │   │   ├── Preview.vue
+│   │   │   │   │   │   │   │   ├── france.svg
+│   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── ResourceAccordion.stories.ts
+│   │   │   │   │   │   │   ├── ResourceAccordion.vue
+│   │   │   │   │   │   │   ├── ResourceIcon.vue
+│   │   │   │   │   │   │   ├── SchemaBadge.vue
+│   │   │   │   │   │   │   ├── SchemaLoader.stories.ts
+│   │   │   │   │   │   │   ├── SchemaLoader.vue
+│   │   │   │   │   │   │   ├── Swagger.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── ReuseCard
+│   │   │   │   │   │   │   ├── ReuseCard.stories.ts
+│   │   │   │   │   │   │   ├── ReuseCard.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── SmallChart
+│   │   │   │   │   │   │   ├── SmallChart.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── StatBox
+│   │   │   │   │   │   │   ├── StatBox.stories.ts
+│   │   │   │   │   │   │   ├── StatBox.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Tabs
+│   │   │   │   │   │   │   ├── Tab.vue
+│   │   │   │   │   │   │   ├── TabGroup.vue
+│   │   │   │   │   │   │   ├── TabList.vue
+│   │   │   │   │   │   │   ├── TabPanel.vue
+│   │   │   │   │   │   │   ├── TabPanels.vue
+│   │   │   │   │   │   │   └── Tabs.stories.ts
+│   │   │   │   │   │   ├── Toggletip
+│   │   │   │   │   │   │   ├── Toggletip.mdx
+│   │   │   │   │   │   │   ├── Toggletip.stories.ts
+│   │   │   │   │   │   │   ├── Toggletip.vue
+│   │   │   │   │   │   │   ├── ToggletipButton.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── Well
+│   │   │   │   │   │   │   ├── Well.stories.ts
+│   │   │   │   │   │   │   ├── Well.vue
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── accordion.less
+│   │   │   │   │   │   ├── badge.less
+│   │   │   │   │   │   ├── base.less
+│   │   │   │   │   │   ├── border.less
+│   │   │   │   │   │   ├── button.less
+│   │   │   │   │   │   ├── dataset.less
+│   │   │   │   │   │   ├── embed.less
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── links.less
+│   │   │   │   │   │   ├── logo.less
+│   │   │   │   │   │   ├── pagination.less
+│   │   │   │   │   │   ├── quality-score.less
+│   │   │   │   │   │   ├── read-more.less
+│   │   │   │   │   │   ├── reuse.less
+│   │   │   │   │   │   ├── segmented-control.less
+│   │   │   │   │   │   ├── table.less
+│   │   │   │   │   │   ├── tabs.less
+│   │   │   │   │   │   ├── toggletip.less
+│   │   │   │   │   │   ├── visibility.less
+│   │   │   │   │   │   └── well.less
+│   │   │   │   │   ├── composables
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── organizations
+│   │   │   │   │   │   │   ├── useOrganizationCertified.ts
+│   │   │   │   │   │   │   ├── useOrganizationType.ts
+│   │   │   │   │   │   │   └── useOwnerName.ts
+│   │   │   │   │   │   ├── useAccordion.ts
+│   │   │   │   │   │   ├── useLicense.ts
+│   │   │   │   │   │   ├── useOEmbed.ts
+│   │   │   │   │   │   ├── useReuseType.ts
+│   │   │   │   │   │   ├── useTabs.ts
+│   │   │   │   │   │   └── useToast.ts
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   ├── getUserAvatar.ts
+│   │   │   │   │   │   ├── i18n.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── markdown.ts
+│   │   │   │   │   │   ├── matomo.ts
+│   │   │   │   │   │   ├── resources.ts
+│   │   │   │   │   │   ├── throwOnNever.ts
+│   │   │   │   │   │   └── toggleAccordion.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── locales
+│   │   │   │   │   │   ├── de.json
+│   │   │   │   │   │   ├── en.json
+│   │   │   │   │   │   ├── es.json
+│   │   │   │   │   │   ├── fr.json
+│   │   │   │   │   │   ├── it.json
+│   │   │   │   │   │   ├── pt.json
+│   │   │   │   │   │   └── sr.json
+│   │   │   │   │   ├── types
+│   │   │   │   │   │   ├── badges.ts
+│   │   │   │   │   │   ├── contact_point.ts
+│   │   │   │   │   │   ├── dataservices.ts
+│   │   │   │   │   │   ├── datasets.ts
+│   │   │   │   │   │   ├── frequency.ts
+│   │   │   │   │   │   ├── granularity.ts
+│   │   │   │   │   │   ├── harvest.ts
+│   │   │   │   │   │   ├── licenses.ts
+│   │   │   │   │   │   ├── organizations.ts
+│   │   │   │   │   │   ├── owned.ts
+│   │   │   │   │   │   ├── resources.ts
+│   │   │   │   │   │   ├── reuses.ts
+│   │   │   │   │   │   ├── ui.ts
+│   │   │   │   │   │   └── users.ts
+│   │   │   │   │   └── vite-env.d.ts
+│   │   │   │   ├── test-runner-jest.config.js
+│   │   │   │   ├── tsconfig.json
+│   │   │   │   └── vite.config.ts
+│   │   │   ├── info.json
+│   │   │   ├── templates
+│   │   │   │   ├── api
+│   │   │   │   │   ├── admin.html
+│   │   │   │   │   ├── card.html
+│   │   │   │   │   ├── oauth_authorize.html
+│   │   │   │   │   └── oauth_error.html
+│   │   │   │   ├── banners
+│   │   │   │   │   ├── feedback.html
+│   │   │   │   │   ├── generic.html
+│   │   │   │   │   └── read-only.html
+│   │   │   │   ├── base.html
+│   │   │   │   ├── carousel.html
+│   │   │   │   ├── comments
+│   │   │   │   │   └── dataset_archived.txt
+│   │   │   │   ├── contact_point.html
+│   │   │   │   ├── dataservice
+│   │   │   │   │   ├── card.html
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   ├── feed_item.html
+│   │   │   │   │   └── list.html
+│   │   │   │   ├── dataset
+│   │   │   │   │   ├── card-lg.html
+│   │   │   │   │   ├── card-sm.html
+│   │   │   │   │   ├── card-xs.html
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   ├── feed_item.html
+│   │   │   │   │   ├── followers.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   ├── oembed.html
+│   │   │   │   │   ├── resource
+│   │   │   │   │   │   └── card.html
+│   │   │   │   │   └── search-results.html
+│   │   │   │   ├── dataset-apis.html
+│   │   │   │   ├── embed-dataset.html
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── 400.html
+│   │   │   │   │   ├── 403.html
+│   │   │   │   │   ├── 404.html
+│   │   │   │   │   ├── 410.html
+│   │   │   │   │   ├── 500.html
+│   │   │   │   │   └── base.html
+│   │   │   │   ├── follow
+│   │   │   │   │   └── follower-card.html
+│   │   │   │   ├── footer.html
+│   │   │   │   ├── header.html
+│   │   │   │   ├── home.html
+│   │   │   │   ├── layouts
+│   │   │   │   │   ├── 1-column.html
+│   │   │   │   │   ├── 2-columns.html
+│   │   │   │   │   └── center-panel.html
+│   │   │   │   ├── macros
+│   │   │   │   │   ├── banner_info.html
+│   │   │   │   │   ├── banner_warning.html
+│   │   │   │   │   ├── breadcrumb.html
+│   │   │   │   │   ├── certified.html
+│   │   │   │   │   ├── dataset_information.html
+│   │   │   │   │   ├── delete.html
+│   │   │   │   │   ├── description_list.html
+│   │   │   │   │   ├── follow.html
+│   │   │   │   │   ├── forms.html
+│   │   │   │   │   ├── integrate.html
+│   │   │   │   │   ├── leaflet.html
+│   │   │   │   │   ├── metadata.html
+│   │   │   │   │   ├── organization_name_with_certificate.html
+│   │   │   │   │   ├── paginator.html
+│   │   │   │   │   ├── quality_item.html
+│   │   │   │   │   ├── quality_item_warning.html
+│   │   │   │   │   ├── quality_score.html
+│   │   │   │   │   ├── quality_score_inline.html
+│   │   │   │   │   ├── quality_score_toggletip.html
+│   │   │   │   │   ├── quality_score_with_warning_below.html
+│   │   │   │   │   ├── report.html
+│   │   │   │   │   ├── search.html
+│   │   │   │   │   ├── sort_search.html
+│   │   │   │   │   ├── toggletip.html
+│   │   │   │   │   ├── tooltip.html
+│   │   │   │   │   └── uploader.html
+│   │   │   │   ├── mail
+│   │   │   │   │   ├── account_deleted.html
+│   │   │   │   │   ├── account_deleted.txt
+│   │   │   │   │   ├── badge_added_certified.html
+│   │   │   │   │   ├── badge_added_certified.txt
+│   │   │   │   │   ├── badge_added_public_service.html
+│   │   │   │   │   ├── badge_added_public_service.txt
+│   │   │   │   │   ├── base.html
+│   │   │   │   │   ├── base.txt
+│   │   │   │   │   ├── button.html
+│   │   │   │   │   ├── discussion_closed.html
+│   │   │   │   │   ├── discussion_closed.txt
+│   │   │   │   │   ├── frequency_reminder.html
+│   │   │   │   │   ├── frequency_reminder.txt
+│   │   │   │   │   ├── layouts
+│   │   │   │   │   │   ├── 1-column.html
+│   │   │   │   │   │   ├── 2-columns.html
+│   │   │   │   │   │   └── center-panel.html
+│   │   │   │   │   ├── membership_refused.html
+│   │   │   │   │   ├── membership_refused.txt
+│   │   │   │   │   ├── membership_request.html
+│   │   │   │   │   ├── membership_request.txt
+│   │   │   │   │   ├── new_discussion.html
+│   │   │   │   │   ├── new_discussion.txt
+│   │   │   │   │   ├── new_discussion_comment.html
+│   │   │   │   │   ├── new_discussion_comment.txt
+│   │   │   │   │   ├── new_follower.html
+│   │   │   │   │   ├── new_follower.txt
+│   │   │   │   │   ├── new_follower_org.html
+│   │   │   │   │   ├── new_follower_org.txt
+│   │   │   │   │   ├── new_member.html
+│   │   │   │   │   ├── new_member.txt
+│   │   │   │   │   ├── new_reuse.html
+│   │   │   │   │   ├── new_reuse.txt
+│   │   │   │   │   ├── security
+│   │   │   │   │   │   ├── change_notice.html
+│   │   │   │   │   │   ├── change_notice.txt
+│   │   │   │   │   │   ├── confirmation_instructions.html
+│   │   │   │   │   │   ├── confirmation_instructions.txt
+│   │   │   │   │   │   ├── login_instructions.html
+│   │   │   │   │   │   ├── login_instructions.txt
+│   │   │   │   │   │   ├── reset_instructions.html
+│   │   │   │   │   │   ├── reset_instructions.txt
+│   │   │   │   │   │   ├── reset_notice.html
+│   │   │   │   │   │   ├── reset_notice.txt
+│   │   │   │   │   │   ├── welcome.html
+│   │   │   │   │   │   └── welcome.txt
+│   │   │   │   │   ├── test.html
+│   │   │   │   │   └── test.txt
+│   │   │   │   ├── metrics.html
+│   │   │   │   ├── newsletter.html
+│   │   │   │   ├── oembed.html
+│   │   │   │   ├── organization
+│   │   │   │   │   ├── card.html
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   ├── member-card.html
+│   │   │   │   │   ├── oembed.html
+│   │   │   │   │   └── producer-name-with-logo.html
+│   │   │   │   ├── page.html
+│   │   │   │   ├── post
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   ├── search-result.html
+│   │   │   │   │   └── subnav.html
+│   │   │   │   ├── raw.html
+│   │   │   │   ├── reuse
+│   │   │   │   │   ├── card.html
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   ├── feed_item.html
+│   │   │   │   │   ├── list.html
+│   │   │   │   │   ├── mail_card.html
+│   │   │   │   │   └── oembed.html
+│   │   │   │   ├── security
+│   │   │   │   │   ├── change_email.html
+│   │   │   │   │   ├── change_password.html
+│   │   │   │   │   ├── forgot_password.html
+│   │   │   │   │   ├── login_user.html
+│   │   │   │   │   ├── register_user.html
+│   │   │   │   │   ├── reset_password.html
+│   │   │   │   │   └── send_confirmation.html
+│   │   │   │   ├── site
+│   │   │   │   │   └── dashboard.html
+│   │   │   │   ├── subnav-community.html
+│   │   │   │   ├── suivi.html
+│   │   │   │   ├── svg
+│   │   │   │   │   ├── administration.svg
+│   │   │   │   │   ├── arrow-right.svg
+│   │   │   │   │   ├── blank_state
+│   │   │   │   │   │   ├── discussion.svg
+│   │   │   │   │   │   ├── harvester.svg
+│   │   │   │   │   │   ├── resource.svg
+│   │   │   │   │   │   └── reuse.svg
+│   │   │   │   │   ├── burger-menu.svg
+│   │   │   │   │   ├── copy.svg
+│   │   │   │   │   ├── edit.svg
+│   │   │   │   │   ├── filter.svg
+│   │   │   │   │   ├── illustrations
+│   │   │   │   │   │   ├── dataservice.svg
+│   │   │   │   │   │   ├── dataset.svg
+│   │   │   │   │   │   ├── draggable.svg
+│   │   │   │   │   │   ├── edit.svg
+│   │   │   │   │   │   ├── france_with_magnifying_glass.svg
+│   │   │   │   │   │   ├── magnifying_glass.svg
+│   │   │   │   │   │   ├── newspaper.svg
+│   │   │   │   │   │   ├── organization.svg
+│   │   │   │   │   │   ├── reuse.svg
+│   │   │   │   │   │   ├── schema.svg
+│   │   │   │   │   │   ├── search.svg
+│   │   │   │   │   │   ├── search2.svg
+│   │   │   │   │   │   └── success.svg
+│   │   │   │   │   ├── logotype-white.svg
+│   │   │   │   │   ├── logotype.svg
+│   │   │   │   │   ├── marianne.svg
+│   │   │   │   │   ├── preview.svg
+│   │   │   │   │   ├── private.svg
+│   │   │   │   │   ├── resources
+│   │   │   │   │   │   ├── archive.svg
+│   │   │   │   │   │   ├── code.svg
+│   │   │   │   │   │   ├── documentation.svg
+│   │   │   │   │   │   ├── file.svg
+│   │   │   │   │   │   ├── globe.svg
+│   │   │   │   │   │   ├── link.svg
+│   │   │   │   │   │   ├── map.svg
+│   │   │   │   │   │   └── table.svg
+│   │   │   │   │   ├── search
+│   │   │   │   │   │   ├── dataset.svg
+│   │   │   │   │   │   ├── empty.svg
+│   │   │   │   │   │   ├── organization.svg
+│   │   │   │   │   │   └── reuse.svg
+│   │   │   │   │   ├── search.svg
+│   │   │   │   │   ├── socials
+│   │   │   │   │   │   ├── bluesky.svg
+│   │   │   │   │   │   ├── github.svg
+│   │   │   │   │   │   ├── linkedin.svg
+│   │   │   │   │   │   └── twitter.svg
+│   │   │   │   │   └── triangle.svg
+│   │   │   │   ├── terms.html
+│   │   │   │   ├── territories
+│   │   │   │   │   ├── commune.html
+│   │   │   │   │   ├── departement.html
+│   │   │   │   │   ├── home.html
+│   │   │   │   │   ├── region.html
+│   │   │   │   │   ├── search-result.html
+│   │   │   │   │   └── territory.html
+│   │   │   │   ├── topic
+│   │   │   │   │   ├── browse.html
+│   │   │   │   │   ├── datasets.html
+│   │   │   │   │   ├── display.html
+│   │   │   │   │   └── reuses.html
+│   │   │   │   └── user
+│   │   │   │       ├── activity.html
+│   │   │   │       ├── base.html
+│   │   │   │       ├── card.html
+│   │   │   │       ├── datasets.html
+│   │   │   │       ├── followers.html
+│   │   │   │       ├── following.html
+│   │   │   │       ├── list.html
+│   │   │   │       ├── mail_card.html
+│   │   │   │       └── reuses.html
+│   │   │   └── translations
+│   │   │       ├── de
+│   │   │       │   └── LC_MESSAGES
+│   │   │       │       └── gouvfr.po
+│   │   │       ├── es
+│   │   │       │   └── LC_MESSAGES
+│   │   │       │       └── gouvfr.po
+│   │   │       ├── fr
+│   │   │       │   └── LC_MESSAGES
+│   │   │       │       └── gouvfr.po
+│   │   │       ├── gouvfr.pot
+│   │   │       ├── it
+│   │   │       │   └── LC_MESSAGES
+│   │   │       │       └── gouvfr.po
+│   │   │       ├── pt
+│   │   │       │   └── LC_MESSAGES
+│   │   │       │       └── gouvfr.po
+│   │   │       └── sr
+│   │   │           └── LC_MESSAGES
+│   │   │               └── gouvfr.po
+│   │   └── license.txt
+│   └── views
+│       ├── __init__.py
+│       ├── base.py
+│       ├── dataservice.py
+│       ├── dataset.py
+│       ├── follower.py
+│       ├── gouvfr.py
+│       ├── oembed.py
+│       ├── organization.py
+│       ├── post.py
+│       ├── proconnect.py
+│       ├── reuse.py
+│       ├── site.py
+│       ├── territories.py
+│       ├── topic.py
+│       └── user.py
+├── vite.config.dev.ts
+├── vite.config.ts
+└── vue-i18n-extract.config.js
+208 directories, 970 files
