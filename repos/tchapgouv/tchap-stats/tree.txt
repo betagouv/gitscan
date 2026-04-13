@@ -1,0 +1,54 @@
+.
+├── .env.sample
+├── .gitignore
+├── Pipfile
+├── Pipfile.lock
+├── Procfile
+├── README.md
+├── __pycache__
+│   └── job_sync_stats.cpython-310.pyc
+├── fetch_from_s3.sh
+├── job_sync_stats.py
+├── samples
+│   ├── events
+│   │   ├── events_aggregate_1.csv
+│   │   └── events_aggregate_2.csv
+│   ├── subscriptions
+│   │   ├── subscriptions_aggregate_1.csv
+│   │   └── subscriptions_aggregate_2.csv
+│   └── user_daily_visits
+│       └── user_daily_visits_2023_.csv
+├── scalingo.json
+├── scripts
+│   ├── data_quality
+│   │   ├── check_coherence_udv_b_m.sql
+│   │   ├── check_coherence_user_monthly_visits_lite.sql
+│   │   ├── migration_user_daily_visits_by_month_18m_v2.sql
+│   │   ├── migration_user_daily_visits_by_month_1y_v2.sql
+│   │   └── migration_user_daily_visits_by_month_1y_v2_by_device_type.sql
+│   ├── enrich_user_daily_visits_batch.sql
+│   ├── enrich_user_daily_visits_batch_date.sql
+│   ├── insert_account_data_data.sql
+│   ├── insert_crisp_conversation_segments.sql
+│   ├── insert_events_data.sql
+│   ├── insert_events_roomv9_data.sql
+│   ├── insert_pushers_data.sql
+│   ├── insert_sso_data.sql
+│   ├── insert_subscriptions_data.sql
+│   ├── insert_user_daily_visits_data.sql
+│   ├── legacy.sql
+│   ├── refresh_materialized_view.sql
+│   ├── tables.sql
+│   ├── user_daily_visits_agg_120d_v2.sql
+│   ├── user_daily_visits_agg_30d_v2.sql
+│   ├── user_daily_visits_by_month_1y_v3.sql
+│   ├── user_monthly_visits_lite.sql
+│   └── user_monthly_visits_lite_init.sql
+├── start_cron.py
+├── sync_check_data_user_daily_visits.sh
+├── sync_data.sh
+├── sync_enrich_user_daily_visits.sh
+├── sync_large_views_user_daily_visits.sh
+├── sync_views_user_daily_visits.sh
+└── test_job_sync_stats.py
+8 directories, 45 files
