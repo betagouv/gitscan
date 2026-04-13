@@ -1,0 +1,604 @@
+.
+├── .dockerignore
+├── .env.example
+├── .eslintrc.cjs
+├── .githooks
+│   ├── post-commit
+│   └── pre-commit
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.yml
+│   │   ├── config.yml
+│   │   └── enhancement.yml
+│   ├── release.yml
+│   └── workflows
+│       ├── blocked.yaml
+│       ├── build-and-publish-docker.yaml
+│       ├── build-element-call.yaml
+│       ├── build.yaml
+│       ├── changelog-label.yml
+│       ├── deploy-to-netlify.yaml
+│       ├── lint.yaml
+│       ├── pr-deploy.yaml
+│       ├── publish-embedded-packages.yaml
+│       ├── publish.yaml
+│       ├── tchap-publish-embedded-packages.yaml
+│       ├── test.yaml
+│       ├── translations-download.yaml
+│       └── translations-upload.yaml
+├── .gitignore
+├── .node-version
+├── .postcssrc.json
+├── .prettierignore
+├── .prettierrc.json
+├── .vscode
+│   └── settings.json
+├── .yarn
+│   └── plugins
+│       └── linker.cjs
+├── .yarnrc.yml
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE-AGPL-3.0
+├── LICENSE-COMMERCIAL
+├── README.md
+├── WIDGET_TEST.md
+├── babel.config.cjs
+├── backend
+│   ├── dev_homeserver.yaml
+│   ├── dev_livekit.yaml
+│   ├── dev_nginx.conf
+│   ├── dev_tls_local-ca.crt
+│   ├── dev_tls_local-ca.key
+│   ├── dev_tls_m.localhost.crt
+│   ├── dev_tls_m.localhost.key
+│   ├── dev_tls_setup
+│   ├── ew.test.config.json
+│   ├── playwright_homeserver.yaml
+│   └── redis.conf
+├── codecov.yaml
+├── config
+│   ├── config.devenv.json
+│   ├── config.sample.json
+│   ├── config_netlify_preview.json
+│   ├── httpd.conf
+│   ├── netlify_redirects
+│   ├── nginx.conf
+│   └── otel_dev
+│       ├── README.md
+│       ├── collector-gateway.yaml
+│       ├── docker-compose.yaml
+│       └── nginx_otel.conf
+├── demo.gif
+├── dev-backend-docker-compose.yml
+├── docs
+│   ├── Federated_Setup.drawio.png
+│   ├── MSC4195_setup.drawio.png
+│   ├── README.md
+│   ├── SFU_selection.drawio.png
+│   ├── controls.md
+│   ├── element_call_standalone.drawio.png
+│   ├── element_call_widget.drawio.png
+│   ├── embedded-standalone.md
+│   ├── embedded_package.drawio.png
+│   ├── full_package.drawio.png
+│   ├── linking.md
+│   ├── self-hosting.md
+│   └── url-params.md
+├── embedded
+│   ├── android
+│   │   ├── .gitattributes
+│   │   ├── .gitignore
+│   │   ├── gradle
+│   │   │   ├── libs.versions.toml
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradle.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── lib
+│   │   │   ├── build.gradle.kts
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           └── kotlin
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── call
+│   │   │                               └── embedded
+│   │   │                                   └── Version.kt
+│   │   ├── publish_android_package.sh
+│   │   └── settings.gradle
+│   ├── ios
+│   │   ├── .gitignore
+│   │   ├── LICENSE-AGPL-3.0
+│   │   ├── LICENSE-COMMMERCIAL
+│   │   ├── Package.swift
+│   │   ├── README.md
+│   │   └── Sources
+│   │       └── EmbeddedElementCall
+│   │           └── EmbeddedElementCall.swift
+│   └── web
+│       ├── LICENSE-AGPL-3.0
+│       ├── LICENSE-COMMERCIAL
+│       ├── README.md
+│       └── package.json
+├── i18next-parser.config.ts
+├── index.html
+├── knip.ts
+├── localazy.json
+├── locales
+│   ├── bg
+│   │   └── app.json
+│   ├── cs
+│   │   └── app.json
+│   ├── da
+│   │   └── app.json
+│   ├── de
+│   │   └── app.json
+│   ├── el
+│   │   └── app.json
+│   ├── en
+│   │   └── app.json
+│   ├── es
+│   │   └── app.json
+│   ├── et
+│   │   └── app.json
+│   ├── fa
+│   │   └── app.json
+│   ├── fi
+│   │   └── app.json
+│   ├── fr
+│   │   └── app.json
+│   ├── id
+│   │   └── app.json
+│   ├── it
+│   │   └── app.json
+│   ├── ja
+│   │   └── app.json
+│   ├── lv
+│   │   └── app.json
+│   ├── pl
+│   │   └── app.json
+│   ├── ro
+│   │   └── app.json
+│   ├── ru
+│   │   └── app.json
+│   ├── sk
+│   │   └── app.json
+│   ├── sv
+│   │   └── app.json
+│   ├── tr
+│   │   └── app.json
+│   ├── uk
+│   │   └── app.json
+│   ├── vi
+│   │   └── app.json
+│   ├── zh-Hans
+│   │   └── app.json
+│   └── zh-Hant
+│       └── app.json
+├── package.json
+├── playwright
+│   ├── access.spec.ts
+│   ├── create-call.spec.ts
+│   ├── errors.spec.ts
+│   ├── fixtures
+│   │   └── widget-user.ts
+│   ├── global.d.ts
+│   ├── landing.spec.ts
+│   ├── reconnect.spec.ts
+│   ├── restricted-sfu.spec.ts
+│   ├── sfu-reconnect-bug.spec.ts
+│   └── widget
+│       └── simple-create.spec.ts
+├── playwright-backend-docker-compose.override.yml
+├── playwright-backend-docker-compose.yml
+├── playwright.config.ts
+├── public
+│   └── favicon.png
+├── renovate.json
+├── scripts
+│   ├── dockerbuild.sh
+│   ├── playwright-webserver-command.sh
+│   └── reformat-release-notes.py
+├── src
+│   ├── @types
+│   │   ├── global.d.ts
+│   │   ├── i18next.d.ts
+│   │   ├── matrix-js-sdk.d.ts
+│   │   └── modules.d.ts
+│   ├── App.tsx
+│   ├── AppBar.module.css
+│   ├── AppBar.test.tsx
+│   ├── AppBar.tsx
+│   ├── Avatar.test.tsx
+│   ├── Avatar.tsx
+│   ├── ClientContext.tsx
+│   ├── DisconnectedBanner.module.css
+│   ├── DisconnectedBanner.tsx
+│   ├── ErrorView.module.css
+│   ├── ErrorView.tsx
+│   ├── FullScreenView.module.css
+│   ├── FullScreenView.tsx
+│   ├── Header.module.css
+│   ├── Header.test.tsx
+│   ├── Header.tsx
+│   ├── IndexedDBWorker.ts
+│   ├── LazyEventEmitter.ts
+│   ├── MediaDevicesContext.ts
+│   ├── Modal.module.css
+│   ├── Modal.test.tsx
+│   ├── Modal.tsx
+│   ├── Overlay.module.css
+│   ├── Platform.ts
+│   ├── QrCode.module.css
+│   ├── QrCode.test.tsx
+│   ├── QrCode.tsx
+│   ├── RTCConnectionStats.module.css
+│   ├── RTCConnectionStats.tsx
+│   ├── RichError.tsx
+│   ├── Slider.module.css
+│   ├── Slider.tsx
+│   ├── Toast.module.css
+│   ├── Toast.test.tsx
+│   ├── Toast.tsx
+│   ├── TranslatedError.ts
+│   ├── UrlParams.test.ts
+│   ├── UrlParams.ts
+│   ├── UserMenu.module.css
+│   ├── UserMenu.tsx
+│   ├── UserMenuContainer.tsx
+│   ├── __snapshots__
+│   │   ├── AppBar.test.tsx.snap
+│   │   ├── Modal.test.tsx.snap
+│   │   ├── QrCode.test.tsx.snap
+│   │   ├── Toast-test.tsx.snap
+│   │   └── Toast.test.tsx.snap
+│   ├── analytics
+│   │   ├── AnalyticsNotice.tsx
+│   │   ├── PosthogAnalytics.test.ts
+│   │   ├── PosthogAnalytics.ts
+│   │   ├── PosthogEvents.ts
+│   │   ├── PosthogSpanProcessor.ts
+│   │   └── RageshakeSpanProcessor.ts
+│   ├── auth
+│   │   ├── LoginPage.module.css
+│   │   ├── LoginPage.tsx
+│   │   ├── RegisterPage.tsx
+│   │   ├── generateRandomName.ts
+│   │   ├── useInteractiveLogin.ts
+│   │   ├── useInteractiveRegistration.ts
+│   │   ├── useRecaptcha.ts
+│   │   └── useRegisterPasswordlessUser.ts
+│   ├── button
+│   │   ├── Button.module.css
+│   │   ├── Button.tsx
+│   │   ├── InviteButton.tsx
+│   │   ├── Link.module.css
+│   │   ├── Link.tsx
+│   │   ├── LinkButton.tsx
+│   │   ├── ReactionToggleButton.module.css
+│   │   ├── ReactionToggleButton.test.tsx
+│   │   ├── ReactionToggleButton.tsx
+│   │   ├── __snapshots__
+│   │   │   └── ReactionToggleButton.test.tsx.snap
+│   │   └── index.ts
+│   ├── config
+│   │   ├── Config.ts
+│   │   └── ConfigOptions.ts
+│   ├── controls.ts
+│   ├── e2ee
+│   │   ├── e2eeType.ts
+│   │   ├── matrixKeyProvider.test.ts
+│   │   ├── matrixKeyProvider.ts
+│   │   └── sharedKeyManagement.ts
+│   ├── form
+│   │   ├── Form.module.css
+│   │   └── Form.tsx
+│   ├── graphics
+│   │   ├── backgroundGradient.svg
+│   │   └── loggedOutGradient.svg
+│   ├── grid
+│   │   ├── CallLayout.ts
+│   │   ├── Grid.css
+│   │   ├── Grid.module.css
+│   │   ├── Grid.tsx
+│   │   ├── GridLayout.module.css
+│   │   ├── GridLayout.tsx
+│   │   ├── OneOnOneLayout.module.css
+│   │   ├── OneOnOneLayout.tsx
+│   │   ├── SpotlightExpandedLayout.module.css
+│   │   ├── SpotlightExpandedLayout.tsx
+│   │   ├── SpotlightLandscapeLayout.module.css
+│   │   ├── SpotlightLandscapeLayout.tsx
+│   │   ├── SpotlightPortraitLayout.module.css
+│   │   ├── SpotlightPortraitLayout.tsx
+│   │   ├── TileWrapper.module.css
+│   │   └── TileWrapper.tsx
+│   ├── home
+│   │   ├── CallList.module.css
+│   │   ├── CallList.test.tsx
+│   │   ├── CallList.tsx
+│   │   ├── HomePage.tsx
+│   │   ├── JoinExistingCallModal.module.css
+│   │   ├── JoinExistingCallModal.tsx
+│   │   ├── RegisteredView.module.css
+│   │   ├── RegisteredView.tsx
+│   │   ├── UnauthenticatedView.module.css
+│   │   ├── UnauthenticatedView.tsx
+│   │   ├── common.module.css
+│   │   └── useGroupCallRooms.ts
+│   ├── icons
+│   │   ├── Check.svg
+│   │   ├── Chevron.svg
+│   │   ├── Close.svg
+│   │   ├── FullScreenMaximise.svg
+│   │   ├── FullScreenMinimise.svg
+│   │   ├── LockOff.svg
+│   │   ├── Login.svg
+│   │   ├── Logo.svg
+│   │   ├── LogoLarge.svg
+│   │   ├── LogoMark.svg
+│   │   ├── LogoType.svg
+│   │   ├── Logout.svg
+│   │   ├── Settings.svg
+│   │   ├── StarSelected.svg
+│   │   ├── StarUnselected.svg
+│   │   └── User.svg
+│   ├── index.css
+│   ├── initializer.test.ts
+│   ├── initializer.tsx
+│   ├── input
+│   │   ├── AvatarInputField.module.css
+│   │   ├── AvatarInputField.tsx
+│   │   ├── FeedbackInput.module.css
+│   │   ├── Input.module.css
+│   │   ├── Input.tsx
+│   │   ├── StarRating.test.tsx
+│   │   ├── StarRatingInput.module.css
+│   │   └── StarRatingInput.tsx
+│   ├── livekit
+│   │   ├── BlurBackgroundTransformer.ts
+│   │   ├── MatrixAudioRenderer.test.tsx
+│   │   ├── MatrixAudioRenderer.tsx
+│   │   ├── TrackProcessorContext.tsx
+│   │   ├── openIDSFU.ts
+│   │   ├── options.ts
+│   │   ├── useECConnectionState.test.tsx
+│   │   ├── useECConnectionState.ts
+│   │   └── useLivekit.ts
+│   ├── main.tsx
+│   ├── mediapipe
+│   │   └── imageSegmenter
+│   │       ├── README.md
+│   │       └── selfie_segmenter.tflite
+│   ├── otel
+│   │   ├── OTelCall.ts
+│   │   ├── OTelCallAbstractMediaStreamSpan.ts
+│   │   ├── OTelCallFeedMediaStreamSpan.ts
+│   │   ├── OTelCallMediaStreamTrackSpan.ts
+│   │   ├── OTelCallTransceiverMediaStreamSpan.ts
+│   │   ├── OTelGroupCallMembership.ts
+│   │   ├── ObjectFlattener.test.ts
+│   │   ├── ObjectFlattener.ts
+│   │   ├── otel.test.ts
+│   │   └── otel.ts
+│   ├── profile
+│   │   └── useProfile.ts
+│   ├── reactions
+│   │   ├── RaisedHandIndicator.test.tsx
+│   │   ├── RaisedHandIndicator.tsx
+│   │   ├── ReactionIndicator.module.css
+│   │   ├── ReactionIndicator.tsx
+│   │   ├── ReactionsReader.test.tsx
+│   │   ├── ReactionsReader.ts
+│   │   ├── __snapshots__
+│   │   │   └── RaisedHandIndicator.test.tsx.snap
+│   │   ├── index.ts
+│   │   └── useReactionsSender.tsx
+│   ├── room
+│   │   ├── AppSelectionModal.module.css
+│   │   ├── AppSelectionModal.tsx
+│   │   ├── CallEndedView.module.css
+│   │   ├── CallEndedView.tsx
+│   │   ├── CallEventAudioRenderer.test.tsx
+│   │   ├── CallEventAudioRenderer.tsx
+│   │   ├── EarpieceOverlay.module.css
+│   │   ├── EarpieceOverlay.tsx
+│   │   ├── EncryptionLock.module.css
+│   │   ├── EncryptionLock.tsx
+│   │   ├── GroupCallErrorBoundary.test.tsx
+│   │   ├── GroupCallErrorBoundary.tsx
+│   │   ├── GroupCallView.test.tsx
+│   │   ├── GroupCallView.tsx
+│   │   ├── InCallView.module.css
+│   │   ├── InCallView.test.tsx
+│   │   ├── InCallView.tsx
+│   │   ├── InviteModal.module.css
+│   │   ├── InviteModal.test.tsx
+│   │   ├── InviteModal.tsx
+│   │   ├── LayoutToggle.module.css
+│   │   ├── LayoutToggle.tsx
+│   │   ├── LobbyView.module.css
+│   │   ├── LobbyView.tsx
+│   │   ├── MuteStates.test.tsx
+│   │   ├── MuteStates.ts
+│   │   ├── RageshakeRequestModal.tsx
+│   │   ├── ReactionAudioRenderer.test.tsx
+│   │   ├── ReactionAudioRenderer.tsx
+│   │   ├── ReactionsOverlay.module.css
+│   │   ├── ReactionsOverlay.test.tsx
+│   │   ├── ReactionsOverlay.tsx
+│   │   ├── RoomAuthView.module.css
+│   │   ├── RoomAuthView.tsx
+│   │   ├── RoomPage.tsx
+│   │   ├── VideoPreview.module.css
+│   │   ├── VideoPreview.test.tsx
+│   │   ├── VideoPreview.tsx
+│   │   ├── WaitingForJoin.module.css
+│   │   ├── __snapshots__
+│   │   │   ├── GroupCallErrorBoundary.test.tsx.snap
+│   │   │   └── InCallView.test.tsx.snap
+│   │   ├── checkForParallelCalls.test.ts
+│   │   ├── checkForParallelCalls.ts
+│   │   ├── useActiveFocus.ts
+│   │   ├── useJoinRule.ts
+│   │   ├── useLoadGroupCall.ts
+│   │   ├── useRoomAvatar.ts
+│   │   ├── useRoomName.ts
+│   │   └── useRoomState.ts
+│   ├── rtcSessionHelpers.test.ts
+│   ├── rtcSessionHelpers.ts
+│   ├── settings
+│   │   ├── DeveloperSettingsTab.module.css
+│   │   ├── DeveloperSettingsTab.tsx
+│   │   ├── DeviceSelection.module.css
+│   │   ├── DeviceSelection.tsx
+│   │   ├── FeedbackSettingsTab.tsx
+│   │   ├── PreferencesSettingsTab.tsx
+│   │   ├── ProfileSettingsTab.module.css
+│   │   ├── ProfileSettingsTab.tsx
+│   │   ├── RageshakeButton.module.css
+│   │   ├── RageshakeButton.tsx
+│   │   ├── SettingsModal.module.css
+│   │   ├── SettingsModal.tsx
+│   │   ├── rageshake.ts
+│   │   ├── settings.ts
+│   │   ├── submit-rageshake.test.ts
+│   │   ├── submit-rageshake.ts
+│   │   └── useSubmitRageshake.test.tsx
+│   ├── sound
+│   │   ├── LICENCE.md
+│   │   ├── call_declined.mp3
+│   │   ├── call_declined.ogg
+│   │   ├── call_timeout.mp3
+│   │   ├── call_timeout.ogg
+│   │   ├── end_talk.mp3
+│   │   ├── end_talk.ogg
+│   │   ├── join_call.mp3
+│   │   ├── join_call.ogg
+│   │   ├── left_call.mp3
+│   │   ├── left_call.ogg
+│   │   ├── raise_hand.mp3
+│   │   ├── raise_hand.ogg
+│   │   ├── reactions
+│   │   │   ├── baduntss.mp3
+│   │   │   ├── baduntss.ogg
+│   │   │   ├── cat.mp3
+│   │   │   ├── cat.ogg
+│   │   │   ├── clap.mp3
+│   │   │   ├── clap.ogg
+│   │   │   ├── crickets.mp3
+│   │   │   ├── crickets.ogg
+│   │   │   ├── deer.mp3
+│   │   │   ├── deer.ogg
+│   │   │   ├── dog.mp3
+│   │   │   ├── dog.ogg
+│   │   │   ├── generic.mp3
+│   │   │   ├── generic.ogg
+│   │   │   ├── lightbulb.mp3
+│   │   │   ├── lightbulb.ogg
+│   │   │   ├── party.mp3
+│   │   │   ├── party.ogg
+│   │   │   ├── rock.mp3
+│   │   │   ├── rock.ogg
+│   │   │   ├── wave.mp3
+│   │   │   └── wave.ogg
+│   │   ├── ringtone.mp3
+│   │   ├── ringtone.ogg
+│   │   ├── screen_share_started.mp3
+│   │   ├── screen_share_started.ogg
+│   │   ├── start_talk_local.mp3
+│   │   ├── start_talk_local.ogg
+│   │   ├── start_talk_remote.mp3
+│   │   └── start_talk_remote.ogg
+│   ├── soundUtils.ts
+│   ├── state
+│   │   ├── AppViewModel.ts
+│   │   ├── Behavior.ts
+│   │   ├── CallViewModel.test.ts
+│   │   ├── CallViewModel.ts
+│   │   ├── GridLikeLayout.ts
+│   │   ├── MediaDevices.ts
+│   │   ├── MediaViewModel.test.ts
+│   │   ├── MediaViewModel.ts
+│   │   ├── MuteAllAudioModel.test.ts
+│   │   ├── MuteAllAudioModel.ts
+│   │   ├── ObservableScope.ts
+│   │   ├── OneOnOneLayout.ts
+│   │   ├── PipLayout.ts
+│   │   ├── SpotlightExpandedLayout.ts
+│   │   ├── TileStore.ts
+│   │   ├── TileViewModel.ts
+│   │   ├── ViewModel.ts
+│   │   ├── observeSpeaker.test.ts
+│   │   └── observeSpeaker.ts
+│   ├── tabs
+│   │   ├── Tabs.module.css
+│   │   └── Tabs.tsx
+│   ├── tile
+│   │   ├── GridTile.module.css
+│   │   ├── GridTile.test.tsx
+│   │   ├── GridTile.tsx
+│   │   ├── MediaView.module.css
+│   │   ├── MediaView.test.tsx
+│   │   ├── MediaView.tsx
+│   │   ├── SpotlightTile.module.css
+│   │   ├── SpotlightTile.test.tsx
+│   │   ├── SpotlightTile.tsx
+│   │   ├── TileAvatar.module.css
+│   │   ├── TileAvatar.test.tsx
+│   │   └── TileAvatar.tsx
+│   ├── useAudioContext.test.tsx
+│   ├── useAudioContext.tsx
+│   ├── useBehavior.ts
+│   ├── useCallViewKeyboardShortcuts.test.tsx
+│   ├── useCallViewKeyboardShortcuts.ts
+│   ├── useErrorBoundary.test.tsx
+│   ├── useErrorBoundary.ts
+│   ├── useEvents.test.tsx
+│   ├── useEvents.ts
+│   ├── useInitial.ts
+│   ├── useLatest.ts
+│   ├── useLocalStorage.test.tsx
+│   ├── useLocalStorage.ts
+│   ├── useMatrixRTCSessionJoinState.ts
+│   ├── useMatrixRTCSessionMemberships.ts
+│   ├── useMediaQuery.ts
+│   ├── useMergedRefs.ts
+│   ├── usePageTitle.ts
+│   ├── usePrefersReducedMotion.ts
+│   ├── useReactiveState.ts
+│   ├── useTheme.test.ts
+│   ├── useTheme.ts
+│   ├── useWakeLock.ts
+│   ├── utils
+│   │   ├── abortHandle.ts
+│   │   ├── array.ts
+│   │   ├── displayname-integration.test.ts
+│   │   ├── displayname.test.ts
+│   │   ├── displayname.ts
+│   │   ├── errors.ts
+│   │   ├── fetch.test.ts
+│   │   ├── fetch.ts
+│   │   ├── iter.test.ts
+│   │   ├── iter.ts
+│   │   ├── matrix.ts
+│   │   ├── media.ts
+│   │   ├── observable.test.ts
+│   │   ├── observable.ts
+│   │   ├── spa.ts
+│   │   ├── test-fixtures.ts
+│   │   ├── test-viewmodel.ts
+│   │   └── test.ts
+│   ├── vitest.setup.ts
+│   └── widget.ts
+├── tsconfig.json
+├── vite-embedded.config.ts
+├── vite.config.ts
+├── vitest.config.ts
+└── yarn.lock
+91 directories, 512 files
