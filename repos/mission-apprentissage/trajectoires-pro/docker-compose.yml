@@ -1,0 +1,64 @@
+services:
+  reverse_proxy:
+    image: trajectoires_pro_reverse_proxy
+    container_name: trajectoires_pro_reverse_proxy
+    build:
+      context: reverse_proxy
+    mem_limit: 256m
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - trajectoires_pro_network
+    depends_on:
+      - server
+    environment:
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      - DNS_SERVER=127.0.0.11
+      - PROXY=1
+      - PROXY_TIMEOUT=300
+      - TIMEOUT=300
+      - ACCESSLOG=/data/access.log
+      - ERRORLOG=/data/error.log
+      - LOGLEVEL=warn
+      - NGINX_ALWAYS_TLS_REDIRECT=false
+      - ALLOWED_METHODS=GET HEAD POST OPTIONS PUT DELETE
+
+  server:
+    image: trajectoires_pro_server
+    container_name: trajectoires_pro_server
+    build:
+      context: server
+    mem_limit: 1g
+    restart: unless-stopped
+    networks:
+      - trajectoires_pro_network
+    depends_on:
+      - mongodb
+    environment:
+      - TRAJECTOIRES_PRO_MONGODB_URI=mongodb://mongodb:27017/trajectoires-pro?retryWrites=true&w=majority
+      - TRAJECTOIRES_PRO_LOG_DESTINATIONS=stdout,mongodb
+
+  mongodb:
+    image: mongo:8.0.15-noble
+    container_name: trajectoires_pro_mongodb
+    mem_limit: 2g
+    restart: unless-stopped
+    networks:
+      - trajectoires_pro_network
+
+  metabase:
+    image: metabase/metabase:v0.48.6
+    container_name: trajectoires_pro_metabase
+    mem_limit: 2g
+    depends_on:
+      - mongodb
+    restart: always
+    networks:
+      - trajectoires_pro_network
+
+networks:
+  trajectoires_pro_network:
+    name: trajectoires_pro_network
