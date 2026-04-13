@@ -1,0 +1,90 @@
+.
+├── .env-sample
+├── .gitignore
+├── LICENSE
+├── README.md
+├── clean.sh
+├── clean_data.sh
+├── compose-tchap-additional-services.yml
+├── compose.yml
+├── data-template
+│   ├── element-call
+│   │   └── config.json
+│   ├── element-web
+│   │   └── config.json
+│   ├── livekit
+│   │   └── config.yaml
+│   ├── mas
+│   │   ├── config.yaml
+│   │   └── config.yaml.bk
+│   ├── nginx
+│   │   ├── conf.d
+│   │   │   ├── app.conf
+│   │   │   └── include
+│   │   │       └── ssl.conf
+│   │   └── www
+│   │       └── .well-known
+│   │           ├── element
+│   │           │   └── element.json
+│   │           └── matrix
+│   │               ├── client
+│   │               ├── server
+│   │               └── support
+│   ├── synapse
+│   │   ├── homeserver.yaml
+│   │   ├── log.config
+│   │   └── workers
+│   │       ├── synapse-federation-sender-1.yaml
+│   │       └── synapse-generic-worker-1.yaml
+│   └── tchap-web
+│       └── config.local.json
+├── init
+│   ├── Dockerfile
+│   ├── generate-mas-secrets.sh
+│   ├── generate-synapse-secrets.sh
+│   └── init.sh
+├── init-letsencrypt.sh
+├── scripts
+│   ├── create-multiple-postgresql-databases.sh
+│   └── livekit-jwt-entrypoint.sh
+├── setup.sh
+├── start_tchap.sh
+└── tchap
+    ├── README_TCHAP.md
+    ├── keycloak
+    │   ├── init-keycloak-db.sql
+    │   └── proconnect-mock-realm.json
+    ├── mas
+    │   └── config.local.dev.yaml
+    ├── nginx
+    │   ├── assemble-nginx-config.sh
+    │   ├── full-profiles
+    │   │   ├── base.conf.template
+    │   │   ├── element_call.conf.template
+    │   │   ├── keycloak.conf.template
+    │   │   ├── tchap.conf.template
+    │   │   └── workers.conf.template
+    │   ├── notused.app.local.dev.conf
+    │   ├── notused.app.local.dev.light.conf
+    │   └── notused.app.local.dev.without.mas.conf
+    ├── synapse
+    │   └── homeserver.local.dev.light.yaml
+    ├── tchap-web
+    │   └── config.local.json
+    ├── tools
+    │   └── get-synapse-admin-token.sh
+    └── wiremock
+        └── mappings
+            ├── account-register-mapping.json
+            ├── hash-details-mapping.json
+            ├── invited-mapping-internal.json
+            ├── invited-mapping.json
+            ├── lookup-mapping.json
+            ├── not-invited-mapping-internal.json
+            ├── not-invited-mapping.json
+            ├── user-mapping-internal.json
+            ├── user-mapping.json
+            ├── v2.json
+            ├── wrong-hs-mapping-internal.json
+            └── wrong-hs-mapping.json
+28 directories, 61 files
