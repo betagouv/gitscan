@@ -1,0 +1,474 @@
+.
+├── .browserslistrc
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.cjs
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── analysis.yml
+│       ├── analysis_tchap.yml
+│       ├── blocked.yml
+│       ├── npm_release.yml
+│       ├── npm_release_tchap.yml
+│       ├── storybook.yml
+│       └── storybook_tchap.yml
+├── .gitignore
+├── .node-version
+├── .npmignore
+├── .prettierignore
+├── .prettierrc.json
+├── .serverc.json
+├── .storybook
+│   ├── ElementTheme.ts
+│   ├── main.ts
+│   ├── manager-head.html
+│   ├── manager.ts
+│   ├── preview-head.html
+│   ├── preview.css
+│   └── preview.ts
+├── .stylelintignore
+├── .stylelintrc.json
+├── .yarnrc.yml
+├── LICENSE-AGPL-3.0
+├── LICENSE-COMMERCIAL
+├── README.md
+├── README_element.md
+├── package.json
+├── playwright
+│   ├── Dockerfile
+│   ├── components
+│   │   ├── ContextMenu
+│   │   │   ├── ContextMenu.test.ts
+│   │   │   └── ContextMenu.test.ts-snapshots
+│   │   │       ├── open-chromium-linux.png
+│   │   │       ├── open-contrast-linux.png
+│   │   │       ├── without-title-chromium-linux.png
+│   │   │       └── without-title-contrast-linux.png
+│   │   ├── Dropdown
+│   │   │   ├── Dropdown.test.ts
+│   │   │   └── Dropdown.test.ts-snapshots
+│   │   │       ├── arrow-down-chromium-linux.png
+│   │   │       ├── arrow-down-contrast-linux.png
+│   │   │       ├── open-default-chromium-linux.png
+│   │   │       ├── open-default-contrast-linux.png
+│   │   │       ├── open-option-1-chromium-linux.png
+│   │   │       ├── open-option-1-contrast-linux.png
+│   │   │       ├── open-option-2-chromium-linux.png
+│   │   │       └── open-option-2-contrast-linux.png
+│   │   └── Form
+│   │       └── Controls
+│   │           ├── EditInPlace.test.ts
+│   │           └── EditInPlace.test.ts-snapshots
+│   │               ├── focused-chromium-linux.png
+│   │               └── focused-contrast-linux.png
+│   ├── seccomp_profile.json
+│   ├── visual.test.ts
+│   └── visual.test.ts-snapshots
+│       ├── ActivityMarker-*.png  (12 files)
+│       ├── Alert-*.png  (10 files)
+│       ├── Avatar-*.png  (16 files)
+│       ├── Badge-Badge-1-chromium-linux.png
+│       ├── Badge-Badge-1-contrast-linux.png
+│       ├── Breadcrumb-Controlled-1-chromium-linux.png
+│       ├── Breadcrumb-Controlled-1-contrast-linux.png
+│       ├── Breadcrumb-Default-1-chromium-linux.png
+│       ├── Breadcrumb-Default-1-contrast-linux.png
+│       ├── Button-*.png  (82 files)
+│       ├── ChatFilter-Default-1-chromium-linux.png
+│       ├── ChatFilter-Default-1-contrast-linux.png
+│       ├── ChatFilter-Selected-1-chromium-linux.png
+│       ├── ChatFilter-Selected-1-contrast-linux.png
+│       ├── Dropdown-*.png  (8 files)
+│       ├── Form-*.png  (138 files)
+│       ├── Glass-Glass-1-chromium-linux.png
+│       ├── Glass-Glass-1-contrast-linux.png
+│       ├── Icon-*.png  (22 files)
+│       ├── InlineSpinner-Default-1-chromium-linux.png
+│       ├── InlineSpinner-Default-1-contrast-linux.png
+│       ├── Link-Round-1-chromium-linux.png
+│       ├── Link-Round-1-contrast-linux.png
+│       ├── Link-Small-1-chromium-linux.png
+│       ├── Link-Small-1-contrast-linux.png
+│       ├── Menu-*.png  (42 files)
+│       ├── Nav-*.png  (16 files)
+│       ├── Progress-*.png  (18 files)
+│       ├── Release-*.png  (10 files)
+│       ├── Search-Search-1-chromium-linux.png
+│       ├── Search-Search-1-contrast-linux.png
+│       ├── Separator-*.png  (6 files)
+│       ├── Toast-Default-1-chromium-linux.png
+│       ├── Toast-Default-1-contrast-linux.png
+│       ├── Tooltip-*.png  (20 files)
+│       ├── Typography-*.png  (6 files)
+│       └── VisualList-*.png  (10 files)
+├── playwright.config.ts
+├── renovate.json
+├── res
+│   ├── _headers
+│   └── images
+│       ├── __test__
+│       │   ├── kitten.jpg
+│       │   └── kitten2.jpg
+│       └── favicon.png
+├── scripts
+│   └── genComponent.js
+├── sonar-project.properties
+├── src
+│   ├── @types
+│   │   └── modules.d.ts
+│   ├── components
+│   │   ├── ActivityMarker
+│   │   │   ├── Pill.module.css
+│   │   │   ├── Pill.stories.tsx
+│   │   │   ├── Pill.test.tsx
+│   │   │   ├── Pill.tsx
+│   │   │   ├── Unread.module.css
+│   │   │   ├── Unread.stories.tsx
+│   │   │   ├── Unread.test.tsx
+│   │   │   ├── Unread.tsx
+│   │   │   ├── UnreadCounter.module.css
+│   │   │   ├── UnreadCounter.stories.tsx
+│   │   │   ├── UnreadCounter.test.tsx
+│   │   │   ├── UnreadCounter.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   ├── Pill.test.tsx.snap
+│   │   │   │   ├── Unread.test.tsx.snap
+│   │   │   │   └── UnreadCounter.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Alert
+│   │   │   ├── Alert.module.css
+│   │   │   ├── Alert.stories.tsx
+│   │   │   ├── Alert.test.tsx
+│   │   │   ├── Alert.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Alert.test.tsx.snap
+│   │   ├── Avatar
+│   │   │   ├── Avatar.module.css
+│   │   │   ├── Avatar.stories.tsx
+│   │   │   ├── Avatar.test.tsx
+│   │   │   ├── Avatar.tsx
+│   │   │   ├── AvatarStack.stories.tsx
+│   │   │   ├── AvatarStack.test.tsx
+│   │   │   ├── AvatarStack.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   ├── Avatar.test.tsx.snap
+│   │   │   │   └── AvatarStack.test.tsx.snap
+│   │   │   ├── avatar-clip.mask.svg
+│   │   │   └── useIdColorHash.ts
+│   │   ├── Badge
+│   │   │   ├── Badge.module.css
+│   │   │   ├── Badge.stories.tsx
+│   │   │   ├── Badge.test.tsx
+│   │   │   ├── Badge.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Badge.test.tsx.snap
+│   │   ├── Breadcrumb
+│   │   │   ├── Breadcrumb.module.css
+│   │   │   ├── Breadcrumb.stories.tsx
+│   │   │   ├── Breadcrumb.test.tsx
+│   │   │   ├── Breadcrumb.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   └── Breadcrumb.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Button
+│   │   │   ├── ActionButton.stories.tsx
+│   │   │   ├── Button.module.css
+│   │   │   ├── Button.stories.tsx
+│   │   │   ├── Button.test.tsx
+│   │   │   ├── Button.tsx
+│   │   │   ├── IconButton
+│   │   │   │   ├── IconButton.module.css
+│   │   │   │   ├── IconButton.stories.tsx
+│   │   │   │   ├── IconButton.test.tsx
+│   │   │   │   ├── IconButton.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       └── IconButton.test.tsx.snap
+│   │   │   ├── UnstyledButton.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   └── Button.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── ChatFilter
+│   │   │   ├── ChatFilter.module.css
+│   │   │   ├── ChatFilter.stories.tsx
+│   │   │   ├── ChatFilter.test.tsx
+│   │   │   ├── ChatFilter.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   └── ChatFilter.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Dropdown
+│   │   │   ├── Dropdown.module.css
+│   │   │   ├── Dropdown.stories.tsx
+│   │   │   ├── Dropdown.test.tsx
+│   │   │   ├── Dropdown.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   └── Dropdown.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Form
+│   │   │   ├── Controls
+│   │   │   │   ├── Action
+│   │   │   │   │   ├── Action.module.css
+│   │   │   │   │   ├── Action.stories.tsx
+│   │   │   │   │   ├── Action.test.tsx
+│   │   │   │   │   ├── Action.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Action.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Checkbox
+│   │   │   │   │   ├── Checkbox.module.css
+│   │   │   │   │   ├── Checkbox.stories.tsx
+│   │   │   │   │   ├── Checkbox.test.tsx
+│   │   │   │   │   ├── Checkbox.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Checkbox.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── EditInPlace
+│   │   │   │   │   ├── EditInPlace.module.css
+│   │   │   │   │   ├── EditInPlace.stories.tsx
+│   │   │   │   │   ├── EditInPlace.test.tsx
+│   │   │   │   │   ├── EditInPlace.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── EditInPlace.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── MFA
+│   │   │   │   │   ├── MFA.module.css
+│   │   │   │   │   ├── MFA.stories.tsx
+│   │   │   │   │   ├── MFA.test.tsx
+│   │   │   │   │   ├── MFA.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── MFA.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Password
+│   │   │   │   │   ├── Password.stories.tsx
+│   │   │   │   │   ├── Password.test.tsx
+│   │   │   │   │   ├── Password.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Password.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Radio
+│   │   │   │   │   ├── Radio.module.css
+│   │   │   │   │   ├── Radio.stories.tsx
+│   │   │   │   │   ├── Radio.test.tsx
+│   │   │   │   │   ├── Radio.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Radio.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── SettingsToggle
+│   │   │   │   │   ├── SettingsToggle.stories.tsx
+│   │   │   │   │   ├── SettingsToggle.test.tsx
+│   │   │   │   │   ├── SettingsToggle.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── SettingsToggle.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Text
+│   │   │   │   │   ├── Text.module.css
+│   │   │   │   │   ├── Text.stories.tsx
+│   │   │   │   │   ├── Text.test.tsx
+│   │   │   │   │   ├── Text.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Text.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Toggle
+│   │   │   │   │   ├── Toggle.module.css
+│   │   │   │   │   ├── Toggle.stories.tsx
+│   │   │   │   │   ├── Toggle.test.tsx
+│   │   │   │   │   ├── Toggle.tsx
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── Toggle.test.tsx.snap
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── Field.tsx
+│   │   │   ├── Form.stories.tsx
+│   │   │   ├── InlineField.tsx
+│   │   │   ├── Label.tsx
+│   │   │   ├── Message.tsx
+│   │   │   ├── PasswordForm.stories.tsx
+│   │   │   ├── Root.tsx
+│   │   │   ├── Submit.tsx
+│   │   │   ├── form.module.css
+│   │   │   └── index.ts
+│   │   ├── Glass
+│   │   │   ├── Glass.module.css
+│   │   │   ├── Glass.stories.tsx
+│   │   │   ├── Glass.test.tsx
+│   │   │   ├── Glass.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Glass.test.tsx.snap
+│   │   ├── Icon
+│   │   │   ├── BigIcon
+│   │   │   │   ├── BigIcon.module.css
+│   │   │   │   ├── BigIcon.stories.tsx
+│   │   │   │   ├── BigIcon.test.tsx
+│   │   │   │   ├── BigIcon.tsx
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── BigIcon.test.tsx.snap
+│   │   │   │   └── index.ts
+│   │   │   ├── Icon.stories.tsx
+│   │   │   └── IndicatorIcon
+│   │   │       ├── IndicatorIcon.module.css
+│   │   │       ├── IndicatorIcon.stories.tsx
+│   │   │       ├── IndicatorIcon.test.tsx
+│   │   │       ├── IndicatorIcon.tsx
+│   │   │       ├── __snapshots__
+│   │   │       │   └── IndicatorIcon.test.tsx.snap
+│   │   │       └── indicator-mask.svg
+│   │   ├── InlineSpinner
+│   │   │   ├── InlineSpinner.module.css
+│   │   │   ├── InlineSpinner.stories.tsx
+│   │   │   ├── InlineSpinner.test.tsx
+│   │   │   ├── InlineSpinner.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   └── InlineSpinner.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Link
+│   │   │   ├── Link.module.css
+│   │   │   ├── Link.stories.tsx
+│   │   │   ├── Link.test.tsx
+│   │   │   ├── Link.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Link.test.tsx.snap
+│   │   ├── Menu
+│   │   │   ├── CheckboxMenuItem.stories.tsx
+│   │   │   ├── CheckboxMenuItem.test.tsx
+│   │   │   ├── CheckboxMenuItem.tsx
+│   │   │   ├── ContextMenu.module.css
+│   │   │   ├── ContextMenu.stories.tsx
+│   │   │   ├── ContextMenu.test.tsx
+│   │   │   ├── ContextMenu.tsx
+│   │   │   ├── DrawerMenu.module.css
+│   │   │   ├── DrawerMenu.stories.tsx
+│   │   │   ├── DrawerMenu.test.tsx
+│   │   │   ├── DrawerMenu.tsx
+│   │   │   ├── FloatingMenu.module.css
+│   │   │   ├── FloatingMenu.stories.tsx
+│   │   │   ├── FloatingMenu.test.tsx
+│   │   │   ├── FloatingMenu.tsx
+│   │   │   ├── Menu.stories.tsx
+│   │   │   ├── Menu.test.tsx
+│   │   │   ├── Menu.tsx
+│   │   │   ├── MenuContext.tsx
+│   │   │   ├── MenuItem.module.css
+│   │   │   ├── MenuItem.stories.tsx
+│   │   │   ├── MenuItem.test.tsx
+│   │   │   ├── MenuItem.tsx
+│   │   │   ├── MenuTitle.module.css
+│   │   │   ├── MenuTitle.stories.tsx
+│   │   │   ├── MenuTitle.test.tsx
+│   │   │   ├── MenuTitle.tsx
+│   │   │   ├── RadioMenuItem.stories.tsx
+│   │   │   ├── RadioMenuItem.test.tsx
+│   │   │   ├── RadioMenuItem.tsx
+│   │   │   ├── ToggleMenuItem.stories.tsx
+│   │   │   ├── ToggleMenuItem.test.tsx
+│   │   │   ├── ToggleMenuItem.tsx
+│   │   │   └── __snapshots__
+│   │   │       ├── CheckboxMenuItem.test.tsx.snap
+│   │   │       ├── DrawerMenu.test.tsx.snap
+│   │   │       ├── FloatingMenu.test.tsx.snap
+│   │   │       ├── MenuItem.test.tsx.snap
+│   │   │       ├── MenuTitle.test.tsx.snap
+│   │   │       ├── RadioMenuItem.test.tsx.snap
+│   │   │       └── ToggleMenuItem.test.tsx.snap
+│   │   ├── Nav
+│   │   │   ├── Nav.module.css
+│   │   │   ├── NavBar.stories.tsx
+│   │   │   ├── NavBar.test.tsx
+│   │   │   ├── NavBar.tsx
+│   │   │   ├── NavItem.stories.tsx
+│   │   │   ├── NavItem.test.tsx
+│   │   │   ├── NavItem.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   ├── NavBar.test.tsx.snap
+│   │   │   │   └── NavItem.test.tsx.snap
+│   │   │   └── index.ts
+│   │   ├── Progress
+│   │   │   ├── Progress.module.css
+│   │   │   ├── Progress.stories.tsx
+│   │   │   ├── Progress.test.tsx
+│   │   │   ├── Progress.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Progress.test.tsx.snap
+│   │   ├── ReleaseAnnouncement
+│   │   │   ├── ReleaseAnnouncement.module.css
+│   │   │   ├── ReleaseAnnouncement.stories.tsx
+│   │   │   ├── ReleaseAnnouncement.test.tsx
+│   │   │   ├── ReleaseAnnouncement.tsx
+│   │   │   ├── ReleaseAnnouncementContext.ts
+│   │   │   ├── __snapshots__
+│   │   │   │   └── ReleaseAnnouncement.test.tsx.snap
+│   │   │   ├── index.ts
+│   │   │   └── useReleaseAnnouncement.tsx
+│   │   ├── Search
+│   │   │   ├── Search.module.css
+│   │   │   ├── Search.stories.tsx
+│   │   │   ├── Search.test.tsx
+│   │   │   ├── Search.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Search.test.tsx.snap
+│   │   ├── Separator
+│   │   │   ├── Separator.module.css
+│   │   │   ├── Separator.stories.tsx
+│   │   │   ├── Separator.test.tsx
+│   │   │   ├── Separator.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Separator.test.tsx.snap
+│   │   ├── Toast
+│   │   │   ├── Toast.module.css
+│   │   │   ├── Toast.stories.tsx
+│   │   │   ├── Toast.test.tsx
+│   │   │   ├── Toast.tsx
+│   │   │   └── __snapshots__
+│   │   │       └── Toast.test.tsx.snap
+│   │   ├── Tooltip
+│   │   │   ├── Tooltip.module.css
+│   │   │   ├── Tooltip.stories.tsx
+│   │   │   ├── Tooltip.test.tsx
+│   │   │   ├── Tooltip.tsx
+│   │   │   ├── TooltipContext.ts
+│   │   │   ├── TooltipProvider.tsx
+│   │   │   └── useTooltip.ts
+│   │   ├── Typography
+│   │   │   ├── Body.tsx
+│   │   │   ├── Heading.stories.tsx
+│   │   │   ├── Heading.test.tsx
+│   │   │   ├── Heading.tsx
+│   │   │   ├── Text.stories.tsx
+│   │   │   ├── Text.test.tsx
+│   │   │   ├── Text.tsx
+│   │   │   ├── Typography.module.css
+│   │   │   ├── Typography.tsx
+│   │   │   └── __snapshots__
+│   │   │       ├── Heading.test.tsx.snap
+│   │   │       └── Text.test.tsx.snap
+│   │   └── VisualList
+│   │       ├── VisualList.module.css
+│   │       ├── VisualList.stories.tsx
+│   │       ├── VisualList.test.tsx
+│   │       ├── VisualList.tsx
+│   │       ├── VisualListItem.module.css
+│   │       ├── VisualListItem.stories.tsx
+│   │       ├── VisualListItem.test.tsx
+│   │       ├── VisualListItem.tsx
+│   │       ├── __snapshots__
+│   │       │   ├── VisualList.test.tsx.snap
+│   │       │   └── VisualListItem.test.tsx.snap
+│   │       └── index.tsx
+│   ├── index.ts
+│   ├── setupTests.ts
+│   ├── styles
+│   │   └── global.css
+│   └── utils
+│       ├── __ComponentTemplate__
+│       │   ├── __ComponentTemplate__.module.css
+│       │   ├── __ComponentTemplate__.stories.tsx
+│       │   ├── __ComponentTemplate__.test.tsx
+│       │   ├── __ComponentTemplate__.tsx
+│       │   └── __snapshots__
+│       │       └── __ComponentTemplate__.test.tsx.snap
+│       ├── platform.ts
+│       └── string.ts
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── yarn.lock
+93 directories, 781 files
