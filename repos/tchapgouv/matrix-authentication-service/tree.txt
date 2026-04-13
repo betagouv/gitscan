@@ -1,0 +1,1486 @@
+.
+├── .cargo
+│   └── config.toml
+├── .codecov.yml
+├── .config
+│   └── nextest.toml
+├── .dockerignore
+├── .editorconfig
+├── .github
+│   ├── CODEOWNERS
+│   ├── actions
+│   │   ├── build-frontend
+│   │   │   └── action.yml
+│   │   └── build-policies
+│   │       └── action.yml
+│   ├── dependabot.yml
+│   ├── release.yml
+│   ├── scripts
+│   │   ├── .gitignore
+│   │   ├── cleanup-pr.cjs
+│   │   ├── commit-and-tag.cjs
+│   │   ├── create-release-branch.cjs
+│   │   ├── create-version-tag.cjs
+│   │   ├── merge-back.cjs
+│   │   ├── package.json
+│   │   ├── update-release-branch.cjs
+│   │   └── update-unstable-tag.cjs
+│   └── workflows
+│       ├── build.yaml
+│       ├── ci.yaml
+│       ├── coverage.yaml
+│       ├── docs.yaml
+│       ├── merge-back.yaml
+│       ├── release-branch.yaml
+│       ├── release-bump.yaml
+│       ├── tag.yaml
+│       ├── translations-download.yaml
+│       └── translations-upload.yaml
+├── .gitignore
+├── .rustfmt.toml
+├── CONTRIBUTING.md
+├── Cargo.lock
+├── Cargo.toml
+├── Dockerfile
+├── LICENSE
+├── LICENSE-COMMERCIAL
+├── README.md
+├── biome.json
+├── book.toml
+├── clippy.toml
+├── crates
+│   ├── axum-utils
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── client_authorization.rs
+│   │       ├── cookies.rs
+│   │       ├── csrf.rs
+│   │       ├── error_wrapper.rs
+│   │       ├── fancy_error.rs
+│   │       ├── jwt.rs
+│   │       ├── language_detection.rs
+│   │       ├── lib.rs
+│   │       ├── sentry.rs
+│   │       ├── session.rs
+│   │       └── user_authorization.rs
+│   ├── cli
+│   │   ├── Cargo.toml
+│   │   ├── build.rs
+│   │   └── src
+│   │       ├── app_state.rs
+│   │       ├── commands
+│   │       │   ├── config.rs
+│   │       │   ├── database.rs
+│   │       │   ├── debug.rs
+│   │       │   ├── doctor.rs
+│   │       │   ├── manage.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── server.rs
+│   │       │   ├── syn2mas.rs
+│   │       │   ├── templates.rs
+│   │       │   └── worker.rs
+│   │       ├── lifecycle.rs
+│   │       ├── main.rs
+│   │       ├── server.rs
+│   │       ├── sync.rs
+│   │       ├── telemetry
+│   │       │   └── tokio.rs
+│   │       ├── telemetry.rs
+│   │       └── util.rs
+│   ├── config
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── bin
+│   │       │   └── schema.rs
+│   │       ├── lib.rs
+│   │       ├── schema.rs
+│   │       ├── sections
+│   │       │   ├── account.rs
+│   │       │   ├── branding.rs
+│   │       │   ├── captcha.rs
+│   │       │   ├── clients.rs
+│   │       │   ├── database.rs
+│   │       │   ├── email.rs
+│   │       │   ├── experimental.rs
+│   │       │   ├── http.rs
+│   │       │   ├── matrix.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── passwords.rs
+│   │       │   ├── policy.rs
+│   │       │   ├── rate_limiting.rs
+│   │       │   ├── secrets.rs
+│   │       │   ├── tchap.rs
+│   │       │   ├── telemetry.rs
+│   │       │   ├── templates.rs
+│   │       │   └── upstream_oauth2.rs
+│   │       └── util.rs
+│   ├── context
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── fmt.rs
+│   │       ├── future.rs
+│   │       ├── layer.rs
+│   │       ├── lib.rs
+│   │       └── service.rs
+│   ├── data-model
+│   │   ├── Cargo.toml
+│   │   ├── examples
+│   │   │   └── ua-parser.rs
+│   │   └── src
+│   │       ├── clock.rs
+│   │       ├── compat
+│   │       │   ├── device.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── session.rs
+│   │       │   └── sso_login.rs
+│   │       ├── lib.rs
+│   │       ├── oauth2
+│   │       │   ├── authorization_grant.rs
+│   │       │   ├── client.rs
+│   │       │   ├── device_code_grant.rs
+│   │       │   ├── mod.rs
+│   │       │   └── session.rs
+│   │       ├── personal
+│   │       │   ├── mod.rs
+│   │       │   └── session.rs
+│   │       ├── policy_data.rs
+│   │       ├── site_config.rs
+│   │       ├── tchap_config.rs
+│   │       ├── tokens.rs
+│   │       ├── upstream_oauth2
+│   │       │   ├── link.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── provider.rs
+│   │       │   └── session.rs
+│   │       ├── user_agent.rs
+│   │       ├── users.rs
+│   │       ├── utils.rs
+│   │       └── version.rs
+│   ├── email
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── lib.rs
+│   │       ├── mailer.rs
+│   │       └── transport.rs
+│   ├── handlers
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── activity_tracker
+│   │       │   ├── bound.rs
+│   │       │   ├── mod.rs
+│   │       │   └── worker.rs
+│   │       ├── admin
+│   │       │   ├── call_context.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── model.rs
+│   │       │   ├── params.rs
+│   │       │   ├── response.rs
+│   │       │   ├── schema.rs
+│   │       │   └── v1
+│   │       │       ├── compat_sessions
+│   │       │       │   ├── finish.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── mod.rs
+│   │       │       ├── oauth2_sessions
+│   │       │       │   ├── finish.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── personal_sessions
+│   │       │       │   ├── add.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   ├── mod.rs
+│   │       │       │   ├── regenerate.rs
+│   │       │       │   └── revoke.rs
+│   │       │       ├── policy_data
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── get_latest.rs
+│   │       │       │   ├── mod.rs
+│   │       │       │   └── set.rs
+│   │       │       ├── site_config.rs
+│   │       │       ├── upstream_oauth_links
+│   │       │       │   ├── add.rs
+│   │       │       │   ├── delete.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── upstream_oauth_providers
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── user_emails
+│   │       │       │   ├── add.rs
+│   │       │       │   ├── delete.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── user_registration_tokens
+│   │       │       │   ├── add.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   ├── mod.rs
+│   │       │       │   ├── revoke.rs
+│   │       │       │   ├── unrevoke.rs
+│   │       │       │   └── update.rs
+│   │       │       ├── user_sessions
+│   │       │       │   ├── finish.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── users
+│   │       │       │   ├── add.rs
+│   │       │       │   ├── by_username.rs
+│   │       │       │   ├── deactivate.rs
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── kill_sessions.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   ├── lock.rs
+│   │       │       │   ├── mod.rs
+│   │       │       │   ├── reactivate.rs
+│   │       │       │   ├── set_admin.rs
+│   │       │       │   ├── set_password.rs
+│   │       │       │   └── unlock.rs
+│   │       │       └── version.rs
+│   │       ├── bin
+│   │       │   ├── api-schema.rs
+│   │       │   └── graphql-schema.rs
+│   │       ├── captcha.rs
+│   │       ├── compat
+│   │       │   ├── login.rs
+│   │       │   ├── login_sso_complete.rs
+│   │       │   ├── login_sso_redirect.rs
+│   │       │   ├── logout.rs
+│   │       │   ├── logout_all.rs
+│   │       │   ├── mod.rs
+│   │       │   └── refresh.rs
+│   │       ├── graphql
+│   │       │   ├── mod.rs
+│   │       │   ├── model
+│   │       │   │   ├── browser_sessions.rs
+│   │       │   │   ├── compat_sessions.rs
+│   │       │   │   ├── cursor.rs
+│   │       │   │   ├── matrix.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── node.rs
+│   │       │   │   ├── oauth.rs
+│   │       │   │   ├── site_config.rs
+│   │       │   │   ├── upstream_oauth.rs
+│   │       │   │   ├── users.rs
+│   │       │   │   └── viewer
+│   │       │   │       ├── anonymous.rs
+│   │       │   │       └── mod.rs
+│   │       │   ├── mutations
+│   │       │   │   ├── browser_session.rs
+│   │       │   │   ├── compat_session.rs
+│   │       │   │   ├── matrix.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── oauth2_session.rs
+│   │       │   │   ├── user.rs
+│   │       │   │   └── user_email.rs
+│   │       │   ├── query
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── session.rs
+│   │       │   │   ├── upstream_oauth.rs
+│   │       │   │   ├── user.rs
+│   │       │   │   └── viewer.rs
+│   │       │   ├── state.rs
+│   │       │   └── tests.rs
+│   │       ├── health.rs
+│   │       ├── lib.rs
+│   │       ├── oauth2
+│   │       │   ├── authorization
+│   │       │   │   ├── callback.rs
+│   │       │   │   ├── consent.rs
+│   │       │   │   └── mod.rs
+│   │       │   ├── device
+│   │       │   │   ├── authorize.rs
+│   │       │   │   ├── consent.rs
+│   │       │   │   ├── link.rs
+│   │       │   │   └── mod.rs
+│   │       │   ├── discovery.rs
+│   │       │   ├── end_session.rs
+│   │       │   ├── introspection.rs
+│   │       │   ├── keys.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── registration.rs
+│   │       │   ├── revoke.rs
+│   │       │   ├── token.rs
+│   │       │   ├── userinfo.rs
+│   │       │   └── webfinger.rs
+│   │       ├── passwords.rs
+│   │       ├── preferred_language.rs
+│   │       ├── rate_limit.rs
+│   │       ├── session.rs
+│   │       ├── snapshots
+│   │       │   ├── mas_handlers__passwords__tests__hash_verify_and_upgrade-2.snap
+│   │       │   ├── mas_handlers__passwords__tests__hash_verify_and_upgrade-3.snap
+│   │       │   ├── mas_handlers__passwords__tests__hash_verify_and_upgrade.snap
+│   │       │   ├── mas_handlers__passwords__tests__hashing_argon2id-2.snap
+│   │       │   ├── mas_handlers__passwords__tests__hashing_argon2id.snap
+│   │       │   ├── mas_handlers__passwords__tests__hashing_bcrypt-2.snap
+│   │       │   ├── mas_handlers__passwords__tests__hashing_bcrypt.snap
+│   │       │   ├── mas_handlers__passwords__tests__hashing_pbkdf2-2.snap
+│   │       │   └── mas_handlers__passwords__tests__hashing_pbkdf2.snap
+│   │       ├── test_utils.rs
+│   │       ├── upstream_oauth2
+│   │       │   ├── authorize.rs
+│   │       │   ├── backchannel_logout.rs
+│   │       │   ├── cache.rs
+│   │       │   ├── callback.rs
+│   │       │   ├── cookie.rs
+│   │       │   ├── link.rs
+│   │       │   ├── mod.rs
+│   │       │   └── template.rs
+│   │       └── views
+│   │           ├── app.rs
+│   │           ├── index.rs
+│   │           ├── login.rs
+│   │           ├── logout.rs
+│   │           ├── mod.rs
+│   │           ├── recovery
+│   │           │   ├── mod.rs
+│   │           │   ├── progress.rs
+│   │           │   └── start.rs
+│   │           ├── register
+│   │           │   ├── cookie.rs
+│   │           │   ├── mod.rs
+│   │           │   ├── password.rs
+│   │           │   └── steps
+│   │           │       ├── display_name.rs
+│   │           │       ├── finish.rs
+│   │           │       ├── mod.rs
+│   │           │       ├── registration_token.rs
+│   │           │       └── verify_email.rs
+│   │           └── shared.rs
+│   ├── http
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── ext.rs
+│   │       ├── lib.rs
+│   │       └── reqwest.rs
+│   ├── i18n
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   ├── sprintf
+│   │   │   │   ├── argument.rs
+│   │   │   │   ├── formatter.rs
+│   │   │   │   ├── grammar.pest
+│   │   │   │   ├── message.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── parser.rs
+│   │   │   ├── translations.rs
+│   │   │   └── translator.rs
+│   │   └── test_data
+│   │       ├── en-US.json
+│   │       ├── en.json
+│   │       └── fr.json
+│   ├── i18n-scan
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── key.rs
+│   │       ├── main.rs
+│   │       └── minijinja.rs
+│   ├── iana
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── jose.rs
+│   │       ├── lib.rs
+│   │       └── oauth.rs
+│   ├── iana-codegen
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── generation.rs
+│   │       ├── jose.rs
+│   │       ├── main.rs
+│   │       ├── oauth.rs
+│   │       └── traits.rs
+│   ├── jose
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── base64.rs
+│   │   │   ├── claims.rs
+│   │   │   ├── constraints.rs
+│   │   │   ├── jwa
+│   │   │   │   ├── asymmetric.rs
+│   │   │   │   ├── hmac.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── signature.rs
+│   │   │   │   └── symmetric.rs
+│   │   │   ├── jwk
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── private_parameters.rs
+│   │   │   │   └── public_parameters.rs
+│   │   │   ├── jwt
+│   │   │   │   ├── header.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── raw.rs
+│   │   │   │   └── signed.rs
+│   │   │   └── lib.rs
+│   │   └── tests
+│   │       ├── generate.py
+│   │       ├── jws.rs
+│   │       ├── jwts
+│   │       │   ├── eddsa-ed25519.jwt
+│   │       │   ├── eddsa-ed448.jwt
+│   │       │   ├── es256.jwt
+│   │       │   ├── es256k.jwt
+│   │       │   ├── es384.jwt
+│   │       │   ├── es512.jwt
+│   │       │   ├── hs256.jwt
+│   │       │   ├── hs384.jwt
+│   │       │   ├── hs512.jwt
+│   │       │   ├── ps256.jwt
+│   │       │   ├── ps384.jwt
+│   │       │   ├── ps512.jwt
+│   │       │   ├── rs256.jwt
+│   │       │   ├── rs384.jwt
+│   │       │   └── rs512.jwt
+│   │       ├── keys
+│   │       │   ├── ed25519.priv.pem
+│   │       │   ├── ed25519.pub.pem
+│   │       │   ├── ed448.priv.pem
+│   │       │   ├── ed448.pub.pem
+│   │       │   ├── jwks.priv.json
+│   │       │   ├── jwks.pub.json
+│   │       │   ├── k256.priv.pem
+│   │       │   ├── k256.pub.pem
+│   │       │   ├── oct.bin
+│   │       │   ├── p256.priv.pem
+│   │       │   ├── p256.pub.pem
+│   │       │   ├── p384.priv.pem
+│   │       │   ├── p384.pub.pem
+│   │       │   ├── p521.priv.pem
+│   │       │   ├── p521.pub.pem
+│   │       │   ├── rsa.priv.pem
+│   │       │   └── rsa.pub.pem
+│   │       └── snapshots
+│   │           ├── jws__es256__sign_jwt.snap
+│   │           ├── jws__es256k__sign_jwt.snap
+│   │           ├── jws__es384__sign_jwt.snap
+│   │           ├── jws__ps256__sign_jwt.snap
+│   │           ├── jws__ps384__sign_jwt.snap
+│   │           ├── jws__ps512__sign_jwt.snap
+│   │           ├── jws__rs256__sign_jwt.snap
+│   │           ├── jws__rs384__sign_jwt.snap
+│   │           └── jws__rs512__sign_jwt.snap
+│   ├── keystore
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── encrypter.rs
+│   │   │   └── lib.rs
+│   │   └── tests
+│   │       ├── generate.sh
+│   │       ├── keys
+│   │       │   ├── ec-k256.pkcs8.der
+│   │       │   ├── ec-k256.pkcs8.encrypted.der
+│   │       │   ├── ec-k256.pkcs8.encrypted.pem
+│   │       │   ├── ec-k256.pkcs8.pem
+│   │       │   ├── ec-k256.sec1.der
+│   │       │   ├── ec-k256.sec1.pem
+│   │       │   ├── ec-p256.pkcs8.der
+│   │       │   ├── ec-p256.pkcs8.encrypted.der
+│   │       │   ├── ec-p256.pkcs8.encrypted.pem
+│   │       │   ├── ec-p256.pkcs8.pem
+│   │       │   ├── ec-p256.sec1.der
+│   │       │   ├── ec-p256.sec1.pem
+│   │       │   ├── ec-p384.pkcs8.der
+│   │       │   ├── ec-p384.pkcs8.encrypted.der
+│   │       │   ├── ec-p384.pkcs8.encrypted.pem
+│   │       │   ├── ec-p384.pkcs8.pem
+│   │       │   ├── ec-p384.sec1.der
+│   │       │   ├── ec-p384.sec1.pem
+│   │       │   ├── ec256.pkcs8.encrypted.pem
+│   │       │   ├── rsa.pkcs1.der
+│   │       │   ├── rsa.pkcs1.pem
+│   │       │   ├── rsa.pkcs8.der
+│   │       │   ├── rsa.pkcs8.encrypted.der
+│   │       │   ├── rsa.pkcs8.encrypted.pem
+│   │       │   └── rsa.pkcs8.pem
+│   │       ├── keystore.rs
+│   │       └── snapshots
+│   │           ├── keystore__generate_sign_and_verify-2.snap
+│   │           ├── keystore__generate_sign_and_verify-3.snap
+│   │           ├── keystore__generate_sign_and_verify-4.snap
+│   │           ├── keystore__generate_sign_and_verify-5.snap
+│   │           ├── keystore__generate_sign_and_verify.snap
+│   │           ├── keystore__jwt_ES256.snap
+│   │           ├── keystore__jwt_ES256K.snap
+│   │           ├── keystore__jwt_ES384.snap
+│   │           ├── keystore__jwt_PS256.snap
+│   │           ├── keystore__jwt_PS384.snap
+│   │           ├── keystore__jwt_PS512.snap
+│   │           ├── keystore__jwt_RS256.snap
+│   │           ├── keystore__jwt_RS384.snap
+│   │           └── keystore__jwt_RS512.snap
+│   ├── listener
+│   │   ├── Cargo.toml
+│   │   ├── examples
+│   │   │   └── demo
+│   │   │       ├── certs
+│   │   │       │   ├── ca-key.pem
+│   │   │       │   ├── ca.csr
+│   │   │       │   ├── ca.json
+│   │   │       │   ├── ca.pem
+│   │   │       │   ├── client-key.pem
+│   │   │       │   ├── client.csr
+│   │   │       │   ├── client.json
+│   │   │       │   ├── client.pem
+│   │   │       │   ├── config.json
+│   │   │       │   ├── gen.sh
+│   │   │       │   ├── server-key.pem
+│   │   │       │   ├── server.csr
+│   │   │       │   ├── server.json
+│   │   │       │   └── server.pem
+│   │   │       └── main.rs
+│   │   └── src
+│   │       ├── lib.rs
+│   │       ├── maybe_tls.rs
+│   │       ├── proxy_protocol
+│   │       │   ├── acceptor.rs
+│   │       │   ├── maybe.rs
+│   │       │   ├── mod.rs
+│   │       │   └── v1.rs
+│   │       ├── rewind.rs
+│   │       ├── server.rs
+│   │       └── unix_or_tcp.rs
+│   ├── matrix
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── lib.rs
+│   │       ├── mock.rs
+│   │       └── readonly.rs
+│   ├── matrix-synapse
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── error.rs
+│   │       ├── legacy.rs
+│   │       ├── lib.rs
+│   │       └── modern.rs
+│   ├── oauth2-types
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── errors.rs
+│   │       ├── lib.rs
+│   │       ├── oidc.rs
+│   │       ├── pkce.rs
+│   │       ├── registration
+│   │       │   ├── client_metadata_serde.rs
+│   │       │   └── mod.rs
+│   │       ├── requests.rs
+│   │       ├── response_type.rs
+│   │       ├── scope.rs
+│   │       ├── test_utils.rs
+│   │       └── webfinger.rs
+│   ├── oidc-client
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── requests
+│   │   │   │   ├── authorization_code.rs
+│   │   │   │   ├── client_credentials.rs
+│   │   │   │   ├── discovery.rs
+│   │   │   │   ├── jose.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── refresh_token.rs
+│   │   │   │   ├── token.rs
+│   │   │   │   └── userinfo.rs
+│   │   │   └── types
+│   │   │       ├── client_credentials.rs
+│   │   │       └── mod.rs
+│   │   └── tests
+│   │       └── it
+│   │           ├── main.rs
+│   │           ├── requests
+│   │           │   ├── authorization_code.rs
+│   │           │   ├── client_credentials.rs
+│   │           │   ├── discovery.rs
+│   │           │   ├── jose.rs
+│   │           │   ├── mod.rs
+│   │           │   ├── refresh_token.rs
+│   │           │   └── userinfo.rs
+│   │           └── types
+│   │               ├── client_credentials.rs
+│   │               └── mod.rs
+│   ├── policy
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── bin
+│   │       │   └── schema.rs
+│   │       ├── lib.rs
+│   │       └── model.rs
+│   ├── router
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── endpoints.rs
+│   │       ├── lib.rs
+│   │       ├── traits.rs
+│   │       └── url_builder.rs
+│   ├── spa
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── lib.rs
+│   │       └── vite.rs
+│   ├── storage
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── app_session.rs
+│   │       ├── compat
+│   │       │   ├── access_token.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── refresh_token.rs
+│   │       │   ├── session.rs
+│   │       │   └── sso_login.rs
+│   │       ├── lib.rs
+│   │       ├── oauth2
+│   │       │   ├── access_token.rs
+│   │       │   ├── authorization_grant.rs
+│   │       │   ├── client.rs
+│   │       │   ├── device_code_grant.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── refresh_token.rs
+│   │       │   └── session.rs
+│   │       ├── pagination.rs
+│   │       ├── personal
+│   │       │   ├── access_token.rs
+│   │       │   ├── mod.rs
+│   │       │   └── session.rs
+│   │       ├── policy_data.rs
+│   │       ├── queue
+│   │       │   ├── job.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── schedule.rs
+│   │       │   ├── tasks.rs
+│   │       │   └── worker.rs
+│   │       ├── repository.rs
+│   │       ├── upstream_oauth2
+│   │       │   ├── link.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── provider.rs
+│   │       │   └── session.rs
+│   │       ├── user
+│   │       │   ├── email.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── password.rs
+│   │       │   ├── recovery.rs
+│   │       │   ├── registration.rs
+│   │       │   ├── registration_token.rs
+│   │       │   ├── session.rs
+│   │       │   └── terms.rs
+│   │       └── utils.rs
+│   ├── storage-pg
+│   │   ├── .sqlx
+│   │   │   └── query-*.json  (171 files)
+│   │   ├── Cargo.toml
+│   │   ├── build.rs
+│   │   ├── migrations
+│   │   │   ├── 20220530084123_jobs_workers.sql
+│   │   │   ├── 20221018142001_init.sql
+│   │   │   ├── 20221121151402_upstream_oauth.sql
+│   │   │   ├── 20221213145242_password_schemes.sql
+│   │   │   ├── 20230408234928_add_get_jobs_fn_.sql
+│   │   │   ├── 20230616093555_compat_admin_flag.sql
+│   │   │   ├── 20230621140528_upstream_oauth_claims_imports.sql
+│   │   │   ├── 20230626130338_oauth_clients_static.sql
+│   │   │   ├── 20230728154304_user_lock.sql
+│   │   │   ├── 20230823125247_drop_apalis_push_job.sql
+│   │   │   ├── 20230828085439_oauth2_clients_more_fields.sql
+│   │   │   ├── 20230828143553_user_session_authentication_source.sql
+│   │   │   ├── 20230829092920_oauth2_sessions_user_id_scope_list.sql
+│   │   │   ├── 20230829141928_user_session_user_agent.sql
+│   │   │   ├── 20230904135550_oauth2_client_credentials_grant.sql
+│   │   │   ├── 20230911091636_oauth2_token_expiration.sql
+│   │   │   ├── 20230919155444_record_session_last_activity.sql
+│   │   │   ├── 20231009142904_user_can_request_admin.sql
+│   │   │   ├── 20231116104353_upstream_oauth_overrides.sql
+│   │   │   ├── 20231120110559_upstream_oauth_branding.sql
+│   │   │   ├── 20231207090532_oauth_device_code_grant.sql
+│   │   │   ├── 20231208155602_oauth_clients_device_code_grant.sql
+│   │   │   ├── 20240207100003_user_terms.sql
+│   │   │   ├── 20240220141353_nonunique_compat_device_id.sql
+│   │   │   ├── 20240220150201_compat_sessions_user_sessions_link.sql
+│   │   │   ├── 20240221164945_sessions_user_agent.sql
+│   │   │   ├── 20240301091201_upstream_oauth_additional_parameters.sql
+│   │   │   ├── 20240402084854_upstream_oauth_disabled_at.sql
+│   │   │   ├── 20240621080509_user_recovery.sql
+│   │   │   ├── 20240718075125_sessions_active_index.sql
+│   │   │   ├── 20241004075132_queue_worker.sql
+│   │   │   ├── 20241004121132_queue_job.sql
+│   │   │   ├── 20241007160050_oidc_login_hint.sql
+│   │   │   ├── 20241115163340_upstream_oauth2_response_mode.sql
+│   │   │   ├── 20241118115314_upstream_oauth2_extra_query_params.sql
+│   │   │   ├── 20241120163320_queue_job_failures.sql
+│   │   │   ├── 20241122130349_queue_job_scheduled.sql
+│   │   │   ├── 20241122133435_queue_job_scheduled_index.sql
+│   │   │   ├── 20241124145741_upstream_oauth_userinfo.sql
+│   │   │   ├── 20241125110803_queue_job_recurrent.sql
+│   │   │   ├── 20241129091057_upstream_oauth2_link_account_name.sql
+│   │   │   ├── 20241202123523_upstream_oauth_responses_alg.sql
+│   │   │   ├── 20241210115428_oauth_refresh_token_track_next.sql
+│   │   │   ├── 20241210133651_oauth2_access_token_first_used.sql
+│   │   │   ├── 20241212154426_oauth2_response_mode_null.sql
+│   │   │   ├── 20241213180524_upstream_oauth_optional_issuer.sql
+│   │   │   ├── 20250109105709_user_email_authentication_codes.sql
+│   │   │   ├── 20250113102144_user_registrations.sql
+│   │   │   ├── 20250114135939_allow_deviceless_compat_sessions.sql
+│   │   │   ├── 20250115155255_cleanup_unverified_emails.sql
+│   │   │   ├── 20250124151529_unsupported_threepids_table.sql
+│   │   │   ├── 20250129154003_compat_sessions_device_name.sql
+│   │   │   ├── 20250130170011_user_is_guest.sql
+│   │   │   ├── 20250225091000_dynamic_policy_data.sql
+│   │   │   ├── 20250311093145_user_deactivated_at.sql
+│   │   │   ├── 20250312094013_upstream_oauth2_providers_order.sql
+│   │   │   ├── 20250317151803_upstream_oauth_session_unlinked_at.sql
+│   │   │   ├── 20250325102310_oauth2_clients_hash.sql
+│   │   │   ├── 20250404105103_compat_sso_login_browser_session.sql
+│   │   │   ├── 20250410000000_idx_compat_access_tokens_session_fk.sql
+│   │   │   ├── 20250410000001_idx_compat_refresh_tokens_session_fk.sql
+│   │   │   ├── 20250410000002_idx_compat_refresh_tokens_access_token_fk.sql
+│   │   │   ├── 20250410000003_idx_compat_sessions_user_fk.sql
+│   │   │   ├── 20250410000004_idx_compat_sessions_user_session_fk.sql
+│   │   │   ├── 20250410000005_drop_compat_sessions_user_id_last_active_at.sql
+│   │   │   ├── 20250410000006_idx_compat_sso_logins_session_fk.sql
+│   │   │   ├── 20250410000007_idx_oauth2_access_tokens_session_fk.sql
+│   │   │   ├── 20250410000008_idx_oauth2_authorization_grants_session_fk.sql
+│   │   │   ├── 20250410000009_idx_oauth2_authorization_grants_client_fk.sql
+│   │   │   ├── 20250410000010_idx_oauth2_consents_client_fk.sql
+│   │   │   ├── 20250410000011_idx_oauth2_consents_user_fk.sql
+│   │   │   ├── 20250410000012_idx_oauth2_device_code_grants_client_fk.sql
+│   │   │   ├── 20250410000013_idx_oauth2_device_code_grants_session_fk.sql
+│   │   │   ├── 20250410000014_idx_oauth2_device_code_grants_user_session_fk.sql
+│   │   │   ├── 20250410000015_idx_oauth2_refresh_tokens_session_fk.sql
+│   │   │   ├── 20250410000016_idx_oauth2_refresh_tokens_access_token_fk.sql
+│   │   │   ├── 20250410000017_idx_oauth2_refresh_tokens_next_refresh_token_fk.sql
+│   │   │   ├── 20250410000018_idx_oauth2_sessions_user_session_fk.sql
+│   │   │   ├── 20250410000019_idx_oauth2_sessions_client_fk.sql
+│   │   │   ├── 20250410000020_idx_oauth2_sessions_user_fk.sql
+│   │   │   ├── 20250410000021_drop_oauth2_sessions_user_id_last_active_at.sql
+│   │   │   ├── 20250410000022_idx_queue_jobs_started_by_fk.sql
+│   │   │   ├── 20250410000023_idx_queue_jobs_next_attempt_fk.sql
+│   │   │   ├── 20250410000024_idx_queue_jobs_schedule_name_fk.sql
+│   │   │   ├── 20250410000025_idx_upstream_oauth_authorization_sessions_provider_fk.sql
+│   │   │   ├── 20250410000026_idx_upstream_oauth_authorization_sessions_link_fk.sql
+│   │   │   ├── 20250410000027_idx_upstream_oauth_links_provider_fk.sql
+│   │   │   ├── 20250410000028_idx_upstream_oauth_links_user_fk.sql
+│   │   │   ├── 20250410000029_idx_user_email_authentication_codes_authentication_fk.sql
+│   │   │   ├── 20250410000030_idx_user_email_authentications_user_session_fk.sql
+│   │   │   ├── 20250410000031_idx_user_email_authentications_user_registration_fk.sql
+│   │   │   ├── 20250410000032_idx_user_emails_user_fk.sql
+│   │   │   ├── 20250410000033_idx_user_emails_email_idx.sql
+│   │   │   ├── 20250410000034_idx_user_passwords_user_fk.sql
+│   │   │   ├── 20250410000035_idx_user_recovery_tickets_session_fk.sql
+│   │   │   ├── 20250410000036_idx_user_recovery_tickets_user_email_fk.sql
+│   │   │   ├── 20250410000037_idx_user_registrations_email_authentication_fk.sql
+│   │   │   ├── 20250410000038_idx_user_session_authentications_user_session_fk.sql
+│   │   │   ├── 20250410000039_idx_user_session_authentications_user_password_fk.sql
+│   │   │   ├── 20250410000040_idx_user_session_authentications_upstream_oauth_session_fk.sql
+│   │   │   ├── 20250410000041_idx_user_sessions_user_fk.sql
+│   │   │   ├── 20250410000042_drop_user_sessions_user_id_last_active_at.sql
+│   │   │   ├── 20250410000043_idx_user_terms_user_fk.sql
+│   │   │   ├── 20250410000044_idx_users_primary_email_fk.sql
+│   │   │   ├── 20250410000045_idx_user_recovery_tickets_ticket_idx.sql
+│   │   │   ├── 20250410121612_users_lower_username_idx.sql
+│   │   │   ├── 20250410174306_oauth2_authorization_default_requires_consent.sql
+│   │   │   ├── 20250424150930_oauth2_grants_locale.sql
+│   │   │   ├── 20250425113717_oauth2_session_human_name.sql
+│   │   │   ├── 20250506161158_upstream_oauth2_forward_login_hint.sql
+│   │   │   ├── 20250507131948_upstream_oauth_session_optional_nonce.sql
+│   │   │   ├── 20250602212100_user_registration_tokens.sql
+│   │   │   ├── 20250602212101_idx_user_registration_token.sql
+│   │   │   ├── 20250602212102_upstream_oauth2_id_token_claims.sql
+│   │   │   ├── 20250602212103_upstream_oauth2_id_token_claims_sub_sid_index.sql
+│   │   │   ├── 20250602212104_upstream_oauth2_id_token_claims_sid_sub_index.sql
+│   │   │   ├── 20250630120643_upstream_oauth_on_backchannel_logout.sql
+│   │   │   ├── 20250708155857_idx_user_emails_lower_email.sql
+│   │   │   ├── 20250709142230_id_token_claims_trigger.sql
+│   │   │   ├── 20250709142240_backfill_id_token_claims.sql
+│   │   │   ├── 20250915092000_pgtrgm_extension.sql
+│   │   │   ├── 20250915092635_users_username_trgm_idx.sql
+│   │   │   ├── 20250924132713_personal_access_tokens.sql
+│   │   │   ├── 20251023134634_personal_access_tokens_unique_fix.sql
+│   │   │   ├── 20251121145458_user_registration_upstream_oauth_session.sql
+│   │   │   └── 20251127145951_user_registration_upstream_oauth_session_idx.sql
+│   │   └── src
+│   │       ├── app_session.rs
+│   │       ├── compat
+│   │       │   ├── access_token.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── refresh_token.rs
+│   │       │   ├── session.rs
+│   │       │   └── sso_login.rs
+│   │       ├── errors.rs
+│   │       ├── filter.rs
+│   │       ├── iden.rs
+│   │       ├── lib.rs
+│   │       ├── oauth2
+│   │       │   ├── access_token.rs
+│   │       │   ├── authorization_grant.rs
+│   │       │   ├── client.rs
+│   │       │   ├── device_code_grant.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── refresh_token.rs
+│   │       │   └── session.rs
+│   │       ├── pagination.rs
+│   │       ├── personal
+│   │       │   ├── access_token.rs
+│   │       │   ├── mod.rs
+│   │       │   └── session.rs
+│   │       ├── policy_data.rs
+│   │       ├── queue
+│   │       │   ├── job.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── schedule.rs
+│   │       │   └── worker.rs
+│   │       ├── repository.rs
+│   │       ├── telemetry.rs
+│   │       ├── tracing.rs
+│   │       ├── upstream_oauth2
+│   │       │   ├── link.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── provider.rs
+│   │       │   └── session.rs
+│   │       └── user
+│   │           ├── email.rs
+│   │           ├── mod.rs
+│   │           ├── password.rs
+│   │           ├── recovery.rs
+│   │           ├── registration.rs
+│   │           ├── registration_token.rs
+│   │           ├── session.rs
+│   │           ├── terms.rs
+│   │           └── tests.rs
+│   ├── syn2mas
+│   │   ├── .sqlx
+│   │   │   ├── query-026adeffc646b41ebc096bb874d110039b9a4a0425fd566e401f56ea215de0dd.json
+│   │   │   ├── query-07ec66733b67a9990cc9d483b564c8d05c577cf8f049d8822746c7d1dbd23752.json
+│   │   │   ├── query-08ad2855f0baaaed9d6af23c8bf035e9a087ff27b06e804464a432d93e5a25f1.json
+│   │   │   ├── query-09db58b250c20ab9d1701653165233e5c9aabfdae1f0ee9b77c909b2bb2f3e25.json
+│   │   │   ├── query-12112011318abc0bdd7f722ed8c5d4a86bf5758f8c32d9d41a22999b2f0698ca.json
+│   │   │   ├── query-1d1004d0fb5939fbf30c1986b80b986b1b4864a778525d0b8b0ad6678aef3e9f.json
+│   │   │   ├── query-204cf4811150a7fdeafa9373647a9cd62ac3c9e58155882858c6056e2ef6c30d.json
+│   │   │   ├── query-207b880ec2dd484ad05a7138ba485277958b66e4534561686c073e282fafaf2a.json
+│   │   │   ├── query-24f6ce6280dc6675ab1ebdde0c5e3db8ff7a686180d71052911879f186ed1c8e.json
+│   │   │   ├── query-486f3177dcf6117c6b966954a44d9f96a754eba64912566e81a90bd4cbd186f0.json
+│   │   │   ├── query-5b4840f42ae00c5dc9f59f2745d664b16ebd813dfa0aa32a6d39dd5c393af299.json
+│   │   │   ├── query-69aa96208513c3ea64a446c7739747fcb5e79d7e8c1212b2a679c3bde908ce93.json
+│   │   │   ├── query-78ed3bf1032cd678b42230d68fb2b8e3d74161c8b6c5fe1a746b6958ccd2fd84.json
+│   │   │   ├── query-86b2b02fbb6350100d794e4d0fa3c67bf00fd3e411f769b9f25dec27428489ed.json
+│   │   │   ├── query-979bedd942b4f71c58f3672f2917cee05ac1a628e51fe61ba6dfed253e0c63c2.json
+│   │   │   └── query-b27828d7510d52456b50b4c4b9712878ee329ca72070d849eb61ac9c8f9d1c76.json
+│   │   ├── Cargo.toml
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   ├── mas_writer
+│   │   │   │   ├── checks.rs
+│   │   │   │   ├── constraint_pausing.rs
+│   │   │   │   ├── fixtures
+│   │   │   │   │   └── upstream_provider.sql
+│   │   │   │   ├── locking.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── snapshots
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_access_token.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_device.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_email.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_password.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_refresh_token.snap
+│   │   │   │   │   ├── syn2mas__mas_writer__test__write_user_with_unsupported_threepid.snap
+│   │   │   │   │   └── syn2mas__mas_writer__test__write_user_with_upstream_provider_link.snap
+│   │   │   │   ├── syn2mas_revert_temporary_tables.sql
+│   │   │   │   └── syn2mas_temporary_tables.sql
+│   │   │   ├── migration.rs
+│   │   │   ├── progress.rs
+│   │   │   ├── synapse_reader
+│   │   │   │   ├── checks.rs
+│   │   │   │   ├── config
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── oidc.rs
+│   │   │   │   ├── fixtures
+│   │   │   │   │   ├── access_token_alice.sql
+│   │   │   │   │   ├── access_token_alice_with_puppet.sql
+│   │   │   │   │   ├── access_token_alice_with_refresh_token.sql
+│   │   │   │   │   ├── access_token_alice_with_unused_refresh_token.sql
+│   │   │   │   │   ├── devices_alice.sql
+│   │   │   │   │   ├── external_ids_alice.sql
+│   │   │   │   │   ├── threepids_alice.sql
+│   │   │   │   │   └── user_alice.sql
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── snapshots
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_access_and_refresh_tokens.snap
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_access_and_unused_refresh_tokens.snap
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_access_token.snap
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_devices.snap
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_external_ids.snap
+│   │   │   │       ├── syn2mas__synapse_reader__test__read_threepids.snap
+│   │   │   │       └── syn2mas__synapse_reader__test__read_users.snap
+│   │   │   └── telemetry.rs
+│   │   └── test_synapse_migrations
+│   │       ├── 20250117064958_users.sql
+│   │       ├── 20250128141011_threepids.sql
+│   │       ├── 20250128162513_external_ids.sql
+│   │       ├── 20250128201100_access_and_refresh_tokens.sql
+│   │       └── 20250129140230_devices.sql
+│   ├── tasks
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── database.rs
+│   │       ├── email.rs
+│   │       ├── lib.rs
+│   │       ├── matrix.rs
+│   │       ├── new_queue.rs
+│   │       ├── recovery.rs
+│   │       ├── sessions.rs
+│   │       └── user.rs
+│   ├── tchap
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── identity_client.rs
+│   │       ├── lib.rs
+│   │       └── test_utils.rs
+│   ├── templates
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── context
+│   │       │   ├── branding.rs
+│   │       │   ├── captcha.rs
+│   │       │   ├── ext.rs
+│   │       │   └── features.rs
+│   │       ├── context.rs
+│   │       ├── forms.rs
+│   │       ├── functions.rs
+│   │       ├── lib.rs
+│   │       └── macros.rs
+│   └── tower
+│       ├── Cargo.toml
+│       └── src
+│           ├── lib.rs
+│           ├── metrics
+│           │   ├── duration.rs
+│           │   ├── in_flight.rs
+│           │   ├── make_attributes.rs
+│           │   └── mod.rs
+│           ├── trace_context.rs
+│           ├── tracing
+│           │   ├── enrich_span.rs
+│           │   ├── future.rs
+│           │   ├── layer.rs
+│           │   ├── make_span.rs
+│           │   ├── mod.rs
+│           │   └── service.rs
+│           └── utils.rs
+├── deny.toml
+├── docker-bake.hcl
+├── docs
+│   ├── README.md
+│   ├── SUMMARY.md
+│   ├── api
+│   │   ├── index.html
+│   │   ├── oauth2-redirect.html
+│   │   └── spec.json
+│   ├── as-login.md
+│   ├── config.schema.json
+│   ├── development
+│   │   ├── architecture.md
+│   │   ├── contributing.md
+│   │   ├── database.md
+│   │   ├── graphql.md
+│   │   └── releasing.md
+│   ├── reference
+│   │   ├── cli
+│   │   │   ├── README.md
+│   │   │   ├── config.md
+│   │   │   ├── database.md
+│   │   │   ├── doctor.md
+│   │   │   ├── manage.md
+│   │   │   ├── server.md
+│   │   │   ├── syn2mas.md
+│   │   │   ├── templates.md
+│   │   │   └── worker.md
+│   │   ├── configuration.md
+│   │   └── scopes.md
+│   ├── rustdoc
+│   │   └── mas_handlers
+│   │       └── README.md
+│   ├── setup
+│   │   ├── README.md
+│   │   ├── database.md
+│   │   ├── general.md
+│   │   ├── homeserver.md
+│   │   ├── installation.md
+│   │   ├── migration.md
+│   │   ├── reverse-proxy.md
+│   │   ├── running.md
+│   │   └── sso.md
+│   ├── storybook
+│   │   └── README.md
+│   └── topics
+│       ├── access-token.md
+│       ├── admin-api.md
+│       ├── authorization.md
+│       └── policy.md
+├── frontend
+│   ├── .browserlistrc
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .postcssrc.json
+│   ├── .storybook
+│   │   ├── locales.ts
+│   │   ├── main.ts
+│   │   ├── preview-head.html
+│   │   ├── preview.tsx
+│   │   └── public
+│   │       └── mockServiceWorker.js
+│   ├── codegen.ts
+│   ├── graphql.config.json
+│   ├── i18next.config.ts
+│   ├── index.html
+│   ├── knip.config.ts
+│   ├── locales
+│   │   ├── cs.json
+│   │   ├── da.json
+│   │   ├── de.json
+│   │   ├── en.json
+│   │   ├── et.json
+│   │   ├── fi.json
+│   │   ├── fr.json
+│   │   ├── hu.json
+│   │   ├── nb-NO.json
+│   │   ├── nl.json
+│   │   ├── pl.json
+│   │   ├── pt.json
+│   │   ├── ru.json
+│   │   ├── sv.json
+│   │   ├── uk.json
+│   │   └── zh-Hans.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── schema.graphql
+│   ├── src
+│   │   ├── @types
+│   │   │   └── i18next.d.ts
+│   │   ├── components
+│   │   │   ├── AccountDeleteButton.tsx
+│   │   │   ├── AccountManagementPasswordPreview
+│   │   │   │   ├── AccountManagementPasswordPreview.module.css
+│   │   │   │   ├── AccountManagementPasswordPreview.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── BrowserSession.tsx
+│   │   │   ├── ButtonLink.module.css
+│   │   │   ├── ButtonLink.tsx
+│   │   │   ├── Client
+│   │   │   │   ├── OAuth2ClientDetail.test.tsx
+│   │   │   │   ├── OAuth2ClientDetail.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       └── OAuth2ClientDetail.test.tsx.snap
+│   │   │   ├── Collapsible
+│   │   │   │   ├── Collapsible.module.css
+│   │   │   │   ├── Collapsible.stories.tsx
+│   │   │   │   ├── Collapsible.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── CompatSession.test.tsx
+│   │   │   ├── CompatSession.tsx
+│   │   │   ├── DateTime.stories.tsx
+│   │   │   ├── DateTime.tsx
+│   │   │   ├── Dialog
+│   │   │   │   ├── Dialog.module.css
+│   │   │   │   ├── Dialog.stories.tsx
+│   │   │   │   ├── Dialog.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── EmptyState
+│   │   │   │   ├── EmptyState.module.css
+│   │   │   │   ├── EmptyState.stories.tsx
+│   │   │   │   ├── EmptyState.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── ErrorBoundary.tsx
+│   │   │   ├── ExternalLink
+│   │   │   │   ├── ExternalLink.module.css
+│   │   │   │   └── ExternalLink.tsx
+│   │   │   ├── Filter
+│   │   │   │   ├── Filter.module.css
+│   │   │   │   ├── Filter.stories.tsx
+│   │   │   │   ├── Filter.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Footer
+│   │   │   │   ├── Footer.module.css
+│   │   │   │   ├── Footer.stories.tsx
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── GenericError.module.css
+│   │   │   ├── GenericError.tsx
+│   │   │   ├── Layout
+│   │   │   │   ├── Layout.module.css
+│   │   │   │   ├── Layout.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Link.tsx
+│   │   │   ├── LoadingScreen
+│   │   │   │   ├── LoadingScreen.module.css
+│   │   │   │   ├── LoadingScreen.stories.tsx
+│   │   │   │   ├── LoadingScreen.test.tsx
+│   │   │   │   ├── LoadingScreen.tsx
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── LoadingScreen.test.tsx.snap
+│   │   │   │   └── index.ts
+│   │   │   ├── LoadingSpinner
+│   │   │   │   ├── LoadingSpinner.module.css
+│   │   │   │   ├── LoadingSpinner.stories.tsx
+│   │   │   │   ├── LoadingSpinner.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── NavBar
+│   │   │   │   ├── NavBar.module.css
+│   │   │   │   ├── NavBar.stories.tsx
+│   │   │   │   ├── NavBar.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── NavItem
+│   │   │   │   ├── NavItem.module.css
+│   │   │   │   ├── NavItem.tsx
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── NavItem.test.tsx.snap
+│   │   │   │   └── index.ts
+│   │   │   ├── NotFound.tsx
+│   │   │   ├── OAuth2Session.test.tsx
+│   │   │   ├── OAuth2Session.tsx
+│   │   │   ├── PageHeading
+│   │   │   │   ├── PageHeading.module.css
+│   │   │   │   ├── PageHeading.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── PaginationControls.tsx
+│   │   │   ├── PasswordConfirmation.tsx
+│   │   │   ├── PasswordCreationDoubleInput.tsx
+│   │   │   ├── Separator
+│   │   │   │   ├── Separator.module.css
+│   │   │   │   ├── Separator.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Session
+│   │   │   │   ├── ClientAvatar.module.css
+│   │   │   │   ├── ClientAvatar.test.tsx
+│   │   │   │   ├── ClientAvatar.tsx
+│   │   │   │   ├── DeviceTypeIcon.module.css
+│   │   │   │   ├── DeviceTypeIcon.stories.tsx
+│   │   │   │   ├── DeviceTypeIcon.test.tsx
+│   │   │   │   ├── DeviceTypeIcon.tsx
+│   │   │   │   ├── EndBrowserSessionButton.tsx
+│   │   │   │   ├── EndCompatSessionButton.tsx
+│   │   │   │   ├── EndOAuth2SessionButton.tsx
+│   │   │   │   ├── EndSessionButton.tsx
+│   │   │   │   ├── LastActive.module.css
+│   │   │   │   ├── LastActive.stories.tsx
+│   │   │   │   ├── LastActive.test.tsx
+│   │   │   │   ├── LastActive.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       ├── ClientAvatar.test.tsx.snap
+│   │   │   │       ├── DeviceTypeIcon.test.tsx.snap
+│   │   │   │       ├── LastActive.test.tsx.snap
+│   │   │   │       └── Session.test.tsx.snap
+│   │   │   ├── SessionCard
+│   │   │   │   ├── SessionCard.module.css
+│   │   │   │   ├── SessionCard.stories.tsx
+│   │   │   │   ├── SessionCard.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── SessionDetail
+│   │   │   │   ├── BrowserSessionDetail.tsx
+│   │   │   │   ├── CompatSessionDetail.test.tsx
+│   │   │   │   ├── CompatSessionDetail.tsx
+│   │   │   │   ├── EditSessionName.tsx
+│   │   │   │   ├── OAuth2SessionDetail.test.tsx
+│   │   │   │   ├── OAuth2SessionDetail.tsx
+│   │   │   │   ├── SessionHeader.module.css
+│   │   │   │   ├── SessionHeader.stories.tsx
+│   │   │   │   ├── SessionHeader.test.tsx
+│   │   │   │   ├── SessionHeader.tsx
+│   │   │   │   ├── SessionInfo.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       ├── CompatSessionDetail.test.tsx.snap
+│   │   │   │       ├── OAuth2SessionDetail.test.tsx.snap
+│   │   │   │       └── SessionHeader.test.tsx.snap
+│   │   │   ├── Typography.stories.tsx
+│   │   │   ├── Typography.tsx
+│   │   │   ├── UserEmail
+│   │   │   │   ├── UserEmail.module.css
+│   │   │   │   ├── UserEmail.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── UserGreeting
+│   │   │   │   ├── UserGreeting.module.css
+│   │   │   │   ├── UserGreeting.stories.tsx
+│   │   │   │   ├── UserGreeting.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── UserProfile
+│   │   │   │   ├── AddEmailForm.tsx
+│   │   │   │   └── UserEmailList.tsx
+│   │   │   ├── UserSessionsOverview
+│   │   │   │   ├── BrowserSessionsOverview.module.css
+│   │   │   │   ├── BrowserSessionsOverview.stories.tsx
+│   │   │   │   ├── BrowserSessionsOverview.test.tsx
+│   │   │   │   ├── BrowserSessionsOverview.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       ├── BrowserSessionsOverview.test.tsx.snap
+│   │   │   │       └── UserSessionsOverview.test.tsx.snap
+│   │   │   └── __snapshots__
+│   │   │       ├── CompatSession.test.tsx.snap
+│   │   │       ├── LoadingScreen.test.tsx.snap
+│   │   │       └── OAuth2Session.test.tsx.snap
+│   │   ├── config.ts
+│   │   ├── entrypoints
+│   │   │   ├── main.tsx
+│   │   │   ├── mount.tsx
+│   │   │   ├── register
+│   │   │   │   ├── PasswordCreationDoubleInput.tsx
+│   │   │   │   └── PasswordDoubleInput.tsx
+│   │   │   ├── shared.css
+│   │   │   ├── swagger.ts
+│   │   │   ├── templates.css
+│   │   │   └── templates.ts
+│   │   ├── gql
+│   │   │   ├── fragment-masking.ts
+│   │   │   ├── gql.ts
+│   │   │   ├── graphql.ts
+│   │   │   └── index.ts
+│   │   ├── graphql.ts
+│   │   ├── i18n
+│   │   │   └── password_changes.ts
+│   │   ├── i18n.ts
+│   │   ├── pagination.ts
+│   │   ├── routeTree.gen.ts
+│   │   ├── router.tsx
+│   │   ├── routes
+│   │   │   ├── __root.tsx
+│   │   │   ├── _account.index.tsx
+│   │   │   ├── _account.plan.index.tsx
+│   │   │   ├── _account.sessions.browsers.tsx
+│   │   │   ├── _account.sessions.index.tsx
+│   │   │   ├── _account.tsx
+│   │   │   ├── clients.$id.tsx
+│   │   │   ├── devices.$.tsx
+│   │   │   ├── emails.$id.in-use.tsx
+│   │   │   ├── emails.$id.verify.tsx
+│   │   │   ├── password.change.index.tsx
+│   │   │   ├── password.change.success.tsx
+│   │   │   ├── password.recovery.index.tsx
+│   │   │   ├── reset-cross-signing.cancelled.tsx
+│   │   │   ├── reset-cross-signing.index.tsx
+│   │   │   ├── reset-cross-signing.success.tsx
+│   │   │   ├── reset-cross-signing.tsx
+│   │   │   └── sessions.$id.tsx
+│   │   ├── styles
+│   │   │   ├── cpd-button.css
+│   │   │   ├── cpd-checkbox-control.css
+│   │   │   ├── cpd-form.css
+│   │   │   ├── cpd-link.css
+│   │   │   ├── cpd-mfa-control.css
+│   │   │   └── cpd-text-control.css
+│   │   ├── test-utils
+│   │   │   ├── mockLocale.ts
+│   │   │   ├── render.tsx
+│   │   │   └── router.tsx
+│   │   ├── utils
+│   │   │   ├── dates.ts
+│   │   │   ├── deviceIdFromScope.test.ts
+│   │   │   ├── deviceIdFromScope.ts
+│   │   │   ├── password_complexity
+│   │   │   │   ├── enwiki.json
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── namesf.json
+│   │   │   │   ├── namesm.json
+│   │   │   │   ├── namess.json
+│   │   │   │   ├── passwords.json
+│   │   │   │   └── ustvfilm.json
+│   │   │   └── simplifyUrl.ts
+│   │   └── vite-env.d.ts
+│   ├── stories
+│   │   └── routes
+│   │       ├── app.tsx
+│   │       ├── index.stories.tsx
+│   │       └── reset-cross-signing.stories.tsx
+│   ├── tailwind.config.cjs
+│   ├── tchap
+│   │   ├── components
+│   │   │   ├── Footer
+│   │   │   │   ├── Footer.module.css
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   └── index.ts
+│   │   │   └── Header
+│   │   │       ├── Header.module.css
+│   │   │       ├── Header.tsx
+│   │   │       └── index.ts
+│   │   ├── css
+│   │   │   └── tchap.css
+│   │   └── vite.tchap.config.ts
+│   ├── tests
+│   │   ├── mocks
+│   │   │   └── handlers.ts
+│   │   └── routes
+│   │       ├── __snapshots__
+│   │       │   └── reset-cross-signing.test.tsx.snap
+│   │       ├── account
+│   │       │   ├── __snapshots__
+│   │       │   │   └── index.test.tsx.snap
+│   │       │   └── index.test.tsx
+│   │       ├── render.tsx
+│   │       ├── reset-cross-signing.test.tsx
+│   │       └── types.d.ts
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   ├── vite.config.ts
+│   ├── vitest.global-setup.ts
+│   └── vitest.setup.ts
+├── localazy.json
+├── misc
+│   ├── build-docs.sh
+│   ├── device-code-grant.sh
+│   ├── sqlx_update.sh
+│   └── update.sh
+├── policies
+│   ├── .gitignore
+│   ├── .regal
+│   │   └── config.yaml
+│   ├── Makefile
+│   ├── authorization_grant
+│   │   ├── authorization_grant.rego
+│   │   └── authorization_grant_test.rego
+│   ├── client_registration
+│   │   ├── client_registration.rego
+│   │   └── client_registration_test.rego
+│   ├── common
+│   │   ├── common.rego
+│   │   └── common_test.rego
+│   ├── compat_login
+│   │   ├── compat_login.rego
+│   │   └── compat_login_test.rego
+│   ├── email
+│   │   ├── email.rego
+│   │   └── email_test.rego
+│   ├── register
+│   │   ├── register.rego
+│   │   └── register_test.rego
+│   ├── schema
+│   │   ├── authorization_grant_input.json
+│   │   ├── client_registration_input.json
+│   │   ├── compat_login_input.json
+│   │   ├── email_input.json
+│   │   └── register_input.json
+│   └── util
+│       └── coveralls.rego
+├── tchap
+│   ├── .env.sample
+│   ├── .gitignore
+│   ├── README.md
+│   ├── build_conf.sh
+│   ├── clean_all.sh
+│   ├── clean_data.sh
+│   ├── conf
+│   │   └── config.template.yaml
+│   ├── deprecated.start-local-stack
+│   ├── docker-compose.yml
+│   ├── pre-commit-check.sh
+│   ├── resources
+│   │   ├── templates
+│   │   │   ├── app.html
+│   │   │   ├── base.html
+│   │   │   ├── emails
+│   │   │   │   ├── _mail-base.html
+│   │   │   │   ├── recovery.html
+│   │   │   │   └── verification.html
+│   │   │   ├── pages
+│   │   │   │   ├── consent.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── login.html
+│   │   │   │   ├── register
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   ├── password.html
+│   │   │   │   │   └── steps
+│   │   │   │   │       ├── display_name.html
+│   │   │   │   │       └── email_in_use.html
+│   │   │   │   ├── sso.html
+│   │   │   │   └── upstream_oauth2
+│   │   │   │       └── do_register.html
+│   │   │   └── tchap
+│   │   │       ├── footer.html
+│   │   │       └── header.html
+│   │   └── translations
+│   │       ├── en.json
+│   │       └── fr.json
+│   ├── start-with-hot-reload.sh
+│   └── start.sh
+├── templates
+│   ├── app.html
+│   ├── base.html
+│   ├── components
+│   │   ├── back_to_client.html
+│   │   ├── button.html
+│   │   ├── captcha.html
+│   │   ├── errors.html
+│   │   ├── field.html
+│   │   ├── footer.html
+│   │   ├── icon.html
+│   │   ├── idp_brand.html
+│   │   ├── logout.html
+│   │   ├── password_field.html
+│   │   └── scope.html
+│   ├── device_name.txt
+│   ├── emails
+│   │   ├── recovery.html
+│   │   ├── recovery.subject
+│   │   ├── recovery.txt
+│   │   ├── verification.html
+│   │   ├── verification.subject
+│   │   └── verification.txt
+│   ├── form_post.html
+│   ├── pages
+│   │   ├── 404.html
+│   │   ├── account
+│   │   │   ├── deactivated.html
+│   │   │   ├── locked.html
+│   │   │   └── logged_out.html
+│   │   ├── compat_login_policy_violation.html
+│   │   ├── consent.html
+│   │   ├── device_consent.html
+│   │   ├── device_link.html
+│   │   ├── error.html
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── policy_violation.html
+│   │   ├── reauth.html
+│   │   ├── recovery
+│   │   │   ├── consumed.html
+│   │   │   ├── disabled.html
+│   │   │   ├── expired.html
+│   │   │   ├── finish.html
+│   │   │   ├── progress.html
+│   │   │   └── start.html
+│   │   ├── register
+│   │   │   ├── index.html
+│   │   │   ├── password.html
+│   │   │   └── steps
+│   │   │       ├── display_name.html
+│   │   │       ├── email_in_use.html
+│   │   │       ├── registration_token.html
+│   │   │       └── verify_email.html
+│   │   ├── sso.html
+│   │   └── upstream_oauth2
+│   │       ├── do_register.html
+│   │       ├── link_mismatch.html
+│   │       └── suggest_link.html
+│   └── swagger
+│       ├── doc.html
+│       └── oauth2-redirect.html
+└── translations
+    ├── cs.json
+    ├── da.json
+    ├── de.json
+    ├── en.json
+    ├── et.json
+    ├── fi.json
+    ├── fr.json
+    ├── hu.json
+    ├── nb-NO.json
+    ├── nl.json
+    ├── pl.json
+    ├── pt.json
+    ├── ru.json
+    ├── sv.json
+    ├── uk.json
+    └── zh-Hans.json
+257 directories, 1398 files
