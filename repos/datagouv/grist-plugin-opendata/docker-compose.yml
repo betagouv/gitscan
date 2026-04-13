@@ -1,0 +1,54 @@
+services:
+  grist:
+    image: gristlabs/grist:latest
+    container_name: grist-dev
+    ports:
+      - "8484:8484"
+    environment:
+      - GRIST_SANDBOX_FLAVOR=unsandboxed
+      - APP_HOME_URL=http://localhost:8484
+      - GRIST_ALLOWED_HOSTS=localhost,grist
+      - GRIST_SANDBOX_ALLOW_PYTHON=true
+      - GRIST_WIDGETS_ALLOW_SCRIPTS=true
+      - GRIST_SERVE_PLUGINS=true
+      - GRIST_PLUGINS_DIR=/grist/plugins
+    volumes:
+      - grist-data-dev:/persist
+    networks:
+      - grist-network-dev
+    restart: unless-stopped
+
+  plugin:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: grist-plugin-opendata-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./babel.config.js:/app/babel.config.js
+      - ./vue.config.js:/app/vue.config.js
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./jsconfig.json:/app/jsconfig.json
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+    networks:
+      - grist-network-dev
+    restart: unless-stopped
+    depends_on:
+      - grist
+
+networks:
+  grist-network-dev:
+    driver: bridge
+
+volumes:
+  grist-data-dev:
+    driver: local
+
