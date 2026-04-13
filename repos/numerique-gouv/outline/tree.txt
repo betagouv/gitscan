@@ -1,0 +1,2423 @@
+.
+├── .babelrc
+├── .dockerignore
+├── .env.development
+├── .env.sample
+├── .env.test
+├── .github
+│   ├── FUNDING.yml
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   └── config.yml
+│   ├── auto_assign.yml
+│   ├── config.yml
+│   ├── dependabot.yml
+│   ├── no-response.yml
+│   └── workflows
+│       ├── auto_close_prs.yml
+│       ├── calibreapp-image-actions.yml
+│       ├── ci.yml
+│       ├── codeql-analysis.yml
+│       ├── docker.yml
+│       └── stale.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
+├── .jestconfig.json
+├── .nvmrc
+├── .oxlintrc.json
+├── .prettierrc
+├── .sequelizerc
+├── .vscode
+│   └── settings.json
+├── Dockerfile
+├── Dockerfile.base
+├── LICENSE
+├── Makefile
+├── Procfile
+├── README.md
+├── __mocks__
+│   ├── console.js
+│   ├── ctx.js
+│   ├── fileMock.js
+│   ├── localStorage.js
+│   ├── react-medium-image-zoom.js
+│   └── window.js
+├── app
+│   ├── .oxlintrc.json
+│   ├── actions
+│   │   ├── definitions
+│   │   │   ├── apiKeys.tsx
+│   │   │   ├── collections.tsx
+│   │   │   ├── comments.tsx
+│   │   │   ├── developer.tsx
+│   │   │   ├── documents.tsx
+│   │   │   ├── integrations.tsx
+│   │   │   ├── navigation.tsx
+│   │   │   ├── notifications.tsx
+│   │   │   ├── oauthClients.tsx
+│   │   │   ├── revisions.tsx
+│   │   │   ├── settings.tsx
+│   │   │   ├── shares.tsx
+│   │   │   ├── teams.tsx
+│   │   │   └── users.tsx
+│   │   ├── index.ts
+│   │   ├── root.ts
+│   │   └── sections.ts
+│   ├── components
+│   │   ├── ActionButton.tsx
+│   │   ├── Actions.ts
+│   │   ├── Analytics.tsx
+│   │   ├── Arrow.tsx
+│   │   ├── ArrowKeyNavigation.tsx
+│   │   ├── Authenticated.tsx
+│   │   ├── AuthenticatedLayout.tsx
+│   │   ├── Avatar
+│   │   │   ├── Avatar.tsx
+│   │   │   ├── AvatarWithPresence.tsx
+│   │   │   ├── GroupAvatar.tsx
+│   │   │   ├── Initials.tsx
+│   │   │   └── index.ts
+│   │   ├── Badge.ts
+│   │   ├── Branding.tsx
+│   │   ├── Breadcrumb.tsx
+│   │   ├── Button.tsx
+│   │   ├── ButtonLarge.ts
+│   │   ├── ButtonLink.tsx
+│   │   ├── ButtonSmall.ts
+│   │   ├── CenteredContent.tsx
+│   │   ├── ChangeLanguage.tsx
+│   │   ├── CircularProgressBar.tsx
+│   │   ├── ClickablePadding.ts
+│   │   ├── Collaborators.tsx
+│   │   ├── Collection
+│   │   │   ├── CollectionEdit.tsx
+│   │   │   ├── CollectionForm.tsx
+│   │   │   └── CollectionNew.tsx
+│   │   ├── CollectionBreadcrumb.tsx
+│   │   ├── CollectionDeleteDialog.tsx
+│   │   ├── CommandBar
+│   │   │   ├── CommandBar.tsx
+│   │   │   ├── CommandBarItem.tsx
+│   │   │   ├── CommandBarResults.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── useRecentDocumentActions.tsx
+│   │   │   ├── useSettingsAction.tsx
+│   │   │   └── useTemplatesAction.tsx
+│   │   ├── CommentDeleteDialog.tsx
+│   │   ├── ConfirmMoveDialog.tsx
+│   │   ├── ConfirmationDialog.tsx
+│   │   ├── ContentEditable.tsx
+│   │   ├── CopyToClipboard.ts
+│   │   ├── DefaultCollectionInputSelect.tsx
+│   │   ├── DelayedMount.ts
+│   │   ├── DesktopEventHandler.tsx
+│   │   ├── Dialogs.tsx
+│   │   ├── DisconnectAnalyticsDialog.tsx
+│   │   ├── Divider.ts
+│   │   ├── DocumentBreadcrumb.tsx
+│   │   ├── DocumentCard.tsx
+│   │   ├── DocumentContext.tsx
+│   │   ├── DocumentCopy.tsx
+│   │   ├── DocumentExplorer.tsx
+│   │   ├── DocumentExplorerNode.tsx
+│   │   ├── DocumentExplorerSearchResult.tsx
+│   │   ├── DocumentListItem.tsx
+│   │   ├── DocumentMeta.tsx
+│   │   ├── DocumentTasks.tsx
+│   │   ├── DocumentViews.tsx
+│   │   ├── DocumentsLoader.tsx
+│   │   ├── EditableTitle.tsx
+│   │   ├── Editor.tsx
+│   │   ├── Emoji.tsx
+│   │   ├── Empty.ts
+│   │   ├── ErrorBoundary.tsx
+│   │   ├── EventListItem.tsx
+│   │   ├── ExportDialog.tsx
+│   │   ├── Facepile.tsx
+│   │   ├── Fade.tsx
+│   │   ├── FilterOptions.tsx
+│   │   ├── Flex.tsx
+│   │   ├── FullscreenLoading.tsx
+│   │   ├── Guide.tsx
+│   │   ├── Header.tsx
+│   │   ├── Heading.ts
+│   │   ├── Highlight.tsx
+│   │   ├── HoverPreview
+│   │   │   ├── Components.tsx
+│   │   │   ├── HoverPreview.tsx
+│   │   │   ├── HoverPreviewDocument.tsx
+│   │   │   ├── HoverPreviewGroup.tsx
+│   │   │   ├── HoverPreviewIssue.tsx
+│   │   │   ├── HoverPreviewLink.tsx
+│   │   │   ├── HoverPreviewMention.tsx
+│   │   │   ├── HoverPreviewPullRequest.tsx
+│   │   │   └── index.ts
+│   │   ├── IconPicker
+│   │   │   ├── components
+│   │   │   │   ├── ColorPicker.tsx
+│   │   │   │   ├── EmojiPanel.tsx
+│   │   │   │   ├── Grid.tsx
+│   │   │   │   ├── GridTemplate.tsx
+│   │   │   │   ├── IconButton.tsx
+│   │   │   │   ├── IconPanel.tsx
+│   │   │   │   ├── PopoverButton.tsx
+│   │   │   │   └── SkinTonePicker.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── utils.ts
+│   │   ├── Icons
+│   │   │   ├── ArrowIcon.tsx
+│   │   │   ├── CircleIcon.tsx
+│   │   │   ├── CollectionIcon.tsx
+│   │   │   ├── GoogleIcon.tsx
+│   │   │   ├── LanguageIcon.tsx
+│   │   │   ├── MarkdownIcon.tsx
+│   │   │   └── OutlineIcon.tsx
+│   │   ├── Input.tsx
+│   │   ├── InputColor.tsx
+│   │   ├── InputLarge.ts
+│   │   ├── InputMemberPermissionSelect.tsx
+│   │   ├── InputSearch.tsx
+│   │   ├── InputSearchPage.tsx
+│   │   ├── InputSelect.tsx
+│   │   ├── InputSelectPermission.tsx
+│   │   ├── Key.ts
+│   │   ├── LanguagePrompt.tsx
+│   │   ├── Layout.tsx
+│   │   ├── LazyLoad.ts
+│   │   ├── LazyPolyfills.tsx
+│   │   ├── Lightbox.tsx
+│   │   ├── List
+│   │   │   ├── Error.tsx
+│   │   │   ├── Item.tsx
+│   │   │   ├── List.ts
+│   │   │   ├── Placeholder.tsx
+│   │   │   └── index.ts
+│   │   ├── LoadingIndicator
+│   │   │   ├── LoadingIndicator.ts
+│   │   │   ├── LoadingIndicatorBar.tsx
+│   │   │   └── index.ts
+│   │   ├── LocaleTime.tsx
+│   │   ├── MeasuredContainer.tsx
+│   │   ├── Menu
+│   │   │   ├── ContextMenu.tsx
+│   │   │   ├── DropdownMenu.tsx
+│   │   │   ├── OverflowMenuButton.tsx
+│   │   │   └── transformer.tsx
+│   │   ├── Modal.tsx
+│   │   ├── MouseSafeArea.tsx
+│   │   ├── NavLink.tsx
+│   │   ├── Notice.tsx
+│   │   ├── Notifications
+│   │   │   ├── NotificationIcon.tsx
+│   │   │   ├── NotificationListItem.tsx
+│   │   │   ├── Notifications.tsx
+│   │   │   └── NotificationsPopover.tsx
+│   │   ├── NudeButton.tsx
+│   │   ├── OAuthClient
+│   │   │   ├── OAuthClientForm.tsx
+│   │   │   └── OAuthClientNew.tsx
+│   │   ├── OneTimePasswordInput.tsx
+│   │   ├── PageScroll.tsx
+│   │   ├── PageTheme.ts
+│   │   ├── PageTitle.tsx
+│   │   ├── PaginatedDocumentList.tsx
+│   │   ├── PaginatedEventList.tsx
+│   │   ├── PaginatedList.tsx
+│   │   ├── PinnedDocuments.tsx
+│   │   ├── PlaceholderDocument.tsx
+│   │   ├── PlaceholderText.tsx
+│   │   ├── PluginIcon.tsx
+│   │   ├── Portal.tsx
+│   │   ├── ProfiledRoute.ts
+│   │   ├── Reactions
+│   │   │   ├── Reaction.tsx
+│   │   │   ├── ReactionList.tsx
+│   │   │   ├── ReactionPicker.tsx
+│   │   │   └── ViewReactionsDialog.tsx
+│   │   ├── ReadingTime.tsx
+│   │   ├── RegisterKeyDown.ts
+│   │   ├── ResizingHeightContainer.tsx
+│   │   ├── RevisionListItem.tsx
+│   │   ├── Scene.tsx
+│   │   ├── ScrollContext.ts
+│   │   ├── ScrollToTop.ts
+│   │   ├── Scrollable.tsx
+│   │   ├── SearchActions.ts
+│   │   ├── SearchListItem.tsx
+│   │   ├── SearchPopover.tsx
+│   │   ├── Sharing
+│   │   │   ├── Collection
+│   │   │   │   ├── AccessControlList.tsx
+│   │   │   │   ├── PublicAccess.tsx
+│   │   │   │   └── SharePopover.tsx
+│   │   │   ├── Document
+│   │   │   │   ├── AccessControlList.tsx
+│   │   │   │   ├── DocumentMemberList.tsx
+│   │   │   │   ├── DocumentMemberListItem.tsx
+│   │   │   │   ├── PublicAccess.tsx
+│   │   │   │   ├── SharePopover.tsx
+│   │   │   │   └── index.tsx
+│   │   │   └── components
+│   │   │       ├── Actions.tsx
+│   │   │       ├── CopyLinkButton.tsx
+│   │   │       ├── ListItem.tsx
+│   │   │       ├── PermissionAction.tsx
+│   │   │       ├── Placeholder.tsx
+│   │   │       ├── SearchInput.tsx
+│   │   │       ├── Suggestions.tsx
+│   │   │       └── index.tsx
+│   │   ├── Sidebar
+│   │   │   ├── App.tsx
+│   │   │   ├── Right.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   ├── Shared.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   ├── components
+│   │   │   │   ├── ArchiveLink.tsx
+│   │   │   │   ├── ArchivedCollectionLink.tsx
+│   │   │   │   ├── CollectionLink.tsx
+│   │   │   │   ├── CollectionLinkChildren.tsx
+│   │   │   │   ├── Collections.tsx
+│   │   │   │   ├── Disclosure.tsx
+│   │   │   │   ├── DocumentLink.tsx
+│   │   │   │   ├── DraftsLink.tsx
+│   │   │   │   ├── DragPlaceholder.tsx
+│   │   │   │   ├── DraggableCollectionLink.tsx
+│   │   │   │   ├── DropCursor.tsx
+│   │   │   │   ├── DropToImport.tsx
+│   │   │   │   ├── Folder.tsx
+│   │   │   │   ├── GroupLink.tsx
+│   │   │   │   ├── Header.tsx
+│   │   │   │   ├── HistoryNavigation.tsx
+│   │   │   │   ├── NavLink.tsx
+│   │   │   │   ├── PlaceholderCollections.tsx
+│   │   │   │   ├── Relative.tsx
+│   │   │   │   ├── ResizeBorder.ts
+│   │   │   │   ├── Section.ts
+│   │   │   │   ├── SharedCollectionLink.tsx
+│   │   │   │   ├── SharedDocumentLink.tsx
+│   │   │   │   ├── SharedWithMe.tsx
+│   │   │   │   ├── SharedWithMeLink.tsx
+│   │   │   │   ├── SidebarAction.tsx
+│   │   │   │   ├── SidebarButton.tsx
+│   │   │   │   ├── SidebarContext.ts
+│   │   │   │   ├── SidebarLink.tsx
+│   │   │   │   ├── Starred.tsx
+│   │   │   │   ├── StarredLink.tsx
+│   │   │   │   ├── ToggleButton.tsx
+│   │   │   │   ├── TrashLink.tsx
+│   │   │   │   └── Version.tsx
+│   │   │   ├── hooks
+│   │   │   │   ├── useCollectionDocuments.ts
+│   │   │   │   ├── useDragAndDrop.tsx
+│   │   │   │   └── useSidebarLabelAndIcon.tsx
+│   │   │   └── index.ts
+│   │   ├── SkipNavContent.tsx
+│   │   ├── SkipNavLink.tsx
+│   │   ├── SortableTable.tsx
+│   │   ├── Star.tsx
+│   │   ├── Subheading.tsx
+│   │   ├── Switch.tsx
+│   │   ├── Tab.tsx
+│   │   ├── Table.tsx
+│   │   ├── Tabs.tsx
+│   │   ├── TeamContext.ts
+│   │   ├── TeamLogo.ts
+│   │   ├── TemplatizeDialog
+│   │   │   ├── Label.tsx
+│   │   │   ├── SelectLocation.tsx
+│   │   │   └── index.tsx
+│   │   ├── Text.ts
+│   │   ├── Theme.tsx
+│   │   ├── Time.tsx
+│   │   ├── Toasts.tsx
+│   │   ├── Tooltip.tsx
+│   │   ├── TooltipContext.tsx
+│   │   ├── UnreadBadge.tsx
+│   │   ├── UserDialogs.tsx
+│   │   ├── WebsocketProvider.tsx
+│   │   ├── primitives
+│   │   │   ├── Drawer.tsx
+│   │   │   ├── Form.tsx
+│   │   │   ├── InputSelect.tsx
+│   │   │   ├── Menu
+│   │   │   │   ├── MenuContext.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Popover.tsx
+│   │   │   └── components
+│   │   │       ├── InputSelect.tsx
+│   │   │       ├── Menu.tsx
+│   │   │       └── Overlay.tsx
+│   │   └── withStores.tsx
+│   ├── editor
+│   │   ├── components
+│   │   │   ├── BlockMenu.tsx
+│   │   │   ├── ComponentView.tsx
+│   │   │   ├── EditorContext.tsx
+│   │   │   ├── EmojiMenu.tsx
+│   │   │   ├── EmojiMenuItem.tsx
+│   │   │   ├── FindAndReplace.tsx
+│   │   │   ├── FloatingToolbar.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── LinkEditor.tsx
+│   │   │   ├── MediaDimension.tsx
+│   │   │   ├── MediaLinkEditor.tsx
+│   │   │   ├── MentionMenu.tsx
+│   │   │   ├── NodeViewRenderer.tsx
+│   │   │   ├── PasteMenu.tsx
+│   │   │   ├── SelectionToolbar.tsx
+│   │   │   ├── SuggestionsMenu.tsx
+│   │   │   ├── SuggestionsMenuItem.tsx
+│   │   │   ├── ToolbarButton.tsx
+│   │   │   ├── ToolbarMenu.tsx
+│   │   │   ├── ToolbarSeparator.tsx
+│   │   │   ├── Tooltip.tsx
+│   │   │   └── WithTheme.tsx
+│   │   ├── extensions
+│   │   │   ├── BlockMenu.tsx
+│   │   │   ├── ClipboardTextSerializer.ts
+│   │   │   ├── EmojiMenu.tsx
+│   │   │   ├── FindAndReplace.tsx
+│   │   │   ├── HoverPreviews.tsx
+│   │   │   ├── Keys.ts
+│   │   │   ├── MentionMenu.tsx
+│   │   │   ├── Multiplayer.ts
+│   │   │   ├── PasteHandler.tsx
+│   │   │   ├── PreventTab.ts
+│   │   │   ├── SelectionToolbar.tsx
+│   │   │   ├── SmartText.ts
+│   │   │   ├── Suggestion.ts
+│   │   │   ├── UpArrowAtStart.ts
+│   │   │   └── index.ts
+│   │   ├── index.tsx
+│   │   └── menus
+│   │       ├── attachment.tsx
+│   │       ├── block.tsx
+│   │       ├── code.tsx
+│   │       ├── divider.tsx
+│   │       ├── formatting.tsx
+│   │       ├── image.tsx
+│   │       ├── notice.tsx
+│   │       ├── readOnly.tsx
+│   │       ├── table.tsx
+│   │       ├── tableCol.tsx
+│   │       └── tableRow.tsx
+│   ├── env.ts
+│   ├── hooks
+│   │   ├── useActionContext.tsx
+│   │   ├── useAutoRefresh.ts
+│   │   ├── useBoolean.ts
+│   │   ├── useBuildTheme.ts
+│   │   ├── useClickIntent.ts
+│   │   ├── useCollectionMenuAction.tsx
+│   │   ├── useCollectionTrees.ts
+│   │   ├── useCommandBarActions.ts
+│   │   ├── useComputed.ts
+│   │   ├── useCsrfToken.ts
+│   │   ├── useCurrentTeam.ts
+│   │   ├── useCurrentUser.ts
+│   │   ├── useDesktopTitlebar.ts
+│   │   ├── useDictionary.ts
+│   │   ├── useDocumentMenuAction.tsx
+│   │   ├── useEditingFocus.ts
+│   │   ├── useEditorClickHandlers.ts
+│   │   ├── useEmbeds.ts
+│   │   ├── useEventListener.ts
+│   │   ├── useFocusedComment.ts
+│   │   ├── useFormatNumber.ts
+│   │   ├── useHover.ts
+│   │   ├── useIdle.ts
+│   │   ├── useImportDocument.ts
+│   │   ├── useInterval.ts
+│   │   ├── useIsMounted.ts
+│   │   ├── useKeyDown.ts
+│   │   ├── useLastVisitedPath.tsx
+│   │   ├── useLocaleTime.ts
+│   │   ├── useLocationSidebarContext.ts
+│   │   ├── useLoggedInSessions.ts
+│   │   ├── useMaxHeight.ts
+│   │   ├── useMediaQuery.ts
+│   │   ├── useMenuAction.ts
+│   │   ├── useMobile.ts
+│   │   ├── useMousePosition.ts
+│   │   ├── useOnClickOutside.ts
+│   │   ├── useOnScreen.ts
+│   │   ├── usePageVisibility.ts
+│   │   ├── usePaginatedRequest.ts
+│   │   ├── usePersistedState.ts
+│   │   ├── usePinnedDocuments.ts
+│   │   ├── usePolicy.ts
+│   │   ├── usePrevious.ts
+│   │   ├── useQuery.ts
+│   │   ├── useQueryNotices.ts
+│   │   ├── useRequest.ts
+│   │   ├── useSettingsConfig.ts
+│   │   ├── useStores.ts
+│   │   ├── useSwipe.tsx
+│   │   ├── useTableRequest.ts
+│   │   ├── useTemplateMenuActions.tsx
+│   │   ├── useTextSelection.ts
+│   │   ├── useTextStats.ts
+│   │   ├── useThrottledCallback.ts
+│   │   ├── useUnmount.ts
+│   │   ├── useUserLocale.ts
+│   │   ├── useViewportHeight.ts
+│   │   ├── useWindowScrollPosition.ts
+│   │   └── useWindowSize.ts
+│   ├── index.tsx
+│   ├── menus
+│   │   ├── AccountMenu.tsx
+│   │   ├── ApiKeyMenu.tsx
+│   │   ├── BreadcrumbMenu.tsx
+│   │   ├── CollectionMenu.tsx
+│   │   ├── CommentMenu.tsx
+│   │   ├── DocumentMenu.tsx
+│   │   ├── FileOperationMenu.tsx
+│   │   ├── GroupMenu.tsx
+│   │   ├── ImportMenu.tsx
+│   │   ├── NewChildDocumentMenu.tsx
+│   │   ├── NewDocumentMenu.tsx
+│   │   ├── NewTemplateMenu.tsx
+│   │   ├── NotificationMenu.tsx
+│   │   ├── OAuthAuthenticationMenu.tsx
+│   │   ├── OAuthClientMenu.tsx
+│   │   ├── RevisionMenu.tsx
+│   │   ├── ShareMenu.tsx
+│   │   ├── TableOfContentsMenu.tsx
+│   │   ├── TeamMenu.tsx
+│   │   ├── TemplatesMenu.tsx
+│   │   ├── UserMenu.tsx
+│   │   └── separator.ts
+│   ├── models
+│   │   ├── ApiKey.ts
+│   │   ├── AuthenticationProvider.ts
+│   │   ├── Collection.test.ts
+│   │   ├── Collection.ts
+│   │   ├── Comment.ts
+│   │   ├── Document.ts
+│   │   ├── Event.ts
+│   │   ├── FileOperation.ts
+│   │   ├── Group.ts
+│   │   ├── GroupMembership.ts
+│   │   ├── GroupUser.ts
+│   │   ├── Import.ts
+│   │   ├── Integration.ts
+│   │   ├── Membership.ts
+│   │   ├── Notification.ts
+│   │   ├── Pin.ts
+│   │   ├── Policy.ts
+│   │   ├── Revision.ts
+│   │   ├── SearchQuery.ts
+│   │   ├── Share.ts
+│   │   ├── Star.ts
+│   │   ├── Subscription.ts
+│   │   ├── Team.ts
+│   │   ├── Unfurl.ts
+│   │   ├── User.ts
+│   │   ├── UserMembership.ts
+│   │   ├── View.ts
+│   │   ├── WebhookSubscription.ts
+│   │   ├── base
+│   │   │   ├── ArchivableModel.ts
+│   │   │   ├── Model.ts
+│   │   │   ├── NavigableModel.ts
+│   │   │   └── ParanoidModel.ts
+│   │   ├── decorators
+│   │   │   ├── Field.ts
+│   │   │   ├── Lifecycle.ts
+│   │   │   └── Relation.ts
+│   │   ├── helpers
+│   │   │   └── ProsemirrorHelper.ts
+│   │   ├── interfaces
+│   │   │   └── Searchable.ts
+│   │   └── oauth
+│   │       ├── OAuthAuthentication.ts
+│   │       └── OAuthClient.ts
+│   ├── routes
+│   │   ├── authenticated.tsx
+│   │   ├── index.tsx
+│   │   └── settings.tsx
+│   ├── scenes
+│   │   ├── ApiKeyNew
+│   │   │   ├── components
+│   │   │   │   └── ExpiryDatePicker.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── utils.ts
+│   │   ├── Archive.tsx
+│   │   ├── Collection
+│   │   │   ├── components
+│   │   │   │   ├── Actions.tsx
+│   │   │   │   ├── DropToImport.tsx
+│   │   │   │   ├── Empty.tsx
+│   │   │   │   ├── MembershipPreview.tsx
+│   │   │   │   ├── Notices.tsx
+│   │   │   │   ├── Overview.tsx
+│   │   │   │   └── ShareButton.tsx
+│   │   │   └── index.tsx
+│   │   ├── DesktopRedirect.tsx
+│   │   ├── Document
+│   │   │   ├── components
+│   │   │   │   ├── AsyncMultiplayerEditor.ts
+│   │   │   │   ├── CommentEditor.tsx
+│   │   │   │   ├── CommentForm.tsx
+│   │   │   │   ├── CommentSortMenu.tsx
+│   │   │   │   ├── CommentThread.tsx
+│   │   │   │   ├── CommentThreadItem.tsx
+│   │   │   │   ├── Comments.tsx
+│   │   │   │   ├── ConnectionStatus.tsx
+│   │   │   │   ├── Container.ts
+│   │   │   │   ├── Contents.tsx
+│   │   │   │   ├── DataLoader.tsx
+│   │   │   │   ├── Document.tsx
+│   │   │   │   ├── DocumentMeta.tsx
+│   │   │   │   ├── DocumentTitle.tsx
+│   │   │   │   ├── Editor.tsx
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   ├── Header.tsx
+│   │   │   │   ├── HighlightText.ts
+│   │   │   │   ├── History.tsx
+│   │   │   │   ├── Insights.tsx
+│   │   │   │   ├── KeyboardShortcutsButton.tsx
+│   │   │   │   ├── Loading.tsx
+│   │   │   │   ├── MarkAsViewed.ts
+│   │   │   │   ├── MultiplayerEditor.tsx
+│   │   │   │   ├── Notices.tsx
+│   │   │   │   ├── ObservingBanner.tsx
+│   │   │   │   ├── PublicBreadcrumb.tsx
+│   │   │   │   ├── PublicReferences.tsx
+│   │   │   │   ├── ReferenceListItem.tsx
+│   │   │   │   ├── References.tsx
+│   │   │   │   ├── RevisionViewer.tsx
+│   │   │   │   ├── ShareButton.tsx
+│   │   │   │   ├── SidebarLayout.tsx
+│   │   │   │   └── SizeWarning.tsx
+│   │   │   └── index.tsx
+│   │   ├── DocumentDelete.tsx
+│   │   ├── DocumentMove.tsx
+│   │   ├── DocumentNew.tsx
+│   │   ├── DocumentPermanentDelete.tsx
+│   │   ├── DocumentPublish.tsx
+│   │   ├── Drafts.tsx
+│   │   ├── Errors
+│   │   │   ├── Error402.tsx
+│   │   │   ├── Error403.tsx
+│   │   │   ├── Error404.tsx
+│   │   │   ├── ErrorOffline.tsx
+│   │   │   ├── ErrorSuspended.tsx
+│   │   │   └── ErrorUnknown.tsx
+│   │   ├── Home.tsx
+│   │   ├── Invite.tsx
+│   │   ├── KeyboardShortcuts.tsx
+│   │   ├── Login
+│   │   │   ├── Login.tsx
+│   │   │   ├── OAuthAuthorize.tsx
+│   │   │   ├── OAuthScopeHelper.ts
+│   │   │   ├── components
+│   │   │   │   ├── AuthenticationProvider.tsx
+│   │   │   │   ├── BackButton.tsx
+│   │   │   │   ├── Background.tsx
+│   │   │   │   ├── Centered.tsx
+│   │   │   │   ├── ConnectHeader.tsx
+│   │   │   │   ├── LoginDialog.tsx
+│   │   │   │   ├── Notices.tsx
+│   │   │   │   ├── TeamSwitcher.tsx
+│   │   │   │   └── WorkspaceSetup.tsx
+│   │   │   ├── index.ts
+│   │   │   └── urls.ts
+│   │   ├── Logout.tsx
+│   │   ├── Search
+│   │   │   ├── Search.tsx
+│   │   │   ├── components
+│   │   │   │   ├── CollectionFilter.tsx
+│   │   │   │   ├── DateFilter.tsx
+│   │   │   │   ├── DocumentFilter.tsx
+│   │   │   │   ├── DocumentTypeFilter.tsx
+│   │   │   │   ├── RecentSearchListItem.tsx
+│   │   │   │   ├── RecentSearches.tsx
+│   │   │   │   ├── SearchInput.tsx
+│   │   │   │   └── UserFilter.tsx
+│   │   │   └── index.ts
+│   │   ├── Settings
+│   │   │   ├── APIAndApps.tsx
+│   │   │   ├── ApiKeys.tsx
+│   │   │   ├── Application.tsx
+│   │   │   ├── Applications.tsx
+│   │   │   ├── Details.tsx
+│   │   │   ├── Export.tsx
+│   │   │   ├── Features.tsx
+│   │   │   ├── Groups.tsx
+│   │   │   ├── Import.tsx
+│   │   │   ├── Integrations.tsx
+│   │   │   ├── Members.tsx
+│   │   │   ├── Notifications.tsx
+│   │   │   ├── Preferences.tsx
+│   │   │   ├── Profile.tsx
+│   │   │   ├── Security.tsx
+│   │   │   ├── Shares.tsx
+│   │   │   ├── Templates.tsx
+│   │   │   └── components
+│   │   │       ├── ActionRow.tsx
+│   │   │       ├── ApiKeyListItem.tsx
+│   │   │       ├── ApiKeyRevokeDialog.tsx
+│   │   │       ├── ConnectedButton.tsx
+│   │   │       ├── CopyButton.tsx
+│   │   │       ├── DomainManagement.tsx
+│   │   │       ├── DropToImport.tsx
+│   │   │       ├── FileOperationListItem.tsx
+│   │   │       ├── GroupDialogs.tsx
+│   │   │       ├── GroupsTable.tsx
+│   │   │       ├── HelpDisclosure.tsx
+│   │   │       ├── ImageInput.tsx
+│   │   │       ├── ImageUpload.tsx
+│   │   │       ├── ImportJSONDialog.tsx
+│   │   │       ├── ImportListItem.tsx
+│   │   │       ├── ImportMarkdownDialog.tsx
+│   │   │       ├── IntegrationCard.tsx
+│   │   │       ├── IntegrationScene.tsx
+│   │   │       ├── MembersTable.tsx
+│   │   │       ├── OAuthAuthenticationListItem.tsx
+│   │   │       ├── OAuthClientDeleteDialog.tsx
+│   │   │       ├── OAuthClientListItem.tsx
+│   │   │       ├── SettingRow.tsx
+│   │   │       ├── SharesTable.tsx
+│   │   │       ├── StickyFilters.tsx
+│   │   │       ├── UserRoleFilter.tsx
+│   │   │       └── UserStatusFilter.tsx
+│   │   ├── Shared
+│   │   │   ├── Collection.tsx
+│   │   │   ├── Document.tsx
+│   │   │   └── index.tsx
+│   │   ├── TeamDelete.tsx
+│   │   ├── TeamNew.tsx
+│   │   ├── Trash
+│   │   │   ├── components
+│   │   │   │   └── DeleteDocumentsInTrash.tsx
+│   │   │   └── index.tsx
+│   │   └── UserDelete.tsx
+│   ├── stores
+│   │   ├── ApiKeysStore.ts
+│   │   ├── AuthStore.ts
+│   │   ├── AuthenticationProvidersStore.ts
+│   │   ├── CollectionsStore.ts
+│   │   ├── CommentsStore.ts
+│   │   ├── DialogsStore.ts
+│   │   ├── DocumentPresenceStore.ts
+│   │   ├── DocumentsStore.ts
+│   │   ├── EventsStore.ts
+│   │   ├── FileOperationsStore.ts
+│   │   ├── GroupMembershipsStore.ts
+│   │   ├── GroupUsersStore.ts
+│   │   ├── GroupsStore.ts
+│   │   ├── ImportsStore.ts
+│   │   ├── IntegrationsStore.ts
+│   │   ├── MembershipsStore.ts
+│   │   ├── NotificationsStore.ts
+│   │   ├── OAuthAuthenticationsStore.ts
+│   │   ├── OAuthClientsStore.ts
+│   │   ├── PinsStore.ts
+│   │   ├── PoliciesStore.ts
+│   │   ├── RevisionsStore.ts
+│   │   ├── RootStore.ts
+│   │   ├── SearchesStore.ts
+│   │   ├── SharesStore.ts
+│   │   ├── StarsStore.ts
+│   │   ├── SubscriptionsStore.ts
+│   │   ├── UiStore.ts
+│   │   ├── UnfurlsStore.ts
+│   │   ├── UserMembershipsStore.ts
+│   │   ├── UsersStore.ts
+│   │   ├── ViewsStore.ts
+│   │   ├── WebhookSubscriptionStore.ts
+│   │   ├── base
+│   │   │   └── Store.ts
+│   │   └── index.ts
+│   ├── styles
+│   │   ├── animations.ts
+│   │   └── index.ts
+│   ├── test
+│   │   ├── setup.ts
+│   │   └── support.ts
+│   ├── types.ts
+│   ├── typings
+│   │   ├── i18next.d.ts
+│   │   ├── index.d.ts
+│   │   ├── prosemirror-view.d.ts
+│   │   ├── styled-components.d.ts
+│   │   └── window.d.ts
+│   └── utils
+│       ├── Analytics.ts
+│       ├── ApiClient.ts
+│       ├── Desktop.ts
+│       ├── FeatureFlags.ts
+│       ├── Logger.ts
+│       ├── PluginManager.ts
+│       ├── __mocks__
+│       │   └── ApiClient.ts
+│       ├── compressImage.ts
+│       ├── date.ts
+│       ├── developer.ts
+│       ├── download.ts
+│       ├── emoji.ts
+│       ├── errors.ts
+│       ├── files.test.ts
+│       ├── files.ts
+│       ├── history.ts
+│       ├── i18n.test.ts
+│       ├── i18n.ts
+│       ├── isCloudHosted.ts
+│       ├── isTextInput.ts
+│       ├── language.ts
+│       ├── lazyWithRetry.ts
+│       ├── mention.ts
+│       ├── motion.ts
+│       ├── pageVisibility.ts
+│       ├── polyfills.ts
+│       ├── routeHelpers.test.ts
+│       ├── routeHelpers.ts
+│       ├── sentry.ts
+│       ├── tree.ts
+│       ├── urls.test.ts
+│       ├── urls.ts
+│       └── viewTransition.ts
+├── app.json
+├── build.js
+├── crowdin.yml
+├── docker-compose.yml
+├── docs
+│   ├── ARCHITECTURE.md
+│   ├── CODE_OF_CONDUCT.md
+│   ├── SECURITY.md
+│   ├── SERVICES.md
+│   └── TRANSLATION.md
+├── i18next-parser.config.js
+├── lint-staged.config.mjs
+├── package.json
+├── patches
+│   ├── @benrbray+prosemirror-math+0.2.2.patch
+│   └── y-prosemirror+1.3.7.patch
+├── plugins
+│   ├── azure
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── auth
+│   │       │   └── azure.ts
+│   │       ├── azure.ts
+│   │       ├── env.ts
+│   │       └── index.ts
+│   ├── discord
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── auth
+│   │       │   └── discord.ts
+│   │       ├── discord.ts
+│   │       ├── env.ts
+│   │       ├── errors.ts
+│   │       └── index.ts
+│   ├── email
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── auth
+│   │       │   ├── email.test.ts
+│   │       │   ├── email.ts
+│   │       │   └── schema.ts
+│   │       └── index.ts
+│   ├── enterprise
+│   │   └── client
+│   │       └── translations.tsx
+│   ├── github
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   ├── components
+│   │   │   │   └── GitHubButton.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   ├── server
+│   │   │   ├── GitHubIssueProvider.ts
+│   │   │   ├── api
+│   │   │   │   ├── github.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── env.ts
+│   │   │   ├── github.ts
+│   │   │   ├── index.ts
+│   │   │   ├── tasks
+│   │   │   │   └── GitHubWebhookTask.ts
+│   │   │   └── uninstall.ts
+│   │   └── shared
+│   │       └── GitHubUtils.ts
+│   ├── google
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── auth
+│   │       │   └── google.ts
+│   │       ├── env.ts
+│   │       ├── google.ts
+│   │       └── index.ts
+│   ├── googleanalytics
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   └── index.tsx
+│   │   └── plugin.json
+│   ├── iframely
+│   │   └── server
+│   │       ├── env.ts
+│   │       ├── iframely.ts
+│   │       └── index.ts
+│   ├── linear
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   ├── components
+│   │   │   │   └── LinearButton.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   ├── server
+│   │   │   ├── api
+│   │   │   │   ├── linear.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── env.ts
+│   │   │   ├── index.ts
+│   │   │   ├── linear.ts
+│   │   │   ├── tasks
+│   │   │   │   └── UploadLinearWorkspaceLogoTask.ts
+│   │   │   └── uninstall.ts
+│   │   └── shared
+│   │       └── LinearUtils.ts
+│   ├── matomo
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   └── index.tsx
+│   │   └── plugin.json
+│   ├── notion
+│   │   ├── client
+│   │   │   ├── Imports.tsx
+│   │   │   ├── components
+│   │   │   │   └── ImportDialog.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   ├── server
+│   │   │   ├── api
+│   │   │   │   ├── notion.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── env.ts
+│   │   │   ├── index.ts
+│   │   │   ├── notion.ts
+│   │   │   ├── processors
+│   │   │   │   └── NotionImportsProcessor.ts
+│   │   │   ├── tasks
+│   │   │   │   └── NotionAPIImportTask.ts
+│   │   │   └── utils
+│   │   │       ├── NotionConverter.test.ts
+│   │   │       ├── NotionConverter.ts
+│   │   │       └── __snapshots__
+│   │   │           └── NotionConverter.test.ts.snap
+│   │   └── shared
+│   │       ├── NotionUtils.ts
+│   │       └── types.ts
+│   ├── oidc
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── auth
+│   │       │   ├── OIDCStrategy.ts
+│   │       │   ├── oidc.test.ts
+│   │       │   ├── oidc.ts
+│   │       │   └── oidcRouter.ts
+│   │       ├── env.ts
+│   │       ├── index.ts
+│   │       ├── oidc.ts
+│   │       ├── oidcDiscovery.test.ts
+│   │       └── oidcDiscovery.ts
+│   ├── slack
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   ├── components
+│   │   │   │   ├── SlackButton.tsx
+│   │   │   │   └── SlackListItem.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   ├── server
+│   │   │   ├── api
+│   │   │   │   ├── hooks.test.ts
+│   │   │   │   ├── hooks.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── auth
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── slack.test.ts
+│   │   │   │   └── slack.ts
+│   │   │   ├── env.ts
+│   │   │   ├── index.ts
+│   │   │   ├── presenters
+│   │   │   │   ├── messageAttachment.ts
+│   │   │   │   └── userNotLinkedBlocks.ts
+│   │   │   ├── processors
+│   │   │   │   └── SlackProcessor.ts
+│   │   │   └── slack.ts
+│   │   └── shared
+│   │       └── SlackUtils.ts
+│   ├── storage
+│   │   └── server
+│   │       ├── api
+│   │       │   ├── files.test.ts
+│   │       │   ├── files.ts
+│   │       │   └── schema.ts
+│   │       ├── index.ts
+│   │       └── test
+│   │           └── fixtures
+│   │               ├── avatar.jpg
+│   │               ├── export-markdown.zip
+│   │               └── images.docx
+│   ├── umami
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   └── index.tsx
+│   │   └── plugin.json
+│   ├── webhooks
+│   │   ├── client
+│   │   │   ├── Icon.tsx
+│   │   │   ├── Settings.tsx
+│   │   │   ├── components
+│   │   │   │   ├── WebhookSubscriptionDeleteDialog.tsx
+│   │   │   │   ├── WebhookSubscriptionEdit.tsx
+│   │   │   │   ├── WebhookSubscriptionForm.tsx
+│   │   │   │   ├── WebhookSubscriptionListItem.tsx
+│   │   │   │   └── WebhookSubscriptionNew.tsx
+│   │   │   └── index.tsx
+│   │   ├── plugin.json
+│   │   └── server
+│   │       ├── api
+│   │       │   ├── schema.ts
+│   │       │   ├── webhookSubscriptions.test.ts
+│   │       │   └── webhookSubscriptions.ts
+│   │       ├── index.ts
+│   │       ├── presenters
+│   │       │   ├── webhook.ts
+│   │       │   └── webhookSubscription.ts
+│   │       ├── processors
+│   │       │   ├── WebhookProcessor.test.ts
+│   │       │   └── WebhookProcessor.ts
+│   │       └── tasks
+│   │           ├── CleanupWebhookDeliveriesTask.test.ts
+│   │           ├── CleanupWebhookDeliveriesTask.ts
+│   │           ├── DeliverWebhookTask.test.ts
+│   │           └── DeliverWebhookTask.ts
+│   └── zapier
+│       ├── client
+│       │   ├── Icon.tsx
+│       │   ├── Settings.tsx
+│       │   └── index.tsx
+│       └── plugin.json
+├── public
+│   ├── email
+│   │   └── header-logo.png
+│   ├── fonts
+│   │   ├── Inter-italic.var.woff2
+│   │   └── Inter.var.woff2
+│   └── images
+│       ├── Icon-1024.png
+│       ├── abstract.png
+│       ├── airtable.png
+│       ├── apple-touch-icon.png
+│       ├── berrycast.png
+│       ├── bilibili.png
+│       ├── camunda.png
+│       ├── canva.png
+│       ├── cawemo.png
+│       ├── clickup.png
+│       ├── codepen.png
+│       ├── confluence.png
+│       ├── dbdiagram.png
+│       ├── descript.png
+│       ├── diagrams.png
+│       ├── dropbox.png
+│       ├── favicon-16.png
+│       ├── favicon-32.png
+│       ├── figma.png
+│       ├── framer.png
+│       ├── github-gist.png
+│       ├── gitlab.png
+│       ├── gliffy.png
+│       ├── google-*.png  (9 files)
+│       ├── grist.png
+│       ├── icon-192.png
+│       ├── icon-512.png
+│       ├── instagram.png
+│       ├── invision.png
+│       ├── jsfiddle.png
+│       ├── link.png
+│       ├── linkedin.png
+│       ├── loom.png
+│       ├── lucidchart.png
+│       ├── marvel.png
+│       ├── mermaidjs.png
+│       ├── mindmeister.png
+│       ├── miro.png
+│       ├── mode-analytics.png
+│       ├── notion.png
+│       ├── otter.png
+│       ├── pinterest.png
+│       ├── pitch.png
+│       ├── plantuml.png
+│       ├── prezi.png
+│       ├── scribe.png
+│       ├── slack.png
+│       ├── smartsuite.png
+│       ├── spotify.png
+│       ├── tella.png
+│       ├── tldraw.png
+│       ├── trello.png
+│       ├── typeform.png
+│       ├── valtown.png
+│       ├── vimeo.png
+│       ├── whimsical.png
+│       ├── youtube.png
+│       └── zapier.png
+├── relativeci.config.js
+├── server
+│   ├── .oxlintrc.json
+│   ├── __mocks__
+│   │   ├── bull.ts
+│   │   ├── dd-trace.ts
+│   │   ├── events.ts
+│   │   └── fetch-with-proxy.ts
+│   ├── collaboration
+│   │   ├── AuthenticationExtension.ts
+│   │   ├── ConnectionLimitExtension.test.ts
+│   │   ├── ConnectionLimitExtension.ts
+│   │   ├── EditorVersionExtension.ts
+│   │   ├── LoggerExtension.ts
+│   │   ├── MetricsExtension.ts
+│   │   ├── PersistenceExtension.ts
+│   │   ├── Procfile
+│   │   ├── ViewsExtension.ts
+│   │   └── types.ts
+│   ├── commands
+│   │   ├── accountProvisioner.test.ts
+│   │   ├── accountProvisioner.ts
+│   │   ├── attachmentCreator.ts
+│   │   ├── collectionExporter.ts
+│   │   ├── documentCollaborativeUpdater.ts
+│   │   ├── documentCreator.test.ts
+│   │   ├── documentCreator.ts
+│   │   ├── documentDuplicator.test.ts
+│   │   ├── documentDuplicator.ts
+│   │   ├── documentImporter.test.ts
+│   │   ├── documentImporter.ts
+│   │   ├── documentLoader.ts
+│   │   ├── documentMover.test.ts
+│   │   ├── documentMover.ts
+│   │   ├── documentPermanentDeleter.test.ts
+│   │   ├── documentPermanentDeleter.ts
+│   │   ├── documentUpdater.test.ts
+│   │   ├── documentUpdater.ts
+│   │   ├── pinCreator.test.ts
+│   │   ├── pinCreator.ts
+│   │   ├── revisionCreator.test.ts
+│   │   ├── revisionCreator.ts
+│   │   ├── shareLoader.test.ts
+│   │   ├── shareLoader.ts
+│   │   ├── starCreator.test.ts
+│   │   ├── starCreator.ts
+│   │   ├── subscriptionCreator.test.ts
+│   │   ├── subscriptionCreator.ts
+│   │   ├── teamCreator.ts
+│   │   ├── teamPermanentDeleter.test.ts
+│   │   ├── teamPermanentDeleter.ts
+│   │   ├── teamProvisioner.test.ts
+│   │   ├── teamProvisioner.ts
+│   │   ├── teamUpdater.ts
+│   │   ├── userInviter.test.ts
+│   │   ├── userInviter.ts
+│   │   ├── userProvisioner.test.ts
+│   │   └── userProvisioner.ts
+│   ├── config
+│   │   ├── certs
+│   │   │   └── .gitkeep
+│   │   └── database.js
+│   ├── context.ts
+│   ├── editor
+│   │   ├── index.test.ts
+│   │   └── index.ts
+│   ├── emails
+│   │   ├── mailer.tsx
+│   │   └── templates
+│   │       ├── BaseEmail.tsx
+│   │       ├── CollectionCreatedEmail.tsx
+│   │       ├── CollectionSharedEmail.tsx
+│   │       ├── CommentCreatedEmail.tsx
+│   │       ├── CommentMentionedEmail.tsx
+│   │       ├── CommentResolvedEmail.tsx
+│   │       ├── ConfirmTeamDeleteEmail.tsx
+│   │       ├── ConfirmUpdateEmail.tsx
+│   │       ├── ConfirmUserDeleteEmail.tsx
+│   │       ├── DocumentMentionedEmail.tsx
+│   │       ├── DocumentPublishedOrUpdatedEmail.tsx
+│   │       ├── DocumentSharedEmail.tsx
+│   │       ├── ExportFailureEmail.tsx
+│   │       ├── ExportSuccessEmail.tsx
+│   │       ├── GroupCommentMentionedEmail.tsx
+│   │       ├── GroupDocumentMentionedEmail.tsx
+│   │       ├── InviteAcceptedEmail.tsx
+│   │       ├── InviteEmail.tsx
+│   │       ├── InviteReminderEmail.tsx
+│   │       ├── SigninEmail.tsx
+│   │       ├── WebhookDisabledEmail.tsx
+│   │       ├── WelcomeEmail.tsx
+│   │       ├── components
+│   │       │   ├── Body.tsx
+│   │       │   ├── Button.tsx
+│   │       │   ├── CopyableCode.tsx
+│   │       │   ├── Diff.tsx
+│   │       │   ├── EmailLayout.tsx
+│   │       │   ├── EmptySpace.tsx
+│   │       │   ├── Footer.tsx
+│   │       │   ├── Header.tsx
+│   │       │   └── Heading.tsx
+│   │       └── index.ts
+│   ├── env.ts
+│   ├── errors.ts
+│   ├── index.ts
+│   ├── logging
+│   │   ├── Logger.ts
+│   │   ├── Metrics.ts
+│   │   ├── sentry.ts
+│   │   ├── tracer.ts
+│   │   └── tracing.ts
+│   ├── middlewares
+│   │   ├── apexAuthRedirect.ts
+│   │   ├── apexRedirect.ts
+│   │   ├── authentication.test.ts
+│   │   ├── authentication.ts
+│   │   ├── coaleseBody.ts
+│   │   ├── csp.ts
+│   │   ├── csrf.ts
+│   │   ├── feature.ts
+│   │   ├── multipart.ts
+│   │   ├── passport.ts
+│   │   ├── rateLimiter.ts
+│   │   ├── requestTracer.ts
+│   │   ├── shareDomains.ts
+│   │   ├── transaction.ts
+│   │   ├── validate.ts
+│   │   └── validateWebhook.ts
+│   ├── migrations
+│   │   ├── 20160619080644-initial.js
+│   │   ├── 20160622043741-add-parent-document.js
+│   │   ├── 20160626063409-add-indexes.js
+│   │   ├── 20160626175224-add-revisions.js
+│   │   ├── 20160711071958-search-index.js
+│   │   ├── 20160726061511-atlas-creator.js
+│   │   ├── 20160812145029-document-atlas-soft-delete.js
+│   │   ├── 20160814083127-paranoia-indeces.js
+│   │   ├── 20160814095336-add-document-createdById.js
+│   │   ├── 20160814111419-add-document-collaboratorIds.js
+│   │   ├── 20160815142720-app-collection-urlId.js
+│   │   ├── 20160816082738-add-revision-index.js
+│   │   ├── 20160824061730-add-apikeys.js
+│   │   ├── 20160824062457-add-apikey-indeces.js
+│   │   ├── 20160911230444-user-optional-slack-id.js
+│   │   ├── 20160911232911-user-unique-fields.js
+│   │   ├── 20160911234928-user-password.js
+│   │   ├── 20170603185012-add-collection-documentStructure-migration.js
+│   │   ├── 20170604052346-add-views.js
+│   │   ├── 20170604052347-add-stars.js
+│   │   ├── 20170712055148-non-unique-email.js
+│   │   ├── 20170712072234-uniq-slack-id.js
+│   │   ├── 20170729215619-emoji.js
+│   │   ├── 20170827182423-improve-references.js
+│   │   ├── 20170904202454-allow-null-username.js
+│   │   ├── 20171010042938-add-event.js
+│   │   ├── 20171016012353-remove-collection-navigationtree.js
+│   │   ├── 20171017055026-remove-document-html.js
+│   │   ├── 20171019071915-user-avatar-url.js
+│   │   ├── 20171023064220-collection-color.js
+│   │   ├── 20171218043717-add-authentications.js
+│   │   ├── 20171225143838-set-admins.js
+│   │   ├── 20180115021837-add-drafts.js
+│   │   ├── 20180212033504-add-integrations.js
+│   │   ├── 20180225203847-document-pinning.js
+│   │   ├── 20180303193036-suspended-users.js
+│   │   ├── 20180324214403-serializer-upgrade.js
+│   │   ├── 20180513041057-add-share-links.js
+│   │   ├── 20180528233909-google-auth.js
+│   │   ├── 20180528233910-rename-serviceid.js
+│   │   ├── 20180604182823-user-tracking.js
+│   │   ├── 20180604191743-revoke-share-links.js
+│   │   ├── 20180707220121-more-soft-delete.js
+│   │   ├── 20180707231201-remove-passwords.js
+│   │   ├── 20180708231200-serviceid-null.js
+│   │   ├── 20180808061353-cleanup.js
+│   │   ├── 20180819054252-disable-sharing.js
+│   │   ├── 20181031015046-add-subdomain-to-team.js
+│   │   ├── 20181124000438-add-notifications.js
+│   │   ├── 20181215192422-document-embeds.js
+│   │   ├── 20181227001547-collection-permissions.js
+│   │   ├── 20190404035736-add-archive.js
+│   │   ├── 20190423051708-add-search-indexes.js
+│   │   ├── 20190606035733-events.js
+│   │   ├── 20190704070630-welcome-docs.js
+│   │   ├── 20190706213213-backlinks.js
+│   │   ├── 20190811231511-maintainers.js
+│   │   ├── 20191118023010-cascade-delete.js
+│   │   ├── 20191119023010-cascade-backlinks.js
+│   │   ├── 20191119023011-cascade-parent-documents.js
+│   │   ├── 20191119023012-cascade-shares.js
+│   │   ├── 20191119023013-cascade-backlinks2.js
+│   │   ├── 20191121035144-guest-invite.js
+│   │   ├── 20191211044318-create-groups.js
+│   │   ├── 20191211044319-create-group-users.js
+│   │   ├── 20191228031525-edit-presence.js
+│   │   ├── 20200104233831-attachments.js
+│   │   ├── 20200122083721-create-collection-groups.js
+│   │   ├── 20200316040755-document-editor-version.js
+│   │   ├── 20200328175012-cascade-delete.js
+│   │   ├── 20200330053639-document-version.js
+│   │   ├── 20200519032353-text-backup.js
+│   │   ├── 20200522054958-collection-icon.js
+│   │   ├── 20200723055414-add-published-to-shares.js
+│   │   ├── 20200727051157-add-templates.js
+│   │   ├── 20200812170227-remove-collection-type.js
+│   │   ├── 20200915010511-create-search-queries.js
+│   │   ├── 20200926204620-add-missing-indexes.js
+│   │   ├── 20201028043021-reverse-document-id-index.js
+│   │   ├── 20201103050534-custom-domains.js
+│   │   ├── 20201106122752-i18n.js
+│   │   ├── 20201206210619-update-attachment-cols.js
+│   │   ├── 20201211080408-attachment-no-cascade.js
+│   │   ├── 20201230031607-collection-sort.js
+│   │   ├── 20210110143902-collection-rename-creator-id.js
+│   │   ├── 20210208062816-disable-collection-sharing.js
+│   │   ├── 20210218111237-add-collection-index.js
+│   │   ├── 20210226232041-authentication-providers.js
+│   │   ├── 20210310051804-passport.js
+│   │   ├── 20210314173941-isViewer.js
+│   │   ├── 20210327005406-read-only-collections.js
+│   │   ├── 20210418053152-share-last-viewed.js
+│   │   ├── 20210426055334-nested-document-sharing.js
+│   │   ├── 20210430024222-marketing-tracking.js
+│   │   ├── 20210716064654-introduce-previousTitles.js
+│   │   ├── 20210716071454-search-index-previousTitles.js
+│   │   ├── 20210716162923-events-indexes.js
+│   │   ├── 20210730042450-remove-unused-indexes.js
+│   │   ├── 20210730044247-remove-backup-column.js
+│   │   ├── 20210730044248-create-realtime.js
+│   │   ├── 20210730210120-add-fileOperations.js
+│   │   ├── 20210915051740-collaborative-collections.js
+│   │   ├── 20210921031555-missing-cascades.js
+│   │   ├── 20210923031555-missing-cascades.js
+│   │   ├── 20211003021903-missing-cascades.js
+│   │   ├── 20211015170955-add-defaultUserRole.js
+│   │   ├── 20211107021900-missing-cascades.js
+│   │   ├── 20211217054419-integration-events.js
+│   │   ├── 20211218185045-remove-unused-indexes.js
+│   │   ├── 20211218193004-documents-full-width.js
+│   │   ├── 20211221031430-create-pins.js
+│   │   ├── 20220117012250-add-starred-sorting.js
+│   │   ├── 20220127000000-index-fixes.js
+│   │   ├── 20220129092607-add-defaultCollectionId.js
+│   │   ├── 20220206225006-add-error-to-file-operation.js
+│   │   ├── 20220305195830-create-comments.js
+│   │   ├── 20220311020825-views-indexes.js
+│   │   ├── 20220319022812-events-indexes.js
+│   │   ├── 20220319060408-collection-create-permission.js
+│   │   ├── 20220328215615-add-shareId-to-search-queries.js
+│   │   ├── 20220402032204-starred-collections.js
+│   │   ├── 20220409222213-user-flags.js
+│   │   ├── 20220409225935-user-invited-by.js
+│   │   ├── 20220413213537-add-inviteRequired-to-teams.js
+│   │   ├── 20220419052832-create-team-domains.js
+│   │   ├── 20220421052253-create-file-operation-format.js
+│   │   ├── 20220430043135-collection-sort-backfill.js
+│   │   ├── 20220521164111-create-webhook-subscription.js
+│   │   ├── 20220525054603-user-authentication-expires-at.js
+│   │   ├── 20220606031139-create-webhook-delivieries.js
+│   │   ├── 20220702132722-add-webhooks-deleted-at.js
+│   │   ├── 20220719121200-create-subscriptions.js
+│   │   ├── 20220720221531-remove-deprecated-columns.js
+│   │   ├── 20220722184916-remove-event-updatedat.js
+│   │   ├── 20220810185000-scope-provider-id-uniqueness-to-team.js
+│   │   ├── 20220812115059-scope-user-auth-provider-id-uniqueness-to-user.js
+│   │   ├── 20220816070527-change-column-authentication-id-nullable.js
+│   │   ├── 20220816175234-user-email-index.js
+│   │   ├── 20220828144837-add-columns-to-notifications-for-tracking.js
+│   │   ├── 20220830215146-add-shares-views.js
+│   │   ├── 20220907132304-user-preferences.js
+│   │   ├── 20220907140227-team-preferences.js
+│   │   ├── 20220909203454-fix-notification-constraints.js
+│   │   ├── 20220922073737-webhook-signing-secret.js
+│   │   ├── 20220928030442-fix-avatar-urls.js
+│   │   ├── 20221111171828-fix-user-constraints.js
+│   │   ├── 20221112152649-import-document-relationship.js
+│   │   ├── 20221112162341-attachment-tracking.js
+│   │   ├── 20221120151710-attachment-expiry.js
+│   │   ├── 20221206163421-add-share-url-slug.js
+│   │   ├── 20221218013627-fix-webhook-subscription-constraints.js
+│   │   ├── 20221219013835-fix-integration-constraints.js
+│   │   ├── 20221230234256-add-stars-cascade.js
+│   │   ├── 20230101144349-integration-indexes.js
+│   │   ├── 20230204191035-update-tsvector-trigger.js
+│   │   ├── 20230314013103-move-notification-settings.js
+│   │   ├── 20230317144617-remove-user-username.js
+│   │   ├── 20230330181038-remove-column-userId-from-documents.js
+│   │   ├── 20230403120315-add-comment-to-notifications.js
+│   │   ├── 20230419124305-add-archivedat-col-to-notifications.js
+│   │   ├── 20230419132159-add-indexes-to-notifications.js
+│   │   ├── 20230429005039-collection-admins.js
+│   │   ├── 20230430213332-remove-notification-settings.js
+│   │   ├── 20230621004649-add-include-attachments-file-operation.js
+│   │   ├── 20230720002422-add-insights-control.js
+│   │   ├── 20230723231806-fix-file-operation-constraints.js
+│   │   ├── 20230815063830-add-emoji-to-revisions.js
+│   │   ├── 20230815063834-migrate-emoji-in-document-title.js
+│   │   ├── 20230827234031-migrate-emoji-in-revision-title.js
+│   │   ├── 20230920032853-add-key-index.js
+│   │   ├── 20230921071140-rename-collection-groups.js
+│   │   ├── 20230922105047-rename-collection-users.js
+│   │   ├── 20231001032754-file-operation-paranoid.js
+│   │   ├── 20231101021239-share-domain.js
+│   │   ├── 20231103114720-add-column-index-to-user-permissions.js
+│   │   ├── 20231111023920-add-source-metadata.js
+│   │   ├── 20231118195149-add-content-to-documents.js
+│   │   ├── 20231120074257-add-column-id-to-user-permissions.js
+│   │   ├── 20231120142213-add-column-id-to-group-permissions.js
+│   │   ├── 20231123022323-add-suspended-at-teams.js
+│   │   ├── 20231129011114-cascade-delete.js
+│   │   ├── 20231206041706-search-query-score.js
+│   │   ├── 20231212011038-search-query-answer.js
+│   │   ├── 20231227040129-update-tsvector-trigger.js
+│   │   ├── 20240113143315-user-permission-source-id.js
+│   │   ├── 20240121172253-add-missing-cascades.js
+│   │   ├── 20240203061519-integration-soft-delete.js
+│   │   ├── 20240204171556-add-event-changeset.js
+│   │   ├── 20240204185157-team-last-active-at.js
+│   │   ├── 20240216182003-add-summary-to-documents.js
+│   │   ├── 20240229034214-search-query-relationship.js
+│   │   ├── 20240317171826-add-authentication-refresh-token.js
+│   │   ├── 20240319230356-fix-user-permissions-createdby-constraint.js
+│   │   ├── 20240327015248-add-user-role.js
+│   │   ├── 20240327235446-role-non-nullable.js
+│   │   ├── 20240329012958-remove-old-role-columns.js
+│   │   ├── 20240413010743-add-options-to-file-operation.js
+│   │   ├── 20240413042634-member-team-create.js
+│   │   ├── 20240524234042-add-content-to-collection.js
+│   │   ├── 20240617030911-add-apikey-expiry.js
+│   │   ├── 20240617151506-add-icon-to-document.js
+│   │   ├── 20240618201908-add-lastActiveAt-to-apikey.js
+│   │   ├── 20240625051656-remove-emoji-column.js
+│   │   ├── 20240709031512-group-permission-source-id.js
+│   │   ├── 20240717061527-add-column-archivedAt-collections.js
+│   │   ├── 20240806080954-group-users-paranoid.js
+│   │   ├── 20240809054702-add-column-archivedById-to-collections.js
+│   │   ├── 20240810080954-group-users-remove-deleted-at.js
+│   │   ├── 20240821001616-add-notifications-index.js
+│   │   ├── 20240821002344-add-user-permission-index.js
+│   │   ├── 20240821002502-add-user-authentication-index.js
+│   │   ├── 20240828081032-add-notifications-index.js
+│   │   ├── 20240912222438-add-unaccent-extension.js
+│   │   ├── 20240929194201-add-hash-to-api-key.js
+│   │   ├── 20240930113921-hash-api-keys.js
+│   │   ├── 20241013080608-create-reactions.js
+│   │   ├── 20241030235556-event-auth-type.js
+│   │   ├── 20241105132600-add-allowIndexing-to-shares.js
+│   │   ├── 20241105203523-add-user-timezone.js
+│   │   ├── 20241127151705-attachment-tracking.js
+│   │   ├── 20241219023150-group-external-id.js
+│   │   ├── 20241231045203-add-attachments-teamId-index.js
+│   │   ├── 20250125031823-add-api-key-scopes.js
+│   │   ├── 20250207120103-add-collectionId-to-subscriptions.js
+│   │   ├── 20250217012609-document-title-index.js
+│   │   ├── 20250217230810-add-team-previous-subdomains.js
+│   │   ├── 20250223142558-cascade-team-domain.js
+│   │   ├── 20250225153529-add-notification-membershipId.js
+│   │   ├── 20250301234423-add-name-to-revisions.js
+│   │   ├── 20250306181804-create-imports.js
+│   │   ├── 20250310043011-create-import-tasks.js
+│   │   ├── 20250314105847-add-apiImportId-to-collections-and-documents.js
+│   │   ├── 20250327062414-resolve-collection-index-collisions.js
+│   │   ├── 20250327110739-add-error-to-imports.js
+│   │   ├── 20250331231413-add-oauth-server-models.js
+│   │   ├── 20250409184249-add-issueSources-to-integrations.js
+│   │   ├── 20250429130521-add-collection-commenting.js
+│   │   ├── 20250515031645-add-revisions-deleted-at.js
+│   │   ├── 20250530235814-add-collaborator-ids-to-revisions.js
+│   │   ├── 20250531002344-add-description-to-teams.js
+│   │   ├── 20250531003217-add-show-last-updated-to-shares.js
+│   │   ├── 20250601223331-migrate-backlink-to-relationship.js
+│   │   ├── 20250630100046-add-oauth-to-search-queries-source.js
+│   │   ├── 20250630175759-add-collection-id-to-shares.js
+│   │   ├── 20250810173939-remove-team-name-nullable.js
+│   │   ├── 20250810210844-add-data-to-notifications.js
+│   │   ├── 20250826204500-modify-shares-unique-constraint-with-revoked-condition.js
+│   │   ├── 20250828094500-update-group-user-role.js
+│   │   ├── 20250830060500-add-expires-at-to-authentications.js
+│   │   ├── 20250907220205-add-missing-indexes.js
+│   │   ├── 20250913202342-add-source-metadata-to-collections.js
+│   │   ├── 20250917124000-fix-shares-collection-cascade.js
+│   │   ├── 20251001133733-shares-show-toc.js
+│   │   ├── 20251013204025-add-group-to-notifications.js
+│   │   └── 20251023031630-add-disable-mentions-to-groups.js
+│   ├── models
+│   │   ├── ApiKey.test.ts
+│   │   ├── ApiKey.ts
+│   │   ├── Attachment.ts
+│   │   ├── AuthenticationProvider.ts
+│   │   ├── Collection.test.ts
+│   │   ├── Collection.ts
+│   │   ├── Comment.ts
+│   │   ├── Document.test.ts
+│   │   ├── Document.ts
+│   │   ├── Event.ts
+│   │   ├── FileOperation.ts
+│   │   ├── Group.ts
+│   │   ├── GroupMembership.test.ts
+│   │   ├── GroupMembership.ts
+│   │   ├── GroupUser.ts
+│   │   ├── Import.ts
+│   │   ├── ImportTask.ts
+│   │   ├── Integration.ts
+│   │   ├── IntegrationAuthentication.ts
+│   │   ├── Notification.test.ts
+│   │   ├── Notification.ts
+│   │   ├── Pin.ts
+│   │   ├── Reaction.ts
+│   │   ├── Relationship.ts
+│   │   ├── Revision.test.ts
+│   │   ├── Revision.ts
+│   │   ├── SearchQuery.ts
+│   │   ├── Share.ts
+│   │   ├── Star.ts
+│   │   ├── Subscription.ts
+│   │   ├── Team.test.ts
+│   │   ├── Team.ts
+│   │   ├── TeamDomain.test.ts
+│   │   ├── TeamDomain.ts
+│   │   ├── User.test.ts
+│   │   ├── User.ts
+│   │   ├── UserAuthentication.ts
+│   │   ├── UserMembership.test.ts
+│   │   ├── UserMembership.ts
+│   │   ├── View.test.ts
+│   │   ├── View.ts
+│   │   ├── WebhookDelivery.ts
+│   │   ├── WebhookSubscription.ts
+│   │   ├── base
+│   │   │   ├── ArchivableModel.ts
+│   │   │   ├── IdModel.ts
+│   │   │   ├── Model.test.ts
+│   │   │   ├── Model.ts
+│   │   │   └── ParanoidModel.ts
+│   │   ├── decorators
+│   │   │   ├── Changeset.ts
+│   │   │   ├── CounterCache.ts
+│   │   │   ├── Deprecated.ts
+│   │   │   ├── Encrypted.ts
+│   │   │   └── Fix.ts
+│   │   ├── helpers
+│   │   │   ├── AttachmentHelper.test.ts
+│   │   │   ├── AttachmentHelper.ts
+│   │   │   ├── AuthenticationHelper.ts
+│   │   │   ├── DocumentHelper.test.ts
+│   │   │   ├── DocumentHelper.tsx
+│   │   │   ├── HTMLHelper.test.ts
+│   │   │   ├── HTMLHelper.ts
+│   │   │   ├── NotificationHelper.test.ts
+│   │   │   ├── NotificationHelper.ts
+│   │   │   ├── NotificationSettingsHelper.ts
+│   │   │   ├── ProseMirrorHelper.test.ts
+│   │   │   ├── ProsemirrorHelper.tsx
+│   │   │   ├── SearchHelper.test.ts
+│   │   │   ├── SearchHelper.ts
+│   │   │   ├── SubscriptionHelper.test.ts
+│   │   │   ├── SubscriptionHelper.ts
+│   │   │   └── TextHelper.ts
+│   │   ├── index.ts
+│   │   ├── oauth
+│   │   │   ├── OAuthAuthentication.ts
+│   │   │   ├── OAuthAuthorizationCode.ts
+│   │   │   └── OAuthClient.ts
+│   │   └── validators
+│   │       ├── IsFQDN.ts
+│   │       ├── IsHexColor.ts
+│   │       ├── IsUrlOrRelativePath.ts
+│   │       ├── Length.ts
+│   │       ├── NotContainsUrl.ts
+│   │       └── TextLength.ts
+│   ├── onboarding
+│   │   ├── Getting Started.md
+│   │   ├── Integrations & API.md
+│   │   ├── Our Editor.md
+│   │   └── What is Outline.md
+│   ├── onerror.ts
+│   ├── policies
+│   │   ├── apiKey.ts
+│   │   ├── attachment.ts
+│   │   ├── authenticationProvider.ts
+│   │   ├── cancan.ts
+│   │   ├── collection.test.ts
+│   │   ├── collection.ts
+│   │   ├── comment.ts
+│   │   ├── document.test.ts
+│   │   ├── document.ts
+│   │   ├── fileOperation.ts
+│   │   ├── group.ts
+│   │   ├── import.ts
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── integration.ts
+│   │   ├── notification.ts
+│   │   ├── oauthAuthentication.ts
+│   │   ├── oauthClient.ts
+│   │   ├── pins.ts
+│   │   ├── reaction.ts
+│   │   ├── revision.ts
+│   │   ├── searchQuery.ts
+│   │   ├── share.ts
+│   │   ├── star.ts
+│   │   ├── subscription.ts
+│   │   ├── team.test.ts
+│   │   ├── team.ts
+│   │   ├── user.ts
+│   │   ├── userMembership.ts
+│   │   ├── utils.ts
+│   │   └── webhookSubscription.ts
+│   ├── presenters
+│   │   ├── __snapshots__
+│   │   │   └── user.test.ts.snap
+│   │   ├── apiKey.ts
+│   │   ├── attachment.ts
+│   │   ├── authenticationProvider.ts
+│   │   ├── availableTeam.ts
+│   │   ├── collection.ts
+│   │   ├── comment.ts
+│   │   ├── document.ts
+│   │   ├── env.ts
+│   │   ├── event.ts
+│   │   ├── fileOperation.ts
+│   │   ├── group.ts
+│   │   ├── groupMembership.ts
+│   │   ├── groupUser.ts
+│   │   ├── import.ts
+│   │   ├── index.ts
+│   │   ├── integration.ts
+│   │   ├── membership.ts
+│   │   ├── notification.ts
+│   │   ├── oauthAuthentication.ts
+│   │   ├── oauthClient.ts
+│   │   ├── pin.ts
+│   │   ├── policy.ts
+│   │   ├── providerConfig.ts
+│   │   ├── publicTeam.ts
+│   │   ├── reaction.ts
+│   │   ├── relationship.ts
+│   │   ├── revision.ts
+│   │   ├── searchQuery.ts
+│   │   ├── share.ts
+│   │   ├── star.ts
+│   │   ├── subscription.ts
+│   │   ├── team.ts
+│   │   ├── unfurl.ts
+│   │   ├── user.test.ts
+│   │   ├── user.ts
+│   │   └── view.ts
+│   ├── queues
+│   │   ├── HealthMonitor.ts
+│   │   ├── index.ts
+│   │   ├── processors
+│   │   │   ├── ApiKeyCleanupProcessor.ts
+│   │   │   ├── AvatarProcessor.ts
+│   │   │   ├── BacklinksProcessor.test.ts
+│   │   │   ├── BacklinksProcessor.ts
+│   │   │   ├── BaseProcessor.ts
+│   │   │   ├── CollectionsProcessor.ts
+│   │   │   ├── DebounceProcessor.ts
+│   │   │   ├── DocumentMovedProcessor.ts
+│   │   │   ├── DocumentSubscriptionProcessor.ts
+│   │   │   ├── EmailsProcessor.ts
+│   │   │   ├── FileOperationCreatedProcessor.ts
+│   │   │   ├── FileOperationDeletedProcessor.ts
+│   │   │   ├── ImportsProcessor.ts
+│   │   │   ├── IntegrationCreatedProcessor.ts
+│   │   │   ├── IntegrationDeletedProcessor.ts
+│   │   │   ├── NotificationsProcessor.ts
+│   │   │   ├── OAuthClientDeletedProcessor.ts
+│   │   │   ├── OAuthClientUnpublishedProcessor.ts
+│   │   │   ├── RevisionsProcessor.test.ts
+│   │   │   ├── RevisionsProcessor.ts
+│   │   │   ├── UserDeletedProcessor.test.ts
+│   │   │   ├── UserDeletedProcessor.ts
+│   │   │   ├── UserDemotedProcessor.ts
+│   │   │   ├── UserSuspendedProcessor.ts
+│   │   │   ├── WebsocketsProcessor.ts
+│   │   │   └── index.ts
+│   │   ├── queue.ts
+│   │   └── tasks
+│   │       ├── APIImportTask.ts
+│   │       ├── BaseTask.ts
+│   │       ├── CacheIssueSourcesTask.ts
+│   │       ├── CleanupDeletedDocumentsTask.test.ts
+│   │       ├── CleanupDeletedDocumentsTask.ts
+│   │       ├── CleanupDeletedTeamTask.ts
+│   │       ├── CleanupDeletedTeamsTask.ts
+│   │       ├── CleanupDemotedUserTask.test.ts
+│   │       ├── CleanupDemotedUserTask.ts
+│   │       ├── CleanupExpiredAttachmentsTask.ts
+│   │       ├── CleanupExpiredFileOperationsTask.test.ts
+│   │       ├── CleanupExpiredFileOperationsTask.ts
+│   │       ├── CleanupOAuthAuthorizationCodeTask.test.ts
+│   │       ├── CleanupOAuthAuthorizationCodeTask.ts
+│   │       ├── CleanupOldEventsTask.ts
+│   │       ├── CleanupOldImportsTask.ts
+│   │       ├── CleanupOldNotificationsTask.ts
+│   │       ├── CollectionAddUserNotificationsTask.ts
+│   │       ├── CollectionCreatedNotificationsTask.ts
+│   │       ├── CollectionSubscriptionRemoveUserTask.ts
+│   │       ├── CommentCreatedNotificationsTask.ts
+│   │       ├── CommentUpdatedNotificationsTask.ts
+│   │       ├── DeleteAttachmentTask.ts
+│   │       ├── DetachDraftsFromCollectionTask.test.ts
+│   │       ├── DetachDraftsFromCollectionTask.ts
+│   │       ├── DocumentAddGroupNotificationsTask.ts
+│   │       ├── DocumentAddUserNotificationsTask.ts
+│   │       ├── DocumentImportTask.ts
+│   │       ├── DocumentPublishedNotificationsTask.test.ts
+│   │       ├── DocumentPublishedNotificationsTask.ts
+│   │       ├── DocumentSubscriptionRemoveUserTask.ts
+│   │       ├── DocumentUpdateTextTask.ts
+│   │       ├── EmailTask.ts
+│   │       ├── EmptyTrashTask.ts
+│   │       ├── ErrorTimedOutFileOperationsTask.test.ts
+│   │       ├── ErrorTimedOutFileOperationsTask.ts
+│   │       ├── ErrorTimedOutImportsTask.ts
+│   │       ├── ExportDocumentTreeTask.ts
+│   │       ├── ExportHTMLZipTask.ts
+│   │       ├── ExportJSONTask.ts
+│   │       ├── ExportMarkdownZipTask.ts
+│   │       ├── ExportTask.ts
+│   │       ├── ImportJSONTask.test.ts
+│   │       ├── ImportJSONTask.ts
+│   │       ├── ImportMarkdownZipTask.test.ts
+│   │       ├── ImportMarkdownZipTask.ts
+│   │       ├── ImportTask.ts
+│   │       ├── InviteReminderTask.test.ts
+│   │       ├── InviteReminderTask.ts
+│   │       ├── ReactionCreatedNotificationsTask.ts
+│   │       ├── ReactionRemovedNotificationsTask.ts
+│   │       ├── RevisionCreatedNotificationsTask.test.ts
+│   │       ├── RevisionCreatedNotificationsTask.ts
+│   │       ├── UpdateTeamAttachmentsSizeTask.ts
+│   │       ├── UpdateTeamsAttachmentsSizeTask.ts
+│   │       ├── UploadAttachmentFromUrlTask.ts
+│   │       ├── UploadAttachmentsForImportTask.ts
+│   │       ├── UploadTeamAvatarTask.ts
+│   │       ├── UploadUserAvatarTask.ts
+│   │       ├── ValidateSSOAccessTask.ts
+│   │       └── index.ts
+│   ├── routes
+│   │   ├── api
+│   │   │   ├── apiKeys
+│   │   │   │   ├── apiKeys.test.ts
+│   │   │   │   ├── apiKeys.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── attachments
+│   │   │   │   ├── attachments.test.ts
+│   │   │   │   ├── attachments.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── auth
+│   │   │   │   ├── auth.test.ts
+│   │   │   │   ├── auth.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── authenticationProviders
+│   │   │   │   ├── authenticationProviders.test.ts
+│   │   │   │   ├── authenticationProviders.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── collections
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── collections.test.ts.snap
+│   │   │   │   ├── collections.test.ts
+│   │   │   │   ├── collections.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── comments
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── comments.test.ts.snap
+│   │   │   │   ├── comments.test.ts
+│   │   │   │   ├── comments.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── cron
+│   │   │   │   ├── cron.test.ts
+│   │   │   │   ├── cron.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── developer
+│   │   │   │   ├── developer.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── documents
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── documents.test.ts.snap
+│   │   │   │   ├── documents.test.ts
+│   │   │   │   ├── documents.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── events
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── events.test.ts.snap
+│   │   │   │   ├── events.test.ts
+│   │   │   │   ├── events.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── fileOperations
+│   │   │   │   ├── fileOperations.test.ts
+│   │   │   │   ├── fileOperations.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── groupMemberships
+│   │   │   │   ├── groupMemberships.test.ts
+│   │   │   │   ├── groupMemberships.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── groups
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── groups.test.ts.snap
+│   │   │   │   ├── groups.test.ts
+│   │   │   │   ├── groups.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── imports
+│   │   │   │   ├── imports.test.ts
+│   │   │   │   ├── imports.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── installation
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── installation.test.ts
+│   │   │   │   ├── installation.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── integrations
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── integrations.test.ts
+│   │   │   │   ├── integrations.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── apiErrorHandler.ts
+│   │   │   │   ├── apiResponse.ts
+│   │   │   │   ├── editor.ts
+│   │   │   │   ├── pagination.test.ts
+│   │   │   │   └── pagination.ts
+│   │   │   ├── notifications
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── notifications.test.ts
+│   │   │   │   ├── notifications.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── oauthAuthentications
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── oauthAuthentications.test.ts.snap
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── oauthAuthentications.test.ts
+│   │   │   │   ├── oauthAuthentications.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── oauthClients
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── oauthClients.test.ts.snap
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── oauthClients.test.ts
+│   │   │   │   ├── oauthClients.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── pins
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── pins.test.ts
+│   │   │   │   ├── pins.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── reactions
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── reactions.test.ts.snap
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── reactions.test.ts
+│   │   │   │   ├── reactions.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── relationships
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── relationships.test.ts
+│   │   │   │   ├── relationships.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── revisions
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── revisions.test.ts
+│   │   │   │   ├── revisions.ts
+│   │   │   │   └── schema.ts
+│   │   │   ├── schema.ts
+│   │   │   ├── searches
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── searches.test.ts
+│   │   │   │   └── searches.ts
+│   │   │   ├── shares
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── shares.test.ts.snap
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── shares.test.ts
+│   │   │   │   └── shares.ts
+│   │   │   ├── stars
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── stars.test.ts
+│   │   │   │   └── stars.ts
+│   │   │   ├── subscriptions
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── subscriptions.test.ts
+│   │   │   │   └── subscriptions.ts
+│   │   │   ├── suggestions
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   └── suggestions.ts
+│   │   │   ├── teams
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── teams.test.ts
+│   │   │   │   └── teams.ts
+│   │   │   ├── urls
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── urls.test.ts
+│   │   │   │   └── urls.ts
+│   │   │   ├── userMemberships
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── userMemberships.test.ts
+│   │   │   │   └── userMemberships.ts
+│   │   │   ├── users
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── users.test.ts.snap
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schema.ts
+│   │   │   │   ├── users.test.ts
+│   │   │   │   └── users.ts
+│   │   │   └── views
+│   │   │       ├── __snapshots__
+│   │   │       │   └── views.test.ts.snap
+│   │   │       ├── index.ts
+│   │   │       ├── schema.ts
+│   │   │       ├── views.test.ts
+│   │   │       └── views.ts
+│   │   ├── app.ts
+│   │   ├── auth
+│   │   │   ├── index.test.ts
+│   │   │   └── index.ts
+│   │   ├── embeds.ts
+│   │   ├── errors.test.ts
+│   │   ├── errors.ts
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   └── oauth
+│   │       ├── index.test.ts
+│   │       ├── index.ts
+│   │       ├── middlewares
+│   │       │   └── oauthErrorHandler.ts
+│   │       └── schema.ts
+│   ├── scripts
+│   │   ├── 20210716000000-backfill-revisions.ts
+│   │   ├── 20220722000000-backfill-subscriptions.ts
+│   │   ├── 20221008000000-backfill-crdt.ts
+│   │   ├── 20221029000000-crdt-to-text.ts
+│   │   ├── 20230313000000-migrate-notification-settings.ts
+│   │   ├── 20230815063834-migrate-emoji-in-document-title.ts
+│   │   ├── 20230827234031-migrate-emoji-in-revision-title.ts
+│   │   ├── 20231119000000-backfill-document-content.ts
+│   │   ├── 20231119000000-backfill-revision-content.ts
+│   │   ├── 20240825000000-invalidate-unfurls-cache.ts
+│   │   ├── 20240930113921-hash-api-keys.ts
+│   │   ├── 20250327062414-resolve-collection-index-collisions.ts
+│   │   ├── bootstrap.ts
+│   │   ├── install-local-ssl.js
+│   │   ├── release.js
+│   │   └── reset-encrypted-data.ts
+│   ├── services
+│   │   ├── admin.ts
+│   │   ├── collaboration.ts
+│   │   ├── cron.ts
+│   │   ├── index.ts
+│   │   ├── web.ts
+│   │   ├── websockets.ts
+│   │   └── worker.ts
+│   ├── static
+│   │   ├── error.dev.html
+│   │   ├── error.prod.html
+│   │   └── index.html
+│   ├── storage
+│   │   ├── database.ts
+│   │   ├── files
+│   │   │   ├── BaseStorage.ts
+│   │   │   ├── LocalStorage.ts
+│   │   │   ├── S3Storage.ts
+│   │   │   ├── __mocks__
+│   │   │   │   └── index.ts
+│   │   │   └── index.ts
+│   │   ├── redis.ts
+│   │   └── vaults.ts
+│   ├── test
+│   │   ├── TestServer.ts
+│   │   ├── factories.ts
+│   │   ├── fixtures
+│   │   │   ├── confluence.doc
+│   │   │   ├── corrupt.zip
+│   │   │   ├── empty.md
+│   │   │   ├── empty.zip
+│   │   │   ├── images.docx
+│   │   │   ├── markdown.md
+│   │   │   ├── normal.docx.txt
+│   │   │   ├── notion-page-with-empty-text-nodes.json
+│   │   │   ├── notion-page.json
+│   │   │   ├── outline-json.zip
+│   │   │   ├── outline-markdown-public.zip
+│   │   │   ├── outline-markdown.zip
+│   │   │   ├── tables.html
+│   │   │   └── webpage.html
+│   │   ├── globalTeardown.js
+│   │   ├── setup.ts
+│   │   └── support.ts
+│   ├── types.ts
+│   ├── typings
+│   │   ├── index.d.ts
+│   │   ├── outlinewiki__koa-passport.d.ts
+│   │   ├── outlinewiki__passport-azure-ad-oauth2.d.ts
+│   │   ├── passport-google-oauth2.d.ts
+│   │   ├── passport-slack-oauth2.d.ts
+│   │   ├── sequelize.d.ts
+│   │   └── tunnel-agent.d.ts
+│   ├── utils
+│   │   ├── BaseIssueProvider.ts
+│   │   ├── CacheHelper.ts
+│   │   ├── DocumentConverter.test.ts
+│   │   ├── DocumentConverter.ts
+│   │   ├── ImportHelper.test.ts
+│   │   ├── ImportHelper.ts
+│   │   ├── MutexLock.ts
+│   │   ├── PluginManager.ts
+│   │   ├── ProsemirrorHelper.test.ts
+│   │   ├── RateLimiter.ts
+│   │   ├── ShutdownHelper.ts
+│   │   ├── VerificationCode.ts
+│   │   ├── ZipHelper.ts
+│   │   ├── __mocks__
+│   │   │   ├── CacheHelper.ts
+│   │   │   └── MutexLock.ts
+│   │   ├── args.ts
+│   │   ├── authentication.ts
+│   │   ├── crypto.ts
+│   │   ├── csrf.ts
+│   │   ├── decorators
+│   │   │   └── Public.ts
+│   │   ├── diff.ts
+│   │   ├── environment.ts
+│   │   ├── fetch.ts
+│   │   ├── fs.test.ts
+│   │   ├── fs.ts
+│   │   ├── getInstallationInfo.ts
+│   │   ├── i18n.ts
+│   │   ├── indexing.test.ts
+│   │   ├── indexing.ts
+│   │   ├── jwt.ts
+│   │   ├── koa.ts
+│   │   ├── oauth
+│   │   │   ├── OAuthInterface.test.ts
+│   │   │   └── OAuthInterface.ts
+│   │   ├── oauth.test.ts
+│   │   ├── oauth.ts
+│   │   ├── opensearch.ts
+│   │   ├── parseAttachmentIds.test.ts
+│   │   ├── parseAttachmentIds.ts
+│   │   ├── parseImages.test.ts
+│   │   ├── parseImages.ts
+│   │   ├── passport.ts
+│   │   ├── permissions.test.ts
+│   │   ├── permissions.ts
+│   │   ├── prefetchTags.tsx
+│   │   ├── readManifestFile.ts
+│   │   ├── removeIndexCollision.test.ts
+│   │   ├── removeIndexCollision.ts
+│   │   ├── robots.ts
+│   │   ├── sitemap.ts
+│   │   ├── ssl.ts
+│   │   ├── startup.ts
+│   │   ├── timers.ts
+│   │   ├── turndown
+│   │   │   ├── breaks.ts
+│   │   │   ├── emptyLists.ts
+│   │   │   ├── emptyParagraph.ts
+│   │   │   ├── frames.ts
+│   │   │   ├── images.ts
+│   │   │   ├── index.ts
+│   │   │   ├── inlineLink.ts
+│   │   │   ├── sanitizeLists.ts
+│   │   │   ├── sanitizeTables.ts
+│   │   │   ├── tables.ts
+│   │   │   ├── underlines.ts
+│   │   │   └── utils.ts
+│   │   ├── updates.ts
+│   │   ├── url.ts
+│   │   ├── validators.ts
+│   │   └── zod.ts
+│   ├── validation.test.ts
+│   └── validation.ts
+├── shared
+│   ├── .oxlintrc.json
+│   ├── collaboration
+│   │   └── CloseEvents.ts
+│   ├── components
+│   │   ├── Backticks.tsx
+│   │   ├── EmojiIcon.tsx
+│   │   ├── EventBoundary.tsx
+│   │   ├── Flex.tsx
+│   │   ├── Icon.tsx
+│   │   ├── IssueStatusIcon
+│   │   │   ├── GitHubIssueStatusIcon.tsx
+│   │   │   ├── LinearIssueStatusIcon.tsx
+│   │   │   └── index.tsx
+│   │   ├── LetterIcon.tsx
+│   │   ├── PullRequestIcon.tsx
+│   │   ├── Spinner.tsx
+│   │   ├── Squircle.tsx
+│   │   └── Text.tsx
+│   ├── constants.ts
+│   ├── editor
+│   │   ├── commands
+│   │   │   ├── README.md
+│   │   │   ├── addMark.ts
+│   │   │   ├── backspaceToParagraph.ts
+│   │   │   ├── clearNodes.ts
+│   │   │   ├── codeFence.ts
+│   │   │   ├── collapseSelection.ts
+│   │   │   ├── comment.ts
+│   │   │   ├── deleteEmptyFirstParagraph.ts
+│   │   │   ├── insertFiles.ts
+│   │   │   ├── selectAll.ts
+│   │   │   ├── splitHeading.ts
+│   │   │   ├── table.ts
+│   │   │   ├── toggleBlockType.ts
+│   │   │   ├── toggleCheckboxItem.ts
+│   │   │   ├── toggleList.ts
+│   │   │   ├── toggleMark.ts
+│   │   │   └── toggleWrap.ts
+│   │   ├── components
+│   │   │   ├── Caption.tsx
+│   │   │   ├── DisabledEmbed.tsx
+│   │   │   ├── Embed.tsx
+│   │   │   ├── FileExtension.tsx
+│   │   │   ├── Frame.tsx
+│   │   │   ├── Image.tsx
+│   │   │   ├── Img.tsx
+│   │   │   ├── Mentions.tsx
+│   │   │   ├── ResizeHandle.tsx
+│   │   │   ├── Styles.ts
+│   │   │   ├── Video.tsx
+│   │   │   ├── Widget.tsx
+│   │   │   └── hooks
+│   │   │       └── useDragResize.ts
+│   │   ├── embeds
+│   │   │   ├── Berrycast.tsx
+│   │   │   ├── Diagrams.tsx
+│   │   │   ├── Dropbox.tsx
+│   │   │   ├── Gist.tsx
+│   │   │   ├── GitLabSnippet.tsx
+│   │   │   ├── InVision.tsx
+│   │   │   ├── JSFiddle.tsx
+│   │   │   ├── Linkedin.tsx
+│   │   │   ├── Pinterest.tsx
+│   │   │   ├── PlantUml.tsx
+│   │   │   ├── Spotify.tsx
+│   │   │   ├── Trello.tsx
+│   │   │   ├── Vimeo.tsx
+│   │   │   ├── YouTube.tsx
+│   │   │   └── index.tsx
+│   │   ├── extensions
+│   │   │   ├── CodeHighlighting.ts
+│   │   │   ├── DateTime.ts
+│   │   │   ├── History.ts
+│   │   │   ├── Math.ts
+│   │   │   ├── MaxLength.ts
+│   │   │   ├── Mermaid.ts
+│   │   │   └── TrailingNode.ts
+│   │   ├── lib
+│   │   │   ├── Extension.ts
+│   │   │   ├── ExtensionManager.ts
+│   │   │   ├── FileHelper.test.ts
+│   │   │   ├── FileHelper.ts
+│   │   │   ├── InputRule.ts
+│   │   │   ├── Lightbox.ts
+│   │   │   ├── chainTransactions.ts
+│   │   │   ├── changedDescendants.ts
+│   │   │   ├── code.test.ts
+│   │   │   ├── code.ts
+│   │   │   ├── embeds.ts
+│   │   │   ├── emoji.test.ts
+│   │   │   ├── emoji.ts
+│   │   │   ├── filterExcessSeparators.test.ts
+│   │   │   ├── filterExcessSeparators.ts
+│   │   │   ├── headingToSlug.ts
+│   │   │   ├── isCode.ts
+│   │   │   ├── isMarkdown.test.ts
+│   │   │   ├── isMarkdown.ts
+│   │   │   ├── listInputRule.ts
+│   │   │   ├── markInputRule.ts
+│   │   │   ├── markdown
+│   │   │   │   ├── normalize.ts
+│   │   │   │   ├── rules.ts
+│   │   │   │   └── serializer.ts
+│   │   │   ├── mention.ts
+│   │   │   ├── multiplayer.ts
+│   │   │   ├── prosemirror-recreate-transform
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── NOTICE
+│   │   │   │   ├── copy.ts
+│   │   │   │   ├── getFromPath.ts
+│   │   │   │   ├── getReplaceStep.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── recreateTransform.ts
+│   │   │   │   ├── removeMarks.ts
+│   │   │   │   ├── simplifyTransform.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── table.ts
+│   │   │   ├── textBetween.ts
+│   │   │   └── uploadPlaceholder.tsx
+│   │   ├── marks
+│   │   │   ├── Bold.ts
+│   │   │   ├── Code.ts
+│   │   │   ├── Comment.ts
+│   │   │   ├── Highlight.ts
+│   │   │   ├── Italic.ts
+│   │   │   ├── Link.tsx
+│   │   │   ├── Mark.ts
+│   │   │   ├── Placeholder.ts
+│   │   │   ├── Strikethrough.ts
+│   │   │   └── Underline.ts
+│   │   ├── nodes
+│   │   │   ├── Attachment.tsx
+│   │   │   ├── Blockquote.ts
+│   │   │   ├── BulletList.ts
+│   │   │   ├── CheckboxItem.ts
+│   │   │   ├── CheckboxList.ts
+│   │   │   ├── CodeBlock.ts
+│   │   │   ├── CodeFence.ts
+│   │   │   ├── Doc.ts
+│   │   │   ├── Embed.tsx
+│   │   │   ├── Emoji.tsx
+│   │   │   ├── HardBreak.ts
+│   │   │   ├── Heading.ts
+│   │   │   ├── HorizontalRule.ts
+│   │   │   ├── Image.tsx
+│   │   │   ├── ListItem.ts
+│   │   │   ├── Math.ts
+│   │   │   ├── MathBlock.ts
+│   │   │   ├── Mention.tsx
+│   │   │   ├── Node.ts
+│   │   │   ├── Notice.tsx
+│   │   │   ├── OrderedList.ts
+│   │   │   ├── Paragraph.ts
+│   │   │   ├── ReactNode.ts
+│   │   │   ├── SimpleImage.tsx
+│   │   │   ├── Table.ts
+│   │   │   ├── TableCell.ts
+│   │   │   ├── TableHeader.ts
+│   │   │   ├── TableRow.ts
+│   │   │   ├── TableView.ts
+│   │   │   ├── Text.ts
+│   │   │   ├── Video.tsx
+│   │   │   └── index.ts
+│   │   ├── plugins
+│   │   │   ├── CodeWordDecorations.ts
+│   │   │   ├── FixTables.ts
+│   │   │   ├── PlaceholderPlugin.ts
+│   │   │   ├── Suggestions.ts
+│   │   │   ├── TableLayoutPlugin.ts
+│   │   │   ├── UploadPlugin.ts
+│   │   │   └── anchorPlugin.ts
+│   │   ├── queries
+│   │   │   ├── findChildren.ts
+│   │   │   ├── findCollapsedNodes.ts
+│   │   │   ├── findNewlines.ts
+│   │   │   ├── findParentNode.ts
+│   │   │   ├── getCurrentBlock.ts
+│   │   │   ├── getMarkRange.ts
+│   │   │   ├── getMarksBetween.ts
+│   │   │   ├── getParentListItem.ts
+│   │   │   ├── isInCode.ts
+│   │   │   ├── isInHeading.ts
+│   │   │   ├── isInList.ts
+│   │   │   ├── isInNotice.ts
+│   │   │   ├── isList.ts
+│   │   │   ├── isMarkActive.ts
+│   │   │   ├── isNodeActive.ts
+│   │   │   └── table.ts
+│   │   ├── rules
+│   │   │   ├── breaks.ts
+│   │   │   ├── checkboxes.ts
+│   │   │   ├── embeds.ts
+│   │   │   ├── emoji.ts
+│   │   │   ├── links.ts
+│   │   │   ├── mark.ts
+│   │   │   ├── math.ts
+│   │   │   ├── mention.ts
+│   │   │   ├── notices.ts
+│   │   │   ├── tables.ts
+│   │   │   └── underlines.ts
+│   │   ├── selection
+│   │   │   ├── ColumnSelection.ts
+│   │   │   └── RowSelection.ts
+│   │   ├── styles
+│   │   │   ├── EditorStyleHelper.ts
+│   │   │   └── utils.ts
+│   │   ├── types
+│   │   │   └── index.ts
+│   │   └── version.ts
+│   ├── env.ts
+│   ├── helpers
+│   │   ├── AuthenticationHelper.test.ts
+│   │   └── AuthenticationHelper.ts
+│   ├── hooks
+│   │   ├── useIsMounted.ts
+│   │   └── useStores.ts
+│   ├── i18n
+│   │   ├── README.md
+│   │   ├── index.ts
+│   │   └── locales
+│   │       ├── cs_CZ
+│   │       │   └── translation.json
+│   │       ├── da_DK
+│   │       │   └── translation.json
+│   │       ├── de_DE
+│   │       │   └── translation.json
+│   │       ├── en_GB
+│   │       │   └── translation.json
+│   │       ├── en_US
+│   │       │   └── translation.json
+│   │       ├── es_ES
+│   │       │   └── translation.json
+│   │       ├── fa_IR
+│   │       │   └── translation.json
+│   │       ├── fr_FR
+│   │       │   └── translation.json
+│   │       ├── he_IL
+│   │       │   └── translation.json
+│   │       ├── hu_HU
+│   │       │   └── translation.json
+│   │       ├── id_ID
+│   │       │   └── translation.json
+│   │       ├── it_IT
+│   │       │   └── translation.json
+│   │       ├── ja_JP
+│   │       │   └── translation.json
+│   │       ├── ko_KR
+│   │       │   └── translation.json
+│   │       ├── nb_NO
+│   │       │   └── translation.json
+│   │       ├── nl_NL
+│   │       │   └── translation.json
+│   │       ├── pl_PL
+│   │       │   └── translation.json
+│   │       ├── pt_BR
+│   │       │   └── translation.json
+│   │       ├── pt_PT
+│   │       │   └── translation.json
+│   │       ├── ro_RO
+│   │       │   └── translation.json
+│   │       ├── sv_SE
+│   │       │   └── translation.json
+│   │       ├── th_TH
+│   │       │   └── translation.json
+│   │       ├── tr_TR
+│   │       │   └── translation.json
+│   │       ├── uk_UA
+│   │       │   └── translation.json
+│   │       ├── vi_VN
+│   │       │   └── translation.json
+│   │       ├── zh_CN
+│   │       │   └── translation.json
+│   │       └── zh_TW
+│   │           └── translation.json
+│   ├── random.test.ts
+│   ├── random.ts
+│   ├── schema.ts
+│   ├── styles
+│   │   ├── breakpoints.ts
+│   │   ├── depths.ts
+│   │   ├── globals.ts
+│   │   ├── index.ts
+│   │   └── theme.ts
+│   ├── test
+│   │   └── setup.ts
+│   ├── types.ts
+│   ├── typings
+│   │   ├── prosemirror-model.d.ts
+│   │   └── styles.d.ts
+│   ├── utils
+│   │   ├── EventHelper.ts
+│   │   ├── IconLibrary.tsx
+│   │   ├── ProsemirrorHelper.test.ts
+│   │   ├── ProsemirrorHelper.ts
+│   │   ├── RevisionHelper.ts
+│   │   ├── Storage.ts
+│   │   ├── TextHelper.test.ts
+│   │   ├── TextHelper.ts
+│   │   ├── UrlHelper.ts
+│   │   ├── UserRoleHelper.ts
+│   │   ├── browser.ts
+│   │   ├── collections.ts
+│   │   ├── color.ts
+│   │   ├── csv.test.ts
+│   │   ├── csv.ts
+│   │   ├── date.ts
+│   │   ├── domains.test.ts
+│   │   ├── domains.ts
+│   │   ├── email.test.ts
+│   │   ├── email.ts
+│   │   ├── emoji.ts
+│   │   ├── events.ts
+│   │   ├── files.test.ts
+│   │   ├── files.ts
+│   │   ├── icon.ts
+│   │   ├── indexCharacters.ts
+│   │   ├── keyboard.ts
+│   │   ├── markdown.ts
+│   │   ├── naturalSort.test.ts
+│   │   ├── naturalSort.ts
+│   │   ├── parseCollectionSlug.test.ts
+│   │   ├── parseCollectionSlug.ts
+│   │   ├── parseDocumentSlug.test.ts
+│   │   ├── parseDocumentSlug.ts
+│   │   ├── parseMentionUrl.ts
+│   │   ├── parseTitle.test.ts
+│   │   ├── parseTitle.ts
+│   │   ├── routeHelpers.ts
+│   │   ├── rtl.ts
+│   │   ├── slugify.ts
+│   │   ├── string.ts
+│   │   ├── time.ts
+│   │   ├── urls.test.ts
+│   │   └── urls.ts
+│   └── validations.ts
+├── tsconfig.json
+├── vite.config.ts
+└── yarn.lock
+301 directories, 2129 files
