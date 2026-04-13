@@ -1,0 +1,2118 @@
+.
+├── .ci
+│   ├── before_build_wheel.sh
+│   ├── complement_package.gotpl
+│   ├── latest_deps_build_failed_issue_template.md
+│   ├── postgres-config.yaml
+│   ├── scripts
+│   │   ├── calculate_jobs.py
+│   │   ├── check_lockfile.py
+│   │   ├── checkout_complement.sh
+│   │   ├── gotestfmt
+│   │   ├── setup_complement_prerequisites.sh
+│   │   ├── test_export_data_command.sh
+│   │   ├── test_synapse_port_db.sh
+│   │   └── triage_labelled_issue.sh
+│   ├── sqlite-config.yaml
+│   ├── test_db.db
+│   ├── twisted_trunk_build_failed_issue_template.md
+│   └── worker-blacklist
+├── .codecov.yml
+├── .coveragerc
+├── .dockerignore
+├── .editorconfig
+├── .git-blame-ignore-revs
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── BUG_REPORT.yml
+│   │   ├── FEATURE_REQUEST.md
+│   │   └── SUPPORT_REQUEST.md
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── SUPPORT.md
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── docker.yml
+│       ├── docs-pr.yaml
+│       ├── docs.yaml
+│       ├── fix_lint.yaml
+│       ├── latest_deps.yml
+│       ├── poetry_lockfile.yaml
+│       ├── push_complement_image.yml
+│       ├── release-artifacts.yml
+│       ├── schema.yaml
+│       ├── tests.yml
+│       ├── triage-incoming.yml
+│       ├── triage_labelled.yml
+│       └── twisted_trunk.yml
+├── .gitignore
+├── .rustfmt.toml
+├── AUTHORS.rst
+├── CHANGES.md
+├── CONTRIBUTING.md
+├── Cargo.lock
+├── Cargo.toml
+├── INSTALL.md
+├── LICENSE-AGPL-3.0
+├── LICENSE-COMMERCIAL
+├── README.rst
+├── UPGRADE.rst
+├── book.toml
+├── build_rust.py
+├── changelog.d
+│   └── .gitignore
+├── complement
+│   ├── .golangci.yml
+│   ├── README.md
+│   ├── go.mod
+│   ├── go.sum
+│   └── tests
+│       ├── federation_test.go
+│       ├── main_test.go
+│       └── synapse_version_check_test.go
+├── contrib
+│   ├── README.rst
+│   ├── cmdclient
+│   │   ├── console.py
+│   │   └── http.py
+│   ├── datagrip
+│   │   ├── README.md
+│   │   ├── common.sql -> ../../synapse/storage/schema/common/full_schemas/72/full.sql.postgres
+│   │   ├── datagrip-aware-of-schema.png
+│   │   ├── main.sql -> ../../synapse/storage/schema/main/full_schemas/72/full.sql.postgres
+│   │   ├── schema_version.sql -> ../../synapse/storage/schema/common/schema_version.sql
+│   │   └── state.sql -> ../../synapse/storage/schema/state/full_schemas/72/full.sql.postgres
+│   ├── docker
+│   │   ├── README.md
+│   │   └── docker-compose.yml
+│   ├── docker_compose_workers
+│   │   ├── README.md
+│   │   ├── docker-compose.yaml
+│   │   └── workers
+│   │       ├── synapse-federation-sender-1.yaml
+│   │       └── synapse-generic-worker-1.yaml
+│   ├── example_log_config.yaml
+│   ├── grafana
+│   │   ├── README.md
+│   │   └── synapse.json
+│   ├── graph
+│   │   ├── graph.py
+│   │   ├── graph2.py
+│   │   └── graph3.py
+│   ├── lnav
+│   │   ├── README.md
+│   │   └── synapse-log-format.json
+│   ├── prometheus
+│   │   ├── README.md
+│   │   ├── consoles
+│   │   │   └── synapse.html
+│   │   └── synapse-v2.rules
+│   ├── purge_api
+│   │   ├── README.md
+│   │   ├── purge_history.sh
+│   │   └── purge_remote_media.sh
+│   ├── snap
+│   │   └── snapcraft.yaml
+│   ├── systemd
+│   │   ├── README.md
+│   │   ├── log_config.yaml
+│   │   ├── matrix-synapse.service
+│   │   └── override-hardened.conf
+│   ├── systemd-with-workers
+│   │   └── README.md
+│   ├── vertobot
+│   │   ├── .gitignore
+│   │   ├── bot.pl
+│   │   ├── bridge.pl
+│   │   ├── config.yaml
+│   │   ├── cpanfile
+│   │   └── verto-example.json
+│   └── workers-bash-scripts
+│       ├── create-multiple-generic-workers.md
+│       └── create-multiple-stream-writers.md
+├── debian
+│   ├── .gitignore
+│   ├── NEWS
+│   ├── build_virtualenv
+│   ├── changelog
+│   ├── clean
+│   ├── control
+│   ├── copyright
+│   ├── dirs
+│   ├── hash_password.1
+│   ├── hash_password.1.html
+│   ├── hash_password.ronn
+│   ├── install
+│   ├── manage_debconf.pl
+│   ├── manpages
+│   ├── matrix-synapse-py3.config
+│   ├── matrix-synapse-py3.links
+│   ├── matrix-synapse-py3.postinst
+│   ├── matrix-synapse.service
+│   ├── po
+│   │   ├── POTFILES.in
+│   │   └── templates.pot
+│   ├── register_new_matrix_user.1
+│   ├── register_new_matrix_user.ronn
+│   ├── rules
+│   ├── source
+│   │   └── format
+│   ├── synapse_port_db.1
+│   ├── synapse_port_db.ronn
+│   ├── synapse_review_recent_signups.1
+│   ├── synapse_review_recent_signups.ronn
+│   ├── synctl.1
+│   ├── synctl.ronn
+│   └── templates
+├── demo
+│   ├── .gitignore
+│   ├── clean.sh
+│   ├── start.sh
+│   └── stop.sh
+├── docker
+│   ├── Dockerfile
+│   ├── Dockerfile-dhvirtualenv
+│   ├── Dockerfile-workers
+│   ├── README-testing.md
+│   ├── README.md
+│   ├── build_debian.sh
+│   ├── complement
+│   │   ├── Dockerfile
+│   │   ├── README.md
+│   │   └── conf
+│   │       ├── postgres.supervisord.conf
+│   │       ├── start_for_complement.sh
+│   │       └── workers-shared-extra.yaml.j2
+│   ├── conf
+│   │   ├── homeserver.yaml
+│   │   └── log.config
+│   ├── conf-workers
+│   │   ├── healthcheck.sh.j2
+│   │   ├── nginx.conf.j2
+│   │   ├── shared.yaml.j2
+│   │   ├── supervisord.conf.j2
+│   │   ├── synapse.supervisord.conf.j2
+│   │   └── worker.yaml.j2
+│   ├── configure_workers_and_start.py
+│   ├── editable.Dockerfile
+│   ├── prefix-log
+│   └── start.py
+├── docs
+│   ├── .htmltest.yml
+│   ├── .sample_config_header.yaml
+│   ├── CAPTCHA_SETUP.md
+│   ├── README.md
+│   ├── SUMMARY.md
+│   ├── admin_api
+│   │   ├── README.rst
+│   │   ├── account_validity.md
+│   │   ├── client_server_api_extensions.md
+│   │   ├── event_reports.md
+│   │   ├── experimental_features.md
+│   │   ├── fetch_event.md
+│   │   ├── media_admin_api.md
+│   │   ├── purge_history_api.md
+│   │   ├── register_api.md
+│   │   ├── room_membership.md
+│   │   ├── rooms.md
+│   │   ├── scheduled_tasks.md
+│   │   ├── server_notices.md
+│   │   ├── statistics.md
+│   │   ├── user_admin_api.md
+│   │   └── version_api.md
+│   ├── ancient_architecture_notes.md
+│   ├── application_services.md
+│   ├── architecture.md
+│   ├── auth_chain_diff.dot
+│   ├── auth_chain_diff.dot.png
+│   ├── auth_chain_difference_algorithm.md
+│   ├── changelogs
+│   │   ├── CHANGES-2019.md
+│   │   ├── CHANGES-2020.md
+│   │   ├── CHANGES-2021.md
+│   │   ├── CHANGES-2022.md
+│   │   ├── CHANGES-2023.md
+│   │   ├── CHANGES-2024.md
+│   │   ├── CHANGES-pre-1.0.md
+│   │   └── README.md
+│   ├── code_style.md
+│   ├── consent_tracking.md
+│   ├── delegate.md
+│   ├── deprecation_policy.md
+│   ├── development
+│   │   ├── cas.md
+│   │   ├── contributing_guide.md
+│   │   ├── database_schema.md
+│   │   ├── demo.md
+│   │   ├── dependencies.md
+│   │   ├── experimental_features.md
+│   │   ├── git.md
+│   │   ├── img
+│   │   │   └── git
+│   │   │       ├── branches.jpg
+│   │   │       ├── clean.png
+│   │   │       └── squash.png
+│   │   ├── internal_documentation
+│   │   │   ├── README.md
+│   │   │   └── release_notes_review_checklist.md
+│   │   ├── releases.md
+│   │   ├── reviews.md
+│   │   ├── room-dag-concepts.md
+│   │   ├── saml.md
+│   │   └── synapse_architecture
+│   │       ├── cancellation.md
+│   │       ├── faster_joins.md
+│   │       └── streams.md
+│   ├── element_logo_white_bg.svg
+│   ├── favicon.png
+│   ├── favicon.svg
+│   ├── federate.md
+│   ├── jwt.md
+│   ├── log_contexts.md
+│   ├── manhole.md
+│   ├── media_repository.md
+│   ├── message_retention_policies.md
+│   ├── metrics-howto.md
+│   ├── modules
+│   │   ├── account_data_callbacks.md
+│   │   ├── account_validity_callbacks.md
+│   │   ├── add_extra_fields_to_client_events_unsigned.md
+│   │   ├── background_update_controller_callbacks.md
+│   │   ├── index.md
+│   │   ├── media_repository_callbacks.md
+│   │   ├── password_auth_provider_callbacks.md
+│   │   ├── porting_legacy_module.md
+│   │   ├── presence_router_callbacks.md
+│   │   ├── ratelimit_callbacks.md
+│   │   ├── spam_checker_callbacks.md
+│   │   ├── third_party_rules_callbacks.md
+│   │   └── writing_a_module.md
+│   ├── openid.md
+│   ├── opentracing.md
+│   ├── other
+│   │   └── running_synapse_on_single_board_computers.md
+│   ├── password_auth_providers.md
+│   ├── postgres.md
+│   ├── presence_router_module.md
+│   ├── privacy_policy_templates
+│   │   └── en
+│   │       ├── 1.0.html
+│   │       └── success.html
+│   ├── replication.md
+│   ├── reverse_proxy.md
+│   ├── room_and_user_statistics.md
+│   ├── sample_config.yaml
+│   ├── sample_log_config.yaml
+│   ├── server_notices.md
+│   ├── setup
+│   │   ├── forward_proxy.md
+│   │   ├── installation.md
+│   │   ├── security.md
+│   │   └── turn
+│   │       ├── coturn.md
+│   │       └── eturnal.md
+│   ├── spam_checker.md
+│   ├── sso_mapping_providers.md
+│   ├── structured_logging.md
+│   ├── synctl_workers.md
+│   ├── systemd-with-workers
+│   │   ├── README.md
+│   │   ├── system
+│   │   │   ├── matrix-synapse-worker@.service
+│   │   │   ├── matrix-synapse.service
+│   │   │   └── matrix-synapse.target
+│   │   └── workers
+│   │       ├── background_worker.yaml
+│   │       ├── event_persister.yaml
+│   │       ├── federation_sender.yaml
+│   │       ├── generic_worker.yaml
+│   │       ├── media_worker.yaml
+│   │       └── pusher_worker.yaml
+│   ├── tcp_replication.md
+│   ├── templates.md
+│   ├── turn-howto.md
+│   ├── upgrade.md
+│   ├── usage
+│   │   ├── administration
+│   │   │   ├── README.md
+│   │   │   ├── admin_api
+│   │   │   │   ├── README.md
+│   │   │   │   ├── background_updates.md
+│   │   │   │   ├── federation.md
+│   │   │   │   └── registration_tokens.md
+│   │   │   ├── admin_faq.md
+│   │   │   ├── backups.md
+│   │   │   ├── database_maintenance_tools.md
+│   │   │   ├── monitoring
+│   │   │   │   └── reporting_homeserver_usage_statistics.md
+│   │   │   ├── monthly_active_users.md
+│   │   │   ├── request_log.md
+│   │   │   ├── state_groups.md
+│   │   │   ├── understanding_synapse_through_grafana_graphs.md
+│   │   │   └── useful_sql_for_admins.md
+│   │   └── configuration
+│   │       ├── README.md
+│   │       ├── config_documentation.md
+│   │       ├── homeserver_sample_config.md
+│   │       ├── logging_sample_config.md
+│   │       └── user_authentication
+│   │           ├── README.md
+│   │           ├── refresh_tokens.md
+│   │           └── single_sign_on
+│   │               ├── README.md
+│   │               ├── cas.md
+│   │               └── saml.md
+│   ├── user_directory.md
+│   ├── website_files
+│   │   ├── README.md
+│   │   ├── indent-section-headers.css
+│   │   ├── theme
+│   │   │   └── index.hbs
+│   │   ├── version-picker.css
+│   │   ├── version-picker.js
+│   │   └── version.js
+│   ├── welcome_and_overview.md
+│   └── workers.md
+├── flake.lock
+├── flake.nix
+├── mypy.ini
+├── poetry.lock
+├── pyproject.toml
+├── rust
+│   ├── Cargo.toml
+│   ├── benches
+│   │   ├── evaluator.rs
+│   │   └── glob.rs
+│   ├── build.rs
+│   └── src
+│       ├── acl
+│       │   └── mod.rs
+│       ├── duration.rs
+│       ├── errors.rs
+│       ├── events
+│       │   ├── filter.rs
+│       │   ├── internal_metadata.rs
+│       │   └── mod.rs
+│       ├── http.rs
+│       ├── http_client.rs
+│       ├── identifier.rs
+│       ├── lib.rs
+│       ├── matrix_const.rs
+│       ├── msc4388_rendezvous
+│       │   ├── mod.rs
+│       │   └── session.rs
+│       ├── push
+│       │   ├── base_rules.rs
+│       │   ├── evaluator.rs
+│       │   ├── mod.rs
+│       │   └── utils.rs
+│       ├── rendezvous
+│       │   ├── mod.rs
+│       │   └── session.rs
+│       └── segmenter.rs
+├── schema
+│   ├── synapse-config.schema.yaml
+│   └── v1
+│       ├── Do not edit files in this folder
+│       ├── meta.schema.json
+│       └── vocab
+│           └── documentation.html
+├── scripts-dev
+│   ├── build_debian_packages.py
+│   ├── check-newsfragment.sh
+│   ├── check_line_terminators.sh
+│   ├── check_locked_deps_have_sdists.py
+│   ├── check_schema_delta.py
+│   ├── complement.sh
+│   ├── config-lint.sh
+│   ├── database-save.sh
+│   ├── docker_update_debian_changelog.sh
+│   ├── dump_macaroon.py
+│   ├── federation_client.py
+│   ├── gen_config_documentation.py
+│   ├── generate_sample_config.sh
+│   ├── lint.sh
+│   ├── make_full_schema.sh
+│   ├── mypy_synapse_plugin.py
+│   ├── next_github_number.sh
+│   ├── release.py
+│   ├── schema_versions.py
+│   └── sign_json.py
+├── stubs
+│   ├── icu.pyi
+│   ├── sortedcontainers
+│   │   ├── __init__.pyi
+│   │   ├── sorteddict.pyi
+│   │   ├── sortedlist.pyi
+│   │   └── sortedset.pyi
+│   └── txredisapi.pyi
+├── synapse
+│   ├── __init__.py
+│   ├── _scripts
+│   │   ├── __init__.py
+│   │   ├── export_signing_key.py
+│   │   ├── generate_config.py
+│   │   ├── generate_log_config.py
+│   │   ├── generate_signing_key.py
+│   │   ├── generate_workers_map.py
+│   │   ├── hash_password.py
+│   │   ├── move_remote_media_to_new_store.py
+│   │   ├── register_new_matrix_user.py
+│   │   ├── review_recent_signups.py
+│   │   ├── synapse_port_db.py
+│   │   ├── synctl.py
+│   │   └── update_synapse_database.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── internal.py
+│   │   │   ├── mas.py
+│   │   │   └── msc3861_delegated.py
+│   │   ├── auth_blocking.py
+│   │   ├── constants.py
+│   │   ├── errors.py
+│   │   ├── filtering.py
+│   │   ├── presence.py
+│   │   ├── ratelimiting.py
+│   │   ├── room_versions.py
+│   │   └── urls.py
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── _base.py
+│   │   ├── admin_cmd.py
+│   │   ├── appservice.py
+│   │   ├── client_reader.py
+│   │   ├── complement_fork_proxied_reactor.py
+│   │   ├── complement_fork_starter.py
+│   │   ├── event_creator.py
+│   │   ├── federation_reader.py
+│   │   ├── federation_sender.py
+│   │   ├── frontend_proxy.py
+│   │   ├── generic_worker.py
+│   │   ├── homeserver.py
+│   │   ├── media_repository.py
+│   │   ├── phone_stats_home.py
+│   │   ├── pusher.py
+│   │   ├── synchrotron.py
+│   │   └── user_dir.py
+│   ├── appservice
+│   │   ├── __init__.py
+│   │   ├── api.py
+│   │   └── scheduler.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── __main__.py
+│   │   ├── _base.py
+│   │   ├── _base.pyi
+│   │   ├── _util.py
+│   │   ├── account_validity.py
+│   │   ├── api.py
+│   │   ├── appservice.py
+│   │   ├── auth.py
+│   │   ├── auto_accept_invites.py
+│   │   ├── background_updates.py
+│   │   ├── cache.py
+│   │   ├── captcha.py
+│   │   ├── cas.py
+│   │   ├── consent.py
+│   │   ├── database.py
+│   │   ├── emailconfig.py
+│   │   ├── experimental.py
+│   │   ├── federation.py
+│   │   ├── homeserver.py
+│   │   ├── jwt.py
+│   │   ├── key.py
+│   │   ├── logger.py
+│   │   ├── mas.py
+│   │   ├── matrixrtc.py
+│   │   ├── metrics.py
+│   │   ├── modules.py
+│   │   ├── oembed.py
+│   │   ├── oidc.py
+│   │   ├── password_auth_providers.py
+│   │   ├── push.py
+│   │   ├── ratelimiting.py
+│   │   ├── redis.py
+│   │   ├── registration.py
+│   │   ├── repository.py
+│   │   ├── retention.py
+│   │   ├── room.py
+│   │   ├── room_directory.py
+│   │   ├── saml2.py
+│   │   ├── server.py
+│   │   ├── server_notices.py
+│   │   ├── spam_checker.py
+│   │   ├── sso.py
+│   │   ├── stats.py
+│   │   ├── third_party_event_rules.py
+│   │   ├── tls.py
+│   │   ├── tracer.py
+│   │   ├── user_directory.py
+│   │   ├── user_types.py
+│   │   ├── voip.py
+│   │   └── workers.py
+│   ├── crypto
+│   │   ├── __init__.py
+│   │   ├── context_factory.py
+│   │   ├── event_signing.py
+│   │   └── keyring.py
+│   ├── event_auth.py
+│   ├── events
+│   │   ├── __init__.py
+│   │   ├── auto_accept_invites.py
+│   │   ├── builder.py
+│   │   ├── presence_router.py
+│   │   ├── snapshot.py
+│   │   ├── utils.py
+│   │   └── validator.py
+│   ├── federation
+│   │   ├── __init__.py
+│   │   ├── federation_base.py
+│   │   ├── federation_client.py
+│   │   ├── federation_server.py
+│   │   ├── persistence.py
+│   │   ├── send_queue.py
+│   │   ├── sender
+│   │   │   ├── __init__.py
+│   │   │   ├── per_destination_queue.py
+│   │   │   └── transaction_manager.py
+│   │   ├── transport
+│   │   │   ├── __init__.py
+│   │   │   ├── client.py
+│   │   │   └── server
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       └── federation.py
+│   │   └── units.py
+│   ├── handlers
+│   │   ├── __init__.py
+│   │   ├── account.py
+│   │   ├── account_data.py
+│   │   ├── account_validity.py
+│   │   ├── admin.py
+│   │   ├── appservice.py
+│   │   ├── auth.py
+│   │   ├── cas.py
+│   │   ├── deactivate_account.py
+│   │   ├── delayed_events.py
+│   │   ├── device.py
+│   │   ├── devicemessage.py
+│   │   ├── directory.py
+│   │   ├── e2e_keys.py
+│   │   ├── e2e_room_keys.py
+│   │   ├── event_auth.py
+│   │   ├── events.py
+│   │   ├── federation.py
+│   │   ├── federation_event.py
+│   │   ├── identity.py
+│   │   ├── initial_sync.py
+│   │   ├── jwt.py
+│   │   ├── message.py
+│   │   ├── oidc.py
+│   │   ├── pagination.py
+│   │   ├── password_policy.py
+│   │   ├── presence.py
+│   │   ├── profile.py
+│   │   ├── push_rules.py
+│   │   ├── read_marker.py
+│   │   ├── receipts.py
+│   │   ├── register.py
+│   │   ├── relations.py
+│   │   ├── reports.py
+│   │   ├── room.py
+│   │   ├── room_list.py
+│   │   ├── room_member.py
+│   │   ├── room_member_worker.py
+│   │   ├── room_policy.py
+│   │   ├── room_summary.py
+│   │   ├── saml.py
+│   │   ├── search.py
+│   │   ├── send_email.py
+│   │   ├── set_password.py
+│   │   ├── sliding_sync
+│   │   │   ├── __init__.py
+│   │   │   ├── extensions.py
+│   │   │   ├── room_lists.py
+│   │   │   └── store.py
+│   │   ├── sso.py
+│   │   ├── state_deltas.py
+│   │   ├── stats.py
+│   │   ├── sync.py
+│   │   ├── thread_subscriptions.py
+│   │   ├── typing.py
+│   │   ├── ui_auth
+│   │   │   ├── __init__.py
+│   │   │   └── checkers.py
+│   │   ├── user_directory.py
+│   │   └── worker_lock.py
+│   ├── http
+│   │   ├── __init__.py
+│   │   ├── additional_resource.py
+│   │   ├── client.py
+│   │   ├── connectproxyclient.py
+│   │   ├── federation
+│   │   │   ├── __init__.py
+│   │   │   ├── matrix_federation_agent.py
+│   │   │   ├── srv_resolver.py
+│   │   │   └── well_known_resolver.py
+│   │   ├── matrixfederationclient.py
+│   │   ├── proxy.py
+│   │   ├── proxyagent.py
+│   │   ├── replicationagent.py
+│   │   ├── request_metrics.py
+│   │   ├── server.py
+│   │   ├── servlet.py
+│   │   ├── site.py
+│   │   └── types.py
+│   ├── logging
+│   │   ├── __init__.py
+│   │   ├── _remote.py
+│   │   ├── _terse_json.py
+│   │   ├── context.py
+│   │   ├── formatter.py
+│   │   ├── handlers.py
+│   │   ├── loggers.py
+│   │   ├── opentracing.py
+│   │   └── scopecontextmanager.py
+│   ├── media
+│   │   ├── _base.py
+│   │   ├── filepath.py
+│   │   ├── media_repository.py
+│   │   ├── media_storage.py
+│   │   ├── oembed.py
+│   │   ├── preview_html.py
+│   │   ├── storage_provider.py
+│   │   ├── thumbnailer.py
+│   │   └── url_previewer.py
+│   ├── metrics
+│   │   ├── __init__.py
+│   │   ├── _gc.py
+│   │   ├── _reactor_metrics.py
+│   │   ├── _types.py
+│   │   ├── background_process_metrics.py
+│   │   ├── common_usage_metrics.py
+│   │   └── jemalloc.py
+│   ├── module_api
+│   │   ├── __init__.py
+│   │   ├── callbacks
+│   │   │   ├── __init__.py
+│   │   │   ├── account_validity_callbacks.py
+│   │   │   ├── media_repository_callbacks.py
+│   │   │   ├── ratelimit_callbacks.py
+│   │   │   ├── spamchecker_callbacks.py
+│   │   │   └── third_party_event_rules_callbacks.py
+│   │   └── errors.py
+│   ├── notifier.py
+│   ├── push
+│   │   ├── __init__.py
+│   │   ├── bulk_push_rule_evaluator.py
+│   │   ├── clientformat.py
+│   │   ├── emailpusher.py
+│   │   ├── httppusher.py
+│   │   ├── mailer.py
+│   │   ├── presentable_names.py
+│   │   ├── push_tools.py
+│   │   ├── push_types.py
+│   │   ├── pusher.py
+│   │   ├── pusherpool.py
+│   │   └── rulekinds.py
+│   ├── py.typed
+│   ├── replication
+│   │   ├── __init__.py
+│   │   ├── http
+│   │   │   ├── __init__.py
+│   │   │   ├── _base.py
+│   │   │   ├── account_data.py
+│   │   │   ├── deactivate_account.py
+│   │   │   ├── delayed_events.py
+│   │   │   ├── devices.py
+│   │   │   ├── federation.py
+│   │   │   ├── login.py
+│   │   │   ├── membership.py
+│   │   │   ├── presence.py
+│   │   │   ├── push.py
+│   │   │   ├── register.py
+│   │   │   ├── send_events.py
+│   │   │   ├── state.py
+│   │   │   └── streams.py
+│   │   └── tcp
+│   │       ├── __init__.py
+│   │       ├── client.py
+│   │       ├── commands.py
+│   │       ├── context.py
+│   │       ├── external_cache.py
+│   │       ├── handler.py
+│   │       ├── protocol.py
+│   │       ├── redis.py
+│   │       ├── resource.py
+│   │       └── streams
+│   │           ├── __init__.py
+│   │           ├── _base.py
+│   │           ├── events.py
+│   │           ├── federation.py
+│   │           └── partial_state.py
+│   ├── res
+│   │   ├── providers.json
+│   │   └── templates
+│   │       ├── _base.html
+│   │       ├── account_previously_renewed.html
+│   │       ├── account_renewed.html
+│   │       ├── add_threepid.html
+│   │       ├── add_threepid.txt
+│   │       ├── add_threepid_failure.html
+│   │       ├── add_threepid_success.html
+│   │       ├── already_in_use.html
+│   │       ├── already_in_use.txt
+│   │       ├── auth_success.html
+│   │       ├── invalid_token.html
+│   │       ├── mail-Element.css
+│   │       ├── mail-Vector.css
+│   │       ├── mail-expiry.css
+│   │       ├── mail.css
+│   │       ├── notice_expiry.html
+│   │       ├── notice_expiry.txt
+│   │       ├── notif.html
+│   │       ├── notif.txt
+│   │       ├── notif_mail.html
+│   │       ├── notif_mail.txt
+│   │       ├── password_reset.html
+│   │       ├── password_reset.txt
+│   │       ├── password_reset_confirmation.html
+│   │       ├── password_reset_failure.html
+│   │       ├── password_reset_success.html
+│   │       ├── recaptcha.html
+│   │       ├── registration.html
+│   │       ├── registration.txt
+│   │       ├── registration_failure.html
+│   │       ├── registration_success.html
+│   │       ├── registration_token.html
+│   │       ├── room.html
+│   │       ├── room.txt
+│   │       ├── sso.css
+│   │       ├── sso_account_deactivated.html
+│   │       ├── sso_auth_account_details.html
+│   │       ├── sso_auth_account_details.js
+│   │       ├── sso_auth_bad_user.html
+│   │       ├── sso_auth_confirm.html
+│   │       ├── sso_auth_success.html
+│   │       ├── sso_error.html
+│   │       ├── sso_footer.html
+│   │       ├── sso_login_idp_picker.html
+│   │       ├── sso_new_user_consent.html
+│   │       ├── sso_partial_profile.html
+│   │       ├── sso_redirect_confirm.html
+│   │       ├── style.css
+│   │       └── terms.html
+│   ├── rest
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── _base.py
+│   │   │   ├── background_updates.py
+│   │   │   ├── devices.py
+│   │   │   ├── event_reports.py
+│   │   │   ├── events.py
+│   │   │   ├── experimental_features.py
+│   │   │   ├── federation.py
+│   │   │   ├── media.py
+│   │   │   ├── registration_tokens.py
+│   │   │   ├── rooms.py
+│   │   │   ├── scheduled_tasks.py
+│   │   │   ├── server_notice_servlet.py
+│   │   │   ├── statistics.py
+│   │   │   ├── username_available.py
+│   │   │   └── users.py
+│   │   ├── client
+│   │   │   ├── __init__.py
+│   │   │   ├── _base.py
+│   │   │   ├── account.py
+│   │   │   ├── account_data.py
+│   │   │   ├── account_validity.py
+│   │   │   ├── appservice_ping.py
+│   │   │   ├── auth.py
+│   │   │   ├── auth_metadata.py
+│   │   │   ├── capabilities.py
+│   │   │   ├── delayed_events.py
+│   │   │   ├── devices.py
+│   │   │   ├── directory.py
+│   │   │   ├── events.py
+│   │   │   ├── filter.py
+│   │   │   ├── initial_sync.py
+│   │   │   ├── keys.py
+│   │   │   ├── knock.py
+│   │   │   ├── login.py
+│   │   │   ├── login_token_request.py
+│   │   │   ├── logout.py
+│   │   │   ├── matrixrtc.py
+│   │   │   ├── media.py
+│   │   │   ├── mutual_rooms.py
+│   │   │   ├── notifications.py
+│   │   │   ├── openid.py
+│   │   │   ├── password_policy.py
+│   │   │   ├── presence.py
+│   │   │   ├── profile.py
+│   │   │   ├── push_rule.py
+│   │   │   ├── pusher.py
+│   │   │   ├── read_marker.py
+│   │   │   ├── receipts.py
+│   │   │   ├── register.py
+│   │   │   ├── relations.py
+│   │   │   ├── rendezvous.py
+│   │   │   ├── reporting.py
+│   │   │   ├── room.py
+│   │   │   ├── room_keys.py
+│   │   │   ├── room_upgrade_rest_servlet.py
+│   │   │   ├── sendtodevice.py
+│   │   │   ├── sync.py
+│   │   │   ├── tags.py
+│   │   │   ├── thirdparty.py
+│   │   │   ├── thread_subscriptions.py
+│   │   │   ├── tokenrefresh.py
+│   │   │   ├── transactions.py
+│   │   │   ├── user_directory.py
+│   │   │   ├── versions.py
+│   │   │   └── voip.py
+│   │   ├── consent
+│   │   │   ├── __init__.py
+│   │   │   └── consent_resource.py
+│   │   ├── health.py
+│   │   ├── key
+│   │   │   ├── __init__.py
+│   │   │   └── v2
+│   │   │       ├── __init__.py
+│   │   │       ├── local_key_resource.py
+│   │   │       └── remote_key_resource.py
+│   │   ├── media
+│   │   │   ├── __init__.py
+│   │   │   ├── config_resource.py
+│   │   │   ├── create_resource.py
+│   │   │   ├── download_resource.py
+│   │   │   ├── media_repository_resource.py
+│   │   │   ├── preview_url_resource.py
+│   │   │   ├── thumbnail_resource.py
+│   │   │   ├── upload_resource.py
+│   │   │   └── v1
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       ├── media_storage.py
+│   │   │       └── storage_provider.py
+│   │   ├── synapse
+│   │   │   ├── __init__.py
+│   │   │   ├── client
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── federation_whitelist.py
+│   │   │   │   ├── jwks.py
+│   │   │   │   ├── new_user_consent.py
+│   │   │   │   ├── oidc
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── backchannel_logout_resource.py
+│   │   │   │   │   └── callback_resource.py
+│   │   │   │   ├── password_reset.py
+│   │   │   │   ├── pick_idp.py
+│   │   │   │   ├── pick_username.py
+│   │   │   │   ├── rendezvous.py
+│   │   │   │   ├── saml2
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── metadata_resource.py
+│   │   │   │   │   └── response_resource.py
+│   │   │   │   ├── sso_register.py
+│   │   │   │   └── unsubscribe.py
+│   │   │   └── mas
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       ├── devices.py
+│   │   │       └── users.py
+│   │   └── well_known.py
+│   ├── server.py
+│   ├── server_notices
+│   │   ├── __init__.py
+│   │   ├── consent_server_notices.py
+│   │   ├── resource_limits_server_notices.py
+│   │   ├── server_notices_manager.py
+│   │   ├── server_notices_sender.py
+│   │   └── worker_server_notices_sender.py
+│   ├── spam_checker_api
+│   │   └── __init__.py
+│   ├── state
+│   │   ├── __init__.py
+│   │   ├── v1.py
+│   │   └── v2.py
+│   ├── static
+│   │   ├── client
+│   │   │   └── login
+│   │   │       ├── index.html
+│   │   │       ├── js
+│   │   │       │   ├── jquery-3.4.1.min.js
+│   │   │       │   └── login.js
+│   │   │       ├── spinner.gif
+│   │   │       └── style.css
+│   │   └── index.html
+│   ├── storage
+│   │   ├── __init__.py
+│   │   ├── _base.py
+│   │   ├── admin_client_config.py
+│   │   ├── background_updates.py
+│   │   ├── controllers
+│   │   │   ├── __init__.py
+│   │   │   ├── persist_events.py
+│   │   │   ├── purge_events.py
+│   │   │   ├── state.py
+│   │   │   └── stats.py
+│   │   ├── database.py
+│   │   ├── databases
+│   │   │   ├── __init__.py
+│   │   │   ├── main
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── account_data.py
+│   │   │   │   ├── appservice.py
+│   │   │   │   ├── cache.py
+│   │   │   │   ├── censor_events.py
+│   │   │   │   ├── client_ips.py
+│   │   │   │   ├── delayed_events.py
+│   │   │   │   ├── deviceinbox.py
+│   │   │   │   ├── devices.py
+│   │   │   │   ├── directory.py
+│   │   │   │   ├── e2e_room_keys.py
+│   │   │   │   ├── end_to_end_keys.py
+│   │   │   │   ├── event_federation.py
+│   │   │   │   ├── event_push_actions.py
+│   │   │   │   ├── events.py
+│   │   │   │   ├── events_bg_updates.py
+│   │   │   │   ├── events_forward_extremities.py
+│   │   │   │   ├── events_worker.py
+│   │   │   │   ├── experimental_features.py
+│   │   │   │   ├── filtering.py
+│   │   │   │   ├── keys.py
+│   │   │   │   ├── lock.py
+│   │   │   │   ├── media_repository.py
+│   │   │   │   ├── metrics.py
+│   │   │   │   ├── monthly_active_users.py
+│   │   │   │   ├── openid.py
+│   │   │   │   ├── presence.py
+│   │   │   │   ├── profile.py
+│   │   │   │   ├── purge_events.py
+│   │   │   │   ├── push_rule.py
+│   │   │   │   ├── pusher.py
+│   │   │   │   ├── receipts.py
+│   │   │   │   ├── registration.py
+│   │   │   │   ├── rejections.py
+│   │   │   │   ├── relations.py
+│   │   │   │   ├── room.py
+│   │   │   │   ├── roommember.py
+│   │   │   │   ├── search.py
+│   │   │   │   ├── session.py
+│   │   │   │   ├── signatures.py
+│   │   │   │   ├── sliding_sync.py
+│   │   │   │   ├── state.py
+│   │   │   │   ├── state_deltas.py
+│   │   │   │   ├── stats.py
+│   │   │   │   ├── sticky_events.py
+│   │   │   │   ├── stream.py
+│   │   │   │   ├── tags.py
+│   │   │   │   ├── task_scheduler.py
+│   │   │   │   ├── thread_subscriptions.py
+│   │   │   │   ├── transactions.py
+│   │   │   │   ├── ui_auth.py
+│   │   │   │   ├── user_directory.py
+│   │   │   │   └── user_erasure_store.py
+│   │   │   └── state
+│   │   │       ├── __init__.py
+│   │   │       ├── bg_updates.py
+│   │   │       ├── deletion.py
+│   │   │       └── store.py
+│   │   ├── engines
+│   │   │   ├── __init__.py
+│   │   │   ├── _base.py
+│   │   │   ├── postgres.py
+│   │   │   └── sqlite.py
+│   │   ├── invite_rule.py
+│   │   ├── keys.py
+│   │   ├── prepare_database.py
+│   │   ├── push_rule.py
+│   │   ├── roommember.py
+│   │   ├── schema
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── common
+│   │   │   │   ├── delta
+│   │   │   │   │   ├── 25
+│   │   │   │   │   │   └── 00background_updates.sql
+│   │   │   │   │   ├── 35
+│   │   │   │   │   │   └── 00background_updates_add_col.sql
+│   │   │   │   │   └── 58
+│   │   │   │   │       └── 00background_update_ordering.sql
+│   │   │   │   ├── full_schemas
+│   │   │   │   │   └── 72
+│   │   │   │   │       ├── full.sql.postgres
+│   │   │   │   │       └── full.sql.sqlite
+│   │   │   │   └── schema_version.sql
+│   │   │   ├── main
+│   │   │   │   ├── delta
+│   │   │   │   │   ├── 12
+│   │   │   │   │   │   └── v12.sql
+│   │   │   │   │   ├── 13
+│   │   │   │   │   │   └── v13.sql
+│   │   │   │   │   ├── 14
+│   │   │   │   │   │   └── v14.sql
+│   │   │   │   │   ├── 15
+│   │   │   │   │   │   ├── appservice_txns.sql
+│   │   │   │   │   │   ├── presence_indices.sql
+│   │   │   │   │   │   └── v15.sql
+│   │   │   │   │   ├── 16
+│   │   │   │   │   │   ├── events_order_index.sql
+│   │   │   │   │   │   ├── remote_media_cache_index.sql
+│   │   │   │   │   │   ├── remove_duplicates.sql
+│   │   │   │   │   │   ├── room_alias_index.sql
+│   │   │   │   │   │   ├── unique_constraints.sql
+│   │   │   │   │   │   └── users.sql
+│   │   │   │   │   ├── 17
+│   │   │   │   │   │   ├── drop_indexes.sql
+│   │   │   │   │   │   ├── server_keys.sql
+│   │   │   │   │   │   └── user_threepids.sql
+│   │   │   │   │   ├── 18
+│   │   │   │   │   │   └── server_keys_bigger_ints.sql
+│   │   │   │   │   ├── 19
+│   │   │   │   │   │   └── event_index.sql
+│   │   │   │   │   ├── 20
+│   │   │   │   │   │   ├── dummy.sql
+│   │   │   │   │   │   └── pushers.py
+│   │   │   │   │   ├── 21
+│   │   │   │   │   │   ├── end_to_end_keys.sql
+│   │   │   │   │   │   └── receipts.sql
+│   │   │   │   │   ├── 22
+│   │   │   │   │   │   ├── receipts_index.sql
+│   │   │   │   │   │   └── user_threepids_unique.sql
+│   │   │   │   │   ├── 24
+│   │   │   │   │   │   └── stats_reporting.sql
+│   │   │   │   │   ├── 25
+│   │   │   │   │   │   ├── fts.py
+│   │   │   │   │   │   ├── guest_access.sql
+│   │   │   │   │   │   ├── history_visibility.sql
+│   │   │   │   │   │   └── tags.sql
+│   │   │   │   │   ├── 26
+│   │   │   │   │   │   └── account_data.sql
+│   │   │   │   │   ├── 27
+│   │   │   │   │   │   ├── account_data.sql
+│   │   │   │   │   │   ├── forgotten_memberships.sql
+│   │   │   │   │   │   └── ts.py
+│   │   │   │   │   ├── 28
+│   │   │   │   │   │   ├── event_push_actions.sql
+│   │   │   │   │   │   ├── events_room_stream.sql
+│   │   │   │   │   │   ├── public_roms_index.sql
+│   │   │   │   │   │   ├── receipts_user_id_index.sql
+│   │   │   │   │   │   ├── upgrade_times.sql
+│   │   │   │   │   │   └── users_is_guest.sql
+│   │   │   │   │   ├── 29
+│   │   │   │   │   │   └── push_actions.sql
+│   │   │   │   │   ├── 30
+│   │   │   │   │   │   ├── alias_creator.sql
+│   │   │   │   │   │   ├── as_users.py
+│   │   │   │   │   │   ├── deleted_pushers.sql
+│   │   │   │   │   │   ├── presence_stream.sql
+│   │   │   │   │   │   ├── public_rooms.sql
+│   │   │   │   │   │   ├── push_rule_stream.sql
+│   │   │   │   │   │   └── threepid_guest_access_tokens.sql
+│   │   │   │   │   ├── 31
+│   │   │   │   │   │   ├── invites.sql
+│   │   │   │   │   │   ├── local_media_repository_url_cache.sql
+│   │   │   │   │   │   ├── pushers_0.py
+│   │   │   │   │   │   ├── pushers_index.sql
+│   │   │   │   │   │   └── search_update.py
+│   │   │   │   │   ├── 32
+│   │   │   │   │   │   ├── events.sql
+│   │   │   │   │   │   ├── openid.sql
+│   │   │   │   │   │   ├── pusher_throttle.sql
+│   │   │   │   │   │   ├── remove_indices.sql
+│   │   │   │   │   │   └── reports.sql
+│   │   │   │   │   ├── 33
+│   │   │   │   │   │   ├── access_tokens_device_index.sql
+│   │   │   │   │   │   ├── devices.sql
+│   │   │   │   │   │   ├── devices_for_e2e_keys.sql
+│   │   │   │   │   │   ├── devices_for_e2e_keys_clear_unknown_device.sql
+│   │   │   │   │   │   ├── event_fields.py
+│   │   │   │   │   │   ├── remote_media_ts.py
+│   │   │   │   │   │   └── user_ips_index.sql
+│   │   │   │   │   ├── 34
+│   │   │   │   │   │   ├── appservice_stream.sql
+│   │   │   │   │   │   ├── cache_stream.py
+│   │   │   │   │   │   ├── device_inbox.sql
+│   │   │   │   │   │   ├── push_display_name_rename.sql
+│   │   │   │   │   │   └── received_txn_purge.py
+│   │   │   │   │   ├── 35
+│   │   │   │   │   │   ├── contains_url.sql
+│   │   │   │   │   │   ├── device_outbox.sql
+│   │   │   │   │   │   ├── device_stream_id.sql
+│   │   │   │   │   │   ├── event_push_actions_index.sql
+│   │   │   │   │   │   ├── public_room_list_change_stream.sql
+│   │   │   │   │   │   └── stream_order_to_extrem.sql
+│   │   │   │   │   ├── 36
+│   │   │   │   │   │   └── readd_public_rooms.sql
+│   │   │   │   │   ├── 37
+│   │   │   │   │   │   ├── remove_auth_idx.py
+│   │   │   │   │   │   └── user_threepids.sql
+│   │   │   │   │   ├── 38
+│   │   │   │   │   │   └── postgres_fts_gist.sql
+│   │   │   │   │   ├── 39
+│   │   │   │   │   │   ├── appservice_room_list.sql
+│   │   │   │   │   │   ├── device_federation_stream_idx.sql
+│   │   │   │   │   │   ├── event_push_index.sql
+│   │   │   │   │   │   ├── federation_out_position.sql
+│   │   │   │   │   │   └── membership_profile.sql
+│   │   │   │   │   ├── 40
+│   │   │   │   │   │   ├── current_state_idx.sql
+│   │   │   │   │   │   ├── device_inbox.sql
+│   │   │   │   │   │   ├── device_list_streams.sql
+│   │   │   │   │   │   ├── event_push_summary.sql
+│   │   │   │   │   │   └── pushers.sql
+│   │   │   │   │   ├── 41
+│   │   │   │   │   │   ├── device_list_stream_idx.sql
+│   │   │   │   │   │   ├── device_outbound_index.sql
+│   │   │   │   │   │   ├── event_search_event_id_idx.sql
+│   │   │   │   │   │   └── ratelimit.sql
+│   │   │   │   │   ├── 42
+│   │   │   │   │   │   ├── current_state_delta.sql
+│   │   │   │   │   │   ├── device_list_last_id.sql
+│   │   │   │   │   │   ├── event_auth_state_only.sql
+│   │   │   │   │   │   └── user_dir.py
+│   │   │   │   │   ├── 43
+│   │   │   │   │   │   ├── blocked_rooms.sql
+│   │   │   │   │   │   ├── quarantine_media.sql
+│   │   │   │   │   │   ├── url_cache.sql
+│   │   │   │   │   │   └── user_share.sql
+│   │   │   │   │   ├── 44
+│   │   │   │   │   │   └── expire_url_cache.sql
+│   │   │   │   │   ├── 45
+│   │   │   │   │   │   ├── group_server.sql
+│   │   │   │   │   │   └── profile_cache.sql
+│   │   │   │   │   ├── 46
+│   │   │   │   │   │   ├── drop_refresh_tokens.sql
+│   │   │   │   │   │   ├── drop_unique_deleted_pushers.sql
+│   │   │   │   │   │   ├── group_server.sql
+│   │   │   │   │   │   ├── local_media_repository_url_idx.sql
+│   │   │   │   │   │   ├── user_dir_null_room_ids.sql
+│   │   │   │   │   │   └── user_dir_typos.sql
+│   │   │   │   │   ├── 47
+│   │   │   │   │   │   ├── last_access_media.sql
+│   │   │   │   │   │   ├── postgres_fts_gin.sql
+│   │   │   │   │   │   └── push_actions_staging.sql
+│   │   │   │   │   ├── 48
+│   │   │   │   │   │   ├── add_user_consent.sql
+│   │   │   │   │   │   ├── add_user_ips_last_seen_index.sql
+│   │   │   │   │   │   ├── deactivated_users.sql
+│   │   │   │   │   │   ├── group_unique_indexes.py
+│   │   │   │   │   │   └── groups_joinable.sql
+│   │   │   │   │   ├── 49
+│   │   │   │   │   │   ├── add_user_consent_server_notice_sent.sql
+│   │   │   │   │   │   ├── add_user_daily_visits.sql
+│   │   │   │   │   │   └── add_user_ips_last_seen_only_index.sql
+│   │   │   │   │   ├── 50
+│   │   │   │   │   │   ├── add_creation_ts_users_index.sql
+│   │   │   │   │   │   ├── erasure_store.sql
+│   │   │   │   │   │   └── make_event_content_nullable.py
+│   │   │   │   │   ├── 51
+│   │   │   │   │   │   ├── e2e_room_keys.sql
+│   │   │   │   │   │   └── monthly_active_users.sql
+│   │   │   │   │   ├── 52
+│   │   │   │   │   │   ├── add_event_to_state_group_index.sql
+│   │   │   │   │   │   ├── device_list_streams_unique_idx.sql
+│   │   │   │   │   │   └── e2e_room_keys.sql
+│   │   │   │   │   ├── 53
+│   │   │   │   │   │   ├── add_user_type_to_users.sql
+│   │   │   │   │   │   ├── drop_sent_transactions.sql
+│   │   │   │   │   │   ├── event_format_version.sql
+│   │   │   │   │   │   ├── user_dir_populate.sql
+│   │   │   │   │   │   ├── user_ips_index.sql
+│   │   │   │   │   │   ├── user_share.sql
+│   │   │   │   │   │   ├── user_threepid_id.sql
+│   │   │   │   │   │   └── users_in_public_rooms.sql
+│   │   │   │   │   ├── 54
+│   │   │   │   │   │   ├── account_validity_with_renewal.sql
+│   │   │   │   │   │   ├── add_validity_to_server_keys.sql
+│   │   │   │   │   │   ├── delete_forward_extremities.sql
+│   │   │   │   │   │   ├── drop_legacy_tables.sql
+│   │   │   │   │   │   ├── drop_presence_list.sql
+│   │   │   │   │   │   ├── relations.sql
+│   │   │   │   │   │   ├── stats.sql
+│   │   │   │   │   │   └── stats2.sql
+│   │   │   │   │   ├── 55
+│   │   │   │   │   │   ├── access_token_expiry.sql
+│   │   │   │   │   │   ├── track_threepid_validations.sql
+│   │   │   │   │   │   └── users_alter_deactivated.sql
+│   │   │   │   │   ├── 56
+│   │   │   │   │   │   ├── add_spans_to_device_lists.sql
+│   │   │   │   │   │   ├── current_state_events_membership.sql
+│   │   │   │   │   │   ├── current_state_events_membership_mk2.sql
+│   │   │   │   │   │   ├── delete_keys_from_deleted_backups.sql
+│   │   │   │   │   │   ├── destinations_failure_ts.sql
+│   │   │   │   │   │   ├── destinations_retry_interval_type.sql.postgres
+│   │   │   │   │   │   ├── device_stream_id_insert.sql
+│   │   │   │   │   │   ├── devices_last_seen.sql
+│   │   │   │   │   │   ├── drop_unused_event_tables.sql
+│   │   │   │   │   │   ├── event_expiry.sql
+│   │   │   │   │   │   ├── event_labels.sql
+│   │   │   │   │   │   ├── event_labels_background_update.sql
+│   │   │   │   │   │   ├── fix_room_keys_index.sql
+│   │   │   │   │   │   ├── hidden_devices.sql
+│   │   │   │   │   │   ├── hidden_devices_fix.sql.sqlite
+│   │   │   │   │   │   ├── nuke_empty_communities_from_db.sql
+│   │   │   │   │   │   ├── public_room_list_idx.sql
+│   │   │   │   │   │   ├── redaction_censor.sql
+│   │   │   │   │   │   ├── redaction_censor2.sql
+│   │   │   │   │   │   ├── redaction_censor3_fix_update.sql.postgres
+│   │   │   │   │   │   ├── redaction_censor4.sql
+│   │   │   │   │   │   ├── remove_tombstoned_rooms_from_directory.sql
+│   │   │   │   │   │   ├── room_key_etag.sql
+│   │   │   │   │   │   ├── room_membership_idx.sql
+│   │   │   │   │   │   ├── room_retention.sql
+│   │   │   │   │   │   ├── signing_keys.sql
+│   │   │   │   │   │   ├── signing_keys_nonunique_signatures.sql
+│   │   │   │   │   │   ├── stats_separated.sql
+│   │   │   │   │   │   ├── unique_user_filter_index.py
+│   │   │   │   │   │   ├── user_external_ids.sql
+│   │   │   │   │   │   └── users_in_public_rooms_idx.sql
+│   │   │   │   │   ├── 57
+│   │   │   │   │   │   ├── delete_old_current_state_events.sql
+│   │   │   │   │   │   ├── device_list_remote_cache_stale.sql
+│   │   │   │   │   │   ├── local_current_membership.py
+│   │   │   │   │   │   ├── remove_sent_outbound_pokes.sql
+│   │   │   │   │   │   ├── rooms_version_column.sql
+│   │   │   │   │   │   ├── rooms_version_column_2.sql.postgres
+│   │   │   │   │   │   ├── rooms_version_column_2.sql.sqlite
+│   │   │   │   │   │   ├── rooms_version_column_3.sql.postgres
+│   │   │   │   │   │   └── rooms_version_column_3.sql.sqlite
+│   │   │   │   │   ├── 58
+│   │   │   │   │   │   ├── 02remove_dup_outbound_pokes.sql
+│   │   │   │   │   │   ├── 03persist_ui_auth.sql
+│   │   │   │   │   │   ├── 05cache_instance.sql.postgres
+│   │   │   │   │   │   ├── 06dlols_unique_idx.py
+│   │   │   │   │   │   ├── 07add_method_to_thumbnail_constraint.sql.postgres
+│   │   │   │   │   │   ├── 07add_method_to_thumbnail_constraint.sql.sqlite
+│   │   │   │   │   │   ├── 07persist_ui_auth_ips.sql
+│   │   │   │   │   │   ├── 08_media_safe_from_quarantine.sql.postgres
+│   │   │   │   │   │   ├── 08_media_safe_from_quarantine.sql.sqlite
+│   │   │   │   │   │   ├── 09shadow_ban.sql
+│   │   │   │   │   │   ├── 10_pushrules_enabled_delete_obsolete.sql
+│   │   │   │   │   │   ├── 10drop_local_rejections_stream.sql
+│   │   │   │   │   │   ├── 10federation_pos_instance_name.sql
+│   │   │   │   │   │   ├── 11dehydration.sql
+│   │   │   │   │   │   ├── 11fallback.sql
+│   │   │   │   │   │   ├── 11user_id_seq.py
+│   │   │   │   │   │   ├── 12room_stats.sql
+│   │   │   │   │   │   ├── 13remove_presence_allow_inbound.sql
+│   │   │   │   │   │   ├── 14events_instance_name.sql
+│   │   │   │   │   │   ├── 14events_instance_name.sql.postgres
+│   │   │   │   │   │   ├── 15_catchup_destination_rooms.sql
+│   │   │   │   │   │   ├── 15unread_count.sql
+│   │   │   │   │   │   ├── 16populate_stats_process_rooms_fix.sql
+│   │   │   │   │   │   ├── 17_catchup_last_successful.sql
+│   │   │   │   │   │   ├── 18stream_positions.sql
+│   │   │   │   │   │   ├── 19instance_map.sql.postgres
+│   │   │   │   │   │   ├── 19txn_id.sql
+│   │   │   │   │   │   ├── 20instance_name_event_tables.sql
+│   │   │   │   │   │   ├── 20user_daily_visits.sql
+│   │   │   │   │   │   ├── 21as_device_stream.sql
+│   │   │   │   │   │   ├── 21drop_device_max_stream_id.sql
+│   │   │   │   │   │   ├── 22puppet_token.sql
+│   │   │   │   │   │   ├── 22users_have_local_media.sql
+│   │   │   │   │   │   ├── 23e2e_cross_signing_keys_idx.sql
+│   │   │   │   │   │   ├── 24drop_event_json_index.sql
+│   │   │   │   │   │   ├── 25user_external_ids_user_id_idx.sql
+│   │   │   │   │   │   ├── 26access_token_last_validated.sql
+│   │   │   │   │   │   ├── 27local_invites.sql
+│   │   │   │   │   │   ├── 28drop_last_used_column.sql.postgres
+│   │   │   │   │   │   └── 28drop_last_used_column.sql.sqlite
+│   │   │   │   │   ├── 59
+│   │   │   │   │   │   ├── 01ignored_user.py
+│   │   │   │   │   │   ├── 02shard_send_to_device.sql
+│   │   │   │   │   │   ├── 03shard_send_to_device_sequence.sql.postgres
+│   │   │   │   │   │   ├── 04_event_auth_chains.sql
+│   │   │   │   │   │   ├── 04_event_auth_chains.sql.postgres
+│   │   │   │   │   │   ├── 04drop_account_data.sql
+│   │   │   │   │   │   ├── 05cache_invalidation.sql
+│   │   │   │   │   │   ├── 06chain_cover_index.sql
+│   │   │   │   │   │   ├── 06shard_account_data.sql
+│   │   │   │   │   │   ├── 06shard_account_data.sql.postgres
+│   │   │   │   │   │   ├── 07shard_account_data_fix.sql
+│   │   │   │   │   │   ├── 08delete_pushers_for_deactivated_accounts.sql
+│   │   │   │   │   │   ├── 08delete_stale_pushers.sql
+│   │   │   │   │   │   ├── 09rejected_events_metadata.sql
+│   │   │   │   │   │   ├── 10delete_purged_chain_cover.sql
+│   │   │   │   │   │   ├── 11add_knock_members_to_stats.sql
+│   │   │   │   │   │   ├── 11drop_thumbnail_constraint.sql.postgres
+│   │   │   │   │   │   ├── 12account_validity_token_used_ts_ms.sql
+│   │   │   │   │   │   ├── 12presence_stream_instance.sql
+│   │   │   │   │   │   ├── 12presence_stream_instance_seq.sql.postgres
+│   │   │   │   │   │   ├── 13users_to_send_full_presence_to.sql
+│   │   │   │   │   │   ├── 14refresh_tokens.sql
+│   │   │   │   │   │   ├── 15locks.sql
+│   │   │   │   │   │   └── 16federation_inbound_staging.sql
+│   │   │   │   │   ├── 60
+│   │   │   │   │   │   ├── 01recreate_stream_ordering.sql.postgres
+│   │   │   │   │   │   └── 02change_stream_ordering_columns.sql.postgres
+│   │   │   │   │   ├── 61
+│   │   │   │   │   │   ├── 01change_appservices_txns.sql.postgres
+│   │   │   │   │   │   ├── 01insertion_event_lookups.sql
+│   │   │   │   │   │   ├── 02drop_redundant_room_depth_index.sql
+│   │   │   │   │   │   └── 03recreate_min_depth.py
+│   │   │   │   │   ├── 62
+│   │   │   │   │   │   └── 01insertion_event_extremities.sql
+│   │   │   │   │   ├── 63
+│   │   │   │   │   │   ├── 01create_registration_tokens.sql
+│   │   │   │   │   │   ├── 02delete_unlinked_email_pushers.sql
+│   │   │   │   │   │   ├── 02populate-rooms-creator.sql
+│   │   │   │   │   │   ├── 03session_store.sql
+│   │   │   │   │   │   └── 04add_presence_stream_not_offline_index.sql
+│   │   │   │   │   ├── 64
+│   │   │   │   │   │   ├── 01msc2716_chunk_to_batch_rename.sql.postgres
+│   │   │   │   │   │   └── 01msc2716_chunk_to_batch_rename.sql.sqlite
+│   │   │   │   │   ├── 65
+│   │   │   │   │   │   ├── 01msc2716_insertion_event_edges.sql
+│   │   │   │   │   │   ├── 03remove_hidden_devices_from_device_inbox.sql
+│   │   │   │   │   │   ├── 04_local_group_updates.sql
+│   │   │   │   │   │   ├── 05_remove_room_stats_historical_and_user_stats_historical.sql
+│   │   │   │   │   │   ├── 06remove_deleted_devices_from_device_inbox.sql
+│   │   │   │   │   │   ├── 07_arbitrary_relations.sql
+│   │   │   │   │   │   ├── 08_device_inbox_background_updates.sql
+│   │   │   │   │   │   ├── 10_expirable_refresh_tokens.sql
+│   │   │   │   │   │   └── 11_devices_auth_provider_session.sql
+│   │   │   │   │   ├── 67
+│   │   │   │   │   │   └── 01drop_public_room_list_stream.sql
+│   │   │   │   │   ├── 68
+│   │   │   │   │   │   ├── 01event_columns.sql
+│   │   │   │   │   │   ├── 02_msc2409_add_device_id_appservice_stream_type.sql
+│   │   │   │   │   │   ├── 03_delete_account_data_for_deactivated_accounts.sql
+│   │   │   │   │   │   ├── 04_refresh_tokens_index_next_token_id.sql
+│   │   │   │   │   │   ├── 04partial_state_rooms.sql
+│   │   │   │   │   │   ├── 05_delete_non_strings_from_event_search.sql.sqlite
+│   │   │   │   │   │   ├── 05partial_state_rooms_triggers.py
+│   │   │   │   │   │   └── 06_msc3202_add_device_list_appservice_stream_type.sql
+│   │   │   │   │   ├── 69
+│   │   │   │   │   │   ├── 01as_txn_seq.py
+│   │   │   │   │   │   ├── 01device_list_oubound_by_room.sql
+│   │   │   │   │   │   └── 02cache_invalidation_index.sql
+│   │   │   │   │   ├── 70
+│   │   │   │   │   │   └── 01clean_table_purged_rooms.sql
+│   │   │   │   │   ├── 71
+│   │   │   │   │   │   ├── 01rebuild_event_edges.sql.postgres
+│   │   │   │   │   │   ├── 01rebuild_event_edges.sql.sqlite
+│   │   │   │   │   │   ├── 01remove_noop_background_updates.sql
+│   │   │   │   │   │   └── 02event_push_summary_unique.sql
+│   │   │   │   │   ├── 72
+│   │   │   │   │   │   ├── 01add_room_type_to_state_stats.sql
+│   │   │   │   │   │   ├── 01event_push_summary_receipt.sql
+│   │   │   │   │   │   ├── 02event_push_actions_index.sql
+│   │   │   │   │   │   ├── 03bg_populate_events_columns.py
+│   │   │   │   │   │   ├── 03drop_event_reference_hashes.sql
+│   │   │   │   │   │   ├── 03remove_groups.sql
+│   │   │   │   │   │   ├── 04drop_column_application_services_state_last_txn.sql.postgres
+│   │   │   │   │   │   ├── 04drop_column_application_services_state_last_txn.sql.sqlite
+│   │   │   │   │   │   ├── 05receipts_event_stream_ordering.sql
+│   │   │   │   │   │   ├── 05remove_unstable_private_read_receipts.sql
+│   │   │   │   │   │   ├── 06add_consent_ts_to_users.sql
+│   │   │   │   │   │   ├── 06thread_notifications.sql
+│   │   │   │   │   │   ├── 07force_update_current_state_events_membership.py
+│   │   │   │   │   │   ├── 07thread_receipts.sql.postgres
+│   │   │   │   │   │   ├── 07thread_receipts.sql.sqlite
+│   │   │   │   │   │   ├── 08begin_cache_invalidation_seq_at_2.sql.postgres
+│   │   │   │   │   │   ├── 08thread_receipts.sql
+│   │   │   │   │   │   └── 09partial_indices.sql.sqlite
+│   │   │   │   │   ├── 73
+│   │   │   │   │   │   ├── 01event_failed_pull_attempts.sql
+│   │   │   │   │   │   ├── 02add_pusher_enabled.sql
+│   │   │   │   │   │   ├── 02room_id_indexes_for_purging.sql
+│   │   │   │   │   │   ├── 03pusher_device_id.sql
+│   │   │   │   │   │   ├── 03users_approved_column.sql
+│   │   │   │   │   │   ├── 04partial_join_details.sql
+│   │   │   │   │   │   ├── 04pending_device_list_updates.sql
+│   │   │   │   │   │   ├── 05old_push_actions.sql.postgres
+│   │   │   │   │   │   ├── 05old_push_actions.sql.sqlite
+│   │   │   │   │   │   ├── 06thread_notifications_thread_id_idx.sql
+│   │   │   │   │   │   ├── 08thread_receipts_non_null.sql.postgres
+│   │   │   │   │   │   ├── 08thread_receipts_non_null.sql.sqlite
+│   │   │   │   │   │   ├── 09partial_joined_via_destination.sql
+│   │   │   │   │   │   ├── 09threads_table.sql
+│   │   │   │   │   │   ├── 10_update_sqlite_fts4_tokenizer.py
+│   │   │   │   │   │   ├── 10login_tokens.sql
+│   │   │   │   │   │   ├── 11event_search_room_id_n_distinct.sql.postgres
+│   │   │   │   │   │   ├── 12refactor_device_list_outbound_pokes.sql
+│   │   │   │   │   │   ├── 13add_device_lists_index.sql
+│   │   │   │   │   │   ├── 20_un_partial_stated_room_stream.sql
+│   │   │   │   │   │   ├── 21_un_partial_stated_room_stream_seq.sql.postgres
+│   │   │   │   │   │   ├── 22_rebuild_user_dir_stats.sql
+│   │   │   │   │   │   ├── 22_un_partial_stated_event_stream.sql
+│   │   │   │   │   │   ├── 23_fix_thread_index.sql
+│   │   │   │   │   │   ├── 23_un_partial_stated_room_stream_seq.sql.postgres
+│   │   │   │   │   │   ├── 24_events_jump_to_date_index.sql
+│   │   │   │   │   │   └── 25drop_presence.sql
+│   │   │   │   │   ├── 74
+│   │   │   │   │   │   ├── 01_user_directory_stale_remote_users.sql
+│   │   │   │   │   │   ├── 02_set_device_id_for_pushers_bg_update.sql
+│   │   │   │   │   │   ├── 03_membership_tables_event_stream_ordering.sql.postgres
+│   │   │   │   │   │   ├── 03_membership_tables_event_stream_ordering.sql.sqlite
+│   │   │   │   │   │   ├── 03_room_membership_index.sql
+│   │   │   │   │   │   ├── 04_delete_e2e_backup_keys_for_deactivated_users.sql
+│   │   │   │   │   │   ├── 04_membership_tables_event_stream_ordering_triggers.py
+│   │   │   │   │   │   ├── 05_events_txn_id_device_id.sql
+│   │   │   │   │   │   └── 90COMMENTS_destinations.sql.postgres
+│   │   │   │   │   ├── 76
+│   │   │   │   │   │   ├── 01_add_profiles_full_user_id_column.sql
+│   │   │   │   │   │   ├── 02_add_user_filters_full_user_id_column.sql
+│   │   │   │   │   │   ├── 03_per_user_experimental_features.sql
+│   │   │   │   │   │   └── 04_add_room_forgetter.sql
+│   │   │   │   │   ├── 77
+│   │   │   │   │   │   ├── 01_add_profiles_not_valid_check.sql.postgres
+│   │   │   │   │   │   ├── 02_add_user_filters_not_valid_check.sql.postgres
+│   │   │   │   │   │   ├── 03bg_populate_full_user_id_profiles.sql
+│   │   │   │   │   │   ├── 04bg_populate_full_user_id_user_filters.sql
+│   │   │   │   │   │   ├── 05thread_notifications_backfill.sql
+│   │   │   │   │   │   ├── 06thread_notifications_not_null.sql.sqlite
+│   │   │   │   │   │   ├── 06thread_notifications_not_null_event_push_actions.sql.postgres
+│   │   │   │   │   │   ├── 06thread_notifications_not_null_event_push_actions_staging.sql.postgres
+│   │   │   │   │   │   ├── 06thread_notifications_not_null_event_push_summary.sql.postgres
+│   │   │   │   │   │   └── 14bg_indices_event_stream_ordering.sql
+│   │   │   │   │   ├── 78
+│   │   │   │   │   │   ├── 01_validate_and_update_profiles.py
+│   │   │   │   │   │   ├── 02_validate_and_update_user_filters.py
+│   │   │   │   │   │   ├── 03_remove_unused_indexes_user_filters.py
+│   │   │   │   │   │   ├── 03event_extremities_constraints.py
+│   │   │   │   │   │   └── 04_add_full_user_id_index_user_filters.py
+│   │   │   │   │   ├── 79
+│   │   │   │   │   │   ├── 03_read_write_locks_triggers.sql.postgres
+│   │   │   │   │   │   ├── 03_read_write_locks_triggers.sql.sqlite
+│   │   │   │   │   │   ├── 04_mitigate_stream_ordering_update_race.py
+│   │   │   │   │   │   ├── 05_read_write_locks_triggers.sql.postgres
+│   │   │   │   │   │   └── 05_read_write_locks_triggers.sql.sqlite
+│   │   │   │   │   ├── 80
+│   │   │   │   │   │   ├── 01_users_alter_locked.sql
+│   │   │   │   │   │   ├── 02_read_write_locks_unlogged.sql.postgres
+│   │   │   │   │   │   ├── 02_scheduled_tasks.sql
+│   │   │   │   │   │   ├── 03_read_write_locks_triggers.sql.postgres
+│   │   │   │   │   │   └── 04_read_write_locks_deadlock.sql.postgres
+│   │   │   │   │   ├── 82
+│   │   │   │   │   │   ├── 02_scheduled_tasks_index.sql
+│   │   │   │   │   │   ├── 04_add_indices_for_purging_rooms.sql
+│   │   │   │   │   │   └── 05gaps.sql
+│   │   │   │   │   ├── 83
+│   │   │   │   │   │   ├── 01_drop_old_tables.sql
+│   │   │   │   │   │   ├── 03_instance_name_receipts.sql.sqlite
+│   │   │   │   │   │   ├── 05_cross_signing_key_update_grant.sql
+│   │   │   │   │   │   └── 06_event_push_summary_room.sql
+│   │   │   │   │   ├── 84
+│   │   │   │   │   │   ├── 01_auth_links_stats.sql.postgres
+│   │   │   │   │   │   ├── 02_auth_links_index.sql
+│   │   │   │   │   │   ├── 03_auth_links_analyze.sql.postgres
+│   │   │   │   │   │   └── 04_access_token_index.sql
+│   │   │   │   │   ├── 85
+│   │   │   │   │   │   ├── 01_add_suspended.sql
+│   │   │   │   │   │   ├── 02_add_instance_names.sql
+│   │   │   │   │   │   ├── 03_new_sequences.sql.postgres
+│   │   │   │   │   │   ├── 04_cleanup_device_federation_outbox.sql
+│   │   │   │   │   │   ├── 05_add_instance_names_converted_pos.sql
+│   │   │   │   │   │   └── 06_add_room_reports.sql
+│   │   │   │   │   ├── 86
+│   │   │   │   │   │   ├── 01_authenticate_media.sql
+│   │   │   │   │   │   └── 02_receipts_event_id_index.sql
+│   │   │   │   │   ├── 87
+│   │   │   │   │   │   ├── 01_sliding_sync_memberships.sql
+│   │   │   │   │   │   ├── 02_per_connection_state.sql
+│   │   │   │   │   │   └── 03_current_state_index.sql
+│   │   │   │   │   ├── 88
+│   │   │   │   │   │   ├── 01_add_delayed_events.sql
+│   │   │   │   │   │   ├── 01_custom_profile_fields.sql
+│   │   │   │   │   │   ├── 02_fix_sliding_sync_membership_snapshots_forgotten_column.sql
+│   │   │   │   │   │   ├── 03_add_otk_ts_added_index.sql
+│   │   │   │   │   │   ├── 04_current_state_delta_index.sql
+│   │   │   │   │   │   ├── 05_drop_old_otks.sql.postgres
+│   │   │   │   │   │   ├── 05_drop_old_otks.sql.sqlite
+│   │   │   │   │   │   ├── 05_sliding_sync_room_config_index.sql
+│   │   │   │   │   │   └── 06_events_received_ts_index.sql
+│   │   │   │   │   ├── 89
+│   │   │   │   │   │   └── 01_sliding_sync_membership_snapshot_index.sql
+│   │   │   │   │   ├── 90
+│   │   │   │   │   │   └── 01_add_column_participant_room_memberships_table.sql
+│   │   │   │   │   ├── 91
+│   │   │   │   │   │   └── 01_media_hash.sql
+│   │   │   │   │   ├── 92
+│   │   │   │   │   │   ├── 01_remove_trigger.sql.postgres
+│   │   │   │   │   │   ├── 01_remove_trigger.sql.sqlite
+│   │   │   │   │   │   ├── 02_remove_populate_participant_bg_update.sql
+│   │   │   │   │   │   ├── 04_ss_membership_snapshot_idx.sql
+│   │   │   │   │   │   ├── 04_thread_subscriptions.sql
+│   │   │   │   │   │   ├── 04_thread_subscriptions_seq.sql.postgres
+│   │   │   │   │   │   ├── 05_fixup_max_depth_cap.sql
+│   │   │   │   │   │   ├── 05_thread_subscriptions_comments.sql.postgres
+│   │   │   │   │   │   ├── 06_device_federation_inbox_index.sql
+│   │   │   │   │   │   ├── 06_threads_last_sent_stream_ordering_comments.sql.postgres
+│   │   │   │   │   │   ├── 07_add_user_reports.sql
+│   │   │   │   │   │   ├── 07_event_txn_id_device_id_txn_id2.sql
+│   │   │   │   │   │   ├── 08_room_ban_redactions.sql
+│   │   │   │   │   │   ├── 08_thread_subscriptions_seq_fixup.sql.postgres
+│   │   │   │   │   │   ├── 09_thread_subscriptions_update.sql
+│   │   │   │   │   │   └── 09_thread_subscriptions_update.sql.postgres
+│   │   │   │   │   └── 93
+│   │   │   │   │       ├── 01_add_delayed_events.sql
+│   │   │   │   │       ├── 01_sticky_events.sql
+│   │   │   │   │       ├── 01_sticky_events_seq.sql.postgres
+│   │   │   │   │       ├── 02_sliding_sync_members.sql
+│   │   │   │   │       ├── 03_sss_pos_last_used.sql
+│   │   │   │   │       └── 04_make_delayed_event_content_text.py
+│   │   │   │   └── full_schemas
+│   │   │   │       └── 72
+│   │   │   │           ├── full.sql.postgres
+│   │   │   │           └── full.sql.sqlite
+│   │   │   └── state
+│   │   │       ├── delta
+│   │   │       │   ├── 23
+│   │   │       │   │   └── drop_state_index.sql
+│   │   │       │   ├── 32
+│   │   │       │   │   └── remove_state_indices.sql
+│   │   │       │   ├── 35
+│   │   │       │   │   ├── add_state_index.sql
+│   │   │       │   │   ├── state.sql
+│   │   │       │   │   └── state_dedupe.sql
+│   │   │       │   ├── 47
+│   │   │       │   │   └── state_group_seq.py
+│   │   │       │   ├── 56
+│   │   │       │   │   └── state_group_room_idx.sql
+│   │   │       │   ├── 61
+│   │   │       │   │   └── 02state_groups_state_n_distinct.sql.postgres
+│   │   │       │   ├── 70
+│   │   │       │   │   └── 08_state_group_edges_unique.sql
+│   │   │       │   ├── 89
+│   │   │       │   │   └── 01_state_groups_deletion.sql
+│   │   │       │   └── 90
+│   │   │       │       ├── 02_delete_unreferenced_state_groups.sql
+│   │   │       │       └── 03_remove_old_deletion_bg_update.sql
+│   │   │       └── full_schemas
+│   │   │           └── 72
+│   │   │               ├── full.sql.postgres
+│   │   │               └── full.sql.sqlite
+│   │   ├── types.py
+│   │   └── util
+│   │       ├── __init__.py
+│   │       ├── id_generators.py
+│   │       ├── partial_state_events_tracker.py
+│   │       └── sequence.py
+│   ├── streams
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   └── events.py
+│   ├── synapse_rust
+│   │   ├── __init__.pyi
+│   │   ├── acl.pyi
+│   │   ├── events.pyi
+│   │   ├── http_client.pyi
+│   │   ├── msc4388_rendezvous.pyi
+│   │   ├── push.pyi
+│   │   ├── rendezvous.pyi
+│   │   └── segmenter.pyi
+│   ├── types
+│   │   ├── __init__.py
+│   │   ├── handlers
+│   │   │   ├── __init__.py
+│   │   │   ├── policy_server.py
+│   │   │   └── sliding_sync.py
+│   │   ├── rest
+│   │   │   ├── __init__.py
+│   │   │   └── client
+│   │   │       └── __init__.py
+│   │   ├── state.py
+│   │   └── storage
+│   │       └── __init__.py
+│   ├── util
+│   │   ├── __init__.py
+│   │   ├── async_helpers.py
+│   │   ├── background_queue.py
+│   │   ├── batching_queue.py
+│   │   ├── caches
+│   │   │   ├── __init__.py
+│   │   │   ├── cached_call.py
+│   │   │   ├── deferred_cache.py
+│   │   │   ├── descriptors.py
+│   │   │   ├── dictionary_cache.py
+│   │   │   ├── expiringcache.py
+│   │   │   ├── lrucache.py
+│   │   │   ├── response_cache.py
+│   │   │   ├── stream_change_cache.py
+│   │   │   ├── treecache.py
+│   │   │   └── ttlcache.py
+│   │   ├── cancellation.py
+│   │   ├── check_dependencies.py
+│   │   ├── clock.py
+│   │   ├── daemonize.py
+│   │   ├── distributor.py
+│   │   ├── duration.py
+│   │   ├── events.py
+│   │   ├── file_consumer.py
+│   │   ├── frozenutils.py
+│   │   ├── gai_resolver.py
+│   │   ├── hash.py
+│   │   ├── httpresourcetree.py
+│   │   ├── iterutils.py
+│   │   ├── json.py
+│   │   ├── linked_list.py
+│   │   ├── logcontext.py
+│   │   ├── logformatter.py
+│   │   ├── macaroons.py
+│   │   ├── manhole.py
+│   │   ├── metrics.py
+│   │   ├── module_loader.py
+│   │   ├── msisdn.py
+│   │   ├── patch_inline_callbacks.py
+│   │   ├── pydantic_models.py
+│   │   ├── ratelimitutils.py
+│   │   ├── retryutils.py
+│   │   ├── rlimit.py
+│   │   ├── rust.py
+│   │   ├── sentinel.py
+│   │   ├── stringutils.py
+│   │   ├── task_scheduler.py
+│   │   ├── templates.py
+│   │   ├── threepids.py
+│   │   └── wheel_timer.py
+│   └── visibility.py
+├── synmark
+│   ├── __init__.py
+│   ├── __main__.py
+│   └── suites
+│       ├── __init__.py
+│       ├── logging.py
+│       ├── lrucache.py
+│       └── lrucache_evict.py
+├── sytest-blacklist
+├── tests
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── test_auth.py
+│   │   ├── test_errors.py
+│   │   ├── test_filtering.py
+│   │   ├── test_ratelimiting.py
+│   │   └── test_urls.py
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── test_homeserver_shutdown.py
+│   │   ├── test_homeserver_start.py
+│   │   ├── test_openid_listener.py
+│   │   └── test_phone_stats_home.py
+│   ├── appservice
+│   │   ├── __init__.py
+│   │   ├── test_api.py
+│   │   ├── test_appservice.py
+│   │   └── test_scheduler.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── test___main__.py
+│   │   ├── test_api.py
+│   │   ├── test_appservice.py
+│   │   ├── test_background_update.py
+│   │   ├── test_base.py
+│   │   ├── test_cache.py
+│   │   ├── test_database.py
+│   │   ├── test_generate.py
+│   │   ├── test_load.py
+│   │   ├── test_oauth_delegation.py
+│   │   ├── test_ratelimiting.py
+│   │   ├── test_registration_config.py
+│   │   ├── test_room_directory.py
+│   │   ├── test_server.py
+│   │   ├── test_tls.py
+│   │   ├── test_util.py
+│   │   ├── test_workers.py
+│   │   └── utils.py
+│   ├── crypto
+│   │   ├── __init__.py
+│   │   ├── test_event_signing.py
+│   │   └── test_keyring.py
+│   ├── events
+│   │   ├── __init__.py
+│   │   ├── test_auto_accept_invites.py
+│   │   ├── test_presence_router.py
+│   │   ├── test_snapshot.py
+│   │   └── test_utils.py
+│   ├── federation
+│   │   ├── __init__.py
+│   │   ├── test_complexity.py
+│   │   ├── test_federation_base.py
+│   │   ├── test_federation_catch_up.py
+│   │   ├── test_federation_client.py
+│   │   ├── test_federation_devices.py
+│   │   ├── test_federation_media.py
+│   │   ├── test_federation_out_of_band_membership.py
+│   │   ├── test_federation_sender.py
+│   │   ├── test_federation_server.py
+│   │   └── transport
+│   │       ├── __init__.py
+│   │       ├── server
+│   │       │   ├── __init__.py
+│   │       │   └── test__base.py
+│   │       ├── test_client.py
+│   │       ├── test_knocking.py
+│   │       └── test_server.py
+│   ├── handlers
+│   │   ├── __init__.py
+│   │   ├── oidc_test_key.p8
+│   │   ├── oidc_test_key.pub.pem
+│   │   ├── test_admin.py
+│   │   ├── test_appservice.py
+│   │   ├── test_auth.py
+│   │   ├── test_cas.py
+│   │   ├── test_deactivate_account.py
+│   │   ├── test_device.py
+│   │   ├── test_directory.py
+│   │   ├── test_e2e_keys.py
+│   │   ├── test_e2e_room_keys.py
+│   │   ├── test_federation.py
+│   │   ├── test_federation_event.py
+│   │   ├── test_message.py
+│   │   ├── test_oauth_delegation.py
+│   │   ├── test_oidc.py
+│   │   ├── test_password_providers.py
+│   │   ├── test_presence.py
+│   │   ├── test_profile.py
+│   │   ├── test_receipts.py
+│   │   ├── test_register.py
+│   │   ├── test_room.py
+│   │   ├── test_room_list.py
+│   │   ├── test_room_member.py
+│   │   ├── test_room_policy.py
+│   │   ├── test_room_summary.py
+│   │   ├── test_saml.py
+│   │   ├── test_send_email.py
+│   │   ├── test_sliding_sync.py
+│   │   ├── test_sso.py
+│   │   ├── test_stats.py
+│   │   ├── test_sync.py
+│   │   ├── test_typing.py
+│   │   ├── test_user_directory.py
+│   │   └── test_worker_lock.py
+│   ├── http
+│   │   ├── __init__.py
+│   │   ├── ca.crt
+│   │   ├── ca.key
+│   │   ├── federation
+│   │   │   ├── __init__.py
+│   │   │   ├── test_matrix_federation_agent.py
+│   │   │   └── test_srv_resolver.py
+│   │   ├── server
+│   │   │   ├── __init__.py
+│   │   │   └── _base.py
+│   │   ├── server.key
+│   │   ├── test_additional_resource.py
+│   │   ├── test_client.py
+│   │   ├── test_endpoint.py
+│   │   ├── test_matrixfederationclient.py
+│   │   ├── test_proxy.py
+│   │   ├── test_proxyagent.py
+│   │   ├── test_servlet.py
+│   │   ├── test_simple_client.py
+│   │   └── test_site.py
+│   ├── logging
+│   │   ├── __init__.py
+│   │   ├── test_loggers.py
+│   │   ├── test_opentracing.py
+│   │   ├── test_remote_handler.py
+│   │   └── test_terse_json.py
+│   ├── media
+│   │   ├── __init__.py
+│   │   ├── test_base.py
+│   │   ├── test_filepath.py
+│   │   ├── test_html_preview.py
+│   │   ├── test_media_retention.py
+│   │   ├── test_media_storage.py
+│   │   ├── test_oembed.py
+│   │   └── test_url_previewer.py
+│   ├── metrics
+│   │   ├── __init__.py
+│   │   ├── test_background_process_metrics.py
+│   │   ├── test_metrics.py
+│   │   └── test_phone_home_stats.py
+│   ├── module_api
+│   │   ├── __init__.py
+│   │   ├── test_account_data_manager.py
+│   │   ├── test_api.py
+│   │   ├── test_event_unsigned_addition.py
+│   │   └── test_spamchecker.py
+│   ├── push
+│   │   ├── __init__.py
+│   │   ├── test_bulk_push_rule_evaluator.py
+│   │   ├── test_email.py
+│   │   ├── test_http.py
+│   │   ├── test_presentable_names.py
+│   │   └── test_push_rule_evaluator.py
+│   ├── replication
+│   │   ├── __init__.py
+│   │   ├── _base.py
+│   │   ├── http
+│   │   │   ├── __init__.py
+│   │   │   └── test__base.py
+│   │   ├── storage
+│   │   │   ├── __init__.py
+│   │   │   ├── _base.py
+│   │   │   └── test_events.py
+│   │   ├── tcp
+│   │   │   ├── __init__.py
+│   │   │   ├── streams
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_account_data.py
+│   │   │   │   ├── test_events.py
+│   │   │   │   ├── test_federation.py
+│   │   │   │   ├── test_partial_state.py
+│   │   │   │   ├── test_receipts.py
+│   │   │   │   ├── test_thread_subscriptions.py
+│   │   │   │   ├── test_to_device.py
+│   │   │   │   └── test_typing.py
+│   │   │   ├── test_commands.py
+│   │   │   └── test_handler.py
+│   │   ├── test_auth.py
+│   │   ├── test_client_reader_shard.py
+│   │   ├── test_federation_ack.py
+│   │   ├── test_federation_sender_shard.py
+│   │   ├── test_module_cache_invalidation.py
+│   │   ├── test_multi_media_repo.py
+│   │   ├── test_pusher_shard.py
+│   │   ├── test_sharded_event_persister.py
+│   │   └── test_sharded_receipts.py
+│   ├── rest
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── __init__.py
+│   │   │   ├── test_admin.py
+│   │   │   ├── test_background_updates.py
+│   │   │   ├── test_device.py
+│   │   │   ├── test_event.py
+│   │   │   ├── test_event_reports.py
+│   │   │   ├── test_federation.py
+│   │   │   ├── test_jwks.py
+│   │   │   ├── test_media.py
+│   │   │   ├── test_registration_tokens.py
+│   │   │   ├── test_room.py
+│   │   │   ├── test_scheduled_tasks.py
+│   │   │   ├── test_server_notice.py
+│   │   │   ├── test_statistics.py
+│   │   │   ├── test_user.py
+│   │   │   └── test_username_available.py
+│   │   ├── client
+│   │   │   ├── __init__.py
+│   │   │   ├── sliding_sync
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_connection_tracking.py
+│   │   │   │   ├── test_extension_account_data.py
+│   │   │   │   ├── test_extension_e2ee.py
+│   │   │   │   ├── test_extension_receipts.py
+│   │   │   │   ├── test_extension_thread_subscriptions.py
+│   │   │   │   ├── test_extension_to_device.py
+│   │   │   │   ├── test_extension_typing.py
+│   │   │   │   ├── test_extensions.py
+│   │   │   │   ├── test_lists_filters.py
+│   │   │   │   ├── test_room_subscriptions.py
+│   │   │   │   ├── test_rooms_invites.py
+│   │   │   │   ├── test_rooms_meta.py
+│   │   │   │   ├── test_rooms_required_state.py
+│   │   │   │   ├── test_rooms_timeline.py
+│   │   │   │   └── test_sliding_sync.py
+│   │   │   ├── test_account.py
+│   │   │   ├── test_account_data.py
+│   │   │   ├── test_auth.py
+│   │   │   ├── test_auth_metadata.py
+│   │   │   ├── test_capabilities.py
+│   │   │   ├── test_consent.py
+│   │   │   ├── test_delayed_events.py
+│   │   │   ├── test_devices.py
+│   │   │   ├── test_directory.py
+│   │   │   ├── test_ephemeral_message.py
+│   │   │   ├── test_events.py
+│   │   │   ├── test_filter.py
+│   │   │   ├── test_identity.py
+│   │   │   ├── test_keys.py
+│   │   │   ├── test_login.py
+│   │   │   ├── test_login_token_request.py
+│   │   │   ├── test_matrixrtc.py
+│   │   │   ├── test_media.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_msc4388_rendezvous.py
+│   │   │   ├── test_mutual_rooms.py
+│   │   │   ├── test_notifications.py
+│   │   │   ├── test_owned_state.py
+│   │   │   ├── test_password_policy.py
+│   │   │   ├── test_power_levels.py
+│   │   │   ├── test_presence.py
+│   │   │   ├── test_profile.py
+│   │   │   ├── test_push_rule_attrs.py
+│   │   │   ├── test_read_marker.py
+│   │   │   ├── test_receipts.py
+│   │   │   ├── test_redactions.py
+│   │   │   ├── test_register.py
+│   │   │   ├── test_relations.py
+│   │   │   ├── test_rendezvous.py
+│   │   │   ├── test_reporting.py
+│   │   │   ├── test_retention.py
+│   │   │   ├── test_rooms.py
+│   │   │   ├── test_sendtodevice.py
+│   │   │   ├── test_shadow_banned.py
+│   │   │   ├── test_sticky_events.py
+│   │   │   ├── test_sync.py
+│   │   │   ├── test_sync_sticky_events.py
+│   │   │   ├── test_tags.py
+│   │   │   ├── test_third_party_rules.py
+│   │   │   ├── test_thread_subscriptions.py
+│   │   │   ├── test_transactions.py
+│   │   │   ├── test_typing.py
+│   │   │   ├── test_upgrade_room.py
+│   │   │   └── utils.py
+│   │   ├── key
+│   │   │   ├── __init__.py
+│   │   │   └── v2
+│   │   │       ├── __init__.py
+│   │   │       └── test_remote_key_resource.py
+│   │   ├── media
+│   │   │   ├── __init__.py
+│   │   │   ├── test_domain_blocking.py
+│   │   │   └── test_url_preview.py
+│   │   ├── synapse
+│   │   │   ├── __init__.py
+│   │   │   ├── client
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_federation_whitelist.py
+│   │   │   └── mas
+│   │   │       ├── __init__.py
+│   │   │       ├── _base.py
+│   │   │       ├── test_devices.py
+│   │   │       └── test_users.py
+│   │   ├── test_health.py
+│   │   └── test_well_known.py
+│   ├── scripts
+│   │   ├── __init__.py
+│   │   └── test_new_matrix_user.py
+│   ├── server.py
+│   ├── server_notices
+│   │   ├── __init__.py
+│   │   ├── test_consent.py
+│   │   └── test_resource_limits_server_notices.py
+│   ├── state
+│   │   ├── __init__.py
+│   │   ├── test_v2.py
+│   │   └── test_v21.py
+│   ├── storage
+│   │   ├── __init__.py
+│   │   ├── databases
+│   │   │   ├── __init__.py
+│   │   │   └── main
+│   │   │       ├── __init__.py
+│   │   │       ├── test_cache.py
+│   │   │       ├── test_deviceinbox.py
+│   │   │       ├── test_end_to_end_keys.py
+│   │   │       ├── test_events_worker.py
+│   │   │       ├── test_lock.py
+│   │   │       ├── test_metrics.py
+│   │   │       ├── test_receipts.py
+│   │   │       └── test_room.py
+│   │   ├── test__base.py
+│   │   ├── test_account_data.py
+│   │   ├── test_appservice.py
+│   │   ├── test_background_update.py
+│   │   ├── test_base.py
+│   │   ├── test_cleanup_extrems.py
+│   │   ├── test_client_ips.py
+│   │   ├── test_database.py
+│   │   ├── test_devices.py
+│   │   ├── test_directory.py
+│   │   ├── test_e2e_room_keys.py
+│   │   ├── test_end_to_end_keys.py
+│   │   ├── test_event_chain.py
+│   │   ├── test_event_federation.py
+│   │   ├── test_event_push_actions.py
+│   │   ├── test_events.py
+│   │   ├── test_events_bg_updates.py
+│   │   ├── test_id_generators.py
+│   │   ├── test_invite_rule.py
+│   │   ├── test_main.py
+│   │   ├── test_monthly_active_users.py
+│   │   ├── test_profile.py
+│   │   ├── test_purge.py
+│   │   ├── test_receipts.py
+│   │   ├── test_redaction.py
+│   │   ├── test_registration.py
+│   │   ├── test_relations.py
+│   │   ├── test_rollback_worker.py
+│   │   ├── test_room.py
+│   │   ├── test_room_search.py
+│   │   ├── test_roommember.py
+│   │   ├── test_sliding_sync_tables.py
+│   │   ├── test_state.py
+│   │   ├── test_state_deletion.py
+│   │   ├── test_sticky_events.py
+│   │   ├── test_stream.py
+│   │   ├── test_thread_subscriptions.py
+│   │   ├── test_transactions.py
+│   │   ├── test_txn_limit.py
+│   │   ├── test_unsafe_locale.py
+│   │   ├── test_user_directory.py
+│   │   ├── test_user_filters.py
+│   │   └── util
+│   │       ├── __init__.py
+│   │       └── test_partial_state_events_tracker.py
+│   ├── synapse_rust
+│   │   ├── __init__.py
+│   │   └── test_http_client.py
+│   ├── test_distributor.py
+│   ├── test_event_auth.py
+│   ├── test_mau.py
+│   ├── test_phone_home.py
+│   ├── test_rust.py
+│   ├── test_server.py
+│   ├── test_state.py
+│   ├── test_terms_auth.py
+│   ├── test_types.py
+│   ├── test_utils
+│   │   ├── __init__.py
+│   │   ├── event_injection.py
+│   │   ├── html_parsers.py
+│   │   ├── logging_setup.py
+│   │   └── oidc.py
+│   ├── test_visibility.py
+│   ├── types
+│   │   ├── __init__.py
+│   │   ├── test_init.py
+│   │   └── test_state.py
+│   ├── unittest.py
+│   ├── util
+│   │   ├── __init__.py
+│   │   ├── caches
+│   │   │   ├── __init__.py
+│   │   │   ├── test_cached_call.py
+│   │   │   ├── test_deferred_cache.py
+│   │   │   ├── test_descriptors.py
+│   │   │   ├── test_response_cache.py
+│   │   │   └── test_ttlcache.py
+│   │   ├── test_async_helpers.py
+│   │   ├── test_background_queue.py
+│   │   ├── test_batching_queue.py
+│   │   ├── test_check_dependencies.py
+│   │   ├── test_clock.py
+│   │   ├── test_dict_cache.py
+│   │   ├── test_events.py
+│   │   ├── test_expiring_cache.py
+│   │   ├── test_file_consumer.py
+│   │   ├── test_itertools.py
+│   │   ├── test_linearizer.py
+│   │   ├── test_logcontext.py
+│   │   ├── test_logformatter.py
+│   │   ├── test_lrucache.py
+│   │   ├── test_macaroons.py
+│   │   ├── test_mutable_overlay_mapping.py
+│   │   ├── test_ratelimitutils.py
+│   │   ├── test_retryutils.py
+│   │   ├── test_rwlock.py
+│   │   ├── test_stream_change_cache.py
+│   │   ├── test_stringutils.py
+│   │   ├── test_task_scheduler.py
+│   │   ├── test_threepids.py
+│   │   ├── test_treecache.py
+│   │   └── test_wheel_timer.py
+│   └── utils.py
+└── tox.ini
+292 directories, 1825 files
