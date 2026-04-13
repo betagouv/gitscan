@@ -1,0 +1,35 @@
+{
+  "name": "mas-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for Matrix Authentication Service OIDC authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:local": "ENV=local playwright test",
+    "test:dev01": "ENV=dev01 playwright test  ./tests/minimal/",
+    "test:preprod": "ENV=preprod playwright test  ./tests/minimal/",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint . --fix",
+    "format": "biome format .",
+    "format:fix": "biome format . --write"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "oidc",
+    "keycloak"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0",
+    "dotenv": "^16.3.1",
+    "mailpit-api": "^1.5.4",
+    "typescript": "^5.3.2"
+  }
+}
