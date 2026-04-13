@@ -1,0 +1,217 @@
+.
+├── .editorconfig
+├── .github
+│   └── workflows
+│       ├── release.yml
+│       └── validate.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .prettierignore
+├── .prettierrc.cjs
+├── .tooling
+│   ├── .commitlint
+│   │   └── commitlint.config.cjs
+│   ├── .lintstaged
+│   │   └── .lintstagedrc
+│   └── .semantic-release
+│       ├── .npmignore
+│       └── .semantic-release.config.cjs
+├── .tsconfig
+│   ├── tsconfig.base.json
+│   ├── tsconfig.cjs.json
+│   ├── tsconfig.esm.json
+│   └── tsconfig.test.json
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── eslint.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+└── src
+    ├── errors
+    │   ├── index.ts
+    │   └── model.error.ts
+    ├── index.ts
+    ├── models
+    │   ├── adresse
+    │   │   ├── adresse.spec.ts
+    │   │   ├── adresse.ts
+    │   │   ├── errors
+    │   │   │   ├── code-insee.error.ts
+    │   │   │   ├── code-postal.error.ts
+    │   │   │   ├── commune.error.ts
+    │   │   │   ├── index.ts
+    │   │   │   └── voie.error.ts
+    │   │   └── index.ts
+    │   ├── contact
+    │   │   ├── contact.spec.ts
+    │   │   ├── contact.ts
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── telephone.error.ts
+    │   │   └── index.ts
+    │   ├── courriel
+    │   │   ├── courriel.spec.ts
+    │   │   ├── courriel.ts
+    │   │   ├── errors
+    │   │   │   ├── courriel.error.ts
+    │   │   │   └── index.ts
+    │   │   └── index.ts
+    │   ├── dispositif-programme-national
+    │   │   ├── dispositif-programme-national.spec.ts
+    │   │   ├── dispositif-programme-national.ts
+    │   │   ├── errors
+    │   │   │   ├── dispositif-programme-national.error.ts
+    │   │   │   └── index.ts
+    │   │   └── index.ts
+    │   ├── formation-label
+    │   │   ├── errors
+    │   │   │   ├── formation-label.error.ts
+    │   │   │   └── index.ts
+    │   │   ├── formation-label.spec.ts
+    │   │   ├── formation-label.ts
+    │   │   └── index.ts
+    │   ├── frais-a-charge
+    │   │   ├── errors
+    │   │   │   ├── frais-a-charge.error.ts
+    │   │   │   └── index.ts
+    │   │   ├── frais-a-charge.spec.ts
+    │   │   ├── frais-a-charge.ts
+    │   │   └── index.ts
+    │   ├── id
+    │   │   ├── errors
+    │   │   │   ├── id.error.ts
+    │   │   │   └── index.ts
+    │   │   ├── id.spec.ts
+    │   │   ├── id.ts
+    │   │   └── index.ts
+    │   ├── index.ts
+    │   ├── itinerance
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── itinerance.error.ts
+    │   │   ├── index.ts
+    │   │   ├── itinerance.spec.ts
+    │   │   └── itinerances.ts
+    │   ├── lieu-mediation-numerique.ts
+    │   ├── localisation
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   ├── latitude.error.ts
+    │   │   │   └── longitude.error.ts
+    │   │   ├── index.ts
+    │   │   ├── localisation.spec.ts
+    │   │   └── localisation.ts
+    │   ├── modalite-acces
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── modalite-acces.error.ts
+    │   │   ├── index.ts
+    │   │   ├── modalite-acces.spec.ts
+    │   │   └── modalite-acces.ts
+    │   ├── modalite-accompagnement
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── modalites-accompagnement.error.ts
+    │   │   ├── index.ts
+    │   │   ├── modalite-accompagnement.spec.ts
+    │   │   └── modalite-accompagnement.ts
+    │   ├── model.ts
+    │   ├── nom
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── nom.error.ts
+    │   │   ├── index.ts
+    │   │   ├── nom.spec.ts
+    │   │   └── nom.ts
+    │   ├── pivot
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── pivot.error.ts
+    │   │   ├── index.ts
+    │   │   ├── pivot.spec.ts
+    │   │   └── pivot.ts
+    │   ├── presentation.ts
+    │   ├── prise-en-charge-specifique
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── prise-en-charge-specifique.error.ts
+    │   │   ├── index.ts
+    │   │   ├── prise-en-charge-specifique.spec.ts
+    │   │   └── prise-en-charge-specifique.ts
+    │   ├── publics-specifiquement-adresses
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── publics-specifiquement-adresses.error.ts
+    │   │   ├── index.ts
+    │   │   ├── publics-specifiquement-adresses.spec.ts
+    │   │   └── publics-specifiquement-adresses.ts
+    │   ├── rna
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── rna.error.ts
+    │   │   ├── index.ts
+    │   │   ├── rna.spec.ts
+    │   │   └── rna.ts
+    │   ├── service
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── services.error.ts
+    │   │   ├── index.ts
+    │   │   ├── service.spec.ts
+    │   │   └── service.ts
+    │   ├── siret
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── siret.error.ts
+    │   │   ├── index.ts
+    │   │   ├── siret.spec.ts
+    │   │   └── siret.ts
+    │   ├── typologie
+    │   │   ├── errors
+    │   │   │   ├── index.ts
+    │   │   │   └── typologies.error.ts
+    │   │   ├── index.ts
+    │   │   ├── typologie.spec.ts
+    │   │   └── typologie.ts
+    │   └── url
+    │       ├── errors
+    │       │   ├── index.ts
+    │       │   └── url.error.ts
+    │       ├── index.ts
+    │       ├── url.spec.ts
+    │       └── url.ts
+    └── transfer
+        ├── index.ts
+        ├── schema-data-inclusion
+        │   ├── from-schema-data-inclusion
+        │   │   ├── errors
+        │   │   │   └── mandatory-siret-or-rna.error.ts
+        │   │   ├── from-schema-data-inclusion-fields.ts
+        │   │   ├── from-schema-data-inclusion.spec.ts
+        │   │   ├── from-schema-data-inclusion.ts
+        │   │   └── index.ts
+        │   ├── index.ts
+        │   ├── schema-data-inclusion.ts
+        │   ├── service-to-structure
+        │   │   ├── index.ts
+        │   │   ├── service-to-structure.spec.ts
+        │   │   └── service-to-structure.ts
+        │   └── to-schema-data-inclusion
+        │       ├── to-schema-data-inclusion-fields.ts
+        │       ├── to-schema-data-inclusion.spec.ts
+        │       └── to-schema-data-inclusion.ts
+        └── schema-lieux-de-mediation-numerique
+            ├── from-schema-lieux-de-mediation-numerique
+            │   ├── from-schema-lieux-de-mediation-numerique-fields.ts
+            │   ├── from-schema-lieux-de-mediation-numerique.spec.ts
+            │   └── from-schema-lieux-de-mediation-numerique.ts
+            ├── index.ts
+            ├── schema-lieux-de-mediation-numerique.ts
+            └── to-schema-lieux-de-mediation-numerique
+                ├── to-schema-lieux-de-mediation-numerique-fields.ts
+                ├── to-schema-lieux-de-mediation-numerique.spec.ts
+                └── to-schema-lieux-de-mediation-numerique.ts
+61 directories, 155 files
