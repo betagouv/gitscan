@@ -1,0 +1,76 @@
+services:
+  reverse_proxy:
+    image: accompagnateur_reverse_proxy
+    container_name: accompagnateur_reverse_proxy
+    build:
+      context: reverse_proxy
+    mem_limit: 256m
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - accompagnateur_network
+    depends_on:
+      - server
+      - ui
+    environment:
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      - DNS_SERVER=127.0.0.11
+      - PROXY=1
+      - PROXY_TIMEOUT=300
+      - TIMEOUT=300
+      - ACCESSLOG=/data/access.log
+      - ERRORLOG=/data/error.log
+      - LOGLEVEL=warn
+      - NGINX_ALWAYS_TLS_REDIRECT=false
+      - ALLOWED_METHODS=GET HEAD POST OPTIONS PUT DELETE
+      - IS_LOCALHOST=0
+
+  ui:
+    image: accompagnateur_ui
+    container_name: accompagnateur_ui
+    build:
+      context: ./
+      dockerfile: ./ui/Dockerfile
+    mem_limit: 1g
+    restart: unless-stopped
+    networks:
+      - accompagnateur_network
+    depends_on:
+      - server
+
+  server:
+    image: accompagnateur_server
+    container_name: accompagnateur_server
+    build:
+      context: ./
+      dockerfile: ./server/Dockerfile
+    mem_limit: 1g
+    restart: unless-stopped
+    networks:
+      - accompagnateur_network
+    environment:
+      - ACCOMPAGNATEUR_LOG_DESTINATIONS=stdout,sql
+      - ACCOMPAGNATEUR_SQL_LOG_LEVEL=error
+
+  typesense:
+    image: typesense/typesense:28.0
+    container_name: accompagnateur_typesense
+    mem_limit: 2g
+    restart: unless-stopped
+    networks:
+      - accompagnateur_network
+
+  metabase:
+    image: metabase/metabase:v0.55.6
+    container_name: accompagnateur_metabase
+    mem_limit: 2g
+    restart: always
+    networks:
+      - accompagnateur_network
+
+networks:
+  accompagnateur_network:
+    name: accompagnateur_network
