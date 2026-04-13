@@ -1,0 +1,169 @@
+.
+├── .dockerignore
+├── .github
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .gitignore
+├── CHANGELOG.md
+├── Dockerfile
+├── LICENSE
+├── MANIFEST.in
+├── README.rst
+├── changelog.d
+│   ├── .gitignore
+│   ├── 301.misc
+│   ├── 317.bugfix
+│   ├── 318.misc
+│   ├── 321.misc
+│   ├── 322.feature
+│   ├── 323.feature
+│   ├── 324.feature
+│   ├── 325.misc
+│   ├── 326.feature
+│   ├── 328.feature
+│   ├── 334.misc
+│   ├── 335.docker
+│   └── 337.bugfix
+├── docs
+│   ├── info.md
+│   └── replication.md
+├── matrix-sydent.service
+├── matrix_is_test
+│   ├── __init__.py
+│   ├── info.yaml
+│   ├── launcher.py
+│   ├── res
+│   │   └── is-test
+│   │       ├── invite_template.eml
+│   │       ├── verification_template.eml
+│   │       └── verify_response_template.html
+│   └── terms.yaml
+├── pyproject.toml
+├── res
+│   ├── matrix-org
+│   │   ├── invite_template.eml
+│   │   ├── verification_template.eml
+│   │   └── verify_response_template.html
+│   └── vector-im
+│       ├── invite_template.eml
+│       ├── verification_template.eml
+│       └── verify_response_template.html
+├── scripts
+│   ├── generate-key
+│   ├── show-verify-key
+│   └── sydent-bind
+├── setup.cfg
+├── setup.py
+├── sydent
+│   ├── __init__.py
+│   ├── config
+│   │   └── __init__.py
+│   ├── db
+│   │   ├── __init__.py
+│   │   ├── accounts.py
+│   │   ├── hashing_metadata.py
+│   │   ├── invite_tokens.py
+│   │   ├── invite_tokens.sql
+│   │   ├── peers.py
+│   │   ├── peers.sql
+│   │   ├── profiles.py
+│   │   ├── profiles.sql
+│   │   ├── sqlitedb.py
+│   │   ├── terms.py
+│   │   ├── threepid_associations.py
+│   │   ├── threepid_associations.sql
+│   │   ├── threepid_validation.sql
+│   │   └── valsession.py
+│   ├── hs_federation
+│   │   ├── __init__.py
+│   │   └── verifier.py
+│   ├── http
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── blacklisting_reactor.py
+│   │   ├── federation_tls_options.py
+│   │   ├── httpclient.py
+│   │   ├── httpcommon.py
+│   │   ├── httpsclient.py
+│   │   ├── httpserver.py
+│   │   ├── info.py
+│   │   ├── matrixfederationagent.py
+│   │   ├── servlets
+│   │   │   ├── __init__.py
+│   │   │   ├── accountservlet.py
+│   │   │   ├── authenticated_bind_threepid_servlet.py
+│   │   │   ├── authenticated_unbind_threepid_servlet.py
+│   │   │   ├── blindlysignstuffservlet.py
+│   │   │   ├── bulklookupservlet.py
+│   │   │   ├── emailservlet.py
+│   │   │   ├── getvalidated3pidservlet.py
+│   │   │   ├── hashdetailsservlet.py
+│   │   │   ├── infoservlet.py
+│   │   │   ├── internalinfoservlet.py
+│   │   │   ├── logoutservlet.py
+│   │   │   ├── lookupservlet.py
+│   │   │   ├── lookupv2servlet.py
+│   │   │   ├── msisdnservlet.py
+│   │   │   ├── profilereplicationservlet.py
+│   │   │   ├── pubkeyservlets.py
+│   │   │   ├── registerservlet.py
+│   │   │   ├── replication.py
+│   │   │   ├── store_invite_servlet.py
+│   │   │   ├── termsservlet.py
+│   │   │   ├── threepidbindservlet.py
+│   │   │   ├── threepidunbindservlet.py
+│   │   │   ├── userdirectorysearchservlet.py
+│   │   │   ├── v1_servlet.py
+│   │   │   └── v2_servlet.py
+│   │   └── srvresolver.py
+│   ├── replication
+│   │   ├── __init__.py
+│   │   ├── peer.py
+│   │   └── pusher.py
+│   ├── sign
+│   │   ├── __init__.py
+│   │   └── ed25519.py
+│   ├── sms
+│   │   ├── __init__.py
+│   │   └── openmarket.py
+│   ├── sydent.py
+│   ├── terms
+│   │   ├── __init__.py
+│   │   └── terms.py
+│   ├── threepid
+│   │   ├── __init__.py
+│   │   ├── bind.py
+│   │   └── signer.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── accounts.py
+│   │   └── tokens.py
+│   ├── util
+│   │   ├── __init__.py
+│   │   ├── emailutils.py
+│   │   ├── hash.py
+│   │   ├── ip_range.py
+│   │   ├── stringutils.py
+│   │   ├── tokenutils.py
+│   │   └── ttlcache.py
+│   └── validators
+│       ├── __init__.py
+│       ├── common.py
+│       ├── emailvalidator.py
+│       └── msisdnvalidator.py
+├── terms.sample.yaml
+└── tests
+    ├── __init__.py
+    ├── res
+    │   └── info.yaml
+    ├── test_auth.py
+    ├── test_blacklisting.py
+    ├── test_email.py
+    ├── test_info.py
+    ├── test_invites.py
+    ├── test_register.py
+    ├── test_replication.py
+    ├── test_start.py
+    ├── test_userdir.py
+    ├── test_util.py
+    └── utils.py
+27 directories, 141 files
