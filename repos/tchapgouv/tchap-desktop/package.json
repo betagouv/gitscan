@@ -1,0 +1,50 @@
+{
+  "name": "tchap-desktop",
+  "version": "4.19.4",
+  "description": "",
+  "main": "./scripts/index.ts",
+  "scripts": {
+    "fetch-package": "tsx ./scripts/fetch-package.ts",
+    "update-version": "./scripts/update-version.sh"
+  },
+  "tchapConfig": {
+    "use_github": false,
+    "prod": {
+      "tchap-web_version": "4.19.4",
+      "tchap-web_archive_name": "tchap-4.19.4-prod-20260409.tar.gz",
+      "tchap-web_github": {
+        "branch": "develop_tchap",
+        "repo": "https://github.com/tchapgouv/tchap-web-v4"
+      }
+    },
+    "dev": {
+      "tchap-web_version": "4.19.4",
+      "tchap-web_archive_name": "tchap-4.19.4-dev-20260409.tar.gz",
+      "tchap-web_github": {
+        "branch": "develop_tchap",
+        "repo": "https://github.com/tchapgouv/tchap-web-v4"
+      }
+    },
+    "preprod": {
+      "tchap-web_version": "4.19.4",
+      "tchap-web_archive_name": "tchap-4.19.4-preprod-20260409.tar.gz",
+      "tchap-web_github": {
+        "branch": "develop_tchap",
+        "repo": "https://github.com/tchapgouv/tchap-web-v4"
+      }
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tar": "^7.4.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-autostart": "^2.5.1",
+    "@tauri-apps/plugin-shell": "^2.3.1",
+    "tauri-plugin-keyring-api": "^0.1.1"
+  }
+}
