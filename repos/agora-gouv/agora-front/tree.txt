@@ -1,0 +1,193 @@
+.
+├── .buildpacks
+├── .editorconfig
+├── .github
+│   └── workflows
+│       └── build.yml
+├── .gitignore
+├── Procfile
+├── README.md
+├── bin
+│   └── setup-htpasswd.sh
+├── client
+│   ├── assets
+│   │   ├── icons
+│   │   │   └── index.js
+│   │   └── main.scss
+│   ├── components
+│   │   ├── BandeauTelechargement.vue
+│   │   ├── BandeauTelechargementAdaptatif.vue
+│   │   ├── Date.vue
+│   │   ├── Loader.vue
+│   │   ├── ProfilForm.vue
+│   │   ├── Qag.vue
+│   │   ├── SetValueButton.vue
+│   │   ├── Skeleton.vue
+│   │   ├── Stepper.vue
+│   │   ├── TabItem.vue
+│   │   ├── Video.vue
+│   │   ├── consultation
+│   │   │   ├── ConsultationContentLayout.module.scss
+│   │   │   ├── ConsultationContentSkeleton.vue
+│   │   │   ├── EnUnClinDOeil.module.scss
+│   │   │   ├── EnUnClinDOeil.vue
+│   │   │   ├── EnUnClinDOeilSkeleton.vue
+│   │   │   ├── EncartFeedback.vue
+│   │   │   ├── Filtres.vue
+│   │   │   ├── QuestionButtons.vue
+│   │   │   ├── QuestionButtonsPreviousOnly.vue
+│   │   │   ├── QuestionResult.vue
+│   │   │   ├── QuestionsInformations.module.scss
+│   │   │   ├── QuestionsInformations.vue
+│   │   │   ├── QuestionsInformationsSkeleton.vue
+│   │   │   ├── QuestionsStepper.vue
+│   │   │   ├── RepondreModal.vue
+│   │   │   ├── Sections.module.scss
+│   │   │   ├── Sections.vue
+│   │   │   ├── SectionsSkeleton.vue
+│   │   │   ├── Share.vue
+│   │   │   └── consultationContent.vue
+│   │   ├── home
+│   │   │   ├── ALaUne.vue
+│   │   │   ├── Fonctionnalites.vue
+│   │   │   ├── Hero.vue
+│   │   │   └── PGO.vue
+│   │   └── profil
+│   │       ├── CategorieSocioProModal.vue
+│   │       ├── Page.vue
+│   │       └── ProfilVoteurModal.vue
+│   ├── composables
+│   │   ├── useAuthentication.ts
+│   │   ├── useConsultationQuestionsForm.ts
+│   │   ├── useConsultationResponses.ts
+│   │   └── useNoIndexation.ts
+│   ├── env.d.ts
+│   ├── error.vue
+│   ├── layouts
+│   │   └── basic.vue
+│   ├── pages
+│   │   ├── accessibilite
+│   │   │   └── index.vue
+│   │   ├── cgu
+│   │   │   └── index.vue
+│   │   ├── charte-participation
+│   │   │   └── index.vue
+│   │   ├── consultations
+│   │   │   └── [id]
+│   │   │       ├── index.vue
+│   │   │       ├── questions
+│   │   │       │   ├── donnees-demographiques
+│   │   │       │   │   └── index.vue
+│   │   │       │   └── index.vue
+│   │   │       ├── results
+│   │   │       │   └── index.vue
+│   │   │       └── updates
+│   │   │           └── [updateId]
+│   │   │               └── index.vue
+│   │   ├── index.vue
+│   │   ├── je-participe
+│   │   │   ├── [id]
+│   │   │   │   └── index.vue
+│   │   │   └── index.vue
+│   │   ├── mentions-legales
+│   │   │   └── index.vue
+│   │   ├── participation-citoyenne
+│   │   │   └── index.vue
+│   │   ├── pgo
+│   │   │   └── index.vue
+│   │   ├── plan-du-site
+│   │   │   └── index.vue
+│   │   ├── politique-confidentialite
+│   │   │   └── index.vue
+│   │   ├── profil
+│   │   │   └── index.vue
+│   │   └── qags
+│   │       ├── [id]
+│   │       │   └── index.vue
+│   │       ├── index.vue
+│   │       └── reponses
+│   │           └── index.vue
+│   ├── plugins
+│   │   ├── matomo.client.ts
+│   │   └── vue-dsfr.ts
+│   ├── public
+│   │   ├── .htaccess
+│   │   ├── Macron.jpg
+│   │   ├── Mignola.jpg
+│   │   ├── card_bg.svg
+│   │   ├── city-hall.svg
+│   │   ├── community.svg
+│   │   ├── conclusion.svg
+│   │   ├── cooperation.svg
+│   │   ├── ecosystem.svg
+│   │   ├── en_construction.webp
+│   │   ├── favicon.svg
+│   │   ├── fonctionnalite_1.svg
+│   │   ├── fonctionnalite_2.svg
+│   │   ├── fonctionnalite_3.svg
+│   │   ├── googlea62732dd11625ea0.html
+│   │   ├── hero-illustration.webp
+│   │   ├── innovation.svg
+│   │   ├── loaderio-f1dc3f0e49ef856eab986e8d2ed27385.txt
+│   │   ├── logo_agora.svg
+│   │   ├── qrCodes
+│   │   │   ├── qr-code-android-fond-blanc.webp
+│   │   │   ├── qr-code-android.webp
+│   │   │   ├── qr-code-ios-fond-blanc.webp
+│   │   │   └── qr-code-ios.webp
+│   │   ├── robots.txt
+│   │   ├── search.svg
+│   │   └── smartphones_complet.webp
+│   ├── types
+│   │   ├── authentication
+│   │   │   └── authenticationApiDTO.d.ts
+│   │   ├── consultation
+│   │   │   ├── consultation.d.ts
+│   │   │   ├── consultationAnswersApiDTO.d.ts
+│   │   │   ├── consultationQuestionsApiDTO.d.ts
+│   │   │   ├── consultationResultsApiDTO.d.ts
+│   │   │   └── consultationsList.d.ts
+│   │   ├── content
+│   │   │   ├── accueilContent.d.ts
+│   │   │   ├── conditionGeneralesContent.d.ts
+│   │   │   ├── declarationAccessibiliteContent.ts
+│   │   │   ├── mentionsLegalesContent.ts
+│   │   │   ├── news.d.ts
+│   │   │   ├── politiqueConfidentialiteContent.ts
+│   │   │   └── questionAuGouvernementContent.ts
+│   │   ├── departements
+│   │   │   └── departementsDto.d.ts
+│   │   ├── dsfr
+│   │   │   └── link.d.ts
+│   │   ├── fiche_inventaire
+│   │   │   ├── ficheInventaire.d.ts
+│   │   │   ├── ficheInventaire.ts
+│   │   │   └── query.ts
+│   │   ├── participation_charter
+│   │   │   └── participationCharter.d.ts
+│   │   ├── qag
+│   │   │   ├── qag.d.ts
+│   │   │   └── qags.d.ts
+│   │   └── thematique
+│   │       └── thematique.d.ts
+│   └── utils
+│       ├── authenticationApi.ts
+│       ├── consultationApi.ts
+│       ├── consultationQuestionApi.ts
+│       ├── departementsApi.ts
+│       ├── ficheInventaireApi.ts
+│       ├── newsApi.ts
+│       ├── pageContentApi.ts
+│       ├── profilApi.ts
+│       ├── qagApi.ts
+│       └── thematiqueApi.ts
+├── env.example
+├── nuxt.config.ts
+├── package-lock.json
+├── package.json
+├── servers.conf.erb
+├── tsconfig.json
+├── vitest-setup.ts
+├── vitest.config.ts
+└── vue-shim.d.ts
+49 directories, 143 files
