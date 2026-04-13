@@ -1,0 +1,2562 @@
+.
+├── .editorconfig
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       ├── automation.yaml
+│       ├── release-npm.yml
+│       ├── scripts
+│       │   └── svg2xml.sh
+│       └── sync-icons.yaml
+├── .gitignore
+├── LICENSE
+├── LICENSE-COMMERCIAL
+├── Package.swift
+├── README.md
+├── assets
+│   ├── android
+│   │   ├── res
+│   │   │   ├── drawable
+│   │   │   │   └── ic_*.xml  (224 files)
+│   │   │   ├── fonts
+│   │   │   │   ├── marianne_bold.otf
+│   │   │   │   ├── marianne_bold_italic.otf
+│   │   │   │   ├── marianne_extra_bold.otf
+│   │   │   │   ├── marianne_extra_bold_italic.otf
+│   │   │   │   ├── marianne_light.otf
+│   │   │   │   ├── marianne_light_italic.otf
+│   │   │   │   ├── marianne_medium.otf
+│   │   │   │   ├── marianne_medium_italic.otf
+│   │   │   │   ├── marianne_regular.otf
+│   │   │   │   ├── marianne_regular_italic.otf
+│   │   │   │   ├── marianne_thin.otf
+│   │   │   │   └── marianne_thin_italic.otf
+│   │   │   └── theme.iife.js
+│   │   └── src
+│   │       ├── CompoundIcons.kt
+│   │       ├── SemanticColors.kt
+│   │       ├── SemanticColorsDark.kt
+│   │       ├── SemanticColorsDarkHc.kt
+│   │       ├── SemanticColorsLight.kt
+│   │       ├── SemanticColorsLightHc.kt
+│   │       ├── TypographyTokens.kt
+│   │       └── internal
+│   │           ├── DarkColorTokens.kt
+│   │           ├── DarkHcColorTokens.kt
+│   │           ├── LightColorTokens.kt
+│   │           └── LightHcColorTokens.kt
+│   ├── ios
+│   │   └── swift
+│   │       ├── Colors.xcassets
+│   │       │   ├── Contents.json
+│   │       │   ├── alphaBlue100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaBlue900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaCyan900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaFuchsia900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGray900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaGreen900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaLime900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaOrange900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPink900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaPurple900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaRed900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── alphaYellow900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgAccentHovered.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgAccentPressed.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgAccentRest.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgAccentSelected.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionPrimaryDisabled.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionPrimaryHovered.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionPrimaryPressed.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionPrimaryRest.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionSecondaryHovered.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionSecondaryPressed.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgActionSecondaryRest.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgBadgeAccent.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgBadgeDefault.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgBadgeExternal.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgBadgeInfo.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgCanvasDefaultLevel1.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgCriticalHovered.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgCriticalPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgCriticalSubtle.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgCriticalSubtleHovered.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgSubtlePrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgSubtleSecondary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── bgSubtleSecondaryLevel0.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── blue900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── cyan900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── fuchsia900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gradientActionStop1.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gradientActionStop2.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gradientActionStop3.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gradientActionStop4.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── gray900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── green900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconAccentPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconAccentTertiary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconBadgeAccent.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconBadgeDefault.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconBadgeExternal.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconBadgeInfo.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconCriticalPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconDisabled.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconInfoPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconOnSolidPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconPrimaryAlpha.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconQuaternary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconQuaternaryAlpha.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconSecondary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconSecondaryAlpha.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconSuccessPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconTertiary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── iconTertiaryAlpha.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── lime900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── orange900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── pink900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── purple900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── red900.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textActionAccent.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textActionPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textBadgeAccent.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textBadgeDefault.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textBadgeExternal.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textBadgeInfo.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textCriticalPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative1.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative2.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative3.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative4.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative5.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDecorative6.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textDisabled.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textInfoPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textLinkExternal.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textOnSolidPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textSecondary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── textSuccessPrimary.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── themeBg.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── transparent.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow1000.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow1100.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow1200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow1300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow1400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow200.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow300.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow400.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow500.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow600.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow700.colorset
+│   │       │   │   └── Contents.json
+│   │       │   ├── yellow800.colorset
+│   │       │   │   └── Contents.json
+│   │       │   └── yellow900.colorset
+│   │       │       └── Contents.json
+│   │       ├── CompoundColorTokens.swift
+│   │       ├── CompoundCoreColorTokens.swift
+│   │       ├── CompoundCoreUIColorTokens.swift
+│   │       ├── CompoundDesignTokens+Bundle.swift
+│   │       ├── CompoundDesignTokens.swift
+│   │       ├── CompoundDesingTokensNavigationBar.swift
+│   │       ├── CompoundDesingTokensResources.swift
+│   │       ├── CompoundDesingTokensUtils.swift
+│   │       ├── CompoundIcons.swift
+│   │       ├── CompoundUIColorTokens.swift
+│   │       ├── Icons.xcassets
+│   │       │   ├── Contents.json
+│   │       │   ├── admin.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── admin.svg
+│   │       │   ├── advancedSettings.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── advancedSettings.svg
+│   │       │   ├── arrowDown.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── arrowDown.svg
+│   │       │   ├── arrowLeft.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── arrowLeft.svg
+│   │       │   ├── arrowRight.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── arrowRight.svg
+│   │       │   ├── arrowUp.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── arrowUp.svg
+│   │       │   ├── arrowUpRight.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── arrowUpRight.svg
+│   │       │   ├── askToJoin.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── askToJoin.svg
+│   │       │   ├── askToJoinSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── askToJoinSolid.svg
+│   │       │   ├── attachment.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── attachment.svg
+│   │       │   ├── audio.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── audio.svg
+│   │       │   ├── backspace.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── backspace.svg
+│   │       │   ├── backspaceSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── backspaceSolid.svg
+│   │       │   ├── block.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── block.svg
+│   │       │   ├── bold.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── bold.svg
+│   │       │   ├── bug.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── bug.svg
+│   │       │   ├── calendar.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── calendar.svg
+│   │       │   ├── chart.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chart.svg
+│   │       │   ├── chat.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chat.svg
+│   │       │   ├── chatNew.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chatNew.svg
+│   │       │   ├── chatProblem.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chatProblem.svg
+│   │       │   ├── chatSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chatSolid.svg
+│   │       │   ├── check.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── check.svg
+│   │       │   ├── checkCircle.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── checkCircle.svg
+│   │       │   ├── checkCircleSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── checkCircleSolid.svg
+│   │       │   ├── chevronDown.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chevronDown.svg
+│   │       │   ├── chevronLeft.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chevronLeft.svg
+│   │       │   ├── chevronRight.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chevronRight.svg
+│   │       │   ├── chevronUp.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chevronUp.svg
+│   │       │   ├── chevronUpDown.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── chevronUpDown.svg
+│   │       │   ├── circle.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── circle.svg
+│   │       │   ├── close.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── close.svg
+│   │       │   ├── cloud.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── cloud.svg
+│   │       │   ├── cloudSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── cloudSolid.svg
+│   │       │   ├── code.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── code.svg
+│   │       │   ├── collapse.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── collapse.svg
+│   │       │   ├── company.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── company.svg
+│   │       │   ├── compose.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── compose.svg
+│   │       │   ├── computer.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── computer.svg
+│   │       │   ├── copy.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── copy.svg
+│   │       │   ├── darkMode.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── darkMode.svg
+│   │       │   ├── delete.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── delete.svg
+│   │       │   ├── devices.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── devices.svg
+│   │       │   ├── dialPad.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── dialPad.svg
+│   │       │   ├── document.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── document.svg
+│   │       │   ├── download.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── download.svg
+│   │       │   ├── downloadIos.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── downloadIos.svg
+│   │       │   ├── dragGrid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── dragGrid.svg
+│   │       │   ├── dragList.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── dragList.svg
+│   │       │   ├── earpiece.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── earpiece.svg
+│   │       │   ├── edit.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── edit.svg
+│   │       │   ├── editSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── editSolid.svg
+│   │       │   ├── email.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── email.svg
+│   │       │   ├── emailSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── emailSolid.svg
+│   │       │   ├── endCall.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── endCall.svg
+│   │       │   ├── error.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── error.svg
+│   │       │   ├── errorSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── errorSolid.svg
+│   │       │   ├── exitFullScreen.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── exitFullScreen.svg
+│   │       │   ├── expand.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── expand.svg
+│   │       │   ├── explore.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── explore.svg
+│   │       │   ├── exportArchive.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── exportArchive.svg
+│   │       │   ├── extensions.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── extensions.svg
+│   │       │   ├── extensionsSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── extensionsSolid.svg
+│   │       │   ├── favourite.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── favourite.svg
+│   │       │   ├── favouriteSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── favouriteSolid.svg
+│   │       │   ├── fileError.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── fileError.svg
+│   │       │   ├── files.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── files.svg
+│   │       │   ├── filter.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── filter.svg
+│   │       │   ├── forward.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── forward.svg
+│   │       │   ├── fullScreen.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── fullScreen.svg
+│   │       │   ├── grid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── grid.svg
+│   │       │   ├── group.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── group.svg
+│   │       │   ├── guest.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── guest.svg
+│   │       │   ├── headphonesOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── headphonesOffSolid.svg
+│   │       │   ├── headphonesSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── headphonesSolid.svg
+│   │       │   ├── help.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── help.svg
+│   │       │   ├── helpSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── helpSolid.svg
+│   │       │   ├── history.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── history.svg
+│   │       │   ├── home.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── home.svg
+│   │       │   ├── homeSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── homeSolid.svg
+│   │       │   ├── host.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── host.svg
+│   │       │   ├── image.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── image.svg
+│   │       │   ├── imageError.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── imageError.svg
+│   │       │   ├── indentDecrease.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── indentDecrease.svg
+│   │       │   ├── indentIncrease.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── indentIncrease.svg
+│   │       │   ├── info.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── info.svg
+│   │       │   ├── infoSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── infoSolid.svg
+│   │       │   ├── inlineCode.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── inlineCode.svg
+│   │       │   ├── italic.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── italic.svg
+│   │       │   ├── key.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── key.svg
+│   │       │   ├── keyOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── keyOff.svg
+│   │       │   ├── keyOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── keyOffSolid.svg
+│   │       │   ├── keySolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── keySolid.svg
+│   │       │   ├── keyboard.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── keyboard.svg
+│   │       │   ├── labs.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── labs.svg
+│   │       │   ├── leave.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── leave.svg
+│   │       │   ├── leftPanelClose.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── leftPanelClose.svg
+│   │       │   ├── leftPanelOpen.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── leftPanelOpen.svg
+│   │       │   ├── link.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── link.svg
+│   │       │   ├── linux.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── linux.svg
+│   │       │   ├── listBulleted.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── listBulleted.svg
+│   │       │   ├── listNumbered.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── listNumbered.svg
+│   │       │   ├── listView.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── listView.svg
+│   │       │   ├── locationNavigator.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── locationNavigator.svg
+│   │       │   ├── locationNavigatorCentred.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── locationNavigatorCentred.svg
+│   │       │   ├── locationPin.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── locationPin.svg
+│   │       │   ├── locationPinSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── locationPinSolid.svg
+│   │       │   ├── lock.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── lock.svg
+│   │       │   ├── lockOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── lockOff.svg
+│   │       │   ├── lockSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── lockSolid.svg
+│   │       │   ├── mac.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── mac.svg
+│   │       │   ├── markAsRead.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── markAsRead.svg
+│   │       │   ├── markAsUnread.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── markAsUnread.svg
+│   │       │   ├── markThreadsAsRead.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── markThreadsAsRead.svg
+│   │       │   ├── markerReadReceipts.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── markerReadReceipts.svg
+│   │       │   ├── mention.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── mention.svg
+│   │       │   ├── menu.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── menu.svg
+│   │       │   ├── micOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── micOff.svg
+│   │       │   ├── micOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── micOffSolid.svg
+│   │       │   ├── micOn.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── micOn.svg
+│   │       │   ├── micOnSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── micOnSolid.svg
+│   │       │   ├── minus.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── minus.svg
+│   │       │   ├── mobile.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── mobile.svg
+│   │       │   ├── notifications.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── notifications.svg
+│   │       │   ├── notificationsOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── notificationsOff.svg
+│   │       │   ├── notificationsOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── notificationsOffSolid.svg
+│   │       │   ├── notificationsSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── notificationsSolid.svg
+│   │       │   ├── offline.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── offline.svg
+│   │       │   ├── overflowHorizontal.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── overflowHorizontal.svg
+│   │       │   ├── overflowVertical.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── overflowVertical.svg
+│   │       │   ├── pause.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── pause.svg
+│   │       │   ├── pauseSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── pauseSolid.svg
+│   │       │   ├── pin.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── pin.svg
+│   │       │   ├── pinSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── pinSolid.svg
+│   │       │   ├── play.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── play.svg
+│   │       │   ├── playSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── playSolid.svg
+│   │       │   ├── plus.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── plus.svg
+│   │       │   ├── polls.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── polls.svg
+│   │       │   ├── pollsEnd.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── pollsEnd.svg
+│   │       │   ├── popOut.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── popOut.svg
+│   │       │   ├── preferences.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── preferences.svg
+│   │       │   ├── presenceOutline8X8.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── presenceOutline8X8.svg
+│   │       │   ├── presenceSolid8X8.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── presenceSolid8X8.svg
+│   │       │   ├── presenceStrikethrough8X8.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── presenceStrikethrough8X8.svg
+│   │       │   ├── public.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── public.svg
+│   │       │   ├── qrCode.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── qrCode.svg
+│   │       │   ├── quote.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── quote.svg
+│   │       │   ├── raisedHandSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── raisedHandSolid.svg
+│   │       │   ├── reOrder.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── reOrder.svg
+│   │       │   ├── reaction.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── reaction.svg
+│   │       │   ├── reactionAdd.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── reactionAdd.svg
+│   │       │   ├── reactionSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── reactionSolid.svg
+│   │       │   ├── reply.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── reply.svg
+│   │       │   ├── restart.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── restart.svg
+│   │       │   ├── room.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── room.svg
+│   │       │   ├── rotateLeft.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── rotateLeft.svg
+│   │       │   ├── rotateRight.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── rotateRight.svg
+│   │       │   ├── search.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── search.svg
+│   │       │   ├── section.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── section.svg
+│   │       │   ├── send.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── send.svg
+│   │       │   ├── sendSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── sendSolid.svg
+│   │       │   ├── settings.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── settings.svg
+│   │       │   ├── settingsSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── settingsSolid.svg
+│   │       │   ├── share.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── share.svg
+│   │       │   ├── shareAndroid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── shareAndroid.svg
+│   │       │   ├── shareIos.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── shareIos.svg
+│   │       │   ├── shareScreen.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── shareScreen.svg
+│   │       │   ├── shareScreenSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── shareScreenSolid.svg
+│   │       │   ├── shield.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── shield.svg
+│   │       │   ├── sidebar.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── sidebar.svg
+│   │       │   ├── signOut.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── signOut.svg
+│   │       │   ├── space.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── space.svg
+│   │       │   ├── spaceSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── spaceSolid.svg
+│   │       │   ├── spinner.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── spinner.svg
+│   │       │   ├── spotlight.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── spotlight.svg
+│   │       │   ├── spotlightView.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── spotlightView.svg
+│   │       │   ├── sticker.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── sticker.svg
+│   │       │   ├── stop.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── stop.svg
+│   │       │   ├── stopSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── stopSolid.svg
+│   │       │   ├── strikethrough.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── strikethrough.svg
+│   │       │   ├── switchCameraSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── switchCameraSolid.svg
+│   │       │   ├── takePhoto.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── takePhoto.svg
+│   │       │   ├── takePhotoSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── takePhotoSolid.svg
+│   │       │   ├── textFormatting.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── textFormatting.svg
+│   │       │   ├── theme.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── theme.svg
+│   │       │   ├── threads.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── threads.svg
+│   │       │   ├── threadsSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── threadsSolid.svg
+│   │       │   ├── time.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── time.svg
+│   │       │   ├── translate.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── translate.svg
+│   │       │   ├── tree.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── tree.svg
+│   │       │   ├── underline.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── underline.svg
+│   │       │   ├── unknown.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── unknown.svg
+│   │       │   ├── unknownSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── unknownSolid.svg
+│   │       │   ├── unpin.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── unpin.svg
+│   │       │   ├── user.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── user.svg
+│   │       │   ├── userAdd.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── userAdd.svg
+│   │       │   ├── userAddSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── userAddSolid.svg
+│   │       │   ├── userProfile.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── userProfile.svg
+│   │       │   ├── userProfileSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── userProfileSolid.svg
+│   │       │   ├── userSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── userSolid.svg
+│   │       │   ├── verified.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── verified.svg
+│   │       │   ├── videoCall.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCall.svg
+│   │       │   ├── videoCallDeclinedSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallDeclinedSolid.svg
+│   │       │   ├── videoCallMissedSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallMissedSolid.svg
+│   │       │   ├── videoCallOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallOff.svg
+│   │       │   ├── videoCallOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallOffSolid.svg
+│   │       │   ├── videoCallOutgoingSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallOutgoingSolid.svg
+│   │       │   ├── videoCallSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── videoCallSolid.svg
+│   │       │   ├── visibilityOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── visibilityOff.svg
+│   │       │   ├── visibilityOn.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── visibilityOn.svg
+│   │       │   ├── voiceCall.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── voiceCall.svg
+│   │       │   ├── voiceCallDeclinedSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── voiceCallDeclinedSolid.svg
+│   │       │   ├── voiceCallMissedSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── voiceCallMissedSolid.svg
+│   │       │   ├── voiceCallOutgoingSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── voiceCallOutgoingSolid.svg
+│   │       │   ├── voiceCallSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── voiceCallSolid.svg
+│   │       │   ├── volumeOff.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── volumeOff.svg
+│   │       │   ├── volumeOffSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── volumeOffSolid.svg
+│   │       │   ├── volumeOn.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── volumeOn.svg
+│   │       │   ├── volumeOnSolid.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── volumeOnSolid.svg
+│   │       │   ├── warning.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── warning.svg
+│   │       │   ├── webBrowser.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── webBrowser.svg
+│   │       │   ├── windows.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── windows.svg
+│   │       │   ├── zoomIn.imageset
+│   │       │   │   ├── Contents.json
+│   │       │   │   └── zoomIn.svg
+│   │       │   └── zoomOut.imageset
+│   │       │       ├── Contents.json
+│   │       │       └── zoomOut.svg
+│   │       ├── Resources
+│   │       │   └── theme.iife.js
+│   │       ├── TypographyTokens.swift
+│   │       └── fonts
+│   │           ├── Marianne-Bold.otf
+│   │           ├── Marianne-BoldItalic.otf
+│   │           ├── Marianne-ExtraBold.otf
+│   │           ├── Marianne-ExtraBoldItalic.otf
+│   │           ├── Marianne-Light.otf
+│   │           ├── Marianne-LightItalic.otf
+│   │           ├── Marianne-Medium.otf
+│   │           ├── Marianne-MediumItalic.otf
+│   │           ├── Marianne-Regular.otf
+│   │           ├── Marianne-RegularItalic.otf
+│   │           ├── Marianne-Thin.otf
+│   │           └── Marianne-ThinItalic.otf
+│   └── web
+│       ├── css
+│       │   ├── compound-design-tokens.css
+│       │   ├── cpd-common-base.css
+│       │   ├── cpd-common-semantic.css
+│       │   ├── cpd-font-fallbacks.css
+│       │   ├── cpd-theme-dark-base-mq.css
+│       │   ├── cpd-theme-dark-base.css
+│       │   ├── cpd-theme-dark-hc-base-mq.css
+│       │   ├── cpd-theme-dark-hc-base.css
+│       │   ├── cpd-theme-dark-hc-semantic-mq.css
+│       │   ├── cpd-theme-dark-hc-semantic.css
+│       │   ├── cpd-theme-dark-semantic-mq.css
+│       │   ├── cpd-theme-dark-semantic.css
+│       │   ├── cpd-theme-light-base-mq.css
+│       │   ├── cpd-theme-light-base.css
+│       │   ├── cpd-theme-light-hc-base-mq.css
+│       │   ├── cpd-theme-light-hc-base.css
+│       │   ├── cpd-theme-light-hc-semantic-mq.css
+│       │   ├── cpd-theme-light-hc-semantic.css
+│       │   ├── cpd-theme-light-semantic-mq.css
+│       │   └── cpd-theme-light-semantic.css
+│       ├── fonts
+│       │   ├── Marianne-Bold.woff
+│       │   ├── Marianne-Bold.woff2
+│       │   ├── Marianne-Bold_Italic.woff
+│       │   ├── Marianne-Bold_Italic.woff2
+│       │   ├── Marianne-ExtraBold.woff
+│       │   ├── Marianne-ExtraBold.woff2
+│       │   ├── Marianne-ExtraBold_Italic.woff
+│       │   ├── Marianne-ExtraBold_Italic.woff2
+│       │   ├── Marianne-Light.woff
+│       │   ├── Marianne-Light.woff2
+│       │   ├── Marianne-Light_Italic.woff
+│       │   ├── Marianne-Light_Italic.woff2
+│       │   ├── Marianne-Medium.woff
+│       │   ├── Marianne-Medium.woff2
+│       │   ├── Marianne-Medium_Italic.woff
+│       │   ├── Marianne-Medium_Italic.woff2
+│       │   ├── Marianne-Regular.woff
+│       │   ├── Marianne-Regular.woff2
+│       │   ├── Marianne-Regular_Italic.woff
+│       │   ├── Marianne-Regular_Italic.woff2
+│       │   ├── Marianne-Thin.woff
+│       │   ├── Marianne-Thin.woff2
+│       │   ├── Marianne-Thin_Italic.woff
+│       │   ├── Marianne-Thin_Italic.woff2
+│       │   └── Marianne.css
+│       ├── icons
+│       │   ├── admin.cjs
+│       │   ├── admin.d.ts
+│       │   ├── admin.js
+│       │   ├── advanced-settings.cjs
+│       │   ├── advanced-settings.d.ts
+│       │   ├── advanced-settings.js
+│       │   ├── arrow-*.cjs  (5 files)
+│       │   ├── arrow-*.ts  (5 files)
+│       │   ├── arrow-*.js  (5 files)
+│       │   ├── ask-to-join-solid.cjs
+│       │   ├── ask-to-join-solid.d.ts
+│       │   ├── ask-to-join-solid.js
+│       │   ├── ask-to-join.cjs
+│       │   ├── ask-to-join.d.ts
+│       │   ├── ask-to-join.js
+│       │   ├── attachment.cjs
+│       │   ├── attachment.d.ts
+│       │   ├── attachment.js
+│       │   ├── audio.cjs
+│       │   ├── audio.d.ts
+│       │   ├── audio.js
+│       │   ├── backspace-solid.cjs
+│       │   ├── backspace-solid.d.ts
+│       │   ├── backspace-solid.js
+│       │   ├── backspace.cjs
+│       │   ├── backspace.d.ts
+│       │   ├── backspace.js
+│       │   ├── backup.cjs
+│       │   ├── backup.d.ts
+│       │   ├── backup.js
+│       │   ├── block.cjs
+│       │   ├── block.d.ts
+│       │   ├── block.js
+│       │   ├── bold.cjs
+│       │   ├── bold.d.ts
+│       │   ├── bold.js
+│       │   ├── bug.cjs
+│       │   ├── bug.d.ts
+│       │   ├── bug.js
+│       │   ├── calendar.cjs
+│       │   ├── calendar.d.ts
+│       │   ├── calendar.js
+│       │   ├── chart.cjs
+│       │   ├── chart.d.ts
+│       │   ├── chart.js
+│       │   ├── chat-new.cjs
+│       │   ├── chat-new.d.ts
+│       │   ├── chat-new.js
+│       │   ├── chat-problem.cjs
+│       │   ├── chat-problem.d.ts
+│       │   ├── chat-problem.js
+│       │   ├── chat-solid.cjs
+│       │   ├── chat-solid.d.ts
+│       │   ├── chat-solid.js
+│       │   ├── chat.cjs
+│       │   ├── chat.d.ts
+│       │   ├── chat.js
+│       │   ├── check-circle-solid.cjs
+│       │   ├── check-circle-solid.d.ts
+│       │   ├── check-circle-solid.js
+│       │   ├── check-circle.cjs
+│       │   ├── check-circle.d.ts
+│       │   ├── check-circle.js
+│       │   ├── check.cjs
+│       │   ├── check.d.ts
+│       │   ├── check.js
+│       │   ├── chevron-*.cjs  (5 files)
+│       │   ├── chevron-*.ts  (5 files)
+│       │   ├── chevron-*.js  (5 files)
+│       │   ├── circle.cjs
+│       │   ├── circle.d.ts
+│       │   ├── circle.js
+│       │   ├── close.cjs
+│       │   ├── close.d.ts
+│       │   ├── close.js
+│       │   ├── cloud-solid.cjs
+│       │   ├── cloud-solid.d.ts
+│       │   ├── cloud-solid.js
+│       │   ├── cloud.cjs
+│       │   ├── cloud.d.ts
+│       │   ├── cloud.js
+│       │   ├── code.cjs
+│       │   ├── code.d.ts
+│       │   ├── code.js
+│       │   ├── collapse.cjs
+│       │   ├── collapse.d.ts
+│       │   ├── collapse.js
+│       │   ├── company.cjs
+│       │   ├── company.d.ts
+│       │   ├── company.js
+│       │   ├── compose.cjs
+│       │   ├── compose.d.ts
+│       │   ├── compose.js
+│       │   ├── computer.cjs
+│       │   ├── computer.d.ts
+│       │   ├── computer.js
+│       │   ├── copy.cjs
+│       │   ├── copy.d.ts
+│       │   ├── copy.js
+│       │   ├── dark-mode.cjs
+│       │   ├── dark-mode.d.ts
+│       │   ├── dark-mode.js
+│       │   ├── delete.cjs
+│       │   ├── delete.d.ts
+│       │   ├── delete.js
+│       │   ├── devices.cjs
+│       │   ├── devices.d.ts
+│       │   ├── devices.js
+│       │   ├── dial-pad.cjs
+│       │   ├── dial-pad.d.ts
+│       │   ├── dial-pad.js
+│       │   ├── document.cjs
+│       │   ├── document.d.ts
+│       │   ├── document.js
+│       │   ├── download-ios.cjs
+│       │   ├── download-ios.d.ts
+│       │   ├── download-ios.js
+│       │   ├── download.cjs
+│       │   ├── download.d.ts
+│       │   ├── download.js
+│       │   ├── drag-grid.cjs
+│       │   ├── drag-grid.d.ts
+│       │   ├── drag-grid.js
+│       │   ├── drag-list.cjs
+│       │   ├── drag-list.d.ts
+│       │   ├── drag-list.js
+│       │   ├── earpiece.cjs
+│       │   ├── earpiece.d.ts
+│       │   ├── earpiece.js
+│       │   ├── edit-solid.cjs
+│       │   ├── edit-solid.d.ts
+│       │   ├── edit-solid.js
+│       │   ├── edit.cjs
+│       │   ├── edit.d.ts
+│       │   ├── edit.js
+│       │   ├── email-solid.cjs
+│       │   ├── email-solid.d.ts
+│       │   ├── email-solid.js
+│       │   ├── email.cjs
+│       │   ├── email.d.ts
+│       │   ├── email.js
+│       │   ├── end-call.cjs
+│       │   ├── end-call.d.ts
+│       │   ├── end-call.js
+│       │   ├── error-solid.cjs
+│       │   ├── error-solid.d.ts
+│       │   ├── error-solid.js
+│       │   ├── error.cjs
+│       │   ├── error.d.ts
+│       │   ├── error.js
+│       │   ├── exit-full-screen.cjs
+│       │   ├── exit-full-screen.d.ts
+│       │   ├── exit-full-screen.js
+│       │   ├── expand.cjs
+│       │   ├── expand.d.ts
+│       │   ├── expand.js
+│       │   ├── explore.cjs
+│       │   ├── explore.d.ts
+│       │   ├── explore.js
+│       │   ├── export-archive.cjs
+│       │   ├── export-archive.d.ts
+│       │   ├── export-archive.js
+│       │   ├── export-logo.cjs
+│       │   ├── export-logo.d.ts
+│       │   ├── export-logo.js
+│       │   ├── extensions-solid.cjs
+│       │   ├── extensions-solid.d.ts
+│       │   ├── extensions-solid.js
+│       │   ├── extensions.cjs
+│       │   ├── extensions.d.ts
+│       │   ├── extensions.js
+│       │   ├── favourite-solid.cjs
+│       │   ├── favourite-solid.d.ts
+│       │   ├── favourite-solid.js
+│       │   ├── favourite.cjs
+│       │   ├── favourite.d.ts
+│       │   ├── favourite.js
+│       │   ├── file-error.cjs
+│       │   ├── file-error.d.ts
+│       │   ├── file-error.js
+│       │   ├── files.cjs
+│       │   ├── files.d.ts
+│       │   ├── files.js
+│       │   ├── filter.cjs
+│       │   ├── filter.d.ts
+│       │   ├── filter.js
+│       │   ├── forward.cjs
+│       │   ├── forward.d.ts
+│       │   ├── forward.js
+│       │   ├── full-screen.cjs
+│       │   ├── full-screen.d.ts
+│       │   ├── full-screen.js
+│       │   ├── grid.cjs
+│       │   ├── grid.d.ts
+│       │   ├── grid.js
+│       │   ├── group.cjs
+│       │   ├── group.d.ts
+│       │   ├── group.js
+│       │   ├── guest.cjs
+│       │   ├── guest.d.ts
+│       │   ├── guest.js
+│       │   ├── guide.cjs
+│       │   ├── guide.d.ts
+│       │   ├── guide.js
+│       │   ├── headphones-off-solid.cjs
+│       │   ├── headphones-off-solid.d.ts
+│       │   ├── headphones-off-solid.js
+│       │   ├── headphones-solid.cjs
+│       │   ├── headphones-solid.d.ts
+│       │   ├── headphones-solid.js
+│       │   ├── help-solid.cjs
+│       │   ├── help-solid.d.ts
+│       │   ├── help-solid.js
+│       │   ├── help.cjs
+│       │   ├── help.d.ts
+│       │   ├── help.js
+│       │   ├── history.cjs
+│       │   ├── history.d.ts
+│       │   ├── history.js
+│       │   ├── home-solid.cjs
+│       │   ├── home-solid.d.ts
+│       │   ├── home-solid.js
+│       │   ├── home.cjs
+│       │   ├── home.d.ts
+│       │   ├── home.js
+│       │   ├── host.cjs
+│       │   ├── host.d.ts
+│       │   ├── host.js
+│       │   ├── image-error.cjs
+│       │   ├── image-error.d.ts
+│       │   ├── image-error.js
+│       │   ├── image.cjs
+│       │   ├── image.d.ts
+│       │   ├── image.js
+│       │   ├── indent-decrease.cjs
+│       │   ├── indent-decrease.d.ts
+│       │   ├── indent-decrease.js
+│       │   ├── indent-increase.cjs
+│       │   ├── indent-increase.d.ts
+│       │   ├── indent-increase.js
+│       │   ├── index.cjs
+│       │   ├── index.d.ts
+│       │   ├── index.js
+│       │   ├── info-solid.cjs
+│       │   ├── info-solid.d.ts
+│       │   ├── info-solid.js
+│       │   ├── info.cjs
+│       │   ├── info.d.ts
+│       │   ├── info.js
+│       │   ├── inline-code.cjs
+│       │   ├── inline-code.d.ts
+│       │   ├── inline-code.js
+│       │   ├── installation.cjs
+│       │   ├── installation.d.ts
+│       │   ├── installation.js
+│       │   ├── italic.cjs
+│       │   ├── italic.d.ts
+│       │   ├── italic.js
+│       │   ├── key-off-solid.cjs
+│       │   ├── key-off-solid.d.ts
+│       │   ├── key-off-solid.js
+│       │   ├── key-off.cjs
+│       │   ├── key-off.d.ts
+│       │   ├── key-off.js
+│       │   ├── key-saved.cjs
+│       │   ├── key-saved.d.ts
+│       │   ├── key-saved.js
+│       │   ├── key-solid.cjs
+│       │   ├── key-solid.d.ts
+│       │   ├── key-solid.js
+│       │   ├── key.cjs
+│       │   ├── key.d.ts
+│       │   ├── key.js
+│       │   ├── keyboard.cjs
+│       │   ├── keyboard.d.ts
+│       │   ├── keyboard.js
+│       │   ├── labs.cjs
+│       │   ├── labs.d.ts
+│       │   ├── labs.js
+│       │   ├── leave.cjs
+│       │   ├── leave.d.ts
+│       │   ├── leave.js
+│       │   ├── left-panel-close.cjs
+│       │   ├── left-panel-close.d.ts
+│       │   ├── left-panel-close.js
+│       │   ├── left-panel-open.cjs
+│       │   ├── left-panel-open.d.ts
+│       │   ├── left-panel-open.js
+│       │   ├── link.cjs
+│       │   ├── link.d.ts
+│       │   ├── link.js
+│       │   ├── linux.cjs
+│       │   ├── linux.d.ts
+│       │   ├── linux.js
+│       │   ├── list-bulleted.cjs
+│       │   ├── list-bulleted.d.ts
+│       │   ├── list-bulleted.js
+│       │   ├── list-numbered.cjs
+│       │   ├── list-numbered.d.ts
+│       │   ├── list-numbered.js
+│       │   ├── list-view.cjs
+│       │   ├── list-view.d.ts
+│       │   ├── list-view.js
+│       │   ├── location-navigator-centred.cjs
+│       │   ├── location-navigator-centred.d.ts
+│       │   ├── location-navigator-centred.js
+│       │   ├── location-navigator.cjs
+│       │   ├── location-navigator.d.ts
+│       │   ├── location-navigator.js
+│       │   ├── location-pin-solid.cjs
+│       │   ├── location-pin-solid.d.ts
+│       │   ├── location-pin-solid.js
+│       │   ├── location-pin.cjs
+│       │   ├── location-pin.d.ts
+│       │   ├── location-pin.js
+│       │   ├── lock-off.cjs
+│       │   ├── lock-off.d.ts
+│       │   ├── lock-off.js
+│       │   ├── lock-solid.cjs
+│       │   ├── lock-solid.d.ts
+│       │   ├── lock-solid.js
+│       │   ├── lock.cjs
+│       │   ├── lock.d.ts
+│       │   ├── lock.js
+│       │   ├── mac.cjs
+│       │   ├── mac.d.ts
+│       │   ├── mac.js
+│       │   ├── mark-as-read.cjs
+│       │   ├── mark-as-read.d.ts
+│       │   ├── mark-as-read.js
+│       │   ├── mark-as-unread.cjs
+│       │   ├── mark-as-unread.d.ts
+│       │   ├── mark-as-unread.js
+│       │   ├── mark-threads-as-read.cjs
+│       │   ├── mark-threads-as-read.d.ts
+│       │   ├── mark-threads-as-read.js
+│       │   ├── marker-read-receipts.cjs
+│       │   ├── marker-read-receipts.d.ts
+│       │   ├── marker-read-receipts.js
+│       │   ├── mention.cjs
+│       │   ├── mention.d.ts
+│       │   ├── mention.js
+│       │   ├── menu.cjs
+│       │   ├── menu.d.ts
+│       │   ├── menu.js
+│       │   ├── mic-off-solid.cjs
+│       │   ├── mic-off-solid.d.ts
+│       │   ├── mic-off-solid.js
+│       │   ├── mic-off.cjs
+│       │   ├── mic-off.d.ts
+│       │   ├── mic-off.js
+│       │   ├── mic-on-solid.cjs
+│       │   ├── mic-on-solid.d.ts
+│       │   ├── mic-on-solid.js
+│       │   ├── mic-on.cjs
+│       │   ├── mic-on.d.ts
+│       │   ├── mic-on.js
+│       │   ├── minus.cjs
+│       │   ├── minus.d.ts
+│       │   ├── minus.js
+│       │   ├── mobile.cjs
+│       │   ├── mobile.d.ts
+│       │   ├── mobile.js
+│       │   ├── multi-device.cjs
+│       │   ├── multi-device.d.ts
+│       │   ├── multi-device.js
+│       │   ├── notifications-off-solid.cjs
+│       │   ├── notifications-off-solid.d.ts
+│       │   ├── notifications-off-solid.js
+│       │   ├── notifications-off.cjs
+│       │   ├── notifications-off.d.ts
+│       │   ├── notifications-off.js
+│       │   ├── notifications-solid.cjs
+│       │   ├── notifications-solid.d.ts
+│       │   ├── notifications-solid.js
+│       │   ├── notifications.cjs
+│       │   ├── notifications.d.ts
+│       │   ├── notifications.js
+│       │   ├── offline.cjs
+│       │   ├── offline.d.ts
+│       │   ├── offline.js
+│       │   ├── overflow-horizontal.cjs
+│       │   ├── overflow-horizontal.d.ts
+│       │   ├── overflow-horizontal.js
+│       │   ├── overflow-vertical.cjs
+│       │   ├── overflow-vertical.d.ts
+│       │   ├── overflow-vertical.js
+│       │   ├── padlock-external.cjs
+│       │   ├── padlock-external.d.ts
+│       │   ├── padlock-external.js
+│       │   ├── padlock-forum.cjs
+│       │   ├── padlock-forum.d.ts
+│       │   ├── padlock-forum.js
+│       │   ├── padlock-private.cjs
+│       │   ├── padlock-private.d.ts
+│       │   ├── padlock-private.js
+│       │   ├── pause-solid.cjs
+│       │   ├── pause-solid.d.ts
+│       │   ├── pause-solid.js
+│       │   ├── pause.cjs
+│       │   ├── pause.d.ts
+│       │   ├── pause.js
+│       │   ├── pin-solid.cjs
+│       │   ├── pin-solid.d.ts
+│       │   ├── pin-solid.js
+│       │   ├── pin.cjs
+│       │   ├── pin.d.ts
+│       │   ├── pin.js
+│       │   ├── play-solid.cjs
+│       │   ├── play-solid.d.ts
+│       │   ├── play-solid.js
+│       │   ├── play.cjs
+│       │   ├── play.d.ts
+│       │   ├── play.js
+│       │   ├── plus.cjs
+│       │   ├── plus.d.ts
+│       │   ├── plus.js
+│       │   ├── polls-end.cjs
+│       │   ├── polls-end.d.ts
+│       │   ├── polls-end.js
+│       │   ├── polls.cjs
+│       │   ├── polls.d.ts
+│       │   ├── polls.js
+│       │   ├── pop-out.cjs
+│       │   ├── pop-out.d.ts
+│       │   ├── pop-out.js
+│       │   ├── preferences.cjs
+│       │   ├── preferences.d.ts
+│       │   ├── preferences.js
+│       │   ├── presence-outline-8x8.cjs
+│       │   ├── presence-outline-8x8.d.ts
+│       │   ├── presence-outline-8x8.js
+│       │   ├── presence-solid-8x8.cjs
+│       │   ├── presence-solid-8x8.d.ts
+│       │   ├── presence-solid-8x8.js
+│       │   ├── presence-strikethrough-8x8.cjs
+│       │   ├── presence-strikethrough-8x8.d.ts
+│       │   ├── presence-strikethrough-8x8.js
+│       │   ├── public.cjs
+│       │   ├── public.d.ts
+│       │   ├── public.js
+│       │   ├── qr-code.cjs
+│       │   ├── qr-code.d.ts
+│       │   ├── qr-code.js
+│       │   ├── quote.cjs
+│       │   ├── quote.d.ts
+│       │   ├── quote.js
+│       │   ├── raised-hand-solid.cjs
+│       │   ├── raised-hand-solid.d.ts
+│       │   ├── raised-hand-solid.js
+│       │   ├── re-order.cjs
+│       │   ├── re-order.d.ts
+│       │   ├── re-order.js
+│       │   ├── reaction-add.cjs
+│       │   ├── reaction-add.d.ts
+│       │   ├── reaction-add.js
+│       │   ├── reaction-solid.cjs
+│       │   ├── reaction-solid.d.ts
+│       │   ├── reaction-solid.js
+│       │   ├── reaction.cjs
+│       │   ├── reaction.d.ts
+│       │   ├── reaction.js
+│       │   ├── reply.cjs
+│       │   ├── reply.d.ts
+│       │   ├── reply.js
+│       │   ├── restart.cjs
+│       │   ├── restart.d.ts
+│       │   ├── restart.js
+│       │   ├── room.cjs
+│       │   ├── room.d.ts
+│       │   ├── room.js
+│       │   ├── rotate-left.cjs
+│       │   ├── rotate-left.d.ts
+│       │   ├── rotate-left.js
+│       │   ├── rotate-right.cjs
+│       │   ├── rotate-right.d.ts
+│       │   ├── rotate-right.js
+│       │   ├── search.cjs
+│       │   ├── search.d.ts
+│       │   ├── search.js
+│       │   ├── section.cjs
+│       │   ├── section.d.ts
+│       │   ├── section.js
+│       │   ├── send-solid.cjs
+│       │   ├── send-solid.d.ts
+│       │   ├── send-solid.js
+│       │   ├── send.cjs
+│       │   ├── send.d.ts
+│       │   ├── send.js
+│       │   ├── settings-solid.cjs
+│       │   ├── settings-solid.d.ts
+│       │   ├── settings-solid.js
+│       │   ├── settings.cjs
+│       │   ├── settings.d.ts
+│       │   ├── settings.js
+│       │   ├── share-android.cjs
+│       │   ├── share-android.d.ts
+│       │   ├── share-android.js
+│       │   ├── share-ios.cjs
+│       │   ├── share-ios.d.ts
+│       │   ├── share-ios.js
+│       │   ├── share-screen-solid.cjs
+│       │   ├── share-screen-solid.d.ts
+│       │   ├── share-screen-solid.js
+│       │   ├── share-screen.cjs
+│       │   ├── share-screen.d.ts
+│       │   ├── share-screen.js
+│       │   ├── share.cjs
+│       │   ├── share.d.ts
+│       │   ├── share.js
+│       │   ├── shield.cjs
+│       │   ├── shield.d.ts
+│       │   ├── shield.js
+│       │   ├── sidebar.cjs
+│       │   ├── sidebar.d.ts
+│       │   ├── sidebar.js
+│       │   ├── sign-out.cjs
+│       │   ├── sign-out.d.ts
+│       │   ├── sign-out.js
+│       │   ├── space-solid.cjs
+│       │   ├── space-solid.d.ts
+│       │   ├── space-solid.js
+│       │   ├── space.cjs
+│       │   ├── space.d.ts
+│       │   ├── space.js
+│       │   ├── spinner.cjs
+│       │   ├── spinner.d.ts
+│       │   ├── spinner.js
+│       │   ├── spotlight-view.cjs
+│       │   ├── spotlight-view.d.ts
+│       │   ├── spotlight-view.js
+│       │   ├── spotlight.cjs
+│       │   ├── spotlight.d.ts
+│       │   ├── spotlight.js
+│       │   ├── sticker.cjs
+│       │   ├── sticker.d.ts
+│       │   ├── sticker.js
+│       │   ├── stop-solid.cjs
+│       │   ├── stop-solid.d.ts
+│       │   ├── stop-solid.js
+│       │   ├── stop.cjs
+│       │   ├── stop.d.ts
+│       │   ├── stop.js
+│       │   ├── strikethrough.cjs
+│       │   ├── strikethrough.d.ts
+│       │   ├── strikethrough.js
+│       │   ├── switch-camera-solid.cjs
+│       │   ├── switch-camera-solid.d.ts
+│       │   ├── switch-camera-solid.js
+│       │   ├── take-photo-solid.cjs
+│       │   ├── take-photo-solid.d.ts
+│       │   ├── take-photo-solid.js
+│       │   ├── take-photo.cjs
+│       │   ├── take-photo.d.ts
+│       │   ├── take-photo.js
+│       │   ├── text-formatting.cjs
+│       │   ├── text-formatting.d.ts
+│       │   ├── text-formatting.js
+│       │   ├── theme.cjs
+│       │   ├── theme.d.ts
+│       │   ├── theme.js
+│       │   ├── threads-solid.cjs
+│       │   ├── threads-solid.d.ts
+│       │   ├── threads-solid.js
+│       │   ├── threads.cjs
+│       │   ├── threads.d.ts
+│       │   ├── threads.js
+│       │   ├── time.cjs
+│       │   ├── time.d.ts
+│       │   ├── time.js
+│       │   ├── translate.cjs
+│       │   ├── translate.d.ts
+│       │   ├── translate.js
+│       │   ├── tree.cjs
+│       │   ├── tree.d.ts
+│       │   ├── tree.js
+│       │   ├── underline.cjs
+│       │   ├── underline.d.ts
+│       │   ├── underline.js
+│       │   ├── unknown-solid.cjs
+│       │   ├── unknown-solid.d.ts
+│       │   ├── unknown-solid.js
+│       │   ├── unknown.cjs
+│       │   ├── unknown.d.ts
+│       │   ├── unknown.js
+│       │   ├── unpin.cjs
+│       │   ├── unpin.d.ts
+│       │   ├── unpin.js
+│       │   ├── user-*.cjs  (6 files)
+│       │   ├── user-*.ts  (6 files)
+│       │   ├── user-*.js  (6 files)
+│       │   ├── user.cjs
+│       │   ├── user.d.ts
+│       │   ├── user.js
+│       │   ├── verified.cjs
+│       │   ├── verified.d.ts
+│       │   ├── verified.js
+│       │   ├── video-*.cjs  (7 files)
+│       │   ├── video-*.ts  (7 files)
+│       │   ├── video-*.js  (7 files)
+│       │   ├── visibility-off.cjs
+│       │   ├── visibility-off.d.ts
+│       │   ├── visibility-off.js
+│       │   ├── visibility-on.cjs
+│       │   ├── visibility-on.d.ts
+│       │   ├── visibility-on.js
+│       │   ├── voice-*.cjs  (5 files)
+│       │   ├── voice-*.ts  (5 files)
+│       │   ├── voice-*.js  (5 files)
+│       │   ├── volume-off-solid.cjs
+│       │   ├── volume-off-solid.d.ts
+│       │   ├── volume-off-solid.js
+│       │   ├── volume-off.cjs
+│       │   ├── volume-off.d.ts
+│       │   ├── volume-off.js
+│       │   ├── volume-on-solid.cjs
+│       │   ├── volume-on-solid.d.ts
+│       │   ├── volume-on-solid.js
+│       │   ├── volume-on.cjs
+│       │   ├── volume-on.d.ts
+│       │   ├── volume-on.js
+│       │   ├── warning.cjs
+│       │   ├── warning.d.ts
+│       │   ├── warning.js
+│       │   ├── web-browser.cjs
+│       │   ├── web-browser.d.ts
+│       │   ├── web-browser.js
+│       │   ├── windows.cjs
+│       │   ├── windows.d.ts
+│       │   ├── windows.js
+│       │   ├── zoom-in.cjs
+│       │   ├── zoom-in.d.ts
+│       │   ├── zoom-in.js
+│       │   ├── zoom-out.cjs
+│       │   ├── zoom-out.d.ts
+│       │   └── zoom-out.js
+│       └── js
+│           ├── cpdDark.d.ts
+│           ├── cpdDark.js
+│           ├── cpdDarkHc.d.ts
+│           ├── cpdDarkHc.js
+│           ├── cpdLight.d.ts
+│           ├── cpdLight.js
+│           ├── cpdLightHc.d.ts
+│           └── cpdLightHc.js
+├── biome.json
+├── build.ts
+├── docs
+│   ├── colors.md
+│   ├── development.md
+│   ├── icons.md
+│   └── release.md
+├── examples
+│   └── index.html
+├── icons
+│   ├── $icons.json
+│   ├── admin.svg
+│   ├── advanced-settings.svg
+│   ├── arrow-*.svg  (5 files)
+│   ├── ask-to-join-solid.svg
+│   ├── ask-to-join.svg
+│   ├── attachment.svg
+│   ├── audio.svg
+│   ├── backspace-solid.svg
+│   ├── backspace.svg
+│   ├── backup.svg
+│   ├── block.svg
+│   ├── bold.svg
+│   ├── bug.svg
+│   ├── calendar.svg
+│   ├── chart.svg
+│   ├── chat-new.svg
+│   ├── chat-problem.svg
+│   ├── chat-solid.svg
+│   ├── chat.svg
+│   ├── check-circle-solid.svg
+│   ├── check-circle.svg
+│   ├── check.svg
+│   ├── chevron-*.svg  (5 files)
+│   ├── circle.svg
+│   ├── close.svg
+│   ├── cloud-solid.svg
+│   ├── cloud.svg
+│   ├── code.svg
+│   ├── collapse.svg
+│   ├── company.svg
+│   ├── compose.svg
+│   ├── computer.svg
+│   ├── copy.svg
+│   ├── dark-mode.svg
+│   ├── delete.svg
+│   ├── devices.svg
+│   ├── dial-pad.svg
+│   ├── document.svg
+│   ├── download-ios.svg
+│   ├── download.svg
+│   ├── drag-grid.svg
+│   ├── drag-list.svg
+│   ├── earpiece.svg
+│   ├── edit-solid.svg
+│   ├── edit.svg
+│   ├── email-solid.svg
+│   ├── email.svg
+│   ├── end-call.svg
+│   ├── error-solid.svg
+│   ├── error.svg
+│   ├── exit-full-screen.svg
+│   ├── expand.svg
+│   ├── explore.svg
+│   ├── export-archive.svg
+│   ├── export-logo.svg
+│   ├── extensions-solid.svg
+│   ├── extensions.svg
+│   ├── favourite-solid.svg
+│   ├── favourite.svg
+│   ├── file-error.svg
+│   ├── files.svg
+│   ├── filter.svg
+│   ├── forward.svg
+│   ├── full-screen.svg
+│   ├── grid.svg
+│   ├── group.svg
+│   ├── guest.svg
+│   ├── guide.svg
+│   ├── headphones-off-solid.svg
+│   ├── headphones-solid.svg
+│   ├── help-solid.svg
+│   ├── help.svg
+│   ├── history.svg
+│   ├── home-solid.svg
+│   ├── home.svg
+│   ├── host.svg
+│   ├── image-error.svg
+│   ├── image.svg
+│   ├── indent-decrease.svg
+│   ├── indent-increase.svg
+│   ├── info-solid.svg
+│   ├── info.svg
+│   ├── inline-code.svg
+│   ├── installation.svg
+│   ├── italic.svg
+│   ├── key-off-solid.svg
+│   ├── key-off.svg
+│   ├── key-saved.svg
+│   ├── key-solid.svg
+│   ├── key.svg
+│   ├── keyboard.svg
+│   ├── labs.svg
+│   ├── leave.svg
+│   ├── left-panel-close.svg
+│   ├── left-panel-open.svg
+│   ├── link.svg
+│   ├── linux.svg
+│   ├── list-bulleted.svg
+│   ├── list-numbered.svg
+│   ├── list-view.svg
+│   ├── location-navigator-centred.svg
+│   ├── location-navigator.svg
+│   ├── location-pin-solid.svg
+│   ├── location-pin.svg
+│   ├── lock-off.svg
+│   ├── lock-solid.svg
+│   ├── lock.svg
+│   ├── mac.svg
+│   ├── mark-as-read.svg
+│   ├── mark-as-unread.svg
+│   ├── mark-threads-as-read.svg
+│   ├── marker-read-receipts.svg
+│   ├── mention.svg
+│   ├── menu.svg
+│   ├── mic-off-solid.svg
+│   ├── mic-off.svg
+│   ├── mic-on-solid.svg
+│   ├── mic-on.svg
+│   ├── minus.svg
+│   ├── mobile.svg
+│   ├── multi-device.svg
+│   ├── notifications-off-solid.svg
+│   ├── notifications-off.svg
+│   ├── notifications-solid.svg
+│   ├── notifications.svg
+│   ├── offline.svg
+│   ├── overflow-horizontal.svg
+│   ├── overflow-vertical.svg
+│   ├── padlock-external.svg
+│   ├── padlock-forum.svg
+│   ├── padlock-private.svg
+│   ├── pause-solid.svg
+│   ├── pause.svg
+│   ├── pin-solid.svg
+│   ├── pin.svg
+│   ├── play-solid.svg
+│   ├── play.svg
+│   ├── plus.svg
+│   ├── polls-end.svg
+│   ├── polls.svg
+│   ├── pop-out.svg
+│   ├── preferences.svg
+│   ├── presence-outline-8x8.svg
+│   ├── presence-solid-8x8.svg
+│   ├── presence-strikethrough-8x8.svg
+│   ├── public.svg
+│   ├── qr-code.svg
+│   ├── quote.svg
+│   ├── raised-hand-solid.svg
+│   ├── re-order.svg
+│   ├── reaction-add.svg
+│   ├── reaction-solid.svg
+│   ├── reaction.svg
+│   ├── reply.svg
+│   ├── restart.svg
+│   ├── room.svg
+│   ├── rotate-left.svg
+│   ├── rotate-right.svg
+│   ├── search.svg
+│   ├── section.svg
+│   ├── send-solid.svg
+│   ├── send.svg
+│   ├── settings-solid.svg
+│   ├── settings.svg
+│   ├── share-android.svg
+│   ├── share-ios.svg
+│   ├── share-screen-solid.svg
+│   ├── share-screen.svg
+│   ├── share.svg
+│   ├── shield.svg
+│   ├── sidebar.svg
+│   ├── sign-out.svg
+│   ├── space-solid.svg
+│   ├── space.svg
+│   ├── spinner.svg
+│   ├── spotlight-view.svg
+│   ├── spotlight.svg
+│   ├── sticker.svg
+│   ├── stop-solid.svg
+│   ├── stop.svg
+│   ├── strikethrough.svg
+│   ├── switch-camera-solid.svg
+│   ├── take-photo-solid.svg
+│   ├── take-photo.svg
+│   ├── text-formatting.svg
+│   ├── theme.svg
+│   ├── threads-solid.svg
+│   ├── threads.svg
+│   ├── time.svg
+│   ├── translate.svg
+│   ├── tree.svg
+│   ├── underline.svg
+│   ├── unknown-solid.svg
+│   ├── unknown.svg
+│   ├── unpin.svg
+│   ├── user-*.svg  (6 files)
+│   ├── user.svg
+│   ├── verified.svg
+│   ├── video-*.svg  (7 files)
+│   ├── visibility-off.svg
+│   ├── visibility-on.svg
+│   ├── voice-*.svg  (5 files)
+│   ├── volume-off-solid.svg
+│   ├── volume-off.svg
+│   ├── volume-on-solid.svg
+│   ├── volume-on.svg
+│   ├── warning.svg
+│   ├── web-browser.svg
+│   ├── windows.svg
+│   ├── zoom-in.svg
+│   └── zoom-out.svg
+├── package.json
+├── renovate.json
+├── source_assets
+│   ├── fonts
+│   │   ├── desktop
+│   │   │   ├── Marianne-Bold.otf
+│   │   │   ├── Marianne-BoldItalic.otf
+│   │   │   ├── Marianne-ExtraBold.otf
+│   │   │   ├── Marianne-ExtraBoldItalic.otf
+│   │   │   ├── Marianne-Light.otf
+│   │   │   ├── Marianne-LightItalic.otf
+│   │   │   ├── Marianne-Medium.otf
+│   │   │   ├── Marianne-MediumItalic.otf
+│   │   │   ├── Marianne-Regular.otf
+│   │   │   ├── Marianne-RegularItalic.otf
+│   │   │   ├── Marianne-Thin.otf
+│   │   │   └── Marianne-ThinItalic.otf
+│   │   └── web
+│   │       ├── Marianne-Bold.woff
+│   │       ├── Marianne-Bold.woff2
+│   │       ├── Marianne-Bold_Italic.woff
+│   │       ├── Marianne-Bold_Italic.woff2
+│   │       ├── Marianne-ExtraBold.woff
+│   │       ├── Marianne-ExtraBold.woff2
+│   │       ├── Marianne-ExtraBold_Italic.woff
+│   │       ├── Marianne-ExtraBold_Italic.woff2
+│   │       ├── Marianne-Light.woff
+│   │       ├── Marianne-Light.woff2
+│   │       ├── Marianne-Light_Italic.woff
+│   │       ├── Marianne-Light_Italic.woff2
+│   │       ├── Marianne-Medium.woff
+│   │       ├── Marianne-Medium.woff2
+│   │       ├── Marianne-Medium_Italic.woff
+│   │       ├── Marianne-Medium_Italic.woff2
+│   │       ├── Marianne-Regular.woff
+│   │       ├── Marianne-Regular.woff2
+│   │       ├── Marianne-Regular_Italic.woff
+│   │       ├── Marianne-Regular_Italic.woff2
+│   │       ├── Marianne-Thin.woff
+│   │       ├── Marianne-Thin.woff2
+│   │       ├── Marianne-Thin_Italic.woff
+│   │       ├── Marianne-Thin_Italic.woff2
+│   │       └── Marianne.css
+│   └── ios
+│       └── swift
+│           ├── CompoundDesingTokensNavigationBar.swift
+│           ├── CompoundDesingTokensResources.swift
+│           └── CompoundDesingTokensUtils.swift
+├── src
+│   ├── @types
+│   │   └── index.d.ts
+│   ├── actions
+│   │   └── swift
+│   │       └── colorset.ts
+│   ├── colors
+│   │   ├── alphredo.js
+│   │   ├── applet.html
+│   │   ├── applet.js
+│   │   ├── styles.css
+│   │   └── theme.js
+│   ├── configs
+│   │   ├── getAndroidConfig.ts
+│   │   ├── getIOSConfig.ts
+│   │   ├── getWebConfig.ts
+│   │   └── index.ts
+│   ├── copyThemeDist.ts
+│   ├── embedResources.ts
+│   ├── filters
+│   │   ├── ios
+│   │   │   └── exclude.ts
+│   │   ├── isCoreColor.ts
+│   │   ├── isCoreToken.ts
+│   │   ├── isCssGradient.ts
+│   │   ├── isFontToken.ts
+│   │   ├── isSharedAcrossTheme.ts
+│   │   └── isTypographyToken.ts
+│   ├── formats
+│   │   └── templates
+│   │       ├── compose
+│   │       │   ├── android-license.kt.template
+│   │       │   ├── core-colors.kt.template
+│   │       │   ├── extra-colors.kt.template
+│   │       │   ├── icons.kt.template
+│   │       │   ├── internal-object.kt.template
+│   │       │   └── semantic-colors.kt.template
+│   │       └── swift
+│   │           └── class-members.template
+│   ├── global.d.ts
+│   ├── setupStyleDictionary.ts
+│   ├── syncIcons.ts
+│   ├── transforms
+│   │   ├── camelCaseDecimal.ts
+│   │   ├── css
+│   │   │   ├── iconsImport.ts
+│   │   │   ├── percentageToUnitless.ts
+│   │   │   └── px.ts
+│   │   ├── kotlin
+│   │   │   ├── fontWeight.ts
+│   │   │   ├── literal.ts
+│   │   │   ├── percentageToEm.ts
+│   │   │   ├── pxToDp.ts
+│   │   │   ├── pxToSp.ts
+│   │   │   ├── svgToDrawable.ts
+│   │   │   └── typography.ts
+│   │   ├── pxToRem.ts
+│   │   └── swift
+│   │       ├── colorAsset.ts
+│   │       ├── literalFont.ts
+│   │       ├── pxToCGFloat.ts
+│   │       ├── svgToImageView.ts
+│   │       ├── toFontWeight.ts
+│   │       ├── tokenTICamel.ts
+│   │       ├── typographyName.ts
+│   │       └── typographyValue.ts
+│   └── utils
+│       ├── constants.ts
+│       ├── createTemplate.ts
+│       ├── cssFileName.ts
+│       ├── fontFallbacks.ts
+│       ├── generateCssIndex.ts
+│       ├── generateIconComponents.ts
+│       ├── normalizeTokens.ts
+│       └── removePrefixAndCamelCase.ts
+├── tokens
+│   ├── $metadata.json
+│   ├── $themes.json
+│   ├── cross-platform.json
+│   ├── platform-android.json
+│   ├── platform-ios.json
+│   ├── platform-web.json
+│   ├── theme-dark-hc.json
+│   ├── theme-dark.json
+│   ├── theme-light-hc.json
+│   ├── theme-light.json
+│   ├── theme-semantics-dark-hc.json
+│   ├── theme-semantics-dark.json
+│   ├── theme-semantics-light-hc.json
+│   ├── theme-semantics-light.json
+│   └── theme-semantics.json
+├── tsconfig.json
+├── vite.config.ts
+└── yarn.lock
+649 directories, 2227 files
