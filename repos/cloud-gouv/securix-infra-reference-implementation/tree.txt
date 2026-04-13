@@ -1,0 +1,155 @@
+.
+├── .envrc
+├── .github
+│   └── workflows
+│       ├── securix-check-formatting.yaml
+│       └── securix-check-licensing.yaml
+├── .gitignore
+├── LICENSES
+│   └── MIT.txt
+├── REUSE.toml
+├── default.nix
+├── lib
+│   ├── default.nix
+│   ├── net.nix
+│   └── remote-state.nix
+├── machines
+│   ├── cache01
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   └── services.nix
+│   ├── default.nix
+│   ├── git01
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   └── services.nix
+│   ├── obs01
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   └── services.nix
+│   ├── vault01
+│   │   ├── configuration.nix
+│   │   ├── default.nix
+│   │   └── services.nix
+│   └── vpn01
+│       ├── configuration.nix
+│       ├── default.nix
+│       └── services.nix
+├── modules
+│   ├── cloud
+│   │   ├── default.nix
+│   │   ├── openstack
+│   │   │   ├── default.nix
+│   │   │   ├── floating-ip.nix
+│   │   │   ├── network.nix
+│   │   │   ├── outputs.nix
+│   │   │   └── vm.nix
+│   │   └── outscale
+│   │       ├── default.nix
+│   │       ├── flavors.nix
+│   │       ├── iam.nix
+│   │       ├── images.nix
+│   │       ├── network.nix
+│   │       ├── outputs.nix
+│   │       └── vm.nix
+│   ├── default.nix
+│   ├── dns
+│   │   ├── default.nix
+│   │   └── ovh.nix
+│   ├── sso
+│   │   ├── default.nix
+│   │   └── keycloak
+│   │       ├── clients.nix
+│   │       ├── default.nix
+│   │       ├── outputs.nix
+│   │       └── users.nix
+│   └── system
+│       ├── default.nix
+│       ├── install-nixos
+│       │   ├── README.md
+│       │   ├── default.nix
+│       │   └── nixos-anywhere.sh
+│       ├── rebuild-nixos
+│       │   ├── README.md
+│       │   ├── default.nix
+│       │   └── deploy.sh
+│       └── securix
+│           ├── cache.nix
+│           ├── common.nix
+│           ├── compute.nix
+│           ├── default.nix
+│           ├── deployment
+│           │   ├── default.nix
+│           │   ├── networks.nix
+│           │   └── outscale
+│           │       ├── default.nix
+│           │       └── networks.nix
+│           ├── dns-resolver.nix
+│           ├── extra-nixos-modules
+│           │   ├── default.nix
+│           │   ├── g3proxy
+│           │   │   ├── default.nix
+│           │   │   ├── module.nix
+│           │   │   └── package.nix
+│           │   ├── netbird
+│           │   │   ├── coturn.nix
+│           │   │   ├── dashboard.nix
+│           │   │   ├── default.nix
+│           │   │   ├── management.nix
+│           │   │   ├── relay.nix
+│           │   │   ├── server.md
+│           │   │   ├── server.nix
+│           │   │   └── signal.nix
+│           │   ├── openbao
+│           │   │   ├── default.nix
+│           │   │   ├── module.nix
+│           │   │   └── package.nix
+│           │   └── victorialogs.nix
+│           ├── forgejo.nix
+│           ├── http-proxy.nix
+│           ├── keycloak.nix
+│           ├── modules.nix
+│           ├── netbird.nix
+│           ├── nixos-disk.nix
+│           ├── o11y
+│           │   ├── agent.nix
+│           │   ├── dashboards
+│           │   │   ├── .gitkeep
+│           │   │   ├── node_exporter.json
+│           │   │   └── node_exporter.json.license
+│           │   ├── default.nix
+│           │   ├── grafana.nix
+│           │   ├── victorialogs
+│           │   │   └── default.nix
+│           │   └── victoriametrics.nix
+│           └── openbao.nix
+├── npins
+│   ├── default.nix
+│   ├── default.nix.license
+│   ├── sources.json
+│   └── sources.json.license
+├── npins.license
+├── ops
+│   ├── core
+│   │   └── default.nix
+│   ├── dns
+│   │   └── default.nix
+│   ├── iam
+│   │   └── default.nix
+│   ├── iam-clients
+│   │   └── default.nix
+│   ├── network
+│   │   └── default.nix
+│   └── systems
+│       └── default.nix
+├── patches
+│   ├── netbird-relay.patch
+│   └── netbird-relay.patch.license
+├── providers
+│   ├── default.nix
+│   └── outscale.nix
+├── shell.nix
+├── statix.toml
+└── workflows
+    └── validate-terraform.nix
+42 directories, 112 files
