@@ -1,0 +1,84 @@
+.
+├── .github
+│   └── workflows
+│       ├── grist-check.yaml
+│       ├── release.yml
+│       └── update-grist-image.yaml
+├── .gitignore
+├── README.md
+├── charts
+│   ├── grist
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── examples
+│   │   │   ├── backup
+│   │   │   │   ├── Dockerfile
+│   │   │   │   ├── README.md
+│   │   │   │   └── backup.sh
+│   │   │   ├── docker_compose
+│   │   │   │   ├── README.md
+│   │   │   │   ├── docker-compose.yml
+│   │   │   │   ├── fileConfig.yml
+│   │   │   │   ├── grist.json
+│   │   │   │   └── grist.yaml
+│   │   │   ├── helmfile
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── README.md
+│   │   │   │   ├── helmfile.yaml.gotmpl
+│   │   │   │   ├── local-cluster.sh
+│   │   │   │   └── values.grist.yaml
+│   │   │   ├── terraform
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── README.md
+│   │   │   │   ├── grist.tf
+│   │   │   │   ├── keycloak.tf
+│   │   │   │   ├── minio.tf
+│   │   │   │   ├── namespace.tf
+│   │   │   │   ├── postgresql.tf
+│   │   │   │   ├── redis.tf
+│   │   │   │   └── versions.tf
+│   │   │   └── terraform_module
+│   │   │       ├── VERSION
+│   │   │       ├── grist.tf
+│   │   │       ├── grist.yaml
+│   │   │       ├── variables.tf
+│   │   │       ├── variables_grist.tf
+│   │   │       └── versions.tf
+│   │   ├── templates
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── doc_wk_deployment.yaml
+│   │   │   ├── doc_wk_headless_svc.yaml
+│   │   │   ├── doc_wk_pvc.yaml
+│   │   │   ├── file_cm.yaml
+│   │   │   ├── home_wk_deploy.yaml
+│   │   │   ├── home_wk_pvc.yaml
+│   │   │   ├── home_wk_svc.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── lb_cm.yaml
+│   │   │   ├── lb_deploy.yaml
+│   │   │   ├── lb_svc.yaml
+│   │   │   └── secrets.yml
+│   │   ├── update_readme.sh
+│   │   └── values.yaml
+│   └── plane
+│       ├── .helmignore
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── generate-readme.sh
+│       ├── templates
+│       │   ├── _helpers.tpl
+│       │   ├── api_deployment.yaml
+│       │   ├── api_svc.yaml
+│       │   ├── beat_worker_deployment.yaml
+│       │   ├── ingress.yaml
+│       │   ├── space_deployment.yaml
+│       │   ├── space_svc.yaml
+│       │   ├── web_deployment.yaml
+│       │   ├── web_svc.yaml
+│       │   └── worker_deployment.yaml
+│       └── values.yaml
+└── scripts
+    ├── install-hooks.sh
+    └── utils.sh
+15 directories, 68 files
