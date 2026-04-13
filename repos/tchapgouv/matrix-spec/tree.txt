@@ -1,0 +1,844 @@
+.
+├── .github
+│   ├── CODEOWNERS
+│   ├── FUNDING.yml
+│   ├── ISSUE_TEMPLATE
+│   │   ├── clarification.md
+│   │   ├── config.yaml
+│   │   ├── cosmetic-bug.md
+│   │   ├── idea.md
+│   │   ├── release.md
+│   │   └── spec-bug.md
+│   ├── _typos.toml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── checks.yaml
+│       ├── main.yml
+│       ├── netlify.yaml
+│       ├── release.yaml
+│       └── spell-check.yaml
+├── .gitignore
+├── .htmltest.yml
+├── CONTRIBUTING.rst
+├── LICENSE
+├── README.md
+├── assets
+│   ├── css
+│   │   └── fonts
+│   │       ├── Inter.css
+│   │       ├── README.md
+│   │       ├── download_google_fonts_css.py
+│   │       └── requirements.txt
+│   ├── diagrams
+│   │   ├── README.md
+│   │   ├── membership.drawio
+│   │   ├── membership.webp
+│   │   ├── threaded-dag-threads.drawio
+│   │   ├── threaded-dag-threads.webp
+│   │   ├── threaded-dag.drawio
+│   │   └── threaded-dag.webp
+│   ├── icons
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   └── logo.svg
+│   ├── js
+│   │   ├── toc.js
+│   │   └── versions.template.js
+│   └── scss
+│       ├── _styles_project.scss
+│       ├── _variables_project.scss
+│       └── syntax.scss
+├── attic
+│   ├── drafts
+│   │   ├── ancient_federated_versioning_design_notes.rst
+│   │   ├── application_services.rst
+│   │   ├── data_flows.rst
+│   │   ├── erik-model.rst
+│   │   ├── erikj_federation.rst
+│   │   ├── flows_and_auth.rst
+│   │   ├── general_api.rst
+│   │   ├── human-id-rules.rst
+│   │   ├── model
+│   │   │   ├── presence.rst
+│   │   │   ├── profiles.rst
+│   │   │   ├── protocol_examples.rst
+│   │   │   ├── room-join-workflow.rst
+│   │   │   ├── rooms.rst
+│   │   │   └── third-party-id.rst
+│   │   ├── object_model.rst
+│   │   ├── pstn_gatewaying.txt
+│   │   ├── reputation_thoughts.rst
+│   │   ├── url_previews.md
+│   │   ├── use_cases.rst
+│   │   └── websockets.rst
+│   └── v1_registration_login.rst
+├── changelogs
+│   ├── README.md
+│   ├── appendices
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       └── 2307.clarification
+│   ├── application_service
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       └── 2330.clarification
+│   ├── client_server
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       ├── 2270.feature
+│   │       ├── 2272.feature
+│   │       ├── 2277.clarification
+│   │       ├── 2278.feature
+│   │       ├── 2278.new.1
+│   │       ├── 2278.new.2
+│   │       ├── 2278.new.3
+│   │       ├── 2278.new.4
+│   │       ├── 2280.clarification
+│   │       ├── 2283.clarification
+│   │       ├── 2291.feature
+│   │       ├── 2292.feature
+│   │       ├── 2298.feature
+│   │       ├── 2299.feature
+│   │       ├── 2301.feature
+│   │       ├── 2304.clarification
+│   │       ├── 2305.feature
+│   │       ├── 2306.clarification
+│   │       ├── 2311.feature
+│   │       ├── 2311.removal
+│   │       ├── 2315.feature
+│   │       ├── 2316.clarification
+│   │       ├── 2318.clarification
+│   │       ├── 2320.feature
+│   │       ├── 2324.clarification
+│   │       ├── 2328.feature
+│   │       ├── 2332.feature
+│   │       ├── 2336.clarification
+│   │       ├── 2337.clarification
+│   │       └── 2338.feature
+│   ├── identity_service
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       ├── 2277.clarification
+│   │       └── 2336.clarification
+│   ├── internal
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       ├── 2222.clarification
+│   │       ├── 2275.clarification
+│   │       ├── 2276.feature
+│   │       ├── 2282.clarification
+│   │       ├── 2287.clarification
+│   │       ├── 2289.clarification
+│   │       ├── 2290.clarification
+│   │       ├── 2317.clarification
+│   │       ├── 2318.clarification
+│   │       └── 2323.clarification
+│   ├── legacy
+│   │   ├── application_service.rst
+│   │   ├── client_server.rst
+│   │   ├── identity_service.rst
+│   │   ├── push_gateway.rst
+│   │   └── server_server.rst
+│   ├── push_gateway
+│   │   └── newsfragments
+│   │       └── .gitignore
+│   ├── pyproject.toml
+│   ├── room_versions
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       ├── 2297.clarification
+│   │       └── 2303.clarification
+│   ├── server_server
+│   │   └── newsfragments
+│   │       ├── .gitignore
+│   │       ├── 2191.clarification
+│   │       ├── 2284.clarification
+│   │       ├── 2288.clarification
+│   │       ├── 2300.clarification
+│   │       ├── 2319.removal
+│   │       ├── 2329.clarification
+│   │       ├── 2332.feature
+│   │       └── 2338.clarification
+│   └── template.md.jinja
+├── config
+│   ├── _default
+│   │   └── hugo.toml
+│   └── production
+│       └── hugo.toml
+├── content
+│   ├── _index.md
+│   ├── appendices.md
+│   ├── application-service-api.md
+│   ├── changelog
+│   │   ├── _index.md
+│   │   ├── historical.md
+│   │   ├── v1.1.md
+│   │   ├── v1.10.md
+│   │   ├── v1.11.md
+│   │   ├── v1.12.md
+│   │   ├── v1.13.md
+│   │   ├── v1.14.md
+│   │   ├── v1.15.md
+│   │   ├── v1.16.md
+│   │   ├── v1.17.md
+│   │   ├── v1.2.md
+│   │   ├── v1.3.md
+│   │   ├── v1.4.md
+│   │   ├── v1.5.md
+│   │   ├── v1.6.md
+│   │   ├── v1.7.md
+│   │   ├── v1.8.md
+│   │   └── v1.9.md
+│   ├── client-server-api
+│   │   ├── _index.md
+│   │   └── modules
+│   │       ├── account_data.md
+│   │       ├── admin.md
+│   │       ├── content_repo.md
+│   │       ├── device_management.md
+│   │       ├── dm.md
+│   │       ├── end_to_end_encryption.md
+│   │       ├── event_annotations.md
+│   │       ├── event_context.md
+│   │       ├── event_replacements.md
+│   │       ├── guest_access.md
+│   │       ├── history_visibility.md
+│   │       ├── ignore_users.md
+│   │       ├── index.md
+│   │       ├── instant_messaging.md
+│   │       ├── invite_permission.md
+│   │       ├── mentions.md
+│   │       ├── moderation_policies.md
+│   │       ├── openid.md
+│   │       ├── policy_servers.md
+│   │       ├── presence.md
+│   │       ├── push.md
+│   │       ├── read_markers.md
+│   │       ├── receipts.md
+│   │       ├── recent_emoji.md
+│   │       ├── reference_relations.md
+│   │       ├── report_content.md
+│   │       ├── rich_replies.md
+│   │       ├── room_previews.md
+│   │       ├── room_upgrades.md
+│   │       ├── search.md
+│   │       ├── secrets.md
+│   │       ├── send_to_device.md
+│   │       ├── server_acls.md
+│   │       ├── server_notices.md
+│   │       ├── spaces.md
+│   │       ├── sso_login.md
+│   │       ├── stickers.md
+│   │       ├── tags.md
+│   │       ├── third_party_invites.md
+│   │       ├── third_party_networks.md
+│   │       ├── threading.md
+│   │       ├── typing_notifications.md
+│   │       └── voip_events.md
+│   ├── identity-service-api.md
+│   ├── olm-megolm
+│   │   ├── _index.md
+│   │   ├── megolm.md
+│   │   └── olm.md
+│   ├── proposals.md
+│   ├── push-gateway-api.md
+│   ├── rooms
+│   │   ├── _index.md
+│   │   ├── fragments
+│   │   │   ├── index.md
+│   │   │   ├── v1-auth-rules.md
+│   │   │   ├── v1-canonical-json.md
+│   │   │   ├── v1-deprecated-formatting-off-spec.md
+│   │   │   ├── v1-event-ids.md
+│   │   │   ├── v1-floaty-power-levels.md
+│   │   │   ├── v1-redactions.md
+│   │   │   ├── v1-stringy-power-levels.md
+│   │   │   ├── v11-event-format.md
+│   │   │   ├── v11-redactions.md
+│   │   │   ├── v12-event-format.md
+│   │   │   ├── v2-state-res.md
+│   │   │   ├── v3-auth-rules.md
+│   │   │   ├── v3-handling-redactions.md
+│   │   │   ├── v4-event-format.md
+│   │   │   ├── v4-event-ids.md
+│   │   │   ├── v5-signing-requirements.md
+│   │   │   ├── v6-canonical-json.md
+│   │   │   ├── v6-event-format.md
+│   │   │   ├── v6-redactions.md
+│   │   │   ├── v8-auth-rules.md
+│   │   │   └── v9-redactions.md
+│   │   ├── v1.md
+│   │   ├── v10.md
+│   │   ├── v11.md
+│   │   ├── v12.md
+│   │   ├── v2.md
+│   │   ├── v3.md
+│   │   ├── v4.md
+│   │   ├── v5.md
+│   │   ├── v6.md
+│   │   ├── v7.md
+│   │   ├── v8.md
+│   │   └── v9.md
+│   └── server-server-api.md
+├── data
+│   ├── api
+│   │   ├── application-service
+│   │   │   ├── definitions
+│   │   │   │   ├── location.yaml
+│   │   │   │   ├── location_batch.yaml
+│   │   │   │   ├── namespace_list.yaml
+│   │   │   │   ├── protocol.yaml
+│   │   │   │   ├── protocol_base.yaml
+│   │   │   │   ├── protocol_instance.yaml
+│   │   │   │   ├── registration.yaml
+│   │   │   │   ├── security.yaml
+│   │   │   │   ├── user.yaml
+│   │   │   │   └── user_batch.yaml
+│   │   │   ├── ping.yaml
+│   │   │   ├── protocols.yaml
+│   │   │   ├── query_room.yaml
+│   │   │   ├── query_user.yaml
+│   │   │   └── transactions.yaml
+│   │   ├── client-server
+│   │   │   ├── account-data.yaml
+│   │   │   ├── account_deactivation.yaml
+│   │   │   ├── admin.yaml
+│   │   │   ├── administrative_contact.yaml
+│   │   │   ├── appservice_ping.yaml
+│   │   │   ├── appservice_room_directory.yaml
+│   │   │   ├── authed-content-repo.yaml
+│   │   │   ├── banning.yaml
+│   │   │   ├── capabilities.yaml
+│   │   │   ├── content-repo.yaml
+│   │   │   ├── create_room.yaml
+│   │   │   ├── cross_signing.yaml
+│   │   │   ├── definitions
+│   │   │   │   ├── auth_data.yaml
+│   │   │   │   ├── auth_response.yaml
+│   │   │   │   ├── client_device.yaml
+│   │   │   │   ├── client_event.yaml
+│   │   │   │   ├── client_event_without_room_id.yaml
+│   │   │   │   ├── cross_signing_key.yaml
+│   │   │   │   ├── device_keys.yaml
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── error.yaml
+│   │   │   │   │   └── rate_limited.yaml
+│   │   │   │   ├── event_batch.yaml
+│   │   │   │   ├── event_filter.yaml
+│   │   │   │   ├── invite_3pid.yaml
+│   │   │   │   ├── key_backup_auth_data.yaml
+│   │   │   │   ├── key_backup_data.yaml
+│   │   │   │   ├── key_backup_session_data.yaml
+│   │   │   │   ├── m.login.terms_params.yaml
+│   │   │   │   ├── m.mentions.yaml
+│   │   │   │   ├── m.oauth_params.yaml
+│   │   │   │   ├── m.relates_to.yaml
+│   │   │   │   ├── megolm_export_session_data.yaml
+│   │   │   │   ├── olm_payload.yaml
+│   │   │   │   ├── one_time_keys.yaml
+│   │   │   │   ├── openid_token.yaml
+│   │   │   │   ├── protocol.yaml
+│   │   │   │   ├── public_rooms_chunk.yaml
+│   │   │   │   ├── public_rooms_response.yaml
+│   │   │   │   ├── push_condition.yaml
+│   │   │   │   ├── push_rule.yaml
+│   │   │   │   ├── push_ruleset.yaml
+│   │   │   │   ├── recent_emoji.yaml
+│   │   │   │   ├── request_email_validation.yaml
+│   │   │   │   ├── request_msisdn_validation.yaml
+│   │   │   │   ├── request_token_response.yaml
+│   │   │   │   ├── room_event_filter.yaml
+│   │   │   │   ├── room_key_backup.yaml
+│   │   │   │   ├── room_summary.yaml
+│   │   │   │   ├── security.yaml
+│   │   │   │   ├── sso_login_flow.yaml
+│   │   │   │   ├── state_event_batch.yaml
+│   │   │   │   ├── sync_filter.yaml
+│   │   │   │   ├── tag.yaml
+│   │   │   │   ├── third_party_signed.yaml
+│   │   │   │   ├── timeline_batch.yaml
+│   │   │   │   ├── user_identifier.yaml
+│   │   │   │   └── wellknown
+│   │   │   │       ├── full.yaml
+│   │   │   │       ├── homeserver.yaml
+│   │   │   │       └── identity_server.yaml
+│   │   │   ├── device_management.yaml
+│   │   │   ├── directory.yaml
+│   │   │   ├── event_context.yaml
+│   │   │   ├── filter.yaml
+│   │   │   ├── inviting.yaml
+│   │   │   ├── joining.yaml
+│   │   │   ├── key_backup.yaml
+│   │   │   ├── keys.yaml
+│   │   │   ├── kicking.yaml
+│   │   │   ├── knocking.yaml
+│   │   │   ├── leaving.yaml
+│   │   │   ├── list_joined_rooms.yaml
+│   │   │   ├── list_public_rooms.yaml
+│   │   │   ├── login.yaml
+│   │   │   ├── login_token.yaml
+│   │   │   ├── logout.yaml
+│   │   │   ├── message_pagination.yaml
+│   │   │   ├── notifications.yaml
+│   │   │   ├── oauth_server_metadata.yaml
+│   │   │   ├── old_sync.yaml
+│   │   │   ├── openid.yaml
+│   │   │   ├── password_management.yaml
+│   │   │   ├── peeking_events.yaml
+│   │   │   ├── policy_server.yaml
+│   │   │   ├── presence.yaml
+│   │   │   ├── profile.yaml
+│   │   │   ├── pusher.yaml
+│   │   │   ├── pushrules.yaml
+│   │   │   ├── read_markers.yaml
+│   │   │   ├── receipts.yaml
+│   │   │   ├── redaction.yaml
+│   │   │   ├── refresh.yaml
+│   │   │   ├── registration.yaml
+│   │   │   ├── registration_tokens.yaml
+│   │   │   ├── relations.yaml
+│   │   │   ├── report_content.yaml
+│   │   │   ├── room_*.yaml  (6 files)
+│   │   │   ├── rooms.yaml
+│   │   │   ├── search.yaml
+│   │   │   ├── space_hierarchy.yaml
+│   │   │   ├── sso_login_redirect.yaml
+│   │   │   ├── support.yaml
+│   │   │   ├── sync.yaml
+│   │   │   ├── tags.yaml
+│   │   │   ├── third_party_lookup.yaml
+│   │   │   ├── third_party_membership.yaml
+│   │   │   ├── threads_list.yaml
+│   │   │   ├── to_device.yaml
+│   │   │   ├── typing.yaml
+│   │   │   ├── users.yaml
+│   │   │   ├── versions.yaml
+│   │   │   ├── voip.yaml
+│   │   │   ├── wellknown.yaml
+│   │   │   └── whoami.yaml
+│   │   ├── identity
+│   │   │   ├── definitions
+│   │   │   │   ├── request_email_validation.yaml
+│   │   │   │   ├── request_msisdn_validation.yaml
+│   │   │   │   ├── security.yaml
+│   │   │   │   └── sid.yaml
+│   │   │   ├── v2_associations.yaml
+│   │   │   ├── v2_auth.yaml
+│   │   │   ├── v2_email_associations.yaml
+│   │   │   ├── v2_invitation_signing.yaml
+│   │   │   ├── v2_lookup.yaml
+│   │   │   ├── v2_phone_associations.yaml
+│   │   │   ├── v2_ping.yaml
+│   │   │   ├── v2_pubkey.yaml
+│   │   │   ├── v2_store_invite.yaml
+│   │   │   ├── v2_terms.yaml
+│   │   │   └── versions.yaml
+│   │   ├── push-gateway
+│   │   │   └── push_notifier.yaml
+│   │   └── server-server
+│   │       ├── backfill.yaml
+│   │       ├── content_repository.yaml
+│   │       ├── definitions
+│   │       │   ├── components
+│   │       │   │   ├── auth_events_prev_events_v4.yaml
+│   │       │   │   ├── depth_v6.yaml
+│   │       │   │   ├── event_hash.yaml
+│   │       │   │   ├── pdu_base.yaml
+│   │       │   │   ├── room_id_before_v12.yaml
+│   │       │   │   └── room_id_v12.yaml
+│   │       │   ├── edu.yaml
+│   │       │   ├── edu_with_example.yaml
+│   │       │   ├── event-schemas
+│   │       │   │   ├── m.device_list_update.yaml
+│   │       │   │   ├── m.direct_to_device.yaml
+│   │       │   │   ├── m.presence.yaml
+│   │       │   │   ├── m.receipt.yaml
+│   │       │   │   ├── m.signing_key_update.yaml
+│   │       │   │   └── m.typing.yaml
+│   │       │   ├── invite_event.yaml
+│   │       │   ├── keys.yaml
+│   │       │   ├── keys_query_response.yaml
+│   │       │   ├── pdu_v1.yaml
+│   │       │   ├── pdu_v11.yaml
+│   │       │   ├── pdu_v12.yaml
+│   │       │   ├── pdu_v3.yaml
+│   │       │   ├── pdu_v4.yaml
+│   │       │   ├── pdu_v6.yaml
+│   │       │   ├── security.yaml
+│   │       │   ├── single_pdu_transaction.yaml
+│   │       │   ├── transaction.yaml
+│   │       │   └── unlimited_pdu_transaction.yaml
+│   │       ├── event_auth.yaml
+│   │       ├── events.yaml
+│   │       ├── examples
+│   │       │   ├── components
+│   │       │   │   ├── auth_events_prev_events_v4.json
+│   │       │   │   └── pdu_base.json
+│   │       │   ├── edu.json
+│   │       │   ├── invite_or_knock_state.json
+│   │       │   ├── minimal_pdu.json
+│   │       │   ├── pdu_v1.json
+│   │       │   ├── pdu_v11.json
+│   │       │   ├── pdu_v12.json
+│   │       │   ├── pdu_v3.json
+│   │       │   ├── pdu_v4.json
+│   │       │   ├── pdu_v4_join_membership.json
+│   │       │   ├── server_key.json
+│   │       │   ├── server_key_notary_signed.json
+│   │       │   └── transaction.json
+│   │       ├── invites-v1.yaml
+│   │       ├── invites-v2.yaml
+│   │       ├── joins-v1.yaml
+│   │       ├── joins-v2.yaml
+│   │       ├── keys_query.yaml
+│   │       ├── keys_server.yaml
+│   │       ├── knocks.yaml
+│   │       ├── leaving-v1.yaml
+│   │       ├── leaving-v2.yaml
+│   │       ├── openid.yaml
+│   │       ├── public_rooms.yaml
+│   │       ├── query.yaml
+│   │       ├── room_policy.yaml
+│   │       ├── space_hierarchy.yaml
+│   │       ├── third_party_invite.yaml
+│   │       ├── transactions.yaml
+│   │       ├── user_devices.yaml
+│   │       ├── user_keys.yaml
+│   │       ├── version.yaml
+│   │       └── wellknown.yaml
+│   ├── event-schemas
+│   │   ├── examples
+│   │   │   ├── core
+│   │   │   │   ├── event.json
+│   │   │   │   ├── room_edu.json
+│   │   │   │   ├── room_event.json
+│   │   │   │   └── state_event.json
+│   │   │   ├── invite_room_state.json
+│   │   │   ├── knock_room_state.json
+│   │   │   ├── m.accepted_terms.yaml
+│   │   │   ├── m.call.answer.yaml
+│   │   │   ├── m.call.candidates.yaml
+│   │   │   ├── m.call.hangup.yaml
+│   │   │   ├── m.call.invite.yaml
+│   │   │   ├── m.call.negotiate.yaml
+│   │   │   ├── m.call.reject.yaml
+│   │   │   ├── m.call.sdp_stream_metadata_changed.yaml
+│   │   │   ├── m.call.select_answer.yaml
+│   │   │   ├── m.direct.yaml
+│   │   │   ├── m.dummy.yaml
+│   │   │   ├── m.forwarded_room_key.yaml
+│   │   │   ├── m.fully_read.yaml
+│   │   │   ├── m.identity_server.yaml
+│   │   │   ├── m.ignored_user_list.yaml
+│   │   │   ├── m.invite_permission_config.yaml
+│   │   │   ├── m.key.verification.accept.yaml
+│   │   │   ├── m.key.verification.cancel.yaml
+│   │   │   ├── m.key.verification.done.yaml
+│   │   │   ├── m.key.verification.key.yaml
+│   │   │   ├── m.key.verification.mac.yaml
+│   │   │   ├── m.key.verification.ready.yaml
+│   │   │   ├── m.key.verification.request.yaml
+│   │   │   ├── m.key.verification.start$m.sas.v1.yaml
+│   │   │   ├── m.key.verification.start.yaml
+│   │   │   ├── m.marked_unread.yaml
+│   │   │   ├── m.policy.rule.room.yaml
+│   │   │   ├── m.policy.rule.server.yaml
+│   │   │   ├── m.policy.rule.user.yaml
+│   │   │   ├── m.presence.yaml
+│   │   │   ├── m.push_rules.yaml
+│   │   │   ├── m.reaction.yaml
+│   │   │   ├── m.receipt.yaml
+│   │   │   ├── m.recent_emoji.yaml
+│   │   │   ├── m.room.avatar.yaml
+│   │   │   ├── m.room.canonical_alias.yaml
+│   │   │   ├── m.room.create.yaml
+│   │   │   ├── m.room.encrypted$megolm.yaml
+│   │   │   ├── m.room.encrypted$olm.yaml
+│   │   │   ├── m.room.encryption.yaml
+│   │   │   ├── m.room.guest_access.yaml
+│   │   │   ├── m.room.history_visibility.yaml
+│   │   │   ├── m.room.join_rules$restricted.yaml
+│   │   │   ├── m.room.join_rules.yaml
+│   │   │   ├── m.room.member$invite_room_state.yaml
+│   │   │   ├── m.room.member$join_authorised_via_users_server.yaml
+│   │   │   ├── m.room.member$knock_room_state.yaml
+│   │   │   ├── m.room.member$third_party_invite.yaml
+│   │   │   ├── m.room.member.yaml
+│   │   │   ├── m.room.message$m.audio.yaml
+│   │   │   ├── m.room.message$m.emote.yaml
+│   │   │   ├── m.room.message$m.file.yaml
+│   │   │   ├── m.room.message$m.image.yaml
+│   │   │   ├── m.room.message$m.key.verification.request.yaml
+│   │   │   ├── m.room.message$m.location.yaml
+│   │   │   ├── m.room.message$m.notice.yaml
+│   │   │   ├── m.room.message$m.server_notice.yaml
+│   │   │   ├── m.room.message$m.text.yaml
+│   │   │   ├── m.room.message$m.video.yaml
+│   │   │   ├── m.room.name.yaml
+│   │   │   ├── m.room.pinned_events.yaml
+│   │   │   ├── m.room.policy.yaml
+│   │   │   ├── m.room.power_levels.yaml
+│   │   │   ├── m.room.redaction.yaml
+│   │   │   ├── m.room.server_acl.yaml
+│   │   │   ├── m.room.third_party_invite.yaml
+│   │   │   ├── m.room.tombstone.yaml
+│   │   │   ├── m.room.topic.yaml
+│   │   │   ├── m.room_key.withheld.yaml
+│   │   │   ├── m.room_key.yaml
+│   │   │   ├── m.room_key_request$cancel_request.yaml
+│   │   │   ├── m.room_key_request$request.yaml
+│   │   │   ├── m.secret.request.yaml
+│   │   │   ├── m.secret.send.yaml
+│   │   │   ├── m.space.child.yaml
+│   │   │   ├── m.space.parent.yaml
+│   │   │   ├── m.sticker.yaml
+│   │   │   ├── m.tag.yaml
+│   │   │   └── m.typing.yaml
+│   │   ├── moderation_policy_rule.yaml
+│   │   └── schema
+│   │       ├── components
+│   │       │   ├── m_text_content_block.yaml
+│   │       │   ├── sdp_stream_metadata.yaml
+│   │       │   └── signed_third_party_invite.yaml
+│   │       ├── core-event-schema
+│   │       │   ├── call_event.yaml
+│   │       │   ├── event.yaml
+│   │       │   ├── msgtype_infos
+│   │       │   │   ├── avatar_info.yaml
+│   │       │   │   ├── image_info.yaml
+│   │       │   │   └── thumbnail_info.yaml
+│   │       │   ├── room_event.yaml
+│   │       │   ├── state_event.yaml
+│   │       │   ├── stripped_state.yaml
+│   │       │   ├── sync_room_event.yaml
+│   │       │   ├── sync_state_event.yaml
+│   │       │   └── unsigned_prop.yaml
+│   │       ├── m.accepted_terms.yaml
+│   │       ├── m.call.answer.yaml
+│   │       ├── m.call.candidates.yaml
+│   │       ├── m.call.hangup.yaml
+│   │       ├── m.call.invite.yaml
+│   │       ├── m.call.negotiate.yaml
+│   │       ├── m.call.reject.yaml
+│   │       ├── m.call.sdp_stream_metadata_changed.yaml
+│   │       ├── m.call.select_answer.yaml
+│   │       ├── m.direct.yaml
+│   │       ├── m.dummy.yaml
+│   │       ├── m.forwarded_room_key.yaml
+│   │       ├── m.fully_read.yaml
+│   │       ├── m.identity_server.yaml
+│   │       ├── m.ignored_user_list.yaml
+│   │       ├── m.invite_permission_config.yaml
+│   │       ├── m.key.verification.accept.yaml
+│   │       ├── m.key.verification.cancel.yaml
+│   │       ├── m.key.verification.done.yaml
+│   │       ├── m.key.verification.key.yaml
+│   │       ├── m.key.verification.m.relates_to.yaml
+│   │       ├── m.key.verification.mac.yaml
+│   │       ├── m.key.verification.ready.yaml
+│   │       ├── m.key.verification.request.yaml
+│   │       ├── m.key.verification.start$m.reciprocate.v1.yaml
+│   │       ├── m.key.verification.start$m.sas.v1.yaml
+│   │       ├── m.key.verification.start.yaml
+│   │       ├── m.marked_unread.yaml
+│   │       ├── m.policy.rule.room.yaml
+│   │       ├── m.policy.rule.server.yaml
+│   │       ├── m.policy.rule.user.yaml
+│   │       ├── m.presence.yaml
+│   │       ├── m.push_rules.yaml
+│   │       ├── m.reaction.yaml
+│   │       ├── m.receipt.yaml
+│   │       ├── m.recent_emoji.yaml
+│   │       ├── m.room.avatar.yaml
+│   │       ├── m.room.canonical_alias.yaml
+│   │       ├── m.room.create.yaml
+│   │       ├── m.room.encrypted.yaml
+│   │       ├── m.room.encryption.yaml
+│   │       ├── m.room.guest_access.yaml
+│   │       ├── m.room.history_visibility.yaml
+│   │       ├── m.room.join_rules.yaml
+│   │       ├── m.room.member.yaml
+│   │       ├── m.room.message$m.audio.yaml
+│   │       ├── m.room.message$m.emote.yaml
+│   │       ├── m.room.message$m.file.yaml
+│   │       ├── m.room.message$m.image.yaml
+│   │       ├── m.room.message$m.key.verification.request.yaml
+│   │       ├── m.room.message$m.location.yaml
+│   │       ├── m.room.message$m.notice.yaml
+│   │       ├── m.room.message$m.server_notice.yaml
+│   │       ├── m.room.message$m.text.yaml
+│   │       ├── m.room.message$m.video.yaml
+│   │       ├── m.room.message.yaml
+│   │       ├── m.room.name.yaml
+│   │       ├── m.room.pinned_events.yaml
+│   │       ├── m.room.policy.yaml
+│   │       ├── m.room.power_levels.yaml
+│   │       ├── m.room.redaction.yaml
+│   │       ├── m.room.server_acl.yaml
+│   │       ├── m.room.third_party_invite.yaml
+│   │       ├── m.room.tombstone.yaml
+│   │       ├── m.room.topic.yaml
+│   │       ├── m.room_key.withheld.yaml
+│   │       ├── m.room_key.yaml
+│   │       ├── m.room_key_request.yaml
+│   │       ├── m.secret.request.yaml
+│   │       ├── m.secret.send.yaml
+│   │       ├── m.space.child.yaml
+│   │       ├── m.space.parent.yaml
+│   │       ├── m.sticker.yaml
+│   │       ├── m.tag.yaml
+│   │       └── m.typing.yaml
+│   ├── schemas
+│   │   ├── oauth2-account-management-server-metadata.yaml
+│   │   ├── oauth2-account-management-url.yaml
+│   │   ├── oauth2-client-metadata.yaml
+│   │   └── server-signatures.yaml
+│   └── string-formats.yaml
+├── data-definitions
+│   ├── sas-emoji-v1-i18n
+│   │   ├── ar.json
+│   │   ├── base.json
+│   │   ├── bg.json
+│   │   ├── ca.json
+│   │   ├── cs.json
+│   │   ├── de.json
+│   │   ├── eo.json
+│   │   ├── es.json
+│   │   ├── et.json
+│   │   ├── fa.json
+│   │   ├── fi.json
+│   │   ├── fr.json
+│   │   ├── hr.json
+│   │   ├── hu.json
+│   │   ├── id.json
+│   │   ├── it.json
+│   │   ├── ja.json
+│   │   ├── nb_NO.json
+│   │   ├── nl.json
+│   │   ├── pt.json
+│   │   ├── pt_BR.json
+│   │   ├── ru.json
+│   │   ├── si.json
+│   │   ├── sk.json
+│   │   ├── sq.json
+│   │   ├── sr.json
+│   │   ├── sv.json
+│   │   ├── szl.json
+│   │   ├── tzm.json
+│   │   ├── uk.json
+│   │   ├── vi.json
+│   │   ├── zh_Hans.json
+│   │   └── zh_Hant.json
+│   └── sas-emoji.json
+├── go.mod
+├── go.sum
+├── informal
+│   └── idp-brands.md
+├── layouts
+│   ├── 404.html
+│   ├── _markup
+│   │   ├── render-heading.html
+│   │   └── render-passthrough.html
+│   ├── _partials
+│   │   ├── added-in.html
+│   │   ├── alert.html
+│   │   ├── breadcrumb.html
+│   │   ├── changed-in.html
+│   │   ├── endpoints-toc.html
+│   │   ├── events
+│   │   │   ├── example.html
+│   │   │   └── render-event.html
+│   │   ├── favicons.html
+│   │   ├── footer
+│   │   │   └── center.html
+│   │   ├── head-css.html
+│   │   ├── hooks
+│   │   │   ├── body-end.html
+│   │   │   └── head-end.html
+│   │   ├── json-schema
+│   │   │   ├── resolve-additional-types.html
+│   │   │   ├── resolve-allof.html
+│   │   │   ├── resolve-examples.html
+│   │   │   └── resolve-refs.html
+│   │   ├── navbar-version-selector.html
+│   │   ├── navbar.html
+│   │   ├── openapi
+│   │   │   ├── render-api.html
+│   │   │   ├── render-content-type.html
+│   │   │   ├── render-media-type-objects.html
+│   │   │   ├── render-object-table.html
+│   │   │   ├── render-operation.html
+│   │   │   ├── render-parameters.html
+│   │   │   ├── render-request.html
+│   │   │   └── render-responses.html
+│   │   ├── render-example.html
+│   │   ├── sidebar-tree.html
+│   │   ├── spec-content.html
+│   │   ├── toc.html
+│   │   └── version-banner.html
+│   ├── _shortcodes
+│   │   ├── added-in.html
+│   │   ├── boxes
+│   │   │   ├── note.html
+│   │   │   ├── rationale.html
+│   │   │   └── warning.html
+│   │   ├── changed-in.html
+│   │   ├── cs-module.html
+│   │   ├── definition.html
+│   │   ├── diagram.html
+│   │   ├── event-fields.html
+│   │   ├── event-group.html
+│   │   ├── event.html
+│   │   ├── http-api.html
+│   │   ├── msgtypes.html
+│   │   ├── proposal-tables.html
+│   │   ├── rver-fragment.html
+│   │   └── sas-emojis.html
+│   └── docs
+│       ├── baseof.html
+│       ├── changelog-index.html
+│       ├── changelog.checklist.md
+│       ├── changelog.html
+│       ├── list.html
+│       └── single.html
+├── meta
+│   ├── documentation_style.rst
+│   ├── github-labels.rst
+│   └── releasing.md
+├── openapi_extensions.md
+├── package-lock.json
+├── package.json
+├── packages
+│   └── npm
+│       ├── .gitignore
+│       ├── package.json
+│       └── yarn.lock
+├── postcss.config.js
+├── redocly.yaml
+├── scripts
+│   ├── check-event-schema-examples.py
+│   ├── check-json-schemas.py
+│   ├── check-newsfragments
+│   ├── check-openapi-sources.py
+│   ├── dump-openapi.py
+│   ├── generate-changelog.sh
+│   ├── helpers.py
+│   ├── i18n.py
+│   ├── openapi-http-server.py
+│   ├── openapi-preview.html
+│   ├── proposals.js
+│   └── requirements.txt
+└── static
+    ├── .well-known
+    │   └── funding-manifest-urls
+    ├── fonts
+    │   ├── Inter-cyrillic-ext-normal.woff2
+    │   ├── Inter-cyrillic-normal.woff2
+    │   ├── Inter-greek-ext-normal.woff2
+    │   ├── Inter-greek-normal.woff2
+    │   ├── Inter-latin-ext-normal.woff2
+    │   ├── Inter-latin-normal.woff2
+    │   └── Inter-vietnamese-normal.woff2
+    └── icons
+        └── unstable.png
+89 directories, 759 files
