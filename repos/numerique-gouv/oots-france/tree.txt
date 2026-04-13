@@ -1,0 +1,134 @@
+.
+├── .env.domibus.template
+├── .env.oots.template
+├── .env.template
+├── .eslintrc.js
+├── .github
+│   └── workflows
+│       ├── codeql.yml
+│       └── node.js.yml
+├── .gitignore
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── assets
+│   └── drapeau.pdf
+├── docker-compose.yml
+├── exemples
+│   └── configuration_PMode_Domibus.xml
+├── nginx.template
+│   ├── conf
+│   │   └── nginx.conf
+│   └── scripts
+│       └── init-letsencrypt.sh
+├── package-lock.json
+├── package.json
+├── scripts
+│   ├── logsDomibus.sh
+│   ├── start.sh
+│   └── tests.sh
+├── server.js
+├── src
+│   ├── adaptateurs
+│   │   ├── adaptateurChiffrement.js
+│   │   ├── adaptateurDomibus.js
+│   │   ├── adaptateurEnvironnement.js
+│   │   ├── adaptateurUUID.js
+│   │   ├── horodateur.js
+│   │   └── transmetteurPiecesJustificatives.js
+│   ├── api
+│   │   └── pieceJustificative.js
+│   ├── depots
+│   │   ├── depotPointsAcces.js
+│   │   ├── depotRequeteurs.js
+│   │   └── depotServicesCommunsLocal.js
+│   ├── domibus
+│   │   ├── enteteMessageRecu.js
+│   │   ├── fabriqueMessages.js
+│   │   ├── instructionSOAP.js
+│   │   ├── messageRecu.js
+│   │   ├── reponseDomibus.js
+│   │   ├── reponseEnvoiMessage.js
+│   │   ├── reponseErreur.js
+│   │   ├── reponseErreurAutorisationRequise.js
+│   │   ├── reponseRecuperationMessage.js
+│   │   ├── reponseRequeteListeMessagesEnAttente.js
+│   │   ├── reponseSucces.js
+│   │   ├── requete.js
+│   │   └── requetes.js
+│   ├── ebms
+│   │   ├── codeDemarche.js
+│   │   ├── entete.js
+│   │   ├── enteteErreur.js
+│   │   ├── enteteReponse.js
+│   │   ├── enteteRequete.js
+│   │   ├── fournisseur.js
+│   │   ├── message.js
+│   │   ├── personnePhysique.js
+│   │   ├── pieceJointe.js
+│   │   ├── pieceJointeVide.js
+│   │   ├── pointAcces.js
+│   │   ├── reponseErreur.js
+│   │   ├── reponseVerificationSysteme.js
+│   │   ├── requeteJustificatif.js
+│   │   ├── requeteur.js
+│   │   ├── typeJustificatif.js
+│   │   └── utils.js
+│   ├── ecouteurDomibus.js
+│   ├── erreurs.js
+│   ├── ootsFrance.js
+│   └── routes
+│       ├── middleware.js
+│       ├── routesAdmin.js
+│       ├── routesAuth.js
+│       ├── routesBase.js
+│       ├── routesEbms.js
+│       └── routesRequete.js
+└── test
+    ├── api
+    │   └── pieceJustificative.spec.js
+    ├── constructeurs
+    │   ├── constructeurDepotServicesCommuns.js
+    │   ├── constructeurEnveloppeSOAPAvecPieceJointe.js
+    │   ├── constructeurEnveloppeSOAPException.js
+    │   ├── constructeurEnveloppeSOAPRequete.js
+    │   ├── constructeurXMLParseMessageRecu.js
+    │   ├── constructeurXMLParseReponseSuccesRecue.js
+    │   └── constructeurXMLParseRequeteRecue.js
+    ├── depots
+    │   ├── depotPointsAcces.spec.js
+    │   ├── depotRequeteurs.spec.js
+    │   └── depotServicesCommunsLocal.spec.js
+    ├── domibus
+    │   ├── enteteMessageRecu.spec.js
+    │   ├── fabriqueMessages.spec.js
+    │   ├── instructionSOAP.spec.js
+    │   ├── messageRecu.spec.js
+    │   ├── reponseEnvoiMessage.spec.js
+    │   ├── reponseErreur.spec.js
+    │   ├── reponseErreurAutorisationRequise.spec.js
+    │   ├── reponseRecuperationMessage.spec.js
+    │   ├── reponseRequeteListeMessagesEnAttente.spec.js
+    │   ├── reponseSucces.spec.js
+    │   └── requete.spec.js
+    ├── ebms
+    │   ├── enteteErreur.spec.js
+    │   ├── enteteReponse.spec.js
+    │   ├── enteteRequete.spec.js
+    │   ├── fournisseur.spec.js
+    │   ├── personnePhysique.spec.js
+    │   ├── reponseErreur.spec.js
+    │   ├── reponseVerificationSysteme.spec.js
+    │   ├── requeteJustificatif.spec.js
+    │   ├── requeteur.spec.js
+    │   ├── typeJustificatif.spec.js
+    │   └── utils.spec.js
+    ├── ecouteurDomibus.spec.js
+    └── routes
+        ├── routesAdmin.spec.js
+        ├── routesAuth.spec.js
+        ├── routesEbms.spec.js
+        ├── routesRequete.spec.js
+        ├── serveurTest.js
+        └── utils.js
+23 directories, 110 files
