@@ -1,33 +1,15 @@
 import os
 import json
 import sys
-import subprocess
 from urllib.parse import urlparse
-from datetime import datetime, timezone
+from datetime import datetime
 import re
 
 
-# get list of repos to analyze based on GIT history based on orgas.txt
+# get list of repos to analyze based on orgas.txt
 # prioritizes repos that have been updated on GitHub since last local analysis
 
 repos_folder = os.path.abspath("./repos")
-
-
-def get_git_last_modified(path):
-    try:
-        # Get the last commit date for the file
-        result = subprocess.run(
-            ["git", "log", "--format=%at", "--", path],
-            capture_output=True,
-            text=True,
-        )
-        if result.stdout.strip():
-            return float(result.stdout.strip().split("\n")[0])
-        return float("-inf")  # File doesn't exist in git history
-    except Exception as e:
-        print(f"error running git log for {path}", file=sys.stderr)
-        print(e, file=sys.stderr)
-        return float("-inf")  # Error running git command
 
 
 def load_pushed_at_map(orgas):
@@ -44,12 +26,28 @@ def load_pushed_at_map(orgas):
                 clone_url = repo.get("clone_url")
                 pushed_at = repo.get("pushed_at") or repo.get("updated_at")
                 if clone_url and pushed_at:
-                    # Parse ISO 8601 date to unix timestamp
                     dt = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
                     pushed_at_map[clone_url] = dt.timestamp()
         except Exception as e:
             print(f"error loading {repos_json_path}: {e}", file=sys.stderr)
     return pushed_at_map
+
+
+def get_scanned_pushed_at(local_path):
+    """Return the pushed_at timestamp stored in the local github.json, or None."""
+    github_json = os.path.join(local_path, "github.json")
+    if not os.path.isfile(github_json):
+        return None
+    try:
+        with open(github_json) as f:
+            data = json.load(f)
+        pushed_at = data.get("pushed_at")
+        if pushed_at:
+            dt = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
+            return dt.timestamp()
+    except Exception:
+        pass
+    return None
 
 
 urls = []
@@ -66,7 +64,7 @@ def get_repo_path(url):
     parsed = urlparse(url)
     path = parsed.path.strip("/")
     path = re.sub(".git$", "", path)
-    segments = [s for s in path.split("/") if s]  # Enlever les segments vides
+    segments = [s for s in path.split("/") if s]
     path = f"{segments[-2]}/{segments[-1]}"
     return path
 
@@ -93,48 +91,42 @@ if exclude_repos:
         print(f"Excluded {excluded} repos: {', '.join(exclude_repos)}", file=sys.stderr)
 
 
-# Sort URLs: new repos first, then updated repos (oldest analysis first), then unchanged repos
+# Sort URLs:
+#   0 — unscanned (no local github.json): sorted by pushed_at desc
+#   1 — outdated (github pushed_at > scanned pushed_at): sorted by pushed_at desc
+#   2 — up-to-date: sorted by pushed_at desc (backfill, most active first)
 def get_sort_key(url):
     local_path = get_repo_local_path(url)
-    exists = os.path.exists(local_path)
-    if not exists:
-        # Non-existing repos get highest priority (sorted first)
-        return (0, float("-inf"))
-
-    last_local = get_git_last_modified(local_path)
-    github_pushed_at = pushed_at_map.get(url, float("inf"))
-
-    if github_pushed_at > last_local:
-        # Repo has been updated since last analysis — needs re-scan
-        return (1, last_local)
-    else:
-        # Repo unchanged since last analysis — lowest priority
-        return (2, last_local)
+    github_pushed_at = pushed_at_map.get(url, 0)
+    if not os.path.exists(local_path):
+        return (0, -github_pushed_at)
+    scanned_pushed_at = get_scanned_pushed_at(local_path)
+    if scanned_pushed_at is None or github_pushed_at > scanned_pushed_at:
+        return (1, -github_pushed_at)
+    return (2, -github_pushed_at)
 
 
-sorted_urls = sorted(urls, key=get_sort_key)
+# Cache sort keys to avoid redundant filesystem reads
+sort_key_cache = {url: get_sort_key(url) for url in urls}
+
+sorted_urls = sorted(urls, key=lambda u: sort_key_cache[u])
 
 # Take only the first N URLs (from input)
 matrix_count = int(sys.argv[1])
 matrix_urls = sorted_urls[:matrix_count]
 
 # Log summary
-new_count = sum(1 for u in urls if not os.path.exists(get_repo_local_path(u)))
-updated_count = sum(
-    1
-    for u in urls
-    if os.path.exists(get_repo_local_path(u))
-    and pushed_at_map.get(u, float("inf")) > get_git_last_modified(get_repo_local_path(u))
-)
-unchanged_count = len(urls) - new_count - updated_count
+new_count = sum(1 for u in urls if sort_key_cache[u][0] == 0)
+updated_count = sum(1 for u in urls if sort_key_cache[u][0] == 1)
+unchanged_count = sum(1 for u in urls if sort_key_cache[u][0] == 2)
 print(
-    f"Repos: {len(urls)} total, {new_count} new, {updated_count} updated, {unchanged_count} unchanged",
+    f"Repos: {len(urls)} total, {new_count} unscanned, {updated_count} outdated, {unchanged_count} up-to-date",
     file=sys.stderr,
 )
-selected_updated = sum(1 for u in matrix_urls if get_sort_key(u)[0] <= 1)
-selected_backfill = sum(1 for u in matrix_urls if get_sort_key(u)[0] == 2)
+selected_priority = sum(1 for u in matrix_urls if sort_key_cache[u][0] <= 1)
+selected_backfill = sum(1 for u in matrix_urls if sort_key_cache[u][0] == 2)
 print(
-    f"Selected: {len(matrix_urls)} repos ({selected_updated} new/updated, {selected_backfill} backfill)",
+    f"Selected: {len(matrix_urls)} repos ({selected_priority} unscanned/outdated, {selected_backfill} backfill)",
     file=sys.stderr,
 )
 
