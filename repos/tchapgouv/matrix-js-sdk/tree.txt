@@ -1,0 +1,531 @@
+.
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.cjs
+├── .git-blame-ignore-revs
+├── .github
+│   ├── CODEOWNERS
+│   ├── FUNDING.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── actions
+│   │   ├── sign-release-tarball
+│   │   │   └── action.yml
+│   │   └── upload-release-assets
+│   │       └── action.yml
+│   ├── labels.yml
+│   ├── release-drafter.yml
+│   ├── renovate.json
+│   └── workflows
+│       ├── backport.yml
+│       ├── docs-pr-netlify.yaml
+│       ├── downstream-end-to-end-tests.yml
+│       ├── notify-downstream.yaml
+│       ├── pull_request.yaml
+│       ├── release-checks.yml
+│       ├── release-drafter-workflow.yml
+│       ├── release-drafter.yml
+│       ├── release-gitflow.yml
+│       ├── release-make.yml
+│       ├── release-npm.yml
+│       ├── release.yml
+│       ├── sonarcloud.yml
+│       ├── sonarqube.yml
+│       ├── static_analysis.yml
+│       ├── sync-labels.yml
+│       ├── tests.yml
+│       ├── triage-incoming.yml
+│       ├── triage-labelled.yml
+│       └── triage-stale.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
+├── .lintstagedrc
+├── .prettierignore
+├── .prettierrc.cjs
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── babel.config.cjs
+├── code_style.md
+├── contrib
+│   ├── element-logo-dark.png
+│   ├── element-logo-fallback.png
+│   └── element-logo-light.png
+├── docs
+│   ├── SUMMARY.md
+│   ├── storage-notes.md
+│   └── warning-on-unverified-devices.md
+├── examples
+│   ├── node
+│   │   ├── README.md
+│   │   ├── app.js
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── voip
+│       ├── README.md
+│       ├── browserTest.js
+│       ├── index.html
+│       └── lib
+│           └── matrix.js -> ../../../dist/browser-matrix.js
+├── git-hooks
+│   └── pre-commit
+├── jest.config.ts
+├── knip.ts
+├── package.json
+├── scripts
+│   ├── changelog_head.py
+│   └── release
+│       └── merge-release-notes.cjs
+├── sonar-project.properties
+├── spec
+│   ├── MockStorageApi.ts
+│   ├── TestClient.ts
+│   ├── integ
+│   │   ├── crypto
+│   │   │   ├── cross-signing.spec.ts
+│   │   │   ├── crypto.spec.ts
+│   │   │   ├── device-dehydration.spec.ts
+│   │   │   ├── megolm-backup.spec.ts
+│   │   │   ├── olm-utils.ts
+│   │   │   ├── rust-crypto.spec.ts
+│   │   │   ├── to-device-messages.spec.ts
+│   │   │   └── verification.spec.ts
+│   │   ├── matrix-client-event-emitter.spec.ts
+│   │   ├── matrix-client-event-timeline.spec.ts
+│   │   ├── matrix-client-methods.spec.ts
+│   │   ├── matrix-client-opts.spec.ts
+│   │   ├── matrix-client-relations.spec.ts
+│   │   ├── matrix-client-retrying.spec.ts
+│   │   ├── matrix-client-room-timeline.spec.ts
+│   │   ├── matrix-client-syncing-errors.spec.ts
+│   │   ├── matrix-client-syncing.spec.ts
+│   │   ├── matrix-client-unread-notifications.spec.ts
+│   │   ├── rendezvous
+│   │   │   └── MSC4108SignInWithQR.spec.ts
+│   │   ├── sliding-sync-sdk.spec.ts
+│   │   └── sliding-sync.spec.ts
+│   ├── setupTests.ts
+│   ├── slowReporter.cjs
+│   ├── test-utils
+│   │   ├── AccountDataAccumulator.ts
+│   │   ├── E2EKeyReceiver.ts
+│   │   ├── E2EKeyResponder.ts
+│   │   ├── SyncResponder.ts
+│   │   ├── beacon.ts
+│   │   ├── client.ts
+│   │   ├── emitter.ts
+│   │   ├── flushPromises.ts
+│   │   ├── mockEndpoints.ts
+│   │   ├── oidc.ts
+│   │   ├── test-data
+│   │   │   ├── .gitignore
+│   │   │   ├── generate-test-data.py
+│   │   │   └── index.ts
+│   │   ├── test-utils.ts
+│   │   ├── test_indexeddb_cryptostore_dump
+│   │   │   ├── README.md
+│   │   │   ├── empty_account
+│   │   │   │   ├── README.md
+│   │   │   │   ├── dump.json
+│   │   │   │   └── index.ts
+│   │   │   ├── full_account
+│   │   │   │   ├── README.md
+│   │   │   │   ├── dump.json
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── no_cached_msk_dump
+│   │   │   │   ├── README.md
+│   │   │   │   ├── dump.json
+│   │   │   │   └── index.ts
+│   │   │   └── unverified
+│   │   │       ├── README.md
+│   │   │       ├── dump.json
+│   │   │       └── index.ts
+│   │   ├── thread.ts
+│   │   ├── webrtc.ts
+│   │   └── webrtcReports.ts
+│   └── unit
+│       ├── NamespacedValue.spec.ts
+│       ├── ReEmitter.spec.ts
+│       ├── ToDeviceMessageQueue.spec.ts
+│       ├── autodiscovery.spec.ts
+│       ├── base64.spec.ts
+│       ├── common-crypto
+│       │   └── key-passphrase.spec.ts
+│       ├── content-helpers.spec.ts
+│       ├── content-repo.spec.ts
+│       ├── crypto
+│       │   └── store
+│       │       ├── CryptoStore.spec.ts
+│       │       └── IndexedDBCryptoStore.spec.ts
+│       ├── crypto-api
+│       │   └── recovery-key.spec.ts
+│       ├── digest.spec.ts
+│       ├── embedded.spec.ts
+│       ├── event-mapper.spec.ts
+│       ├── event-timeline-set.spec.ts
+│       ├── event-timeline.spec.ts
+│       ├── extensible_events_v1
+│       │   ├── ExtensibleEvent.spec.ts
+│       │   ├── MessageEvent.spec.ts
+│       │   ├── PollEndEvent.spec.ts
+│       │   ├── PollResponseEvent.spec.ts
+│       │   ├── PollStartEvent.spec.ts
+│       │   └── utilities.spec.ts
+│       ├── feature.spec.ts
+│       ├── filter-component.spec.ts
+│       ├── filter.spec.ts
+│       ├── http-api
+│       │   ├── __snapshots__
+│       │   │   └── index.spec.ts.snap
+│       │   ├── errors.spec.ts
+│       │   ├── fetch.spec.ts
+│       │   ├── index.spec.ts
+│       │   └── utils.spec.ts
+│       ├── interactive-auth.spec.ts
+│       ├── local_notifications.spec.ts
+│       ├── location.spec.ts
+│       ├── logger.spec.ts
+│       ├── login.spec.ts
+│       ├── matrix-client.spec.ts
+│       ├── matrixrtc
+│       │   ├── CallMembership.spec.ts
+│       │   ├── LivekitFocus.spec.ts
+│       │   ├── MatrixRTCSession.spec.ts
+│       │   ├── MatrixRTCSessionManager.spec.ts
+│       │   ├── MembershipManager.spec.ts
+│       │   ├── OutdatedKeyFilter.spec.ts
+│       │   ├── RTCEncryptionManager.spec.ts
+│       │   ├── RoomAndToDeviceTransport.spec.ts
+│       │   ├── RoomKeyTransport.spec.ts
+│       │   ├── ToDeviceKeyTransport.spec.ts
+│       │   └── mocks.ts
+│       ├── models
+│       │   ├── MSC3089Branch.spec.ts
+│       │   ├── MSC3089TreeSpace.spec.ts
+│       │   ├── beacon.spec.ts
+│       │   ├── event.spec.ts
+│       │   ├── poll.spec.ts
+│       │   ├── room-receipts.spec.ts
+│       │   ├── room.spec.ts
+│       │   └── thread.spec.ts
+│       ├── notifications.spec.ts
+│       ├── oidc
+│       │   ├── authorize.spec.ts
+│       │   ├── register.spec.ts
+│       │   ├── tokenRefresher.spec.ts
+│       │   └── validate.spec.ts
+│       ├── pusher.spec.ts
+│       ├── pushprocessor.spec.ts
+│       ├── queueToDevice.spec.ts
+│       ├── randomstring.spec.ts
+│       ├── read-receipt.spec.ts
+│       ├── realtime-callbacks.spec.ts
+│       ├── receipt-accumulator.spec.ts
+│       ├── relations.spec.ts
+│       ├── rendezvous
+│       │   ├── DummyTransport.ts
+│       │   ├── MSC4108RendezvousSession.spec.ts
+│       │   └── channels
+│       │       └── MSC4108SecureChannel.spec.ts
+│       ├── room-hierarchy.spec.ts
+│       ├── room-member.spec.ts
+│       ├── room-state.spec.ts
+│       ├── room.spec.ts
+│       ├── rust-crypto
+│       │   ├── CrossSigningIdentity.spec.ts
+│       │   ├── KeyClaimManager.spec.ts
+│       │   ├── OutgoingRequestProcessor.spec.ts
+│       │   ├── OutgoingRequestsManager.spec.ts
+│       │   ├── PerSessionKeyBackupDownloader.spec.ts
+│       │   ├── RoomEncryptor.spec.ts
+│       │   ├── __snapshots__
+│       │   │   └── rust-crypto.spec.ts.snap
+│       │   ├── backup.spec.ts
+│       │   ├── device-converter.spec.ts
+│       │   ├── rust-crypto.spec.ts
+│       │   ├── secret-storage.spec.ts
+│       │   └── verification.spec.ts
+│       ├── scheduler.spec.ts
+│       ├── secret-storage.spec.ts
+│       ├── stores
+│       │   ├── indexeddb-store-worker.spec.ts
+│       │   ├── indexeddb.spec.ts
+│       │   └── memory.spec.ts
+│       ├── sync-accumulator.spec.ts
+│       ├── testing.spec.ts
+│       ├── thread-utils.spec.ts
+│       ├── timeline-window.spec.ts
+│       ├── user.spec.ts
+│       ├── utils.spec.ts
+│       └── webrtc
+│           ├── call.spec.ts
+│           ├── callEventHandler.spec.ts
+│           ├── callFeed.spec.ts
+│           ├── groupCall.spec.ts
+│           ├── groupCallEventHandler.spec.ts
+│           ├── mediaHandler.spec.ts
+│           └── stats
+│               ├── __snapshots__
+│               │   └── callFeedStatsReporter.spec.ts.snap
+│               ├── callFeedStatsReporter.spec.ts
+│               ├── callStatsReportGatherer.spec.ts
+│               ├── connectionStatsReportBuilder.spec.ts
+│               ├── connectionStatsReporter.spec.ts
+│               ├── groupCallStats.spec.ts
+│               ├── media
+│               │   ├── mediaSsrcHandler.spec.ts
+│               │   ├── mediaTrackHandler.spec.ts
+│               │   └── mediaTrackStatsHandler.spec.ts
+│               ├── statsReportEmitter.spec.ts
+│               ├── summaryStatsReportGatherer.spec.ts
+│               ├── trackStatsBuilder.spec.ts
+│               ├── transportStatsBuilder.spec.ts
+│               └── valueFormatter.spec.ts
+├── src
+│   ├── @types
+│   │   ├── AESEncryptedSecretStoragePayload.ts
+│   │   ├── IIdentityServerProvider.ts
+│   │   ├── PushRules.ts
+│   │   ├── another-json.d.ts
+│   │   ├── auth.ts
+│   │   ├── beacon.ts
+│   │   ├── common.ts
+│   │   ├── crypto.ts
+│   │   ├── event.ts
+│   │   ├── events.ts
+│   │   ├── extensible_events.ts
+│   │   ├── global.d.ts
+│   │   ├── local_notifications.ts
+│   │   ├── location.ts
+│   │   ├── matrix-sdk-crypto-wasm.d.ts
+│   │   ├── media.ts
+│   │   ├── membership.ts
+│   │   ├── oidc-client-ts.d.ts
+│   │   ├── partials.ts
+│   │   ├── polls.ts
+│   │   ├── read_receipts.ts
+│   │   ├── registration.ts
+│   │   ├── requests.ts
+│   │   ├── search.ts
+│   │   ├── signed.ts
+│   │   ├── spaces.ts
+│   │   ├── state_events.ts
+│   │   ├── synapse.ts
+│   │   ├── sync.ts
+│   │   ├── threepids.ts
+│   │   ├── topic.ts
+│   │   └── uia.ts
+│   ├── NamespacedValue.ts
+│   ├── ReEmitter.ts
+│   ├── ToDeviceMessageQueue.ts
+│   ├── autodiscovery.ts
+│   ├── base64.ts
+│   ├── browser-index.ts
+│   ├── client.ts
+│   ├── common-crypto
+│   │   ├── CryptoBackend.ts
+│   │   ├── README.md
+│   │   └── key-passphrase.ts
+│   ├── content-helpers.ts
+│   ├── content-repo.ts
+│   ├── crypto
+│   │   └── store
+│   │       ├── base.ts
+│   │       ├── indexeddb-crypto-store-backend.ts
+│   │       ├── indexeddb-crypto-store.ts
+│   │       ├── localStorage-crypto-store.ts
+│   │       └── memory-crypto-store.ts
+│   ├── crypto-api
+│   │   ├── CryptoEvent.ts
+│   │   ├── CryptoEventHandlerMap.ts
+│   │   ├── index.ts
+│   │   ├── key-passphrase.ts
+│   │   ├── keybackup.ts
+│   │   ├── recovery-key.ts
+│   │   └── verification.ts
+│   ├── digest.ts
+│   ├── embedded.ts
+│   ├── errors.ts
+│   ├── event-mapper.ts
+│   ├── extensible_events_v1
+│   │   ├── ExtensibleEvent.ts
+│   │   ├── InvalidEventError.ts
+│   │   ├── MessageEvent.ts
+│   │   ├── PollEndEvent.ts
+│   │   ├── PollResponseEvent.ts
+│   │   ├── PollStartEvent.ts
+│   │   └── utilities.ts
+│   ├── feature.ts
+│   ├── filter-component.ts
+│   ├── filter.ts
+│   ├── http-api
+│   │   ├── errors.ts
+│   │   ├── fetch.ts
+│   │   ├── index.ts
+│   │   ├── interface.ts
+│   │   ├── method.ts
+│   │   ├── prefix.ts
+│   │   ├── refresh.ts
+│   │   └── utils.ts
+│   ├── index.ts
+│   ├── indexeddb-helpers.ts
+│   ├── indexeddb-worker.ts
+│   ├── interactive-auth.ts
+│   ├── logger.ts
+│   ├── matrix.ts
+│   ├── matrixrtc
+│   │   ├── CallMembership.ts
+│   │   ├── EncryptionManager.ts
+│   │   ├── IKeyTransport.ts
+│   │   ├── IMembershipManager.ts
+│   │   ├── LivekitFocus.ts
+│   │   ├── MatrixRTCSession.ts
+│   │   ├── MatrixRTCSessionManager.ts
+│   │   ├── MembershipManager.ts
+│   │   ├── MembershipManagerActionScheduler.ts
+│   │   ├── RTCEncryptionManager.ts
+│   │   ├── RoomAndToDeviceKeyTransport.ts
+│   │   ├── RoomKeyTransport.ts
+│   │   ├── ToDeviceKeyTransport.ts
+│   │   ├── focus.ts
+│   │   ├── index.ts
+│   │   ├── types.ts
+│   │   └── utils.ts
+│   ├── models
+│   │   ├── MSC3089Branch.ts
+│   │   ├── MSC3089TreeSpace.ts
+│   │   ├── ToDeviceMessage.ts
+│   │   ├── beacon.ts
+│   │   ├── compare-event-ordering.ts
+│   │   ├── device.ts
+│   │   ├── event-context.ts
+│   │   ├── event-status.ts
+│   │   ├── event-timeline-set.ts
+│   │   ├── event-timeline.ts
+│   │   ├── event.ts
+│   │   ├── invites-ignorer-types.ts
+│   │   ├── invites-ignorer.ts
+│   │   ├── poll.ts
+│   │   ├── profile-keys.ts
+│   │   ├── read-receipt.ts
+│   │   ├── related-relations.ts
+│   │   ├── relations-container.ts
+│   │   ├── relations.ts
+│   │   ├── room-member.ts
+│   │   ├── room-receipts.ts
+│   │   ├── room-state.ts
+│   │   ├── room-summary.ts
+│   │   ├── room.ts
+│   │   ├── search-result.ts
+│   │   ├── thread.ts
+│   │   ├── typed-event-emitter.ts
+│   │   └── user.ts
+│   ├── oidc
+│   │   ├── authorize.ts
+│   │   ├── discovery.ts
+│   │   ├── error.ts
+│   │   ├── index.ts
+│   │   ├── register.ts
+│   │   ├── tokenRefresher.ts
+│   │   └── validate.ts
+│   ├── pushprocessor.ts
+│   ├── randomstring.ts
+│   ├── realtime-callbacks.ts
+│   ├── receipt-accumulator.ts
+│   ├── rendezvous
+│   │   ├── MSC4108SignInWithQR.ts
+│   │   ├── RendezvousChannel.ts
+│   │   ├── RendezvousCode.ts
+│   │   ├── RendezvousError.ts
+│   │   ├── RendezvousFailureReason.ts
+│   │   ├── RendezvousIntent.ts
+│   │   ├── RendezvousTransport.ts
+│   │   ├── channels
+│   │   │   ├── MSC4108SecureChannel.ts
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   └── transports
+│   │       ├── MSC4108RendezvousSession.ts
+│   │       └── index.ts
+│   ├── room-hierarchy.ts
+│   ├── rust-crypto
+│   │   ├── CrossSigningIdentity.ts
+│   │   ├── DehydratedDeviceManager.ts
+│   │   ├── KeyClaimManager.ts
+│   │   ├── OutgoingRequestProcessor.ts
+│   │   ├── OutgoingRequestsManager.ts
+│   │   ├── PerSessionKeyBackupDownloader.ts
+│   │   ├── RoomEncryptor.ts
+│   │   ├── backup.ts
+│   │   ├── constants.ts
+│   │   ├── device-converter.ts
+│   │   ├── index.ts
+│   │   ├── libolm_migration.ts
+│   │   ├── rust-crypto.ts
+│   │   ├── secret-storage.ts
+│   │   └── verification.ts
+│   ├── scheduler.ts
+│   ├── secret-storage.ts
+│   ├── serverCapabilities.ts
+│   ├── service-types.ts
+│   ├── sliding-sync-sdk.ts
+│   ├── sliding-sync.ts
+│   ├── store
+│   │   ├── index.ts
+│   │   ├── indexeddb-backend.ts
+│   │   ├── indexeddb-local-backend.ts
+│   │   ├── indexeddb-remote-backend.ts
+│   │   ├── indexeddb-store-worker.ts
+│   │   ├── indexeddb.ts
+│   │   ├── local-storage-events-emitter.ts
+│   │   ├── memory.ts
+│   │   └── stub.ts
+│   ├── sync-accumulator.ts
+│   ├── sync.ts
+│   ├── testing.ts
+│   ├── thread-utils.ts
+│   ├── timeline-window.ts
+│   ├── types.ts
+│   ├── utils
+│   │   ├── decryptAESSecretStorageItem.ts
+│   │   ├── encryptAESSecretStorageItem.ts
+│   │   └── internal
+│   │       └── deriveKeys.ts
+│   ├── utils.ts
+│   ├── version-support.ts
+│   └── webrtc
+│       ├── audioContext.ts
+│       ├── call.ts
+│       ├── callEventHandler.ts
+│       ├── callEventTypes.ts
+│       ├── callFeed.ts
+│       ├── groupCall.ts
+│       ├── groupCallEventHandler.ts
+│       ├── mediaHandler.ts
+│       └── stats
+│           ├── callFeedStatsReporter.ts
+│           ├── callStatsReportGatherer.ts
+│           ├── callStatsReportSummary.ts
+│           ├── connectionStats.ts
+│           ├── connectionStatsBuilder.ts
+│           ├── connectionStatsReportBuilder.ts
+│           ├── groupCallStats.ts
+│           ├── media
+│           │   ├── mediaSsrcHandler.ts
+│           │   ├── mediaTrackHandler.ts
+│           │   ├── mediaTrackStats.ts
+│           │   └── mediaTrackStatsHandler.ts
+│           ├── statsReport.ts
+│           ├── statsReportEmitter.ts
+│           ├── summaryStatsReportGatherer.ts
+│           ├── trackStatsBuilder.ts
+│           ├── transportStats.ts
+│           ├── transportStatsBuilder.ts
+│           └── valueFormatter.ts
+├── tsconfig-build.json
+├── tsconfig.json
+├── typedoc.json
+└── yarn.lock
+68 directories, 462 files
