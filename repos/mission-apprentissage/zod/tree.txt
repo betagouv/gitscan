@@ -1,0 +1,523 @@
+.
+├── .changeset
+│   ├── README.md
+│   └── config.json
+├── .configs
+│   ├── rollup.config.js
+│   └── tsconfig.base.json
+├── .cursor
+│   └── rules
+│       ├── development-setup.mdc
+│       ├── guidelines.mdc
+│       ├── testing-workflow.mdc
+│       ├── zod-internals.mdc
+│       └── zod-project-guide.mdc
+├── .devcontainer
+│   └── devcontainer.json
+├── .editorconfig
+├── .github
+│   └── workflows
+│       ├── release.yml
+│       └── test.yml
+├── .gitignore
+├── .husky
+│   ├── .gitignore
+│   ├── pre-commit
+│   └── pre-push
+├── .nojekyll
+├── .npmrc
+├── .nvmrc
+├── .vscode
+│   ├── launch.json
+│   └── settings.json
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── FUNDING.yml
+├── LICENSE
+├── README.md -> packages/zod/README.md
+├── biome.jsonc
+├── logo
+│   ├── Logo Black.ai
+│   ├── Logo Black.jpg
+│   ├── Logo Black.pdf
+│   ├── Logo Black.png
+│   ├── Logo Outer Glow.ai
+│   ├── Logo Outer Glow.jpg
+│   ├── Logo Outer Glow.pdf
+│   ├── Logo Outer Glow.png
+│   ├── Logo White.ai
+│   ├── Logo White.jpg
+│   ├── Logo White.pdf
+│   ├── Logo White.png
+│   ├── Logo.ai
+│   ├── Logo.jpg
+│   ├── Logo.pdf
+│   └── Logo.png
+├── logo.svg
+├── package.json
+├── packages
+│   ├── bench
+│   │   ├── _temp.ts
+│   │   ├── array.ts
+│   │   ├── benchUtil.ts
+│   │   ├── boolean.ts
+│   │   ├── datetime-regex.ts
+│   │   ├── datetime.ts
+│   │   ├── discriminated-union.ts
+│   │   ├── error-handling.ts
+│   │   ├── index.ts
+│   │   ├── instanceof.ts
+│   │   ├── ipv4-regex.ts
+│   │   ├── jit-union.ts
+│   │   ├── key-iteration.ts
+│   │   ├── lazy-box.ts
+│   │   ├── libs.ts
+│   │   ├── metabench.ts
+│   │   ├── number.ts
+│   │   ├── object-async.ts
+│   │   ├── object-creation.ts
+│   │   ├── object-fail.ts
+│   │   ├── object-moltar.ts
+│   │   ├── object-safe.ts
+│   │   ├── object-safeasync.ts
+│   │   ├── object-setup.ts
+│   │   ├── object.ts
+│   │   ├── package.json
+│   │   ├── property-access.ts
+│   │   ├── safe.ts
+│   │   ├── safeparse.ts
+│   │   ├── string.ts
+│   │   ├── tsconfig.bench.json
+│   │   └── union.ts
+│   ├── docs
+│   │   ├── .gitignore
+│   │   ├── .vscode
+│   │   │   └── settings.json
+│   │   ├── README.md
+│   │   ├── app
+│   │   │   ├── (doc)
+│   │   │   │   ├── [[...slug]]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── _home
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── api
+│   │   │   │   └── search
+│   │   │   │       └── route.ts
+│   │   │   ├── apple-icon.png
+│   │   │   ├── global.css
+│   │   │   ├── icon.png
+│   │   │   ├── layout.config.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── logo.ico
+│   │   │   ├── og.png
+│   │   │   │   └── route.tsx
+│   │   │   └── theme.css
+│   │   ├── biome.jsonc
+│   │   ├── components
+│   │   │   ├── accordion.tsx
+│   │   │   ├── bronze.tsx
+│   │   │   ├── ecosystem-v3.tsx
+│   │   │   ├── ecosystem.tsx
+│   │   │   ├── featured.tsx
+│   │   │   ├── gold.tsx
+│   │   │   ├── heading.tsx
+│   │   │   ├── hero-logo.tsx
+│   │   │   ├── if.tsx
+│   │   │   ├── inkeep-bubble.tsx
+│   │   │   ├── inkeep-search.tsx
+│   │   │   ├── platinum.tsx
+│   │   │   ├── scroller.tsx
+│   │   │   ├── sidebar-item.tsx
+│   │   │   ├── sidebar-logo.tsx
+│   │   │   ├── silver.tsx
+│   │   │   └── tabs.tsx
+│   │   ├── content
+│   │   │   ├── api.mdx
+│   │   │   ├── basics.mdx
+│   │   │   ├── ecosystem.mdx
+│   │   │   ├── error-customization.mdx
+│   │   │   ├── error-formatting.mdx
+│   │   │   ├── generic-functions.mdx
+│   │   │   ├── index.mdx
+│   │   │   ├── json-schema.mdx
+│   │   │   ├── library-authors.mdx
+│   │   │   ├── meta.json
+│   │   │   ├── metadata.mdx
+│   │   │   ├── object-vs-interface.mdx
+│   │   │   ├── packages
+│   │   │   │   ├── core.mdx
+│   │   │   │   ├── mini.mdx
+│   │   │   │   ├── v3.mdx
+│   │   │   │   └── zod.mdx
+│   │   │   ├── parsing.mdx
+│   │   │   └── v4
+│   │   │       ├── changelog.mdx
+│   │   │       └── index.mdx
+│   │   ├── loaders
+│   │   │   ├── source.ts
+│   │   │   └── stars.ts
+│   │   ├── next.config.mjs
+│   │   ├── package.json
+│   │   ├── pages
+│   │   │   └── api
+│   │   │       └── _og.tsx
+│   │   ├── pnpm-lock.yaml
+│   │   ├── postcss.config.mjs
+│   │   ├── public
+│   │   │   ├── github-white.png
+│   │   │   ├── logo
+│   │   │   │   ├── logo-black.ai
+│   │   │   │   ├── logo-black.jpg
+│   │   │   │   ├── logo-black.pdf
+│   │   │   │   ├── logo-black.png
+│   │   │   │   ├── logo-glow.ai
+│   │   │   │   ├── logo-glow.jpg
+│   │   │   │   ├── logo-glow.pdf
+│   │   │   │   ├── logo-glow.png
+│   │   │   │   ├── logo-white.ai
+│   │   │   │   ├── logo-white.jpg
+│   │   │   │   ├── logo-white.pdf
+│   │   │   │   ├── logo-white.png
+│   │   │   │   ├── logo.ai
+│   │   │   │   ├── logo.jpg
+│   │   │   │   ├── logo.pdf
+│   │   │   │   ├── logo.png
+│   │   │   │   ├── logo.svg
+│   │   │   │   ├── logo_square.png
+│   │   │   │   ├── profile_circle.png
+│   │   │   │   └── profile_square.png
+│   │   │   └── robots.txt
+│   │   ├── source.config.ts
+│   │   └── tsconfig.json
+│   ├── resolution
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── attw.test.ts
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── index.cts
+│   │   │   ├── index.mts
+│   │   │   └── index.ts
+│   │   ├── test-resolution.ts
+│   │   ├── tsconfig.build.json
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.ts
+│   ├── treeshake
+│   │   ├── .gitignore
+│   │   ├── example-mini.ts
+│   │   ├── example.ts
+│   │   ├── package.json
+│   │   ├── rollup.config.js
+│   │   ├── valibot-boolean.ts
+│   │   ├── valibot-object.ts
+│   │   ├── valibot-string.ts
+│   │   ├── zod-boolean.ts
+│   │   ├── zod-full.ts
+│   │   ├── zod-locales.ts
+│   │   ├── zod-mini-boolean.ts
+│   │   ├── zod-mini-full.ts
+│   │   ├── zod-mini-object.ts
+│   │   ├── zod-mini-string.ts
+│   │   ├── zod-object.ts
+│   │   ├── zod-string.ts
+│   │   ├── zod3-boolean.ts
+│   │   ├── zod3-full.ts
+│   │   ├── zod3-object.ts
+│   │   └── zod3-string.ts
+│   ├── tsc
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── bench
+│   │   │   ├── index.ts
+│   │   │   ├── lots-of-objects.ts
+│   │   │   ├── object-with-extend.ts
+│   │   │   ├── omit-extend.ts
+│   │   │   ├── string.ts
+│   │   │   └── strongly-connected.ts
+│   │   ├── bisect.ts
+│   │   ├── extend.ts
+│   │   ├── generate.ts
+│   │   ├── package.json
+│   │   ├── tsconfig.bench.json
+│   │   └── tsconfig.json
+│   └── zod
+│       ├── .gitignore
+│       ├── LICENSE
+│       ├── README.md
+│       ├── jsr.json
+│       ├── package.json
+│       ├── src
+│       │   ├── index.ts
+│       │   ├── v3
+│       │   │   ├── ZodError.ts
+│       │   │   ├── benchmarks
+│       │   │   │   ├── datetime.ts
+│       │   │   │   ├── discriminatedUnion.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── ipv4.ts
+│       │   │   │   ├── object.ts
+│       │   │   │   ├── primitives.ts
+│       │   │   │   ├── realworld.ts
+│       │   │   │   ├── string.ts
+│       │   │   │   └── union.ts
+│       │   │   ├── errors.ts
+│       │   │   ├── external.ts
+│       │   │   ├── helpers
+│       │   │   │   ├── enumUtil.ts
+│       │   │   │   ├── errorUtil.ts
+│       │   │   │   ├── parseUtil.ts
+│       │   │   │   ├── partialUtil.ts
+│       │   │   │   ├── typeAliases.ts
+│       │   │   │   └── util.ts
+│       │   │   ├── index.ts
+│       │   │   ├── locales
+│       │   │   │   └── en.ts
+│       │   │   ├── standard-schema.ts
+│       │   │   ├── tests
+│       │   │   │   ├── Mocker.ts
+│       │   │   │   ├── all-errors.test.ts
+│       │   │   │   ├── anyunknown.test.ts
+│       │   │   │   ├── array.test.ts
+│       │   │   │   ├── async-parsing.test.ts
+│       │   │   │   ├── async-refinements.test.ts
+│       │   │   │   ├── base.test.ts
+│       │   │   │   ├── bigint.test.ts
+│       │   │   │   ├── branded.test.ts
+│       │   │   │   ├── catch.test.ts
+│       │   │   │   ├── coerce.test.ts
+│       │   │   │   ├── complex.test.ts
+│       │   │   │   ├── custom.test.ts
+│       │   │   │   ├── date.test.ts
+│       │   │   │   ├── deepmasking.test.ts
+│       │   │   │   ├── default.test.ts
+│       │   │   │   ├── description.test.ts
+│       │   │   │   ├── discriminated-unions.test.ts
+│       │   │   │   ├── enum.test.ts
+│       │   │   │   ├── error.test.ts
+│       │   │   │   ├── firstparty.test.ts
+│       │   │   │   ├── firstpartyschematypes.test.ts
+│       │   │   │   ├── function.test.ts
+│       │   │   │   ├── generics.test.ts
+│       │   │   │   ├── instanceof.test.ts
+│       │   │   │   ├── intersection.test.ts
+│       │   │   │   ├── language-server.source.ts
+│       │   │   │   ├── language-server.test.ts
+│       │   │   │   ├── literal.test.ts
+│       │   │   │   ├── map.test.ts
+│       │   │   │   ├── masking.test.ts
+│       │   │   │   ├── mocker.test.ts
+│       │   │   │   ├── nan.test.ts
+│       │   │   │   ├── nativeEnum.test.ts
+│       │   │   │   ├── nullable.test.ts
+│       │   │   │   ├── number.test.ts
+│       │   │   │   ├── object-augmentation.test.ts
+│       │   │   │   ├── object-in-es5-env.test.ts
+│       │   │   │   ├── object.test.ts
+│       │   │   │   ├── optional.test.ts
+│       │   │   │   ├── parseUtil.test.ts
+│       │   │   │   ├── parser.test.ts
+│       │   │   │   ├── partials.test.ts
+│       │   │   │   ├── pickomit.test.ts
+│       │   │   │   ├── pipeline.test.ts
+│       │   │   │   ├── preprocess.test.ts
+│       │   │   │   ├── primitive.test.ts
+│       │   │   │   ├── promise.test.ts
+│       │   │   │   ├── readonly.test.ts
+│       │   │   │   ├── record.test.ts
+│       │   │   │   ├── recursive.test.ts
+│       │   │   │   ├── refine.test.ts
+│       │   │   │   ├── safeparse.test.ts
+│       │   │   │   ├── set.test.ts
+│       │   │   │   ├── standard-schema.test.ts
+│       │   │   │   ├── string.test.ts
+│       │   │   │   ├── transformer.test.ts
+│       │   │   │   ├── tuple.test.ts
+│       │   │   │   ├── unions.test.ts
+│       │   │   │   ├── validations.test.ts
+│       │   │   │   └── void.test.ts
+│       │   │   └── types.ts
+│       │   ├── v4
+│       │   │   ├── classic
+│       │   │   │   ├── checks.ts
+│       │   │   │   ├── coerce.ts
+│       │   │   │   ├── compat.ts
+│       │   │   │   ├── errors.ts
+│       │   │   │   ├── external.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── iso.ts
+│       │   │   │   ├── parse.ts
+│       │   │   │   ├── schemas.ts
+│       │   │   │   └── tests
+│       │   │   │       ├── anyunknown.test.ts
+│       │   │   │       ├── array.test.ts
+│       │   │   │       ├── assignability.test.ts
+│       │   │   │       ├── async-parsing.test.ts
+│       │   │   │       ├── async-refinements.test.ts
+│       │   │   │       ├── base.test.ts
+│       │   │   │       ├── bigint.test.ts
+│       │   │   │       ├── brand.test.ts
+│       │   │   │       ├── catch.test.ts
+│       │   │   │       ├── coalesce.test.ts
+│       │   │   │       ├── coerce.test.ts
+│       │   │   │       ├── continuability.test.ts
+│       │   │   │       ├── custom.test.ts
+│       │   │   │       ├── date.test.ts
+│       │   │   │       ├── datetime.test.ts
+│       │   │   │       ├── default.test.ts
+│       │   │   │       ├── description.test.ts
+│       │   │   │       ├── discriminated-unions.test.ts
+│       │   │   │       ├── enum.test.ts
+│       │   │   │       ├── error-utils.test.ts
+│       │   │   │       ├── error.test.ts
+│       │   │   │       ├── file.test.ts
+│       │   │   │       ├── firstparty.test.ts
+│       │   │   │       ├── function.test.ts
+│       │   │   │       ├── generics.test.ts
+│       │   │   │       ├── index.test.ts
+│       │   │   │       ├── instanceof.test.ts
+│       │   │   │       ├── intersection.test.ts
+│       │   │   │       ├── json.test.ts
+│       │   │   │       ├── lazy.test.ts
+│       │   │   │       ├── literal.test.ts
+│       │   │   │       ├── map.test.ts
+│       │   │   │       ├── nan.test.ts
+│       │   │   │       ├── nested-refine.test.ts
+│       │   │   │       ├── nonoptional.test.ts
+│       │   │   │       ├── nullable.test.ts
+│       │   │   │       ├── number.test.ts
+│       │   │   │       ├── object.test.ts
+│       │   │   │       ├── optional.test.ts
+│       │   │   │       ├── partial.test.ts
+│       │   │   │       ├── pickomit.test.ts
+│       │   │   │       ├── pipe.test.ts
+│       │   │   │       ├── prefault.test.ts
+│       │   │   │       ├── preprocess.test.ts
+│       │   │   │       ├── primitive.test.ts
+│       │   │   │       ├── promise.test.ts
+│       │   │   │       ├── prototypes.test.ts
+│       │   │   │       ├── readonly.test.ts
+│       │   │   │       ├── record.test.ts
+│       │   │   │       ├── recursive-types.test.ts
+│       │   │   │       ├── refine.test.ts
+│       │   │   │       ├── registries.test.ts
+│       │   │   │       ├── set.test.ts
+│       │   │   │       ├── standard-schema.test.ts
+│       │   │   │       ├── string-formats.test.ts
+│       │   │   │       ├── string.test.ts
+│       │   │   │       ├── stringbool.test.ts
+│       │   │   │       ├── template-literal.test.ts
+│       │   │   │       ├── to-json-schema.test.ts
+│       │   │   │       ├── transform.test.ts
+│       │   │   │       ├── tuple.test.ts
+│       │   │   │       ├── union.test.ts
+│       │   │   │       ├── validations.test.ts
+│       │   │   │       └── void.test.ts
+│       │   │   ├── core
+│       │   │   │   ├── api.ts
+│       │   │   │   ├── checks.ts
+│       │   │   │   ├── config.ts
+│       │   │   │   ├── core.ts
+│       │   │   │   ├── doc.ts
+│       │   │   │   ├── errors.ts
+│       │   │   │   ├── function.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── json-schema.ts
+│       │   │   │   ├── parse.ts
+│       │   │   │   ├── regexes.ts
+│       │   │   │   ├── registries.ts
+│       │   │   │   ├── schemas.ts
+│       │   │   │   ├── standard-schema.ts
+│       │   │   │   ├── tests
+│       │   │   │   │   ├── index.test.ts
+│       │   │   │   │   └── locales
+│       │   │   │   │       ├── be.test.ts
+│       │   │   │   │       ├── en.test.ts
+│       │   │   │   │       ├── ru.test.ts
+│       │   │   │   │       └── tr.test.ts
+│       │   │   │   ├── to-json-schema.ts
+│       │   │   │   ├── util.ts
+│       │   │   │   ├── versions.ts
+│       │   │   │   └── zsf.ts
+│       │   │   ├── index.ts
+│       │   │   ├── locales
+│       │   │   │   ├── ar.ts
+│       │   │   │   ├── az.ts
+│       │   │   │   ├── be.ts
+│       │   │   │   ├── ca.ts
+│       │   │   │   ├── cs.ts
+│       │   │   │   ├── de.ts
+│       │   │   │   ├── en.ts
+│       │   │   │   ├── eo.ts
+│       │   │   │   ├── es.ts
+│       │   │   │   ├── fa.ts
+│       │   │   │   ├── fi.ts
+│       │   │   │   ├── fr-CA.ts
+│       │   │   │   ├── fr.ts
+│       │   │   │   ├── he.ts
+│       │   │   │   ├── hu.ts
+│       │   │   │   ├── id.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── it.ts
+│       │   │   │   ├── ja.ts
+│       │   │   │   ├── kh.ts
+│       │   │   │   ├── ko.ts
+│       │   │   │   ├── mk.ts
+│       │   │   │   ├── ms.ts
+│       │   │   │   ├── nl.ts
+│       │   │   │   ├── no.ts
+│       │   │   │   ├── ota.ts
+│       │   │   │   ├── pl.ts
+│       │   │   │   ├── ps.ts
+│       │   │   │   ├── pt.ts
+│       │   │   │   ├── ru.ts
+│       │   │   │   ├── sl.ts
+│       │   │   │   ├── sv.ts
+│       │   │   │   ├── ta.ts
+│       │   │   │   ├── th.ts
+│       │   │   │   ├── tr.ts
+│       │   │   │   ├── ua.ts
+│       │   │   │   ├── ur.ts
+│       │   │   │   ├── vi.ts
+│       │   │   │   ├── zh-CN.ts
+│       │   │   │   └── zh-TW.ts
+│       │   │   └── mini
+│       │   │       ├── checks.ts
+│       │   │       ├── coerce.ts
+│       │   │       ├── external.ts
+│       │   │       ├── index.ts
+│       │   │       ├── iso.ts
+│       │   │       ├── parse.ts
+│       │   │       ├── schemas.ts
+│       │   │       └── tests
+│       │   │           ├── assignability.test.ts
+│       │   │           ├── brand.test.ts
+│       │   │           ├── checks.test.ts
+│       │   │           ├── computed.test.ts
+│       │   │           ├── error.test.ts
+│       │   │           ├── functions.test.ts
+│       │   │           ├── index.test.ts
+│       │   │           ├── number.test.ts
+│       │   │           ├── object.test.ts
+│       │   │           ├── prototypes.test.ts
+│       │   │           ├── recursive-types.test.ts
+│       │   │           └── string.test.ts
+│       │   └── v4-mini
+│       │       └── index.ts
+│       ├── tsconfig.build.json
+│       ├── tsconfig.json
+│       ├── tsconfig.test.json
+│       └── vitest.config.ts
+├── play.ts
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── rfcs
+│   └── index.md
+├── scripts
+│   └── semver-check.ts
+├── tea.yaml
+├── tsconfig.json
+├── vitest.root.mts
+└── vitest.workspace.ts
+55 directories, 467 files
