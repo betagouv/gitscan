@@ -1,0 +1,327 @@
+.
+├── .buildpacks
+├── .editorconfig
+├── .env.example
+├── .eslintignore
+├── .eslintrc
+├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   ├── google-java-format.xml
+│   ├── misc.xml
+│   ├── modules.xml
+│   └── vcs.xml
+├── .node-version
+├── Procfile
+├── README.md
+├── agora-cms-strapi.iml
+├── config
+│   ├── admin.js
+│   ├── api.js
+│   ├── database.js
+│   ├── middlewares.js
+│   ├── plugins.js
+│   └── server.js
+├── database
+│   ├── README.md
+│   ├── migrations
+│   │   └── .gitkeep
+│   └── migrations-sql
+│       ├── 2024-05-29-ajout-thematiques.sql
+│       ├── 2024-07-23-id-contenus.sql
+│       ├── 2024-07-29-id-questions.sql
+│       ├── 2024-08-26-id-contenus.sql
+│       ├── 2024-09-17-concertations.sql
+│       ├── 2024-09-17-id-concertations.sql
+│       └── 2025-07-15-short-message-news.sql
+├── docker-compose.yml
+├── favicon.png
+├── jsconfig.json
+├── package.json
+├── public
+│   ├── robots.txt
+│   └── uploads
+│       └── .gitkeep
+├── servers.conf.erb
+├── src
+│   ├── admin
+│   │   ├── app.example.js
+│   │   ├── app.js
+│   │   ├── extensions
+│   │   │   ├── agora-favicon.ico
+│   │   │   ├── agora-logo-dev.png
+│   │   │   └── agora-logo-prod.svg
+│   │   └── webpack.config.example.js
+│   ├── api
+│   │   ├── .gitkeep
+│   │   ├── charte-participation
+│   │   │   ├── content-types
+│   │   │   │   └── charte-participation
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── charte-participation.js
+│   │   │   ├── routes
+│   │   │   │   └── charte-participation.js
+│   │   │   └── services
+│   │   │       └── charte-participation.js
+│   │   ├── concertation
+│   │   │   ├── content-types
+│   │   │   │   └── concertation
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── concertation.js
+│   │   │   ├── routes
+│   │   │   │   └── concertation.js
+│   │   │   └── services
+│   │   │       └── concertation.js
+│   │   ├── consultation
+│   │   │   ├── content-types
+│   │   │   │   └── consultation
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation.js
+│   │   │   └── services
+│   │   │       └── consultation.js
+│   │   ├── consultation-apres-reponse-ou-terminee
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-apres-reponse-ou-terminee
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-apres-reponse-ou-terminee.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-apres-reponse-ou-terminee.js
+│   │   │   └── services
+│   │   │       └── consultation-apres-reponse-ou-terminee.js
+│   │   ├── consultation-avant-reponse
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-avant-reponse
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-avant-reponse.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-avant-reponse.js
+│   │   │   └── services
+│   │   │       └── consultation-avant-reponse.js
+│   │   ├── consultation-contenu-a-venir
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-contenu-a-venir
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-contenu-a-venir.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-contenu-a-venir.js
+│   │   │   └── services
+│   │   │       └── consultation-contenu-a-venir.js
+│   │   ├── consultation-contenu-analyse-des-reponse
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-contenu-analyse-des-reponse
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-contenu-analyse-des-reponse.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-contenu-analyse-des-reponse.js
+│   │   │   └── services
+│   │   │       └── consultation-contenu-analyse-des-reponse.js
+│   │   ├── consultation-contenu-autre
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-contenu-autre
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-contenu-autre.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-contenu-autre.js
+│   │   │   └── services
+│   │   │       └── consultation-contenu-autre.js
+│   │   ├── consultation-contenu-reponse-du-commanditaire
+│   │   │   ├── content-types
+│   │   │   │   └── consultation-contenu-reponse-du-commanditaire
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── consultation-contenu-reponse-du-commanditaire.js
+│   │   │   ├── routes
+│   │   │   │   └── consultation-contenu-reponse-du-commanditaire.js
+│   │   │   └── services
+│   │   │       └── consultation-contenu-reponse-du-commanditaire.js
+│   │   ├── fiche-inventaire
+│   │   │   ├── content-types
+│   │   │   │   └── fiche-inventaire
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── fiche-inventaire.js
+│   │   │   ├── routes
+│   │   │   │   └── fiche-inventaire.js
+│   │   │   └── services
+│   │   │       └── fiche-inventaire.js
+│   │   ├── page-poser-ma-question
+│   │   │   ├── content-types
+│   │   │   │   └── page-poser-ma-question
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── page-poser-ma-question.js
+│   │   │   ├── routes
+│   │   │   │   └── page-poser-ma-question.js
+│   │   │   └── services
+│   │   │       └── page-poser-ma-question.js
+│   │   ├── page-questions-au-gouvernement
+│   │   │   ├── content-types
+│   │   │   │   └── page-questions-au-gouvernement
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── page-questions-au-gouvernement.js
+│   │   │   ├── routes
+│   │   │   │   └── page-questions-au-gouvernement.js
+│   │   │   └── services
+│   │   │       └── page-questions-au-gouvernement.js
+│   │   ├── page-reponse-aux-questions-au-gouvernement
+│   │   │   ├── content-types
+│   │   │   │   └── page-reponse-aux-questions-au-gouvernement
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── page-reponse-aux-questions-au-gouvernement.js
+│   │   │   ├── routes
+│   │   │   │   └── page-reponse-aux-questions-au-gouvernement.js
+│   │   │   └── services
+│   │   │       └── page-reponse-aux-questions-au-gouvernement.js
+│   │   ├── qa-g-headers-onglet
+│   │   │   ├── content-types
+│   │   │   │   └── qa-g-headers-onglet
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── qa-g-headers-onglet.js
+│   │   │   ├── routes
+│   │   │   │   └── qa-g-headers-onglet.js
+│   │   │   └── services
+│   │   │       └── qa-g-headers-onglet.js
+│   │   ├── reponse-du-gouvernement
+│   │   │   ├── content-types
+│   │   │   │   └── reponse-du-gouvernement
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── reponse-du-gouvernement.js
+│   │   │   ├── routes
+│   │   │   │   └── reponse-du-gouvernement.js
+│   │   │   └── services
+│   │   │       └── reponse-du-gouvernement.js
+│   │   ├── site-vitrine-accueil
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-accueil
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-accueil.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-accueil.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-accueil.js
+│   │   ├── site-vitrine-conditions-generales-d-utilisation
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-conditions-generales-d-utilisation
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-conditions-generales-d-utilisation.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-conditions-generales-d-utilisation.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-conditions-generales-d-utilisation.js
+│   │   ├── site-vitrine-consultation
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-consultation
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-consultation.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-consultation.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-consultation.js
+│   │   ├── site-vitrine-declaration-d-accessibilite
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-declaration-d-accessibilite
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-declaration-d-accessibilite.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-declaration-d-accessibilite.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-declaration-d-accessibilite.js
+│   │   ├── site-vitrine-mentions-legale
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-mentions-legale
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-mentions-legale.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-mentions-legale.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-mentions-legale.js
+│   │   ├── site-vitrine-politique-de-confidentialite
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-politique-de-confidentialite
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-politique-de-confidentialite.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-politique-de-confidentialite.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-politique-de-confidentialite.js
+│   │   ├── site-vitrine-question-au-gouvernement
+│   │   │   ├── content-types
+│   │   │   │   └── site-vitrine-question-au-gouvernement
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── site-vitrine-question-au-gouvernement.js
+│   │   │   ├── routes
+│   │   │   │   └── site-vitrine-question-au-gouvernement.js
+│   │   │   └── services
+│   │   │       └── site-vitrine-question-au-gouvernement.js
+│   │   ├── thematique
+│   │   │   ├── content-types
+│   │   │   │   └── thematique
+│   │   │   │       └── schema.json
+│   │   │   ├── controllers
+│   │   │   │   └── thematique.js
+│   │   │   ├── routes
+│   │   │   │   └── thematique.js
+│   │   │   └── services
+│   │   │       └── thematique.js
+│   │   └── welcome-page-new
+│   │       ├── content-types
+│   │       │   └── welcome-page-new
+│   │       │       └── schema.json
+│   │       ├── controllers
+│   │       │   └── welcome-page-new.js
+│   │       ├── routes
+│   │       │   └── welcome-page-new.js
+│   │       └── services
+│   │           └── welcome-page-new.js
+│   ├── components
+│   │   ├── consultation-section
+│   │   │   ├── section-accordeon.json
+│   │   │   ├── section-chiffre.json
+│   │   │   ├── section-citation.json
+│   │   │   ├── section-image.json
+│   │   │   ├── section-texte-riche.json
+│   │   │   ├── section-titre.json
+│   │   │   └── section-video.json
+│   │   ├── question-de-consultation
+│   │   │   ├── choix-conditionnel.json
+│   │   │   ├── choix.json
+│   │   │   ├── description.json
+│   │   │   ├── question-a-choix-multiples.json
+│   │   │   ├── question-a-choix-unique.json
+│   │   │   ├── question-conditionnelle.json
+│   │   │   └── question-ouverte.json
+│   │   └── reponse
+│   │       ├── reponse-video.json
+│   │       └── reponsetextuelle.json
+│   ├── extensions
+│   │   └── .gitkeep
+│   ├── index.js
+│   └── middlewares
+│       └── journalisation.js
+├── types
+│   └── generated
+│       ├── components.d.ts
+│       └── contentTypes.d.ts
+└── yarn.lock
+164 directories, 162 files
