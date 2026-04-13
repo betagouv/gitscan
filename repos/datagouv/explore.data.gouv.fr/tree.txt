@@ -1,0 +1,189 @@
+.
+├── .babelrc
+├── .env.sample
+├── .gitignore
+├── .npmrc
+├── .nvmrc
+├── .postcssrc
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── nginx.conf
+├── now.json
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.js
+├── public
+│   ├── explore-light.svg
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── App.vue
+│   ├── apps
+│   │   ├── carburants
+│   │   │   ├── AppCarburant.vue
+│   │   │   ├── assets
+│   │   │   │   ├── images
+│   │   │   │   │   ├── caution-sign.png
+│   │   │   │   │   ├── cross-sign.png
+│   │   │   │   │   ├── dispo-green.png
+│   │   │   │   │   ├── dispo-orange.png
+│   │   │   │   │   └── dispo-red.png
+│   │   │   │   └── json
+│   │   │   │       ├── centers_deps.json
+│   │   │   │       └── vector.json
+│   │   │   └── store
+│   │   │       └── index.js
+│   │   ├── dvf
+│   │   │   ├── AppDvf.vue
+│   │   │   ├── assets
+│   │   │   │   ├── images
+│   │   │   │   │   ├── appartement.svg
+│   │   │   │   │   ├── carte.svg
+│   │   │   │   │   ├── date.svg
+│   │   │   │   │   ├── dependance.svg
+│   │   │   │   │   ├── faq.svg
+│   │   │   │   │   ├── id.svg
+│   │   │   │   │   ├── local.svg
+│   │   │   │   │   ├── maison.svg
+│   │   │   │   │   ├── pin.svg
+│   │   │   │   │   ├── preview-ortho.png
+│   │   │   │   │   ├── preview-vector.png
+│   │   │   │   │   ├── sources.svg
+│   │   │   │   │   ├── tableau.svg
+│   │   │   │   │   └── terrain.svg
+│   │   │   │   ├── json
+│   │   │   │   │   ├── arrondissements.json
+│   │   │   │   │   ├── centers_deps.json
+│   │   │   │   │   ├── communes44.json
+│   │   │   │   │   ├── epcis.json
+│   │   │   │   │   ├── sections44109.json
+│   │   │   │   │   └── vector-dvf.json
+│   │   │   │   └── logos
+│   │   │   │       ├── acceslibre.svg
+│   │   │   │       ├── arcep.png
+│   │   │   │       ├── logo-geoportail.svg
+│   │   │   │       └── logo_GR.png
+│   │   │   ├── components
+│   │   │   │   ├── BarChart.vue
+│   │   │   │   ├── ChoroMap.vue
+│   │   │   │   ├── FiltersBox.vue
+│   │   │   │   ├── LeftCol.vue
+│   │   │   │   ├── LineChart.vue
+│   │   │   │   └── SearchBar.vue
+│   │   │   ├── store
+│   │   │   │   └── index.js
+│   │   │   └── views
+│   │   │       ├── FaqView.vue
+│   │   │       ├── MapView.vue
+│   │   │       ├── SourcesView.vue
+│   │   │       ├── Table.vue
+│   │   │       └── TableauView.vue
+│   │   ├── inclusion
+│   │   │   ├── AppInclusion.vue
+│   │   │   ├── assets
+│   │   │   │   ├── images
+│   │   │   │   │   ├── appartement.svg
+│   │   │   │   │   ├── carte.svg
+│   │   │   │   │   ├── date.svg
+│   │   │   │   │   ├── dependance.svg
+│   │   │   │   │   ├── faq.svg
+│   │   │   │   │   ├── id.svg
+│   │   │   │   │   ├── inclusion.png
+│   │   │   │   │   ├── local.svg
+│   │   │   │   │   ├── maison.svg
+│   │   │   │   │   ├── pin.svg
+│   │   │   │   │   ├── preview-ortho.png
+│   │   │   │   │   ├── preview-vector.png
+│   │   │   │   │   ├── sources.svg
+│   │   │   │   │   ├── tableau.svg
+│   │   │   │   │   └── terrain.svg
+│   │   │   │   ├── json
+│   │   │   │   │   ├── arrondissements.json
+│   │   │   │   │   ├── centers_deps.json
+│   │   │   │   │   ├── communes44.json
+│   │   │   │   │   ├── epcis.json
+│   │   │   │   │   ├── frais.json
+│   │   │   │   │   ├── labels_nationaux.json
+│   │   │   │   │   ├── modes_accueil.json
+│   │   │   │   │   ├── profils.json
+│   │   │   │   │   ├── thematiques.json
+│   │   │   │   │   ├── thematiques_complete.json
+│   │   │   │   │   ├── typologie_services.json
+│   │   │   │   │   ├── typologie_structures.json
+│   │   │   │   │   └── vector-inclusion.json
+│   │   │   │   └── logos
+│   │   │   │       ├── acceslibre.svg
+│   │   │   │       ├── arcep.png
+│   │   │   │       ├── logo-geoportail.svg
+│   │   │   │       └── logo_GR.png
+│   │   │   ├── components
+│   │   │   │   ├── ChoroMap.vue
+│   │   │   │   ├── FiltersBox.vue
+│   │   │   │   ├── FooterApps.vue
+│   │   │   │   ├── LeftCol.vue
+│   │   │   │   ├── LineChart.vue
+│   │   │   │   └── SearchBar.vue
+│   │   │   ├── store
+│   │   │   │   └── index.js
+│   │   │   └── views
+│   │   │       ├── FaqView.vue
+│   │   │       ├── MapView.vue
+│   │   │       ├── SourcesView.vue
+│   │   │       └── TableauView.vue
+│   │   └── tabular
+│   │       ├── DatasetView.vue
+│   │       ├── ResourceView.vue
+│   │       ├── store
+│   │       │   └── storeTabular.js
+│   │       └── views
+│   │           ├── FieldModal.vue
+│   │           ├── Filters.vue
+│   │           ├── Histogram.vue
+│   │           ├── InfosDgv.vue
+│   │           ├── InfosResources.vue
+│   │           ├── Input.vue
+│   │           ├── Table.vue
+│   │           ├── Tooltip.vue
+│   │           └── menuResource.vue
+│   ├── components
+│   │   ├── BarOrGraph.vue
+│   │   ├── CardLink.vue
+│   │   ├── DatasetEmbed.vue
+│   │   ├── FieldModal.vue
+│   │   ├── Filters.vue
+│   │   ├── Histogram.vue
+│   │   ├── Input.vue
+│   │   ├── Loader.vue
+│   │   ├── MenuFuel.vue
+│   │   ├── ReuseEmbed.vue
+│   │   ├── ReuseStar.vue
+│   │   ├── Table.vue
+│   │   └── Tooltip.vue
+│   ├── config.js
+│   ├── config.yml
+│   ├── i18n.js
+│   ├── locales
+│   │   ├── en.json
+│   │   └── fr.json
+│   ├── main.js
+│   ├── matomo.js
+│   ├── router.js
+│   ├── static
+│   │   ├── images
+│   │   │   ├── forbidden.png
+│   │   │   ├── green.png
+│   │   │   └── loader.gif
+│   │   └── json
+│   │       ├── depts.json
+│   │       └── ruptures.json
+│   ├── tabularapi.js
+│   └── views
+│       ├── ExploreTableView.vue
+│       ├── FooterApps.vue
+│       ├── HeaderApp.vue
+│       ├── HeaderApps.vue
+│       └── HomePage.vue
+├── tsconfig.json
+└── vue.config.js
+34 directories, 154 files
