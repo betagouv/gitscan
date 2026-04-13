@@ -57,13 +57,19 @@ async function buildIndex() {
         path.dirname(filePath),
         "CHANGELOG-generated.md",
       );
-      const changelog = fs.existsSync(changelogPath)
-        ? fs.readFileSync(changelogPath, "utf-8").trim() || null
-        : null;
+      let changelog: string | null = null;
+      let changelogGeneratedAt: string | null = null;
+      if (fs.existsSync(changelogPath)) {
+        changelog = fs.readFileSync(changelogPath, "utf-8").trim() || null;
+        if (changelog) {
+          changelogGeneratedAt = fs.statSync(changelogPath).mtime.toISOString();
+        }
+      }
 
       const repo: Repository = {
         ...data,
         changelog,
+        changelogGeneratedAt,
         organization,
       };
 
@@ -102,7 +108,8 @@ async function buildIndex() {
     if (fs.existsSync(orgChangelogPath)) {
       const content = fs.readFileSync(orgChangelogPath, "utf-8").trim();
       if (content) {
-        orgChangelogs.push({ organization: org, changelog: content });
+        const generatedAt = fs.statSync(orgChangelogPath).mtime.toISOString();
+        orgChangelogs.push({ organization: org, changelog: content, changelogGeneratedAt: generatedAt });
       }
     } else {
       orgChangelogs.push({ organization: org, changelog: "" });

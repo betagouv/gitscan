@@ -29,6 +29,7 @@ export interface Repository {
   metrics: RepoMetrics | null;
   tags: string[] | null;
   changelog: string | null;
+  changelogGeneratedAt: string | null;
   // Added during aggregation
   organization: string;
 }
@@ -36,6 +37,7 @@ export interface Repository {
 export interface OrgChangelog {
   organization: string;
   changelog: string;
+  changelogGeneratedAt?: string;
 }
 
 export interface AggregatedData {

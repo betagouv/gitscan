@@ -251,9 +251,20 @@ export default async function RepoDetailPage({ params }: PageProps) {
           {/* Changelog */}
           {repo.changelog && (
             <section className="bg-white rounded-xl border border-slate-200 p-6">
-              <h2 className="text-lg font-semibold text-slate-900 mb-4">
-                Changelog
-              </h2>
+              <div className="flex items-baseline justify-between mb-4">
+                <h2 className="text-lg font-semibold text-slate-900">
+                  Changelog
+                </h2>
+                {repo.changelogGeneratedAt && (
+                  <span className="text-xs text-slate-400">
+                    Généré le{" "}
+                    {new Date(repo.changelogGeneratedAt).toLocaleDateString(
+                      "fr-FR",
+                      { day: "numeric", month: "long", year: "numeric" },
+                    )}
+                  </span>
+                )}
+              </div>
               <Changelog content={repo.changelog} />
             </section>
           )}

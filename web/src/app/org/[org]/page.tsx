@@ -98,6 +98,16 @@ export default async function OrgActivityPage({ params }: PageProps) {
       {/* Changelog */}
       {entry.changelog && (
         <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8">
+          {entry.changelogGeneratedAt && (
+            <p className="text-xs text-slate-400 mb-4">
+              Généré le{" "}
+              {new Date(entry.changelogGeneratedAt).toLocaleDateString("fr-FR", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </p>
+          )}
           <Changelog content={entry.changelog} />
         </div>
       )}

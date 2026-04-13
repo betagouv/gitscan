@@ -2,8 +2,10 @@ import os
 import json
 import sys
 from urllib.parse import urlparse
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import re
+
+STALE_DAYS = 30
 
 
 # get list of repos to analyze based on orgas.txt
@@ -89,6 +91,18 @@ if exclude_repos:
     excluded = before - len(urls)
     if excluded:
         print(f"Excluded {excluded} repos: {', '.join(exclude_repos)}", file=sys.stderr)
+
+# Filter out repos that are already scanned and have not been pushed to in STALE_DAYS days
+stale_cutoff = (datetime.now(timezone.utc) - timedelta(days=STALE_DAYS)).timestamp()
+before = len(urls)
+urls = [
+    u for u in urls
+    if pushed_at_map.get(u, 0) >= stale_cutoff          # active recently, OR
+    or not os.path.exists(get_repo_local_path(u))        # not yet scanned
+]
+stale_count = before - len(urls)
+if stale_count:
+    print(f"Skipped {stale_count} repos with no activity in the last {STALE_DAYS} days", file=sys.stderr)
 
 
 # Sort URLs:
