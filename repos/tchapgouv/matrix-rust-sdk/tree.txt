@@ -1,0 +1,1035 @@
+.
+├── .cargo
+│   └── config.toml
+├── .config
+│   └── nextest.toml
+├── .deny.toml
+├── .editorconfig
+├── .github
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── benchmarks.yml
+│       ├── bindings_ci.yml
+│       ├── ci.yml
+│       ├── coverage.yml
+│       ├── deny.yml
+│       ├── detect-long-path.yml
+│       ├── detect-unused-dependencies.yml
+│       ├── documentation.yml
+│       ├── fixup-block.yml
+│       ├── msrv.yaml
+│       ├── upload_coverage.yml
+│       └── xtask.yml
+├── .gitignore
+├── .img
+│   └── rustrover-disable-feature.png
+├── .rustfmt.toml
+├── .typos.toml
+├── ARCHITECTURE.md
+├── CONTRIBUTING.md
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── README.md
+├── RELEASING.md
+├── benchmarks
+│   ├── Cargo.toml
+│   ├── README.md
+│   └── benches
+│       ├── crypto_bench
+│       │   ├── keys_claim.json
+│       │   ├── keys_query.json
+│       │   └── keys_query_2000_members.json
+│       ├── crypto_bench.rs
+│       ├── linked_chunk.rs
+│       ├── room_bench.rs
+│       ├── store_bench.rs
+│       └── timeline.rs
+├── bindings
+│   ├── CONTRIBUTING.md
+│   ├── README.md
+│   ├── apple
+│   │   ├── Debug-Empty-Package.swift
+│   │   ├── Debug-Package.swift
+│   │   ├── MatrixSDKCrypto-Local.podspec
+│   │   ├── MatrixSDKCrypto.podspec
+│   │   ├── Package.swift
+│   │   ├── README.md
+│   │   ├── Tests
+│   │   │   └── MatrixRustSDKTests
+│   │   │       └── ClientTests.swift
+│   │   └── build_crypto_xcframework.sh
+│   ├── matrix-sdk-crypto-ffi
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   ├── src
+│   │   │   ├── backup_recovery_key.rs
+│   │   │   ├── dehydrated_devices.rs
+│   │   │   ├── device.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── logger.rs
+│   │   │   ├── machine.rs
+│   │   │   ├── responses.rs
+│   │   │   ├── users.rs
+│   │   │   └── verification.rs
+│   │   ├── uniffi-bindgen.rs
+│   │   └── uniffi.toml
+│   ├── matrix-sdk-ffi
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   ├── src
+│   │   │   ├── api.udl
+│   │   │   ├── authentication.rs
+│   │   │   ├── chunk_iterator.rs
+│   │   │   ├── client.rs
+│   │   │   ├── client_builder.rs
+│   │   │   ├── encryption.rs
+│   │   │   ├── error.rs
+│   │   │   ├── event.rs
+│   │   │   ├── helpers.rs
+│   │   │   ├── identity_status_change.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── live_location_share.rs
+│   │   │   ├── notification.rs
+│   │   │   ├── notification_settings.rs
+│   │   │   ├── platform.rs
+│   │   │   ├── qr_code.rs
+│   │   │   ├── room
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── power_levels.rs
+│   │   │   │   └── room_info.rs
+│   │   │   ├── room_alias.rs
+│   │   │   ├── room_directory_search.rs
+│   │   │   ├── room_list.rs
+│   │   │   ├── room_member.rs
+│   │   │   ├── room_preview.rs
+│   │   │   ├── ruma.rs
+│   │   │   ├── runtime.rs
+│   │   │   ├── session_verification.rs
+│   │   │   ├── sync_service.rs
+│   │   │   ├── task_handle.rs
+│   │   │   ├── timeline
+│   │   │   │   ├── configuration.rs
+│   │   │   │   ├── content.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── msg_like.rs
+│   │   │   │   └── reply.rs
+│   │   │   ├── tracing.rs
+│   │   │   ├── utd.rs
+│   │   │   ├── utils.rs
+│   │   │   └── widget.rs
+│   │   └── uniffi.toml
+│   └── matrix-sdk-ffi-macros
+│       ├── Cargo.toml
+│       ├── README.md
+│       └── src
+│           └── lib.rs
+├── codecov.yaml
+├── contrib
+│   ├── ide
+│   │   └── vscode
+│   │       └── settings.json
+│   ├── key-forwarding-algorithm
+│   │   ├── Makefile
+│   │   ├── README.md
+│   │   ├── model.dot
+│   │   ├── model.png
+│   │   └── setdotlabelwidth
+│   ├── logo.svg
+│   └── mitmproxy
+│       ├── failures.py
+│       └── well-known-block.py
+├── crates
+│   ├── matrix-sdk
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   ├── src
+│   │   │   ├── account.rs
+│   │   │   ├── attachment.rs
+│   │   │   ├── authentication
+│   │   │   │   ├── matrix
+│   │   │   │   │   ├── login_builder.rs
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── oauth
+│   │   │   │       ├── account_management_url.rs
+│   │   │   │       ├── auth_code_builder.rs
+│   │   │   │       ├── cross_process.rs
+│   │   │   │       ├── error.rs
+│   │   │   │       ├── http_client.rs
+│   │   │   │       ├── mod.rs
+│   │   │   │       ├── qrcode
+│   │   │   │       │   ├── login.rs
+│   │   │   │       │   ├── messages.rs
+│   │   │   │       │   ├── mod.rs
+│   │   │   │       │   ├── rendezvous_channel.rs
+│   │   │   │       │   └── secure_channel.rs
+│   │   │   │       ├── registration.rs
+│   │   │   │       └── tests.rs
+│   │   │   ├── client
+│   │   │   │   ├── builder
+│   │   │   │   │   ├── homeserver_config.rs
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── caches.rs
+│   │   │   │   ├── futures.rs
+│   │   │   │   └── mod.rs
+│   │   │   ├── config
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── request.rs
+│   │   │   │   └── sync.rs
+│   │   │   ├── deduplicating_handler.rs
+│   │   │   ├── docs
+│   │   │   │   └── encryption.md
+│   │   │   ├── encryption
+│   │   │   │   ├── backups
+│   │   │   │   │   ├── futures.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── types.rs
+│   │   │   │   ├── futures.rs
+│   │   │   │   ├── identities
+│   │   │   │   │   ├── devices.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── users.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── recovery
+│   │   │   │   │   ├── futures.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── types.rs
+│   │   │   │   ├── secret_storage
+│   │   │   │   │   ├── futures.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── secret_store.rs
+│   │   │   │   ├── tasks.rs
+│   │   │   │   └── verification
+│   │   │   │       ├── mod.rs
+│   │   │   │       ├── qrcode.rs
+│   │   │   │       ├── requests.rs
+│   │   │   │       └── sas.rs
+│   │   │   ├── error.rs
+│   │   │   ├── event_cache
+│   │   │   │   ├── deduplicator.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── pagination.rs
+│   │   │   │   └── room
+│   │   │   │       ├── events.rs
+│   │   │   │       └── mod.rs
+│   │   │   ├── event_handler
+│   │   │   │   ├── context.rs
+│   │   │   │   ├── maps.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── static_events.rs
+│   │   │   ├── http_client
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── native.rs
+│   │   │   │   └── wasm.rs
+│   │   │   ├── latest_events
+│   │   │   │   ├── latest_event.rs
+│   │   │   │   └── mod.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── live_location_share.rs
+│   │   │   ├── media.rs
+│   │   │   ├── notification_settings
+│   │   │   │   ├── command.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── rule_commands.rs
+│   │   │   │   └── rules.rs
+│   │   │   ├── paginators
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── room.rs
+│   │   │   │   └── thread.rs
+│   │   │   ├── pusher.rs
+│   │   │   ├── room
+│   │   │   │   ├── access_rules.rs
+│   │   │   │   ├── edit.rs
+│   │   │   │   ├── futures.rs
+│   │   │   │   ├── identity_status_changes.rs
+│   │   │   │   ├── knock_requests.rs
+│   │   │   │   ├── member.rs
+│   │   │   │   ├── messages.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── power_levels.rs
+│   │   │   │   ├── privacy_settings.rs
+│   │   │   │   ├── reply.rs
+│   │   │   │   └── shared_room_history.rs
+│   │   │   ├── room_directory_search.rs
+│   │   │   ├── room_preview.rs
+│   │   │   ├── send_queue
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── upload.rs
+│   │   │   ├── sliding_sync
+│   │   │   │   ├── README.md
+│   │   │   │   ├── builder.rs
+│   │   │   │   ├── cache.rs
+│   │   │   │   ├── client.rs
+│   │   │   │   ├── error.rs
+│   │   │   │   ├── list
+│   │   │   │   │   ├── builder.rs
+│   │   │   │   │   ├── frozen.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   ├── request_generator.rs
+│   │   │   │   │   └── sticky.rs
+│   │   │   │   ├── mod.rs
+│   │   │   │   └── sticky_parameters.rs
+│   │   │   ├── sync.rs
+│   │   │   ├── test_utils
+│   │   │   │   ├── client.rs
+│   │   │   │   ├── mocks
+│   │   │   │   │   ├── encryption.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── oauth.rs
+│   │   │   │   └── mod.rs
+│   │   │   ├── utils
+│   │   │   │   ├── local_server.rs
+│   │   │   │   └── mod.rs
+│   │   │   └── widget
+│   │   │       ├── README.md
+│   │   │       ├── capabilities.rs
+│   │   │       ├── filter.rs
+│   │   │       ├── machine
+│   │   │       │   ├── driver_req.rs
+│   │   │       │   ├── from_widget.rs
+│   │   │       │   ├── incoming.rs
+│   │   │       │   ├── mod.rs
+│   │   │       │   ├── openid.rs
+│   │   │       │   ├── pending.rs
+│   │   │       │   ├── tests
+│   │   │       │   │   ├── api_versions.rs
+│   │   │       │   │   ├── capabilities.rs
+│   │   │       │   │   ├── error.rs
+│   │   │       │   │   ├── mod.rs
+│   │   │       │   │   ├── openid.rs
+│   │   │       │   │   └── send_event.rs
+│   │   │       │   └── to_widget.rs
+│   │   │       ├── matrix.rs
+│   │   │       ├── mod.rs
+│   │   │       ├── settings
+│   │   │       │   ├── element_call.rs
+│   │   │       │   ├── mod.rs
+│   │   │       │   └── url_params.rs
+│   │   │       └── snapshots
+│   │   │           ├── add_room_id_to_raw.snap
+│   │   │           └── add_room_id_to_raw_override.snap
+│   │   └── tests
+│   │       └── integration
+│   │           ├── account.rs
+│   │           ├── client.rs
+│   │           ├── encryption
+│   │           │   ├── backups.rs
+│   │           │   ├── cross_signing.rs
+│   │           │   ├── recovery.rs
+│   │           │   ├── secret_storage.rs
+│   │           │   ├── to_device.rs
+│   │           │   └── verification.rs
+│   │           ├── encryption.rs
+│   │           ├── event_cache.rs
+│   │           ├── main.rs
+│   │           ├── matrix_auth.rs
+│   │           ├── media.rs
+│   │           ├── notification.rs
+│   │           ├── refresh_token.rs
+│   │           ├── room
+│   │           │   ├── attachment
+│   │           │   │   └── mod.rs
+│   │           │   ├── beacon
+│   │           │   │   └── mod.rs
+│   │           │   ├── beacon_info
+│   │           │   │   └── mod.rs
+│   │           │   ├── common.rs
+│   │           │   ├── joined.rs
+│   │           │   ├── left.rs
+│   │           │   ├── mod.rs
+│   │           │   ├── notification_mode.rs
+│   │           │   ├── spaces.rs
+│   │           │   └── tags.rs
+│   │           ├── room_preview.rs
+│   │           ├── send_queue.rs
+│   │           └── widget.rs
+│   ├── matrix-sdk-base
+│   │   ├── .cargo
+│   │   │   └── config.toml
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── client.rs
+│   │       ├── debug.rs
+│   │       ├── deserialized_responses.rs
+│   │       ├── error.rs
+│   │       ├── event_cache
+│   │       │   ├── mod.rs
+│   │       │   └── store
+│   │       │       ├── integration_tests.rs
+│   │       │       ├── media
+│   │       │       │   ├── integration_tests.rs
+│   │       │       │   ├── media_retention_policy.rs
+│   │       │       │   ├── media_service.rs
+│   │       │       │   └── mod.rs
+│   │       │       ├── memory_store.rs
+│   │       │       ├── mod.rs
+│   │       │       └── traits.rs
+│   │       ├── latest_event.rs
+│   │       ├── lib.rs
+│   │       ├── media.rs
+│   │       ├── notification_settings.rs
+│   │       ├── read_receipts.rs
+│   │       ├── response_processors
+│   │       │   ├── account_data
+│   │       │   │   ├── global.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   └── room.rs
+│   │       │   ├── changes.rs
+│   │       │   ├── e2ee
+│   │       │   │   ├── decrypt.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── to_device.rs
+│   │       │   │   └── tracked_users.rs
+│   │       │   ├── ephemeral_events.rs
+│   │       │   ├── latest_event.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── notification.rs
+│   │       │   ├── profiles.rs
+│   │       │   ├── room
+│   │       │   │   ├── display_name.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── msc4186
+│   │       │   │   │   ├── extensions.rs
+│   │       │   │   │   └── mod.rs
+│   │       │   │   └── sync_v2.rs
+│   │       │   ├── state_events.rs
+│   │       │   ├── timeline.rs
+│   │       │   └── verification.rs
+│   │       ├── room
+│   │       │   ├── call.rs
+│   │       │   ├── create.rs
+│   │       │   ├── display_name.rs
+│   │       │   ├── encryption.rs
+│   │       │   ├── knock.rs
+│   │       │   ├── latest_event.rs
+│   │       │   ├── members.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── room_info.rs
+│   │       │   ├── state.rs
+│   │       │   ├── tags.rs
+│   │       │   └── tombstone.rs
+│   │       ├── sliding_sync.rs
+│   │       ├── store
+│   │       │   ├── ambiguity_map.rs
+│   │       │   ├── integration_tests.rs
+│   │       │   ├── memory_store.rs
+│   │       │   ├── migration_helpers.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── observable_map.rs
+│   │       │   ├── send_queue.rs
+│   │       │   └── traits.rs
+│   │       ├── sync.rs
+│   │       ├── test_utils.rs
+│   │       └── utils.rs
+│   ├── matrix-sdk-common
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   └── src
+│   │       ├── debug.rs
+│   │       ├── deserialized_responses.rs
+│   │       ├── executor.rs
+│   │       ├── failures_cache.rs
+│   │       ├── js_tracing.rs
+│   │       ├── lib.rs
+│   │       ├── linked_chunk
+│   │       │   ├── as_vector.rs
+│   │       │   ├── lazy_loader.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── order_tracker.rs
+│   │       │   ├── relational.rs
+│   │       │   └── updates.rs
+│   │       ├── locks.rs
+│   │       ├── ring_buffer.rs
+│   │       ├── serde_helpers.rs
+│   │       ├── sleep.rs
+│   │       ├── snapshots
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__encryption_info_migration.snap
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__snapshot_test_shield_codes-2.snap
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__snapshot_test_shield_codes-3.snap
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__snapshot_test_shield_codes-4.snap
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__snapshot_test_shield_codes-5.snap
+│   │       │   ├── matrix_sdk_common__deserialized_responses__tests__snapshot_test_shield_codes-6.snap
+│   │       │   ├── snapshot_test_algorithm_info.snap
+│   │       │   ├── snapshot_test_encryption_info.snap
+│   │       │   ├── snapshot_test_shield_codes-2.snap
+│   │       │   ├── snapshot_test_shield_codes-3.snap
+│   │       │   ├── snapshot_test_shield_codes-4.snap
+│   │       │   ├── snapshot_test_shield_codes-5.snap
+│   │       │   ├── snapshot_test_shield_codes-6.snap
+│   │       │   ├── snapshot_test_shield_codes.snap
+│   │       │   ├── snapshot_test_shield_states-2.snap
+│   │       │   ├── snapshot_test_shield_states-3.snap
+│   │       │   ├── snapshot_test_shield_states.snap
+│   │       │   ├── snapshot_test_sync_timeline_event.snap
+│   │       │   ├── snapshot_test_verification_level-2.snap
+│   │       │   ├── snapshot_test_verification_level-3.snap
+│   │       │   ├── snapshot_test_verification_level-4.snap
+│   │       │   ├── snapshot_test_verification_level-5.snap
+│   │       │   ├── snapshot_test_verification_level.snap
+│   │       │   ├── snapshot_test_verification_states-2.snap
+│   │       │   ├── snapshot_test_verification_states-3.snap
+│   │       │   ├── snapshot_test_verification_states-4.snap
+│   │       │   ├── snapshot_test_verification_states-5.snap
+│   │       │   └── snapshot_test_verification_states.snap
+│   │       ├── store_locks.rs
+│   │       ├── stream.rs
+│   │       ├── timeout.rs
+│   │       ├── tracing_timer.rs
+│   │       └── ttl_cache.rs
+│   ├── matrix-sdk-crypto
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── backups
+│   │       │   ├── keys
+│   │       │   │   ├── backup.rs
+│   │       │   │   ├── decryption.rs
+│   │       │   │   └── mod.rs
+│   │       │   └── mod.rs
+│   │       ├── ciphers.rs
+│   │       ├── dehydrated_devices.rs
+│   │       ├── error.rs
+│   │       ├── file_encryption
+│   │       │   ├── attachments.rs
+│   │       │   ├── key_export.rs
+│   │       │   └── mod.rs
+│   │       ├── gossiping
+│   │       │   ├── machine.rs
+│   │       │   └── mod.rs
+│   │       ├── identities
+│   │       │   ├── device.rs
+│   │       │   ├── manager.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── room_identity_state.rs
+│   │       │   └── user.rs
+│   │       ├── lib.rs
+│   │       ├── machine
+│   │       │   ├── mod.rs
+│   │       │   ├── test_helpers.rs
+│   │       │   └── tests
+│   │       │       ├── decryption_verification_state.rs
+│   │       │       ├── interactive_verification.rs
+│   │       │       ├── megolm_sender_data.rs
+│   │       │       ├── mod.rs
+│   │       │       ├── olm_encryption.rs
+│   │       │       ├── room_settings.rs
+│   │       │       ├── send_encrypted_to_device.rs
+│   │       │       └── snapshots
+│   │       │           ├── processed_to_device_variants-2.snap
+│   │       │           ├── processed_to_device_variants-3.snap
+│   │       │           ├── processed_to_device_variants-4.snap
+│   │       │           └── processed_to_device_variants.snap
+│   │       ├── olm
+│   │       │   ├── account.rs
+│   │       │   ├── group_sessions
+│   │       │   │   ├── inbound.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── outbound.rs
+│   │       │   │   ├── sender_data.rs
+│   │       │   │   ├── sender_data_finder.rs
+│   │       │   │   └── snapshots
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__inbound__tests__pickle_snapshot.snap
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data-2.snap
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data-3.snap
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data-4.snap
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data-5.snap
+│   │       │   │       ├── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data-6.snap
+│   │       │   │       └── matrix_sdk_crypto__olm__group_sessions__sender_data__tests__snapshot_sender_data.snap
+│   │       │   ├── mod.rs
+│   │       │   ├── session.rs
+│   │       │   ├── signing
+│   │       │   │   ├── mod.rs
+│   │       │   │   └── pk_signing.rs
+│   │       │   └── utility.rs
+│   │       ├── secret_storage.rs
+│   │       ├── session_manager
+│   │       │   ├── group_sessions
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── share_strategy.rs
+│   │       │   │   └── snapshots
+│   │       │   │       ├── prepare_machine_with_dehydrated_device_of_verification_violation_user.snap
+│   │       │   │       ├── serialize_device_based_strategy.snap
+│   │       │   │       ├── should_not_share_with_unverified_dehydrated_device.snap
+│   │       │   │       ├── should_share_with_verified_dehydrated_device.snap
+│   │       │   │       └── should_share_with_verified_device_of_pin_violation_user.snap
+│   │       │   ├── mod.rs
+│   │       │   └── sessions.rs
+│   │       ├── snapshots
+│   │       │   ├── matrix_sdk_crypto__test__snapshot_decryption_settings.snap
+│   │       │   ├── matrix_sdk_crypto__test__snapshot_trust_requirement-2.snap
+│   │       │   ├── matrix_sdk_crypto__test__snapshot_trust_requirement-3.snap
+│   │       │   └── matrix_sdk_crypto__test__snapshot_trust_requirement.snap
+│   │       ├── store
+│   │       │   ├── caches.rs
+│   │       │   ├── crypto_store_wrapper.rs
+│   │       │   ├── error.rs
+│   │       │   ├── integration_tests.rs
+│   │       │   ├── memorystore.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── snapshots
+│   │       │   │   └── matrix_sdk_crypto__store__tests__build_room_key_bundle.snap
+│   │       │   ├── traits.rs
+│   │       │   └── types.rs
+│   │       ├── types
+│   │       │   ├── backup.rs
+│   │       │   ├── cross_signing
+│   │       │   │   ├── common.rs
+│   │       │   │   ├── master.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── self_signing.rs
+│   │       │   │   └── user_signing.rs
+│   │       │   ├── device_keys.rs
+│   │       │   ├── events
+│   │       │   │   ├── dummy.rs
+│   │       │   │   ├── forwarded_room_key.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── olm_v1.rs
+│   │       │   │   ├── room
+│   │       │   │   │   ├── encrypted.rs
+│   │       │   │   │   └── mod.rs
+│   │       │   │   ├── room_key.rs
+│   │       │   │   ├── room_key_bundle.rs
+│   │       │   │   ├── room_key_request.rs
+│   │       │   │   ├── room_key_withheld.rs
+│   │       │   │   ├── secret_send.rs
+│   │       │   │   ├── snapshots
+│   │       │   │   │   ├── decrypted_to_device_event_snapshot.snap
+│   │       │   │   │   └── sender_device_keys_are_deserialized.snap
+│   │       │   │   ├── to_device.rs
+│   │       │   │   └── utd_cause.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── one_time_keys.rs
+│   │       │   ├── qr_login.rs
+│   │       │   ├── requests
+│   │       │   │   ├── enums.rs
+│   │       │   │   ├── keys_backup.rs
+│   │       │   │   ├── keys_query.rs
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── room_message.rs
+│   │       │   │   ├── signing_keys.rs
+│   │       │   │   ├── to_device.rs
+│   │       │   │   └── verification.rs
+│   │       │   ├── room_history.rs
+│   │       │   └── snapshots
+│   │       │       ├── matrix_sdk_crypto__types__backup__tests__snapshot_room_key_backup_info-2.snap
+│   │       │       ├── matrix_sdk_crypto__types__backup__tests__snapshot_room_key_backup_info.snap
+│   │       │       ├── matrix_sdk_crypto__types__room_history__tests__historic_room_key_debug.snap
+│   │       │       ├── matrix_sdk_crypto__types__test__snapshot_backup_decryption_key-2.snap
+│   │       │       ├── matrix_sdk_crypto__types__test__snapshot_backup_decryption_key.snap
+│   │       │       ├── matrix_sdk_crypto__types__test__snapshot_secret_bundle-2.snap
+│   │       │       ├── matrix_sdk_crypto__types__test__snapshot_secret_bundle.snap
+│   │       │       └── matrix_sdk_crypto__types__test__snapshot_signatures.snap
+│   │       ├── utilities.rs
+│   │       └── verification
+│   │           ├── cache.rs
+│   │           ├── event_enums.rs
+│   │           ├── machine.rs
+│   │           ├── mod.rs
+│   │           ├── qrcode.rs
+│   │           ├── requests.rs
+│   │           └── sas
+│   │               ├── helpers.rs
+│   │               ├── inner_sas.rs
+│   │               ├── mod.rs
+│   │               └── sas_state.rs
+│   ├── matrix-sdk-indexeddb
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── crypto_store
+│   │       │   ├── migrations
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── old_keys.rs
+│   │       │   │   ├── v0_to_v5.rs
+│   │       │   │   ├── v10_to_v11.rs
+│   │       │   │   ├── v11_to_v12.rs
+│   │       │   │   ├── v12_to_v13.rs
+│   │       │   │   ├── v5_to_v7.rs
+│   │       │   │   ├── v7.rs
+│   │       │   │   ├── v7_to_v8.rs
+│   │       │   │   └── v8_to_v10.rs
+│   │       │   └── mod.rs
+│   │       ├── event_cache_store
+│   │       │   ├── error.rs
+│   │       │   ├── migrations.rs
+│   │       │   ├── mod.rs
+│   │       │   ├── serializer
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── traits.rs
+│   │       │   │   └── types.rs
+│   │       │   ├── transaction.rs
+│   │       │   └── types.rs
+│   │       ├── lib.rs
+│   │       ├── safe_encode.rs
+│   │       ├── serialize_bool_for_indexeddb.rs
+│   │       ├── serializer.rs
+│   │       └── state_store
+│   │           ├── migrations.rs
+│   │           └── mod.rs
+│   ├── matrix-sdk-qrcode
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── error.rs
+│   │       ├── lib.rs
+│   │       ├── types.rs
+│   │       └── utils.rs
+│   ├── matrix-sdk-sqlite
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── migrations
+│   │   │   ├── crypto_store
+│   │   │   │   ├── 001_init.sql
+│   │   │   │   ├── 002_reset_olm_hash.sql
+│   │   │   │   ├── 003_room_settings.sql
+│   │   │   │   ├── 004_drop_outbound_group_sessions.sql
+│   │   │   │   ├── 005_withheld_code.sql
+│   │   │   │   ├── 006_drop_outbound_group_sessions.sql
+│   │   │   │   ├── 007_lock_leases.sql
+│   │   │   │   ├── 008_secret_inbox.sql
+│   │   │   │   ├── 009_inbound_group_session_sender_key_sender_data_type.sql
+│   │   │   │   └── 010_received_room_key_bundles.sql
+│   │   │   ├── event_cache_store
+│   │   │   │   ├── 001_init.sql
+│   │   │   │   ├── 002_lease_locks.sql
+│   │   │   │   ├── 003_events.sql
+│   │   │   │   ├── 004_ignore_policy.sql
+│   │   │   │   ├── 005_events_index_on_event_id.sql
+│   │   │   │   ├── 006_events.sql
+│   │   │   │   ├── 007_event_chunks.sql
+│   │   │   │   └── 008_linked_chunk_id.sql
+│   │   │   └── state_store
+│   │   │       ├── 001_init.sql
+│   │   │       ├── 002_a_create_new_room_info.sql
+│   │   │       ├── 002_b_replace_room_info.sql
+│   │   │       ├── 003_send_queue.sql
+│   │   │       ├── 004_send_queue_with_roomid_value.sql
+│   │   │       ├── 005_send_queue_dependent_events.sql
+│   │   │       ├── 006_drop_media.sql
+│   │   │       ├── 007_a_send_queue_wedge_reason.sql
+│   │   │       ├── 007_b_send_queue_clean.sql
+│   │   │       ├── 008_send_queue.sql
+│   │   │       ├── 009_send_queue_priority.sql
+│   │   │       └── 010_send_queue_enqueue_time.sql
+│   │   └── src
+│   │       ├── crypto_store.rs
+│   │       ├── error.rs
+│   │       ├── event_cache_store.rs
+│   │       ├── lib.rs
+│   │       ├── state_store.rs
+│   │       └── utils.rs
+│   ├── matrix-sdk-store-encryption
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       └── lib.rs
+│   └── matrix-sdk-ui
+│       ├── CHANGELOG.md
+│       ├── Cargo.toml
+│       ├── README.md
+│       ├── src
+│       │   ├── encryption_sync_service.rs
+│       │   ├── lib.rs
+│       │   ├── notification_client.rs
+│       │   ├── room_list_service
+│       │   │   ├── filters
+│       │   │   │   ├── all.rs
+│       │   │   │   ├── any.rs
+│       │   │   │   ├── category.rs
+│       │   │   │   ├── deduplicate_versions.rs
+│       │   │   │   ├── favourite.rs
+│       │   │   │   ├── fuzzy_match_room_name.rs
+│       │   │   │   ├── invite.rs
+│       │   │   │   ├── joined.rs
+│       │   │   │   ├── mod.rs
+│       │   │   │   ├── non_left.rs
+│       │   │   │   ├── none.rs
+│       │   │   │   ├── normalized_match_room_name.rs
+│       │   │   │   ├── not.rs
+│       │   │   │   └── unread.rs
+│       │   │   ├── mod.rs
+│       │   │   ├── room_list.rs
+│       │   │   ├── sorters
+│       │   │   │   ├── lexicographic.rs
+│       │   │   │   ├── mod.rs
+│       │   │   │   ├── name.rs
+│       │   │   │   └── recency.rs
+│       │   │   └── state.rs
+│       │   ├── sync_service.rs
+│       │   ├── timeline
+│       │   │   ├── algorithms.rs
+│       │   │   ├── builder.rs
+│       │   │   ├── controller
+│       │   │   │   ├── aggregations.rs
+│       │   │   │   ├── decryption_retry_task.rs
+│       │   │   │   ├── metadata.rs
+│       │   │   │   ├── mod.rs
+│       │   │   │   ├── observable_items.rs
+│       │   │   │   ├── read_receipts.rs
+│       │   │   │   ├── state.rs
+│       │   │   │   └── state_transaction.rs
+│       │   │   ├── date_dividers.rs
+│       │   │   ├── error.rs
+│       │   │   ├── event_handler.rs
+│       │   │   ├── event_item
+│       │   │   │   ├── content
+│       │   │   │   │   ├── message.rs
+│       │   │   │   │   ├── mod.rs
+│       │   │   │   │   ├── msg_like.rs
+│       │   │   │   │   ├── pinned_events.rs
+│       │   │   │   │   ├── polls.rs
+│       │   │   │   │   └── reply.rs
+│       │   │   │   ├── local.rs
+│       │   │   │   ├── mod.rs
+│       │   │   │   └── remote.rs
+│       │   │   ├── event_type_filter.rs
+│       │   │   ├── futures.rs
+│       │   │   ├── item.rs
+│       │   │   ├── mod.rs
+│       │   │   ├── pagination.rs
+│       │   │   ├── pinned_events_loader.rs
+│       │   │   ├── subscriber.rs
+│       │   │   ├── tasks.rs
+│       │   │   ├── tests
+│       │   │   │   ├── basic.rs
+│       │   │   │   ├── echo.rs
+│       │   │   │   ├── edit.rs
+│       │   │   │   ├── encryption.rs
+│       │   │   │   ├── event_filter.rs
+│       │   │   │   ├── invalid.rs
+│       │   │   │   ├── mod.rs
+│       │   │   │   ├── polls.rs
+│       │   │   │   ├── reactions.rs
+│       │   │   │   ├── read_receipts.rs
+│       │   │   │   ├── redaction.rs
+│       │   │   │   ├── shields.rs
+│       │   │   │   └── virt.rs
+│       │   │   ├── to_device.rs
+│       │   │   ├── traits.rs
+│       │   │   └── virtual_item.rs
+│       │   └── unable_to_decrypt_hook.rs
+│       └── tests
+│           └── integration
+│               ├── encryption_sync_service.rs
+│               ├── main.rs
+│               ├── notification_client.rs
+│               ├── room_list_service.rs
+│               ├── sliding_sync.rs
+│               ├── sync_service.rs
+│               └── timeline
+│                   ├── decryption.rs
+│                   ├── echo.rs
+│                   ├── edit.rs
+│                   ├── focus_event.rs
+│                   ├── media.rs
+│                   ├── mod.rs
+│                   ├── pagination.rs
+│                   ├── pinned_event.rs
+│                   ├── profiles.rs
+│                   ├── queue.rs
+│                   ├── reactions.rs
+│                   ├── read_receipts.rs
+│                   ├── replies.rs
+│                   ├── sliding_sync.rs
+│                   ├── subscribe.rs
+│                   └── thread.rs
+├── examples
+│   ├── README.md
+│   ├── autojoin
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── backups
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── command_bot
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── cross_signing_bootstrap
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── custom_events
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── emoji_verification
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── get_profiles
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── getting_started
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── image_bot
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── login
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── oauth_cli
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── persist_session
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── qr-login
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── secret_storage
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── main.rs
+│   └── timeline
+│       ├── Cargo.toml
+│       └── src
+│           └── main.rs
+├── labs
+│   ├── README.md
+│   ├── multiverse
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── main.rs
+│   │       └── widgets
+│   │           ├── help.rs
+│   │           ├── mod.rs
+│   │           ├── recovery
+│   │           │   ├── default.rs
+│   │           │   ├── mod.rs
+│   │           │   └── recovering.rs
+│   │           ├── room_list.rs
+│   │           ├── room_view
+│   │           │   ├── details
+│   │           │   │   ├── events.rs
+│   │           │   │   ├── linked_chunk.rs
+│   │           │   │   ├── mod.rs
+│   │           │   │   └── read_receipts.rs
+│   │           │   ├── input.rs
+│   │           │   ├── invited_room.rs
+│   │           │   ├── mod.rs
+│   │           │   └── timeline.rs
+│   │           ├── settings
+│   │           │   ├── developer.rs
+│   │           │   └── mod.rs
+│   │           └── status.rs
+│   └── setup-pattern.md
+├── release.toml
+├── tarpaulin.toml
+├── testing
+│   ├── data
+│   │   └── storage
+│   │       ├── alice
+│   │       │   ├── README.md
+│   │       │   └── matrix-sdk-crypto.sqlite3
+│   │       └── matrix-sdk-crypto.sqlite3
+│   ├── matrix-sdk-integration-testing
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── assets
+│   │   │   ├── .gitignore
+│   │   │   ├── Dockerfile
+│   │   │   ├── ci-start.sh
+│   │   │   └── docker-compose.yml
+│   │   └── src
+│   │       ├── helpers.rs
+│   │       ├── lib.rs
+│   │       ├── tests
+│   │       │   ├── auth.rs
+│   │       │   ├── e2ee
+│   │       │   │   ├── mod.rs
+│   │       │   │   └── shared_history.rs
+│   │       │   ├── invitations.rs
+│   │       │   ├── nse.rs
+│   │       │   ├── redaction.rs
+│   │       │   ├── repeated_join.rs
+│   │       │   ├── room.rs
+│   │       │   ├── room_directory_search.rs
+│   │       │   ├── room_privacy.rs
+│   │       │   ├── sliding_sync
+│   │       │   │   ├── mod.rs
+│   │       │   │   ├── notification_client.rs
+│   │       │   │   └── room.rs
+│   │       │   └── timeline.rs
+│   │       └── tests.rs
+│   ├── matrix-sdk-test
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── event_factory.rs
+│   │       ├── lib.rs
+│   │       ├── mocks.rs
+│   │       ├── notification_settings
+│   │       │   └── mod.rs
+│   │       ├── sync_builder
+│   │       │   ├── bulk.rs
+│   │       │   ├── invited_room.rs
+│   │       │   ├── joined_room.rs
+│   │       │   ├── knocked_room.rs
+│   │       │   ├── left_room.rs
+│   │       │   ├── mod.rs
+│   │       │   └── test_event.rs
+│   │       └── test_json
+│   │           ├── api_responses.rs
+│   │           ├── keys_query.rs
+│   │           ├── keys_query_sets.rs
+│   │           ├── members.rs
+│   │           ├── mod.rs
+│   │           ├── search_users.rs
+│   │           ├── snapshots
+│   │           │   ├── matrix_sdk_test__test_json__keys_query_sets__KeyDistributionTestData__dan_keys_query_response.snap
+│   │           │   ├── matrix_sdk_test__test_json__keys_query_sets__KeyDistributionTestData__dan_keys_query_response_device_loggedout.snap
+│   │           │   ├── matrix_sdk_test__test_json__keys_query_sets__KeyDistributionTestData__me_keys_query_response.snap
+│   │           │   └── matrix_sdk_test__test_json__keys_query_sets__VerificationViolationTestData__own_keys_query_response_1.snap
+│   │           ├── sync.rs
+│   │           └── sync_events.rs
+│   └── matrix-sdk-test-macros
+│       ├── CHANGELOG.md
+│       ├── Cargo.toml
+│       ├── README.md
+│       └── src
+│           └── lib.rs
+├── uniffi-bindgen
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── xtask
+    ├── Cargo.toml
+    └── src
+        ├── ci.rs
+        ├── fixup.rs
+        ├── kotlin.rs
+        ├── main.rs
+        ├── release.rs
+        ├── swift.rs
+        └── workspace.rs
+206 directories, 828 files
