@@ -1,0 +1,796 @@
+.
+├── .buildpacks
+├── .docker
+│   └── database-init.sql
+├── .env.example
+├── .github
+│   └── workflows
+│       └── runUnitTests.yml
+├── .gitignore
+├── .run
+│   ├── AgoraBackApplication.run.xml
+│   ├── DailyTasks.run.xml
+│   └── Tests in 'agora-back.test'.run.xml
+├── Procfile
+├── README.md
+├── architecture-decisions
+│   ├── 2024-07-22-regenerer-les-ids-de-contenu-strapi.md
+│   └── 2024-07-29-regenerer-les-ids-de-question-strapi.md
+├── bin
+│   └── init_review_database.sh
+├── build.gradle.kts
+├── cron.json
+├── data
+│   └── questions.sql
+├── docker-compose.yml
+├── docs
+│   ├── Agora Local.postman_environment.json
+│   ├── Agora SANDBOX.postman_environment.json
+│   └── Agora.postman_collection.json
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── launchCustomCommand.sh
+├── scalingo.json
+├── servers.conf.erb
+├── settings.gradle.kts
+├── src
+│   ├── main
+│   │   ├── kotlin
+│   │   │   └── fr
+│   │   │       └── gouv
+│   │   │           └── agora
+│   │   │               ├── AgoraBackApplication.kt
+│   │   │               ├── AgoraCustomCommandHelper.kt
+│   │   │               ├── FirebaseWrapper.kt
+│   │   │               ├── config
+│   │   │               │   ├── AuthentificationHelper.kt
+│   │   │               │   ├── CacheConfig.kt
+│   │   │               │   ├── ClockConfig.kt
+│   │   │               │   ├── CmsStrapiHttpClient.kt
+│   │   │               │   ├── CrossOriginConfig.kt
+│   │   │               │   ├── DatabaseConfig.kt
+│   │   │               │   ├── ETagConfig.kt
+│   │   │               │   ├── HttpClientConfig.kt
+│   │   │               │   ├── ObjectMapperConfig.kt
+│   │   │               │   ├── SchedulerConfig.kt
+│   │   │               │   ├── WebConfig.kt
+│   │   │               │   └── WebSecurityConfig.kt
+│   │   │               ├── domain
+│   │   │               │   ├── AgoraFeature.kt
+│   │   │               │   ├── AppFeedback.kt
+│   │   │               │   ├── AppPlatform.kt
+│   │   │               │   ├── ChoixPossible.kt
+│   │   │               │   ├── Concertation.kt
+│   │   │               │   ├── ConsultationDetailsV2.kt
+│   │   │               │   ├── ConsultationPreview.kt
+│   │   │               │   ├── ConsultationPreviewPage.kt
+│   │   │               │   ├── ConsultationResultAggregated.kt
+│   │   │               │   ├── ConsultationResultWithDemographicInfo.kt
+│   │   │               │   ├── ConsultationResults.kt
+│   │   │               │   ├── ConsultationStatus.kt
+│   │   │               │   ├── ConsultationUpdateHistory.kt
+│   │   │               │   ├── ConsultationUpdateInfoV2.kt
+│   │   │               │   ├── Department.kt
+│   │   │               │   ├── FeedbackConsultationUpdate.kt
+│   │   │               │   ├── FeedbackQag.kt
+│   │   │               │   ├── FicheInventaire.kt
+│   │   │               │   ├── HeaderQag.kt
+│   │   │               │   ├── IncomingResponsePreview.kt
+│   │   │               │   ├── LoginRequest.kt
+│   │   │               │   ├── LoginTokenData.kt
+│   │   │               │   ├── ModeratusQag.kt
+│   │   │               │   ├── ModeratusQagLockResult.kt
+│   │   │               │   ├── ModeratusQagModerateResult.kt
+│   │   │               │   ├── News.kt
+│   │   │               │   ├── Notification.kt
+│   │   │               │   ├── PageQuestionAuGouvernementContent.kt
+│   │   │               │   ├── Profile.kt
+│   │   │               │   ├── QagDeleteLog.kt
+│   │   │               │   ├── QagDetails.kt
+│   │   │               │   ├── QagInserting.kt
+│   │   │               │   ├── QagInsertingUpdates.kt
+│   │   │               │   ├── QagPreview.kt
+│   │   │               │   ├── QagStatus.kt
+│   │   │               │   ├── QagUpdates.kt
+│   │   │               │   ├── QagWithSupportCount.kt
+│   │   │               │   ├── Question.kt
+│   │   │               │   ├── ReponseConsultation.kt
+│   │   │               │   ├── ResponseQag.kt
+│   │   │               │   ├── ResponseQagPreview.kt
+│   │   │               │   ├── SignupHistoryCount.kt
+│   │   │               │   ├── SignupRequest.kt
+│   │   │               │   ├── SiteVitrineAccueilContent.kt
+│   │   │               │   ├── SiteVitrineQuestionAuGouvernementContent.kt
+│   │   │               │   ├── SupportQag.kt
+│   │   │               │   ├── Territoire.kt
+│   │   │               │   ├── Thematique.kt
+│   │   │               │   ├── UserAnsweredConsultation.kt
+│   │   │               │   ├── UserAuthorization.kt
+│   │   │               │   ├── UserInfo.kt
+│   │   │               │   └── exceptions
+│   │   │               │       ├── InvalidNumberOfDepartmentsException.kt
+│   │   │               │       └── InvalidTerritoryException.kt
+│   │   │               ├── infrastructure
+│   │   │               │   ├── admin
+│   │   │               │   │   ├── DeleteUsersJson.kt
+│   │   │               │   │   ├── EditUsersController.kt
+│   │   │               │   │   └── UsersIdListJson.kt
+│   │   │               │   ├── appFeedback
+│   │   │               │   │   ├── AppFeedbackController.kt
+│   │   │               │   │   ├── AppFeedbackJson.kt
+│   │   │               │   │   ├── AppFeedbackJsonMapper.kt
+│   │   │               │   │   └── dto
+│   │   │               │   │       └── AppFeedbackDTO.kt
+│   │   │               │   ├── appVersionControl
+│   │   │               │   │   └── MinimalAppVersionRepositoryImpl.kt
+│   │   │               │   ├── common
+│   │   │               │   │   ├── DateMapper.kt
+│   │   │               │   │   ├── DefaultControllerAdvice.kt
+│   │   │               │   │   ├── StrapiDTO.kt
+│   │   │               │   │   ├── StrapiRequestBuilder.kt
+│   │   │               │   │   └── StrapiRichText.kt
+│   │   │               │   ├── concertations
+│   │   │               │   │   ├── ConcertationController.kt
+│   │   │               │   │   ├── ConcertationJson.kt
+│   │   │               │   │   ├── ConcertationMapper.kt
+│   │   │               │   │   ├── ConcertationRepository.kt
+│   │   │               │   │   ├── ConcertationStrapiDTO.kt
+│   │   │               │   │   └── ConcertationStrapiRepository.kt
+│   │   │               │   ├── consultation
+│   │   │               │   │   ├── ConsultationDetailsUpdateV2Controller.kt
+│   │   │               │   │   ├── ConsultationDetailsV2Controller.kt
+│   │   │               │   │   ├── ConsultationDetailsV2Json.kt
+│   │   │               │   │   ├── ConsultationDetailsV2JsonMapper.kt
+│   │   │               │   │   ├── ConsultationPreviewController.kt
+│   │   │               │   │   ├── ConsultationPreviewJson.kt
+│   │   │               │   │   ├── ConsultationPreviewJsonMapper.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── strapi
+│   │   │               │   │   │       ├── ConsultationContenuSectionStrapiDTO.kt
+│   │   │               │   │   │       ├── ConsultationContenuStrapiDTO.kt
+│   │   │               │   │   │       ├── ConsultationQuestionStrapiDTO.kt
+│   │   │               │   │   │       └── ConsultationStrapiDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ConsultationDetailsV2CacheRepositoryImpl.kt
+│   │   │               │   │       ├── ConsultationInfoMapper.kt
+│   │   │               │   │       ├── ConsultationInfoRepositoryImpl.kt
+│   │   │               │   │       ├── ConsultationPreviewAnsweredRepositoryImpl.kt
+│   │   │               │   │       ├── ConsultationPreviewFinishedRepositoryImpl.kt
+│   │   │               │   │       └── ConsultationStrapiRepository.kt
+│   │   │               │   ├── consultationAggregate
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── ConsultationResultAggregatedDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ConsultationResultAggregatedDatabaseRepository.kt
+│   │   │               │   │       ├── ConsultationResultAggregatedMapper.kt
+│   │   │               │   │       └── ConsultationResultAggregatedRepositoryImpl.kt
+│   │   │               │   ├── consultationPaginated
+│   │   │               │   │   ├── ConsultationAnsweredPaginatedController.kt
+│   │   │               │   │   ├── ConsultationFinishedPaginatedController.kt
+│   │   │               │   │   ├── ConsultationPaginatedJson.kt
+│   │   │               │   │   ├── ConsultationPaginatedJsonMapper.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ConsultationsAnsweredPaginatedListCacheRepositoryImpl.kt
+│   │   │               │   │       └── ConsultationsFinishedPaginatedListCacheRepositoryImpl.kt
+│   │   │               │   ├── consultationResponse
+│   │   │               │   │   ├── InsertResponseConsultationQueue.kt
+│   │   │               │   │   ├── ReponseConsultationController.kt
+│   │   │               │   │   ├── ReponseConsultationJsonMapper.kt
+│   │   │               │   │   ├── ReponsesConsultationJson.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── ReponseConsultationDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── GetConsultationResponseRepositoryImpl.kt
+│   │   │               │   │       ├── InsertReponseConsultationRepositoryImpl.kt
+│   │   │               │   │       ├── ReponseConsultationCacheRepository.kt
+│   │   │               │   │       ├── ReponseConsultationDatabaseRepository.kt
+│   │   │               │   │       └── ReponseConsultationMapper.kt
+│   │   │               │   ├── consultationResults
+│   │   │               │   │   ├── ConsultationResultJsonMapper.kt
+│   │   │               │   │   ├── ConsultationResultWithDemographicInfoTsvMapper.kt
+│   │   │               │   │   ├── ConsultationResultsJson.kt
+│   │   │               │   │   ├── ConsultationResultsV2Controller.kt
+│   │   │               │   │   ├── GetConsultationResponsesWithDemographicInfoController.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── DemographicInfoCountByChoiceDTO.kt
+│   │   │               │   │   │   ├── DemographicInfoCountDTO.kt
+│   │   │               │   │   │   └── ResponseConsultationCountDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       └── ConsultationResultsCacheRepositoryImpl.kt
+│   │   │               │   ├── consultationUpdates
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ConsultationUpdateHistoryMapper.kt
+│   │   │               │   │       ├── ConsultationUpdateHistoryRepositoryImpl.kt
+│   │   │               │   │       ├── ConsultationUpdateInfoV2Mapper.kt
+│   │   │               │   │       └── ConsultationUpdateV2RepositoryImpl.kt
+│   │   │               │   ├── content
+│   │   │               │   │   ├── ContentController.kt
+│   │   │               │   │   ├── json
+│   │   │               │   │   │   └── ContentJson.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ContentRepositoryImpl.kt
+│   │   │               │   │       ├── ContentStrapiRepository.kt
+│   │   │               │   │       └── dto
+│   │   │               │   │           ├── PagePoserMaQuestionStrapiDTO.kt
+│   │   │               │   │           ├── PageQuestionsAuGouvernementStrapiDTO.kt
+│   │   │               │   │           ├── PageReponseAuxQuestionsAuGouvernementStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrineAccueilStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrineConditionGeneralesStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrineConsultationStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrineDeclarationAccessibiliteStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrineMentionsLegalesStrapiDTO.kt
+│   │   │               │   │           ├── PageSiteVitrinePolitiqueConfidentialiteStrapiDTO.kt
+│   │   │               │   │           └── PageSiteVitrineQuestionAuGouvernementStrapiDTO.kt
+│   │   │               │   ├── errorMessages
+│   │   │               │   │   └── repository
+│   │   │               │   │       └── ErrorMessagesRepositoryImpl.kt
+│   │   │               │   ├── featureFlags
+│   │   │               │   │   └── repository
+│   │   │               │   │       └── FeatureFlagsRepositoryImpl.kt
+│   │   │               │   ├── feedbackConsultationUpdate
+│   │   │               │   │   ├── FeedbackConsultationUpdateController.kt
+│   │   │               │   │   ├── FeedbackConsultationUpdateJson.kt
+│   │   │               │   │   ├── FeedbackConsultationUpdateJsonMapper.kt
+│   │   │               │   │   ├── FeedbackConsultationUpdateQueue.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── FeedbackConsultationUpdateDTO.kt
+│   │   │               │   │   │   └── FeedbackConsultationUpdateStatsDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── FeedbackConsultationUpdateDatabaseRepository.kt
+│   │   │               │   │       ├── FeedbackConsultationUpdateMapper.kt
+│   │   │               │   │       └── FeedbackConsultationUpdateRepositoryImpl.kt
+│   │   │               │   ├── feedbackQag
+│   │   │               │   │   ├── FeedbackJsonMapper.kt
+│   │   │               │   │   ├── FeedbackQagController.kt
+│   │   │               │   │   ├── FeedbackQagJson.kt
+│   │   │               │   │   ├── FeedbackQagQueue.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── FeedbackQagDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── FeedbackQagDatabaseRepository.kt
+│   │   │               │   │       ├── FeedbackQagMapper.kt
+│   │   │               │   │       ├── FeedbackQagRepositoryImpl.kt
+│   │   │               │   │       ├── FeedbackResultsCacheRepositoryImpl.kt
+│   │   │               │   │       └── UserFeedbackQagCacheRepositoryImpl.kt
+│   │   │               │   ├── ficheInventaire
+│   │   │               │   │   ├── FicheInventaireController.kt
+│   │   │               │   │   ├── FicheInventaireFilters.kt
+│   │   │               │   │   ├── FicheInventaireJson.kt
+│   │   │               │   │   ├── FicheInventaireJsonMapper.kt
+│   │   │               │   │   ├── FicheInventaireRepositoryImpl.kt
+│   │   │               │   │   ├── FicheInventaireStrapiDTO.kt
+│   │   │               │   │   └── FicheInventaireStrapiRepository.kt
+│   │   │               │   ├── headerQag
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── HeaderQagStrapiDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── HeaderQagCacheRepositoryImpl.kt
+│   │   │               │   │       ├── HeaderQagRepositoryImpl.kt
+│   │   │               │   │       └── HeaderQagStrapiRepository.kt
+│   │   │               │   ├── login
+│   │   │               │   │   ├── LoginController.kt
+│   │   │               │   │   ├── LoginInfoJson.kt
+│   │   │               │   │   ├── LoginRequestJson.kt
+│   │   │               │   │   ├── LoginTokenGenerator.kt
+│   │   │               │   │   ├── SignupController.kt
+│   │   │               │   │   ├── SignupInfoJson.kt
+│   │   │               │   │   ├── SignupInfoJsonMapper.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── SignupHistoryCountDTO.kt
+│   │   │               │   │   │   ├── UserDTO.kt
+│   │   │               │   │   │   └── UserDataDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── AuthorizationLevel.kt
+│   │   │               │   │       ├── LoginCacheRepository.kt
+│   │   │               │   │       ├── UserDataDatabaseRepository.kt
+│   │   │               │   │       ├── UserDataMapper.kt
+│   │   │               │   │       ├── UserDataRepositoryImpl.kt
+│   │   │               │   │       ├── UserDatabaseRepository.kt
+│   │   │               │   │       ├── UserInfoMapper.kt
+│   │   │               │   │       └── UserRepositoryImpl.kt
+│   │   │               │   ├── moderatus
+│   │   │               │   │   ├── ModerateQagOptionsMapper.kt
+│   │   │               │   │   ├── ModeratusGetQagController.kt
+│   │   │               │   │   ├── ModeratusLockQagController.kt
+│   │   │               │   │   ├── ModeratusModerateQagController.kt
+│   │   │               │   │   ├── ModeratusQagListXmlMapper.kt
+│   │   │               │   │   ├── ModeratusQagLockResultXmlMapper.kt
+│   │   │               │   │   ├── ModeratusQagLockResultsXml.kt
+│   │   │               │   │   ├── ModeratusQagModerateResultPageXmlMapper.kt
+│   │   │               │   │   ├── ModeratusQagModerateResultXml.kt
+│   │   │               │   │   ├── ModeratusQagXml.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── ModeratusQagLockDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ModeratusQagLockCacheRepository.kt
+│   │   │               │   │       ├── ModeratusQagLockDatabaseRepository.kt
+│   │   │               │   │       ├── ModeratusQagLockMapper.kt
+│   │   │               │   │       └── ModeratusQagLockRepositoryImpl.kt
+│   │   │               │   ├── notification
+│   │   │               │   │   ├── ConsultationNotificationController.kt
+│   │   │               │   │   ├── NotificationPaginatedController.kt
+│   │   │               │   │   ├── NotificationPaginatedJson.kt
+│   │   │               │   │   ├── NotificationPaginatedJsonMapper.kt
+│   │   │               │   │   ├── NotificationUserController.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── NotificationDTO.kt
+│   │   │               │   │   │   └── NotificationMessageDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── NotificationCacheRepository.kt
+│   │   │               │   │       ├── NotificationDatabaseRepository.kt
+│   │   │               │   │       ├── NotificationMapper.kt
+│   │   │               │   │       ├── NotificationMessageRepositoryImpl.kt
+│   │   │               │   │       ├── NotificationRepositoryImpl.kt
+│   │   │               │   │       └── NotificationSendingRepositoryImpl.kt
+│   │   │               │   ├── participationCharter
+│   │   │               │   │   ├── ParticipationCharterController.kt
+│   │   │               │   │   ├── ParticipationCharterJson.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── ParticipationCharterStrapiDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ParticipationCharterRepositoryImpl.kt
+│   │   │               │   │       └── ParticipationCharterStrapiRepository.kt
+│   │   │               │   ├── profile
+│   │   │               │   │   ├── ProfileController.kt
+│   │   │               │   │   ├── ProfileDepartmentJson.kt
+│   │   │               │   │   ├── ProfileJson.kt
+│   │   │               │   │   ├── ProfileJsonMapper.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── DemographicInfoAskDateDTO.kt
+│   │   │               │   │   │   └── ProfileDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── DemographicInfoAskDateCacheRepository.kt
+│   │   │               │   │       ├── DemographicInfoAskDateDatabaseRepository.kt
+│   │   │               │   │       ├── DemographicInfoAskDateMapper.kt
+│   │   │               │   │       ├── DemographicInfoAskDateRepositoryImpl.kt
+│   │   │               │   │       ├── ProfileCacheRepository.kt
+│   │   │               │   │       ├── ProfileDatabaseRepository.kt
+│   │   │               │   │       ├── ProfileMapper.kt
+│   │   │               │   │       └── ProfileRepositoryImpl.kt
+│   │   │               │   ├── qag
+│   │   │               │   │   ├── DeleteQagController.kt
+│   │   │               │   │   ├── InsertQagController.kt
+│   │   │               │   │   ├── InsertQagQueue.kt
+│   │   │               │   │   ├── PublicQagJson.kt
+│   │   │               │   │   ├── PublicQagJsonMapper.kt
+│   │   │               │   │   ├── QagDetailsController.kt
+│   │   │               │   │   ├── QagInsertingJson.kt
+│   │   │               │   │   ├── QagJson.kt
+│   │   │               │   │   ├── QagJsonMapper.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   ├── LowPriorityQagDTO.kt
+│   │   │               │   │   │   ├── QagDTO.kt
+│   │   │               │   │   │   ├── QagDeleteLogDTO.kt
+│   │   │               │   │   │   └── QagWithSupportCountDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── LowPriorityQagDatabaseRepository.kt
+│   │   │               │   │       ├── LowPriorityQagRepositoryImpl.kt
+│   │   │               │   │       ├── QagDeleteLogDatabaseRepository.kt
+│   │   │               │   │       ├── QagDeleteLogMapper.kt
+│   │   │               │   │       ├── QagDeleteLogRepositoryImpl.kt
+│   │   │               │   │       ├── QagInfoDatabaseRepository.kt
+│   │   │               │   │       ├── QagInfoMapper.kt
+│   │   │               │   │       └── QagInfoRepositoryImpl.kt
+│   │   │               │   ├── qagHome
+│   │   │               │   │   ├── QagHomeController.kt
+│   │   │               │   │   ├── QagHomeJsonMapper.kt
+│   │   │               │   │   ├── QagHomeSearchController.kt
+│   │   │               │   │   ├── QagHomeV2Controller.kt
+│   │   │               │   │   └── QagPreviewsJson.kt
+│   │   │               │   ├── qagPaginated
+│   │   │               │   │   ├── QagPaginatedJson.kt
+│   │   │               │   │   └── QagPaginatedJsonMapper.kt
+│   │   │               │   ├── qagUpdates
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── QagUpdatesDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── QagUpdatesDatabaseRepository.kt
+│   │   │               │   │       ├── QagUpdatesMapper.kt
+│   │   │               │   │       └── QagUpdatesRepositoryImpl.kt
+│   │   │               │   ├── question
+│   │   │               │   │   ├── QuestionController.kt
+│   │   │               │   │   ├── QuestionJsonMapper.kt
+│   │   │               │   │   ├── QuestionsJson.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── QuestionMapper.kt
+│   │   │               │   │       ├── QuestionRepositoryImpl.kt
+│   │   │               │   │       └── QuestionsMapper.kt
+│   │   │               │   ├── referentiel
+│   │   │               │   │   ├── ReferentielController.kt
+│   │   │               │   │   ├── RegionJson.kt
+│   │   │               │   │   ├── TerritoiresJson.kt
+│   │   │               │   │   └── TerritoiresJsonMapper.kt
+│   │   │               │   ├── responseQag
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── StrapiResponseQagDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ResponseQagMapper.kt
+│   │   │               │   │       ├── ResponseQagRepositoryImpl.kt
+│   │   │               │   │       └── ResponseQagStrapiRepository.kt
+│   │   │               │   ├── responseQagPaginated
+│   │   │               │   │   ├── ResponseQagPaginatedController.kt
+│   │   │               │   │   ├── ResponseQagPaginatedJson.kt
+│   │   │               │   │   └── ResponseQagPaginatedJsonMapper.kt
+│   │   │               │   ├── supportQag
+│   │   │               │   │   ├── SupportQagController.kt
+│   │   │               │   │   ├── SupportQagQueue.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── SupportQagDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── GetSupportQagRepositoryImpl.kt
+│   │   │               │   │       ├── SupportQagDatabaseRepository.kt
+│   │   │               │   │       ├── SupportQagMapper.kt
+│   │   │               │   │       └── SupportQagRepositoryImpl.kt
+│   │   │               │   ├── suspiciousUser
+│   │   │               │   │   └── repository
+│   │   │               │   │       └── SignupCountCacheRepository.kt
+│   │   │               │   ├── thematique
+│   │   │               │   │   ├── ThematiqueController.kt
+│   │   │               │   │   ├── ThematiqueJsonMapper.kt
+│   │   │               │   │   ├── ThematiquesJson.kt
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── ThematiqueStrapiDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── ThematiqueCacheRepository.kt
+│   │   │               │   │       ├── ThematiqueMapper.kt
+│   │   │               │   │       ├── ThematiqueRepositoryImpl.kt
+│   │   │               │   │       └── ThematiqueStrapiRepository.kt
+│   │   │               │   ├── userAnsweredConsultation
+│   │   │               │   │   ├── dto
+│   │   │               │   │   │   └── UserAnsweredConsultationDTO.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── UserAnsweredConsultationDatabaseRepository.kt
+│   │   │               │   │       ├── UserAnsweredConsultationMapper.kt
+│   │   │               │   │       └── UserAnsweredConsultationRepositoryImpl.kt
+│   │   │               │   ├── utils
+│   │   │               │   │   ├── AgoraQueue.kt
+│   │   │               │   │   ├── DateUtils.kt
+│   │   │               │   │   ├── IpAddressUtils.kt
+│   │   │               │   │   ├── StringUtils.kt
+│   │   │               │   │   └── UuidUtils.kt
+│   │   │               │   └── welcomePage
+│   │   │               │       ├── NewsJson.kt
+│   │   │               │       ├── WelcomePageController.kt
+│   │   │               │       └── repository
+│   │   │               │           ├── NewsRepository.kt
+│   │   │               │           ├── NewsStrapiDTO.kt
+│   │   │               │           └── NewsStrapiRepository.kt
+│   │   │               ├── oninit
+│   │   │               │   ├── AgoraCustomCommandHandler.kt
+│   │   │               │   ├── CustomCommandHandler.kt
+│   │   │               │   ├── DailyTasksHandler.kt
+│   │   │               │   ├── FeatureFlagsLogger.kt
+│   │   │               │   └── WeeklyTasksHandler.kt
+│   │   │               ├── security
+│   │   │               │   ├── UserAuthorizationJWT.kt
+│   │   │               │   ├── UserInfoJwt.kt
+│   │   │               │   ├── UserJwtMapper.kt
+│   │   │               │   └── jwt
+│   │   │               │       ├── AgoraAuthenticationEntryPoint.kt
+│   │   │               │       ├── AuthenticationTokenFilter.kt
+│   │   │               │       └── JwtTokenUtils.kt
+│   │   │               └── usecase
+│   │   │                   ├── appFeedback
+│   │   │                   │   ├── InsertAppFeedbackUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── AppFeedbackDatabaseRepository.kt
+│   │   │                   │       ├── AppFeedbackMapper.kt
+│   │   │                   │       ├── AppFeedbackRepository.kt
+│   │   │                   │       └── AppFeedbackRepositoryImpl.kt
+│   │   │                   ├── appVersionControl
+│   │   │                   │   ├── AppVersionControlUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── MinimalAppVersionRepository.kt
+│   │   │                   ├── changeUserAuthorizationLevel
+│   │   │                   │   ├── DowngradeUsersUseCase.kt
+│   │   │                   │   └── UpgradeUsersToPublisherUseCase.kt
+│   │   │                   ├── concertations
+│   │   │                   │   ├── ConcertationJsonMapper.kt
+│   │   │                   │   └── GetConcertationsUseCase.kt
+│   │   │                   ├── consultation
+│   │   │                   │   ├── ConsultationCacheClearUseCase.kt
+│   │   │                   │   ├── ConsultationDetailsUpdateV2UseCase.kt
+│   │   │                   │   ├── ConsultationDetailsV2UseCase.kt
+│   │   │                   │   ├── ConsultationPreviewFinishedMapper.kt
+│   │   │                   │   ├── ConsultationPreviewOngoingMapper.kt
+│   │   │                   │   ├── ConsultationPreviewUseCase.kt
+│   │   │                   │   ├── exception
+│   │   │                   │   │   ├── ConsultationNotFoundException.kt
+│   │   │                   │   │   └── ConsultationUpdateNotFoundException.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── ConsultationDetailsV2CacheRepository.kt
+│   │   │                   │       ├── ConsultationInfo.kt
+│   │   │                   │       ├── ConsultationInfoRepository.kt
+│   │   │                   │       └── ConsultationWithUpdateInfo.kt
+│   │   │                   ├── consultationAggregate
+│   │   │                   │   ├── AggregateConsultationResultMapper.kt
+│   │   │                   │   ├── AggregateConsultationResultUseCase.kt
+│   │   │                   │   ├── PickConsultationsToAggregateUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ConsultationResultAggregatedRepository.kt
+│   │   │                   ├── consultationPaginated
+│   │   │                   │   ├── ConsultationsAnsweredPaginatedListUseCase.kt
+│   │   │                   │   ├── ConsultationsByUserPreferencesUseCase.kt
+│   │   │                   │   ├── ConsultationsFinishedPaginatedListUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── ConsultationAnsweredPaginatedListCacheRepository.kt
+│   │   │                   │       ├── ConsultationFinishedPaginatedListCacheRepository.kt
+│   │   │                   │       ├── ConsultationPreviewAnsweredRepository.kt
+│   │   │                   │       └── ConsultationPreviewFinishedRepository.kt
+│   │   │                   ├── consultationResponse
+│   │   │                   │   ├── ControlResponseConsultationUseCase.kt
+│   │   │                   │   ├── GetConsultationResultsWithDemographicRatiosUseCase.kt
+│   │   │                   │   ├── InsertConsultationResponseParametersMapper.kt
+│   │   │                   │   ├── InsertReponseConsultationUseCase.kt
+│   │   │                   │   ├── ResponseQuestionValidator.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── GetConsultationResponseRepository.kt
+│   │   │                   │       ├── InsertReponseConsultationRepository.kt
+│   │   │                   │       └── UserAnsweredConsultationRepository.kt
+│   │   │                   ├── consultationResults
+│   │   │                   │   ├── ConsultationResultsUseCase.kt
+│   │   │                   │   ├── QuestionNoResponseMapper.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ConsultationResultsCacheRepository.kt
+│   │   │                   ├── consultationUpdate
+│   │   │                   │   └── repository
+│   │   │                   │       ├── ConsultationUpdateHistoryRepository.kt
+│   │   │                   │       └── ConsultationUpdateV2Repository.kt
+│   │   │                   ├── content
+│   │   │                   │   ├── GetContentPagePoserMaQuestionUseCase.kt
+│   │   │                   │   ├── GetContentPageReponseAuxQuestionsAuGouvernementUseCase.kt
+│   │   │                   │   ├── GetContentQuestionsAuGouvernementUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineAccueilContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineConditionGeneralesContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineConsultationContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineDeclarationAccessibiliteContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineMentionsLegalesContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrinePolitiqueConfidentialiteContentUseCase.kt
+│   │   │                   │   ├── GetSiteVitrineQuestionAuGouvernementContentUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ContentRepository.kt
+│   │   │                   ├── deleteUsers
+│   │   │                   │   └── DeleteUsersUseCase.kt
+│   │   │                   ├── errorMessages
+│   │   │                   │   └── repository
+│   │   │                   │       └── ErrorMessagesRepository.kt
+│   │   │                   ├── featureFlags
+│   │   │                   │   ├── FeatureFlagsUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── FeatureFlagsRepository.kt
+│   │   │                   ├── feedbackConsultationUpdate
+│   │   │                   │   ├── FeedbackConsultationUpdateUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── FeedbackConsultationUpdateRepository.kt
+│   │   │                   ├── feedbackQag
+│   │   │                   │   ├── FeedbackQagUseCase.kt
+│   │   │                   │   ├── InsertFeedbackQagUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── FeedbackQagRepository.kt
+│   │   │                   │       ├── FeedbackResultsCacheRepository.kt
+│   │   │                   │       └── UserFeedbackQagCacheRepository.kt
+│   │   │                   ├── ficheInventaire
+│   │   │                   │   ├── FicheInventaireNotFound.kt
+│   │   │                   │   ├── FicheInventaireRepository.kt
+│   │   │                   │   ├── GetFicheInventaireUseCase.kt
+│   │   │                   │   └── GetFichesInventaireUseCase.kt
+│   │   │                   ├── login
+│   │   │                   │   ├── LoginUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── UserDataRepository.kt
+│   │   │                   │       └── UserRepository.kt
+│   │   │                   ├── moderatus
+│   │   │                   │   ├── GetModeratusQagModeratingUseCase.kt
+│   │   │                   │   ├── LockModeratusQagListUseCase.kt
+│   │   │                   │   ├── ModerateModeratusQagUseCase.kt
+│   │   │                   │   ├── ModeratusLoginUseCase.kt
+│   │   │                   │   ├── ModeratusQagMapper.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ModeratusQagLockRepository.kt
+│   │   │                   ├── notification
+│   │   │                   │   ├── FcmTokenVideException.kt
+│   │   │                   │   ├── NotificationPaginatedUseCase.kt
+│   │   │                   │   ├── QagIdInconnuException.kt
+│   │   │                   │   ├── SendConsultationNotificationUseCase.kt
+│   │   │                   │   ├── SendDepartementNotificationUseCase.kt
+│   │   │                   │   ├── SendQagNotificationUseCase.kt
+│   │   │                   │   ├── SendUserNotificationUseCase.kt
+│   │   │                   │   ├── SendUsersNotificationUseCase.kt
+│   │   │                   │   ├── UserIdInconnuException.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── NotificationMessageRepository.kt
+│   │   │                   │       ├── NotificationRepository.kt
+│   │   │                   │       └── NotificationSendingRepository.kt
+│   │   │                   ├── participationCharter
+│   │   │                   │   ├── ParticipationCharterUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ParticipationCharterRepository.kt
+│   │   │                   ├── profile
+│   │   │                   │   ├── AskForDemographicInfoUseCase.kt
+│   │   │                   │   ├── GetProfileUseCase.kt
+│   │   │                   │   ├── InsertProfileUseCase.kt
+│   │   │                   │   ├── UpdateDepartmentsUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── DemographicInfoAskDateRepository.kt
+│   │   │                   │       └── ProfileRepository.kt
+│   │   │                   ├── qag
+│   │   │                   │   ├── ContentSanitizer.kt
+│   │   │                   │   ├── DeleteQagUseCase.kt
+│   │   │                   │   ├── GetAskQagStatusUseCase.kt
+│   │   │                   │   ├── GetPublicQagDetailsUseCase.kt
+│   │   │                   │   ├── GetQagByKeywordsUseCase.kt
+│   │   │                   │   ├── GetQagCountUseCase.kt
+│   │   │                   │   ├── GetQagDetailsUseCase.kt
+│   │   │                   │   ├── GetQagErrorTextUseCase.kt
+│   │   │                   │   ├── InsertQagUseCase.kt
+│   │   │                   │   ├── QagDetailsAggregate.kt
+│   │   │                   │   ├── QagDetailsMapper.kt
+│   │   │                   │   ├── QagPreviewMapper.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── LowPriorityQagRepository.kt
+│   │   │                   │       ├── QagDeleteLogRepository.kt
+│   │   │                   │       ├── QagInfo.kt
+│   │   │                   │       ├── QagInfoRepository.kt
+│   │   │                   │       └── QagInfoWithSupportCount.kt
+│   │   │                   ├── qagArchive
+│   │   │                   │   └── ArchiveOldQagUseCase.kt
+│   │   │                   ├── qagPaginated
+│   │   │                   │   ├── QagPaginatedV2UseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── HeaderQagCacheRepository.kt
+│   │   │                   │       └── HeaderQagRepository.kt
+│   │   │                   ├── qagSelection
+│   │   │                   │   ├── RandomQagSelector.kt
+│   │   │                   │   └── SelectMostPopularQagUseCase.kt
+│   │   │                   ├── qagUpdates
+│   │   │                   │   └── repository
+│   │   │                   │       └── QagUpdatesRepository.kt
+│   │   │                   ├── question
+│   │   │                   │   ├── ListQuestionConsultationUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── QuestionRepository.kt
+│   │   │                   ├── responseQag
+│   │   │                   │   ├── GetResponseQagPreviewPaginatedListUseCase.kt
+│   │   │                   │   ├── ResponseQagPreviewListMapper.kt
+│   │   │                   │   ├── ResponseQagPreviewListUseCase.kt
+│   │   │                   │   ├── ResponseQagPreviewOrderMapper.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ResponseQagRepository.kt
+│   │   │                   ├── supportQag
+│   │   │                   │   ├── DeleteSupportQagUseCase.kt
+│   │   │                   │   ├── InsertSupportQagUseCase.kt
+│   │   │                   │   ├── SupportQagUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── GetSupportQagRepository.kt
+│   │   │                   │       └── SupportQagRepository.kt
+│   │   │                   ├── suspiciousUser
+│   │   │                   │   ├── DeleteSuspiciousSupportsUseCase.kt
+│   │   │                   │   ├── IsSuspiciousUserUseCase.kt
+│   │   │                   │   ├── SuspiciousActivityDetectUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── SignupCountRepository.kt
+│   │   │                   ├── thematique
+│   │   │                   │   ├── ListThematiqueUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       └── ThematiqueRepository.kt
+│   │   │                   └── welcomePage
+│   │   │                       ├── GetLastNewsUseCase.kt
+│   │   │                       └── NewsJsonMapper.kt
+│   │   └── resources
+│   │       ├── StanfordCoreNLP-french.properties
+│   │       ├── application.properties
+│   │       └── logback.xml
+│   └── test
+│       ├── kotlin
+│       │   └── fr
+│       │       └── gouv
+│       │           └── agora
+│       │               ├── TestUtils.kt
+│       │               ├── infrastructure
+│       │               │   ├── common
+│       │               │   │   ├── StrapiRequestBuilderTest.kt
+│       │               │   │   └── StrapiRichTextTest.kt
+│       │               │   ├── consultation
+│       │               │   │   └── dto
+│       │               │   │       └── ConsultationStrapiDTOTest.kt
+│       │               │   ├── consultationResponse
+│       │               │   │   └── repository
+│       │               │   │       └── InsertReponseConsultationRepositoryImplTest.kt
+│       │               │   ├── consultationResults
+│       │               │   │   └── repository
+│       │               │   │       └── ConsultationResultAggregatedRepositoryImplTest.kt
+│       │               │   ├── feedbackConsultationUpdate
+│       │               │   │   └── repository
+│       │               │   │       └── FeedbackConsultationUpdateMapperTest.kt
+│       │               │   ├── login
+│       │               │   │   └── repository
+│       │               │   │       └── UserRepositoryImplTest.kt
+│       │               │   ├── moderatus
+│       │               │   │   ├── ModerateQagOptionsMapperTest.kt
+│       │               │   │   └── repository
+│       │               │   │       └── ModeratusQagLockRepositoryImplTest.kt
+│       │               │   ├── notification
+│       │               │   │   └── repository
+│       │               │   │       └── NotificationRepositoryImplTest.kt
+│       │               │   ├── profile
+│       │               │   │   └── repository
+│       │               │   │       ├── DemographicInfoAskDateRepositoryImplTest.kt
+│       │               │   │       └── ProfileRepositoryImplTest.kt
+│       │               │   ├── qag
+│       │               │   │   └── repository
+│       │               │   │       └── QagInfoRepositoryImplTest.kt
+│       │               │   ├── question
+│       │               │   │   ├── QuestionJsonMapperTest.kt
+│       │               │   │   └── repository
+│       │               │   │       └── QuestionsMapperTest.kt
+│       │               │   ├── responseQag
+│       │               │   │   └── repository
+│       │               │   │       └── ResponseQagRepositoryImplTest.kt
+│       │               │   ├── supportQag
+│       │               │   │   ├── SupportQagQueueTest.kt
+│       │               │   │   └── repository
+│       │               │   │       └── SupportQagInsertingMapperTest.kt
+│       │               │   ├── thematique
+│       │               │   │   └── repository
+│       │               │   │       └── ThematiqueRepositoryImplTest.kt
+│       │               │   └── userAnsweredConsultation
+│       │               │       └── repository
+│       │               │           └── UserAnsweredConsultationRepositoryImplTest.kt
+│       │               └── usecase
+│       │                   ├── appVersionControl
+│       │                   │   └── AppVersionControlUseCaseTest.kt
+│       │                   ├── consultation
+│       │                   │   ├── ConsultationPreviewFinishedMapperTest.kt
+│       │                   │   ├── ConsultationPreviewMapperTest.kt
+│       │                   │   └── ConsultationPreviewUseCaseTest.kt
+│       │                   ├── consultationAggregate
+│       │                   │   ├── AggregateConsultationResultUseCaseTest.kt
+│       │                   │   └── PickConsultationsToAggregateUseCaseTest.kt
+│       │                   ├── consultationPaginated
+│       │                   │   ├── ConsultationsAnsweredPaginatedListUseCaseTest.kt
+│       │                   │   └── ConsultationsFinishedPaginatedListUseCaseTest.kt
+│       │                   ├── consultationResponse
+│       │                   │   ├── ControlResponseConsultationUseCaseTest.kt
+│       │                   │   └── InsertReponseConsultationUseCaseTest.kt
+│       │                   ├── consultationResults
+│       │                   │   └── ConsultationResultsUseCaseTest.kt
+│       │                   ├── feedbackQag
+│       │                   │   ├── FeedbackQagUseCaseTest.kt
+│       │                   │   └── InsertFeedbackQagUseCaseTest.kt
+│       │                   ├── login
+│       │                   │   └── LoginUseCaseTest.kt
+│       │                   ├── moderatus
+│       │                   │   ├── LockModeratusQagListUseCaseTest.kt
+│       │                   │   ├── ModerateModeratusQagUseCaseTest.kt
+│       │                   │   └── ModeratusLoginUseCaseTest.kt
+│       │                   ├── profile
+│       │                   │   └── AskForDemographicInfoUseCaseTest.kt
+│       │                   ├── qag
+│       │                   │   ├── ContentSanitizerTest.kt
+│       │                   │   ├── GetAskQagStatusUseCaseTest.kt
+│       │                   │   ├── GetPublicQagDetailsUseCaseTest.kt
+│       │                   │   ├── GetQagByKeywordsUseCaseTest.kt
+│       │                   │   ├── GetQagDetailsUseCaseTest.kt
+│       │                   │   └── InsertQagUseCaseTest.kt
+│       │                   ├── qagArchive
+│       │                   │   └── ArchiveOldQagUseCaseTest.kt
+│       │                   ├── qagSelection
+│       │                   │   └── SelectMostPopularQagUseCaseTest.kt
+│       │                   ├── reponseQag
+│       │                   │   └── GetResponseQagPreviewPaginatedListUseCaseTest.kt
+│       │                   ├── responseQag
+│       │                   │   ├── ResponseQagPreviewListMapperTest.kt
+│       │                   │   └── ResponseQagPreviewOrderMapperTest.kt
+│       │                   ├── suspiciousUser
+│       │                   │   └── IsSuspiciousUserUseCaseTest.kt
+│       │                   └── welcomePage
+│       │                       └── GetLastNewsUseCaseTest.kt
+│       └── resources
+│           └── mockito-extensions
+│               └── org.mockito.plugins.MockMaker
+└── system.properties
+226 directories, 569 files
