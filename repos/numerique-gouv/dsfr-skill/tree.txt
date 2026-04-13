@@ -1,0 +1,523 @@
+.
+├── .claude-plugin
+│   ├── marketplace.json
+│   └── plugin.json
+├── .gitignore
+├── LICENSE.md
+├── README.md
+├── TODO.md
+├── generate-skill-md.sh
+├── ressources
+│   ├── README.md
+│   ├── SKILL_FOOTER.md
+│   └── SKILL_HEADER.md
+├── skills
+│   └── dsfr-skill
+│       ├── SKILL.md
+│       ├── VERSION.md
+│       └── composants
+│           ├── accordion
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── anatomy
+│           │   │   │   └── anatomy-1.png
+│           │   │   ├── cover.png
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1-simple.html
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2-group.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3-independent.html
+│           │   │   ├── example-3.html
+│           │   │   └── example-4.html
+│           │   └── index.md
+│           ├── alert
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       ├── dont-1.png
+│           │   │       ├── dont-2.png
+│           │   │       └── dont-3.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── badge
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   └── dont-3.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       └── do-4.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   └── example-2.html
+│           │   └── index.md
+│           ├── breadcrumb
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   └── dont-1.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       ├── do-4.png
+│           │   │       ├── dont-1.png
+│           │   │       ├── dont-2.png
+│           │   │       └── dont-3.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── button
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   └── dont-3.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── do-4.png
+│           │   │   │   ├── do-5.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   ├── dont-3.png
+│           │   │   │   ├── dont-4.png
+│           │   │   │   ├── dont-5.png
+│           │   │   │   └── dont-6.png
+│           │   │   ├── use
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   └── variation
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       ├── do-4.png
+│           │   │       ├── dont-1.png
+│           │   │       ├── dont-2.png
+│           │   │       └── dont-3.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   └── example-4.html
+│           │   └── index.md
+│           ├── card
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── use
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── do-4.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   ├── dont-3.png
+│           │   │   │   └── dont-4.png
+│           │   │   └── variation
+│           │   │       └── dont-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   └── example-5.html
+│           │   └── index.md
+│           ├── checkbox
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       └── do-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   └── example-2.html
+│           │   └── index.md
+│           ├── footer
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   └── custom
+│           │   │       ├── do-1.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   └── example-2.html
+│           │   └── index.md
+│           ├── header
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   └── custom
+│           │   │       ├── do-1.png
+│           │   │       ├── dont-1.png
+│           │   │       ├── dont-2.png
+│           │   │       ├── dont-3.png
+│           │   │       └── dont-4.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── input
+│           │   ├── accessibilite.md
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── link
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   ├── use
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── variation
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       ├── do-4.png
+│           │   │       └── dont-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   ├── example-6.html
+│           │   │   ├── example-7.html
+│           │   │   ├── example-8.html
+│           │   │   └── example-9.html
+│           │   └── index.md
+│           ├── modal
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       └── dont-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── navigation
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── do-4.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   ├── dont-3.png
+│           │   │   │   └── dont-4.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       └── dont-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   ├── example-6.html
+│           │   │   └── example-7.html
+│           │   └── index.md
+│           ├── notice
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── do-3.png
+│           │   │       ├── dont-1.png
+│           │   │       ├── dont-2.png
+│           │   │       └── dont-3.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   └── example-1.html
+│           │   └── index.md
+│           ├── pagination
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   └── custom
+│           │   │       ├── do-1.png
+│           │   │       └── dont-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   └── example-2.html
+│           │   └── index.md
+│           ├── radio
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   └── dont-2.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   ├── example-6.html
+│           │   │   └── example-7.html
+│           │   └── index.md
+│           ├── search
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   └── dont-3.png
+│           │   │   ├── edit
+│           │   │   │   └── do-1.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   └── example-1.html
+│           │   └── index.md
+│           ├── select
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       └── do-1.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   └── example-6.html
+│           │   └── index.md
+│           ├── tab
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   └── custom
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   └── example-4.html
+│           │   └── index.md
+│           ├── table
+│           │   ├── accessibilite.md
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   └── example-3.html
+│           │   └── index.md
+│           ├── tag
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   └── dont-3.png
+│           │   │   ├── edit
+│           │   │   │   ├── do-1.png
+│           │   │   │   └── dont-1.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-10.html
+│           │   │   ├── example-11.html
+│           │   │   ├── example-12.html
+│           │   │   ├── example-13.html
+│           │   │   ├── example-14.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   ├── example-6.html
+│           │   │   ├── example-7.html
+│           │   │   ├── example-8.html
+│           │   │   └── example-9.html
+│           │   └── index.md
+│           ├── tile
+│           │   ├── accessibilite.md
+│           │   ├── assets
+│           │   │   ├── custom
+│           │   │   │   ├── do-1.png
+│           │   │   │   ├── do-2.png
+│           │   │   │   ├── do-3.png
+│           │   │   │   ├── dont-1.png
+│           │   │   │   ├── dont-2.png
+│           │   │   │   └── dont-3.png
+│           │   │   └── use
+│           │   │       ├── do-1.png
+│           │   │       ├── do-2.png
+│           │   │       ├── dont-1.png
+│           │   │       └── dont-2.png
+│           │   ├── code.md
+│           │   ├── design.md
+│           │   ├── examples
+│           │   │   ├── example-1.html
+│           │   │   ├── example-2.html
+│           │   │   ├── example-3.html
+│           │   │   ├── example-4.html
+│           │   │   ├── example-5.html
+│           │   │   ├── example-6.html
+│           │   │   ├── example-7.html
+│           │   │   └── example-8.html
+│           │   └── index.md
+│           └── toggle
+│               ├── accessibilite.md
+│               ├── assets
+│               │   ├── custom
+│               │   │   ├── do-1.png
+│               │   │   ├── do-2.png
+│               │   │   ├── dont-1.png
+│               │   │   └── dont-2.png
+│               │   ├── edit
+│               │   │   ├── do-1.png
+│               │   │   └── do-2.png
+│               │   └── use
+│               │       ├── do-1.png
+│               │       ├── do-2.png
+│               │       ├── dont-1.png
+│               │       └── dont-2.png
+│               ├── code.md
+│               ├── design.md
+│               ├── examples
+│               │   ├── example-1.html
+│               │   ├── example-2.html
+│               │   ├── example-3.html
+│               │   └── example-4.html
+│               └── index.md
+├── sync-all.sh
+└── sync-component.sh
+124 directories, 398 files
