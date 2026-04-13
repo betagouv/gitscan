@@ -1,0 +1,61 @@
+{
+  "name": "api-infrastructure",
+  "version": "1.0.0",
+  "description": "Infrastructure de l'API de la cartographie nationale des lieux de médiation numérique",
+  "keywords": [
+    "aws",
+    "terraform",
+    "infrastructure-as-code",
+    "gouvernement",
+    "betagouv",
+    "anct",
+    "médiation numerique",
+    "inclusion numerique"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest",
+    "lint.es": "eslint",
+    "lint.commit": "commitlint --from origin/main",
+    "lint.staged": "lint-staged",
+    "prettier": "prettier --write ./src/",
+    "prettier.ci": "prettier --check ./src/",
+    "prepare": "husky install"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "contributors": [
+    {
+      "name": "Marc Gavanier",
+      "email": "marc.gavanier@gmail.com",
+      "url": "https://www.linkedin.com/in/marc-gavanier/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anct-cartographie-nationale/api-application.git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/aws-lambda": "^8.10.152",
+    "@types/node": "^24.4.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vitest": "^0.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.888.0",
+    "@aws-sdk/client-s3": "^3.888.0",
+    "@aws-sdk/lib-dynamodb": "^3.888.0"
+  }
+}
