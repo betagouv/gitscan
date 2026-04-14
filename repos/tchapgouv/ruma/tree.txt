@@ -1,0 +1,986 @@
+.
+├── .cargo
+│   └── config.toml
+├── .clippy.toml
+├── .deny.toml
+├── .editorconfig
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   ├── config.yml
+│   │   ├── doc-improvement.md
+│   │   └── feature_request.md
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       └── deps.yml
+├── .gitignore
+├── .rustfmt.toml
+├── .typos.toml
+├── .wasm
+│   └── .clippy.toml
+├── CONTRIBUTING.md
+├── Cargo.toml
+├── LICENSE
+├── README.md
+├── contrib
+│   ├── how_to_release.md
+│   ├── ide
+│   │   └── vscode
+│   │       └── settings.json
+│   └── workspace_deps.png
+├── crates
+│   ├── ruma
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       └── lib.rs
+│   ├── ruma-appservice-api
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── event
+│   │   │   │   └── push_events.rs
+│   │   │   ├── event.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── ping
+│   │   │   │   └── send_ping.rs
+│   │   │   ├── ping.rs
+│   │   │   ├── query
+│   │   │   │   ├── query_room_alias.rs
+│   │   │   │   └── query_user_id.rs
+│   │   │   ├── query.rs
+│   │   │   ├── thirdparty
+│   │   │   │   ├── get_location_for_protocol.rs
+│   │   │   │   ├── get_location_for_room_alias.rs
+│   │   │   │   ├── get_protocol.rs
+│   │   │   │   ├── get_user_for_protocol.rs
+│   │   │   │   └── get_user_for_user_id.rs
+│   │   │   └── thirdparty.rs
+│   │   └── tests
+│   │       └── appservice_registration.rs
+│   ├── ruma-client
+│   │   ├── .gitignore
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   └── src
+│   │       ├── client
+│   │       │   └── builder.rs
+│   │       ├── client.rs
+│   │       ├── error.rs
+│   │       ├── http_client
+│   │       │   ├── hyper.rs
+│   │       │   └── reqwest.rs
+│   │       ├── http_client.rs
+│   │       └── lib.rs
+│   ├── ruma-client-api
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── account
+│   │   │   │   ├── add_3pid.rs
+│   │   │   │   ├── bind_3pid.rs
+│   │   │   │   ├── change_password.rs
+│   │   │   │   ├── check_registration_token_validity.rs
+│   │   │   │   ├── deactivate.rs
+│   │   │   │   ├── delete_3pid.rs
+│   │   │   │   ├── get_3pids.rs
+│   │   │   │   ├── get_username_availability.rs
+│   │   │   │   ├── register.rs
+│   │   │   │   ├── request_3pid_management_token_via_email.rs
+│   │   │   │   ├── request_3pid_management_token_via_msisdn.rs
+│   │   │   │   ├── request_openid_token.rs
+│   │   │   │   ├── request_password_change_token_via_email.rs
+│   │   │   │   ├── request_password_change_token_via_msisdn.rs
+│   │   │   │   ├── request_registration_token_via_email.rs
+│   │   │   │   ├── request_registration_token_via_msisdn.rs
+│   │   │   │   ├── unbind_3pid.rs
+│   │   │   │   └── whoami.rs
+│   │   │   ├── account.rs
+│   │   │   ├── alias
+│   │   │   │   ├── create_alias.rs
+│   │   │   │   ├── delete_alias.rs
+│   │   │   │   └── get_alias.rs
+│   │   │   ├── alias.rs
+│   │   │   ├── appservice
+│   │   │   │   ├── request_ping.rs
+│   │   │   │   └── set_room_visibility.rs
+│   │   │   ├── appservice.rs
+│   │   │   ├── authenticated_media
+│   │   │   │   ├── get_content.rs
+│   │   │   │   ├── get_content_as_filename.rs
+│   │   │   │   ├── get_content_thumbnail.rs
+│   │   │   │   ├── get_media_config.rs
+│   │   │   │   └── get_media_preview.rs
+│   │   │   ├── authenticated_media.rs
+│   │   │   ├── backup
+│   │   │   │   ├── add_backup_keys.rs
+│   │   │   │   ├── add_backup_keys_for_room.rs
+│   │   │   │   ├── add_backup_keys_for_session.rs
+│   │   │   │   ├── create_backup_version.rs
+│   │   │   │   ├── delete_backup_keys.rs
+│   │   │   │   ├── delete_backup_keys_for_room.rs
+│   │   │   │   ├── delete_backup_keys_for_session.rs
+│   │   │   │   ├── delete_backup_version.rs
+│   │   │   │   ├── get_backup_info.rs
+│   │   │   │   ├── get_backup_keys.rs
+│   │   │   │   ├── get_backup_keys_for_room.rs
+│   │   │   │   ├── get_backup_keys_for_session.rs
+│   │   │   │   ├── get_latest_backup_info.rs
+│   │   │   │   └── update_backup_version.rs
+│   │   │   ├── backup.rs
+│   │   │   ├── config
+│   │   │   │   ├── get_global_account_data.rs
+│   │   │   │   ├── get_room_account_data.rs
+│   │   │   │   ├── set_global_account_data.rs
+│   │   │   │   └── set_room_account_data.rs
+│   │   │   ├── config.rs
+│   │   │   ├── context
+│   │   │   │   └── get_context.rs
+│   │   │   ├── context.rs
+│   │   │   ├── dehydrated_device
+│   │   │   │   ├── delete_dehydrated_device.rs
+│   │   │   │   ├── get_dehydrated_device.rs
+│   │   │   │   ├── get_events.rs
+│   │   │   │   └── put_dehydrated_device.rs
+│   │   │   ├── dehydrated_device.rs
+│   │   │   ├── delayed_events
+│   │   │   │   ├── delayed_message_event.rs
+│   │   │   │   ├── delayed_state_event.rs
+│   │   │   │   └── update_delayed_event.rs
+│   │   │   ├── delayed_events.rs
+│   │   │   ├── device
+│   │   │   │   ├── delete_device.rs
+│   │   │   │   ├── delete_devices.rs
+│   │   │   │   ├── get_device.rs
+│   │   │   │   ├── get_devices.rs
+│   │   │   │   └── update_device.rs
+│   │   │   ├── device.rs
+│   │   │   ├── directory
+│   │   │   │   ├── get_public_rooms.rs
+│   │   │   │   ├── get_public_rooms_filtered.rs
+│   │   │   │   ├── get_room_visibility.rs
+│   │   │   │   └── set_room_visibility.rs
+│   │   │   ├── directory.rs
+│   │   │   ├── discovery
+│   │   │   │   ├── discover_homeserver.rs
+│   │   │   │   ├── discover_support.rs
+│   │   │   │   ├── get_authentication_issuer.rs
+│   │   │   │   ├── get_capabilities
+│   │   │   │   │   ├── iter.rs
+│   │   │   │   │   └── v3.rs
+│   │   │   │   ├── get_capabilities.rs
+│   │   │   │   └── get_supported_versions.rs
+│   │   │   ├── discovery.rs
+│   │   │   ├── doc
+│   │   │   │   └── string_enum.md
+│   │   │   ├── error
+│   │   │   │   └── kind_serde.rs
+│   │   │   ├── error.rs
+│   │   │   ├── filter
+│   │   │   │   ├── create_filter.rs
+│   │   │   │   ├── get_filter.rs
+│   │   │   │   ├── lazy_load.rs
+│   │   │   │   └── url.rs
+│   │   │   ├── filter.rs
+│   │   │   ├── http_headers.rs
+│   │   │   ├── keys
+│   │   │   │   ├── claim_keys
+│   │   │   │   │   ├── v3.rs
+│   │   │   │   │   └── v4.rs
+│   │   │   │   ├── claim_keys.rs
+│   │   │   │   ├── get_key_changes.rs
+│   │   │   │   ├── get_keys.rs
+│   │   │   │   ├── upload_keys.rs
+│   │   │   │   ├── upload_signatures
+│   │   │   │   │   └── iter.rs
+│   │   │   │   ├── upload_signatures.rs
+│   │   │   │   └── upload_signing_keys.rs
+│   │   │   ├── keys.rs
+│   │   │   ├── knock
+│   │   │   │   └── knock_room.rs
+│   │   │   ├── knock.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── media
+│   │   │   │   ├── create_content.rs
+│   │   │   │   ├── create_content_async.rs
+│   │   │   │   ├── create_mxc_uri.rs
+│   │   │   │   ├── get_content.rs
+│   │   │   │   ├── get_content_as_filename.rs
+│   │   │   │   ├── get_content_thumbnail.rs
+│   │   │   │   ├── get_media_config.rs
+│   │   │   │   └── get_media_preview.rs
+│   │   │   ├── media.rs
+│   │   │   ├── membership
+│   │   │   │   ├── ban_user.rs
+│   │   │   │   ├── forget_room.rs
+│   │   │   │   ├── get_member_events.rs
+│   │   │   │   ├── invite_user.rs
+│   │   │   │   ├── join_room_by_id.rs
+│   │   │   │   ├── join_room_by_id_or_alias.rs
+│   │   │   │   ├── joined_members.rs
+│   │   │   │   ├── joined_rooms.rs
+│   │   │   │   ├── kick_user.rs
+│   │   │   │   ├── leave_room.rs
+│   │   │   │   ├── mutual_rooms.rs
+│   │   │   │   └── unban_user.rs
+│   │   │   ├── membership.rs
+│   │   │   ├── message
+│   │   │   │   ├── get_message_events.rs
+│   │   │   │   └── send_message_event.rs
+│   │   │   ├── message.rs
+│   │   │   ├── presence
+│   │   │   │   ├── get_presence.rs
+│   │   │   │   └── set_presence.rs
+│   │   │   ├── presence.rs
+│   │   │   ├── profile
+│   │   │   │   ├── get_avatar_url.rs
+│   │   │   │   ├── get_display_name.rs
+│   │   │   │   ├── get_profile.rs
+│   │   │   │   ├── set_avatar_url.rs
+│   │   │   │   └── set_display_name.rs
+│   │   │   ├── profile.rs
+│   │   │   ├── push
+│   │   │   │   ├── delete_pushrule.rs
+│   │   │   │   ├── get_notifications.rs
+│   │   │   │   ├── get_pushers.rs
+│   │   │   │   ├── get_pushrule.rs
+│   │   │   │   ├── get_pushrule_actions.rs
+│   │   │   │   ├── get_pushrule_enabled.rs
+│   │   │   │   ├── get_pushrules_all.rs
+│   │   │   │   ├── get_pushrules_global_scope.rs
+│   │   │   │   ├── pusher_serde.rs
+│   │   │   │   ├── set_pusher
+│   │   │   │   │   └── set_pusher_serde.rs
+│   │   │   │   ├── set_pusher.rs
+│   │   │   │   ├── set_pushrule.rs
+│   │   │   │   ├── set_pushrule_actions.rs
+│   │   │   │   └── set_pushrule_enabled.rs
+│   │   │   ├── push.rs
+│   │   │   ├── read_marker
+│   │   │   │   └── set_read_marker.rs
+│   │   │   ├── read_marker.rs
+│   │   │   ├── receipt
+│   │   │   │   └── create_receipt.rs
+│   │   │   ├── receipt.rs
+│   │   │   ├── redact
+│   │   │   │   └── redact_event.rs
+│   │   │   ├── redact.rs
+│   │   │   ├── relations
+│   │   │   │   ├── get_relating_events.rs
+│   │   │   │   ├── get_relating_events_with_rel_type.rs
+│   │   │   │   └── get_relating_events_with_rel_type_and_event_type.rs
+│   │   │   ├── relations.rs
+│   │   │   ├── rendezvous
+│   │   │   │   └── create_rendezvous_session.rs
+│   │   │   ├── rendezvous.rs
+│   │   │   ├── room
+│   │   │   │   ├── aliases.rs
+│   │   │   │   ├── create_room.rs
+│   │   │   │   ├── get_event_by_timestamp.rs
+│   │   │   │   ├── get_room_event.rs
+│   │   │   │   ├── get_summary.rs
+│   │   │   │   ├── report_content.rs
+│   │   │   │   └── upgrade_room.rs
+│   │   │   ├── room.rs
+│   │   │   ├── search
+│   │   │   │   └── search_events.rs
+│   │   │   ├── search.rs
+│   │   │   ├── server
+│   │   │   │   └── get_user_info.rs
+│   │   │   ├── server.rs
+│   │   │   ├── session
+│   │   │   │   ├── get_login_token.rs
+│   │   │   │   ├── get_login_types.rs
+│   │   │   │   ├── login.rs
+│   │   │   │   ├── login_fallback.rs
+│   │   │   │   ├── logout.rs
+│   │   │   │   ├── logout_all.rs
+│   │   │   │   ├── refresh_token.rs
+│   │   │   │   ├── sso_login.rs
+│   │   │   │   └── sso_login_with_provider.rs
+│   │   │   ├── session.rs
+│   │   │   ├── space
+│   │   │   │   └── get_hierarchy.rs
+│   │   │   ├── space.rs
+│   │   │   ├── state
+│   │   │   │   ├── get_state_events.rs
+│   │   │   │   ├── get_state_events_for_key.rs
+│   │   │   │   └── send_state_event.rs
+│   │   │   ├── state.rs
+│   │   │   ├── sync
+│   │   │   │   ├── sync_events
+│   │   │   │   │   ├── v3.rs
+│   │   │   │   │   ├── v4.rs
+│   │   │   │   │   └── v5.rs
+│   │   │   │   └── sync_events.rs
+│   │   │   ├── sync.rs
+│   │   │   ├── tag
+│   │   │   │   ├── create_tag.rs
+│   │   │   │   ├── delete_tag.rs
+│   │   │   │   └── get_tags.rs
+│   │   │   ├── tag.rs
+│   │   │   ├── thirdparty
+│   │   │   │   ├── get_location_for_protocol.rs
+│   │   │   │   ├── get_location_for_room_alias.rs
+│   │   │   │   ├── get_protocol.rs
+│   │   │   │   ├── get_protocols.rs
+│   │   │   │   ├── get_user_for_protocol.rs
+│   │   │   │   └── get_user_for_user_id.rs
+│   │   │   ├── thirdparty.rs
+│   │   │   ├── threads
+│   │   │   │   └── get_threads.rs
+│   │   │   ├── threads.rs
+│   │   │   ├── to_device
+│   │   │   │   └── send_event_to_device.rs
+│   │   │   ├── to_device.rs
+│   │   │   ├── typing
+│   │   │   │   └── create_typing_event.rs
+│   │   │   ├── typing.rs
+│   │   │   ├── uiaa
+│   │   │   │   ├── get_uiaa_fallback_page.rs
+│   │   │   │   └── user_serde.rs
+│   │   │   ├── uiaa.rs
+│   │   │   ├── user_directory
+│   │   │   │   └── search_users.rs
+│   │   │   ├── user_directory.rs
+│   │   │   ├── voip
+│   │   │   │   └── get_turn_server_info.rs
+│   │   │   └── voip.rs
+│   │   └── tests
+│   │       ├── headers.rs
+│   │       └── uiaa.rs
+│   ├── ruma-common
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── api
+│   │   │   │   ├── error.rs
+│   │   │   │   └── metadata.rs
+│   │   │   ├── api.rs
+│   │   │   ├── authentication.rs
+│   │   │   ├── canonical_json
+│   │   │   │   └── value.rs
+│   │   │   ├── canonical_json.rs
+│   │   │   ├── directory
+│   │   │   │   ├── filter_room_type_serde.rs
+│   │   │   │   └── room_network_serde.rs
+│   │   │   ├── directory.rs
+│   │   │   ├── doc
+│   │   │   │   └── string_enum.md
+│   │   │   ├── encryption.rs
+│   │   │   ├── http_headers
+│   │   │   │   ├── content_disposition.rs
+│   │   │   │   └── rfc8187.rs
+│   │   │   ├── http_headers.rs
+│   │   │   ├── identifiers
+│   │   │   │   ├── client_secret.rs
+│   │   │   │   ├── crypto_algorithms.rs
+│   │   │   │   ├── device_id.rs
+│   │   │   │   ├── device_key_id.rs
+│   │   │   │   ├── event_id.rs
+│   │   │   │   ├── key_id.rs
+│   │   │   │   ├── key_name.rs
+│   │   │   │   ├── matrix_uri.rs
+│   │   │   │   ├── mxc_uri.rs
+│   │   │   │   ├── room_alias_id.rs
+│   │   │   │   ├── room_id.rs
+│   │   │   │   ├── room_or_alias_id.rs
+│   │   │   │   ├── room_version_id.rs
+│   │   │   │   ├── server_name.rs
+│   │   │   │   ├── session_id.rs
+│   │   │   │   ├── signatures.rs
+│   │   │   │   ├── transaction_id.rs
+│   │   │   │   ├── user_id.rs
+│   │   │   │   ├── voip_id.rs
+│   │   │   │   └── voip_version_id.rs
+│   │   │   ├── identifiers.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── media.rs
+│   │   │   ├── percent_encode.rs
+│   │   │   ├── power_levels.rs
+│   │   │   ├── presence.rs
+│   │   │   ├── push
+│   │   │   │   ├── action.rs
+│   │   │   │   ├── condition
+│   │   │   │   │   ├── flattened_json.rs
+│   │   │   │   │   ├── push_condition_serde.rs
+│   │   │   │   │   └── room_member_count_is.rs
+│   │   │   │   ├── condition.rs
+│   │   │   │   ├── iter.rs
+│   │   │   │   └── predefined.rs
+│   │   │   ├── push.rs
+│   │   │   ├── room.rs
+│   │   │   ├── serde
+│   │   │   │   ├── base64.rs
+│   │   │   │   ├── buf.rs
+│   │   │   │   ├── can_be_empty.rs
+│   │   │   │   ├── cow.rs
+│   │   │   │   ├── duration
+│   │   │   │   │   ├── ms.rs
+│   │   │   │   │   ├── opt_ms.rs
+│   │   │   │   │   ├── opt_secs.rs
+│   │   │   │   │   └── secs.rs
+│   │   │   │   ├── duration.rs
+│   │   │   │   ├── json_string.rs
+│   │   │   │   ├── raw.rs
+│   │   │   │   ├── single_element_seq.rs
+│   │   │   │   ├── strings.rs
+│   │   │   │   └── test.rs
+│   │   │   ├── serde.rs
+│   │   │   ├── space.rs
+│   │   │   ├── thirdparty.rs
+│   │   │   ├── time.rs
+│   │   │   └── to_device.rs
+│   │   └── tests
+│   │       └── it
+│   │           ├── api
+│   │           │   ├── conversions.rs
+│   │           │   ├── default_status.rs
+│   │           │   ├── header_override.rs
+│   │           │   ├── manual_endpoint_impl.rs
+│   │           │   ├── no_fields.rs
+│   │           │   ├── optional_headers.rs
+│   │           │   ├── required_headers.rs
+│   │           │   ├── ruma_api.rs
+│   │           │   ├── ruma_api_macros.rs
+│   │           │   ├── status_override.rs
+│   │           │   └── ui
+│   │           │       ├── api-sanity-check.rs
+│   │           │       ├── deprecated-without-added.rs
+│   │           │       ├── deprecated-without-added.stderr
+│   │           │       ├── move-value.rs
+│   │           │       ├── removed-without-deprecated.rs
+│   │           │       ├── removed-without-deprecated.stderr
+│   │           │       ├── request-only.rs
+│   │           │       └── response-only.rs
+│   │           ├── api.rs
+│   │           ├── identifiers
+│   │           │   ├── id_macros.rs
+│   │           │   └── ui
+│   │           │       ├── 01-valid-id-macros.rs
+│   │           │       ├── 02-invalid-id-macros.rs
+│   │           │       ├── 02-invalid-id-macros.stderr
+│   │           │       ├── 03-invalid-new-id-macros.rs
+│   │           │       └── 03-invalid-new-id-macros.stderr
+│   │           ├── identifiers.rs
+│   │           ├── main.rs
+│   │           ├── serde
+│   │           │   ├── empty_strings.rs
+│   │           │   └── enum_derive.rs
+│   │           └── serde.rs
+│   ├── ruma-events
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── benches
+│   │   │   └── event_deserialize.rs
+│   │   ├── src
+│   │   │   ├── _custom.rs
+│   │   │   ├── audio
+│   │   │   │   └── amplitude_serde.rs
+│   │   │   ├── audio.rs
+│   │   │   ├── beacon.rs
+│   │   │   ├── beacon_info.rs
+│   │   │   ├── call
+│   │   │   │   ├── answer.rs
+│   │   │   │   ├── candidates.rs
+│   │   │   │   ├── hangup.rs
+│   │   │   │   ├── invite.rs
+│   │   │   │   ├── member
+│   │   │   │   │   ├── focus.rs
+│   │   │   │   │   ├── member_data.rs
+│   │   │   │   │   └── member_state_key.rs
+│   │   │   │   ├── member.rs
+│   │   │   │   ├── negotiate.rs
+│   │   │   │   ├── notify.rs
+│   │   │   │   ├── reject.rs
+│   │   │   │   ├── sdp_stream_metadata_changed.rs
+│   │   │   │   └── select_answer.rs
+│   │   │   ├── call.rs
+│   │   │   ├── content.rs
+│   │   │   ├── direct.rs
+│   │   │   ├── doc
+│   │   │   │   ├── rich_reply.md
+│   │   │   │   └── string_enum.md
+│   │   │   ├── dummy.rs
+│   │   │   ├── emote.rs
+│   │   │   ├── encrypted.rs
+│   │   │   ├── enums.rs
+│   │   │   ├── file.rs
+│   │   │   ├── forwarded_room_key.rs
+│   │   │   ├── fully_read.rs
+│   │   │   ├── identity_server.rs
+│   │   │   ├── ignored_user_list.rs
+│   │   │   ├── image.rs
+│   │   │   ├── key
+│   │   │   │   ├── verification
+│   │   │   │   │   ├── accept.rs
+│   │   │   │   │   ├── cancel.rs
+│   │   │   │   │   ├── done.rs
+│   │   │   │   │   ├── key.rs
+│   │   │   │   │   ├── mac.rs
+│   │   │   │   │   ├── ready.rs
+│   │   │   │   │   ├── request.rs
+│   │   │   │   │   └── start.rs
+│   │   │   │   └── verification.rs
+│   │   │   ├── key.rs
+│   │   │   ├── kinds.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── location
+│   │   │   │   └── zoomlevel_serde.rs
+│   │   │   ├── location.rs
+│   │   │   ├── marked_unread.rs
+│   │   │   ├── message
+│   │   │   │   └── historical_serde.rs
+│   │   │   ├── message.rs
+│   │   │   ├── pdu.rs
+│   │   │   ├── policy
+│   │   │   │   ├── rule
+│   │   │   │   │   ├── room.rs
+│   │   │   │   │   ├── server.rs
+│   │   │   │   │   └── user.rs
+│   │   │   │   └── rule.rs
+│   │   │   ├── policy.rs
+│   │   │   ├── poll
+│   │   │   │   ├── end.rs
+│   │   │   │   ├── response.rs
+│   │   │   │   ├── start
+│   │   │   │   │   └── poll_answers_serde.rs
+│   │   │   │   ├── start.rs
+│   │   │   │   ├── unstable_end.rs
+│   │   │   │   ├── unstable_response.rs
+│   │   │   │   ├── unstable_start
+│   │   │   │   │   ├── content_serde.rs
+│   │   │   │   │   ├── unstable_poll_answers_serde.rs
+│   │   │   │   │   └── unstable_poll_kind_serde.rs
+│   │   │   │   └── unstable_start.rs
+│   │   │   ├── poll.rs
+│   │   │   ├── presence.rs
+│   │   │   ├── push_rules.rs
+│   │   │   ├── reaction.rs
+│   │   │   ├── receipt
+│   │   │   │   └── receipt_thread_serde.rs
+│   │   │   ├── receipt.rs
+│   │   │   ├── relation
+│   │   │   │   └── rel_serde.rs
+│   │   │   ├── relation.rs
+│   │   │   ├── room
+│   │   │   │   ├── aliases.rs
+│   │   │   │   ├── avatar.rs
+│   │   │   │   ├── canonical_alias.rs
+│   │   │   │   ├── create.rs
+│   │   │   │   ├── encrypted
+│   │   │   │   │   └── relation_serde.rs
+│   │   │   │   ├── encrypted.rs
+│   │   │   │   ├── encryption.rs
+│   │   │   │   ├── guest_access.rs
+│   │   │   │   ├── history_visibility.rs
+│   │   │   │   ├── join_rules.rs
+│   │   │   │   ├── member
+│   │   │   │   │   └── change.rs
+│   │   │   │   ├── member.rs
+│   │   │   │   ├── message
+│   │   │   │   │   ├── audio.rs
+│   │   │   │   │   ├── content_serde.rs
+│   │   │   │   │   ├── emote.rs
+│   │   │   │   │   ├── file.rs
+│   │   │   │   │   ├── image.rs
+│   │   │   │   │   ├── key_verification_request.rs
+│   │   │   │   │   ├── location.rs
+│   │   │   │   │   ├── media_caption.rs
+│   │   │   │   │   ├── notice.rs
+│   │   │   │   │   ├── relation.rs
+│   │   │   │   │   ├── relation_serde.rs
+│   │   │   │   │   ├── reply.rs
+│   │   │   │   │   ├── sanitize.rs
+│   │   │   │   │   ├── server_notice.rs
+│   │   │   │   │   ├── text.rs
+│   │   │   │   │   ├── video.rs
+│   │   │   │   │   └── without_relation.rs
+│   │   │   │   ├── message.rs
+│   │   │   │   ├── name.rs
+│   │   │   │   ├── pinned_events.rs
+│   │   │   │   ├── power_levels.rs
+│   │   │   │   ├── redaction
+│   │   │   │   │   └── event_serde.rs
+│   │   │   │   ├── redaction.rs
+│   │   │   │   ├── server_acl.rs
+│   │   │   │   ├── third_party_invite.rs
+│   │   │   │   ├── thumbnail_source_serde.rs
+│   │   │   │   ├── tombstone.rs
+│   │   │   │   └── topic.rs
+│   │   │   ├── room.rs
+│   │   │   ├── room_key.rs
+│   │   │   ├── room_key_request.rs
+│   │   │   ├── secret
+│   │   │   │   ├── request.rs
+│   │   │   │   └── send.rs
+│   │   │   ├── secret.rs
+│   │   │   ├── secret_storage
+│   │   │   │   ├── default_key.rs
+│   │   │   │   ├── key
+│   │   │   │   │   └── secret_encryption_algorithm_serde.rs
+│   │   │   │   ├── key.rs
+│   │   │   │   └── secret.rs
+│   │   │   ├── secret_storage.rs
+│   │   │   ├── space
+│   │   │   │   ├── child.rs
+│   │   │   │   └── parent.rs
+│   │   │   ├── space.rs
+│   │   │   ├── state_key.rs
+│   │   │   ├── sticker.rs
+│   │   │   ├── tag.rs
+│   │   │   ├── typing.rs
+│   │   │   ├── unsigned.rs
+│   │   │   ├── video.rs
+│   │   │   └── voice.rs
+│   │   └── tests
+│   │       └── it
+│   │           ├── audio.rs
+│   │           ├── beacon.rs
+│   │           ├── beacon_info.rs
+│   │           ├── call.rs
+│   │           ├── encrypted.rs
+│   │           ├── enums.rs
+│   │           ├── ephemeral_event.rs
+│   │           ├── event.rs
+│   │           ├── event_content.rs
+│   │           ├── event_enums.rs
+│   │           ├── file.rs
+│   │           ├── image.rs
+│   │           ├── initial_state.rs
+│   │           ├── location.rs
+│   │           ├── main.rs
+│   │           ├── message.rs
+│   │           ├── pdu.rs
+│   │           ├── poll.rs
+│   │           ├── redacted.rs
+│   │           ├── redaction.rs
+│   │           ├── relations.rs
+│   │           ├── room_message.rs
+│   │           ├── state_event.rs
+│   │           ├── sticker.rs
+│   │           ├── stripped.rs
+│   │           ├── to_device.rs
+│   │           ├── ui
+│   │           │   ├── 01-content-sanity-check.rs
+│   │           │   ├── 02-no-event-type.rs
+│   │           │   ├── 02-no-event-type.stderr
+│   │           │   ├── 03-invalid-event-type.rs
+│   │           │   ├── 03-invalid-event-type.stderr
+│   │           │   ├── 04-event-sanity-check.rs
+│   │           │   ├── 05-named-fields.rs
+│   │           │   ├── 05-named-fields.stderr
+│   │           │   ├── 06-no-content-field.rs
+│   │           │   ├── 06-no-content-field.stderr
+│   │           │   ├── 07-enum-sanity-check.rs
+│   │           │   ├── 08-enum-invalid-path.rs
+│   │           │   ├── 08-enum-invalid-path.stderr
+│   │           │   ├── 09-enum-invalid-kind.rs
+│   │           │   ├── 09-enum-invalid-kind.stderr
+│   │           │   ├── 10-content-wildcard.rs
+│   │           │   ├── 11-content-without-relation-sanity-check.rs
+│   │           │   ├── 12-no-relates_to.rs
+│   │           │   ├── 12-no-relates_to.stderr
+│   │           │   └── 13-private-event-content-type.rs
+│   │           ├── video.rs
+│   │           ├── voice.rs
+│   │           └── without_relation.rs
+│   ├── ruma-federation-api
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── authenticated_media
+│   │   │   │   ├── get_content.rs
+│   │   │   │   └── get_content_thumbnail.rs
+│   │   │   ├── authenticated_media.rs
+│   │   │   ├── authorization
+│   │   │   │   └── get_event_authorization.rs
+│   │   │   ├── authorization.rs
+│   │   │   ├── backfill
+│   │   │   │   └── get_backfill.rs
+│   │   │   ├── backfill.rs
+│   │   │   ├── device
+│   │   │   │   └── get_devices.rs
+│   │   │   ├── device.rs
+│   │   │   ├── directory
+│   │   │   │   ├── get_public_rooms.rs
+│   │   │   │   └── get_public_rooms_filtered.rs
+│   │   │   ├── directory.rs
+│   │   │   ├── discovery
+│   │   │   │   ├── discover_homeserver.rs
+│   │   │   │   ├── get_remote_server_keys.rs
+│   │   │   │   ├── get_remote_server_keys_batch.rs
+│   │   │   │   ├── get_server_keys.rs
+│   │   │   │   ├── get_server_version.rs
+│   │   │   │   └── get_server_versions.rs
+│   │   │   ├── discovery.rs
+│   │   │   ├── event
+│   │   │   │   ├── get_event.rs
+│   │   │   │   ├── get_event_by_timestamp.rs
+│   │   │   │   ├── get_missing_events.rs
+│   │   │   │   ├── get_room_state.rs
+│   │   │   │   └── get_room_state_ids.rs
+│   │   │   ├── event.rs
+│   │   │   ├── keys
+│   │   │   │   ├── claim_keys.rs
+│   │   │   │   └── get_keys.rs
+│   │   │   ├── keys.rs
+│   │   │   ├── knock
+│   │   │   │   ├── create_knock_event_template.rs
+│   │   │   │   └── send_knock.rs
+│   │   │   ├── knock.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── membership
+│   │   │   │   ├── create_invite
+│   │   │   │   │   ├── v1.rs
+│   │   │   │   │   └── v2.rs
+│   │   │   │   ├── create_invite.rs
+│   │   │   │   ├── create_join_event
+│   │   │   │   │   ├── v1.rs
+│   │   │   │   │   └── v2.rs
+│   │   │   │   ├── create_join_event.rs
+│   │   │   │   ├── create_leave_event
+│   │   │   │   │   ├── v1.rs
+│   │   │   │   │   └── v2.rs
+│   │   │   │   ├── create_leave_event.rs
+│   │   │   │   ├── prepare_join_event.rs
+│   │   │   │   └── prepare_leave_event.rs
+│   │   │   ├── membership.rs
+│   │   │   ├── openid
+│   │   │   │   └── get_openid_userinfo.rs
+│   │   │   ├── openid.rs
+│   │   │   ├── query
+│   │   │   │   ├── get_custom_information.rs
+│   │   │   │   ├── get_profile_information.rs
+│   │   │   │   └── get_room_information.rs
+│   │   │   ├── query.rs
+│   │   │   ├── room
+│   │   │   │   └── report_content.rs
+│   │   │   ├── room.rs
+│   │   │   ├── serde
+│   │   │   │   ├── pdu_process_response.rs
+│   │   │   │   └── v1_pdu.rs
+│   │   │   ├── serde.rs
+│   │   │   ├── space
+│   │   │   │   └── get_hierarchy.rs
+│   │   │   ├── space.rs
+│   │   │   ├── thirdparty
+│   │   │   │   ├── bind_callback.rs
+│   │   │   │   └── exchange_invite.rs
+│   │   │   ├── thirdparty.rs
+│   │   │   ├── transactions
+│   │   │   │   ├── edu.rs
+│   │   │   │   └── send_transaction_message.rs
+│   │   │   └── transactions.rs
+│   │   └── tests
+│   │       └── it
+│   │           ├── main.rs
+│   │           ├── membership
+│   │           │   └── create_join_event.rs
+│   │           └── membership.rs
+│   ├── ruma-html
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── helpers.rs
+│   │   │   ├── html
+│   │   │   │   └── matrix.rs
+│   │   │   ├── html.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── sanitizer_config
+│   │   │   │   └── clean.rs
+│   │   │   └── sanitizer_config.rs
+│   │   └── tests
+│   │       └── it
+│   │           ├── helpers.rs
+│   │           ├── html
+│   │           │   ├── matrix.rs
+│   │           │   ├── navigate.rs
+│   │           │   └── sanitize.rs
+│   │           ├── html.rs
+│   │           └── main.rs
+│   ├── ruma-identifiers-validation
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── client_secret.rs
+│   │       ├── device_key_id.rs
+│   │       ├── error.rs
+│   │       ├── event_id.rs
+│   │       ├── key_id.rs
+│   │       ├── lib.rs
+│   │       ├── mxc_uri.rs
+│   │       ├── room_alias_id.rs
+│   │       ├── room_id.rs
+│   │       ├── room_id_or_alias_id.rs
+│   │       ├── room_version_id.rs
+│   │       ├── server_name.rs
+│   │       ├── user_id.rs
+│   │       └── voip_version_id.rs
+│   ├── ruma-identity-service-api
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── association
+│   │       │   ├── bind_3pid.rs
+│   │       │   ├── check_3pid_validity.rs
+│   │       │   ├── email
+│   │       │   │   ├── create_email_validation_session.rs
+│   │       │   │   ├── validate_email.rs
+│   │       │   │   └── validate_email_by_end_user.rs
+│   │       │   ├── email.rs
+│   │       │   ├── msisdn
+│   │       │   │   ├── create_msisdn_validation_session.rs
+│   │       │   │   ├── validate_msisdn.rs
+│   │       │   │   └── validate_msisdn_by_phone_number.rs
+│   │       │   ├── msisdn.rs
+│   │       │   └── unbind_3pid.rs
+│   │       ├── association.rs
+│   │       ├── authentication
+│   │       │   ├── get_account_information.rs
+│   │       │   ├── logout.rs
+│   │       │   └── register.rs
+│   │       ├── authentication.rs
+│   │       ├── discovery
+│   │       │   ├── get_server_status.rs
+│   │       │   └── get_supported_versions.rs
+│   │       ├── discovery.rs
+│   │       ├── invitation
+│   │       │   ├── sign_invitation_ed25519.rs
+│   │       │   └── store_invitation.rs
+│   │       ├── invitation.rs
+│   │       ├── keys
+│   │       │   ├── check_public_key_validity.rs
+│   │       │   ├── get_public_key.rs
+│   │       │   └── validate_ephemeral_key.rs
+│   │       ├── keys.rs
+│   │       ├── lib.rs
+│   │       ├── lookup
+│   │       │   ├── get_hash_parameters.rs
+│   │       │   └── lookup_3pid.rs
+│   │       ├── lookup.rs
+│   │       ├── tos
+│   │       │   ├── accept_terms_of_service.rs
+│   │       │   └── get_terms_of_service.rs
+│   │       └── tos.rs
+│   ├── ruma-macros
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── api
+│   │       │   ├── attribute.rs
+│   │       │   ├── auth_scheme.rs
+│   │       │   ├── request
+│   │       │   │   ├── incoming.rs
+│   │       │   │   └── outgoing.rs
+│   │       │   ├── request.rs
+│   │       │   ├── response
+│   │       │   │   ├── incoming.rs
+│   │       │   │   └── outgoing.rs
+│   │       │   └── response.rs
+│   │       ├── api.rs
+│   │       ├── events
+│   │       │   ├── event.rs
+│   │       │   ├── event_content.rs
+│   │       │   ├── event_enum.rs
+│   │       │   ├── event_parse.rs
+│   │       │   ├── event_type.rs
+│   │       │   └── util.rs
+│   │       ├── events.rs
+│   │       ├── identifiers.rs
+│   │       ├── lib.rs
+│   │       ├── serde
+│   │       │   ├── as_str_as_ref_str.rs
+│   │       │   ├── attr.rs
+│   │       │   ├── case.rs
+│   │       │   ├── debug_as_ref_str.rs
+│   │       │   ├── deserialize_from_cow_str.rs
+│   │       │   ├── display_as_ref_str.rs
+│   │       │   ├── enum_as_ref_str.rs
+│   │       │   ├── enum_from_string.rs
+│   │       │   ├── eq_as_ref_str.rs
+│   │       │   ├── ord_as_ref_str.rs
+│   │       │   ├── serialize_as_ref_str.rs
+│   │       │   └── util.rs
+│   │       ├── serde.rs
+│   │       └── util.rs
+│   ├── ruma-push-gateway-api
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── lib.rs
+│   │       └── send_event_notification.rs
+│   ├── ruma-server-util
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── authorization.rs
+│   │       └── lib.rs
+│   ├── ruma-signatures
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── functions.rs
+│   │   │   ├── keys
+│   │   │   │   └── compat.rs
+│   │   │   ├── keys.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── signatures.rs
+│   │   │   └── verification.rs
+│   │   └── tests
+│   │       ├── keys
+│   │       │   └── ed25519.der
+│   │       ├── snapshots
+│   │       │   └── tests__verify_event_check_signatures_for_authorized_user.snap
+│   │       └── tests.rs
+│   └── ruma-state-res
+│       ├── .clippy.toml
+│       ├── CHANGELOG.md
+│       ├── Cargo.toml
+│       ├── README.md
+│       ├── architecture.md
+│       ├── benches
+│       │   ├── outcomes.txt
+│       │   └── state_res_bench.rs
+│       └── src
+│           ├── error.rs
+│           ├── event_auth.rs
+│           ├── lib.rs
+│           ├── power_levels.rs
+│           ├── room_version.rs
+│           ├── state_event.rs
+│           └── test_utils.rs
+├── examples
+│   └── README.md
+├── rust-toolchain.toml
+└── xtask
+    ├── .gitignore
+    ├── Cargo.toml
+    ├── README.md
+    ├── config.toml.sample
+    └── src
+        ├── cargo.rs
+        ├── ci
+        │   ├── reexport_features.rs
+        │   └── spec_links.rs
+        ├── ci.rs
+        ├── doc.rs
+        ├── main.rs
+        ├── release.rs
+        └── util.rs
+192 directories, 793 files
