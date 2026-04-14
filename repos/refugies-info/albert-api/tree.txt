@@ -1,0 +1,141 @@
+.
+├── .github
+│   └── workflows
+│       ├── build_and_deploy.yml
+│       ├── build_and_tag.yml
+│       └── codeql_analysis.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── app
+│   ├── Dockerfile
+│   ├── clients
+│   │   ├── __init__.py
+│   │   ├── _authenticationclient.py
+│   │   ├── _internetclient.py
+│   │   ├── _modelclients.py
+│   │   ├── _searchclient.py
+│   │   ├── internet
+│   │   │   ├── __init__.py
+│   │   │   ├── _braveinternetclient.py
+│   │   │   └── _duckduckgointernetclient.py
+│   │   └── search
+│   │       ├── __init__.py
+│   │       ├── _elasticsearchclient.py
+│   │       └── _qdrantsearchclient.py
+│   ├── endpoints
+│   │   ├── __init__.py
+│   │   ├── audio.py
+│   │   ├── chat.py
+│   │   ├── chunks.py
+│   │   ├── collections.py
+│   │   ├── completions.py
+│   │   ├── documents.py
+│   │   ├── embeddings.py
+│   │   ├── files.py
+│   │   ├── models.py
+│   │   ├── rerank.py
+│   │   └── search.py
+│   ├── helpers
+│   │   ├── __init__.py
+│   │   ├── _clientsmanager.py
+│   │   ├── _fileuploader.py
+│   │   ├── _internetmanager.py
+│   │   ├── _languagemodelreranker.py
+│   │   ├── _metricsmiddleware.py
+│   │   ├── _searchmanager.py
+│   │   ├── _streamingresponsewithstatuscode.py
+│   │   └── data
+│   │       ├── __init__.py
+│   │       ├── chunkers
+│   │       │   ├── __init__.py
+│   │       │   ├── _langchainrecursivecharactertextsplitter.py
+│   │       │   └── _nochunker.py
+│   │       └── parsers
+│   │           ├── __init__.py
+│   │           ├── _baseparser.py
+│   │           ├── _htmlparser.py
+│   │           ├── _jsonparser.py
+│   │           ├── _mdparser.py
+│   │           └── _pdfparser.py
+│   ├── main.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   ├── audio.py
+│   │   ├── chat.py
+│   │   ├── chunks.py
+│   │   ├── collections.py
+│   │   ├── completions.py
+│   │   ├── data.py
+│   │   ├── documents.py
+│   │   ├── embeddings.py
+│   │   ├── files.py
+│   │   ├── models.py
+│   │   ├── rerank.py
+│   │   ├── search.py
+│   │   ├── security.py
+│   │   └── settings.py
+│   ├── tests
+│   │   ├── assets
+│   │   │   ├── audio.mp3
+│   │   │   ├── audio.wav
+│   │   │   ├── html.html
+│   │   │   ├── json.json
+│   │   │   ├── json_wrong_format.json
+│   │   │   ├── markdown.md
+│   │   │   ├── pdf.pdf
+│   │   │   └── pdf_too_large.pdf
+│   │   ├── conftest.py
+│   │   ├── test_audio.py
+│   │   ├── test_chat.py
+│   │   ├── test_chunks.py
+│   │   ├── test_collections.py
+│   │   ├── test_documents.py
+│   │   ├── test_embeddings.py
+│   │   ├── test_files.py
+│   │   ├── test_models.py
+│   │   ├── test_rerank.py
+│   │   └── test_search.py
+│   └── utils
+│       ├── __init__.py
+│       ├── exceptions.py
+│       ├── lifespan.py
+│       ├── logging.py
+│       ├── route.py
+│       ├── security.py
+│       ├── settings.py
+│       └── variables.py
+├── compose.yml
+├── config.example.yml
+├── docs
+│   ├── assets
+│   │   ├── albert_api.excalidraw
+│   │   ├── collections_001.png
+│   │   ├── collections_002.png
+│   │   ├── collections_003.png
+│   │   ├── collections_004.png
+│   │   └── collections_005.png
+│   ├── deployment.md
+│   ├── models.md
+│   ├── search.md
+│   ├── security.md
+│   └── tutorials
+│       ├── audio_transcriptions.ipynb
+│       ├── chat_completions.ipynb
+│       ├── import_knowledge_database.ipynb
+│       ├── models.ipynb
+│       └── retrieval_augmented_generation.ipynb
+├── pyproject.toml
+└── ui
+    ├── Dockerfile
+    ├── config.py
+    ├── main.py
+    ├── pages
+    │   ├── chat.py
+    │   ├── documents.py
+    │   └── transcription.py
+    └── utils.py
+21 directories, 119 files
