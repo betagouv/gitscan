@@ -1,0 +1,132 @@
+.
+├── .commitlintrc.js
+├── .editorconfig
+├── .env.example
+├── .eslintignore
+├── .eslintrc.json
+├── .github
+│   └── workflows
+│       ├── release.yml
+│       └── validate-feature.yml
+├── .gitignore
+├── .husky
+│   ├── commit-msg
+│   └── pre-commit
+├── .lintstagedrc
+├── .openapirc.json
+├── .prettierignore
+├── .prettierrc.json
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── package.json
+├── pnpm-lock.yaml
+├── src
+│   ├── env.ts
+│   ├── fp-helpers
+│   │   ├── index.ts
+│   │   └── to-task.ts
+│   └── infrastructure
+│       ├── dynamo-db
+│       │   ├── filter
+│       │   │   ├── abstract-syntax-tree
+│       │   │   │   ├── abstract-syntax-tree.spec.ts
+│       │   │   │   ├── abstract-syntax-tree.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── attribute.ts
+│       │   │   ├── filter.spec.ts
+│       │   │   ├── filter.ts
+│       │   │   ├── index.ts
+│       │   │   ├── operators
+│       │   │   │   ├── attribute-exists.operator.ts
+│       │   │   │   ├── attribute-not-exists.operator.ts
+│       │   │   │   ├── begin-with.operator.ts
+│       │   │   │   ├── contains.operator.ts
+│       │   │   │   ├── equals.operator.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── not-equals.operator.ts
+│       │   │   │   └── operators.ts
+│       │   │   ├── query-string.filter.spec.ts
+│       │   │   └── query-string.filter.ts
+│       │   ├── index.ts
+│       │   ├── lieux-inclusion-numerique
+│       │   │   ├── group
+│       │   │   │   ├── find-merged-lieu-by-group-id.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── index.ts
+│       │   │   ├── primary-key
+│       │   │   │   ├── find-lieu-by-id.ts
+│       │   │   │   └── index.ts
+│       │   │   └── source-index
+│       │   │       ├── all-fingerprints-by-source-index.ts
+│       │   │       ├── find-lieux-by-source-index.ts
+│       │   │       └── index.ts
+│       │   ├── pagination
+│       │   │   ├── index.ts
+│       │   │   ├── pagination.spec.ts
+│       │   │   └── pagination.ts
+│       │   ├── scan-all.ts
+│       │   └── scan-paginated.ts
+│       ├── gateway
+│       │   ├── index.ts
+│       │   ├── query-string.spec.ts
+│       │   └── query-string.ts
+│       ├── responses
+│       │   ├── failure-response.ts
+│       │   ├── gzip-response.ts
+│       │   ├── index.ts
+│       │   ├── no-cache.response.ts
+│       │   └── success-response.ts
+│       ├── routes
+│       │   ├── lieux-inclusion-numerique
+│       │   │   ├── fingerprints
+│       │   │   │   ├── get.route.ts
+│       │   │   │   └── patch.route.ts
+│       │   │   ├── get.route.ts
+│       │   │   ├── mark-all-as-deduplicated
+│       │   │   │   └── patch.route.ts
+│       │   │   ├── merge-groups
+│       │   │   │   ├── get.route.ts
+│       │   │   │   └── patch.route.ts
+│       │   │   ├── patch.route.ts
+│       │   │   └── with-duplicates
+│       │   │       └── get.route.ts
+│       │   ├── services-inclusion
+│       │   │   └── get.route.ts
+│       │   ├── sources
+│       │   │   ├── get.route.ts
+│       │   │   └── put.route.ts
+│       │   └── structures-inclusion
+│       │       └── get.route.ts
+│       ├── storage
+│       │   ├── index.ts
+│       │   ├── lieu-inclusion-numerique
+│       │   │   ├── index.ts
+│       │   │   ├── lieu-inclusion-numerique.storage.ts
+│       │   │   ├── operations
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── upsert-lieu.spec.ts
+│       │   │   │   └── upsert-lieu.ts
+│       │   │   └── to-iso-string-date-maj
+│       │   │       ├── to-iso-string-date-maj.spec.ts
+│       │   │       └── to-iso-string-date-maj.ts
+│       │   └── reassign-id
+│       │       ├── reassign-id.spec.ts
+│       │       └── reassign-id.ts
+│       └── transfers
+│           ├── fingerprint.transfer.spec.ts
+│           ├── fingerprint.transfer.ts
+│           ├── index.ts
+│           ├── lieux-inclusion-numerique.transfer.ts
+│           ├── merge-group.transfer.spec.ts
+│           ├── merge-group.transfer.ts
+│           ├── merge-groups-update.transfer.ts
+│           ├── services-inclusion.transfer.spec.ts
+│           ├── services-inclusion.transfer.ts
+│           ├── source.transfer.ts
+│           ├── structures-inclusion.transfer.spec.ts
+│           └── structures-inclusion.transfer.ts
+├── tsconfig.json
+├── vite.config.ts
+└── vitest.config.js
+33 directories, 98 files

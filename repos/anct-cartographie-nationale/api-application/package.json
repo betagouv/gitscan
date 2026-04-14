@@ -1,0 +1,73 @@
+{
+  "name": "api-application",
+  "version": "0.0.1",
+  "description": "⚡ API pour la consultation et le traitement de l’offre d'inclusion numérique.",
+  "keywords": [
+    "api",
+    "serverless",
+    "gouvernement",
+    "betagouv",
+    "cartographie",
+    "anct",
+    "médiation numérique"
+  ],
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "vite build",
+    "build.openapi": "swagger-jsdoc -d .openapirc.json ./src/infrastructure/**/*.route.ts ./src/infrastructure/transfers/*.transfer.ts -o openapi.json",
+    "build.openapi-doc": "pnpm build.openapi && pnpm redocly build-docs openapi.json -o dist/index.html",
+    "test": "vitest",
+    "lint.es": "eslint",
+    "lint.commit": "commitlint --from origin/main",
+    "lint.staged": "lint-staged",
+    "lint.openapi": "pnpm build.openapi && redocly lint openapi.json",
+    "prettier": "prettier --write ./src/",
+    "prettier.ci": "prettier --check ./src/",
+    "watch.openapi-doc": "pnpm build.openapi && redocly preview-docs openapi.json",
+    "prepare": "husky install"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "contributors": [
+    {
+      "name": "Marc Gavanier",
+      "email": "marc.gavanier@gmail.com",
+      "url": "https://www.linkedin.com/in/marc-gavanier/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anct-cartographie-nationale/api-application.git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@redocly/cli": "^1.13.0",
+    "@types/aws-lambda": "^8.10.119",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.5.9",
+    "@types/qs": "^6.9.9",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "@vitest/coverage-v8": "^0.33.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-vitest": "^0.3.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "rollup": "^3.28.1",
+    "swagger-jsdoc": "^6.2.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.3",
+    "vitest": "^0.34.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.409.0",
+    "@aws-sdk/lib-dynamodb": "^3.409.0",
+    "@aws-sdk/util-dynamodb": "^3.438.0",
+    "@gouvfr-anct/lieux-de-mediation-numerique": "^2.0.1",
+    "fp-ts": "^2.16.1",
+    "qs": "^6.11.2"
+  }
+}
