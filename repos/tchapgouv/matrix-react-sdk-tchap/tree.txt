@@ -1,0 +1,3834 @@
+.
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.js
+├── .git-blame-ignore-revs
+├── .github
+│   ├── CODEOWNERS
+│   ├── FUNDING.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── labels.yml
+│   ├── release-drafter.yml
+│   ├── renovate.json
+│   └── workflows
+│       ├── backport.yml
+│       ├── end-to-end-tests-netlify.yaml
+│       ├── end-to-end-tests.yaml
+│       ├── localazy_download.yaml
+│       ├── localazy_upload.yaml
+│       ├── netlify.yaml
+│       ├── notify-element-web.yml
+│       ├── playwright-image-updates.yaml
+│       ├── pull_request.yaml
+│       ├── pull_request_base_branch.yaml
+│       ├── release-drafter.yml
+│       ├── release-gitflow.yml
+│       ├── release.yml
+│       ├── sonarqube.yml
+│       ├── static_analysis.yaml
+│       ├── sync-labels.yml
+│       └── tests.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
+├── .lintstagedrc
+├── .node-version
+├── .prettierignore
+├── .prettierrc.cjs
+├── .stylelintrc.js
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE-AGPL-3.0
+├── LICENSE-GPL-3.0
+├── README.md
+├── __mocks__
+│   ├── FontManager.js
+│   ├── empty.js
+│   ├── imageMock.js
+│   ├── languages.json
+│   ├── maplibre-gl.js
+│   ├── svg.js
+│   └── workerFactoryMock.js
+├── babel.config.js
+├── docs
+│   ├── SUMMARY.md
+│   ├── ciderEditor.md
+│   ├── features
+│   │   ├── README.md
+│   │   ├── composer.md
+│   │   └── keyboardShortcuts.md
+│   ├── icons.md
+│   ├── img
+│   │   └── RoomListStore2.png
+│   ├── jitsi.md
+│   ├── local-echo-dev.md
+│   ├── media-handling.md
+│   ├── playwright.md
+│   ├── room-list-store.md
+│   ├── scrolling.md
+│   ├── settings.md
+│   ├── skinning.md
+│   ├── usercontent.md
+│   └── widget-layouts.md
+├── jest.config.ts
+├── localazy.json
+├── package.json
+├── playwright
+│   ├── .gitignore
+│   ├── @types
+│   │   └── playwright-core.d.ts
+│   ├── Dockerfile
+│   ├── docker-entrypoint.sh
+│   ├── e2e
+│   │   ├── accessibility
+│   │   │   └── keyboard-navigation.spec.ts
+│   │   ├── app-loading
+│   │   │   ├── feature-detection.spec.ts
+│   │   │   ├── guest-registration.spec.ts
+│   │   │   └── stored-credentials.spec.ts
+│   │   ├── audio-player
+│   │   │   └── audio-player.spec.ts
+│   │   ├── chat-export
+│   │   │   └── html-export.spec.ts
+│   │   ├── composer
+│   │   │   ├── CIDER.spec.ts
+│   │   │   └── RTE.spec.ts
+│   │   ├── create-room
+│   │   │   └── create-room.spec.ts
+│   │   ├── crypto
+│   │   │   ├── backups.spec.ts
+│   │   │   ├── complete-security.spec.ts
+│   │   │   ├── crypto.spec.ts
+│   │   │   ├── decryption-failure-messages.spec.ts
+│   │   │   ├── dehydration.spec.ts
+│   │   │   ├── device-verification.spec.ts
+│   │   │   ├── event-shields.spec.ts
+│   │   │   ├── invisible-crypto.spec.ts
+│   │   │   ├── logout.spec.ts
+│   │   │   ├── migration.spec.ts
+│   │   │   ├── staged-rollout.spec.ts
+│   │   │   ├── test_indexeddb_cryptostore_dump
+│   │   │   │   ├── README.md
+│   │   │   │   ├── dump.json
+│   │   │   │   ├── index.html
+│   │   │   │   └── load.js
+│   │   │   ├── user-verification.spec.ts
+│   │   │   └── utils.ts
+│   │   ├── editing
+│   │   │   └── editing.spec.ts
+│   │   ├── file-upload
+│   │   │   └── image-upload.spec.ts
+│   │   ├── forgot-password
+│   │   │   └── forgot-password.spec.ts
+│   │   ├── integration-manager
+│   │   │   ├── get-openid-token.spec.ts
+│   │   │   ├── kick.spec.ts
+│   │   │   ├── read_events.spec.ts
+│   │   │   ├── send_event.spec.ts
+│   │   │   └── utils.ts
+│   │   ├── invite
+│   │   │   └── invite-dialog.spec.ts
+│   │   ├── knock
+│   │   │   ├── create-knock-room.spec.ts
+│   │   │   ├── knock-into-room.spec.ts
+│   │   │   └── manage-knocks.spec.ts
+│   │   ├── lazy-loading
+│   │   │   └── lazy-loading.spec.ts
+│   │   ├── left-panel
+│   │   │   └── left-panel.spec.ts
+│   │   ├── location
+│   │   │   └── location.spec.ts
+│   │   ├── login
+│   │   │   ├── consent.spec.ts
+│   │   │   ├── login.spec.ts
+│   │   │   ├── overwrite_login.spec.ts
+│   │   │   ├── soft_logout.spec.ts
+│   │   │   └── utils.ts
+│   │   ├── messages
+│   │   │   └── messages.spec.ts
+│   │   ├── oidc
+│   │   │   ├── index.ts
+│   │   │   ├── oidc-aware.spec.ts
+│   │   │   └── oidc-native.spec.ts
+│   │   ├── one-to-one-chat
+│   │   │   └── one-to-one-chat.spec.ts
+│   │   ├── permalinks
+│   │   │   └── permalinks.spec.ts
+│   │   ├── pinned-messages
+│   │   │   ├── index.ts
+│   │   │   └── pinned-messages.spec.ts
+│   │   ├── polls
+│   │   │   ├── pollHistory.spec.ts
+│   │   │   └── polls.spec.ts
+│   │   ├── presence
+│   │   │   └── presence.spec.ts
+│   │   ├── read-receipts
+│   │   │   ├── editing-messages-in-threads.spec.ts
+│   │   │   ├── editing-messages-main-timeline.spec.ts
+│   │   │   ├── editing-messages-thread-roots.spec.ts
+│   │   │   ├── high-level.spec.ts
+│   │   │   ├── index.ts
+│   │   │   ├── message-ordering.spec.ts
+│   │   │   ├── missing-referents.spec.ts
+│   │   │   ├── new-messages-in-threads.spec.ts
+│   │   │   ├── new-messages-main-timeline.spec.ts
+│   │   │   ├── new-messages-thread-roots.spec.ts
+│   │   │   ├── notifications.spec.ts
+│   │   │   ├── reactions-in-threads.spec.ts
+│   │   │   ├── reactions-main-timeline.spec.ts
+│   │   │   ├── reactions-thread-roots.spec.ts
+│   │   │   ├── read-receipts.spec.ts
+│   │   │   ├── readme.md
+│   │   │   ├── redactions-in-threads.spec.ts
+│   │   │   ├── redactions-main-timeline.spec.ts
+│   │   │   ├── redactions-thread-roots.spec.ts
+│   │   │   └── room-list-order.spec.ts
+│   │   ├── register
+│   │   │   ├── email.spec.ts
+│   │   │   └── register.spec.ts
+│   │   ├── regression-tests
+│   │   │   └── pills-click-in-app.spec.ts
+│   │   ├── release-announcement
+│   │   │   ├── index.ts
+│   │   │   └── releaseAnnouncement.spec.ts
+│   │   ├── right-panel
+│   │   │   ├── file-panel.spec.ts
+│   │   │   ├── notification-panel.spec.ts
+│   │   │   ├── right-panel.spec.ts
+│   │   │   └── utils.ts
+│   │   ├── room
+│   │   │   ├── room-header.spec.ts
+│   │   │   └── room.spec.ts
+│   │   ├── room-directory
+│   │   │   └── room-directory.spec.ts
+│   │   ├── room_options
+│   │   │   └── marked_unread.spec.ts
+│   │   ├── settings
+│   │   │   ├── account-user-settings-tab.spec.ts
+│   │   │   ├── appearance-user-settings-tab
+│   │   │   │   ├── appearance-user-settings-tab.spec.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── message-layout-panel.ts
+│   │   │   │   └── theme-choice-panel.spec.ts
+│   │   │   ├── device-management.spec.ts
+│   │   │   ├── general-room-settings-tab.spec.ts
+│   │   │   ├── preferences-user-settings-tab.spec.ts
+│   │   │   ├── roles-permissions-room-settings-tab.spec.ts
+│   │   │   └── security-user-settings-tab.spec.ts
+│   │   ├── sliding-sync
+│   │   │   └── sliding-sync.spec.ts
+│   │   ├── spaces
+│   │   │   ├── spaces.spec.ts
+│   │   │   └── threads-activity-centre
+│   │   │       ├── index.ts
+│   │   │       └── threadsActivityCentre.spec.ts
+│   │   ├── spotlight
+│   │   │   └── spotlight.spec.ts
+│   │   ├── threads
+│   │   │   └── threads.spec.ts
+│   │   ├── timeline
+│   │   │   └── timeline.spec.ts
+│   │   ├── toasts
+│   │   │   └── analytics-toast.spec.ts
+│   │   ├── update
+│   │   │   └── update.spec.ts
+│   │   ├── user-menu
+│   │   │   └── user-menu.spec.ts
+│   │   ├── user-onboarding
+│   │   │   ├── user-onboarding-new.spec.ts
+│   │   │   └── user-onboarding-old.spec.ts
+│   │   ├── user-view
+│   │   │   └── user-view.spec.ts
+│   │   ├── utils.ts
+│   │   └── widgets
+│   │       ├── events.spec.ts
+│   │       ├── layout.spec.ts
+│   │       ├── stickers.spec.ts
+│   │       └── widget-pip-close.spec.ts
+│   ├── element-web-test.ts
+│   ├── flaky-reporter.ts
+│   ├── global.d.ts
+│   ├── pages
+│   │   ├── ElementAppPage.ts
+│   │   ├── Spotlight.ts
+│   │   ├── bot.ts
+│   │   ├── client.ts
+│   │   ├── crypto.ts
+│   │   ├── network.ts
+│   │   ├── settings.ts
+│   │   ├── timeline.ts
+│   │   └── toasts.ts
+│   ├── plugins
+│   │   ├── docker
+│   │   │   └── index.ts
+│   │   ├── homeserver
+│   │   │   ├── dendrite
+│   │   │   │   ├── index.ts
+│   │   │   │   └── templates
+│   │   │   │       └── default
+│   │   │   │           └── dendrite.yaml
+│   │   │   ├── index.ts
+│   │   │   └── synapse
+│   │   │       ├── index.ts
+│   │   │       └── templates
+│   │   │           ├── COPYME
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   └── log.config
+│   │   │           ├── consent
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   ├── log.config
+│   │   │           │   └── res
+│   │   │           │       └── templates
+│   │   │           │           └── privacy
+│   │   │           │               └── en
+│   │   │           │                   ├── 1.0.html
+│   │   │           │                   └── success.html
+│   │   │           ├── default
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   └── log.config
+│   │   │           ├── dehydration
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   └── log.config
+│   │   │           ├── email
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   └── log.config
+│   │   │           ├── guest-enabled
+│   │   │           │   ├── README.md
+│   │   │           │   ├── homeserver.yaml
+│   │   │           │   └── log.config
+│   │   │           └── mas-oidc
+│   │   │               ├── README.md
+│   │   │               ├── homeserver.yaml
+│   │   │               └── log.config
+│   │   ├── mailhog
+│   │   │   └── index.ts
+│   │   ├── matrix-authentication-service
+│   │   │   ├── config.yaml
+│   │   │   └── index.ts
+│   │   ├── oauth_server
+│   │   │   ├── README.md
+│   │   │   ├── index.ts
+│   │   │   └── res
+│   │   │       └── oauth
+│   │   │           └── auth.html
+│   │   ├── postgres
+│   │   │   └── index.ts
+│   │   ├── sliding-sync-proxy
+│   │   │   └── index.ts
+│   │   ├── utils
+│   │   │   ├── port.ts
+│   │   │   └── rand.ts
+│   │   └── webserver
+│   │       └── index.ts
+│   ├── sample-files
+│   │   ├── 1sec-long-name-audio-file.ogg
+│   │   ├── 1sec.ogg
+│   │   ├── element.png
+│   │   ├── matrix-org-client-versions.json
+│   │   ├── riot.png
+│   │   ├── upload-first.ogg
+│   │   ├── upload-second.ogg
+│   │   └── upload-third.ogg
+│   ├── snapshots
+│   │   ├── app-loading
+│   │   │   └── feature-detection.spec.ts
+│   │   │       ├── unsupported-browser-CompatibilityView-linux.png
+│   │   │       └── unsupported-browser-linux.png
+│   │   ├── audio-player
+│   │   │   └── audio-player.spec.ts
+│   │   │       ├── Selected-EventTile-of-audio-player--dark-theme--bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--dark-theme--group-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--dark-theme--irc-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--high-contrast--bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--high-contrast--group-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--high-contrast--irc-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--group-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--irc-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--monospace-font--bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--monospace-font--group-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player--light-theme--monospace-font--irc-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player-with-a-reply-bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player-with-a-reply-chain-bubble-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player-with-a-reply-chain-group-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player-with-a-reply-chain-irc-layout-linux.png
+│   │   │       ├── Selected-EventTile-of-audio-player-with-a-reply-group-layout-linux.png
+│   │   │       └── Selected-EventTile-of-audio-player-with-a-reply-irc-layout-linux.png
+│   │   ├── chat-export
+│   │   │   └── html-export.spec.ts
+│   │   │       └── html-export-linux.png
+│   │   ├── crypto
+│   │   │   └── crypto.spec.ts
+│   │   │       └── RoomSummaryCard-with-verified-e2ee-linux.png
+│   │   ├── editing
+│   │   │   └── editing.spec.ts
+│   │   │       └── message-edit-history-dialog-linux.png
+│   │   ├── file-upload
+│   │   │   └── image-upload.spec.ts
+│   │   │       └── image-upload-preview-linux.png
+│   │   ├── forgot-password
+│   │   │   └── forgot-password.spec.ts
+│   │   │       ├── forgot-password-linux.png
+│   │   │       └── forgot-password-verify-email-linux.png
+│   │   ├── invite
+│   │   │   └── invite-dialog.spec.ts
+│   │   │       ├── invite-dialog-dm-with-user-pill-linux.png
+│   │   │       ├── invite-dialog-dm-without-user-linux.png
+│   │   │       ├── invite-dialog-room-with-user-pill-linux.png
+│   │   │       └── invite-dialog-room-without-user-linux.png
+│   │   ├── messages
+│   │   │   └── messages.spec.ts
+│   │   │       ├── basic-message-ltr-ltrdisplayname-linux.png
+│   │   │       ├── basic-message-ltr-rtldisplayname-linux.png
+│   │   │       ├── basic-message-rtl-ltrdisplayname-linux.png
+│   │   │       ├── basic-message-rtl-rtldisplayname-linux.png
+│   │   │       ├── edited-message-ltr-ltrdisplayname-linux.png
+│   │   │       ├── edited-message-ltr-rtldisplayname-linux.png
+│   │   │       ├── edited-message-rtl-ltrdisplayname-linux.png
+│   │   │       ├── edited-message-rtl-rtldisplayname-linux.png
+│   │   │       ├── emote-ltr-ltrdisplayname-linux.png
+│   │   │       ├── emote-ltr-rtldisplayname-linux.png
+│   │   │       ├── emote-rich-ltr-ltrdisplayname-linux.png
+│   │   │       ├── emote-rich-ltr-rtldisplayname-linux.png
+│   │   │       ├── emote-rich-rtl-ltrdisplayname-linux.png
+│   │   │       ├── emote-rich-rtl-rtldisplayname-linux.png
+│   │   │       ├── emote-rtl-ltrdisplayname-linux.png
+│   │   │       ├── emote-rtl-rtldisplayname-linux.png
+│   │   │       ├── reply-message-ltr-ltrdisplayname-linux.png
+│   │   │       ├── reply-message-ltr-rtldisplayname-linux.png
+│   │   │       ├── reply-message-trl-ltrdisplayname-linux.png
+│   │   │       └── reply-message-trl-rtldisplayname-linux.png
+│   │   ├── permalinks
+│   │   │   └── permalinks.spec.ts
+│   │   │       └── permalink-rendering-linux.png
+│   │   ├── pinned-messages
+│   │   │   └── pinned-messages.spec.ts
+│   │   │       ├── pinned-message-Msg1-linux.png
+│   │   │       ├── pinned-message-banner-1-Msg1-linux.png
+│   │   │       ├── pinned-message-banner-2-Msg1-linux.png
+│   │   │       ├── pinned-message-banner-2-Msg2-linux.png
+│   │   │       ├── pinned-message-banner-4-Msg1-linux.png
+│   │   │       ├── pinned-message-banner-4-Msg2-linux.png
+│   │   │       ├── pinned-message-banner-4-Msg3-linux.png
+│   │   │       ├── pinned-message-banner-4-Msg4-linux.png
+│   │   │       ├── pinned-messages-list-empty-linux.png
+│   │   │       └── unpin-all-dialog-linux.png
+│   │   ├── polls
+│   │   │   └── polls.spec.ts
+│   │   │       ├── Polls-Timeline-tile-no-votes-linux.png
+│   │   │       ├── ThreadView-with-a-poll-on-bubble-layout-linux.png
+│   │   │       └── ThreadView-with-a-poll-on-group-layout-linux.png
+│   │   ├── register
+│   │   │   ├── email.spec.ts
+│   │   │   │   └── registration-check-your-email-linux.png
+│   │   │   └── register.spec.ts
+│   │   │       ├── email-prompt-linux.png
+│   │   │       ├── registration-linux.png
+│   │   │       ├── server-picker-linux.png
+│   │   │       ├── terms-prompt-linux.png
+│   │   │       └── use-case-selection-linux.png
+│   │   ├── release-announcement
+│   │   │   └── releaseAnnouncement.spec.ts
+│   │   │       └── release-announcement-Threads-Activity-Centre-linux.png
+│   │   ├── right-panel
+│   │   │   ├── file-panel.spec.ts
+│   │   │   │   ├── empty-linux.png
+│   │   │   │   └── file-tiles-list-linux.png
+│   │   │   ├── notification-panel.spec.ts
+│   │   │   │   └── empty-linux.png
+│   │   │   └── right-panel.spec.ts
+│   │   │       └── with-name-and-address-linux.png
+│   │   ├── room
+│   │   │   └── room-header.spec.ts
+│   │   │       ├── room-header-linux.png
+│   │   │       ├── room-header-long-name-linux.png
+│   │   │       └── room-header-video-room-linux.png
+│   │   ├── room-directory
+│   │   │   └── room-directory.spec.ts
+│   │   │       ├── filtered-no-results-linux.png
+│   │   │       └── filtered-one-result-linux.png
+│   │   ├── settings
+│   │   │   ├── account-user-settings-tab.spec.ts
+│   │   │   │   ├── account-linux.png
+│   │   │   │   └── account-smallscreen-linux.png
+│   │   │   ├── appearance-user-settings-tab
+│   │   │   │   ├── appearance-user-settings-tab.spec.ts
+│   │   │   │   │   ├── appearance-tab-linux.png
+│   │   │   │   │   └── window-12px-linux.png
+│   │   │   │   └── theme-choice-panel.spec.ts
+│   │   │   │       ├── theme-panel-custom-theme-added-linux.png
+│   │   │   │       ├── theme-panel-custom-theme-linux.png
+│   │   │   │       ├── theme-panel-dark-linux.png
+│   │   │   │       ├── theme-panel-light-linux.png
+│   │   │   │       └── theme-panel-match-system-enabled-linux.png
+│   │   │   ├── general-room-settings-tab.spec.ts
+│   │   │   │   └── General-room-settings-tab-should-be-rendered-properly-1-linux.png
+│   │   │   ├── preferences-user-settings-tab.spec.ts
+│   │   │   │   └── Preferences-user-settings-tab-should-be-rendered-properly-1-linux.png
+│   │   │   └── security-user-settings-tab.spec.ts
+│   │   │       └── Security-user-settings-tab-with-posthog-enable-b5d89-csLearnMoreDialog-should-be-rendered-properly-1-linux.png
+│   │   ├── spaces
+│   │   │   ├── spaces.spec.ts
+│   │   │   │   ├── invite-teammates-dialog-linux.png
+│   │   │   │   ├── space-create-menu-linux.png
+│   │   │   │   ├── space-panel-collapsed-linux.png
+│   │   │   │   └── space-panel-expanded-linux.png
+│   │   │   └── threads-activity-centre
+│   │   │       └── threadsActivityCentre.spec.ts
+│   │   │           ├── tac-button-expanded-linux.png
+│   │   │           ├── tac-hovered-expanded-linux.png
+│   │   │           ├── tac-hovered-linux.png
+│   │   │           ├── tac-no-indicator-linux.png
+│   │   │           ├── tac-panel-mix-unread-linux.png
+│   │   │           └── tac-panel-notification-unread-linux.png
+│   │   ├── threads
+│   │   │   └── threads.spec.ts
+│   │   │       └── Reply-to-the-location-on-ThreadView-linux.png
+│   │   ├── timeline
+│   │   │   └── timeline.spec.ts
+│   │   │       ├── collapsed-gels-and-messages-irc-layout-linux.png
+│   │   │       ├── collapsed-gels-bubble-layout-linux.png
+│   │   │       ├── configured-room-irc-layout-linux.png
+│   │   │       ├── event-line-inline-start-margin-irc-layout-linux.png
+│   │   │       ├── event-tile-reply-chains-bubble-layout-linux.png
+│   │   │       ├── event-tile-reply-chains-compact-modern-layout-linux.png
+│   │   │       ├── event-tile-reply-chains-irc-layout-linux.png
+│   │   │       ├── event-tile-reply-chains-irc-modern-linux.png
+│   │   │       ├── event-tiles-bubble-layout-linux.png
+│   │   │       ├── event-tiles-compact-modern-layout-linux.png
+│   │   │       ├── event-tiles-irc-layout-linux.png
+│   │   │       ├── event-tiles-modern-layout-linux.png
+│   │   │       ├── expanded-gels-and-messages-irc-layout-linux.png
+│   │   │       ├── expanded-gels-bubble-layout-linux.png
+│   │   │       ├── expanded-gels-emote-irc-layout-linux.png
+│   │   │       ├── expanded-gels-irc-layout-linux.png
+│   │   │       ├── expanded-gels-modern-layout-linux.png
+│   │   │       ├── expanded-gels-redaction-placeholder-linux.png
+│   │   │       ├── highlighted-search-results-linux.png
+│   │   │       ├── hovered-hidden-event-line-irc-layout-linux.png
+│   │   │       ├── image-in-timeline-default-layout-linux.png
+│   │   │       ├── long-strings-with-reply-bubble-layout-linux.png
+│   │   │       ├── long-strings-with-reply-irc-layout-linux.png
+│   │   │       ├── long-strings-with-reply-modern-layout-linux.png
+│   │   │       ├── search-aux-panel-linux.png
+│   │   │       ├── search-results-with-TextualEvent-linux.png
+│   │   │       └── url-preview-linux.png
+│   │   ├── user-menu
+│   │   │   └── user-menu.spec.ts
+│   │   │       └── user-menu-linux.png
+│   │   ├── user-onboarding
+│   │   │   └── user-onboarding-new.spec.ts
+│   │   │       ├── User-Onboarding-new-user-app-download-dialog-1-linux.png
+│   │   │       └── User-Onboarding-new-user-page-is-shown-and-preference-exists-1-linux.png
+│   │   ├── user-view
+│   │   │   └── user-view.spec.ts
+│   │   │       └── user-info-linux.png
+│   │   └── widgets
+│   │       └── layout.spec.ts
+│   │           └── apps-drawer-linux.png
+│   ├── stale-screenshot-reporter.ts
+│   └── tsconfig.json
+├── playwright.config.ts
+├── release_config.yaml
+├── res
+│   ├── css
+│   │   ├── _animations.pcss
+│   │   ├── _common.pcss
+│   │   ├── _components.pcss
+│   │   ├── _font-sizes.pcss
+│   │   ├── _spacing.pcss
+│   │   ├── components
+│   │   │   └── views
+│   │   │       ├── beacon
+│   │   │       │   ├── _BeaconListItem.pcss
+│   │   │       │   ├── _BeaconStatus.pcss
+│   │   │       │   ├── _BeaconStatusTooltip.pcss
+│   │   │       │   ├── _BeaconViewDialog.pcss
+│   │   │       │   ├── _DialogOwnBeaconStatus.pcss
+│   │   │       │   ├── _DialogSidebar.pcss
+│   │   │       │   ├── _LeftPanelLiveShareWarning.pcss
+│   │   │       │   ├── _LiveTimeRemaining.pcss
+│   │   │       │   ├── _OwnBeaconStatus.pcss
+│   │   │       │   ├── _ShareLatestLocation.pcss
+│   │   │       │   └── _StyledLiveBeaconIcon.pcss
+│   │   │       ├── context_menus
+│   │   │       │   └── _KebabContextMenu.pcss
+│   │   │       ├── dialogs
+│   │   │       │   └── polls
+│   │   │       │       ├── _PollDetailHeader.pcss
+│   │   │       │       ├── _PollListItem.pcss
+│   │   │       │       └── _PollListItemEnded.pcss
+│   │   │       ├── elements
+│   │   │       │   ├── _AppPermission.pcss
+│   │   │       │   ├── _AppWarning.pcss
+│   │   │       │   ├── _FilterDropdown.pcss
+│   │   │       │   ├── _FilterTabGroup.pcss
+│   │   │       │   └── _LearnMore.pcss
+│   │   │       ├── location
+│   │   │       │   ├── _EnableLiveShare.pcss
+│   │   │       │   ├── _LiveDurationDropdown.pcss
+│   │   │       │   ├── _LocationShareMenu.pcss
+│   │   │       │   ├── _MapError.pcss
+│   │   │       │   ├── _MapFallback.pcss
+│   │   │       │   ├── _Marker.pcss
+│   │   │       │   ├── _ShareDialogButtons.pcss
+│   │   │       │   ├── _ShareType.pcss
+│   │   │       │   └── _ZoomButtons.pcss
+│   │   │       ├── messages
+│   │   │       │   ├── _MBeaconBody.pcss
+│   │   │       │   └── shared
+│   │   │       │       └── _MediaProcessingError.pcss
+│   │   │       ├── pips
+│   │   │       │   └── _WidgetPip.pcss
+│   │   │       ├── polls
+│   │   │       │   └── _PollOption.pcss
+│   │   │       ├── settings
+│   │   │       │   ├── _AddRemoveThreepids.pcss
+│   │   │       │   ├── devices
+│   │   │       │   │   ├── _CurrentDeviceSection.pcss
+│   │   │       │   │   ├── _DeviceDetailHeading.pcss
+│   │   │       │   │   ├── _DeviceDetails.pcss
+│   │   │       │   │   ├── _DeviceExpandDetailsButton.pcss
+│   │   │       │   │   ├── _DeviceSecurityCard.pcss
+│   │   │       │   │   ├── _DeviceTile.pcss
+│   │   │       │   │   ├── _DeviceTypeIcon.pcss
+│   │   │       │   │   ├── _FilteredDeviceList.pcss
+│   │   │       │   │   ├── _FilteredDeviceListHeader.pcss
+│   │   │       │   │   ├── _SecurityRecommendations.pcss
+│   │   │       │   │   └── _SelectableDeviceTile.pcss
+│   │   │       │   └── shared
+│   │   │       │       ├── _SettingsSubsection.pcss
+│   │   │       │       └── _SettingsSubsectionHeading.pcss
+│   │   │       ├── spaces
+│   │   │       │   └── _QuickThemeSwitcher.pcss
+│   │   │       ├── typography
+│   │   │       │   └── _Caption.pcss
+│   │   │       └── utils
+│   │   │           ├── _Box.pcss
+│   │   │           └── _Flex.pcss
+│   │   ├── compound
+│   │   │   ├── _Icon.pcss
+│   │   │   └── _SuccessDialog.pcss
+│   │   ├── rethemendex.sh
+│   │   ├── structures
+│   │   │   ├── _AutoHideScrollbar.pcss
+│   │   │   ├── _AutocompleteInput.pcss
+│   │   │   ├── _BackdropPanel.pcss
+│   │   │   ├── _CompatibilityPage.pcss
+│   │   │   ├── _ContextualMenu.pcss
+│   │   │   ├── _ErrorMessage.pcss
+│   │   │   ├── _FileDropTarget.pcss
+│   │   │   ├── _FilePanel.pcss
+│   │   │   ├── _GenericDropdownMenu.pcss
+│   │   │   ├── _GenericErrorPage.pcss
+│   │   │   ├── _HomePage.pcss
+│   │   │   ├── _LargeLoader.pcss
+│   │   │   ├── _LeftPanel.pcss
+│   │   │   ├── _MainSplit.pcss
+│   │   │   ├── _MatrixChat.pcss
+│   │   │   ├── _MessagePanel.pcss
+│   │   │   ├── _NonUrgentToastContainer.pcss
+│   │   │   ├── _QuickSettingsButton.pcss
+│   │   │   ├── _RightPanel.pcss
+│   │   │   ├── _RoomSearch.pcss
+│   │   │   ├── _RoomStatusBar.pcss
+│   │   │   ├── _RoomView.pcss
+│   │   │   ├── _SearchBox.pcss
+│   │   │   ├── _SpaceHierarchy.pcss
+│   │   │   ├── _SpacePanel.pcss
+│   │   │   ├── _SpaceRoomView.pcss
+│   │   │   ├── _SplashPage.pcss
+│   │   │   ├── _TabbedView.pcss
+│   │   │   ├── _ThreadsActivityCentre.pcss
+│   │   │   ├── _ToastContainer.pcss
+│   │   │   ├── _UploadBar.pcss
+│   │   │   ├── _UserMenu.pcss
+│   │   │   ├── _ViewSource.pcss
+│   │   │   └── auth
+│   │   │       ├── _CompleteSecurity.pcss
+│   │   │       ├── _ConfirmSessionLockTheftView.pcss
+│   │   │       ├── _Login.pcss
+│   │   │       ├── _LoginSplashView.pcss
+│   │   │       ├── _MobileRegistration.pcss
+│   │   │       ├── _Registration.pcss
+│   │   │       ├── _SessionLockStolenView.pcss
+│   │   │       └── _SetupEncryptionBody.pcss
+│   │   ├── views
+│   │   │   ├── audio_messages
+│   │   │   │   ├── _AudioPlayer.pcss
+│   │   │   │   ├── _PlayPauseButton.pcss
+│   │   │   │   ├── _PlaybackContainer.pcss
+│   │   │   │   ├── _SeekBar.pcss
+│   │   │   │   └── _Waveform.pcss
+│   │   │   ├── auth
+│   │   │   │   ├── _AuthBody.pcss
+│   │   │   │   ├── _AuthFooter.pcss
+│   │   │   │   ├── _AuthHeader.pcss
+│   │   │   │   ├── _AuthHeaderLogo.pcss
+│   │   │   │   ├── _AuthPage.pcss
+│   │   │   │   ├── _CompleteSecurityBody.pcss
+│   │   │   │   ├── _CountryDropdown.pcss
+│   │   │   │   ├── _InteractiveAuthEntryComponents.pcss
+│   │   │   │   ├── _LanguageSelector.pcss
+│   │   │   │   ├── _LoginWithQR.pcss
+│   │   │   │   ├── _PassphraseField.pcss
+│   │   │   │   └── _Welcome.pcss
+│   │   │   ├── avatars
+│   │   │   │   ├── _BaseAvatar.pcss
+│   │   │   │   ├── _DecoratedRoomAvatar.pcss
+│   │   │   │   ├── _WidgetAvatar.pcss
+│   │   │   │   └── _WithPresenceIndicator.pcss
+│   │   │   ├── beta
+│   │   │   │   └── _BetaCard.pcss
+│   │   │   ├── context_menus
+│   │   │   │   ├── _DeviceContextMenu.pcss
+│   │   │   │   ├── _IconizedContextMenu.pcss
+│   │   │   │   ├── _LegacyCallContextMenu.pcss
+│   │   │   │   ├── _MessageContextMenu.pcss
+│   │   │   │   ├── _RoomGeneralContextMenu.pcss
+│   │   │   │   └── _RoomNotificationContextMenu.pcss
+│   │   │   ├── dialogs
+│   │   │   │   ├── _AddExistingToSpaceDialog.pcss
+│   │   │   │   ├── _AnalyticsLearnMoreDialog.pcss
+│   │   │   │   ├── _AppDownloadDialog.pcss
+│   │   │   │   ├── _BugReportDialog.pcss
+│   │   │   │   ├── _BulkRedactDialog.pcss
+│   │   │   │   ├── _ChangelogDialog.pcss
+│   │   │   │   ├── _CompoundDialog.pcss
+│   │   │   │   ├── _ConfirmSpaceUserActionDialog.pcss
+│   │   │   │   ├── _ConfirmUserActionDialog.pcss
+│   │   │   │   ├── _CreateRoomDialog.pcss
+│   │   │   │   ├── _CreateSubspaceDialog.pcss
+│   │   │   │   ├── _DeactivateAccountDialog.pcss
+│   │   │   │   ├── _DevtoolsDialog.pcss
+│   │   │   │   ├── _ExportDialog.pcss
+│   │   │   │   ├── _FeedbackDialog.pcss
+│   │   │   │   ├── _ForwardDialog.pcss
+│   │   │   │   ├── _GenericFeatureFeedbackDialog.pcss
+│   │   │   │   ├── _IncomingSasDialog.pcss
+│   │   │   │   ├── _InviteDialog.pcss
+│   │   │   │   ├── _JoinRuleDropdown.pcss
+│   │   │   │   ├── _LeaveSpaceDialog.pcss
+│   │   │   │   ├── _LocationViewDialog.pcss
+│   │   │   │   ├── _LogoutDialog.pcss
+│   │   │   │   ├── _ManageRestrictedJoinRuleDialog.pcss
+│   │   │   │   ├── _MessageEditHistoryDialog.pcss
+│   │   │   │   ├── _ModalWidgetDialog.pcss
+│   │   │   │   ├── _PollCreateDialog.pcss
+│   │   │   │   ├── _RegistrationEmailPromptDialog.pcss
+│   │   │   │   ├── _RoomSettingsDialog.pcss
+│   │   │   │   ├── _RoomSettingsDialogBridges.pcss
+│   │   │   │   ├── _RoomUpgradeDialog.pcss
+│   │   │   │   ├── _RoomUpgradeWarningDialog.pcss
+│   │   │   │   ├── _ServerOfflineDialog.pcss
+│   │   │   │   ├── _ServerPickerDialog.pcss
+│   │   │   │   ├── _SetEmailDialog.pcss
+│   │   │   │   ├── _SettingsDialog.pcss
+│   │   │   │   ├── _ShareDialog.pcss
+│   │   │   │   ├── _SlashCommandHelpDialog.pcss
+│   │   │   │   ├── _SpacePreferencesDialog.pcss
+│   │   │   │   ├── _SpaceSettingsDialog.pcss
+│   │   │   │   ├── _SpotlightDialog.pcss
+│   │   │   │   ├── _TermsDialog.pcss
+│   │   │   │   ├── _UnpinAllDialog.pcss
+│   │   │   │   ├── _UntrustedDeviceDialog.pcss
+│   │   │   │   ├── _UploadConfirmDialog.pcss
+│   │   │   │   ├── _UserSettingsDialog.pcss
+│   │   │   │   ├── _VerifyEMailDialog.pcss
+│   │   │   │   ├── _WidgetCapabilitiesPromptDialog.pcss
+│   │   │   │   └── security
+│   │   │   │       ├── _AccessSecretStorageDialog.pcss
+│   │   │   │       ├── _CreateCrossSigningDialog.pcss
+│   │   │   │       ├── _CreateKeyBackupDialog.pcss
+│   │   │   │       ├── _CreateSecretStorageDialog.pcss
+│   │   │   │       ├── _KeyBackupFailedDialog.pcss
+│   │   │   │       └── _RestoreKeyBackupDialog.pcss
+│   │   │   ├── directory
+│   │   │   │   └── _NetworkDropdown.pcss
+│   │   │   ├── elements
+│   │   │   │   ├── _AccessibleButton.pcss
+│   │   │   │   ├── _CopyableText.pcss
+│   │   │   │   ├── _DesktopCapturerSourcePicker.pcss
+│   │   │   │   ├── _DialPadBackspaceButton.pcss
+│   │   │   │   ├── _Dropdown.pcss
+│   │   │   │   ├── _EditableItemList.pcss
+│   │   │   │   ├── _ErrorBoundary.pcss
+│   │   │   │   ├── _ExternalLink.pcss
+│   │   │   │   ├── _FacePile.pcss
+│   │   │   │   ├── _Field.pcss
+│   │   │   │   ├── _GenericEventListSummary.pcss
+│   │   │   │   ├── _ImageView.pcss
+│   │   │   │   ├── _InfoTooltip.pcss
+│   │   │   │   ├── _InlineSpinner.pcss
+│   │   │   │   ├── _InteractiveTooltip.pcss
+│   │   │   │   ├── _InviteReason.pcss
+│   │   │   │   ├── _LabelledCheckbox.pcss
+│   │   │   │   ├── _LanguageDropdown.pcss
+│   │   │   │   ├── _MiniAvatarUploader.pcss
+│   │   │   │   ├── _Pill.pcss
+│   │   │   │   ├── _PowerSelector.pcss
+│   │   │   │   ├── _ProgressBar.pcss
+│   │   │   │   ├── _QRCode.pcss
+│   │   │   │   ├── _ReplyChain.pcss
+│   │   │   │   ├── _ResizeHandle.pcss
+│   │   │   │   ├── _RichText.pcss
+│   │   │   │   ├── _RoomAliasField.pcss
+│   │   │   │   ├── _SSOButtons.pcss
+│   │   │   │   ├── _SearchWarning.pcss
+│   │   │   │   ├── _ServerPicker.pcss
+│   │   │   │   ├── _SettingsFlag.pcss
+│   │   │   │   ├── _Spinner.pcss
+│   │   │   │   ├── _StyledCheckbox.pcss
+│   │   │   │   ├── _StyledRadioButton.pcss
+│   │   │   │   ├── _SyntaxHighlight.pcss
+│   │   │   │   ├── _TagComposer.pcss
+│   │   │   │   ├── _TextWithTooltip.pcss
+│   │   │   │   ├── _ToggleSwitch.pcss
+│   │   │   │   ├── _Tooltip.pcss
+│   │   │   │   ├── _UseCaseSelection.pcss
+│   │   │   │   ├── _UseCaseSelectionButton.pcss
+│   │   │   │   └── _Validation.pcss
+│   │   │   ├── emojipicker
+│   │   │   │   └── _EmojiPicker.pcss
+│   │   │   ├── location
+│   │   │   │   └── _LocationPicker.pcss
+│   │   │   ├── messages
+│   │   │   │   ├── _CallEvent.pcss
+│   │   │   │   ├── _CreateEvent.pcss
+│   │   │   │   ├── _DateSeparator.pcss
+│   │   │   │   ├── _DecryptionFailureBody.pcss
+│   │   │   │   ├── _DisambiguatedProfile.pcss
+│   │   │   │   ├── _EventTileBubble.pcss
+│   │   │   │   ├── _HiddenBody.pcss
+│   │   │   │   ├── _JumpToDatePicker.pcss
+│   │   │   │   ├── _LegacyCallEvent.pcss
+│   │   │   │   ├── _MEmoteBody.pcss
+│   │   │   │   ├── _MFileBody.pcss
+│   │   │   │   ├── _MImageBody.pcss
+│   │   │   │   ├── _MImageReplyBody.pcss
+│   │   │   │   ├── _MJitsiWidgetEvent.pcss
+│   │   │   │   ├── _MLocationBody.pcss
+│   │   │   │   ├── _MNoticeBody.pcss
+│   │   │   │   ├── _MPollBody.pcss
+│   │   │   │   ├── _MPollEndBody.pcss
+│   │   │   │   ├── _MStickerBody.pcss
+│   │   │   │   ├── _MTextBody.pcss
+│   │   │   │   ├── _MVideoBody.pcss
+│   │   │   │   ├── _MediaBody.pcss
+│   │   │   │   ├── _MessageActionBar.pcss
+│   │   │   │   ├── _MessageTimestamp.pcss
+│   │   │   │   ├── _MjolnirBody.pcss
+│   │   │   │   ├── _PinnedMessageBadge.pcss
+│   │   │   │   ├── _ReactionsRow.pcss
+│   │   │   │   ├── _ReactionsRowButton.pcss
+│   │   │   │   ├── _RedactedBody.pcss
+│   │   │   │   ├── _RoomAvatarEvent.pcss
+│   │   │   │   ├── _TextualEvent.pcss
+│   │   │   │   ├── _TimelineSeparator.pcss
+│   │   │   │   ├── _UnknownBody.pcss
+│   │   │   │   ├── _ViewSourceEvent.pcss
+│   │   │   │   └── _common_CryptoEvent.pcss
+│   │   │   ├── polls
+│   │   │   │   └── pollHistory
+│   │   │   │       ├── _PollHistory.pcss
+│   │   │   │       └── _PollHistoryList.pcss
+│   │   │   ├── right_panel
+│   │   │   │   ├── _BaseCard.pcss
+│   │   │   │   ├── _EmptyState.pcss
+│   │   │   │   ├── _EncryptionInfo.pcss
+│   │   │   │   ├── _ExtensionsCard.pcss
+│   │   │   │   ├── _PinnedMessagesCard.pcss
+│   │   │   │   ├── _RoomSummaryCard.pcss
+│   │   │   │   ├── _ThreadPanel.pcss
+│   │   │   │   ├── _TimelineCard.pcss
+│   │   │   │   ├── _UserInfo.pcss
+│   │   │   │   ├── _VerificationPanel.pcss
+│   │   │   │   └── _WidgetCard.pcss
+│   │   │   ├── room_settings
+│   │   │   │   └── _AliasSettings.pcss
+│   │   │   ├── rooms
+│   │   │   │   ├── _AppsDrawer.pcss
+│   │   │   │   ├── _Autocomplete.pcss
+│   │   │   │   ├── _AuxPanel.pcss
+│   │   │   │   ├── _BasicMessageComposer.pcss
+│   │   │   │   ├── _CallGuestLinkButton.pcss
+│   │   │   │   ├── _DecryptionFailureBar.pcss
+│   │   │   │   ├── _E2EIcon.pcss
+│   │   │   │   ├── _EditMessageComposer.pcss
+│   │   │   │   ├── _EmojiButton.pcss
+│   │   │   │   ├── _EntityTile.pcss
+│   │   │   │   ├── _EventBubbleTile.pcss
+│   │   │   │   ├── _EventTile.pcss
+│   │   │   │   ├── _HistoryTile.pcss
+│   │   │   │   ├── _IRCLayout.pcss
+│   │   │   │   ├── _JumpToBottomButton.pcss
+│   │   │   │   ├── _LegacyRoomHeader.pcss
+│   │   │   │   ├── _LinkPreviewGroup.pcss
+│   │   │   │   ├── _LinkPreviewWidget.pcss
+│   │   │   │   ├── _LiveContentSummary.pcss
+│   │   │   │   ├── _MemberList.pcss
+│   │   │   │   ├── _MessageComposer.pcss
+│   │   │   │   ├── _MessageComposerFormatBar.pcss
+│   │   │   │   ├── _NewRoomIntro.pcss
+│   │   │   │   ├── _NotificationBadge.pcss
+│   │   │   │   ├── _PinnedEventTile.pcss
+│   │   │   │   ├── _PinnedMessageBanner.pcss
+│   │   │   │   ├── _PresenceLabel.pcss
+│   │   │   │   ├── _ReadReceiptGroup.pcss
+│   │   │   │   ├── _ReplyPreview.pcss
+│   │   │   │   ├── _ReplyTile.pcss
+│   │   │   │   ├── _RoomBreadcrumbs.pcss
+│   │   │   │   ├── _RoomCallBanner.pcss
+│   │   │   │   ├── _RoomHeader.pcss
+│   │   │   │   ├── _RoomInfoLine.pcss
+│   │   │   │   ├── _RoomKnocksBar.pcss
+│   │   │   │   ├── _RoomList.pcss
+│   │   │   │   ├── _RoomListHeader.pcss
+│   │   │   │   ├── _RoomPreviewBar.pcss
+│   │   │   │   ├── _RoomPreviewCard.pcss
+│   │   │   │   ├── _RoomSearchAuxPanel.pcss
+│   │   │   │   ├── _RoomSublist.pcss
+│   │   │   │   ├── _RoomTile.pcss
+│   │   │   │   ├── _RoomUpgradeWarningBar.pcss
+│   │   │   │   ├── _SendMessageComposer.pcss
+│   │   │   │   ├── _Stickers.pcss
+│   │   │   │   ├── _ThirdPartyMemberInfo.pcss
+│   │   │   │   ├── _ThreadSummary.pcss
+│   │   │   │   ├── _TopUnreadMessagesBar.pcss
+│   │   │   │   ├── _VoiceRecordComposerTile.pcss
+│   │   │   │   ├── _WhoIsTypingTile.pcss
+│   │   │   │   └── wysiwyg_composer
+│   │   │   │       ├── _EditWysiwygComposer.pcss
+│   │   │   │       ├── _SendWysiwygComposer.pcss
+│   │   │   │       └── components
+│   │   │   │           ├── _Editor.pcss
+│   │   │   │           ├── _FormattingButtons.pcss
+│   │   │   │           └── _LinkModal.pcss
+│   │   │   ├── settings
+│   │   │   │   ├── _AvatarSetting.pcss
+│   │   │   │   ├── _CrossSigningPanel.pcss
+│   │   │   │   ├── _CryptographyPanel.pcss
+│   │   │   │   ├── _FontScalingPanel.pcss
+│   │   │   │   ├── _ImageSizePanel.pcss
+│   │   │   │   ├── _IntegrationManager.pcss
+│   │   │   │   ├── _JoinRuleSettings.pcss
+│   │   │   │   ├── _KeyboardShortcut.pcss
+│   │   │   │   ├── _LayoutSwitcher.pcss
+│   │   │   │   ├── _NotificationPusherSettings.pcss
+│   │   │   │   ├── _NotificationSettings2.pcss
+│   │   │   │   ├── _Notifications.pcss
+│   │   │   │   ├── _PhoneNumbers.pcss
+│   │   │   │   ├── _PowerLevelSelector.pcss
+│   │   │   │   ├── _RoomProfileSettings.pcss
+│   │   │   │   ├── _SecureBackupPanel.pcss
+│   │   │   │   ├── _SetIdServer.pcss
+│   │   │   │   ├── _SetIntegrationManager.pcss
+│   │   │   │   ├── _SettingsFieldset.pcss
+│   │   │   │   ├── _SpellCheckLanguages.pcss
+│   │   │   │   ├── _ThemeChoicePanel.pcss
+│   │   │   │   ├── _UpdateCheckButton.pcss
+│   │   │   │   ├── _UserProfileSettings.pcss
+│   │   │   │   └── tabs
+│   │   │   │       ├── _SettingsBanner.pcss
+│   │   │   │       ├── _SettingsIndent.pcss
+│   │   │   │       ├── _SettingsSection.pcss
+│   │   │   │       ├── _SettingsTab.pcss
+│   │   │   │       ├── room
+│   │   │   │       │   ├── _NotificationSettingsTab.pcss
+│   │   │   │       │   ├── _PeopleRoomSettingsTab.pcss
+│   │   │   │       │   ├── _RolesRoomSettingsTab.pcss
+│   │   │   │       │   └── _SecurityRoomSettingsTab.pcss
+│   │   │   │       └── user
+│   │   │   │           ├── _AppearanceUserSettingsTab.pcss
+│   │   │   │           ├── _HelpUserSettingsTab.pcss
+│   │   │   │           ├── _KeyboardUserSettingsTab.pcss
+│   │   │   │           ├── _MjolnirUserSettingsTab.pcss
+│   │   │   │           ├── _PreferencesUserSettingsTab.pcss
+│   │   │   │           ├── _SecurityUserSettingsTab.pcss
+│   │   │   │           └── _SidebarUserSettingsTab.pcss
+│   │   │   ├── spaces
+│   │   │   │   ├── _SpaceBasicSettings.pcss
+│   │   │   │   ├── _SpaceChildrenPicker.pcss
+│   │   │   │   ├── _SpaceCreateMenu.pcss
+│   │   │   │   └── _SpacePublicShare.pcss
+│   │   │   ├── terms
+│   │   │   │   └── _InlineTermsAgreement.pcss
+│   │   │   ├── toasts
+│   │   │   │   ├── _AnalyticsToast.pcss
+│   │   │   │   ├── _IncomingCallToast.pcss
+│   │   │   │   ├── _IncomingLegacyCallToast.pcss
+│   │   │   │   └── _NonUrgentEchoFailureToast.pcss
+│   │   │   ├── typography
+│   │   │   │   └── _Heading.pcss
+│   │   │   ├── user-onboarding
+│   │   │   │   ├── _UserOnboardingButton.pcss
+│   │   │   │   ├── _UserOnboardingHeader.pcss
+│   │   │   │   ├── _UserOnboardingList.pcss
+│   │   │   │   ├── _UserOnboardingPage.pcss
+│   │   │   │   └── _UserOnboardingTask.pcss
+│   │   │   ├── verification
+│   │   │   │   └── _VerificationShowSas.pcss
+│   │   │   └── voip
+│   │   │       ├── LegacyCallView
+│   │   │       │   └── _LegacyCallViewButtons.pcss
+│   │   │       ├── _CallDuration.pcss
+│   │   │       ├── _CallView.pcss
+│   │   │       ├── _DialPad.pcss
+│   │   │       ├── _DialPadContextMenu.pcss
+│   │   │       ├── _DialPadModal.pcss
+│   │   │       ├── _LegacyCallPreview.pcss
+│   │   │       ├── _LegacyCallView.pcss
+│   │   │       ├── _LegacyCallViewForRoom.pcss
+│   │   │       ├── _LegacyCallViewHeader.pcss
+│   │   │       ├── _LegacyCallViewSidebar.pcss
+│   │   │       └── _VideoFeed.pcss
+│   │   └── voice-broadcast
+│   │       ├── atoms
+│   │       │   ├── _LiveBadge.pcss
+│   │       │   ├── _VoiceBroadcastControl.pcss
+│   │       │   ├── _VoiceBroadcastHeader.pcss
+│   │       │   ├── _VoiceBroadcastRecordingConnectionError.pcss
+│   │       │   └── _VoiceBroadcastRoomSubtitle.pcss
+│   │       └── molecules
+│   │           └── _VoiceBroadcastBody.pcss
+│   ├── fonts
+│   │   ├── Inconsolata
+│   │   │   ├── QldKNThLqRwH-OJ1UHjlKGlX5qhExfHwNJU.woff2
+│   │   │   ├── QldKNThLqRwH-OJ1UHjlKGlZ5qhExfHw.woff2
+│   │   │   ├── QldXNThLqRwH-OJ1UHjlKGHiw71n5_zaDpwm80E.woff2
+│   │   │   └── QldXNThLqRwH-OJ1UHjlKGHiw71p5_zaDpwm.woff2
+│   │   ├── Inter
+│   │   │   ├── Inter-Bold.woff
+│   │   │   ├── Inter-Bold.woff2
+│   │   │   ├── Inter-BoldItalic.woff
+│   │   │   ├── Inter-BoldItalic.woff2
+│   │   │   ├── Inter-Italic.woff
+│   │   │   ├── Inter-Italic.woff2
+│   │   │   ├── Inter-Medium.woff
+│   │   │   ├── Inter-Medium.woff2
+│   │   │   ├── Inter-MediumItalic.woff
+│   │   │   ├── Inter-MediumItalic.woff2
+│   │   │   ├── Inter-Regular.woff
+│   │   │   ├── Inter-Regular.woff2
+│   │   │   ├── Inter-SemiBold.woff
+│   │   │   ├── Inter-SemiBold.woff2
+│   │   │   ├── Inter-SemiBoldItalic.woff
+│   │   │   └── Inter-SemiBoldItalic.woff2
+│   │   ├── Nunito
+│   │   │   ├── Nunito-Bold.ttf
+│   │   │   ├── Nunito-Regular.ttf
+│   │   │   └── Nunito-SemiBold.ttf
+│   │   ├── Open_Sans
+│   │   │   ├── LICENSE.txt
+│   │   │   ├── OpenSans-Bold.ttf
+│   │   │   ├── OpenSans-BoldItalic.ttf
+│   │   │   ├── OpenSans-Italic.ttf
+│   │   │   ├── OpenSans-Regular.ttf
+│   │   │   ├── OpenSans-Semibold.ttf
+│   │   │   └── OpenSans-SemiboldItalic.ttf
+│   │   └── Twemoji_Mozilla
+│   │       ├── TwemojiMozilla-colr.woff2
+│   │       └── TwemojiMozilla-sbix.woff2
+│   ├── img
+│   │   ├── badges
+│   │   │   ├── f-droid.svg
+│   │   │   ├── google-play.svg
+│   │   │   └── ios.svg
+│   │   ├── betas
+│   │   │   ├── .gitkeep
+│   │   │   └── video_rooms.png
+│   │   ├── camera.svg
+│   │   ├── compound
+│   │   │   ├── back-30s-24px.svg
+│   │   │   ├── chevron-right-12px.svg
+│   │   │   ├── forward-30s-24px.svg
+│   │   │   ├── live-16px.svg
+│   │   │   ├── live-8px.svg
+│   │   │   ├── record-10px.svg
+│   │   │   ├── retry-16px.svg
+│   │   │   ├── stop-16.svg
+│   │   │   ├── thread-16px.svg
+│   │   │   ├── timer-16px.svg
+│   │   │   └── user.svg
+│   │   ├── download.svg
+│   │   ├── e2e
+│   │   │   ├── decryption-failure.svg
+│   │   │   ├── lock-warning-filled.svg
+│   │   │   ├── normal.svg
+│   │   │   ├── verified-deprecated.svg
+│   │   │   ├── verified.svg
+│   │   │   ├── warning-deprecated.svg
+│   │   │   └── warning.svg
+│   │   ├── element-desktop-logo.svg
+│   │   ├── element-icons
+│   │   │   ├── add-photo.svg
+│   │   │   ├── ask-to-join.svg
+│   │   │   ├── brands
+│   │   │   │   ├── apple.svg
+│   │   │   │   ├── facebook.svg
+│   │   │   │   ├── github.svg
+│   │   │   │   ├── gitlab.svg
+│   │   │   │   ├── google.svg
+│   │   │   │   └── twitter.svg
+│   │   │   ├── call
+│   │   │   │   ├── delete.svg
+│   │   │   │   ├── dialpad.svg
+│   │   │   │   ├── expand.svg
+│   │   │   │   ├── freedom.svg
+│   │   │   │   ├── fullscreen.svg
+│   │   │   │   ├── hangup.svg
+│   │   │   │   ├── spotlight.svg
+│   │   │   │   ├── video-call.svg
+│   │   │   │   └── voice-call.svg
+│   │   │   ├── camera.svg
+│   │   │   ├── chat-bubble.svg
+│   │   │   ├── chat-bubbles.svg
+│   │   │   ├── check-all.svg
+│   │   │   ├── child-relationship.svg
+│   │   │   ├── circle-sending.svg
+│   │   │   ├── circle-sent.svg
+│   │   │   ├── clock.svg
+│   │   │   ├── cloud-off.svg
+│   │   │   ├── collapse-message.svg
+│   │   │   ├── community-rooms.svg
+│   │   │   ├── email-prompt.svg
+│   │   │   ├── expand-message.svg
+│   │   │   ├── export.svg
+│   │   │   ├── eye.svg
+│   │   │   ├── feedback.svg
+│   │   │   ├── flask.svg
+│   │   │   ├── group-members.svg
+│   │   │   ├── hide.svg
+│   │   │   ├── home.svg
+│   │   │   ├── i.svg
+│   │   │   ├── info.svg
+│   │   │   ├── leave.svg
+│   │   │   ├── link.svg
+│   │   │   ├── live.svg
+│   │   │   ├── location.svg
+│   │   │   ├── lock.svg
+│   │   │   ├── maximise-expand.svg
+│   │   │   ├── message
+│   │   │   │   ├── chevron-up.svg
+│   │   │   │   ├── fwd.svg
+│   │   │   │   ├── overflow-large.svg
+│   │   │   │   └── thread.svg
+│   │   │   ├── minimise-collapse.svg
+│   │   │   ├── minus-button.svg
+│   │   │   ├── new-and-improved.svg
+│   │   │   ├── notifications.svg
+│   │   │   ├── plus-button.svg
+│   │   │   ├── plus.svg
+│   │   │   ├── reduce.svg
+│   │   │   ├── retry.svg
+│   │   │   ├── room
+│   │   │   │   ├── apps.svg
+│   │   │   │   ├── composer
+│   │   │   │   │   ├── attach.svg
+│   │   │   │   │   ├── emoji.svg
+│   │   │   │   │   ├── plain_text.svg
+│   │   │   │   │   ├── poll.svg
+│   │   │   │   │   └── sticker.svg
+│   │   │   │   ├── default_app.svg
+│   │   │   │   ├── default_cal.svg
+│   │   │   │   ├── default_clock.svg
+│   │   │   │   ├── default_doc.svg
+│   │   │   │   ├── default_video.svg
+│   │   │   │   ├── files.svg
+│   │   │   │   ├── invite.svg
+│   │   │   │   ├── members.svg
+│   │   │   │   ├── message-bar
+│   │   │   │   │   ├── edit.svg
+│   │   │   │   │   ├── emoji.svg
+│   │   │   │   │   ├── reply.svg
+│   │   │   │   │   └── star.svg
+│   │   │   │   ├── pin-upright.svg
+│   │   │   │   ├── pin.svg
+│   │   │   │   ├── room-summary.svg
+│   │   │   │   ├── search-inset.svg
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── advanced.svg
+│   │   │   │   │   └── roles.svg
+│   │   │   │   ├── share.svg
+│   │   │   │   └── thread.svg
+│   │   │   ├── roomlist
+│   │   │   │   ├── archived.svg
+│   │   │   │   ├── browse.svg
+│   │   │   │   ├── dark-light-mode.svg
+│   │   │   │   ├── decorated-avatar-mask.svg
+│   │   │   │   ├── dialpad.svg
+│   │   │   │   ├── dnd-cross.svg
+│   │   │   │   ├── dnd.svg
+│   │   │   │   ├── explore.svg
+│   │   │   │   ├── favorite.svg
+│   │   │   │   ├── hash-circle.svg
+│   │   │   │   ├── hash-plus.svg
+│   │   │   │   ├── hash-search.svg
+│   │   │   │   ├── hash-video.svg
+│   │   │   │   ├── hash.svg
+│   │   │   │   ├── low-priority.svg
+│   │   │   │   ├── mark-as-read.svg
+│   │   │   │   ├── mark-as-unread.svg
+│   │   │   │   ├── member-plus.svg
+│   │   │   │   ├── notifications-default.svg
+│   │   │   │   ├── notifications-dm.svg
+│   │   │   │   ├── notifications-off.svg
+│   │   │   │   ├── plus-circle.svg
+│   │   │   │   ├── plus.svg
+│   │   │   │   └── skeleton-ui.svg
+│   │   │   ├── security.svg
+│   │   │   ├── send-message.svg
+│   │   │   ├── settings
+│   │   │   │   ├── appearance.svg
+│   │   │   │   ├── desktop.svg
+│   │   │   │   ├── devices.svg
+│   │   │   │   ├── flask.svg
+│   │   │   │   ├── help.svg
+│   │   │   │   ├── img-size-large.svg
+│   │   │   │   ├── img-size-normal.svg
+│   │   │   │   ├── inactive.svg
+│   │   │   │   ├── keyboard.svg
+│   │   │   │   ├── mobile.svg
+│   │   │   │   ├── preference.svg
+│   │   │   │   ├── sidebar.svg
+│   │   │   │   ├── unknown-device.svg
+│   │   │   │   └── web.svg
+│   │   │   ├── settings.svg
+│   │   │   ├── spaces.svg
+│   │   │   ├── trashcan.svg
+│   │   │   ├── trophy.svg
+│   │   │   ├── upload.svg
+│   │   │   ├── view-community.svg
+│   │   │   ├── view-in-room.svg
+│   │   │   ├── warning-badge.svg
+│   │   │   └── warning.svg
+│   │   ├── element-shiny.svg
+│   │   ├── emojipicker
+│   │   │   ├── activity.svg
+│   │   │   ├── custom.svg
+│   │   │   ├── delete.svg
+│   │   │   ├── flags.svg
+│   │   │   ├── foods.svg
+│   │   │   ├── nature.svg
+│   │   │   ├── objects.svg
+│   │   │   ├── people.svg
+│   │   │   ├── places.svg
+│   │   │   ├── recent.svg
+│   │   │   ├── search.svg
+│   │   │   └── symbols.svg
+│   │   ├── external-link.svg
+│   │   ├── feather-customised
+│   │   │   ├── alert-triangle.svg
+│   │   │   ├── bridge.svg
+│   │   │   ├── bug.svg
+│   │   │   ├── check.svg
+│   │   │   ├── chevron-down.svg
+│   │   │   ├── dropdown-arrow.svg
+│   │   │   ├── edit.svg
+│   │   │   ├── eye.svg
+│   │   │   ├── files.svg
+│   │   │   ├── image.svg
+│   │   │   ├── plus.svg
+│   │   │   ├── search-input.svg
+│   │   │   ├── secure-backup.svg
+│   │   │   ├── secure-phrase.svg
+│   │   │   ├── trash.custom.svg
+│   │   │   ├── warning-triangle.svg
+│   │   │   └── widget
+│   │   │       └── external-link.svg
+│   │   ├── format
+│   │   │   ├── bold.svg
+│   │   │   ├── code.svg
+│   │   │   ├── italics.svg
+│   │   │   ├── quote.svg
+│   │   │   └── strikethrough.svg
+│   │   ├── globe.svg
+│   │   ├── icon-address-delete.svg
+│   │   ├── icon-email-pill-avatar.svg
+│   │   ├── icon-email-user.svg
+│   │   ├── icon-invite-people.svg
+│   │   ├── icon-return.svg
+│   │   ├── icon_context_delete.svg
+│   │   ├── icons-create-room.svg
+│   │   ├── icons-room-add.svg
+│   │   ├── icons-show-stickers.svg
+│   │   ├── image-view
+│   │   │   ├── download.svg
+│   │   │   ├── more.svg
+│   │   │   ├── rotate-ccw.svg
+│   │   │   ├── rotate-cw.svg
+│   │   │   ├── zoom-in.svg
+│   │   │   └── zoom-out.svg
+│   │   ├── location
+│   │   │   ├── live-location.svg
+│   │   │   ├── map.svg
+│   │   │   └── pointer.svg
+│   │   ├── markdown.svg
+│   │   ├── matrix.svg
+│   │   ├── member_chevron.png
+│   │   ├── minimise.svg
+│   │   ├── noise.png
+│   │   ├── room_replaced.svg
+│   │   ├── sensor.svg
+│   │   ├── social
+│   │   │   ├── email-1.png
+│   │   │   ├── facebook.png
+│   │   │   ├── linkedin.png
+│   │   │   ├── reddit.png
+│   │   │   └── twitter-2.png
+│   │   ├── spinner
+│   │   │   ├── spinner-background.svg
+│   │   │   └── spinner-foreground.svg
+│   │   ├── stickerpack-placeholder.png
+│   │   ├── subtract.svg
+│   │   ├── tick-circle.svg
+│   │   ├── typing-indicator-2x.gif
+│   │   ├── upload-big.svg
+│   │   ├── user-onboarding
+│   │   │   ├── CommunityMessaging.png
+│   │   │   ├── PersonalMessaging.png
+│   │   │   └── WorkMessaging.png
+│   │   ├── voip
+│   │   │   ├── call-view
+│   │   │   │   ├── dialpad.svg
+│   │   │   │   ├── more.svg
+│   │   │   │   ├── sidebar-off.svg
+│   │   │   │   └── sidebar-on.svg
+│   │   │   ├── missed-voice.svg
+│   │   │   ├── paused.svg
+│   │   │   ├── signal-bars.svg
+│   │   │   ├── silence.svg
+│   │   │   ├── tab-dialpad.svg
+│   │   │   ├── tab-userdirectory.svg
+│   │   │   └── un-silence.svg
+│   │   └── warning.svg
+│   ├── media
+│   │   ├── busy.mp3
+│   │   ├── busy.ogg
+│   │   ├── callend.mp3
+│   │   ├── callend.ogg
+│   │   ├── error.mp3
+│   │   ├── error.ogg
+│   │   ├── message.mp3
+│   │   ├── message.ogg
+│   │   ├── ring.mp3
+│   │   ├── ring.ogg
+│   │   ├── ringback.mp3
+│   │   └── ringback.ogg
+│   └── themes
+│       ├── dark
+│       │   └── css
+│       │       ├── _dark.pcss
+│       │       └── dark.pcss
+│       ├── dark-custom
+│       │   └── css
+│       │       └── dark-custom.pcss
+│       ├── legacy-dark
+│       │   └── css
+│       │       ├── _legacy-dark.pcss
+│       │       └── legacy-dark.pcss
+│       ├── legacy-light
+│       │   └── css
+│       │       ├── _fonts.pcss
+│       │       ├── _legacy-light.pcss
+│       │       ├── _paths.pcss
+│       │       └── legacy-light.pcss
+│       ├── light
+│       │   └── css
+│       │       ├── _fonts.pcss
+│       │       ├── _light.pcss
+│       │       ├── _mods.pcss
+│       │       ├── _paths.pcss
+│       │       └── light.pcss
+│       ├── light-custom
+│       │   └── css
+│       │       ├── _custom.pcss
+│       │       └── light-custom.pcss
+│       └── light-high-contrast
+│           └── css
+│               ├── _light-high-contrast.pcss
+│               └── light-high-contrast.pcss
+├── scripts
+│   ├── ci
+│   │   ├── app-tests.sh
+│   │   ├── install-deps.sh
+│   │   └── layered.sh
+│   ├── copy-i18n.py
+│   ├── fetchdep.sh
+│   └── make-react-component.js
+├── sonar-project.properties
+├── src
+│   ├── @types
+│   │   ├── common.ts
+│   │   ├── commonmark.ts
+│   │   ├── diff-dom.d.ts
+│   │   ├── electron-to-chromium.d.ts
+│   │   ├── global.d.ts
+│   │   ├── matrix-js-sdk.d.ts
+│   │   ├── opus-recorder.d.ts
+│   │   ├── png-chunks-extract.d.ts
+│   │   ├── polyfill.ts
+│   │   ├── raw-loader.d.ts
+│   │   ├── react.d.ts
+│   │   ├── sanitize-html.d.ts
+│   │   ├── svg.d.ts
+│   │   └── worker-loader.d.ts
+│   ├── AddThreepid.ts
+│   ├── AsyncWrapper.tsx
+│   ├── Avatar.ts
+│   ├── BasePlatform.ts
+│   ├── BlurhashEncoder.ts
+│   ├── ContentMessages.ts
+│   ├── DateUtils.ts
+│   ├── DecryptionFailureTracker.ts
+│   ├── DeviceListener.ts
+│   ├── DraftCleaner.ts
+│   ├── Editing.ts
+│   ├── HtmlUtils.tsx
+│   ├── IConfigOptions.ts
+│   ├── IdentityAuthClient.tsx
+│   ├── ImageUtils.ts
+│   ├── KeyBindingsDefaults.ts
+│   ├── KeyBindingsManager.ts
+│   ├── Keyboard.ts
+│   ├── LegacyCallHandler.tsx
+│   ├── Lifecycle.ts
+│   ├── Linkify.tsx
+│   ├── Livestream.ts
+│   ├── Login.ts
+│   ├── Markdown.ts
+│   ├── MatrixClientPeg.ts
+│   ├── MediaDeviceHandler.ts
+│   ├── Modal.tsx
+│   ├── NodeAnimator.tsx
+│   ├── Notifier.ts
+│   ├── PageTypes.ts
+│   ├── PasswordReset.ts
+│   ├── PlatformPeg.ts
+│   ├── PlaybackEncoder.ts
+│   ├── PosthogAnalytics.ts
+│   ├── PosthogTrackers.ts
+│   ├── Presence.ts
+│   ├── Registration.tsx
+│   ├── Resend.ts
+│   ├── Roles.ts
+│   ├── RoomAliasCache.ts
+│   ├── RoomInvite.tsx
+│   ├── RoomNotifs.ts
+│   ├── Rooms.ts
+│   ├── ScalarAuthClient.ts
+│   ├── ScalarMessaging.ts
+│   ├── SdkConfig.ts
+│   ├── Searching.ts
+│   ├── SecurityManager.ts
+│   ├── SendHistoryManager.ts
+│   ├── SlashCommands.tsx
+│   ├── SlidingSyncManager.ts
+│   ├── SupportedBrowser.ts
+│   ├── Terms.ts
+│   ├── TextForEvent.tsx
+│   ├── TimezoneHandler.ts
+│   ├── Typeguards.ts
+│   ├── Unread.ts
+│   ├── UserActivity.ts
+│   ├── UserAddress.ts
+│   ├── Views.ts
+│   ├── VoipUserMapper.ts
+│   ├── WhoIsTyping.ts
+│   ├── WorkerManager.ts
+│   ├── accessibility
+│   │   ├── KeyboardShortcutUtils.ts
+│   │   ├── KeyboardShortcuts.ts
+│   │   ├── LandmarkNavigation.ts
+│   │   ├── RovingTabIndex.tsx
+│   │   ├── Toolbar.tsx
+│   │   ├── context_menu
+│   │   │   ├── ContextMenuButton.tsx
+│   │   │   ├── ContextMenuTooltipButton.tsx
+│   │   │   ├── MenuGroup.tsx
+│   │   │   ├── MenuItem.tsx
+│   │   │   ├── MenuItemCheckbox.tsx
+│   │   │   ├── MenuItemRadio.tsx
+│   │   │   ├── StyledMenuItemCheckbox.tsx
+│   │   │   └── StyledMenuItemRadio.tsx
+│   │   └── roving
+│   │       ├── RovingAccessibleButton.tsx
+│   │       ├── RovingTabIndexWrapper.tsx
+│   │       └── types.ts
+│   ├── actions
+│   │   ├── MatrixActionCreators.ts
+│   │   ├── RoomListActions.ts
+│   │   ├── actionCreators.ts
+│   │   └── handlers
+│   │       └── viewUserDeviceSettings.ts
+│   ├── async-components
+│   │   └── views
+│   │       └── dialogs
+│   │           ├── eventindex
+│   │           │   ├── DisableEventIndexDialog.tsx
+│   │           │   └── ManageEventIndexDialog.tsx
+│   │           └── security
+│   │               ├── CreateKeyBackupDialog.tsx
+│   │               ├── CreateSecretStorageDialog.tsx
+│   │               ├── ExportE2eKeysDialog.tsx
+│   │               ├── ImportE2eKeysDialog.tsx
+│   │               ├── NewRecoveryMethodDialog.tsx
+│   │               └── RecoveryMethodRemovedDialog.tsx
+│   ├── audio
+│   │   ├── BackgroundAudio.ts
+│   │   ├── ManagedPlayback.ts
+│   │   ├── Playback.ts
+│   │   ├── PlaybackClock.ts
+│   │   ├── PlaybackManager.ts
+│   │   ├── PlaybackQueue.ts
+│   │   ├── RecorderWorklet.ts
+│   │   ├── VoiceMessageRecording.ts
+│   │   ├── VoiceRecording.ts
+│   │   ├── compat.ts
+│   │   ├── consts.ts
+│   │   └── recorderWorkletFactory.ts
+│   ├── autocomplete
+│   │   ├── AutocompleteProvider.tsx
+│   │   ├── Autocompleter.ts
+│   │   ├── CommandProvider.tsx
+│   │   ├── Components.tsx
+│   │   ├── EmojiProvider.tsx
+│   │   ├── NotifProvider.tsx
+│   │   ├── QueryMatcher.ts
+│   │   ├── RoomProvider.tsx
+│   │   ├── SpaceProvider.tsx
+│   │   └── UserProvider.tsx
+│   ├── boundThreepids.ts
+│   ├── call-types.ts
+│   ├── components
+│   │   ├── structures
+│   │   │   ├── AutoHideScrollbar.tsx
+│   │   │   ├── AutocompleteInput.tsx
+│   │   │   ├── BackdropPanel.tsx
+│   │   │   ├── ContextMenu.tsx
+│   │   │   ├── EmbeddedPage.tsx
+│   │   │   ├── ErrorMessage.tsx
+│   │   │   ├── FileDropTarget.tsx
+│   │   │   ├── FilePanel.tsx
+│   │   │   ├── GenericDropdownMenu.tsx
+│   │   │   ├── GenericErrorPage.tsx
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── IndicatorScrollbar.tsx
+│   │   │   ├── InteractiveAuth.tsx
+│   │   │   ├── LargeLoader.tsx
+│   │   │   ├── LeftPanel.tsx
+│   │   │   ├── LegacyCallEventGrouper.ts
+│   │   │   ├── LoggedInView.tsx
+│   │   │   ├── MainSplit.tsx
+│   │   │   ├── MatrixChat.tsx
+│   │   │   ├── MatrixClientContextProvider.tsx
+│   │   │   ├── MessagePanel.tsx
+│   │   │   ├── NonUrgentToastContainer.tsx
+│   │   │   ├── NotificationPanel.tsx
+│   │   │   ├── PictureInPictureDragger.tsx
+│   │   │   ├── PipContainer.tsx
+│   │   │   ├── ReleaseAnnouncement.tsx
+│   │   │   ├── RightPanel.tsx
+│   │   │   ├── RoomSearch.tsx
+│   │   │   ├── RoomSearchView.tsx
+│   │   │   ├── RoomStatusBar.tsx
+│   │   │   ├── RoomStatusBarUnsentMessages.tsx
+│   │   │   ├── RoomView.tsx
+│   │   │   ├── ScrollPanel.tsx
+│   │   │   ├── SearchBox.tsx
+│   │   │   ├── SpaceHierarchy.tsx
+│   │   │   ├── SpaceRoomView.tsx
+│   │   │   ├── SplashPage.tsx
+│   │   │   ├── TabbedView.tsx
+│   │   │   ├── ThreadPanel.tsx
+│   │   │   ├── ThreadView.tsx
+│   │   │   ├── TimelinePanel.tsx
+│   │   │   ├── ToastContainer.tsx
+│   │   │   ├── UploadBar.tsx
+│   │   │   ├── UserMenu.tsx
+│   │   │   ├── UserView.tsx
+│   │   │   ├── ViewSource.tsx
+│   │   │   ├── WaitingForThirdPartyRoomView.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── CompleteSecurity.tsx
+│   │   │   │   ├── ConfirmSessionLockTheftView.tsx
+│   │   │   │   ├── E2eSetup.tsx
+│   │   │   │   ├── ForgotPassword.tsx
+│   │   │   │   ├── Login.tsx
+│   │   │   │   ├── LoginSplashView.tsx
+│   │   │   │   ├── Registration.tsx
+│   │   │   │   ├── SessionLockStolenView.tsx
+│   │   │   │   ├── SetupEncryptionBody.tsx
+│   │   │   │   ├── SoftLogout.tsx
+│   │   │   │   ├── forgot-password
+│   │   │   │   │   ├── CheckEmail.tsx
+│   │   │   │   │   ├── EnterEmail.tsx
+│   │   │   │   │   └── VerifyEmailModal.tsx
+│   │   │   │   └── header
+│   │   │   │       ├── AuthHeaderContext.tsx
+│   │   │   │       ├── AuthHeaderDisplay.tsx
+│   │   │   │       ├── AuthHeaderModifier.tsx
+│   │   │   │       └── AuthHeaderProvider.tsx
+│   │   │   ├── grouper
+│   │   │   │   ├── BaseGrouper.ts
+│   │   │   │   ├── CreationGrouper.tsx
+│   │   │   │   ├── LateEventGrouper.ts
+│   │   │   │   └── MainGrouper.tsx
+│   │   │   └── static-page-vars.ts
+│   │   ├── utils
+│   │   │   ├── Box.tsx
+│   │   │   └── Flex.tsx
+│   │   └── views
+│   │       ├── audio_messages
+│   │       │   ├── AudioPlayer.tsx
+│   │       │   ├── AudioPlayerBase.tsx
+│   │       │   ├── Clock.tsx
+│   │       │   ├── DevicesContextMenu.tsx
+│   │       │   ├── DurationClock.tsx
+│   │       │   ├── LiveRecordingClock.tsx
+│   │       │   ├── LiveRecordingWaveform.tsx
+│   │       │   ├── PlayPauseButton.tsx
+│   │       │   ├── PlaybackClock.tsx
+│   │       │   ├── PlaybackWaveform.tsx
+│   │       │   ├── RecordingPlayback.tsx
+│   │       │   ├── SeekBar.tsx
+│   │       │   └── Waveform.tsx
+│   │       ├── auth
+│   │       │   ├── AuthBody.tsx
+│   │       │   ├── AuthFooter.tsx
+│   │       │   ├── AuthHeader.tsx
+│   │       │   ├── AuthHeaderLogo.tsx
+│   │       │   ├── AuthPage.tsx
+│   │       │   ├── CaptchaForm.tsx
+│   │       │   ├── CompleteSecurityBody.tsx
+│   │       │   ├── CountryDropdown.tsx
+│   │       │   ├── EmailField.tsx
+│   │       │   ├── InteractiveAuthEntryComponents.tsx
+│   │       │   ├── LanguageSelector.tsx
+│   │       │   ├── LoginWithQR-types.ts
+│   │       │   ├── LoginWithQR.tsx
+│   │       │   ├── LoginWithQRFlow.tsx
+│   │       │   ├── PassphraseConfirmField.tsx
+│   │       │   ├── PassphraseField.tsx
+│   │       │   ├── PasswordLogin.tsx
+│   │       │   ├── RegistrationForm.tsx
+│   │       │   └── Welcome.tsx
+│   │       ├── avatars
+│   │       │   ├── BaseAvatar.tsx
+│   │       │   ├── DecoratedRoomAvatar.tsx
+│   │       │   ├── MemberAvatar.tsx
+│   │       │   ├── MemberStatusMessageAvatar.tsx
+│   │       │   ├── RoomAvatar.tsx
+│   │       │   ├── SearchResultAvatar.tsx
+│   │       │   ├── WidgetAvatar.tsx
+│   │       │   └── WithPresenceIndicator.tsx
+│   │       ├── beacon
+│   │       │   ├── BeaconListItem.tsx
+│   │       │   ├── BeaconMarker.tsx
+│   │       │   ├── BeaconStatus.tsx
+│   │       │   ├── BeaconStatusTooltip.tsx
+│   │       │   ├── BeaconViewDialog.tsx
+│   │       │   ├── DialogOwnBeaconStatus.tsx
+│   │       │   ├── DialogSidebar.tsx
+│   │       │   ├── LeftPanelLiveShareWarning.tsx
+│   │       │   ├── LiveTimeRemaining.tsx
+│   │       │   ├── OwnBeaconStatus.tsx
+│   │       │   ├── RoomCallBanner.tsx
+│   │       │   ├── ShareLatestLocation.tsx
+│   │       │   ├── StyledLiveBeaconIcon.tsx
+│   │       │   ├── displayStatus.ts
+│   │       │   └── index.tsx
+│   │       ├── beta
+│   │       │   └── BetaCard.tsx
+│   │       ├── context_menus
+│   │       │   ├── DeveloperToolsOption.tsx
+│   │       │   ├── DeviceContextMenu.tsx
+│   │       │   ├── DialpadContextMenu.tsx
+│   │       │   ├── GenericElementContextMenu.tsx
+│   │       │   ├── GenericTextContextMenu.tsx
+│   │       │   ├── IconizedContextMenu.tsx
+│   │       │   ├── KebabContextMenu.tsx
+│   │       │   ├── LegacyCallContextMenu.tsx
+│   │       │   ├── MessageContextMenu.tsx
+│   │       │   ├── RoomGeneralContextMenu.tsx
+│   │       │   ├── RoomNotificationContextMenu.tsx
+│   │       │   ├── SpaceContextMenu.tsx
+│   │       │   ├── ThreadListContextMenu.tsx
+│   │       │   └── WidgetContextMenu.tsx
+│   │       ├── dialogs
+│   │       │   ├── AddExistingSubspaceDialog.tsx
+│   │       │   ├── AddExistingToSpaceDialog.tsx
+│   │       │   ├── AnalyticsLearnMoreDialog.tsx
+│   │       │   ├── AppDownloadDialog.tsx
+│   │       │   ├── AskInviteAnywayDialog.tsx
+│   │       │   ├── BaseDialog.tsx
+│   │       │   ├── BetaFeedbackDialog.tsx
+│   │       │   ├── BugReportDialog.tsx
+│   │       │   ├── BulkRedactDialog.tsx
+│   │       │   ├── CantStartVoiceMessageBroadcastDialog.tsx
+│   │       │   ├── ChangelogDialog.tsx
+│   │       │   ├── ConfirmAndWaitRedactDialog.tsx
+│   │       │   ├── ConfirmRedactDialog.tsx
+│   │       │   ├── ConfirmSpaceUserActionDialog.tsx
+│   │       │   ├── ConfirmUserActionDialog.tsx
+│   │       │   ├── ConfirmWipeDeviceDialog.tsx
+│   │       │   ├── CreateRoomDialog.tsx
+│   │       │   ├── CreateSubspaceDialog.tsx
+│   │       │   ├── CryptoStoreTooNewDialog.tsx
+│   │       │   ├── DeactivateAccountDialog.tsx
+│   │       │   ├── DevtoolsDialog.tsx
+│   │       │   ├── EndPollDialog.tsx
+│   │       │   ├── ErrorDialog.tsx
+│   │       │   ├── ExportDialog.tsx
+│   │       │   ├── FeedbackDialog.tsx
+│   │       │   ├── ForwardDialog.tsx
+│   │       │   ├── GenericFeatureFeedbackDialog.tsx
+│   │       │   ├── IncomingSasDialog.tsx
+│   │       │   ├── InfoDialog.tsx
+│   │       │   ├── IntegrationsDisabledDialog.tsx
+│   │       │   ├── IntegrationsImpossibleDialog.tsx
+│   │       │   ├── InteractiveAuthDialog.tsx
+│   │       │   ├── InviteDialog.tsx
+│   │       │   ├── InviteDialogTypes.ts
+│   │       │   ├── LeaveSpaceDialog.tsx
+│   │       │   ├── LogoutDialog.tsx
+│   │       │   ├── ManageRestrictedJoinRuleDialog.tsx
+│   │       │   ├── ManualDeviceKeyVerificationDialog.tsx
+│   │       │   ├── MessageEditHistoryDialog.tsx
+│   │       │   ├── ModalWidgetDialog.tsx
+│   │       │   ├── ModuleUiDialog.tsx
+│   │       │   ├── PollHistoryDialog.tsx
+│   │       │   ├── QuestionDialog.tsx
+│   │       │   ├── RegistrationEmailPromptDialog.tsx
+│   │       │   ├── ReportEventDialog.tsx
+│   │       │   ├── RoomSettingsDialog.tsx
+│   │       │   ├── RoomUpgradeDialog.tsx
+│   │       │   ├── RoomUpgradeWarningDialog.tsx
+│   │       │   ├── ScrollableBaseModal.tsx
+│   │       │   ├── ServerOfflineDialog.tsx
+│   │       │   ├── ServerPickerDialog.tsx
+│   │       │   ├── SeshatResetDialog.tsx
+│   │       │   ├── SessionRestoreErrorDialog.tsx
+│   │       │   ├── SetEmailDialog.tsx
+│   │       │   ├── ShareDialog.tsx
+│   │       │   ├── SlashCommandHelpDialog.tsx
+│   │       │   ├── SpacePreferencesDialog.tsx
+│   │       │   ├── SpaceSettingsDialog.tsx
+│   │       │   ├── StorageEvictedDialog.tsx
+│   │       │   ├── TermsDialog.tsx
+│   │       │   ├── TextInputDialog.tsx
+│   │       │   ├── UnpinAllDialog.tsx
+│   │       │   ├── UntrustedDeviceDialog.tsx
+│   │       │   ├── UploadConfirmDialog.tsx
+│   │       │   ├── UploadFailureDialog.tsx
+│   │       │   ├── UserSettingsDialog.tsx
+│   │       │   ├── UserTab.ts
+│   │       │   ├── VerificationRequestDialog.tsx
+│   │       │   ├── WidgetCapabilitiesPromptDialog.tsx
+│   │       │   ├── WidgetOpenIDPermissionsDialog.tsx
+│   │       │   ├── devtools
+│   │       │   │   ├── AccountData.tsx
+│   │       │   │   ├── BaseTool.tsx
+│   │       │   │   ├── Event.tsx
+│   │       │   │   ├── FilteredList.tsx
+│   │       │   │   ├── RoomNotifications.tsx
+│   │       │   │   ├── RoomState.tsx
+│   │       │   │   ├── ServerInfo.tsx
+│   │       │   │   ├── ServersInRoom.tsx
+│   │       │   │   ├── SettingExplorer.tsx
+│   │       │   │   ├── VerificationExplorer.tsx
+│   │       │   │   └── WidgetExplorer.tsx
+│   │       │   ├── oidc
+│   │       │   │   └── OidcLogoutDialog.tsx
+│   │       │   ├── security
+│   │       │   │   ├── AccessSecretStorageDialog.tsx
+│   │       │   │   ├── ConfirmDestroyCrossSigningDialog.tsx
+│   │       │   │   ├── CreateCrossSigningDialog.tsx
+│   │       │   │   ├── RestoreKeyBackupDialog.tsx
+│   │       │   │   └── SetupEncryptionDialog.tsx
+│   │       │   └── spotlight
+│   │       │       ├── Filter.ts
+│   │       │       ├── Option.tsx
+│   │       │       ├── PublicRoomResultDetails.tsx
+│   │       │       ├── RoomResultContextMenus.tsx
+│   │       │       ├── SpotlightDialog.tsx
+│   │       │       └── TooltipOption.tsx
+│   │       ├── directory
+│   │       │   └── NetworkDropdown.tsx
+│   │       ├── elements
+│   │       │   ├── AccessibleButton.tsx
+│   │       │   ├── AppPermission.tsx
+│   │       │   ├── AppTile.tsx
+│   │       │   ├── AppWarning.tsx
+│   │       │   ├── CopyableText.tsx
+│   │       │   ├── DesktopCapturerSourcePicker.tsx
+│   │       │   ├── DialPadBackspaceButton.tsx
+│   │       │   ├── DialogButtons.tsx
+│   │       │   ├── Draggable.tsx
+│   │       │   ├── Dropdown.tsx
+│   │       │   ├── EditableItemList.tsx
+│   │       │   ├── EditableText.tsx
+│   │       │   ├── EditableTextContainer.tsx
+│   │       │   ├── EffectsOverlay.tsx
+│   │       │   ├── ErrorBoundary.tsx
+│   │       │   ├── EventListSummary.tsx
+│   │       │   ├── EventTilePreview.tsx
+│   │       │   ├── ExternalLink.tsx
+│   │       │   ├── FacePile.tsx
+│   │       │   ├── Field.tsx
+│   │       │   ├── FilterDropdown.tsx
+│   │       │   ├── FilterTabGroup.tsx
+│   │       │   ├── GenericEventListSummary.tsx
+│   │       │   ├── IRCTimelineProfileResizer.tsx
+│   │       │   ├── ImageView.tsx
+│   │       │   ├── InfoTooltip.tsx
+│   │       │   ├── InlineSpinner.tsx
+│   │       │   ├── InteractiveTooltip.tsx
+│   │       │   ├── InviteReason.tsx
+│   │       │   ├── JoinRuleDropdown.tsx
+│   │       │   ├── LabelledCheckbox.tsx
+│   │       │   ├── LabelledToggleSwitch.tsx
+│   │       │   ├── LanguageDropdown.tsx
+│   │       │   ├── LazyRenderList.tsx
+│   │       │   ├── LearnMore.tsx
+│   │       │   ├── LinkWithTooltip.tsx
+│   │       │   ├── Measured.tsx
+│   │       │   ├── MiniAvatarUploader.tsx
+│   │       │   ├── PersistedElement.tsx
+│   │       │   ├── PersistentApp.tsx
+│   │       │   ├── Pill.tsx
+│   │       │   ├── PollCreateDialog.tsx
+│   │       │   ├── PowerSelector.tsx
+│   │       │   ├── ProgressBar.tsx
+│   │       │   ├── QRCode.tsx
+│   │       │   ├── ReplyChain.tsx
+│   │       │   ├── ResizeHandle.tsx
+│   │       │   ├── RoomAliasField.tsx
+│   │       │   ├── RoomFacePile.tsx
+│   │       │   ├── RoomName.tsx
+│   │       │   ├── RoomTopic.tsx
+│   │       │   ├── SSOButtons.tsx
+│   │       │   ├── SearchWarning.tsx
+│   │       │   ├── ServerPicker.tsx
+│   │       │   ├── SettingsFlag.tsx
+│   │       │   ├── SpellCheckLanguagesDropdown.tsx
+│   │       │   ├── Spinner.tsx
+│   │       │   ├── Spoiler.tsx
+│   │       │   ├── StyledCheckbox.tsx
+│   │       │   ├── StyledRadioButton.tsx
+│   │       │   ├── StyledRadioGroup.tsx
+│   │       │   ├── SyntaxHighlight.tsx
+│   │       │   ├── Tag.tsx
+│   │       │   ├── TagComposer.tsx
+│   │       │   ├── TextWithTooltip.tsx
+│   │       │   ├── ToggleSwitch.tsx
+│   │       │   ├── Tooltip.tsx
+│   │       │   ├── TruncatedList.tsx
+│   │       │   ├── UseCaseSelection.tsx
+│   │       │   ├── UseCaseSelectionButton.tsx
+│   │       │   ├── Validation.tsx
+│   │       │   └── crypto
+│   │       │       └── VerificationQRCode.tsx
+│   │       ├── emojipicker
+│   │       │   ├── Category.tsx
+│   │       │   ├── Emoji.tsx
+│   │       │   ├── EmojiPicker.tsx
+│   │       │   ├── Header.tsx
+│   │       │   ├── Preview.tsx
+│   │       │   ├── QuickReactions.tsx
+│   │       │   ├── ReactionPicker.tsx
+│   │       │   └── Search.tsx
+│   │       ├── location
+│   │       │   ├── EnableLiveShare.tsx
+│   │       │   ├── LiveDurationDropdown.tsx
+│   │       │   ├── LocationButton.tsx
+│   │       │   ├── LocationPicker.tsx
+│   │       │   ├── LocationShareMenu.tsx
+│   │       │   ├── LocationViewDialog.tsx
+│   │       │   ├── Map.tsx
+│   │       │   ├── MapError.tsx
+│   │       │   ├── MapFallback.tsx
+│   │       │   ├── Marker.tsx
+│   │       │   ├── ShareDialogButtons.tsx
+│   │       │   ├── ShareType.tsx
+│   │       │   ├── SmartMarker.tsx
+│   │       │   ├── ZoomButtons.tsx
+│   │       │   ├── index.tsx
+│   │       │   └── shareLocation.ts
+│   │       ├── messages
+│   │       │   ├── CallEvent.tsx
+│   │       │   ├── DateSeparator.tsx
+│   │       │   ├── DecryptionFailureBody.tsx
+│   │       │   ├── DisambiguatedProfile.tsx
+│   │       │   ├── DownloadActionButton.tsx
+│   │       │   ├── EditHistoryMessage.tsx
+│   │       │   ├── EncryptionEvent.tsx
+│   │       │   ├── EventTileBubble.tsx
+│   │       │   ├── HiddenBody.tsx
+│   │       │   ├── IBodyProps.ts
+│   │       │   ├── IMediaBody.ts
+│   │       │   ├── JumpToDatePicker.tsx
+│   │       │   ├── LegacyCallEvent.tsx
+│   │       │   ├── MAudioBody.tsx
+│   │       │   ├── MBeaconBody.tsx
+│   │       │   ├── MFileBody.tsx
+│   │       │   ├── MImageBody.tsx
+│   │       │   ├── MImageReplyBody.tsx
+│   │       │   ├── MJitsiWidgetEvent.tsx
+│   │       │   ├── MKeyVerificationRequest.tsx
+│   │       │   ├── MLocationBody.tsx
+│   │       │   ├── MPollBody.tsx
+│   │       │   ├── MPollEndBody.tsx
+│   │       │   ├── MStickerBody.tsx
+│   │       │   ├── MVideoBody.tsx
+│   │       │   ├── MVoiceMessageBody.tsx
+│   │       │   ├── MVoiceOrAudioBody.tsx
+│   │       │   ├── MessageActionBar.tsx
+│   │       │   ├── MessageEvent.tsx
+│   │       │   ├── MessageTimestamp.tsx
+│   │       │   ├── MjolnirBody.tsx
+│   │       │   ├── PinnedMessageBadge.tsx
+│   │       │   ├── ReactionsRow.tsx
+│   │       │   ├── ReactionsRowButton.tsx
+│   │       │   ├── ReactionsRowButtonTooltip.tsx
+│   │       │   ├── RedactedBody.tsx
+│   │       │   ├── RoomAvatarEvent.tsx
+│   │       │   ├── RoomPredecessorTile.tsx
+│   │       │   ├── SenderProfile.tsx
+│   │       │   ├── TextualBody.tsx
+│   │       │   ├── TextualEvent.tsx
+│   │       │   ├── TileErrorBoundary.tsx
+│   │       │   ├── TimelineSeparator.tsx
+│   │       │   ├── UnknownBody.tsx
+│   │       │   ├── ViewSourceEvent.tsx
+│   │       │   └── shared
+│   │       │       └── MediaProcessingError.tsx
+│   │       ├── pips
+│   │       │   └── WidgetPip.tsx
+│   │       ├── polls
+│   │       │   ├── PollOption.tsx
+│   │       │   └── pollHistory
+│   │       │       ├── PollDetail.tsx
+│   │       │       ├── PollDetailHeader.tsx
+│   │       │       ├── PollHistory.tsx
+│   │       │       ├── PollHistoryList.tsx
+│   │       │       ├── PollListItem.tsx
+│   │       │       ├── PollListItemEnded.tsx
+│   │       │       ├── fetchPastPolls.ts
+│   │       │       ├── types.ts
+│   │       │       └── usePollHistory.ts
+│   │       ├── right_panel
+│   │       │   ├── BaseCard.tsx
+│   │       │   ├── EmptyState.tsx
+│   │       │   ├── EncryptionInfo.tsx
+│   │       │   ├── EncryptionPanel.tsx
+│   │       │   ├── ExtensionsCard.tsx
+│   │       │   ├── HeaderButton.tsx
+│   │       │   ├── HeaderButtons.tsx
+│   │       │   ├── LegacyRoomHeaderButtons.tsx
+│   │       │   ├── PinnedMessagesCard.tsx
+│   │       │   ├── RightPanelTabs.tsx
+│   │       │   ├── RoomSummaryCard.tsx
+│   │       │   ├── TimelineCard.tsx
+│   │       │   ├── UserInfo.tsx
+│   │       │   ├── VerificationPanel.tsx
+│   │       │   ├── WidgetCard.tsx
+│   │       │   ├── context.ts
+│   │       │   └── types.ts
+│   │       ├── room_settings
+│   │       │   ├── AliasSettings.tsx
+│   │       │   ├── RoomProfileSettings.tsx
+│   │       │   ├── RoomPublishSetting.tsx
+│   │       │   └── UrlPreviewSettings.tsx
+│   │       ├── rooms
+│   │       │   ├── AppsDrawer.tsx
+│   │       │   ├── Autocomplete.tsx
+│   │       │   ├── AuxPanel.tsx
+│   │       │   ├── BasicMessageComposer.tsx
+│   │       │   ├── CollapsibleButton.tsx
+│   │       │   ├── E2EIcon.tsx
+│   │       │   ├── EditMessageComposer.tsx
+│   │       │   ├── EmojiButton.tsx
+│   │       │   ├── EntityTile.tsx
+│   │       │   ├── EventTile
+│   │       │   │   └── EventTileThreadToolbar.tsx
+│   │       │   ├── EventTile.tsx
+│   │       │   ├── ExtraTile.tsx
+│   │       │   ├── HistoryTile.tsx
+│   │       │   ├── JumpToBottomButton.tsx
+│   │       │   ├── LinkPreviewGroup.tsx
+│   │       │   ├── LinkPreviewWidget.tsx
+│   │       │   ├── LiveContentSummary.tsx
+│   │       │   ├── MemberList.tsx
+│   │       │   ├── MemberTile.tsx
+│   │       │   ├── MessageComposer.tsx
+│   │       │   ├── MessageComposerButtons.tsx
+│   │       │   ├── MessageComposerFormatBar.tsx
+│   │       │   ├── NewRoomIntro.tsx
+│   │       │   ├── NotificationBadge
+│   │       │   │   ├── StatelessNotificationBadge.tsx
+│   │       │   │   └── UnreadNotificationBadge.tsx
+│   │       │   ├── NotificationBadge.tsx
+│   │       │   ├── PinnedEventTile.tsx
+│   │       │   ├── PinnedMessageBanner.tsx
+│   │       │   ├── PresenceLabel.tsx
+│   │       │   ├── ReadReceiptGroup.tsx
+│   │       │   ├── ReadReceiptMarker.tsx
+│   │       │   ├── ReplyPreview.tsx
+│   │       │   ├── ReplyTile.tsx
+│   │       │   ├── RoomBreadcrumbs.tsx
+│   │       │   ├── RoomContextDetails.tsx
+│   │       │   ├── RoomHeader
+│   │       │   │   ├── CallGuestLinkButton.tsx
+│   │       │   │   └── VideoRoomChatButton.tsx
+│   │       │   ├── RoomHeader.tsx
+│   │       │   ├── RoomInfoLine.tsx
+│   │       │   ├── RoomKnocksBar.tsx
+│   │       │   ├── RoomList.tsx
+│   │       │   ├── RoomListHeader.tsx
+│   │       │   ├── RoomPreviewBar.tsx
+│   │       │   ├── RoomPreviewCard.tsx
+│   │       │   ├── RoomSearchAuxPanel.tsx
+│   │       │   ├── RoomSublist.tsx
+│   │       │   ├── RoomTile.tsx
+│   │       │   ├── RoomTileCallSummary.tsx
+│   │       │   ├── RoomTileSubtitle.tsx
+│   │       │   ├── RoomUpgradeWarningBar.tsx
+│   │       │   ├── SearchResultTile.tsx
+│   │       │   ├── SendMessageComposer.tsx
+│   │       │   ├── Stickerpicker.tsx
+│   │       │   ├── ThirdPartyMemberInfo.tsx
+│   │       │   ├── ThreadSummary.tsx
+│   │       │   ├── TopUnreadMessagesBar.tsx
+│   │       │   ├── VoiceRecordComposerTile.tsx
+│   │       │   ├── WhoIsTypingTile.tsx
+│   │       │   └── wysiwyg_composer
+│   │       │       ├── ComposerContext.ts
+│   │       │       ├── DynamicImportWysiwygComposer.tsx
+│   │       │       ├── EditWysiwygComposer.tsx
+│   │       │       ├── SendWysiwygComposer.tsx
+│   │       │       ├── components
+│   │       │       │   ├── EditionButtons.tsx
+│   │       │       │   ├── Editor.tsx
+│   │       │       │   ├── Emoji.tsx
+│   │       │       │   ├── FormattingButtons.tsx
+│   │       │       │   ├── LinkModal.tsx
+│   │       │       │   ├── PlainTextComposer.tsx
+│   │       │       │   ├── WysiwygAutocomplete.tsx
+│   │       │       │   └── WysiwygComposer.tsx
+│   │       │       ├── hooks
+│   │       │       │   ├── useComposerFunctions.ts
+│   │       │       │   ├── useEditing.ts
+│   │       │       │   ├── useInitialContent.ts
+│   │       │       │   ├── useInputEventProcessor.ts
+│   │       │       │   ├── useIsExpanded.ts
+│   │       │       │   ├── useIsFocused.ts
+│   │       │       │   ├── usePlainTextInitialization.ts
+│   │       │       │   ├── usePlainTextListeners.ts
+│   │       │       │   ├── useSelection.ts
+│   │       │       │   ├── useSetCursorPosition.ts
+│   │       │       │   ├── useSuggestion.ts
+│   │       │       │   ├── useWysiwygEditActionHandler.ts
+│   │       │       │   ├── useWysiwygSendActionHandler.ts
+│   │       │       │   └── utils.ts
+│   │       │       ├── index.ts
+│   │       │       ├── types.ts
+│   │       │       └── utils
+│   │       │           ├── autocomplete.ts
+│   │       │           ├── createMessageContent.ts
+│   │       │           ├── editing.ts
+│   │       │           ├── event.ts
+│   │       │           ├── isContentModified.ts
+│   │       │           ├── message.ts
+│   │       │           └── selection.ts
+│   │       ├── settings
+│   │       │   ├── AddPrivilegedUsers.tsx
+│   │       │   ├── AddRemoveThreepids.tsx
+│   │       │   ├── AvatarSetting.tsx
+│   │       │   ├── BridgeTile.tsx
+│   │       │   ├── ChangeDisplayName.tsx
+│   │       │   ├── ChangePassword.tsx
+│   │       │   ├── CrossSigningPanel.tsx
+│   │       │   ├── CryptographyPanel.tsx
+│   │       │   ├── EventIndexPanel.tsx
+│   │       │   ├── FontScalingPanel.tsx
+│   │       │   ├── ImageSizePanel.tsx
+│   │       │   ├── IntegrationManager.tsx
+│   │       │   ├── JoinRuleSettings.tsx
+│   │       │   ├── KeyboardShortcut.tsx
+│   │       │   ├── LayoutSwitcher.tsx
+│   │       │   ├── Notifications.tsx
+│   │       │   ├── PowerLevelSelector.tsx
+│   │       │   ├── SecureBackupPanel.tsx
+│   │       │   ├── SetIdServer.tsx
+│   │       │   ├── SetIntegrationManager.tsx
+│   │       │   ├── SettingsFieldset.tsx
+│   │       │   ├── SpellCheckSettings.tsx
+│   │       │   ├── ThemeChoicePanel.tsx
+│   │       │   ├── UpdateCheckButton.tsx
+│   │       │   ├── UserPersonalInfoSettings.tsx
+│   │       │   ├── UserProfileSettings.tsx
+│   │       │   ├── devices
+│   │       │   │   ├── CurrentDeviceSection.tsx
+│   │       │   │   ├── DeviceDetailHeading.tsx
+│   │       │   │   ├── DeviceDetails.tsx
+│   │       │   │   ├── DeviceExpandDetailsButton.tsx
+│   │       │   │   ├── DeviceMetaData.tsx
+│   │       │   │   ├── DeviceSecurityCard.tsx
+│   │       │   │   ├── DeviceSecurityLearnMore.tsx
+│   │       │   │   ├── DeviceTile.tsx
+│   │       │   │   ├── DeviceTypeIcon.tsx
+│   │       │   │   ├── DeviceVerificationStatusCard.tsx
+│   │       │   │   ├── FilteredDeviceList.tsx
+│   │       │   │   ├── FilteredDeviceListHeader.tsx
+│   │       │   │   ├── LoginWithQRSection.tsx
+│   │       │   │   ├── OtherSessionsSectionHeading.tsx
+│   │       │   │   ├── SecurityRecommendations.tsx
+│   │       │   │   ├── SelectableDeviceTile.tsx
+│   │       │   │   ├── deleteDevices.tsx
+│   │       │   │   ├── filter.ts
+│   │       │   │   ├── types.ts
+│   │       │   │   └── useOwnDevices.ts
+│   │       │   ├── discovery
+│   │       │   │   └── DiscoverySettings.tsx
+│   │       │   ├── notifications
+│   │       │   │   ├── NotificationPusherSettings.tsx
+│   │       │   │   └── NotificationSettings2.tsx
+│   │       │   ├── shared
+│   │       │   │   ├── SettingsBanner.tsx
+│   │       │   │   ├── SettingsIndent.tsx
+│   │       │   │   ├── SettingsSection.tsx
+│   │       │   │   ├── SettingsSubsection.tsx
+│   │       │   │   └── SettingsSubsectionHeading.tsx
+│   │       │   └── tabs
+│   │       │       ├── SettingsTab.tsx
+│   │       │       ├── room
+│   │       │       │   ├── AdvancedRoomSettingsTab.tsx
+│   │       │       │   ├── BridgeSettingsTab.tsx
+│   │       │       │   ├── GeneralRoomSettingsTab.tsx
+│   │       │       │   ├── NotificationSettingsTab.tsx
+│   │       │       │   ├── PeopleRoomSettingsTab.tsx
+│   │       │       │   ├── PollHistoryTab.tsx
+│   │       │       │   ├── RolesRoomSettingsTab.tsx
+│   │       │       │   ├── SecurityRoomSettingsTab.tsx
+│   │       │       │   └── VoipRoomSettingsTab.tsx
+│   │       │       └── user
+│   │       │           ├── AccountUserSettingsTab.tsx
+│   │       │           ├── AppearanceUserSettingsTab.tsx
+│   │       │           ├── HelpUserSettingsTab.tsx
+│   │       │           ├── KeyboardUserSettingsTab.tsx
+│   │       │           ├── LabsUserSettingsTab.tsx
+│   │       │           ├── MjolnirUserSettingsTab.tsx
+│   │       │           ├── NotificationUserSettingsTab.tsx
+│   │       │           ├── PreferencesUserSettingsTab.tsx
+│   │       │           ├── SecurityUserSettingsTab.tsx
+│   │       │           ├── SessionManagerTab.tsx
+│   │       │           ├── SidebarUserSettingsTab.tsx
+│   │       │           └── VoiceUserSettingsTab.tsx
+│   │       ├── spaces
+│   │       │   ├── QuickSettingsButton.tsx
+│   │       │   ├── QuickThemeSwitcher.tsx
+│   │       │   ├── SpaceBasicSettings.tsx
+│   │       │   ├── SpaceChildrenPicker.tsx
+│   │       │   ├── SpaceCreateMenu.tsx
+│   │       │   ├── SpacePanel.tsx
+│   │       │   ├── SpacePublicShare.tsx
+│   │       │   ├── SpaceSettingsGeneralTab.tsx
+│   │       │   ├── SpaceSettingsVisibilityTab.tsx
+│   │       │   ├── SpaceTreeLevel.tsx
+│   │       │   └── threads-activity-centre
+│   │       │       ├── ThreadsActivityCentre.tsx
+│   │       │       ├── ThreadsActivityCentreButton.tsx
+│   │       │       ├── index.ts
+│   │       │       └── useUnreadThreadRooms.ts
+│   │       ├── terms
+│   │       │   └── InlineTermsAgreement.tsx
+│   │       ├── toasts
+│   │       │   ├── GenericExpiringToast.tsx
+│   │       │   ├── GenericToast.tsx
+│   │       │   ├── NonUrgentEchoFailureToast.tsx
+│   │       │   └── VerificationRequestToast.tsx
+│   │       ├── typography
+│   │       │   ├── Caption.tsx
+│   │       │   └── Heading.tsx
+│   │       ├── user-onboarding
+│   │       │   ├── UserOnboardingButton.tsx
+│   │       │   ├── UserOnboardingHeader.tsx
+│   │       │   ├── UserOnboardingList.tsx
+│   │       │   ├── UserOnboardingPage.tsx
+│   │       │   └── UserOnboardingTask.tsx
+│   │       ├── verification
+│   │       │   ├── VerificationCancelled.tsx
+│   │       │   ├── VerificationComplete.tsx
+│   │       │   └── VerificationShowSas.tsx
+│   │       └── voip
+│   │           ├── AudioFeed.tsx
+│   │           ├── AudioFeedArrayForLegacyCall.tsx
+│   │           ├── CallDuration.tsx
+│   │           ├── CallView.tsx
+│   │           ├── DialPad.tsx
+│   │           ├── DialPadModal.tsx
+│   │           ├── LegacyCallView
+│   │           │   ├── LegacyCallViewButtons.tsx
+│   │           │   └── LegacyCallViewHeader.tsx
+│   │           ├── LegacyCallView.tsx
+│   │           ├── LegacyCallViewForRoom.tsx
+│   │           ├── LegacyCallViewSidebar.tsx
+│   │           └── VideoFeed.tsx
+│   ├── contexts
+│   │   ├── LocalDeviceVerificationStateContext.ts
+│   │   ├── MatrixClientContext.tsx
+│   │   ├── RoomContext.ts
+│   │   ├── SDKContext.ts
+│   │   └── ToastContext.tsx
+│   ├── createRoom.ts
+│   ├── customisations
+│   │   ├── Alias.ts
+│   │   ├── ChatExport.ts
+│   │   ├── ComponentVisibility.ts
+│   │   ├── Directory.ts
+│   │   ├── Lifecycle.ts
+│   │   ├── Media.ts
+│   │   ├── RoomList.ts
+│   │   ├── Security.ts
+│   │   ├── UserIdentifier.ts
+│   │   ├── WidgetPermissions.ts
+│   │   ├── WidgetVariables.ts
+│   │   ├── helpers
+│   │   │   └── UIComponents.ts
+│   │   └── models
+│   │       └── IMediaEventContent.ts
+│   ├── dispatcher
+│   │   ├── actions.ts
+│   │   ├── dispatch-actions
+│   │   │   └── threads.ts
+│   │   ├── dispatcher.ts
+│   │   ├── payloads
+│   │   │   ├── ActiveRoomChangedPayload.ts
+│   │   │   ├── AfterLeaveRoomPayload.ts
+│   │   │   ├── CancelAskToJoinPayload.ts
+│   │   │   ├── CheckUpdatesPayload.ts
+│   │   │   ├── ComposerInsertPayload.ts
+│   │   │   ├── DoAfterSyncPreparedPayload.ts
+│   │   │   ├── FocusComposerPayload.ts
+│   │   │   ├── JoinRoomErrorPayload.ts
+│   │   │   ├── JoinRoomPayload.ts
+│   │   │   ├── JoinRoomReadyPayload.ts
+│   │   │   ├── OpenAddExistingToSpaceDialogPayload.ts
+│   │   │   ├── OpenForwardDialogPayload.ts
+│   │   │   ├── OpenInviteDialogPayload.ts
+│   │   │   ├── OpenReportEventDialogPayload.ts
+│   │   │   ├── OpenSpacePreferencesPayload.ts
+│   │   │   ├── OpenSpaceSettingsPayload.ts
+│   │   │   ├── OpenSpotlightPayload.ts
+│   │   │   ├── OpenToTabPayload.ts
+│   │   │   ├── OverwriteLoginPayload.ts
+│   │   │   ├── PlatformSetPayload.ts
+│   │   │   ├── RecheckThemePayload.ts
+│   │   │   ├── SettingUpdatedPayload.ts
+│   │   │   ├── ShowThreadPayload.ts
+│   │   │   ├── SubmitAskToJoinPayload.ts
+│   │   │   ├── SwitchSpacePayload.ts
+│   │   │   ├── ThreadPayload.ts
+│   │   │   ├── UpdateFontSizeDeltaPayload.ts
+│   │   │   ├── UpdateSystemFontPayload.ts
+│   │   │   ├── UploadPayload.ts
+│   │   │   ├── ViewHomePagePayload.ts
+│   │   │   ├── ViewRoomDeltaPayload.ts
+│   │   │   ├── ViewRoomErrorPayload.ts
+│   │   │   ├── ViewRoomPayload.ts
+│   │   │   ├── ViewStartChatOrReusePayload.ts
+│   │   │   └── ViewUserPayload.ts
+│   │   └── payloads.ts
+│   ├── editor
+│   │   ├── autocomplete.ts
+│   │   ├── caret.ts
+│   │   ├── commands.tsx
+│   │   ├── deserialize.ts
+│   │   ├── diff.ts
+│   │   ├── dom.ts
+│   │   ├── history.ts
+│   │   ├── model.ts
+│   │   ├── offset.ts
+│   │   ├── operations.ts
+│   │   ├── parts.ts
+│   │   ├── position.ts
+│   │   ├── range.ts
+│   │   ├── render.ts
+│   │   └── serialize.ts
+│   ├── effects
+│   │   ├── ICanvasEffect.ts
+│   │   ├── confetti
+│   │   │   └── index.ts
+│   │   ├── effect.ts
+│   │   ├── fireworks
+│   │   │   └── index.ts
+│   │   ├── hearts
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── rainfall
+│   │   │   └── index.ts
+│   │   ├── snowfall
+│   │   │   └── index.ts
+│   │   ├── spaceinvaders
+│   │   │   └── index.ts
+│   │   └── utils.ts
+│   ├── email.ts
+│   ├── emojipicker
+│   │   └── recent.ts
+│   ├── events
+│   │   ├── EventTileFactory.tsx
+│   │   ├── RelationsHelper.ts
+│   │   ├── forward
+│   │   │   └── getForwardableEvent.ts
+│   │   ├── index.ts
+│   │   └── location
+│   │       └── getShareableLocationEvent.ts
+│   ├── hooks
+│   │   ├── room
+│   │   │   ├── useGuestAccessInformation.ts
+│   │   │   ├── useRoomCall.ts
+│   │   │   ├── useRoomMemberProfile.ts
+│   │   │   ├── useRoomThreadNotifications.ts
+│   │   │   └── useTopic.ts
+│   │   ├── spotlight
+│   │   │   ├── useDebouncedCallback.ts
+│   │   │   └── useRecentSearches.ts
+│   │   ├── useAccountData.ts
+│   │   ├── useAnimation.ts
+│   │   ├── useAsyncMemo.ts
+│   │   ├── useAsyncRefreshMemo.ts
+│   │   ├── useAudioDeviceSelection.ts
+│   │   ├── useCall.ts
+│   │   ├── useDispatcher.ts
+│   │   ├── useEncryptionStatus.ts
+│   │   ├── useEventEmitter.ts
+│   │   ├── useFocus.ts
+│   │   ├── useGlobalNotificationState.ts
+│   │   ├── useHover.ts
+│   │   ├── useIsEncrypted.ts
+│   │   ├── useIsInitialSyncComplete.ts
+│   │   ├── useIsReleaseAnnouncementOpen.ts
+│   │   ├── useLatestResult.ts
+│   │   ├── useLocalEcho.ts
+│   │   ├── useLocalStorageState.ts
+│   │   ├── useNotificationSettings.tsx
+│   │   ├── usePermalink.ts
+│   │   ├── usePermalinkEvent.ts
+│   │   ├── usePermalinkMember.ts
+│   │   ├── usePermalinkTargetRoom.ts
+│   │   ├── usePinnedEvents.ts
+│   │   ├── useProfileInfo.ts
+│   │   ├── usePublicRoomDirectory.ts
+│   │   ├── usePushers.ts
+│   │   ├── useRoomMembers.ts
+│   │   ├── useRoomName.ts
+│   │   ├── useRoomNotificationState.ts
+│   │   ├── useRoomState.ts
+│   │   ├── useSettings.ts
+│   │   ├── useSlidingSyncRoomSearch.ts
+│   │   ├── useSmoothAnimation.ts
+│   │   ├── useSpaceResults.ts
+│   │   ├── useStateArray.ts
+│   │   ├── useStateCallback.ts
+│   │   ├── useStateToggle.ts
+│   │   ├── useTheme.ts
+│   │   ├── useThreepids.ts
+│   │   ├── useTimeout.ts
+│   │   ├── useTimeoutToggle.ts
+│   │   ├── useTransition.ts
+│   │   ├── useUnreadNotifications.ts
+│   │   ├── useUserDirectory.ts
+│   │   ├── useUserOnboardingContext.ts
+│   │   ├── useUserOnboardingTasks.ts
+│   │   ├── useUserTimezone.ts
+│   │   └── useWindowWidth.ts
+│   ├── i18n
+│   │   └── strings
+│   │       ├── cs.json
+│   │       ├── de_DE.json
+│   │       ├── el.json
+│   │       ├── en_EN.json
+│   │       ├── eo.json
+│   │       ├── es.json
+│   │       ├── et.json
+│   │       ├── fa.json
+│   │       ├── fi.json
+│   │       ├── fr.json
+│   │       ├── gl.json
+│   │       ├── he.json
+│   │       ├── hu.json
+│   │       ├── id.json
+│   │       ├── is.json
+│   │       ├── it.json
+│   │       ├── ja.json
+│   │       ├── lo.json
+│   │       ├── lt.json
+│   │       ├── nl.json
+│   │       ├── pl.json
+│   │       ├── pt_BR.json
+│   │       ├── ru.json
+│   │       ├── sk.json
+│   │       ├── sq.json
+│   │       ├── sv.json
+│   │       ├── uk.json
+│   │       ├── vi.json
+│   │       ├── zh_Hans.json
+│   │       └── zh_Hant.json
+│   ├── identifiers.ts
+│   ├── index.ts
+│   ├── indexing
+│   │   ├── BaseEventIndexManager.ts
+│   │   ├── EventIndex.ts
+│   │   └── EventIndexPeg.ts
+│   ├── integrations
+│   │   ├── IntegrationManagerInstance.ts
+│   │   └── IntegrationManagers.ts
+│   ├── languageHandler.tsx
+│   ├── linkify-matrix.ts
+│   ├── mjolnir
+│   │   ├── BanList.ts
+│   │   ├── ListRule.ts
+│   │   └── Mjolnir.ts
+│   ├── models
+│   │   ├── Call.ts
+│   │   ├── LocalRoom.ts
+│   │   ├── RoomUpload.ts
+│   │   └── notificationsettings
+│   │       ├── NotificationSettings.ts
+│   │       ├── PushRuleDiff.ts
+│   │       ├── PushRuleMap.ts
+│   │       ├── reconcileNotificationSettings.ts
+│   │       └── toNotificationSettings.ts
+│   ├── modules
+│   │   ├── AppModule.ts
+│   │   ├── ModuleComponents.tsx
+│   │   ├── ModuleFactory.ts
+│   │   ├── ModuleRunner.ts
+│   │   └── ProxiedModuleApi.ts
+│   ├── notifications
+│   │   ├── ContentRules.ts
+│   │   ├── NotificationUtils.ts
+│   │   ├── PushRuleVectorState.ts
+│   │   ├── StandardActions.ts
+│   │   ├── VectorPushRulesDefinitions.ts
+│   │   └── index.ts
+│   ├── performance
+│   │   ├── entry-names.ts
+│   │   └── index.ts
+│   ├── phonenumber.ts
+│   ├── rageshake
+│   │   ├── rageshake.ts
+│   │   └── submit-rageshake.ts
+│   ├── resizer
+│   │   ├── distributors
+│   │   │   ├── collapse.ts
+│   │   │   ├── fixed.ts
+│   │   │   └── percentage.ts
+│   │   ├── index.ts
+│   │   ├── item.ts
+│   │   ├── resizer.ts
+│   │   └── sizer.ts
+│   ├── sendTimePerformanceMetrics.ts
+│   ├── sentry.ts
+│   ├── settings
+│   │   ├── SettingLevel.ts
+│   │   ├── Settings.tsx
+│   │   ├── SettingsStore.ts
+│   │   ├── UIFeature.ts
+│   │   ├── WatchManager.ts
+│   │   ├── controllers
+│   │   │   ├── AnalyticsController.ts
+│   │   │   ├── DeviceIsolationModeController.ts
+│   │   │   ├── FallbackIceServerController.ts
+│   │   │   ├── FontSizeController.ts
+│   │   │   ├── IncompatibleController.ts
+│   │   │   ├── MatrixClientBackedController.ts
+│   │   │   ├── NotificationControllers.ts
+│   │   │   ├── ReducedMotionController.ts
+│   │   │   ├── ReloadOnChangeController.ts
+│   │   │   ├── RustCryptoSdkController.ts
+│   │   │   ├── ServerSupportUnstableFeatureController.ts
+│   │   │   ├── SettingController.ts
+│   │   │   ├── SlidingSyncController.ts
+│   │   │   ├── SystemFontController.ts
+│   │   │   ├── ThemeController.ts
+│   │   │   └── UIFeatureController.ts
+│   │   ├── enums
+│   │   │   ├── ImageSize.ts
+│   │   │   ├── Layout.ts
+│   │   │   └── UseCase.tsx
+│   │   ├── handlers
+│   │   │   ├── AbstractLocalStorageSettingsHandler.ts
+│   │   │   ├── AccountSettingsHandler.ts
+│   │   │   ├── ConfigSettingsHandler.ts
+│   │   │   ├── DefaultSettingsHandler.ts
+│   │   │   ├── DeviceSettingsHandler.ts
+│   │   │   ├── LocalEchoWrapper.ts
+│   │   │   ├── MatrixClientBackedSettingsHandler.ts
+│   │   │   ├── PlatformSettingsHandler.ts
+│   │   │   ├── RoomAccountSettingsHandler.ts
+│   │   │   ├── RoomDeviceSettingsHandler.ts
+│   │   │   ├── RoomSettingsHandler.ts
+│   │   │   └── SettingsHandler.ts
+│   │   └── watchers
+│   │       ├── FontWatcher.ts
+│   │       ├── ThemeWatcher.ts
+│   │       └── Watcher.ts
+│   ├── shouldHideEvent.ts
+│   ├── slash-commands
+│   │   ├── command.ts
+│   │   ├── interface.ts
+│   │   ├── join.ts
+│   │   ├── op.ts
+│   │   └── utils.ts
+│   ├── stores
+│   │   ├── AccountPasswordStore.ts
+│   │   ├── ActiveWidgetStore.ts
+│   │   ├── AsyncStore.ts
+│   │   ├── AsyncStoreWithClient.ts
+│   │   ├── AutoRageshakeStore.ts
+│   │   ├── BreadcrumbsStore.ts
+│   │   ├── CallStore.ts
+│   │   ├── LifecycleStore.ts
+│   │   ├── MemberListStore.ts
+│   │   ├── ModalWidgetStore.ts
+│   │   ├── NonUrgentToastStore.ts
+│   │   ├── OwnBeaconStore.ts
+│   │   ├── OwnProfileStore.ts
+│   │   ├── ReadyWatchingStore.ts
+│   │   ├── ReleaseAnnouncementStore.ts
+│   │   ├── RoomScrollStateStore.ts
+│   │   ├── RoomViewStore.tsx
+│   │   ├── SetupEncryptionStore.ts
+│   │   ├── ThreepidInviteStore.ts
+│   │   ├── ToastStore.ts
+│   │   ├── TypingStore.ts
+│   │   ├── UIStore.ts
+│   │   ├── UserProfilesStore.ts
+│   │   ├── VoiceRecordingStore.ts
+│   │   ├── WidgetEchoStore.ts
+│   │   ├── WidgetStore.ts
+│   │   ├── local-echo
+│   │   │   ├── EchoChamber.ts
+│   │   │   ├── EchoContext.ts
+│   │   │   ├── EchoStore.ts
+│   │   │   ├── EchoTransaction.ts
+│   │   │   ├── GenericEchoChamber.ts
+│   │   │   ├── RoomEchoChamber.ts
+│   │   │   └── RoomEchoContext.ts
+│   │   ├── notifications
+│   │   │   ├── ListNotificationState.ts
+│   │   │   ├── NotificationLevel.ts
+│   │   │   ├── NotificationState.ts
+│   │   │   ├── RoomNotificationState.ts
+│   │   │   ├── RoomNotificationStateStore.ts
+│   │   │   ├── SpaceNotificationState.ts
+│   │   │   ├── StaticNotificationState.ts
+│   │   │   └── SummarizedNotificationState.ts
+│   │   ├── oidc
+│   │   │   └── OidcClientStore.ts
+│   │   ├── right-panel
+│   │   │   ├── RightPanelStore.ts
+│   │   │   ├── RightPanelStoreIPanelState.ts
+│   │   │   ├── RightPanelStorePhases.ts
+│   │   │   └── action-handlers
+│   │   │       ├── View3pidInvite.ts
+│   │   │       └── index.ts
+│   │   ├── room-list
+│   │   │   ├── Interface.ts
+│   │   │   ├── ListLayout.ts
+│   │   │   ├── MessagePreviewStore.ts
+│   │   │   ├── RoomListLayoutStore.ts
+│   │   │   ├── RoomListStore.ts
+│   │   │   ├── SlidingRoomListStore.ts
+│   │   │   ├── SpaceWatcher.ts
+│   │   │   ├── algorithms
+│   │   │   │   ├── Algorithm.ts
+│   │   │   │   ├── list-ordering
+│   │   │   │   │   ├── ImportanceAlgorithm.ts
+│   │   │   │   │   ├── NaturalAlgorithm.ts
+│   │   │   │   │   ├── OrderingAlgorithm.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── models.ts
+│   │   │   │   └── tag-sorting
+│   │   │   │       ├── AlphabeticAlgorithm.ts
+│   │   │   │       ├── IAlgorithm.ts
+│   │   │   │       ├── ManualAlgorithm.ts
+│   │   │   │       ├── RecentAlgorithm.ts
+│   │   │   │       └── index.ts
+│   │   │   ├── filters
+│   │   │   │   ├── IFilterCondition.ts
+│   │   │   │   ├── SpaceFilterCondition.ts
+│   │   │   │   └── VisibilityProvider.ts
+│   │   │   ├── models.ts
+│   │   │   ├── previews
+│   │   │   │   ├── IPreview.ts
+│   │   │   │   ├── LegacyCallAnswerEventPreview.ts
+│   │   │   │   ├── LegacyCallHangupEvent.ts
+│   │   │   │   ├── LegacyCallInviteEventPreview.ts
+│   │   │   │   ├── MessageEventPreview.ts
+│   │   │   │   ├── PollStartEventPreview.ts
+│   │   │   │   ├── ReactionEventPreview.ts
+│   │   │   │   ├── StickerEventPreview.ts
+│   │   │   │   ├── VoiceBroadcastPreview.ts
+│   │   │   │   └── utils.ts
+│   │   │   └── utils
+│   │   │       └── roomMute.ts
+│   │   ├── spaces
+│   │   │   ├── SpaceStore.ts
+│   │   │   ├── SpaceTreeLevelLayoutStore.ts
+│   │   │   ├── flattenSpaceHierarchy.ts
+│   │   │   └── index.ts
+│   │   └── widgets
+│   │       ├── ElementWidgetActions.ts
+│   │       ├── ElementWidgetCapabilities.ts
+│   │       ├── StopGapWidget.ts
+│   │       ├── StopGapWidgetDriver.ts
+│   │       ├── WidgetLayoutStore.ts
+│   │       ├── WidgetMessagingStore.ts
+│   │       ├── WidgetPermissionStore.ts
+│   │       └── types.ts
+│   ├── theme.ts
+│   ├── toasts
+│   │   ├── AnalyticsToast.tsx
+│   │   ├── BulkUnverifiedSessionsToast.ts
+│   │   ├── DesktopNotificationsToast.ts
+│   │   ├── IncomingCallToast.tsx
+│   │   ├── IncomingLegacyCallToast.tsx
+│   │   ├── MobileGuideToast.ts
+│   │   ├── ServerLimitToast.tsx
+│   │   ├── SetupEncryptionToast.ts
+│   │   ├── UnverifiedSessionToast.tsx
+│   │   └── UpdateToast.tsx
+│   ├── usercontent
+│   │   ├── index.html
+│   │   └── index.ts
+│   ├── utils
+│   │   ├── AnimationUtils.ts
+│   │   ├── AutoDiscoveryUtils.tsx
+│   │   ├── BrowserWorkarounds.ts
+│   │   ├── DMRoomMap.ts
+│   │   ├── DecryptFile.ts
+│   │   ├── DialogOpener.ts
+│   │   ├── DirectoryUtils.ts
+│   │   ├── EditorStateTransfer.ts
+│   │   ├── ErrorUtils.tsx
+│   │   ├── EventRenderingUtils.ts
+│   │   ├── EventUtils.ts
+│   │   ├── Feedback.ts
+│   │   ├── FileDownloader.ts
+│   │   ├── FileUtils.ts
+│   │   ├── FixedRollingArray.ts
+│   │   ├── FontManager.ts
+│   │   ├── FormattingUtils.ts
+│   │   ├── IDestroyable.ts
+│   │   ├── IdentityServerUtils.ts
+│   │   ├── Image.ts
+│   │   ├── JSON.ts
+│   │   ├── KeyVerificationStateObserver.ts
+│   │   ├── LazyValue.ts
+│   │   ├── LruCache.ts
+│   │   ├── MarkedExecution.ts
+│   │   ├── MatrixGlob.ts
+│   │   ├── MediaEventHelper.ts
+│   │   ├── MegolmExportEncryption.ts
+│   │   ├── MessageDiffUtils.tsx
+│   │   ├── Mouse.ts
+│   │   ├── MultiInviter.ts
+│   │   ├── NativeEventUtils.ts
+│   │   ├── PasswordScorer.ts
+│   │   ├── PhasedRolloutFeature.ts
+│   │   ├── PinningUtils.ts
+│   │   ├── PreferredRoomVersions.ts
+│   │   ├── ReactUtils.tsx
+│   │   ├── Reply.ts
+│   │   ├── ResizeNotifier.ts
+│   │   ├── RoomUpgrade.ts
+│   │   ├── SearchInput.ts
+│   │   ├── SessionLock.ts
+│   │   ├── ShieldUtils.ts
+│   │   ├── Singleflight.ts
+│   │   ├── SnakedObject.ts
+│   │   ├── SortMembers.ts
+│   │   ├── StorageAccess.ts
+│   │   ├── StorageManager.ts
+│   │   ├── Timer.ts
+│   │   ├── UrlUtils.ts
+│   │   ├── UserInteractiveAuth.ts
+│   │   ├── ValidatedServerConfig.ts
+│   │   ├── WellKnownUtils.ts
+│   │   ├── Whenable.ts
+│   │   ├── WidgetUtils.ts
+│   │   ├── arrays.ts
+│   │   ├── beacon
+│   │   │   ├── bounds.ts
+│   │   │   ├── duration.ts
+│   │   │   ├── geolocation.ts
+│   │   │   ├── getShareableLocation.ts
+│   │   │   ├── index.ts
+│   │   │   ├── timeline.ts
+│   │   │   ├── useBeacon.ts
+│   │   │   ├── useLiveBeacons.ts
+│   │   │   └── useOwnLiveBeacons.ts
+│   │   ├── blobs.ts
+│   │   ├── colour.ts
+│   │   ├── connection.ts
+│   │   ├── createMatrixClient.ts
+│   │   ├── createVoiceMessageContent.ts
+│   │   ├── crypto
+│   │   │   ├── deviceInfo.ts
+│   │   │   ├── index.ts
+│   │   │   ├── shouldForceDisableEncryption.ts
+│   │   │   └── shouldSkipSetupEncryption.ts
+│   │   ├── device
+│   │   │   ├── clientInformation.ts
+│   │   │   ├── dehydration.ts
+│   │   │   ├── isDeviceVerified.ts
+│   │   │   ├── parseUserAgent.ts
+│   │   │   └── snoozeBulkUnverifiedDeviceReminder.ts
+│   │   ├── direct-messages.ts
+│   │   ├── dm
+│   │   │   ├── createDmLocalRoom.ts
+│   │   │   ├── filterValidMDirect.ts
+│   │   │   ├── findDMForUser.ts
+│   │   │   ├── findDMRoom.ts
+│   │   │   └── startDm.ts
+│   │   ├── enums.ts
+│   │   ├── event
+│   │   │   └── getSenderName.ts
+│   │   ├── exportUtils
+│   │   │   ├── Exporter.ts
+│   │   │   ├── HtmlExport.tsx
+│   │   │   ├── JSONExport.ts
+│   │   │   ├── PlainTextExport.ts
+│   │   │   ├── exportCSS.ts
+│   │   │   ├── exportCustomCSS.css
+│   │   │   ├── exportJS.js
+│   │   │   └── exportUtils.ts
+│   │   ├── humanize.ts
+│   │   ├── i18n-helpers.ts
+│   │   ├── image-media.ts
+│   │   ├── iterables.ts
+│   │   ├── leave-behaviour.ts
+│   │   ├── local-room.ts
+│   │   ├── localRoom
+│   │   │   ├── isLocalRoom.ts
+│   │   │   └── isRoomReady.ts
+│   │   ├── location
+│   │   │   ├── LocationShareErrors.ts
+│   │   │   ├── findMapStyleUrl.ts
+│   │   │   ├── index.ts
+│   │   │   ├── isSelfLocation.ts
+│   │   │   ├── links.ts
+│   │   │   ├── locationEventGeoUri.ts
+│   │   │   ├── map.ts
+│   │   │   ├── parseGeoUri.ts
+│   │   │   ├── positionFailureMessage.ts
+│   │   │   └── useMap.ts
+│   │   ├── login.ts
+│   │   ├── maps.ts
+│   │   ├── media
+│   │   │   └── requestMediaPermissions.tsx
+│   │   ├── membership.ts
+│   │   ├── notifications.ts
+│   │   ├── numbers.ts
+│   │   ├── objects.ts
+│   │   ├── oidc
+│   │   │   ├── TokenRefresher.ts
+│   │   │   ├── authorize.ts
+│   │   │   ├── error.ts
+│   │   │   ├── getOidcLogoutUrl.ts
+│   │   │   ├── isUserRegistrationSupported.ts
+│   │   │   ├── persistOidcSettings.ts
+│   │   │   └── registerClient.ts
+│   │   ├── pages.ts
+│   │   ├── permalinks
+│   │   │   ├── ElementPermalinkConstructor.ts
+│   │   │   ├── MatrixSchemePermalinkConstructor.ts
+│   │   │   ├── MatrixToPermalinkConstructor.ts
+│   │   │   ├── PermalinkConstructor.ts
+│   │   │   ├── Permalinks.ts
+│   │   │   └── navigator.ts
+│   │   ├── pillify.tsx
+│   │   ├── presence.ts
+│   │   ├── promise.ts
+│   │   ├── pushRules
+│   │   │   ├── monitorSyncedPushRules.ts
+│   │   │   └── updatePushRuleActions.ts
+│   │   ├── read-receipts.ts
+│   │   ├── room
+│   │   │   ├── canInviteTo.ts
+│   │   │   ├── getFunctionalMembers.ts
+│   │   │   ├── getJoinedNonFunctionalMembers.ts
+│   │   │   ├── inviteToRoom.ts
+│   │   │   ├── placeCall.ts
+│   │   │   ├── shouldEncryptRoomWithSingle3rdPartyInvite.ts
+│   │   │   └── tagRoom.ts
+│   │   ├── rooms.ts
+│   │   ├── sets.ts
+│   │   ├── space.tsx
+│   │   ├── stringOrderField.ts
+│   │   ├── strings.ts
+│   │   ├── threepids.ts
+│   │   ├── tokens
+│   │   │   ├── pickling.ts
+│   │   │   └── tokens.ts
+│   │   ├── tooltipify.tsx
+│   │   ├── units.ts
+│   │   ├── useId.ts
+│   │   ├── validate
+│   │   │   ├── index.ts
+│   │   │   └── numberInRange.ts
+│   │   └── video-rooms.ts
+│   ├── verification.ts
+│   ├── voice-broadcast
+│   │   ├── audio
+│   │   │   └── VoiceBroadcastRecorder.ts
+│   │   ├── components
+│   │   │   ├── VoiceBroadcastBody.tsx
+│   │   │   ├── atoms
+│   │   │   │   ├── LiveBadge.tsx
+│   │   │   │   ├── SeekButton.tsx
+│   │   │   │   ├── VoiceBroadcastControl.tsx
+│   │   │   │   ├── VoiceBroadcastError.tsx
+│   │   │   │   ├── VoiceBroadcastHeader.tsx
+│   │   │   │   ├── VoiceBroadcastPlaybackControl.tsx
+│   │   │   │   ├── VoiceBroadcastRecordingConnectionError.tsx
+│   │   │   │   └── VoiceBroadcastRoomSubtitle.tsx
+│   │   │   └── molecules
+│   │   │       ├── ConfirmListenBroadcastStopCurrent.tsx
+│   │   │       ├── VoiceBroadcastPlaybackBody.tsx
+│   │   │       ├── VoiceBroadcastPreRecordingPip.tsx
+│   │   │       ├── VoiceBroadcastRecordingBody.tsx
+│   │   │       ├── VoiceBroadcastRecordingPip.tsx
+│   │   │       └── VoiceBroadcastSmallPlaybackBody.tsx
+│   │   ├── hooks
+│   │   │   ├── useCurrentVoiceBroadcastPlayback.ts
+│   │   │   ├── useCurrentVoiceBroadcastPreRecording.ts
+│   │   │   ├── useCurrentVoiceBroadcastRecording.ts
+│   │   │   ├── useHasRoomLiveVoiceBroadcast.ts
+│   │   │   ├── useVoiceBroadcastPlayback.ts
+│   │   │   └── useVoiceBroadcastRecording.tsx
+│   │   ├── index.ts
+│   │   ├── models
+│   │   │   ├── VoiceBroadcastPlayback.ts
+│   │   │   ├── VoiceBroadcastPreRecording.ts
+│   │   │   └── VoiceBroadcastRecording.ts
+│   │   ├── stores
+│   │   │   ├── VoiceBroadcastPlaybacksStore.ts
+│   │   │   ├── VoiceBroadcastPreRecordingStore.ts
+│   │   │   └── VoiceBroadcastRecordingsStore.ts
+│   │   ├── types.ts
+│   │   └── utils
+│   │       ├── VoiceBroadcastChunkEvents.ts
+│   │       ├── VoiceBroadcastResumer.ts
+│   │       ├── checkVoiceBroadcastPreConditions.tsx
+│   │       ├── cleanUpBroadcasts.ts
+│   │       ├── determineVoiceBroadcastLiveness.ts
+│   │       ├── doClearCurrentVoiceBroadcastPlaybackIfStopped.ts
+│   │       ├── doMaybeSetCurrentVoiceBroadcastPlayback.ts
+│   │       ├── findRoomLiveVoiceBroadcastFromUserAndDevice.ts
+│   │       ├── getChunkLength.ts
+│   │       ├── getMaxBroadcastLength.ts
+│   │       ├── hasRoomLiveVoiceBroadcast.ts
+│   │       ├── isRelatedToVoiceBroadcast.ts
+│   │       ├── isVoiceBroadcastStartedEvent.ts
+│   │       ├── pauseNonLiveBroadcastFromOtherRoom.ts
+│   │       ├── retrieveStartedInfoEvent.ts
+│   │       ├── setUpVoiceBroadcastPreRecording.ts
+│   │       ├── shouldDisplayAsVoiceBroadcastRecordingTile.ts
+│   │       ├── shouldDisplayAsVoiceBroadcastStoppedText.ts
+│   │       ├── shouldDisplayAsVoiceBroadcastTile.ts
+│   │       ├── showCantStartACallDialog.tsx
+│   │       ├── startNewVoiceBroadcastRecording.ts
+│   │       ├── textForVoiceBroadcastStoppedEvent.tsx
+│   │       └── textForVoiceBroadcastStoppedEventWithoutLink.ts
+│   ├── widgets
+│   │   ├── CapabilityText.tsx
+│   │   ├── Jitsi.ts
+│   │   ├── ManagedHybrid.ts
+│   │   └── WidgetType.ts
+│   └── workers
+│       ├── blurhash.worker.ts
+│       ├── blurhashWorkerFactory.ts
+│       ├── indexeddb.worker.ts
+│       ├── indexeddbWorkerFactory.ts
+│       ├── playback.worker.ts
+│       ├── playbackWorkerFactory.ts
+│       └── worker.ts
+├── test
+│   ├── @types
+│   │   └── common.ts
+│   ├── Avatar-test.ts
+│   ├── ContentMessages-test.ts
+│   ├── DecryptionFailureTracker-test.ts
+│   ├── DeviceListener-test.ts
+│   ├── HtmlUtils-test.tsx
+│   ├── Image-test.ts
+│   ├── KeyBindingsManager-test.ts
+│   ├── LegacyCallHandler-test.ts
+│   ├── Lifecycle-test.ts
+│   ├── Markdown-test.ts
+│   ├── MatrixClientPeg-test.ts
+│   ├── MediaDeviceHandler-test.ts
+│   ├── Modal-test.ts
+│   ├── Notifier-test.ts
+│   ├── PosthogAnalytics-test.ts
+│   ├── PreferredRoomVersions-test.ts
+│   ├── Reply-test.ts
+│   ├── RoomNotifs-test.ts
+│   ├── Rooms-test.ts
+│   ├── ScalarAuthClient-test.ts
+│   ├── SdkConfig-test.ts
+│   ├── SecurityManager-test.ts
+│   ├── SlashCommands-test.tsx
+│   ├── SlidingSyncManager-test.ts
+│   ├── SupportedBrowser-test.ts
+│   ├── Terms-test.tsx
+│   ├── TestSdkContext.ts
+│   ├── TextForEvent-test.ts
+│   ├── TimezoneHandler-test.ts
+│   ├── Unread-test.ts
+│   ├── UserActivity-test.ts
+│   ├── WorkerManager-test.ts
+│   ├── __snapshots__
+│   │   ├── HtmlUtils-test.tsx.snap
+│   │   ├── LegacyCallHandler-test.ts.snap
+│   │   ├── Reply-test.ts.snap
+│   │   ├── SlashCommands-test.tsx.snap
+│   │   ├── TextForEvent-test.ts.snap
+│   │   └── theme-test.ts.snap
+│   ├── accessibility
+│   │   ├── KeyboardShortcutUtils-test.ts
+│   │   ├── LandmarkNavigation-test.tsx
+│   │   └── RovingTabIndex-test.tsx
+│   ├── actions
+│   │   └── handlers
+│   │       └── viewUserDeviceSettings-test.ts
+│   ├── audio
+│   │   ├── Playback-test.ts
+│   │   ├── VoiceMessageRecording-test.ts
+│   │   └── VoiceRecording-test.ts
+│   ├── autocomplete
+│   │   ├── EmojiProvider-test.ts
+│   │   ├── QueryMatcher-test.ts
+│   │   ├── RoomProvider-test.ts
+│   │   └── SpaceProvider-test.ts
+│   ├── components
+│   │   ├── structures
+│   │   │   ├── AutocompleteInput-test.tsx
+│   │   │   ├── ContextMenu-test.ts
+│   │   │   ├── FilePanel-test.tsx
+│   │   │   ├── LargeLoader-test.tsx
+│   │   │   ├── LeftPanel-test.tsx
+│   │   │   ├── LegacyCallEventGrouper-test.ts
+│   │   │   ├── LoggedInView-test.tsx
+│   │   │   ├── MainSplit-test.tsx
+│   │   │   ├── MatrixChat-test.tsx
+│   │   │   ├── MatrixClientContextProvider-test.tsx
+│   │   │   ├── MessagePanel-test.tsx
+│   │   │   ├── PictureInPictureDragger-test.tsx
+│   │   │   ├── PipContainer-test.tsx
+│   │   │   ├── ReleaseAnnouncement-test.tsx
+│   │   │   ├── RightPanel-test.tsx
+│   │   │   ├── RoomSearchView-test.tsx
+│   │   │   ├── RoomStatusBar-test.tsx
+│   │   │   ├── RoomStatusBarUnsentMessages-test.tsx
+│   │   │   ├── RoomView-test.tsx
+│   │   │   ├── SpaceHierarchy-test.tsx
+│   │   │   ├── TabbedView-test.tsx
+│   │   │   ├── ThreadPanel-test.tsx
+│   │   │   ├── ThreadView-test.tsx
+│   │   │   ├── TimelinePanel-test.tsx
+│   │   │   ├── UploadBar-test.tsx
+│   │   │   ├── UserMenu-test.tsx
+│   │   │   ├── ViewSource-test.tsx
+│   │   │   ├── __snapshots__
+│   │   │   │   ├── FilePanel-test.tsx.snap
+│   │   │   │   ├── MainSplit-test.tsx.snap
+│   │   │   │   ├── MatrixChat-test.tsx.snap
+│   │   │   │   ├── MessagePanel-test.tsx.snap
+│   │   │   │   ├── PictureInPictureDragger-test.tsx.snap
+│   │   │   │   ├── RoomStatusBar-test.tsx.snap
+│   │   │   │   ├── RoomView-test.tsx.snap
+│   │   │   │   ├── SpaceHierarchy-test.tsx.snap
+│   │   │   │   ├── TabbedView-test.tsx.snap
+│   │   │   │   ├── ThreadPanel-test.tsx.snap
+│   │   │   │   └── UserMenu-test.tsx.snap
+│   │   │   └── auth
+│   │   │       ├── CompleteSecurity-test.tsx
+│   │   │       ├── ForgotPassword-test.tsx
+│   │   │       ├── Login-test.tsx
+│   │   │       ├── LoginSplashView-test.tsx
+│   │   │       ├── Registration-test.tsx
+│   │   │       └── __snapshots__
+│   │   │           └── LoginSplashView-test.tsx.snap
+│   │   └── views
+│   │       ├── Validation-test.ts
+│   │       ├── VerificationShowSas-test.tsx
+│   │       ├── audio_messages
+│   │       │   ├── RecordingPlayback-test.tsx
+│   │       │   ├── SeekBar-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       └── SeekBar-test.tsx.snap
+│   │       ├── auth
+│   │       │   ├── CountryDropdown-test.tsx
+│   │       │   ├── InteractiveAuthEntryComponents-test.tsx
+│   │       │   ├── RegistrationToken-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       └── InteractiveAuthEntryComponents-test.tsx.snap
+│   │       ├── avatars
+│   │       │   ├── DecoratedRoomAvatar-test.tsx
+│   │       │   ├── MemberAvatar-test.tsx
+│   │       │   ├── RoomAvatar-test.tsx
+│   │       │   ├── WithPresenceIndicator-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── DecoratedRoomAvatar-test.tsx.snap
+│   │       │       ├── RoomAvatar-test.tsx.snap
+│   │       │       └── WithPresenceIndicator-test.tsx.snap
+│   │       ├── beacon
+│   │       │   ├── BeaconListItem-test.tsx
+│   │       │   ├── BeaconMarker-test.tsx
+│   │       │   ├── BeaconStatus-test.tsx
+│   │       │   ├── BeaconViewDialog-test.tsx
+│   │       │   ├── DialogSidebar-test.tsx
+│   │       │   ├── LeftPanelLiveShareWarning-test.tsx
+│   │       │   ├── OwnBeaconStatus-test.tsx
+│   │       │   ├── RoomCallBanner-test.tsx
+│   │       │   ├── ShareLatestLocation-test.tsx
+│   │       │   ├── StyledLiveBeaconIcon-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── BeaconListItem-test.tsx.snap
+│   │       │       ├── BeaconMarker-test.tsx.snap
+│   │       │       ├── BeaconStatus-test.tsx.snap
+│   │       │       ├── BeaconViewDialog-test.tsx.snap
+│   │       │       ├── DialogSidebar-test.tsx.snap
+│   │       │       ├── LeftPanelLiveShareWarning-test.tsx.snap
+│   │       │       ├── OwnBeaconStatus-test.tsx.snap
+│   │       │       ├── ShareLatestLocation-test.tsx.snap
+│   │       │       └── StyledLiveBeaconIcon-test.tsx.snap
+│   │       ├── beta
+│   │       │   └── BetaCard-test.tsx
+│   │       ├── context_menus
+│   │       │   ├── ContextMenu-test.tsx
+│   │       │   ├── EmbeddedPage-test.tsx
+│   │       │   ├── MessageContextMenu-test.tsx
+│   │       │   ├── RoomGeneralContextMenu-test.tsx
+│   │       │   ├── SpaceContextMenu-test.tsx
+│   │       │   ├── ThreadListContextMenu-test.tsx
+│   │       │   ├── WidgetContextMenu-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── EmbeddedPage-test.tsx.snap
+│   │       │       ├── RoomGeneralContextMenu-test.tsx.snap
+│   │       │       └── SpaceContextMenu-test.tsx.snap
+│   │       ├── dialogs
+│   │       │   ├── AccessSecretStorageDialog-test.tsx
+│   │       │   ├── AppDownloadDialog-test.tsx
+│   │       │   ├── AskInviteAnywayDialog-test.tsx
+│   │       │   ├── ChangelogDialog-test.tsx
+│   │       │   ├── ConfirmRedactDialog-test.tsx
+│   │       │   ├── ConfirmUserActionDialog-test.tsx
+│   │       │   ├── CreateRoomDialog-test.tsx
+│   │       │   ├── DevtoolsDialog-test.tsx
+│   │       │   ├── ExportDialog-test.tsx
+│   │       │   ├── FeedbackDialog-test.tsx
+│   │       │   ├── ForwardDialog-test.tsx
+│   │       │   ├── IncomingSasDialog-test.tsx
+│   │       │   ├── InteractiveAuthDialog-test.tsx
+│   │       │   ├── InviteDialog-test.tsx
+│   │       │   ├── LogoutDialog-test.tsx
+│   │       │   ├── ManageRestrictedJoinRuleDialog-test.tsx
+│   │       │   ├── ManualDeviceKeyVerificationDialog-test.tsx
+│   │       │   ├── MessageEditHistoryDialog-test.tsx
+│   │       │   ├── RoomSettingsDialog-test.tsx
+│   │       │   ├── ServerPickerDialog-test.tsx
+│   │       │   ├── ShareDialog-test.tsx
+│   │       │   ├── SpotlightDialog-test.tsx
+│   │       │   ├── UnpinAllDialog-test.tsx
+│   │       │   ├── UserSettingsDialog-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── AppDownloadDialog-test.tsx.snap
+│   │       │   │   ├── ChangelogDialog-test.tsx.snap
+│   │       │   │   ├── ConfirmUserActionDialog-test.tsx.snap
+│   │       │   │   ├── DevtoolsDialog-test.tsx.snap
+│   │       │   │   ├── ExportDialog-test.tsx.snap
+│   │       │   │   ├── FeedbackDialog-test.tsx.snap
+│   │       │   │   ├── LogoutDialog-test.tsx.snap
+│   │       │   │   ├── ManageRestrictedJoinRuleDialog-test.tsx.snap
+│   │       │   │   ├── ManualDeviceKeyVerificationDialog-test.tsx.snap
+│   │       │   │   ├── MessageEditHistoryDialog-test.tsx.snap
+│   │       │   │   ├── RoomSettingsDialog-test.tsx.snap
+│   │       │   │   ├── ServerPickerDialog-test.tsx.snap
+│   │       │   │   ├── UnpinAllDialog-test.tsx.snap
+│   │       │   │   └── UserSettingsDialog-test.tsx.snap
+│   │       │   ├── devtools
+│   │       │   │   ├── Event-test.tsx
+│   │       │   │   ├── RoomNotifications-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       ├── Event-test.tsx.snap
+│   │       │   │       └── RoomNotifications-test.tsx.snap
+│   │       │   ├── security
+│   │       │   │   ├── CreateKeyBackupDialog-test.tsx
+│   │       │   │   ├── CreateSecretStorageDialog-test.tsx
+│   │       │   │   ├── ExportE2eKeysDialog-test.tsx
+│   │       │   │   ├── ImportE2eKeysDialog-test.tsx
+│   │       │   │   ├── RestoreKeyBackupDialog-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       ├── CreateKeyBackupDialog-test.tsx.snap
+│   │       │   │       ├── CreateSecretStorageDialog-test.tsx.snap
+│   │       │   │       ├── ExportE2eKeysDialog-test.tsx.snap
+│   │       │   │       ├── ImportE2eKeysDialog-test.tsx.snap
+│   │       │   │       └── RestoreKeyBackupDialog-test.tsx.snap
+│   │       │   └── spotlight
+│   │       │       ├── PublicRoomResultDetails-test.tsx
+│   │       │       ├── RoomResultContextMenus-test.tsx
+│   │       │       └── __snapshots__
+│   │       │           └── PublicRoomResultDetails-test.tsx.snap
+│   │       ├── elements
+│   │       │   ├── AccessibleButton-test.tsx
+│   │       │   ├── AppTile-test.tsx
+│   │       │   ├── DesktopCapturerSourcePicker-test.tsx
+│   │       │   ├── EffectsOverlay-test.tsx
+│   │       │   ├── EventListSummary-test.tsx
+│   │       │   ├── ExternalLink-test.tsx
+│   │       │   ├── FacePile-test.tsx
+│   │       │   ├── Field-test.tsx
+│   │       │   ├── FilterDropdown-test.tsx
+│   │       │   ├── FilterTabGroup-test.tsx
+│   │       │   ├── ImageView-test.tsx
+│   │       │   ├── InfoTooltip-test.tsx
+│   │       │   ├── InteractiveTooltip-test.ts
+│   │       │   ├── LabelledCheckbox-test.tsx
+│   │       │   ├── LearnMore-test.tsx
+│   │       │   ├── Pill-test.tsx
+│   │       │   ├── PollCreateDialog-test.tsx
+│   │       │   ├── PowerSelector-test.tsx
+│   │       │   ├── ProgressBar-test.tsx
+│   │       │   ├── QRCode-test.tsx
+│   │       │   ├── ReplyChain-test.tsx
+│   │       │   ├── RoomFacePile-test.tsx
+│   │       │   ├── RoomTopic-test.tsx
+│   │       │   ├── SearchWarning-test.tsx
+│   │       │   ├── SpellCheckLanguagesDropdown-test.tsx
+│   │       │   ├── StyledRadioGroup-test.tsx
+│   │       │   ├── SyntaxHighlight-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── AccessibleButton-test.tsx.snap
+│   │       │   │   ├── AppTile-test.tsx.snap
+│   │       │   │   ├── EffectsOverlay-test.tsx.snap
+│   │       │   │   ├── ExternalLink-test.tsx.snap
+│   │       │   │   ├── FacePile-test.tsx.snap
+│   │       │   │   ├── FilterDropdown-test.tsx.snap
+│   │       │   │   ├── FilterTabGroup-test.tsx.snap
+│   │       │   │   ├── ImageView-test.tsx.snap
+│   │       │   │   ├── InfoTooltip-test.tsx.snap
+│   │       │   │   ├── LabelledCheckbox-test.tsx.snap
+│   │       │   │   ├── LearnMore-test.tsx.snap
+│   │       │   │   ├── Pill-test.tsx.snap
+│   │       │   │   ├── PollCreateDialog-test.tsx.snap
+│   │       │   │   ├── QRCode-test.tsx.snap
+│   │       │   │   ├── RoomFacePile-test.tsx.snap
+│   │       │   │   ├── SearchWarning-test.tsx.snap
+│   │       │   │   ├── SpellCheckLanguagesDropdown-test.tsx.snap
+│   │       │   │   ├── StyledRadioGroup-test.tsx.snap
+│   │       │   │   └── SyntaxHighlight-test.tsx.snap
+│   │       │   └── crypto
+│   │       │       ├── VerificationQRCode-test.tsx
+│   │       │       └── __snapshots__
+│   │       │           └── VerificationQRCode-test.tsx.snap
+│   │       ├── emojipicker
+│   │       │   └── EmojiPicker-test.tsx
+│   │       ├── location
+│   │       │   ├── LiveDurationDropdown-test.tsx
+│   │       │   ├── LocationPicker-test.tsx
+│   │       │   ├── LocationShareMenu-test.tsx
+│   │       │   ├── LocationViewDialog-test.tsx
+│   │       │   ├── Map-test.tsx
+│   │       │   ├── MapError-test.tsx
+│   │       │   ├── Marker-test.tsx
+│   │       │   ├── SmartMarker-test.tsx
+│   │       │   ├── ZoomButtons-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── LocationPicker-test.tsx.snap
+│   │       │   │   ├── LocationShareMenu-test.tsx.snap
+│   │       │   │   ├── LocationViewDialog-test.tsx.snap
+│   │       │   │   ├── MapError-test.tsx.snap
+│   │       │   │   ├── Marker-test.tsx.snap
+│   │       │   │   ├── SmartMarker-test.tsx.snap
+│   │       │   │   └── ZoomButtons-test.tsx.snap
+│   │       │   └── shareLocation-test.ts
+│   │       ├── messages
+│   │       │   ├── CallEvent-test.tsx
+│   │       │   ├── DateSeparator-test.tsx
+│   │       │   ├── DecryptionFailureBody-test.tsx
+│   │       │   ├── DownloadActionButton-test.tsx
+│   │       │   ├── EncryptionEvent-test.tsx
+│   │       │   ├── JumpToDatePicker-test.tsx
+│   │       │   ├── LegacyCallEvent-test.tsx
+│   │       │   ├── MBeaconBody-test.tsx
+│   │       │   ├── MFileBody-test.tsx
+│   │       │   ├── MImageBody-test.tsx
+│   │       │   ├── MKeyVerificationRequest-test.tsx
+│   │       │   ├── MLocationBody-test.tsx
+│   │       │   ├── MPollBody-test.tsx
+│   │       │   ├── MPollEndBody-test.tsx
+│   │       │   ├── MStickerBody-test.tsx
+│   │       │   ├── MVideoBody-test.tsx
+│   │       │   ├── MessageActionBar-test.tsx
+│   │       │   ├── MessageEvent-test.tsx
+│   │       │   ├── MessageTimestamp-test.tsx
+│   │       │   ├── PinnedMessageBadge-test.tsx
+│   │       │   ├── ReactionsRowButton-test.tsx
+│   │       │   ├── RoomPredecessorTile-test.tsx
+│   │       │   ├── TextualBody-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── DateSeparator-test.tsx.snap
+│   │       │   │   ├── DecryptionFailureBody-test.tsx.snap
+│   │       │   │   ├── JumpToDatePicker-test.tsx.snap
+│   │       │   │   ├── MBeaconBody-test.tsx.snap
+│   │       │   │   ├── MFileBody-test.tsx.snap
+│   │       │   │   ├── MImageBody-test.tsx.snap
+│   │       │   │   ├── MLocationBody-test.tsx.snap
+│   │       │   │   ├── MPollBody-test.tsx.snap
+│   │       │   │   ├── MPollEndBody-test.tsx.snap
+│   │       │   │   ├── MVideoBody-test.tsx.snap
+│   │       │   │   ├── PinnedMessageBadge-test.tsx.snap
+│   │       │   │   ├── ReactionsRowButton-test.tsx.snap
+│   │       │   │   ├── RoomPredecessorTile-test.tsx.snap
+│   │       │   │   └── TextualBody-test.tsx.snap
+│   │       │   └── shared
+│   │       │       ├── MediaProcessingError-test.tsx
+│   │       │       └── __snapshots__
+│   │       │           └── MediaProcessingError-test.tsx.snap
+│   │       ├── polls
+│   │       │   └── pollHistory
+│   │       │       ├── PollHistory-test.tsx
+│   │       │       ├── PollListItem-test.tsx
+│   │       │       ├── PollListItemEnded-test.tsx
+│   │       │       └── __snapshots__
+│   │       │           ├── PollHistory-test.tsx.snap
+│   │       │           ├── PollListItem-test.tsx.snap
+│   │       │           └── PollListItemEnded-test.tsx.snap
+│   │       ├── right_panel
+│   │       │   ├── BaseCard-test.tsx
+│   │       │   ├── ExtensionsCard-test.tsx
+│   │       │   ├── PinnedMessagesCard-test.tsx
+│   │       │   ├── RoomSummaryCard-test.tsx
+│   │       │   ├── UserInfo-test.tsx
+│   │       │   ├── VerificationPanel-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── BaseCard-test.tsx.snap
+│   │       │       ├── ExtensionsCard-test.tsx.snap
+│   │       │       ├── PinnedMessagesCard-test.tsx.snap
+│   │       │       ├── RoomSummaryCard-test.tsx.snap
+│   │       │       └── UserInfo-test.tsx.snap
+│   │       ├── room_settings
+│   │       │   └── RoomProfileSettings-test.tsx
+│   │       ├── rooms
+│   │       │   ├── AppsDrawer-test.tsx
+│   │       │   ├── BasicMessageComposer-test.tsx
+│   │       │   ├── EditMessageComposer-test.tsx
+│   │       │   ├── EventTile
+│   │       │   │   ├── EventTileThreadToolbar-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       └── EventTileThreadToolbar-test.tsx.snap
+│   │       │   ├── EventTile-test.tsx
+│   │       │   ├── ExtraTile-test.tsx
+│   │       │   ├── MemberList-test.tsx
+│   │       │   ├── MemberTile-test.tsx
+│   │       │   ├── MessageComposer-test.tsx
+│   │       │   ├── MessageComposerButtons-test.tsx
+│   │       │   ├── NewRoomIntro-test.tsx
+│   │       │   ├── NotificationBadge
+│   │       │   │   ├── NotificationBadge-test.tsx
+│   │       │   │   ├── StatelessNotificationBadge-test.tsx
+│   │       │   │   └── UnreadNotificationBadge-test.tsx
+│   │       │   ├── PinnedEventTile-test.tsx
+│   │       │   ├── PinnedMessageBanner-test.tsx
+│   │       │   ├── PresenceLabel-test.tsx
+│   │       │   ├── ReadReceiptGroup-test.tsx
+│   │       │   ├── ReadReceiptMarker-test.tsx
+│   │       │   ├── RoomHeader
+│   │       │   │   ├── CallGuestLinkButton-test.tsx
+│   │       │   │   ├── VideoRoomChatButton-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       └── VideoRoomChatButton-test.tsx.snap
+│   │       │   ├── RoomHeader-test.tsx
+│   │       │   ├── RoomKnocksBar-test.tsx
+│   │       │   ├── RoomList-test.tsx
+│   │       │   ├── RoomListHeader-test.tsx
+│   │       │   ├── RoomPreviewBar-test.tsx
+│   │       │   ├── RoomPreviewCard-test.tsx
+│   │       │   ├── RoomSearchAuxPanel-test.tsx
+│   │       │   ├── RoomTile-test.tsx
+│   │       │   ├── SearchResultTile-test.tsx
+│   │       │   ├── SendMessageComposer-test.tsx
+│   │       │   ├── ThirdPartyMemberInfo-test.tsx
+│   │       │   ├── VoiceRecordComposerTile-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── ExtraTile-test.tsx.snap
+│   │       │   │   ├── MemberTile-test.tsx.snap
+│   │       │   │   ├── PinnedEventTile-test.tsx.snap
+│   │       │   │   ├── PinnedMessageBanner-test.tsx.snap
+│   │       │   │   ├── ReadReceiptGroup-test.tsx.snap
+│   │       │   │   ├── RoomHeader-test.tsx.snap
+│   │       │   │   ├── RoomPreviewBar-test.tsx.snap
+│   │       │   │   ├── RoomTile-test.tsx.snap
+│   │       │   │   └── ThirdPartyMemberInfo-test.tsx.snap
+│   │       │   └── wysiwyg_composer
+│   │       │       ├── EditWysiwygComposer-test.tsx
+│   │       │       ├── SendWysiwygComposer-test.tsx
+│   │       │       ├── components
+│   │       │       │   ├── FormattingButtons-test.tsx
+│   │       │       │   ├── LinkModal-test.tsx
+│   │       │       │   ├── PlainTextComposer-test.tsx
+│   │       │       │   ├── WysiwygAutocomplete-test.tsx
+│   │       │       │   ├── WysiwygComposer-test.tsx
+│   │       │       │   └── __snapshots__
+│   │       │       │       └── FormattingButtons-test.tsx.snap
+│   │       │       ├── hooks
+│   │       │       │   ├── usePlainTextListeners-test.tsx
+│   │       │       │   ├── useSuggestion-test.tsx
+│   │       │       │   └── utils-test.tsx
+│   │       │       ├── utils
+│   │       │       │   ├── autocomplete-test.ts
+│   │       │       │   ├── createMessageContent-test.ts
+│   │       │       │   └── message-test.ts
+│   │       │       └── utils.ts
+│   │       ├── settings
+│   │       │   ├── AddPrivilegedUsers-test.tsx
+│   │       │   ├── AddRemoveThreepids-test.tsx
+│   │       │   ├── AvatarSetting-test.tsx
+│   │       │   ├── ChangePassword-test.tsx
+│   │       │   ├── CrossSigningPanel-test.tsx
+│   │       │   ├── CryptographyPanel-test.tsx
+│   │       │   ├── EventIndexPanel-test.tsx
+│   │       │   ├── FontScalingPanel-test.tsx
+│   │       │   ├── JoinRuleSettings-test.tsx
+│   │       │   ├── KeyboardShortcut-test.tsx
+│   │       │   ├── LayoutSwitcher-test.tsx
+│   │       │   ├── Notifications-test.tsx
+│   │       │   ├── PowerLevelSelector-test.tsx
+│   │       │   ├── SecureBackupPanel-test.tsx
+│   │       │   ├── SetIntegrationManager-test.tsx
+│   │       │   ├── SettingsFieldset-test.tsx
+│   │       │   ├── ThemeChoicePanel-test.tsx
+│   │       │   ├── UserProfileSettings-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── AddRemoveThreepids-test.tsx.snap
+│   │       │   │   ├── ChangePassword-test.tsx.snap
+│   │       │   │   ├── CrossSigningPanel-test.tsx.snap
+│   │       │   │   ├── EventIndexPanel-test.tsx.snap
+│   │       │   │   ├── FontScalingPanel-test.tsx.snap
+│   │       │   │   ├── KeyboardShortcut-test.tsx.snap
+│   │       │   │   ├── LayoutSwitcher-test.tsx.snap
+│   │       │   │   ├── Notifications-test.tsx.snap
+│   │       │   │   ├── PowerLevelSelector-test.tsx.snap
+│   │       │   │   ├── SecureBackupPanel-test.tsx.snap
+│   │       │   │   ├── SetIntegrationManager-test.tsx.snap
+│   │       │   │   ├── SettingsFieldset-test.tsx.snap
+│   │       │   │   └── ThemeChoicePanel-test.tsx.snap
+│   │       │   ├── devices
+│   │       │   │   ├── CurrentDeviceSection-test.tsx
+│   │       │   │   ├── DeviceDetailHeading-test.tsx
+│   │       │   │   ├── DeviceDetails-test.tsx
+│   │       │   │   ├── DeviceExpandDetailsButton-test.tsx
+│   │       │   │   ├── DeviceSecurityCard-test.tsx
+│   │       │   │   ├── DeviceTile-test.tsx
+│   │       │   │   ├── DeviceTypeIcon-test.tsx
+│   │       │   │   ├── DeviceVerificationStatusCard-test.tsx
+│   │       │   │   ├── FilteredDeviceList-test.tsx
+│   │       │   │   ├── FilteredDeviceListHeader-test.tsx
+│   │       │   │   ├── LoginWithQR-test.tsx
+│   │       │   │   ├── LoginWithQRFlow-test.tsx
+│   │       │   │   ├── LoginWithQRSection-test.tsx
+│   │       │   │   ├── SecurityRecommendations-test.tsx
+│   │       │   │   ├── SelectableDeviceTile-test.tsx
+│   │       │   │   ├── __snapshots__
+│   │       │   │   │   ├── CurrentDeviceSection-test.tsx.snap
+│   │       │   │   │   ├── DeviceDetailHeading-test.tsx.snap
+│   │       │   │   │   ├── DeviceDetails-test.tsx.snap
+│   │       │   │   │   ├── DeviceExpandDetailsButton-test.tsx.snap
+│   │       │   │   │   ├── DeviceSecurityCard-test.tsx.snap
+│   │       │   │   │   ├── DeviceTile-test.tsx.snap
+│   │       │   │   │   ├── DeviceTypeIcon-test.tsx.snap
+│   │       │   │   │   ├── DeviceVerificationStatusCard-test.tsx.snap
+│   │       │   │   │   ├── FilteredDeviceList-test.tsx.snap
+│   │       │   │   │   ├── FilteredDeviceListHeader-test.tsx.snap
+│   │       │   │   │   ├── LoginWithQRFlow-test.tsx.snap
+│   │       │   │   │   ├── LoginWithQRSection-test.tsx.snap
+│   │       │   │   │   ├── SecurityRecommendations-test.tsx.snap
+│   │       │   │   │   ├── SelectableDeviceTile-test.tsx.snap
+│   │       │   │   │   └── deleteDevices-test.tsx.snap
+│   │       │   │   ├── deleteDevices-test.tsx
+│   │       │   │   └── filter-test.ts
+│   │       │   ├── discovery
+│   │       │   │   └── DiscoverySettings-test.tsx
+│   │       │   ├── notifications
+│   │       │   │   ├── Notifications2-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       └── Notifications2-test.tsx.snap
+│   │       │   ├── shared
+│   │       │   │   ├── SettingsSubsection-test.tsx
+│   │       │   │   ├── SettingsSubsectionHeading-test.tsx
+│   │       │   │   └── __snapshots__
+│   │       │   │       ├── SettingsSubsection-test.tsx.snap
+│   │       │   │       └── SettingsSubsectionHeading-test.tsx.snap
+│   │       │   └── tabs
+│   │       │       ├── SettingsTab-test.tsx
+│   │       │       ├── __snapshots__
+│   │       │       │   └── SettingsTab-test.tsx.snap
+│   │       │       ├── room
+│   │       │       │   ├── AdvancedRoomSettingsTab-test.tsx
+│   │       │       │   ├── BridgeSettingsTab-test.tsx
+│   │       │       │   ├── NotificationSettingsTab-test.tsx
+│   │       │       │   ├── PeopleRoomSettingsTab-test.tsx
+│   │       │       │   ├── RolesRoomSettingsTab-test.tsx
+│   │       │       │   ├── SecurityRoomSettingsTab-test.tsx
+│   │       │       │   ├── VoipRoomSettingsTab-test.tsx
+│   │       │       │   └── __snapshots__
+│   │       │       │       ├── AdvancedRoomSettingsTab-test.tsx.snap
+│   │       │       │       ├── BridgeSettingsTab-test.tsx.snap
+│   │       │       │       ├── PeopleRoomSettingsTab-test.tsx.snap
+│   │       │       │       ├── RolesRoomSettingsTab-test.tsx.snap
+│   │       │       │       └── SecurityRoomSettingsTab-test.tsx.snap
+│   │       │       └── user
+│   │       │           ├── AccountUserSettingsTab-test.tsx
+│   │       │           ├── AppearanceUserSettingsTab-test.tsx
+│   │       │           ├── KeyboardUserSettingsTab-test.tsx
+│   │       │           ├── LabsUserSettingsTab-test.tsx
+│   │       │           ├── MjolnirUserSettingsTab-test.tsx
+│   │       │           ├── PreferencesUserSettingsTab-test.tsx
+│   │       │           ├── SecurityUserSettingsTab-test.tsx
+│   │       │           ├── SessionManagerTab-test.tsx
+│   │       │           ├── SidebarUserSettingsTab-test.tsx
+│   │       │           ├── VoiceUserSettingsTab-test.tsx
+│   │       │           └── __snapshots__
+│   │       │               ├── AccountUserSettingsTab-test.tsx.snap
+│   │       │               ├── AppearanceUserSettingsTab-test.tsx.snap
+│   │       │               ├── KeyboardUserSettingsTab-test.tsx.snap
+│   │       │               ├── LabsUserSettingsTab-test.tsx.snap
+│   │       │               ├── MjolnirUserSettingsTab-test.tsx.snap
+│   │       │               ├── PreferencesUserSettingsTab-test.tsx.snap
+│   │       │               ├── SecurityUserSettingsTab-test.tsx.snap
+│   │       │               ├── SessionManagerTab-test.tsx.snap
+│   │       │               └── SidebarUserSettingsTab-test.tsx.snap
+│   │       ├── spaces
+│   │       │   ├── AddExistingToSpaceDialog-test.tsx
+│   │       │   ├── QuickSettingsButton-test.tsx
+│   │       │   ├── QuickThemeSwitcher-test.tsx
+│   │       │   ├── SpacePanel-test.tsx
+│   │       │   ├── SpaceSettingsVisibilityTab-test.tsx
+│   │       │   ├── SpaceTreeLevel-test.tsx
+│   │       │   ├── ThreadsActivityCentre-test.tsx
+│   │       │   ├── __snapshots__
+│   │       │   │   ├── AddExistingToSpaceDialog-test.tsx.snap
+│   │       │   │   ├── QuickSettingsButton-test.tsx.snap
+│   │       │   │   ├── SpacePanel-test.tsx.snap
+│   │       │   │   ├── SpaceSettingsVisibilityTab-test.tsx.snap
+│   │       │   │   ├── SpaceTreeLevel-test.tsx.snap
+│   │       │   │   └── ThreadsActivityCentre-test.tsx.snap
+│   │       │   └── useUnreadThreadRooms-test.tsx
+│   │       ├── toasts
+│   │       │   ├── GenericToast-test.tsx
+│   │       │   ├── VerificationRequestToast-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── GenericToast-test.tsx.snap
+│   │       │       └── VerificationRequestToast-test.tsx.snap
+│   │       ├── typography
+│   │       │   ├── Caption-test.tsx
+│   │       │   ├── Heading-test.tsx
+│   │       │   └── __snapshots__
+│   │       │       ├── Caption-test.tsx.snap
+│   │       │       └── Heading-test.tsx.snap
+│   │       ├── user-onboarding
+│   │       │   ├── UserOnboardingList-test.tsx
+│   │       │   └── UserOnboardingPage-test.tsx
+│   │       └── voip
+│   │           ├── CallView-test.tsx
+│   │           ├── DialPad-test.tsx
+│   │           ├── LegacyCallView
+│   │           │   ├── LegacyCallViewButtons-test.tsx
+│   │           │   └── __snapshots__
+│   │           │       └── LegacyCallViewButtons-test.tsx.snap
+│   │           └── VideoFeed-test.tsx
+│   ├── contexts
+│   │   ├── SdkContext-test.ts
+│   │   └── ToastContext-test.ts
+│   ├── createRoom-test.ts
+│   ├── customisations
+│   │   └── Media-test.ts
+│   ├── dispatcher
+│   │   └── dispatcher-test.ts
+│   ├── editor
+│   │   ├── __snapshots__
+│   │   │   └── deserialize-test.ts.snap
+│   │   ├── caret-test.ts
+│   │   ├── deserialize-test.ts
+│   │   ├── diff-test.ts
+│   │   ├── history-test.ts
+│   │   ├── mock.ts
+│   │   ├── model-test.ts
+│   │   ├── operations-test.ts
+│   │   ├── parts-test.ts
+│   │   ├── position-test.ts
+│   │   ├── range-test.ts
+│   │   ├── roundtrip-test.ts
+│   │   └── serialize-test.ts
+│   ├── email-test.ts
+│   ├── events
+│   │   ├── EventTileFactory-test.ts
+│   │   ├── RelationsHelper-test.ts
+│   │   ├── forward
+│   │   │   └── getForwardableEvent-test.ts
+│   │   └── location
+│   │       └── getShareableLocationEvent-test.ts
+│   ├── globalSetup.ts
+│   ├── hooks
+│   │   ├── room
+│   │   │   └── useRoomThreadNotifications-test.tsx
+│   │   ├── useDebouncedCallback-test.tsx
+│   │   ├── useLatestResult-test.tsx
+│   │   ├── useNotificationSettings-test.tsx
+│   │   ├── useProfileInfo-test.tsx
+│   │   ├── usePublicRoomDirectory-test.tsx
+│   │   ├── useRoomMembers-test.tsx
+│   │   ├── useSlidingSyncRoomSearch-test.tsx
+│   │   ├── useUnreadNotifications-test.ts
+│   │   ├── useUserDirectory-test.tsx
+│   │   ├── useUserOnboardingTasks-test.tsx
+│   │   └── useWindowWidth-test.ts
+│   ├── i18n
+│   │   └── languages.json
+│   ├── images
+│   │   ├── animated-logo.apng
+│   │   ├── animated-logo.gif
+│   │   ├── animated-logo.webp
+│   │   ├── static-logo.gif
+│   │   ├── static-logo.png
+│   │   └── static-logo.webp
+│   ├── img
+│   │   ├── edit.png
+│   │   └── icon_context_message.svg
+│   ├── integrations
+│   │   └── IntegrationManagers-test.ts
+│   ├── languageHandler-test.tsx
+│   ├── linkify-matrix-test.ts
+│   ├── models
+│   │   ├── Call-test.ts
+│   │   ├── LocalRoom-test.ts
+│   │   └── notificationsettings
+│   │       ├── NotificationSettings-test.ts
+│   │       ├── pushrules_bug_botnotices.json
+│   │       ├── pushrules_bug_keyword_only.json
+│   │       ├── pushrules_default.json
+│   │       ├── pushrules_default_new.json
+│   │       └── pushrules_sample.json
+│   ├── modules
+│   │   ├── AppModule-test.ts
+│   │   ├── MockModule.ts
+│   │   ├── ModuleComponents-test.tsx
+│   │   ├── ModuleRunner-test.ts
+│   │   ├── ProxiedModuleApi-test.tsx
+│   │   └── __snapshots__
+│   │       └── ModuleComponents-test.tsx.snap
+│   ├── notifications
+│   │   ├── ContentRules-test.ts
+│   │   └── PushRuleVectorState-test.ts
+│   ├── predictableRandom.ts
+│   ├── settings
+│   │   ├── SettingsStore-test.ts
+│   │   ├── controllers
+│   │   │   ├── AnalyticsController-test.ts
+│   │   │   ├── DeviceIsolationModeController-test.ts
+│   │   │   ├── FallbackIceServerController-test.ts
+│   │   │   ├── FontSizeController-test.ts
+│   │   │   ├── IncompatibleController-test.ts
+│   │   │   ├── ServerSupportUnstableFeatureController-test.ts
+│   │   │   ├── SystemFontController-test.ts
+│   │   │   └── ThemeController-test.ts
+│   │   ├── enums
+│   │   │   └── ImageSize-test.ts
+│   │   ├── handlers
+│   │   │   ├── DeviceSettingsHandler-test.ts
+│   │   │   └── RoomDeviceSettingsHandler-test.ts
+│   │   └── watchers
+│   │       ├── FontWatcher-test.tsx
+│   │       └── ThemeWatcher-test.tsx
+│   ├── setup
+│   │   ├── mocks.ts
+│   │   ├── setupConfig.ts
+│   │   ├── setupLanguage.ts
+│   │   └── setupManualMocks.ts
+│   ├── setupTests.ts
+│   ├── slowReporter.cjs
+│   ├── stores
+│   │   ├── AccountPasswordStore-test.ts
+│   │   ├── ActiveWidgetStore-test.ts
+│   │   ├── AutoRageshakeStore-test.ts
+│   │   ├── BreadcrumbsStore-test.ts
+│   │   ├── LifecycleStore-test.ts
+│   │   ├── MemberListStore-test.ts
+│   │   ├── OwnBeaconStore-test.ts
+│   │   ├── OwnProfileStore-test.ts
+│   │   ├── ReleaseAnnouncementStore-test.tsx
+│   │   ├── RoomNotificationStateStore-test.ts
+│   │   ├── RoomViewStore-test.ts
+│   │   ├── SetupEncryptionStore-test.ts
+│   │   ├── SpaceStore-test.ts
+│   │   ├── ToastStore-test.ts
+│   │   ├── TypingStore-test.ts
+│   │   ├── UserProfilesStore-test.ts
+│   │   ├── VoiceRecordingStore-test.ts
+│   │   ├── WidgetLayoutStore-test.ts
+│   │   ├── __snapshots__
+│   │   │   └── RoomViewStore-test.ts.snap
+│   │   ├── notifications
+│   │   │   ├── NotificationColor-test.ts
+│   │   │   └── RoomNotificationState-test.ts
+│   │   ├── oidc
+│   │   │   └── OidcClientStore-test.ts
+│   │   ├── right-panel
+│   │   │   ├── RightPanelStore-test.ts
+│   │   │   └── action-handlers
+│   │   │       └── View3pidInvite-test.ts
+│   │   ├── room-list
+│   │   │   ├── MessagePreviewStore-test.ts
+│   │   │   ├── RoomListStore-test.ts
+│   │   │   ├── SlidingRoomListStore-test.ts
+│   │   │   ├── SpaceWatcher-test.ts
+│   │   │   ├── algorithms
+│   │   │   │   ├── Algorithm-test.ts
+│   │   │   │   ├── RecentAlgorithm-test.ts
+│   │   │   │   └── list-ordering
+│   │   │   │       ├── ImportanceAlgorithm-test.ts
+│   │   │   │       └── NaturalAlgorithm-test.ts
+│   │   │   ├── filters
+│   │   │   │   ├── SpaceFilterCondition-test.ts
+│   │   │   │   └── VisibilityProvider-test.ts
+│   │   │   ├── previews
+│   │   │   │   ├── MessageEventPreview-test.ts
+│   │   │   │   ├── PollStartEventPreview-test.ts
+│   │   │   │   ├── ReactionEventPreview-test.ts
+│   │   │   │   └── VoiceBroadcastPreview-test.ts
+│   │   │   └── utils
+│   │   │       └── roomMute-test.ts
+│   │   └── widgets
+│   │       ├── StopGapWidget-test.ts
+│   │       ├── StopGapWidgetDriver-test.ts
+│   │       ├── WidgetPermissionStore-test.ts
+│   │       └── __snapshots__
+│   │           └── StopGapWidgetDriver-test.ts.snap
+│   ├── submit-rageshake-test.ts
+│   ├── test-utils
+│   │   ├── audio.ts
+│   │   ├── beacon.ts
+│   │   ├── call.ts
+│   │   ├── client.ts
+│   │   ├── composer.ts
+│   │   ├── console.ts
+│   │   ├── date.ts
+│   │   ├── events.ts
+│   │   ├── index.ts
+│   │   ├── jest-matrix-react.tsx
+│   │   ├── location.ts
+│   │   ├── oidc.ts
+│   │   ├── platform.ts
+│   │   ├── poll.ts
+│   │   ├── pushRules.ts
+│   │   ├── relations.ts
+│   │   ├── room.ts
+│   │   ├── test-utils.ts
+│   │   ├── threads.ts
+│   │   ├── utilities.ts
+│   │   └── wrappers.tsx
+│   ├── theme-test.ts
+│   ├── toasts
+│   │   ├── IncomingCallToast-test.tsx
+│   │   ├── IncomingLegacyCallToast-test.tsx
+│   │   ├── UnverifiedSessionToast-test.tsx
+│   │   └── __snapshots__
+│   │       ├── IncomingLegacyCallToast-test.tsx.snap
+│   │       └── UnverifiedSessionToast-test.tsx.snap
+│   ├── useTopic-test.tsx
+│   ├── utils
+│   │   ├── AnimationUtils-test.ts
+│   │   ├── AutoDiscoveryUtils-test.tsx
+│   │   ├── DMRoomMap-test.ts
+│   │   ├── DateUtils-test.ts
+│   │   ├── ErrorUtils-test.ts
+│   │   ├── EventRenderingUtils-test.ts
+│   │   ├── EventUtils-test.ts
+│   │   ├── Feedback-test.ts
+│   │   ├── FileUtils-test.ts
+│   │   ├── FixedRollingArray-test.ts
+│   │   ├── FormattingUtils-test.tsx
+│   │   ├── LruCache-test.ts
+│   │   ├── MegolmExportEncryption-test.ts
+│   │   ├── MessageDiffUtils-test.tsx
+│   │   ├── MultiInviter-test.ts
+│   │   ├── PhasedRolloutFeature-test.ts
+│   │   ├── PinningUtils-test.ts
+│   │   ├── SearchInput-test.ts
+│   │   ├── SessionLock-test.ts
+│   │   ├── ShieldUtils-test.ts
+│   │   ├── Singleflight-test.ts
+│   │   ├── SnakedObject-test.ts
+│   │   ├── StorageAccess-test.ts
+│   │   ├── StorageManager-test.ts
+│   │   ├── UrlUtils-test.ts
+│   │   ├── WidgetUtils-test.ts
+│   │   ├── __snapshots__
+│   │   │   ├── AutoDiscoveryUtils-test.tsx.snap
+│   │   │   ├── ErrorUtils-test.ts.snap
+│   │   │   ├── FormattingUtils-test.tsx.snap
+│   │   │   ├── MessageDiffUtils-test.tsx.snap
+│   │   │   └── createVoiceMessageContent-test.ts.snap
+│   │   ├── arrays-test.ts
+│   │   ├── beacon
+│   │   │   ├── bounds-test.ts
+│   │   │   ├── duration-test.ts
+│   │   │   ├── geolocation-test.ts
+│   │   │   └── timeline-test.ts
+│   │   ├── colour-test.ts
+│   │   ├── connection-test.ts
+│   │   ├── createVoiceMessageContent-test.ts
+│   │   ├── crypto
+│   │   │   ├── deviceInfo-test.ts
+│   │   │   └── shouldForceDisableEncryption-test.ts
+│   │   ├── device
+│   │   │   ├── clientInformation-test.ts
+│   │   │   ├── parseUserAgent-test.ts
+│   │   │   └── snoozeBulkUnverifiedDeviceReminder-test.ts
+│   │   ├── direct-messages-test.ts
+│   │   ├── dm
+│   │   │   ├── createDmLocalRoom-test.ts
+│   │   │   ├── filterValidMDirect-test.ts
+│   │   │   ├── findDMForUser-test.ts
+│   │   │   └── findDMRoom-test.ts
+│   │   ├── enums-test.ts
+│   │   ├── export-test.tsx
+│   │   ├── exportUtils
+│   │   │   ├── HTMLExport-test.ts
+│   │   │   ├── JSONExport-test.ts
+│   │   │   ├── PlainTextExport-test.ts
+│   │   │   ├── __snapshots__
+│   │   │   │   ├── HTMLExport-test.ts.snap
+│   │   │   │   ├── JSONExport-test.ts.snap
+│   │   │   │   └── PlainTextExport-test.ts.snap
+│   │   │   └── exportCSS-test.ts
+│   │   ├── generate-megolm-test-vectors.py
+│   │   ├── i18n-helpers-test.ts
+│   │   ├── iterables-test.ts
+│   │   ├── leave-behaviour-test.ts
+│   │   ├── local-room-test.ts
+│   │   ├── localRoom
+│   │   │   ├── isLocalRoom-test.ts
+│   │   │   └── isRoomReady-test.ts
+│   │   ├── location
+│   │   │   ├── isSelfLocation-test.ts
+│   │   │   ├── locationEventGeoUri-test.ts
+│   │   │   ├── map-test.ts
+│   │   │   ├── parseGeoUri-test.ts
+│   │   │   └── positionFailureMessage-test.ts
+│   │   ├── maps-test.ts
+│   │   ├── media
+│   │   │   └── requestMediaPermissions-test.tsx
+│   │   ├── membership-test.ts
+│   │   ├── notifications-test.ts
+│   │   ├── numbers-test.ts
+│   │   ├── objects-test.ts
+│   │   ├── oidc
+│   │   │   ├── TokenRefresher-test.ts
+│   │   │   ├── authorize-test.ts
+│   │   │   ├── persistOidcSettings-test.ts
+│   │   │   └── registerClient-test.ts
+│   │   ├── permalinks
+│   │   │   ├── MatrixSchemePermalinkConstructor-test.ts
+│   │   │   ├── MatrixToPermalinkConstructor-test.ts
+│   │   │   └── Permalinks-test.ts
+│   │   ├── pillify-test.tsx
+│   │   ├── promise-test.ts
+│   │   ├── room
+│   │   │   ├── canInviteTo-test.ts
+│   │   │   ├── getJoinedNonFunctionalMembers-test.ts
+│   │   │   ├── getRoomFunctionalMembers-test.ts
+│   │   │   ├── inviteToRoom-test.ts
+│   │   │   ├── shouldEncryptRoomWithSingle3rdPartyInvite-test.ts
+│   │   │   └── tagRoom-test.ts
+│   │   ├── rooms-test.ts
+│   │   ├── sets-test.ts
+│   │   ├── stringOrderField-test.ts
+│   │   ├── threepids-test.ts
+│   │   ├── tooltipify-test.tsx
+│   │   └── validate
+│   │       └── numberInRange-test.ts
+│   ├── voice-broadcast
+│   │   ├── audio
+│   │   │   └── VoiceBroadcastRecorder-test.ts
+│   │   ├── components
+│   │   │   ├── VoiceBroadcastBody-test.tsx
+│   │   │   ├── atoms
+│   │   │   │   ├── LiveBadge-test.tsx
+│   │   │   │   ├── VoiceBroadcastControl-test.tsx
+│   │   │   │   ├── VoiceBroadcastHeader-test.tsx
+│   │   │   │   ├── VoiceBroadcastPlaybackControl-test.tsx
+│   │   │   │   └── __snapshots__
+│   │   │   │       ├── LiveBadge-test.tsx.snap
+│   │   │   │       ├── VoiceBroadcastControl-test.tsx.snap
+│   │   │   │       ├── VoiceBroadcastHeader-test.tsx.snap
+│   │   │   │       └── VoiceBroadcastPlaybackControl-test.tsx.snap
+│   │   │   └── molecules
+│   │   │       ├── VoiceBroadcastPlaybackBody-test.tsx
+│   │   │       ├── VoiceBroadcastPreRecordingPip-test.tsx
+│   │   │       ├── VoiceBroadcastRecordingBody-test.tsx
+│   │   │       ├── VoiceBroadcastRecordingPip-test.tsx
+│   │   │       ├── VoiceBroadcastSmallPlaybackBody-test.tsx
+│   │   │       └── __snapshots__
+│   │   │           ├── VoiceBroadcastPlaybackBody-test.tsx.snap
+│   │   │           ├── VoiceBroadcastPreRecordingPip-test.tsx.snap
+│   │   │           ├── VoiceBroadcastRecordingBody-test.tsx.snap
+│   │   │           ├── VoiceBroadcastRecordingPip-test.tsx.snap
+│   │   │           └── VoiceBroadcastSmallPlaybackBody-test.tsx.snap
+│   │   ├── models
+│   │   │   ├── VoiceBroadcastPlayback-test.tsx
+│   │   │   ├── VoiceBroadcastPreRecording-test.ts
+│   │   │   └── VoiceBroadcastRecording-test.ts
+│   │   ├── stores
+│   │   │   ├── VoiceBroadcastPlaybacksStore-test.ts
+│   │   │   ├── VoiceBroadcastPreRecordingStore-test.ts
+│   │   │   └── VoiceBroadcastRecordingsStore-test.ts
+│   │   └── utils
+│   │       ├── VoiceBroadcastChunkEvents-test.ts
+│   │       ├── VoiceBroadcastResumer-test.ts
+│   │       ├── __snapshots__
+│   │       │   ├── setUpVoiceBroadcastPreRecording-test.ts.snap
+│   │       │   ├── startNewVoiceBroadcastRecording-test.ts.snap
+│   │       │   └── textForVoiceBroadcastStoppedEvent-test.tsx.snap
+│   │       ├── cleanUpBroadcasts-test.ts
+│   │       ├── determineVoiceBroadcastLiveness-test.ts
+│   │       ├── findRoomLiveVoiceBroadcastFromUserAndDevice-test.ts
+│   │       ├── getChunkLength-test.ts
+│   │       ├── getMaxBroadcastLength-test.ts
+│   │       ├── hasRoomLiveVoiceBroadcast-test.ts
+│   │       ├── isRelatedToVoiceBroadcast-test.ts
+│   │       ├── pauseNonLiveBroadcastFromOtherRoom-test.ts
+│   │       ├── retrieveStartedInfoEvent-test.ts
+│   │       ├── setUpVoiceBroadcastPreRecording-test.ts
+│   │       ├── shouldDisplayAsVoiceBroadcastRecordingTile-test.ts
+│   │       ├── shouldDisplayAsVoiceBroadcastTile-test.ts
+│   │       ├── startNewVoiceBroadcastRecording-test.ts
+│   │       ├── test-utils.ts
+│   │       ├── textForVoiceBroadcastStoppedEvent-test.tsx
+│   │       └── textForVoiceBroadcastStoppedEventWithoutLink-test.ts
+│   └── widgets
+│       └── ManagedHybrid-test.ts
+├── tsconfig.json
+└── yarn.lock
+569 directories, 3264 files
