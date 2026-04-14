@@ -1,0 +1,452 @@
+.
+├── .gitattributes
+├── .github
+│   └── workflows
+│       ├── ci.yml
+│       └── codeql-analysis.yml
+├── .gitignore
+├── .yarn
+│   └── install-state.gz
+├── LICENCE
+├── Makefile
+├── README.md
+├── docker-compose.override.yml
+├── docker-compose.yml
+├── misc
+│   ├── benchmarks
+│   │   ├── docker-compose.yml
+│   │   ├── grafana
+│   │   │   ├── dashboards
+│   │   │   │   ├── dashboard.yml
+│   │   │   │   └── k6-load-testing-results_rev3.json
+│   │   │   └── datasources
+│   │   │       └── datasource.yml
+│   │   └── scripts
+│   │       └── stress.js
+│   ├── doc
+│   │   └── annuaire.png
+│   ├── git-hooks
+│   │   └── pre-commit
+│   └── reseaux.md
+├── package.json
+├── reverse_proxy
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── logrotate.d
+│   │   │   └── logrotate.conf
+│   │   └── nginx
+│   │       └── templates
+│   │           ├── conf.d
+│   │           │   ├── default.conf.template
+│   │           │   ├── gzip.conf.template
+│   │           │   ├── headers.conf.template
+│   │           │   ├── limit_req.conf.template
+│   │           │   └── logging.conf.template
+│   │           ├── includes
+│   │           │   ├── location_api.conf.template
+│   │           │   ├── location_ui.conf.template
+│   │           │   └── proxy.conf.template
+│   │           └── nginx.conf.template
+│   └── dev
+│       └── includes
+│           └── location_sockjs.conf.template
+├── server
+│   ├── .dockerignore
+│   ├── .eslintrc
+│   ├── .gitignore
+│   ├── .mocharc.json
+│   ├── .prettierrc
+│   ├── .yarnrc.yml
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── cli.js
+│   │   ├── common
+│   │   │   ├── academies.js
+│   │   │   ├── actions
+│   │   │   │   ├── addModification.js
+│   │   │   │   ├── addUser.js
+│   │   │   │   ├── findUAIProbable.js
+│   │   │   │   ├── getAllSirets.js
+│   │   │   │   ├── getLatestCollectDate.js
+│   │   │   │   ├── getLatestImportDate.js
+│   │   │   │   ├── isCollected.js
+│   │   │   │   ├── setUAI.js
+│   │   │   │   └── transformOrganisme.js
+│   │   │   ├── adresses.js
+│   │   │   ├── apis
+│   │   │   │   ├── AcceApi.js
+│   │   │   │   ├── ApiError.js
+│   │   │   │   ├── CatalogueApi.js
+│   │   │   │   ├── GeoAdresseApi.js
+│   │   │   │   ├── RateLimitedApi.js
+│   │   │   │   ├── RateLimiter.js
+│   │   │   │   ├── SireneApi.js
+│   │   │   │   ├── TableauDeBordApi.js
+│   │   │   │   └── utils
+│   │   │   │       └── convertQueryIntoParams.js
+│   │   │   ├── authJwtStrategy.js
+│   │   │   ├── authLocalStrategy.js
+│   │   │   ├── caches
+│   │   │   │   ├── InMemoryCache.js
+│   │   │   │   ├── MongodbCache.js
+│   │   │   │   └── caches.js
+│   │   │   ├── catalogStatuts.js
+│   │   │   ├── categoriesJuridiques.js
+│   │   │   ├── db
+│   │   │   │   ├── aggregationUtils.js
+│   │   │   │   ├── collections
+│   │   │   │   │   ├── acce.js
+│   │   │   │   │   ├── cache.js
+│   │   │   │   │   ├── cfd.js
+│   │   │   │   │   ├── communes.js
+│   │   │   │   │   ├── datagouv.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── logs.js
+│   │   │   │   │   ├── migrations.js
+│   │   │   │   │   ├── modifications.js
+│   │   │   │   │   ├── organismes.js
+│   │   │   │   │   ├── schemas
+│   │   │   │   │   │   ├── adresseSchema.js
+│   │   │   │   │   │   ├── geojsonSchema.js
+│   │   │   │   │   │   └── jsonSchemaTypes.js
+│   │   │   │   │   └── users.js
+│   │   │   │   └── mongodb.js
+│   │   │   ├── departements.js
+│   │   │   ├── logger.js
+│   │   │   ├── regions.js
+│   │   │   └── utils
+│   │   │       ├── asyncUtils.js
+│   │   │       ├── csvUtils.js
+│   │   │       ├── dbUtils.js
+│   │   │       ├── httpUtils.js
+│   │   │       ├── jwtUtils.js
+│   │   │       ├── objectUtils.js
+│   │   │       ├── ovhUtils.js
+│   │   │       ├── streamUtils.js
+│   │   │       ├── stringUtils.js
+│   │   │       ├── userUtils.js
+│   │   │       └── validationUtils.js
+│   │   ├── config.js
+│   │   ├── http
+│   │   │   ├── middlewares
+│   │   │   │   ├── authMiddleware.js
+│   │   │   │   ├── canEditOrganismeMiddleware.js
+│   │   │   │   ├── errorMiddleware.js
+│   │   │   │   ├── logMiddleware.js
+│   │   │   │   ├── rateLimiterMiddleware.js
+│   │   │   │   ├── sentry.js
+│   │   │   │   └── tryCatchMiddleware.js
+│   │   │   ├── routes
+│   │   │   │   ├── dataRoutes.js
+│   │   │   │   ├── datagouvRoutes.js
+│   │   │   │   ├── healthcheckRoutes.js
+│   │   │   │   ├── modificationsRoutes.js
+│   │   │   │   ├── organismesRoutes.js
+│   │   │   │   ├── statsRoutes.js
+│   │   │   │   ├── swaggerRoutes.js
+│   │   │   │   ├── uaisRoutes.js
+│   │   │   │   ├── userRoutes.js
+│   │   │   │   └── v1-swagger.yml
+│   │   │   ├── server.js
+│   │   │   └── utils
+│   │   │       ├── buildProjection.js
+│   │   │       ├── httpUtils.js
+│   │   │       └── validators.js
+│   │   ├── index.js
+│   │   └── jobs
+│   │       ├── build.js
+│   │       ├── clearReseaux.js
+│   │       ├── collectSources.js
+│   │       ├── computeStats.js
+│   │       ├── consolidate.js
+│   │       ├── exportOrganismes.js
+│   │       ├── exportReseaux.js
+│   │       ├── importAcce.js
+│   │       ├── importCFD.js
+│   │       ├── importCommunes.js
+│   │       ├── importDatagouv.js
+│   │       ├── importOrganismes.js
+│   │       ├── migrate.js
+│   │       ├── modify.js
+│   │       ├── runScript.js
+│   │       └── sources
+│   │           ├── acce.js
+│   │           ├── catalogue-etablissements.js
+│   │           ├── catalogue.js
+│   │           ├── datagouv.js
+│   │           ├── deca.js
+│   │           ├── ideo2.js
+│   │           ├── onisep-structure.js
+│   │           ├── onisep.js
+│   │           ├── refea.js
+│   │           ├── sifa-ramsese.js
+│   │           ├── sirene.js
+│   │           ├── sources.js
+│   │           ├── tableau-de-bord.js
+│   │           └── voeux-affelnet.js
+│   ├── tests
+│   │   ├── common
+│   │   │   ├── academies-test.js
+│   │   │   ├── actions
+│   │   │   │   └── isCollected-test.js
+│   │   │   ├── departements-test.js
+│   │   │   ├── regions-test.js
+│   │   │   ├── stringUtils-test.js
+│   │   │   └── validationUtils-test.js
+│   │   ├── http
+│   │   │   ├── dataRoutes-test.js
+│   │   │   ├── datagouvRoutes-test.js
+│   │   │   ├── healthcheckRoutes-test.js
+│   │   │   ├── organismesRoutes-test.js
+│   │   │   ├── statsRoutes-test.js
+│   │   │   └── uaisRoutes-test.js
+│   │   ├── jobs
+│   │   │   ├── acce
+│   │   │   │   └── importAcce-test.js
+│   │   │   ├── collectSources-test.js
+│   │   │   ├── consolidate-test.js
+│   │   │   ├── importCFD-test.js
+│   │   │   ├── importCommunes-test.js
+│   │   │   ├── importDatagouv-test.js
+│   │   │   ├── importOrganismes-test.js
+│   │   │   ├── sources
+│   │   │   │   ├── acce-test.js
+│   │   │   │   ├── catalogue-etablissements-test.js
+│   │   │   │   ├── catalogue-test.js
+│   │   │   │   ├── datagouv-test.js
+│   │   │   │   ├── deca-test.js
+│   │   │   │   ├── ideo2-test.js
+│   │   │   │   ├── onisep-structure-test.js
+│   │   │   │   ├── onisep-test.js
+│   │   │   │   ├── refea-test.js
+│   │   │   │   ├── sifa-ramsese-test.js
+│   │   │   │   ├── sirene-test.js
+│   │   │   │   ├── tableau-de-bord-test.js
+│   │   │   │   └── voeux-affelnet-test.js
+│   │   │   └── utils
+│   │   │       └── adresses-test.js
+│   │   └── utils
+│   │       ├── apiMocks.js
+│   │       ├── fakeData.js
+│   │       ├── fixtures
+│   │       │   ├── acceEtablissementResponse.html
+│   │       │   ├── acceIndexResponse.html
+│   │       │   ├── acceSearchResponse.html
+│   │       │   └── noGeoloc.html
+│   │       ├── mochaGlobalFixtures.js
+│   │       ├── mochaReporter.js
+│   │       ├── mongoMemoryServer.js
+│   │       ├── testConfig.js
+│   │       └── testUtils.js
+│   └── yarn.lock
+└── ui
+    ├── .dockerignore
+    ├── .eslintrc
+    ├── .gitignore
+    ├── .prettierrc
+    ├── .yarn
+    │   └── releases
+    │       └── yarn-4.9.1.cjs
+    ├── .yarnrc.yml
+    ├── Dockerfile
+    ├── package.json
+    ├── public
+    │   ├── android-chrome-192x192.png
+    │   ├── android-chrome-512x512.png
+    │   ├── apple-touch-icon.png
+    │   ├── favicon.ico
+    │   ├── favicon.svg
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src
+    │   ├── App.js
+    │   ├── ConnexionPage.jsx
+    │   ├── ConstructionPage.jsx
+    │   ├── CorrectionsPage.jsx
+    │   ├── DesignPage.jsx
+    │   ├── DonneesPersonnellesPages.jsx
+    │   ├── MentionsLegalesPage.jsx
+    │   ├── ModificationsPage.jsx
+    │   ├── SuiviModificationsPage.jsx
+    │   ├── accueil
+    │   │   ├── AccueilPage.jsx
+    │   │   ├── ContactPage.jsx
+    │   │   ├── index.js
+    │   │   └── stats
+    │   │       ├── EtatAdministratifPie.jsx
+    │   │       └── NouveauxHistogram.jsx
+    │   ├── common
+    │   │   ├── ApiPagination.jsx
+    │   │   ├── ApiProvider.jsx
+    │   │   ├── AuthShield.jsx
+    │   │   ├── BlueBox.jsx
+    │   │   ├── ClickableItem.jsx
+    │   │   ├── DataProvider.jsx
+    │   │   ├── ExportButton.jsx
+    │   │   ├── Field.jsx
+    │   │   ├── Flexbox.jsx
+    │   │   ├── Page.jsx
+    │   │   ├── Results.jsx
+    │   │   ├── SearchProvider.jsx
+    │   │   ├── Spinner.jsx
+    │   │   ├── Tooltip.jsx
+    │   │   ├── UserProvider.jsx
+    │   │   ├── ValidationTag.jsx
+    │   │   ├── definitions.json
+    │   │   ├── dsfr
+    │   │   │   ├── GridDisplayer.jsx
+    │   │   │   ├── common
+    │   │   │   │   ├── Collapsable.jsx
+    │   │   │   │   ├── Validation.jsx
+    │   │   │   │   ├── useCollapse.js
+    │   │   │   │   └── useModal.js
+    │   │   │   ├── custom
+    │   │   │   │   ├── CustomTable.jsx
+    │   │   │   │   ├── DropdownButton.jsx
+    │   │   │   │   ├── FullModal.jsx
+    │   │   │   │   ├── GreyAccordionItem.jsx
+    │   │   │   │   ├── Icon.jsx
+    │   │   │   │   ├── LinkButton.jsx
+    │   │   │   │   ├── Small.jsx
+    │   │   │   │   ├── SmallCheckbox.jsx
+    │   │   │   │   ├── SmallFieldset.jsx
+    │   │   │   │   ├── WideTabs.jsx
+    │   │   │   │   └── xfr.scss
+    │   │   │   ├── dsfr.js
+    │   │   │   ├── elements
+    │   │   │   │   ├── Accordion.jsx
+    │   │   │   │   ├── Alert.jsx
+    │   │   │   │   ├── Badge.jsx
+    │   │   │   │   ├── Breadcrumb.jsx
+    │   │   │   │   ├── Button.jsx
+    │   │   │   │   ├── Checkbox.jsx
+    │   │   │   │   ├── Fieldset.jsx
+    │   │   │   │   ├── Footer.jsx
+    │   │   │   │   ├── Header.jsx
+    │   │   │   │   ├── Highlight.jsx
+    │   │   │   │   ├── Hint.jsx
+    │   │   │   │   ├── Input.jsx
+    │   │   │   │   ├── Link.jsx
+    │   │   │   │   ├── Modal.jsx
+    │   │   │   │   ├── Nav.jsx
+    │   │   │   │   ├── Pagination.jsx
+    │   │   │   │   ├── Radio.jsx
+    │   │   │   │   ├── SearchBar.jsx
+    │   │   │   │   ├── Select.jsx
+    │   │   │   │   ├── Summary.jsx
+    │   │   │   │   ├── Table.jsx
+    │   │   │   │   ├── Tabs.jsx
+    │   │   │   │   ├── Tag.jsx
+    │   │   │   │   ├── ToggleSwitch.jsx
+    │   │   │   │   └── logo_onisep.svg
+    │   │   │   └── fondamentaux
+    │   │   │       └── index.js
+    │   │   ├── enums
+    │   │   │   ├── etat_administratif.js
+    │   │   │   ├── natures.js
+    │   │   │   ├── qualiopi.js
+    │   │   │   └── validation.js
+    │   │   ├── form
+    │   │   │   ├── Form.jsx
+    │   │   │   ├── useForm.js
+    │   │   │   └── useFormContext.js
+    │   │   ├── hooks
+    │   │   │   ├── index.js
+    │   │   │   ├── useAllKeysPress.js
+    │   │   │   ├── useElementId.js
+    │   │   │   ├── useFetch.js
+    │   │   │   ├── useOnce.js
+    │   │   │   ├── usePrevious.js
+    │   │   │   ├── useQuery.js
+    │   │   │   ├── useScrollToTop.js
+    │   │   │   ├── useSearch.js
+    │   │   │   ├── useToggle.js
+    │   │   │   └── useValidationSearch.js
+    │   │   ├── layout
+    │   │   │   ├── ContentLayout.jsx
+    │   │   │   ├── Layout.jsx
+    │   │   │   ├── TitleLayout.jsx
+    │   │   │   └── index.js
+    │   │   ├── nivo
+    │   │   │   ├── Histogram.jsx
+    │   │   │   ├── Legends.jsx
+    │   │   │   ├── Pie.jsx
+    │   │   │   └── nivo.js
+    │   │   ├── organismes
+    │   │   │   ├── Adresse.jsx
+    │   │   │   ├── NA.jsx
+    │   │   │   ├── Nature.jsx
+    │   │   │   ├── OrganismeProvider.jsx
+    │   │   │   ├── RaisonSociale.jsx
+    │   │   │   ├── Siret.jsx
+    │   │   │   ├── filtres
+    │   │   │   │   ├── AcademiesFilter.jsx
+    │   │   │   │   ├── DatagouvFilter.jsx
+    │   │   │   │   ├── DepartementsFilter.jsx
+    │   │   │   │   ├── Filter.jsx
+    │   │   │   │   ├── Filters.jsx
+    │   │   │   │   ├── NatureFilter.jsx
+    │   │   │   │   ├── QualiopiFilter.jsx
+    │   │   │   │   ├── SiretFilter.jsx
+    │   │   │   │   ├── UAIFilter.jsx
+    │   │   │   │   └── index.js
+    │   │   │   ├── liste
+    │   │   │   │   ├── OrganismeItem.jsx
+    │   │   │   │   ├── OrganismeList.jsx
+    │   │   │   │   └── SearchForm.jsx
+    │   │   │   └── selectors
+    │   │   │       ├── AcademieSelector.jsx
+    │   │   │       └── DepartementAuthSelector.jsx
+    │   │   └── utils.js
+    │   ├── config.js
+    │   ├── index.js
+    │   ├── organismes
+    │   │   ├── OrganismePage.jsx
+    │   │   ├── OrganismesPage.jsx
+    │   │   └── fiche
+    │   │       ├── Fiche.jsx
+    │   │       ├── Identite
+    │   │       │   ├── DatagouvModal.jsx
+    │   │       │   ├── IdentiteTab.jsx
+    │   │       │   └── uai
+    │   │       │       ├── UAICustom.jsx
+    │   │       │       ├── UAIPotentielsRadios.jsx
+    │   │       │       ├── UAISelector.jsx
+    │   │       │       └── UAISelectorModal.jsx
+    │   │       ├── lieux
+    │   │       │   ├── Legend.jsx
+    │   │       │   ├── LieuxDeFormationMap.jsx
+    │   │       │   ├── LieuxDeFormationTab.jsx
+    │   │       │   ├── map-pin-blue.svg
+    │   │       │   ├── map-pin-red-blue.svg
+    │   │       │   └── map-pin-red.svg
+    │   │       └── relations
+    │   │           ├── RelationModal.jsx
+    │   │           ├── RelationsTab.jsx
+    │   │           └── RelationsTable.jsx
+    │   ├── serviceWorker.js
+    │   ├── stats
+    │   │   ├── StatsPage.jsx
+    │   │   ├── natures
+    │   │   │   ├── NaturesHistogram.jsx
+    │   │   │   ├── NaturesPie.jsx
+    │   │   │   └── NaturesStats.jsx
+    │   │   ├── qualiopi
+    │   │   │   └── QualiopiStats.jsx
+    │   │   └── validation
+    │   │       ├── ValidationHistogram.jsx
+    │   │       ├── ValidationPie.jsx
+    │   │       └── ValidationStats.jsx
+    │   └── tableau-de-bord
+    │       ├── TableauDeBordPage.jsx
+    │       ├── ValidationPage.jsx
+    │       └── cards
+    │           ├── NouveauxCounter.jsx
+    │           └── ValidationCard.jsx
+    ├── start.sh
+    └── yarn.lock
+82 directories, 369 files

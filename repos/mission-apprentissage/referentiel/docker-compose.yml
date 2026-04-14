@@ -1,0 +1,67 @@
+version: "2.4"
+services:
+
+  reverse_proxy:
+    image: referentiel_reverse_proxy
+    container_name: referentiel_reverse_proxy
+    build:
+      context: reverse_proxy
+    mem_limit: 96m
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - referentiel_network
+    depends_on:
+      - server
+      - ui
+    environment:
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      - DNS_SERVER=127.0.0.11
+      - PROXY=1
+      - ACCESSLOG=/data/access.log
+      - ERRORLOG=/data/error.log
+      - LOGLEVEL=warn
+      - NGINX_ALWAYS_TLS_REDIRECT=false
+      - ALLOWED_METHODS=GET HEAD POST OPTIONS PUT
+
+  ui:
+    image: referentiel_ui
+    container_name: referentiel_ui
+    build:
+      context: ui
+    mem_limit: 96m
+    networks:
+      - referentiel_network
+    depends_on:
+      - server
+
+  server:
+    image: referentiel_server
+    container_name: referentiel_server
+    build:
+      context: server
+    mem_limit: 768m
+    restart: unless-stopped
+    networks:
+      - referentiel_network
+    depends_on:
+      - mongodb
+    environment:
+      - REFERENTIEL_MONGODB_URI=mongodb://mongodb:27017/referentiel?retryWrites=true&w=majority
+
+  mongodb:
+    image: mongo:5.0.7-focal
+    container_name: referentiel_mongodb
+    command: --wiredTigerCacheSizeGB 3 --port 27017
+    mem_limit: 3g
+    restart: unless-stopped
+    networks:
+      - referentiel_network
+
+networks:
+  referentiel_network:
+    name: referentiel_network
