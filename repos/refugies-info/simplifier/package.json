@@ -1,0 +1,38 @@
+{
+  "name": "simplifier",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean:branches": "pnpm dlx git-removed-branches --prune --force",
+    "clean:cache": "rimraf -g \"**/.turbo\" \"**/.next\" \"**/dist\" \"**/.cache\" \"**/.expo\" \"**/storybook-static\" \"**/build\" \"**/__pycache__\"",
+    "clean:modules": "rimraf -g \"**/node_modules\" \"**/.venv\"",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "postinstall": "uv sync",
+    "start": "turbo run start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-icons": "react-dsfr update-icons --silent --projectDir ./apps/front"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@codegouvfr/react-dsfr": "^1.20.4",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.4.4"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "pnpm@10.2.0",
+  "volta": {
+    "node": "22.13.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp"
+    ]
+  }
+}
