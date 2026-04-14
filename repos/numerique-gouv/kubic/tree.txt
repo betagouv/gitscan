@@ -1,0 +1,179 @@
+.
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── bin
+│   ├── bootstrap-backend.sh
+│   ├── bootstrap.sh
+│   ├── get-kube-config.sh
+│   ├── init-bucket.sh
+│   ├── terraform-apply.sh
+│   ├── terraform-destroy.sh
+│   ├── terraform-init.sh
+│   └── terraform-plan.sh
+├── common
+│   ├── Schedule_template.yml
+│   ├── argocd-apps-values.yaml.tftpl
+│   ├── argocd-values.yaml.tftpl
+│   ├── argocd.tf
+│   ├── cert-manager.tf
+│   ├── hashicorp-vault.tf
+│   ├── issuer.yml.tftpl
+│   ├── locals.tf
+│   ├── loki-values.yml
+│   ├── loki.tf
+│   ├── prom-grafana-values.yml
+│   ├── prometheus-grafana.tf
+│   ├── promtail-values.yml
+│   ├── promtail.tf
+│   ├── tls-vault.tf
+│   ├── variables.tf
+│   ├── vault-values.yml
+│   ├── velero-credentials
+│   ├── velero-values.yml
+│   └── velero.tf
+├── docker-compose.yaml
+├── docs
+│   ├── argocd.md
+│   ├── cluster-auto.md
+│   ├── cluster-manual.md
+│   ├── hashicorp-vault.md
+│   ├── index.md
+│   ├── standalone.md
+│   └── velero.md
+├── examples
+│   └── argocd-repo
+│       ├── .gitignore
+│       ├── apps
+│       │   ├── external-app
+│       │   │   └── test.json
+│       │   ├── hello-world
+│       │   │   ├── preprod.json
+│       │   │   ├── prod.json
+│       │   │   └── staging.json
+│       │   └── secret-helm
+│       │       ├── base.yaml
+│       │       ├── dev.json
+│       │       ├── prod.json
+│       │       └── prod.yaml
+│       └── helm
+│           ├── hello-world
+│           │   ├── .helmignore
+│           │   ├── Chart.yaml
+│           │   ├── README.md
+│           │   ├── templates
+│           │   │   ├── NOTES.txt
+│           │   │   ├── _helpers.tpl
+│           │   │   ├── deployment.yaml
+│           │   │   ├── service.yaml
+│           │   │   └── serviceaccount.yaml
+│           │   └── values.yaml
+│           └── secret-helm
+│               ├── .helmignore
+│               ├── Chart.yaml
+│               ├── templates
+│               │   └── secret.yaml
+│               └── values.yaml
+├── mkdocs.yml
+├── ovh
+│   ├── .terraform.lock.hcl
+│   ├── argocd-apps-values.yaml.tftpl -> ../common/argocd-apps-values.yaml.tftpl
+│   ├── argocd-values.yaml.tftpl -> ../common/argocd-values.yaml.tftpl
+│   ├── argocd.tf -> ../common/argocd.tf
+│   ├── backend.conf.example
+│   ├── cert-manager.tf -> ../common/cert-manager.tf
+│   ├── credentials.auto.tfvars.json.template
+│   ├── hashicorp-vault.tf -> ../common/hashicorp-vault.tf
+│   ├── ingress-nginx.tf
+│   ├── issuer.yml.tftpl -> ../common/issuer.yml.tftpl
+│   ├── kubernetes.tf
+│   ├── locals.tf -> ../common/locals.tf
+│   ├── loki-values.yml -> ../common/loki-values.yml
+│   ├── loki.tf -> ../common/loki.tf
+│   ├── prom-grafana-values.yml -> ../common/prom-grafana-values.yml
+│   ├── prometheus-grafana.tf -> ../common/prometheus-grafana.tf
+│   ├── promtail-values.yml -> ../common/promtail-values.yml
+│   ├── promtail.tf -> ../common/promtail.tf
+│   ├── terraform.tf
+│   ├── terraform.tfvars.example
+│   ├── terraform.tfvars.template
+│   ├── tls-vault.tf -> ../common/tls-vault.tf
+│   ├── variables-common.tf -> ../common/variables.tf
+│   ├── variables.tf
+│   ├── vault-values.yml -> ../common/vault-values.yml
+│   ├── velero-credentials -> ../common/velero-credentials
+│   ├── velero-values.yml -> ../common/velero-values.yml
+│   └── velero.tf -> ../common/velero.tf
+├── renovate.json
+├── scaleway
+│   ├── .terraform.lock.hcl
+│   ├── README.md
+│   ├── argocd-apps-values.yaml.tftpl -> ../common/argocd-apps-values.yaml.tftpl
+│   ├── argocd-values.yaml.tftpl -> ../common/argocd-values.yaml.tftpl
+│   ├── argocd.tf -> ../common/argocd.tf
+│   ├── backend.conf.example
+│   ├── cert-manager.tf -> ../common/cert-manager.tf
+│   ├── credentials.auto.tfvars.json.template
+│   ├── hashicorp-vault.tf -> ../common/hashicorp-vault.tf
+│   ├── ingress-nginx.tf
+│   ├── issuer.yml.tftpl -> ../common/issuer.yml.tftpl
+│   ├── kubernetes.tf
+│   ├── locals.tf -> ../common/locals.tf
+│   ├── loki-values.yml -> ../common/loki-values.yml
+│   ├── loki.tf -> ../common/loki.tf
+│   ├── nginx-values.yml
+│   ├── prom-grafana-values.yml -> ../common/prom-grafana-values.yml
+│   ├── prometheus-grafana.tf -> ../common/prometheus-grafana.tf
+│   ├── promtail-values.yml -> ../common/promtail-values.yml
+│   ├── promtail.tf -> ../common/promtail.tf
+│   ├── terraform.tf
+│   ├── terraform.tfvars.example
+│   ├── terraform.tfvars.template
+│   ├── tls-vault.tf -> ../common/tls-vault.tf
+│   ├── variables-common.tf -> ../common/variables.tf
+│   ├── variables.tf
+│   ├── vault-values.yml -> ../common/vault-values.yml
+│   ├── velero-credentials -> ../common/velero-credentials
+│   ├── velero-values.yml -> ../common/velero-values.yml
+│   └── velero.tf -> ../common/velero.tf
+├── standalone
+│   ├── .terraform.lock.hcl
+│   ├── Schedule_template.yml -> ../common/Schedule_template.yml
+│   ├── argocd-apps-values.yaml.tftpl -> ../common/argocd-apps-values.yaml.tftpl
+│   ├── argocd-values.yaml.tftpl -> ../common/argocd-values.yaml.tftpl
+│   ├── argocd.tf -> ../common/argocd.tf
+│   ├── backend.conf
+│   ├── cert-manager.tf -> ../common/cert-manager.tf
+│   ├── hashicorp-vault.tf -> ../common/hashicorp-vault.tf
+│   ├── issuer.yml.tftpl -> ../common/issuer.yml.tftpl
+│   ├── locals.tf -> ../common/locals.tf
+│   ├── prom-grafana-values.yml -> ../common/prom-grafana-values.yml
+│   ├── prometheus-grafana.tf -> ../common/prometheus-grafana.tf
+│   ├── terraform.tf
+│   ├── terraform.tfvars.example
+│   ├── terraform.tfvars.template
+│   ├── tls-vault.tf -> ../common/tls-vault.tf
+│   ├── variables.tf -> ../common/variables.tf
+│   ├── vault-values.yml -> ../common/vault-values.yml
+│   ├── velero-credentials -> ../common/velero-credentials
+│   ├── velero-values.yml -> ../common/velero-values.yml
+│   └── velero.tf -> ../common/velero.tf
+├── state_bucket
+│   ├── .terraform.lock.hcl
+│   ├── bucket.tf
+│   ├── terraform.tf
+│   ├── terraform.tfvars.template
+│   └── variables.tf
+└── vault
+    ├── .kube
+    │   └── .gitkeep
+    ├── .terraform.lock.hcl
+    ├── init.sh
+    ├── terraform.tf
+    ├── terraform.tfvars.example
+    ├── terraform.tfvars.template
+    └── variables.tf
+23 directories, 155 files
