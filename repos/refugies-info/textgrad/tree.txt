@@ -1,0 +1,133 @@
+.
+├── .github
+│   ├── CODEOWNERS
+│   └── workflows
+│       └── merge_queue.yml
+├── .gitignore
+├── LICENSE
+├── MANIFEST.in
+├── README.md
+├── assets
+│   ├── analogy.png
+│   └── logo_full.png
+├── evaluation
+│   ├── code_optimization
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── evaluators
+│   │   │   ├── __init__.py
+│   │   │   ├── lt_eval.py
+│   │   │   ├── py_eval.py
+│   │   │   └── utils.py
+│   │   ├── leetcode_testtime_with_supervision.py
+│   │   └── prompts.py
+│   ├── prompt_optimization.py
+│   ├── results
+│   │   ├── code_optimization
+│   │   │   ├── README.md
+│   │   │   ├── reflexion
+│   │   │   │   ├── README.md
+│   │   │   │   ├── seed_15
+│   │   │   │   │   └── leetcode_with_tests_entry_points._reflexion_5_gpt-4_pass_at_k_1_py_15.jsonl
+│   │   │   │   ├── seed_17
+│   │   │   │   │   └── leetcode_with_tests_entry_points._reflexion_5_gpt-4_pass_at_k_1_py_17.jsonl
+│   │   │   │   ├── seed_21
+│   │   │   │   │   └── leetcode_with_tests_entry_points._reflexion_5_gpt-4_pass_at_k_1_py_21.jsonl
+│   │   │   │   ├── seed_55
+│   │   │   │   │   └── leetcode_with_tests_entry_points._reflexion_5_gpt-4_pass_at_k_1_py_55.jsonl
+│   │   │   │   └── seed_91
+│   │   │   │       └── leetcode_with_tests_entry_points._reflexion_5_gpt-4_pass_at_k_1_py_91.jsonl
+│   │   │   └── textgrad
+│   │   │       └── textgrad_run.csv
+│   │   ├── prompt_optimization
+│   │   │   └── README.md
+│   │   ├── solution_optimization
+│   │   │   ├── README.md
+│   │   │   ├── gpqa_predictions.json
+│   │   │   ├── mmlu_college_physics_predictions.json
+│   │   │   └── mmlu_machine_learning_predictions.json
+│   │   └── solution_optimization_mm
+│   │       └── README.md
+│   ├── solution_optimization.py
+│   └── solution_optimization_mm.py
+├── examples
+│   └── notebooks
+│       ├── Local-Model-With-LMStudio.ipynb
+│       ├── TextGrad-Vision-MathVista.ipynb
+│       ├── Tutorial-MultiModal.ipynb
+│       ├── Tutorial-Primitives.ipynb
+│       ├── Tutorial-Prompt-Optimization.ipynb
+│       ├── Tutorial-Solution-Optimization.ipynb
+│       ├── Tutorial-Test-Time-Loss-for-Code.ipynb
+│       ├── assets
+│       │   └── 176.png
+│       └── experimental_engines
+│           ├── Tutorial-ExperimentalEngines.ipynb
+│           └── Tutorial-PrimitivesExperimentalEngines.ipynb
+├── requirements.txt
+├── setup.py
+├── tests
+│   ├── __init__.py
+│   ├── test_api.py
+│   ├── test_basics.py
+│   └── test_engines.py
+└── textgrad
+    ├── __init__.py
+    ├── autograd
+    │   ├── __init__.py
+    │   ├── algebra.py
+    │   ├── function.py
+    │   ├── functional.py
+    │   ├── llm_backward_prompts.py
+    │   ├── llm_ops.py
+    │   ├── multimodal_backward_prompts.py
+    │   ├── multimodal_ops.py
+    │   ├── reduce_prompts.py
+    │   └── string_based_ops.py
+    ├── config.py
+    ├── defaults.py
+    ├── engine
+    │   ├── __init__.py
+    │   ├── anthropic.py
+    │   ├── base.py
+    │   ├── bedrock.py
+    │   ├── cohere.py
+    │   ├── engine_utils.py
+    │   ├── gemini.py
+    │   ├── groq.py
+    │   ├── guidance.py
+    │   ├── local_model_openai_api.py
+    │   ├── openai.py
+    │   ├── together.py
+    │   └── vllm.py
+    ├── engine_experimental
+    │   ├── __init__.py
+    │   ├── base.py
+    │   ├── engine_utils.py
+    │   ├── litellm.py
+    │   └── openai.py
+    ├── loss.py
+    ├── model.py
+    ├── optimizer
+    │   ├── __init__.py
+    │   ├── guidance_optimizer.py
+    │   ├── optimizer.py
+    │   └── optimizer_prompts.py
+    ├── prompts.py
+    ├── py.typed
+    ├── tasks
+    │   ├── __init__.py
+    │   ├── base.py
+    │   ├── big_bench_hard.py
+    │   ├── gpqa.py
+    │   ├── gsm8k.py
+    │   ├── leetcode.py
+    │   ├── mmlu.py
+    │   └── multimodal
+    │       ├── __init__.py
+    │       ├── mathvista.py
+    │       └── scienceqa.py
+    ├── utils
+    │   └── image_utils.py
+    └── variable.py
+32 directories, 100 files
