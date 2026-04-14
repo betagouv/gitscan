@@ -1,0 +1,880 @@
+.
+├── .cargo
+│   └── config.toml
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   └── bug_report.md
+│   ├── renovate.json5
+│   └── workflows
+│       ├── add-new-issues-to-verticals-project.yml
+│       ├── android.yml
+│       ├── deploy-web-demo.yml
+│       ├── ios.yml
+│       ├── publish.yml
+│       ├── react-build.yml
+│       ├── rust.yml
+│       ├── sonarqube.yml
+│       ├── tag-release.yml
+│       ├── triage-labelled.yml
+│       └── wasm.yml
+├── .gitignore
+├── .slather.yml
+├── CHANGELOG.md
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── LICENSE-COMMERCIAL
+├── Makefile
+├── README.md
+├── RELEASE.md
+├── bindings
+│   ├── wysiwyg-ffi
+│   │   ├── Cargo.toml
+│   │   ├── README.md
+│   │   ├── build.rs
+│   │   ├── src
+│   │   │   ├── ffi_action_state.rs
+│   │   │   ├── ffi_composer_action.rs
+│   │   │   ├── ffi_composer_model.rs
+│   │   │   ├── ffi_composer_state.rs
+│   │   │   ├── ffi_composer_update.rs
+│   │   │   ├── ffi_dom_creation_error.rs
+│   │   │   ├── ffi_link_actions.rs
+│   │   │   ├── ffi_mention_detector.rs
+│   │   │   ├── ffi_mentions_state.rs
+│   │   │   ├── ffi_menu_action.rs
+│   │   │   ├── ffi_menu_state.rs
+│   │   │   ├── ffi_pattern_key.rs
+│   │   │   ├── ffi_suggestion_pattern.rs
+│   │   │   ├── ffi_text_update.rs
+│   │   │   ├── into_ffi.rs
+│   │   │   ├── lib.rs
+│   │   │   └── wysiwyg_composer.udl
+│   │   └── uniffi.toml
+│   └── wysiwyg-wasm
+│       ├── Cargo.toml
+│       ├── README.md
+│       ├── index-wasm-esm.js
+│       ├── index.cjs
+│       ├── index.d.ts
+│       ├── index.js
+│       ├── node.cjs
+│       ├── node.js
+│       ├── package.json
+│       ├── src
+│       │   └── lib.rs
+│       ├── tsconfig.json
+│       └── yarn.lock
+├── build_xcframework.sh
+├── crates
+│   ├── matrix_mentions
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── lib.rs
+│   │       └── mention.rs
+│   └── wysiwyg
+│       ├── Cargo.toml
+│       ├── src
+│       │   ├── action_state.rs
+│       │   ├── char.rs
+│       │   ├── composer_action.rs
+│       │   ├── composer_model
+│       │   │   ├── base.rs
+│       │   │   ├── code_block.rs
+│       │   │   ├── delete_text.rs
+│       │   │   ├── example_format.rs
+│       │   │   ├── format.rs
+│       │   │   ├── format_inline_code.rs
+│       │   │   ├── hyperlinks.rs
+│       │   │   ├── lists.rs
+│       │   │   ├── mentions.rs
+│       │   │   ├── menu_action.rs
+│       │   │   ├── menu_state.rs
+│       │   │   ├── new_lines.rs
+│       │   │   ├── quotes.rs
+│       │   │   ├── replace_text.rs
+│       │   │   ├── selection.rs
+│       │   │   └── undo_redo.rs
+│       │   ├── composer_model.rs
+│       │   ├── composer_state.rs
+│       │   ├── composer_update.rs
+│       │   ├── dom
+│       │   │   ├── action_list.rs
+│       │   │   ├── dom_block_nodes.rs
+│       │   │   ├── dom_creation_error.rs
+│       │   │   ├── dom_handle.rs
+│       │   │   ├── dom_invariants.rs
+│       │   │   ├── dom_list_methods.rs
+│       │   │   ├── dom_methods.rs
+│       │   │   ├── dom_struct.rs
+│       │   │   ├── find_extended_range.rs
+│       │   │   ├── find_range.rs
+│       │   │   ├── find_result.rs
+│       │   │   ├── insert_node_at_cursor.rs
+│       │   │   ├── insert_parent.rs
+│       │   │   ├── iter.rs
+│       │   │   ├── join_nodes.rs
+│       │   │   ├── nodes
+│       │   │   │   ├── container_node.rs
+│       │   │   │   ├── dom_node.rs
+│       │   │   │   ├── line_break_node.rs
+│       │   │   │   ├── mention_node.rs
+│       │   │   │   └── text_node.rs
+│       │   │   ├── nodes.rs
+│       │   │   ├── parser
+│       │   │   │   ├── markdown
+│       │   │   │   │   └── markdown_html_parser.rs
+│       │   │   │   ├── markdown.rs
+│       │   │   │   ├── padom.rs
+│       │   │   │   ├── padom_creation_error.rs
+│       │   │   │   ├── padom_creator.rs
+│       │   │   │   ├── padom_handle.rs
+│       │   │   │   ├── padom_node.rs
+│       │   │   │   ├── panode_container.rs
+│       │   │   │   ├── panode_text.rs
+│       │   │   │   ├── paqual_name.rs
+│       │   │   │   └── parse.rs
+│       │   │   ├── parser.rs
+│       │   │   ├── range.rs
+│       │   │   ├── to_html.rs
+│       │   │   ├── to_markdown.rs
+│       │   │   ├── to_plain_text.rs
+│       │   │   ├── to_raw_text.rs
+│       │   │   ├── to_tree.rs
+│       │   │   └── unicode_string.rs
+│       │   ├── dom.rs
+│       │   ├── format_type.rs
+│       │   ├── lib.rs
+│       │   ├── link_action.rs
+│       │   ├── list_type.rs
+│       │   ├── location.rs
+│       │   ├── mentions_state.rs
+│       │   ├── menu_action.rs
+│       │   ├── menu_state.rs
+│       │   ├── pattern_key.rs
+│       │   ├── suggestion_pattern.rs
+│       │   ├── tests
+│       │   │   ├── test_characters.rs
+│       │   │   ├── test_deleting.rs
+│       │   │   ├── test_emoji_replacement.rs
+│       │   │   ├── test_formatting.rs
+│       │   │   ├── test_get_link_action.rs
+│       │   │   ├── test_links.rs
+│       │   │   ├── test_lists.rs
+│       │   │   ├── test_lists_with_blocks.rs
+│       │   │   ├── test_mentions.rs
+│       │   │   ├── test_menu_action.rs
+│       │   │   ├── test_menu_state.rs
+│       │   │   ├── test_paragraphs.rs
+│       │   │   ├── test_remove_links.rs
+│       │   │   ├── test_selection.rs
+│       │   │   ├── test_set_content.rs
+│       │   │   ├── test_suggestions.rs
+│       │   │   ├── test_to_markdown.rs
+│       │   │   ├── test_to_message_html.rs
+│       │   │   ├── test_to_plain_text.rs
+│       │   │   ├── test_to_raw_text.rs
+│       │   │   ├── test_to_tree.rs
+│       │   │   ├── test_undo_redo.rs
+│       │   │   ├── testutils_composer_model.rs
+│       │   │   ├── testutils_conversion.rs
+│       │   │   └── testutils_dom.rs
+│       │   ├── tests.rs
+│       │   └── text_update.rs
+│       └── tests
+│           └── tests.rs
+├── platforms
+│   ├── android
+│   │   ├── .gitignore
+│   │   ├── .idea
+│   │   │   ├── .gitignore
+│   │   │   ├── .name
+│   │   │   ├── compiler.xml
+│   │   │   ├── inspectionProfiles
+│   │   │   │   └── Project_Default.xml
+│   │   │   └── vcs.xml
+│   │   ├── README.md
+│   │   ├── build.gradle
+│   │   ├── coverage.gradle
+│   │   ├── example-compose
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           ├── AndroidManifest.xml
+│   │   │           ├── java
+│   │   │           │   └── io
+│   │   │           │       └── element
+│   │   │           │           └── wysiwyg
+│   │   │           │               └── compose
+│   │   │           │                   ├── ComposeApplication.kt
+│   │   │           │                   ├── DefaultMentionDisplayHandler.kt
+│   │   │           │                   ├── LinkDialog.kt
+│   │   │           │                   ├── MainActivity.kt
+│   │   │           │                   ├── SuggestionsView.kt
+│   │   │           │                   ├── matrix
+│   │   │           │                   │   ├── Mention.kt
+│   │   │           │                   │   └── MentionType.kt
+│   │   │           │                   └── ui
+│   │   │           │                       ├── components
+│   │   │           │                       │   └── FormattingButtons.kt
+│   │   │           │                       └── theme
+│   │   │           │                           ├── Color.kt
+│   │   │           │                           └── Theme.kt
+│   │   │           └── res
+│   │   │               ├── drawable
+│   │   │               │   ├── ic_code.xml
+│   │   │               │   ├── ic_code_block.xml
+│   │   │               │   ├── ic_format_bold.xml
+│   │   │               │   ├── ic_format_italic.xml
+│   │   │               │   ├── ic_format_strikethrough.xml
+│   │   │               │   ├── ic_format_underline.xml
+│   │   │               │   ├── ic_indent.xml
+│   │   │               │   ├── ic_launcher_background.xml
+│   │   │               │   ├── ic_link.xml
+│   │   │               │   ├── ic_ordered_list.xml
+│   │   │               │   ├── ic_quote.xml
+│   │   │               │   ├── ic_redo.xml
+│   │   │               │   ├── ic_undo.xml
+│   │   │               │   ├── ic_unindent.xml
+│   │   │               │   └── ic_unordered_list.xml
+│   │   │               ├── drawable-v24
+│   │   │               │   └── ic_launcher_foreground.xml
+│   │   │               ├── mipmap-anydpi-v26
+│   │   │               │   ├── ic_launcher.xml
+│   │   │               │   └── ic_launcher_round.xml
+│   │   │               ├── mipmap-hdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-mdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xxhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xxxhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               └── values
+│   │   │                   ├── colors.xml
+│   │   │                   ├── strings.xml
+│   │   │                   └── themes.xml
+│   │   ├── example-view
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle
+│   │   │   ├── proguard-rules.pro
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           ├── AndroidManifest.xml
+│   │   │           ├── java
+│   │   │           │   └── io
+│   │   │           │       └── element
+│   │   │           │           └── android
+│   │   │           │               └── wysiwyg
+│   │   │           │                   └── poc
+│   │   │           │                       ├── ExampleApplication.kt
+│   │   │           │                       ├── MainActivity.kt
+│   │   │           │                       ├── RichTextEditor.kt
+│   │   │           │                       └── matrix
+│   │   │           │                           ├── MatrixMentionMentionDisplayHandler.kt
+│   │   │           │                           ├── Mention.kt
+│   │   │           │                           └── MentionType.kt
+│   │   │           └── res
+│   │   │               ├── drawable
+│   │   │               │   ├── editor_menu_bg_selector.xml
+│   │   │               │   ├── editor_menu_text_selector.xml
+│   │   │               │   ├── ic_code.xml
+│   │   │               │   ├── ic_code_block.xml
+│   │   │               │   ├── ic_format_bold.xml
+│   │   │               │   ├── ic_format_italic.xml
+│   │   │               │   ├── ic_format_strikethrough.xml
+│   │   │               │   ├── ic_format_underline.xml
+│   │   │               │   ├── ic_indent.xml
+│   │   │               │   ├── ic_launcher_background.xml
+│   │   │               │   ├── ic_link.xml
+│   │   │               │   ├── ic_ordered_list.xml
+│   │   │               │   ├── ic_quote.xml
+│   │   │               │   ├── ic_redo.xml
+│   │   │               │   ├── ic_undo.xml
+│   │   │               │   ├── ic_unindent.xml
+│   │   │               │   └── ic_unordered_list.xml
+│   │   │               ├── drawable-v24
+│   │   │               │   └── ic_launcher_foreground.xml
+│   │   │               ├── layout
+│   │   │               │   ├── activity_main.xml
+│   │   │               │   ├── dialog_set_link.xml
+│   │   │               │   └── view_rich_text_editor.xml
+│   │   │               ├── mipmap-anydpi-v26
+│   │   │               │   ├── ic_launcher.xml
+│   │   │               │   └── ic_launcher_round.xml
+│   │   │               ├── mipmap-hdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-mdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xxhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── mipmap-xxxhdpi
+│   │   │               │   ├── ic_launcher.webp
+│   │   │               │   └── ic_launcher_round.webp
+│   │   │               ├── values
+│   │   │               │   ├── colors.xml
+│   │   │               │   ├── strings.xml
+│   │   │               │   └── themes.xml
+│   │   │               └── xml
+│   │   │                   ├── backup_rules.xml
+│   │   │                   └── data_extraction_rules.xml
+│   │   ├── generate_coverage_report.sh
+│   │   ├── gradle
+│   │   │   ├── libs.versions.toml
+│   │   │   └── wrapper
+│   │   │       ├── gradle-wrapper.jar
+│   │   │       └── gradle-wrapper.properties
+│   │   ├── gradle.properties
+│   │   ├── gradlew
+│   │   ├── gradlew.bat
+│   │   ├── library
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle
+│   │   │   ├── gradle.properties
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   └── io
+│   │   │       │   │       └── element
+│   │   │       │   │           └── android
+│   │   │       │   │               └── wysiwyg
+│   │   │       │   │                   ├── EditorEditTextInputTests.kt
+│   │   │       │   │                   ├── EditorStyledTextViewTest.kt
+│   │   │       │   │                   ├── fakes
+│   │   │       │   │                   │   └── FakeStyleConfig.kt
+│   │   │       │   │                   ├── inputhandlers
+│   │   │       │   │                   │   └── InterceptInputConnectionIntegrationTest.kt
+│   │   │       │   │                   └── test
+│   │   │       │   │                       └── utils
+│   │   │       │   │                           ├── AnyViewAction.kt
+│   │   │       │   │                           ├── ClickActions.kt
+│   │   │       │   │                           ├── EditorActions.kt
+│   │   │       │   │                           ├── FakeLinkClickedListener.kt
+│   │   │       │   │                           ├── ImeActions.kt
+│   │   │       │   │                           ├── ScreenshotFailureHandler.kt
+│   │   │       │   │                           ├── SpanUtils.kt
+│   │   │       │   │                           ├── TestActivity.kt
+│   │   │       │   │                           ├── TestMentionDisplayHandler.kt
+│   │   │       │   │                           ├── TextInputMatchers.kt
+│   │   │       │   │                           ├── TextViewActions.kt
+│   │   │       │   │                           └── UriContentListener.kt
+│   │   │       │   └── res
+│   │   │       │       ├── layout
+│   │   │       │       │   └── activity_test.xml
+│   │   │       │       └── values
+│   │   │       │           ├── colors.xml
+│   │   │       │           └── ids.xml
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   └── io
+│   │   │       │   │       └── element
+│   │   │       │   │           └── android
+│   │   │       │   │               └── wysiwyg
+│   │   │       │   │                   ├── EditorEditText.kt
+│   │   │       │   │                   ├── EditorStyledTextView.kt
+│   │   │       │   │                   ├── EditorTextWatcher.kt
+│   │   │       │   │                   ├── display
+│   │   │       │   │                   │   ├── MentionDisplayHandler.kt
+│   │   │       │   │                   │   └── TextDisplay.kt
+│   │   │       │   │                   ├── extensions
+│   │   │       │   │                   │   ├── ComposerExtensions.kt
+│   │   │       │   │                   │   └── RustExtensions.kt
+│   │   │       │   │                   ├── inputhandlers
+│   │   │       │   │                   │   └── InterceptInputConnection.kt
+│   │   │       │   │                   ├── internal
+│   │   │       │   │                   │   ├── display
+│   │   │       │   │                   │   │   └── MemoizedLinkDisplayHandler.kt
+│   │   │       │   │                   │   ├── utils
+│   │   │       │   │                   │   │   ├── AndroidHtmlConverter.kt
+│   │   │       │   │                   │   │   ├── TextRangeHelper.kt
+│   │   │       │   │                   │   │   └── UriContentListener.kt
+│   │   │       │   │                   │   ├── view
+│   │   │       │   │                   │   │   ├── EditorEditTextAttributeReader.kt
+│   │   │       │   │                   │   │   ├── EditorStyledTextViewAttributeReader.kt
+│   │   │       │   │                   │   │   ├── LayoutExtensions.kt
+│   │   │       │   │                   │   │   ├── ViewLazyViewModelExtension.kt
+│   │   │       │   │                   │   │   └── models
+│   │   │       │   │                   │   │       └── LinkActionExt.kt
+│   │   │       │   │                   │   └── viewmodel
+│   │   │       │   │                   │       ├── EditorInputAction.kt
+│   │   │       │   │                   │       ├── EditorViewModel.kt
+│   │   │       │   │                   │       └── ReplaceTextResult.kt
+│   │   │       │   │                   ├── utils
+│   │   │       │   │                   │   ├── CharContants.kt
+│   │   │       │   │                   │   ├── EditorIndexMapper.kt
+│   │   │       │   │                   │   ├── HtmlConverter.kt
+│   │   │       │   │                   │   ├── HtmlToSpansParser.kt
+│   │   │       │   │                   │   ├── LoggingConfig.kt
+│   │   │       │   │                   │   ├── ResourcesHelper.kt
+│   │   │       │   │                   │   ├── RustCleanerTask.kt
+│   │   │       │   │                   │   ├── RustErrorCollector.kt
+│   │   │       │   │                   │   └── ThrowableExt.kt
+│   │   │       │   │                   └── view
+│   │   │       │   │                       ├── StyleConfig.kt
+│   │   │       │   │                       ├── inlinebg
+│   │   │       │   │                       │   ├── BlockRenderer.kt
+│   │   │       │   │                       │   ├── SpanBackgroundHelper.kt
+│   │   │       │   │                       │   ├── SpanBackgroundHelperFactory.kt
+│   │   │       │   │                       │   └── SpanBackgroundRenderer.kt
+│   │   │       │   │                       ├── models
+│   │   │       │   │                       │   ├── InlineFormat.kt
+│   │   │       │   │                       │   └── LinkAction.kt
+│   │   │       │   │                       └── spans
+│   │   │       │   │                           ├── BlockSpan.kt
+│   │   │       │   │                           ├── CodeBlockSpan.kt
+│   │   │       │   │                           ├── CodeSpanConstants.kt
+│   │   │       │   │                           ├── CustomMentionSpan.kt
+│   │   │       │   │                           ├── ExtraCharacterSpan.kt
+│   │   │       │   │                           ├── InlineCodeSpan.kt
+│   │   │       │   │                           ├── LinkSpan.kt
+│   │   │       │   │                           ├── OrderedListSpan.kt
+│   │   │       │   │                           ├── PillSpan.kt
+│   │   │       │   │                           ├── PlainAtRoomMentionDisplaySpan.kt
+│   │   │       │   │                           ├── QuoteSpan.kt
+│   │   │       │   │                           ├── ReuseSourceSpannableFactory.kt
+│   │   │       │   │                           └── UnorderedListSpan.kt
+│   │   │       │   └── res
+│   │   │       │       ├── drawable
+│   │   │       │       │   ├── code_block_bg.xml
+│   │   │       │       │   ├── inline_code_multi_line_bg_left.xml
+│   │   │       │       │   ├── inline_code_multi_line_bg_mid.xml
+│   │   │       │       │   ├── inline_code_multi_line_bg_right.xml
+│   │   │       │       │   └── inline_code_single_line_bg.xml
+│   │   │       │       ├── values
+│   │   │       │       │   ├── attrs.xml
+│   │   │       │       │   ├── colors.xml
+│   │   │       │       │   ├── dimens.xml
+│   │   │       │       │   ├── integers.xml
+│   │   │       │       │   └── styles.xml
+│   │   │       │       └── values-night
+│   │   │       │           └── colors.xml
+│   │   │       └── test
+│   │   │           └── kotlin
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── wysiwyg
+│   │   │                               ├── internal
+│   │   │                               │   └── utils
+│   │   │                               │       └── TextRangeHelperTest.kt
+│   │   │                               ├── mocks
+│   │   │                               │   ├── MockComposer.kt
+│   │   │                               │   ├── MockComposerUpdateFactory.kt
+│   │   │                               │   └── MockTextUpdateFactory.kt
+│   │   │                               ├── test
+│   │   │                               │   ├── fakes
+│   │   │                               │   │   └── FakeStyleConfig.kt
+│   │   │                               │   └── utils
+│   │   │                               │       └── SpanUtils.kt
+│   │   │                               ├── utils
+│   │   │                               │   ├── AndroidHtmlConverterTest.kt
+│   │   │                               │   ├── BasicHtmlConverter.kt
+│   │   │                               │   ├── EditorIndexMapperTests.kt
+│   │   │                               │   └── HtmlToSpansParserTest.kt
+│   │   │                               └── viewmodel
+│   │   │                                   └── EditorViewModelTest.kt
+│   │   ├── library-compose
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── gradle.properties
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── io
+│   │   │       │           └── element
+│   │   │       │               └── android
+│   │   │       │                   └── wysiwyg
+│   │   │       │                       └── compose
+│   │   │       │                           ├── RichTextEditorActionsTest.kt
+│   │   │       │                           ├── RichTextEditorStateTest.kt
+│   │   │       │                           ├── RichTextEditorStyleTest.kt
+│   │   │       │                           ├── RichTextEditorTest.kt
+│   │   │       │                           └── testutils
+│   │   │       │                               ├── ComposeTestRuleExt.kt
+│   │   │       │                               ├── ComposerActions.kt
+│   │   │       │                               ├── EditorActions.kt
+│   │   │       │                               ├── StateFactory.kt
+│   │   │       │                               └── ViewMatchers.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   └── io
+│   │   │       │   │       └── element
+│   │   │       │   │           └── android
+│   │   │       │   │               └── wysiwyg
+│   │   │       │   │                   └── compose
+│   │   │       │   │                       ├── EditorStyledText.kt
+│   │   │       │   │                       ├── RichTextEditor.kt
+│   │   │       │   │                       ├── RichTextEditorDefaults.kt
+│   │   │       │   │                       ├── RichTextEditorState.kt
+│   │   │       │   │                       ├── RichTextEditorStyle.kt
+│   │   │       │   │                       ├── StyledHtmlConverter.kt
+│   │   │       │   │                       └── internal
+│   │   │       │   │                           ├── FakeViewConnection.kt
+│   │   │       │   │                           ├── RichTextEditorStyleExt.kt
+│   │   │       │   │                           └── ViewAction.kt
+│   │   │       │   └── res
+│   │   │       │       └── drawable
+│   │   │       │           └── cursor.xml
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── wysiwyg
+│   │   │                               └── compose
+│   │   │                                   └── FakeRichTextEditorStateTest.kt
+│   │   ├── plugins
+│   │   │   └── settings.gradle.kts
+│   │   ├── scripts
+│   │   │   └── ci_test.sh
+│   │   ├── settings.gradle
+│   │   └── test
+│   │       ├── .gitignore
+│   │       ├── build.gradle.kts
+│   │       └── src
+│   │           └── main
+│   │               └── java
+│   │                   └── io
+│   │                       └── element
+│   │                           └── android
+│   │                               └── wysiwyg
+│   │                                   └── test
+│   │                                       └── rules
+│   │                                           ├── DismissAnrRule.kt
+│   │                                           ├── FlakyEmulatorRule.kt
+│   │                                           └── RetryOnFailureRule.kt
+│   ├── ios
+│   │   ├── example
+│   │   │   ├── .gitignore
+│   │   │   ├── .swiftformat
+│   │   │   ├── .swiftlint.yml
+│   │   │   ├── Brewfile
+│   │   │   ├── Brewfile.lock.json
+│   │   │   ├── README.md
+│   │   │   ├── Shared
+│   │   │   │   ├── View+Accessibility.swift
+│   │   │   │   └── WysiwygSharedConstants.swift
+│   │   │   ├── Wysiwyg
+│   │   │   │   ├── AppDelegate.swift
+│   │   │   │   ├── Assets.xcassets
+│   │   │   │   │   ├── AccentColor.colorset
+│   │   │   │   │   │   └── Contents.json
+│   │   │   │   │   ├── AppIcon.appiconset
+│   │   │   │   │   │   └── Contents.json
+│   │   │   │   │   └── Contents.json
+│   │   │   │   ├── Extensions
+│   │   │   │   │   ├── UIAlertController.swift
+│   │   │   │   │   ├── View.swift
+│   │   │   │   │   └── WysiwygAction+Utils.swift
+│   │   │   │   ├── Info.plist
+│   │   │   │   ├── Mocks
+│   │   │   │   │   ├── Commands.swift
+│   │   │   │   │   ├── Rooms.swift
+│   │   │   │   │   └── Users.swift
+│   │   │   │   ├── Pills
+│   │   │   │   │   ├── SerializationService.swift
+│   │   │   │   │   ├── WysiwygAttachmentView.swift
+│   │   │   │   │   ├── WysiwygAttachmentViewProvider.swift
+│   │   │   │   │   ├── WysiwygMentionReplacer.swift
+│   │   │   │   │   ├── WysiwygTextAttachment.swift
+│   │   │   │   │   └── WysiwygTextAttachmentData.swift
+│   │   │   │   ├── Preview Content
+│   │   │   │   │   └── Preview Assets.xcassets
+│   │   │   │   │       └── Contents.json
+│   │   │   │   ├── Views
+│   │   │   │   │   ├── AlertHelper.swift
+│   │   │   │   │   ├── Composer.swift
+│   │   │   │   │   ├── ComposerActionToolbar.swift
+│   │   │   │   │   ├── ContentView.swift
+│   │   │   │   │   └── WysiwygSuggestionList.swift
+│   │   │   │   └── WysiwygApp.swift
+│   │   │   ├── Wysiwyg.xcodeproj
+│   │   │   │   ├── project.pbxproj
+│   │   │   │   ├── project.xcworkspace
+│   │   │   │   │   ├── contents.xcworkspacedata
+│   │   │   │   │   └── xcshareddata
+│   │   │   │   │       ├── IDETemplateMacros.plist
+│   │   │   │   │       ├── IDEWorkspaceChecks.plist
+│   │   │   │   │       └── swiftpm
+│   │   │   │   │           └── Package.resolved
+│   │   │   │   └── xcshareddata
+│   │   │   │       └── xcschemes
+│   │   │   │           └── Wysiwyg.xcscheme
+│   │   │   ├── WysiwygUITests
+│   │   │   │   ├── WysiwygUITests+Autocorrection.swift
+│   │   │   │   ├── WysiwygUITests+CodeBlocks.swift
+│   │   │   │   ├── WysiwygUITests+Format.swift
+│   │   │   │   ├── WysiwygUITests+Indent.swift
+│   │   │   │   ├── WysiwygUITests+InlineCode.swift
+│   │   │   │   ├── WysiwygUITests+Keyboard.swift
+│   │   │   │   ├── WysiwygUITests+Links.swift
+│   │   │   │   ├── WysiwygUITests+Lists.swift
+│   │   │   │   ├── WysiwygUITests+PlainTextMode.swift
+│   │   │   │   ├── WysiwygUITests+Quotes.swift
+│   │   │   │   ├── WysiwygUITests+Suggestions.swift
+│   │   │   │   ├── WysiwygUITests+Typing.swift
+│   │   │   │   └── WysiwygUITests.swift
+│   │   │   ├── ios-test-coverage.sh
+│   │   │   └── ios-ui-test-coverage.sh
+│   │   ├── lib
+│   │   │   └── WysiwygComposer
+│   │   │       ├── .gitignore
+│   │   │       ├── .swiftformat
+│   │   │       ├── .swiftlint.yml
+│   │   │       ├── .swiftpm
+│   │   │       │   └── xcode
+│   │   │       │       ├── package.xcworkspace
+│   │   │       │       │   └── xcshareddata
+│   │   │       │       │       ├── IDETemplateMacros.plist
+│   │   │       │       │       └── IDEWorkspaceChecks.plist
+│   │   │       │       └── xcshareddata
+│   │   │       │           └── xcschemes
+│   │   │       │               ├── WysiwygComposer.xcscheme
+│   │   │       │               └── WysiwygComposerTests.xcscheme
+│   │   │       ├── Package.resolved
+│   │   │       ├── Package.swift
+│   │   │       ├── SECURITY.md
+│   │   │       ├── Sources
+│   │   │       │   ├── DTCoreTextExtended
+│   │   │       │   │   ├── UIFont+AttributedStringBuilder.m
+│   │   │       │   │   └── include
+│   │   │       │   │       └── UIFont+AttributedStringBuilder.h
+│   │   │       │   ├── HTMLParser
+│   │   │       │   │   ├── BlockStyle.swift
+│   │   │       │   │   ├── BuildHTMLAttributedError.swift
+│   │   │       │   │   ├── Extensions
+│   │   │       │   │   │   ├── CGRect.swift
+│   │   │       │   │   │   ├── DTCoreText
+│   │   │       │   │   │   │   ├── DTHTMLElement.swift
+│   │   │       │   │   │   │   └── PlaceholderTextHTMLElement.swift
+│   │   │       │   │   │   ├── NSAttributedString+Attributes.swift
+│   │   │       │   │   │   ├── NSAttributedString+Range.swift
+│   │   │       │   │   │   ├── NSAttributedString.Key.swift
+│   │   │       │   │   │   ├── NSMutableAttributedString.swift
+│   │   │       │   │   │   ├── NSParagraphStyle.swift
+│   │   │       │   │   │   ├── NSRange.swift
+│   │   │       │   │   │   ├── String+Character.swift
+│   │   │       │   │   │   ├── UIColor.swift
+│   │   │       │   │   │   └── UITextView.swift
+│   │   │       │   │   ├── HTMLMentionReplacer.swift
+│   │   │       │   │   ├── HTMLParser.swift
+│   │   │       │   │   ├── HTMLParserHelpers.swift
+│   │   │       │   │   ├── HTMLParserStyle.swift
+│   │   │       │   │   ├── MentionContent.swift
+│   │   │       │   │   └── MentionReplacement.swift
+│   │   │       │   └── WysiwygComposer
+│   │   │       │       ├── Components
+│   │   │       │       │   ├── ComposerModelWrapper.swift
+│   │   │       │       │   ├── WysiwygComposerView
+│   │   │       │       │   │   ├── WysiwygComposerContent.swift
+│   │   │       │       │   │   ├── WysiwygComposerView.swift
+│   │   │       │       │   │   ├── WysiwygComposerViewModel.swift
+│   │   │       │       │   │   ├── WysiwygComposerViewModelProtocol.swift
+│   │   │       │       │   │   ├── WysiwygPillsFlusher.swift
+│   │   │       │       │   │   └── WysiwygTextView.swift
+│   │   │       │       │   ├── WysiwygKeyCommand.swift
+│   │   │       │       │   ├── WysiwygLinkOperation.swift
+│   │   │       │       │   └── WysiwygMentionType.swift
+│   │   │       │       ├── Extensions
+│   │   │       │       │   ├── CollectionDifference.swift
+│   │   │       │       │   ├── ComposerAction.swift
+│   │   │       │       │   ├── ComposerModel.swift
+│   │   │       │       │   ├── Logger.swift
+│   │   │       │       │   ├── NSRange.swift
+│   │   │       │       │   ├── PatternKey.swift
+│   │   │       │       │   ├── String.swift
+│   │   │       │       │   └── UITextView.swift
+│   │   │       │       └── Tools
+│   │   │       │           ├── MentionReplacer.swift
+│   │   │       │           └── StringDiffer.swift
+│   │   │       └── Tests
+│   │   │           ├── HTMLParserTests
+│   │   │           │   ├── Extensions
+│   │   │           │   │   ├── NSAttributedStringAttributesTests.swift
+│   │   │           │   │   ├── NSAttributedStringRangeTests.swift
+│   │   │           │   │   └── UIColorExtensionsTests.swift
+│   │   │           │   ├── HTMLParserTests+PermalinkReplacer.swift
+│   │   │           │   └── HTMLParserTests.swift
+│   │   │           ├── WysiwygComposerSnapshotTests
+│   │   │           │   ├── SnapshotTests+Blocks.swift
+│   │   │           │   ├── SnapshotTests+Common.swift
+│   │   │           │   ├── SnapshotTests+Links.swift
+│   │   │           │   ├── SnapshotTests+Lists.swift
+│   │   │           │   ├── SnapshotTests.swift
+│   │   │           │   └── __Snapshots__
+│   │   │           │       ├── SnapshotTests+Blocks
+│   │   │           │       │   ├── testCodeBlockContent.1.png
+│   │   │           │       │   ├── testInlineCodeContent.1.png
+│   │   │           │       │   ├── testMultipleBlocksContent.1.png
+│   │   │           │       │   └── testQuoteContent.1.png
+│   │   │           │       ├── SnapshotTests+Common
+│   │   │           │       │   ├── testClearState.1.png
+│   │   │           │       │   └── testPlainTextContent.1.png
+│   │   │           │       ├── SnapshotTests+Links
+│   │   │           │       │   └── testLinkContent.1.png
+│   │   │           │       └── SnapshotTests+Lists
+│   │   │           │           ├── testIndentedListContent.1.png
+│   │   │           │           ├── testListInQuote.1.png
+│   │   │           │           ├── testMultipleListsContent.1.png
+│   │   │           │           ├── testOrderedListContent.1.png
+│   │   │           │           └── testUnorderedListContent.1.png
+│   │   │           └── WysiwygComposerTests
+│   │   │               ├── Components
+│   │   │               │   └── WysiwygComposerView
+│   │   │               │       ├── WysiwygComposerViewModelTests+Autocorrection.swift
+│   │   │               │       ├── WysiwygComposerViewModelTests+MentionsState.swift
+│   │   │               │       ├── WysiwygComposerViewModelTests+SetContent.swift
+│   │   │               │       ├── WysiwygComposerViewModelTests+Suggestions.swift
+│   │   │               │       └── WysiwygComposerViewModelTests.swift
+│   │   │               ├── Extensions
+│   │   │               │   ├── CollectionDifferenceTests.swift
+│   │   │               │   ├── ComposerModel.swift
+│   │   │               │   └── String+LatinLangugesTests.swift
+│   │   │               ├── TestConstants.swift
+│   │   │               ├── Tools
+│   │   │               │   └── StringDifferTests.swift
+│   │   │               ├── UITextViewTests.swift
+│   │   │               ├── WysiwygComposerTests+CodeBlocks.swift
+│   │   │               ├── WysiwygComposerTests+Emoji.swift
+│   │   │               ├── WysiwygComposerTests+Format.swift
+│   │   │               ├── WysiwygComposerTests+Indent.swift
+│   │   │               ├── WysiwygComposerTests+InlineCode.swift
+│   │   │               ├── WysiwygComposerTests+Links.swift
+│   │   │               ├── WysiwygComposerTests+Lists.swift
+│   │   │               ├── WysiwygComposerTests+Quotes.swift
+│   │   │               ├── WysiwygComposerTests+Suggestions.swift
+│   │   │               └── WysiwygComposerTests.swift
+│   │   └── tools
+│   │       └── release
+│   │           ├── .gitignore
+│   │           ├── Package.resolved
+│   │           ├── Package.swift
+│   │           └── Sources
+│   │               └── Release.swift
+│   └── web
+│       ├── .editorconfig
+│       ├── .eslintignore
+│       ├── .eslintrc.json
+│       ├── .gitignore
+│       ├── .prettierignore
+│       ├── .prettierrc.json
+│       ├── README.md
+│       ├── cypress
+│       │   ├── e2e
+│       │   │   └── clipboard
+│       │   │       ├── cut.spec.ts
+│       │   │       └── paste.spec.ts
+│       │   └── support
+│       │       ├── commands.ts
+│       │       └── e2e.ts
+│       ├── cypress.config.ts
+│       ├── example-wysiwyg
+│       │   ├── .gitignore
+│       │   ├── README.md
+│       │   ├── index.html
+│       │   ├── package.json
+│       │   ├── src
+│       │   │   ├── App.css
+│       │   │   ├── App.tsx
+│       │   │   ├── index.css
+│       │   │   ├── main.tsx
+│       │   │   └── vite-env.d.ts
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.node.json
+│       │   ├── vite.config.ts
+│       │   └── yarn.lock
+│       ├── index.html
+│       ├── lib
+│       │   ├── composer.test.ts
+│       │   ├── composer.ts
+│       │   ├── constants.ts
+│       │   ├── conversion.test.ts
+│       │   ├── conversion.ts
+│       │   ├── dom.test.ts
+│       │   ├── dom.ts
+│       │   ├── suggestion.test.tsx
+│       │   ├── suggestion.ts
+│       │   ├── testUtils
+│       │   │   ├── Editor.tsx
+│       │   │   └── selection.ts
+│       │   ├── types.ts
+│       │   ├── useComposerModel.test.tsx
+│       │   ├── useComposerModel.ts
+│       │   ├── useFormattingFunctions.ts
+│       │   ├── useListeners
+│       │   │   ├── assert.ts
+│       │   │   ├── event.test.ts
+│       │   │   ├── event.ts
+│       │   │   ├── index.ts
+│       │   │   ├── types.ts
+│       │   │   ├── useListeners.ts
+│       │   │   ├── utils.test.ts
+│       │   │   └── utils.ts
+│       │   ├── useTestCases
+│       │   │   ├── assert.ts
+│       │   │   ├── index.ts
+│       │   │   ├── types.ts
+│       │   │   ├── useTestCases.ts
+│       │   │   ├── utils.test.ts
+│       │   │   └── utils.ts
+│       │   ├── useWysiwyg.delete.test.tsx
+│       │   ├── useWysiwyg.formatting.test.tsx
+│       │   ├── useWysiwyg.inputEventProcessor.test.tsx
+│       │   ├── useWysiwyg.test.tsx
+│       │   ├── useWysiwyg.ts
+│       │   ├── useWysiwyg.undo-redo.test.tsx
+│       │   ├── utils.test.ts
+│       │   ├── utils.ts
+│       │   └── vite-env.d.ts
+│       ├── package.json
+│       ├── src
+│       │   ├── App.tsx
+│       │   ├── images
+│       │   │   ├── bold.svg
+│       │   │   ├── code_block.svg
+│       │   │   ├── indent.svg
+│       │   │   ├── inline_code.svg
+│       │   │   ├── italic.svg
+│       │   │   ├── list_ordered.svg
+│       │   │   ├── list_unordered.svg
+│       │   │   ├── quote.svg
+│       │   │   ├── redo.svg
+│       │   │   ├── strike_through.svg
+│       │   │   ├── underline.svg
+│       │   │   ├── undo.svg
+│       │   │   └── unindent.svg
+│       │   ├── main.tsx
+│       │   └── vite-env.d.ts
+│       ├── test.setup.ts
+│       ├── tsconfig.json
+│       ├── tsconfig.node.json
+│       ├── vite.config.ts
+│       ├── vite.demo.config.ts
+│       └── yarn.lock
+├── rust-toolchain.toml
+├── rustfmt.toml
+├── sonar-project.properties
+├── uniffi-bindgen
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── update_version.sh
+235 directories, 644 files
