@@ -1,0 +1,1840 @@
+.
+├── .buildkite
+│   ├── check-wheel-size.py
+│   ├── generate_index.py
+│   ├── lm-eval-harness
+│   │   ├── configs
+│   │   │   ├── DeepSeek-V2-Lite-Chat.yaml
+│   │   │   ├── Meta-Llama-3-70B-Instruct-FBGEMM-nonuniform.yaml
+│   │   │   ├── Meta-Llama-3-70B-Instruct.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-Channelwise-compressed-tensors.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-FBGEMM-nonuniform.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-FP8-compressed-tensors.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-FP8.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-INT8-compressed-tensors-asym.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-INT8-compressed-tensors.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct-nonuniform-compressed-tensors.yaml
+│   │   │   ├── Meta-Llama-3-8B-Instruct.yaml
+│   │   │   ├── Meta-Llama-3-8B-QQQ.yaml
+│   │   │   ├── Meta-Llama-3.2-1B-Instruct-INT8-compressed-tensors.yaml
+│   │   │   ├── Minitron-4B-Base-FP8.yaml
+│   │   │   ├── Mixtral-8x22B-Instruct-v0.1-FP8-Dynamic.yaml
+│   │   │   ├── Mixtral-8x7B-Instruct-v0.1-FP8.yaml
+│   │   │   ├── Mixtral-8x7B-Instruct-v0.1.yaml
+│   │   │   ├── Qwen2-1.5B-Instruct-FP8W8.yaml
+│   │   │   ├── Qwen2-1.5B-Instruct-INT8-compressed-tensors.yaml
+│   │   │   ├── Qwen2-1.5B-Instruct-W8A16-compressed-tensors.yaml
+│   │   │   ├── Qwen2-57B-A14-Instruct.yaml
+│   │   │   ├── models-large.txt
+│   │   │   └── models-small.txt
+│   │   ├── run-lm-eval-gsm-hf-baseline.sh
+│   │   ├── run-lm-eval-gsm-vllm-baseline.sh
+│   │   ├── run-tests.sh
+│   │   └── test_lm_eval_correctness.py
+│   ├── nightly-benchmarks
+│   │   ├── README.md
+│   │   ├── benchmark-pipeline.yaml
+│   │   ├── nightly-annotation.md
+│   │   ├── nightly-descriptions.md
+│   │   ├── nightly-pipeline.yaml
+│   │   ├── performance-benchmarks-descriptions.md
+│   │   ├── scripts
+│   │   │   ├── convert-results-json-to-markdown.py
+│   │   │   ├── download-tokenizer.py
+│   │   │   ├── generate-nightly-markdown.py
+│   │   │   ├── get-lmdeploy-modelname.py
+│   │   │   ├── launch-server.sh
+│   │   │   ├── nightly-annotate.sh
+│   │   │   ├── run-nightly-benchmarks.sh
+│   │   │   ├── run-performance-benchmarks.sh
+│   │   │   ├── summary-nightly-results.py
+│   │   │   └── wait-for-image.sh
+│   │   └── tests
+│   │       ├── latency-tests.json
+│   │       ├── nightly-tests.json
+│   │       ├── serving-tests.json
+│   │       └── throughput-tests.json
+│   ├── release-pipeline.yaml
+│   ├── run-amd-test.sh
+│   ├── run-benchmarks.sh
+│   ├── run-cpu-test-ppc64le.sh
+│   ├── run-cpu-test.sh
+│   ├── run-gh200-test.sh
+│   ├── run-hpu-test.sh
+│   ├── run-multi-node-test.sh
+│   ├── run-neuron-test.sh
+│   ├── run-openvino-test.sh
+│   ├── run-tpu-test.sh
+│   ├── run-xpu-test.sh
+│   ├── test-pipeline.yaml
+│   └── upload-wheels.sh
+├── .clang-format
+├── .dockerignore
+├── .github
+│   ├── CODEOWNERS
+│   ├── FUNDING.yml
+│   ├── ISSUE_TEMPLATE
+│   │   ├── 100-documentation.yml
+│   │   ├── 200-installation.yml
+│   │   ├── 300-usage.yml
+│   │   ├── 400-bug-report.yml
+│   │   ├── 500-feature-request.yml
+│   │   ├── 600-new-model.yml
+│   │   ├── 700-performance-discussion.yml
+│   │   ├── 750-RFC.yml
+│   │   ├── 800-misc-discussion.yml
+│   │   └── config.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── dependabot.yml
+│   ├── mergify.yml
+│   ├── scripts
+│   │   └── cleanup_pr_body.sh
+│   └── workflows
+│       ├── actionlint.yml
+│       ├── add_label_automerge.yml
+│       ├── clang-format.yml
+│       ├── cleanup_pr_body.yml
+│       ├── codespell.yml
+│       ├── lint-and-deploy.yaml
+│       ├── matchers
+│       │   ├── actionlint.json
+│       │   ├── mypy.json
+│       │   └── ruff.json
+│       ├── mypy.yaml
+│       ├── png-lint.yml
+│       ├── publish.yml
+│       ├── reminder_comment.yml
+│       ├── ruff.yml
+│       ├── scripts
+│       │   ├── build.sh
+│       │   ├── create_release.js
+│       │   ├── cuda-install.sh
+│       │   ├── env.sh
+│       │   └── pytorch-install.sh
+│       ├── shellcheck.yml
+│       ├── sphinx-lint.yml
+│       ├── stale.yml
+│       └── yapf.yml
+├── .gitignore
+├── .readthedocs.yaml
+├── .shellcheckrc
+├── .yapfignore
+├── CMakeLists.txt
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── DCO
+├── Dockerfile
+├── Dockerfile.arm
+├── Dockerfile.cpu
+├── Dockerfile.hpu
+├── Dockerfile.neuron
+├── Dockerfile.openvino
+├── Dockerfile.ppc64le
+├── Dockerfile.rocm
+├── Dockerfile.tpu
+├── Dockerfile.xpu
+├── LICENSE
+├── MANIFEST.in
+├── README.md
+├── SECURITY.md
+├── benchmarks
+│   ├── README.md
+│   ├── backend_request_func.py
+│   ├── benchmark_guided.py
+│   ├── benchmark_latency.py
+│   ├── benchmark_long_document_qa_throughput.py
+│   ├── benchmark_prefix_caching.py
+│   ├── benchmark_prioritization.py
+│   ├── benchmark_serving.py
+│   ├── benchmark_serving_guided.py
+│   ├── benchmark_throughput.py
+│   ├── cutlass_benchmarks
+│   │   ├── sparse_benchmarks.py
+│   │   ├── utils.py
+│   │   ├── w8a8_benchmarks.py
+│   │   └── weight_shapes.py
+│   ├── disagg_benchmarks
+│   │   ├── disagg_overhead_benchmark.sh
+│   │   ├── disagg_performance_benchmark.sh
+│   │   ├── disagg_prefill_proxy_server.py
+│   │   ├── round_robin_proxy.py
+│   │   └── visualize_benchmark_results.py
+│   ├── fused_kernels
+│   │   └── layernorm_rms_benchmarks.py
+│   ├── kernels
+│   │   ├── benchmark_aqlm.py
+│   │   ├── benchmark_layernorm.py
+│   │   ├── benchmark_machete.py
+│   │   ├── benchmark_marlin.py
+│   │   ├── benchmark_moe.py
+│   │   ├── benchmark_paged_attention.py
+│   │   ├── benchmark_quant.py
+│   │   ├── benchmark_rmsnorm.py
+│   │   ├── benchmark_rope.py
+│   │   ├── benchmark_shapes.py
+│   │   ├── graph_machete_bench.py
+│   │   ├── requirements.txt
+│   │   └── weight_shapes.py
+│   ├── launch_tgi_server.sh
+│   ├── overheads
+│   │   └── benchmark_hashing.py
+│   ├── sonnet.txt
+│   └── structured_schemas
+│       └── structured_schema_1.json
+├── cmake
+│   ├── cpu_extension.cmake
+│   ├── hipify.py
+│   └── utils.cmake
+├── collect_env.py
+├── csrc
+│   ├── activation_kernels.cu
+│   ├── attention
+│   │   ├── attention_dtypes.h
+│   │   ├── attention_generic.cuh
+│   │   ├── attention_kernels.cuh
+│   │   ├── attention_utils.cuh
+│   │   ├── dtype_bfloat16.cuh
+│   │   ├── dtype_float16.cuh
+│   │   ├── dtype_float32.cuh
+│   │   ├── dtype_fp8.cuh
+│   │   ├── paged_attention_v1.cu
+│   │   └── paged_attention_v2.cu
+│   ├── cache.h
+│   ├── cache_kernels.cu
+│   ├── core
+│   │   ├── exception.hpp
+│   │   ├── math.hpp
+│   │   ├── registration.h
+│   │   └── scalar_type.hpp
+│   ├── cpu
+│   │   ├── activation.cpp
+│   │   ├── attention.cpp
+│   │   ├── cache.cpp
+│   │   ├── cpu_types.hpp
+│   │   ├── cpu_types_arm.hpp
+│   │   ├── cpu_types_vsx.hpp
+│   │   ├── cpu_types_x86.hpp
+│   │   ├── dnnl_helper.hpp
+│   │   ├── layernorm.cpp
+│   │   ├── pos_encoding.cpp
+│   │   ├── quant.cpp
+│   │   ├── torch_bindings.cpp
+│   │   └── utils.cpp
+│   ├── cuda_compat.h
+│   ├── cuda_utils.h
+│   ├── cuda_utils_kernels.cu
+│   ├── custom_all_reduce.cu
+│   ├── custom_all_reduce.cuh
+│   ├── custom_all_reduce_test.cu
+│   ├── cutlass_extensions
+│   │   ├── common.cpp
+│   │   ├── common.hpp
+│   │   ├── cute_utils.cuh
+│   │   ├── epilogue
+│   │   │   ├── broadcast_load_epilogue_c2x.hpp
+│   │   │   ├── broadcast_load_epilogue_c3x.hpp
+│   │   │   ├── scaled_mm_epilogues_c2x.hpp
+│   │   │   └── scaled_mm_epilogues_c3x.hpp
+│   │   ├── torch_utils.hpp
+│   │   ├── vllm_collective_builder.cuh
+│   │   ├── vllm_custom_types.cuh
+│   │   ├── vllm_cutlass_library_extension.py
+│   │   ├── vllm_numeric_conversion.cuh
+│   │   └── vllm_type_utils.cuh
+│   ├── dispatch_utils.h
+│   ├── layernorm_kernels.cu
+│   ├── layernorm_quant_kernels.cu
+│   ├── mamba
+│   │   ├── causal_conv1d
+│   │   │   ├── causal_conv1d.cu
+│   │   │   ├── causal_conv1d.h
+│   │   │   └── static_switch.h
+│   │   └── mamba_ssm
+│   │       ├── selective_scan.h
+│   │       ├── selective_scan_fwd.cu
+│   │       └── static_switch.h
+│   ├── moe
+│   │   ├── marlin_kernels
+│   │   │   ├── marlin_moe_kernel.h
+│   │   │   ├── marlin_moe_kernel_ku4.cu
+│   │   │   ├── marlin_moe_kernel_ku4.h
+│   │   │   ├── marlin_moe_kernel_ku4b8.cu
+│   │   │   ├── marlin_moe_kernel_ku4b8.h
+│   │   │   ├── marlin_moe_kernel_ku8b128.cu
+│   │   │   └── marlin_moe_kernel_ku8b128.h
+│   │   ├── marlin_moe_ops.cu
+│   │   ├── moe_align_sum_kernels.cu
+│   │   ├── moe_ops.h
+│   │   ├── topk_softmax_kernels.cu
+│   │   └── torch_bindings.cpp
+│   ├── ops.h
+│   ├── permute_cols.cu
+│   ├── pos_encoding_kernels.cu
+│   ├── prepare_inputs
+│   │   ├── advance_step.cu
+│   │   └── advance_step.cuh
+│   ├── quantization
+│   │   ├── aqlm
+│   │   │   └── gemm_kernels.cu
+│   │   ├── awq
+│   │   │   ├── dequantize.cuh
+│   │   │   └── gemm_kernels.cu
+│   │   ├── compressed_tensors
+│   │   │   └── int8_quant_kernels.cu
+│   │   ├── cutlass_w8a8
+│   │   │   ├── Epilogues.md
+│   │   │   ├── scaled_mm_c2x.cu
+│   │   │   ├── scaled_mm_c2x.cuh
+│   │   │   ├── scaled_mm_c2x_sm75_dispatch.cuh
+│   │   │   ├── scaled_mm_c2x_sm80_dispatch.cuh
+│   │   │   ├── scaled_mm_c2x_sm89_fp8_dispatch.cuh
+│   │   │   ├── scaled_mm_c2x_sm89_int8_dispatch.cuh
+│   │   │   ├── scaled_mm_c3x.cu
+│   │   │   ├── scaled_mm_c3x.cuh
+│   │   │   ├── scaled_mm_c3x_sm90_fp8_dispatch.cuh
+│   │   │   ├── scaled_mm_c3x_sm90_int8_dispatch.cuh
+│   │   │   └── scaled_mm_entry.cu
+│   │   ├── fp8
+│   │   │   ├── amd
+│   │   │   │   ├── hip_float8.h
+│   │   │   │   ├── hip_float8_impl.h
+│   │   │   │   └── quant_utils.cuh
+│   │   │   ├── common.cu
+│   │   │   ├── common.cuh
+│   │   │   ├── fp8_marlin.cu
+│   │   │   └── nvidia
+│   │   │       └── quant_utils.cuh
+│   │   ├── fused_kernels
+│   │   │   ├── fused_layernorm_dynamic_per_token_quant.cu
+│   │   │   ├── layernorm_utils.cuh
+│   │   │   └── quant_conversions.cuh
+│   │   ├── gguf
+│   │   │   ├── dequantize.cuh
+│   │   │   ├── ggml-common.h
+│   │   │   ├── gguf_kernel.cu
+│   │   │   ├── mmq.cuh
+│   │   │   ├── mmvq.cuh
+│   │   │   └── vecdotq.cuh
+│   │   ├── gptq
+│   │   │   ├── compat.cuh
+│   │   │   ├── matrix_view.cuh
+│   │   │   ├── q_gemm.cu
+│   │   │   ├── qdq_2.cuh
+│   │   │   ├── qdq_3.cuh
+│   │   │   ├── qdq_4.cuh
+│   │   │   ├── qdq_8.cuh
+│   │   │   └── qdq_util.cuh
+│   │   ├── gptq_marlin
+│   │   │   ├── awq_marlin_repack.cu
+│   │   │   ├── gptq_marlin.cu
+│   │   │   ├── gptq_marlin_repack.cu
+│   │   │   ├── marlin.cuh
+│   │   │   └── marlin_dtypes.cuh
+│   │   ├── machete
+│   │   │   ├── Readme.md
+│   │   │   ├── generate.py
+│   │   │   ├── machete_collective_builder.cuh
+│   │   │   ├── machete_interleaving_utils.cuh
+│   │   │   ├── machete_mainloop.cuh
+│   │   │   ├── machete_mm_kernel.cuh
+│   │   │   ├── machete_mm_launcher.cuh
+│   │   │   ├── machete_prepack_kernel.cuh
+│   │   │   ├── machete_prepack_launcher.cuh
+│   │   │   ├── machete_prepacked_layout.cuh
+│   │   │   └── machete_pytorch.cu
+│   │   ├── marlin
+│   │   │   ├── dense
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── common
+│   │   │   │   │   ├── base.h
+│   │   │   │   │   └── mem.h
+│   │   │   │   └── marlin_cuda_kernel.cu
+│   │   │   ├── qqq
+│   │   │   │   └── marlin_qqq_gemm_kernel.cu
+│   │   │   └── sparse
+│   │   │       ├── LICENSE
+│   │   │       ├── common
+│   │   │       │   ├── base.h
+│   │   │       │   ├── mem.h
+│   │   │       │   └── mma.h
+│   │   │       └── marlin_24_cuda_kernel.cu
+│   │   └── vectorization.cuh
+│   ├── rocm
+│   │   ├── attention.cu
+│   │   ├── ops.h
+│   │   └── torch_bindings.cpp
+│   ├── sparse
+│   │   └── cutlass
+│   │       ├── sparse_compressor_c3x.cu
+│   │       ├── sparse_compressor_entry.cu
+│   │       ├── sparse_scaled_mm_c3x.cu
+│   │       ├── sparse_scaled_mm_c3x.cuh
+│   │       └── sparse_scaled_mm_entry.cu
+│   ├── torch_bindings.cpp
+│   └── type_convert.cuh
+├── docs
+│   ├── Makefile
+│   ├── README.md
+│   ├── make.bat
+│   ├── requirements-docs.txt
+│   └── source
+│       ├── _static
+│       │   └── custom.js
+│       ├── _templates
+│       │   └── sections
+│       │       └── header.html
+│       ├── assets
+│       │   ├── deployment
+│       │   │   └── architecture_helm_deployment.png
+│       │   ├── design
+│       │   │   ├── arch_overview
+│       │   │   │   ├── entrypoints.excalidraw.png
+│       │   │   │   └── llm_engine.excalidraw.png
+│       │   │   └── hierarchy.png
+│       │   ├── dev
+│       │   │   └── dockerfile-stages-dependency.png
+│       │   ├── features
+│       │   │   └── disagg_prefill
+│       │   │       ├── abstraction.jpg
+│       │   │       └── overview.jpg
+│       │   ├── kernel
+│       │   │   ├── k_vecs.png
+│       │   │   ├── key.png
+│       │   │   ├── logits_vec.png
+│       │   │   ├── q_vecs.png
+│       │   │   ├── query.png
+│       │   │   ├── v_vec.png
+│       │   │   └── value.png
+│       │   └── logos
+│       │       ├── vllm-logo-only-light.png
+│       │       ├── vllm-logo-text-dark.png
+│       │       └── vllm-logo-text-light.png
+│       ├── community
+│       │   ├── meetups.md
+│       │   └── sponsors.md
+│       ├── conf.py
+│       ├── contributing
+│       │   ├── dockerfile
+│       │   │   └── dockerfile.md
+│       │   ├── model
+│       │   │   ├── basic.md
+│       │   │   ├── index.md
+│       │   │   ├── multimodal.md
+│       │   │   └── registration.md
+│       │   ├── overview.md
+│       │   ├── profiling
+│       │   │   └── profiling_index.md
+│       │   └── vulnerability_management.md
+│       ├── deployment
+│       │   ├── docker.md
+│       │   ├── frameworks
+│       │   │   ├── bentoml.md
+│       │   │   ├── cerebrium.md
+│       │   │   ├── dstack.md
+│       │   │   ├── helm.md
+│       │   │   ├── index.md
+│       │   │   ├── lws.md
+│       │   │   ├── skypilot.md
+│       │   │   └── triton.md
+│       │   ├── integrations
+│       │   │   ├── index.md
+│       │   │   ├── kserve.md
+│       │   │   ├── kubeai.md
+│       │   │   └── llamastack.md
+│       │   ├── k8s.md
+│       │   └── nginx.md
+│       ├── design
+│       │   ├── arch_overview.md
+│       │   ├── automatic_prefix_caching.md
+│       │   ├── huggingface_integration.md
+│       │   ├── input_processing
+│       │   │   ├── input_processing_pipeline.md
+│       │   │   └── model_inputs_index.md
+│       │   ├── kernel
+│       │   │   └── paged_attention.md
+│       │   ├── multimodal
+│       │   │   ├── adding_multimodal_plugin.md
+│       │   │   └── multimodal_index.md
+│       │   ├── multiprocessing.md
+│       │   └── plugin_system.md
+│       ├── dev
+│       │   ├── engine
+│       │   │   ├── async_llm_engine.md
+│       │   │   ├── engine_index.md
+│       │   │   └── llm_engine.md
+│       │   ├── offline_inference
+│       │   │   ├── llm.md
+│       │   │   ├── llm_inputs.md
+│       │   │   └── offline_index.md
+│       │   ├── pooling_params.md
+│       │   └── sampling_params.md
+│       ├── features
+│       │   ├── automatic_prefix_caching.md
+│       │   ├── compatibility_matrix.md
+│       │   ├── disagg_prefill.md
+│       │   ├── lora.md
+│       │   ├── quantization
+│       │   │   ├── auto_awq.md
+│       │   │   ├── bnb.md
+│       │   │   ├── fp8.md
+│       │   │   ├── fp8_e4m3_kvcache.md
+│       │   │   ├── fp8_e5m2_kvcache.md
+│       │   │   ├── gguf.md
+│       │   │   ├── index.md
+│       │   │   ├── int8.md
+│       │   │   └── supported_hardware.md
+│       │   ├── spec_decode.md
+│       │   ├── structured_outputs.md
+│       │   └── tool_calling.md
+│       ├── generate_examples.py
+│       ├── getting_started
+│       │   ├── examples
+│       │   │   └── examples_index.template.md
+│       │   ├── faq.md
+│       │   ├── installation
+│       │   │   ├── cpu-arm.md
+│       │   │   ├── cpu-x86.md
+│       │   │   ├── gpu-cuda.md
+│       │   │   ├── gpu-rocm.md
+│       │   │   ├── hpu-gaudi.md
+│       │   │   ├── index.md
+│       │   │   ├── neuron.md
+│       │   │   ├── openvino.md
+│       │   │   ├── tpu.md
+│       │   │   └── xpu.md
+│       │   ├── quickstart.md
+│       │   └── troubleshooting.md
+│       ├── index.md
+│       ├── models
+│       │   ├── extensions
+│       │   │   ├── index.md
+│       │   │   ├── runai_model_streamer.md
+│       │   │   └── tensorizer.md
+│       │   ├── generative_models.md
+│       │   ├── pooling_models.md
+│       │   └── supported_models.md
+│       ├── performance
+│       │   ├── benchmarks.md
+│       │   └── optimization.md
+│       └── serving
+│           ├── distributed_serving.md
+│           ├── engine_args.md
+│           ├── env_vars.md
+│           ├── integrations
+│           │   ├── index.md
+│           │   ├── langchain.md
+│           │   └── llamaindex.md
+│           ├── metrics.md
+│           ├── multimodal_inputs.md
+│           ├── offline_inference.md
+│           ├── openai_compatible_server.md
+│           └── usage_stats.md
+├── examples
+│   ├── api_client.py
+│   ├── aqlm_example.py
+│   ├── chart-helm
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── ct.yaml
+│   │   ├── lintconf.yaml
+│   │   ├── templates
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── custom-objects.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── job.yaml
+│   │   │   ├── poddisruptionbudget.yaml
+│   │   │   ├── pvc.yaml
+│   │   │   ├── secrets.yaml
+│   │   │   └── service.yaml
+│   │   ├── values.schema.json
+│   │   └── values.yaml
+│   ├── cpu_offload.py
+│   ├── disaggregated_prefill.sh
+│   ├── florence2_inference.py
+│   ├── fp8
+│   │   ├── README.md
+│   │   ├── extract_scales.py
+│   │   └── quantizer
+│   │       ├── README.md
+│   │       └── quantize.py
+│   ├── gguf_inference.py
+│   ├── gradio_openai_chatbot_webserver.py
+│   ├── gradio_webserver.py
+│   ├── llm_engine_example.py
+│   ├── logging_configuration.md
+│   ├── lora_with_quantization_inference.py
+│   ├── multilora_inference.py
+│   ├── offline_chat_with_tools.py
+│   ├── offline_inference.py
+│   ├── offline_inference_arctic.py
+│   ├── offline_inference_audio_language.py
+│   ├── offline_inference_chat.py
+│   ├── offline_inference_classification.py
+│   ├── offline_inference_cli.py
+│   ├── offline_inference_distributed.py
+│   ├── offline_inference_embedding.py
+│   ├── offline_inference_encoder_decoder.py
+│   ├── offline_inference_mlpspeculator.py
+│   ├── offline_inference_neuron.py
+│   ├── offline_inference_neuron_int8_quantization.py
+│   ├── offline_inference_openai.md
+│   ├── offline_inference_pixtral.py
+│   ├── offline_inference_scoring.py
+│   ├── offline_inference_structured_outputs.py
+│   ├── offline_inference_tpu.py
+│   ├── offline_inference_vision_language.py
+│   ├── offline_inference_vision_language_embedding.py
+│   ├── offline_inference_vision_language_multi_image.py
+│   ├── offline_inference_whisper.py
+│   ├── offline_inference_with_default_generation_config.py
+│   ├── offline_inference_with_prefix.py
+│   ├── offline_inference_with_profiler.py
+│   ├── offline_profile.py
+│   ├── openai_chat_completion_client.py
+│   ├── openai_chat_completion_client_for_multimodal.py
+│   ├── openai_chat_completion_client_with_tools.py
+│   ├── openai_chat_completion_structured_outputs.py
+│   ├── openai_chat_embedding_client_for_multimodal.py
+│   ├── openai_completion_client.py
+│   ├── openai_cross_encoder_score.py
+│   ├── openai_embedding_client.py
+│   ├── openai_example_batch.jsonl
+│   ├── openai_pooling_client.py
+│   ├── production_monitoring
+│   │   ├── Otel.md
+│   │   ├── README.md
+│   │   ├── docker-compose.yaml
+│   │   ├── dummy_client.py
+│   │   ├── grafana.json
+│   │   └── prometheus.yaml
+│   ├── run_cluster.sh
+│   ├── sagemaker-entrypoint.sh
+│   ├── save_sharded_state.py
+│   ├── template_alpaca.jinja
+│   ├── template_baichuan.jinja
+│   ├── template_blip2.jinja
+│   ├── template_chatglm.jinja
+│   ├── template_chatglm2.jinja
+│   ├── template_chatml.jinja
+│   ├── template_dse_qwen2_vl.jinja
+│   ├── template_falcon.jinja
+│   ├── template_falcon_180b.jinja
+│   ├── template_inkbot.jinja
+│   ├── template_llava.jinja
+│   ├── template_vlm2vec.jinja
+│   ├── tensorize_vllm_model.py
+│   ├── tool_chat_template_granite.jinja
+│   ├── tool_chat_template_granite_20b_fc.jinja
+│   ├── tool_chat_template_hermes.jinja
+│   ├── tool_chat_template_internlm2_tool.jinja
+│   ├── tool_chat_template_llama3.1_json.jinja
+│   ├── tool_chat_template_llama3.2_json.jinja
+│   ├── tool_chat_template_llama3.2_pythonic.jinja
+│   ├── tool_chat_template_mistral.jinja
+│   ├── tool_chat_template_mistral_parallel.jinja
+│   └── tool_chat_template_toolace.jinja
+├── find_cuda_init.py
+├── format.sh
+├── pyproject.toml
+├── python_only_dev.py
+├── requirements-build.txt
+├── requirements-common.txt
+├── requirements-cpu.txt
+├── requirements-cuda.txt
+├── requirements-dev.txt
+├── requirements-hpu.txt
+├── requirements-lint.txt
+├── requirements-neuron.txt
+├── requirements-openvino.txt
+├── requirements-rocm.txt
+├── requirements-test.in
+├── requirements-test.txt
+├── requirements-tpu.txt
+├── requirements-xpu.txt
+├── setup.py
+├── tests
+│   ├── __init__.py
+│   ├── async_engine
+│   │   ├── __init__.py
+│   │   ├── api_server_async_engine.py
+│   │   ├── test_api_server.py
+│   │   ├── test_async_llm_engine.py
+│   │   └── test_request_tracker.py
+│   ├── basic_correctness
+│   │   ├── __init__.py
+│   │   ├── test_basic_correctness.py
+│   │   ├── test_chunked_prefill.py
+│   │   ├── test_cpu_offload.py
+│   │   └── test_preemption.py
+│   ├── compile
+│   │   ├── __init__.py
+│   │   ├── backend.py
+│   │   ├── piecewise
+│   │   │   ├── __init__.py
+│   │   │   ├── test_simple.py
+│   │   │   └── test_toy_llama.py
+│   │   ├── test_basic_correctness.py
+│   │   ├── test_full_graph.py
+│   │   ├── test_functionalization.py
+│   │   ├── test_fusion.py
+│   │   ├── test_pass_manager.py
+│   │   ├── test_wrapper.py
+│   │   └── utils.py
+│   ├── conftest.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── block
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── e2e
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_correctness.py
+│   │   │   │   └── test_correctness_sliding_window.py
+│   │   │   ├── test_block_manager.py
+│   │   │   ├── test_block_table.py
+│   │   │   ├── test_common.py
+│   │   │   ├── test_cpu_gpu_block_allocator.py
+│   │   │   ├── test_naive_block.py
+│   │   │   └── test_prefix_caching_block.py
+│   │   ├── test_chunked_prefill_scheduler.py
+│   │   ├── test_num_computed_tokens_update.py
+│   │   ├── test_scheduler.py
+│   │   ├── test_scheduler_encoder_decoder.py
+│   │   ├── test_serialization.py
+│   │   └── utils.py
+│   ├── data
+│   │   └── test_config.yaml
+│   ├── distributed
+│   │   ├── __init__.py
+│   │   ├── test_ca_buffer_sharing.py
+│   │   ├── test_comm_ops.py
+│   │   ├── test_custom_all_reduce.py
+│   │   ├── test_distributed_oot.py
+│   │   ├── test_multi_node_assignment.py
+│   │   ├── test_pipeline_parallel.py
+│   │   ├── test_pipeline_partition.py
+│   │   ├── test_pp_cudagraph.py
+│   │   ├── test_pynccl.py
+│   │   ├── test_same_node.py
+│   │   ├── test_shm_broadcast.py
+│   │   └── test_utils.py
+│   ├── encoder_decoder
+│   │   ├── __init__.py
+│   │   └── test_e2e_correctness.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   ├── output_processor
+│   │   │   ├── __init__.py
+│   │   │   ├── test_multi_step.py
+│   │   │   └── test_stop_checker.py
+│   │   ├── test_arg_utils.py
+│   │   ├── test_computed_prefix_blocks.py
+│   │   ├── test_custom_executor.py
+│   │   ├── test_detokenization.py
+│   │   ├── test_multiproc_workers.py
+│   │   ├── test_short_mm_context.py
+│   │   ├── test_skip_tokenizer_init.py
+│   │   ├── test_stop_reason.py
+│   │   └── test_stop_strings.py
+│   ├── entrypoints
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── llm
+│   │   │   ├── __init__.py
+│   │   │   ├── test_accuracy.py
+│   │   │   ├── test_chat.py
+│   │   │   ├── test_encode.py
+│   │   │   ├── test_generate.py
+│   │   │   ├── test_generate_multiple_loras.py
+│   │   │   ├── test_gpu_utilization.py
+│   │   │   ├── test_guided_generate.py
+│   │   │   ├── test_init.py
+│   │   │   ├── test_lazy_outlines.py
+│   │   │   └── test_prompt_validation.py
+│   │   ├── offline_mode
+│   │   │   ├── __init__.py
+│   │   │   └── test_offline_mode.py
+│   │   ├── openai
+│   │   │   ├── __init__.py
+│   │   │   ├── test_accuracy.py
+│   │   │   ├── test_async_tokenization.py
+│   │   │   ├── test_audio.py
+│   │   │   ├── test_basic.py
+│   │   │   ├── test_chat.py
+│   │   │   ├── test_chat_echo.py
+│   │   │   ├── test_chat_template.py
+│   │   │   ├── test_chunked_prompt.py
+│   │   │   ├── test_cli_args.py
+│   │   │   ├── test_completion.py
+│   │   │   ├── test_embedding.py
+│   │   │   ├── test_encoder_decoder.py
+│   │   │   ├── test_lora_lineage.py
+│   │   │   ├── test_metrics.py
+│   │   │   ├── test_models.py
+│   │   │   ├── test_oot_registration.py
+│   │   │   ├── test_pooling.py
+│   │   │   ├── test_prompt_validation.py
+│   │   │   ├── test_return_tokens_as_ids.py
+│   │   │   ├── test_root_path.py
+│   │   │   ├── test_run_batch.py
+│   │   │   ├── test_score.py
+│   │   │   ├── test_serving_chat.py
+│   │   │   ├── test_serving_models.py
+│   │   │   ├── test_shutdown.py
+│   │   │   ├── test_tokenization.py
+│   │   │   ├── test_video.py
+│   │   │   ├── test_vision.py
+│   │   │   ├── test_vision_embedding.py
+│   │   │   └── tool_parsers
+│   │   │       ├── __init__.py
+│   │   │       ├── test_pythonic_tool_parser.py
+│   │   │       └── utils.py
+│   │   └── test_chat_utils.py
+│   ├── fp8_kv
+│   │   ├── llama2-70b-fp8-kv
+│   │   │   └── kv_cache_scales.json
+│   │   └── llama2-7b-fp8-kv
+│   │       └── kv_cache_scales.json
+│   ├── kernels
+│   │   ├── __init__.py
+│   │   ├── allclose_default.py
+│   │   ├── conftest.py
+│   │   ├── quant_utils.py
+│   │   ├── test_activation.py
+│   │   ├── test_aqlm.py
+│   │   ├── test_attention.py
+│   │   ├── test_attention_selector.py
+│   │   ├── test_awq.py
+│   │   ├── test_awq_marlin.py
+│   │   ├── test_awq_triton.py
+│   │   ├── test_block_fp8.py
+│   │   ├── test_blocksparse_attention.py
+│   │   ├── test_cache.py
+│   │   ├── test_cascade_flash_attn.py
+│   │   ├── test_causal_conv1d.py
+│   │   ├── test_cutlass.py
+│   │   ├── test_encoder_decoder_attn.py
+│   │   ├── test_flash_attn.py
+│   │   ├── test_flashinfer.py
+│   │   ├── test_fp8_quant.py
+│   │   ├── test_fused_quant_layernorm.py
+│   │   ├── test_ggml.py
+│   │   ├── test_gguf.py
+│   │   ├── test_gptq.py
+│   │   ├── test_int8_quant.py
+│   │   ├── test_layernorm.py
+│   │   ├── test_machete_mm.py
+│   │   ├── test_mamba_ssm.py
+│   │   ├── test_marlin_gemm.py
+│   │   ├── test_moe.py
+│   │   ├── test_permute_cols.py
+│   │   ├── test_pos_encoding.py
+│   │   ├── test_prefix_prefill.py
+│   │   ├── test_rotary_embedding.py
+│   │   ├── test_semi_structured.py
+│   │   ├── test_triton_scaled_mm.py
+│   │   ├── test_utils.py
+│   │   └── utils.py
+│   ├── kv_transfer
+│   │   ├── disagg_test.py
+│   │   ├── module_test.py
+│   │   ├── test_lookup_buffer.py
+│   │   ├── test_lookup_buffer.sh
+│   │   ├── test_send_recv.py
+│   │   └── test_send_recv.sh
+│   ├── lora
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── data
+│   │   │   ├── __init__.py
+│   │   │   └── long_context_test_data.py
+│   │   ├── test_baichuan.py
+│   │   ├── test_chatglm3_tp.py
+│   │   ├── test_gemma.py
+│   │   ├── test_jamba.py
+│   │   ├── test_layers.py
+│   │   ├── test_llama_tp.py
+│   │   ├── test_long_context.py
+│   │   ├── test_lora_bias_e2e.py
+│   │   ├── test_lora_checkpoints.py
+│   │   ├── test_lora_huggingface.py
+│   │   ├── test_lora_manager.py
+│   │   ├── test_minicpmv_tp.py
+│   │   ├── test_mixtral.py
+│   │   ├── test_phi.py
+│   │   ├── test_punica_sizes.py
+│   │   ├── test_punica_variation.py
+│   │   ├── test_quant_model.py
+│   │   ├── test_qwen2vl.py
+│   │   ├── test_tokenizer_group.py
+│   │   ├── test_utils.py
+│   │   ├── test_worker.py
+│   │   └── utils.py
+│   ├── metrics
+│   │   ├── __init__.py
+│   │   └── test_metrics.py
+│   ├── model_executor
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_enabled_custom_ops.py
+│   │   ├── test_guided_processors.py
+│   │   ├── test_model_load_with_params.py
+│   │   └── weight_utils.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── decoder_only
+│   │   │   ├── __init__.py
+│   │   │   ├── audio_language
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_ultravox.py
+│   │   │   ├── language
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_aqlm.py
+│   │   │   │   ├── test_fp8.py
+│   │   │   │   ├── test_gguf.py
+│   │   │   │   ├── test_gptq_marlin.py
+│   │   │   │   ├── test_gptq_marlin_24.py
+│   │   │   │   ├── test_granite.py
+│   │   │   │   ├── test_jamba.py
+│   │   │   │   ├── test_mamba.py
+│   │   │   │   ├── test_mistral.py
+│   │   │   │   ├── test_modelopt.py
+│   │   │   │   ├── test_models.py
+│   │   │   │   └── test_phimoe.py
+│   │   │   └── vision_language
+│   │   │       ├── __init__.py
+│   │   │       ├── processing
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── test_idefics3.py
+│   │   │       │   ├── test_internvl.py
+│   │   │       │   ├── test_llava_next.py
+│   │   │       │   ├── test_llava_onevision.py
+│   │   │       │   ├── test_phi3v.py
+│   │   │       │   ├── test_qwen.py
+│   │   │       │   └── test_qwen2_vl.py
+│   │   │       ├── test_awq.py
+│   │   │       ├── test_h2ovl.py
+│   │   │       ├── test_intern_vit.py
+│   │   │       ├── test_models.py
+│   │   │       ├── test_phi3v.py
+│   │   │       ├── test_pixtral.py
+│   │   │       ├── test_qwen2_vl.py
+│   │   │       └── vlm_utils
+│   │   │           ├── __init__.py
+│   │   │           ├── builders.py
+│   │   │           ├── case_filtering.py
+│   │   │           ├── core.py
+│   │   │           ├── custom_inputs.py
+│   │   │           ├── model_utils.py
+│   │   │           ├── runners.py
+│   │   │           └── types.py
+│   │   ├── embedding
+│   │   │   ├── __init__.py
+│   │   │   ├── language
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_cls_models.py
+│   │   │   │   ├── test_embedding.py
+│   │   │   │   ├── test_gritlm.py
+│   │   │   │   └── test_scoring.py
+│   │   │   ├── utils.py
+│   │   │   └── vision_language
+│   │   │       ├── __init__.py
+│   │   │       ├── test_dse_qwen2_vl.py
+│   │   │       ├── test_llava_next.py
+│   │   │       └── test_phi3v.py
+│   │   ├── encoder_decoder
+│   │   │   ├── __init__.py
+│   │   │   ├── audio_language
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_whisper.py
+│   │   │   ├── language
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_bart.py
+│   │   │   └── vision_language
+│   │   │       ├── __init__.py
+│   │   │       ├── test_broadcast.py
+│   │   │       ├── test_florence2.py
+│   │   │       └── test_mllama.py
+│   │   ├── fixtures
+│   │   │   ├── pixtral_chat.json
+│   │   │   └── pixtral_chat_engine.json
+│   │   ├── registry.py
+│   │   ├── test_initialization.py
+│   │   ├── test_oot_registration.py
+│   │   ├── test_registry.py
+│   │   └── utils.py
+│   ├── mq_llm_engine
+│   │   ├── __init__.py
+│   │   ├── test_abort.py
+│   │   ├── test_error_handling.py
+│   │   ├── test_load.py
+│   │   └── utils.py
+│   ├── multi_step
+│   │   ├── __init__.py
+│   │   ├── test_correctness_async_llm.py
+│   │   └── test_correctness_llm.py
+│   ├── multimodal
+│   │   ├── __init__.py
+│   │   ├── test_inputs.py
+│   │   ├── test_processing.py
+│   │   ├── test_processor_kwargs.py
+│   │   └── test_utils.py
+│   ├── plugins
+│   │   ├── vllm_add_dummy_model
+│   │   │   ├── setup.py
+│   │   │   └── vllm_add_dummy_model
+│   │   │       ├── __init__.py
+│   │   │       ├── my_gemma_embedding.py
+│   │   │       ├── my_llava.py
+│   │   │       └── my_opt.py
+│   │   └── vllm_add_dummy_platform
+│   │       ├── setup.py
+│   │       └── vllm_add_dummy_platform
+│   │           ├── __init__.py
+│   │           └── dummy_platform.py
+│   ├── plugins_tests
+│   │   └── test_platform_plugins.py
+│   ├── prefix_caching
+│   │   ├── __init__.py
+│   │   ├── test_disable_sliding_window.py
+│   │   └── test_prefix_caching.py
+│   ├── prompt_adapter
+│   │   ├── test_bloom.py
+│   │   ├── test_multi_adapter_inference.py
+│   │   └── test_pa_lora.py
+│   ├── prompts
+│   │   ├── example.txt
+│   │   └── summary.txt
+│   ├── quantization
+│   │   ├── __init__.py
+│   │   ├── test_bitsandbytes.py
+│   │   ├── test_compressed_tensors.py
+│   │   ├── test_configs.py
+│   │   ├── test_cpu_offload.py
+│   │   ├── test_experts_int8.py
+│   │   ├── test_fp8.py
+│   │   ├── test_ipex_quant.py
+│   │   ├── test_lm_head.py
+│   │   └── utils.py
+│   ├── runai_model_streamer
+│   │   ├── __init__.py
+│   │   ├── test_runai_model_streamer_loader.py
+│   │   └── test_weight_utils.py
+│   ├── samplers
+│   │   ├── __init__.py
+│   │   ├── test_beam_search.py
+│   │   ├── test_ignore_eos.py
+│   │   ├── test_logits_processor.py
+│   │   ├── test_logprobs.py
+│   │   ├── test_no_bad_words.py
+│   │   ├── test_ranks.py
+│   │   ├── test_rejection_sampler.py
+│   │   ├── test_sampler.py
+│   │   ├── test_seeded_generate.py
+│   │   └── test_typical_acceptance_sampler.py
+│   ├── spec_decode
+│   │   ├── __init__.py
+│   │   ├── e2e
+│   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
+│   │   │   ├── test_compatibility.py
+│   │   │   ├── test_eagle_correctness.py
+│   │   │   ├── test_integration.py
+│   │   │   ├── test_integration_dist_tp2.py
+│   │   │   ├── test_integration_dist_tp4.py
+│   │   │   ├── test_logprobs.py
+│   │   │   ├── test_medusa_correctness.py
+│   │   │   ├── test_mlp_correctness.py
+│   │   │   ├── test_multistep_correctness.py
+│   │   │   ├── test_ngram_correctness.py
+│   │   │   └── test_seed.py
+│   │   ├── test_batch_expansion.py
+│   │   ├── test_dynamic_spec_decode.py
+│   │   ├── test_metrics.py
+│   │   ├── test_multi_step_worker.py
+│   │   ├── test_ngram_worker.py
+│   │   ├── test_scorer.py
+│   │   ├── test_spec_decode_worker.py
+│   │   ├── test_utils.py
+│   │   └── utils.py
+│   ├── standalone_tests
+│   │   ├── lazy_torch_compile.py
+│   │   └── python_only_compile.sh
+│   ├── system_messages
+│   │   └── sonnet3.5_nov2024.txt
+│   ├── tensorizer_loader
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   └── test_tensorizer.py
+│   ├── test_cache_block_hashing.py
+│   ├── test_config.py
+│   ├── test_embedded_commit.py
+│   ├── test_inputs.py
+│   ├── test_logger.py
+│   ├── test_logits_processor.py
+│   ├── test_regression.py
+│   ├── test_sampling_params.py
+│   ├── test_scalartype.py
+│   ├── test_sequence.py
+│   ├── test_sharded_state_loader.py
+│   ├── test_utils.py
+│   ├── tokenization
+│   │   ├── __init__.py
+│   │   ├── test_cached_tokenizer.py
+│   │   ├── test_detokenize.py
+│   │   ├── test_get_eos.py
+│   │   ├── test_tokenizer.py
+│   │   └── test_tokenizer_group.py
+│   ├── tool_use
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_chat_completion_request_validations.py
+│   │   ├── test_chat_completions.py
+│   │   ├── test_jamba_tool_parser.py
+│   │   ├── test_parallel_tool_calls.py
+│   │   ├── test_tool_calls.py
+│   │   └── utils.py
+│   ├── tpu
+│   │   ├── __init__.py
+│   │   ├── test_compilation.py
+│   │   └── test_custom_dispatcher.py
+│   ├── tracing
+│   │   ├── __init__.py
+│   │   └── test_tracing.py
+│   ├── utils.py
+│   ├── v1
+│   │   ├── __init__.py
+│   │   ├── core
+│   │   │   ├── test_kv_cache_utils.py
+│   │   │   └── test_prefix_caching.py
+│   │   ├── e2e
+│   │   │   ├── __init__.py
+│   │   │   └── test_cascade_attention.py
+│   │   ├── engine
+│   │   │   ├── __init__.py
+│   │   │   ├── test_async_llm.py
+│   │   │   ├── test_detokenizer.py
+│   │   │   ├── test_engine_args.py
+│   │   │   ├── test_engine_core.py
+│   │   │   └── test_engine_core_client.py
+│   │   ├── sample
+│   │   │   ├── __init__.py
+│   │   │   └── test_sampler.py
+│   │   └── worker
+│   │       ├── __init__.py
+│   │       └── test_gpu_input_batch.py
+│   ├── vllm_test_utils
+│   │   ├── setup.py
+│   │   └── vllm_test_utils
+│   │       ├── __init__.py
+│   │       └── blame.py
+│   ├── weight_loading
+│   │   ├── models-large.txt
+│   │   ├── models.txt
+│   │   ├── run_model_weight_loading_test.sh
+│   │   └── test_weight_loading.py
+│   └── worker
+│       ├── __init__.py
+│       ├── test_encoder_decoder_model_runner.py
+│       ├── test_model_input.py
+│       ├── test_model_runner.py
+│       ├── test_profile.py
+│       └── test_swap.py
+├── tools
+│   ├── actionlint.sh
+│   ├── check_repo.sh
+│   ├── mypy.sh
+│   ├── png-lint.sh
+│   ├── profiler
+│   │   ├── print_layerwise_table.py
+│   │   └── visualize_layerwise_profile.py
+│   ├── report_build_time_ninja.py
+│   ├── shellcheck.sh
+│   └── sphinx-lint.sh
+├── use_existing_torch.py
+└── vllm
+    ├── __init__.py
+    ├── _custom_ops.py
+    ├── _ipex_ops.py
+    ├── adapter_commons
+    │   ├── __init__.py
+    │   ├── layers.py
+    │   ├── models.py
+    │   ├── request.py
+    │   ├── utils.py
+    │   └── worker_manager.py
+    ├── assets
+    │   ├── __init__.py
+    │   ├── audio.py
+    │   ├── base.py
+    │   ├── image.py
+    │   └── video.py
+    ├── attention
+    │   ├── __init__.py
+    │   ├── backends
+    │   │   ├── __init__.py
+    │   │   ├── abstract.py
+    │   │   ├── blocksparse_attn.py
+    │   │   ├── flash_attn.py
+    │   │   ├── flashinfer.py
+    │   │   ├── hpu_attn.py
+    │   │   ├── ipex_attn.py
+    │   │   ├── openvino.py
+    │   │   ├── pallas.py
+    │   │   ├── placeholder_attn.py
+    │   │   ├── rocm_flash_attn.py
+    │   │   ├── torch_sdpa.py
+    │   │   ├── utils.py
+    │   │   └── xformers.py
+    │   ├── layer.py
+    │   ├── ops
+    │   │   ├── __init__.py
+    │   │   ├── blocksparse_attention
+    │   │   │   ├── __init__.py
+    │   │   │   ├── blocksparse_attention_kernel.py
+    │   │   │   ├── interface.py
+    │   │   │   └── utils.py
+    │   │   ├── hpu_paged_attn.py
+    │   │   ├── ipex_attn.py
+    │   │   ├── paged_attn.py
+    │   │   ├── prefix_prefill.py
+    │   │   └── triton_flash_attention.py
+    │   └── selector.py
+    ├── beam_search.py
+    ├── compilation
+    │   ├── __init__.py
+    │   ├── backends.py
+    │   ├── counter.py
+    │   ├── decorators.py
+    │   ├── fix_functionalization.py
+    │   ├── fusion.py
+    │   ├── fx_utils.py
+    │   ├── inductor_pass.py
+    │   ├── monitor.py
+    │   ├── multi_output_match.py
+    │   ├── pass_manager.py
+    │   ├── reshapes.py
+    │   ├── vllm_inductor_pass.py
+    │   └── wrapper.py
+    ├── config.py
+    ├── connections.py
+    ├── core
+    │   ├── __init__.py
+    │   ├── block
+    │   │   ├── __init__.py
+    │   │   ├── block_table.py
+    │   │   ├── common.py
+    │   │   ├── cpu_gpu_block_allocator.py
+    │   │   ├── interfaces.py
+    │   │   ├── naive_block.py
+    │   │   ├── prefix_caching_block.py
+    │   │   └── utils.py
+    │   ├── block_manager.py
+    │   ├── evictor.py
+    │   ├── interfaces.py
+    │   ├── placeholder_block_space_manager.py
+    │   └── scheduler.py
+    ├── distributed
+    │   ├── __init__.py
+    │   ├── communication_op.py
+    │   ├── device_communicators
+    │   │   ├── __init__.py
+    │   │   ├── cuda_wrapper.py
+    │   │   ├── custom_all_reduce.py
+    │   │   ├── custom_all_reduce_utils.py
+    │   │   ├── hpu_communicator.py
+    │   │   ├── pynccl.py
+    │   │   ├── pynccl_wrapper.py
+    │   │   ├── shm_broadcast.py
+    │   │   ├── tpu_communicator.py
+    │   │   └── xpu_communicator.py
+    │   ├── kv_transfer
+    │   │   ├── README.md
+    │   │   ├── __init__.py
+    │   │   ├── disagg_prefill_workflow.jpg
+    │   │   ├── kv_connector
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   ├── factory.py
+    │   │   │   └── simple_connector.py
+    │   │   ├── kv_lookup_buffer
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   └── simple_buffer.py
+    │   │   ├── kv_pipe
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   ├── mooncake_pipe.py
+    │   │   │   └── pynccl_pipe.py
+    │   │   └── kv_transfer_agent.py
+    │   ├── parallel_state.py
+    │   └── utils.py
+    ├── engine
+    │   ├── __init__.py
+    │   ├── arg_utils.py
+    │   ├── async_llm_engine.py
+    │   ├── async_timeout.py
+    │   ├── llm_engine.py
+    │   ├── metrics.py
+    │   ├── metrics_types.py
+    │   ├── multiprocessing
+    │   │   ├── __init__.py
+    │   │   ├── client.py
+    │   │   └── engine.py
+    │   ├── output_processor
+    │   │   ├── __init__.py
+    │   │   ├── interfaces.py
+    │   │   ├── multi_step.py
+    │   │   ├── single_step.py
+    │   │   ├── stop_checker.py
+    │   │   └── util.py
+    │   └── protocol.py
+    ├── entrypoints
+    │   ├── __init__.py
+    │   ├── api_server.py
+    │   ├── chat_utils.py
+    │   ├── launcher.py
+    │   ├── llm.py
+    │   ├── logger.py
+    │   ├── openai
+    │   │   ├── __init__.py
+    │   │   ├── api_server.py
+    │   │   ├── cli_args.py
+    │   │   ├── logits_processors.py
+    │   │   ├── protocol.py
+    │   │   ├── run_batch.py
+    │   │   ├── serving_chat.py
+    │   │   ├── serving_completion.py
+    │   │   ├── serving_embedding.py
+    │   │   ├── serving_engine.py
+    │   │   ├── serving_models.py
+    │   │   ├── serving_pooling.py
+    │   │   ├── serving_score.py
+    │   │   ├── serving_tokenization.py
+    │   │   └── tool_parsers
+    │   │       ├── __init__.py
+    │   │       ├── abstract_tool_parser.py
+    │   │       ├── granite_20b_fc_tool_parser.py
+    │   │       ├── granite_tool_parser.py
+    │   │       ├── hermes_tool_parser.py
+    │   │       ├── internlm2_tool_parser.py
+    │   │       ├── jamba_tool_parser.py
+    │   │       ├── llama_tool_parser.py
+    │   │       ├── mistral_tool_parser.py
+    │   │       ├── pythonic_tool_parser.py
+    │   │       └── utils.py
+    │   └── utils.py
+    ├── envs.py
+    ├── executor
+    │   ├── __init__.py
+    │   ├── cpu_executor.py
+    │   ├── distributed_gpu_executor.py
+    │   ├── executor_base.py
+    │   ├── gpu_executor.py
+    │   ├── hpu_executor.py
+    │   ├── msgspec_utils.py
+    │   ├── multiproc_gpu_executor.py
+    │   ├── multiproc_worker_utils.py
+    │   ├── multiproc_xpu_executor.py
+    │   ├── neuron_executor.py
+    │   ├── openvino_executor.py
+    │   ├── ray_gpu_executor.py
+    │   ├── ray_hpu_executor.py
+    │   ├── ray_tpu_executor.py
+    │   ├── ray_utils.py
+    │   ├── ray_xpu_executor.py
+    │   ├── tpu_executor.py
+    │   └── xpu_executor.py
+    ├── forward_context.py
+    ├── inputs
+    │   ├── __init__.py
+    │   ├── data.py
+    │   ├── parse.py
+    │   ├── preprocess.py
+    │   └── registry.py
+    ├── logger.py
+    ├── logging_utils
+    │   ├── __init__.py
+    │   └── formatter.py
+    ├── logits_process.py
+    ├── lora
+    │   ├── __init__.py
+    │   ├── fully_sharded_layers.py
+    │   ├── layers.py
+    │   ├── lora.py
+    │   ├── models.py
+    │   ├── ops
+    │   │   ├── __init__.py
+    │   │   ├── bgmv_expand.py
+    │   │   ├── bgmv_expand_slice.py
+    │   │   ├── bgmv_shrink.py
+    │   │   ├── sgmv_expand.py
+    │   │   ├── sgmv_shrink.py
+    │   │   └── utils.py
+    │   ├── peft_helper.py
+    │   ├── punica_wrapper
+    │   │   ├── __init__.py
+    │   │   ├── punica_base.py
+    │   │   ├── punica_gpu.py
+    │   │   ├── punica_hpu.py
+    │   │   ├── punica_selector.py
+    │   │   └── utils.py
+    │   ├── request.py
+    │   ├── utils.py
+    │   └── worker_manager.py
+    ├── model_executor
+    │   ├── __init__.py
+    │   ├── custom_op.py
+    │   ├── guided_decoding
+    │   │   ├── __init__.py
+    │   │   ├── guided_fields.py
+    │   │   ├── lm_format_enforcer_decoding.py
+    │   │   ├── outlines_decoding.py
+    │   │   ├── outlines_logits_processors.py
+    │   │   ├── utils.py
+    │   │   └── xgrammar_decoding.py
+    │   ├── layers
+    │   │   ├── __init__.py
+    │   │   ├── activation.py
+    │   │   ├── fused_moe
+    │   │   │   ├── __init__.py
+    │   │   │   ├── configs
+    │   │   │   │   ├── E=1,N=14336,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=14336,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=1,N=1792,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=1792,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=1,N=3072,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=3072,device_name=NVIDIA_H100_80GB_HBM3,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=3072,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=1,N=3584,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=3584,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=1,N=7168,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=1,N=7168,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=1344,device_name=NVIDIA_A100-SXM4-40GB.json
+    │   │   │   │   ├── E=16,N=1344,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=1344,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=16,N=14336,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=14336,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=1792,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=1792,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=2688,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=2688,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=16,N=3072,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=3072,device_name=NVIDIA_H100_80GB_HBM3,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=3200,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=16,N=3584,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=3584,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=6400,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=16,N=7168,device_name=NVIDIA_A100-SXM4-80GB,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=7168,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=16,N=7168,device_name=NVIDIA_H100_80GB_HBM3,dtype=int8_w8a16.json
+    │   │   │   │   ├── E=16,N=800,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=64,N=1280,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=64,N=1280,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=64,N=640,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=64,N=640,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=14336,device_name=AMD_Instinct_MI300X.json
+    │   │   │   │   ├── E=8,N=14336,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=8,N=1792,device_name=AMD_Instinct_MI300X.json
+    │   │   │   │   ├── E=8,N=1792,device_name=NVIDIA_A100-SXM4-40GB.json
+    │   │   │   │   ├── E=8,N=1792,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=8,N=1792,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=2048,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=8,N=2048,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=8,N=2048,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=3584,device_name=AMD_Instinct_MI300X.json
+    │   │   │   │   ├── E=8,N=3584,device_name=NVIDIA_A100-SXM4-40GB.json
+    │   │   │   │   ├── E=8,N=3584,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=8,N=3584,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=8,N=3584,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=3584,device_name=NVIDIA_L40S.json
+    │   │   │   │   ├── E=8,N=4096,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=8,N=4096,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=8,N=4096,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=7168,device_name=AMD_Instinct_MI300X.json
+    │   │   │   │   ├── E=8,N=7168,device_name=NVIDIA_A100-SXM4-80GB.json
+    │   │   │   │   ├── E=8,N=7168,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   ├── E=8,N=7168,device_name=NVIDIA_H100_80GB_HBM3.json
+    │   │   │   │   ├── E=8,N=8192,device_name=NVIDIA_H100_80GB_HBM3,dtype=fp8_w8a8.json
+    │   │   │   │   └── README
+    │   │   │   ├── fused_marlin_moe.py
+    │   │   │   ├── fused_moe.py
+    │   │   │   ├── layer.py
+    │   │   │   └── moe_pallas.py
+    │   │   ├── layernorm.py
+    │   │   ├── linear.py
+    │   │   ├── logits_processor.py
+    │   │   ├── mamba
+    │   │   │   ├── __init__.py
+    │   │   │   ├── mamba_mixer.py
+    │   │   │   └── ops
+    │   │   │       ├── __init__.py
+    │   │   │       ├── causal_conv1d.py
+    │   │   │       └── mamba_ssm.py
+    │   │   ├── pooler.py
+    │   │   ├── quantization
+    │   │   │   ├── __init__.py
+    │   │   │   ├── aqlm.py
+    │   │   │   ├── awq.py
+    │   │   │   ├── awq_marlin.py
+    │   │   │   ├── awq_triton.py
+    │   │   │   ├── base_config.py
+    │   │   │   ├── bitsandbytes.py
+    │   │   │   ├── compressed_tensors
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── compressed_tensors.py
+    │   │   │   │   ├── compressed_tensors_moe.py
+    │   │   │   │   ├── schemes
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── compressed_tensors_24.py
+    │   │   │   │   │   ├── compressed_tensors_scheme.py
+    │   │   │   │   │   ├── compressed_tensors_w4a16_24.py
+    │   │   │   │   │   ├── compressed_tensors_w8a16_fp8.py
+    │   │   │   │   │   ├── compressed_tensors_w8a8_fp8.py
+    │   │   │   │   │   ├── compressed_tensors_w8a8_int8.py
+    │   │   │   │   │   └── compressed_tensors_wNa16.py
+    │   │   │   │   ├── triton_scaled_mm.py
+    │   │   │   │   └── utils.py
+    │   │   │   ├── deepspeedfp.py
+    │   │   │   ├── experts_int8.py
+    │   │   │   ├── fbgemm_fp8.py
+    │   │   │   ├── fp8.py
+    │   │   │   ├── gguf.py
+    │   │   │   ├── gptq.py
+    │   │   │   ├── gptq_marlin.py
+    │   │   │   ├── gptq_marlin_24.py
+    │   │   │   ├── hqq_marlin.py
+    │   │   │   ├── ipex_quant.py
+    │   │   │   ├── kernels
+    │   │   │   │   ├── MPLinearKernel.py
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── exllama.py
+    │   │   │   │   ├── machete.py
+    │   │   │   │   └── marlin.py
+    │   │   │   ├── kv_cache.py
+    │   │   │   ├── marlin.py
+    │   │   │   ├── modelopt.py
+    │   │   │   ├── neuron_quant.py
+    │   │   │   ├── qqq.py
+    │   │   │   ├── schema.py
+    │   │   │   ├── tpu_int8.py
+    │   │   │   └── utils
+    │   │   │       ├── __init__.py
+    │   │   │       ├── fp8_utils.py
+    │   │   │       ├── layer_utils.py
+    │   │   │       ├── machete_utils.py
+    │   │   │       ├── marlin_utils.py
+    │   │   │       ├── marlin_utils_fp8.py
+    │   │   │       ├── marlin_utils_test.py
+    │   │   │       ├── marlin_utils_test_24.py
+    │   │   │       ├── marlin_utils_test_qqq.py
+    │   │   │       ├── quant_utils.py
+    │   │   │       └── w8a8_utils.py
+    │   │   ├── rejection_sampler.py
+    │   │   ├── resampler.py
+    │   │   ├── rotary_embedding.py
+    │   │   ├── sampler.py
+    │   │   ├── spec_decode_base_sampler.py
+    │   │   ├── typical_acceptance_sampler.py
+    │   │   ├── utils.py
+    │   │   └── vocab_parallel_embedding.py
+    │   ├── model_loader
+    │   │   ├── __init__.py
+    │   │   ├── loader.py
+    │   │   ├── neuron.py
+    │   │   ├── openvino.py
+    │   │   ├── tensorizer.py
+    │   │   ├── utils.py
+    │   │   └── weight_utils.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   ├── adapters.py
+    │   │   ├── arctic.py
+    │   │   ├── aria.py
+    │   │   ├── baichuan.py
+    │   │   ├── bart.py
+    │   │   ├── bert.py
+    │   │   ├── blip.py
+    │   │   ├── blip2.py
+    │   │   ├── bloom.py
+    │   │   ├── chameleon.py
+    │   │   ├── chatglm.py
+    │   │   ├── clip.py
+    │   │   ├── commandr.py
+    │   │   ├── dbrx.py
+    │   │   ├── decilm.py
+    │   │   ├── deepseek.py
+    │   │   ├── deepseek_v2.py
+    │   │   ├── deepseek_v3.py
+    │   │   ├── eagle.py
+    │   │   ├── exaone.py
+    │   │   ├── falcon.py
+    │   │   ├── florence2.py
+    │   │   ├── fuyu.py
+    │   │   ├── gemma.py
+    │   │   ├── gemma2.py
+    │   │   ├── glm.py
+    │   │   ├── glm4_vision_encoder.py
+    │   │   ├── gpt2.py
+    │   │   ├── gpt_bigcode.py
+    │   │   ├── gpt_j.py
+    │   │   ├── gpt_neox.py
+    │   │   ├── granite.py
+    │   │   ├── granitemoe.py
+    │   │   ├── gritlm.py
+    │   │   ├── h2ovl.py
+    │   │   ├── idefics2_vision_model.py
+    │   │   ├── idefics3.py
+    │   │   ├── interfaces.py
+    │   │   ├── interfaces_base.py
+    │   │   ├── intern_vit.py
+    │   │   ├── internlm2.py
+    │   │   ├── internlm2_ve.py
+    │   │   ├── internvl.py
+    │   │   ├── jais.py
+    │   │   ├── jamba.py
+    │   │   ├── llama.py
+    │   │   ├── llava.py
+    │   │   ├── llava_next.py
+    │   │   ├── llava_next_video.py
+    │   │   ├── llava_onevision.py
+    │   │   ├── mamba.py
+    │   │   ├── mamba_cache.py
+    │   │   ├── medusa.py
+    │   │   ├── minicpm.py
+    │   │   ├── minicpm3.py
+    │   │   ├── minicpmv.py
+    │   │   ├── mixtral.py
+    │   │   ├── mixtral_quant.py
+    │   │   ├── mllama.py
+    │   │   ├── mlp_speculator.py
+    │   │   ├── module_mapping.py
+    │   │   ├── molmo.py
+    │   │   ├── mpt.py
+    │   │   ├── nemotron.py
+    │   │   ├── nvlm_d.py
+    │   │   ├── olmo.py
+    │   │   ├── olmo2.py
+    │   │   ├── olmoe.py
+    │   │   ├── opt.py
+    │   │   ├── orion.py
+    │   │   ├── paligemma.py
+    │   │   ├── persimmon.py
+    │   │   ├── phi.py
+    │   │   ├── phi3.py
+    │   │   ├── phi3_small.py
+    │   │   ├── phi3v.py
+    │   │   ├── phimoe.py
+    │   │   ├── pixtral.py
+    │   │   ├── qwen.py
+    │   │   ├── qwen2.py
+    │   │   ├── qwen2_audio.py
+    │   │   ├── qwen2_moe.py
+    │   │   ├── qwen2_rm.py
+    │   │   ├── qwen2_vl.py
+    │   │   ├── registry.py
+    │   │   ├── roberta.py
+    │   │   ├── siglip.py
+    │   │   ├── solar.py
+    │   │   ├── stablelm.py
+    │   │   ├── starcoder2.py
+    │   │   ├── telechat2.py
+    │   │   ├── ultravox.py
+    │   │   ├── utils.py
+    │   │   ├── vision.py
+    │   │   └── whisper.py
+    │   ├── parameter.py
+    │   ├── pooling_metadata.py
+    │   ├── sampling_metadata.py
+    │   └── utils.py
+    ├── multimodal
+    │   ├── __init__.py
+    │   ├── audio.py
+    │   ├── base.py
+    │   ├── hasher.py
+    │   ├── image.py
+    │   ├── inputs.py
+    │   ├── parse.py
+    │   ├── processing.py
+    │   ├── profiling.py
+    │   ├── registry.py
+    │   ├── utils.py
+    │   └── video.py
+    ├── outputs.py
+    ├── platforms
+    │   ├── __init__.py
+    │   ├── cpu.py
+    │   ├── cuda.py
+    │   ├── hpu.py
+    │   ├── interface.py
+    │   ├── neuron.py
+    │   ├── openvino.py
+    │   ├── rocm.py
+    │   ├── tpu.py
+    │   └── xpu.py
+    ├── plugins
+    │   └── __init__.py
+    ├── pooling_params.py
+    ├── profiler
+    │   ├── __init__.py
+    │   ├── layerwise_profile.py
+    │   └── utils.py
+    ├── prompt_adapter
+    │   ├── __init__.py
+    │   ├── layers.py
+    │   ├── models.py
+    │   ├── request.py
+    │   ├── utils.py
+    │   └── worker_manager.py
+    ├── py.typed
+    ├── sampling_params.py
+    ├── scalar_type.py
+    ├── scripts.py
+    ├── sequence.py
+    ├── spec_decode
+    │   ├── __init__.py
+    │   ├── batch_expansion.py
+    │   ├── draft_model_runner.py
+    │   ├── interfaces.py
+    │   ├── medusa_worker.py
+    │   ├── metrics.py
+    │   ├── mlp_speculator_worker.py
+    │   ├── mqa_scorer.py
+    │   ├── multi_step_worker.py
+    │   ├── ngram_worker.py
+    │   ├── proposer_worker_base.py
+    │   ├── smaller_tp_proposer_worker.py
+    │   ├── spec_decode_worker.py
+    │   ├── target_model_runner.py
+    │   ├── top1_proposer.py
+    │   └── util.py
+    ├── tracing.py
+    ├── transformers_utils
+    │   ├── __init__.py
+    │   ├── config.py
+    │   ├── configs
+    │   │   ├── __init__.py
+    │   │   ├── arctic.py
+    │   │   ├── aria.py
+    │   │   ├── chatglm.py
+    │   │   ├── cohere2.py
+    │   │   ├── dbrx.py
+    │   │   ├── eagle.py
+    │   │   ├── exaone.py
+    │   │   ├── falcon.py
+    │   │   ├── h2ovl.py
+    │   │   ├── internvl.py
+    │   │   ├── jais.py
+    │   │   ├── medusa.py
+    │   │   ├── mllama.py
+    │   │   ├── mlp_speculator.py
+    │   │   ├── mpt.py
+    │   │   ├── nemotron.py
+    │   │   ├── nvlm_d.py
+    │   │   ├── olmo2.py
+    │   │   ├── solar.py
+    │   │   ├── telechat2.py
+    │   │   └── ultravox.py
+    │   ├── detokenizer.py
+    │   ├── detokenizer_utils.py
+    │   ├── processor.py
+    │   ├── s3_utils.py
+    │   ├── tokenizer.py
+    │   ├── tokenizer_group
+    │   │   ├── __init__.py
+    │   │   ├── base_tokenizer_group.py
+    │   │   ├── ray_tokenizer_group.py
+    │   │   └── tokenizer_group.py
+    │   ├── tokenizers
+    │   │   ├── __init__.py
+    │   │   └── mistral.py
+    │   └── utils.py
+    ├── triton_utils
+    │   ├── __init__.py
+    │   ├── custom_cache_manager.py
+    │   └── importing.py
+    ├── usage
+    │   ├── __init__.py
+    │   └── usage_lib.py
+    ├── utils.py
+    ├── v1
+    │   ├── __init__.py
+    │   ├── attention
+    │   │   ├── __init__.py
+    │   │   └── backends
+    │   │       ├── __init__.py
+    │   │       └── flash_attn.py
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── encoder_cache_manager.py
+    │   │   ├── kv_cache_manager.py
+    │   │   ├── kv_cache_utils.py
+    │   │   └── scheduler.py
+    │   ├── engine
+    │   │   ├── __init__.py
+    │   │   ├── async_llm.py
+    │   │   ├── core.py
+    │   │   ├── core_client.py
+    │   │   ├── detokenizer.py
+    │   │   ├── llm_engine.py
+    │   │   ├── mm_input_mapper.py
+    │   │   └── processor.py
+    │   ├── executor
+    │   │   ├── __init__.py
+    │   │   ├── abstract.py
+    │   │   ├── multiproc_executor.py
+    │   │   ├── ray_executor.py
+    │   │   ├── ray_utils.py
+    │   │   └── uniproc_executor.py
+    │   ├── outputs.py
+    │   ├── request.py
+    │   ├── sample
+    │   │   ├── __init__.py
+    │   │   ├── metadata.py
+    │   │   ├── ops
+    │   │   │   ├── __init__.py
+    │   │   │   ├── penalties.py
+    │   │   │   └── topk_topp_sampler.py
+    │   │   └── sampler.py
+    │   ├── serial_utils.py
+    │   ├── utils.py
+    │   └── worker
+    │       ├── __init__.py
+    │       ├── block_table.py
+    │       ├── gpu_input_batch.py
+    │       ├── gpu_model_runner.py
+    │       └── gpu_worker.py
+    ├── version.py
+    ├── vllm_flash_attn
+    │   └── .gitkeep
+    └── worker
+        ├── __init__.py
+        ├── cache_engine.py
+        ├── cpu_enc_dec_model_runner.py
+        ├── cpu_model_runner.py
+        ├── cpu_pooling_model_runner.py
+        ├── cpu_worker.py
+        ├── enc_dec_model_runner.py
+        ├── hpu_model_runner.py
+        ├── hpu_worker.py
+        ├── model_runner.py
+        ├── model_runner_base.py
+        ├── multi_step_model_runner.py
+        ├── multi_step_tpu_worker.py
+        ├── multi_step_worker.py
+        ├── neuron_model_runner.py
+        ├── neuron_worker.py
+        ├── openvino_model_runner.py
+        ├── openvino_worker.py
+        ├── pooling_model_runner.py
+        ├── tpu_model_runner.py
+        ├── tpu_worker.py
+        ├── utils.py
+        ├── worker.py
+        ├── worker_base.py
+        ├── xpu_model_runner.py
+        └── xpu_worker.py
+243 directories, 1596 files
