@@ -1,0 +1,187 @@
+.
+├── .dockerignore
+├── .gitignore
+├── BUILD.md
+├── LICENSE.md
+├── README.md
+├── backend
+│   ├── .editorconfig
+│   ├── .env.exemple
+│   ├── .gitattributes
+│   ├── .gitignore
+│   ├── .yarnrc.yml
+│   ├── INSTALL.md
+│   ├── README.md
+│   ├── global.d.ts
+│   ├── olm.d.ts
+│   ├── package.json
+│   ├── src
+│   │   ├── Crontab.ts
+│   │   ├── bot
+│   │   │   ├── 777
+│   │   │   │   ├── answer.ts
+│   │   │   │   ├── bot.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   └── scripts
+│   │   │   │       ├── README.md
+│   │   │   │       └── help.ts
+│   │   │   ├── README.md
+│   │   │   ├── classes
+│   │   │   │   └── User.ts
+│   │   │   ├── common
+│   │   │   │   ├── Bot.ts
+│   │   │   │   ├── BotMessageData.ts
+│   │   │   │   ├── Brain.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── helper.ts
+│   │   │   │   ├── htmlFormatHelpers.ts
+│   │   │   │   └── scripts
+│   │   │   │       ├── aliases
+│   │   │   │       │   ├── createAlias.ts
+│   │   │   │       │   ├── deleteAlias.ts
+│   │   │   │       │   └── listAlias.ts
+│   │   │   │       ├── delete.ts
+│   │   │   │       ├── downgrade.ts
+│   │   │   │       ├── gallantry.ts
+│   │   │   │       ├── getService.ts
+│   │   │   │       ├── invite.ts
+│   │   │   │       ├── ldapGroup
+│   │   │   │       │   ├── createLdapGroup.ts
+│   │   │   │       │   └── deleteLdapGroup.ts
+│   │   │   │       ├── leave.ts
+│   │   │   │       ├── listService.ts
+│   │   │   │       ├── melListGroup
+│   │   │   │       │   ├── createMelListGroup.ts
+│   │   │   │       │   └── deleteMelListGroup.ts
+│   │   │   │       ├── pingService.ts
+│   │   │   │       ├── promote.ts
+│   │   │   │       ├── updateGroupMembers.ts
+│   │   │   │       └── webhoook.ts
+│   │   │   ├── gmcd
+│   │   │   │   ├── answer.ts
+│   │   │   │   ├── bot.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   └── scripts
+│   │   │   │       ├── README.md
+│   │   │   │       ├── extract.ts
+│   │   │   │       ├── help.ts
+│   │   │   │       ├── norris.ts
+│   │   │   │       └── ollama.ts
+│   │   │   └── psin
+│   │   │       ├── answer.ts
+│   │   │       ├── bot.ts
+│   │   │       ├── config.ts
+│   │   │       └── scripts
+│   │   │           ├── README.md
+│   │   │           ├── contacts.ts
+│   │   │           ├── help.ts
+│   │   │           ├── incidents.ts
+│   │   │           ├── stats.ts
+│   │   │           └── statut.ts
+│   │   ├── configs
+│   │   │   └── db.config.ts
+│   │   ├── controllers
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── bot.controller.ts
+│   │   │   ├── metrics.controller.ts
+│   │   │   ├── user.controller.ts
+│   │   │   └── webhook.controller.ts
+│   │   ├── models
+│   │   │   ├── index.ts
+│   │   │   ├── ldapListGroup.model.ts
+│   │   │   ├── mailListGroup.model.ts
+│   │   │   ├── metric.model.ts
+│   │   │   ├── user.model.ts
+│   │   │   └── webhook.model.ts
+│   │   ├── requestHandlers
+│   │   │   └── syntaxError.handler.ts
+│   │   ├── routes
+│   │   │   ├── auth.routes.ts
+│   │   │   ├── bot.room.routes.ts
+│   │   │   ├── bot.user.routes.ts
+│   │   │   ├── metrics.routes.ts
+│   │   │   ├── tests.routes.ts
+│   │   │   ├── user.routes.ts
+│   │   │   └── webhook.routes.ts
+│   │   ├── server.ts
+│   │   ├── services
+│   │   │   ├── auth.service.ts
+│   │   │   ├── bot.service.ts
+│   │   │   ├── ldap.service.ts
+│   │   │   ├── ldapListGroup.service.ts
+│   │   │   ├── mailListGroup.service.ts
+│   │   │   ├── metric.service.ts
+│   │   │   ├── user.service.ts
+│   │   │   └── webhook.service.ts
+│   │   ├── swagger.config.ts
+│   │   └── utils
+│   │       ├── IWebResponse.ts
+│   │       ├── classes
+│   │       │   └── error.ts
+│   │       ├── fetchWithError.ts
+│   │       ├── logger.ts
+│   │       └── utils.ts
+│   ├── tsconfig.json
+│   └── yarn.lock
+├── backend-docker
+│   └── Dockerfile
+├── backend-pantalaimon
+│   └── conf
+│       └── pantalaimon.conf
+├── docker-compose.yml
+└── frontend
+    ├── .editorconfig
+    ├── .env.development
+    ├── .eslintignore
+    ├── .eslintrc.cjs
+    ├── .gitignore
+    ├── .prettierrc.json
+    ├── .vscode
+    │   ├── extensions.json
+    │   └── settings.json
+    ├── .yarnrc.yml
+    ├── README.md
+    ├── env.d.ts
+    ├── index.html
+    ├── package.json
+    ├── public
+    │   ├── android-chrome-192x192.png
+    │   ├── android-chrome-512x512.png
+    │   ├── apple-touch-icon.png
+    │   ├── browserconfig.xml
+    │   ├── favicon-16x16.png
+    │   ├── favicon-32x32.png
+    │   ├── favicon.ico
+    │   └── manifest.json
+    ├── src
+    │   ├── App.vue
+    │   ├── components
+    │   │   └── WebhookTableLabel.vue
+    │   ├── components.d.ts
+    │   ├── composable
+    │   │   └── useAuth.ts
+    │   ├── env.d.ts
+    │   ├── icons.ts
+    │   ├── main.css
+    │   ├── main.ts
+    │   ├── router
+    │   │   └── index.ts
+    │   ├── scripts
+    │   │   └── fetchWithError.ts
+    │   ├── stores
+    │   │   └── webhooks.ts
+    │   └── views
+    │       ├── Login.vue
+    │       ├── Logout.vue
+    │       ├── Postman.vue
+    │       ├── Webhook.vue
+    │       └── Webhooks.vue
+    ├── tsconfig.app.json
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    ├── tsconfig.vitest.json
+    ├── vite.config.ts
+    ├── vite.config.ts.timestamp-1705696179313-a493174bc8c08.mjs
+    ├── vue-dsfr-auto-import-preset.ts
+    └── yarn.lock
+37 directories, 149 files
