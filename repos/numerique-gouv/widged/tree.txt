@@ -1,0 +1,397 @@
+.
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── backend.yml
+│       └── frontend.yml
+├── .gitignore
+├── .gitlint
+├── .gitmodules
+├── CHANGELOG.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── UPGRADE.md
+├── assets
+│   ├── folder.png
+│   ├── search.png
+│   └── workspaces.png
+├── bin
+│   ├── Tiltfile
+│   ├── _config.sh
+│   ├── compose
+│   ├── manage
+│   ├── pylint
+│   ├── pytest
+│   ├── start-kind.sh
+│   ├── state
+│   ├── terraform
+│   ├── update_openapi_schema
+│   └── updatekeys.sh
+├── docker
+│   └── files
+│       └── usr
+│           └── local
+│               ├── bin
+│               │   └── entrypoint
+│               └── etc
+│                   └── gunicorn
+│                       └── impress.py
+├── docker-compose.yml
+├── docs
+│   └── tsclient.md
+├── env.d
+│   └── development
+│       ├── common.dist
+│       ├── common.e2e.dist
+│       ├── kc_postgresql.dist
+│       └── postgresql.dist
+├── gitlint
+│   └── gitlint_emoji.py
+├── renovate.json
+├── scripts
+│   ├── install-hooks.sh
+│   ├── update-git-submodule.sh
+│   └── updatekeys.sh
+└── src
+    ├── backend
+    │   ├── .gitignore
+    │   ├── .pylintrc
+    │   ├── MANIFEST.in
+    │   ├── __init__.py
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── fields.py
+    │   │   │   ├── filters.py
+    │   │   │   ├── permissions.py
+    │   │   │   ├── serializers.py
+    │   │   │   ├── views
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── dev.py
+    │   │   │   │   ├── explore.py
+    │   │   │   │   └── spoof.py
+    │   │   │   └── viewsets.py
+    │   │   ├── apps.py
+    │   │   ├── authentication
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends.py
+    │   │   │   ├── urls.py
+    │   │   │   └── views.py
+    │   │   ├── backends
+    │   │   │   ├── __init__.py
+    │   │   │   ├── dummy_backend.py
+    │   │   │   └── dummy_data.py
+    │   │   ├── content_manager.py
+    │   │   ├── enums.py
+    │   │   ├── factories.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── static
+    │   │   │   └── images
+    │   │   │       ├── logo-suite-numerique.png
+    │   │   │       └── mail-header-background.png
+    │   │   ├── templatetags
+    │   │   │   ├── __init__.py
+    │   │   │   └── extra_tags.py
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── authentication
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_backends.py
+    │   │   │   │   ├── test_urls.py
+    │   │   │   │   └── test_views.py
+    │   │   │   ├── swagger
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_openapi_schema.py
+    │   │   │   └── test_api_users.py
+    │   │   └── urls.py
+    │   ├── demo
+    │   │   ├── __init__.py
+    │   │   ├── data
+    │   │   │   └── template
+    │   │   │       ├── code.txt
+    │   │   │       └── css.txt
+    │   │   ├── defaults.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── create_demo.py
+    │   │   │       └── createsuperuser.py
+    │   │   └── tests
+    │   │       └── __init__.py
+    │   ├── locale
+    │   │   └── .gitkeep
+    │   ├── main
+    │   │   ├── __init__.py
+    │   │   ├── celery_app.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── manage.py
+    │   ├── pyproject.toml
+    │   └── setup.py
+    ├── frontend
+    │   ├── .prettierrc.js
+    │   ├── Dockerfile
+    │   ├── apps
+    │   │   ├── consumer
+    │   │   │   ├── .eslintrc.js
+    │   │   │   ├── .gitignore
+    │   │   │   ├── README.md
+    │   │   │   ├── next.config.mjs
+    │   │   │   ├── package.json
+    │   │   │   ├── public
+    │   │   │   │   ├── next.svg
+    │   │   │   │   └── vercel.svg
+    │   │   │   ├── src
+    │   │   │   │   └── app
+    │   │   │   │       ├── favicon.ico
+    │   │   │   │       ├── globals.css
+    │   │   │   │       ├── layout.tsx
+    │   │   │   │       └── page.tsx
+    │   │   │   └── tsconfig.json
+    │   │   ├── e2e
+    │   │   │   ├── .eslintrc.js
+    │   │   │   ├── .gitignore
+    │   │   │   ├── __tests__
+    │   │   │   │   └── index.spec.ts
+    │   │   │   ├── package.json
+    │   │   │   ├── playwright.config.ts
+    │   │   │   ├── tsconfig.json
+    │   │   │   └── type
+    │   │   │       └── convert-stream.d.ts
+    │   │   └── main
+    │   │       ├── .env.development
+    │   │       ├── .env.test
+    │   │       ├── .eslintrc.js
+    │   │       ├── .gitignore
+    │   │       ├── .prettierignore
+    │   │       ├── .storybook
+    │   │       │   ├── main.ts
+    │   │       │   └── preview.tsx
+    │   │       ├── README.md
+    │   │       ├── conf
+    │   │       │   └── default.conf
+    │   │       ├── cunningham.ts
+    │   │       ├── jest.config.ts
+    │   │       ├── jest.setup.ts
+    │   │       ├── next-env.d.ts
+    │   │       ├── next.config.js
+    │   │       ├── package.json
+    │   │       ├── package_local.json
+    │   │       ├── public
+    │   │       │   ├── assets
+    │   │       │   │   ├── img-not-found.svg
+    │   │       │   │   └── logo-pdf.svg
+    │   │       │   └── favicon.ico
+    │   │       ├── src
+    │   │       │   ├── __tests__
+    │   │       │   │   └── index.tsx
+    │   │       │   ├── api
+    │   │       │   │   ├── APIError.ts
+    │   │       │   │   ├── fetchApi.ts
+    │   │       │   │   ├── types.ts
+    │   │       │   │   └── utils.ts
+    │   │       │   ├── app
+    │   │       │   │   ├── explorer
+    │   │       │   │   │   ├── folders
+    │   │       │   │   │   │   ├── [id]
+    │   │       │   │   │   │   │   └── page.tsx
+    │   │       │   │   │   │   └── layout.tsx
+    │   │       │   │   │   ├── layout.tsx
+    │   │       │   │   │   ├── page.tsx
+    │   │       │   │   │   └── search
+    │   │       │   │   │       ├── page.scss
+    │   │       │   │   │       └── page.tsx
+    │   │       │   │   ├── global.scss
+    │   │       │   │   ├── layout.tsx
+    │   │       │   │   ├── not-found.tsx
+    │   │       │   │   ├── page.scss
+    │   │       │   │   ├── page.tsx
+    │   │       │   │   └── sub-layout.tsx
+    │   │       │   ├── assets
+    │   │       │   │   ├── fonts
+    │   │       │   │   │   └── Marianne
+    │   │       │   │   │       ├── Marianne-Bold.woff
+    │   │       │   │   │       ├── Marianne-Bold_Italic.woff
+    │   │       │   │   │       ├── Marianne-ExtraBold.woff
+    │   │       │   │   │       ├── Marianne-ExtraBold_Italic.woff
+    │   │       │   │   │       ├── Marianne-Light.woff
+    │   │       │   │   │       ├── Marianne-Light_Italic.woff
+    │   │       │   │   │       ├── Marianne-Medium.woff
+    │   │       │   │   │       ├── Marianne-Medium_Italic.woff
+    │   │       │   │   │       ├── Marianne-Regular.woff
+    │   │       │   │   │       ├── Marianne-Regular_Italic.woff
+    │   │       │   │   │       ├── Marianne-Thin.woff
+    │   │       │   │   │       ├── Marianne-Thin_Italic.woff
+    │   │       │   │   │       └── Marianne-font.css
+    │   │       │   │   ├── icons
+    │   │       │   │   │   ├── icon-404.svg
+    │   │       │   │   │   ├── icon-devise.svg
+    │   │       │   │   │   ├── icon-marianne.svg
+    │   │       │   │   │   └── icon-user.svg
+    │   │       │   │   └── images
+    │   │       │   │       └── folder.svg
+    │   │       │   ├── components
+    │   │       │   │   ├── Badge
+    │   │       │   │   │   ├── Badge.scss
+    │   │       │   │   │   ├── Badge.stories.ts
+    │   │       │   │   │   └── Badge.tsx
+    │   │       │   │   ├── Breadcrumbs
+    │   │       │   │   │   ├── index.scss
+    │   │       │   │   │   ├── index.stories.tsx
+    │   │       │   │   │   └── index.tsx
+    │   │       │   │   ├── Button
+    │   │       │   │   │   └── Button.tsx
+    │   │       │   │   ├── Client
+    │   │       │   │   │   └── WidgedReverseClient.ts
+    │   │       │   │   ├── DropButton
+    │   │       │   │   │   ├── DropButton.scss
+    │   │       │   │   │   └── DropButton.tsx
+    │   │       │   │   ├── Examples
+    │   │       │   │   │   └── Examples.stories.tsx
+    │   │       │   │   ├── Explorer
+    │   │       │   │   │   ├── Explorer.scss
+    │   │       │   │   │   ├── Explorer.tsx
+    │   │       │   │   │   ├── ExplorerBreadcrumbs.tsx
+    │   │       │   │   │   ├── ExplorerContent.tsx
+    │   │       │   │   │   ├── ExplorerContentGrid.tsx
+    │   │       │   │   │   ├── ExplorerFooter.tsx
+    │   │       │   │   │   └── ExplorerWorkspaces.tsx
+    │   │       │   │   ├── FileIcon
+    │   │       │   │   │   └── FileIcon.tsx
+    │   │       │   │   ├── Footer
+    │   │       │   │   │   ├── Footer.scss
+    │   │       │   │   │   ├── Footer.tsx
+    │   │       │   │   │   └── assets
+    │   │       │   │   │       └── external-link.svg
+    │   │       │   │   ├── Header
+    │   │       │   │   │   ├── AccountDropdown.tsx
+    │   │       │   │   │   ├── Header.scss
+    │   │       │   │   │   ├── Header.tsx
+    │   │       │   │   │   ├── LaGaufre.tsx
+    │   │       │   │   │   └── assets
+    │   │       │   │   │       ├── icon-cells.svg
+    │   │       │   │   │       └── icon-docs.svg
+    │   │       │   │   ├── LogoGouv
+    │   │       │   │   │   ├── LogoGouv.scss
+    │   │       │   │   │   └── LogoGouv.tsx
+    │   │       │   │   ├── SearchBar
+    │   │       │   │   │   └── SearchBar.tsx
+    │   │       │   │   └── WorkspaceIcon
+    │   │       │   │       ├── WorkspaceIcon.scss
+    │   │       │   │       └── WorkspaceIcon.tsx
+    │   │       │   ├── core
+    │   │       │   │   ├── AppProvider.tsx
+    │   │       │   │   ├── auth
+    │   │       │   │   │   ├── Auth.tsx
+    │   │       │   │   │   └── types.ts
+    │   │       │   │   └── conf.ts
+    │   │       │   ├── cunningham
+    │   │       │   │   ├── cunningham-custom-tokens.css
+    │   │       │   │   ├── cunningham-style.scss
+    │   │       │   │   ├── cunningham-tokens.css
+    │   │       │   │   └── cunningham-tokens.ts
+    │   │       │   ├── custom-next.d.ts
+    │   │       │   ├── hooks
+    │   │       │   │   └── useApi.tsx
+    │   │       │   ├── i18n
+    │   │       │   │   ├── conf.ts
+    │   │       │   │   ├── initI18n.ts
+    │   │       │   │   ├── translations.json
+    │   │       │   │   └── utils.ts
+    │   │       │   └── types
+    │   │       │       ├── components.ts
+    │   │       │       ├── data.ts
+    │   │       │       └── next.ts
+    │   │       ├── stylelint.config.js
+    │   │       └── tsconfig.json
+    │   ├── package.json
+    │   ├── packages
+    │   │   ├── eslint-config-main
+    │   │   │   ├── .eslintrc.js
+    │   │   │   ├── common.js
+    │   │   │   ├── jest.js
+    │   │   │   ├── next.js
+    │   │   │   ├── package.json
+    │   │   │   └── playwright.js
+    │   │   └── lasuite-widged
+    │   │       ├── .eslintrc.cjs
+    │   │       ├── .gitignore
+    │   │       ├── README.md
+    │   │       ├── package.json
+    │   │       ├── public
+    │   │       │   └── vite.svg
+    │   │       ├── src
+    │   │       │   ├── Config.ts
+    │   │       │   ├── FileExplorer.tsx
+    │   │       │   ├── Modal.tsx
+    │   │       │   ├── Types.ts
+    │   │       │   ├── index.scss
+    │   │       │   └── index.tsx
+    │   │       ├── tsconfig.app.json
+    │   │       ├── tsconfig.json
+    │   │       ├── tsconfig.node.json
+    │   │       └── vite.config.ts
+    │   ├── turbo.json
+    │   └── yarn.lock
+    ├── helm
+    │   ├── env.d
+    │   │   ├── dev
+    │   │   │   ├── secrets.enc.yaml
+    │   │   │   └── values.impress.yaml.gotmpl
+    │   │   ├── preprod
+    │   │   │   ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/impress/env/preprod/secrets.enc.yaml
+    │   │   │   └── values.impress.yaml.gotmpl
+    │   │   ├── production
+    │   │   │   ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/impress/env/production/secrets.enc.yaml
+    │   │   │   └── values.impress.yaml.gotmpl
+    │   │   └── staging
+    │   │       ├── secrets.enc.yaml -> ../../../../secrets/numerique-gouv/impress/env/staging/secrets.enc.yaml
+    │   │       └── values.impress.yaml.gotmpl
+    │   ├── extra
+    │   │   ├── Chart.yaml
+    │   │   └── templates
+    │   │       ├── keydb.yaml
+    │   │       ├── postgresql.yaml
+    │   │       ├── s3.yaml
+    │   │       └── secrets.yaml
+    │   ├── helmfile.yaml
+    │   └── impress
+    │       ├── Chart.yaml
+    │       ├── README.md
+    │       ├── generate-readme.sh
+    │       ├── templates
+    │       │   ├── _helpers.tpl
+    │       │   ├── backend_deployment.yaml
+    │       │   ├── backend_job.yaml
+    │       │   ├── backend_job_createsuperuser.yaml
+    │       │   ├── backend_svc.yaml
+    │       │   ├── frontend_deployment.yaml
+    │       │   ├── frontend_svc.yaml
+    │       │   ├── ingress.yaml
+    │       │   ├── ingress_admin.yaml
+    │       │   ├── ingress_ws.yaml
+    │       │   ├── webrtc_deployment.yaml
+    │       │   └── webrtc_svc.yaml
+    │       └── values.yaml
+    └── tsclient
+        ├── package.json
+        ├── scripts
+        │   └── openapi-typescript-codegen
+        │       └── generate_api_client_local.sh
+        └── yarn.lock
+107 directories, 289 files
