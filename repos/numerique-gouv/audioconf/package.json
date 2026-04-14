@@ -1,0 +1,66 @@
+{
+  "name": "conferences",
+  "version": "1.6.2",
+  "description": "Conférences audio et vidéo pour les fonctionnaires de l'Etat",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "devKnex": "DEBUG=knex:query nodemon index.js",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix",
+    "migrate": "knex migrate:latest",
+    "makeMigration": "knex migrate:make",
+    "rollback": "knex migrate:rollback",
+    "listMigrations": "knex migrate:list",
+    "start": "node index.js",
+    "test": "mocha test/*.js --recursive --exit --require ./test/setup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betagouv/conferences.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/betagouv/conferences/issues"
+  },
+  "homepage": "https://github.com/betagouv/conferences#readme",
+  "dependencies": {
+    "@gouvfr/dsfr": "^1.11.2",
+    "@sentry/node": "^6.2.2",
+    "chart.js": "^2.9.4",
+    "connect-flash": "^0.1.1",
+    "connect-session-knex": "^2.0.0",
+    "cookie-parser": "^1.4.5",
+    "cron": "^1.8.2",
+    "date-fns": "^2.16.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "express-session": "^1.17.1",
+    "intl": "^1.2.5",
+    "jsonwebtoken": "^9.0.0",
+    "knex": "^2.4.0",
+    "memorystore": "^1.6.4",
+    "nodemailer": "^6.6.1",
+    "ovh": "^2.0.3",
+    "pg": "^8.4.2",
+    "remixicon": "^2.5.0",
+    "openid-client": "^5.1.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20",
+    "sinon": "^9.2.0"
+  }
+}

@@ -1,0 +1,122 @@
+.
+├── .buildpacks
+├── .env.sample
+├── .eslintrc.json
+├── .github
+│   └── workflows
+│       ├── codeql-analysis.yml
+│       └── node.js.yml
+├── .gitignore
+├── .locales
+├── .vscode
+│   └── settings.json
+├── Dockerfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── config.js
+├── controllers
+│   ├── createConfController.js
+│   ├── dashboardController.js
+│   ├── landingController.js
+│   ├── statusController.js
+│   └── userController.js
+├── cron.js
+├── docker-compose.yml
+├── index.js
+├── jobs
+│   ├── anonymizeConferences.js
+│   ├── computeStats.js
+│   ├── fetchCallsStats.js
+│   └── sendSurveyEmails.js
+├── knex-client.js
+├── knexfile.js
+├── lib
+│   ├── conferences.js
+│   ├── crypto.js
+│   ├── db.js
+│   ├── domains.js
+│   ├── emailChecker.js
+│   ├── emailer.js
+│   ├── format.js
+│   ├── oidcAuth.js
+│   └── stats.js
+├── locust
+│   ├── docker-compose.yml
+│   └── locustfile.py
+├── migrations
+│   ├── 20201029152804_init.js
+│   ├── 20201030152814_add-tokens.js
+│   ├── 20201031195358_add-duration-time-in-token.js
+│   ├── 20201101122909_clean-conferences-table.js
+│   ├── 20201104153854_add-stats-table.js
+│   ├── 20201106132737_add-free-phone-numbers-in-stats.js
+│   ├── 20201113153457_add-conference-day-in-logintokens.js
+│   ├── 20201116111022_make-duration-nullable.js
+│   ├── 20201120121225_add-booked-rooms-in-stats.js
+│   ├── 20201204105212_add-domain-on-conferences.js
+│   ├── 20201204180832_add-userTimezoneOffset-to-loginTokens.js
+│   ├── 20201210110731_add-surveySentAt-on-conferences.js
+│   ├── 20201224121753_add-table-callStats.js
+│   ├── 20210122164657_add-conference-day-in-conferences.js
+│   ├── 20210611104444_add-last-successful-callsStats-job.js
+│   ├── 20220520160537_add-oidc-auth.js
+│   └── 20220531161510_add-nonce-in-oidc-request.js
+├── package-lock.json
+├── package.json
+├── scalingo.json
+├── scripts
+│   ├── anonymizeConferences.js
+│   ├── computeStats.js
+│   ├── fetchCallsStats.js
+│   └── sendSurveyEmails.js
+├── static
+│   ├── css
+│   │   └── custom.css
+│   ├── images
+│   │   └── favicon
+│   │       ├── favicon-16x16.png
+│   │       └── favicon-32x32.png
+│   └── js
+│       ├── charts.js
+│       └── dashboard.js
+├── test
+│   ├── anonymizeConferenceTest.js
+│   ├── conferencesTest.js
+│   ├── createConfControllerTest.js
+│   ├── dbTest.js
+│   ├── fetchCallsStatsTest.js
+│   ├── formatTest.js
+│   ├── oidcAuthTest.js
+│   ├── setup.js
+│   ├── startAuthControllerTest.js
+│   ├── statusControllerTest.js
+│   ├── surveyEmailTest.js
+│   ├── test-global-hooks.js
+│   └── utils.js
+├── urls.js
+└── views
+    ├── confCreated.ejs
+    ├── contact.ejs
+    ├── dashboard.ejs
+    ├── emails
+    │   └── confWebAccess.ejs
+    ├── faq.ejs
+    ├── landing.ejs
+    ├── legalNotice.ejs
+    ├── partials
+    │   ├── accordionBottom.ejs
+    │   ├── accordionTop.ejs
+    │   ├── askToAddNewService.ejs
+    │   ├── cgu.ejs
+    │   ├── dark-mode-modale.ejs
+    │   ├── dark-mode-switch.ejs
+    │   ├── footer.ejs
+    │   ├── header.ejs
+    │   ├── notificationError.ejs
+    │   ├── notificationInfo.ejs
+    │   ├── notificationSuccess.ejs
+    │   └── unsafeAnnouncementInfo.ejs
+    ├── stats.ejs
+    └── validationEmailSent.ejs
+19 directories, 102 files
