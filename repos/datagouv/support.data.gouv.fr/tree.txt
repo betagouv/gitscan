@@ -1,0 +1,151 @@
+.
+├── .env.dist
+├── .eslintignore
+├── .eslintrc.json
+├── .github
+│   └── workflows
+│       ├── production-deploy.yml
+│       ├── staging-deploy.yml
+│       └── test.yml
+├── .gitignore
+├── .prettierrc.js
+├── CHECKS
+├── LICENSE.md
+├── Procfile
+├── README.md
+├── config
+│   ├── answers
+│   │   ├── api_api-acces-restreint.md
+│   │   ├── api_api-specifique.md
+│   │   ├── api_other.md
+│   │   ├── api_recherche-api-non-referencee.md
+│   │   ├── api_referencer-api.md
+│   │   ├── ban.md
+│   │   ├── contenu.md
+│   │   ├── deces.md
+│   │   ├── decoupe.md
+│   │   ├── demande_donnees.md
+│   │   ├── demarches_admin.md
+│   │   ├── dvf.md
+│   │   ├── formation.md
+│   │   ├── info_covid.md
+│   │   ├── irve.md
+│   │   ├── numero_rna.md
+│   │   ├── opendata.md
+│   │   ├── question_donnees.md
+│   │   ├── siren_association.md
+│   │   └── siret.md
+│   └── question-tree.yaml
+├── doc
+│   └── adr
+│       ├── 0001-record-architecture-decisions.md
+│       ├── 0002-domain-driven-design.md
+│       └── 0003-server-side-rendering.md
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── .gitkeep
+│   ├── favicon
+│   │   ├── android-icon-144x144.png
+│   │   ├── android-icon-192x192.png
+│   │   ├── android-icon-36x36.png
+│   │   ├── android-icon-48x48.png
+│   │   ├── android-icon-72x72.png
+│   │   ├── android-icon-96x96.png
+│   │   ├── apple-icon-114x114.png
+│   │   ├── apple-icon-120x120.png
+│   │   ├── apple-icon-144x144.png
+│   │   ├── apple-icon-152x152.png
+│   │   ├── apple-icon-180x180.png
+│   │   ├── apple-icon-57x57.png
+│   │   ├── apple-icon-60x60.png
+│   │   ├── apple-icon-72x72.png
+│   │   ├── apple-icon-76x76.png
+│   │   ├── apple-icon-precomposed.png
+│   │   ├── apple-icon.png
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon-96x96.png
+│   │   ├── favicon.ico
+│   │   ├── manifest.json
+│   │   ├── ms-icon-144x144.png
+│   │   ├── ms-icon-150x150.png
+│   │   ├── ms-icon-310x310.png
+│   │   └── ms-icon-70x70.png
+│   └── logo.png
+├── src
+│   ├── application
+│   │   ├── presenters
+│   │   │   ├── support-flow.presenter.test.ts
+│   │   │   └── support-flow.presenter.ts
+│   │   └── usecases
+│   │       ├── create-support-ticket.usecase.ts
+│   │       └── navigate-support-flow.usecase.ts
+│   ├── domain
+│   │   ├── support
+│   │   │   ├── branded-types.ts
+│   │   │   ├── question-tree.ts
+│   │   │   ├── support-flow.test.ts
+│   │   │   └── support-flow.ts
+│   │   └── ticketing
+│   │       ├── create-ticket.dto.ts
+│   │       └── ticket.manager.ts
+│   ├── infrastructure
+│   │   ├── config
+│   │   │   ├── __tests__
+│   │   │   │   ├── answers
+│   │   │   │   │   └── demandes-valeurs-foncieres.md
+│   │   │   │   └── question-tree.yaml
+│   │   │   ├── index.ts
+│   │   │   ├── question-tree.factory.test.ts
+│   │   │   ├── question-tree.factory.ts
+│   │   │   └── raw-question-tree.guard.ts
+│   │   ├── index.ts
+│   │   ├── server
+│   │   │   ├── assets-manifest.ts
+│   │   │   ├── container.ts
+│   │   │   └── index.ts
+│   │   └── zammad
+│   │       ├── ticket.manager.test.ts
+│   │       ├── ticket.manager.ts
+│   │       ├── zammad.client.test.ts
+│   │       └── zammad.client.ts
+│   └── presentation
+│       ├── client
+│       │   ├── index.css
+│       │   └── index.ts
+│       ├── controllers
+│       │   ├── index.ts
+│       │   ├── support-flow.controller.ts
+│       │   ├── support-ticket.controller.test.ts
+│       │   └── support-ticket.controller.ts
+│       └── middlewares
+│           ├── ticket-creation-validation.middleware.test.ts
+│           ├── ticket-creation-validation.middleware.ts
+│           ├── validation-errors-rendering.middleware.test.ts
+│           └── validation-errors-rendering.middleware.ts
+├── tsconfig.json
+├── views
+│   ├── base.njk
+│   ├── includes
+│   │   ├── answer-button.njk
+│   │   ├── answer.njk
+│   │   ├── choice.njk
+│   │   ├── footer.njk
+│   │   ├── form
+│   │   │   ├── content.njk
+│   │   │   ├── global-error.njk
+│   │   │   └── stream.njk
+│   │   ├── form.njk
+│   │   ├── head.njk
+│   │   ├── header.njk
+│   │   └── question.njk
+│   ├── index.njk
+│   ├── macros
+│   │   └── form.njk
+│   └── thank-you.njk
+└── webpack.config.js
+30 directories, 120 files
