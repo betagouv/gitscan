@@ -1,0 +1,319 @@
+.
+├── .buildpacks
+├── .dockerignore
+├── .env.example
+├── .env.test
+├── .github
+│   ├── PULL_REQUEST_TEMPLATE
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .locales
+├── .pre-commit-config.yaml
+├── Aptfile
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── Procfile
+├── README.md
+├── blog
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── blocks.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── managers.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0003_blogentrypage_header_color_class_and_more.py
+│   │   ├── 0004_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0005_delete_tag_blogentrypage_header_cta_text_and_more.py
+│   │   ├── 0006_category_colophon_alter_blogentrypage_body_and_more.py
+│   │   ├── 0007_alter_blogentrypage_body_and_more.py
+│   │   ├── 0008_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0009_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0010_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0011_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0012_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0013_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0014_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0015_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0016_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0017_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0018_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0019_merge_20240618_1446.py
+│   │   ├── 0020_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0021_blogentrypage_header_cta_buttons_and_more.py
+│   │   ├── 0022_blogindexpage_filter_by_author_and_more.py
+│   │   ├── 0023_organization_person_organization_item.py
+│   │   ├── 0024_transfer_organizations.py
+│   │   ├── 0025_remove_person_organization.py
+│   │   ├── 0026_alter_organization_options.py
+│   │   ├── 0027_rename_organization_item_person_organization.py
+│   │   ├── 0028_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0029_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── blog
+│   │       ├── blocks
+│   │       │   ├── blog_index_posts_list.html
+│   │       │   └── contact_card.html
+│   │       ├── blog_entry_page.html
+│   │       ├── blog_index_page.html
+│   │       ├── categories_list_page.html
+│   │       └── tags_list_page.html
+│   ├── tests.py
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── config
+│   ├── __init__.py
+│   ├── forms
+│   │   ├── __init__.py
+│   │   └── baseform.py
+│   ├── settings.py
+│   ├── settings_test.py
+│   ├── urls.py
+│   └── wsgi.py
+├── config.json.example
+├── content_manager
+│   ├── __init__.py
+│   ├── abstract.py
+│   ├── apps.py
+│   ├── blocks.py
+│   ├── constants.py
+│   ├── context_processors.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── create_demo_pages.py
+│   │       ├── create_starter_pages.py
+│   │       ├── import_dsfr_pictograms.py
+│   │       └── set_config.py
+│   ├── managers.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_contentpage_body.py
+│   │   ├── 0003_alter_contentpage_body.py
+│   │   ├── 0004_alter_contentpage_body.py
+│   │   ├── 0005_alter_contentpage_body.py
+│   │   ├── 0006_analyticssettings.py
+│   │   ├── 0007_cmsdsfrconfig.py
+│   │   ├── 0008_cmsdsfrconfig_theme_modale_button_and_more.py
+│   │   ├── 0009_alter_contentpage_body.py
+│   │   ├── 0010_alter_contentpage_body.py
+│   │   ├── 0011_cmsdsfrconfig_search_bar.py
+│   │   ├── 0012_alter_contentpage_body.py
+│   │   ├── 0013_alter_contentpage_body.py
+│   │   ├── 0014_alter_contentpage_body.py
+│   │   ├── 0015_alter_contentpage_options_and_more.py
+│   │   ├── 0016_auto_20240305_1611.py
+│   │   ├── 0017_tag_contentpage_header_cta_text_and_more.py
+│   │   ├── 0018_megamenu_megamenucategory.py
+│   │   ├── 0019_alter_contentpage_body.py
+│   │   ├── 0020_alter_contentpage_body_and_more.py
+│   │   ├── 0021_alter_contentpage_body.py
+│   │   ├── 0022_alter_cmsdsfrconfig_options_cmsdsfrconfig_beta_tag_and_more.py
+│   │   ├── 0023_alter_cmsdsfrconfig_footer_description_and_more.py
+│   │   ├── 0024_alter_socialmediaitem_options.py
+│   │   ├── 0025_alter_contentpage_body.py
+│   │   ├── 0026_alter_contentpage_body.py
+│   │   ├── 0027_alter_contentpage_body.py
+│   │   ├── 0028_alter_contentpage_body.py
+│   │   ├── 0029_alter_contentpage_body.py
+│   │   ├── 0030_alter_contentpage_body.py
+│   │   ├── 0031_alter_contentpage_body.py
+│   │   ├── 0032_alter_contentpage_body.py
+│   │   ├── 0033_alter_contentpage_body.py
+│   │   ├── 0034_alter_contentpage_body.py
+│   │   ├── 0035_alter_contentpage_body.py
+│   │   ├── 0036_contentpage_header_cta_buttons_and_more.py
+│   │   ├── 0037_alter_tag_options_alter_contentpage_body.py
+│   │   ├── 0038_alter_contentpage_body.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── content_manager
+│   │       ├── blocks
+│   │       │   ├── accordions.html
+│   │       │   ├── alert.html
+│   │       │   ├── badge.html
+│   │       │   ├── badges_list.html
+│   │       │   ├── blocks_stream.html
+│   │       │   ├── blog_recent_entries.html
+│   │       │   ├── breadcrumbs.html
+│   │       │   ├── button.html
+│   │       │   ├── buttons_horizontal_list.html
+│   │       │   ├── buttons_vertical_list.html
+│   │       │   ├── callout.html
+│   │       │   ├── card_horizontal.html
+│   │       │   ├── card_vertical.html
+│   │       │   ├── download_info.html
+│   │       │   ├── events_recent_entries.html
+│   │       │   ├── full_width_background.html
+│   │       │   ├── heading.html
+│   │       │   ├── highlight.html
+│   │       │   ├── iframe.html
+│   │       │   ├── image.html
+│   │       │   ├── image_and_text.html
+│   │       │   ├── link.html
+│   │       │   ├── links_vertical_list.html
+│   │       │   ├── messages.html
+│   │       │   ├── multicolumns.html
+│   │       │   ├── quote.html
+│   │       │   ├── stepper.html
+│   │       │   ├── subpages_list.html
+│   │       │   ├── tag.html
+│   │       │   ├── tags_list.html
+│   │       │   ├── text_and_cta.html
+│   │       │   ├── tile.html
+│   │       │   ├── transcription.html
+│   │       │   └── video.html
+│   │       ├── content_page.html
+│   │       ├── menus
+│   │       │   ├── mega_menu.html
+│   │       │   └── mega_menu_category.html
+│   │       ├── search_results.html
+│   │       ├── tag_page.html
+│   │       ├── tags_list_page.html
+│   │       └── widgets
+│   │           └── dsfr-icon-picker-widget.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   └── wagtail_dsfr_tags.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── test_blocks.py
+│   │   ├── test_utils.py
+│   │   └── test_views.py
+│   ├── urls.py
+│   ├── utils.py
+│   ├── views.py
+│   └── widgets.py
+├── cron.json.example
+├── dashboard
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── templates
+│   │   └── wagtailadmin
+│   │       ├── account
+│   │       │   └── password_reset
+│   │       │       ├── complete.html
+│   │       │       ├── confirm.html
+│   │       │       ├── done.html
+│   │       │       └── form.html
+│   │       ├── base.html
+│   │       ├── login.html
+│   │       └── userbar
+│   │           └── base.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── test_views.py
+│   ├── views.py
+│   └── wagtail_hooks.py
+├── docker-compose.yml
+├── entrypoint.sh
+├── events
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_eventsindexpage_filter_by_author_and_more.py
+│   │   ├── 0003_evententrypage_location_and_more.py
+│   │   ├── 0004_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   └── events
+│   │       └── filters.js
+│   ├── templates
+│   │   └── events
+│   │       ├── blocks
+│   │       │   └── events_index_posts_list.html
+│   │       ├── event_entry_page.html
+│   │       ├── events_archive_page.html
+│   │       └── events_index_page.html
+│   ├── tests.py
+│   └── views.py
+├── forms
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── forms
+│   │       ├── form_page.html
+│   │       └── form_page_landing.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── test_forms.py
+│   └── views.py
+├── locale
+│   └── fr
+│       └── LC_MESSAGES
+│           ├── django.mo
+│           └── django.po
+├── manage.py
+├── poetry.lock
+├── pyproject.toml
+├── setup.cfg
+├── setup.py
+├── static
+│   ├── artwork
+│   │   ├── coding.svg
+│   │   ├── logo-republique.svg
+│   │   └── technical-error.svg
+│   └── css
+│       ├── admin.css
+│       ├── icon-picker.css
+│       ├── style.css
+│       ├── style.css.map
+│       └── style.sass
+└── templates
+    ├── 404.html
+    ├── 500.html
+    ├── base.html
+    ├── blocks
+    │   ├── follow.html
+    │   ├── footer.html
+    │   └── header.html
+    └── menus
+        ├── custom_flat_menu.html
+        ├── custom_flat_menu_footer.html
+        ├── custom_main_menu.html
+        └── custom_sub_menu.html
+65 directories, 253 files
