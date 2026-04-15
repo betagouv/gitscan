@@ -1,36 +1,38 @@
-## Changelog : cdata (30 derniers jours, au 9 avril 2026)
+## Changelog : cdata (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'interface utilisateur, la correction de bugs et la modernisation de la stack technologique. L'application a été mise à jour vers Nuxt 4.0 et 3.18, apportant des améliorations de performance et de stabilité. Des améliorations ont également été apportées à la recherche, à la gestion des ressources et à la page de modération.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience de modération, la mise à jour des dépendances et l'amélioration de la stabilité et des performances de l'application. Plusieurs améliorations ont été apportées à l'interface utilisateur, notamment pour la gestion des ressources et la recherche, ainsi que des corrections de bugs pour assurer une meilleure expérience utilisateur. Une migration vers Nuxt 4 est en cours.
 
 ### Évolutions fonctionnelles
-- Ajout du support des "Topics" dans la recherche globale, permettant une recherche plus précise et ciblée. [#1030](https://github.com/datagouv/cdata/issues/1030)
-- Amélioration de la page de modération avec des informations supplémentaires sur les previews. [#1021](https://github.com/datagouv/cdata/issues/1021)
-- Ajout d'informations sur les définitions de catégories restreintes. [#1017](https://github.com/datagouv/cdata/issues/1017)
-- Amélioration de l'affichage des ressources avec des informations sur les en-têtes CORS. [#954](https://github.com/datagouv/cdata/issues/954)
-- Ajout de liens de téléchargement WFS sur la carte. [#972](https://github.com/datagouv/cdata/issues/972)
-- Amélioration de l'affichage des URL de téléchargement du catalogue dans les statistiques. [#998](https://github.com/datagouv/cdata/issues/998)
-- Mise à jour de la page d'accueil avec une nouvelle conception et description. [#981](https://github.com/datagouv/cdata/issues/981)
-- Ajout d'informations sur les limitations de débit (rate limiting) pour les services de données. [#1005](https://github.com/datagouv/cdata/issues/1005)
-- Amélioration de l'encodage des URI pour les oEmbeds. [#994](https://github.com/datagouv/cdata/issues/994)
+- Ajout du support des "Topics" dans la recherche globale [#1030](https://github.com/datagouv/cdata/issues/1030).
+- Amélioration de la page de modération avec des onglets pour filtrer les types de sujets [#1033](https://github.com/datagouv/cdata/issues/1033).
+- Affichage d'informations supplémentaires sur les previews manquantes [#1025](https://github.com/datagouv/cdata/issues/1025).
+- Amélioration de l'affichage des liens OEmbed [#1026](https://github.com/datagouv/cdata/issues/1026).
+- Ajout d'une indication de la définition des catégories restreintes [#1017](https://github.com/datagouv/cdata/issues/1017).
+- Amélioration de l'affichage des statistiques de téléchargement du catalogue [#998](https://github.com/datagouv/cdata/issues/998).
+- Affichage du lien vers le feedback IA uniquement après une suggestion [#1046](https://github.com/datagouv/cdata/issues/1046).
+- Correction de l'affichage des posts avec des blocs [#1027](https://github.com/datagouv/cdata/issues/1027).
+- Amélioration de l'affichage des cartes avec un affichage par défaut de l'attribution [#992](https://github.com/datagouv/cdata/issues/992).
+- Amélioration de la gestion des CORS pour l'affichage des previews des ressources [#954](https://github.com/datagouv/cdata/issues/954).
 
 ### Évolutions techniques
-- Mise à jour vers Nuxt 4.0 (minimal). [#1023](https://github.com/datagouv/cdata/issues/1023)
-- Mise à jour vers Nuxt 3.18 et 3.17. [#1009](https://github.com/datagouv/cdata/issues/1009), [#1008](https://github.com/datagouv/cdata/issues/1008)
-- Mise à jour de Node.js vers la version 24. [#1011](https://github.com/datagouv/cdata/issues/1011)
-- Refactorisation pour supprimer les duplications entre les previews. [#1018](https://github.com/datagouv/cdata/issues/1018)
-- Correction d'un bug empêchant la construction des assets en mode développement. [#1024](https://github.com/datagouv/cdata/issues/1024)
-- Mise à jour des versions des actions CI/CD. [#1013](https://github.com/datagouv/cdata/issues/1013)
-- Correction d'un problème de réactivité entre Nuxt et non-Nuxt. [#987](https://github.com/datagouv/cdata/issues/987)
-- Amélioration du chargement initial du serveur Vite en mode développement. [#983](https://github.com/datagouv/cdata/issues/983)
-- Suppression de code mort. [#1003](https://github.com/datagouv/cdata/issues/1003), [#982](https://github.com/datagouv/cdata/issues/982)
+- Mise à jour vers Nuxt 4.0 et 4.1 [#1035](https://github.com/datagouv/cdata/issues/1035), [#1023](https://github.com/datagouv/cdata/issues/1023), [#1009](https://github.com/datagouv/cdata/issues/1009), [#1008](https://github.com/datagouv/cdata/issues/1008).
+- Refactorisation pour supprimer les duplications entre les previews [#1018](https://github.com/datagouv/cdata/issues/1018).
+- Suppression de code mort lié à ProducerSelect [#1003](https://github.com/datagouv/cdata/issues/1003).
+- Mise à jour de Node vers la version 24 [#1011](https://github.com/datagouv/cdata/issues/1011).
+- Mise à jour des dépendances [#1002](https://github.com/datagouv/cdata/issues/1002), [#975](https://github.com/datagouv/cdata/issues/975).
+- Correction d'un problème de chargement des fonctionnalités du harvester [#1043](https://github.com/datagouv/cdata/issues/1043).
+- Correction d'un patch Nuxt qui n'était plus appliqué [#1039](https://github.com/datagouv/cdata/issues/1039).
+- Correction d'un crash lors du changement de layout en développement [#1004](https://github.com/datagouv/cdata/issues/1004).
+- Ajout de la configuration pour les nouvelles clés API [#1006](https://github.com/datagouv/cdata/issues/1006).
+- Ajout de l'URL de rate limiting aux dataservices [#1005](https://github.com/datagouv/cdata/issues/1005).
+- Mise à jour des versions des actions CI/CD [#1013](https://github.com/datagouv/cdata/issues/1013).
+- Tentative de correction des tests instables [#1028](https://github.com/datagouv/cdata/issues/1028).
 
 ### Autres changements
-- Correction d'une erreur d'affichage des valeurs manquantes pour les sujets (topics). [#1032](https://github.com/datagouv/cdata/issues/1032)
-- Amélioration de la formulation pour les jeux de données liés aux schémas. [#1019](https://github.com/datagouv/cdata/issues/1019)
-- Correction de problèmes de responsive design sur la liste des cartes et la hauteur de ReadMore. [#993](https://github.com/datagouv/cdata/issues/993), [#997](https://github.com/datagouv/cdata/issues/997)
-- Correction de problèmes de validation pour les ressources communautaires. [#990](https://github.com/datagouv/cdata/issues/990)
-- Publication des composants datagouv. [#985](https://github.com/datagouv/cdata/issues/985)
-- Mise à jour de la version des composants. [#988](https://github.com/datagouv/cdata/issues/988)
-- Correction d'un revert précédent. [#1029](https://github.com/datagouv/cdata/issues/1029)
-- Tentative de correction des tests flaky. [#1028](https://github.com/datagouv/cdata/issues/1028), [#979](https://github.com/datagouv/cdata/issues/979)
+- Ajout de documentation sur l'obtention d'une clé API depuis la démo [#1045](https://github.com/datagouv/cdata/issues/1045).
+- Amélioration de la formulation pour les datasets liés aux schémas [#1019](https://github.com/datagouv/cdata/issues/1019).
+- Suppression d'une tentative d'amélioration de la liste des reviewers dans les pull requests [#1029](https://github.com/datagouv/cdata/issues/1029).
+- Suppression de l'index pour la page de design [#991](https://github.com/datagouv/cdata/issues/991).
+- Encodage de l'URI pour les OEmbed [#994](https://github.com/datagouv/cdata/issues/994).
+- Renommage de la vue tf-validate pour la 2FA [#999](https://github.com/datagouv/cdata/issues/999).
