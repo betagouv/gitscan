@@ -1,15 +1,12 @@
-## Changelog : skills (30 derniers jours, au 30 mars 2026)
+## Changelog : skills (30 derniers jours, au 14 avril 2026)
 
 ### Résumé
-Cette mise à jour marque le lancement initial de la bibliothèque `skills` avec une configuration de base pour le développement, un système de build et une intégration continue (CI). De plus, une première compétence a été ajoutée, permettant de vérifier la conformité HTML/CSS aux normes d'accessibilité RGAA.
+Ce changelog présente les premières évolutions de la bibliothèque de compétences.  Nous avons ajouté des compétences dans les domaines de l'analyse d'intrusion forensique et de l'accessibilité web (RGAA), et mis en place les bases du projet avec un système de construction et d'intégration continue.
 
 ### Évolutions fonctionnelles
-- Ajout d'une compétence pour la conformité RGAA HTML/CSS : cette compétence permet d'évaluer l'accessibilité du code HTML et CSS selon les critères du référentiel général d'accessibilité (RGAA) [#1234](https://github.com/SocialGouv/skills/issues/1234).
+- Ajout de la compétence "analyse d'intrusion forensique" [#N/A](https://github.com/SocialGouv/skills/pulls)
+- Ajout de la compétence "conformité RGAA HTML/CSS pour l'accessibilité web" [#N/A](https://github.com/SocialGouv/skills/pulls)
 
 ### Évolutions techniques
-- Initialisation du dépôt : mise en place de la structure du dépôt, de l'environnement de développement et des outils de build.
-- Configuration de la CI : intégration d'un workflow de CI pour automatiser les tests et la construction du projet.
-- Amélioration de la structure du dépôt et de l'environnement de travail.
-
-### Autres changements
-- Initialisation du dépôt avec un système de build et une CI.
+- Initialisation du dépôt avec un système de construction et d'intégration continue. [#N/A](https://github.com/SocialGouv/skills/pulls)
+- Amélioration de la structure du dépôt, de la configuration de l'espace de travail et des outils de construction. [#N/A](https://github.com/SocialGouv/skills/pulls)

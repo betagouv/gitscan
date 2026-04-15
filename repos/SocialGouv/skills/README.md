@@ -31,6 +31,23 @@ RGAA HTML/CSS accessibility compliance skill. Contains ~98 rules across 13 categ
 - Iframes (Medium)
 - Additional Conformity Rules (Medium)
 
+### forensic-intrusion-analysis
+
+Forensic intrusion analysis methodology combining application logs with source code review. Designed to produce accurate, evidence-based security incident reports by systematically challenging log-based assumptions against actual code behavior.
+
+**Use when:**
+- Analyzing application logs after a security incident
+- Investigating suspicious user activity or unauthorized access
+- Producing a post-mortem security report
+- Reviewing an existing intrusion analysis for accuracy
+
+**Includes:**
+- 4-phase methodology (Log Extraction, Log Analysis, Source Code Confrontation, Amended Report)
+- Grafana/Loki log extraction script
+- Common false-positive detection patterns
+- MITRE ATT&CK-aligned timeline templates
+- Structured report template with final checklist
+
 ## Installation
 
 All skills:
@@ -38,9 +55,10 @@ All skills:
 npx skills add SocialGouv/skills
 ```
 
-RGAA HTML/CSS only:
+Individual skills:
 ```bash
 npx skills add SocialGouv/skills/skills/rgaa-html-css
+npx skills add SocialGouv/skills/skills/forensic-intrusion-analysis
 ```
 
 ## Usage
@@ -57,13 +75,20 @@ Fix the accessibility issues in this form
 ```
 Generate an accessible navigation component
 ```
+```
+Analyze these application logs for signs of intrusion
+```
+```
+Produce a forensic report for this security incident
+```
 
 ## Skill Structure
 
 Each skill contains:
 - `SKILL.md` - Instructions for the agent
-- `rules/` - Individual rule files with code examples
+- `rules/` - Individual rule files with code examples (optional, for rule-based skills)
 - `reference/` - Supporting documentation (optional)
+- `scripts/` - Executable scripts (optional)
 
 ## Development
 
