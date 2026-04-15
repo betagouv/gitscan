@@ -1,0 +1,50 @@
+{
+  "name": "@datagouv/select-a11y",
+  "version": "3.6.1",
+  "description": "Combobox, single and multiple select component with a focus on accessibility. It includes a search bar with local and remote search.",
+  "type": "module",
+  "types": "./types/select-a11y.d.ts",
+  "module": "./dist/select-a11y.js",
+  "css": "dist/style.css",
+  "exports": {
+    ".": {
+      "types": "./types/select-a11y.d.ts",
+      "import": "./dist/select-a11y.js"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datagouv/select-a11y"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build && npm run build-types",
+    "build-types": "npx -p typescript tsc --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "preversion": "npm run test:build && npm run build",
+    "test": "npm run test:build",
+    "test:build": "vite build -c vite.preview.js && vitest run -c vite.preview.js",
+    "test:watch": "vite build -c vite.preview.js && vitest -c vite.preview.js",
+    "publish-version": "npm publish --access public"
+  },
+  "author": "DINUM",
+  "license": "MIT",
+  "devDependencies": {
+    "puppeteer": "^22.6.5",
+    "sass": "^1.69.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.10",
+    "vitest": "^1.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/datagouv/select-a11y/issues"
+  },
+  "homepage": "https://github.com/datagouv/select-a11y",
+  "directories": {
+    "test": "tests"
+  }
+}
