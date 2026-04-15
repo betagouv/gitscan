@@ -21,6 +21,8 @@
 │   │   ├── user-structure--email.ts
 │   │   └── user-usager--password.ts
 │   └── tsconfig.json
+├── .claude
+│   └── settings.local.json
 ├── .codecov.yml
 ├── .dockerignore
 ├── .editorconfig
@@ -140,6 +142,7 @@
 │   │   │   │   ├── decorators
 │   │   │   │   │   ├── IsValidPasswordDecorator.ts
 │   │   │   │   │   ├── IsValidPhoneDecorator.ts
+│   │   │   │   │   ├── MatchFieldDecorator.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parse-pipes
 │   │   │   │   │   │   ├── ParseRegion.pipe.ts
@@ -322,6 +325,11 @@
 │   │   │   │   ├── guards
 │   │   │   │   │   ├── AppUserGuard.guard.ts
 │   │   │   │   │   ├── CanGetUserStructure.guard.ts
+│   │   │   │   │   ├── app-throttler
+│   │   │   │   │   │   ├── app-throttler.guard.ts
+│   │   │   │   │   │   ├── app-throttler.types.ts
+│   │   │   │   │   │   ├── app-throttler.utils.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── interactions.guard.ts
 │   │   │   │   │   ├── structure-access.guard.ts
@@ -489,10 +497,6 @@
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── userStructureRepository.service.test.ts
 │   │   │   │       │   └── userStructureRepository.service.ts
-│   │   │   │       ├── user-structure-mail
-│   │   │   │       │   ├── cron-mails-repository.service.spec.ts
-│   │   │   │       │   ├── cron-mails-repository.service.ts
-│   │   │   │       │   └── index.ts
 │   │   │   │       ├── user-structure-security
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── userStructureSecurityRepository.service.test.ts
@@ -1896,13 +1900,6 @@
 │   │   │   │   │   │   │   └── stats.service.ts
 │   │   │   │   │   │   ├── stats-routing.module.ts
 │   │   │   │   │   │   └── stats.module.ts
-│   │   │   │   │   ├── structure
-│   │   │   │   │   │   └── components
-│   │   │   │   │   │       └── refus-structure-form
-│   │   │   │   │   │           ├── refus-structure-form.component.css
-│   │   │   │   │   │           ├── refus-structure-form.component.html
-│   │   │   │   │   │           ├── refus-structure-form.component.spec.ts
-│   │   │   │   │   │           └── refus-structure-form.component.ts
 │   │   │   │   │   ├── structure-stats
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── reporting-form
@@ -3131,4 +3128,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-701 directories, 2432 files
+699 directories, 2431 files
