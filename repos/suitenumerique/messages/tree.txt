@@ -89,6 +89,7 @@
     │   │   │   └── utils.py
     │   │   ├── api
     │   │   │   ├── __init__.py
+    │   │   │   ├── authentication.py
     │   │   │   ├── fields.py
     │   │   │   ├── filters.py
     │   │   │   ├── openapi.json
@@ -122,9 +123,12 @@
     │   │   │       ├── placeholder.py
     │   │   │       ├── provisioning.py
     │   │   │       ├── send.py
+    │   │   │       ├── submit.py
     │   │   │       ├── task.py
     │   │   │       ├── thread.py
     │   │   │       ├── thread_access.py
+    │   │   │       ├── thread_event.py
+    │   │   │       ├── thread_user.py
     │   │   │       └── user.py
     │   │   ├── apps.py
     │   │   ├── authentication
@@ -163,6 +167,7 @@
     │   │   │       └── send_mail.py
     │   │   ├── mda
     │   │   │   ├── __init__.py
+    │   │   │   ├── autoreply.py
     │   │   │   ├── draft.py
     │   │   │   ├── inbound.py
     │   │   │   ├── inbound_create.py
@@ -202,6 +207,12 @@
     │   │   │   ├── 0017_message_sender_user.py
     │   │   │   ├── 0018_threadaccess_last_read_and_more.py
     │   │   │   ├── 0019_remove_message_read_at.py
+    │   │   │   ├── 0020_threadaccess_starred_at_remove_thread_has_starred_remove_message_is_starred.py
+    │   │   │   ├── 0021_messagetemplate_metadata_messagetemplate_signature_and_more.py
+    │   │   │   ├── 0022_backfill_thread_messaged_at.py
+    │   │   │   ├── 0023_threadevent.py
+    │   │   │   ├── 0024_channel_encrypted_settings_scope_level.py
+    │   │   │   ├── 0025_alter_threadevent_type_userevent.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -243,7 +254,11 @@
     │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   └── admin
+    │   │   │       ├── _object_tools_button_styles.html
     │   │   │       └── core
+    │   │   │           ├── channel
+    │   │   │           │   ├── change_form.html
+    │   │   │           │   └── regenerated_api_key.html
     │   │   │           ├── mailbox
     │   │   │           │   └── change_form.html
     │   │   │           ├── maildomain
@@ -261,53 +276,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   ├── test_admin_maildomains_create.py
-    │   │   │   │   ├── test_admin_maildomains_dns_check.py
-    │   │   │   │   ├── test_admin_maildomains_list.py
-    │   │   │   │   ├── test_admin_maildomains_mailbox.py
-    │   │   │   │   ├── test_admin_maildomains_message_template.py
-    │   │   │   │   ├── test_attachments.py
-    │   │   │   │   ├── test_channels.py
-    │   │   │   │   ├── test_config.py
-    │   │   │   │   ├── test_contacts.py
-    │   │   │   │   ├── test_draft_attachments.py
-    │   │   │   │   ├── test_draft_message_signature.py
-    │   │   │   │   ├── test_drive.py
-    │   │   │   │   ├── test_image_proxy.py
-    │   │   │   │   ├── test_import_file_upload.py
-    │   │   │   │   ├── test_inbound_mta.py
-    │   │   │   │   ├── test_inbound_widget.py
-    │   │   │   │   ├── test_labels.py
-    │   │   │   │   ├── test_mailbox_access.py
-    │   │   │   │   ├── test_mailbox_message_template.py
-    │   │   │   │   ├── test_mailbox_usage_metrics.py
-    │   │   │   │   ├── test_mailboxes.py
-    │   │   │   │   ├── test_maildomain_access.py
-    │   │   │   │   ├── test_maildomain_users_metrics.py
-    │   │   │   │   ├── test_message_template_list.py
-    │   │   │   │   ├── test_message_template_retrieve.py
-    │   │   │   │   ├── test_messages_create.py
-    │   │   │   │   ├── test_messages_delete.py
-    │   │   │   │   ├── test_messages_delivery_statuses.py
-    │   │   │   │   ├── test_messages_flag.py
-    │   │   │   │   ├── test_messages_import.py
-    │   │   │   │   ├── test_messages_import_labels_en.py
-    │   │   │   │   ├── test_messages_import_labels_fr.py
-    │   │   │   │   ├── test_messages_list.py
-    │   │   │   │   ├── test_messages_retrieve.py
-    │   │   │   │   ├── test_messages_with_signature.py
-    │   │   │   │   ├── test_placeholder.py
-    │   │   │   │   ├── test_placeholder_resolve.py
-    │   │   │   │   ├── test_prometheus_metrics.py
-    │   │   │   │   ├── test_provisioning_maildomains.py
-    │   │   │   │   ├── test_send_message_signature.py
-    │   │   │   │   ├── test_thread_access.py
-    │   │   │   │   ├── test_thread_filter.py
-    │   │   │   │   ├── test_thread_labels.py
-    │   │   │   │   ├── test_threads_flag.py
-    │   │   │   │   ├── test_threads_list.py
-    │   │   │   │   ├── test_users.py
-    │   │   │   │   └── test_utils_flat_to_nested.py
+    │   │   │   │   └── test_*.py  (57 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_backends.py
@@ -334,6 +303,7 @@
     │   │   │   │   └── test_s3_seekable.py
     │   │   │   ├── mda
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_autoreply.py
     │   │   │   │   ├── test_inbound.py
     │   │   │   │   ├── test_inbound_e2e.py
     │   │   │   │   ├── test_outbound.py
@@ -357,6 +327,7 @@
     │   │   │   │   ├── test_maildomainaccess.py
     │   │   │   │   ├── test_message_template.py
     │   │   │   │   ├── test_user_abilities.py
+    │   │   │   │   ├── test_user_event.py
     │   │   │   │   └── test_users.py
     │   │   │   ├── resources
     │   │   │   │   ├── All mail Including Spam and Trash.mbox
@@ -426,12 +397,15 @@
     │   │   │   ├── message-inline-image.spec.ts
     │   │   │   ├── message-send.spec.ts
     │   │   │   ├── outbox.spec.ts
-    │   │   │   └── signatures.spec.ts
+    │   │   │   ├── signatures.spec.ts
+    │   │   │   ├── thread-event.spec.ts
+    │   │   │   └── thread-starred-read.spec.ts
     │   │   ├── constants.ts
     │   │   ├── fixtures
     │   │   │   ├── attachment.png
     │   │   │   ├── old-message.eml
     │   │   │   └── sample.txt
+    │   │   ├── types.ts
     │   │   ├── utils-test.ts
     │   │   └── utils.ts
     │   └── tsconfig.json
@@ -662,34 +636,36 @@
     │   │   │   │   │   │   ├── labels_remove_threads_create_body.ts
     │   │   │   │   │   │   ├── mail_*.ts  (5 files)
     │   │   │   │   │   │   ├── mailbox.ts
-    │   │   │   │   │   │   ├── mailbox_*.ts  (12 files)
+    │   │   │   │   │   │   ├── mailbox_*.ts  (13 files)
     │   │   │   │   │   │   ├── mailboxes_*.ts  (8 files)
     │   │   │   │   │   │   ├── maildomain_access_read.ts
     │   │   │   │   │   │   ├── maildomain_access_write.ts
     │   │   │   │   │   │   ├── maildomain_access_write_request.ts
     │   │   │   │   │   │   ├── maildomains_*.ts  (5 files)
     │   │   │   │   │   │   ├── message.ts
-    │   │   │   │   │   │   ├── message_*.ts  (11 files)
+    │   │   │   │   │   │   ├── message_*.ts  (13 files)
     │   │   │   │   │   │   ├── messages_delivery_statuses_partial_update_body_one.ts
     │   │   │   │   │   │   ├── paginated_*.ts  (6 files)
     │   │   │   │   │   │   ├── partial_drive_item.ts
-    │   │   │   │   │   │   ├── patched_*.ts  (6 files)
+    │   │   │   │   │   │   ├── patched_*.ts  (10 files)
     │   │   │   │   │   │   ├── placeholders_retrieve200.ts
     │   │   │   │   │   │   ├── read_message_template.ts
+    │   │   │   │   │   │   ├── read_message_template_metadata.ts
+    │   │   │   │   │   │   ├── regenerated_api_key_response.ts
     │   │   │   │   │   │   ├── reset_password_error.ts
     │   │   │   │   │   │   ├── reset_password_internal_server_error.ts
     │   │   │   │   │   │   ├── reset_password_not_found.ts
     │   │   │   │   │   │   ├── reset_password_response.ts
+    │   │   │   │   │   │   ├── scope_level_enum.ts
     │   │   │   │   │   │   ├── send_*.ts  (5 files)
     │   │   │   │   │   │   ├── status_enum.ts
     │   │   │   │   │   │   ├── task_status_response.ts
     │   │   │   │   │   │   ├── task_status_response_result.ts
     │   │   │   │   │   │   ├── third_party_drive_retrieve_params.ts
     │   │   │   │   │   │   ├── thread.ts
-    │   │   │   │   │   │   ├── thread_*.ts  (5 files)
-    │   │   │   │   │   │   ├── threads_*.ts  (12 files)
+    │   │   │   │   │   │   ├── thread_*.ts  (14 files)
+    │   │   │   │   │   │   ├── threads_*.ts  (13 files)
     │   │   │   │   │   │   ├── tree_label.ts
-    │   │   │   │   │   │   ├── type_enum.ts
     │   │   │   │   │   │   ├── user_*.ts  (5 files)
     │   │   │   │   │   │   └── users_list_params.ts
     │   │   │   │   │   ├── placeholders
@@ -700,6 +676,10 @@
     │   │   │   │   │   │   └── third-party-drive.ts
     │   │   │   │   │   ├── thread-access
     │   │   │   │   │   │   └── thread-access.ts
+    │   │   │   │   │   ├── thread-events
+    │   │   │   │   │   │   └── thread-events.ts
+    │   │   │   │   │   ├── thread-users
+    │   │   │   │   │   │   └── thread-users.ts
     │   │   │   │   │   ├── threads
     │   │   │   │   │   │   └── threads.ts
     │   │   │   │   │   └── users
@@ -707,6 +687,7 @@
     │   │   │   │   └── utils.ts
     │   │   │   ├── auth
     │   │   │   │   ├── index.tsx
+    │   │   │   │   ├── silent-login.ts
     │   │   │   │   └── types.ts
     │   │   │   ├── blocknote
     │   │   │   │   ├── blocknote-view-field
@@ -837,6 +818,10 @@
     │   │   │   │       │       ├── compose-signature-action.tsx
     │   │   │   │       │       ├── page-content.tsx
     │   │   │   │       │       └── signature-data-grid.tsx
+    │   │   │   │       ├── labels-widget
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── layout-context.tsx
     │   │   │   │       ├── mailbox-panel
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   ├── components
@@ -862,6 +847,10 @@
     │   │   │   │       │   │       └── index.tsx
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── mailbox-settings
+    │   │   │   │       │   ├── autoreplies-view
+    │   │   │   │       │   │   ├── autoreply-data-grid.tsx
+    │   │   │   │       │   │   ├── compose-autoreply-action.tsx
+    │   │   │   │       │   │   └── page-content.tsx
     │   │   │   │       │   ├── integrations-view
     │   │   │   │       │   │   ├── create-integration-action.tsx
     │   │   │   │       │   │   ├── integrations-data-grid.tsx
@@ -875,16 +864,19 @@
     │   │   │   │       │   │   ├── index.tsx
     │   │   │   │       │   │   ├── tags-selector.tsx
     │   │   │   │       │   │   └── widget-integration-form.tsx
+    │   │   │   │       │   ├── modal-compose-mailbox-autoreply
+    │   │   │   │       │   │   └── index.tsx
     │   │   │   │       │   ├── modal-compose-mailbox-signature
     │   │   │   │       │   │   └── index.tsx
     │   │   │   │       │   ├── modal-compose-template
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── index.tsx
     │   │   │   │       │   │   └── template-composer.tsx
-    │   │   │   │       │   └── signatures-view
-    │   │   │   │       │       ├── compose-signature-action.tsx
-    │   │   │   │       │       ├── page-content.tsx
-    │   │   │   │       │       └── signature-data-grid.tsx
+    │   │   │   │       │   ├── signatures-view
+    │   │   │   │       │   │   ├── compose-signature-action.tsx
+    │   │   │   │       │   │   ├── page-content.tsx
+    │   │   │   │       │   │   └── signature-data-grid.tsx
+    │   │   │   │       │   └── utils.ts
     │   │   │   │       ├── main
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   ├── authenticated-view.tsx
@@ -914,7 +906,10 @@
     │   │   │   │       │   │   │   │   └── index.tsx
     │   │   │   │       │   │   │   ├── thread-drag-preview.tsx
     │   │   │   │       │   │   │   └── thread-item-senders.tsx
+    │   │   │   │       │   │   ├── thread-panel-filter.tsx
     │   │   │   │       │   │   └── thread-panel-header.tsx
+    │   │   │   │       │   ├── hooks
+    │   │   │   │       │   │   └── use-thread-panel-filters.ts
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── thread-selection-placeholder.tsx
     │   │   │   │       └── thread-view
@@ -940,8 +935,12 @@
     │   │   │   │           │   │   ├── attachment-item.tsx
     │   │   │   │           │   │   ├── drive-preview-link.tsx
     │   │   │   │           │   │   ├── drive-upload-button.tsx
+    │   │   │   │           │   │   ├── drive-upload-store.ts
     │   │   │   │           │   │   └── index.tsx
-    │   │   │   │           │   ├── thread-labels-widget
+    │   │   │   │           │   ├── thread-event
+    │   │   │   │           │   │   ├── _index.scss
+    │   │   │   │           │   │   └── index.tsx
+    │   │   │   │           │   ├── thread-event-input
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── thread-message
@@ -967,10 +966,14 @@
     │   │   │   │           └── provider.tsx
     │   │   │   ├── message
     │   │   │   │   ├── use-archive.tsx
+    │   │   │   │   ├── use-can-edit-threads.tsx
     │   │   │   │   ├── use-flag.tsx
+    │   │   │   │   ├── use-mention-read.tsx
     │   │   │   │   ├── use-print.tsx
     │   │   │   │   ├── use-read.tsx
     │   │   │   │   ├── use-spam.tsx
+    │   │   │   │   ├── use-split-thread.tsx
+    │   │   │   │   ├── use-starred.tsx
     │   │   │   │   └── use-trash.tsx
     │   │   │   ├── providers
     │   │   │   │   ├── admin-maildomain.tsx
@@ -1031,6 +1034,9 @@
     │   │   │   │       ├── skip-link
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── suggestion-input
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── text-loader
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
@@ -1066,6 +1072,9 @@
     │   │   │       ├── task-import-cache
     │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.ts
+    │   │   │       ├── text-helper
+    │   │   │       │   ├── index.test.tsx
+    │   │   │       │   └── index.tsx
     │   │   │       ├── unquote-message
     │   │   │       │   ├── constants.ts
     │   │   │       │   ├── handlers.ts
@@ -1080,7 +1089,10 @@
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-feature.ts
     │   │   │   ├── use-import-task.ts
-    │   │   │   └── use-previous.ts
+    │   │   │   ├── use-popup-position.ts
+    │   │   │   ├── use-previous.ts
+    │   │   │   ├── use-safe-router-push.ts
+    │   │   │   └── use-visibility-observer.ts
     │   │   ├── pages
     │   │   │   ├── _app.tsx
     │   │   │   ├── _document.tsx
@@ -1095,6 +1107,8 @@
     │   │   │   ├── index.tsx
     │   │   │   └── mailbox
     │   │   │       ├── [mailboxId]
+    │   │   │       │   ├── autoreplies
+    │   │   │       │   │   └── index.tsx
     │   │   │       │   ├── index.tsx
     │   │   │       │   ├── integrations
     │   │   │       │   │   └── index.tsx
@@ -1197,4 +1211,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-253 directories, 1029 files
+264 directories, 1105 files

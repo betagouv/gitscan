@@ -1,45 +1,30 @@
-## Changelog : messages (30 derniers jours)
+## Changelog : messages (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la plateforme, notamment des optimisations de performance, de nouvelles fonctionnalités pour l'administration et l'import/export de boîtes aux lettres, ainsi que des corrections de bugs pour une meilleure expérience utilisateur. L'ajout du support ARM64 permet également une plus grande flexibilité de déploiement.
+Les dernières mises à jour de Messages se concentrent sur l'amélioration de l'expérience utilisateur, notamment en permettant aux utilisateurs de commenter les threads en interne, d'assigner des labels en masse et d'améliorer la gestion des notifications. Des améliorations significatives ont également été apportées à la sécurité et à la validation des emails, ainsi qu'à l'infrastructure sous-jacente.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bouton d'aide personnalisable dans l'en-tête (#537).
-- Possibilité d'exporter une boîte aux lettres au format mbox, avec les libellés (#553).
-- Support de l'import de fichiers PST et amélioration du streaming de données pour l'import mbox (#544).
-- Ajout d'une liste noire pour les préfixes de boîtes aux lettres personnelles (#540).
-- Possibilité d'ajouter des images directement dans le corps des messages via l'éditeur BlockNote.
-- Amélioration de l'éditeur de signature avec une disposition en colonnes (#551).
-- Affichage du nombre de threads sélectionnés dans le panneau de droite (#576).
-- Ajout d'un lien de navigation rapide pour les utilisateurs de clavier (#573).
-- Correction : le défilement est maintenant conservé lors des rendus (#578).
-- Correction : les sauts de ligne sont correctement convertis en `<br>` dans le texte formaté (#577).
-- Correction : les libellés et le rôle de l'utilisateur sont correctement restreints à la boîte aux lettres demandée.
-- Correction : le panneau latéral se ferme correctement après l'envoi d'un message si nécessaire.
+- Les utilisateurs peuvent désormais poster des commentaires internes sur les threads, facilitant la collaboration interne sur les messages. [#632](https://github.com/suitenumerique/messages/issues/632)
+- Ajout de la possibilité d'assigner des labels aux threads, y compris en masse, pour une meilleure organisation.
+- Amélioration du format d'affichage de la date des événements dans les threads.
+- Les utilisateurs reçoivent désormais des notifications lorsqu'ils sont mentionnés dans un message. [#621](https://github.com/suitenumerique/messages/issues/621)
+- Possibilité d'envoyer des messages internes via les événements de thread. [#566](https://github.com/suitenumerique/messages/issues/566)
+- Ajout de la prise en charge de la connexion silencieuse. [#1767e17](https://github.com/suitenumerique/messages/commit/1767e17)
+- Ajout de vérifications de l'intégrité (checksum) et de healthchecks pour lprobe et Caddy. [#600](https://github.com/suitenumerique/messages/issues/600)
 
 ### Évolutions techniques
-- Ajout de métriques d'utilisation plus précises et granulaires (#575).
-- Amélioration de la résilience de la vérification DNS (#574).
-- Exposition des flags `oidc_autojoin` et `identity_sync` pour la configuration (#542).
-- Migration vers la nouvelle API Drive (nécessite Drive >= 0.13.0).
-- Refonte de l'architecture pour l'utilisation de uv, rustfs et caddy (#556).
-- Passage à Python 3.14 (#556).
-- Ajout de support pour l'architecture ARM64 dans les images Docker (#554).
-- Ajout d'événements Celery pour la surveillance des workers (#549).
-- Ajout d'un backend DeployCenter pour la synchronisation des administrateurs de domaines de messagerie (#572).
-- Ajout d'une commande de gestion pour afficher tous les utilisateurs de l'instance (#506).
-- Mise à jour de django-lasuite vers la version 0.0.24 (#546).
-- Optimisation de la sérialisation et de la gestion du corps des MessageTemplate (#545).
-- Remplacement de Nginx par Caddy pour le reverse proxy et le déploiement Scalingo (#556).
-- Remplacement de MinIO par RustFS pour le stockage d'objets en développement (#556).
-- Ajout de throttling pour les destinataires des messages sortants (#506).
+- Amélioration de la validation DNS avec ajout d'une vérification SPF récursive et d'une validation du temps d'envoi. [#625](https://github.com/suitenumerique/messages/issues/625)
+- Ajout de fonctionnalités d'encryption, de scopes personnalisés et de niveaux d'audit pour les canaux. [#599](https://github.com/suitenumerique/messages/issues/599)
+- La fonctionnalité de division de thread est désormais contrôlée par un *feature flag*, permettant une activation progressive et contrôlée. [#624](https://github.com/suitenumerique/messages/issues/624)
+- Correction de l'ordre des threads. [#617](https://github.com/suitenumerique/messages/issues/617)
+- Optimisation de la recherche en utilisant l'API en masse et le préchargement pour la réindexation complète. [#595](https://github.com/suitenumerique/messages/issues/595)
+- Correction d'un problème de double requête et de scintillement lors de la recherche. [#596](https://github.com/suitenumerique/messages/issues/596)
+- Suppression de `npm` des moteurs de dépendances. [#616](https://github.com/suitenumerique/messages/issues/616)
+- Mise à jour de `cunningham` et `ui-kit`. [#a7dc4b4](https://github.com/suitenumerique/messages/commit/a7dc4b4)
 
 ### Autres changements
-- Mise à jour de la documentation traduite.
-- Mise à jour de la version de Keycloak (26.5.3 et 26.5.4).
-- Mise à jour des étapes des workflows GitHub Actions.
-- Correction de bugs liés à la construction des images Docker pour ARM64.
-- Amélioration de l'expérience développeur avec une nouvelle commande `make`.
-- Suppression des catalogues de traduction Django i18n et backend.
-- Correction de la régénération des fichiers `uv.lock` lors de l'incrémentation de la version.
-- Suppression de l'ID de la boîte aux lettres dans les métriques.
+- Correction d'un bug empêchant la définition complète des droits d'édition sur les mutations de thread. [#01b45a6](https://github.com/suitenumerique/messages/commit/01b45a6)
+- Alignement du bouton d'envoi sur la gauche. [#13d34c2](https://github.com/suitenumerique/messages/commit/13d34c2)
+- Typage des erreurs d'API Orval. [#1c83a51](https://github.com/suitenumerique/messages/commit/1c83a51)
+- Suppression du marquage du thread comme lu lors de l'envoi d'une réponse automatique. [#594](https://github.com/suitenumerique/messages/issues/594)
+- Désactivation du menu d'application lorsque aucune option n'est disponible. [#efbae5f](https://github.com/suitenumerique/messages/commit/efbae5f)
