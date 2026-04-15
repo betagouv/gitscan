@@ -194,6 +194,7 @@
 │       │   │   │   ├── _backoffice.scss
 │       │   │   │   ├── _blog.scss
 │       │   │   │   ├── _choose_file.scss
+│       │   │   │   ├── _colorful-button.scss
 │       │   │   │   ├── _community-resources.scss
 │       │   │   │   ├── _dataset-details.scss
 │       │   │   │   ├── _discussions.scss
@@ -352,6 +353,7 @@
 │       │   │   └── validator
 │       │   │       ├── data_frame_validation.ex
 │       │   │       ├── field_validation.ex
+│       │   │       ├── summary.ex
 │       │   │       └── validator.ex
 │       │   ├── jobs
 │       │   │   ├── RamboLauncher.ex
@@ -447,16 +449,26 @@
 │       │   │       └── yarn.ex
 │       │   ├── netex
 │       │   │   ├── Readme.md
+│       │   │   ├── archive_parser.ex
 │       │   │   ├── calendars_streaming_parser.ex
 │       │   │   ├── chouette_valid_ruleset_generator.ex
 │       │   │   ├── description_parser.ex
 │       │   │   ├── enroute-starter-kit.json
+│       │   │   ├── french_profile
+│       │   │   │   ├── v1.ex
+│       │   │   │   └── v2.ex
 │       │   │   ├── french_profile.ex
-│       │   │   ├── netex_archive_parser.ex
 │       │   │   ├── netex_helpers.ex
 │       │   │   ├── saxy_helpers.ex
 │       │   │   ├── service_calendars_streaming_parser.ex
 │       │   │   ├── stop_places_streaming_parser.ex
+│       │   │   ├── to_geojson
+│       │   │   │   ├── coordinates.ex
+│       │   │   │   ├── geojson_builder.ex
+│       │   │   │   ├── parsers
+│       │   │   │   │   ├── quay_parser.ex
+│       │   │   │   │   └── service_link_parser.ex
+│       │   │   │   └── to_geojson.ex
 │       │   │   └── types_of_frame_streaming_parser.ex
 │       │   ├── queries
 │       │   │   └── dashboard_import_count.sql
@@ -553,6 +565,8 @@
 │       │   │   ├── channels
 │       │   │   │   ├── explore_channel.ex
 │       │   │   │   └── user_socket.ex
+│       │   │   ├── components
+│       │   │   │   └── colorful_button.ex
 │       │   │   ├── controllers
 │       │   │   │   ├── aoms_controller.ex
 │       │   │   │   ├── atom_controller.ex
@@ -859,6 +873,7 @@
 │       │   │       ├── landing_pages_view.ex
 │       │   │       ├── layout_view.ex
 │       │   │       ├── markdown_handler.ex
+│       │   │       ├── netex_report_components.ex
 │       │   │       ├── page_view.ex
 │       │   │       ├── resource_view.ex
 │       │   │       ├── reuse_view.ex
@@ -902,7 +917,8 @@
 │       │   │   │   │   ├── commons.ex
 │       │   │   │   │   ├── v0_1_0.ex
 │       │   │   │   │   ├── v0_2_0.ex
-│       │   │   │   │   └── v0_2_1.ex
+│       │   │   │   │   ├── v0_2_1.ex
+│       │   │   │   │   └── v0_2_2.ex
 │       │   │   │   └── validator.ex
 │       │   │   ├── tableschema_validator.ex
 │       │   │   ├── validator.ex
@@ -955,6 +971,7 @@
 │       │   │   │       ├── gtfs-transport-validator.po
 │       │   │   │       ├── helper.po
 │       │   │   │       ├── landing-vls.po
+│       │   │   │       ├── netex-documentation.po
 │       │   │   │       ├── netex-validator.po
 │       │   │   │       ├── notification_subscription.po
 │       │   │   │       ├── page-dataset-details.po
@@ -1004,6 +1021,7 @@
 │       │   │   │       ├── gtfs-transport-validator.po
 │       │   │   │       ├── helper.po
 │       │   │   │       ├── landing-vls.po
+│       │   │   │       ├── netex-documentation.po
 │       │   │   │       ├── netex-validator.po
 │       │   │   │       ├── notification_subscription.po
 │       │   │   │       ├── page-dataset-details.po
@@ -1028,6 +1046,7 @@
 │       │   │   ├── gtfs-transport-validator.pot
 │       │   │   ├── helper.pot
 │       │   │   ├── landing-vls.pot
+│       │   │   ├── netex-documentation.pot
 │       │   │   ├── netex-validator.pot
 │       │   │   ├── notification_subscription.pot
 │       │   │   ├── page-dataset-details.pot
@@ -1291,6 +1310,7 @@
 │       │   │       ├── 20260205144049_rename_irve_valid_file_columns.exs
 │       │   │       ├── 20260209120000_add_missing_fields_to_irve_valid_file.exs
 │       │   │       ├── 20260311000000_create_company.exs
+│       │   │       ├── 20260317000001_resource_related_unique_index.exs
 │       │   │       └── sql
 │       │   │           ├── autocomplete_add_dataset.sql
 │       │   │           ├── autocomplete_add_format.sql
@@ -1393,9 +1413,16 @@
 │           ├── gtfs
 │           │   └── utils_test.exs
 │           ├── netex
+│           │   ├── archive_parser_test.exs
 │           │   ├── chouette_valid_ruleset_generator_test.exs
-│           │   ├── netex_archive_parser_test.exs
-│           │   └── stop_places_streaming_parser_test.exs
+│           │   ├── stop_places_streaming_parser_test.exs
+│           │   └── to_geojson
+│           │       ├── coordinates_test.exs
+│           │       ├── geojson_builder_test.exs
+│           │       ├── parsers
+│           │       │   ├── quay_parser_test.exs
+│           │       │   └── service_link_parser_test.exs
+│           │       └── to_geojson_test.exs
 │           ├── no_css_inline_style_test.exs
 │           ├── registry
 │           │   ├── gtfs_test.exs
@@ -1782,4 +1809,4 @@
     │   ├── siri_create_doc.exs
     │   └── siri_request_parsing.exs
     └── subquery.exs
-174 directories, 1630 files
+180 directories, 1651 files
