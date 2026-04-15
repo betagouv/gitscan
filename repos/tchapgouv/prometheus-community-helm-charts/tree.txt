@@ -1,0 +1,822 @@
+.
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   └── feature_request.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── dependabot.yml
+│   ├── linters
+│   │   ├── .markdown-lint.yml
+│   │   └── ct.yaml
+│   ├── stale.yml
+│   └── workflows
+│       ├── check-codeowners.yaml
+│       ├── lint-test.yaml
+│       ├── release.yaml
+│       ├── superlinter.yml
+│       └── sync-readme.yaml
+├── .gitignore
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── PROCESSES.md
+├── README.md
+├── SECURITY.md
+├── charts
+│   ├── alertmanager
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── config-reload-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── services.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── tests
+│   │   │       └── test-connection.yaml
+│   │   ├── unittests
+│   │   │   ├── __snapshot__
+│   │   │   │   └── ingress_test.yaml.snap
+│   │   │   └── ingress_test.yaml
+│   │   └── values.yaml
+│   ├── alertmanager-snmp-notifier
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── default-values.yaml
+│   │   │   ├── ingress-values.yaml
+│   │   │   ├── secret-values.yaml
+│   │   │   └── templates-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── secrets.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── jiralert
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── Readme.md
+│   │   ├── ci
+│   │   │   └── example-receivers-values.yaml
+│   │   ├── templates
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── kube-prometheus-stack
+│   │   ├── .helmignore
+│   │   ├── CONTRIBUTING.md
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── 01-provision-crds-values.yaml
+│   │   │   └── 02-test-without-crds-values.yaml
+│   │   ├── crds
+│   │   │   ├── crd-alertmanagerconfigs.yaml
+│   │   │   ├── crd-alertmanagers.yaml
+│   │   │   ├── crd-podmonitors.yaml
+│   │   │   ├── crd-probes.yaml
+│   │   │   ├── crd-prometheuses.yaml
+│   │   │   ├── crd-prometheusrules.yaml
+│   │   │   ├── crd-servicemonitors.yaml
+│   │   │   └── crd-thanosrulers.yaml
+│   │   ├── hack
+│   │   │   ├── README.md
+│   │   │   ├── minikube
+│   │   │   │   ├── README.md
+│   │   │   │   ├── cmd.sh
+│   │   │   │   └── values.yaml
+│   │   │   ├── requirements.txt
+│   │   │   ├── sync_grafana_dashboards.py
+│   │   │   ├── sync_prometheus_rules.py
+│   │   │   └── update_crds.sh
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── alertmanager
+│   │   │   │   ├── alertmanager.yaml
+│   │   │   │   ├── extrasecret.yaml
+│   │   │   │   ├── ingress.yaml
+│   │   │   │   ├── ingressperreplica.yaml
+│   │   │   │   ├── podDisruptionBudget.yaml
+│   │   │   │   ├── psp-role.yaml
+│   │   │   │   ├── psp-rolebinding.yaml
+│   │   │   │   ├── psp.yaml
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   ├── serviceaccount.yaml
+│   │   │   │   ├── servicemonitor.yaml
+│   │   │   │   └── serviceperreplica.yaml
+│   │   │   ├── exporters
+│   │   │   │   ├── core-dns
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-api-server
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-controller-manager
+│   │   │   │   │   ├── endpoints.yaml
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-dns
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-etcd
+│   │   │   │   │   ├── endpoints.yaml
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-proxy
+│   │   │   │   │   ├── endpoints.yaml
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   ├── kube-scheduler
+│   │   │   │   │   ├── endpoints.yaml
+│   │   │   │   │   ├── service.yaml
+│   │   │   │   │   └── servicemonitor.yaml
+│   │   │   │   └── kubelet
+│   │   │   │       └── servicemonitor.yaml
+│   │   │   ├── grafana
+│   │   │   │   ├── configmap-dashboards.yaml
+│   │   │   │   ├── configmaps-datasources.yaml
+│   │   │   │   └── dashboards-1.14
+│   │   │   │       ├── alertmanager-overview.yaml
+│   │   │   │       ├── apiserver.yaml
+│   │   │   │       ├── cluster-total.yaml
+│   │   │   │       ├── controller-manager.yaml
+│   │   │   │       ├── etcd.yaml
+│   │   │   │       ├── grafana-overview.yaml
+│   │   │   │       ├── k8s-coredns.yaml
+│   │   │   │       ├── k8s-resources-cluster.yaml
+│   │   │   │       ├── k8s-resources-namespace.yaml
+│   │   │   │       ├── k8s-resources-node.yaml
+│   │   │   │       ├── k8s-resources-pod.yaml
+│   │   │   │       ├── k8s-resources-workload.yaml
+│   │   │   │       ├── k8s-resources-workloads-namespace.yaml
+│   │   │   │       ├── kubelet.yaml
+│   │   │   │       ├── namespace-by-pod.yaml
+│   │   │   │       ├── namespace-by-workload.yaml
+│   │   │   │       ├── node-cluster-rsrc-use.yaml
+│   │   │   │       ├── node-rsrc-use.yaml
+│   │   │   │       ├── nodes-darwin.yaml
+│   │   │   │       ├── nodes.yaml
+│   │   │   │       ├── persistentvolumesusage.yaml
+│   │   │   │       ├── pod-total.yaml
+│   │   │   │       ├── prometheus-remote-write.yaml
+│   │   │   │       ├── prometheus.yaml
+│   │   │   │       ├── proxy.yaml
+│   │   │   │       ├── scheduler.yaml
+│   │   │   │       └── workload-total.yaml
+│   │   │   ├── prometheus
+│   │   │   │   ├── _rules.tpl
+│   │   │   │   ├── additionalAlertRelabelConfigs.yaml
+│   │   │   │   ├── additionalAlertmanagerConfigs.yaml
+│   │   │   │   ├── additionalPrometheusRules.yaml
+│   │   │   │   ├── additionalScrapeConfigs.yaml
+│   │   │   │   ├── clusterrole.yaml
+│   │   │   │   ├── clusterrolebinding.yaml
+│   │   │   │   ├── csi-secret.yaml
+│   │   │   │   ├── extrasecret.yaml
+│   │   │   │   ├── ingress.yaml
+│   │   │   │   ├── ingressThanosSidecar.yaml
+│   │   │   │   ├── ingressperreplica.yaml
+│   │   │   │   ├── networkpolicy.yaml
+│   │   │   │   ├── podDisruptionBudget.yaml
+│   │   │   │   ├── podmonitors.yaml
+│   │   │   │   ├── prometheus.yaml
+│   │   │   │   ├── psp-clusterrole.yaml
+│   │   │   │   ├── psp-clusterrolebinding.yaml
+│   │   │   │   ├── psp.yaml
+│   │   │   │   ├── rules-1.14
+│   │   │   │   │   ├── alertmanager.rules.yaml
+│   │   │   │   │   ├── config-reloaders.yaml
+│   │   │   │   │   ├── etcd.yaml
+│   │   │   │   │   ├── general.rules.yaml
+│   │   │   │   │   ├── k8s.rules.yaml
+│   │   │   │   │   ├── kube-apiserver-availability.rules.yaml
+│   │   │   │   │   ├── kube-apiserver-burnrate.rules.yaml
+│   │   │   │   │   ├── kube-apiserver-histogram.rules.yaml
+│   │   │   │   │   ├── kube-apiserver-slos.yaml
+│   │   │   │   │   ├── kube-prometheus-general.rules.yaml
+│   │   │   │   │   ├── kube-prometheus-node-recording.rules.yaml
+│   │   │   │   │   ├── kube-scheduler.rules.yaml
+│   │   │   │   │   ├── kube-state-metrics.yaml
+│   │   │   │   │   ├── kubelet.rules.yaml
+│   │   │   │   │   ├── kubernetes-apps.yaml
+│   │   │   │   │   ├── kubernetes-resources.yaml
+│   │   │   │   │   ├── kubernetes-storage.yaml
+│   │   │   │   │   ├── kubernetes-system-apiserver.yaml
+│   │   │   │   │   ├── kubernetes-system-controller-manager.yaml
+│   │   │   │   │   ├── kubernetes-system-kube-proxy.yaml
+│   │   │   │   │   ├── kubernetes-system-kubelet.yaml
+│   │   │   │   │   ├── kubernetes-system-scheduler.yaml
+│   │   │   │   │   ├── kubernetes-system.yaml
+│   │   │   │   │   ├── node-exporter.rules.yaml
+│   │   │   │   │   ├── node-exporter.yaml
+│   │   │   │   │   ├── node-network.yaml
+│   │   │   │   │   ├── node.rules.yaml
+│   │   │   │   │   ├── prometheus-operator.yaml
+│   │   │   │   │   └── prometheus.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   ├── serviceThanosSidecar.yaml
+│   │   │   │   ├── serviceThanosSidecarExternal.yaml
+│   │   │   │   ├── serviceaccount.yaml
+│   │   │   │   ├── servicemonitor.yaml
+│   │   │   │   ├── servicemonitorThanosSidecar.yaml
+│   │   │   │   ├── servicemonitors.yaml
+│   │   │   │   └── serviceperreplica.yaml
+│   │   │   ├── prometheus-operator
+│   │   │   │   ├── admission-webhooks
+│   │   │   │   │   ├── job-patch
+│   │   │   │   │   │   ├── clusterrole.yaml
+│   │   │   │   │   │   ├── clusterrolebinding.yaml
+│   │   │   │   │   │   ├── job-createSecret.yaml
+│   │   │   │   │   │   ├── job-patchWebhook.yaml
+│   │   │   │   │   │   ├── networkpolicy-createSecret.yaml
+│   │   │   │   │   │   ├── networkpolicy-patchWebhook.yaml
+│   │   │   │   │   │   ├── psp.yaml
+│   │   │   │   │   │   ├── role.yaml
+│   │   │   │   │   │   ├── rolebinding.yaml
+│   │   │   │   │   │   └── serviceaccount.yaml
+│   │   │   │   │   ├── mutatingWebhookConfiguration.yaml
+│   │   │   │   │   └── validatingWebhookConfiguration.yaml
+│   │   │   │   ├── aggregate-clusterroles.yaml
+│   │   │   │   ├── certmanager.yaml
+│   │   │   │   ├── clusterrole.yaml
+│   │   │   │   ├── clusterrolebinding.yaml
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   ├── networkpolicy.yaml
+│   │   │   │   ├── psp-clusterrole.yaml
+│   │   │   │   ├── psp-clusterrolebinding.yaml
+│   │   │   │   ├── psp.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   ├── serviceaccount.yaml
+│   │   │   │   ├── servicemonitor.yaml
+│   │   │   │   └── verticalpodautoscaler.yaml
+│   │   │   └── thanos-ruler
+│   │   │       ├── extrasecret.yaml
+│   │   │       ├── ingress.yaml
+│   │   │       ├── podDisruptionBudget.yaml
+│   │   │       ├── ruler.yaml
+│   │   │       ├── service.yaml
+│   │   │       ├── serviceaccount.yaml
+│   │   │       └── servicemonitor.yaml
+│   │   ├── unittests
+│   │   │   └── alertmanager
+│   │   │       ├── alertmanager_test.yaml
+│   │   │       └── ingress_test.yaml
+│   │   └── values.yaml
+│   ├── kube-state-metrics
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── kubeconfig-secret.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── psp-clusterrole.yaml
+│   │   │   ├── psp-clusterrolebinding.yaml
+│   │   │   ├── rbac-configmap.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   ├── stsdiscovery-role.yaml
+│   │   │   ├── stsdiscovery-rolebinding.yaml
+│   │   │   └── verticalpodautoscaler.yaml
+│   │   └── values.yaml
+│   ├── prom-label-proxy
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── service.yaml
+│   │   │   └── serviceaccount.yaml
+│   │   └── values.yaml
+│   ├── prometheus
+│   │   ├── .helmignore
+│   │   ├── Chart.lock
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── cm.yaml
+│   │   │   ├── deploy.yaml
+│   │   │   ├── extra-manifests.yaml
+│   │   │   ├── headless-svc.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── network-policy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── psp.yaml
+│   │   │   ├── pvc.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── sts.yaml
+│   │   │   └── vpa.yaml
+│   │   ├── values.schema.json
+│   │   └── values.yaml
+│   ├── prometheus-adapter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── default-values.yaml
+│   │   │   └── external-rules-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── certmanager.yaml
+│   │   │   ├── cluster-role-binding-auth-delegator.yaml
+│   │   │   ├── cluster-role-binding-resource-reader.yaml
+│   │   │   ├── cluster-role-resource-reader.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── custom-metrics-apiservice.yaml
+│   │   │   ├── custom-metrics-cluster-role-binding-hpa.yaml
+│   │   │   ├── custom-metrics-cluster-role.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── external-metrics-apiservice.yaml
+│   │   │   ├── external-metrics-cluster-role-binding-hpa.yaml
+│   │   │   ├── external-metrics-cluster-role.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── psp.yaml
+│   │   │   ├── resource-metrics-apiservice.yaml
+│   │   │   ├── resource-metrics-cluster-role-binding.yaml
+│   │   │   ├── resource-metrics-cluster-role.yaml
+│   │   │   ├── role-binding-auth-reader.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   └── serviceaccount.yaml
+│   │   └── values.yaml
+│   ├── prometheus-blackbox-exporter
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── daemonset-values.yml
+│   │   │   ├── default-values.yaml
+│   │   │   ├── extraenv-values.yaml
+│   │   │   ├── hostAliases.yml
+│   │   │   ├── ingress-values.yml
+│   │   │   ├── networkpolicy-values.yaml
+│   │   │   └── secret-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── poddisruptionbudget.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── selfservicemonitor.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-cloudwatch-exporter
+│   │   ├── .helmignore
+│   │   ├── CHANGELOG.md
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── secrets.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-conntrack-stats-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── podmonitor.yaml
+│   │   │   └── serviceaccount.yaml
+│   │   └── values.yaml
+│   ├── prometheus-consul-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-couchdb-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   └── serviceaccount.yaml
+│   │   └── values.yaml
+│   ├── prometheus-druid-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── tests
+│   │   │       └── connection-test.yaml
+│   │   └── values.yaml
+│   ├── prometheus-elasticsearch-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── default-values.yaml
+│   │   │   ├── pod-security-policies.yaml
+│   │   │   └── security-context.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── cert-secret.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── podsecuritypolicies.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-fastly-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-json-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-kafka-exporter
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── ci-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-mongodb-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   ├── env-values.yaml
+│   │   │   └── servicemonitor-disabled-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── tests
+│   │   │       └── test-connection.yaml
+│   │   └── values.yaml
+│   ├── prometheus-mysql-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── secret-env.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-nats-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── service.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-nginx-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.lock
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── ci-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-node-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── port-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── endpoints.yaml
+│   │   │   ├── podmonitor.yaml
+│   │   │   ├── psp-clusterrole.yaml
+│   │   │   ├── psp-clusterrolebinding.yaml
+│   │   │   ├── psp.yaml
+│   │   │   ├── rbac-configmap.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── verticalpodautoscaler.yaml
+│   │   └── values.yaml
+│   ├── prometheus-operator-crds
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── hack
+│   │   │   └── update_crds.sh
+│   │   ├── templates
+│   │   │   ├── crd-alertmanagerconfigs.yaml
+│   │   │   ├── crd-alertmanagers.yaml
+│   │   │   ├── crd-podmonitors.yaml
+│   │   │   ├── crd-probes.yaml
+│   │   │   ├── crd-prometheuses.yaml
+│   │   │   ├── crd-prometheusrules.yaml
+│   │   │   ├── crd-servicemonitors.yaml
+│   │   │   └── crd-thanosrulers.yaml
+│   │   └── values.yaml
+│   ├── prometheus-pgbouncer-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── ci-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secrets.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-pingdom-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── secret.yaml
+│   │   │   └── service.yaml
+│   │   └── values.yaml
+│   ├── prometheus-postgres-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secrets.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-pushgateway
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pushgateway-pvc.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   └── values.yaml
+│   ├── prometheus-rabbitmq-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-redis-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── podsecuritypolicy.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-smartctl-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── rules
+│   │   │   └── rules.txt
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── prometheusrule.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-snmp-exporter
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-stackdriver-exporter
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── ci
+│   │   │   └── default-values.yaml
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── deployment.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   └── servicemonitor.yaml
+│   │   └── values.yaml
+│   ├── prometheus-statsd-exporter
+│   │   ├── .helmignore
+│   │   ├── Chart.yaml
+│   │   ├── README.md
+│   │   ├── templates
+│   │   │   ├── NOTES.txt
+│   │   │   ├── _helpers.tpl
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── podmonitor.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── tests
+│   │   │       └── test-connection.yaml
+│   │   └── values.yaml
+│   └── prometheus-to-sd
+│       ├── .helmignore
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── templates
+│       │   ├── NOTES.txt
+│       │   ├── _helpers.tpl
+│       │   └── deployment.yaml
+│       └── values.yaml
+└── scripts
+    └── check-codeowners.sh
+121 directories, 700 files
