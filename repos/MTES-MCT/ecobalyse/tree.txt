@@ -76,7 +76,8 @@
 │           │   │       ├── 2025-12-10_remove_pef_40e15168080c.py
 │           │   │       ├── 2025-12-16_rename_item_s_to_item_ed08f55f73ad.py
 │           │   │       ├── 2026-01-08_order_transforms_dbe7e0aa7bfe.py
-│           │   │       └── 2026-01-15_rename_density_to_massperunit_and_make__af8f29751a13.py
+│           │   │       ├── 2026-01-15_rename_density_to_massperunit_and_make__af8f29751a13.py
+│           │   │       └── 2026-03-11_add_food2_scope_884ac9f3654f.py
 │           │   └── models
 │           │       ├── __init__.py
 │           │       ├── component.py
@@ -111,6 +112,14 @@
 │           │   │   ├── schemas.py
 │           │   │   ├── services.py
 │           │   │   └── urls.py
+│           │   ├── contrib
+│           │   │   ├── __init__.py
+│           │   │   ├── controllers
+│           │   │   │   ├── __init__.py
+│           │   │   │   └── contrib.py
+│           │   │   ├── schemas.py
+│           │   │   ├── services.py
+│           │   │   └── urls.py
 │           │   ├── journal_entries
 │           │   │   ├── controllers
 │           │   │   │   ├── __init__.py
@@ -135,6 +144,7 @@
 │           │   ├── crypt.py
 │           │   ├── deps.py
 │           │   ├── http.py
+│           │   ├── json.py
 │           │   ├── middleware
 │           │   │   ├── __init__.py
 │           │   │   └── custom_auth_middleware.py
@@ -215,6 +225,7 @@
 │           └── setup.py
 ├── playwright.config.js
 ├── public
+│   ├── ICOMOON.md
 │   ├── data
 │   │   ├── components
 │   │   │   └── config.json
@@ -223,11 +234,12 @@
 │   │   │   ├── examples.json
 │   │   │   └── ingredients.json
 │   │   ├── impacts.json
-│   │   ├── metadata.json
 │   │   ├── object
 │   │   │   ├── components.json
 │   │   │   └── examples.json
 │   │   ├── processes.json
+│   │   ├── processes_generic.json
+│   │   ├── processes_generic_impacts.json
 │   │   ├── processes_impacts.json
 │   │   ├── textile
 │   │   │   ├── components.json
@@ -300,7 +312,9 @@
 │   │   │   ├── Db.elm
 │   │   │   ├── DecodeUtils.elm
 │   │   │   └── EncodeUtils.elm
+│   │   ├── Complement.elm
 │   │   ├── Component
+│   │   │   ├── Amount.elm
 │   │   │   └── Config.elm
 │   │   ├── Component.elm
 │   │   ├── Country.elm
@@ -328,14 +342,14 @@
 │   │   ├── Impact.elm
 │   │   ├── JournalEntry.elm
 │   │   ├── Key.elm
-│   │   ├── Matomo.elm
 │   │   ├── Notification.elm
 │   │   ├── Object
 │   │   │   ├── Db.elm
 │   │   │   └── Simulator.elm
 │   │   ├── Plausible.elm
 │   │   ├── Process
-│   │   │   └── Category.elm
+│   │   │   ├── Category.elm
+│   │   │   └── Metadata.elm
 │   │   ├── Process.elm
 │   │   ├── Scope.elm
 │   │   ├── Scoring.elm
@@ -409,8 +423,8 @@
 │   │   ├── BackendHttp.elm
 │   │   ├── Common.elm
 │   │   ├── Component.elm
+│   │   ├── Contrib.elm
 │   │   ├── Journal.elm
-│   │   ├── Matomo.elm
 │   │   ├── Process.elm
 │   │   └── Version.elm
 │   ├── Route.elm
@@ -474,6 +488,7 @@
 │   │   │   ├── QueryTest.elm
 │   │   │   └── RecipeTest.elm
 │   │   ├── ImpactTest.elm
+│   │   ├── ProcessTest.elm
 │   │   ├── ScopeTest.elm
 │   │   ├── SplitTest.elm
 │   │   ├── TextTest.elm
@@ -507,6 +522,7 @@
 │   │       ├── conftest.py
 │   │       ├── test_access.py
 │   │       ├── test_components.py
+│   │       ├── test_contrib.py
 │   │       ├── test_health.py
 │   │       ├── test_journal_entries.py
 │   │       ├── test_load_processes_fixtures.py
@@ -523,4 +539,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-90 directories, 435 files
+92 directories, 449 files

@@ -1,38 +1,40 @@
-## Changelog : ecobalyse (30 derniers jours)
+## Changelog : ecobalyse (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Les dernières mises à jour d'ecobalyse apportent des améliorations fonctionnelles significatives, notamment l'ajout de la gestion des favoris (export/import), l'amélioration de l'affichage des impacts pour certains types de données (textile, packaging) et l'introduction d'une nouvelle portée "food2". Des corrections de bugs ont également été implémentées pour améliorer la stabilité et l'expérience utilisateur, ainsi que des optimisations techniques et de sécurité.
+Les dernières mises à jour d'ecobalyse se concentrent sur l'enrichissement des données, notamment avec l'ajout de nouveaux processus et types de matériaux, ainsi que sur l'amélioration de l'expérience utilisateur dans l'explorateur et pour les compléments de processus. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la précision des calculs.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter et d'importer les favoris [#1784](https://github.com/MTES-MCT/ecobalyse/issues/1784)
-- Introduction de la portée "food2" pour les données alimentaires [#1861](https://github.com/MTES-MCT/ecobalyse/issues/1861)
-- Affichage des impacts des trims pour les données textiles [#1835](https://github.com/MTES-MCT/ecobalyse/issues/1835)
-- Ajout de la possibilité d'exprimer la masse des vêtements textiles en grammes [#1818](https://github.com/MTES-MCT/ecobalyse/issues/1818)
-- Amélioration de l'autofocus dans les champs de recherche de certains modals [#1824](https://github.com/MTES-MCT/ecobalyse/issues/1824) et [#1834](https://github.com/MTES-MCT/ecobalyse/issues/1834)
-- Ajout d'une bannière d'avertissement lorsque les conditions d'utilisation ne sont pas acceptées [#1817](https://github.com/MTES-MCT/ecobalyse/issues/1817)
-- Ajout de nouveaux ingrédients dans les données [#1670](https://github.com/MTES-MCT/ecobalyse/issues/1670)
-- Amélioration des icônes des favoris [#1823](https://github.com/MTES-MCT/ecobalyse/issues/1823)
+- Ajout de la possibilité de contribuer des exemples via des pull requests depuis l'interface utilisateur ([#2028](https://github.com/MTES-MCT/ecobalyse/issues/2028)).
+- Modification des traitements des métaux dans les composants ([#2070](https://github.com/MTES-MCT/ecobalyse/issues/2070)).
+- Ajout de 2000km de routes pour certains pays ([#2068](https://github.com/MTES-MCT/ecobalyse/issues/2068)).
+- Correction d'un bug affectant le processus de transformation par défaut pour les données "food1" ([#2065](https://github.com/MTES-MCT/ecobalyse/issues/2065)).
+- Correction pour ne pas inclure les impacts détaillés dans les archives de publication ([#2039](https://github.com/MTES-MCT/ecobalyse/issues/2039)).
+- Ajout de processus complémentaires dans l'explorateur ([#1966](https://github.com/MTES-MCT/ecobalyse/issues/1966)).
+- Ajout de la possibilité de calculer les impacts de distribution ([#1963](https://github.com/MTES-MCT/ecobalyse/issues/1963)).
+- Ajout de processus d'utilisation des aliments ([#1971](https://github.com/MTES-MCT/ecobalyse/issues/1971)).
+- Ajout d'animaux vivants dans les données ([#1932](https://github.com/MTES-MCT/ecobalyse/issues/1932)).
+- Ajout de la possibilité d'activer l'étape EOL via la configuration ([#1915](https://github.com/MTES-MCT/ecobalyse/issues/1915)).
+- Affichage de l'alias de l'ingrédient dans l'explorateur ([#1913](https://github.com/MTES-MCT/ecobalyse/issues/1913)).
+- Ajout de catégories de matériaux aux ingrédients ([#1972](https://github.com/MTES-MCT/ecobalyse/issues/1972)).
+- Ajout de nouveaux types de matériaux ([#1980](https://github.com/MTES-MCT/ecobalyse/issues/1980), [#1965](https://github.com/MTES-MCT/ecobalyse/issues/1965)).
+- Ajout de processus de recyclage ([#2005](https://github.com/MTES-MCT/ecobalyse/issues/2005)).
 
 ### Évolutions techniques
-- Standardisation du shebang pour les scripts Python [#1874](https://github.com/MTES-MCT/ecobalyse/issues/1874)
-- Mise à jour de la documentation d'installation [#1355](https://github.com/MTES-MCT/ecobalyse/issues/1355)
-- Ajout de toutes les régions à la verticale "food" [#1856](https://github.com/MTES-MCT/ecobalyse/issues/1856)
-- Amélioration de la gestion des erreurs d'authentification (ne plus les logger dans Sentry) [#1858](https://github.com/MTES-MCT/ecobalyse/issues/1858)
-- Mise à jour des dépendances NodeJS [#1842](https://github.com/MTES-MCT/ecobalyse/issues/1842)
-- Refactorisation pour utiliser "stage" au lieu de "step" dans le code [#1738](https://github.com/MTES-MCT/ecobalyse/issues/1738)
-- Suppression du code de version legacy [#1792](https://github.com/MTES-MCT/ecobalyse/issues/1792)
-- Suppression des actions de création de release [#1783](https://github.com/MTES-MCT/ecobalyse/issues/1783)
-- Ajout d'une authentification obligatoire pour les appels API [#1779](https://github.com/MTES-MCT/ecobalyse/issues/1779)
-- Amélioration du template de rapport de bug avec des sections supplémentaires [#1873](https://github.com/MTES-MCT/ecobalyse/issues/1873)
+- Mise à jour des dépendances npm ([#2080](https://github.com/MTES-MCT/ecobalyse/issues/2080), [#2014](https://github.com/MTES-MCT/ecobalyse/issues/2014)).
+- Refactoring pour améliorer la gestion des scopes génériques ([#1929](https://github.com/MTES-MCT/ecobalyse/issues/1929)).
+- Mise à jour des dépendances uv ([#2004](https://github.com/MTES-MCT/ecobalyse/issues/2004)).
+- Déplacement vers `core.extra` et mise à jour des dépendances Elm ([#1997](https://github.com/MTES-MCT/ecobalyse/issues/1997)).
+- Ajout de contrôles d'intégrité de la base de données JSON au CI ([#1953](https://github.com/MTES-MCT/ecobalyse/issues/1953)).
+- Amélioration de la validation du token de cache ([#1916](https://github.com/MTES-MCT/ecobalyse/issues/1916)).
+- Refactorisation des compléments alimentaires ([#1944](https://github.com/MTES-MCT/ecobalyse/issues/1944)).
+- Suppression de `auth2` et nettoyage du code Elm ([#1583](https://github.com/MTES-MCT/ecobalyse/issues/1583)).
 
 ### Autres changements
-- Correction d'un bug qui supprimait les données de session lors de la navigation entre les versions de l'application [#1756](https://github.com/MTES-MCT/ecobalyse/issues/1756)
-- Correction d'un bug lié à l'affichage des impacts détaillés pour les objets/veli [#1709](https://github.com/MTES-MCT/ecobalyse/issues/1709)
-- Correction d'un bug qui empêchait la fermeture des modals en cliquant en dehors [#1825](https://github.com/MTES-MCT/ecobalyse/issues/1825)
-- Correction d'un bug lié à l'affichage des données de score_history en cas d'échec d'authentification [#1845](https://github.com/MTES-MCT/ecobalyse/issues/1845)
-- Correction d'un bug qui empêchait l'application d'accepter toutes les valeurs pour le paramètre `sslmode` dans la chaîne de connexion PostgreSQL [#1852](https://github.com/MTES-MCT/ecobalyse/issues/1852)
-- Correction d'un bug lié à l'affichage d'un message de bannière erroné [#1822](https://github.com/MTES-MCT/ecobalyse/issues/1822)
-- Suppression d'une transition CSS sur les modals d'autocomplétion [#1826](https://github.com/MTES-MCT/ecobalyse/issues/1826)
-- Correction d'un bug lié à l'exportation des données après les corrections d'encodage [#1857](https://github.com/MTES-MCT/ecobalyse/issues/1857)
-- Correction d'un bug lié à la nouvelle exportation utilisant la nouvelle base de données Ginko [#1820](https://github.com/MTES-MCT/ecobalyse/issues/1820)
-- Suppression d'un rapport de bug inutile [#1875](https://github.com/MTES-MCT/ecobalyse/issues/1875)
+- Correction de l'emplacement des activités créées ([#1919](https://github.com/MTES-MCT/ecobalyse/issues/1919)).
+- Correction des clés JSON des compléments ([#1954](https://github.com/MTES-MCT/ecobalyse/issues/1954)).
+- Suppression des animaux vivants de l'affichage ([#2053](https://github.com/MTES-MCT/ecobalyse/issues/2053)).
+- Correction des doublons de processus dans l'explorateur ([#1968](https://github.com/MTES-MCT/ecobalyse/issues/1968)).
+- Synchronisation des données ecobalyse ([#1979](https://github.com/MTES-MCT/ecobalyse/issues/1979)).
+- Mise à jour de la configuration dependabot pour gérer les branches et les écosystèmes ([#1977](https://github.com/MTES-MCT/ecobalyse/issues/1977)).
+- Suppression de object/veli de processes.json ([#1902](https://github.com/MTES-MCT/ecobalyse/issues/1902)).
+- Alignement du displayName v2 ([#2082](https://github.com/MTES-MCT/ecobalyse/issues/2082)).
