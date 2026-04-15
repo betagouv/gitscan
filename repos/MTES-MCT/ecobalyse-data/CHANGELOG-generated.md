@@ -1,23 +1,26 @@
-## Changelog : ecobalyse-data (30 derniers jours)
+## Changelog : ecobalyse-data (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au projet ecobalyse-data au cours des 30 derniers jours. Les modifications incluent des corrections de données dans les bases de données d'ACV, des améliorations de la gestion des processus et des activités, ainsi que des optimisations de performance pour l'exportation des données.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'enrichissement et l'amélioration des données, notamment dans les domaines de l'alimentation, des métaux et du recyclage. Des corrections ont également été apportées pour améliorer la cohérence et la qualité des données, ainsi que pour optimiser l'expérience utilisateur dans l'explorateur de données.
 
 ### Évolutions fonctionnelles
-- Correction du nom incorrect dans la base de données source Pastoeco. [#224](https://github.com/MTES-MCT/ecobalyse-data/issues/224)
-- Correction du séparateur dans l'en-tête Simapro de la base de données Woolmark. [#225](https://github.com/MTES-MCT/ecobalyse-data/issues/225)
-- Utilisation de la base de données Ginko organique reconstruite avec les noms corrects. [#218](https://github.com/MTES-MCT/ecobalyse-data/issues/218)
-- Ajout du transport routier vers les aéroports ou les ports. [#211](https://github.com/MTES-MCT/ecobalyse-data/issues/211)
-- Correction de l'affichage des pâturages permanents. [#213](https://github.com/MTES-MCT/ecobalyse-data/issues/213)
-- Ajout de nouveaux ingrédients avec des métadonnées prédites. [#196](https://github.com/MTES-MCT/ecobalyse-data/issues/196)
-- Nouveau format pour les processus génériques. [#220](https://github.com/MTES-MCT/ecobalyse-data/issues/220)
+- Ajout de données pour les animaux vivants [#242](https://github.com/MTES-MCT/ecobalyse-data/issues/242).
+- Intégration de processus liés au recyclage [#243](https://github.com/MTES-MCT/ecobalyse-data/issues/243).
+- Ajout de processus d'utilisation des aliments [#241](https://github.com/MTES-MCT/ecobalyse-data/issues/241).
+- Ajout d'ingrédients biologiques [#235](https://github.com/MTES-MCT/ecobalyse-data/issues/235).
+- Alignement du nom affiché (displayName) pour la version 2 des données [#258](https://github.com/MTES-MCT/ecobalyse-data/issues/258).
+- Correction de la localisation des activités créées [#236](https://github.com/MTES-MCT/ecobalyse-data/issues/236).
+- Ajout de la catégorie de matériaux aux ingrédients [#250](https://github.com/MTES-MCT/ecobalyse-data/issues/250).
+- Modification du type de matériau [#253](https://github.com/MTES-MCT/ecobalyse-data/issues/253).
+- Ajout de processus de transformation des métaux et autres [#257](https://github.com/MTES-MCT/ecobalyse-data/issues/257).
 
 ### Évolutions techniques
-- Refactorisation pour rendre les métadonnées des activités compatibles entre différents contextes. [#221](https://github.com/MTES-MCT/ecobalyse-data/issues/221)
-- Unification de l'alias entre `activities_to_create` et `activities`. [#228](https://github.com/MTES-MCT/ecobalyse-data/issues/228)
-- Correction de l'encodage de l'import Simapro. [#222](https://github.com/MTES-MCT/ecobalyse-data/issues/222)
-- Optimisation de l'exportation pour éviter de ralentir le système. [#212](https://github.com/MTES-MCT/ecobalyse-data/issues/212)
+- Refactorisation des compléments alimentaires pour animaux [#245](https://github.com/MTES-MCT/ecobalyse-data/issues/245).
+- Correction des scopes suite à des vérifications d'intégrité de la base de données [#251](https://github.com/MTES-MCT/ecobalyse-data/issues/251).
+- Suppression des objets/veli du fichier `processes.json` [#231](https://github.com/MTES-MCT/ecobalyse-data/issues/231).
+- Ajout du scope 'food2' pour tout ce qui a le scope 'food' [#237](https://github.com/MTES-MCT/ecobalyse-data/issues/237).
 
 ### Autres changements
-- Tri des fichiers `processes.json` et `activities.json`. [#223](https://github.com/MTES-MCT/ecobalyse-data/issues/223) et [#216](https://github.com/MTES-MCT/ecobalyse-data/issues/216)
-- Nouvelle exportation après la correction de l'encodage. [#226](https://github.com/MTES-MCT/ecobalyse-data/issues/226)
+- Correction des processus dupliqués dans l'explorateur [#249](https://github.com/MTES-MCT/ecobalyse-data/issues/249).
+- Masquage des animaux vivants [#259](https://github.com/MTES-MCT/ecobalyse-data/issues/259).
+- Ajout de processus de distribution alimentaire [#240](https://github.com/MTES-MCT/ecobalyse-data/issues/240).
