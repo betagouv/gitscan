@@ -1,0 +1,288 @@
+.
+├── .circleci
+│   └── config.yml
+├── .dockerignore
+├── .github
+│   ├── CODEOWNERS
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── dependabot.yml
+│   └── workflows
+│       └── check_changelog.yml
+├── .gitignore
+├── .gitmodules
+├── .rubocop.yml
+├── CHANGELOG.md
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── Makefile
+├── README.md
+├── VERSION
+├── bin
+│   ├── compile
+│   ├── default_pythons
+│   ├── detect
+│   ├── release
+│   ├── steps
+│   │   ├── README.MD
+│   │   ├── collectstatic
+│   │   ├── eggpath-fix
+│   │   ├── eggpath-fix2
+│   │   ├── hooks
+│   │   │   ├── post_compile
+│   │   │   └── pre_compile
+│   │   ├── nltk
+│   │   ├── pip-install
+│   │   ├── pipenv
+│   │   ├── pipenv-python-version
+│   │   ├── python
+│   │   └── sqlite3
+│   ├── test-compile
+│   ├── utils
+│   └── warnings
+├── buildpack.toml
+├── builds
+│   ├── README.md
+│   ├── dockerenv.default
+│   ├── heroku-16.Dockerfile
+│   ├── heroku-18.Dockerfile
+│   ├── heroku-20.Dockerfile
+│   ├── libraries
+│   │   └── sqlite
+│   └── runtimes
+│       ├── pypy
+│       ├── pypy-5.3.1
+│       ├── pypy-5.6.0
+│       ├── pypy-5.7.0
+│       ├── pypy-5.7.1
+│       ├── pypy-5.8.0
+│       ├── pypy2.7
+│       ├── pypy2.7-7.2.0
+│       ├── pypy2.7-7.3.1
+│       ├── pypy2.7-7.3.2
+│       ├── pypy3
+│       ├── pypy3-2.4.0
+│       ├── pypy3-5.5.0
+│       ├── pypy3-5.7.1
+│       ├── pypy3-5.8.0
+│       ├── pypy3.6
+│       ├── pypy3.6-7.2.0
+│       ├── pypy3.6-7.3.1
+│       ├── pypy3.6-7.3.2
+│       ├── python-*.10  (5 files)
+│       ├── python-2.7.11
+│       ├── python-2.7.12
+│       ├── python-2.7.13
+│       ├── python-2.7.14
+│       ├── python-2.7.15
+│       ├── python-2.7.16
+│       ├── python-2.7.17
+│       ├── python-2.7.18
+│       ├── python-*.9  (5 files)
+│       ├── python-*.0  (5 files)
+│       ├── python-*.1  (5 files)
+│       ├── python-*.2  (5 files)
+│       ├── python-3.5.3
+│       ├── python-3.5.4
+│       ├── python-3.5.5
+│       ├── python-3.5.6
+│       ├── python-3.5.7
+│       ├── python-3.6.11
+│       ├── python-3.6.12
+│       ├── python-3.6.13
+│       ├── python-3.6.3
+│       ├── python-3.6.4
+│       ├── python-3.6.5
+│       ├── python-3.6.6
+│       ├── python-3.6.7
+│       ├── python-3.6.8
+│       ├── python-3.7.3
+│       ├── python-3.7.4
+│       ├── python-3.7.5
+│       ├── python-3.7.6
+│       ├── python-3.7.7
+│       ├── python-3.7.8
+│       ├── python-3.8.3
+│       ├── python-3.8.4
+│       ├── python-3.8.5
+│       ├── python-3.8.6
+│       ├── python-3.8.7
+│       ├── python-3.8.8
+│       ├── python2
+│       └── python3
+├── etc
+│   └── publish.sh
+├── hatchet.json
+├── hatchet.lock
+├── requirements.txt
+├── spec
+│   ├── fixtures
+│   │   ├── ci_nose
+│   │   │   ├── app.json
+│   │   │   └── requirements.txt
+│   │   ├── hooks
+│   │   │   ├── bin
+│   │   │   │   ├── post_compile
+│   │   │   │   └── pre_compile
+│   │   │   └── requirements.txt
+│   │   ├── nltk_dependency_and_nltk_txt
+│   │   │   ├── nltk.txt
+│   │   │   └── requirements.txt
+│   │   ├── nltk_dependency_only
+│   │   │   └── requirements.txt
+│   │   ├── nltk_txt_but_no_dependency
+│   │   │   ├── nltk.txt
+│   │   │   └── requirements.txt
+│   │   ├── no_python_project_files
+│   │   │   └── README.md
+│   │   ├── pipenv_and_requirements_txt
+│   │   │   ├── Pipfile
+│   │   │   ├── Pipfile.lock
+│   │   │   └── requirements.txt
+│   │   ├── pipenv_and_runtime_txt
+│   │   │   ├── Pipfile
+│   │   │   ├── Pipfile.lock
+│   │   │   └── runtime.txt
+│   │   ├── pipenv_lockfile_out_of_sync
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_no_lockfile
+│   │   │   └── Pipfile
+│   │   ├── pipenv_python_2.7
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_3.5
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_3.6
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_3.7
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_3.8
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_3.9
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_full_version
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_full_version_invalid
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_version_invalid
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pipenv_python_version_unspecified
+│   │   │   ├── Pipfile
+│   │   │   └── Pipfile.lock
+│   │   ├── pypy_2.7
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── pypy_2.7_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── pypy_3.6
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── pypy_3.6_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_2.7
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_2.7_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.4
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.4_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.5
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.5_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.6
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.6_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.7
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.7_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.8
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.8_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.9
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_3.9_outdated
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_version_invalid
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── python_version_unspecified
+│   │   │   └── requirements.txt
+│   │   ├── requirements_airflow_1.10.2
+│   │   │   └── requirements.txt
+│   │   ├── requirements_compiled
+│   │   │   └── requirements.txt
+│   │   ├── requirements_django_1.11
+│   │   │   └── requirements.txt
+│   │   ├── requirements_django_2.1
+│   │   │   └── requirements.txt
+│   │   ├── requirements_editable
+│   │   │   ├── requirements.txt
+│   │   │   └── setup.py
+│   │   ├── requirements_gdal
+│   │   │   └── requirements.txt
+│   │   ├── requirements_pysqlite_python_2
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   ├── requirements_txt_and_setup_py
+│   │   │   ├── requirements.txt
+│   │   │   └── setup.py
+│   │   ├── requirements_vcs
+│   │   │   └── requirements.txt
+│   │   ├── runtime_txt_only
+│   │   │   └── runtime.txt
+│   │   ├── runtime_txt_with_stray_whitespace
+│   │   │   ├── requirements.txt
+│   │   │   └── runtime.txt
+│   │   └── setup_py_only
+│   │       └── setup.py
+│   ├── hatchet
+│   │   ├── ci_spec.rb
+│   │   ├── detect_spec.rb
+│   │   ├── django_spec.rb
+│   │   ├── getting_started_spec.rb
+│   │   ├── hooks_spec.rb
+│   │   ├── nltk_spec.rb
+│   │   ├── pip_spec.rb
+│   │   ├── pipenv_spec.rb
+│   │   ├── python_update_warning_spec.rb
+│   │   ├── python_version_spec.rb
+│   │   └── stack_spec.rb
+│   └── spec_helper.rb
+└── vendor
+    ├── WEB_CONCURRENCY.sh
+    ├── buildpack-stdlib_v8.sh
+    ├── jq
+    ├── pipenv-to-pip
+    ├── python.gunicorn.sh
+    └── runtime-fixer
+68 directories, 239 files
