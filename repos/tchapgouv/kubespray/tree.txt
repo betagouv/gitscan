@@ -1,0 +1,1986 @@
+.
+├── .ansible-lint
+├── .editorconfig
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug-report.md
+│   │   ├── enhancement.md
+│   │   ├── failing-test.md
+│   │   └── support.md
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .gitignore
+├── .gitlab-ci
+│   ├── build.yml
+│   ├── lint.yml
+│   ├── molecule.yml
+│   ├── packet.yml
+│   ├── shellcheck.yml
+│   ├── terraform.yml
+│   └── vagrant.yml
+├── .gitlab-ci.yml
+├── .gitmodules
+├── .markdownlint.yaml
+├── .nojekyll
+├── .pre-commit-config.yaml
+├── .yamllint
+├── CNAME
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── OWNERS
+├── OWNERS_ALIASES
+├── README.md
+├── RELEASE.md
+├── SECURITY_CONTACTS
+├── Vagrantfile
+├── _config.yml
+├── ansible.cfg
+├── cluster.yml
+├── code-of-conduct.md
+├── contrib
+│   ├── aws_iam
+│   │   ├── kubernetes-master-policy.json
+│   │   ├── kubernetes-master-role.json
+│   │   ├── kubernetes-minion-policy.json
+│   │   └── kubernetes-minion-role.json
+│   ├── aws_inventory
+│   │   ├── kubespray-aws-inventory.py
+│   │   └── requirements.txt
+│   ├── azurerm
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── apply-rg.sh
+│   │   ├── clear-rg.sh
+│   │   ├── generate-inventory.sh
+│   │   ├── generate-inventory.yml
+│   │   ├── generate-inventory_2.yml
+│   │   ├── generate-templates.yml
+│   │   ├── group_vars
+│   │   │   └── all
+│   │   └── roles
+│   │       ├── generate-inventory
+│   │       │   ├── tasks
+│   │       │   │   └── main.yml
+│   │       │   └── templates
+│   │       │       └── inventory.j2
+│   │       ├── generate-inventory_2
+│   │       │   ├── tasks
+│   │       │   │   └── main.yml
+│   │       │   └── templates
+│   │       │       ├── inventory.j2
+│   │       │       └── loadbalancer_vars.j2
+│   │       └── generate-templates
+│   │           ├── defaults
+│   │           │   └── main.yml
+│   │           ├── tasks
+│   │           │   └── main.yml
+│   │           └── templates
+│   │               ├── availability-sets.json
+│   │               ├── bastion.json
+│   │               ├── clear-rg.json
+│   │               ├── masters.json
+│   │               ├── minions.json
+│   │               ├── network.json
+│   │               └── storage.json
+│   ├── dind
+│   │   ├── README.md
+│   │   ├── dind-cluster.yaml
+│   │   ├── group_vars
+│   │   │   └── all
+│   │   │       ├── all.yaml
+│   │   │       └── distro.yaml
+│   │   ├── hosts
+│   │   ├── kubespray-dind.yaml
+│   │   ├── requirements.txt
+│   │   ├── roles
+│   │   │   ├── dind-cluster
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yaml
+│   │   │   └── dind-host
+│   │   │       ├── tasks
+│   │   │       │   └── main.yaml
+│   │   │       └── templates
+│   │   │           └── inventory_builder.sh.j2
+│   │   ├── run-test-distros.sh
+│   │   ├── test-most_distros-some_CNIs.env
+│   │   ├── test-some_distros-kube_router_combo.env
+│   │   └── test-some_distros-most_CNIs.env
+│   ├── inventory_builder
+│   │   ├── inventory.py
+│   │   ├── requirements.txt
+│   │   ├── setup.cfg
+│   │   ├── setup.py
+│   │   ├── test-requirements.txt
+│   │   ├── tests
+│   │   │   └── test_inventory.py
+│   │   └── tox.ini
+│   ├── kvm-setup
+│   │   ├── README.md
+│   │   ├── group_vars
+│   │   │   └── all
+│   │   ├── kvm-setup.yml
+│   │   └── roles
+│   │       └── kvm-setup
+│   │           └── tasks
+│   │               ├── main.yml
+│   │               ├── sysctl.yml
+│   │               └── user.yml
+│   ├── misc
+│   │   └── clusteradmin-rbac.yml
+│   ├── mitogen
+│   │   └── mitogen.yml
+│   ├── network-storage
+│   │   ├── glusterfs
+│   │   │   ├── README.md
+│   │   │   ├── glusterfs.yml
+│   │   │   ├── group_vars -> ../../../inventory/local/group_vars
+│   │   │   ├── inventory.example
+│   │   │   └── roles
+│   │   │       ├── bootstrap-os -> ../../../../roles/bootstrap-os
+│   │   │       ├── glusterfs
+│   │   │       │   ├── README.md
+│   │   │       │   ├── client
+│   │   │       │   │   ├── defaults
+│   │   │       │   │   │   └── main.yml
+│   │   │       │   │   ├── meta
+│   │   │       │   │   │   └── main.yml
+│   │   │       │   │   └── tasks
+│   │   │       │   │       ├── main.yml
+│   │   │       │   │       ├── setup-Debian.yml
+│   │   │       │   │       └── setup-RedHat.yml
+│   │   │       │   └── server
+│   │   │       │       ├── defaults
+│   │   │       │       │   └── main.yml
+│   │   │       │       ├── meta
+│   │   │       │       │   └── main.yml
+│   │   │       │       ├── tasks
+│   │   │       │       │   ├── main.yml
+│   │   │       │       │   ├── setup-Debian.yml
+│   │   │       │       │   └── setup-RedHat.yml
+│   │   │       │       ├── templates
+│   │   │       │       │   └── test-file.txt
+│   │   │       │       └── vars
+│   │   │       │           ├── Debian.yml
+│   │   │       │           └── RedHat.yml
+│   │   │       └── kubernetes-pv
+│   │   │           ├── ansible
+│   │   │           │   ├── tasks
+│   │   │           │   │   └── main.yaml
+│   │   │           │   └── templates
+│   │   │           │       ├── glusterfs-kubernetes-endpoint-svc.json.j2
+│   │   │           │       ├── glusterfs-kubernetes-endpoint.json.j2
+│   │   │           │       └── glusterfs-kubernetes-pv.yml.j2
+│   │   │           └── meta
+│   │   │               └── main.yaml
+│   │   └── heketi
+│   │       ├── README.md
+│   │       ├── heketi-tear-down.yml
+│   │       ├── heketi.yml
+│   │       ├── inventory.yml.sample
+│   │       ├── requirements.txt
+│   │       └── roles
+│   │           ├── prepare
+│   │           │   └── tasks
+│   │           │       └── main.yml
+│   │           ├── provision
+│   │           │   ├── defaults
+│   │           │   │   └── main.yml
+│   │           │   ├── handlers
+│   │           │   │   └── main.yml
+│   │           │   ├── tasks
+│   │           │   │   ├── bootstrap
+│   │           │   │   │   ├── deploy.yml
+│   │           │   │   │   ├── storage.yml
+│   │           │   │   │   ├── tear-down.yml
+│   │           │   │   │   ├── topology.yml
+│   │           │   │   │   └── volumes.yml
+│   │           │   │   ├── bootstrap.yml
+│   │           │   │   ├── cleanup.yml
+│   │           │   │   ├── glusterfs
+│   │           │   │   │   └── label.yml
+│   │           │   │   ├── glusterfs.yml
+│   │           │   │   ├── heketi.yml
+│   │           │   │   ├── main.yml
+│   │           │   │   ├── secret.yml
+│   │           │   │   ├── storage.yml
+│   │           │   │   ├── storageclass.yml
+│   │           │   │   └── topology.yml
+│   │           │   └── templates
+│   │           │       ├── glusterfs-daemonset.json.j2
+│   │           │       ├── heketi-bootstrap.json.j2
+│   │           │       ├── heketi-deployment.json.j2
+│   │           │       ├── heketi-service-account.json.j2
+│   │           │       ├── heketi-storage.json.j2
+│   │           │       ├── heketi.json.j2
+│   │           │       ├── storageclass.yml.j2
+│   │           │       └── topology.json.j2
+│   │           ├── tear-down
+│   │           │   └── tasks
+│   │           │       └── main.yml
+│   │           └── tear-down-disks
+│   │               ├── defaults
+│   │               │   └── main.yml
+│   │               └── tasks
+│   │                   └── main.yml
+│   ├── offline
+│   │   ├── README.md
+│   │   ├── docker-daemon.json
+│   │   ├── generate_list.sh
+│   │   ├── generate_list.yml
+│   │   ├── manage-offline-container-images.sh
+│   │   ├── manage-offline-files.sh
+│   │   ├── nginx.conf
+│   │   └── registries.conf
+│   ├── os-services
+│   │   ├── os-services.yml
+│   │   └── roles
+│   │       └── prepare
+│   │           ├── defaults
+│   │           │   └── main.yml
+│   │           └── tasks
+│   │               └── main.yml
+│   ├── packaging
+│   │   └── rpm
+│   │       └── kubespray.spec
+│   └── terraform
+│       ├── OWNERS
+│       ├── aws
+│       │   ├── .gitignore
+│       │   ├── README.md
+│       │   ├── create-infrastructure.tf
+│       │   ├── credentials.tfvars.example
+│       │   ├── docs
+│       │   │   └── aws_kubespray.png
+│       │   ├── modules
+│       │   │   ├── iam
+│       │   │   │   ├── main.tf
+│       │   │   │   ├── outputs.tf
+│       │   │   │   └── variables.tf
+│       │   │   ├── nlb
+│       │   │   │   ├── main.tf
+│       │   │   │   ├── outputs.tf
+│       │   │   │   └── variables.tf
+│       │   │   └── vpc
+│       │   │       ├── main.tf
+│       │   │       ├── outputs.tf
+│       │   │       └── variables.tf
+│       │   ├── output.tf
+│       │   ├── sample-inventory
+│       │   │   ├── cluster.tfvars
+│       │   │   └── group_vars -> ../../../../inventory/sample/group_vars
+│       │   ├── templates
+│       │   │   └── inventory.tpl
+│       │   ├── terraform.tfvars
+│       │   ├── terraform.tfvars.example
+│       │   └── variables.tf
+│       ├── equinix
+│       │   ├── README.md
+│       │   ├── hosts -> ../terraform.py
+│       │   ├── kubespray.tf
+│       │   ├── output.tf
+│       │   ├── provider.tf
+│       │   ├── sample-inventory
+│       │   │   ├── cluster.tfvars
+│       │   │   └── group_vars -> ../../../../inventory/sample/group_vars
+│       │   └── variables.tf
+│       ├── exoscale
+│       │   ├── README.md
+│       │   ├── default.tfvars
+│       │   ├── main.tf
+│       │   ├── modules
+│       │   │   └── kubernetes-cluster
+│       │   │       ├── main.tf
+│       │   │       ├── output.tf
+│       │   │       ├── templates
+│       │   │       │   └── cloud-init.tmpl
+│       │   │       ├── variables.tf
+│       │   │       └── versions.tf
+│       │   ├── output.tf
+│       │   ├── sample-inventory
+│       │   │   ├── cluster.tfvars
+│       │   │   └── group_vars -> ../../../../inventory/sample/group_vars
+│       │   ├── templates
+│       │   │   └── inventory.tpl
+│       │   ├── variables.tf
+│       │   └── versions.tf
+│       ├── gcp
+│       │   ├── README.md
+│       │   ├── generate-inventory.sh
+│       │   ├── main.tf
+│       │   ├── modules
+│       │   │   └── kubernetes-cluster
+│       │   │       ├── main.tf
+│       │   │       ├── output.tf
+│       │   │       └── variables.tf
+│       │   ├── output.tf
+│       │   ├── tfvars.json
+│       │   └── variables.tf
+│       ├── group_vars -> ../../inventory/local/group_vars
+│       ├── hetzner
+│       │   ├── README.md
+│       │   ├── default.tfvars
+│       │   ├── main.tf
+│       │   ├── modules
+│       │   │   ├── kubernetes-cluster
+│       │   │   │   ├── main.tf
+│       │   │   │   ├── output.tf
+│       │   │   │   ├── templates
+│       │   │   │   │   └── cloud-init.tmpl
+│       │   │   │   ├── variables.tf
+│       │   │   │   └── versions.tf
+│       │   │   └── kubernetes-cluster-flatcar
+│       │   │       ├── main.tf
+│       │   │       ├── outputs.tf
+│       │   │       ├── templates
+│       │   │       │   └── machine.yaml.tmpl
+│       │   │       ├── variables.tf
+│       │   │       └── versions.tf
+│       │   ├── output.tf
+│       │   ├── templates
+│       │   │   └── inventory.tpl
+│       │   ├── variables.tf
+│       │   └── versions.tf
+│       ├── openstack
+│       │   ├── .gitignore
+│       │   ├── README.md
+│       │   ├── hosts -> ../terraform.py
+│       │   ├── kubespray.tf
+│       │   ├── modules
+│       │   │   ├── compute
+│       │   │   │   ├── ansible_bastion_template.txt
+│       │   │   │   ├── main.tf
+│       │   │   │   ├── templates
+│       │   │   │   │   └── cloudinit.yaml.tmpl
+│       │   │   │   ├── variables.tf
+│       │   │   │   └── versions.tf
+│       │   │   ├── ips
+│       │   │   │   ├── main.tf
+│       │   │   │   ├── outputs.tf
+│       │   │   │   ├── variables.tf
+│       │   │   │   └── versions.tf
+│       │   │   └── network
+│       │   │       ├── main.tf
+│       │   │       ├── outputs.tf
+│       │   │       ├── variables.tf
+│       │   │       └── versions.tf
+│       │   ├── sample-inventory
+│       │   │   ├── cluster.tfvars
+│       │   │   └── group_vars -> ../../../../inventory/sample/group_vars
+│       │   ├── variables.tf
+│       │   └── versions.tf
+│       ├── terraform.py
+│       ├── upcloud
+│       │   ├── README.md
+│       │   ├── cluster-settings.tfvars
+│       │   ├── main.tf
+│       │   ├── modules
+│       │   │   └── kubernetes-cluster
+│       │   │       ├── main.tf
+│       │   │       ├── output.tf
+│       │   │       ├── variables.tf
+│       │   │       └── versions.tf
+│       │   ├── output.tf
+│       │   ├── sample-inventory
+│       │   │   ├── cluster.tfvars
+│       │   │   └── group_vars -> ../../../../inventory/sample/group_vars/
+│       │   ├── templates
+│       │   │   └── inventory.tpl
+│       │   ├── variables.tf
+│       │   └── versions.tf
+│       └── vsphere
+│           ├── README.md
+│           ├── default.tfvars
+│           ├── main.tf
+│           ├── modules
+│           │   └── kubernetes-cluster
+│           │       ├── main.tf
+│           │       ├── output.tf
+│           │       ├── templates
+│           │       │   ├── cloud-init.tpl
+│           │       │   ├── metadata.tpl
+│           │       │   └── vapp-cloud-init.tpl
+│           │       ├── variables.tf
+│           │       └── versions.tf
+│           ├── output.tf
+│           ├── sample-inventory
+│           │   ├── cluster.tfvars
+│           │   └── group_vars -> ../../../../inventory/sample/group_vars
+│           ├── templates
+│           │   └── inventory.tpl
+│           ├── variables.tf
+│           └── versions.tf
+├── docs
+│   ├── _sidebar.md
+│   ├── amazonlinux.md
+│   ├── ansible.md
+│   ├── ansible_collection.md
+│   ├── arch.md
+│   ├── aws-ebs-csi.md
+│   ├── aws.md
+│   ├── azure-csi.md
+│   ├── azure.md
+│   ├── bootstrap-os.md
+│   ├── calico.md
+│   ├── calico_peer_example
+│   │   ├── new-york.yml
+│   │   └── paris.yml
+│   ├── centos.md
+│   ├── cert_manager.md
+│   ├── cgroups.md
+│   ├── ci-setup.md
+│   ├── ci.md
+│   ├── cilium.md
+│   ├── cinder-csi.md
+│   ├── cloud.md
+│   ├── cni.md
+│   ├── comparisons.md
+│   ├── containerd.md
+│   ├── cri-o.md
+│   ├── debian.md
+│   ├── dns-stack.md
+│   ├── docker.md
+│   ├── downloads.md
+│   ├── encrypting-secret-data-at-rest.md
+│   ├── equinix-metal.md
+│   ├── etcd.md
+│   ├── fcos.md
+│   ├── figures
+│   │   ├── kubespray-calico-rr.png
+│   │   └── loadbalancer_localhost.png
+│   ├── flannel.md
+│   ├── flatcar.md
+│   ├── gcp-lb.md
+│   ├── gcp-pd-csi.md
+│   ├── getting-started.md
+│   ├── gvisor.md
+│   ├── ha-mode.md
+│   ├── hardening.md
+│   ├── img
+│   │   ├── kubelet-hardening.png
+│   │   └── kubernetes-logo.png
+│   ├── ingress_controller
+│   │   ├── alb_ingress_controller.md
+│   │   └── ingress_nginx.md
+│   ├── integration.md
+│   ├── kata-containers.md
+│   ├── kube-ovn.md
+│   ├── kube-router.md
+│   ├── kube-vip.md
+│   ├── kubernetes-apps
+│   │   ├── cephfs_provisioner.md
+│   │   ├── local_volume_provisioner.md
+│   │   ├── rbd_provisioner.md
+│   │   └── registry.md
+│   ├── kubernetes-reliability.md
+│   ├── kylinlinux.md
+│   ├── large-deployments.md
+│   ├── macvlan.md
+│   ├── metallb.md
+│   ├── mirror.md
+│   ├── mitogen.md
+│   ├── multus.md
+│   ├── netcheck.md
+│   ├── nodes.md
+│   ├── ntp.md
+│   ├── offline-environment.md
+│   ├── openeuler.md
+│   ├── openstack.md
+│   ├── opensuse.md
+│   ├── port-requirements.md
+│   ├── proxy.md
+│   ├── recover-control-plane.md
+│   ├── rhel.md
+│   ├── roadmap.md
+│   ├── setting-up-your-first-cluster.md
+│   ├── test_cases.md
+│   ├── uoslinux.md
+│   ├── upgrades
+│   │   └── migrate_docker2containerd.md
+│   ├── upgrades.md
+│   ├── vagrant.md
+│   ├── vars.md
+│   ├── vsphere-csi.md
+│   ├── vsphere.md
+│   └── weave.md
+├── extra_playbooks
+│   ├── files
+│   │   └── get_cinder_pvs.sh
+│   ├── inventory -> ../inventory
+│   ├── migrate_openstack_provider.yml
+│   ├── roles -> ../roles
+│   ├── upgrade-only-k8s.yml
+│   └── wait-for-cloud-init.yml
+├── galaxy.yml
+├── index.html
+├── inventory
+│   ├── local
+│   │   ├── group_vars -> ../sample/group_vars
+│   │   └── hosts.ini
+│   └── sample
+│       ├── group_vars
+│       │   ├── all
+│       │   │   ├── all.yml
+│       │   │   ├── aws.yml
+│       │   │   ├── azure.yml
+│       │   │   ├── containerd.yml
+│       │   │   ├── coreos.yml
+│       │   │   ├── cri-o.yml
+│       │   │   ├── docker.yml
+│       │   │   ├── etcd.yml
+│       │   │   ├── gcp.yml
+│       │   │   ├── hcloud.yml
+│       │   │   ├── oci.yml
+│       │   │   ├── offline.yml
+│       │   │   ├── openstack.yml
+│       │   │   ├── upcloud.yml
+│       │   │   └── vsphere.yml
+│       │   ├── etcd.yml
+│       │   └── k8s_cluster
+│       │       ├── addons.yml
+│       │       ├── k8s-cluster.yml
+│       │       ├── k8s-net-calico.yml
+│       │       ├── k8s-net-canal.yml
+│       │       ├── k8s-net-cilium.yml
+│       │       ├── k8s-net-flannel.yml
+│       │       ├── k8s-net-kube-ovn.yml
+│       │       ├── k8s-net-kube-router.yml
+│       │       ├── k8s-net-macvlan.yml
+│       │       └── k8s-net-weave.yml
+│       ├── inventory.ini
+│       └── patches
+│           ├── kube-controller-manager+merge.yaml
+│           └── kube-scheduler+merge.yaml
+├── library
+│   └── kube.py -> ../plugins/modules/kube.py
+├── logo
+│   ├── LICENSE
+│   ├── OWNERS
+│   ├── logo-clear.png
+│   ├── logo-clear.svg
+│   ├── logo-dark.png
+│   ├── logo-dark.svg
+│   ├── logo-text-clear.png
+│   ├── logo-text-clear.svg
+│   ├── logo-text-dark.png
+│   ├── logo-text-dark.svg
+│   ├── logo-text-mixed.png
+│   ├── logo-text-mixed.svg
+│   ├── logos.pdf
+│   └── usage_guidelines.md
+├── pipeline.Dockerfile
+├── playbooks
+│   ├── ansible_version.yml
+│   ├── cluster.yml
+│   ├── facts.yml
+│   ├── legacy_groups.yml
+│   ├── recover-control-plane.yml
+│   ├── remove-node.yml
+│   ├── reset.yml
+│   ├── scale.yml
+│   └── upgrade-cluster.yml
+├── plugins
+│   └── modules
+│       └── kube.py
+├── recover-control-plane.yml
+├── remove-node.yml
+├── requirements-2.11.txt
+├── requirements-2.12.txt
+├── requirements.txt -> requirements-2.12.txt
+├── reset.yml
+├── roles
+│   ├── adduser
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── molecule
+│   │   │   └── default
+│   │   │       ├── converge.yml
+│   │   │       ├── molecule.yml
+│   │   │       └── tests
+│   │   │           └── test_default.py
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── vars
+│   │       ├── coreos.yml
+│   │       ├── debian.yml
+│   │       └── redhat.yml
+│   ├── bastion-ssh-config
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── molecule
+│   │   │   └── default
+│   │   │       ├── converge.yml
+│   │   │       ├── molecule.yml
+│   │   │       └── tests
+│   │   │           └── test_default.py
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── templates
+│   │       └── ssh-bastion.conf.j2
+│   ├── bootstrap-os
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── files
+│   │   │   └── bootstrap.sh
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── molecule
+│   │   │   └── default
+│   │   │       ├── converge.yml
+│   │   │       ├── molecule.yml
+│   │   │       └── tests
+│   │   │           └── test_default.py
+│   │   └── tasks
+│   │       ├── bootstrap-amazon.yml
+│   │       ├── bootstrap-centos.yml
+│   │       ├── bootstrap-clearlinux.yml
+│   │       ├── bootstrap-coreos.yml
+│   │       ├── bootstrap-debian.yml
+│   │       ├── bootstrap-fedora-coreos.yml
+│   │       ├── bootstrap-fedora.yml
+│   │       ├── bootstrap-flatcar.yml
+│   │       ├── bootstrap-opensuse.yml
+│   │       ├── bootstrap-redhat.yml
+│   │       └── main.yml
+│   ├── container-engine
+│   │   ├── containerd
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   ├── main.yml
+│   │   │   │   └── reset.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── molecule
+│   │   │   │   └── default
+│   │   │   │       ├── converge.yml
+│   │   │   │       ├── molecule.yml
+│   │   │   │       ├── prepare.yml
+│   │   │   │       └── tests
+│   │   │   │           └── test_default.py
+│   │   │   ├── tasks
+│   │   │   │   ├── main.yml
+│   │   │   │   └── reset.yml
+│   │   │   ├── templates
+│   │   │   │   ├── config.toml.j2
+│   │   │   │   ├── containerd.service.j2
+│   │   │   │   └── http-proxy.conf.j2
+│   │   │   └── vars
+│   │   │       ├── debian.yml
+│   │   │       └── ubuntu.yml
+│   │   ├── containerd-common
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── vars
+│   │   │       ├── amazon.yml
+│   │   │       └── suse.yml
+│   │   ├── cri-dockerd
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── molecule
+│   │   │   │   └── default
+│   │   │   │       ├── converge.yml
+│   │   │   │       ├── files
+│   │   │   │       │   ├── 10-mynet.conf
+│   │   │   │       │   ├── container.json
+│   │   │   │       │   └── sandbox.json
+│   │   │   │       ├── molecule.yml
+│   │   │   │       ├── prepare.yml
+│   │   │   │       └── tests
+│   │   │   │           └── test_default.py
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── cri-dockerd.service.j2
+│   │   │       └── cri-dockerd.socket.j2
+│   │   ├── cri-o
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   └── mounts.conf
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── molecule
+│   │   │   │   └── default
+│   │   │   │       ├── converge.yml
+│   │   │   │       ├── files
+│   │   │   │       │   ├── 10-mynet.conf
+│   │   │   │       │   ├── container.json
+│   │   │   │       │   └── sandbox.json
+│   │   │   │       ├── molecule.yml
+│   │   │   │       ├── prepare.yml
+│   │   │   │       └── tests
+│   │   │   │           └── test_default.py
+│   │   │   ├── tasks
+│   │   │   │   ├── cleanup.yaml
+│   │   │   │   ├── main.yaml
+│   │   │   │   ├── reset.yml
+│   │   │   │   └── setup-amazon.yaml
+│   │   │   └── templates
+│   │   │       ├── config.json.j2
+│   │   │       ├── crio.conf.j2
+│   │   │       ├── http-proxy.conf.j2
+│   │   │       ├── registry.conf.j2
+│   │   │       └── unqualified.conf.j2
+│   │   ├── crictl
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── crictl.yml
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── crictl.yaml.j2
+│   │   ├── crun
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── docker
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   └── cleanup-docker-orphans.sh
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── docker_plugin.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   ├── pre-upgrade.yml
+│   │   │   │   ├── reset.yml
+│   │   │   │   ├── set_facts_dns.yml
+│   │   │   │   └── systemd.yml
+│   │   │   ├── templates
+│   │   │   │   ├── docker-dns.conf.j2
+│   │   │   │   ├── docker-options.conf.j2
+│   │   │   │   ├── docker-orphan-cleanup.conf.j2
+│   │   │   │   ├── docker.service.j2
+│   │   │   │   ├── fedora_docker.repo.j2
+│   │   │   │   ├── http-proxy.conf.j2
+│   │   │   │   └── rh_docker.repo.j2
+│   │   │   └── vars
+│   │   │       ├── amazon.yml
+│   │   │       ├── clearlinux.yml
+│   │   │       ├── debian-stretch.yml
+│   │   │       ├── debian.yml
+│   │   │       ├── fedora.yml
+│   │   │       ├── kylin.yml
+│   │   │       ├── redhat-7.yml
+│   │   │       ├── redhat.yml
+│   │   │       ├── suse.yml
+│   │   │       ├── ubuntu-16.yml
+│   │   │       ├── ubuntu.yml
+│   │   │       └── uniontech.yml
+│   │   ├── docker-storage
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   └── install_container_storage_setup.sh
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── docker-storage-setup.j2
+│   │   ├── gvisor
+│   │   │   ├── molecule
+│   │   │   │   └── default
+│   │   │   │       ├── converge.yml
+│   │   │   │       ├── files
+│   │   │   │       │   ├── 10-mynet.conf
+│   │   │   │       │   ├── container.json
+│   │   │   │       │   └── sandbox.json
+│   │   │   │       ├── molecule.yml
+│   │   │   │       ├── prepare.yml
+│   │   │   │       └── tests
+│   │   │   │           └── test_default.py
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── kata-containers
+│   │   │   ├── OWNERS
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── molecule
+│   │   │   │   └── default
+│   │   │   │       ├── converge.yml
+│   │   │   │       ├── files
+│   │   │   │       │   ├── 10-mynet.conf
+│   │   │   │       │   ├── container.json
+│   │   │   │       │   └── sandbox.json
+│   │   │   │       ├── molecule.yml
+│   │   │   │       ├── prepare.yml
+│   │   │   │       └── tests
+│   │   │   │           └── test_default.py
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── configuration-qemu.toml.j2
+│   │   │       └── containerd-shim-kata-v2.j2
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── nerdctl
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── nerdctl.toml.j2
+│   │   ├── runc
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── skopeo
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── validate-container-engine
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   └── youki
+│   │       ├── defaults
+│   │       │   └── main.yml
+│   │       ├── molecule
+│   │       │   └── default
+│   │       │       ├── converge.yml
+│   │       │       ├── files
+│   │       │       │   ├── 10-mynet.conf
+│   │       │       │   ├── container.json
+│   │       │       │   └── sandbox.json
+│   │       │       ├── molecule.yml
+│   │       │       ├── prepare.yml
+│   │       │       └── tests
+│   │       │           └── test_default.py
+│   │       └── tasks
+│   │           └── main.yml
+│   ├── download
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   ├── check_pull_required.yml
+│   │   │   ├── download_container.yml
+│   │   │   ├── download_file.yml
+│   │   │   ├── extract_file.yml
+│   │   │   ├── main.yml
+│   │   │   ├── prep_download.yml
+│   │   │   ├── prep_kubeadm_images.yml
+│   │   │   └── set_container_facts.yml
+│   │   └── templates
+│   │       └── kubeadm-images.yaml.j2
+│   ├── etcd
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── handlers
+│   │   │   ├── backup.yml
+│   │   │   ├── backup_cleanup.yml
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   ├── check_certs.yml
+│   │   │   ├── configure.yml
+│   │   │   ├── gen_certs_script.yml
+│   │   │   ├── gen_nodes_certs_script.yml
+│   │   │   ├── install_docker.yml
+│   │   │   ├── install_etcdctl_docker.yml
+│   │   │   ├── install_host.yml
+│   │   │   ├── join_etcd-events_member.yml
+│   │   │   ├── join_etcd_member.yml
+│   │   │   ├── main.yml
+│   │   │   ├── refresh_config.yml
+│   │   │   └── upd_ca_trust.yml
+│   │   └── templates
+│   │       ├── etcd-docker.service.j2
+│   │       ├── etcd-events-docker.service.j2
+│   │       ├── etcd-events-host.service.j2
+│   │       ├── etcd-events.env.j2
+│   │       ├── etcd-events.j2
+│   │       ├── etcd-host.service.j2
+│   │       ├── etcd.env.j2
+│   │       ├── etcd.j2
+│   │       ├── make-ssl-etcd.sh.j2
+│   │       └── openssl.conf.j2
+│   ├── etcdctl
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── templates
+│   │       └── etcdctl.sh.j2
+│   ├── helm-apps
+│   │   ├── README.md
+│   │   ├── meta
+│   │   │   └── argument_specs.yml
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   └── vars
+│   │       └── main.yml
+│   ├── kubernetes
+│   │   ├── client
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── control-plane
+│   │   │   ├── defaults
+│   │   │   │   └── main
+│   │   │   │       ├── etcd.yml
+│   │   │   │       ├── kube-proxy.yml
+│   │   │   │       ├── kube-scheduler.yml
+│   │   │   │       └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── define-first-kube-control.yml
+│   │   │   │   ├── encrypt-at-rest.yml
+│   │   │   │   ├── kubeadm-backup.yml
+│   │   │   │   ├── kubeadm-etcd.yml
+│   │   │   │   ├── kubeadm-fix-apiserver.yml
+│   │   │   │   ├── kubeadm-secondary.yml
+│   │   │   │   ├── kubeadm-setup.yml
+│   │   │   │   ├── kubeadm-upgrade.yml
+│   │   │   │   ├── kubelet-fix-client-cert-rotation.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   ├── pre-upgrade.yml
+│   │   │   │   └── psp-install.yml
+│   │   │   ├── templates
+│   │   │   │   ├── admission-controls.yaml.j2
+│   │   │   │   ├── apiserver-audit-policy.yaml.j2
+│   │   │   │   ├── apiserver-audit-webhook-config.yaml.j2
+│   │   │   │   ├── eventratelimit.yaml.j2
+│   │   │   │   ├── k8s-certs-renew.service.j2
+│   │   │   │   ├── k8s-certs-renew.sh.j2
+│   │   │   │   ├── k8s-certs-renew.timer.j2
+│   │   │   │   ├── kubeadm-config.v1beta3.yaml.j2
+│   │   │   │   ├── kubeadm-controlplane.v1beta3.yaml.j2
+│   │   │   │   ├── kubescheduler-config.yaml.j2
+│   │   │   │   ├── podsecurity.yaml.j2
+│   │   │   │   ├── psp-cr.yml.j2
+│   │   │   │   ├── psp-crb.yml.j2
+│   │   │   │   ├── psp.yml.j2
+│   │   │   │   ├── secrets_encryption.yaml.j2
+│   │   │   │   ├── webhook-authorization-config.yaml.j2
+│   │   │   │   └── webhook-token-auth-config.yaml.j2
+│   │   │   └── vars
+│   │   │       └── main.yaml
+│   │   ├── kubeadm
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── kubeadm_etcd_node.yml
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── kubeadm-client.conf.v1beta3.j2
+│   │   ├── node
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── cloud-credentials
+│   │   │   │   │   ├── azure-credential-check.yml
+│   │   │   │   │   ├── openstack-credential-check.yml
+│   │   │   │   │   └── vsphere-credential-check.yml
+│   │   │   │   ├── facts.yml
+│   │   │   │   ├── install.yml
+│   │   │   │   ├── kubelet.yml
+│   │   │   │   ├── loadbalancer
+│   │   │   │   │   ├── haproxy.yml
+│   │   │   │   │   ├── kube-vip.yml
+│   │   │   │   │   └── nginx-proxy.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   └── pre_upgrade.yml
+│   │   │   ├── templates
+│   │   │   │   ├── cloud-configs
+│   │   │   │   │   ├── aws-cloud-config.j2
+│   │   │   │   │   ├── azure-cloud-config.j2
+│   │   │   │   │   ├── gce-cloud-config.j2
+│   │   │   │   │   ├── openstack-cloud-config.j2
+│   │   │   │   │   └── vsphere-cloud-config.j2
+│   │   │   │   ├── http-proxy.conf.j2
+│   │   │   │   ├── kubelet-config.v1beta1.yaml.j2
+│   │   │   │   ├── kubelet.env.v1beta1.j2
+│   │   │   │   ├── kubelet.service.j2
+│   │   │   │   ├── loadbalancer
+│   │   │   │   │   ├── haproxy.cfg.j2
+│   │   │   │   │   └── nginx.conf.j2
+│   │   │   │   ├── manifests
+│   │   │   │   │   ├── haproxy.manifest.j2
+│   │   │   │   │   ├── kube-vip.manifest.j2
+│   │   │   │   │   └── nginx-proxy.manifest.j2
+│   │   │   │   └── node-kubeconfig.yaml.j2
+│   │   │   └── vars
+│   │   │       ├── fedora.yml
+│   │   │       ├── ubuntu-18.yml
+│   │   │       ├── ubuntu-20.yml
+│   │   │       └── ubuntu-22.yml
+│   │   ├── node-label
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── preinstall
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   └── dhclient_nodnsupdate
+│   │   │   ├── gen-gitinfos.sh
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── 0010-swapoff.yml
+│   │   │   │   ├── 0020-set_facts.yml
+│   │   │   │   ├── 0040-verify-settings.yml
+│   │   │   │   ├── 0050-create_directories.yml
+│   │   │   │   ├── 0060-resolvconf.yml
+│   │   │   │   ├── 0061-systemd-resolved.yml
+│   │   │   │   ├── 0062-networkmanager-unmanaged-devices.yml
+│   │   │   │   ├── 0063-networkmanager-dns.yml
+│   │   │   │   ├── 0070-system-packages.yml
+│   │   │   │   ├── 0080-system-configurations.yml
+│   │   │   │   ├── 0081-ntp-configurations.yml
+│   │   │   │   ├── 0090-etchosts.yml
+│   │   │   │   ├── 0100-dhclient-hooks.yml
+│   │   │   │   ├── 0110-dhclient-hooks-undo.yml
+│   │   │   │   ├── 0120-growpart-azure-centos-7.yml
+│   │   │   │   └── main.yml
+│   │   │   ├── templates
+│   │   │   │   ├── ansible_git.j2
+│   │   │   │   ├── chrony.conf.j2
+│   │   │   │   ├── dhclient_dnsupdate.sh.j2
+│   │   │   │   ├── dhclient_dnsupdate_rh.sh.j2
+│   │   │   │   ├── ntp.conf.j2
+│   │   │   │   ├── resolvconf.j2
+│   │   │   │   └── resolved.conf.j2
+│   │   │   └── vars
+│   │   │       ├── amazon.yml
+│   │   │       ├── centos.yml
+│   │   │       ├── debian-11.yml
+│   │   │       ├── debian.yml
+│   │   │       ├── fedora.yml
+│   │   │       ├── redhat.yml
+│   │   │       ├── suse.yml
+│   │   │       └── ubuntu.yml
+│   │   └── tokens
+│   │       ├── files
+│   │       │   └── kube-gen-token.sh
+│   │       └── tasks
+│   │           ├── check-tokens.yml
+│   │           ├── gen_tokens.yml
+│   │           └── main.yml
+│   ├── kubernetes-apps
+│   │   ├── ansible
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── cleanup_dns.yml
+│   │   │   │   ├── coredns.yml
+│   │   │   │   ├── dashboard.yml
+│   │   │   │   ├── etcd_metrics.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   ├── netchecker.yml
+│   │   │   │   └── nodelocaldns.yml
+│   │   │   └── templates
+│   │   │       ├── coredns-clusterrole.yml.j2
+│   │   │       ├── coredns-clusterrolebinding.yml.j2
+│   │   │       ├── coredns-config.yml.j2
+│   │   │       ├── coredns-deployment.yml.j2
+│   │   │       ├── coredns-sa.yml.j2
+│   │   │       ├── coredns-svc.yml.j2
+│   │   │       ├── dashboard.yml.j2
+│   │   │       ├── dns-autoscaler-clusterrole.yml.j2
+│   │   │       ├── dns-autoscaler-clusterrolebinding.yml.j2
+│   │   │       ├── dns-autoscaler-sa.yml.j2
+│   │   │       ├── dns-autoscaler.yml.j2
+│   │   │       ├── etcd_metrics-endpoints.yml.j2
+│   │   │       ├── etcd_metrics-service.yml.j2
+│   │   │       ├── netchecker-agent-ds.yml.j2
+│   │   │       ├── netchecker-agent-hostnet-clusterrole.yml.j2
+│   │   │       ├── netchecker-agent-hostnet-clusterrolebinding.yml.j2
+│   │   │       ├── netchecker-agent-hostnet-ds.yml.j2
+│   │   │       ├── netchecker-agent-hostnet-psp.yml.j2
+│   │   │       ├── netchecker-agent-sa.yml.j2
+│   │   │       ├── netchecker-ns.yml.j2
+│   │   │       ├── netchecker-server-clusterrole.yml.j2
+│   │   │       ├── netchecker-server-clusterrolebinding.yml.j2
+│   │   │       ├── netchecker-server-deployment.yml.j2
+│   │   │       ├── netchecker-server-sa.yml.j2
+│   │   │       ├── netchecker-server-svc.yml.j2
+│   │   │       ├── nodelocaldns-config.yml.j2
+│   │   │       ├── nodelocaldns-daemonset.yml.j2
+│   │   │       ├── nodelocaldns-sa.yml.j2
+│   │   │       └── nodelocaldns-second-daemonset.yml.j2
+│   │   ├── argocd
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── argocd-namespace.yml.j2
+│   │   ├── cloud_controller
+│   │   │   └── oci
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   ├── credentials-check.yml
+│   │   │       │   └── main.yml
+│   │   │       └── templates
+│   │   │           ├── controller-manager-config.yml.j2
+│   │   │           └── oci-cloud-provider.yml.j2
+│   │   ├── cluster_roles
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   ├── k8s-cluster-critical-pc.yml
+│   │   │   │   └── oci-rbac.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── main.yml
+│   │   │   │   └── oci.yml
+│   │   │   └── templates
+│   │   │       ├── namespace.j2
+│   │   │       ├── node-crb.yml.j2
+│   │   │       └── vsphere-rbac.yml.j2
+│   │   ├── container_engine_accelerator
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   └── nvidia_gpu
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   └── main.yml
+│   │   │       ├── templates
+│   │   │       │   ├── k8s-device-plugin-nvidia-daemonset.yml.j2
+│   │   │       │   └── nvidia-driver-install-daemonset.yml.j2
+│   │   │       └── vars
+│   │   │           ├── centos-7.yml
+│   │   │           ├── ubuntu-16.yml
+│   │   │           └── ubuntu-18.yml
+│   │   ├── container_runtimes
+│   │   │   ├── crun
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yaml
+│   │   │   │   └── templates
+│   │   │   │       └── runtimeclass-crun.yml
+│   │   │   ├── gvisor
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yaml
+│   │   │   │   └── templates
+│   │   │   │       └── runtimeclass-gvisor.yml.j2
+│   │   │   ├── kata_containers
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yaml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yaml
+│   │   │   │   └── templates
+│   │   │   │       └── runtimeclass-kata-qemu.yml.j2
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   └── youki
+│   │   │       ├── tasks
+│   │   │       │   └── main.yaml
+│   │   │       └── templates
+│   │   │           └── runtimeclass-youki.yml
+│   │   ├── csi_driver
+│   │   │   ├── OWNERS
+│   │   │   ├── aws_ebs
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── aws-ebs-csi-controllerservice-rbac.yml.j2
+│   │   │   │       ├── aws-ebs-csi-controllerservice.yml.j2
+│   │   │   │       ├── aws-ebs-csi-driver.yml.j2
+│   │   │   │       └── aws-ebs-csi-nodeservice.yml.j2
+│   │   │   ├── azuredisk
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   ├── azure-credential-check.yml
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── azure-csi-azuredisk-controller-rbac.yml.j2
+│   │   │   │       ├── azure-csi-azuredisk-controller.yml.j2
+│   │   │   │       ├── azure-csi-azuredisk-driver.yml.j2
+│   │   │   │       ├── azure-csi-azuredisk-node-rbac.yml.j2
+│   │   │   │       ├── azure-csi-azuredisk-node.yml.j2
+│   │   │   │       ├── azure-csi-cloud-config-secret.yml.j2
+│   │   │   │       └── azure-csi-cloud-config.j2
+│   │   │   ├── cinder
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   ├── cinder-credential-check.yml
+│   │   │   │   │   ├── cinder-write-cacert.yml
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── cinder-csi-cloud-config-secret.yml.j2
+│   │   │   │       ├── cinder-csi-cloud-config.j2
+│   │   │   │       ├── cinder-csi-controllerplugin-rbac.yml.j2
+│   │   │   │       ├── cinder-csi-controllerplugin.yml.j2
+│   │   │   │       ├── cinder-csi-driver.yml.j2
+│   │   │   │       ├── cinder-csi-nodeplugin-rbac.yml.j2
+│   │   │   │       ├── cinder-csi-nodeplugin.yml.j2
+│   │   │   │       └── cinder-csi-poddisruptionbudget.yml.j2
+│   │   │   ├── csi_crd
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── volumesnapshotclasses.yml.j2
+│   │   │   │       ├── volumesnapshotcontents.yml.j2
+│   │   │   │       └── volumesnapshots.yml.j2
+│   │   │   ├── gcp_pd
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── gcp-pd-csi-controller.yml.j2
+│   │   │   │       ├── gcp-pd-csi-cred-secret.yml.j2
+│   │   │   │       ├── gcp-pd-csi-node.yml.j2
+│   │   │   │       └── gcp-pd-csi-setup.yml.j2
+│   │   │   ├── upcloud
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── upcloud-csi-controller.yml.j2
+│   │   │   │       ├── upcloud-csi-cred-secret.yml.j2
+│   │   │   │       ├── upcloud-csi-driver.yml.j2
+│   │   │   │       ├── upcloud-csi-node.yml.j2
+│   │   │   │       └── upcloud-csi-setup.yml.j2
+│   │   │   └── vsphere
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   ├── main.yml
+│   │   │       │   └── vsphere-credentials-check.yml
+│   │   │       └── templates
+│   │   │           ├── vsphere-csi-cloud-config.j2
+│   │   │           ├── vsphere-csi-controller-config.yml.j2
+│   │   │           ├── vsphere-csi-controller-deployment.yml.j2
+│   │   │           ├── vsphere-csi-controller-rbac.yml.j2
+│   │   │           ├── vsphere-csi-controller-service.yml.j2
+│   │   │           ├── vsphere-csi-driver.yml.j2
+│   │   │           ├── vsphere-csi-namespace.yml.j2
+│   │   │           ├── vsphere-csi-node-rbac.yml.j2
+│   │   │           └── vsphere-csi-node.yml.j2
+│   │   ├── external_cloud_controller
+│   │   │   ├── hcloud
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── external-hcloud-cloud-controller-manager-ds-with-networks.yml.j2
+│   │   │   │       ├── external-hcloud-cloud-controller-manager-ds.yml.j2
+│   │   │   │       ├── external-hcloud-cloud-role-bindings.yml.j2
+│   │   │   │       ├── external-hcloud-cloud-secret.yml.j2
+│   │   │   │       └── external-hcloud-cloud-service-account.yml.j2
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── openstack
+│   │   │   │   ├── OWNERS
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   ├── main.yml
+│   │   │   │   │   └── openstack-credential-check.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── external-openstack-cloud-config-secret.yml.j2
+│   │   │   │       ├── external-openstack-cloud-config.j2
+│   │   │   │       ├── external-openstack-cloud-controller-manager-ds.yml.j2
+│   │   │   │       ├── external-openstack-cloud-controller-manager-role-bindings.yml.j2
+│   │   │   │       └── external-openstack-cloud-controller-manager-roles.yml.j2
+│   │   │   └── vsphere
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   ├── main.yml
+│   │   │       │   └── vsphere-credentials-check.yml
+│   │   │       └── templates
+│   │   │           ├── external-vsphere-cloud-controller-manager-ds.yml.j2
+│   │   │           ├── external-vsphere-cloud-controller-manager-role-bindings.yml.j2
+│   │   │           ├── external-vsphere-cloud-controller-manager-roles.yml.j2
+│   │   │           ├── external-vsphere-cpi-cloud-config-secret.yml.j2
+│   │   │           └── external-vsphere-cpi-cloud-config.j2
+│   │   ├── external_provisioner
+│   │   │   ├── cephfs_provisioner
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── 00-namespace.yml.j2
+│   │   │   │       ├── clusterrole-cephfs-provisioner.yml.j2
+│   │   │   │       ├── clusterrolebinding-cephfs-provisioner.yml.j2
+│   │   │   │       ├── deploy-cephfs-provisioner.yml.j2
+│   │   │   │       ├── psp-cephfs-provisioner.yml.j2
+│   │   │   │       ├── role-cephfs-provisioner.yml.j2
+│   │   │   │       ├── rolebinding-cephfs-provisioner.yml.j2
+│   │   │   │       ├── sa-cephfs-provisioner.yml.j2
+│   │   │   │       ├── sc-cephfs-provisioner.yml.j2
+│   │   │   │       └── secret-cephfs-provisioner.yml.j2
+│   │   │   ├── local_path_provisioner
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── local-path-storage-clusterrolebinding.yml.j2
+│   │   │   │       ├── local-path-storage-cm.yml.j2
+│   │   │   │       ├── local-path-storage-cr.yml.j2
+│   │   │   │       ├── local-path-storage-deployment.yml.j2
+│   │   │   │       ├── local-path-storage-ns.yml.j2
+│   │   │   │       ├── local-path-storage-psp-cr.yml.j2
+│   │   │   │       ├── local-path-storage-psp-rb.yml.j2
+│   │   │   │       ├── local-path-storage-psp.yml.j2
+│   │   │   │       ├── local-path-storage-sa.yml.j2
+│   │   │   │       └── local-path-storage-sc.yml.j2
+│   │   │   ├── local_volume_provisioner
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   ├── basedirs.yml
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── local-volume-provisioner-clusterrole.yml.j2
+│   │   │   │       ├── local-volume-provisioner-clusterrolebinding.yml.j2
+│   │   │   │       ├── local-volume-provisioner-cm.yml.j2
+│   │   │   │       ├── local-volume-provisioner-ds.yml.j2
+│   │   │   │       ├── local-volume-provisioner-ns.yml.j2
+│   │   │   │       ├── local-volume-provisioner-sa.yml.j2
+│   │   │   │       └── local-volume-provisioner-sc.yml.j2
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   └── rbd_provisioner
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   └── main.yml
+│   │   │       └── templates
+│   │   │           ├── 00-namespace.yml.j2
+│   │   │           ├── clusterrole-rbd-provisioner.yml.j2
+│   │   │           ├── clusterrolebinding-rbd-provisioner.yml.j2
+│   │   │           ├── deploy-rbd-provisioner.yml.j2
+│   │   │           ├── psp-rbd-provisioner.yml.j2
+│   │   │           ├── role-rbd-provisioner.yml.j2
+│   │   │           ├── rolebinding-rbd-provisioner.yml.j2
+│   │   │           ├── sa-rbd-provisioner.yml.j2
+│   │   │           ├── sc-rbd-provisioner.yml.j2
+│   │   │           └── secret-rbd-provisioner.yml.j2
+│   │   ├── helm
+│   │   │   ├── .gitkeep
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── ingress_controller
+│   │   │   ├── alb_ingress_controller
+│   │   │   │   ├── OWNERS
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── alb-ingress-clusterrole.yml.j2
+│   │   │   │       ├── alb-ingress-clusterrolebinding.yml.j2
+│   │   │   │       ├── alb-ingress-deploy.yml.j2
+│   │   │   │       ├── alb-ingress-ns.yml.j2
+│   │   │   │       └── alb-ingress-sa.yml.j2
+│   │   │   ├── cert_manager
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── cert-manager.crds.yml.j2
+│   │   │   │       └── cert-manager.yml.j2
+│   │   │   ├── ingress_nginx
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── 00-namespace.yml.j2
+│   │   │   │       ├── admission-webhook-configuration.yml.j2
+│   │   │   │       ├── admission-webhook-job.yml.j2
+│   │   │   │       ├── clusterrole-admission-webhook.yml.j2
+│   │   │   │       ├── clusterrole-ingress-nginx.yml.j2
+│   │   │   │       ├── clusterrolebinding-admission-webhook.yml.j2
+│   │   │   │       ├── clusterrolebinding-ingress-nginx.yml.j2
+│   │   │   │       ├── cm-ingress-nginx.yml.j2
+│   │   │   │       ├── cm-tcp-services.yml.j2
+│   │   │   │       ├── cm-udp-services.yml.j2
+│   │   │   │       ├── ds-ingress-nginx-controller.yml.j2
+│   │   │   │       ├── role-admission-webhook.yml.j2
+│   │   │   │       ├── role-ingress-nginx.yml.j2
+│   │   │   │       ├── rolebinding-admission-webhook.yml.j2
+│   │   │   │       ├── rolebinding-ingress-nginx.yml.j2
+│   │   │   │       ├── sa-admission-webhook.yml.j2
+│   │   │   │       └── sa-ingress-nginx.yml.j2
+│   │   │   └── meta
+│   │   │       └── main.yml
+│   │   ├── krew
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── krew.yml
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── krew.j2
+│   │   │       └── krew.yml.j2
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── metallb
+│   │   │   ├── OWNERS
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── layer2.yaml.j2
+│   │   │       ├── layer3.yaml.j2
+│   │   │       ├── metallb.yml.j2
+│   │   │       └── pools.yaml.j2
+│   │   ├── metrics_server
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── auth-delegator.yaml.j2
+│   │   │       ├── auth-reader.yaml.j2
+│   │   │       ├── metrics-apiservice.yaml.j2
+│   │   │       ├── metrics-server-deployment.yaml.j2
+│   │   │       ├── metrics-server-sa.yaml.j2
+│   │   │       ├── metrics-server-service.yaml.j2
+│   │   │       ├── resource-reader-clusterrolebinding.yaml.j2
+│   │   │       └── resource-reader.yaml.j2
+│   │   ├── network_plugin
+│   │   │   ├── calico
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   ├── canal
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   ├── flannel
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   ├── kube-ovn
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   ├── kube-router
+│   │   │   │   ├── OWNERS
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── multus
+│   │   │   │   └── tasks
+│   │   │   │       └── main.yml
+│   │   │   └── weave
+│   │   │       └── tasks
+│   │   │           └── main.yml
+│   │   ├── persistent_volumes
+│   │   │   ├── aws-ebs-csi
+│   │   │   │   ├── OWNERS
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       └── aws-ebs-csi-storage-class.yml.j2
+│   │   │   ├── azuredisk-csi
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       └── azure-csi-storage-class.yml.j2
+│   │   │   ├── cinder-csi
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       └── cinder-csi-storage-class.yml.j2
+│   │   │   ├── gcp-pd-csi
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       └── gcp-pd-csi-storage-class.yml.j2
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── openstack
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       └── openstack-storage-class.yml.j2
+│   │   │   └── upcloud-csi
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   └── main.yml
+│   │   │       └── templates
+│   │   │           └── upcloud-csi-storage-class.yml.j2
+│   │   ├── policy_controller
+│   │   │   ├── calico
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   ├── tasks
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── calico-kube-controllers.yml.j2
+│   │   │   │       ├── calico-kube-cr.yml.j2
+│   │   │   │       ├── calico-kube-crb.yml.j2
+│   │   │   │       └── calico-kube-sa.yml.j2
+│   │   │   └── meta
+│   │   │       └── main.yml
+│   │   ├── registry
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── registry-cm.yml.j2
+│   │   │       ├── registry-cr.yml.j2
+│   │   │       ├── registry-crb.yml.j2
+│   │   │       ├── registry-ing.yml.j2
+│   │   │       ├── registry-ns.yml.j2
+│   │   │       ├── registry-psp.yml.j2
+│   │   │       ├── registry-pvc.yml.j2
+│   │   │       ├── registry-rs.yml.j2
+│   │   │       ├── registry-sa.yml.j2
+│   │   │       ├── registry-secrets.yml.j2
+│   │   │       └── registry-svc.yml.j2
+│   │   └── snapshots
+│   │       ├── cinder-csi
+│   │       │   ├── defaults
+│   │       │   │   └── main.yml
+│   │       │   ├── tasks
+│   │       │   │   └── main.yml
+│   │       │   └── templates
+│   │       │       └── cinder-csi-snapshot-class.yml.j2
+│   │       ├── meta
+│   │       │   └── main.yml
+│   │       └── snapshot-controller
+│   │           ├── defaults
+│   │           │   └── main.yml
+│   │           ├── tasks
+│   │           │   └── main.yml
+│   │           └── templates
+│   │               ├── rbac-snapshot-controller.yml.j2
+│   │               ├── snapshot-controller.yml.j2
+│   │               └── snapshot-ns.yml.j2
+│   ├── kubespray-defaults
+│   │   ├── defaults
+│   │   │   └── main.yaml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   ├── fallback_ips.yml
+│   │   │   ├── main.yaml
+│   │   │   └── no_proxy.yml
+│   │   └── vars
+│   │       └── main.yml
+│   ├── network_plugin
+│   │   ├── calico
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   └── openssl.conf
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── rr
+│   │   │   │   ├── defaults
+│   │   │   │   │   └── main.yml
+│   │   │   │   └── tasks
+│   │   │   │       ├── main.yml
+│   │   │   │       ├── pre.yml
+│   │   │   │       └── update-node.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── calico_apiserver_certs.yml
+│   │   │   │   ├── check.yml
+│   │   │   │   ├── install.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   ├── peer_with_calico_rr.yml
+│   │   │   │   ├── peer_with_router.yml
+│   │   │   │   ├── pre.yml
+│   │   │   │   ├── repos.yml
+│   │   │   │   ├── reset.yml
+│   │   │   │   └── typha_certs.yml
+│   │   │   ├── templates
+│   │   │   │   ├── calico-apiserver-ns.yml.j2
+│   │   │   │   ├── calico-apiserver.yml.j2
+│   │   │   │   ├── calico-config.yml.j2
+│   │   │   │   ├── calico-cr.yml.j2
+│   │   │   │   ├── calico-crb.yml.j2
+│   │   │   │   ├── calico-ipamconfig.yml.j2
+│   │   │   │   ├── calico-node-sa.yml.j2
+│   │   │   │   ├── calico-node.yml.j2
+│   │   │   │   ├── calico-typha.yml.j2
+│   │   │   │   ├── calicoctl.etcd.sh.j2
+│   │   │   │   ├── calicoctl.kdd.sh.j2
+│   │   │   │   ├── cni-calico.conflist.j2
+│   │   │   │   ├── kubernetes-services-endpoint.yml.j2
+│   │   │   │   └── make-ssl-calico.sh.j2
+│   │   │   └── vars
+│   │   │       ├── amazon.yml
+│   │   │       ├── centos-9.yml
+│   │   │       ├── debian.yml
+│   │   │       ├── fedora.yml
+│   │   │       ├── opensuse.yml
+│   │   │       ├── redhat-9.yml
+│   │   │       ├── redhat.yml
+│   │   │       └── rocky-9.yml
+│   │   ├── canal
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── calicoctl.sh.j2
+│   │   │       ├── canal-calico-kube-controllers.yml.j2
+│   │   │       ├── canal-config.yaml.j2
+│   │   │       ├── canal-cr-calico-kube-controllers.yml.j2
+│   │   │       ├── canal-cr-calico-node.yml.j2
+│   │   │       ├── canal-cr-flannel.yml.j2
+│   │   │       ├── canal-cr.yml.j2
+│   │   │       ├── canal-crb-calico.yml.j2
+│   │   │       ├── canal-crb-canal.yml.j2
+│   │   │       ├── canal-crb-flannel.yml.j2
+│   │   │       ├── canal-crd-calico.yml.j2
+│   │   │       ├── canal-node-sa.yml.j2
+│   │   │       ├── canal-node.yaml.j2
+│   │   │       ├── canal-secret-calico-etcd.yml.j2
+│   │   │       └── cni-canal.conflist.j2
+│   │   ├── cilium
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── apply.yml
+│   │   │   │   ├── check.yml
+│   │   │   │   ├── install.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   ├── reset.yml
+│   │   │   │   └── reset_iface.yml
+│   │   │   └── templates
+│   │   │       ├── 000-cilium-portmap.conflist.j2
+│   │   │       ├── cilium
+│   │   │       │   ├── config.yml.j2
+│   │   │       │   ├── cr.yml.j2
+│   │   │       │   ├── crb.yml.j2
+│   │   │       │   ├── ds.yml.j2
+│   │   │       │   ├── sa.yml.j2
+│   │   │       │   └── secret.yml.j2
+│   │   │       ├── cilium-operator
+│   │   │       │   ├── cr.yml.j2
+│   │   │       │   ├── crb.yml.j2
+│   │   │       │   ├── deploy.yml.j2
+│   │   │       │   └── sa.yml.j2
+│   │   │       └── hubble
+│   │   │           ├── config.yml.j2
+│   │   │           ├── cr.yml.j2
+│   │   │           ├── crb.yml.j2
+│   │   │           ├── cronjob.yml.j2
+│   │   │           ├── deploy.yml.j2
+│   │   │           ├── job.yml.j2
+│   │   │           ├── sa.yml.j2
+│   │   │           └── service.yml.j2
+│   │   ├── cni
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── custom_cni
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── flannel
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── main.yml
+│   │   │   │   └── reset.yml
+│   │   │   └── templates
+│   │   │       ├── cni-flannel-rbac.yml.j2
+│   │   │       └── cni-flannel.yml.j2
+│   │   ├── kube-ovn
+│   │   │   ├── OWNERS
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── cni-kube-ovn-crd.yml.j2
+│   │   │       ├── cni-kube-ovn.yml.j2
+│   │   │       └── cni-ovn.yml.j2
+│   │   ├── kube-router
+│   │   │   ├── OWNERS
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   ├── annotate.yml
+│   │   │   │   ├── main.yml
+│   │   │   │   └── reset.yml
+│   │   │   └── templates
+│   │   │       ├── cni-conf.json.j2
+│   │   │       ├── kube-router.yml.j2
+│   │   │       └── kubeconfig.yml.j2
+│   │   ├── macvlan
+│   │   │   ├── OWNERS
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   ├── ifdown-local
+│   │   │   │   ├── ifdown-macvlan
+│   │   │   │   ├── ifup-local
+│   │   │   │   └── ifup-macvlan
+│   │   │   ├── handlers
+│   │   │   │   └── main.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       ├── 10-macvlan.conf.j2
+│   │   │       ├── 99-loopback.conf.j2
+│   │   │       ├── centos-network-macvlan.cfg.j2
+│   │   │       ├── centos-postdown-macvlan.cfg.j2
+│   │   │       ├── centos-postup-macvlan.cfg.j2
+│   │   │       ├── centos-routes-macvlan.cfg.j2
+│   │   │       ├── coreos-device-macvlan.cfg.j2
+│   │   │       ├── coreos-interface-macvlan.cfg.j2
+│   │   │       ├── coreos-network-macvlan.cfg.j2
+│   │   │       ├── coreos-service-nat_ouside.j2
+│   │   │       └── debian-network-macvlan.cfg.j2
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── multus
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   ├── files
+│   │   │   │   ├── multus-clusterrole.yml
+│   │   │   │   ├── multus-clusterrolebinding.yml
+│   │   │   │   ├── multus-crd.yml
+│   │   │   │   └── multus-serviceaccount.yml
+│   │   │   ├── meta
+│   │   │   │   └── main.yml
+│   │   │   ├── tasks
+│   │   │   │   └── main.yml
+│   │   │   └── templates
+│   │   │       └── multus-daemonset.yml.j2
+│   │   ├── ovn4nfv
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   └── weave
+│   │       ├── defaults
+│   │       │   └── main.yml
+│   │       ├── meta
+│   │       │   └── main.yml
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── templates
+│   │           ├── 10-weave.conflist.j2
+│   │           └── weave-net.yml.j2
+│   ├── recover_control_plane
+│   │   ├── OWNERS
+│   │   ├── control-plane
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── etcd
+│   │   │   └── tasks
+│   │   │       ├── main.yml
+│   │   │       └── recover_lost_quorum.yml
+│   │   └── post-recover
+│   │       └── tasks
+│   │           └── main.yml
+│   ├── remove-node
+│   │   ├── post-remove
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   ├── pre-remove
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   └── remove-etcd-node
+│   │       └── tasks
+│   │           └── main.yml
+│   ├── reset
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── upgrade
+│   │   ├── post-upgrade
+│   │   │   ├── defaults
+│   │   │   │   └── main.yml
+│   │   │   └── tasks
+│   │   │       └── main.yml
+│   │   └── pre-upgrade
+│   │       ├── defaults
+│   │       │   └── main.yml
+│   │       └── tasks
+│   │           └── main.yml
+│   └── win_nodes
+│       └── kubernetes_patch
+│           ├── defaults
+│           │   └── main.yml
+│           └── tasks
+│               └── main.yml
+├── run.rc
+├── scale.yml
+├── scripts
+│   ├── collect-info.yaml
+│   ├── download_hash.py
+│   ├── download_hash.sh
+│   ├── gen_tags.sh
+│   ├── gitlab-branch-cleanup
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── main.py
+│   │   └── requirements.txt
+│   ├── gitlab-runner.sh
+│   ├── openstack-cleanup
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── main.py
+│   │   └── requirements.txt
+│   └── premoderator.sh
+├── setup.cfg
+├── setup.py
+├── test-infra
+│   ├── image-builder
+│   │   ├── Makefile
+│   │   ├── OWNERS
+│   │   ├── cluster.yml
+│   │   ├── hosts.ini
+│   │   └── roles
+│   │       └── kubevirt-images
+│   │           ├── defaults
+│   │           │   └── main.yml
+│   │           ├── tasks
+│   │           │   └── main.yml
+│   │           └── templates
+│   │               └── Dockerfile
+│   └── vagrant-docker
+│       ├── Dockerfile
+│       ├── README.md
+│       └── build.sh
+├── tests
+│   ├── Makefile
+│   ├── README.md
+│   ├── ansible.cfg
+│   ├── cloud_playbooks
+│   │   ├── create-aws.yml
+│   │   ├── create-do.yml
+│   │   ├── create-gce.yml
+│   │   ├── create-packet.yml
+│   │   ├── delete-aws.yml
+│   │   ├── delete-gce.yml
+│   │   ├── delete-packet.yml
+│   │   ├── roles
+│   │   │   └── packet-ci
+│   │   │       ├── defaults
+│   │   │       │   └── main.yml
+│   │   │       ├── tasks
+│   │   │       │   ├── create-vms.yml
+│   │   │       │   ├── delete-vms.yml
+│   │   │       │   └── main.yml
+│   │   │       └── templates
+│   │   │           ├── inventory.j2
+│   │   │           └── vm.yml.j2
+│   │   ├── templates
+│   │   │   ├── boto.j2
+│   │   │   └── gcs_life.json.j2
+│   │   ├── upload-logs-gcs.yml
+│   │   └── wait-for-ssh.yml
+│   ├── common
+│   │   ├── _docker_hub_registry_mirror.yml
+│   │   └── _kubespray_test_settings.yml
+│   ├── files
+│   │   ├── custom_cni
+│   │   │   ├── README.md
+│   │   │   ├── cilium.yaml
+│   │   │   └── values.yaml
+│   │   ├── packet_*.yml  (55 files)
+│   │   ├── tf-elastx_ubuntu18-calico.yml
+│   │   ├── tf-ovh_ubuntu18-calico.yml
+│   │   ├── vagrant_*.rb  (9 files)
+│   │   └── vagrant_*.yml  (9 files)
+│   ├── local_inventory
+│   │   ├── host_vars
+│   │   │   └── localhost
+│   │   └── hosts.cfg
+│   ├── requirements-2.11.txt
+│   ├── requirements-2.12.txt
+│   ├── requirements.txt -> requirements-2.12.txt
+│   ├── run-tests.sh
+│   ├── scripts
+│   │   ├── ansibl8s_test.sh
+│   │   ├── check_galaxy_version.sh
+│   │   ├── check_readme_versions.sh
+│   │   ├── check_typo.sh
+│   │   ├── create-tf.sh
+│   │   ├── delete-tf.sh
+│   │   ├── md-table
+│   │   │   ├── main.py
+│   │   │   ├── requirements.txt
+│   │   │   ├── table.md.j2
+│   │   │   └── test.sh
+│   │   ├── molecule_logs.sh
+│   │   ├── molecule_run.sh
+│   │   ├── rebase.sh
+│   │   ├── terraform_install.sh
+│   │   ├── testcases_cleanup.sh
+│   │   ├── testcases_prepare.sh
+│   │   ├── testcases_run.sh
+│   │   ├── vagrant-validate.sh
+│   │   └── vagrant_clean.sh
+│   ├── shebang-unit
+│   ├── support
+│   │   └── aws.groovy
+│   ├── templates
+│   │   ├── fake_hosts.yml.j2
+│   │   ├── inventory-aws.j2
+│   │   ├── inventory-do.j2
+│   │   └── inventory-gce.j2
+│   └── testcases
+│       ├── 010_check-apiserver.yml
+│       ├── 015_check-nodes-ready.yml
+│       ├── 020_check-pods-running.yml
+│       ├── 030_check-network.yml
+│       ├── 040_check-network-adv.yml
+│       ├── 100_check-k8s-conformance.yml
+│       └── roles
+│           └── cluster-dump
+│               └── tasks
+│                   └── main.yml
+└── upgrade-cluster.yml
+654 directories, 1401 files
