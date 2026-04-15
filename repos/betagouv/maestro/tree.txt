@@ -8,20 +8,30 @@
 │       ├── github-actions.yml
 │       └── release.yml
 ├── .gitignore
-├── .lintstagedrc.json
 ├── .npmrc
-├── .prettierignore
-├── .prettierrc.json
 ├── .slugignore
 ├── Aptfile
 ├── README.md
+├── biome
+│   ├── no-direct-builder.grit
+│   └── no-direct-check.grit
+├── biome.json
 ├── cron.json
 ├── docker-compose.yml
 ├── docs
 │   ├── Makefile
 │   ├── architecture.puml
-│   └── architecture.svg
-├── eslint.config.mjs
+│   ├── architecture.svg
+│   ├── dai-flow-module-labo.puml
+│   ├── dai-flow-module-labo.svg
+│   ├── dai-flow.puml
+│   ├── dai-flow.svg
+│   ├── flow-sans-edi-sacha.puml
+│   ├── flow-sans-edi-sacha.svg
+│   ├── rai-flow-module-labo.puml
+│   ├── rai-flow-module-labo.svg
+│   ├── rai-flow.puml
+│   └── rai-flow.svg
 ├── frontend
 │   ├── .env.example
 │   ├── .gitignore
@@ -31,7 +41,6 @@
 │   │   ├── preview.tsx
 │   │   ├── tsconfig.json
 │   │   └── vitest.setup.ts
-│   ├── eslint.config.mjs
 │   ├── index.html
 │   ├── package.json
 │   ├── public
@@ -61,6 +70,7 @@
 │   │   │   │   ├── food.svg
 │   │   │   │   ├── hands.svg
 │   │   │   │   ├── leaf.svg
+│   │   │   │   ├── microscope.svg
 │   │   │   │   ├── notifications.svg
 │   │   │   │   ├── programmation-white.svg
 │   │   │   │   ├── programmation.svg
@@ -221,6 +231,8 @@
 │   │   │       ├── AppMultiSelect
 │   │   │       │   ├── AppMultiSelect.stories.tsx
 │   │   │       │   └── AppMultiSelect.tsx
+│   │   │       ├── AppPage
+│   │   │       │   └── AppPage.tsx
 │   │   │       ├── AppRadioButtons
 │   │   │       │   ├── AppRadioButtons.scss
 │   │   │       │   └── AppRadioButtons.tsx
@@ -264,6 +276,7 @@
 │   │   ├── services
 │   │   │   ├── address.service.ts
 │   │   │   ├── analysis.service.ts
+│   │   │   ├── api.builder.ts
 │   │   │   ├── api.service.ts
 │   │   │   ├── apiClient.ts
 │   │   │   ├── auth.service.ts
@@ -277,10 +290,11 @@
 │   │   │   ├── notification.service.ts
 │   │   │   ├── prescription.service.ts
 │   │   │   ├── programmingPlan.service.ts
+│   │   │   ├── programmingPlanKindFields.service.ts
 │   │   │   ├── region.service.ts
 │   │   │   ├── sachaCommemoratifs.service.ts
 │   │   │   ├── sample.service.ts
-│   │   │   ├── sampleSpecificData.service.ts
+│   │   │   ├── specificDataFields.service.ts
 │   │   │   └── user.service.ts
 │   │   ├── store
 │   │   │   ├── localStorage.ts
@@ -298,8 +312,29 @@
 │   │       ├── AdminView
 │   │       │   ├── AdminView.stories.tsx
 │   │       │   ├── AdminView.tsx
-│   │       │   ├── AdminViewDashboardNotice.tsx
-│   │       │   └── AdminViewRootNotice.tsx
+│   │       │   ├── Notice
+│   │       │   │   ├── AdminViewDashboardNotice.tsx
+│   │       │   │   └── AdminViewRootNotice.tsx
+│   │       │   ├── PlanKindSpecificData
+│   │       │   │   ├── AddFieldToKindModal.tsx
+│   │       │   │   ├── PlanKindFieldActiveOptions.tsx
+│   │       │   │   ├── PlanKindFieldItem.tsx
+│   │       │   │   ├── PlanKindFieldList.tsx
+│   │       │   │   └── PlanKindSpecificDataView.tsx
+│   │       │   └── SpecificDataFields
+│   │       │       ├── FieldCreateForm.tsx
+│   │       │       ├── FieldDeleteConfirm.tsx
+│   │       │       ├── FieldForm.tsx
+│   │       │       ├── FieldOptionFormModal.tsx
+│   │       │       ├── FieldOptionsSection.tsx
+│   │       │       ├── FieldOptionsTable.tsx
+│   │       │       ├── FieldsTable.stories.tsx
+│   │       │       ├── FieldsTable.tsx
+│   │       │       ├── SachaCommemoratifsUpload.tsx
+│   │       │       ├── SpecificDataFieldsView.stories.tsx
+│   │       │       ├── SpecificDataFieldsView.tsx
+│   │       │       ├── fieldInputTypeLabels.ts
+│   │       │       └── storyFixtures.ts
 │   │       ├── DashboardView
 │   │       │   ├── Dashboard.scss
 │   │       │   ├── DashboardNoticeAndActions.tsx
@@ -327,6 +362,10 @@
 │   │       │   ├── HomeView.scss
 │   │       │   ├── HomeView.tsx
 │   │       │   └── HomeViewContainer.stories.tsx
+│   │       ├── LaboratoryAnalyticalCompetencesView
+│   │       │   ├── LaboratoryAnalyticalCompetenceForm.tsx
+│   │       │   ├── LaboratoryAnalyticalCompetences.scss
+│   │       │   └── LaboratoryAnalyticalCompetencesView.tsx
 │   │       ├── LoginCallbackView
 │   │       │   └── LoginCallbackView.tsx
 │   │       ├── LogoutCallbackView
@@ -364,11 +403,6 @@
 │   │       │       ├── ProgrammingViewPPVInProgress.stories.tsx
 │   │       │       ├── ProgrammingViewPPVSubmittedToRegion.stories.tsx
 │   │       │       └── ProgrammingViewPPVValidated.stories.tsx
-│   │       ├── SachaView
-│   │       │   ├── CommemoratifSigleForm.stories.tsx
-│   │       │   ├── CommemoratifSigleForm.tsx
-│   │       │   ├── SachaCommemoratifs.tsx
-│   │       │   └── SachaCommemoratifsUpload.tsx
 │   │       ├── SampleListView
 │   │       │   ├── SampleList.scss
 │   │       │   ├── SampleListHeader.tsx
@@ -389,6 +423,7 @@
 │   │       │   │   ├── MatrixStep
 │   │       │   │   │   ├── MatrixSpecificDataFormInput.tsx
 │   │       │   │   │   ├── MatrixStep.tsx
+│   │       │   │   │   ├── SpecificDataForm.ts
 │   │       │   │   │   └── stories
 │   │       │   │   │       ├── MatrixStepDAOA.stories.tsx
 │   │       │   │   │       ├── MatrixStepPPV.stories.tsx
@@ -432,7 +467,9 @@
 │   │       │   │       └── SampleAnalysisOverview.tsx
 │   │       │   ├── SampleOverview
 │   │       │   │   ├── SampleAgreementOverview.tsx
+│   │       │   │   ├── SampleComplianceForm.tsx
 │   │       │   │   ├── SampleContextOverview.tsx
+│   │       │   │   ├── SampleItemComplianceOverrideModal.tsx
 │   │       │   │   ├── SampleItemCopiesOverview.tsx
 │   │       │   │   ├── SampleOverview.scss
 │   │       │   │   └── SampleOverview.tsx
@@ -458,6 +495,7 @@
 │   ├── vite-env.d.ts
 │   └── vite.config.ts
 ├── knip.ts
+├── lefthook.yml
 ├── package-lock.json
 ├── package.json
 ├── scalingo.json
@@ -482,7 +520,7 @@
 │   │   ├── sachaCommemoratifsController.ts
 │   │   ├── sampleController.integration.test.ts
 │   │   ├── sampleController.ts
-│   │   ├── sampleSpecificDataController.ts
+│   │   ├── specificDataFieldConfigController.ts
 │   │   └── userController.ts
 │   ├── data
 │   │   └── regions.json
@@ -586,7 +624,16 @@
 │   │   │   ├── 080-analysis-sample-items-cascade.ts
 │   │   │   ├── 080-sample-items-admissibility.ts
 │   │   │   ├── 081-programming-plan-kinds.ts
-│   │   │   └── 082-rename-daoa-kinds.ts
+│   │   │   ├── 082-rename-daoa-kinds.ts
+│   │   │   ├── 083-specific-data-field-configs.ts
+│   │   │   ├── 084-sample-programming-plan-kind.ts
+│   │   │   ├── 085-sample-specific-data-values.ts
+│   │   │   ├── 086-laboratory-analytical-competences.ts
+│   │   │   ├── 087-user-laboratory.ts
+│   │   │   ├── 088-document-year-programming-plans.ts
+│   │   │   ├── 089-sample-compliance.ts
+│   │   │   ├── 089-split-sampled-at.ts
+│   │   │   └── 090-refactor-status.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -597,17 +644,18 @@
 │   │       │   ├── 004-programming-plans.ts
 │   │       │   ├── 005-prescriptions-daoa.ts
 │   │       │   ├── 005-prescriptions-ppv.ts
+│   │       │   ├── 005-specific-data-fields.ts
 │   │       │   ├── 006-samples.ts
 │   │       │   ├── 007-substance-analysis.ts
 │   │       │   ├── 008-laboratory-agreements.ts
 │   │       │   ├── 009-documents.ts
+│   │       │   ├── 010-analysis.ts
 │   │       │   └── index.ts
 │   │       └── laboratories
 │   │           ├── laboratoriesSeed.ts
 │   │           └── script.ts
 │   ├── errors
 │   │   └── routeNotFoundError.ts
-│   ├── eslint.config.mjs
 │   ├── index.ts
 │   ├── knexfile.ts
 │   ├── middlewares
@@ -640,6 +688,7 @@
 │   │   ├── documentRepository.ts
 │   │   ├── kysely.ts
 │   │   ├── kysely.type.ts
+│   │   ├── laboratoryAnalyticalCompetenceRepository.ts
 │   │   ├── laboratoryRepository.test.ts
 │   │   ├── laboratoryRepository.ts
 │   │   ├── laboratoryResidueMappingRepository.ts
@@ -665,6 +714,9 @@
 │   │   ├── sampleRepository.ts
 │   │   ├── sampleSpecificDataRepository.test.ts
 │   │   ├── sampleSpecificDataRepository.ts
+│   │   ├── sampleStatusViews.test.ts
+│   │   ├── specificDataFieldConfigRepository.test.ts
+│   │   ├── specificDataFieldConfigRepository.ts
 │   │   ├── userRepository.test.ts
 │   │   └── userRepository.ts
 │   ├── routers
@@ -688,6 +740,8 @@
 │   │   │   ├── programmingPlan.router.test.ts
 │   │   │   ├── sachaCommemoratifs.router.test.ts
 │   │   │   ├── sample.router.test.ts
+│   │   │   ├── specificDataFieldConfig.router.test.ts
+│   │   │   ├── specificDataFields.router.test.ts
 │   │   │   └── user.router.test.ts
 │   │   └── unprotected.ts
 │   ├── scripts
@@ -718,6 +772,7 @@
 │   │   │   ├── sachaCommemoratifsService.ts
 │   │   │   ├── sachaDAI.test.ts
 │   │   │   ├── sachaDAI.ts
+│   │   │   ├── sachaErrors.ts
 │   │   │   ├── sachaRAI.ts
 │   │   │   ├── sachaReferential.ts
 │   │   │   ├── sachaSender.ts
@@ -727,7 +782,6 @@
 │   │   │   ├── sachaValidator.ts
 │   │   │   ├── schema.xsd
 │   │   │   ├── sftpService.ts
-│   │   │   ├── specificSampleDataService.ts
 │   │   │   └── validateSachaXml.ts
 │   │   ├── excelService
 │   │   │   ├── excelService.test.ts
@@ -775,6 +829,8 @@
 │   │   │   ├── logo.svg
 │   │   │   ├── programmation.svg
 │   │   │   └── template.css
+│   │   ├── laboratoryAnalyticCompetencesExport
+│   │   │   └── laboratoryAnalyticCompetencesExport.xls
 │   │   ├── partials
 │   │   │   ├── contextSection.hbs
 │   │   │   ├── headerBrand.hbs
@@ -796,14 +852,16 @@
 │   │   └── templates.ts
 │   ├── test
 │   │   ├── db-manager.ts
+│   │   ├── globalSetup.ts
 │   │   ├── seed
 │   │   │   ├── 001-companies.ts
 │   │   │   ├── 002-laboratories.ts
 │   │   │   ├── 003-users.ts
 │   │   │   ├── 004-programming-plans.ts
 │   │   │   ├── 005-prescriptions.ts
-│   │   │   ├── 006-samples.ts
-│   │   │   ├── 007-laboratory-agreements.ts
+│   │   │   ├── 006-specific-data-fields.ts
+│   │   │   ├── 007-samples.ts
+│   │   │   ├── 008-laboratory-agreements.ts
 │   │   │   └── index.ts
 │   │   ├── setupTests.ts
 │   │   └── testUtils.ts
@@ -820,7 +878,6 @@
 │   │   ├── analysisMissingError.ts
 │   │   ├── authenticationFailedError.ts
 │   │   ├── authenticationMissingError.ts
-│   │   ├── badRequestError.ts
 │   │   ├── documentMissingError.ts
 │   │   ├── httpError.ts
 │   │   ├── localPrescriptionPlanMissingError.ts
@@ -828,6 +885,7 @@
 │   │   ├── pdfGenerationError.ts
 │   │   ├── prescriptionPlanMissingError.ts
 │   │   ├── programmingPlanMissingError.ts
+│   │   ├── sampleItemMissingError.ts
 │   │   ├── sampleMissingError.ts
 │   │   ├── sendEmailError.ts
 │   │   ├── userMissingError.ts
@@ -835,10 +893,6 @@
 │   │   └── userRoleMissingError.ts
 │   ├── package.json
 │   ├── referential
-│   │   ├── AnimalKind.ts
-│   │   ├── AnimalSex.ts
-│   │   ├── BreedingMethod.ts
-│   │   ├── CultureKind.ts
 │   │   ├── Department.ts
 │   │   ├── Laboratory.ts
 │   │   ├── LegalContext.ts
@@ -846,11 +900,8 @@
 │   │   │   ├── Matrix.ts
 │   │   │   ├── MatrixKind.ts
 │   │   │   ├── MatrixLabels.ts
-│   │   │   ├── MatrixListByKind.ts
-│   │   │   └── MatrixPart.ts
+│   │   │   └── MatrixListByKind.ts
 │   │   ├── OptionnalBoolean.ts
-│   │   ├── OutdoorAccess.ts
-│   │   ├── ProductionKind.ts
 │   │   ├── QuantityUnit.ts
 │   │   ├── Region.ts
 │   │   ├── Residue
@@ -861,8 +912,6 @@
 │   │   │   ├── SSD2Referential.test.ts
 │   │   │   ├── SSD2Referential.ts
 │   │   │   └── SandreToSSD2.ts
-│   │   ├── Seizure.ts
-│   │   ├── Species.ts
 │   │   └── Stage.ts
 │   ├── routes
 │   │   ├── analysis.routes.ts
@@ -875,10 +924,11 @@
 │   │   ├── notifications.routes.ts
 │   │   ├── prescriptions.routes.ts
 │   │   ├── programmingPlans.routes.ts
+│   │   ├── routes.infer.ts
 │   │   ├── routes.ts
 │   │   ├── sachaCommemoratifs.route.ts
-│   │   ├── sampleSpecificData.ts
 │   │   ├── samples.routes.ts
+│   │   ├── specificDataFields.routes.ts
 │   │   └── users.routes.ts
 │   ├── schema
 │   │   ├── Address
@@ -916,16 +966,16 @@
 │   │   │   └── Geolocation.ts
 │   │   ├── Laboratory
 │   │   │   ├── FindLaboratoryOptions.ts
-│   │   │   └── Laboratory.ts
+│   │   │   ├── Laboratory.ts
+│   │   │   ├── LaboratoryAnalyticalCompetence.ts
+│   │   │   ├── LaboratoryAnalyticalMethod.ts
+│   │   │   └── LaboratoryValidationMethod.ts
 │   │   ├── LocalPrescription
 │   │   │   ├── FindLocalPrescriptionOptions.ts
 │   │   │   ├── LocalPrescription.ts
 │   │   │   ├── LocalPrescriptionComment.ts
 │   │   │   ├── LocalPrescriptionKey.ts
 │   │   │   └── LocalPrescriptionSubstanceKindLaboratory.ts
-│   │   ├── MatrixSpecificData
-│   │   │   ├── MatrixSpecificDataForm.ts
-│   │   │   └── MatrixSpecificDataFormInputs.ts
 │   │   ├── Notice
 │   │   │   └── Notice.ts
 │   │   ├── Notification
@@ -952,12 +1002,18 @@
 │   │   │   ├── FindSampleOptions.test.ts
 │   │   │   ├── FindSampleOptions.ts
 │   │   │   ├── Sample.ts
+│   │   │   ├── SampleCompliance.ts
 │   │   │   ├── SampleItem.ts
 │   │   │   ├── SampleItemRecipientKind.ts
-│   │   │   ├── SampleMatrixSpecificData.test.ts
-│   │   │   ├── SampleMatrixSpecificData.ts
 │   │   │   ├── SampleSpecificDataAttribute.ts
-│   │   │   └── SampleStatus.ts
+│   │   │   ├── SampleStatus.ts
+│   │   │   └── SampleStep.ts
+│   │   ├── SpecificData
+│   │   │   ├── FieldConfigInput.ts
+│   │   │   ├── PlanKindFieldConfig.ts
+│   │   │   ├── SpecificData.ts
+│   │   │   ├── buildSpecificDataSchema.ts
+│   │   │   └── getFieldValueLabel.ts
 │   │   ├── Substance
 │   │   │   └── SubstanceKind.ts
 │   │   ├── User
@@ -980,15 +1036,18 @@
 │   │   ├── programmingPlanFixtures.ts
 │   │   ├── regionalPrescriptionCommentFixture.ts
 │   │   ├── sampleFixtures.ts
+│   │   ├── specificDataFixtures.ts
 │   │   ├── testFixtures.ts
 │   │   ├── userFixtures.ts
 │   │   └── utils.ts
 │   ├── tsconfig.json
 │   ├── utils
 │   │   ├── date.ts
+│   │   ├── result.ts
 │   │   ├── typescript.ts
 │   │   ├── utils.test.ts
-│   │   └── utils.ts
+│   │   ├── utils.ts
+│   │   └── zod.ts
 │   └── vitest.config.ts
 ├── test
 │   ├── setupFakerJS.ts
@@ -998,4 +1057,4 @@
     ├── env.d.ts
     └── express-jwt
         └── index.d.ts
-198 directories, 802 files
+204 directories, 855 files

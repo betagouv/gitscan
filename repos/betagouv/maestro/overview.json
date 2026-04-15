@@ -1,28 +1,24 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant la gestion des prélèvements et des analyses, notamment dans le domaine de la sécurité sanitaire des aliments. Elle facilite la collaboration entre les différents acteurs et assure le suivi des données.",
+  "description": "Maestro est une application web permettant de gérer les prélèvements et les programmations, notamment en termes de filtrage, d'affichage des données et de correction de bugs. Elle offre des fonctionnalités pour les coordinateurs régionaux et nationaux.",
   "language": "TypeScript",
   "features": [
+    "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Suivi & Traçabilité",
-    "Collaboration & Workflow"
+    "Visualisation de données & Cartographie",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Node.js",
     "PostgreSQL",
-    "KnexJS",
-    "S3",
-    "Browserless",
-    "Maildev"
+    "aws-sdk",
+    "zod"
   ],
   "components": [
     "Frontend React",
@@ -33,14 +29,17 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "oauth2"
     ]
   },
-  "tests": "Vitest",
+  "tests": [
+    "Jest",
+    "Vitest"
+  ],
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-03-17T17:40:47+01:00",
+  "lastActivity": "2026-04-15T17:04:09+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
