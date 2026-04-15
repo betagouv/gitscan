@@ -1,34 +1,38 @@
-## Changelog : labonnealternance (30 derniers jours)
+## Changelog : labonnealternance (30 derniers jours, au 2026-04-15)
 
 ### Résumé
-Les dernières mises à jour de la plateforme labonnealternance se concentrent sur l'amélioration de la stabilité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment l'authentification par token pour l'API Emploi Inclusion et l'importation de données Emploi Inclusion. Des optimisations ont également été apportées aux scripts de déploiement et à la gestion des ressources.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la performance et de la stabilité de la plateforme, notamment au niveau de la recherche d'offres et de la gestion des données. De nouvelles sources de données ont été intégrées (EDF, Enedis) et des optimisations ont été apportées pour gérer un volume de requêtes plus important. L'expérience utilisateur a également été améliorée avec des corrections SEO, l'ajout de fonctionnalités (formulaire Tally, bloc salaires, intégration portail alternance) et des corrections de bugs.
 
 ### Évolutions fonctionnelles
-- Ajout de l'authentification par token pour l'API Emploi Inclusion, permettant une intégration plus sécurisée. [#2762](https://github.com/mission-apprentissage/labonnealternance/issues/2762)
-- Importation des données Emploi Inclusion. [#2740](https://github.com/mission-apprentissage/labonnealternance/issues/2740)
-- Mise à jour de la liste noire des CFA. [#2766](https://github.com/mission-apprentissage/labonnealternance/issues/2766)
-- Amélioration de l'affichage des recruteurs actifs. [#2725](https://github.com/mission-apprentissage/labonnealternance/issues/2725)
-- Ajout de pages SEO pour les métiers. [#2674](https://github.com/mission-apprentissage/labonnealternance/issues/2674)
-- Activation du rappel annuel Affelnet. [#2712](https://github.com/mission-apprentissage/labonnealternance/issues/2712)
-- Amélioration du wording des emails de déréférencement. [#2690](https://github.com/mission-apprentissage/labonnealternance/issues/2690)
-- Ajout de normalisation du spacing DSFR. [#2694](https://github.com/mission-apprentissage/labonnealternance/issues/2694)
+- Ajout de flux d'offres d'alternance provenant d'EDF et d'Enedis. [#2819](https://github.com/mission-apprentissage/labonnealternance/issues/2819)
+- Intégration d'un formulaire Tally sur la page de recherche pour recueillir des retours utilisateurs. [#2817](https://github.com/mission-apprentissage/labonnealternance/issues/2817)
+- Ajout d'un bloc salaires sur les pages SEO métiers et redirection vers le simulateur de rémunération. [#2785](https://github.com/mission-apprentissage/labonnealternance/issues/2785)
+- Suppression de la carte dans la recherche pour simplifier l'interface. [#2790](https://github.com/mission-apprentissage/labonnealternance/issues/2790)
+- Ajout de liens vers Mon Logement Étudiant. [#2793](https://github.com/mission-apprentissage/labonnealternance/issues/2793)
+- Modification de l'article relatif au handicap. [#2816](https://github.com/mission-apprentissage/labonnealternance/issues/2816)
+- Ajout de filtres par type de candidature (tags). [#2815](https://github.com/mission-apprentissage/labonnealternance/issues/2815)
+- Mise à jour du plan du site. [#2838](https://github.com/mission-apprentissage/labonnealternance/issues/2838)
+- Intégration du portail de l'alternance. [#2662](https://github.com/mission-apprentissage/labonnealternance/issues/2662)
+- Amélioration du "smart apply" avec la gestion des tags. [#2787](https://github.com/mission-apprentissage/labonnealternance/issues/2787)
+- Autorisation du passage en optionnel du `partner_job_id` pour l'API `/v3/job`. [#2783](https://github.com/mission-apprentissage/labonnealternance/issues/2783)
 
 ### Évolutions techniques
-- Migration vers Biome pour le linting du code. [#2757](https://github.com/mission-apprentissage/labonnealternance/issues/2757)
-- Mise à jour des versions des GitHub Actions et correction de sécurité pour le déploiement en preview. [#2777](https://github.com/mission-apprentissage/labonnealternance/issues/2777)
-- Optimisation de l'utilisation de la mémoire lors des builds de preview. [#2716](https://github.com/mission-apprentissage/labonnealternance/issues/2716)
-- Amélioration de la gestion des ressources pour les previews (MongoDB, serveurs). [#2715](https://github.com/mission-apprentissage/labonnealternance/issues/2715)
-- Correction d'un problème d'OOM (Out Of Memory) lors du traitement des recruteurs. [#2699](https://github.com/mission-apprentissage/labonnealternance/issues/2699)
-- Ajout d'un index 2dsphere dédié pour la recherche géographique des offres partenaires. [#2692](https://github.com/mission-apprentissage/labonnealternance/issues/2692)
-- Décommissionnement des API offres v1 et v2. [#2686](https://github.com/mission-apprentissage/labonnealternance/issues/2686)
-- Suppression de l'environnement de pentest. [#2720](https://github.com/mission-apprentissage/labonnealternance/issues/2720)
+- Optimisation des lectures MongoDB en utilisant les secondaires pour la recherche, améliorant ainsi les performances. [#2849](https://github.com/mission-apprentissage/labonnealternance/issues/2849)
+- Stabilisation des healthchecks et réduction de la pression sur le stream processor. [#2845](https://github.com/mission-apprentissage/labonnealternance/issues/2845)
+- Correction des requêtes N+1 sur l'API `/api/traininglinks` pour améliorer la performance. [#2841](https://github.com/mission-apprentissage/labonnealternance/issues/2841)
+- Mise en place d'un rate limiting proactif sur l'API job-étudiant pour gérer les pics de requêtes. [#2831](https://github.com/mission-apprentissage/labonnealternance/issues/2831)
+- Correction de bugs et amélioration des Core Web Vitals sur la page d'accueil. [#2794](https://github.com/mission-apprentissage/labonnealternance/issues/2794)
+- Correction de vulnérabilités critiques dans les dépendances (handlebars, fast-xml-parser, basic-ftp). [#2810](https://github.com/mission-apprentissage/labonnealternance/issues/2810)
+- Ajout d'un script pour analyser la blocklist des CFA. [#2822](https://github.com/mission-apprentissage/labonnealternance/issues/2822)
+- Amélioration de l'import des offres d'Etudiant. [#2747](https://github.com/mission-apprentissage/labonnealternance/issues/2747)
 
 ### Autres changements
-- Correction de bugs divers (import Jobteaser, OPCO inconnu, statut des recruteurs, etc.).
-- Nettoyage de scripts (static assets, closed companies).
-- Ajustement des paramètres Sentry pour les cron jobs. [#2760](https://github.com/mission-apprentissage/labonnealternance/issues/2760)
-- Mise à jour de la liste des partenaires. [#2691](https://github.com/mission-apprentissage/labonnealternance/issues/2691)
-- Correction de typos et amélioration de la documentation.
-- Suppression de références à des CFA obsolètes. [#2702](https://github.com/mission-apprentissage/labonnealternance/issues/2702)
-- Amélioration de la gestion des erreurs et des logs.
-- Correction de problèmes liés à l'indexation MongoDB.
+- Corrections SEO : ajout de canonical guides, configuration du robots.txt pour l'espace pro, et ajout de meta tags pour le simulateur. [#2851](https://github.com/mission-apprentissage/labonnealternance/issues/2851)
+- Ajout d'une whitelist IP temporaire pour les tests de charge. [#2852](https://github.com/mission-apprentissage/labonnealternance/issues/2852)
+- Correction du formatage de la description des offres Hellowork Buddi. [#2843](https://github.com/mission-apprentissage/labonnealternance/issues/2843)
+- Mise à jour des notes des partenaires. [#2839](https://github.com/mission-apprentissage/labonnealternance/issues/2839)
+- Correction du lien vers la région Grand Est. [#2835](https://github.com/mission-apprentissage/labonnealternance/issues/2835)
+- Amélioration du look & feel du back-office pour les administrateurs LBA. [#2828](https://github.com/mission-apprentissage/labonnealternance/issues/2828)
+- Correction de bugs et améliorations diverses de l'interface utilisateur (UI). [#2784](https://github.com/mission-apprentissage/labonnealternance/issues/2784)
+- Mise à jour des astuces et du plan du site. [#2830](https://github.com/mission-apprentissage/labonnealternance/issues/2830)
+- Correction de l'affichage des offres sur la page des CFA/entreprises partenaires. [#2784](https://github.com/mission-apprentissage/labonnealternance/issues/2784)

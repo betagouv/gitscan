@@ -165,6 +165,9 @@
 │   │   ├── manage.md
 │   │   └── preview.md
 │   ├── infrastructure.md
+│   ├── migration-preview
+│   │   ├── alternative-build-ci.md
+│   │   └── plan-migration-preview.md
 │   ├── migration-temp
 │   │   ├── 00-README.md
 │   │   ├── 01-overview.md
@@ -181,6 +184,8 @@
 │   │       ├── 02-server-impact.md
 │   │       ├── 03-ui-impact.md
 │   │       └── 04-migration-recommendations.md
+│   ├── optimization
+│   │   └── blocked-cfa-aho-corasick.md
 │   └── securite.md
 ├── gitleaks-fingerprints-baseline.txt
 ├── knip.json
@@ -219,6 +224,10 @@
 │   │   │   │   │   ├── emploi-inclusion.client.fixture.ts
 │   │   │   │   │   ├── emploi-inclusion.client.test.ts
 │   │   │   │   │   └── emploi-inclusion.client.ts
+│   │   │   │   ├── etudiant
+│   │   │   │   │   ├── etudiant.client.fixture.ts
+│   │   │   │   │   ├── etudiant.client.test.ts
+│   │   │   │   │   └── etudiant.client.ts
 │   │   │   │   ├── franceCompetences
 │   │   │   │   │   ├── franceCompetencesClient.fixture.ts
 │   │   │   │   │   ├── franceCompetencesClient.test.ts
@@ -257,6 +266,7 @@
 │   │   │       ├── isAllowedSource.ts
 │   │   │       ├── isOriginLocal.ts
 │   │   │       ├── isValidEmail.ts
+│   │   │       ├── jsonToXml.ts
 │   │   │       ├── jwtUtils.ts
 │   │   │       ├── logMessage.ts
 │   │   │       ├── mailUtils.ts
@@ -309,6 +319,8 @@
 │   │   │   │   ├── login.controller.ts
 │   │   │   │   ├── metiers.controller.test.ts
 │   │   │   │   ├── metiers.controller.ts
+│   │   │   │   ├── partners.controller.test.ts
+│   │   │   │   ├── partners.controller.ts
 │   │   │   │   ├── reportedCompany.controller.ts
 │   │   │   │   ├── rolesRoutes.test.ts
 │   │   │   │   ├── rome.controller.ts
@@ -419,12 +431,29 @@
 │   │   │   │   ├── detectClassificationJobsPartners.ts
 │   │   │   │   ├── detectDuplicateJobPartners.test.ts
 │   │   │   │   ├── detectDuplicateJobPartners.ts
+│   │   │   │   ├── edf
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importEdf.test.ts.snap
+│   │   │   │   │   ├── edfMapper.test.ts
+│   │   │   │   │   ├── edfMapper.ts
+│   │   │   │   │   ├── importEDF.ts
+│   │   │   │   │   ├── importEdf.test.input.xml
+│   │   │   │   │   ├── importEdf.test.ts
+│   │   │   │   │   └── processEdf.ts
 │   │   │   │   ├── emploi-inclusion
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── emploi-inclusion.mapper.test.ts.snap
 │   │   │   │   │   ├── emploi-inclusion.mapper.test.ts
 │   │   │   │   │   ├── emploi-inclusion.mapper.ts
 │   │   │   │   │   └── importEmploiInclusion.ts
+│   │   │   │   ├── enedis
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── importEnedis.test.ts.snap
+│   │   │   │   │   ├── enedisMapper.ts
+│   │   │   │   │   ├── importEnedis.test.input.xml
+│   │   │   │   │   ├── importEnedis.test.ts
+│   │   │   │   │   ├── importEnedis.ts
+│   │   │   │   │   └── processEnedis.ts
 │   │   │   │   ├── engagementJeunes
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── engagementJeunesMapper.test.ts.snap
@@ -434,6 +463,12 @@
 │   │   │   │   │   ├── engagementJeunesMapper.ts
 │   │   │   │   │   ├── importEngagementJeunes.test.ts
 │   │   │   │   │   └── importEngagementJeunes.ts
+│   │   │   │   ├── etudiant
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── etudiant.mapper.test.ts.snap
+│   │   │   │   │   ├── etudiant.mapper.test.ts
+│   │   │   │   │   ├── etudiant.mapper.ts
+│   │   │   │   │   └── processEtudiant.ts
 │   │   │   │   ├── expireJobsPartners.ts
 │   │   │   │   ├── fillComputedJobsPartners.test.ts
 │   │   │   │   ├── fillComputedJobsPartners.ts
@@ -465,7 +500,8 @@
 │   │   │   │   │   ├── importFranceTravailCEGID.test.input.json
 │   │   │   │   │   ├── importFranceTravailCEGID.test.ts
 │   │   │   │   │   ├── importFranceTravailCEGID.ts
-│   │   │   │   │   └── mappingAgences.ts
+│   │   │   │   │   ├── mappingAgences.ts
+│   │   │   │   │   └── mockGeolocApi.ts
 │   │   │   │   ├── hellowork
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── importHelloWork.test.ts.snap
@@ -473,7 +509,18 @@
 │   │   │   │   │   ├── helloWorkMapper.ts
 │   │   │   │   │   ├── importHelloWork.test.input.xml
 │   │   │   │   │   ├── importHelloWork.test.ts
-│   │   │   │   │   ├── importHelloWork.ts
+│   │   │   │   │   └── importHelloWork.ts
+│   │   │   │   ├── hellowork-buddi
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── helloWorkBuddiMapper.test.ts.snap
+│   │   │   │   │   │   └── importHelloWorkBuddi.test.ts.snap
+│   │   │   │   │   ├── helloWorkBuddiMapper.test.ts
+│   │   │   │   │   ├── helloWorkBuddiMapper.ts
+│   │   │   │   │   ├── importHelloWorkBuddi.test.input.xml
+│   │   │   │   │   ├── importHelloWorkBuddi.test.ts
+│   │   │   │   │   └── importHelloWorkBuddi.ts
+│   │   │   │   ├── hellowork-merge
+│   │   │   │   │   ├── deduplicateHellowork.ts
 │   │   │   │   │   └── processHellowork.ts
 │   │   │   │   ├── importFromComputedToJobsPartners.test.ts
 │   │   │   │   ├── importFromComputedToJobsPartners.ts
@@ -538,6 +585,8 @@
 │   │   │   │   ├── processFillRomeStandalone.ts
 │   │   │   │   ├── processJobPartners.ts
 │   │   │   │   ├── processJobPartnersForApi.ts
+│   │   │   │   ├── processMissingRomeAndImportToJobPartners.test.ts
+│   │   │   │   ├── processMissingRomeAndImportToJobPartners.ts
 │   │   │   │   ├── rankJobPartners.ts
 │   │   │   │   ├── rawToComputedJobsPartners.ts
 │   │   │   │   ├── recruteur-lba
@@ -561,6 +610,7 @@
 │   │   │   │   └── validateComputedJobPartners.ts
 │   │   │   ├── oneTimeJob
 │   │   │   │   ├── addNafDataToCacheEntreprise.ts
+│   │   │   │   ├── analyzeCfaBlockList.ts
 │   │   │   │   ├── analyzeClosedCompanies.ts
 │   │   │   │   ├── cleanClosedCompanies.test.ts
 │   │   │   │   ├── cleanClosedCompanies.ts
@@ -606,6 +656,7 @@
 │   │   │   ├── referentielRome
 │   │   │   │   └── referentielRome.ts
 │   │   │   ├── seo
+│   │   │   │   ├── dataMetierSEO.ts
 │   │   │   │   └── updateSEO.ts
 │   │   │   ├── simpleJobDefinitions.ts
 │   │   │   ├── updateBrevoBlockedEmails
@@ -615,6 +666,7 @@
 │   │   │       └── controlAppointments.ts
 │   │   ├── main.ts
 │   │   ├── migrations
+│   │   │   ├── .gitkeep
 │   │   │   ├── 20251031112120-initialisation-seo-ville.ts
 │   │   │   ├── 20251110154539-clean-migration.ts
 │   │   │   ├── 20251110163231-clean-recruteurslbalegacies.ts
@@ -639,7 +691,10 @@
 │   │   │   ├── 20260212150000-classification-domaine-metier.ts
 │   │   │   ├── 20260218011730-initialisation-seo-metier.ts
 │   │   │   ├── 20260218174124-update-indexes.ts
-│   │   │   └── 20260226120000-classification-publish-unpublish.ts
+│   │   │   ├── 20260226120000-classification-publish-unpublish.ts
+│   │   │   ├── 20260316162512-initialisation-seo-offres-metiers-villes.ts
+│   │   │   ├── 20260323180547-update-seo-ville.ts
+│   │   │   └── 20260403125147-fix-contract-type-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -820,10 +875,12 @@
 │   │   │   ├── geolocation.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lbaitem.ts
+│   │   │   ├── listeCfaEntreprise.ts
 │   │   │   ├── rdva.ts
 │   │   │   ├── recruteur.ts
 │   │   │   ├── referers.ts
-│   │   │   └── regex.ts
+│   │   │   ├── regex.ts
+│   │   │   └── search.ts
 │   │   ├── fixtures
 │   │   │   ├── application.fixture.ts
 │   │   │   ├── appointment.fixture.ts
@@ -918,11 +975,15 @@
 │   │   │   ├── rawApec.model.ts
 │   │   │   ├── rawAtlas.model.ts
 │   │   │   ├── rawDecathlon.model.ts
+│   │   │   ├── rawEdf.model.ts
 │   │   │   ├── rawEmploiInclusion.model.ts
+│   │   │   ├── rawEnedis.model.ts
 │   │   │   ├── rawEngagementJeunes.model.ts
+│   │   │   ├── rawEtudiant.model.ts
 │   │   │   ├── rawFranceTravail.model.ts
 │   │   │   ├── rawFranceTravailCEGID.model.ts
 │   │   │   ├── rawHelloWork.model.ts
+│   │   │   ├── rawHelloWorkBuddi.model.ts
 │   │   │   ├── rawJobteaser.model.ts
 │   │   │   ├── rawJooble.model.ts
 │   │   │   ├── rawKelio.model.ts
@@ -982,6 +1043,7 @@
 │   │   │   ├── jobsEtFormations.routes.ts
 │   │   │   ├── login.routes.ts
 │   │   │   ├── metiers.routes.ts
+│   │   │   ├── partners.routes.ts
 │   │   │   ├── recruiters.routes.ts
 │   │   │   ├── reportedCompany.routes.ts
 │   │   │   ├── rome.routes.ts
@@ -1001,6 +1063,8 @@
 │   │   │           └── jobs.routes.v3.ts
 │   │   ├── security
 │   │   │   └── permissions.ts
+│   │   ├── services
+│   │   │   └── isCfaEntreprise.ts
 │   │   ├── utils
 │   │   │   ├── assertUnreachable.ts
 │   │   │   ├── detectUrlAndEmails.test.ts
@@ -1041,23 +1105,19 @@
 │   │   │   │   │   │   │   ├── RechercheRayonSelect.tsx
 │   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox.tsx
 │   │   │   │   │   │   │   ├── RechercheSubmitButton.tsx
-│   │   │   │   │   │   │   └── RechercheToggleMap.tsx
+│   │   │   │   │   │   │   └── RechercheTypeEmploiSelect.tsx
 │   │   │   │   │   │   ├── RecherchePageComponent.tsx
 │   │   │   │   │   │   ├── RecherchePageComponentServer.tsx
 │   │   │   │   │   │   ├── RechercheResultats
 │   │   │   │   │   │   │   ├── CardStyling.tsx
+│   │   │   │   │   │   │   ├── EnqueteTally.tsx
 │   │   │   │   │   │   │   ├── LbaItemCard.tsx
 │   │   │   │   │   │   │   ├── RechercheBackToTopButton.tsx
 │   │   │   │   │   │   │   ├── RechercheHeader.tsx
-│   │   │   │   │   │   │   ├── RechercheMap
-│   │   │   │   │   │   │   │   ├── RechercheMapIci.tsx
-│   │   │   │   │   │   │   │   └── RechercheMapPopup.tsx
-│   │   │   │   │   │   │   ├── RechercheMap.tsx
 │   │   │   │   │   │   │   ├── RechercheMobileEmpty.tsx
 │   │   │   │   │   │   │   ├── RechercheMobileForm.tsx
 │   │   │   │   │   │   │   ├── RechercheMobileFormUpdate.tsx
 │   │   │   │   │   │   │   ├── RechercheMobileHome.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileToggleMapButton.tsx
 │   │   │   │   │   │   │   ├── RecherchePageEmpty.tsx
 │   │   │   │   │   │   │   ├── RecherchePageHome.tsx
 │   │   │   │   │   │   │   ├── RechercheResultatsFooter.tsx
@@ -1066,7 +1126,7 @@
 │   │   │   │   │   │   │   ├── VirtualContainer.tsx
 │   │   │   │   │   │   │   └── Whisper.tsx
 │   │   │   │   │   │   ├── RechercheResultatsPlaceholder.tsx
-│   │   │   │   │   │   ├── hasValidEmail.ts
+│   │   │   │   │   │   ├── hasEmail.ts
 │   │   │   │   │   │   └── isOfferActive.ts
 │   │   │   │   │   ├── _hooks
 │   │   │   │   │   │   ├── useNavigateToRecherchePage.ts
@@ -1125,10 +1185,27 @@
 │   │   │   │               └── page.tsx
 │   │   │   └── layout.tsx
 │   │   ├── (editorial)
+│   │   │   ├── _components
+│   │   │   │   ├── AllerPlusLoinItem.tsx
+│   │   │   │   ├── AllerPlusLoinItemHorizontal.tsx
+│   │   │   │   ├── Conseil.tsx
+│   │   │   │   ├── DescriptionSection.tsx
+│   │   │   │   ├── DocumentGridItem.tsx
+│   │   │   │   ├── GuideHeaderIllustration.tsx
+│   │   │   │   ├── InfoSection.tsx
+│   │   │   │   ├── LayoutArticle.tsx
+│   │   │   │   ├── Paragraph.tsx
+│   │   │   │   ├── ParagraphList.tsx
+│   │   │   │   ├── QuizItem.tsx
+│   │   │   │   ├── RedirectionInterne.tsx
+│   │   │   │   ├── Section.tsx
+│   │   │   │   ├── TableArticle.tsx
+│   │   │   │   └── UpdatedAtSection.tsx
 │   │   │   ├── a-propos
 │   │   │   │   └── page.tsx
 │   │   │   ├── alternance
 │   │   │   │   ├── _components
+│   │   │   │   │   ├── CarteOffre.tsx
 │   │   │   │   │   ├── metier_data.tsx
 │   │   │   │   │   └── ville_data.tsx
 │   │   │   │   ├── metier
@@ -1147,15 +1224,54 @@
 │   │   │   │   └── page.tsx
 │   │   │   ├── espace-developpeurs
 │   │   │   │   └── page.tsx
+│   │   │   ├── guide
+│   │   │   │   ├── apprentissage-et-handicap
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── const.ts
+│   │   │   │   ├── decouvrir-l-alternance
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── prevention-des-risques-professionnels-pour-les-apprentis
+│   │   │   │       └── page.tsx
+│   │   │   ├── guide-alternant
+│   │   │   │   ├── a-propos-des-formations
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── comment-signer-un-contrat-en-alternance
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── comprendre-la-remuneration
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── conseils-et-astuces-pour-trouver-un-employeur
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── const.ts
+│   │   │   │   ├── la-rupture-de-contrat
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── les-aides-financieres-et-materielles
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── preparer-son-projet-en-alternance
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── role-et-missions-du-maitre-d-apprentissage-ou-tuteur
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── se-faire-accompagner
+│   │   │   │       └── page.tsx
+│   │   │   ├── guide-cfa
+│   │   │   │   ├── const.ts
+│   │   │   │   ├── la-carte-etudiant-des-metiers
+│   │   │   │   │   ├── BandeauAuthentificationCfa.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── guide-recruteur
+│   │   │   │   ├── cerfa-apprentissage-et-professionnalisation
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── const.ts
+│   │   │   │   ├── je-suis-employeur-public
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── metiers
 │   │   │   │   ├── [slug]
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── plan-du-site
-│   │   │   │   └── page.tsx
-│   │   │   ├── ressources
-│   │   │   │   ├── RessourcePage.tsx
 │   │   │   │   └── page.tsx
 │   │   │   └── statistiques
 │   │   │       ├── StatistiquesClient.tsx
@@ -1194,11 +1310,11 @@
 │   │   │   │   ├── PopoverMenu.tsx
 │   │   │   │   ├── Table.tsx
 │   │   │   │   ├── TableWithPagination.tsx
+│   │   │   │   ├── VirtualTable.tsx
 │   │   │   │   └── promoRessources.tsx
 │   │   │   └── espace-pro
 │   │   │       ├── (connected)
 │   │   │       │   ├── _components
-│   │   │       │   │   ├── AdminLayout.tsx
 │   │   │       │   │   ├── AnimationContainer.tsx
 │   │   │       │   │   ├── BackEntrepriseUpsertOffre.tsx
 │   │   │       │   │   ├── CfaHome.tsx
@@ -1208,6 +1324,7 @@
 │   │   │       │   │   ├── ConfirmationSuppressionEntreprise.tsx
 │   │   │       │   │   ├── ConfirmationSuppressionOffre.tsx
 │   │   │       │   │   ├── ConnectedHeader.tsx
+│   │   │       │   │   ├── ConnectedHeaderNavigation.tsx
 │   │   │       │   │   ├── DetailEntreprise.tsx
 │   │   │       │   │   ├── DropdownCombobox.tsx
 │   │   │       │   │   ├── FormulaireEditionOffre.tsx
@@ -1222,6 +1339,8 @@
 │   │   │       │   ├── administration
 │   │   │       │   │   ├── _components
 │   │   │       │   │   │   └── EtablissementComponent.tsx
+│   │   │       │   │   ├── _utils
+│   │   │       │   │   │   └── recruteursColumns.tsx
 │   │   │       │   │   ├── compte
 │   │   │       │   │   │   ├── layout.tsx
 │   │   │       │   │   │   └── page.tsx
@@ -1258,6 +1377,9 @@
 │   │   │       │   │   │   │       └── page.tsx
 │   │   │       │   │   │   ├── layout.tsx
 │   │   │       │   │   │   └── page.tsx
+│   │   │       │   │   ├── recruteurs
+│   │   │       │   │   │   ├── RecruteursList.tsx
+│   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── rendez-vous-apprentissage
 │   │   │       │   │   │   ├── RendezVousApprentissagePage.tsx
 │   │   │       │   │   │   ├── [siret]
@@ -1280,6 +1402,8 @@
 │   │   │       │   │       │   └── UserMenu.tsx
 │   │   │       │   │       └── page.tsx
 │   │   │       │   ├── cfa
+│   │   │       │   │   ├── carte-d-etudiant-des-metiers
+│   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── compte
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── creation-entreprise
@@ -1411,33 +1535,29 @@
 │   │   │   ├── _components
 │   │   │   │   ├── AlgoHome.tsx
 │   │   │   │   ├── AmeliorerLBA.tsx
+│   │   │   │   ├── CalculRemuneration.tsx
 │   │   │   │   ├── HomeCircleImageDecoration.tsx
 │   │   │   │   ├── HomeRechercheForm.tsx
 │   │   │   │   ├── HowTo.tsx
+│   │   │   │   ├── InformationsAlternance.tsx
 │   │   │   │   ├── home_form_decoration.svg
 │   │   │   │   └── seo_decoration.svg
 │   │   │   ├── layout.tsx
 │   │   │   └── page.tsx
 │   │   ├── (landing-pages)
-│   │   │   ├── acces-recruteur
-│   │   │   │   ├── _components
-│   │   │   │   │   ├── AlgoRecruter.tsx
-│   │   │   │   │   ├── Entreprise.tsx
-│   │   │   │   │   ├── GerezOffres.tsx
-│   │   │   │   │   ├── HeroRecruteur.tsx
-│   │   │   │   │   ├── OffresGratuites.tsx
-│   │   │   │   │   ├── OrganismesMandataires.tsx
-│   │   │   │   │   └── PostezVotreOffre.tsx
+│   │   │   ├── je-suis-cfa
+│   │   │   │   └── page.tsx
+│   │   │   ├── je-suis-recruteur
 │   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
-│   │   │   └── organisme-de-formation
+│   │   │   └── salaire-alternant
 │   │   │       ├── _components
-│   │   │       │   ├── BientotCFA.tsx
-│   │   │       │   ├── CFA.tsx
-│   │   │       │   ├── FacilitezRDVA.tsx
-│   │   │       │   ├── GerezEntreprise.tsx
-│   │   │       │   ├── HeroCFA.tsx
-│   │   │       │   └── OffresAutoExposees.tsx
+│   │   │       │   ├── AllerPlusLoin.tsx
+│   │   │       │   ├── FormulaireSituation.tsx
+│   │   │       │   ├── ResultatSimulation.tsx
+│   │   │       │   └── SimulateurRemuneration.tsx
+│   │   │       ├── context
+│   │   │       │   └── SimulateurContext.tsx
 │   │   │       └── page.tsx
 │   │   ├── (rdva)
 │   │   │   ├── layout.tsx
@@ -1462,6 +1582,7 @@
 │   │   │   ├── ArrowUpDownLine.tsx
 │   │   │   ├── ArrowUpLine.tsx
 │   │   │   ├── AuthWatcher.tsx
+│   │   │   ├── BandeauFusionPDA.tsx
 │   │   │   ├── Breadcrumb.tsx
 │   │   │   ├── ClientOnly.tsx
 │   │   │   ├── CustomDSFRInput.tsx
@@ -1473,9 +1594,11 @@
 │   │   │   ├── FormComponents
 │   │   │   │   ├── AutocompleteAsync.tsx
 │   │   │   │   ├── InputFormField.tsx
+│   │   │   │   ├── MultiSelectField.tsx
 │   │   │   │   ├── SelectField.tsx
 │   │   │   │   └── SelectFormField.tsx
 │   │   │   ├── Header.tsx
+│   │   │   ├── HeaderNavigation.tsx
 │   │   │   ├── Layout
 │   │   │   │   ├── DefaultContainer.tsx
 │   │   │   │   ├── NavigationAdmin.tsx
@@ -1597,19 +1720,15 @@
 │   │   │   │   └── PartnerJobPostuler.tsx
 │   │   │   ├── RecruteurLbaComponents
 │   │   │   │   ├── RecruteurLbaCandidater.tsx
-│   │   │   │   ├── RecruteurLbaDetail.tsx
-│   │   │   │   └── RecruteurLbaNoContactModal.tsx
+│   │   │   │   └── RecruteurLbaDetail.tsx
 │   │   │   ├── ReportJobLink.tsx
 │   │   │   ├── ShareLink.tsx
 │   │   │   ├── StatsInserJeunes.tsx
 │   │   │   ├── TagCandidatureSpontanee.tsx
 │   │   │   ├── TagCfaDEntreprise.tsx
-│   │   │   ├── TagEcole.tsx
+│   │   │   ├── TagEmploiFormation.tsx
 │   │   │   ├── TagFormation.tsx
-│   │   │   ├── TagFormationAssociee.tsx
-│   │   │   ├── TagLaBonneAlternance.tsx
 │   │   │   ├── TagOffreEmploi.tsx
-│   │   │   ├── TagPartenaire.tsx
 │   │   │   └── ValorisationCandidatureSpontanee.tsx
 │   │   ├── MailCard.tsx
 │   │   ├── ModalReadOnly.tsx
@@ -1620,14 +1739,7 @@
 │   │   │   ├── DemandeDeContactForm.tsx
 │   │   │   ├── DemandeDeContactModal.tsx
 │   │   │   └── RdvReasons.ts
-│   │   ├── Ressources
-│   │   │   ├── CardForLink.tsx
-│   │   │   ├── conseilsEtAstuces.tsx
-│   │   │   ├── fonctionnementPlateforme.tsx
-│   │   │   ├── misesEnSituation.tsx
-│   │   │   ├── ressourcesCFA.tsx
-│   │   │   ├── ressourcesCandidat.tsx
-│   │   │   └── ressourcesRecruteur.tsx
+│   │   ├── SchemaOrg.tsx
 │   │   ├── SearchForTrainingsAndJobs
 │   │   │   ├── components
 │   │   │   │   ├── CustomTag.tsx
@@ -1693,6 +1805,13 @@
 │   ├── config
 │   │   ├── config.ts
 │   │   ├── metiers.txt
+│   │   ├── simulateur-alternant
+│   │   │   ├── README.md
+│   │   │   ├── dates.ts
+│   │   │   ├── index.ts
+│   │   │   ├── smic.ts
+│   │   │   ├── taux-de-cotisation.ts
+│   │   │   └── taux-smic.ts
 │   │   └── villes.txt
 │   ├── config.public.ts
 │   ├── context
@@ -1770,6 +1889,9 @@
 │   │   │   ├── book.svg
 │   │   │   ├── breadcrumb_separator.svg
 │   │   │   ├── briefcase.svg
+│   │   │   ├── calculatrice_simulateur.svg
+│   │   │   ├── carte-d-etudiant-des-metiers-recto.svg
+│   │   │   ├── carte-d-etudiant-des-metiers-verso.svg
 │   │   │   ├── chevronleft.svg
 │   │   │   ├── chevronright.svg
 │   │   │   ├── close.svg
@@ -1846,14 +1968,46 @@
 │   │   │   ├── fuseeDecollant.svg
 │   │   │   ├── glass.svg
 │   │   │   ├── glass_white.svg
+│   │   │   ├── guides
+│   │   │   │   ├── apprentissage-et-handicap.svg
+│   │   │   │   ├── decouvrir-l-alternance.svg
+│   │   │   │   ├── demarrer-recherche.svg
+│   │   │   │   ├── faq.svg
+│   │   │   │   ├── guide-alternant
+│   │   │   │   │   ├── a-propos-des-formations.svg
+│   │   │   │   │   ├── comment-signer-un-contrat-en-alternance.svg
+│   │   │   │   │   ├── comprendre-la-remuneration.svg
+│   │   │   │   │   ├── conseils-et-astuces-pour-trouver-un-employeur.svg
+│   │   │   │   │   ├── guide-apprentissage-et-handicap.svg
+│   │   │   │   │   ├── la-rupture-de-contrat.svg
+│   │   │   │   │   ├── les-aides-financieres-et-materielles.svg
+│   │   │   │   │   ├── preparer-son-projet-en-alternance.svg
+│   │   │   │   │   ├── role-et-missions-du-maitre-d-apprentissage-ou-tuteur.svg
+│   │   │   │   │   ├── se-faire-accompagner.svg
+│   │   │   │   │   ├── simulateur.svg
+│   │   │   │   │   └── tableau-de-suivi.svg
+│   │   │   │   ├── guide-cfa
+│   │   │   │   │   └── la-carte-etudiant-des-metiers.svg
+│   │   │   │   ├── guide-recruteur
+│   │   │   │   │   ├── aides-a-l-embauche-en-alternance.svg
+│   │   │   │   │   ├── cerfa-apprentissage-et-professionnalisation.svg
+│   │   │   │   │   ├── guide-apprentissage-et-handicap.svg
+│   │   │   │   │   └── je-suis-employeur-public.svg
+│   │   │   │   ├── guide.svg
+│   │   │   │   ├── header.svg
+│   │   │   │   ├── illu-votre-besoin.svg
+│   │   │   │   ├── prevention-des-risques-professionnels-pour-les-apprentis.svg
+│   │   │   │   └── recruteur.svg
 │   │   │   ├── head_with_bulb.svg
 │   │   │   ├── home_hero_background.svg
 │   │   │   ├── home_pics
 │   │   │   │   ├── facilitezRDVA.svg
+│   │   │   │   ├── illu-calcul-remuneration.svg
 │   │   │   │   ├── illu-candidatures.svg
 │   │   │   │   ├── illu-candidatures@2x.png
 │   │   │   │   ├── illu-entreprisesmandatees.svg
 │   │   │   │   ├── illu-entreprisesmandatees@2x.png
+│   │   │   │   ├── illu-informations-alternance.svg
 │   │   │   │   ├── illu-listeoffres.svg
 │   │   │   │   ├── illu-listeoffres@2x.png
 │   │   │   │   ├── illu-offreemploi.svg
@@ -1961,6 +2115,22 @@
 │   │   │   │   ├── traning-clipboard-list.svg
 │   │   │   │   └── world.svg
 │   │   │   ├── info.svg
+│   │   │   ├── je-suis-cfa
+│   │   │   │   ├── illu-bientot.svg
+│   │   │   │   ├── illu-carte-metiers.svg
+│   │   │   │   ├── illu-contact-candidat.svg
+│   │   │   │   ├── illu-entreprises-mandatees.svg
+│   │   │   │   ├── illu-lba.svg
+│   │   │   │   ├── illu-liste-offres.svg
+│   │   │   │   ├── illu-plateforme-jeunes.svg
+│   │   │   │   └── illu-rdv.svg
+│   │   │   ├── je-suis-recruteur
+│   │   │   │   ├── illu-lba.svg
+│   │   │   │   ├── illu-marche-cache.svg
+│   │   │   │   ├── illu-offre-emploi.svg
+│   │   │   │   ├── illu-plateforme-jeunes.svg
+│   │   │   │   ├── illu-soliciter-cfa.svg
+│   │   │   │   └── illu-votre-besoin.svg
 │   │   │   ├── launching_rocket.svg
 │   │   │   ├── lba_recruteur_advice.svg
 │   │   │   ├── loading
@@ -2012,17 +2182,6 @@
 │   │   │   │   └── partenaire-tdb.webp
 │   │   │   ├── lostCat.svg
 │   │   │   ├── marianne.svg
-│   │   │   ├── pages_ressources
-│   │   │   │   ├── FAQ.svg
-│   │   │   │   ├── conseils et astuces.svg
-│   │   │   │   ├── didask-module1.svg
-│   │   │   │   ├── didask-module2.svg
-│   │   │   │   ├── didask-module3.svg
-│   │   │   │   ├── didask-module4.svg
-│   │   │   │   ├── offres completes.svg
-│   │   │   │   ├── outils.svg
-│   │   │   │   ├── recruteur.svg
-│   │   │   │   └── tableau de suivi.svg
 │   │   │   ├── paperplane.svg
 │   │   │   ├── paperplane2.svg
 │   │   │   ├── recherche_cdd_cdi.svg
@@ -2089,9 +2248,11 @@
 │   │   │   ├── static_map.svg
 │   │   │   ├── switch-off.svg
 │   │   │   ├── switch-on.svg
+│   │   │   ├── tableau.svg
 │   │   │   ├── tada.svg
 │   │   │   ├── thumbdown.svg
 │   │   │   ├── thumbup.svg
+│   │   │   ├── triangle.svg
 │   │   │   └── whisper.svg
 │   │   ├── ressources
 │   │   │   ├── Tableau de suivi des candidatures - La bonne alternance - Excel.xlsx
@@ -2101,7 +2262,8 @@
 │   │   │   ├── Tableau-de-suivi-des-candidatures-a-imprimer_La-bonne-alternance_PDF.pdf
 │   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Excel.xlsx
 │   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_LibreOffice.ods
-│   │   │   └── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Numbers.numbers
+│   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Numbers.numbers
+│   │   │   └── carte-d-etudiant-des-metiers.zip
 │   │   └── styles
 │   │       ├── application.css
 │   │       ├── fonts.css
@@ -2113,14 +2275,16 @@
 │   ├── services
 │   │   ├── arrondissements.ts
 │   │   ├── baseAdresse.ts
-│   │   ├── cfaEntreprise.ts
+│   │   ├── fetchInserJeuneStats.test.ts
 │   │   ├── fetchInserJeuneStats.ts
 │   │   ├── fetchLbaCompanyDetails.ts
 │   │   ├── fetchLbaJobDetails.ts
 │   │   ├── fetchNotionPage.ts
 │   │   ├── fetchPartnerJobDetails.ts
 │   │   ├── generateMainSitemap.ts
-│   │   └── searchEntreprises.ts
+│   │   ├── searchEntreprises.ts
+│   │   ├── simulateurAlternant.test.ts
+│   │   └── simulateurAlternant.ts
 │   ├── styles
 │   │   ├── search.css
 │   │   └── webkitLineClamp.ts
@@ -2159,6 +2323,7 @@
 │   │   └── trackingMatomo.tsx
 │   ├── tsconfig.json
 │   ├── types
+│   │   ├── matomo.d.ts
 │   │   └── svg.d.ts
 │   └── utils
 │       ├── addressUtils.ts
@@ -2172,6 +2337,7 @@
 │       ├── getStaticData.ts
 │       ├── isWidget.utils.ts
 │       ├── localStorage.ts
+│       ├── matomoUtils.ts
 │       ├── plausible.ts
 │       ├── requestUtils.ts
 │       ├── routes.utils.ts
@@ -2180,4 +2346,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-418 directories, 1764 files
+458 directories, 1890 files
