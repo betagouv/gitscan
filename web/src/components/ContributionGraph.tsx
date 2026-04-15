@@ -109,13 +109,13 @@ export function ContributionGraph({
               gap: `${gap}px`,
             }}
           >
-            {grid.map((cell) => {
+            {grid.map((cell, i) => {
               const commits = cell.contribution?.commits || 0;
               const intensityClass = getIntensityClass(commits, maxCommits);
 
               return (
                 <div
-                  key={cell.date}
+                  key={cell.date + i}
                   className={`rounded-sm ${intensityClass}`}
                   style={{
                     width: cellSize,
@@ -203,13 +203,13 @@ export function ContributionGraph({
               gap: `${gap}px`,
             }}
           >
-            {grid.map((cell) => {
+            {grid.map((cell, i) => {
               const commits = cell.contribution?.commits || 0;
               const intensityClass = getIntensityClass(commits, maxCommits);
 
               return (
                 <div
-                  key={cell.date}
+                  key={cell.date + i}
                   className={`rounded-sm ${intensityClass} cursor-pointer transition-all hover:ring-2 hover:ring-slate-400 hover:ring-offset-1`}
                   style={{
                     width: cellSize,

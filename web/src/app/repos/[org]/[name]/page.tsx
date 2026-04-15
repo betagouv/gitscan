@@ -149,11 +149,13 @@ export default async function RepoDetailPage({ params }: PageProps) {
           {repo.language && (
             <div className="flex items-center gap-1.5 badge badge-slate">
               <span className={`w-2 h-2 rounded-full ${langColor}`} />
-              {repo.language}
+              {repo.language.toString()}
             </div>
           )}
           {repo.license && (
-            <span className="badge badge-green">{repo.license}</span>
+            <span className="badge badge-green">
+              {repo.license.name || repo.license.toString()}
+            </span>
           )}
           {repo.hasDocumentation && (
             <span className="badge badge-blue">Documentation</span>
