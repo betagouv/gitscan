@@ -1,13 +1,15 @@
-## Changelog : upptime (30 derniers jours)
+## Changelog : upptime (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Les 30 derniers jours, upptime a principalement fonctionné comme prévu, avec des mises à jour régulières du statut des différents services surveillés. Les rapports d'incident ont été automatiquement générés et les graphiques de statut ont été mis à jour quotidiennement. Il n'y a pas eu de changements majeurs concernant les fonctionnalités ou l'architecture du projet.
+Ce changelog couvre une période de 30 jours d'activité sur le projet upptime. L'activité principale concerne la surveillance continue de l'uptime de divers services et APIs, avec des mises à jour régulières du statut et des graphiques associés. Les services surveillés incluent API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord et La bonne alternance.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période. Le système continue de surveiller et de rapporter l'état des services comme précédemment.
+Aucune évolution fonctionnelle majeure n'a été identifiée durant cette période. Les changements se concentrent sur la surveillance et le reporting de l'état des services.
 
 ### Évolutions techniques
-Aucune évolution technique n'a été identifiée dans les commits analysés. Les mises à jour concernent principalement la surveillance et le reporting de l'état des services.
+Aucune évolution technique n'a été identifiée durant cette période. L'activité se concentre sur la surveillance et le reporting de l'état des services.
 
 ### Autres changements
-Les commits analysés montrent une mise à jour quotidienne des graphiques et du résumé de l'état des services surveillés par le bot Upptime.  Il y a eu quelques incidents signalés pour "Laboratoire La bonne alternance", mais ils semblent avoir été résolus rapidement.
+- Mise à jour régulière des graphiques de statut.
+- Mise à jour régulière du résumé de l'état des services dans le README.
+- Mises à jour continues du statut des différents services surveillés (API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance) avec indication de l'uptime et du temps de réponse.
