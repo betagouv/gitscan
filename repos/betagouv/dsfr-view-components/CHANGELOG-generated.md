@@ -1,14 +1,16 @@
-## Changelog : dsfr-view-components (30 derniers jours)
+## Changelog : dsfr-view-components (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations visuelles et de flexibilité aux composants de la bibliothèque. Une correction a été apportée à l'espacement des tuiles, et il est désormais possible de personnaliser le lien du header. Des mises à jour internes ont également été effectuées pour assurer la compatibilité avec les versions récentes de Ruby.
+Cette nouvelle version apporte une mise à jour majeure vers ViewComponent 4, améliorant la compatibilité et les performances. De plus, le composant "tuile" a été enrichi avec l'ajout de badges, offrant ainsi plus de flexibilité pour la présentation de l'information. Des corrections et améliorations de la CI/CD ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Correction de l’espacement au sein des tuiles (#257).
-- Possibilité de modifier ou de retirer le `href` du header (#255).
+- Ajout de badges au composant "tuile" pour une meilleure présentation des informations. [#261](https://github.com/betagouv/dsfr-view-components/issues/261)
 
 ### Évolutions techniques
-- Mise à jour des versions de Ruby utilisées pour les tests (#256).
+- Mise à jour vers ViewComponent 4 et dépendances associées, améliorant la performance et la compatibilité.
+- Suppression du `Gemfile.lock` pour permettre les tests avec différentes versions de Rails.
+- Corrections Rubocop pour améliorer la qualité du code.
+- Amélioration de la CI/CD pour assurer le déploiement du guide.
 
 ### Autres changements
-- Publication de la version 4.1.3 et 4.1.2.
+- Préparation de la version 5.0.0.pre.
