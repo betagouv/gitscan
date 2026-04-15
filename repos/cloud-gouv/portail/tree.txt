@@ -1,12 +1,28 @@
 .
 ├── .github
 │   └── workflows
+│       ├── cargo.yaml
 │       └── test.yaml
 ├── .gitignore
 ├── Cargo.lock
 ├── Cargo.toml
 ├── LICENSE
 ├── README.md
+├── benches
+│   └── acl.rs
+├── contrib
+│   ├── vim
+│   │   └── acl.vim
+│   └── vscode
+│       └── syntax-highlighting
+│           ├── README.md
+│           ├── language-configuration.json
+│           ├── package.json
+│           ├── syntaxes
+│           │   └── acl.tmLanguage.json
+│           └── vscode-acl-syntax-0.1.0.vsix
+├── docs
+│   └── ACL_DESIGN.md
 ├── examples
 │   ├── config.toml
 │   └── filter.acl
@@ -35,10 +51,51 @@
 ├── run.sh
 └── src
     ├── acl
+    │   ├── ast.rs
     │   ├── evaluator.rs
+    │   ├── hir.rs
     │   ├── mod.rs
-    │   └── parser.rs
+    │   ├── parser.rs
+    │   └── snapshots
+    │       ├── portail__acl__hir__tests__valid_hir_for_policy.snap
+    │       ├── portail__acl__parser__tests__acl_with_braces.snap
+    │       ├── portail__acl__parser__tests__complex_acl.snap
+    │       ├── portail__acl__parser__tests__deny_templates.snap
+    │       ├── portail__acl__parser__tests__deny_with_relative_template.snap
+    │       ├── portail__acl__parser__tests__deny_with_template.snap
+    │       ├── portail__acl__parser__tests__dup_action.snap
+    │       ├── portail__acl__parser__tests__dup_policies.snap
+    │       ├── portail__acl__parser__tests__dup_req.snap
+    │       ├── portail__acl__parser__tests__dup_when.snap
+    │       ├── portail__acl__parser__tests__empty_policy_block.snap
+    │       ├── portail__acl__parser__tests__invalid_expression.snap
+    │       ├── portail__acl__parser__tests__invalid_integer_in_regexp_operand.snap
+    │       ├── portail__acl__parser__tests__invalid_integer_limits.snap.new
+    │       ├── portail__acl__parser__tests__invalid_integer_lower_limit.snap
+    │       ├── portail__acl__parser__tests__invalid_integer_upper_limit.snap
+    │       ├── portail__acl__parser__tests__invalid_policy_in_the_middle_of_valid.snap
+    │       ├── portail__acl__parser__tests__invalid_policy_missing_brace.snap
+    │       ├── portail__acl__parser__tests__invalid_regexp_in_operand.snap
+    │       ├── portail__acl__parser__tests__invalid_route_missing_brace.snap.new
+    │       ├── portail__acl__parser__tests__invalid_route_missing_closing_brace.snap
+    │       ├── portail__acl__parser__tests__invalid_route_missing_opening_brace.snap
+    │       ├── portail__acl__parser__tests__invalid_type_in_in_operand.snap
+    │       ├── portail__acl__parser__tests__invalid_type_in_lte_operand.snap
+    │       ├── portail__acl__parser__tests__invalid_uri_in_redirect.snap
+    │       ├── portail__acl__parser__tests__multiple_stuck_together_tokens_error.snap
+    │       ├── portail__acl__parser__tests__policy_with_action.snap
+    │       ├── portail__acl__parser__tests__policy_with_dotted_identifiers.snap
+    │       ├── portail__acl__parser__tests__policy_with_redirect_action.snap
+    │       ├── portail__acl__parser__tests__route_with_lots_of_whitespace.snap
+    │       ├── portail__acl__parser__tests__semantically_wrong_rules.snap
+    │       ├── portail__acl__parser__tests__simple_route.snap
+    │       ├── portail__acl__parser__tests__simple_route_with_trailing_commas.snap
+    │       ├── portail__acl__parser__tests__stuck_together_commands_error.snap
+    │       ├── portail__acl__parser__tests__valid_expression_precedence.snap
+    │       ├── portail__acl__parser__tests__valid_integer_limits.snap
+    │       └── portail__acl__parser__tests__valid_integers.snap
     ├── config.rs
+    ├── lib.rs
     ├── main.rs
     ├── proxy
     │   ├── client_tls.rs
@@ -47,7 +104,10 @@
     │   ├── mod.rs
     │   ├── protocol_detect.rs
     │   └── socks5.rs
-    ├── rpc.rs
+    ├── rpc
+    │   ├── fr.gouv.portail.control.varlink
+    │   ├── fr_gouv_portail_control.rs
+    │   └── mod.rs
     ├── state.rs
     └── systemd.rs
-12 directories, 40 files
+21 directories, 91 files
