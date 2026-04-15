@@ -1,5 +1,7 @@
 .
 ├── .actrc
+├── .claude
+│   └── settings.json
 ├── .cursor
 │   └── rules
 │       └── comply-adr.mdc
@@ -57,6 +59,7 @@
 │   │   ├── .act.secrets.default
 │   │   └── .act.vars.default
 │   └── workflows
+│       ├── backup-database.yml
 │       ├── cd-app.yml
 │       ├── cd-auth.yml
 │       ├── cd-backend.yml
@@ -71,6 +74,9 @@
 │       ├── ci.yml
 │       ├── dev.yml
 │       ├── init-db.yml
+│       ├── keep-alive-streamlit.yml
+│       ├── scripts
+│       │   └── keep-alive-streamlit.ts
 │       ├── test-app.yml
 │       ├── test-backend.yml
 │       ├── test-build.yml
@@ -223,25 +229,10 @@
 │   │   │   │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   │   │   │   ├── action
 │   │   │   │   │   │   │   │   │   │   └── [actionId]
-│   │   │   │   │   │   │   │   │   │       ├── @tabs
-│   │   │   │   │   │   │   │   │   │       │   ├── audit
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── default.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── documents
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── fiches
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── historique
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── indicateurs
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── informations
-│   │   │   │   │   │   │   │   │   │       │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   │       │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │       ├── _components
 │   │   │   │   │   │   │   │   │   │       │   ├── action
 │   │   │   │   │   │   │   │   │   │       │   │   └── action.justification-field.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── comments
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-comment.empty-img.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-comments-filters.constants.tsx
@@ -268,19 +259,24 @@
 │   │   │   │   │   │   │   │   │   │       │   │   │   ├── use-update-discussion-message.ts
 │   │   │   │   │   │   │   │   │   │       │   │   │   └── use-update-discussion.ts
 │   │   │   │   │   │   │   │   │   │       │   │   └── rounded-vertical-border.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── header
+│   │   │   │   │   │   │   │   │   │       │   │   ├── action-side-panel-toolbar.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action.navigation.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── breadcrum
+│   │   │   │   │   │   │   │   │   │       │   │   ├── breadcrumb
 │   │   │   │   │   │   │   │   │   │       │   │   │   ├── action.breadcrumb.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   │   └── referentiel-dropdown.navigation.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── display-settings-buttons.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── infos.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── score.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── previous-and-next-actions.links.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── score.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   └── vertical-divider.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── information
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.item.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.types.ts
 │   │   │   │   │   │   │   │   │   │       │   │   ├── action-information.utils.ts
 │   │   │   │   │   │   │   │   │   │       │   │   └── use-action-information.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── pluralize.ts
 │   │   │   │   │   │   │   │   │   │       │   ├── score-indicatif
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.badge.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.donnees.tsx
@@ -294,16 +290,27 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── use-get-valeurs-utilisees.ts
 │   │   │   │   │   │   │   │   │   │       │   │   ├── use-set-valeurs-utilisees.ts
 │   │   │   │   │   │   │   │   │   │       │   │   └── utils.ts
+│   │   │   │   │   │   │   │   │   │       │   ├── side-panel
+│   │   │   │   │   │   │   │   │   │       │   │   ├── buttons.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── comments.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── context.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── documents.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── index.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── indicateurs.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── informations.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── types.ts
+│   │   │   │   │   │   │   │   │   │       │   │   └── use-metadata-count.ts
 │   │   │   │   │   │   │   │   │   │       │   ├── subaction
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.actions.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.header.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-card.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── subaction.panel.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   └── use-hash-from-url.ts
 │   │   │   │   │   │   │   │   │   │       │   └── task
 │   │   │   │   │   │   │   │   │   │       │       ├── task-card.tsx
 │   │   │   │   │   │   │   │   │   │       │       └── task.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       └── layout.tsx
+│   │   │   │   │   │   │   │   │   │       ├── layout.tsx
+│   │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── labellisation
 │   │   │   │   │   │   │   │   │   │   ├── @tabs
 │   │   │   │   │   │   │   │   │   │   │   ├── criteres
@@ -377,6 +384,8 @@
 │   │   │   │   │   │   │   ├── _components
 │   │   │   │   │   │   │   │   ├── accueil.page.tsx
 │   │   │   │   │   │   │   │   └── section.card.tsx
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── affichage-referentiels
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modifier
@@ -520,6 +529,7 @@
 │   │   │   │   │   │   │   ├── code-region.field.tsx
 │   │   │   │   │   │   │   ├── collectivite-type.field.tsx
 │   │   │   │   │   │   │   ├── modifier-collectivite.page.tsx
+│   │   │   │   │   │   │   ├── nic.field.tsx
 │   │   │   │   │   │   │   ├── siren.field.tsx
 │   │   │   │   │   │   │   ├── use-find-collectivite.ts
 │   │   │   │   │   │   │   ├── use-get-additional-information-collectivite.ts
@@ -691,7 +701,6 @@
 │   │   │   │   │       │   │   │   ├── Notes.tsx
 │   │   │   │   │       │   │   │   └── components
 │   │   │   │   │       │   │   │       ├── acteurs.tsx
-│   │   │   │   │       │   │   │       ├── calendrier.tsx
 │   │   │   │   │       │   │   │       └── header
 │   │   │   │   │       │   │   │           ├── chemins.tsx
 │   │   │   │   │       │   │   │           ├── index.ts
@@ -952,6 +961,9 @@
 │   │   │   │   │   └── data
 │   │   │   │   │       ├── fetchCollectivitePanierInfo.ts
 │   │   │   │   │       └── useGetCollectivitePanierInfo.ts
+│   │   │   │   ├── preferences
+│   │   │   │   │   ├── affichage-referentiels.page.tsx
+│   │   │   │   │   └── use-update-collectivite-preferences.ts
 │   │   │   │   └── tags
 │   │   │   │       └── use-list-personne-tags.ts
 │   │   │   ├── indicateurs
@@ -1102,18 +1114,6 @@
 │   │   │   │   │   │   │   │   ├── DocumentPicto.tsx
 │   │   │   │   │   │   │   │   ├── ModaleAjoutDocument.tsx
 │   │   │   │   │   │   │   │   └── documents.view.tsx
-│   │   │   │   │   │   │   ├── etapes
-│   │   │   │   │   │   │   │   ├── etape
-│   │   │   │   │   │   │   │   │   ├── etape.tsx
-│   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   ├── modal-delete-etape.tsx
-│   │   │   │   │   │   │   │   │   ├── textarea.tsx
-│   │   │   │   │   │   │   │   │   ├── use-delete-etape.ts
-│   │   │   │   │   │   │   │   │   └── use-upsert-etape.ts
-│   │   │   │   │   │   │   │   ├── etapes-context.tsx
-│   │   │   │   │   │   │   │   ├── etapes-list.tsx
-│   │   │   │   │   │   │   │   ├── etapes.view.tsx
-│   │   │   │   │   │   │   │   └── use-get-etapes.ts
 │   │   │   │   │   │   │   ├── indicateurs
 │   │   │   │   │   │   │   │   ├── create-indicateur.modal.tsx
 │   │   │   │   │   │   │   │   ├── empty-view
@@ -1193,7 +1193,8 @@
 │   │   │   │   │   │   │   │   ├── use-fiche-financeurs.ts
 │   │   │   │   │   │   │   │   ├── use-fiche-indicateurs.ts
 │   │   │   │   │   │   │   │   ├── use-fiche-mesure.ts
-│   │   │   │   │   │   │   │   └── use-fiche-notes.ts
+│   │   │   │   │   │   │   │   ├── use-fiche-notes.ts
+│   │   │   │   │   │   │   │   └── use-fiche-sous-actions.ts
 │   │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-create-instance-gouvernance-tag.ts
@@ -1263,7 +1264,6 @@
 │   │   │   │   │   │   │   │   │       │   ├── Notes.tsx
 │   │   │   │   │   │   │   │   │       │   └── components
 │   │   │   │   │   │   │   │   │       │       ├── acteurs.tsx
-│   │   │   │   │   │   │   │   │       │       ├── calendrier.tsx
 │   │   │   │   │   │   │   │   │       │       └── header
 │   │   │   │   │   │   │   │   │       │           ├── chemins.tsx
 │   │   │   │   │   │   │   │   │       │           ├── index.ts
@@ -1475,6 +1475,7 @@
 │   │   │   │   │   ├── action-context.tsx
 │   │   │   │   │   ├── action-documents.download-button.tsx
 │   │   │   │   │   ├── action-edit.modal.tsx
+│   │   │   │   │   ├── action-label.constants.ts
 │   │   │   │   │   ├── action-preuve.panel.lazy.tsx
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
 │   │   │   │   │   ├── action-preuve.panel.tsx
@@ -1549,10 +1550,11 @@
 │   │   │   │   │   ├── updateSnapshotName
 │   │   │   │   │   │   ├── update-snapshot-name.button.tsx
 │   │   │   │   │   │   └── update-snapshot-name.modal.tsx
-│   │   │   │   │   ├── use-is-score-indicatif-enabled.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── definitions
 │   │   │   │   │   └── use-get-referentiel-definition.ts
+│   │   │   │   ├── display-preferences
+│   │   │   │   │   └── use-reset-display-preferences.ts
 │   │   │   │   ├── labellisations
 │   │   │   │   │   ├── AddDocsButton.tsx
 │   │   │   │   │   ├── CritereCompletude.tsx
@@ -1582,7 +1584,6 @@
 │   │   │   │   │   ├── useLabellisationParcours.ts
 │   │   │   │   │   ├── useStartAudit.ts
 │   │   │   │   │   └── useValidateAudit.ts
-│   │   │   │   ├── litterals.ts
 │   │   │   │   ├── personnalisations
 │   │   │   │   │   ├── PersoPotentielModal
 │   │   │   │   │   │   ├── Justification.tsx
@@ -1687,6 +1688,7 @@
 │   │   │   │   │   ├── useProgressionReferentiel.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── use-action-commentaire.ts
+│   │   │   │   ├── use-referentiel-te-enabled.ts
 │   │   │   │   ├── use-snapshot.tsx
 │   │   │   │   ├── use-sub-action-definitions.ts
 │   │   │   │   └── utils.ts
@@ -1900,6 +1902,7 @@
 │   │   │   │   │   │   │   │   └── make-role-edition-actions-indicateurs-nav.ts
 │   │   │   │   │   │   │   └── make-main-nav.ts
 │   │   │   │   │   │   └── make-secondary-nav.ts
+│   │   │   │   │   ├── offline-alert.tsx
 │   │   │   │   │   └── side-panel
 │   │   │   │   │       ├── side-panel.context.tsx
 │   │   │   │   │       └── side-panel.tsx
@@ -1999,6 +2002,8 @@
 │   │   │       ├── nps
 │   │   │       │   ├── nps-tracker.tsx
 │   │   │       │   └── use-nps-related-events-tracker.tsx
+│   │   │       ├── posthog
+│   │   │       │   └── use-is-feature-flag-enabled.ts
 │   │   │       ├── react-query
 │   │   │       │   └── use-mutation-cache-subscriber.tsx
 │   │   │       ├── scroll-reset.tsx
@@ -2070,6 +2075,7 @@
 │   │   │   │   ├── MailSend.tsx
 │   │   │   │   ├── MailSendMessage.tsx
 │   │   │   │   ├── ResetPassword.tsx
+│   │   │   │   ├── WarningStep2Message.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── type.ts
 │   │   │   │   └── useFormState.tsx
@@ -2087,7 +2093,6 @@
 │   │   │   │   ├── Signup.tsx
 │   │   │   │   ├── SignupModal.tsx
 │   │   │   │   ├── SignupStep1.tsx
-│   │   │   │   ├── SignupStep2.tsx
 │   │   │   │   ├── SignupStep3.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   └── type.ts
@@ -2136,6 +2141,12 @@
 │   │   │   │   │   └── collectivite-crud.service.ts
 │   │   │   │   ├── collectivite-id.column.ts
 │   │   │   │   ├── collectivite-id.input.ts
+│   │   │   │   ├── collectivite-preferences
+│   │   │   │   │   ├── collectivite-preferences.errors.ts
+│   │   │   │   │   ├── collectivite-preferences.repository.ts
+│   │   │   │   │   ├── collectivite-preferences.router.e2e-spec.ts
+│   │   │   │   │   ├── collectivite-preferences.router.ts
+│   │   │   │   │   └── collectivite-preferences.service.ts
 │   │   │   │   ├── collectivite.controller.spec.ts
 │   │   │   │   ├── collectivite.controller.ts
 │   │   │   │   ├── collectivites
@@ -2260,7 +2271,11 @@
 │   │   │   │   │   │   ├── import-personnalisation-question.controller.ts
 │   │   │   │   │   │   ├── import-personnalisation-question.dto.ts
 │   │   │   │   │   │   ├── import-personnalisation-question.service.spec.ts
-│   │   │   │   │   │   └── import-personnalisation-question.service.ts
+│   │   │   │   │   │   ├── import-personnalisation-question.service.ts
+│   │   │   │   │   │   └── samples
+│   │   │   │   │   │       ├── import-personnalisation-choices.csv
+│   │   │   │   │   │       ├── import-personnalisation-questions.csv
+│   │   │   │   │   │       └── import-personnalisation-thematiques.csv
 │   │   │   │   │   ├── list-personnalisation-questions
 │   │   │   │   │   │   └── list-personnalisation-questions.service.ts
 │   │   │   │   │   ├── models
@@ -2289,6 +2304,8 @@
 │   │   │   │   │   ├── personnalisations.router.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── generated-diagrams.html
+│   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.spec.ts
+│   │   │   │   │   │   ├── personnalisation-expression-reference-extractor.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.spec.ts
 │   │   │   │   │   │   ├── personnalisations-expression.service.ts
 │   │   │   │   │   │   └── personnalisations-service.ts
@@ -2391,7 +2408,9 @@
 │   │   │   │   │   ├── import-indicateur-definition.service.ts
 │   │   │   │   │   ├── import-indicateur-objectif.dto.ts
 │   │   │   │   │   └── samples
-│   │   │   │   │       └── import-indicateur-definition.sample.ts
+│   │   │   │   │       ├── import-indicateur-definition.sample.ts
+│   │   │   │   │       ├── import-indicateur-definitions.csv
+│   │   │   │   │       └── import-indicateur-objectifs.csv
 │   │   │   │   ├── indicateurs
 │   │   │   │   │   ├── export-indicateurs
 │   │   │   │   │   │   ├── export-indicateurs.controller.e2e-spec.ts
@@ -2610,6 +2629,13 @@
 │   │   │   │   │   │   ├── list-fiches.router.e2e-spec.ts
 │   │   │   │   │   │   ├── list-fiches.router.ts
 │   │   │   │   │   │   └── list-fiches.service.ts
+│   │   │   │   │   ├── migrations
+│   │   │   │   │   │   ├── fix-sous-actions-ordering
+│   │   │   │   │   │   │   ├── fix-sous-actions-ordering.spec.ts
+│   │   │   │   │   │   │   └── fix-sous-actions-ordering.ts
+│   │   │   │   │   │   └── migrate-etapes-to-sous-actions
+│   │   │   │   │   │       ├── migrate-etapes-to-sous-actions.e2e-spec.ts
+│   │   │   │   │   │       └── migrate-etapes-to-sous-actions.ts
 │   │   │   │   │   ├── notify-pilote
 │   │   │   │   │   │   ├── notify-pilote-multi-fiches.email.tsx
 │   │   │   │   │   │   ├── notify-pilote-multi-fiches.props.ts
@@ -2684,6 +2710,7 @@
 │   │   │   │   │   │   └── compute-budget.rules.ts
 │   │   │   │   │   ├── create-plan-aggregate
 │   │   │   │   │   │   ├── create-plan-aggregate.errors.ts
+│   │   │   │   │   │   ├── create-plan-aggregate.rule.spec.ts
 │   │   │   │   │   │   ├── create-plan-aggregate.rule.ts
 │   │   │   │   │   │   ├── create-plan-aggregate.service.spec.ts
 │   │   │   │   │   │   ├── create-plan-aggregate.service.ts
@@ -2718,10 +2745,13 @@
 │   │   │   │   │   │   │   ├── plan_budget_issue.xlsx
 │   │   │   │   │   │   │   ├── plan_column_order_issue.xlsx
 │   │   │   │   │   │   │   ├── plan_sans_axes.xlsx
-│   │   │   │   │   │   │   └── plan_with_fiche_with_and_without_axe.xlsx
+│   │   │   │   │   │   │   ├── plan_with_duplicate_actions.xlsx
+│   │   │   │   │   │   │   ├── plan_with_fiche_with_and_without_axe.xlsx
+│   │   │   │   │   │   │   ├── plan_with_sous_actions.xlsx
+│   │   │   │   │   │   │   └── plan_with_sous_actions_valid.xlsx
 │   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── import-fiche-input-to-update-fiche-input.spec.ts
-│   │   │   │   │   │   │   ├── import-fiche-input-to-update-fiche-input.ts
+│   │   │   │   │   │   │   ├── import-action-input-to-update-fiche-input.spec.ts
+│   │   │   │   │   │   │   ├── import-action-input-to-update-fiche-input.ts
 │   │   │   │   │   │   │   ├── import-plan-input-to-create-plan-aggregate-input.spec.ts
 │   │   │   │   │   │   │   └── import-plan-input-to-create-plan-aggregate-input.ts
 │   │   │   │   │   │   ├── factories
@@ -2745,14 +2775,14 @@
 │   │   │   │   │   │   │   ├── tag.resolver.spec.ts
 │   │   │   │   │   │   │   └── tag.resolver.ts
 │   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   └── import-fiche.input.ts
+│   │   │   │   │   │   │   └── import-action.input.ts
 │   │   │   │   │   │   ├── utils
 │   │   │   │   │   │   │   ├── deduplication.utils.ts
 │   │   │   │   │   │   │   ├── rich-text.utils.spec.ts
 │   │   │   │   │   │   │   └── rich-text.utils.ts
 │   │   │   │   │   │   └── validators
-│   │   │   │   │   │       ├── fiche.validator.spec.ts
-│   │   │   │   │   │       ├── fiche.validator.ts
+│   │   │   │   │   │       ├── action.validator.spec.ts
+│   │   │   │   │   │       ├── action.validator.ts
 │   │   │   │   │   │       ├── plan.rule.spec.ts
 │   │   │   │   │   │       └── plan.rule.ts
 │   │   │   │   │   ├── list-plans
@@ -2839,7 +2869,6 @@
 │   │   │   │   │   ├── build-rows.ts
 │   │   │   │   │   ├── export-score-comparison.controller.e2e-spec.ts
 │   │   │   │   │   ├── export-score-comparison.controller.ts
-│   │   │   │   │   ├── export-score-comparison.request.ts
 │   │   │   │   │   ├── export-score-comparison.service.ts
 │   │   │   │   │   └── load-score-comparison.service.ts
 │   │   │   │   ├── get-referentiel
@@ -2861,9 +2890,21 @@
 │   │   │   │   │   ├── import-action-definition.dto.ts
 │   │   │   │   │   ├── import-referentiel.controller.e2e-spec.ts
 │   │   │   │   │   ├── import-referentiel.controller.ts
+│   │   │   │   │   ├── import-referentiel.repository.e2e-spec.ts
+│   │   │   │   │   ├── import-referentiel.repository.ts
 │   │   │   │   │   ├── import-referentiel.service.e2e-spec.ts
 │   │   │   │   │   ├── import-referentiel.service.spec.ts
-│   │   │   │   │   └── import-referentiel.service.ts
+│   │   │   │   │   ├── import-referentiel.service.ts
+│   │   │   │   │   ├── samples
+│   │   │   │   │   │   ├── referentiel-cae-preuves.csv
+│   │   │   │   │   │   ├── referentiel-cae-structure.csv
+│   │   │   │   │   │   ├── referentiel-eci-preuves.csv
+│   │   │   │   │   │   ├── referentiel-eci-structure.csv
+│   │   │   │   │   │   ├── referentiel-te-preuves.csv
+│   │   │   │   │   │   └── referentiel-te-structure.csv
+│   │   │   │   │   ├── verify-referentiel-expressions.spec.ts
+│   │   │   │   │   ├── verify-referentiel-expressions.ts
+│   │   │   │   │   └── verify-referentiel-expressions.types.ts
 │   │   │   │   ├── labellisations
 │   │   │   │   │   ├── audit.table.ts
 │   │   │   │   │   ├── auditeur.table.ts
@@ -2871,6 +2912,7 @@
 │   │   │   │   │   ├── create-preuve
 │   │   │   │   │   │   ├── create-labellisation-preuve.errors.ts
 │   │   │   │   │   │   ├── create-labellisation-preuve.input.ts
+│   │   │   │   │   │   ├── create-preuve.router.e2e-spec.ts
 │   │   │   │   │   │   ├── create-preuve.router.ts
 │   │   │   │   │   │   ├── create-preuve.service.ts
 │   │   │   │   │   │   └── create-preuve.test-fixture.ts
@@ -2969,6 +3011,12 @@
 │   │   │   │   ├── referentiels.module.ts
 │   │   │   │   ├── referentiels.router.ts
 │   │   │   │   ├── referentiels.test-fixture.ts
+│   │   │   │   ├── reset-display-preferences
+│   │   │   │   │   ├── compute-referentiel-display.rules.spec.ts
+│   │   │   │   │   ├── compute-referentiel-display.rules.ts
+│   │   │   │   │   ├── reset-display-preferences.router.e2e-spec.ts
+│   │   │   │   │   ├── reset-display-preferences.router.ts
+│   │   │   │   │   └── reset-display-preferences.service.ts
 │   │   │   │   ├── score-indicatif
 │   │   │   │   │   ├── format-score-indicatif.utils.ts
 │   │   │   │   │   ├── get-score-indicatif.request.ts
@@ -2995,6 +3043,7 @@
 │   │   │   │   │   ├── snapshots.utils.ts
 │   │   │   │   │   └── upsert-snapshot.input.ts
 │   │   │   │   ├── update-action-commentaire
+│   │   │   │   │   ├── update-action-commentaire-historique.repository.ts
 │   │   │   │   │   ├── update-action-commentaire.errors.ts
 │   │   │   │   │   ├── update-action-commentaire.router.e2e-spec.ts
 │   │   │   │   │   ├── update-action-commentaire.router.ts
@@ -3003,6 +3052,7 @@
 │   │   │   │       ├── can-update-action-statut.rules.spec.ts
 │   │   │   │       ├── get-action-status-create-to-complete-referentiel.spec.ts
 │   │   │   │       ├── referentiel-action-statut.test-fixture.ts
+│   │   │   │       ├── update-action-statut-historique.repository.ts
 │   │   │   │       ├── update-action-statut.router.e2e-spec.ts
 │   │   │   │       ├── update-action-statut.router.ts
 │   │   │   │       └── update-action-statut.service.ts
@@ -3151,6 +3201,7 @@
 │   │   │       ├── excel
 │   │   │       │   └── export-excel.utils.ts
 │   │   │       ├── expression-parser
+│   │   │       │   ├── evaluate-identite.ts
 │   │   │       │   ├── expression-parser.spec.ts
 │   │   │       │   ├── expression-parser.ts
 │   │   │       │   ├── expression-visitor.ts
@@ -3237,6 +3288,7 @@
 │   │   │   ├── app-utils.ts
 │   │   │   ├── auth-utils.ts
 │   │   │   ├── collectivites-utils.ts
+│   │   │   ├── csv-utils.ts
 │   │   │   ├── index.ts
 │   │   │   ├── indicateurs-utils.ts
 │   │   │   ├── test-users.samples.ts
@@ -3350,13 +3402,6 @@
 │   │   ├── Earthfile
 │   │   ├── README.md
 │   │   ├── app
-│   │   │   ├── Accompagnement.tsx
-│   │   │   ├── AccueilBanner.tsx
-│   │   │   ├── Communaute.tsx
-│   │   │   ├── DemandeContact.tsx
-│   │   │   ├── Newsletter.tsx
-│   │   │   ├── Objectifs.tsx
-│   │   │   ├── Temoignages.tsx
 │   │   │   ├── accessibilite
 │   │   │   │   ├── AccessibiliteContent.tsx
 │   │   │   │   └── page.tsx
@@ -3374,7 +3419,6 @@
 │   │   │   │   └── utils.ts
 │   │   │   ├── budget
 │   │   │   │   ├── BudgetConsomme.tsx
-│   │   │   │   ├── ChiffresClefs.tsx
 │   │   │   │   ├── DescriptionCouts.tsx
 │   │   │   │   ├── Fonctionnement.tsx
 │   │   │   │   ├── InfoTva.tsx
@@ -3416,6 +3460,20 @@
 │   │   │   │   ├── ListeQuestions.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── global.css
+│   │   │   ├── home
+│   │   │   │   ├── AccueilHeroSection.tsx
+│   │   │   │   ├── BeneficesPlateforme.tsx
+│   │   │   │   ├── ConstructionPlateforme.tsx
+│   │   │   │   ├── DemandeContact.tsx
+│   │   │   │   ├── HomeCTA.tsx
+│   │   │   │   ├── HomeCTA2.tsx
+│   │   │   │   ├── NosServices.tsx
+│   │   │   │   ├── Partenaires.tsx
+│   │   │   │   ├── StatsHeroSection.tsx
+│   │   │   │   ├── Temoignages.tsx
+│   │   │   │   ├── getStatsHeroSectionSite.ts
+│   │   │   │   ├── home.page.tsx
+│   │   │   │   └── utils.ts
 │   │   │   ├── initSupabase.ts
 │   │   │   ├── layout.tsx
 │   │   │   ├── legal
@@ -3441,7 +3499,10 @@
 │   │   │   │   ├── Compte.tsx
 │   │   │   │   ├── Contact.tsx
 │   │   │   │   ├── Etapes.tsx
+│   │   │   │   ├── Newsletter.tsx
+│   │   │   │   ├── Objectifs.tsx
 │   │   │   │   ├── ProgrammeBanner.tsx
+│   │   │   │   ├── ProgrammeHeroSection.tsx
 │   │   │   │   ├── Services.tsx
 │   │   │   │   ├── [uid]
 │   │   │   │   │   ├── InfoService.tsx
@@ -3464,35 +3525,8 @@
 │   │   │   ├── ressources
 │   │   │   │   └── page.tsx
 │   │   │   ├── stats
-│   │   │   │   ├── ActiveUsers.tsx
-│   │   │   │   ├── CarteEpciParDepartement.tsx
-│   │   │   │   ├── CollectiviteActivesEtTotalParType.tsx
-│   │   │   │   ├── CollectivitesLabellisees.tsx
-│   │   │   │   ├── EtatDesLieux.tsx
-│   │   │   │   ├── EvolutionCollectivitesLabellisees.tsx
-│   │   │   │   ├── EvolutionFiches.tsx
-│   │   │   │   ├── EvolutionIndicateurs.tsx
-│   │   │   │   ├── EvolutionPlansAction.tsx
-│   │   │   │   ├── EvolutionTotalActivationParType.tsx
-│   │   │   │   ├── IndicateursRenseignes.tsx
-│   │   │   │   ├── NombreCollectivitesEngagees.tsx
-│   │   │   │   ├── NombreUtilisateurParCollectivite.tsx
-│   │   │   │   ├── RegionAndDeptFilters.tsx
-│   │   │   │   ├── StatisticsDisplay.tsx
-│   │   │   │   ├── TrancheCompletude.tsx
-│   │   │   │   ├── ValeursIndicateursPersoRenseignees.tsx
-│   │   │   │   ├── ValeursIndicateursRenseignees.tsx
-│   │   │   │   ├── departement
-│   │   │   │   │   └── [departmentCode]
-│   │   │   │   │       └── page.tsx
-│   │   │   │   ├── headings.tsx
-│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   ├── region
-│   │   │   │   │   └── [regionCode]
-│   │   │   │   │       └── page.tsx
-│   │   │   │   ├── shared.ts
-│   │   │   │   └── utils.tsx
+│   │   │   │   └── streamlit.utils.ts
 │   │   │   ├── trajectoire
 │   │   │   │   ├── Calcul.tsx
 │   │   │   │   ├── Documentation.tsx
@@ -3504,11 +3538,12 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── utils.ts
 │   │   │   ├── types.ts
-│   │   │   ├── useFilteredCollectivites.ts
-│   │   │   └── utils.ts
+│   │   │   └── useFilteredCollectivites.ts
 │   │   ├── components
 │   │   │   ├── buttons
-│   │   │   │   └── ButtonsList.tsx
+│   │   │   │   ├── ButtonsList.tsx
+│   │   │   │   ├── book-demo.button.tsx
+│   │   │   │   └── create-account.button.tsx
 │   │   │   ├── cards
 │   │   │   │   ├── BlogCard.tsx
 │   │   │   │   ├── BlogCardContent.tsx
@@ -3559,7 +3594,8 @@
 │   │   │   │   └── ReactIcon.tsx
 │   │   │   ├── sections
 │   │   │   │   ├── CardsSection.tsx
-│   │   │   │   └── Section.tsx
+│   │   │   │   ├── Section.tsx
+│   │   │   │   └── TitreSection.tsx
 │   │   │   ├── slideshow
 │   │   │   │   ├── Slideshow.tsx
 │   │   │   │   └── TestimonialSlideshow.tsx
@@ -3574,7 +3610,8 @@
 │   │   ├── package.json
 │   │   ├── postcss.config.js
 │   │   ├── providers
-│   │   │   └── posthog.tsx
+│   │   │   ├── posthog.tsx
+│   │   │   └── root-providers.tsx
 │   │   ├── proxy.ts
 │   │   ├── public
 │   │   │   ├── accessibilite.md
@@ -3805,6 +3842,10 @@
 │   │   │   │   └── trajectoire
 │   │   │   │       ├── ADEME-Methodo-Outil-trajectoire-reference_VF_Nov2024.pdf
 │   │   │   │       └── Trajectoire-GES-de-reference-V1-1-20240905.xlsx
+│   │   │   ├── partenaires
+│   │   │   │   ├── anct.svg
+│   │   │   │   ├── logo-betagouvfr.svg
+│   │   │   │   └── ministeres-te.svg
 │   │   │   ├── pictogrammes
 │   │   │   │   ├── AstronautCat.tsx
 │   │   │   │   ├── CalendarPicto.tsx
@@ -3813,12 +3854,25 @@
 │   │   │   │   ├── DocumentPicto.tsx
 │   │   │   │   ├── InformationPicto.tsx
 │   │   │   │   ├── PictoBackground.tsx
-│   │   │   │   └── PictoWithBackground.tsx
+│   │   │   │   ├── PictoWithBackground.tsx
+│   │   │   │   ├── code.svg
+│   │   │   │   ├── dashboard.svg
+│   │   │   │   ├── data-visualization.svg
+│   │   │   │   ├── data.svg
+│   │   │   │   ├── equipe.svg
+│   │   │   │   ├── fiches-action.svg
+│   │   │   │   ├── formation.svg
+│   │   │   │   ├── france.svg
+│   │   │   │   ├── human-cooperation.svg
+│   │   │   │   ├── plateforme-numerique.svg
+│   │   │   │   ├── programme.svg
+│   │   │   │   └── support.svg
 │   │   │   ├── placeholder.svg
 │   │   │   ├── programme
 │   │   │   │   ├── TETE_Referentiel_Climat_Air_Energie_2024.pdf
 │   │   │   │   └── TETE_Referentiel_Economie_Circulaire_2024.pdf
-│   │   │   └── territoire-engage.jpg
+│   │   │   ├── territoire-engage.jpg
+│   │   │   └── visuel-plateforme.png
 │   │   ├── src
 │   │   │   ├── strapi
 │   │   │   │   ├── StrapiItem.ts
@@ -3943,9 +3997,7 @@
 │       │       │   ├── AbstractEntityMapper.ts
 │       │       │   └── communs
 │       │       │       ├── client
-│       │       │       │   ├── client.gen.ts
 │       │       │       │   ├── index.ts
-│       │       │       │   ├── sdk.gen.ts
 │       │       │       │   └── types.gen.ts
 │       │       │       ├── communs-fiche-action.mapper.spec.ts
 │       │       │       ├── communs-fiche-action.mapper.ts
@@ -3960,6 +4012,9 @@
 ├── data_layer
 │   ├── .gitignore
 │   ├── README.md
+│   ├── backup
+│   │   ├── backup.sh
+│   │   └── restore.sh
 │   ├── pgsync
 │   │   ├── .pgsync.yml
 │   │   ├── README.md
@@ -4091,6 +4146,7 @@
 │   │   │   │   ├── imports@v4.9.0.sql
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
+│   │   │   │   ├── preferences.sql
 │   │   │   │   ├── region.sql
 │   │   │   │   ├── region@v2.55.0.sql
 │   │   │   │   ├── remove-create-collectivite-triggers.sql
@@ -4104,7 +4160,8 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   └── type_add_prefectures.sql
+│   │   │   │   ├── type_add_prefectures.sql
+│   │   │   │   └── type_add_service_public.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4283,6 +4340,9 @@
 │   │   │   │   ├── preuve_*.sql  (10 files)
 │   │   │   │   ├── schema.sql
 │   │   │   │   └── suivi_audit.sql
+│   │   │   ├── migrate_calendrier_to_description.sql
+│   │   │   ├── migration
+│   │   │   │   └── etape_to_sous_action.sql
 │   │   │   ├── migration_schema.sql
 │   │   │   ├── notes_complementaires_column_deletion.sql
 │   │   │   ├── notifications
@@ -4388,6 +4448,7 @@
 │   │   │   │   ├── contenu.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
+│   │   │   │   ├── drop-action-historique-triggers.sql
 │   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
@@ -4449,6 +4510,7 @@
 │   │   │   │   ├── collectivite@v1.7.1.sql
 │   │   │   │   ├── completude.sql
 │   │   │   │   ├── completude@v1.20.0.sql
+│   │   │   │   ├── drop-old-stats-views.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fonctionalite.sql
 │   │   │   │   ├── geojson.sql
@@ -4610,6 +4672,7 @@
 │   │   │   │   ├── imports@v4.9.0.sql
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
+│   │   │   │   ├── preferences.sql
 │   │   │   │   ├── region.sql
 │   │   │   │   ├── region@v2.55.0.sql
 │   │   │   │   ├── remove-create-collectivite-triggers.sql
@@ -4624,7 +4687,8 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   └── type_add_prefectures.sql
+│   │   │   │   ├── type_add_prefectures.sql
+│   │   │   │   └── type_add_service_public.sql
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -4803,6 +4867,9 @@
 │   │   │   │   ├── preuve_*.sql  (10 files)
 │   │   │   │   ├── schema.sql
 │   │   │   │   └── suivi_audit.sql
+│   │   │   ├── migrate_calendrier_to_description.sql
+│   │   │   ├── migration
+│   │   │   │   └── etape_to_sous_action.sql
 │   │   │   ├── migration_schema.sql
 │   │   │   ├── notes_complementaires_column_deletion.sql
 │   │   │   ├── notifications
@@ -4908,6 +4975,7 @@
 │   │   │   │   ├── contenu.sql
 │   │   │   │   ├── contenu_json.sql
 │   │   │   │   ├── contenu_json@v1.15.0.sql
+│   │   │   │   ├── drop-action-historique-triggers.sql
 │   │   │   │   ├── historique_modified_by.sql
 │   │   │   │   ├── justification_ajustement.sql
 │   │   │   │   ├── justification_ajustement@v4.38.0.sql
@@ -4969,6 +5037,7 @@
 │   │   │   │   ├── collectivite@v1.7.1.sql
 │   │   │   │   ├── completude.sql
 │   │   │   │   ├── completude@v1.20.0.sql
+│   │   │   │   ├── drop-old-stats-views.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fonctionalite.sql
 │   │   │   │   ├── geojson.sql
@@ -5131,6 +5200,7 @@
 │   │       │   ├── imports@v4.9.0.sql
 │   │       │   ├── mes_*.sql  (8 files)
 │   │       │   ├── nic.sql
+│   │       │   ├── preferences.sql
 │   │       │   ├── region.sql
 │   │       │   ├── region@v2.55.0.sql
 │   │       │   ├── remove-create-collectivite-triggers.sql
@@ -5143,7 +5213,8 @@
 │   │       │   ├── toutes_les_collectivites.sql
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
-│   │       │   └── type.sql
+│   │       │   ├── type.sql
+│   │       │   └── type_add_service_public.sql
 │   │       ├── creation_dune_table_instance_de_gouvernance.sql
 │   │       ├── cron
 │   │       │   ├── cron.sql
@@ -5322,6 +5393,9 @@
 │   │       │   ├── preuve_*.sql  (10 files)
 │   │       │   ├── schema.sql
 │   │       │   └── suivi_audit.sql
+│   │       ├── migrate_calendrier_to_description.sql
+│   │       ├── migration
+│   │       │   └── etape_to_sous_action.sql
 │   │       ├── migration_schema.sql
 │   │       ├── notes_complementaires_column_deletion.sql
 │   │       ├── notifications
@@ -5427,6 +5501,7 @@
 │   │       │   ├── contenu.sql
 │   │       │   ├── contenu_json.sql
 │   │       │   ├── contenu_json@v1.15.0.sql
+│   │       │   ├── drop-action-historique-triggers.sql
 │   │       │   ├── historique_modified_by.sql
 │   │       │   ├── justification_ajustement.sql
 │   │       │   ├── justification_ajustement@v4.38.0.sql
@@ -5488,6 +5563,7 @@
 │   │       │   ├── collectivite@v1.7.1.sql
 │   │       │   ├── completude.sql
 │   │       │   ├── completude@v1.20.0.sql
+│   │       │   ├── drop-old-stats-views.sql
 │   │       │   ├── export.sql
 │   │       │   ├── fonctionalite.sql
 │   │       │   ├── geojson.sql
@@ -5639,28 +5715,33 @@
 │       └── utils
 │           ├── merge_action_commentaire.sql
 │           ├── modified_at_trigger.sql
-│           ├── move_action_data.sql
 │           └── test.sql
 ├── doc
 │   ├── README.md
-│   └── adr
-│       ├── 0001-record-architecture-decisions.md
-│       ├── 0002-nx-monorepo.md
-│       ├── 0003-conventions-de-code.md
-│       ├── 0004-trpc.md
-│       ├── 0005-bibliotheque-graphes.md
-│       ├── 0006-plateforme-background-jobs.md
-│       ├── 0007-api et gestion des api keys.md
-│       ├── 0008-generation-pdf.md
-│       ├── 0009-site-public-administrable.md
-│       ├── 0010-ci.md
-│       ├── 0011-architecture-service-ddd.md
-│       ├── 0011-editeur-texte-enrichi.md
-│       ├── 0012-pattern-result.md
-│       ├── 0012-sous-actions.md
-│       ├── 0013-tests-e2e.md
-│       ├── 0014-notifications-email.md
-│       └── 0015-generation-pptx.md
+│   ├── adr
+│   │   ├── 0001-record-architecture-decisions.md
+│   │   ├── 0002-nx-monorepo.md
+│   │   ├── 0003-conventions-de-code.md
+│   │   ├── 0004-trpc.md
+│   │   ├── 0005-bibliotheque-graphes.md
+│   │   ├── 0006-plateforme-background-jobs.md
+│   │   ├── 0007-api et gestion des api keys.md
+│   │   ├── 0008-generation-pdf.md
+│   │   ├── 0009-site-public-administrable.md
+│   │   ├── 0010-ci.md
+│   │   ├── 0011-architecture-service-ddd.md
+│   │   ├── 0011-editeur-texte-enrichi.md
+│   │   ├── 0012-pattern-result.md
+│   │   ├── 0012-sous-actions.md
+│   │   ├── 0013-tests-e2e.md
+│   │   ├── 0014-notifications-email.md
+│   │   └── 0015-generation-pptx.md
+│   └── solutions
+│       ├── architecture-patterns
+│       │   └── extract-history-repository-from-service.md
+│       └── database-issues
+│           └── select-for-update-race-condition-drizzle-orm.md
+├── docs -> /Users/gaelservaud/Documents/Code/compound-knowledge-db/docs
 ├── e2e
 │   ├── .env.default
 │   ├── README.md
@@ -5682,6 +5763,8 @@
 │   │   │   │   ├── invite-membre.pom.ts
 │   │   │   │   ├── invite-membre.spec.ts
 │   │   │   │   └── list-membres.spec.ts
+│   │   │   ├── preferences-referentiels
+│   │   │   │   └── preferences-referentiels.spec.ts
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── indicateurs
@@ -5693,11 +5776,13 @@
 │   │   │   │   └── edit-axes.spec.ts
 │   │   │   ├── fiches
 │   │   │   │   ├── fiches.fixture.ts
-│   │   │   │   └── list-fiches
-│   │   │   │       ├── fiche-card.pom.ts
-│   │   │   │       ├── filter-fiches.pom.ts
-│   │   │   │       ├── list-fiches-filter.spec.ts
-│   │   │   │       └── list-fiches.pom.ts
+│   │   │   │   ├── list-fiches
+│   │   │   │   │   ├── fiche-card.pom.ts
+│   │   │   │   │   ├── filter-fiches.pom.ts
+│   │   │   │   │   ├── list-fiches-filter.spec.ts
+│   │   │   │   │   └── list-fiches.pom.ts
+│   │   │   │   └── show-fiche
+│   │   │   │       └── lecteur-readonly-description.spec.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
 │   │   │       │   ├── create-plan.pom.ts
@@ -5715,7 +5800,9 @@
 │   │   │   │   └── validate-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
 │   │   │   └── scores
+│   │   │       ├── action-access-rights.spec.ts
 │   │   │       ├── create-update-document.spec.ts
+│   │   │       ├── hash-navigation.spec.ts
 │   │   │       ├── referentiel-scores.pom.ts
 │   │   │       └── update-action-statut.spec.ts
 │   │   ├── shared
@@ -5951,6 +6038,7 @@
 │   │   │   ├── collectivites
 │   │   │   │   ├── categorie-tag.schema.ts
 │   │   │   │   ├── collectivite-banatic-type.enum.ts
+│   │   │   │   ├── collectivite-preferences.schema.ts
 │   │   │   │   ├── collectivite-relation.schema.ts
 │   │   │   │   ├── collectivite-type.enum.ts
 │   │   │   │   ├── collectivite.schema.ts
@@ -6107,6 +6195,7 @@
 │   │   │   │       ├── action-with-score.schema.ts
 │   │   │   │       ├── can-update-action-statut.rules-errors.ts
 │   │   │   │       ├── can-update-action-statut.rules.ts
+│   │   │   │       ├── export-score-comparison.request.ts
 │   │   │   │       ├── score-compute-mode.enum.schema.ts
 │   │   │   │       ├── score-indicatif.schema.ts
 │   │   │   │       ├── score-snapshot-action-scores-payload.schema.ts
@@ -6747,4 +6836,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1194 directories, 5711 files
+1206 directories, 5788 files
