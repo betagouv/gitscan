@@ -1,35 +1,38 @@
-## Changelog : docs (30 derniers jours)
+## Changelog : docs (30 derniers jours, au 2026-04-15)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par des améliorations significatives de l'expérience utilisateur, notamment l'ajout d'un modal d'onboarding pour les nouveaux utilisateurs, des corrections de bugs liés à l'accessibilité et à l'interface, ainsi que des optimisations techniques pour améliorer la performance et la sécurité. L'intégration de nouvelles fonctionnalités, comme le déplacement de documents et l'intégration de l'IA, a également été au cœur des développements.
+Les dernières mises à jour se concentrent sur l'amélioration de l'accessibilité, la correction de bugs et l'optimisation des performances. Des améliorations significatives ont été apportées à l'accessibilité au clavier et aux lecteurs d'écran, notamment dans la recherche, les menus et les tableaux. Des corrections ont également été apportées pour résoudre des problèmes liés à la gestion des documents, aux tests et à la stabilité générale de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'un modal d'onboarding pour guider les nouveaux utilisateurs et leur présenter les fonctionnalités clés [#1868].
-- Possibilité de déplacer des documents [#1886].
-- Intégration de la fonctionnalité Blocknote AI, avec des indicateurs de statut et des options de configuration [#1847, #1922].
-- Ajout de paramètres UTM aux liens de partage de documents pour un meilleur suivi analytique [#1896].
-- Possibilité de dupliquer des sous-pages [#1893].
-- Ajout d'une barre flottante avec un bouton pour réduire le panneau latéral [#1876].
+- Ajout d'un indicateur visuel pour les résultats de recherche afin de les rendre plus facilement identifiables.
+- Amélioration de la gestion des documents : les documents épinglés sont maintenant triés par date de dernière mise à jour.
+- Possibilité d'ouvrir les liens internes avec le bouton central de la souris ou la touche Ctrl/Cmd.
+- Ajout d'un "easter egg" lors de la création d'émojis dans les documents.
+- Ajout d'un indicateur visuel pour les documents en cours de conversion.
+- Amélioration de la gestion des documents lors de la duplication.
+- Ajout d'une fonctionnalité de recherche.
 
 ### Évolutions techniques
-- Mise à jour de Next.js vers la version 16 [#1980].
-- Remplacement de `next lint` par `eslint` pour le linting du code [#1980].
-- Amélioration de la taille des bundles frontend [#1980].
-- Utilisation de `uvicorn` pour servir le backend, améliorant les performances [#1910].
-- Ajout du support de la plateforme ARM64 pour les builds Docker [#1901].
-- Refactorisation du code pour améliorer la flexibilité et la maintenabilité (HorizontalSeparator, gestion des modals).
-- Amélioration de la gestion des erreurs et des conditions de course dans le backend (création de documents sandbox, accès aux documents onboarding).
-- Mise à jour des dépendances Python et JavaScript.
-- Amélioration de la configuration des jobs CI/CD (Docker Hub, builds multi-architecture).
+- Refactorisation des tests E2E pour une meilleure organisation et compatibilité.
+- Amélioration de la gestion des erreurs 5xx avec une redirection vers une page dédiée.
+- Optimisation de la gestion des requêtes de réconciliation pour éviter les conditions de concurrence.
+- Mise à jour des dépendances : Axios, Next.js, PyJWT, Lodash et requests.
+- Ajout d'un workflow CI pour exécuter les tests E2E séparément.
+- Amélioration de la gestion de la mémoire pour le fournisseur Yjs.
+- Ajout d'un mécanisme de debounce pour la reconnexion WebSocket.
+- Suppression des paramètres UTM des URLs.
+- Ajout d'un système de gestion des ressources.
+- Ajout d'un pool de connexions PostgreSQL configurable.
 
 ### Autres changements
-- Amélioration de la documentation et ajout d'un hub de documentation [#1870].
-- Corrections de bugs d'accessibilité (navigation au clavier, focus, labels ARIA).
-- Corrections de bugs d'interface utilisateur (flickering, positionnement des éléments).
-- Ajout de tests E2E pour l'onboarding modal [#1989].
-- Ajout de traductions pour les nouvelles fonctionnalités.
-- Corrections de vulnérabilités de sécurité (CVE).
-- Ajout d'un fichier `.trivyignore` pour ignorer certaines vulnérabilités connues.
-- Amélioration de la gestion des flags de fonctionnalités (AI).
-- Optimisation de la gestion des requêtes d'accès.
-- Suppression de code obsolète (rust dans le back-builder).
+- Mise à jour de la documentation et des modèles de pull request.
+- Amélioration de la gestion des traductions.
+- Corrections de style et de linting.
+- Ajout de commentaires et de logs pour faciliter le débogage.
+- Ajout d'un favicon par défaut.
+- Mise à jour des tests pour couvrir les améliorations d'accessibilité.
+- Ajout d'une politique concernant l'utilisation de l'IA.
+- Correction de la structure des alertes d'erreur 5xx.
+- Amélioration de l'affichage des icônes dans l'arborescence des documents.
+- Suppression de la pagination pour la liste des threads.
+- Correction de bugs mineurs liés à l'interface utilisateur et au comportement de l'application.

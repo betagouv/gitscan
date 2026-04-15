@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "impress"
-version = "4.7.0"
+version = "4.8.6"
 authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -40,8 +40,9 @@ dependencies = [
     "django-storages[s3]==1.14.6",
     "django-timezone-field>=5.1",
     "django<6.0.0",
-    "django-treebeard==5.0.5",
+    "django-treebeard<5.0.0",
     "djangorestframework==3.16.1",
+    "django-waffle==5.0.0",
     "drf_spectacular==0.29.0",
     "dockerflow==2026.1.26",
     "easy_thumbnails==2.10.1",
@@ -54,14 +55,14 @@ dependencies = [
     "mozilla-django-oidc==5.0.2",
     "nested-multipart-parser==1.6.0",
     "openai==2.24.0",
-    "psycopg[binary]==3.3.3",
+    "psycopg[binary,pool]==3.3.3",
     "pycrdt==0.12.47",
     "pydantic==2.12.5",
     "pydantic-ai-slim[openai,logfire,web]==1.58.0",
-    "PyJWT==2.11.0",
+    "PyJWT==2.12.0",
     "python-magic==0.4.27",
     "redis<6.0.0",
-    "requests==2.32.5",
+    "requests==2.33.0",
     "sentry-sdk==2.53.0",
     "uvicorn==0.41.0",
     "whitenoise==6.12.0",

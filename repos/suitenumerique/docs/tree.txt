@@ -17,6 +17,7 @@
 │       ├── dependencies.yml
 │       ├── docker-hub.yml
 │       ├── docker-publish.yml
+│       ├── e2e-tests.yml
 │       ├── ghcr.yml
 │       ├── helmfile-linter.yaml
 │       ├── impress-frontend.yml
@@ -40,7 +41,7 @@
 │   ├── Tiltfile
 │   ├── _config.sh
 │   ├── compose
-│   ├── fernetkey
+│   ├── generate-oidc-store-refresh-token-key.sh
 │   ├── install-hooks.sh
 │   ├── manage
 │   ├── pylint
@@ -115,6 +116,7 @@
 │   ├── instances.md
 │   ├── languages-configuration.md
 │   ├── release.md
+│   ├── resource_server.md
 │   ├── search.md
 │   ├── system-requirements.md
 │   ├── troubleshoot.md
@@ -123,6 +125,7 @@
 │   ├── development
 │   │   ├── common
 │   │   ├── common.e2e
+│   │   ├── common.test
 │   │   ├── crowdin
 │   │   ├── kc_postgresql
 │   │   └── postgresql
@@ -161,6 +164,9 @@
     │   │   │   └── backends.py
     │   │   ├── choices.py
     │   │   ├── enums.py
+    │   │   ├── external_api
+    │   │   │   ├── permissions.py
+    │   │   │   └── viewsets.py
     │   │   ├── factories.py
     │   │   ├── malware_detection.py
     │   │   ├── management
@@ -274,11 +280,25 @@
     │   │   │   │   ├── test_api_documents_restore.py
     │   │   │   │   ├── test_api_documents_retrieve.py
     │   │   │   │   ├── test_api_documents_search.py
+    │   │   │   │   ├── test_api_documents_search_descendants.py
+    │   │   │   │   ├── test_api_documents_search_feature_flag.py
     │   │   │   │   ├── test_api_documents_threads.py
     │   │   │   │   ├── test_api_documents_trashbin.py
     │   │   │   │   ├── test_api_documents_tree.py
     │   │   │   │   ├── test_api_documents_update.py
     │   │   │   │   └── test_api_documents_update_extract_attachments.py
+    │   │   │   ├── external_api
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_external_api_documents.py
+    │   │   │   │   ├── test_external_api_documents_accesses.py
+    │   │   │   │   ├── test_external_api_documents_ai.py
+    │   │   │   │   ├── test_external_api_documents_attachment_upload.py
+    │   │   │   │   ├── test_external_api_documents_favorite.py
+    │   │   │   │   ├── test_external_api_documents_invitation.py
+    │   │   │   │   ├── test_external_api_documents_link_configuration.py
+    │   │   │   │   ├── test_external_api_documents_media_auth.py
+    │   │   │   │   ├── test_external_api_documents_versions.py
+    │   │   │   │   └── test_external_api_users.py
     │   │   │   ├── migrations
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_migrations_0018_update_blank_title.py
@@ -296,13 +316,13 @@
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_api_utils_ai_document_rate_throttles.py
     │   │   │   ├── test_api_utils_ai_user_rate_throttles.py
+    │   │   │   ├── test_api_utils_conditional_refresh_oidc_token.py
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_nest_tree.py
     │   │   │   ├── test_malware_detection.py
     │   │   │   ├── test_models_comment.py
     │   │   │   ├── test_models_document_accesses.py
     │   │   │   ├── test_models_documents.py
-    │   │   │   ├── test_models_documents_indexer.py
     │   │   │   ├── test_models_invitations.py
     │   │   │   ├── test_models_user_reconciliation.py
     │   │   │   ├── test_models_users.py
@@ -311,11 +331,14 @@
     │   │   │   ├── test_services_converter_orchestration.py
     │   │   │   ├── test_services_converter_services.py
     │   │   │   ├── test_services_docspec_converter.py
+    │   │   │   ├── test_services_find_document_indexer.py
     │   │   │   ├── test_services_search_indexers.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_utils.py
     │   │   │   ├── test_utils_filter_descendants.py
-    │   │   │   └── test_utils_users_sharing_documents_with.py
+    │   │   │   ├── test_utils_users_sharing_documents_with.py
+    │   │   │   └── utils
+    │   │   │       └── urls.py
     │   │   ├── urls.py
     │   │   ├── utils.py
     │   │   └── validators.py
@@ -349,6 +372,9 @@
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── de_DE
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   ├── el_GR
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── en_US
@@ -395,6 +421,8 @@
     │   ├── Dockerfile
     │   ├── apps
     │   │   ├── e2e
+    │   │   │   ├── .env
+    │   │   │   ├── .env.example
     │   │   │   ├── .gitignore
     │   │   │   ├── __tests__
     │   │   │   │   ├── app-impress
@@ -441,6 +469,7 @@
     │   │   │   │   │   ├── utils-editor.ts
     │   │   │   │   │   ├── utils-export.ts
     │   │   │   │   │   ├── utils-share.ts
+    │   │   │   │   │   ├── utils-signin.ts
     │   │   │   │   │   └── utils-sub-pages.ts
     │   │   │   │   └── helpers.ts
     │   │   │   ├── eslint.config.mjs
@@ -464,35 +493,36 @@
     │   │       ├── next.config.js
     │   │       ├── package.json
     │   │       ├── public
-    │   │       │   └── assets
-    │   │       │       ├── SC1-en.webm
-    │   │       │       ├── SC1-fr.webm
-    │   │       │       ├── favicon-dark-dsfr.png
-    │   │       │       ├── favicon-dark.png
-    │   │       │       ├── favicon-dsfr.ico
-    │   │       │       ├── favicon-dsfr.png
-    │   │       │       ├── favicon-light.png
-    │   │       │       ├── fonts
-    │   │       │       │   └── emoji
-    │   │       │       │       └── fallback.png
-    │   │       │       ├── icon-docs-dsfr-v2.png
-    │   │       │       ├── icon-docs-dsfr-v2.svg
-    │   │       │       ├── icon-docs-dsfr.svg
-    │   │       │       ├── icon-docs.svg
-    │   │       │       ├── img-not-found.svg
-    │   │       │       ├── logo-gouv.png
-    │   │       │       ├── logo-gouv.svg
-    │   │       │       ├── logo-suite-numerique.png
-    │   │       │       ├── mail-header-background.png
-    │   │       │       └── on-boarding
-    │   │       │           ├── step_1_EN.gif
-    │   │       │           ├── step_1_FR.gif
-    │   │       │           ├── step_2_EN.gif
-    │   │       │           ├── step_2_FR.gif
-    │   │       │           ├── step_3_EN.png
-    │   │       │           ├── step_3_FR.png
-    │   │       │           ├── step_4_EN.png
-    │   │       │           └── step_4_FR.png
+    │   │       │   ├── assets
+    │   │       │   │   ├── SC1-en.webm
+    │   │       │   │   ├── SC1-fr.webm
+    │   │       │   │   ├── favicon-dark-dsfr.png
+    │   │       │   │   ├── favicon-dark.png
+    │   │       │   │   ├── favicon-dsfr.ico
+    │   │       │   │   ├── favicon-dsfr.png
+    │   │       │   │   ├── favicon-light.png
+    │   │       │   │   ├── fonts
+    │   │       │   │   │   └── emoji
+    │   │       │   │   │       └── fallback.png
+    │   │       │   │   ├── icon-docs-dsfr-v2.png
+    │   │       │   │   ├── icon-docs-dsfr-v2.svg
+    │   │       │   │   ├── icon-docs-dsfr.svg
+    │   │       │   │   ├── icon-docs.svg
+    │   │       │   │   ├── img-not-found.svg
+    │   │       │   │   ├── logo-gouv.png
+    │   │       │   │   ├── logo-gouv.svg
+    │   │       │   │   ├── logo-suite-numerique.png
+    │   │       │   │   ├── mail-header-background.png
+    │   │       │   │   └── on-boarding
+    │   │       │   │       ├── step_1_EN.gif
+    │   │       │   │       ├── step_1_FR.gif
+    │   │       │   │       ├── step_2_EN.gif
+    │   │       │   │       ├── step_2_FR.gif
+    │   │       │   │       ├── step_3_EN.png
+    │   │       │   │       ├── step_3_FR.png
+    │   │       │   │       ├── step_4_EN.png
+    │   │       │   │       └── step_4_FR.png
+    │   │       │   └── favicon.ico
     │   │       ├── scripts
     │   │       │   ├── copy-emoji.mjs
     │   │       │   ├── postbuild.mjs
@@ -740,6 +770,7 @@
     │   │       │   │           ├── manufacturing.svg
     │   │       │   │           ├── mark_unread_chat_alt.svg
     │   │       │   │           ├── markdown.svg
+    │   │       │   │           ├── markdown_copy.svg
     │   │       │   │           ├── maximize.svg
     │   │       │   │           ├── megaphone-filled.svg
     │   │       │   │           ├── menu.svg
@@ -880,6 +911,7 @@
     │   │       │   │   ├── Emoji
     │   │       │   │   │   ├── EmojiPicker.tsx
     │   │       │   │   │   └── initEmojiCallout.ts
+    │   │       │   │   ├── ErrorPage.tsx
     │   │       │   │   ├── Icon.tsx
     │   │       │   │   ├── InfiniteScroll.tsx
     │   │       │   │   ├── Link.tsx
@@ -892,6 +924,8 @@
     │   │       │   │   │   └── Box.spec.tsx
     │   │       │   │   ├── dropdown-menu
     │   │       │   │   │   ├── DropdownMenu.tsx
+    │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   └── DropdownMenu.spec.tsx
     │   │       │   │   │   └── hook
     │   │       │   │   │       └── useDropdownKeyboardNav.ts
     │   │       │   │   ├── filter
@@ -974,6 +1008,8 @@
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   └── DocEditor.spec.tsx
     │   │       │   │   │   │   ├── api
+    │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   └── checkDocMediaStatus.test.tsx
     │   │       │   │   │   │   │   ├── checkDocMediaStatus.tsx
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useCreateDocUpload.tsx
@@ -1051,6 +1087,7 @@
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── ExportMIT.test.tsx
     │   │       │   │   │   │   │   ├── TablePDF.test.tsx
+    │   │       │   │   │   │   │   ├── utilsHtmlAccessibility.test.ts
     │   │       │   │   │   │   │   └── utilsMediaFilename.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.tsx
@@ -1093,6 +1130,7 @@
     │   │       │   │   │   ├── doc-header
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── DocHeaderInfo.spec.tsx
+    │   │       │   │   │   │   │   ├── DocToolBoxEmoji.spec.tsx
     │   │       │   │   │   │   │   └── DocToolBoxLicence.spec.tsx
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── AlertNetwork.tsx
@@ -1126,7 +1164,7 @@
     │   │       │   │   │   │   │   ├── useMoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── useRestoreDoc.tsx
-    │   │       │   │   │   │   │   ├── useSubDocs.tsx
+    │   │       │   │   │   │   │   ├── useSearchDocs.tsx
     │   │       │   │   │   │   │   └── useUpdateDoc.tsx
     │   │       │   │   │   │   ├── assets
     │   │       │   │   │   │   │   ├── child-document.svg
@@ -1166,7 +1204,6 @@
     │   │       │   │   │   │   │   ├── DocSearchFilters.tsx
     │   │       │   │   │   │   │   ├── DocSearchItem.tsx
     │   │       │   │   │   │   │   ├── DocSearchModal.tsx
-    │   │       │   │   │   │   │   ├── DocSearchSubPageContent.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── doc-share
@@ -1381,7 +1418,9 @@
     │   │       │   │   └── skeletons
     │   │       │   │       ├── components
     │   │       │   │       │   ├── DocEditorSkeleton.tsx
+    │   │       │   │       │   ├── SkeletionUI.tsx
     │   │       │   │       │   ├── Skeleton.tsx
+    │   │       │   │       │   ├── TreeSkeleton.tsx
     │   │       │   │       │   └── index.ts
     │   │       │   │       ├── index.ts
     │   │       │   │       └── store
@@ -1403,7 +1442,8 @@
     │   │       │   │   ├── MainLayout.tsx
     │   │       │   │   ├── PageLayout.tsx
     │   │       │   │   ├── conf.ts
-    │   │       │   │   └── index.ts
+    │   │       │   │   ├── index.ts
+    │   │       │   │   └── utils.ts
     │   │       │   ├── libs
     │   │       │   │   ├── Analytics.tsx
     │   │       │   │   ├── __tests__
@@ -1412,6 +1452,7 @@
     │   │       │   ├── pages
     │   │       │   │   ├── 401.tsx
     │   │       │   │   ├── 404.tsx
+    │   │       │   │   ├── 500.tsx
     │   │       │   │   ├── _app.tsx
     │   │       │   │   ├── _document.tsx
     │   │       │   │   ├── _error.tsx
@@ -1586,4 +1627,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-272 directories, 1389 files
+279 directories, 1423 files
