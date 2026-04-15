@@ -34,22 +34,16 @@
 │   │   └── fake_data.ts
 │   ├── startups.json
 │   ├── test-account.ts
-│   ├── test-admin.ts
 │   ├── test-api-info-update.ts
 │   ├── test-create-member-send-email.ts
 │   ├── test-create-member-validation.ts
 │   ├── test-create-member.ts
 │   ├── test-email.ts
 │   ├── test-event.ts
-│   ├── test-github.ts
 │   ├── test-lib-github.ts
-│   ├── test-mattermost.ts
-│   ├── test-newsletter.ts
 │   ├── test-service-account.ts
 │   ├── test-setup.ts
 │   ├── test-startups.ts
-│   ├── test-unblock-email.ts
-│   ├── test-user-contract-ending.ts
 │   ├── test-worker.ts
 │   ├── users.json
 │   └── utils
@@ -66,6 +60,7 @@
 │   ├── api.spec.ts
 │   ├── auth.valid.member.setup.ts
 │   ├── community.spec.ts
+│   ├── dashboard.spec.ts
 │   ├── incubator.spec.ts
 │   ├── login.spec.ts
 │   ├── member.edit.secu.spec.ts
@@ -190,8 +185,6 @@
 ├── package.json
 ├── playwright.config.ts
 ├── public
-│   ├── onboarding
-│   │   └── checklist.yml
 │   ├── robots.txt
 │   └── static
 │       ├── css
@@ -233,15 +226,6 @@
 │   │   │       │   ├── base-info
 │   │   │       │   │   └── page.tsx
 │   │   │       │   └── page.tsx
-│   │   │       ├── admin
-│   │   │       │   ├── mattermost
-│   │   │       │   │   ├── AdminMattermostClientPage.tsx
-│   │   │       │   │   └── page.tsx
-│   │   │       │   ├── newsletters
-│   │   │       │   │   ├── [id]
-│   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   └── page.tsx
-│   │   │       │   └── page.tsx
 │   │   │       ├── community
 │   │   │       │   ├── [id]
 │   │   │       │   │   ├── admin-update
@@ -274,8 +258,6 @@
 │   │   │       │   └── page.tsx
 │   │   │       ├── layout.tsx
 │   │   │       ├── metabase
-│   │   │       │   └── page.tsx
-│   │   │       ├── newsletters
 │   │   │       │   └── page.tsx
 │   │   │       ├── organizations
 │   │   │       │   ├── [id]
@@ -338,10 +320,7 @@
 │   │   ├── api
 │   │   │   ├── admin
 │   │   │   │   └── actions
-│   │   │   │       ├── getMattermostAdmin.ts
-│   │   │   │       ├── getMattermostUsersInfo.ts
-│   │   │   │       ├── index.ts
-│   │   │   │       └── sendMattermostMessage.ts
+│   │   │   │       └── index.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...nextauth]
 │   │   │   │       └── route.ts
@@ -375,7 +354,6 @@
 │   │   │   │   │   ├── get-dimail-email.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── managePrimaryEmailForUser.ts
-│   │   │   │   │   ├── updatePasswordForUser.ts
 │   │   │   │   │   ├── updateUserEvent.spec.ts
 │   │   │   │   │   ├── updateUserEvent.ts
 │   │   │   │   │   ├── validateNewMember.ts
@@ -387,8 +365,6 @@
 │   │   │   │   ├── actions
 │   │   │   │   │   └── verify.ts
 │   │   │   │   └── route.ts
-│   │   │   ├── newsletters
-│   │   │   │   └── actions.ts
 │   │   │   ├── organizations
 │   │   │   │   └── actions
 │   │   │   │       ├── createOrganization.ts
@@ -427,10 +403,6 @@
 │   │   ├── layout.tsx
 │   │   └── not-found.tsx
 │   ├── components
-│   │   ├── AdminMattermostPage
-│   │   │   ├── AdminMattermost.tsx
-│   │   │   ├── AdminMattermostUser.tsx
-│   │   │   └── index.ts
 │   │   ├── AutoComplete.tsx
 │   │   ├── BadgeEmailPlan.tsx
 │   │   ├── BaseInfoUpdatePage
@@ -492,12 +464,11 @@
 │   │   ├── MatomoSiteSelect.tsx
 │   │   ├── MemberPage
 │   │   │   ├── AdminPanel.tsx
+│   │   │   ├── CheckListTabPanel.tsx
 │   │   │   ├── Email
-│   │   │   │   ├── BlocChangerMotDePasse.tsx
 │   │   │   │   ├── BlocConfigurerCommunicationEmail.tsx
 │   │   │   │   ├── BlocConfigurerEmailPrincipal.tsx
 │   │   │   │   ├── BlocConfigurerEmailSecondaire.tsx
-│   │   │   │   ├── BlocEmailResponder.tsx
 │   │   │   │   ├── ChangeSecondaryEmail.tsx
 │   │   │   │   ├── EmailContainer.tsx
 │   │   │   │   └── WebMailButtons.tsx
@@ -512,20 +483,14 @@
 │   │   │   ├── MemberPage.tsx
 │   │   │   ├── MemberStatus.tsx
 │   │   │   ├── MemberWaitingEmailVerificationNotice.tsx
-│   │   │   ├── MemberWaitingValidationNotice.tsx
-│   │   │   └── OnboardingTabPanel.tsx
+│   │   │   └── MemberWaitingValidationNotice.tsx
 │   │   ├── MemberSelect.tsx
 │   │   ├── MemberUpdate
 │   │   │   └── MemberUpdate.tsx
-│   │   ├── NewsletterForm
-│   │   │   └── NewsletterForm.tsx
-│   │   ├── NewsletterPage
-│   │   │   └── NewsletterPage.tsx
 │   │   ├── ProgressBar.tsx
 │   │   ├── SEIncubateurSelect.tsx
 │   │   ├── SESelect.tsx
 │   │   ├── SESponsorSelect.tsx
-│   │   ├── SelectAccessibilityStatus.tsx
 │   │   ├── Service
 │   │   │   ├── AccountDetails.tsx
 │   │   │   ├── CreateMatomoServiceForm.tsx
@@ -574,13 +539,11 @@
 │   │   │   └── timeline.css
 │   │   ├── SurveyBox.tsx
 │   │   ├── TeamSelect.tsx
-│   │   ├── Tooltip.tsx
 │   │   ├── UploadForm
 │   │   │   └── UploadForm.tsx
 │   │   ├── emails
 │   │   │   └── layouts
 │   │   │       └── StandardEmail.tsx
-│   │   ├── index.ts
 │   │   ├── live-chat
 │   │   │   ├── LiveChatContext.tsx
 │   │   │   ├── LiveChatProvider.tsx
@@ -628,6 +591,7 @@
 │   │   ├── airtable.ts
 │   │   ├── canEditMember.spec.ts
 │   │   ├── canEditMember.ts
+│   │   ├── canEditStartup.spec.ts
 │   │   ├── canEditStartup.ts
 │   │   ├── dimail
 │   │   │   ├── client.spec.ts
@@ -679,19 +643,17 @@
 │   │   │   ├── image.ts
 │   │   │   ├── incubator.ts
 │   │   │   ├── member.ts
-│   │   │   ├── newsletter.ts
 │   │   │   ├── organization.ts
-│   │   │   ├── ovh.ts
 │   │   │   ├── service.ts
 │   │   │   ├── startup.ts
 │   │   │   └── team.ts
 │   │   ├── brevoEvent.ts
 │   │   ├── brevoInfo.ts
+│   │   ├── checklist.ts
 │   │   ├── common.ts
 │   │   ├── competences.ts
 │   │   ├── formation.ts
 │   │   ├── incubator.ts
-│   │   ├── job.ts
 │   │   ├── jobs
 │   │   │   ├── maintenance.ts
 │   │   │   ├── member.ts
@@ -699,7 +661,6 @@
 │   │   ├── mapper
 │   │   │   ├── index.ts
 │   │   │   ├── matomoMapper.ts
-│   │   │   ├── newsletterMapper.ts
 │   │   │   ├── sentryMapper.ts
 │   │   │   ├── startupMapper.ts
 │   │   │   └── userEventMapper.ts
@@ -711,9 +672,6 @@
 │   │   ├── memberChange.ts
 │   │   ├── misc.ts
 │   │   ├── mission.ts
-│   │   ├── newsletter.ts
-│   │   ├── onboardingChecklist.ts
-│   │   ├── ovh.ts
 │   │   ├── sentry.ts
 │   │   ├── sentryTeam.ts
 │   │   ├── services.ts
@@ -725,13 +683,11 @@
 │   │   ├── technos.ts
 │   │   ├── thematiques.ts
 │   │   ├── userEvent.ts
-│   │   ├── user_formation.ts
 │   │   └── usertypes.ts
 │   ├── routes
 │   │   └── routes.ts
 │   ├── scripts
 │   │   ├── export-to-www.sh
-│   │   ├── fix-missions.ts
 │   │   ├── github-schemas.ts
 │   │   ├── import-from-www.ts
 │   │   ├── import-teams-from-www.ts
@@ -742,19 +698,13 @@
 │   │   ├── betagouv.ts
 │   │   ├── config
 │   │   │   ├── admin.config.ts
-│   │   │   ├── ds
-│   │   │   │   └── ds.config.ts
 │   │   │   ├── email.config.ts
 │   │   │   ├── index.ts
 │   │   │   ├── matomo.config.ts
 │   │   │   ├── mattermost
-│   │   │   │   ├── mattermost.config.ts
-│   │   │   │   └── mattermostDomainExceptions.json
+│   │   │   │   └── mattermost.config.ts
 │   │   │   └── sentry.config.ts
 │   │   ├── controllers
-│   │   │   ├── adminController
-│   │   │   │   ├── index.ts
-│   │   │   │   └── sendMattermostMessage.ts
 │   │   │   ├── utils.spec.ts
 │   │   │   └── utils.ts
 │   │   ├── db
@@ -762,9 +712,6 @@
 │   │   ├── helpers
 │   │   │   └── session.ts
 │   │   ├── infra
-│   │   │   ├── chat
-│   │   │   │   ├── index.ts
-│   │   │   │   └── mattermost.ts
 │   │   │   └── email
 │   │   │       ├── fakeMailer.ts
 │   │   │       ├── index.ts
@@ -780,6 +727,7 @@
 │   │   │   ├── client.ts
 │   │   │   ├── schedule.ts
 │   │   │   └── workers
+│   │   │       ├── clean-teams-members.ts
 │   │   │       ├── create-dimail-mailbox.spec.ts
 │   │   │       ├── create-dimail-mailbox.ts
 │   │   │       ├── create-sentry-account.ts
@@ -798,24 +746,10 @@
 │   │   │       ├── update-sentry-account.ts
 │   │   │       └── utils.ts
 │   │   ├── schedulers
-│   │   │   ├── calendarScheduler.ts
 │   │   │   ├── cron.ts
 │   │   │   ├── emailScheduler.ts
-│   │   │   ├── githubScheduler.ts
 │   │   │   ├── mattermostScheduler
-│   │   │   │   ├── addUsersNotInCommunityToCommunityTeam.ts
-│   │   │   │   ├── createUsersByEmail.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── inviteUserToTeamByEmail.ts
-│   │   │   │   ├── mattermostScheduler.ts
-│   │   │   │   ├── moveUsersToAlumniTeam.ts
-│   │   │   │   ├── reactivateUsers.ts
-│   │   │   │   ├── removeBetaAndParnersUsersFromCommunityTeam.ts
-│   │   │   │   ├── removeUsersFromCommunityTeam.ts
-│   │   │   │   ├── sendGroupeDeSoutienReminder.ts
-│   │   │   │   ├── syncMattermostUserStatusWithMattermostMemberInfosTable.ts
 │   │   │   │   └── syncMattermostUserWithMattermostMemberInfosTable.ts
-│   │   │   ├── newsletterScheduler.ts
 │   │   │   ├── recreateEmailIfUserActive.spec.ts
 │   │   │   ├── recreateEmailIfUserActive.ts
 │   │   │   ├── scheduleCronJobs.ts
@@ -826,12 +760,9 @@
 │   │   │   │   ├── syncSentryAccounts.ts
 │   │   │   │   └── syncSentryTeams.ts
 │   │   │   ├── startups
-│   │   │   │   ├── createMailingListForStartups.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── sendEmailToStartupToUpdatePhase.ts
-│   │   │   │   └── syncBetagouvStartupAPI.ts
+│   │   │   │   └── sendEmailToStartupToUpdatePhase.ts
 │   │   │   ├── unblockEmailsThatAreActive.ts
-│   │   │   ├── updateProfileScheduler.ts
 │   │   │   └── userContractEndingScheduler.ts
 │   │   ├── types
 │   │   │   └── request.d.ts
@@ -870,22 +801,24 @@
 │   │       │       │   └── teamCompositionEmail.tsx
 │   │       │       ├── updateSecondaryEmail.ejs
 │   │       │       └── updateUserInfoEmail.ejs
-│   │       ├── test.yml
-│   │       └── utils
-│   │           └── email.ts
+│   │       └── test.yml
 │   └── utils
 │       ├── airtable.ts
 │       ├── auth
 │       │   └── hashToken.ts
 │       ├── authoptions.ts
+│       ├── checklists
+│       │   ├── computeProgress.spec.ts
+│       │   ├── computeProgress.ts
+│       │   ├── getChecklistObject.ts
+│       │   ├── getUserChecklists.ts
+│       │   ├── offboarding.yml
+│       │   └── onboarding.yml
 │       ├── date.ts
 │       ├── error.ts
 │       ├── file.ts
 │       ├── gracefulExit.ts
 │       ├── member.ts
-│       ├── onboarding
-│       │   ├── computeOnboardingProgress.ts
-│       │   └── getChecklistObject.ts
 │       ├── pgAdpter.ts
 │       ├── platform.ts
 │       ├── routes
@@ -897,4 +830,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-208 directories, 691 files
+194 directories, 638 files

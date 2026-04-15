@@ -1,21 +1,31 @@
-## Changelog : espace-membre-next (30 derniers jours, au 17 mars 2026)
+## Changelog : espace-membre-next (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à l'espace membre au cours du dernier mois. Les principales évolutions concernent la gestion des membres, notamment l'activation, la vérification et la modification des dates de fin de mission. Des corrections ont également été apportées concernant l'envoi d'emails de support et l'affichage de l'onboarding pour les membres existants.
+Ce mois-ci, les améliorations se concentrent sur la gestion du cycle de vie des membres, notamment l'onboarding et l'offboarding, ainsi que sur des corrections de bugs et des optimisations de la plateforme. Des fonctionnalités ont été ajoutées pour faciliter la gestion des membres par les agents des startups et améliorer l'expérience utilisateur globale.
 
 ### Évolutions fonctionnelles
-- **Gestion des membres :** Possibilité de gérer les membres directement depuis l'interface de démarrage des startups [#1226](https://github.com/betagouv/espace-membre-next/issues/1226).
-- **Activation et vérification des membres :** Amélioration du processus d'activation et de vérification des membres [#1227](https://github.com/betagouv/espace-membre-next/issues/1227).
-- **Modification des dates de fin de mission :** Les administrateurs et les membres des incubateurs peuvent désormais réduire la date de fin de mission d'un membre [#1228](https://github.com/betagouv/espace-membre-next/issues/1228).
-- **Onboarding :** L'onboarding est maintenant affiché pour tous les membres [#1218](https://github.com/betagouv/espace-membre-next/issues/1218) et caché sur le tableau de bord pour les membres plus anciens [#1222](https://github.com/betagouv/espace-membre-next/issues/1222).
-- **Vérification du compte :** Correction de l'affichage de la page de vérification du compte [#1219](https://github.com/betagouv/espace-membre-next/issues/1219).
-- **Email de support :** Correction de l'adresse email utilisée pour les messages de support, désormais `contact@beta.gouv.fr` [#1238](https://github.com/betagouv/espace-membre-next/issues/1238).
-- **Instructions de création d'email :** Simplification des instructions de création d'email [#1223](https://github.com/betagouv/espace-membre-next/issues/1223).
+- Les agents des startups peuvent désormais modifier les informations des membres. [#1303](https://github.com/betagouv/espace-membre-next/issues/1303)
+- Un panneau d'offboarding s'affiche dans le tableau de bord lorsqu'un membre arrive à expiration. [#1289](https://github.com/betagouv/espace-membre-next/issues/1289)
+- Les membres expirés sont automatiquement retirés des équipes. [#1277](https://github.com/betagouv/espace-membre-next/issues/1277)
+- Une checklist d'offboarding a été ajoutée pour faciliter le processus de départ des membres. [#1231](https://github.com/betagouv/espace-membre-next/issues/1231)
+- Amélioration des instructions de départ dans l'email de composition d'équipe. [#1290](https://github.com/betagouv/espace-membre-next/issues/1290)
+- Clarification des titres dans la checklist d'offboarding. [#1262](https://github.com/betagouv/espace-membre-next/issues/1262)
+- Amélioration de la progression de l'onboarding. [#1264](https://github.com/betagouv/espace-membre-next/issues/1264)
+- L'étape d'onboarding est masquée du tableau de bord une fois complétée. [#1266](https://github.com/betagouv/espace-membre-next/issues/1266)
 
 ### Évolutions techniques
-- **Scalingo :** Mise à jour de la configuration Scalingo [#1233](https://github.com/betagouv/espace-membre-next/issues/1233).
-- **Logging :** Amélioration et correction des logs.
+- Ajout de tests E2E pour le tableau de bord et les processus d'onboarding/offboarding. [#1299](https://github.com/betagouv/espace-membre-next/issues/1299)
+- Suppression de l'ancien système de planification de fin de contrat utilisateur (n8n). [#1276](https://github.com/betagouv/espace-membre-next/issues/1276)
+- Suppression de la gestion GitHub, remplacée par n8n. [#1274](https://github.com/betagouv/espace-membre-next/issues/1274)
+- Suppression des services OVH. [#1275](https://github.com/betagouv/espace-membre-next/issues/1275)
+- Suppression des intégrations newsletter, Pad et Mattermost. [#1253](https://github.com/betagouv/espace-membre-next/issues/1253)
+- Amélioration de la gestion des logs pour réduire le bruit. [#1302](https://github.com/betagouv/espace-membre-next/issues/1302), [#1300](https://github.com/betagouv/espace-membre-next/issues/1300), [#1256](https://github.com/betagouv/espace-membre-next/issues/1256), [#1255](https://github.com/betagouv/espace-membre-next/issues/1255), [#1254](https://github.com/betagouv/espace-membre-next/issues/1254)
 
 ### Autres changements
-- Mise à jour du fichier `checklist.yml` [#1221](https://github.com/betagouv/espace-membre-next/issues/1221).
-- Correction de fautes de frappe (typo).
+- Ajout d'une exception pour les URLs de la FAQ Crisp dans la politique de sécurité du contenu (CSP). [#1243](https://github.com/betagouv/espace-membre-next/issues/1243)
+- Correction pour utiliser les autres adresses email des utilisateurs ProConnect. [#1240](https://github.com/betagouv/espace-membre-next/issues/1240)
+- Correction de l'affichage du statut et de l'employeur des membres. [#1241](https://github.com/betagouv/espace-membre-next/issues/1241)
+- Correction pour lier correctement les informations utilisateur Mattermost. [#1239](https://github.com/betagouv/espace-membre-next/issues/1239)
+- Suppression d'une entrée de menu admin inutile. [#1265](https://github.com/betagouv/espace-membre-next/issues/1265)
+- Correction pour ne plus vérifier les informations OVH. [#1272](https://github.com/betagouv/espace-membre-next/issues/1272)
+- Ajout de motifs d'exclusion pour Matomo. [#1273](https://github.com/betagouv/espace-membre-next/issues/1273)
