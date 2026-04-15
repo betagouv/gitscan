@@ -6,6 +6,9 @@
 │   └── workflows
 │       └── default.yml
 ├── .gitignore
+├── .husky
+│   ├── pre-commit
+│   └── pre-push
 ├── .storybook
 │   ├── decorators.tsx
 │   ├── inertia-mock.tsx
@@ -18,12 +21,14 @@
 ├── adonisrc.ts
 ├── app
 │   ├── controllers
+│   │   ├── aac_controller.ts
 │   │   ├── accueil_controller.ts
 │   │   ├── exploitations_controller.ts
 │   │   ├── log_entries_controller.ts
 │   │   ├── session_controller.ts
 │   │   └── visualisation_controller.ts
 │   ├── dto
+│   │   ├── aac_dto.ts
 │   │   ├── exploitation_dto.ts
 │   │   ├── exploitation_tag_dto.ts
 │   │   ├── log_entry_document_dto.ts
@@ -38,7 +43,9 @@
 │   │   ├── auth_middleware.ts
 │   │   ├── container_bindings_middleware.ts
 │   │   ├── guest_middleware.ts
-│   │   └── silent_auth_middleware.ts
+│   │   ├── initialize_bouncer_middleware.ts
+│   │   ├── silent_auth_middleware.ts
+│   │   └── territoire_assignation_middleware.ts
 │   ├── models
 │   │   ├── contact.ts
 │   │   ├── culture.ts
@@ -52,13 +59,20 @@
 │   │   ├── parcelle.ts
 │   │   ├── territoire.ts
 │   │   └── user.ts
+│   ├── policies
+│   │   ├── exploitation_policy.ts
+│   │   └── main.ts
 │   ├── services
+│   │   ├── aac_service.ts
+│   │   ├── base_csv_service.ts
 │   │   ├── event_logger_service.ts
 │   │   ├── exploitation_service.ts
 │   │   ├── exploitation_tag_service.ts
+│   │   ├── log_entry_csv_service.ts
 │   │   ├── log_entry_document_service.ts
 │   │   ├── log_entry_service.ts
 │   │   ├── log_entry_tag_service.ts
+│   │   ├── parcelle_csv_service.ts
 │   │   └── parcelle_service.ts
 │   └── validators
 │       ├── create_exploitation.ts
@@ -69,6 +83,8 @@
 │   ├── console.ts
 │   ├── server.ts
 │   └── test.ts
+├── commands
+│   └── territoire_assign.ts
 ├── config
 │   ├── app.ts
 │   ├── auth.ts
@@ -85,6 +101,7 @@
 │   └── vite.ts
 ├── database
 │   ├── data
+│   │   ├── codes_NAF.json
 │   │   └── cultures.json
 │   ├── factories
 │   │   ├── contact_factory.ts
@@ -92,6 +109,7 @@
 │   │   ├── exploitation_tag_factory.ts
 │   │   ├── log_entry_factory.ts
 │   │   ├── log_entry_tag_factory.ts
+│   │   ├── parcelle_factory.ts
 │   │   ├── territoire_factory.ts
 │   │   └── user_factory.ts
 │   ├── migrations
@@ -129,23 +147,42 @@
 │   │   ├── 1770051234137_alter_log_entries_table.ts
 │   │   ├── 1770051347584_create_log_entries_documents_table.ts
 │   │   ├── 1771325364605_alter_parcelles_table.ts
-│   │   └── 1772000000000_alter_parcelles_add_comment.ts
+│   │   ├── 1772000000000_alter_parcelles_add_comment.ts
+│   │   ├── 1774284484370_create_territoire_user_relations_table.ts
+│   │   ├── 1774284767808_create_exploitation_territoire_relations_table.ts
+│   │   ├── 1774285176009_alter_exploitations_table.ts
+│   │   └── 1774449196042_alter_territoires_table.ts
 │   └── seeders
 │       ├── 1_user_seeder.ts
 │       ├── 2_exploitation_seeder.ts
 │       ├── 3_culture_group_seeder.ts
 │       ├── 4_culture_seeder.ts
-│       └── 6_exploitation_tag_seeder.ts
+│       ├── 6_exploitation_tag_seeder.ts
+│       └── 7_territoire_seeder.ts
 ├── eslint.config.js
 ├── inertia
 │   ├── app
 │   │   ├── app.tsx
 │   │   └── ssr.tsx
 │   ├── components
+│   │   ├── aac-id
+│   │   │   ├── aac-agriculture-section.tsx
+│   │   │   ├── aac-analyses-section.tsx
+│   │   │   ├── aac-captages.tsx
+│   │   │   ├── aac-communes-card.tsx
+│   │   │   ├── aac-communes-repartition.tsx
+│   │   │   ├── aac-cultures-repartition.tsx
+│   │   │   ├── aac-informations-card.tsx
+│   │   │   └── aac-territoire-section.tsx
+│   │   ├── aacs
+│   │   │   ├── aac-left-sidebar.tsx
+│   │   │   ├── aacs-left-sidebar.tsx
+│   │   │   └── aacs-search.tsx
 │   │   ├── analyses-section.tsx
 │   │   ├── authentification-bloc.tsx
 │   │   ├── cultures-filters.tsx
 │   │   ├── exploitation-id
+│   │   │   ├── ExploitationActionCard.tsx
 │   │   │   ├── ExploitationAddressCard.tsx
 │   │   │   ├── ExploitationContactCard.tsx
 │   │   │   ├── ExploitationInformationCard.tsx
@@ -201,6 +238,7 @@
 │   ├── css
 │   │   └── app.css
 │   ├── functions
+│   │   ├── colors.ts
 │   │   ├── contacts.ts
 │   │   ├── cultures-group.tsx
 │   │   ├── date.ts
@@ -213,6 +251,9 @@
 │   │   ├── exploitations.ts
 │   │   └── export_csv.ts
 │   ├── pages
+│   │   ├── aac
+│   │   │   ├── id.tsx
+│   │   │   └── index.tsx
 │   │   ├── accueil.tsx
 │   │   ├── errors
 │   │   │   ├── not_found.tsx
@@ -228,6 +269,7 @@
 │   │   │   ├── edition.tsx
 │   │   │   └── id.tsx
 │   │   ├── login.tsx
+│   │   ├── no_territoire.tsx
 │   │   └── visualisation.tsx
 │   ├── tsconfig.json
 │   ├── ui
@@ -349,6 +391,7 @@
 │       └── inertia_layout.edge
 ├── scalingo-postbuild.sh
 ├── start
+│   ├── aac.ts
 │   ├── env.ts
 │   ├── kernel.ts
 │   └── routes.ts
@@ -370,17 +413,22 @@
 │       │   └── contact.spec.ts
 │       ├── exploitation
 │       │   ├── exploitation.spec.ts
+│       │   ├── exploitation_policy.spec.ts
 │       │   ├── exploitation_service.spec.ts
 │       │   └── exploitation_service_contacts.spec.ts
-│       └── log_entry
-│           ├── log_entry_document_service.spec.ts
-│           ├── log_entry_service.spec.ts
-│           └── log_entry_tag_service.spec.ts
+│       ├── log_entry
+│       │   ├── log_entry_csv_service.spec.ts
+│       │   ├── log_entry_document_service.spec.ts
+│       │   ├── log_entry_service.spec.ts
+│       │   └── log_entry_tag_service.spec.ts
+│       └── parcelle
+│           └── parcelle_csv_service.spec.ts
 ├── tsconfig.json
 ├── types
+│   ├── aac.ts
 │   ├── flash_messages.ts
 │   └── models.ts
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-85 directories, 300 files
+92 directories, 341 files
