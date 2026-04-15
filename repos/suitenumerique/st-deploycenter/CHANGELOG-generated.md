@@ -1,32 +1,18 @@
-## Changelog : st-deploycenter (30 derniers jours)
+## Changelog : st-deploycenter (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de st-deploycenter se concentrent sur l'amélioration de l'administration et de l'import de données, notamment pour les organisations et les rôles. Des améliorations ont également été apportées à l'interface utilisateur pour une meilleure expérience, ainsi que des corrections de bugs et des optimisations techniques. L'intégration avec ProConnect et Messages a été renforcée, offrant plus de flexibilité et de contrôle aux superutilisateurs.
+Cette version apporte des améliorations à l'export des services vers DataGouv, des corrections d'affichage et de gestion des descriptions, ainsi qu'une amélioration de la gestion des tâches planifiées. De plus, un rôle administrateur opérateur est ajouté avec des routes de métriques pour les opérations.
 
 ### Évolutions fonctionnelles
-- Ajout de boutons de synchronisation dans l'import pour supprimer les anciens rôles d'organisation d'opérateur. [#43](https://github.com/suitenumerique/st-deploycenter/issues/43)
-- Possibilité de dupliquer un service dans l'interface d'administration.
-- Amélioration de l'affichage de l'interface utilisateur avec correction de divers problèmes mineurs.
-- Possibilité pour les superutilisateurs de modifier les domaines ProConnect.
-- Possibilité pour les superadministrateurs de modifier les domaines pour Messages.
-- Ajout de l'import en masse des rôles de compte.
-- Ajout de la possibilité de supprimer des comptes via l'interface utilisateur et l'API. [#38](https://github.com/suitenumerique/st-deploycenter/issues/38)
-- Affichage des services avec une priorité d'affichage inférieure à 0 dans l'interface utilisateur.
-- Ajout d'une carte Messages et amélioration des droits d'accès. [#36](https://github.com/suitenumerique/st-deploycenter/issues/36)
-- Mise en place d'un résolveur d'administration étendu et d'une adhésion automatique pour les organisations. [#33](https://github.com/suitenumerique/st-deploycenter/issues/33)
-- Amélioration de l'affichage des filtres dans l'administration pour l'import en masse des SIRET pour les abonnements.
+- Correction de l'affichage des cartes : la description n'est affichée que si elle contient du contenu.
+- Amélioration de l'export des services vers DataGouv : les services sont exportés par ordre de priorité décroissante.
+- Ajout du champ `description` pour les services dans l'export DataGouv.
+- Ajout d'un rôle administrateur opérateur avec accès aux métriques opérationnelles [#52](https://github.com/suitenumerique/st-deploycenter/issues/52).
 
 ### Évolutions techniques
-- Mise à jour de Django.
-- Amélioration du filtrage des valeurs des webhooks en fonction des métadonnées des autres services.
-- Correction d'un test Faker aléatoire instable.
-- Mise à jour des étapes des workflows GitHub Actions vers les dernières versions. [#39](https://github.com/suitenumerique/st-deploycenter/issues/39)
-- Implémentation de `can_admin_maildomains` pour Messages. [#40](https://github.com/suitenumerique/st-deploycenter/issues/40)
-- Correction d'un contournement des vérifications frontend des domaines ProConnect pour les superutilisateurs.
+- Utilisation d'un dyno plus important pour la tâche planifiée afin d'améliorer sa fiabilité.
+- Restauration de la prise en charge des listes séparées par des virgules pour les webhooks.
+- Petites améliorations apportées aux modèles et à l'interface d'administration.
 
 ### Autres changements
-- Amélioration de la lisibilité des champs JSON dans l'administration.
-- Correction de l'attribut `lang` en `html lang=fr`.
-- Mise à jour de la terminologie dans le fichier README.
-- Masquage de RPNT pour les organisations de type "autre".
-- Correction du texte d'aide "pas de domaines" pour Messages.
+- Documentation de la commande `make restart` dans le fichier README.

@@ -48,7 +48,6 @@
 │       ├── frontend.defaults
 │       ├── keycloak.defaults
 │       └── postgresql.defaults
-├── renovate.json
 └── src
     ├── backend
     │   ├── .pylintrc
@@ -69,6 +68,7 @@
     │   │   │       ├── config.py
     │   │   │       ├── entitlements.py
     │   │   │       ├── lagaufre.py
+    │   │   │       ├── metrics.py
     │   │   │       ├── operator.py
     │   │   │       ├── organization.py
     │   │   │       ├── service.py
@@ -89,6 +89,7 @@
     │   │   │       ├── drive_storage_entitlement_resolver.py
     │   │   │       ├── entitlement_resolver.py
     │   │   │       ├── extended_admin_entitlement_resolver.py
+    │   │   │       ├── meet_access_entitlement_resolver.py
     │   │   │       ├── messages_admin_entitlement_resolver.py
     │   │   │       └── messages_storage_entitlement_resolver.py
     │   │   ├── enums.py
@@ -98,6 +99,7 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── createsuperuser.py
+    │   │   │       ├── demo_data.py
     │   │   │       ├── drop_all_tables.py
     │   │   │       ├── print_sessions.py
     │   │   │       └── run_task.py
@@ -117,6 +119,9 @@
     │   │   │   ├── 0013_account_accountservicelink_and_more.py
     │   │   │   ├── 0014_account_unique_account_external_id_per_org_type_and_more.py
     │   │   │   ├── 0015_accountservicelink_single_role_per_row.py
+    │   │   │   ├── 0016_operator_siret.py
+    │   │   │   ├── 0017_operator_name_with_article_operator_status_and_more.py
+    │   │   │   ├── 0018_operator_org_role_admin_flag.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -163,10 +168,12 @@
     │   │   │   │   ├── test_entitlements_adc.py
     │   │   │   │   ├── test_entitlements_admin.py
     │   │   │   │   ├── test_entitlements_drive.py
+    │   │   │   │   ├── test_entitlements_meet.py
     │   │   │   │   ├── test_entitlements_messages.py
     │   │   │   │   ├── test_entitlements_messages_admin.py
     │   │   │   │   ├── test_external_api.py
     │   │   │   │   ├── test_lagaufre.py
+    │   │   │   │   ├── test_metrics.py
     │   │   │   │   ├── test_operators.py
     │   │   │   │   ├── test_organization_identifier_serializer.py
     │   │   │   │   ├── test_organizations.py
@@ -184,6 +191,7 @@
     │   │   │   ├── conftest.py
     │   │   │   ├── models
     │   │   │   │   ├── test_metrics.py
+    │   │   │   │   ├── test_operator_service_config.py
     │   │   │   │   ├── test_organization.py
     │   │   │   │   └── test_users.py
     │   │   │   ├── test_dpnt_import.py
@@ -324,4 +332,4 @@
     │   └── realm.json
     └── nginx
         └── servers.conf.erb
-77 directories, 249 files
+77 directories, 257 files
