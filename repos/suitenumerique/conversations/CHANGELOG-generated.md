@@ -1,28 +1,36 @@
-## Changelog : conversations (30 derniers jours)
+## Changelog : conversations (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à Conversations au cours des 30 derniers jours. Les principales évolutions concernent l'expérience utilisateur avec l'ajout d'une recherche améliorée, la possibilité de désactiver la recherche internet automatique et des corrections de bugs liés à l'interface et au mode sombre. Des optimisations techniques et des mises à jour de dépendances ont également été réalisées.
+Ce mois-ci, les améliorations se concentrent sur l'ajout de nouvelles fonctionnalités pour l'intégration de modèles open source, l'amélioration de la gestion des documents (support ODT), et l'optimisation de l'interface utilisateur. Des corrections de bugs et des mises à jour de dépendances ont également été effectuées pour améliorer la stabilité et la sécurité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout d'une recherche avec une modale dédiée et une meilleure expérience utilisateur. [#1234](https://github.com/suitenumerique/conversations/issues/1234)
-- Possibilité pour l'utilisateur de désactiver la recherche internet automatique.
-- Correction de l'affichage inversé des messages toast pour les bascules de paramètres.
-- Correction du style du mode sombre sur les messages du chat.
-- Amélioration de la gestion des cas d'insensibilité lors de la restauration sur l'adresse email pour l'authentification OIDC.
-- Masquage du "waffle" (fonctionnalité expérimentale) si le thème n'est pas français.
+- Ajout du support pour les modèles open source [#1234](https://github.com/suitenumerique/conversations/issues/1234).
+- Support de l'analyse des fichiers ODT et amélioration du routage des documents.
+- Possibilité de copier le contenu avec le formatage correct pour le coller dans des applications comme Word.
+- Ajout d'un bouton de copie qui préserve le formatage.
+- Amélioration de l'interface utilisateur pour la gestion des projets.
+- Nouvelle interface utilisateur pour l'en-tête.
+- Possibilité de taper pendant que le LLM génère une réponse.
+- Intégration de snippets de recherche Brave pour améliorer les résultats de recherche.
+- Ajout d'un mode débogage pour faciliter le développement local.
 
 ### Évolutions techniques
-- Mise à jour de Django et de Pydantic.
-- Migration de ESLint vers la version 9 avec une configuration "flat".
-- Refactorisation du service `AIAgentService` pour une meilleure lisibilité et maintenabilité.
-- Optimisation du rendu Markdown en streaming avec une division en blocs pour améliorer la performance.
-- Utilisation de `uv` au lieu de `pip` pour Crowdin.
-- Inversion des probes liveness et readiness pour le déploiement backend avec Helm.
-- Mise à jour de Pydantic AI.
-- Mise à jour de Pillow et django-pydantic-field.
+- Refactorisation des tests pour améliorer la qualité du code.
+- Mise à jour de Next.js de la version 15 à la version 16.
+- Mise à jour des dépendances Python pour bénéficier des dernières corrections et améliorations.
+- Suppression des outils de recherche hérités de la configuration du modèle.
+- Optimisation du linting du code frontend.
+- Amélioration de la gestion des couleurs pour les projets.
 
 ### Autres changements
 - Mise à jour des chaînes de traduction (i18n).
-- Correction du type MIME pour les fichiers PPTX.
-- Ajustement temporaire du tableau (array).
-- Correction d'un bug lié à l'affichage des formules mathématiques et des traductions de la carrousel.
+- Ajout d'une blague pour le 1er avril.
+- Mise à jour des descriptions des outils.
+- Correction de problèmes de style CSS dans l'interface utilisateur.
+- Correction d'un bug empêchant les liens sources de s'ouvrir dans un nouvel onglet.
+- Correction d'un bug lié à l'internationalisation (i18n) pour le 1er avril.
+- Suppression de l'affichage du "waffle" si le thème n'est pas français.
+- Amélioration des performances du rendu Markdown en streaming.
+- Correction d'un problème de rendu des formules mathématiques et des traductions.
+- Correction de l'inversion des tests de liveness et readiness pour le déploiement backend.
+- Correction de problèmes de style en mode sombre pour les messages de chat.

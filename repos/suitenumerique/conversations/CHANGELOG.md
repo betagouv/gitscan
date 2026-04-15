@@ -8,6 +8,47 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(back) add ODT parsing support
+
+### Changed
+
+- 🐛(fix) source links should open a new tab
+- 💄(ui) codeblock light mode
+- ✨(front) allow typing while LLM is generating a response
+- ⬆️(dependencies) update back and front dependencies
+- 💄(ui) new header
+- ✨(back) add debug mode setup for local development
+- ⬆️(dependencies) update pydanticai and related dependencies
+- ⚙️(back) get carbon data from albert api provider
+- ✨(tools): update descriptions
+
+### Fixed
+
+- 💄(ui) little fix margin top
+- 💄(ui) review ui for part of the project
+
+## [0.0.15] - 2026-03-31
+
+### Added
+
+- ✨(back) add projects with custom LLM instructions
+- ✨(front) projects management UI
+- 🥚(front) add April Fools day prank
+
+### Changed
+
+- ⬆️(dependencies) upgrade Next.js 15 to 16, upgrade python dependencies
+- ✨(front) rich text copy for Word/Docs paste
+ 
+### Fixed
+
+- 🐛(back) add missing color option for project colors
+- 💄(project) ui fix project
+- 💄(ui) ui fix button css
+- 💄(ui) ui fix model selector css
+
 ## [0.0.14] - 2026-03-11
 
 ### Added
@@ -57,7 +98,7 @@ and this project adheres to
 
 ### Fixed
 
--  🐛(back) cast collection Ids to API expected types
+- 🐛(back) cast collection Ids to API expected types
 
 ## [0.0.12] - 2026-01-27
 
@@ -77,14 +118,12 @@ and this project adheres to
 - 📦️(front) update react
 - ✨(chat) generate and edit conversation title
 
-
 ### Fixed
 
 - 🐛(e2e) fix test-e2e-chromium
 - 🐛(back) fix system prompt compatibility with self-hosted models #200
 - ⚰️(back) remove dead code and unused files
 - 🐛(back) prevent tool call timeouts
-
 
 ### Removed
 
@@ -243,8 +282,8 @@ and this project adheres to
 - ✨(onboarding) add activation code logic for launch #62
 - 💄(chat) add code highlighting for LLM responses #67
 
-
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.14...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.15...main
+[0.0.15]: https://github.com/suitenumerique/conversations/releases/v0.0.15
 [0.0.14]: https://github.com/suitenumerique/conversations/releases/v0.0.14
 [0.0.13]: https://github.com/suitenumerique/conversations/releases/v0.0.13
 [0.0.12]: https://github.com/suitenumerique/conversations/releases/v0.0.12
