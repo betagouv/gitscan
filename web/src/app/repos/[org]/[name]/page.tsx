@@ -153,9 +153,7 @@ export default async function RepoDetailPage({ params }: PageProps) {
             </div>
           )}
           {repo.license && (
-            <span className="badge badge-green">
-              {repo.license.name || repo.license.toString()}
-            </span>
+            <span className="badge badge-green">{repo.license.toString()}</span>
           )}
           {repo.hasDocumentation && (
             <span className="badge badge-blue">Documentation</span>

@@ -70,9 +70,7 @@ export function RepoCard({ repo }: RepoCardProps) {
         {/* Badges */}
         <div className="flex flex-wrap gap-1.5 mb-3">
           {repo.license && (
-            <span className="badge badge-green">
-              {repo.license.name || repo.license.toString()}
-            </span>
+            <span className="badge badge-green">{repo.license.toString()}</span>
           )}
           {repo.hasDocumentation && (
             <span className="badge badge-blue">Docs</span>

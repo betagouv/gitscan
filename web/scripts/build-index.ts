@@ -10,10 +10,10 @@ import type {
 
 function getGitLastModified(filePath: string): string | null {
   try {
-    const result = execSync(
-      `git log -1 --format="%aI" -- "${filePath}"`,
-      { encoding: "utf-8", stdio: ["pipe", "pipe", "ignore"] }
-    ).trim();
+    const result = execSync(`git log -1 --format="%aI" -- "${filePath}"`, {
+      encoding: "utf-8",
+      stdio: ["pipe", "pipe", "ignore"],
+    }).trim();
     return result || null;
   } catch {
     return null;
@@ -122,7 +122,11 @@ async function buildIndex() {
       const content = fs.readFileSync(orgChangelogPath, "utf-8").trim();
       if (content) {
         const generatedAt = getGitLastModified(orgChangelogPath);
-        orgChangelogs.push({ organization: org, changelog: content, changelogGeneratedAt: generatedAt });
+        orgChangelogs.push({
+          organization: org,
+          changelog: content,
+          changelogGeneratedAt: generatedAt,
+        });
       }
     } else {
       orgChangelogs.push({ organization: org, changelog: "" });
