@@ -3,10 +3,6 @@
 │   └── mcp_settings.json
 ├── .clinerules
 ├── .env.example
-├── .falcon
-│   ├── CONTEXT.md
-│   └── artifacts
-│       └── metadata.json
 ├── .github
 │   └── workflows
 │       ├── claude-issue.yml
@@ -26,8 +22,17 @@
 ├── alembic
 │   ├── env.py
 │   └── versions
-│       └── 070bc60dc466_create_manifest_and_cache_tables.py
+│       ├── 070bc60dc466_create_manifest_and_cache_tables.py
+│       ├── 3f8a2c1d9b47_create_qe_ingestion_tables.py
+│       ├── a1b2c3d4e5f6_add_objet_to_questions.py
+│       ├── b3c4d5e6f7a8_extract_reponses_table.py
+│       ├── c45166ba8ead_drop_is_social_from_ministeres.py
+│       ├── d7e8f9a0b1c2_add_questions_query_indices.py
+│       ├── e1f2a3b4c5d6_add_question_clusters_tables.py
+│       └── f2a3b4c5d6e7_simplify_question_clusters.py
 ├── alembic.ini
+├── api
+│   └── main.py
 ├── docker-compose.yml
 ├── poetry.lock
 ├── pyproject.toml
@@ -43,14 +48,24 @@
 │   ├── db.py
 │   ├── documents.py
 │   ├── hashing.py
-│   ├── ingestion.py
+│   ├── ingestion_an.py
+│   ├── ingestion_senat.py
 │   ├── llm_duties.py
-│   └── main.py
+│   ├── main.py
+│   ├── models.py
+│   ├── office_ingestion.py
+│   └── rate_limiter.py
 └── scripts
-    ├── assign_questions_to_expert.py
-    ├── chat_test.py
-    ├── embedding_test.py
-    ├── eval_assignments.py
-    ├── ingest_job_descriptions.py
+    ├── assign_qe_to_office.py
+    ├── download_an_legacy.py
+    ├── download_senat.py
+    ├── embed_questions.py
+    ├── eval_office_assignment.py
+    ├── eval_question_similarity.py
+    ├── find_similar_questions.py
+    ├── ingest_an_legacy.py
+    ├── ingest_office_responsibilities.py
+    ├── ingest_senat.py
+    ├── inspect_db.py
     └── reset_dbs.py
-13 directories, 42 files
+12 directories, 58 files
