@@ -1,0 +1,78 @@
+.
+├── .gitignore
+├── Makefile
+├── README.md
+├── docker
+│   ├── tomcat
+│   │   ├── Dockerfile
+│   │   └── files
+│   │       └── tomcat
+│   │           ├── bin
+│   │           │   └── setenv.sh
+│   │           ├── conf
+│   │           │   ├── console_logging.properties
+│   │           │   └── server.xml
+│   │           └── java_bc.security
+│   └── wildfly
+│       ├── Dockerfile
+│       └── files
+│           └── wildfly
+│               ├── java_bc.security
+│               └── jboss-deployment-structure.xml
+├── docker-compose-tomcat.yaml
+├── docker-compose-wildfly.yaml
+└── kubernetes
+    ├── README.md
+    ├── config
+    │   └── demo
+    │       ├── EncryptModule_Connector.xml
+    │       ├── EncryptModule_Connector_p12.xml
+    │       ├── EncryptModule_Service.xml
+    │       ├── EncryptModule_Service_p12.xml
+    │       ├── SamlEngine.xml
+    │       ├── SamlEngine_Connector.xml
+    │       ├── SamlEngine_Service.xml
+    │       ├── SignModule_Connector.xml
+    │       ├── SignModule_Connector_EC.xml
+    │       ├── SignModule_Connector_EC_p12.xml
+    │       ├── SignModule_Connector_p12.xml
+    │       ├── SignModule_Service.xml
+    │       ├── SignModule_Service_EC.xml
+    │       ├── SignModule_Service_EC_p12.xml
+    │       ├── SignModule_Service_p12.xml
+    │       ├── eidas.xml
+    │       ├── encryptionConf.xml
+    │       ├── idp
+    │       │   ├── additional-attributes.xml
+    │       │   ├── eidas-attributes.xml
+    │       │   ├── idp.properties
+    │       │   └── user.properties
+    │       ├── ignite
+    │       │   └── KeyStore
+    │       │       ├── server.jks
+    │       │       ├── server.p12
+    │       │       ├── trust.jks
+    │       │       └── trust.p12
+    │       ├── igniteNode.xml
+    │       ├── igniteSpecificCommunication.xml
+    │       ├── metadata
+    │       │   ├── MetadataFetcher_Connector.properties
+    │       │   └── MetadataFetcher_Service.properties
+    │       ├── saml-engine-additional-attributes.xml
+    │       ├── sp
+    │       │   ├── additional-attributes.xml
+    │       │   ├── eidas-attributes.xml
+    │       │   └── sp.properties
+    │       ├── specificConnector
+    │       │   ├── additional-attributes.xml
+    │       │   ├── eidas-attributes.xml
+    │       │   ├── specificCommunicationDefinitionConnector.xml
+    │       │   └── specificConnector.xml
+    │       └── specificProxyService
+    │           ├── additional-attributes.xml
+    │           ├── eidas-attributes.xml
+    │           ├── specificCommunicationDefinitionProxyservice.xml
+    │           └── specificProxyService.xml
+    ├── eidas-values.yaml
+    └── kustomization.yaml
+20 directories, 57 files
