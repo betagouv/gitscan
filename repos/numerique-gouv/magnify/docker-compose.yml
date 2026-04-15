@@ -1,0 +1,154 @@
+version: "3.5"
+
+services:
+  postgresql:
+    image: postgres:14.3
+    platform: linux/amd64
+    ports:
+      - "15432:5432"
+    env_file:
+      - env.d/postgresql
+
+  mysql:
+    image: mysql:8.0
+    platform: linux/amd64
+    env_file:
+      - env.d/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+  app:
+    build:
+      context: .
+      target: development
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: magnify:development
+    platform: linux/amd64
+    environment:
+      - DJANGO_CONFIGURATION=Development
+    env_file:
+      - env.d/common
+      - env.d/${DB_HOST:-postgresql}
+    ports:
+      - "8071:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - "${DB_HOST:-postgresql}"
+    stdin_open: true
+    tty: true
+
+  app-demo:
+    build:
+      context: .
+      target: production
+      args:
+        DOCKER_USER: ${DOCKER_USER:-1000}
+    user: ${DOCKER_USER:-1000}
+    image: magnify:production
+    platform: linux/amd64
+    environment:
+      - DJANGO_CONFIGURATION=Production
+    env_file:
+      - env.d/common
+      - env.d/demo
+      - env.d/${DB_HOST:-postgresql}
+    ports:
+      - "8072:8000"
+    depends_on:
+      - "${DB_HOST:-postgresql}"
+
+  nginx:
+    image: nginx
+    ports:
+      - "8070:8070"
+    volumes:
+      - ./docker/files/etc/nginx/${NGINX_CONF:-conf.d}:/etc/nginx/conf.d:ro
+    depends_on:
+      - app-demo
+
+  node:
+    image: node:16.15
+    working_dir: /app/src/frontend
+    user: "${DOCKER_USER:-1000}"
+    volumes:
+      - .:/app
+
+  crowdin:
+    image: crowdin/cli:3.7.8
+    platform: linux/amd64
+    volumes:
+      - ".:/app"
+    env_file:
+      - env.d/crowdin
+    user: "${DOCKER_USER:-1000}"
+    working_dir: /app
+
+  redis-sentinel:
+    image: docker.io/bitnami/redis-sentinel:6.0-debian-10
+    depends_on:
+      - redis-primary
+      - redis-replica1
+      - redis-replica2
+    environment:
+      - REDIS_MASTER_HOST=redis-primary
+
+  redis-primary:
+    image: docker.io/bitnami/redis:6.0-debian-10
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_REPLICATION_MODE=master
+
+  redis-replica1:
+    image: docker.io/bitnami/redis:6.0-debian-10
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-primary
+    depends_on:
+      - redis-primary
+
+  redis-replica2:
+    image: docker.io/bitnami/redis:6.0-debian-10
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-primary
+    depends_on:
+      - redis-primary
+
+  dockerize:
+    image: jwilder/dockerize
+    platform: linux/amd64
+
+
+  kc_postgresql:
+      image: postgres:14.3
+      platform: linux/amd64
+      ports:
+        - "5433:5432"
+      env_file:
+        - env.d/kc_postgresql
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.1
+    volumes:
+      - ./docker/auth/realm.json:/opt/keycloak/data/import/realm.json
+    command:
+      - start-dev
+      - --features=preview
+      - --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL_HOST: kc_postgresql
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_PASSWORD: pass
+      KC_DB_USERNAME: fun
+      KC_DB_SCHEMA: public
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kc_postgresql

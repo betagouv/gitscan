@@ -1,0 +1,44 @@
+{
+  "name": "jitsi-magnify",
+  "version": "0.1.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "turbo run build",
+    "build-demo": "turbo run build --filter=sandbox",
+    "build-magnify": "turbo run build --filter=@openfun/jitsi-magnify",
+    "compile-translations": "turbo run compile-translations",
+    "compile-translations-demo": "turbo run compile-translations --filter=sandbox",
+    "compile-translations-magnify": "turbo run compile-translations --filter=@openfun/jitsi-magnify",
+    "dev": "turbo run dev --parallel",
+    "extract-translations": "turbo run extract-translations",
+    "extract-translations-demo": "turbo run extract-translations --filter=sandbox",
+    "extract-translations-magnify": "turbo run extract-translations --filter=@openfun/jitsi-magnify",
+    "format:check": "turbo run format:check",
+    "format:write": "turbo run format:write",
+    "format-demo:check": "turbo run format:check --filter=sandbox",
+    "format-demo:write": "turbo run format:write --filter=sandbox",
+    "format-magnify:check": "turbo run format:check --filter=@openfun/jitsi-magnify",
+    "format-magnify:write": "turbo run format:write --filter=@openfun/jitsi-magnify",
+    "lint": "turbo run lint",
+    "lint-demo": "turbo run lint --filter=sandbox",
+    "lint-magnify": "turbo run lint --filter=@openfun/jitsi-magnify",
+    "scripts:new-component": "cd scripts && yarn new-component",
+    "scripts:new-icon": "cd scripts && yarn new-icon",
+    "test": "turbo run test --parallel --no-cache",
+    "test-components": "turbo run test --filter=@openfun/jitsi-magnify",
+    "test-demo": "turbo run test --filter=sandbox",
+    "verify-all": "yarn format:check && yarn lint && yarn build && yarn test"
+  },
+  "workspaces": [
+      "sandbox",
+      "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "1.10.14",
+    "@lib/eslint-config": "*",
+    "prettier": "3.0.3"
+  },
+  "packageManager": "yarn@1.22.19"
+}
