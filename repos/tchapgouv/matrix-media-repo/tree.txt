@@ -1,0 +1,405 @@
+.
+├── .dockerignore
+├── .github
+│   └── workflows
+│       ├── build-libheif.sh
+│       ├── download_providers.yml
+│       └── main.yml
+├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── api
+│   ├── _apimeta
+│   │   └── auth.go
+│   ├── _auth_cache
+│   │   └── auth_cache.go
+│   ├── _debug
+│   │   └── pprof.go
+│   ├── _responses
+│   │   ├── content.go
+│   │   ├── errors.go
+│   │   └── meta.go
+│   ├── _routers
+│   │   ├── 00-install-params.go
+│   │   ├── 01-install_metadata.go
+│   │   ├── 02-install-headers.go
+│   │   ├── 03-host_detection.go
+│   │   ├── 04-request-metrics.go
+│   │   ├── 97-optional-access-token.go
+│   │   ├── 97-require-access-token.go
+│   │   ├── 97-require-repo-admin.go
+│   │   ├── 98-use-rcontext.go
+│   │   └── 99-response-metrics.go
+│   ├── custom
+│   │   ├── datastores.go
+│   │   ├── exports.go
+│   │   ├── federation.go
+│   │   ├── health.go
+│   │   ├── imports.go
+│   │   ├── media_attributes.go
+│   │   ├── purge.go
+│   │   ├── quarantine.go
+│   │   ├── tasks.go
+│   │   ├── usage.go
+│   │   └── version.go
+│   ├── r0
+│   │   ├── download.go
+│   │   ├── identicon.go
+│   │   ├── logout.go
+│   │   ├── preview_url.go
+│   │   ├── public_config.go
+│   │   ├── thumbnail.go
+│   │   ├── upload_async.go
+│   │   └── upload_sync.go
+│   ├── router.go
+│   ├── routes.go
+│   ├── unstable
+│   │   ├── info.go
+│   │   ├── local_copy.go
+│   │   └── public_usage.go
+│   ├── v1
+│   │   └── create.go
+│   └── webserver.go
+├── archival
+│   ├── dir_part_persister.go
+│   ├── entity_export.go
+│   └── v2archive
+│       ├── manifest.go
+│       ├── reader.go
+│       └── writer.go
+├── assets
+│   ├── default-artwork.png
+│   └── providers.json
+├── build-dist.sh
+├── build.sh
+├── cmd
+│   ├── compile_assets
+│   │   └── main.go
+│   ├── export_synapse_for_import
+│   │   └── main.go
+│   ├── gdpr_export
+│   │   └── main.go
+│   ├── gdpr_import
+│   │   └── main.go
+│   ├── import_synapse
+│   │   └── main.go
+│   ├── media_repo
+│   │   ├── main.go
+│   │   └── reloads.go
+│   ├── plugin_antispam_ocr
+│   │   └── main.go
+│   └── s3_consistency_check
+│       └── main.go
+├── common
+│   ├── assets
+│   │   └── process.go
+│   ├── config
+│   │   ├── access.go
+│   │   ├── conf_domain.go
+│   │   ├── conf_main.go
+│   │   ├── conf_min_shared.go
+│   │   ├── models_domain.go
+│   │   ├── models_main.go
+│   │   ├── util.go
+│   │   └── watch.go
+│   ├── context.go
+│   ├── errorcodes.go
+│   ├── errors.go
+│   ├── globals
+│   │   └── reload.go
+│   ├── logging
+│   │   └── logger.go
+│   ├── rcontext
+│   │   └── request_context.go
+│   ├── runtime
+│   │   └── init.go
+│   └── version
+│       └── version.go
+├── config.sample.yaml
+├── database
+│   ├── db.go
+│   ├── json_value.go
+│   ├── table_blurhashes.go
+│   ├── table_expiring_media.go
+│   ├── table_export_parts.go
+│   ├── table_exports.go
+│   ├── table_last_access.go
+│   ├── table_media.go
+│   ├── table_media_attributes.go
+│   ├── table_media_hold.go
+│   ├── table_reserved_media.go
+│   ├── table_tasks.go
+│   ├── table_thumbnails.go
+│   ├── table_url_previews.go
+│   ├── table_user_stats.go
+│   └── virtualtable_metadata.go
+├── datastores
+│   ├── buffer.go
+│   ├── delete.go
+│   ├── download.go
+│   ├── info.go
+│   ├── kind.go
+│   ├── locate.go
+│   ├── pick.go
+│   ├── s3.go
+│   └── upload.go
+├── dev
+│   ├── docker-compose.yaml
+│   ├── element-config.json
+│   ├── homeserver.nginx.conf
+│   ├── redis.conf
+│   └── synapse-db
+│       └── .gitignore
+├── docker
+│   └── run.sh
+├── docs
+│   ├── admin.md
+│   ├── cache.md
+│   ├── config.md
+│   ├── contrib
+│   │   └── delegation.md
+│   ├── grafana.json
+│   ├── internals
+│   │   └── Media Repo Flow.png
+│   └── redis.md
+├── errcache
+│   ├── cache.go
+│   └── init.go
+├── go.mod
+├── go.sum
+├── homeserver_interop
+│   └── synapse
+│       ├── api.go
+│       └── db.go
+├── matrix
+│   ├── admin.go
+│   ├── auth.go
+│   ├── client_server.go
+│   ├── federation.go
+│   ├── matrix.go
+│   └── responses.go
+├── metrics
+│   ├── metrics.go
+│   └── webserver.go
+├── migrations
+│   ├── 10_add_background_tasks_table_down.sql
+│   ├── 10_add_background_tasks_table_up.sql
+│   ├── 11_add_reserved_ids_table_down.sql
+│   ├── 11_add_reserved_ids_table_up.sql
+│   ├── 12_user_id_indexes_down.sql
+│   ├── 12_user_id_indexes_up.sql
+│   ├── 13_add_export_tables_down.sql
+│   ├── 13_add_export_tables_up.sql
+│   ├── 14_add_blurhash_tables_down.sql
+│   ├── 14_add_blurhash_tables_up.sql
+│   ├── 15_add_language_url_previews_down.sql
+│   ├── 15_add_language_url_previews_up.sql
+│   ├── 16_add_media_attributes_table_down.sql
+│   ├── 16_add_media_attributes_table_up.sql
+│   ├── 17_add_user_stats_table_down.sql
+│   ├── 17_add_user_stats_table_up.sql
+│   ├── 18_populate_user_stats_table_down.sql
+│   ├── 18_populate_user_stats_table_up.sql
+│   ├── 19_create_expiring_media_table_down.sql
+│   ├── 19_create_expiring_media_table_up.sql
+│   ├── 1_create_tables_down.sql
+│   ├── 1_create_tables_up.sql
+│   ├── 20_create_id_hold_table_down.sql
+│   ├── 20_create_id_hold_table_up.sql
+│   ├── 21_not_null_end_ts_background_tasks_down.sql
+│   ├── 21_not_null_end_ts_background_tasks_up.sql
+│   ├── 22_add_thumb_creation_index_down.sql
+│   ├── 22_add_thumb_creation_index_up.sql
+│   ├── 23_add_datastore_locations_indexes_down.sql
+│   ├── 23_add_datastore_locations_indexes_up.sql
+│   ├── 24_add_timestamp_to_media_id_hold_down.sql
+│   ├── 24_add_timestamp_to_media_id_hold_up.sql
+│   ├── 25_try_create_expiring_media_table_down.sql
+│   ├── 25_try_create_expiring_media_table_up.sql
+│   ├── 26_add_datastore_id_indexes_down.sql
+│   ├── 26_add_datastore_id_indexes_up.sql
+│   ├── 2_add_animated_col_down.sql
+│   ├── 2_add_animated_col_up.sql
+│   ├── 3_add_quarantine_flag_down.sql
+│   ├── 3_add_quarantine_flag_up.sql
+│   ├── 4_add_hash_to_thumbnails_down.sql
+│   ├── 4_add_hash_to_thumbnails_up.sql
+│   ├── 5_make_thumbnail_hash_required_down.sql
+│   ├── 5_make_thumbnail_hash_required_up.sql
+│   ├── 6_track_last_accessed_times_down.sql
+│   ├── 6_track_last_accessed_times_up.sql
+│   ├── 7_add_datastore_down.sql
+│   ├── 7_add_datastore_up.sql
+│   ├── 8_sha256_indexes_down.sql
+│   ├── 8_sha256_indexes_up.sql
+│   ├── 9_origin_indexes_down.sql
+│   └── 9_origin_indexes_up.sql
+├── notifier
+│   ├── tasks.go
+│   └── uploads.go
+├── pipelines
+│   ├── _steps
+│   │   ├── datastore_op
+│   │   │   └── put_and_return_stream.go
+│   │   ├── download
+│   │   │   ├── open_stream.go
+│   │   │   ├── try_download.go
+│   │   │   └── wait.go
+│   │   ├── meta
+│   │   │   └── flag_access.go
+│   │   ├── quarantine
+│   │   │   ├── logic.go
+│   │   │   └── thumbnail.go
+│   │   ├── quota
+│   │   │   └── check.go
+│   │   ├── thumbnails
+│   │   │   ├── generate.go
+│   │   │   └── pick_dimensions.go
+│   │   ├── upload
+│   │   │   ├── blurhash_async.go
+│   │   │   ├── deduplicate.go
+│   │   │   ├── generate_media_id.go
+│   │   │   ├── limit.go
+│   │   │   ├── lock.go
+│   │   │   ├── quarantine.go
+│   │   │   ├── redis_async.go
+│   │   │   └── spam.go
+│   │   └── url_preview
+│   │       ├── preview.go
+│   │       ├── process.go
+│   │       └── upload_image.go
+│   ├── pipeline_create
+│   │   └── pipeline.go
+│   ├── pipeline_download
+│   │   └── pipeline.go
+│   ├── pipeline_preview
+│   │   └── pipeline.go
+│   ├── pipeline_thumbnail
+│   │   └── pipeline.go
+│   └── pipeline_upload
+│       ├── pipeline.go
+│       └── pipeline2.go
+├── plugins
+│   ├── manager.go
+│   ├── mmr_plugin.go
+│   ├── plugin_common
+│   │   └── handshake.go
+│   └── plugin_interfaces
+│       └── antispam.go
+├── pool
+│   ├── init.go
+│   └── queue.go
+├── redislib
+│   ├── cache.go
+│   ├── connection.go
+│   ├── locking.go
+│   └── pubsub.go
+├── tasks
+│   ├── all.go
+│   ├── exec.go
+│   ├── schedule.go
+│   └── task_runner
+│       ├── 00-internal.go
+│       ├── datastore_migrate.go
+│       ├── export_data.go
+│       ├── import_data.go
+│       ├── purge.go
+│       ├── purge_held_media_ids.go
+│       ├── purge_previews.go
+│       ├── purge_remote_media.go
+│       ├── purge_thumbnails.go
+│       └── quarantine.go
+├── templates
+│   ├── export_index.html
+│   └── view_export.html
+├── templating
+│   ├── models.go
+│   └── templates.go
+├── test
+│   ├── templates
+│   │   ├── minio-config.sh
+│   │   ├── mmr.config.yaml
+│   │   ├── synapse.homeserver.yaml
+│   │   └── synapse.log.config
+│   ├── test_internals
+│   │   ├── deps.go
+│   │   ├── deps_docker_context.go
+│   │   ├── deps_minio.go
+│   │   ├── deps_mmr.go
+│   │   ├── deps_network.go
+│   │   ├── deps_synapse.go
+│   │   ├── testcontainers_ext.go
+│   │   ├── util.go
+│   │   ├── util_client.go
+│   │   └── util_client_api_types.go
+│   └── upload_suite_test.go
+├── thumbnailing
+│   ├── i
+│   │   ├── 01-factories.go
+│   │   ├── apng.go
+│   │   ├── bmp.go
+│   │   ├── flac.go
+│   │   ├── gif.go
+│   │   ├── heif.go
+│   │   ├── jpegxl.go
+│   │   ├── jpg.go
+│   │   ├── mp3.go
+│   │   ├── mp4.go
+│   │   ├── ogg.go
+│   │   ├── png.go
+│   │   ├── svg.go
+│   │   ├── tiff.go
+│   │   ├── wav.go
+│   │   └── webp.go
+│   ├── m
+│   │   ├── audio_info.go
+│   │   └── thumbnail.go
+│   ├── thumbnail.go
+│   └── u
+│       ├── dimensions.go
+│       ├── encode.go
+│       ├── exif.go
+│       ├── framing.go
+│       ├── metadata.go
+│       └── sample.go
+├── url_previewing
+│   ├── m
+│   │   ├── errors.go
+│   │   ├── preview_result.go
+│   │   └── url_payload.go
+│   ├── p
+│   │   ├── calculated.go
+│   │   ├── oembed.go
+│   │   └── opengraph.go
+│   └── u
+│       ├── acl.go
+│       ├── http.go
+│       └── summarize.go
+└── util
+    ├── arrays.go
+    ├── config.go
+    ├── encoding.go
+    ├── http.go
+    ├── identifiers.go
+    ├── ids
+    │   ├── snowflake.go
+    │   └── unique.go
+    ├── math.go
+    ├── mime.go
+    ├── mxc.go
+    ├── random.go
+    ├── readers
+    │   ├── buffer_reads_reader.go
+    │   ├── cancel_closer.go
+    │   ├── maybe_closer.go
+    │   ├── rewind_reader.go
+    │   └── temp_file_closer.go
+    ├── sfcache
+    │   └── sfcache.go
+    ├── strings.go
+    ├── time.go
+    └── urls.go
+87 directories, 317 files
