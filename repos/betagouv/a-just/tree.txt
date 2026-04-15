@@ -252,7 +252,8 @@
 │   │   │       │   ├── 202511171228-clean-matricule-ano.js
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
-│   │   │       │   └── 202601191000-clean-users.js
+│   │   │       │   ├── 202601191000-clean-users.js
+│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
 │   │   │       ├── production
 │   │   │       │   ├── 202110271703-add-hr-categories-fixed.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -342,7 +343,8 @@
 │   │   │       │   ├── 202511071222-update-users-access.js
 │   │   │       │   ├── 202511171228-clean-matricule-ano.js
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
-│   │   │       │   └── 202601151002-update-users-access-to-reaffectator.js
+│   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
+│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
 │   │   │       ├── sandbox
 │   │   │       │   ├── 202110271703-add-hr-categories.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -434,7 +436,8 @@
 │   │   │       │   ├── 202511171228-clean-matricule-ano.js
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
-│   │   │       │   └── 202601191000-clean-users.js
+│   │   │       │   ├── 202601191000-clean-users.js
+│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
 │   │   │       ├── staging
 │   │   │       │   ├── 202110271703-add-hr-categories.js
 │   │   │       │   ├── 202110271703-add-hr-functions.js
@@ -530,7 +533,8 @@
 │   │   │       │   ├── 202511171228-clean-matricule-ano.js
 │   │   │       │   ├── 202512041430-add-group-to-backup.js
 │   │   │       │   ├── 202601151002-update-users-access-to-reaffectator.js
-│   │   │       │   └── 202601191000-clean-users.js
+│   │   │       │   ├── 202601191000-clean-users.js
+│   │   │       │   └── 202602241249-fix-JA-to-AJ.js
 │   │   │       └── test
 │   │   │           ├── 202110150958-add-users.js
 │   │   │           ├── 202110271703-add-hr-categories.js
@@ -714,141 +718,45 @@
 │   │       ├── types.js
 │   │       ├── utils.js
 │   │       └── ventilator.js
-│   ├── test
-│   │   ├── api
-│   │   │   ├── RouteActivities.test.js
-│   │   │   ├── RouteCalculator.test.js
-│   │   │   ├── RouteChangeUserData.test.js
-│   │   │   ├── RouteConnexion.test.js
-│   │   │   ├── RouteContentieuxOptions.test.js
-│   │   │   ├── RouteHR.test.js
-│   │   │   ├── RouteImports.test.js
-│   │   │   ├── RoutePanorama.test.js
-│   │   │   ├── RouteSimulator.test.js
-│   │   │   ├── RouteUser.test.js
-│   │   │   └── RouteVentilateur.test.js
-│   │   ├── constants
-│   │   │   ├── categories.js
-│   │   │   ├── hrCategories.js
-│   │   │   ├── juridiction.js
-│   │   │   └── user.js
-│   │   ├── db
-│   │   │   ├── init-db.sh
-│   │   │   └── test.sql.gz
-│   │   ├── files
-│   │   │   ├── A-JUST_nomenclature.csv
-│   │   │   └── hr-sample.csv
-│   │   ├── index.test.js
-│   │   ├── routes
-│   │   │   ├── activities.js
-│   │   │   ├── calculator.js
-│   │   │   ├── contentieux.js
-│   │   │   ├── hr.js
-│   │   │   ├── panorama.js
-│   │   │   ├── simulator.js
-│   │   │   ├── testRoute.js
-│   │   │   ├── user.js
-│   │   │   └── ventilateur.js
-│   │   └── utils
-│   │       ├── axios.js
-│   │       ├── date.js
-│   │       └── math.js
-│   └── vendor
-│       └── koa-smart
-│           ├── .esdoc.json
-│           ├── .eslintrc.js
-│           ├── .travis.yml
-│           ├── README-V1.md
-│           ├── README.md
-│           ├── docs
-│           │   ├── asset
-│           │   │   └── doc-example.png
-│           │   ├── auto-doc.md
-│           │   ├── type-system.md
-│           │   └── upgrade-to-v2.md
-│           ├── jsconfig.json
-│           ├── mocha.opts
-│           ├── package-lock.json
-│           ├── package.json
-│           ├── src
-│           │   ├── App.ts
-│           │   ├── index.ts
-│           │   ├── middlewares
-│           │   │   ├── addDefaultBody.ts
-│           │   │   ├── handleError.ts
-│           │   │   ├── index.ts
-│           │   │   ├── logger.ts
-│           │   │   └── notFound.ts
-│           │   ├── routes
-│           │   │   ├── Route.ts
-│           │   │   └── RouteDecorators.ts
-│           │   ├── types
-│           │   │   ├── TypeAny.ts
-│           │   │   ├── TypeArray.ts
-│           │   │   ├── TypeBinary.ts
-│           │   │   ├── TypeBoolean.ts
-│           │   │   ├── TypeDate.ts
-│           │   │   ├── TypeEnum.ts
-│           │   │   ├── TypeNumber.ts
-│           │   │   ├── TypeObject.ts
-│           │   │   ├── TypeOneOf.ts
-│           │   │   ├── TypeString.ts
-│           │   │   ├── TypeTyping.ts
-│           │   │   ├── i18n
-│           │   │   │   ├── en.json
-│           │   │   │   └── fr.json
-│           │   │   └── index.ts
-│           │   └── utils
-│           │       ├── ErrorAccess.ts
-│           │       ├── ErrorApp.ts
-│           │       ├── ErrorYt.ts
-│           │       ├── ErrorYtBody.ts
-│           │       ├── ErrorYtQuery.ts
-│           │       ├── ErrorYtReturn.ts
-│           │       ├── StatusCode.ts
-│           │       ├── docGenerator.ts
-│           │       ├── index.ts
-│           │       └── utils.ts
-│           ├── test
-│           │   ├── _createserver.ts
-│           │   ├── _routes
-│           │   │   ├── RouteDocs.ts
-│           │   │   ├── RouteIndex.ts
-│           │   │   ├── RouteMiddlewares.ts
-│           │   │   ├── RouteParams.ts
-│           │   │   ├── RouteRateLimit.ts
-│           │   │   ├── RouteReturnTypes.ts
-│           │   │   ├── accesses
-│           │   │   │   ├── RouteAccess.ts
-│           │   │   │   └── RouteNotAccess.ts
-│           │   │   ├── disable
-│           │   │   │   ├── RouteDisabled.ts
-│           │   │   │   ├── RouteEnabled.ts
-│           │   │   │   └── RouteUnDisabled.ts
-│           │   │   └── path
-│           │   │       ├── RouteBasePath.ts
-│           │   │       └── RoutePathClass.ts
-│           │   ├── locales
-│           │   │   ├── en.js
-│           │   │   ├── fr.js
-│           │   │   └── types
-│           │   │       ├── en.json
-│           │   │       └── fr.json
-│           │   ├── routes
-│           │   │   ├── Route.spec.ts
-│           │   │   └── RouteDecorator.spec.ts
-│           │   └── types
-│           │       ├── TypeAny.spec.ts
-│           │       ├── TypeArray.spec.ts
-│           │       ├── TypeBinary.spec.ts
-│           │       ├── TypeBoolean.spec.ts
-│           │       ├── TypeDate.spec.ts
-│           │       ├── TypeEnum.spec.ts
-│           │       ├── TypeNumber.spec.ts
-│           │       ├── TypeObject.spec.ts
-│           │       ├── TypeOneOf.spec.ts
-│           │       └── TypeString.spec.ts
-│           └── tsconfig.json
+│   └── test
+│       ├── api
+│       │   ├── RouteActivities.test.js
+│       │   ├── RouteCalculator.test.js
+│       │   ├── RouteChangeUserData.test.js
+│       │   ├── RouteConnexion.test.js
+│       │   ├── RouteContentieuxOptions.test.js
+│       │   ├── RouteHR.test.js
+│       │   ├── RouteImports.test.js
+│       │   ├── RoutePanorama.test.js
+│       │   ├── RouteSimulator.test.js
+│       │   ├── RouteUser.test.js
+│       │   └── RouteVentilateur.test.js
+│       ├── constants
+│       │   ├── categories.js
+│       │   ├── hrCategories.js
+│       │   ├── juridiction.js
+│       │   └── user.js
+│       ├── db
+│       │   ├── init-db.sh
+│       │   └── test.sql.gz
+│       ├── files
+│       │   ├── A-JUST_nomenclature.csv
+│       │   └── hr-sample.csv
+│       ├── index.test.js
+│       ├── routes
+│       │   ├── activities.js
+│       │   ├── calculator.js
+│       │   ├── contentieux.js
+│       │   ├── hr.js
+│       │   ├── panorama.js
+│       │   ├── simulator.js
+│       │   ├── testRoute.js
+│       │   ├── user.js
+│       │   └── ventilateur.js
+│       └── utils
+│           ├── axios.js
+│           ├── date.js
+│           └── math.js
 ├── docker-compose-e2e.test.yml
 ├── docker-compose.dev.yml
 ├── docker-compose.production.yml
@@ -1847,25 +1755,19 @@
 │   ├── tsconfig.json
 │   └── tsconfig.spec.json
 ├── install.sh
+├── package-lock.json
 ├── package.json
 ├── samples
 │   └── A-JUST_nomenclature.csv
-├── scripts
-│   ├── append-videos-to-report.js
-│   ├── build-static-report.js
-│   ├── create-db-test.js
-│   ├── extract-failures.js
-│   ├── run-e2e.sh
-│   ├── run-non-regression-tests-nightly.sh
-│   ├── run-non-regression-tests.sh
-│   ├── run-pre-collecte-2026-test.sh
-│   ├── section-mochawesome.js
-│   └── setup-sandbox-reference.sh
-└── tools
-    └── comparateur-extracteurs
-        ├── README.md
-        ├── package.json
-        └── src
-            ├── cli.js
-            └── compare.js
-279 directories, 1591 files
+└── scripts
+    ├── append-videos-to-report.js
+    ├── build-static-report.js
+    ├── create-db-test.js
+    ├── extract-failures.js
+    ├── run-e2e.sh
+    ├── run-non-regression-tests-nightly.sh
+    ├── run-non-regression-tests.sh
+    ├── run-pre-collecte-2026-test.sh
+    ├── section-mochawesome.js
+    └── setup-sandbox-reference.sh
+257 directories, 1515 files
