@@ -11,7 +11,6 @@
 │       ├── integration-tests.yml
 │       └── labeler.yml
 ├── .gitignore
-├── .prettierrc
 ├── .vscode
 │   ├── README.md
 │   ├── launch.json
@@ -98,7 +97,6 @@
 │   ├── deploy
 │   │   └── pm2
 │   │       └── app.json
-│   ├── eslint.config.js
 │   ├── fixtures
 │   │   ├── User.yml
 │   │   └── xmlMockedString.js
@@ -505,9 +503,11 @@
 │   │   │   ├── src
 │   │   │   │   ├── app.module.ts
 │   │   │   │   ├── config
+│   │   │   │   │   ├── api-entreprise.ts
 │   │   │   │   │   ├── app.ts
 │   │   │   │   │   ├── email-validator.ts
 │   │   │   │   │   ├── exceptions.ts
+│   │   │   │   │   ├── hyyyperbridge-broker.ts
 │   │   │   │   │   ├── identity-provider-adapter-mongo.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── logger-legacy.ts
@@ -519,6 +519,8 @@
 │   │   │   │   │   ├── service-provider-adapter-mongo.ts
 │   │   │   │   │   └── session.ts
 │   │   │   │   ├── controllers
+│   │   │   │   │   ├── health.controller.spec.ts
+│   │   │   │   │   ├── health.controller.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── interaction.controller.spec.ts
 │   │   │   │   │   ├── interaction.controller.ts
@@ -562,8 +564,6 @@
 │   │   │   │   │   ├── core-fca-account-blocked.exception.ts
 │   │   │   │   │   ├── core-fca-agent-not-from-public-service.exception.ts
 │   │   │   │   │   ├── core-fca-base.exception.ts
-│   │   │   │   │   ├── core-fca-idp-configuration.exception.ts
-│   │   │   │   │   ├── core-fca-idp-disabled.exception.ts
 │   │   │   │   │   ├── core-fca-invalid-email-domain.exception.ts
 │   │   │   │   │   ├── core-fca-invalid-identity.exception.spec.ts
 │   │   │   │   │   ├── core-fca-invalid-identity.exception.ts
@@ -613,7 +613,8 @@
 │   │   │   │   │   │   ├── email-fca.js
 │   │   │   │   │   │   ├── email-suggestion.js
 │   │   │   │   │   │   ├── form-validation.js
-│   │   │   │   │   │   └── matomo.js
+│   │   │   │   │   │   ├── matomo.js
+│   │   │   │   │   │   └── unshow-notice.js
 │   │   │   │   │   └── robots.txt
 │   │   │   │   ├── services
 │   │   │   │   │   ├── core-fca-controller.service.spec.ts
@@ -638,6 +639,7 @@
 │   │   │   │       │   ├── footer.ejs
 │   │   │   │       │   ├── head.ejs
 │   │   │   │       │   ├── header.ejs
+│   │   │   │       │   ├── notice.ejs
 │   │   │   │       │   ├── scripts.ejs
 │   │   │   │       │   └── skiplinks.ejs
 │   │   │   │       └── interaction.ejs
@@ -695,7 +697,6 @@
 │   ├── deploy
 │   │   └── pm2
 │   │       └── app.json
-│   ├── eslint.config.js
 │   ├── global.d.ts
 │   ├── jest-setup-file.ts
 │   ├── jest.config.ts
@@ -710,6 +711,23 @@
 │   │   │   │   └── services
 │   │   │   │       ├── account-fca.service.spec.ts
 │   │   │   │       ├── account-fca.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── api-entreprise
+│   │   │   ├── src
+│   │   │   │   ├── api-entreprise.module.spec.ts
+│   │   │   │   ├── api-entreprise.module.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── api-entreprise.config.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── mocks
+│   │   │   │   │   └── 13002526500013.json
+│   │   │   │   └── services
+│   │   │   │       ├── api-entreprise-client.service.spec.ts
+│   │   │   │       ├── api-entreprise-client.service.ts
+│   │   │   │       ├── api-entreprise.service.spec.ts
+│   │   │   │       ├── api-entreprise.service.ts
 │   │   │   │       └── index.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── app
@@ -753,6 +771,18 @@
 │   │   │   │       ├── async-local-storage-request.middleware.ts
 │   │   │   │       ├── async-local-storage.middleware.spec.ts
 │   │   │   │       ├── async-local-storage.middleware.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── cached-organization
+│   │   │   ├── src
+│   │   │   │   ├── cached-organization.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── schemas
+│   │   │   │   │   ├── cached-organization.schema.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── services
+│   │   │   │       ├── cached-organization.service.spec.ts
+│   │   │   │       ├── cached-organization.service.ts
 │   │   │   │       └── index.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── common
@@ -898,9 +928,7 @@
 │   │   │   │   ├── exceptions
 │   │   │   │   │   ├── base.exception.ts
 │   │   │   │   │   ├── enriched-display-base.exception.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── validation-exception.spec.ts
-│   │   │   │   │   └── validation-exception.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── exceptions.module.ts
 │   │   │   │   ├── filters
 │   │   │   │   │   ├── fc-web-html-exception.filter.spec.ts
@@ -911,6 +939,8 @@
 │   │   │   │   │   ├── unknown-html-exception.filter.spec.ts
 │   │   │   │   │   └── unknown-html-exception.filter.ts
 │   │   │   │   ├── helpers
+│   │   │   │   │   ├── cause.helper.spec.ts
+│   │   │   │   │   ├── cause.helper.ts
 │   │   │   │   │   ├── code.helper.spec.ts
 │   │   │   │   │   ├── code.helper.ts
 │   │   │   │   │   ├── exception-display.helper.spec.ts
@@ -1058,9 +1088,9 @@
 │   │   ├── oidc
 │   │   │   ├── src
 │   │   │   │   ├── dto
-│   │   │   │   │   ├── client-metadata.dto.ts
+│   │   │   │   │   ├── idp-metadata.dto.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── issuer-metadata.dto.ts
+│   │   │   │   │   └── pcf-client-metadata.dto.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── interfaces
 │   │   │   │   │   ├── identity-provider.interface.ts
@@ -1082,40 +1112,30 @@
 │   │   │   ├── README.md
 │   │   │   ├── src
 │   │   │   │   ├── dto
-│   │   │   │   │   ├── crsf-token.dto.ts
 │   │   │   │   │   ├── identity-service.dto.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── oidc-client-config.dto.ts
 │   │   │   │   ├── enums
 │   │   │   │   │   ├── error-code.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── oidc-client-class.enum.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── exceptions
+│   │   │   │   │   ├── authorization-response-error.exception.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── oidc-client-base.exception.ts
-│   │   │   │   │   ├── oidc-client-get-end-session-url.exception.ts
 │   │   │   │   │   ├── oidc-client-idp-disabled.exception.ts
 │   │   │   │   │   ├── oidc-client-idp-not-found.exception.ts
-│   │   │   │   │   ├── oidc-client-invalid-state.exception.ts
 │   │   │   │   │   ├── oidc-client-issuer-discovery-failed.exception.ts
-│   │   │   │   │   ├── oidc-client-missing-state.exception.ts
 │   │   │   │   │   ├── oidc-client-token-failed.exception.ts
-│   │   │   │   │   ├── oidc-client-token-result-failed.exception.ts
+│   │   │   │   │   ├── oidc-client-token-validation-failed.exception.ts
 │   │   │   │   │   └── oidc-client-userinfo-failed.exception.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── interfaces
-│   │   │   │   │   ├── identity-adapter.interface.ts
 │   │   │   │   │   ├── identity-provider-adapter.interface.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── oidc-client-session-params.interface.ts
 │   │   │   │   ├── oidc-client.module.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── oidc-client-config.service.spec.ts
-│   │   │   │   │   ├── oidc-client-config.service.ts
-│   │   │   │   │   ├── oidc-client-issuer.service.spec.ts
-│   │   │   │   │   ├── oidc-client-issuer.service.ts
-│   │   │   │   │   ├── oidc-client-utils.service.spec.ts
-│   │   │   │   │   ├── oidc-client-utils.service.ts
 │   │   │   │   │   ├── oidc-client.service.spec.ts
 │   │   │   │   │   └── oidc-client.service.ts
 │   │   │   │   └── tokens
@@ -1426,10 +1446,6 @@
 │           ├── postgres.key
 │           ├── postgres.partner.client.crt
 │           ├── postgres.partner.client.key
-│           ├── redis-pwd.crt
-│           ├── redis-pwd.key
-│           ├── redis.crt
-│           ├── redis.key
 │           └── requests
 │               ├── app-req.conf
 │               ├── app.csr
@@ -1440,9 +1456,7 @@
 │               ├── postgres.fc-apps.client-req.conf
 │               ├── postgres.fc-apps.client.csr
 │               ├── postgres.partner.client-req.conf
-│               ├── postgres.partner.client.csr
-│               ├── redis-pwd-req.conf
-│               └── redis-pwd.csr
+│               └── postgres.partner.client.csr
 ├── pcdbapi
 │   ├── .dockerignore
 │   ├── .gitignore
@@ -1637,4 +1651,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-367 directories, 1272 files
+376 directories, 1277 files
