@@ -1,45 +1,64 @@
 .
+├── .gitignore
 ├── bwapi
 │   ├── README.txt
 │   ├── __init__.py
 │   └── server.py
 ├── food
-│   └── metadata
-│       ├── .gitignore
-│       ├── README.md
-│       ├── export.py
-│       ├── foodon_loader.py
-│       ├── generated
-│       │   ├── fichier_final_FR.csv
-│       │   ├── fichier_final_OI.csv
-│       │   ├── new_activities.json
-│       │   ├── new_activities_FR.json
-│       │   ├── new_activities_OI.json
-│       │   ├── predictions.csv
-│       │   ├── predictions_FR.csv
-│       │   └── predictions_OI.csv
-│       ├── predict.py
+│   ├── metadata
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── export.py
+│   │   ├── foodon_loader.py
+│   │   ├── generated
+│   │   │   ├── fichier_final_BIO.csv
+│   │   │   ├── fichier_final_FR.csv
+│   │   │   ├── fichier_final_OI.csv
+│   │   │   ├── fichier_final_UE.csv
+│   │   │   ├── new_activities_BIO.json
+│   │   │   ├── new_activities_FR.json
+│   │   │   ├── new_activities_OI.json
+│   │   │   ├── new_activities_UE.json
+│   │   │   ├── predictions_BIO.csv
+│   │   │   ├── predictions_FR.csv
+│   │   │   ├── predictions_OI.csv
+│   │   │   └── predictions_UE.csv
+│   │   ├── predict.py
+│   │   ├── pyproject.toml
+│   │   ├── reference
+│   │   │   ├── agb_inedible.csv
+│   │   │   ├── animal.csv
+│   │   │   ├── cooked_to_raw.csv
+│   │   │   ├── cropgroup.csv
+│   │   │   ├── density.csv
+│   │   │   ├── fao_density.csv
+│   │   │   ├── food_type.csv
+│   │   │   ├── food_type_cooked_to_raw.csv
+│   │   │   ├── food_type_density.csv
+│   │   │   ├── food_type_inedible_part.csv
+│   │   │   ├── inedible_part.csv
+│   │   │   ├── nova_classification.csv
+│   │   │   ├── processing_state.csv
+│   │   │   └── transport_cooling.csv
+│   │   ├── source
+│   │   │   ├── keep.csv
+│   │   │   ├── new_ingredient_BIO.csv
+│   │   │   ├── new_ingredient_FR.csv
+│   │   │   ├── new_ingredient_OI.csv
+│   │   │   └── new_ingredient_UE.csv
+│   │   ├── uv.lock
+│   │   └── validate_nova.py
+│   └── transformed-ingredients
+│       ├── .python-version
+│       ├── extract_transform_params.py
+│       ├── generate_transformed_ingredients.py
+│       ├── generated_activities.json
+│       ├── generated_activities_to_create.json
 │       ├── pyproject.toml
-│       ├── reference
-│       │   ├── agb_inedible.csv
-│       │   ├── cooked_to_raw.csv
-│       │   ├── cropgroup.csv
-│       │   ├── density.csv
-│       │   ├── fao_density.csv
-│       │   ├── food_type.csv
-│       │   ├── food_type_cooked_to_raw.csv
-│       │   ├── food_type_density.csv
-│       │   ├── food_type_inedible_part.csv
-│       │   ├── inedible_part.csv
-│       │   ├── nova_classification.csv
-│       │   ├── processing_state.csv
-│       │   └── transport_cooling.csv
-│       ├── source
-│       │   ├── keep.csv
-│       │   ├── new_ingredient_FR.csv
-│       │   └── new_ingredient_OI.csv
-│       ├── uv.lock
-│       └── validate_nova.py
+│       ├── transform_params.csv
+│       ├── transform_params_all.csv
+│       ├── translation_corrections.csv
+│       └── uv.lock
 ├── notebooks
 │   ├── bw2.svg
 │   ├── explore.py
@@ -50,4 +69,4 @@
 └── textile
     └── micronized sulfur SC
         └── modeling.md
-11 directories, 41 files
+12 directories, 59 files

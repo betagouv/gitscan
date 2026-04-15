@@ -1,32 +1,29 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'amélioration de la gestion des données d'ingrédients, notamment la génération et la mise à jour des fichiers de données pour les ingrédients français et internationaux. Des corrections ont été apportées pour améliorer la classification des aliments et la gestion des suffixes pour distinguer les anciennes et nouvelles versions des données. L'outil a également été optimisé pour gérer les fusions de données et éviter les conflits.
+Les dernières mises à jour se concentrent sur l'amélioration de la gestion des données transformées, notamment l'extraction des paramètres de transformation d'Agribalyse et l'ajout de variantes pour l'Union Européenne. Des améliorations ont également été apportées à la gestion des noms d'affichage et à la résolution des activités, ainsi qu'à la génération des données finales.
 
 ### Évolutions fonctionnelles
-- Correction de la classification de certains produits laitiers qui étaient incorrectement classés comme de la viande. [#16db8ef](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/16db8ef)
-- Amélioration de la correspondance des groupes de cultures, évitant les erreurs sur les entrées de terres en jachère. [#5b876d5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/5b876d5)
-- Correction des noms des activités ICV. [#de09b79](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/de09b79)
-- Mise à jour des fichiers CSV sources pour la France et les ingrédients internationaux. [#b623cba](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b623cba), [#3ae03d6](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/3ae03d6)
-- Régénération des ingrédients OI. [#ebcc4b3](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/ebcc4b3)
-- Nouvelle génération FR. [#965b5ab](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/965b5ab)
-- Ajout d'un suffixe aux noms de fichiers de sortie pour distinguer les variantes. [#6b241c4](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/6b241c4)
-- Renommage du fichier de sortie final en `fichier_final_{variant}.csv`. [#39066c1](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/39066c1)
+- Ajout de la prise en charge d'une variante de données pour l'Union Européenne (UE) avec des mécanismes de sauvegarde pour éviter les collisions et les orphelins [#979bb69](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/979bb69).
+- Possibilité d'exposer la colonne `is_byproduct` et de rafraîchir les sorties avec les co-produits d'allocation [#9e842e7](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9e842e7).
+- Ajout d'une colonne `dummy_op` et rafraîchissement des sorties à partir d'une descente en couches [#63e132d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/63e132d).
+- Prédiction des métadonnées d'ingrédients transformés via le script `predict.py` [#9bbaec7](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9bbaec7).
+- Extraction des paramètres de transformation pour toutes les activités de preset transformées [#98c63a2](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/98c63a2).
+- Ajout de noms d'affichage en français avec un modèle de traduction [#38c444c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/38c444c).
+- Amélioration de la génération d'ingrédients transformés (résolution, filtrage, alias) [#9d14d98](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9d14d98).
 
 ### Évolutions techniques
-- Correction d'une régression suite à un changement de dimension FoodOn pour les légumineuses. [#480fa8b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/480fa8b)
-- Correction pour permettre aux ingrédients ré-exportés de remplacer les existants lors de la fusion. [#7932041](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7932041)
-- Amélioration de la gestion des clés dans `feed.json` lors de la suffixation/désuffixation des alias d'activité. [#6f7ba5f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/6f7ba5f), [#9549c6c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9549c6c)
-- Modification du marquage des alias, passant d'un préfixe "new-" à un suffixe "-2025" pour les anciens ingrédients. [#feb83b4](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/feb83b4)
-- Correction pour ne pas supprimer les suffixes 2025 existants lorsque l'option `--add-old-suffix` n'est pas utilisée. [#171683f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/171683f)
-- Correction pour inclure la colonne de localisation du fil dans les activités générées. [#b01781d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b01781d)
-- Suppression des activités orphelines. [#29ba1b4](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/29ba1b4)
+- Utilisation de la transformation côté serveur pour la recherche des consommateurs [#c2a30bc](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c2a30bc).
+- Remplacement complet des mixes de consommation au lieu d'un seul ingrédient à l'intérieur [#d74e379](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d74e379).
+- Correction de la recherche des services écosystémiques et application des multiplicateurs dans les données finales [#7c52cb3](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7c52cb3) et [#bdc88f5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/bdc88f5).
+- Correction de la gestion des localisations des activités : utilisation de la localisation de la base de données, CSV uniquement pour la désambiguïsation [#7c8f4d4](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7c8f4d4).
+- Correction du renommage d'activité en cas de collision de `displayName` lors de la fusion [#d4815d3](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d4815d3).
 
 ### Autres changements
-- Mise à jour de la documentation README pour refléter le code actuel (dimensions, ordre NOVA, colonnes, flux de données). [#7e33a2d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7e33a2d)
-- Correction de la documentation de la fonction `_extract_ingredient_values`. [#fd78bca](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/fd78bca)
-- Ajout du fichier `.envrc` à `.gitignore`. [#3019751](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/3019751)
-- Mise à jour de la configuration pour les tournesols. [#0d03056](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0d03056)
-- Correction des choix de processus pour certains ingrédients. [#8ce6d66](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/8ce6d66)
-- Ajout d'un nouveau fichier de sortie. [#712709c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/712709c)
-- Finalisation des fichiers. [#141b2f1](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/141b2f1)
+- Ajout d'une docstring expliquant la stratégie utilisée [#b4b261c](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b4b261c).
+- Snapshot des ingrédients transformés générés comme base de référence [#5cefe47](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/5cefe47).
+- Ajout d'un fichier `.gitignore` [#b26f2df](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/b26f2df).
+- Suppression temporaire des animaux vivants [#fe1d5df](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/fe1d5df).
+- Nouvelle version de BIO [#7417ff5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7417ff5).
+- Réexportation avec les impacts [#a070a08](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/a070a08).
+- Inclusion de la localisation dans `activities.json` uniquement lorsque nécessaire pour la désambiguïsation [#d0c7b2f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d0c7b2f).
