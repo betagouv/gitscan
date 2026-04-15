@@ -91,7 +91,7 @@ services:
         condition: service_healthy
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.5
+    image: quay.io/keycloak/keycloak:26.6
     env_file:
       - env.d/keycloak
     command: start-dev
@@ -101,7 +101,7 @@ services:
       - ./bin/kc-init:/usr/local/bin/kc-init
 
   metabase:
-    image: metabase/metabase:v0.59.2
+    image: metabase/metabase:v0.59.6
     ports:
       - 3000:3000
     env_file:
@@ -276,7 +276,7 @@ services:
 
   # -- tools
   curl:
-    image: curlimages/curl:8.18.0
+    image: curlimages/curl:8.19.0
     user: ${DOCKER_USER:-1000}
     env_file:
       - env.d/metabase
@@ -297,7 +297,7 @@ services:
       - env.d/metabase
 
   terraform:
-    image: hashicorp/terraform:1.14.7
+    image: hashicorp/terraform:1.14.8
     env_file:
       - env.d/terraform
     user: ${DOCKER_USER:-1000}
