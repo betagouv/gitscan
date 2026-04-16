@@ -1,10 +1,11 @@
-## Changelog : grist-utils (30 derniers jours)
+## Changelog : grist-utils (30 derniers jours, au 18 mars 2026)
 
 ### Résumé
-Ce mois-ci, les modifications apportées à `grist-utils` concernent principalement la simplification des tests automatisés. Des tests d'invitation jugés inutiles ont été supprimés, allégeant ainsi la suite de tests et améliorant potentiellement sa rapidité.
+Ce changelog couvre une période de maintenance technique sur le dépôt `grist-utils`. Les modifications se concentrent principalement sur la mise à jour des dépendances des outils de tests et de déploiement de Grist, assurant ainsi la compatibilité et la sécurité du processus.
 
 ### Évolutions techniques
-- Suppression des tests d'invitation, considérés comme superflus. [#71700bc](https://github.com/betagouv/grist-utils/commit/71700bc)
-
-### Autres changements
-- Mise à jour de la dépendance `minimatch` via Dependabot. [#c77fa4f](https://github.com/betagouv/grist-utils/commit/c77fa4f)
+- Mise à jour de la dépendance `undici` dans les tests de déploiement.
+- Mise à jour de la dépendance `fast-xml-parser` dans les tests de déploiement.
+- Mise à jour du groupe de dépendances de développement.
+- Mise à jour du groupe de dépendances de production.
+- Mise à jour de la dépendance `basic-ftp` dans les tests de déploiement.
