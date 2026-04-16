@@ -19,12 +19,13 @@
 │   ├── architecture.md
 │   ├── database.md
 │   ├── db.svg
+│   ├── ofii_referential.md
 │   └── scripts.md
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
 ├── patches
-│   └── @codegouvfr+react-dsfr+1.31.1.patch
+│   └── @codegouvfr+react-dsfr+1.32.0.patch
 ├── playwright.config.ts
 ├── postcss.config.mjs
 ├── prisma
@@ -164,29 +165,86 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260310102620_clean_post_file_upload_migration
 │   │   │   └── migration.sql
+│   │   ├── 20260312172748_remove_cpom_dates_and_add_region
+│   │   │   └── migration.sql
+│   │   ├── 20260316144259_type_region_and_department_for_cpoms
+│   │   │   └── migration.sql
+│   │   ├── 20260318082214_multi_dna
+│   │   │   └── migration.sql
+│   │   ├── 20260323114721_fix_link_for_activite_and_eig_in_multidna
+│   │   │   └── migration.sql
+│   │   ├── 20260323140440_move_active_and_inactive_ofii
+│   │   │   └── migration.sql
+│   │   ├── 20260330095221_roles_permissions
+│   │   │   └── migration.sql
+│   │   ├── 20260401093313_remove_old_regions
+│   │   │   └── migration.sql
+│   │   ├── 20260401100000_clean_old_fields_post_multidna
+│   │   │   └── migration.sql
+│   │   ├── 20260402144014_remove_useless_updated_for_useraction
+│   │   │   └── migration.sql
+│   │   ├── 20260407075224_remove_updatedat_for_fileupload
+│   │   │   └── migration.sql
+│   │   ├── 20260408082533_use_budget_for_cpom
+│   │   │   └── migration.sql
+│   │   ├── 20260408135852_remove_unused_enums
+│   │   │   └── migration.sql
+│   │   ├── 20260410092917_add_filiales_in_db
+│   │   │   └── migration.sql
+│   │   ├── 20260410130250_add_notes_for_better_blocnotes
+│   │   │   └── migration.sql
+│   │   ├── 20260413162919_add_indicateurs_financiers
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
-│   ├── schema.prisma
+│   ├── schema
+│   │   ├── activite.prisma
+│   │   ├── adresse.prisma
+│   │   ├── budget.prisma
+│   │   ├── contact.prisma
+│   │   ├── controle.prisma
+│   │   ├── cpom.prisma
+│   │   ├── dna.prisma
+│   │   ├── evaluation.prisma
+│   │   ├── evenement-indesirable-grave.prisma
+│   │   ├── file-upload.prisma
+│   │   ├── form.prisma
+│   │   ├── indicateur-financier.prisma
+│   │   ├── location.prisma
+│   │   ├── note.prisma
+│   │   ├── operateur.prisma
+│   │   ├── schema.prisma
+│   │   ├── structure.prisma
+│   │   └── user.prisma
 │   ├── seed.ts
 │   ├── seeders
 │   │   ├── acte-administratif.seed.ts
 │   │   ├── activite.seed.ts
 │   │   ├── adresse-typologie.seed.ts
 │   │   ├── adresse.seed.ts
+│   │   ├── antenne.seed.ts
 │   │   ├── budget.seed.ts
 │   │   ├── contact.seed.ts
 │   │   ├── controle.seed.ts
 │   │   ├── cpom.seed.ts
-│   │   ├── departements-seed.ts
+│   │   ├── departements.seed.ts
+│   │   ├── dna.seed.ts
 │   │   ├── document-financier.ts
 │   │   ├── evaluation.seed.ts
 │   │   ├── evenement-indesirable-grave.seed.ts
 │   │   ├── file-upload.seed.ts
+│   │   ├── finess.seed.ts
 │   │   ├── form.seed.ts
+│   │   ├── indicateur-financier.ts
+│   │   ├── note.seed.ts
 │   │   ├── operateur.seed.ts
 │   │   ├── structure-typologie.seed.ts
-│   │   └── structure.seed.ts
+│   │   ├── structure.seed.ts
+│   │   └── user.seed.ts
 │   └── utils
+│       ├── code-bhasile.util.ts
 │       ├── common.util.ts
+│       ├── date.ts
+│       ├── region.util.ts
 │       └── wipe.ts
 ├── prisma.config.ts
 ├── public
@@ -207,21 +265,33 @@
 │   │   ├── 20251203-migrate-structureofii-to-structure.ts
 │   │   ├── 20251204-migrate-placeacreer-fermer-to-typologie.ts
 │   │   ├── 20251215-move-date-to-years.ts
-│   │   └── 20260220-move-fileuploads.ts
+│   │   ├── 20260127-create-bhasile-codes.ts
+│   │   ├── 20260220-move-fileuploads.ts
+│   │   ├── 20260312-backfill-regions.ts
+│   │   ├── 20260323-fill-finess.ts
+│   │   ├── 20260323-link-dna-for-activite-and-eig.ts
+│   │   ├── 20260323-move-ofii-active-inactive-since-to-dna.ts
+│   │   ├── 20260407-normalize-dates-to-noon.ts
+│   │   ├── 20260410-migrate-structure-notes-to-note.ts
+│   │   └── 20260414-move-indicateurs-financiers.ts
 │   ├── recurring-scripts
-│   │   ├── activites-extract.ts
-│   │   ├── activites-metadata.ts
 │   │   ├── clean-old-user-actions.ts
 │   │   ├── eig-fetch.ts
-│   │   ├── fill-allowed-users.ts
+│   │   ├── empty-bucket.ts
 │   │   ├── fill-cpoms.ts
-│   │   └── fill-structure-ofii.ts
+│   │   ├── fill-roles.ts
+│   │   └── ofii-fill-referential-and-activity.ts
 │   ├── run-one-off.sh
 │   ├── utils
 │   │   ├── csv-loader.ts
 │   │   ├── ensure-operateurs-exist.ts
-│   │   └── parse-date.ts
+│   │   ├── ofii-fill-activity.ts
+│   │   ├── ofii-fill-referential.ts
+│   │   ├── ofii-xlsx.ts
+│   │   ├── parse-date.ts
+│   │   └── xlsx-loader.ts
 │   └── views
+│       ├── 000_structures_core.sql
 │       ├── 001_structures_aggregate.sql
 │       ├── 002_operateurs_aggregate.sql
 │       ├── 003_structures_filling.sql
@@ -229,8 +299,7 @@
 │       ├── 004b_structures_places_quality.sql
 │       ├── 004c_structures_finance_quality.sql
 │       ├── 004d_structures_characteristics_quality.sql
-│       ├── 004z_structures_global_quality.sql
-│       └── p_001_structures_order.sql
+│       └── 004z_structures_global_quality.sql
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
 ├── setupTests.js
@@ -241,16 +310,31 @@
 │   │   │   ├── cpoms
 │   │   │   │   ├── [id]
 │   │   │   │   │   ├── _components
-│   │   │   │   │   │   └── CpomModificationHeader.tsx
+│   │   │   │   │   │   ├── ActesAdministratifsBlock.tsx
+│   │   │   │   │   │   ├── CompositionBlock.tsx
+│   │   │   │   │   │   ├── CpomHeader.tsx
+│   │   │   │   │   │   ├── DescriptionBlock.tsx
+│   │   │   │   │   │   ├── FinanceTypeSwitch.tsx
+│   │   │   │   │   │   └── FinancesBlock.tsx
 │   │   │   │   │   ├── _context
 │   │   │   │   │   │   ├── CpomClientContext.tsx
 │   │   │   │   │   │   └── CpomContext.tsx
+│   │   │   │   │   ├── ajout
+│   │   │   │   │   │   ├── 01-identification
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── 02-finances
+│   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   └── modification
-│   │   │   │   │       ├── 01-identification
-│   │   │   │   │       │   └── page.tsx
-│   │   │   │   │       └── 02-finance
-│   │   │   │   │           └── page.tsx
+│   │   │   │   │   ├── modification
+│   │   │   │   │   │   ├── actes-administratifs
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── composition
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── description
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── finances
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── _components
 │   │   │   │   │   ├── CpomItem.tsx
 │   │   │   │   │   └── CpomsTable.tsx
@@ -267,6 +351,8 @@
 │   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── operateurs
+│   │   │   │   ├── OperateurItem.tsx
+│   │   │   │   ├── OperateursList.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
 │   │   │   ├── statistiques
@@ -277,7 +363,6 @@
 │   │   │       │   │   ├── AutoSaveErrorToast.tsx
 │   │   │       │   │   ├── ButtonAffectations.tsx
 │   │   │       │   │   ├── PrahdaStructure.tsx
-│   │   │       │   │   ├── Section.tsx
 │   │   │       │   │   ├── Structure.tsx
 │   │   │       │   │   ├── StructureContent.tsx
 │   │   │       │   │   ├── _actes-administratifs
@@ -304,28 +389,28 @@
 │   │   │       │   │   │   ├── EvaluationTable.tsx
 │   │   │       │   │   │   └── HudaPrahdaControlesBlock.tsx
 │   │   │       │   │   ├── _description
-│   │   │       │   │   │   ├── AdressesViewer.tsx
-│   │   │       │   │   │   ├── ContactsViewer.tsx
+│   │   │       │   │   │   ├── Adresses.tsx
+│   │   │       │   │   │   ├── AntennesAndContacts.tsx
+│   │   │       │   │   │   ├── Codes.tsx
 │   │   │       │   │   │   ├── CpomViewer.tsx
 │   │   │       │   │   │   ├── DescriptionBlock.tsx
+│   │   │       │   │   │   ├── General.tsx
 │   │   │       │   │   │   └── PrahdaDescriptionBlock.tsx
 │   │   │       │   │   ├── _finances
 │   │   │       │   │   │   ├── AmountBadge.tsx
 │   │   │       │   │   │   ├── BudgetExecutoire.tsx
 │   │   │       │   │   │   ├── CpomStaticTable.tsx
-│   │   │       │   │   │   ├── DetailAffectations.tsx
 │   │   │       │   │   │   ├── DocumentsFinanciers.tsx
 │   │   │       │   │   │   ├── DotationChart.tsx
 │   │   │       │   │   │   ├── FinancesBlock.tsx
 │   │   │       │   │   │   ├── HistoriqueIndicateursGeneraux.tsx
 │   │   │       │   │   │   ├── StructureCpomSwitch.tsx
 │   │   │       │   │   │   ├── StructureStaticTable.tsx
-│   │   │       │   │   │   ├── getCpomStaticTableLines.tsx
-│   │   │       │   │   │   └── getStructureStaticTableLines.tsx
+│   │   │       │   │   │   ├── getBudgetStaticTableLines.tsx
+│   │   │       │   │   │   └── getIndicateurFinancierStaticTableHeading.tsx
 │   │   │       │   │   ├── _header
 │   │   │       │   │   │   ├── AutoSaveStatus.tsx
 │   │   │       │   │   │   ├── FinalisationHeader.tsx
-│   │   │       │   │   │   ├── NavigationMenu.tsx
 │   │   │       │   │   │   └── StructureHeader.tsx
 │   │   │       │   │   ├── _notes
 │   │   │       │   │   │   └── NotesBlock.tsx
@@ -350,41 +435,29 @@
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── 06-notes
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── _components
-│   │   │       │   │   │   ├── Tab.tsx
-│   │   │       │   │   │   └── Tabs.tsx
-│   │   │       │   │   └── layout.tsx
+│   │   │       │   │   └── _components
+│   │   │       │   │       ├── Tab.tsx
+│   │   │       │   │       └── Tabs.tsx
 │   │   │       │   ├── layout.tsx
 │   │   │       │   ├── modification
-│   │   │       │   │   ├── 01-description
+│   │   │       │   │   ├── actes-administratifs
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 02-calendrier
+│   │   │       │   │   ├── adresses
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 03-type-places
+│   │   │       │   │   ├── calendrier
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 04-finance
+│   │   │       │   │   ├── controle-qualite
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 05-controle
+│   │   │       │   │   ├── description
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 06-documents
+│   │   │       │   │   ├── finances
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── 07-notes
+│   │   │       │   │   ├── notes
 │   │   │       │   │   │   └── page.tsx
-│   │   │       │   │   ├── _components
-│   │   │       │   │   │   └── ModificationTitle.tsx
-│   │   │       │   │   └── layout.tsx
+│   │   │       │   │   └── type-places
+│   │   │       │   │       └── page.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── _components
-│   │   │       │   ├── Filters.tsx
-│   │   │       │   ├── FiltersBatis.tsx
-│   │   │       │   ├── FiltersDepartement.tsx
-│   │   │       │   ├── FiltersPanel.tsx
-│   │   │       │   ├── FiltersPlacesAutorisees.tsx
-│   │   │       │   ├── FiltersRegion.tsx
-│   │   │       │   ├── FiltersReset.tsx
-│   │   │       │   ├── FiltersTypes.tsx
-│   │   │       │   ├── FiltersTypesCheckbox.tsx
-│   │   │       │   ├── LocationFiltersPanel.tsx
 │   │   │       │   ├── RepartitionBadge.tsx
 │   │   │       │   ├── SearchBar.tsx
 │   │   │       │   ├── StructureItem.tsx
@@ -399,6 +472,7 @@
 │   │   │   ├── cgu
 │   │   │   │   └── page.tsx
 │   │   │   ├── connexion
+│   │   │   │   ├── AccesRefuse.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── mentions-legales
@@ -409,12 +483,11 @@
 │   │   │       └── page.tsx
 │   │   ├── (password-protected)
 │   │   │   ├── ajout-adresses
-│   │   │   │   ├── [dnaCode]
+│   │   │   │   ├── [id]
 │   │   │   │   │   ├── 01-adresses
 │   │   │   │   │   │   ├── _components
 │   │   │   │   │   │   │   ├── AdressesRecovery.tsx
-│   │   │   │   │   │   │   ├── AdressesRecoveryModal.tsx
-│   │   │   │   │   │   │   └── AdressesRecoveryTypeBati.tsx
+│   │   │   │   │   │   │   └── AdressesRecoveryModal.tsx
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── 02-confirmation
 │   │   │   │   │       └── page.tsx
@@ -425,7 +498,7 @@
 │   │   │   │       │   └── ValidationButton.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── ajout-structure
-│   │   │   │   ├── [dnaCode]
+│   │   │   │   ├── [id]
 │   │   │   │   │   ├── 01-identification
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── 02-adresses
@@ -471,8 +544,6 @@
 │   │   │       ├── actions.ts
 │   │   │       └── page.tsx
 │   │   ├── Providers.tsx
-│   │   ├── acces-refuse
-│   │   │   └── page.tsx
 │   │   ├── actions.ts
 │   │   ├── api
 │   │   │   ├── actes-administratifs
@@ -486,6 +557,8 @@
 │   │   │   ├── adresses
 │   │   │   │   ├── adresse.repository.ts
 │   │   │   │   └── adresse.util.ts
+│   │   │   ├── antennes
+│   │   │   │   └── antenne.repository.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...nextauth]
 │   │   │   │       └── route.ts
@@ -499,10 +572,21 @@
 │   │   │   ├── cpoms
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── cpom.constants.ts
 │   │   │   │   ├── cpom.repository.ts
+│   │   │   │   ├── cpom.service.ts
+│   │   │   │   ├── cpom.util.ts
 │   │   │   │   └── route.ts
+│   │   │   ├── dna-codes
+│   │   │   │   ├── dna-codes.repository.ts
+│   │   │   │   └── route.ts
+│   │   │   ├── dna-structures
+│   │   │   │   ├── dna-structure.repository.ts
+│   │   │   │   └── dna-structure.service.ts
 │   │   │   ├── documents-financiers
 │   │   │   │   └── documentFinancier.repository.ts
+│   │   │   ├── email-patterns
+│   │   │   │   └── email-pattern.repository.ts
 │   │   │   ├── evaluations
 │   │   │   │   └── evaluation.repository.ts
 │   │   │   ├── files
@@ -511,14 +595,23 @@
 │   │   │   │   ├── file.repository.ts
 │   │   │   │   ├── file.service.ts
 │   │   │   │   └── route.ts
+│   │   │   ├── finesses
+│   │   │   │   └── finess.repository.ts
 │   │   │   ├── forms
 │   │   │   │   ├── form.repository.ts
 │   │   │   │   └── form.util.ts
+│   │   │   ├── indicateurs-financiers
+│   │   │   │   └── indicateur-financier.repository.ts
 │   │   │   ├── metabase
 │   │   │   │   └── route.ts
 │   │   │   ├── operateurs
 │   │   │   │   ├── operateur.repository.ts
-│   │   │   │   └── route.ts
+│   │   │   │   ├── operateur.service.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   └── suggestions
+│   │   │   │       └── route.ts
+│   │   │   ├── role
+│   │   │   │   └── role.repository.ts
 │   │   │   ├── structure-millesimes
 │   │   │   │   └── structure-millesime.repository.ts
 │   │   │   ├── structure-typologies
@@ -528,15 +621,16 @@
 │   │   │   │   │   ├── adresses
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   └── route.ts
-│   │   │   │   ├── dna
-│   │   │   │   │   └── [code]
-│   │   │   │   │       └── route.ts
 │   │   │   │   ├── route.ts
 │   │   │   │   ├── stats
 │   │   │   │   │   └── route.ts
+│   │   │   │   ├── structure.constants.ts
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
 │   │   │   │   └── structure.util.ts
+│   │   │   ├── user
+│   │   │   │   ├── user.repository.ts
+│   │   │   │   └── user.service.ts
 │   │   │   └── user-action
 │   │   │       ├── user-action.repository.ts
 │   │   │       ├── user-action.service.ts
@@ -559,6 +653,7 @@
 │   │   │   │   ├── Block.tsx
 │   │   │   │   ├── CustomAccordion.tsx
 │   │   │   │   ├── CustomNotice.tsx
+│   │   │   │   ├── DeleteButton.tsx
 │   │   │   │   ├── DocumentGranularityBadge.tsx
 │   │   │   │   ├── DownloadItem.tsx
 │   │   │   │   ├── EmptyCell.tsx
@@ -566,13 +661,26 @@
 │   │   │   │   ├── Footer.tsx
 │   │   │   │   ├── Header.tsx
 │   │   │   │   ├── LineChart.tsx
+│   │   │   │   ├── NavigationMenu.tsx
 │   │   │   │   ├── NumberDisplay.tsx
 │   │   │   │   ├── Pagination.tsx
 │   │   │   │   ├── PieChart.tsx
+│   │   │   │   ├── Section.tsx
 │   │   │   │   ├── SeeFileButton.tsx
 │   │   │   │   ├── SegmentedControl.tsx
 │   │   │   │   ├── SimplePagination.tsx
 │   │   │   │   └── Table.tsx
+│   │   │   ├── filters
+│   │   │   │   ├── Filters.tsx
+│   │   │   │   ├── FiltersBatis.tsx
+│   │   │   │   ├── FiltersDepartement.tsx
+│   │   │   │   ├── FiltersPanel.tsx
+│   │   │   │   ├── FiltersPlacesAutorisees.tsx
+│   │   │   │   ├── FiltersRegion.tsx
+│   │   │   │   ├── FiltersReset.tsx
+│   │   │   │   ├── FiltersTypes.tsx
+│   │   │   │   ├── FiltersTypesCheckbox.tsx
+│   │   │   │   └── LocationFiltersPanel.tsx
 │   │   │   ├── forms
 │   │   │   │   ├── AddressWithValidation.tsx
 │   │   │   │   ├── AutoSave.tsx
@@ -584,6 +692,7 @@
 │   │   │   │   ├── FormWrapper.tsx
 │   │   │   │   ├── InputWithValidation.tsx
 │   │   │   │   ├── MaxSizeNotice.tsx
+│   │   │   │   ├── ModificationTitle.tsx
 │   │   │   │   ├── OperateurAutocomplete.tsx
 │   │   │   │   ├── PreviousPageLink.tsx
 │   │   │   │   ├── SelectWithValidation.tsx
@@ -592,15 +701,33 @@
 │   │   │   │   ├── actesAdministratifs
 │   │   │   │   │   ├── ActeAdministratif.tsx
 │   │   │   │   │   ├── ActesAdministratifs.tsx
-│   │   │   │   │   └── Avenant.tsx
-│   │   │   │   ├── address
-│   │   │   │   │   └── AdressImporter.tsx
+│   │   │   │   │   ├── Avenant.tsx
+│   │   │   │   │   └── FieldSetActeAdministratif.tsx
+│   │   │   │   ├── adresseAdministrativeAndAntenne
+│   │   │   │   │   ├── AdresseAdministrativeAndAntennes.tsx
+│   │   │   │   │   ├── DnaInput.tsx
+│   │   │   │   │   ├── FieldSetAdresseAdministrative.tsx
+│   │   │   │   │   └── FieldSetAntennes.tsx
+│   │   │   │   ├── calendrier
+│   │   │   │   │   └── FieldSetCalendrier.tsx
+│   │   │   │   ├── contacts
+│   │   │   │   │   ├── Contact.tsx
+│   │   │   │   │   └── FieldSetContacts.tsx
 │   │   │   │   ├── cpom
 │   │   │   │   │   ├── DatesAndDocuments.tsx
+│   │   │   │   │   ├── FieldSetActesAdministratifs.tsx
+│   │   │   │   │   ├── FieldSetGeneral.tsx
+│   │   │   │   │   ├── FieldSetStructures.tsx
 │   │   │   │   │   ├── GranularitySelector.tsx
 │   │   │   │   │   ├── LocationSelector.tsx
 │   │   │   │   │   ├── StructureLine.tsx
 │   │   │   │   │   └── StructuresList.tsx
+│   │   │   │   ├── description
+│   │   │   │   │   └── FieldSetDescription.tsx
+│   │   │   │   ├── dnaAndFiness
+│   │   │   │   │   ├── DnaAndFiness.tsx
+│   │   │   │   │   ├── FieldSetDna.tsx
+│   │   │   │   │   └── FieldSetFiness.tsx
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── Controle.tsx
 │   │   │   │   │   └── Controles.tsx
@@ -608,30 +735,9 @@
 │   │   │   │   │   ├── Evaluation.tsx
 │   │   │   │   │   ├── Evaluations.tsx
 │   │   │   │   │   └── Notes.tsx
-│   │   │   │   ├── fieldsets
-│   │   │   │   │   ├── cpom
-│   │   │   │   │   │   ├── FieldSetDocuments.tsx
-│   │   │   │   │   │   ├── FieldSetGeneral.tsx
-│   │   │   │   │   │   └── FieldSetStructures.tsx
-│   │   │   │   │   └── structure
-│   │   │   │   │       ├── FieldSetActeAdministratif.tsx
-│   │   │   │   │       ├── FieldSetAdresseAdministrative.tsx
-│   │   │   │   │       ├── FieldSetCalendrier.tsx
-│   │   │   │   │       ├── FieldSetContacts.tsx
-│   │   │   │   │       ├── FieldSetDescription.tsx
-│   │   │   │   │       ├── FieldSetHebergement.tsx
-│   │   │   │   │       ├── FieldSetNotes.tsx
-│   │   │   │   │       ├── FieldSetOuvertureFermeture.tsx
-│   │   │   │   │       ├── FieldSetTypePlace.tsx
-│   │   │   │   │       │   └── YearlyTypePlace.tsx
-│   │   │   │   │       ├── FieldSetTypePlaces.tsx
-│   │   │   │   │       ├── FieldSetYearlyDocumentsFinanciers.tsx
-│   │   │   │   │       └── fieldSetHebergement
-│   │   │   │   │           ├── Adresse.tsx
-│   │   │   │   │           └── Notices.tsx
 │   │   │   │   ├── finance
 │   │   │   │   │   ├── BudgetTables.tsx
-│   │   │   │   │   ├── IndicateursGeneraux.tsx
+│   │   │   │   │   ├── IndicateursFinanciers.tsx
 │   │   │   │   │   ├── budget-tables
 │   │   │   │   │   │   ├── AffectationTooltip.tsx
 │   │   │   │   │   │   ├── BudgetTableCommentButtonAndModal.tsx
@@ -639,16 +745,22 @@
 │   │   │   │   │   │   ├── BudgetTableCommentStaticButtonAndModal.tsx
 │   │   │   │   │   │   ├── BudgetTableLine.tsx
 │   │   │   │   │   │   ├── BudgetTableLineInput.tsx
+│   │   │   │   │   │   ├── BudgetTableLineLabel.tsx
 │   │   │   │   │   │   ├── BudgetTableLines.tsx
 │   │   │   │   │   │   ├── BudgetTableRepriseEtatTooltip.tsx
 │   │   │   │   │   │   ├── BudgetTableStaticValue.tsx
 │   │   │   │   │   │   ├── BudgetTableTitleLine.tsx
 │   │   │   │   │   │   ├── CpomTable.tsx
+│   │   │   │   │   │   ├── CpomTables.tsx
+│   │   │   │   │   │   ├── IndicateurFinancierTableLine.tsx
+│   │   │   │   │   │   ├── IndicateurFinancierTableLines.tsx
 │   │   │   │   │   │   ├── StructureCpomTable.tsx
 │   │   │   │   │   │   ├── StructureTable.tsx
 │   │   │   │   │   │   ├── getBudgetTableHeading.tsx
-│   │   │   │   │   │   ├── getCpomLines.tsx
-│   │   │   │   │   │   └── getStructureTableLines.tsx
+│   │   │   │   │   │   ├── getBudgetTableLines.tsx
+│   │   │   │   │   │   ├── getIndicateurFinancierTableHeading.tsx
+│   │   │   │   │   │   ├── getIndicateurFinancierTableLines.tsx
+│   │   │   │   │   │   └── getIndicateurFinancierTablePreHeading.tsx
 │   │   │   │   │   └── documents
 │   │   │   │   │       ├── Date303.tsx
 │   │   │   │   │       ├── DocumentsFinanciers.tsx
@@ -659,11 +771,25 @@
 │   │   │   │   │       ├── DocumentsFinanciersCpomDisclaimer.tsx
 │   │   │   │   │       ├── DocumentsFinanciersItem.tsx
 │   │   │   │   │       ├── DocumentsFinanciersList.tsx
+│   │   │   │   │       ├── FieldSetYearlyDocumentsFinanciers.tsx
 │   │   │   │   │       ├── YearlyFileUpload.tsx
 │   │   │   │   │       └── documentsStructures.ts
-│   │   │   │   └── notes
-│   │   │   │       └── NoteDisclaimer.tsx
+│   │   │   │   ├── hebergement
+│   │   │   │   │   ├── AdressImporter.tsx
+│   │   │   │   │   ├── Adresse.tsx
+│   │   │   │   │   ├── FieldSetHebergement.tsx
+│   │   │   │   │   ├── FieldSetTypeBati.tsx
+│   │   │   │   │   └── Notices.tsx
+│   │   │   │   ├── notes
+│   │   │   │   │   ├── FieldSetNotes.tsx
+│   │   │   │   │   └── NoteDisclaimer.tsx
+│   │   │   │   ├── ouvertureFermeture
+│   │   │   │   │   └── FieldSetOuvertureFermeture.tsx
+│   │   │   │   └── typePlace
+│   │   │   │       ├── FieldSetTypePlaces.tsx
+│   │   │   │       └── YearlyTypePlace.tsx
 │   │   │   ├── lists
+│   │   │   │   ├── ListLoader.tsx
 │   │   │   │   ├── ListTableHeadings.tsx
 │   │   │   │   └── OrderButton.tsx
 │   │   │   ├── map
@@ -679,6 +805,7 @@
 │   │   │       ├── InputSimple.tsx
 │   │   │       └── Loader.tsx
 │   │   ├── context
+│   │   │   ├── AbilityContext.tsx
 │   │   │   ├── FetchStateContext.tsx
 │   │   │   └── FormContext.tsx
 │   │   ├── css
@@ -695,15 +822,21 @@
 │   │   │   ├── useAddressSuggestion.ts
 │   │   │   ├── useAgentFormHandling.ts
 │   │   │   ├── useAutocomplete.ts
+│   │   │   ├── useButtonsPanel.ts
 │   │   │   ├── useCpom.ts
+│   │   │   ├── useCpomFormHandling.ts
 │   │   │   ├── useCpomsSearch.ts
 │   │   │   ├── useDebounceCallback.ts
+│   │   │   ├── useFetchFreeDnaCodes.ts
 │   │   │   ├── useFetchStructure.ts
 │   │   │   ├── useFieldValidator.ts
 │   │   │   ├── useFileUpload.ts
 │   │   │   ├── useForm.ts
+│   │   │   ├── useHeaderHeight.ts
 │   │   │   ├── useLocalStorage.ts
+│   │   │   ├── useOperateurSearch.ts
 │   │   │   ├── useOperateurSuggestion.ts
+│   │   │   ├── usePersistStructuresSearchQuery.ts
 │   │   │   ├── useRedirectStructureCreation.ts
 │   │   │   ├── useSpreadsheetParse.ts
 │   │   │   ├── useStructureAdresseExistence.ts
@@ -717,20 +850,24 @@
 │   │   └── utils
 │   │       ├── acteAdministratif.util.ts
 │   │       ├── adresse.util.ts
+│   │       ├── antenne.util.ts
+│   │       ├── bhasile.util.ts
 │   │       ├── budget.util.ts
 │   │       ├── classname.util.ts
-│   │       ├── collectiveAdress.util.ts
 │   │       ├── common.util.ts
 │   │       ├── contacts.util.ts
 │   │       ├── controle.util.ts
 │   │       ├── cpom.util.ts
 │   │       ├── date.util.ts
 │   │       ├── defaultValues.util.ts
+│   │       ├── dna.util.ts
 │   │       ├── errorMail.util.ts
 │   │       ├── evaluation.util.ts
 │   │       ├── file-upload.util.ts
 │   │       ├── finalisationForm.util.ts
+│   │       ├── finess.util.ts
 │   │       ├── getErrorMessages.util.ts
+│   │       ├── indicateurFinancier.util.ts
 │   │       ├── number.util.ts
 │   │       ├── phone.util.ts
 │   │       ├── string.util.ts
@@ -744,6 +881,8 @@
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── lib
+│   │   ├── casl
+│   │   │   └── abilities.ts
 │   │   ├── minio.ts
 │   │   ├── next-auth
 │   │   │   ├── auth-util.ts
@@ -758,22 +897,27 @@
 │   │   │   ├── acteAdministratif.schema.ts
 │   │   │   ├── activite.schema.ts
 │   │   │   ├── adresse.schema.ts
+│   │   │   ├── antenne.schema.ts
 │   │   │   ├── budget.schema.ts
 │   │   │   ├── contact.schema.ts
 │   │   │   ├── controle.schema.ts
 │   │   │   ├── cpom.schema.ts
+│   │   │   ├── departement.schema.ts
+│   │   │   ├── dna-structure.schema.ts
 │   │   │   ├── documentFinancier.schema.ts
 │   │   │   ├── evaluation.schema.ts
 │   │   │   ├── evenement-indesirable-grave.schema.ts
 │   │   │   ├── file.schema.ts
+│   │   │   ├── finess.schema.ts
 │   │   │   ├── form.schema.ts
+│   │   │   ├── indicateurFinancier.schema.ts
 │   │   │   ├── operateur.schema.ts
+│   │   │   ├── region.schema.ts
 │   │   │   ├── structure-millesime.schema.ts
 │   │   │   ├── structure-typologie.schema.ts
 │   │   │   └── structure.schema.ts
 │   │   └── forms
 │   │       ├── ajout
-│   │       │   ├── ajoutAdresses.schema.ts
 │   │       │   ├── ajoutIdentification.schema.ts
 │   │       │   ├── ajoutStructure.schema.ts
 │   │       │   └── ajoutTypePlaces.schema.ts
@@ -781,6 +925,7 @@
 │   │       │   ├── acteAdministratif.schema.ts
 │   │       │   ├── adresse.schema.ts
 │   │       │   ├── adresseAdministrative.schema.ts
+│   │       │   ├── antenne.schema.ts
 │   │       │   ├── budget
 │   │       │   │   ├── getFinanceSchema.ts
 │   │       │   │   └── validateAffectationReservesDetails.ts
@@ -789,10 +934,12 @@
 │   │       │   ├── contact.schema.ts
 │   │       │   ├── controle.schema.ts
 │   │       │   ├── cpom.schema.ts
-│   │       │   ├── cpomStructure.schema.ts
+│   │       │   ├── dna.schema.ts
 │   │       │   ├── documentFinancier.schema.ts
 │   │       │   ├── evaluation.schema.ts
+│   │       │   ├── finess.schema.ts
 │   │       │   ├── identification.schema.ts
+│   │       │   ├── indicateurFinancier.schema.ts
 │   │       │   ├── notes.schema.ts
 │   │       │   ├── operateur.schema.ts
 │   │       │   ├── structure.base.schema.ts
@@ -800,17 +947,15 @@
 │   │       ├── finalisation
 │   │       │   ├── finalisationIdentification.schema.ts
 │   │       │   └── finalisationQualite.schema.ts
-│   │       ├── modification
-│   │       │   ├── modificationDescription.schema.ts
-│   │       │   ├── modificationFinance.schema.ts
-│   │       │   └── modificationQualite.schema.ts
-│   │       └── recovery-adresses
-│   │           └── recoveryAdresses.schema.ts
+│   │       └── modification
+│   │           ├── modificationDescription.schema.ts
+│   │           ├── modificationFinance.schema.ts
+│   │           └── modificationQualite.schema.ts
 │   └── types
+│       ├── Entity.type.ts
 │       ├── ListColumn.ts
 │       ├── acte-administratif.type.ts
 │       ├── adresse.type.ts
-│       ├── contact.type.ts
 │       ├── controle.type.ts
 │       ├── cpom.type.ts
 │       ├── departement.type.ts
@@ -818,6 +963,7 @@
 │       ├── fetch-state.type.ts
 │       ├── form.type.ts
 │       ├── global.ts
+│       ├── indicateur-financier.type.ts
 │       ├── prisma.type.ts
 │       ├── proxy.type.ts
 │       ├── structure.type.ts
@@ -831,26 +977,23 @@
 │   │           ├── Filters.test.tsx
 │   │           ├── ListTableHeadings.test.tsx
 │   │           └── OrderButton.test.tsx
-│   ├── (password-protected)
-│   │   └── ajout-adresses
-│   │       └── AdressesRecovery.test.tsx
 │   ├── components
 │   │   ├── Menu.test.tsx
-│   │   ├── fieldsets
-│   │   │   └── structure
-│   │   │       ├── FieldSetAdresseAdministrative.test.tsx
-│   │   │       ├── FieldSetCalendrier.test.tsx
-│   │   │       ├── FieldSetContacts.test.tsx
-│   │   │       ├── FieldSetDescription.test.tsx
-│   │   │       ├── FieldSetNotes.test.tsx
-│   │   │       └── FieldSetTypePlaces.test.tsx
 │   │   └── forms
+│   │       ├── DnaAndFiness.test.tsx
+│   │       ├── FieldSetAdresseAdministrative.test.tsx
+│   │       ├── FieldSetCalendrier.test.tsx
+│   │       ├── FieldSetContacts.test.tsx
+│   │       ├── FieldSetDescription.test.tsx
+│   │       ├── FieldSetNotes.test.tsx
+│   │       ├── FieldSetTypePlaces.test.tsx
 │   │       └── InputWithValidation.test.tsx
 │   ├── e2e
 │   │   ├── cpom-ajout.spec.ts
 │   │   ├── fixtures
 │   │   │   └── sample.pdf
 │   │   ├── flux-complet-all.spec.ts
+│   │   ├── global-setup.ts
 │   │   ├── helpers
 │   │   │   ├── actes-form-helper.ts
 │   │   │   ├── autocomplete-helper.ts
@@ -863,6 +1006,7 @@
 │   │   │   ├── constants.ts
 │   │   │   ├── controles-form-helper.ts
 │   │   │   ├── documents-financiers-helper.ts
+│   │   │   ├── e2e-proconnect-login.ts
 │   │   │   ├── error-handler.ts
 │   │   │   ├── finance-form-helper.ts
 │   │   │   ├── flow-step-runner.ts
@@ -883,8 +1027,10 @@
 │   │   │   │   │   ├── TypePlacesPage.ts
 │   │   │   │   │   └── VerificationPage.ts
 │   │   │   │   ├── cpom
+│   │   │   │   │   ├── CpomAjoutFinancePage.ts
 │   │   │   │   │   ├── CpomAjoutIdentificationPage.ts
-│   │   │   │   │   ├── CpomModificationFinancePage.ts
+│   │   │   │   │   ├── CpomDetailPage.ts
+│   │   │   │   │   ├── CpomIdentificationFormHelper.ts
 │   │   │   │   │   └── CpomModificationIdentificationPage.ts
 │   │   │   │   ├── finalisation
 │   │   │   │   │   ├── FinalisationControlesPage.ts
@@ -931,6 +1077,9 @@
 │   │   ├── useFileUpload.test.ts
 │   │   ├── useLocalStorage.test.ts
 │   │   └── useStructuresSearch.test.ts
+│   ├── lib
+│   │   └── casl
+│   │       └── abilities.test.ts
 │   ├── scripts
 │   │   └── parse-date.test.ts
 │   ├── test-utils
@@ -958,4 +1107,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-255 directories, 705 files
+283 directories, 826 files

@@ -1,37 +1,46 @@
-## Changelog : bhasile (30 derniers jours)
+## Changelog : bhasile (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à bhasile au cours des 30 derniers jours. Les mises à jour incluent des corrections de bugs, des améliorations de l'interface utilisateur, l'ajout de nouvelles fonctionnalités comme un journal d'audit, et des optimisations techniques pour une meilleure performance et sécurité. L'application a également été préparée pour l'année 2026 avec des ajustements des données et des typologies.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des CPOM (Contrats de Préstation d'Objectifs et de Moyens), notamment avec une nouvelle interface et des fonctionnalités de filtrage et d'édition. Des améliorations ont également été apportées à la gestion des structures, des utilisateurs et des rôles, ainsi qu'à la correction de bugs et à l'optimisation de la base de données.
 
 ### Évolutions fonctionnelles
-- Ajout d'un message d'alerte lors de l'ajout d'un avenant orphelin [#1062](https://github.com/betagouv/bhasile/issues/1062).
-- Amélioration de la navigation : les filtres de structures sont conservés lors d'un retour en arrière avec le bouton "Retour" [#1049](https://github.com/betagouv/bhasile/issues/1049).
-- Ajout d'un lien vers la fiche produit dans le pied de page [#1055](https://github.com/betagouv/bhasile/issues/1055).
-- Correction d'une faute de frappe "reconductible" [#1060](https://github.com/betagouv/bhasile/issues/1060).
-- Correction de l'affichage de l'année du CPOM dans les documents financiers [#1032](https://github.com/betagouv/bhasile/issues/1032).
-- Ajout d'un journal d'audit pour suivre les actions des utilisateurs [#1018](https://github.com/betagouv/bhasile/issues/1018).
-- Ajout de CGU, Mentions légales et politique de confidentialité [#1041](https://github.com/betagouv/bhasile/issues/1041).
-- Ajout de restrictions sur les utilisateurs autorisés [#950](https://github.com/betagouv/bhasile/issues/950).
-- Correction du bug où "Tout public" était systématiquement défini [#1020](https://github.com/betagouv/bhasile/issues/1020).
-- Amélioration du bloc "Contrôle" [#1005](https://github.com/betagouv/bhasile/issues/1005).
-- Ajout d'une adresse email de contact sur la page 403 (interdit) [#1009](https://github.com/betagouv/bhasile/issues/1009).
-- Ajout de tests E2E pour le formulaire de modification [#1019](https://github.com/betagouv/bhasile/issues/1019).
+- Possibilité de saisir plusieurs adresses pour un collectif ([#1160](https://github.com/betagouv/bhasile/issues/1160)).
+- Ajout d'une page pour gérer les opérateurs ([#1148](https://github.com/betagouv/bhasile/issues/1148)).
+- Amélioration de l'accès refusé avec un message plus clair ([#1105](https://github.com/betagouv/bhasile/issues/1105)).
+- Ajout d'un sélecteur pour le code DNA au lieu d'une saisie texte ([#1144](https://github.com/betagouv/bhasile/issues/1144)).
+- Ajout de notes pour les structures ([#1146](https://github.com/betagouv/bhasile/issues/1146)).
+- Ajout des filiales dans la base de données ([#1145](https://github.com/betagouv/bhasile/issues/1145)).
+- Nouvelle table pour les finances CPOM, spécifique au type de structure ([#1130](https://github.com/betagouv/bhasile/issues/1130)).
+- Ajout d'une notion de prévisionnel/réalisé pour les indicateurs financiers ([#1154](https://github.com/betagouv/bhasile/issues/1154)).
+- Modification du titre des documents financiers ([#1155](https://github.com/betagouv/bhasile/issues/1155)).
+- Ajout de la recherche par code DNA ([#1112](https://github.com/betagouv/bhasile/issues/1112)).
+- Nouvelle affectation wording ([#1083](https://github.com/betagouv/bhasile/issues/1083)).
+- Nouvelle politique d'un seul contact ([#1082](https://github.com/betagouv/bhasile/issues/1082)).
+- Nouvelle page et formulaires de modification CPOM ([#1063](https://github.com/betagouv/bhasile/issues/1063)).
+- Ajout d'une colonne structures à la table CPOM ([#1071](https://github.com/betagouv/bhasile/issues/1071)).
+- Nouveau format pour les noms des CPOM ([#1070](https://github.com/betagouv/bhasile/issues/1070)).
+- Ajout de rôles et permissions ([#1050](https://github.com/betagouv/bhasile/issues/1050)).
+- Amélioration du design et de l'accessibilité ([#1108](https://github.com/betagouv/bhasile/issues/1108)).
 
 ### Évolutions techniques
-- Augmentation du délai d'expiration des transactions Prisma [#1045](https://github.com/betagouv/bhasile/issues/1045).
-- Refactorisation des uploads de fichiers [#994](https://github.com/betagouv/bhasile/issues/994).
-- Correction de problèmes liés à l'upsert des utilisateurs (plusieurs tentatives) [#1046](https://github.com/betagouv/bhasile/issues/1046), [#1044](https://github.com/betagouv/bhasile/issues/1044), [#1042](https://github.com/betagouv/bhasile/issues/1042).
-- Mise à jour de plusieurs dépendances (voir section "Autres changements").
-- Ajout de règles ESLint et formatage avec Prettier pour améliorer la qualité du code [#1011](https://github.com/betagouv/bhasile/issues/1011).
-- Correction d'un bug qui empêchait d'accepter des valeurs négatives pour `cumulResultatNet` [#1023](https://github.com/betagouv/bhasile/issues/1023).
-- Suppression de TODOs dans le code [#1010](https://github.com/betagouv/bhasile/issues/1010).
-- Correction d'un crash des activités [#1008](https://github.com/betagouv/bhasile/issues/1008).
+- Centrage des colonnes dans les tableaux.
+- Refactoring du schéma Prisma ([#1142](https://github.com/betagouv/bhasile/issues/1142)).
+- Suppression de champs inutiles dans UserAction.
+- Amélioration de la gestion des dates (format 00:00:00).
+- Ajout de tests E2E pour la modification des CPOM ([#1158](https://github.com/betagouv/bhasile/issues/1158)).
+- Ajout de tests unitaires pour date.util ([#1135](https://github.com/betagouv/bhasile/issues/1135)).
+- Optimisation des scripts de seed.
+- Mise à jour de plusieurs dépendances (Next.js, fast-xml-parser, etc.).
 
 ### Autres changements
-- Préparation de l'application pour l'année 2026 : mise à jour des données de test, correction des typologies d'années [#1031](https://github.com/betagouv/bhasile/issues/1031), [#1030](https://github.com/betagouv/bhasile/issues/1030), [#1029](https://github.com/betagouv/bhasile/issues/1029), [#1028](https://github.com/betagouv/bhasile/issues/1028).
-- Nettoyage du code après l'upload des fichiers [#1047](https://github.com/betagouv/bhasile/issues/1047).
-- Correction de l'email du DPO [#1054](https://github.com/betagouv/bhasile/issues/1054).
-- Correction de l'utilisation de la clé de fichier comme clé étrangère [#1053](https://github.com/betagouv/bhasile/issues/1053).
-- Suppression des avenants orphelins et correction de leur `parentId` [#1058](https://github.com/betagouv/bhasile/issues/1058).
-- Mise à jour de la matrice d'impact [#1039](https://github.com/betagouv/bhasile/issues/1039).
-- Mises à jour de dépendances : `read-excel-file` (6.0.3 -> 7.0.0) [#1052](https://github.com/betagouv/bhasile/issues/1052), plusieurs mises à jour mineures et correctives [#1051](https://github.com/betagouv/bhasile/issues/1051), `immutable` (5.1.4 -> 5.1.5) [#1043](https://github.com/betagouv/bhasile/issues/1043), `fast-xml-parser` (4.5.3 -> 4.5.4) [#1038](https://github.com/betagouv/bhasile/issues/1038), `jsdom` (27.4.0 -> 28.0.0) [#1007](https://github.com/betagouv/bhasile/issues/1007), plusieurs mises à jour mineures et correctives [#1036](https://github.com/betagouv/bhasile/issues/1036), `rollup` (4.53.2 -> 4.59.0) [#1035](https://github.com/betagouv/bhasile/issues/1035), plusieurs mises à jour mineures et correctives [#1024](https://github.com/betagouv/bhasile/issues/1024), [#1006](https://github.com/betagouv/bhasile/issues/1006).
+- Ajout de notes pour les structures.
+- Correction de bugs liés aux dates et aux filtres.
+- Amélioration des scripts de migration et de remplissage de la base de données.
+- Nettoyage du code et suppression de packages inutiles.
+- Ajout de scripts pour gérer les buckets S3.
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout d'un bouton de suppression.
+- Amélioration des vues.
+- Normalisation des dates.
+- Ajout de code FINESS.
+- Suppression de la colonne "subventionné" dans l'affectation.
