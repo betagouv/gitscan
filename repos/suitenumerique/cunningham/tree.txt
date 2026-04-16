@@ -2,8 +2,10 @@
 ├── .changeset
 │   ├── README.md
 │   └── config.json
-├── .circleci
-│   └── config.yml
+├── .github
+│   └── workflows
+│       ├── front-dependencies-installation.yml
+│       └── main.yml
 ├── .gitignore
 ├── .gitlint
 ├── .prettierignore
@@ -97,6 +99,15 @@
 │   │   │   │   │   │   ├── dd_3.svg
 │   │   │   │   │   │   └── dd_4.svg
 │   │   │   │   │   └── tokens.ts
+│   │   │   │   ├── Calendar
+│   │   │   │   │   ├── CalendarAux.tsx
+│   │   │   │   │   ├── CalendarCell.tsx
+│   │   │   │   │   ├── CalendarGrid.tsx
+│   │   │   │   │   ├── _index.scss
+│   │   │   │   │   ├── index.spec.tsx
+│   │   │   │   │   ├── index.stories.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── tokens.ts
 │   │   │   │   ├── DataGrid
 │   │   │   │   │   ├── DataList.spec.tsx
 │   │   │   │   │   ├── DataList.tsx
@@ -146,9 +157,6 @@
 │   │   │   │   │   ├── ClassicLabel
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── DatePicker
-│   │   │   │   │   │   ├── Calendar.tsx
-│   │   │   │   │   │   ├── CalendarCell.tsx
-│   │   │   │   │   │   ├── CalendarGrid.tsx
 │   │   │   │   │   │   ├── DateField.tsx
 │   │   │   │   │   │   ├── DatePicker.spec.tsx
 │   │   │   │   │   │   ├── DatePicker.tsx
@@ -274,11 +282,17 @@
 │   │   │   │   │   ├── index.stories.tsx
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── Modal
+│   │   │   │   │   ├── ChevronLeftIcon.tsx
+│   │   │   │   │   ├── ChevronRightIcon.tsx
+│   │   │   │   │   ├── CloseIcon.tsx
 │   │   │   │   │   ├── ConfirmationModal.tsx
 │   │   │   │   │   ├── DeleteConfirmationModal.tsx
 │   │   │   │   │   ├── EdgeCases.stories.tsx
 │   │   │   │   │   ├── MessageModal.tsx
+│   │   │   │   │   ├── ModalDefaultLayout.tsx
+│   │   │   │   │   ├── ModalFooter.tsx
 │   │   │   │   │   ├── ModalProvider.tsx
+│   │   │   │   │   ├── ModalTabLayout.tsx
 │   │   │   │   │   ├── PreBuilt.stories.tsx
 │   │   │   │   │   ├── index.mdx
 │   │   │   │   │   ├── index.scss
@@ -359,6 +373,7 @@
 │   │   │   │   ├── AnimateMock.ts
 │   │   │   │   ├── Global.ts
 │   │   │   │   ├── HTMLDialogElementMock.ts
+│   │   │   │   ├── ResizeObserverMock.ts
 │   │   │   │   ├── Setup.ts
 │   │   │   │   ├── Theme.ts
 │   │   │   │   └── deferred.ts
@@ -444,4 +459,4 @@
 │   └── predeploy-ghpages
 ├── turbo.json
 └── yarn.lock
-72 directories, 374 files
+74 directories, 387 files
