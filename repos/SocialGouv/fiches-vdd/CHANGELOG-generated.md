@@ -1,39 +1,41 @@
-## Changelog : fiches-vdd (30 derniers jours)
+## Changelog : fiches-vdd (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'évolution du projet fiches-vdd. Les principales modifications concernent des mises à jour régulières des données, apportant ainsi des informations administratives à jour aux utilisateurs. Ces mises à jour sont automatisées et fréquentes, assurant la pertinence des fiches disponibles.
+Ce changelog couvre une période de 30 jours marquée par des mises à jour quotidiennes des données fournies par le projet. Ces mises à jour visent à maintenir l'exactitude et la pertinence des fiches d'informations sur les droits et démarches administratives.  Il n'y a pas eu de changements significatifs sur l'infrastructure ou le code du projet durant cette période.
 
 ### Évolutions fonctionnelles
-- Mise à jour des données le 15 mars 2026 ([fca3fea](https://github.com/SocialGouv/fiches-vdd/commit/fca3fea588397b65206207683f51d25d69164e71))
-- Mise à jour des données le 14 mars 2026 ([369e8ed](https://github.com/SocialGouv/fiches-vdd/commit/369e8edc723637d99ec44b107df9c0e6bf50c2dc))
-- Mise à jour des données le 13 mars 2026 ([0c2eb9b](https://github.com/SocialGouv/fiches-vdd/commit/0c2eb9bedba73131bafc54fa842e864c8d1dc8a5))
-- Mise à jour des données le 12 mars 2026 ([28d5236](https://github.com/SocialGouv/fiches-vdd/commit/28d5236ccf1098dde945d3ccdc5b25bb370d58af))
-- Mise à jour des données le 11 mars 2026 ([f9d54b9](https://github.com/SocialGouv/fiches-vdd/commit/f9d54b91962950fcaa2419033cc3d844e6b2ef61))
-- Mise à jour des données le 10 mars 2026 ([38b14f5](https://github.com/SocialGouv/fiches-vdd/commit/38b14f5652a0d42ba3a2ed614f8c1048ddb7f161))
-- Mise à jour des données le 9 mars 2026 ([eafbf37](https://github.com/SocialGouv/fiches-vdd/commit/eafbf37dc27044b35cd5568ef2819ed865f16ee8))
-- Mise à jour des données le 8 mars 2026 ([545610e](https://github.com/SocialGouv/fiches-vdd/commit/545610e2893887a306e0e690efa4a6bf828422ec))
-- Mise à jour des données le 7 mars 2026 ([e5a20bc](https://github.com/SocialGouv/fiches-vdd/commit/e5a20bcb32c74982ea4ff9f4d569b01ebdf74119))
-- Mise à jour des données le 6 mars 2026 ([6a681ad](https://github.com/SocialGouv/fiches-vdd/commit/6a681ad0c35b1db33064d3275a5cdeed509562cd))
-- Mise à jour des données le 5 mars 2026 ([e57e40b](https://github.com/SocialGouv/fiches-vdd/commit/e57e40b3fca46a882851cb2d8ef5ef735d03c3c1))
-- Mise à jour des données le 4 mars 2026 ([d43207e](https://github.com/SocialGouv/fiches-vdd/commit/d43207e557e1a1498022631c9df488281012cc94))
-- Mise à jour des données le 2 mars 2026 ([f50d120](https://github.com/SocialGouv/fiches-vdd/commit/f50d1202f76a22946857184742a231921b739712))
-- Mise à jour des données le 1 mars 2026 ([176596d](https://github.com/SocialGouv/fiches-vdd/commit/176596d54442529b150b8914369166189929466d))
-- Mise à jour des données le 27 février 2026 ([28c50ec](https://github.com/SocialGouv/fiches-vdd/commit/28c50ec85a96a759919476c1316129876462a24a))
-- Mise à jour des données le 26 février 2026 ([ed05819](https://github.com/SocialGouv/fiches-vdd/commit/ed05819b172404031142556790f41f7a2333953f))
-- Mise à jour des données le 25 février 2026 ([2f27071](https://github.com/SocialGouv/fiches-vdd/commit/2f27071d7961829f1397088783083336f9229f9c))
-- Mise à jour des données le 24 février 2026 ([d65b2de](https://github.com/SocialGouv/fiches-vdd/commit/d65b2de63674f47408f75a0055722061843f7b31))
-- Mise à jour des données le 23 février 2026 ([935cfe5](https://github.com/SocialGouv/fiches-vdd/commit/935cfe57898914338f4a9649036857825982759a))
-- Mise à jour des données le 22 février 2026 ([bf413e9](https://github.com/SocialGouv/fiches-vdd/commit/bf413e9b577f4f886f6309395267a26b7453b796))
-- Mise à jour des données le 21 février 2026 ([40b4f53](https://github.com/SocialGouv/fiches-vdd/commit/40b4f53119768380a9a98406f39794934f04606e))
-- Mise à jour des données le 19 février 2026 ([2d6c04a](https://github.com/SocialGouv/fiches-vdd/commit/2d6c04a1815961551639c1158593388683254691))
-- Mise à jour des données le 18 février 2026 ([c5d7728](https://github.com/SocialGouv/fiches-vdd/commit/c5d7728e417437711183666a3756357064901b51))
-- Mise à jour des données le 17 février 2026 ([adb0312](https://github.com/SocialGouv/fiches-vdd/commit/adb0312386944738469983f35b35193441431753))
-- Mise à jour des données le 16 février 2026 ([55d88d3](https://github.com/SocialGouv/fiches-vdd/commit/55d88d3a159115991b829449c08621656343427b))
-- Mise à jour des données le 15 février 2026 ([ee88554](https://github.com/SocialGouv/fiches-vdd/commit/ee88554f15b62f691447c019349599008988c286))
-- Mise à jour des données le 14 février 2026 ([50fc239](https://github.com/SocialGouv/fiches-vdd/commit/50fc2393949949340f1516594f931554416c4243))
+- Mises à jour quotidiennes des données des fiches d'informations sur les droits et démarches administratives :
+    - 2026-04-15 : Mise à jour des données ([f4c998d](https://github.com/SocialGouv/fiches-vdd/commit/f4c998d08e7885366ac1793342e2147233136f92))
+    - 2026-04-14 : Mise à jour des données ([8c249fd](https://github.com/SocialGouv/fiches-vdd/commit/8c249fdc63bf28522715d802fb14367910034521))
+    - 2026-04-13 : Mise à jour des données ([859a042](https://github.com/SocialGouv/fiches-vdd/commit/859a0429b095a28c950b41d853ef0cf24f7f54a9))
+    - 2026-04-12 : Mise à jour des données ([df9ae8c](https://github.com/SocialGouv/fiches-vdd/commit/df9ae8c12626986cd2f89c66880d9e21dc0aeb76))
+    - 2026-04-10 : Mise à jour des données ([663cd6e](https://github.com/SocialGouv/fiches-vdd/commit/663cd6e3b86893d230290dd9ea021f927c5898c8))
+    - 2026-04-09 : Mise à jour des données ([b75588b](https://github.com/SocialGouv/fiches-vdd/commit/b75588bbad585b74b2af8f0215e260ba8412515e))
+    - 2026-04-08 : Mise à jour des données ([c54b45b](https://github.com/SocialGouv/fiches-vdd/commit/c54b45bb003c45d16f935f0091aaa79b850cb917))
+    - 2026-04-07 : Mise à jour des données ([6456c3c](https://github.com/SocialGouv/fiches-vdd/commit/6456c3cec2e3bb237f5ac55992763f20f2237725))
+    - 2026-04-06 : Mise à jour des données ([be98848](https://github.com/SocialGouv/fiches-vdd/commit/be98848ab6f7cd143fe49d08dfba831fd01255da))
+    - 2026-04-05 : Mise à jour des données ([20c59a3](https://github.com/SocialGouv/fiches-vdd/commit/20c59a3acd0d68938383193192fee9bd3cbcdaa7))
+    - 2026-04-04 : Mise à jour des données ([db40afa](https://github.com/SocialGouv/fiches-vdd/commit/db40afa2ae4863ddaf227b49a54e3002f0650212))
+    - 2026-04-03 : Mise à jour des données ([12c8b49](https://github.com/SocialGouv/fiches-vdd/commit/12c8b4957d236806f78b2f11463a0f73fdf403fe))
+    - 2026-04-02 : Mise à jour des données ([4bb8d75](https://github.com/SocialGouv/fiches-vdd/commit/4bb8d75716977356566b7793c94155900f79184d))
+    - 2026-04-01 : Mise à jour des données ([07b0312](https://github.com/SocialGouv/fiches-vdd/commit/07b0312b611586827189426884351169c1611692))
+    - 2026-03-31 : Mise à jour des données ([e950e61](https://github.com/SocialGouv/fiches-vdd/commit/e950e61a4916977694862b913945299f6b9f1503))
+    - 2026-03-30 : Mise à jour des données ([82a6b95](https://github.com/SocialGouv/fiches-vdd/commit/82a6b95c9a679582764a7115282694129760b084))
+    - 2026-03-29 : Mise à jour des données ([f2d0f4c](https://github.com/SocialGouv/fiches-vdd/commit/f2d0f4ce498432334498656719694a7569305151))
+    - 2026-03-28 : Mise à jour des données ([8ada3ea](https://github.com/SocialGouv/fiches-vdd/commit/8ada3eab689f600648c913357f6514c957694696))
+    - 2026-03-27 : Mise à jour des données ([b3ec1c8](https://github.com/SocialGouv/fiches-vdd/commit/b3ec1c8969478113149189f8251648645358566f))
+    - 2026-03-26 : Mise à jour des données ([6617a92](https://github.com/SocialGouv/fiches-vdd/commit/6617a92b1a92f397076598448684217d44451626))
+    - 2026-03-25 : Mise à jour des données ([5ccdb88](https://github.com/SocialGouv/fiches-vdd/commit/5ccdb88a2007990964567f64452f717243964259))
+    - 2026-03-24 : Mise à jour des données ([20dcc2b](https://github.com/SocialGouv/fiches-vdd/commit/20dcc2b58676730899475f827392699f9c80640a))
+    - 2026-03-23 : Mise à jour des données ([b6a5c17](https://github.com/SocialGouv/fiches-vdd/commit/b6a5c17b295f95961416749435610a9a92744191))
+    - 2026-03-22 : Mise à jour des données ([31e5dab](https://github.com/SocialGouv/fiches-vdd/commit/31e5dabe26f1b56f93788f26c36065b62843f472))
+    - 2026-03-20 : Mise à jour des données ([08b2807](https://github.com/SocialGouv/fiches-vdd/commit/08b2807735546691444b596845a62729638a681a))
+    - 2026-03-19 : Mise à jour des données ([2e597a4](https://github.com/SocialGouv/fiches-vdd/commit/2e597a4e45624769678f9f97941994b76609747a))
+    - 2026-03-18 : Mise à jour des données ([988dbbc](https://github.com/SocialGouv/fiches-vdd/commit/988dbbca09343105a9695374329b35c8512f977a))
+    - 2026-03-17 : Mise à jour des données ([eea5562](https://github.com/SocialGouv/fiches-vdd/commit/eea55629546006953643825580818a640964216a))
 
 ### Évolutions techniques
-- Aucune évolution technique significative n'a été identifiée durant cette période.
+- Aucune évolution technique significative durant cette période.
 
 ### Autres changements
-- Aucune autre modification significative n'a été identifiée durant cette période.
+- Mises à jour de version régulières (chore(release)) pour chaque mise à jour de données.
