@@ -1,3 +1,269 @@
+2026-04-15T21:43:05+02:00 - ce7555f - Florian Bonniec : feat(api): removed certificationId and typeAccompagnement from handleFranceConnectCallback
+2026-04-15T21:22:27+02:00 - 255df0c - Florian Bonniec : feat(candidate): remove certificationId from register and login pages due to france connect feature
+2026-04-15T21:18:50+02:00 - a788cbe - Florian Bonniec : feat(website): remove all code relative to inscription-candidat feature
+2026-04-15T17:02:52+02:00 - b05564e - Pierre A : feat(admin):handle jury result history, previously validated blocks and confirmation modal
+2026-04-15T17:02:21+02:00 - 41ad9af - Pierre A : feat(api):add resolver for previously validated competence blocks
+2026-04-15T15:04:27+02:00 - 5b594bd - Florian Bonniec : feat(website,candidate): UI / UX cleaning due to france connect feature
+2026-04-15T12:54:26+02:00 - db815d8 - Alexandre Garbe : fix(vae-collective): tokens were all stored in the same cookie. Sometimes the cookie hit the 4096 bytes limit and was not writen (silently)
+2026-04-15T12:54:26+02:00 - 3612d46 - Alexandre Garbe : feat(api): updated france connect error message when birth city is missing
+2026-04-15T12:36:45+02:00 - f5e692f - Pierre A : feat(interop):add ID to dossier de validation schema and response
+2026-04-15T10:46:44+02:00 - b83fa33 - ThomasDos : chore(admin, api): remove CGU_CERTIFICATEUR feature flag and update related components
+2026-04-15T10:27:00+02:00 - 33fc2ab - ThomasDos : chore(candidate, api): remove candidate-help feature flag and update header navigation
+2026-04-15T10:18:13+02:00 - 027632a - ThomasDos : chore(admin, api): remove certificateur aide feature flag and streamline navigation tabs
+2026-04-15T10:08:28+02:00 - b95ae5c - ThomasDos : chore(admin, api): remove AAP_HELP feature flag and simplify navigation tabs
+2026-04-14T18:31:08+02:00 - 2ea780b - Florian Bonniec : feat(api): set ccnId and typology based on candidate to candidacy only if typeAccompagnement == ACCOMPAGNE
+2026-04-14T17:27:25+02:00 - ddc881a - Alexandre Garbe : feat(api): logged malformed token in case of  jwt decode error
+2026-04-14T16:47:04+02:00 - bbf7b69 - Florian Bonniec : feat(vae-collective): remove url with code from cohorte
+2026-04-14T16:41:07+02:00 - 96010d2 - Alexandre Garbe : feat(api): Login in with france connect when the user country is france and its birthplace is empty now throw an error and log anonymized user info. Also removed default birthDepartmentId in that case since we throw an error.
+2026-04-14T16:19:27+02:00 - 16933d4 - ThomasDos : chore(candidate, api): remove CANDIDATE_NEXT_ACTIONS feature flag and update dashboard components
+2026-04-14T15:47:57+02:00 - 76582b5 - Pierre A : feat(admin):make compentence block checkboxes when candidate failed or was absent
+2026-04-14T15:28:32+02:00 - 5e94e5e - Pierre A : tests(admmin):update and add new tests to check form behavior
+2026-04-14T15:16:55+02:00 - 2a02414 - Pierre A : feat(admin):allow saving jury results by blocks and display result hisroty
+2026-04-14T15:15:58+02:00 - 11c46b8 - Pierre A : feat(api):add migration and resolvers for jury results by blocks
+2026-04-14T14:44:16+02:00 - 74c6578 - Alexandre Garbe : feat(api): added a log for the case when birthplace is empty while login in with france connect
+2026-04-14T14:30:12+02:00 - b3495c3 - Florian Bonniec : fix(candidate,vae-collective): fixed password regex to ignore special letters as special chars
+2026-04-14T11:43:34+02:00 - cd2c66d - ThomasDos : chore(admin, api): remove END_ACCOMPAGNEMENT feature flag
+2026-04-14T08:44:24+02:00 - f26ef68 - Cédric Soulas : fix(api): enforce experience ownership and extend test coverage
+2026-04-14T08:44:19+02:00 - d5b6158 - Cédric Soulas : fix(api): enforce appointment ownership and extend test coverage
+2026-04-13T15:30:02+02:00 - e9f912a - ThomasDos : test(admin): fix alias conflict in revoke jury decision cypress test
+2026-04-13T14:59:01+02:00 - 49d53cd - Pierre A : fix(admin):fix component import for new jury date page
+2026-04-13T14:55:50+02:00 - f8b788c - Pierre A : chore(admin):remove unsued component
+2026-04-13T14:50:54+02:00 - 1f7eef4 - Pierre A : tests(admin):update tests for new split page configuration
+2026-04-13T14:50:54+02:00 - 19c49ee - Pierre A : feat(admin):split jury date and results to separate pages
+2026-04-13T14:25:19+02:00 - 4c5c08b - ThomasDos : refactor(api): remove temporary birthdate logging from FranceConnect reconciliation error
+2026-04-13T14:25:18+02:00 - d5cb960 - ThomasDos : chore(api): remove CERTIFICATEUR_CANDIDACIES_ANNUAIRE feature flag from database
+2026-04-13T14:25:16+02:00 - 57779bb - ThomasDos : test(admin): remove legacy certificateur test fixtures and stubs
+2026-04-13T14:25:15+02:00 - 78a10e0 - ThomasDos : refactor(admin): remove legacy certificateur listing pages
+2026-04-13T14:25:14+02:00 - 933c1f3 - ThomasDos : fix(api): update jury email URL to use annuaire route
+2026-04-13T14:25:12+02:00 - b1f20c3 - ThomasDos : refactor(admin): remove CERTIFICATEUR_CANDIDACIES_ANNUAIRE feature flag conditionals
+2026-04-10T14:31:11+02:00 - b2c2abe - dependabot[bot] : chore(deps): bump axios from 1.14.0 to 1.15.0 in /packages/reva-api
+2026-04-10T14:28:32+02:00 - 24d3f01 - dependabot[bot] : chore(deps): bump basic-ftp from 5.2.0 to 5.2.1 in /packages/reva-api
+2026-04-10T11:41:12+02:00 - 33adeaa - Florian Bonniec : fix(api): remove departmentId from updateCandidateFromFCClaims
+2026-04-10T11:28:49+02:00 - f29e70e - Alexandre Garbe : feat(api): added an index to the keycloak_id of the candidacy table in order to speed up the getCandidacies method
+2026-04-10T11:28:48+02:00 - a08c889 - Alexandre Garbe : feat(api): added a ["status","created_at desc] index to the candidacy table in order to speed up the getCandidacies method
+2026-04-10T11:28:48+02:00 - 502fdac - Alexandre Garbe : feat(api): added indexes on tables used by active_organism_by_available_certification_based_on_formacode view
+2026-04-10T10:08:49+02:00 - 682d92e - ThomasDos : refactor(api): update birthdate handling in FranceConnect features
+2026-04-09T16:00:32+02:00 - a729d6c - ThomasDos : feat(api): enhance FranceConnectReconciliationError to include birthdate information
+2026-04-09T13:41:23+02:00 - 83dc878 - Pierre A : tests(admin):fix jury result by blocks tests targeting radio button
+2026-04-09T12:20:17+02:00 - fd01ca2 - ThomasDos : refactor(api): enhance error handling and refactor pivot field matching logic
+2026-04-09T11:39:06+02:00 - e2671e3 - Alexandre Garbe : feat(api): updated getExperiencesByCandidacyId in order to avoid n+1 request when used through Candidacy->experiences resolver
+2026-04-09T11:39:06+02:00 - 528e61c - Alexandre Garbe : feat(api): updated getCandidacyGoals in order to avoid n+1 request when used through Candidacy->goals resolver
+2026-04-09T11:39:06+02:00 - 0b0d52c - Alexandre Garbe : feat(api): added an index on [candidacy_id,startedAt] to the experience table
+2026-04-09T11:39:05+02:00 - 98a78d6 - Alexandre Garbe : feat(api): added an index on [candidacy_id,date] to the appointment table
+2026-04-08T17:31:15+02:00 - 2e8976f - Florian Bonniec : fix(api,admin): use getCivilInformationCompletedByCandidateId and getContactInformationCompletedByCandidateId features to check if candidacy summary has been completed
+2026-04-08T16:51:03+02:00 - c086652 - Pierre A : fix(admin):skip test temporarily before fixing
+2026-04-08T16:12:05+02:00 - 77cfa8d - Florian Bonniec : feat(admin,candidate): merge birthDepartment and birthCity into birthPlace
+2026-04-08T15:56:58+02:00 - c2d3d2d - ThomasDos : test(candidate): remove redundant tests for non-France linked candidates in civil informations
+2026-04-08T15:27:36+02:00 - 769dae1 - ThomasDos : fix(api, admin, candidate): allow birthCity edit for FC-linked candidates when country is not France
+2026-04-08T15:24:40+02:00 - 7d334d6 - Pierre A : tests(admin):add primary tests for jury result by blocks
+2026-04-08T15:24:22+02:00 - a8413d5 - Pierre A : feat(admin):add necessary elements for result by blocks feature
+2026-04-08T15:23:53+02:00 - 68eb5fb - Pierre A : refacto(admin):use separate component for jury results by blocks
+2026-04-08T15:04:28+02:00 - ad667a6 - Alexandre Garbe : feat(api): added an index on the dff_certification_competence_details table dematerializedFeasibilityFileId field
+2026-04-08T14:54:53+02:00 - 6fba6d1 - Alexandre Garbe : feat(api): rework on candidacy count by status to apply search filters before joins and make full usage of pg_trgm indexes
+2026-04-08T14:54:53+02:00 - 2388c40 - Alexandre Garbe : feat(api): added trgm index on candidacy search fields
+2026-04-08T11:52:58+02:00 - bc33aad - Cédric Soulas : test(candidate): add first appointment option to candidacy factory
+2026-04-08T11:04:51+02:00 - eb5df0e - Florian Bonniec : feat(api,candidate): merge birthDepartment and birthCity into birthPlace
+2026-04-08T09:09:11+02:00 - fab26b4 - ThomasDos : refactor(candidate): extract feasibility validation condition into named variable
+2026-04-08T09:03:46+02:00 - b0ccc7e - Cédric Soulas : test(candidate): migrate dashboard appointment sidebar tile to playwright
+2026-04-08T08:43:59+02:00 - b02d8e6 - ThomasDos : refactor(api): simplify INCOMPLETE decision check logic and update test for candidate confirmation date
+2026-04-08T08:07:44+02:00 - 3a23448 - ThomasDos : feat(admin): handle INCOMPLETE feasibility decision with preserved dates and stale detection
+2026-04-08T08:07:44+02:00 - 0f1f157 - ThomasDos : feat(candidate): handle INCOMPLETE feasibility decision with preserved dates and temporal outdated detection
+2026-04-07T19:00:40+02:00 - 48fc1b9 - ThomasDos : feat(api): preserve DFF data on INCOMPLETE decision, add temporal guard for re-submission
+2026-04-07T16:18:55+02:00 - d26600f - Alexandre Garbe : chore(api): replaced token.service.ts by jwt.helper
+2026-04-07T16:18:55+02:00 - 6979e92 - Alexandre Garbe : feat(api): added an index to the candidacy_id field of the certification_authority_local_account_on_candidacy table
+2026-04-07T16:18:55+02:00 - 39e0b54 - Alexandre Garbe : fix(api): fixed a n+1 graphql request bug when requesting multiple compltanceBlocs competences
+2026-04-07T16:18:55+02:00 - 341fa1d - Alexandre Garbe : moved Candidacy -> certificationAuthorityLocalAccounts resolver to the certification-authority module
+2026-04-07T16:18:55+02:00 - 0748a45 - Alexandre Garbe : chore(api): extracted a jwt.helper from auth.helper
+2026-04-07T16:18:55+02:00 - 06549d3 - Alexandre Garbe : feat(api): added a [blocid, index] index to the certification_competence table to make the getCertificationCompetencesByBlocId function quicker
+2026-04-07T16:14:57+02:00 - 7658674 - Cédric Soulas : test(candidate): remove test based on non-existent testId
+2026-04-07T14:46:04+02:00 - 72b0f4d - Pierre A : fix(candidate):apply max height to common props
+2026-04-07T14:26:38+02:00 - fe95fd2 - Pierre A : chore(candidate):update ccn wording
+2026-04-07T12:52:18+02:00 - 9f8101d - Cédric Soulas : chore(strapi): override lodash to ^4.18.1
+2026-04-07T12:32:50+02:00 - e7acea4 - Cédric Soulas : chore(api,interop,admin,candidate,website): bump @graphql-codegen/cli to v6.2.1 and @graphql-codegen/client-preset to v5.2.4
+2026-04-07T12:32:50+02:00 - 5e545fe - Cédric Soulas : chore(api,admin,candidate,website): bump lodash to 4.18.1
+2026-04-07T11:53:38+02:00 - 9ca96a1 - Pierre A : fix(api):allow fetching certifications without parcours to cover the case of BUTs
+2026-04-07T11:52:25+02:00 - fa07ffe - Pierre A : fix(candidate):fix tile height for multi-column sections
+2026-04-07T11:52:25+02:00 - cf6fdfc - Pierre A : Reapply "feat(candidate):set max dashboard tile height and adjust content size"
+2026-04-07T11:41:19+02:00 - 95201a4 - dependabot[bot] : chore(deps): bump lodash, @graphql-codegen/cli and @graphql-codegen/client-preset
+2026-04-07T10:39:35+02:00 - 57e2a01 - Cédric Soulas : chore(admin,candidate,collective,website): add missing dotenv dev dependencies
+2026-04-07T09:50:25+02:00 - 80ab7d0 - dependabot[bot] : chore(deps-dev): bump vite from 8.0.3 to 8.0.5 in /packages/reva-api
+2026-04-07T09:45:30+02:00 - bb984ca - dependabot[bot] : chore(deps): bump defu from 6.1.4 to 6.1.6 in /packages/reva-interop
+2026-04-07T09:43:38+02:00 - 9cd98a9 - dependabot[bot] : chore(deps): bump lodash-es from 4.17.23 to 4.18.1 in /infra/strapi
+2026-04-03T16:27:32+02:00 - 31c58da - Florian Bonniec : Revert "feat(candidate):set max dashboard tile height and adjust content size"
+2026-04-03T11:35:40+02:00 - e5a2768 - Alexandre Garbe : chore(api): update candidate_updateCandidateProfile input
+2026-04-03T11:35:40+02:00 - 3fdff48 - Alexandre Garbe : chore(api): update candidate_updateCandidateContactDetails input
+2026-04-03T11:34:49+02:00 - fa6897d - Alexandre Garbe : chore(api): updated candidate_updateCandidateInformationBySelf input
+2026-04-03T11:34:49+02:00 - d321dbc - Alexandre Garbe : chore(api): updated candidate_updateCandidateInformation input
+2026-04-03T11:23:35+02:00 - 8629d61 - Florian Bonniec : feat(api): added missing tests to vae-collective module
+2026-04-03T09:59:01+02:00 - 50d48e3 - Florian Bonniec : feat(api): added tests to candidate module
+2026-04-02T16:04:36+02:00 - f8753d6 - Alexandre Garbe : feat(api): added a FranceConnectReconciliationError to the france connect connection code for easier tracing
+2026-04-02T15:43:54+02:00 - 73c755b - Pierre A : fix(candidate):force click in cypress in remaing hook
+2026-04-02T15:37:24+02:00 - fe6168d - Pierre A : fix(candidate):force click in cypress
+2026-04-02T15:20:50+02:00 - ef42a54 - Pierre A : feat(candidate):set max dashboard tile height and adjust content size
+2026-04-02T14:54:14+02:00 - 0bc53ea - ThomasDos : feat(candidate): update authentication error page with improved messaging and support link
+2026-04-02T10:57:43+02:00 - 8914233 - Pierre A : chore(infra):fix line terminations and exec permission
+2026-04-02T09:53:02+02:00 - 313a57e - ThomasDos : feat(candidate): enhance authentication error handling with detailed reconciliation error page
+2026-04-01T17:29:15+02:00 - a74bdcd - Pierre A : chore(api):update to Vitest 4
+2026-04-01T17:29:00+02:00 - a146f46 - Pierre A : fix(api):await promises in organism tests
+2026-04-01T16:05:04+02:00 - 10c5709 - Pierre A : chore(strapi):update to very least version
+2026-04-01T15:53:25+02:00 - 26bb190 - Pierre A : chore(workspace):bump package versions to fix vulnerabilities
+2026-04-01T15:23:42+02:00 - 79da8ce - Pierre A : chore(api):update packages to fix vulnerabilities
+2026-04-01T14:42:05+02:00 - 87fe3ea - Florian Bonniec : feat(api,admin,candidate): removed use generated dff file from file server feature flag
+2026-04-01T14:41:11+02:00 - c58bb0b - Pierre A : chore(interop):update packages to fix vulnerabilities
+2026-04-01T14:39:28+02:00 - 2f11851 - Pierre A : chore(collective):override minimatch to closest non vulnerable minor version
+2026-04-01T14:38:02+02:00 - 02c9084 - Pierre A : chore(collective):update packages to fix vulnerabilities
+2026-04-01T13:12:23+02:00 - 8ddc15a - Pierre A : chore(candidate):override minimatch to closest non vulnerable minor version
+2026-04-01T13:11:29+02:00 - 1050060 - Pierre A : chore(candidate):postcss-url should be devDependencies
+2026-04-01T13:08:43+02:00 - 36b7d12 - Pierre A : chore(candidate):update packages to fix vulnerabilities
+2026-04-01T12:56:00+02:00 - c25245a - Florian Bonniec : feat(api,admin,candidate): removed multi candidacy feature flag
+2026-04-01T12:34:49+02:00 - e53127e - Pierre A : chore(admin):postcss-import and postcss-utl should be devDependencies
+2026-04-01T12:33:43+02:00 - f43b459 - Pierre A : chore(admin):override minimatch to closest non vulnerable minor version
+2026-04-01T12:31:28+02:00 - 0957c1a - Pierre A : chore(admin):update packages to fix vulnerabilities
+2026-04-01T12:19:24+02:00 - bea30c3 - Pierre A : chore(website):override minimatch to closest non vulnerable minor version
+2026-04-01T11:57:49+02:00 - 39d0847 - Pierre A : update 'espace professionnel' link to new dynamic page and create redirection
+2026-03-31T16:44:41+02:00 - 897a15a - Pierre A : chore(api):remove pro menu dropdown feature flag from DB
+2026-03-31T16:41:34+02:00 - 05d1b96 - Pierre A : chore(website):remove pro menu dropdown feature flag
+2026-03-31T16:27:01+02:00 - 9f86509 - Pierre A : feat(website):remove contact button from 'learn more' page
+2026-03-31T15:14:20+02:00 - f6becc4 - Pierre A : chore(strapi):override handlebars, lodash and tmp to safe version
+2026-03-31T14:41:50+02:00 - 23ac633 - Pierre A : chore(strapi):update strapi and override vulnerable dependencies
+2026-03-31T12:28:45+02:00 - fa5edc8 - Florian Bonniec : feat(interop): added middleNames to candidatSchema
+2026-03-31T11:44:04+02:00 - 04139f6 - ThomasDos : test(admin): update Cypress tests to include revoke decision button visibility for INCOMPLETE decisions based on feature flag
+2026-03-31T11:43:50+02:00 - a0215d1 - ThomasDos : feat(admin): integrate feature flag for revoking incomplete decisions in FeasibilityBanner and DecisionSentComponent
+2026-03-31T11:43:36+02:00 - a5f6040 - ThomasDos : feat(api): add feature flag for admin to revoke incomplete decisions in feasibility files
+2026-03-30T16:46:40+02:00 - 9383f65 - ThomasDos : test(admin): update cypress revoke tests to expect revoke button for COMPLETE and INCOMPLETE decisions
+2026-03-30T16:42:01+02:00 - 2ac3adb - dependabot[bot] : chore(deps): bump serialize-javascript and terser-webpack-plugin
+2026-03-30T16:41:29+02:00 - 6bd850f - dependabot[bot] : chore(deps): bump path-to-regexp from 0.1.12 to 0.1.13 in /infra/strapi
+2026-03-30T16:41:02+02:00 - 32a1b8c - dependabot[bot] : chore(deps): bump brace-expansion in /packages/reva-candidate
+2026-03-30T16:36:58+02:00 - 2705e1f - dependabot[bot] : chore(deps): bump brace-expansion in /packages/reva-interop
+2026-03-30T16:36:39+02:00 - c9160b9 - dependabot[bot] : chore(deps): bump brace-expansion in /infra/strapi
+2026-03-30T16:34:14+02:00 - 8393548 - dependabot[bot] : chore(deps): bump brace-expansion in /packages/reva-api
+2026-03-30T16:10:24+02:00 - 76b4e5a - ThomasDos : feat(api): enhance revokeCertificationAuthorityDecision logic to support additional decisions and candidacy statuses
+2026-03-30T16:10:24+02:00 - 4e5dd54 - ThomasDos : test(api): update revokeCertificationAuthorityDecision tests with French descriptions and additional scenarios
+2026-03-30T16:10:24+02:00 - 4e5d60c - ThomasDos : feat(admin): allow admins to revoke completeness decision (COMPLETE/INCOMPLETE) on feasibility files
+2026-03-30T16:08:44+02:00 - 851b337 - Pierre A : feat(admin):show certification and compentence blocks on jury result page
+2026-03-30T16:08:07+02:00 - cf536ee - Pierre A : feat(api):add feature flag for jury results by block
+2026-03-30T15:15:57+02:00 - db0408f - Florian Bonniec : feat(admin): added support of middleNames feature
+2026-03-30T14:45:02+02:00 - 91bfcbc - Florian Bonniec : feat(candidate): improved wording of required field: gender
+2026-03-30T14:15:41+02:00 - 6edf0f1 - Alexandre Garbe : feat(admin): added the "complement d'éxperience" page to the dff section of the app
+2026-03-30T13:11:53+02:00 - 4555b38 - Pierre A : fix(api):when candidacy manager has not set contact email, fallback to login email for DF and DV notifications
+2026-03-30T11:33:01+02:00 - af0e444 - Alexandre Garbe : feat(api): added a dematerialized_feasibility_file_createOrUpdateComplementExperienceParcoursVise mutation and some test to the  complementExperienceParcoursVise dff field
+2026-03-27T15:14:50+01:00 - 66545be - Florian Bonniec : feat(admin): certification authority account lastname and firstname are now editable by owner
+2026-03-27T14:57:35+01:00 - d3ce215 - Alexandre Garbe : feat(api): added a  complementExperienceParcoursVise field to the DematerializedFeasibilityFile graphql schema
+2026-03-27T14:57:35+01:00 - a5de8b3 - Alexandre Garbe : feat(admin): added the ComplementExperienceParcoursViseAccordion to the dematerialized feasibility file
+2026-03-27T11:55:39+01:00 - 6053cfd - Florian Bonniec : fix(candidate): updated wording of CivilInformationForm and ContactInformationForm if candidate is linked by france connect
+2026-03-27T11:23:52+01:00 - df97891 - dependabot[bot] : chore(deps): bump yaml from 2.8.2 to 2.8.3 in /packages/reva-interop
+2026-03-27T11:23:44+01:00 - d9973a2 - dependabot[bot] : chore(deps): bump yaml from 1.10.2 to 1.10.3 in /infra/strapi
+2026-03-27T11:23:21+01:00 - bbe741b - dependabot[bot] : chore(deps): bump picomatch in /packages/reva-interop
+2026-03-27T11:23:13+01:00 - 464523a - dependabot[bot] : chore(deps-dev): bump picomatch in /packages/reva-api
+2026-03-27T11:23:06+01:00 - 2266d48 - dependabot[bot] : chore(deps): bump picomatch in /packages/reva-vae-collective
+2026-03-27T11:22:57+01:00 - 9b2a506 - dependabot[bot] : chore(deps): bump picomatch in /infra/strapi
+2026-03-27T11:22:22+01:00 - 54af101 - dependabot[bot] : chore(deps): bump fastify from 5.8.1 to 5.8.3 in /packages/reva-api
+2026-03-27T11:21:59+01:00 - 34f886e - dependabot[bot] : chore(deps): bump fastify from 5.8.1 to 5.8.3 in /packages/reva-interop
+2026-03-26T11:36:06+01:00 - 268708c - Cédric Soulas : refactor(candidate): extract shared createCandidacyDropOutEntity factory
+2026-03-26T11:08:14+01:00 - 14ef8fb - Alexandre Garbe : feat(admin): updated wording on Feasibility competence blocks page
+2026-03-23T18:30:57+01:00 - 0c76b74 - Cédric Soulas : chore(api): remove unused rate-limit package
+2026-03-23T16:28:55+01:00 - 8effdef - Alexandre Garbe : feat(api+admin): admin can now update a certification authority label in the certification authority directory
+2026-03-23T16:28:55+01:00 - 0f8224c - Alexandre Garbe : feat(admin): added test for admin certification authority general information page
+2026-03-23T14:08:14+01:00 - d0aa50d - ThomasDos : feat(candidate): enhance error handling in AuthError component to display error description if available
+2026-03-23T14:08:14+01:00 - 3104261 - ThomasDos : feat(api): implement unlinking of FranceConnect identity for mismatched user data
+2026-03-23T13:00:19+01:00 - 8009f8d - Cédric Soulas : chore(candidate): update playwright and msw dependencies
+2026-03-23T12:54:12+01:00 - 9445f52 - dependabot[bot] : chore(deps-dev): bump flatted in /packages/reva-website
+2026-03-23T12:53:41+01:00 - 9a51fa6 - dependabot[bot] : chore(deps): bump next in /packages/reva-admin-react
+2026-03-23T12:53:12+01:00 - 2967292 - dependabot[bot] : chore(deps-dev): bump flatted in /packages/reva-vae-collective
+2026-03-20T16:18:55+01:00 - 0516cbb - Alexandre Garbe : feat(api): added a test file for the candidacy_selectOrganismAsAdmin mutation
+2026-03-20T15:20:21+01:00 - b0dc04a - Florian Bonniec : feat(api): added middleNames with feature flag to generateFeasibilityFileByCandidacyId feature
+2026-03-20T15:07:02+01:00 - 2967f7b - Florian Bonniec : feat(api,candidate): added middleNames to replace firstname2 and firstname3
+2026-03-20T14:50:54+01:00 - 7813491 - Alexandre Garbe : feat(api): when an admin update a candidacy aap it now sends an email to the new aap
+2026-03-20T14:37:14+01:00 - acab7b2 - ThomasDos : test(candidate): add birth city field to FranceConnect candidate tests
+2026-03-20T13:29:03+01:00 - 69a8eed - ThomasDos : test(candidate, admin): update birth city field status in FranceConnect candidate tests
+2026-03-20T12:56:16+01:00 - 65389c0 - ThomasDos : feat(admin): disable birth city input based on FC link status in candidate information forms
+2026-03-20T12:56:16+01:00 - 5559294 - ThomasDos : feat(candidate): disable birth city input based on FC link status in candidate information forms
+2026-03-20T12:22:04+01:00 - cb09038 - fbonniec : Merge pull request #954 from betagouv/dependabot/npm_and_yarn/packages/reva-website/next-15.5.14
+2026-03-20T12:10:42+01:00 - 87395a8 - fbonniec : Merge pull request #953 from betagouv/dependabot/npm_and_yarn/packages/reva-vae-collective/next-15.5.14
+2026-03-20T11:44:33+01:00 - 14b4642 - fbonniec : Merge pull request #952 from betagouv/dependabot/npm_and_yarn/packages/reva-api/flatted-3.4.2
+2026-03-20T11:35:06+01:00 - 70b6c31 - fbonniec : Merge pull request #951 from betagouv/dependabot/npm_and_yarn/packages/reva-candidate/next-16.1.7
+2026-03-20T11:24:38+01:00 - 92cb84b - fbonniec : Merge pull request #950 from betagouv/dependabot/npm_and_yarn/packages/reva-admin-react/jspdf-4.2.1
+2026-03-20T11:12:14+01:00 - c0c45c2 - fbonniec : Merge pull request #949 from betagouv/dependabot/npm_and_yarn/packages/reva-api/undici-7.24.4
+2026-03-20T11:12:10Z - 29ab8fb - dependabot[bot] : chore(deps): bump next from 15.5.11 to 15.5.14 in /packages/reva-website
+2026-03-20T11:07:39+01:00 - 33c8c99 - fbonniec : Merge pull request #947 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/flatted-3.4.1
+2026-03-20T11:01:52+01:00 - 3e1d81b - fbonniec : Merge pull request #926 from betagouv/dependabot/npm_and_yarn/packages/reva-api/multi-73726a8ab8
+2026-03-20T10:55:16+01:00 - ef101e8 - fbonniec : Merge pull request #923 from betagouv/dependabot/npm_and_yarn/packages/reva-api/multi-60f2582fdd
+2026-03-20T10:47:16+01:00 - b67edc8 - Alexandre Garbe : feat(website): updated wording for the email address notice in the AcccounInfoStepForm component
+2026-03-20T10:46:04Z - b55cad4 - dependabot[bot] : chore(deps): bump next in /packages/reva-vae-collective
+2026-03-20T10:44:58+01:00 - 9c7735a - ThomasDos : feat(keycloak): add candidate theme and configuration for login page
+2026-03-20T10:44:57+01:00 - a58182c - ThomasDos : feat(api): enhance error handling in France Connect callback with specific error classes
+2026-03-20T10:44:57+01:00 - 99de401 - ThomasDos : feat(candidate): add '/auth-error' path to UNAUTHENTICATED_PATHS for improved routing
+2026-03-20T10:44:57+01:00 - 4c9d357 - ThomasDos : feat(candidate): update error messages for clarity and consistency in auth-error page
+2026-03-20T10:44:56+01:00 - 6784ad4 - ThomasDos : fix(candidate): add whitespace-nowrap class to logout button for improved layout
+2026-03-20T10:33:23+01:00 - 3d10e9d - fbonniec : Merge pull request #921 from betagouv/dependabot/npm_and_yarn/packages/reva-api/axios-1.13.5
+2026-03-20T10:13:32Z - 38e1fa1 - dependabot[bot] : chore(deps-dev): bump flatted from 3.3.3 to 3.4.2 in /packages/reva-api
+2026-03-20T10:07:03+01:00 - 4804265 - Alexandre Garbe : chore(website): removed WEBSITE_PUBLIC_ELIGIBLE feature flag
+2026-03-20T10:05:59+01:00 - 5ff1ceb - Alexandre Garbe : chore(api): removed DF_DEMAT_MISE_EN_CONFORMITE_PDF feature flag
+2026-03-20T09:55:14+01:00 - c1dd143 - Alexandre Garbe : chore(api+vae-collective): removed VAE_COLLECTIVE_MULTI_CERTIFICATION feature flag
+2026-03-19T20:10:26+01:00 - dc28ada - Cédric Soulas : test(admin): replace full build with prebuild in Playwright job
+2026-03-19T20:10:06+01:00 - a22f25a - Cédric Soulas : test(candidate): use prebuild instead of inline commands in Playwright job
+2026-03-19T19:34:40+01:00 - 3aa42e2 - Cédric Soulas : test(candidate): reduce flakiness by adding post-mutation mocks for dropout decision tests
+2026-03-19T19:08:55+01:00 - 8142b61 - Cédric Soulas : test(candidate): migrate candidacy dropout warning to playwright
+2026-03-19T19:08:55+01:00 - 7fec437 - Cédric Soulas : refactor(candidate): share candidacy dropout test handlers
+2026-03-19T19:08:55+01:00 - 3ae1f06 - Cédric Soulas : test(candidate): remove dossier de validation cypress spec already migrated
+2026-03-19T19:08:55+01:00 - 3145235 - Cédric Soulas : test(candidate): migrate candidacy dropout decision to playwright
+2026-03-19T19:08:55+01:00 - 089ea95 - Cédric Soulas : test(candidate): shard Playwright tests across 2 parallel CI jobs
+2026-03-19T16:40:58+01:00 - bd13c82 - Alexandre Garbe : feat(candidate): pdf feasibility file can now be sent to the certification authority when the the certification has expired if the feasibility file has been marked as incomplete
+2026-03-19T16:40:58+01:00 - 5748620 - Alexandre Garbe : feat(api): pdf feasibility file can now be sent to the certification authority when the the certification has expired if the feasibility file has been marked as incomplete
+2026-03-19T16:40:58+01:00 - 4550c18 - Alexandre Garbe : feat(admin): dematerialized feasibility file can now be sent to the candidate when the the certification has expired if the feasibility file has been marked as incomplete
+2026-03-19T15:55:34+01:00 - 7126a11 - Pierre A : feat(admin):update AAP local account wording for login info
+2026-03-19T12:35:13+01:00 - 7ed5c2b - Florian Bonniec : feat(canidate): improved UI and UX in CivilInformationForm and TypologyAndCollectiveAgreementForm
+2026-03-19T11:28:58+01:00 - 2eb2cbf - Florian Bonniec : feat(website): replace all links that redirect to a new VAE with /candidat/register
+2026-03-19T10:50:43+01:00 - 801e0d3 - Pierre A : feat(collective):add guidance on vae code on cohort page
+2026-03-18T17:40:24+01:00 - e516f6a - Alexandre Garbe : fix(candidate): fixed wrong test for feasibility file certification expired alert
+2026-03-18T17:40:24+01:00 - 7bab677 - Alexandre Garbe : feat(candidate): added tests for feasibility page when the certification has expired
+2026-03-18T17:40:24+01:00 - 38aa164 - Alexandre Garbe : chore(candidate): added warningOnFeasibilitySubmission param to createCandidacyEntity helper
+2026-03-18T15:40:46+01:00 - 0d457a0 - Florian Bonniec : fix(candidate): fixed typo in CivilInformationForm
+2026-03-18T15:36:39+01:00 - 38d25f2 - Florian Bonniec : fix(api,candidate): fixed getCivilInformationCompletedByCandidateId feature and civilInformationSchema on profile v2
+2026-03-18T15:08:58+01:00 - 709b775 - Florian Bonniec : fix(api): fixed updateCandidacyTypologyAndCcn and getTypologyAndCollectiveAgreementCompletedByCandidateId features
+2026-03-18T15:07:59+01:00 - 0e81f6c - Pierre A : tests(candidate):add tests for new feasibility banner on feasibility summary
+2026-03-18T15:07:38+01:00 - 4f77bec - Pierre A : feat(candidate):display feasibility decision banner on feasibility summary page
+2026-03-18T14:30:32+01:00 - e2acdc5 - Alexandre Garbe : feat(admin): added tests on the feasibility file when the certification has expired
+2026-03-18T12:16:21+01:00 - ca49a8a - ThomasDos : feat(api): implement birthplace resolution from INSEE code and integrate with France Connect callback
+2026-03-18T11:14:58+01:00 - 9734559 - Alexandre Garbe : chore(admin): migrated dematerialized-feasibility-file-prerequisites.spec test file to playwright
+2026-03-17T21:38:02Z - d3e540d - dependabot[bot] : chore(deps): bump next from 16.1.6 to 16.1.7 in /packages/reva-candidate
+2026-03-17T18:49:31Z - 55048ab - dependabot[bot] : chore(deps): bump jspdf in /packages/reva-admin-react
+2026-03-17T16:44:46+01:00 - f9c1d03 - Alexandre Garbe : chore(admin): migrated dematerialized-feasibility-file-competencies-blocks test file to playwright
+2026-03-17T16:44:46+01:00 - e6cb335 - Alexandre Garbe : chore(admin): migrated dematerialized-feasibility-file-aap-decision test file to playwright
+2026-03-17T16:44:46+01:00 - 477eb1b - Alexandre Garbe : chore(admin): migrated dematerialized-feasibility-file-certification test file to playwright
+2026-03-17T16:44:46+01:00 - 0a23c34 - Alexandre Garbe : chore(admin): migrated dematerialized-feasibility-file-attachments test file to playwright
+2026-03-17T16:33:49+01:00 - 71f1b73 - Florian Bonniec : fix(candidate): fixed queryKey invalidations in profile v1
+2026-03-17T15:58:14+01:00 - d2caa31 - ThomasDos : refactor(api): simplify France Connect redirect URI construction and standardize BASE_URL usage in config
+2026-03-17T15:58:13+01:00 - ddbfb55 - ThomasDos : fix(api): update France Connect redirect URI path for correct callback handling
+2026-03-17T15:56:57+01:00 - 6174f55 - Pierre A : feat(candidate):update copy for vae collective onboarding
+2026-03-17T15:44:37+01:00 - 8ebe33b - Florian Bonniec : fix(candidate): fix birthDepartment field in v1 profile form
+2026-03-17T15:39:26+01:00 - f3b93e1 - ThomasDos : feat(api): add candidacyId to impersonation inputs and update related functions for improved candidate handling
+2026-03-17T15:39:26+01:00 - 35828d1 - ThomasDos : feat(admin): include candidacyId in Impersonate component and related hooks for enhanced functionality
+2026-03-17T15:29:22+01:00 - 339776d - Pierre A : fix(website):fix css rule inheritance in FAQ page
+2026-03-17T15:23:32+01:00 - cba9226 - Florian Bonniec : fix(candidate): clean optional and required fields in v1 profile form
+2026-03-17T15:06:22+01:00 - c46a4ee - Pierre A : feat(interop):add crisp status reporter integration
+2026-03-17T13:12:26+01:00 - f0678bd - Alexandre Garbe : feat(api): updated candidacy_convention_collective table, added default value to id column
+2026-03-17T13:12:26+01:00 - 9f80367 - Alexandre Garbe : feat(api): updated candidacy_convention_collective table, added new ccns
+2026-03-17T13:12:26+01:00 - 1c2e787 - Alexandre Garbe : feat(api): shortened the certification_authority_on_certification_on_parcours_certification table name in prisma to match the truncated name in the database
+2026-03-17T12:47:16+01:00 - e46ba52 - Florian Bonniec : fix(candidate): clean optional and required fields in civil-informations, contact-informations and typology-and-collective-agreement forms
+2026-03-17T12:04:33+01:00 - 250d382 - Florian Bonniec : feat(candidate): added check of CANDIDATE_PROFILE_V2 feature flag in first-connexion page
+2026-03-17T10:55:18Z - 5caa5de - dependabot[bot] : chore(deps): bump undici from 7.19.2 to 7.24.4 in /packages/reva-api
+2026-03-17T10:00:45+01:00 - 387e8bd - Cédric Soulas : test(candidate): use getByRole("link") for Tile/Card clicks in candidacy tests causing flakiness
+2026-03-17T09:58:26+01:00 - 2114552 - Cédric Soulas : test(candidate): add missing await on click() in candidacy test specs causing flakiness
+2026-03-16T17:26:45+01:00 - bc5c9ae - Pierre A : tests(api):fix test by adding expected birth country in candidate info
+2026-03-16T17:23:45+01:00 - 27f9a0f - Pierre A : tests(api):update test for new address in pdf
+2026-03-16T17:15:08+01:00 - a355573 - Pierre A : fix(api):do not display birth country in residential address - add it to the candidate info table
+2026-03-16T17:15:08+01:00 - 188aa97 - Pierre A : fix(api):fix prerequisite section in generated feasibility PDF when there are no prerequisites
+2026-03-16T17:10:53+01:00 - 1364841 - Alexandre Garbe : feat(api): better handling of n+1 requests in getParcoursCertificationByCertificationId
+2026-03-16T15:55:34+01:00 - 7da2c12 - Pierre A : fix(website):feature flip header registration link
+2026-03-16T15:55:34+01:00 - 72acc1f - Pierre A : feat(website):header register button points to new registration page
+2026-03-16T15:55:34+01:00 - 6c474b1 - Pierre A : feat(website):remove CTAs from certification page when new registration flow is active
+2026-03-16T15:29:36+01:00 - 854a351 - ThomasDos : fix(api): update birthdate comparison logic to return false for null or invalid dates in france connect reconciliation
+2026-03-16T15:15:50+01:00 - 86417be - Pierre A : chore(interop):bruno env for production
+2026-03-16T14:49:49+01:00 - b941f23 - Pierre A : fix(traefik):fix upstream url
+2026-03-16T14:41:02+01:00 - 7a5f246 - Pierre A : feat(traefik):proxy config for production interop api
+2026-03-16T12:00:36+01:00 - 68fe242 - Pierre A : feat(candidate):update logout page to new design
+2026-03-14T22:08:39Z - 6618b8e - dependabot[bot] : chore(deps): bump flatted from 3.3.3 to 3.4.1 in /packages/reva-interop
 2026-03-13T15:19:34+01:00 - 28e5acd - Florian Bonniec : feat(api): added missing required fields in getCivilInformationCompletedByCandidateId feature
 2026-03-13T15:09:11+01:00 - e7c0721 - ThomasDos : chore: add .slugignore files to exclude unnecessary files and directories across multiple packages
 2026-03-13T15:04:51+01:00 - 6dbfc50 - Florian Bonniec : feat(candidate,api): split first-connexion into 3 steps wizard
@@ -116,6 +382,7 @@
 2026-03-04T10:25:40+01:00 - e6d3976 - ThomasDos : test(candidate): improve profile data loading and update error handling in updateCandidateInformationMutation
 2026-03-04T10:24:57+01:00 - e30a998 - ThomasDos : test(candidate): update button locator for "Supprimer" in dossier-de-validation spec
 2026-03-04T10:24:12+01:00 - 08126d8 - ThomasDos : chore(ci): update GraphQL schema generation step in CI pipeline reva-candidate
+2026-03-04T09:34:28Z - d3a3ba6 - dependabot[bot] : chore(deps): bump axios from 1.13.4 to 1.13.5 in /packages/reva-api
 2026-03-03T19:34:02+01:00 - 38dc811 - Pierre A : chore(admin):remove no longer used certification form component
 2026-03-03T19:30:32+01:00 - 77f93c8 - Pierre A : feat(admin):paginated and filterable view for candidacy manager to assign certifications to local account
 2026-03-03T19:29:33+01:00 - 5471379 - Pierre A : feat(api):allow certification authority paginatedCertifications to filter by local account id
@@ -178,7 +445,9 @@
 2026-02-25T16:38:06+01:00 - c611d5e - Pierre A : feat(admin):new paginated certification settings for certification authority local accounts in admin view
 2026-02-25T16:36:50+01:00 - 8bca4d7 - Pierre A : feat(api):certification search for admins can now filter by certification authority local account
 2026-02-23T16:16:18+01:00 - ff519b4 - Pierre A : refacto(admin):use generic seach list component for readonly certifications list
+2026-02-22T12:27:59Z - d21d7a9 - dependabot[bot] : chore(deps): bump ajv in /packages/reva-api
 2026-02-20T15:03:03+01:00 - 1d04048 - dependabot[bot] : chore(deps): bump jspdf in /packages/reva-admin-react
+2026-02-20T14:04:29Z - a526e43 - dependabot[bot] : chore(deps): bump fast-xml-parser and @aws-sdk/xml-builder
 2026-02-19T17:45:41+01:00 - b99a489 - Pierre A : fix(api):send feasibility decision emails to correct AAP email address
 2026-02-19T17:35:18+01:00 - d06327a - ThomasDos : Revert "feat(candidate): enhance registration page with France Connect integration and form layout improvements"
 2026-02-19T15:39:05+01:00 - 5cea95f - Pierre A : fix(api):fix GraphQL type

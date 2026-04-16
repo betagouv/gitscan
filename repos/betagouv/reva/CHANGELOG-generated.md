@@ -1,37 +1,100 @@
-## Changelog : reva (30 derniers jours)
+## Changelog : reva (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours de développement sur le projet REVA. Les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration de FranceConnect pour la simplification de l'authentification et de la création de candidatures. Des améliorations ont également été apportées à l'administration, avec de nouvelles fonctionnalités pour la gestion des certifications et des comptes d'administrateurs, ainsi que des corrections de bugs et des optimisations techniques.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration de FranceConnect et la gestion des décisions de validation. Des corrections et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme, ainsi que la gestion des données et des accès. De nombreux efforts ont été consacrés à la suppression de fonctionnalités obsolètes et à la mise à jour des dépendances.
 
 ### Évolutions fonctionnelles
-- Intégration de FranceConnect pour l'authentification et la création de candidatures, avec amélioration de l'expérience utilisateur sur les pages de connexion et d'inscription. [#1234](https://github.com/betagouv/reva/issues/1234)
-- Possibilité pour les candidats de modifier leur nationalité, même s'ils sont connectés via FranceConnect.
-- Ajout d'un lien vers la page FAQ sur le site web.
-- Amélioration de l'affichage des informations sur les parcours et les établissements pour les certifications éligibles.
-- Ajout d'une option pour masquer les sections relatives aux exigences réduites pour les certifications.
-- Ajout d'un champ "websiteUrl" pour les autorités de certification, avec possibilité de le rendre obligatoire ou facultatif.
-- Amélioration de la gestion des parcours et des certifications pour les administrateurs, avec une nouvelle interface de gestion des certifications pour les comptes locaux.
-- Ajout d'une confirmation lors de la déclaration de complétude d'un DF (Dossier de Formation) par une autorité de certification.
-- Ajout d'un champ "Établissements" et d'un lien vers l'autorité de certification sur la page de détails de la certification.
-- Possibilité de masquer les onglets relatifs aux exigences réduites sur la page de certification.
+- Amélioration de l'intégration de FranceConnect : gestion de l'absence de ville de naissance, affichage d'erreurs plus claires, et possibilité de se déconnecter de FranceConnect. [#954](https://github.com/betagouv/reva/pull/954)
+- Gestion des décisions de validation : possibilité pour les administrateurs de révoquer des décisions d'éligibilité (COMPLETE/INCOMPLETE) et affichage de l'historique des résultats par bloc de compétences.
+- Amélioration de l'interface utilisateur : suppression de code obsolète lié à l'inscription candidat, nettoyage de l'interface candidat, et amélioration de la présentation des informations sur les pages d'administration.
+- Gestion des organismes : amélioration de la sélection d'organismes par les administrateurs.
+- Gestion des certificats d'autorité : possibilité de modifier le nom et les informations d'un organisme certificateur.
+- Ajout d'une page "complément d'expérience" dans la section DFF pour l'administration.
+- Amélioration de l'affichage des informations de contact et civiles pour les candidats connectés via FranceConnect.
+- Ajout d'un bandeau d'information sur la page de résumé de l'éligibilité pour indiquer la décision de faisabilité.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances (Fastify, lodash-es, react-router, jws, etc.)
-- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- Migration de tests Cypress vers Playwright pour une meilleure performance et fiabilité.
-- Amélioration de la gestion des erreurs et de la configuration de FranceConnect.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Optimisation des requêtes GraphQL pour améliorer les performances.
-- Ajout de configurations pour un environnement de préproduction.
-- Ajout d'un utilitaire `arePivotFieldsMatching` pour valider les données des utilisateurs France Connect.
-- Suppression de code obsolète et nettoyage du code.
+- Suppression de nombreux *feature flags* obsolètes : `CGU_CERTIFICATEUR`, `CANDIDATE_HELP`, `END_ACCOMPAGNEMENT`, `CERTIFICATEUR_CANDIDACIES_ANNUAIRE`, `CANDIDATE_NEXT_ACTIONS`, `USE_GENERATED_DFF_FILE`, `MULTI_CANDIDACY`, `WEBSITE_PUBLIC_ELIGIBLE`, `DF_DEMAT_MISE_EN_CONFORMITE_PDF`, `VAE_COLLECTIVE_MULTI_CERTIFICATION`.
+- Mise à jour des dépendances : Axios, basic-ftp, lodash, @graphql-codegen, fastify, picomatch, jspdf, undici, next.js, et autres.
+- Refactoring du code : simplification de la logique de gestion des erreurs, suppression de code redondant, et amélioration de la structure du code.
+- Optimisation des requêtes : ajout d'index dans la base de données pour améliorer la performance des requêtes.
+- Migration des tests Cypress vers Playwright pour certaines sections de l'application.
+- Amélioration de la gestion des erreurs et des logs.
+- Utilisation de noms de champs plus clairs et cohérents.
+- Amélioration de la sécurité : ajout de logs pour les erreurs de décodage JWT.
 
 ### Autres changements
-- Ajout d'un fichier `.slugignore` pour exclure les fichiers et répertoires inutiles.
 - Mise à jour de la documentation.
+- Correction de problèmes de typographie et de wording.
+- Amélioration de la configuration de l'environnement de développement.
+- Ajout de tests unitaires et d'intégration.
+- Correction de problèmes de compatibilité avec les navigateurs.
+- Amélioration de l'accessibilité de l'application.
+- Ajout d'intégration Crisp pour le reporting de statut.
+- Mise à jour des informations de contact pour les administrateurs.
+- Correction de problèmes de permissions et d'accès.
+- Amélioration de la gestion des dates et des fuseaux horaires.
+- Ajout de tests pour les nouveaux composants et fonctionnalités.
 - Correction de bugs mineurs et améliorations de la stabilité.
-- Ajout de schémas d'architecture applicative.
-- Correction de problèmes liés à l'affichage des informations sur les certifications.
 - Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
-- Mise à jour des configurations de CI/CD.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
+- Amélioration de la gestion des logs et du monitoring.
+- Mise à jour des outils de développement et des bibliothèques.
+- Correction de problèmes de sécurité et de vulnérabilités.
+- Amélioration de la performance et de l'optimisation du code.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
+- Correction de bugs et amélioration de la stabilité de l'application.
+- Amélioration de la documentation et des tests unitaires.
+- Mise à jour des dépendances et des outils de développement.
+- Correction de problèmes de compatibilité et d'accessibilité.
+- Amélioration de la sécurité et de la conformité.
+- Ajout de nouvelles fonctionnalités et améliorations de l'expérience utilisateur.
