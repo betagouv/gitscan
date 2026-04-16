@@ -1,46 +1,35 @@
-## Changelog : meet (30 derniers jours)
+## Changelog : meet (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de Meet se concentrent sur l'amélioration de la sécurité, de l'accessibilité et de la performance. De nouvelles fonctionnalités comme le chargement de fichiers ont été ajoutées, tandis que des corrections de bugs et des optimisations ont été apportées pour une meilleure expérience utilisateur. L'infrastructure a également été renforcée avec des mises à jour de sécurité et des améliorations de la configuration.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité, la sécurité et l'ajout de nouvelles fonctionnalités comme le support de plusieurs locataires et les arrière-plans personnalisés. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer l'expérience utilisateur globale.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de télécharger les enregistrements même avec un statut "échec d'arrêt" [#1129](https://github.com/suitenumerique/meet/issues/1129).
-- Ajout d'une fonctionnalité de chargement de fichiers, désactivée par défaut avec une limite de nombre configurable [#1141](https://github.com/suitenumerique/meet/issues/1141).
-- Ajout d'un lien vers l'application Windows web dans l'interface.
-- Ajout d'un raccourci clavier pour ouvrir les paramètres (Ctrl+Shift+/).
-- Possibilité d'afficher le statut actif/inactif d'une application dans l'interface d'administration.
+- Ajout de la possibilité d'utiliser des arrière-plans personnalisés lors des visioconférences. [#1183](https://github.com/suitenumerique/meet/issues/1183)
+- Introduction du support multi-tenant avec une nouvelle API v2 pour les tâches asynchrones de transcription et de résumé. [#1171](https://github.com/suitenumerique/meet/issues/1171)
+- Ajout d'options de personnalisation de la couleur et de l'arrière-plan des sous-titres pour une meilleure lisibilité. [#1197](https://github.com/suitenumerique/meet/issues/1197)
+- Amélioration de l'accessibilité de la barre d'outils de réactions avec un raccourci clavier dédié. [#1262](https://github.com/suitenumerique/meet/issues/1262)
+- Amélioration de l'accessibilité de la page de téléchargement des enregistrements avec un titre de document explicite. [#1261](https://github.com/suitenumerique/meet/issues/1261)
+- Extension des types de fichiers autorisés. [#1265](https://github.com/suitenumerique/meet/issues/1265)
 
 ### Évolutions techniques
-- Renforcement de la validation des entrées API pour améliorer la sécurité.
-- Mise à jour de plusieurs dépendances frontend (Rollup, @hono/node-server, minimatch, undici, prettier, tanstack, panda-related, i18next, vite, livekit).
-- Passage de l'application principale Python à UV.
-- Amélioration de la stabilité du stack Tilt.
-- Configuration de Celery avec une file d'attente dédiée.
-- Mise à jour de la configuration Helm pour inclure Celery et l'image de fond personnalisée.
-- Utilisation d'une image de base Alpine pour améliorer la sécurité.
-- Mise à jour de la version de Django (avec correctif de sécurité).
-- Amélioration de la configuration CI/CD (permissions Docker Hub, actions de revue de sécurité Claude).
-- Refactorisation de la gestion des fichiers téléchargés (regex, format des clés).
-- Amélioration de la gestion du throttling dans le lobby (utilisation de l'ID participant).
-- Suppression de pip des images de production et agents pour renforcer la sécurité.
-- Mise à jour de protobuf pour corriger une vulnérabilité.
+- Refactorisation du système de réactions pour unifier l'état et le rendu.
+- Utilisation de l'en-tête `Authorization` pour l'authentification des jetons LiveKit.
+- Amélioration de la gestion des erreurs Twirp pour les opérations sur les participants.
+- Ajout de tests unitaires pour le service de jetons JWT et l'endpoint de santé.
+- Suppression de l'outil de récupération des secrets externes obsolète.
+- Initialisation des secrets Kubernetes pour l'environnement Tilt.
+- Optimisation de l'utilisation de PostHog et enrichissement des métadonnées des événements.
+- Correction de la gestion des erreurs dans les tests Twirp.
+- Correction d'un warning concernant la longueur des clés dans les tests.
+- Mise à jour de plusieurs dépendances (Django, PyJWT, aiohttp, vite, etc.) pour corriger des failles de sécurité et améliorer la stabilité.
+- Ajout de support pour Docker Compose pour le transcripteur multi-utilisateur.
+- Amélioration de la configuration de Helm pour la sécurité des pods et conteneurs.
 
 ### Autres changements
-- Améliorations de l'accessibilité :
-    - Annonce de l'état du microphone/caméra aux lecteurs d'écran lors de l'utilisation des raccourcis.
-    - Amélioration de la structure sémantique et des étiquettes ARIA pour les liens d'aide.
-    - Amélioration de l'accessibilité du chat pour les lecteurs d'écran.
-    - Amélioration de l'accessibilité du carrousel.
-    - Ajout d'un lien de contournement pour la navigation au clavier.
-    - Amélioration de l'accessibilité de la boîte de dialogue de connexion.
-    - Ajout de la possibilité de modifier la taille du texte des sous-titres.
-- Corrections de la documentation et des commentaires.
-- Amélioration des traductions allemandes.
-- Corrections de bugs mineurs dans l'interface utilisateur (overflow, raccourcis, focus).
-- Corrections de l'organisation du changelog.
-- Ajout de tests unitaires.
-- Suppression de références à ProConnect dans l'interface utilisateur.
-- Amélioration de la configuration de Tilt pour l'environnement de développement.
-- Correction de problèmes liés aux caractères spéciaux dans le Makefile.
-- Mise à jour de la configuration Renovate.
-- Suppression de curl de l'image de production frontend.
+- Correction de l'indentation dans le Makefile.
+- Ajout de documentation et correction de typos.
+- Suppression d'anciens outils de développement Tilt.
+- Suppression de valeurs Helm inutilisées.
+- Correction de problèmes de linting dans le changelog.
+- Mise à jour du logo.
+- Correction de problèmes d'incompatibilité de dimensions dans le processeur d'arrière-plan personnalisé.

@@ -41,6 +41,7 @@
 │   ├── manage
 │   ├── prepare-release.sh
 │   ├── pytest
+│   ├── pytest-summary
 │   ├── start-kind.sh
 │   ├── update-git-submodule.sh
 │   ├── update-keys.sh
@@ -145,6 +146,8 @@
 │   │   ├── common.e2e.dist
 │   │   ├── crowdin.dist
 │   │   ├── kc_postgresql.dist
+│   │   ├── kube-secret.dist
+│   │   ├── multi_user_transcriber.dist
 │   │   ├── postgresql.dist
 │   │   └── summary.dist
 │   └── production.dist
@@ -294,6 +297,7 @@
     │   │   │   │   ├── test_api_rooms_list.py
     │   │   │   │   ├── test_api_rooms_lobby.py
     │   │   │   │   ├── test_api_rooms_participants_management.py
+    │   │   │   │   ├── test_api_rooms_rename_toggle.py
     │   │   │   │   ├── test_api_rooms_retrieve.py
     │   │   │   │   ├── test_api_rooms_start_recording.py
     │   │   │   │   ├── test_api_rooms_stop_recording.py
@@ -302,6 +306,7 @@
     │   │   │   │   └── test_api_rooms_webhook.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_jwt_service.py
     │   │   │   │   ├── test_livekit_events.py
     │   │   │   │   ├── test_lobby.py
     │   │   │   │   ├── test_marketing.py
@@ -481,6 +486,12 @@
     │   │   │   │       ├── authUrl.ts
     │   │   │   │       ├── logoutUrl.ts
     │   │   │   │       └── silentLogin.ts
+    │   │   │   ├── files
+    │   │   │   │   └── api
+    │   │   │   │       ├── createFile.ts
+    │   │   │   │       ├── deleteFile.ts
+    │   │   │   │       ├── listFiles.ts
+    │   │   │   │       └── types.ts
     │   │   │   ├── home
     │   │   │   │   ├── components
     │   │   │   │   │   ├── IntroSlider.tsx
@@ -490,6 +501,16 @@
     │   │   │   │   ├── index.ts
     │   │   │   │   └── routes
     │   │   │   │       └── Home.tsx
+    │   │   │   ├── layout
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── CarouselLayout.tsx
+    │   │   │   │   │   ├── ControlBarRegion.tsx
+    │   │   │   │   │   ├── GridLayout.tsx
+    │   │   │   │   │   ├── PaginationControl.tsx
+    │   │   │   │   │   ├── PaginationIndicator.tsx
+    │   │   │   │   │   └── RoomContentArea.tsx
+    │   │   │   │   └── hooks
+    │   │   │   │       └── useGridLayout.ts
     │   │   │   ├── legalsTerms
     │   │   │   │   ├── Accessibility.tsx
     │   │   │   │   ├── LegalTermsRoute.tsx
@@ -517,6 +538,20 @@
     │   │   │   │   │   ├── useNotifyParticipants.ts
     │   │   │   │   │   └── useSoundNotification.tsx
     │   │   │   │   ├── index.ts
+    │   │   │   │   └── utils.ts
+    │   │   │   ├── reactions
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── ReactionPortals.tsx
+    │   │   │   │   │   ├── ReactionsToggle.tsx
+    │   │   │   │   │   └── toolbar
+    │   │   │   │   │       ├── ReactionButton.tsx
+    │   │   │   │   │       └── ReactionsToolbar.tsx
+    │   │   │   │   ├── constants.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   ├── useAnnounceReaction.ts
+    │   │   │   │   │   ├── useReactions.ts
+    │   │   │   │   │   └── useReactionsToolbar.ts
+    │   │   │   │   ├── types.ts
     │   │   │   │   └── utils.ts
     │   │   │   ├── recording
     │   │   │   │   ├── api
@@ -561,9 +596,11 @@
     │   │   │   │   │   ├── muteParticipants.ts
     │   │   │   │   │   ├── patchRoom.tsx
     │   │   │   │   │   ├── removeParticipant.ts
+    │   │   │   │   │   ├── renameParticipant.ts
     │   │   │   │   │   ├── requestEntry.ts
     │   │   │   │   │   ├── updateParticipantPermissions.ts
-    │   │   │   │   │   └── updateParticipantsPermissions.ts
+    │   │   │   │   │   ├── updateParticipantsPermissions.ts
+    │   │   │   │   │   └── updateRaiseHand.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ActiveSpeaker.tsx
     │   │   │   │   │   ├── Conference.tsx
@@ -597,7 +634,6 @@
     │   │   │   │   │   │   ├── ParticipantPlaceholder.tsx
     │   │   │   │   │   │   ├── ParticipantTile.tsx
     │   │   │   │   │   │   ├── ParticipantTileFocus.tsx
-    │   │   │   │   │   │   ├── ReactionPortal.tsx
     │   │   │   │   │   │   ├── ScreenShareErrorModal.tsx
     │   │   │   │   │   │   ├── SidePanel.tsx
     │   │   │   │   │   │   ├── Tools.tsx
@@ -633,8 +669,6 @@
     │   │   │   │   │   │   │   │   ├── SettingsMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── SupportMenuItem.tsx
     │   │   │   │   │   │   │   │   └── TranscriptMenuItem.tsx
-    │   │   │   │   │   │   │   ├── PaginationControl.tsx
-    │   │   │   │   │   │   │   ├── PaginationIndicator.tsx
     │   │   │   │   │   │   │   ├── Participants
     │   │   │   │   │   │   │   │   ├── HandRaisedListItem.tsx
     │   │   │   │   │   │   │   │   ├── LowerAllHandsButton.tsx
@@ -645,18 +679,14 @@
     │   │   │   │   │   │   │   │   ├── ParticipantsToggle.tsx
     │   │   │   │   │   │   │   │   ├── PinBadge.tsx
     │   │   │   │   │   │   │   │   └── WaitingParticipantListItem.tsx
-    │   │   │   │   │   │   │   ├── ReactionsToggle.tsx
     │   │   │   │   │   │   │   ├── ScreenShareToggle.tsx
     │   │   │   │   │   │   │   ├── StartMediaButton.tsx
     │   │   │   │   │   │   │   ├── SubtitlesToggle.tsx
     │   │   │   │   │   │   │   └── ToolsToggle.tsx
-    │   │   │   │   │   │   ├── effects
-    │   │   │   │   │   │   │   ├── Effects.tsx
-    │   │   │   │   │   │   │   ├── EffectsConfiguration.tsx
-    │   │   │   │   │   │   │   └── FunnyEffects.tsx
-    │   │   │   │   │   │   └── layout
-    │   │   │   │   │   │       ├── CarouselLayout.tsx
-    │   │   │   │   │   │       └── GridLayout.tsx
+    │   │   │   │   │   │   └── effects
+    │   │   │   │   │   │       ├── Effects.tsx
+    │   │   │   │   │   │       ├── EffectsConfiguration.tsx
+    │   │   │   │   │   │       └── FunnyEffects.tsx
     │   │   │   │   │   ├── hooks
     │   │   │   │   │   │   ├── useCanMute.ts
     │   │   │   │   │   │   ├── useCanPublishTrack.ts
@@ -667,7 +697,6 @@
     │   │   │   │   │   │   ├── useDeviceShortcut.ts
     │   │   │   │   │   │   ├── useFocusToggleParticipant.ts
     │   │   │   │   │   │   ├── useFullScreen.ts
-    │   │   │   │   │   │   ├── useGridLayout.ts
     │   │   │   │   │   │   ├── useHasFunnyEffectsAccess.ts
     │   │   │   │   │   │   ├── useIsAdminOrOwner.ts
     │   │   │   │   │   │   ├── useKonami.ts
@@ -694,10 +723,8 @@
     │   │   │   │   │   │   │   ├── MoreOptions.tsx
     │   │   │   │   │   │   │   └── ResponsiveMenu.tsx
     │   │   │   │   │   │   └── VideoConference.tsx
-    │   │   │   │   │   ├── processors
-    │   │   │   │   │   │   └── RnnNoiseProcessor.ts
-    │   │   │   │   │   └── utils
-    │   │   │   │   │       └── reactionUtils.ts
+    │   │   │   │   │   └── processors
+    │   │   │   │   │       └── RnnNoiseProcessor.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── Feedback.tsx
     │   │   │   │   │   └── Room.tsx
@@ -770,6 +797,7 @@
     │   │   │       └── hooks
     │   │   │           └── useSupport.tsx
     │   │   ├── hooks
+    │   │   │   ├── useDelayUnmount.tsx
     │   │   │   ├── useLoginHint.ts
     │   │   │   ├── usePrevious.ts
     │   │   │   ├── useRateLimiter.ts
@@ -893,6 +921,7 @@
     │   │   │   ├── layout.ts
     │   │   │   ├── notifications.ts
     │   │   │   ├── permissions.ts
+    │   │   │   ├── reactions.ts
     │   │   │   ├── recording.ts
     │   │   │   ├── screenReaderAnnouncer.ts
     │   │   │   ├── screenSharePreferences.ts
@@ -905,6 +934,7 @@
     │   │   │   └── livekit.css
     │   │   ├── utils
     │   │   │   ├── capitalize.ts
+    │   │   │   ├── dom.ts
     │   │   │   ├── formatDate.ts
     │   │   │   ├── languages.ts
     │   │   │   ├── livekit.ts
@@ -922,11 +952,7 @@
     │   └── vite.config.ts
     ├── helm
     │   ├── env.d
-    │   │   ├── dev
-    │   │   │   ├── values.egress.yaml.gotmpl
-    │   │   │   ├── values.livekit.yaml.gotmpl
-    │   │   │   ├── values.meet.yaml.gotmpl
-    │   │   │   └── values.secrets.yaml
+    │   │   ├── common.yaml.gotmpl
     │   │   ├── dev-dinum
     │   │   │   ├── values.egress.yaml.gotmpl
     │   │   │   ├── values.livekit.yaml.gotmpl
@@ -962,6 +988,7 @@
     │       │   ├── backend_svc.yaml
     │       │   ├── celery_backend_deployment.yaml
     │       │   ├── celery_summarize_deployment.yaml
+    │       │   ├── celery_summary_backend_deployment.yaml
     │       │   ├── celery_transcribe_deployment.yaml
     │       │   ├── extra-objects.yaml
     │       │   ├── frontend_deployment.yaml
@@ -1060,33 +1087,48 @@
         ├── Dockerfile
         ├── README.md
         ├── pyproject.toml
-        └── summary
+        ├── summary
+        │   ├── __init__.py
+        │   ├── api
+        │   │   ├── __init__.py
+        │   │   ├── health.py
+        │   │   ├── main.py
+        │   │   └── route
+        │   │       ├── __init__.py
+        │   │       ├── tasks.py
+        │   │       └── tasks_v2.py
+        │   ├── core
+        │   │   ├── __init__.py
+        │   │   ├── analytics.py
+        │   │   ├── celery_config.py
+        │   │   ├── celery_worker.py
+        │   │   ├── config.py
+        │   │   ├── file_service.py
+        │   │   ├── llm_service.py
+        │   │   ├── locales
+        │   │   │   ├── __init__.py
+        │   │   │   ├── de.py
+        │   │   │   ├── en.py
+        │   │   │   ├── fr.py
+        │   │   │   ├── nl.py
+        │   │   │   └── strings.py
+        │   │   ├── models.py
+        │   │   ├── prompt.py
+        │   │   ├── security.py
+        │   │   ├── shared_models.py
+        │   │   ├── transcript_formatter.py
+        │   │   ├── types.py
+        │   │   └── webhook_service.py
+        │   └── main.py
+        └── tests
             ├── __init__.py
             ├── api
             │   ├── __init__.py
-            │   ├── health.py
-            │   ├── main.py
-            │   └── route
-            │       ├── __init__.py
-            │       └── tasks.py
-            ├── core
-            │   ├── __init__.py
-            │   ├── analytics.py
-            │   ├── celery_config.py
-            │   ├── celery_worker.py
-            │   ├── config.py
-            │   ├── file_service.py
-            │   ├── llm_service.py
-            │   ├── locales
-            │   │   ├── __init__.py
-            │   │   ├── de.py
-            │   │   ├── en.py
-            │   │   ├── fr.py
-            │   │   ├── nl.py
-            │   │   └── strings.py
-            │   ├── prompt.py
-            │   ├── security.py
-            │   ├── transcript_formatter.py
-            │   └── webhook_service.py
-            └── main.py
-205 directories, 886 files
+            │   ├── test_api_health.py
+            │   ├── test_api_tasks.py
+            │   └── test_api_tasks_v2.py
+            ├── conftest.py
+            └── models
+                ├── __init__.py
+                └── test_whisper_x_response.py
+214 directories, 919 files
