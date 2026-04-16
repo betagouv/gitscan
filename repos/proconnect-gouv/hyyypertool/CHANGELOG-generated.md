@@ -1,28 +1,20 @@
-## Changelog : hyyypertool (30 derniers jours)
+## Changelog : hyyypertool (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des équipes et des accès, ainsi qu'à la gestion des modérations et des domaines. Des corrections de bugs ont été implémentées pour améliorer la stabilité et l'expérience utilisateur. De plus, l'outil a été mis à jour avec les dernières versions de ses dépendances et des améliorations de sécurité ont été apportées.
+Ce mois-ci, Hyyypertool a bénéficié d'améliorations significatives de l'expérience utilisateur, notamment une meilleure gestion des filtres de recherche et l'ajout d'informations sur les tranches d'effectifs des entités légales. Des corrections de bugs ont également été apportées pour améliorer la fiabilité de l'application. L'interface utilisateur a été modernisée en remplaçant les composants DSFR par un thème Tailwind CSS personnalisé.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des équipes avec contrôle d'accès basé sur les rôles [#1477](https://github.com/proconnect-gouv/hyyypertool/pull/1477).
-- Possibilité de filtrer les services à exclure par leur nom [#1496](https://github.com/proconnect-gouv/hyyypertool/pull/1496).
-- Ajout de la possibilité d'automatiser la vérification des domaines lors de l'ajout de domaines autorisés [#1433](https://github.com/proconnect-gouv/hyyypertool/pull/1433).
-- Ajout de l'affichage de la tranche d'effectifs de l'unité légale dans le composant organisation [#1449](https://github.com/proconnect-gouv/hyyypertool/pull/1449).
-- Amélioration de la gestion des modérations avec l'envoi de notifications via Crisp [#1441](https://github.com/proconnect-gouv/hyyypertool/pull/1441).
-- Simplification du filtre de modérations [#1434](https://github.com/proconnect-gouv/hyyypertool/pull/1434).
+- Ajout du libellé pour la tranche d'effectifs d'une unité légale, améliorant la clarté des informations affichées. [#1520](https://github.com/proconnect-gouv/hyyypertool/issues/1520)
+- Amélioration de la barre de recherche Hyyyper avec une suppression automatique des filtres `is/type` lors de l'utilisation des champs de recherche dédiés (email, SIRET, modérateur), pour une expérience plus intuitive. [#1536](https://github.com/proconnect-gouv/hyyypertool/issues/1536)
+- Correction d'un bug où le filtre `service:` positif était ignoré dans la liste des modérations, assurant un affichage correct des résultats filtrés. [#1538](https://github.com/proconnect-gouv/hyyypertool/issues/1538)
+- Ajout d'un nouveau type de réponse. [#1509](https://github.com/proconnect-gouv/hyyypertool/issues/1509)
 
 ### Évolutions techniques
-- Refonte de la couche de données "hyperbase" [#867](https://github.com/proconnect-gouv/hyyypertool/pull/867).
-- Refactorisation de la configuration et de la structure des middlewares [#1474](https://github.com/proconnect-gouv/hyyypertool/pull/1474).
-- Suppression de l'intégration Zammad et du code associé [#1445](https://github.com/proconnect-gouv/hyyypertool/pull/1445).
-- Suppression de Row-Level Security (RLS) dans hyyyperbase [#1475](https://github.com/proconnect-gouv/hyyypertool/pull/1475).
-- Mise à jour des dépendances (Hono, pg, @gouvfr/dsfr, etc.).
-- Amélioration de la sécurité avec l'ajout de Sentry pour le profiling et la surveillance des erreurs [#1406](https://github.com/proconnect-gouv/hyyypertool/pull/1406).
-- Utilisation de node 24 pour la build.
+- Migration de l'interface utilisateur de DSFR vers un thème Tailwind CSS personnalisé, offrant plus de flexibilité et de contrôle sur le style de l'application. [#1508](https://github.com/proconnect-gouv/hyyypertool/issues/1508)
+- Ajout de tests pour les routes de l'équipe, améliorant la couverture de test du projet. [#1518](https://github.com/proconnect-gouv/hyyypertool/issues/1518)
+- Correction d'une fuite de mémoire causée par `hx-trigger` sur les boutons de pagination. [#1519](https://github.com/proconnect-gouv/hyyypertool/issues/1519)
 
 ### Autres changements
-- Suppression du fichier `.eslintrc` [#1478](https://github.com/proconnect-gouv/hyyypertool/pull/1478).
-- Correction de bugs liés à la gestion des membres liés et à l'affichage des tables [#1405](https://github.com/proconnect-gouv/hyyypertool/pull/1405), [#1430](https://github.com/proconnect-gouv/hyyypertool/pull/1430).
-- Amélioration de l'accessibilité des tableaux [#1429](https://github.com/proconnect-gouv/hyyypertool/pull/1429).
-- Correction de problèmes de flakiness dans les tests E2E [#1408](https://github.com/proconnect-gouv/hyyypertool/pull/1408).
-- Mise à jour de la documentation et des configurations.
+- Mises à jour de dépendances pour TypeScript, les types de PostgreSQL, Bun, et divers autres paquets.
+- Mises à jour des paquets Sentry pour la surveillance des erreurs.
+- Mises à jour de Cypress et des actions GitHub pour l'intégration continue.

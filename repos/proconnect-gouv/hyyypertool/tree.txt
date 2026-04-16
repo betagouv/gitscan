@@ -44,7 +44,23 @@
 │   ├── public
 │   │   ├── .gitkeep
 │   │   └── assets
-│   │       └── 404.svg
+│   │       ├── 404.svg
+│   │       ├── favicon
+│   │       │   ├── android-chrome-192x192.png
+│   │       │   ├── android-chrome-512x512.png
+│   │       │   ├── apple-touch-icon.png
+│   │       │   ├── favicon.ico
+│   │       │   ├── favicon.svg
+│   │       │   └── manifest.webmanifest
+│   │       └── fonts
+│   │           ├── Marianne-Bold.woff2
+│   │           ├── Marianne-Bold_Italic.woff2
+│   │           ├── Marianne-Light.woff2
+│   │           ├── Marianne-Light_Italic.woff2
+│   │           ├── Marianne-Medium.woff2
+│   │           ├── Marianne-Medium_Italic.woff2
+│   │           ├── Marianne-Regular.woff2
+│   │           └── Marianne-Regular_Italic.woff2
 │   ├── src
 │   │   ├── bun
 │   │   │   └── index.ts
@@ -60,6 +76,7 @@
 │   ├── README.md
 │   ├── bun.lock
 │   ├── cypress
+│   │   ├── global.d.ts
 │   │   └── support
 │   │       ├── command.ts
 │   │       ├── e2e.ts
@@ -97,6 +114,7 @@
 │   │   │   ├── dinum.feature
 │   │   │   ├── domains_copy_button_after_refresh.feature
 │   │   │   ├── member_actions.feature
+│   │   │   ├── table_pagination.feature
 │   │   │   └── yes_we_hack_domain_verification.feature
 │   │   ├── team
 │   │   │   ├── acces_equipe.feature
@@ -104,7 +122,8 @@
 │   │   └── users
 │   │       ├── jean_bon.feature
 │   │       ├── raphael_alpha.feature
-│   │       └── raphael_beta.feature
+│   │       ├── raphael_beta.feature
+│   │       └── table_pagination.feature
 │   ├── package.json
 │   └── tsconfig.json
 ├── hyyypertool.code-workspace
@@ -437,9 +456,12 @@
 │       │   │   ├── ___dev___
 │       │   │   │   ├── auth.agentconnect.gouv.fr
 │       │   │   │   │   └── index.tsx
+│       │   │   │   ├── design-system.tsx
+│       │   │   │   ├── dsfr.page.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── live-reload.client.ts
-│       │   │   │   └── reload.tsx
+│       │   │   │   ├── reload.tsx
+│       │   │   │   └── tailwind.page.tsx
 │       │   │   ├── admin
 │       │   │   │   └── index.ts
 │       │   │   ├── assets
@@ -494,15 +516,8 @@
 │       │   │   │   │   └── validate
 │       │   │   │   │       ├── index.test.ts
 │       │   │   │   │       └── index.ts
-│       │   │   │   ├── ExcludeSpNamesIsland.tsx
-│       │   │   │   ├── ProcessedCheckboxIsland.tsx
-│       │   │   │   ├── SearchEmailIsland.tsx
-│       │   │   │   ├── SearchModeratedByIsland.tsx
-│       │   │   │   ├── SearchSiretIsland.tsx
 │       │   │   │   ├── context.test.ts
 │       │   │   │   ├── context.ts
-│       │   │   │   ├── exclude-sp-names.client.tsx
-│       │   │   │   ├── filter-signals.client.ts
 │       │   │   │   ├── get_moderations_list.query.test.ts
 │       │   │   │   ├── get_moderations_list.query.ts
 │       │   │   │   ├── get_moderators_list.query.test.ts
@@ -512,10 +527,8 @@
 │       │   │   │   ├── index.test.ts
 │       │   │   │   ├── index.tsx
 │       │   │   │   ├── page.tsx
-│       │   │   │   ├── processed-checkbox.client.tsx
-│       │   │   │   ├── search-email.client.tsx
-│       │   │   │   ├── search-moderated-by.client.tsx
-│       │   │   │   └── search-siret.client.tsx
+│       │   │   │   ├── parse_q.test.ts
+│       │   │   │   └── parse_q.ts
 │       │   │   ├── not-found.tsx
 │       │   │   ├── organizations
 │       │   │   │   ├── :id
@@ -624,15 +637,29 @@
 │       │   │   │       └── index.ts
 │       │   │   ├── callout
 │       │   │   │   └── index.ts
+│       │   │   ├── card
+│       │   │   │   └── index.ts
+│       │   │   ├── connect
+│       │   │   │   └── index.ts
 │       │   │   ├── crisp
 │       │   │   │   ├── Message
 │       │   │   │   │   └── index.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   └── processor.ts
 │       │   │   ├── form
+│       │   │   │   ├── components
+│       │   │   │   │   ├── SearchBar.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── index.ts
+│       │   │   ├── header
 │       │   │   │   └── index.ts
 │       │   │   ├── hx_table
 │       │   │   │   ├── Foot.tsx
+│       │   │   │   └── index.ts
+│       │   │   ├── icons
+│       │   │   │   ├── components
+│       │   │   │   │   ├── Svg.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   └── index.ts
 │       │   │   ├── index.ts
 │       │   │   ├── links
@@ -645,7 +672,7 @@
 │       │   │   │   └── index.ts
 │       │   │   ├── menu
 │       │   │   │   ├── components
-│       │   │   │   │   ├── Horizontal_Menu.tsx
+│       │   │   │   │   ├── HorizontalMenu.tsx
 │       │   │   │   │   ├── Menu.tsx
 │       │   │   │   │   ├── Popover.tsx
 │       │   │   │   │   ├── Trigger.tsx
@@ -674,6 +701,7 @@
 │       │   │   │   │   └── responses
 │       │   │   │   │       ├── __snapshots__
 │       │   │   │   │       │   ├── admin_centrale.test.tsx.snap
+│       │   │   │   │       │   ├── affiliation_institut_francais.test.tsx.snap
 │       │   │   │   │       │   ├── agent_comcom_comaglo.test.tsx.snap
 │       │   │   │   │       │   ├── agent_comcom_to_commune.test.tsx.snap
 │       │   │   │   │       │   ├── agent_outside_min_finance_chorus_pro.test.tsx.snap
@@ -681,6 +709,7 @@
 │       │   │   │   │       │   ├── association_with_staff_but_no_domain_name.test.tsx.snap
 │       │   │   │   │       │   ├── domain_name_not_found.test.tsx.snap
 │       │   │   │   │       │   ├── enseignement_agricole.test.tsx.snap
+│       │   │   │   │       │   ├── evidence_between_chosen_org_and_domain_email_org.test.tsx.snap
 │       │   │   │   │       │   ├── existing_domain_name.test.tsx.snap
 │       │   │   │   │       │   ├── first_and_last_name_inversion.test.tsx.snap
 │       │   │   │   │       │   ├── gendarmerie_agent.test.tsx.snap
@@ -697,6 +726,7 @@
 │       │   │   │   │       │   ├── public_or_private_organization.test.tsx.snap
 │       │   │   │   │       │   ├── refusal_france_travail.test.tsx.snap
 │       │   │   │   │       │   ├── refusal_interieur_gouv.test.tsx.snap
+│       │   │   │   │       │   ├── request_clarification_use_account.test.tsx.snap
 │       │   │   │   │       │   ├── reservist_or_other_email_perso.test.tsx.snap
 │       │   │   │   │       │   ├── seconded_agent_min_interior.test.tsx.snap
 │       │   │   │   │       │   ├── student_host_organisation.test.tsx.snap
@@ -705,6 +735,8 @@
 │       │   │   │   │       │   └── university_email_cnrs.test.tsx.snap
 │       │   │   │   │       ├── admin_centrale.test.tsx
 │       │   │   │   │       ├── admin_centrale.tsx
+│       │   │   │   │       ├── affiliation_institut_francais.test.tsx
+│       │   │   │   │       ├── affiliation_institut_francais.tsx
 │       │   │   │   │       ├── agent_*.tsx  (6 files)
 │       │   │   │   │       ├── association_ordinary_person.test.tsx
 │       │   │   │   │       ├── association_ordinary_person.tsx
@@ -715,6 +747,8 @@
 │       │   │   │   │       ├── domain_name_not_found.tsx
 │       │   │   │   │       ├── enseignement_agricole.test.tsx
 │       │   │   │   │       ├── enseignement_agricole.tsx
+│       │   │   │   │       ├── evidence_between_chosen_org_and_domain_email_org.test.tsx
+│       │   │   │   │       ├── evidence_between_chosen_org_and_domain_email_org.tsx
 │       │   │   │   │       ├── existing_domain_name.test.tsx
 │       │   │   │   │       ├── existing_domain_name.tsx
 │       │   │   │   │       ├── first_and_last_name_inversion.test.tsx
@@ -743,6 +777,8 @@
 │       │   │   │   │       ├── refusal_france_travail.tsx
 │       │   │   │   │       ├── refusal_interieur_gouv.test.tsx
 │       │   │   │   │       ├── refusal_interieur_gouv.tsx
+│       │   │   │   │       ├── request_clarification_use_account.test.tsx
+│       │   │   │   │       ├── request_clarification_use_account.tsx
 │       │   │   │   │       ├── reservist_or_other_email_perso.test.tsx
 │       │   │   │   │       ├── reservist_or_other_email_perso.tsx
 │       │   │   │   │       ├── seconded_agent_min_interior.test.tsx
@@ -767,6 +803,30 @@
 │       │   │   │   ├── DomainsByOrganization
 │       │   │   │   │   ├── DomainsByOrganization.tsx
 │       │   │   │   │   └── index.ts
+│       │   │   │   ├── Filter
+│       │   │   │   │   ├── HideTypeCheckboxIsland.tsx
+│       │   │   │   │   ├── ProcessedCheckboxIsland.tsx
+│       │   │   │   │   ├── SearchBarIsland.tsx
+│       │   │   │   │   ├── SearchDateIsland.tsx
+│       │   │   │   │   ├── SearchEmailIsland.tsx
+│       │   │   │   │   ├── SearchModeratedByIsland.tsx
+│       │   │   │   │   ├── SearchSiretIsland.tsx
+│       │   │   │   │   ├── hide-type-checkbox.client.test.tsx
+│       │   │   │   │   ├── hide-type-checkbox.client.tsx
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── processed-checkbox.client.test.tsx
+│       │   │   │   │   ├── processed-checkbox.client.tsx
+│       │   │   │   │   ├── q-signal.client.test.tsx
+│       │   │   │   │   ├── q-signal.client.ts
+│       │   │   │   │   ├── search-bar.client.test.tsx
+│       │   │   │   │   ├── search-bar.client.tsx
+│       │   │   │   │   ├── search-bar.test.ts
+│       │   │   │   │   ├── search-bar.ts
+│       │   │   │   │   ├── search-date.client.test.tsx
+│       │   │   │   │   ├── search-date.client.tsx
+│       │   │   │   │   ├── search-email.client.tsx
+│       │   │   │   │   ├── search-moderated-by.client.tsx
+│       │   │   │   │   └── search-siret.client.tsx
 │       │   │   │   ├── FindCorrespondingEmail
 │       │   │   │   │   ├── FindCorrespondingEmail.tsx
 │       │   │   │   │   └── index.ts
@@ -818,6 +878,7 @@
 │       │   │   ├── tag
 │       │   │   │   └── index.ts
 │       │   │   ├── tailwind.css
+│       │   │   ├── tailwind.dsfr.css
 │       │   │   ├── testing
 │       │   │   │   └── index.ts
 │       │   │   ├── time
@@ -840,4 +901,4 @@
 │       │       └── urls.ts
 │       └── tsconfig.json
 └── tsconfig.json
-187 directories, 665 files
+196 directories, 717 files

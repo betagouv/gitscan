@@ -1,5 +1,134 @@
 # Changelog
 
+## [2026.4.3](https://github.com/proconnect-gouv/hyyypertool/compare/2026.4.2...2026.4.3) (2026-04-14)
+
+### Changements
+
+- ✨ Ajout du libellé pour tranche_effectifs_unite_legale
+
+J'ai importé les libellés manuellement car `organization` ne contenait pas le libelle de `cached_tranche_effectifs_unite_legale`.
+
+### Ajouté
+
+- ✨ Add libelle for tranche effectif unite legale (#1520) (f751ae3e)
+
+### Divers
+
+- ↗️ (deps): Bump typescript 6.0.2 (#1547) (e76433d3)
+- ↗️ [patch](deps-dev): Bump @types/pg from 8.18.0 to 8.20.0 (#1544) (24629bc3)
+- ↗️ [patch](deps): Bump @types/bun from 1.3.10 to 1.3.11 (#1542) (da47f398)
+- ↗️ [patch](deps): Bump @proconnect-gouv/\* (bea5966b)
+- ↗️ [patch](deps): Bump the sentry group with 4 updates (#1539) (c90573a7)
+
+## [2026.4.2](https://github.com/proconnect-gouv/hyyypertool/compare/2026.4.1...2026.4.2) (2026-04-08)
+
+### Changements
+
+- 🐛 Correction du filtre `service:` positif dans la liste des modérations
+
+Le filtre `service:NomApp` était silencieusement ignoré par la requête : `parse_q` renseignait bien `sp_names` mais la couche SQL ne le lisait pas. La liste affichait toutes les modérations au lieu de celles du service demandé.
+
+### Corrigé
+
+- 🐛 Fix pagination buttons broken by hx-trigger leak (#1519) (cecaf90f)
+- 🐛 positif ignoré dans la liste des modérations (#1538) (29875a78)
+
+## [2026.4.1](https://github.com/proconnect-gouv/hyyypertool/compare/2026.4.0...2026.4.1) (2026-04-08)
+
+### Changements
+
+- ✨ Filtre : suppression automatique des tags is/type lors d'une recherche par champ
+
+Lors d'une recherche par email, SIRET ou modérateur via les champs dédiés, les filtres `is:pending` et `-type:non_verified_domain` présents dans le hyyyper filter sont désormais automatiquement supprimés. Cela évite des combinaisons de filtres incohérentes qui cachaient silencieusement des résultats.
+
+### Ajouté
+
+- ✨ filter: clear is/type tags when using dedicated search fields (#1536) (d3a5b0e5)
+
+## [2026.4.0](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.5...2026.4.0) (2026-04-07)
+
+### Changements
+
+- 💄 Migration des composants DSFR vers Tailwind CSS + tailwind-variants
+
+Remplacement des classes DSFR (fr-tag, fr-alert, fr-card, fr-btn--close, target=\_blank::after) par des composants tv() réutilisables. Ajout des icônes d'alerte, du lien externe et du bouton de fermeture via mask-image CSS. Les pages utilisateurs et organisations utilisent désormais card() avec des grilles responsives.
+
+### Modifié
+
+- 💄 ui: replace dsfr with custom tailwind theme (#1508) (7be2dffa)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump cypress-io/github-action (#1521) (b500cd50)
+- :arrow_upper_right: [patch](deps): Bump the sentry group with 4 updates (#1524) (a3a1c402)
+- :arrow_upper_right: [patch](deps): Bump cypress in /e2e (#1512) (fd70667e)
+
+### CI/CD
+
+- 👷 add the team routes tests (#1518) (7d901c9e)
+
+### Divers
+
+- ↗️ [patch](deps): Bump cypress from 15.12.0 to 15.13.0 in /e2e (#1523) (f57afffb)
+- ↗️ [patch](deps): Bump hono from 4.12.7 to 4.12.9 (#1525) (b0f3ba63)
+- ↗️ [patch](deps-dev): Bump @happy-dom/global-registrator from 20.8.3 to 20.8.8 (#1526) (fd6d49ba)
+- ↗️ [patch](deps): Bump the sentry group with 4 updates (#1513) (b378b468)
+- ↗️ [patch](deps): Bump cypress-io/github-action from 7.1.7 to 7.1.8 (#1510) (020eb1f4)
+- ↗️ [patch](deps): Bump the tailwindcss group with 2 updates (#1514) (86ba810e)
+- ↗️ [patch](deps): Bump preact from 10.28.4 to 10.29.0 (#1517) (46befda4)
+
+## [2026.3.5](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.4...2026.3.5) (2026-03-24)
+
+### Changements
+
+- ✨ Ajout de trois nouvelles réponses type
+
+- Demande de précisions sur l’usage du compte
+- Demande de rattachement à la Fondation « Institut Français »
+- Demande de justification du lien entre organisation choisie & organisation du domaine e-mail
+
+### Ajouté
+
+- ✨ Add new response type (#1509) (39deaf93)
+
+## [2026.3.4](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.3...2026.3.4) (2026-03-19)
+
+### Ajouté
+
+- ✨ better hyyyper search bar ux (#1500) (ab9dcae7)
+- ✨ The Hyyyper input filter (#1497) (939f23d1)
+- ✨ refresh tables on browser back navigation (#1499) (7d2770da)
+- ✨ add a filter to exclude service by name (#1496) (8d06e8c1)
+
+### Modifié
+
+- 🔧 make moderations poll interval configurable via POLL_INTERVAL env var (#1498) (d629f0d9)
+
+### Divers
+
+- ↗️ [patch](deps): Bump cypress-io/github-action from 7.1.5 to 7.1.7 (#1502) (947b1e34)
+- ↗️ [patch](deps): Bump oven-sh/setup-bun from 2.1.3 to 2.2.0 (#1501) (2c8d4f09)
+- ↗️ [patch](deps): Bump the sentry group with 4 updates (#1503) (7ab8ad9e)
+- ↗️ [patch](deps-dev): Bump @electric-sql/pglite from 0.3.15 to 0.3.16 (#1504) (334e422c)
+- ↗️ [patch](deps): Bump oxc-parser from 0.116.0 to 0.117.0 (#1505) (5da13c31)
+- ↗️ [patch](deps-dev): Bump @happy-dom/global-registrator from 20.6.3 to 20.8.3 (#1506) (57f4f411)
+- ↗️ [patch](deps): Bump @preact/signals from 2.8.1 to 2.8.2 (#1507) (2b826305)
+- ↗️ [patch](deps): Bump @proconnect-gouv/proconnect.identite.database from 1.3.0 to 1.4.0 (#1494) (1874feb7)
+- ↗️ [patch](deps): Bump youch from 3.3.4 to 4.1.0 (#1465) (92b7e7ad)
+- ↗️ [patch](deps): Bump pg from 8.19.0 to 8.20.0 (#1495) (11fd5505)
+- Bump hono from 4.12.5 to 4.12.7 (#1491) (fc8738e9)
+- ↗️ [patch](deps): Bump @gouvfr/dsfr from 1.14.3 to 1.14.4 (#1493) (79ea4d1c)
+- ↗️ [patch](deps): Bump docker/setup-compose-action from 2.0.0 to 2.1.0 (#1485) (19c914b5)
+- ↗️ [patch](deps): Bump @types/bun from 1.3.9 to 1.3.10 (#1489) (617277e0)
+- ↗️ [patch](deps): Bump oxc-parser from 0.112.0 to 0.116.0 (#1490) (bd956af6)
+- ↗️ [patch](deps-dev): Bump @types/pg from 8.16.0 to 8.18.0 (#1488) (e77add09)
+- ↗️ [patch](deps): Bump the sentry group with 4 updates (#1487) (375bf824)
+- ↗️ [patch](deps): Bump oven-sh/setup-bun from 2.1.2 to 2.1.3 (#1486) (2cdd802f)
+- 💼 update workspace (430d9063)
+- 🛂 Guard find_active_user with isNull(sub) (#1484) (37dd8487)
+- 🛂 auth: guarantee hyyyper_user is always set after authorized() (#1483) (0f2a31f2)
+- Bump hono from 4.12.5 to 4.12.7 in /bin (#1482) (2ae2b941)
+
 ## [2026.3.3](https://github.com/proconnect-gouv/hyyypertool/compare/2026.3.2...2026.3.3) (2026-03-10)
 
 ### Changements
