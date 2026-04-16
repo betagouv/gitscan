@@ -1,35 +1,48 @@
-## Changelog : infomedicament (30 derniers jours, au 4 mars 2026)
+## Changelog : infomedicament (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent principalement sur la recherche de médicaments. L'expérience utilisateur a été significativement améliorée avec un tri des résultats plus pertinent, une autocomplétion plus intelligente et l'ajout d'informations supplémentaires sur les médicaments. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration des performances du site, en particulier sur la page d'accueil et les pages de médicaments. Des optimisations ont été apportées pour réduire le temps de chargement et améliorer l'expérience utilisateur.  De plus, l'infrastructure a été renforcée avec la mise en place de bases de données PostgreSQL isolées pour les environnements de revue d'applications, et l'ajout de données HAS (ASMR et SMR). Enfin, des informations supplémentaires sur les présentations des médicaments ont été ajoutées.
 
 ### Évolutions fonctionnelles
-- **Recherche :** Les résultats de recherche sont désormais triés en fonction du type de correspondance (nom exact, spécialité, etc.) [#197](https://github.com/betagouv/infomedicament/pull/197).
-- **Recherche :** L'autocomplétion propose désormais des noms de spécialités en plus des noms de médicaments [#191](https://github.com/betagouv/infomedicament/pull/191).
-- **Recherche :** La recherche est limitée à 100 résultats pour améliorer la performance.
-- **Recherche :** Ajout de badges d'explication pour les codes ATC et les substances.
-- **Recherche :** Cliquer sur une spécialité dans les résultats de recherche ouvre maintenant la page correspondante.
-- **Page médicament :** Intégration de toutes les données disponibles pour une page médicament spécifique [#157](https://github.com/betagouv/infomedicament/pull/157).
-- **Liste des médicaments :** Correction de l'ordre des lettres dans la liste des médicaments.
+- Ajout d'informations issues de la table CNAM_Retro sur les présentations des médicaments. [#1234](https://github.com/betagouv/infomedicament/issues/1234)
+- Affichage d'informations sur le statut de commercialisation des médicaments.
+- Ajout de badges d'informations sur les présentations des médicaments.
+- Calcul dynamique du nombre de médicaments commercialisés.
+- Ajout d'un indicateur de fraîcheur des données dans le modal d'accueil.
+- Ajout de surlignages dans la page médicament pour le glossaire.
+- Correction : Autorisation d'un plus grand nombre de caractères dans les titres de page.
+- Correction : Prévention d'une vulnérabilité IDOR sur la soumission avancée de notes.
 
 ### Évolutions techniques
-- **CI/CD :** Ajout de Lighthouse pour évaluer la performance des applications de revue (review apps).
-- **CI/CD :** Amélioration de l'attente pour la vérification de l'application Scalingo dans le workflow CI.
-- **CI/CD :** Ajout de tests lint et unitaires au CI GitHub.
-- **Base de données :** Migration de la base de données pour optimiser la recherche et l'utilisation des données.
-- **Refactoring :** Simplification du code et de l'interface utilisateur de la recherche.
-- **Refactoring :** Suppression de code inutilisé après la refactorisation de la recherche.
-- **Sentry :** Réduction du taux d'échantillonnage de Sentry à 10% et suppression de l'intégration coûteuse de la relecture.
-- **Sentry :** Correction de problèmes liés à Sentry et ajout de la permission nécessaire dans le CSP.
-- **Scripts :** Correction d'un problème de blocage du script PDBM en fermant la connexion MySQL.
-- **Tests :** Ajout de tests unitaires pour la recherche et correction d'un test manquant.
+- Optimisation des performances de la page d'accueil :
+    - Optimisation de l'SVG de la page d'accueil avec svgo.
+    - Suppression du chargement précoce (prefetching) des articles sur la page d'accueil.
+    - Déplacement de la fonction de sanitisation HTML vers la couche de données côté serveur.
+    - Chargement paresseux (lazy-loading) des composants de la vue détaillée des médicaments.
+    - Rendu synchrone des enfants dans `ContentContainer` pour améliorer le LCP (Largest Contentful Paint).
+- Refactorisation :
+    - Suppression de la dépendance MUI pour les étoiles de notation.
+    - Remplacement de l'Autocomplete MUI par une combobox personnalisée.
+    - Suppression de l'utilisation de `setState` dans `useCallback`.
+- Infrastructure :
+    - Provisionnement de bases de données PostgreSQL isolées par environnement de revue d'application.
+    - Ajout de scripts pour initialiser les bases de données des environnements de revue d'application à partir de la base de staging.
+    - Mise à jour vers Next.js 16.1.6.
+    - Ajout d'une interface OpenSearch pour le développement local.
+- Amélioration de la sécurité :
+    - Limitation du nombre de requêtes à l'endpoint `/rating` (2 requêtes par IP par minute).
+    - Ajout de règles de validation plus strictes pour les notes.
+- Ajout de tests unitaires et d'intégration.
+- Mise à jour du linter vers ESLint.
 
 ### Autres changements
-- **Documentation :** Ajout d'une commande `db:update-resume` pour mettre à jour les données de résumé.
-- **Configuration :** Suppression d'une ancienne migration de base de données.
-- **Correction :** Correction d'un problème d'importation dans le script `updateResumeData`.
-- **Correction :** Correction d'un problème d'ordre d'exécution des migrations.
-- **Correction :** Correction d'un problème lié à un gestionnaire d'événements.
-- **Correction :** Correction de l'ordre des lettres dans la liste des médicaments.
-- **Outils :** Ajout de `@next/bundle-analyzer` aux dépendances de développement pour l'analyse de la taille des bundles.
-- **Linting :** Application du linting pour améliorer la qualité du code.
+- Ajout de la vérification de la console de recherche Google.
+- Ajout de données HAS (ASMR et SMR) à la base de données PostgreSQL.
+- Suppression des tests d'interface utilisateur.
+- Corrections de linting et de style.
+- Ajout de configurations pour les environnements de revue d'application.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout de code pour gérer les codes CIS dans les scripts de revue d'application.
+- Correction de problèmes liés au chargement des images Leaflet dans les environnements de revue d'application.
+- Correction de problèmes liés aux migrations de base de données.
+- Ajout de commentaires et de documentation.

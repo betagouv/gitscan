@@ -1,3 +1,72 @@
+2026-04-15T15:23:07+02:00 - d17abd4 - Vincent Viers : lint
+2026-04-15T15:23:07+02:00 - 9202705 - Vincent Viers : fix: allow more characters in page titles
+2026-04-15T15:23:07+02:00 - 6d9adef - Vincent Viers : conf(proxy): bump max requests per minute to 4
+2026-04-15T15:23:07+02:00 - 649c167 - Vincent Viers : fix: whitelist responses in Ratings - notes must be between 1 an 5 - longer answers in allowlist - regex to check page titles
+2026-04-15T15:23:07+02:00 - 34219c6 - Vincent Viers : fix(rating): prevent IDOR on advanced rating submission
+2026-04-15T15:23:07+02:00 - 2e49b78 - Vincent Viers : conf(rating): rate limit /rating endpoint to 2 requests per ip per minute
+2026-04-15T15:23:07+02:00 - 040bb24 - Vincent Viers : refactor(rating): remove stable setState refs from useCallback deps
+2026-04-15T11:21:53+02:00 - f4d0d50 - Vincent Viers : fix: re-add comment to whiteContainer
+2026-04-15T11:21:53+02:00 - e5429ce - Vincent Viers : perf: MedicamentGeneriqueContainer is server-side
+2026-04-15T11:21:53+02:00 - d702126 - Vincent Viers : perf(homepage): optimize homepage svg using svgo
+2026-04-15T11:21:53+02:00 - ca150ed - Vincent Viers : fix(ContentContainer): render children synchronously to fix 6s LCP
+2026-04-15T11:21:53+02:00 - 83506ea - Vincent Viers : perf(medicament): lazy-load detailed view components
+2026-04-15T11:21:53+02:00 - 7b40805 - Vincent Viers : fix: remove RatingToaster from homepage
+2026-04-15T11:21:53+02:00 - 79420fb - Vincent Viers : revert b328e19
+2026-04-15T11:21:53+02:00 - 5de26ed - Vincent Viers : perf(app): disable prefetch in header and footer links
+2026-04-15T11:21:53+02:00 - 4f11f1f - Vincent Viers : perf: move sanitize-html to server-only data layer
+2026-04-15T11:21:53+02:00 - 48a268b - Vincent Viers : refacto(RatingStars): remove MUI dependency for stars rating popup
+2026-04-15T11:21:53+02:00 - 45bff9e - Vincent Viers : perf(homepage): optimize homepage by disabling prefetching articles
+2026-04-15T11:21:53+02:00 - 39ace6c - Vincent Viers : perf(fonts): preload Marianne-Regular_Italic to eliminate late font fetch
+2026-04-15T11:21:53+02:00 - 33ea8e3 - Vincent Viers : refacto(AutoCompleteSearch): replace MUI Autocomplete with custom combobox
+2026-04-15T11:21:53+02:00 - 2963b3c - Vincent Viers : clean: finish removing MUI
+2026-04-09T10:59:52+02:00 - e49f32b - Vincent Viers : feat: compute data freshness in GreetingModal
+2026-04-09T10:59:52+02:00 - 7793f4a - Vincent Viers : clean: remove unused Article import from homepage
+2026-04-09T10:59:52+02:00 - 719c15d - Vincent Viers : feat: dynamically compute number of commercialized medications
+2026-04-09T10:59:52+02:00 - 0a55d7e - Vincent Viers : fix: use isBdm flag when counting specialites
+2026-04-01T16:54:01+02:00 - 2eb7927 - Vincent Viers : conf(reviewapps): add usually reviewed CIS codes
+2026-04-01T14:09:09+02:00 - 85313b1 - Clemence : feat: add glossary highlights in the medicament page
+2026-04-01T14:09:09+02:00 - 5e13ce4 - Clemence : fix: tests
+2026-03-31T11:15:33+02:00 - c72e663 - Vincent Viers : fix(proxy): exclude RSC prefetch requests from rate limiting
+2026-03-31T11:15:33+02:00 - b9483dc - Vincent Viers : chore(deps): patch npm vulnerabilities
+2026-03-31T11:15:33+02:00 - b7a8648 - Vincent Viers : fix: '`onScrollEvent` is accessed before it is declared' lint error
+2026-03-31T11:15:33+02:00 - 47b04bb - Vincent Viers : chore(lint): change linter to eslint
+2026-03-31T11:15:33+02:00 - 26f337a - Vincent Viers : conf(app): upgrade to Next 16.1.6
+2026-03-31T11:14:47+02:00 - 554e6ab - Vincent Viers : conf: add google search console verification HTML
+2026-03-25T15:54:47+01:00 - ed5155c - Vincent Viers : fix: run seed-search-index in review apps
+2026-03-25T15:54:47+01:00 - afc4946 - Vincent Viers : hotfix: add empty pathosCodesNames to resume_specialites insert
+2026-03-25T15:21:38+01:00 - b86edcd - Clemence : feat: add migration
+2026-03-25T15:21:38+01:00 - 661780c - Clemence : feat: update interface ResumeMedicamentsTable
+2026-03-25T10:02:16+01:00 - d134941 - Clemence : fix: compositions
+2026-03-25T10:00:44+01:00 - 0d8dde1 - Vincent Viers : conf(devcontainer): add opensearch UI to devcontainer
+2026-03-25T09:35:06+01:00 - fc4e56d - Vincent Viers : conf(devcontainer): add OpenSearch container for local dev
+2026-03-19T16:09:25+01:00 - fd8a20c - Vincent Viers : feat(script): use arrays for all table types in review app script
+2026-03-19T16:09:25+01:00 - e65cd75 - Vincent Viers : chore(CI): make lighthouse CI trigger only when review app is up
+2026-03-19T16:09:25+01:00 - e557ab7 - Vincent Viers : chore(db): baseline migration for PostgreSQL tables
+2026-03-19T16:09:25+01:00 - ab9cafb - Vincent Viers : feat(review-apps): provision isolated PostgreSQL per review app
+2026-03-19T16:09:25+01:00 - 8b5bc41 - Vincent Viers : fix(review-apps): bundle scripts into standalone output for Scalingo one-off containers
+2026-03-19T16:09:25+01:00 - 89ab0f5 - Vincent Viers : fix(db): prefer DATABASE_URL over APP_DB_URL for PostgreSQL connection
+2026-03-19T16:09:25+01:00 - 7f72824 - Vincent Viers : fix(review_app): add presentations table to review apps' db
+2026-03-19T16:09:25+01:00 - 67948dd - Vincent Viers : feat(db): add script to seed review apps from staging PostgreSQL
+2026-03-19T16:09:25+01:00 - 6476244 - Vincent Viers : fix(review-apps): stream table copies in chunks to avoid scalingo OOM
+2026-03-19T16:09:25+01:00 - 490db24 - Vincent Viers : feat(seed): filter review app seeding to 500 CIS codes
+2026-03-19T16:09:25+01:00 - 4258668 - Vincent Viers : fix(build): put db migrations back in prebuild
+2026-03-19T16:09:25+01:00 - 174f111 - Vincent Viers : refactor(deploy): move migrations to postdeploy hook, decouple search index rebuild
+2026-03-19T16:09:25+01:00 - 05aef52 - Vincent Viers : fix(review_app): ignore leaflet_images for review apps
+2026-03-19T16:09:05+01:00 - 9eb5e26 - Vincent Viers : data(HAS): re-add asmr and smr data to postgreSQL
+2026-03-19T16:08:31+01:00 - 04e255b - Vincent Viers : test(ui): remove UI tests
+2026-03-19T16:07:34+01:00 - f181e52 - Clemence : fix: presentations
+2026-03-19T16:07:34+01:00 - ee76c54 - Clemence : fix: presentations v2
+2026-03-19T16:07:34+01:00 - e736124 - Clemence : feat: add tests
+2026-03-19T16:07:34+01:00 - a5d5ce5 - Clemence : feat: add informations from the CNAM_Retro table
+2026-03-19T16:07:34+01:00 - a3d56b4 - Clemence : fix: pvc and pvc-aluminium
+2026-03-19T16:07:34+01:00 - a383bcc - Clemence : fix: pvc and pvc-aluminium
+2026-03-19T16:07:34+01:00 - 9e2a086 - Clemence : feat: add test for presentations utils
+2026-03-19T16:07:34+01:00 - 98437e3 - Clemence : fix: review
+2026-03-19T16:07:34+01:00 - 6361604 - Clemence : fix: presentations not commercialized
+2026-03-19T16:07:34+01:00 - 601a338 - Clemence : fix: migration for column type
+2026-03-19T16:07:34+01:00 - 2a26fa5 - Clemence : fix: add margin between badge and presentation
+2026-03-19T16:07:34+01:00 - 1f2485c - Clemence : fix: pvc and pvc-aluminium
+2026-03-19T16:07:34+01:00 - 1514924 - Clemence : feat: dispositif for all presentation not just recipient
 2026-03-04T16:07:40+01:00 - cb87e65 - Vincent Viers : conf(sentry): remove costly sentry replay integration
 2026-03-04T16:07:40+01:00 - c7f6e98 - Vincent Viers : config(sentry): decrease sampling rate to 10%
 2026-03-04T16:07:40+01:00 - 8d65fb0 - Vincent Viers : conf(sentry): remove broken tunneling + allow sentry in CSP

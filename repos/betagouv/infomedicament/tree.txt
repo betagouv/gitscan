@@ -18,11 +18,14 @@
 │   └── pdbm.ts
 ├── docs
 │   └── DEPLOYMENT.md
+├── esbuild.scripts.mjs
+├── eslint.config.mjs
 ├── kysely.config.ts
 ├── next.config.mjs
 ├── package-lock.json
 ├── package.json
 ├── public
+│   ├── googleac4490d520987202.html
 │   ├── icons
 │   │   ├── aip.png
 │   │   └── surveillance_renforcee.png
@@ -44,6 +47,9 @@
 ├── scripts
 │   ├── importNoticeRCP.integration.test.ts
 │   ├── importNoticeRCP.ts
+│   ├── seed-review-app.ts
+│   ├── seed-search-index.ts
+│   ├── seed_cis_codes.txt
 │   ├── syncWithGrist.ts
 │   ├── test_data
 │   │   ├── sample_notices.jsonl
@@ -75,39 +81,21 @@
 │   │   │   │           └── page.tsx
 │   │   │   ├── articles
 │   │   │   │   ├── [slug]
-│   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   └── page.ui.test.tsx.snap
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   │   └── page.ui.test.tsx
-│   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── page.ui.test.tsx.snap
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── page.ui.test.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── atc
 │   │   │   │   └── [code]
-│   │   │   │       ├── __snapshots__
-│   │   │   │       │   └── page.ui.test.tsx.snap
-│   │   │   │       ├── page.tsx
-│   │   │   │       └── page.ui.test.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── generiques
 │   │   │   │   └── [CIS]
-│   │   │   │       ├── __snapshots__
-│   │   │   │       │   └── page.ui.test.tsx.snap
-│   │   │   │       ├── page.tsx
-│   │   │   │       └── page.ui.test.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── glossaire
 │   │   │   │   └── [letter]
-│   │   │   │       ├── __snapshots__
-│   │   │   │       │   └── page.ui.test.tsx.snap
-│   │   │   │       ├── page.tsx
-│   │   │   │       └── page.ui.test.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── medicaments
 │   │   │   │   └── [CIS]
-│   │   │   │       ├── __snapshots__
-│   │   │   │       │   └── page.ui.test.tsx.snap
-│   │   │   │       ├── page.tsx
-│   │   │   │       └── page.ui.test.tsx
+│   │   │   │       └── page.tsx
 │   │   │   ├── mentions-legales
 │   │   │   │   └── page.tsx
 │   │   │   ├── pathologies
@@ -116,6 +104,7 @@
 │   │   │   ├── politique-de-confidentialite
 │   │   │   │   └── page.tsx
 │   │   │   ├── rating
+│   │   │   │   ├── route.test.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── rechercher
 │   │   │   │   ├── SearchPage.tsx
@@ -178,10 +167,7 @@
 │   │   │   ├── ATC2DefinitionContent.tsx
 │   │   │   ├── PageDefinitionContent.tsx
 │   │   │   ├── PathologyDefinitionContent.tsx
-│   │   │   ├── SubstanceDefinitionContent.tsx
-│   │   │   ├── SubstanceDefinitionContent.ui.test.tsx
-│   │   │   └── __snapshots__
-│   │   │       └── SubstanceDefinitionContent.ui.test.tsx.snap
+│   │   │   └── SubstanceDefinitionContent.tsx
 │   │   ├── generic
 │   │   │   ├── ContentContainer.tsx
 │   │   │   ├── GoTopButton.tsx
@@ -201,25 +187,18 @@
 │   │   │   ├── PathologiesListContent.tsx
 │   │   │   └── SubstancesListContent.tsx
 │   │   ├── marr
-│   │   │   ├── Marr.ui.test.tsx
 │   │   │   ├── MarrNotice.tsx
 │   │   │   ├── MarrNoticeAdvanced.tsx
-│   │   │   ├── MarrResumeList.tsx
-│   │   │   └── __snapshots__
-│   │   │       └── Marr.ui.test.tsx.snap
+│   │   │   └── MarrResumeList.tsx
 │   │   ├── medicaments
 │   │   │   ├── DetailedNotice.tsx
 │   │   │   ├── MedicamentContainer.tsx
-│   │   │   ├── MedicamentContainer.ui.test.tsx
 │   │   │   ├── MedicamentContent.tsx
 │   │   │   ├── MedicamentContentHeader.tsx
 │   │   │   ├── NoticeBlock.tsx
-│   │   │   ├── NoticeBlock.ui.test.tsx
 │   │   │   ├── QuestionKeyword.tsx
 │   │   │   ├── QuestionKeywordsBox.tsx
 │   │   │   ├── QuestionsBox.tsx
-│   │   │   ├── __snapshots__
-│   │   │   │   └── NoticeBlock.ui.test.tsx.snap
 │   │   │   ├── blocks
 │   │   │   │   ├── CentraliseBlock.tsx
 │   │   │   │   └── GenericBlocks.tsx
@@ -230,13 +209,10 @@
 │   │   │       └── RcpBlock.tsx
 │   │   ├── medicamentsGeneriques
 │   │   │   └── MedicamentGeneriqueContainer.tsx
-│   │   ├── pathologies
-│   │   │   ├── Pathologies.ui.test.tsx
-│   │   │   └── __snapshots__
-│   │   │       └── Pathologies.ui.test.tsx.snap
 │   │   ├── rating
 │   │   │   ├── RatingAdvanced.tsx
 │   │   │   ├── RatingPage.tsx
+│   │   │   ├── RatingStars.test.tsx
 │   │   │   ├── RatingStars.tsx
 │   │   │   └── RatingToaster.tsx
 │   │   ├── search
@@ -274,12 +250,16 @@
 │   ├── db
 │   │   ├── index.ts
 │   │   ├── migrations
+│   │   │   ├── 20240101000000_baseline.ts
 │   │   │   ├── 20240731091527_leaftlet_images.ts
 │   │   │   ├── 20240904085535_searchIndex.ts
 │   │   │   ├── 20260113161325_create_grist_reference_tables.ts
 │   │   │   ├── 20260204151232_enrich_atc_tables.ts
 │   │   │   ├── 20260216113145_clean_fiches_infos.ts
-│   │   │   └── 20260217120000_search_refacto.ts
+│   │   │   ├── 20260217120000_search_refacto.ts
+│   │   │   ├── 20260226085540_presentations.ts
+│   │   │   ├── 20260311000000_create_asmr_smr.ts
+│   │   │   └── 20260324160509_resume_medicaments_pathos.ts
 │   │   ├── pdbmMySQL
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
@@ -318,7 +298,7 @@
 │   ├── displayUtils.test.ts
 │   ├── displayUtils.ts
 │   ├── instrumentation.ts
-│   ├── middleware.ts
+│   ├── proxy.ts
 │   ├── services
 │   │   ├── matomo.ts
 │   │   └── tracking.ts
@@ -346,10 +326,14 @@
 │   └── utils
 │       ├── alphabeticNav.ts
 │       ├── atc.ts
+│       ├── glossary.tsx
 │       ├── network.tsx
 │       ├── notices
 │       │   └── noticesUtils.tsx
 │       ├── pediatrics.ts
+│       ├── presentations.integration.test.ts
+│       ├── presentations.test.ts
+│       ├── presentations.tsx
 │       ├── rate-limit.test.ts
 │       ├── rate-limit.ts
 │       ├── specialites.test.ts
@@ -358,4 +342,4 @@
 ├── utils
 │   └── network.tsx
 └── vitest.config.mts
-98 directories, 262 files
+87 directories, 257 files
