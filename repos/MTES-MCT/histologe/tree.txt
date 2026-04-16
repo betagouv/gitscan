@@ -1,4 +1,7 @@
 .
+├── .ai
+│   ├── AI_STARTER.md
+│   └── AJOUT_DONNEES.md
 ├── .buildpacks
 ├── .docker
 │   ├── matomo
@@ -93,6 +96,7 @@
 │   │   │   │   ├── back_dashboard
 │   │   │   │   │   ├── back_dashboard.js
 │   │   │   │   │   ├── filter_handler.js
+│   │   │   │   │   ├── pagination_handler.js
 │   │   │   │   │   ├── sort_handler.js
 │   │   │   │   │   └── tabs_loader.js
 │   │   │   │   ├── back_partner_index
@@ -112,7 +116,6 @@
 │   │   │   │   │   ├── form_acceptation_refus.js
 │   │   │   │   │   ├── form_cloture_modal.js
 │   │   │   │   │   ├── form_upload_documents.js
-│   │   │   │   │   ├── input_autocomplete_bailleur.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
 │   │   │   │   ├── back_territory_management_document
@@ -142,6 +145,7 @@
 │   │   │   └── services
 │   │   │       ├── bo_modales.js
 │   │   │       ├── component
+│   │   │       │   ├── component_autocomplete_bailleur.js
 │   │   │       │   ├── component_json_response_handler.js
 │   │   │       │   ├── component_phone_number_row.js
 │   │   │       │   ├── component_search_address.js
@@ -400,7 +404,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (84 files)
+│   └── Version*.php  (93 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -654,6 +658,7 @@
 │   │   │   └── UserAccountController.php
 │   │   ├── ServiceSecours
 │   │   │   └── ServiceSecoursController.php
+│   │   ├── SignalementConfirmEditController.php
 │   │   ├── SignalementController.php
 │   │   ├── SignalementEditController.php
 │   │   ├── SignalementFileController.php
@@ -697,6 +702,7 @@
 │   │   │       ├── bailleur_occupant.json
 │   │   │       ├── locataire.json
 │   │   │       ├── locataire_all_in.json
+│   │   │       ├── locataire_injonction.json
 │   │   │       ├── service_secours.json
 │   │   │       ├── step
 │   │   │       │   ├── info_procedure_bail
@@ -785,6 +791,7 @@
 │   │   │   │   ├── CoordonneesAgenceRequest.php
 │   │   │   │   ├── CoordonneesBailleurRequest.php
 │   │   │   │   ├── CoordonneesFoyerRequest.php
+│   │   │   │   ├── CoordonneesSyndicRequest.php
 │   │   │   │   ├── CoordonneesTiersRequest.php
 │   │   │   │   ├── GenerateFileZipSelectionRequest.php
 │   │   │   │   ├── InformationsLogementRequest.php
@@ -850,7 +857,6 @@
 │   │   │   ├── CreationSource.php
 │   │   │   ├── DebutDesordres.php
 │   │   │   ├── DesordreCritereZone.php
-│   │   │   ├── DesordreSecours.php
 │   │   │   ├── DocumentType.php
 │   │   │   ├── EtageType.php
 │   │   │   ├── HistoryEntryEvent.php
@@ -974,10 +980,8 @@
 │   │   ├── Signalement
 │   │   │   ├── DesordreTraitementProcessorNotFound.php
 │   │   │   └── PrecisionNotFound.php
-│   │   ├── Suivi
-│   │   │   └── UsagerNotificationRequiredException.php
-│   │   └── User
-│   │       └── UserEmailNotFoundException.php
+│   │   └── Suivi
+│   │       └── UsagerNotificationRequiredException.php
 │   ├── Factory
 │   │   ├── Api
 │   │   │   ├── FileFactory.php
@@ -1008,9 +1012,10 @@
 │   │   ├── SignalementAffectationListViewFactory.php
 │   │   ├── SignalementDraftFactory.php
 │   │   ├── SignalementExportFactory.php
-│   │   ├── SignalementFactory.php
+│   │   ├── SignalementImportFactory.php
 │   │   ├── SignalementQualificationFactory.php
 │   │   ├── SignalementSearchQueryFactory.php
+│   │   ├── SignalementServiceSecoursFactory.php
 │   │   ├── SignalementVisiteRequestFactory.php
 │   │   ├── TiersInvitationFactory.php
 │   │   └── UserFactory.php
@@ -1019,6 +1024,7 @@
 │   │   ├── AddTagType.php
 │   │   ├── AgentSelectionType.php
 │   │   ├── AutoAffectationRuleType.php
+│   │   ├── BailleurClotureProcedureType.php
 │   │   ├── BailleurType.php
 │   │   ├── ClotureType.php
 │   │   ├── ClubEventType.php
@@ -1043,6 +1049,7 @@
 │   │   ├── SearchCommuneType.php
 │   │   ├── SearchDashboardAverifierType.php
 │   │   ├── SearchDraftType.php
+│   │   ├── SearchHistoryEntryType.php
 │   │   ├── SearchInterconnexionType.php
 │   │   ├── SearchNotificationType.php
 │   │   ├── SearchPartnerType.php
@@ -1071,7 +1078,11 @@
 │   │   │   ├── AdresseLogementType.php
 │   │   │   ├── CoordonneesAgenceType.php
 │   │   │   ├── CoordonneesBailleurType.php
+│   │   │   ├── CoordonneesOccupantType.php
+│   │   │   ├── CoordonneesSyndicType.php
+│   │   │   ├── InformationsGeneralesType.php
 │   │   │   ├── ProcedureAssuranceType.php
+│   │   │   ├── TypeCompositionType.php
 │   │   │   └── UsagerSituationFoyerType.php
 │   │   ├── StopProcedureType.php
 │   │   ├── SuiviSummariesType.php
@@ -1094,13 +1105,10 @@
 │   │   ├── UserProfilInfoType.php
 │   │   ├── UserType.php
 │   │   └── ZoneType.php
-│   ├── FormHandler
-│   │   └── ContactFormHandler.php
 │   ├── Kernel.php
 │   ├── Manager
 │   │   ├── AbstractManager.php
 │   │   ├── AffectationManager.php
-│   │   ├── AutoAffectationRuleManager.php
 │   │   ├── CommuneManager.php
 │   │   ├── DesordreCritereManager.php
 │   │   ├── FailedEmailManager.php
@@ -1138,6 +1146,7 @@
 │   │   │   │   └── DossierMessage.php
 │   │   │   ├── PdfExportMessage.php
 │   │   │   ├── SignalementDraftProcessMessage.php
+│   │   │   ├── SignalementServiceSecoursFileMessage.php
 │   │   │   ├── SuiviSummariesMessage.php
 │   │   │   └── UserExportMessage.php
 │   │   └── MessageHandler
@@ -1156,6 +1165,7 @@
 │   │       ├── PdfExportMessageHandler.php
 │   │       ├── SignalementAddressUpdateAndAutoAssignMessageHandler.php
 │   │       ├── SignalementDraftFileMessageHandler.php
+│   │       ├── SignalementServiceSecoursFileMessageHandler.php
 │   │       ├── SuiviSummariesMessageHandler.php
 │   │       └── UserExportMessageHandler.php
 │   ├── Repository
@@ -1185,6 +1195,15 @@
 │   │   ├── PartnerRepository.php
 │   │   ├── PopNotificationRepository.php
 │   │   ├── Query
+│   │   │   ├── Dashboard
+│   │   │   │   ├── DossiersActiviteRecenteQuery.php
+│   │   │   │   ├── DossiersAvecRelanceSansReponseQuery.php
+│   │   │   │   ├── DossiersQuery.php
+│   │   │   │   ├── DossiersSansSuivisPartenaireQuery.php
+│   │   │   │   ├── DossiersSuivisUsagerQuery.php
+│   │   │   │   ├── DossiersUndeliverableEmailQuery.php
+│   │   │   │   ├── KpiQuery.php
+│   │   │   │   └── SignalementsSansAffectationAccepteeQuery.php
 │   │   │   ├── EmailAlert
 │   │   │   │   ├── PartnerQueryService.php
 │   │   │   │   └── UserQueryService.php
@@ -1266,6 +1285,7 @@
 │   │   │   │   ├── DossiersActiviteRecenteTabBodyLoader.php
 │   │   │   │   ├── DossiersAdresseEmailAverifierTabBodyLoader.php
 │   │   │   │   ├── DossiersDernierActionTabBodyLoader.php
+│   │   │   │   ├── DossiersFermeCommuneTabBodyLoader.php
 │   │   │   │   ├── DossiersFermePartenaireTousTabBodyLoader.php
 │   │   │   │   ├── DossiersFormProTabBodyLoader.php
 │   │   │   │   ├── DossiersFormUsagerTabBodyLoader.php
@@ -1277,6 +1297,7 @@
 │   │   │   │   ├── DossiersNonAffectationTabBodyLoader.php
 │   │   │   │   ├── DossiersRelanceUsagerSansReponseTabBodyLoader.php
 │   │   │   │   ├── DossiersSansActivitePartenaireTabBodyLoader.php
+│   │   │   │   ├── DossiersSansAffectationAccepteeTabBodyLoader.php
 │   │   │   │   └── TabBodyLoaderInterface.php
 │   │   │   ├── TabBodyLoaderCollection.php
 │   │   │   ├── TabBodyType.php
@@ -1292,6 +1313,7 @@
 │   │   │   ├── FilenameGenerator.php
 │   │   │   ├── ImageBase64Encoder.php
 │   │   │   ├── ImageVariantProvider.php
+│   │   │   ├── SignalementFileAttacher.php
 │   │   │   ├── TmpFileWriter.php
 │   │   │   ├── ZipHelper.php
 │   │   │   └── ZipStreamBuilder.php
@@ -1357,6 +1379,7 @@
 │   │   ├── Interconnection
 │   │   │   ├── Esabora
 │   │   │   │   ├── AbstractEsaboraService.php
+│   │   │   │   ├── AffectationEsaboraPolicy.php
 │   │   │   │   ├── AttachmentsUtils.php
 │   │   │   │   ├── CiviliteMapper.php
 │   │   │   │   ├── DateParser.php
@@ -1423,7 +1446,6 @@
 │   │   │   ├── SearchServiceSecoursRoute.php
 │   │   │   ├── SearchSignalementInjonction.php
 │   │   │   ├── SearchTag.php
-│   │   │   ├── SearchTerritory.php
 │   │   │   ├── SearchTerritoryFiles.php
 │   │   │   ├── SearchUser.php
 │   │   │   └── SearchZone.php
@@ -1443,8 +1465,6 @@
 │   │   │   │   │   ├── AccountTransferMailer.php
 │   │   │   │   │   ├── AccountUserSoonArchivedMailer.php
 │   │   │   │   │   └── AccountsSoonArchivedMailer.php
-│   │   │   │   ├── Contact
-│   │   │   │   │   └── ContactFormMailer.php
 │   │   │   │   ├── Cron
 │   │   │   │   │   └── CronMailer.php
 │   │   │   │   ├── Error
@@ -1458,12 +1478,14 @@
 │   │   │   │   │   ├── ContinueFromDraftMailer.php
 │   │   │   │   │   ├── DownloadExportMailer.php
 │   │   │   │   │   ├── InactiveUserExportMailer.php
+│   │   │   │   │   ├── ServiceSecoursAccuseReception.php
 │   │   │   │   │   ├── SignalementClosedToAllPartnersMailer.php
 │   │   │   │   │   ├── SignalementClosedToOnePartnerMailer.php
 │   │   │   │   │   ├── SignalementClosedToUsagerMailer.php
 │   │   │   │   │   ├── SignalementConfirmInjonctionBailleurMailer.php
 │   │   │   │   │   ├── SignalementConfirmInjonctionMailer.php
 │   │   │   │   │   ├── SignalementConfirmReceptionMailer.php
+│   │   │   │   │   ├── SignalementEditMailOccupantMailer.php
 │   │   │   │   │   ├── SignalementFeedbackUsagerThirdMailer.php
 │   │   │   │   │   ├── SignalementFeedbackUsagerWithResponseMailer.php
 │   │   │   │   │   ├── SignalementFeedbackUsagerWithoutResponseMailer.php
@@ -1546,6 +1568,7 @@
 │   │   │   │   ├── DesordreTraitementPieces.php
 │   │   │   │   └── DesordreTraitementProcessor.php
 │   │   │   ├── Export
+│   │   │   │   ├── ServiceSecoursPdfGenerator.php
 │   │   │   │   ├── SignalementExportFiltersDisplay.php
 │   │   │   │   ├── SignalementExportHeader.php
 │   │   │   │   ├── SignalementExportLoader.php
@@ -1631,7 +1654,8 @@
 │   │   ├── AppExtension.php
 │   │   ├── DiffExtension.php
 │   │   ├── EnumExtension.php
-│   │   └── MenuExtension.php
+│   │   ├── MenuExtension.php
+│   │   └── TestExtension.php
 │   ├── Utils
 │   │   ├── AddressParser.php
 │   │   ├── AttributeParser.php
@@ -1697,6 +1721,7 @@
 │   │   ├── _modal_accept_affectation.html.twig
 │   │   ├── _modal_accept_signalement.html.twig
 │   │   ├── _modal_affectation.html.twig
+│   │   ├── _modal_affectation_selects.html.twig
 │   │   ├── _modal_agents_subscription.html.twig
 │   │   ├── _modal_closed_territory.html.twig
 │   │   ├── _modal_cloture.html.twig
@@ -1811,6 +1836,7 @@
 │   │   │       │   └── tab_accueil.html.twig
 │   │   │       ├── dossiers_a_fermer
 │   │   │       │   ├── _body_dossier_demande_fermeture_usager.html.twig
+│   │   │       │   ├── _body_dossier_ferme_commune.html.twig
 │   │   │       │   ├── _body_dossier_ferme_partenaire_tous.html.twig
 │   │   │       │   ├── _body_dossier_relance_usager_sans_reponse.html.twig
 │   │   │       │   ├── _header_dossier_a_fermer.html.twig
@@ -1818,6 +1844,7 @@
 │   │   │       ├── dossiers_a_verifier
 │   │   │       │   ├── _body_dossier_adresse_email_a_verifier.html.twig
 │   │   │       │   ├── _body_dossier_sans_activite_partenaire.html.twig
+│   │   │       │   ├── _body_dossier_sans_affectation_acceptee.html.twig
 │   │   │       │   ├── _header_dossier_a_verifier.html.twig
 │   │   │       │   └── tab_dossier_a_verifier.html.twig
 │   │   │       ├── dossiers_activite_recente
@@ -1897,6 +1924,7 @@
 │   │   │   │   │   ├── edit-coordonnees-agence.html.twig
 │   │   │   │   │   ├── edit-coordonnees-bailleur.html.twig
 │   │   │   │   │   ├── edit-coordonnees-foyer.html.twig
+│   │   │   │   │   ├── edit-coordonnees-syndic.html.twig
 │   │   │   │   │   ├── edit-coordonnees-tiers.html.twig
 │   │   │   │   │   ├── edit-file.html.twig
 │   │   │   │   │   ├── edit-informations-logement.html.twig
@@ -1926,6 +1954,7 @@
 │   │   │   │   │   ├── information-logement.html.twig
 │   │   │   │   │   ├── information-procedure.html.twig
 │   │   │   │   │   ├── information-situation-foyer.html.twig
+│   │   │   │   │   ├── information-syndic.html.twig
 │   │   │   │   │   └── information-tiers.html.twig
 │   │   │   │   ├── nde.html.twig
 │   │   │   │   ├── partners.html.twig
@@ -1960,6 +1989,7 @@
 │   │   │   └── view.html.twig
 │   │   ├── signalement-injonction
 │   │   │   ├── _courrier-bailleur-header.html.twig
+│   │   │   ├── _courrier-bailleur-layout.html.twig
 │   │   │   ├── courrier-bailleur-injonction-closed.html.twig
 │   │   │   ├── courrier-bailleur.html.twig
 │   │   │   ├── engagement-travaux-bailleur.html.twig
@@ -2072,12 +2102,14 @@
 │   │   ├── migration_pass_email.html.twig
 │   │   ├── new_signalement_email.html.twig
 │   │   ├── notification_summary_email.html.twig
-│   │   ├── nouveau_*.twig  (15 files)
+│   │   ├── nouveau_*.twig  (14 files)
 │   │   ├── profil_edit_email.html.twig
 │   │   ├── profil_edit_password.html.twig
 │   │   ├── reactive_account_email.html.twig
 │   │   ├── refus_signalement_email.html.twig
+│   │   ├── service_secours_accuse_reception_email.html.twig
 │   │   ├── signalement_draft_pending_bailleur_prevenu.html.twig
+│   │   ├── signalement_edit_mail_occupant.html.twig
 │   │   ├── signalement_pdf_export.html.twig
 │   │   ├── signalement_user_export.html.twig
 │   │   ├── suivi_summaries_export.html.twig
@@ -2098,16 +2130,23 @@
 │   │   │   ├── _suivi_signalement_inviter_tiers.html.twig
 │   │   │   └── _suivi_signalement_prevenir_bailleur.html.twig
 │   │   ├── cgu_agents.html.twig
-│   │   ├── dossier_bailleur.html.twig
+│   │   ├── dossier_bailleur
+│   │   │   ├── dossier_bailleur.html.twig
+│   │   │   └── dossier_bailleur_cloture.html.twig
 │   │   ├── edit-signalement
 │   │   │   ├── adresse-logement.html.twig
 │   │   │   ├── coordonnees-agence.html.twig
 │   │   │   ├── coordonnees-bailleur.html.twig
+│   │   │   ├── coordonnees-occupant.html.twig
+│   │   │   ├── coordonnees-syndic.html.twig
+│   │   │   ├── informations-generales.html.twig
 │   │   │   ├── procedure-assurance.html.twig
-│   │   │   └── situation-foyer.html.twig
+│   │   │   ├── situation-foyer.html.twig
+│   │   │   └── type-composition.html.twig
 │   │   ├── flash-messages.html.twig
 │   │   ├── formulaire_signalement.html.twig
 │   │   ├── statistiques.html.twig
+│   │   ├── suivi_signalement_bailleur_cloture_procedure.html.twig
 │   │   ├── suivi_signalement_cancel_procedure_intro.html.twig
 │   │   ├── suivi_signalement_cancel_procedure_validation.html.twig
 │   │   ├── suivi_signalement_coordonnees_tiers.html.twig
@@ -2144,10 +2183,16 @@
 │   │   ├── _install.html.twig
 │   │   ├── base.html.twig
 │   │   ├── index.html.twig
+│   │   ├── pdf.html.twig
 │   │   └── success.html.twig
-│   └── skiplink.html.twig
+│   ├── skiplink.html.twig
+│   └── suivi
+│       └── front_signalement_confirm_edit_email_occupant.html.twig
 ├── tests
 │   ├── ApiHelper.php
+│   ├── Fake
+│   │   ├── AddressServiceFake.php
+│   │   └── RnbServiceFake.php
 │   ├── FileHelper.php
 │   ├── FixturesHelper.php
 │   ├── Functional
@@ -2284,10 +2329,20 @@
 │   │   │   ├── AutoAffectationRuleRepositoryTest.php
 │   │   │   ├── BailleurRepositoryTest.php
 │   │   │   ├── CommuneRepositoryTest.php
+│   │   │   ├── DesordreCritereRepositoryTest.php
+│   │   │   ├── EpciRepositoryTest.php
 │   │   │   ├── FileRepositoryTest.php
 │   │   │   ├── JobEventRepositoryTest.php
 │   │   │   ├── PartnerRepositoryTest.php
 │   │   │   ├── Query
+│   │   │   │   ├── Dashboard
+│   │   │   │   │   ├── DossiersActiviteRecenteQueryTest.php
+│   │   │   │   │   ├── DossiersAvecRelanceSansReponseTest.php
+│   │   │   │   │   ├── DossiersQueryTest.php
+│   │   │   │   │   ├── DossiersSansSuivisPartenaireQueryTest.php
+│   │   │   │   │   ├── DossiersSuivisUsagerQueryTest.php
+│   │   │   │   │   ├── KpiQueryTest.php
+│   │   │   │   │   └── SignalementsSansAffectationAccepteeQueryTest.php
 │   │   │   │   └── SignalementList
 │   │   │   │       ├── MapGeoDataQueryTest.php
 │   │   │   │       └── QueryBuilderFactoryTest.php
@@ -2297,6 +2352,7 @@
 │   │   │   └── ZoneRepositoryTest.php
 │   │   ├── Service
 │   │   │   ├── Esabora
+│   │   │   │   ├── AffectationEsaboraPolicyTest.php
 │   │   │   │   └── CiviliteMapperTest.php
 │   │   │   ├── Import
 │   │   │   │   ├── Bailleur
@@ -2365,8 +2421,6 @@
 │   │           ├── FirstAffectationAcceptedSpecificationTest.php
 │   │           └── SuroccupationSpecificationTest.php
 │   ├── KernelServiceHelperTrait.php
-│   ├── MockableResizeImage.php
-│   ├── MockableThumbnailImage.php
 │   ├── SessionHelper.php
 │   ├── SmokeTest.php
 │   ├── Unit
@@ -2401,6 +2455,8 @@
 │   │   │   │       ├── SignalementSearchQueryTest.php
 │   │   │   │       ├── SituationFoyerRequestTest.php
 │   │   │   │       └── VisiteRequestTest.php
+│   │   │   ├── ServiceSecours
+│   │   │   │   └── FormServiceSecoursStep5Test.php
 │   │   │   └── SettingsTest.php
 │   │   ├── Entity
 │   │   │   ├── AffectationTest.php
@@ -2451,8 +2507,9 @@
 │   │   │       ├── Idoss
 │   │   │       │   └── DossierMessageHandlerTest.php
 │   │   │       ├── NewSignalementCheckFileMessageHandlerTest.php
-│   │   │       └── Oilhi
-│   │   │           └── DossierMessageHandlerTest.php
+│   │   │       ├── Oilhi
+│   │   │       │   └── DossierMessageHandlerTest.php
+│   │   │       └── SignalementServiceSecoursFileMessageHandlerTest.php
 │   │   ├── Security
 │   │   │   ├── Authenticator
 │   │   │   │   ├── CodeSuiviLoginAuthenticatorTest.php
@@ -2480,7 +2537,8 @@
 │   │   │   │   │   ├── DossiersMessagesNouveauxTabBodyLoaderTest.php
 │   │   │   │   │   ├── DossiersMessagesUsagersSansReponseTabBodyLoaderTest.php
 │   │   │   │   │   ├── DossiersRelanceUsagerSansReponseTabBodyLoaderTest.php
-│   │   │   │   │   └── DossiersSansActivitePartenaireTabBodyLoaderTest.php
+│   │   │   │   │   ├── DossiersSansActivitePartenaireTabBodyLoaderTest.php
+│   │   │   │   │   └── DossiersSansAffectationAccepteeTabBodyLoaderTest.php
 │   │   │   │   ├── TabBodyTest.php
 │   │   │   │   ├── TabDataManagerTest.php
 │   │   │   │   └── TabQueryParametersTest.php
@@ -2509,6 +2567,7 @@
 │   │   │   ├── Files
 │   │   │   │   ├── FilenameGeneratorTest.php
 │   │   │   │   ├── ImageVariantProviderTest.php
+│   │   │   │   ├── SignalementFileAttacherTest.php
 │   │   │   │   ├── TmpFileWriterTest.php
 │   │   │   │   ├── ZipHelperTest.php
 │   │   │   │   └── ZipStreamBuilderTest.php
@@ -2589,6 +2648,7 @@
 │   │   │   ├── PhoneTest.php
 │   │   │   └── TrimHelperTest.php
 │   │   └── Validator
+│   │       ├── AdresseOccupantValidatorTest.php
 │   │       ├── Behaviour
 │   │       │   └── MonthYearValidatorTraitTest.php
 │   │       ├── EmailFormatValidatorTest.php
@@ -2597,6 +2657,7 @@
 │   │       ├── PartnerToExcludeValidatorTest.php
 │   │       ├── PostalCodeInseeCoherenceValidatorTest.php
 │   │       ├── SanitizedLengthValidatorTest.php
+│   │       ├── TelephoneFormatValidatorTest.php
 │   │       ├── ValidPartnerTypeValidatorTest.php
 │   │       ├── ValidProfileDeclarantValidatorTest.php
 │   │       └── ValueLessThanOtherValueValidatorTest.php
@@ -2727,4 +2788,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-458 directories, 2372 files
+462 directories, 2437 files
