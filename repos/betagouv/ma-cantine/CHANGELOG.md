@@ -6,6 +6,290 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.30.0](https://github.com/betagouv/ma-cantine/compare/v2026.29.0...v2026.30.0) (2026-04-15)
+
+
+### Nouveautés
+
+* **Campagne de correction:** mise à jour du bandeau d'information ([#6628](https://github.com/betagouv/ma-cantine/issues/6628)) ([9cdc7f1](https://github.com/betagouv/ma-cantine/commit/9cdc7f13317e7461dcc4d04a984e9bf41a3ac37f))
+
+
+### Améliorations
+
+* **Télédéclarations:** améliorer la commande de resubmit pour prendre en entrée une liste de Diagnostic ID à re-télédéclarer ([#6644](https://github.com/betagouv/ma-cantine/issues/6644)) ([a0ae2c3](https://github.com/betagouv/ma-cantine/commit/a0ae2c3ad6fccecd17d6aed60ba2053b0d598a4d))
+
+
+### Technique
+
+* **ETL:** rajouter 1TD1Site dans les exports brutes ([#6632](https://github.com/betagouv/ma-cantine/issues/6632)) ([80d69aa](https://github.com/betagouv/ma-cantine/commit/80d69aa97f2fb179ea0cb6cd196946f2137baa66))
+
+## [2026.29.0](https://github.com/betagouv/ma-cantine/compare/v2026.28.0...v2026.29.0) (2026-04-14)
+
+
+### Nouveautés
+
+* **Campagne de correction:** ajout du nouveau status "CORRECTION" ([#6616](https://github.com/betagouv/ma-cantine/issues/6616)) ([1c51df5](https://github.com/betagouv/ma-cantine/commit/1c51df5220f54b376e9325d5ff2c8344183e1411))
+* **Gérer mes satellites:** remplace le nombre de couverts jours par le nombre de couverts annuels ([#6624](https://github.com/betagouv/ma-cantine/issues/6624)) ([bbf81c2](https://github.com/betagouv/ma-cantine/commit/bbf81c29bcdd20a1b50d1f63ad983a6332771033))
+* **Télédéclaration:** déplace le bloc de correction ([#6626](https://github.com/betagouv/ma-cantine/issues/6626)) ([fffb995](https://github.com/betagouv/ma-cantine/commit/fffb995f522c7ab7271ae0a1162abef10dc4607f))
+
+
+### Améliorations
+
+* **Cantine:** ré-organise les actions ([#6613](https://github.com/betagouv/ma-cantine/issues/6613)) ([9e23c2e](https://github.com/betagouv/ma-cantine/commit/9e23c2e9590167faff44edb00b0cfa3f97432d19))
+* **Télédéclarations:** après la fin de la campagne, il n'est plus possible de modifier un bilan en DRAFT ([#6636](https://github.com/betagouv/ma-cantine/issues/6636)) ([1c027f9](https://github.com/betagouv/ma-cantine/commit/1c027f92851e008d5f9a01cb97374512319de9e6))
+
+
+### Corrections (bugs, typos...)
+
+* **Campagne de correction:** ne pas afficher le bouton "Modifier mes données" si le bilan n'est pas télédéclaré  ([#6629](https://github.com/betagouv/ma-cantine/issues/6629)) ([138c4ca](https://github.com/betagouv/ma-cantine/commit/138c4ca6335cd09290c6f7e747a5ce08f47af13b))
+* **Mentions Légales:** corrige la faute d'orthographe ([#6640](https://github.com/betagouv/ma-cantine/issues/6640)) ([2f5cad1](https://github.com/betagouv/ma-cantine/commit/2f5cad1ded7c7f647aee43c7a5ea6224b9efebc2))
+* **UI:** supprime le tiret dans du texte avec "ma-cantine" ([#6633](https://github.com/betagouv/ma-cantine/issues/6633)) ([fe52b89](https://github.com/betagouv/ma-cantine/commit/fe52b899fa52c4bba8c4c941b1370f20c309762b))
+
+## [2026.28.0](https://github.com/betagouv/ma-cantine/compare/v2026.27.0...v2026.28.0) (2026-04-10)
+
+
+### Nouveautés
+
+* **1TD1Site:** améliorer le script de génération pour gérer 2025 ([#6618](https://github.com/betagouv/ma-cantine/issues/6618)) ([7ee5167](https://github.com/betagouv/ma-cantine/commit/7ee51679676e7a5578de736e4ce4b229d50c5ad7))
+* **Observatoire:** brancher 1TD1Site pour 2025 ([#6614](https://github.com/betagouv/ma-cantine/issues/6614)) ([4e56723](https://github.com/betagouv/ma-cantine/commit/4e5672372fd26fe2865cde7283eca30b6be51e48))
+
+
+### Technique
+
+* **1TD1Site:** nouveau queryset with_satellites_snapshot_stats pour pré-calculer certains champs dont on a besoin dans le script de génération ([#6627](https://github.com/betagouv/ma-cantine/issues/6627)) ([8831b54](https://github.com/betagouv/ma-cantine/commit/8831b54823261efebdcf9119248c6cd78408fdc9))
+
+## [2026.27.0](https://github.com/betagouv/ma-cantine/compare/v2026.26.0...v2026.27.0) (2026-04-08)
+
+
+### Nouveautés
+
+* **Campagne de correction:** ajout des dates de campagne ([#6607](https://github.com/betagouv/ma-cantine/issues/6607)) ([eef3659](https://github.com/betagouv/ma-cantine/commit/eef36595c1cbc30b7e4345c5a727d3d10ac5b028))
+* **Observatoire:** pour 2025 remplace "télédéclarations" par "sites télédéclarés" ([#6622](https://github.com/betagouv/ma-cantine/issues/6622)) ([71efe16](https://github.com/betagouv/ma-cantine/commit/71efe16168f1f4b525496670c2dd6a7b6d956d06))
+* **Observatoire:** supprime le message d'alerte sur les données incorrectes pour l'année 2024 ([#6620](https://github.com/betagouv/ma-cantine/issues/6620)) ([2d082ae](https://github.com/betagouv/ma-cantine/commit/2d082ae09980d2a35a0df0a34c86b27b4304cf74))
+* **Police Marianne:** création d'un fichier d'import dédié à la police et supprime l'import en double dans nos template ([#6621](https://github.com/betagouv/ma-cantine/issues/6621)) ([358d607](https://github.com/betagouv/ma-cantine/commit/358d6070069f51d6de3264902e6a4a1fd81be421))
+
+
+### Corrections (bugs, typos...)
+
+* **1TD1Site:** ajuste le creation_date (= teledeclaration_date du groupe) ([#6615](https://github.com/betagouv/ma-cantine/issues/6615)) ([64ed5c2](https://github.com/betagouv/ma-cantine/commit/64ed5c207f869659b16b289d153a33ef56a6c6ad))
+* **Synthèse télédéclaration:** regroupe l'affichage de l'objectif viande et poisson ([#6619](https://github.com/betagouv/ma-cantine/issues/6619)) ([54a352e](https://github.com/betagouv/ma-cantine/commit/54a352ea1bac6d07e47ad30062b3e75482bfd853))
+
+
+### Technique
+
+* **deps:** bump django from 5.2.11 to 5.2.13 ([#6623](https://github.com/betagouv/ma-cantine/issues/6623)) ([217abd3](https://github.com/betagouv/ma-cantine/commit/217abd3bab5caa56c48d66ba0183f0e4938ed1b3))
+
+## [2026.26.0](https://github.com/betagouv/ma-cantine/compare/v2026.25.0...v2026.26.0) (2026-04-02)
+
+
+### Nouveautés
+
+* **Archiver une cantine:** remplace "supprimer" par "archiver" ([#6604](https://github.com/betagouv/ma-cantine/issues/6604)) ([32ead30](https://github.com/betagouv/ma-cantine/commit/32ead309b054cfbacf2a26b98ce59882102d4f69))
+* **Campagne de prolongation:** ajout du lien vers le communiqué de presse ([#6591](https://github.com/betagouv/ma-cantine/issues/6591)) ([eff7d8f](https://github.com/betagouv/ma-cantine/commit/eff7d8f39c82c9d1ca34f63ae893586456c03b56))
+* **Statistiques:** création d'une page interne avec l'affichage du Metabase avec iframe ([#6590](https://github.com/betagouv/ma-cantine/issues/6590)) ([6784253](https://github.com/betagouv/ma-cantine/commit/678425372490baed63951e3de7cb88d426357f6d))
+
+
+### Améliorations
+
+* **Bandeau:** indiquer la nouvelle date de fin (prolongation jusqu'au 15 avril) ([#6588](https://github.com/betagouv/ma-cantine/issues/6588)) ([36c173b](https://github.com/betagouv/ma-cantine/commit/36c173b67e9d0b7f0180b4267b263e778f379de3))
+* **ETL:** dbt: lancer DROP CASCADE si le schéma de la table exportée a changé ([#6587](https://github.com/betagouv/ma-cantine/issues/6587)) ([769c4d4](https://github.com/betagouv/ma-cantine/commit/769c4d41facf58fd9542d4a8d3b838dd560ff917))
+* **ETL:** TD analysis: Utiliser les infos satellites pour lib_departement, lib_region & objectif_zone_geo ([#6585](https://github.com/betagouv/ma-cantine/issues/6585)) ([f73e1e6](https://github.com/betagouv/ma-cantine/commit/f73e1e60d345852a0b922b92d60a3826fdd53027))
+
+
+### Corrections (bugs, typos...)
+
+* **Archiver une cantine:** supprime l'icône du bouton ([#6606](https://github.com/betagouv/ma-cantine/issues/6606)) ([726cf96](https://github.com/betagouv/ma-cantine/commit/726cf96c6270570fd5b7d49dda2727947ee2e5b9))
+* **Statistiques:** corrige l'affichage du nom ma-cantine ([#6608](https://github.com/betagouv/ma-cantine/issues/6608)) ([a9df9ef](https://github.com/betagouv/ma-cantine/commit/a9df9ef18d2e88a463ecab24f716864b8cecee1a))
+* **Télédéclaration:** corrige l'erreur d'arrondi des décimales pour les totaux viandes et poissons des familles en TD détaillées ([#6605](https://github.com/betagouv/ma-cantine/issues/6605)) ([4a07004](https://github.com/betagouv/ma-cantine/commit/4a070045bee053f142b71c17bbeadc36fc9333b4))
+
+
+### Technique
+
+* **Télédéclarations:** lancer la commande declaration_donnees_YEAR dans une transaction ([#6589](https://github.com/betagouv/ma-cantine/issues/6589)) ([ca1806d](https://github.com/betagouv/ma-cantine/commit/ca1806dcfc6052f9fa870d9366e51b37777c8335))
+
+
+### Documentation
+
+* **API Stats:** ajoute les enum pour les filtres sectors, departments & regions ([#6584](https://github.com/betagouv/ma-cantine/issues/6584)) ([30f7778](https://github.com/betagouv/ma-cantine/commit/30f77784d71c32812874135d6f7c69278b933b4f))
+
+## [2026.25.0](https://github.com/betagouv/ma-cantine/compare/v2026.24.0...v2026.25.0) (2026-03-30)
+
+
+### Nouveautés
+
+* **Ressources:** ajout clausier et mise à jour protocole de pesée ([#6576](https://github.com/betagouv/ma-cantine/issues/6576)) ([fd6dae4](https://github.com/betagouv/ma-cantine/commit/fd6dae4a51abfd36dfd189f3cf8b4bfefc8b526f))
+
+
+### Améliorations
+
+* **Admin:** Cantines: dans la liste des Diagnostics, afficher (et lien vers) le déclarant ([#6578](https://github.com/betagouv/ma-cantine/issues/6578)) ([aabdd2b](https://github.com/betagouv/ma-cantine/commit/aabdd2bbb4eefbf8f0ebd9b79c7a882357fb915a))
+* **Admin:** Utilisateurs: affiche en bas la liste des diagnostics télédéclarés ([#6581](https://github.com/betagouv/ma-cantine/issues/6581)) ([77fc1f3](https://github.com/betagouv/ma-cantine/commit/77fc1f30ade1ab2c92177f6f52ae6aa9944f28f1))
+* **Télédéclaration:** ajoute dans la config la nouvelle date de fin de campagne (prolongation au 15 avril minuit) ([#6575](https://github.com/betagouv/ma-cantine/issues/6575)) ([0638abe](https://github.com/betagouv/ma-cantine/commit/0638abe910788a3e453590b29a13f14df09dd9ee))
+
+
+### Technique
+
+* **Admin:** Cantines: accélère le chargement pour les cantines avec bcp de diagnostics (bon ok y'a pas eu encore tant de campagnes que ca :) ([#6580](https://github.com/betagouv/ma-cantine/issues/6580)) ([9d7faa6](https://github.com/betagouv/ma-cantine/commit/9d7faa62f6469b6d52d17c51679834fb81497588))
+* **Admin:** Utilisateurs: accélère le chargement pour les utilisateurs avec bcp de cantines ([#6579](https://github.com/betagouv/ma-cantine/issues/6579)) ([6d9ede3](https://github.com/betagouv/ma-cantine/commit/6d9ede30d87a842d195c5a1cba825fbc9d057e72))
+
+## [2026.24.0](https://github.com/betagouv/ma-cantine/compare/v2026.23.0...v2026.24.0) (2026-03-27)
+
+
+### Nouveautés
+
+* **Cantines:** SIRET & SIREN: récupérer les données géo en temps réel à la mise à jour aussi ([#6570](https://github.com/betagouv/ma-cantine/issues/6570)) ([c5efac6](https://github.com/betagouv/ma-cantine/commit/c5efac6ae34d40166328d22b741600c34512d00f))
+
+
+### Améliorations
+
+* **Bandeau:** Connecté, afficher un texte légèrement différent au sujet de la prolongation ([#6567](https://github.com/betagouv/ma-cantine/issues/6567)) ([680426b](https://github.com/betagouv/ma-cantine/commit/680426b88e9adca2d9e943ba2c058c8ae061dea0))
+* **Bandeau:** Coté publique, rajouter une phrase sur la prolongation ([#6566](https://github.com/betagouv/ma-cantine/issues/6566)) ([9d1b44d](https://github.com/betagouv/ma-cantine/commit/9d1b44db2c75174cda7bd92347b527f37a8dc76c))
+* **Open Data:** Data Gouv: dans l'url des fichiers exportés, indiquer l'heure en plus de la date (v2) ([#6572](https://github.com/betagouv/ma-cantine/issues/6572)) ([03f9ec8](https://github.com/betagouv/ma-cantine/commit/03f9ec8fdd1f92dfb4dd826d4a339e19d3004b4e))
+* **Secteurs d'activités:** enlever l'obligation 'administration de tutelle' pour le secteur 'Autres structures d'enseignement' ([#6569](https://github.com/betagouv/ma-cantine/issues/6569)) ([3a4f8b8](https://github.com/betagouv/ma-cantine/commit/3a4f8b86a8324d16512cbc3ebc8ec327f40201c9))
+
+## [2026.23.0](https://github.com/betagouv/ma-cantine/compare/v2026.22.0...v2026.23.0) (2026-03-25)
+
+
+### Nouveautés
+
+* **1TD1Site:** Script de génération des bilans des satellites pour 2024 ([#5627](https://github.com/betagouv/ma-cantine/issues/5627)) ([4072b3c](https://github.com/betagouv/ma-cantine/commit/4072b3c3f570ff52b5f477c3d9d4107d41bbea40))
+* **Observatoire:** brancher 1TD1Site pour 2024 ([#6472](https://github.com/betagouv/ma-cantine/issues/6472)) ([55c0219](https://github.com/betagouv/ma-cantine/commit/55c0219b1a76983ed14a52fb09dc54e62130fec4))
+* **Observatoire:** indique la mention de sites télédéclarés pour 2024 ([#6500](https://github.com/betagouv/ma-cantine/issues/6500)) ([29d6db2](https://github.com/betagouv/ma-cantine/commit/29d6db2263fc84e7976969ae494f4c4267343fb1))
+* **Télédéclarations:** exclure par défaut des querysets les bilans générés [1TD1Site] ([#6471](https://github.com/betagouv/ma-cantine/issues/6471)) ([f8a96d2](https://github.com/betagouv/ma-cantine/commit/f8a96d209b52a71ba03afc8b2d6ace4932286231))
+* **Télédéclarations:** met à jour les tests pour les données aggrégées dans le script 1TD1SITE ([#6469](https://github.com/betagouv/ma-cantine/issues/6469)) ([c7c6bf0](https://github.com/betagouv/ma-cantine/commit/c7c6bf079bcdbf79ebe224d52ce57ecfc0be91be))
+
+
+### Améliorations
+
+* **Diagnostics:** script pour remplir le champ `invalid_reason_list` ([#6455](https://github.com/betagouv/ma-cantine/issues/6455)) ([a58d906](https://github.com/betagouv/ma-cantine/commit/a58d906675939a7a8718fe0b8a22761a5f3cd202))
+
+
+### Technique
+
+* **1TD1Site:** améliore la gestion des arrondis dans le script de génération (yearly_meal_count en int ; decimal 2 places) ([#6473](https://github.com/betagouv/ma-cantine/issues/6473)) ([dc0707a](https://github.com/betagouv/ma-cantine/commit/dc0707a279aceb8594f206e90399e58810362ebc))
+* **1TD1Site:** derniers petits ajustements avant MEP (pour 2024) 🚀 ([#6517](https://github.com/betagouv/ma-cantine/issues/6517)) ([c86f4e3](https://github.com/betagouv/ma-cantine/commit/c86f4e3d5495f927685a1a150a4fffb984d4f54c))
+* **1TD1Site:** rebase sur staging ([942bca6](https://github.com/betagouv/ma-cantine/commit/942bca64a0175fd19289736176d3045843e63246))
+* **Diagnostics:** nouveaux querysets pour permettre d'utiliser les TD générées de 2024 [1TD1Site] ([#6468](https://github.com/betagouv/ma-cantine/issues/6468)) ([c379115](https://github.com/betagouv/ma-cantine/commit/c37911514881ade4328690463521bd36ab1c900f))
+* **Diagnostics:** renommer historical_valid_td en valid_td_all_years pour clarifier ([#6467](https://github.com/betagouv/ma-cantine/issues/6467)) ([44f87f8](https://github.com/betagouv/ma-cantine/commit/44f87f8d594c9dbe284ccae3380c8bc7843d711c))
+* **Diagnostics:** séparer certaines querysets en queries pour faciliter leur réutilisation [1TD1Site] ([#6466](https://github.com/betagouv/ma-cantine/issues/6466)) ([b5648d4](https://github.com/betagouv/ma-cantine/commit/b5648d42edf93d5cd649a4a1c0c4bef325ec3b33))
+
+## [2026.22.0](https://github.com/betagouv/ma-cantine/compare/v2026.21.4...v2026.22.0) (2026-03-25)
+
+
+### Nouveautés
+
+* **Cantines:** SIREN: récupérer les données géo en temps réel (au lieu d'attendre 1h puis le lendemain) ([#6556](https://github.com/betagouv/ma-cantine/issues/6556)) ([75e3345](https://github.com/betagouv/ma-cantine/commit/75e3345db9a16e8cedc0330af99c41a9211c73fc))
+
+
+### Améliorations
+
+* **Admin:** Cantines: afficher les champs TextChoices et leurs valeurs (modes de gestion, modes de production, modèles économiques, administrations de tutelle) ([#6562](https://github.com/betagouv/ma-cantine/issues/6562)) ([656c75d](https://github.com/betagouv/ma-cantine/commit/656c75d262fed34c970f8da4f0fb716922919e1c))
+* **Admin:** Cantines: dans la vue list, ajouter un lien vers le groupe (et évite que ca prenne trop de px) ([#6558](https://github.com/betagouv/ma-cantine/issues/6558)) ([ac1e319](https://github.com/betagouv/ma-cantine/commit/ac1e31955b256201771615b96b47aea99c9de2a5))
+* **Admin:** Cantines: ne pas prefixer les noms avec 'Cantines' ([#6559](https://github.com/betagouv/ma-cantine/issues/6559)) ([f86ab7e](https://github.com/betagouv/ma-cantine/commit/f86ab7efa2a345cf0a2ef3e03c195495d6d695a1))
+* **Admin:** remplacer la liste des secteurs M2M par leur valeurs TextChoices ([#6557](https://github.com/betagouv/ma-cantine/issues/6557)) ([95320e7](https://github.com/betagouv/ma-cantine/commit/95320e70471c01afd4cda94e118a9c3b4bc869d5))
+
+
+### Corrections (bugs, typos...)
+
+* **API Stats:** répare les filtres sector & pat (sur les infos snapshots) ([#6553](https://github.com/betagouv/ma-cantine/issues/6553)) ([41b2b2e](https://github.com/betagouv/ma-cantine/commit/41b2b2e08f82e07c623edbbd2fc21af80503b05c))
+* **Cantines:** Données géo: ne pas lancer le géo bot si le pat est manquant (pas tous les communes sont rattachées à un pat) ([#6555](https://github.com/betagouv/ma-cantine/issues/6555)) ([be7dd23](https://github.com/betagouv/ma-cantine/commit/be7dd23fef7e1f47aec8240c264fde7f531ede85))
+
+
+### Technique
+
+* **Admin:** réutiliser ReadOnlyAdminMixin à certains endroits ([#6560](https://github.com/betagouv/ma-cantine/issues/6560)) ([4be03ce](https://github.com/betagouv/ma-cantine/commit/4be03cee2a32e8c3b53dc45db861d32fe63604c7))
+
+## [2026.21.4](https://github.com/betagouv/ma-cantine/compare/v2026.21.3...v2026.21.4) (2026-03-24)
+
+
+### Améliorations
+
+* **Télédéclarations:** lors de la màj du champ declaration_donnees_2025, ignorer les TD sans appro ([#6551](https://github.com/betagouv/ma-cantine/issues/6551)) ([43649ec](https://github.com/betagouv/ma-cantine/commit/43649ec477b27c3852bbd65456fd1d34ebd16330))
+* **Télédéclarations:** mettre à jour le champ declaration_donnees_2025 en temps réel post télédéclaration (et post annulation) ([#6531](https://github.com/betagouv/ma-cantine/issues/6531)) ([9a2e508](https://github.com/betagouv/ma-cantine/commit/9a2e508332c4bb811fd3bd82a082ac6f2e3b69d4))
+
+
+### Corrections (bugs, typos...)
+
+* **Télédéclarations:** améliore le script qui stock les champs pourcentage_ & objectifs_egalim_atteints ([#6549](https://github.com/betagouv/ma-cantine/issues/6549)) ([048229e](https://github.com/betagouv/ma-cantine/commit/048229e787e032279d7268aa2aef101e6c1ce1de))
+
+
+### Technique
+
+* **Tâches asynchrones:** met le paramètre CONN_MAX_AGE à 0 coté Celery ([#6552](https://github.com/betagouv/ma-cantine/issues/6552)) ([b16c409](https://github.com/betagouv/ma-cantine/commit/b16c4099713d286c5b35dc3d933afdb1625f2ba7))
+* **Tâches asynchrones:** rajouter un health check sur la DB Postgres (pour éviter les connexions qui tombent) ([#6547](https://github.com/betagouv/ma-cantine/issues/6547)) ([1246f84](https://github.com/betagouv/ma-cantine/commit/1246f84bb5cfc5441077970f1ddf9c7aef322789))
+* **Télédéclarations:** bouge une ancienne commande pour les données géo des TD 2021-2022 dans le fichier commun ([#6545](https://github.com/betagouv/ma-cantine/issues/6545)) ([bc42030](https://github.com/betagouv/ma-cantine/commit/bc42030898c11c1925065628cdf5c8cbc719345c))
+
+## [2026.21.3](https://github.com/betagouv/ma-cantine/compare/v2026.21.2...v2026.21.3) (2026-03-20)
+
+
+### Améliorations
+
+* **Cantines:** Données géo: améliorer le script de réinitialisation des données géo en cas d'incohérences (pour cleaner la base) ([#6540](https://github.com/betagouv/ma-cantine/issues/6540)) ([e0884e8](https://github.com/betagouv/ma-cantine/commit/e0884e88b7c3728227d90e297c538c35b14c6039))
+* **Cantines:** Données géo: script pour récupérer toutes les infos géo d'API Recherche Entreprises (par siret) et stocker dans un fichier csv ([#6538](https://github.com/betagouv/ma-cantine/issues/6538)) ([dd7ee3e](https://github.com/betagouv/ma-cantine/commit/dd7ee3e5944c93be5477d40047296c932a16f3c4))
+* **Ressources:** ajout d'1 pdf & modification d'1 xlsx ([#6537](https://github.com/betagouv/ma-cantine/issues/6537)) ([f2c0ecd](https://github.com/betagouv/ma-cantine/commit/f2c0ecd529df588f0fb4148744ee1655eee2a32d))
+
+
+### Technique
+
+* **Cantines:** Données géo: lancer le géobot aussi sur les cantines supprimées. Ajout de logs ([#6542](https://github.com/betagouv/ma-cantine/issues/6542)) ([29b9bde](https://github.com/betagouv/ma-cantine/commit/29b9bde5fbff09cadc7e44ff6b9954c1cf40c005))
+
+## [2026.21.2](https://github.com/betagouv/ma-cantine/compare/v2026.21.1...v2026.21.2) (2026-03-19)
+
+
+### Améliorations
+
+* **Cantines:** lorsque le city_insee_code est modifié, réinitialiser les champs géo ([#6534](https://github.com/betagouv/ma-cantine/issues/6534)) ([bc29b13](https://github.com/betagouv/ma-cantine/commit/bc29b1335b30b8b1af2a35380807cbe0f7f95a47))
+* **Open Data:** Data Gouv: dans l'url des fichiers exportés, indiquer l'heure en plus de la date ([#6536](https://github.com/betagouv/ma-cantine/issues/6536)) ([461f5ae](https://github.com/betagouv/ma-cantine/commit/461f5aec95e61faf6828250b26db7b68a1f5e8d5))
+* **Utilisateurs:** ne pas tenter de mettre en minuscule les emails des qq utilisateurs qui conflictent avec un autre compte ([#6529](https://github.com/betagouv/ma-cantine/issues/6529)) ([a8788c9](https://github.com/betagouv/ma-cantine/commit/a8788c989961854047b8b9a3cc0008d6a188754e))
+
+
+### Corrections (bugs, typos...)
+
+* **Cantines:** ne plus rendre le champs "siret" obligatoire pour la modification d'une cantine via API ([#6527](https://github.com/betagouv/ma-cantine/issues/6527)) ([f1d4698](https://github.com/betagouv/ma-cantine/commit/f1d4698ea2e3761d9ba363c81b2546cc7c5ba003))
+* **Télédéclaration:** corrige l'affichage du badge "À télédéclarer" pour un RSAT qui rejoind un groupe après avoir fait son bilan ([#6535](https://github.com/betagouv/ma-cantine/issues/6535)) ([e221002](https://github.com/betagouv/ma-cantine/commit/e221002913310db5bba89a1d62d4dfb69b493e6d))
+* **Télédéclarations:** corrige le total de remplissage automatique pour la catégorie France ([#6532](https://github.com/betagouv/ma-cantine/issues/6532)) ([0597446](https://github.com/betagouv/ma-cantine/commit/059744645906efc08cfe608c4a068093128cff39))
+* **Télédéclarations:** corrige les montants incorrectes de la modale de prévisualisation ([#6528](https://github.com/betagouv/ma-cantine/issues/6528)) ([d1b3ebf](https://github.com/betagouv/ma-cantine/commit/d1b3ebf0504351f43a1130af81732c472538c84c))
+* **Télédéclarations:** ne pas calculer le champ viande origine France si la valeur est "je ne sais pas" dans la TD ([#6533](https://github.com/betagouv/ma-cantine/issues/6533)) ([c7d95ef](https://github.com/betagouv/ma-cantine/commit/c7d95efc31ec804b242bcf49889e402744d76e87))
+
+## [2026.21.1](https://github.com/betagouv/ma-cantine/compare/v2026.21.0...v2026.21.1) (2026-03-18)
+
+
+### Améliorations
+
+* **Cantines:** Données géo: ne pas les ré-initialiser au changement de SIREN ([#6522](https://github.com/betagouv/ma-cantine/issues/6522)) ([2535e08](https://github.com/betagouv/ma-cantine/commit/2535e0859544d5939436911b0ec1ee896a0569b9))
+* **ETL:** màj de pandas & sqlalchemy. permet de synchroniser les tables DW sans casser dbt ([#6521](https://github.com/betagouv/ma-cantine/issues/6521)) ([14ab5da](https://github.com/betagouv/ma-cantine/commit/14ab5da768cc68185ce8abcb6210e2c037a6cc9a))
+* **Télédéclarations:** ajouter les champs epci & pat_list dans les snapshots ([#6518](https://github.com/betagouv/ma-cantine/issues/6518)) ([6a3c8c4](https://github.com/betagouv/ma-cantine/commit/6a3c8c42a235e6842010bbe99390f3bb204d38f4))
+* **Télédéclarations:** remplir les satellites_snapshot avec les epci & pat_list (à partir de leur city_insee_code) (v16 only) ([#6520](https://github.com/betagouv/ma-cantine/issues/6520)) ([d09002b](https://github.com/betagouv/ma-cantine/commit/d09002b49b94cea39bcac467e39b9b907dd3dc47))
+* **Utilisateurs:** stocker l'email en minuscule pour éviter des erreurs de synchro Brevo ([#6524](https://github.com/betagouv/ma-cantine/issues/6524)) ([21f1d1a](https://github.com/betagouv/ma-cantine/commit/21f1d1a8208b4a538958bb44ab1237918a689726))
+
+
+### Corrections (bugs, typos...)
+
+* **API Stats:** les filtres sont maintenant effectués sur les infos snapshot de la cantine qui a TD (et non la FK) ([#6498](https://github.com/betagouv/ma-cantine/issues/6498)) ([0f800fc](https://github.com/betagouv/ma-cantine/commit/0f800fc98cdac55071eb6cbc427b454e5a8c6f33))
+* **Imports:** Cantines: bloquer l'ajout de restaurants SAT si le groupe a un bilan télédéclaré pendant la campagne ([#6523](https://github.com/betagouv/ma-cantine/issues/6523)) ([7b34034](https://github.com/betagouv/ma-cantine/commit/7b34034346fbb1eeff05fb9e4a4e03e28cd9597a))
+
+
+### Technique
+
+* **Secteurs:** enlève la référence à l'ancien M2M sur qq serializers cantines ([#6490](https://github.com/betagouv/ma-cantine/issues/6490)) ([cb93359](https://github.com/betagouv/ma-cantine/commit/cb933592de16f3a2a6641407f0fa4d5729bbd10e))
+* **Tests:** suite à parallel, rajouter tblib pour avoir de meilleurs logs d'erreurs ([#6525](https://github.com/betagouv/ma-cantine/issues/6525)) ([3d3c279](https://github.com/betagouv/ma-cantine/commit/3d3c279c8e390bf8a629ca6a4e6e7c2da8f0f6ed))
+
+## [2026.21.0](https://github.com/betagouv/ma-cantine/compare/v2026.20.1...v2026.21.0) (2026-03-17)
+
+
+### Nouveautés
+
+* **ETL:** scripts pour basculer certaines tables brutes vers le Data Warehouse ([#6427](https://github.com/betagouv/ma-cantine/issues/6427)) ([ecc4874](https://github.com/betagouv/ma-cantine/commit/ecc4874492b4538f9c0b85a16912301ac725e1b0))
+
+
+### Améliorations
+
+* **Brevo:** script pour comparer un export des contacts Brevo avec les utilisateurs Django ([#6510](https://github.com/betagouv/ma-cantine/issues/6510)) ([5324daf](https://github.com/betagouv/ma-cantine/commit/5324daf2aa4221d2466a9c439ffba67cdc9dcc35))
+* **Brevo:** Utilisateurs: détecter le changement d'email et réinitialiser les infos Brevo ([#6513](https://github.com/betagouv/ma-cantine/issues/6513)) ([a1d7142](https://github.com/betagouv/ma-cantine/commit/a1d7142adbe0fdf7f248da289548535750ea719d))
+* **Celery:** ajouter d'avantage d'info dans les résultats des tâches ([#6509](https://github.com/betagouv/ma-cantine/issues/6509)) ([0191f8d](https://github.com/betagouv/ma-cantine/commit/0191f8da47a0ec7de27c8b36cf3e0abc72abf858))
+* **Exports:** augmenter la fréquence des exports cantines (Metabase & Open Data) (toutes les nuits --&gt; toutes les 6h) ([#6508](https://github.com/betagouv/ma-cantine/issues/6508)) ([7e9f1e3](https://github.com/betagouv/ma-cantine/commit/7e9f1e3d937489bd4c68a069c18ad0262bf0f19b))
+* **Utilisateurs:** détecter un changement dans un champ grâce à django-dirtyfields ([#6511](https://github.com/betagouv/ma-cantine/issues/6511)) ([f31adf0](https://github.com/betagouv/ma-cantine/commit/f31adf0a71ffc620b0f7be3b9b99445205f26e20))
+
 ## [2026.20.1](https://github.com/betagouv/ma-cantine/compare/v2026.20.0...v2026.20.1) (2026-03-16)
 
 

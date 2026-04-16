@@ -1,47 +1,47 @@
-## Changelog : ma-cantine (30 derniers jours)
+## Changelog : ma-cantine (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de ma-cantine améliorent l'Observatoire avec de nouveaux filtres et corrections d'affichage, optimisent les performances de l'application, notamment au niveau des requêtes et des imports, et ajoutent de nouvelles fonctionnalités pour la gestion des télédéclarations et des données géographiques. Des améliorations sont également apportées à l'interface utilisateur, notamment sur le tableau de bord et dans l'administration des cantines.
+Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration de la campagne de correction des bilans, notamment en ajustant l'interface utilisateur et en introduisant un nouveau statut pour les bilans en cours de correction. Des améliorations ont également été apportées à la gestion des données, en particulier concernant l'intégration des données 1TD1Site et la télédéclaration, ainsi que des corrections de bugs et des optimisations de performance.
 
 ### Évolutions fonctionnelles
-- Amélioration des filtres dans l'Observatoire avec une recherche plus performante ([#6465](https://github.com/betagouv/ma-cantine/issues/6465)).
-- Ajout d'un bouton pour accéder directement au bilan depuis le tableau de bord, remplaçant l'ancien badge "À compléter" ([#6492](https://github.com/betagouv/ma-cantine/issues/6492)).
-- Ajout de phrases explicatives pour les champs géographiques et le code INSEE dans l'administration des cantines ([#6493](https://github.com/betagouv/ma-cantine/issues/6493)).
-- Ajout d'une phrase d'explication pour le champ `declaration_donnees_2025` dans l'administration des cantines ([#6495](https://github.com/betagouv/ma-cantine/issues/6495)).
-- Ajout de la possibilité d'exporter les cantines enregistrées via SIREN ([#6409](https://github.com/betagouv/ma-cantine/issues/6409)).
-- Ajout de nouveaux supports pour le webinaire grandes collectivités ([#6470](https://github.com/betagouv/ma-cantine/issues/6470)).
-- Ajout d'un nouveau tableauleur xlsx pour le suivi des achats ([#6426](https://github.com/betagouv/ma-cantine/issues/6426)).
-- Ajout d'une nouvelle page dédiée aux imports de bilans détaillés ([#6397](https://github.com/betagouv/ma-cantine/issues/6397)).
-- Ajout d'un fichier dédié à la création de cantines pour les gestionnaires ([#6383](https://github.com/betagouv/ma-cantine/issues/6383)).
-- Ajout d'un fichier dédié à la modification des cantines ([#6407](https://github.com/betagouv/ma-cantine/issues/6407)).
-- Ajout d'un fichier dédié à la création de cantines ([#6395](https://github.com/betagouv/ma-cantine/issues/6395)).
-- Ajout d'un nouvel import via ID de cantine ([#6393](https://github.com/betagouv/ma-cantine/issues/6393)).
+- Ajout d'un nouveau statut "CORRECTION" pour les bilans en cours de correction.
+- Modification de l'affichage du nombre de couverts, passant des couverts journaliers aux couverts annuels pour les satellites.
+- Déplacement du bloc de correction dans l'interface de télédéclaration pour une meilleure organisation.
+- Mise à jour du bandeau d'information concernant la campagne de correction.
+- Suppression du bouton "Modifier mes données" si le bilan n'est pas télédéclaré.
+- Amélioration de la commande de resubmit pour la télédéclaration, permettant de traiter une liste d'ID de diagnostics.
+- Ajout des dates de campagne de correction dans l'interface.
 
 ### Évolutions techniques
-- Simplification du code d'inscription à la newsletter ([#6486](https://github.com/betagouv/ma-cantine/issues/6486)).
-- Refactor de l'ETL pour afficher la durée d'insertion des données avec Pandas et améliorer le nom du dataset ([#6485](https://github.com/betagouv/ma-cantine/issues/6485)).
-- Amélioration des performances en ajoutant un `prefetch_related` sur `annotate_with_is_managed_by_user` ([#6487](https://github.com/betagouv/ma-cantine/issues/6487)).
-- Mise à jour de Django (5.1.15 à 5.2.11) et des dépendances associées (DRF, Wagtail) ([#6390](https://github.com/betagouv/ma-cantine/issues/6390)).
-- Correction de tests flaky en améliorant le mocking ([#6457](https://github.com/betagouv/ma-cantine/issues/6457)).
-- Ajout de tests parallèles pour accélérer l'exécution des tests ([#6483](https://github.com/betagouv/ma-cantine/issues/6483)).
-- Ajout d'un script pour récupérer les communes avec leur code EPCI ([#6476](https://github.com/betagouv/ma-cantine/issues/6476)).
-- Correction de la pagination du suivi des achats, augmentée de 10 à 500 ([#6489](https://github.com/betagouv/ma-cantine/issues/6489)).
-- Correction d'un bug d'arrondi des décimales dans le gaspillage alimentaire ([#6449](https://github.com/betagouv/ma-cantine/issues/6449)).
-- Correction d'un bug empêchant l'affichage de la modale de succès après un import échoué ([#6448](https://github.com/betagouv/ma-cantine/issues/6448)).
-- Correction d'un problème de vérification des champs de cantine lors de la revendication ([#6388](https://github.com/betagouv/ma-cantine/issues/6388)).
-- Correction d'un bug lié à l'annulation des télédéclarations et la suppression des snapshots ([#6423](https://github.com/betagouv/ma-cantine/issues/6423)).
-- Amélioration de la gestion du timeout de Celery ([#6444](https://github.com/betagouv/ma-cantine/issues/6444)).
-- Ajout de champs pour stocker les pourcentages bio, egalim et objectifs egalim atteints dans les télédéclarations ([#6481](https://github.com/betagouv/ma-cantine/issues/6481)).
-- Ajout d'un champ pour indiquer la raison de la non prise en compte des bilans dans les statistiques ([#5753](https://github.com/betagouv/ma-cantine/issues/5753)).
+- Intégration des données 1TD1Site dans les exports brutes pour l'ETL.
+- Amélioration du script de génération 1TD1Site pour gérer l'année 2025.
+- Refactor de certains querysets pour optimiser les performances, notamment pour les diagnostics et les télédéclarations.
+- Mise à jour des dépendances Django (de 5.2.11 à 5.2.13).
+- Amélioration de la gestion des arrondis dans le script de génération 1TD1Site.
+- Ajout de health checks sur la base de données Postgres pour les tâches asynchrones.
+- Utilisation de `django-dirtyfields` pour détecter les changements de champs.
+- Augmentation de la fréquence des exports de données pour Metabase et l'Open Data.
 
 ### Autres changements
-- Mise à jour de la documentation des télédéclarations ([#6401](https://github.com/betagouv/ma-cantine/issues/6401)).
-- Suppression du bandeau rappel conso dans l'en-tête ([#6384](https://github.com/betagouv/ma-cantine/issues/6384)).
-- Suppression de l'import admin des cantines ([#6387](https://github.com/betagouv/ma-cantine/issues/6387)).
-- Ajout d'instructions pour Claude et Github Copilot ([#6419](https://github.com/betagouv/ma-cantine/issues/6419)).
-- Ajout d'un filtre pour les armées dans les diagnostics ([#6453](https://github.com/betagouv/ma-cantine/issues/6453)).
-- Suppression des tests nécessitant une connexion internet ([#6459](https://github.com/betagouv/ma-cantine/issues/6459)).
-- Ajout de la possibilité de ne pas lancer les tests pour les changements de fichiers .md ou .pdf ([#6459](https://github.com/betagouv/ma-cantine/issues/6459)).
-- Ajout de la gestion des erreurs Sentry pour les nouveaux imports de cantines ([#6412](https://github.com/betagouv/ma-cantine/issues/6412)).
-- Amélioration du schéma d'import des bilans ([#6398](https://github.com/betagouv/ma-cantine/issues/6398)).
-- Correction du lien vers le fichier d'exemple d'import des bilans détaillés ([#6404](https://github.com/betagouv/ma-cantine/issues/6404)).
+- Correction d'une faute d'orthographe dans les mentions légales.
+- Suppression d'un tiret superflu dans le texte "ma-cantine".
+- Ajout d'un fichier dédié pour la police Marianne et suppression de l'import en double.
+- Modification du message d'alerte sur les données incorrectes pour l'année 2024 dans l'observatoire.
+- Regroupement de l'affichage de l'objectif viande et poisson dans la synthèse de télédéclaration.
+- Amélioration de l'affichage des actions dans l'interface Cantine.
+- Ajout de documentation pour l'API Stats (enum pour les filtres secteurs, départements et régions).
+- Ajout de ressources (clausier et protocole de pesée).
+- Correction de l'affichage du nom "ma-cantine" dans les statistiques.
+- Suppression de l'icône du bouton "Archiver une cantine".
+- Remplacement de "supprimer" par "archiver" pour l'action d'archiver une cantine.
+- Création d'une page interne pour afficher les statistiques Metabase via iframe.
+- Ajout d'un lien vers le communiqué de presse concernant la prolongation de la campagne.
+- Correction d'une erreur d'arrondi des décimales pour les totaux viandes et poissons.
+- Correction d'un bug empêchant la modification d'une cantine via API si le SIRET était manquant.
+- Amélioration de l'affichage des secteurs d'activités dans l'administration.
+- Amélioration de l'affichage des utilisateurs et des cantines dans l'administration.
+- Correction d'un bug dans le calcul des pourcentages et des objectifs Égalim.
+- Amélioration de la gestion des données géo des cantines.
+- Correction d'un bug dans les filtres de l'API Stats.
+- Amélioration de la gestion des utilisateurs Brevo.
+- Amélioration de la gestion des données géo des cantines lors de la modification du code INSEE.

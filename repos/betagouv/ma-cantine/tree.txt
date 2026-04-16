@@ -186,13 +186,13 @@
 │   │       ├── Contact.vue
 │   │       ├── Developpeurs.vue
 │   │       ├── DonneesPersonnelles.vue
+│   │       ├── GestionnaireCantineArchiver.vue
 │   │       ├── GestionnaireCantineGerer.vue
 │   │       ├── GestionnaireCantineGroupeAjouter.vue
 │   │       ├── GestionnaireCantineGroupeModifier.vue
 │   │       ├── GestionnaireCantineGroupeSatellites.vue
 │   │       ├── GestionnaireCantineRestaurantAjouter.vue
 │   │       ├── GestionnaireCantineRestaurantModifier.vue
-│   │       ├── GestionnaireCantineSupprimer.vue
 │   │       ├── GestionnaireGaspillageAlimentaire.vue
 │   │       ├── GestionnaireGaspillageAlimentaireModifier.vue
 │   │       ├── GestionnaireImport.vue
@@ -207,7 +207,8 @@
 │   │       ├── GestionnaireTableauDeBord.vue
 │   │       ├── MentionsLegales.vue
 │   │       ├── Observatoire.vue
-│   │       └── PlanDuSite.vue
+│   │       ├── PlanDuSite.vue
+│   │       └── Statistiques.vue
 │   └── vite.config.js
 ├── CHANGELOG.md
 ├── CLAUDE.md
@@ -322,6 +323,7 @@
 │   │   │   │   ├── canteens_bad_no_header.csv
 │   │   │   │   ├── canteens_bad_one_error.csv
 │   │   │   │   ├── canteens_bad_wrong_header.csv
+│   │   │   │   ├── canteens_create_bad_groupe_teledeclared.csv
 │   │   │   │   ├── canteens_good.csv
 │   │   │   │   ├── canteens_good.xlsx
 │   │   │   │   ├── canteens_good_add_manager.csv
@@ -331,6 +333,7 @@
 │   │   │   │   ├── canteens_good_max_sectors.csv
 │   │   │   │   ├── canteens_sectors.csv
 │   │   │   │   ├── canteens_update_bad_canteen_not_found.csv
+│   │   │   │   ├── canteens_update_bad_groupe_teledeclared.csv
 │   │   │   │   ├── canteens_update_bad_invalid_email.csv
 │   │   │   │   ├── canteens_update_bad_invalid_insee_code.csv
 │   │   │   │   ├── canteens_update_bad_invalid_siret.csv
@@ -559,6 +562,7 @@
 │   │   ├── sector.py
 │   │   ├── softdeletionadmin.py
 │   │   ├── teledeclaration.py
+│   │   ├── textchoices.py
 │   │   ├── user.py
 │   │   ├── utils.py
 │   │   ├── vegetarianexpe.py
@@ -879,6 +883,9 @@
 │   │   ├── 0245_alter_diagnostic_verbose_names.py
 │   │   ├── 0246_diagnostic_invalid_reason_list.py
 │   │   ├── 0247_diagnostic_pourcentage_bio_egalim_et_objectifs_atteints.py
+│   │   ├── 0248_diagnostic_generated_from_groupe_diagnostic_and_unique_constraint.py
+│   │   ├── 0249_diagnostic_invalid_reason_list_update.py
+│   │   ├── 0250_alter_diagnostic_status_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -965,6 +972,7 @@
 │   ├── docker.md
 │   ├── geo.md
 │   ├── matomo.md
+│   ├── redis.md
 │   ├── restore_backup.md
 │   ├── schema_cantine.md
 │   ├── schema_teledeclaration.md
@@ -1261,6 +1269,7 @@
 ├── local-build.sh
 ├── macantine
 │   ├── __init__.py
+│   ├── admin.py
 │   ├── asgi.py
 │   ├── backends.py
 │   ├── brevo.py
@@ -1282,16 +1291,19 @@
 │   │       ├── canteen_fill_is_filled_field.py
 │   │       ├── canteen_fill_missing_geolocation_data_using_siret.py
 │   │       ├── canteen_migrate_central_to_groupe.py
+│   │       ├── canteen_siret_recherche_entreprises_cache_csv.py
 │   │       ├── canteen_update_geolocation_data_using_siret.py
 │   │       ├── compare_datasets.py
+│   │       ├── diagnostic_fill_invalid_reason_list.py
 │   │       ├── export_dataset.py
 │   │       ├── generate_geo_data_to_json.py
 │   │       ├── generate_import_schema.py
 │   │       ├── importcsv.py
 │   │       ├── teledeclaration_fill_egalim_fields.py
-│   │       ├── teledeclaration_fill_missing_canteen_geolocation_data.py
 │   │       ├── teledeclaration_fix_old.py
-│   │       └── teledeclaration_resubmit.py
+│   │       ├── teledeclaration_generate_1td1site.py
+│   │       ├── teledeclaration_resubmit.py
+│   │       └── user_brevo_contacts_sync.py
 │   ├── middleware
 │   │   ├── __init__.py
 │   │   └── redirect_middleware.py
@@ -1310,8 +1322,10 @@
 │   │   ├── test_etl_open_data.py
 │   │   ├── test_geolocation_bot.py
 │   │   ├── test_teledeclaration_fill_egalim_fields.py
-│   │   ├── test_teledeclaration_fill_missing_canteen_geolocation_data.py
 │   │   ├── test_teledeclaration_fix_old.py
+│   │   ├── test_teledeclaration_generate_1td1site_2024.py
+│   │   ├── test_teledeclaration_generate_1td1site_2025.py
+│   │   ├── test_teledeclaration_resubmit.py
 │   │   └── test_utils.py
 │   ├── urls.py
 │   ├── utils.py
@@ -1335,7 +1349,10 @@
 │   └── field_gen.py
 ├── templates
 │   ├── admin
-│   │   └── base_site.html
+│   │   ├── base_site.html
+│   │   └── data
+│   │       ├── canteen_textchoices.html
+│   │       └── sector_textchoices.html
 │   ├── locale
 │   │   └── fr
 │   │       └── LC_MESSAGES
@@ -1366,6 +1383,7 @@
     │   │   ├── admin_color_staging.css
     │   │   ├── auth.css
     │   │   ├── easy-autocomplete.min.css
+    │   │   ├── font_marianne.css
     │   │   └── materialdesignicons.min.css
     │   ├── documents
     │   │   ├── 01_CadreJuridiqueGestionDechets_(1).pdf
@@ -1487,13 +1505,13 @@
     │   │   ├── ce_cantine_vf_bd.pdf
     │   │   ├── charte-referencement-acteurs-de-l-ecosysteme.pdf
     │   │   ├── convention-type_restauration_collective_1.docx
-    │   │   ├── fiche-pratique_2026_ma-cantine_protocole-de-pesees-dechets-ANNEXE-1a-Fiches-releves-saisie-Pesees-simple-5-jours.xlsx
-    │   │   ├── fiche-pratique_2026_ma-cantine_protocole-de-pesees-dechets-ANNEXE-1b-Fiches-releves-saisie-Pesees-par-composante-5-jours.xlsx
-    │   │   ├── fiche-pratique_2026_ma-cantine_protocole-de-pesees-dechets-ANNEXE-2a-Fiches-releves-saisie-Pesees-simples-7-jours.xlsx
-    │   │   ├── fiche-pratique_2026_ma-cantine_protocole-de-pesees-dechets-ANNEXE-2b-Fiches-releves-saisie-Pesees-par-composante-7-jours.xlsx
     │   │   ├── fiche_evolution_formation_macantine.pdf
     │   │   ├── fichier_*.csv  (5 files)
-    │   │   ├── guide_*.pdf  (7 files)
+    │   │   ├── guide_*.pdf  (9 files)
+    │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-1a-Fiches-releves-saisie-Pesees-simple-5-jours_v3.xlsx
+    │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-1b-Fiches-releves-saisie-Pesees-par-composante-5-jours_v3.xlsx
+    │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-2a-Fiches-releves-saisie-Pesees-simples-7-jours_v3.xlsx
+    │   │   ├── guide_2026_ma-cantine_protocole-de-pesees-dechets-alimentaires-ANNEXE-2b-Fiches-releves-saisie-Pesees-par-composante-7-jours_v3.xlsx
     │   │   ├── importer_des_bilans_detailles_exemple.csv
     │   │   ├── importer_*.xlsx  (5 files)
     │   │   ├── importer_des_bilans_simples_exemple.csv
@@ -1501,6 +1519,7 @@
     │   │   ├── importer_des_cantines_exemple_ma_cantine.csv
     │   │   ├── infographie-gaspillage-alimentaire-restau-co_011317.pdf
     │   │   ├── infographie_2024_ADEME_Gaspillage-Alimentaire-RestaurationCollective-optimise-20241006-1.pdf
+    │   │   ├── infographie_2026_ma-cantine_170326-1080x1080-carroussel-bilan-2025.pdf
     │   │   ├── livret-recettes-vegetariennes-egalim-region-reunion.pdf
     │   │   ├── localim.pdf
     │   │   ├── ma_cantine_2026_Webinaire_10_decembre_support.pdf
@@ -1525,7 +1544,7 @@
     │   │   ├── support__devenez_ambassadeur_PAT.pdf
     │   │   ├── support_webinaire_-_mesures-phare_loi_egalim.pdf
     │   │   ├── support_webinaire_ma_cantine_booster_ses_appros_en_bio_1207.pdf
-    │   │   ├── tableur_2026_ma-cantine_suivi-des-achats.xlsx
+    │   │   ├── tableur_2026_ma-cantine_suivi-des-achats_V0.xlsx
     │   │   ├── tableur_optigede_-_pesee_ademe_vf_mai_19_(1)(1).xlsx
     │   │   ├── tableur_optigede_-_pesee_ademe_vf_mai_19_(1).xlsx
     │   │   ├── une_certification_environnementale_pour_les_exploitations_agricoles_01.pdf
@@ -1685,4 +1704,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1611 files
+141 directories, 1631 files
