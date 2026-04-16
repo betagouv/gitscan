@@ -10,10 +10,50 @@ and this project adheres to
 
 ### Added
 
+- ✨(frontend) enhance upload toast with progress, errors and cancel support
+- ✨(frontend) add ErrorIcon component and support numeric icon sizes
+- ✨(frontend) make file upload abortable in driver layer
+
+## [v0.16.0] - 2026-04-09
+
+### Added
+
+- ✨(frontend) add PDF viewer with thumbnail sidebar, zoom and page navigation
+- ✨(frontend) integrate PDF viewer into file preview modal
+- 📝(doc) add local network setup documentation
+- ✨(global) add custom columns feature with configurable grid columns
+- 🔒️(frontend) prevent search engine indexing
+- ✨(backend) allow ordering items by creator full name
+- ✨(frontend) add item duplication with polling and visual feedback
+- ⚡(ci) shard e2e tests and cache playwright browsers
+- ⬆️(frontend) upgrade cunningham-react and ui-kit to 0.20.0
+- ✨(frontend) improve custom columns with sortable config and i18n
+
+### Changed
+
+- 🏷️(sdk) update Item interface by adding url_permalink
+- 🔧(backend) allow extra CSRF origins via env variable
+- 🔧(nginx) serve .mjs files with correct MIME type
+
+### Fixed
+
+- 🐛(backend) fix hard delete of files created by other users
+- 🐛(backend) handle race condition on concurrent LinkTrace creation
+- 🐛(frontend) fix React SVG attributes in AddFolderButton
+- 🔧(scalingo) compile translation files at deploy time
+- 🐛(frontend) fix trash items not refreshing after hard delete
+- 🐛(frontend) show modal when clicking files in trash
+- 🐛(frontend) fix toasts appearing above modals
+
+## [v0.15.0] - 2026-03-16
+
+### Added
+
 - 🌐(frontend) update Dutch translation for create label
 - ✨(frontend) add create folder and import file actions
 - 🐛(frontend) add action menu to mobile breadcrumbs
 - 🐛(frontend) app stabilization
+- ✨(backend) new action to duplicate a file item
 
 ### Changed
 
@@ -22,15 +62,15 @@ and this project adheres to
 - ✨(backend) exclude pending items from listing views
 - ✨(frontend) scale upload progress to 90% before completion
 
-### Removed
-
-- 🔥(backend) remove unused ServerToServerAuthentication backend
-
 ### Fixed
 
 - 🐛(backend) allow inviting external person on item with no direct access
 - 🐛(backend) stop storing numchild in database use annotation instead
 - 🐛(backend) sanitize filename to be compatible with filesystems
+
+### Removed
+
+- 🔥(backend) remove unused ServerToServerAuthentication backend
 
 ## [v0.14.0] - 2026-02-25
 
@@ -347,7 +387,9 @@ and this project adheres to
 - 🌐(front) add english translation for rename modal
 - 🐛(global) fix wrong Content-Type on specific s3 implementations
 
-[unreleased]: https://github.com/suitenumerique/drive/compare/v0.14.0...main
+[unreleased]: https://github.com/suitenumerique/drive/compare/v0.16.0...main
+[v0.16.0]: https://github.com/suitenumerique/drive/releases/v0.16.0
+[v0.15.0]: https://github.com/suitenumerique/drive/releases/v0.15.0
 [v0.14.0]: https://github.com/suitenumerique/drive/releases/v0.13.0
 [v0.13.0]: https://github.com/suitenumerique/drive/releases/v0.13.0
 [v0.12.0]: https://github.com/suitenumerique/drive/releases/v0.12.0

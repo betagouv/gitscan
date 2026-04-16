@@ -38,6 +38,7 @@
 │   ├── compose
 │   ├── fernetkey
 │   ├── manage
+│   ├── post_compile
 │   ├── postgres_e2e
 │   ├── pylint
 │   ├── pytest
@@ -104,7 +105,8 @@
 │   ├── release.md
 │   ├── resource_server.md
 │   ├── s3_mirroring.md
-│   └── setup-find.md
+│   ├── setup-find.md
+│   └── setup-local-network.md
 ├── env.d
 │   └── development
 │       ├── common
@@ -163,6 +165,7 @@
     │   │   │       ├── index.py
     │   │   │       ├── prepare_mirroring_items_history.py
     │   │   │       ├── process_pending_mirror_tasks.py
+    │   │   │       ├── purge_deleted_items.py
     │   │   │       └── update_suspicious_item_file_hash.py
     │   │   ├── migrations
     │   │   │   ├── 00006_create_pg_trgm_extension.py
@@ -185,6 +188,7 @@
     │   │   │   ├── 0018_mirroritemtask.py
     │   │   │   ├── 0019_user_last_release_note_seen.py
     │   │   │   ├── 0020_remove_item_numchild_path_nlevel_idx.py
+    │   │   │   ├── 0021_user_column_preferences.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -219,6 +223,7 @@
     │   │   │   │   ├── test_index.py
     │   │   │   │   ├── test_prepare_mirroring_items_history.py
     │   │   │   │   ├── test_process_pending_mirror_tasks.py
+    │   │   │   │   ├── test_purge_deleted_items.py
     │   │   │   │   └── test_update_suspicious_item_file_hash.py
     │   │   │   ├── conftest.py
     │   │   │   ├── external_api
@@ -242,6 +247,7 @@
     │   │   │   │   ├── test_api_items_create.py
     │   │   │   │   ├── test_api_items_delete.py
     │   │   │   │   ├── test_api_items_download.py
+    │   │   │   │   ├── test_api_items_duplicate.py
     │   │   │   │   ├── test_api_items_favorite.py
     │   │   │   │   ├── test_api_items_favorite_list.py
     │   │   │   │   ├── test_api_items_hard_delete.py
@@ -269,7 +275,8 @@
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
     │   │   │   │   ├── items
-    │   │   │   │   │   ├── test_process_deletion.py
+    │   │   │   │   │   ├── test_duplicate_file.py
+    │   │   │   │   │   ├── test_process_item_purge.py
     │   │   │   │   │   ├── test_rename_file.py
     │   │   │   │   │   └── test_update_suspicious_item_file_hash.py
     │   │   │   │   └── storage
@@ -405,7 +412,8 @@
     │   │   │   ├── .gitignore
     │   │   │   ├── README.md
     │   │   │   ├── __mocks__
-    │   │   │   │   └── fileMock.js
+    │   │   │   │   ├── fileMock.js
+    │   │   │   │   └── pretty-bytes.js
     │   │   │   ├── conf
     │   │   │   │   └── default.conf
     │   │   │   ├── cunningham.ts
@@ -427,7 +435,9 @@
     │   │   │   │   │   ├── logo-suite-numerique.png
     │   │   │   │   │   ├── logo_alpha.svg
     │   │   │   │   │   └── logo_beta.svg
-    │   │   │   │   └── mime-video.svg
+    │   │   │   │   ├── mime-video.svg
+    │   │   │   │   ├── pdf.worker.mjs
+    │   │   │   │   └── robots.txt
     │   │   │   ├── src
     │   │   │   │   ├── assets
     │   │   │   │   │   ├── empty-selection.png
@@ -560,6 +570,16 @@
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridNameCell.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridUpdatedAtCell.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerSearchInput.tsx
+    │   │   │   │   │   │   │   │   ├── cells
+    │   │   │   │   │   │   │   │   │   ├── CreatedByCell.tsx
+    │   │   │   │   │   │   │   │   │   ├── CreatedCell.tsx
+    │   │   │   │   │   │   │   │   │   ├── FileSizeCell.tsx
+    │   │   │   │   │   │   │   │   │   ├── FileTypeCell.tsx
+    │   │   │   │   │   │   │   │   │   └── LastModifiedCell.tsx
+    │   │   │   │   │   │   │   │   ├── headers
+    │   │   │   │   │   │   │   │   │   ├── ColumnHeader.tsx
+    │   │   │   │   │   │   │   │   │   ├── CustomizableColumnHeader.tsx
+    │   │   │   │   │   │   │   │   │   └── SortColumnButton.tsx
     │   │   │   │   │   │   │   │   └── hooks.tsx
     │   │   │   │   │   │   │   ├── icons
     │   │   │   │   │   │   │   │   ├── ItemIcon.scss
@@ -568,6 +588,7 @@
     │   │   │   │   │   │   │   │   ├── ImportDropdown.tsx
     │   │   │   │   │   │   │   │   └── ItemActionDropdown.tsx
     │   │   │   │   │   │   │   ├── modals
+    │   │   │   │   │   │   │   │   ├── CancelUploadConfirmationModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFileModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerCreateFolderModal.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerRenameItemModal.tsx
@@ -605,10 +626,16 @@
     │   │   │   │   │   │   │   │       └── ExplorerTreeNavItem.tsx
     │   │   │   │   │   │   │   └── workspaces-explorer
     │   │   │   │   │   │   │       └── WorkspacesExplorer.tsx
+    │   │   │   │   │   │   ├── config
+    │   │   │   │   │   │   │   ├── columnRegistry.tsx
+    │   │   │   │   │   │   │   └── viewConfigs.ts
     │   │   │   │   │   │   ├── hooks
     │   │   │   │   │   │   │   ├── useBreadcrumb.tsx
+    │   │   │   │   │   │   │   ├── useColumnPreferences.tsx
     │   │   │   │   │   │   │   ├── useCreateMenuItems.tsx
     │   │   │   │   │   │   │   ├── useDeleteItem.tsx
+    │   │   │   │   │   │   │   ├── useDuplicatingItemsPoller.ts
+    │   │   │   │   │   │   │   ├── useGridColumns.ts
     │   │   │   │   │   │   │   ├── useInfiniteChildren.ts
     │   │   │   │   │   │   │   ├── useInfiniteItems.ts
     │   │   │   │   │   │   │   ├── useItemActionMenuItems.tsx
@@ -620,10 +647,15 @@
     │   │   │   │   │   │   │   ├── useTableKeyboardNavigation.ts
     │   │   │   │   │   │   │   ├── useTreeUtils.ts
     │   │   │   │   │   │   │   └── useUpload.tsx
+    │   │   │   │   │   │   ├── types
+    │   │   │   │   │   │   │   ├── columns.ts
+    │   │   │   │   │   │   │   └── viewConfig.ts
     │   │   │   │   │   │   └── utils
     │   │   │   │   │   │       ├── __tests__
-    │   │   │   │   │   │       │   └── mimeTypes.test.ts
+    │   │   │   │   │   │       │   ├── mimeTypes.test.ts
+    │   │   │   │   │   │       │   └── ordering.test.ts
     │   │   │   │   │   │       ├── mimeTypes.ts
+    │   │   │   │   │   │       ├── ordering.ts
     │   │   │   │   │   │       └── utils.ts
     │   │   │   │   │   ├── feedback
     │   │   │   │   │   │   ├── Feedback.scss
@@ -681,16 +713,29 @@
     │   │   │   │   │   │   │   │   └── GenericDisclaimer.tsx
     │   │   │   │   │   │   │   ├── icon
     │   │   │   │   │   │   │   │   ├── CheckIcon.tsx
+    │   │   │   │   │   │   │   │   ├── Clock.tsx
+    │   │   │   │   │   │   │   │   ├── ErrorIcon.tsx
+    │   │   │   │   │   │   │   │   ├── FileIcon.tsx
     │   │   │   │   │   │   │   │   ├── Icon.tsx
+    │   │   │   │   │   │   │   │   ├── LeftSidebarIcon.tsx
     │   │   │   │   │   │   │   │   ├── MyFilesIcon.tsx
     │   │   │   │   │   │   │   │   ├── NewFolderIcon.tsx
+    │   │   │   │   │   │   │   │   ├── PersoIcon.tsx
     │   │   │   │   │   │   │   │   ├── RecentIcon.tsx
     │   │   │   │   │   │   │   │   ├── ResetZoomIcon.tsx
     │   │   │   │   │   │   │   │   ├── SharedWithMeIcon.tsx
     │   │   │   │   │   │   │   │   ├── StarredIcon.tsx
     │   │   │   │   │   │   │   │   ├── TrashIcon.tsx
+    │   │   │   │   │   │   │   │   ├── WeightIcon.tsx
+    │   │   │   │   │   │   │   │   ├── ZoomIn.tsx
     │   │   │   │   │   │   │   │   ├── ZoomMinusIcon.tsx
-    │   │   │   │   │   │   │   │   └── ZoomPlusIcon.tsx
+    │   │   │   │   │   │   │   │   ├── ZoomOut.tsx
+    │   │   │   │   │   │   │   │   ├── ZoomPlusIcon.tsx
+    │   │   │   │   │   │   │   │   ├── ZoomReset.tsx
+    │   │   │   │   │   │   │   │   └── sorting
+    │   │   │   │   │   │   │   │       ├── sort-asc.tsx
+    │   │   │   │   │   │   │   │       ├── sort-desc.tsx
+    │   │   │   │   │   │   │   │       └── sort-neutral.tsx
     │   │   │   │   │   │   │   ├── infinite-scroll
     │   │   │   │   │   │   │   │   ├── InfiniteScroll.scss
     │   │   │   │   │   │   │   │   ├── InfiniteScroll.tsx
@@ -698,6 +743,9 @@
     │   │   │   │   │   │   │   ├── info
     │   │   │   │   │   │   │   │   ├── InfoRow.scss
     │   │   │   │   │   │   │   │   └── InfoRow.tsx
+    │   │   │   │   │   │   │   ├── loading-ring
+    │   │   │   │   │   │   │   │   ├── LoadingRing.scss
+    │   │   │   │   │   │   │   │   └── LoadingRing.tsx
     │   │   │   │   │   │   │   ├── release-note
     │   │   │   │   │   │   │   │   ├── ReleaseNoteAuto.tsx
     │   │   │   │   │   │   │   │   ├── index.ts
@@ -705,9 +753,11 @@
     │   │   │   │   │   │   │   │   ├── useReleaseNote.ts
     │   │   │   │   │   │   │   │   └── versions
     │   │   │   │   │   │   │   │       ├── index.ts
-    │   │   │   │   │   │   │   │       └── v0.13.0
-    │   │   │   │   │   │   │   │           ├── icons
-    │   │   │   │   │   │   │   │           │   └── index.tsx
+    │   │   │   │   │   │   │   │       ├── v0.13.0
+    │   │   │   │   │   │   │   │       │   ├── icons
+    │   │   │   │   │   │   │   │       │   │   └── index.tsx
+    │   │   │   │   │   │   │   │       │   └── index.tsx
+    │   │   │   │   │   │   │   │       └── v0.16.0
     │   │   │   │   │   │   │   │           └── index.tsx
     │   │   │   │   │   │   │   ├── responsive
     │   │   │   │   │   │   │   │   ├── ResponsiveDivs.tsx
@@ -751,8 +801,17 @@
     │   │   │   │   │   │       │   ├── NotSupportedPreview.scss
     │   │   │   │   │   │       │   └── NotSupportedPreview.tsx
     │   │   │   │   │   │       ├── pdf-preview
+    │   │   │   │   │   │       │   ├── OutdatedBrowserPreview.tsx
+    │   │   │   │   │   │       │   ├── PdfControls.tsx
+    │   │   │   │   │   │       │   ├── PdfPageViewer.tsx
+    │   │   │   │   │   │       │   ├── PdfThumbnailSidebar.tsx
+    │   │   │   │   │   │       │   ├── PreviewPdf.scss
     │   │   │   │   │   │       │   ├── PreviewPdf.tsx
-    │   │   │   │   │   │       │   └── pdf-preview.scss
+    │   │   │   │   │   │       │   ├── pdfOptions.ts
+    │   │   │   │   │   │       │   ├── pdfPolyfills.ts
+    │   │   │   │   │   │       │   ├── useDebouncedResize.ts
+    │   │   │   │   │   │       │   ├── usePdfNavigation.ts
+    │   │   │   │   │   │       │   └── useRedirectDisclaimer.tsx
     │   │   │   │   │   │       ├── preview.scss
     │   │   │   │   │   │       ├── suspicious
     │   │   │   │   │   │       │   ├── SuspiciousPreview.scss
@@ -814,6 +873,11 @@
     │   │   │   │   ├── app-drive
     │   │   │   │   │   ├── assets
     │   │   │   │   │   │   ├── empty_doc.docx
+    │   │   │   │   │   │   ├── generate-pdfs.mjs
+    │   │   │   │   │   │   ├── pdf_corrupted.pdf
+    │   │   │   │   │   │   ├── pdf_with_js.pdf
+    │   │   │   │   │   │   ├── pdf_with_js_link.pdf
+    │   │   │   │   │   │   ├── pdf_with_links.pdf
     │   │   │   │   │   │   ├── pv_cm.pdf
     │   │   │   │   │   │   └── test-image.heic
     │   │   │   │   │   ├── breadcrumbs-from-page.spec.ts
@@ -821,8 +885,10 @@
     │   │   │   │   │   ├── context-menu.spec.ts
     │   │   │   │   │   ├── create-file-from-template.spec.ts
     │   │   │   │   │   ├── create-folder.spec.ts
+    │   │   │   │   │   ├── custom-columns.spec.ts
     │   │   │   │   │   ├── db.setup.ts
     │   │   │   │   │   ├── delete-item.spec.ts
+    │   │   │   │   │   ├── duplicate-item.spec.ts
     │   │   │   │   │   ├── heic-file-preview.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
@@ -830,15 +896,19 @@
     │   │   │   │   │   ├── left-bar.spec.ts
     │   │   │   │   │   ├── login.spec.ts
     │   │   │   │   │   ├── move-item.spec.ts
+    │   │   │   │   │   ├── noindex.spec.ts
+    │   │   │   │   │   ├── pdf-preview.spec.ts
     │   │   │   │   │   ├── redirect-401.spec.ts
     │   │   │   │   │   ├── release-note.spec.ts
     │   │   │   │   │   ├── search.spec.ts
     │   │   │   │   │   ├── share.spec.ts
     │   │   │   │   │   ├── silent-login.spec.ts
     │   │   │   │   │   ├── starred.spec.ts
+    │   │   │   │   │   ├── trash.spec.ts
     │   │   │   │   │   ├── upload.spec.ts
     │   │   │   │   │   ├── url-file-preview.spec.ts
     │   │   │   │   │   ├── utils
+    │   │   │   │   │   │   ├── custom-columns-utils.ts
     │   │   │   │   │   │   ├── move-utils.ts
     │   │   │   │   │   │   ├── posthog-utils.ts
     │   │   │   │   │   │   ├── share-utils.ts
@@ -950,4 +1020,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-235 directories, 717 files
+242 directories, 780 files
