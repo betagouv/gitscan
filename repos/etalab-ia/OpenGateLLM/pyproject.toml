@@ -1,6 +1,6 @@
 [project]
 name = "opengatellm"
-version = "0.4.1"
+version = "0.4.2"
 description = "OpenGateLLM project"
 requires-python = ">=3.12"
 license = { text = "MIT" }
@@ -26,11 +26,11 @@ api = [
     "elasticsearch[async]>=9.3.0",
     "fastapi>=0.133.1",
     "gunicorn>=25.1.0",
-    "html-to-markdown>=2.25.1",
+    "html-to-markdown==2.29.0",
     "itsdangerous>=2.2.0",
     "langchain-text-splitters>=1.1.1",
     "limits>=5.8.0",
-    "mistralai>=1.10.0",
+    "mistralai>=2.0.0",
     "openai>=2.15.0",
     "prometheus-fastapi-instrumentator>=7.1.0",
     "psycopg2-binary>=2.9.11",
@@ -71,6 +71,7 @@ py-modules = []
 
 [tool.ruff]
 line-length = 150
+target-version = "py312"
 exclude = [
     "**/alembic",
 ]

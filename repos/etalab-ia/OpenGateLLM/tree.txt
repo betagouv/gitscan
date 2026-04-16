@@ -14,13 +14,14 @@
 │   │   └── coverage.json
 │   ├── codeql.config.yml
 │   ├── compose.ci.yml
+│   ├── semgrep-rules.yml
 │   └── workflows
 │       ├── build_and_deploy.yml
-│       ├── codeql_scan.yml
 │       ├── deploy_documentation.yml
 │       ├── release_updates.yml
 │       ├── run_tests.yml
-│       └── secrets_scan.yml
+│       ├── semgrep.yml
+│       └── trivy-scan.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── CONTRIBUTING.md
@@ -31,6 +32,7 @@
 ├── adr
 │   ├── 2026-01-07-clean-architecture-migration.md
 │   ├── 2026-01-30-es-scaling.md
+│   ├── 2026-03-17-integration-test-isolation.md
 │   ├── README.md
 │   └── scripts
 │       └── 2026-01-30-es-migration.py
@@ -89,6 +91,9 @@
 │   ├── dependencies.py
 │   ├── domain
 │   │   ├── __init__.py
+│   │   ├── bootstrap
+│   │   │   ├── __init__.py
+│   │   │   └── errors.py
 │   │   ├── key
 │   │   │   ├── __init__.py
 │   │   │   ├── _keyrepository.py
@@ -105,8 +110,11 @@
 │   │   │   └── errors.py
 │   │   ├── role
 │   │   │   ├── __init__.py
+│   │   │   ├── _limitrepository.py
+│   │   │   ├── _permissionrepository.py
 │   │   │   ├── _rolerepository.py
-│   │   │   └── entities.py
+│   │   │   ├── entities.py
+│   │   │   └── errors.py
 │   │   ├── router
 │   │   │   ├── __init__.py
 │   │   │   ├── _routerrepository.py
@@ -115,7 +123,8 @@
 │   │   ├── user
 │   │   │   ├── __init__.py
 │   │   │   ├── _userrepository.py
-│   │   │   └── entities.py
+│   │   │   ├── entities.py
+│   │   │   └── errors.py
 │   │   └── userinfo
 │   │       ├── __init__.py
 │   │       ├── _userinforepository.py
@@ -126,7 +135,6 @@
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── organizations.py
-│   │   │   ├── providers.py
 │   │   │   ├── roles.py
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
@@ -180,20 +188,53 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── providers.py
-│   │   │   │   │   └── routers.py
+│   │   │   │   │   ├── roles.py
+│   │   │   │   │   ├── routers.py
+│   │   │   │   │   └── users.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   └── models.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
 │   │   │       ├── models.py
 │   │   │       ├── providers.py
-│   │   │       └── routers.py
+│   │   │       ├── roles.py
+│   │   │       ├── routers.py
+│   │   │       └── users.py
+│   │   ├── http
+│   │   │   └── model
+│   │   │       ├── __init__.py
+│   │   │       ├── _modelhttpclient.py
+│   │   │       ├── _modelmetricslogger.py
+│   │   │       ├── _modeltokenizercomputer.py
+│   │   │       ├── _modelusagecomputer.py
+│   │   │       ├── adapters.py
+│   │   │       ├── albert
+│   │   │       │   ├── __init__.py
+│   │   │       │   └── _albertmodelhttpclient.py
+│   │   │       ├── exchanges.py
+│   │   │       ├── mistral
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── _mistralmodelhttpclient.py
+│   │   │       │   └── adapters.py
+│   │   │       ├── openai
+│   │   │       │   ├── __init__.py
+│   │   │       │   └── _openaimodelhttpclient.py
+│   │   │       ├── tei
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── _teimodelhttpclient.py
+│   │   │       │   └── adapters.py
+│   │   │       └── vllm
+│   │   │           ├── __init__.py
+│   │   │           ├── _vllmmodelhttpclient.py
+│   │   │           └── adapters.py
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   └── _modelprovidergateway.py
 │   │   └── postgres
 │   │       ├── __init__.py
 │   │       ├── _postgreskeyrepository.py
+│   │       ├── _postgreslimitrepository.py
+│   │       ├── _postgrespermissionrepository.py
 │   │       ├── _postgresproviderrepository.py
 │   │       ├── _postgresrolesrepository.py
 │   │       ├── _postgresrouterrepository.py
@@ -239,8 +280,7 @@
 │   │   ├── search.py
 │   │   └── usage.py
 │   ├── sql
-│   │   ├── models.py
-│   │   └── session.py
+│   │   └── models.py
 │   ├── tasks
 │   │   ├── __init__.py
 │   │   ├── _celery.py
@@ -303,6 +343,10 @@
 │   │   │   └── utils.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
+│   │   │   ├── app
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_bootstrapadmin.py
+│   │   │   │   └── test_createapp.py
 │   │   │   ├── conftest.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
@@ -313,7 +357,12 @@
 │   │   │   │   │   │   ├── test_create_provider.py
 │   │   │   │   │   │   ├── test_delete_provider.py
 │   │   │   │   │   │   ├── test_get_one_provider.py
-│   │   │   │   │   │   └── test_get_providers.py
+│   │   │   │   │   │   ├── test_get_providers.py
+│   │   │   │   │   │   └── test_update_provider.py
+│   │   │   │   │   ├── roles
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── test_create_role.py
+│   │   │   │   │   │   └── test_update_role.py
 │   │   │   │   │   └── router
 │   │   │   │   │       ├── __init__.py
 │   │   │   │   │       ├── test_create_router.py
@@ -321,15 +370,47 @@
 │   │   │   │   │       ├── test_get_router.py
 │   │   │   │   │       ├── test_get_routers.py
 │   │   │   │   │       └── test_update_router.py
-│   │   │   │   └── test_models.py
-│   │   │   ├── factories.py
-│   │   │   ├── postgres
+│   │   │   │   ├── test_models.py
+│   │   │   │   └── utils.py
+│   │   │   ├── factories
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── test_postgresproviderrepository.py
-│   │   │   │   └── test_postgresrouterrepository.py
-│   │   │   └── test_createapp.py
+│   │   │   │   ├── albert.py
+│   │   │   │   ├── mistral.py
+│   │   │   │   ├── openai.py
+│   │   │   │   ├── sql.py
+│   │   │   │   ├── tei.py
+│   │   │   │   └── vllm.py
+│   │   │   ├── models
+│   │   │   │   └── test_modelprovidergateway.py
+│   │   │   └── postgres
+│   │   │       ├── __init__.py
+│   │   │       ├── test_postgreslimitrepository.py
+│   │   │       ├── test_postgrespermissionrepository.py
+│   │   │       ├── test_postgresproviderrepository.py
+│   │   │       ├── test_postgresrolesrepository.py
+│   │   │       ├── test_postgresrouterrepository.py
+│   │   │       └── test_postgresusersrepository.py
 │   │   └── unit
 │   │       ├── __init__.py
+│   │       ├── infrastructure
+│   │       │   ├── http
+│   │       │   │   ├── model
+│   │       │   │   │   ├── factories.py
+│   │       │   │   │   ├── mistral
+│   │       │   │   │   │   ├── test_mistral_adapters.py
+│   │       │   │   │   │   └── test_mistralhttpclient.py
+│   │       │   │   │   ├── tei
+│   │       │   │   │   │   ├── test_tei_adapters.py
+│   │       │   │   │   │   └── test_teimodelhttpclient.py
+│   │       │   │   │   ├── test_adapters.py
+│   │       │   │   │   ├── test_modelhttpclientendpoints.py
+│   │       │   │   │   └── vllm
+│   │       │   │   │       ├── test_vllm_adapters.py
+│   │       │   │   │       └── test_vllmmodelhttpclient.py
+│   │       │   │   └── test_modelhttpclient.py
+│   │       │   └── model
+│   │       │       └── test_modelprovidergateway.py
+│   │       ├── test_configuration.py
 │   │       ├── test_endpoints
 │   │       │   ├── mock.py
 │   │       │   └── test_auth.py
@@ -338,6 +419,7 @@
 │   │       │   ├── test_documentmanager.py
 │   │       │   ├── test_elasticsearchvectorstore.py
 │   │       │   ├── test_identityaccessmanager
+│   │       │   │   ├── test_encryption.py
 │   │       │   │   ├── test_login.py
 │   │       │   │   ├── test_organization.py
 │   │       │   │   ├── test_roles.py
@@ -348,6 +430,7 @@
 │   │       │   │   ├── test_providers.py
 │   │       │   │   └── test_routers.py
 │   │       │   └── test_parsermanager.py
+│   │       ├── test_legacy.py
 │   │       ├── test_utils
 │   │       │   ├── test_carbon.py
 │   │       │   └── test_qos.py
@@ -360,33 +443,52 @@
 │   │           │   │   ├── test_createproviderusecase.py
 │   │           │   │   ├── test_deleteproviderusecase.py
 │   │           │   │   ├── test_getoneproviderusecase.py
-│   │           │   │   └── test_getprovidersusecase.py
-│   │           │   └── routers
+│   │           │   │   ├── test_getprovidersusecase.py
+│   │           │   │   └── test_updateproviderusecase.py
+│   │           │   ├── roles
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── test_createroleusecase.py
+│   │           │   │   └── test_updateroleusecase.py
+│   │           │   ├── routers
+│   │           │   │   ├── __init__.py
+│   │           │   │   ├── test_createrouterusecase.py
+│   │           │   │   ├── test_deleterouterusecase.py
+│   │           │   │   ├── test_getonerouterusecase.py
+│   │           │   │   ├── test_getroutersusecase.py
+│   │           │   │   └── test_updaterouterusecase.py
+│   │           │   ├── test_bootstrapadminusecase.py
+│   │           │   └── users
 │   │           │       ├── __init__.py
-│   │           │       ├── test_createrouterusecase.py
-│   │           │       ├── test_deleterouterusecase.py
-│   │           │       ├── test_getonerouterusecase.py
-│   │           │       ├── test_getroutersusecase.py
-│   │           │       └── test_updaterouterusecase.py
+│   │           │       └── test_createuserusecase.py
 │   │           ├── factories.py
 │   │           └── test_getmodelsusecase.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
+│   │   │   ├── bootstrapadminusecase.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createproviderusecase.py
 │   │   │   │   ├── _deleteproviderusecase.py
 │   │   │   │   ├── _getoneproviderusecase.py
-│   │   │   │   └── _getprovidersusecase.py
-│   │   │   └── routers
+│   │   │   │   ├── _getprovidersusecase.py
+│   │   │   │   └── _updateproviderusecase.py
+│   │   │   ├── roles
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── _createroleusecase.py
+│   │   │   │   └── _updateroleusecase.py
+│   │   │   ├── routers
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── _createrouterusecase.py
+│   │   │   │   ├── _deleterouterusecase.py
+│   │   │   │   ├── _getonerouterusecase.py
+│   │   │   │   ├── _getroutersusecase.py
+│   │   │   │   └── _updaterouterusecase.py
+│   │   │   └── users
 │   │   │       ├── __init__.py
-│   │   │       ├── _createrouterusecase.py
-│   │   │       ├── _deleterouterusecase.py
-│   │   │       ├── _getonerouterusecase.py
-│   │   │       ├── _getroutersusecase.py
-│   │   │       └── _updaterouterusecase.py
+│   │   │       ├── _createuserusecase.py
+│   │   │       └── _updateuserusecase.py
 │   │   └── models
 │   │       ├── __init__.py
 │   │       └── _getmodelsusecase.py
@@ -640,4 +742,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-138 directories, 504 files
+161 directories, 583 files
