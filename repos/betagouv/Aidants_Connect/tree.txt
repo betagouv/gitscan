@@ -152,6 +152,9 @@
 │   │   │           ├── change_formation_form.html
 │   │   │           ├── refusal_form.html
 │   │   │           └── unaccept_form.html
+│   │   ├── django_filters
+│   │   │   └── rest_framework
+│   │   │       └── form.html
 │   │   ├── email
 │   │   │   ├── formation_organization_new_attendants.mjml
 │   │   │   ├── formation_organization_new_attendants.txt
@@ -540,6 +543,7 @@
 │   │   ├── other_models.py
 │   │   ├── otp_device.py
 │   │   ├── statistiques.py
+│   │   ├── structure_change_request.py
 │   │   ├── usager.py
 │   │   └── utils.py
 │   ├── api
@@ -666,6 +670,9 @@
 │   │   ├── 0085_aidantemailstats_infos.py
 │   │   ├── 0086_aidant_is_of_admin.py
 │   │   ├── 0087_alter_aidant_is_of_admin_alter_aidant_is_of_user_and_more.py
+│   │   ├── 0088_structurechangerequest_and_more.py
+│   │   ├── 0089_coreferentnonaidantrequest_phone.py
+│   │   ├── 0090_aidant_attestation.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -709,7 +716,8 @@
 │   │   │   ├── ressources.css
 │   │   │   ├── statistics.css
 │   │   │   ├── template.min.css
-│   │   │   └── usager-details.css
+│   │   │   ├── usager-details.css
+│   │   │   └── users_search.css
 │   │   ├── guides_aidants_connect
 │   │   │   ├── AC_Affiche2024_Habilitee.pdf
 │   │   │   ├── AC_Depliant4P_2024.pdf
@@ -773,6 +781,7 @@
 │   │   │   ├── anct-incubateur-footer.png
 │   │   │   ├── anct-incubateur.png
 │   │   │   ├── application-totp.png
+│   │   │   ├── attestation.svg
 │   │   │   ├── auth-ressource.png
 │   │   │   ├── background.svg
 │   │   │   ├── bdf.png
@@ -850,6 +859,7 @@
 │   │   │   ├── notifications.mjs
 │   │   │   ├── remote-pending.mjs
 │   │   │   ├── statistiques.js
+│   │   │   ├── users-search.mjs
 │   │   │   └── youtube-cookie.js
 │   │   └── scss
 │   │       ├── attestation-translation.scss
@@ -957,7 +967,8 @@
 │   │   │   │   ├── 20201209_mandat.html
 │   │   │   │   ├── 20210308_mandat.html
 │   │   │   │   ├── 20230530_mandat.html
-│   │   │   │   └── 20240618_mandat.html
+│   │   │   │   ├── 20240618_mandat.html
+│   │   │   │   └── 20260323_mandat.html
 │   │   │   ├── new_mandat
 │   │   │   │   ├── _bdf-warning-notification.html
 │   │   │   │   ├── _mandate-elements.html
@@ -979,11 +990,12 @@
 │   │   │   │   ├── remote_consent_waiting_room.html
 │   │   │   │   └── support_email_send_failure_body.txt
 │   │   │   ├── usager-details.html
-│   │   │   └── usagers
-│   │   │       ├── usager_row_active_mandate.html
-│   │   │       ├── usager_row_expired_mandate.html
-│   │   │       ├── usager_row_revoked_mandate.html
-│   │   │       └── usagers.html
+│   │   │   ├── usagers
+│   │   │   │   ├── usager_row_active_mandate.html
+│   │   │   │   ├── usager_row_expired_mandate.html
+│   │   │   │   ├── usager_row_revoked_mandate.html
+│   │   │   │   └── usagers.html
+│   │   │   └── users_search_bar.html
 │   │   ├── email
 │   │   │   ├── activity_tracking_warning.mjml
 │   │   │   ├── activity_tracking_warning.txt
@@ -1052,7 +1064,6 @@
 │   │   │   ├── cgu.html
 │   │   │   ├── connexion_choice.html
 │   │   │   ├── formation.html
-│   │   │   ├── guide_utilisation.html
 │   │   │   ├── habilitation.html
 │   │   │   ├── home_page.html
 │   │   │   ├── listing_formations.html
@@ -1073,6 +1084,7 @@
 │   │   ├── __init__.py
 │   │   ├── api
 │   │   │   ├── __init__.py
+│   │   │   ├── test_view_fne_orga.py
 │   │   │   └── test_views.py
 │   │   ├── factories.py
 │   │   ├── test_accessibility
@@ -1190,6 +1202,10 @@
 │   │   ├── sms.py
 │   │   └── usagers.py
 │   └── widgets.py
+├── attestation
+│   ├── CertificatHabilitationAidantsConnectVide.pdf
+│   ├── Marianne-ThinItalic.ttf
+│   └── Spectral-Bold.ttf
 ├── locale
 │   └── fr
 │       └── LC_MESSAGES
@@ -1199,4 +1215,4 @@
 ├── package.json
 ├── pyproject.toml
 └── setup.cfg
-162 directories, 1039 files
+165 directories, 1052 files
