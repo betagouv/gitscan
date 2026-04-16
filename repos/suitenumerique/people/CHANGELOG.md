@@ -8,9 +8,30 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 🧑‍💻(admin) export domain contact info #1061
+
 ### Fixed
+
+- 🐛(dimail) fix no import for functional mailboxes
+- 🚸(mailboxes) improve error message when no secondary email
+
+## [1.24.0] - 2026-03-24
+
+### Fixed
+
+- 🐛(languages) fix currentLanguage in profile menu
 - ✨(mailboxes) enforce lowercase on mailboxes
 - 🐛(i18n) fix missing translations for status tag labels
+- 🚚(route) prioritize mail domains as default landing page
+
+### Changed
+
+- 💄(ui) review ui : delete border container
+- 💄(config) update ui configuration domain modale
+- 🍱(static) update logo in invitation email template #1085
+- ✨(uiV2) use Lasuite UI kit, new layout
 
 ## [1.23.1] - 2026-02-16
 
@@ -22,6 +43,7 @@ and this project adheres to
 
 - ✨(demo) add aliases to demo #1050
 - ✨(front) add icon to button to configure a domain
+- ✨(datagrid) add sort to mailboxes list + mail domain list
 - ✨(invitations) allow delete invitations mails domains access by an admin
 - ✨(front) delete invitations mails domains access
 - ✨(front) add show invitations mails domains access #1040
@@ -515,7 +537,8 @@ and this project adheres to
 - ✨(domains) create and manage domains on admin + API
 - ✨(domains) mailbox creation + link to email provisioning API
 
-[unreleased]: https://github.com/suitenumerique/people/compare/v1.23.1...main
+[unreleased]: https://github.com/suitenumerique/people/compare/v1.24.0...main
+[1.24.0]: https://github.com/suitenumerique/people/releases/v1.24.0
 [1.23.1]: https://github.com/suitenumerique/people/releases/v1.23.1
 [1.23.0]: https://github.com/suitenumerique/people/releases/v1.23.0
 [1.22.2]: https://github.com/suitenumerique/people/releases/v1.22.2

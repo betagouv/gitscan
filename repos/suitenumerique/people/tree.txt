@@ -159,7 +159,6 @@
     │   │   │       ├── arrow.png
     │   │   │       ├── logo-footer-mail.png
     │   │   │       ├── logo-laregie.png
-    │   │   │       ├── logo-suite-numerique.png
     │   │   │       ├── logo.png
     │   │   │       ├── mail-header-background.png
     │   │   │       └── messagerie.png
@@ -525,6 +524,7 @@
     │   │   │   │   │   │   ├── icon-group2.svg
     │   │   │   │   │   │   ├── icon-marianne.svg
     │   │   │   │   │   │   ├── icon-open-close.svg
+    │   │   │   │   │   │   ├── icon-panel-menu.svg
     │   │   │   │   │   │   ├── icon-sort.svg
     │   │   │   │   │   │   └── icon-user.svg
     │   │   │   │   │   └── logo-regie.svg
@@ -538,6 +538,7 @@
     │   │   │   │   │   ├── InfiniteScroll.tsx
     │   │   │   │   │   ├── Input.tsx
     │   │   │   │   │   ├── Link.tsx
+    │   │   │   │   │   ├── LocalInput.tsx
     │   │   │   │   │   ├── LogoGouv.tsx
     │   │   │   │   │   ├── Modal.tsx
     │   │   │   │   │   ├── Tag.tsx
@@ -605,8 +606,8 @@
     │   │   │   │   │   │   ├── components
     │   │   │   │   │   │   │   ├── LeftPanel.tsx
     │   │   │   │   │   │   │   ├── LeftPanelContent.tsx
-    │   │   │   │   │   │   │   ├── LeftPanelHeader.tsx
     │   │   │   │   │   │   │   ├── LeftPanelItems.tsx
+    │   │   │   │   │   │   │   ├── TogglePanelButton.tsx
     │   │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   └── stores
@@ -650,12 +651,10 @@
     │   │   │   │   │   │   │   │   ├── ModalCreateInvitation.tsx
     │   │   │   │   │   │   │   │   ├── ModalDelete.tsx
     │   │   │   │   │   │   │   │   ├── ModalDomainAccessesManagement.tsx
-    │   │   │   │   │   │   │   │   ├── ModalRole.tsx
     │   │   │   │   │   │   │   │   ├── SearchMembers.tsx
     │   │   │   │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   │   │   │   ├── ChooseRole.test.tsx
-    │   │   │   │   │   │   │   │   │   ├── ModalDelete.test.tsx
-    │   │   │   │   │   │   │   │   │   └── ModalRole.test.tsx
+    │   │   │   │   │   │   │   │   │   └── ModalDelete.test.tsx
     │   │   │   │   │   │   │   │   └── index.ts
     │   │   │   │   │   │   │   ├── conf.ts
     │   │   │   │   │   │   │   ├── hooks
@@ -699,6 +698,7 @@
     │   │   │   │   │   │   │   │   └── useMailDomains.tsx
     │   │   │   │   │   │   │   ├── components
     │   │   │   │   │   │   │   │   ├── MailDomainAccessesAction.tsx
+    │   │   │   │   │   │   │   │   ├── MailDomainLogoCircle.tsx
     │   │   │   │   │   │   │   │   ├── MailDomainView.tsx
     │   │   │   │   │   │   │   │   ├── MailDomainsLayout.tsx
     │   │   │   │   │   │   │   │   ├── ModalAddMailDomain.tsx
@@ -707,7 +707,6 @@
     │   │   │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   │   │   └── panel
     │   │   │   │   │   │   │   │       ├── ItemList.tsx
-    │   │   │   │   │   │   │   │       ├── MailDomainListView.tsx
     │   │   │   │   │   │   │   │       ├── MailDomainsListView.tsx
     │   │   │   │   │   │   │   │       ├── Panel.tsx
     │   │   │   │   │   │   │   │       ├── PanelActions.tsx
@@ -862,6 +861,7 @@
     │   │   │   │       ├── __tests__
     │   │   │   │       │   └── string.test.ts
     │   │   │   │       ├── index.ts
+    │   │   │   │       ├── sortData.ts
     │   │   │   │       ├── string.ts
     │   │   │   │       └── styleBuilder.ts
     │   │   │   ├── stylelint.config.js

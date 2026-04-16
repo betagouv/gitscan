@@ -1,24 +1,26 @@
-## Changelog : people (30 derniers jours)
+## Changelog : people (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à l'application de gestion des utilisateurs et des équipes. Les changements incluent des corrections de sécurité, des améliorations de l'interface utilisateur, des corrections de bugs et des optimisations techniques. L'application continue d'évoluer pour offrir une meilleure expérience utilisateur et une sécurité renforcée.
+Les dernières mises à jour de People se concentrent sur l'amélioration de l'expérience utilisateur, notamment en clarifiant les messages d'erreur et en ajustant le comportement de redirection. Des corrections de bugs ont également été apportées pour assurer la stabilité et la fiabilité de l'application, ainsi que des améliorations de sécurité avec la mise à jour de plusieurs dépendances.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant les traductions manquantes pour les étiquettes de statut [#74ada8f](https://github.com/suitenumerique/people/commit/74ada8f).
-- Correction d'un bug forçant les boîtes aux lettres à être en minuscules [#bc0dbcb](https://github.com/suitenumerique/people/commit/bc0dbcb).
-- Correction d'un bug lié à l'actualisation des invitations [#3b58fb7](https://github.com/suitenumerique/people/commit/3b58fb7).
+- Amélioration du message d'erreur affiché lorsqu'il n'y a pas d'adresse email secondaire associée à une boîte aux lettres. [#1108](https://github.com/suitenumerique/people/issues/1108)
+- Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page de domaine.
+- Priorisation des domaines de messagerie comme page d'atterrissage par défaut après la redirection.
+- Export des informations de contact du domaine pour l'administration.
+- Les tests d'accès via invitation vérifient maintenant que le rôle attendu est bien attribué lors de la création à partir d'une adresse email.
+- Mise à jour du logo dans le modèle d'email d'invitation. [#1085](https://github.com/suitenumerique/people/issues/1085)
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `tornado` pour corriger une vulnérabilité (CVE) [#ca754d5](https://github.com/suitenumerique/people/commit/ca754d5).
-- Mise à jour de la dépendance `django` vers la version 5.2.12 pour corriger une vulnérabilité de sécurité [#0c123bb](https://github.com/suitenumerique/people/commit/0c123bb).
-- Mise à jour de la dépendance `joserfc` vers la version 1.6.3 pour corriger une vulnérabilité de sécurité [#2a6367c](https://github.com/suitenumerique/people/commit/2a6367c).
-- Mise à jour des actions GitHub pour utiliser les dernières versions [#68ec85e](https://github.com/suitenumerique/people/commit/68ec85e).
-- Refactorisation : Déplacement de l'exception liée aux invitations vers le cœur de l'application [#d0e5aa5](https://github.com/suitenumerique/people/commit/d0e5aa5).
-- Migration vers la librairie `django-lasuite` pour la personnalisation de l'administration [#c534344](https://github.com/suitenumerique/people/commit/c534344).
-- Correction de warnings linter [#b9c69e7](https://github.com/suitenumerique/people/commit/b9c69e7).
+- Mise à jour de Pillow à la version 12.2.0 pour des raisons de sécurité.
+- Refactorisation de l'interface utilisateur avec la nouvelle version du UI Kit (regie v2). [#1083](https://github.com/suitenumerique/people/issues/1083)
+- Mise à jour de la configuration de l'interface utilisateur pour la modale de domaine. [#1089](https://github.com/suitenumerique/people/issues/1089)
+- Ajout d'une étape de build du frontend lors du bootstrap.
+- Correction d'un problème d'importation pour les boîtes aux lettres fonctionnelles.
+- Correction du chemin de redirection par défaut pour revenir à `/mail-domains/`.
+- Suppression d'une bordure inutile dans l'interface utilisateur. [#1107](https://github.com/suitenumerique/people/issues/1107)
 
 ### Autres changements
-- Correction d'une faute de frappe dans le fichier README [#da1a9e1](https://github.com/suitenumerique/people/commit/da1a9e1).
-- Publication de la version 1.23.1 [#e1a8cc3](https://github.com/suitenumerique/people/commit/e1a8cc3).
-- Mise à jour des chaînes de caractères traduites [#a1b58fb](https://github.com/suitenumerique/people/commit/a1b58fb).
-- Mise à jour de la dépendance `django-lasuite` vers la version 0.0.25 [#79bdc66](https://github.com/suitenumerique/people/commit/79bdc66).
+- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité : Django, Next.js, pytest, lodash, requests.
+- Mise à jour des chaînes de traduction.
+- Publication de la version 1.24.0.
