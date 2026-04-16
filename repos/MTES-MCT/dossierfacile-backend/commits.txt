@@ -1,13 +1,131 @@
+2026-04-15T19:21:54+02:00 - ed6c016c - Romaric : feat(bo): add metrics oldest tenant to process and nb of tenant with failed pdf to home page (#1217)
+2026-04-14T15:30:03+02:00 - f2cc8668 - alixdeschamps : fix: add index on document_ia_file_analysis file_id (#1210)
+2026-04-14T15:28:35+02:00 - 4003c2fc - nicolasSagon : feature(document-ia): when salary  less than 3 files no continuity rule (#1215)
+2026-04-14T13:45:49+02:00 - 2c0602d9 - Romaric : fix(bo): enforce tenant access on routes and enhance security hardening (#1214)
+2026-04-14T13:45:08+02:00 - dadaabec - Romaric : feat(bo): add daily action limits (search, view, process tenant application) (#1213)
+2026-04-13T17:47:57+02:00 - 97e5f746 - nicolasSagon : fix (document-ia): Removed all the data inside raw_data 2ddoc (#1211)
+2026-04-13T16:52:49+02:00 - 006cd24a - Romaric : feat(bo): assign operator to application (#1212)
+2026-04-13T15:18:15+02:00 - f7d67199 - Romaric : feat(bo): add brevo mail history into tenant messages page (#1209)
+2026-04-13T11:17:41+02:00 - 08114aa6 - Romaric : feat(bo): hardening bo security (#1208)
+2026-04-09T10:40:21+02:00 - e0f42383 - Romaric : feat(document-analysis): refactor payslip validation and introduce IdentityMatchUtil (#1202)
+2026-04-09T10:13:33+02:00 - 0598125d - Alix Deschamps : Merge tag 'v3.5.4' into develop
+2026-04-09T10:13:12+02:00 - 657e4160 - Alix Deschamps : Merge branch 'release/v3.5.4'
+2026-04-09T10:13:00+02:00 - e3abbcb1 - Alix Deschamps : bump : v3.5.4
+2026-04-08T11:27:31+02:00 - 267188c1 - Romaric : fix(api-tenant): rerun analysis on identity change (#1207)
+2026-04-01T17:51:04+02:00 - 4ca92f43 - Romaric Haldenwang : Merge branch 'release/v3.5.3' into develop
+2026-04-01T17:50:27+02:00 - 492789f7 - Romaric Haldenwang : Merge branch 'release/v3.5.3'
+2026-04-01T17:49:58+02:00 - 0a671d0d - Romaric Haldenwang : chore: bump to version 3.5.3
+2026-04-01T17:19:37+02:00 - d645a00e - Romaric : fix(document-analysis): rerun analyse on guarantor documents when tenant identity changes (#1205)
+2026-04-01T17:08:36+02:00 - f82ae1f7 - Romaric : feat(document-analysis): add levenshtein to VISALE name comparison (#1206)
+2026-04-01T09:31:58+02:00 - ac588f2e - Romaric : feat(document-analysis): add feature flag for payslip analysis (#1203)
+2026-03-31T15:26:45+02:00 - 23f430b0 - alixdeschamps : fix(bo): regroup tenant should reset dossier PDF to ensure an updated dossier version is regenerated (#1204)
+2026-03-30T18:24:30+02:00 - f65ce626 - alixdeschamps : fix(bo): harmonize display in BO when tenant or garantor have no tax to show (#1201)
+2026-03-27T15:35:13+01:00 - 637d99ad - Romaric : feat(document-analysis): improve tax name rule (#1200)
+2026-03-26T13:41:09+01:00 - d55b2bbe - Romaric : fix(pdf-generator): ensure encrypted PDFs can be safely rewritten after sanitization (#1199)
+2026-03-26T10:01:14+01:00 - d67d5d04 - SAGON NICOLAS : Merge branch 'release/V.3.5.2' into develop
+2026-03-26T10:01:06+01:00 - 644b6198 - SAGON NICOLAS : Merge branch 'release/V.3.5.2'
+2026-03-26T10:00:52+01:00 - e577e22e - nicolasSagon : chore: bump to version 3.5.2
+2026-03-26T09:41:11+01:00 - 2f0aed76 - nicolasSagon : fix(watermark): remove custom exception handler, it's now in common lib (#1198)
+2026-03-26T09:26:15+01:00 - d65c3c86 - alixdeschamps : fix(bo+tenant): limit analysis comment length (#1185)
+2026-03-25T19:54:55+01:00 - 4ca8c3d1 - nicolasSagon : feat(document-ia): add rfr for tax (#1197)
+2026-03-25T15:06:32+01:00 - de98656c - alixdeschamps : fix(bo): operator can both see absence of document and  custom message from tenant if provided (#1196)
+2026-03-25T13:45:04+01:00 - 4571a0de - Romaric : feat: enhance TaxNamesRule to handle composed names with hyphen (#1195)
+2026-03-25T11:51:00+01:00 - 4cb634a8 - nicolasSagon : feat: change workflow for 2DDoc detection on tax documents (#1194)
+2026-03-25T10:50:03+01:00 - d2ef9304 - Romaric : feat(api-tenant/api-watermark): implement OWASP recommendations for file upload (#1179)
+2026-03-24T14:06:42+01:00 - c0460085 - nicolasSagon : fix: rework tax name rule after first analysis (#1193)
+2026-03-23T16:48:50+01:00 - 757364cc - nicolasSagon : fix : prevent tax of foreigner to be analysed (only analyse french tax) (#1192)
+2026-03-23T16:08:21+01:00 - 8d3615e1 - nicolasSagon : hotfix: should not analyse documents with no document_ia_analysis (#1191)
+2026-03-23T14:42:32+01:00 - 22200c0e - alixdeschamps : fix: broken rate limiting for document download (#1189)
+2026-03-23T14:20:24+01:00 - b5c7a519 - Romaric : fix: encrypt minified preview files stored in raw-minified bucket (#1188)
+2026-03-20T09:15:47+01:00 - 5f88b132 - Romaric : fix(api-tenant): fix 500 error when trying to compute the analysis-status (#1187)
+2026-03-19T11:19:49+01:00 - 6e35213d - SAGON NICOLAS : Merge branch 'release/v3.5.1' into develop
+2026-03-19T11:19:43+01:00 - e5df3330 - SAGON NICOLAS : Merge branch 'release/v3.5.1'
+2026-03-19T11:19:28+01:00 - fb2041b1 - nicolasSagon : chore: Bump to v3.5.1
+2026-03-19T11:18:33+01:00 - 0980ccdd - nicolasSagon : hotfix: retrieve denied options of the guarantor (#1186)
+2026-03-19T08:42:09+01:00 - 4a2b2de5 - SAGON NICOLAS : Merge branch 'release/v3.5.0' into develop
+2026-03-19T08:41:51+01:00 - 0d27b477 - nicolasSagon : merge update
+2026-03-19T08:39:10+01:00 - 0c86d69f - nicolasSagon : chore: bump to version 3.5.0
+2026-03-18T15:01:12+01:00 - 8ead46ec - alixdeschamps : fix(bo): display type of document based on barcode data (#1184)
+2026-03-17T18:06:12+01:00 - c2934a87 - nicolasSagon : fix: restart analysis when tenant or guarantor identity change (#1182)
+2026-03-17T17:59:53+01:00 - c64936eb - Alix Deschamps : chore: update .gitignore to exclude seed
+2026-03-17T17:59:53+01:00 - a51003b8 - Alix Deschamps : fix(bo): fix card-header closing in document-section fragment
+2026-03-17T17:59:53+01:00 - 725e6c0c - Alix Deschamps : refactor(bo): extract duplicated template blocks into fragments
+2026-03-17T17:59:53+01:00 - 30b4bda3 - Alix Deschamps : fix: revert deduplication of document-section fragment
+2026-03-17T17:59:53+01:00 - 0797e331 - Alix Deschamps : feat : unify doc ia design in bo processFile
+2026-03-17T17:59:53+01:00 - 03292ea5 - Alix Deschamps : fix : full with for bo tax analysis
+2026-03-16T18:02:10+01:00 - 0c037496 - Romaric Haldenwang : Merge branch 'release/v3.4.16'
+2026-03-16T18:02:00+01:00 - 5c9bdd06 - Romaric Haldenwang : chore: bump version to 3.4.16
+2026-03-16T18:01:00+01:00 - c9ebaa6c - Romaric : hotfix(dfc): fix documents url in /dfc endpoints when tenant is not validated (#1180)
+2026-03-16T16:31:31+01:00 - a7c3cae8 - Romaric : hotfix(dfc): fix documents url in /dfc endpoints when tenant is not validated (#1180)
+2026-03-12T18:12:28+01:00 - b8eb05b9 - Romaric Haldenwang : Merge branch 'release/v3.4.15'
+2026-03-12T17:32:12+01:00 - 47d9a50c - Romaric Haldenwang : chore: bump version to 3.4.15
+2026-03-12T17:31:40+01:00 - b810016c - Romaric Haldenwang : hotfix(api-tenant): tenant is null when trying to delete guarantor file (#1178)
+2026-03-12T17:24:23+01:00 - aec7c1e8 - Romaric : hotfix(api-tenant): tenant is null when trying to delete guarantor file (#1178)
+2026-03-12T10:13:36+01:00 - f96d87de - Alix Deschamps : refactor(tenant): add case where document AI returns in 500
+2026-03-12T10:13:36+01:00 - f689feb4 - nicolasSagon : fix: update spring-doc version to be compatible
+2026-03-12T10:13:36+01:00 - ee40a9a9 - nicolasSagon : feat: write multiMapper
+2026-03-12T10:13:36+01:00 - eb58a9fa - nicolasSagon : feat: remove type from documentIA field annotation
+2026-03-12T10:13:36+01:00 - e60d16a5 - Alix Deschamps : feat(tenant): add permissions to document ai analysis status
+2026-03-12T10:13:36+01:00 - e3fbcc1c - nicolasSagon : fix(document-ia): save only used document ia result
+2026-03-12T10:13:36+01:00 - e1eb0133 - nicolasSagon : fix: pr review
+2026-03-12T10:13:36+01:00 - df85a1fc - nicolasSagon : fix(document-ia): do not trigger analysis on side documents when upload
+2026-03-12T10:13:36+01:00 - def4d1b1 - nicolasSagon : feat: Add document ia with previsualisation on bo
+2026-03-12T10:13:36+01:00 - dc313f3d - nicolasSagon : fix(coument-ia): change documentIaFileAnalysis life cycle and encrypt
+2026-03-12T10:13:36+01:00 - db00ac50 - Alix Deschamps : refactor(tenant): replace custom mapping logic with MapStruct for document analysis
+2026-03-12T10:13:36+01:00 - d9a77899 - nicolasSagon : feat: support nested model inside documentia data sanitizer
+2026-03-12T10:13:36+01:00 - c9b207db - alixdeschamps : feat: add new doc ia design for french tax in BO (#1175)
+2026-03-12T10:13:36+01:00 - c8dff336 - nicolasSagon : fix: rebase hell
+2026-03-12T10:13:36+01:00 - ad89b393 - nicolasSagon : feat: add support for list of inner model
+2026-03-12T10:13:36+01:00 - a7308434 - nicolasSagon : fix: permit classification and extraction result to be null on bo
+2026-03-12T10:13:36+01:00 - a4991d25 - nicolasSagon : fix: update spring-doc version to be compatible
+2026-03-12T10:13:36+01:00 - 8ef33585 - nicolasSagon : feat(task-scheduler) : Add a new task to synchronise document ia analyse
+2026-03-12T10:13:36+01:00 - 878534f0 - nicolasSagon : feat (process-file): Remove process file and migrate minify and metadata
+2026-03-12T10:13:36+01:00 - 846242be - nicolasSagon : feat: code smells
+2026-03-12T10:13:36+01:00 - 824a39b0 - nicolasSagon : feat(document-analysis): add rules for tax validation
+2026-03-12T10:13:36+01:00 - 70ca5e5a - nicolasSagon : chore: return comment on the DocumentAnalysisReport
+2026-03-12T10:13:36+01:00 - 6e2e2236 - nicolasSagon : feat(document-ia): save the relation between file and analysis explicit
+2026-03-12T10:13:36+01:00 - 6437b7b9 - nicolasSagon : feat: Add feature-flag for document ia Visale and Tax ! (#1172)
+2026-03-12T10:13:36+01:00 - 5bc8629a - nicolasSagon : feat: rework analysis report rule data
+2026-03-12T10:13:36+01:00 - 5b46f252 - nicolasSagon : feat(process-file): add document ia rules for identity cards validation
+2026-03-12T10:13:36+01:00 - 59a78582 - nicolasSagon : Feat : add visale document (#1167)
+2026-03-12T10:13:36+01:00 - 4cf43cd2 - nicolasSagon : fix: rebase hell
+2026-03-12T10:13:36+01:00 - 4a219f28 - nicolasSagon : feat: extract csp bo properties to env variable
+2026-03-12T10:13:36+01:00 - 43417734 - Alix Deschamps : fix(scheduler): update readme to remove unnecessary import
+2026-03-12T10:13:36+01:00 - 34f814c0 - nicolasSagon : feat: Add a route to get all the analysis data of an application sharing
+2026-03-12T10:13:36+01:00 - 2af51bb1 - nicolasSagon : feat : move document analysis to api tenant and removed from processfile
+2026-03-12T10:13:36+01:00 - 298fb43c - nicolasSagon : feat: add support for avis impot 2Ddoc v1
+2026-03-12T10:13:36+01:00 - 15154e5e - nicolasSagon : feat: add support for list of strings and inner model
+2026-03-12T10:13:36+01:00 - 14c51878 - Alix Deschamps : feat(tenant): add endpoint for document analysis status
+2026-03-12T10:13:36+01:00 - 10265b69 - nicolasSagon : feat : add validation rules for bulletin_salaire
+2026-03-12T10:13:36+01:00 - 0f510bcd - nicolasSagon : fix: correct invalid property name on bo
+2026-03-12T10:13:36+01:00 - 02cd73ef - nicolasSagon : feat: sonar fixes
+2026-03-11T16:02:40+01:00 - 47ce696f - SAGON NICOLAS : Merge branch 'release/v3.4.14' into develop
+2026-03-11T16:02:31+01:00 - bc649f3d - SAGON NICOLAS : Merge branch 'release/v3.4.14'
+2026-03-11T16:02:23+01:00 - fe4f0c1f - nicolasSagon : chore: bump version to 3.4.14
+2026-03-11T15:51:53+01:00 - 5c74b4aa - nicolasSagon : hotfix: remove order on spring filter logger aggretaor (#1177)
+2026-03-11T15:11:30+01:00 - 9ccb04c0 - SAGON NICOLAS : Merge branch 'release/v3.4.13' into develop
+2026-03-11T15:11:09+01:00 - edaed7ae - SAGON NICOLAS : Merge branch 'release/v3.4.13'
+2026-03-11T15:10:57+01:00 - 949cb70b - nicolasSagon : chore: bump version to 3.4.13
+2026-03-11T15:08:37+01:00 - 9a2901c2 - nicolasSagon : fix: clean deps from api-tenant (#1176)
+2026-03-11T14:20:28+01:00 - ee526a42 - Romaric : chore(api-tenant): fix tests by importing security context, remove api/application/links/* from permitAll() routes (#1170)
+2026-03-10T17:19:16+01:00 - 07ee09d4 - Romaric : feat(api-tenant/bo): add rate limiting filters for public and authenticated routes (document and files) (#1171)
+2026-03-10T12:51:54+01:00 - 0cfb6be4 - Romaric : refactor(api-tenant): remove dead code (#1153)
+2026-03-10T11:32:14+01:00 - 8b832a33 - Alix Deschamps : fix: create new active link when a tenant re-apply to an existing property
+2026-03-10T11:32:13+01:00 - 8bda3ddd - Alix Deschamps : fix: return active links only for owner property
+2026-03-10T11:30:59+01:00 - 7b266bee - nicolasSagon : hotfix: prevent ocr crash when parsing images metadata (#1173)
 2026-03-06T08:23:59Z - 5df6a55e - Romaric Haldenwang : Merge branch 'release/v3.4.12' into develop
+2026-03-06T08:23:38Z - 775e377b - Romaric Haldenwang : Merge branch 'release/v3.4.12'
 2026-03-06T08:23:12Z - 7fef3cbb - Romaric Haldenwang : chore: bump to v3.4.12
 2026-03-05T16:41:18+01:00 - c2a785f4 - Romaric : infra(logging): fix client IP when using X-Forward-For header (#1165)
 2026-03-05T10:12:10+01:00 - d02a37d4 - Romaric : infra(logging): replace X-Real-Ip by X-Forwarded-For (#1164)
 2026-03-05T09:26:03+01:00 - 12563fa5 - Romaric : feat(bo): only admin can access and view raw files (#1156)
 2026-03-05T09:20:34+01:00 - 4ca2d4e1 - Romaric : feat(task-scheduler): archive all inactive tenants including those without documents (#1157)
 2026-03-04T18:15:55+01:00 - 841fa176 - SAGON NICOLAS : Merge branch 'release/v3.4.11' into develop
+2026-03-04T18:15:48+01:00 - 08316a17 - SAGON NICOLAS : Merge branch 'release/v3.4.11'
 2026-03-04T18:15:40+01:00 - 175505da - nicolasSagon : chore: bump to v3.4.11
 2026-03-04T18:14:42+01:00 - e8afc44c - nicolasSagon : hotfix: preview url broken
 2026-03-04T17:43:22+01:00 - 11a7d952 - SAGON NICOLAS : Merge branch 'release/v3.4.10' into develop
+2026-03-04T17:43:13+01:00 - 6b6eadb7 - SAGON NICOLAS : Merge branch 'release/v3.4.10'
 2026-03-04T17:43:00+01:00 - 9b348e40 - nicolasSagon : chore: bump version to 3.4.10
 2026-03-04T16:08:55+01:00 - ee586a74 - Alix Deschamps : chore: add tenant mapper tests before refactoring
 2026-03-04T16:08:55+01:00 - ed09cca9 - Alix Deschamps : feat : add andpoint GET /api/application/links/{linkToken}/document/{documentName} and make GET /api/document/resource/{uuid} behind auth
@@ -15,6 +133,7 @@
 2026-03-04T16:08:55+01:00 - d26f0b91 - Alix Deschamps : feat : handle new document link url in partners endpoints
 2026-03-04T16:08:55+01:00 - 6c312892 - Alix Deschamps : chore: add tests for ApartmentSharingLinkRepository and DocumentRepository + integration tests
 2026-03-04T16:04:57+01:00 - a73159df - SAGON NICOLAS : Merge branch 'release/v3.4.9' into develop
+2026-03-04T16:04:49+01:00 - bc7dd1bd - SAGON NICOLAS : Merge branch 'release/v3.4.9'
 2026-03-04T16:04:39+01:00 - f595bcd3 - nicolasSagon : chore: bump to version 3.4.9
 2026-03-04T16:01:51+01:00 - 62133848 - nicolasSagon : hotfix(api-tenant): wrong preferred name returned when third party
 2026-03-04T14:47:44+01:00 - 21bddbe5 - Alix Deschamps : Merge tag 'v3.4.8' into develop

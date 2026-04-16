@@ -1,29 +1,35 @@
-## Changelog : dossierfacile-backend (30 derniers jours)
+## Changelog : dossierfacile-backend (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce changelog résume les évolutions récentes du backend de DossierFacile.fr. Les mises à jour incluent des améliorations de la sécurité, des corrections de bugs, des optimisations de performance et des refactorings importants pour simplifier et clarifier le code. Des nouvelles fonctionnalités ont également été ajoutées, notamment la gestion des feature flags et l'accès restreint à certaines fonctionnalités pour les administrateurs.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la robustesse de l'analyse documentaire (notamment les fiches de paie et les avis d'imposition), et l'expérience utilisateur dans l'interface d'administration (back-office). Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Les administrateurs peuvent désormais accéder et visualiser les fichiers bruts. [#1156](https://github.com/MTES-MCT/dossierfacile-backend/issues/1156)
-- Ajout d'un nouvel endpoint pour récupérer les documents via un lien spécifique : `/api/application/links/{linkToken}/document/{documentName}` et restriction de l'accès à l'endpoint `/api/document/resource/{uuid}` à une authentification.
-- Gestion améliorée des liens de documents pour les partenaires.
-- Correction d'un bug qui empêchait l'affichage correct des URL de prévisualisation.
-- Ajout de la fonctionnalité de feature flags, permettant d'activer ou de désactiver des fonctionnalités sans redéploiement. [#1150](https://github.com/MTES-MCT/dossierfacile-backend/issues/1150)
-- Amélioration de la gestion des visites de liens par les tenants (éviter le comptage des visites par le tenant lui-même). [#1119](https://github.com/MTES-MCT/dossierfacile-backend/issues/1119)
+- Amélioration de l'analyse des fiches de paie avec l'introduction d'une nouvelle méthode de comparaison de noms (levenshtein) et une gestion des noms composés avec tiret. [#1206] [#1195] [#1194]
+- Possibilité de relancer l'analyse des documents après modification de l'identité du locataire ou du garant. [#1205] [#1182]
+- Affichage amélioré des informations relatives aux documents dans le back-office, notamment pour les cas où les documents sont absents ou nécessitent une attention particulière. [#1196] [#1184]
+- Ajout de l'assignation d'un opérateur à une demande dans le back-office. [#1212]
+- Ajout de l'historique des emails Brevo (Sendinblue) dans la page des messages du locataire dans le back-office. [#1209]
+- Amélioration de l'affichage des informations fiscales dans le back-office, notamment pour les cas où le locataire n'a pas d'avis d'imposition. [#1201]
+- Ajout de métriques sur le tableau de bord du back-office concernant les locataires les plus anciens et le nombre de locataires avec des PDF ayant échoué. [#1217]
 
 ### Évolutions techniques
-- Refactorings importants pour supprimer du code obsolète et simplifier l'architecture, notamment concernant les endpoints liés aux partenaires, FranceConnect et la régénération de tokens. [#1147](https://github.com/MTES-MCT/dossierfacile-backend/issues/1147), [#1145](https://github.com/MTES-MCT/dossierfacile-backend/issues/1145), [#1144](https://github.com/MTES-MCT/dossierfacile-backend/issues/1144), [#1128](https://github.com/MTES-MCT/dossierfacile-backend/issues/1128), [#1129](https://github.com/MTES-MCT/dossierfacile-backend/issues/1129)
-- Amélioration de la gestion des erreurs et ajout de logs de diagnostic pour faciliter le débogage.
-- Optimisation de l'exécution des tâches planifiées pour permettre un traitement parallèle. [#1137](https://github.com/MTES-MCT/dossierfacile-backend/issues/1137)
-- Amélioration de la robustesse de la gestion des erreurs Optimistic Locking. [#1139](https://github.com/MTES-MCT/dossierfacile-backend/issues/1139)
-- Correction d'un problème de crash de Tika lors de l'extraction de métadonnées. [#1125](https://github.com/MTES-MCT/dossierfacile-backend/issues/1125)
-- Mise à jour de la version de spring-doc pour assurer la compatibilité.
-- Amélioration de la gestion des en-têtes `Content-Disposition` pour éviter les erreurs d'encodage. [#1100](https://github.com/MTES-MCT/dossierfacile-backend/issues/1100)
-- Amélioration de la journalisation des adresses IP des clients en utilisant l'en-tête `X-Forwarded-For`. [#1165](https://github.com/MTES-MCT/dossierfacile-backend/issues/1165), [#1164](https://github.com/MTES-MCT/dossierfacile-backend/issues/1164)
+- Renforcement de la sécurité du back-office avec l'application de contrôles d'accès plus stricts et des mesures de durcissement générales. [#1214] [#1208]
+- Implémentation de recommandations OWASP pour la gestion des uploads de fichiers (sécurité). [#1179]
+- Refactorisation de la validation des fiches de paie et introduction d'une classe utilitaire `IdentityMatchUtil`. [#1202]
+- Ajout de limites d'actions quotidiennes (recherche, consultation, traitement) pour les locataires dans le back-office. [#1213]
+- Correction d'un bug empêchant la réécriture des PDF chiffrés après sanitisation. [#1199]
+- Amélioration de la gestion des erreurs et des exceptions, notamment pour les analyses documentaires. [#1187]
+- Correction d'un problème de limitation de débit pour le téléchargement des documents. [#1189]
+- Mise en place d'un index sur la colonne `file_id` de la table `document_ia_file_analysis` pour améliorer les performances. [#1210]
+- Suppression des données brutes dans `raw_data` pour les analyses de documents. [#1211]
 
 ### Autres changements
-- Ajout de tests unitaires et d'intégration pour le mapper des tenants.
-- Mise à jour des IDs de templates Brevo en dur dans le code. [#1102](https://github.com/MTES-MCT/dossierfacile-backend/issues/1102)
-- Suppression de la configuration par email des clients partenaires. [#1143](https://github.com/MTES-MCT/dossierfacile-backend/issues/1143)
-- Plusieurs corrections de bugs et améliorations mineures.
-- Mises à jour de version (v3.4.6, v3.4.8, v3.4.9, v3.4.10, v3.4.11, v3.4.12).
+- Mise à jour de la documentation et des configurations.
+- Corrections de bugs mineurs et améliorations de la qualité du code.
+- Publication des versions 3.5.0, 3.5.1, 3.5.2, 3.5.3 et 3.5.4.
+- Suppression du fichier `seed` du dépôt.
+- Unification du design de l'analyse documentaire dans le back-office.
+- Amélioration de la lisibilité et de la maintenabilité du code.
+- Correction de la gestion des options refusées du garant. [#1186]
+- Prévention de l'analyse des avis d'imposition étrangers. [#1192]
+- Correction d'un hotfix pour empêcher l'analyse des documents sans analyse `document_ia_analysis`. [#1191]
