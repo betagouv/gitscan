@@ -211,7 +211,8 @@
 │   │   │       │   ├── canAddAfile.cy.js
 │   │   │       │   ├── canBookmarkAFile.cy.js
 │   │   │       │   ├── canDeleteAFile.cy.js
-│   │   │       │   └── canDeleteALink.cy.js
+│   │   │       │   ├── canDeleteALink.cy.js
+│   │   │       │   └── canSeePrivateFilesSection.cy.js
 │   │   │       ├── geolocation
 │   │   │       │   ├── canEditProjectLocationDetails.cy.js
 │   │   │       │   └── canSeeProjectLocationDetails.cy.js
@@ -382,6 +383,7 @@
 │   │   │   │   ├── 0014_alter_emailtemplate_name.py
 │   │   │   │   ├── 0015_alter_emailtemplate_name.py
 │   │   │   │   ├── 0016_alter_emailtemplate_name.py
+│   │   │   │   ├── 0017_alter_emailtemplate_name.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   └── tests
@@ -422,7 +424,12 @@
 │   │   │   │           │   ├── node_markdown.html
 │   │   │   │           │   ├── node_recommendation.html
 │   │   │   │           │   ├── preview_panel_message.html
+│   │   │   │           │   ├── recommendation_card_content.html
 │   │   │   │           │   ├── resource_preview_panel.html
+│   │   │   │           │   ├── shared_contents_draft_recommendation_card.html
+│   │   │   │           │   ├── shared_contents_file_card.html
+│   │   │   │           │   ├── shared_contents_panel.html
+│   │   │   │           │   ├── shared_contents_recommendation_card.html
 │   │   │   │           │   ├── tasks_status_buttons_js.html
 │   │   │   │           │   └── type_followup_item.html
 │   │   │   │           ├── message_item.html
@@ -705,7 +712,8 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       └── loadcommunes.py
+│   │   │   │       ├── loadcommunes.py
+│   │   │   │       └── mergecommunes.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_auto_20210713_0921.py
@@ -799,6 +807,7 @@
 │   │   │   │   ├── 0040_fill_profile_previous_activity_site.py
 │   │   │   │   ├── 0041_fill_profile_previous_activity_at.py
 │   │   │   │   ├── 0042_notification_splits.py
+│   │   │   │   ├── 0043_alter_userprofile_managers.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── password_validation.py
@@ -1119,6 +1128,8 @@
 │   │   │   │   ├── 0113_projectcreationrequest_uuid_squashed_0114_project_last_manual_reactivation.py
 │   │   │   │   ├── 0115_alter_document_the_file.py
 │   │   │   │   ├── 0116_alter_projectsite_status.py
+│   │   │   │   ├── 0117_alter_document_the_file.py
+│   │   │   │   ├── 0118_document_private.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── serializers.py
@@ -1737,6 +1748,7 @@
 │   │   │   │   │   │   ├── project_banner
 │   │   │   │   │   │   │   └── project_banner.scss
 │   │   │   │   │   │   ├── resource_preview_panel.scss
+│   │   │   │   │   │   ├── shared_contents_panel.scss
 │   │   │   │   │   │   ├── survey_grid.scss
 │   │   │   │   │   │   ├── switchtender-list.scss
 │   │   │   │   │   │   └── tasks_modal
@@ -1903,6 +1915,7 @@
 │   │   │       │   ├── SearchOrganization.js
 │   │   │       │   ├── SearchableList.js
 │   │   │       │   ├── SelectSearchable.js
+│   │   │       │   ├── SharedContentsFileCard.js
 │   │   │       │   ├── Spinner.js
 │   │   │       │   ├── StandByProject.js
 │   │   │       │   ├── Task.js
@@ -1943,6 +1956,7 @@
 │   │   │       │   ├── projectQueue.js
 │   │   │       │   ├── projects.js
 │   │   │       │   ├── resourcePreviewPanel.js
+│   │   │       │   ├── sharedContentsPanel.js
 │   │   │       │   ├── showRole.js
 │   │   │       │   ├── tasks.js
 │   │   │       │   ├── tasksData.js
@@ -1976,6 +1990,7 @@
 │   │   │       │   ├── resource-preview-panel.css.js
 │   │   │       │   ├── resources.css.js
 │   │   │       │   ├── segmented_ctrl.css.js
+│   │   │       │   ├── shared-contents-panel.css.js
 │   │   │       │   ├── survey-grid.css.js
 │   │   │       │   ├── survey.css.js
 │   │   │       │   ├── switchtender-list.css.js
@@ -2211,4 +2226,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-367 directories, 1868 files
+367 directories, 1883 files

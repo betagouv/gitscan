@@ -1,40 +1,53 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 2026-03-16)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur, notamment au niveau de la gestion des ressources et des projets, ainsi que sur la correction de bugs et l'amélioration de la robustesse de l'application. Des améliorations ont également été apportées à la gestion des notifications et des traces, et à la sécurité (RGPD).
+Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment dans les conversations et la gestion des documents, ainsi que par des corrections de bugs et des optimisations de performance. Des fonctionnalités ont été ajoutées pour faciliter la gestion des ressources et des tâches, et l'expérience utilisateur a été améliorée pour les conseillers.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage du nom du projet dans le menu supérieur.
-- Ajout d'une fonctionnalité de duplication de ressources.
-- Possibilité de promouvoir un membre en tant qu'advisor.
-- Ajout d'un indicateur visuel pour les recommandations sans ressource associée.
-- Amélioration de l'affichage des messages et des réponses dans les conversations.
-- Ajout de la possibilité de filtrer les projets par date dans l'administration.
-- Amélioration de la gestion des notifications et des traces, avec des informations plus précises sur les actions des utilisateurs.
-- Correction d'un bug empêchant l'affichage correct des breadcrumbs.
-- Ajout d'un bouton pour supprimer un filtre de temps sur les projets.
-- Amélioration de la gestion des erreurs lors de la soumission du formulaire de ressource.
-- Ajout d'un indicateur visuel pour les alertes de départ (on leave).
+- **Gestion des conversations :**
+    - Ajout de la gestion des brouillons de recommandations pour les conseillers, incluant la possibilité de les créer, modifier et supprimer.
+    - Amélioration de l'affichage des brouillons de recommandations dans le panneau de partage de contenu.
+    - Intégration des brouillons de recommandations dans le flux de travail des conversations.
+- **Gestion des documents :**
+    - Distinction claire entre les documents privés et publics, avec des permissions d'accès appropriées.
+    - Possibilité pour les conseillers de télécharger des documents privés.
+    - Amélioration de l'affichage des documents dans le panneau de partage de contenu.
+    - Ajout de notifications lors du téléchargement de documents.
+- **Gestion des tâches :**
+    - Amélioration de l'affichage et du filtrage des tâches.
+    - Correction de bugs liés à la gestion des tâches et des actions associées.
+- **CRM :**
+    - Affichage des actions des utilisateurs et des objets associés dans le CRM.
+    - Amélioration de l'affichage des informations sur les conseillers acceptés ou rejetés.
+    - Correction de bugs liés à l'affichage des informations dans le CRM.
+- **Statistiques :**
+    - Correction d'un bug empêchant l'inclusion des tâches "NON_INTERESTED" dans les exports CSV.
+    - Amélioration de la cohérence du filtrage des projets dans les statistiques et l'export CSV.
+- **Interface utilisateur :**
+    - Amélioration de l'accessibilité des panneaux de ressources et de partage de contenu.
+    - Refonte du sélecteur de catégories pour une meilleure expérience utilisateur.
+    - Suppression des alertes redondantes concernant les ressources.
+    - Correction de liens et d'URL obsolètes.
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Optimisation des performances de la liste des projets dans l'administration.
-- Mise à jour des dépendances : Django Allauth, Wagtail, sqlparse, cryptography, axios, nbconvert, pillow.
-- Amélioration du système de CI/CD pour séparer les étapes de build et de test.
-- Correction de problèmes liés à la gestion des permissions et des groupes d'utilisateurs.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Amélioration de la gestion des erreurs liées à l'envoi d'emails (RGPD).
-- Mise en place d'un système de logging plus précis pour faciliter le débogage.
+- **Refactoring :**
+    - Suppression de code mort et simplification de la logique dans plusieurs composants.
+    - Amélioration de la gestion des états et des données dans les composants Alpine.js.
+    - Standardisation de l'utilisation de `formatDate` pour la gestion des dates.
+- **Dépendances :**
+    - Mise à jour de plusieurs dépendances, notamment `Django`, `pytest`, `pillow`, `cryptography`, `vite`, `lodash`, `axios`, `picomatch`, `flatted`, `requests`, `uv` et les dépendances frontend.
+- **CI/CD :**
+    - Utilisation de `uv` pour la gestion des dépendances Python et la génération du fichier `requirements.txt`.
+- **Infrastructure :**
+    - Mise à jour de la configuration de Vite.
+    - Ajout de fichiers `.gitignore` pour exclure les fichiers sensibles et temporaires.
 
 ### Autres changements
-- Documentation mise à jour.
-- Nettoyage du code et suppression de code obsolète.
-- Correction de typos et amélioration de la qualité du code.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées.
 - Amélioration des tests unitaires et d'intégration.
-- Ajout de commentaires pour faciliter la compréhension du code.
-- Correction de problèmes de style et d'accessibilité.
-- Mise à jour de la configuration de l'application.
-- Correction d'un problème lié à l'affichage des avatars (Gravatar).
-- Amélioration de la gestion des erreurs Sentry.
-- Ajout de tests pour les nouvelles fonctionnalités.
-- Correction de bugs mineurs.
+- Correction de typos et amélioration de la lisibilité du code.
+- Ajout de commentaires pour clarifier la logique du code.
+- Mise à jour des liens vers la documentation.
+- Nettoyage du code et suppression de code redondant.
+- Ajout d'un script de gestion des communes pour l'outil géomatique.
+- Amélioration de la gestion des erreurs et des exceptions.
