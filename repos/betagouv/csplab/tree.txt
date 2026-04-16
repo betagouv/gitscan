@@ -49,6 +49,7 @@
 │   ├── notebook-example
 │   ├── ocr-example
 │   ├── postgresql-example
+│   ├── redis-example
 │   └── tycho-example
 └── src
     ├── notebook
@@ -182,6 +183,7 @@
         │   │   └── document_gateway_interface.py
         │   ├── interfaces
         │   │   ├── __init__.py
+        │   │   ├── async_usecase_interface.py
         │   │   ├── entity_interface.py
         │   │   ├── mapper_interface.py
         │   │   └── usecase_interface.py
@@ -273,7 +275,7 @@
         │   │   │   │   └── commands
         │   │   │   │       ├── __init__.py
         │   │   │   │       ├── clean_documents.py
-        │   │   │   │       ├── load_documents.py
+        │   │   │   │       ├── load_corps.py
         │   │   │   │       ├── load_offers.py
         │   │   │   │       └── vectorize_documents.py
         │   │   │   ├── migrations
@@ -296,9 +298,10 @@
         │   │   │   │   ├── 0018_rawdocument_processed_at.py
         │   │   │   │   ├── 0019_rawdocument_processing.py
         │   │   │   │   └── __init__.py
-        │   │   │   └── models
-        │   │   │       ├── __init__.py
-        │   │   │       └── raw_document.py
+        │   │   │   ├── models
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── raw_document.py
+        │   │   │   └── tasks.py
         │   │   └── shared
         │   │       ├── __init__.py
         │   │       ├── admin.py
@@ -320,13 +323,13 @@
         │   │       │   ├── 0016_remove_vectorizeddocumentmodel_unique_id_document_type_and_more.py
         │   │       │   ├── 0017_populate_processed_at.py
         │   │       │   ├── 0018_alter_vectorizeddocumentmodel_options_and_more.py
+        │   │       │   ├── 0019_remove_vectorizeddocumentmodel_embedding_hnsw_idx_and_more.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
         │   │           ├── concours.py
         │   │           ├── corps.py
-        │   │           ├── offer.py
-        │   │           └── vectorized_document.py
+        │   │           └── offer.py
         │   ├── exceptions
         │   │   ├── __init__.py
         │   │   ├── exceptions.py
@@ -385,7 +388,6 @@
         │       ├── repository_factory.py
         │       └── shared
         │           ├── __init__.py
-        │           ├── pgvector_repository.py
         │           ├── postgres_concours_repository.py
         │           ├── postgres_corps_repository.py
         │           ├── postgres_offers_repository.py
@@ -452,6 +454,7 @@
         │   │   ├── mappers.py
         │   │   ├── mixins.py
         │   │   ├── presenters.py
+        │   │   ├── tasks.py
         │   │   ├── types.py
         │   │   ├── urls.py
         │   │   └── views
@@ -460,6 +463,7 @@
         │   ├── context_processors.py
         │   ├── ingestion
         │   │   ├── __init__.py
+        │   │   ├── health.py
         │   │   ├── schemas.py
         │   │   ├── urls.py
         │   │   └── views.py
@@ -565,6 +569,7 @@
         │   │       ├── test_limit_date.py
         │   │       ├── test_unit_initialize_cv_metadata.py
         │   │       ├── test_unit_match_cv_to_opportunities.py
+        │   │       ├── test_unit_process_cv_tasks.py
         │   │       ├── test_unit_process_uploaded_cv.py
         │   │       └── test_unit_retrieve_corps.py
         │   ├── external_gateways
@@ -604,7 +609,7 @@
         │   │   │   └── test_integration_vectorize_documents.py
         │   │   ├── management
         │   │   │   ├── test_clean_documents_command.py
-        │   │   │   ├── test_load_documents_command.py
+        │   │   │   ├── test_load_corps_command.py
         │   │   │   ├── test_load_offers_command.py
         │   │   │   └── test_vectorize_documents_command.py
         │   │   ├── repository
@@ -612,7 +617,8 @@
         │   │   │   └── test_postgres_document_repository.py
         │   │   └── unit
         │   │       ├── test_unit_clean_documents.py
-        │   │       └── test_unit_load_documents.py
+        │   │       ├── test_unit_load_documents.py
+        │   │       └── test_unit_tasks.py
         │   ├── pages
         │   │   ├── __init__.py
         │   │   └── integration
@@ -623,7 +629,6 @@
         │   │   ├── __init__.py
         │   │   └── repository
         │   │       ├── __init__.py
-        │   │       ├── test_pgvector_repository.py
         │   │       ├── test_postgres_concours_repository.py
         │   │       ├── test_postgres_corps_repository.py
         │   │       └── test_postgres_offers_repository.py
@@ -642,4 +647,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-130 directories, 514 files
+130 directories, 519 files
