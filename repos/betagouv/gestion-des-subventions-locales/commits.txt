@@ -1,4 +1,171 @@
+2026-04-15T16:00:44+02:00 - e24beff3 - Maud Royer : feat(ds-proxy): scope proxy tokens to a specific demarche
+2026-04-15T15:44:23+02:00 - e25a4438 - Maud Royer : refacto(ds-proxy): store hash of proxy token instead of plaintext
+2026-04-15T15:44:23+02:00 - d76ab535 - Maud Royer : Add GraphQL proxy for DS API filtered by instructeurs
+2026-04-15T15:44:23+02:00 - a15e49a5 - Maud Royer : feat(graphql): add configuration for DS GraphQL schema with authorization
+2026-04-15T14:08:58Z - 15d3a1b9 - Maud Royer : Proxy GraphQL DS filtré par instructeurs (#641)
+2026-04-15T13:20:45Z - 9d504185 - maxi_malain : Ne pas re-basculer un projet sur une enveloppe plus récente lors d'une mise à jour de dossier (#656)
+2026-04-15T12:43:01Z - ef9ae4f3 - Maud Royer : Sauvegarde des filtres de simulation sur le modèle (#650)
+2026-04-13T17:57:28+02:00 - 71fd4fd0 - maximallain : fix(projet): conserver l'enveloppe existante lors de la mise à jour d'un dossier accepté
+2026-04-13T16:32:59+02:00 - d95cd679 - maximallain : chore(bo): add action to move a programmation projet to 2025
+2026-04-13T16:29:03+02:00 - a2df35bc - Maud Royer : ci(deploy): add gsl-demo deployment on tag push
+2026-04-13T16:12:16Z - d0d44718 - maxi_malain : Ajout d'une action pour programmer les projets acceptés 2026 vers l'enveloppe 2025 (#654)
+2026-04-13T15:03:52+02:00 - 714c3b6e - Maud Royer : fix(ds): keep sync cursor on dossier import error
+2026-04-13T14:53:04Z - 7bd057d7 - Maud Royer : Conserver le curseur de synchronisation en cas d'erreur d'import de dossier (#652)
+2026-04-13T14:52:24Z - 15a7b14c - Maud Royer : Ajout du déploiement de l'environnement de démo (#653)
+2026-04-13T11:47:31+02:00 - 675a5f67 - Maud Royer : feat: sauvegarde des filtres de simulation sur le modèle Simulation
+2026-04-10T16:26:02+02:00 - d2fa5151 - Maud Royer : fix(logging): add weasyprint logger and unify library logging level
+2026-04-10T15:33:46+02:00 - b36855cf - Maud Royer : ci: fix rebase artifacts (remove develop branch, deduplicate permissions)
+2026-04-10T15:31:50+02:00 - d2e43094 - Maud Royer : ci(tests): use SQLite in-memory database for CI tests
+2026-04-10T15:31:50+02:00 - 8d183a06 - Maud Royer : ci(tests): use SQLite on PRs, PostgreSQL on merge queue
+2026-04-10T15:31:50+02:00 - 8c7b2133 - Maud Royer : ci: restrict GITHUB_TOKEN permissions to contents: read
+2026-04-10T15:31:50+02:00 - 8309ccdc - Maud Royer : ci(tests): split CI into parallel lint and test jobs
+2026-04-10T14:59:51+02:00 - 0e28595a - Maud Royer : docs: add production release instructions to README
+2026-04-10T14:55:14+02:00 - cd4c7b6b - Maud Royer : ci(deploy): add production deployment workflow via GitHub Actions
+2026-04-10T14:29:09Z - 3871fbbf - Maud Royer : Ajout du logger weasyprint et unification du niveau de log des librairies (#651)
+2026-04-10T13:49:31Z - 8d2260d0 - Maud Royer : Utiliser SQLite en mémoire pour les tests CI (#596)
+2026-04-10T13:04:34Z - 5b4dc802 - Maud Royer : Ajout du workflow de déploiement en production (#647)
+2026-04-08T17:29:43+02:00 - 42632b50 - Maud Royer : Rattrapage de main (sans MEP) (#649)
+2026-04-08T16:56:41+02:00 - e1beb692 - Maud Royer : fix(test): enable parallel test execution with pytest-xdist
+2026-04-08T15:05:30Z - a1572fd4 - Maud Royer : Correction de l'exécution des tests en parallèle avec pytest-xdist (#648)
+2026-04-08T12:43:33Z - d78bc41f - Maud Royer : Backport main dans develop (#646)
+2026-04-08T12:19:56+02:00 - c9aec5f7 - Maud Royer : MEP 8/04/2026 (#645)
+2026-04-08T11:29:48+02:00 - 6fd51055 - Maud Royer : fix(notification): use current date for date-arrete mention instead of arrete.created_at
+2026-04-08T09:38:31Z - 20eb6963 - Maud Royer : Utilisation de la date courante pour la mention date-arrêté (#644)
+2026-04-07T15:14:43+02:00 - 3c466ce4 - Maud Royer : fix(projet): fix cofinancements not displaying on projet detail page
+2026-04-07T14:45:11+02:00 - 6b8c6ad8 - Maud Royer : feat(filters): add cofinancement, zonage and contractualisation filters
+2026-04-07T13:19:31Z - 3f6fdea9 - Maud Royer : Correction de l'affichage des co-financements sur la page projet (#643)
+2026-04-07T12:51:44Z - d4c3acc0 - Maud Royer : Ajout de filtres cofinancement, zonage et contractualisation (#642)
+2026-04-03T15:21:07+02:00 - ef78e7cc - Maud Royer : feat(filters): add budget vert, dotation sollicitée and dossier complet filters
+2026-04-03T14:33:32Z - 0a50c599 - Maud Royer : Ajout de filtres budget vert, dotation sollicitée et dossier complet (#640)
+2026-04-03T11:59:32+02:00 - 0e5e7ae0 - Maud Royer : fix(notification): use arrete.created_at for date-arrete mention instead of timezone.now()
+2026-04-03T11:16:08Z - 726de76c - Maud Royer : Synchronisation du montant lorsqu'un projet est accepté sur Turgot (#638)
+2026-04-03T10:39:10+02:00 - 2be5ed6f - Maud Royer : refacto(simulation): use TauxWidget for demande_taux and deduplicate hidden headers logic
+2026-04-03T10:21:07+02:00 - 9394ae4d - Maud Royer : feat(filters): add DETR category multiselect filter on project lists
+2026-04-03T10:04:30Z - 308f4e75 - Maud Royer : Ajout des variables de publipostage manquantes (#633)
+2026-04-03T08:52:58Z - f03473a1 - Maud Royer : Refactoring du système de mentions de publipostage (#632)
+2026-04-03T08:43:52Z - 9b208aad - Maud Royer : Ajout de la colonne "Taux sollicité" dans l'export (#636)
+2026-04-03T08:25:57Z - 2445e60a - Maud Royer : Filtres multiselect par catégorie DETR/DSIL sur les listes de projets (#634)
+2026-04-03T08:14:32Z - d7f2160d - Maud Royer : Changement des titres des pages (Gestion des Subventions Locales -> Turgot) (#639)
+2026-04-03T08:12:03Z - adaf80f3 - Maud Royer : Amélioration de la performance de la page projet (BO) (#637)
+2026-04-03T08:11:07Z - 14de1dc6 - Maud Royer : Filtres et barre d'outils pleine largeur comme le tableau (#635)
+2026-04-03T08:10:03Z - 96b8de88 - Maud Royer : Ajout de filtres par date sur les listes projets, simulations et programmation (#625)
+2026-04-03T08:10:01Z - b110462a - Maud Royer : Corriger la réouverture des modales de statut avec contenu obsolète (#621)
+2026-04-02T17:23:17+02:00 - e63c5a4c - maximallain : feat: add siret and amount in words
+2026-04-02T17:03:26+02:00 - faa81d47 - maximallain : fix: when a projet is accepted, we sync assiette and montant
+2026-04-02T16:56:48+02:00 - 9102773e - maximallain : chore: rename page name from GSL to Turgot
+2026-04-02T11:50:22+02:00 - 49a3cc0b - maximallain : fix: projet admin page perf pb
+2026-04-02T09:25:10+02:00 - 389ea466 - maximallain : feat: add taux sollicite column in export
+2026-04-01T19:47:19+02:00 - 68d2b4fd - maximallain : feat: update dgcl templates
+2026-04-01T19:21:54+02:00 - 14c0d927 - maximallain : feat: add civilite
+2026-04-01T19:15:11+02:00 - d344642e - maximallain : fix tiptap editor
+2026-04-01T19:15:11+02:00 - 8237f5b7 - maximallain : feat: add address into mentions
+2026-04-01T19:15:11+02:00 - 3eb21768 - maximallain : Ajout des variables de publipostage manquantes
+2026-04-01T19:14:07+02:00 - dba79ec9 - maximallain : refacto: use a real key instead of a number
+2026-04-01T19:14:07+02:00 - ac9ff479 - maximallain : refacto: use mention class
+2026-04-01T17:22:54Z - 62089fd0 - maxi_malain : Correction du header CSS lettre/arrêté (#631)
+2026-04-01T16:58:43+02:00 - f64d0694 - Maud Royer : feat(ui): make filters and table toolbar full width like the table
+2026-04-01T16:55:54Z - 3c10e6dd - maxi_malain : Stockage régulier du code source chiffré (#626)
+2026-04-01T16:42:24Z - 8913bf47 - maxi_malain : Récupération de la civilité du porteur de projet (#630)
+2026-04-01T15:52:43+02:00 - f44626ea - Maud Royer : feat(filters): add DSIL category multiselect filter on project lists
+2026-04-01T15:32:07+02:00 - 93623c39 - maximallain : feat: get dossier civilite
+2026-04-01T15:14:39+02:00 - e470b4d6 - maximallain : fix: lettre or arrete header
+2026-04-01T14:56:51+02:00 - a3891701 - Maud Royer : feat(filters): add date range filters to projet, simulation, and programmation views
+2026-04-01T12:36:17+02:00 - 2b4ee40c - Maud Royer : fix(filters): use max instead of sum for assiette and taux sorting on projet list
+2026-04-01T10:51:07+02:00 - 4c9781d6 - maximallain : fix: display back enveloppe
+2026-04-01T10:41:25Z - 4979d1e9 - Maud Royer : Ajout du tri sur toutes les colonnes visibles des tableaux (#624)
+2026-04-01T10:10:17Z - 1834ae7e - Maud Royer : On répare le bloc enveloppe des Simulations (#628)
+2026-04-01T09:35:59+02:00 - ba9439af - maximallain : chore: remove compte urls
+2026-04-01T08:09:01Z - f3a4678c - maxi_malain : Retrait des urls de login non utilisés (#623)
+2026-03-31T17:24:28+02:00 - d7e1c455 - maximallain : chore: create github action to create a code backup
+2026-03-31T16:11:32+02:00 - 935e3c6a - Maud Royer : feat(filters): add sorting on all visible table columns
+2026-03-31T14:54:51+02:00 - b2b67ea4 - maximallain : fix: add validation to enveloppe and reported projet
+2026-03-31T14:16:47+02:00 - cfa76755 - Maud Royer : refactor(views): missing prefetch_related in ProgrammationProjetListView
+2026-03-31T13:10:01Z - 15f5a9fd - maxi_malain : Ajout de validations sur l'enveloppe et sur les dossiers reportés (#622)
+2026-03-31T12:42:03Z - 5c31a629 - maxi_malain : Affichage du nombre de projets notifiés au niveau des simulations (#619)
+2026-03-31T12:40:05Z - 9f1a09cc - Maud Royer : Refacto des FilterSets et pagination de SimulationDetailView (#620)
+2026-03-31T12:30:11Z - 9746531f - Maud Royer : Remplacer les agrégats ProjetService par ProjetQuerySet.totals() (#617)
+2026-03-31T12:21:32Z - 11b7b1c9 - Maud Royer : Performances : optimiser les prefetch/select_related des vues (#611)
+2026-03-31T12:03:59+02:00 - 9499eb10 - Maud Royer : fix(simulation): refresh row on modal close to prevent stale modal reopen
+2026-03-30T10:38:06+02:00 - 54b83503 - maximallain : feat: add notified badge
+2026-03-27T18:43:31+01:00 - 8a9f9b01 - Maud Royer : fix(tests): provide user with perimetre to export view tests
+2026-03-27T18:24:52+01:00 - 216de713 - Maud Royer : refacto(views, filters): refactor FilterSets and SimulationDetailView pagination
+2026-03-27T18:16:33+01:00 - 244cf7d7 - Maud Royer : refacto(views, filters): refactor FilterSets and SimulationDetailView pagination
+2026-03-27T17:32:42+01:00 - a78eafe0 - maximallain : chore: update wording "validé" => "accepté"
+2026-03-27T16:19:33+01:00 - 60466afa - maximallain : chore: centralize matomo event categories and actions in a file
+2026-03-27T16:19:23Z - 230fa954 - maxi_malain : Centralisation des événements Matomo dans un fichier de constantes (catégories et actions) (#618)
+2026-03-27T16:19:21Z - 18bfbacf - maxi_malain : Afficher l'EPCI sur la page projet (#615)
+2026-03-27T15:55:00+01:00 - 5062a896 - Maud Royer : MEP vendredi 27/03/26 (hotfix) (#616)
+2026-03-27T15:54:28+01:00 - fddc6634 - Maud Royer : refactor(models, views, tests): replace `ProjetService` aggregates with `ProjetQuerySet.totals()`
+2026-03-27T15:48:49+01:00 - b83e0e49 - Maud Royer : fix(simulation): skip montant validation for pending SimulationProjet
+2026-03-27T15:46:16+01:00 - bb5072be - Maud Royer : refacto(views): optimize queryset prefetching and select_related chains
+2026-03-27T15:32:48+01:00 - 6a4b37d4 - maximallain : feat: display epci in projet page
+2026-03-27T15:12:44+01:00 - 4fcedd3f - maxi_malain : MEP vendredi 27/03/26 (matomo) (#613)
+2026-03-27T14:54:32+01:00 - 5a327961 - Maud Royer : refacto(filters): iterate filter.form with widget-driven templates
+2026-03-27T14:53:36+01:00 - f208129a - Maud Royer : refacto(filters): consolidate amount-range filter templates
+2026-03-27T14:53:36+01:00 - c6abc638 - Maud Royer : refacto(filters): remove dead categorie DETR filter
+2026-03-27T14:53:36+01:00 - be4a1faa - Maud Royer : refacto(filters): reuse for_perimetre() in filter_territoire
+2026-03-27T14:53:36+01:00 - 8c6c19e3 - Maud Royer : refacto(filters): make ui_multiselect auto-compute placeholder and is_active
+2026-03-27T14:53:36+01:00 - 707fcc76 - Maud Royer : refacto(filters): split BaseProjetFilters into ProjetFilters and SimulationProjetFilters
+2026-03-27T14:52:01+01:00 - c6dd5145 - Maud Royer : fix(simulation): skip montant validation for pending SimulationProjet
+2026-03-27T14:43:00Z - 40f2ce1b - Maud Royer : Refacto des filtres projet : split, nettoyage et simplification (#610)
+2026-03-27T13:57:05Z - 941192ad - Maud Royer : Désactiver la validation du montant pour les SimulationProjet en attente (#614)
+2026-03-27T13:00:35+01:00 - 863097dc - maximallain : fix: update header height for taux in table
+2026-03-27T12:52:42+01:00 - 0601fa4e - maximallain : fix(matomo): csp update
+2026-03-27T12:52:34+01:00 - 8e31bb98 - maximallain : fix(matomo): csp update
+2026-03-27T12:11:53+01:00 - b9b80425 - maximallain : fix(matomo): csp update
+2026-03-27T12:05:26Z - 218fa7df - maxi_malain : Ajustement de la hauteur du header (#602)
+2026-03-27T12:02:23+01:00 - eda77c8c - maximallain : refacto: use properties instead of computing in a method
+2026-03-27T11:54:58+01:00 - f0f7c9c4 - maximallain : chore: extract CSS class and autre label constants in table_columns
+2026-03-27T11:54:58+01:00 - 1479ee1c - maximallain : feat(projets): display zonage and contractualisation as new columns
+2026-03-27T11:54:58+01:00 - 09c99d13 - maximallain : chore: avoid N+1 on zonage/contractualisation and deduplicate list builder
+2026-03-27T11:37:50Z - 9cedf493 - maxi_malain : Réparation de matomo (CSP) (#612)
+2026-03-27T11:32:04+01:00 - 082f71dc - maximallain : fix: xss
+2026-03-27T11:12:55Z - 632130ee - maxi_malain : Ajouter les colonnes Zonage et Contractualisation (#599)
+2026-03-27T10:41:16Z - 8225aa4c - maxi_malain : Récupération et affichage des cofinancements (#595)
+2026-03-24T12:36:16+01:00 - c83134de - maximallain : fix: save None when removing value
+2026-03-24T12:36:16+01:00 - 92debc5a - maximallain : chore: optimize projets tables
+2026-03-24T12:36:16+01:00 - 3d5f4bae - maximallain : chore: remove autre_aide
+2026-03-24T12:36:12+01:00 - debc015d - maximallain : feat: add cofinancement
+2026-03-24T11:27:19Z - 0952a69e - maxi_malain : Récupérer et afficher le nom de l'EPCI dans les tableaux de projets (#600)
+2026-03-24T10:54:43+01:00 - c1f213d7 - maximallain : refacto: set width as Column property
+2026-03-24T10:06:36+01:00 - 6550619d - maximallain : fix(matomo): csp update
+2026-03-24T09:23:18Z - c844f0a6 - maxi_malain : Réparation de matomo (CSP) (#609)
+2026-03-24T08:58:10Z - 15fb8924 - Maud Royer : Tri des tableaux par colonnes cliquables avec indicateur actif dans la barre de filtres (#597)
+2026-03-23T16:38:24+01:00 - ea82b5d5 - Maud Royer : feat(css): improve sort dissmiss button and table total styles
+2026-03-23T16:33:51+01:00 - 5190ff00 - maxi_malain : MEP lundi 23/03/26 (#608)
+2026-03-23T13:54:47+01:00 - 3acdfa6d - Maud Royer : Pouvoir modifier le taux même si le montant est supérieur à l'assiette (#607)
+2026-03-23T12:59:29Z - b5766425 - Maud Royer : Utiliser des erreurs de validation non-field dans les méthodes clean() (#606)
+2026-03-23T12:54:35+01:00 - 97409eaf - maximallain : fix: taux update
+2026-03-23T12:11:56+01:00 - 51bc6848 - Maud Royer : refacto(core, simulation): use non-field validation errors in clean() methods
+2026-03-23T11:10:41Z - 3a815517 - maxi_malain : Réparation de la toolbar Tiptap (#605)
+2026-03-23T11:10:38Z - 2bce7892 - maxi_malain : Réparation de la barre de recherche sur la page enveloppe du BO (#603)
+2026-03-19T17:25:04+01:00 - cce2b803 - maximallain : fix: tiptap toolbar
+2026-03-19T16:44:42+01:00 - 27c45620 - maximallain : chore: update matomo action name
+2026-03-19T16:10:54Z - f4e1d9c8 - maxi_malain : Mise à jour des noms d'action Matomo (#604)
+2026-03-19T16:08:53+01:00 - 9ac986ce - maximallain : fix: enveloppe admin search
+2026-03-19T14:33:49+01:00 - 58b3e372 - maximallain : feat: add epci column
+2026-03-19T12:25:20Z - 69df604d - Maud Royer : Corriger la bordure entre lignes de double dotation (#601)
+2026-03-19T11:32:33+01:00 - 7806aca2 - Maud Royer : fix(css): override DSFR gradient border for double-dotation rows
+2026-03-19T11:12:46+01:00 - 0d69e881 - Maud Royer : feat(js): enhance table edit form UX
+2026-03-19T10:17:48Z - 3bd9b977 - Maud Royer : Édition inline des commentaires dans la simulation (#588)
+2026-03-19T09:42:23Z - c94ab199 - maxi_malain : Afficher le prénom et nom du demandeur sur la page projet (#598)
+2026-03-18T17:44:45+01:00 - 10a6ee4d - Maud Royer : fix(templates): remove block tags from included templates
+2026-03-18T17:26:27+01:00 - 0ee6bdca - maximallain : feat: display porteur name
+2026-03-18T17:26:17+01:00 - b71957c3 - Maud Royer : feat(core): add sortable column headers with active sort indicator in filter bar
+2026-03-18T15:37:28+01:00 - 965b165f - Maud Royer : feat(simulation): improve inline comment editing UX
+2026-03-18T15:37:28+01:00 - 0039fbd8 - Maud Royer : feat(simulation): add inline editing for comment columns
+2026-03-18T14:25:50Z - d403f4b0 - Maud Royer : Accélérer la suite de tests (~20% plus rapide) (#594)
+2026-03-18T14:11:07Z - bb7846ff - maxi_malain : Correction du format d'export de tableau de simulation (#593)
+2026-03-18T12:31:39+01:00 - d49e4b0b - Maud Royer : ci(workflows): update Python setup action to v6 and enable pip caching
+2026-03-18T12:17:42+01:00 - 2d89c393 - Maud Royer : perf(tests): accélérer la suite de tests (~20% plus rapide)
+2026-03-18T11:15:55+01:00 - 7391f024 - maximallain : fix: when arrondissement is None
+2026-03-18T11:15:47Z - 82d1ced6 - maxi_malain : Correction de l'affichage de l'arrondissement quand il n'est pas présent (#592)
+2026-03-18T11:11:01+01:00 - 2177fc69 - maximallain : fix: number format export csv/ods/xls
+2026-03-18T09:52:55Z - 8f0b8d58 - Maud Royer : Mise à jour Django 6.0 et migration vers le CSP natif (#590)
+2026-03-18T09:04:36Z - f4893afd - Maud Royer : Réparer le css sur staging (#591)
+2026-03-17T18:37:40+01:00 - e6558e28 - maximallain : fix: désactiver les checksums SRI de django-dsfr
 2026-03-17T16:58:36Z - abc0e08d - Maud Royer : Activation du cache-busting pour les fichiers statiques (#589)
+2026-03-17T14:26:27+01:00 - 86e1b704 - Maud Royer : upgrade: migrate to Django 6.0 and built-in CSP support
 2026-03-17T13:24:03Z - 419c775c - maxi_malain : Amélioration du style des filtres (#587)
 2026-03-17T10:59:27+01:00 - 4c28a358 - Maud Royer : feat(settings): use ManifestStaticFilesStorage for static files cache busting
 2026-03-17T10:28:01+01:00 - 06b773d5 - maximallain : fix: remove useless fr-col
@@ -18,6 +185,7 @@
 2026-03-13T15:23:05+01:00 - e0d7c394 - maximallain : chore: add some matomo events
 2026-03-13T15:21:39+01:00 - 7a7b4de1 - maximallain : chore(matomo): create events system
 2026-03-13T14:49:35+01:00 - b74a9cf8 - maximallain : chore: always use updated_since to fetch dn dossiers
+2026-03-13T11:16:11+01:00 - cfcd71d8 - maxi_malain : MEP vendredi 13/03/26 (#585)
 2026-03-13T11:14:18+01:00 - 339a2164 - Maud Royer : fix(ui): improve column visibility dropdown layout
 2026-03-13T10:28:14+01:00 - 822d5836 - Maud Royer : fix(models): move DotationProjet validation to clean_fields() to support field exclusion in ModelForms
 2026-03-13T10:27:03+01:00 - a2c55b44 - Maud Royer : refacto(simulation): replace function views with CBV for inline cell editing
@@ -127,8 +295,10 @@
 2026-02-20T15:00:15+01:00 - c73dd081 - maximallain : chore: move relation between Dossier and DossierData to DossierData
 2026-02-20T13:51:26+01:00 - 471ccec0 - maxi_malain : Déplacer la relation de Demarche depuis DossierData vers Dossier (#536)
 2026-02-20T13:51:07+01:00 - 395818c6 - maxi_malain : Permettre la modification des données d'un Dossier via l'admin (#539)
+2026-02-20T12:53:12+01:00 - 92df29d9 - maxi_malain : Hotfix vendredi 20/02/26 (#542)
 2026-02-20T12:38:20+01:00 - 689e2a3d - Maud Royer : Ajoute le code du département à la logique d'import d'Arrondissement (#541)
 2026-02-20T12:37:23+01:00 - 4ae992ae - Maud Royer : fix(importer): include department code in arrondissement lookup logic
+2026-02-20T11:57:30+01:00 - c7745711 - maxi_malain : MEP vendredi 20/02/26 (#540)
 2026-02-20T11:42:00+01:00 - f4067b6d - Maud Royer : feat(core): add OTP two-factor authentication for staff users
 2026-02-20T11:42:00+01:00 - 7cee93bd - Maud Royer : fix(core): sanitize `next` URL parameter in OTP flow
 2026-02-20T11:42:00+01:00 - 2739d86b - Maud Royer : feat(core): add OTP toggle via settings for local development

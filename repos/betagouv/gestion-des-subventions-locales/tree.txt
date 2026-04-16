@@ -4,6 +4,8 @@
 ├── .github
 │   ├── pull_request_template.md
 │   └── workflows
+│       ├── backup.yml
+│       ├── deploy-prod.yml
 │       └── django.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
@@ -31,6 +33,7 @@
 │   ├── urls.py
 │   ├── utils
 │   │   ├── context_processors.py
+│   │   ├── csp.py
 │   │   └── logging_formatters.py
 │   └── wsgi.py
 ├── gsl_core
@@ -46,6 +49,7 @@
 │   │       ├── create_perimetres.py
 │   │       └── init_document_sizes.py
 │   ├── matomo.py
+│   ├── matomo_constants.py
 │   ├── middlewares.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -109,8 +113,10 @@
 │   │   │   └── table_cells
 │   │   │       ├── _common_cell.html
 │   │   │       ├── _default_header.html
+│   │   │       ├── _list_cell.html
 │   │   │       ├── _other_dotation_cell.html
 │   │   │       ├── _yes_no_cell.html
+│   │   │       ├── cofinancements.html
 │   │   │       ├── date_depot.html
 │   │   │       └── notification.html
 │   │   └── includes
@@ -136,6 +142,7 @@
 │   │   ├── test_models.py
 │   │   ├── test_otp.py
 │   │   ├── test_tasks.py
+│   │   ├── test_template_filters.py
 │   │   ├── test_user_import.py
 │   │   └── test_user_model.py
 │   ├── urls.py
@@ -150,7 +157,8 @@
 │   ├── forms.py
 │   ├── graphql
 │   │   ├── ds_mutations.gql
-│   │   └── ds_queries.gql
+│   │   ├── ds_queries.gql
+│   │   └── graphql.config.yml
 │   ├── importer
 │   │   ├── __init__.py
 │   │   ├── demarche.py
@@ -230,6 +238,14 @@
 │   │   ├── 0047_alter_dossier_ds_demarche.py
 │   │   ├── 0048_move_dossier_relation_to_dossierdata.py
 │   │   ├── 0049_demarche_sync_cursor_alter_demarche_updated_since.py
+│   │   ├── 0050_add_porteur_de_projet_epci_to_dossier.py
+│   │   ├── 0050_cofinancement.py
+│   │   ├── 0051_merge_20260324_1235.py
+│   │   ├── 0051_remove_dossier_demande_autres_aides_delete_autreaide.py
+│   │   ├── 0052_merge_20260324_1406.py
+│   │   ├── 0052_merge_20260327_1130.py
+│   │   ├── 0053_merge_20260327_1201.py
+│   │   ├── 0054_add_porteur_de_projet_civilite_to_dossier.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -279,6 +295,22 @@
 │   │       └── test_views.py
 │   ├── urls.py
 │   └── views.py
+├── gsl_ds_proxy
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── filters.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── test_filters.py
+│   │   └── test_views.py
+│   ├── urls.py
+│   └── views.py
 ├── gsl_notification
 │   ├── __init__.py
 │   ├── admin.py
@@ -302,6 +334,7 @@
 │   │   ├── 0014_arrete_size_lettrenotification_size.py
 │   │   ├── 0015_add_antivirus_scan_fields.py
 │   │   ├── 0016_modelearrete_is_infected_modelearrete_last_scan_and_more.py
+│   │   ├── 0017_migrate_mention_ids_to_keys.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── signals.py
@@ -397,9 +430,10 @@
 │   ├── backends.py
 │   ├── middleware.py
 │   ├── templates
-│   │   └── registration
+│   │   └── gsl_oidc
 │   │       └── login.html
-│   └── urls.py
+│   ├── urls.py
+│   └── views.py
 ├── gsl_pages
 │   ├── __init__.py
 │   ├── apps.py
@@ -448,6 +482,7 @@
 │   │   ├── 0023_alter_enveloppe_perimetre.py
 │   │   ├── 0024_remove_programmationprojet_notified_at.py
 │   │   ├── 0025_enveloppe_created_at_enveloppe_updated_at.py
+│   │   ├── 0026_add_min_value_validator_to_enveloppe_montant.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -462,20 +497,18 @@
 │   │       └── checkboxSelection.js
 │   ├── table_columns.py
 │   ├── templates
-│   │   ├── gsl_programmation
-│   │   │   ├── enveloppe_form.html
-│   │   │   ├── programmation_projet_detail.html
-│   │   │   ├── programmation_projet_list.html
-│   │   │   ├── tab_programmation_projet
-│   │   │   │   ├── tab_notes.html
-│   │   │   │   ├── tab_projet.html
-│   │   │   │   └── tabs.html
-│   │   │   └── table_cells
-│   │   │       ├── _other_dotation_row.html
-│   │   │       ├── documents.html
-│   │   │       └── notification.html
-│   │   └── includes
-│   │       └── _filter_notified.html
+│   │   └── gsl_programmation
+│   │       ├── enveloppe_form.html
+│   │       ├── programmation_projet_detail.html
+│   │       ├── programmation_projet_list.html
+│   │       ├── tab_programmation_projet
+│   │       │   ├── tab_notes.html
+│   │       │   ├── tab_projet.html
+│   │       │   └── tabs.html
+│   │       └── table_cells
+│   │           ├── _other_dotation_row.html
+│   │           ├── documents.html
+│   │           └── notification.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -570,16 +603,12 @@
 │   │   │       └── _projet_row.html
 │   │   └── includes
 │   │       ├── _comment_arbitrage_card.html
-│   │       ├── _filter_categorie_detr.html
-│   │       ├── _filter_cout_total.html
-│   │       ├── _filter_dotation.html
+│   │       ├── _filter_amount_range.html
+│   │       ├── _filter_date_range.html
 │   │       ├── _filter_montant_demande.html
-│   │       ├── _filter_montant_previsionnel.html
-│   │       ├── _filter_montant_retenu.html
-│   │       ├── _filter_porteur.html
-│   │       ├── _filter_status.html
+│   │       ├── _filter_multiselect.html
+│   │       ├── _filter_select.html
 │   │       ├── _filter_territoire.html
-│   │       ├── _filter_trier_par.html
 │   │       ├── _notes_detail.html
 │   │       ├── _projet_list_filters.html
 │   │       ├── _projets_table.html
@@ -588,6 +617,8 @@
 │   │           ├── _projet_financial_informations.html
 │   │           ├── _status_and_notification_status_card.html
 │   │           └── dotation_montant_info.html
+│   ├── templatetags
+│   │   └── __init__.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -616,15 +647,12 @@
 │   │   ├── test_views.py
 │   │   ├── utils
 │   │   │   ├── __init__.py
-│   │   │   ├── test_filter_utils.py
 │   │   │   └── test_utils.py
 │   │   └── views
-│   │       ├── test_projet_detail.py
-│   │       └── test_projet_list_category_detr.py
+│   │       └── test_projet_detail.py
 │   ├── urls.py
 │   ├── utils
 │   │   ├── django_filters_custom_widget.py
-│   │   ├── filter_utils.py
 │   │   ├── projet_filters.py
 │   │   ├── projet_page.py
 │   │   └── utils.py
@@ -633,6 +661,7 @@
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── filters.py
 │   ├── forms.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -658,6 +687,7 @@
 │   │   ├── 0021_alter_simulation_created_at_and_more.py
 │   │   ├── 0022_simulation_columns_visibility.py
 │   │   ├── 0023_alter_simulationprojet_montant.py
+│   │   ├── 0024_simulation_filters.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -675,9 +705,10 @@
 │   │       │   └── dotationDropdown.js
 │   │       ├── handleInteractionInSimulationProjet.js
 │   │       ├── handleInteractionInSimulationProjetAnnotations.js
-│   │       └── modules
-│   │           ├── handleDotationUpdate.js
-│   │           └── utils.js
+│   │       ├── modules
+│   │       │   ├── handleDotationUpdate.js
+│   │       │   └── utils.js
+│   │       └── tableEditForms.js
 │   ├── table_columns.py
 │   ├── templates
 │   │   ├── gsl_simulation
@@ -693,9 +724,11 @@
 │   │   │   └── table_cells
 │   │   │       ├── _other_dotation_row.html
 │   │   │       ├── assiette.html
+│   │   │       ├── comment.html
 │   │   │       ├── dotation.html
 │   │   │       ├── edit_forms
 │   │   │       │   ├── _assiette_edit_form.html
+│   │   │       │   ├── _comment_edit_form.html
 │   │   │       │   ├── _montant_edit_form.html
 │   │   │       │   └── _taux_edit_form.html
 │   │   │       ├── montant_retenu.html
@@ -756,7 +789,6 @@
 │   │       ├── test_patch_projet.py
 │   │       ├── test_patch_simulation_projet.py
 │   │       ├── test_revert_notified_projet.py
-│   │       ├── test_simulation_category_detr.py
 │   │       ├── test_simulation_create_view.py
 │   │       ├── test_simulation_delete_view.py
 │   │       ├── test_simulation_detail_view.py
@@ -806,4 +838,4 @@
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-149 directories, 659 files
+152 directories, 688 files
