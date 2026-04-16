@@ -44,26 +44,21 @@
 │   │       └── image2md.md
 │   ├── config.jsonc
 │   ├── context
-│   │   ├── backend
-│   │   │   ├── api.md
-│   │   │   ├── database.md
-│   │   │   └── migrations.md
-│   │   ├── frontend
-│   │   │   ├── forms.md
-│   │   │   ├── maps.md
-│   │   │   └── react.md
-│   │   ├── quality
-│   │   │   ├── dependencies.md
-│   │   │   ├── errors.md
-│   │   │   ├── security.md
-│   │   │   └── testing.md
-│   │   └── required
-│   │       ├── architecture.md
-│   │       ├── coding-style.md
-│   │       ├── critical-thinking.md
-│   │       ├── dev.md
-│   │       ├── docs.md
-│   │       └── modules.md
+│   │   ├── api-patterns.md
+│   │   ├── architecture.md
+│   │   ├── commands.md
+│   │   ├── conventions.md
+│   │   ├── database.md
+│   │   ├── deployment.md
+│   │   ├── domain.md
+│   │   ├── git-workflow.md
+│   │   ├── maps.md
+│   │   ├── nextjs-patterns.md
+│   │   ├── security.md
+│   │   ├── stack.md
+│   │   ├── state-management.md
+│   │   ├── styling.md
+│   │   └── testing.md
 │   ├── mcps
 │   │   ├── .env.example
 │   │   ├── README.md
@@ -75,6 +70,7 @@
 │       ├── claude
 │       │   ├── statusline-ccusage.sh
 │       │   └── statusline.readme.md
+│       ├── log.sh
 │       ├── validate-command.mjs
 │       └── validate-command.readme.md
 ├── .buildpacks
@@ -98,8 +94,8 @@
 │   ├── launch.json
 │   └── settings.json
 ├── AGENTS.md
-├── ARCHITECTURE.md
 ├── Aptfile
+├── CLAUDE.md
 ├── DEVELOPMENT.md
 ├── Procfile
 ├── README.md
@@ -471,7 +467,7 @@
 │   │   ├── enrr_*.png  (5 files)
 │   │   ├── github-brands.svg
 │   │   ├── grid-line.svg
-│   │   ├── icon-*.png  (6 files)
+│   │   ├── icon-*.png  (11 files)
 │   │   ├── marker-blue.png
 │   │   ├── marker-green.png
 │   │   ├── marker-red.png
@@ -517,12 +513,18 @@
 │   │   ├── banner_chauffage_gaz.png
 │   │   ├── banner_*.jpg  (11 files)
 │   │   ├── banner_infos-copro.png
+│   │   ├── banner_simulateur.webp
 │   │   ├── campagnes_*.webp  (18 files)
 │   │   ├── carto-addresses.png
+│   │   ├── chaleur-renouvelable-timeline.svg
 │   │   ├── chauffage_collectif_fioul.svg
 │   │   ├── chauffage_collectif_gaz.svg
 │   │   ├── chauffage_reseau_chaleur.svg
 │   │   ├── chaufferie_surville.jpeg
+│   │   ├── choix_chauffage.webp
+│   │   ├── coachcopro-biomasse.webp
+│   │   ├── coachcopro-pac.webp
+│   │   ├── coachcopro-rcu.webp
 │   │   ├── collectivite-campagne-affiches.webp
 │   │   ├── collectivite-*.jpg  (9 files)
 │   │   ├── collectivite-illu-kit-com.png
@@ -533,6 +535,7 @@
 │   │   ├── collectivite_picto_1.webp
 │   │   ├── collectivite_picto_2.webp
 │   │   ├── collectivite_picto_3.webp
+│   │   ├── comment-choisir-sa-pac.webp
 │   │   ├── copro_advantages_1.svg
 │   │   ├── copro_advantages_2.svg
 │   │   ├── copro_advantages_3.svg
@@ -541,6 +544,9 @@
 │   │   ├── copro_guide.png
 │   │   ├── datacenter_equinix.jpeg
 │   │   ├── demarche_enr_choix.webp
+│   │   ├── different-mode-chauffage.webp
+│   │   ├── ecoreseau2025.png
+│   │   ├── ecoreseauplus2025.png
 │   │   ├── enjeu-de-societe-exploitant.svg
 │   │   ├── enjeu-de-societe-particulier.svg
 │   │   ├── enquete.jpg
@@ -558,6 +564,7 @@
 │   │   ├── icon-france.png
 │   │   ├── iframe-carte.png
 │   │   ├── iframe.png
+│   │   ├── illustration_*.webp  (5 files)
 │   │   ├── illustrations
 │   │   │   ├── benefices-chauffage.svg
 │   │   │   └── benefices-comparateur.svg
@@ -568,6 +575,12 @@
 │   │   ├── landing-exploitant-picto3.svg
 │   │   ├── landing_chaleur_renouvelable.webp
 │   │   ├── logo_rf.png
+│   │   ├── pac_air_eau.webp
+│   │   ├── photo_cet.webp
+│   │   ├── photo_pac_air_air.webp
+│   │   ├── photo_pac_air_eau.webp
+│   │   ├── photo_pac_air_extrait.webp
+│   │   ├── photo_pac_solaire.webp
 │   │   ├── picto_chauffage_ecologique.svg
 │   │   ├── picto_emissions.svg
 │   │   ├── picto_facture.svg
@@ -587,6 +600,7 @@
 │   │   ├── pro_picto_1.svg
 │   │   ├── pro_picto_2.svg
 │   │   ├── pro_picto_3.svg
+│   │   ├── quelle-pac-pour-quel-immeuble.webp
 │   │   ├── qui-sommes-nous
 │   │   │   └── repartition-financements-france-chaleur-urbaine.webp
 │   │   ├── rcu-comparatif-coproprietaire.svg
@@ -600,50 +614,24 @@
 │   │   ├── ressources
 │   │   │   ├── infographie_classement.webp
 │   │   │   └── reseaux-de-chaleur--23-pourcent-cop-de-4.webp
-│   │   ├── ressources-end.png
-│   │   ├── ressources-feasability-1.svg
-│   │   ├── ressources-feasability-2.svg
-│   │   ├── ressources-feasability-3.svg
-│   │   ├── ressources-green-energies.png
-│   │   ├── ressources-guide.png
+│   │   ├── ressources-*.png  (6 files)
+│   │   ├── ressources-*.svg  (10 files)
 │   │   ├── ressources-histoire.jpg
-│   │   ├── ressources-list.svg
-│   │   ├── ressources-livraisons.svg
-│   │   ├── ressources-middle.png
-│   │   ├── ressources-network.png
-│   │   ├── ressources-right.svg
-│   │   ├── ressources-role.png
-│   │   ├── ressources-strenghts-1.svg
-│   │   ├── ressources-strenghts-2.svg
-│   │   ├── ressources-strenghts-3.svg
-│   │   ├── ressources-strenghts-4.svg
 │   │   ├── ressources_header.webp
+│   │   ├── schema_cet.webp
+│   │   ├── schema_pac_air_extrait.webp
 │   │   ├── screenshot_map.webp
 │   │   ├── simulateur_placeholder.svg
-│   │   ├── support_FCU_Infographie.png
-│   │   ├── support_FCU_Infographie2.png
-│   │   ├── support_FCU_Infographie3.png
-│   │   ├── support_FCU_Infographie4.png
-│   │   ├── support_FCU_Infographie5.png
-│   │   ├── support_affiche1.png
-│   │   ├── support_affiche2.png
-│   │   ├── support_affiche3.png
+│   │   ├── support_*.png  (17 files)
 │   │   ├── support_affiche3_big.jpg
-│   │   ├── support_biomasse.png
-│   │   ├── support_dossier_presse.png
-│   │   ├── support_geothermie.png
-│   │   ├── support_guide.png
-│   │   ├── support_pub1.png
 │   │   ├── support_pub1_big.jpg
-│   │   ├── support_pub2.png
-│   │   ├── support_pub3.png
 │   │   ├── support_pub3_big.jpg
-│   │   ├── support_video1.png
 │   │   ├── support_video2.jpeg
-│   │   ├── support_video3.png
 │   │   ├── supports_guide_collectivites.webp
 │   │   ├── supports_guide_coproprietes.webp
 │   │   ├── supports_guide_exploitants.webp
+│   │   ├── temoignage_geothermie.webp
+│   │   ├── type_pac.webp
 │   │   ├── user-experience-1.png
 │   │   ├── user-experience-2.png
 │   │   ├── user-experience-3.png
@@ -769,7 +757,6 @@
 │   │   ├── ComparateurPublicodes
 │   │   │   ├── ComparateurPublicodes.style.tsx
 │   │   │   ├── ComparateurPublicodes.tsx
-│   │   │   ├── ComparateurPublicodesWidget.tsx
 │   │   │   ├── Configuration.tsx
 │   │   │   ├── DebugDrawer.tsx
 │   │   │   ├── Graph.tsx
@@ -813,6 +800,7 @@
 │   │   │   ├── EligibilityResults.tsx
 │   │   │   ├── components
 │   │   │   │   ├── ContactForm.tsx
+│   │   │   │   ├── DemandContactFields.tsx
 │   │   │   │   ├── EligibilityForm.styled.tsx
 │   │   │   │   ├── SelectEnergy.tsx
 │   │   │   │   └── index.ts
@@ -929,6 +917,7 @@
 │   │   ├── Network
 │   │   │   ├── ClassedNetwork.tsx
 │   │   │   ├── ColdNetwork.tsx
+│   │   │   ├── EcoreseauLabel.tsx
 │   │   │   ├── EligibilityTestBox.tsx
 │   │   │   ├── EnergiesChart.tsx
 │   │   │   ├── Network.styles.ts
@@ -953,7 +942,9 @@
 │   │   │   ├── Contents
 │   │   │   │   ├── Actors.tsx
 │   │   │   │   ├── Advantages.tsx
+│   │   │   │   ├── AvantagePac.tsx
 │   │   │   │   ├── Bill.tsx
+│   │   │   │   ├── ChoosePac.tsx
 │   │   │   │   ├── ClassedNetwork.tsx
 │   │   │   │   ├── ColdNetwork.tsx
 │   │   │   │   ├── Contents.styles.ts
@@ -968,6 +959,8 @@
 │   │   │   │   ├── History.tsx
 │   │   │   │   ├── Livraisons.tsx
 │   │   │   │   ├── Network.tsx
+│   │   │   │   ├── ObligationCopro.tsx
+│   │   │   │   ├── PacImmeubleUsage.tsx
 │   │   │   │   ├── Role.tsx
 │   │   │   │   ├── SimulateurCoutRaccordement.tsx
 │   │   │   │   ├── Simulator.styles.ts
@@ -1094,8 +1087,10 @@
 │   │       ├── ButtonExport.tsx
 │   │       ├── CallOut.tsx
 │   │       ├── Card.tsx
+│   │       ├── Carousel.tsx
 │   │       ├── CheckableAccordion.tsx
 │   │       ├── ChipAutoComplete.tsx
+│   │       ├── ComboAutoComplete.tsx
 │   │       ├── ComboBox.spec.tsx
 │   │       ├── ComboBox.tsx
 │   │       ├── CrudDropdown.tsx
@@ -1267,6 +1262,11 @@
 │   │   │   ├── faq-rcu-coproprietaire.tsx
 │   │   │   ├── index.js
 │   │   │   └── testimonies.json
+│   │   ├── ecoreseau
+│   │   │   ├── Laureats_Label_Ecoreseau_+_2025.csv
+│   │   │   ├── Laureats_Label_Ecoreseau_+_2025.pdf
+│   │   │   ├── Laureats_Label_Ecoreseau_2025.csv
+│   │   │   └── Laureats_Label_Ecoreseau_2025.pdf
 │   │   ├── fcu-term-of-use.ts
 │   │   ├── home
 │   │   │   ├── data-number-copro.json
@@ -1484,11 +1484,19 @@
 │   │   ├── events
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
-│   │   │   │   └── AdminEventsPage.tsx
+│   │   │   │   ├── AdminEventsPage.tsx
+│   │   │   │   ├── EventRow.tsx
+│   │   │   │   ├── EventsDashboardHeader.tsx
+│   │   │   │   ├── EventsFiltersBar.tsx
+│   │   │   │   ├── EventsList.tsx
+│   │   │   │   ├── EventsStatsSection.tsx
+│   │   │   │   ├── types.ts
+│   │   │   │   └── useEventsFilters.ts
 │   │   │   ├── constants.ts
 │   │   │   └── server
-│   │   │       ├── api.ts
-│   │   │       └── service.ts
+│   │   │       ├── service.ts
+│   │   │       ├── trpc-routes.integration.spec.ts
+│   │   │       └── trpc-routes.ts
 │   │   ├── form
 │   │   │   ├── AGENTS.md
 │   │   │   ├── AddressField.tsx
@@ -1564,16 +1572,19 @@
 │   │   │   ├── client
 │   │   │   │   └── admin
 │   │   │   │       └── AdminReseauxPage.tsx
+│   │   │   ├── commands
+│   │   │   │   └── ecoreseau.ts
 │   │   │   ├── commands.ts
 │   │   │   ├── constants.ts
-│   │   │   └── server
-│   │   │       ├── download-network.ts
-│   │   │       ├── geometry-operations.ts
-│   │   │       ├── geometry-updates.ts
-│   │   │       ├── service.ts
-│   │   │       ├── sync-pg-to-airtable.ts
-│   │   │       ├── trpc-routes.eligibilityStatus.integration.spec.ts
-│   │   │       └── trpc-routes.ts
+│   │   │   ├── server
+│   │   │   │   ├── download-network.ts
+│   │   │   │   ├── geometry-operations.ts
+│   │   │   │   ├── geometry-updates.ts
+│   │   │   │   ├── service.ts
+│   │   │   │   ├── sync-pg-to-airtable.ts
+│   │   │   │   ├── trpc-routes.eligibilityStatus.integration.spec.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── types.ts
 │   │   ├── security
 │   │   │   ├── AGENTS.md
 │   │   │   └── server
@@ -1662,7 +1673,6 @@
 │   │   │   │   ├── assignment-rules
 │   │   │   │   │   ├── [[...slug]].ts
 │   │   │   │   │   └── results.ts
-│   │   │   │   ├── events.ts
 │   │   │   │   ├── impersonate.ts
 │   │   │   │   ├── jobs
 │   │   │   │   │   ├── [id]
@@ -1820,6 +1830,8 @@
 │   │   │       ├── 20260120113715_drop_legacy_eligibility_tables.ts
 │   │   │       ├── 20260126110000_add_comment_au_tags.ts
 │   │   │       ├── 20260226110000_create_batenr_table.ts
+│   │   │       ├── 20260330120000_fix_demand_assigned_events.ts
+│   │   │       ├── 20260401120000_add_ecoreseau_to_reseaux_de_chaleur.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── logger.ts
@@ -1911,6 +1923,8 @@
 │       ├── interval.spec.ts
 │       ├── interval.ts
 │       ├── network.ts
+│       ├── nuqs-parsers.spec.ts
+│       ├── nuqs-parsers.ts
 │       ├── objects.ts
 │       ├── ogr2ogr.ts
 │       ├── random.ts
@@ -1926,4 +1940,4 @@
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── vitest.config.mts
-266 directories, 1981 files
+264 directories, 2036 files

@@ -1,32 +1,37 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 12 mars 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration du simulateur de chaleur, notamment avec l'intégration de données plus précises et une simplification de l'expérience utilisateur. Des améliorations techniques ont également été apportées pour faciliter la maintenance et l'évolutivité du projet, ainsi que la gestion des données réseaux de chaleur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la page d'accueil et le simulateur simplifié, avec l'ajout de nouveaux contenus et une refonte de l'affichage. Des améliorations techniques ont également été apportées pour optimiser la gestion des données, les tests et la configuration des emails. L'administration a été enrichie avec de nouvelles fonctionnalités pour la gestion des utilisateurs et des demandes en masse.
 
 ### Évolutions fonctionnelles
-- **Simulateur :** Simplification du modèle de simulation et ajout de nouveaux modes de chauffage (Pac géo maison et Chaudière biomasse maison). [#1204](https://github.com/betagouv/france-chaleur-urbaine/pull/1204)
-- **Simulateur :** Ajout d'une page méthodologie expliquant le fonctionnement du simulateur.
-- **Simulateur :** Amélioration de l'affichage et de la réactivité sur mobile.
-- **Adresse :** Implémentation d'un nouveau composant d'autocomplétion d'adresse pour une meilleure expérience utilisateur. [#1212](https://github.com/betagouv/france-chaleur-urbaine/pull/1212)
-- **Données réseaux :** Mise à jour des données réseaux de chaleur avec les DLE 2024. [#1207](https://github.com/betagouv/france-chaleur-urbaine/pull/1207)
-- **Formulaire de contribution :** Autorisation des fichiers PDF et vérification de l'intégrité des shapefiles pour les contributions de réseau. [#1209](https://github.com/betagouv/france-chaleur-urbaine/pull/1209)
-- **Contact :** Remplacement de l'adresse email de contact par un formulaire. [#1208](https://github.com/betagouv/france-chaleur-urbaine/pull/1208)
-- **Accessibilité :** Amélioration de l'accessibilité de la page d'accueil. [#1210](https://github.com/betagouv/france-chaleur-urbaine/pull/1210)
-- **Affichage réseaux :** Les réseaux non ouverts sont maintenant affichés en gris.
+- **Simulateur simplifié :** Refonte complète de la landing page avec de nouveaux visuels, des témoignages et un carrousel d'articles. Amélioration du CTA et du tracking.
+- **Page "Qui sommes-nous" :** Mise à jour des textes et du contenu.
+- **Gestion des réseaux de chaleur :** Ajout de colonnes (et donc de filtres) dans la liste des réseaux de chaleur/froid/en construction (notamment pour l'affichage de l'écoréseau).
+- **Modal contact réseau de chaleur :** Ajout d'un événement de partage par email.
+- **Formulaire de contact :** Possibilité de ne pas renseigner le contact lors de la création de demandes en masse.
+- **Admin :**
+    - Ajout de la possibilité de créer des demandes en masse pour un utilisateur.
+    - Amélioration de l'affichage des événements dans l'interface d'administration.
+    - Correction du filtre "Gestionnaires".
+    - Affichage du type de structure dans l'admin.
+    - Correction de la sauvegarde de l'adresse lors de la vérification d'éligibilité.
+- **Affichage général :** Ajout d'icônes à côté des titres des cartes.
+- **Emails :** Envoi des emails depuis une adresse no-reply beta.gouv. Amélioration du style et de l'harmonisation des templates.
 
 ### Évolutions techniques
-- **API :** Refactorisation de l'appel à l'API de localisation avec `trpc`.
-- **Base de données :** Nettoyage de la base de données (suppression de tables/colonnes inutilisées). [#1213](https://github.com/betagouv/france-chaleur-urbaine/pull/1213)
-- **Tests :** Ajout de tests automatisés pour la BAN (Base Adresse Nationale).
-- **PostHog :** Intégration de PostHog pour le suivi analytics et l'autocapture. [#1203](https://github.com/betagouv/france-chaleur-urbaine/pull/1203) et [#1211](https://github.com/betagouv/france-chaleur-urbaine/pull/1211)
-- **Publicodes :** Mise à jour de la version de la librairie Publicodes.
-- **Déploiement :** Ajout d'une option pour désactiver les clés étrangères lors de la création de dumps de la base de données.
-- **Batenr :** Ajout de la gestion des données Batenr et de scripts pour leur importation.
-- **Refactoring :** Refactorisation du code pour une meilleure organisation et maintenabilité.
+- **Dépendances :** Mise à jour des dépendances du projet.
+- **Tests :** Correction de tests suite à des modifications et ajout de tests pour la gestion des adresses.
+- **Infrastructure :** Configuration de l'envoi d'emails en local.
+- **Code :**
+    - Refactorisation du code des iframes pour une meilleure maintenabilité.
+    - Amélioration du typage de certaines variables et composants.
+    - Suppression de code inutile et amélioration de la lisibilité du code.
+    - Utilisation de classes Tailwind CSS canoniques.
+    - Factorisation de structures de données pour le formulaire de contact.
+- **Images :** Conversion des images en format WebP pour optimiser les performances.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation de développement et des étapes de lancement du serveur.
-- **Configuration :** Amélioration de la configuration de Knip et suppression du code mort.
-- **Scripts :** Ajout d'un script pour remplir la table `communes_avec_ppa`.
-- **Styles :** Divers ajustements de styles pour améliorer l'apparence et la réactivité de l'interface utilisateur.
-- **Airtable :** Ajout d'informations supplémentaires dans les entrées Airtable (URL de simulation, date).
+- **Documentation :** Mise à jour de la note méthodologique du comparateur.
+- **Configuration :** Ajout de fichiers ignorés par Git pour la configuration locale.
+- **Tracking :** Amélioration du nommage du tracking pour le simulateur simplifié et ajout d'événements PostHog pour le partage de simulation.
+- **Écoréseaux :** Ajout d'un script d'import des écoréseaux et des données correspondantes.
