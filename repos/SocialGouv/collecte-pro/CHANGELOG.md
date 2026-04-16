@@ -6,6 +6,12 @@ Ce format se base sur [keep a changelog](https://keepachangelog.com/fr/1.0.0/), 
 projet adhère à [la Gestion sémantique de version](https://semver.org/lang/fr/spec/v2.0.0.html).
 
 ## [En cours]
+## [3.4.5] - 2026-03-30
+### Modifications
+- CP-218 :  Lien vers le site collecte-pro absent du message envoyé à un nouveau déposant
+## [3.4.4] - 2026-03-24
+### Modifications
+- CP-216 :  Interdire la sélection de plusieurs fichiers à la fois
 ## [3.4.3] - 2026-02-27
 ### Modifications
 - CP-211 :  Liste des utilisateurs en indiquant ceux avec le profil 'Inspecteur'
