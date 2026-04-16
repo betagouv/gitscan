@@ -85,6 +85,11 @@
 │   │   ├── 0029_pg_trgm_referentiel.sql
 │   │   ├── 0030_plans_transition_fiches_action.sql
 │   │   ├── 0031_schema_separation.sql
+│   │   ├── 0032_add_classification_columns.sql
+│   │   ├── 0033_aide_classifications_and_scores.sql
+│   │   ├── 0034_data_tet_schema.sql
+│   │   ├── 0035_align_data_tet_schema_v02.sql
+│   │   ├── 0036_add_content_hash_to_projets.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -117,6 +122,9 @@
 │   │       ├── 0028_snapshot.json
 │   │       ├── 0030_snapshot.json
 │   │       ├── 0031_snapshot.json
+│   │       ├── 0032_snapshot.json
+│   │       ├── 0033_snapshot.json
+│   │       ├── 0034_snapshot.json
 │   │       └── _journal.json
 │   ├── drizzle.config.ts
 │   ├── eslint.config.js
@@ -124,6 +132,8 @@
 │   ├── openapi3.yml
 │   ├── package.json
 │   ├── scripts
+│   │   ├── backfill-classification.ts
+│   │   ├── backfill-te.ts
 │   │   ├── generate-types.sh
 │   │   ├── import-projets-tet
 │   │   │   ├── import-projets-tet-data.csv
@@ -151,6 +161,19 @@
 │   │   │       └── zlv.source.ts
 │   │   └── utils.ts
 │   ├── src
+│   │   ├── aides
+│   │   │   ├── aide-classification.service.ts
+│   │   │   ├── aides-cache.service.spec.ts
+│   │   │   ├── aides-cache.service.ts
+│   │   │   ├── aides-matching.service.spec.ts
+│   │   │   ├── aides-matching.service.ts
+│   │   │   ├── aides-sync.processor.ts
+│   │   │   ├── aides-territoires.service.ts
+│   │   │   ├── aides-warmup.service.spec.ts
+│   │   │   ├── aides-warmup.service.ts
+│   │   │   ├── aides.controller.spec.ts
+│   │   │   ├── aides.controller.ts
+│   │   │   └── aides.module.ts
 │   │   ├── analytics
 │   │   │   ├── analytics.controller.ts
 │   │   │   ├── analytics.dto.ts
@@ -169,10 +192,18 @@
 │   │   │   ├── database.service.ts
 │   │   │   ├── plans-fiches-schema.ts
 │   │   │   ├── referentiel-schema.ts
-│   │   │   └── schema.ts
+│   │   │   ├── schema.ts
+│   │   │   └── tet-schema.ts
 │   │   ├── exceptions
 │   │   │   ├── global-exception-filter.ts
 │   │   │   └── utils.ts
+│   │   ├── fiches-action
+│   │   │   ├── dto
+│   │   │   │   └── create-fiche-action.dto.ts
+│   │   │   ├── fiches-action.controller.ts
+│   │   │   ├── fiches-action.module.ts
+│   │   │   ├── fiches-action.service.spec.ts
+│   │   │   └── fiches-action.service.ts
 │   │   ├── geo
 │   │   │   ├── api.d.ts
 │   │   │   ├── geo-api.service.ts
@@ -218,6 +249,40 @@
 │   │   │       ├── tc-import.service.ts
 │   │   │       └── tc-import.types.ts
 │   │   ├── projet-qualification
+│   │   │   ├── classification
+│   │   │   │   ├── classification.controller.ts
+│   │   │   │   ├── classification.integration.spec.ts
+│   │   │   │   ├── classification.module.ts
+│   │   │   │   ├── classification.service.spec.ts
+│   │   │   │   ├── classification.service.ts
+│   │   │   │   ├── const
+│   │   │   │   │   ├── acronymes.ts
+│   │   │   │   │   ├── interventions.ts
+│   │   │   │   │   ├── post-traitement.ts
+│   │   │   │   │   ├── probabilites-te.ts
+│   │   │   │   │   ├── sites.ts
+│   │   │   │   │   └── thematiques.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   └── classification.dto.ts
+│   │   │   │   ├── llm
+│   │   │   │   │   ├── classification-anthropic.service.spec.ts
+│   │   │   │   │   ├── classification-anthropic.service.ts
+│   │   │   │   │   └── prompts
+│   │   │   │   │       ├── classification-base.prompts.ts
+│   │   │   │   │       ├── interventions.prompts.ts
+│   │   │   │   │       ├── sites.prompts.ts
+│   │   │   │   │       ├── thematiques.prompts.ts
+│   │   │   │   │       └── types.ts
+│   │   │   │   ├── post-processing
+│   │   │   │   │   ├── enrichment.service.spec.ts
+│   │   │   │   │   ├── enrichment.service.ts
+│   │   │   │   │   ├── te-probability.service.spec.ts
+│   │   │   │   │   └── te-probability.service.ts
+│   │   │   │   └── validation
+│   │   │   │       ├── classification-validation.service.spec.ts
+│   │   │   │       ├── classification-validation.service.ts
+│   │   │   │       ├── levenshtein.spec.ts
+│   │   │   │       └── levenshtein.ts
 │   │   │   ├── const.ts
 │   │   │   ├── dto
 │   │   │   │   └── projet-qualification.dto.ts
@@ -376,6 +441,7 @@
 ├── commitlint.config.cjs
 ├── docs
 │   ├── api
+│   │   ├── classification-et-aides.md
 │   │   └── leviers-endpoint.md
 │   ├── referentiel-api-design.md
 │   ├── referentiel-api-requirements.md
@@ -517,4 +583,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-98 directories, 421 files
+108 directories, 477 files

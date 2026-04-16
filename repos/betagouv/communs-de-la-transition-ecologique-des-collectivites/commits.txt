@@ -1,3 +1,63 @@
+2026-04-15T16:34:13Z - 656d01b - Thomas Guillory : refactor(api): utiliser perimeter_codes[] AT au lieu de la résolution de périmètre
+2026-04-07T09:20:07Z - 6b69548 - GitHub Actions Bot : chore(release): 0.1.49
+2026-04-07T09:18:16Z - bc76cdf - Thomas Guillory : fix(sandbox): pointer vers l'API prod au lieu du staging
+2026-04-07T08:26:58Z - 6733ed1 - GitHub Actions Bot : chore(release): 0.1.48
+2026-04-07T08:25:27Z - cebfe19 - Thomas Guillory : chore(widget): release version 0.4.0
+2026-03-27T12:12:34Z - 3bf34c9 - GitHub Actions Bot : chore(release): 0.1.47
+2026-03-27T12:11:00Z - 2ee5093 - Thomas Guillory : fix(api): parser robuste pour les réponses JSON du LLM (multi-blocs)
+2026-03-27T08:21:16Z - eeac53e - GitHub Actions Bot : chore(release): 0.1.46
+2026-03-27T08:19:37Z - 40a998b - Thomas Guillory : fix(api): respecter le rate-limit AT dans le warmup (séquentiel + retry 429)
+2026-03-27T07:46:14Z - c4759cd - GitHub Actions Bot : chore(release): 0.1.45
+2026-03-27T07:45:12Z - 106e3cf - Thomas Guillory : fix(api): lancer le warmup en fire-and-forget dans GET /aides/sync
+2026-03-27T07:31:37Z - 0b7ce1b - GitHub Actions Bot : chore(release): 0.1.44
+2026-03-27T07:27:32Z - b3420ca - Thomas Guillory : feat(api): cache dédupliqué SWR + pré-chauffage des territoires pour les aides AT
+2026-03-27T07:27:32Z - 8fdba7d - Thomas Guillory : fix(api): corriger les issues identifiées en review
+2026-03-24T16:17:26Z - aa51c36 - GitHub Actions Bot : chore(release): 0.1.43
+2026-03-24T16:14:11Z - e6b5ffc - Thomas Guillory : fix(api): remplacer le test de spy flaky par une assertion DB stable
+2026-03-24T16:14:11Z - 2502e4c - Thomas Guillory : fix(api): corriger les tests de reclassification flaky (BullMQ async)
+2026-03-24T16:14:11Z - 21ae414 - Thomas Guillory : feat(api): inférer le territoire depuis le projet et reclassifier sur changement de contenu
+2026-03-24T14:54:43Z - 1c4702a - GitHub Actions Bot : chore(release): 0.1.42
+2026-03-24T14:52:40Z - 50d4397 - Thomas Guillory : refactor(api): renommer endpoint et champs selon retours TeT
+2026-03-24T13:54:00Z - c80a52e - GitHub Actions Bot : chore(release): 0.1.41
+2026-03-24T13:52:16Z - e1a5fdc - Thomas Guillory : feat(api): enrichir collectiviteResponsableSiren et territoireCommunes
+2026-03-24T13:52:16Z - dc59de0 - Thomas Guillory : refactor(api): versionner l'endpoint TeT → /tet/v1/fiches-action
+2026-03-24T13:52:16Z - ce962b1 - Thomas Guillory : refactor(api): renommer endpoint /fiches-action → /tet/fiches-action
+2026-03-24T13:52:16Z - 57e295d - Thomas Guillory : fix(api): aligner data_tet sur schéma v0.2 + GET/PATCH + sourceMetadata
+2026-03-24T13:52:16Z - 3c6ab2f - Thomas Guillory : fix(api): aligner data_tet sur le schéma v0.2.0
+2026-03-24T11:23:43Z - 31c61f1 - GitHub Actions Bot : chore(release): 0.1.40
+2026-03-24T11:21:57Z - c474fc9 - Thomas Guillory : test(api): ajouter tests unitaires pour FichesActionService
+2026-03-24T10:48:51Z - 0af298d - Thomas Guillory : feat(api): ajouter le endpoint POST /fiches-action pour TeT
+2026-03-23T17:23:38Z - d8f2986 - GitHub Actions Bot : chore(release): 0.1.39
+2026-03-23T17:15:40Z - 23d08f8 - Thomas Guillory : fix(api): corriger la résolution code INSEE → perimeter AT
+2026-03-23T16:57:29Z - 0859bc8 - Thomas Guillory : docs(api): documenter la formule de matching projet↔aide
+2026-03-23T16:36:17Z - 9f847a5 - GitHub Actions Bot : chore(release): 0.1.38
+2026-03-23T16:26:59Z - e0afa5e - Thomas Guillory : fix(docs): corriger le domaine API → api.collectivites.beta.gouv.fr
+2026-03-23T16:26:59Z - 690e8c5 - Thomas Guillory : feat(api): résoudre code INSEE → perimeter AT automatiquement
+2026-03-23T16:26:59Z - 45ae124 - Thomas Guillory : docs(api): compléter le guide MEC avec rate limits, bulk, FAQ, stock
+2026-03-23T16:26:59Z - 031ace8 - Thomas Guillory : docs(api): guide d'intégration classification et aides pour MEC
+2026-03-23T14:47:13Z - 4b919cd - GitHub Actions Bot : chore(release): 0.1.37
+2026-03-23T14:39:44Z - 9bb6e77 - GitHub Actions Bot : chore(release): 0.1.36
+2026-03-23T14:38:43Z - 994df90 - Thomas Guillory : fix(api): ajouter classificationScores aux assertions du test E2E
+2026-03-23T14:38:43Z - 95f338a - Thomas Guillory : fix(api): ajouter classificationScores aux assertions du test unitaire
+2026-03-23T14:38:43Z - 415126b - Thomas Guillory : fix(api): supprimer la dépendance à geo.api.gouv.fr dans le test E2E
+2026-03-23T14:38:43Z - 11cc407 - Thomas Guillory : fix(api): ajouter AT_API_TOKEN manquant dans la config de test et le CI
+2026-03-23T13:54:37Z - fa1546c - Thomas Guillory : feat(api): ajouter cron job sync aides + cache Redis AT
+2026-03-23T13:33:56Z - 3f8f250 - Thomas Guillory : feat(api): ajouter le proxy enrichi Aides-Territoires avec matching
+2026-03-23T13:33:44Z - 52ff42d - Thomas Guillory : fix(api): corriger le test E2E flaky sur les collectivités manquantes
+2026-03-23T13:33:44Z - 3c3dd89 - Thomas Guillory : fix(api): utiliser GeoService au lieu de GeoApiService dans le test E2E
+2026-03-23T13:33:44Z - 2f4a749 - Thomas Guillory : fix(api): résoudre GeoService avec strict: false dans le test E2E
+2026-03-23T10:49:03Z - a90b097 - Thomas Guillory : feat: migrer le domaine vers api.collectivites.beta.gouv.fr
+2026-03-19T15:55:19Z - c1b6805 - GitHub Actions Bot : chore(release): 0.1.35
+2026-03-19T15:52:31Z - de3452d - Thomas Guillory : feat(api): classifier automatiquement les projets à la création
+2026-03-19T15:52:31Z - dc2077b - Thomas Guillory : fix(api): ajouter les champs classification aux assertions du test E2E
+2026-03-19T15:52:31Z - ca8509d - Thomas Guillory : fix(api): mettre à jour les tests existants pour les nouvelles colonnes classification
+2026-03-19T10:53:38Z - 187cf32 - GitHub Actions Bot : chore(release): 0.1.34
+2026-03-19T10:52:15Z - e5cc83e - Thomas Guillory : fix(api): relaxer l'assertion TE probability pour projet non-écologique
+2026-03-19T10:52:15Z - b0ff272 - Thomas Guillory : fix(api): aligner le format projet sur le pipeline Python et ajouter DECI aux acronymes
+2026-03-19T10:52:15Z - 9e0cc8a - Thomas Guillory : feat(api): utiliser Claude Sonnet 4.6 par défaut pour la classification
+2026-03-19T10:52:15Z - 233a0af - Thomas Guillory : feat(api): ajouter l'API de classification thématiques/sites/interventions
+2026-03-18T08:48:35Z - e0734fd - GitHub Actions Bot : chore(release): 0.1.33
+2026-03-18T08:47:40Z - 4b1081c - Thomas Guillory : fix(ressources): corriger cohérence vocabulaire ↔ schéma technique
 2026-03-17T08:29:56Z - 23b510f - GitHub Actions Bot : chore(release): 0.1.32
 2026-03-17T08:08:53Z - be6e863 - GitHub Actions Bot : chore(release): 0.1.31
 2026-03-17T08:08:01Z - 8f24d7a - Thomas Guillory : feat(ressources): refonte page Vocabulaire métier v2

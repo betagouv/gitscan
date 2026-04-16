@@ -1,28 +1,32 @@
 {
   "url": "https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites",
   "name": "communs-de-la-transition-ecologique-des-collectivites",
-  "description": "Ce projet vise à centraliser les informations sur les projets de transition écologique des collectivités et à faciliter leur déploiement en les rendant accessibles sur différentes plateformes.",
+  "description": "Ce projet a pour objectif de centraliser les informations sur les projets de transition écologique des collectivités et de faciliter leur déploiement en les rendant accessibles sur différentes plateformes.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Recherche & Filtres"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Données & Schémas"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
-    "React",
-    "Express",
+    "NestJS",
     "PostgreSQL",
-    "Redis"
+    "Redis",
+    "BullMQ",
+    "openapi-typescript",
+    "DrizzleORM"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
@@ -30,10 +34,13 @@
     ]
   },
   "tests": [
-    "Jest"
+    "Jest",
+    "Cypress"
   ],
-  "workflows": [],
-  "lastActivity": "2026-03-17T08:29:56Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-04-15T16:34:13Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -50,6 +57,8 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Environnement & Énergie"
   ]
 }
