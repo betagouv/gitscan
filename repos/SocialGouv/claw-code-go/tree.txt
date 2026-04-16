@@ -1,0 +1,335 @@
+.
+├── README.md
+├── assets
+│   ├── claw-code-go.png
+│   └── screenshot.png
+├── claw-code-go
+├── cmd
+│   └── claw-code-go
+│       └── main.go
+├── go.mod
+├── go.sum
+├── hooks
+│   ├── config.go
+│   ├── exec.go
+│   ├── exec_unix.go
+│   ├── exec_windows.go
+│   ├── feedback.go
+│   ├── feedback_test.go
+│   ├── hook.go
+│   ├── hook_test.go
+│   ├── payload.go
+│   ├── response.go
+│   └── runner.go
+├── internal
+│   ├── api
+│   │   ├── auth.go
+│   │   ├── auth_test.go
+│   │   ├── client.go
+│   │   ├── client_telemetry_test.go
+│   │   ├── provider.go
+│   │   ├── providers
+│   │   │   ├── anthropic
+│   │   │   │   └── provider.go
+│   │   │   ├── bedrock
+│   │   │   │   └── provider.go
+│   │   │   ├── foundry
+│   │   │   │   └── provider.go
+│   │   │   ├── openai
+│   │   │   │   ├── provider.go
+│   │   │   │   └── reasoning_test.go
+│   │   │   └── vertex
+│   │   │       └── provider.go
+│   │   ├── sse.go
+│   │   ├── sse_test.go
+│   │   └── types.go
+│   ├── apikit
+│   │   ├── doc.go
+│   │   ├── errors.go
+│   │   ├── errors_test.go
+│   │   ├── model_registry.go
+│   │   ├── model_registry_test.go
+│   │   ├── preflight.go
+│   │   ├── preflight_test.go
+│   │   ├── prompt_cache.go
+│   │   ├── prompt_cache_fingerprint.go
+│   │   ├── prompt_cache_fingerprint_test.go
+│   │   ├── prompt_cache_paths.go
+│   │   ├── prompt_cache_test.go
+│   │   ├── provider_routing.go
+│   │   ├── provider_routing_test.go
+│   │   ├── proxy.go
+│   │   ├── proxy_test.go
+│   │   ├── retry.go
+│   │   ├── retry_test.go
+│   │   ├── session_tracer.go
+│   │   ├── telemetry.go
+│   │   ├── telemetry_sinks.go
+│   │   └── telemetry_test.go
+│   ├── auth
+│   │   ├── credentials.go
+│   │   ├── manager.go
+│   │   ├── oauth.go
+│   │   ├── resolver.go
+│   │   └── storage.go
+│   ├── commands
+│   │   ├── auth.go
+│   │   ├── code_cmds.go
+│   │   ├── code_cmds_test.go
+│   │   ├── config_cmds.go
+│   │   ├── config_cmds_test.go
+│   │   ├── context_cmds.go
+│   │   ├── context_cmds_test.go
+│   │   ├── diagnostic_cmds.go
+│   │   ├── diagnostic_cmds_test.go
+│   │   ├── dispatcher.go
+│   │   ├── git_cmds.go
+│   │   ├── git_cmds_test.go
+│   │   ├── init.go
+│   │   ├── init_test.go
+│   │   ├── interaction_cmds.go
+│   │   ├── mcp.go
+│   │   ├── plugin_cmds.go
+│   │   ├── plugin_cmds_test.go
+│   │   ├── registry.go
+│   │   ├── registry_test.go
+│   │   ├── session_cmds.go
+│   │   ├── session_cmds_test.go
+│   │   ├── slash_test.go
+│   │   ├── status_cmds.go
+│   │   ├── status_cmds_test.go
+│   │   ├── ux_cmds.go
+│   │   └── ux_cmds_test.go
+│   ├── compat
+│   │   ├── bootstrap.go
+│   │   ├── bootstrap_test.go
+│   │   ├── harness.go
+│   │   └── manifest.go
+│   ├── config
+│   │   ├── errors.go
+│   │   ├── errors_test.go
+│   │   ├── feature.go
+│   │   ├── feature_test.go
+│   │   ├── frontmatter.go
+│   │   ├── frontmatter_test.go
+│   │   ├── loader.go
+│   │   ├── validate.go
+│   │   └── validate_test.go
+│   ├── context
+│   │   ├── assembler.go
+│   │   ├── git.go
+│   │   ├── git_test.go
+│   │   ├── memory.go
+│   │   └── sysinfo.go
+│   ├── hooks
+│   │   └── hookstesting
+│   │       ├── helpers.go
+│   │       └── helpers_test.go
+│   ├── lsp
+│   │   ├── client.go
+│   │   ├── client_test.go
+│   │   ├── transport.go
+│   │   ├── transport_test.go
+│   │   └── types.go
+│   ├── mcp
+│   │   ├── auth.go
+│   │   ├── auth_test.go
+│   │   ├── client.go
+│   │   ├── lifecycle.go
+│   │   ├── lifecycle_test.go
+│   │   ├── managed_proxy.go
+│   │   ├── managed_proxy_test.go
+│   │   ├── registry.go
+│   │   ├── resources.go
+│   │   ├── sdk_send_test.go
+│   │   ├── sdk_server.go
+│   │   ├── sdk_server_test.go
+│   │   ├── sse.go
+│   │   ├── stdio.go
+│   │   ├── transport.go
+│   │   ├── transport_rpc.go
+│   │   ├── transport_test.go
+│   │   ├── types.go
+│   │   ├── websocket.go
+│   │   └── websocket_test.go
+│   ├── permissions
+│   │   ├── manager.go
+│   │   ├── mode.go
+│   │   ├── permissions_test.go
+│   │   ├── policy.go
+│   │   ├── policy_test.go
+│   │   ├── prompter.go
+│   │   ├── rule_parser.go
+│   │   ├── rule_parser_test.go
+│   │   └── rules.go
+│   ├── runtime
+│   │   ├── compact.go
+│   │   ├── compact_test.go
+│   │   ├── config.go
+│   │   ├── config_test.go
+│   │   ├── conversation.go
+│   │   ├── conversation_dispatch_test.go
+│   │   ├── errors.go
+│   │   ├── errors_loop.go
+│   │   ├── errors_test.go
+│   │   ├── events.go
+│   │   ├── execute_plugin_tool_test.go
+│   │   ├── execute_tool_hooks_test.go
+│   │   ├── green_contracts.go
+│   │   ├── green_contracts_test.go
+│   │   ├── lane
+│   │   │   ├── branch_lock.go
+│   │   │   ├── branch_lock_test.go
+│   │   │   ├── event.go
+│   │   │   ├── event_test.go
+│   │   │   ├── stale_base.go
+│   │   │   ├── stale_base_test.go
+│   │   │   ├── stale_branch.go
+│   │   │   └── stale_branch_test.go
+│   │   ├── lane_compress_init.go
+│   │   ├── loop_adapter.go
+│   │   ├── loop_adapter_test.go
+│   │   ├── loop_config.go
+│   │   ├── loop_context.go
+│   │   ├── loop_prompt.go
+│   │   ├── loop_usage.go
+│   │   ├── permissions.go
+│   │   ├── phase0_test.go
+│   │   ├── policy
+│   │   │   ├── policy.go
+│   │   │   └── policy_test.go
+│   │   ├── provider_factory.go
+│   │   ├── provider_factory_test.go
+│   │   ├── recovery
+│   │   │   ├── recovery.go
+│   │   │   └── recovery_test.go
+│   │   ├── remote
+│   │   │   ├── remote.go
+│   │   │   └── remote_test.go
+│   │   ├── sandbox
+│   │   │   ├── detect.go
+│   │   │   ├── detect_test.go
+│   │   │   ├── sandbox.go
+│   │   │   ├── sandbox_linux.go
+│   │   │   ├── sandbox_other.go
+│   │   │   └── sandbox_test.go
+│   │   ├── session.go
+│   │   ├── session_jsonl.go
+│   │   ├── session_jsonl_test.go
+│   │   ├── session_store.go
+│   │   ├── session_store_test.go
+│   │   ├── summary_compression.go
+│   │   ├── summary_compression_test.go
+│   │   ├── task
+│   │   │   ├── task.go
+│   │   │   └── task_test.go
+│   │   ├── team
+│   │   │   ├── registry.go
+│   │   │   └── registry_test.go
+│   │   ├── trust
+│   │   │   ├── trust_resolver.go
+│   │   │   └── trust_resolver_test.go
+│   │   ├── wiring_test.go
+│   │   └── worker
+│   │       ├── detect.go
+│   │       ├── registry.go
+│   │       ├── worker.go
+│   │       └── worker_test.go
+│   ├── strutil
+│   │   ├── ascii.go
+│   │   └── ascii_test.go
+│   ├── testutil
+│   │   ├── mock_anthropic.go
+│   │   └── mock_anthropic_test.go
+│   ├── tools
+│   │   ├── agent.go
+│   │   ├── agent_test.go
+│   │   ├── ask_user.go
+│   │   ├── bash.go
+│   │   ├── bash_pipeline.go
+│   │   ├── bash_validation.go
+│   │   ├── bash_validation_test.go
+│   │   ├── config_tool.go
+│   │   ├── config_tool_test.go
+│   │   ├── cron_tools.go
+│   │   ├── cron_tools_test.go
+│   │   ├── file_edit.go
+│   │   ├── files.go
+│   │   ├── glob.go
+│   │   ├── grep.go
+│   │   ├── lsp_tool.go
+│   │   ├── lsp_tool_test.go
+│   │   ├── mcp_resource_tools.go
+│   │   ├── mcp_resource_tools_test.go
+│   │   ├── notebook_edit.go
+│   │   ├── notebook_edit_test.go
+│   │   ├── pdf.go
+│   │   ├── pdf_test.go
+│   │   ├── plan_mode.go
+│   │   ├── plan_mode_test.go
+│   │   ├── remote_trigger.go
+│   │   ├── repl.go
+│   │   ├── send_message.go
+│   │   ├── send_message_test.go
+│   │   ├── skill.go
+│   │   ├── sleep.go
+│   │   ├── sleep_test.go
+│   │   ├── structured_output.go
+│   │   ├── structured_output_test.go
+│   │   ├── task_tools.go
+│   │   ├── task_tools_test.go
+│   │   ├── team_tools.go
+│   │   ├── team_tools_test.go
+│   │   ├── todo_write.go
+│   │   ├── tool_search.go
+│   │   ├── tool_search_test.go
+│   │   ├── web_fetch.go
+│   │   ├── web_search.go
+│   │   ├── worker_tools.go
+│   │   └── worker_tools_test.go
+│   ├── tui
+│   │   ├── history.go
+│   │   ├── logo.go
+│   │   ├── model.go
+│   │   ├── render.go
+│   │   ├── render_test.go
+│   │   ├── styles.go
+│   │   ├── syntax.go
+│   │   ├── syntax_test.go
+│   │   └── theme.go
+│   └── usage
+│       └── tracker.go
+├── parity
+│   ├── fixtures
+│   │   ├── compact_merge_format.golden
+│   │   ├── interaction_model.golden
+│   │   ├── mock_parity_scenarios.json
+│   │   ├── permission_policy_decisions.golden
+│   │   └── telemetry_session_tracer.golden
+│   └── parity_test.go
+├── plugin
+│   ├── errors.go
+│   ├── exec_unix.go
+│   ├── exec_windows.go
+│   ├── kind.go
+│   ├── manager.go
+│   ├── manifest.go
+│   ├── plugin.go
+│   ├── plugin_test.go
+│   ├── registry.go
+│   ├── tool.go
+│   ├── tool_test.go
+│   └── validate.go
+└── testdata
+    └── golden
+        ├── fnv1a_vectors.json
+        ├── model_aliases.json
+        ├── plugin_manifest.json
+        ├── session_jsonl_snapshot.jsonl
+        ├── sse_chunked.txt
+        ├── telemetry_event_analytics.json
+        ├── telemetry_event_http_failed.json
+        ├── telemetry_event_http_started.json
+        ├── telemetry_event_http_succeeded.json
+        └── telemetry_event_session_trace.json
+44 directories, 290 files
