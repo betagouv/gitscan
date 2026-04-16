@@ -1,3 +1,498 @@
+2026-04-15T18:13:32Z - 9437ec1aa - Lisa Durand : Merge pull request #12978 from demarche-numerique/fix-toggle
+2026-04-15T18:11:40+02:00 - 54fd4d209 - simon lehericey : fix(dep): force connection_pool to be < 3 for compat with activesupport
+2026-04-15T18:03:39+02:00 - 544a5a1ee - Eric Leroy-Terquem : fix(toggle component)
+2026-04-15T16:18:19Z - f4529468f - LeSim : Merge pull request #12979 from demarche-numerique/fix_connection_pool
+2026-04-15T15:35:10Z - 5e746f665 - LeSim : Merge pull request #12974 from mfo/csrf-get-remind-avis
+2026-04-15T15:31:50+02:00 - e2f5cd617 - Eric Leroy-Terquem : refactor: rename sendinblue to brevo
+2026-04-15T15:31:50+02:00 - 4b9fa8b81 - Eric Leroy-Terquem : refactor: rename env variables from SENDINBLUE_ to BREVO_
+2026-04-15T15:31:50+02:00 - 3eb3203b1 - Eric Leroy-Terquem : chore: remove legacy saml authentication
+2026-04-15T14:22:31+02:00 - 90341fac9 - mfo : test: add system spec for instructeur remind expert flow
+2026-04-15T14:22:31+02:00 - 8088714b6 - mfo : fix(security): change remind avis from GET to PATCH
+2026-04-15T14:22:31+02:00 - 2b1bfb373 - mfo : refactor: extract hard-coded flash messages to i18n
+2026-04-15T14:22:27+02:00 - 0a8056572 - mfo : test(security): add spec proving CSRF GET on remind avis
+2026-04-15T13:45:47+02:00 - ddc8393d9 - mfo : fix(security): scope referentiel lookups to type_de_champ
+2026-04-15T13:41:53+02:00 - e9cbc433f - mfo : test(security): add specs proving IDOR on referentiels controller
+2026-04-15T13:37:26Z - 181fb5735 - LeSim : Merge pull request #12977 from demarche-numerique/remove-saml
+2026-04-15T12:16:25Z - 5fe04fcb6 - mfo : Merge pull request #12973 from mfo/idor-referentiel
+2026-04-15T10:41:07+02:00 - 9dd46e387 - simon lehericey : refactor: make the unauthenticated stored query restriction more explicit
+2026-04-15T10:41:07+02:00 - 79bd6a1ff - Eric Leroy-Terquem : spec: more test in api/v2/base_controller_spec.rb
+2026-04-15T09:57:15Z - 0b0c38277 - mfo : Merge pull request #12969 from demarche-numerique/fix/instructeurs-bilans-bdf-whitelist
+2026-04-15T09:47:58Z - db1bd5ae3 - LeSim : Merge pull request #12966 from demarche-numerique/csrfjhogfdsa
+2026-04-15T08:22:09+02:00 - 71aca4f74 - mfo : fix(spec): some i18n have changed
+2026-04-15T08:17:11Z - faae8c059 - mfo : Merge pull request #12971 from demarche-numerique/fix/unsafe-transfer-all-fallback
+2026-04-15T08:13:45+02:00 - 405b8b2a2 - mfo : refactor(nature): remove transitional nature override
+2026-04-15T07:58:43Z - 1fb8c3a6d - mfo : Merge pull request #12970 from mfo/bump-device
+2026-04-15T07:58:40+02:00 - da3054e09 - mfo : test(security): add spec proving transfer without dossier param transfers all dossiers
+2026-04-15T07:58:40+02:00 - 472bbd8f5 - mfo : fix(security): move transfer create route to dossier member to enforce dossier_id
+2026-04-15T07:42:42Z - 303fcdc2e - mfo : Merge pull request #12931 from mfo/cleanup-nature-step3
+2026-04-15T07:35:25Z - 42f4e13ce - Eric Leroy-Terquem : Merge pull request #12961 from demarche-numerique/fix-batch-operation-create-avis
+2026-04-15T07:33:58+02:00 - ece3a6f77 - mfo : feat(device): bump to 5.0.3
+2026-04-15T07:30:05+02:00 - 19443bbdf - mfo : fix(security): add ALLOWED_FORMATS whitelist to instructeurs bilans_bdf
+2026-04-15T07:29:58+02:00 - 5cfc5f16f - mfo : test(security): add spec proving bilans_bdf format injection on instructeurs controller
+2026-04-15T03:23:07Z - 4a9488d85 - mfo : Merge pull request #12963 from mfo/US/better-worktree
+2026-04-14T19:03:59+02:00 - bc6e18d25 - mfo : seed: use tiptap fields for referentiel in dev seed
+2026-04-14T19:03:59+02:00 - b66d9a5c1 - mfo : cleanup: remove legacy factory fields, xdescribe backfill task spec
+2026-04-14T19:03:59+02:00 - 9fb8742f7 - mfo : model: ignore legacy columns (use_tiptap, url, test_data) before drop
+2026-04-14T19:03:59+02:00 - 39446d121 - mfo : revision: rename referentiel change tracking to tiptap fields
+2026-04-14T19:03:59+02:00 - 161ff1f10 - mfo : specs: remove use_tiptap references from specs
+2026-04-14T19:03:58+02:00 - cef6e2900 - mfo : view: remove legacy branches from new_form_component
+2026-04-14T19:03:58+02:00 - b26a7dacd - mfo : service: remove legacy branch from referentiel_service
+2026-04-14T19:03:58+02:00 - b1943cc4a - mfo : model: remove use_tiptap branches from api_referentiel
+2026-04-14T19:03:58+02:00 - 9c33ebe68 - mfo : controller: remove legacy params from referentiels_controller
+2026-04-14T19:03:58+02:00 - 7192e7ea9 - mfo : factory: add tiptap attrs to referentiel traits
+2026-04-14T18:38:14+02:00 - 5fbdba961 - mfo : fix(security): add authorization check on AttachmentsController#show
+2026-04-14T17:54:53Z - 1792ac461 - mfo : Merge pull request #12933 from mfo/US/cleanup-old-referentiel-without-tiptap
+2026-04-14T17:53:58Z - 6806c3d04 - mfo : Merge pull request #12965 from mfo/idor-attachments
+2026-04-14T17:05:22Z - bf4863187 - mfo : Merge pull request #12964 from mfo/US/multiline-cell
+2026-04-14T15:59:43+02:00 - 892258009 - mfo : fix(referentiel): fr-cell--multiline not fr-cell-multiline.
+2026-04-14T15:50:42+02:00 - fd4286d39 - mfo : feat(database.yml): allow custom test db for better worktree support
+2026-04-14T12:53:51+02:00 - 4b9d41de3 - Mathieu Magnin : refactor(manager): share FeaturesField filter between view and controller
+2026-04-14T11:52:16Z - 987b1d216 - Mathieu Magnin : Merge pull request #12962 from demarche-numerique/worktree-mossy-tinkering-hamming
+2026-04-14T09:46:04+02:00 - 04e424c09 - Eric Leroy-Terquem : fix(avis): handle race condition in batch avis creation
+2026-04-14T09:09:14Z - 36412c6cb - Lisa Durand : Merge pull request #12798 from demarche-numerique/admin-can-personnalize-dossiers-table-for-instructeurs-ldu
+2026-04-14T07:29:08Z - 9830291ac - Mathieu Magnin : Merge pull request #12960 from demarche-numerique/fix-11167-aria-live-upload-error
+2026-04-13T18:41:41Z - 10c538b14 - Eric Leroy-Terquem : Merge pull request #12956 from demarche-numerique/fix-instant-email-new-expert-avis
+2026-04-13T18:09:57+02:00 - ba0616624 - Mathieu Magnin : fix(a11y): announce upload transfer errors to screen readers
+2026-04-13T15:31:56Z - a2ceb3eda - mfo : Merge pull request #12930 from mfo/cleanup-nature-step2
+2026-04-13T11:18:07Z - 5075e3796 - mfo : Merge pull request #12957 from mfo/US/somepatches
+2026-04-13T11:14:32+02:00 - cb1f61663 - mfo : [PATCH 3/4] fix(super_admin): 2fa reset when reset password
+2026-04-13T10:57:03+02:00 - ae6923160 - mfo : [PATCH 3/4] fix(super_admin): 2fa reset when reset password
+2026-04-13T10:56:36+02:00 - b368ee556 - mfo : [PATCH 2/4] chore: add note to explain why some code is not an IDOR
+2026-04-13T10:55:13+02:00 - 714a2192b - mfo : fix(gestionnaire): sql
+2026-04-13T10:45:10+02:00 - 3c4b180a6 - Eric Leroy-Terquem : fix(avis): notify instructeur when the expert answers within 30 minutes of the avis creation
+2026-04-11T06:28:52+02:00 - 521a210d7 - mfo : refactor(nature): switch enum values to lowercase + maintenance task LOWER(nature)
+2026-04-09T18:07:41+02:00 - cf87ac7b0 - Colin Darie : fix(gallery): prevent lightbox interaction for unsafe attachments
+2026-04-09T17:32:44+02:00 - 735eabc8e - LeSim : Merge pull request #12951 from mfo/US/fix-tiptap_mention_stable_ids
+2026-04-09T17:19:12+02:00 - e6299b392 - mfo : fix(referentiel): filter only APIReferentiel in stable_ids_used_by_referentiel_urls
+2026-04-09T16:22:53Z - f133477b3 - Colin Darie : Merge pull request #12939 from colinux/fix-av-posistif-gallery
+2026-04-09T14:50:14Z - 844ca3d05 - LeSim : Merge pull request #12938 from demarche-numerique/few_bumps
+2026-04-09T13:10:56Z - 871818381 - Mathieu Magnin : Merge pull request #12936 from demarche-numerique/fix-RAILS-JYQ
+2026-04-09T11:30:37+02:00 - 289f59052 - simon lehericey : chore: bump addressable
+2026-04-09T11:30:36+02:00 - 54343b8c2 - simon lehericey : chore: bump rake
+2026-04-09T10:55:01+02:00 - aa9550016 - simon lehericey : fix: OAuth redirect_uri manipulation via Host header injection in france_connect_service
+2026-04-09T10:55:01+02:00 - 756ccd331 - simon lehericey : fix: OAuth State Validation Bypass (Login CSRF / Session Fixation) in FC/PC
+2026-04-09T10:55:00+02:00 - 4319ba36f - simon lehericey : fix: arbitrary method invocation / Unsafe dynamic render in avis_controller
+2026-04-09T10:55:00+02:00 - 3b660a25c - simon lehericey : fix: prevent potentially futur IDOR on commentaires from instructeur/expert
+2026-04-09T10:25:17+02:00 - b35b41bee - Paul Chavard : chore: update coldwired
+2026-04-09T10:25:17+02:00 - 076af40bf - Paul Chavard : feat(chore): update build tools
+2026-04-09T09:59:53+02:00 - ff43a6abb - Mathieu Magnin : fix(stats): avoid NoMethodError when monthly traitement mean rounds to 0
+2026-04-09T09:00:34Z - c9090de36 - LeSim : Merge pull request #12937 from demarche-numerique/just_patches
+2026-04-09T08:36:46Z - b8f11a0a9 - Paul Chavard : Merge pull request #12934 from demarche-numerique/push-vynkkpqvqppy
+2026-04-08T15:33:51+02:00 - f5810d66b - mfo : feat(maintenance): backfill and activate referentiel tiptap columns
+2026-04-08T14:01:40+02:00 - 404ea678b - simon lehericey : perf(search): db:schema:load recreate imutable_unaccent
+2026-04-08T14:01:38+02:00 - bae4d3895 - simon lehericey : perf(search): search use index again
+2026-04-08T13:40:43Z - 43dc38785 - mfo : Merge pull request #12929 from mfo/migrate-former-ref-to-tiptap
+2026-04-08T12:49:44Z - 1d6c57c59 - mfo : Merge pull request #12928 from demarche-numerique/fix-graphql-geo-area-rpg-resolve-type
+2026-04-08T12:49:30Z - 67592c020 - mfo : Merge pull request #12923 from demarche-numerique/US/fix-autocomplete-render-service-prefix
+2026-04-08T12:44:00Z - 22b6c4a06 - mfo : Merge pull request #12927 from mfo/cleanup-nature
+2026-04-08T12:26:12+02:00 - 2a043c7dc - Mathieu Magnin : fix(graphql): resolve GeoAreaType for rpg source
+2026-04-08T12:22:14Z - b1f711ba2 - LeSim : Merge pull request #12918 from demarche-numerique/fix_search
+2026-04-08T11:29:01+02:00 - 2a91f7334 - mfo : clean(type_de_champ.enum.nature): former titre_identite? helper does not conflict any more with the nature TITRE_IDENTITE enum, so we can get back on track for a more idiomatic ruby
+2026-04-08T10:11:04+02:00 - 74c48c2a5 - mfo : fix(error_handling): return 406 for unsupported format requests
+2026-04-08T10:09:58+02:00 - df80bfd09 - Mathieu Magnin : fix(france connect): move FC alert to identity section, remove date, use fr-alert info
+2026-04-08T10:09:58+02:00 - c956d789d - Mathieu Magnin : feat(france connect): add "Authentification FranceConnect" filters for instructeurs
+2026-04-08T10:09:58+02:00 - 3cfe32c23 - Mathieu Magnin : fix(france connect): update helper tests to match new FC alert wording
+2026-04-08T10:09:55+02:00 - 500515ccb - Mathieu Magnin : fix(france connect): track FranceConnect status at dossier submission time
+2026-04-08T08:19:14Z - 63db7d871 - mfo : Merge pull request #12879 from mfo/sentry-7328782244
+2026-04-08T08:15:51Z - 64d91f771 - Mathieu Magnin : Merge pull request #12907 from demarche-numerique/fix-12591
+2026-04-08T08:09:08Z - 6bd6909c9 - Mathieu Magnin : Merge pull request #12910 from demarche-numerique/convert-fields-to-erb
+2026-04-08T07:31:44Z - 48c394a36 - mfo : Merge pull request #12912 from mfo/referentiel-tiptap-url
+2026-04-08T07:01:09+02:00 - c6c327516 - mfo : fix(referentiel): enforce https, require query params, improve error messages
+2026-04-08T07:01:09+02:00 - 081c843c9 - mfo : feat(referentiel/new_form_component/url_tiptap): custom design for the current champ referentiel
+2026-04-08T06:38:51+02:00 - e40866869 - mfo : test(referentiel): adapt system tests for tiptap URL editor
+2026-04-08T06:38:51+02:00 - e247b9307 - mfo : refactor(referentiel): use before_action set_dossier with DossierPreloader
+2026-04-08T06:38:51+02:00 - d52887b0b - mfo : refactor(referentiel): reuse TiptapService#to_texts_and_tags for URL resolution
+2026-04-08T06:38:51+02:00 - c97f734d6 - mfo : refactor(referentiel): extract test_data_tags and effective_test_data to model
+2026-04-08T06:38:51+02:00 - 986871410 - mfo : test(referentiel): add specs for tiptap URL resolution with dossier and test_data_fields partial
+2026-04-08T06:38:50+02:00 - e9fbf8f80 - mfo : fix(referentiel): validate and display errors for tiptap test_data fields
+2026-04-08T06:03:52+02:00 - d16834430 - mfo : feat(referentiel_champ): pass dossier to service in fetch_external_data
+2026-04-08T06:03:52+02:00 - ced48fd70 - mfo : feat(procedure): add used_by_referentiel_urls? like routing rules
+2026-04-08T06:03:52+02:00 - 948ecafcf - mfo : feat(referentiel_controller): load dossier and pass to service
+2026-04-08T06:03:52+02:00 - 78ea2fb8a - mfo : feat(types_de_champ_controller): block delete/type change for referentiel-referenced fields
+2026-04-08T06:03:52+02:00 - 6d4004ae6 - mfo : feat(referentiel_component): pass dossier_id in loader URL
+2026-04-08T06:03:51+02:00 - ea0fd65b6 - mfo : test(referentiels_controller): add specs for tiptap mode (create, update, clone, validate_url)
+2026-04-08T06:03:51+02:00 - 5ee97065c - mfo : refactor(Referentiel.url_validation): extract in dedicated route
+2026-04-08T06:03:51+02:00 - 382b165cc - mfo : fix(api_referentiel): configured? validates all tiptap tags have test data
+2026-04-08T06:03:51+02:00 - 2b7797c75 - mfo : feat(new_form_component): move test_data fields under TipTap editor as DSFR table
+2026-04-07T15:46:41+02:00 - 21abf223f - mfo : feat(referentiel_autocomplete_render_service): use new combobox seeding with id so even if api returns duplicate labels, no react infinite loop
+2026-04-07T15:30:45+02:00 - 225a7e90c - mfo : feat(Combobox): allows combobox to receive item with their own id [controlled server side]
+2026-04-07T14:48:31Z - 534ea3858 - Mathieu Magnin : Merge pull request #12914 from demarche-numerique/fix-12890
+2026-04-07T14:34:21+02:00 - 44576592b - benoitqueyron : db(task): backfill value for no ban address
+2026-04-07T14:07:12Z - d9a4b6ab8 - LeSim : Merge pull request #12916 from demarche-numerique/do_not_fail_no_more
+2026-04-07T12:40:53Z - 21336d325 - Benoit Queyron : Merge pull request #12920 from demarche-numerique/fix-adress-not-ban-in-export-template
+2026-04-07T12:22:32Z - fe004815a - mfo : Merge pull request #12898 from mfo/perf/tags-substitution-concern-spec
+2026-04-07T11:10:41+02:00 - d33521d21 - Lisa Durand : feat(instructeurs): use admin default procedure presentation when instructeur has not customized
+2026-04-07T11:10:41+02:00 - 330c5f153 - Lisa Durand : Disabled toggle if another admin already active default procedure presentation
+2026-04-07T11:10:41+02:00 - 31b5e7dc3 - Lisa Durand : handle correctly pp_default if procedure presentation is invalid
+2026-04-07T11:10:41+02:00 - 264c0acb1 - Lisa Durand : Do not keep default procedure presentation attributes when cloning procedure
+2026-04-07T11:10:35+02:00 - 149f27496 - Lisa Durand : feat(instructeurs): add toggle to set procedure presentation as admin default
+2026-04-07T10:52:32+02:00 - a161fc1e3 - Lisa Durand : migration : Add admin_default_procedure_presentation and toggle to procedures
+2026-04-07T10:36:15+02:00 - c4f7dcb6f - Mathieu Magnin : feat(birthdate): Regénérer le schéma GraphQL IDL après ajout du champ birthdate feat(birthdate): feat(birthdate): Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+2026-04-07T10:36:15+02:00 - 9af263ffb - Mathieu Magnin : feat(birthdate): Fix birthdate option supprimée lors de la publication feat(birthdate): feat(birthdate): L'option birthdate était absente de OPTS_BY_TYPE pour le type :date, feat(birthdate): donc clean_options la supprimait lors de publish_new_revision. feat(birthdate): feat(birthdate): Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+2026-04-07T10:36:15+02:00 - 82a6cc8ca - Mathieu Magnin : refactor: unless => if !
+2026-04-07T10:36:15+02:00 - 3eede1966 - Mathieu Magnin : feat(birthdate): ETQ admin, configurer l'option date de naissance dans l'UI et l'API feat(birthdate): feat(birthdate): - Ajout du toggle "Date de naissance" dans l'éditeur de champ date feat(birthdate): - Masquage des options date_in_past/range_date quand birthdate actif feat(birthdate): - Callback before_save pour effacer les options conflictuelles feat(birthdate): - Validation client min/max dans DateComponent feat(birthdate): - Exposition du champ birthdate dans l'API GraphQL feat(birthdate): - Ajout de :birthdate aux permitted params du controller admin feat(birthdate): feat(birthdate): Ref #12890 feat(birthdate): feat(birthdate): Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+2026-04-07T10:36:15+02:00 - 07074606b - Mathieu Magnin : feat(birthdate): Fix apostrophe typographique dans le message d'erreur birthdate feat(birthdate): feat(birthdate): Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+2026-04-07T10:36:14+02:00 - b55b90b63 - Mathieu Magnin : feat(birthdate): ETQ admin, ajouter l'option "date de naissance" au champ date feat(birthdate): feat(birthdate): Ajoute une option birthdate sur le TypeDeChamp date qui valide feat(birthdate): que la date est comprise entre le 1er janvier 1900 et aujourd'hui. feat(birthdate): Quand birthdate est actif, il prend précédence sur date_in_past feat(birthdate): et range_date. feat(birthdate): feat(birthdate): Ref #12890 feat(birthdate): feat(birthdate): Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+2026-04-07T10:15:49Z - c6d48a94d - Colin Darie : Merge pull request #12903 from colinux/attestation-weasyprint
+2026-04-07T09:57:29+02:00 - e64603c0f - Colin Darie : fix: remove redundant purge_later before attach on attestation depot
+2026-04-07T09:57:29+02:00 - af7cfa133 - Colin Darie : fix: invalidate attestation depot PDF cache on dossier state change
+2026-04-07T09:57:28+02:00 - c52220482 - Colin Darie : fix: use absolute URL for Marianne logo in attestation depot template
+2026-04-07T09:57:23+02:00 - 7caa599c7 - Colin Darie : test: stub WeasyPrint globally for all system tests
+2026-04-07T09:29:51+02:00 - b3d1327d1 - mfo : fix(referentiel-multiline): with long json key, the fixed cell (json property name) took the whole horizontal space when configuring a referentiel mapping
+2026-04-07T07:37:29Z - 84ef9d78e - mfo : Merge pull request #12921 from mfo/US/fix-referentiel-multiline
+2026-04-06T11:07:53+02:00 - 4a487806f - benoitqueyron : feat(quotient familial): indicates that there is no beneficiary folder (error 404)
+2026-04-06T11:07:07+02:00 - 63008b063 - benoitqueyron : fix(address champ): add a value for not in ban address
+2026-04-06T09:47:34Z - 5e6c58f8d - Benoit Queyron : Merge pull request #12892 from demarche-numerique/api-part-quotient-familial-use-404-response
+2026-04-03T15:25:42+02:00 - 3b69061c3 - simon lehericey : chore(dep): bump rake
+2026-04-01T17:39:26+02:00 - 8564cc61a - simon lehericey : spec(flaky): another try to fix a flaky selection
+2026-04-01T16:56:19Z - 5924253f9 - mfo : Merge pull request #12883 from mfo/ssrf-procedure-external-url-check-job
+2026-04-01T16:24:26+02:00 - e1e53f57a - simon lehericey : feat: change hint text if the restriction is on
+2026-04-01T16:24:26+02:00 - 3ecc3ee99 - simon lehericey : feat: dossier_link_champ respect dossier_link_procedures_ids
+2026-04-01T16:24:25+02:00 - 17325ac33 - simon lehericey : feat: champ editor controller save form on hidden change use by the react component
+2026-04-01T16:23:11+02:00 - f67f3265e - simon lehericey : feat: controller allow changes on dossier_link_procedures_ids
+2026-04-01T16:23:11+02:00 - c755110da - simon lehericey : feat: editor linked_dossier_tdc champ uses the new combobox
+2026-04-01T16:23:10+02:00 - d5c249bf3 - simon lehericey : feat: track change on dossier_link procedure_ids
+2026-04-01T15:45:15Z - 19df68952 - LeSim : Merge pull request #12732 from demarche-numerique/admin-limiter-dossiers
+2026-04-01T15:19:12+02:00 - d0fcb7647 - simon lehericey : feat: add procedures_limit and dossier_link_procedure_ids to tdc
+2026-04-01T10:42:33Z - 553c7e284 - Lisa Durand : Merge pull request #12905 from demarche-numerique/fix-mt-backfill-customized-on-procedure-presentation-ldu
+2026-04-01T10:26:08+02:00 - f4c6bb4f1 - Lisa Durand : fix backfill procedure_presentation displayed_columns customization task
+2026-04-01T10:10:27+02:00 - 27391e2cf - mfo : feat(new_form_component): render TipTap editor, tag buttons and dynamic test_data fields when use_tiptap?
+2026-04-01T10:05:41+02:00 - ee84136ef - mfo : feat(referentiel_service): add resolve_tiptap_url, branch #url/#call with dossier: kwarg, branch #test_url and refactor #validate_referentiel
+2026-04-01T10:05:32+02:00 - 4b5ef7dc9 - mfo : feat(api_referentiel): add use_tiptap?, tiptap_mention_stable_ids, url_has_query_tag? and branch validates/configured?/url_allowed?, permit tiptap params and branch cache bust on use_tiptap?, copy tiptap columns in clone
+2026-03-31T17:09:28+02:00 - efdb3f35e - mfo : schema: add url_tiptap, test_data_tiptap and use_tiptap columns to referentiels
+2026-03-31T16:35:53+02:00 - 4065ac209 - mfo : Expose accuse_lecture_agreement_at on GraphQL API
+2026-03-31T16:34:45+02:00 - 82fb4913f - Mathieu Magnin : refactor: haml to erb
+2026-03-31T16:17:48+02:00 - 5d1440754 - Colin Darie : refactor: generalize logo constants and move institution images
+2026-03-31T16:17:47+02:00 - dfbc1227d - Colin Darie : feat: generate attestation de dépôt PDF with WeasyPrint
+2026-03-31T16:08:56+02:00 - e86126004 - Paul Chavard : use lingui for js i18n
+2026-03-31T16:08:56+02:00 - 85c0a3c0f - Paul Chavard : use new multiselect in more places
+2026-03-31T16:08:56+02:00 - 556a06015 - Paul Chavard : wrap tag group inside select value component
+2026-03-31T15:57:00Z - 355bbef85 - mfo : Merge pull request #12911 from mfo/add_accuse_lecture_agreement_at_to_graphql_api
+2026-03-31T14:24:39Z - a67190b55 - Paul Chavard : Merge pull request #12901 from demarche-numerique/push-rvrvnqstykxm
+2026-03-31T13:19:29Z - da06f90f9 - Colin Darie : Merge pull request #12855 from colinux/improve-email
+2026-03-31T12:53:21Z - 9f902f381 - Mathieu Magnin : Merge pull request #12906 from demarche-numerique/fix-france-connect-brand
+2026-03-31T12:50:34+02:00 - 933015a70 - Colin Darie : chore: remove Prawn-based papertrail template and spec
+2026-03-31T12:50:25+02:00 - b5ed6e3fc - Colin Darie : refactor: rename papertrail → attestation_depot
+2026-03-31T12:23:43Z - dd6b4693c - Eric Leroy-Terquem : Merge pull request #12908 from demarche-numerique/fix-translation-for-overwrite-import
+2026-03-31T12:01:55+02:00 - 43fedefe5 - Eric Leroy-Terquem : fix(instructeurs import): use right wording for not routed procedures
+2026-03-31T09:01:01+02:00 - a4fc5a6d1 - Mathieu Magnin : Fix FranceConnect brand name
+2026-03-31T08:48:18Z - 7138621d3 - Colin Darie : Merge pull request #12904 from colinux/remove-switch-banner-simple
+2026-03-31T08:05:59+02:00 - 5f9fc75a1 - mfo : fix(export/titre_identite): retourne present/absent pour les titre_identite
+2026-03-31T07:56:26+02:00 - fec2788e3 - mfo : feat(migration): migrate 28 orphan titre identite champs still in prod
+2026-03-31T07:56:26+02:00 - 955e4048c - mfo : feat(procedure_revision): do not report change in pj_limit_formats, pj_format_families, pj_auto_purge for rib, titre_identite, justificatif de domicile
+2026-03-31T07:56:26+02:00 - 8698ed9a4 - mfo : clean(migration): titre identite had been destroyed
+2026-03-31T07:56:26+02:00 - 10990c8b5 - mfo : feat(piece_justificative): max file upload 1
+2026-03-31T07:56:25+02:00 - dfbcd09fc - mfo : fix(spec): now titre identite share same html as piece_justicative, dedup css matching both
+2026-03-31T07:56:25+02:00 - d74df4a61 - mfo : clean(titre_identite): finalize titre identite migration
+2026-03-31T06:11:31Z - 449610574 - mfo : Merge pull request #12750 from mfo/feature/migrate-titre-identite-phase2
+2026-03-30T18:40:20+02:00 - 53af69a84 - Colin Darie : refactor: disable switch banner on new host
+2026-03-30T17:53:41Z - d5ff270ae - Mathieu Magnin : Merge pull request #12902 from demarche-numerique/fix-tiptap-single-line
+2026-03-30T16:11:59+02:00 - 303c5627b - Mathieu Magnin : fix(tiptap): render export template editors as single-line inputs
+2026-03-30T16:11:30Z - 89bad58d0 - mfo : Merge pull request #12894 from mfo/minimain
+2026-03-30T15:21:36+02:00 - 79a8af703 - mfo : feat(graphql): wrap new titre identite in old wrapper to avoid breaking changes
+2026-03-30T15:21:31+02:00 - bbe2acdc5 - mfo : feat(piece_justificative): ensure to also clear new titre identite on clone
+2026-03-30T14:37:09Z - 6385778a2 - Mathieu Magnin : Merge pull request #12866 from demarche-numerique/commentaire-creation-turbo
+2026-03-30T12:17:29+02:00 - 3491c449f - Lisa Durand : Update customized to true when instructeur change displayed_columns
+2026-03-30T12:17:23+02:00 - 60f5c8cde - Lisa Durand : Add task and migration to backfill customized on procedure_presentations
+2026-03-30T11:41:31+02:00 - 73ae90dbf - mfo : perf(tests): let_it_be — dossier_spec.rb
+2026-03-30T11:36:16+02:00 - dff0dd6b1 - Paul Chavard : tech: remove dsfr overrides from manager.scss
+2026-03-30T11:13:30+02:00 - d3bf3c4ab - mfo : perf(tests): T09+T06 merge space normalization tests — tags_substitution_concern_spec.rb
+2026-03-30T11:13:30+02:00 - b3d1e3718 - mfo : perf(tests): T09 merge revisions test — tags_substitution_concern_spec.rb
+2026-03-30T11:13:30+02:00 - 939b41486 - mfo : perf(tests): T09 aggregate tags assertions — tags_substitution_concern_spec.rb
+2026-03-30T11:13:30+02:00 - 3564d5256 - mfo : perf(tests): T09 aggregate date tag assertions — tags_substitution_concern_spec.rb
+2026-03-30T11:13:26+02:00 - e114bc5bd - mfo : perf(tests): T04+T10 reduce setup — tags_substitution_concern_spec.rb
+2026-03-30T11:02:17+02:00 - 582951d51 - Colin Darie : improve(mailer): improve instructeur assignment emails with title, CTA and i18n
+2026-03-30T11:02:12+02:00 - 1fa79fc65 - Colin Darie : refactor(mailer): convert groupe_instructeur_mailer views from HAML to ERB
+2026-03-30T10:36:11+02:00 - 76f371656 - Eric Leroy-Terquem : Fix flaky spec: freeze time in reset_expiring_dossiers_job_spec
+2026-03-30T10:23:28Z - 765a34c9f - Colin Darie : Merge pull request #12899 from demarche-numerique/admin-can-personnalize-dossiers-table-migration-ldu
+2026-03-30T09:46:36Z - 99845629a - mfo : Merge pull request #12788 from mfo/perf-1
+2026-03-30T09:42:57Z - d33a65605 - mfo : Merge pull request #12900 from demarche-numerique/push-ntltqxpsxuvk
+2026-03-30T09:03:42Z - 14498f4a4 - mfo : Merge pull request #12895 from mfo/allow-outlook-upload
+2026-03-30T09:01:24Z - 37ea2ee49 - Colin Darie : Merge pull request #12885 from colinux/fix-procedure-pro-c
+2026-03-30T08:54:10Z - a74cc85cf - mfo : Merge pull request #12893 from mfo/fix-retry-button-upload-fail
+2026-03-30T08:47:15Z - f01ec2913 - Eric Leroy-Terquem : Merge pull request #12897 from demarche-numerique/fix-reset-expiring-dossiers-job-spec-flaky-date
+2026-03-27T16:55:11+01:00 - fa3b45fe8 - mfo : fix(upload): allow Outlook .msg file uploads
+2026-03-27T16:17:52+01:00 - 0a4a5b122 - mfo : chore(direct_uploads): add diagnostic middleware for 406 errors
+2026-03-27T13:27:43+01:00 - ee16d1742 - mfo : fix(upload): only show retry button when retry listener is attached
+2026-03-27T10:15:22+01:00 - 7cd5fbefd - Eric Leroy-Terquem : refactor: rename notify_removed_instructeur_from_all_groupes to notify_removed_instructeur_from_many_groupes
+2026-03-27T10:15:22+01:00 - 1e6f721a6 - Eric Leroy-Terquem : feat(instructeurs import): can overwrite existing groups and instructeurs
+2026-03-27T09:20:23Z - 396f483d9 - Eric Leroy-Terquem : Merge pull request #12841 from demarche-numerique/import-instructeurs-and-overwrite
+2026-03-26T15:30:46+01:00 - 00818a04c - Colin Darie : fix(proconnect): Pro button redirects to our page instead of proconnect
+2026-03-26T14:57:38+01:00 - a0b96ec3b - mfo : secu(ssrf): no private url for lien_notice & lien_dpo
+2026-03-26T14:46:43+01:00 - 960510aee - Mathieu Magnin : fix(messagerie): format ERB templates with herb
+2026-03-26T14:46:42+01:00 - c17e3fc7f - Mathieu Magnin : fix(messagerie): submit commentaire does not crash when there is a model validation error and a file in the form
+2026-03-26T14:46:42+01:00 - a381267b3 - Mathieu Magnin : fix(messagerie): preserve uploaded files across commentaire validation error re-render
+2026-03-26T14:46:42+01:00 - 8d566394b - Mathieu Magnin : fix(messagerie): add a js button to delete an attachment uploaded but not persisted in a model
+2026-03-26T14:46:42+01:00 - 724c7f167 - Mathieu Magnin : refactor(messagerie): HAML => ERB
+2026-03-26T14:46:42+01:00 - 6f2cd929c - Mathieu Magnin : refactor(messagerie): commentaire creation errors in the form
+2026-03-26T14:46:42+01:00 - 4fbf9aa18 - Mathieu Magnin : fix(messagerie): user can post commentaire with blank body if file is attached
+2026-03-26T14:46:41+01:00 - 9724026de - Mathieu Magnin : refactor(messagerie): commentaire creation in turbo
+2026-03-26T14:09:06Z - 69f1963be - Paul Chavard : Merge pull request #12847 from demarche-numerique/push-kymywmqssxru
+2026-03-26T12:08:24Z - 2eb5aa86e - Colin Darie : Merge pull request #12881 from colinux/no-simpliscore-ff-clone
+2026-03-26T11:35:12+01:00 - f91abb581 - Colin Darie : fix: ne pas cloner les feature flags basés sur un pourcentage d'acteurs
+2026-03-26T09:42:22+01:00 - a550cd148 - simon lehericey : chore: add public deb packages key
+2026-03-26T09:30:00+01:00 - cf7ae4e9d - Colin Darie : fix(email): skip redundant trusted device renewal emails
+2026-03-26T08:48:44Z - 58a2c5539 - Colin Darie : Merge pull request #12880 from demarche-numerique/add_deb_repo_key
+2026-03-26T08:45:14Z - 28a97eee7 - Colin Darie : Merge pull request #12872 from demarche-numerique/fix/treeable-skipped-header-levels
+2026-03-26T08:41:28Z - dcf8b1f1b - Colin Darie : Merge pull request #12878 from demarche-numerique/sentry-7305936356
+2026-03-26T08:39:44Z - 0f66011b8 - mfo : Merge pull request #12849 from mfo/500-api-bretagne
+2026-03-26T08:36:03Z - 7d6be6227 - Colin Darie : Merge pull request #12875 from colinux/fix-redundant-email-login-expire
+2026-03-26T06:24:45+01:00 - 29c7ed4dd - mfo : fix(api_bretagne): propagate Failure monads instead of raising on API errors
+2026-03-25T17:36:01+01:00 - 8c87820ce - mfo : fix(referentiel_component): guard against nil referentiel
+2026-03-25T17:12:34+01:00 - cd4ced77f - Paul Chavard : Tech: inline DSFR utility classes in manager.scss
+2026-03-25T16:52:46+01:00 - 74b5eff33 - Paul Chavard : Tech: eliminate Sass placeholders and mixins by inlining their CSS
+2026-03-25T16:52:45+01:00 - 92c979168 - Paul Chavard : Tech: replace custom m-/p- spacing utilities with DSFR fr-m*/fr-p* classes
+2026-03-25T16:52:45+01:00 - 2ba43965d - Paul Chavard : Tech: expand Sass loops in flex-gap and fr-tag helpers to static CSS
+2026-03-25T16:24:55+01:00 - 2901c8fd3 - Colin Darie : refactor(tuile): migrate experts component template from haml to erb
+2026-03-25T16:24:54+01:00 - fbde44c02 - Colin Darie : i18n(tuile): extract all texts of experts component
+2026-03-25T16:24:52+01:00 - e0d45b9a7 - Colin Darie : fix(tuile): badge "Validé" sur la tuile avis externe si allow_expert_review activé
+2026-03-25T16:09:26+01:00 - 2e4a78e4f - mfo : fix(api/v1#piece_justificative): also prevent exposure from api v1
+2026-03-25T15:56:38+01:00 - b3f80b3af - Paul Chavard : refactor(select): use new select multiple autocomplete
+2026-03-25T15:55:38+01:00 - f9e53641c - mfo : fix(graphql): prevent titre_identite files and columns from being exposed
+2026-03-25T15:53:57+01:00 - 52abf1eba - mfo : test(graphql): red test proving titre_identite files and columns are exposed via PieceJustificativeChamp
+2026-03-25T15:42:29Z - 8f61734ce - Paul Chavard : Merge pull request #12863 from demarche-numerique/push-ktvpqrtmonmr
+2026-03-25T15:34:12Z - 300be1420 - Colin Darie : Merge pull request #12876 from colinux/tuile-avis-externe
+2026-03-25T15:29:29Z - 3cf34e58d - mfo : Merge pull request #12873 from mfo/US/fix-monavis-new-design
+2026-03-25T15:18:33Z - c1c1e0c5b - mfo : Merge pull request #12874 from mfo/US/fix-titre-identite-nature-files
+2026-03-25T15:05:44Z - e21c49a9b - Paul Chavard : Merge pull request #12452 from demarche-numerique/push-lrxptrmusylm
+2026-03-25T14:53:29Z - 0fabbd7fa - Benoit Queyron : Merge pull request #12869 from demarche-numerique/etq-instructeur-add-information-source-individual-columns
+2026-03-25T14:14:55+01:00 - f5cacedf3 - mfo : refactor(monavisvalidator): simplier to check on numerique.gouv.fr, if domain is compromised, we are already doomed
+2026-03-25T13:50:45+01:00 - 1511f37d8 - mfo : fix(mon-avis): new button style was no more supported by our regexp
+2026-03-25T13:44:34+01:00 - 723a261f2 - Mathieu Magnin : fix(treeable): handle skipped header section levels in tree building
+2026-03-25T11:13:21+01:00 - f2507ae23 - Colin Darie : fix(test): avoid ActiveJob inline retry cascade in ChampFetchExternalDataJob spec
+2026-03-25T11:13:19+01:00 - de74c0f7b - Colin Darie : chore(bundle): bump rails 7.2.2 => 7.2.3.1
+2026-03-25T10:43:06+01:00 - 52a3c4839 - mfo : fix(ci): add merge_group trigger to security-review workflow
+2026-03-25T10:43:06+01:00 - 3825dc403 - mfo : perf(tests): [S02] inline schema change detection into workflow — simpliscore_spec.rb
+2026-03-25T10:43:05+01:00 - e7edde466 - mfo : perf(tests): [T06] remove typography test — simpliscore_spec.rb
+2026-03-25T10:43:05+01:00 - e25a708f8 - mfo : perf(tests): pre-create steps 3+4 factories — simpliscore_spec.rb
+2026-03-25T10:43:05+01:00 - 11ac50a20 - mfo : perf(tests): [S02] inline button wording into workflow — simpliscore_spec.rb
+2026-03-25T10:43:04+01:00 - f71e5d982 - mfo : perf(tests): [S02] reduce navigations — simpliscore_spec.rb
+2026-03-25T10:43:04+01:00 - 89c7ca928 - mfo : fix(simpliscore): amélioration UX (wording, typographie, stepper)
+2026-03-25T10:43:04+01:00 - 1b140f61d - mfo : tests: ajout tests system complets pour workflow tunnel_id
+2026-03-25T10:43:03+01:00 - bdabd645c - mfo : cleanup: suppression TunnelFinder (remplacé par TunnelFinishedQuery)
+2026-03-25T10:43:03+01:00 - 126f05b00 - mfo : frontend: migration components et views vers tunnel_id
+2026-03-25T10:43:02+01:00 - f701a6203 - mfo : backend: implémentation workflow tunnel_id (routes, controller, jobs)
+2026-03-25T10:43:02+01:00 - df6f80bb1 - mfo : model: validations tunnel_id et query TunnelFinishedQuery
+2026-03-25T10:42:57+01:00 - ce8779da0 - mfo : db: ajout colonne tunnel_id pour workflow simpliscore Ajoute le concept de tunnel_id pour gérer les sessions d'amélioration : - Colonne tunnel_id (string, limit 6) - Maintenance task pour backfill des données existantes
+2026-03-25T10:39:40Z - 5b38d9634 - Eric Leroy-Terquem : Merge pull request #12870 from demarche-numerique/fix-titre-identite-zip
+2026-03-25T10:33:29+01:00 - e5473bc3d - Eric Leroy-Terquem : fix(zip export): do not add titre identite files
+2026-03-25T10:24:29Z - 20bb6e742 - Colin Darie : Merge pull request #12864 from colinux/rails-7-2-secu
+2026-03-25T10:12:55+01:00 - eff64061f - benoitqueyron : fix test
+2026-03-25T10:12:55+01:00 - a26d2779e - benoitqueyron : style(columns): add information source for 'prenom' and 'nom' columns
+2026-03-25T10:11:43+01:00 - caa5d8dbd - benoitqueyron : feat(admin - api part): admin can add a API Part token (there is no more FF for this action)
+2026-03-25T10:11:43+01:00 - 3690a4647 - benoitqueyron : style(api part): no longer refers to the old data sources
+2026-03-25T10:08:26Z - 01650dec1 - Benoit Queyron : Merge pull request #12816 from demarche-numerique/etq-tech-moves-ff-api-particulier
+2026-03-25T10:07:32+01:00 - ab3e48b5b - benoitqueyron : chore(doc): link to the doc on demarche numerique
+2026-03-25T10:01:46Z - 3365d15a7 - Benoit Queyron : Merge pull request #12844 from demarche-numerique/rubrique-acces-documentation
+2026-03-25T09:51:58Z - a00c1e462 - Mathieu Magnin : Merge pull request #12862 from demarche-numerique/add-columns-to-multiple-drop-down-list-export
+2026-03-25T09:48:39Z - b8fcd6c23 - mfo : Merge pull request #12764 from mfo/ux-review-simpliscore
+2026-03-25T09:27:42+01:00 - 5b04f0939 - Colin Darie : Merge pull request #12868 from demarche-numerique/US/test-security-review
+2026-03-24T17:49:12+01:00 - 545e81c50 - Colin Darie : Merge pull request #12867 from colinux/fix-empty-fc
+2026-03-24T17:23:46+01:00 - 14175e9d5 - Colin Darie : fix(identity): allow editing identity fields when FC did not provide all data
+2026-03-24T16:19:21+01:00 - 9c197ac4f - benoitqueyron : fix test
+2026-03-24T16:19:18+01:00 - 8c6d12819 - benoitqueyron : feat(instructeur - expert): can access the documentation through the main menu
+2026-03-24T16:12:00+01:00 - 50987c478 - benoitqueyron : feat(admin): can access the documentation through the main menu
+2026-03-24T16:10:41+01:00 - bdb6774ac - benoitqueyron : feat(user): can access the documentation through the main menu
+2026-03-24T16:03:49+01:00 - 89a8d264a - mfo : fix(workflow): claude code security review only runs on pull request events, not pull request review. so add a step to check the pr status and trigger the workflow if the status is approved
+2026-03-24T14:11:52+01:00 - 8a4f193f3 - mfo : fix(webhook): sanitize logged URLs
+2026-03-24T13:19:14Z - d1a7d6ccd - mfo : Merge pull request #12865 from demarche-numerique/US/webhook-support
+2026-03-24T12:06:06+01:00 - d3ce74290 - mfo : refactor(haml): migrate administrateurs/attestation_template_v2s/show to ERB
+2026-03-24T12:06:06+01:00 - 36cf7a842 - mfo : refactor(haml): migrate administrateurs/procedures/clone_settings to ERB
+2026-03-24T12:06:05+01:00 - 089a14067 - mfo : refactor(haml): migrate users/dossiers/_dossiers_list to ERB
+2026-03-24T11:11:55Z - 7a7403ace - mfo : Merge pull request #12843 from demarche-numerique/haml-3
+2026-03-24T11:10:09+01:00 - db578a22e - Paul Chavard : tech: upgrade playwright
+2026-03-24T10:42:52Z - 6ffe8c0f2 - Colin Darie : Merge pull request #12848 from colinux/fix-response-headers
+2026-03-24T10:42:39Z - 17badb439 - Colin Darie : Merge pull request #12833 from colinux/worktree-batch-perfs
+2026-03-24T10:04:48+01:00 - 9c5a2ff44 - Mathieu Magnin : fix(export): export all referentiel columns for multiple drop down list in export templates
+2026-03-24T05:44:27Z - fbe073a45 - mfo : Merge pull request #12854 from mfo/type-de-champ-referentiel-csv-should-not-be-here
+2026-03-23T18:33:28+01:00 - 22063fc9c - mfo : Add Claude Code security review workflow
+2026-03-23T18:16:11Z - d7b9e68fd - mfo : Merge pull request #12856 from mfo/claude-code-security-review
+2026-03-23T18:09:35+01:00 - 3295fdc8f - Colin Darie : fix(dossier): removing an attachment enable the submit
+2026-03-23T17:24:14Z - a5c0d9e08 - Colin Darie : Merge pull request #12857 from colinux/fix-depose-state-after-attachment-removal
+2026-03-23T17:17:56Z - 01b1dbed7 - mfo : Merge pull request #12850 from demarche-numerique/add-kml
+2026-03-23T16:52:20+01:00 - 65222838d - mfo : fix(type_de_champ): clear referentiel_id when changing type_champ
+2026-03-23T16:36:43Z - 30c266862 - Mathieu Magnin : Merge pull request #12852 from demarche-numerique/fix-green-error-message
+2026-03-23T16:33:54+01:00 - 149464703 - mfo : test(attachment): add KML upload assertion in multi-upload system spec
+2026-03-23T16:33:53+01:00 - 6a726c754 - mfo : fix(attachment): include file extensions in accept attribute
+2026-03-23T16:33:50+01:00 - b703e0b2b - mfo : test(attachment): add spec reproducing KML accept attribute bug
+2026-03-23T16:25:20+01:00 - c0f2e425e - Colin Darie : fix(attachment): use flex display for drop zone "ou" separator on desktop
+2026-03-23T16:24:41+01:00 - 4aac64b8d - Mathieu Magnin : fix(input errorable): errors on champ (not dossier) should be red
+2026-03-23T15:46:18Z - 5abb0b9c5 - Mathieu Magnin : Merge pull request #12851 from colinux/fix/drop-zone-or-flex-display
+2026-03-23T15:37:29+01:00 - 454f24e2d - Colin Darie : fix(autosave): guard against missing response on non-ResponseError errors
+2026-03-23T13:11:02Z - c9d0ee518 - Colin Darie : Merge pull request #12846 from colinux/proconnect-link
+2026-03-23T13:05:59+01:00 - 79ae7c875 - Colin Darie : refactor(signin): change logic about linking signin & proconnect in header
+2026-03-23T11:51:45Z - 4bed012d2 - Paul Chavard : Merge pull request #12845 from demarche-numerique/push-qxqlxowstnxp
+2026-03-23T11:42:28+01:00 - e22199bae - Paul Chavard : chore: replace postcss/autoprefixer with lightningcss
+2026-03-23T10:10:16Z - cc074b94c - mfo : Merge pull request #12842 from demarche-numerique/srrf-webhook
+2026-03-23T10:06:19Z - 718f7ae5c - mfo : Merge pull request #12832 from mfo/fix/xss-prefill-values
+2026-03-23T10:06:13Z - 44455b319 - mfo : Merge pull request #12836 from demarche-numerique/fix/xss-api-token
+2026-03-23T09:52:04Z - 34527ff10 - Colin Darie : Merge pull request #12779 from colinux/dossier-footer-errors
+2026-03-23T09:25:09Z - a40b9d809 - mfo : Merge pull request #12834 from demarche-numerique/fix/xss-monavis-regex
+2026-03-23T08:07:24Z - b1b91b9e8 - Colin Darie : Merge pull request #12838 from demarche-numerique/dependabot/bundler/bcrypt-3.1.22
+2026-03-20T14:37:36+01:00 - 36c89f0c5 - mfo : fix(security): block SSRF via webhook URL
+2026-03-20T14:37:32+01:00 - f418475e3 - mfo : test: add failing specs proving SSRF vulnerability on web_hook_url
+2026-03-20T11:26:12Z - f7be6ba22 - Mathieu Magnin : Merge pull request #12837 from demarche-numerique/fix-mt-discarded-procedure
+2026-03-20T07:22:11Z - 9519c5db1 - mfo : Merge pull request #12819 from mfo/US/fix-dragdrop-spacers
+2026-03-19T18:48:09Z - b930a5a4c - dependabot[bot] : chore(deps): bump bcrypt from 3.1.20 to 3.1.22
+2026-03-19T18:29:51+01:00 - 961d18da8 - Mathieu Magnin : fix(maintenance): skip discarded procedures in trailing separator path fix task
+2026-03-19T18:01:37Z - 2e8cb9bed - Mathieu Magnin : Merge pull request #12829 from demarche-numerique/fix-attestation-race-condition
+2026-03-19T18:01:07Z - 0c1a0cbd6 - Mathieu Magnin : Merge pull request #12835 from demarche-numerique/validate-only-new-procedure-path
+2026-03-19T17:52:23+01:00 - 39ca70ad1 - Mathieu Magnin : fix(procedure path): skip format validation on unchanged legacy paths
+2026-03-19T17:48:54+01:00 - 441de31ce - Colin Darie : perf: eliminate lock contention on batch_operations during parallel processing
+2026-03-19T17:23:16+01:00 - 3e12db6dd - benoitqueyron : fix test
+2026-03-19T17:00:08+01:00 - 39fe92e1b - benoitqueyron : fix(api part): valid schema with data
+2026-03-19T16:55:13+01:00 - bfe8570d6 - mfo : fix(security): use DOM APIs instead of innerHTML in tiptap tags suggestion menu
+2026-03-19T16:55:01+01:00 - d717aa0a4 - mfo : fix(security): use DOM APIs instead of insertAdjacentHTML in API token controller
+2026-03-19T16:55:01+01:00 - b30f97d38 - mfo : test: prove XSS via insertAdjacentHTML in API token procedure selection
+2026-03-19T16:54:22+01:00 - 1e5f2075e - mfo : fix(security): fix MonAvis regex alternation allowing arbitrary domains
+2026-03-19T16:54:21+01:00 - a9abb8ec0 - mfo : test: prove MonAvis embed validator regex bypass
+2026-03-19T16:54:08+01:00 - 6eb4fa978 - mfo : fix(security): escape HTML in prefill possible_values to prevent XSS
+2026-03-19T16:54:02+01:00 - 4431c962a - mfo : test: prove XSS via unescaped HTML in prefill possible_values
+2026-03-19T16:51:39+01:00 - 4e390ae4e - Mathieu Magnin : fix(attestation): add maintenance task to destroy orphaned attestations on sans_suite dossiers
+2026-03-19T16:51:38+01:00 - 0ccaf8326 - Mathieu Magnin : fix(attestation): prevent race condition creating orphaned attestations on sans_suite dossiers
+2026-03-19T16:36:52Z - 420d1b2d1 - Benoit Queyron : Merge pull request #12828 from demarche-numerique/fix-api-part-validation-schema
+2026-03-19T16:22:04Z - 964cebd27 - mfo : Merge pull request #12830 from mfo/fix/xss-tiptap-cadre
+2026-03-19T15:51:51Z - 608fb37ae - Mathieu Magnin : Merge pull request #12827 from demarche-numerique/fix-gallery-error
+2026-03-19T15:43:21+01:00 - 9be4526a9 - Colin Darie : clean(autosave): remove dead retry button code
+2026-03-19T15:43:20+01:00 - dad16c863 - Colin Darie : style(footer): avoir buttons to shrink
+2026-03-19T15:43:19+01:00 - b24461f51 - Colin Darie : feat(dossier): disable submit on error
+2026-03-19T15:43:19+01:00 - 71a61e423 - Colin Darie : feat(autosave): link to contact prefill error and message
+2026-03-19T15:43:18+01:00 - f4c83e6ca - Colin Darie : fix(autosave): spacing on annotation page
+2026-03-19T15:43:18+01:00 - 1ea79a009 - Colin Darie : refactor(autosave) dynamic contact path
+2026-03-19T15:43:17+01:00 - eb7b1ed90 - Colin Darie : i18n(autosave): make error code label translatable
+2026-03-19T15:43:17+01:00 - d506ccbe8 - Colin Darie : test(autosave): add ViewComponent preview for autosave footer
+2026-03-19T15:43:14+01:00 - 68b4c6a2d - Colin Darie : feat(autosave): show contextual error messages for server, auth and network errors
+2026-03-19T15:12:46+01:00 - 8b767e42c - Mathieu Magnin : fix(sentry): improve Commune API failure error message clarity
+2026-03-19T15:11:05+01:00 - 0c7fc3269 - Colin Darie : feat(autosave): add error template elements to footer component
+2026-03-19T15:08:49+01:00 - 8d787e784 - Colin Darie : feat(autosave): add i18n keys for server, auth and network error messages
+2026-03-19T15:08:48+01:00 - 838ef6ed8 - Colin Darie : feat(autosave): disable automatic auth reload for autosave requests
+2026-03-19T15:08:45+01:00 - 91edb1e72 - Colin Darie : feat(autosave): enrich ResponseError with isNetworkError and handleAuth option
+2026-03-19T14:57:29+01:00 - 40c53cfc8 - Mathieu Magnin : fix(gallery): prevent nil error in record_libelle for orphaned attestations
+2026-03-19T14:51:47Z - f3c7c99a9 - Mathieu Magnin : Merge pull request #12826 from demarche-numerique/fix-sentry-issue-title-commune
+2026-03-19T14:42:05Z - e4a91b130 - Eric Leroy-Terquem : Merge pull request #12790 from demarche-numerique/footer-without-maison-france-services
+2026-03-19T13:38:37Z - 63f763cb2 - Mathieu Magnin : Merge pull request #12822 from demarche-numerique/fix-missing-target-stimulus
+2026-03-19T13:25:36Z - d79358a21 - Colin Darie : Merge pull request #12824 from demarche-numerique/dependabot/bundler/json-2.19.2
+2026-03-19T13:02:21Z - 10d6a0302 - mfo : Merge pull request #12820 from mfo/US/notification-change-toggle
+2026-03-19T13:02:16Z - 202f97347 - mfo : Merge pull request #12823 from mfo/ywh-734019
+2026-03-19T12:56:11Z - 0079e741e - Eric Leroy-Terquem : Merge pull request #12778 from demarche-numerique/can-import-contact-informations
+2026-03-19T12:52:10Z - 9380bc472 - dependabot[bot] : chore(deps): bump json from 2.18.1 to 2.19.2
+2026-03-19T11:46:35+01:00 - 92f7d6686 - Eric Leroy-Terquem : feat(groupes instructeurs): can import contact informations
+2026-03-19T11:46:35+01:00 - 056176792 - Eric Leroy-Terquem : UI(instructeurs management): can import instructeurs from a modale in non routed procedures
+2026-03-19T11:00:59+01:00 - b07159841 - mfo : fix(security): prevent XSS via email suggestion injection
+2026-03-19T11:00:59+01:00 - 9a2d8c0ba - mfo : test: add XSS prevention test for email checker suggestions
+2026-03-19T10:54:21+01:00 - 139469f04 - Mathieu Magnin : fix(for-tiers): guard against missing notificationMethodCheckbox target https://demarches-simplifiees.sentry.io/issues/7343961356/
+2026-03-19T09:47:13+01:00 - fb1e830d7 - Mathieu Magnin : fix(path pattern): extract PATH_REGEX constant to share validation between model and views
+2026-03-19T09:07:40Z - b6bbe2c2c - Mathieu Magnin : Merge pull request #12809 from demarche-numerique/fix-12774
+2026-03-19T08:09:31Z - 0832033db - Mathieu Magnin : Merge pull request #12821 from demarche-numerique/fix-repetition-number-position
+2026-03-18T21:30:39+01:00 - 1108e36fc - Mathieu Magnin : fix(repetition): align row number badge with long labels in repeatable champs
+2026-03-18T18:55:35+01:00 - 814ee2807 - mfo : fix(upload): use CSS media query instead of DSFR classes for mobile hiding
+2026-03-18T18:32:19+01:00 - 34a54f49b - mfo : fix(notification_preferences): show alert when user toggle the option.
+2026-03-18T15:17:40Z - c155ee214 - Colin Darie : Merge pull request #12813 from colinux/worktree-fix-gmail-logo
+2026-03-18T14:35:24+01:00 - e02d64d08 - benoitqueyron : fix test
+2026-03-18T14:35:19+01:00 - f5f2e6c87 - benoitqueyron : fix(api part): fix url
+2026-03-18T13:41:31Z - 969b702ff - Benoit Queyron : Merge pull request #12812 from demarche-numerique/fix-url-api-part
+2026-03-18T13:06:50+01:00 - 9a04ada2c - Colin Darie : style(mailer): fix logo size for gmail
+2026-03-18T12:36:06+01:00 - 110e27130 - Colin Darie : test: fix identite 2-steps logic
+2026-03-18T11:52:05+01:00 - 6a0fbef61 - Colin Darie : test: fix identite 2-steps  logic
+2026-03-18T11:42:26Z - 6171d0ec1 - Colin Darie : Merge pull request #12815 from colinux/fix-again-identite-test
+2026-03-18T11:09:57Z - 6574c9d02 - Eric Leroy-Terquem : Merge pull request #12782 from demarche-numerique/add-personnalise-column-in-groups-management-table
+2026-03-18T10:59:39Z - 25c347aa2 - Colin Darie : Merge pull request #12814 from colinux/fix-identite-tests
+2026-03-18T10:51:24Z - 6112bb849 - Colin Darie : Merge pull request #12800 from colinux/feature/notify-admin-domaine-transitoire
+2026-03-18T10:50:11+01:00 - f6e9a81bb - Colin Darie : test: fix fill individual
+2026-03-18T10:36:28+01:00 - 784b73f1b - Mathieu Magnin : fix test
+2026-03-18T10:36:28+01:00 - 394e6d314 - Mathieu Magnin : feat(bottom right actions): hide default crisp button in css (in JS the behavior is not smooth)
+2026-03-18T10:36:28+01:00 - 05a81f29d - Mathieu Magnin : feat(bottom right actions): shoulb be visible on mobile and fix a11y
+2026-03-18T10:36:27+01:00 - cd8ea096d - Mathieu Magnin : feat(bottom right actions): scroll to top when button is clicked
+2026-03-18T10:36:27+01:00 - bbb627906 - Mathieu Magnin : feat(bottom right actions): add label on hover
+2026-03-18T10:36:27+01:00 - 697b6ed5f - Mathieu Magnin : feat(bottom right actions): create component for bottom right actions
+2026-03-18T10:36:27+01:00 - 3578ef682 - Mathieu Magnin : feat(bottom right actions): open crisp when button clicked
+2026-03-18T10:36:27+01:00 - 178457baa - Mathieu Magnin : feat(bottom right actions): i18n component
+2026-03-18T10:27:02+01:00 - a03696537 - Colin Darie : style(dsfr): disable fieldset when all radio buttons are disabled
+2026-03-18T10:27:01+01:00 - eff69365c - Colin Darie : refactor(identite): use radio component for genders
+2026-03-18T10:27:01+01:00 - 3e65c8ee9 - Colin Darie : style(dsfr): add fr-input-group--disabled class when input is disabled
+2026-03-18T10:27:00+01:00 - b086971b8 - Colin Darie : style(identite): shows a disabled submit before selecting identity type
+2026-03-18T10:27:00+01:00 - 50e51d1c1 - Colin Darie : feat(identite): siret can go back to commencer
+2026-03-18T10:26:59+01:00 - 701498968 - Colin Darie : style(identite): fix layout with gender radios
+2026-03-18T10:26:59+01:00 - 1e96ce42d - Colin Darie : test(identite): fix after rewords & logic changes
+2026-03-18T10:26:58+01:00 - 0c107e617 - Colin Darie : chore(identite): exact UX wording
+2026-03-18T10:26:57+01:00 - 9767e3ee4 - Colin Darie : fix(identite): move checkbox and email inside beneficiary block
+2026-03-18T10:26:57+01:00 - 77557b927 - Colin Darie : fix(identite): keep values on error after submitting
+2026-03-18T10:26:56+01:00 - d5f1a05dd - Colin Darie : feat(identite): replace notification radios with checkbox
+2026-03-18T10:26:56+01:00 - 86a53735e - Colin Darie : style(identite): add bordered blocks around identity sections
+2026-03-18T10:26:55+01:00 - 99ea86825 - Colin Darie : style(identite): make gender selector inline with error handling
+2026-03-18T10:26:54+01:00 - e53cd5bd1 - Colin Darie : style(identite): mandatory explanation in fr-highlight
+2026-03-18T10:26:54+01:00 - 1488878b6 - Colin Darie : style(identite): fc lock in fr-highlight
+2026-03-18T10:26:53+01:00 - f458d18a2 - Colin Darie : feat(identite): add back button to identity form
+2026-03-18T10:26:52+01:00 - a0b1c8e71 - Colin Darie : test(identite): add coverage for for_tiers returning user
+2026-03-18T10:26:52+01:00 - 3624121f6 - Colin Darie : feat(identite): don't pre-check pour vous, hide form until choice made
+2026-03-18T10:26:51+01:00 - cc62ec59c - Colin Darie : feat(identite): hide estimated duration and date limite on identity page
+2026-03-18T10:26:51+01:00 - 078b15eb3 - Colin Darie : feat(identite): update translations for tiers wording and back button
+2026-03-18T10:26:50+01:00 - a5d2e8d32 - Colin Darie : refactor: convert identite turbo_stream from HAML to ERB
+2026-03-18T10:26:50+01:00 - 4fd28c156 - Colin Darie : refactor: convert IndividualFormComponent template from HAML to ERB
+2026-03-18T10:26:47+01:00 - 24785b842 - Colin Darie : refactor: convert identite view from HAML to ERB
+2026-03-18T10:17:45+01:00 - e64689d50 - mfo : fix(upload): reduce spacing between hint and uploaded file
+2026-03-18T10:17:44+01:00 - dd10ae5e8 - mfo : fix(upload): hide drop zone on mobile, show only button
+2026-03-18T10:17:37+01:00 - 1d8e98aff - mfo : fix(upload): reduce drop zone padding for a more compact layout
+2026-03-18T09:56:13Z - 26f0d0479 - Colin Darie : Merge pull request #12776 from demarche-numerique/refonte-identity
+2026-03-18T09:50:13Z - 46d5b91cf - Mathieu Magnin : Merge pull request #12802 from demarche-numerique/fix-12503
+2026-03-18T09:31:30+01:00 - 60897b99c - Eric Leroy-Terquem : feat(groupe instructeur): can add contact information to a group as an admin who is not instructor
+2026-03-18T09:23:06Z - d5138b9c5 - mfo : Merge pull request #12805 from mfo/US/improve-ui-upload-spacers
+2026-03-18T09:21:44Z - d814518c7 - mfo : Merge pull request #12810 from mfo/haml2
+2026-03-18T09:15:58+01:00 - d8ddafdb2 - mfo : refactor(haml): migrate ColumnTableHeaderComponent to ERB
+2026-03-18T09:15:57+01:00 - a4a7f6b87 - mfo : refactor(haml): migrate ConditionsErrorsComponent to ERB
+2026-03-18T09:15:57+01:00 - 6b98934ed - mfo : refactor(haml): migrate AutosaveNoticeComponent to ERB
+2026-03-18T09:15:57+01:00 - 3d209dc3a - mfo : refactor(haml): migrate PendingRepublishComponent to ERB
+2026-03-18T09:15:56+01:00 - 30d7cda09 - mfo : refactor(haml): migrate SimpleFormatComponent to ERB
+2026-03-18T08:46:08Z - c78d5311c - Colin Darie : Merge pull request #12803 from colinux/worktree-fix-llm-no-meth-err
+2026-03-18T08:45:30Z - d31708979 - Colin Darie : Merge pull request #12801 from colinux/worktree-improve-ref
+2026-03-18T08:39:42Z - ea435790e - Colin Darie : Merge pull request #12622 from colinux/fc-lock-identity
+2026-03-18T08:36:49Z - 5dd39f138 - Eric Leroy-Terquem : Merge pull request #12786 from demarche-numerique/add-contact-informations-as-admin
+2026-03-17T23:36:49+01:00 - d28da6f33 - Mathieu Magnin : fix(procedure path): fix call of check_path from /path
+2026-03-17T23:36:49+01:00 - 8679b0091 - Mathieu Magnin : fix(procedure path): add maintenance task to fix paths ending with trailing separator
+2026-03-17T23:36:49+01:00 - 3a91a24fa - Mathieu Magnin : fix(procedure path): do not allow trailing underscore
+2026-03-17T23:36:48+01:00 - ca4b80c92 - Mathieu Magnin : fix(procedure path): do no allow hyphen or underscore at the end of a procedure path
+2026-03-17T18:26:16+01:00 - c4df0a6ab - mfo : fix(attestation): use correct PDF pipeline for v2 templates in preview_attestation_acceptation
+2026-03-17T18:26:11+01:00 - a55796c7a - mfo : test(attestation): add spec reproducing preview_attestation_acceptation KeyError for v2 templates
+2026-03-17T18:12:27Z - 0b755fa00 - mfo : Merge pull request #12807 from mfo/US/fix-tampon-err
+2026-03-17T17:10:20+01:00 - e4a2b24a8 - Kara Diaby : fix(pj): add .jpg to titre identite display formats
+2026-03-17T17:10:20+01:00 - 32c6ebf37 - Kara Diaby : fix(pj): update RIB format expectation in file field component spec
+2026-03-17T17:10:19+01:00 - f51a80b52 - Kara Diaby : fix(pj): update RIB format expectation in system test
+2026-03-17T17:10:19+01:00 - 97b5962f3 - Kara Diaby : fix(pj): improve format display in admin and usager views
+2026-03-17T16:40:02Z - 1512ff59d - Kara Diaby : Merge pull request #12780 from demarche-numerique/fix/pj-format-display
+2026-03-17T15:56:48+01:00 - 8bb5ada7d - Mathieu Magnin : feat(ami): add a guard if config is not set
+2026-03-17T15:55:34Z - 4167445ba - Mathieu Magnin : Merge pull request #12744 from demarche-numerique/ami
+2026-03-17T15:47:52+01:00 - 5d5ad64ea - mfo : fix(upload): prevent double file picker opening on Chrome
+2026-03-17T15:47:48+01:00 - bd483bbea - mfo : spec(upload): prove double file picker opening on Chrome
+2026-03-17T15:38:51+01:00 - eba1cfe79 - Mathieu Magnin : feat(ami): we can pass a custom state like repasser_en_instruction when calling CreateNotificationService
+2026-03-17T15:38:51+01:00 - 06fc7dcca - Mathieu Magnin : refactor(ami): all dossier state are eligible
+2026-03-17T15:38:50+01:00 - fbed3606e - Mathieu Magnin : feat(ami): enqueue notification if repasser en construction
+2026-03-17T15:38:50+01:00 - e9165fe9b - Mathieu Magnin : feat(ami): use email suject as notification body
+2026-03-17T15:38:50+01:00 - b0bdcc2ea - Mathieu Magnin : feat(ami): if retried the ami api call is idempotent
+2026-03-17T15:38:50+01:00 - aa65548fb - Mathieu Magnin : feat(ami): enqueue notification when dossier created
+2026-03-17T15:38:50+01:00 - a34f07716 - Mathieu Magnin : feat(ami): send a notification for new messages
+2026-03-17T15:38:50+01:00 - 92c82af7b - Mathieu Magnin : feat(ami): add missing item url
+2026-03-17T15:38:50+01:00 - 5d433437f - Mathieu Magnin : test(ami): add missing tests
+2026-03-17T15:38:50+01:00 - 1c97b8138 - Mathieu Magnin : refactor(ami): extract notif title and content
+2026-03-17T15:38:49+01:00 - c041eae76 - Mathieu Magnin : feat(ami): call CreateNotificationService after dossier state changed
+2026-03-17T15:38:49+01:00 - b02874d93 - Mathieu Magnin : feat(ami): create notification payload
+2026-03-17T15:38:49+01:00 - 1bae1c936 - Mathieu Magnin : feat(ami): check if notification should be sent
+2026-03-17T15:38:49+01:00 - 0e1851234 - Mathieu Magnin : feat(ami): enqueue a job to call the api
+2026-03-17T15:38:48+01:00 - 385b9134c - Mathieu Magnin : feat(ami): compute recipient_fc_hash
+2026-03-17T15:18:00Z - 360db77c7 - mfo : Merge pull request #12804 from mfo/US/fix-event-bubbleup
+2026-03-17T14:45:03+01:00 - 57f522060 - Colin Darie : fix(llm): handle nil options in schema_to_llm
+2026-03-17T12:24:19+01:00 - 8bd2ffe02 - Colin Darie : Tech: amélioration du référencement via robots.txt
+2026-03-17T11:46:50+01:00 - 81f6fecc5 - Colin Darie : chore: task warning admins about transitoire domain
+2026-03-17T11:06:41Z - 645cf3e10 - Colin Darie : Merge pull request #12797 from colinux/dsfr-button-radio-fix
+2026-03-17T11:05:09+01:00 - d2d81eb61 - Paul Chavard : Merge pull request #12799 from mfo/US/preserve-progress-bar
+2026-03-17T10:54:18+01:00 - fcffcc221 - mfo : fix(upload): préserver les progress bars lors d'uploads multiples simultanés
+2026-03-17T10:37:37+01:00 - f83995ba4 - Colin Darie : feat(radio): add ViewComponent preview with all variants
+2026-03-17T10:18:29+01:00 - c5269dfa4 - mfo : refactor(haml): migrate ExportDropdownComponent to ERB
+2026-03-17T10:18:28+01:00 - f58dee639 - mfo : refactor(haml): migrate RevisionChangesComponent to ERB
+2026-03-17T10:13:27Z - eb7d1ecae - mfo : Merge pull request #12743 from mfo/feature/migrate-titre-identite-phase1
+2026-03-17T10:13:06+01:00 - 5dba2359b - Colin Darie : fix(radio): dynamic legend and message ids, fix aria-live
+2026-03-17T10:13:06+01:00 - 0f75d4eb8 - Colin Darie : refactor: convert radio_button_list_component from haml to erb
+2026-03-17T09:43:58Z - 86742f2d0 - mfo : Merge pull request #12796 from mfo/poc-haml-migration
+2026-03-17T09:36:37+01:00 - e051a3a57 - Eric Leroy-Terquem : fix(footer): don't display maison france services link if MI procedure
 2026-03-17T08:25:32Z - f0ba99184 - Benoit Queyron : Merge pull request #12771 from demarche-numerique/fix-mail-suppression-dossier-mandataire
 2026-03-16T17:55:43+01:00 - ca79a009f - mfo : fix(batch_operations): bugfix, important, sinon on peut pas uploader de PJ pour les messages par batch
 2026-03-16T17:55:43+01:00 - 3fe0b4ffe - mfo : fix(remove_tampon): ETQ instructeur, je peux supprimer un tampon si la demarche est en self management
@@ -18,6 +513,10 @@
 2026-03-16T16:03:56+01:00 - 2e604be7b - Colin Darie : feat(lint): enable herb format check in lint task
 2026-03-16T16:03:48+01:00 - 760b1f9fe - Colin Darie : fix(herb): format unformatted ERB templates
 2026-03-16T15:28:34Z - 16c97fa23 - Colin Darie : Merge pull request #12793 from demarche-numerique/fix-herb-lint
+2026-03-16T15:13:28+01:00 - f949700c2 - Colin Darie : feat: inform the user that identity from france connect is locked
+2026-03-16T15:13:28+01:00 - 236ed7bbc - Colin Darie : feat(prefill): france connect identity has always precedence and cannot be updated
+2026-03-16T15:13:27+01:00 - da1872fbb - Colin Darie : feat(identite): disable inputs when identite is locked
+2026-03-16T15:13:24+01:00 - 3f0f77b95 - Colin Darie : feat(france connect): can't update identite when user is france connected
 2026-03-16T13:18:02+01:00 - 9fa51afa9 - mfo : feat(backfill): maintenance task to reprocess stuck watermark blobs
 2026-03-16T13:18:02+01:00 - 6a0f8bb51 - mfo : fix(job): add retry_on WatermarkService::Error for watermark retry
 2026-03-16T13:18:01+01:00 - f00f5f37a - mfo : test(watermark): add failing test for watermark error retry in job
@@ -52,6 +551,7 @@
 2026-03-16T09:52:44+01:00 - 355692a6c - mfo : fix(cron): deduplicate trusted device renewal emails per instructeur
 2026-03-16T09:52:39+01:00 - 791b90c3a - mfo : test(cron): add specs reproducing snowball renewal email bug
 2026-03-16T09:41:54Z - b08ef8c8b - mfo : Merge pull request #12785 from mfo/snowball-renew-session
+2026-03-13T17:55:34+01:00 - e3d7abac7 - Eric Leroy-Terquem : UI(groupes management): display badge if any group with custom contact informations
 2026-03-13T14:25:54+01:00 - 45c5dbf1b - LeSim : Merge pull request #12784 from demarche-numerique/hide_pro_connect
 2026-03-13T13:23:22+01:00 - 7c3567f56 - simon lehericey : spec: fix
 2026-03-13T13:08:10+01:00 - f547afbb8 - simon lehericey : chore: make linter happy
@@ -144,11 +644,19 @@
 2026-03-09T07:29:59Z - baeeba996 - Eric Leroy-Terquem : Merge pull request #12724 from demarche-numerique/modal-add-group
 2026-03-06T15:42:08+01:00 - bb478ffd5 - benoitqueyron : job(ExportAndPublishDemarchesPubliquesJob): add for_individual information
 2026-03-06T15:42:04+01:00 - b98b6182e - benoitqueyron : graphql(DemarcheDescriptor): add for_individual information
+2026-03-05T15:36:08+01:00 - 027625883 - mfo : fix(graphql): update schema
+2026-03-05T15:24:53+01:00 - c08bef216 - mfo : feat(PieceJusticativeChamp): expose filled column
+2026-03-05T15:24:53+01:00 - 7f2ce44ad - mfo : data(titre_identite): migrate to new model
+2026-03-05T15:24:53+01:00 - 4cc2467f7 - mfo : feat(PieceJustificativeChamp): expose nature
+2026-03-05T15:24:52+01:00 - 553541f0c - mfo : feat(graphql): wrap new titre identite in old wrapper to avoid breaking changes
+2026-03-05T15:24:51+01:00 - a48339431 - mfo : feat(piece_justificative): ensure to also clear new titre identite on clone
 2026-03-05T15:06:47Z - 050d670db - Colin Darie : Merge pull request #12753 from colinux/fix-herb-format
 2026-03-05T14:49:15Z - 048dfcaeb - LeSim : Merge pull request #12749 from demarche-numerique/reason_is_an_error
 2026-03-05T14:49:03Z - 8d7048fed - Colin Darie : Merge pull request #12752 from colinux/update-gpg-key
 2026-03-05T13:29:18+01:00 - 03f381aef - Colin Darie : chore: replace colinux yubikey
 2026-03-05T13:17:31+01:00 - d6b570fb7 - Colin Darie : fix: format herb components
+2026-03-04T18:52:10+01:00 - 7818081f8 - mfo : feat(PieceJustificative): same behavior for exports
+2026-03-04T18:52:04+01:00 - df4ab4c5e - mfo : spec(watermarking): before changing everything, ensure it works
 2026-03-04T18:36:43+01:00 - e6811d075 - simon lehericey : refactor: rename save_external_exception -> save_external_error
 2026-03-04T18:36:43+01:00 - 4dc27d7e2 - simon lehericey : refactor: rename reason into error
 2026-03-04T17:27:53+01:00 - dac1ba426 - Colin Darie : a11y(ineligibilite): use alertdialog role with aria-describedby
