@@ -44,26 +44,7 @@
 │   ├── auth
 │   │   └── realm.json
 │   ├── dinum-frontend
-│   │   ├── Dockerfile
-│   │   ├── assets
-│   │   │   ├── devise.svg
-│   │   │   ├── gouvernement.svg
-│   │   │   └── marianne.svg
-│   │   ├── dinum-styles.css
-│   │   ├── fonts
-│   │   │   ├── Marianne-Bold-subset.woff2
-│   │   │   ├── Marianne-Bold_Italic-subset.woff2
-│   │   │   ├── Marianne-ExtraBold-subset.woff2
-│   │   │   ├── Marianne-ExtraBold_Italic-subset.woff2
-│   │   │   ├── Marianne-Light-subset.woff2
-│   │   │   ├── Marianne-Light_Italic-subset.woff2
-│   │   │   ├── Marianne-Medium-subset.woff2
-│   │   │   ├── Marianne-Medium_Italic-subset.woff2
-│   │   │   ├── Marianne-Regular-subset.woff2
-│   │   │   ├── Marianne-Regular_Italic-subset.woff2
-│   │   │   ├── Marianne-Thin-subset.woff2
-│   │   │   └── Marianne-Thin_Italic-subset.woff2
-│   │   └── logo.svg
+│   │   └── Dockerfile
 │   ├── files
 │   │   ├── etc
 │   │   │   └── nginx
@@ -226,10 +207,20 @@
     │   │   └── assets
     │   │       ├── files
     │   │       │   └── icons
+    │   │       │       ├── doc.svg
+    │   │       │       ├── docs-mono.svg
     │   │       │       ├── mime-audio-mini.svg
     │   │       │       └── mime-audio.svg
-    │   │       ├── hero-beta.png
-    │   │       └── logo-dictaphone-beta.svg
+    │   │       ├── gouv-logo.svg
+    │   │       ├── hero.svg
+    │   │       ├── home
+    │   │       │   ├── ex-1.svg
+    │   │       │   ├── ex-2.svg
+    │   │       │   └── ex-3.svg
+    │   │       ├── logo-lasuite-assistant.svg
+    │   │       ├── logo-multiline.svg
+    │   │       ├── logo-picto.svg
+    │   │       └── logo-single-line.svg
     │   ├── src
     │   │   ├── App.tsx
     │   │   ├── api
@@ -312,16 +303,6 @@
     │   │   │           ├── audio-player
     │   │   │           │   ├── AudioPlayer.tsx
     │   │   │           │   └── audio-player.scss
-    │   │   │           ├── components
-    │   │   │           │   ├── controls
-    │   │   │           │   │   ├── PreviewControls.scss
-    │   │   │           │   │   └── PreviewControls.tsx
-    │   │   │           │   ├── duration-bar
-    │   │   │           │   │   ├── DurationBar.scss
-    │   │   │           │   │   └── DurationBar.tsx
-    │   │   │           │   └── volume-bar
-    │   │   │           │       ├── VolumeBar.scss
-    │   │   │           │       └── VolumeBar.tsx
     │   │   │           └── preview.scss
     │   │   ├── hooks
     │   │   │   ├── disablePageRegresh.ts
@@ -334,19 +315,17 @@
     │   │   │   ├── HeaderRight.scss
     │   │   │   ├── HeaderRight.tsx
     │   │   │   ├── Layout.tsx
-    │   │   │   ├── LeftPanel.scss
-    │   │   │   ├── LeftPanel.tsx
     │   │   │   ├── LogoApp.scss
     │   │   │   └── LogoApp.tsx
     │   │   ├── locales
-    │   │   │   ├── en
+    │   │   │   ├── en-US
     │   │   │   │   ├── home.json
     │   │   │   │   ├── layout.json
     │   │   │   │   ├── record.json
     │   │   │   │   ├── recordings.json
     │   │   │   │   ├── shared.json
     │   │   │   │   └── upload.json
-    │   │   │   └── fr
+    │   │   │   └── fr-FR
     │   │   │       ├── home.json
     │   │   │       ├── layout.json
     │   │   │       ├── record.json
@@ -356,7 +335,9 @@
     │   │   ├── main.tsx
     │   │   ├── pages
     │   │   │   ├── DeletedRecordingsPage.tsx
+    │   │   │   ├── HomePage.scss
     │   │   │   ├── HomePage.tsx
+    │   │   │   ├── RecordPage.tsx
     │   │   │   ├── RecordingPage.scss
     │   │   │   ├── RecordingPage.tsx
     │   │   │   ├── RecordingsPage.scss
@@ -371,45 +352,277 @@
     │   ├── tsconfig.json
     │   ├── tsconfig.node.json
     │   └── vite.config.ts
-    └── helm
-        ├── dictaphone
-        │   ├── Chart.yaml
-        │   ├── README.md
-        │   ├── generate-readme.sh
-        │   ├── templates
-        │   │   ├── _helpers.tpl
-        │   │   ├── backend_deployment.yaml
-        │   │   ├── backend_job_createsuperuser.yaml
-        │   │   ├── backend_job_migrate.yaml
-        │   │   ├── backend_svc.yaml
-        │   │   ├── celery_backend_deployment.yaml
-        │   │   ├── extra-objects.yaml
-        │   │   ├── frontend_deployment.yaml
-        │   │   ├── frontend_svc.yaml
-        │   │   ├── ingress.yaml
-        │   │   ├── ingress_admin.yaml
-        │   │   ├── ingress_media_files.yaml
-        │   │   ├── ingress_posthog.yaml
-        │   │   ├── ingress_posthog_assets.yaml
-        │   │   ├── media_files_svc.yaml
-        │   │   ├── posthog_assets_svc.yaml
-        │   │   └── posthog_svc.yaml
-        │   └── values.yaml
-        ├── env.d
-        │   └── dev-keycloak
-        │       ├── values.dictaphone.yaml.gotmpl
-        │       ├── values.egress.yaml.gotmpl
-        │       └── values.secrets.yaml
-        ├── extra
-        │   ├── Chart.yaml
-        │   └── templates
-        │       ├── clustersecretstore.yaml
-        │       ├── external_secret.yaml
-        │       ├── external_secret_deployment.yaml
-        │       ├── kc-postgresql-sts.yaml
-        │       ├── keycloak-sts.yaml
-        │       ├── minio.yaml
-        │       ├── postgresql-sts.yaml
-        │       └── redis.yaml
-        └── helmfile.yaml.gotmpl
-105 directories, 309 files
+    ├── helm
+    │   ├── dictaphone
+    │   │   ├── Chart.yaml
+    │   │   ├── README.md
+    │   │   ├── generate-readme.sh
+    │   │   ├── templates
+    │   │   │   ├── _helpers.tpl
+    │   │   │   ├── backend_deployment.yaml
+    │   │   │   ├── backend_job_createsuperuser.yaml
+    │   │   │   ├── backend_job_migrate.yaml
+    │   │   │   ├── backend_svc.yaml
+    │   │   │   ├── celery_backend_deployment.yaml
+    │   │   │   ├── extra-objects.yaml
+    │   │   │   ├── frontend_deployment.yaml
+    │   │   │   ├── frontend_svc.yaml
+    │   │   │   ├── ingress.yaml
+    │   │   │   ├── ingress_admin.yaml
+    │   │   │   ├── ingress_media_files.yaml
+    │   │   │   ├── ingress_posthog.yaml
+    │   │   │   ├── ingress_posthog_assets.yaml
+    │   │   │   ├── media_files_svc.yaml
+    │   │   │   ├── posthog_assets_svc.yaml
+    │   │   │   └── posthog_svc.yaml
+    │   │   └── values.yaml
+    │   ├── env.d
+    │   │   └── dev-keycloak
+    │   │       ├── values.dictaphone.yaml.gotmpl
+    │   │       ├── values.egress.yaml.gotmpl
+    │   │       └── values.secrets.yaml
+    │   ├── extra
+    │   │   ├── Chart.yaml
+    │   │   └── templates
+    │   │       ├── clustersecretstore.yaml
+    │   │       ├── external_secret.yaml
+    │   │       ├── external_secret_deployment.yaml
+    │   │       ├── kc-postgresql-sts.yaml
+    │   │       ├── keycloak-sts.yaml
+    │   │       ├── minio.yaml
+    │   │       ├── postgresql-sts.yaml
+    │   │       └── redis.yaml
+    │   └── helmfile.yaml.gotmpl
+    └── mobile
+        ├── .bundle
+        │   └── config
+        ├── .eslintrc.js
+        ├── .gitignore
+        ├── .prettierrc.js
+        ├── .watchmanconfig
+        ├── App.tsx
+        ├── Gemfile
+        ├── Gemfile.lock
+        ├── README.md
+        ├── __tests__
+        │   └── App.test.tsx
+        ├── android
+        │   ├── app
+        │   │   ├── build.gradle
+        │   │   ├── debug.keystore
+        │   │   ├── proguard-rules.pro
+        │   │   └── src
+        │   │       └── main
+        │   │           ├── AndroidManifest.xml
+        │   │           ├── java
+        │   │           │   └── com
+        │   │           │       └── dictaphone
+        │   │           │           ├── FileUploadModule.kt
+        │   │           │           ├── FileUploadPackage.kt
+        │   │           │           ├── MainActivity.kt
+        │   │           │           └── MainApplication.kt
+        │   │           └── res
+        │   │               ├── drawable
+        │   │               │   └── rn_edit_text_material.xml
+        │   │               ├── drawable-hdpi
+        │   │               │   └── bootsplash_logo.png
+        │   │               ├── drawable-mdpi
+        │   │               │   └── bootsplash_logo.png
+        │   │               ├── drawable-xhdpi
+        │   │               │   └── bootsplash_logo.png
+        │   │               ├── drawable-xxhdpi
+        │   │               │   └── bootsplash_logo.png
+        │   │               ├── drawable-xxxhdpi
+        │   │               │   └── bootsplash_logo.png
+        │   │               ├── mipmap-hdpi
+        │   │               │   ├── ic_launcher.png
+        │   │               │   └── ic_launcher_round.png
+        │   │               ├── mipmap-mdpi
+        │   │               │   ├── ic_launcher.png
+        │   │               │   └── ic_launcher_round.png
+        │   │               ├── mipmap-xhdpi
+        │   │               │   ├── ic_launcher.png
+        │   │               │   └── ic_launcher_round.png
+        │   │               ├── mipmap-xxhdpi
+        │   │               │   ├── ic_launcher.png
+        │   │               │   └── ic_launcher_round.png
+        │   │               ├── mipmap-xxxhdpi
+        │   │               │   ├── ic_launcher.png
+        │   │               │   └── ic_launcher_round.png
+        │   │               └── values
+        │   │                   ├── colors.xml
+        │   │                   ├── strings.xml
+        │   │                   └── styles.xml
+        │   ├── build.gradle
+        │   ├── gradle
+        │   │   └── wrapper
+        │   │       ├── gradle-wrapper.jar
+        │   │       └── gradle-wrapper.properties
+        │   ├── gradle.properties
+        │   ├── gradlew
+        │   ├── gradlew.bat
+        │   └── settings.gradle
+        ├── app.json
+        ├── assets
+        │   └── bootsplash
+        │       ├── logo.png
+        │       ├── logo@1,5x.png
+        │       ├── logo@2x.png
+        │       ├── logo@3x.png
+        │       ├── logo@4x.png
+        │       └── manifest.json
+        ├── babel.config.js
+        ├── index.js
+        ├── ios
+        │   ├── .xcode.env
+        │   ├── Dictaphone
+        │   │   ├── AppDelegate.swift
+        │   │   ├── BootSplash.storyboard
+        │   │   ├── Colors.xcassets
+        │   │   │   └── BootSplashBackground-e082cc.colorset
+        │   │   │       └── Contents.json
+        │   │   ├── Images.xcassets
+        │   │   │   ├── AppIcon.appiconset
+        │   │   │   │   ├── Contents.json
+        │   │   │   │   ├── icon-1024x1024@1x.png
+        │   │   │   │   ├── icon-20x20@1x.png
+        │   │   │   │   ├── icon-20x20@2x.png
+        │   │   │   │   ├── icon-20x20@3x.png
+        │   │   │   │   ├── icon-29x29@1x.png
+        │   │   │   │   ├── icon-29x29@2x.png
+        │   │   │   │   ├── icon-29x29@3x.png
+        │   │   │   │   ├── icon-40x40@1x.png
+        │   │   │   │   ├── icon-40x40@2x.png
+        │   │   │   │   ├── icon-40x40@3x.png
+        │   │   │   │   ├── icon-60x60@2x.png
+        │   │   │   │   ├── icon-60x60@3x.png
+        │   │   │   │   ├── icon-76x76@1x.png
+        │   │   │   │   ├── icon-76x76@2x.png
+        │   │   │   │   ├── icon-83.5x83.5@2x.png
+        │   │   │   │   ├── ios-marketing-1024x1024-1x.png
+        │   │   │   │   ├── ipad-20x20-1x.png
+        │   │   │   │   ├── ipad-20x20-2x.png
+        │   │   │   │   ├── ipad-29x29-1x.png
+        │   │   │   │   ├── ipad-29x29-2x.png
+        │   │   │   │   ├── ipad-40x40-1x.png
+        │   │   │   │   ├── ipad-40x40-2x.png
+        │   │   │   │   ├── ipad-50x50-1x.png
+        │   │   │   │   ├── ipad-50x50-2x.png
+        │   │   │   │   ├── ipad-72x72-1x.png
+        │   │   │   │   ├── ipad-72x72-2x.png
+        │   │   │   │   ├── ipad-76x76-1x.png
+        │   │   │   │   ├── ipad-76x76-2x.png
+        │   │   │   │   ├── ipad-83.5x83.5-2x.png
+        │   │   │   │   ├── iphone-20x20-2x.png
+        │   │   │   │   ├── iphone-20x20-3x.png
+        │   │   │   │   ├── iphone-29x29-1x.png
+        │   │   │   │   ├── iphone-29x29-2x.png
+        │   │   │   │   ├── iphone-29x29-3x.png
+        │   │   │   │   ├── iphone-40x40-2x.png
+        │   │   │   │   ├── iphone-40x40-3x.png
+        │   │   │   │   ├── iphone-57x57-1x.png
+        │   │   │   │   ├── iphone-57x57-2x.png
+        │   │   │   │   ├── iphone-60x60-2x.png
+        │   │   │   │   └── iphone-60x60-3x.png
+        │   │   │   ├── BootSplashLogo-e082cc.imageset
+        │   │   │   │   ├── Contents.json
+        │   │   │   │   ├── logo-e082cc.png
+        │   │   │   │   ├── logo-e082cc@2x.png
+        │   │   │   │   └── logo-e082cc@3x.png
+        │   │   │   └── Contents.json
+        │   │   ├── Info.plist
+        │   │   ├── LaunchScreen.storyboard
+        │   │   └── PrivacyInfo.xcprivacy
+        │   ├── Dictaphone.xcodeproj
+        │   │   ├── project.pbxproj
+        │   │   ├── project.xcworkspace
+        │   │   │   └── contents.xcworkspacedata
+        │   │   └── xcshareddata
+        │   │       └── xcschemes
+        │   │           └── Dictaphone.xcscheme
+        │   ├── Dictaphone.xcworkspace
+        │   │   └── contents.xcworkspacedata
+        │   ├── FileUploadModule.m
+        │   ├── FileUploadModule.swift
+        │   ├── Podfile
+        │   ├── Podfile.lock
+        │   └── dictaphone-Briding-Header.h
+        ├── jest.config.js
+        ├── metro.config.js
+        ├── package.json
+        ├── patches
+        │   └── react-native-audio-api+0.11.7.patch
+        ├── src
+        │   ├── api
+        │   │   ├── ApiError.ts
+        │   │   ├── constants.ts
+        │   │   ├── fetchApi.ts
+        │   │   ├── queryClient.ts
+        │   │   ├── queryKeys.ts
+        │   │   └── useConfig.ts
+        │   ├── assets
+        │   │   ├── logo-with-name.svg
+        │   │   ├── logo.svg
+        │   │   └── proconnect-content.svg
+        │   ├── components
+        │   │   ├── AudioPlayer.tsx
+        │   │   ├── AudioRecorder.tsx
+        │   │   ├── LoginWithProConnectButton.tsx
+        │   │   └── UserInfoCard.tsx
+        │   ├── features
+        │   │   ├── ai-jobs
+        │   │   │   ├── api
+        │   │   │   │   ├── fetch.ts
+        │   │   │   │   └── types.ts
+        │   │   │   └── utils
+        │   │   │       ├── getMainAiJobs.test.ts
+        │   │   │       ├── getMainAiJobs.ts
+        │   │   │       ├── transcript.test.ts
+        │   │   │       └── transcript.ts
+        │   │   ├── auth
+        │   │   │   └── api
+        │   │   │       ├── ApiUser.ts
+        │   │   │       ├── fetchUser.ts
+        │   │   │       ├── updateUserPreferences.ts
+        │   │   │       └── useUser.tsx
+        │   │   ├── files
+        │   │   │   └── api
+        │   │   │       ├── createFile.ts
+        │   │   │       ├── deleteFile.ts
+        │   │   │       ├── getFile.ts
+        │   │   │       ├── hardDeleteFile.ts
+        │   │   │       ├── listFiles.ts
+        │   │   │       ├── partialUpdateFile.ts
+        │   │   │       ├── restoreFile.ts
+        │   │   │       └── types.ts
+        │   │   └── recordings
+        │   │       ├── hooks
+        │   │       │   └── useLocalRecordings.ts
+        │   │       └── utils
+        │   │           └── formatDuration.ts
+        │   ├── i18n
+        │   │   ├── i18next.d.ts
+        │   │   ├── index.ts
+        │   │   ├── locales
+        │   │   │   ├── en.json
+        │   │   │   └── fr.json
+        │   │   └── resources.ts
+        │   ├── navigation
+        │   │   └── types.ts
+        │   ├── screens
+        │   │   ├── HomeScreen.tsx
+        │   │   ├── LoginScreen.tsx
+        │   │   ├── RecordingsScreen.tsx
+        │   │   └── SettingsScreen.tsx
+        │   ├── services
+        │   │   ├── apiClient.ts
+        │   │   ├── authService.ts
+        │   │   └── storage.ts
+        │   ├── types
+        │   │   ├── recording.ts
+        │   │   └── settings.ts
+        │   └── utils
+        │       └── fileUpload.ts
+        ├── tsconfig.json
+        └── yarn.lock
+162 directories, 465 files
