@@ -171,9 +171,15 @@ pour les autocomplete de saisie espèces notamment
 
 ### Ajouter une espèce manquante
 
-Dans le fichier `data/sources_especes/espèces_manquantes.ods` ajouter l'espèce avec son identifiant INPN (CD_NOM),nom latin (LB_NOM), nom vernaculaire (NOM_VERN) et sa justification légale (LABEL_STATUT).
+Dans le fichier `data/sources_especes/espèces_manquantes.ods` ajouter l'espèce avec son identifiant INPN (CD_NOM), nom latin (LB_NOM), nom vernaculaire (NOM_VERN) et sa justification légale (LABEL_STATUT).
 
 Puis lancer `node outils/liste-espèces.js` pour régénérer une liste d'espèces complétée.
+
+### Ajouter une espèce ministérielle ou une espèce CNPN
+
+Dans le fichier `data/sources_especes/espèces_ministérielles_cnpn.ods` ajouter l'espèce avec son nom scientifique et son nom vernaculaire dans la feuille correspondante. Attention, le nom scientifique doit être exactement le nom latin renseigné dans la colonne `LB_NOM` du fichier `espèces_manquantes.ods`.
+
+Puis lancer `node outils/liste-espèces.js` pour régénérer une liste d'espèces à jour.
 
 
 ### Synchroniser dossiers récemment modifiés de Démarche Numérique
@@ -264,17 +270,3 @@ Pour nettoyer tous les évènements concernant une personne spécifique :
 Pour nettoyer tous les évènements plus vieux que x semaines
 
 `docker exec tooling node outils/aarri/supprimer-evenements.js --conserver-dernières-semaines 20`
-
-#### Création d'un fichier ODS avec les données d'une personne spécifique
-
-Extraire les données AARRI d'une personne spécifique dans un fichier ODS
-
-`docker exec tooling node --env-file=.env outils/aarri/donnees-pour-personne.js --email 'mail@example.net'`
-
-
-```sh
-# En dev
-docker exec tooling node --env-file=.env outils/aarri/donnees-pour-personne.js --email 'mail@example.net' --origin 'http://localhost:2648'
-```
-
-
