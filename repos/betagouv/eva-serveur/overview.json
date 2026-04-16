@@ -1,55 +1,63 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les utilisateurs.",
+  "description": "Ce serveur fournit une interface d'administration pour eva. Il permet de gérer les structures, les utilisateurs et les évaluations.",
   "language": "Ruby",
   "features": [
-    "Évaluation & Notation",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice",
-    "Statistiques & Rapports",
     "Authentification & Accès",
-    "Invitation de collaborateurs",
-    "Gestion des établissements & Structures"
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Statistiques & Rapports",
+    "Gestion des structures & Établissements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "libvips",
-    "GraphViz",
-    "@gouvfr/dsfr"
+    "Devise",
+    "ActiveAdmin",
+    "DSFR",
+    "Geocoder"
   ],
   "components": [
-    "Ruby on Rails",
-    "PostgreSQL & SQL",
-    "MongoDB & NoSQL",
     "API REST & GraphQL",
-    "Design System (DSFR & UI libs)"
+    "PostgreSQL & SQL",
+    "Ruby",
+    "Rails",
+    "DSFR & UI libs",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "sso"
     ]
   },
   "tests": [
     "RSpec",
-    "Guard"
+    "FactoryBot"
   ],
-  "workflows": [],
-  "lastActivity": "2026-03-11T17:12:39+01:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-04-15T20:58:18+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
-    "Ruby on Rails",
-    "Bases de données SQL",
-    "Bases de données NoSQL",
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Évaluation",
-    "Design System & UI",
-    "Données & Open Data"
+    "Ruby",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
