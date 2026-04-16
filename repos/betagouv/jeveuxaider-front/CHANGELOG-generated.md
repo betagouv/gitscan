@@ -1,31 +1,29 @@
-## Changelog : jeveuxaider-front (30 derniers jours, au 17 mars 2026)
+## Changelog : jeveuxaider-front (30 derniers jours, au 14 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans la gestion des missions, des profils et des notifications. Des corrections de bugs et des ajustements ont été apportés pour améliorer la stabilité et la clarté de l'application. Des fonctionnalités liées aux élections municipales et à l'accueil de mineurs ont également été ajoutées ou améliorées.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment concernant l'affichage des dates des missions et la gestion des publics mineurs. Des optimisations ont également été apportées à la gestion des objectifs de la plateforme et aux statistiques pour les référents. Enfin, des corrections et améliorations techniques ont été réalisées pour la robustesse et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles régions pour les DOM-TOM dans la configuration des labels [#281](https://github.com/betagouv/jeveuxaider-front/issues/281).
-- Ajout d'une section dédiée aux élections municipales et mise à jour des statistiques associées [#274](https://github.com/betagouv/jeveuxaider-front/issues/274).
-- Possibilité de sélectionner un référent régional avec un sélecteur multiple [#266](https://github.com/betagouv/jeveuxaider-front/issues/266).
-- Ajout de directives pour l'accueil de volontaires mineurs dans une nouvelle section d'accordéon [#278](https://github.com/betagouv/jeveuxaider-front/issues/278).
-- Amélioration de la gestion des témoignages avec une fonctionnalité de revue [#271](https://github.com/betagouv/jeveuxaider-front/issues/271).
-- Ajout du champ `is_open_to_minors` et de la logique associée dans les modèles de missions [#251](https://github.com/betagouv/jeveuxaider-front/issues/251).
-- Amélioration de la gestion des erreurs avec des messages plus détaillés et des ajustements de mise en page [#279](https://github.com/betagouv/jeveuxaider-front/issues/279).
-- Amélioration de la clarté des descriptions des notifications dans le formulaire de configuration des notifications utilisateur [#276](https://github.com/betagouv/jeveuxaider-front/issues/276).
-- Notification ajoutée lors de l'export de données par email pour informer de la livraison [#288](https://github.com/betagouv/jeveuxaider-front/issues/288).
-- Mise à jour du lien vers les élections municipales pour l'ouvrir dans un nouvel onglet [#282](https://github.com/betagouv/jeveuxaider-front/issues/282).
+- Amélioration de l'affichage des dates des missions, notamment pour les missions provenant de l'API "engagement" [#316](https://github.com/betagouv/jeveuxaider-front/issues/316).
+- Possibilité pour les référents de voir les détails des personnes qui ont invité des volontaires [#313](https://github.com/betagouv/jeveuxaider-front/issues/313).
+- Ajout d'un bouton pour consulter des statistiques détaillées dans l'administration et les pages de tableau de bord [#303](https://github.com/betagouv/jeveuxaider-front/issues/303).
+- Amélioration des statistiques PPG pour les référents [#280](https://github.com/betagouv/jeveuxaider-front/issues/280).
+- Prise en compte de l'acceptation des mineurs dans les missions, avec l'ajout de propriétés `isMinor` et `isOpenToMinors` pour le suivi [#297](https://github.com/betagouv/jeveuxaider-front/issues/297).
+- Mise à jour des liens vers les fichiers 16-18 pour la modération et les recommandations [#293](https://github.com/betagouv/jeveuxaider-front/issues/293).
+- Gestion améliorée des missions pour les publics mineurs [#290](https://github.com/betagouv/jeveuxaider-front/issues/290).
+- Ajout d'une propriété `isOpenToMinors` pour les missions "Visite" [#297](https://github.com/betagouv/jeveuxaider-front/issues/297).
 
 ### Évolutions techniques
-- Mise à jour de la gestion des tokens d'accès impersonate après la mise à niveau de Laravel Passport 13 [#276](https://github.com/betagouv/jeveuxaider-front/issues/276).
-- Refactorisation de la gestion du cropping manuel pour utiliser des tableaux au lieu de chaînes de caractères [#266](https://github.com/betagouv/jeveuxaider-front/issues/266).
-- Suppression de la section "Solidarité crises" de la navigation [#288](https://github.com/betagouv/jeveuxaider-front/issues/288).
-- Correction de la condition de statut de chargement dans le composant `BaseBox` [#280](https://github.com/betagouv/jeveuxaider-front/issues/280).
-- Résolution d'une vulnérabilité dans la dépendance `ajv` en la mettant à jour vers la version 8.18.0 [#270](https://github.com/betagouv/jeveuxaider-front/issues/270).
-- Mise à jour de plusieurs dépendances : `swiper`, `devalue`, `fast-xml-parser`, `qs`, `ckeditor5`, `dompurify`, `tar`, `serialize-javascript`, `minimatch` et `undici`.
+- Correction d'un décalage de fuseau horaire en SSR (Server-Side Rendering) et côté client [#317](https://github.com/betagouv/jeveuxaider-front/issues/317).
+- Refactorisation de la gestion des objectifs de la plateforme [#304](https://github.com/betagouv/jeveuxaider-front/issues/304).
+- Transmission de l'adresse IP du client en SSR pour une meilleure journalisation et limitation du débit [#295](https://github.com/betagouv/jeveuxaider-front/issues/295).
+- Mise à jour de plusieurs dépendances : Axios, @unhead/vue, unhead, vite, defu, lodash, lodash-es, srvx, node-forge, picomatch, devalue, undici.
+- Correction de l'index z-index de l'image de fond de `LinkToCityAssociations` [#314](https://github.com/betagouv/jeveuxaider-front/issues/314).
+- Mise à jour de la logique de formatage des dates pour le fournisseur d'API 'api_engagement' et gestion correcte des valeurs nulles [#316](https://github.com/betagouv/jeveuxaider-front/issues/316).
 
 ### Autres changements
-- Mise à jour des liens des fichiers pour la modération et les recommandations [#293](https://github.com/betagouv/jeveuxaider-front/issues/293).
-- Ajustements mineurs de l'opération [#290](https://github.com/betagouv/jeveuxaider-front/issues/290).
-- Correction du filtre de facette pour refléter les tags d'élections actuels [#289](https://github.com/betagouv/jeveuxaider-front/issues/289).
-- Suppression du padding inutile du bouton d'ajout d'email [#267](https://github.com/betagouv/jeveuxaider-front/issues/267).
-- Correction de l'affichage des options de rôle en fonction du contexte utilisateur [#294](https://github.com/betagouv/jeveuxaider-front/issues/294).
+- Mise à jour de l'adresse e-mail de support pour les réinitialisations de mot de passe.
+- Ajustements pour les missions pour les mineurs [#294](https://github.com/betagouv/jeveuxaider-front/issues/294).
+- Mise à jour des options de rôle dans `SecondaryFiltersAdminProfiles` en fonction du contexte utilisateur.
+- Correction de la plage de dates pour la section PPP.
+- Remplacement d'emojis pour les missions 16-18 ans [#315](https://github.com/betagouv/jeveuxaider-front/issues/315).

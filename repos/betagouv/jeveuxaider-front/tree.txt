@@ -2,8 +2,10 @@
 ├── .editorconfig
 ├── .env-example
 ├── .github
-│   └── agents
-│       └── composition-api-converter.agent.md
+│   ├── agents
+│   │   └── composition-api-converter.agent.md
+│   └── instructions
+│       └── vue.instructions.md
 ├── .gitignore
 ├── .vscode
 │   └── settings.json
@@ -215,7 +217,6 @@
 │   │   ├── FiltersStatisticsActive.vue
 │   │   ├── FiltersStatisticsButton.vue
 │   │   ├── FranceConnect.vue
-│   │   ├── Goal.vue
 │   │   ├── InfoRecommendation.vue
 │   │   ├── InputActionBuilder.vue
 │   │   ├── InputQueryBuilder.vue
@@ -274,6 +275,7 @@
 │   │   ├── Breadcrumb.vue
 │   │   ├── Button.vue
 │   │   ├── Callout.vue
+│   │   ├── CheckboxBoolean.vue
 │   │   ├── FormControl.vue
 │   │   ├── Heading.vue
 │   │   ├── IconButton.vue
@@ -281,8 +283,6 @@
 │   │   ├── InputAutocomplete.vue
 │   │   ├── Link.vue
 │   │   ├── Modal.vue
-│   │   ├── NavItem.vue
-│   │   ├── NavSubItem.vue
 │   │   ├── Notice.vue
 │   │   ├── Overlay.vue
 │   │   ├── Pagination.vue
@@ -315,6 +315,11 @@
 │   │   │   ├── PanelContent.vue
 │   │   │   ├── index.vue
 │   │   │   └── types.ts
+│   │   ├── nav-item
+│   │   │   ├── DsfrNavItem.vue
+│   │   │   ├── SubItem.vue
+│   │   │   ├── index.ts
+│   │   │   └── type.ts
 │   │   └── panel
 │   │       ├── PanelContent.vue
 │   │       ├── index.vue
@@ -389,13 +394,10 @@
 │   │   ├── SidebarFormMission.vue
 │   │   └── TeleportDrawer.vue
 │   ├── menu
-│   │   ├── SecondaryMenuAdmin.vue
-│   │   ├── SecondaryMenuResponsable.vue
-│   │   ├── SecondaryMenuStatistics.vue
-│   │   ├── SecondaryMenuStatisticsPublic.vue
-│   │   ├── SecondaryMenuSupport.vue
-│   │   ├── SecondaryMenuTeteDeReseau.vue
-│   │   └── SecondaryMenuUser.vue
+│   │   ├── SidebarAdminMenu.vue
+│   │   ├── SidebarStatisticsMenu.vue
+│   │   ├── SidebarStatisticsPublicMenu.vue
+│   │   └── SidebarSupportMenu.vue
 │   ├── messaging
 │   │   ├── AlertSupportAwayUsers.vue
 │   │   ├── CardInfosMission.vue
@@ -491,6 +493,9 @@
 │   │   ├── MissionsByTypes.vue
 │   │   ├── MissionsOutdatedByOrganisations.vue
 │   │   ├── MissionsStatistics.vue
+│   │   ├── ModerationMissionsStatistics.vue
+│   │   ├── ModerationOrganisationsStatistics.vue
+│   │   ├── ModerationsByDepartments.vue
 │   │   ├── OrganisationsByDomaines.vue
 │   │   ├── OrganisationsByPeriod.vue
 │   │   ├── OrganisationsByReseaux.vue
@@ -511,7 +516,6 @@
 │   │   ├── ParticipationsByStates.vue
 │   │   ├── ParticipationsCanceledByBenevoles.vue
 │   │   ├── ParticipationsCanceledByOrganisations.vue
-│   │   ├── ParticipationsDelaysByRegistrations.vue
 │   │   ├── ParticipationsInProgressByOrganisations.vue
 │   │   ├── ParticipationsRefusedByOrganisations.vue
 │   │   ├── ParticipationsRefusedByResponsables.vue
@@ -578,7 +582,8 @@
 │   │           ├── BlocMissionsCourtes.vue
 │   │           ├── BlocOrganisationsAroundMe.vue
 │   │           ├── BlocProfileActivities.vue
-│   │           └── BlocTemoignages.vue
+│   │           ├── BlocTemoignages.vue
+│   │           └── BlocVolunteeringArgumentsForMinors.vue
 │   ├── pending-actions
 │   │   └── mission
 │   │       ├── BoxOpenToMinorsCompliance.vue
@@ -627,7 +632,6 @@
 │   │   │   ├── BoxPresentation.vue
 │   │   │   └── HeaderActions.vue
 │   │   ├── admin
-│   │   │   ├── Goals.vue
 │   │   │   ├── MissionsTrending.vue
 │   │   │   ├── OrganisationsTrending.vue
 │   │   │   ├── PlausiblePageViews.vue
@@ -860,6 +864,10 @@
 │   │   ├── MissionsByTemplates.vue
 │   │   ├── MissionsByTypes.vue
 │   │   ├── MissionsStatistics.vue
+│   │   ├── ModerationMissionsByDepartments.vue
+│   │   ├── ModerationMissionsByWeeks.vue
+│   │   ├── ModerationOrganisationsByDepartments.vue
+│   │   ├── ModerationOrganisationsByWeeks.vue
 │   │   ├── OrganisationsByDomaines.vue
 │   │   ├── OrganisationsByPeriod.vue
 │   │   ├── OrganisationsByReseaux.vue
@@ -1000,6 +1008,13 @@
 │       │   ├── SelectTrigger.vue
 │       │   ├── SelectValue.vue
 │       │   └── index.ts
+│       ├── sheet
+│       │   ├── Sheet.vue
+│       │   ├── SheetClose.vue
+│       │   ├── SheetContent.vue
+│       │   ├── SheetOverlay.vue
+│       │   ├── SheetTrigger.vue
+│       │   └── index.ts
 │       ├── sonner
 │       │   ├── Sonner.vue
 │       │   └── index.ts
@@ -1083,6 +1098,8 @@
 │   ├── useReseau.ts
 │   ├── useRomeMacroCompetences.ts
 │   ├── useRouteQueryWatcher.ts
+│   ├── useStatisticsFilters.ts
+│   ├── useStatisticsIndicators.ts
 │   ├── useStickyObserver.ts
 │   ├── useStrapiFetch.ts
 │   ├── useStructureTags.ts
@@ -1259,16 +1276,27 @@
 │   │           └── RomeMacroCompetencesModule.vue
 │   ├── statistics
 │   │   ├── composables
+│   │   │   ├── useGoalsJva.ts
+│   │   │   ├── useGoalsPpg.ts
 │   │   │   └── useStatistics.ts
 │   │   └── ui
 │   │       ├── Breadcrumb.vue
+│   │       ├── GoalsJVAStatistics.vue
+│   │       ├── GoalsPPGByDepartments.vue
+│   │       ├── GoalsPPGStatistics.vue
+│   │       ├── OrganisationsWithAtLeastOneParticipationByMonth.vue
+│   │       ├── OrganisationsWithAtLeastOneUserLessThan30YearsOldByMonth.vue
+│   │       ├── OverviewGoalsPPG.vue
 │   │       ├── OverviewMissions.vue
 │   │       ├── OverviewOrganisations.vue
 │   │       ├── OverviewParticipations.vue
 │   │       ├── OverviewPlaces.vue
 │   │       ├── OverviewQuickGlance.vue
 │   │       ├── OverviewUtilisateurs.vue
-│   │       └── SidebarMenu.vue
+│   │       ├── PPGIntroduction.vue
+│   │       ├── ParticipationsByMonthFromUsersLessThan18.vue
+│   │       ├── ParticipationsByMonthFromUsersLessThan30.vue
+│   │       └── StatisticsPubliquesIntroduction.vue
 │   ├── support
 │   │   └── components
 │   │       ├── DoublonOrganisationListItem.vue
@@ -1284,7 +1312,6 @@
 │       └── components
 │           └── TableRowProfile.vue
 ├── layouts
-│   ├── account.vue
 │   ├── admin-with-sidebar-menu.vue
 │   ├── default-without-header.vue
 │   ├── default.vue
@@ -1308,7 +1335,8 @@
 │   ├── authenticated.ts
 │   ├── guest.ts
 │   ├── maintenance.global.ts
-│   └── old-search-redirections.ts
+│   ├── old-search-redirections.ts
+│   └── statistics-url-params.ts
 ├── mixins
 │   ├── conversation
 │   │   └── participation.js
@@ -1338,8 +1366,6 @@
 │   ├── search
 │   │   └── mission
 │   │       └── ponctual-filter.js
-│   ├── secondary-menu.js
-│   ├── suggestions-filters.js
 │   ├── territoire-aide-moderation.js
 │   └── territoire.js
 ├── nuxt.config.ts
@@ -1438,6 +1464,14 @@
 │   │   │   ├── index.vue
 │   │   │   ├── indicateurs-cles.vue
 │   │   │   ├── missions.vue
+│   │   │   ├── moderations
+│   │   │   │   ├── index.vue
+│   │   │   │   ├── missions.vue
+│   │   │   │   └── organisations.vue
+│   │   │   ├── objectifs
+│   │   │   │   ├── plateforme.vue
+│   │   │   │   ├── ppg-nationaux.vue
+│   │   │   │   └── ppg-territoriaux.vue
 │   │   │   ├── organisations
 │   │   │   │   ├── index.vue
 │   │   │   │   ├── missions-perimees.vue
@@ -1445,8 +1479,6 @@
 │   │   │   │   └── participations-refusees-annulees.vue
 │   │   │   ├── participations.vue
 │   │   │   ├── places.vue
-│   │   │   ├── suivis
-│   │   │   │   └── moderations.vue
 │   │   │   └── utilisateurs.vue
 │   │   ├── tags
 │   │   │   └── macro-competences.vue
@@ -2190,6 +2222,7 @@
 │   │   │   ├── elections-legislatives.png
 │   │   │   ├── elections-municipales.png
 │   │   │   ├── logo-la-tournee-de-lete.svg
+│   │   │   ├── logo-printemps-pour-la-planete-new.svg
 │   │   │   ├── logo-printemps-pour-la-planete.svg
 │   │   │   ├── logo-septembre-pour-apprendre.svg
 │   │   │   ├── operation-decembre-ensemble.png
@@ -2322,7 +2355,7 @@
 │   │   │   │   ├── fevrier_step_05@2x.jpg
 │   │   │   │   └── sticker-fevrier-pour-proteger.png
 │   │   │   ├── quiz-*.jpg  (58 files)
-│   │   │   ├── quiz-*.svg  (6 files)
+│   │   │   ├── quiz-*.svg  (7 files)
 │   │   │   └── quiz-logo-decembre-ensemble.png
 │   │   ├── service_civique.png
 │   │   ├── service_civique@2x.png
@@ -2332,6 +2365,8 @@
 │   │   │   ├── decembre-ensemble.png
 │   │   │   ├── fevrier-pour-proteger.png
 │   │   │   ├── printemps-pour-la-planete.png
+│   │   │   ├── printemps_pour_la_planete.png
+│   │   │   ├── printemps_pour_la_planete@2x.png
 │   │   │   ├── septembre-pour-apprendre.png
 │   │   │   └── tournee-ete.png
 │   │   ├── temoignages
@@ -2506,6 +2541,7 @@
 │   ├── user.ts
 │   ├── userAlert.ts
 │   ├── userAlertMission.ts
+│   ├── utils.ts
 │   └── yup.d.ts
 └── yarn.lock
-303 directories, 2590 files
+307 directories, 2623 files
