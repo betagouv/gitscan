@@ -1,16 +1,8 @@
 source 'https://gem.coop'
 
-git_source(:github) do |repo_name|
-  if repo_name.exclude?('/')
-    repo_name = "#{repo_name}/#{repo_name}"
-  end
+ruby '4.0.2'
 
-  "https://github.com/#{repo_name}.git"
-end
-
-ruby '3.4.8'
-
-gem 'rails', '~> 7.2.2'
+gem 'rails', '~> 8.0'
 
 # Server
 gem 'foreman'
@@ -45,6 +37,7 @@ gem 'aasm'
 gem 'active_model_serializers'
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'ostruct' # for rswag in ruby 4, until https://github.com/rswag/rswag/pull/790 or https://github.com/rswag/rswag/pull/872 is merged and released
 gem 'faker'
 gem 'pg_search'
 
@@ -60,7 +53,7 @@ gem 'http'
 gem 'jbuilder'
 gem 'turbo-rails'
 gem 'rails-i18n'
-gem 'honeypot-captcha'
+gem 'honeypot_guard'
 gem 'kaminari'
 gem 'bootsnap', require: false
 gem 'rails_autolink'
@@ -74,8 +67,6 @@ gem 'mjml-rails'
 gem 'progress_bar'
 gem 'decoupage_administratif'
 gem 'parallel'
-
-gem 'connection_pool', '< 3' # See #4334
 
 # Notifiers
 gem 'appsignal'
@@ -127,11 +118,12 @@ group :development do
   gem 'i18n-tasks'
   gem 'listen'
   gem 'web-console'
-  gem 'annotate'
+  gem 'annotaterb'
   gem 'letter_opener_web'
   gem 'bullet'
   gem 'squasher'
   gem 'pp_sql'
+  gem 'localhost' # use https in development
 
   gem 'spring'
   gem 'spring-commands-rspec'

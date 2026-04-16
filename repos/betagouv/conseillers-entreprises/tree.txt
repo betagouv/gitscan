@@ -1,4 +1,5 @@
 .
+├── .annotaterb.yml
 ├── .browserslistrc
 ├── .buildpacks
 ├── .circleci
@@ -18,11 +19,20 @@
 ├── .rspec_parallel
 ├── .rubocop.yml
 ├── .ruby-version
+├── CODE_OF_CONDUCT.MD
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE.AGPL.txt
+├── Procfile
+├── Procfile.dev
+├── Procfile.dev.example
+├── README.md
+├── Rakefile
 ├── app
 │   ├── admin
 │   │   ├── antenne.rb
-│   │   ├── company_satisfaction.rb
 │   │   ├── company.rb
+│   │   ├── company_satisfaction.rb
 │   │   ├── concerns
 │   │   │   ├── admin_archivable.rb
 │   │   │   ├── csv_exportable.rb
@@ -43,13 +53,14 @@
 │   │   │   ├── links.rb
 │   │   │   └── territorial_zones_helper.rb
 │   │   ├── institution.rb
-│   │   ├── landing_theme.rb
 │   │   ├── landing.rb
+│   │   ├── landing_theme.rb
 │   │   ├── logo.rb
 │   │   ├── match.rb
 │   │   ├── need.rb
 │   │   ├── patches
 │   │   │   ├── data_access.rb
+│   │   │   ├── head_style.rb
 │   │   │   └── scopes.rb
 │   │   ├── profil_picture.rb
 │   │   ├── reassign_matches.rb
@@ -65,6 +76,8 @@
 │   │   ├── config
 │   │   │   └── manifest.js
 │   │   ├── images
+│   │   │   ├── Republique_Francaise_RVB.png
+│   │   │   ├── Republique_Francaise_blanc.png
 │   │   │   ├── cooperations
 │   │   │   │   ├── dreets.png
 │   │   │   │   ├── entreprendre.jpg
@@ -169,8 +182,6 @@
 │   │   │   │   ├── hauts-de-france.png
 │   │   │   │   ├── ile-de-france.png
 │   │   │   │   └── martinique.png
-│   │   │   ├── Republique_Francaise_blanc.png
-│   │   │   ├── Republique_Francaise_RVB.png
 │   │   │   ├── temoignages
 │   │   │   │   ├── atlantique-expertise-maritime.png
 │   │   │   │   ├── biere-qui-roule.jpg
@@ -355,7 +366,6 @@
 │   │   │   ├── pages
 │   │   │   │   ├── controllers
 │   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── pages_error_focus_controller.js
 │   │   │   │   │   ├── pages_siret_autocomplete_controller.js
 │   │   │   │   │   └── prefill_textarea_controller.js
 │   │   │   │   ├── iframe_external_links.js
@@ -381,6 +391,7 @@
 │   │       ├── gouvfr-nomodule.js
 │   │       └── pages.js
 │   ├── helpers
+│   │   ├── about_seo_helper.rb
 │   │   ├── active_admin_utilities_helper.rb
 │   │   ├── admin_expert_card_footer_helper.rb
 │   │   ├── annuaire_helper.rb
@@ -392,6 +403,7 @@
 │   │   ├── experts_helper.rb
 │   │   ├── images_helper.rb
 │   │   ├── institutions_helper.rb
+│   │   ├── landings_seo_helper.rb
 │   │   ├── mailto_helper.rb
 │   │   ├── needs_helper.rb
 │   │   ├── nested_errors_helper.rb
@@ -400,6 +412,10 @@
 │   │   ├── regions_helper.rb
 │   │   ├── reminders_helper.rb
 │   │   ├── scripts_snippets_helper.rb
+│   │   ├── seo
+│   │   │   ├── base_schemas.rb
+│   │   │   ├── content_schemas.rb
+│   │   │   └── data_preparation.rb
 │   │   ├── seo_helper.rb
 │   │   ├── sitemap_helper.rb
 │   │   ├── solicitation_helper.rb
@@ -461,12 +477,12 @@
 │   │   ├── antenne.rb
 │   │   ├── api_key.rb
 │   │   ├── application_record.rb
-│   │   ├── badge_badgeable.rb
 │   │   ├── badge.rb
+│   │   ├── badge_badgeable.rb
 │   │   ├── category.rb
 │   │   ├── clockwork.rb
-│   │   ├── company_satisfaction.rb
 │   │   ├── company.rb
+│   │   ├── company_satisfaction.rb
 │   │   ├── concerns
 │   │   │   ├── archivable.rb
 │   │   │   ├── categorie_juridique.rb
@@ -484,23 +500,23 @@
 │   │   │   ├── with_support_user.rb
 │   │   │   └── with_territorial_zones.rb
 │   │   ├── contact.rb
-│   │   ├── cooperation_theme.rb
 │   │   ├── cooperation.rb
+│   │   ├── cooperation_theme.rb
 │   │   ├── diagnosis.rb
 │   │   ├── email_retention.rb
-│   │   ├── expert_subject.rb
 │   │   ├── expert.rb
+│   │   ├── expert_subject.rb
 │   │   ├── facility.rb
 │   │   ├── feedback.rb
-│   │   ├── institution_subject.rb
 │   │   ├── institution.rb
+│   │   ├── institution_subject.rb
+│   │   ├── landing.rb
 │   │   ├── landing_joint_theme.rb
 │   │   ├── landing_subject.rb
 │   │   ├── landing_theme.rb
-│   │   ├── landing.rb
 │   │   ├── logo.rb
-│   │   ├── match_filter.rb
 │   │   ├── match.rb
+│   │   ├── match_filter.rb
 │   │   ├── need.rb
 │   │   ├── profil_picture.rb
 │   │   ├── record_extensions
@@ -512,17 +528,17 @@
 │   │   ├── shared_satisfaction.rb
 │   │   ├── solicitation.rb
 │   │   ├── spam.rb
+│   │   ├── subject.rb
 │   │   ├── subject_answer
 │   │   │   ├── filter.rb
 │   │   │   └── item.rb
-│   │   ├── subject_answer_grouping.rb
 │   │   ├── subject_answer.rb
+│   │   ├── subject_answer_grouping.rb
 │   │   ├── subject_question.rb
-│   │   ├── subject.rb
 │   │   ├── territorial_zone.rb
 │   │   ├── theme.rb
-│   │   ├── user_right.rb
-│   │   └── user.rb
+│   │   ├── user.rb
+│   │   └── user_right.rb
 │   ├── policies
 │   │   ├── antenne_policy.rb
 │   │   ├── application_policy.rb
@@ -564,8 +580,8 @@
 │   │   │   │   ├── antenne_matches.rb
 │   │   │   │   ├── antenne_stats.rb
 │   │   │   │   ├── base.rb
-│   │   │   │   ├── cooperation_solicitations.rb
-│   │   │   │   └── cooperation.rb
+│   │   │   │   ├── cooperation.rb
+│   │   │   │   └── cooperation_solicitations.rb
 │   │   │   ├── notify_antenne_managers.rb
 │   │   │   └── notify_cooperation_managers.rb
 │   │   ├── antenne_hierarchy.rb
@@ -573,11 +589,11 @@
 │   │   │   ├── adresse
 │   │   │   │   └── search_municipality.rb
 │   │   │   ├── api_entreprise
+│   │   │   │   ├── entreprise.rb
 │   │   │   │   ├── entreprise_effectif_annuel.rb
 │   │   │   │   ├── entreprise_mandataires_sociaux.rb
-│   │   │   │   ├── entreprise.rb
-│   │   │   │   ├── etablissement_effectif_mensuel.rb
-│   │   │   │   └── etablissement.rb
+│   │   │   │   ├── etablissement.rb
+│   │   │   │   └── etablissement_effectif_mensuel.rb
 │   │   │   ├── api_entreprise.rb
 │   │   │   ├── france_competence
 │   │   │   │   ├── siret.rb
@@ -599,6 +615,7 @@
 │   │   │   │   ├── companies.rb
 │   │   │   │   └── token.rb
 │   │   │   └── rne.rb
+│   │   ├── api.rb
 │   │   ├── api_consumption
 │   │   │   ├── aggregators
 │   │   │   │   ├── company.rb
@@ -624,7 +641,6 @@
 │   │   │           └── base.rb
 │   │   ├── api_geo
 │   │   │   └── query.rb
-│   │   ├── api.rb
 │   │   ├── build_antennes_collection.rb
 │   │   ├── check_password_complexity.rb
 │   │   ├── create_territorial_coverage.rb
@@ -680,12 +696,12 @@
 │   │   │   ├── acquisitions
 │   │   │   │   ├── base.rb
 │   │   │   │   ├── needs_base.rb
-│   │   │   │   ├── overall_distribution_needs_done_with_help_column.rb
 │   │   │   │   ├── overall_distribution_needs_done_with_help.rb
-│   │   │   │   ├── overall_distribution_needs_transmitted_column.rb
+│   │   │   │   ├── overall_distribution_needs_done_with_help_column.rb
 │   │   │   │   ├── overall_distribution_needs_transmitted.rb
-│   │   │   │   ├── overall_distribution_solicitations_column.rb
+│   │   │   │   ├── overall_distribution_needs_transmitted_column.rb
 │   │   │   │   ├── overall_distribution_solicitations.rb
+│   │   │   │   ├── overall_distribution_solicitations_column.rb
 │   │   │   │   └── solicitations_base.rb
 │   │   │   ├── all.rb
 │   │   │   ├── base_stats.rb
@@ -701,30 +717,30 @@
 │   │   │   │   └── solicitations.rb
 │   │   │   ├── matches
 │   │   │   │   ├── base.rb
+│   │   │   │   ├── done.rb
 │   │   │   │   ├── done_no_help.rb
 │   │   │   │   ├── done_not_reachable.rb
-│   │   │   │   ├── done.rb
 │   │   │   │   ├── not_for_me.rb
 │   │   │   │   ├── not_positioning.rb
 │   │   │   │   ├── positioning.rb
 │   │   │   │   ├── taken_care_in_five_days.rb
 │   │   │   │   ├── taken_care_in_three_days.rb
-│   │   │   │   ├── taking_care_time.rb
-│   │   │   │   └── taking_care.rb
+│   │   │   │   ├── taking_care.rb
+│   │   │   │   └── taking_care_time.rb
 │   │   │   ├── mini_stats.rb
 │   │   │   ├── needs
-│   │   │   │   ├── abandoned_total_count.rb
 │   │   │   │   ├── abandoned.rb
+│   │   │   │   ├── abandoned_total_count.rb
 │   │   │   │   ├── base.rb
 │   │   │   │   ├── concerns
 │   │   │   │   │   ├── subjects.rb
 │   │   │   │   │   ├── taking_care_time.rb
 │   │   │   │   │   └── themes.rb
 │   │   │   │   ├── diagnosis_completed.rb
+│   │   │   │   ├── done.rb
 │   │   │   │   ├── done_no_help.rb
 │   │   │   │   ├── done_not_reachable.rb
 │   │   │   │   ├── done_with_help_column.rb
-│   │   │   │   ├── done.rb
 │   │   │   │   ├── exchange_with_expert.rb
 │   │   │   │   ├── not_for_me.rb
 │   │   │   │   ├── positioning.rb
@@ -760,13 +776,13 @@
 │   │   │   ├── antenne_stats_exporter.rb
 │   │   │   ├── antenne_stats_worksheet_generator
 │   │   │   │   ├── base.rb
-│   │   │   │   ├── by_antenne_methods.rb
 │   │   │   │   ├── by_antenne.rb
+│   │   │   │   ├── by_antenne_methods.rb
 │   │   │   │   ├── by_position.rb
 │   │   │   │   ├── by_refused_subject.rb
 │   │   │   │   ├── by_region.rb
-│   │   │   │   ├── by_subject_methods.rb
 │   │   │   │   ├── by_subject.rb
+│   │   │   │   ├── by_subject_methods.rb
 │   │   │   │   ├── caption.rb
 │   │   │   │   └── national.rb
 │   │   │   ├── base_exporter.rb
@@ -806,8 +822,8 @@
 │       │   ├── base
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _import_errors.html.haml
-│       │   │   ├── _menu_link.html.haml
-│       │   │   └── _menu.html.haml
+│       │   │   ├── _menu.html.haml
+│       │   │   └── _menu_link.html.haml
 │       │   ├── institutions
 │       │   │   ├── _form.html.haml
 │       │   │   ├── _table.html.haml
@@ -835,8 +851,8 @@
 │       │   ├── _footer.html.haml
 │       │   ├── _head.html.haml
 │       │   ├── _navbar.html.haml
-│       │   ├── _person_modal.html.haml
 │       │   ├── _person.haml
+│       │   ├── _person_modal.html.haml
 │       │   ├── _tarteaucitron.html.erb
 │       │   └── _user_admin_view.haml
 │       ├── badges
@@ -892,8 +908,8 @@
 │       │   │   ├── _callout.html.haml
 │       │   │   ├── _header.html.haml
 │       │   │   ├── _menu.html.haml
-│       │   │   ├── _need_card.haml
 │       │   │   ├── _need.haml
+│       │   │   ├── _need_card.haml
 │       │   │   ├── _search.html.haml
 │       │   │   ├── index.html.haml
 │       │   │   └── mark_as_seen.turbo_stream.haml
@@ -903,9 +919,9 @@
 │       │       ├── _header.html.haml
 │       │       ├── _menu.html.haml
 │       │       ├── _retry_diagnosis.html.haml
+│       │       ├── _solicitation.haml
 │       │       ├── _solicitation_actions.html.haml
 │       │       ├── _solicitation_badges.html.haml
-│       │       ├── _solicitation.haml
 │       │       ├── _tracking.haml
 │       │       ├── index.html.haml
 │       │       └── update_badges.js.haml
@@ -931,8 +947,8 @@
 │       │       ├── _links.html.haml
 │       │       └── _user_fields.haml
 │       ├── experts
-│       │   ├── _expert_feedbacks.haml
 │       │   ├── _expert.html.haml
+│       │   ├── _expert_feedbacks.haml
 │       │   ├── edit.html.haml
 │       │   └── subjects.html.haml
 │       ├── feedbacks
@@ -1025,8 +1041,8 @@
 │       │   │   ├── kbis_extract.mjml
 │       │   │   ├── mediateurs.mjml
 │       │   │   ├── moderation.mjml
-│       │   │   ├── no_expert_agri.mjml
 │       │   │   ├── no_expert.mjml
+│       │   │   ├── no_expert_agri.mjml
 │       │   │   ├── recruitment_foreign_worker.mjml
 │       │   │   ├── retirement_liberal_professions.mjml
 │       │   │   ├── sie_sip_declare_and_pay.mjml
@@ -1087,8 +1103,8 @@
 │       │   └── _tarteaucitron.html.erb
 │       ├── reminders
 │       │   ├── _header.html.haml
-│       │   ├── _needs_badges.html.haml
 │       │   ├── _needs.html.haml
+│       │   ├── _needs_badges.html.haml
 │       │   ├── experts
 │       │   │   ├── _expert_menu.html.haml
 │       │   │   ├── _filters.html.haml
@@ -1121,8 +1137,8 @@
 │       │   ├── _password_tips.html.haml
 │       │   ├── _skiplinks.html.haml
 │       │   ├── _tarteaucitron.html.erb
-│       │   ├── _transcription_pde_tutoriel.html.haml
 │       │   ├── _transcription.html.haml
+│       │   ├── _transcription_pde_tutoriel.html.haml
 │       │   ├── _user_impersonate.html.haml
 │       │   ├── _visibility_password_button.html.haml
 │       │   └── errors
@@ -1138,8 +1154,8 @@
 │       │   ├── _header.html.haml
 │       │   ├── _iframe_footer.html.haml
 │       │   ├── _institutions_opco_tile.html.haml
-│       │   ├── _institutions_tiles_block.html.haml
 │       │   ├── _institutions_tiles.html.haml
+│       │   ├── _institutions_tiles_block.html.haml
 │       │   ├── _manual_step_company_link.html.haml
 │       │   ├── _next_button.html.haml
 │       │   ├── _previous_button.html.haml
@@ -1151,8 +1167,8 @@
 │       │   │   └── _tags_conversion.html.erb
 │       │   ├── search_company.html.haml
 │       │   ├── search_facility.html.haml
-│       │   ├── step_company_search.html.haml
 │       │   ├── step_company.html.haml
+│       │   ├── step_company_search.html.haml
 │       │   ├── step_contact.html.haml
 │       │   └── step_description.html.haml
 │       ├── stats
@@ -1165,6 +1181,7 @@
 │       │   │   └── index.haml
 │       │   └── team
 │       │       ├── _stats_params.haml
+│       │       ├── _tab.html.haml
 │       │       ├── _tabs.html.haml
 │       │       └── index.html.haml
 │       ├── user_pages
@@ -1216,7 +1233,6 @@
 │   │   ├── content_security_policy.rb
 │   │   ├── cookies_serializer.rb
 │   │   ├── core_extensions.rb
-│   │   ├── custom_extensions.rb
 │   │   ├── devise.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
@@ -1226,8 +1242,8 @@
 │   │   ├── permissions_policy.rb
 │   │   ├── rack_attack.rb
 │   │   ├── rack_timeout.rb
-│   │   ├── rswag_api.rb
 │   │   ├── rswag-ui.rb
+│   │   ├── rswag_api.rb
 │   │   ├── session_store.rb
 │   │   ├── sidekiq.rb
 │   │   ├── user_impersonate.rb
@@ -1294,7 +1310,11 @@
 │   │   ├── 20260216135245_add_information_banner_to_landing.rb
 │   │   ├── 20260218085238_remove_requires_fields.rb
 │   │   ├── 20260303133123_add_missing_indexes_for_solicitations_performance.rb
-│   │   └── 20260303150007_add_index_on_solicitations_status_and_completed_at.rb
+│   │   ├── 20260303150007_add_index_on_solicitations_status_and_completed_at.rb
+│   │   ├── 20260310152229_add_service_name_to_active_storage_blobs.active_storage.rb
+│   │   ├── 20260310152230_create_active_storage_variant_records.active_storage.rb
+│   │   ├── 20260310152231_remove_not_null_on_active_storage_blobs_checksum.active_storage.rb
+│   │   └── 20260330132110_add_index_for_solicitation_email_and_siret.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1304,29 +1324,28 @@
 │   ├── 04-architecture.md
 │   ├── 05-gotchas.md
 │   ├── 06-maintenance.md
-│   ├── browserstack-logo-600x315.png
 │   ├── Diagram SubjectAnswers.jpg
+│   ├── browserstack-logo-600x315.png
 │   ├── domain_model.pdf
 │   ├── logo-PDE-lineaire.svg
 │   ├── logo-PDE.svg
 │   └── picto-PDE.svg
-├── Gemfile
-├── Gemfile.lock
 ├── lib
 │   ├── api_adapters
 │   │   └── pde_adapter.rb
-│   ├── rswag
-│   │   └── ui
-│   │       └── CSP.rb
+│   ├── extensions
+│   │   └── csp
+│   │       ├── letter_opener.rb
+│   │       └── rswag.rb
 │   └── tasks
-│       ├── anonymize_old_diagnoses.rake
+│       ├── annotate_rb.rake
 │       ├── anonymize.rake
-│       ├── auto_annotate_models.rake
+│       ├── anonymize_old_diagnoses.rake
 │       ├── auto_generate_diagram.rake
 │       ├── import_dump.rake
 │       ├── import_prod_to_staging.rake
-│       ├── lint_fix.rake
 │       ├── lint.rake
+│       ├── lint_fix.rake
 │       ├── migration
 │       │   └── .keep
 │       ├── migrations
@@ -1339,13 +1358,9 @@
 │       ├── update_effectif_company.rake
 │       ├── update_effectif_facility.rake
 │       └── update_users_emails.rake
-├── LICENSE.AGPL.txt
 ├── log
 │   └── .keep
 ├── package.json
-├── Procfile
-├── Procfile.dev
-├── Procfile.dev.example
 ├── public
 │   ├── .well-known
 │   │   └── security.txt
@@ -1355,8 +1370,6 @@
 │   ├── DGEFP_decision_homologation_SI_PDE-v0.2.pdf
 │   ├── google7c9d162767dd90a2.html
 │   └── robots.txt
-├── Rakefile
-├── README.md
 ├── scalingo.json
 ├── spec
 │   ├── a11y
@@ -1423,16 +1436,16 @@
 │   │   ├── companies.rb
 │   │   ├── company_satisfactions.rb
 │   │   ├── contacts.rb
-│   │   ├── cooperation_themes.rb
 │   │   ├── cooperation.rb
+│   │   ├── cooperation_themes.rb
 │   │   ├── diagnoses.rb
 │   │   ├── email_retention.rb
-│   │   ├── experts_subjects.rb
 │   │   ├── experts.rb
+│   │   ├── experts_subjects.rb
 │   │   ├── facilities.rb
 │   │   ├── feedbacks.rb
-│   │   ├── institutions_subjects.rb
 │   │   ├── institutions.rb
+│   │   ├── institutions_subjects.rb
 │   │   ├── landing_subjects.rb
 │   │   ├── landing_themes.rb
 │   │   ├── landings.rb
@@ -1478,37 +1491,37 @@
 │   │       └── registrations_controller_spec.rb
 │   ├── fixtures
 │   │   └── files
-│   │       ├── api_adapter_company_errors.json
 │   │       ├── api_adapter_company.json
-│   │       ├── api_adapter_facility_errors.json
+│   │       ├── api_adapter_company_errors.json
 │   │       ├── api_adapter_facility.json
+│   │       ├── api_adapter_facility_errors.json
 │   │       ├── api_adresse_search_municipality.json
 │   │       ├── api_entreprise_401.json
 │   │       ├── api_entreprise_500.json
 │   │       ├── api_entreprise_effectifs_entreprise.json
 │   │       ├── api_entreprise_effectifs_etablissement.json
+│   │       ├── api_entreprise_entreprise.json
 │   │       ├── api_entreprise_entreprise_422.json
 │   │       ├── api_entreprise_entreprise_p_physique.json
-│   │       ├── api_entreprise_entreprise.json
 │   │       ├── api_entreprise_entreprises_artisanales_cma.json
 │   │       ├── api_entreprise_etablissement.json
 │   │       ├── api_entreprise_mandataires_sociaux.json
 │   │       ├── api_entreprise_rcs.json
 │   │       ├── api_entreprise_rm.json
-│   │       ├── api_france_competence_siret_99.json
 │   │       ├── api_france_competence_siret.json
-│   │       ├── api_insee_siret_400.json
+│   │       ├── api_france_competence_siret_99.json
 │   │       ├── api_insee_siret.json
+│   │       ├── api_insee_siret_400.json
 │   │       ├── api_insee_sirets_by_siren_formatted_data.json
 │   │       ├── api_insee_sirets_by_siren_many.json
 │   │       ├── api_insee_sirets_by_siren_one.json
 │   │       ├── api_recherche_entreprises_entreprise_request_data.json
 │   │       ├── api_recherche_entreprises_search_fulltext.json
 │   │       ├── api_recherche_entreprises_search_siret.json
-│   │       ├── api_rne_companies_404.json
 │   │       ├── api_rne_companies.json
-│   │       ├── api_rne_token_401.json
+│   │       ├── api_rne_companies_404.json
 │   │       ├── api_rne_token.json
+│   │       ├── api_rne_token_401.json
 │   │       ├── csv_import
 │   │       │   ├── antennes-with-4-digits-insee-codes.csv
 │   │       │   ├── antennes-with-blank-rows.csv
@@ -1792,4 +1805,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-311 directories, 1492 files
+312 directories, 1504 files
