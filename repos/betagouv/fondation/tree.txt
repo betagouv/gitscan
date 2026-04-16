@@ -1,21 +1,23 @@
 .
 ├── .github
-│   ├── copilot-instructions.md
 │   ├── playwright
 │   │   └── action.yml
 │   └── workflows
-│       ├── build-and-upload-api-artifact.yml
-│       ├── build-and-upload-client-artifact.yml
+│       ├── build-api.yml
+│       ├── build-client.yml
 │       ├── deploy-to-scalingo.yml
 │       ├── integration-checks.yml
+│       ├── migrate.yml
 │       ├── release-production.yml
 │       ├── release-staging.yml
 │       ├── release.yml
+│       ├── tags.yml
 │       └── validates-pr.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-push
 ├── .nvmrc
+├── CLAUDE.md
 ├── LICENSE
 ├── README.md
 ├── apps
@@ -28,8 +30,6 @@
 │   │   ├── .sqlfluff
 │   │   ├── .vscode
 │   │   │   └── settings.json
-│   │   ├── cli
-│   │   │   └── ingest-jurisdictions-xml.ts
 │   │   ├── docs
 │   │   │   └── adr
 │   │   │       └── 2025-10-22-sortie-hexa.md
@@ -162,6 +162,8 @@
 │   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
+│   │   │   ├── generators
+│   │   │   │   └── group-role.js
 │   │   │   ├── migrations
 │   │   │   │   ├── 0_init
 │   │   │   │   │   └── migration.sql
@@ -217,10 +219,25 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260317111530_adds_detected_fields
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260319082637_adds_session_validation
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260319171023_adds_user_title
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260323165723_add_docs_agenda
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260325185212_adds_deputy_president
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260326133719_adds_agenda_pdf_html_magistrat_and_position
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260329145101_adds_impersonation_tables
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260331145254_agenda_file_position_is_nullable
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
 │   │   │   │   ├── data.prisma
+│   │   │   │   ├── docs.prisma
 │   │   │   │   ├── files.prisma
 │   │   │   │   ├── identity.prisma
 │   │   │   │   ├── jobs.prisma
@@ -230,9 +247,12 @@
 │   │   │   │   └── reports.prisma
 │   │   │   └── sql
 │   │   │       ├── deleteReportsAfterAffectationPublicationRawQuery.sql
+│   │   │       ├── detailLolfiSessionRawQuery.sql
 │   │   │       ├── detailsMemberRawQuery.sql
+│   │   │       ├── findAgendaNominationFilesRawQuery.sql
 │   │   │       ├── findMagistratExternalIdByFullName.sql
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
+│   │   │       ├── findNominationFilesNotInAgendaRawQuery.sql
 │   │   │       ├── insertAdministrativePositionsRawQuery.sql
 │   │   │       ├── insertCandidateWishesRawQuery.sql
 │   │   │       ├── insertCandidatesRawQuery.sql
@@ -252,15 +272,14 @@
 │   │   ├── prisma.config.ts
 │   │   ├── scalingo
 │   │   │   ├── .buildpacks
+│   │   │   ├── Aptfile
 │   │   │   └── Procfile
 │   │   ├── scripts
-│   │   │   ├── affectation-transpa-aux-presidents.sh
 │   │   │   ├── build-for-scalingo.sh
-│   │   │   ├── import-nominations-from-local-file-to-scalingo.sh
 │   │   │   ├── init-buckets.js
+│   │   │   ├── migrate.sh
+│   │   │   ├── postinstall.sh
 │   │   │   ├── prisma.js
-│   │   │   ├── register-users-to-scalingo.sh
-│   │   │   ├── scalingo-utils.sh
 │   │   │   └── send-to-scalingo.sh
 │   │   ├── src
 │   │   │   ├── app.module.ts
@@ -268,6 +287,65 @@
 │   │   │   ├── instrument.ts
 │   │   │   ├── main.ts
 │   │   │   ├── modules
+│   │   │   │   ├── administration
+│   │   │   │   │   ├── administration.module.ts
+│   │   │   │   │   ├── administration.service.ts
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   ├── admin-user-role.spec.ts.snap
+│   │   │   │   │   │   │   └── admin-user-title.spec.ts.snap
+│   │   │   │   │   │   ├── admin-user-role.spec.ts
+│   │   │   │   │   │   ├── admin-user-role.ts
+│   │   │   │   │   │   ├── admin-user-title.spec.ts
+│   │   │   │   │   │   ├── admin-user-title.ts
+│   │   │   │   │   │   ├── user-enum.ts
+│   │   │   │   │   │   ├── user.spec.ts
+│   │   │   │   │   │   └── user.ts
+│   │   │   │   │   └── infrastructure
+│   │   │   │   │       ├── administration.controller.ts
+│   │   │   │   │       ├── administration.filter.ts
+│   │   │   │   │       ├── cli
+│   │   │   │   │       │   └── update-display-titles.cli.ts
+│   │   │   │   │       ├── dto
+│   │   │   │   │       │   └── administration.dto.ts
+│   │   │   │   │       ├── queries
+│   │   │   │   │       │   ├── details-user.query.ts
+│   │   │   │   │       │   └── list-users.query.ts
+│   │   │   │   │       └── repositories
+│   │   │   │   │           └── user.repository.ts
+│   │   │   │   ├── docs
+│   │   │   │   │   ├── docs.module.ts
+│   │   │   │   │   ├── docs.service.ts
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── agenda-nomination-file-outcome.ts
+│   │   │   │   │   │   ├── agenda-nomination-file.ts
+│   │   │   │   │   │   └── agenda.ts
+│   │   │   │   │   └── infrastructure
+│   │   │   │   │       ├── docs.controller.ts
+│   │   │   │   │       ├── docs.dto.ts
+│   │   │   │   │       ├── finders
+│   │   │   │   │       │   └── agenda-nomination-files.finder.ts
+│   │   │   │   │       ├── queries
+│   │   │   │   │       │   ├── details-agenda-metadata.query.ts
+│   │   │   │   │       │   ├── details-session-doc.query.ts
+│   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
+│   │   │   │   │       │   ├── find-agenda-document.query.ts
+│   │   │   │   │       │   ├── find-chairmen.query.ts
+│   │   │   │   │       │   ├── find-session-docs.query.ts
+│   │   │   │   │       │   └── is-session-ready-for-doc-generation.query.ts
+│   │   │   │   │       ├── repositories
+│   │   │   │   │       │   └── agenda.repository.ts
+│   │   │   │   │       └── services
+│   │   │   │   │           ├── doc-renderer.service.ts
+│   │   │   │   │           └── renderers
+│   │   │   │   │               ├── agenda.renderer.ts
+│   │   │   │   │               ├── helpers.ts
+│   │   │   │   │               ├── pdf
+│   │   │   │   │               │   ├── pdf-renderer.service.ts
+│   │   │   │   │               │   └── pdf-worker.ts
+│   │   │   │   │               └── templates
+│   │   │   │   │                   ├── agenda.html.ts
+│   │   │   │   │                   └── templates.types.ts
 │   │   │   │   ├── framework
 │   │   │   │   │   ├── clock.ts
 │   │   │   │   │   ├── config
@@ -302,6 +380,7 @@
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       ├── pdf.sanitizer.ts
 │   │   │   │   │   │       └── sanitizer.ts
+│   │   │   │   │   ├── forwards.ts
 │   │   │   │   │   ├── framework.module.ts
 │   │   │   │   │   ├── health.ts
 │   │   │   │   │   ├── http.ts
@@ -316,7 +395,9 @@
 │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   ├── ingest.controller.ts
 │   │   │   │   │   │   ├── ingest.dto.ts
-│   │   │   │   │   │   └── ingest.service.ts
+│   │   │   │   │   │   ├── ingest.service.ts
+│   │   │   │   │   │   └── queries
+│   │   │   │   │   │       └── internal-details-lolfi-session.query.ts
 │   │   │   │   │   ├── ingest-cli.module.ts
 │   │   │   │   │   ├── ingest.module.ts
 │   │   │   │   │   ├── jobs
@@ -369,6 +450,7 @@
 │   │   │   │   ├── members
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   ├── jurisdiction.ts
+│   │   │   │   │   │   ├── member-enums.ts
 │   │   │   │   │   │   ├── member.spec.ts
 │   │   │   │   │   │   └── member.ts
 │   │   │   │   │   ├── index.ts
@@ -385,6 +467,7 @@
 │   │   │   │   │   │       ├── details-member.query.ts
 │   │   │   │   │   │       ├── internal-find-members-by-full-name.query.ts
 │   │   │   │   │   │       ├── internal-find-members.query.ts
+│   │   │   │   │   │       ├── internal-get-member.query.ts
 │   │   │   │   │   │       ├── list-members.query.ts
 │   │   │   │   │   │       └── search-jurisdictions.query.ts
 │   │   │   │   │   ├── jurisdictions.controller.ts
@@ -451,7 +534,6 @@
 │   │   │   │   │   │   ├── nomination-session.ts
 │   │   │   │   │   │   ├── statut-affectation.enum.ts
 │   │   │   │   │   │   └── summary.ts
-│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   │   ├── auto-affectation.dto.ts
@@ -461,12 +543,18 @@
 │   │   │   │   │   │   ├── finders
 │   │   │   │   │   │   │   ├── affectation-version.finder.ts
 │   │   │   │   │   │   │   ├── auto-affectations.finder.ts
+│   │   │   │   │   │   │   ├── lolfi-nomination-files.finder.ts
+│   │   │   │   │   │   │   ├── lolfi-nomination-session.finder.ts
 │   │   │   │   │   │   │   ├── nomination-session-file.finder.ts
 │   │   │   │   │   │   │   └── unaffected-files.finder.ts
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   ├── magistrat.helper.spec.ts
+│   │   │   │   │   │   │   └── magistrat.helper.ts
 │   │   │   │   │   │   ├── lodam-xlsx.pipe.ts
 │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   ├── count-nomination-files-by-status.query.ts
 │   │   │   │   │   │   │   ├── count-unaffected-files.query.ts
+│   │   │   │   │   │   │   ├── count-users-new-sessions.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session-affectation-version.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session-attachment.query.ts
 │   │   │   │   │   │   │   ├── detail-nomination-session.query.ts
@@ -475,6 +563,7 @@
 │   │   │   │   │   │   │   ├── get-nomination-file-with-comment.query.ts
 │   │   │   │   │   │   │   ├── get-summary-attachment-url.query.ts
 │   │   │   │   │   │   │   ├── internal-detail-member-session.query.ts
+│   │   │   │   │   │   │   ├── internal-find-agenda-nomination-files.query.ts
 │   │   │   │   │   │   │   ├── internal-list-member-sessions.query.ts
 │   │   │   │   │   │   │   ├── list-currently-affected-reporters.query.ts
 │   │   │   │   │   │   │   ├── list-nomination-files-as-excel.query.ts
@@ -496,6 +585,7 @@
 │   │   │   │   │   ├── summary.controller.ts
 │   │   │   │   │   └── summary.module.ts
 │   │   │   │   ├── shared
+│   │   │   │   │   ├── formation-to-member-role.ts
 │   │   │   │   │   └── mappers
 │   │   │   │   │       ├── formation.mapper.ts
 │   │   │   │   │       ├── gender-enum.mapper.ts
@@ -508,6 +598,7 @@
 │   │   │   │   │       └── type-de-saisine-enum.mapper.ts
 │   │   │   │   └── simple-auth
 │   │   │   │       ├── domain
+│   │   │   │       │   ├── auth-impersonation.ts
 │   │   │   │       │   ├── auth-password.ts
 │   │   │   │       │   ├── auth-session.ts
 │   │   │   │       │   └── auth-user.ts
@@ -522,6 +613,7 @@
 │   │   │   │       │   ├── guards
 │   │   │   │       │   │   └── development-environment.guard.ts
 │   │   │   │       │   ├── queries
+│   │   │   │       │   │   ├── details-user-from-impesronation-id.query.ts
 │   │   │   │       │   │   ├── details-user-from-session-id.query.ts
 │   │   │   │       │   │   ├── details-user.query.ts
 │   │   │   │       │   │   ├── find-machine.query.ts
@@ -549,6 +641,7 @@
 │   │   │       ├── promises.ts
 │   │   │       ├── result.ts
 │   │   │       ├── time.ts
+│   │   │       ├── types.ts
 │   │   │       ├── unaccent.ts
 │   │   │       └── zod-to-xml-schema.ts
 │   │   ├── test
@@ -559,8 +652,7 @@
 │   │   │   └── jest
 │   │   │       ├── jest-all.config.ts
 │   │   │       ├── jest-e2e.config.ts
-│   │   │       ├── jest-integration.config.ts
-│   │   │       └── jest-migration.config.ts
+│   │   │       └── jest.config.ts
 │   │   ├── tsconfig.build.json
 │   │   └── tsconfig.json
 │   └── client
@@ -582,6 +674,8 @@
 │       │   ├── .buildpacks
 │       │   ├── Procfile
 │       │   └── nginx.conf.erb
+│       ├── scripts
+│       │   └── install-fonts.sh
 │       ├── src
 │       │   ├── HomePage.tsx
 │       │   ├── assets
@@ -594,6 +688,7 @@
 │       │   │   │   ├── Avatar.tsx
 │       │   │   │   ├── Header.tsx
 │       │   │   │   ├── LolfiCsm.tsx
+│       │   │   │   ├── ManageSessionsLink.tsx
 │       │   │   │   └── PageLayout.tsx
 │       │   │   ├── login
 │       │   │   │   ├── AuthenticationFailedAlert.tsx
@@ -684,15 +779,17 @@
 │       │   │   │   │   │   ├── DetailsMemberHeader.tsx
 │       │   │   │   │   │   ├── DetailsMemberStats.tsx
 │       │   │   │   │   │   ├── JurisdictionAutocomplete.tsx
-│       │   │   │   │   │   └── JurisdictionSelector.tsx
+│       │   │   │   │   │   ├── JurisdictionSelector.tsx
+│       │   │   │   │   │   ├── MemberDisplayTitle.tsx
+│       │   │   │   │   │   └── MemberTitle.tsx
 │       │   │   │   │   ├── jurisdictions.queries.ts
 │       │   │   │   │   └── list
 │       │   │   │   │       ├── MemberList.tsx
 │       │   │   │   │       ├── MemberListHeader.tsx
 │       │   │   │   │       └── MemberListStateCell.tsx
 │       │   │   │   ├── session
-│       │   │   │   │   ├── FiltresSessions.tsx
-│       │   │   │   │   └── ManageSession.tsx
+│       │   │   │   │   ├── ManageSession.tsx
+│       │   │   │   │   └── SessionStatusBadge.tsx
 │       │   │   │   └── transparence
 │       │   │   │       ├── content
 │       │   │   │       │   ├── Transparence.tsx
@@ -700,11 +797,14 @@
 │       │   │   │       │       ├── actions
 │       │   │   │       │       │   ├── ImportAttachmentModal.tsx
 │       │   │   │       │       │   ├── ImportObservantsModal.tsx
-│       │   │   │       │       │   └── TableauDeBordActions.tsx
+│       │   │   │       │       │   ├── NominationSessionDocsList.tsx
+│       │   │   │       │       │   ├── TableauDeBordActions.tsx
+│       │   │   │       │       │   └── TableauDeBordActionsList.tsx
 │       │   │   │       │       └── resume
 │       │   │   │       │           ├── TableauDeBordEditTransparence.tsx
 │       │   │   │       │           ├── TableauDeBordResume.tsx
-│       │   │   │       │           └── TableauDeBordResumeDetails.tsx
+│       │   │   │       │           ├── TableauDeBordResumeDetails.tsx
+│       │   │   │       │           └── TableauDeBordValidationCallOut.tsx
 │       │   │   │       └── nouvelle-transparence
 │       │   │   │           ├── NouvelleTransparence.tsx
 │       │   │   │           └── UploadExcelFailedAlert.tsx
@@ -718,7 +818,9 @@
 │       │   │   │   ├── DropdownSelectMultiple.tsx
 │       │   │   │   ├── ErrorMessage.tsx
 │       │   │   │   ├── HintImportXlsxFile.tsx
+│       │   │   │   ├── ImpersonatedAppLayout.tsx
 │       │   │   │   ├── LolfiMagistratLink.tsx
+│       │   │   │   ├── Marked.tsx
 │       │   │   │   ├── NominationSessionAttachmentList.tsx
 │       │   │   │   ├── ObservationDescription.tsx
 │       │   │   │   ├── ObservationDetailsContent.tsx
@@ -750,15 +852,25 @@
 │       │   │   │   │   │   ├── data-table-parsers.ts
 │       │   │   │   │   │   ├── data-table-state.ts
 │       │   │   │   │   │   ├── useDataTable.ts
+│       │   │   │   │   │   ├── useDataTablePaginationItemLabel.ts
 │       │   │   │   │   │   ├── useDataTableState.ts
 │       │   │   │   │   │   └── useQueryDataTableState.ts
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── filter-configurations.ts
+│       │   │   │   ├── indeterminate-checkbox
+│       │   │   │   │   ├── IndeterminateCheckbox.css
+│       │   │   │   │   └── IndeterminateCheckbox.tsx
+│       │   │   │   ├── layouts
+│       │   │   │   │   ├── BanneredLayout.tsx
+│       │   │   │   │   ├── ImpersonationBanner.tsx
+│       │   │   │   │   ├── PermanentBanner.tsx
+│       │   │   │   │   └── StagingBanner.tsx
 │       │   │   │   ├── loaders
 │       │   │   │   │   └── pulse
 │       │   │   │   │       ├── Pulse.css
 │       │   │   │   │       ├── Pulse.tsx
 │       │   │   │   │       └── index.ts
+│       │   │   │   ├── menu.tsx
 │       │   │   │   ├── nomination-files-table
 │       │   │   │   │   ├── NominationFilesTable.css
 │       │   │   │   │   ├── NominationFilesTable.tsx
@@ -833,6 +945,8 @@
 │       │   │   │   │   │   └── useObservationFollowUpCommentDialog.ts
 │       │   │   │   │   └── index.ts
 │       │   │   │   ├── ovoid.tsx
+│       │   │   │   ├── priorities
+│       │   │   │   │   └── PriorityBadge.tsx
 │       │   │   │   └── user-avatar
 │       │   │   │       ├── UserAvatar.tsx
 │       │   │   │       ├── UserAvatarList.tsx
@@ -883,12 +997,14 @@
 │       │   │       └── types.ts
 │       │   ├── hooks
 │       │   │   ├── roles.hook.ts
+│       │   │   ├── useBeforeUnload.ts
 │       │   │   ├── useConfirmation.hook.tsx
-│       │   │   ├── useFiltering.hook.ts
 │       │   │   ├── useLocallyStoredState.hook.ts
-│       │   │   ├── usePagination.hook.ts
-│       │   │   ├── useSorting.hook.ts
-│       │   │   └── useTable.hook.ts
+│       │   │   └── useTab.ts
+│       │   ├── i18n
+│       │   │   ├── components.tsx
+│       │   │   ├── formats.ts
+│       │   │   └── hooks.ts
 │       │   ├── index.css
 │       │   ├── instrument.ts
 │       │   ├── main.tsx
@@ -902,25 +1018,29 @@
 │       │   │   │   ├── AdminLayout.tsx
 │       │   │   │   ├── ingest
 │       │   │   │   │   └── IngestLolfiArchivePage.tsx
-│       │   │   │   └── jobs
-│       │   │   │       ├── DetailsJobPage.tsx
-│       │   │   │       ├── JobsPage.tsx
-│       │   │   │       ├── common
-│       │   │   │       │   ├── format-job-date.utils.ts
-│       │   │   │       │   ├── format-job-duration.utils.ts
-│       │   │   │       │   ├── job-status.utils.ts
-│       │   │   │       │   ├── job.types.ts
-│       │   │   │       │   ├── jobs-page-outlet-context.type.ts
-│       │   │   │       │   └── tree.utils.ts
-│       │   │   │       ├── components
-│       │   │   │       │   ├── JobFileNode.tsx
-│       │   │   │       │   ├── JobFilesBranch.tsx
-│       │   │   │       │   ├── JobFilesTree.tsx
-│       │   │   │       │   └── JobsListItem.tsx
-│       │   │   │       └── contexts
-│       │   │   │           ├── index.ts
-│       │   │   │           ├── job.context.ts
-│       │   │   │           └── selected-job-provider.tsx
+│       │   │   │   ├── jobs
+│       │   │   │   │   ├── DetailsJobPage.tsx
+│       │   │   │   │   ├── JobsPage.tsx
+│       │   │   │   │   ├── common
+│       │   │   │   │   │   ├── format-job-date.utils.ts
+│       │   │   │   │   │   ├── format-job-duration.utils.ts
+│       │   │   │   │   │   ├── job-status.utils.ts
+│       │   │   │   │   │   ├── job.types.ts
+│       │   │   │   │   │   ├── jobs-page-outlet-context.type.ts
+│       │   │   │   │   │   └── tree.utils.ts
+│       │   │   │   │   ├── components
+│       │   │   │   │   │   ├── JobFileNode.tsx
+│       │   │   │   │   │   ├── JobFilesBranch.tsx
+│       │   │   │   │   │   ├── JobFilesTree.tsx
+│       │   │   │   │   │   └── JobsListItem.tsx
+│       │   │   │   │   └── contexts
+│       │   │   │   │       ├── index.ts
+│       │   │   │   │       ├── job.context.ts
+│       │   │   │   │       └── selected-job-provider.tsx
+│       │   │   │   └── users
+│       │   │   │       ├── AdminUserDetailPage.tsx
+│       │   │   │       ├── AdminUserListPage.tsx
+│       │   │   │       └── admin-user-enum.ts
 │       │   │   ├── help
 │       │   │   │   ├── HelpPage.tsx
 │       │   │   │   └── UserManualPage.tsx
@@ -931,6 +1051,25 @@
 │       │   │   │   ├── SecretariatGeneralPage.tsx
 │       │   │   │   ├── SecretariatLayout.tsx
 │       │   │   │   ├── TransparencePage.tsx
+│       │   │   │   ├── agenda
+│       │   │   │   │   ├── AgendaPage.tsx
+│       │   │   │   │   ├── PreviewAgendaPage.css
+│       │   │   │   │   ├── PreviewAgendaPage.tsx
+│       │   │   │   │   ├── components
+│       │   │   │   │   │   ├── AgendaChairmanSelect.tsx
+│       │   │   │   │   │   ├── AgendaFileSearch.tsx
+│       │   │   │   │   │   ├── AgendaNominationFile.css
+│       │   │   │   │   │   └── AgendaNominationFile.tsx
+│       │   │   │   │   ├── context
+│       │   │   │   │   │   ├── AgendaContext.tsx
+│       │   │   │   │   │   ├── AgendaContext.types.ts
+│       │   │   │   │   │   └── AgendaProvider.tsx
+│       │   │   │   │   ├── hooks
+│       │   │   │   │   │   ├── useScrollDownIndicator.hook.ts
+│       │   │   │   │   │   └── useSelection.hook.ts
+│       │   │   │   │   └── steps
+│       │   │   │   │       ├── AgendaMetadataStep.tsx
+│       │   │   │   │       └── AgendaNominationFilesStep.tsx
 │       │   │   │   ├── membres
 │       │   │   │   │   └── DetailsMemberPage.tsx
 │       │   │   │   └── observations
@@ -943,6 +1082,8 @@
 │       │   │       ├── SessionsPage.tsx
 │       │   │       └── TransparencesLayout.tsx
 │       │   ├── queries
+│       │   │   ├── administration.queries.ts
+│       │   │   ├── agenda.queries.ts
 │       │   │   ├── auth.queries.ts
 │       │   │   ├── ingest.queries.ts
 │       │   │   ├── jobs.queries.ts
@@ -972,7 +1113,7 @@
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── nomination-file.ts
-│       │   │   ├── route-path.utils.tsx
+│       │   │   ├── route-path.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
 │       │   │   ├── transparences-breadcrumb.utils.tsx
@@ -1001,6 +1142,9 @@
 │       └── vite.config.ts
 ├── bin
 │   └── api.sh
+├── i18n
+│   └── fr
+│       └── extracted.json
 ├── package.json
 ├── packages
 │   └── shared-models
@@ -1025,4 +1169,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-194 directories, 833 files
+234 directories, 937 files

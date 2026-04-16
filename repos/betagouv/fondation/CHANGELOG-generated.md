@@ -1,41 +1,36 @@
-## Changelog : fondation (30 derniers jours, au 17 mars 2026)
+## Changelog : fondation (30 derniers jours, au 14 avril 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant l'ingestion et la gestion des données LoLfi, ainsi que par de nombreuses corrections et améliorations de l'interface utilisateur et des fonctionnalités existantes. L'affectation des ressources a également été optimisée, et des améliorations ont été apportées à la gestion des rapports et des observations.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de la gestion des agendas et des nominations, ainsi que sur l'intégration de données provenant de différentes sources (Lolfi et Lodam). Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment au niveau des tableaux de bord et des outils de gestion.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des données LoLfi : ingestion des archives, page d'administration dédiée et cryptographie associée. ([#248](https://github.com/betagouv/fondation/issues/248), [#229](https://github.com/betagouv/fondation/issues/229), [#237](https://github.com/betagouv/fondation/issues/237))
-- Amélioration de l'affectation des ressources : prise en compte de plusieurs priorités, gestion des arrondis, distribution arithmétique et affectation unique par grade et par membre.
-- Ajout d'un indicateur de commentaire pour les descriptions d'observations et fichiers. ([#257](https://github.com/betagouv/fondation/issues/257), [#263](https://github.com/betagouv/fondation/issues/263))
-- Possibilité de trier les résultats dans la liste des fichiers et des affectations. ([#258](https://github.com/betagouv/fondation/issues/258), [#260](https://github.com/betagouv/fondation/issues/260))
-- Ajout d'un manuel utilisateur. ([#261](https://github.com/betagouv/fondation/issues/261))
-- Ajout de la possibilité de spécifier un grade ciblé dans l'export Excel. ([#224](https://github.com/betagouv/fondation/issues/224))
-- Amélioration de l'affichage des priorités multiples dans la liste des rapports des membres. ([#274](https://github.com/betagouv/fondation/issues/274))
-- Ajout de deux nouveaux états de fichiers. ([#255](https://github.com/betagouv/fondation/issues/255))
-- Ajout de la possibilité de joindre plusieurs fichiers en une seule session. ([#254](https://github.com/betagouv/fondation/issues/254))
-- Correction de l'affectation de version pour la publication des rapports. ([#272](https://github.com/betagouv/fondation/issues/272))
-- Correction de l'affichage des captures d'écran des observations. ([#271](https://github.com/betagouv/fondation/issues/271))
-- Correction de l'utilisation de l'identifiant externe pour la recherche. ([#220](https://github.com/betagouv/fondation/issues/220))
-- Correction de la sensibilité à la casse de la connexion. ([#253](https://github.com/betagouv/fondation/issues/253))
-- Correction d'un problème empêchant la sauvegarde de la description des observations. ([#219](https://github.com/betagouv/fondation/issues/219))
-- Correction d'un problème empêchant la récupération de la charge de travail sur une version non publiée. ([#222](https://github.com/betagouv/fondation/issues/222))
+- Ajout de la possibilité de créer des agendas et de générer des documents correspondants [#282, #285, #289, #290].
+- Amélioration de l'interface de l'agenda avec un affichage plus clair et des fonctionnalités supplémentaires [#300, #301].
+- Intégration des données Lolfi pour la création de sessions de nomination [#275, #282].
+- Ajout d'indicateurs de priorité (badges) pour les éléments importants [#280].
+- Ajout d'une page d'aide Notion pour faciliter l'utilisation de l'application [#294].
+- Possibilité d'impersonner des membres pour faciliter le support et la gestion [#287].
+- Amélioration de la gestion des rôles, simplifiée pour une meilleure expérience utilisateur [#284].
+- Ajout d'alertes lors de l'importation de données Lodam [#277].
+- Ajout d'un sélecteur de fichiers utilisant l'ID de fonction [#302].
+- Correction de bugs liés à l'affichage du titre du président [#204].
+- Correction de bugs liés à la publication des versions de nomination [#000].
+- Correction de bugs liés à la disposition des actions dans le tableau des nominations [#299].
+- Correction de bugs liés aux tooltips des résultats [#295].
 
 ### Évolutions techniques
-- Suppression des colonnes et tables dépréciées. ([#262](https://github.com/betagouv/fondation/issues/262))
-- Ajout de métriques HTTP à Sentry pour une meilleure surveillance. ([#249](https://github.com/betagouv/fondation/issues/249))
-- Mise en place de tests E2E pour l'affectation. ([#270](https://github.com/betagouv/fondation/issues/270))
-- Utilisation de requêtes SQL brutes pour optimiser la récupération des détails de session des membres. ([#251](https://github.com/betagouv/fondation/issues/251))
-- Refactorisation du code pour déplacer l'affectation automatique dans plusieurs fichiers. ([#236](https://github.com/betagouv/fondation/issues/236))
-- Ajout de source maps pour faciliter le débogage dans Sentry. ([#267](https://github.com/betagouv/fondation/issues/267))
-- Mise en place d'une release Sentry. ([#269](https://github.com/betagouv/fondation/issues/269))
-- Mise en cache des fichiers et traçage des requêtes HTTP. ([#273](https://github.com/betagouv/fondation/issues/273))
+- Réduction de l'utilisation du réseau lors de l'édition des rapports, améliorant la performance [#298].
+- Refactorisation de l'interface utilisateur du tableau de bord des sessions pour une meilleure organisation [#296].
+- Migration de la base de données depuis GitHub pour une meilleure gestion et sécurité [#291].
+- Ajout d'un diagramme d'architecture au fichier README pour une meilleure compréhension du projet [#286].
+- Suppression des alertes Sentry pour les erreurs d'autorisation non autorisées, réduisant le bruit et se concentrant sur les erreurs critiques [#288].
+- Suppression de colonnes et tables obsolètes de la base de données [#262].
+- Intégration des données Lodam avec Lolfi [#263].
+- Installation de Puppeteer pour les fonctionnalités de génération de documents [#208].
 
 ### Autres changements
-- Ajout de tags utilisateurs sur la notification de changelog. ([#227](https://github.com/betagouv/fondation/issues/227))
-- Correction d'un problème de duplication d'importation. ([#233](https://github.com/betagouv/fondation/issues/233))
-- Correction d'un problème d'affectation automatique excluant une juridiction. ([#235](https://github.com/betagouv/fondation/issues/235))
-- Correction d'un problème d'arrondi dans l'affectation. ([#226](https://github.com/betagouv/fondation/issues/226))
-- Correction d'un problème d'affectation unique par membre et par groupe de grade. ([#223](https://github.com/betagouv/fondation/issues/223))
-- Suppression de Dependabot.
-- Mise à jour des dépendances API et client.
-- Actualisation des instructions Copilot.
+- Ajout de l'internationalisation (i18n) au projet [#303].
+- Correction de problèmes liés aux URL des fichiers de nomination Lolfi [#000].
+- Correction de problèmes de scaling sur la commande one-off de Scalingo [#000].
+- Ajout du titre et du nom d'affichage aux membres [#278].
+- Amélioration de l'interface utilisateur de la gestion des sessions [#000].
