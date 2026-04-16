@@ -7,11 +7,9 @@
 ├── .gitignore
 ├── .npmrc
 ├── .pre-commit-config.yaml
-├── .python-version.bak
+├── .python-version
 ├── LICENSE
 ├── Makefile
-├── Pipfile
-├── Pipfile.lock
 ├── Procfile
 ├── Procfile.dev
 ├── README.md
@@ -29,6 +27,7 @@
 │   │   ├── 2025-05-22 Invitation.md
 │   │   ├── 2025-06-24 Fusion documents personnels et officiels.md
 │   │   ├── 2025-09-23 ProConnect.md
+│   │   ├── 2026-04-14 parefeu ia.md
 │   │   └── IA_portail-rse.jpg
 │   ├── collaboration.md
 │   ├── homologation
@@ -130,6 +129,7 @@
 │   │   │       ├── force_categorie_juridique_sirene.py
 │   │   │       ├── force_code_naf.py
 │   │   │       ├── force_code_pays_etranger_sirene.py
+│   │   │       ├── force_code_postal.py
 │   │   │       └── force_denomination.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
@@ -185,6 +185,7 @@
 │   │   │   ├── 0051_remove_caracteristiquesannuelles_effectif_groupe_permanent.py
 │   │   │   ├── 0052_entreprise_analyses_ia.py
 │   │   │   ├── 0053_alter_entreprise_analyses_ia.py
+│   │   │   ├── 0054_entreprise_code_postal.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -227,6 +228,7 @@
 │   │   │   ├── 0008_habilitation_invitation.py
 │   │   │   ├── 0009_alter_habilitation_invitation.py
 │   │   │   ├── 0010_habilitation_is_conseiller_rse.py
+│   │   │   ├── 0011_remove_habilitation_confirmed_at.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -325,6 +327,8 @@
 │   │   │   ├── 0027_analyseia_nom_fichier.py
 │   │   │   ├── 0028_utilisateur_conseiller_rse.py
 │   │   │   ├── 0029_vsme_premiere_vsme_cree_le.py
+│   │   │   ├── 0030_remove_habilitation_confirmee_le.py
+│   │   │   ├── 0031_entreprise_code_postal.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tests.py
@@ -620,9 +624,6 @@
 │   │   │   └── ESRS_Data_Points_EFRAG.xlsx
 │   │   ├── docs
 │   │   │   └── vsme
-│   │   │       ├── VSME-Digital-Template-1.0.0.xlsx
-│   │   │       ├── VSME-Digital-Template-1.1.1.xlsx
-│   │   │       ├── VSME-Digital-Template-Français.xlsx
 │   │   │       └── vsme-norme-volontaire-pour-pme-non-cotee.pdf
 │   │   ├── fonts
 │   │   │   ├── Marianne
@@ -840,6 +841,8 @@
 │       │   ├── B8.json
 │       │   ├── B9.json
 │       │   ├── C1.json
+│       │   ├── C2.json
+│       │   ├── C3.json
 │       │   ├── C4.json
 │       │   ├── C5.json
 │       │   ├── C6.json
@@ -854,7 +857,6 @@
 │       │   ├── fragments
 │       │   │   └── indicateur.html
 │       │   ├── snippets
-│       │   │   ├── bandeau.html
 │       │   │   ├── entete.html
 │       │   │   ├── menu.html
 │       │   │   └── tuile_exigence_publication.html
@@ -887,9 +889,11 @@
 ├── manage.py -> impact/manage.py
 ├── package-lock.json
 ├── package.json
+├── pyproject.toml
 ├── pytest.ini
 ├── scripts
 │   └── sync_metabase.sh
 ├── servers.conf.erb
-└── start.sh
-133 directories, 761 files
+├── start.sh
+└── uv.lock
+133 directories, 765 files

@@ -1,32 +1,23 @@
-## Changelog : portail-rse (30 derniers jours)
+## Changelog : portail-rse (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions du portail RSE se concentrent sur l'amélioration de l'intégration avec Proconnect, la gestion des utilisateurs et des entreprises, ainsi que sur l'ajout de nouveaux indicateurs et l'amélioration de l'export de données. Des corrections de bugs et des refactorisations ont également été apportées pour améliorer la stabilité et la maintenabilité du code.
+Ce mois-ci, les évolutions du portail RSE se sont concentrées sur l'amélioration de la gestion des entreprises, notamment l'ajout du code postal, la correction de bugs liés à la recherche d'entreprises et la simplification des processus d'habilitation et d'invitation. Des améliorations ont également été apportées à l'export des données VSME et à l'accès aux fonctionnalités pour les entreprises non qualifiées. Enfin, des refactorings techniques ont été effectués pour améliorer la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- **Proconnect :** Amélioration de l'intégration avec Proconnect pour gérer les invitations et l'association des utilisateurs aux entreprises, notamment en empêchant un utilisateur d'être rattaché à une entreprise déjà existante [#767bace](https://github.com/betagouv/portail-rse/commit/767bace).
-- **Gestion des utilisateurs :**
-    - Possibilité pour un utilisateur de changer sa fonction RSE.
-    - Affichage de l'état "Conseiller RSE" dans l'administration et le menu utilisateur.
-    - Amélioration du formulaire de modification de compte pour la compatibilité CORS.
-    - Simplification de la cinématique d'invitation et enregistrement du choix utilisateur (membre ou conseiller).
-- **Entreprises :**
-    - Prise en compte des noms d'entreprises longs dans le tableau des entreprises accompagnées.
-    - Suppression de la colonne "propriétaires" du tableau des entreprises accompagnées.
-    - Correction d'un bug empêchant la session de fonctionner après la suppression d'une entreprise [#c2f7859](https://github.com/betagouv/portail-rse/commit/c2f7859).
-- **Indicateurs VSME :** Ajout de la date du premier indicateur rempli sur un rapport VSME [#6a3d6ff](https://github.com/betagouv/portail-rse/commit/6a3d6ff).
-- **Indicateurs C4 :** Ajout et configuration des indicateurs C4, incluant la gestion de la non-applicabilité et l'export dans les fichiers Excel [#86567b3](https://github.com/betagouv/portail-rse/commit/86567b3), [#7ace305](https://github.com/betagouv/portail-rse/commit/7ace305), [#6e211b6](https://github.com/betagouv/portail-rse/commit/6e211b6), [#4e1753b](https://github.com/betagouv/portail-rse/commit/4e1753b).
-- **Invitations :** Acceptation automatique de l'invitation en arrivant sur l'URL d'invitation [#cce9590](https://github.com/betagouv/portail-rse/commit/cce9590).
+- **Entreprises :** Ajout du code postal du siège social lors de la création d'une entreprise et possibilité de l'exporter vers Metabase. Correction d'un bug empêchant la recherche d'entreprises avec des codes postaux incorrects. Affichage du code postal dans le tableau de bord pour faciliter le diagnostic des problèmes.
+- **Rapports VSME :** Pré-remplissage des rapports VSME à partir de rapports précédents. Amélioration du template Excel pour l'export des indicateurs VSME.
+- **Accès et habilitations :** Simplification du processus d'habilitation des utilisateurs Proconnect. Les utilisateurs Proconnect deviennent automatiquement éditeurs sur une entreprise existante. Suppression du concept de confirmation d'habilitation.
+- **Tableau de bord :** Amélioration de l'accessibilité du résumé du tableau de bord. Restriction de l'accès à la gestion des réglementations du tableau de bord aux entreprises qualifiées.
+- **Ajout d'entreprise :** Possibilité d'ajouter une entreprise sans être connecté.
+- **Analyses IA et indicateurs VSME :** Autorisation d'accès aux analyses IA et à l'espace indicateurs VSME pour les entreprises non qualifiées.
 
 ### Évolutions techniques
-- **Refactoring :** Plusieurs refactorisations ont été effectuées pour simplifier le code, améliorer sa lisibilité et sa maintenabilité, notamment dans les tests et la gestion des variables.
-- **Tests :** Amélioration et suppression de tests devenus non pertinents.
-- **OIDC :** Modifications et corrections liées à l'intégration OIDC, incluant la redirection après connexion et la gestion des tests en CI [#fa1e7b0](https://github.com/betagouv/portail-rse/commit/fa1e7b0), [#d80d175](https://github.com/betagouv/portail-rse/commit/d80d175).
-- **Modèles :** Modifications des modèles utilisateur et entreprise pour supporter les nouvelles fonctionnalités.
+- **Refactoring :** Plusieurs refactorings ont été effectués pour améliorer la structure du code, notamment au niveau de la gestion des propriétaires, des invitations et des acceptations.
+- **Dépendances :** Mise à jour de plusieurs dépendances : `pillow`, `pytest`, `cryptography`, `pygments`, `requests`, `picomatch`, `aiohttp`, `pyjwt`.
+- **Outils :** Remplacement de `pipenv` par `uv` pour la gestion des dépendances.
+- **Documentation :** Complétion du fichier README.
 
 ### Autres changements
-- **Documentation :** Précisions sur les e-mails à utiliser en recette avec ProConnect [#07c02a7](https://github.com/betagouv/portail-rse/commit/07c02a7).
-- **Suppression de code inutile :** Suppression de templates et de code non utilisés.
-- **Script d'export :** Correction et amélioration du script d'export `origine_departement` [#dcc541f](https://github.com/betagouv/portail-rse/commit/dcc541f).
-- **Badge Beta :** Suppression du badge "beta" dans l'en-tête des pages [#6331f43](https://github.com/betagouv/portail-rse/commit/6331f43).
-- **Mise à jour de dépendance :** Mise à jour de la dépendance `joserfc` de 1.4.2 à 1.6.3 [#c5bedde](https://github.com/betagouv/portail-rse/commit/c5bedde).
+- Suppression de fichiers inutiles et de code obsolète.
+- Ajout du fichier `.python-version` pour faciliter le déploiement.
+- Correction de typos et amélioration de la lisibilité du code.
