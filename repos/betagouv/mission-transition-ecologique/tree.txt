@@ -27,6 +27,9 @@
 │   │   ├── .npmrc
 │   │   ├── .stylelintrc.json
 │   │   ├── README.md
+│   │   ├── docs
+│   │   │   ├── iframe.md
+│   │   │   └── style.md
 │   │   ├── eslint.config.mjs
 │   │   ├── iframe_test.html
 │   │   ├── nuxt.config.ts
@@ -410,6 +413,8 @@
 │   │   │   │   │   ├── TEE_project_priority.svg
 │   │   │   │   │   ├── about
 │   │   │   │   │   │   ├── Tee_about_cta.webp
+│   │   │   │   │   │   ├── Tee_about_guillou_marguerite.webp
+│   │   │   │   │   │   ├── Tee_about_houdusse_aurelie.webp
 │   │   │   │   │   │   ├── Tee_about_intro.webp
 │   │   │   │   │   │   ├── Tee_about_other_services_gestesclimat.webp
 │   │   │   │   │   │   ├── Tee_about_other_services_impactco2.webp
@@ -527,6 +532,8 @@
 │   │   │   │   │   │   ├── eclairage-led.webp
 │   │   │   │   │   │   ├── ecoconception.webp
 │   │   │   │   │   │   ├── ecoconduite.webp
+│   │   │   │   │   │   ├── economie-fonctionnalite.webp
+│   │   │   │   │   │   ├── economies-d-eau-production.webp
 │   │   │   │   │   │   ├── economiseurs-eau-sanitaires.webp
 │   │   │   │   │   │   ├── efficacite-energetique-des-procedes-industriels.webp
 │   │   │   │   │   │   ├── energie-hydraulique.webp
@@ -559,6 +566,7 @@
 │   │   │   │   │   │   ├── panneaux-solaires.webp
 │   │   │   │   │   │   ├── parking-a-velos.webp
 │   │   │   │   │   │   ├── plan-*.webp  (7 files)
+│   │   │   │   │   │   ├── pollution-eau.webp
 │   │   │   │   │   │   ├── projet-recherche.webp
 │   │   │   │   │   │   ├── recrutement.webp
 │   │   │   │   │   │   ├── recuperateur-eau-pluie.webp
@@ -800,7 +808,6 @@
 │   │   │       │   └── trackType.ts
 │   │   │       ├── translationTypes.ts
 │   │   │       └── utilityTypes.ts
-│   │   ├── style.md
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.spec.json
@@ -1087,6 +1094,8 @@
 │   │   │   ├── cheque-vert-grand-est.yaml
 │   │   │   ├── climadiag-expert.yaml
 │   │   │   ├── communaute-coq-vert.yaml
+│   │   │   ├── concilier-enjeux-ecologiques-et-conditions-de-travail.yaml
+│   │   │   ├── conseil-mobilite-idf.yaml
 │   │   │   ├── corimer.yaml
 │   │   │   ├── coup-de-pouce-chauffage.yaml
 │   │   │   ├── credit-impot-innovation.yaml
@@ -1097,8 +1106,8 @@
 │   │   │   ├── demi-bac.yaml
 │   │   │   ├── deploiement-flottes-hydrogene.yaml
 │   │   │   ├── deter-decarboner-le-tertiaire.yaml
-│   │   │   ├── diag-*.yaml  (9 files)
-│   │   │   ├── diagnostic-*.yaml  (7 files)
+│   │   │   ├── diag-*.yaml  (10 files)
+│   │   │   ├── diagnostic-*.yaml  (8 files)
 │   │   │   ├── e-trans.yaml
 │   │   │   ├── easy-diag.yaml
 │   │   │   ├── eco-defis-des-artisans-et-des-commercants.yaml
@@ -1106,14 +1115,16 @@
 │   │   │   ├── ecoconception-bzh.yaml
 │   │   │   ├── ecogestes-paca.yaml
 │   │   │   ├── ecolabel.yaml
+│   │   │   ├── ecoprodduire.yaml
 │   │   │   ├── ecoproduction-hdf.yaml
 │   │   │   ├── emergence-et-consolidation-dune-economie-circulaire-en-outre-mer-et-corse.yaml
 │   │   │   ├── engins-moins-polluants.yaml
 │   │   │   ├── entreprises-engagees-nature.yaml
 │   │   │   ├── enviroveille.yaml
-│   │   │   ├── etude-*.yaml  (27 files)
+│   │   │   ├── etude-*.yaml  (29 files)
 │   │   │   ├── etudes-de-faisabilite-de-projet-de-production-delectricite-renouvelable-en-outre-mer-et-corse.yaml
 │   │   │   ├── etudes-et-investissements-structurants-pour-la-gestion-des-dechets-en-outre-mer-et-corse.yaml
+│   │   │   ├── eval-360-pays-de-la-loire.yaml
 │   │   │   ├── evaluation-carbone-lise.yaml
 │   │   │   ├── expert-atlas.yaml
 │   │   │   ├── extreme-defi-mobilite.yaml
@@ -1175,10 +1186,12 @@
 │   │   │   ├── renovation-energetique.yaml
 │   │   │   ├── renovation-petit-tertiaire-prive.yaml
 │   │   │   ├── repar-acteurs.yaml
+│   │   │   ├── ressourc-eau.yaml
 │   │   │   ├── retrofit-electrique.yaml
 │   │   │   ├── sites-touristiques-exemplaires.yaml
 │   │   │   ├── smart-pv.yaml
 │   │   │   ├── sobriete-et-resilience-des-territoires.yaml
+│   │   │   ├── sobriete-hydrique.yaml
 │   │   │   ├── solaire-ready.yaml
 │   │   │   ├── soutien-hebergement-touristique.yaml
 │   │   │   ├── soutien-pv-grand-est.yaml
@@ -1189,6 +1202,7 @@
 │   │   │   ├── trophees-crisalide-eco-activites.yaml
 │   │   │   ├── vehicule-lourd-energies-propres.yaml
 │   │   │   ├── vehicules-lourds-electriques.yaml
+│   │   │   ├── veille-artisanat.yaml
 │   │   │   ├── visite-energie-cci.yaml
 │   │   │   ├── visite-energie-cma.yaml
 │   │   │   └── visite-energie.yaml
@@ -1442,4 +1456,4 @@
 ├── scalingo.json
 ├── tsconfig.base.json
 └── vitest.workspace.ts
-274 directories, 1289 files
+275 directories, 1306 files

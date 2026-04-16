@@ -1,16 +1,17 @@
-## Changelog : mission-transition-ecologique (30 derniers jours)
+## Changelog : mission-transition-ecologique (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à l'application mission-transition-ecologique. Les principales évolutions concernent l'ajout de données brutes de l'ADEME, l'amélioration de la validation des liens et une migration vers une nouvelle configuration ESLint. Des mises à jour régulières des données des programmes et projets sont également incluses.
+Ce mois-ci, les améliorations se concentrent sur la stabilité des tests automatisés, l'ajout de témoignages sur la page "À propos" pour renforcer la confiance des utilisateurs, et l'intégration d'un script pour afficher le profil SIRET. Des mises à jour régulières des données des programmes et projets sont également incluses.
 
 ### Évolutions fonctionnelles
-- Ajout des données brutes des programmes ADEME, permettant d'enrichir l'offre d'aides disponibles. [#2438](https://github.com/betagouv/mission-transition-ecologique/issues/2438)
-- Amélioration de la validation des liens avec mise en cache et classification améliorée du statut des liens. [#2518](https://github.com/betagouv/mission-transition-ecologique/issues/2518)
-- Publication d'une démo en iframe pour faciliter l'intégration et la présentation de l'application. [#2515](https://github.com/betagouv/mission-transition-ecologique/issues/2515)
+- Ajout de témoignages sur la page "À propos" pour illustrer l'impact de l'application. [#2572](https://github.com/betagouv/mission-transition-ecologique/issues/2572)
+- Intégration d'un script permettant d'afficher le profil SIRET, améliorant l'expérience utilisateur pour la recherche d'informations spécifiques. [#2571](https://github.com/betagouv/mission-transition-ecologique/issues/2571)
 
 ### Évolutions techniques
-- Migration vers une nouvelle configuration ESLint (flat config) et mise à jour des paquets de dépendances associés. [#2517](https://github.com/betagouv/mission-transition-ecologique/issues/2517)
-- Mise à jour des paquets Sentry vers la version 10.27.0 pour bénéficier des dernières corrections et améliorations. [#2331](https://github.com/betagouv/mission-transition-ecologique/issues/2331)
+- Fiabilisation des tests E2E (End-to-End) avec des données de test générées dynamiquement et des mesures anti-flakiness pour améliorer la robustesse de la suite de tests. [#2590](https://github.com/betagouv/mission-transition-ecologique/issues/2590)
+- Mise à jour de la commande Playwright pour utiliser `npx` pour l'exécution, assurant une meilleure compatibilité et gestion des dépendances.
+- Amélioration de la configuration de Playwright et de la gestion des réponses des formulaires.
+- Mise à jour de sécurité. [#2551](https://github.com/betagouv/mission-transition-ecologique/issues/2551)
 
 ### Autres changements
-- Mises à jour régulières des données des programmes et projets pour assurer leur fraîcheur et leur exactitude. [#2503](https://github.com/betagouv/mission-transition-ecologique/issues/2503), [#2506](https://github.com/betagouv/mission-transition-ecologique/issues/2506), [#2509](https://github.com/betagouv/mission-transition-ecologique/issues/2509), [#2510](https://github.com/betagouv/mission-transition-ecologique/issues/2510), [#2512](https://github.com/betagouv/mission-transition-ecologique/issues/2512), [#2513](https://github.com/betagouv/mission-transition-ecologique/issues/2513), [#2526](https://github.com/betagouv/mission-transition-ecologique/issues/2526), [#2531](https://github.com/betagouv/mission-transition-ecologique/issues/2531)
+- Mises à jour régulières des données des programmes et projets. [#2582](https://github.com/betagouv/mission-transition-ecologique/issues/2582), [#2560](https://github.com/betagouv/mission-transition-ecologique/issues/2560), [#2558](https://github.com/betagouv/mission-transition-ecologique/issues/2558), [#2559](https://github.com/betagouv/mission-transition-ecologique/issues/2559), [#2549](https://github.com/betagouv/mission-transition-ecologique/issues/2549), [#2553](https://github.com/betagouv/mission-transition-ecologique/issues/2553), [#2547](https://github.com/betagouv/mission-transition-ecologique/issues/2547), [#2548](https://github.com/betagouv/mission-transition-ecologique/issues/2548)
