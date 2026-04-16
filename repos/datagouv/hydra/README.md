@@ -202,9 +202,12 @@ The API serves the following endpoints:
 - `GET` on `/api/checks/latest?url={url}&resource_id={resource_id}` to get the latest check for a given URL and/or `resource_id`
 - `GET` on `/api/checks/all?url={url}&resource_id={resource_id}` to get all checks for a given URL and/or `resource_id`
 - `GET` on `/api/checks/aggregate?group_by={column}&created_at={date}` to get checks occurrences grouped by a `column` for a specific `date`
+- `GET` on `/api/checks/stats` to get aggregates for the latest HTTP check per eligible resource (ok / error / timeout counts and HTTP status code distribution)
 
 *Related to resources:*
 - `GET` on `/api/resources/{resource_id}` to get a resource in the DB "catalog" table from its `resource_id`
+- `GET` on `/api/resources/stats` to get aggregate statistics about resources (counts and breakdown by catalog `status`)
+- `GET` on `/api/resources/stats/cors` to get CORS coverage statistics for external resources (URLs not on data.gouv.fr)
 - `POST` on `/api/resources` to receive a resource creation event from a source. It will create a new resource in the DB "catalog" table and mark it as priority for next crawling
 - `PUT` on `/api/resources/{resource_id}` to update a resource in the DB "catalog" table
 - `DELETE` on `/api/resources/{resource_id}` to delete a resource in the DB "catalog" table
@@ -223,7 +226,6 @@ The API serves the following endpoints:
 *Related to some status and health check:*
 - `GET` on `/api/status/crawler` to get the crawling status
 - `GET` on `/api/status/worker` to get the worker status
-- `GET` on `/api/stats` to get the crawling stats
 - `GET` on `/api/health` to get the API version number and environment
 
 You may want to use a helper such as [Bruno](https://www.usebruno.com/) to handle API calls, in which case all the endpoints are ready to use [here](https://github.com/datagouv/api-calls).
@@ -349,6 +351,38 @@ $ curl -s "http://localhost:8000/api/checks/aggregate?group_by=domain&created_at
 ]
 ```
 
+#### Get resources stats
+
+```bash
+$ curl -s "http://localhost:8000/api/resources/stats" | json_pp
+{
+   "total_count" : 100,
+   "deleted_count" : 3,
+   "statuses_count" : {
+      "null" : 85,
+      "BACKOFF" : 2,
+      "CRAWLING_URL" : 1,
+      ...
+   }
+}
+```
+
+#### Get resources CORS stats (external URLs)
+
+```bash
+$ curl -s "http://localhost:8000/api/resources/stats/cors" | json_pp
+{
+   "external_resources_with_cors_data" : 42,
+   "external_resources_without_cors_data" : 55,
+   "external_resources_cors_coverage_percentage" : 43.3,
+   "external_resources_allow_origin_distribution" : [
+      { "access_status" : "Accessible (Wildcard *)", "unique_resources_count" : 15, "percentage" : 35.71 },
+      { "access_status" : "Accessible (Specific Whitelist)", "unique_resources_count" : 20, "percentage" : 47.62 },
+      ...
+   ]
+}
+```
+
 #### Adding a resource exception
 
 ```bash
@@ -396,22 +430,17 @@ $ curl  -X DELETE http://localhost:8000/api/resources-exceptions/f868cca6-8da1-4
 ```bash
 $ curl -s "http://localhost:8000/api/status/crawler" | json_pp
 {
-   "fresh_checks_percentage" : 0.4,
-   "pending_checks" : 142153,
-   "total" : 142687,
-   "fresh_checks" : 534,
-   "checks_percentage" : 0.4,
-   "resources_statuses_count": {
-      "null": 195339,
-      "BACKOFF": 0,
-      "CRAWLING_URL": 0,
-      "TO_ANALYSE_RESOURCE": 1,
-      "ANALYSING_RESOURCE": 0,
-      "TO_ANALYSE_CSV": 0,
-      "ANALYSING_CSV": 0,
-      "INSERTING_IN_DB": 0,
-      "CONVERTING_TO_PARQUET": 0
-  }
+   "checks" : {
+      "in_progress_count" : 5,
+      "in_progress_percentage" : 4.76,
+      "needs_check_count" : 60,
+      "needs_check_percentage" : 63.16,
+      "up_to_date_check_count" : 35,
+      "up_to_date_check_percentage" : 36.84
+   },
+   "resources" : {
+      "total_eligible_count" : 95
+   }
 }
 ```
 
@@ -428,10 +457,10 @@ $ curl -s "http://localhost:8000/api/status/worker" | json_pp
 }
 ```
 
-#### Get crawling stats
+#### Get checks stats (latest check per eligible resource)
 
 ```bash
-$ curl -s "http://localhost:8000/api/stats" | json_pp
+$ curl -s "http://localhost:8000/api/checks/stats" | json_pp
 {
    "status" : [
       {
@@ -554,10 +583,16 @@ pre-commit install
 ```
 Once this is done, code formatting and linting, as well as import sorting, will be automatically checked before each commit.
 
-If you cannot use pre-commit, it is necessary to format, lint, and sort imports with [Ruff](https://docs.astral.sh/ruff/) before committing:
+If you cannot use pre-commit, it is necessary to format, lint, and sort imports with [Ruff](https://astral.sh/ruff/) for linting and formatting, and [ty](https://docs.astral.sh/ty/) for type checking. **Either running these commands manually or installing the pre-commit hook is required before submitting contributions.**
 ```bash
-uv run ruff check --fix . && uv run ruff format .
+# Lint (including import sorting) and format code
+uv run ruff check --fix && uv run ruff format
+
+# Type check (ty)
+uv run ty check
 ```
+
+By default `ty check` checks the project root; pass paths to check specific files or directories. See the [ty CLI reference](https://docs.astral.sh/ty/reference/cli/) for options.
 
 ### 🏷️ Releases and versioning
 
