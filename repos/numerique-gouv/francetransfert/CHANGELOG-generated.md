@@ -1,24 +1,22 @@
-## Changelog : francetransfert (30 derniers jours, au 9 avril 2026)
+## Changelog : francetransfert (30 derniers jours, au 9 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de FranceTransfert se concentrent sur l'amélioration de la sécurité, la gestion des fichiers et la stabilité de la plateforme. Des ajustements ont été apportés aux configurations de production, notamment au niveau du HPA (Horizontal Pod Autoscaler) et des limites de taille des fichiers, ainsi que des corrections concernant la gestion des types de fichiers et la réinitialisation des codes.
+Cette période a été marquée par des améliorations de la sécurité, notamment en ajoutant des types de fichiers à la liste noire pour la protection contre les menaces. Des ajustements ont également été apportés à la gestion des envois et téléchargements, incluant des limites et des vérifications de dates, ainsi que des optimisations de l'infrastructure pour la production.
 
 ### Évolutions fonctionnelles
-- Ajout d'une liste noire pour le type de fichier HTML afin d'améliorer la sécurité. [#6](https://github.com/numerique-gouv/francetransfert/issues/6)
-- Limitation de la taille des fichiers pouvant être envoyés par email.
-- Amélioration de la gestion des dates de validité des fichiers et des emails associés.
-- Possibilité de renvoyer le code de vérification.
-- Réactivation des paramètres de restauration dans la configuration.
+- Ajout de types de fichiers HTML et HTM à la liste noire pour renforcer la sécurité des transferts [#6](https://github.com/numerique-gouv/francetransfert/issues/6).
+- Limitation du nombre d'emails envoyés pour certains processus (mails de relance, téléchargements).
+- Amélioration de la gestion des dates de validité des liens de téléchargement.
+- Possibilité de restaurer les paramètres de restauration dans le fichier `values.ft.yaml`.
 
 ### Évolutions techniques
-- Mise à jour de l'image vers la version 4.0.13.
-- Ajustement des paramètres du HPA pour l'environnement de production afin d'optimiser la scalabilité.
-- Modifications de la configuration Kubernetes (décommentaires, mises à jour de valeurs).
-- Mise à jour de la librairie de logging (logback).
-- Corrections et ajustements divers dans la configuration de la plateforme.
+- Ajustement des paramètres HPA (Horizontal Pod Autoscaler) pour optimiser la gestion des ressources en production.
+- Mise à jour des images Docker vers la version 4.0.13.
+- Mises à jour de dépendances internes (Spring, Logback, POM).
+- Amélioration de la gestion des jobs de verrouillage/séquestre.
+- Préparation d'une nouvelle version du service.
 
 ### Autres changements
-- Mise à jour de la version du projet.
-- Ajout des types de fichiers html et htm aux secrets.
-- Renommage d'un job.
-- Modification du job de verrouillage/séquestration.
+- Mise à jour de la clé de chiffrement.
+- Corrections et améliorations diverses du code.
+- Mise à jour de la version du service.
