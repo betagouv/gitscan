@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees",
   "name": "depenses-eclairees",
-  "description": "Ce projet vise à éclaircir les dépenses publiques en extrayant et en analysant des données à partir de divers documents. Il utilise l'OCR et des modèles de langage pour structurer et rendre accessibles ces informations. L'objectif est de favoriser la transparence et la compréhension des finances publiques.",
+  "description": "Ce projet vise à éclaircir les dépenses publiques en extrayant et en analysant des informations à partir de divers documents financiers. Il utilise des techniques d'OCR et de traitement du langage naturel pour structurer les données et les rendre plus accessibles. L'objectif est de favoriser la transparence et le contrôle des dépenses publiques.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -20,26 +20,37 @@
     "Associations"
   ],
   "dependencies": [
-    "Poetry",
     "Django",
-    "djangorestframework",
-    "celery",
+    "Poetry",
     "psycopg",
-    "PyCryptodome",
+    "python-dotenv",
+    "openpyxl",
+    "docx2txt",
+    "Pillow",
     "PyMuPDF",
     "python-magic",
     "tesserocr",
     "openai",
-    "mozilla-django-oidc",
+    "xlrd",
+    "schwifty",
+    "celery",
+    "django-environ",
     "whitenoise",
-    "gunicorn"
+    "django-celery-results",
+    "gunicorn",
+    "django-dsfr",
+    "mozilla-django-oidc",
+    "django-lasuite",
+    "django-storages"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Django",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Frontend React",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -47,7 +58,7 @@
       "session"
     ],
     "providers": [
-      "OIDC"
+      "Google"
     ]
   },
   "tests": [
@@ -57,7 +68,7 @@
   "workflows": [
     "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-02T18:53:27+02:00",
+  "lastActivity": "2026-04-15T18:30:13+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -74,6 +85,6 @@
     "Bases de données SQL",
     "Sécurité & Auth",
     "Intelligence Artificielle & NLP",
-    "Subventions & Finances publiques"
+    "Gestion métier générale"
   ]
 }
