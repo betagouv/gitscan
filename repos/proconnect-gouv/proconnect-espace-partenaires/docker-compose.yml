@@ -1,7 +1,7 @@
 # Services for local development
 services:
   postgresql:
-    image: postgres:16.6
+    image: postgres:17.9
     environment:
       - POSTGRES_DB=proconnect_ep
       - POSTGRES_USER=usr
@@ -41,7 +41,7 @@ services:
       - /data/configdb
 
   pcdbapi:
-    image: ghcr.io/proconnect-gouv/federation/api-partner@sha256:0a9155cc22e69842ef7b94699f45dfb3fc93375e8b3f4da4a64b685a1a62a8c0 # latest
+    image: ghcr.io/proconnect-gouv/federation/api-partner@sha256:30d4542292f85e8088b40686bebb38d04ec064de390558e782684c4c65831b76 # latest
     environment:
       - MONGODB_URL=mongodb://mongo:27017/core-fca-low?authSource=core-fca-low&directConnection=true
       - MONGODB_USERNAME=fc

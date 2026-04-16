@@ -52,7 +52,8 @@
 │       │   ├── healthz.feature
 │       │   ├── home.feature
 │       │   ├── login.feature
-│       │   └── new_service_provider.feature
+│       │   ├── new_service_provider.feature
+│       │   └── search.feature
 │       └── playwright.config.ts
 ├── eslint.config.mjs
 ├── instrumentation.ts
@@ -219,6 +220,7 @@
 │               ├── technical-error.svg
 │               └── warning.svg
 ├── scripts
+│   ├── generate-search-index.ts
 │   └── prebuild.ts
 ├── sentry.client.config.ts
 ├── sentry.server.config.ts
@@ -265,6 +267,7 @@
 │   │   │   └── verify-request.tsx
 │   │   ├── docs
 │   │   │   ├── fournisseur-identite
+│   │   │   │   ├── authentification-multifacteur.md
 │   │   │   │   ├── certificats_fi.md
 │   │   │   │   ├── changement-agentconnect-proconnect-fi.md
 │   │   │   │   ├── configuration.md
@@ -274,9 +277,12 @@
 │   │   │   │   │   ├── keycloak.md
 │   │   │   │   │   └── lemon-ldap.md
 │   │   │   │   ├── index.mdx
+│   │   │   │   ├── niveaux-assurance-eidas.md
 │   │   │   │   ├── plateformes_fi.md
 │   │   │   │   ├── prerequis-fi.md
 │   │   │   │   ├── referentiel-IP.md
+│   │   │   │   ├── resolution_discovery_url.md
+│   │   │   │   ├── table_matieres.md
 │   │   │   │   ├── test-configuration-fi.md
 │   │   │   │   └── troubleshooting-fi.md
 │   │   │   ├── fournisseur-service
@@ -302,6 +308,7 @@
 │   │   │   │   ├── recommandation_parcours.md
 │   │   │   │   ├── recommandation_parcours_certification_dirigeant.md
 │   │   │   │   ├── reconciliation-sub.png
+│   │   │   │   ├── referentiel-IP.md
 │   │   │   │   ├── refresh-token.md
 │   │   │   │   ├── resource_server.md
 │   │   │   │   ├── scope-claims.md
@@ -318,10 +325,11 @@
 │   │   │       └── valeur_ac_domain.md
 │   │   ├── healthz.tsx
 │   │   ├── index.tsx
-│   │   └── login.tsx
+│   │   ├── login.tsx
+│   │   └── search.tsx
 │   ├── styles
 │   │   └── global.css
 │   └── types
 │       └── next-auth.d.ts
 └── tsconfig.json
-58 directories, 268 files
+58 directories, 276 files
