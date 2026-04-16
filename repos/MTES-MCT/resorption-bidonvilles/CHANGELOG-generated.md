@@ -1,43 +1,45 @@
-## Changelog : resorption-bidonvilles (30 derniers jours)
+## Changelog : resorption-bidonvilles (30 derniers jours, au 9 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de la gestion des utilisateurs et de l'expérience utilisateur globale de la plateforme. Des corrections de bugs ont été apportées, notamment concernant l'affichage des données, la gestion des erreurs et la validation des entrées. Des améliorations de l'interface utilisateur ont été implémentées, en particulier pour l'alignement avec le Design System de la République Française (DSFR).
+Cette version apporte des améliorations significatives à l'export des données, notamment en termes de filtrage et de gestion des informations financières. Des corrections ont été apportées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des optimisations de code et de l'interface utilisateur. L'authentification et la gestion des permissions ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug d'affichage des lieux [#1436](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1436).
-- Simplification de la condition d'affichage d'un élément.
-- Correction de l'affichage du bouton "Modifier les options".
-- Passage à 6 sites affichés par page.
-- Amélioration de l'accessibilité de la liste des sites paginée.
-- Ajout d'un onglet de taux par département si plusieurs départements sont représentés.
-- Gestion des options de permissions dans la fiche utilisateur.
-- Ajout d'une route pour la liste des logs de connexion.
-- Possibilité de filtrer les valeurs `undefined`/`null` pour l'export des données.
-- Amélioration de la gestion des erreurs et des messages d'alerte.
-- Correction de l'alerte "Empty label text".
-- Amélioration de l'icône et de l'alignement des champs de formulaire.
-- Ajout d'icônes pour le mot de passe.
-- Correction de l'affichage de l'ID d'action.
-- Ajout de la gestion des erreurs SQL pour sécuriser les requêtes.
+- Ajout d'un filtre pour l'export des actions, permettant de sélectionner uniquement les actions financées par la DIHAL. [#1451](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1451)
+- Amélioration de l'export des actions : prise en compte du delta pour les mises à jour du nombre d'habitants et affichage du taux de mise à jour des habitants. [#1439](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1439) et [#1437](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1437)
+- Ajout d'une popup d'export des actions avec un taux calculé. [#1452](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1452)
+- Ajout de statistiques de sites financés par la DIHAL. [#1449](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1449)
+- Amélioration de la gestion des erreurs et affichage d'une notification informative en cas de données introuvables. [#1443](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1443)
+- Possibilité d'accorder l'accès à l'export des actions aux opérateurs et correspondants sur leur territoire. [#1442](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1442)
+- Correction de l'expiration du jeton d'activation (passée de 10 minutes à 168 heures). [#1457](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1457)
 
 ### Évolutions techniques
-- Refactoring et nettoyage des logs de debug.
-- Correction de fautes de frappe.
-- Simplification du code et regroupement de la gestion de copie de parcelle.
-- DSFRisation de plusieurs composants (boutons, tags, etc.).
-- Ajout de tests unitaires.
-- Création d'une migration pour ajouter le champ de l'ID d'action calculé.
-- Transmission de l'ID depuis la base de données avec backup calculé.
-- Utilisation de `lodash` pour certaines opérations.
-- Amélioration du système de copie.
-- Utilisation de `Set` pour optimiser la vérification d'existence.
-- Utilisation d'un objet `Error` pour une meilleure gestion des erreurs.
-- Utilisation de `formatTimestamp()` pour uniformiser le formatage des dates.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Utilisation de `Number.parseInt` et `Number.parseFloat` à la place de `parseInt` et `parseFloat`.
+- Mise à jour des dépendances et correction des conflits.
+- Amélioration de la gestion des erreurs et des validations.
+- Utilisation de la forme mutualisée pour les seeders. [#1456](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1456)
+- Sécurisation et transmission des données pour le header des actions. [#1451](https://github.com/MTES-MCT/resorption-bidonvilles/issues/1451)
+- DSFRisation de l'affichage de l'erreur d'export.
+- Correction du calcul du taux d'actions financées par la DIHAL ayant une MAJ < 3 mois.
+- Amélioration du score du code (SonarQube).
+- Correction de l'affichage du département dans l'onglet 'tous'.
+- Ajout de lodash pour faciliter certaines opérations.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Suppression de commentaires inutiles.
-- Correction de la mention de désabonnement aux courriels automatiques.
-- Mise à jour des dépendances.
-- Suppression de fichiers inutilisés.
-- Correction de problèmes de style et d'accessibilité.
+- Amélioration de la documentation.
+- Correction de divers bugs et problèmes mineurs.
+- Suppression de logs inutiles.
+- Mise à jour des images et des fichiers de configuration.
+- Correction de l'import des fichiers JSON pour les seeders.
+- Correction de la gestion du click sur certains éléments.
+- Correction de variables et de noms de fichiers pour plus de clarté.
+- Amélioration de la hauteur de la popup.
+- Renommage de fichiers images.
+- Correction de la gestion des dates de mise à jour de la population.
+- Ajout de badges de statistiques.
+- Correction de l'affichage des badges de statistiques.
+- Amélioration de l'affichage des erreurs.
+- Ajout de tests unitaires.
+- Correction de l'envoi de mails.
+- Correction de la validation des emails.
+- Ajout de commentaires et de documentation.

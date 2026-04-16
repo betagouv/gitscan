@@ -147,6 +147,8 @@
 │   │   │   │   │   └── item_1.jpg
 │   │   │   │   ├── 2.4.0
 │   │   │   │   │   └── item_1.png
+│   │   │   │   ├── 2.49.1
+│   │   │   │   │   └── item_1.jpg
 │   │   │   │   └── 2.5.0
 │   │   │   │       └── item_1.png
 │   │   │   ├── chartes_engagement
@@ -711,6 +713,11 @@
 │   │   │   │   ├── 30000101-02-add-shantytown-resorption-access-feature.js
 │   │   │   │   ├── 30000103-01-clean-user-deactivation-fields.js
 │   │   │   │   ├── 30000104-01-create-table-signin_logs.js
+│   │   │   │   ├── 30000105-01-create-index-shantytowns-updated_at.js
+│   │   │   │   ├── 30000106-01-add-action-export-permission-to-operators-and-correspondents.js
+│   │   │   │   ├── 30000106-02-create-permission-option-access_action_finances.js
+│   │   │   │   ├── 30000106-03-refresh-user_actual_permissions-for-access_action_finances.js
+│   │   │   │   ├── 30000107-01-alter-table-shantytowns-add-population_updated_at-col.js
 │   │   │   │   └── common
 │   │   │   │       ├── create_covid_comment_permissions.js
 │   │   │   │       ├── create_plan_finances_permissions.js
@@ -737,6 +744,8 @@
 │   │   │   │       │   ├── 02_support_actions.js
 │   │   │   │       │   ├── 03_link_to_organizations.js
 │   │   │   │       │   └── 04_support_multiple_dpt_by_epci.js
+│   │   │   │       ├── refreshView.js
+│   │   │   │       ├── refreshViewCascade.js
 │   │   │   │       ├── shantytown_watchers
 │   │   │   │       │   └── 01_create_view_shantytown_watchers.js
 │   │   │   │       ├── user_actual_permissions
@@ -751,7 +760,8 @@
 │   │   │   │       │   ├── 08_support_actions.js
 │   │   │   │       │   ├── 09_support_new_views.js
 │   │   │   │       │   ├── 10_reset.js
-│   │   │   │       │   └── 11_support_intervention_areas.js
+│   │   │   │       │   ├── 11_support_intervention_areas.js
+│   │   │   │       │   └── 12_support_access_action_finances.js
 │   │   │   │       ├── user_permissions_by_option
 │   │   │   │       │   ├── 01_original_view.js
 │   │   │   │       │   ├── 02_support_create_shantytown_option.js
@@ -804,6 +814,7 @@
 │   │   │   │   ├── 000000-changelog-2.34.4.js
 │   │   │   │   ├── 000000-changelog-2.35.0.js
 │   │   │   │   ├── 000000-changelog-2.4.0.js
+│   │   │   │   ├── 000000-changelog-2.49.1.js
 │   │   │   │   ├── 000000-changelog-2.5.0.js
 │   │   │   │   ├── 000000-changelogs.js.sample
 │   │   │   │   ├── 000001-users.js
@@ -819,6 +830,7 @@
 │   │   │   │   │   └── config.js
 │   │   │   │   ├── data
 │   │   │   │   │   └── changelogs
+│   │   │   │   │       ├── 2.49.1.json
 │   │   │   │   │       ├── README.md
 │   │   │   │   │       └── template.json
 │   │   │   │   ├── helpers
@@ -1005,22 +1017,14 @@
 │   │   │   │   │   ├── list
 │   │   │   │   │   │   ├── organization.list.route.ts
 │   │   │   │   │   │   └── organization.list.ts
-│   │   │   │   │   ├── search
-│   │   │   │   │   │   ├── organization.search.route.ts
-│   │   │   │   │   │   ├── organization.search.ts
-│   │   │   │   │   │   └── organization.search.validator.ts
-│   │   │   │   │   ├── searchAssociations
-│   │   │   │   │   │   ├── organization.searchAssociations.route.ts
-│   │   │   │   │   │   ├── organization.searchAssociations.ts
-│   │   │   │   │   │   └── organization.searchAssociations.validator.ts
-│   │   │   │   │   ├── searchPrivateOrganizations
-│   │   │   │   │   │   ├── organization.searchPrivateOrganizations.route.ts
-│   │   │   │   │   │   ├── organization.searchPrivateOrganizations.ts
-│   │   │   │   │   │   └── organization.searchPrivateOrganizations.validator.ts
-│   │   │   │   │   └── searchTerritorialCollectivities
-│   │   │   │   │       ├── organization.searchTerritorialCollectivities.route.ts
-│   │   │   │   │       ├── organization.searchTerritorialCollectivities.ts
-│   │   │   │   │       └── organization.searchTerritorialCollectivities.validator.ts
+│   │   │   │   │   ├── listall
+│   │   │   │   │   │   ├── organization.list.route.ts
+│   │   │   │   │   │   ├── organization.list.ts
+│   │   │   │   │   │   └── organization.list.validator.ts
+│   │   │   │   │   └── search
+│   │   │   │   │       ├── organization.search.route.ts
+│   │   │   │   │       ├── organization.search.ts
+│   │   │   │   │       └── organization.search.validator.ts
 │   │   │   │   ├── organizationCategory
 │   │   │   │   │   ├── listOrganizationTypes
 │   │   │   │   │   │   ├── organizationCategory.listOrganizationTypes.route.ts
@@ -1218,6 +1222,10 @@
 │   │   │   │   │       ├── statistics.getTownReport.route.ts
 │   │   │   │   │       ├── statistics.getTownReport.ts
 │   │   │   │   │       └── statistics.getTownReport.validator.ts
+│   │   │   │   ├── territory
+│   │   │   │   │   └── get
+│   │   │   │   │       ├── territory.get.route.ts
+│   │   │   │   │       └── territory.get.ts
 │   │   │   │   ├── user
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── user.id.validator.ts
@@ -1369,6 +1377,9 @@
 │   │   │   │   │   └── user_*.text  (40 files)
 │   │   │   │   ├── generateTrackingUTM.ts
 │   │   │   │   ├── mails.ts
+│   │   │   │   ├── preview
+│   │   │   │   │   └── activity_summary.variables.example.json
+│   │   │   │   ├── preview.ts
 │   │   │   │   └── src
 │   │   │   │       ├── action_alert_postshot.mjml
 │   │   │   │       ├── action_alert_preshot.mjml
@@ -2007,6 +2018,8 @@
 │   │   │   │   │   └── scheduler.ts
 │   │   │   │   ├── action
 │   │   │   │   │   ├── ActionInput.d.ts
+│   │   │   │   │   ├── _common
+│   │   │   │   │   │   └── hasMetricValues.ts
 │   │   │   │   │   ├── actionService.ts
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── createComment.sendMailNotifications.ts
@@ -2116,18 +2129,16 @@
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── findJusticeReadersByLocation
 │   │   │   │   │   │   └── findJusticeReadersByLocation.ts
+│   │   │   │   │   ├── listAll
+│   │   │   │   │   │   ├── listAll.integration.spec.ts
+│   │   │   │   │   │   ├── listAll.spec.ts
+│   │   │   │   │   │   └── listAll.ts
 │   │   │   │   │   ├── organizationService.ts
 │   │   │   │   │   ├── search
 │   │   │   │   │   │   └── search.ts
-│   │   │   │   │   ├── searchActionOperators
-│   │   │   │   │   │   ├── searchActionOperators.spec.ts
-│   │   │   │   │   │   └── searchActionOperators.ts
-│   │   │   │   │   ├── searchAssociations
-│   │   │   │   │   │   └── searchAssociations.ts
-│   │   │   │   │   ├── searchPrivateOrganizations
-│   │   │   │   │   │   └── searchPrivateOrganizations.ts
-│   │   │   │   │   └── searchTerritorialCollectivities
-│   │   │   │   │       └── searchTerritorialCollectivities.ts
+│   │   │   │   │   └── searchActionOperators
+│   │   │   │   │       ├── searchActionOperators.spec.ts
+│   │   │   │   │       └── searchActionOperators.ts
 │   │   │   │   ├── permission
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── listByRoles.spec.ts
@@ -2267,6 +2278,12 @@
 │   │   │   │   ├── signinRateLimit
 │   │   │   │   │   ├── checkRateLimit.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── territory
+│   │   │   │   │   ├── departements.listAll.spec.ts
+│   │   │   │   │   ├── departements.listAll.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── regions.listAll.spec.ts
+│   │   │   │   │   └── regions.listAll.ts
 │   │   │   │   ├── user
 │   │   │   │   │   ├── anonymizationRequest.ts
 │   │   │   │   │   ├── anonymizeUser.ts
@@ -2342,6 +2359,8 @@
 │   │   │   │   ├── sequelize.ts
 │   │   │   │   └── sequelizeTemplate.ts
 │   │   │   ├── globalFixtures.ts
+│   │   │   ├── mails
+│   │   │   │   └── testActivitySummary.ts
 │   │   │   ├── rewiremock.ts
 │   │   │   └── utils
 │   │   │       ├── action.ts
@@ -2364,6 +2383,7 @@
 │   │   │       ├── shantytown.ts
 │   │   │       ├── shantytownCommentInput.ts
 │   │   │       ├── shantytownWatcher.ts
+│   │   │       ├── territories.ts
 │   │   │       ├── user.ts
 │   │   │       └── userSimplified.ts
 │   │   ├── tsconfig.json
@@ -2403,10 +2423,12 @@
 │   │       │   ├── NationalMetricsEvolution.d.ts
 │   │       │   ├── Organization.d.ts
 │   │       │   ├── OrganizationCategory.d.ts
+│   │       │   ├── OrganizationTypeFull.d.ts
 │   │       │   ├── OwnerType.d.ts
 │   │       │   ├── ParcelOwner.d.ts
 │   │       │   ├── Permission.d.ts
 │   │       │   ├── PreparatoryPhaseTowardResorption.d.ts
+│   │       │   ├── PublicEstablishment.d.ts
 │   │       │   ├── QuestionEnriched.d.ts
 │   │       │   ├── QuestionGeneric.d.ts
 │   │       │   ├── QuestionRaw.d.ts
@@ -2592,11 +2614,11 @@
 │       │   │   │   ├── Input
 │       │   │   │   │   ├── AsyncSelect.vue
 │       │   │   │   │   ├── Autocomplete.vue
-│       │   │   │   │   ├── BasicAutocomplete.vue
 │       │   │   │   │   ├── CheckableGroup.vue
 │       │   │   │   │   ├── Checkbox.vue
 │       │   │   │   │   ├── CheckboxUi.vue
 │       │   │   │   │   ├── DatepickerInput.vue
+│       │   │   │   │   ├── DsfrComplexAutocomplete.vue
 │       │   │   │   │   ├── Input.vue
 │       │   │   │   │   ├── InputFiles.vue
 │       │   │   │   │   ├── InputGroup.stories.js
@@ -2659,6 +2681,7 @@
 │       │   │   │               ├── RO.svg
 │       │   │   │               └── UK.svg
 │       │   │   ├── composables
+│       │   │   │   ├── useAutocomplete.js
 │       │   │   │   └── useFocusTrap.js
 │       │   │   ├── css
 │       │   │   │   └── styles.css
@@ -2758,6 +2781,7 @@
 │       │   │   │   ├── signin.api.js
 │       │   │   │   ├── signinLogs.api.js
 │       │   │   │   ├── statistics.api.js
+│       │   │   │   ├── territory.js
 │       │   │   │   ├── towns.api.js
 │       │   │   │   └── users.api.js
 │       │   │   ├── assets
@@ -3589,7 +3613,6 @@
 │       │   │   │   │   ├── FormUtilisateur.schema.js
 │       │   │   │   │   ├── FormUtilisateur.vue
 │       │   │   │   │   └── inputs
-│       │   │   │   │       ├── FormUtilisateurInputAssociation.vue
 │       │   │   │   │       ├── FormUtilisateurInputEmail.vue
 │       │   │   │   │       ├── FormUtilisateurInputEmailConfirmation.vue
 │       │   │   │   │       ├── FormUtilisateurInputFirstName.vue
@@ -3600,7 +3623,9 @@
 │       │   │   │   │       ├── FormUtilisateurInputOrganizationAdministration.vue
 │       │   │   │   │       ├── FormUtilisateurInputOrganizationCategory.vue
 │       │   │   │   │       ├── FormUtilisateurInputOrganizationOther.vue
-│       │   │   │   │       ├── FormUtilisateurInputOrganizationPrivate.vue
+│       │   │   │   │       ├── FormUtilisateurInputOrganizationOtherAcronyme.vue
+│       │   │   │   │       ├── FormUtilisateurInputOrganizationOtherTerritory.vue
+│       │   │   │   │       ├── FormUtilisateurInputOrganizationOtherTerritoryType.vue
 │       │   │   │   │       ├── FormUtilisateurInputOrganizationPublic.vue
 │       │   │   │   │       ├── FormUtilisateurInputOrganizationType.vue
 │       │   │   │   │       ├── FormUtilisateurInputPhone.vue
@@ -3609,7 +3634,7 @@
 │       │   │   │   │       ├── FormUtilisateurInputReferralOther.vue
 │       │   │   │   │       ├── FormUtilisateurInputReferralWordOfMouth.vue
 │       │   │   │   │       ├── FormUtilisateurInputRequestType.vue
-│       │   │   │   │       └── FormUtilisateurInputTerritorialCollectivity.vue
+│       │   │   │   │       └── FormUtilisateurInputStructure.vue
 │       │   │   │   ├── Graphs
 │       │   │   │   │   └── GraphBase.vue
 │       │   │   │   ├── HistoriqueActivites
@@ -3656,8 +3681,6 @@
 │       │   │   │   │   └── InputActionFinances.vue
 │       │   │   │   ├── InputAddress
 │       │   │   │   │   └── InputAddress.vue
-│       │   │   │   ├── InputCollectiviteTerritoriale
-│       │   │   │   │   └── InputCollectiviteTerritoriale.vue
 │       │   │   │   ├── InputCommunauteSearch
 │       │   │   │   │   └── InputCommunauteSearch.vue
 │       │   │   │   ├── InputCoordinates
@@ -3702,7 +3725,6 @@
 │       │   │   │   │   ├── ListeDemandeAcces.vue
 │       │   │   │   │   ├── ListeDemandeAccesFiltres.vue
 │       │   │   │   │   ├── ListeDemandeAccesHeader.vue
-│       │   │   │   │   ├── ListeDemandeAccesLigne.vue
 │       │   │   │   │   ├── ListeDemandeAccesTableau.vue
 │       │   │   │   │   └── ListeDemandeAccesVide.vue
 │       │   │   │   ├── ListeDesActions
@@ -3753,6 +3775,8 @@
 │       │   │   │   │   ├── ModaleChangerRoleUser.vue
 │       │   │   │   │   ├── ModaleChangerRoleUserIdentiteEtRole.vue
 │       │   │   │   │   └── ModaleChangerRoleUserListeRole.vue
+│       │   │   │   ├── ModaleConfirmationSuppressionFinancements
+│       │   │   │   │   └── ModaleConfirmationSuppressionFinancements.vue
 │       │   │   │   ├── ModaleConnaitreProprietaire
 │       │   │   │   │   └── ModaleConnaitreProprietaire.vue
 │       │   │   │   ├── ModaleListeAcces
@@ -3959,6 +3983,8 @@
 │       │   │   │   ├── formatUserName.js
 │       │   │   │   ├── generateSquare.js
 │       │   │   │   ├── getAbsoluteOffsetTop.js
+│       │   │   │   ├── getBadgeLabel.js
+│       │   │   │   ├── getBadgeVariant.js
 │       │   │   │   ├── getDefaultLocationFilter.js
 │       │   │   │   ├── getFileFromPasteEvent.js
 │       │   │   │   ├── getHiddenHeight.js
@@ -3984,6 +4010,7 @@
 │       │   │   │   ├── marqueurSiteDefault.js
 │       │   │   │   ├── marqueurSiteEau.js
 │       │   │   │   ├── marqueurSiteStats.js
+│       │   │   │   ├── normalizeShantytownIds.js
 │       │   │   │   ├── normalizeTownName.js
 │       │   │   │   ├── organization_categories.js
 │       │   │   │   ├── police_statuses.js
@@ -4182,4 +4209,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-732 directories, 3802 files
+735 directories, 3826 files

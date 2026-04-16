@@ -1,6 +1,6 @@
 {
   "name": "@resorptionbidonvilles/api",
-  "version": "2.47.2",
+  "version": "2.50.0",
   "description": "API d'Action Bidonvilles",
   "main": "server/index.ts",
   "repository": "git+https://github.com/MTES-MCT/action-bidonvilles.git",
@@ -42,6 +42,7 @@
     "jsdom": "^22.0.0",
     "json2csv": "^5.0.6",
     "jsonwebtoken": "^9.0.0",
+    "liquidjs": "^10.24.0",
     "lodash": "^4.17.23",
     "mime-types": "^2.1.35",
     "mixin-deep": "^2.0.1",
@@ -132,7 +133,7 @@
     "db:create": "sequelize db:migrate && sequelize db:seed:all",
     "e2e:db:create": "sequelize --env test db:drop && sequelize --env test db:create && sequelize --env test db:migrate",
     "dev": "ts-node-dev ./server/index.ts --watch server/**/*.d.ts",
-    "build": "rm -rf dist && tsc -p tsconfig.production.json && tsc-alias && cp -r server/mails/dist dist/api/server/mails && cp -r assets dist/api && cp .sequelizerc dist/api && cp -r db/data dist/api/db/data",
+    "build": "rm -rf dist && tsc -p tsconfig.production.json && tsc-alias && cp -r server/mails/dist dist/api/server/mails && cp -r assets dist/api && cp .sequelizerc dist/api && cp -r db/data dist/api/db/data && cp -r db/seeders/data dist/api/db/seeders/data",
     "serve": "nodemon server/index.js",
     "start": "node dist/api/server/index.js",
     "test": "yarn mocha -r ts-node/register --require ./test/bootstrap.ts --bail",
@@ -143,6 +144,8 @@
     "test:integration:all": "yarn mocha -r ts-node/register --require ./test/globalFixtures.ts --require ./test/bootstrap.int.ts './server/**/*.int.spec.ts' --bail --exit",
     "lint": "eslint --max-warnings=0 --ext .ts",
     "lint:all": "eslint --no-error-on-unmatched-pattern --max-warnings=0 --ext .ts server",
-    "emails:build": "ts-node server/mails/build.ts"
+    "emails:build": "ts-node server/mails/build.ts",
+    "emails:preview": "ts-node server/mails/preview.ts",
+    "test:activity-summary": "ts-node test/mails/testActivitySummary.ts"
   }
 }
