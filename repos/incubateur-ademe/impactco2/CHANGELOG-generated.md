@@ -1,24 +1,28 @@
-## Changelog : impactco2 (30 derniers jours)
+## Changelog : impactco2 (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application impactco2 a bénéficié d'améliorations significatives, notamment des corrections de bugs pour une meilleure stabilité, des mises à jour de contenu (FAQ, exemples de détecteur, liens) et des ajustements pour l'intégration via iframes. L'objectif est d'améliorer l'expérience utilisateur et de garantir la fiabilité des informations fournies.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de l'expérience utilisateur, notamment au niveau des étiquettes d'information et de l'intégration de contenu externe via des iframes. De nouvelles statistiques ont été ajoutées et des ajustements ont été faits pour améliorer la gestion du temps d'engagement dans les simulateurs.
 
 ### Évolutions fonctionnelles
-- Mise à jour des exemples du détecteur d'impact carbone [#862](https://github.com/incubateur-ademe/impactco2/issues/862).
-- Ajout d'une nouvelle FAQ pour répondre aux questions fréquentes des utilisateurs [#859](https://github.com/incubateur-ademe/impactco2/issues/859).
-- Mise à jour du lien vers l'étiquette énergétique [#863](https://github.com/incubateur-ademe/impactco2/issues/863).
-- Correction d'un bug d'affichage lors de la saisie de nombres [#861](https://github.com/incubateur-ademe/impactco2/issues/861).
-- Correction d'une faute de frappe dans la section habillement.
-- Amélioration de la suggestion pour la FAQ sur le transport.
+- Correction de l'adresse du Bioparc.
+- Amélioration de l'accessibilité des étiquettes d'information ([#876](https://github.com/incubateur-ademe/impactco2/issues/876)).
+- Ajustement de la hauteur des boutons sur les étiquettes animées de livraison.
+- Modification de la formulation des mentions légales sur les étiquettes.
+- Ajout de nouvelles statistiques ([#873](https://github.com/incubateur-ademe/impactco2/issues/873)).
+- Gestion du temps d'engagement en fonction du simulateur utilisé.
+- Mise en cache des données de la FAQ ([#871](https://github.com/incubateur-ademe/impactco2/issues/871)).
+- Correction du zoom sur les logos du footer.
 
 ### Évolutions techniques
-- Correction de problèmes d'initialisation du détecteur, notamment pour éviter les initialisations multiples [#869](https://github.com/incubateur-ademe/impactco2/issues/869).
-- Correction d'une erreur d'expression régulière pour la détection de nombres.
-- Amélioration de la gestion des tests d'intégration via iframes, notamment en attendant que le réseau soit inactif et en corrigeant des erreurs de configuration (corepack).
-- Suppression de la source "negaoctet" en raison de problèmes potentiels [#868](https://github.com/incubateur-ademe/impactco2/issues/868).
-- Utilisation de l'attribut `data-name` pour le script dans les iframes [#867](https://github.com/incubateur-ademe/impactco2/issues/867).
-- Mise à jour des mappings de statistiques mensuelles et de la configuration de la baseline du navigateur.
+- Optimisation de l'appel à Google Maps pour qu'il soit effectué côté serveur ([#874](https://github.com/incubateur-ademe/impactco2/issues/874)).
+- Suppression du rendu côté serveur (SSR) pour la page Notion.
+- Ajout de gestion d'erreur (Error Boundary) aux composants Notion.
+- Suppression d'une vérification inutile.
+- Mise à jour de la librairie npm ([#875](https://github.com/incubateur-ademe/impactco2/issues/875)).
+- Mise à jour de la librairie iframe resizer.
 
 ### Autres changements
-- Correction d'une faute de frappe.
-- Correction d'un test iframe défaillant pour la Gaïeté Lyrique.
+- Ajout de tests pour le Bioparc.
+- Correction de problèmes de rendu excessif dans l'adresse.
+- Ajustement de la largeur maximale des étiquettes grises ([#877](https://github.com/incubateur-ademe/impactco2/issues/877)).
+- Amélioration de la formulation d'une petite note d'avertissement sur les étiquettes.
