@@ -1,15 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 15 mai 2026)
+## Changelog : upptime (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce changelog couvre une période de 30 jours d'activité sur le projet upptime. L'activité principale concerne la surveillance continue de l'uptime de divers services et APIs, avec des mises à jour régulières du statut et des graphiques associés. Les services surveillés incluent API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord et La bonne alternance.
+Ce changelog couvre les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent les mises à jour régulières du statut des services surveillés par le bot Upptime. Ces mises à jour indiquent si les différents services (API Apprentissage, Percona, SENTRY, etc.) sont opérationnels et fournissent des informations sur les temps de réponse.  Aucun changement majeur de fonctionnalité ou d'architecture n'a été effectué durant cette période.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée durant cette période. Les changements se concentrent sur la surveillance et le reporting de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été implémentée durant cette période. Le projet se concentre sur la surveillance continue et la mise à jour du statut des services.
 
 ### Évolutions techniques
-Aucune évolution technique n'a été identifiée durant cette période. L'activité se concentre sur la surveillance et le reporting de l'état des services.
+Aucune évolution technique significative n'a été apportée au projet durant cette période.
 
 ### Autres changements
-- Mise à jour régulière des graphiques de statut.
-- Mise à jour régulière du résumé de l'état des services dans le README.
-- Mises à jour continues du statut des différents services surveillés (API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance) avec indication de l'uptime et du temps de réponse.
+- Mises à jour régulières du fichier README pour refléter le statut actuel des services surveillés.
+- Mises à jour régulières du fichier de résumé du statut des services.
+- Mises à jour régulières des graphiques de performance.
