@@ -2,7 +2,7 @@
 name = "acceslibre"
 version = "0.1.0"
 description = ""
-requires-python = "==3.13.*"
+requires-python = "==3.14.*"
 
 dependencies = [
     "coreapi",
@@ -38,7 +38,7 @@ dependencies = [
     "gunicorn",
     "dj-static",
     "image",
-    "redis===7.1.1",
+    "redis===7.3.0",
     "async_timeout",
     "sib-api-v3-sdk",
     "celery",
@@ -63,6 +63,8 @@ dependencies = [
     "django-summernote",
     "pre-commit>=4.5.1",
     "djangorestframework-xml>=2.0.0",
+    "weasyprint>=68.1",
+    "qrcode[pil]>=8.2",
 ]
 
 [dependency-groups]
@@ -73,7 +75,7 @@ dev = [
     "pytest-mock",
     "splinter[django]",
     "pytest-circleci-parallelized",
-    "django-debug-toolbar==6.2.0",
+    "django-debug-toolbar==6.3.0",
     "pytest-xdist",
     "django-rosetta",
     "djlint",

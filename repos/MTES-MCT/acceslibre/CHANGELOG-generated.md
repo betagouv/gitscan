@@ -1,31 +1,23 @@
-## Changelog : acceslibre (30 derniers jours)
+## Changelog : acceslibre (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface utilisateur, notamment au niveau de la gestion des détails des ERP et des contributions. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité de la plateforme. Des efforts ont également été déployés pour moderniser la base de code et améliorer les performances, notamment en supprimant des dépendances obsolètes comme Bootstrap. Enfin, de nouvelles fonctionnalités ont été ajoutées, comme la prise en charge des fichiers XML et la possibilité de revendiquer un ERP.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'accès aux données via l'API, l'implémentation de nouvelles fonctionnalités pour la gestion des ERP (Établissements Recevant du Public) et l'optimisation de l'infrastructure. Des corrections de bugs et des améliorations de la sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Possibilité de revendiquer un ERP [#2490](https://github.com/MTES-MCT/acceslibre/issues/2490).
-- Ajout de la prise en charge des fichiers XML pour l'import de données [#2505](https://github.com/MTES-MCT/acceslibre/issues/2505).
-- Amélioration de l'interface pour l'ajout d'images depuis la page de détails des ERP [#2463](https://github.com/MTES-MCT/acceslibre/issues/2463).
-- Correction de l'affichage des valeurs booléennes lors de l'import des données cinéma [#2478](https://github.com/MTES-MCT/acceslibre/issues/2478).
-- Affichage de l'adresse courte, de la latitude et de la longitude [#2535](https://github.com/MTES-MCT/acceslibre/issues/2535).
-- Correction d'un bug empêchant l'affichage correct du champ d'accessibilité "accueil_chambre_nombre_accessibles" [#2534](https://github.com/MTES-MCT/acceslibre/issues/2534).
-- Correction du texte du lien du site web complet [#2523](https://github.com/MTES-MCT/acceslibre/issues/2523).
+- Possibilité de demander l'API widget par `asp_id` [#2580](https://github.com/MTES-MCT/acceslibre/issues/2580).
+- Amélioration de l'affichage des détails des ERP avec une implémentation en mode "feature flag" [#2575](https://github.com/MTES-MCT/acceslibre/issues/2575) et [#2546](https://github.com/MTES-MCT/acceslibre/issues/2546).
+- Restriction de la modification du type d'utilisateur aux propriétaires de l'ERP [#2576](https://github.com/MTES-MCT/acceslibre/issues/2576).
+- Utilisation de tuiles IGN pour la cartographie, avec repli sur Carto si l'établissement n'est pas en France métropolitaine [#2566](https://github.com/MTES-MCT/acceslibre/issues/2566).
+- Export quotidien des données au format XML [#2536](https://github.com/MTES-MCT/acceslibre/issues/2536).
 
 ### Évolutions techniques
-- Suppression de Bootstrap et refactorisation du CSS pour une meilleure maintenabilité [#2479](https://github.com/MTES-MCT/acceslibre/issues/2479) et [#2439](https://github.com/MTES-MCT/acceslibre/issues/2439).
-- Refactorisation des widgets [#2484](https://github.com/MTES-MCT/acceslibre/issues/2484).
-- Mise à jour de nombreuses dépendances : Django-environ, gunicorn, ruff, eslint, leaflet.locatecontrol, phonenumbers, pnpm, @sentry/browser, redis, deepl, outscraper, sentry-sdk, npm, pandas, parsel, remixicon, ipython.
-- Correction d'un problème de permissions dans l'administration [#2520](https://github.com/MTES-MCT/acceslibre/issues/2520) et [#2509](https://github.com/MTES-MCT/acceslibre/issues/2509).
-- Amélioration de la gestion des erreurs pour l'email et le site web [#2508](https://github.com/MTES-MCT/acceslibre/issues/2508).
-- Ajout d'une révision, changement du type d'utilisateur et enregistrement d'une entrée de journal lors de la revendication d'un ERP [#2501](https://github.com/MTES-MCT/acceslibre/issues/2501).
+- Implémentation d'un switch Django-waffle pour activer/désactiver la fonctionnalité RPA (Robotic Process Automation) [#2578](https://github.com/MTES-MCT/acceslibre/issues/2578).
+- Correction d'une erreur dans la génération de l'URL RPA [#2583](https://github.com/MTES-MCT/acceslibre/issues/2583).
+- Amélioration de la gestion des connexions à la base de données pour éviter les fuites [#2579](https://github.com/MTES-MCT/acceslibre/issues/2579).
+- Mise à niveau de Python et PostgreSQL [#2547](https://github.com/MTES-MCT/acceslibre/issues/2547).
 
 ### Autres changements
-- Suppression de `package-lock.json`.
-- Correction de fautes de frappe dans les notifications de contribution [#2502](https://github.com/MTES-MCT/acceslibre/issues/2502).
-- Amélioration du RGAA et ajustements CSS pour la page ERP [#2487](https://github.com/MTES-MCT/acceslibre/issues/2487).
-- Correction de problèmes d'overflow et d'espacement dans Panoramax [#2507](https://github.com/MTES-MCT/acceslibre/issues/2507).
-- Correction de la couleur de fond des notifications de contribution [#2485](https://github.com/MTES-MCT/acceslibre/issues/2485).
-- Correction d'un bug lié à l'import des données "accueil_personnels" [#2483](https://github.com/MTES-MCT/acceslibre/issues/2483).
-- Suppression de npm et remplacement par yarn [#2521](https://github.com/MTES-MCT/acceslibre/issues/2521).
-- Remplacement de `@import` par `@use` dans le code Sass [#2522](https://github.com/MTES-MCT/acceslibre/issues/2522).
+- Correction de bugs mineurs et améliorations de la robustesse du code.
+- Mise à jour de la documentation.
+- Corrections concernant l'affichage "à propos" [#2577](https://github.com/MTES-MCT/acceslibre/issues/2577).
+- Export du code du widget [#2565](https://github.com/MTES-MCT/acceslibre/issues/2565).
