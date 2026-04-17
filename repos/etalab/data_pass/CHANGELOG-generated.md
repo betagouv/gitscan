@@ -1,30 +1,29 @@
-## Changelog : data_pass (30 derniers jours)
+## Changelog : data_pass (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de data_pass se concentrent sur l'amélioration de l'administration des types d'habilitations, l'ajout de nouvelles intégrations API (APIPFC, GUNenv, Inser Jeunes Sup), et l'amélioration de la gestion des habilitations FranceConnect. Des corrections de bugs et des améliorations de la sécurité ont également été apportées.
+Ce mois-ci, les évolutions de data_pass se concentrent sur l'amélioration de la sécurité (bannissement d'utilisateurs), l'optimisation des performances (optimisation des tests CI/CD et des requêtes en base de données), et l'enrichissement des fonctionnalités pour les utilisateurs et les administrateurs (gestion des webhooks, édition de contenu, gestion des Data Providers). Des corrections de bugs et des mises à jour de dépendances ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface d'administration pour la gestion des types d'habilitation (création, modification, suppression) [#1422](https://github.com/etalab/data_pass/pull/1422), [#1410](https://github.com/etalab/data_pass/pull/1410).
-- Possibilité de choisir une habilitation FranceConnect existante lors de la liaison avec une demande APIPFC [#1407](https://github.com/etalab/data_pass/pull/1407).
-- Ajout de la page Mentions Légales et de la Politique de Confidentialité [#1371](https://github.com/etalab/data_pass/pull/1371), [#1374](https://github.com/etalab/data_pass/pull/1374).
-- Amélioration de l'affichage du motif d'annulation d'une réouverture d'habilitation [#1381](https://github.com/etalab/data_pass/pull/1381).
-- Ajout de nouvelles API : GUNenv et Inser Jeunes Sup [#1417](https://github.com/etalab/data_pass/pull/1417), [#1370](https://github.com/etalab/data_pass/pull/1370).
-- Possibilité de gérer les abonnements HubEE existants [#1372](https://github.com/etalab/data_pass/pull/1372).
-- Ajout d'un badge "nouveau message" pour les demandes instructeur [#1411](https://github.com/etalab/data_pass/pull/1411).
+- **Bannissement d'utilisateurs :** Ajout d'une fonctionnalité permettant aux administrateurs de bannir des utilisateurs, bloquant ainsi leur accès au système et aux sessions actives. [#1508](https://github.com/etalab/data_pass/pull/1508)
+- **Amélioration de l'expérience utilisateur API Entreprise :** Suppression du scope `beneficiaires_effectifs_inpi` pour le formulaire API Entreprise. [#1482](https://github.com/etalab/data_pass/pull/1482)
+- **Gestion des webhooks :** Ajout d'une page de documentation pour les webhooks, accessible aux développeurs. [#1502](https://github.com/etalab/data_pass/pull/1502)
+- **Edition de contenu :** Possibilité pour les administrateurs d'éditer le contenu éditorial des types d'habilitation. [#1460](https://github.com/etalab/data_pass/pull/1460)
+- **Gestion des Data Providers :** Ajout de la création et de la gestion des Data Providers depuis l'interface d'administration. [#1455](https://github.com/etalab/data_pass/pull/1455)
+- **Amélioration des scopes Extenso :** Activation des scopes `men_statut_boursier` et `men_echelon_bourse` pour l'API Particulier. [#1473](https://github.com/etalab/data_pass/pull/1473)
+- **Formulaire Extenso :** Ajout du bloc "modalités" au formulaire Extenso et amélioration de sa description. [#1467](https://github.com/etalab/data_pass/pull/1467)
+- **Notifications :** Correction d'un bug empêchant les instructeurs de recevoir les notifications de messages. [#1471](https://github.com/etalab/data_pass/pull/1471)
+- **Retrait des droits :** Correction du retrait de tous les droits d'un utilisateur. [#1494](https://github.com/etalab/data_pass/pull/1494)
 
 ### Évolutions techniques
-- Mise en place de Papertrail pour le versioning des types d'habilitation dynamiques [#1440](https://github.com/etalab/data_pass/pull/1440).
-- Refactoring de l'interface d'administration pour améliorer la lisibilité et l'accessibilité [#1436](https://github.com/etalab/data_pass/pull/1436), [#1421](https://github.com/etalab/data_pass/pull/1421).
-- Amélioration de la gestion des scopes pour les types d'habilitation dynamiques [#1425](https://github.com/etalab/data_pass/pull/1425).
-- Mise en place d'un système de feature flags pour l'APIPFC [#1427](https://github.com/etalab/data_pass/pull/1427).
-- Suppression de code obsolète et nettoyage de la configuration [#1424](https://github.com/etalab/data_pass/pull/1424), [#1400](https://github.com/etalab/data_pass/pull/1397).
-- Mise à jour des dépendances (RSpec, Rubocop, Rails Pulse, Docker) [#1450](https://github.com/etalab/data_pass/pull/1450), [#1451](https://github.com/etalab/data_pass/pull/1451), [#1449](https://github.com/etalab/data_pass/pull/1449), [#1452](https://github.com/etalab/data_pass/pull/1452), [#1428](https://github.com/etalab/data_pass/pull/1428), [#1367](https://github.com/etalab/data_pass/pull/1368).
-- Ajout de tests pour améliorer la couverture et la stabilité du code [#1375](https://github.com/etalab/data_pass/pull/1375).
-- Correction de tests flaky [#1404](https://github.com/etalab/data_pass/pull/1404).
+- **Optimisation CI/CD :** Amélioration significative de la performance des tests CI/CD grâce à la parallélisation des tests Cucumber et RSpec, et à l'optimisation de l'utilisation de Docker. [#1503](https://github.com/etalab/data_pass/pull/1503), [#1498](https://github.com/etalab/data_pass/pull/1498)
+- **Optimisation des requêtes :** Correction de requêtes N+1 sur le dashboard demandeur, améliorant ainsi les performances. [#1499](https://github.com/etalab/data_pass/pull/1499)
+- **Refactoring :** Remplacement de `before_destroy` par un interactor pour la suppression d'un `HabilitationType`. [#1462](https://github.com/etalab/data_pass/pull/1462)
+- **Synchronisation du cache :** Synchronisation du cache `StaticApplicationRecord` entre les workers Puma via Redis pour éviter les incohérences. [#1463](https://github.com/etalab/data_pass/pull/1463)
+- **Mise à jour Rails :** Mise à jour de Rails vers la version 8.1.2.1. [#1461](https://github.com/etalab/data_pass/pull/1461)
+- **Utilisation d'ID numériques :** Utilisation des ID numériques des autorisations dans les routes pour une meilleure performance. [#1498](https://github.com/etalab/data_pass/pull/1498)
 
 ### Autres changements
-- Ajout d'un email de support [#1420](https://github.com/etalab/data_pass/pull/1420).
-- Correction de typos et amélioration de la documentation [#1445](https://github.com/etalab/data_pass/pull/1445), [#1442](https://github.com/etalab/data_pass/pull/1442), [#1444](https://github.com/etalab/data_pass/pull/1444).
-- Rotation annuelle du token webhook API Entreprise [#1439](https://github.com/etalab/data_pass/pull/1439).
-- Suppression de la plateforme "Aides Etat" et du provider "DGE" [#1403](https://github.com/etalab/data_pass/pull/1403).
-- Mise à jour des numéros de téléphone pour les contacts techniques des API [#1380](https://github.com/etalab/data_pass/pull/1380).
+- **Documentation :** Mise à jour de la documentation des rôles. [#1507](https://github.com/etalab/data_pass/pull/1507)
+- **Correction de bug :** Correction d'une boucle de redirection sur les dates d'homologation identiques. [#1469](https://github.com/etalab/data_pass/pull/1469)
+- **Amélioration des tests :** Ajout de tests pour les cas d'erreur et de non-régression.
+- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (action_text-trix, rubocop, webmock, etc.).

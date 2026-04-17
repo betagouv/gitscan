@@ -9,7 +9,6 @@
 │       ├── https-deploy-production.yaml
 │       ├── https-deploy-sandbox.yaml
 │       ├── https-deploy-staging.yaml
-│       ├── reusable-integration-tests.yaml
 │       ├── test.env
 │       └── test.yaml
 ├── .gitignore
@@ -17,25 +16,34 @@
 ├── .rubocop.yml
 ├── .ruby-version
 ├── .simplecov
+├── CLAUDE.md
+├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
+├── Makefile
+├── Procfile.local
+├── README.md
+├── Rakefile
 ├── app
 │   ├── assets
 │   │   ├── fonts
-│   │   │   ├── Marianne-Bold_Italic.woff
-│   │   │   ├── Marianne-Bold_Italic.woff2
 │   │   │   ├── Marianne-Bold.woff
 │   │   │   ├── Marianne-Bold.woff2
-│   │   │   ├── Marianne-Light_Italic.woff
-│   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   ├── Marianne-Bold_Italic.woff2
 │   │   │   ├── Marianne-Light.woff
 │   │   │   ├── Marianne-Light.woff2
-│   │   │   ├── Marianne-Medium_Italic.woff
-│   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   ├── Marianne-Light_Italic.woff2
 │   │   │   ├── Marianne-Medium.woff
 │   │   │   ├── Marianne-Medium.woff2
-│   │   │   ├── Marianne-Regular_Italic.woff
-│   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   ├── Marianne-Medium_Italic.woff
+│   │   │   ├── Marianne-Medium_Italic.woff2
 │   │   │   ├── Marianne-Regular.woff
 │   │   │   ├── Marianne-Regular.woff2
+│   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   ├── Marianne-Regular_Italic.woff2
 │   │   │   ├── Spectral-ExtraBold.woff
 │   │   │   ├── Spectral-ExtraBold.woff2
 │   │   │   ├── Spectral-Regular.woff
@@ -799,12 +807,12 @@
 │   │   └── stylesheets
 │   │       ├── application.css
 │   │       ├── components
-│   │       │   ├── authorization_header.css
-│   │       │   ├── authorization_request_form.css
-│   │       │   ├── authorization_row.css
 │   │       │   ├── authorization-request-events.css
 │   │       │   ├── authorization-requests-legal.css
 │   │       │   ├── authorization-requests-scopes.css
+│   │       │   ├── authorization_header.css
+│   │       │   ├── authorization_request_form.css
+│   │       │   ├── authorization_row.css
 │   │       │   ├── basic_card.css
 │   │       │   ├── blockquote.css
 │   │       │   ├── btn-authorization-header-actions.css
@@ -816,9 +824,9 @@
 │   │       │   ├── intro_stepper.css
 │   │       │   ├── loader.css
 │   │       │   ├── malware_badge.css
-│   │       │   ├── messages_templates.css
 │   │       │   ├── messages-bubble.css
 │   │       │   ├── messages.css
+│   │       │   ├── messages_templates.css
 │   │       │   ├── prefilled_banner.css
 │   │       │   ├── pro_connect.css
 │   │       │   ├── red_callout.css
@@ -842,6 +850,7 @@
 │   │           ├── formulaires-index.css
 │   │           ├── instruction-habilitations-index.css
 │   │           ├── instruction-habilitations-show.css
+│   │           ├── markdown-content.css
 │   │           └── profile.css
 │   ├── bridges
 │   │   ├── api_captchetat_bridge.rb
@@ -882,6 +891,10 @@
 │   │   │   │   ├── blocks_selection_component.rb
 │   │   │   │   ├── contact_types_selector_component.html.erb
 │   │   │   │   ├── contact_types_selector_component.rb
+│   │   │   │   ├── data_provider_form_component.html.erb
+│   │   │   │   ├── data_provider_form_component.rb
+│   │   │   │   ├── data_provider_selector_component.html.erb
+│   │   │   │   ├── data_provider_selector_component.rb
 │   │   │   │   ├── links_form_section_component.html.erb
 │   │   │   │   ├── links_form_section_component.rb
 │   │   │   │   ├── name_with_uid_preview_component.html.erb
@@ -916,6 +929,8 @@
 │   │           └── transcription_component.rb
 │   ├── controllers
 │   │   ├── admin
+│   │   │   ├── bans_controller.rb
+│   │   │   ├── data_providers_controller.rb
 │   │   │   ├── habilitation_types_controller.rb
 │   │   │   ├── impersonate_controller.rb
 │   │   │   ├── mark_user_organization_as_verified_controller.rb
@@ -1076,16 +1091,25 @@
 │   ├── interactors
 │   │   ├── add_user_to_organization.rb
 │   │   ├── admin
+│   │   │   ├── capture_user_ban_attributes.rb
+│   │   │   ├── check_data_provider_deletable.rb
+│   │   │   ├── check_habilitation_type_deletable.rb
 │   │   │   ├── create_impersonation.rb
+│   │   │   ├── destroy_data_provider_record.rb
 │   │   │   ├── destroy_habilitation_type_record.rb
+│   │   │   ├── find_user_by_email.rb
 │   │   │   ├── find_user_for_impersonation.rb
 │   │   │   ├── finish_impersonation_record.rb
+│   │   │   ├── mark_user_as_banned.rb
+│   │   │   ├── mark_user_as_unbanned.rb
 │   │   │   ├── notify_admins_for_roles_update.rb
+│   │   │   ├── persist_new_data_provider.rb
 │   │   │   ├── persist_new_habilitation_type.rb
 │   │   │   ├── remove_habilitation_type_roles.rb
 │   │   │   ├── track_event.rb
 │   │   │   ├── track_impersonation_stop.rb
 │   │   │   ├── track_organization_user_verification_event.rb
+│   │   │   ├── update_data_provider_attributes.rb
 │   │   │   ├── update_habilitation_type_attributes.rb
 │   │   │   ├── update_organization_user_verification.rb
 │   │   │   └── update_user_roles_attribute.rb
@@ -1093,7 +1117,7 @@
 │   │   ├── application_interactor.rb
 │   │   ├── assign_default_data_to_authorization_request.rb
 │   │   ├── assign_documents_to_instructor_draft_request.rb
-│   │   ├── assign_france_connect_defaults_on_reopening.rb
+│   │   ├── assign_france_connect_defaults.rb
 │   │   ├── assign_latest_production_data_in_authorization_request.rb
 │   │   ├── assign_params_to_authorization_request.rb
 │   │   ├── build_instructor_draft_request_models.rb
@@ -1104,17 +1128,17 @@
 │   │   │   ├── mon_compte_pro_payloads.rb
 │   │   │   └── pro_connect_payloads.rb
 │   │   ├── copy_documents_from_instructor_draft.rb
+│   │   ├── create_authorization.rb
 │   │   ├── create_authorization_request_changelog.rb
 │   │   ├── create_authorization_request_event_model.rb
 │   │   ├── create_authorization_request_from_instructor_draft.rb
 │   │   ├── create_authorization_request_model.rb
 │   │   ├── create_authorization_request_reopening_cancellation.rb
 │   │   ├── create_authorization_request_transfer_model.rb
-│   │   ├── create_authorization.rb
 │   │   ├── create_denial_of_authorization_model.rb
 │   │   ├── create_instructor_modification_request_model.rb
-│   │   ├── create_linked_france_connect_authorization_event.rb
 │   │   ├── create_linked_france_connect_authorization.rb
+│   │   ├── create_linked_france_connect_authorization_event.rb
 │   │   ├── create_message_model.rb
 │   │   ├── create_revocation_of_authorization_model.rb
 │   │   ├── datagouv
@@ -1137,8 +1161,8 @@
 │   │   │   ├── regenerate_webhook_secret.rb
 │   │   │   ├── replay_webhook_attempt.rb
 │   │   │   ├── save_webhook_attempt.rb
-│   │   │   ├── test_webhook_if_url_changed.rb
 │   │   │   ├── test_webhook.rb
+│   │   │   ├── test_webhook_if_url_changed.rb
 │   │   │   └── update_webhook_model.rb
 │   │   ├── ensure_instructor_draft_not_claimed.rb
 │   │   ├── ensure_user_is_organization_member.rb
@@ -1205,7 +1229,8 @@
 │   │   │   ├── stats_controller.js
 │   │   │   ├── sticky_bar_controller.js
 │   │   │   ├── toggle_element_display_based_on_checkbox_controller.js
-│   │   │   └── toggle_element_display_based_on_select_options_controller.js
+│   │   │   ├── toggle_element_display_based_on_select_options_controller.js
+│   │   │   └── toggle_section_controller.js
 │   │   └── stats
 │   │       ├── chart_manager.js
 │   │       ├── data_manager.js
@@ -1250,6 +1275,7 @@
 │   │   ├── message_mailer.rb
 │   │   └── webhook_mailer.rb
 │   ├── migration
+│   │   ├── README.md
 │   │   ├── alter_sequence_ids.sh
 │   │   ├── build_instructor_migration.rb.do_not_run
 │   │   ├── clear_bucket.rb
@@ -1261,8 +1287,8 @@
 │   │   ├── create_authorization_from_snapshot.rb
 │   │   ├── create_diff_from_event.rb
 │   │   ├── create_sandbox_oauth_app.rb
-│   │   ├── deploy_single_import.sh
 │   │   ├── deploy.sh
+│   │   ├── deploy_single_import.sh
 │   │   ├── dumps
 │   │   │   └── .gitkeep
 │   │   ├── export_hubee.sh
@@ -1274,8 +1300,8 @@
 │   │   │   ├── authorization_requests
 │   │   │   │   ├── api_*.rb  (44 files)
 │   │   │   │   ├── base.rb
-│   │   │   │   ├── dgfip_production_attributes.rb
 │   │   │   │   ├── dgfip_production.rb
+│   │   │   │   ├── dgfip_production_attributes.rb
 │   │   │   │   ├── dgfip_sandbox_attributes.rb
 │   │   │   │   ├── france_connect_attributes.rb
 │   │   │   │   ├── hubee_cert_dc_attributes.rb
@@ -1296,12 +1322,12 @@
 │   │   ├── merge_authorization_requests.rb
 │   │   ├── post_migration_inspector.rb
 │   │   ├── post_run.sh
-│   │   ├── README.md
 │   │   ├── run.sh
 │   │   └── v1_copied_enrollments_exporter.rb
 │   ├── models
 │   │   ├── admin_event.rb
 │   │   ├── application_record.rb
+│   │   ├── authorization.rb
 │   │   ├── authorization_definition
 │   │   │   ├── scope.rb
 │   │   │   └── stage.rb
@@ -1318,6 +1344,7 @@
 │   │   │   ├── pro_connect_identity_provider.rb
 │   │   │   ├── pro_connect_service_provider.rb
 │   │   │   └── services_cisirh.rb
+│   │   ├── authorization_request.rb
 │   │   ├── authorization_request_changelog.rb
 │   │   ├── authorization_request_event.rb
 │   │   ├── authorization_request_form
@@ -1325,10 +1352,8 @@
 │   │   ├── authorization_request_form.rb
 │   │   ├── authorization_request_reopening_cancellation.rb
 │   │   ├── authorization_request_transfer.rb
-│   │   ├── authorization_request.rb
-│   │   ├── authorization.rb
-│   │   ├── bulk_authorization_request_update_notification_read.rb
 │   │   ├── bulk_authorization_request_update.rb
+│   │   ├── bulk_authorization_request_update_notification_read.rb
 │   │   ├── categorie_juridique.rb
 │   │   ├── code_naf.rb
 │   │   ├── concerns
@@ -1342,9 +1367,9 @@
 │   │   │   ├── authorization_extensions
 │   │   │   │   ├── basic_infos.rb
 │   │   │   │   ├── cadre_juridique.rb
+│   │   │   │   ├── france_connect.rb
 │   │   │   │   ├── france_connect_eidas.rb
 │   │   │   │   ├── france_connect_embedded_fields.rb
-│   │   │   │   ├── france_connect.rb
 │   │   │   │   ├── gdpr_contacts.rb
 │   │   │   │   ├── modalities.rb
 │   │   │   │   ├── operational_acceptance.rb
@@ -1359,22 +1384,23 @@
 │   │   │   │   ├── api_impot_particulier_scopes.rb
 │   │   │   │   └── extra_contacts_infos.rb
 │   │   │   └── notifications_settings.rb
-│   │   ├── contact_definition.rb
 │   │   ├── contact.rb
+│   │   ├── contact_definition.rb
 │   │   ├── data_provider.rb
 │   │   ├── denial_of_authorization.rb
 │   │   ├── eligibility_option.rb
 │   │   ├── eligibility_rule.rb
+│   │   ├── france_connect_default_data.rb
 │   │   ├── habilitation_type.rb
 │   │   ├── identity_provider.rb
-│   │   ├── impersonation_action.rb
 │   │   ├── impersonation.rb
-│   │   ├── instructor_draft_request_document.rb
+│   │   ├── impersonation_action.rb
 │   │   ├── instructor_draft_request.rb
+│   │   ├── instructor_draft_request_document.rb
 │   │   ├── instructor_modification_request.rb
 │   │   ├── malware_scan.rb
-│   │   ├── message_template.rb
 │   │   ├── message.rb
+│   │   ├── message_template.rb
 │   │   ├── organization.rb
 │   │   ├── organizations_user.rb
 │   │   ├── revocation_of_authorization.rb
@@ -1383,8 +1409,8 @@
 │   │   ├── subdomain.rb
 │   │   ├── user.rb
 │   │   ├── verified_email.rb
-│   │   ├── webhook_attempt.rb
-│   │   └── webhook.rb
+│   │   ├── webhook.rb
+│   │   └── webhook_attempt.rb
 │   ├── notifiers
 │   │   ├── api_entreculier_notifier.rb
 │   │   ├── api_entreprise_notifier.rb
@@ -1396,12 +1422,17 @@
 │   │   └── hubee_notifier.rb
 │   ├── organizers
 │   │   ├── admin
+│   │   │   ├── ban_user.rb
+│   │   │   ├── create_data_provider.rb
 │   │   │   ├── create_habilitation_type.rb
+│   │   │   ├── destroy_data_provider.rb
 │   │   │   ├── destroy_habilitation_type.rb
 │   │   │   ├── mark_user_organization_as_verified.rb
 │   │   │   ├── start_impersonation.rb
 │   │   │   ├── stop_impersonation.rb
 │   │   │   ├── transfer_authorization_request.rb
+│   │   │   ├── unban_user.rb
+│   │   │   ├── update_data_provider.rb
 │   │   │   ├── update_habilitation_type.rb
 │   │   │   └── update_user_roles.rb
 │   │   ├── application_organizer.rb
@@ -1428,8 +1459,8 @@
 │   │   ├── reopen_authorization.rb
 │   │   ├── request_changes_on_authorization_request.rb
 │   │   ├── review_authorization_request.rb
-│   │   ├── revoke_authorization_request.rb
 │   │   ├── revoke_authorization.rb
+│   │   ├── revoke_authorization_request.rb
 │   │   ├── send_message_to_applicant.rb
 │   │   ├── send_message_to_instructors.rb
 │   │   ├── start_next_authorization_request_stage.rb
@@ -1447,9 +1478,11 @@
 │   │   ├── concerns
 │   │   │   ├── common_authorization_models_policies.rb
 │   │   │   └── developer_scoping.rb
+│   │   ├── data_provider_policy.rb
 │   │   ├── developer
 │   │   │   ├── webhook_attempt_policy.rb
 │   │   │   └── webhook_policy.rb
+│   │   ├── habilitation_type_policy.rb
 │   │   ├── instruction
 │   │   │   ├── authorization_policy.rb
 │   │   │   ├── authorization_request_policy.rb
@@ -1514,6 +1547,7 @@
 │   │   ├── insee_api_authentication.rb
 │   │   ├── insee_sirene_api_client.rb
 │   │   ├── je_clique_ou_pas_api_client.rb
+│   │   ├── markdown_renderer.rb
 │   │   ├── message_template_interpolator.rb
 │   │   ├── message_template_preview_renderer.rb
 │   │   ├── piste_api_client.rb
@@ -1526,10 +1560,22 @@
 │   │   └── siret_validator.rb
 │   └── views
 │       ├── admin
-│       │   ├── habilitation_types
+│       │   ├── bans
+│       │   │   ├── confirm_destroy.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── data_providers
+│       │   │   ├── confirm_destroy.html.erb
+│       │   │   ├── create.html.erb
+│       │   │   ├── create.turbo_stream.erb
 │       │   │   ├── edit.html.erb
 │       │   │   ├── index.html.erb
 │       │   │   └── new.html.erb
+│       │   ├── habilitation_types
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
 │       │   ├── impersonate
 │       │   │   └── new.html.erb
 │       │   ├── index.html.erb
@@ -1561,8 +1607,8 @@
 │       │   ├── annuaire_des_entreprises.html.erb
 │       │   ├── api_captchetat.html.erb
 │       │   ├── api_entreprise_through_editor.html.erb
-│       │   ├── api_particulier_through_editor_without_contact_technique.html.erb
 │       │   ├── api_particulier_through_editor.html.erb
+│       │   ├── api_particulier_through_editor_without_contact_technique.html.erb
 │       │   ├── blocks
 │       │   │   ├── api_cpr_pro_adelie
 │       │   │   │   ├── _contact.html.erb
@@ -1684,11 +1730,11 @@
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
 │       │   │   │   ├── _contacts.html.erb
-│       │   │   │   ├── _france_connect_eidas.html.erb
 │       │   │   │   ├── _france_connect.html.erb
+│       │   │   │   ├── _france_connect_eidas.html.erb
 │       │   │   │   ├── _legal.html.erb
-│       │   │   │   ├── _modalities_with_france_connect.html.erb
 │       │   │   │   ├── _modalities.html.erb
+│       │   │   │   ├── _modalities_with_france_connect.html.erb
 │       │   │   │   ├── _operational_acceptance.html.erb
 │       │   │   │   ├── _personal_data.html.erb
 │       │   │   │   ├── _safety_certification.html.erb
@@ -1704,8 +1750,8 @@
 │       │   │   ├── _wizard_buttons.html.erb
 │       │   │   ├── basic_infos.html.erb
 │       │   │   ├── contacts.html.erb
-│       │   │   ├── france_connect_eidas.html.erb
 │       │   │   ├── france_connect.html.erb
+│       │   │   ├── france_connect_eidas.html.erb
 │       │   │   ├── legal.html.erb
 │       │   │   ├── modalities.html.erb
 │       │   │   ├── operational_acceptance.html.erb
@@ -1724,8 +1770,8 @@
 │       │   │   ├── _header_badge.erb
 │       │   │   ├── _hidden_params.html.erb
 │       │   │   ├── _organization.html.erb
-│       │   │   ├── _prefilled_banner_for_single_page_form.html.erb
 │       │   │   ├── _prefilled_banner.html.erb
+│       │   │   ├── _prefilled_banner_for_single_page_form.html.erb
 │       │   │   ├── _scopes_group_documentation_accordion.html.erb
 │       │   │   ├── _specific_requirements.html.erb
 │       │   │   ├── _submit_buttons.html.erb
@@ -1840,8 +1886,8 @@
 │       │   │   ├── default
 │       │   │   │   ├── _basic_infos.html.erb
 │       │   │   │   ├── _contacts.html.erb
-│       │   │   │   ├── _france_connect_eidas.html.erb
 │       │   │   │   ├── _france_connect.html.erb
+│       │   │   │   ├── _france_connect_eidas.html.erb
 │       │   │   │   ├── _legal.html.erb
 │       │   │   │   ├── _modalities.html.erb
 │       │   │   │   ├── _operational_acceptance.html.erb
@@ -1924,12 +1970,13 @@
 │       │   │   └── show.html.erb
 │       │   └── webhooks
 │       │       ├── _form.html.erb
+│       │       ├── documentation.html.erb
 │       │       ├── edit.html.erb
 │       │       ├── index.html.erb
 │       │       ├── new.html.erb
 │       │       └── show_secret.html.erb
 │       ├── dgfip
-│       │   └── api_m_mailer
+│       │   └── apim_mailer
 │       │       └── approve.text.erb
 │       ├── errors
 │       │   └── show.html.erb
@@ -2008,8 +2055,8 @@
 │       │   ├── _header.html.erb
 │       │   ├── admin.html.erb
 │       │   ├── application.html.erb
-│       │   ├── authorization_request_with_tabs.html.erb
 │       │   ├── authorization_request.html.erb
+│       │   ├── authorization_request_with_tabs.html.erb
 │       │   ├── authorization_with_tabs.html.erb
 │       │   ├── claim_instructor_draft_request.html.erb
 │       │   ├── component_preview.html.erb
@@ -2107,7 +2154,6 @@
 │   ├── stream-remote-logs
 │   ├── sync_identity_providers.rb
 │   └── worktree-build
-├── CLAUDE.md
 ├── config
 │   ├── application.rb
 │   ├── authorization_definitions
@@ -2200,8 +2246,8 @@
 │   │   ├── emailable.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── friendly_id.rb
-│   │   ├── frontal_mailer.rb
 │   │   ├── frontal.rb
+│   │   ├── frontal_mailer.rb
 │   │   ├── gaffe.rb
 │   │   ├── good_job.rb
 │   │   ├── inflections.rb
@@ -2225,8 +2271,8 @@
 │   │   ├── dsfr.fr.yml
 │   │   ├── errors.fr.yml
 │   │   ├── fr.yml
-│   │   ├── instruction_message_templates.fr.yml
 │   │   ├── instruction.fr.yml
+│   │   ├── instruction_message_templates.fr.yml
 │   │   ├── mailer.fr.yml
 │   │   ├── page_titles.fr.yml
 │   │   └── pagination.fr.yml
@@ -2371,7 +2417,13 @@
 │   │   ├── 20260224140002_fill_form_uid_in_existing_authorizations.rb
 │   │   ├── 20260225111739_create_habilitation_types.rb
 │   │   ├── 20260312154854_create_versions.rb
-│   │   └── 20260312154855_add_object_changes_to_versions.rb
+│   │   ├── 20260312154855_add_object_changes_to_versions.rb
+│   │   ├── 20260313100000_migrate_annuaire_entreprises_effectifs_annuels_scope_to_effectifs.rb
+│   │   ├── 20260317100302_backfill_france_connect_authorization_id_on_api_particulier_requests.rb
+│   │   ├── 20260331084007_clean_dormant_france_connect_data_on_api_particulier_requests.rb
+│   │   ├── 20260401152848_add_dyn_suffix_to_habilitation_type_slugs.rb
+│   │   ├── 20260415134608_add_banned_at_and_ban_reason_to_users.rb
+│   │   └── 20260416154456_add_ban_reason_check_constraint_to_users.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2381,25 +2433,24 @@
 │   └── seeds.rb
 ├── disabled
 ├── docker-compose.yml
-├── Dockerfile
 ├── docs
+│   ├── README.md
 │   ├── ajout_evenement.md
 │   ├── ajout_nouveau_bloc_de_formulaire.md
 │   ├── ajout_nouveau_form_non_tech.md
 │   ├── ajout_nouveau_provider.md
+│   ├── api.md
 │   ├── api_particulier
 │   │   └── france_connect
 │   │       └── editeurs_certifies.md
-│   ├── api.md
 │   ├── conception.md
 │   ├── dashboard-comportement-utilisateur.md
 │   ├── datagouv-habilitations-sync.md
 │   ├── design.md
-│   ├── lifecycle_documentation_with_stages.md
 │   ├── lifecycle_documentation.md
+│   ├── lifecycle_documentation_with_stages.md
 │   ├── modification_scopes.md
 │   ├── nouveau_type_d_habilitation.md
-│   ├── README.md
 │   ├── scopes_config.md
 │   ├── technique
 │   │   └── modal.md
@@ -2409,6 +2460,9 @@
 │   ├── acces_espaces_en_fonction_des_roles.feature
 │   ├── accessibilite.feature
 │   ├── admin
+│   │   ├── bannissements.feature
+│   │   ├── bannissements_session.feature
+│   │   ├── data_providers.feature
 │   │   ├── emails_verifies.feature
 │   │   ├── habilitation_types.feature
 │   │   ├── impersonation.feature
@@ -2418,14 +2472,14 @@
 │   ├── archiver_habilitation.feature
 │   ├── brouillons_demandes_instructeurs.feature
 │   ├── changement_organisation.feature
+│   ├── connexion.feature
 │   ├── connexion_proconnect_nouvelle_organisation.feature
 │   ├── connexion_proconnect_selection_organisation.feature
-│   ├── connexion.feature
-│   ├── consultation_demande_et_habilitations_organisation_non_verifie.feature
 │   ├── consultation_demande.feature
+│   ├── consultation_demande_et_habilitations_organisation_non_verifie.feature
+│   ├── consultation_habilitation.feature
 │   ├── consultation_habilitation_en_tant_que_reporter.feature
 │   ├── consultation_habilitation_non_integre.feature
-│   ├── consultation_habilitation.feature
 │   ├── dashboard_empty_states.feature
 │   ├── developpeurs
 │   │   ├── applications.feature
@@ -2453,12 +2507,12 @@
 │   │   │   └── soumission_single_page.feature
 │   │   ├── consultation_habilitation_avec_jeton.feature
 │   │   ├── dgfip
-│   │   │   ├── api_ficoba_choix_formulaire.feature
 │   │   │   ├── api_ficoba.feature
+│   │   │   ├── api_ficoba_choix_formulaire.feature
 │   │   │   ├── api_impot_particulier
 │   │   │   │   ├── choix_formulaire.feature
-│   │   │   │   ├── editeur_modalites.feature
 │   │   │   │   ├── editeur.feature
+│   │   │   │   ├── editeur_modalites.feature
 │   │   │   │   ├── gestion_des_scopes.feature
 │   │   │   │   ├── sandbox_gestion_des_scopes.feature
 │   │   │   │   └── sandbox_puis_production.feature
@@ -2492,8 +2546,8 @@
 │   │   ├── modérer_une_habilitation.feature
 │   │   ├── notifications.feature
 │   │   ├── révocation_cascade_apip_fc.feature
-│   │   ├── révocation_habilitation_individuelle.feature
 │   │   ├── révocation_habilitation.feature
+│   │   ├── révocation_habilitation_individuelle.feature
 │   │   ├── templates_messages.feature
 │   │   └── transfert_habilitation.feature
 │   ├── liste_des_habilitations.feature
@@ -2512,6 +2566,7 @@
 │   │   ├── liste_des_habilitations.feature
 │   │   └── notifications.feature
 │   ├── soumission_demande_scan_antivirus.feature
+│   ├── soumission_depuis_resume_demande_modifications.feature
 │   ├── sous-domaine_nouvelle_habilitation.feature
 │   ├── sous-domaine_tableau_de_bord.feature
 │   ├── stats_page.feature
@@ -2524,6 +2579,7 @@
 │   │   ├── authorization_steps.rb
 │   │   ├── auto_france_connect_authorization_steps.rb
 │   │   ├── cgu_france_connect_steps.rb
+│   │   ├── data_providers_steps.rb
 │   │   ├── date_steps.rb
 │   │   ├── debug_steps.rb
 │   │   ├── email_steps.rb
@@ -2575,9 +2631,6 @@
 │   │   └── selection_formulaire.feature
 │   └── transfert_habilitation.feature
 ├── fetch_pr_comments.sh
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
 ├── lib
 │   ├── adhoc
 │   │   └── fill_authorization_states.rb
@@ -2585,29 +2638,27 @@
 │   │   └── .keep
 │   ├── generators
 │   │   ├── definition
+│   │   │   ├── USAGE
 │   │   │   ├── definition_generator.rb
-│   │   │   ├── templates
-│   │   │   │   ├── authorization_request.rb.erb
-│   │   │   │   ├── definition.yml.erb
-│   │   │   │   ├── forms.yml.erb
-│   │   │   │   └── scenario.feature.erb
-│   │   │   └── USAGE
+│   │   │   └── templates
+│   │   │       ├── authorization_request.rb.erb
+│   │   │       ├── definition.yml.erb
+│   │   │       ├── forms.yml.erb
+│   │   │       └── scenario.feature.erb
 │   │   └── multi_stages_definition
+│   │       ├── USAGE
 │   │       ├── multi_stages_definition_generator.rb
-│   │       ├── templates
-│   │       │   ├── authorization_request_production.rb.erb
-│   │       │   ├── authorization_request_sandbox.rb.erb
-│   │       │   ├── definition.yml.erb
-│   │       │   ├── forms.yml.erb
-│   │       │   └── scenario.feature.erb
-│   │       └── USAGE
+│   │       └── templates
+│   │           ├── authorization_request_production.rb.erb
+│   │           ├── authorization_request_sandbox.rb.erb
+│   │           ├── definition.yml.erb
+│   │           ├── forms.yml.erb
+│   │           └── scenario.feature.erb
 │   └── tasks
 │       ├── .keep
 │       └── db_seed.rake
 ├── log
 │   └── .keep
-├── Makefile
-├── Procfile.local
 ├── public
 │   ├── 404.html
 │   ├── 422.html
@@ -2664,14 +2715,12 @@
 │   │       │   └── cgu_prod_satelit_v.2022_v1.pdf
 │   │       └── presentation_de_l_api_impot_particulier_v2.9.pdf
 │   ├── doc
+│   │   ├── ProtocoleTechniqueFicoba3_v11.pdf
 │   │   ├── documentation_api_rial_v2025_07.pdf
-│   │   ├── infographie_api_urssaf.pdf
-│   │   └── ProtocoleTechniqueFicoba3_v11.pdf
+│   │   └── infographie_api_urssaf.pdf
 │   ├── favicon.ico
 │   ├── robots.txt
 │   └── schema_pluriannuel.html
-├── Rakefile
-├── README.md
 ├── spec
 │   ├── acceptance
 │   │   ├── administrative_operations_on_legacy_requests_spec.rb
@@ -2716,6 +2765,8 @@
 │   │       │   ├── admin
 │   │       │   │   ├── blocks_selection_component_preview.rb
 │   │       │   │   ├── contact_types_selector_component_preview.rb
+│   │       │   │   ├── data_provider_form_component_preview.rb
+│   │       │   │   ├── data_provider_selector_component_preview.rb
 │   │       │   │   ├── links_form_section_component_preview.rb
 │   │       │   │   ├── name_with_uid_preview_component_preview.rb
 │   │       │   │   └── scopes_editor_component_preview.rb
@@ -2742,6 +2793,7 @@
 │   │   ├── authorization_request_forms_controller_spec.rb
 │   │   ├── authorization_request_stats_controller_spec.rb
 │   │   ├── authorization_requests_controller_spec.rb
+│   │   ├── authorizations_controller_spec.rb
 │   │   ├── concerns
 │   │   │   └── authentication_spec.rb
 │   │   ├── dgfip
@@ -2799,8 +2851,8 @@
 │   │   ├── messages.rb
 │   │   ├── mon_compte_pro_payloads.rb
 │   │   ├── oauth.rb
-│   │   ├── organizations_users.rb
 │   │   ├── organizations.rb
+│   │   ├── organizations_users.rb
 │   │   ├── proconnect_payloads.rb
 │   │   ├── revocation_of_authorizations.rb
 │   │   ├── users.rb
@@ -2833,7 +2885,8 @@
 │   │       ├── 21920023500014.json
 │   │       └── 21920023500022.json
 │   ├── form_builders
-│   │   └── authorization_request_form_builder_spec.rb
+│   │   ├── authorization_request_form_builder_spec.rb
+│   │   └── dsfr_form_builder_spec.rb
 │   ├── generator
 │   │   ├── definition_generator_spec.rb
 │   │   └── multi_stages_definition_generator_spec.rb
@@ -2846,9 +2899,13 @@
 │   ├── interactors
 │   │   ├── .gitkeep
 │   │   ├── admin
+│   │   │   ├── check_data_provider_deletable_spec.rb
+│   │   │   ├── check_habilitation_type_deletable_spec.rb
+│   │   │   ├── destroy_data_provider_record_spec.rb
+│   │   │   ├── destroy_habilitation_type_record_spec.rb
 │   │   │   └── remove_habilitation_type_roles_spec.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request_spec.rb
-│   │   ├── assign_france_connect_defaults_on_reopening_spec.rb
+│   │   ├── assign_france_connect_defaults_spec.rb
 │   │   ├── create_authorization_request_changelog_spec.rb
 │   │   ├── create_authorization_spec.rb
 │   │   ├── create_linked_france_connect_authorization_event_spec.rb
@@ -2945,6 +3002,7 @@
 │   │   ├── data_provider_spec.rb
 │   │   ├── denial_of_authorization_spec.rb
 │   │   ├── eligibility_rule_spec.rb
+│   │   ├── france_connect_default_data_spec.rb
 │   │   ├── habilitation_type_spec.rb
 │   │   ├── identity_provider_spec.rb
 │   │   ├── impersonation_action_spec.rb
@@ -2958,6 +3016,7 @@
 │   │   ├── organization_spec.rb
 │   │   ├── organizations_user_spec.rb
 │   │   ├── service_provider_spec.rb
+│   │   ├── static_application_record_spec.rb
 │   │   ├── subdomain_spec.rb
 │   │   ├── user_spec.rb
 │   │   ├── verified_email_spec.rb
@@ -2971,12 +3030,15 @@
 │   ├── organizers
 │   │   ├── .gitkeep
 │   │   ├── admin
+│   │   │   ├── ban_user_spec.rb
 │   │   │   ├── create_habilitation_type_spec.rb
+│   │   │   ├── destroy_data_provider_spec.rb
 │   │   │   ├── destroy_habilitation_type_spec.rb
 │   │   │   ├── mark_user_organization_as_verified_spec.rb
 │   │   │   ├── start_impersonation_spec.rb
 │   │   │   ├── stop_impersonation_spec.rb
 │   │   │   ├── transfer_authorization_request_spec.rb
+│   │   │   ├── unban_user_spec.rb
 │   │   │   ├── update_habilitation_type_spec.rb
 │   │   │   └── update_user_roles_spec.rb
 │   │   ├── approve_authorization_request_spec.rb
@@ -3010,7 +3072,9 @@
 │   │   └── update_instructor_draft_request_spec.rb
 │   ├── policies
 │   │   ├── authorization_request_form_policy_spec.rb
-│   │   └── authorization_request_policy_spec.rb
+│   │   ├── authorization_request_policy_spec.rb
+│   │   ├── data_provider_policy_spec.rb
+│   │   └── habilitation_type_policy_spec.rb
 │   ├── queries
 │   │   ├── authorization_request_events_query_spec.rb
 │   │   ├── authorization_requests_mentions_query_spec.rb
@@ -3027,6 +3091,8 @@
 │   │       └── volume_stats_query_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── admin
+│   │   │   └── data_providers_spec.rb
 │   │   ├── api
 │   │   │   ├── oauth_token_spec.rb
 │   │   │   ├── open_api_spec.rb
@@ -3068,6 +3134,7 @@
 │   │   ├── hubee_api_client_spec.rb
 │   │   ├── insee_sirene_api_client_spec.rb
 │   │   ├── je_clique_ou_pas_api_client_spec.rb
+│   │   ├── markdown_renderer_spec.rb
 │   │   ├── message_template_interpolator_spec.rb
 │   │   ├── message_template_preview_renderer_spec.rb
 │   │   ├── skip_links_implemented_spec.rb
@@ -3079,6 +3146,7 @@
 │   │   ├── events_helpers.rb
 │   │   ├── feature_helpers.rb
 │   │   ├── fixtures_helpers.rb
+│   │   ├── france_connect_link_helpers.rb
 │   │   ├── generator_helpers.rb
 │   │   ├── hubee_api_client_mocks.rb
 │   │   ├── hubee_helpers.rb
@@ -3126,4 +3194,4 @@
     ├── .keep
     └── javascript
         └── .keep
-441 directories, 2825 files
+444 directories, 2890 files

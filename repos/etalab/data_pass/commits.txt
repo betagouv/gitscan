@@ -1,3 +1,122 @@
+2026-04-16T19:23:55+02:00 - 9801265f - Isabelle Lafont : Merge pull request #1508 from etalab/feature/dp-1663-bannir-un-utilisateur
+2026-04-16T19:05:34+02:00 - ae7e54d7 - Isabelle Lafont : Ajoute l'interface admin de bannissement
+2026-04-16T19:05:27+02:00 - 201845bb - Isabelle Lafont : Bloque les utilisateurs bannis à la connexion et sur les sessions actives
+2026-04-16T19:05:19+02:00 - 89bc216a - Isabelle Lafont : Ajoute les organizers Admin::BanUser et Admin::UnbanUser
+2026-04-16T19:05:12+02:00 - bda77cd0 - Isabelle Lafont : Ajoute les champs banned_at et ban_reason sur User
+2026-04-16T13:29:43+02:00 - 6c0f4add - Caillou : Merge pull request #1505 from etalab/display_email_verifiability_error_on_submit
+2026-04-16T13:29:00+02:00 - a25d4a8c - Caillou : Merge pull request #1503 from etalab/ci-optimize-test-run
+2026-04-16T12:06:41+02:00 - 2217639d - Caillou : Introduce CLAUDE guideline to co-author its commits
+2026-04-16T12:06:14+02:00 - c3a844b6 - Caillou : Optimize CI: parallelize tests - Split Cucumber into 3 parallel jobs (habilitations / instructeurs+admin /   top-level+reporters+developpeurs), reducing that bottleneck from ~7m to ~2-3m - Split RSpec into 2 parallel jobs by spec directory - Run Brakeman, Rubocop, Standardjs, and YAML linting natively via   ruby/setup-ruby and setup-node, removing their dependency on the Docker   build and cutting ~15-20s of docker load overhead per job - Replace sleep 5 Chrome wait with a curl health-check loop (up to 30s) - Pin postgres:16 and redis:7 service images for more reliable layer caching
+2026-04-16T11:57:04+02:00 - 1e12b15a - Caillou : Fix silent 422 on authorization request submit from summary page
+2026-04-15T14:09:45+02:00 - 6bba70b1 - Nicolas Schweisguth : Merge pull request #1507 from etalab/modif-doc-roles
+2026-04-15T12:25:49+02:00 - 7166cbac - Nicolas Schweisguth : Update doc rôles
+2026-04-15T10:05:08+02:00 - 50b77ca2 - Delmaire Loïc : Merge pull request #1502 from etalab/api-p/enhance-solis
+2026-04-14T09:51:16+02:00 - 6ff45e8b - Caillou : Merge pull request #1498 from etalab/better_ids_for_habilitation_routes
+2026-04-13T18:29:44+02:00 - 391162cb - Caillou : Update app/controllers/authorizations_controller.rb
+2026-04-13T18:22:00+02:00 - 99d65a43 - Delmaire Loïc : Rendre les scopes cnaf_adresse et cnaf_enfants cochables pour le formulaire Solis
+2026-04-13T18:12:05+02:00 - 14898ffd - Delmaire Loïc : Merge pull request #1500 from etalab/enhance/webhooks
+2026-04-13T18:03:47+02:00 - 64c9be52 - Caillou : use the numeric id of authorizations in paths instead of the FriendlyId
+2026-04-13T18:03:23+02:00 - 1781f473 - Isabelle Lafont : Merge pull request #1499 from etalab/feature/dp-1673-bug-n1-queries-sur-le-dashboard-demandeur
+2026-04-13T17:07:41+02:00 - de1d404a - Delmaire Loïc : Ajoute une page de documentation des webhooks sur /developpeurs/webhooks
+2026-04-13T16:52:47+02:00 - ab5231d6 - Delmaire Loïc : Ajoute un service MarkdownRenderer
+2026-04-13T16:52:36+02:00 - b4ba84a4 - Delmaire Loïc : Documente le format du payload de test des webhooks
+2026-04-13T15:39:17+02:00 - 74f59ba3 - Isabelle Lafont : Fix N+1 queries on dashboard associations
+2026-04-13T14:41:11+02:00 - cfb74d6a - Caillou : Merge pull request #1497 from etalab/update_tarification_eaje_wordings
+2026-04-13T14:30:30+02:00 - 250957d1 - Isabelle Lafont : Merge pull request #1496 from etalab/dependabot/bundler/production-dependencies-207bc4848e
+2026-04-13T13:52:30+02:00 - 9cdeb16c - Caillou : Update tarafication_eaje wordings
+2026-04-13T13:24:39+02:00 - 8c31da9c - Jean-Baptiste Feldis : Merge pull request #1494 from etalab/feature/dp-1601-pouvoir-retirer-entierement-des-droits-a-un-user-avec-droits
+2026-04-13T11:46:39+02:00 - 6cbb80ec - Jean-Baptiste Feldis : Merge pull request #1423 from etalab/chores/fix-n-plus-one
+2026-04-13T01:07:27Z - ad2caab9 - dependabot[bot] : Bump the production-dependencies group with 4 updates
+2026-04-09T15:04:53+02:00 - a8d62831 - Jean-Baptiste Feldis : Fixe le retrait de tous les droits d'un utilisateur
+2026-04-09T13:23:03+02:00 - c68bfb0e - Jean-Baptiste Feldis : Merge pull request #1481 from etalab/feature/dp-1642-le-slug-devrait-juste-retirer-le-s-en-fin-de-string-si-ca-le
+2026-04-08T18:17:23+02:00 - f5d91c27 - Jean-Baptiste Feldis : Ajoute un suffixe au slug des HabilitationType
+2026-04-08T14:10:55+02:00 - d108a0da - Jean-Baptiste Feldis : Merge pull request #1487 from etalab/feature/dp-1639-ajouter-un-lien-vers-la-creation-dune-demande-dans-la-liste
+2026-04-08T14:10:20+02:00 - b62f697b - Jean-Baptiste Feldis : Merge pull request #1491 from etalab/feature/dp-1638-comportement-quand-cgu-vide
+2026-04-08T14:09:41+02:00 - 1684d85a - Jean-Baptiste Feldis : Merge pull request #1486 from etalab/feature/dp-1640-retirer-la-ligne-au-dessus-des-scopes-sans-groupes-dans-le
+2026-04-08T14:00:27+02:00 - 51a62acb - Jean-Baptiste Feldis : Merge pull request #1489 from etalab/dependabot/bundler/production-dependencies-8e697ed352
+2026-04-08T11:09:05+02:00 - bf1d3f72 - Jean-Baptiste Feldis : Merge pull request #1492 from etalab/dependabot/bundler/rack-session-2.1.2
+2026-04-08T03:10:54Z - 2efabdc6 - dependabot[bot] : Bump rack-session from 2.1.1 to 2.1.2
+2026-04-07T11:07:17+02:00 - 6bcbc4bd - Jean-Baptiste Feldis : Renomme le répertoire du mailer DGFIP
+2026-04-06T14:11:43+02:00 - 07daab72 - Jean-Baptiste Feldis : Merge pull request #1490 from etalab/dependabot/bundler/rubocop-4124cc5fc6
+2026-04-06T14:07:17+02:00 - d50debed - Jean-Baptiste Feldis : Fixe la condition d'affichage de la checkbox CGU pour les types d'habilitation dynamiques
+2026-04-06T01:07:44Z - d5c62da5 - dependabot[bot] : Bump rubocop from 1.85.1 to 1.86.0 in the rubocop group
+2026-04-06T01:06:53Z - 3c154a05 - dependabot[bot] : Bump the production-dependencies group with 3 updates
+2026-04-03T11:17:01+02:00 - 185886af - Jean-Baptiste Feldis : Ajoute un lien vers le formulaire d'un type d'habilitation dynamique
+2026-04-03T11:04:38+02:00 - 13fbc51b - Jean-Baptiste Feldis : Enlève la barre horizontale des blocs de scopes sans nom
+2026-04-02T15:43:28+02:00 - d5b91a8a - Jean-Baptiste Feldis : Merge pull request #1479 from etalab/feature/dp-1633-clean-assigner-les-params-fc-uniquement-lors-du-choix-de-la
+2026-04-02T14:42:19+02:00 - e542aa65 - Jean-Baptiste Feldis : Nettoie les données APIPFC dormantes
+2026-04-02T14:42:16+02:00 - 803d8721 - Jean-Baptiste Feldis : Assigne les attributs FC lorsque la modalité est choisie
+2026-04-02T14:04:35+02:00 - 42fd8e64 - Isabelle Lafont : Merge pull request #1482 from etalab/enhance/api-e-be-inpi
+2026-04-02T12:48:14+02:00 - d0b27bd7 - Delmaire Loïc : Remove beneficiaires_effectifs_inpi scope for api-entreprise-entrouvert form
+2026-04-01T17:58:15+02:00 - a468d2c6 - Isabelle Lafont : Merge pull request #1480 from etalab/feature/dp-1645-rajouter-le-sur-lhomologation-de-securite-des-formulaires-de
+2026-04-01T14:41:40+02:00 - f88c5ebb - Isabelle Lafont : dsfr_file_field: affiche l'astérisque depuis les validators
+2026-04-01T12:26:17+02:00 - fec71b0a - Jean-Baptiste Feldis : Merge pull request #1459 from etalab/feature/dp-1604-remplir-france_connect_authorization_id-a-la-validation-dune
+2026-04-01T11:58:45+02:00 - 29e16aee - Jean-Baptiste Feldis : Harmonise le lien vers les habilitations FC
+2026-03-31T10:39:15+02:00 - 58aa754b - Isabelle Lafont : Merge pull request #1478 from etalab/feature/dp-1554-bug-consultation-habilitation-orga-non-verifiee
+2026-03-30T13:36:48+02:00 - 52ae1b36 - Isabelle Lafont : Merge pull request #1475 from etalab/dependabot/bundler/action_text-trix-2.1.18
+2026-03-30T11:54:42+02:00 - 293d51c4 - Isabelle Lafont : Merge pull request #1476 from etalab/dependabot/bundler/production-dependencies-0787a33e13
+2026-03-30T11:44:11+02:00 - be7450c2 - Isabelle Lafont : Merge pull request #1477 from etalab/dependabot/bundler/development-dependencies-59bda8d0d1
+2026-03-30T11:32:06+02:00 - 6ed622b8 - Isabelle Lafont : Merge pull request #1469 from etalab/feature/dp-1498-bug-critique-redirect-loop
+2026-03-30T09:56:05Z - f4b7ba09 - dependabot[bot] : Bump action_text-trix from 2.1.17 to 2.1.18
+2026-03-30T01:07:58Z - 06a41b1f - dependabot[bot] : Bump webmock from 3.26.1 to 3.26.2 in the development-dependencies group
+2026-03-30T01:07:14Z - 09e3900c - dependabot[bot] : Bump the production-dependencies group with 5 updates
+2026-03-27T21:55:02+01:00 - 3a9ba773 - Delmaire Loïc : Merge pull request #1474 from etalab/dependabot/bundler/mcp-0.9.2
+2026-03-27T20:42:05Z - f5a157ac - dependabot[bot] : Bump mcp from 0.8.0 to 0.9.2
+2026-03-27T16:35:52+01:00 - fad584d5 - Caillou : Merge pull request #1473 from etalab/activate_men_scopes
+2026-03-27T15:54:35+01:00 - f327a733 - Caillou : enable men_statut_boursier and men_echelon_bourse for API Particulier
+2026-03-26T15:56:45+01:00 - fc9f1621 - Isabelle Lafont : Autoriser la consultation d'une habilitation du demandeur avec orga non vérifiée
+2026-03-26T14:22:31+01:00 - c01be83c - Nicolas Schweisguth : Merge pull request #1471 from etalab/feature/dp-1646-instructice-ne-recoit-plus-les-emails-de-notification-de
+2026-03-26T10:35:35+01:00 - deb89633 - Caillou : Merge pull request #1472 from etalab/extenso_editable_modalities
+2026-03-26T10:31:59+01:00 - 6ad35ec7 - Caillou : modalities bloc editable fo extenso
+2026-03-25T17:15:59+01:00 - ed115f7b - Isabelle Lafont : Inclure les managers dans les notifications de messages
+2026-03-25T13:24:46+01:00 - 8b35103e - Isabelle Lafont : Merge pull request #1470 from etalab/fix/update-rails-8.1.2.1
+2026-03-25T13:11:55+01:00 - ef9778d0 - Isabelle Lafont : Mise à jour de Rails vers 8.1.2.1
+2026-03-25T12:03:48+01:00 - fe6c9042 - Isabelle Lafont : Supprime l'effet de bord dans AuthorizationRequestPolicy#summary?
+2026-03-25T11:42:57+01:00 - b824413e - Isabelle Lafont : Ajout d'un test de non-régression pour la boucle de redirection sur dates d'homologation identiques
+2026-03-24T17:31:01+01:00 - 343e8185 - Nicolas Schweisguth : Merge pull request #1468 from etalab/modif-acces-ingres
+2026-03-24T15:54:57+01:00 - 1030b9d2 - Nicolas Schweisguth : Update eligibility Ingres
+2026-03-24T12:38:25+01:00 - 51adef23 - Caillou : Merge pull request #1467 from etalab/add_use_case_to_extenso_form
+2026-03-23T15:28:20+01:00 - 9de5eccf - Isabelle Lafont : Merge pull request #1460 from etalab/feature/dp-1623-permettre-dediter-les-champs-de-contenu
+2026-03-23T14:47:46+01:00 - 6906be18 - Jean-Baptiste Feldis : Permet l'édition du contenu éditorial des types d'habilitations
+2026-03-23T14:37:50+01:00 - 58b5d19f - Isabelle Lafont : Merge pull request #1464 from etalab/fix/upload-document-apipfc
+2026-03-23T12:26:50+01:00 - f02c249a - Caillou : add the modalities block to extenso form
+2026-03-23T12:24:50+01:00 - a60325b2 - Caillou : fix a corner case in the modalities step
+2026-03-23T12:15:07+01:00 - 5caf0d32 - Isabelle Lafont : Merge pull request #1462 from etalab/feature/dp-1632-refacto-remplacer-before_destroy-par-un-interactor-pour
+2026-03-23T12:12:32+01:00 - efa38947 - Isabelle Lafont : Merge pull request #1466 from etalab/dependabot/bundler/development-dependencies-08224cfe7b
+2026-03-23T12:11:53+01:00 - a38957ef - Isabelle Lafont : Merge pull request #1465 from etalab/dependabot/bundler/production-dependencies-1e7e97b20b
+2026-03-23T12:07:10+01:00 - 889a285f - Isabelle Lafont : Corrige la réinitialisation du cache StaticApplicationRecord entre les tests
+2026-03-23T11:53:16+01:00 - f81b52ac - Isabelle Lafont : Protège la suppression de HabilitationType au niveau modèle
+2026-03-23T10:47:26+01:00 - 4bd8a8fc - Caillou : remove some prefilled scopes in extenso form
+2026-03-23T10:35:01+01:00 - 064b2802 - Caillou : fix description of extenso form
+2026-03-23T10:29:43+01:00 - bcd7f930 - Caillou : Add use case to extenso form
+2026-03-23T01:07:35Z - c7d4f844 - dependabot[bot] : Bump the development-dependencies group with 2 updates
+2026-03-23T01:06:27Z - 16a5bfaf - dependabot[bot] : Bump the production-dependencies group with 2 updates
+2026-03-20T14:58:19+01:00 - 62d290f1 - Jean-Baptiste Feldis : Fixe l'attachement de documents aux demandes APIPFC
+2026-03-19T15:26:58+01:00 - 0a06e1ff - Jean-Baptiste Feldis : Merge pull request #1458 from etalab/feature/dp-1622-creer-une-policy-pour-les-types-dhabilitation
+2026-03-19T12:47:40+01:00 - 669acfc5 - Isabelle Lafont : Merge pull request #1461 from etalab/feature/dp-1631-v3-a63-suppression-dataprovider
+2026-03-19T12:44:54+01:00 - ca97ebe2 - Jean-Baptiste Feldis : CI fix
+2026-03-19T12:44:49+01:00 - 474309e0 - Jean-Baptiste Feldis : Ajoute un policy pour les droits sur les types d'habilitation
+2026-03-19T12:30:19+01:00 - 190fb0fd - Isabelle Lafont : Expose la suppression d'un DataProvider dans l'admin
+2026-03-19T12:30:19+01:00 - 12992b3d - Isabelle Lafont : Empêche la suppression d'un DataProvider encore référencé
+2026-03-19T12:27:57+01:00 - e6256a3b - Isabelle Lafont : Merge pull request #1463 from etalab/feature/dp-1581-decision-multi-process-sync-du-cache-staticapplicationrecord
+2026-03-19T11:03:18+01:00 - 0b663ec5 - Caillou : Merge pull request #1447 from etalab/migration_for_ade
+2026-03-19T11:03:09+01:00 - d5e049a2 - Isabelle Lafont : Merge pull request #1457 from etalab/feature/dp-1584-v1-fix-mailers-notifications-pour-types-dhabilitation
+2026-03-18T16:54:27+01:00 - cee04676 - Isabelle Lafont : Synchronise le cache StaticApplicationRecord entre les workers Puma via Redis
+2026-03-18T16:02:26+01:00 - 7ec729c6 - Isabelle Lafont : Déplace la garde de suppression HabilitationType dans un interactor
+2026-03-18T11:36:37+01:00 - 3ca474ce - Isabelle Lafont : Merge pull request #1455 from etalab/feature/dp-1588-v3-a6-creation-dun-dataprovider-depuis-le-formulaire-de
+2026-03-18T11:36:15+01:00 - c078d032 - Isabelle Lafont : Merge pull request #1454 from etalab/feature/dp-1620-v3-a61-crud-admin-dataprovider
+2026-03-17T17:21:39+01:00 - 0de44cf9 - Isabelle Lafont : Merge pull request #1456 from etalab/feature/nom-du-formulaire
+2026-03-17T16:37:31+01:00 - ff876f33 - Isabelle Lafont : Génère les méthodes de notification User pour les nouveaux types dynamiques
+2026-03-17T15:42:59+01:00 - a2f1652f - Isabelle Lafont : Replace nom with Nom du formulaire in habilitation-type
+2026-03-17T14:25:22+01:00 - 16aad7b4 - Isabelle Lafont : Ajoute les scénarios Cucumber pour la création inline de DataProvider
+2026-03-17T14:04:21+01:00 - ac2502b2 - Isabelle Lafont : Ajoute les traductions pour le formulaire inline DataProvider
+2026-03-17T14:04:20+01:00 - ad9b916e - Isabelle Lafont : Intègre la sélection et la création inline de DataProvider dans le formulaire de type d'habilitation
+2026-03-17T14:04:20+01:00 - a9ee84b4 - Isabelle Lafont : Ajoute DataProviderSelectorComponent et adapte DataProviderFormComponent pour le flux inline
+2026-03-17T14:00:44+01:00 - de35398f - Isabelle Lafont : Ajoute les vues, DataProviderFormComponent et les traductions admin
+2026-03-17T13:05:08+01:00 - 761ebc51 - Isabelle Lafont : Ajoute le controller admin DataProvider avec ses routes et tests
+2026-03-17T13:05:00+01:00 - d0b707a1 - Isabelle Lafont : Ajoute les organizers CreateDataProvider et UpdateDataProvider
+2026-03-17T13:04:52+01:00 - d8b4f239 - Isabelle Lafont : Ajoute le modèle DataProvider avec slug auto-généré et logo optionnel
+2026-03-17T10:19:20+01:00 - e637c453 - Jean-Baptiste Feldis : Review fix
 2026-03-16T12:51:22+01:00 - 5271f171 - Isabelle Lafont : Merge pull request #1434 from etalab/feature/dp-1576-v1-cgu-champs-manquants-dans-lui-admin-validations
 2026-03-16T12:43:19+01:00 - becb7532 - Isabelle Lafont : Résout le conflit de merge avec develop
 2026-03-16T12:40:12+01:00 - e1923ce2 - Isabelle Lafont : style(admin): improve habilitation type form layout
@@ -6,6 +125,7 @@
 2026-03-16T11:06:18+01:00 - c4b3dde2 - Jean-Baptiste Feldis : Merge pull request #1451 from etalab/dependabot/github_actions/crazy-max/ghaction-import-gpg-7
 2026-03-16T11:05:30+01:00 - 29165c55 - Jean-Baptiste Feldis : Merge pull request #1449 from etalab/dependabot/github_actions/docker/setup-buildx-action-4
 2026-03-16T10:28:07+01:00 - c82bf06e - Jean-Baptiste Feldis : Merge pull request #1452 from etalab/dependabot/bundler/production-dependencies-ff4fcadc65
+2026-03-16T10:14:28+01:00 - 2ea95108 - Jean-Baptiste Feldis : Fix dashboard n+1
 2026-03-16T10:06:36Z - c113ff49 - dependabot[bot] : Bump docker/build-push-action from 6 to 7
 2026-03-16T09:01:40+01:00 - dafdafff - Jean-Baptiste Feldis : Merge pull request #1405 from etalab/feature/dp-1552-sur-une-habilitation-fc-voir-longlet-habilitation-france
 2026-03-16T08:44:30+01:00 - 70ac6c8d - Delmaire Loïc : Merge pull request #1453 from etalab/dependabot/bundler/rubocop-c40c449b19
@@ -13,6 +133,7 @@
 2026-03-16T01:07:12Z - 9b5ad56c - dependabot[bot] : Bump the production-dependencies group with 4 updates
 2026-03-16T01:07:05Z - 76ad2a80 - dependabot[bot] : Bump crazy-max/ghaction-import-gpg from 6 to 7
 2026-03-16T01:06:52Z - 631f9759 - dependabot[bot] : Bump docker/setup-buildx-action from 3 to 4
+2026-03-13T17:07:31+01:00 - 992002bd - Caillou : add migration for annuaire scope "effectifs"
 2026-03-13T13:00:30+01:00 - 53dbc0aa - Nicolas Schweisguth : Merge pull request #1445 from etalab/fix-typo-modele
 2026-03-13T12:43:47+01:00 - 5cf00c2f - Nicolas Schweisguth : Fix typo modèle de message
 2026-03-13T12:42:25+01:00 - 0cac6b8b - Delmaire Loïc : Merge pull request #1442 from etalab/clean/credentials-webhooks
