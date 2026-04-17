@@ -1,31 +1,40 @@
-## Changelog : anssi-portail (30 derniers jours)
+## Changelog : anssi-portail (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par d'importantes évolutions concernant la nouvelle fonctionnalité NIS2, avec l'ajout de filtres, la comparaison avec d'autres référentiels (AE, ISO), et l'amélioration de l'expérience utilisateur. Des améliorations ont également été apportées au suivi de la santé des guides et à la gestion des publications.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des guides, l'ajout de nouvelles fonctionnalités pour le simulateur NIS2, l'amélioration de l'expérience utilisateur et la correction de bugs. L'abonnement à la newsletter a également été implémenté.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de télécharger le PDF NIS2. [#0b3415a](https://github.com/betagouv/anssi-portail/issues/0b3415a)
-- Ajout d'un bouton d'export pour les exigences NIS2. [#ff65920](https://github.com/betagouv/anssi-portail/issues/ff65920)
-- Implémentation de filtres pour les thématiques, objectifs de sécurité, entités et correspondances NIS2. [#24ec90d](https://github.com/betagouv/anssi-portail/issues/24ec90d), [#c60dc4f](https://github.com/betagouv/anssi-portail/issues/c60dc4f), [#65037a5](https://github.com/betagouv/anssi-portail/issues/65037a5), [#9de63e2](https://github.com/betagouv/anssi-portail/issues/9de63e2)
-- Possibilité de comparer les exigences NIS2 avec les référentiels AE et ISO. [#a4c1fe3](https://github.com/betagouv/anssi-portail/issues/a4c1fe3), [#89818fa](https://github.com/betagouv/anssi-portail/issues/89818fa)
-- Amélioration de l'affichage des badges et des tags NIS2. [#3c1304f](https://github.com/betagouv/anssi-portail/issues/3c1304f), [#f9d1822](https://github.com/betagouv/anssi-portail/issues/f9d1822)
-- Ajout d'une page de suivi de la santé des guides avec une API correspondante. [#7c0c055](https://github.com/betagouv/anssi-portail/issues/7c0c055)
-- Mise à jour des statistiques des entreprises sur la page Panorama 25. [#8db4578](https://github.com/betagouv/anssi-portail/issues/8db4578)
-- Ajout d'un target blank pour que le panorama s'ouvre dans un nouvel onglet. [#908e114](https://github.com/betagouv/anssi-portail/issues/908e114)
-- Amélioration de l'affichage des dates de publication et de mise à jour des guides. [#26e622e](https://github.com/betagouv/anssi-portail/issues/26e622e)
+- Ajout de la possibilité de télécharger la documentation NIS2.
+- Implémentation d'un simulateur NIS2 avec plusieurs étapes et une logique d'éligibilité.
+- Ajout d'une page d'abonnement à la newsletter avec validation et intégration avec Brevo.
+- Amélioration de la gestion des guides : ajout de documents, suppression, copie du lien court, affichage des documents associés.
+- Possibilité de télécharger les suivis de modifications NIS2.
+- Correction de l'affichage des images et des SVG pour éviter les étirements.
+- Amélioration de l'affichage des cartes et des filtres.
+- Ajout de la possibilité de rechercher des profils sur MPA (pour Brevo).
+- Ajout du numéro de téléphone lors de la création de compte et envoi à Brevo.
+- Tri des exigences NIS2 par référence.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances : `@lab-anssi/ui-kit` (v1.44.5), `devalue` (v5.6.4), `undici`, `immutable.js`, `qs`, `minimatch`, `ajv`, `svelte`, `axios`.
-- Refactorisation du code pour améliorer la structure et la maintenabilité, notamment dans les composants liés à NIS2 et aux guides.
-- Utilisation de Knex pour la construction des requêtes SQL pour Grist. [#2e4028a](https://github.com/betagouv/anssi-portail/issues/2e4028a)
-- Amélioration de l'optimisation des requêtes SQL Grist. [#a0f2e8e](https://github.com/betagouv/anssi-portail/issues/a0f2e8e)
-- Implémentation de la compression des réponses servies pour améliorer les performances. [#4985c1a](https://github.com/betagouv/anssi-portail/issues/4985c1a)
-- Utilisation de fragments pour la navigation tertiaire. [#61bb6f1](https://github.com/betagouv/anssi-portail/issues/61bb6f1)
+- Mise à jour de plusieurs dépendances (Sentry, UI Kit, lodash, fast-xml-parser, yaml, picomatch, addressable).
+- Amélioration de l'architecture de la gestion des guides avec l'utilisation de Cellar.
+- Refonte de la gestion des documents et des ressources.
+- Utilisation de TypeScript pour améliorer la robustesse du code.
+- Ajout de tests unitaires (Vitest).
+- Amélioration de la sécurité avec l'ajout de Content Security Policy (CSP) pour Sentry.
+- Utilisation de variables CSS pour une meilleure maintenabilité.
+- Optimisation des images.
+- Suppression de code inutile et amélioration de la structure du code.
+- Implémentation d'un système de cache pour les guides.
 
 ### Autres changements
-- Mise à jour de la documentation et des illustrations.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de tests et amélioration de la couverture de test.
-- Suppression de code inutilisé et nettoyage du code.
-- Ajout de la mission "Réguler" de l'ANSSI. [#df1b97b](https://github.com/betagouv/anssi-portail/issues/df1b97b)
-- Modification du nom du site sur Google. [#e5e142f](https://github.com/betagouv/anssi-portail/issues/e5e142f)
+- Documentation des nouvelles fonctionnalités et des modifications apportées.
+- Amélioration du README.
+- Correction de typos et amélioration de la qualité du code.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Mise à jour des pages de statistiques et des rubriques "Financements" et "Réflexes Cyber".
+- Correction de l'illustration CyberDepart et de l'affichage du centre d'aide.
+- Ajout de la ressource "Réflexes Cyber" au catalogue.
+- Amélioration de la gestion des erreurs et des messages d'alerte.
+- Ajout de la gestion des rôles utilisateurs pour la gestion des guides.
+- Suppression de fonctionnalités obsolètes (favoris MENIS2, carte MonEspaceNIS2).

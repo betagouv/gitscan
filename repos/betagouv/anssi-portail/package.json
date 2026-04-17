@@ -11,8 +11,9 @@
     "admin": "node -e \"const admin = new (require('./back/dist/src/admin/consoleAdministration.js').ConsoleAdministration)()\" -i",
     "admin:dev": "pnpm -F @anssi-portail/back build && node --env-file .env -e \"const admin = new (require('./back/dist/src/admin/consoleAdministration.js').ConsoleAdministration)()\" -i",
     "build": "pnpm -r build",
-    "dev": "concurrently -n \"SERVEUR,SVELTE,JEKYLL,BDD,MIGRE\" --prefix-colors \"cyan,green,magenta,blue,yellow\" \"node --watch --import tsx --env-file .env ./back/src/serveur.ts\" \"pnpm --filter @anssi-portail/svelte watch\" \"sleep 5 && jekyll build -s ./front -d ./front/_site -w\" \"docker compose up db\" \"sleep 3 && pnpm migre-bdd\"",
+    "dev": "concurrently -n \"SERVEUR,SVELTE,JEKYLL,BDD,MIGRE\" --prefix-colors \"cyan,green,magenta,blue,yellow\" \"SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true node --watch --import tsx --env-file .env ./back/src/serveur.ts\" \"pnpm --filter @anssi-portail/svelte watch\" \"sleep 5 && SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true ${GEM_HOME}/bin/jekyll build -s ./front -d ./front/_site -w\" \"docker compose up db\" \"sleep 3 && pnpm migre-bdd\"",
     "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
     "test": "pnpm --reporter=append-only -r test",
     "migre-bdd": "pnpm --filter @anssi-portail/back migre-bdd",
     "preinstall": "npx only-allow@1.2.2 pnpm",
@@ -30,7 +31,7 @@
     "vitest": "^3.2.4"
   },
   "runtimeDependencies": {
-    "@lab-anssi/ui-kit": "1.44.5"
+    "@lab-anssi/ui-kit": "1.46.1"
   },
   "pnpm": {
     "overrides": {
@@ -44,7 +45,17 @@
       "immutable@>=5.0.0 <5.1.5": ">=5.1.5",
       "dompurify@>=3.1.3 <=3.3.1": ">=3.3.2",
       "devalue@<5.6.4": ">=5.6.4",
-      "undici@>=7.0.0 <7.24.0": ">=7.24.0"
+      "undici@>=7.0.0 <7.24.0": ">=7.24.0",
+      "flatted@<=3.4.1": ">=3.4.2",
+      "picomatch@>=4.0.0 <4.0.4": ">=4.0.4",
+      "path-to-regexp@<0.1.13": "0.1.13",
+      "brace-expansion@<1.1.13": "1.1.13",
+      "brace-expansion@>=4.0.0 <5.0.5": ">=5.0.5",
+      "yaml@>=2.0.0 <2.8.3": ">=2.8.3",
+      "fast-xml-parser@>=4.0.0-beta.3 <=5.5.6": ">=5.5.7",
+      "vite@<=6.4.1": "6.4.2",
+      "vite@>=7.0.0 <=7.3.1": "7.3.2",
+      "lodash@<=4.17.23": ">=4.18.0"
     }
   }
 }

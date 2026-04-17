@@ -2,6 +2,7 @@
 ├── .env.template
 ├── .github
 │   └── workflows
+│       ├── cellar-deploiement.yml
 │       ├── checkov.yml
 │       ├── compare-financements.yml
 │       ├── deploiement-node.yml
@@ -13,7 +14,8 @@
 ├── .gitignore
 ├── .npmrc
 ├── .nvmrc
-├── .prettierrc.json
+├── .prettierignore
+├── .prettierrc.cjs
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
@@ -41,6 +43,8 @@
 │   │   ├── 20250618125054_supprimeColonneUtilisateurHache256.ts
 │   │   ├── 20250709074649_supprimeReponsesTestInvalides.ts
 │   │   ├── 20251203141105_migreFavorisDeGuides.ts
+│   │   ├── 20260320151226_supprimeFavorisMonEspaceNIS2.ts
+│   │   ├── 20260327095732_ajouteRolesUtilisateur.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -56,9 +60,12 @@
 │   │   │   │   ├── ressourceFavoris.ts
 │   │   │   │   └── ressourceFavorisPartages.ts
 │   │   │   ├── fournisseurChemin.ts
+│   │   │   ├── gestionnaireRessourceCellar.ts
 │   │   │   ├── guides
 │   │   │   │   ├── guidePresentation.ts
 │   │   │   │   ├── ressourceDocumentGuide.ts
+│   │   │   │   ├── ressourceDocumentsGuide.schema.ts
+│   │   │   │   ├── ressourceDocumentsGuide.ts
 │   │   │   │   ├── ressourceGuide.ts
 │   │   │   │   ├── ressourceGuides.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.ts
@@ -69,6 +76,8 @@
 │   │   │   ├── nis2
 │   │   │   │   ├── ressourceExigencesNis2.ts
 │   │   │   │   ├── ressourceExigencesNis2Csv.ts
+│   │   │   │   ├── ressourceSimulateurNis2.schemas.ts
+│   │   │   │   ├── ressourceSimulateurNis2.ts
 │   │   │   │   └── strategieExportCsvUneLigneParExigence.ts
 │   │   │   ├── oidc
 │   │   │   │   ├── adaptateurOIDC.ts
@@ -76,12 +85,15 @@
 │   │   │   │   ├── ressourceApresDeconnexionOIDC.ts
 │   │   │   │   ├── ressourceConnexionOIDC.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.ts
+│   │   │   ├── ressourceAbonnementInfolettre.schema.ts
+│   │   │   ├── ressourceAbonnementInfolettre.ts
 │   │   │   ├── ressourceAnnuaireDepartements.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.ts
 │   │   │   ├── ressourceAnnuaireRegions.ts
 │   │   │   ├── ressourceAnnuaireSecteursActivite.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.ts
 │   │   │   ├── ressourceAvisUtilisateur.ts
+│   │   │   ├── ressourceDocumentRessource.ts
 │   │   │   ├── ressourceFinancement.ts
 │   │   │   ├── ressourceFinancements.ts
 │   │   │   ├── ressourceInformationsCreationCompte.ts
@@ -98,14 +110,15 @@
 │   │   │   ├── ressourceStatistiquesDiagnostic.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourceVisa.ts
-│   │   │   └── testMaturite
-│   │   │       ├── ressourceDernierResultatDeTest.ts
-│   │   │       ├── ressourceRepartitionDesResultatsDeTest.ts
-│   │   │       ├── ressourceResultatDeTest.ts
-│   │   │       ├── ressourceResultatsDeTest.ts
-│   │   │       ├── ressourceResultatsSessionDeGroupe.ts
-│   │   │       ├── ressourceSessionDeGroupe.ts
-│   │   │       └── ressourceSessionsDeGroupe.ts
+│   │   │   ├── testMaturite
+│   │   │   │   ├── ressourceDernierResultatDeTest.ts
+│   │   │   │   ├── ressourceRepartitionDesResultatsDeTest.ts
+│   │   │   │   ├── ressourceResultatDeTest.ts
+│   │   │   │   ├── ressourceResultatsDeTest.ts
+│   │   │   │   ├── ressourceResultatsSessionDeGroupe.ts
+│   │   │   │   ├── ressourceSessionDeGroupe.ts
+│   │   │   │   └── ressourceSessionsDeGroupe.ts
+│   │   │   └── zod.ts
 │   │   ├── bus
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
@@ -114,6 +127,7 @@
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
+│   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
@@ -121,20 +135,16 @@
 │   │   │   ├── evenements
 │   │   │   │   ├── avisUtilisateurDonne.ts
 │   │   │   │   ├── compteCree.ts
-│   │   │   │   ├── documentGuideTelecharge.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
+│   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── testRealise.ts
-│   │   │   │   ├── utilisateurConnecte.ts
-│   │   │   │   └── visaTelecharge.ts
-│   │   │   ├── miseAJourFavorisUtilisateur.ts
-│   │   │   ├── rapporteEvenementGuideTelechargeDansTraqueur.ts
-│   │   │   └── rapporteEvenementVisaTelechargeDansTraqueur.ts
+│   │   │   │   └── utilisateurConnecte.ts
+│   │   │   └── miseAJourFavorisUtilisateur.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotSessionDeGroupePostgres.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.ts
-│   │   │   ├── adaptateurAnalytique.ts
 │   │   │   ├── adaptateurCellar.ts
 │   │   │   ├── adaptateurChiffrement.ts
 │   │   │   ├── adaptateurEmailBrevo.ts
@@ -158,10 +168,12 @@
 │   │   │   ├── entrepotFinancementGrist.ts
 │   │   │   ├── entrepotGrist.ts
 │   │   │   ├── entrepotGuideGrist.ts
+│   │   │   ├── entrepotGuideTravailGrist.ts
 │   │   │   ├── entrepotResultatTestPostgres.ts
 │   │   │   ├── entrepotSecretHachagePostgres.ts
 │   │   │   ├── entrepotUtilisateurMPAPostgres.ts
 │   │   │   ├── fournisseurHorloge.ts
+│   │   │   ├── generateurImage.ts
 │   │   │   ├── grist.ts
 │   │   │   ├── markdown.ts
 │   │   │   ├── messagerieMattermost.ts
@@ -175,6 +187,7 @@
 │   │   │   ├── entrepotFavori.ts
 │   │   │   ├── entrepotFinancement.ts
 │   │   │   ├── entrepotGuide.ts
+│   │   │   ├── entrepotGuideTravail.ts
 │   │   │   ├── entrepotResultatTest.ts
 │   │   │   ├── entrepotSessionDeGroupe.ts
 │   │   │   ├── entrepotUtilisateur.ts
@@ -186,6 +199,48 @@
 │   │   │   ├── nis2
 │   │   │   │   ├── entrepotExigence.ts
 │   │   │   │   └── exigence.ts
+│   │   │   ├── nis2-simulateur
+│   │   │   │   ├── Activite.definitions.ts
+│   │   │   │   ├── Activite.operations.ts
+│   │   │   │   ├── Activite.valeurs.ts
+│   │   │   │   ├── ChampsSimulateur.definitions.ts
+│   │   │   │   ├── ChampsSimulateur.valeurs.ts
+│   │   │   │   ├── EtatQuestionnaire.ts
+│   │   │   │   ├── InformationsEtape.ts
+│   │   │   │   ├── LibellesActivites.ts
+│   │   │   │   ├── LibellesSecteursActivite.ts
+│   │   │   │   ├── LibellesSousSecteursActivite.ts
+│   │   │   │   ├── ListeDescriptionsActivites.ts
+│   │   │   │   ├── Regulation.definitions.ts
+│   │   │   │   ├── RegulationEntite.valeurs.ts
+│   │   │   │   ├── SecteurActivite.definitions.ts
+│   │   │   │   ├── SecteurActivite.valeurs.ts
+│   │   │   │   ├── SousSecteurActivite.definitions.ts
+│   │   │   │   ├── SousSecteurActivite.operations.ts
+│   │   │   │   ├── SousSecteurActivite.valeurs.ts
+│   │   │   │   ├── UnionDe.ts
+│   │   │   │   ├── commun.predicats.ts
+│   │   │   │   └── questionnaire
+│   │   │   │       ├── EnsembleDeSpecifications.ts
+│   │   │   │       ├── FabriqueDeSpecifications.ts
+│   │   │   │       ├── FormatDesSpecificationsCSV.ts
+│   │   │   │       ├── LecteurDeSpecifications.ts
+│   │   │   │       ├── ResultatAvecAnalyse.ts
+│   │   │   │       ├── Specifications.ts
+│   │   │   │       ├── calculEligibilite.ts
+│   │   │   │       ├── evalueEligibilite.ts
+│   │   │   │       ├── regles
+│   │   │   │       │   ├── ErreurLectureDeRegle.ts
+│   │   │   │       │   ├── RegleActivites.ts
+│   │   │   │       │   ├── RegleEntiteOSE.ts
+│   │   │   │       │   ├── RegleEtablissementPrincipal.ts
+│   │   │   │       │   ├── RegleFournitureDeServicesNumerique.ts
+│   │   │   │       │   ├── RegleLocalisation.ts
+│   │   │   │       │   ├── RegleSecteurs.ts
+│   │   │   │       │   ├── RegleSousSecteurs.ts
+│   │   │   │       │   ├── RegleTaille.ts
+│   │   │   │       │   └── RegleTypeDeStructure.ts
+│   │   │   │       └── specifications-completes.csv
 │   │   │   ├── niveauDeSatisfaction.ts
 │   │   │   ├── referentielDepartements.ts
 │   │   │   ├── referentielDomainesDeSpecialite.ts
@@ -197,6 +252,7 @@
 │   │   │   ├── serviceSanteGuides.ts
 │   │   │   ├── sessionDeGroupe.ts
 │   │   │   ├── statistiques.ts
+│   │   │   ├── telephone.ts
 │   │   │   └── utilisateur.ts
 │   │   └── serveur.ts
 │   ├── tests
@@ -212,6 +268,7 @@
 │   │   │   ├── guides
 │   │   │   │   ├── constructeurGuideGrist.ts
 │   │   │   │   ├── ressourceDocumentGuide.spec.ts
+│   │   │   │   ├── ressourceDocumentsGuide.spec.ts
 │   │   │   │   ├── ressourceGuide.spec.ts
 │   │   │   │   ├── ressourceGuides.spec.ts
 │   │   │   │   └── ressourceGuidesMemesCollections.spec.ts
@@ -222,6 +279,7 @@
 │   │   │   ├── nis2
 │   │   │   │   ├── ressourceExigencesNis2.spec.ts
 │   │   │   │   ├── ressourceExigencesNis2Csv.spec.ts
+│   │   │   │   ├── ressourceSimulateurNis2.spec.ts
 │   │   │   │   └── strategieExportCsvUneLigneParExigence.spec.ts
 │   │   │   ├── objetsPretsALEmploi.ts
 │   │   │   ├── oidc
@@ -229,12 +287,14 @@
 │   │   │   │   ├── ressourceApresDeconnexionOIDC.spec.ts
 │   │   │   │   ├── ressourceConnexionOIDC.spec.ts
 │   │   │   │   └── ressourceDeconnexionOIDC.spec.ts
+│   │   │   ├── ressourceAbonnementInfolettre.spec.ts
 │   │   │   ├── ressourceAnnuaireDepartements.spec.ts
 │   │   │   ├── ressourceAnnuaireOrganisations.spec.ts
 │   │   │   ├── ressourceAnnuaireRegions.spec.ts
 │   │   │   ├── ressourceAnnuaireSecteursActivite.spec.ts
 │   │   │   ├── ressourceAnnuaireTranchesEffectif.spec.ts
 │   │   │   ├── ressourceAvisUtilisateur.spec.ts
+│   │   │   ├── ressourceDocumentRessource.spec.ts
 │   │   │   ├── ressourceFinancement.spec.ts
 │   │   │   ├── ressourceFinancements.spec.ts
 │   │   │   ├── ressourceInformationsCreationCompte.spec.ts
@@ -267,22 +327,22 @@
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
+│   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.spec.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
-│   │   │   ├── envoieEmailCreationCompte.spec.ts
-│   │   │   ├── rapporteEvenementGuideTelechargeDansTraqueur.spec.ts
-│   │   │   └── rapporteEvenementVisaTelechargeDansTraqueur.spec.ts
+│   │   │   └── envoieEmailCreationCompte.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.spec.ts
 │   │   │   ├── adaptateurEnvironnement.spec.ts
 │   │   │   ├── adaptateurHachage.spec.ts
-│   │   │   ├── adaptateurMatomo.spec.ts
 │   │   │   ├── cache.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
 │   │   │   ├── entrepotGuideGrist.spec.ts
+│   │   │   ├── entrepotGuideTravailGrist.spec.ts
+│   │   │   ├── fournisseurClientHttp.ts
 │   │   │   ├── fournisseurHorlogeDeTest.ts
 │   │   │   ├── markdown.spec.ts
 │   │   │   ├── nis2
@@ -291,10 +351,28 @@
 │   │   ├── metier
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
+│   │   │   ├── guide.spec.ts
+│   │   │   ├── nis2-simulateur
+│   │   │   │   └── questionnaire
+│   │   │   │       ├── EnsembleDeSpecifications.spec.ts
+│   │   │   │       ├── FabriqueDeSpecifications.spec.ts
+│   │   │   │       ├── LeTestDeLaSpecificationCompleteEnCsv.spec.ts
+│   │   │   │       ├── LecteurDeSpecifications.spec.ts
+│   │   │   │       ├── Specifications.spec.ts
+│   │   │   │       ├── aidesAuxTests.ts
+│   │   │   │       ├── casDeTests.activites.ts
+│   │   │   │       ├── csv
+│   │   │   │       │   ├── specification-colonne-manquante.csv
+│   │   │   │       │   ├── specification-ose-est-regulee-ee.csv
+│   │   │   │       │   └── specification-une-ligne.csv
+│   │   │   │       ├── evalueEligibilite.spec.ts
+│   │   │   │       └── regles
+│   │   │   │           └── RegleTaille.spec.ts
 │   │   │   ├── repartitionResultatsTest.spec.ts
 │   │   │   ├── resultatTestMaturite.spec.ts
 │   │   │   ├── serviceSanteGuides.spec.ts
 │   │   │   ├── sessionDeGroupe.spec.ts
+│   │   │   ├── telephone.spec.ts
 │   │   │   └── utilisateur.spec.ts
 │   │   ├── mockCmsCrisp.ts
 │   │   ├── persistance
@@ -303,6 +381,7 @@
 │   │   │   ├── entrepotFavoriMemoire.ts
 │   │   │   ├── entrepotFinancementMemoire.ts
 │   │   │   ├── entrepotGuideMemoire.ts
+│   │   │   ├── entrepotGuideTravailMemoire.ts
 │   │   │   ├── entrepotMemoire.ts
 │   │   │   ├── entrepotResultatTestMemoire.ts
 │   │   │   └── entrepotUtilisateurMemoire.ts
@@ -371,6 +450,7 @@
 │   │   ├── bandeau-maintenance.html
 │   │   ├── carte-item.html
 │   │   ├── centre-aide.html
+│   │   ├── composant-svelte.html
 │   │   ├── encart-cyberdepart.html
 │   │   ├── encart-nis2.html
 │   │   ├── footer.html
@@ -406,6 +486,7 @@
 │   │   ├── prestas-ebios.md
 │   │   ├── publications.md
 │   │   ├── rapport-menace.md
+│   │   ├── reflexes-cyber.md
 │   │   ├── revue-presse.md
 │   │   ├── risques-cyber.md
 │   │   ├── secnumedu.md
@@ -424,7 +505,6 @@
 │   │   ├── hackropole.md
 │   │   ├── mon-aide-cyber-aidants.md
 │   │   ├── mon-aide-cyber.md
-│   │   ├── mon-espace-nis2.md
 │   │   ├── mon-service-securise.md
 │   │   ├── mooc-ebios-rm.md
 │   │   ├── pack-parcours-secu.md
@@ -434,6 +514,7 @@
 │   │   ├── silene.md
 │   │   └── transmission-signalements.md
 │   ├── aPropos.html
+│   ├── abonnement-infolettre.html
 │   ├── accessibilite.html
 │   ├── accueil.html
 │   ├── apres-authentification.html
@@ -462,126 +543,137 @@
 │   │   │   ├── icone-danger.svg
 │   │   │   └── icone-fleche-gauche.svg
 │   │   ├── images
-│   │   │   ├── approfondir-cyber.png
+│   │   │   ├── apercu-faq-nis2-dans-laptop.avif
+│   │   │   ├── approfondir-cyber.avif
 │   │   │   ├── coche-jaune-sur-rond-noir.svg
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── contacts-resultat-vide.svg
-│   │   │   ├── debuter-cyber.png
+│   │   │   ├── debuter-cyber.avif
 │   │   │   ├── directive-nis2-avec-bulle-fond-gris.svg
 │   │   │   ├── directive-nis2.svg
+│   │   │   ├── dragon-coeur-entier.svg
 │   │   │   ├── dragon-coeur.svg
 │   │   │   ├── dragon-kart.svg
 │   │   │   ├── ecrans-virtuels-avec-femme-au-centre.svg
 │   │   │   ├── encart-homologation
-│   │   │   │   ├── encartHomologation.desktop.png
-│   │   │   │   ├── encartHomologation.mobile.png
-│   │   │   │   └── encartHomologation.tablette.png
+│   │   │   │   ├── encartHomologation.desktop.avif
+│   │   │   │   ├── encartHomologation.mobile.avif
+│   │   │   │   └── encartHomologation.tablette.avif
 │   │   │   ├── erreur.svg
-│   │   │   ├── floriane-bizdev.jpg
+│   │   │   ├── floriane-bizdev.avif
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-remplissant-ecran-login.svg
 │   │   │   ├── icone-*.svg  (32 files)
 │   │   │   ├── icone_loupe.svg
 │   │   │   ├── illustration-*.svg  (13 files)
-│   │   │   ├── illustration-faq-NIS2.avif
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
-│   │   │   │   │   └── active-directory-security.png
+│   │   │   │   │   └── active-directory-security.avif
 │   │   │   │   ├── assistance-reponse-incidents
-│   │   │   │   │   └── assistance-reponse-incidents.png
+│   │   │   │   │   └── assistance-reponse-incidents.avif
 │   │   │   │   ├── avis-bulletin
-│   │   │   │   │   └── avis-bulletin.png
+│   │   │   │   │   └── avis-bulletin.avif
 │   │   │   │   ├── cnil-ensemble
-│   │   │   │   │   └── cnil-ensemble.png
+│   │   │   │   │   └── cnil-ensemble.avif
 │   │   │   │   ├── cnil-reco
-│   │   │   │   │   └── cnil-reco.png
+│   │   │   │   │   └── cnil-reco.avif
 │   │   │   │   ├── conseil-technique
-│   │   │   │   │   └── conseil-technique.png
+│   │   │   │   │   └── conseil-technique.avif
 │   │   │   │   ├── cot
-│   │   │   │   │   └── cot.png
+│   │   │   │   │   └── cot.avif
 │   │   │   │   ├── cyber-dico
-│   │   │   │   │   └── cyber-dico.png
+│   │   │   │   │   └── cyber-dico.avif
 │   │   │   │   ├── cyber-enjeux
-│   │   │   │   │   ├── cyber-enjeux-demainspe.png
-│   │   │   │   │   └── cyber-enjeux.png
+│   │   │   │   │   ├── cyber-enjeux-demainspe.avif
+│   │   │   │   │   └── cyber-enjeux.avif
 │   │   │   │   ├── cyber-enjeux-pro
-│   │   │   │   │   └── cyber-enjeux-pro.png
+│   │   │   │   │   └── cyber-enjeux-pro.avif
 │   │   │   │   ├── cybermalveillance
-│   │   │   │   │   └── cybermalveillance.png
+│   │   │   │   │   └── cybermalveillance.avif
 │   │   │   │   ├── demainspecialistecyber
-│   │   │   │   │   ├── demainspecialistecyber-cyberenjeux.png
-│   │   │   │   │   └── demainspecialistecyber.png
+│   │   │   │   │   ├── demainspecialistecyber-cyberenjeux.avif
+│   │   │   │   │   └── demainspecialistecyber.avif
 │   │   │   │   ├── diagnostic-17cyber
-│   │   │   │   │   └── diagnostic-17cyber.png
+│   │   │   │   │   └── diagnostic-17cyber.avif
 │   │   │   │   ├── ebios
-│   │   │   │   │   └── ebios.png
+│   │   │   │   │   └── ebios.avif
 │   │   │   │   ├── hackropole
-│   │   │   │   │   └── hackropole.png
+│   │   │   │   │   └── hackropole.avif
 │   │   │   │   ├── kit-cyber
-│   │   │   │   │   └── kit-cyber.png
+│   │   │   │   │   └── kit-cyber.avif
 │   │   │   │   ├── label-cyber-expert
-│   │   │   │   │   └── label-cyber-expert.png
+│   │   │   │   │   └── label-cyber-expert.avif
 │   │   │   │   ├── livret-cyber-enjeux
-│   │   │   │   │   └── livret-cyber-enjeux.png
+│   │   │   │   │   └── livret-cyber-enjeux.avif
 │   │   │   │   ├── mac
-│   │   │   │   │   ├── mac-accompagnement.png
-│   │   │   │   │   ├── mac-diag.png
-│   │   │   │   │   └── mac.png
+│   │   │   │   │   ├── mac-accompagnement.avif
+│   │   │   │   │   ├── mac-diag.avif
+│   │   │   │   │   └── mac.avif
 │   │   │   │   ├── malette-cyber
-│   │   │   │   │   └── malette-cyber.png
+│   │   │   │   │   └── malette-cyber.avif
 │   │   │   │   ├── mooc-ebios-rm
-│   │   │   │   │   └── mooc-ebios-rm.png
+│   │   │   │   │   └── mooc-ebios-rm.avif
 │   │   │   │   ├── mss
-│   │   │   │   │   ├── mss-accompagnement.png
+│   │   │   │   │   ├── mss-accompagnement.avif
 │   │   │   │   │   ├── mss-securiser.webp
-│   │   │   │   │   └── mss.png
+│   │   │   │   │   └── mss.avif
 │   │   │   │   ├── nis2
-│   │   │   │   │   ├── menis2.png
-│   │   │   │   │   ├── nis2.png
-│   │   │   │   │   └── nis2parcours.png
+│   │   │   │   │   └── nis2.avif
 │   │   │   │   ├── nl-industries
-│   │   │   │   │   └── nl-industries.png
+│   │   │   │   │   └── nl-industries.avif
 │   │   │   │   ├── pack-parcours-secu
-│   │   │   │   │   └── pack-parcours-secu.png
+│   │   │   │   │   └── pack-parcours-secu.avif
 │   │   │   │   ├── panorama
 │   │   │   │   │   └── panorama.avif
 │   │   │   │   ├── pix
-│   │   │   │   │   └── pix.png
+│   │   │   │   │   └── pix.avif
 │   │   │   │   ├── prestas-ebios
-│   │   │   │   │   └── prestas-ebios.png
+│   │   │   │   │   └── prestas-ebios.avif
 │   │   │   │   ├── publications
-│   │   │   │   │   └── publications.png
+│   │   │   │   │   └── publications.avif
 │   │   │   │   ├── rapport-menace
-│   │   │   │   │   └── rapport-menace.png
+│   │   │   │   │   └── rapport-menace.avif
+│   │   │   │   ├── reflexes-cyber
+│   │   │   │   │   ├── RC-Coll.png
+│   │   │   │   │   ├── RC-Ent.png
+│   │   │   │   │   ├── RC-FR.png
+│   │   │   │   │   └── RC-home.png
 │   │   │   │   ├── revue-presse
-│   │   │   │   │   └── revue-presse.png
+│   │   │   │   │   └── revue-presse.avif
 │   │   │   │   ├── risques-cyber
-│   │   │   │   │   └── risques-cyber.png
+│   │   │   │   │   └── risques-cyber.avif
 │   │   │   │   ├── secnumacademie
-│   │   │   │   │   ├── secnum-academie.png
-│   │   │   │   │   └── secnumacademie-video.png
+│   │   │   │   │   ├── secnum-academie.avif
+│   │   │   │   │   └── secnumacademie-video.avif
 │   │   │   │   ├── secnumedu
-│   │   │   │   │   └── secnumedu.png
+│   │   │   │   │   └── secnumedu.avif
 │   │   │   │   ├── secnumedufc
-│   │   │   │   │   └── secnumedufc.png
+│   │   │   │   │   └── secnumedufc.avif
 │   │   │   │   ├── sens-cyber
-│   │   │   │   │   └── sens-cyber.png
+│   │   │   │   │   └── sens-cyber.avif
 │   │   │   │   ├── sensy-crise
-│   │   │   │   │   └── sensy-crise.png
+│   │   │   │   │   └── sensy-crise.avif
 │   │   │   │   ├── silene
-│   │   │   │   │   └── silene.png
+│   │   │   │   │   └── silene.avif
 │   │   │   │   ├── transmission-signalements
-│   │   │   │   │   └── transmission-signalements.png
+│   │   │   │   │   └── transmission-signalements.avif
 │   │   │   │   └── visa-secu
-│   │   │   │       └── visa-secu.png
+│   │   │   │       └── visa-secu.avif
 │   │   │   ├── image-generique.avif
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale.svg
 │   │   │   ├── jumelles-avec-bulle-fond-gris.svg
+│   │   │   ├── localisation-france.svg
 │   │   │   ├── logo-afcdp.avif
 │   │   │   ├── logo-amrf.avif
 │   │   │   ├── logo-anct.svg
 │   │   │   ├── logo-anssi.svg
+│   │   │   ├── logo-club-dpo.avif
+│   │   │   ├── logo-cyber-reunion.avif
+│   │   │   ├── logo-elipso.avif
+│   │   │   ├── logo-ficam.avif
+│   │   │   ├── logo-gifen.avif
+│   │   │   ├── logo-spiil.avif
 │   │   │   ├── logo-suite-territoriale.svg
 │   │   │   ├── logo-umih.svg
 │   │   │   ├── maintenance.svg
@@ -595,8 +687,8 @@
 │   │   │   ├── personne-avec-micro-consultant-sites-cyber.svg
 │   │   │   ├── personne-qui-cogite.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
+│   │   │   ├── photo-livret-nis2.avif
 │   │   │   ├── pile-de-pieces.svg
-│   │   │   ├── plaquette-nis2.avif
 │   │   │   ├── pro_connect.svg
 │   │   │   ├── pro_connect_hover.svg
 │   │   │   ├── stat-diagnostics-cyber.svg
@@ -619,9 +711,9 @@
 │   │   │   │   │   ├── insuffisant.svg
 │   │   │   │   │   ├── intermediaire.svg
 │   │   │   │   │   └── optimal.svg
-│   │   │   │   └── test-maturite.png
+│   │   │   │   └── test-maturite.avif
 │   │   │   ├── trois-mains-croisees.svg
-│   │   │   └── trouver-parcours.png
+│   │   │   └── trouver-parcours.avif
 │   │   └── styles
 │   │       ├── accueil.scss
 │   │       ├── boutons.scss
@@ -648,6 +740,7 @@
 │   ├── cgu.html
 │   ├── collectivites.html
 │   ├── confidentialite.html
+│   ├── confirmation-abonnement-infolettre.html
 │   ├── connexion.html
 │   ├── contacts.html
 │   ├── creation-compte.html
@@ -658,16 +751,21 @@
 │   ├── favoris.html
 │   ├── financements.html
 │   ├── formulaire-matomo.html
+│   ├── gestion-guides
+│   │   └── ajout-document.html
 │   ├── guides.html
 │   ├── inscription.html
 │   ├── lib-svelte
 │   │   ├── .gitignore
-│   │   ├── .prettierrc
+│   │   ├── .prettierrc.cjs
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── abonnement-infolettre
+│   │   │   │   ├── AbonnementInfolettre.svelte
+│   │   │   │   └── ConfirmationAbonnementInfolettre.svelte
 │   │   │   ├── avis-utilisateur
 │   │   │   │   ├── AvisUtilisateur.svelte
 │   │   │   │   └── ControleAvisUtilisateur.ts
@@ -691,7 +789,7 @@
 │   │   │   │   │   ├── FiltreCollection.svelte
 │   │   │   │   │   ├── FiltreLangue.svelte
 │   │   │   │   │   ├── Guide.svelte
-│   │   │   │   │   ├── InciteCreerUnCompte.svelte
+│   │   │   │   │   ├── InciteASAbonner.svelte
 │   │   │   │   │   ├── ListeGuideMemeCollection.svelte
 │   │   │   │   │   ├── SqueletteCarteGuide.svelte
 │   │   │   │   │   └── guide.ts
@@ -765,11 +863,18 @@
 │   │   │   │       ├── rechercheParRegion.store.ts
 │   │   │   │       ├── rechercheParTypeFinancement.store.ts
 │   │   │   │       └── rechercheParTypeOrganisation.store.ts
+│   │   │   ├── gestion-guides
+│   │   │   │   ├── AjoutDocument.svelte
+│   │   │   │   ├── GestionGuide.svelte
+│   │   │   │   ├── ListeDesDocuments.svelte
+│   │   │   │   └── SelectionIdentifiantGuide.svelte
+│   │   │   ├── global.d.ts
 │   │   │   ├── identification
 │   │   │   │   └── ZoneIdentification.svelte
 │   │   │   ├── interlocuteurs
 │   │   │   │   ├── CarrouselDesInterlocuteurs.svelte
 │   │   │   │   └── EquipeBizDev.svelte
+│   │   │   ├── main-abonnement-infolettre.ts
 │   │   │   ├── main-associations.ts
 │   │   │   ├── main-avis-utilisateur.ts
 │   │   │   ├── main-badge-agent-anssi.ts
@@ -780,6 +885,7 @@
 │   │   │   ├── main-catalogue.ts
 │   │   │   ├── main-centre-aide.ts
 │   │   │   ├── main-collectivites.ts
+│   │   │   ├── main-confirmation-abonnement-infolettre.ts
 │   │   │   ├── main-contacts.ts
 │   │   │   ├── main-creation-compte.ts
 │   │   │   ├── main-demande-aide-mon-aide-cyber.ts
@@ -790,6 +896,7 @@
 │   │   │   ├── main-favoris.ts
 │   │   │   ├── main-fil-ariane.ts
 │   │   │   ├── main-financements.ts
+│   │   │   ├── main-gestion-guides.ts
 │   │   │   ├── main-guide.ts
 │   │   │   ├── main-identification.ts
 │   │   │   ├── main-maturite-utilisateur.ts
@@ -799,7 +906,9 @@
 │   │   │   ├── main-page-directive-nis2.ts
 │   │   │   ├── main-resultats-session-groupe.ts
 │   │   │   ├── main-sante.ts
+│   │   │   ├── main-sentry.ts
 │   │   │   ├── main-session-groupe.ts
+│   │   │   ├── main-simulateur-nis2.ts
 │   │   │   ├── main-statistiques.ts
 │   │   │   ├── main-test-maturite.ts
 │   │   │   ├── maintenance
@@ -852,6 +961,42 @@
 │   │   │   │       ├── TableauCorrespondancesExigences.svelte
 │   │   │   │       ├── TableauExigencesSimple.svelte
 │   │   │   │       └── configuration.type.ts
+│   │   │   ├── nis2-simulateur
+│   │   │   │   ├── SimulateurNis2.svelte
+│   │   │   │   ├── etapes
+│   │   │   │   │   ├── DescriptionActivite.svelte
+│   │   │   │   │   ├── Etape.svelte
+│   │   │   │   │   ├── EtapeActivites.svelte
+│   │   │   │   │   ├── EtapeAppartenanceUE.svelte
+│   │   │   │   │   ├── EtapeDesignation.svelte
+│   │   │   │   │   ├── EtapeLocalisationEtablissementPrincipal.svelte
+│   │   │   │   │   ├── EtapeLocalisationEtablissementPrincipal.ts
+│   │   │   │   │   ├── EtapeLocalisationServicesNumeriques.svelte
+│   │   │   │   │   ├── EtapePrealable.svelte
+│   │   │   │   │   ├── EtapeSecteursActivite.svelte
+│   │   │   │   │   ├── EtapeSousSecteursActivite.svelte
+│   │   │   │   │   ├── EtapeTailleEntitePrivee.svelte
+│   │   │   │   │   ├── EtapeTypeStructure.svelte
+│   │   │   │   │   ├── PrecedentSuivant.svelte
+│   │   │   │   │   ├── TitresEtapes.ts
+│   │   │   │   │   └── etapes.types.ts
+│   │   │   │   ├── resultat
+│   │   │   │   │   ├── EtapeResultat.svelte
+│   │   │   │   │   ├── LigneEtMaintenant.svelte
+│   │   │   │   │   ├── PointsAttention.contenus.ts
+│   │   │   │   │   ├── PointsAttention.svelte
+│   │   │   │   │   ├── TamponResultat.svelte
+│   │   │   │   │   └── TamponResultat.textes.ts
+│   │   │   │   ├── simulateurNi2.api.ts
+│   │   │   │   └── stores
+│   │   │   │       ├── SecteurActivite.predicats.ts
+│   │   │   │       ├── SousSecteurActivite.predicats.ts
+│   │   │   │       ├── actions.ts
+│   │   │   │       ├── arrays.predicats.ts
+│   │   │   │       ├── questionnaire.selecteurs.ts.ts
+│   │   │   │       ├── questionnaire.store.ts
+│   │   │   │       ├── questionnaireAvecUndo.store.ts
+│   │   │   │       └── quiSupporteUndo.ts
 │   │   │   ├── niveaux-maturite
 │   │   │   │   ├── IllustrationNiveauMaturite.svelte
 │   │   │   │   ├── NiveauxMaturite.donnees.ts
@@ -951,9 +1096,10 @@
 │   │   │   │   ├── ZoneTexte.svelte
 │   │   │   │   ├── badge.type.ts
 │   │   │   │   ├── filAriane.ts
-│   │   │   │   └── formulaire
-│   │   │   │       ├── SelectionOrganisation.svelte
-│   │   │   │       └── SelectionOrganisation.types.ts
+│   │   │   │   ├── formulaire
+│   │   │   │   │   ├── SelectionOrganisation.svelte
+│   │   │   │   │   └── SelectionOrganisation.types.ts
+│   │   │   │   └── quiScroll.attachment.ts
 │   │   │   ├── utils
 │   │   │   │   ├── arrondis.ts
 │   │   │   │   └── aseptisationDuHtml.ts
@@ -998,6 +1144,10 @@
 │   │   │   │       ├── rechercheParNormeISO.store.spec.ts
 │   │   │   │       ├── rechercheParObjectifNis2.store.spec.ts
 │   │   │   │       └── rechercheParThematiqueNis2.store.spec.ts
+│   │   │   ├── nis2-simulateur
+│   │   │   │   └── stores
+│   │   │   │       ├── questionnaire.store.spec.ts
+│   │   │   │       └── questionnaireAvecUndo.store.spec.ts
 │   │   │   ├── stores
 │   │   │   │   └── profil.store.spec.ts
 │   │   │   └── test-maturite
@@ -1028,11 +1178,11 @@
 │   │   ├── optOutMatomo.js
 │   │   ├── parcours.js
 │   │   ├── scroll.js
-│   │   ├── sentry.js
 │   │   └── service.js
 │   ├── securite.html
 │   ├── services-anssi.html
 │   ├── session-groupe.html
+│   ├── simulateur-nis2.html
 │   ├── statistiques.html
 │   ├── test
 │   │   └── scroll.test.js
@@ -1069,17 +1219,5 @@
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-└── recuperation-guides
-    ├── package.json
-    ├── src
-    │   ├── index.ts
-    │   ├── lecteurDeSiteHttp.ts
-    │   ├── recuperateurDAdressesDesGuides.ts
-    │   ├── recuperateurDocuments.ts
-    │   ├── recuperateurGuide.ts
-    │   └── transformateurCsv.ts
-    ├── tests
-    │   ├── recuperateurDAdressesDesGuides.spec.ts
-    │   └── recuperateurGuide.spec.ts
-    └── tsconfig.json
-168 directories, 959 files
+└── prek.toml
+182 directories, 1083 files
