@@ -1,17 +1,20 @@
-## Changelog : doc.incubateur.net-communaute (30 derniers jours)
+## Changelog : doc.incubateur.net-communaute (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-La documentation de la communauté beta.gouv.fr a connu une période d'activité intense ces dernières semaines, principalement axée sur des mises à jour et des améliorations de contenu. Ces changements visent à affiner les guides et les informations disponibles pour les membres de la communauté, notamment concernant le coaching, le pilotage par l'impact, et l'utilisation des outils de la suite numérique. Une attention particulière a été portée à la documentation relative aux emails et à l'intégration de Metabase.
+Ce mois-ci, la documentation de la communauté beta.gouv.fr a été enrichie avec de nouvelles pages sur l'automatisation des tests d'accessibilité et le coaching RH. Des améliorations ont également été apportées à la documentation existante, notamment concernant GRIST et les sites conformes, ainsi que des corrections d'ancres et de liens.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la documentation du "coach" avec la version 2 ([#1723](https://github.com/betagouv/doc.incubateur.net-communaute/pull/1723)).
-- Amélioration de la page "Le jeu du pilotage par l'impact" ([#18868e4](https://github.com/betagouv/doc.incubateur.net-communaute/commit/18868e4)).
-- Ajout d'informations sur l'outil de migration OMM pour les emails ([#226](https://github.com/betagouv/doc.incubateur.net-communaute/issues/226)).
-- Mise à jour du README avec des conseils de sécurité et l'utilisation de PostgreSQL pour Metabase ([#225](https://github.com/betagouv/doc.incubateur.net-communaute/pull/225)).
-- Mise à jour de la page "où travailler" ([#141655b](https://github.com/betagouv/doc.incubateur.net-communaute/commit/141655b)).
-- Mise à jour de la page "emails-suite-numerique.md" ([#f678766](https://github.com/betagouv/doc.incubateur.net-communaute/commit/f678766) et [#77d80d3](https://github.com/betagouv/doc.incubateur.net-communaute/commit/77d80d3)).
-- Mise à jour du README principal ([#227](https://github.com/betagouv/doc.incubateur.net-communaute/pull/227) et [#848c770](https://github.com/betagouv/doc.incubateur.net-communaute/commit/848c770)).
+- Ajout d'une nouvelle page sur l'automatisation des tests d'accessibilité avec des corrections diverses. [#1745](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1745)
+- Amélioration de la documentation GRIST avec des détails sur l'API. [#230](https://github.com/betagouv/doc.incubateur.net-communaute/issues/230)
+- Renommage de "Sites Faciles" en "Sites Conformes" pour plus de clarté.
+- Ajout d'informations sur le service de rétro-action pour le coaching RH. [#1748](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1748)
+- Mise à jour du lien de réinitialisation du mot de passe dans les instructions par email.
 
 ### Évolutions techniques
-- Changement de la matrice de pondération ([#1698](https://github.com/betagouv/doc.incubateur.net-communaute/pull/1698)).
-- Modifications mineures et focus sur l'administration ([#1699](https://github.com/betagouv/doc.incubateur.net-communaute/pull/1699)).
+- Correction des ancres de la table des matières pour GitBook. [#233](https://github.com/betagouv/doc.incubateur.net-communaute/issues/233)
+- Ajout d'une redirection pour la charte de culture dans le fichier `.gitbook.yaml`.
+
+### Autres changements
+- Ajout d'une page de présentation de la cartographie des coachs. [#1743](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1743)
+- Suppression d'un lien obsolète pour la charte de culture.
+- Diverses mises à jour de contenu (sans description précise dans les commits). [#1742](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1742), [#1744](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1744), [#1746](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1746), [#1747](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1747), [#1749](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1749), [#1750](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1750), [#1751](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1751), [#1752](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1752), [#1753](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1753), [#1754](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1754), [#1756](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1756), [#1757](https://github.com/betagouv/doc.incubateur.net-communaute/issues/1757)
