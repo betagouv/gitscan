@@ -6,11 +6,15 @@
 │   └── skills
 │       ├── dsfr-component
 │       │   └── SKILL.md
+│       ├── extract-roseau-gateway
+│       │   └── SKILL.md
 │       ├── fullstack-route
 │       │   └── SKILL.md
 │       ├── masa-provider
 │       │   └── SKILL.md
 │       ├── nestjs-testing
+│       │   └── SKILL.md
+│       ├── table-page
 │       │   └── SKILL.md
 │       └── test-front-component
 │           └── SKILL.md
@@ -50,6 +54,7 @@
 │   │   │   │   │   └── loggerRequest.middleware.ts
 │   │   │   │   └── version.controller.ts
 │   │   │   ├── authentication
+│   │   │   │   ├── authentication.controller.spec.ts
 │   │   │   │   ├── authentication.controller.ts
 │   │   │   │   ├── authentication.factory.ts
 │   │   │   │   ├── authentication.middleware.ts
@@ -63,6 +68,13 @@
 │   │   │   │   ├── isAdmin.guard.ts
 │   │   │   │   ├── me.guard.spec.ts
 │   │   │   │   └── me.guard.ts
+│   │   │   ├── conformite
+│   │   │   │   ├── conformite.controller.spec.ts
+│   │   │   │   ├── conformite.controller.ts
+│   │   │   │   ├── conformite.mapper.ts
+│   │   │   │   ├── conformite.module.ts
+│   │   │   │   ├── conformite.service.spec.ts
+│   │   │   │   └── conformite.service.ts
 │   │   │   ├── dossier
 │   │   │   │   ├── controle
 │   │   │   │   │   ├── controle.controller.ts
@@ -169,9 +181,17 @@
 │   │   │   ├── mainServer.ts
 │   │   │   ├── mainWorker.ts
 │   │   │   ├── masa
+│   │   │   │   ├── fromMasa.mapper.ts
 │   │   │   │   ├── masa.dto.ts
 │   │   │   │   ├── masa.module.ts
-│   │   │   │   └── masa.provider.ts
+│   │   │   │   ├── masa.provider.ts
+│   │   │   │   └── toMasa.mapper.ts
+│   │   │   ├── mesures
+│   │   │   │   ├── mesures.controller.spec.ts
+│   │   │   │   ├── mesures.controller.ts
+│   │   │   │   ├── mesures.module.ts
+│   │   │   │   ├── mesures.service.spec.ts
+│   │   │   │   └── mesures.service.ts
 │   │   │   ├── notification
 │   │   │   │   ├── brevo
 │   │   │   │   │   ├── email.factory.ts
@@ -210,9 +230,13 @@
 │   │   │   │       │   ├── aga.entity.ts
 │   │   │   │       │   ├── agac.entity.ts
 │   │   │   │       │   ├── agat.entity.ts
+│   │   │   │       │   ├── alr.entity.ts
 │   │   │   │       │   ├── cpy.entity.ts
 │   │   │   │       │   ├── cxnadm.entity.ts
 │   │   │   │       │   ├── cxntech.entity.ts
+│   │   │   │       │   ├── orm.entity.ts
+│   │   │   │       │   ├── pab.entity.ts
+│   │   │   │       │   ├── ple.entity.ts
 │   │   │   │       │   ├── pmo.entity.ts
 │   │   │   │       │   ├── resa.entity.ts
 │   │   │   │       │   ├── scl.entity.ts
@@ -221,13 +245,27 @@
 │   │   │   │       │   ├── tlref.entity.ts
 │   │   │   │       │   └── tltobl.entity.ts
 │   │   │   │       ├── roseau.gateway.ts
-│   │   │   │       └── roseau.repository.ts
+│   │   │   │       ├── roseau.repository.ts
+│   │   │   │       ├── roseauBilan.gateway.ts
+│   │   │   │       ├── roseauBilan.repository.ts
+│   │   │   │       ├── roseauConformite.gateway.ts
+│   │   │   │       ├── roseauConformite.repository.ts
+│   │   │   │       ├── roseauEvenement.gateway.ts
+│   │   │   │       ├── roseauEvenement.repository.ts
+│   │   │   │       ├── roseauMesureDeposee.gateway.ts
+│   │   │   │       ├── roseauMesureDeposee.repository.ts
+│   │   │   │       ├── roseauReferentielPointMesure.gateway.ts
+│   │   │   │       ├── roseauReferentielPointMesure.repository.ts
+│   │   │   │       ├── roseauTransmission.gateway.ts
+│   │   │   │       └── roseauTransmission.repository.ts
 │   │   │   ├── shared
 │   │   │   │   ├── cerbereIdCache.interceptor.ts
 │   │   │   │   ├── constants
 │   │   │   │   │   ├── customRequest.ts
 │   │   │   │   │   └── mimeTypes.ts
 │   │   │   │   ├── guards
+│   │   │   │   │   ├── hasUserAccessToOuvrages.guard.spec.ts
+│   │   │   │   │   ├── hasUserAccessToOuvrages.guard.ts
 │   │   │   │   │   ├── useOrGuards.spec.ts
 │   │   │   │   │   └── useOrGuards.ts
 │   │   │   │   ├── logger
@@ -252,6 +290,23 @@
 │   │   │   │   │   └── string.service.ts
 │   │   │   │   ├── shared.module.ts
 │   │   │   │   └── useCase.ts
+│   │   │   ├── suivi-regulier
+│   │   │   │   ├── bilan
+│   │   │   │   │   ├── bilan.controller.ts
+│   │   │   │   │   ├── bilan.module.ts
+│   │   │   │   │   ├── bilan.service.spec.ts
+│   │   │   │   │   └── bilan.service.ts
+│   │   │   │   ├── evenement
+│   │   │   │   │   ├── evenement.controller.ts
+│   │   │   │   │   ├── evenement.module.ts
+│   │   │   │   │   └── evenement.service.ts
+│   │   │   │   ├── suivi-regulier.module.ts
+│   │   │   │   └── transmissionASRetard
+│   │   │   │       ├── transmissionASRetard.controller.ts
+│   │   │   │       ├── transmissionASRetard.mapper.ts
+│   │   │   │       ├── transmissionASRetard.module.ts
+│   │   │   │       ├── transmissionASRetard.service.spec.ts
+│   │   │   │       └── transmissionASRetard.service.ts
 │   │   │   ├── user
 │   │   │   │   ├── droitsUser.service.spec.ts
 │   │   │   │   ├── droitsUser.service.ts
@@ -311,6 +366,8 @@
 │   │   │   │   └── initTestContainer.ts
 │   │   │   ├── jest-e2e-api-worker.json
 │   │   │   ├── jest-e2e.json
+│   │   │   ├── mesures
+│   │   │   │   └── mesures.e2e-spec.ts
 │   │   │   ├── mock
 │   │   │   │   ├── databaseMock.module.ts
 │   │   │   │   ├── infraMock.module.ts
@@ -323,8 +380,13 @@
 │   │   │   ├── responseSandre.helper.ts
 │   │   │   ├── shared
 │   │   │   │   └── logger.service.e2e-spec.ts
+│   │   │   ├── suivi-regulier
+│   │   │   │   ├── bilan.e2e-spec.ts
+│   │   │   │   ├── evenement.e2e-spec.ts
+│   │   │   │   └── transmissionASRetard.e2e-spec.ts
 │   │   │   ├── test.envfile
 │   │   │   ├── testcontainer.config.ts
+│   │   │   ├── tsconfig.json
 │   │   │   ├── userWithDroitsDataset.helper.ts
 │   │   │   └── worker.e2e-spec.ts
 │   │   ├── tsconfig.build.json
@@ -346,10 +408,16 @@
 │       │   ├── App.css
 │       │   ├── App.tsx
 │       │   ├── api
+│       │   │   ├── apiClient.spec.ts
 │       │   │   ├── apiClient.ts
+│       │   │   ├── bilan.ts
+│       │   │   ├── conformite.ts
 │       │   │   ├── depot.ts
+│       │   │   ├── evenement.ts
 │       │   │   ├── indicateurs.ts
-│       │   │   └── referentiel.ts
+│       │   │   ├── mesures.ts
+│       │   │   ├── referentiel.ts
+│       │   │   └── transmissionASRetard.ts
 │       │   ├── assets
 │       │   │   └── react.svg
 │       │   ├── components
@@ -370,30 +438,64 @@
 │       │   │   ├── IndicateursTable.tsx
 │       │   │   ├── MasaIntegrationStatus.tsx
 │       │   │   ├── ProtectedRoute.tsx
+│       │   │   ├── QualificationBadge.tsx
 │       │   │   ├── SelectAutocomplete.css
 │       │   │   ├── SelectAutocomplete.spec.tsx
 │       │   │   ├── SelectAutocomplete.tsx
-│       │   │   └── StatCard.tsx
+│       │   │   ├── SortableHeader.css
+│       │   │   ├── SortableHeader.tsx
+│       │   │   ├── StatCard.tsx
+│       │   │   ├── business
+│       │   │   │   └── WorkInProgress.tsx
+│       │   │   └── common
+│       │   │       └── Skeleton.tsx
 │       │   ├── contexts
 │       │   │   └── AuthContext.tsx
 │       │   ├── example.env
 │       │   ├── helper
-│       │   │   └── controleIconHelper.ts
+│       │   │   ├── bilanTableData.tsx
+│       │   │   ├── conformiteTableData.tsx
+│       │   │   ├── controleIconHelper.ts
+│       │   │   ├── evenementTableData.tsx
+│       │   │   ├── mesureTableData.tsx
+│       │   │   ├── optionsFormatter.ts
+│       │   │   └── transmissionASRetardTableData.tsx
 │       │   ├── hooks
 │       │   │   ├── useAuth.ts
+│       │   │   ├── useBilan.ts
+│       │   │   ├── useBilanFilters.ts
+│       │   │   ├── useCheckDroitsDeDepot.ts
+│       │   │   ├── useConformite.ts
+│       │   │   ├── useConformiteFilters.ts
 │       │   │   ├── useControleStatistics.ts
 │       │   │   ├── useControleTableData.ts
 │       │   │   ├── useDepots.ts
+│       │   │   ├── useEvenement.ts
+│       │   │   ├── useEvenementFilters.ts
+│       │   │   ├── useFinalites.ts
 │       │   │   ├── useGroupedControles.ts
 │       │   │   ├── useIndicateursSteu.ts
+│       │   │   ├── useMesureFilters.ts
+│       │   │   ├── useMesures.ts
+│       │   │   ├── useOuvrages.ts
 │       │   │   ├── usePagination.ts
-│       │   │   └── useRapportAndXmlDownload.ts
+│       │   │   ├── useParametresMesure.ts
+│       │   │   ├── usePointsMesure.ts
+│       │   │   ├── usePointsMesureReferentiel.ts
+│       │   │   ├── useQualifications.ts
+│       │   │   ├── useRapportAndXmlDownload.ts
+│       │   │   ├── useReferentielFilters.ts
+│       │   │   ├── useStatuts.ts
+│       │   │   ├── useSystemesCollecte.ts
+│       │   │   ├── useTransmissionASRetard.ts
+│       │   │   └── useTransmissionASRetardFilters.ts
 │       │   ├── index.css
 │       │   ├── main.tsx
 │       │   ├── pages
 │       │   │   ├── CallbackPage.tsx
 │       │   │   ├── Controle.tsx
 │       │   │   ├── Dashboard.tsx
+│       │   │   ├── DepotDetails.spec.tsx
 │       │   │   ├── DepotDetails.tsx
 │       │   │   ├── DepotDownload.tsx
 │       │   │   ├── DepotUpload.tsx
@@ -401,25 +503,46 @@
 │       │   │   ├── DesignSystemPage.tsx
 │       │   │   ├── HomePage.tsx
 │       │   │   ├── MockAuthorizationPage.tsx
+│       │   │   ├── ReferentielPointsMesure.tsx
+│       │   │   ├── conformite
+│       │   │   │   ├── ConformiteDashboard.spec.tsx
+│       │   │   │   ├── ConformiteDashboard.tsx
+│       │   │   │   ├── ConformiteDetail.constants.ts
+│       │   │   │   ├── ConformiteDetailSkeleton.tsx
+│       │   │   │   └── modal
+│       │   │   │       ├── ConformiteDetailModal.css
+│       │   │   │       ├── ConformiteDetailModal.shared.ts
+│       │   │   │       └── ConformiteDetailModal.tsx
 │       │   │   ├── controleMapper.ts
-│       │   │   └── depot-upload-recap
-│       │   │       ├── components
-│       │   │       │   ├── ChecksList.tsx
-│       │   │       │   ├── EmptyState.tsx
-│       │   │       │   ├── ErrorState.tsx
-│       │   │       │   ├── FooterActions.tsx
-│       │   │       │   ├── ParamsTags.tsx
-│       │   │       │   ├── ParsingLoader.tsx
-│       │   │       │   ├── RecapCard.css
-│       │   │       │   ├── RecapCard.tsx
-│       │   │       │   ├── RecapHeader.tsx
-│       │   │       │   ├── RecapSummaryCard.tsx
-│       │   │       │   └── index.ts
-│       │   │       └── useDepotRecap.ts
+│       │   │   ├── depot-upload-recap
+│       │   │   │   ├── components
+│       │   │   │   │   ├── ChecksList.tsx
+│       │   │   │   │   ├── EmptyState.tsx
+│       │   │   │   │   ├── ErrorState.tsx
+│       │   │   │   │   ├── FooterActions.tsx
+│       │   │   │   │   ├── ParamsTags.tsx
+│       │   │   │   │   ├── ParsingLoader.tsx
+│       │   │   │   │   ├── RecapCard.css
+│       │   │   │   │   ├── RecapCard.tsx
+│       │   │   │   │   ├── RecapHeader.tsx
+│       │   │   │   │   ├── RecapSummaryCard.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   └── useDepotRecap.ts
+│       │   │   └── suivi-regulier
+│       │   │       ├── bilan
+│       │   │       │   ├── BilanDashboard.spec.tsx
+│       │   │       │   └── BilanDashboard.tsx
+│       │   │       ├── evenement
+│       │   │       │   └── EvenementDashboard.tsx
+│       │   │       └── transmissionASRetard
+│       │   │           ├── TransmissionASRetardDashboard.spec.tsx
+│       │   │           └── TransmissionASRetardDashboard.tsx
 │       │   ├── routes.ts
 │       │   ├── services
+│       │   │   ├── auth.service.spec.ts
 │       │   │   ├── auth.service.ts
 │       │   │   └── depot.service.ts
+│       │   ├── test.helper.tsx
 │       │   └── types
 │       │       ├── auth.types.ts
 │       │       └── controle.types.ts
@@ -428,6 +551,7 @@
 │       ├── tsconfig.node.json
 │       ├── vite.config.ts
 │       └── vitest.setup.ts
+├── data_dictionary.md
 ├── devops
 │   ├── local
 │   │   ├── .dockerignore
@@ -436,19 +560,19 @@
 │   │   └── start.sh
 │   └── tools
 │       └── sync-pg
+│           ├── .dockerignore
 │           ├── Dockerfile
-│           ├── blue-green-manager.js
 │           ├── config.js
 │           ├── cron.json
 │           ├── example.env
 │           ├── index.js
-│           ├── package-lock.json
 │           ├── package.json
 │           ├── pg-service.js
 │           ├── s3-service.js
+│           ├── schema-manager.js
+│           ├── schemas.js
 │           └── server.js
 ├── knip.json
-├── package-lock.json
 ├── package.json
 ├── packages
 │   ├── dossier
@@ -456,6 +580,10 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── baseEntity.ts
+│   │   │   ├── bilan
+│   │   │   │   └── bilan.dto.ts
+│   │   │   ├── conformite
+│   │   │   │   └── conformite.dto.ts
 │   │   │   ├── controle
 │   │   │   │   ├── controle.dto.ts
 │   │   │   │   ├── controleResult.ts
@@ -470,19 +598,34 @@
 │   │   │   │   └── indicateur.dto.ts
 │   │   │   ├── masa
 │   │   │   │   └── masa.dto.ts
-│   │   │   └── routes
-│   │   │       ├── controle.routes.ts
-│   │   │       ├── depot.routes.ts
-│   │   │       ├── depotAdmin.routes.ts
-│   │   │       ├── indicateurs.routes.ts
-│   │   │       ├── referentiel.routes.ts
-│   │   │       ├── route.types.spec.ts
-│   │   │       └── route.types.ts
+│   │   │   ├── mesure
+│   │   │   │   └── mesure.dto.ts
+│   │   │   ├── routes
+│   │   │   │   ├── bilan.routes.ts
+│   │   │   │   ├── conformite.routes.ts
+│   │   │   │   ├── controle.routes.ts
+│   │   │   │   ├── depot.routes.ts
+│   │   │   │   ├── depotAdmin.routes.ts
+│   │   │   │   ├── indicateurs.routes.ts
+│   │   │   │   ├── mesures.routes.ts
+│   │   │   │   ├── referentiel.routes.ts
+│   │   │   │   ├── route.types.spec.ts
+│   │   │   │   ├── route.types.ts
+│   │   │   │   ├── suiviRegulier.routes.ts
+│   │   │   │   └── transmissionASRetard.routes.ts
+│   │   │   ├── shared
+│   │   │   │   └── pagination.schema.ts
+│   │   │   ├── suivi-regulier
+│   │   │   │   └── evenement.dto.ts
+│   │   │   └── transmission-as-retard
+│   │   │       └── transmissionASRetard.dto.ts
 │   │   └── tsconfig.json
 │   ├── parser
 │   │   ├── jest.config.js
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── fluxQualifie.spec.ts
+│   │   │   ├── fluxQualifie.ts
 │   │   │   ├── index.ts
 │   │   │   ├── sandreConstants.ts
 │   │   │   ├── scenarioAssainissement.parser.spec.ts
@@ -498,8 +641,12 @@
 │       ├── jest.config.js
 │       ├── package.json
 │       ├── src
+│       │   ├── date.service.spec.ts
 │       │   ├── date.service.ts
 │       │   └── index.ts
 │       └── tsconfig.json
-└── test_charge.sh
-111 directories, 393 files
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── test_charge.sh
+└── vitest.workspace.ts
+135 directories, 516 files
