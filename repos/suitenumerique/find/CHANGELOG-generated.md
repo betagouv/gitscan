@@ -1,16 +1,13 @@
-## Changelog : find (30 derniers jours)
+## Changelog : find (30 derniers jours, au 2026-04-09)
 
 ### Résumé
-Ce changelog présente les améliorations apportées à find au cours du dernier mois. Les principales évolutions concernent l'amélioration des capacités de recherche, notamment la gestion des types de recherche, ainsi que des optimisations techniques pour l'infrastructure et les processus de développement.
+Ce changelog présente une correction concernant le type de recherche dans l'application. Cette mise à jour améliore la précision et la fiabilité de la fonctionnalité de recherche pour les utilisateurs.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche : prise en charge de différents types de recherche. [#51](https://github.com/suitenumerique/find/issues/51)
+- Correction de la valeur du type de recherche : la fonctionnalité de recherche fonctionne désormais correctement avec les types de recherche appropriés. [#68](https://github.com/suitenumerique/find/issues/68)
 
 ### Évolutions techniques
-- Mise à jour de Django : la version de Django a été mise à jour vers la version 5.2.12 et 5.2.11, incluant des correctifs de sécurité.
-- Amélioration du CI/CD : les étapes des workflows GitHub Actions ont été mises à jour vers les dernières versions.
-- Support ARM64 : ajout du support de la plateforme ARM64 pour la construction des images Docker.
-- Suppression d'un workflow de déploiement obsolète.
+Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+Aucun autre changement notable à signaler.

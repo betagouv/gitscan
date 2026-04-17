@@ -36,8 +36,10 @@ and this project adheres to
 
 - 🏗️(backend) switch Python dependency management to uv
 - ✨(backend) allow deletion by tags
+- ♻️(backend) improve the evaluation command
 
 ## Fixed
 
 - 🐛(backend) fix missing index creation in 'index/' view
 - 🐛(backend) fix parallel test execution issues
+- 🐛(backend) fix search type value #68
