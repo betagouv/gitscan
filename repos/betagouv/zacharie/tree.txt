@@ -7,6 +7,8 @@
 ├── .dockerignore
 ├── .github
 │   └── workflows
+│       ├── claude-code-review.yml
+│       ├── claude.yml
 │       └── tests.yml
 ├── .gitignore
 ├── .npmrc
@@ -15,6 +17,7 @@
 ├── CLAUDE.md
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── api-express
 │   ├── .dockerignore
 │   ├── .env.test
@@ -37,6 +40,14 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260216125924_heure_mise_a_mort_premiere_carcasse_fei
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260313141142_consommateur_final_usage_domestique
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260313142002_consommateur_final_usage_domestique_fei
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260319125544_is_zacharie_admin
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260319125730_role
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── scripts
@@ -47,7 +58,8 @@
 │   │   └── populate-test-db.ts
 │   ├── src
 │   │   ├── __tests__
-│   │   │   └── swagger-validation.test.ts
+│   │   │   ├── swagger-validation.test.ts
+│   │   │   └── user-entity.test.ts
 │   │   ├── assets
 │   │   │   ├── etablissements-traitement-sanitaire.json
 │   │   │   ├── fonts
@@ -91,6 +103,7 @@
 │   │   │   ├── search.ts
 │   │   │   ├── stats.ts
 │   │   │   ├── sync.ts
+│   │   │   ├── user-entity.ts
 │   │   │   ├── user.ts
 │   │   │   ├── utils.ts
 │   │   │   ├── v1
@@ -110,6 +123,7 @@
 │   │   │   └── utils.ts
 │   │   ├── index.ts
 │   │   ├── middlewares
+│   │   │   ├── auth-rate-limit.ts
 │   │   │   ├── errors.ts
 │   │   │   ├── passport.ts
 │   │   │   ├── rate-limit.ts
@@ -151,7 +165,6 @@
 │   │   │   └── user.ts
 │   │   └── utils
 │   │       ├── api.ts
-│   │       ├── authorizeUserOrAdmin.server.ts
 │   │       ├── carcasse-for-registry.ts
 │   │       ├── carcasse-side-effects.ts
 │   │       ├── cookie.ts
@@ -161,6 +174,7 @@
 │   │       ├── formatCarcasseEmail.ts
 │   │       ├── generate-certificats.ts
 │   │       ├── get-carcasse-status.ts
+│   │       ├── invite-user.ts
 │   │       ├── refreshMaterializedViews.ts
 │   │       ├── sanitize.ts
 │   │       ├── sort-things-by-type-and-id.server.ts
@@ -569,6 +583,14 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260216125924_heure_mise_a_mort_premiere_carcasse_fei
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260313141142_consommateur_final_usage_domestique
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260313142002_consommateur_final_usage_domestique_fei
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260319125544_is_zacharie_admin
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260319125730_role
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -576,20 +598,20 @@
 │   │   ├── favicon.png
 │   │   ├── favicon.svg
 │   │   ├── landing
-│   │   │   ├── MAIN APPLI_TBD.png
+│   │   │   ├── MAIN APPLI_TBD.webp
 │   │   │   ├── cerf.png
 │   │   │   ├── chasseur-et-telephone.png
 │   │   │   ├── chasseur.png
 │   │   │   ├── gradient-cerf-virigine.png
-│   │   │   ├── gradient-cerf.png
+│   │   │   ├── gradient-cerf.webp
 │   │   │   ├── implantation-zacharie.png
 │   │   │   ├── inspection-svi.png
-│   │   │   ├── laptop-scene-1.png
-│   │   │   ├── laptop-scene-2.png
+│   │   │   ├── laptop-scene-1.webp
+│   │   │   ├── laptop-scene-2.webp
 │   │   │   ├── main-app-mockup-2.png
 │   │   │   ├── main-app-mockup.png
 │   │   │   ├── morceaux-de-viande.png
-│   │   │   ├── testimonials-bg.png
+│   │   │   ├── testimonials-bg.webp
 │   │   │   └── viande.png
 │   │   ├── logo_zacharie.svg
 │   │   ├── logo_zacharie_solo.svg
@@ -640,6 +662,9 @@
 │   ├── server-app.js
 │   ├── src
 │   │   ├── App.tsx
+│   │   ├── assets
+│   │   │   └── svg
+│   │   │       └── mail-send.svg
 │   │   ├── components
 │   │   │   ├── BottomNavigation.tsx
 │   │   │   ├── CCGNouveau.tsx
@@ -652,17 +677,21 @@
 │   │   │   ├── FeiStepper.tsx
 │   │   │   ├── Filters.tsx
 │   │   │   ├── FloatingNewFicheButton.tsx
+│   │   │   ├── ImpactMatrix.tsx
 │   │   │   ├── InputMultiSelect.tsx
 │   │   │   ├── InputNotEditable.tsx
 │   │   │   ├── InputVille.tsx
 │   │   │   ├── ItemNotEditable.tsx
+│   │   │   ├── ListAndSelectEntities.tsx
 │   │   │   ├── MatomoTracker.tsx
 │   │   │   ├── ModalTreeDisplay.tsx
+│   │   │   ├── MultiSelectDropDownMenu.tsx
 │   │   │   ├── NotFound.tsx
 │   │   │   ├── OfflineMode.tsx
 │   │   │   ├── PartenaireNouveau.tsx
 │   │   │   ├── RelationEntityUser.tsx
 │   │   │   ├── RelationEntityUsersList.tsx
+│   │   │   ├── RestrictedRoute.tsx
 │   │   │   ├── RolesCheckboxes.tsx
 │   │   │   ├── RootDisplay.tsx
 │   │   │   ├── SchemaPros.tsx
@@ -697,10 +726,12 @@
 │   │   ├── routes
 │   │   │   ├── accessibility.tsx
 │   │   │   ├── admin
+│   │   │   │   ├── admin-router.tsx
 │   │   │   │   ├── api-key-add.tsx
 │   │   │   │   ├── api-key.$apiKeyId.tsx
 │   │   │   │   ├── api-keys.tsx
-│   │   │   │   ├── carcasses-intermediaires.tsx
+│   │   │   │   ├── carcasse-detail.tsx
+│   │   │   │   ├── carcasses.tsx
 │   │   │   │   ├── ccg-import.tsx
 │   │   │   │   ├── dashboard.tsx
 │   │   │   │   ├── entities.tsx
@@ -710,16 +741,121 @@
 │   │   │   │   ├── user-add.tsx
 │   │   │   │   ├── user.$userId.tsx
 │   │   │   │   └── users.tsx
-│   │   │   ├── carcasse-examinateur.tsx
+│   │   │   ├── chasseur
+│   │   │   │   ├── chasseur-current-owner-confirm.tsx
+│   │   │   │   ├── chasseur-deactivated.tsx
+│   │   │   │   ├── chasseur-fei-carcasses.tsx
+│   │   │   │   ├── chasseur-fei-envoyée.tsx
+│   │   │   │   ├── chasseur-fei.tsx
+│   │   │   │   ├── chasseur-fiches.tsx
+│   │   │   │   ├── chasseur-layout.tsx
+│   │   │   │   ├── chasseur-navigation-menu.ts
+│   │   │   │   ├── chasseur-router.tsx
+│   │   │   │   ├── chasseur-svi-inspection-carcasse.tsx
+│   │   │   │   ├── examinateur-carcasse-detail.tsx
+│   │   │   │   ├── examinateur-carcasses-nouvelle.tsx
+│   │   │   │   ├── examinateur-initial-delete-fei.tsx
+│   │   │   │   ├── examinateur-select-next.tsx
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── 1-coordonnees.tsx
+│   │   │   │   │   ├── 2-examinateur-initial.tsx
+│   │   │   │   │   ├── 3-informations-de-chasse.tsx
+│   │   │   │   │   ├── 3a-associations-de-chasse.tsx
+│   │   │   │   │   ├── 3b-mes-ccgs.tsx
+│   │   │   │   │   └── 3c-mes-partenaires.tsx
+│   │   │   │   ├── premier-detenteur-select-next.tsx
+│   │   │   │   ├── profil
+│   │   │   │   │   ├── chasseur-associations-de-chasse.tsx
+│   │   │   │   │   ├── chasseur-ccg-edit.tsx
+│   │   │   │   │   ├── chasseur-ccgs.tsx
+│   │   │   │   │   ├── chasseur-coordonnees.tsx
+│   │   │   │   │   ├── chasseur-informations-de-chasse.tsx
+│   │   │   │   │   ├── chasseur-notifications.tsx
+│   │   │   │   │   ├── chasseur-partage-de-mes-donnees.tsx
+│   │   │   │   │   └── chasseur-partenaires.tsx
+│   │   │   │   └── tableau-de-bord
+│   │   │   │       ├── chasseur-tableau-de-bord.tsx
+│   │   │   │       └── components
+│   │   │   │           ├── CarcassBreakdownCard.tsx
+│   │   │   │           ├── HygieneScoreCard.tsx
+│   │   │   │           ├── HygieneScoreGauge.tsx
+│   │   │   │           ├── RefusalCausesCard.tsx
+│   │   │   │           ├── SeizureRateCard.tsx
+│   │   │   │           ├── SeizureRateCardPersonal.tsx
+│   │   │   │           └── TotalCarcassesCard.tsx
+│   │   │   ├── circuit-court
+│   │   │   │   ├── circuit-court-deactivated.tsx
+│   │   │   │   ├── circuit-court-fei.tsx
+│   │   │   │   ├── circuit-court-fiches.tsx
+│   │   │   │   ├── circuit-court-layout.tsx
+│   │   │   │   ├── circuit-court-navigation-menu.ts
+│   │   │   │   ├── circuit-court-router.tsx
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── 1-coordonnees.tsx
+│   │   │   │   │   └── 2-entreprise.tsx
+│   │   │   │   └── profil
+│   │   │   │       ├── circuit-court-coordonnees.tsx
+│   │   │   │       ├── circuit-court-entreprise-utilisateurs.tsx
+│   │   │   │       ├── circuit-court-entreprise.tsx
+│   │   │   │       └── circuit-court-notifications.tsx
+│   │   │   ├── collecteur
+│   │   │   │   ├── collecteur-carcasse-after-svi-inspection.tsx
+│   │   │   │   ├── collecteur-carcasse.tsx
+│   │   │   │   ├── collecteur-carcasses.tsx
+│   │   │   │   ├── collecteur-current-owner-confirm.tsx
+│   │   │   │   ├── collecteur-current-owner-sous-traite.tsx
+│   │   │   │   ├── collecteur-deactivated.tsx
+│   │   │   │   ├── collecteur-destinataire-select-intermediaire.tsx
+│   │   │   │   ├── collecteur-destinataire-select-sous-traite.tsx
+│   │   │   │   ├── collecteur-fei.tsx
+│   │   │   │   ├── collecteur-fiches.tsx
+│   │   │   │   ├── collecteur-layout.tsx
+│   │   │   │   ├── collecteur-navigation-menu.ts
+│   │   │   │   ├── collecteur-router.tsx
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── 1-coordonnees.tsx
+│   │   │   │   │   └── 2-entreprise.tsx
+│   │   │   │   └── profil
+│   │   │   │       ├── collecteur-coordonnees.tsx
+│   │   │   │       ├── collecteur-entreprise-utilisateurs.tsx
+│   │   │   │       ├── collecteur-entreprise.tsx
+│   │   │   │       ├── collecteur-notifications.tsx
+│   │   │   │       └── collecteur-partage-de-mes-donnees.tsx
 │   │   │   ├── connexion
+│   │   │   │   ├── connexion-router.tsx
 │   │   │   │   ├── creation-de-compte.tsx
 │   │   │   │   ├── index.tsx
+│   │   │   │   ├── invitation.tsx
 │   │   │   │   ├── mot-de-passe-oublie.tsx
 │   │   │   │   └── reset-mot-de-passe.tsx
 │   │   │   ├── contact.tsx
 │   │   │   ├── deactivated.tsx
+│   │   │   ├── etg
+│   │   │   │   ├── etg-carcasse-after-svi-inspection.tsx
+│   │   │   │   ├── etg-carcasse.tsx
+│   │   │   │   ├── etg-carcasses.tsx
+│   │   │   │   ├── etg-current-owner-confirm.tsx
+│   │   │   │   ├── etg-current-owner-sous-traite.tsx
+│   │   │   │   ├── etg-deactivated.tsx
+│   │   │   │   ├── etg-destinataire-select-intermediaire.tsx
+│   │   │   │   ├── etg-destinataire-select-sous-traite.tsx
+│   │   │   │   ├── etg-fei.tsx
+│   │   │   │   ├── etg-fiches.tsx
+│   │   │   │   ├── etg-layout.tsx
+│   │   │   │   ├── etg-navigation-menu.ts
+│   │   │   │   ├── etg-router.tsx
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── 1-coordonnees.tsx
+│   │   │   │   │   └── 2-entreprise.tsx
+│   │   │   │   └── profil
+│   │   │   │       ├── etg-coordonnees.tsx
+│   │   │   │       ├── etg-entreprise-utilisateurs.tsx
+│   │   │   │       ├── etg-entreprise.tsx
+│   │   │   │       ├── etg-notifications.tsx
+│   │   │   │       └── etg-partage-de-mes-donnees.tsx
 │   │   │   ├── faq.tsx
 │   │   │   ├── fei
+│   │   │   │   ├── Headerfiche.tsx
 │   │   │   │   ├── circuirt-court.tsx
 │   │   │   │   ├── current-owner-confirm.tsx
 │   │   │   │   ├── current-owner-sous-traite.tsx
@@ -727,33 +863,16 @@
 │   │   │   │   ├── date-heure-validation-alerts.tsx
 │   │   │   │   ├── delete-fei.tsx
 │   │   │   │   ├── destinataire-select-intermediaire.tsx
-│   │   │   │   ├── destinataire-select-premier-detenteur.tsx
 │   │   │   │   ├── destinataire-select-sous-traite.tsx
 │   │   │   │   ├── donnees-de-chasse.tsx
-│   │   │   │   ├── envoyée.tsx
-│   │   │   │   ├── examinateur-carcasses-nouvelle.tsx
-│   │   │   │   ├── examinateur-carcasses.tsx
-│   │   │   │   ├── examinateur-initial.tsx
-│   │   │   │   ├── examinateur-select-next.tsx
 │   │   │   │   ├── fei.tsx
 │   │   │   │   ├── intermediaire-carcasse.tsx
 │   │   │   │   ├── intermediaire.tsx
-│   │   │   │   ├── premier-detenteur.tsx
 │   │   │   │   └── svi.tsx
 │   │   │   ├── landing-demarches.tsx
 │   │   │   ├── landing-pros.tsx
 │   │   │   ├── landing.tsx
 │   │   │   ├── mentions-legales.tsx
-│   │   │   ├── mes-chasses
-│   │   │   │   ├── components
-│   │   │   │   │   ├── CarcassBreakdownCard.tsx
-│   │   │   │   │   ├── HygieneScoreCard.tsx
-│   │   │   │   │   ├── HygieneScoreGauge.tsx
-│   │   │   │   │   ├── RefusalCausesCard.tsx
-│   │   │   │   │   ├── SeizureRateCard.tsx
-│   │   │   │   │   ├── SeizureRateCardPersonal.tsx
-│   │   │   │   │   └── TotalCarcassesCard.tsx
-│   │   │   │   └── mes-chasses.tsx
 │   │   │   ├── modalites-d-utilisation.tsx
 │   │   │   ├── mon-profil
 │   │   │   │   ├── 1-mon-activite.tsx
@@ -781,11 +900,30 @@
 │   │   │   ├── politique-de-confidentialite.tsx
 │   │   │   ├── registre-carcasses.tsx
 │   │   │   ├── stats.tsx
+│   │   │   ├── svi
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── 1-coordonnees.tsx
+│   │   │   │   │   └── 2-entreprise.tsx
+│   │   │   │   ├── profil
+│   │   │   │   │   ├── svi-coordonnees.tsx
+│   │   │   │   │   ├── svi-entreprise-utilisateurs.tsx
+│   │   │   │   │   ├── svi-entreprise.tsx
+│   │   │   │   │   └── svi-notifications.tsx
+│   │   │   │   ├── svi-carcasse-svi-inspection.tsx
+│   │   │   │   ├── svi-carcasses.tsx
+│   │   │   │   ├── svi-deactivated.tsx
+│   │   │   │   ├── svi-fei.tsx
+│   │   │   │   ├── svi-fiches.tsx
+│   │   │   │   ├── svi-layout.tsx
+│   │   │   │   ├── svi-navigation-menu.ts
+│   │   │   │   └── svi-router.tsx
 │   │   │   ├── svi-inspection-carcasse
 │   │   │   │   ├── certificats.tsx
 │   │   │   │   ├── ipm1.tsx
 │   │   │   │   ├── ipm2.tsx
 │   │   │   │   └── svi-inspection-carcasse.tsx
+│   │   │   ├── tableau-de-bord
+│   │   │   │   └── tableau-de-bord-router.tsx
 │   │   │   ├── tableau-de-bord-layout.tsx
 │   │   │   └── tableau-de-bord.tsx
 │   │   ├── service-worker.ts
@@ -864,6 +1002,7 @@
 ├── doc
 │   ├── Instruction 2021-555_final.pdf
 │   ├── automatic reload.md
+│   ├── from_fei_to_carcasse.md
 │   ├── project_overview
 │   │   ├── img1.1.png
 │   │   ├── img1.png
@@ -882,7 +1021,6 @@
 │   │   ├── init-db.ts
 │   │   └── reset-db.ts
 │   ├── tests
-│   │   ├── activite.spec.ts
 │   │   ├── comptes-vides-desktop.spec.ts
 │   │   ├── comptes-vides-mobile.spec.ts
 │   │   ├── connexion.spec.ts
@@ -942,4 +1080,4 @@
 │   └── refresh.sql
 ├── package.json
 └── tsconfig.json
-264 directories, 680 files
+290 directories, 792 files

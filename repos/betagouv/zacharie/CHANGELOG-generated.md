@@ -1,33 +1,31 @@
-## Changelog : zacharie (30 derniers jours, au 17 mars 2026)
+## Changelog : zacharie (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application Zacharie a bénéficié d'améliorations significatives, notamment au niveau de l'interface d'administration, de la gestion des carcasses et de la synchronisation des données hors ligne. Des corrections de sécurité importantes ont également été apportées pour protéger les données des utilisateurs. Enfin, l'expérience utilisateur a été améliorée grâce à l'ajout d'une FAQ et d'une meilleure gestion de l'affichage sur mobile.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'interface utilisateur, notamment pour la création et la gestion des fiches de traçabilité. Des corrections de bugs et des améliorations de sécurité ont également été apportées, ainsi que des optimisations pour l'administration et le suivi des données. L'ajout de tableaux de bord et de filtres permet un meilleur suivi de l'activité.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page FAQ avec des guides et des liens de navigation pour aider les utilisateurs. [#201](https://github.com/betagouv/zacharie/issues/201)
-- Amélioration de l'interface d'administration pour une meilleure gestion des carcasses intermédiaires et des rôles circuit court. [#226](https://github.com/betagouv/zacharie/issues/226), [#230](https://github.com/betagouv/zacharie/issues/230), [#232](https://github.com/betagouv/zacharie/issues/232)
-- Possibilité d'envoyer des carcasses à plusieurs destinataires. [#188](https://github.com/betagouv/zacharie/issues/188)
-- Amélioration de la gestion de la transmission des carcasses, notamment en clôturant automatiquement les fiches circuit court lors de la transmission. [#200](https://github.com/betagouv/zacharie/issues/200)
-- Amélioration de l'affichage sur mobile et adaptation de l'interface. [#184](https://github.com/betagouv/zacharie/issues/184)
-- Possibilité d'éditer le nom de l'inspecteur. [#212](https://github.com/betagouv/zacharie/issues/212)
-- Amélioration de la gestion des dates de mise à mort. [#221](https://github.com/betagouv/zacharie/issues/221)
+- Amélioration de l'interface utilisateur pour la création de fiches, avec un meilleur flux d'utilisation. [#281](https://github.com/betagouv/zacharie/issues/281)
+- Ajout de filtres par premier détenteur et CCG (Code Commun de Gestion) sur le tableau de bord. [#267](https://github.com/betagouv/zacharie/issues/267)
+- Implémentation d'un nouveau tableau de bord pour l'administration, permettant la visualisation des saisies SVI (Suivi Vie Intégrée) avec taux et motifs. [#266](https://github.com/betagouv/zacharie/issues/266)
+- Ajout d'un tableau de bord public présentant une matrice d'impact. [#272](https://github.com/betagouv/zacharie/issues/272)
+- Possibilité de visualiser les carcasses même si elles appartiennent à un seul groupe. [#287](https://github.com/betagouv/zacharie/issues/287)
+- Amélioration de l'accessibilité avec l'ajout d'attributs `alt` pour les iframes. [#274](https://github.com/betagouv/zacharie/issues/274)
+- Ajout de la gestion de l'usage domestique. [#16f6ad2](https://github.com/betagouv/zacharie/commit/16f6ad2)
 
 ### Évolutions techniques
-- Correction de plusieurs vulnérabilités XSS pour améliorer la sécurité de l'application.
-- Amélioration du chargement des entités et des utilisateurs pour optimiser les performances.
-- Refonte de la synchronisation des données hors ligne. [#202](https://github.com/betagouv/zacharie/issues/202)
-- Mise à jour des dépendances (minimatch, @getbrevo/brevo, ajv, tar).
-- Amélioration de la structure du code et refactoring de certains composants.
-- Ajout de tests pour améliorer la couverture et la qualité du code.
-- Amélioration de la gestion du cache dans l'administration.
+- Refonte du système de routage pour optimiser les performances et la gestion des requêtes. [#310](https://github.com/betagouv/zacharie/issues/310), [#308](https://github.com/betagouv/zacharie/issues/308), [#295](https://github.com/betagouv/zacharie/issues/295)
+- Amélioration de la gestion des invitations. [#309](https://github.com/betagouv/zacharie/issues/309)
+- Mise en place d'un script de build optimisé. [#300](https://github.com/betagouv/zacharie/issues/300)
+- Ajout de tests Playwright et Vitest.
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité. [#280](https://github.com/betagouv/zacharie/issues/280)
+- Amélioration de la sécurité avec l'ajout de Content Security Policy (CSP) et la correction de failles potentielles. [#275](https://github.com/betagouv/zacharie/issues/275), [#278](https://github.com/betagouv/zacharie/issues/278), [#235](https://github.com/betagouv/zacharie/issues/235), [#239](https://github.com/betagouv/zacharie/issues/239), [#240](https://github.com/betagouv/zacharie/issues/240), [#241](https://github.com/betagouv/zacharie/issues/241)
+- Ajout de pre-commit hooks pour formater le code automatiquement. [#246](https://github.com/betagouv/zacharie/issues/246)
+- Suppression de code inutilisé et nettoyage du code.
 
 ### Autres changements
-- Simplification de l'importation de code CCG. [#234](https://github.com/betagouv/zacharie/issues/234)
-- Correction de l'affichage des homonymes de villes.
-- Amélioration de la formulation de certains textes dans l'interface utilisateur. [#216](https://github.com/betagouv/zacharie/issues/216), [#210](https://github.com/betagouv/zacharie/issues/210), [#205](https://github.com/betagouv/zacharie/issues/205), [#197](https://github.com/betagouv/zacharie/issues/197)
-- Mise à jour de la documentation (README.md, CLAUDE.md).
-- Correction de liens dupliqués et amélioration de la navigation.
-- Suppression de code inutile et nettoyage général du code.
-- Ajout d'une variable d'environnement pour la clé SENTRY.
-- Correction de l'affichage des champs SVI.
-- Correction de bugs divers liés à l'interface utilisateur et à la gestion des données.
+- Désactivation de Claude. [#2868afb](https://github.com/betagouv/zacharie/commit/2868afb)
+- Amélioration de la documentation et des messages d'erreur.
+- Correction de problèmes d'affichage et de responsivité. [#289](https://github.com/betagouv/zacharie/issues/289)
+- Correction de bugs divers sur l'interface utilisateur. [#311](https://github.com/betagouv/zacharie/issues/311), [#306](https://github.com/betagouv/zacharie/issues/306), [#305](https://github.com/betagouv/zacharie/issues/305), [#301](https://github.com/betagouv/zacharie/issues/301)
+- Correction de problèmes liés aux entités fantômes. [#252](https://github.com/betagouv/zacharie/issues/252)
+- Correction de problèmes de tri. [#5f2bec3](https://github.com/betagouv/zacharie/commit/5f2bec3)
