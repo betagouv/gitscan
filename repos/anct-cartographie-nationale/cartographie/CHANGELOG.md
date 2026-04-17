@@ -1,3 +1,206 @@
+## [6.13.10](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.9...v6.13.10) (2026-04-10)
+
+
+### Bug Fixes
+
+* disable Next.js cache on export fetch to avoid Node.js streaming crash ([a9624aa](https://github.com/anct-cartographie-nationale/cartographie/commit/a9624aab8534166592c957be2dcf8ed8e6d9b33c))
+
+## [6.13.9](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.8...v6.13.9) (2026-04-09)
+
+
+### Performance Improvements
+
+* increase container resources to 1120 mVCPU / 2048 MB ([5fd7058](https://github.com/anct-cartographie-nationale/cartographie/commit/5fd70588ae2d59f6e528c951f10f62b7ce3a5a9e))
+
+## [6.13.8](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.7...v6.13.8) (2026-04-08)
+
+
+### Bug Fixes
+
+* configure robots.txt with correct site URL and block AI crawlers ([f8a01f1](https://github.com/anct-cartographie-nationale/cartographie/commit/f8a01f177e53ebc2a407820e96948e6d040fbba1))
+* output robots.txt and sitemap to public/ for Docker deployment ([52684db](https://github.com/anct-cartographie-nationale/cartographie/commit/52684dbc8e0af9019f4a60f1272dfc2afd33d225))
+
+## [6.13.7](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.6...v6.13.7) (2026-04-08)
+
+
+### Bug Fixes
+
+* upgrade Node.js from 20 to 22 for Web Streams compatibility ([33aba51](https://github.com/anct-cartographie-nationale/cartographie/commit/33aba51f0f55976b0c7d7fccb8d22762e2980515))
+
+## [6.13.6](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.5...v6.13.6) (2026-04-08)
+
+
+### Bug Fixes
+
+* move opening_hours computation from server to client ([a8da3b8](https://github.com/anct-cartographie-nationale/cartographie/commit/a8da3b8afabce5ac9766027a6ab6334c4321c6d2))
+
+## [6.13.5](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.4...v6.13.5) (2026-04-08)
+
+
+### Bug Fixes
+
+* revert CSV export from ReadableStream to plain response ([982ade9](https://github.com/anct-cartographie-nationale/cartographie/commit/982ade97f61c24786100aade54dc17aa35898587))
+
+## [6.13.4](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.3...v6.13.4) (2026-04-08)
+
+
+### Performance Improvements
+
+* disable link prefetch on region and department tag lists ([81418f4](https://github.com/anct-cartographie-nationale/cartographie/commit/81418f4fa8de40b4f3aab50956889ad96e59542e))
+
+## [6.13.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.2...v6.13.3) (2026-04-08)
+
+
+### Bug Fixes
+
+* handle PostgREST 416 response for out-of-range pagination ([714a389](https://github.com/anct-cartographie-nationale/cartographie/commit/714a389e6ad63ace98f8730e6054e14705943f78))
+
+
+### Performance Improvements
+
+* disable link prefetch on high-volume components ([d9eb798](https://github.com/anct-cartographie-nationale/cartographie/commit/d9eb798ca32030eea42ec910698d684e36c512f2)), closes [hi#volume](https://github.com/hi/issues/volume)
+
+## [6.13.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.1...v6.13.2) (2026-04-08)
+
+
+### Performance Improvements
+
+* optimize Scaleway container resources and edge services configuration ([ed7cf47](https://github.com/anct-cartographie-nationale/cartographie/commit/ed7cf4737bac680d457429cf77f9038212113758))
+
+## [6.13.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.0...v6.13.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* remove lazy loading on CheckboxGroup to prevent filter flash ([100c5db](https://github.com/anct-cartographie-nationale/cartographie/commit/100c5db61e5ecce6247d081f16b4c7215a6be3ef))
+
+
+### Performance Improvements
+
+* add AbortSignal timeout on API fetch calls ([4ffd46d](https://github.com/anct-cartographie-nationale/cartographie/commit/4ffd46dcd54c79725e9f4944db3068cded4e1891))
+* add caching for mediateurs search and fragilite-numerique tiles ([524d145](https://github.com/anct-cartographie-nationale/cartographie/commit/524d1450a84b89c4d3201f2619b871a06bcfe8db))
+* add distinctUntilChanged and LRU cache eviction for map chunks ([4ae0595](https://github.com/anct-cartographie-nationale/cartographie/commit/4ae059526f0c8e2018ed187c79227f6b6ea4c09e))
+* extract Date instantiation outside map callbacks ([5006e6e](https://github.com/anct-cartographie-nationale/cartographie/commit/5006e6e96c48040a0ffcc68bc23f58a6c806f394))
+* optimize map chunk cache key to improve hit rate ([e09770d](https://github.com/anct-cartographie-nationale/cartographie/commit/e09770da770352ec9a2fa56682e170955f59b302))
+* optimize React rendering for map markers ([4294ba2](https://github.com/anct-cartographie-nationale/cartographie/commit/4294ba25dc27ac10192752b4d43b43bbf2e4c506))
+* optimize React rendering for map markers and list items ([ee5071a](https://github.com/anct-cartographie-nationale/cartographie/commit/ee5071aa30a888e872de35585fc6ba99404abc68))
+* stabilize lieux$ observable and move DI out of render path ([f8d6fee](https://github.com/anct-cartographie-nationale/cartographie/commit/f8d6fee96188d3f270249c1c6825f7c855a6dbe6))
+* stream CSV exports via ReadableStream ([ef01d81](https://github.com/anct-cartographie-nationale/cartographie/commit/ef01d8176d8ee49e9c01d3f64b95f6b8599e352a))
+* use pre-computed Maps for collectivites lookup ([a4bbcc9](https://github.com/anct-cartographie-nationale/cartographie/commit/a4bbcc91b1e4b00ca844e663a46092dc22662ae5))
+
+# [6.13.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.12.0...v6.13.0) (2026-04-08)
+
+
+### Features
+
+* add loading states with Suspense for main routes ([faf7080](https://github.com/anct-cartographie-nationale/cartographie/commit/faf7080266206ff3735c4b53e987e8f92735394b))
+
+
+### Performance Improvements
+
+* add HTTP and server-side caching for API routes ([4cefcd7](https://github.com/anct-cartographie-nationale/cartographie/commit/4cefcd72bd2490980bb7f4d4f0d0756ac688a9be))
+* additional API optimizations ([3e791f5](https://github.com/anct-cartographie-nationale/cartographie/commit/3e791f5bded21540dcbb9c5bae11375f30f78a2b))
+
+# [6.12.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.11.1...v6.12.0) (2026-04-08)
+
+
+### Features
+
+* **infra:** add Cockpit Grafana data sources sync ([1c68115](https://github.com/anct-cartographie-nationale/cartographie/commit/1c6811546ac391976a4aac01b636c59b314d33a9))
+
+
+### Performance Improvements
+
+* reduce stats API calls from 102 to 1 ([bea07a6](https://github.com/anct-cartographie-nationale/cartographie/commit/bea07a6b95863bc13ad18b871b1c2fd9fe19a893))
+
+## [6.11.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.11.0...v6.11.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* **wc:** fix process.env not replaced in Vite 8 build ([ede7ff9](https://github.com/anct-cartographie-nationale/cartographie/commit/ede7ff9329caf6c0859adb0a7ecba90694ed7d8a))
+
+# [6.11.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.10.1...v6.11.0) (2026-04-07)
+
+
+### Features
+
+* add user-friendly error page for API failures ([f462ef5](https://github.com/anct-cartographie-nationale/cartographie/commit/f462ef50141a7e74821e86343a2d3e0edd7b5ef2))
+
+## [6.10.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.10.0...v6.10.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* rename mediateur phone property to telephone ([07425cf](https://github.com/anct-cartographie-nationale/cartographie/commit/07425cfcdd26ab926ce695788db578936301d84e))
+
+# [6.10.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.9.3...v6.10.0) (2026-04-07)
+
+
+### Bug Fixes
+
+* correct glob pattern in lint-staged config ([9af2925](https://github.com/anct-cartographie-nationale/cartographie/commit/9af29250065b67a3c897ac97e35492051688c9e9))
+* stabilize flaky search e2e test ([e132a29](https://github.com/anct-cartographie-nationale/cartographie/commit/e132a2985d260e9e800b8c4b336ded410651f277))
+
+
+### Features
+
+* add health check endpoint for Scaleway container ([293b799](https://github.com/anct-cartographie-nationale/cartographie/commit/293b799f618342b9243950dafd70c5022f20b7eb))
+
+
+### Performance Improvements
+
+* increase e2e test parallelism to 4 workers in CI ([595dc51](https://github.com/anct-cartographie-nationale/cartographie/commit/595dc5105a2008d30c8100f8c0d3fd86163350b5))
+
+## [6.9.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.9.2...v6.9.3) (2026-04-01)
+
+
+### Bug Fixes
+
+* preserve specific code_insee filters over default not.is.null ([f5d08c1](https://github.com/anct-cartographie-nationale/cartographie/commit/f5d08c12923ddfe52e141b9defaaf1d792e7d99b))
+
+## [6.9.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.9.1...v6.9.2) (2026-04-01)
+
+
+### Bug Fixes
+
+* filter out lieux without code_insee from API responses ([671638a](https://github.com/anct-cartographie-nationale/cartographie/commit/671638a17db00bf5455ce8d66338c12ef61c4561))
+* set minScale to 1 to avoid cold starts ([5f4cfc8](https://github.com/anct-cartographie-nationale/cartographie/commit/5f4cfc8b7f16ad39a67d502506b7e831c1bbd78f))
+
+## [6.9.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.9.0...v6.9.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* disable Matomo proxy to use direct tracking URL ([a19d258](https://github.com/anct-cartographie-nationale/cartographie/commit/a19d258dcc719508550fa87bb9fad51c017be66f))
+
+# [6.9.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.8.0...v6.9.0) (2026-03-27)
+
+
+### Features
+
+* prefill error report mailto with lieu information ([df73d9f](https://github.com/anct-cartographie-nationale/cartographie/commit/df73d9f3a1bc4b238b5e4732005a071c2ea8f256))
+
+# [6.8.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.7.0...v6.8.0) (2026-03-27)
+
+
+### Features
+
+* prefill error report mailto with lieu information ([d07c350](https://github.com/anct-cartographie-nationale/cartographie/commit/d07c350aaf6f28968f332a2cd7b91535e173227d))
+
+# [6.7.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.6.0...v6.7.0) (2026-03-26)
+
+
+### Bug Fixes
+
+* update La Coop link to new URL ([05d9d4b](https://github.com/anct-cartographie-nationale/cartographie/commit/05d9d4b98e30ec6228fb1418030a634bda2b910b))
+
+
+### Features
+
+* add legacy Angular route redirects ([dcaf6fd](https://github.com/anct-cartographie-nationale/cartographie/commit/dcaf6fd88e07a483d66c2611886c7e7f2af5cd70))
+* add legal pages with MDX ([f385623](https://github.com/anct-cartographie-nationale/cartographie/commit/f385623c63f5801af3c8b961021d7984d41e2394))
+
 # [6.6.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.5.0...v6.6.0) (2026-03-23)
 
 

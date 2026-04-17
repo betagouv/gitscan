@@ -30,10 +30,6 @@
 │   ├── codes-territoires.md
 │   ├── integration-url.md
 │   └── integration-web-component.md
-├── e2e
-│   ├── filtering.spec.ts
-│   ├── geographic-navigation.spec.ts
-│   └── search.spec.ts
 ├── infrastructure
 │   ├── .env.example
 │   ├── .gitignore
@@ -45,6 +41,7 @@
 │   │   ├── env.ts
 │   │   ├── index.ts
 │   │   ├── resources
+│   │   │   ├── cockpit.ts
 │   │   │   ├── container.ts
 │   │   │   ├── image.ts
 │   │   │   ├── network.ts
@@ -53,6 +50,7 @@
 │   │   └── utils
 │   │       └── name.ts
 │   └── tsconfig.json
+├── mdx-components.tsx
 ├── next-sitemap.config.js
 ├── next.config.ts
 ├── package.json
@@ -89,38 +87,69 @@
 ├── src
 │   ├── @types
 │   │   ├── env.d.ts
+│   │   ├── mdx.d.ts
+│   │   ├── node-globals.d.ts
 │   │   └── supercluster.d.ts
 │   ├── app
-│   │   ├── (full-page)
-│   │   │   ├── (regions)
-│   │   │   │   ├── [region]
-│   │   │   │   │   ├── [departement]
+│   │   ├── (legal)
+│   │   │   ├── declaration-d-accessibilite
+│   │   │   │   ├── page.e2e.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── donnees-personnelles
+│   │   │   │   ├── page.e2e.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── gestion-des-cookies
+│   │   │   │   ├── page.e2e.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── mentions-legales
+│   │   │       ├── page.e2e.ts
+│   │   │       └── page.tsx
+│   │   ├── (main)
+│   │   │   ├── (full-page)
+│   │   │   │   ├── (regions)
+│   │   │   │   │   ├── [region]
+│   │   │   │   │   │   ├── [departement]
+│   │   │   │   │   │   │   └── lieux
+│   │   │   │   │   │   │       ├── [id]
+│   │   │   │   │   │   │       │   ├── loading.tsx
+│   │   │   │   │   │   │       │   ├── page.e2e.ts
+│   │   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │   │       ├── exporter
+│   │   │   │   │   │   │       │   └── route.ts
+│   │   │   │   │   │   │       ├── page.e2e.ts
+│   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   └── lieux
-│   │   │   │   │   │       ├── [id]
-│   │   │   │   │   │       │   └── page.tsx
 │   │   │   │   │   │       ├── exporter
 │   │   │   │   │   │       │   └── route.ts
+│   │   │   │   │   │       ├── page.e2e.ts
 │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   └── lieux
+│   │   │   │   │       ├── [id]
+│   │   │   │   │       │   ├── page.e2e.ts
+│   │   │   │   │       │   └── page.tsx
 │   │   │   │   │       ├── exporter
 │   │   │   │   │       │   └── route.ts
+│   │   │   │   │       ├── loading.tsx
+│   │   │   │   │       ├── page.e2e.ts
 │   │   │   │   │       └── page.tsx
-│   │   │   │   └── lieux
-│   │   │   │       ├── [id]
-│   │   │   │       │   └── page.tsx
-│   │   │   │       ├── exporter
-│   │   │   │       │   └── route.ts
-│   │   │   │       └── page.tsx
-│   │   │   └── layout.tsx
-│   │   ├── (with-map)
-│   │   │   ├── (regions)
-│   │   │   │   ├── [region]
-│   │   │   │   │   ├── [departement]
+│   │   │   │   └── layout.tsx
+│   │   │   ├── (with-map)
+│   │   │   │   ├── (regions)
+│   │   │   │   │   ├── [region]
+│   │   │   │   │   │   ├── [departement]
+│   │   │   │   │   │   │   ├── page.e2e.ts
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── page.e2e.ts
 │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   ├── page.e2e.ts
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── page.tsx
-│   │   │   ├── client.layout.tsx
-│   │   │   └── layout.tsx
+│   │   │   │   ├── client.layout.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── manifest.ts
+│   │   │   └── metadata.ts
 │   │   ├── api
 │   │   │   ├── [region]
 │   │   │   │   ├── [departement]
@@ -133,6 +162,9 @@
 │   │   │   ├── fragilite-numerique
 │   │   │   │   └── [...params]
 │   │   │   │       └── route.ts
+│   │   │   ├── health
+│   │   │   │   ├── route.e2e.ts
+│   │   │   │   └── route.ts
 │   │   │   ├── lieux
 │   │   │   │   ├── [id]
 │   │   │   │   │   └── route.ts
@@ -154,20 +186,50 @@
 │   │   │   │       └── route.ts
 │   │   │   └── stats
 │   │   │       ├── departements
+│   │   │       │   ├── route.e2e.ts
 │   │   │       │   └── route.ts
 │   │   │       ├── regions
 │   │   │       │   ├── [slug]
+│   │   │       │   │   ├── route.e2e.ts
 │   │   │       │   │   └── route.ts
+│   │   │       │   ├── route.e2e.ts
 │   │   │       │   └── route.ts
+│   │   │       ├── route.ts
 │   │   │       └── total
+│   │   │           ├── route.e2e.ts
 │   │   │           └── route.ts
+│   │   ├── cartographie
+│   │   │   ├── [id]
+│   │   │   │   ├── details
+│   │   │   │   │   ├── page.e2e.ts
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.e2e.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── departements
+│   │   │   │   └── [departement]
+│   │   │   │       ├── page.e2e.ts
+│   │   │   │       └── page.tsx
+│   │   │   └── regions
+│   │   │       └── [region]
+│   │   │           ├── [departement]
+│   │   │           │   ├── [id]
+│   │   │           │   │   ├── page.e2e.ts
+│   │   │           │   │   └── page.tsx
+│   │   │           │   ├── page.e2e.ts
+│   │   │           │   └── page.tsx
+│   │   │           ├── page.e2e.ts
+│   │   │           └── page.tsx
+│   │   ├── error.tsx
 │   │   ├── favicon.ico
 │   │   ├── favicon.svg
-│   │   ├── globals.css
 │   │   ├── layout.tsx
-│   │   ├── manifest.ts
-│   │   ├── metadata.ts
 │   │   └── not-found.tsx
+│   ├── content
+│   │   └── legal
+│   │       ├── declaration-d-accessibilite.mdx
+│   │       ├── donnees-personnelles.mdx
+│   │       ├── gestion-des-cookies.mdx
+│   │       └── mentions-legales.mdx
 │   ├── env.client.ts
 │   ├── env.client.wc.ts
 │   ├── env.server.ts
@@ -203,8 +265,15 @@
 │   │   │   │       ├── index.ts
 │   │   │   │       └── search-address.tsx
 │   │   │   ├── index.ts
-│   │   │   └── injection
-│   │   │       └── index.ts
+│   │   │   ├── injection
+│   │   │   │   └── index.ts
+│   │   │   └── middlewares
+│   │   │       └── page
+│   │   │           ├── index.ts
+│   │   │           ├── normalize-legacy-param.ts
+│   │   │           ├── with-legacy-departement.ts
+│   │   │           ├── with-legacy-id.ts
+│   │   │           └── with-legacy-region.ts
 │   │   ├── collectivites-territoriales
 │   │   │   ├── abilities
 │   │   │   │   ├── append-collectivites
@@ -212,6 +281,8 @@
 │   │   │   │   │   ├── append-collectivites.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── stats-query
+│   │   │   │       ├── aggregate-by-departement.spec.ts
+│   │   │   │       ├── aggregate-by-departement.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       └── stats.ts
 │   │   │   ├── index.ts
@@ -281,7 +352,8 @@
 │   │       │   │       ├── lieu-card.tsx
 │   │       │   │       ├── lieux-count.tsx
 │   │       │   │       ├── lieux-list.tsx
-│   │       │   │       └── lieux.page.tsx
+│   │       │   │       ├── lieux.page.tsx
+│   │       │   │       └── open-badge.tsx
 │   │       │   ├── map-view
 │   │       │   │   ├── index.ts
 │   │       │   │   ├── query
@@ -291,7 +363,8 @@
 │   │       │   │   │   ├── lieux-for-chunk.fetch.ts
 │   │       │   │   │   ├── lieux.cache.ts
 │   │       │   │   │   ├── lieux.stream.ts
-│   │       │   │   │   └── search-lieux-by-name.server.ts
+│   │       │   │   │   ├── search-lieux-by-name.server.ts
+│   │       │   │   │   └── search-params.stream.ts
 │   │       │   │   └── ui
 │   │       │   │       ├── index.ts
 │   │       │   │       └── lieux-on-map.tsx
@@ -379,8 +452,6 @@
 │   │   │   │   ├── geographic-distance.spec.ts
 │   │   │   │   ├── geographic-distance.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── is-open-now.spec.ts
-│   │   │   │   ├── is-open-now.ts
 │   │   │   │   ├── to-lieu-details.spec.ts
 │   │   │   │   ├── to-lieu-details.ts
 │   │   │   │   ├── to-lieu-list-item.spec.ts
@@ -494,12 +565,20 @@
 │   │   │   │   │   ├── footer-social-links.tsx
 │   │   │   │   │   ├── footer.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── loading
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── lieu-card.skeleton.tsx
+│   │   │   │   │   ├── lieu-detail.skeleton.tsx
+│   │   │   │   │   ├── lieux-list.skeleton.tsx
+│   │   │   │   │   ├── map.skeleton.tsx
+│   │   │   │   │   └── stats.skeleton.tsx
 │   │   │   │   ├── pagination
 │   │   │   │   │   ├── page-link.tsx
 │   │   │   │   │   ├── paginate.spec.ts
 │   │   │   │   │   ├── paginate.ts
 │   │   │   │   │   └── pagination.tsx
 │   │   │   │   ├── skip-links
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── skip-links-portal.tsx
 │   │   │   │   │   └── skip-links.tsx
 │   │   │   │   ├── theme-changer.tsx
@@ -555,6 +634,7 @@
 │   │   │   │   ├── placement.ts
 │   │   │   │   ├── popover.tsx
 │   │   │   │   ├── scale.ts
+│   │   │   │   ├── skeleton.tsx
 │   │   │   │   ├── tag.tsx
 │   │   │   │   └── tooltip.tsx
 │   │   │   └── theme
@@ -588,6 +668,7 @@
 │   │   │   │   ├── api-base-url.key.ts
 │   │   │   │   ├── map-config.key.ts
 │   │   │   │   ├── map-position.schema.ts
+│   │   │   │   ├── site-url.key.ts
 │   │   │   │   └── territoire-filter.key.ts
 │   │   │   └── providers
 │   │   │       └── config.provider.tsx
@@ -646,4 +727,4 @@
 ├── vite-plugin-file-replacement.ts
 ├── vite.config.wc.ts
 └── vitest.config.mjs
-176 directories, 472 files
+196 directories, 533 files
