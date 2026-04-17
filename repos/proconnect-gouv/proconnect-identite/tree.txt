@@ -1,7 +1,9 @@
 .
 ├── .changeset
 │   ├── README.md
-│   └── config.json
+│   ├── config.json
+│   ├── floppy-rivers-report.md
+│   └── upset-mails-know.md
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -490,6 +492,7 @@
 │   │   ├── src
 │   │   │   ├── api
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── request.ts
 │   │   │   │   ├── single-validation.test.ts
 │   │   │   │   └── single-validation.ts
 │   │   │   └── types
@@ -610,7 +613,9 @@
 │   │   │   │   ├── main-activity.test.ts
 │   │   │   │   ├── main-activity.ts
 │   │   │   │   ├── nom-complet.test.ts
-│   │   │   │   └── nom-complet.ts
+│   │   │   │   ├── nom-complet.ts
+│   │   │   │   ├── tranche-effectifs-unite-legale.test.ts
+│   │   │   │   └── tranche-effectifs-unite-legale.ts
 │   │   │   ├── testing
 │   │   │   │   ├── index.ts
 │   │   │   │   └── seed
@@ -643,6 +648,8 @@
 │   │   ├── README.md
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── connectors
+│   │   │   │   └── index.ts
 │   │   │   ├── data
 │   │   │   │   ├── certification
 │   │   │   │   │   ├── categories-juridiques-sources.ts
@@ -689,7 +696,6 @@
 │   │   │   │   │   ├── get-organization-info.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── mark-domain-as-verified.test.ts
-│   │   │   │   │   ├── mark-domain-as-verified.test.ts.snapshot
 │   │   │   │   │   └── mark-domain-as-verified.ts
 │   │   │   │   └── user
 │   │   │   │       ├── assign-user-verification-type-to-domain.test.ts
@@ -747,8 +753,8 @@
 │   │   │   │   │   ├── is-organization-covered-by-certification-dirigeant.ts
 │   │   │   │   │   ├── is-public-service.test.ts
 │   │   │   │   │   ├── is-public-service.ts
-│   │   │   │   │   ├── is-syndicat-communal.test.ts
-│   │   │   │   │   └── is-syndicat-communal.ts
+│   │   │   │   │   ├── is-small-etablissement-public.test.ts
+│   │   │   │   │   └── is-small-etablissement-public.ts
 │   │   │   │   └── postgres
 │   │   │   │       ├── hash-to-postgres-params.ts
 │   │   │   │       └── index.ts
@@ -960,6 +966,7 @@
 │   │   ├── api-insee.ts
 │   │   ├── api-rne.ts
 │   │   ├── api-sirene.ts
+│   │   ├── context.ts
 │   │   ├── crisp.ts
 │   │   ├── debounce.ts
 │   │   ├── franceconnect.ts
@@ -968,6 +975,7 @@
 │   │   ├── postgres.ts
 │   │   ├── pwnedpasswords.ts
 │   │   ├── redis.ts
+│   │   ├── request.ts
 │   │   └── test.ts
 │   ├── controllers
 │   │   ├── 2fa.ts
@@ -1113,6 +1121,7 @@
 │       │   ├── submit-button.ejs
 │       │   └── test-env-warning.ejs
 │       ├── personal-information.ejs
+│       ├── too-many-requests-error.ejs
 │       ├── totp-configuration.ejs
 │       └── user
 │           ├── 2fa-sign-in.ejs
@@ -1170,4 +1179,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-207 directories, 1044 files
+208 directories, 1052 files
