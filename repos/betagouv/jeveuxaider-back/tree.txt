@@ -40,6 +40,7 @@
 │   │   │   ├── ApiEngagementExportMissions.php
 │   │   │   ├── ApiEngagementSyncMissions.php
 │   │   │   ├── ArchiveNonActiveUsers.php
+│   │   │   ├── BackfillActivityLogStates.php
 │   │   │   ├── CancelParticipationsFromCancelledMissions.php
 │   │   │   ├── ChangeNameForBlockedUsers.php
 │   │   │   ├── CorrectActivityLogForAutoClosedMissions.php
@@ -82,6 +83,7 @@
 │   │   │   ├── MissionsSetFullByTemplate.php
 │   │   │   ├── MissionsSetIsOnline.php
 │   │   │   ├── OneTime
+│   │   │   │   ├── AutoCloseMissionsToMinors.php
 │   │   │   │   ├── InitializeMissionTemplateIsOpenToMinors.php
 │   │   │   │   ├── MigrateSignaledStatusForOrganisationAndMission.php
 │   │   │   │   ├── NotifyResponsableMissionUserWaitingList.php
@@ -89,6 +91,7 @@
 │   │   │   │   └── ResolveOpenToMinorsPendingActionsFromClosedTemplates.php
 │   │   │   ├── OrganisationsCollectiviteForceFields.php
 │   │   │   ├── ParticipationsRefuseExplorJob.php
+│   │   │   ├── ProfileInitFtRsaBeneficiary.php
 │   │   │   ├── ProfileSetCommitment.php
 │   │   │   ├── ProfilesAnonymize.php
 │   │   │   ├── RemoveDomainCovid19FromOrganisations.php
@@ -269,6 +272,11 @@
 │   │   │   │   ├── SendInBlueController.php
 │   │   │   │   ├── SettingController.php
 │   │   │   │   ├── ShortURLController.php
+│   │   │   │   ├── Statistics
+│   │   │   │   │   ├── GoalsJVAController.php
+│   │   │   │   │   ├── GoalsPPGController.php
+│   │   │   │   │   ├── StatisticsModerationsController.php
+│   │   │   │   │   └── StatisticsOrganisationsController.php
 │   │   │   │   ├── StatisticsController.php
 │   │   │   │   ├── StatisticsPublicController.php
 │   │   │   │   ├── StructureController.php
@@ -530,6 +538,7 @@
 │   │   ├── MissionSuggestTitlesDisiked.php
 │   │   ├── MissionSuggestTitlesLiked.php
 │   │   ├── MissionTemplateUpdated.php
+│   │   ├── MissionTemplateUpdatedMail.php
 │   │   ├── MissionTemplateWaiting.php
 │   │   ├── MissionUserWaitingListCreated3WeeksAgo.php
 │   │   ├── MissionUserWaitingListNoPlaceLeftCreated.php
@@ -593,6 +602,7 @@
 │   │   ├── StructureWithoutMissionFirstReminder.php
 │   │   ├── StructureWithoutMissionSecondReminder.php
 │   │   ├── TerritoireWaitingValidation.php
+│   │   ├── TestNotification.php
 │   │   ├── UserAlertNewMissionsFound.php
 │   │   ├── UserAnonymize.php
 │   │   ├── UserBannedInappropriateBehavior.php
@@ -681,7 +691,8 @@
 │       ├── HasSlackNotification.php
 │       ├── HasSlackTimerNotification.php
 │       ├── Notable.php
-│       └── TransactionalEmail.php
+│       ├── TransactionalEmail.php
+│       └── UseReplicaDBConnection.php
 ├── artisan
 ├── bootstrap
 │   ├── app.php
@@ -941,7 +952,12 @@
 │   │   ├── 2026_02_17_133859_convert_media_manipulations_to_v11_format.php
 │   │   ├── 2026_02_20_135323_add_resolved_at_to_temoignages_table.php
 │   │   ├── 2026_03_13_113243_add_unique_constraint_to_settings_table.php
-│   │   └── 2026_03_13_113426_add_default_to_locked_column_in_settings_table.php
+│   │   ├── 2026_03_13_113426_add_default_to_locked_column_in_settings_table.php
+│   │   ├── 2026_03_23_000001_add_old_state_new_state_to_activity_log_table.php
+│   │   ├── 2026_03_24_000001_drop_indexes_on_old_state_new_state_in_activity_log_table.php
+│   │   ├── 2026_03_24_000002_restore_indexes_on_old_state_new_state_in_activity_log_table.php
+│   │   ├── 2026_04_03_000001_add_created_at_conversation_id_index_to_messages_table.php
+│   │   └── 2026_04_07_000001_add_ft_rsa_beneficiary_to_profiles_table.php
 │   ├── seeders
 │   │   ├── DatabaseSeeder.php
 │   │   └── RoleSeeder.php
@@ -1425,6 +1441,7 @@
 │           │   │   │   │   └── badge.blade.php
 │           │   │   │   ├── frame.blade.php
 │           │   │   │   ├── headline.blade.php
+│           │   │   │   ├── hr.blade.php
 │           │   │   │   ├── mission
 │           │   │   │   │   ├── addresses-cities.blade.php
 │           │   │   │   │   ├── domaine.blade.php
@@ -1467,6 +1484,7 @@
 │           │       │   │   └── badge.blade.php
 │           │       │   ├── frame.blade.php
 │           │       │   ├── headline.blade.php
+│           │       │   ├── hr.blade.php
 │           │       │   ├── mission
 │           │       │   │   ├── addresses-cities.php
 │           │       │   │   ├── domaine.blade.php
@@ -1538,4 +1556,4 @@
     ├── TestCase.php
     └── Unit
         └── ExampleTest.php
-117 directories, 1572 files
+118 directories, 1589 files
