@@ -1,19 +1,18 @@
-## Changelog : k8s-cluster-api-helm-charts (30 derniers jours, au 8 avril 2026)
+## Changelog : k8s-cluster-api-helm-charts (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce mois-ci, les charts Helm pour Cluster API ont bénéficié d'améliorations axées sur la flexibilité et la correction de bugs. Les utilisateurs peuvent désormais injecter des règles de sécurité supplémentaires pour les nœuds worker, et des corrections ont été apportées pour permettre la modification des secrets et la gestion des configurations de nœuds. Des améliorations ont également été apportées à la gestion des CIDR et de l'anti-affinité de CoreDNS.
+Cette version apporte des améliorations à la gestion des CIDR, des volumes snapshot, des secrets externes et des règles de sécurité pour les nœuds worker. Des corrections ont également été apportées pour permettre des configurations plus flexibles et résoudre des problèmes de comportement inattendu.
 
 ### Évolutions fonctionnelles
-- **Sécurité des nœuds worker :** Possibilité d'injecter des règles de sécurité supplémentaires (Security Groups) pour les nœuds worker via le chart `capi-cluster`. [#76](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/76)
-- **Gestion des secrets :** Suppression des hooks qui empêchaient la modification des secrets, permettant ainsi une meilleure gestion des informations sensibles. [#72](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/72) et [#70](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/70)
-- **Provisionnement de secrets :** Amélioration du provisionnement des secrets via l'utilisation de `ResourceSet`. [#71](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/71)
+- **Sécurité des nœuds worker:** Possibilité d'injecter des règles de sécurité supplémentaires (Security Groups) assignées aux nœuds worker via la PR [#76](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/76).
+- **Gestion des secrets externes:** Correction des noms de clés dans la gestion des secrets externes [#77](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/77) et [#77](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/77).
+- **Volumes Snapshot:** Désactivation par défaut des snapshots de volumes, avec la possibilité de les activer via une configuration dédiée [#78](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/78).
+- **Gestion des NodePools:** Correction d'un problème empêchant la configuration correcte des NodePools sans contenu spécifique [#73](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/73).
 
 ### Évolutions techniques
-- **Gestion des CIDR :** Correction d'un problème lié à la gestion des CIDR. [#75](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/75) et [#74](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/74)
-- **Gestion des NodePools :** Correction d'un bug empêchant la configuration correcte des NodePools sans contenu spécifique. [#73](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/73)
-- **Anti-affinité CoreDNS :** Correction de la configuration de l'anti-affinité pour CoreDNS. [#66](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/66)
+- **Gestion des CIDR:** Corrections et améliorations de la gestion des CIDR, incluant des tests et des ajustements pour assurer un comportement correct [#74](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/74), [#75](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/75) et [#79](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/79).
+- **Suppression de hooks bloquants:** Suppression de hooks qui empêchaient les modifications des secrets [#72](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/72).
 
 ### Autres changements
-- Ajout de tests pour la gestion des CIDR. [#74](https://github.com/cloud-gouv/k8s-cluster-api-helm-charts/pull/74)
-- Ajout d'un test pour l'ajout d'un role-id.
-- Correction d'un problème de configuration par défaut.
+- Amélioration des tests pour la gestion des CIDR.
+- Correction de tests unitaires.
