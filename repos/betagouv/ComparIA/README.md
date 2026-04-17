@@ -111,7 +111,7 @@ Already live in **French and Danish**, and planning launches in Sweden, Estonia 
 
 Generic benchmarks miss domain-specific needs. A sector arena reveals which models handle specialised language best.
 
-*Healthcare, legal, education, public admin, agriculture...*
+_Healthcare, legal, education, public admin, agriculture..._
 
 </td>
 <td width="33%" valign="top">
@@ -120,7 +120,7 @@ Generic benchmarks miss domain-specific needs. A sector arena reveals which mode
 
 Run your own arena, evaluate models on your real-world tasks, and contribute data back to the commons.
 
-*Governments, universities, hospitals, companies, NGOs...*
+_Governments, universities, hospitals, companies, NGOs..._
 
 </td>
 </tr>
@@ -145,7 +145,7 @@ Teach citizens and professionals about model diversity, bias, and environmental 
 
 ### 📊 Generate rare datasets
 
-Produce instruction and preference data in less-ressourced languages. 
+Produce instruction and preference data in less-ressourced languages.
 
 <img src="https://comparia.beta.gouv.fr/datasets/bunka-analyse.png" alt="Dataset analysis visualization" width="100%" />
 
@@ -191,12 +191,14 @@ Compar:IA is a digital common. Whether you can offer funding, code, translations
 ## Roadmap
 
 ### 🟢 In Progress
-- **EcoLogits update** [#253](https://github.com/betagouv/ComparIA/pull/253) *(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)*
-- **Gradio → FastAPI migration** *(🇫🇷 Ministry of Culture, 🇫🇷 DINUM, 🇪🇺 ALT-EDIC)*
-- **Language/platform-specific model support** *(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)*
-- **Dataset publication pipeline** configurable per language/platform, with customizable publication delays and anonymization pipelines *(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)*
+
+- **EcoLogits update** [#253](https://github.com/betagouv/ComparIA/pull/253) _(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)_
+- **Gradio → FastAPI migration** _(🇫🇷 Ministry of Culture, 🇫🇷 DINUM, 🇪🇺 ALT-EDIC)_
+- **Language/platform-specific model support** _(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)_
+- **Dataset publication pipeline** configurable per language/platform, with customizable publication delays and anonymization pipelines _(🇪🇺 ALT-EDIC, 🇫🇷 DINUM)_
 
 ### 🔮 Up Next
+
 - Web search and document upload
 - Authentication
 - Style control [#273](https://github.com/betagouv/ComparIA/pull/273)
@@ -207,12 +209,13 @@ Compar:IA is a digital common. Whether you can offer funding, code, translations
 - Live use-case mapping
 
 ### ⛵ Shipped
-- Dataset publishing pipeline v1 *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)*
-- Leaderboard v1 *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture, in collaboration with 🇫🇷 PEReN)*
-- Archived models *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)*
-- Blog section *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)*
-- Internationalization foundations *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)*
-- compar:IA v1 *(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)*
+
+- Dataset publishing pipeline v1 _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)_
+- Leaderboard v1 _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture, in collaboration with 🇫🇷 PEReN)_
+- Archived models _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)_
+- Blog section _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)_
+- Internationalization foundations _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)_
+- compar:IA v1 _(🇫🇷 DINUM, 🇫🇷 Ministry of Culture)_
 
 ---
 
@@ -222,7 +225,13 @@ Compar:IA is a digital common. Whether you can offer funding, code, translations
 
 ## Getting started
 
-The platform is fully open source and self-hostable. The quickest way to get running:
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/betagouv/ComparIA)
+
+The platform is fully open source and self-hostable.
+
+**Self-host with Docker** (single server, automatic HTTPS via Caddy): see **[DOCKER_INSTALL.md](devops/standalone_docker_install/DOCKER_INSTALL.md)**
+
+**Local development:**
 
 ```bash
 cp .env.example .env       # Configure environment
@@ -230,6 +239,6 @@ make install               # Install all dependencies
 make dev                   # Start backend + frontend
 ```
 
-For the full setup guide (Docker, manual setup, testing, database, models, i18n, architecture), see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+For the full setup guide (manual setup, testing, database, models, i18n, architecture), see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
 
 <a href="https://digitalpublicgoods.net/r/comparia" target="_blank" rel="noopener noreferrer"><img src="https://github.com/DPGAlliance/dpg-resources/blob/main/docs/assets/dpg-badge.png?raw=true" width="100" alt="Digital Public Goods Badge"></a>

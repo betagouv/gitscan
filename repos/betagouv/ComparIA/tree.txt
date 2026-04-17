@@ -5,12 +5,12 @@
 ├── .env.example
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── build-deploy-dev.yml
 │       ├── deploy-prd.yml
 │       ├── models-update.yml
-│       ├── promote-deploy-stg.yml
-│       └── rankings-update.yml
+│       └── promote-deploy-stg.yml
 ├── .gitignore
 ├── .gitmodules
 ├── .pylintrc
@@ -28,6 +28,7 @@
 │   ├── arena
 │   │   ├── __init__.py
 │   │   ├── cache.py
+│   │   ├── captcha.py
 │   │   ├── conversation.py
 │   │   ├── litellm.py
 │   │   ├── models.py
@@ -54,7 +55,7 @@
 │       ├── countries.py
 │       └── user.py
 ├── controller.py
-├── docker
+├── devops
 │   ├── .env.dev
 │   ├── .env.dist
 │   ├── Dockerfile
@@ -63,19 +64,23 @@
 │   ├── build-and-push-to-harbor.sh
 │   ├── db-prd-local.compose.yml
 │   ├── docker-bake.yml
-│   ├── docker-compose.yml
+│   ├── docker-compose-dev.yml
 │   ├── generate-init-db.sh
 │   ├── jenkins
-│   │   ├── trigger_backend_build.py
-│   │   ├── trigger_check_images_prd.py
-│   │   ├── trigger_check_images_stg.py
+│   │   ├── jenkins_common
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   └── deploy_job.py
 │   │   ├── trigger_deploy_dev.py
 │   │   ├── trigger_deploy_prd.py
-│   │   ├── trigger_deploy_stg.py
-│   │   ├── trigger_frontend_build.py
-│   │   └── trigger_image_promotion.py
+│   │   └── trigger_deploy_stg.py
 │   ├── list-harbor-tags.sh
-│   └── restore-backup.sh
+│   ├── restore-backup.sh
+│   └── standalone_docker_install
+│       ├── .env.example
+│       ├── Caddyfile
+│       ├── DOCKER_INSTALL.md
+│       └── docker-compose.yml
 ├── frontend
 │   ├── .dockerignore
 │   ├── .env.example
@@ -105,6 +110,7 @@
 │   │       ├── nn.json
 │   │       ├── oc.json
 │   │       └── sv.json
+│   ├── package-lock.json
 │   ├── package.json
 │   ├── playwright.config.ts
 │   ├── src
@@ -118,6 +124,7 @@
 │   │   ├── hooks.client.ts
 │   │   ├── hooks.server.ts
 │   │   ├── lib
+│   │   │   ├── captcha.svelte.ts
 │   │   │   ├── chatService.svelte.ts
 │   │   │   ├── components
 │   │   │   │   ├── AILogo.svelte
@@ -179,6 +186,8 @@
 │   │   │   │   ├── useLocalStorage.svelte.ts
 │   │   │   │   └── useToast.svelte.ts
 │   │   │   ├── index.ts
+│   │   │   ├── logger.server.ts
+│   │   │   ├── metrics.ts
 │   │   │   ├── models.ts
 │   │   │   ├── stores
 │   │   │   │   └── cohortStore.svelte.ts
@@ -237,27 +246,29 @@
 │   │       ├── +error.svelte
 │   │       ├── +layout.svelte
 │   │       ├── +layout.ts
-│   │       └── arene
-│   │           ├── +page.svelte
-│   │           └── components
-│   │               ├── ChatBot.svelte
-│   │               ├── CopyAll.svelte
-│   │               ├── GroupedMessages.svelte
-│   │               ├── GuidedPromptSuggestions.svelte
-│   │               ├── LikeDislike.svelte
-│   │               ├── LikePanel.svelte
-│   │               ├── MessageBot.svelte
-│   │               ├── MessageUser.svelte
-│   │               ├── MiniCard.svelte
-│   │               ├── ModelSelector.svelte
-│   │               ├── RevealArea.svelte
-│   │               ├── RevealCard.svelte
-│   │               ├── TOSModal.svelte
-│   │               ├── ViewChat.svelte
-│   │               ├── ViewPrompt.svelte
-│   │               ├── VoteArea.svelte
-│   │               ├── VoteRadioGroup.svelte
-│   │               └── index.ts
+│   │       ├── arene
+│   │       │   ├── +page.svelte
+│   │       │   └── components
+│   │       │       ├── ChatBot.svelte
+│   │       │       ├── CopyAll.svelte
+│   │       │       ├── GroupedMessages.svelte
+│   │       │       ├── GuidedPromptSuggestions.svelte
+│   │       │       ├── LikeDislike.svelte
+│   │       │       ├── LikePanel.svelte
+│   │       │       ├── MessageBot.svelte
+│   │       │       ├── MessageUser.svelte
+│   │       │       ├── MiniCard.svelte
+│   │       │       ├── ModelSelector.svelte
+│   │       │       ├── RevealArea.svelte
+│   │       │       ├── RevealCard.svelte
+│   │       │       ├── TOSModal.svelte
+│   │       │       ├── ViewChat.svelte
+│   │       │       ├── ViewPrompt.svelte
+│   │       │       ├── VoteArea.svelte
+│   │       │       ├── VoteRadioGroup.svelte
+│   │       │       └── index.ts
+│   │       └── metrics
+│   │           └── +server.ts
 │   ├── static
 │   │   ├── artworks
 │   │   │   ├── conclusion.svg
@@ -544,7 +555,11 @@
 ├── utils
 │   ├── __init__.py
 │   ├── add_token_count.py
-│   ├── export_dataset.py
+│   ├── dataset
+│   │   ├── compute.py
+│   │   ├── export.py
+│   │   ├── queries.py
+│   │   └── run.py
 │   ├── ip_map.sql
 │   ├── leaderboard_cookbook.ipynb
 │   ├── local_dataset
@@ -605,4 +620,4 @@
 │   ├── topics_pii.py
 │   └── utils.py
 └── uv.lock
-90 directories, 517 files
+94 directories, 528 files

@@ -1,40 +1,26 @@
-## Changelog : ComparIA (30 derniers jours, au 17 mars 2026)
+## Changelog : ComparIA (30 derniers jours, au 2026-04-15)
 
 ### Résumé
-Ce mois-ci, ComparIA a connu des améliorations significatives en termes de performance, de stabilité et de fonctionnalités. L'accent a été mis sur l'optimisation du calcul des classements, l'ajout de nouveaux modèles de langage (Mistral Small 4, GPT-5.4, Gemini 3.1 Flash Lite, etc.), et l'amélioration de l'expérience utilisateur, notamment en matière de gestion des erreurs et de filtrage anti-spam. Des efforts importants ont également été consacrés à la mise en place d'une infrastructure de déploiement plus robuste et automatisée.
+Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de déploiement, de robustesse et de fonctionnalités. L'installation via Docker a été simplifiée, la détection de spam a été améliorée, de nouveaux modèles de langage ont été ajoutés et des optimisations ont été apportées au calcul des classements. Des efforts importants ont également été consacrés à la maintenance et à la modernisation de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Ajout du modèle Mistral Small 4 (119B MoE) [#392](https://github.com/betagouv/ComparIA/pull/392).
-- Ajout du modèle GPT-5.4 [#374](https://github.com/betagouv/ComparIA/pull/374).
-- Ajout du modèle Gemini 3.1 Flash Lite [#386](https://github.com/betagouv/ComparIA/pull/386).
-- Ajout du modèle Claude Sonnet 4.6.
-- Ajout des modèles Qwen 3.5 397B & MiniMax M2.5.
-- Ajout des modèles Ordbogen Odin (odin-large, odin-medium) pour le portail danois.
-- Mise en place d'un système de cache probabiliste des réponses pour les premiers tours de conversation, améliorant la réactivité.
-- Amélioration de l'affichage des données de consommation énergétique et de leur équivalence avec des impacts environnementaux (fonte des glaces arctiques, etc.).
-- Ajout d'un lien vers le tableau de bord "Matrice d'impact" dans le pied de page.
-- Ajout d'un popup Tally pour recueillir les commentaires des utilisateurs sur les pages françaises.
-- Possibilité d'ouvrir un modèle à partir d'une URL avec un hash.
-- Mise à jour des descriptions des modèles Apertus pour refléter leur nature open source.
+- **Installation simplifiée :** Une nouvelle méthode d'installation via Docker avec Caddy a été ajoutée, facilitant le déploiement de ComparIA. [#429](https://github.com/betagouv/ComparIA/pull/429)
+- **Détection de spam améliorée :** La détection de spam et de contenu inapproprié a été améliorée en utilisant le modèle Gemini, remplaçant l'ancienne méthode basée sur des expressions régulières.  La détection de spam est maintenant persistée en base de données, comme les données personnelles. [#398](https://github.com/betagouv/ComparIA/pull/398)
+- **Nouveaux modèles de langage :** Plusieurs nouveaux modèles de langage ont été ajoutés au catalogue, notamment Gemma 4 26B A4B, Gemma 4 31B, et Mistral Small 4 (119B MoE). Certains modèles obsolètes (Gemini 3 Pro, LFM 2 8B A1B, olmo-3-32b-think) ont été archivés. [#425](https://github.com/betagouv/ComparIA/pull/425), [#426](https://github.com/betagouv/ComparIA/pull/426), [#416](https://github.com/betagouv/ComparIA/pull/416), [#418](https://github.com/betagouv/ComparIA/pull/418), [#422](https://github.com/betagouv/ComparIA/pull/422)
+- **Limitation du taux de requêtes :** Une limitation du taux de requêtes a été ajoutée pour la sélection personnalisée de modèles, afin de prévenir les abus. [#384](https://github.com/betagouv/ComparIA/pull/384)
+- **Captcha Altcha :** Ajout d'un captcha Altcha pour les endpoints de l'arène. [#414](https://github.com/betagouv/ComparIA/pull/414)
 
 ### Évolutions techniques
-- Refonte du calcul des classements : calcul en application et stockage en cache Redis au lieu de fichiers statiques [#390](https://github.com/betagouv/ComparIA/pull/390).
-- Optimisation des requêtes SQL et utilisation d'helpers pour la gestion de la base de données.
-- Refactorisation du code pour améliorer la modularité et la maintenabilité.
-- Mise en place d'une infrastructure CI/CD plus robuste avec des pipelines de déploiement pour les environnements de développement, de staging et de production.
-- Amélioration de la gestion des erreurs et ajout de logs plus informatifs.
-- Mise à jour des dépendances (ecologits, fastapi, litellm, etc.).
-- Suppression de code obsolète et nettoyage du code.
-- Implémentation d'un filtre anti-spam basé sur des expressions régulières pour bloquer les injections de prompts et les attaques JSON.
-- Amélioration de la gestion des timeouts et des erreurs lors des appels aux modèles de langage.
-- Utilisation de variables d'environnement pour la configuration.
+- **Refonte du calcul des classements :** Le calcul des classements a été refactorisé pour utiliser Redis comme cache, améliorant ainsi les performances et réduisant la dépendance aux fichiers statiques. Les données de classement sont maintenant calculées en interne à partir de la base de données.
+- **Amélioration de l'infrastructure DevOps :** Simplification des pipelines Jenkins et GitHub Actions, suppression de tâches inutiles et amélioration de la configuration Docker.
+- **Logging amélioré :** Ajout de logging basé sur Loki pour une meilleure traçabilité et surveillance.
+- **Mise à jour des dépendances :** Mise à jour de plusieurs dépendances, notamment eslint, jsdom, et les paquets npm.
+- **Refactorisation du code :** Refactorisation de plusieurs parties du code, notamment les requêtes à la base de données et la gestion des modèles.
+- **Correction de bugs :** Correction de plusieurs bugs liés à la configuration de PostgreSQL, aux erreurs Caddy, et à la gestion des timeouts.
 
 ### Autres changements
-- Mise à jour des traductions dans plusieurs langues (Danois, Norvégien Bokmål, Anglais) grâce à Weblate.
-- Mise à jour de la documentation et du fichier README.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de tests unitaires et d'intégration.
-- Mise à jour de la licence MIT.
-- Archivage des modèles Cohere Command A, GPT 5.1, et GLM 4.6.
-- Suppression de pgAdmin de l'infrastructure.
-- Correction de problèmes liés à l'environnement Sentry.
+- **Documentation :** Amélioration de la documentation concernant l'installation via Docker et le processus d'initialisation de la base de données.
+- **Traduction :** Mise à jour des traductions en estonien et en danois via Weblate.
+- **Archivage de modèles :** Archivage de modèles de langage obsolètes pour maintenir la pertinence du catalogue.
+- **Configuration Dependabot :** Configuration de Dependabot pour des mises à jour groupées moins fréquentes.
+- **Suppression de scripts inutiles :** Suppression de scripts de mise à jour des classements et de vérification d'images.
