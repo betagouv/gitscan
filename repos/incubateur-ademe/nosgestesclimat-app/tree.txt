@@ -1,5 +1,6 @@
 .
 ├── .devcontainer
+│   ├── create.sh
 │   ├── devcontainer.json
 │   └── docker-compose.yml
 ├── .gitconfig
@@ -10,7 +11,6 @@
 │   │   └── setup
 │   │       └── action.yml
 │   ├── scripts
-│   │   ├── scalingo-exchange-token.sh
 │   │   ├── scalingo-monitor-deployment.sh
 │   │   └── scalingo-trigger-deployment.sh
 │   └── workflows
@@ -705,6 +705,8 @@
 │       │   │   │   │   │   │       │       ├── ResultsList.tsx
 │       │   │   │   │   │   │       │       ├── ShareSimulator.tsx
 │       │   │   │   │   │   │       │       └── resultsList
+│       │   │   │   │   │   │       │           ├── DeleteSimulationButton.tsx
+│       │   │   │   │   │   │       │           ├── ResultListItem.tsx
 │       │   │   │   │   │   │       │           └── SeeListItemDetailLink.tsx
 │       │   │   │   │   │   │       ├── actions
 │       │   │   │   │   │   │       │   ├── [...dottedName]
@@ -737,6 +739,8 @@
 │       │   │   │   │   │   │       │       └── unauthorized.tsx
 │       │   │   │   │   │   │       └── unauthorized.tsx
 │       │   │   │   │   │   ├── amis
+│       │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   └── getParticipantName.ts
 │       │   │   │   │   │   │   ├── creer
 │       │   │   │   │   │   │   │   ├── connexion
 │       │   │   │   │   │   │   │   │   └── page.tsx
@@ -965,52 +969,56 @@
 │       │   │   │   │   │   │   │   └── questions
 │       │   │   │   │   │   │   │       └── Question.tsx
 │       │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   ├── simulateur
-│       │   │   │   │   │   │   ├── commencer
-│       │   │   │   │   │   │   │   ├── layout.tsx
-│       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   └── email
-│       │   │   │   │   │   │       ├── layout.tsx
-│       │   │   │   │   │   │       └── page.tsx
-│       │   │   │   │   │   └── tutoriel
-│       │   │   │   │   │       ├── _components
-│       │   │   │   │   │       │   ├── AutresQuestions.tsx
-│       │   │   │   │   │       │   ├── AvantDeCommencer.tsx
-│       │   │   │   │   │       │   ├── ButtonBack.tsx
-│       │   │   │   │   │       │   ├── ButtonStart.tsx
-│       │   │   │   │   │       │   ├── autresQuestions
-│       │   │   │   │   │       │   │   └── OrganisationPrivacy.tsx
-│       │   │   │   │   │       │   └── avantDeCommencer
-│       │   │   │   │   │       │       └── OrganisationDisclaimer.tsx
-│       │   │   │   │   │       ├── layout.tsx
-│       │   │   │   │   │       └── page.tsx
+│       │   │   │   │   │   └── simulateur
+│       │   │   │   │   │       ├── commencer
+│       │   │   │   │   │       │   ├── layout.tsx
+│       │   │   │   │   │       │   └── page.tsx
+│       │   │   │   │   │       └── email
+│       │   │   │   │   │           ├── layout.tsx
+│       │   │   │   │   │           └── page.tsx
 │       │   │   │   │   ├── layout.tsx
-│       │   │   │   │   └── simulateur
-│       │   │   │   │       └── [root]
-│       │   │   │   │           ├── _actions
-│       │   │   │   │           │   └── endTestAction.ts
-│       │   │   │   │           ├── _components
-│       │   │   │   │           │   ├── Simulateur.tsx
-│       │   │   │   │           │   └── simulateur
-│       │   │   │   │           │       ├── Form.tsx
-│       │   │   │   │           │       ├── Summary.tsx
-│       │   │   │   │           │       ├── form
-│       │   │   │   │           │       │   ├── FunFact.tsx
-│       │   │   │   │           │       │   ├── ResultsBlockDesktop.tsx
-│       │   │   │   │           │       │   ├── ResultsBlockMobile.tsx
-│       │   │   │   │           │       │   └── resultsBlocksDesktop
-│       │   │   │   │           │       │       ├── CategoriesResultList.tsx
-│       │   │   │   │           │       │       └── categoriesResultList
-│       │   │   │   │           │       │           └── CategoryResult.tsx
-│       │   │   │   │           │       └── summary
-│       │   │   │   │           │           ├── CategoryIllustration.tsx
-│       │   │   │   │           │           └── Question.tsx
-│       │   │   │   │           ├── _hooks
-│       │   │   │   │           │   ├── useEndPage.ts
-│       │   │   │   │           │   └── useSimulatorGuard.ts
-│       │   │   │   │           ├── layout.tsx
-│       │   │   │   │           ├── page.tsx
-│       │   │   │   │           └── skeleton.tsx
+│       │   │   │   │   ├── simulateur
+│       │   │   │   │   │   └── [root]
+│       │   │   │   │   │       ├── _actions
+│       │   │   │   │   │       │   └── endTestAction.ts
+│       │   │   │   │   │       ├── _components
+│       │   │   │   │   │       │   ├── Simulateur.tsx
+│       │   │   │   │   │       │   └── simulateur
+│       │   │   │   │   │       │       ├── Form.tsx
+│       │   │   │   │   │       │       ├── Summary.tsx
+│       │   │   │   │   │       │       ├── form
+│       │   │   │   │   │       │       │   ├── FunFact.tsx
+│       │   │   │   │   │       │       │   ├── ResultsBlockDesktop.tsx
+│       │   │   │   │   │       │       │   ├── ResultsBlockMobile.tsx
+│       │   │   │   │   │       │       │   └── resultsBlocksDesktop
+│       │   │   │   │   │       │       │       ├── CategoriesResultList.tsx
+│       │   │   │   │   │       │       │       └── categoriesResultList
+│       │   │   │   │   │       │       │           └── CategoryResult.tsx
+│       │   │   │   │   │       │       └── summary
+│       │   │   │   │   │       │           ├── CategoryIllustration.tsx
+│       │   │   │   │   │       │           └── Question.tsx
+│       │   │   │   │   │       ├── _hooks
+│       │   │   │   │   │       │   ├── useEndPage.ts
+│       │   │   │   │   │       │   └── useSimulatorGuard.ts
+│       │   │   │   │   │       ├── layout.tsx
+│       │   │   │   │   │       ├── page.tsx
+│       │   │   │   │   │       └── skeleton.tsx
+│       │   │   │   │   └── tutoriel
+│       │   │   │   │       ├── _components
+│       │   │   │   │       │   ├── AutresQuestions.tsx
+│       │   │   │   │       │   ├── AvantDeCommencer.tsx
+│       │   │   │   │       │   ├── ButtonBack.tsx
+│       │   │   │   │       │   ├── ButtonStart.tsx
+│       │   │   │   │       │   ├── autresQuestions
+│       │   │   │   │       │   │   └── OrganisationPrivacy.tsx
+│       │   │   │   │       │   └── avantDeCommencer
+│       │   │   │   │       │       └── OrganisationDisclaimer.tsx
+│       │   │   │   │       ├── jeune
+│       │   │   │   │       │   ├── _components
+│       │   │   │   │       │   │   └── YouthTutorial.tsx
+│       │   │   │   │       │   └── page.tsx
+│       │   │   │   │       ├── layout.tsx
+│       │   │   │   │       └── page.tsx
 │       │   │   │   ├── [...notFound]
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── _components
@@ -1148,6 +1156,7 @@
 │       │   │   ├── actions
 │       │   │   │   ├── ActionDetail.tsx
 │       │   │   │   ├── HowToAct.tsx
+│       │   │   │   ├── JVABanner.tsx
 │       │   │   │   └── howToAct
 │       │   │   │       ├── RecommendedActions.tsx
 │       │   │   │       └── recommendedActions
@@ -1207,6 +1216,7 @@
 │       │   │   │   └── question
 │       │   │   │       ├── BooleanInput.tsx
 │       │   │   │       ├── ChoicesInput.tsx
+│       │   │   │       ├── DontKnowButton.tsx
 │       │   │   │       ├── Label.tsx
 │       │   │   │       ├── Mosaic.tsx
 │       │   │   │       ├── Notification.tsx
@@ -1291,6 +1301,7 @@
 │       │   │   │       ├── Ademe.tsx
 │       │   │   │       └── Marianne.tsx
 │       │   │   ├── interactions
+│       │   │   │   ├── DeleteButtonWithConfirmModal.tsx
 │       │   │   │   ├── RedirectTimer.tsx
 │       │   │   │   └── SecondsTimer.tsx
 │       │   │   ├── landing-pages
@@ -2171,4 +2182,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-538 directories, 1680 files
+541 directories, 1688 files

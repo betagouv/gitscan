@@ -3,13 +3,13 @@ services:
     image: node:22-alpine
     command: sleep infinity
     ports:
+      - '3000:3000'
       - '3001:3001'
     volumes:
-      - ../:/workspaces/nosgestesclimat-server:cached,z
+      - ../:/workspaces/nosgestesclimat:cached,z
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ngc
       REDIS_URL: redis://redis:6379
-      NODE_ENV: development
     depends_on:
       - postgres
       - redis
