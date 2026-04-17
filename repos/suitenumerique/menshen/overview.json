@@ -9,7 +9,12 @@
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Django"
+    "Django",
+    "dj-database-url",
+    "djangorestframework",
+    "django-cors-headers",
+    "psycopg[binary]",
+    "django-redis"
   ],
   "components": [
     "Serveur d'autorisation OAuth 2.0",
@@ -21,17 +26,22 @@
     ],
     "providers": []
   },
-  "tests": null,
-  "workflows": null,
+  "tests": [
+    "pytest"
+  ],
+  "workflows": [
+    "backend.yml",
+    "security.yml"
+  ],
   "lastActivity": "2026-03-11T10:56:40+01:00",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
-    "forks": 1,
+    "forks": 2,
     "contributors": 1,
-    "openIssues": 1
+    "openIssues": 4
   },
   "tags": [
     "Sécurité & Auth",

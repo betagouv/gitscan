@@ -1,8 +1,75 @@
 .
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows
+│       ├── backend.yml
+│       └── security.yml
+├── .gitignore
+├── .gitlint
+├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── SECURITY.md
-└── publiccode.yml
-1 directory, 6 files
+├── bin
+│   ├── _config.sh
+│   ├── compose
+│   ├── manage
+│   ├── pytest
+│   └── uv
+├── compose.yml
+├── docker
+│   ├── auth
+│   │   └── realm.json
+│   └── files
+│       └── usr
+│           └── local
+│               └── bin
+│                   └── entrypoint
+├── env.d
+│   └── development
+│       ├── common
+│       ├── kc_postgresql
+│       └── postgresql
+├── gitlint
+│   └── gitlint_emoji.py
+├── publiccode.yml
+├── renovate.json
+└── src
+    └── backend
+        ├── .python-version
+        ├── Dockerfile
+        ├── api
+        │   ├── __init__.py
+        │   ├── admin.py
+        │   ├── apps.py
+        │   ├── migrations
+        │   │   └── __init__.py
+        │   ├── models.py
+        │   ├── tests
+        │   │   ├── __init__.py
+        │   │   └── test_views.py
+        │   ├── tests.py
+        │   ├── urls.py
+        │   └── views.py
+        ├── locale
+        │   └── .keep
+        ├── manage.py
+        ├── menshen
+        │   ├── __init__.py
+        │   ├── asgi.py
+        │   ├── settings.py
+        │   ├── urls.py
+        │   └── wsgi.py
+        ├── migrations
+        │   └── __init__.py
+        ├── pyproject.toml
+        └── uv.lock
+22 directories, 52 files
