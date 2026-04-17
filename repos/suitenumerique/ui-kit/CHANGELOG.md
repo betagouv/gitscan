@@ -1,6 +1,25 @@
 # @gouvfr-lasuite/ui-kit
 
-## [Unreleased]
+## 0.20.0
+
+### Minor Changes
+
+- add Figma-to-React SVG icon generation script
+- add IconSvg wrapper component
+- add auto-generated SVG icon components
+- Dropdown menu: submenus, tiny variant, keepOpen
+- add Layout footer support in left panel
+- add SearchFilter component (search + filtering)
+- add StorageGauge component (storage usage gauge)
+- add FeedbackForm component (feedback form)
+- add HelpMenu component (help menu)
+
+### Patch Changes
+
+- hide waffle icon from screen readers
+- Clicking between nodes no longer triggers phantom selection.
+- reorganize stories and export SVG icons
+- Context menu: keepOpen support
 
 ## 0.19.10
 
@@ -38,13 +57,13 @@
 
 ### Patch Changes
 
-- Fix the delete option visibility in access role dropdown 
+- Fix the delete option visibility in access role dropdown
 
 ## 0.19.4
 
 ### Patch Changes
 
-- Fix the delete option visibility in access role dropdown 
+- Fix the delete option visibility in access role dropdown
 
 ## 0.19.3
 
@@ -54,16 +73,20 @@
 
 ## 0.19.2
 
-### Minor Changes 
+### Minor Changes
 
--  add can_delete property and improve ShareModal Storybook docs 
+- add can_delete property and improve ShareModal Storybook docs
 
 ## 0.19.1
 
-### Minor Changes 
+### Minor Changes
 
 - Add ReleaseNoteModal component
 - Move delete access into AccessRoleDropdown.
+
+### Minor Changes
+
+- Fix and improve dropdown menu focus and semantics
 
 ### Patch Changes
 
@@ -72,9 +95,9 @@
 
 ## 0.19.0
 
-### Minor Changes 
+### Minor Changes
 
-- Add ContextMenu component 
+- Add ContextMenu component
 - Add OnBoardingModal component
 
 ## 0.18.7
@@ -92,7 +115,7 @@
 ### Minor Changes
 
 - Update `UserAvatar` and `UserMenu` components to stick to the Figma design
-- Upgrade to latest Cunningham tokens (@openfun/cunningham-* -> @gouvfr-lasuite/cunningham-*)
+- Upgrade to latest Cunningham tokens (@openfun/cunningham-_ -> @gouvfr-lasuite/cunningham-_)
 - Export White Label & ANCT themes with light/dark variants
 - Export `getUIKitThemesFromGlobals` utility function to create a custom from UI Kit globals and overrides
 
@@ -423,7 +446,8 @@
 - Add custom cunningham.ts file
 - Still a WIP version
 
-[unreleased]: https://github.com/suitenumerique/ui-kit/compare/v0.18.6...main
+[unreleased]: https://github.com/suitenumerique/ui-kit/compare/v0.20.0...main
+[0.20.0]: https://github.com/suitenumerique/ui-kit/compare/v0.18.6...v0.20.0
 [0.18.6]: https://github.com/suitenumerique/ui-kit/compare/v0.18.5...v0.18.6
 [0.18.5]: https://github.com/suitenumerique/ui-kit/compare/v0.18.4...v0.18.5
 [0.18.4]: https://github.com/suitenumerique/ui-kit/compare/v0.18.3...v0.18.4
