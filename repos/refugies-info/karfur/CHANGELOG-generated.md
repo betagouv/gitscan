@@ -1,31 +1,27 @@
-## Changelog : karfur (30 derniers jours)
+## Changelog : karfur (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration des performances et de la stabilité de l'application, notamment au niveau de la recherche et du chargement des données. Des corrections de bugs ont été apportées pour améliorer l'expérience utilisateur, en particulier concernant l'affichage des fiches et des sessions. De nouvelles fonctionnalités ont été implémentées, comme l'intégration de Speedgoose pour la mise en cache et l'amélioration de la gestion des webhooks.
+Cette version apporte des améliorations de sécurité en corrigeant des vulnérabilités identifiées par Dependabot, ainsi que des optimisations de performance, notamment au niveau des requêtes MongoDB et de la gestion des statistiques de traduction. Des corrections de bugs ont également été implémentées pour améliorer la stabilité et l'expérience utilisateur, en particulier sur l'application mobile et lors de la gestion des fiches en brouillon.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des logos des structures, désormais modifiables depuis l'administration. [#3546](https://github.com/refugies-info/karfur/pull/3546)
-- Amélioration de l'affichage des sessions pour les dispositifs RCO, avec une nouvelle interface et une meilleure gestion des cas multiples. [#3482](https://github.com/refugies-info/karfur/pull/3482)
-- Correction d'un bug empêchant l'affichage correct des fiches traduites. [#3494](https://github.com/refugies-info/karfur/pull/3494)
-- Ajout de la possibilité de filtrer les contributions des utilisateurs par origine (RI). [#3482](https://github.com/refugies-info/karfur/pull/3482)
-- Correction d'un bug empêchant l'affichage correct des fiches RCO publiées en brouillon. [#3489](https://github.com/refugies-info/karfur/pull/3489)
-- Suppression temporaire de la section "équipe" sur la page mission et impact. [#3487](https://github.com/refugies-info/karfur/pull/3487)
+- Amélioration de la gestion des fiches en brouillon : correction d'une erreur 500 lors de l'accès aux fiches RCO provenant du playground.
+- Amélioration de la recherche : correction d'un bug empêchant l'affichage des résultats de recherche en ligne sur mobile.
+- Amélioration de l'expérience utilisateur mobile : correction de problèmes d'affichage des champs de saisie et amélioration de la gestion des favoris.
+- Amélioration de l'affichage des validations et publications : correction d'un problème d'affichage sur la page dédiée.
+- Mise à jour de l'accessibilité : amélioration de la conformité RGAA, notamment avec la publication d'une déclaration d'accessibilité partiellement conforme.
+- Ajout d'une fonctionnalité de débogage : ajout d'un outil pour investiguer les erreurs 500 sur le service backend.
 
 ### Évolutions techniques
-- Implémentation de Speedgoose pour la mise en cache des requêtes fréquentes, améliorant ainsi les performances. [#3556](https://github.com/refugies-info/karfur/pull/3556), [#3558](https://github.com/refugies-info/karfur/pull/3558)
-- Refactorisation de l'architecture de recherche pour utiliser une pagination côté serveur, améliorant la réactivité et la scalabilité.
-- Migration des schémas MongoDB vers des modèles partagés pour une meilleure cohérence et maintenabilité. [#3555](https://github.com/refugies-info/karfur/pull/3555)
-- Mise à jour de la bibliothèque Brevo vers la version 5. [#3550](https://github.com/refugies-info/karfur/pull/3550)
-- Mise à jour de Storybook vers la version 10.2 avec migration vers Vite. [#3553](https://github.com/refugies-info/karfur/pull/3553)
-- Unification des branches de production et de staging. [#3502](https://github.com/refugies-info/karfur/pull/3502), [#3503](https://github.com/refugies-info/karfur/pull/3503)
-- Amélioration de la gestion des erreurs Zod dans les routes API webhook. [#3541](https://github.com/refugies-info/karfur/pull/3541)
-- Mise à jour des dépendances et suppression des scripts PR obsolètes. [#3548](https://github.com/refugies-info/karfur/pull/3548)
+- Sécurité : correction de plusieurs vulnérabilités de sécurité identifiées par Dependabot dans diverses dépendances (Next.js, axios, vite, handlebars, node-forge, brace-expansion, etc.).
+- Performance : optimisation des requêtes MongoDB pour améliorer les performances, notamment au niveau des statistiques de traduction et de la récupération des dispositifs.
+- Infrastructure : simplification du pipeline de release et ajout de tests pour prévenir les régressions.
+- Amélioration de la robustesse : gestion améliorée des erreurs et des cas limites dans le code, notamment lors de la manipulation de données et de l'accès aux bases de données.
+- Mise à jour des dépendances : passage à Expo SDK 54 pour l'application mobile.
+- Refactoring : amélioration de la qualité du code et de sa maintenabilité grâce à des refactorings divers.
 
 ### Autres changements
-- Documentation de l'utilisation de REDIS_URI dans les environnements client et serveur. [#3558](https://github.com/refugies-info/karfur/pull/3558)
-- Ajout de tests pour la modification du mot de passe. [#3557](https://github.com/refugies-info/karfur/pull/3557)
-- Correction de divers problèmes de typage et de validation.
-- Amélioration de la robustesse de l'application face à des données incorrectes ou manquantes.
-- Suppression du fichier `.envrc` et ajout de `.letta` à `.gitignore`.
-- Correction de problèmes de build et de déploiement.
-- Ajout d'une configuration worktrunk pour la gestion des branches de travail.
+- Documentation : ajout d'une documentation pour la nouvelle fonctionnalité de débogage.
+- Configuration : mise à jour de la configuration du pipeline de release.
+- Nettoyage du code : suppression de code obsolète et amélioration de la lisibilité du code.
+- Ajout d'un skill pour la gestion des alertes de sécurité Dependabot.
+- Amélioration des tests unitaires et d'intégration.

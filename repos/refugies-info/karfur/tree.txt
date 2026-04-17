@@ -33,13 +33,28 @@
 │       ├── chromatic.yaml
 │       ├── migrate_production.yaml
 │       ├── migrate_staging.yaml
+│       ├── release-please.yml
 │       └── release_pipeline.yaml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .husky
 │   ├── .gitignore
 │   └── pre-commit
+├── .letta
+│   ├── .lettaignore
+│   ├── settings.json
+│   └── skills
+│       └── dependabot-security-fixes
+│           └── SKILL.md
 ├── .npmrc
 ├── .prototools
+├── .release-please-manifest.json
+├── .skills
+│   └── investigating-server-errors
+│       ├── SKILL.md
+│       └── references
+│           ├── common-patterns.md
+│           └── gcp-logging-queries.md
 ├── .specify
 │   ├── memory
 │   │   └── constitution.md
@@ -86,6 +101,7 @@
 ├── .windsurfrules
 ├── .worktreeinclude
 ├── AGENTS.md
+├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE.md
 ├── README.md
@@ -95,6 +111,7 @@
 │   │   ├── .gitignore
 │   │   ├── .vscode
 │   │   │   └── settings.json
+│   │   ├── CHANGELOG.md
 │   │   ├── Dockerfile
 │   │   ├── __mocks__
 │   │   │   └── axios.js
@@ -2166,8 +2183,7 @@
 │   │   │   │   ├── markdown
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   └── markdown-plugins.test.ts
-│   │   │   │   │   ├── directive-to-component.tsx
-│   │   │   │   │   └── remark-restore-hierarchy.ts
+│   │   │   │   │   └── directive-to-component.tsx
 │   │   │   │   ├── onEnterOrSpace.ts
 │   │   │   │   ├── readAudio.ts
 │   │   │   │   ├── recherche
@@ -2509,6 +2525,7 @@
 │   │   │   └── assets.json
 │   │   ├── .gitignore
 │   │   ├── App.tsx
+│   │   ├── CHANGELOG.md
 │   │   ├── androidDeepLinks.js
 │   │   ├── app.config.js
 │   │   ├── axe-linter.yml
@@ -2541,6 +2558,7 @@
 │   │   │   │   │   ├── Map.tsx
 │   │   │   │   │   ├── MapBottomBar.tsx
 │   │   │   │   │   ├── MapContentHtml.tsx
+│   │   │   │   │   ├── MapDebug.ts
 │   │   │   │   │   ├── MiniMap.tsx
 │   │   │   │   │   ├── TextFromHtml.tsx
 │   │   │   │   │   ├── UpButton.tsx
@@ -2891,6 +2909,10 @@
 │   │   │   │   ├── getThemeTag.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── language.ts
+│   │   │   │   ├── markdown
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── markdownToHtml.ts
+│   │   │   │   │   └── remarkDirectiveToHtml.ts
 │   │   │   │   ├── noVoiceover.ts
 │   │   │   │   ├── notifications.ts
 │   │   │   │   ├── rtlHorizontalScroll.ts
@@ -3285,6 +3307,7 @@
 │   │   ├── tsconfig.json
 │   │   └── wdyr.js
 │   ├── server
+│   │   ├── CHANGELOG.md
 │   │   ├── Dockerfile
 │   │   ├── cloudbuild.yaml
 │   │   ├── example-env-file.env
@@ -3399,6 +3422,8 @@
 │   │   │   │   ├── adminOptions
 │   │   │   │   │   └── adminOptions.repository.ts
 │   │   │   │   ├── appusers
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── appusers.repository.test.ts
 │   │   │   │   │   └── appusers.repository.ts
 │   │   │   │   ├── dispositif
 │   │   │   │   │   ├── __tests__
@@ -3985,19 +4010,26 @@
 │   ├── 1733826190794_RemoveStuckedToReview.ts
 │   ├── 1734507038000_DeleteOldReadNotifications.ts
 │   ├── 1742918280024_CreateDispositifSnapshotsCollection.ts
+│   ├── 1743369600000_AddPerformanceAdvisorIndexes.ts
+│   ├── 1743662400000_RemoveInvalidSuggestions.ts
 │   ├── 1744895773870_UpdateThemeIcons.ts
 │   ├── 1745023411000_ThemeAddGradientColors.ts
+│   ├── 1749000000000_FixZodMigrationIssues.ts
 │   ├── 1754907038000_AddIndexesToTraductions.ts
 │   ├── 1755001200000_AddIndexesToDispositifsSearch.ts
 │   ├── 1755535200000_AddSortIndexesToDispositifs.ts
 │   ├── 1763633316490_backfill-origin-ri.ts
 │   ├── 1772529648826_MigrateSessionsToObject.ts
 │   ├── 1773564860648_sanitize-nan-age-values.ts
+│   ├── 1774298379363_BackfillWordsTranslatedCounter.ts
+│   ├── 1776080086167_AddPerformanceAdvisorIndexes2.ts
+│   ├── 1777000000000_RemoveInvalidSuggestionsDraft.ts
 │   └── cli.ts
 ├── package.json
 ├── packages
 │   ├── api-types
 │   │   ├── .gitignore
+│   │   ├── CHANGELOG.md
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── generics.ts
@@ -4022,8 +4054,23 @@
 │   │   │       ├── user.ts
 │   │   │       └── widget.ts
 │   │   └── tsconfig.json
+│   ├── markdown-utils
+│   │   ├── CHANGELOG.md
+│   │   ├── jest.config.js
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── __tests__
+│   │   │   │   ├── constants.test.ts
+│   │   │   │   ├── helpers.test.ts
+│   │   │   │   └── remarkRestoreHierarchy.test.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── helpers.ts
+│   │   │   ├── index.ts
+│   │   │   └── remarkRestoreHierarchy.ts
+│   │   └── tsconfig.json
 │   ├── mongo
 │   │   ├── .gitignore
+│   │   ├── CHANGELOG.md
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── cache.ts
@@ -4050,12 +4097,14 @@
 │   │   │       └── generics.ts
 │   │   └── tsconfig.json
 │   ├── typescript-config
+│   │   ├── CHANGELOG.md
 │   │   ├── base.json
 │   │   ├── nextjs.json
 │   │   ├── package.json
 │   │   ├── react-library.json
 │   │   └── react-native-library.json
 │   └── ui
+│       ├── CHANGELOG.md
 │       ├── README.md
 │       ├── package.json
 │       ├── scripts
@@ -4137,6 +4186,7 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── postcss.config.mjs
+├── release-please-config.json
 ├── scripts
 │   ├── generate-newsletter-token.js
 │   ├── rollback-gcp-secrets.sh
@@ -4179,4 +4229,4 @@
 │       └── tasks.md
 ├── tailwind.config.ts
 └── turbo.json
-947 directories, 3234 files
+958 directories, 3273 files
