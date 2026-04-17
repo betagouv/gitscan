@@ -110,6 +110,8 @@
 ├── packages
 │   ├── applications
 │   │   ├── api
+│   │   │   ├── bin
+│   │   │   │   └── dev.js
 │   │   │   ├── package.json
 │   │   │   ├── src
 │   │   │   │   ├── errors.ts
@@ -121,10 +123,11 @@
 │   │   │   │   │   └── raccordement
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── lister.handler.ts
-│   │   │   │   │       ├── listerManquants.ts
-│   │   │   │   │       ├── modifierReference.handler.ts
-│   │   │   │   │       ├── transmettreDateMiseEnService.handler.ts
-│   │   │   │   │       └── transmettreDemandeComplète.handler.ts
+│   │   │   │   │       ├── listerManquants.handler.ts
+│   │   │   │   │       ├── modifierDemandeComplète.handler.ts
+│   │   │   │   │       ├── modifierMiseEnService.handler.ts
+│   │   │   │   │       ├── transmettreDemandeComplète.handler.ts
+│   │   │   │   │       └── transmettreMiseEnService.handler.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── pagination.test.ts
@@ -190,7 +193,10 @@
 │   │   │   │   │   │   ├── backup.ts
 │   │   │   │   │   │   ├── check.ts
 │   │   │   │   │   │   ├── copy.ts
-│   │   │   │   │   │   └── rename.ts
+│   │   │   │   │   │   ├── rename.ts
+│   │   │   │   │   │   └── seed.ts
+│   │   │   │   │   ├── gf
+│   │   │   │   │   │   └── ajouter-event-gf-demandee.ts
 │   │   │   │   │   ├── lauréat
 │   │   │   │   │   │   └── modifier-statut.ts
 │   │   │   │   │   ├── load-test
@@ -207,23 +213,30 @@
 │   │   │   │   │   │   └── update-gestionnaires.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── compare.ts
-│   │   │   │   │   │   └── extraire.ts
+│   │   │   │   │   │   ├── extraire.ts
+│   │   │   │   │   │   └── publier-datagouv.ts
 │   │   │   │   │   ├── tache
 │   │   │   │   │   │   └── achever.ts
 │   │   │   │   │   └── tache-planifiee
 │   │   │   │   │       ├── annuler.ts
 │   │   │   │   │       └── executer.ts
 │   │   │   │   ├── helpers
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── files
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── parse-file.ts
+│   │   │   │   │   │   ├── renameFile.ts
+│   │   │   │   │   │   └── reporter.ts
 │   │   │   │   │   ├── healthcheck.ts
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── monitoring
+│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── mattermost.ts
 │   │   │   │   │   │   └── sentry.ts
-│   │   │   │   │   ├── parse-file.ts
 │   │   │   │   │   ├── parse-identifiant-projet.ts
-│   │   │   │   │   ├── renameFile.ts
-│   │   │   │   │   ├── reporter.ts
 │   │   │   │   │   ├── réseau
 │   │   │   │   │   │   ├── addGRDs.ts
+│   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── référencielGRD.ts
 │   │   │   │   │   │   └── updateGRDs.ts
 │   │   │   │   │   └── setupLogger.ts
@@ -382,6 +395,7 @@
 │   │   │   │   │   ├── getCandidature.ts
 │   │   │   │   │   ├── getLauréat.ts
 │   │   │   │   │   ├── getProjet.ts
+│   │   │   │   │   ├── getRôleFromEmail.ts
 │   │   │   │   │   ├── getÉliminé.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── listerAdminEtValidateursRecipients.ts
@@ -424,6 +438,7 @@
 │   │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   │   ├── achèvement.notifications.ts
 │   │   │   │   │   │   │   └── handlers
+│   │   │   │   │   │   │       ├── attestationConformitéModifiée.handler.ts
 │   │   │   │   │   │   │       ├── attestationConformitéTransmise.handler.ts
 │   │   │   │   │   │   │       ├── dateAchèvementTransmise.handler.ts
 │   │   │   │   │   │   │       └── index.ts
@@ -463,12 +478,17 @@
 │   │   │   │   │   │   │       │   ├── garantiesFinancièresÉchues.handler.ts
 │   │   │   │   │   │   │       │   └── index.ts
 │   │   │   │   │   │   │       ├── dépôt
+│   │   │   │   │   │   │       │   ├── dépôtGarantiesFinancièresModifié.handler.ts
 │   │   │   │   │   │   │       │   ├── dépôtGarantiesFinancièresSoumis.handler.ts
+│   │   │   │   │   │   │       │   ├── dépôtGarantiesFinancièresSupprimé.handler.ts
 │   │   │   │   │   │   │       │   ├── dépôtGarantiesFinancièresValidé.handler.ts
 │   │   │   │   │   │   │       │   └── index.ts
 │   │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │   │       └── mainlevée
-│   │   │   │   │   │   │           ├── demandeMainlevéeMiseÀJour.handler.ts
+│   │   │   │   │   │   │           ├── demandeMainlevéeAccordée.handler.ts
+│   │   │   │   │   │   │           ├── demandeMainlevéeAnnulée.handler.ts
+│   │   │   │   │   │   │           ├── demandeMainlevéePasséeEnInstruction.handler.ts
+│   │   │   │   │   │   │           ├── demandeMainlevéeRejetée.handler.ts
 │   │   │   │   │   │   │           ├── index.ts
 │   │   │   │   │   │   │           └── mainlevéeDemandée.handler.ts
 │   │   │   │   │   │   ├── installation
@@ -600,6 +620,7 @@
 │   │   │   │       │   │   └── rejeter.md
 │   │   │   │       │   ├── lauréat
 │   │   │   │       │   │   ├── achèvement
+│   │   │   │       │   │   │   ├── modifier_attestation.md
 │   │   │   │       │   │   │   ├── rappel_échéance_dreal.md
 │   │   │   │       │   │   │   ├── rappel_échéance_porteur.md
 │   │   │   │       │   │   │   ├── transmettre_attestation_dreal.md
@@ -627,12 +648,17 @@
 │   │   │   │       │   │   │   │   ├── échoir_dreal.md
 │   │   │   │       │   │   │   │   └── échoir_porteur.md
 │   │   │   │       │   │   │   ├── dépôt
+│   │   │   │       │   │   │   │   ├── modifier.md
 │   │   │   │       │   │   │   │   ├── soumettre_dreal.md
 │   │   │   │       │   │   │   │   ├── soumettre_porteur.md
+│   │   │   │       │   │   │   │   ├── supprimer.md
 │   │   │   │       │   │   │   │   └── valider.md
 │   │   │   │       │   │   │   ├── mainlevée
+│   │   │   │       │   │   │   │   ├── accorder.md
+│   │   │   │       │   │   │   │   ├── annuler.md
 │   │   │   │       │   │   │   │   ├── demander.md
-│   │   │   │       │   │   │   │   └── statut_modifié.md
+│   │   │   │       │   │   │   │   ├── démarrer_instruction.md
+│   │   │   │       │   │   │   │   └── rejeter.md
 │   │   │   │       │   │   │   ├── rappel_gf_en_attente_dreal.md
 │   │   │   │       │   │   │   ├── rappel_gf_en_attente_porteur.md
 │   │   │   │       │   │   │   ├── rappel_gf_échéance_dreal.md
@@ -749,8 +775,10 @@
 │   │   │   │       │   │   ├── preuveCandidatureDemandée.projector.ts
 │   │   │   │       │   │   └── preuveRecandidatureTransmise.projector.ts
 │   │   │   │       │   ├── achèvement
+│   │   │   │       │   │   ├── achèvementModifié.projector.ts
 │   │   │   │       │   │   ├── achèvementRebuildTriggered.projector.ts
 │   │   │   │       │   │   ├── attestationConformité
+│   │   │   │       │   │   │   ├── attestationConformitéEnregistrée.projector.ts
 │   │   │   │       │   │   │   ├── attestationConformitéModifiée.projector.ts
 │   │   │   │       │   │   │   └── attestationConformitéTransmise.projector.ts
 │   │   │   │       │   │   ├── dateAchèvementPrévisionnelCalculéeProjector.ts
@@ -786,9 +814,6 @@
 │   │   │   │       │   │   └── évaluationCarboneModifiée.projector.ts
 │   │   │   │       │   ├── garanties-financières
 │   │   │   │       │   │   ├── _utils
-│   │   │   │       │   │   │   ├── getArchivesGf.ts
-│   │   │   │       │   │   │   ├── getDépôtGf.ts
-│   │   │   │       │   │   │   ├── getGfActuelles.ts
 │   │   │   │       │   │   │   ├── getMainlevéeGf.ts
 │   │   │   │       │   │   │   └── index.ts
 │   │   │   │       │   │   ├── actuelles
@@ -1069,6 +1094,7 @@
 │   │   │   │   │   │   │   └── getTypeActionnariatFilterOptions.ts
 │   │   │   │   │   │   ├── formatDateToText.ts
 │   │   │   │   │   │   ├── getActionnariatTypeLabel.ts
+│   │   │   │   │   │   ├── getAutoritéCompétenteLabel.ts
 │   │   │   │   │   │   ├── getCahierDesCharges.ts
 │   │   │   │   │   │   ├── getCandidature.ts
 │   │   │   │   │   │   ├── getFiltresActifs.test.ts
@@ -1313,8 +1339,8 @@
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   ├── installation
 │   │   │   │   │   │   │   │   │   ├── (sections)
-│   │   │   │   │   │   │   │   │   │   ├── AutorisationUrbanisme.section.tsx
-│   │   │   │   │   │   │   │   │   │   ├── AutorisationUrbanismeDétails.tsx
+│   │   │   │   │   │   │   │   │   │   ├── Autorisation.section.tsx
+│   │   │   │   │   │   │   │   │   │   ├── AutorisationDétails.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DispositifDeStockage.section.tsx
 │   │   │   │   │   │   │   │   │   │   ├── Installateur.section.tsx
 │   │   │   │   │   │   │   │   │   │   ├── NatureDeLExploitation.section.tsx
@@ -1332,7 +1358,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── LinkedValuesButton.tsx
 │   │   │   │   │   │   │   │   │   │   └── fields
 │   │   │   │   │   │   │   │   │   │       ├── AttestationField.tsx
-│   │   │   │   │   │   │   │   │   │       ├── DateDAutorisationDUrbanismeField.tsx
+│   │   │   │   │   │   │   │   │   │       ├── DateDAutorisation.tsx
 │   │   │   │   │   │   │   │   │   │       ├── LocalitéField.tsx
 │   │   │   │   │   │   │   │   │   │       └── generic
 │   │   │   │   │   │   │   │   │   │           ├── CandidatureField.tsx
@@ -1361,8 +1387,10 @@
 │   │   │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   │   │   ├── getAchèvement.ts
 │   │   │   │   │   │   │   │   ├── getAction.ts
+│   │   │   │   │   │   │   │   ├── getDemandesEnCours.ts
 │   │   │   │   │   │   │   │   ├── getGarantiesFinancières.ts
 │   │   │   │   │   │   │   │   ├── getLauréat.ts
+│   │   │   │   │   │   │   │   ├── getMainlevéeGarantiesFinancières.ts
 │   │   │   │   │   │   │   │   ├── getRaccordement.ts
 │   │   │   │   │   │   │   │   ├── getRecours.ts
 │   │   │   │   │   │   │   │   ├── index.ts
@@ -1424,26 +1452,42 @@
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
 │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   ├── mapToAchèvementModifiéTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéEnregistréeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéModifiéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéTransmiseTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToDateAchèvementPrévisionnelCalculéeProps.tsx
 │   │   │   │   │   │   │   │   │   │   └── mapToDateAchèvementTransmiseTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToAchèvementTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   ├── AttestationConformité.form.tsx
+│   │   │   │   │   │   │   │   ├── AttestationConformité.inputs.tsx
 │   │   │   │   │   │   │   │   ├── InfoAttestationConformité.tsx
-│   │   │   │   │   │   │   │   ├── attestation-conformite:modifier
-│   │   │   │   │   │   │   │   │   ├── modifierAttestationConformité.action.ts
-│   │   │   │   │   │   │   │   │   ├── modifierAttestationConformité.page.tsx
-│   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   ├── attestation-conformite:transmettre
-│   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   ├── transmettreAttestationConformité.action.ts
-│   │   │   │   │   │   │   │   │   └── transmettreAttestationConformité.page.tsx
-│   │   │   │   │   │   │   │   └── date-achevement:transmettre
-│   │   │   │   │   │   │   │       ├── TransmettreDateAchèvement.form.tsx
-│   │   │   │   │   │   │   │       ├── TransmettreDateAchèvement.page.tsx
-│   │   │   │   │   │   │   │       ├── page.tsx
-│   │   │   │   │   │   │   │       └── transmettreDateAchèvement.action.ts
+│   │   │   │   │   │   │   │   ├── attestation-conformite
+│   │   │   │   │   │   │   │   │   ├── enregistrer
+│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationConformité.form.tsx
+│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationConformité.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── enregistrerAttestationConformité.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   ├── ModifierAttestationConformité.form.tsx
+│   │   │   │   │   │   │   │   │   │   ├── ModifierAttestationConformité.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── modifierAttestationConformité.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │       ├── TransmettreAttestationConformité.form.tsx
+│   │   │   │   │   │   │   │   │       ├── TransmettreAttestationConformité.page.tsx
+│   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │       └── transmettreAttestationConformité.action.ts
+│   │   │   │   │   │   │   │   ├── date-achevement
+│   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │       ├── TransmettreDateAchèvement.form.tsx
+│   │   │   │   │   │   │   │   │       ├── TransmettreDateAchèvement.page.tsx
+│   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │       └── transmettreDateAchèvement.action.ts
+│   │   │   │   │   │   │   │   └── modifier
+│   │   │   │   │   │   │   │       ├── ModifierAchèvement.form.tsx
+│   │   │   │   │   │   │   │       ├── ModifierAchèvement.page.tsx
+│   │   │   │   │   │   │   │       ├── modifierAchèvement.action.ts
+│   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── actionnaire
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -1566,42 +1610,6 @@
 │   │   │   │   │   │   │   │   └── modifier
 │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── garanties-financieres
-│   │   │   │   │   │   │   │   ├── (actuelles)
-│   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresActuellesActions.tsx
-│   │   │   │   │   │   │   │   │   ├── actuelles:enregistrer
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── enregistrerGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── actuelles:enregistrer-attestation
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.form.tsx
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   └── actuelles:modifier
-│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.form.tsx
-│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.page.tsx
-│   │   │   │   │   │   │   │   │       ├── modifierGarantiesFinancièresActuelles.action.ts
-│   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   ├── (archives)
-│   │   │   │   │   │   │   │   │   └── ArchivesGarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   ├── (dépôt)
-│   │   │   │   │   │   │   │   │   ├── DépôtGarantiesFinancièresActions.tsx
-│   │   │   │   │   │   │   │   │   ├── depot:modifier
-│   │   │   │   │   │   │   │   │   │   ├── ModifierDépôtGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── modifierDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── depot:soumettre
-│   │   │   │   │   │   │   │   │   │   ├── InfoBoxSoumettreDépôtGarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.form.tsx
-│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   └── soumettreDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   ├── supprimer
-│   │   │   │   │   │   │   │   │   │   ├── SupprimerDépôtGarantiesFinancières.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── supprimerDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   └── valider
-│   │   │   │   │   │   │   │   │       ├── validerDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.form.tsx
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresTimelineItemContent.tsx
 │   │   │   │   │   │   │   │   │   ├── events
@@ -1629,53 +1637,81 @@
 │   │   │   │   │   │   │   │   │   │       ├── mapToInstructionDemandeMainlevéeGarantiesFinancièresDémarréeTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   │       └── mapToMainlevéeGarantiesFinancièresDemandéeTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToGarantiesFinancièresTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   ├── (mainlevée)
-│   │   │   │   │   │   │   │   │   ├── (historique-main-levée-rejetée)
-│   │   │   │   │   │   │   │   │   │   └── HistoriqueMainlevéeRejetée.tsx
-│   │   │   │   │   │   │   │   │   ├── InfoBoxMainlevée.tsx
-│   │   │   │   │   │   │   │   │   ├── MainlevéeEnCours.tsx
-│   │   │   │   │   │   │   │   │   ├── StatutMainlevéeBadge.tsx
-│   │   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   ├── motifMainlevéeLabels.ts
-│   │   │   │   │   │   │   │   │   │   └── statutMainlevéeLabels.ts
-│   │   │   │   │   │   │   │   │   ├── accorder
-│   │   │   │   │   │   │   │   │   │   ├── AccorderDemandeMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── accorderDemandeMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   ├── annuler
-│   │   │   │   │   │   │   │   │   │   ├── AnnulerDemandeMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── annulerDemandeMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   ├── demander
-│   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── demanderMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   ├── modele-mise-en-demeure
-│   │   │   │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   │   │   │   ├── modele-reponse-mainlevee
-│   │   │   │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   │   │   │   ├── passerEnInstruction
-│   │   │   │   │   │   │   │   │   │   ├── PasserDemandeMainlevéeEnInstruction.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── passerDemandeMainlevéeEnInstruction.action.ts
-│   │   │   │   │   │   │   │   │   └── rejeter
-│   │   │   │   │   │   │   │   │       ├── RejeterDemandeMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │       └── rejeterDemandeMainlevée.action.ts
 │   │   │   │   │   │   │   │   ├── DétailsGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   ├── GarantiesFinancièresFormInputs.tsx
-│   │   │   │   │   │   │   │   ├── SectionGarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   ├── StatutGarantiesFinancièresBadge.tsx
 │   │   │   │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   │   │   │   ├── addGarantiesFinancièresToSchema.ts
 │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresAttestationLabel.ts
 │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresDateLabel.ts
 │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresMotifLabel.ts
 │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresTypeLabel.ts
+│   │   │   │   │   │   │   │   │   ├── getMotifMainlevéeLabel.ts
 │   │   │   │   │   │   │   │   │   ├── récupérerGarantiesFinancièresActuelles.ts
+│   │   │   │   │   │   │   │   │   ├── statutMainlevéeLabels.ts
 │   │   │   │   │   │   │   │   │   ├── vérifierAppelOffreSoumisAuxGarantiesFinancières.ts
 │   │   │   │   │   │   │   │   │   └── vérifierProjetNonExemptDeGarantiesFinancières.ts
+│   │   │   │   │   │   │   │   ├── actuelles
+│   │   │   │   │   │   │   │   │   ├── enregistrer
+│   │   │   │   │   │   │   │   │   │   ├── EnregistrerGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── enregistrerGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── enregistrer-attestation
+│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.form.tsx
+│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   └── modifier
+│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.form.tsx
+│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.page.tsx
+│   │   │   │   │   │   │   │   │       ├── modifierGarantiesFinancièresActuelles.action.ts
+│   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   │   ├── ArchivesGarantiesFinancières.tsx
 │   │   │   │   │   │   │   │   │   ├── GarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresManquantes.tsx
-│   │   │   │   │   │   │   │   │   └── TitrePageGarantiesFinancières.tsx
+│   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresFormInputs.tsx
+│   │   │   │   │   │   │   │   │   └── StatutGarantiesFinancièresBadge.tsx
+│   │   │   │   │   │   │   │   ├── depot
+│   │   │   │   │   │   │   │   │   ├── DétailsDépôtGarantiesFinancièresPage.tsx
+│   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   ├── ModifierDépôtGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── modifierDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   ├── soumettre
+│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.form.tsx
+│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   └── soumettreDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   ├── supprimer
+│   │   │   │   │   │   │   │   │   │   └── supprimerDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   └── valider
+│   │   │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.action.ts
 │   │   │   │   │   │   │   │   ├── garantiesFinancières.type.ts
+│   │   │   │   │   │   │   │   ├── mainlevee
+│   │   │   │   │   │   │   │   │   ├── DétailsMainlevée.page.tsx
+│   │   │   │   │   │   │   │   │   ├── HistoriqueMainlevéeRejetée.tsx
+│   │   │   │   │   │   │   │   │   ├── MainlevéeEnCours.tsx
+│   │   │   │   │   │   │   │   │   ├── StatutMainlevéeBadge.tsx
+│   │   │   │   │   │   │   │   │   ├── accorder
+│   │   │   │   │   │   │   │   │   │   ├── AccorderDemandeMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │   │   └── accorderDemandeMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   ├── annuler
+│   │   │   │   │   │   │   │   │   │   └── annulerDemandeMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   ├── demander
+│   │   │   │   │   │   │   │   │   │   ├── ChecklistMainlevée.tsx
+│   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── demanderMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── modele-mise-en-demeure
+│   │   │   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   │   │   ├── modele-reponse-mainlevee
+│   │   │   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   ├── passerEnInstruction
+│   │   │   │   │   │   │   │   │   │   └── passerDemandeMainlevéeEnInstruction.action.ts
+│   │   │   │   │   │   │   │   │   └── rejeter
+│   │   │   │   │   │   │   │   │       ├── RejeterDemandeMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │       └── rejeterDemandeMainlevée.action.ts
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   └── typesGarantiesFinancièresPourFormulaire.ts
 │   │   │   │   │   │   │   ├── installation
@@ -1683,7 +1719,8 @@
 │   │   │   │   │   │   │   │   │   ├── events
 │   │   │   │   │   │   │   │   │   │   ├── DétailTypologieInstallation.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToChangementInstallateurEnregistréTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   ├── mapToDispositifDeStockageMisÀJourTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mapToDispositifDeStockageEnregistréTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mapToDispositifDeStockageModifiéTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToInstallateurModifiéTimelineItemsProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToInstallationImportéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   └── mapToTypologieInstallationModifiéeTimelineItemsProps.tsx
@@ -2181,7 +2218,6 @@
 │   │   │   │   │   │   ├── FormattedDate.tsx
 │   │   │   │   │   │   ├── Icon.tsx
 │   │   │   │   │   │   ├── ImprimerButton.tsx
-│   │   │   │   │   │   ├── LinkAction.tsx
 │   │   │   │   │   │   ├── LinkNoPrefetch.tsx
 │   │   │   │   │   │   ├── ReadMore.tsx
 │   │   │   │   │   │   ├── Spinner.tsx
@@ -2204,7 +2240,8 @@
 │   │   │   │   │   │   │       ├── DownloadDocument.tsx
 │   │   │   │   │   │   │       ├── KeepOrEditDocument.tsx
 │   │   │   │   │   │   │       ├── UploadDocument.tsx
-│   │   │   │   │   │   │       └── UploadNewOrModifyExistingDocument.tsx
+│   │   │   │   │   │   │       ├── UploadNewOrModifyExistingDocument.tsx
+│   │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   │   ├── headings
 │   │   │   │   │   │   │   ├── Heading1.tsx
 │   │   │   │   │   │   │   ├── Heading2.tsx
@@ -2216,7 +2253,6 @@
 │   │   │   │   │   │   ├── historique
 │   │   │   │   │   │   │   └── DisplayRaisonChangement.tsx
 │   │   │   │   │   │   └── menu
-│   │   │   │   │   │       ├── BadgeTâches.tsx
 │   │   │   │   │   │       ├── Champ.tsx
 │   │   │   │   │   │       ├── DemandeEnCours.page.tsx
 │   │   │   │   │   │       ├── Menu.tsx
@@ -2226,14 +2262,16 @@
 │   │   │   │   │   │       └── SectionWithErrorHandling.tsx
 │   │   │   │   │   ├── molecules
 │   │   │   │   │   │   ├── CommunePicker.tsx
+│   │   │   │   │   │   ├── ConfirmationAction.tsx
 │   │   │   │   │   │   ├── CopyButton.tsx
 │   │   │   │   │   │   ├── CountryPicker.tsx
 │   │   │   │   │   │   ├── Filter.tsx
 │   │   │   │   │   │   ├── FiltersTagList.tsx
-│   │   │   │   │   │   ├── ListAction.tsx
+│   │   │   │   │   │   ├── LinkAction.tsx
 │   │   │   │   │   │   ├── ListFilters.tsx
 │   │   │   │   │   │   ├── ListItem.tsx
 │   │   │   │   │   │   ├── ListLegend.tsx
+│   │   │   │   │   │   ├── ListPageActions.tsx
 │   │   │   │   │   │   ├── ModalWithForm.tsx
 │   │   │   │   │   │   ├── MultipleSelect.tsx
 │   │   │   │   │   │   ├── Search.tsx
@@ -2298,6 +2336,7 @@
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── templates
 │   │   │   │   │       ├── ActionsList.template.tsx
+│   │   │   │   │       ├── ActionsPage.template.tsx
 │   │   │   │   │       ├── ColumnPage.template.tsx
 │   │   │   │   │       ├── ListPage.template.tsx
 │   │   │   │   │       └── Page.template.tsx
@@ -2458,8 +2497,7 @@
 │   │   │   │       ├── dateTime.valueType.spec.ts
 │   │   │   │       ├── dateTime.valueType.ts
 │   │   │   │       ├── email.valueType.ts
-│   │   │   │       ├── expressionRegulière.valueType.ts
-│   │   │   │       └── statutProjet.valueType.ts
+│   │   │   │       └── expressionRegulière.valueType.ts
 │   │   │   └── tsconfig.json
 │   │   ├── core
 │   │   │   ├── package.json
@@ -2589,6 +2627,7 @@
 │   │   │   │   │   │   ├── corrigerCandidature.command.ts
 │   │   │   │   │   │   ├── corrigerCandidature.options.ts
 │   │   │   │   │   │   └── corrigerCandidature.usecase.ts
+│   │   │   │   │   ├── documentCandidature.valueType.ts
 │   │   │   │   │   ├── dépôt.valueType.ts
 │   │   │   │   │   ├── détail
 │   │   │   │   │   │   ├── consulter
@@ -2622,6 +2661,7 @@
 │   │   │   │   │   │   ├── notifierCandidature.command.ts
 │   │   │   │   │   │   ├── notifierCandidature.options.ts
 │   │   │   │   │   │   └── notifierCandidature.usecase.ts
+│   │   │   │   │   ├── raccordementDépôt.valueType.ts
 │   │   │   │   │   ├── statutCandidature.valueType.ts
 │   │   │   │   │   ├── typeActionnariat.valueType.ts
 │   │   │   │   │   ├── typeGarantiesFinancières.valueType.ts
@@ -2704,17 +2744,17 @@
 │   │   │   │   │   │   │   ├── demanderPreuveRecandidature.event.ts
 │   │   │   │   │   │   │   ├── demanderPreuveRecandidature.option.ts
 │   │   │   │   │   │   │   └── demanderPreuveRecandidature.usecase.ts
+│   │   │   │   │   │   ├── documentAbandon.valueType.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   └── listerHistoriqueAbandonProjet.query.ts
 │   │   │   │   │   │   ├── statutAbandon.valueType.ts
 │   │   │   │   │   │   ├── statutPreuveRecandidature.valueType.ts
-│   │   │   │   │   │   ├── transmettrePreuveRecandidature
-│   │   │   │   │   │   │   ├── transmettrePreuveRecandidature.event.ts
-│   │   │   │   │   │   │   ├── transmettrePreuveRecandidature.option.ts
-│   │   │   │   │   │   │   ├── transmettrePreuveRecandidatureAbandon.command.ts
-│   │   │   │   │   │   │   └── transmettrePreuveRecandidatureAbandon.usecase.ts
-│   │   │   │   │   │   └── typeDocumentAbandon.valueType.ts
+│   │   │   │   │   │   └── transmettrePreuveRecandidature
+│   │   │   │   │   │       ├── transmettrePreuveRecandidature.event.ts
+│   │   │   │   │   │       ├── transmettrePreuveRecandidature.option.ts
+│   │   │   │   │   │       ├── transmettrePreuveRecandidatureAbandon.command.ts
+│   │   │   │   │   │       └── transmettrePreuveRecandidatureAbandon.usecase.ts
 │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   ├── achèvement.aggregate.ts
 │   │   │   │   │   │   ├── achèvement.entity.ts
@@ -2727,10 +2767,20 @@
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterAchèvement.query.ts
 │   │   │   │   │   │   ├── dateAchèvementPrévisionnel.valueType.ts
+│   │   │   │   │   │   ├── documentAchèvement.valueType.ts
+│   │   │   │   │   │   ├── enregistrer
+│   │   │   │   │   │   │   ├── enregistrerAttestationConformité.command.ts
+│   │   │   │   │   │   │   ├── enregistrerAttestationConformité.event.ts
+│   │   │   │   │   │   │   ├── enregistrerAttestationConformité.option.ts
+│   │   │   │   │   │   │   └── enregistrerAttestationConformité.usecase.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   └── listerProjetAvecAchevementATransmettre.query.ts
 │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   ├── modifierAchèvement.command.ts
+│   │   │   │   │   │   │   ├── modifierAchèvement.event.ts
+│   │   │   │   │   │   │   ├── modifierAchèvement.option.ts
+│   │   │   │   │   │   │   ├── modifierAchèvement.usecase.ts
 │   │   │   │   │   │   │   ├── modifierAttestationConformité.command.ts
 │   │   │   │   │   │   │   ├── modifierAttestationConformité.event.ts
 │   │   │   │   │   │   │   ├── modifierAttestationConformité.option.ts
@@ -2744,7 +2794,6 @@
 │   │   │   │   │   │   │   ├── transmettreDateAchèvement.event.ts
 │   │   │   │   │   │   │   ├── transmettreDateAchèvement.option.ts
 │   │   │   │   │   │   │   └── transmettreDateAchèvement.usecase.ts
-│   │   │   │   │   │   ├── typeDocumentAttestationConformité.valueType.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeAchèvement.valueType.ts
 │   │   │   │   │   ├── actionnaire
 │   │   │   │   │   │   ├── actionnaire.aggregate.ts
@@ -2788,6 +2837,7 @@
 │   │   │   │   │   │   ├── changementActionnaire.entity.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterActionnaire.query.ts
+│   │   │   │   │   │   ├── documentActionnaire.valueType.ts
 │   │   │   │   │   │   ├── errors.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerActionnaire.event.ts
@@ -2801,8 +2851,7 @@
 │   │   │   │   │   │   │   ├── modifierActionnaire.event.ts
 │   │   │   │   │   │   │   ├── modifierActionnaire.options.ts
 │   │   │   │   │   │   │   └── modifierActionnaire.usecase.ts
-│   │   │   │   │   │   ├── statutChangementActionnaire.valueType.ts
-│   │   │   │   │   │   └── typeDocumentActionnaire.valueType.ts
+│   │   │   │   │   │   └── statutChangementActionnaire.valueType.ts
 │   │   │   │   │   ├── cahierDesCharges
 │   │   │   │   │   │   ├── choisir
 │   │   │   │   │   │   │   ├── cahierDesChargesChoisi.event.ts
@@ -2813,6 +2862,7 @@
 │   │   │   │   │   │       └── consulterCahierDesCharges.query.ts
 │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   └── consulterLauréat.query.ts
+│   │   │   │   │   ├── documentModificationSiteDeProduction.valueType.ts
 │   │   │   │   │   ├── délai
 │   │   │   │   │   │   ├── accorder
 │   │   │   │   │   │   │   └── accorderDélai.event.ts
@@ -2841,6 +2891,7 @@
 │   │   │   │   │   │   │   │   ├── demanderDélai.event.ts
 │   │   │   │   │   │   │   │   ├── demanderDélai.options.ts
 │   │   │   │   │   │   │   │   └── demanderDélai.usecase.ts
+│   │   │   │   │   │   │   ├── documentDélai.valueType.ts
 │   │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   │   └── listerDemandeDélai.query.ts
 │   │   │   │   │   │   │   ├── passer-en-instruction
@@ -2854,10 +2905,9 @@
 │   │   │   │   │   │   │   │   ├── rejeterDemandeDélai.options.ts
 │   │   │   │   │   │   │   │   └── rejeterDemandeDélai.usecase.ts
 │   │   │   │   │   │   │   ├── statutDemandeDélai.valueType.ts
-│   │   │   │   │   │   │   ├── supprimer
-│   │   │   │   │   │   │   │   ├── supprimerDemandeDélai.event.ts
-│   │   │   │   │   │   │   │   └── supprimerDemandeDélai.options.ts
-│   │   │   │   │   │   │   └── typeDocumentDemandeDélai.valueType.ts
+│   │   │   │   │   │   │   └── supprimer
+│   │   │   │   │   │   │       ├── supprimerDemandeDélai.event.ts
+│   │   │   │   │   │   │       └── supprimerDemandeDélai.options.ts
 │   │   │   │   │   │   ├── délai.aggregate.ts
 │   │   │   │   │   │   ├── délai.event.ts
 │   │   │   │   │   │   ├── délai.register.ts
@@ -2881,6 +2931,7 @@
 │   │   │   │   │   │   │       └── modifierFournisseur.option.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterFournisseur.query.ts
+│   │   │   │   │   │   ├── documentFournisseur.valueType.ts
 │   │   │   │   │   │   ├── fournisseur.aggregate.ts
 │   │   │   │   │   │   ├── fournisseur.entity.ts
 │   │   │   │   │   │   ├── fournisseur.error.ts
@@ -2899,14 +2950,12 @@
 │   │   │   │   │   │   │   ├── modifierÉvaluationCarbone.options.ts
 │   │   │   │   │   │   │   └── modifierÉvaluationCarbone.usecase.ts
 │   │   │   │   │   │   ├── noteÉvaluationCarbone.valueType.ts
-│   │   │   │   │   │   ├── typeDocumentFournisseur.valueType.ts
 │   │   │   │   │   │   └── typeFournisseur.valueType.ts
 │   │   │   │   │   ├── garanties-financières
 │   │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   │   └── appelOffreSoumisAuxGarantiesFinancières.ts
 │   │   │   │   │   │   ├── actuelles
 │   │   │   │   │   │   │   ├── archives
-│   │   │   │   │   │   │   │   ├── archivesGarantiesFinancières.entity.ts
 │   │   │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   │   │   └── listerArchivesGarantiesFinancières.query.ts
 │   │   │   │   │   │   │   │   └── motifArchivageGarantiesFinancières.valueType.ts
@@ -2924,7 +2973,6 @@
 │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.command.ts
 │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.options.ts
 │   │   │   │   │   │   │   │   └── enregistrerAttestationGarantiesFinancières.usecase.ts
-│   │   │   │   │   │   │   ├── garantiesFinancièresActuelles.entity.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresActuelles.event.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresActuelles.queries.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresActuelles.register.ts
@@ -2939,12 +2987,12 @@
 │   │   │   │   │   │   │   └── échoir
 │   │   │   │   │   │   │       ├── échoirGarantiesFinancières.command.ts
 │   │   │   │   │   │   │       └── échoirGarantiesFinancières.options.ts
+│   │   │   │   │   │   ├── documentGarantiesFinancières.valueType.ts
 │   │   │   │   │   │   ├── dépôt
 │   │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   │   └── consulterDépôtGarantiesFinancières.query.ts
 │   │   │   │   │   │   │   ├── depôtGarantiesFinancières.error.ts
 │   │   │   │   │   │   │   ├── depôtGarantiesFinancières.event.ts
-│   │   │   │   │   │   │   ├── dépôtGarantiesFinancières.entity.ts
 │   │   │   │   │   │   │   ├── dépôtGarantiesFinancières.queries.ts
 │   │   │   │   │   │   │   ├── dépôtGarantiesFinancières.register.ts
 │   │   │   │   │   │   │   ├── dépôtGarantiesFinancières.usecases.ts
@@ -2967,14 +3015,12 @@
 │   │   │   │   │   │   │       ├── validerDépôtGarantiesFinancières.option.ts
 │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.usecase.ts
 │   │   │   │   │   │   ├── en-attente
-│   │   │   │   │   │   │   ├── consulter
-│   │   │   │   │   │   │   │   └── consulterProjetAvecGarantiesFinancièresEnAttente.query.ts
-│   │   │   │   │   │   │   ├── garantiesFinancièresEnAttente.entity.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresEnAttente.queries.ts
 │   │   │   │   │   │   │   ├── garantiesFinancièresEnAttente.register.ts
 │   │   │   │   │   │   │   └── lister
 │   │   │   │   │   │   │       └── listerProjetsAvecGarantiesFinancièresEnAttente.query.ts
 │   │   │   │   │   │   ├── garantiesFinancières.aggregate.ts
+│   │   │   │   │   │   ├── garantiesFinancières.entity.ts
 │   │   │   │   │   │   ├── garantiesFinancières.error.ts
 │   │   │   │   │   │   ├── garantiesFinancières.event.ts
 │   │   │   │   │   │   ├── garantiesFinancières.register.ts
@@ -2995,6 +3041,7 @@
 │   │   │   │   │   │   │   │   ├── demanderMainlevéeGarantiesFinancières.command.ts
 │   │   │   │   │   │   │   │   ├── demanderMainlevéeGarantiesFinancières.options.ts
 │   │   │   │   │   │   │   │   └── demanderMainlevéeGarantiesFinancières.usecase.ts
+│   │   │   │   │   │   │   ├── documentMainlevée.valueType.ts
 │   │   │   │   │   │   │   ├── démarrerInstruction
 │   │   │   │   │   │   │   │   ├── démarrerInstructionMainlevée.options.ts
 │   │   │   │   │   │   │   │   ├── démarrerInstructionMainlevéeGarantiesFinancières.command.ts
@@ -3012,8 +3059,7 @@
 │   │   │   │   │   │   │   │   ├── rejeterDemandeMainlevéeGarantiesFinancières.usecase.ts
 │   │   │   │   │   │   │   │   ├── rejeterMainlevéeGarantiesFinancières.command.ts
 │   │   │   │   │   │   │   │   └── rejeterMainlevéeGarantiesFinancières.options.ts
-│   │   │   │   │   │   │   ├── statutMainlevéeGarantiesFinancières.valueType.ts
-│   │   │   │   │   │   │   └── typeDocumentRéponseDemandeMainlevée.valueType.ts
+│   │   │   │   │   │   │   └── statutMainlevéeGarantiesFinancières.valueType.ts
 │   │   │   │   │   │   ├── motifDemandeGarantiesFinancières.valueType.ts
 │   │   │   │   │   │   ├── port
 │   │   │   │   │   │   │   ├── index.ts
@@ -3025,7 +3071,6 @@
 │   │   │   │   │   │   │       ├── lauréatNotifié.handler.ts
 │   │   │   │   │   │   │       └── tâchePlanifiéeExécutée.handler.ts
 │   │   │   │   │   │   ├── statutGarantiesFinancières.valueType.ts
-│   │   │   │   │   │   ├── typeDocumentGarantiesFinancières.valueType.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeGarantiesFinancières.valueType.ts
 │   │   │   │   │   ├── historique
 │   │   │   │   │   │   └── lister
@@ -3051,12 +3096,12 @@
 │   │   │   │   │   │   │   ├── dispositifDeStockage.event.ts
 │   │   │   │   │   │   │   ├── dispositifDeStockage.register.ts
 │   │   │   │   │   │   │   ├── dispositifDeStockage.valueType.ts
-│   │   │   │   │   │   │   ├── modifier
-│   │   │   │   │   │   │   │   ├── modifierDispositifDeStockage.command.ts
-│   │   │   │   │   │   │   │   ├── modifierDispositifDeStockage.event.ts
-│   │   │   │   │   │   │   │   ├── modifierDispositifDeStockage.options.ts
-│   │   │   │   │   │   │   │   └── modifierDispositifDeStockage.usecase.ts
-│   │   │   │   │   │   │   └── typeDocumentDispositifDeStockage.valueType.ts
+│   │   │   │   │   │   │   ├── documentDispositifDeStockage.valueType.ts
+│   │   │   │   │   │   │   └── modifier
+│   │   │   │   │   │   │       ├── modifierDispositifDeStockage.command.ts
+│   │   │   │   │   │   │       ├── modifierDispositifDeStockage.event.ts
+│   │   │   │   │   │   │       ├── modifierDispositifDeStockage.options.ts
+│   │   │   │   │   │   │       └── modifierDispositifDeStockage.usecase.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerInstallation.event.ts
 │   │   │   │   │   │   │   └── importerInstallation.option.ts
@@ -3075,14 +3120,14 @@
 │   │   │   │   │   │   │   │       └── listerChangementInstallateur.query.ts
 │   │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   │   └── consulterInstallateur.query.ts
+│   │   │   │   │   │   │   ├── documentInstallateur.valueType.ts
 │   │   │   │   │   │   │   ├── installateur.event.ts
 │   │   │   │   │   │   │   ├── installateur.register.ts
-│   │   │   │   │   │   │   ├── modifier
-│   │   │   │   │   │   │   │   ├── modifierInstallateur.command.ts
-│   │   │   │   │   │   │   │   ├── modifierInstallateur.event.ts
-│   │   │   │   │   │   │   │   ├── modifierInstallateur.option.ts
-│   │   │   │   │   │   │   │   └── modifierInstallateur.usecase.ts
-│   │   │   │   │   │   │   └── typeDocumentInstallateur.valueType.ts
+│   │   │   │   │   │   │   └── modifier
+│   │   │   │   │   │   │       ├── modifierInstallateur.command.ts
+│   │   │   │   │   │   │       ├── modifierInstallateur.event.ts
+│   │   │   │   │   │   │       ├── modifierInstallateur.option.ts
+│   │   │   │   │   │   │       └── modifierInstallateur.usecase.ts
 │   │   │   │   │   │   ├── installation.aggregate.ts
 │   │   │   │   │   │   ├── installation.entity.ts
 │   │   │   │   │   │   ├── installation.error.ts
@@ -3093,12 +3138,12 @@
 │   │   │   │   │   │   └── typologie-installation
 │   │   │   │   │   │       ├── consulter
 │   │   │   │   │   │       │   └── consulterTypologieInstallation.query.ts
+│   │   │   │   │   │       ├── documentTypologieInstallation.valueType.ts
 │   │   │   │   │   │       ├── modifier
 │   │   │   │   │   │       │   ├── modifierTypologieInstallation.command.ts
 │   │   │   │   │   │       │   ├── modifierTypologieInstallation.event.ts
 │   │   │   │   │   │       │   ├── modifierTypologieInstallation.option.ts
 │   │   │   │   │   │       │   └── modifierTypologieInstallation.usecase.ts
-│   │   │   │   │   │       ├── typeDocumentTypologieInstallation.valueType.ts
 │   │   │   │   │   │       ├── typologieInstallation.event.ts
 │   │   │   │   │   │       └── typologieInstallation.register.ts
 │   │   │   │   │   ├── lauréat.aggregate.ts
@@ -3127,6 +3172,7 @@
 │   │   │   │   │   │   │       └── listerChangementsNatureDeLExploitation.query.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterNatureDeLExploitation.query.ts
+│   │   │   │   │   │   ├── documentNatureDeLExploitation.valueType.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerNatureDeLExploitation.event.ts
 │   │   │   │   │   │   │   └── importerNatureDeLExploitation.option.ts
@@ -3143,14 +3189,13 @@
 │   │   │   │   │   │   ├── natureDeLExploitation.error.ts
 │   │   │   │   │   │   ├── natureDeLExploitation.event.ts
 │   │   │   │   │   │   ├── natureDeLExploitation.register.ts
-│   │   │   │   │   │   ├── typeDeNatureDeLExploitation.valueType.ts
-│   │   │   │   │   │   └── typeDocumentNatureDeLExploitation.valueType.ts
+│   │   │   │   │   │   └── typeDeNatureDeLExploitation.valueType.ts
 │   │   │   │   │   ├── nomProjet
 │   │   │   │   │   │   ├── changement
-│   │   │   │   │   │   │   ├── TypeDocumentNomProjet.valueType.ts
 │   │   │   │   │   │   │   ├── changementNomProjet.entity.ts
 │   │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   │   └── consulterChangementNomProjet.ts
+│   │   │   │   │   │   │   ├── documentNomProjet.valueType.ts
 │   │   │   │   │   │   │   ├── enregistrerChangementNomProjet
 │   │   │   │   │   │   │   │   ├── enregistrerChangementNomProjet.command.ts
 │   │   │   │   │   │   │   │   ├── enregistrerChangementNomProjet.event.ts
@@ -3181,6 +3226,7 @@
 │   │   │   │   │   │   │       └── listerChangementProducteur.query.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterProducteur.query.ts
+│   │   │   │   │   │   ├── documentProducteur.valueType.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerProducteur.event.ts
 │   │   │   │   │   │   │   └── importerProducteur.option.ts
@@ -3196,8 +3242,7 @@
 │   │   │   │   │   │   ├── producteur.entity.ts
 │   │   │   │   │   │   ├── producteur.error.ts
 │   │   │   │   │   │   ├── producteur.event.ts
-│   │   │   │   │   │   ├── producteur.register.ts
-│   │   │   │   │   │   └── typeDocumentProducteur.valueType.ts
+│   │   │   │   │   │   └── producteur.register.ts
 │   │   │   │   │   ├── puissance
 │   │   │   │   │   │   ├── changement
 │   │   │   │   │   │   │   ├── accorder
@@ -3257,9 +3302,9 @@
 │   │   │   │   │   │   ├── puissance.register.ts
 │   │   │   │   │   │   └── valueType
 │   │   │   │   │   │       ├── autoritéCompétente.valueType.ts
+│   │   │   │   │   │       ├── documentPuissance.valueType.ts
 │   │   │   │   │   │       ├── ratioChangementPuissance.valueType.ts
 │   │   │   │   │   │       ├── statutChangementPuissance.valueType.ts
-│   │   │   │   │   │       ├── typeDocumentPuissance.valueType.ts
 │   │   │   │   │   │       └── volumeRéservé.valueType.ts
 │   │   │   │   │   ├── raccordement
 │   │   │   │   │   │   ├── attribuer
@@ -3270,6 +3315,7 @@
 │   │   │   │   │   │   │   ├── consulterGestionnaireRéseauRaccordement.query.ts
 │   │   │   │   │   │   │   ├── consulterNombreRaccordement.ts
 │   │   │   │   │   │   │   └── consulterRaccordement.query.ts
+│   │   │   │   │   │   ├── documentRaccordement.valueType.ts
 │   │   │   │   │   │   ├── dossierRaccordement.entity.ts
 │   │   │   │   │   │   ├── errors.ts
 │   │   │   │   │   │   ├── index.ts
@@ -3337,7 +3383,6 @@
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.command.ts
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.options.ts
 │   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.usecase.ts
-│   │   │   │   │   │   ├── typeDocumentRaccordement.valueType.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeRaccordement.valueType.ts
 │   │   │   │   │   ├── représentantLégal
 │   │   │   │   │   │   ├── changement
@@ -3362,6 +3407,7 @@
 │   │   │   │   │   │   │   │   ├── demanderChangementReprésentantLégal.command.ts
 │   │   │   │   │   │   │   │   ├── demanderChangementReprésentantLégal.options.ts
 │   │   │   │   │   │   │   │   └── demanderChangementReprésentantLégal.usecase.ts
+│   │   │   │   │   │   │   ├── documentChangementReprésentantLégal.valueType.ts
 │   │   │   │   │   │   │   ├── enregistrer
 │   │   │   │   │   │   │   │   ├── enregistrerChangementReprésentantLégal.command.ts
 │   │   │   │   │   │   │   │   ├── enregistrerChangementReprésentantLégal.options.ts
@@ -3377,7 +3423,6 @@
 │   │   │   │   │   │   │   │   └── supprimerChangementReprésentantLégal.options.ts
 │   │   │   │   │   │   │   ├── supprimerDocumentSensible
 │   │   │   │   │   │   │   │   └── supprimerDocumentProjetSensible.command.ts
-│   │   │   │   │   │   │   ├── typeDocumentChangementReprésentantLégal.valueType.ts
 │   │   │   │   │   │   │   └── typeTâchePlanifiéeChangementReprésentantLégal.valueType.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterReprésentantLégal.query.ts
@@ -3411,7 +3456,6 @@
 │   │   │   │   │   │   ├── modifierStatutLauréat.option.ts
 │   │   │   │   │   │   └── statutModifié.event.ts
 │   │   │   │   │   ├── statutLauréat.valueType.ts
-│   │   │   │   │   ├── typeDocumentModificationSiteDeProduction.valueType.ts
 │   │   │   │   │   ├── tâche
 │   │   │   │   │   │   ├── achever
 │   │   │   │   │   │   │   └── acheverTâche.event.ts
@@ -3489,6 +3533,7 @@
 │   │   │   │       │   │   ├── demanderRecours.event.ts
 │   │   │   │       │   │   ├── demanderRecours.options.ts
 │   │   │   │       │   │   └── demanderRecours.usecase.ts
+│   │   │   │       │   ├── documentRecours.valueType.ts
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── instruire
 │   │   │   │       │   │   ├── passerRecoursEnInstruction.command.ts
@@ -3509,8 +3554,7 @@
 │   │   │   │       │   │   ├── rejeterRecours.event.ts
 │   │   │   │       │   │   ├── rejeterRecours.options.ts
 │   │   │   │       │   │   └── rejeterRecours.usecase.ts
-│   │   │   │       │   ├── statutRecours.valueType.ts
-│   │   │   │       │   └── typeDocumentRecours.valueType.ts
+│   │   │   │       │   └── statutRecours.valueType.ts
 │   │   │   │       ├── éliminé.aggregate.ts
 │   │   │   │       ├── éliminé.entity.ts
 │   │   │   │       ├── éliminé.event.ts
@@ -3654,12 +3698,17 @@
 │   │   │   ├── src
 │   │   │   │   ├── _helpers
 │   │   │   │   │   ├── getters
-│   │   │   │   │   │   ├── getAutorisationDUrbanisme.ts
+│   │   │   │   │   │   ├── getAutorisation.ts
 │   │   │   │   │   │   ├── getDateConstitutionGarantiesFinancières.ts
 │   │   │   │   │   │   ├── getDispositifDeStockage.ts
+│   │   │   │   │   │   ├── getFournisseurs.test.ts
+│   │   │   │   │   │   ├── getFournisseurs.ts
 │   │   │   │   │   │   ├── getHistoriqueAbandon.ts
 │   │   │   │   │   │   ├── getLocalité.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitation.ts
+│   │   │   │   │   │   ├── getRaccordement.test.ts
+│   │   │   │   │   │   ├── getRaccordements.ts
+│   │   │   │   │   │   ├── getTypeActionnariat.ts
 │   │   │   │   │   │   ├── getTypeGarantiesFinancières.ts
 │   │   │   │   │   │   ├── getTypeNatureDeLExploitation.ts
 │   │   │   │   │   │   ├── getTypologieInstallation.test.ts
@@ -3682,6 +3731,7 @@
 │   │   │   │   ├── getDossier.ts
 │   │   │   │   ├── getDémarcheAvecDossiers.ts
 │   │   │   │   ├── getDémarcheIdParDossier.ts
+│   │   │   │   ├── getGarantiesFinancièresFiles.ts
 │   │   │   │   ├── graphql
 │   │   │   │   │   ├── accessor.ts
 │   │   │   │   │   └── index.ts
@@ -3695,8 +3745,8 @@
 │   │   │   ├── package.json
 │   │   │   ├── src
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── sendEmailMode.ts
-│   │   │   │   └── sendEmailV2.ts
+│   │   │   │   ├── sendEmail.ts
+│   │   │   │   └── sendEmailMode.ts
 │   │   │   └── tsconfig.json
 │   │   ├── filigrane-facile-client
 │   │   │   ├── package.json
@@ -3929,6 +3979,12 @@
 │   │   │   │       ├── createLogger.ts
 │   │   │   │       └── index.ts
 │   │   │   └── tsconfig.json
+│   │   ├── pdf
+│   │   │   ├── package.json
+│   │   │   ├── src
+│   │   │   │   ├── index.ts
+│   │   │   │   └── mergeDocuments.ts
+│   │   │   └── tsconfig.json
 │   │   └── pg-helpers
 │   │       ├── package.json
 │   │       ├── src
@@ -3988,18 +4044,21 @@
 │   │   │   │   │   └── gestionnaireRéseau.when.ts
 │   │   │   │   └── validerRéférenceDossierRaccordement.feature
 │   │   │   ├── helpers
+│   │   │   │   ├── PièceJustificative.ts
 │   │   │   │   ├── convertFixtureFileToReadable.ts
 │   │   │   │   ├── convertReadableToString.ts
-│   │   │   │   ├── convertStringToReadable.ts
+│   │   │   │   ├── convertStringToReadableStream.ts
 │   │   │   │   ├── createS3ClientWithMD5.ts
 │   │   │   │   ├── expectFileContent.ts
-│   │   │   │   ├── getFakeContent.ts
-│   │   │   │   ├── getFakeFormat.ts
-│   │   │   │   ├── getFakeIdentifiantProjet.ts
-│   │   │   │   ├── getFakeLocation.ts
+│   │   │   │   ├── faker
+│   │   │   │   │   ├── getFakeContent.ts
+│   │   │   │   │   ├── getFakeIdentifiantProjet.ts
+│   │   │   │   │   ├── getFakeLocation.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── getRôle.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mapToExemple.ts
+│   │   │   │   ├── resetBucket.ts
 │   │   │   │   ├── sleep.ts
 │   │   │   │   ├── waitForExpect.ts
 │   │   │   │   └── waitForSagasNotificationsAndProjectionsToFinish.ts
@@ -4038,11 +4097,15 @@
 │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   ├── achèvement.world.ts
 │   │   │   │   │   │   ├── calculerDateAchèvementPrévisionnel.feature
+│   │   │   │   │   │   ├── enregistrerAttestationConformité.feature
 │   │   │   │   │   │   ├── fixture
 │   │   │   │   │   │   │   ├── calculerDateAchèvementPrévisionnel.fixture.ts
+│   │   │   │   │   │   │   ├── enregistrerAttestationConformité.fixture.ts
+│   │   │   │   │   │   │   ├── modifierAchèvement.fixture.ts
 │   │   │   │   │   │   │   ├── modifierAttestationConformité.fixture.ts
 │   │   │   │   │   │   │   ├── transmettreAttestationConformité.fixture.ts
 │   │   │   │   │   │   │   └── transmettreDateAchèvement.fixture.ts
+│   │   │   │   │   │   ├── modifierAchèvement.feature
 │   │   │   │   │   │   ├── modifierAttestationConformité.feature
 │   │   │   │   │   │   ├── stepDefinitions
 │   │   │   │   │   │   │   ├── achèvement.given.ts
@@ -4127,9 +4190,9 @@
 │   │   │   │   │   │   ├── dépôt
 │   │   │   │   │   │   │   ├── dépôtGarantiesFinancières.world.ts
 │   │   │   │   │   │   │   ├── fixtures
-│   │   │   │   │   │   │   │   ├── modifier.fixture.ts
-│   │   │   │   │   │   │   │   ├── soumettre.fixture.ts
-│   │   │   │   │   │   │   │   └── valider.fixture.ts
+│   │   │   │   │   │   │   │   ├── modifierDépôt.fixture.ts
+│   │   │   │   │   │   │   │   ├── soumettreDépôt.fixture.ts
+│   │   │   │   │   │   │   │   └── validerDépôt.fixture.ts
 │   │   │   │   │   │   │   ├── modifierDépôtGarantiesFinancières.feature
 │   │   │   │   │   │   │   ├── soumettreDépôtGarantiesFinancières.feature
 │   │   │   │   │   │   │   ├── stepDefinitions
@@ -4144,7 +4207,6 @@
 │   │   │   │   │   │   │       ├── garantiesFinancièresEnAttente.given.ts
 │   │   │   │   │   │   │       └── garantiesFinancièresEnAttente.then.ts
 │   │   │   │   │   │   ├── garantiesFinancières.world.ts
-│   │   │   │   │   │   ├── helper.ts
 │   │   │   │   │   │   └── mainlevée
 │   │   │   │   │   │       ├── accorderDemandeMainlevéeGarantiesFinancières.feature
 │   │   │   │   │   │       ├── annulerDemandeMainlevéeGarantiesFinancières.feature
@@ -4314,6 +4376,7 @@
 │   │   │   │   ├── demandeComplèteDeRaccordement
 │   │   │   │   │   ├── demandeComplèteRaccordement.world.ts
 │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── importerDemandeComplèteDeRaccordement.fixture.ts
 │   │   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.fixture.ts
 │   │   │   │   │   │   └── transmettreDemandeComplèteDeRaccordement.fixture.ts
 │   │   │   │   │   ├── modifierDemandeComplèteDeRaccordement.feature
@@ -4402,6 +4465,7 @@
 │       │   ├── sql
 │       │   │   ├── camembertStatistic.sql
 │       │   │   ├── cartoProjetStatistic.sql
+│       │   │   ├── indicateursProjetsStatistic.sql
 │       │   │   ├── metabaseUser.sql
 │       │   │   ├── scalarStatistic.sql
 │       │   │   ├── schema.sql
@@ -4409,6 +4473,7 @@
 │       │   ├── src
 │       │   │   ├── 01-ensemble-des-projets
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── indicateursProjetsAgrégés.statistic.ts
 │       │   │   │   ├── nombreDeProjetLauréatParAppelOffre.statistic.ts
 │       │   │   │   ├── nombreTotalProjet.statistic.ts
 │       │   │   │   └── totalPuissanceParAppelOffre.statistic.ts
@@ -4463,4 +4528,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1098 directories, 3367 files
+1105 directories, 3425 files

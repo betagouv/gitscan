@@ -9,6 +9,10 @@
     "build": "tsc",
     "clean": "rm -rf dist tsconfig.tsbuildinfo"
   },
+  "imports": {
+    "#helpers": "./dist/helpers/index.js",
+    "#helpers/*": "./dist/helpers/*/index.js"
+  },
   "oclif": {
     "bin": "potentiel-cli",
     "commands": "./dist/commands",
@@ -47,7 +51,6 @@
   },
   "devDependencies": {
     "@potentiel-config/tsconfig": "*",
-    "@types/node": "18.19.86",
     "diff": "8.0.2",
     "oclif": "4.20.4",
     "tsx": "4.20.4"
