@@ -283,11 +283,13 @@
 │   │   │   │                   │   │   │   └── RapportNavMissionAction.kt
 │   │   │   │                   │   │   ├── reporting
 │   │   │   │                   │   │   │   ├── CurrentReporting.kt
+│   │   │   │                   │   │   │   ├── OtherSource.kt
 │   │   │   │                   │   │   │   ├── Reporting.kt
-│   │   │   │                   │   │   │   ├── ReportingActor.kt
 │   │   │   │                   │   │   │   ├── ReportingAndOccurrences.kt
 │   │   │   │                   │   │   │   ├── ReportingPeriod.kt
+│   │   │   │                   │   │   │   ├── ReportingSource.kt
 │   │   │   │                   │   │   │   ├── ReportingType.kt
+│   │   │   │                   │   │   │   ├── SatelliteSource.kt
 │   │   │   │                   │   │   │   ├── ThreatSummary.kt
 │   │   │   │                   │   │   │   ├── VesselReportings.kt
 │   │   │   │                   │   │   │   └── filters
@@ -403,6 +405,7 @@
 │   │   │   │                   │   │   │   ├── ActivateOrDeactivateAlertSpecification.kt
 │   │   │   │                   │   │   │   ├── AddPositionAlertSpecification.kt
 │   │   │   │                   │   │   │   ├── DeleteAlertSpecification.kt
+│   │   │   │                   │   │   │   ├── DeleteAlertsAfterValidityPeriod.kt
 │   │   │   │                   │   │   │   ├── DeleteSilencedAlert.kt
 │   │   │   │                   │   │   │   ├── GetPendingAlerts.kt
 │   │   │   │                   │   │   │   ├── GetPositionAlertSpecifications.kt
@@ -520,6 +523,7 @@
 │   │   │   │                   │   │   │   ├── DeleteReporting.kt
 │   │   │   │                   │   │   │   ├── DeleteReportings.kt
 │   │   │   │                   │   │   │   ├── GetAllCurrentReportings.kt
+│   │   │   │                   │   │   │   ├── GetReporting.kt
 │   │   │   │                   │   │   │   ├── GetReportingWithDMLAndSeaFront.kt
 │   │   │   │                   │   │   │   ├── GetReportings.kt
 │   │   │   │                   │   │   │   ├── GetVesselReportings.kt
@@ -1183,7 +1187,10 @@
 │   │   │       │   │   │   ├── V0.364__Add_last_haul_to_mission_actions.sql
 │   │   │       │   │   │   ├── V0.365__Create_risk_elements_table.sql
 │   │   │       │   │   │   ├── V0.366__Create_vessels_risk_elements_table.sql
+│   │   │       │   │   │   ├── V0.367__Add_new_columns_to_reportings.sql
 │   │   │       │   │   │   ├── V0.36__Update_last_positions_table.sql
+│   │   │       │   │   │   ├── V0.370__Create_get_active_trips_function.sql
+│   │   │       │   │   │   ├── V0.371__Update_position_alerts_table.sql
 │   │   │       │   │   │   ├── V0.37__Update_ports_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
@@ -1243,6 +1250,8 @@
 │   │   │       │   │       ├── V0.2__Create_eez_areas_table.sql
 │   │   │       │   │       ├── V0.322__Update_regulations_table.sql
 │   │   │       │   │       ├── V0.325__Update_regulations_table.sql
+│   │   │       │   │       ├── V0.368__Create_eez_areas_table.sql
+│   │   │       │   │       ├── V0.369__Create_facades_zee_fr_shom_table.sql
 │   │   │       │   │       ├── V0.3__Create_3_miles_areas_table.sql
 │   │   │       │   │       ├── V0.4__Create_6_miles_areas_table.sql
 │   │   │       │   │       ├── V0.50__Update_fao_areas_table.sql
@@ -1326,6 +1335,7 @@
 │   │   │       │       ├── V666.38__Insert_dummy_eez_areas.sql
 │   │   │       │       ├── V666.39__Insert_dummy_risk_elements.sql
 │   │   │       │       ├── V666.3__Insert_dummy_last_positions.sql
+│   │   │       │       ├── V666.40__Insert_dummy_facades_zee_fr_shom.sql
 │   │   │       │       ├── V666.4__Insert_fishing_gear_codes.sql
 │   │   │       │       ├── V666.5.0__Insert_logbook_reports.sql
 │   │   │       │       ├── V666.5.1__Insert_logbook_raw_messages_and_reports.sql
@@ -1390,6 +1400,8 @@
 │   │       │                   │   │   │   └── PriorNotificationUTests.kt
 │   │       │                   │   │   ├── producer_organization
 │   │       │                   │   │   │   └── ProducerOrganizationMembershipUTests.kt
+│   │       │                   │   │   ├── reporting
+│   │       │                   │   │   │   └── ReportingUTests.kt
 │   │       │                   │   │   ├── risk_factor
 │   │       │                   │   │   │   └── VesselRiskFactorUTests.kt
 │   │       │                   │   │   ├── vessel
@@ -1416,6 +1428,7 @@
 │   │       │                   │   │   │   ├── ActivateOrDeactivateAlertSpecificationUTests.kt
 │   │       │                   │   │   │   ├── AddPositionAlertSpecificationUTests.kt
 │   │       │                   │   │   │   ├── DeleteAlertSpecificationUTests.kt
+│   │       │                   │   │   │   ├── DeleteAlertsAfterValidityPeriodUTests.kt
 │   │       │                   │   │   │   ├── GetPendingAlertsUTests.kt
 │   │       │                   │   │   │   ├── GetPositionAlertSpecificationsUTests.kt
 │   │       │                   │   │   │   ├── GetSilencedAlertsUTests.kt
@@ -1479,6 +1492,7 @@
 │   │       │                   │   │   │   ├── ArchiveOutdatedReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetAllCurrentReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetInfractionSuspicionWithDMLAndSeafrontUTests.kt
+│   │       │                   │   │   │   ├── GetReportingUTests.kt
 │   │       │                   │   │   │   ├── GetReportingsUTests.kt
 │   │       │                   │   │   │   ├── GetVesselReportingsUTests.kt
 │   │       │                   │   │   │   └── UpdateReportingUTests.kt
@@ -1544,6 +1558,7 @@
 │   │       │                   │   │   ├── input
 │   │       │                   │   │   │   └── UpdateReportingDataInputUTests.kt
 │   │       │                   │   │   ├── outputs
+│   │       │                   │   │   │   ├── DisplayedReportingDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionSuspicionDataOutputUTests.kt
 │   │       │                   │   │   │   ├── InfractionThreatCharacterizationDataOutputUTests.kt
 │   │       │                   │   │   │   ├── RiskFactorDataOutputUTests.kt
@@ -1729,8 +1744,8 @@
 │   │   │   ├── offline
 │   │   │   │   └── load_offline.spec.ts
 │   │   │   ├── reportings
-│   │   │   │   ├── reportings_map_button.spec.ts
-│   │   │   │   └── reportings_overlay.spec.ts
+│   │   │   │   ├── reporting_map_form.spec.ts
+│   │   │   │   └── reportings_map_button.spec.ts
 │   │   │   ├── rgaa.spec.ts
 │   │   │   ├── side_window
 │   │   │   │   ├── alert_list
@@ -1824,6 +1839,7 @@
 │   │   │   │   ├── delete-control_unit_contacts-*.v1.json
 │   │   │   │   ├── delete-control_unit_resources-*.v1.json
 │   │   │   │   ├── eez-administrative-zone.json
+│   │   │   │   ├── facades-zee-fr-shom-administrative-zone.json
 │   │   │   │   ├── fao-administrative-zone.json
 │   │   │   │   ├── geoserver.monitorfish_regulations.armor-cjs-dragues.json
 │   │   │   │   ├── geoserver.monitorfish_regulations.corse-chaluts.1.json
@@ -2518,6 +2534,7 @@
 │   │   │       │   └── getAllGearCodes.ts
 │   │   │       ├── infraction
 │   │   │       │   └── getInfractions.ts
+│   │   │       ├── setLeftMapBoxDisplayed.ts
 │   │   │       ├── setRightMapBoxDisplayed.ts
 │   │   │       └── species
 │   │   │           └── getAllSpecies.ts
@@ -2562,7 +2579,9 @@
 │   │   │   │   │   │   └── administrativeLayer.style.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   └── useCases
-│   │   │   │       └── getAdministrativeZones.ts
+│   │   │   │       ├── getAdministrativeZones.ts
+│   │   │   │       ├── renderAdministrativeLayers.ts
+│   │   │   │       └── showOrHideAdministrativeLayer.ts
 │   │   │   ├── Alert
 │   │   │   │   ├── apis.ts
 │   │   │   │   ├── components
@@ -2665,7 +2684,8 @@
 │   │   │   │   │   │   ├── VesselStatusSelect.tsx
 │   │   │   │   │   │   ├── VesselStatusSelectValue.tsx
 │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   └── getActionText.test.ts
+│   │   │   │   │   │   │   ├── getActionText.test.ts
+│   │   │   │   │   │   │   └── searchInBeaconMalfunctions.test.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── utils.tsx
 │   │   │   │   │   ├── BeaconMalfunctionDetails.tsx
@@ -2773,16 +2793,19 @@
 │   │   │   │       ├── getColorAndStrokeFromStyles.ts
 │   │   │   │       └── getLayer.ts
 │   │   │   ├── Draw
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── utils.test.ts
 │   │   │   │   ├── components
 │   │   │   │   │   ├── DrawModal.tsx
 │   │   │   │   │   └── MapInteraction.tsx
 │   │   │   │   ├── layer.tsx
 │   │   │   │   ├── slice.ts
-│   │   │   │   └── useCases
-│   │   │   │       ├── addFeatureToDrawedFeature.ts
-│   │   │   │       ├── closeDraw.ts
-│   │   │   │       ├── eraseDrawedGeometries.ts
-│   │   │   │       └── setDrawedGeometry.ts
+│   │   │   │   ├── useCases
+│   │   │   │   │   ├── addFeatureToDrawedFeature.ts
+│   │   │   │   │   ├── closeDraw.ts
+│   │   │   │   │   ├── eraseDrawedGeometries.ts
+│   │   │   │   │   └── setDrawedGeometry.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── FavoriteVessel
 │   │   │   │   ├── components
 │   │   │   │   │   └── FavoriteVessels
@@ -2988,7 +3011,6 @@
 │   │   │   │   │   ├── MapCoordinatesBox.tsx
 │   │   │   │   │   ├── MapHistory.jsx
 │   │   │   │   │   ├── MapSettingsButton
-│   │   │   │   │   │   ├── LastPositionsVisibilitySlider.tsx
 │   │   │   │   │   │   ├── MapSettings.tsx
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   └── index.tsx
@@ -3020,7 +3042,8 @@
 │   │   │   │   │       └── TrackRangeModal.tsx
 │   │   │   │   ├── constants.ts
 │   │   │   │   ├── hooks
-│   │   │   │   │   └── useMapLayer.ts
+│   │   │   │   │   ├── useMapLayer.ts
+│   │   │   │   │   └── useWebGLLayerVisibility.ts
 │   │   │   │   ├── layer.slice.backoffice.ts
 │   │   │   │   ├── layer.slice.ts
 │   │   │   │   ├── layers
@@ -3220,6 +3243,7 @@
 │   │   │   │   │   ├── HoveredMissionLayer.constants.ts
 │   │   │   │   │   ├── HoveredMissionLayer.tsx
 │   │   │   │   │   ├── MissionLayer
+│   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── styles.ts
 │   │   │   │   │   ├── MissionsLabelsLayer
@@ -3517,6 +3541,7 @@
 │   │   │   │   │   ├── RegulatoryLayerSearch.tsx
 │   │   │   │   │   ├── RegulatoryLayers.tsx
 │   │   │   │   │   ├── RegulatoryPreviewLayer.tsx
+│   │   │   │   │   ├── constants.ts
 │   │   │   │   │   └── styles
 │   │   │   │   │       ├── regulatoryLayer.style.ts
 │   │   │   │   │       ├── regulatoryPreview.style.tsx
@@ -3550,6 +3575,9 @@
 │   │   │   │   └── utils.ts
 │   │   │   ├── Reporting
 │   │   │   │   ├── components
+│   │   │   │   │   ├── IUUReportingMapForm
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── ReportingCard
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── ReportingCard.test.tsx
@@ -3557,7 +3585,11 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── ReportingForm
 │   │   │   │   │   │   ├── Form.tsx
+│   │   │   │   │   │   ├── FormikCoordinatesPicker.tsx
 │   │   │   │   │   │   ├── Loader.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── schemas.test.ts
+│   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   │   └── utils.ts
@@ -3616,20 +3648,27 @@
 │   │   │   │   │   └── VesselReportingsSchema.ts
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── types
-│   │   │   │   │   ├── ReportingOriginActor.ts
-│   │   │   │   │   └── ReportingType.ts
+│   │   │   │   │   ├── OtherSourceType.ts
+│   │   │   │   │   ├── ReportingOriginSource.ts
+│   │   │   │   │   ├── ReportingType.ts
+│   │   │   │   │   └── SatelliteSource.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   └── dummyReporting.ts
-│   │   │   │   │   │   └── archiveReporting.test.ts
+│   │   │   │   │   │   ├── archiveReporting.test.ts
+│   │   │   │   │   │   └── autoSaveReporting.test.ts
+│   │   │   │   │   ├── addOrEditReportingCoordinates.ts
 │   │   │   │   │   ├── addReporting.ts
 │   │   │   │   │   ├── archiveReporting.ts
 │   │   │   │   │   ├── archiveReportings.ts
+│   │   │   │   │   ├── autoSaveReporting.ts
 │   │   │   │   │   ├── deleteReporting.ts
 │   │   │   │   │   ├── deleteReportings.ts
-│   │   │   │   │   └── updateReporting.ts
+│   │   │   │   │   ├── editReportingFromMap.ts
+│   │   │   │   │   ├── updateReporting.ts
+│   │   │   │   │   └── utils.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── RiskFactor
 │   │   │   │   ├── apis.ts
@@ -4161,9 +4200,6 @@
 │   │   │   ├── LegacyRsuiteComponentsWrapper.tsx
 │   │   │   ├── LoadingSpinnerWall.tsx
 │   │   │   ├── NoRsuiteOverrideWrapper.tsx
-│   │   │   ├── Nouislider
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── utils.ts
 │   │   │   ├── Table
 │   │   │   │   ├── SkeletonRow.tsx
 │   │   │   │   └── TableWithSelectableRowsHeader.tsx
@@ -5179,6 +5215,7 @@
 │   │   │   │   ├── eez_areas.sql
 │   │   │   │   ├── effort_zones_areas.sql
 │   │   │   │   ├── facade_areas.sql
+│   │   │   │   ├── facades_zee_fr_shom.sql
 │   │   │   │   ├── fao_ccamlr_areas.sql
 │   │   │   │   ├── fao_iccat_areas.sql
 │   │   │   │   ├── fao_iotc_areas.sql
@@ -5210,10 +5247,15 @@
 │   │   │   │   ├── activity_overview.sql
 │   │   │   │   ├── gear_onboard.sql
 │   │   │   │   ├── latest_port_profiles.sql
+│   │   │   │   ├── logbook_pnos.sql
+│   │   │   │   ├── manual_pnos.sql
 │   │   │   │   ├── margin_of_tolerance.sql
 │   │   │   │   ├── port_profiles.sql
 │   │   │   │   ├── profiles.sql
-│   │   │   │   └── trips_snapshot.sql
+│   │   │   │   ├── rtps.sql
+│   │   │   │   ├── trips_snapshot.sql
+│   │   │   │   ├── trips_subject_to_pno.sql
+│   │   │   │   └── vms_vessels.sql
 │   │   │   ├── fmc
 │   │   │   │   ├── beacons.sql
 │   │   │   │   ├── catch_controls.sql
@@ -5250,6 +5292,7 @@
 │   │   │   │   ├── facade_email_addresses.sql
 │   │   │   │   ├── fao_areas.sql
 │   │   │   │   ├── fishing_gear_names.sql
+│   │   │   │   ├── fishing_in_closed_areas.sql
 │   │   │   │   ├── fishing_infractions.sql
 │   │   │   │   ├── fleet_segments.sql
 │   │   │   │   ├── fleet_segments_of_year.sql
@@ -5287,6 +5330,7 @@
 │   │   │   │   ├── silenced_alerts_with_alert_id.sql
 │   │   │   │   ├── species_names.sql
 │   │   │   │   ├── suspicions_of_under_declaration.sql
+│   │   │   │   ├── targeted_malfunctions.sql
 │   │   │   │   ├── total_trips.sql
 │   │   │   │   ├── trip_dates_of_pnos.sql
 │   │   │   │   ├── usual_segments.sql
@@ -5349,7 +5393,11 @@
 │       │   ├── clickhouse_user_files
 │       │   │   ├── catches.csv
 │       │   │   ├── enriched_catches.csv
-│       │   │   └── landings.csv
+│       │   │   ├── landings.csv
+│       │   │   ├── pno_type_rules_unnested.csv
+│       │   │   ├── pnos.csv
+│       │   │   ├── rtps.csv
+│       │   │   └── vms.csv
 │       │   ├── csv
 │       │   │   ├── catches.csv
 │       │   │   ├── controls_catches.csv
@@ -5396,6 +5444,7 @@
 │       │   │   │   │   ├── FRA20200321502645.xml
 │       │   │   │   │   ├── OOE20200321003301.xml
 │       │   │   │   │   ├── OOE20200323034701.xml
+│       │   │   │   │   ├── OOE20200323034702.xml
 │       │   │   │   │   ├── OOE20200324042000.xml
 │       │   │   │   │   ├── OOE20200326032800.xml
 │       │   │   │   │   ├── OOE20200402018600.xml
@@ -5563,6 +5612,8 @@
 │       │   │   ├── V666.45__Reset_test_position_alerts.sql
 │       │   │   ├── V666.46__Reset_test_risk_elements.sql
 │       │   │   ├── V666.47__Reset_test_trips_snapshot.sql
+│       │   │   ├── V666.48__Reset_test_beacon_malfunction_actions.sql
+│       │   │   ├── V666.48__Reset_test_facades_zee_fr_shom.sql
 │       │   │   ├── V666.4__Reset_test_anchorages.sql
 │       │   │   ├── V666.5__Reset_test_logbook.sql
 │       │   │   ├── V666.6__Reset_test_legipeche.sql
@@ -5661,4 +5712,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-771 directories, 5206 files
+774 directories, 5254 files
