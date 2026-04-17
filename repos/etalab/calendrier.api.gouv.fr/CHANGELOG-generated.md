@@ -1,10 +1,13 @@
-## Changelog : calendrier.api.gouv.fr (30 derniers jours)
+## Changelog : calendrier.api.gouv.fr (30 derniers jours, au 01 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'API des jours fériés a été mise à jour pour améliorer la documentation et fournir des exemples d'utilisation plus clairs. Un job de maintenance a également été ajouté pour assurer la disponibilité continue de l'API.
+Ce mois-ci, les mises à jour se concentrent sur la maintenance de l'infrastructure et la garantie de la disponibilité continue de l'API. Aucune nouvelle fonctionnalité ou correction de bug visible pour les utilisateurs n'a été déployée.
 
 ### Évolutions fonctionnelles
-- Ajout d'exemples d'utilisation dans la documentation OpenAPI pour faciliter l'intégration de l'API. [#27](https://github.com/etalab/calendrier.api.gouv.fr/issues/27)
+Aucune évolution fonctionnelle à signaler.
 
 ### Évolutions techniques
-- Ajout d'un job GitHub Actions pour maintenir l'API active et garantir sa disponibilité.
+- Maintien de l'activité du workflow GitHub Actions pour assurer le bon fonctionnement continu de l'API. [#1](https://github.com/etalab/calendrier.api.gouv.fr/commit/f0fa159)
+
+### Autres changements
+Aucun autre changement à signaler.
