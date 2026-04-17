@@ -2,12 +2,15 @@
 ├── .dockerignore
 ├── .env.template
 ├── .github
+│   ├── renovate.json
 │   └── workflows
 │       ├── checkov.yml
 │       ├── codeql-analysis.yml
+│       ├── deploiement-clever-cloud.yml
 │       ├── deploiement-dev.yml
 │       ├── deploiement.yml
-│       └── node.js.yml
+│       ├── node.js.yml
+│       └── tests-accessibilite.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
@@ -169,6 +172,7 @@
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── public
@@ -413,7 +417,6 @@
 │   │       ├── activation.css
 │   │       ├── article.css
 │   │       ├── bouton.css
-│   │       ├── carteInformations.css
 │   │       ├── cgu.css
 │   │       ├── connexion.css
 │   │       ├── conseilsCyber.css
@@ -442,10 +445,8 @@
 │   │       │   ├── formulaire.css
 │   │       │   ├── indiceCyber.css
 │   │       │   ├── mesures.css
-│   │       │   ├── risques.css
 │   │       │   └── rolesResponsabilites.css
 │   │       ├── lien.css
-│   │       ├── menuNavigation.css
 │   │       ├── modale.css
 │   │       ├── modules
 │   │       │   ├── selectize.css
@@ -454,17 +455,14 @@
 │   │       ├── navigationSiteVitrine.css
 │   │       ├── palette.css
 │   │       ├── parcoursService.css
-│   │       ├── piedPage.css
-│   │       ├── piedPage.responsive.css
 │   │       ├── radarIndiceCyber.css
 │   │       ├── statistiques.css
 │   │       └── tiroir.css
 │   ├── bibliotheques
 │   │   ├── axios-1.0.0.min.js
 │   │   ├── html-entities-2.6.0.min.js
-│   │   ├── jquery-3.6.0.min.js
+│   │   ├── jquery-3.7.1.min.js
 │   │   └── selectize-0.15.2.min.js
-│   ├── carteInformations.js
 │   ├── connexion.mjs
 │   ├── creation-compte.mjs
 │   ├── creationV2.mjs
@@ -496,7 +494,6 @@
 │   │   └── tableauDeBord
 │   │       ├── actions
 │   │       │   ├── Action.mjs
-│   │       │   ├── ActionContributeurs.mjs
 │   │       │   ├── ActionExport.mjs
 │   │       │   ├── ActionExportMesures.mjs
 │   │       │   ├── ActionMesure.mjs
@@ -514,8 +511,8 @@
 │   │   ├── intercepteurAxios.mjs
 │   │   ├── matomo.js
 │   │   ├── matomoGestionnaireTag.js
-│   │   ├── menuNavigation.mjs
 │   │   ├── optOutMatomo.js
+│   │   ├── parcoursService.mjs
 │   │   └── sentry.js
 │   ├── service
 │   │   ├── bandeauReferentielV2.js
@@ -802,11 +799,11 @@
 │   │   ├── listeItems.ts
 │   │   ├── listeRisques.ts
 │   │   ├── mesure.ts
-│   │   ├── mesureGenerale.js
+│   │   ├── mesureGenerale.ts
 │   │   ├── mesureGenerale.type.ts
 │   │   ├── mesureSpecifique.ts
 │   │   ├── mesures.js
-│   │   ├── mesuresGenerales.js
+│   │   ├── mesuresGenerales.ts
 │   │   ├── mesuresSpecifiques.ts
 │   │   ├── niveauGravite.ts
 │   │   ├── notificationExpirationHomologation.js
@@ -815,12 +812,14 @@
 │   │   │   ├── objetGetIndicesCyber.js
 │   │   │   ├── objetGetMesures.js
 │   │   │   ├── objetGetService.js
+│   │   │   ├── objetGetServiceComplet.ts
 │   │   │   └── objetGetServices.js
 │   │   ├── objetsPDF
 │   │   │   ├── objetPDFAnnexeDescription.js
 │   │   │   ├── objetPDFAnnexeDescriptionV2.ts
 │   │   │   ├── objetPDFAnnexeMesures.js
-│   │   │   └── objetPDFAnnexeRisques.js
+│   │   │   ├── objetPDFAnnexeRisques.js
+│   │   │   └── objetPDFAnnexeRisquesV2.ts
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.js
 │   │   ├── parcoursUtilisateur.ts
@@ -850,7 +849,7 @@
 │   │   ├── service.js
 │   │   ├── sourceAuthentification.ts
 │   │   ├── statistiquesMesures.js
-│   │   ├── suggestionAction.js
+│   │   ├── suggestionAction.ts
 │   │   ├── superviseur.js
 │   │   ├── televersement
 │   │   │   ├── correspondanceReferentielV2.ts
@@ -884,6 +883,7 @@
 │   │       ├── graviteVecteurs.ts
 │   │       ├── mesuresPourRisque.ts
 │   │       ├── moteurRisques.ts
+│   │       ├── risqueSpecifiqueV2.ts
 │   │       ├── risqueV2.configuration.ts
 │   │       ├── risqueV2.ts
 │   │       ├── risquesV2.ts
@@ -934,6 +934,8 @@
 │   │       ├── annexeMesures.pug
 │   │       ├── annexeRisques.entete.pug
 │   │       ├── annexeRisques.pug
+│   │       ├── annexeRisquesV2.entete.pug
+│   │       ├── annexeRisquesV2.pug
 │   │       ├── base.entete.pug
 │   │       ├── base.pug
 │   │       ├── dossierDecision.entete.pug
@@ -965,6 +967,7 @@
 │   │   │   ├── routesConnecteApi.schema.ts
 │   │   │   ├── routesConnecteApiBrouillonService.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.ts
+│   │   │   ├── routesConnecteApiExplicationRisquesV2.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.ts
 │   │   │   ├── routesConnecteApiNotifications.js
 │   │   │   ├── routesConnecteApiService.js
@@ -983,6 +986,7 @@
 │   │   │   ├── routesConnecteApiServiceRetourUtilisateur.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.schema.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.ts
+│   │   │   ├── routesConnecteApiServiceRisquesV2.ts
 │   │   │   ├── routesConnecteApiServiceRolesReponsabilites.schema.ts
 │   │   │   ├── routesConnecteApiServiceRolesReponsabilites.ts
 │   │   │   ├── routesConnecteApiServiceV2.ts
@@ -1048,7 +1052,6 @@
 │       ├── erreurAccesRefuse.pug
 │       ├── fragments
 │       │   ├── avancementEtape.pug
-│       │   ├── cartesInformations.pug
 │       │   ├── composantSvelte.pug
 │       │   ├── donneesPartagees.pug
 │       │   ├── elementsAjoutables
@@ -1057,6 +1060,7 @@
 │       │   │   ├── elementsAjoutablesAvis.pug
 │       │   │   ├── elementsAjoutablesDescription.pug
 │       │   │   └── elementsAjoutablesPartiePrenante.pug
+│       │   ├── footer.pug
 │       │   ├── formulaireDescriptionService.pug
 │       │   ├── indiceCyber
 │       │   │   └── radarIndiceCyber.pug
@@ -1064,7 +1068,6 @@
 │       │   ├── inputIdentite.pug
 │       │   ├── inputPartiePrenante.pug
 │       │   ├── lienNouvelOnglet.pug
-│       │   ├── menuNavigation.pug
 │       │   ├── navigationSiteVitrine.pug
 │       │   └── texteTronque.pug
 │       ├── home
@@ -1108,7 +1111,6 @@
 │       ├── tiroirs
 │       │   ├── documentTelechargeable.pug
 │       │   ├── tiroir.pug
-│       │   ├── tiroirContributeurs.pug
 │       │   ├── tiroirExport.pug
 │       │   ├── tiroirExportMesures.pug
 │       │   ├── tiroirMesure.pug
@@ -1206,6 +1208,10 @@
 │   │   │   ├── Entete.svelte
 │   │   │   ├── entete.api.ts
 │   │   │   └── entete.ts
+│   │   ├── entetePageService
+│   │   │   ├── EntetePageService.svelte
+│   │   │   ├── entetePageService.d.ts
+│   │   │   └── entetePageService.ts
 │   │   ├── explicationNouveauReferentiel
 │   │   │   ├── ExplicationNouveauReferentiel.svelte
 │   │   │   ├── donneesEvolutionQuestions.ts
@@ -1315,6 +1321,10 @@
 │   │   │   │   ├── rapportTeleversementModelesMesureSpecifique.messages.ts
 │   │   │   │   └── rapportTeleversementModelesMesureSpecifique.types.d.ts
 │   │   │   └── thematiques.ts
+│   │   ├── menuNavigationService
+│   │   │   ├── MenuNavigationService.svelte
+│   │   │   ├── menuNavigationService.d.ts
+│   │   │   └── menuNavigationService.ts
 │   │   ├── mesure
 │   │   │   ├── Mesure.svelte
 │   │   │   ├── commentaire
@@ -1391,13 +1401,29 @@
 │   │   │   ├── risques.d.ts
 │   │   │   └── risques.ts
 │   │   ├── risquesV2
-│   │   │   ├── MatriceRisquesV2.svelte
-│   │   │   ├── Niveau.svelte
 │   │   │   ├── RisquesV2.svelte
-│   │   │   ├── kit.ts
+│   │   │   ├── TableauRisquesV2.svelte
+│   │   │   ├── kit
+│   │   │   │   ├── CartoucheIdentifiantRisque.svelte
+│   │   │   │   ├── CartouchesRisqueV2.svelte
+│   │   │   │   ├── Niveau.svelte
+│   │   │   │   └── kit.ts
+│   │   │   ├── matrice
+│   │   │   │   ├── LegendeMatrice.svelte
+│   │   │   │   └── MatriceRisquesV2.svelte
+│   │   │   ├── modale
+│   │   │   │   ├── ModaleAnciensRisques.svelte
+│   │   │   │   ├── ModaleCartographies.svelte
+│   │   │   │   ├── ModaleExplicationRisquesV2.svelte
+│   │   │   │   └── TableauRisquesMesuresAssociees.svelte
 │   │   │   ├── risquesV2.api.ts
 │   │   │   ├── risquesV2.d.ts
-│   │   │   └── risquesV2.ts
+│   │   │   ├── risquesV2.ts
+│   │   │   └── tiroir
+│   │   │       ├── BadgesTiroirRisqueSpecifiqueV2.svelte
+│   │   │       ├── BadgesTiroirRisqueV2.svelte
+│   │   │       ├── TiroirRisqueGeneralV2.svelte
+│   │   │       └── TiroirRisqueSpecifiqueV2.svelte
 │   │   ├── simulationV2
 │   │   │   ├── SimulationV2.svelte
 │   │   │   ├── etapes
@@ -1494,6 +1520,7 @@
 │   │   │   ├── BoutonSuppressionContributeur.svelte
 │   │   │   ├── BoutonsRadio.svelte
 │   │   │   ├── CartoucheCategorieMesure.svelte
+│   │   │   ├── CartoucheCategorieMesureDSFR.svelte
 │   │   │   ├── CartoucheCategorieRisque.svelte
 │   │   │   ├── CartoucheIdentifiantMesure.svelte
 │   │   │   ├── CartoucheIndispensable.svelte
@@ -1550,7 +1577,8 @@
 │   │   │   │   ├── notifications.store.ts
 │   │   │   │   ├── nouveautesPage.store.ts
 │   │   │   │   ├── tiroir.store.ts
-│   │   │   │   └── toaster.store.ts
+│   │   │   │   ├── toaster.store.ts
+│   │   │   │   └── vraisemblanceRisqueV2.store.ts
 │   │   │   ├── televersement
 │   │   │   │   ├── KitDeTeleversement.svelte
 │   │   │   │   └── KitDeTeleversement.types.ts
@@ -1582,7 +1610,7 @@
 │   │   │   │       └── EtapeSecuriser.svelte
 │   │   │   ├── kit
 │   │   │   │   ├── IndicateurEtape.svelte
-│   │   │   │   ├── MenuNavigation.svelte
+│   │   │   │   ├── MenuNavigationVisiteGuidee.svelte
 │   │   │   │   ├── ModaleSousEtape.d.ts
 │   │   │   │   ├── ModaleSousEtape.svelte
 │   │   │   │   └── positionModale.ts
@@ -1604,10 +1632,13 @@
 │   │   │       ├── nombreDeResultats.store.spec.ts
 │   │   │       ├── resultatsDeRecheche.store.spec.ts
 │   │   │       └── volumetrieMesures.store.spec.ts
-│   │   └── ui
-│   │       └── stores
-│   │           ├── notifications.store.spec.ts
-│   │           └── nouveautesPage.store.spec.ts
+│   │   ├── tsconfig.json
+│   │   ├── ui
+│   │   │   └── stores
+│   │   │       ├── notifications.store.spec.ts
+│   │   │       ├── nouveautesPage.store.spec.ts
+│   │   │       └── vraisemblanceRisqueV2.store.spec.ts
+│   │   └── vitest.config.ts
 │   ├── tsconfig.json
 │   ├── types.d.ts
 │   └── vite.config.mts
@@ -1796,22 +1827,24 @@
 │   │   │   └── evenementSimulationMigrationReferentielCreee.spec.ts
 │   │   ├── listesRisques.spec.js
 │   │   ├── mesure.spec.ts
-│   │   ├── mesureGenerale.spec.js
+│   │   ├── mesureGenerale.spec.ts
 │   │   ├── mesureSpecifique.spec.ts
 │   │   ├── mesures.spec.js
-│   │   ├── mesuresGenerales.spec.js
+│   │   ├── mesuresGenerales.spec.ts
 │   │   ├── mesuresSpecifiques.spec.ts
 │   │   ├── notificationExpirationHomologation.spec.js
 │   │   ├── objetsApi
 │   │   │   ├── objetGetIndicesCyber.spec.js
 │   │   │   ├── objetGetMesures.spec.js
 │   │   │   ├── objetGetService.spec.js
+│   │   │   ├── objetGetServiceComplet.spec.ts
 │   │   │   └── objetGetServices.spec.js
 │   │   ├── objetsPDF
 │   │   │   ├── objetPDFAnnexeDescription.spec.js
 │   │   │   ├── objetPDFAnnexeDescriptionV2.spec.ts
 │   │   │   ├── objetPDFAnnexeMesures.spec.js
-│   │   │   └── objetPDFAnnexeRisques.spec.js
+│   │   │   ├── objetPDFAnnexeRisques.spec.js
+│   │   │   └── objetPDFAnnexeRisquesV2.spec.ts
 │   │   ├── objetsPersistance
 │   │   │   └── objetPersistanceService.spec.js
 │   │   ├── parcoursUtilisateur.spec.ts
@@ -1836,7 +1869,7 @@
 │   │   ├── rolesResponsabilites.spec.js
 │   │   ├── service.spec.js
 │   │   ├── statistiquesMesuresGenerales.spec.js
-│   │   ├── suggestionAction.spec.js
+│   │   ├── suggestionAction.spec.ts
 │   │   ├── televersement
 │   │   │   ├── serviceTeleverseV2.spec.ts
 │   │   │   ├── televersementModelesMesureSpecifique.spec.js
@@ -1871,6 +1904,7 @@
 │   │       ├── graviteObjectifsVises.spec.ts
 │   │       ├── graviteVecteurs.spec.ts
 │   │       ├── moteurRisques.spec.ts
+│   │       ├── risqueSpecifiqueV2.spec.ts
 │   │       ├── risqueV2.spec.ts
 │   │       ├── risquesV2.spec.ts
 │   │       ├── selectionObjectifsVises.spec.ts
@@ -1892,6 +1926,7 @@
 │   │   │   ├── routesConnecteApi.spec.js
 │   │   │   ├── routesConnecteApiBrouillonService.spec.ts
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.spec.ts
+│   │   │   ├── routesConnecteApiExplicationRisquesV2.spec.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.spec.ts
 │   │   │   ├── routesConnecteApiNotifications.spec.js
 │   │   │   ├── routesConnecteApiService.spec.js
@@ -1904,6 +1939,7 @@
 │   │   │   ├── routesConnecteApiServicePdf.spec.js
 │   │   │   ├── routesConnecteApiServiceRetourUtilisateur.spec.ts
 │   │   │   ├── routesConnecteApiServiceRisquesSpecifiques.spec.ts
+│   │   │   ├── routesConnecteApiServiceRisquesV2.spec.ts
 │   │   │   ├── routesConnecteApiServiceRolesReponsabilites.spec.ts
 │   │   │   ├── routesConnecteApiServiceV2.spec.ts
 │   │   │   ├── routesConnecteApiSimulationMigrationReferentiel.spec.ts
@@ -1938,6 +1974,15 @@
 │   └── utilitaires
 │       ├── date.spec.ts
 │       └── tableau.spec.ts
+├── test_accessibilite
+│   ├── aideAuxTests.ts
+│   ├── creationServiceV2.spec.ts
+│   ├── globalSetup.ts
+│   ├── globalTeardown.ts
+│   ├── pagesConnectees.spec.ts
+│   ├── pagesConnecteesService.spec.ts
+│   ├── pagesPubliques.spec.ts
+│   └── visiteGuidee.spec.ts
 ├── test_migrations
 │   ├── 20221102134033_changeProvenanceService.spec.js
 │   ├── 20221130100733_suppressionStatutMesureNonConcerne.spec.js
@@ -1952,4 +1997,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-259 directories, 1813 files
+266 directories, 1851 files

@@ -1,100 +1,31 @@
-## Changelog : mon-service-securise (30 derniers jours, au 17 mars 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la gestion des risques, avec l'introduction d'une nouvelle version (V2) des risques, incluant la gestion de leur activation/désactivation, l'ajout de propriétés comme la vraisemblance et la gravité, et une refonte du moteur de calcul des risques. Des améliorations ont également été apportées à l'interface utilisateur pour afficher et manipuler ces nouveaux risques. Enfin, plusieurs suppressions de code obsolète liées à l'ancien système d'authentification ont été effectuées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des risques, notamment avec l'introduction des risques v2 et l'ajout de tests d'accessibilité pour garantir une meilleure expérience utilisateur. Des corrections et des optimisations ont également été apportées à l'interface utilisateur et aux processus de déploiement.
 
 ### Évolutions fonctionnelles
-
-*   Possibilité de désactiver un risque directement depuis le tableau des risques.
-*   Ajout d'une colonne de vraisemblance et de gravité dans le tableau des risques.
-*   Affichage des risques désactivés dans les matrices.
-*   Ajout d'une propriété "commentaire" aux risques V2.
-*   Mise à jour des données d'un risque V2 via le dépôt de données.
-*   Affichage de la thématique et des porteurs singuliers dans le tiroir des mesures et dans le tableau des mesures.
-*   Ajout de la transcription dans le tampon d'homologation.
-*   Amélioration de l'affichage des filtres dans le tableau des données brutes (TDB).
-*   Possibilité de supprimer les brouillons de service depuis le tiroir.
-*   Amélioration de la sélection des services et des brouillons.
+- Ajout de la gestion des risques v2, incluant l'affichage des risques spécifiques, la possibilité de les modifier et de les supprimer.
+- Implémentation d'un tiroir pour la gestion des risques v2 avec affichage des mesures associées.
+- Possibilité de refuser une demande d'homologation et gestion des dossiers refusés (affichage, archivage, notifications).
+- Amélioration de l'affichage des informations sur les services, incluant le nom du service dans l'en-tête et les indices cyber.
+- Ajout d'une fonctionnalité d'export CSV des risques v1.
+- Ajout d'une question supplémentaire de validation lors de l'homologation.
+- Affichage d'un message de confirmation lors d'un refus d'homologation.
 
 ### Évolutions techniques
-
-*   Migration vers Svelte 5.
-*   Refonte du moteur de calcul des risques pour utiliser la version V2 des risques.
-*   Conversion de nombreux modèles de données et adaptateurs en TypeScript pour une meilleure typage et maintenabilité.
-*   Suppression du code lié à l'ancien système d'authentification MSS et à la gestion des mots de passe.
-*   Mise à jour de plusieurs dépendances (Express, knex, jsonwebtoken, axios, etc.).
-*   Amélioration de la gestion des erreurs et ajout de tests.
-*   Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-*   Ajout de `svelte-check` dans la CI pour garantir la qualité du code Svelte.
-*   Utilisation d'Express 5.
+- Mise en place de tests d'accessibilité avec Playwright et Axe pour améliorer l'inclusivité du service.
+- Publication des rapports d'accessibilité dans Mattermost.
+- Refonte de l'architecture du menu de navigation avec un composant Svelte.
+- Conversion de plusieurs composants en TypeScript pour une meilleure typage et maintenabilité.
+- Optimisation des workflows de déploiement Clever Cloud.
+- Mise à jour de nombreuses dépendances (Express, PostgreSQL, Svelte, Vite, etc.).
+- Amélioration de la gestion des feature flags.
+- Suppression de code obsolète et refactoring de certains composants.
 
 ### Autres changements
-
-*   Ajout de métadonnées.
-*   Suppression du composant et de la page "Ui Kit".
-*   Ajout d'un script pour générer les données de référence des vraisemblances de risques.
-*   Correction de plusieurs erreurs et warnings dans le code.
-*   Amélioration de la configuration et des processus de déploiement.
-*   Ajout de la ConsoleBrevo pour migrer l'attribut SMS.
-*   Mise à jour de l'UI Kit.
-*   Correction de l'avance rapide sur décrireV2.
-*   Correction de l'application des filtres et des onglets aux brouillons.
-*   Correction de la mise en avant du bouton de création de service.
-*   Correction de l'imbrication de balises `<a>`.
-*   Correction des erreurs liées à `svelte-check`.
-*   Correction des propriétés CSS.
-*   Correction du typage.
-*   Correction des erreurs suite à la migration automatisée.
-*   Correction des select et des champs texte.
-*   Correction des erreurs de `runtime`.
-*   Correction du fichier de sortie des styles compilés.
-*   Correction des warnings de `svelte-check`.
-*   Correction des erreurs de typage.
-*   Correction de l'affichage des filtres du TDB.
-*   Correction de l'affichage des filtres du TDB.
-*   Correction des erreurs liées à `svelte-check`.
-*   Correction des erreurs liées à `svelte-check`.
-*   Correction de l'imbrication de balises `<a>`.
-*   Correction de l'intitulé du risque.
-*   Correction de la suppression des mesures.
-*   Correction de l'affichage du contenu.
-*   Correction de la limite de caractères pour l'intitulé du risque.
-*   Correction de l'erreur de suppression.
-*   Correction de l'erreur de validation de payload.
-*   Correction du calcul de vraisemblance.
-*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
-*   Correction de l'intégration des données de référence des intitulés de risques.
-*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
-*   Correction de la génération de l'intitulé d'un risque.
-*   Correction de l'utilisation de la vraisemblance.
-*   Correction de l'utilisation des niveaux de sécurité.
-*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
-*   Correction de l'utilisation des opérateurs "+".
-*   Correction de la sécurité des mesures personnalisées.
-*   Correction de l'ajout du prédicat "siPasTout".
-*   Correction de l'ajout des configurations pour le calcul des vraisemblances.
-*   Correction de l'autorisation du groupe de mesure 'g'.
-*   Correction de la gestion des erreurs qui ne proviennent pas d'axios.
-*   Correction de la gestion des erreurs.
-*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
-*   Correction de l'intégration des données de référence des intitulés de risques.
-*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
-*   Correction de la génération de l'intitulé d'un risque.
-*   Correction de l'utilisation de la vraisemblance.
-*   Correction de l'utilisation des niveaux de sécurité.
-*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
-*   Correction de l'utilisation des opérateurs "+".
-*   Correction de la sécurité des mesures personnalisées.
-*   Correction de l'ajout du prédicat "siPasTout".
-*   Correction de l'ajout des configurations pour le calcul des vraisemblances.
-*   Correction de l'autorisation du groupe de mesure 'g'.
-*   Correction de la gestion des erreurs qui ne proviennent pas d'axios.
-*   Correction de la gestion des erreurs.
-*   Correction de l'utilisation du modèle `RisqueV2` dans le moteur de risque.
-*   Correction de l'intégration des données de référence des intitulés de risques.
-*   Correction de l'utilisation de la configuration de référence pour les intitulés de risques.
-*   Correction de la génération de l'intitulé d'un risque.
-*   Correction de l'utilisation de la vraisemblance.
-*   Correction de l'utilisation des niveaux de sécurité.
-*   Correction de l'ajout des risques avec gravité dans le moteur de risque.
-*   Correction de l'utilisation des opérateurs "+".
+- Amélioration de la documentation et des commentaires.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur (espacement, typographie, etc.).
+- Ajout de badges et d'infobulles pour une meilleure clarté.
+- Correction de problèmes de 404 sur les pages de risques v2 et de création de compte.
+- Ajout d'un retry sur la recherche d'entreprise.
+- Amélioration de la gestion des erreurs et des exceptions.
