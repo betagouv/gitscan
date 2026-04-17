@@ -84,6 +84,56 @@
 │   └── urls.py
 ├── conftest.py
 ├── cron.json
+├── data_management
+│   ├── IMMUTABILITY.md
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── api_urls.py
+│   ├── api_views.py
+│   ├── apps.py
+│   ├── eligibility.py
+│   ├── immutability.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── cool_project.py
+│   │       └── schedule_project_cooling.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_remove_projectdata_file_count_and_more.py
+│   │   ├── 0003_alter_projectdata_cooling_eligible_at.py
+│   │   ├── 0004_backfill_project_data.py
+│   │   ├── 0005_lifecycleoperation_from_data_deletion.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── operations.py
+│   ├── scheduler.py
+│   ├── serializers.py
+│   ├── signals.py
+│   ├── templates
+│   │   └── admin
+│   │       └── data_management
+│   │           ├── lifecycleoperation
+│   │           │   └── delete_source_data_confirmation.html
+│   │           └── projectdata
+│   │               └── change_list.html
+│   └── tests
+│       ├── __init__.py
+│       ├── factories.py
+│       ├── test_admin.py
+│       ├── test_api_callback.py
+│       ├── test_api_cool.py
+│       ├── test_api_operation_detail.py
+│       ├── test_api_project_lifecycle.py
+│       ├── test_api_restore.py
+│       ├── test_cool_project_command.py
+│       ├── test_cooling_scheduler.py
+│       ├── test_from_data_deletion_operations.py
+│       ├── test_immutability.py
+│       ├── test_migrations.py
+│       ├── test_models.py
+│       └── test_signals.py
 ├── data_request
 │   ├── __init__.py
 │   ├── admin.py
@@ -123,7 +173,8 @@
 │   ├── configure_new_lab.md
 │   ├── configuring_lab_methods.md
 │   ├── configuring_run_metadata.md
-│   └── features.md
+│   ├── features.md
+│   └── project_data_lifecycle.md
 ├── documentation
 │   ├── MRD_AGLAE_LP_100624.mwb
 │   └── relational_data_model.mwb
@@ -212,10 +263,12 @@
 │   ├── download_urls.py
 │   ├── exceptions.py
 │   ├── hooks.py
+│   ├── project_data.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── test_download_urls.py
 │   │   ├── test_hooks.py
+│   │   ├── test_project_data.py
 │   │   └── test_utils.py
 │   └── utils.py
 ├── euphrosyne
@@ -424,6 +477,9 @@
 │   │   ├── js_tests
 │   │   │   ├── document-file-service.spec.ts
 │   │   │   └── document-upload-form.spec.ts
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_views.py
 │   │   └── views.py
 │   ├── elasticsearch
 │   │   ├── __init__.py
@@ -600,7 +656,9 @@
 │   │   │   │   └── test_objectgroup_form.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── test_eros.py
+│   │   │   │   ├── _mock_pop.py
+│   │   │   │   ├── test_eros.py
+│   │   │   │   └── test_pop.py
 │   │   │   ├── test_csv_upload.py
 │   │   │   ├── test_object_formset.py
 │   │   │   ├── test_object_inline.py
@@ -619,6 +677,7 @@
 │   │       ├── test_institution_admiin.py
 │   │       └── test_models.py
 │   ├── permissions.py
+│   ├── project_immutability.py
 │   ├── projects
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -788,6 +847,7 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── test_alert_end_run_embargos.py
 │   │   │       ├── test_check_long_running_vms.py
+│   │   │       ├── test_check_project_data_availability.py
 │   │   │       └── test_finish_runs.py
 │   │   ├── managers
 │   │   │   ├── __init__.py
@@ -807,7 +867,8 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── test_dsfr.py
 │   │   │   ├── test_nav.py
-│   │   │   └── test_projects.py
+│   │   │   ├── test_projects.py
+│   │   │   └── test_run_list.py
 │   │   ├── test_controlled_datalist.py
 │   │   ├── test_every_10_minutes_job_command.py
 │   │   ├── test_inlines_templatetags.py
@@ -830,26 +891,42 @@
 │       │   └── js
 │       │       ├── components
 │       │       │   ├── ProjectImageDefinitionSelect.tsx
+│       │       │   ├── ProjectLifecycleErrorAlert.tsx
+│       │       │   ├── ProjectLifecycleNoticeBanner.tsx
+│       │       │   ├── ProjectLifecyclePanel.tsx
+│       │       │   ├── ProjectLifecycleRoot.tsx
+│       │       │   ├── ProjectLifecycleStatus.tsx
 │       │       │   ├── WorkplaceContext.tsx
 │       │       │   ├── WorkplaceDataTypeDisplay.tsx
 │       │       │   ├── WorkplaceRunTab.tsx
 │       │       │   ├── WorkplaceRunTabs.tsx
-│       │       │   ├── virtual-office-button.js
+│       │       │   ├── virtual-office-button.ts
 │       │       │   ├── virtual-office-delete-button.js
 │       │       │   └── vm-size-select.js
 │       │       ├── euphrosyne-tools-service.js
+│       │       ├── lifecycle-state.ts
 │       │       ├── pages
 │       │       │   └── workplace.ts
 │       │       ├── processed-data
 │       │       │   └── processed-data-file-service.ts
+│       │       ├── project-lifecycle-service.ts
 │       │       ├── project-settings-service.ts
-│       │       └── raw-data
-│       │           └── raw-data-file-service.ts
+│       │       ├── raw-data
+│       │       │   └── raw-data-file-service.ts
+│       │       └── useProjectLifecycle.ts
 │       ├── js_tests
-│       │   └── components
-│       │       ├── virtual-office-button.spec.js
-│       │       ├── virtual-office-delete-button.spec.js
-│       │       └── vm-size-select.spec.js
+│       │   ├── components
+│       │   │   ├── virtual-office-button.spec.js
+│       │   │   ├── virtual-office-delete-button.spec.js
+│       │   │   └── vm-size-select.spec.js
+│       │   ├── lifecycle-state.spec.ts
+│       │   ├── pages
+│       │   │   └── workplace.spec.ts
+│       │   ├── project-lifecycle-service.spec.ts
+│       │   └── use-project-lifecycle.spec.tsx
+│       ├── tests
+│       │   ├── __init__.py
+│       │   └── test_views.py
 │       └── views.py
 ├── lab_notebook
 │   ├── __init__.py
@@ -1122,4 +1199,4 @@
 │   └── global.d.ts
 ├── vite.config.ts
 └── webpack.config.js
-251 directories, 873 files
+264 directories, 937 files
