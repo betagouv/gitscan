@@ -137,8 +137,11 @@
 │   │   └── vue-matomo.d.ts
 │   └── tsconfig.json
 ├── e2e-tests
+│   ├── .gitignore
 │   ├── README.md
 │   ├── assets
+│   │   ├── Avis_situation_declarative_titres_seuls.pdf
+│   │   ├── qr-code.png
 │   │   └── test-document.png
 │   ├── cypress
 │   │   ├── e2e
@@ -151,8 +154,11 @@
 │   │   │       ├── flatmate.cy.ts
 │   │   │       ├── identity-upload.cy.ts
 │   │   │       ├── password.cy.ts
+│   │   │       ├── payslip-upload.cy.ts
 │   │   │       ├── residency.cy.ts
-│   │   │       └── signup.cy.ts
+│   │   │       ├── signup.cy.ts
+│   │   │       ├── tax-analysis.cy.ts
+│   │   │       └── visale-analysis.cy.ts
 │   │   └── support
 │   │       ├── accessibility.ts
 │   │       ├── commands
@@ -175,8 +181,6 @@
 │   ├── .slugignore
 │   ├── Aptfile
 │   ├── README.md
-│   ├── __tests__
-│   │   └── DpeService.spec.ts
 │   ├── env.d.ts
 │   ├── eslint.config.ts
 │   ├── index.html
@@ -187,6 +191,9 @@
 │   │   └── favicon.svg
 │   ├── src
 │   │   ├── App.vue
+│   │   ├── __tests__
+│   │   │   ├── DpeNumberValidator.spec.ts
+│   │   │   └── DpeService.spec.ts
 │   │   ├── assets
 │   │   │   ├── FranceRenov.svg
 │   │   │   ├── button-je-donne-mon-avis.svg
@@ -277,6 +284,8 @@
 │   │   │   └── UtilsService.ts
 │   │   ├── store
 │   │   │   └── owner-store.ts
+│   │   ├── validators
+│   │   │   └── dpeNumberValidator.ts
 │   │   └── vue-matomo.d.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
@@ -352,7 +361,8 @@
 │   │   │   ├── UtilsService.spec.ts
 │   │   │   ├── lastMonths.spec.ts
 │   │   │   ├── taxYear.spec.ts
-│   │   │   └── updateFinancialURL.spec.ts
+│   │   │   ├── updateFinancialURL.spec.ts
+│   │   │   └── useInternalNavigation.spec.ts
 │   │   ├── assets
 │   │   │   ├── anil.png
 │   │   │   ├── anil.webp
@@ -418,15 +428,28 @@
 │   │   │   ├── TrigramAuthentication.vue
 │   │   │   ├── ValidateFile.vue
 │   │   │   ├── __tests__
+│   │   │   │   ├── AnalysisBanners.spec.ts
+│   │   │   │   ├── AnalysisWrapper.spec.ts
 │   │   │   │   ├── FileRowListItem.spec.ts
+│   │   │   │   ├── FinancialAnalysisErrorBannerContent.spec.ts
+│   │   │   │   ├── FrenchTaxForm.spec.ts
 │   │   │   │   ├── RowListItem.spec.ts
 │   │   │   │   ├── ShareActionsMenu.spec.ts
-│   │   │   │   └── SharingLinkDetails.spec.ts
+│   │   │   │   ├── SharingLinkDetails.spec.ts
+│   │   │   │   ├── UploadFileFinancialWithAnalysis.spec.ts
+│   │   │   │   └── UploadFileWithAnalysis.spec.ts
 │   │   │   ├── account
 │   │   │   │   ├── DefaultShareSection.vue
 │   │   │   │   ├── GuarantorsSection.vue
 │   │   │   │   ├── PartnersSection.vue
 │   │   │   │   └── TenantPanel.vue
+│   │   │   ├── analysis
+│   │   │   │   ├── AnalysisBanners.vue
+│   │   │   │   ├── AnalysisWrapper.vue
+│   │   │   │   ├── BannerIconTextLine.vue
+│   │   │   │   ├── GenericAnalysisErrorContent.vue
+│   │   │   │   ├── UploadFileWithAnalysis.vue
+│   │   │   │   └── analysisBannerLayout.css
 │   │   │   ├── common
 │   │   │   │   ├── BackLinkRow.vue
 │   │   │   │   ├── GuarantorBadge.vue
@@ -447,6 +470,7 @@
 │   │   │   │   │   ├── CoupleProfessional.vue
 │   │   │   │   │   ├── CoupleResidency.vue
 │   │   │   │   │   └── coupleRoutes.ts
+│   │   │   │   ├── documentFormState.ts
 │   │   │   │   ├── legalPersonGuarantor
 │   │   │   │   │   ├── CorporationIdentification.vue
 │   │   │   │   │   └── RepresentativeIdentification.vue
@@ -526,8 +550,14 @@
 │   │   │   │   │   ├── FinancialBackRow.vue
 │   │   │   │   │   ├── FinancialFooter.vue
 │   │   │   │   │   ├── FinancialFooterContent.vue
+│   │   │   │   │   ├── UploadFileFinancialWithAnalysis.vue
 │   │   │   │   │   ├── UploadFilesFinancial.vue
 │   │   │   │   │   ├── WarningUpdate.vue
+│   │   │   │   │   ├── analysisBanner
+│   │   │   │   │   │   ├── FinancialAnalysisErrorBannerContent.vue
+│   │   │   │   │   │   ├── IdentityDescription.vue
+│   │   │   │   │   │   ├── MissingMonthDescription.vue
+│   │   │   │   │   │   └── MonthDescription.vue
 │   │   │   │   │   ├── lastMonths.ts
 │   │   │   │   │   └── updateFinancialUrl.ts
 │   │   │   │   ├── noIncome
@@ -566,6 +596,7 @@
 │   │   │   │       └── lib
 │   │   │   │           └── useSocialOptionLinks.ts
 │   │   │   ├── footer
+│   │   │   │   ├── AnalysisFooter.vue
 │   │   │   │   ├── BackNext.vue
 │   │   │   │   ├── FooterContainer.vue
 │   │   │   │   ├── GuarantorFooter.vue
@@ -596,7 +627,6 @@
 │   │   │   │   ├── TenantIdentity.vue
 │   │   │   │   ├── ThirdPartyIdentity.vue
 │   │   │   │   └── lib
-│   │   │   │       ├── ExternalDocumentation.ts
 │   │   │   │       ├── IdentityBackLinkRow.vue
 │   │   │   │       └── TrackedExternalLink.vue
 │   │   │   ├── identityDocument
@@ -698,6 +728,7 @@
 │   │   │   │       ├── StatementPreview.vue
 │   │   │   │       ├── TaxBackLinkRow.vue
 │   │   │   │       ├── TaxFooter.vue
+│   │   │   │       ├── UploadFileTaxWithAnalysis.vue
 │   │   │   │       ├── UploadFilesTax.vue
 │   │   │   │       ├── taxLink.ts
 │   │   │   │       ├── taxState.ts
@@ -708,8 +739,21 @@
 │   │   │   ├── uploads
 │   │   │   │   ├── FileUpload.vue
 │   │   │   │   └── ListItem.vue
+│   │   │   ├── validateStep
+│   │   │   │   ├── AnalysisFinalForm.vue
+│   │   │   │   ├── AnalysisPreview.vue
+│   │   │   │   ├── AnalysisProgress.vue
+│   │   │   │   ├── AnalysisReportError.vue
+│   │   │   │   ├── DocumentPreviewCard.vue
+│   │   │   │   ├── ErrorPreviewCard.vue
+│   │   │   │   ├── LoadingPreviewCard.vue
+│   │   │   │   ├── MissingDocumentPreviewCard.vue
+│   │   │   │   ├── SuccessPreviewCard.vue
+│   │   │   │   └── useDocumentPreview.ts
 │   │   │   └── vue-pdf.ts
 │   │   ├── composables
+│   │   │   ├── useApplicationAnalysis.ts
+│   │   │   ├── useInternalNavigation.ts
 │   │   │   └── useResendMail.ts
 │   │   ├── i18n.ts
 │   │   ├── locales
@@ -725,6 +769,7 @@
 │   │   ├── router
 │   │   │   └── index.ts
 │   │   ├── services
+│   │   │   ├── AnalysisService.ts
 │   │   │   ├── AnalyticsService.ts
 │   │   │   ├── ApartmentSharingLinkService.ts
 │   │   │   ├── ApiService.ts
@@ -773,6 +818,7 @@
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
+│   ├── tsconfig.vitest.json
 │   ├── vite.config.ts
 │   └── vitest.config.ts
 ├── tsconfig.json
@@ -1021,4 +1067,4 @@
     ├── tsconfig.vitest.json
     ├── vite.config.ts
     └── vitest.config.ts
-144 directories, 926 files
+148 directories, 968 files

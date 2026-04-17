@@ -1,25 +1,27 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à Dossier-Facile-Frontend au cours des 30 derniers jours. Les mises à jour se concentrent sur l'amélioration de l'accessibilité, la correction de bugs et l'amélioration de l'expérience utilisateur, notamment dans la gestion des locataires et des partages de dossiers. Plusieurs versions ont été publiées pour intégrer ces corrections et améliorations.
+Ce mois-ci, les améliorations se concentrent sur l'analyse des justificatifs, notamment les fiches de paie et les avis de situation locative (Visale). Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées, notamment au niveau de la gestion des fichiers et des messages d'erreur. Plusieurs versions ont été publiées (3.5.0, 3.5.2, 3.5.3 et 3.5.4).
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité de la modale [#1903](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1903).
-- Ajout des titres de page pour la gestion des locataires [#1892](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1892).
-- Affichage du nom d'utilisateur au lieu de l'adresse e-mail pour les locataires ayant le même nom.
-- Correction d'un bug empêchant l'affichage correct de la page de partage lorsque le dossier des colocataires n'est pas entièrement complété [#1884](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1884).
-- Gestion d'un nouveau endpoint authentifié pour les documents blobs [#7d80ea3d](https://github.com/MTES-MCT/Dossier-Facile-Frontend/commit/7d80ea3d).
-- Correction de l'autocomplete des champs [#1891](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1891) et [#1901](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1901).
-- Correction d'un bug lié à des erreurs 500 lors du téléchargement de plusieurs fichiers [#1869](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/1869).
+- **Analyse des justificatifs :** Ajout de l'analyse des documents Visale [#1912](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1912).
+- **Fiche de paie :** Amélioration des messages d'erreur pour l'analyse des fiches de paie [#1940](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1940) et correction d'un bug lié à la suppression de fichiers de paie [#1936](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1936).  L'analyse Doc-IA est maintenant cachée lors de la modification d'un fichier de paie [#1935](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1935).
+- **Avis déclaratif :** Ajout d'un test E2E pour la gestion du modal lors du téléchargement de l'avis déclaratif [#1918](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1918).
+- **Documentation :** Mise à jour de la documentation pour les documents requis dans le contexte locatif [#1920](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1920).
+- **Boutons et navigation :** Remplacement du bouton "Enregistrer" par un bouton "Suivant" après l'explication de l'analyse [#1925](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1925).
+- **Formulaire de contact :** Ajout d'un état de chargement au bouton de soumission du formulaire de contact [#1923](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1923).
+- **Validation DPE :** Ajout d'une validation pour empêcher la saisie d'un numéro DPE invalide [#1917](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1917).
 
 ### Évolutions techniques
-- Suppression de la fonctionnalité d'annulation du lien FranceConnect et des traductions associées [#1900](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1900).
-- Correction d'un test E2E qui échouait à cause d'un identifiant invalide [#1887](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1887).
-- Optimisation de l'appel à l'API pour le temps de traitement estimé dans la gestion des locataires [#1877](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1877).
-- Correction de tests E2E pour la page de partage [#1878](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/1878).
+- **Tests E2E :** Ajout d'un test E2E pour le cas d'utilisation de l'analyse de fiche de paie [#1937](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1937).
+- **Refactoring :** Refactorisation de la logique de sauvegarde des fichiers de paie avec analyse [#1939](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1939).
+- **Purge CSS :** Correction de la configuration de purge CSS pour désactiver la suppression des variables [#1914](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1914).
+- **Gestion des erreurs :** Remplacement du modal "asdir" par un toast d'erreur lors du téléchargement [#1927](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1927) et ajout d'un message "asdir" dans la section de téléchargement [#1929](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1929).
 
 ### Autres changements
-- Corrections de clés de traduction manquantes [#1891](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1891) et [#3e6d272b](https://github.com/MTES-MCT/Dossier-Facile-Frontend/commit/3e6d272b).
-- Améliorations de l'accessibilité du formulaire de locataire [#1852](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1852) et du site web [#1865](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1865).
-- Corrections concernant les exemples de fichiers et le formulaire de contact [#1873](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1873) et [#1871](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1871).
-- Publication des versions v3.4.5, v3.4.6, v3.4.7, v3.4.9 et v3.4.10.
+- Correction d'une faute de frappe concernant le garant [#1922](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1922).
+- Correction d'un bug lié à la page de confirmation lorsque l'utilisateur est connecté [#1919](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1919).
+- Limitation de la longueur des commentaires d'analyse [#1916](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1916).
+- Correction d'un test E2E cassé [#1911](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1911).
+- Correction d'un bug QA concernant l'analyse des fiches de paie [#1942](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1942).
+- Correction d'un bug visale QA [#1926](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1926).
