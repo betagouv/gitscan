@@ -1,13 +1,23 @@
 .
 ├── .gitignore
 ├── .python-version
+├── 2026-04-07 infos-rapides-completees.csv
+├── 2026-04-15-nuxeo-fixed.csv
+├── README.md
 ├── all.csv
-├── disaron_prefixer.py
+├── django_setup
+│   ├── __init__.py
+│   └── env_setup.py
 ├── files_to_download_20260317_123722.csv
 ├── files_to_download_20260317_165728.csv
+├── files_to_download_all_IR_fixed_disarons.csv
 ├── files_to_download_raw.csv
 ├── files_to_download_singleline.csv
 ├── infos-rapides.csv
+├── justfile
+├── malformed_disaron_ids_2026-04-07_infos-rapides-completees.csv
+├── malformed_disaron_ids_files_to_download_20260317_123722.csv
+├── malformed_disaron_ids_spaces.csv
 ├── markitdown
 │   └── Primeur2024-1_MénagesAgricoles2020
 │       ├── Primeur2024-1_MénagesAgricoles2020.docx
@@ -56,6 +66,19 @@
 │           ├── styles.xml
 │           └── theme
 │               └── theme1.xml
+├── metadata_editor
+│   ├── __init__.py
+│   ├── add_ids_to_pages.py
+│   ├── author_lister.py
+│   ├── data
+│   │   └── test.csv
+│   ├── disaron_fixer.py
+│   ├── reformat_disaron.py
+│   ├── set_collection.py
+│   ├── set_metadata.py
+│   └── set_publication_date.py
+├── missing_data_filler
+│   └── list_missing_data.py
 ├── my-crawler
 │   ├── .dockerignore
 │   ├── Dockerfile
@@ -83,6 +106,9 @@
 │   ├── .dockerignore
 │   ├── Dockerfile
 │   ├── README.md
+│   ├── disaron_prefixer.py
+│   ├── files_to_download.csv
+│   ├── files_to_download_infos_rapides_completees.csv
 │   ├── my_downloader
 │   │   ├── __init__.py
 │   │   ├── __main__.py
@@ -94,11 +120,17 @@
 │       ├── failures_20260317_165728.csv
 │       ├── results_20260317_123722.csv
 │       └── results_20260317_165728.csv
-├── page-creator
+├── page_creator
+│   ├── __init__.py
 │   ├── clear_blog_entries.py
 │   ├── create_blog_entry.py
 │   ├── data
 │   │   └── infos-rapides.csv
-│   └── django_env_setup.py
-└── pyproject.toml
-19 directories, 84 files
+│   └── remove_unused_documents.py
+├── pyproject.toml
+└── theme-mapper
+    ├── 2026-03-23_Inventaire-Nuxeo-themes.csv
+    ├── map_themes.py
+    ├── nuxeo_mapped_themes.csv
+    └── themes-old-new.csv
+24 directories, 111 files
