@@ -1,5 +1,4 @@
 .
-├── .env.template
 ├── .github
 │   ├── CODEOWNERS
 │   ├── actions
@@ -38,7 +37,6 @@
 │       └── sync_databases.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
-├── .python-version
 ├── .secrets.baseline
 ├── .tool-versions
 ├── .vscode
@@ -53,6 +51,7 @@
 ├── SECURITY.md
 ├── data-platform
 │   ├── .gitignore
+│   ├── Makefile
 │   ├── airflow-scheduler.Dockerfile
 │   ├── airflow-webserver.Dockerfile
 │   ├── config
@@ -461,6 +460,7 @@
 │   │       └── logging_utils.py
 │   ├── dbt
 │   │   ├── .gitignore
+│   │   ├── Makefile
 │   │   ├── README.md
 │   │   ├── analyses
 │   │   │   └── .gitkeep
@@ -513,6 +513,7 @@
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ae_annuaire_entreprises
 │   │   │   │   │   ├── base_ae_etablissement.sql
+│   │   │   │   │   ├── base_ae_lien_succession.sql
 │   │   │   │   │   ├── base_ae_unite_legale.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ban
@@ -568,6 +569,7 @@
 │   │   │   │       ├── exposure_stats_acteur_revision_siret.sql
 │   │   │   │       ├── exposure_stats_acteur_revision_statut.sql
 │   │   │   │       ├── exposure_stats_acteur_siren_siret_history.sql
+│   │   │   │       ├── exposure_stats_acteur_siret_successeur.sql
 │   │   │   │       ├── exposure_stats_acteur_stacked_history.sql
 │   │   │   │       ├── exposure_stats_distance_nb_acteur_by_action.sql
 │   │   │   │       └── schema.yml
@@ -582,6 +584,7 @@
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ae_annuaire_entreprises
 │   │   │   │   │   ├── int_ae_etablissement.sql
+│   │   │   │   │   ├── int_ae_lien_succession_resolved.sql
 │   │   │   │   │   ├── int_ae_unite_legale.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ban
@@ -671,6 +674,7 @@
 │   │   │   │       ├── marts_acteur_siret_actif.sql
 │   │   │   │       ├── marts_acteur_stacked.sql
 │   │   │   │       ├── marts_acteur_stacked_rounded.sql
+│   │   │   │       ├── marts_ae_lien_succession_resolved_vueacteur.sql
 │   │   │   │       ├── marts_distance_first_action.sql
 │   │   │   │       └── schema.yml
 │   │   │   └── source
@@ -698,7 +702,8 @@
 │   │   └── depuplicate_from_xlsx.ipynb
 │   ├── plugins
 │   │   └── .gitkeep
-│   └── pyproject.toml
+│   ├── pyproject.toml
+│   └── uv.lock
 ├── docker-compose.yml
 ├── docs
 │   ├── Makefile
@@ -783,13 +788,12 @@
 │   │   └── webapp
 │   │       ├── README.md
 │   │       ├── django.md
+│   │       ├── internationalization.md
 │   │       ├── javascript.md
 │   │       ├── look-and-feel.md
 │   │       └── templates.md
 │   ├── toctree.py
 │   └── uv.lock
-├── iframe.html
-├── iframe_without_js.html
 ├── infrastructure
 │   ├── .gitignore
 │   ├── environments
@@ -852,13 +856,6 @@
 │       └── object_storage
 │           ├── airflow.tf
 │           └── variables.tf
-├── nginx-local-only
-│   ├── cache.conf
-│   ├── certs
-│   │   └── .gitkeep
-│   ├── nginx.conf
-│   └── servers.conf.template
-├── pyproject.toml
 ├── scripts
 │   ├── db_schema_create_from_csv.py
 │   ├── dbt
@@ -884,6 +881,7 @@
 ├── uv.lock
 └── webapp
     ├── .buildpacks
+    ├── .env.template
     ├── .eslintrc.js
     ├── .git-blame-ignore-revs
     ├── .gitignore
@@ -895,9 +893,6 @@
     ├── Aptfile
     ├── Makefile
     ├── Procfile
-    ├── Procfile.all.dev
-    ├── Procfile.django.dev
-    ├── api.postman_collection.json
     ├── bin
     │   ├── post_compile
     │   ├── post_deploy
@@ -930,6 +925,7 @@
     │   │   ├── admin_suggestion_tags.py
     │   │   ├── analytics_tags.py
     │   │   ├── carte_tags.py
+    │   │   ├── comparison_table_tags.py
     │   │   ├── custom_dsfr_tags.py
     │   │   ├── dict_tags.py
     │   │   ├── modal_tags.py
@@ -942,6 +938,7 @@
     │   ├── utils.py
     │   ├── validators.py
     │   ├── views.py
+    │   ├── widgets.py
     │   └── wsgi.py
     ├── data
     │   ├── __init__.py
@@ -970,12 +967,10 @@
     │   │   ├── 0019_alter_suggestionunitaire_parametres.py
     │   │   ├── 0020_alter_suggestiongroupe_acteur_and_more.py
     │   │   ├── 0021_suggestiongroupe_parent_revision_acteur_and_more.py
+    │   │   ├── 0022_suggestionunitaire_data_su_revision_acteur_if_modele_revision_acteur_and_more.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
-    │   │   ├── apply_models
-    │   │   │   ├── abstract_apply_model.py
-    │   │   │   └── source_apply_model.py
     │   │   ├── change.py
     │   │   ├── changes
     │   │   │   ├── __init__.py
@@ -991,9 +986,13 @@
     │   │   │   ├── acteur_verify_in_revision.py
     │   │   │   ├── sample_model_do_nothing.py
     │   │   │   └── utils.py
+    │   │   ├── comparison_table.py
     │   │   ├── suggestion.py
     │   │   ├── suggestions
-    │   │   │   └── source.py
+    │   │   │   ├── abstract.py
+    │   │   │   ├── enrich_multi.py
+    │   │   │   ├── source.py
+    │   │   │   └── utils.py
     │   │   └── utils.py
     │   ├── urls.py
     │   └── views.py
@@ -1002,10 +1001,14 @@
     │   ├── colors.js
     │   ├── colors.py
     │   ├── extract_dsfr_colors.py
+    │   ├── extract_dsfr_semantic_colors.js
+    │   ├── extract_dsfr_typography.js
     │   ├── extract_used_colors.py
     │   ├── extract_used_icons.py
     │   ├── forms.py
     │   ├── icons.js
+    │   ├── semantic_colors.js
+    │   ├── typography.js
     │   ├── urls.py
     │   ├── used_colors.js
     │   ├── used_icons.js
@@ -1028,6 +1031,8 @@
     │   ├── iframe.spec.ts
     │   ├── iframe_navigation.spec.ts
     │   ├── infotri.spec.ts
+    │   ├── mode_liste.spec.ts
+    │   ├── navigation.spec.ts
     │   └── search.spec.ts
     ├── infotri
     │   ├── __init__.py
@@ -1038,7 +1043,6 @@
     │   └── views.py
     ├── integration_tests
     │   ├── assistant
-    │   │   ├── test_home.py
     │   │   ├── test_seo_meta_tags.py
     │   │   └── test_synonyme_detail.py
     │   ├── carte
@@ -1061,6 +1065,13 @@
     │       └── test_stats_api.py
     ├── jest.config.ts
     ├── manage.py
+    ├── nginx
+    │   ├── Dockerfile
+    │   ├── certs
+    │   │   └── .gitkeep
+    │   ├── entrypoint.sh
+    │   ├── nginx.conf
+    │   └── test_nginx.py
     ├── package-lock.json
     ├── package.json
     ├── parcel-transformers
@@ -1087,6 +1098,7 @@
     │   │       ├── fix_searchtag_names_from_synonymes.py
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
+    │   │       ├── import_redirects_from_legacy_website.py
     │   │       ├── migrate_from_sites_faciles_experiment.py
     │   │       ├── populate_fake_search_tags.py
     │   │       └── populate_search_terms.py
@@ -1134,6 +1146,7 @@
     │   │   ├── 0073_remove_synonyme_id_and_more.py
     │   │   ├── 0074_synonyme_disabled.py
     │   │   ├── 0080_remove_synonyme_disabled.py
+    │   │   ├── 0081_homepage.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── signals.py
@@ -1194,6 +1207,7 @@
     │   │       ├── populate_propositionservice.py
     │   │       ├── populate_sous_cat.py
     │   │       ├── reinitialize_suggestions.py
+    │   │       ├── rename_souscategorieobjet_code.py
     │   │       ├── source_code_modification.py
     │   │       ├── type_souscategorieobjets.py
     │   │       └── update_external_ids.py
@@ -1304,8 +1318,12 @@
     │       ├── controllers
     │       │   ├── admin
     │       │   │   ├── categorie_widget_controller.ts
+    │       │   │   ├── cell_edit_controller.ts
     │       │   │   ├── map_search_controller.ts
-    │       │   │   └── suggestion_groupe_row_controller.ts
+    │       │   │   ├── report_update_controller.ts
+    │       │   │   ├── suggestion_map_update_controller.ts
+    │       │   │   ├── suggestion_post.ts
+    │       │   │   └── suggestion_status_controller.ts
     │       │   ├── assistant
     │       │   │   ├── blink.ts
     │       │   │   ├── search.ts
@@ -1339,6 +1357,7 @@
     │       │   ├── helpers.ts
     │       │   ├── iframe_functions.ts
     │       │   ├── parcel.d.ts
+    │       │   ├── sentry.ts
     │       │   ├── solution_map.ts
     │       │   ├── types.ts
     │       │   └── url_utils.ts
@@ -1403,6 +1422,12 @@
     │   ├── data
     │   │   └── _partials
     │   │       ├── ajout_suggestion_details.html
+    │   │       ├── cells
+    │   │       │   ├── _links.html
+    │   │       │   ├── action.html
+    │   │       │   ├── display.html
+    │   │       │   ├── editable.html
+    │   │       │   └── html.html
     │   │       ├── contexte_details.html
     │   │       ├── display_diff_value.html
     │   │       ├── extra_links.html
@@ -1439,7 +1464,8 @@
     │   └── ui
     │       ├── analytics
     │       │   ├── matomo.html
-    │       │   └── posthog_data_attributes.html
+    │       │   ├── posthog_data_attributes.html
+    │       │   └── sentry_data_attributes.html
     │       ├── blocks
     │       │   ├── carte.html
     │       │   └── liens.html
@@ -1524,7 +1550,6 @@
     │       │   │   ├── code.html
     │       │   │   └── code.md
     │       │   ├── footer
-    │       │   │   ├── _dsfr_footer.html
     │       │   │   ├── base.html
     │       │   │   ├── base.iframe.html
     │       │   │   ├── combined_logos.html
@@ -1603,6 +1628,7 @@
     │       │   ├── label_qualite
     │       │   │   ├── dsfr_label.html
     │       │   │   ├── filtre_bonus.html
+    │       │   │   ├── label_bonus.html
     │       │   │   └── label_qualite.html
     │       │   ├── lien
     │       │   │   └── lien.html
@@ -1638,9 +1664,12 @@
     │       │   │   ├── heading.md
     │       │   │   ├── heading_family.html
     │       │   │   ├── heading_family.md
+    │       │   │   ├── nouvelle_recherche.html
     │       │   │   └── produit.html
     │       │   ├── search
-    │       │   │   ├── _search_term.html
+    │       │   │   ├── autocomplete_header_view.html
+    │       │   │   ├── autocomplete_results.html
+    │       │   │   ├── autocomplete_view.html
     │       │   │   ├── search_result.html
     │       │   │   ├── search_result_produitpage.html
     │       │   │   ├── search_result_searchtag.html
@@ -1655,10 +1684,12 @@
     │       │   └── widgets
     │       │       ├── _spinner.html
     │       │       ├── autocomplete
+    │       │       │   ├── _results_item.html
     │       │       │   ├── input.html
+    │       │       │   ├── input.qf.html
     │       │       │   ├── results.html
-    │       │       │   ├── results_item.html
-    │       │       │   └── synonyme.html
+    │       │       │   ├── synonyme.html
+    │       │       │   └── synonyme_results_item.html
     │       │       ├── autocomplete.html
     │       │       ├── dsfr_checkbox_option.html
     │       │       ├── dsfr_checkbox_select.html
@@ -1728,7 +1759,9 @@
     │   ├── conftest.py
     │   ├── core
     │   │   ├── templatetags
+    │   │   │   ├── test_acteur_tags.py
     │   │   │   └── test_qfdmo_tags.py
+    │   │   ├── test_robots.py
     │   │   └── test_utils.py
     │   ├── data
     │   │   ├── models
@@ -1758,6 +1791,7 @@
     │   │   ├── test_lien.py
     │   │   ├── test_middleware.py
     │   │   ├── test_produit.py
+    │   │   ├── test_signals.py
     │   │   └── test_synonyme.py
     │   ├── qfdmo
     │   │   ├── acteur_factory.py
@@ -1795,4 +1829,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-341 directories, 1456 files
+341 directories, 1490 files
