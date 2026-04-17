@@ -4,19 +4,32 @@
 ├── .git-blame-ignore-revs
 ├── .gitattributes
 ├── .github
-│   ├── codeql
-│   │   └── codeql-config.yml
-│   ├── dependabot.yml
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug.md
 │   │   ├── chore.md
 │   │   └── feature.md
+│   ├── codeql
+│   │   └── codeql-config.yml
+│   ├── dependabot.yml
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
+├── .irbrc
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
+├── Dockerfile
+├── Dockerfile.dev
+├── Gemfile
+├── Gemfile.lock
+├── Guardfile
+├── LICENSE
+├── Makefile
+├── Procfile
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── SECURITY.md
 ├── app
 │   ├── assets
 │   │   ├── builds
@@ -30,8 +43,6 @@
 │   │   ├── concerns
 │   │   │   └── component_store_accessor.rb
 │   │   └── dsfr
-│   │       ├── pagination_component.html.erb
-│   │       ├── pagination_component.rb
 │   │       ├── sidemenu_component.html.erb
 │   │       ├── sidemenu_component.rb
 │   │       ├── sidemenu_item_component.rb
@@ -42,8 +53,8 @@
 │   │   ├── application_controller.rb
 │   │   ├── audits_controller.rb
 │   │   ├── concerns
-│   │   │   ├── .keep
-│   │   │   └── authentication.rb
+│   │   │   ├── authentication.rb
+│   │   │   └── sites_filtering.rb
 │   │   ├── errors_controller.rb
 │   │   ├── pages_controller.rb
 │   │   ├── sessions_controller.rb
@@ -88,9 +99,9 @@
 │   │   ├── audit.rb
 │   │   ├── axe_violation.rb
 │   │   ├── browser.rb
+│   │   ├── check.rb
 │   │   ├── check_state_machine.rb
 │   │   ├── check_transition.rb
-│   │   ├── check.rb
 │   │   ├── checks
 │   │   │   ├── accessibility_mention.rb
 │   │   │   ├── accessibility_page_heading.rb
@@ -107,19 +118,17 @@
 │   │   ├── current.rb
 │   │   ├── link
 │   │   │   └── invalid_uri_error.rb
-│   │   ├── link_list.rb
 │   │   ├── link.rb
-│   │   ├── page_heading_status.rb
+│   │   ├── link_list.rb
 │   │   ├── page.rb
+│   │   ├── page_heading_status.rb
 │   │   ├── session.rb
+│   │   ├── site.rb
 │   │   ├── site_tag.rb
 │   │   ├── site_upload.rb
-│   │   ├── site.rb
 │   │   ├── tag.rb
 │   │   ├── team.rb
 │   │   └── user.rb
-│   ├── queries
-│   │   └── site_query.rb
 │   ├── services
 │   │   ├── fetch_home_page_service.rb
 │   │   └── find_accessibility_page_service.rb
@@ -176,6 +185,7 @@
 │       │   ├── _footer.html.erb
 │       │   ├── _header.html.erb
 │       │   ├── _menu.html.erb
+│       │   ├── _pagination.html.erb
 │       │   └── _skiplinks.html.erb
 │       ├── sites
 │       │   ├── _form.html.erb
@@ -200,6 +210,7 @@
 │   ├── docker-entrypoint
 │   ├── importmap
 │   ├── jobs
+│   ├── preview_audit
 │   ├── rails
 │   ├── rake
 │   ├── rubocop
@@ -233,6 +244,7 @@
 │   │   ├── i18n.rb
 │   │   ├── inflections.rb
 │   │   ├── omniauth.rb
+│   │   ├── pagy.rb
 │   │   ├── sentry.rb
 │   │   ├── statesman.rb
 │   │   └── turbo_streams.rb
@@ -295,8 +307,6 @@
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docker-compose.yml
-├── Dockerfile
-├── Dockerfile.dev
 ├── features
 │   ├── ajout_d_un_site.feature
 │   ├── export_csv.feature
@@ -316,23 +326,18 @@
 │   │   ├── omniauth.rb
 │   │   ├── steps.rb
 │   │   └── web.rb
+│   ├── verification_de_l_analyse.feature
+│   ├── verification_de_la_presence_d_une_declaration_d_accessibilite.feature
 │   ├── verification_de_site.feature
 │   ├── verification_du_plan_d_action.feature
 │   └── verification_du_schema_pluriannuel.feature
-├── Gemfile
-├── Gemfile.lock
-├── Guardfile
 ├── lib
 │   └── tasks
 │       ├── .keep
 │       ├── cucumber.rake
 │       └── vendor.rake
-├── LICENSE
 ├── log
 │   └── .keep
-├── Makefile
-├── Procfile
-├── Procfile.dev
 ├── public
 │   ├── 400.html
 │   ├── 406-unsupported-browser.html
@@ -341,15 +346,11 @@
 │   ├── icon.png
 │   ├── icon.svg
 │   └── robots.txt
-├── Rakefile
-├── README.md
 ├── script
 │   └── .keep
-├── SECURITY.md
 ├── spec
 │   ├── components
 │   │   └── dsfr
-│   │       ├── pagination_spec.rb
 │   │       ├── sidemenu_item_spec.rb
 │   │       ├── sidemenu_spec.rb
 │   │       ├── table_spec.rb
@@ -370,8 +371,8 @@
 │   │   └── files
 │   │       ├── declarations
 │   │       │   ├── invalid.html
-│   │       │   ├── valid_with_shift.html
-│   │       │   └── valid.html
+│   │       │   ├── valid.html
+│   │       │   └── valid_with_shift.html
 │   │       └── sites.csv
 │   ├── helpers
 │   │   ├── application_helper_spec.rb
@@ -414,8 +415,6 @@
 │   │   ├── tag_spec.rb
 │   │   ├── team_spec.rb
 │   │   └── user_spec.rb
-│   ├── queries
-│   │   └── site_query_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── authentication_spec.rb
@@ -449,4 +448,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-80 directories, 371 files
+78 directories, 372 files

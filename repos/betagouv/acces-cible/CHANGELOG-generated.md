@@ -1,26 +1,21 @@
-## Changelog : acces-cible (30 derniers jours)
+## Changelog : acces-cible (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce changelog résume les améliorations apportées à acces-cible au cours des 30 derniers jours. Les principales évolutions concernent l'amélioration de la robustesse de l'application, l'ajout de nouvelles fonctionnalités pour faciliter l'export de données et la gestion des sites, ainsi que des mises à jour techniques pour assurer la sécurité et la performance de la plateforme.
+Ce mois-ci, les améliorations se concentrent sur l'importation et la gestion des sites web, avec une attention particulière portée à la robustesse du traitement des fichiers CSV et à la détection des informations d'accessibilité. Des améliorations ont également été apportées à la visualisation des pages crawlées pour faciliter le débogage.
 
 ### Évolutions fonctionnelles
-- Ajout du nom du site aux exports CSV pour une meilleure identification des données exportées. [#476](https://github.com/betagouv/acces-cible/pull/476)
-- Mise à jour du titre de l'application pour indiquer qu'il s'agit de la version bêta. [#475](https://github.com/betagouv/acces-cible/pull/475)
-- Amélioration de la gestion des délais d'attente du réseau pour une meilleure stabilité. [#466](https://github.com/betagouv/acces-cible/pull/466)
-- Ajout de limites de pagination configurables pour une meilleure gestion des listes de données. [#454](https://github.com/betagouv/acces-cible/pull/454)
-- Amélioration de l'extraction du taux de conformité pour une plus grande précision. [#450](https://github.com/betagouv/acces-cible/pull/450)
-- Amélioration de la suppression en masse pour une meilleure expérience utilisateur. [#449](https://github.com/betagouv/acces-cible/pull/449)
-- Correction d'un problème de condition de course lors de la création de transitions. [#455](https://github.com/betagouv/acces-cible/pull/455)
+- Possibilité de télécharger un fichier CSV filtré. [#513](https://github.com/betagouv/acces-cible/issues/513)
+- Amélioration de la détection des liens externes. [#497](https://github.com/betagouv/acces-cible/issues/497)
+- Extraction de l'adresse email de contact et du formulaire de contact sur les pages web. [#480](https://github.com/betagouv/acces-cible/issues/480)
+- Correction de la recherche du taux d'accessibilité. [#509](https://github.com/betagouv/acces-cible/issues/509)
+- Suppression du scope pour améliorer la détection du schéma et du plan d'accessibilité. [#491](https://github.com/betagouv/acces-cible/issues/491)
 
 ### Évolutions techniques
-- Mise à niveau de Ruby vers la version 4.0.1 pour bénéficier des dernières améliorations et correctifs de sécurité. [#478](https://github.com/betagouv/acces-cible/pull/478)
-- Mise à niveau de plusieurs gems pour assurer la compatibilité et la sécurité de l'application. [#465](https://github.com/betagouv/acces-cible/pull/465), [#461](https://github.com/betagouv/acces-cible/pull/461), [#422](https://github.com/betagouv/acces-cible/pull/422)
-- Suppression d'un helper DSFR obsolète et mise à jour des dépendances associées. [#460](https://github.com/betagouv/acces-cible/pull/460)
-- Refactorisation du code pour utiliser une syntaxe plus moderne pour les sujets implicites.
-- Correction d'un problème empêchant l'exécution des tests d'accessibilité sur les pages sans accessibilité. [#479](https://github.com/betagouv/acces-cible/pull/479)
-- Amélioration de la robustesse des audits en évitant de modifier les sites.
+- Mise à jour de la gem `dsfr-view-components`. [#518](https://github.com/betagouv/acces-cible/issues/518)
+- Ajout d'une commande `make test` pour faciliter l'exécution des tests. [#499](https://github.com/betagouv/acces-cible/issues/499)
+- Persistance de l'historique de la console Rails et du shell dans les conteneurs Docker.
+- Ajout d'une fonctionnalité permettant de prévisualiser une page crawlée pour faciliter le débogage. [#487](https://github.com/betagouv/acces-cible/issues/487)
 
 ### Autres changements
-- Mise à jour de la documentation README. [#451](https://github.com/betagouv/acces-cible/pull/451)
-- Suppression du helper `time_ago` et adaptation des formats de date dans les vues. [#452](https://github.com/betagouv/acces-cible/pull/452)
-- Mise à jour du fichier `run_axe_on_homepage.html.md`. [#482](https://github.com/betagouv/acces-cible/pull/482)
+- Amélioration de la gestion des fichiers CSV malformés lors de l'importation de sites. [#507](https://github.com/betagouv/acces-cible/issues/507), [#504](https://github.com/betagouv/acces-cible/issues/504), [#503](https://github.com/betagouv/acces-cible/issues/503)
+- Ajustement de la configuration de Sentry et ajout de logs. [#498](https://github.com/betagouv/acces-cible/issues/498)
