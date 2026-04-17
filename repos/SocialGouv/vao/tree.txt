@@ -2,7 +2,10 @@
 ├── .cursor
 │   ├── instructions.json
 │   ├── links.md
-│   └── product-context.md
+│   ├── product-context.md
+│   └── rules
+│       ├── integration-tests.md
+│       └── typescript-best-practices.mdc
 ├── .dockerignore
 ├── .editorconfig
 ├── .env.dev.example.env
@@ -549,8 +552,14 @@
 │       └── UNIT_TESTS.md
 ├── e2e
 │   ├── data
-│   │   └── agrement.pdf
-│   └── register-login-organisateur.spec.ts
+│   │   ├── agrement.pdf
+│   │   └── transports.pdf
+│   ├── global.setup.ts
+│   ├── register-personne-physique.spec.ts
+│   └── utils
+│       ├── helper.ts
+│       ├── urls.ts
+│       └── users.ts
 ├── package.json
 ├── packages
 │   ├── backend
@@ -590,6 +599,7 @@
 │   │   │   │   ├── logo.png
 │   │   │   │   └── marianne.png
 │   │   │   ├── public
+│   │   │   │   ├── annexe-5-questionnaire-vacanciers.pdf
 │   │   │   │   └── modele_EIG.pdf
 │   │   │   └── static
 │   │   │       └── agrements_VAO_non_actifs_07_24_2024.pdf
@@ -601,23 +611,44 @@
 │   │   │   ├── __tests__
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── accept-cgu.test.ts
+│   │   │   │   │   ├── agrements.test.ts
 │   │   │   │   │   ├── authentication.test.ts
+│   │   │   │   │   ├── bo-user.test.ts
 │   │   │   │   │   ├── documents.static.test.ts
 │   │   │   │   │   ├── documents.test.ts
 │   │   │   │   │   └── herbergement.test.ts
 │   │   │   │   ├── helper
 │   │   │   │   │   ├── fileHelper.ts
 │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── adresseFixture.ts
+│   │   │   │   │   │   ├── adresseHelper.ts
+│   │   │   │   │   │   ├── agrementsFixture.ts
+│   │   │   │   │   │   ├── agrementsHelper.ts
+│   │   │   │   │   │   ├── agrementsMessageFixture.ts
+│   │   │   │   │   │   ├── agrementsMessageHelper.ts
+│   │   │   │   │   │   ├── documentHelper.ts
 │   │   │   │   │   │   ├── hebergementHelper.ts
 │   │   │   │   │   │   ├── organismeHelper.ts
+│   │   │   │   │   │   ├── territoireHelper.ts
 │   │   │   │   │   │   └── userHelper.ts
+│   │   │   │   │   ├── organismeHelper.ts
 │   │   │   │   │   └── testContainer.ts
 │   │   │   │   └── usagers
 │   │   │   │       ├── accept-cgu.test.ts
+│   │   │   │       ├── agrements.test.ts
 │   │   │   │       ├── authentification.test.ts
 │   │   │   │       ├── documents.static.test.ts
 │   │   │   │       ├── documents.test.ts
-│   │   │   │       └── herbergement.test.ts
+│   │   │   │       ├── herbergement.test.ts
+│   │   │   │       ├── territoire.test.ts
+│   │   │   │       └── users.test.ts
+│   │   │   ├── admin
+│   │   │   │   └── agrements
+│   │   │   │       ├── agrements.controller.ts
+│   │   │   │       ├── agrements.mail.ts
+│   │   │   │       ├── agrements.repository.ts
+│   │   │   │       ├── agrements.route.ts
+│   │   │   │       └── agrements.service.ts
 │   │   │   ├── app.js
 │   │   │   ├── config.js
 │   │   │   ├── controllers
@@ -629,9 +660,6 @@
 │   │   │   │   │   │   └── getExtractFO.test.js
 │   │   │   │   │   └── fo-user
 │   │   │   │   │       └── accept-cgu.test.js
-│   │   │   │   ├── agrement
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   └── post.js
 │   │   │   │   ├── authentication
 │   │   │   │   │   ├── disconnect.js
 │   │   │   │   │   ├── email
@@ -656,7 +684,7 @@
 │   │   │   │   ├── bo-user
 │   │   │   │   │   ├── accept-cgu.ts
 │   │   │   │   │   ├── create.js
-│   │   │   │   │   ├── get-me.js
+│   │   │   │   │   ├── get-me.ts
 │   │   │   │   │   ├── get-one.js
 │   │   │   │   │   ├── getExtract.js
 │   │   │   │   │   ├── index.js
@@ -777,14 +805,15 @@
 │   │   │   │   │   ├── getLienSuccession.ts
 │   │   │   │   │   └── index.js
 │   │   │   │   ├── territoire
+│   │   │   │   │   ├── get-fiche-by-agrement-region-user.ts
 │   │   │   │   │   ├── get-fiche-id-by-ter-code.js
 │   │   │   │   │   ├── get-one.js
-│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── list.js
 │   │   │   │   │   └── update.js
 │   │   │   │   └── user
 │   │   │   │       ├── generateApiToken.js
-│   │   │   │       ├── get-me.js
+│   │   │   │       ├── get-me.ts
 │   │   │   │       ├── getApiToken.js
 │   │   │   │       ├── index.js
 │   │   │   │       └── patch-me.js
@@ -793,7 +822,6 @@
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── eig.js
 │   │   │   │   │   └── queryParams.test.js
-│   │   │   │   ├── bo-competence.js
 │   │   │   │   ├── declaration
 │   │   │   │   │   ├── hebergement.js
 │   │   │   │   │   ├── informations-personnel.js
@@ -821,7 +849,8 @@
 │   │   │   │   ├── checkComingFrom.js
 │   │   │   │   ├── checkJWT.js
 │   │   │   │   ├── checkJWTWithoutCGU.ts
-│   │   │   │   ├── checkPermissionAgrement.js
+│   │   │   │   ├── checkPermissionAgrement.ts
+│   │   │   │   ├── checkPermissionBOAgrement.ts
 │   │   │   │   ├── checkPermissionBODeclarationSejour.js
 │   │   │   │   ├── checkPermissionBODeclarationSejourUpdate.js
 │   │   │   │   ├── checkPermissionBOEIG.js
@@ -834,7 +863,7 @@
 │   │   │   │   ├── checkPermissionFoRole.js
 │   │   │   │   ├── checkPermissionHebergement.js
 │   │   │   │   ├── checkPermissionHebergementUser.js
-│   │   │   │   ├── checkPermissionOrganisme.js
+│   │   │   │   ├── checkPermissionOrganisme.ts
 │   │   │   │   ├── checkStatutHebergement.js
 │   │   │   │   ├── common
 │   │   │   │   │   └── checkJWT.js
@@ -850,7 +879,6 @@
 │   │   │   │       └── checkPermissionDeclarationSejour.js
 │   │   │   ├── repositories
 │   │   │   │   ├── admin
-│   │   │   │   │   ├── DemandeSejour.ts
 │   │   │   │   │   └── Users.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   └── featureFlagRepositories.ts
@@ -873,7 +901,6 @@
 │   │   │   │   │       ├── post.test_hide.js
 │   │   │   │   │       └── put-update.test_hide.js
 │   │   │   │   ├── __tests__
-│   │   │   │   │   ├── agrement.test.js
 │   │   │   │   │   ├── eig
 │   │   │   │   │   │   └── get-pdf.test.js
 │   │   │   │   │   ├── hebergement
@@ -889,7 +916,6 @@
 │   │   │   │   │   ├── sejour
 │   │   │   │   │   │   └── get.test.js
 │   │   │   │   │   └── user.test.js
-│   │   │   │   ├── agrement.js
 │   │   │   │   ├── authentication.js
 │   │   │   │   ├── bo-authentication.js
 │   │   │   │   ├── bo-user.js
@@ -905,7 +931,7 @@
 │   │   │   │   ├── organisme.js
 │   │   │   │   ├── sejour.js
 │   │   │   │   ├── siret.js
-│   │   │   │   ├── territoire.js
+│   │   │   │   ├── territoire.ts
 │   │   │   │   └── user.js
 │   │   │   ├── schemas
 │   │   │   │   ├── __tests__
@@ -954,7 +980,7 @@
 │   │   │   │   │   │       ├── build.test.js
 │   │   │   │   │   │       └── generate.test.js
 │   │   │   │   │   └── territoires.test.js
-│   │   │   │   ├── adresse.js
+│   │   │   │   ├── adresse.ts
 │   │   │   │   ├── common
 │   │   │   │   │   ├── Session.js
 │   │   │   │   │   └── Users.js
@@ -1022,9 +1048,23 @@
 │   │   │   │   │       └── index.js
 │   │   │   │   └── static
 │   │   │   │       └── agrements_non_actifs.xlsx
+│   │   │   ├── shared
+│   │   │   │   └── agrements
+│   │   │   │       ├── agrements.entity.ts
+│   │   │   │       ├── agrements.mapper.ts
+│   │   │   │       ├── agrements.repository.ts
+│   │   │   │       └── agrements.service.ts
 │   │   │   ├── types
 │   │   │   │   ├── queryParams.ts
 │   │   │   │   └── request.ts
+│   │   │   ├── usagers
+│   │   │   │   └── agrements
+│   │   │   │       ├── agrements.controller.ts
+│   │   │   │       ├── agrements.mail.ts
+│   │   │   │       ├── agrements.repository.ts
+│   │   │   │       ├── agrements.route.ts
+│   │   │   │       ├── agrements.service.spec.ts
+│   │   │   │       └── agrements.service.ts
 │   │   │   └── utils
 │   │   │       ├── bo-token.ts
 │   │   │       ├── canBeActivated.js
@@ -1074,6 +1114,12 @@
 │   │   │   │   ├── notifications.ts
 │   │   │   │   └── tracking.ts
 │   │   │   ├── index.ts
+│   │   │   ├── notifyAgrementExpiration
+│   │   │   │   ├── notifyAgrementExpiration.cron.ts
+│   │   │   │   ├── notifyAgrementExpiration.email.ts
+│   │   │   │   ├── notifyAgrementExpiration.repository.ts
+│   │   │   │   ├── notifyAgrementExpiration.service.ts
+│   │   │   │   └── notifyAgrementExpiration.type.d.ts
 │   │   │   ├── notifyCompteInactif2m
 │   │   │   │   ├── notifyCompteInactif2m.cron.ts
 │   │   │   │   ├── notifyCompteInactif2m.email.ts
@@ -1106,7 +1152,6 @@
 │   │   │   │   ├── updateStatusDs.service.ts
 │   │   │   │   └── updateStatusDs.type.d.ts
 │   │   │   └── utils
-│   │   │       ├── date.ts
 │   │   │       ├── instrument.ts
 │   │   │       ├── logger.ts
 │   │   │       ├── mails.ts
@@ -1207,6 +1252,39 @@
 │   │   │   │   └── css
 │   │   │   │       └── main.css
 │   │   │   ├── components
+│   │   │   │   ├── agrements
+│   │   │   │   │   ├── ActionsStatut.vue
+│   │   │   │   │   ├── Coordonnees.vue
+│   │   │   │   │   ├── DemandeComplements.vue
+│   │   │   │   │   ├── Dossier.vue
+│   │   │   │   │   ├── DossierCandidature.vue
+│   │   │   │   │   ├── ModaleConfirmations.vue
+│   │   │   │   │   ├── TypeDeficiences.vue
+│   │   │   │   │   ├── bilan
+│   │   │   │   │   │   ├── BilanFinancier.vue
+│   │   │   │   │   │   ├── BilanQualitatif.vue
+│   │   │   │   │   │   ├── Changements.vue
+│   │   │   │   │   │   ├── HebergementDetail.vue
+│   │   │   │   │   │   ├── Hebergements.vue
+│   │   │   │   │   │   ├── SejourDetails.vue
+│   │   │   │   │   │   ├── Sejours.vue
+│   │   │   │   │   │   ├── SelectMonths.vue
+│   │   │   │   │   │   ├── TranchesAge.vue
+│   │   │   │   │   │   └── index.vue
+│   │   │   │   │   ├── filters.vue
+│   │   │   │   │   ├── liste.vue
+│   │   │   │   │   ├── messagerie.vue
+│   │   │   │   │   └── projets
+│   │   │   │   │       ├── AccompagnantsResponsables.vue
+│   │   │   │   │       ├── AnimationsActivites.vue
+│   │   │   │   │       ├── Budget.vue
+│   │   │   │   │       ├── CasierJudiciaire.vue
+│   │   │   │   │       ├── ListeSejours.vue
+│   │   │   │   │       ├── OrganisationTransports.vue
+│   │   │   │   │       ├── Protocole.vue
+│   │   │   │   │       ├── SejoursPrevus.vue
+│   │   │   │   │       ├── SuiviMedical.vue
+│   │   │   │   │       └── index.vue
 │   │   │   │   ├── connexion
 │   │   │   │   │   └── email
 │   │   │   │   │       └── validateToken.client.vue
@@ -1252,17 +1330,21 @@
 │   │   │   ├── composables
 │   │   │   │   ├── useFetchBackend.js
 │   │   │   │   ├── useIsDownloading.js
-│   │   │   │   ├── useMenuNavItem.js
+│   │   │   │   ├── useMenuNavItem.ts
 │   │   │   │   └── useSetDebounce.ts
 │   │   │   ├── error.vue
 │   │   │   ├── layouts
 │   │   │   │   └── default.vue
 │   │   │   ├── middleware
 │   │   │   │   ├── check-eig-id-param.js
+│   │   │   │   ├── check-feature-flags.ts
 │   │   │   │   ├── check-role.js
 │   │   │   │   ├── is-connected.js
 │   │   │   │   └── redirect-on-hebergements.js
 │   │   │   ├── pages
+│   │   │   │   ├── agrements
+│   │   │   │   │   ├── [agrementId].vue
+│   │   │   │   │   └── liste.vue
 │   │   │   │   ├── comptes
 │   │   │   │   │   ├── [[userId]].vue
 │   │   │   │   │   ├── liste-organisme.vue
@@ -1324,9 +1406,13 @@
 │   │   │   ├── public
 │   │   │   │   └── favicon.png
 │   │   │   ├── services
+│   │   │   │   ├── agrementService.ts
+│   │   │   │   ├── documentService.ts
 │   │   │   │   └── hebergementService.ts
 │   │   │   ├── stores
+│   │   │   │   ├── agrement.ts
 │   │   │   │   ├── demande-sejour.ts
+│   │   │   │   ├── document.ts
 │   │   │   │   ├── eig.ts
 │   │   │   │   ├── hebergement.ts
 │   │   │   │   ├── organisme.ts
@@ -1363,8 +1449,10 @@
 │   │   │   ├── assets
 │   │   │   │   ├── Download.svg
 │   │   │   │   ├── attach_file.png
-│   │   │   │   └── css
-│   │   │   │       └── main.css
+│   │   │   │   ├── css
+│   │   │   │   │   └── main.css
+│   │   │   │   ├── mon-agrement.svg
+│   │   │   │   └── undraw_questions_g2px.svg
 │   │   │   ├── components
 │   │   │   │   ├── ApiTokenManager.vue
 │   │   │   │   ├── DS
@@ -1398,10 +1486,51 @@
 │   │   │   │   ├── address
 │   │   │   │   │   ├── search-address-municipality.vue
 │   │   │   │   │   └── search-address.vue
+│   │   │   │   ├── agrement
+│   │   │   │   │   ├── MenuAgrement.vue
+│   │   │   │   │   ├── Messagerie.vue
+│   │   │   │   │   ├── agrement-read-only.vue
+│   │   │   │   │   ├── aide-contact.vue
+│   │   │   │   │   ├── alert-renouvellement.vue
+│   │   │   │   │   ├── bilan
+│   │   │   │   │   │   ├── bilanFinancier.vue
+│   │   │   │   │   │   ├── bilanQualitatif.vue
+│   │   │   │   │   │   ├── changements.vue
+│   │   │   │   │   │   ├── hebergementDetail.vue
+│   │   │   │   │   │   ├── hebergements.vue
+│   │   │   │   │   │   ├── index.vue
+│   │   │   │   │   │   ├── sejourDetails.vue
+│   │   │   │   │   │   ├── sejours.vue
+│   │   │   │   │   │   ├── selectMonths.vue
+│   │   │   │   │   │   └── tranchesAge.vue
+│   │   │   │   │   ├── commentaire.vue
+│   │   │   │   │   ├── coordonnees.vue
+│   │   │   │   │   ├── dossier.vue
+│   │   │   │   │   ├── etape-avancement.vue
+│   │   │   │   │   ├── etapes-avancement.vue
+│   │   │   │   │   ├── personne-morale.vue
+│   │   │   │   │   ├── personne-physique.vue
+│   │   │   │   │   ├── projets
+│   │   │   │   │   │   ├── accompagnantsResponsables.vue
+│   │   │   │   │   │   ├── animationsActivites.vue
+│   │   │   │   │   │   ├── budget.vue
+│   │   │   │   │   │   ├── casierJudiciaire.vue
+│   │   │   │   │   │   ├── index.vue
+│   │   │   │   │   │   ├── listeSejours.vue
+│   │   │   │   │   │   ├── organisationTransports.vue
+│   │   │   │   │   │   ├── protocole.vue
+│   │   │   │   │   │   ├── sejoursPrevus.vue
+│   │   │   │   │   │   └── suiviMedical.vue
+│   │   │   │   │   ├── representants.vue
+│   │   │   │   │   ├── stepper.vue
+│   │   │   │   │   ├── synthese.vue
+│   │   │   │   │   └── typeDeficiences.vue
 │   │   │   │   ├── connexion
 │   │   │   │   │   └── email
 │   │   │   │   │       └── validateToken.client.vue
 │   │   │   │   ├── demande-sejour
+│   │   │   │   │   ├── BoutonJdma.vue
+│   │   │   │   │   ├── ConfirmTransmission.vue
 │   │   │   │   │   ├── liste.vue
 │   │   │   │   │   ├── table.vue
 │   │   │   │   │   └── tableFilters.vue
@@ -1428,6 +1557,7 @@
 │   │   │   │   │   ├── liste.vue
 │   │   │   │   │   └── listeFilters.vue
 │   │   │   │   └── utils
+│   │   │   │       ├── DisplayInput.vue
 │   │   │   │       ├── DownloadFile.vue
 │   │   │   │       ├── IsDownloading.vue
 │   │   │   │       ├── MultiFilesUpload.vue
@@ -1437,21 +1567,25 @@
 │   │   │   ├── composables
 │   │   │   │   ├── useFetchBackend.js
 │   │   │   │   ├── useIsDownloading.js
-│   │   │   │   └── useMenuNavItem.js
+│   │   │   │   └── useMenuNavItem.ts
 │   │   │   ├── error.vue
 │   │   │   ├── helpers
+│   │   │   │   ├── requiredUnlessBrouillon.ts
 │   │   │   │   └── users.js
 │   │   │   ├── layouts
 │   │   │   │   └── default.vue
 │   │   │   ├── middleware
 │   │   │   │   ├── check-demande-sejour-id-param.js
 │   │   │   │   ├── check-eig-id-param.js
+│   │   │   │   ├── check-feature-flags.ts
 │   │   │   │   ├── check-hebergement-id-param.js
 │   │   │   │   ├── check-organisme-id-param.js
 │   │   │   │   ├── check-organisme-is-complet.js
 │   │   │   │   ├── check-roles.js
 │   │   │   │   └── is-connected.js
 │   │   │   ├── pages
+│   │   │   │   ├── agrement
+│   │   │   │   │   └── [[agrementId]].vue
 │   │   │   │   ├── comptes
 │   │   │   │   │   └── [[userId]].vue
 │   │   │   │   ├── connexion
@@ -1461,6 +1595,8 @@
 │   │   │   │   │   ├── reset-mot-de-passe.vue
 │   │   │   │   │   ├── validation.vue
 │   │   │   │   │   └── verification-2fa.vue
+│   │   │   │   ├── demande-agrement-transmise
+│   │   │   │   │   └── index.vue
 │   │   │   │   ├── demande-sejour
 │   │   │   │   │   ├── [[declarationId]].vue
 │   │   │   │   │   └── liste.vue
@@ -1479,6 +1615,8 @@
 │   │   │   │   ├── index.vue
 │   │   │   │   ├── messagerie
 │   │   │   │   │   └── index.vue
+│   │   │   │   ├── mon-agrement
+│   │   │   │   │   └── index.vue
 │   │   │   │   ├── mon-compte.vue
 │   │   │   │   ├── organisme
 │   │   │   │   │   └── [[organismeId]].vue
@@ -1494,19 +1632,26 @@
 │   │   │   ├── public
 │   │   │   │   └── favicon.png
 │   │   │   ├── services
+│   │   │   │   ├── agrementService.ts
+│   │   │   │   ├── documentService.ts
 │   │   │   │   ├── hebergementService.ts
-│   │   │   │   └── siretService.ts
+│   │   │   │   ├── siretService.ts
+│   │   │   │   └── territoireService.ts
 │   │   │   ├── stores
+│   │   │   │   ├── agrement.ts
 │   │   │   │   ├── api.ts
 │   │   │   │   ├── demande-sejour.ts
+│   │   │   │   ├── document.ts
 │   │   │   │   ├── eig.ts
 │   │   │   │   ├── hebergement.ts
 │   │   │   │   ├── organisme.ts
 │   │   │   │   ├── referentiels.ts
+│   │   │   │   ├── territoire.ts
 │   │   │   │   └── user.ts
 │   │   │   └── utils
 │   │   │       ├── DeclarationSejour.js
 │   │   │       ├── UploadFile.js
+│   │   │       ├── agrementMenu.ts
 │   │   │       ├── cssHelper.js
 │   │   │       ├── csv.js
 │   │   │       ├── debounce.js
@@ -1531,7 +1676,8 @@
 │   │   │       ├── protocoleSanitaire.js
 │   │   │       ├── protocoleTransport.js
 │   │   │       ├── random.js
-│   │   │       └── regex.js
+│   │   │       ├── regex.js
+│   │   │       └── telephoneValidators.js
 │   │   ├── start.sh
 │   │   └── tsconfig.json
 │   ├── migrations
@@ -1601,12 +1747,27 @@
 │   │   │   │   ├── 20250925120000_front.users__add_temporary_blocked_at.js
 │   │   │   │   ├── 20250930162723_add_inactivity_and_deletion_columns_to_users.js
 │   │   │   │   ├── 20251007095507_update_front_user_lastconnexion.js
+│   │   │   │   ├── 20251021101108_front.agrement__add-renouvellement.js
+│   │   │   │   ├── 20251022163919_add_agrements_expiration_notifications.js
+│   │   │   │   ├── 20251112112308_front.agrement__add-permissions.js
 │   │   │   │   ├── 20251121105325_organisme_add_current_pp_pm.js
 │   │   │   │   ├── 20251226110455_add_cgu_acceptation_to_users.js
-│   │   │   │   └── 20260303095444_feature-flag.js
-│   │   │   └── scripts
-│   │   │       ├── migrate-files-to-s3.js
-│   │   │       └── reset-s3.js
+│   │   │   │   ├── 20260102143156_add_new_file_category_values.js
+│   │   │   │   ├── 20260116144941_ front.agrement__update-champs.js
+│   │   │   │   ├── 20260213160041_front.agrement_history.js
+│   │   │   │   ├── 20260303095444_feature-flag.js
+│   │   │   │   ├── 20260310142355_add_feature-flag_renouvellement_agrement.js
+│   │   │   │   ├── 20260312110102_agrement_messagerie.js
+│   │   │   │   ├── 20260313102118_front.agrement_update_statut_old_agrement.js
+│   │   │   │   ├── 20260318163921_ front.agrement__add_completion.js
+│   │   │   │   ├── 20260326094626_ front.agrement__add_completude.js
+│   │   │   │   └── 20260413162607_increase_agrement_files_category_length.js
+│   │   │   ├── scripts
+│   │   │   │   ├── migrate-files-to-s3.js
+│   │   │   │   └── reset-s3.js
+│   │   │   └── seeds
+│   │   │       └── e2e
+│   │   │           └── e2e-reset.js
 │   │   └── start.sh
 │   ├── shared-bridge
 │   │   ├── .eslintrc.json
@@ -1615,36 +1776,80 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── constantes
+│   │   │   │   ├── agrement.ts
 │   │   │   │   ├── auth.ts
 │   │   │   │   ├── demandeSejour.ts
 │   │   │   │   ├── errors.ts
 │   │   │   │   ├── featureFlags.ts
+│   │   │   │   ├── file.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── tracking.ts
+│   │   │   │   ├── tracking.ts
+│   │   │   │   └── users.ts
 │   │   │   ├── dto
-│   │   │   │   ├── documentDto.ts
-│   │   │   │   ├── featureFlagDto.ts
-│   │   │   │   ├── hebergementDto.ts
+│   │   │   │   ├── adresse.dto.ts
+│   │   │   │   ├── agrement.dto.ts
+│   │   │   │   ├── document.dto.ts
+│   │   │   │   ├── featureFlag.dto.ts
+│   │   │   │   ├── ficheTerritoire.dto.ts
+│   │   │   │   ├── hebergement.dto.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── messagerie.dto.ts
 │   │   │   │   ├── organismeDto.ts
-│   │   │   │   ├── personneMoraleDto.ts
-│   │   │   │   ├── personnePhysiqueDto.ts
-│   │   │   │   ├── siretDto.ts
-│   │   │   │   └── userDto.ts
+│   │   │   │   ├── paginationQuery.dto.ts
+│   │   │   │   ├── personneMorale.dto.ts
+│   │   │   │   ├── personnePhysique.dto.ts
+│   │   │   │   ├── siret.dto.ts
+│   │   │   │   ├── territoire.dto.ts
+│   │   │   │   └── user.dto.ts
 │   │   │   ├── index.ts
 │   │   │   ├── routes
-│   │   │   │   ├── hebergement
-│   │   │   │   │   ├── getOne.ts
-│   │   │   │   │   ├── getOneAdmin.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── agrement
+│   │   │   │   │   │   ├── getAllActivites.ts
+│   │   │   │   │   │   ├── getHistory.ts
+│   │   │   │   │   │   ├── getList.ts
+│   │   │   │   │   │   ├── getMessages.ts
+│   │   │   │   │   │   ├── getOne.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── patchMessages.ts
+│   │   │   │   │   │   ├── patchStatut.ts
+│   │   │   │   │   │   └── postMessage.ts
+│   │   │   │   │   ├── document
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── postDocument.ts
+│   │   │   │   │   └── hebergement
+│   │   │   │   │       ├── getOne.ts
+│   │   │   │   │       └── index.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── schemas.ts
 │   │   │   │   └── usagers
-│   │   │   │       └── siret
-│   │   │   │           ├── getSuccesseur.ts
+│   │   │   │       ├── agrement
+│   │   │   │       │   ├── getAllActivites.ts
+│   │   │   │       │   ├── getHistory.ts
+│   │   │   │       │   ├── getList.ts
+│   │   │   │       │   ├── getMessages.ts
+│   │   │   │       │   ├── getOne.ts
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── patchMessages.ts
+│   │   │   │       │   ├── patchStatut.ts
+│   │   │   │       │   ├── postAgrement.ts
+│   │   │   │       │   └── postMessage.ts
+│   │   │   │       ├── document
+│   │   │   │       │   ├── index.ts
+│   │   │   │       │   └── postDocument.ts
+│   │   │   │       ├── hebergement
+│   │   │   │       │   ├── getOne.ts
+│   │   │   │       │   └── index.ts
+│   │   │   │       ├── siret
+│   │   │   │       │   ├── getSuccesseur.ts
+│   │   │   │       │   └── index.ts
+│   │   │   │       └── territoire
+│   │   │   │           ├── get-by-agrement-region-user.ts
 │   │   │   │           └── index.ts
 │   │   │   └── utils
 │   │   │       ├── date.spec.ts
 │   │   │       ├── date.ts
+│   │   │       ├── errors.spec.ts
 │   │   │       ├── errors.ts
 │   │   │       ├── file.spec.ts
 │   │   │       ├── file.ts
@@ -1652,106 +1857,127 @@
 │   │   │       ├── request.spec.ts
 │   │   │       ├── request.ts
 │   │   │       ├── siret.spec.ts
-│   │   │       └── siret.ts
+│   │   │       ├── siret.ts
+│   │   │       ├── stringUtils.spec.ts
+│   │   │       ├── stringUtils.ts
+│   │   │       ├── translations.spec.ts
+│   │   │       ├── translations.ts
+│   │   │       ├── validator.spec.ts
+│   │   │       └── validator.ts
 │   │   └── tsconfig.json
 │   └── shared-ui
 │       ├── .gitignore
 │       ├── eslint.config.mjs
 │       ├── package.json
-│       └── src
-│           ├── assets
-│           │   └── download.svg
-│           ├── components
-│           │   ├── Accessibilite.vue
-│           │   ├── CardNumber.vue
-│           │   ├── CardsNumber.vue
-│           │   ├── Chat.vue
-│           │   ├── DemandeStatusBadge.vue
-│           │   ├── DisplayInput.vue
-│           │   ├── DsfrMultiselectV2.vue
-│           │   ├── DsfrSelectV2.vue
-│           │   ├── DsfrTabsItemV2.vue
-│           │   ├── DsfrTabsV2.vue
-│           │   ├── ErrorPage.vue
-│           │   ├── FileUpload.vue
-│           │   ├── Footer.vue
-│           │   ├── Header.vue
-│           │   ├── Hebergement.vue
-│           │   ├── IsDownloading.vue
-│           │   ├── Message.vue
-│           │   ├── MultiSelectOption.vue
-│           │   ├── PasswordInput.vue
-│           │   ├── RangeDatePicker.vue
-│           │   ├── Skiplinks.vue
-│           │   ├── Table
-│           │   │   ├── DsfrDataTableV2.vue
-│           │   │   ├── DsfrDataTableV2Wrapper.vue
-│           │   │   ├── TableFull.vue
-│           │   │   ├── TableUI.vue
-│           │   │   ├── TableWithBackendPagination.vue
-│           │   │   └── dsfrDataTabeV2
-│           │   │       └── DsfrPaginationV2.vue
-│           │   ├── TitleWithIcon.vue
-│           │   ├── Toaster.vue
-│           │   ├── ValidationModal.vue
-│           │   ├── api
-│           │   │   └── ApiUnavailable.vue
-│           │   ├── auth
-│           │   │   └── TwoFactorCodeVerification.vue
-│           │   ├── cgu
-│           │   │   └── CguValidation.vue
-│           │   ├── eig
-│           │   │   ├── EigStatusBadge.vue
-│           │   │   ├── EigTypeListe.vue
-│           │   │   └── Summary.vue
-│           │   ├── index.js
-│           │   ├── messages
-│           │   │   ├── MessageEtat.vue
-│           │   │   └── MessageHover.vue
-│           │   └── users
-│           │       ├── RefusCompteModal.vue
-│           │       └── UserStatusBadge.vue
-│           ├── composables
-│           │   ├── index.js
-│           │   ├── pagination.ts
-│           │   ├── useAuthentication.ts
-│           │   ├── useLayoutHeader.js
-│           │   ├── useLogout.js
-│           │   ├── useQuickLinks.js
-│           │   └── useToaster.ts
-│           ├── index.js
-│           ├── models
-│           │   ├── api.js
-│           │   ├── eig.js
-│           │   ├── index.js
-│           │   ├── informations-personnel.js
-│           │   └── messages.js
-│           ├── schema
-│           │   ├── adresse.js
-│           │   ├── eig.js
-│           │   ├── email.js
-│           │   ├── index.js
-│           │   ├── nom.js
-│           │   ├── personne.js
-│           │   ├── prenom.js
-│           │   └── telephone.js
-│           ├── types
-│           │   ├── Auth.type.ts
-│           │   ├── DsfrDataTableV2.type.ts
-│           │   ├── index.ts
-│           │   └── toaster.type.ts
-│           └── utils
-│               ├── auth.ts
-│               ├── columnsTable.js
-│               ├── createLogger.js
-│               ├── eigUtils.js
-│               ├── file.mjs
-│               ├── hebergement.js
-│               ├── index.js
-│               ├── messageUtils.js
-│               ├── regex.js
-│               ├── status.ts
-│               └── statusUser.js
+│       ├── src
+│       │   ├── assets
+│       │   │   └── download.svg
+│       │   ├── components
+│       │   │   ├── Accessibilite.vue
+│       │   │   ├── CardNumber.vue
+│       │   │   ├── CardsNumber.vue
+│       │   │   ├── Chat.vue
+│       │   │   ├── DemandeStatusBadge.vue
+│       │   │   ├── DisplayInput.vue
+│       │   │   ├── DisplayInputCommon.vue
+│       │   │   ├── DsfrLinkV2.vue
+│       │   │   ├── DsfrMultiselectV2.vue
+│       │   │   ├── DsfrSelectV2.vue
+│       │   │   ├── DsfrTabsItemV2.vue
+│       │   │   ├── DsfrTabsV2.vue
+│       │   │   ├── ErrorPage.vue
+│       │   │   ├── FileUpload.vue
+│       │   │   ├── Footer.vue
+│       │   │   ├── Header.vue
+│       │   │   ├── Hebergement.vue
+│       │   │   ├── IsDownloading.vue
+│       │   │   ├── Message.vue
+│       │   │   ├── MultiFilesUpload.vue
+│       │   │   ├── MultiSelectOption.vue
+│       │   │   ├── PasswordInput.vue
+│       │   │   ├── RangeDatePicker.vue
+│       │   │   ├── Skiplinks.vue
+│       │   │   ├── Table
+│       │   │   │   ├── DsfrDataTableV2.vue
+│       │   │   │   ├── DsfrDataTableV2Wrapper.vue
+│       │   │   │   ├── TableFull.vue
+│       │   │   │   ├── TableUI.vue
+│       │   │   │   ├── TableWithBackendPagination.vue
+│       │   │   │   └── dsfrDataTabeV2
+│       │   │   │       └── DsfrPaginationV2.vue
+│       │   │   ├── TitleWithIcon.vue
+│       │   │   ├── Toaster.vue
+│       │   │   ├── ValidationModal.vue
+│       │   │   ├── agrement
+│       │   │   │   ├── AgrementStatusBadge.vue
+│       │   │   │   ├── Documents.vue
+│       │   │   │   ├── EtapeHistorique.vue
+│       │   │   │   └── Historique.vue
+│       │   │   ├── api
+│       │   │   │   └── ApiUnavailable.vue
+│       │   │   ├── auth
+│       │   │   │   └── TwoFactorCodeVerification.vue
+│       │   │   ├── cgu
+│       │   │   │   └── CguValidation.vue
+│       │   │   ├── eig
+│       │   │   │   ├── EigStatusBadge.vue
+│       │   │   │   ├── EigTypeListe.vue
+│       │   │   │   └── Summary.vue
+│       │   │   ├── index.ts
+│       │   │   ├── messages
+│       │   │   │   ├── MessageEtat.vue
+│       │   │   │   └── MessageHover.vue
+│       │   │   └── users
+│       │   │       ├── RefusCompteModal.vue
+│       │   │       └── UserStatusBadge.vue
+│       │   ├── composables
+│       │   │   ├── index.ts
+│       │   │   ├── pagination.ts
+│       │   │   ├── useAuthentication.ts
+│       │   │   ├── useLayoutHeader.ts
+│       │   │   ├── useLogout.ts
+│       │   │   ├── useQuickLinks.ts
+│       │   │   └── useToaster.ts
+│       │   ├── constantes
+│       │   │   ├── agrement-display-input.ts
+│       │   │   ├── index.ts
+│       │   │   └── input-types.ts
+│       │   ├── index.js
+│       │   ├── models
+│       │   │   ├── api.ts
+│       │   │   ├── eig.ts
+│       │   │   ├── index.ts
+│       │   │   ├── informations-personnel.ts
+│       │   │   └── messages.ts
+│       │   ├── schema
+│       │   │   ├── adresse.ts
+│       │   │   ├── eig.ts
+│       │   │   ├── email.ts
+│       │   │   ├── index.ts
+│       │   │   ├── nom.ts
+│       │   │   ├── personne.ts
+│       │   │   ├── prenom.ts
+│       │   │   └── telephone.ts
+│       │   ├── types
+│       │   │   ├── Auth.type.ts
+│       │   │   ├── DsfrDataTableV2.type.ts
+│       │   │   ├── index.ts
+│       │   │   └── toaster.type.ts
+│       │   └── utils
+│       │       ├── auth.ts
+│       │       ├── columnsTable.ts
+│       │       ├── createLogger.ts
+│       │       ├── displayInputType.ts
+│       │       ├── eigUtils.ts
+│       │       ├── file.ts
+│       │       ├── handleDocumentUploadError.ts
+│       │       ├── hebergement.ts
+│       │       ├── index.ts
+│       │       ├── messageUtils.ts
+│       │       ├── regex.ts
+│       │       ├── status.ts
+│       │       └── statusUser.ts
+│       └── tsconfig.json
 ├── pg
 │   ├── lancement.sh
 │   ├── scripts
@@ -1767,7 +1993,8 @@
 │   │       ├── 03-2-back-data.sql
 │   │       └── 03-3-ref-data.sql
 │   └── seeds
-│       └── BO-1-back-user.sql
+│       ├── BO-1-back-user.sql
+│       └── PG-1-proc-data-deletion.sql
 ├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -1775,4 +2002,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-271 directories, 1511 files
+300 directories, 1709 files
