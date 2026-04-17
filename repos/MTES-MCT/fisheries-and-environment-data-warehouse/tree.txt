@@ -87,8 +87,11 @@
 │   │       │   ├── activities.py
 │   │       │   ├── catches.py
 │   │       │   ├── clean_flow_runs.py
+│   │       │   ├── coe.py
 │   │       │   ├── compute_sacrois_segments.py
+│   │       │   ├── cox.py
 │   │       │   ├── cps.py
+│   │       │   ├── deps.py
 │   │       │   ├── discards.py
 │   │       │   ├── drop_table.py
 │   │       │   ├── enrich_monitorfish_catches.py
@@ -98,6 +101,7 @@
 │   │       │   ├── pnos.py
 │   │       │   ├── reset_dictionary.py
 │   │       │   ├── reset_proxy_pg_database.py
+│   │       │   ├── rtps.py
 │   │       │   ├── sync_geo_table_to_h3_table.py
 │   │       │   ├── sync_table_from_db_connection.py
 │   │       │   ├── sync_table_with_pandas.py
@@ -123,7 +127,10 @@
 │   │       │   │   ├── analytics_controls_full_data.sql
 │   │       │   │   ├── bft_catches.sql
 │   │       │   │   ├── catches.sql
+│   │       │   │   ├── coe.sql
+│   │       │   │   ├── cox.sql
 │   │       │   │   ├── cps.sql
+│   │       │   │   ├── deps.sql
 │   │       │   │   ├── discards.sql
 │   │       │   │   ├── eez_areas.sql
 │   │       │   │   ├── facade_areas_subdivided.sql
@@ -131,10 +138,12 @@
 │   │       │   │   ├── landings.sql
 │   │       │   │   ├── manual_pnos.sql
 │   │       │   │   ├── non_overlapping_fao_areas.sql
+│   │       │   │   ├── pno_type_rules_unnested.sql
 │   │       │   │   ├── pnos.sql
 │   │       │   │   ├── ports.sql
 │   │       │   │   ├── rectangles_stat_areas.sql
-│   │       │   │   └── regulations.sql
+│   │       │   │   ├── regulations.sql
+│   │       │   │   └── rtps.sql
 │   │       │   └── rapportnav_remote
 │   │       │       └── analytics_missions_full_data.sql
 │   │       ├── shared_tasks
@@ -174,7 +183,10 @@
 │   │       │       │   ├── create_analytics_controls_full_data.sql
 │   │       │       │   ├── create_catches_if_not_exists.sql
 │   │       │       │   ├── create_catches_positions_if_not_exists.sql
+│   │       │       │   ├── create_coe_if_not_exists.sql
+│   │       │       │   ├── create_cox_if_not_exists.sql
 │   │       │       │   ├── create_cps_if_not_exists.sql
+│   │       │       │   ├── create_deps_if_not_exists.sql
 │   │       │       │   ├── create_discards_if_not_exists.sql
 │   │       │       │   ├── create_eez_areas_dict.sql
 │   │       │       │   ├── create_eez_areas_tmp.sql
@@ -185,12 +197,14 @@
 │   │       │       │   ├── create_fao_areas_tmp.sql
 │   │       │       │   ├── create_landings_if_not_exists.sql
 │   │       │       │   ├── create_non_overlapping_fao_areas_tmp.sql
+│   │       │       │   ├── create_pno_type_rules_unnested.sql
 │   │       │       │   ├── create_pnos_if_not_exists.sql
 │   │       │       │   ├── create_ports.sql
 │   │       │       │   ├── create_rectangles_stat_areas_dict.sql
 │   │       │       │   ├── create_rectangles_stat_areas_tmp.sql
 │   │       │       │   ├── create_regulations_h3.sql
 │   │       │       │   ├── create_regulations_tmp.sql
+│   │       │       │   ├── create_rtps_if_not_exists.sql
 │   │       │       │   ├── create_vms_h3_if_not_exists.sql
 │   │       │       │   └── create_vms_if_not_exists.sql
 │   │       │       ├── rapportnav
@@ -250,8 +264,11 @@
 │           │   ├── conftest.py
 │           │   ├── test_activities.py
 │           │   ├── test_catches.py
+│           │   ├── test_coe.py
 │           │   ├── test_compute_sacrois_segments.py
+│           │   ├── test_cox.py
 │           │   ├── test_cps.py
+│           │   ├── test_deps.py
 │           │   ├── test_discards.py
 │           │   ├── test_enrich_monitorfish_catches.py
 │           │   ├── test_import_sacrois_data.py
@@ -259,6 +276,7 @@
 │           │   ├── test_pnos.py
 │           │   ├── test_rapportnav.py
 │           │   ├── test_reset_proxy_pg_database.py
+│           │   ├── test_rtps.py
 │           │   ├── test_sync_geo_table_to_h3_table.py
 │           │   ├── test_sync_table_from_db_connection.py
 │           │   ├── test_sync_table_with_pandas.py
@@ -288,4 +306,4 @@
 │       ├── docker-compose-dev-metabase.yml
 │       └── docker-compose-test-data.yml
 └── sonar-project.properties
-69 directories, 221 files
+69 directories, 239 files
