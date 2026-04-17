@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/mobilic-api",
   "name": "mobilic-api",
-  "description": "API pour le back de la startup d'état Mobilic. Elle permet le suivi du temps de travail des transporteurs mobiles.",
+  "description": "Ce dépôt contient le code source du backend de la startup d'état Mobilic. Il fournit des informations pour installer un environnement de développement local et décrit l'architecture logicielle, l'infrastructure et les technologies utilisées.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
-    "API & Intégrations",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des entreprises & Structures",
-    "Données & Schémas"
+    "API & Intégrations",
+    "Sécurité & Conformité",
+    "Notifications & Alertes",
+    "Gestion des établissements & Structures"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -16,7 +16,8 @@
     "SQLAlchemy",
     "Redis",
     "Celery",
-    "PostgreSQL"
+    "PostgreSQL",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,12 +27,16 @@
   ],
   "auth": {
     "methods": [
-      "jwt"
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
-  "workflows": [],
-  "lastActivity": "2026-03-16T03:50:18+01:00",
+  "tests": "Tests unitaires et d'intégration utilisant Flask test client.",
+  "workflows": [
+    "CI/CD avec GitHub Actions"
+  ],
+  "lastActivity": "2026-04-15T11:10:43+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -43,9 +48,9 @@
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
+    "Environnement & Énergie",
     "Python",
     "Bases de données SQL",
-    "API & Intégrations"
+    "Sécurité & Auth"
   ]
 }

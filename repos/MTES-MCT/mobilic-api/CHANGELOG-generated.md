@@ -1,26 +1,33 @@
-## Changelog : mobilic-api (30 derniers jours)
+## Changelog : mobilic-api (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de l'API Mobilic se concentrent sur l'amélioration de l'expérience utilisateur, notamment en simplifiant l'invitation et l'activation des utilisateurs, en ajoutant des informations sur le poids des véhicules aux bulletins de contrôle, et en optimisant la gestion des alertes réglementaires. Des améliorations techniques ont également été apportées pour la qualité du code, la gestion des erreurs et l'intégration avec des services tiers.
+Ce mois-ci, les évolutions de l'API Mobilic se sont concentrées sur l'amélioration de la sécurité et de la conformité des données, notamment via l'anonymisation des informations sensibles et la correction de vulnérabilités. Des améliorations ont également été apportées à la gestion des exports de données, ainsi qu'à la correction de bugs liés à l'authentification et à la validation des missions. Enfin, une mise à jour de la version de Flask a été effectuée, suivie d'un retour en arrière pour éviter des impacts trop importants.
 
 ### Évolutions fonctionnelles
-- Possibilité d'inviter des utilisateurs par leur ID lors d'invitations groupées. [#675](https://github.com/MTES-MCT/mobilic-api/pull/675)
-- Simplification de l'inscription des utilisateurs invités par un employeur : activation automatique si l'email correspond, sinon envoi d'un email d'activation. [#395138a](https://github.com/MTES-MCT/mobilic-api/commit/395138a)
-- Ajout du poids du véhicule (PTAC ou poids réel) sur les bulletins de contrôle (BDC). [#674](https://github.com/MTES-MCT/mobilic-api/pull/674), [#660](https://github.com/MTES-MCT/mobilic-api/pull/660), [#56c8378](https://github.com/MTES-MCT/mobilic-api/commit/56c8378)
-- Amélioration de la gestion des alertes réglementaires pour les employés. [#665](https://github.com/MTES-MCT/mobilic-api/pull/665)
-- Gestion des cas où il n'y a pas d'activité lors d'un contrôle. [#657](https://github.com/MTES-MCT/mobilic-api/pull/657)
-- Nouvelle interface pour les bulletins de contrôle (BDC) avec correction des informations sur les entreprises. [#667](https://github.com/MTES-MCT/mobilic-api/pull/667)
+- Correction d'un bug empêchant la validation automatique des missions en raison d'un problème avec l'identification de l'entreprise soumettant la mission. [#692](https://github.com/MTES-MCT/mobilic-api/pull/692)
+- Correction du format d'affichage du poids des véhicules dans les bulletins de contrôle (Bdc) pour utiliser une virgule décimale. [#691](https://github.com/MTES-MCT/mobilic-api/pull/691)
+- Amélioration de la gestion de la connexion des agents (AgentConnect) en corrigeant des problèmes liés aux redirections et à la synchronisation de l'unité organisationnelle. [#687](https://github.com/MTES-MCT/mobilic-api/pull/687), [#686](https://github.com/MTES-MCT/mobilic-api/pull/686)
+- Ajout d'une nouvelle fonctionnalité d'anonymisation des données des Bdc pour le Ministère de l'Intérieur. [#688](https://github.com/MTES-MCT/mobilic-api/pull/688)
+- Mise à jour de l'étiquette de vérification de la réglementation "sans permis de conduire". [#684](https://github.com/MTES-MCT/mobilic-api/pull/684)
+- Ajout d'un endpoint de validation pour les exports.
+- Ajout de stratégies d'export vers Sentry.
 
 ### Évolutions techniques
-- Ajout d'un hook `commitlint` pour assurer la conformité des messages de commit aux conventions. [#680](https://github.com/MTES-MCT/mobilic-api/pull/680)
-- Optimisation de la gestion des erreurs et des alertes pour Scalingo. [#663](https://github.com/MTES-MCT/mobilic-api/pull/663)
-- Restriction des fournisseurs d'identité (IdP) autorisés pour les contrôleurs. [#662](https://github.com/MTES-MCT/mobilic-api/pull/662)
-- Amélioration de la gestion des emails pour les consentements tiers et l'activation des utilisateurs. [#676](https://github.com/MTES-MCT/mobilic-api/pull/676), [#664](https://github.com/MTES-MCT/mobilic-api/pull/664)
-- Correction d'un crash lié au flush automatique lors de la validation d'un employé. [#682](https://github.com/MTES-MCT/mobilic-api/pull/682)
-- Refactorisation de la logique d'affichage du poids du véhicule dans le bulletin de contrôle. [#5cc6251](https://github.com/MTES-MCT/mobilic-api/commit/5cc6251)
+- Mise à jour de Flask et des dépendances pipenv pour corriger des vulnérabilités de sécurité, suivie d'un retour à une version antérieure pour éviter des changements trop importants. [#686](https://github.com/MTES-MCT/mobilic-api/pull/686)
+- Refactoring du code pour améliorer la qualité et la conformité aux règles SonarCloud.
+- Amélioration de la gestion des exports de données :
+    - Ajout de règles pour la gestion des chunks.
+    - Tri des fichiers dans les archives zip.
+    - Gestion des exports pour les données vides.
+- Suppression du contexte des accès aux données d'activité pour améliorer la sécurité. [#693](https://github.com/MTES-MCT/mobilic-api/pull/693)
+- Renommage de variables pour respecter les conventions de nommage (snake_case).
+- Synchronisation de l'unité organisationnelle lors de la reconnexion d'AgentConnect.
 
 ### Autres changements
-- Mise à jour de la documentation et des tests pour les nouvelles fonctionnalités.
-- Suppression de la dépendance `pypdf3`. [#662](https://github.com/MTES-MCT/mobilic-api/pull/662)
-- Correction du nom du pipeline d'acquisition Brevo. [#668](https://github.com/MTES-MCT/mobilic-api/pull/668)
-- Ajout d'index sur la table `employment`. [#74af1b7](https://github.com/MTES-MCT/mobilic-api/commit/74af1b7)
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités et corrections de bugs.
+- Amélioration de la documentation.
+- Correction de bugs mineurs et nettoyage du code.
+- Ajout de logs pour faciliter le débogage.
+- Tri des fichiers d'export par ordre alphabétique.
+- Ajout des noms des employés lors de l'export de données vides.
+- Correction de l'ordre de tri des dates dans les exports.
