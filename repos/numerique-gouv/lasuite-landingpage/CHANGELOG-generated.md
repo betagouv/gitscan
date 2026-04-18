@@ -1,17 +1,15 @@
-## Changelog : lasuite-landingpage (30 derniers jours, au 2026-04-09)
+## Changelog : lasuite-landingpage (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'accessibilité de la page d'accueil, avec des corrections pour les images décoratives et la navigation dans le carrousel. Des ajustements de formulation ont également été apportés, ainsi qu'une mise à jour du lien vers le calendrier. Enfin, des dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et améliorations.
+Cette mise à jour apporte des améliorations significatives à l'accessibilité de la page d'accueil, notamment au niveau du carrousel et des images décoratives. Une nouvelle fonctionnalité permettant la sélection d'un processus de rendez-vous a également été ajoutée. Des ajustements de formulation ont été effectués pour améliorer la clarté du contenu.
 
 ### Évolutions fonctionnelles
-- Amélioration de la sémantique du carrousel pour une meilleure accessibilité, notamment pour les utilisateurs de lecteurs d'écran. [#161](https://github.com/numerique-gouv/lasuite-landingpage/issues/161)
-- Suppression du texte alternatif redondant sur les images décoratives, améliorant l'expérience utilisateur pour les personnes utilisant des technologies d'assistance. [#160](https://github.com/numerique-gouv/lasuite-landingpage/issues/160)
-- Mise à jour du lien vers le calendrier. [#159](https://github.com/numerique-gouv/lasuite-landingpage/issues/159)
-- Ajustement de la formulation de certains textes. [#162](https://github.com/numerique-gouv/lasuite-landingpage/issues/162)
+- Ajout d'un processus de sélection pour la prise de rendez-vous. [#172](https://github.com/numerique-gouv/lasuite-landingpage/issues/172)
+- Amélioration de la sémantique du carrousel pour une meilleure accessibilité. [#161](https://github.com/numerique-gouv/lasuite-landingpage/issues/161)
+- Modification de la formulation de certains textes pour plus de clarté. [#162](https://github.com/numerique-gouv/lasuite-landingpage/issues/162)
 
 ### Évolutions techniques
-- Mise à jour de Next.js vers la version 15.5.14, incluant des correctifs de sécurité importants.
-- Mise à jour de plusieurs dépendances (lodash, lodash-es, immutable, picomatch, flatted, simple-git) pour bénéficier des dernières améliorations et correctifs.
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Suppression des textes alternatifs redondants sur les images décoratives pour améliorer l'accessibilité. [#160](https://github.com/numerique-gouv/lasuite-landingpage/issues/160)
