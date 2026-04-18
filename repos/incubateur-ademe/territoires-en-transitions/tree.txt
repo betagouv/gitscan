@@ -630,9 +630,12 @@
 │   │   │   │   │       │   │   ├── IndicateurLayout.tsx
 │   │   │   │   │       │   │   ├── SousIndicateurs.tsx
 │   │   │   │   │       │   │   ├── ThematiquesIndicateurInput.tsx
+│   │   │   │   │       │   │   ├── fiche.picto.tsx
+│   │   │   │   │       │   │   ├── fiches-liees.modal.tsx
 │   │   │   │   │       │   │   ├── indicateur-commentaire.input.tsx
 │   │   │   │   │       │   │   ├── indicateur-sources.select.tsx
 │   │   │   │   │       │   │   ├── indicateur-unite.input.tsx
+│   │   │   │   │       │   │   ├── mesures-liees.list.tsx
 │   │   │   │   │       │   │   └── type-segmentation.select.tsx
 │   │   │   │   │       │   ├── lists
 │   │   │   │   │       │   │   ├── IndicateurCard
@@ -709,162 +712,9 @@
 │   │   │   │   │       │   │   ├── scores
 │   │   │   │   │       │   │   │   ├── score-progress-bar.tsx
 │   │   │   │   │       │   │   │   └── score-ratio-badge.tsx
-│   │   │   │   │       │   │   └── utils.ts
-│   │   │   │   │       │   ├── FicheAction
-│   │   │   │   │       │   │   ├── Carte
-│   │   │   │   │       │   │   │   ├── FicheActionCard.tsx
-│   │   │   │   │       │   │   │   ├── FicheActionCardSkeleton.tsx
-│   │   │   │   │       │   │   │   ├── FicheActionFooterInfo.tsx
-│   │   │   │   │       │   │   │   └── ModifierFicheModale.tsx
-│   │   │   │   │       │   │   ├── Documents
-│   │   │   │   │       │   │   │   ├── DocumentPicto.tsx
-│   │   │   │   │       │   │   │   ├── ModaleAjoutDocument.tsx
-│   │   │   │   │       │   │   │   └── documents.view.tsx
-│   │   │   │   │       │   │   ├── FicheAction.tsx
-│   │   │   │   │       │   │   ├── FicheActionAcces
-│   │   │   │   │       │   │   │   ├── FicheActionAcces.tsx
-│   │   │   │   │       │   │   │   ├── ModaleAcces.tsx
-│   │   │   │   │       │   │   │   ├── TooltipRestreint.tsx
-│   │   │   │   │       │   │   │   └── fiche-restreint-editor.form-section.tsx
-│   │   │   │   │       │   │   ├── FicheActionActeurs
-│   │   │   │   │       │   │   │   ├── FicheActionActeurs.tsx
-│   │   │   │   │       │   │   │   ├── ListeActeurs.tsx
-│   │   │   │   │       │   │   │   ├── ModaleActeurs.tsx
-│   │   │   │   │       │   │   │   └── PictosActeurs
-│   │   │   │   │       │   │   │       ├── CiblePicto.tsx
-│   │   │   │   │       │   │   │       ├── CitoyenPicto.tsx
-│   │   │   │   │       │   │   │       ├── CollaborateurPicto.tsx
-│   │   │   │   │       │   │   │       ├── EluPicto.tsx
-│   │   │   │   │       │   │   │       ├── EmptyActeursPicto.tsx
-│   │   │   │   │       │   │   │       ├── PartenairePicto.tsx
-│   │   │   │   │       │   │   │       ├── ServicePilotePicto.tsx
-│   │   │   │   │       │   │   │       └── StructurePilotePicto.tsx
-│   │   │   │   │       │   │   ├── FicheActionCompletion
-│   │   │   │   │       │   │   │   └── fiche-action-completion.tsx
-│   │   │   │   │       │   │   ├── FicheActionDescription
-│   │   │   │   │       │   │   │   ├── FicheActionDescription.tsx
-│   │   │   │   │       │   │   │   ├── FicheDescriptionForm.tsx
-│   │   │   │   │       │   │   │   └── ModaleDescription.tsx
-│   │   │   │   │       │   │   ├── FicheActionImpact
-│   │   │   │   │       │   │   │   ├── ModaleActionImpact.tsx
-│   │   │   │   │       │   │   │   └── useActionImpact.ts
-│   │   │   │   │       │   │   ├── FicheActionImpact.tsx
-│   │   │   │   │       │   │   ├── FicheActionOnglets.tsx
-│   │   │   │   │       │   │   ├── FicheActionPilotes
-│   │   │   │   │       │   │   │   ├── FicheActionPilotes.tsx
-│   │   │   │   │       │   │   │   ├── ModalePilotes.tsx
-│   │   │   │   │       │   │   │   └── PersonnePilotePicto.tsx
-│   │   │   │   │       │   │   ├── FicheActionPlanning
-│   │   │   │   │       │   │   │   ├── FicheActionPlanning.tsx
-│   │   │   │   │       │   │   │   ├── ModalePlanning.tsx
-│   │   │   │   │       │   │   │   ├── PictosPlanning
-│   │   │   │   │       │   │   │   │   ├── EmptyCalendarPicto.tsx
-│   │   │   │   │       │   │   │   │   └── FilledCalendarPicto.tsx
-│   │   │   │   │       │   │   │   └── base-update-fiche-modal.tsx
-│   │   │   │   │       │   │   ├── FichesLiees
-│   │   │   │   │       │   │   │   ├── EmptyFichePicto.tsx
-│   │   │   │   │       │   │   │   ├── FichePicto.tsx
-│   │   │   │   │       │   │   │   ├── FichesLieesListe.tsx
-│   │   │   │   │       │   │   │   ├── FichesLieesTab.tsx
-│   │   │   │   │       │   │   │   └── ModaleFichesLiees.tsx
-│   │   │   │   │       │   │   ├── Header
-│   │   │   │   │       │   │   │   ├── CheminFiche.tsx
-│   │   │   │   │       │   │   │   ├── TitreFiche.tsx
-│   │   │   │   │       │   │   │   ├── actions
-│   │   │   │   │       │   │   │   │   ├── EmplacementFiche
-│   │   │   │   │       │   │   │   │   │   ├── EmplacementActuel
-│   │   │   │   │       │   │   │   │   │   │   ├── CheminEmplacement.tsx
-│   │   │   │   │       │   │   │   │   │   │   └── EmplacementActuelFiche.tsx
-│   │   │   │   │       │   │   │   │   │   ├── ModaleEmplacement.tsx
-│   │   │   │   │       │   │   │   │   │   └── NouvelEmplacement
-│   │   │   │   │       │   │   │   │   │       ├── BoutonTableauEmplacement.tsx
-│   │   │   │   │       │   │   │   │   │       ├── ColonneTableauEmplacement.tsx
-│   │   │   │   │       │   │   │   │   │       └── NouvelEmplacementFiche.tsx
-│   │   │   │   │       │   │   │   │   └── toolbar.tsx
-│   │   │   │   │       │   │   │   ├── classified-fiche-breadcrumbs.tsx
-│   │   │   │   │       │   │   │   ├── fiche-breadcrumbs.tsx
-│   │   │   │   │       │   │   │   ├── index.tsx
-│   │   │   │   │       │   │   │   └── not-classified-fiche-breadcrumbs.tsx
-│   │   │   │   │       │   │   ├── Indicateurs
-│   │   │   │   │       │   │   │   ├── DatavizPicto.tsx
-│   │   │   │   │       │   │   │   ├── IndicateursAssocies.tsx
-│   │   │   │   │       │   │   │   ├── IndicateursAssociesEmpty.tsx
-│   │   │   │   │       │   │   │   ├── IndicateursHeader.tsx
-│   │   │   │   │       │   │   │   ├── IndicateursTab.tsx
-│   │   │   │   │       │   │   │   ├── ModaleCreerIndicateur.tsx
-│   │   │   │   │       │   │   │   ├── ModaleIndicateursHeader.tsx
-│   │   │   │   │       │   │   │   └── SideMenu
-│   │   │   │   │       │   │   │       ├── Content.tsx
-│   │   │   │   │       │   │   │       └── SelectIndicateursGrid.tsx
-│   │   │   │   │       │   │   ├── LoadingCard.tsx
-│   │   │   │   │       │   │   ├── components
-│   │   │   │   │       │   │   │   ├── MoneyPicto.tsx
-│   │   │   │   │       │   │   │   ├── RichTextView.tsx
-│   │   │   │   │       │   │   │   ├── completion.badge.tsx
-│   │   │   │   │       │   │   │   ├── priority.badge.tsx
-│   │   │   │   │       │   │   │   └── status.badge.tsx
-│   │   │   │   │       │   │   ├── data
-│   │   │   │   │       │   │   │   ├── use-delete-fiche.ts
-│   │   │   │   │       │   │   │   ├── use-get-fiche.ts
-│   │   │   │   │       │   │   │   ├── useAddAnnexe.ts
-│   │   │   │   │       │   │   │   ├── useAnnexesFicheAction.ts
-│   │   │   │   │       │   │   │   ├── useAnnexesFicheActionInfos.ts
-│   │   │   │   │       │   │   │   ├── useCreateFicheAction.ts
-│   │   │   │   │       │   │   │   ├── useCreateFicheResume.ts
-│   │   │   │   │       │   │   │   ├── useFicheActionImpactId.ts
-│   │   │   │   │       │   │   │   ├── useFichesActionLiees.ts
-│   │   │   │   │       │   │   │   ├── useRestreindreFiches.ts
-│   │   │   │   │       │   │   │   └── utils.ts
-│   │   │   │   │       │   │   ├── etapes
-│   │   │   │   │       │   │   │   ├── etape
-│   │   │   │   │       │   │   │   │   ├── etape.tsx
-│   │   │   │   │       │   │   │   │   ├── index.ts
-│   │   │   │   │       │   │   │   │   ├── modal-delete-etape.tsx
-│   │   │   │   │       │   │   │   │   ├── textarea.tsx
-│   │   │   │   │       │   │   │   │   ├── use-delete-etape.ts
-│   │   │   │   │       │   │   │   │   └── use-upsert-etape.ts
-│   │   │   │   │       │   │   │   ├── etapes-context.tsx
-│   │   │   │   │       │   │   │   ├── etapes-list.tsx
-│   │   │   │   │       │   │   │   ├── etapes.tsx
-│   │   │   │   │       │   │   │   ├── index.ts
-│   │   │   │   │       │   │   │   └── use-get-etapes.ts
-│   │   │   │   │       │   │   ├── mesures-liees
-│   │   │   │   │       │   │   │   ├── mesures-liees.list.tsx
-│   │   │   │   │       │   │   │   ├── mesures-liees.modal.tsx
-│   │   │   │   │       │   │   │   └── mesures-liees.view.tsx
-│   │   │   │   │       │   │   ├── moyens
-│   │   │   │   │       │   │   │   ├── budget
-│   │   │   │   │       │   │   │   │   ├── budget-investissement.content.tsx
-│   │   │   │   │       │   │   │   │   ├── budget-per-year.content.tsx
-│   │   │   │   │       │   │   │   │   ├── budget-tags.list.tsx
-│   │   │   │   │       │   │   │   │   ├── budget.editable-view.tsx
-│   │   │   │   │       │   │   │   │   ├── budget.modal.tsx
-│   │   │   │   │       │   │   │   │   ├── detailed-budget-form.tsx
-│   │   │   │   │       │   │   │   │   ├── extended-budget-form.tsx
-│   │   │   │   │       │   │   │   │   ├── to-budget-properties.ts
-│   │   │   │   │       │   │   │   │   └── types.ts
-│   │   │   │   │       │   │   │   ├── components
-│   │   │   │   │       │   │   │   │   └── EditableSection.tsx
-│   │   │   │   │       │   │   │   ├── financements
-│   │   │   │   │       │   │   │   │   ├── financements.editable-view.tsx
-│   │   │   │   │       │   │   │   │   └── financements.modal.tsx
-│   │   │   │   │       │   │   │   ├── financeurs
-│   │   │   │   │       │   │   │   │   ├── financeurs.editable-view.tsx
-│   │   │   │   │       │   │   │   │   ├── financeurs.input.tsx
-│   │   │   │   │       │   │   │   │   └── financeurs.modal.tsx
-│   │   │   │   │       │   │   │   ├── moyens.content.tsx
-│   │   │   │   │       │   │   │   ├── moyens.modals.tsx
-│   │   │   │   │       │   │   │   ├── moyens.view.tsx
-│   │   │   │   │       │   │   │   └── ressources
-│   │   │   │   │       │   │   │       ├── resources.modal.tsx
-│   │   │   │   │       │   │   │       └── ressources.editable-view.tsx
-│   │   │   │   │       │   │   ├── notes
-│   │   │   │   │       │   │   │   ├── note-creation.modal.tsx
-│   │   │   │   │       │   │   │   ├── note-deletion.modal.tsx
-│   │   │   │   │       │   │   │   ├── note-edition.modal.tsx
-│   │   │   │   │       │   │   │   ├── note.card.tsx
-│   │   │   │   │       │   │   │   ├── notes.view.tsx
-│   │   │   │   │       │   │   │   └── notification.picto.tsx
+│   │   │   │   │       │   │   ├── use-annexes-fiche-infos.ts
+│   │   │   │   │       │   │   ├── use-fiches-liees.ts
+│   │   │   │   │       │   │   ├── use-get-etapes.ts
 │   │   │   │   │       │   │   └── utils.ts
 │   │   │   │   │       │   ├── PlanAction
 │   │   │   │   │       │   │   └── data
@@ -989,8 +839,21 @@
 │   │   │   │   └── stonly.widget.tsx
 │   │   │   ├── plans
 │   │   │   │   ├── fiches
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── card
+│   │   │   │   │   │       ├── base-update-fiche.modal.tsx
+│   │   │   │   │   │       ├── edit-fiche.modal.tsx
+│   │   │   │   │   │       ├── fiche.card.tsx
+│   │   │   │   │   │       ├── fiche.completion.tsx
+│   │   │   │   │   │       ├── fiche.footer.tsx
+│   │   │   │   │   │       └── fiche.skeleton.tsx
 │   │   │   │   │   ├── data
-│   │   │   │   │   │   └── use-fiches-count-by.ts
+│   │   │   │   │   │   ├── fiche.utils.ts
+│   │   │   │   │   │   ├── use-create-fiche-action.ts
+│   │   │   │   │   │   ├── use-create-fiche-resume.ts
+│   │   │   │   │   │   ├── use-delete-fiche.ts
+│   │   │   │   │   │   ├── use-fiches-count-by.ts
+│   │   │   │   │   │   └── use-get-fiche.ts
 │   │   │   │   │   ├── get-fiche
 │   │   │   │   │   │   └── fiche-no-access.page.tsx
 │   │   │   │   │   ├── list-all-fiches
@@ -1200,7 +1063,6 @@
 │   │   │   │   │   │   │   ├── use-create-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── use-delete-fiche.ts
 │   │   │   │   │   │   │   ├── use-delete-instance-gouvernance-tag.ts
-│   │   │   │   │   │   │   ├── use-get-fiche.ts
 │   │   │   │   │   │   │   ├── use-list-instance-gouvernance-tags.ts
 │   │   │   │   │   │   │   ├── use-update-instance-gouvernance-tag.ts
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
@@ -1213,7 +1075,7 @@
 │   │   │   │   │   │   │   ├── usePlanActionProfondeur.tsx
 │   │   │   │   │   │   │   ├── useRestreindreFiches.ts
 │   │   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   │   ├── fiche-action-improved.view.tsx
+│   │   │   │   │   │   ├── fiche.view.tsx
 │   │   │   │   │   │   ├── header
 │   │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   │   └── emplacement
@@ -1280,20 +1142,18 @@
 │   │   │   │   │   │   │       ├── pilotes.tsx
 │   │   │   │   │   │   │       ├── priority.tsx
 │   │   │   │   │   │   │       └── status.tsx
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── share-fiche
-│   │   │   │   │   │   │   ├── fiche-share-bulk-editor.form-section.tsx
-│   │   │   │   │   │   │   ├── fiche-share-editor.form-section.tsx
-│   │   │   │   │   │   │   ├── fiche-share-info.tsx
-│   │   │   │   │   │   │   ├── fiche-share-properties.dto.ts
-│   │   │   │   │   │   │   ├── multiple-collectivite.selector.tsx
-│   │   │   │   │   │   │   ├── remove-sharing.modal.tsx
-│   │   │   │   │   │   │   ├── share-fiche.utils.ts
-│   │   │   │   │   │   │   ├── shared-fiche-linked-resources.alert.tsx
-│   │   │   │   │   │   │   ├── shared-fiche-update.alert.tsx
-│   │   │   │   │   │   │   └── use-share-fiche-enabled.tsx
-│   │   │   │   │   │   ├── use-improved-fiche-action-ui-enabled.ts
-│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── share-fiche
+│   │   │   │   │   │       ├── fiche-share-bulk-editor.form-section.tsx
+│   │   │   │   │   │       ├── fiche-share-editor.form-section.tsx
+│   │   │   │   │   │       ├── fiche-share-info.tsx
+│   │   │   │   │   │       ├── fiche-share-properties.dto.ts
+│   │   │   │   │   │       ├── multiple-collectivite.selector.tsx
+│   │   │   │   │   │       ├── remove-sharing.modal.tsx
+│   │   │   │   │   │       ├── share-fiche.utils.ts
+│   │   │   │   │   │       ├── shared-fiche-linked-resources.alert.tsx
+│   │   │   │   │   │       ├── shared-fiche-update.alert.tsx
+│   │   │   │   │   │       └── use-share-fiche-enabled.tsx
 │   │   │   │   │   ├── update-fiche
 │   │   │   │   │   │   └── data
 │   │   │   │   │   │       ├── use-delete-budgets.ts
@@ -1345,7 +1205,8 @@
 │   │   │   │   │   │   │   ├── move-fiche.modal.tsx
 │   │   │   │   │   │   │   ├── plan-node-to-profondeur-axe.adapter.ts
 │   │   │   │   │   │   │   ├── update-fiche-visibility.modal.tsx
-│   │   │   │   │   │   │   └── use-move-fiche.ts
+│   │   │   │   │   │   │   ├── use-move-fiche.ts
+│   │   │   │   │   │   │   └── use-restrict-fiches.ts
 │   │   │   │   │   │   ├── completion
 │   │   │   │   │   │   │   ├── completion-messages.config.ts
 │   │   │   │   │   │   │   └── completion.alert.tsx
@@ -1469,6 +1330,7 @@
 │   │   │   │   ├── action.show
 │   │   │   │   │   ├── FichesActionLiees.tsx
 │   │   │   │   │   ├── IndicateurChartsGrid.tsx
+│   │   │   │   │   ├── fiches-liees.list.tsx
 │   │   │   │   │   ├── useFichesActionLiees.ts
 │   │   │   │   │   └── useUpdateFichesActionLiees.ts
 │   │   │   │   ├── actions
@@ -1994,8 +1856,10 @@
 │   │   │       │   └── error.page.tsx
 │   │   │       ├── file.ts
 │   │   │       ├── formatUtils.ts
+│   │   │       ├── generate-title.ts
 │   │   │       ├── get-filename-from-response.test.ts
 │   │   │       ├── get-filename-from-response.ts
+│   │   │       ├── get-years-options.ts
 │   │   │       ├── indexBy.ts
 │   │   │       ├── lazy.ts
 │   │   │       ├── naturalSort.ts
@@ -6836,4 +6700,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1206 directories, 5788 files
+1176 directories, 5682 files
