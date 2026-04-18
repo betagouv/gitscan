@@ -5,16 +5,16 @@
 │   ├── bun
 │   │   └── Taskfile.yml
 │   ├── commitizen
+│   │   ├── Taskfile.yml
 │   │   ├── cz.yaml
-│   │   ├── requirements.txt
-│   │   └── Taskfile.yml
+│   │   └── requirements.txt
 │   ├── commitlint
-│   │   ├── config.yml
-│   │   └── Taskfile.yml
+│   │   ├── Taskfile.yml
+│   │   └── config.yml
 │   ├── copier
 │   │   ├── .copier-answers.yml
-│   │   ├── requirements.txt
-│   │   └── Taskfile.yml
+│   │   ├── Taskfile.yml
+│   │   └── requirements.txt
 │   ├── cspell
 │   │   └── config.json
 │   ├── dependency-check
@@ -46,9 +46,9 @@
 │   ├── devskim
 │   │   └── config.json
 │   ├── docker
+│   │   ├── Taskfile.yml
 │   │   ├── install
 │   │   │   └── debian.sh
-│   │   ├── Taskfile.yml
 │   │   └── tests
 │   │       └── Taskfile.yml
 │   ├── grype
@@ -56,15 +56,15 @@
 │   ├── jscpd
 │   │   └── config.json
 │   ├── lizard
-│   │   ├── requirements.txt
-│   │   └── Taskfile.yml
+│   │   ├── Taskfile.yml
+│   │   └── requirements.txt
 │   ├── megalinter
-│   │   ├── config.yml
-│   │   └── Taskfile.yml
+│   │   ├── Taskfile.yml
+│   │   └── config.yml
 │   ├── nodejs
+│   │   ├── Taskfile.yml
 │   │   ├── install
 │   │   │   └── debian.sh
-│   │   ├── Taskfile.yml
 │   │   └── tests
 │   │       ├── test_check_nodejs_version.sh
 │   │       ├── test_check_root.sh
@@ -75,14 +75,24 @@
 │   │   ├── config.yml
 │   │   └── trivyignore.yml
 │   └── yamllint
+│       ├── Taskfile.yml
 │       ├── config.yml
-│       ├── requirements.txt
-│       └── Taskfile.yml
+│       └── requirements.txt
 ├── .devcontainer
 │   └── debian
 │       └── devcontainer.json
 ├── .editorconfig
 ├── .eslintrc
+├── .github
+│   ├── copilot
+│   │   └── mcp.json
+│   ├── skills
+│   │   ├── editor
+│   │   │   └── SKILL.md
+│   │   └── ui-fidelity
+│   │       └── SKILL.md
+│   └── workflows
+│       └── codeql.yml
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── .gitmodules
@@ -93,6 +103,14 @@
 ├── .ruby-gemset
 ├── .ruby-version
 ├── .sentryclirc.sample
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE
+├── Procfile
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── Taskfile.yml
 ├── app
 │   ├── assets
 │   │   └── config
@@ -117,6 +135,7 @@
 │   │   ├── side_menu_component.rb
 │   │   └── user_hideable_component.scss
 │   ├── controllers
+│   │   ├── README.md
 │   │   ├── admin
 │   │   │   └── users_controller.rb
 │   │   ├── admin_controller.rb
@@ -141,6 +160,7 @@
 │   │   ├── api_insertion_facile_proxy_controller.rb
 │   │   ├── api_sirene_proxy_controller.rb
 │   │   ├── application_controller.rb
+│   │   ├── boarding_houses_controller.rb
 │   │   ├── callbacks_controller.rb
 │   │   ├── concerns
 │   │   │   ├── api
@@ -161,6 +181,7 @@
 │   │   │   └── turbo
 │   │   │       └── redirection.rb
 │   │   ├── dashboard
+│   │   │   ├── README.md
 │   │   │   ├── corporation_internship_agreements_controller.rb
 │   │   │   ├── group_signing
 │   │   │   │   └── users_controller.rb
@@ -182,7 +203,6 @@
 │   │   │   │   ├── multi_corporations_controller.rb
 │   │   │   │   └── multi_plannings_controller.rb
 │   │   │   ├── offer_types_switchings_controller.rb
-│   │   │   ├── README.md
 │   │   │   ├── schools
 │   │   │   │   ├── class_rooms
 │   │   │   │   │   └── students_controller.rb
@@ -213,13 +233,13 @@
 │   │   ├── pages_controller.rb
 │   │   ├── public
 │   │   │   └── internship_agreements_controller.rb
-│   │   ├── README.md
 │   │   ├── reporting
+│   │   │   ├── README.md
 │   │   │   ├── base_reporting_controller.rb
+│   │   │   ├── boarding_houses_controller.rb
 │   │   │   ├── dashboards_controller.rb
 │   │   │   ├── internship_offers_controller.rb
 │   │   │   ├── operators_controller.rb
-│   │   │   ├── README.md
 │   │   │   └── schools_controller.rb
 │   │   ├── reset_review_data_controller.rb
 │   │   ├── school_switches_controller.rb
@@ -237,16 +257,7 @@
 │   │   │   ├── .keep
 │   │   │   ├── CardLoader.jsx
 │   │   │   ├── FlashMessage.jsx
-│   │   │   ├── icons
-│   │   │   │   └── DistanceIcon.jsx
 │   │   │   ├── ImmersionFaciliteeCard.jsx
-│   │   │   ├── inputs
-│   │   │   │   ├── AddressInput.jsx
-│   │   │   │   ├── CountryPhoneSelect.jsx
-│   │   │   │   ├── FullAddressInput.jsx
-│   │   │   │   ├── SireneCorporation.jsx
-│   │   │   │   ├── SirenInput.jsx
-│   │   │   │   └── SirenInputMulti.jsx
 │   │   │   ├── InternshipOfferCard.jsx
 │   │   │   ├── InternshipOfferFavoriteButton.jsx
 │   │   │   ├── InternshipOfferFavorites.jsx
@@ -256,6 +267,18 @@
 │   │   │   ├── MultiMap.jsx
 │   │   │   ├── ReservedSchoolInput.jsx
 │   │   │   ├── SchoolList.jsx
+│   │   │   ├── SearchSchool.jsx
+│   │   │   ├── SearchSchoolByName.jsx
+│   │   │   ├── TitleLoader.jsx
+│   │   │   ├── icons
+│   │   │   │   └── DistanceIcon.jsx
+│   │   │   ├── inputs
+│   │   │   │   ├── AddressInput.jsx
+│   │   │   │   ├── CountryPhoneSelect.jsx
+│   │   │   │   ├── FullAddressInput.jsx
+│   │   │   │   ├── SirenInput.jsx
+│   │   │   │   ├── SirenInputMulti.jsx
+│   │   │   │   └── SireneCorporation.jsx
 │   │   │   ├── search_internship_offer
 │   │   │   │   ├── CityInput.jsx
 │   │   │   │   ├── CompanyCityInput.jsx
@@ -266,17 +289,14 @@
 │   │   │   │   ├── RadiusInput.jsx
 │   │   │   │   ├── SearchBar.jsx
 │   │   │   │   ├── SectorInput.jsx
-│   │   │   │   ├── weekInput
-│   │   │   │   │   ├── CheckBoxColumn.jsx
-│   │   │   │   │   └── MonthColumn.jsx
-│   │   │   │   └── WeekInput.jsx
-│   │   │   ├── search_school
-│   │   │   │   ├── ClassRoomInput.jsx
-│   │   │   │   ├── RadioListSchoolInput.jsx
-│   │   │   │   └── SchoolSelectInput.jsx
-│   │   │   ├── SearchSchool.jsx
-│   │   │   ├── SearchSchoolByName.jsx
-│   │   │   └── TitleLoader.jsx
+│   │   │   │   ├── WeekInput.jsx
+│   │   │   │   └── weekInput
+│   │   │   │       ├── CheckBoxColumn.jsx
+│   │   │   │       └── MonthColumn.jsx
+│   │   │   └── search_school
+│   │   │       ├── ClassRoomInput.jsx
+│   │   │       ├── RadioListSchoolInput.jsx
+│   │   │       └── SchoolSelectInput.jsx
 │   │   ├── controllers
 │   │   │   ├── a11y_date_input_controller.js
 │   │   │   ├── broadcast_coordinates_changed_controller.js
@@ -341,23 +361,24 @@
 │   │   ├── images
 │   │   │   ├── active_pin.svg
 │   │   │   ├── blue_edit.svg
+│   │   │   ├── boarding_house_pin.svg
 │   │   │   ├── checkbox.png
 │   │   │   ├── corporate_pin.svg
 │   │   │   ├── danger_sign_blue.svg
 │   │   │   ├── default_pin.svg
 │   │   │   ├── delegated-to-another-one.svg
 │   │   │   ├── documents_utiles
-│   │   │   │   ├── carnet-de-stage-pro.jpg
 │   │   │   │   ├── CarnetStagePro_USEA_WEB-2.jpg
-│   │   │   │   ├── eleves.jpg
-│   │   │   │   ├── equipe-pedago.jpg
 │   │   │   │   ├── MS3_Programme-a-remplir.jpg
-│   │   │   │   ├── offreurs.jpg
-│   │   │   │   ├── partenaires.jpg
-│   │   │   │   ├── referents.jpg
 │   │   │   │   ├── RienNeSertDeCourirPageBD.jpg
 │   │   │   │   ├── USEA-Carnet-Stage-Education.jpg
 │   │   │   │   ├── USEA-Cherchez-la-chercheuse.jpg
+│   │   │   │   ├── carnet-de-stage-pro.jpg
+│   │   │   │   ├── eleves.jpg
+│   │   │   │   ├── equipe-pedago.jpg
+│   │   │   │   ├── offreurs.jpg
+│   │   │   │   ├── partenaires.jpg
+│   │   │   │   ├── referents.jpg
 │   │   │   │   └── versLinfini.jpg
 │   │   │   ├── email
 │   │   │   │   ├── footer-email.png
@@ -509,16 +530,18 @@
 │   │   │   │   └── web_illustration.png
 │   │   │   ├── icons
 │   │   │   │   ├── arrow_right.svg
+│   │   │   │   ├── boarding_house_pin.png
+│   │   │   │   ├── boarding_house_pin.svg
 │   │   │   │   ├── disabled_heart.svg
 │   │   │   │   ├── empty_heart.svg
 │   │   │   │   ├── file_copy_line.svg
-│   │   │   │   ├── full_heart_hover.svg
 │   │   │   │   ├── full_heart.svg
-│   │   │   │   ├── noun_building_353052.svg
+│   │   │   │   ├── full_heart_hover.svg
 │   │   │   │   ├── noun_Computer_2646597.svg
+│   │   │   │   ├── noun_Handshake_2803586-1.svg
+│   │   │   │   ├── noun_building_353052.svg
 │   │   │   │   ├── noun_group_Computeur_People.svg
 │   │   │   │   ├── noun_group_establishment.svg
-│   │   │   │   ├── noun_Handshake_2803586-1.svg
 │   │   │   │   ├── noun_job_offer_1461730-1.svg
 │   │   │   │   └── noun_people_3139638.svg
 │   │   │   ├── index.js
@@ -557,11 +580,12 @@
 │   │   │   │   │   ├── reseau.png
 │   │   │   │   │   └── school.svg
 │   │   │   │   └── teams
-│   │   │   │       ├── team_icon_plus.svg
-│   │   │   │       └── team.png
+│   │   │   │       ├── team.png
+│   │   │   │       └── team_icon_plus.svg
 │   │   │   ├── puce.svg
 │   │   │   ├── search-no-result.svg
 │   │   │   ├── sectors
+│   │   │   │   ├── Frame.svg
 │   │   │   │   ├── administration.svg
 │   │   │   │   ├── agriculture.svg
 │   │   │   │   ├── architecture.svg
@@ -584,12 +608,11 @@
 │   │   │   │   ├── enseignement.svg
 │   │   │   │   ├── environnement.svg
 │   │   │   │   ├── filiere_bois.svg
-│   │   │   │   ├── Frame.svg
 │   │   │   │   ├── gestion.svg
 │   │   │   │   ├── hotellerie_restauration.svg
 │   │   │   │   ├── immobilier.svg
-│   │   │   │   ├── industrie_alimentaire.svg
 │   │   │   │   ├── industrie.svg
+│   │   │   │   ├── industrie_alimentaire.svg
 │   │   │   │   ├── informatique.svg
 │   │   │   │   ├── marketing.svg
 │   │   │   │   ├── mecanique.svg
@@ -711,6 +734,7 @@
 │   │   ├── counter_updater_job.rb
 │   │   ├── desinterlace_school_signature_job.rb
 │   │   ├── geocode_internship_offers_job.rb
+│   │   ├── import_boarding_houses_job.rb
 │   │   ├── import_data_from_sygne_job.rb
 │   │   ├── migration_task_launch_job.rb
 │   │   ├── rebuild_review_job.rb
@@ -738,9 +762,9 @@
 │   │   ├── sync_internship_offer_keywords_job.rb
 │   │   ├── sync_production_databases_job.rb
 │   │   ├── triggered
+│   │   │   ├── README.md
 │   │   │   ├── employer_internship_applications_reminder_job.rb
 │   │   │   ├── internship_applications_expirer_job.rb
-│   │   │   ├── README.md
 │   │   │   ├── single_application_reminder_job.rb
 │   │   │   ├── single_application_second_reminder_job.rb
 │   │   │   ├── student_expired_internship_applications_notification_job.rb
@@ -829,13 +853,13 @@
 │   │   │   │   ├── dimension_by_school.rb
 │   │   │   │   ├── dimension_by_sector.rb
 │   │   │   │   └── stats_total.rb
-│   │   │   ├── school_kind.rb
 │   │   │   ├── school.rb
+│   │   │   ├── school_kind.rb
 │   │   │   ├── signature.rb
 │   │   │   ├── student.rb
 │   │   │   ├── team_member_invitation.rb
-│   │   │   ├── user_management_role.rb
 │   │   │   ├── user.rb
+│   │   │   ├── user_management_role.rb
 │   │   │   └── week_list.rb
 │   │   ├── rg2a_form_builder.rb
 │   │   ├── school_year
@@ -844,20 +868,21 @@
 │   │   │   ├── current.rb
 │   │   │   └── floating.rb
 │   │   ├── services
+│   │   │   ├── EduconnectConnection.rb
+│   │   │   ├── FimConnection.rb
+│   │   │   ├── README.md
 │   │   │   ├── agreements_a_posteriori.rb
 │   │   │   ├── api_requests_helper.rb
 │   │   │   ├── archiver.rb
+│   │   │   ├── boarding_house_importer.rb
 │   │   │   ├── captcha.rb
 │   │   │   ├── cegid_crawler.rb
 │   │   │   ├── counter_manager.rb
-│   │   │   ├── EduconnectConnection.rb
-│   │   │   ├── FimConnection.rb
 │   │   │   ├── immersion_facile.rb
 │   │   │   ├── omogen
+│   │   │   │   ├── sygne.rb
 │   │   │   │   ├── sygne_eleve.rb
-│   │   │   │   ├── sygne_responsible.rb
-│   │   │   │   └── sygne.rb
-│   │   │   ├── README.md
+│   │   │   │   └── sygne_responsible.rb
 │   │   │   ├── send_contact_immersion_facilite.rb
 │   │   │   ├── sms_sender.rb
 │   │   │   ├── sync_email_campaigns.rb
@@ -866,11 +891,12 @@
 │   │   ├── task_manager.rb
 │   │   ├── team.rb
 │   │   ├── triggers
-│   │   │   ├── internship_application_expirer.rb
 │   │   │   ├── README.md
+│   │   │   ├── internship_application_expirer.rb
 │   │   │   └── student_accepted_internship_application_reminder.rb
 │   │   └── user_manager.rb
 │   ├── mailers
+│   │   ├── README.md
 │   │   ├── application_mailer.rb
 │   │   ├── concerns
 │   │   │   └── layoutable.rb
@@ -878,20 +904,21 @@
 │   │   ├── employer_mailer.rb
 │   │   ├── god_mailer.rb
 │   │   ├── invitation_mailer.rb
-│   │   ├── README.md
 │   │   ├── school_manager_mailer.rb
 │   │   ├── statistician_mailer.rb
 │   │   ├── student_mailer.rb
 │   │   ├── teacher_mailer.rb
 │   │   └── user_mailer.rb
 │   ├── models
+│   │   ├── README.md
 │   │   ├── ability.rb
-│   │   ├── academy_region.rb
 │   │   ├── academy.rb
+│   │   ├── academy_region.rb
 │   │   ├── api
 │   │   │   └── school.rb
 │   │   ├── application_record.rb
 │   │   ├── area_notification.rb
+│   │   ├── boarding_house.rb
 │   │   ├── class_room.rb
 │   │   ├── concerns
 │   │   │   ├── .keep
@@ -925,8 +952,8 @@
 │   │   │   ├── week_helpers.rb
 │   │   │   ├── weekable.rb
 │   │   │   └── zipcodable.rb
-│   │   ├── corporation_internship_agreement.rb
 │   │   ├── corporation.rb
+│   │   ├── corporation_internship_agreement.rb
 │   │   ├── current.rb
 │   │   ├── department.rb
 │   │   ├── departments_operator.rb
@@ -939,19 +966,19 @@
 │   │   ├── internship_agreements
 │   │   │   ├── mono_internship_agreement.rb
 │   │   │   └── multi_internship_agreement.rb
+│   │   ├── internship_application.rb
 │   │   ├── internship_application_state_change.rb
 │   │   ├── internship_application_week.rb
-│   │   ├── internship_application.rb
 │   │   ├── internship_applications
 │   │   │   ├── multi.rb
 │   │   │   └── weekly_framed.rb
 │   │   ├── internship_occupation.rb
+│   │   ├── internship_offer.rb
 │   │   ├── internship_offer_area.rb
 │   │   ├── internship_offer_grade.rb
 │   │   ├── internship_offer_keyword.rb
 │   │   ├── internship_offer_stats.rb
 │   │   ├── internship_offer_week.rb
-│   │   ├── internship_offer.rb
 │   │   ├── internship_offers
 │   │   │   ├── api.rb
 │   │   │   ├── multi.rb
@@ -962,38 +989,38 @@
 │   │   ├── multi_activity.rb
 │   │   ├── multi_coordinator.rb
 │   │   ├── multi_corporation.rb
+│   │   ├── multi_planning.rb
 │   │   ├── multi_planning_grade.rb
 │   │   ├── multi_planning_reserved_school.rb
 │   │   ├── multi_planning_week.rb
-│   │   ├── multi_planning.rb
 │   │   ├── operator.rb
+│   │   ├── planning.rb
 │   │   ├── planning_grade.rb
 │   │   ├── planning_reserved_school.rb
 │   │   ├── planning_week.rb
-│   │   ├── planning.rb
-│   │   ├── README.md
 │   │   ├── reporting
 │   │   │   ├── internship_application.rb
 │   │   │   ├── internship_offer.rb
 │   │   │   ├── kpi.rb
 │   │   │   └── school.rb
 │   │   ├── reserved_school.rb
+│   │   ├── school.rb
 │   │   ├── school_internship_week.rb
 │   │   ├── school_track
 │   │   │   ├── base.rb
 │   │   │   ├── seconde.rb
 │   │   │   └── troisieme.rb
-│   │   ├── school.rb
 │   │   ├── sector.rb
 │   │   ├── signature.rb
 │   │   ├── support_ticket.rb
 │   │   ├── task_register.rb
 │   │   ├── team_member_invitation.rb
 │   │   ├── url_shrinker.rb
+│   │   ├── user.rb
 │   │   ├── user_group.rb
 │   │   ├── user_school.rb
-│   │   ├── user.rb
 │   │   ├── users
+│   │   │   ├── README.md
 │   │   │   ├── academy_region_statistician.rb
 │   │   │   ├── academy_statistician.rb
 │   │   │   ├── education_statistician.rb
@@ -1002,7 +1029,6 @@
 │   │   │   ├── ministry_statistician.rb
 │   │   │   ├── operator.rb
 │   │   │   ├── prefecture_statistician.rb
-│   │   │   ├── README.md
 │   │   │   ├── school_management.rb
 │   │   │   ├── statistician.rb
 │   │   │   ├── student.rb
@@ -1040,17 +1066,17 @@
 │       │   │   ├── _validation_modal.html.slim
 │       │   │   ├── edit.slim
 │       │   │   ├── employer
+│       │   │   │   ├── _form.html.slim
 │       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _form_footer.html.slim
-│       │   │   │   ├── _form.html.slim
 │       │   │   │   └── _index.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   ├── multi
 │       │   │   │   ├── _corporations_signature_status_modal.html.slim
-│       │   │   │   ├── _employer_form_fields.html.slim
 │       │   │   │   ├── _employer_form.html.slim
-│       │   │   │   ├── _form_fields.html.slim
+│       │   │   │   ├── _employer_form_fields.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _multi_employer_form.html.slim
 │       │   │   │   ├── _multi_internship_agreement.html.slim
 │       │   │   │   ├── _multi_internship_agreements_list.html.slim
@@ -1058,8 +1084,8 @@
 │       │   │   │   └── _small_card_content.html.slim
 │       │   │   ├── new.slim
 │       │   │   ├── school_management
-│       │   │   │   ├── _form_footer.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_footer.html.slim
 │       │   │   │   ├── _index.html.slim
 │       │   │   │   └── _signature.html.slim
 │       │   │   ├── shared
@@ -1077,8 +1103,8 @@
 │       │   │       ├── _digit_code_form.html.slim
 │       │   │       ├── _flash_new_code.html.slim
 │       │   │       ├── _modal_code_submit.html.slim
-│       │   │       ├── _modal_dialog_multi.html.slim
 │       │   │       ├── _modal_dialog.html.slim
+│       │   │       ├── _modal_dialog_multi.html.slim
 │       │   │       ├── _modal_handwrite_sign.html.slim
 │       │   │       ├── _modal_phone_request.html.slim
 │       │   │       └── _update_error_messages.html.slim
@@ -1089,8 +1115,8 @@
 │       │   │   ├── _edit_areas_modal_dialog.html.slim
 │       │   │   ├── area_notifications
 │       │   │   │   ├── _flip_notification.html.slim
-│       │   │   │   ├── _toggle_dashboard.html.slim
-│       │   │   │   └── _toggle.html.slim
+│       │   │   │   ├── _toggle.html.slim
+│       │   │   │   └── _toggle_dashboard.html.slim
 │       │   │   ├── edit.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   └── new.html.slim
@@ -1109,8 +1135,8 @@
 │       │   │   ├── _sidemenu.html.slim
 │       │   │   ├── _sort_column_head.html.slim
 │       │   │   ├── _sort_links.html.slim
-│       │   │   ├── _table_header.html.slim
 │       │   │   ├── _table.html.slim
+│       │   │   ├── _table_header.html.slim
 │       │   │   ├── _tabs.html.slim
 │       │   │   ├── _toggle_publish_element.html.slim
 │       │   │   ├── _toggle_publish_form.html.slim
@@ -1118,14 +1144,14 @@
 │       │   │   ├── edit.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   ├── internship_applications
-│       │   │   │   ├── _action_modal_dialog.html.slim
 │       │   │   │   ├── _action_modal.html.slim
+│       │   │   │   ├── _action_modal_dialog.html.slim
 │       │   │   │   ├── _approved_or_pending.html.slim
 │       │   │   │   ├── _convention_signed_modal.html.slim
 │       │   │   │   ├── _employer_contact.html.slim
 │       │   │   │   ├── _expired.html.slim
-│       │   │   │   ├── _internship_application_header.html.slim
 │       │   │   │   ├── _internship_application.html.slim
+│       │   │   │   ├── _internship_application_header.html.slim
 │       │   │   │   ├── _received.html.slim
 │       │   │   │   ├── _rejected.html.slim
 │       │   │   │   ├── _show_modal.slim
@@ -1147,13 +1173,13 @@
 │       │   ├── multi_stepper
 │       │   │   ├── _summary_card.html.slim
 │       │   │   ├── multi_activities
-│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── edit.slim
 │       │   │   │   └── new.slim
 │       │   │   ├── multi_coordinators
-│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── edit.slim
 │       │   │   │   └── new.slim
 │       │   │   ├── multi_corporations
@@ -1185,8 +1211,8 @@
 │       │   │   │   ├── new.html.slim
 │       │   │   │   ├── show.html.slim
 │       │   │   │   └── students
-│       │   │   │       ├── _student_form.html.slim
 │       │   │   │       ├── _student.slim
+│       │   │   │       ├── _student_form.html.slim
 │       │   │   │       ├── index.html.slim
 │       │   │   │       └── new.html.slim
 │       │   │   ├── edit.html.slim
@@ -1196,8 +1222,8 @@
 │       │   │   │   └── new.html.slim
 │       │   │   ├── show.html.slim
 │       │   │   └── users
-│       │   │       ├── _invited_school_employee_simple.html.slim
 │       │   │       ├── _invited_school_employee.html.slim
+│       │   │       ├── _invited_school_employee_simple.html.slim
 │       │   │       ├── _school_employee.html.slim
 │       │   │       ├── _student.html.slim
 │       │   │       └── index.html.slim
@@ -1207,13 +1233,13 @@
 │       │   │   ├── _summary_card.html.slim
 │       │   │   ├── _warning_block.html.slim
 │       │   │   ├── entreprises
-│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── edit.slim
 │       │   │   │   └── new.slim
 │       │   │   ├── internship_occupations
-│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _form.html.slim
+│       │   │   │   ├── _form_fields.html.slim
 │       │   │   │   ├── _good_practice_accordions.html.slim
 │       │   │   │   ├── _risks_alert.html.slim
 │       │   │   │   ├── edit.slim
@@ -1221,8 +1247,8 @@
 │       │   │   └── plannings
 │       │   │       ├── _collective_or_individual_radio_buttons.html.slim
 │       │   │       ├── _daily_hours.slim
-│       │   │       ├── _form_fields.html.slim
 │       │   │       ├── _form.html.slim
+│       │   │       ├── _form_fields.html.slim
 │       │   │       ├── _seconde_period_radio_buttons_fields.html.slim
 │       │   │       ├── edit.html.slim
 │       │   │       └── new.slim
@@ -1291,8 +1317,8 @@
 │       ├── inappropriate_offers
 │       │   └── manage.html.slim
 │       ├── inputs
-│       │   ├── _date_input_dsfr.html.slim
 │       │   ├── _date_input.html.slim
+│       │   ├── _date_input_dsfr.html.slim
 │       │   ├── _dsfr_checkbox_field.html.slim
 │       │   ├── _dsfr_input_field.html.slim
 │       │   ├── _dsfr_radio_field.html.slim
@@ -1318,14 +1344,14 @@
 │       │   ├── new.html.slim
 │       │   └── show.html.slim
 │       ├── internship_offers
-│       │   ├── _apply_cta_bottom.html.slim
 │       │   ├── _apply_cta.html.slim
+│       │   ├── _apply_cta_bottom.html.slim
 │       │   ├── _card.html.slim
 │       │   ├── _flag_internship_offer_modal.html.slim
 │       │   ├── _internship_offer.html.slim
 │       │   ├── _navigation.html.slim
-│       │   ├── _show_details_bottom.html.slim
 │       │   ├── _show_details.html.slim
+│       │   ├── _show_details_bottom.html.slim
 │       │   ├── _show_side_details.html.slim
 │       │   ├── _sig_link.html.slim
 │       │   ├── _tags.html.slim
@@ -1497,10 +1523,10 @@
 │       │   │   ├── _1_2_3.html.slim
 │       │   │   ├── _dispositif.html.slim
 │       │   │   ├── _elevator.html.slim
-│       │   │   ├── _everyone_reverse.html.slim
 │       │   │   ├── _everyone.html.slim
-│       │   │   ├── _howitworks_pro.html.slim
+│       │   │   ├── _everyone_reverse.html.slim
 │       │   │   ├── _howitworks.html.slim
+│       │   │   ├── _howitworks_pro.html.slim
 │       │   │   ├── _internship_offers.html.slim
 │       │   │   ├── _last_offers.html.slim
 │       │   │   ├── _livestorm.html.slim
@@ -1514,13 +1540,13 @@
 │       │   │   ├── _top_nav.html.slim
 │       │   │   ├── _webinar.html.slim
 │       │   │   ├── everyone
-│       │   │   │   ├── _become_partner.html.slim
 │       │   │   │   ├── _BO.html.slim
+│       │   │   │   ├── _become_partner.html.slim
 │       │   │   │   ├── _everyone_faq.html.slim
 │       │   │   │   ├── _everyone_resources.html.slim
 │       │   │   │   ├── _faq_in_cards.html.slim
-│       │   │   │   ├── _hero_everyone_cards.html.slim
 │       │   │   │   ├── _hero_everyone.html.slim
+│       │   │   │   ├── _hero_everyone_cards.html.slim
 │       │   │   │   ├── _newsletter.html.slim
 │       │   │   │   ├── _onisep.html.slim
 │       │   │   │   └── _usefull_resources.html.slim
@@ -1584,6 +1610,9 @@
 │       │   ├── statistiques.html.slim
 │       │   ├── student_landing.html.slim
 │       │   └── student_login.html.slim
+│       ├── public
+│       │   └── internship_agreements
+│       │       └── show.html.slim
 │       ├── rails_admin
 │       │   └── main
 │       │       ├── _autocomplete_address.html.slim
@@ -1595,6 +1624,11 @@
 │       │   ├── _school_years_filter.html.slim
 │       │   ├── _statistics_header.html.slim
 │       │   ├── _tabs.html.slim
+│       │   ├── boarding_houses
+│       │   │   ├── _form.html.slim
+│       │   │   ├── edit.html.slim
+│       │   │   ├── index.html.slim
+│       │   │   └── new.html.slim
 │       │   ├── dashboards
 │       │   │   ├── _index.html.slim
 │       │   │   └── index.html.slim
@@ -1616,9 +1650,9 @@
 │       │   │   ├── _internship_no_offer.html.slim
 │       │   │   ├── _internship_offer.html.slim
 │       │   │   ├── employers_offers.html.slim
+│       │   │   ├── index.html.slim
 │       │   │   ├── index_offers.xlsx.axlsx
-│       │   │   ├── index_stats.xlsx.axlsx
-│       │   │   └── index.html.slim
+│       │   │   └── index_stats.xlsx.axlsx
 │       │   ├── operators
 │       │   │   ├── _index.html.slim
 │       │   │   ├── _operator.html.slim
@@ -1665,13 +1699,13 @@
 │       │   │   └── statistician_standby.html.slim
 │       │   ├── sessions
 │       │   │   └── cards
-│       │   │       ├── _education_test.html.slim
 │       │   │       ├── _education.html.slim
+│       │   │       ├── _education_test.html.slim
 │       │   │       ├── _professional.html.slim
-│       │   │       ├── _statistician_test.html.slim
 │       │   │       ├── _statistician.html.slim
-│       │   │       ├── _student_test.html.slim
-│       │   │       └── _student.html.slim
+│       │   │       ├── _statistician_test.html.slim
+│       │   │       ├── _student.html.slim
+│       │   │       └── _student_test.html.slim
 │       │   ├── transform_form.html.slim
 │       │   └── transform_input.html.slim
 │       └── weeks
@@ -1680,6 +1714,7 @@
 ├── babel.config.js
 ├── bin
 │   ├── bundle
+│   ├── dev
 │   ├── rails
 │   ├── rake
 │   ├── rubocop
@@ -1773,13 +1808,14 @@
 │   │   ├── 07_05_2025_data_bc.csv
 │   │   ├── 2025-05-15_group_updates.csv
 │   │   ├── 2025-06-12_data_bc.csv
+│   │   ├── Question_result_2024-06-19_light.csv
 │   │   ├── annuaire_lycees.csv
 │   │   ├── bc_20_juin_2025.csv
 │   │   ├── departement.txt
 │   │   ├── fr-en-adresse-et-geolocalisation-etablissements-premier-et-second-degre.csv
 │   │   ├── fr-en-annuaire-education_lycees.csv
-│   │   ├── geocode_cache_qpv_proche.dump
 │   │   ├── geocode_cache.dump
+│   │   ├── geocode_cache_qpv_proche.dump
 │   │   ├── group_id_update_2.csv
 │   │   ├── group_id_update_3.csv
 │   │   ├── light_files
@@ -1787,22 +1823,21 @@
 │   │   │   ├── school_data_ms3e_light.csv
 │   │   │   └── seed-colleges-light.csv
 │   │   ├── noms_de_classes.csv
-│   │   ├── Question_result_2024-06-19_light.csv
 │   │   ├── school_data_ms3e.csv
 │   │   ├── school_public_prive.csv
 │   │   ├── sectors.yml
 │   │   ├── seed-colleges.csv
 │   │   ├── sources_EN
 │   │   │   ├── .~lock.lycees_collleges.csv#
+│   │   │   ├── LYCEE_220524_simplified.csv
+│   │   │   ├── Liste_etablissements.csv
+│   │   │   ├── Stage Seconde - extraction des noms de classes.xlsx
 │   │   │   ├── annuaire listing.xlsx
 │   │   │   ├── colleges_to_create_valides.csv
 │   │   │   ├── fr-colleges-qpv.csv
 │   │   │   ├── liste_etablissements_complete.csv
-│   │   │   ├── Liste_etablissements.csv
-│   │   │   ├── LYCEE_220524_simplified.csv
 │   │   │   ├── lycees_colleges.csv
-│   │   │   ├── lycees_pro_filtered.csv
-│   │   │   └── Stage Seconde - extraction des noms de classes.xlsx
+│   │   │   └── lycees_pro_filtered.csv
 │   │   └── trash
 │   │       ├── 2020_06_23-keywords_json.dump
 │   │       ├── fr-en-adresse-et-geolocalisation-etablissements-premier-et-second-degre.csv
@@ -2285,7 +2320,8 @@
 │   │   ├── 20260102092331_remove_weekly_lunch_break_field.rb
 │   │   ├── 20260115112842_add_pre_selected_for_signature_to_internship_agreement.rb
 │   │   ├── 20260126172713_create_letter_thief_email_messages.rb
-│   │   └── 20260203214306_remove_internship_offer_infos_tables.rb
+│   │   ├── 20260203214306_remove_internship_offer_infos_tables.rb
+│   │   └── 20260309162833_create_boarding_houses.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
@@ -2306,8 +2342,8 @@
 │   │   ├── v1
 │   │   │   └── README.md
 │   │   └── v2
-│   │       ├── README_EN.md
-│   │       └── README.md
+│   │       ├── README.md
+│   │       └── README_EN.md
 │   ├── api_doc_en.md
 │   ├── env.dev
 │   ├── env.sample
@@ -2398,8 +2434,6 @@
 │       ├── logged.png
 │       └── login.png
 ├── dump.rdb
-├── Gemfile
-├── Gemfile.lock
 ├── infra
 │   ├── dev
 │   │   ├── clean_clevercloud_default_extensions.sql
@@ -2450,6 +2484,7 @@
 │   ├── sti_preload.rb
 │   └── tasks
 │       ├── .keep
+│       ├── boarding_houses.rake
 │       ├── data_migrations
 │       │   ├── checks.rake
 │       │   ├── create_data.rake
@@ -2516,29 +2551,26 @@
 │           ├── archiving.rake
 │           ├── confidentiality_cleaning.rake
 │           └── db_description.rake
-├── LICENSE
 ├── log
 │   └── .keep
 ├── package.json
 ├── postcss.config.js
-├── Procfile
-├── Procfile.dev
 ├── public
 │   ├── 404.html
 │   ├── 422.html
 │   ├── 500.html
 │   ├── 6f12d09346c9fefdab100a5b0e447dc6.txt
 │   ├── assets
-│   │   ├── boy_girl.svg
 │   │   ├── boy.svg
+│   │   ├── boy_girl.svg
 │   │   ├── emails
 │   │   │   ├── footer-email.png
 │   │   │   ├── header-email.png
 │   │   │   └── logo-education-nationale.png
 │   │   ├── fonts
+│   │   │   ├── arial.ttf
 │   │   │   ├── arial_bold.ttf
-│   │   │   ├── arial_italic.ttf
-│   │   │   └── arial.ttf
+│   │   │   └── arial_italic.ttf
 │   │   ├── girl.svg
 │   │   ├── insta.png
 │   │   ├── linked_in.png
@@ -2554,15 +2586,12 @@
 │   ├── maintenance.css
 │   ├── maintenance.html
 │   └── robots.txt
-├── Rakefile
-├── README.md
 ├── signature_storage
 │   └── .keep
 ├── src
 │   └── Taskfile.yml
 ├── storage
 │   └── .keep
-├── Taskfile.yml
 ├── test
 │   ├── application_system_test_case.rb
 │   ├── components
@@ -2598,6 +2627,7 @@
 │   │   │           └── index_test.rb
 │   │   ├── api_address_proxy_controller_test.rb
 │   │   ├── application_controller_test.rb
+│   │   ├── boarding_houses_controller_test.rb
 │   │   ├── callbacks_controller_test.rb
 │   │   ├── dashboard
 │   │   │   ├── corporation_internship_agreements
@@ -2677,6 +2707,7 @@
 │   │   ├── offer_types_switchings_controller_test.rb
 │   │   ├── pages_controller_test.rb
 │   │   ├── reporting
+│   │   │   ├── boarding_houses_controller_test.rb
 │   │   │   ├── dashboards_controller_test.rb
 │   │   │   ├── employers_internship_offers_controller_test.rb
 │   │   │   ├── internship_offers_controller_test.rb
@@ -2706,6 +2737,7 @@
 │   │   ├── academies.rb
 │   │   ├── academy_regions.rb
 │   │   ├── area_notifications.rb
+│   │   ├── boarding_houses.rb
 │   │   ├── class_rooms.rb
 │   │   ├── corporation_internship_agreements.rb
 │   │   ├── corporations.rb
@@ -2754,9 +2786,9 @@
 │   │   │   ├── api-insee-adresse-east-side-software.json
 │   │   │   ├── api-insee-mairie-st-ouen.json
 │   │   │   ├── educonnect_token.json
+│   │   │   ├── educonnect_userinfo.json
 │   │   │   ├── educonnect_userinfo_responsible.json
 │   │   │   ├── educonnect_userinfo_unknown.json
-│   │   │   ├── educonnect_userinfo.json
 │   │   │   ├── prismic-homepage-response.dump
 │   │   │   ├── signature
 │   │   │   ├── signature.json
@@ -2843,6 +2875,7 @@
 │   │   ├── api
 │   │   │   └── school_test.rb
 │   │   ├── area_notification_test.rb
+│   │   ├── boarding_house_test.rb
 │   │   ├── class_room_test.rb
 │   │   ├── corporation_internship_agreement_test.rb
 │   │   ├── corporation_test.rb
@@ -2950,8 +2983,8 @@
 │   │   ├── devise
 │   │   │   ├── confirmations_flow.rb
 │   │   │   ├── email_update_flow_test.rb
-│   │   │   ├── forgotten_password_flow_test.rb
 │   │   │   ├── forgotten_password_flow.rb
+│   │   │   ├── forgotten_password_flow_test.rb
 │   │   │   ├── password_flow.rb
 │   │   │   ├── sign_in_flow.rb
 │   │   │   ├── sign_up_employers_test.rb
@@ -2987,4 +3020,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-394 directories, 2603 files
+403 directories, 2627 files
