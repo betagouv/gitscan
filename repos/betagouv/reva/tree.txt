@@ -1372,6 +1372,9 @@
     │   │   │   │   │       │   ├── addCertification.hook.ts
     │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │       └── page.tsx
+    │   │   │   │   ├── fc-sandbox-cleanup
+    │   │   │   │   │   ├── fcSandboxCleanup.hook.ts
+    │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── features
     │   │   │   │   │   ├── featuresPage.hook.tsx
     │   │   │   │   │   └── page.tsx
@@ -1461,11 +1464,15 @@
     │   │   │   │   │   │   │   │   ├── juryDatePageLogic.ts
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   └── resultat
-    │   │   │   │   │   │   │       ├── HistoryResultatView.tsx
     │   │   │   │   │   │   │       ├── Resultat.tsx
     │   │   │   │   │   │   │       ├── ResultatByBlocks.tsx
-    │   │   │   │   │   │   │       ├── ResultatCard.tsx
-    │   │   │   │   │   │   │       ├── ResultatCardWithBlocks.tsx
+    │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │       │   ├── ConfirmJuryResultModal.tsx
+    │   │   │   │   │   │   │       │   ├── FeasibilityCompetenceBlocksModal.tsx
+    │   │   │   │   │   │   │       │   ├── HistoryResultatView.tsx
+    │   │   │   │   │   │   │       │   ├── ResultatCard.tsx
+    │   │   │   │   │   │   │       │   ├── ResultatCardWithBlocks.tsx
+    │   │   │   │   │   │   │       │   └── RevokeJuryDecisionModal.tsx
     │   │   │   │   │   │   │       ├── juryResultPageLogic.ts
     │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   ├── layout.tsx
@@ -2050,6 +2057,7 @@
     │   │   │   ├── account.graphql
     │   │   │   ├── account.loaders.ts
     │   │   │   ├── account.resolvers.ts
+    │   │   │   ├── account.routes.test.ts
     │   │   │   ├── account.routes.ts
     │   │   │   ├── account.type.ts
     │   │   │   ├── account.types.ts
@@ -2057,6 +2065,7 @@
     │   │   │   │   ├── createAccount.ts
     │   │   │   │   ├── deleteAccount.ts
     │   │   │   │   ├── disableAccount.ts
+    │   │   │   │   ├── france-connect-authorize.test.ts
     │   │   │   │   ├── france-connect-authorize.ts
     │   │   │   │   ├── france-connect-birthplace.test.ts
     │   │   │   │   ├── france-connect-birthplace.ts
@@ -2066,6 +2075,7 @@
     │   │   │   │   ├── getAccount.ts
     │   │   │   │   ├── getAccountByEmail.ts
     │   │   │   │   ├── getAccountByKeycloakId.ts
+    │   │   │   │   ├── handleFranceConnectCallback.test.ts
     │   │   │   │   ├── handleFranceConnectCallback.ts
     │   │   │   │   ├── impersonate.ts
     │   │   │   │   ├── keycloak.ts
@@ -2274,13 +2284,9 @@
     │   │   │   ├── emails
     │   │   │   │   ├── sendForgotPasswordEmail.ts
     │   │   │   │   ├── sendLoginEmail.ts
-    │   │   │   │   ├── sendRegistrationEmailToCandidateAccompagne.ts
-    │   │   │   │   ├── sendRegistrationEmailToCandidateAutonome.ts
     │   │   │   │   ├── sendRegistrationWithPasswordEmail.ts
     │   │   │   │   └── sendUnknownUserEmail.ts
     │   │   │   ├── features
-    │   │   │   │   ├── candidateAskForLogin.ts
-    │   │   │   │   ├── candidateAskForRegistration.ts
     │   │   │   │   ├── candidateAskForRegistrationWithPassword.test.ts
     │   │   │   │   ├── candidateAskForRegistrationWithPassword.ts
     │   │   │   │   ├── candidateFinalizeRegistrationWithPassword.test.ts
@@ -2290,12 +2296,16 @@
     │   │   │   │   ├── candidateLoginWithToken.ts
     │   │   │   │   ├── candidateResetPassword.test.ts
     │   │   │   │   ├── candidateResetPassword.ts
-    │   │   │   │   ├── createCandidateWithCandidacy.ts
+    │   │   │   │   ├── deleteFranceConnectSandboxCandidates.test.ts
+    │   │   │   │   ├── deleteFranceConnectSandboxCandidates.ts
+    │   │   │   │   ├── franceConnectSandboxEmails.constant.ts
     │   │   │   │   ├── getCandidateByCandidacyId.ts
     │   │   │   │   ├── getCandidateById.ts
     │   │   │   │   ├── getCandidateByKeycloakId.ts
     │   │   │   │   ├── getCivilInformationCompletedByCandidateId.ts
     │   │   │   │   ├── getContactInformationCompletedByCandidateId.ts
+    │   │   │   │   ├── getFranceConnectSandboxCandidates.test.ts
+    │   │   │   │   ├── getFranceConnectSandboxCandidates.ts
     │   │   │   │   ├── getHighestDegreeById.ts
     │   │   │   │   ├── getNiveauDeFormationLePlusEleve.ts
     │   │   │   │   ├── getTypologyAndCollectiveAgreementCompletedByCandidateId.ts
@@ -2747,7 +2757,6 @@
     │   │   │   │   ├── getReorientationReasons.ts
     │   │   │   │   ├── getVulnerabilityIndicators.ts
     │   │   │   │   ├── isAapAvailableForCertificationId.ts
-    │   │   │   │   ├── isCertificationAvailable.ts
     │   │   │   │   ├── replaceCertification.test.ts
     │   │   │   │   ├── replaceCertification.ts
     │   │   │   │   ├── resetCompetenceBlocsByCertificationId.ts
@@ -4256,6 +4265,14 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260415084521_remove_feature_flag_cgu_certificateur
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260416144959_delete_candidate_registration_confirmed_candidacy_log
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260416152815_remove_feature_flag_disable_candidate_magic_link_login
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260417071405_add_last_login_via_france_connect_at_in_candidate_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260417114603_add_france_connect_sandbox_cleanup_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4350,7 +4367,8 @@
     │   │   │   │   ├── create-payment-request-unifvae-helper.ts
     │   │   │   │   ├── create-payment-request-unireva-helper.ts
     │   │   │   │   ├── create-reorientation-reason-helper.ts
-    │   │   │   │   └── create-vae-collective-helper.ts
+    │   │   │   │   ├── create-vae-collective-helper.ts
+    │   │   │   │   └── fc-claims-helper.ts
     │   │   │   ├── graphql-helper.ts
     │   │   │   └── pdf
     │   │   │       └── pdfTestHelper.ts
@@ -4380,7 +4398,6 @@
     │   │   ├── e2e
     │   │   │   ├── dashboard
     │   │   │   │   ├── dashboard-banner.cy.js
-    │   │   │   │   ├── dashboard-sidebar-contacts-tile.cy.ts
     │   │   │   │   └── dashboard-tiles.cy.ts
     │   │   │   └── organism.cy.ts
     │   │   ├── fixtures
@@ -4397,7 +4414,6 @@
     │   │   │   ├── candidate1.json
     │   │   │   ├── candidate_loginWithToken.json
     │   │   │   ├── features.json
-    │   │   │   ├── login.json
     │   │   │   ├── organism.json
     │   │   │   └── selected-organism.json
     │   │   ├── global.d.ts
@@ -4562,8 +4578,6 @@
     │   │   │   │   ├── layout.tsx
     │   │   │   │   ├── login
     │   │   │   │   │   ├── login.hooks.ts
-    │   │   │   │   │   └── page.tsx
-    │   │   │   │   ├── login-confirmation
     │   │   │   │   │   └── page.tsx
     │   │   │   │   ├── logout-confirmation
     │   │   │   │   │   └── page.tsx
@@ -4981,7 +4995,8 @@
     │   │   │           └── get-candidacy-by-id-with-candidate-for-validate-feasibility.json
     │   │   ├── helpers
     │   │   │   ├── auth
-    │   │   │   │   └── auth.ts
+    │   │   │   │   ├── auth.ts
+    │   │   │   │   └── france-connect.ts
     │   │   │   ├── certification-page-tabs-visibility.ts
     │   │   │   ├── entities
     │   │   │   │   ├── create-candidacy-dropout.entity.ts
@@ -5021,7 +5036,10 @@
     │   │   │       └── requests.ts
     │   │   └── specs
     │   │       ├── auth
+    │   │       │   ├── login-france-connect.spec.ts
     │   │       │   ├── login.spec.ts
+    │   │       │   ├── logout.spec.ts
+    │   │       │   ├── register-france-connect.spec.ts
     │   │       │   └── register.spec.ts
     │   │       ├── candidacies
     │   │       │   ├── archive-candidacy.spec.ts
@@ -5041,6 +5059,7 @@
     │   │       │   │   ├── candidacy-dropout-decision.spec.ts
     │   │       │   │   └── candidacy-dropout-warning.spec.ts
     │   │       │   ├── dashboard-sidebar-appointments-tile.spec.ts
+    │   │       │   ├── dashboard-sidebar-contacts-tile.spec.ts
     │   │       │   ├── dashboard.spec.ts
     │   │       │   ├── dossier-de-faisabilite
     │   │       │   │   └── dossier-de-faisabilite.spec.ts
@@ -5465,8 +5484,6 @@
         │   │   ├── image-home-character-young-man-glasses.png
         │   │   ├── image-home-faites-valider-vos-competences.png
         │   │   ├── image-home-section-4.png
-        │   │   ├── pictograms
-        │   │   │   └── avatar.svg
         │   │   ├── polygon-financer
         │   │   │   ├── polygon-financer-blue.svg
         │   │   │   ├── polygon-financer-orange.svg
@@ -5648,8 +5665,6 @@
         │   │   │       └── page.tsx
         │   │   ├── cgu
         │   │   │   └── page.tsx
-        │   │   ├── commencer
-        │   │   │   └── page.tsx
         │   │   ├── confidentialite
         │   │   │   └── page.tsx
         │   │   ├── declaration-accessibilite
@@ -5815,4 +5830,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-1954 directories, 3863 files
+1957 directories, 3875 files
