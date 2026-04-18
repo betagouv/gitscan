@@ -25,6 +25,8 @@
 ├── bin
 │   ├── build_assets.sh
 │   ├── copy_catchmentarea.sh
+│   ├── copy_lines_to_prod.sh
+│   ├── copy_maps.sh
 │   ├── copy_polygons.sh
 │   ├── first_deploy.sh
 │   ├── merge_production_dotenvs_in_dotenv.py
@@ -178,7 +180,11 @@
 │   │           ├── __init__.py
 │   │           └── factories.py
 │   ├── decorators
-│   │   └── csp.py
+│   │   ├── __init__.py
+│   │   ├── csp.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       └── test_csp.py
 │   ├── demos
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -268,6 +274,8 @@
 │   │   │   ├── 0055_request_obfuscation_key.py
 │   │   │   ├── 0056_request_obfuscation_key_populate.py
 │   │   │   ├── 0057_request_obfuscation_key_nullable.py
+│   │   │   ├── 0058_add_evaluation_snapshot.py
+│   │   │   ├── 0059_recipientstatus_reject_reason_default.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── redirect_urls.py
@@ -341,13 +349,18 @@
 │   │   │   ├── 0025_alter_line_geometry.py
 │   │   │   ├── 0025_alter_line_geometry_alter_map_geometry.py
 │   │   │   ├── 0026_merge_20260113_1515.py
+│   │   │   ├── 0027_alter_line_geometry.py
+│   │   │   ├── 0028_alter_map_map_type.py
+│   │   │   ├── 0028_fix_terres_emergees_names.py
+│   │   │   ├── 0029_merge_20260413_1454.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tasks.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
-│   │   │   └── test_models.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_utils.py
 │   │   ├── urls.py
 │   │   ├── utils.py
 │   │   └── views.py
@@ -391,6 +404,9 @@
 │   │   │   ├── 0023_rename_pacage_pacage_pacage_num.py
 │   │   │   ├── 0024_update_hedgedata_density.py
 │   │   │   ├── 0025_update_hedgedata_density_bis.py
+│   │   │   ├── 0026_alter_speciesmap_hedge_types.py
+│   │   │   ├── 0027_rename_proximite_point_eau_to_ripisylve.py
+│   │   │   ├── 0028_hedgedata_length_fields.py
 │   │   │   ├── __init__.py
 │   │   │   └── ep_aisne.csv
 │   │   ├── models.py
@@ -552,8 +568,18 @@
 │   │   │   ├── 0102_remove_criterion_validity_date_end_gte_start_and_more.py
 │   │   │   ├── 0103_remove_criterion_validity_date_end_gt_start_and_more.py
 │   │   │   ├── 0104_alter_actiontotake_slug.py
+│   │   │   ├── 0104_alter_actiontotake_slug_and_more.py
 │   │   │   ├── 0104_config_validity_range.py
+│   │   │   ├── 0105_alter_actiontotake_slug_and_more.py
 │   │   │   ├── 0105_merge_20260219_1028.py
+│   │   │   ├── 0106_alter_configamenagement_is_activated_and_more.py
+│   │   │   ├── 0106_merge_20260224_1127.py
+│   │   │   ├── 0106_remove_confighaie_single_procedure_requires_coeff_compensation_and_more.py
+│   │   │   ├── 0107_alter_configamenagement_regulations_available_and_more.py
+│   │   │   ├── 0108_merge_20260317_1225.py
+│   │   │   ├── 0109_merge_20260318_0620.py
+│   │   │   ├── 0110_alter_actiontotake_slug_and_more.py
+│   │   │   ├── 0111_confighaie_contacts_info.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -571,6 +597,7 @@
 │   │   │   ├── mixins.py
 │   │   │   ├── natura2000.py
 │   │   │   ├── natura2000_haie.py
+│   │   │   ├── protection_captages.py
 │   │   │   ├── regime_unique_haie.py
 │   │   │   ├── reserves_naturelles.py
 │   │   │   ├── sage.py
@@ -591,6 +618,7 @@
 │   │   │   ├── test_code_rural_haie.py
 │   │   │   ├── test_conditionnalite_pac.py
 │   │   │   ├── test_ep.py
+│   │   │   ├── test_ep_regime_unique.py
 │   │   │   ├── test_evalenv.py
 │   │   │   ├── test_fields.py
 │   │   │   ├── test_loisurleau.py
@@ -600,6 +628,7 @@
 │   │   │   ├── test_natura2000.py
 │   │   │   ├── test_natura2000_haie.py
 │   │   │   ├── test_optional_criteria.py
+│   │   │   ├── test_protection_captages.py
 │   │   │   ├── test_regime_unique_haie.py
 │   │   │   ├── test_regime_unique_results.py
 │   │   │   ├── test_reserves_naturelles.py
@@ -649,9 +678,8 @@
 │   │   │   │   ├── Coriandrum_sativum.jpg
 │   │   │   │   ├── fake_createupload_response.json
 │   │   │   │   ├── fake_dossier.json
-│   │   │   │   ├── fake_dossier_messages.json
-│   │   │   │   ├── fake_dossier_messages_0.json
-│   │   │   │   ├── fake_dossier_messages_error.json
+│   │   │   │   ├── fake_dossier_0_messages.json
+│   │   │   │   ├── fake_dossier_error.json
 │   │   │   │   ├── fake_dossier_messages_error_attachment.json
 │   │   │   │   ├── fake_dossier_send_message.json
 │   │   │   │   ├── fake_dossier_send_message_attachment.json
@@ -718,6 +746,15 @@
 │   │   │   ├── 0039_remove_statuslog_response_due_date.py
 │   │   │   ├── 0040_petitionproject_decision_and_more.py
 │   │   │   ├── 0041_alter_petitionproject_decision_and_more.py
+│   │   │   ├── 0042_petitionproject_demarches_simplifiees_prefill_url.py
+│   │   │   ├── 0042_resultsnapshot.py
+│   │   │   ├── 0043_alter_petitionproject_demarches_simplifiees_prefill_url.py
+│   │   │   ├── 0043_alter_petitionproject_options_and_more.py
+│   │   │   ├── 0044_populate_result_snapshots.py
+│   │   │   ├── 0045_merge_20260311_1900.py
+│   │   │   ├── 0046_add_contexte_inconnu_to_moulinette_urls.py
+│   │   │   ├── 0046_alter_petitionproject_created_at_and_more.py
+│   │   │   ├── 0047_merge_20260408_0746.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -725,6 +762,7 @@
 │   │   │   ├── alignementarbres.py
 │   │   │   ├── conditionnalitepac.py
 │   │   │   ├── ep.py
+│   │   │   ├── regime_unique_haie.py
 │   │   │   └── sites_proteges_haie.py
 │   │   ├── services.py
 │   │   ├── signals.py
@@ -758,8 +796,11 @@
 │   │   │   └── hedge_data_export_template.gpkg
 │   │   ├── icons
 │   │   │   ├── arracher.svg
+│   │   │   ├── arrow-down-s-line.svg
+│   │   │   ├── crisp.svg
 │   │   │   ├── focus-mode.svg
 │   │   │   ├── haie.svg
+│   │   │   ├── hourglass-2-fill.svg
 │   │   │   ├── planter.svg
 │   │   │   ├── stack-line.svg
 │   │   │   ├── sun.svg
@@ -774,6 +815,7 @@
 │   │   │   ├── city-hall.svg
 │   │   │   ├── document-icon.png
 │   │   │   ├── done.gif
+│   │   │   ├── envergo_logo.svg
 │   │   │   ├── favicons
 │   │   │   │   └── favicon.ico
 │   │   │   ├── geometrician.svg
@@ -793,7 +835,6 @@
 │   │   │   ├── help-sidebar-created_surface.png
 │   │   │   ├── help-sidebar-final_surface.png
 │   │   │   ├── home_screenshot.png
-│   │   │   ├── hourglass-2-fill.svg
 │   │   │   ├── image_produit.png
 │   │   │   ├── image_produit_dark.png
 │   │   │   ├── legal_dark.svg
@@ -832,11 +873,13 @@
 │   │   │   │   ├── address_autocomplete.js
 │   │   │   │   ├── amenagement_result_actions_banner.js
 │   │   │   │   ├── anchor_redirection_adjustment.js
+│   │   │   │   ├── chatbox_evaluation_scenario.js
 │   │   │   │   ├── configure-contact-form.js
 │   │   │   │   ├── configure-upload-form.js
 │   │   │   │   ├── copy_buttons.js
 │   │   │   │   ├── data_event_attributes_analytics.js
 │   │   │   │   ├── data_sql_event_attributes_analytics.js
+│   │   │   │   ├── department_combobox.js
 │   │   │   │   ├── eval_request_department.js
 │   │   │   │   ├── evaluation_analytics.js
 │   │   │   │   ├── feedback_form.js
@@ -952,6 +995,9 @@
 │   │   │   │   └── moulinetteconfig
 │   │   │   │       └── change_form.html
 │   │   │   ├── submit_line.html
+│   │   │   ├── users
+│   │   │   │   └── user
+│   │   │   │       └── change_form.html
 │   │   │   └── widgets
 │   │   │       └── date_range.html
 │   │   ├── amenagement
@@ -1012,6 +1058,7 @@
 │   │   ├── confs
 │   │   │   └── top_bar.html
 │   │   ├── demos
+│   │   │   ├── _hedge_density_base.html
 │   │   │   ├── catchment_area.html
 │   │   │   ├── hedge_density.html
 │   │   │   └── hedge_density_buffer.html
@@ -1064,6 +1111,7 @@
 │   │   │   │   ├── eval_email_non_soumis.txt
 │   │   │   │   ├── eval_email_soumis.html
 │   │   │   │   ├── eval_email_soumis.txt
+│   │   │   │   ├── generate_pdf.html
 │   │   │   │   ├── publish.html
 │   │   │   │   └── request_change_form.html
 │   │   │   ├── dashboard.html
@@ -1111,7 +1159,9 @@
 │   │   │   │   ├── activate_account.txt
 │   │   │   │   ├── password_reset.html
 │   │   │   │   ├── password_reset.txt
-│   │   │   │   └── password_reset_subject.txt
+│   │   │   │   ├── password_reset_subject.txt
+│   │   │   │   ├── rights_assigned.html
+│   │   │   │   └── rights_assigned.txt
 │   │   │   ├── forms
 │   │   │   │   └── widgets
 │   │   │   │       ├── hedge_radio.html
@@ -1128,14 +1178,21 @@
 │   │   │   │   ├── _plantation_conditions.html
 │   │   │   │   ├── _result_regulation.html
 │   │   │   │   ├── _sensitive_areas.html
+│   │   │   │   ├── confighaie_403.html
+│   │   │   │   ├── confighaie_404.html
+│   │   │   │   ├── confighaie_list.html
 │   │   │   │   ├── confighaie_settings.html
-│   │   │   │   ├── entretien_haies_result.html
+│   │   │   │   ├── debug
+│   │   │   │   │   ├── density_around_lines.html
+│   │   │   │   │   ├── ep_normandie.html
+│   │   │   │   │   └── ep_regime_unique.html
 │   │   │   │   ├── form.html
 │   │   │   │   ├── home.html
 │   │   │   │   ├── liability_info
 │   │   │   │   │   ├── action_requise.html
 │   │   │   │   │   ├── autorisation.html
 │   │   │   │   │   ├── declaration.html
+│   │   │   │   │   ├── hors_regime_unique.html
 │   │   │   │   │   ├── interdit.html
 │   │   │   │   │   ├── non_soumis.html
 │   │   │   │   │   └── soumis.html
@@ -1152,6 +1209,7 @@
 │   │   │   │   │   ├── autorisation_inadequate.html
 │   │   │   │   │   ├── declaration_adequate.html
 │   │   │   │   │   ├── declaration_inadequate.html
+│   │   │   │   │   ├── hors_regime_unique.html
 │   │   │   │   │   ├── interdit_adequate.html
 │   │   │   │   │   ├── interdit_inadequate.html
 │   │   │   │   │   ├── non_soumis_adequate.html
@@ -1185,6 +1243,8 @@
 │   │   │   │   ├── result_non_disponible.html
 │   │   │   │   ├── result_plantation.html
 │   │   │   │   ├── triage.html
+│   │   │   │   ├── triage_entretien_result.html
+│   │   │   │   ├── triage_projet_result.html
 │   │   │   │   └── triage_result.html
 │   │   │   ├── pages
 │   │   │   │   ├── contact_us.html
@@ -1260,6 +1320,11 @@
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
+│   │   │   │   ├── protection_captages
+│   │   │   │   │   ├── consultation.html
+│   │   │   │   │   └── instruction_guidelines.html
+│   │   │   │   ├── regime_unique_haie
+│   │   │   │   │   └── instructor_result_details.html
 │   │   │   │   ├── reserves_naturelles
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
@@ -1271,6 +1336,7 @@
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── sites_proteges_haie
+│   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── stage_objectives
@@ -1327,8 +1393,9 @@
 │   │   │   │   ├── depot_etude_impact.html
 │   │   │   │   ├── depot_pac_lse.html
 │   │   │   │   ├── etude_2150.html
-│   │   │   │   ├── etude_zh_lse.html
+│   │   │   │   ├── etude_zh.html
 │   │   │   │   ├── etude_zi_lse.html
+│   │   │   │   ├── interdit_sage.html
 │   │   │   │   ├── mention_arrete_lse.html
 │   │   │   │   ├── pc_ein.html
 │   │   │   │   └── pc_etude_impact.html
@@ -1382,6 +1449,10 @@
 │   │   │   │   ├── ep_normandie_dispense_L350.html
 │   │   │   │   ├── ep_normandie_dispense_coupe_a_blanc.html
 │   │   │   │   ├── ep_normandie_interdit.html
+│   │   │   │   ├── ep_regime_unique_derogation_inventaire.html
+│   │   │   │   ├── ep_regime_unique_derogation_simplifiee.html
+│   │   │   │   ├── ep_regime_unique_dispense.html
+│   │   │   │   ├── ep_regime_unique_non_concerne.html
 │   │   │   │   ├── ep_simple_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   └── result_non_disponible.html
@@ -1501,6 +1572,11 @@
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   └── result_non_disponible.html
+│   │   │   ├── protection_captages
+│   │   │   │   ├── result_a_verifier.html
+│   │   │   │   ├── result_non_active.html
+│   │   │   │   ├── result_non_concerne.html
+│   │   │   │   └── result_non_disponible.html
 │   │   │   ├── regime_unique_haie
 │   │   │   │   ├── regime_unique_haie_non_concerne.html
 │   │   │   │   ├── regime_unique_haie_non_concerne_aa.html
@@ -1570,6 +1646,7 @@
 │   │   │   ├── accessibility.html
 │   │   │   ├── contact_us.html
 │   │   │   ├── faq
+│   │   │   │   ├── _moulinette_incentive.html
 │   │   │   │   ├── availability_info.html
 │   │   │   │   ├── eval_env.html
 │   │   │   │   ├── index.html
@@ -1594,6 +1671,7 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_urlmapping_created_at.py
 │   │   │   ├── 0003_alter_urlmapping_url.py
+│   │   │   ├── 0004_add_contexte_to_moulinette_haie.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tests.py
@@ -1626,8 +1704,10 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
+│   │   │   ├── test_admin.py
 │   │   │   ├── test_backends.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_tasks.py
 │   │   │   └── test_views.py
 │   │   ├── urls.py
 │   │   └── views.py
@@ -1659,6 +1739,7 @@
 │       ├── formtools_storage.py
 │       ├── markdown.py
 │       ├── mattermost.py
+│       ├── models.py
 │       ├── storages.py
 │       ├── templatetags
 │       │   ├── __init__.py
@@ -1705,4 +1786,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-215 directories, 1492 files
+222 directories, 1566 files
