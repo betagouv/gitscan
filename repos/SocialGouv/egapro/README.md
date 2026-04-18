@@ -153,6 +153,74 @@ En développement local, l'authentification utilise le fournisseur d'identité d
 | `pnpm db:migrate` | Migrations Drizzle |
 | `pnpm db:studio` | Drizzle Studio |
 
+## Vérification par signature de requête pour l'API SUIT
+
+L'API privée SUIT est protégée par **signature de requête RSA-SHA256**. SUIT signe chaque requête avec sa clé privée, et EgaPro vérifie la signature avec la clé publique correspondante.
+
+### Fonctionnement
+
+```
+SUIT                                          EgaPro
+─────                                         ──────
+1. Construit le payload :
+   "{timestamp}|{METHOD}|{pathname}"
+
+2. Signe avec sa clé privée (RSA-SHA256)
+
+3. Envoie la requête avec :
+   X-Timestamp: {timestamp}                 4. Reconstruit le même payload
+   X-Signature: {base64 signature}
+   Authorization: Bearer {api-key}          5. Vérifie la signature avec
+                                               la clé publique de SUIT
+
+                                            6. Vérifie que le timestamp
+                                               date de moins de 30s
+```
+
+### Génération et rotation des clés
+
+```bash
+# Première génération
+./scripts/generate-suit-signing-keys.sh generate dev       # → ./suit-signing-keys/dev/
+./scripts/generate-suit-signing-keys.sh generate prod      # → ./suit-signing-keys/prod/
+./scripts/generate-suit-signing-keys.sh generate all       # → les deux
+
+# Rotation (sauvegarde les anciennes clés, génère de nouvelles)
+./scripts/generate-suit-signing-keys.sh renew prod
+```
+
+`generate` refuse d'écraser des clés existantes. `renew` les sauvegarde dans un dossier `backup-{date}` avant de regénérer.
+
+### Fichiers générés (par environnement)
+
+| Fichier | Description | Destinataire |
+|---|---|---|
+| `suit-signing.key` | Clé privée RSA | SUIT (signe les requêtes) |
+| `suit-signing.pub` | Clé publique RSA | EgaPro (secret K8s `EGAPRO_SUIT_PUBLIC_KEY_PEM` en base64) |
+
+### Mise en place
+
+1. **Côté EgaPro** : encoder `suit-signing.pub` en base64 et le placer dans le sealed-secret K8s (`EGAPRO_SUIT_PUBLIC_KEY_PEM`).
+2. **Côté SUIT** : conserver `suit-signing.key` de manière sécurisée et signer chaque requête.
+3. **Appel API** :
+   ```bash
+   TIMESTAMP=$(date +%s)
+   PAYLOAD="$TIMESTAMP|GET|/api/v1/export/declarations"
+   SIGNATURE=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -sign suit-signing.key | base64 | tr -d '\n')
+   curl -H "X-Timestamp: $TIMESTAMP" \
+        -H "X-Signature: $SIGNATURE" \
+        -H 'Authorization: Bearer <api-key>' \
+        https://<host>/api/v1/export/declarations?date_begin=2026-01-01
+   ```
+
+### Procédure de rotation
+
+1. `./scripts/generate-suit-signing-keys.sh renew <env>` — génère une nouvelle paire, sauvegarde l'ancienne
+2. Mettre à jour le sealed-secret K8s avec la nouvelle clé publique
+3. Déployer EgaPro
+4. Transmettre la nouvelle clé privée à SUIT — ils doivent basculer juste après le déploiement
+5. Les anciennes clés sont dans `backup-{date}/` en cas de rollback
+
 ## Configuration AI (Claude Code)
 
 Le projet est entierement configure pour [Claude Code](https://claude.com/claude-code). Toute la configuration est versionnee dans `.claude/` et `.mcp.json`, ce qui signifie que chaque developpeur qui clone le repo beneficie automatiquement de toute l'intelligence du projet.
@@ -216,21 +284,18 @@ Les agents sont des sous-processus specialises avec leur propre checklist. Ils t
 
 | Agent | Checklist | Utilise par |
 |---|---|---|
-| `code-reviewer` | 15 points : logique JSX, duplication, naming, inline styles, transactions DB, Zod schemas... | `/review-pr`, gate PR |
-| `rgaa-auditor` | 13 themes RGAA complets : images, formulaires, navigation, structure, couleurs, modales... | `/audit-rgaa`, gate RGAA |
-| `security-auditor` | OWASP Top 10 + RGS : injection, auth, acces, secrets, headers, SSRF... | `/audit-secu`, gate securite |
+| `validator` | Typecheck + tests + lint + format en parallele | Toutes les gates, `/ship` |
+| `structural-auditor` | 16 regles : forms, schemas, DRY, imports, file size, naming, domain layer... | Gate automatique, `/ship` |
+| `rgaa-auditor` | 13 themes RGAA complets : images, formulaires, navigation, structure, couleurs, modales... | Gate automatique, `/ship` |
+| `security-auditor` | OWASP Top 10 + RGS : injection, auth, acces, secrets, headers, SSRF... | Gate automatique, `/ship` |
 
 ### Skills (`.claude/skills/`)
 
-Les skills sont des workflows complexes invocables avec `/commande`. Ils orchestrent des agents en parallele pour aller vite.
+Un seul skill smart `/ship` qui orchestre tout le cycle de vie d'une issue. Il detecte automatiquement ou on en est (branche, PR, reviews) et reprend la ou on s'est arrete.
 
 | Commande | Ce que ca fait |
 |---|---|
-| `/validate` | Lance **3 agents en parallele** : typecheck + tests + lint. Corrige et relance si echec. |
-| `/review-pr` | Detecte la PR de la branche, fetch les commentaires GH, lance le code-reviewer, applique les fixes, valide. |
-| `/audit-rgaa` | Decoupe les fichiers en batches, lance des agents rgaa-auditor en parallele, auto-fix les erreurs, genere un rapport. |
-| `/audit-secu` | Lance 4 agents paralleles (server, client, config, deps), auto-fix les critiques/high, genere un rapport. |
-| `/create-page` | Workflow 4 phases : analyse Figma (//), code partage, pages en parallele (worktrees), qualite (//). |
+| `/ship [#N]` | **Implement** -> **Validate** (4 agents) -> **PR** (single ou split) -> **Review** (watch, fix, re-validate) -> **Done**. Sans argument, detecte l'etat depuis la branche/PR. |
 
 ### Gates automatiques (`.claude/rules/automation.md`)
 
@@ -238,9 +303,10 @@ Les gates sont le coeur de l'automatisation. Elles se declenchent **toutes seule
 
 | Gate | Se declenche quand... | Ce qui se passe |
 |---|---|---|
-| **Validation** | Claude finit une tache | 3 agents paralleles verifient typecheck + tests + lint avant de reporter "termine" |
+| **Validation** | Claude finit une tache | 4 agents paralleles verifient typecheck + tests + lint + structure + RGAA + securite avant de reporter "termine" |
 | **RGAA** | Claude modifie un `.tsx` | Verification inline de l'accessibilite (labels, alt, aria, landmarks, headings) |
 | **Securite** | Claude modifie `server/` ou tRPC | Verification inline OWASP (Drizzle, Zod, ownership, process.env, transactions) |
+| **Domain layer** | Claude ecrit du code | Hooks bloquent getFullYear(), slice(0,9), import zod dans les mauvais fichiers |
 | **PR review** | La branche a une PR ouverte | Auto-fetch des commentaires non resolus, signalement avant de commencer |
 
 ### Workflow type
