@@ -1,15 +1,17 @@
 # Synthèse d'activité : demarche-numerique (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations significatives de l'expérience utilisateur sur la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), notamment grâce à la reconnaissance automatique des justificatifs de domicile et une interface plus intuitive pour le chargement des pièces justificatives. Des améliorations ont également été apportées à l'administration des utilisateurs et à l'affichage des informations relatives au quotient familial. Parallèlement, des optimisations techniques ont été réalisées sur l'infrastructure, en particulier concernant le traitement des images et les performances des requêtes en base de données.
+L'organisation "demarche-numerique" a connu une semaine productive, axée sur l'amélioration de la plateforme principale [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) et de son infrastructure. Les utilisateurs bénéficieront d'une expérience plus stable avec la correction de bugs liés à la soumission de dossiers et à l'autosave. Des améliorations significatives en matière de sécurité ont été apportées, notamment la correction de vulnérabilités critiques et la migration vers une nouvelle gestion des sessions. Le proxy de chiffrement [ds_proxy](/repos/demarche-numerique/ds_proxy) a également été mis à jour pour faciliter son déploiement et sa maintenance.
 
 ## Sécurité
-- Migration du traitement des images vers la librairie Vips, améliorant la sécurité en supprimant MiniMagick [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Correction de plusieurs vulnérabilités de sécurité : SSRF, XSS, IDOR dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Migration vers une nouvelle méthode de gestion des sessions pour améliorer la sécurité et les performances dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- Optimisation des requêtes en base de données pour améliorer les performances [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- Construction d'images Docker publiques à partir de paquets Debian pour faciliter le déploiement du proxy de chiffrement [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- Refactoring important : remplacement de HAML par ERB pour améliorer la maintenabilité dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Utilisation de LightningCSS pour optimiser les performances du CSS dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Ajout d'un Dockerfile pour construire des images Docker publiques à partir du paquet Debian dans [ds_proxy](/repos/demarche-numerique/ds_proxy).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration de l'expérience utilisateur et optimisations techniques de la plateforme principale.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration du processus de construction et de déploiement du proxy de chiffrement.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Correction de bugs, améliorations de la sécurité et refactoring technique majeur pour une meilleure expérience utilisateur et maintenabilité.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration du processus de construction et de déploiement via l'ajout d'un Dockerfile.

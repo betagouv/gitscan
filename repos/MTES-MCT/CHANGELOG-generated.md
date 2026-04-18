@@ -1,31 +1,23 @@
 # Synthèse d'activité : MTES-MCT (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT est marquée par une forte concentration sur l'amélioration et l'enrichissement des fonctionnalités de ses nombreuses applications. Plusieurs projets ont bénéficié de mises à jour significatives, notamment en termes d'interface utilisateur (amélioration de l'expérience utilisateur, refonte de tableaux de bord, ajout de fonctionnalités de recherche et de filtrage), de gestion des données (ajout de nouvelles données, corrections de bugs, amélioration de la validation) et de sécurité (corrections de vulnérabilités, renforcement de l'authentification). Des efforts importants ont également été déployés pour moderniser les infrastructures techniques et améliorer la maintenance des applications. Les projets *Lucca*, *Dossier Facile*, *Monitorfish*, *Potentiel* et *Trackdéchets* sont particulièrement actifs, avec des évolutions notables pour les utilisateurs finaux.
+L'activité de l'organisation MTES-MCT au cours des 7 derniers jours a été particulièrement riche et diversifiée, touchant de nombreux projets. On observe une forte concentration sur l'amélioration de la qualité des données et de l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour significatives, notamment [apilos](/repos/MTES-MCT/apilos) avec l'export des conventions vers S3, [acceslibre](/repos/MTES-MCT/acceslibre) avec l'intégration de données Literalis et l'amélioration de l'affichage des ERP, et [ecobalyse-data](/repos/MTES-MCT/ecobalyse-data) avec l'enrichissement des données et la correction de doublons. Des efforts importants ont également été consacrés à la sécurité, avec des mises à jour de dépendances dans plusieurs dépôts comme [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) et [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- **mobilic-api** : Restriction des fournisseurs d'identité (IdP) autorisés pour les contrôleurs.
-- **qualicharge** : Mise à jour des dépendances pour corriger des vulnérabilités.
-- **zero-logement-vacant** : Ajout d'en-têtes de sécurité et correction de vulnérabilités.
-- **td-mass-validator**: Amélioration de la validation des données pour éviter les erreurs d'import.
+Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités de sécurité :
+- [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) a mis à jour `sentry-sdk`.
+- [trackdechets](/repos/MTES-MCT/trackdechets) a renforcé la sécurité des hash d'invitation et amélioré le rate limiting.
+- [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a corrigé des vulnérabilités via la mise à jour de dépendances.
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures :
-- **Docurba** : Refonte de l'architecture Django, migration vers Django 6.0, utilisation de Rclone pour la synchronisation des fichiers.
-- **apilos** : Mise à jour de la configuration du pipeline CI/CD avec l'ajout de `setuptools`.
-- **carbure** : Refactorisation de la gestion des certificats d'électricité.
-- **dialog-integrations** : Refactorisation du code, utilisation de `ruff` pour le linting et le formatage.
-- **prelevements-deau-api** : Modification de la stratégie d'authentification.
-- **sparte** : Intégration du carroyage de la consommation d'espaces.
-- **verseau2** : Migration vers la couche d'abstraction MASA pour les appels API et refactorisation de l'authentification.
-- **zero-logement-vacant**: Refactorisation frontend avec l'utilisation de composants MUI et migration vers Web Streams.
+- [Docurba](/repos/MTES-MCT/Docurba) a subi une refonte de son architecture Django et une migration vers la version 6.0, améliorant ainsi sa performance et sa maintenabilité.
+- [acceslibre-schema](/repos/MTES-MCT/acceslibre-schema) a introduit la gestion de schémas multiples pour différents types de bâtiments, passant au format datapackage.
+- [prelevements-deau-web](/repos/MTES-MCT/prelevements-deau-web) a bénéficié de l'ajout de déploiements automatisés sur Scaleway et de l'intégration de Sentry pour la surveillance des erreurs.
+- [qualicharge](/repos/MTES-MCT/qualicharge) a été mis à jour vers Symfony 7.4.
 
 ## Dépôts les plus actifs
-- **Docurba** : Amélioration de l'administration de l'application, corrections de bugs et optimisations de performance.
-- **Dossier-Facile-Frontend** : Amélioration de l'accessibilité, correction de bugs et amélioration de l'expérience utilisateur.
-- **Lucca** : Ajout de la gestion des adhérents et amélioration de l'importation des données.
-- **Monitorfish** : Ajout de la gestion des signalements INN et amélioration de l'affichage des données sur la carte.
-- **Potentiel** : Ajout de la possibilité de sélectionner les parcelles sur un plan et amélioration des filtres.
-- **Trackdéchets** : Ajout de filtres avancés sur le tableau de bord et amélioration du support des fichiers d'import Excel.
-- **zero-logement-vacant**: Ajout de la gestion des documents liés aux logements et refonte de l'interface de création de campagnes.
+- [Docurba](/repos/MTES-MCT/Docurba) : Refonte de l'architecture et amélioration des fonctionnalités d'administration.
+- [acceslibre](/repos/MTES-MCT/acceslibre) : Intégration de nouvelles sources de données et amélioration de l'interface utilisateur.
+- [apilos](/repos/MTES-MCT/apilos) : Optimisation des performances et ajout de nouvelles fonctionnalités d'export.
+- [trackdechets](/repos/MTES-MCT/trackdechets) : Amélioration de la sécurité et ajout de nouvelles fonctionnalités pour la gestion des données.
+- [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Amélioration de la gestion des campagnes et des droits d'accès.

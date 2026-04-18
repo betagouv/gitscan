@@ -1,14 +1,16 @@
 # Synthèse d'activité : anct-cartographie-nationale (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de la performance et de la maintenabilité de la cartographie, avec l'intégration d'outils d'analyse comme Matomo pour mieux comprendre l'utilisation des composants. Des améliorations ont également été apportées à la gestion des données et à la configuration des projets, notamment dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) avec la mise à jour des sources de données et la simplification de l'environnement de développement. Ces évolutions visent à offrir une meilleure expérience utilisateur et à faciliter l'évolution future des outils.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration des performances et de la stabilité de l'application de cartographie [cartographie](/repos/anct-cartographie-nationale/cartographie). Des optimisations ont été apportées au chargement des données, à la gestion des requêtes et au rendu de l'interface utilisateur.  Des corrections de bugs ont également été implémentées, notamment concernant les exports CSV et la gestion des filtres. Parallèlement, l'outil en ligne de commande [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a bénéficié de mises à jour pour corriger des données et simplifier la gestion des dépendances.
 
 ## Sécurité
 Aucun changement lié à la sécurité n'a été identifié dans les changelogs de cette période.
 
 ## Autres changements notables
-Des refactorings importants ont été effectués dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour améliorer l'architecture du code, notamment en adoptant une approche basée sur les "abilities" et en optimisant les appels API. La suppression de Yarn et Pnpm dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) simplifie également l'environnement de développement.
+- Mise à jour de Node.js en version 22 dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour une meilleure compatibilité avec les Web Streams.
+- Refactorisation des routes et middlewares dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour une meilleure organisation du code.
+- Utilisation de CloudFront pour l'API de cartographie nationale dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli), améliorant potentiellement la performance et la fiabilité.
 
 ## Dépôts les plus actifs
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Amélioration significative des performances, refactorisation du code et ajout de capacités d'analyse via Matomo.
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour des sources de données et simplification de l'environnement de développement.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Amélioration significative des performances, de la stabilité et de l'expérience utilisateur de l'application de cartographie.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Correction de données géographiques et simplification de la gestion des dépendances de l'outil en ligne de commande.
