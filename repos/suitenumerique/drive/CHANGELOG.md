@@ -14,6 +14,11 @@ and this project adheres to
 - ✨(frontend) add ErrorIcon component and support numeric icon sizes
 - ✨(frontend) make file upload abortable in driver layer
 
+### Fixed
+
+- 🐛(frontend) add actions menu on mobile My Files page
+- 🐛(frontend) show actual selection count in hard delete modal
+
 ## [v0.16.0] - 2026-04-09
 
 ### Added
@@ -28,6 +33,7 @@ and this project adheres to
 - ⚡(ci) shard e2e tests and cache playwright browsers
 - ⬆️(frontend) upgrade cunningham-react and ui-kit to 0.20.0
 - ✨(frontend) improve custom columns with sortable config and i18n
+- ✨(frontend) preserve empty folders when uploading via drag & drop
 
 ### Changed
 
