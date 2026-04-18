@@ -162,7 +162,9 @@
 └── src
     ├── agents
     │   ├── Dockerfile
-    │   ├── multi-user-transcriber.py
+    │   ├── exceptions.py
+    │   ├── metadata_collector.py
+    │   ├── multi_user_transcriber.py
     │   └── pyproject.toml
     ├── backend
     │   ├── .pylintrc
@@ -223,6 +225,7 @@
     │   │   │   │   └── parsers.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── metadata_collector.py
     │   │   │   │   └── recording_events.py
     │   │   │   └── worker
     │   │   │       ├── __init__.py
@@ -576,6 +579,7 @@
     │   │   │   │   │   ├── useHasRecordingAccess.ts
     │   │   │   │   │   ├── useHumanizeRecordingMaxDuration.ts
     │   │   │   │   │   ├── useIsRecordingModeEnabled.ts
+    │   │   │   │   │   ├── useMetadataCollectorEnabled.ts
     │   │   │   │   │   ├── useMutateRecording.ts
     │   │   │   │   │   ├── useRecordingStatuses.ts
     │   │   │   │   │   └── useRoomMetadata.ts
@@ -699,6 +703,7 @@
     │   │   │   │   │   │   ├── useFullScreen.ts
     │   │   │   │   │   │   ├── useHasFunnyEffectsAccess.ts
     │   │   │   │   │   │   ├── useIsAdminOrOwner.ts
+    │   │   │   │   │   │   ├── useIsAdvancedConnectionObserverEnabled.ts
     │   │   │   │   │   │   ├── useKonami.ts
     │   │   │   │   │   │   ├── useMediaQuery.ts
     │   │   │   │   │   │   ├── useNoiseReduction.ts
@@ -981,7 +986,8 @@
     │       ├── generate-readme.sh
     │       ├── templates
     │       │   ├── _helpers.tpl
-    │       │   ├── agents_deployment.yaml
+    │       │   ├── agent_metadata_deployment.yaml
+    │       │   ├── agent_subtitles_deployment.yaml
     │       │   ├── backend_deployment.yaml
     │       │   ├── backend_job_createsuperuser.yaml
     │       │   ├── backend_job_migrate.yaml
@@ -1131,4 +1137,4 @@
             └── models
                 ├── __init__.py
                 └── test_whisper_x_response.py
-214 directories, 919 files
+214 directories, 925 files
