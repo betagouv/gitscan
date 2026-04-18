@@ -1,9 +1,18 @@
-## Changelog : formulaire-qf (30 derniers jours)
+## Changelog : formulaire-qf (30 derniers jours, au 8 avril 2026)
 
 ### Résumé
-Ce changelog présente les récentes mises à jour du formulaire-qf, un outil utilisé par l'administration française pour la gestion de formulaires en ligne. Les changements concernent principalement des mises à jour de dépendances pour assurer la stabilité et la sécurité du projet.
+Ce mois-ci, les efforts de développement se sont principalement concentrés sur la maintenance et la sécurité du projet. De nombreuses dépendances ont été mises à jour vers leurs dernières versions, assurant ainsi la stabilité et la compatibilité du formulaire-qf. Une mise à jour des identifiants Hubee pour l'environnement de staging a également été effectuée.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `rack` de la version 3.2.4 à 3.2.5. [#310](https://github.com/etalab/formulaire-qf/pull/310)
-- Mise à jour des dépendances de production (3 mises à jour). [#308](https://github.com/etalab/formulaire-qf/pull/308)
-- Mise à jour des dépendances de développement (5 mises à jour). [#313](https://github.com/etalab/formulaire-qf/pull/313)
+- Mise à jour de la version de Rails de 8.1.2.1 à 8.1.3.
+- Mise à jour de la version de Rack de 3.2.5 à 3.2.6.
+- Mise à jour de la version de Rack Session de 2.1.1 à 2.1.2.
+- Mise à jour de la version de Addressable de 2.8.9 à 2.9.0.
+- Mise à jour de la version de Actionpack de 8.1.2 à 8.1.2.1.
+- Mise à jour de la version de Loofah à 2.25.1.
+- Mise à jour de la version de Action Text Trix à 2.1.18.
+- Mise à jour de la version de JSON à 2.19.2.
+- Mise à jour des dépendances de développement.
+
+### Autres changements
+- Mise à jour des identifiants Hubee pour l'environnement de staging [#328](https://github.com/etalab/formulaire-qf/pull/328).
