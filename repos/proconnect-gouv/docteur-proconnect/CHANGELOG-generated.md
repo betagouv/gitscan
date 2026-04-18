@@ -1,17 +1,15 @@
-## Changelog : docteur-proconnect (30 derniers jours)
+## Changelog : docteur-proconnect (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de Docteur ProConnect améliorent l'expérience utilisateur en affinant l'interface et en corrigeant des comportements. Des améliorations techniques ont également été apportées pour optimiser la gestion des dépendances et la redirection après authentification.
+Cette version apporte des améliorations concernant les valeurs d'ACR (Authentification Context Reference) pour la compatibilité avec eIDAS, ainsi qu'une mise à jour des scopes ProConnect pour inclure les informations sur l'unité organisationnelle et les rôles. Une régression introduite par une redirection vers Tally a été corrigée.
 
 ### Évolutions fonctionnelles
-- Amélioration de la marge et des ancres pour une meilleure navigation et lisibilité. [#47](https://github.com/proconnect-gouv/docteur-proconnect/issues/47)
-- Suppression de l'arrière-plan gris derrière les boutons ProConnect pour une interface plus claire. [#48](https://github.com/proconnect-gouv/docteur-proconnect/issues/48)
-- Redirection forcée vers Tally après une connexion réussie. [#46](https://github.com/proconnect-gouv/docteur-proconnect/issues/46)
-- Suppression des liens sur les titres pour simplifier l'affichage. [#45](https://github.com/proconnect-gouv/docteur-proconnect/issues/45)
+- Ajout des valeurs d'ACR `eidas0-mfa` et `eidas1-mfa` pour une meilleure compatibilité avec les solutions d'authentification eIDAS. [#54](https://github.com/proconnect-gouv/docteur-proconnect/issues/54)
+- Mise à jour des scopes ProConnect (`PC_SCOPES`) pour inclure les informations sur l'unité organisationnelle et les rôles de l'utilisateur. [#53](https://github.com/proconnect-gouv/docteur-proconnect/issues/53)
+- Rétractation de la redirection forcée vers Tally après une connexion réussie, corrigeant ainsi un problème de régression. [#50](https://github.com/proconnect-gouv/docteur-proconnect/issues/50)
 
 ### Évolutions techniques
-- Mise à jour de la librairie EJS de la version 4.0.1 à la version 5.0.1. [#49](https://github.com/proconnect-gouv/docteur-proconnect/issues/49)
-- Mise à jour de la librairie @gouvfr/dsfr de la version 1.14.3 à la version 1.14.4. [#44](https://github.com/proconnect-gouv/docteur-proconnect/issues/44)
-- Mise à jour de la librairie express-session de la version 1.18.2 à la version 1.19.0. [#43](https://github.com/proconnect-gouv/docteur-proconnect/issues/43)
-- Regroupement des mises à jour de dépendances (patch et mineures) pour une meilleure gestion. [#41](https://github.com/proconnect-gouv/docteur-proconnect/issues/41)
-- Mise à jour de la librairie qs de la version 6.14.1 à la version 6.14.2. [#39](https://github.com/proconnect-gouv/docteur-proconnect/issues/39)
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Mise à jour de la documentation et des dépendances internes (prettier, lodash-es, path-to-regexp) via Dependabot. Ces mises à jour sont automatiques et ne devraient pas impacter l'utilisation de l'outil. [#51](https://github.com/proconnect-gouv/docteur-proconnect/issues/51) [#52](https://github.com/proconnect-gouv/docteur-proconnect/issues/52) [#55](https://github.com/proconnect-gouv/docteur-proconnect/issues/55) [#56](https://github.com/proconnect-gouv/docteur-proconnect/issues/56)
