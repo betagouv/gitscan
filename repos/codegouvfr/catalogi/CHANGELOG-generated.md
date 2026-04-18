@@ -1,25 +1,25 @@
-## Changelog : catalogi (30 derniers jours)
+## Changelog : catalogi (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce changelog présente les évolutions récentes de catalogi, axées sur une refonte majeure de la gestion des types de logiciels. Ces changements visent à unifier et simplifier la représentation des logiciels dans le catalogue, améliorant ainsi la cohérence des données et facilitant l'intégration avec d'autres systèmes. Des tests d'intégration de bout en bout ont également été ajoutés pour garantir la qualité du logiciel.
+Ce mois-ci, les évolutions de Catalogi se concentrent sur l'amélioration de la configuration et de la gestion des environnements, ainsi que sur des optimisations techniques internes pour faciliter le développement et le déploiement. Des corrections ont également été apportées pour améliorer l'expérience utilisateur, notamment en ce qui concerne la compatibilité mobile et le blocage de contenu par la politique de sécurité du contenu (CSP).
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des liens externes : correction d'un bug qui empêchait la mise à jour correcte des liens externes vers les logiciels. [#726ce20](https://github.com/codegouvfr/catalogi/commit/726ce20)
-- Ajout d'un nouveau point de terminaison API `/v2/catalogi.json` qui renvoie la liste complète des logiciels. [#9980212](https://github.com/codegouvfr/catalogi/commit/9980212)
+- Amélioration de la gestion des configurations via des fichiers, permettant une plus grande flexibilité et une meilleure organisation. [#500](https://github.com/codegouvfr/catalogi/issues/500)
+- Ajout d'options pour les systèmes d'exploitation mobiles dans l'interface web.
+- Correction d'un problème bloquant l'affichage de certaines ressources (analytics, suivi des routes SPA) à cause de la politique de sécurité du contenu (CSP).
+- Possibilité d'accéder à la base de données PostgreSQL localement via un tunnel SSH pour le débogage et l'administration.
+- Ajout de champs personnalisables pour les logiciels via l'API.
 
 ### Évolutions techniques
-- Refactor majeur de la gestion des types de logiciels (issue #491) :
-    - Définition de nouveaux types de logiciels canoniques avec des alias. [#7e3f7e7](https://github.com/codegouvfr/catalogi/commit/7e3f7e7)
-    - Renommage des colonnes de la table `softwares` pour correspondre au nouveau schéma canonique. [#b25d1fa](https://github.com/codegouvfr/catalogi/commit/b25d1fa)
-    - Suppression des anciennes données externes et migration vers le nouveau schéma. [#f556bd9](https://github.com/codegouvfr/catalogi/commit/f556bd9)
-    - Remplacement du type `SoftwareType` par `operatingSystems` et `runtimePlatforms`. [#0100fa5](https://github.com/codegouvfr/catalogi/commit/0100fa5)
-    - Mise à jour des types API et web pour correspondre au nouveau schéma canonique. [#2cc2ee4](https://github.com/codegouvfr/catalogi/commit/2cc2ee4)
-    - Ajout d'une passerelle source canonique et migration de l'autocomplétion. [#4fe147a](https://github.com/codegouvfr/catalogi/commit/4fe147a)
-    - Suppression de l'espace de noms Db hérité et correction des fixtures Zenodo. [#51ad6b9](https://github.com/codegouvfr/catalogi/commit/51ad6b9)
-    - Renommage de `logoUrl` en `image`. [#f556bd9](https://github.com/codegouvfr/catalogi/commit/f556bd9)
-- Ajout de tests d'intégration de bout en bout avec Playwright et Testcontainers, incluant l'authentification Keycloak. [#47e483e](https://github.com/codegouvfr/catalogi/commit/47e483e)
-- Documentation : ajout d'une feuille de route pour l'unification des types de logiciels. [#fe94aa5](https://github.com/codegouvfr/catalogi/commit/fe94aa5) et mise à jour de la feuille de route existante [#80842d9](https://github.com/codegouvfr/catalogi/commit/80842d9) et [#78320a4](https://github.com/codegouvfr/catalogi/commit/78320a4)
+- Migration de Yarn vers pnpm pour la gestion des dépendances, améliorant la performance et la cohérence.
+- Utilisation de tsx pour le développement de l'API, permettant un rechargement à chaud plus rapide et une meilleure expérience de développement.
+- Refactoring pour utiliser un modèle de packages internes pour le partage de types entre l'API et l'interface web.
+- Mise à jour de Node.js vers la version 24 et de pnpm vers la version 10.32.1.
+- Mise à jour des actions CI/CD (actions/checkout et actions/setup-node) vers la version 6.
+- Amélioration de la configuration locale de la politique de sécurité du contenu (CSP) pour autoriser l'affichage des images.
+- Ajout de `worker-src` à la politique de sécurité du contenu (CSP) pour permettre le fonctionnement des workers Sentry.
 
 ### Autres changements
-- Mise à jour de la version du projet. [#05ff366](https://github.com/codegouvfr/catalogi/commit/05ff366) et [#827f2a1](https://github.com/codegouvfr/catalogi/commit/827f2a1)
-- Ajout d'un fichier de documentation ignoré par Git. [#6dc158a](https://github.com/codegouvfr/catalogi/commit/6dc158a)
+- Documentation : Ajout d'un plan de migration pour passer de Yarn à pnpm, l'utilisation de tsx en développement et le nouveau modèle de packages internes.
+- Correction de la configuration de l'analyseur IOC pour utiliser `pnpm-lock.yaml` au lieu de `yarn.lock`.
+- Augmentation du numéro de version de l'application.

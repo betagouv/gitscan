@@ -53,7 +53,6 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── GitLab
 │   │   │   │   │   ├── api
-│   │   │   │   │   │   ├── project.ts
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── getExternalData.ts
 │   │   │   │   │   ├── getSoftwareFormData.ts
@@ -112,7 +111,9 @@
 │   │   │   │   │       │   ├── 1769773451027_add-repo-metadata.ts
 │   │   │   │   │       │   ├── 1771584277207_rename-external-data-columns-to-canonical.ts
 │   │   │   │   │       │   ├── 1771586790756_rename-softwares-columns-to-canonical.ts
-│   │   │   │   │       │   └── 1772105164020_rename-softwares-logourl-to-image.ts
+│   │   │   │   │       │   ├── 1772105164020_rename-softwares-logourl-to-image.ts
+│   │   │   │   │       │   ├── 1773933947738_add-override-fields-to-softwares.ts
+│   │   │   │   │       │   └── 1774540759933_add-config-on-source.ts
 │   │   │   │   │       └── pgDbApi.integration.test.ts
 │   │   │   │   ├── doiResolver.ts
 │   │   │   │   ├── getCnllPrestatairesSill.ts
@@ -126,11 +127,6 @@
 │   │   │   │   │   │   ├── getScholarlyArticle.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── HalAPI
-│   │   │   │   │   │   ├── getArticle.ts
-│   │   │   │   │   │   ├── getCodemetaSoftware.ts
-│   │   │   │   │   │   ├── getDomains.ts
-│   │   │   │   │   │   ├── getHalSoftware.ts
-│   │   │   │   │   │   ├── getStructure.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       └── HAL.ts
@@ -142,6 +138,10 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── resolveAdapter.ts
 │   │   │   │   ├── wikidata
+│   │   │   │   │   ├── ApiAgent
+│   │   │   │   │   │   ├── entity.ts
+│   │   │   │   │   │   ├── getLicenses.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── getSoftwareForm.ts
 │   │   │   │   │   ├── getWikidataSoftware.ts
 │   │   │   │   │   ├── getWikidataSoftwareOptions.ts
@@ -236,6 +236,7 @@
 │   │   │   ├── projectVersion.ts
 │   │   │   ├── repoAnalyser.test.ts
 │   │   │   ├── repoAnalyser.ts
+│   │   │   ├── sourceConfig.ts
 │   │   │   └── test.helpers.ts
 │   │   └── types
 │   │       └── Catalogi.ts
@@ -943,9 +944,12 @@
 │       │   └── web-service.yaml
 │       └── values.yaml
 ├── lefthook.yml
+├── migration-plan.md
 ├── nginx
 │   └── default.conf
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── renovate.json
 ├── scripts
 │   ├── bump-helm-chart-version.js
@@ -1243,7 +1247,8 @@
 │   │   │   │   ├── SearchInput.tsx
 │   │   │   │   ├── SearchMultiInput.tsx
 │   │   │   │   ├── SelectNext.tsx
-│   │   │   │   └── SmartLogo.tsx
+│   │   │   │   ├── SmartLogo.tsx
+│   │   │   │   └── osLabels.ts
 │   │   │   └── tools
 │   │   │       ├── isStorybook.ts
 │   │   │       ├── typeRouteMock.ts
@@ -1255,6 +1260,5 @@
 │   │   └── vite-env.d.ts
 │   ├── tsconfig.json
 │   └── vite.config.ts
-├── yarn-error.log
-└── yarn.lock
-130 directories, 1170 files
+└── yarn-error.log
+131 directories, 1173 files
