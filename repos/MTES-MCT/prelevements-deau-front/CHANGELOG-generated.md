@@ -1,9 +1,19 @@
-## Changelog : prelevements-deau-front (30 derniers jours)
+## Changelog : prelevements-deau-front (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la gestion des prélèvements d'eau, notamment au niveau de la modification des informations des exploitants et de l'affichage des données sur les graphiques. L'application est plus précise et plus facile à utiliser pour les agents de l'administration.
+Cette mise à jour apporte des améliorations significatives à la gestion des documents et des règles associés aux exploitations, ainsi qu'à la présentation des informations sur les exploitations elles-mêmes. Une nouvelle fonctionnalité d'export a également été ajoutée.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la modification correcte du numéro SIRET des exploitants. [#484](https://github.com/MTES-MCT/prelevements-deau-front/issues/484)
-- Amélioration de l'affichage des données sur l'axe des X des graphiques, notamment pour les données mensuelles et trimestrielles, en priorisant les points de données les plus récents. [#481](https://github.com/MTES-MCT/prelevements-deau-front/issues/481)
-- Affichage des exploitations liées lors de la modification d'un prélèvement. [#485](https://github.com/MTES-MCT/prelevements-deau-front/issues/485)
+- Ajout d'une page d'export pour permettre l'extraction de données.
+- Amélioration de l'affichage des informations sur les exploitations : affichage de la raison sociale ou, à défaut, du nom et prénom du responsable.
+- Affichage des règles associées à une exploitation.
+- Amélioration de l'affichage et correction de la création des règles dans les formulaires de documents.
+- Affichage de l'usage de l'exploitation dans le formulaire de téléchargement de documents.
+- Correction de l'édition des meso dans le formulaire d'édition d'un point de prélèvement.
+- Les documents sont maintenant ordonnés par date de signature dans les exploitations.
+
+### Évolutions techniques
+- Correction de problèmes de linting.
+
+### Autres changements
+- Aucun changement significatif à signaler.
