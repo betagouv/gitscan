@@ -16,6 +16,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── Makefile
+├── NOTICE
 ├── Procfile
 ├── README.md
 ├── SECURITY.md
@@ -27,10 +28,10 @@
 │   ├── celery_app.py
 │   ├── dumps-sample
 │   │   ├── epcis.json
+│   │   ├── operators.json
 │   │   ├── organizations.json
 │   │   ├── service_usages.json
-│   │   ├── services.json
-│   │   └── structures.json
+│   │   └── services.json
 │   ├── poetry.lock
 │   ├── pyproject.toml
 │   ├── tasks
@@ -43,7 +44,6 @@
 │   │   ├── dumps.py
 │   │   ├── historize.py
 │   │   ├── lib.py
-│   │   ├── repertoire.py
 │   │   ├── sync.py
 │   │   └── sync_repertoire.py
 │   └── tests
@@ -104,16 +104,26 @@
 │   │   │   └── 94.json
 │   │   └── regions.json
 │   ├── icons
+│   │   ├── cityhall.svg
 │   │   ├── france.svg
 │   │   ├── guadeloupe.svg
 │   │   ├── guyane.svg
 │   │   ├── martinique.svg
 │   │   ├── mayotte.svg
-│   │   └── reunion.svg
+│   │   ├── person.svg
+│   │   ├── reunion.svg
+│   │   └── services.svg
 │   ├── images
 │   │   ├── anct.png
 │   │   ├── anct2.png
 │   │   ├── anssi.png
+│   │   ├── bienvenue-illu
+│   │   │   ├── ansm.svg
+│   │   │   ├── opsn-basic.jpg
+│   │   │   ├── service-12.jpg
+│   │   │   ├── service-2.jpg
+│   │   │   ├── service-99.jpg
+│   │   │   └── suite-basic.jpg
 │   │   ├── carto.png
 │   │   ├── coin-bottom-left.svg
 │   │   ├── coin-bottom-right.svg
@@ -121,18 +131,16 @@
 │   │   ├── declic.png
 │   │   ├── dinum.png
 │   │   ├── ecosysteme.svg
+│   │   ├── illu-lst.svg
+│   │   ├── interest-test.svg
 │   │   ├── logo-anct.svg
 │   │   ├── logo-incubateur.svg
+│   │   ├── logo-ndd.svg
 │   │   ├── logo-proconnect.svg
 │   │   ├── logo-st.svg
+│   │   ├── plane.svg
 │   │   ├── rcpnt-messagerie.svg
 │   │   ├── rcpnt-site.svg
-│   │   ├── screen-ecosysteme.png
-│   │   ├── screen-fichiers-2.png
-│   │   ├── screen-fichiers.png
-│   │   ├── screen-messages.png
-│   │   ├── screen-proconnect.png
-│   │   ├── screen-projets.png
 │   │   ├── socle.svg
 │   │   └── suite-territoriale-hero.png
 │   ├── parent_areas.json
@@ -154,17 +162,21 @@
 ├── sentry.client.config.ts
 ├── sentry.server.config.ts
 ├── src
+│   ├── caddy
+│   │   └── Caddyfile
 │   ├── components
 │   │   ├── BackToTop.tsx
 │   │   ├── CommuneSearch.tsx
 │   │   ├── ContactUs.tsx
 │   │   ├── CopyToClipboard.tsx
+│   │   ├── CustomAlert.tsx
 │   │   ├── FaqList.tsx
 │   │   ├── FeedbackWidget.tsx
 │   │   ├── HeroSection.tsx
 │   │   ├── HexPattern.tsx
 │   │   ├── Newsletter.tsx
 │   │   ├── StatsSlider.tsx
+│   │   ├── TrialContact.tsx
 │   │   ├── VerticalStepper.tsx
 │   │   ├── map
 │   │   │   ├── context
@@ -184,6 +196,8 @@
 │   │   │   │   └── deploiement
 │   │   │   │       ├── CartographieDeploiement.tsx
 │   │   │   │       ├── SidePanelContent.jsx
+│   │   │   │       ├── SidePanelContent.module.css
+│   │   │   │       ├── servicesConfig.ts
 │   │   │   │       └── types.ts
 │   │   │   ├── hooks
 │   │   │   │   ├── useDisplayedGeoJSON.ts
@@ -202,14 +216,19 @@
 │   │   │       ├── MapButton.tsx
 │   │   │       └── SidePanel.tsx
 │   │   └── onboarding
-│   │       ├── ActiveInRegieView.tsx
 │   │       ├── CommuneInfo.tsx
+│   │       ├── DepartmentPresenceView.tsx
 │   │       ├── ErrorView.tsx
-│   │       ├── NotEligibleView.tsx
-│   │       ├── OPSNChoiceView.tsx
-│   │       ├── OPSNProConnectView.tsx
-│   │       ├── OPSNZeroView.tsx
-│   │       └── UniqueCodeRequestView.tsx
+│   │       ├── MutualisationView.tsx
+│   │       ├── OPSNBasicView.tsx
+│   │       ├── OPSNServicesView.tsx
+│   │       ├── OrganisationPresenceView.tsx
+│   │       ├── OtherServicesView.tsx
+│   │       ├── ServiceIllustration.tsx
+│   │       ├── ServicePicker.tsx
+│   │       ├── SuiteServicesBasicView.tsx
+│   │       ├── SuiteServicesView.tsx
+│   │       └── UsedServicesView.tsx
 │   ├── layouts
 │   │   └── page.tsx
 │   ├── lib
@@ -221,13 +240,10 @@
 │   │   │   └── server.tsx
 │   │   ├── hooks.ts
 │   │   ├── matomo.ts
-│   │   ├── onboarding.ts
 │   │   ├── schema.ts
 │   │   ├── scrollToHash.ts
 │   │   ├── string.ts
 │   │   └── useActiveSection.ts
-│   ├── nginx
-│   │   └── servers.conf.erb
 │   ├── pages
 │   │   ├── 404.tsx
 │   │   ├── 500.tsx
@@ -238,13 +254,12 @@
 │   │   │   ├── [slug].tsx
 │   │   │   └── index.tsx
 │   │   ├── api
-│   │   │   ├── auth
-│   │   │   │   └── [...nextauth].ts
 │   │   │   ├── communes
 │   │   │   │   ├── [siret].ts
 │   │   │   │   ├── search.ts
 │   │   │   │   └── signup.ts
 │   │   │   ├── deployment
+│   │   │   │   ├── operators.ts
 │   │   │   │   ├── services.ts
 │   │   │   │   └── stats.ts
 │   │   │   └── rcpnt
@@ -252,8 +267,8 @@
 │   │   │       └── stats.ts
 │   │   ├── bienvenue
 │   │   │   └── [siret]
-│   │   │       ├── index.tsx
-│   │   │       └── inscription.tsx
+│   │   │       ├── contact.tsx
+│   │   │       └── index.tsx
 │   │   ├── cartographie-deploiement.tsx
 │   │   ├── conformite
 │   │   │   ├── cartographie.tsx
@@ -269,9 +284,7 @@
 │   │   ├── communesearch.css
 │   │   └── global.css
 │   └── types
-│       ├── index.ts
-│       ├── next-auth.d.ts
-│       └── onboarding.ts
+│       └── index.ts
 ├── tests-playwright
 │   ├── accessibilite.spec.ts
 │   ├── healthz.spec.ts
@@ -279,11 +292,10 @@
 │   ├── mentions-legales.spec.ts
 │   └── politique-confidentialite.spec.ts
 ├── tests-vitest
-│   ├── index.spec.tsx
-│   └── onboarding.spec.ts
+│   └── index.spec.tsx
 ├── tsconfig.json
 ├── vitest.config.mts
 └── webcomponents
     ├── demo.html
     └── st-collectivite-search.tsx
-49 directories, 328 files
+49 directories, 340 files
