@@ -1,37 +1,31 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 15 mai 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la page d'accueil et le simulateur simplifié, avec l'ajout de nouveaux contenus et une refonte de l'affichage. Des améliorations techniques ont également été apportées pour optimiser la gestion des données, les tests et la configuration des emails. L'administration a été enrichie avec de nouvelles fonctionnalités pour la gestion des utilisateurs et des demandes en masse.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la landing page du simulateur simplifié, l'ajout d'informations sur les écoréseaux et des améliorations sur la gestion des utilisateurs dans l'administration. Des corrections de bugs et des optimisations techniques ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Simulateur simplifié :** Refonte complète de la landing page avec de nouveaux visuels, des témoignages et un carrousel d'articles. Amélioration du CTA et du tracking.
-- **Page "Qui sommes-nous" :** Mise à jour des textes et du contenu.
-- **Gestion des réseaux de chaleur :** Ajout de colonnes (et donc de filtres) dans la liste des réseaux de chaleur/froid/en construction (notamment pour l'affichage de l'écoréseau).
-- **Modal contact réseau de chaleur :** Ajout d'un événement de partage par email.
-- **Formulaire de contact :** Possibilité de ne pas renseigner le contact lors de la création de demandes en masse.
-- **Admin :**
-    - Ajout de la possibilité de créer des demandes en masse pour un utilisateur.
-    - Amélioration de l'affichage des événements dans l'interface d'administration.
-    - Correction du filtre "Gestionnaires".
-    - Affichage du type de structure dans l'admin.
-    - Correction de la sauvegarde de l'adresse lors de la vérification d'éligibilité.
-- **Affichage général :** Ajout d'icônes à côté des titres des cartes.
-- **Emails :** Envoi des emails depuis une adresse no-reply beta.gouv. Amélioration du style et de l'harmonisation des templates.
+- **Simulateur simplifié :** Refonte complète de la landing page avec de nouveaux visuels, des témoignages et des CTA améliorés. [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215)
+- **Écoréseaux :** Ajout d'informations sur les écoréseaux, incluant une colonne dédiée dans la liste des réseaux de chaleur et la possibilité d'importer des données via un script dédié. [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224) et [#1227](https://github.com/betagouv/france-chaleur-urbaine/pull/1227)
+- **Page "Qui sommes-nous" :** Mise à jour du contenu et de la présentation de la page "Qui sommes-nous". [#1232](https://github.com/betagouv/france-chaleur-urbaine/pull/1232)
+- **Formulaire de contact :** Ajout de liens vers les adresses email dans le formulaire de contact. [#1226](https://github.com/betagouv/france-chaleur-urbaine/pull/1226)
+- **Administration :**
+    - Ajout de la possibilité de créer des demandes massives pour un utilisateur. [#1219](https://github.com/betagouv/france-chaleur-urbaine/pull/1219)
+    - Amélioration de l'affichage et du filtrage des données dans l'interface d'administration. [#1222](https://github.com/betagouv/france-chaleur-urbaine/pull/1222) et [#1230](https://github.com/betagouv/france-chaleur-urbaine/pull/1230)
+    - Ajout du type de structure dans l'admin. [#1228](https://github.com/betagouv/france-chaleur-urbaine/pull/1228)
+- **Modal réseau de chaleur :** Ouverture de la modal d'éligibilité au réseau de chaleur lors du clic sur "Je souhaite être accompagné". [#1234](https://github.com/betagouv/france-chaleur-urbaine/pull/1234)
+- **Partage de simulation :** Ajout d'événements de tracking pour le partage de simulation par email. [#1220](https://github.com/betagouv/france-chaleur-urbaine/pull/1220)
 
 ### Évolutions techniques
-- **Dépendances :** Mise à jour des dépendances du projet.
-- **Tests :** Correction de tests suite à des modifications et ajout de tests pour la gestion des adresses.
-- **Infrastructure :** Configuration de l'envoi d'emails en local.
-- **Code :**
-    - Refactorisation du code des iframes pour une meilleure maintenabilité.
-    - Amélioration du typage de certaines variables et composants.
-    - Suppression de code inutile et amélioration de la lisibilité du code.
-    - Utilisation de classes Tailwind CSS canoniques.
-    - Factorisation de structures de données pour le formulaire de contact.
-- **Images :** Conversion des images en format WebP pour optimiser les performances.
+- **Mise à jour des dépendances :** Mise à jour de plusieurs dépendances du projet. [#1229](https://github.com/betagouv/france-chaleur-urbaine/pull/1229)
+- **Adresse email :** Envoi des emails depuis une adresse no-reply beta.gouv. [#1235](https://github.com/betagouv/france-chaleur-urbaine/pull/1235)
+- **Typage :** Amélioration du typage de certaines variables et fonctions.
+- **Images :** Conversion des images au format WebP pour optimiser les performances.
+- **Refactoring :** Refactoring de certains composants et fonctions pour améliorer la lisibilité et la maintenabilité du code.
+- **Tests :** Correction de tests et ajout de nouveaux tests pour assurer la qualité du code.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la note méthodologique du comparateur.
-- **Configuration :** Ajout de fichiers ignorés par Git pour la configuration locale.
-- **Tracking :** Amélioration du nommage du tracking pour le simulateur simplifié et ajout d'événements PostHog pour le partage de simulation.
-- **Écoréseaux :** Ajout d'un script d'import des écoréseaux et des données correspondantes.
+- **Documentation :** Mise à jour de la documentation.
+- **Nettoyage de code :** Suppression de code inutile et amélioration de la structure du code.
+- **Configuration :** Mise à jour de la configuration du projet.
+- **Amélioration de l'accessibilité :** Correction de problèmes d'accessibilité.
+- **Tracking :** Amélioration du tracking et de l'analyse des données.
