@@ -23,9 +23,11 @@ and this project adheres to
 - ⬆️(dependencies) update pydanticai and related dependencies
 - ⚙️(back) get carbon data from albert api provider
 - ✨(tools): update descriptions
+- ✨(auth) add silent OIDC login
 
 ### Fixed
 
+- 🐛(fix) new conversation in project button max size
 - 💄(ui) little fix margin top
 - 💄(ui) review ui for part of the project
 
