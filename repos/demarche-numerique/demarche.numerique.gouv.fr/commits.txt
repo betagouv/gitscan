@@ -1,3 +1,24 @@
+2026-04-17T11:03:40+02:00 - 2f037c96c - Mathieu Magnin : fix(security): prevent IDOR in instructeur contact_information
+2026-04-17T10:21:30Z - 129ef491a - Mathieu Magnin : Merge pull request #12988 from demarche-numerique/fix/idor-contact-informations-cross-procedure
+2026-04-17T09:42:57+02:00 - eabf7e80d - mfo : fix(security): include procedure_id in confirmation token and validate on use
+2026-04-17T09:42:57+02:00 - 9bf3c883b - mfo : test(security): add spec proving procedure_id tampering in admin confirmation
+2026-04-17T08:17:37Z - 5427d65a8 - Mathieu Magnin : Merge pull request #12986 from demarche-numerique/fix/scope-dossier-help-to-current-user
+2026-04-17T08:06:32Z - 542a1a8f3 - LeSim : Merge pull request #12967 from mfo/simplify-activate
+2026-04-17T07:49:05Z - 9529ce818 - mfo : Merge pull request #12968 from mfo/super-admin-validate-procedure-id
+2026-04-16T18:31:02+02:00 - 30c11cf65 - Mathieu Magnin : scope dossier_for_help lookup to current user
+2026-04-16T15:07:44+02:00 - 6bb2cfd68 - mfo : fix(security): prevent IDOR in bulk message for brouillons (CWE-639)
+2026-04-16T15:02:55+02:00 - 667d3fb24 - Mathieu Magnin : improve: scope instructeur lookup to group on removal
+2026-04-16T13:19:31Z - f31d753e4 - mfo : Merge pull request #12972 from mfo/fix/idor-bulk-message-groupe-instructeur
+2026-04-16T13:16:06Z - 178836a45 - Mathieu Magnin : Merge pull request #12984 from demarche-numerique/improve-instructeur-group-removal-scoping
+2026-04-16T11:12:37Z - e1655ab38 - Eric Leroy-Terquem : Merge pull request #12982 from demarche-numerique/fix-trad-in-options-component
+2026-04-16T10:31:48+02:00 - 9befc87de - Lisa Durand : fix: finalize failed batch operations and restore batch alert
+2026-04-16T10:01:44+02:00 - 70db873e7 - Eric Leroy-Terquem : fix(translation): fix variables in instructeurs_options_component en yml file
+2026-04-16T09:38:09+02:00 - 9b6d3a8c1 - mfo : docs(readme): document X-Forwarded-For proxy requirement for IP security features
+2026-04-16T09:38:08+02:00 - b6fa51bb3 - mfo : fix(security): use request.remote_ip instead of raw X-Forwarded-For header
+2026-04-16T09:38:08+02:00 - 331b0b09d - mfo : test(security): add spec proving 2FA bypass via X-Forwarded-For spoofing
+2026-04-16T08:55:17Z - 6489d6661 - Lisa Durand : Merge pull request #12975 from demarche-numerique/fix-failed-batch-operations-ldu
+2026-04-16T07:47:40Z - 61b4c30be - Mathieu Magnin : Merge pull request #12958 from demarche-numerique/fix/export-template-stale-column-404
+2026-04-16T07:43:31Z - 2f4ce2b51 - mfo : Merge pull request #12976 from mfo/fix/2fa-bypass-ip-spoofing
 2026-04-15T18:13:32Z - 9437ec1aa - Lisa Durand : Merge pull request #12978 from demarche-numerique/fix-toggle
 2026-04-15T18:11:40+02:00 - 54fd4d209 - simon lehericey : fix(dep): force connection_pool to be < 3 for compat with activesupport
 2026-04-15T18:03:39+02:00 - 544a5a1ee - Eric Leroy-Terquem : fix(toggle component)
@@ -30,6 +51,13 @@
 2026-04-15T07:30:05+02:00 - 19443bbdf - mfo : fix(security): add ALLOWED_FORMATS whitelist to instructeurs bilans_bdf
 2026-04-15T07:29:58+02:00 - 5cfc5f16f - mfo : test(security): add spec proving bilans_bdf format injection on instructeurs controller
 2026-04-15T03:23:07Z - 4a9488d85 - mfo : Merge pull request #12963 from mfo/US/better-worktree
+2026-04-14T19:29:08+02:00 - 9a85f0bed - mfo : feat(i18n/a11y): pas de texte francais en dur
+2026-04-14T19:29:08+02:00 - 9a49935e1 - mfo : tech(secu): avoid LLM hallucination ?
+2026-04-14T19:29:08+02:00 - 31c181dbb - mfo : fix(security): restrict trust_device to create action, instructeur only
+2026-04-14T19:29:08+02:00 - 043ab3a98 - mfo : refactor(activate): remove duplicated controllers, views and specs
+2026-04-14T19:15:52+02:00 - fd2c18c45 - mfo : refactor(activate): harmonize Users::ActivateController#create
+2026-04-14T19:15:52+02:00 - c3d981f2e - mfo : refactor(mailers): use users_activate_url in activation emails
+2026-04-14T19:15:52+02:00 - 01acc81ce - mfo : refactor(routes): point admin/activate and gestionnaires/activate to Users::ActivateController
 2026-04-14T19:03:59+02:00 - bc6e18d25 - mfo : seed: use tiptap fields for referentiel in dev seed
 2026-04-14T19:03:59+02:00 - b66d9a5c1 - mfo : cleanup: remove legacy factory fields, xdescribe backfill task spec
 2026-04-14T19:03:59+02:00 - 9fb8742f7 - mfo : model: ignore legacy columns (use_tiptap, url, test_data) before drop
@@ -53,6 +81,7 @@
 2026-04-14T07:29:08Z - 9830291ac - Mathieu Magnin : Merge pull request #12960 from demarche-numerique/fix-11167-aria-live-upload-error
 2026-04-13T18:41:41Z - 10c538b14 - Eric Leroy-Terquem : Merge pull request #12956 from demarche-numerique/fix-instant-email-new-expert-avis
 2026-04-13T18:09:57+02:00 - ba0616624 - Mathieu Magnin : fix(a11y): announce upload transfer errors to screen readers
+2026-04-13T16:17:08+02:00 - ab4ee8241 - Mathieu Magnin : fix: handle stale type_de_champ references in export template columns
 2026-04-13T15:31:56Z - a2ceb3eda - mfo : Merge pull request #12930 from mfo/cleanup-nature-step2
 2026-04-13T11:18:07Z - 5075e3796 - mfo : Merge pull request #12957 from mfo/US/somepatches
 2026-04-13T11:14:32+02:00 - cb1f61663 - mfo : [PATCH 3/4] fix(super_admin): 2fa reset when reset password

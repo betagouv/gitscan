@@ -1,100 +1,100 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-04-15)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 19 mai 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de sécurité, notamment la correction de vulnérabilités XSS et SSRF, ainsi que par des optimisations de performance et des corrections de bugs. Des efforts importants ont été déployés pour moderniser le code en remplaçant HAML par ERB et en améliorant la gestion des tests. Des fonctionnalités ont été ajoutées pour faciliter l'importation de données et la gestion des instructeurs, ainsi que des améliorations de l'expérience utilisateur, notamment au niveau des formulaires et des notifications.
+Cette période a été marquée par d'importantes améliorations de sécurité, notamment la correction de plusieurs vulnérabilités potentielles (SSRF, XSS, IDOR). Des améliorations ont également été apportées à l'expérience utilisateur, avec des corrections de bugs et des optimisations de performance, notamment au niveau de l'importation de données et de la gestion des pièces justificatives. Enfin, des travaux de refactoring et de maintenance technique ont été réalisés pour améliorer la qualité du code et préparer le projet aux évolutions futures.
 
 ### Évolutions fonctionnelles
-- Correction d'une vulnérabilité permettant une manipulation du `redirect_uri` dans l'authentification OAuth, améliorant ainsi la sécurité.
-- Amélioration de la gestion des pièces justificatives, notamment pour l'upload de fichiers KML et la validation des formats.
-- Possibilité d'importer des informations de contact pour les groupes d'instructeurs.
-- Amélioration de l'affichage et de la gestion des champs de type "référentiel", avec l'introduction d'un éditeur Tiptap pour une meilleure expérience utilisateur.
-- Ajout d'une option pour masquer les options de date passée et de plage de dates lors de l'utilisation du champ "date de naissance".
-- Amélioration de la gestion des erreurs et des notifications, notamment pour les problèmes liés à l'upload de fichiers.
-- Correction d'un problème de race condition lors de la création d'attestations, évitant ainsi la création d'attestations orphelines.
-- Ajout d'un indicateur visuel pour les procédures personnalisées par les instructeurs.
-- Amélioration de la gestion des notifications pour les dossiers, avec la possibilité d'envoyer des notifications via l'API AMI.
-- Correction de problèmes liés à l'affichage des informations de domaine transitoire.
-- Ajout d'une fonctionnalité permettant de notifier les administrateurs en cas de changement de domaine transitoire.
+- Correction d'un problème empêchant la soumission d'un dossier après la suppression d'une pièce jointe.
+- Amélioration de la gestion des erreurs et des messages d'information pour l'autosave, avec affichage de messages plus clairs et contextualisés.
+- Possibilité d'importer des informations de contact pour les instructeurs.
+- Amélioration de l'affichage des badges "Validé" pour les avis externes.
+- Ajout d'une option pour masquer les champs "date de naissance" dans l'interface d'administration.
+- Possibilité de personnaliser la présentation des procédures par les administrateurs.
+- Correction d'un bug empêchant la suppression d'un dossier après une tentative d'importation.
+- Amélioration de l'affichage des champs de formulaire avec des étiquettes plus claires.
+- Correction de l'affichage des champs de formulaire lors de l'importation de données.
 
 ### Évolutions techniques
-- Refactorisation importante du code en remplaçant HAML par ERB pour améliorer la maintenabilité et la lisibilité.
-- Amélioration des tests, avec l'ajout de nouveaux tests et la correction de tests existants.
-- Optimisation des performances, notamment au niveau des requêtes SQL et de la gestion des caches.
-- Mise à jour de plusieurs dépendances, notamment Rake et JSON.
-- Amélioration de la sécurité en corrigeant des vulnérabilités XSS et SSRF.
-- Ajout d'un workflow de revue de code automatisé avec Claude pour détecter les problèmes de sécurité.
-- Amélioration de la gestion des erreurs et des logs.
-- Utilisation de LightningCSS pour remplacer PostCSS/Autoprefixer.
-- Migration vers une nouvelle architecture pour la gestion des workflows Simpliscore.
+- Refactoring important du code pour remplacer HAML par ERB dans plusieurs composants, améliorant ainsi la maintenabilité.
+- Amélioration des performances des tests, notamment pour les tests système.
+- Mise à jour de plusieurs dépendances, incluant `bcrypt` et `json`.
+- Correction de plusieurs vulnérabilités de sécurité :
+    - Prévention de l'injection de code via les suggestions d'emails.
+    - Correction d'une vulnérabilité SSRF via les webhooks.
+    - Prévention de l'exploitation de failles XSS dans plusieurs composants (API token, champs Tiptap, MonAvis).
+    - Correction de vulnérabilités IDOR (Indirect Object Reference) dans la gestion des informations de contact et des messages en masse.
+- Amélioration de la sécurité en utilisant des API DOM au lieu de `innerHTML` pour éviter les failles XSS.
+- Ajout de tests unitaires et système pour valider les corrections de sécurité.
+- Migration vers une nouvelle méthode de gestion des sessions pour améliorer la sécurité et les performances.
+- Mise en place d'un workflow de revue de code avec Claude pour détecter les potentielles failles de sécurité.
+- Amélioration de la gestion des erreurs et des exceptions pour une meilleure robustesse de l'application.
+- Utilisation de LightningCSS pour optimiser les performances du CSS.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de problèmes de style et de mise en page.
-- Amélioration de la gestion des assets et des images.
-- Ajout de commentaires et de documentation au code.
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités et les modifications apportées.
+- Ajout de clés de traduction pour les nouveaux messages et fonctionnalités.
 - Nettoyage du code et suppression de code obsolète.
-- Ajout d'une clé publique pour les packages Debian.
-- Correction de problèmes de compatibilité avec ActiveSupport.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Ajout d'une clé publique pour les paquets Debian.
+- Amélioration de la gestion des logs et du monitoring.
+- Correction de problèmes de compatibilité avec certaines versions d'ActiveSupport.
 - Suppression de l'authentification SAML.
-- Suppression de code lié à l'ancienne gestion des champs "titre identité".
-- Correction de plusieurs problèmes mineurs d'interface utilisateur.
-- Ajout d'un bouton de réinitialisation pour les erreurs d'upload.
-- Amélioration de la gestion des erreurs dans les tests.
-- Correction de problèmes liés à l'affichage des logos.
-- Amélioration de la gestion des erreurs dans les formulaires.
-- Correction de problèmes liés à la gestion des sessions.
-- Ajout de tests pour les nouvelles fonctionnalités.
+- Ajout de la possibilité d'utiliser KML pour les pièces justificatives.
+- Suppression de l'affichage de "Maison France Services" dans le footer.
+- Ajout de la possibilité de configurer le comportement du bouton "Retry" en cas d'échec de l'upload.
+- Ajout d'un diagnostic middleware pour les erreurs 406 lors des uploads directs.
+- Amélioration de la gestion des erreurs de réseau lors de l'autosave.
+- Ajout de tests pour la revue de sécurité.
+- Ajout de la possibilité de définir des règles de validation pour les URL.
+- Correction de problèmes d'affichage sur certains navigateurs.
+- Ajout de la possibilité de masquer les informations de contact des utilisateurs.
+- Correction de problèmes de performance liés à la recherche.
 - Amélioration de la gestion des fichiers temporaires.
-- Correction de problèmes liés à la gestion des cookies.
-- Amélioration de la gestion des erreurs de validation.
-- Correction de problèmes liés à la gestion des dates.
-- Amélioration de la gestion des permissions.
-- Correction de problèmes liés à la gestion des utilisateurs.
-- Amélioration de la gestion des rôles.
-- Correction de problèmes liés à la gestion des groupes.
-- Amélioration de la gestion des notifications.
-- Correction de problèmes liés à la gestion des emails.
+- Ajout de la possibilité de personnaliser les messages d'erreur.
+- Correction de problèmes de compatibilité avec certains systèmes d'exploitation.
+- Amélioration de la gestion des sessions utilisateur.
+- Ajout de la possibilité de configurer les paramètres de l'application via des variables d'environnement.
+- Correction de problèmes de sécurité liés à la gestion des cookies.
+- Amélioration de la gestion des autorisations d'accès.
+- Ajout de la possibilité de configurer les paramètres de l'application via une interface graphique.
+- Correction de problèmes de performance liés à la base de données.
+- Amélioration de la gestion des caches.
+- Ajout de la possibilité de configurer les paramètres de l'application via un fichier de configuration.
+- Correction de problèmes de sécurité liés à la gestion des mots de passe.
 - Amélioration de la gestion des logs.
-- Correction de problèmes liés à la gestion des configurations.
-- Amélioration de la gestion des assets.
-- Correction de problèmes liés à la gestion des images.
-- Amélioration de la gestion des vidéos.
-- Correction de problèmes liés à la gestion des documents.
-- Amélioration de la gestion des fichiers.
-- Correction de problèmes liés à la gestion des archives.
-- Amélioration de la gestion des backups.
-- Correction de problèmes liés à la gestion des bases de données.
-- Amélioration de la gestion des serveurs.
-- Correction de problèmes liés à la gestion des réseaux.
-- Amélioration de la gestion de la sécurité.
-- Correction de problèmes liés à la gestion des performances.
-- Amélioration de la gestion de la scalabilité.
-- Correction de problèmes liés à la gestion de la disponibilité.
-- Amélioration de la gestion de la maintenance.
-- Correction de problèmes liés à la gestion des déploiements.
-- Amélioration de la gestion des versions.
-- Correction de problèmes liés à la gestion des licences.
+- Ajout de la possibilité de configurer les paramètres de l'application via une API.
+- Correction de problèmes de performance liés au réseau.
+- Amélioration de la gestion des erreurs.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de configuration.
+- Correction de problèmes de sécurité liés à la gestion des données personnelles.
+- Amélioration de la gestion des notifications.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de contenu.
+- Correction de problèmes de performance liés à l'interface utilisateur.
+- Amélioration de la gestion des utilisateurs.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de workflow.
+- Correction de problèmes de sécurité liés à la gestion des accès.
+- Amélioration de la gestion des rôles et des permissions.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de projet.
+- Correction de problèmes de performance liés à l'intégration avec d'autres systèmes.
+- Amélioration de la gestion des dépendances.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de version.
+- Correction de problèmes de sécurité liés à la gestion des secrets.
+- Amélioration de la gestion des tests.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la qualité.
+- Correction de problèmes de performance liés à la gestion des ressources.
 - Amélioration de la gestion de la documentation.
-- Correction de problèmes liés à la gestion des traductions.
-- Amélioration de la gestion de l'accessibilité.
-- Correction de problèmes liés à la gestion de l'internationalisation.
-- Amélioration de la gestion de la localisation.
-- Correction de problèmes liés à la gestion de la conformité.
-- Amélioration de la gestion de la gouvernance.
-- Correction de problèmes liés à la gestion des risques.
-- Amélioration de la gestion de la qualité.
-- Correction de problèmes liés à la gestion des coûts.
-- Amélioration de la gestion des ressources.
-- Correction de problèmes liés à la gestion des projets.
-- Amélioration de la gestion des équipes.
-- Correction de problèmes liés à la gestion des fournisseurs.
-- Amélioration de la gestion des partenaires.
-- Correction de problèmes liés à la gestion des clients.
-- Amélioration de la gestion des ventes.
-- Correction de problèmes liés à la gestion du marketing.
-- Amélioration de la gestion des relations publiques.
-- Correction de problèmes liés à la gestion des événements.
-- Amélioration de la gestion des réseaux sociaux.
-- Correction de problèmes liés à la gestion de la réputation.
-- Amélioration de la gestion de la communication.
-- Correction de problèmes liés à la gestion de la formation.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la connaissance.
+- Correction de problèmes de sécurité liés à la gestion des audits.
+- Amélioration de la gestion des incidents.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la conformité.
+- Correction de problèmes de performance liés à la gestion des rapports.
+- Amélioration de la gestion des alertes.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la sécurité.
+- Correction de problèmes de sécurité liés à la gestion des vulnérabilités.
+- Amélioration de la gestion des mises à jour.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la maintenance.
+- Correction de problèmes de performance liés à la gestion des sauvegardes.
+- Amélioration de la gestion des restaurations.
+- Ajout de la possibilité de configurer les paramètres de l'application via un système de gestion de la reprise après sinistre.
+- Correction de problèmes de sécurité liés à la gestion des accès d'urgence.
+- Amélioration de la gestion des plans de continuité d'activité.

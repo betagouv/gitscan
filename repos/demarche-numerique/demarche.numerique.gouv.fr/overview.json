@@ -1,29 +1,35 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web développée pour répondre au besoin du gouvernement français de numériser 100% des procédures administratives. Elle est open source sous licence AGPL et permet aux utilisateurs de réaliser des démarches administratives en ligne.",
+  "description": "Plateforme web conçue pour répondre au besoin du gouvernement français de se conformer à la directive de numérisation à 100 % des procédures administratives. Elle vise à faciliter la dématérialisation des démarches et à améliorer l'accès aux services publics en ligne.",
   "language": "Ruby",
   "features": [
+    "Authentification utilisateur",
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions",
+    "API & Intégrations"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
-    "Vips",
+    "DelayedJob",
     "React",
-    "GraphQL"
+    "GraphQL",
+    "Sentry",
+    "Tiptap"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
+    "Microservices & Architecture",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs"
   ],
@@ -31,16 +37,22 @@
     "methods": [
       "email-password",
       "oauth2",
-      "saml"
+      "sso"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium"
+    "Selenium",
+    "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2024-05-03T14:29:26Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-04-17T11:03:40+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
