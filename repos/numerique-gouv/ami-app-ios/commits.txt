@@ -1,3 +1,29 @@
+2026-04-16T19:21:06+02:00 - f1581be - Nicolas Buquet : Merge pull request #71 from numerique-gouv/24-promouvoir-la-page-onboarding-notification-en-natif
+2026-04-16T19:20:56+02:00 - 926bb3a - Nicolas Buquet : Merge branch 'develop' into 24-promouvoir-la-page-onboarding-notification-en-natif
+2026-04-16T19:19:04+02:00 - 7c7db7d - Nicolas Buquet : Merge pull request #72 from numerique-gouv/70-afficher-le-bouton-de-partage-de-logs-en-bas-de-page-sur-lapp-de-production
+2026-04-16T19:05:53+02:00 - 4f862e7 - Nicolas Buquet : Link Onboarding view to HomeView
+2026-04-16T19:04:38+02:00 - 575cee2 - Nicolas Buquet : Create Onboarding view
+2026-04-16T19:04:25+02:00 - f007eda - Nicolas Buquet : Add Icon and DSFR button type
+2026-04-16T17:24:18+02:00 - 14abff7 - Nicolas Buquet : Embed HomeView content in VStack for correct vertical alignment of subviews
+2026-04-14T16:59:48+02:00 - 18589ec - Nicolas Buquet : Merge pull request #65 from numerique-gouv/64-reactivate-mailto-link-handling
+2026-04-14T09:52:03+02:00 - 3b08604 - Nicolas Buquet : Merge branch 'develop' of github.com:numerique-gouv/ami-app-ios into develop
+2026-04-13T10:22:35+02:00 - 50c130b - Nicolas Buquet : Fix typo
+2026-04-13T09:48:17+02:00 - 4c22b52 - Nicolas Buquet : Merge pull request #59 from numerique-gouv/58-backport-open-the-notifications-page-when-clicking-on-a-push-notification
+2026-04-09T19:35:20+02:00 - 8f88624 - Nicolas Buquet : Handle "Contact by email" on HomeView
+2026-04-09T19:34:44+02:00 - 1a9dc88 - Nicolas Buquet : Make WebView.ViewModel `delegate` property var and lot let to be updatable after init.
+2026-04-09T19:33:49+02:00 - 24a1162 - Nicolas Buquet : Populate default `checkIfNavigationIsAllowed`
+2026-04-09T19:33:21+02:00 - 0f1ddb7 - Nicolas Buquet : Call `checkIfNavigationIsAllowed` to know if navigation to new url is authorized
+2026-04-09T19:32:09+02:00 - f94a0f8 - Nicolas Buquet : Add `checkIfNavigationIsAllowed` method to WebViewDelegate to catch navigation before it occurs if necessary
+2026-04-08T18:31:25+02:00 - 671e460 - Nicolas Buquet : Remove config files now that it's no more used
+2026-04-08T18:29:00+02:00 - 0a13046 - Nicolas Buquet : Make `BASE_URL` constant now that it's no more modified in application
+2026-04-08T18:28:29+02:00 - 68ea1f0 - Nicolas Buquet : Make application root view react to posted notification from NotificationManager
+2026-04-08T18:27:30+02:00 - 4f688d3 - Nicolas Buquet : Post received notification in its own method for clarity
+2026-04-08T18:25:08+02:00 - 05dd823 - Nicolas Buquet : Reformat log messages
+2026-04-08T18:23:55+02:00 - c888068 - Nicolas Buquet : Force device to register to backend even if Firebase think the token hasn't changed (in case previous register did failed)
+2026-04-08T18:22:49+02:00 - d61cbcc - Nicolas Buquet : Execute `evaluateJavaScript` on main thread
+2026-04-07T19:03:04+02:00 - c846f1f - Nicolas Buquet : NotificationManager - log FCM token reception
+2026-04-07T18:47:59+02:00 - f8f8651 - Nicolas Buquet : Fix debug comment and Build Config error
+2026-04-07T18:47:19+02:00 - f9c0d94 - Nicolas Buquet : Split NotificationManager - add NotificationStatus and RegisterDevice
 2026-04-07T15:15:27+02:00 - 3007d7e - Nicolas Buquet : Merge pull request #57 from numerique-gouv/56-after-refactor-homeview-andreviewappview-are-not-initialized-correctly
 2026-04-07T12:04:43+02:00 - 6f9af22 - Nicolas Buquet : Merge branch '56-after-refactor-homeview-andreviewappview-are-not-initialized-correctly' of github.com:numerique-gouv/ami-app-ios into 56-after-refactor-homeview-andreviewappview-are-not-initialized-correctly
 2026-04-07T12:04:26+02:00 - 6fb2cde - Nicolas Buquet : Set immuable Home view model static.
@@ -9,8 +35,8 @@
 2026-03-30T17:49:14+02:00 - a4a7eab - Nicolas Buquet : Remove unused code after refactor
 2026-03-30T17:47:40+02:00 - 9637d0c - Nicolas Buquet : Enable app starting from iOS 17.0
 2026-03-30T17:47:19+02:00 - 51967e7 - Nicolas Buquet : Enable default configuration for Previews out of DEBUG mode
-2026-03-30T15:20:14+02:00 - 6e537db - Mathieu Agopian : @NicolasBuquet's review
 2026-03-30T15:20:14+02:00 - ee3c756 - Mathieu Agopian : Open the notifications page when clicking on a push notification (#54)
+2026-03-30T15:20:14+02:00 - 6e537db - Mathieu Agopian : @NicolasBuquet's review
 2026-03-20T11:34:29+01:00 - 45d7f33 - Nicolas Buquet : Comment old code (before deleting)
 2026-03-20T11:34:15+01:00 - 2fbb43b - Nicolas Buquet : Fix bug - remove right scripts before injecting new ones,
 2026-03-20T11:33:09+01:00 - 31c0e05 - Nicolas Buquet : Optimize HomeView structure to avoid multiple back buttons in toolbar
@@ -53,9 +79,9 @@
 2026-01-30T10:55:20+01:00 - 514b613 - Nicolas Buquet : Refactor Settings view (title and toolbar)
 2026-01-30T10:54:54+01:00 - 7b5b0b8 - Nicolas Buquet : Refactor HomeView back button
 2026-01-30T10:54:05+01:00 - b18335c - Nicolas Buquet : Add strings and fix String class generation by SwiftGen
-2026-01-27T08:23:11+01:00 - 70b6162 - Nicolas Buquet : Insert Common Localizations
-2026-01-27T08:23:11+01:00 - 77c0664 - Nicolas Buquet : Handle strings with localization files
 2026-01-27T08:23:11+01:00 - c2ca74d - Nicolas Buquet : Code review essentially on LogsExporter
+2026-01-27T08:23:11+01:00 - 77c0664 - Nicolas Buquet : Handle strings with localization files
+2026-01-27T08:23:11+01:00 - 70b6162 - Nicolas Buquet : Insert Common Localizations
 2026-01-27T08:23:11+01:00 - 436975b - Mathieu Agopian : Display a button on the contact page to download and share logs
 2026-01-23T20:25:03+01:00 - 2f4cb48 - Nicolas Buquet : Make Settings a native view
 2026-01-23T16:20:17+01:00 - bef9b91 - Nicolas Buquet : Reorder steps 1 and 2
@@ -64,31 +90,31 @@
 2026-01-22T17:53:43+01:00 - 9d7d98a - Nicolas Buquet : ignore AMI/Sources/Generated/ folder
 2026-01-22T17:52:00+01:00 - 8319e4f - Nicolas Buquet : Add scripts configuration and update Readme
 2026-01-22T11:46:42+01:00 - 3697fac - Mathieu Agopian : InformationBanner's title can wrap on multiple lines (#514)
-2026-01-20T10:08:08+01:00 - 0597ed3 - Nicolas Buquet : Enhance code after review
-2026-01-20T10:08:08+01:00 - 8e98048 - Nicolas Buquet : Refactor Xcode project using xcodegen
 2026-01-20T10:08:08+01:00 - cb1300d - Nicolas Buquet : Git rm AMI.xcodeproj
+2026-01-20T10:08:08+01:00 - 8e98048 - Nicolas Buquet : Refactor Xcode project using xcodegen
 2026-01-20T10:08:08+01:00 - 442774a - Nicolas Buquet : git ignore xcode project files
-2026-01-16T08:44:17+01:00 - 941cfdf - Nicolas Buquet : Config values code optimization
+2026-01-20T10:08:08+01:00 - 0597ed3 - Nicolas Buquet : Enhance code after review
+2026-01-16T08:44:17+01:00 - f8be14e - Mathieu Agopian : Display an information banner when the notifications have been authorized
+2026-01-16T08:44:17+01:00 - eeac0f2 - Mathieu Agopian : Update the `notifications_enabled` localStorage on each page load
 2026-01-16T08:44:17+01:00 - c09240e - Nicolas Buquet : WebView code cleaning
+2026-01-16T08:44:17+01:00 - bfa2a19 - Mathieu Agopian : React to the checkbox in the settings: open the OS settings if needed
 2026-01-16T08:44:17+01:00 - b772b66 - Mathieu Agopian : @NicolasBuquet's review: the WebViewManager owns the webview
+2026-01-16T08:44:17+01:00 - ad61283 - Mathieu Agopian : Ask for the notification permission in the onboarding screen (#469)
+2026-01-16T08:44:17+01:00 - 941cfdf - Nicolas Buquet : Config values code optimization
 2026-01-16T08:44:17+01:00 - 3c3f6d6 - Mathieu Agopian : @NicolasBuquet's review: use Swift concurrency instead of GCD
 2026-01-16T08:44:17+01:00 - 192950f - Mathieu Agopian : @NicolasBuquet's review: factor out helper functions
-2026-01-16T08:44:17+01:00 - bfa2a19 - Mathieu Agopian : React to the checkbox in the settings: open the OS settings if needed
-2026-01-16T08:44:17+01:00 - eeac0f2 - Mathieu Agopian : Update the `notifications_enabled` localStorage on each page load
 2026-01-16T08:44:17+01:00 - 04ee214 - Mathieu Agopian : Go back home when the notifications have been authorized
-2026-01-16T08:44:17+01:00 - f8be14e - Mathieu Agopian : Display an information banner when the notifications have been authorized
-2026-01-16T08:44:17+01:00 - ad61283 - Mathieu Agopian : Ask for the notification permission in the onboarding screen (#469)
 2026-01-15T14:51:21+01:00 - 0428822 - Mathieu Agopian : Display an information banner when the network connectivity is lost (#471)
-2026-01-14T15:58:28+01:00 - 7d0d9a1 - Mathieu Agopian : Display the information banners at the top of the screen
 2026-01-14T15:58:28+01:00 - e527226 - Mathieu Agopian : Add Information banners
-2026-01-13T17:11:55+01:00 - 701f81c - Mathieu Agopian : Register an FCM token with the backend (#418)
+2026-01-14T15:58:28+01:00 - 7d0d9a1 - Mathieu Agopian : Display the information banners at the top of the screen
 2026-01-13T17:11:55+01:00 - b3d3cdd - Mathieu Agopian : AMI entitlements
+2026-01-13T17:11:55+01:00 - 701f81c - Mathieu Agopian : Register an FCM token with the backend (#418)
 2026-01-13T16:12:03+01:00 - 817ede9 - Mathieu Agopian : Merge pull request #6 from numerique-gouv/222-use-firebase-continued
 2026-01-13T15:58:25+01:00 - 0df377e - Mathieu Agopian : The development team should be stored in the Local.xconfig file
 2026-01-13T15:51:12+01:00 - 81196b6 - Mathieu Agopian : AMI entitlements
 2026-01-13T15:47:49+01:00 - 6944979 - Mathieu Agopian : Setup the two apps with their own GoogleService-Info-(Prod|Staging).plist files
-2026-01-13T15:47:12+01:00 - a4a1673 - Mathieu Agopian : Add the Firebase dependencies
 2026-01-13T15:47:12+01:00 - f3e3233 - Mathieu Agopian : Merge branch '222-use-firebase-to-receive-notif-both-ios-and-android' into 222-use-firebase-continued
+2026-01-13T15:47:12+01:00 - a4a1673 - Mathieu Agopian : Add the Firebase dependencies
 2026-01-13T15:41:56+01:00 - b900df7 - Mathieu Agopian : First go back in the WebView's history if possible, before going back through the native views
 2026-01-13T15:32:43+01:00 - 415236d - Mathieu Agopian : Display a progress bar above the WebView showing the loading progress when clicking on a link
 2026-01-13T15:11:13+01:00 - 74f48f1 - Mathieu Agopian : Merge pull request #8 from numerique-gouv/display-webview-logs-in-xcode

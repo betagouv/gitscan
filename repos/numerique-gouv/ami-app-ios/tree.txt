@@ -19,9 +19,9 @@
 │   │   │   │   ├── Contents.json
 │   │   │   │   └── logo_marianne_square.png
 │   │   │   ├── Contents.json
-│   │   │   └── test-image.imageset
-│   │   │       ├── Bibimbap_South_Korea1_S-2465940933.jpg
-│   │   │       └── Contents.json
+│   │   │   └── onboarding-notifications.imageset
+│   │   │       ├── Contents.json
+│   │   │       └── notification.svg
 │   │   ├── Localizations
 │   │   │   ├── en.lproj
 │   │   │   │   ├── Localizable.strings
@@ -32,47 +32,49 @@
 │   │   └── Preview
 │   │       └── Preview Assets.xcassets
 │   │           └── Contents.json
-│   ├── Sources
-│   │   ├── AMIApp.swift
-│   │   ├── Api
-│   │   │   └── WebService.swift
-│   │   ├── AppDelegate.swift
-│   │   ├── Components
-│   │   │   ├── InformationBanner.swift
-│   │   │   ├── Tile.swift
-│   │   │   └── WebView
-│   │   │       ├── AMIWebView.swift
-│   │   │       ├── SwiftUIWebView.md
-│   │   │       ├── SwiftUIWebView.swift
-│   │   │       ├── WebView-ViewModel.swift
-│   │   │       ├── WebViewDelegate.swift
-│   │   │       └── WebViewUserScriptsProtocol.swift
-│   │   ├── Models
-│   │   │   └── ReviewApp.swift
-│   │   ├── Presentation
-│   │   │   ├── Home
-│   │   │   │   ├── HomeView-UserScripts.swift
-│   │   │   │   ├── HomeView-ViewModel.swift
-│   │   │   │   └── HomeView.swift
-│   │   │   ├── ReviewApp
-│   │   │   │   ├── ReviewApp-ViewModel.swift
-│   │   │   │   └── ReviewAppView.swift
-│   │   │   └── Settings
-│   │   │       ├── SettingsView-ViewModel.swift
-│   │   │       └── SettingsView.swift
-│   │   ├── Services
-│   │   │   ├── NetworkMonitor.swift
-│   │   │   └── NotificationManager.swift
-│   │   └── Utils
-│   │       ├── AppBundle.swift
-│   │       ├── Config.swift
-│   │       └── LogsExporter.swift
-│   └── configs
-│       ├── AMI-localdev.xcconfig
-│       ├── AMI-prod.xcconfig
-│       ├── AMI-staging.xcconfig
-│       ├── Local.xcconfig.example
-│       └── README.md
+│   └── Sources
+│       ├── AMIApp.swift
+│       ├── Api
+│       │   └── WebService.swift
+│       ├── AppDelegate.swift
+│       ├── Components
+│       │   ├── InformationBanner.swift
+│       │   ├── Tile.swift
+│       │   └── WebView
+│       │       ├── AMIWebView.swift
+│       │       ├── SwiftUIWebView.md
+│       │       ├── SwiftUIWebView.swift
+│       │       ├── WebView-ViewModel.swift
+│       │       ├── WebViewDelegate.swift
+│       │       └── WebViewUserScriptsProtocol.swift
+│       ├── Models
+│       │   └── ReviewApp.swift
+│       ├── Presentation
+│       │   ├── ButtonDSFR.swift
+│       │   ├── Home
+│       │   │   ├── HomeView-UserScripts.swift
+│       │   │   ├── HomeView-ViewModel.swift
+│       │   │   └── HomeView.swift
+│       │   ├── Onboarding
+│       │   │   ├── OnboardingView.swift
+│       │   │   └── OnboardingViewModel.swift
+│       │   ├── ReviewApp
+│       │   │   ├── ReviewApp-ViewModel.swift
+│       │   │   └── ReviewAppView.swift
+│       │   └── Settings
+│       │       ├── SettingsView-ViewModel.swift
+│       │       └── SettingsView.swift
+│       ├── Services
+│       │   ├── NetworkMonitor.swift
+│       │   └── NotificationManager
+│       │       ├── NotificationManager.swift
+│       │       ├── NotificationStatus.swift
+│       │       └── RegisterDevice.swift
+│       └── Utils
+│           ├── AppBundle.swift
+│           ├── Color.swift
+│           ├── Config.swift
+│           └── LogsExporter.swift
 ├── AMITests
 │   └── AMITests.swift
 ├── AMIUITests
@@ -103,4 +105,4 @@
             ├── GoogleService-Info.plist
             ├── Info.plist
             └── ami.entitlements
-38 directories, 67 files
+39 directories, 68 files
