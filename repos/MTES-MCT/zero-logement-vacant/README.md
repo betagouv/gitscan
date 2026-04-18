@@ -1,6 +1,7 @@
 # zero-logement-vacant
 
 [![End-to-end tests](https://github.com/MTES-MCT/zero-logement-vacant/actions/workflows/e2e.yml/badge.svg?branch=main)](https://github.com/MTES-MCT/zero-logement-vacant/actions/workflows/e2e.yml)
+[![codecov](https://codecov.io/gh/MTES-MCT/zero-logement-vacant/graph/badge.svg?token=B35SRUWNI7)](https://codecov.io/gh/MTES-MCT/zero-logement-vacant)
 
 [Fiche produit](https://beta.gouv.fr/startups/zero-logement-vacant.html)
 
@@ -131,6 +132,11 @@ yarn test --scope @zerologementvacant/server --include-dependents
 
 La commande échoue si le package ne comporte pas de commande `test`, ou si un
 test échoue.
+
+## Documentation
+
+- [Génération de PDF](docs/guides/pdf.md) — courriers de campagne (agents produit)
+- [packages/pdf](packages/pdf/README.md) — documentation technique du package PDF
 
 ## Démo
 

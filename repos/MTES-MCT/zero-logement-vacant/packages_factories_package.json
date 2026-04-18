@@ -1,9 +1,9 @@
 {
-  "name": "@zerologementvacant/schemas",
+  "name": "@zerologementvacant/factories",
   "version": "0.0.1",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -12,12 +12,14 @@
     }
   },
   "dependencies": {
+    "@faker-js/faker": "8.4.1",
     "@zerologementvacant/models": "workspace:*",
-    "yup": "1.7.0"
+    "fishery": "2.4.0",
+    "ts-pattern": "5.8.0"
   },
   "devDependencies": {
-    "@fast-check/vitest": "0.2.2",
     "@tsconfig/node24": "24.0.4",
-    "@types/node": "24"
+    "@types/node": "24",
+    "jest-extended": "4.0.2"
   }
 }

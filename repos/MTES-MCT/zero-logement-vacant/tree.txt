@@ -1,12 +1,17 @@
 .
 ├── .claude
+│   ├── launch.json
 │   ├── rules
 │   │   ├── backend-conventions.md
+│   │   ├── figma-design-system.md
 │   │   ├── frontend-conventions.md
 │   │   └── packages-conventions.md
+│   ├── settings.json
 │   └── skills
 │       └── implement-feature
 │           └── SKILL.md
+├── .config
+│   └── wt.toml
 ├── .docker
 │   ├── README.md
 │   ├── dagster
@@ -28,18 +33,21 @@
 │       ├── deploy-data-apps.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
+│       ├── export-zlovac.yml
 │       ├── github-actions-data-stack.yml
 │       ├── main.yml
 │       ├── pull-request.yml
 │       ├── python-scripts.yml
 │       ├── release.yml
-│       └── review-app.yml
+│       ├── review-app.yml
+│       └── security.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
 ├── .lintstagedrc.json
 ├── .mcp.json
 ├── .npmrc
+├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc.json
 ├── .slugignore
@@ -47,6 +55,7 @@
 ├── .talismanrc
 ├── .vscode
 │   └── settings.json
+├── .worktreeinclude
 ├── .yarnrc.yml
 ├── AGENTS.md
 ├── Aptfile
@@ -302,6 +311,7 @@
 │   │   │   │   │   ├── int_lovac_ex_2023.sql
 │   │   │   │   │   ├── int_lovac_ex_2024.sql
 │   │   │   │   │   ├── int_lovac_ex_2025.sql
+│   │   │   │   │   ├── int_lovac_ex_2026.sql
 │   │   │   │   │   ├── int_lovac_fil_2019.sql
 │   │   │   │   │   ├── int_lovac_fil_2020.sql
 │   │   │   │   │   ├── int_lovac_fil_2021.sql
@@ -309,6 +319,7 @@
 │   │   │   │   │   ├── int_lovac_fil_2023.sql
 │   │   │   │   │   ├── int_lovac_fil_2024.sql
 │   │   │   │   │   ├── int_lovac_fil_2025.sql
+│   │   │   │   │   ├── int_lovac_fil_2026.sql
 │   │   │   │   │   ├── int_lovac_geo_code.sql
 │   │   │   │   │   └── int_lovac_history_housing.sql
 │   │   │   │   ├── production
@@ -356,7 +367,10 @@
 │   │   │   │   │   ├── int_zff_owners_housing.sql
 │   │   │   │   │   └── schemas.yml
 │   │   │   │   └── zlovac
+│   │   │   │       ├── README.md
 │   │   │   │       ├── int_zlovac.sql
+│   │   │   │       ├── int_zlovac_buildings.sql
+│   │   │   │       ├── int_zlovac_evol_housing_owners.sql
 │   │   │   │       ├── int_zlovac_housing.sql
 │   │   │   │       ├── int_zlovac_owner_housing.sql
 │   │   │   │       ├── int_zlovac_owner_housing_scored.sql
@@ -470,7 +484,8 @@
 │   │   │       │   ├── sources.yml
 │   │   │       │   ├── stg_ff_building_2024.sql
 │   │   │       │   ├── stg_ff_housing_2024.sql
-│   │   │       │   └── stg_ff_owners_2024.sql
+│   │   │       │   ├── stg_ff_owners_2024.sql
+│   │   │       │   └── stg_ff_owners_2025.sql
 │   │   │       ├── lovac
 │   │   │       │   ├── ff
 │   │   │       │   │   ├── schema.yml
@@ -489,7 +504,8 @@
 │   │   │       │   ├── stg_lovac_2022.sql
 │   │   │       │   ├── stg_lovac_2023.sql
 │   │   │       │   ├── stg_lovac_2024.sql
-│   │   │       │   └── stg_lovac_2025.sql
+│   │   │       │   ├── stg_lovac_2025.sql
+│   │   │       │   └── stg_lovac_2026.sql
 │   │   │       ├── production
 │   │   │       │   ├── schemas.yml
 │   │   │       │   ├── sources.yml
@@ -503,6 +519,7 @@
 │   │   │       │   ├── stg_production_groups_housing.sql
 │   │   │       │   ├── stg_production_groups_housing_events.sql
 │   │   │       │   ├── stg_production_housing.sql
+│   │   │       │   ├── stg_production_housing_document_events.sql
 │   │   │       │   ├── stg_production_housing_events.sql
 │   │   │       │   ├── stg_production_housing_notes.sql
 │   │   │       │   ├── stg_production_notes.sql
@@ -690,6 +707,27 @@
 │   ├── pyproject.toml
 │   ├── test.json
 │   └── uv.lock
+├── apps
+│   └── front-e2e
+│       ├── .env.example
+│       ├── README.md
+│       ├── config.ts
+│       ├── cypress
+│       │   ├── e2e
+│       │   │   ├── accessibility.cy.ts
+│       │   │   ├── campaign.cy.ts
+│       │   │   ├── group.cy.ts
+│       │   │   ├── log-in.cy.ts
+│       │   │   ├── sign-up.cy.ts
+│       │   │   └── two-factor-auth.cy.ts
+│       │   ├── fixtures
+│       │   │   └── logo.png
+│       │   └── support
+│       │       ├── commands.ts
+│       │       └── e2e.ts
+│       ├── cypress.config.ts
+│       ├── package.json
+│       └── tsconfig.json
 ├── clevercloud
 │   ├── README.md
 │   ├── SETUP_CHECKLIST.md
@@ -699,44 +737,49 @@
 │   ├── DATABASE_SEEDS_SAFETY.md
 │   ├── SCRIPT_BEST_PRACTICES.md
 │   ├── database
-│   │   └── establishments.md
+│   │   ├── establishments.md
+│   │   └── trigger-campaign-return-count.md
 │   ├── decisions
 │   │   ├── 20240516132303-use-markdown-any-decision-records.md
 │   │   ├── 20240603162604-msw-pour-mocker-l-api-dans-les-tests-front.md
 │   │   ├── README.md
 │   │   └── TEMPLATE.md
+│   ├── explorations
+│   │   ├── 2026-04-05-knex-improvements.md
+│   │   ├── 2026-04-05-knex-to-kysely.md
+│   │   ├── 2026-04-10-better-auth-migration.md
+│   │   └── 2026-04-14-import-lovac-eetl.md
 │   ├── guides
 │   │   ├── clever-cloud-log-drains.md
 │   │   ├── document-upload-architecture.md
+│   │   ├── pdf.md
 │   │   ├── supprimer-les-warnings-not-wrapped-in-act.md
 │   │   └── tester-les-inputs-api.md
 │   ├── performance-improvements.md
-│   └── plans
-│       ├── 2026-01-26-agents-md-configuration-design.md
-│       ├── 2026-01-28-document-upload-refactoring.md
-│       ├── 2026-02-02-document-events-design.md
-│       └── 2026-02-02-frontend-document-api-update.md
-├── e2e
-│   ├── .env.example
-│   ├── README.md
-│   ├── config.ts
-│   ├── cypress
-│   │   ├── e2e
-│   │   │   ├── accessibility.cy.ts
-│   │   │   ├── campaign.cy.ts
-│   │   │   ├── group.cy.ts
-│   │   │   ├── log-in.cy.ts
-│   │   │   ├── sign-up.cy.ts
-│   │   │   └── two-factor-auth.cy.ts
-│   │   ├── fixtures
-│   │   │   ├── example.json
-│   │   │   └── logo.png
-│   │   └── support
-│   │       ├── commands.ts
-│   │       └── e2e.ts
-│   ├── cypress.config.ts
-│   ├── package.json
-│   └── tsconfig.json
+│   ├── portail-df-decision-tree.md
+│   └── superpowers
+│       ├── plans
+│       │   ├── 2026-01-26-agents-md-configuration-design.md
+│       │   ├── 2026-01-28-document-upload-refactoring.md
+│       │   ├── 2026-02-02-document-events-design.md
+│       │   ├── 2026-02-02-frontend-document-api-update.md
+│       │   ├── 2026-03-03-claude-automation-rules-skill.md
+│       │   ├── 2026-03-03-group-rename-modal.md
+│       │   ├── 2026-03-04-campaign-view-rework-design.md
+│       │   ├── 2026-03-04-campaign-view-rework.md
+│       │   ├── 2026-03-10-signatory-document-upload.md
+│       │   ├── 2026-03-17-pdf-worker-thread-impl.md
+│       │   ├── 2026-03-17-pdf-worker-thread.md
+│       │   ├── 2026-03-19-campaign-housing-owner-counts.md
+│       │   ├── 2026-03-23-campaign-sort-fields.md
+│       │   ├── 2026-04-07-groups-precomputed-counts.md
+│       │   ├── 2026-04-09-geo-api-lazy-fetch.md
+│       │   ├── 2026-04-09-standardize-user-repository.md
+│       │   ├── 2026-04-13-factories.md
+│       │   └── 2026-04-14-import-lovac-owner-eetl.md
+│       └── specs
+│           ├── 2026-04-07-groups-precomputed-counts-design.md
+│           └── 2026-04-13-factories-design.md
 ├── eslint.config.mjs
 ├── frontend
 │   ├── .env.example
@@ -763,8 +806,6 @@
 │   ├── src
 │   │   ├── App.scss
 │   │   ├── App.tsx
-│   │   ├── Tooltip
-│   │   │   └── Tooltip.tsx
 │   │   ├── assets
 │   │   │   └── images
 │   │   │       ├── anah.svg
@@ -826,12 +867,23 @@
 │   │   │   ├── Campaign
 │   │   │   │   ├── CampaignCounts.tsx
 │   │   │   │   ├── CampaignCreatedFromGroup.tsx
+│   │   │   │   ├── CampaignCreatedFromGroupNext.tsx
 │   │   │   │   ├── CampaignCreationInfoModal.tsx
 │   │   │   │   ├── CampaignCreationModal.tsx
+│   │   │   │   ├── CampaignDeleteModal.tsx
 │   │   │   │   ├── CampaignRecipients.tsx
+│   │   │   │   ├── CampaignRecipientsNext.tsx
+│   │   │   │   ├── CampaignReturnCountStatCard.tsx
+│   │   │   │   ├── CampaignReturnRateStatCard.tsx
+│   │   │   │   ├── CampaignSentAtButton.tsx
+│   │   │   │   ├── CampaignSentAtModal.tsx
+│   │   │   │   ├── CampaignSentAtStatCard.tsx
+│   │   │   │   ├── CampaignStatCard.tsx
 │   │   │   │   ├── CampaignStatusBadge.tsx
 │   │   │   │   ├── CampaignTable.tsx
+│   │   │   │   ├── CampaignTableNext.tsx
 │   │   │   │   ├── CampaignTitle.tsx
+│   │   │   │   ├── WaitingBadge.tsx
 │   │   │   │   └── campaign.module.scss
 │   │   │   ├── Collapse
 │   │   │   │   ├── Collapse.test.tsx
@@ -841,14 +893,23 @@
 │   │   │   │   └── DPE.tsx
 │   │   │   ├── Draft
 │   │   │   │   ├── DraftBody.tsx
+│   │   │   │   ├── DraftBodyNext.tsx
+│   │   │   │   ├── DraftDocumentUpload.tsx
 │   │   │   │   ├── DraftDownloader.tsx
+│   │   │   │   ├── DraftDownloaderButton.tsx
+│   │   │   │   ├── DraftForm.tsx
 │   │   │   │   ├── DraftMailInfo.tsx
+│   │   │   │   ├── DraftRedaction.tsx
 │   │   │   │   ├── DraftSender.tsx
 │   │   │   │   ├── DraftSenderLogo.tsx
+│   │   │   │   ├── DraftSenderLogoNext.tsx
+│   │   │   │   ├── DraftSenderNext.tsx
 │   │   │   │   ├── DraftSendingDate.tsx
 │   │   │   │   ├── DraftSignature.tsx
+│   │   │   │   ├── DraftSignatureNext.tsx
 │   │   │   │   ├── LogoViewer.tsx
 │   │   │   │   ├── PreviewButton.tsx
+│   │   │   │   ├── PreviewButtonNext.tsx
 │   │   │   │   ├── SendButton.tsx
 │   │   │   │   ├── draft-downloader.module.scss
 │   │   │   │   └── draft.module.scss
@@ -891,7 +952,8 @@
 │   │   │   │   ├── DocumentPreview.tsx
 │   │   │   │   ├── DocumentUpload.tsx
 │   │   │   │   ├── FileUpload.tsx
-│   │   │   │   └── HousingDocumentUpload.tsx
+│   │   │   │   ├── HousingDocumentUpload.tsx
+│   │   │   │   └── useDocumentUpload.ts
 │   │   │   ├── FiltersBadges
 │   │   │   │   ├── FilterBadge.tsx
 │   │   │   │   └── FiltersBadges.tsx
@@ -901,11 +963,15 @@
 │   │   │   ├── GeoPerimeterCard
 │   │   │   │   └── GeoPerimeterCard.tsx
 │   │   │   ├── Group
+│   │   │   │   ├── CreateCampaignFromGroupModal.tsx
 │   │   │   │   ├── Group.tsx
 │   │   │   │   ├── GroupAddHousingModal.tsx
 │   │   │   │   ├── GroupCreationModal.tsx
+│   │   │   │   ├── GroupNext.tsx
 │   │   │   │   ├── GroupOrCampaignCard.tsx
 │   │   │   │   ├── GroupOrCampaignCreationModal.tsx
+│   │   │   │   ├── RemoveGroupModal.tsx
+│   │   │   │   ├── RenameGroupModal.tsx
 │   │   │   │   └── group.module.scss
 │   │   │   ├── GroupCard
 │   │   │   │   ├── GroupCard.test.tsx
@@ -1077,7 +1143,6 @@
 │   │   │   │   │   └── VariableNode.tsx
 │   │   │   │   ├── rich-editor-theme.ts
 │   │   │   │   ├── rich-editor.scss
-│   │   │   │   ├── toolbar.module.scss
 │   │   │   │   ├── useToolbarPlugin.ts
 │   │   │   │   ├── useVariablePlugin.ts
 │   │   │   │   └── variable-options.ts
@@ -1259,8 +1324,12 @@
 │   │   │   │       ├── SuspendedUserModal.test.tsx
 │   │   │   │       └── SuspendedUserModal.tsx
 │   │   │   └── ui
-│   │   │       └── Icon.tsx
+│   │   │       ├── FullWidthButton.tsx
+│   │   │       ├── Icon.tsx
+│   │   │       └── Tooltip
+│   │   │           └── Tooltip.tsx
 │   │   ├── dsfr-fix.scss
+│   │   ├── focus-visible.scss
 │   │   ├── hooks
 │   │   │   ├── test
 │   │   │   │   ├── useForm.test.ts
@@ -1269,13 +1338,12 @@
 │   │   │   ├── useAvailableEstablishments.tsx
 │   │   │   ├── useCampaign.tsx
 │   │   │   ├── useCampaignList.tsx
-│   │   │   ├── useClipboard.tsx
-│   │   │   ├── useDate.tsx
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useEmailLink.tsx
 │   │   │   ├── useFetchInterceptor.ts
 │   │   │   ├── useFilters.tsx
 │   │   │   ├── useForm.tsx
+│   │   │   ├── useGetCampaignDraftQuery.tsx
 │   │   │   ├── useGraphStepper.tsx
 │   │   │   ├── useHide.tsx
 │   │   │   ├── useHousing.tsx
@@ -1288,15 +1356,12 @@
 │   │   │   ├── useNotification.ts
 │   │   │   ├── useOutsideClick.tsx
 │   │   │   ├── useOwner.tsx
-│   │   │   ├── usePagination.tsx
 │   │   │   ├── useProspect.tsx
 │   │   │   ├── useScrollTop.ts
 │   │   │   ├── useSelection.tsx
 │   │   │   ├── useSentry.ts
-│   │   │   ├── useSettings.tsx
 │   │   │   ├── useSort.tsx
 │   │   │   ├── useStatusTabs.tsx
-│   │   │   ├── useStepper.tsx
 │   │   │   ├── useStore.tsx
 │   │   │   ├── useToggle.ts
 │   │   │   ├── useUnsavedChanges.tsx
@@ -1338,8 +1403,6 @@
 │   │   │   ├── Campaign.tsx
 │   │   │   ├── CampaignFilters.tsx
 │   │   │   ├── ColorFamily.tsx
-│   │   │   ├── ContactKind.tsx
-│   │   │   ├── Diff.tsx
 │   │   │   ├── Draft.tsx
 │   │   │   ├── Establishment.tsx
 │   │   │   ├── Event.tsx
@@ -1393,6 +1456,7 @@
 │   │   │   ├── draft.service.ts
 │   │   │   ├── establishment.service.ts
 │   │   │   ├── event.service.ts
+│   │   │   ├── export.service.ts
 │   │   │   ├── file.service.ts
 │   │   │   ├── geo.service.ts
 │   │   │   ├── group.service.ts
@@ -1434,7 +1498,7 @@
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── fileUploadErrors.ts
 │   │   │   ├── jsonUtils.ts
-│   │   │   ├── numberUtils.ts
+│   │   │   ├── number-utils.ts
 │   │   │   ├── sentry.ts
 │   │   │   ├── sentryEnhancer.ts
 │   │   │   ├── storeUtils.tsx
@@ -1446,7 +1510,6 @@
 │   │   │   ├── Account
 │   │   │   │   ├── AccountCreation
 │   │   │   │   │   ├── AccountAccessForbiddenView.tsx
-│   │   │   │   │   ├── AccountAwaitingAccessView.tsx
 │   │   │   │   │   ├── AccountEmailActivationView.tsx
 │   │   │   │   │   ├── AccountEmailCreationView.tsx
 │   │   │   │   │   ├── AccountPasswordCreationView.tsx
@@ -1472,17 +1535,25 @@
 │   │   │   │   └── AnalysisView.tsx
 │   │   │   ├── Campaign
 │   │   │   │   ├── CampaignDraft.tsx
+│   │   │   │   ├── CampaignDraftContent.tsx
 │   │   │   │   ├── CampaignInProgress.tsx
 │   │   │   │   ├── CampaignListView.tsx
+│   │   │   │   ├── CampaignListViewNext.tsx
 │   │   │   │   ├── CampaignSending.tsx
 │   │   │   │   ├── CampaignView.tsx
+│   │   │   │   ├── CampaignViewNext.tsx
 │   │   │   │   ├── campaign.module.scss
 │   │   │   │   └── test
 │   │   │   │       ├── CampaignListView.test.tsx
-│   │   │   │       └── CampaignView.test.tsx
+│   │   │   │       ├── CampaignListViewNext.test.tsx
+│   │   │   │       ├── CampaignView.test.tsx
+│   │   │   │       └── CampaignViewNext.test.tsx
 │   │   │   ├── Group
 │   │   │   │   ├── GroupView.test.tsx
-│   │   │   │   └── GroupView.tsx
+│   │   │   │   ├── GroupView.tsx
+│   │   │   │   ├── GroupViewNext.tsx
+│   │   │   │   └── test
+│   │   │   │       └── GroupViewNext.test.tsx
 │   │   │   ├── Housing
 │   │   │   │   ├── HousingOwnersView.tsx
 │   │   │   │   ├── HousingView.tsx
@@ -1563,6 +1634,36 @@
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.lib.json
 │   │   └── tsconfig.spec.json
+│   ├── factories
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── adapter.ts
+│   │   │   ├── create-factories.ts
+│   │   │   ├── entity-map.ts
+│   │   │   ├── factories
+│   │   │   │   ├── campaign.ts
+│   │   │   │   ├── establishment.ts
+│   │   │   │   ├── group.ts
+│   │   │   │   ├── housing.ts
+│   │   │   │   ├── owner.ts
+│   │   │   │   ├── test
+│   │   │   │   │   ├── campaign.test.ts
+│   │   │   │   │   ├── establishment.test.ts
+│   │   │   │   │   ├── group.test.ts
+│   │   │   │   │   ├── housing.test.ts
+│   │   │   │   │   ├── owner.test.ts
+│   │   │   │   │   └── user.test.ts
+│   │   │   │   └── user.ts
+│   │   │   ├── index.ts
+│   │   │   ├── memory-adapter.ts
+│   │   │   └── test
+│   │   │       ├── create-factories.test.ts
+│   │   │       └── memory-adapter.test.ts
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.spec.json
+│   │   ├── vitest.config.ts
+│   │   └── vitest.setup.ts
 │   ├── healthcheck
 │   │   ├── package.json
 │   │   ├── src
@@ -1650,7 +1751,10 @@
 │   │   │   │   ├── AddressDTO.test.ts
 │   │   │   │   ├── CampaignDTO.test.ts
 │   │   │   │   ├── DatafoncierHousing.test.ts
+│   │   │   │   ├── EstablishmentKind.test.ts
 │   │   │   │   ├── HousingDTO.test.ts
+│   │   │   │   ├── HousingOwnerDTO.test.ts
+│   │   │   │   ├── HousingStatus.test.ts
 │   │   │   │   ├── Mutation.test.ts
 │   │   │   │   ├── OwnerDTO.test.ts
 │   │   │   │   ├── SenderDTO.test.ts
@@ -1663,13 +1767,55 @@
 │   │   ├── tsconfig.spec.json
 │   │   ├── vitest.config.ts
 │   │   └── vitest.setup.ts
+│   ├── pdf
+│   │   ├── README.md
+│   │   ├── package.json
+│   │   ├── project.json
+│   │   ├── public
+│   │   │   ├── logo-1.jpg
+│   │   │   └── logo-2.png
+│   │   ├── src
+│   │   │   ├── __mocks__
+│   │   │   │   └── font.ts
+│   │   │   ├── browser.ts
+│   │   │   ├── components
+│   │   │   │   ├── Stack.tsx
+│   │   │   │   ├── Typography.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test
+│   │   │   │       ├── Stack.test.tsx
+│   │   │   │       └── Typography.test.tsx
+│   │   │   ├── generators
+│   │   │   │   ├── campaign-worker-wrapper.ts
+│   │   │   │   ├── campaign.worker.ts
+│   │   │   │   ├── campaigns.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test
+│   │   │   │       └── campaigns.test.ts
+│   │   │   ├── node.ts
+│   │   │   ├── preview
+│   │   │   │   ├── Previewer.tsx
+│   │   │   │   ├── README.md
+│   │   │   │   ├── index.html
+│   │   │   │   └── main.tsx
+│   │   │   └── templates
+│   │   │       ├── Campaign.tsx
+│   │   │       └── index.ts
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.lib.json
+│   │   ├── tsconfig.spec.json
+│   │   ├── vite.config.mts
+│   │   └── vitest.setup.ts
 │   ├── schemas
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── building-filters.ts
 │   │   │   ├── campaign-creation-payload.ts
+│   │   │   ├── campaign-update-next-payload.ts
 │   │   │   ├── date-string.ts
 │   │   │   ├── document-payload.ts
+│   │   │   ├── draft-creation-payload.ts
+│   │   │   ├── draft-update-payload.ts
 │   │   │   ├── draft.ts
 │   │   │   ├── email.ts
 │   │   │   ├── establishment-filters.ts
@@ -1686,11 +1832,14 @@
 │   │   │   ├── owner-filters.ts
 │   │   │   ├── password.ts
 │   │   │   ├── phone.ts
+│   │   │   ├── sign-in.ts
 │   │   │   ├── siren.ts
 │   │   │   ├── test
 │   │   │   │   ├── building-filters.test.ts
 │   │   │   │   ├── campaign-creation-payload.test.ts
 │   │   │   │   ├── date-string.test.ts
+│   │   │   │   ├── draft-creation-payload.test.ts
+│   │   │   │   ├── draft-update-payload.test.ts
 │   │   │   │   ├── geo-code.test.ts
 │   │   │   │   ├── group-creation-payload.test.ts
 │   │   │   │   ├── housing-batch-update-payload.test.ts
@@ -1778,10 +1927,8 @@
 │   │   └── stop-clamav.sh
 │   ├── src
 │   │   ├── controllers
-│   │   │   ├── accountController.test.ts
-│   │   │   ├── accountController.ts
+│   │   │   ├── auth-controller.ts
 │   │   │   ├── buildingController.ts
-│   │   │   ├── campaignController.test.ts
 │   │   │   ├── campaignController.ts
 │   │   │   ├── dashboardController.ts
 │   │   │   ├── datafoncierHousingController.test.ts
@@ -1790,6 +1937,7 @@
 │   │   │   ├── draftController.ts
 │   │   │   ├── establishmentController.ts
 │   │   │   ├── eventController.ts
+│   │   │   ├── exportController.ts
 │   │   │   ├── fileController.ts
 │   │   │   ├── fileRepository.ts
 │   │   │   ├── geoController.test.ts
@@ -1815,9 +1963,11 @@
 │   │   │   ├── signupLinkController.test.ts
 │   │   │   ├── signupLinkController.ts
 │   │   │   ├── test
+│   │   │   │   ├── auth-controller.test.ts
 │   │   │   │   ├── buildingController.test.ts
+│   │   │   │   ├── campaign-api.test.ts
 │   │   │   │   ├── document-api.test.ts
-│   │   │   │   ├── draftController.test.ts
+│   │   │   │   ├── draft-api.test.ts
 │   │   │   │   ├── establishment-api.test.ts
 │   │   │   │   ├── event-api.test.ts
 │   │   │   │   ├── fileController.test.ts
@@ -1832,7 +1982,6 @@
 │   │   ├── errors
 │   │   │   ├── CampaignFileMissingError.ts
 │   │   │   ├── InvalidFileTypeError.ts
-│   │   │   ├── accountAlreadyActivatedError.ts
 │   │   │   ├── authenticationFailedError.ts
 │   │   │   ├── authenticationMissingError.ts
 │   │   │   ├── badRequestError.ts
@@ -1851,7 +2000,6 @@
 │   │   │   ├── groupMissingError.ts
 │   │   │   ├── housingExistsError.ts
 │   │   │   ├── housingMissingError.ts
-│   │   │   ├── housingOwnersDifferentError.ts
 │   │   │   ├── housingUpdateForbiddenError.ts
 │   │   │   ├── httpError.ts
 │   │   │   ├── localityMissingError.ts
@@ -1869,7 +2017,9 @@
 │   │   │   ├── signupLinkMissingError.ts
 │   │   │   ├── testAccountError.ts
 │   │   │   ├── unprocessableEntityError.ts
+│   │   │   ├── userDeletedError.ts
 │   │   │   ├── userMissingError.ts
+│   │   │   ├── userSuspendedError.ts
 │   │   │   └── virusDetectedError.ts
 │   │   ├── index.ts
 │   │   ├── infra
@@ -2075,12 +2225,26 @@
 │   │   │   │   │   ├── 20251201123044_documents.ts
 │   │   │   │   │   ├── 20251201123045_documents_housings.ts
 │   │   │   │   │   ├── 20251215164103_dpe-import-optimization-indexes.ts
+│   │   │   │   │   ├── 20251217140000_users-establishments.ts
+│   │   │   │   │   ├── 20251217160000_user_perimeters.ts
+│   │   │   │   │   ├── 20251223100000_user_perimeters_epci.ts
 │   │   │   │   │   ├── 20260122165040_fast-housing-add-actual-dpe.ts
+│   │   │   │   │   ├── 20260126110801_establishments-add-siret-shortname-millesime-kindmeta.ts
 │   │   │   │   │   ├── 20260127110646_drop-deprecated-precision-fields.ts
 │   │   │   │   │   ├── 20260129092128_documents-add-establishment_id.ts
 │   │   │   │   │   ├── 20260129114232_documents-housings-add-housing-fk.ts
 │   │   │   │   │   ├── 20260202163613_document-events.ts
-│   │   │   │   │   └── 20260202163641_housing-document-events.ts
+│   │   │   │   │   ├── 20260202163641_housing-document-events.ts
+│   │   │   │   │   ├── 20260304_campaigns-add-return-count.ts
+│   │   │   │   │   ├── 20260305160000_establishments-add-kind-admin.ts
+│   │   │   │   │   ├── 20260310000001_senders-add-signatory-document-id.ts
+│   │   │   │   │   ├── 20260310000002_drafts-add-logo-next.ts
+│   │   │   │   │   ├── 20260312160000_fix-establishments-dep-reg-code-arrays.ts
+│   │   │   │   │   ├── 20260319181202_campaigns-add-counts.ts
+│   │   │   │   │   ├── 20260319192744_campaigns-update-counts-on-housing-detach.ts
+│   │   │   │   │   ├── 20260327114330_remove-unused-event-fields.ts
+│   │   │   │   │   ├── 20260407092027_campaigns-return-count-add-status-filter.ts
+│   │   │   │   │   └── 20260407174838_groups-add-counts.ts
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   ├── 002-load-non-vacant-housing.sql
@@ -2106,14 +2270,20 @@
 │   │   │   │   │   │   ├── 20240404235459_housings.ts
 │   │   │   │   │   │   ├── 20240404235731_groups.ts
 │   │   │   │   │   │   ├── 20240404235743_settings.ts
-│   │   │   │   │   │   ├── 20240417074021-owners-ban-addresses.ts
 │   │   │   │   │   │   ├── 20240807073309_campaigns.ts
 │   │   │   │   │   │   ├── 20241001160603_perimeters.ts
 │   │   │   │   │   │   ├── 20241028160748_drafts.ts
 │   │   │   │   │   │   ├── 20250113145122_precisions.ts
-│   │   │   │   │   │   ├── 20250528170438_events.ts
+│   │   │   │   │   │   ├── 20250528170438_housing-events.ts
+│   │   │   │   │   │   ├── 20250528170439_precision-housing-events.ts
+│   │   │   │   │   │   ├── 20250528170440_housing-owner-events.ts
+│   │   │   │   │   │   ├── 20250528170441_group-housing-events.ts
+│   │   │   │   │   │   ├── 20250528170442_campaign-housing-events.ts
+│   │   │   │   │   │   ├── 20250528170443_owner-events.ts
 │   │   │   │   │   │   ├── 20251113090613_df-housing-nat-2024.ts
-│   │   │   │   │   │   └── 20251113090615_df-owners-nat-2024.ts
+│   │   │   │   │   │   ├── 20251113090615_df-owners-nat-2024.ts
+│   │   │   │   │   │   └── lib
+│   │   │   │   │   │       └── events-helpers.ts
 │   │   │   │   │   ├── production
 │   │   │   │   │   │   ├── 20240405010603_establishments.ts
 │   │   │   │   │   │   ├── 20240405011035_buildings.ts
@@ -2127,7 +2297,6 @@
 │   │   │   │   │   ├── index.test.ts
 │   │   │   │   │   └── transaction.test.ts
 │   │   │   │   └── transaction.ts
-│   │   │   ├── elastic.ts
 │   │   │   ├── graceful-shutdown.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── queue.ts
@@ -2137,7 +2306,6 @@
 │   │   │   ├── antivirus.ts
 │   │   │   ├── auth.ts
 │   │   │   ├── error-handler.ts
-│   │   │   ├── file-type-validator.ts
 │   │   │   ├── fileTypeMiddleware.ts
 │   │   │   ├── noop.ts
 │   │   │   ├── shapefileValidation.test.ts
@@ -2156,13 +2324,10 @@
 │   │   │   ├── BuildingApi.ts
 │   │   │   ├── CampaignApi.ts
 │   │   │   ├── CampaignFiltersApi.ts
-│   │   │   ├── ContactPointApi.ts
 │   │   │   ├── DashboardApi.ts
-│   │   │   ├── DatafoncierResultDTO.ts
 │   │   │   ├── DocumentApi.ts
 │   │   │   ├── DraftApi.ts
 │   │   │   ├── EstablishmentApi.ts
-│   │   │   ├── EstablishmentFilterApi.ts
 │   │   │   ├── EventApi.ts
 │   │   │   ├── GeoPerimeterApi.ts
 │   │   │   ├── GroupApi.ts
@@ -2172,7 +2337,6 @@
 │   │   │   ├── HousingFiltersApi.ts
 │   │   │   ├── HousingOwnerApi.ts
 │   │   │   ├── LocalityApi.ts
-│   │   │   ├── MonitoringFiltersApi.ts
 │   │   │   ├── NoteApi.ts
 │   │   │   ├── OwnerApi.ts
 │   │   │   ├── PaginatedResultApi.ts
@@ -2182,9 +2346,12 @@
 │   │   │   ├── ResetLinkApi.ts
 │   │   │   ├── SenderApi.ts
 │   │   │   ├── SettingsApi.ts
+│   │   │   ├── SignInPayload.ts
 │   │   │   ├── SignupLinkApi.ts
 │   │   │   ├── SortApi.ts
 │   │   │   ├── UserApi.ts
+│   │   │   ├── UserPerimeterApi.test.ts
+│   │   │   ├── UserPerimeterApi.ts
 │   │   │   └── test
 │   │   │       ├── DocumentApi.test.ts
 │   │   │       ├── EventApi.test.ts
@@ -2199,9 +2366,7 @@
 │   │   │   ├── campaignDraftRepository.ts
 │   │   │   ├── campaignHousingRepository.ts
 │   │   │   ├── campaignRepository.ts
-│   │   │   ├── datafoncierHousingApiRepository.ts
 │   │   │   ├── datafoncierHousingRepository.ts
-│   │   │   ├── datafoncierOwnerApiRepository.ts
 │   │   │   ├── datafoncierOwnersRepository.ts
 │   │   │   ├── departmentalOwnersRepository.ts
 │   │   │   ├── documentRepository.ts
@@ -2239,16 +2404,20 @@
 │   │   │   │   ├── housingDocumentRepository.test.ts
 │   │   │   │   ├── housingOwnerRepository.test.ts
 │   │   │   │   ├── housingRepository.test.ts
+│   │   │   │   ├── localityRepository.test.ts
 │   │   │   │   ├── noteRepository.test.ts
 │   │   │   │   ├── ownerMatchRepository.test.ts
 │   │   │   │   ├── ownerRepository.test.ts
 │   │   │   │   └── precisionRepository.test.ts
+│   │   │   ├── user-establishment-repository.ts
+│   │   │   ├── userPerimeterRepository.ts
 │   │   │   └── userRepository.ts
 │   │   ├── routers
 │   │   │   ├── protected.ts
 │   │   │   └── unprotected.ts
 │   │   ├── scripts
 │   │   │   ├── README.md
+│   │   │   ├── backfill-campaign-drafts.ts
 │   │   │   ├── elastic-indexes
 │   │   │   │   └── createScriptsExecutionsIndexes.ts
 │   │   │   ├── fix-campaign-housing-status
@@ -2279,6 +2448,20 @@
 │   │   │   │   ├── requirements.txt
 │   │   │   │   ├── split_dpe_by_date.py
 │   │   │   │   └── test_import_dpe.py
+│   │   │   ├── import-establishments
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── README.md
+│   │   │   │   ├── check-uniqueness.ts
+│   │   │   │   ├── check_siren_multiple_siret.py
+│   │   │   │   ├── check_uniqueness.py
+│   │   │   │   ├── collectivities_processed.csv
+│   │   │   │   ├── detect_orphan_establishments.py
+│   │   │   │   ├── entities_processed.csv
+│   │   │   │   ├── import_gold_establishments.py
+│   │   │   │   ├── orphan_establishments_report.csv
+│   │   │   │   ├── requirements.txt
+│   │   │   │   ├── test_detect_orphan_establishments.py
+│   │   │   │   └── test_import_gold_establishments.py
 │   │   │   ├── import-housing-mutation-data
 │   │   │   │   ├── README.md
 │   │   │   │   └── index.ts
@@ -2379,8 +2562,6 @@
 │   │   │   │       └── download.test.ts
 │   │   │   ├── logs
 │   │   │   │   └── export-monthly-logs.sh
-│   │   │   ├── migrate-events
-│   │   │   │   └── index.ts
 │   │   │   ├── owner-housing-distances
 │   │   │   │   ├── .gitignore
 │   │   │   │   ├── README.md
@@ -2405,8 +2586,8 @@
 │   │   │   │   │   └── user-verifier.py
 │   │   │   │   ├── INSTALLATION.md
 │   │   │   │   ├── README.md
-│   │   │   │   ├── cerema-sync.sh
 │   │   │   │   ├── export-lovac-users.py
+│   │   │   │   ├── fetch-groups-perimeters.py
 │   │   │   │   ├── requirements.txt
 │   │   │   │   └── utils
 │   │   │   │       ├── backup_localities.py
@@ -2428,16 +2609,24 @@
 │   │   │       ├── README.md
 │   │   │       └── sync_user_kind.py
 │   │   ├── services
+│   │   │   ├── administrative-division
+│   │   │   │   ├── administrative-division-service.ts
+│   │   │   │   ├── geo-api.test.ts
+│   │   │   │   └── geo-api.ts
 │   │   │   ├── ban
 │   │   │   │   ├── ban-api.ts
 │   │   │   │   └── ban.ts
 │   │   │   ├── ceremaService
 │   │   │   │   ├── __mocks__
 │   │   │   │   │   └── mockCeremaService.ts
+│   │   │   │   ├── ceremaAuthProvider.ts
+│   │   │   │   ├── ceremaService.test.ts
 │   │   │   │   ├── ceremaService.ts
 │   │   │   │   ├── consultUserService.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mockCeremaService.ts
+│   │   │   │   ├── perimeterService.test.ts
+│   │   │   │   ├── perimeterService.ts
 │   │   │   │   └── userKindService.ts
 │   │   │   ├── document-upload.ts
 │   │   │   ├── file-validation.ts
@@ -2450,6 +2639,7 @@
 │   │   │   │   ├── metabase-api.ts
 │   │   │   │   └── metabase.ts
 │   │   │   ├── ownerDistanceService.ts
+│   │   │   ├── posthogService.ts
 │   │   │   ├── test
 │   │   │   │   ├── file-validation.test.ts
 │   │   │   │   └── ownerDistanceService.test.ts
@@ -2485,6 +2675,7 @@
 ├── sonar-project.properties
 ├── tools
 │   ├── analyze-shapefile.ts
+│   ├── backup.sh
 │   ├── clever-cloud-cost
 │   │   ├── README.md
 │   │   └── clever_cloud_cost.py
@@ -2543,4 +2734,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-389 directories, 2156 files
+412 directories, 2324 files

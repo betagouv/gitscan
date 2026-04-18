@@ -1,34 +1,43 @@
-## Changelog : zero-logement-vacant (30 derniers jours)
+## Changelog : zero-logement-vacant (30 derniers jours, au 2026-04-14)
 
 ### Résumé
-Les dernières mises à jour de zero-logement-vacant se concentrent sur l'amélioration de l'interface utilisateur, l'ajout de nouvelles fonctionnalités pour la gestion des documents et des logements, ainsi que des optimisations techniques pour la performance et la sécurité de l'application. Des améliorations ont été apportées à la gestion des données énergétiques des logements et à la gestion des campagnes.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des campagnes, des propriétaires et des logements, ainsi que sur des corrections de bugs et des optimisations techniques. L'ajout de nouvelles fonctionnalités, comme l'export des destinataires de campagne et l'amélioration des filtres, vise à faciliter le travail des agents de l'administration. Des efforts importants ont également été réalisés pour renforcer la sécurité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'un onglet pour la gestion des documents liés aux logements, permettant l'upload et la consultation de documents. [#1571](https://github.com/MTES-MCT/zero-logement-vacant/pull/1571)
-- Possibilité de filtrer les logements par localisation relative. [#1629](https://github.com/MTES-MCT/zero-logement-vacant/pull/1629)
-- Amélioration de l'affichage des informations énergétiques des logements (DPE, GES, RNB) dans la vue détaillée. [#1571](https://github.com/MTES-MCT/zero-logement-vacant/pull/1571)
-- Suppression des liens vides dans le pied de page. [#1642](https://github.com/MTES-MCT/zero-logement-vacant/pull/1642)
-- Refonte de l'interface pour la création et la modification des campagnes. [#1652](https://github.com/MTES-MCT/zero-logement-vacant/pull/1652)
-- Possibilité de regrouper des logements dans le cadre des campagnes. [#1652](https://github.com/MTES-MCT/zero-logement-vacant/pull/1652)
-- Suppression de la possibilité de modifier le nom du propriétaire d'un logement. [#1635](https://github.com/MTES-MCT/zero-logement-vacant/pull/1635)
+- Ajout de la possibilité d'exporter la liste des destinataires d'une campagne. [#1710](https://github.com/MTES-MCT/zero-logement-vacant/pull/1710)
+- Amélioration de l'affichage des informations sur les propriétaires (rang, droits de propriété). [#1726](https://github.com/MTES-MCT/zero-logement-vacant/pull/1726)
+- Ajout d'une notification lors de la création d'une campagne ou de la suppression d'un groupe. [#1751](https://github.com/MTES-MCT/zero-logement-vacant/pull/1751)
+- Correction de l'affichage des noms de filtres de périmètre. [#1757](https://github.com/MTES-MCT/zero-logement-vacant/pull/1757)
+- Correction du libellé de l'onglet "Évolutions". [#1758](https://github.com/MTES-MCT/zero-logement-vacant/pull/1758)
+- Ajout d'un avertissement concernant les données sensibles lors du téléchargement de documents et de la saisie de notes. [#1703](https://github.com/MTES-MCT/zero-logement-vacant/pull/1703)
+- Correction de l'affichage des pourcentages avec une décimale. [#1751](https://github.com/MTES-MCT/zero-logement-vacant/pull/1751)
 
 ### Évolutions techniques
-- Amélioration de la sécurité de l'application avec l'ajout d'en-têtes de sécurité explicites et la correction de vulnérabilités. [#1658](https://github.com/MTES-MCT/zero-logement-vacant/pull/1658)
-- Refactorisation de l'architecture frontend avec l'utilisation de composants MUI pour la mise en page. [#1646](https://github.com/MTES-MCT/zero-logement-vacant/pull/1646)
-- Optimisation de la configuration NX pour améliorer l'efficacité du cache et les performances de build. [#1606](https://github.com/MTES-MCT/zero-logement-vacant/pull/1606)
-- Migration de la bibliothèque Highland vers Web Streams. [#1622](https://github.com/MTES-MCT/zero-logement-vacant/pull/1622)
-- Mise à jour des dépendances (webpack, axios, express). [#1607](https://github.com/MTES-MCT/zero-logement-vacant/pull/1607)
-- Amélioration du workflow de développement avec l'ajout de règles et d'outils d'IA pour la vérification du code et l'automatisation des tâches. [#1659](https://github.com/MTES-MCT/zero-logement-vacant/pull/1659)
-- Utilisation d'esbuild pour la construction du serveur afin d'améliorer la vitesse de build. [#1606](https://github.com/MTES-MCT/zero-logement-vacant/pull/1606)
-- Correction de tests et amélioration de la couverture de test.
+- Refactorisation importante du code lié à la gestion des périmètres et des droits d'accès, notamment pour l'intégration avec Portail DF. [#1649](https://github.com/MTES-MCT/zero-logement-vacant/pull/1649)
+- Mise en place de triggers pour précalculer le nombre de logements et de propriétaires par groupe, améliorant ainsi les performances. [#1750](https://github.com/MTES-MCT/zero-logement-vacant/pull/1750)
+- Amélioration de la gestion des erreurs et de la robustesse du code.
+- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité. [#1764](https://github.com/MTES-MCT/zero-logement-vacant/pull/1764)
+- Amélioration de la couverture des tests unitaires et d'intégration.
+- Utilisation de `p-memoize` pour optimiser les appels à l'API Geo.
+- Refactorisation de la gestion des utilisateurs et des établissements.
+- Migration vers une architecture plus modulaire avec l'introduction de "factories" pour la création d'objets de test et de données. [#1767](https://github.com/MTES-MCT/zero-logement-vacant/pull/1767)
+- Amélioration de la configuration et de l'environnement de développement avec l'intégration de Worktrunk. [#1748](https://github.com/MTES-MCT/zero-logement-vacant/pull/1748)
 
 ### Autres changements
-- Mise à jour des données de référence pour les codes INSEE et les sources externes.
-- Correction d'un problème lié à l'importation des données DPE.
+- Documentation de l'implémentation des "factories". [#1771](https://github.com/MTES-MCT/zero-logement-vacant/pull/1771)
+- Ajout d'un plan pour l'exploration de l'EETL et l'implémentation d'un pipeline de propriétaires. [#1771](https://github.com/MTES-MCT/zero-logement-vacant/pull/1771)
+- Suppression de code mort et de configurations inutilisées.
+- Correction de problèmes de SonarCloud.
+- Amélioration de la configuration des pipelines CI/CD.
 - Mise à jour de la documentation.
 - Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de configurations inutiles.
-- Synchronisation des fichiers de configuration avec l'environnement de production.
-- Ajout de scripts pour l'exportation de données.
-- Mise à jour des modèles de données.
-- Correction de la gestion des dates DPE.
+- Ajout de nouvelles variables d'environnement pour la configuration.
+- Correction de problèmes liés à l'affichage des images.
+- Correction de problèmes liés à la gestion des droits d'accès.
+- Correction de problèmes liés à l'exportation des données.
+- Amélioration de la gestion des erreurs dans les tests.
+- Correction de problèmes liés à la synchronisation des données avec Cerema.
+- Ajout de tests pour les nouvelles fonctionnalités.
+- Amélioration de la gestion des logs.
+- Correction de problèmes liés à la navigation.
+- Amélioration de l'accessibilité de l'application.
