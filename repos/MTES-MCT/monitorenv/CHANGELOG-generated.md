@@ -1,41 +1,49 @@
-## Changelog : monitorenv (30 derniers jours)
+## Changelog : monitorenv (30 derniers jours, au 14 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de monitorenv se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des navires et des signalements. Des optimisations techniques ont également été apportées pour améliorer la performance et la stabilité de l'application, ainsi que pour moderniser l'infrastructure et les outils de développement.
+Ce mois-ci, les évolutions se concentrent sur l'ajout et l'amélioration de la gestion des "Zones de Vigilance" et des "Zones Réglementaires", avec une nouvelle interface utilisateur pour leur gestion, des filtres améliorés et une intégration plus poussée avec les données du CACEM. Des corrections et optimisations ont également été apportées au niveau de l'API et de la gestion des données des navires.
 
 ### Évolutions fonctionnelles
-- Ajout de l'historique des positions d'un navire sur sa fiche récapitulative ([#7a52b89](https://github.com/MTES-MCT/monitorenv/commit/7a52b89)).
-- Affichage de la dernière position connue d'un navire sur sa fiche récapitulative.
-- Possibilité d'ajouter toutes les positions filtrées à la fiche récapitulative d'un navire.
-- Renommage de "signalement" en "suspicion d'infraction".
-- Ajout d'un cercle rouge sur la carte pour indiquer les navires ayant un signalement en cours.
-- Amélioration de la sélection de l'unité de contrôle ([#10eb5ff](https://github.com/MTES-MCT/monitorenv/commit/10eb5ff)).
-- Ajout de plannings aux zones localisées ([#9363bfa](https://github.com/MTES-MCT/monitorenv/commit/9363bfa)).
-- Correction de l'affichage des zones AMP et réglementaires liées aux vigilances dans le résumé et le document éditable ([#740caf2](https://github.com/MTES-MCT/monitorenv/commit/740caf2)).
-- Affichage des informations du navire même si seul le nom est renseigné.
-- Amélioration de la formulation de l'historique du navire.
-- Ajout de la source de mission "RAPPORT_NAV" pour l'utilisation complète des missions.
-- Ajout de la géométrie au signalement lors de sa création à partir d'un navire.
-- Correction d'un bug empêchant le déplacement du résumé du navire lors de la création d'un rapport en mer ([#2da4d68](https://github.com/MTES-MCT/monitorenv/commit/2da4d68)).
+- **Zones de Vigilance :**
+    - Ajout d'un filtre pour afficher les zones de vigilance récentes.
+    - Mise à jour de l'interface utilisateur avec des lignes extensibles et un tri par date de création par défaut.
+    - Ajout de colonnes épinglées pour une meilleure visibilité des informations clés.
+    - Amélioration des filtres disponibles dans la vue de liste.
+- **Zones Réglementaires :**
+    - Création d'un nouveau flux de gestion des zones réglementaires, incluant un formulaire de création/modification.
+    - Ajout d'une page de liste des zones réglementaires avec des filtres et une recherche.
+    - Intégration des thèmes et tags dans le flux de gestion des zones réglementaires.
+    - Amélioration de l'affichage des zones réglementaires dans le brief et sur la carte.
+    - Possibilité d'exporter les données des zones réglementaires vers data.gouv.
+- **AMP (Aires Marines Protégées) :**
+    - Mise en évidence des nouveaux AMPs.
+    - Correction du flux de données des AMPs.
+    - Amélioration de l'affichage des AMPs sur la carte.
+- **Navires :**
+    - Ajout du tonnage brut UMS aux informations du navire.
+    - Amélioration de la récupération des informations du navire par ID.
 
 ### Évolutions techniques
-- Utilisation du client Oracle "heavy" lorsque FMC est activé.
-- Augmentation de la taille de la mémoire partagée de la base de données à 256 Mo.
-- Mise à jour de Poetry vers la version 3.6.9.
-- Mise à jour de Black vers la version 26.1.0.
-- Modernisation de l'infrastructure : suppression du code infra legacy, des workflows Github legacy, des fichiers Dockerfile legacy, et des dossiers inutilisés (datascience).
-- Mise à jour de la configuration de l'environnement et de pre-commit.
-- Ajout de tests pour l'historique des navires.
-- Ajout de tracking sur la recherche de navires et la création de rapports à partir du résumé du navire ([#66229c4](https://github.com/MTES-MCT/monitorenv/commit/66229c4)).
-- Remplacement de la dépendance `cx_oracle` par `oracledb`.
-- Ajout de volumes pour les certificats Kafka.
+- **API :**
+    - Ajout d'index sur les données d'identification pour améliorer les performances.
+    - Refonte de la récupération des données des navires.
+    - Ajout d'APIs pour la gestion des zones réglementaires (recherche, création, modification).
+- **Base de données :**
+    - Renommage du champ `sent_at` et refactoring de l'utilisation des timestamps.
+    - Optimisation des requêtes pour la récupération des zones réglementaires.
+- **Infrastructure :**
+    - Mise à jour des dépendances (renouvellement des mises à jour automatiques avec un délai de 30 jours).
+- **Tests :**
+    - Correction des tests unitaires et E2E.
+    - Ajout de tests pour les nouvelles fonctionnalités.
+- **Sécurité :**
+    - Vérification de la présence de la revendication `organizational_unit` pour renforcer la sécurité.
 
 ### Autres changements
-- Mise à jour de la documentation pour l'installation du worker Prefect 3.
-- Mise à jour du fichier Makefile.
-- Mise à jour de Coderabbit.
-- Suppression d'une requête inutilisée.
-- Mise à jour du fichier contributing.
-- Mise à jour du fichier gitignore.
-- Mise à jour de la configuration de Dependabot.
-- Bump de plusieurs dépendances mineures (css-inline).
+- Correction de bugs divers liés à l'interface utilisateur et aux flux de données.
+- Amélioration de la visibilité de l'environnement (intégration/pré-production).
+- Suppression de fonctionnalités obsolètes et de fichiers inutiles.
+- Mise à jour de la documentation.
+- Ajout d'un bandeau d'information sur toutes les pages.
+- Correction de l'URL de la favicon.
+- Refactoring général du code pour améliorer la lisibilité et la maintenabilité.

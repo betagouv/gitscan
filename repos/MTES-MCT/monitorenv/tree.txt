@@ -75,6 +75,7 @@
 │   │   │   │                   │   └── UseCase.kt
 │   │   │   │                   ├── domain
 │   │   │   │                   │   ├── entities
+│   │   │   │                   │   │   ├── AxisEnum.kt
 │   │   │   │                   │   │   ├── Patchable.kt
 │   │   │   │                   │   │   ├── VehicleTypeEnum.kt
 │   │   │   │                   │   │   ├── VesselTypeEnum.kt
@@ -167,7 +168,10 @@
 │   │   │   │                   │   │   │   ├── InfractionEnum.kt
 │   │   │   │                   │   │   │   └── RecentControlActivityProperties.kt
 │   │   │   │                   │   │   ├── regulatoryArea
-│   │   │   │                   │   │   │   └── RegulatoryAreaEntity.kt
+│   │   │   │                   │   │   │   ├── RegulatoryAreaEntity.kt
+│   │   │   │                   │   │   │   └── v2
+│   │   │   │                   │   │   │       ├── AdditionalRefRegEntity.kt
+│   │   │   │                   │   │   │       └── RegulatoryAreaEntity.kt
 │   │   │   │                   │   │   ├── reporting
 │   │   │   │                   │   │   │   ├── ControlStatusEnum.kt
 │   │   │   │                   │   │   │   ├── ReportingEntity.kt
@@ -227,6 +231,7 @@
 │   │   │   │                   │   │   ├── INatinfRepository.kt
 │   │   │   │                   │   │   ├── IPostgisFunctionRepository.kt
 │   │   │   │                   │   │   ├── IRapportNavMissionActionsRepository.kt
+│   │   │   │                   │   │   ├── IRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │   ├── IRegulatoryAreaRepository.kt
 │   │   │   │                   │   │   ├── IReportingRepository.kt
 │   │   │   │                   │   │   ├── IReportingSourceRepository.kt
@@ -253,7 +258,8 @@
 │   │   │   │                   │   │   │   └── dtos
 │   │   │   │                   │   │   │       └── FullAdministrationDTO.kt
 │   │   │   │                   │   │   ├── amps
-│   │   │   │                   │   │   │   └── GetAllAMPs.kt
+│   │   │   │                   │   │   │   ├── GetAllAMPs.kt
+│   │   │   │                   │   │   │   └── GetAllAMPsByIds.kt
 │   │   │   │                   │   │   ├── authorization
 │   │   │   │                   │   │   │   ├── DeleteUser.kt
 │   │   │   │                   │   │   │   ├── GetAuthorizedUser.kt
@@ -328,14 +334,21 @@
 │   │   │   │                   │   │   │       ├── UpdateFullMissionEvent.kt
 │   │   │   │                   │   │   │       └── UpdateMissionEvent.kt
 │   │   │   │                   │   │   ├── natinfs
-│   │   │   │                   │   │   │   └── GetAllNatinfs.kt
+│   │   │   │                   │   │   │   ├── GetAllNatinfs.kt
+│   │   │   │                   │   │   │   └── GetNatinfsByThemes.kt
 │   │   │   │                   │   │   ├── recentActivity
 │   │   │   │                   │   │   │   ├── GetRecentControlsActivity.kt
 │   │   │   │                   │   │   │   └── dtos
 │   │   │   │                   │   │   │       └── RecentControlsActivityListDTO.kt
 │   │   │   │                   │   │   ├── regulatoryAreas
+│   │   │   │                   │   │   │   ├── CreateOrUpdateRegulatoryArea.kt
+│   │   │   │                   │   │   │   ├── GetAllLayerNames.kt
+│   │   │   │                   │   │   │   ├── GetAllNewRegulatoryAreas.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreas.kt
-│   │   │   │                   │   │   │   └── GetRegulatoryAreaById.kt
+│   │   │   │                   │   │   │   ├── GetAllRegulatoryAreasToComplete.kt
+│   │   │   │                   │   │   │   ├── GetNewRegulatoryAreaById.kt
+│   │   │   │                   │   │   │   ├── GetRegulatoryAreaById.kt
+│   │   │   │                   │   │   │   └── GetRegulatoryAreaByIds.kt
 │   │   │   │                   │   │   ├── reportings
 │   │   │   │                   │   │   │   ├── ArchiveOutdatedReportings.kt
 │   │   │   │                   │   │   │   ├── ArchiveReportings.kt
@@ -372,7 +385,7 @@
 │   │   │   │                   │   │   │   ├── GetThemes.kt
 │   │   │   │                   │   │   │   └── GetThemesByRegulatoryAreas.kt
 │   │   │   │                   │   │   ├── vessels
-│   │   │   │                   │   │   │   ├── GetVesselById.kt
+│   │   │   │                   │   │   │   ├── GetVesselByShipId.kt
 │   │   │   │                   │   │   │   └── SearchVessels.kt
 │   │   │   │                   │   │   └── vigilanceArea
 │   │   │   │                   │   │       ├── CreateOrUpdateVigilanceArea.kt
@@ -403,6 +416,8 @@
 │   │   │   │                   │   │   │   │   │   │   ├── AwarenessDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── AwarenessDetailsInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── EnvActionDataInput.kt
+│   │   │   │                   │   │   │   │   │   ├── amps
+│   │   │   │                   │   │   │   │   │   │   └── AmpByIdsDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── dashboards
 │   │   │   │                   │   │   │   │   │   │   ├── BriefInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── DashboardDataInput.kt
@@ -413,6 +428,9 @@
 │   │   │   │                   │   │   │   │   │   │   └── MissionEnvActionControlPlanDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── recentActivity
 │   │   │   │                   │   │   │   │   │   │   └── RecentControlsActivityDataInput.kt
+│   │   │   │                   │   │   │   │   │   ├── regulatoryArea
+│   │   │   │                   │   │   │   │   │   │   ├── RegulatoryAreaByIdsDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   └── RegulatoryAreaDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── reportings
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateReportingDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── ReportingSourceDataInput.kt
@@ -422,6 +440,7 @@
 │   │   │   │                   │   │   │   │   │   │   └── ThemeInput.kt
 │   │   │   │                   │   │   │   │   │   └── vigilanceArea
 │   │   │   │                   │   │   │   │   │       ├── ImageDataInput.kt
+│   │   │   │                   │   │   │   │   │       ├── VigilanceAreaByIdsDataInput.kt
 │   │   │   │                   │   │   │   │   │       ├── VigilanceAreaDataInput.kt
 │   │   │   │                   │   │   │   │   │       ├── VigilanceAreaDataPeriodInput.kt
 │   │   │   │                   │   │   │   │   │       └── VigilanceAreaSourceInput.kt
@@ -466,6 +485,12 @@
 │   │   │   │                   │   │   │   │       │   └── PositionOutput.kt
 │   │   │   │                   │   │   │   │       ├── recentActivity
 │   │   │   │                   │   │   │   │       │   └── RecentControlsActivityDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── regulatoryArea
+│   │   │   │                   │   │   │   │       │   ├── LayerNamesDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaToCompleteDataOuput.kt
+│   │   │   │                   │   │   │   │       │   ├── RegulatoryAreasDataOutput.kt
+│   │   │   │                   │   │   │   │       │   └── RegulatoryAreasWithTotalDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── reportings
 │   │   │   │                   │   │   │   │       │   ├── ReportingDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── ReportingHistoryOfInfractionDataOutput.kt
@@ -538,25 +563,27 @@
 │   │   │   │                   │   │   │   ├── README.md
 │   │   │   │                   │   │   │   ├── bff
 │   │   │   │                   │   │   │   │   ├── UserAuthorization.kt
-│   │   │   │                   │   │   │   │   └── v1
-│   │   │   │                   │   │   │   │       ├── Amps.kt
-│   │   │   │                   │   │   │   │       ├── ControlUnits.kt
-│   │   │   │                   │   │   │   │       ├── Dashboards.kt
-│   │   │   │                   │   │   │   │       ├── DepartmentAreas.kt
-│   │   │   │                   │   │   │   │       ├── Infractions.kt
-│   │   │   │                   │   │   │   │       ├── LocalizedAreas.kt
-│   │   │   │                   │   │   │   │       ├── Missions.kt
-│   │   │   │                   │   │   │   │       ├── Natinfs.kt
-│   │   │   │                   │   │   │   │       ├── Positions.kt
-│   │   │   │                   │   │   │   │       ├── RecentActivity.kt
-│   │   │   │                   │   │   │   │       ├── RegulatoryAreas.kt
-│   │   │   │                   │   │   │   │       ├── Semaphores.kt
-│   │   │   │                   │   │   │   │       ├── Tags.kt
-│   │   │   │                   │   │   │   │       ├── Vessels.kt
-│   │   │   │                   │   │   │   │       ├── VigilanceAreas.kt
-│   │   │   │                   │   │   │   │       └── reportings
-│   │   │   │                   │   │   │   │           ├── Reportings.kt
-│   │   │   │                   │   │   │   │           └── SSEReporting.kt
+│   │   │   │                   │   │   │   │   ├── v1
+│   │   │   │                   │   │   │   │   │   ├── Amps.kt
+│   │   │   │                   │   │   │   │   │   ├── ControlUnits.kt
+│   │   │   │                   │   │   │   │   │   ├── Dashboards.kt
+│   │   │   │                   │   │   │   │   │   ├── DepartmentAreas.kt
+│   │   │   │                   │   │   │   │   │   ├── Infractions.kt
+│   │   │   │                   │   │   │   │   │   ├── LocalizedAreas.kt
+│   │   │   │                   │   │   │   │   │   ├── Missions.kt
+│   │   │   │                   │   │   │   │   │   ├── Natinfs.kt
+│   │   │   │                   │   │   │   │   │   ├── Positions.kt
+│   │   │   │                   │   │   │   │   │   ├── RecentActivity.kt
+│   │   │   │                   │   │   │   │   │   ├── RegulatoryAreas.kt
+│   │   │   │                   │   │   │   │   │   ├── Semaphores.kt
+│   │   │   │                   │   │   │   │   │   ├── Tags.kt
+│   │   │   │                   │   │   │   │   │   ├── Vessels.kt
+│   │   │   │                   │   │   │   │   │   ├── VigilanceAreas.kt
+│   │   │   │                   │   │   │   │   │   └── reportings
+│   │   │   │                   │   │   │   │   │       ├── Reportings.kt
+│   │   │   │                   │   │   │   │   │       └── SSEReporting.kt
+│   │   │   │                   │   │   │   │   └── v2
+│   │   │   │                   │   │   │   │       └── RegulatoryAreas.kt
 │   │   │   │                   │   │   │   ├── log
 │   │   │   │                   │   │   │   │   ├── CorrelationInterceptor.kt
 │   │   │   │                   │   │   │   │   ├── CustomAuthenticationEntryPoint.kt
@@ -602,6 +629,7 @@
 │   │   │   │                   │   │   │   ├── AISPositionModel.kt
 │   │   │   │                   │   │   │   ├── AMPModel.kt
 │   │   │   │                   │   │   │   ├── AdministrationModel.kt
+│   │   │   │                   │   │   │   ├── BaseVesselModel.kt
 │   │   │   │                   │   │   │   ├── ControlPlanSubThemeModel.kt
 │   │   │   │                   │   │   │   ├── ControlPlanTagModel.kt
 │   │   │   │                   │   │   │   ├── ControlPlanThemeModel.kt
@@ -615,6 +643,7 @@
 │   │   │   │                   │   │   │   ├── EnvActionModel.kt
 │   │   │   │                   │   │   │   ├── FacadeAreasModel.kt
 │   │   │   │                   │   │   │   ├── LastPositionModel.kt
+│   │   │   │                   │   │   │   ├── LatestVesselModel.kt
 │   │   │   │                   │   │   │   ├── LegalStatusModel.kt
 │   │   │   │                   │   │   │   ├── LocalizedAreaModel.kt
 │   │   │   │                   │   │   │   ├── MissionControlResourceModel.kt
@@ -623,6 +652,7 @@
 │   │   │   │                   │   │   │   ├── NaflModel.kt
 │   │   │   │                   │   │   │   ├── NatinfModel.kt
 │   │   │   │                   │   │   │   ├── RegulatoryAreaModel.kt
+│   │   │   │                   │   │   │   ├── RegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── ReportingModel.kt
 │   │   │   │                   │   │   │   ├── ReportingSourceModel.kt
 │   │   │   │                   │   │   │   ├── ReportingsControlPlanSubThemeModel.kt
@@ -631,11 +661,14 @@
 │   │   │   │                   │   │   │   ├── TagEnvActionModel.kt
 │   │   │   │                   │   │   │   ├── TagModel.kt
 │   │   │   │                   │   │   │   ├── TagRegulatoryAreaModel.kt
+│   │   │   │                   │   │   │   ├── TagRegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── TagReportingModel.kt
 │   │   │   │                   │   │   │   ├── TagVigilanceAreaModel.kt
 │   │   │   │                   │   │   │   ├── ThemeEnvActionModel.kt
 │   │   │   │                   │   │   │   ├── ThemeModel.kt
+│   │   │   │                   │   │   │   ├── ThemeNatinfModel.kt
 │   │   │   │                   │   │   │   ├── ThemeRegulatoryAreaModel.kt
+│   │   │   │                   │   │   │   ├── ThemeRegulatoryAreaNewModel.kt
 │   │   │   │                   │   │   │   ├── ThemeReportingModel.kt
 │   │   │   │                   │   │   │   ├── ThemeVigilanceAreaModel.kt
 │   │   │   │                   │   │   │   ├── UserAuthorizationModel.kt
@@ -663,6 +696,7 @@
 │   │   │   │                   │   │       ├── JpaMissionRepository.kt
 │   │   │   │                   │   │       ├── JpaNatinfRepository.kt
 │   │   │   │                   │   │       ├── JpaPostgisFunctionRepository.kt
+│   │   │   │                   │   │       ├── JpaRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │       ├── JpaRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingSourceRepository.kt
@@ -690,6 +724,7 @@
 │   │   │   │                   │   │       │   ├── IDBEnvActionRepository.kt
 │   │   │   │                   │   │       │   ├── IDBFacadeAreasRepository.kt
 │   │   │   │                   │   │       │   ├── IDBLastPositionRepository.kt
+│   │   │   │                   │   │       │   ├── IDBLatestVesselRepository.kt
 │   │   │   │                   │   │       │   ├── IDBLegalStatusRepository.kt
 │   │   │   │                   │   │       │   ├── IDBLocalizedAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBMissionControlResourceRepository.kt
@@ -697,19 +732,23 @@
 │   │   │   │                   │   │       │   ├── IDBMissionRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNafRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNatinfRepository.kt
+│   │   │   │                   │   │       │   ├── IDBRegulatoryAreaNewRepository.kt
 │   │   │   │                   │   │       │   ├── IDBRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingSourceRepository.kt
 │   │   │   │                   │   │       │   ├── IDBSemaphoreRepository.kt
 │   │   │   │                   │   │       │   ├── IDBStationRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagEnvActionRepository.kt
+│   │   │   │                   │   │       │   ├── IDBTagRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagVigilanceAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBThemeEnvActionRepository.kt
+│   │   │   │                   │   │       │   ├── IDBThemeRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBThemeReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBThemeRepository.kt
 │   │   │   │                   │   │       │   ├── IDBThemeVigilanceAreaRepository.kt
+│   │   │   │                   │   │       │   ├── IDBThemesNatinfRepository.kt
 │   │   │   │                   │   │       │   ├── IDBUserAuthorizationRepository.kt
 │   │   │   │                   │   │       │   ├── IDBVesselRepository.kt
 │   │   │   │                   │   │       │   ├── IDBVigilanceAreaImageRepository.kt
@@ -923,7 +962,17 @@
 │   │   │       │   │   │   ├── V0.205__add_unaccent_extension.sql
 │   │   │       │   │   │   ├── V0.206__create_beach_search_view.sql
 │   │   │       │   │   │   ├── V0.207__update_regulations_row_hash.sql
-│   │   │       │   │   │   └── V0.208__add_columns_ais_position.sql
+│   │   │       │   │   │   ├── V0.208__add_columns_ais_position.sql
+│   │   │       │   │   │   ├── V0.209__create_regulatory_areas_table.sql
+│   │   │       │   │   │   ├── V0.210__create_themes_natinfs_table.sql
+│   │   │       │   │   │   ├── V0.211__update_resources_empty_photo.sql
+│   │   │       │   │   │   ├── V0.212__remove_fk_natinfs_themes.sql
+│   │   │       │   │   │   ├── V0.213__add_column_updated_at_amps.sql
+│   │   │       │   │   │   ├── V0.214__ais_position_add_sent_at.sql
+│   │   │       │   │   │   ├── V0.215__add_column_ums_gross_tonnage_vessels.sql
+│   │   │       │   │   │   ├── V0.216__migrate_infractions_vessel_id.sql
+│   │   │       │   │   │   ├── V0.217__ais_position_rename_sent_at.sql
+│   │   │       │   │   │   └── V0.218__add_vessel_batch_row_number_index.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -997,7 +1046,9 @@
 │   │   │       │       ├── V666.24__update_awareness.sql
 │   │   │       │       ├── V666.25__insert_vessels.sql
 │   │   │       │       ├── V666.26__insert_positions.sql
-│   │   │       │       └── V666.27__insert_last_positions.sql
+│   │   │       │       ├── V666.27__insert_last_positions.sql
+│   │   │       │       ├── V666.28__insert_dummy_regulatory_areas.sql
+│   │   │       │       └── V666.29__insert_themes_natinfs.sql
 │   │   │       ├── log4j2-spring.xml
 │   │   │       └── template_export_brief.docx
 │   │   └── test
@@ -1033,6 +1084,7 @@
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── AmpFixture.kt
 │   │       │                   │   │   ├── amps
+│   │       │                   │   │   │   ├── GetAllAMPsByIdsUTest.kt
 │   │       │                   │   │   │   └── GetAllAMPsUTest.kt
 │   │       │                   │   │   ├── authorization
 │   │       │                   │   │   │   ├── DeleteUserUTest.kt
@@ -1098,16 +1150,23 @@
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── MissionFixture.kt
 │   │       │                   │   │   ├── natinfs
-│   │       │                   │   │   │   └── GetAllNatinfsUTest.kt
+│   │       │                   │   │   │   ├── GetAllNatinfsUTest.kt
+│   │       │                   │   │   │   └── GetNatinfsByThemesUTest.kt
 │   │       │                   │   │   ├── recentActivity
 │   │       │                   │   │   │   ├── GetRecentControlsActivityUTest.kt
 │   │       │                   │   │   │   └── RecentControlsActivityListDTOFixture.kt
-│   │       │                   │   │   ├── regulatoryArea
-│   │       │                   │   │   │   └── fixtures
-│   │       │                   │   │   │       └── RegulatoryAreaFixture.kt
 │   │       │                   │   │   ├── regulatoryAreas
+│   │       │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaUTest.kt
+│   │       │                   │   │   │   ├── GetAllLayerNamesUTest.kt
+│   │       │                   │   │   │   ├── GetAllNewRegulatoryAreasUTest.kt
+│   │       │                   │   │   │   ├── GetAllRegulatoryAreasToCompleteUTest.kt
 │   │       │                   │   │   │   ├── GetAllRegulatoryAreasUTest.kt
-│   │       │                   │   │   │   └── GetRegulatoryAreaByIdUTest.kt
+│   │       │                   │   │   │   ├── GetNewRegulatoryAreaByIdUTest.kt
+│   │       │                   │   │   │   ├── GetRegulatoryAreaByIdUTest.kt
+│   │       │                   │   │   │   ├── GetRegulatoryAreaByIdsUTest.kt
+│   │       │                   │   │   │   └── fixtures
+│   │       │                   │   │   │       ├── RegulatoryAreaFixture.kt
+│   │       │                   │   │   │       └── RegulatoryAreaNewFixture.kt
 │   │       │                   │   │   ├── reportings
 │   │       │                   │   │   │   ├── ArchiveOutdatedReportingsUTest.kt
 │   │       │                   │   │   │   ├── ArchiveReportingsUTest.kt
@@ -1142,7 +1201,7 @@
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── ThemeFixture.kt
 │   │       │                   │   │   ├── vessels
-│   │       │                   │   │   │   ├── GetVesselByIdUTest.kt
+│   │       │                   │   │   │   ├── GetVesselByShipIdUTest.kt
 │   │       │                   │   │   │   ├── SearchVesselsUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       ├── AisPositionFixture.kt
@@ -1176,23 +1235,25 @@
 │   │       │                       │   │       └── EnvActionDataInputUTests.kt
 │   │       │                       │   └── endpoints
 │   │       │                       │       ├── bff
-│   │       │                       │       │   └── v1
-│   │       │                       │       │       ├── AmpsITests.kt
-│   │       │                       │       │       ├── ControlUnitsITests.kt
-│   │       │                       │       │       ├── DashboardsITests.kt
-│   │       │                       │       │       ├── DepartmentAreaITests.kt
-│   │       │                       │       │       ├── InfractionsITest.kt
-│   │       │                       │       │       ├── LocalizedAreasITests.kt
-│   │       │                       │       │       ├── MissionsITests.kt
-│   │       │                       │       │       ├── NatinfsITests.kt
-│   │       │                       │       │       ├── RecentActivityITests.kt
-│   │       │                       │       │       ├── RegulatoryAreasITests.kt
-│   │       │                       │       │       ├── ReportingsITests.kt
-│   │       │                       │       │       ├── SemaphoresITests.kt
-│   │       │                       │       │       ├── TagsITest.kt
-│   │       │                       │       │       ├── TestUtils.kt
-│   │       │                       │       │       ├── VesselsITest.kt
-│   │       │                       │       │       └── VigilanceAreasITests.kt
+│   │       │                       │       │   ├── v1
+│   │       │                       │       │   │   ├── AmpsITests.kt
+│   │       │                       │       │   │   ├── ControlUnitsITests.kt
+│   │       │                       │       │   │   ├── DashboardsITests.kt
+│   │       │                       │       │   │   ├── DepartmentAreaITests.kt
+│   │       │                       │       │   │   ├── InfractionsITest.kt
+│   │       │                       │       │   │   ├── LocalizedAreasITests.kt
+│   │       │                       │       │   │   ├── MissionsITests.kt
+│   │       │                       │       │   │   ├── NatinfsITests.kt
+│   │       │                       │       │   │   ├── RecentActivityITests.kt
+│   │       │                       │       │   │   ├── RegulatoryAreasITests.kt
+│   │       │                       │       │   │   ├── ReportingsITests.kt
+│   │       │                       │       │   │   ├── SemaphoresITests.kt
+│   │       │                       │       │   │   ├── TagsITest.kt
+│   │       │                       │       │   │   ├── TestUtils.kt
+│   │       │                       │       │   │   ├── VesselsITest.kt
+│   │       │                       │       │   │   └── VigilanceAreasITests.kt
+│   │       │                       │       │   └── v2
+│   │       │                       │       │       └── RegulatoryAreasITests.kt
 │   │       │                       │       ├── publicapi
 │   │       │                       │       │   ├── AdministrationsITests.kt
 │   │       │                       │       │   ├── ApiHealthcheckITests.kt
@@ -1219,6 +1280,7 @@
 │   │       │                       │       ├── AbstractDBTests.kt
 │   │       │                       │       ├── AbstractKafkaTests.kt
 │   │       │                       │       ├── JPALocalizedAreaRepositoryITests.kt
+│   │       │                       │       ├── JpaAISPositionRepositoryITest.kt
 │   │       │                       │       ├── JpaAMPRepositoryTests.kt
 │   │       │                       │       ├── JpaAdministrationRepositoryITests.kt
 │   │       │                       │       ├── JpaControlPlanSubThemeRepositoryITests.kt
@@ -1235,6 +1297,7 @@
 │   │       │                       │       ├── JpaMissionRepositoryITests.kt
 │   │       │                       │       ├── JpaNatinfRepositoryITests.kt
 │   │       │                       │       ├── JpaPostgisFunctionRepositoryITests.kt
+│   │       │                       │       ├── JpaRegulatoryAreaNewRepositoryITests.kt
 │   │       │                       │       ├── JpaRegulatoryAreaRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingSourceRepositoryITest.kt
@@ -1284,6 +1347,10 @@
 │   │   │   │   ├── control_unit_table
 │   │   │   │   │   ├── filters.spec.ts
 │   │   │   │   │   └── row_actions.spec.ts
+│   │   │   │   ├── regulatory_area
+│   │   │   │   │   ├── create_regulatory_area.spec.ts
+│   │   │   │   │   ├── edit_regulatory_area.spec.ts
+│   │   │   │   │   └── filters.spec.ts
 │   │   │   │   ├── station_form.spec.ts
 │   │   │   │   └── station_table
 │   │   │   │       ├── filters.spec.ts
@@ -1397,509 +1464,267 @@
 │   │   ├── archived_reporting_infraction.svg
 │   │   ├── archived_reporting_observation.svg
 │   │   ├── archived_reporting_with_mission_attached.svg
-│   │   ├── favicon-32.ico
+│   │   ├── favicon.ico
+│   │   ├── faviconBW.ico
 │   │   ├── flags
-│   │   │   ├── ad.png
-│   │   │   ├── ad.svg
-│   │   │   ├── ae.png
-│   │   │   ├── ae.svg
-│   │   │   ├── af.png
-│   │   │   ├── af.svg
-│   │   │   ├── ag.png
-│   │   │   ├── ag.svg
-│   │   │   ├── ai.png
-│   │   │   ├── ai.svg
-│   │   │   ├── al.png
-│   │   │   ├── al.svg
-│   │   │   ├── am.png
-│   │   │   ├── am.svg
-│   │   │   ├── an.png
-│   │   │   ├── ao.png
-│   │   │   ├── ao.svg
-│   │   │   ├── aq.png
-│   │   │   ├── ar.png
-│   │   │   ├── ar.svg
-│   │   │   ├── as.png
-│   │   │   ├── as.svg
-│   │   │   ├── at.png
-│   │   │   ├── at.svg
-│   │   │   ├── au.png
-│   │   │   ├── au.svg
-│   │   │   ├── aw.png
-│   │   │   ├── aw.svg
-│   │   │   ├── ax.png
-│   │   │   ├── ax.svg
-│   │   │   ├── az.png
-│   │   │   ├── az.svg
-│   │   │   ├── ba.png
-│   │   │   ├── ba.svg
-│   │   │   ├── bb.png
-│   │   │   ├── bb.svg
-│   │   │   ├── bd.png
-│   │   │   ├── bd.svg
-│   │   │   ├── be.png
-│   │   │   ├── be.svg
-│   │   │   ├── bf.png
-│   │   │   ├── bf.svg
-│   │   │   ├── bg.png
-│   │   │   ├── bg.svg
-│   │   │   ├── bh.png
-│   │   │   ├── bh.svg
-│   │   │   ├── bi.png
-│   │   │   ├── bi.svg
-│   │   │   ├── bj.png
-│   │   │   ├── bj.svg
-│   │   │   ├── bl.png
-│   │   │   ├── bl.svg
-│   │   │   ├── bm.png
-│   │   │   ├── bm.svg
-│   │   │   ├── bn.png
-│   │   │   ├── bn.svg
-│   │   │   ├── bo.png
-│   │   │   ├── bo.svg
-│   │   │   ├── bq.png
-│   │   │   ├── bq.svg
-│   │   │   ├── br.png
-│   │   │   ├── br.svg
-│   │   │   ├── bs.png
-│   │   │   ├── bs.svg
-│   │   │   ├── bt.png
-│   │   │   ├── bt.svg
-│   │   │   ├── bv.png
-│   │   │   ├── bw.png
-│   │   │   ├── bw.svg
-│   │   │   ├── by.png
-│   │   │   ├── by.svg
-│   │   │   ├── bz.png
-│   │   │   ├── bz.svg
-│   │   │   ├── ca.png
-│   │   │   ├── ca.svg
-│   │   │   ├── cc.png
-│   │   │   ├── cc.svg
-│   │   │   ├── cd.png
-│   │   │   ├── cd.svg
-│   │   │   ├── cf.png
-│   │   │   ├── cf.svg
-│   │   │   ├── cg.png
-│   │   │   ├── cg.svg
-│   │   │   ├── ch.png
-│   │   │   ├── ch.svg
-│   │   │   ├── ci.png
-│   │   │   ├── ci.svg
-│   │   │   ├── ck.png
-│   │   │   ├── ck.svg
-│   │   │   ├── cl.png
-│   │   │   ├── cl.svg
-│   │   │   ├── cm.png
-│   │   │   ├── cm.svg
-│   │   │   ├── cn.png
-│   │   │   ├── cn.svg
-│   │   │   ├── co.png
-│   │   │   ├── co.svg
-│   │   │   ├── cr.png
-│   │   │   ├── cr.svg
-│   │   │   ├── cu.png
-│   │   │   ├── cu.svg
-│   │   │   ├── cv.png
-│   │   │   ├── cv.svg
-│   │   │   ├── cw.png
-│   │   │   ├── cw.svg
-│   │   │   ├── cx.png
-│   │   │   ├── cx.svg
-│   │   │   ├── cy.png
-│   │   │   ├── cy.svg
-│   │   │   ├── cz.png
-│   │   │   ├── cz.svg
-│   │   │   ├── de.png
-│   │   │   ├── de.svg
-│   │   │   ├── dj.png
-│   │   │   ├── dj.svg
-│   │   │   ├── dk.png
-│   │   │   ├── dk.svg
-│   │   │   ├── dm.png
-│   │   │   ├── dm.svg
-│   │   │   ├── do.png
-│   │   │   ├── do.svg
-│   │   │   ├── dz.png
-│   │   │   ├── dz.svg
-│   │   │   ├── ec.png
-│   │   │   ├── ec.svg
-│   │   │   ├── ee.png
-│   │   │   ├── ee.svg
-│   │   │   ├── eg.png
-│   │   │   ├── eg.svg
-│   │   │   ├── eh.png
-│   │   │   ├── eh.svg
-│   │   │   ├── er.png
-│   │   │   ├── er.svg
-│   │   │   ├── es.png
-│   │   │   ├── es.svg
-│   │   │   ├── et.png
-│   │   │   ├── et.svg
-│   │   │   ├── eu.png
-│   │   │   ├── fi.png
-│   │   │   ├── fi.svg
-│   │   │   ├── fj.png
-│   │   │   ├── fj.svg
-│   │   │   ├── fk.png
-│   │   │   ├── fk.svg
-│   │   │   ├── fm.png
-│   │   │   ├── fm.svg
-│   │   │   ├── fo.png
-│   │   │   ├── fo.svg
-│   │   │   ├── fr.png
-│   │   │   ├── fr.svg
-│   │   │   ├── ga.png
-│   │   │   ├── ga.svg
-│   │   │   ├── gb-eng.png
-│   │   │   ├── gb-nir.png
-│   │   │   ├── gb-sct.png
-│   │   │   ├── gb-wls.png
-│   │   │   ├── gb.png
-│   │   │   ├── gb.svg
-│   │   │   ├── gd.png
-│   │   │   ├── gd.svg
-│   │   │   ├── ge.png
-│   │   │   ├── ge.svg
-│   │   │   ├── gf.png
-│   │   │   ├── gf.svg
-│   │   │   ├── gg.png
-│   │   │   ├── gg.svg
-│   │   │   ├── gh.png
-│   │   │   ├── gh.svg
-│   │   │   ├── gi.png
-│   │   │   ├── gi.svg
-│   │   │   ├── gl.png
-│   │   │   ├── gl.svg
-│   │   │   ├── gm.png
-│   │   │   ├── gm.svg
-│   │   │   ├── gn.png
-│   │   │   ├── gn.svg
-│   │   │   ├── gp.png
-│   │   │   ├── gp.svg
-│   │   │   ├── gq.png
-│   │   │   ├── gq.svg
-│   │   │   ├── gr.png
-│   │   │   ├── gr.svg
-│   │   │   ├── gs.png
-│   │   │   ├── gs.svg
-│   │   │   ├── gt.png
-│   │   │   ├── gt.svg
-│   │   │   ├── gu.png
-│   │   │   ├── gu.svg
-│   │   │   ├── gw.png
-│   │   │   ├── gw.svg
-│   │   │   ├── gy.png
-│   │   │   ├── gy.svg
-│   │   │   ├── hk.png
-│   │   │   ├── hk.svg
-│   │   │   ├── hm.png
-│   │   │   ├── hm.svg
-│   │   │   ├── hn.png
-│   │   │   ├── hn.svg
-│   │   │   ├── hr.png
-│   │   │   ├── hr.svg
-│   │   │   ├── ht.png
-│   │   │   ├── ht.svg
-│   │   │   ├── hu.png
-│   │   │   ├── hu.svg
-│   │   │   ├── id.png
-│   │   │   ├── id.svg
-│   │   │   ├── ie.png
-│   │   │   ├── ie.svg
-│   │   │   ├── il.png
-│   │   │   ├── il.svg
-│   │   │   ├── im.png
-│   │   │   ├── im.svg
-│   │   │   ├── in.png
-│   │   │   ├── in.svg
-│   │   │   ├── io.png
-│   │   │   ├── io.svg
-│   │   │   ├── iq.png
-│   │   │   ├── iq.svg
-│   │   │   ├── ir.png
-│   │   │   ├── ir.svg
-│   │   │   ├── is.png
-│   │   │   ├── is.svg
-│   │   │   ├── it.png
-│   │   │   ├── it.svg
-│   │   │   ├── je.png
-│   │   │   ├── je.svg
-│   │   │   ├── jm.png
-│   │   │   ├── jm.svg
-│   │   │   ├── jo.png
-│   │   │   ├── jo.svg
-│   │   │   ├── jp.png
-│   │   │   ├── jp.svg
-│   │   │   ├── ke.png
-│   │   │   ├── ke.svg
-│   │   │   ├── kg.png
-│   │   │   ├── kg.svg
-│   │   │   ├── kh.png
-│   │   │   ├── kh.svg
-│   │   │   ├── ki.png
-│   │   │   ├── ki.svg
-│   │   │   ├── km.png
-│   │   │   ├── km.svg
-│   │   │   ├── kn.png
-│   │   │   ├── kn.svg
-│   │   │   ├── kp.png
-│   │   │   ├── kp.svg
-│   │   │   ├── kr.png
-│   │   │   ├── kr.svg
-│   │   │   ├── kw.png
-│   │   │   ├── kw.svg
-│   │   │   ├── ky.png
-│   │   │   ├── ky.svg
-│   │   │   ├── kz.png
-│   │   │   ├── kz.svg
-│   │   │   ├── la.png
-│   │   │   ├── la.svg
-│   │   │   ├── lb.png
-│   │   │   ├── lb.svg
-│   │   │   ├── lc.png
-│   │   │   ├── lc.svg
-│   │   │   ├── li.png
-│   │   │   ├── li.svg
-│   │   │   ├── lk.png
-│   │   │   ├── lk.svg
-│   │   │   ├── lr.png
-│   │   │   ├── lr.svg
-│   │   │   ├── ls.png
-│   │   │   ├── ls.svg
-│   │   │   ├── lt.png
-│   │   │   ├── lt.svg
-│   │   │   ├── lu.png
-│   │   │   ├── lu.svg
-│   │   │   ├── lv.png
-│   │   │   ├── lv.svg
-│   │   │   ├── ly.png
-│   │   │   ├── ly.svg
-│   │   │   ├── ma.png
-│   │   │   ├── ma.svg
-│   │   │   ├── mc.png
-│   │   │   ├── mc.svg
-│   │   │   ├── md.png
-│   │   │   ├── md.svg
-│   │   │   ├── me.png
-│   │   │   ├── me.svg
-│   │   │   ├── mf.png
-│   │   │   ├── mf.svg
-│   │   │   ├── mg.png
-│   │   │   ├── mg.svg
-│   │   │   ├── mh.png
-│   │   │   ├── mh.svg
-│   │   │   ├── mk.png
-│   │   │   ├── mk.svg
-│   │   │   ├── ml.png
-│   │   │   ├── ml.svg
-│   │   │   ├── mm.png
-│   │   │   ├── mm.svg
-│   │   │   ├── mn.png
-│   │   │   ├── mn.svg
-│   │   │   ├── mo.png
-│   │   │   ├── mo.svg
-│   │   │   ├── mp.png
-│   │   │   ├── mp.svg
-│   │   │   ├── mq.png
-│   │   │   ├── mq.svg
-│   │   │   ├── mr.png
-│   │   │   ├── mr.svg
-│   │   │   ├── ms.png
-│   │   │   ├── ms.svg
-│   │   │   ├── mt.png
-│   │   │   ├── mt.svg
-│   │   │   ├── mu.png
-│   │   │   ├── mu.svg
-│   │   │   ├── mv.png
-│   │   │   ├── mv.svg
-│   │   │   ├── mw.png
-│   │   │   ├── mw.svg
-│   │   │   ├── mx.png
-│   │   │   ├── mx.svg
-│   │   │   ├── my.png
-│   │   │   ├── my.svg
-│   │   │   ├── mz.png
-│   │   │   ├── mz.svg
-│   │   │   ├── na.png
-│   │   │   ├── na.svg
-│   │   │   ├── nc.png
-│   │   │   ├── nc.svg
-│   │   │   ├── ne.png
-│   │   │   ├── ne.svg
-│   │   │   ├── nf.png
-│   │   │   ├── nf.svg
-│   │   │   ├── ng.png
-│   │   │   ├── ng.svg
-│   │   │   ├── ni.png
-│   │   │   ├── ni.svg
-│   │   │   ├── nl.png
-│   │   │   ├── nl.svg
-│   │   │   ├── no.png
-│   │   │   ├── no.svg
-│   │   │   ├── np.png
-│   │   │   ├── np.svg
-│   │   │   ├── nr.png
-│   │   │   ├── nr.svg
-│   │   │   ├── nu.png
-│   │   │   ├── nu.svg
-│   │   │   ├── nz.png
-│   │   │   ├── nz.svg
-│   │   │   ├── om.png
-│   │   │   ├── om.svg
-│   │   │   ├── pa.png
-│   │   │   ├── pa.svg
-│   │   │   ├── pe.png
-│   │   │   ├── pe.svg
-│   │   │   ├── pf.png
-│   │   │   ├── pf.svg
-│   │   │   ├── pg.png
-│   │   │   ├── pg.svg
-│   │   │   ├── ph.png
-│   │   │   ├── ph.svg
-│   │   │   ├── pk.png
-│   │   │   ├── pk.svg
-│   │   │   ├── pl.png
-│   │   │   ├── pl.svg
-│   │   │   ├── pm.png
-│   │   │   ├── pm.svg
-│   │   │   ├── pn.png
-│   │   │   ├── pr.png
-│   │   │   ├── pr.svg
-│   │   │   ├── ps.png
-│   │   │   ├── ps.svg
-│   │   │   ├── pt.png
-│   │   │   ├── pt.svg
-│   │   │   ├── pw.png
-│   │   │   ├── pw.svg
-│   │   │   ├── py.png
-│   │   │   ├── py.svg
-│   │   │   ├── qa.png
-│   │   │   ├── qa.svg
-│   │   │   ├── re.png
-│   │   │   ├── re.svg
-│   │   │   ├── ro.png
-│   │   │   ├── ro.svg
-│   │   │   ├── rs.png
-│   │   │   ├── rs.svg
-│   │   │   ├── ru.png
-│   │   │   ├── ru.svg
-│   │   │   ├── rw.png
-│   │   │   ├── rw.svg
-│   │   │   ├── sa.png
-│   │   │   ├── sa.svg
-│   │   │   ├── sb.png
-│   │   │   ├── sb.svg
-│   │   │   ├── sc.png
-│   │   │   ├── sc.svg
-│   │   │   ├── sd.png
-│   │   │   ├── sd.svg
-│   │   │   ├── se.png
-│   │   │   ├── se.svg
-│   │   │   ├── sg.png
-│   │   │   ├── sg.svg
-│   │   │   ├── sh.png
-│   │   │   ├── sh.svg
-│   │   │   ├── si.png
-│   │   │   ├── si.svg
-│   │   │   ├── sj.png
-│   │   │   ├── sj.svg
-│   │   │   ├── sk.png
-│   │   │   ├── sk.svg
-│   │   │   ├── sl.png
-│   │   │   ├── sl.svg
-│   │   │   ├── sm.png
-│   │   │   ├── sm.svg
-│   │   │   ├── sn.png
-│   │   │   ├── sn.svg
-│   │   │   ├── so.png
-│   │   │   ├── so.svg
-│   │   │   ├── sr.png
-│   │   │   ├── sr.svg
-│   │   │   ├── ss.png
-│   │   │   ├── ss.svg
-│   │   │   ├── st.png
-│   │   │   ├── st.svg
-│   │   │   ├── sv.png
-│   │   │   ├── sv.svg
-│   │   │   ├── sx.png
-│   │   │   ├── sx.svg
-│   │   │   ├── sy.png
-│   │   │   ├── sy.svg
-│   │   │   ├── sz.png
-│   │   │   ├── sz.svg
-│   │   │   ├── tc.png
-│   │   │   ├── tc.svg
-│   │   │   ├── td.png
-│   │   │   ├── td.svg
-│   │   │   ├── tf.png
-│   │   │   ├── tg.png
-│   │   │   ├── tg.svg
-│   │   │   ├── th.png
-│   │   │   ├── th.svg
-│   │   │   ├── tj.png
-│   │   │   ├── tj.svg
-│   │   │   ├── tk.png
-│   │   │   ├── tk.svg
-│   │   │   ├── tl.png
-│   │   │   ├── tl.svg
-│   │   │   ├── tm.png
-│   │   │   ├── tm.svg
-│   │   │   ├── tn.png
-│   │   │   ├── tn.svg
-│   │   │   ├── to.png
-│   │   │   ├── to.svg
-│   │   │   ├── tr.png
-│   │   │   ├── tr.svg
-│   │   │   ├── tt.png
-│   │   │   ├── tt.svg
-│   │   │   ├── tv.png
-│   │   │   ├── tv.svg
-│   │   │   ├── tw.png
-│   │   │   ├── tw.svg
-│   │   │   ├── tz.png
-│   │   │   ├── tz.svg
-│   │   │   ├── ua.png
-│   │   │   ├── ua.svg
-│   │   │   ├── ug.png
-│   │   │   ├── ug.svg
-│   │   │   ├── um.png
+│   │   │   ├── abw.svg
+│   │   │   ├── afg.svg
+│   │   │   ├── ago.svg
+│   │   │   ├── aia.svg
+│   │   │   ├── ala.svg
+│   │   │   ├── alb.svg
+│   │   │   ├── and.svg
+│   │   │   ├── are.svg
+│   │   │   ├── arg.svg
+│   │   │   ├── arm.svg
+│   │   │   ├── asm.svg
+│   │   │   ├── ata.svg
+│   │   │   ├── atf.svg
+│   │   │   ├── atg.svg
+│   │   │   ├── aus.svg
+│   │   │   ├── aut.svg
+│   │   │   ├── aze.svg
+│   │   │   ├── bdi.svg
+│   │   │   ├── bel.svg
+│   │   │   ├── ben.svg
+│   │   │   ├── bes.svg
+│   │   │   ├── bfa.svg
+│   │   │   ├── bgd.svg
+│   │   │   ├── bgr.svg
+│   │   │   ├── bhr.svg
+│   │   │   ├── bhs.svg
+│   │   │   ├── bih.svg
+│   │   │   ├── blm.svg
+│   │   │   ├── blr.svg
+│   │   │   ├── blz.svg
+│   │   │   ├── bmu.svg
+│   │   │   ├── bol.svg
+│   │   │   ├── bra.svg
+│   │   │   ├── brb.svg
+│   │   │   ├── brn.svg
+│   │   │   ├── btn.svg
+│   │   │   ├── bvt.svg
+│   │   │   ├── bwa.svg
+│   │   │   ├── caf.svg
+│   │   │   ├── can.svg
+│   │   │   ├── cat.svg
+│   │   │   ├── cck.svg
+│   │   │   ├── che.svg
+│   │   │   ├── chl.svg
+│   │   │   ├── chn.svg
+│   │   │   ├── civ.svg
+│   │   │   ├── cmr.svg
+│   │   │   ├── cod.svg
+│   │   │   ├── cog.svg
+│   │   │   ├── cok.svg
+│   │   │   ├── col.svg
+│   │   │   ├── com.svg
+│   │   │   ├── cpv.svg
+│   │   │   ├── cri.svg
+│   │   │   ├── cub.svg
+│   │   │   ├── cuw.svg
+│   │   │   ├── cxr.svg
+│   │   │   ├── cym.svg
+│   │   │   ├── cyp.svg
+│   │   │   ├── cze.svg
+│   │   │   ├── deu.svg
+│   │   │   ├── dji.svg
+│   │   │   ├── dma.svg
+│   │   │   ├── dnk.svg
+│   │   │   ├── dom.svg
+│   │   │   ├── dza.svg
+│   │   │   ├── ecu.svg
+│   │   │   ├── egy.svg
+│   │   │   ├── eng.svg
+│   │   │   ├── eri.svg
+│   │   │   ├── esh.svg
+│   │   │   ├── esp.svg
+│   │   │   ├── est.svg
+│   │   │   ├── eth.svg
+│   │   │   ├── eun.svg
+│   │   │   ├── fin.svg
+│   │   │   ├── fji.svg
+│   │   │   ├── flk.svg
+│   │   │   ├── fra.svg
+│   │   │   ├── fro.svg
+│   │   │   ├── fsm.svg
+│   │   │   ├── gab.svg
+│   │   │   ├── gbr.svg
+│   │   │   ├── geo.svg
+│   │   │   ├── ggy.svg
+│   │   │   ├── gha.svg
+│   │   │   ├── gib.svg
+│   │   │   ├── gin.svg
+│   │   │   ├── glp.svg
+│   │   │   ├── gmb.svg
+│   │   │   ├── gnb.svg
+│   │   │   ├── gnq.svg
+│   │   │   ├── grc.svg
+│   │   │   ├── grd.svg
+│   │   │   ├── grl.svg
+│   │   │   ├── gtm.svg
+│   │   │   ├── guf.svg
+│   │   │   ├── gum.svg
+│   │   │   ├── guy.svg
+│   │   │   ├── hkg.svg
+│   │   │   ├── hmd.svg
+│   │   │   ├── hnd.svg
+│   │   │   ├── hrv.svg
+│   │   │   ├── hti.svg
+│   │   │   ├── hun.svg
+│   │   │   ├── idn.svg
+│   │   │   ├── imn.svg
+│   │   │   ├── ind.svg
+│   │   │   ├── iot.svg
+│   │   │   ├── irl.svg
+│   │   │   ├── irn.svg
+│   │   │   ├── irq.svg
+│   │   │   ├── isl.svg
+│   │   │   ├── isr.svg
+│   │   │   ├── ita.svg
+│   │   │   ├── jam.svg
+│   │   │   ├── jey.svg
+│   │   │   ├── jor.svg
+│   │   │   ├── jpn.svg
+│   │   │   ├── kaz.svg
+│   │   │   ├── ken.svg
+│   │   │   ├── kgz.svg
+│   │   │   ├── khm.svg
+│   │   │   ├── kir.svg
+│   │   │   ├── kna.svg
+│   │   │   ├── kor.svg
+│   │   │   ├── kos.svg
+│   │   │   ├── kwt.svg
+│   │   │   ├── lao.svg
+│   │   │   ├── lbn.svg
+│   │   │   ├── lbr.svg
+│   │   │   ├── lby.svg
+│   │   │   ├── lca.svg
+│   │   │   ├── lie.svg
+│   │   │   ├── lka.svg
+│   │   │   ├── lso.svg
+│   │   │   ├── ltu.svg
+│   │   │   ├── lux.svg
+│   │   │   ├── lva.svg
+│   │   │   ├── mac.svg
+│   │   │   ├── maf.svg
+│   │   │   ├── mar.svg
+│   │   │   ├── mco.svg
+│   │   │   ├── mda.svg
+│   │   │   ├── mdg.svg
+│   │   │   ├── mdv.svg
+│   │   │   ├── mex.svg
+│   │   │   ├── mhl.svg
+│   │   │   ├── mkd.svg
+│   │   │   ├── mli.svg
+│   │   │   ├── mlt.svg
+│   │   │   ├── mmr.svg
+│   │   │   ├── mne.svg
+│   │   │   ├── mng.svg
+│   │   │   ├── mnp.svg
+│   │   │   ├── moz.svg
+│   │   │   ├── mrt.svg
+│   │   │   ├── msr.svg
+│   │   │   ├── mtq.svg
+│   │   │   ├── mus.svg
+│   │   │   ├── mwi.svg
+│   │   │   ├── mys.svg
+│   │   │   ├── myt.svg
+│   │   │   ├── nam.svg
+│   │   │   ├── ncl.svg
+│   │   │   ├── ner.svg
+│   │   │   ├── nfk.svg
+│   │   │   ├── nga.svg
+│   │   │   ├── nic.svg
+│   │   │   ├── nir.svg
+│   │   │   ├── niu.svg
+│   │   │   ├── nld.svg
+│   │   │   ├── nor.svg
+│   │   │   ├── npl.svg
+│   │   │   ├── nru.svg
+│   │   │   ├── nzl.svg
+│   │   │   ├── omn.svg
+│   │   │   ├── pak.svg
+│   │   │   ├── pan.svg
+│   │   │   ├── pcn.svg
+│   │   │   ├── per.svg
+│   │   │   ├── phl.svg
+│   │   │   ├── plw.svg
+│   │   │   ├── png.svg
+│   │   │   ├── pol.svg
+│   │   │   ├── pri.svg
+│   │   │   ├── prk.svg
+│   │   │   ├── prt.svg
+│   │   │   ├── pry.svg
+│   │   │   ├── pse.svg
+│   │   │   ├── pyf.svg
+│   │   │   ├── qat.svg
+│   │   │   ├── reu.svg
+│   │   │   ├── rou.svg
+│   │   │   ├── rus.svg
+│   │   │   ├── rwa.svg
+│   │   │   ├── sau.svg
+│   │   │   ├── sco.svg
+│   │   │   ├── sdn.svg
+│   │   │   ├── sen.svg
+│   │   │   ├── sgp.svg
+│   │   │   ├── sgs.svg
+│   │   │   ├── shn.svg
+│   │   │   ├── sjm.svg
+│   │   │   ├── slb.svg
+│   │   │   ├── sle.svg
+│   │   │   ├── slv.svg
+│   │   │   ├── smr.svg
+│   │   │   ├── som.svg
+│   │   │   ├── spm.svg
+│   │   │   ├── srb.svg
+│   │   │   ├── ssd.svg
+│   │   │   ├── stp.svg
+│   │   │   ├── sun.svg
+│   │   │   ├── sur.svg
+│   │   │   ├── svk.svg
+│   │   │   ├── svn.svg
+│   │   │   ├── swe.svg
+│   │   │   ├── swz.svg
+│   │   │   ├── sxm.svg
+│   │   │   ├── syc.svg
+│   │   │   ├── syr.svg
+│   │   │   ├── tca.svg
+│   │   │   ├── tcd.svg
+│   │   │   ├── tgo.svg
+│   │   │   ├── tha.svg
+│   │   │   ├── tjk.svg
+│   │   │   ├── tkl.svg
+│   │   │   ├── tkm.svg
+│   │   │   ├── tls.svg
+│   │   │   ├── ton.svg
+│   │   │   ├── tto.svg
+│   │   │   ├── tun.svg
+│   │   │   ├── tur.svg
+│   │   │   ├── tuv.svg
+│   │   │   ├── twn.svg
+│   │   │   ├── tza.svg
+│   │   │   ├── uga.svg
+│   │   │   ├── ukr.svg
+│   │   │   ├── umi.svg
 │   │   │   ├── unknown.png
-│   │   │   ├── us.png
-│   │   │   ├── us.svg
-│   │   │   ├── uy.png
-│   │   │   ├── uy.svg
-│   │   │   ├── uz.png
-│   │   │   ├── uz.svg
-│   │   │   ├── va.png
-│   │   │   ├── va.svg
-│   │   │   ├── vc.png
-│   │   │   ├── vc.svg
-│   │   │   ├── ve.png
-│   │   │   ├── ve.svg
-│   │   │   ├── vg.png
-│   │   │   ├── vg.svg
-│   │   │   ├── vi.png
-│   │   │   ├── vi.svg
-│   │   │   ├── vn.png
-│   │   │   ├── vn.svg
-│   │   │   ├── vu.png
-│   │   │   ├── vu.svg
-│   │   │   ├── wf.png
-│   │   │   ├── wf.svg
-│   │   │   ├── ws.png
-│   │   │   ├── ws.svg
-│   │   │   ├── xk.png
-│   │   │   ├── ye.png
-│   │   │   ├── ye.svg
-│   │   │   ├── yt.png
-│   │   │   ├── yt.svg
-│   │   │   ├── za.png
-│   │   │   ├── za.svg
-│   │   │   ├── zm.png
-│   │   │   ├── zm.svg
-│   │   │   ├── zw.png
-│   │   │   └── zw.svg
+│   │   │   ├── ury.svg
+│   │   │   ├── usa.svg
+│   │   │   ├── uzb.svg
+│   │   │   ├── vat.svg
+│   │   │   ├── vct.svg
+│   │   │   ├── ven.svg
+│   │   │   ├── vgb.svg
+│   │   │   ├── vir.svg
+│   │   │   ├── vnm.svg
+│   │   │   ├── vut.svg
+│   │   │   ├── wal.svg
+│   │   │   ├── wlf.svg
+│   │   │   ├── wsm.svg
+│   │   │   ├── yem.svg
+│   │   │   ├── zaf.svg
+│   │   │   ├── zmb.svg
+│   │   │   └── zwe.svg
 │   │   ├── icons
 │   │   │   ├── CircleFilled.svg
 │   │   │   ├── boat.png
@@ -1972,7 +1797,7 @@
 │   │   │   ├── photonAPI.ts
 │   │   │   ├── positionsApi.ts
 │   │   │   ├── recentActivity.ts
-│   │   │   ├── regulatoryLayersAPI.ts
+│   │   │   ├── regulatoryAreasAPI.ts
 │   │   │   ├── reportingsAPI.ts
 │   │   │   ├── semaphoresAPI.ts
 │   │   │   ├── stationsAPI.ts
@@ -1984,13 +1809,13 @@
 │   │   ├── components
 │   │   │   ├── AlertUnsupportedBrowser.tsx
 │   │   │   ├── BannerStack
-│   │   │   │   ├── EnvBannerStack.ts
 │   │   │   │   └── item.tsx
 │   │   │   ├── CenteredFingerprintLoader.ts
 │   │   │   ├── ConfirmationModal.tsx
 │   │   │   ├── CustomGlobalStyle.ts
 │   │   │   ├── Dialog.tsx
 │   │   │   ├── DrawModalInMenu.tsx
+│   │   │   ├── EnvironmentBox.tsx
 │   │   │   ├── ErrorBoundary.tsx
 │   │   │   ├── Form
 │   │   │   │   ├── Images
@@ -2013,7 +1838,8 @@
 │   │   │   │   ├── LocalizeCell.tsx
 │   │   │   │   ├── PaddingForVirtualizeTable.tsx
 │   │   │   │   ├── TableWithSelectableRows
-│   │   │   │   │   └── Header.tsx
+│   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── index.tsx
 │   │   │   │   └── style.ts
 │   │   │   ├── Tooltip.tsx
@@ -2059,7 +1885,6 @@
 │   │   │   │   │   └── constants.ts
 │   │   │   │   ├── missions.ts
 │   │   │   │   ├── natinfs.ts
-│   │   │   │   ├── regulatory.ts
 │   │   │   │   ├── reporting.ts
 │   │   │   │   ├── seaFrontType.ts
 │   │   │   │   ├── semaphore.ts
@@ -2131,11 +1956,13 @@
 │   │   │   │   │   ├── BackofficeMenu
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   └── index.tsx
-│   │   │   │   │   └── BannerStack
-│   │   │   │   │       └── index.tsx
+│   │   │   │   │   ├── BannerStack
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   └── style.ts
 │   │   │   │   ├── slice.ts
-│   │   │   │   └── useCases
-│   │   │   │       └── addBackOfficeBanner.ts
+│   │   │   │   ├── useCases
+│   │   │   │   │   └── addBackOfficeBanner.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── ControlUnit
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ControlUnitDialog
@@ -2202,9 +2029,9 @@
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── Attachments
 │   │   │   │   │   │   │   └── index.tsx
-│   │   │   │   │   │   ├── BackgroundMap
-│   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── Bookmark
+│   │   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   ├── BriefParameters
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── Columns
 │   │   │   │   │   │   │   ├── FirstColumn.tsx
@@ -2274,8 +2101,7 @@
 │   │   │   │   │   │   ├── Weather
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   ├── AmpsPanel.tsx
-│   │   │   │   │   │   │   └── RegulatoryAreasPanel.tsx
+│   │   │   │   │   │   │   └── AmpsPanel.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── slice.ts
 │   │   │   │   │   │   └── style.ts
@@ -2457,6 +2283,7 @@
 │   │   │   │   │   │   │   │   │   ├── InfractionFormHeaderCompany.tsx
 │   │   │   │   │   │   │   │   │   ├── InfractionFormHeaderIndividual.tsx
 │   │   │   │   │   │   │   │   │   ├── InfractionFormHeaderVehicle.tsx
+│   │   │   │   │   │   │   │   │   ├── NatinfSelectedOption.tsx
 │   │   │   │   │   │   │   │   │   └── NatinfSelector.tsx
 │   │   │   │   │   │   │   │   ├── InfractionsForm.tsx
 │   │   │   │   │   │   │   │   ├── MultiPointPicker.tsx
@@ -2611,6 +2438,38 @@
 │   │   │   │   │   ├── selectFeaturesList.ts
 │   │   │   │   │   └── updateSelectedControlId.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── RegulatoryArea
+│   │   │   │   ├── components
+│   │   │   │   │   ├── BaseLayerSelector.tsx
+│   │   │   │   │   ├── Layers
+│   │   │   │   │   │   └── BackofficeRegulatoryAreaLayer.tsx
+│   │   │   │   │   ├── RegulatoryAreaForm
+│   │   │   │   │   │   ├── FormContent.tsx
+│   │   │   │   │   │   ├── Identification.tsx
+│   │   │   │   │   │   ├── RegulatoryTexts.tsx
+│   │   │   │   │   │   ├── Schema.ts
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── style.ts
+│   │   │   │   │   ├── RegulatoryAreaList
+│   │   │   │   │   │   ├── ControlPlanTable.tsx
+│   │   │   │   │   │   ├── RegulatoryAreaFilters.tsx
+│   │   │   │   │   │   ├── RegulatoryAreaGroup.tsx
+│   │   │   │   │   │   ├── RegulatoryAreaItem.tsx
+│   │   │   │   │   │   ├── SeaFrontTable.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── slice.ts
+│   │   │   │   │   │   └── style.ts
+│   │   │   │   │   └── RegulatoryAreaPanel
+│   │   │   │   │       ├── Identification.tsx
+│   │   │   │   │       ├── Periods.tsx
+│   │   │   │   │       └── index.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   └── useGetFilteredRegulatoryAreas.ts
+│   │   │   │   ├── slice.ts
+│   │   │   │   ├── style.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── useCases
+│   │   │   │       └── createOrUpdateRegulatoryArea.ts
 │   │   │   ├── Reportings
 │   │   │   │   ├── Filters
 │   │   │   │   │   ├── Map
@@ -2800,6 +2659,7 @@
 │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   ├── Positions
 │   │   │   │   │   │   │   ├── PositionsTable.tsx
+│   │   │   │   │   │   │   ├── TableBodyEmptyData.tsx
 │   │   │   │   │   │   │   └── VesselSettings.tsx
 │   │   │   │   │   │   ├── Resume
 │   │   │   │   │   │   │   ├── LastPosition.tsx
@@ -2886,15 +2746,18 @@
 │   │   │   │   │   ├── VigilanceAreaTypeFilter.tsx
 │   │   │   │   │   └── VigilanceAreasList
 │   │   │   │   │       ├── Cells
-│   │   │   │   │       │   ├── EditCell.tsx
+│   │   │   │   │       │   ├── ActionsCell.tsx
 │   │   │   │   │       │   ├── FrequencyCell.tsx
 │   │   │   │   │       │   ├── HighlightCell.tsx
-│   │   │   │   │       │   ├── LocalizeCell.tsx
 │   │   │   │   │       │   ├── PeriodCell.tsx
 │   │   │   │   │       │   ├── PeriodsCell.tsx
 │   │   │   │   │       │   ├── StatusCell.tsx
 │   │   │   │   │       │   ├── TagsCell.tsx
+│   │   │   │   │       │   ├── TagsDetailsCell.tsx
+│   │   │   │   │       │   ├── ThemesCells.tsx
+│   │   │   │   │       │   ├── ThemesDetailsCell.tsx
 │   │   │   │   │       │   ├── ValidationDateCell.tsx
+│   │   │   │   │       │   ├── ValidationDateDetailsCell.tsx
 │   │   │   │   │       │   └── VisibilityCell.tsx
 │   │   │   │   │       ├── Columns
 │   │   │   │   │       │   └── index.tsx
@@ -2903,6 +2766,7 @@
 │   │   │   │   │       │   ├── SearchFilter.tsx
 │   │   │   │   │       │   ├── index.tsx
 │   │   │   │   │       │   └── slice.ts
+│   │   │   │   │       ├── Row.tsx
 │   │   │   │   │       ├── VigilanceAreasTable.tsx
 │   │   │   │   │       └── index.tsx
 │   │   │   │   ├── constants.ts
@@ -2914,6 +2778,7 @@
 │   │   │   │   │   ├── addFeatureToDrawedFeature.ts
 │   │   │   │   │   ├── deleteVigilanceArea.ts
 │   │   │   │   │   ├── filters
+│   │   │   │   │   │   ├── isRecentAreaFilter.ts
 │   │   │   │   │   │   ├── isVigilanceAreaPartOfCreatedBy.ts
 │   │   │   │   │   │   ├── isVigilanceAreaPartOfSeaFront.ts
 │   │   │   │   │   │   ├── isVigilanceAreaPartOfStatus.ts
@@ -2940,6 +2805,7 @@
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── TargetSelector
 │   │   │   │   │   └── index.tsx
+│   │   │   │   ├── ValidateButton.tsx
 │   │   │   │   ├── VehicleTypeSelector
 │   │   │   │   │   └── index.tsx
 │   │   │   │   └── VesselTypeSelector
@@ -2966,7 +2832,6 @@
 │   │   │   │   │   ├── ampMetadata
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── regulatoryMetadata
-│   │   │   │   │   │   ├── Identification.tsx
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   └── slice.ts
 │   │   │   │   ├── myAmps
@@ -3144,12 +3009,14 @@
 │   │       ├── getAmpsAsOptions.ts
 │   │       ├── getDateAsLocalizedString.tsx
 │   │       ├── getDatesFromFilters.tsx
+│   │       ├── getEnvironmentData.ts
 │   │       ├── getFeature.ts
 │   │       ├── getNbMonths.ts
 │   │       ├── getQueryStringFormatted.ts
 │   │       ├── getRegulatoryAreaTitle.ts
 │   │       ├── getTagsAsOptions.ts
 │   │       ├── getThemesAsOptions.ts
+│   │       ├── hasMoreThanThirtyDays.ts
 │   │       ├── isArray.ts
 │   │       ├── isBrowserSupported.ts
 │   │       ├── isCypress.ts
@@ -3223,6 +3090,7 @@
 │   └── scripts
 │       ├── backup_dev_db.sh
 │       └── restore_dev_db.sh
+├── package-lock.json
 ├── pipeline
 │   ├── .env.template
 │   ├── .env.test
@@ -3268,18 +3136,22 @@
 │   │   │   ├── ref_natinfs.py
 │   │   │   ├── refresh_materialized_view.py
 │   │   │   ├── regulations.py
-│   │   │   ├── regulations_open_data.py
+│   │   │   ├── regulatory_areas_open_data.py
 │   │   │   ├── remove_broken_missions_resources_links.py
 │   │   │   ├── semaphores.py
 │   │   │   ├── themes_and_tags.py
+│   │   │   ├── themes_natinfs.py
 │   │   │   ├── three_hundred_meters_areas.py
+│   │   │   ├── update_cacem_regulatory_areas.py
 │   │   │   ├── update_departments_and_facades.py
+│   │   │   ├── update_env_regulatory_areas.py
 │   │   │   └── vessel_repository.py
 │   │   ├── generic_tasks.py
 │   │   ├── helpers
 │   │   │   ├── __init__.py
 │   │   │   ├── dates.py
 │   │   │   ├── emails.py
+│   │   │   ├── normalize_gdf.py
 │   │   │   ├── spatial.py
 │   │   │   └── strings.py
 │   │   ├── processing.py
@@ -3295,7 +3167,10 @@
 │   │   │   │   │   ├── marpol.sql
 │   │   │   │   │   ├── regulations.sql
 │   │   │   │   │   ├── regulations_hashes.sql
-│   │   │   │   │   ├── regulations_open_data.sql
+│   │   │   │   │   ├── regulatory_areas.sql
+│   │   │   │   │   ├── regulatory_areas_hashes_for_cacem.sql
+│   │   │   │   │   ├── regulatory_areas_hashes_for_env.sql
+│   │   │   │   │   ├── regulatory_areas_open_data.sql
 │   │   │   │   │   ├── semaphore.sql
 │   │   │   │   │   ├── straight_baseline.sql
 │   │   │   │   │   ├── tags.sql
@@ -3329,10 +3204,15 @@
 │   │   │       ├── compute_last_positions.sql
 │   │   │       ├── control_units.sql
 │   │   │       ├── env_actions_to_email.sql
+│   │   │       ├── natinfs.sql
 │   │   │       ├── previous_last_positions.sql
 │   │   │       ├── regulations_hashes.sql
+│   │   │       ├── regulatory_areas.sql
+│   │   │       ├── regulatory_areas_hashes_for_cacem.sql
+│   │   │       ├── regulatory_areas_hashes_for_env.sql
 │   │   │       ├── remove_broken_missions_resources_links.sql
 │   │   │       ├── tags_hashes.sql
+│   │   │       ├── themes.sql
 │   │   │       ├── themes_hashes.sql
 │   │   │       ├── update_actions_departments.sql
 │   │   │       ├── update_actions_facades.sql
@@ -3361,7 +3241,8 @@
 │       │   │   ├── V666.503__threee_hundred_meters_areas.sql
 │       │   │   ├── V666.504__regulatory_areas_themes_and_tags.sql
 │       │   │   ├── V666.505__localized_areas.sql
-│       │   │   └── V666.506__beaches.sql
+│       │   │   ├── V666.506__beaches.sql
+│       │   │   └── V666.507__regulatory_areas.sql
 │       │   ├── emails
 │       │   │   ├── expected_rendered_email.html
 │       │   │   └── expected_rendered_email_without_actions.html
@@ -3384,6 +3265,8 @@
 │       │   │   ├── V666.5__Reset_dummy_facade_areas_subdivided.sql
 │       │   │   ├── V666.6__Reset_dummy_emails_sent_to_control_units.sql
 │       │   │   └── V666.999__Refresh_materialized_views.sql
+│       │   ├── themes_natinfs
+│       │   │   └── themes_natinfs.csv
 │       │   ├── vessel_xml
 │       │   │   ├── vessel_repository.xml
 │       │   │   └── vessel_repository.xsd
@@ -3406,10 +3289,13 @@
 │       │   ├── test_ref_natinfs.py
 │       │   ├── test_refresh_materialized_views.py
 │       │   ├── test_regulations.py
-│       │   ├── test_regulations_open_data.py
+│       │   ├── test_regulatory_areas_open_data.py
 │       │   ├── test_themes_and_tags.py
+│       │   ├── test_themes_natinfs.py
 │       │   ├── test_three_hundred_meters_areas.py
+│       │   ├── test_update_cacem_regulatory_areas.py
 │       │   ├── test_update_departments_and_facades.py
+│       │   ├── test_update_env_regulatory_areas.py
 │       │   └── test_vessel_repository.py
 │       ├── test_helpers
 │       │   ├── __init__.py
@@ -3423,4 +3309,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-583 directories, 2842 files
+598 directories, 2713 files
