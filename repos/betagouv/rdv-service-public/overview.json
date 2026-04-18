@@ -1,52 +1,57 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux administrations de l'État, aux opérateurs de services publics et aux collectivités territoriales.",
-  "language": "JavaScript",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s’adresse aux administrations de l’État, aux opérateurs de services publics et aux collectivités territoriales.",
+  "language": "Ruby",
   "features": [
-    "Calendrier & Planification",
-    "Prise de rendez-vous en ligne",
-    "API & Intégrations",
-    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
-    "Statistiques & Rapports"
+    "Notifications & Alertes",
+    "Recherche & Filtres",
+    "Calendrier & Planification",
+    "Gestion des établissements & Structures",
+    "API & Intégrations"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels",
+    "Collectivités territoriales"
+  ],
   "dependencies": [
-    "React",
-    "Bootstrap",
-    "FullCalendar",
-    "Chart.js",
-    "Webpack",
-    "Yarn",
+    "Rails",
     "PostgreSQL",
-    "Redis"
+    "Redis",
+    "Devise",
+    "Hotwire",
+    "Sentry",
+    "Chart.js",
+    "FullCalendar"
   ],
   "components": [
-    "TypeScript / JavaScript",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Agenda FullCalendar",
-    "Node.js / NestJS"
+    "Ruby",
+    "Rails",
+    "Frontend React",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "email-password"
+      "sso"
     ],
     "providers": [
-      "ProConnect"
+      "Microsoft Graph"
     ]
   },
   "tests": [
-    "Jest",
-    "Playwright",
-    "Cypress"
+    "RSpec",
+    "Capybara",
+    "Playwright"
   ],
-  "workflows": [
-    "CI/CD avec GitHub Actions"
-  ],
-  "lastActivity": "2026-03-06T14:54:15+01:00",
+  "workflows": [],
+  "lastActivity": "2026-04-16T15:55:06+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -57,14 +62,11 @@
     "openIssues": null
   },
   "tags": [
-    "rendez-vous",
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "public",
     "JavaScript",
-    "React & Next.js",
-    "caldav",
-    "SSO & Identité fédérée",
-    "rdv",
-    "numerique"
+    "Ruby",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }

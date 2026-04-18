@@ -1,35 +1,35 @@
-## Changelog : rdv-service-public (30 derniers jours)
+## Changelog : rdv-service-public (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité, la performance et la sécurité de la plateforme. Plusieurs corrections de bugs ont été apportées, notamment concernant l'agenda, les webhooks et la gestion des utilisateurs. Des optimisations ont été réalisées pour améliorer la vitesse de chargement et réduire la consommation de ressources. Des mises à jour de sécurité ont également été intégrées pour protéger les données des utilisateurs.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des comptes utilisateurs, notamment pour les opérateurs et les administrateurs, avec un renforcement de la sécurité via l'authentification à deux facteurs. Des corrections et améliorations ont également été apportées à la gestion des agendas, des plages de rendez-vous et des exports de données. Enfin, des optimisations ont été réalisées pour améliorer la robustesse et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des détails des rendez-vous. [#6107](https://github.com/betagouv/rdv-service-public/issues/6107)
-- Possibilité de notifier les usagers d'un changement de lien de visioconférence. [#6184](https://github.com/betagouv/rdv-service-public/issues/6184)
-- Ajout d'un bouton "Ajouter à mon agenda" sur l'écran de confirmation de rendez-vous. [#6190](https://github.com/betagouv/rdv-service-public/issues/6190)
-- Orientation des prospects vers les services appropriés. [#6199](https://github.com/betagouv/rdv-service-public/issues/6199)
-- Possibilité d'annuler une participation à un RDV collectif à l'initiative du service. [#6127](https://github.com/betagouv/rdv-service-public/issues/6127)
-- Amélioration de l'affichage des prescripteurs sur les RDV collectifs. [#6124](https://github.com/betagouv/rdv-service-public/issues/6124)
-- Correction de l'affichage des noms des agents superposés. [#6010](https://github.com/betagouv/rdv-service-public/issues/6010)
-- Amélioration de l'affichage des erreurs lors de la saisie du code. [#6062](https://github.com/betagouv/rdv-service-public/issues/6062)
-- Suppression du lien vers l'inscription. [#6216](https://github.com/betagouv/rdv-service-public/issues/6216)
+- **Sécurité :** Mise en place de l'authentification à deux facteurs (2FA) pour les comptes sensibles et certains fournisseurs d'identité ProConnect [#6335](https://github.com/betagouv/rdv-service-public/issues/6335).
+- **Gestion des comptes :**
+    - Ajout du numéro SIRET lors de la création d'un espace [#6302](https://github.com/betagouv/rdv-service-public/issues/6302).
+    - Possibilité de saisir des adresses à l'étranger [#6275](https://github.com/betagouv/rdv-service-public/issues/6275).
+    - Amélioration de l'affichage des usagers ayant le même email [#6282](https://github.com/betagouv/rdv-service-public/issues/6282).
+    - Simplification de la désinscription des listes d'attente [#6288](https://github.com/betagouv/rdv-service-public/issues/6288).
+- **Agendas et plages :**
+    - Correction de l'affichage des jours fériés dans l'agenda multi-agent [#6325](https://github.com/betagouv/rdv-service-public/issues/6325).
+    - Correction des récurrences sur les plages d'ouverture [#6329](https://github.com/betagouv/rdv-service-public/issues/6329).
+    - Amélioration de la gestion des plages d'ouverture exceptionnelles (renommées "Ponctuelles") [#6307](https://github.com/betagouv/rdv-service-public/issues/6307).
+    - Possibilité de configurer la couleur d'une plage [#6261](https://github.com/betagouv/rdv-service-public/issues/6261).
+- **Export de données :** Ajout de la possibilité de télécharger la liste des participants à un rendez-vous collectif au format CSV [#6263](https://github.com/betagouv/rdv-service-public/issues/6263).
+- **Notifications :** Clarification du SMS d'annulation de participation à un rendez-vous [#6283](https://github.com/betagouv/rdv-service-public/issues/6283).
+- **Interface utilisateur :**
+    - Amélioration de la sélection de l'organisation dans l'interface de connexion usager [#6332](https://github.com/betagouv/rdv-service-public/issues/6332).
+    - Passage des formulaires de création/édition d'agent au Design System Français (DSFR) [#6309](https://github.com/betagouv/rdv-service-public/issues/6309).
 
 ### Évolutions techniques
-- Migration de Webpack vers esbuild pour améliorer la performance de la compilation des assets. [#6163](https://github.com/betagouv/rdv-service-public/issues/6163)
-- Passage à Yarn v4. [#6064](https://github.com/betagouv/rdv-service-public/issues/6064)
-- Mise à jour de FullCalendar vers la version 6. [#6080](https://github.com/betagouv/rdv-service-public/issues/6080)
-- Amélioration de la gestion des webhooks : génération asynchrone du corps et limitation des retries en cas d'erreur. [#6051](https://github.com/betagouv/rdv-service-public/issues/6051) et [#6104](https://github.com/betagouv/rdv-service-public/issues/6104)
-- Optimisation de la gestion de la connexion Redis. [#6081](https://github.com/betagouv/rdv-service-public/issues/6081)
-- Suppression de code obsolète lié à `oauth_applications.default_service_id`. [#6082](https://github.com/betagouv/rdv-service-public/issues/6082)
-- Suppression de colonnes inutilisées dans les tables `Absences` et `Territory`. [#6092](https://github.com/betagouv/rdv-service-public/issues/6092) et [#6167](https://github.com/betagouv/rdv-service-public/issues/6167)
-- Refactorisation de la gestion des exports, stockage dans Postgres. [#6213](https://github.com/betagouv/rdv-service-public/issues/6213)
-- Suppression du flag `SIGN_IN_AS_ALLOWED`. [#6157](https://github.com/betagouv/rdv-service-public/issues/6157)
-- Amélioration de la gestion des erreurs et des logs (Sentry). [#6097](https://github.com/betagouv/rdv-service-public/issues/6097) et [#6180](https://github.com/betagouv/rdv-service-public/issues/6180)
+- **Infrastructure :** Mise à jour de Node.js en version 24 dans les jobs GitHub Actions [#6331](https://github.com/betagouv/rdv-service-public/issues/6331) et [#6296](https://github.com/betagouv/rdv-service-public/issues/6296).
+- **Performance :** Limitation de l'usage mémoire de `FileAttenteJob` en le divisant en plusieurs jobs [#6324](https://github.com/betagouv/rdv-service-public/issues/6324).
+- **Robustesse :** Amélioration de la robustesse de `FileAttenteJob` [#6322](https://github.com/betagouv/rdv-service-public/issues/6322).
+- **Tests :** Correction de flaky specs grâce à l'utilisation de `travel_to` dans Playwright [#6312](https://github.com/betagouv/rdv-service-public/issues/6312) et [#6290](https://github.com/betagouv/rdv-service-public/issues/6290).
+- **Dépendances :** Mises à jour de plusieurs dépendances (rack, bcrypt, icalendar, brace-expansion, connection_pool, addressable)
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (CVE-2026-29063, GHSA-qffp-2rhf-9h96). [#6222](https://github.com/betagouv/rdv-service-public/issues/6222), [#6217](https://github.com/betagouv/rdv-service-public/issues/6217) et [#6218](https://github.com/betagouv/rdv-service-public/issues/6218)
-- Amélioration de la documentation et des tests.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Suppression de l'invitation des usagers depuis l'interface admin. [#6203](https://github.com/betagouv/rdv-service-public/issues/6203)
-- Redémarrage des applications de production toutes les 2 heures. [#6215](https://github.com/betagouv/rdv-service-public/issues/6215)
-- Suppression de l'ancienne colonne `caldav_disconnect_in_progress`. [#6185](https://github.com/betagouv/rdv-service-public/issues/6185)
+- **Documentation :** Documentation des cas d'erreur pour visioplainte [#6293](https://github.com/betagouv/rdv-service-public/issues/6293).
+- **Nettoyage de code :** Suppression du code de l'ancien calculateur de créneaux [#6295](https://github.com/betagouv/rdv-service-public/issues/6295).
+- Suppression du champ `notification_email` [#6281](https://github.com/betagouv/rdv-service-public/issues/6281).
+- Suppression du markup Stimulus sur `_recurrence.html.slim` [#6291](https://github.com/betagouv/rdv-service-public/issues/6291).
