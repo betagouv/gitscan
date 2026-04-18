@@ -135,7 +135,6 @@
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── organizations.py
-│   │   │   ├── roles.py
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
 │   │   ├── audio.py
@@ -362,6 +361,9 @@
 │   │   │   │   │   ├── roles
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_create_role.py
+│   │   │   │   │   │   ├── test_delete_role.py
+│   │   │   │   │   │   ├── test_get_role.py
+│   │   │   │   │   │   ├── test_get_roles.py
 │   │   │   │   │   │   └── test_update_role.py
 │   │   │   │   │   └── router
 │   │   │   │   │       ├── __init__.py
@@ -370,6 +372,7 @@
 │   │   │   │   │       ├── test_get_router.py
 │   │   │   │   │       ├── test_get_routers.py
 │   │   │   │   │       └── test_update_router.py
+│   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   └── utils.py
 │   │   │   ├── factories
@@ -384,6 +387,13 @@
 │   │   │   │   └── test_modelprovidergateway.py
 │   │   │   └── postgres
 │   │   │       ├── __init__.py
+│   │   │       ├── role_repository
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── test_create_role.py
+│   │   │       │   ├── test_delete_role.py
+│   │   │       │   ├── test_get_role_by_id.py
+│   │   │       │   ├── test_get_roles_page.py
+│   │   │       │   └── test_update_role.py
 │   │   │       ├── test_postgreslimitrepository.py
 │   │   │       ├── test_postgrespermissionrepository.py
 │   │   │       ├── test_postgresproviderrepository.py
@@ -448,6 +458,9 @@
 │   │           │   ├── roles
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── test_createroleusecase.py
+│   │           │   │   ├── test_deleteroleusecase.py
+│   │           │   │   ├── test_getrolesusecase.py
+│   │           │   │   ├── test_getroleusecase.py
 │   │           │   │   └── test_updateroleusecase.py
 │   │           │   ├── routers
 │   │           │   │   ├── __init__.py
@@ -477,6 +490,9 @@
 │   │   │   ├── roles
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createroleusecase.py
+│   │   │   │   ├── _deleteroleusecase.py
+│   │   │   │   ├── _getrolesusecase.py
+│   │   │   │   ├── _getroleusecase.py
 │   │   │   │   └── _updateroleusecase.py
 │   │   │   ├── routers
 │   │   │   │   ├── __init__.py
@@ -742,4 +758,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-161 directories, 583 files
+162 directories, 598 files

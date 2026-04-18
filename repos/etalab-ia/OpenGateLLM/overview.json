@@ -1,22 +1,26 @@
 {
   "url": "https://github.com/etalab-ia/OpenGateLLM",
   "name": "OpenGateLLM",
-  "description": "OpenGateLLM est une passerelle API open-source et unifiée pour exécuter et gérer des LLM auto-hébergés. Elle centralise, sécurise et contrôle l'accès aux modèles d'IA.",
+  "description": "OpenGateLLM est une passerelle API open-source et prête pour la production pour l'IA générative. Elle centralise, sécurise et contrôle l'accès aux modèles d'IA au sein de votre organisation, permettant aux équipes de se concentrer sur la création d'applications d'IA à forte valeur ajoutée plutôt que sur la gestion de la complexité de l'infrastructure et des risques liés à la sécurité des données.",
   "language": "Python",
   "features": [
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Intelligence Artificielle & NLP"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "requests",
     "pydantic",
     "httpx",
+    "pyyaml",
+    "pycountry",
     "FastAPI",
     "Redis",
-    "Celery"
+    "Celery",
+    "Elasticsearch"
   ],
   "components": [
     "API REST & GraphQL",
@@ -25,18 +29,17 @@
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session"
+      "email-password",
+      "jwt"
     ]
   },
   "tests": [
     "pytest"
   ],
   "workflows": [
-    "CI",
-    "CD"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-15T17:52:28+00:00",
+  "lastActivity": "2026-04-17T12:14:23+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -44,12 +47,13 @@
     "stars": 150,
     "forks": 18,
     "contributors": null,
-    "openIssues": 98
+    "openIssues": 94
   },
   "tags": [
     "Données & Open Data",
-    "Intelligence Artificielle & NLP",
-    "API & Intégrations",
-    "Sécurité & Conformité"
+    "Intelligence Artificielle & LLM",
+    "API",
+    "LLM",
+    "self-hosted"
   ]
 }
