@@ -21,6 +21,7 @@
 │   ├── extensions.json
 │   ├── settings.json
 │   └── tasks.json
+├── AGENTS.md
 ├── CHANGELOG.md
 ├── Dockerfile
 ├── LICENSE
@@ -31,10 +32,12 @@
 ├── build
 │   └── .zshrc
 ├── configuration
+│   ├── README.md
 │   ├── __init__.py
 │   └── config_manager.py
 ├── constants.py
 ├── database
+│   ├── README.md
 │   ├── __init__.py
 │   ├── database_manager.py
 │   └── models.py
@@ -44,7 +47,6 @@
 │   ├── deploy.md
 │   ├── install.md
 │   └── technique.md
-├── formatter.py
 ├── grist_processor_working_all.py
 ├── jest.config.js
 ├── jest.setup.js
@@ -70,6 +72,7 @@
 │   │   ├── step5.png
 │   │   └── step6.png
 │   └── js
+│       ├── README.md
 │       ├── config.js
 │       ├── connections.js
 │       ├── filters.js
@@ -80,8 +83,15 @@
 │       ├── socket.io.js
 │       ├── sync.js
 │       └── utils.js
+├── sync
+│   ├── README.md
+│   ├── __init__.py
+│   ├── environment_config.py
+│   ├── error_parser.py
+│   └── sync_result_parser.py
 ├── sync_task_manager.py
 ├── templates
+│   ├── README.md
 │   ├── base.html
 │   ├── configuration.html
 │   ├── debug.html
@@ -90,6 +100,7 @@
 │   ├── sync_progression.html
 │   └── use-otp.html
 ├── tests
+│   ├── README.md
 │   ├── __init__.py
 │   ├── js
 │   │   ├── config.test.js
@@ -109,16 +120,25 @@
 │       │   └── test_app.py
 │       └── unit
 │           ├── __init__.py
+│           ├── configuration
+│           │   └── test_config_manager.py
+│           ├── database
+│           │   ├── test_database_manager.py
+│           │   └── test_models.py
+│           ├── sync
+│           │   ├── test_environment_config.py
+│           │   ├── test_error_parser.py
+│           │   └── test_sync_result_parser.py
 │           ├── test_api_validator.py
-│           ├── test_config_manager.py
-│           ├── test_database_manager.py
 │           ├── test_grist_processor.py
-│           ├── test_models.py
 │           ├── test_queries_util.py
 │           ├── test_schema_utils.py
 │           ├── test_sync_task_manager.py
-│           └── test_unwrap_json_list.py
+│           └── utils
+│               └── test_formatter.py
 └── utils
+    ├── README.md
     ├── __init__.py
+    ├── formatter.py
     └── log_progress.py
-20 directories, 103 files
+25 directories, 118 files
