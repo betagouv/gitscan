@@ -1,35 +1,34 @@
-## Changelog : monlogementetudiant (30 derniers jours)
+## Changelog : monlogementetudiant (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration significative de l'administration du site, avec l'ajout d'un back-office pour la gestion des logements et des utilisateurs. De nouvelles fonctionnalités ont été implémentées pour faciliter la recherche et la gestion des logements, notamment l'intégration de données de sources externes comme Fac-Habitat et Dossier Facile. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées pour une meilleure expérience globale.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'importation de données, l'ajout de nouvelles fonctionnalités pour les gestionnaires (statistiques, gestion des propriétaires) et une refonte de l'interface utilisateur, notamment la page d'accueil et les détails des logements. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'un back-office pour l'administration du site, permettant la gestion des logements et des utilisateurs. [#4c05be0](https://github.com/betagouv/monlogementetudiant/commit/4c05be0)
-- Intégration de données de Fac-Habitat via une CLI dédiée. [#e8d118d](https://github.com/betagouv/monlogementetudiant/commit/e8d118d)
-- Intégration de Dossier Facile. [#d57dd83](https://github.com/betagouv/monlogementetudiant/commit/d57dd83)
-- Possibilité de filtrer les logements par bailleur dans le widget de recherche. [#ce13547](https://github.com/betagouv/monlogementetudiant/commit/ce13547)
-- Ajout d'un badge "Liste d'attente" pour les logements concernés. [#a4080d9](https://github.com/betagouv/monlogementetudiant/commit/a4080d9)
-- Ajout d'un tooltip pour les disponibilités inconnues. [#e4edc08](https://github.com/betagouv/monlogementetudiant/commit/e4edc08)
-- Pagination ajoutée au tableau de bord. [#235fdbd](https://github.com/betagouv/monlogementetudiant/commit/235fdbd)
-- Amélioration de l'UX/UI du widget de recherche. [#2a100f9](https://github.com/betagouv/monlogementetudiant/commit/2a100f9)
-- Ajout d'un simulateur d'aide. [#734c20f](https://github.com/betagouv/monlogementetudiant/commit/734c20f)
-- Implémentation du tracking. [#154d9e6](https://github.com/betagouv/monlogementetudiant/commit/154d9e6)
-- Ajout de liens vers les CGU et mentions légales. [#c211838](https://github.com/betagouv/monlogementetudiant/commit/c211838)
+- **Import CSV :** Validation des données lors de l'importation de fichiers CSV pour une meilleure qualité des données. [#9342a18](https://github.com/betagouv/monlogementetudiant/commit/9342a18)
+- **Fac Habitat :** Amélioration de la gestion des logements Fac Habitat, incluant la prise en compte de la superficie et du nombre de logements disponibles, ainsi que la correction d'erreurs d'affichage.
+- **Page d'accueil :** Refonte complète de la page d'accueil avec de nouvelles sections, une meilleure organisation de l'information et une adaptation pour les appareils mobiles.
+- **Détails des logements :** Nouvelle présentation des détails des logements avec un système d'onglets pour une meilleure lisibilité et une expérience utilisateur améliorée.
+- **Visites virtuelles :** Ajout de la possibilité d'intégrer des liens vers des visites virtuelles (3D) des logements.
+- **Candidatures :** Ajout d'une fonctionnalité de gestion des candidatures, avec la possibilité de masquer l'onglet si le propriétaire n'accepte pas les dossiers faciles.
+- **Gestion des propriétaires :** Possibilité de lier un compte administrateur à un propriétaire.
+- **Statistiques :** Ajout de statistiques pour les administrateurs.
+- **Export CSV :** Possibilité d'exporter les données des logements au format CSV. [#207cb55](https://github.com/betagouv/monlogementetudiant/commit/207cb55)
+- **Schéma.org :** Amélioration du balisage Schema.org pour une meilleure indexation des logements par les moteurs de recherche.
 
 ### Évolutions techniques
-- Refonte de la gestion de l'authentification avec Drizzle ORM adapter. [#a23e598](https://github.com/betagouv/monlogementetudiant/commit/a23e598)
-- Refonte de la CLI et des migrations. [#386adae](https://github.com/betagouv/monlogementetudiant/commit/386adae)
-- Implémentation de tests d'intégration et unitaires. [#996b137](https://github.com/betagouv/monlogementetudiant/commit/996b137)
-- Utilisation de PostGIS pour l'optimisation des requêtes géographiques. [#3fdcd48](https://github.com/betagouv/monlogementetudiant/commit/3fdcd48)
-- Intégration de tRPC pour la communication client-serveur. [#7c0b29c](https://github.com/betagouv/monlogementetudiant/commit/7c0b29c)
-- Mise en place d'un système de cache et de préchargement pour améliorer les performances. [#6bb4c0a](https://github.com/betagouv/monlogementetudiant/commit/6bb4c0a)
-- Amélioration de la gestion des erreurs et des états de chargement avec Suspense et skeletons. [#1d6d869](https://github.com/betagouv/monlogementetudiant/commit/1d6d869)
+- **Mises à jour Next.js :** Mise à jour de Next.js en version 16.2.
+- **Migrations Drizzle :** Plusieurs corrections et optimisations des migrations Drizzle.
+- **S3 :** Implémentation du stockage des images sur Amazon S3.
+- **PostGIS :** Indexation de la base de données PostGIS pour améliorer les performances des requêtes géographiques.
+- **Healthcheck :** Ajout d'un healthcheck pour les villes.
+- **Refactoring :** Refactoring de plusieurs composants pour améliorer la maintenabilité du code.
+- **Tests :** Ajout et correction de tests unitaires et d'intégration.
+- **Sentry :** Réactivation de Sentry pour la surveillance des erreurs.
 
 ### Autres changements
-- Correction de plusieurs bugs liés à l'importation de données, à la gestion des permissions et à l'affichage de l'interface utilisateur.
-- Amélioration de la sécurité en sanitizant les données HTML. [#ffef945](https://github.com/betagouv/monlogementetudiant/commit/ffef945)
-- Mise à jour de l'adresse email du DPO. [#03697c2](https://github.com/betagouv/monlogementetudiant/commit/03697c2)
-- Suppression de logs inutiles. [#1e4df21](https://github.com/betagouv/monlogementetudiant/commit/1e4df21)
-- Refactoring du routeur. [#380d81c](https://github.com/betagouv/monlogementetudiant/commit/380d81c)
-- Mise à jour de la documentation et du README. [#2372850](https://github.com/betagouv/monlogementetudiant/commit/2372850)
-- Corrections de typographie et de wording.
+- **Documentation :** Mise à jour de la documentation et du fichier README.
+- **Wording :** Corrections de wording et amélioration de la clarté des textes.
+- **Design :** Améliorations visuelles et corrections de bugs d'affichage.
+- **Suppression de logos :** Suppression des logos des partenaires dans le footer.
+- **Configuration :** Synchronisation du fichier `.env.dist` avec le Dockerfile.
+- **robots.txt :** Ajout d'un fichier `robots.txt` pour contrôler l'indexation par les moteurs de recherche.

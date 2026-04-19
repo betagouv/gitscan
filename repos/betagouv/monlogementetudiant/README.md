@@ -38,8 +38,10 @@ pnpm drizzle-kit migrate
 Les variables de connexion sont dans `.env.dist` :
 
 ```
-DATABASE_URL=postgres://jde:jde@localhost:5433/mle_dev
-DATABASE_URL_TEST=postgres://test:test@localhost:5434/mle_test
+DATABASE_URL=postgres://mle:mle@localhost:5490/mle_dev
+DATABASE_URL_TEST=postgres://test:test@localhost:5491/mle_test
+
+cp .env.dist .env
 ```
 
 ## Commandes
@@ -82,7 +84,8 @@ cli/
     import-arpej-ibail.ts # Import résidences ARPEJ (API iBAIL)
     import-csv.ts        # Import générique depuis CSV
     import-fac-habitat.ts # Import résidences FAC HABITAT (SFTP)
-    sync-cities.ts       # Sync villes (geo.api.gouv.fr)
+    upload-images.ts     # Upload images locales vers S3
+    sync-cities.ts       # Sync villes (geo.api.gouv.fr) + rattrapage toutes communes
     sync-rents.ts        # Sync loyers moyens (data.gouv.fr)
     sync-students.ts     # Sync nb étudiants (enseignementsup)
     sync-stats.ts        # Sync stats Matomo
@@ -117,6 +120,46 @@ Options :
 - `--skip-download` : réutiliser un backup déjà téléchargé dans `/tmp/jde-backup/`
 
 Variables d'env requises : `SCALINGO_API_TOKEN`, `SCALINGO_APP`, `SCALINGO_DB_ADDON_ID`
+
+#### `healthcheck` — Vérifier la cohérence des résidences publiées
+
+```bash
+pnpm cli healthcheck
+pnpm cli healthcheck --verbose
+pnpm cli healthcheck --fetch
+pnpm cli healthcheck --fetch --base-url https://monlogementetudiant.beta.gouv.fr
+```
+
+Vérifie la cohérence des résidences publiées : présence du `city_id`, validité des slugs, construction des URLs.
+
+Options :
+
+| Option | Description |
+|--------|-------------|
+| `--verbose` | Affiche le détail de chaque résidence |
+| `--fetch` | Teste les URLs en HTTP (nécessite le serveur Next.js) |
+| `--base-url <url>` | URL de base pour les tests HTTP (défaut : `http://localhost:3000`) |
+
+Le process exit avec le code `1` si des erreurs sont détectées (city_id manquant, slug absent, URL en 404, etc.).
+
+#### `healthcheck-cities` — Vérifier les pages villes en HTTP
+
+```bash
+pnpm cli healthcheck-cities
+pnpm cli healthcheck-cities --verbose
+pnpm cli healthcheck-cities --base-url https://monlogementetudiant.beta.gouv.fr
+```
+
+Effectue un `HEAD` sur `/trouver-un-logement-etudiant/ville/{slug}` pour chaque ville en base et reporte les erreurs HTTP (404, 500, etc.). Nécessite le serveur Next.js en cours d'exécution.
+
+Options :
+
+| Option | Description |
+|--------|-------------|
+| `--verbose` | Affiche le détail de chaque ville |
+| `--base-url <url>` | URL de base pour les tests HTTP (défaut : `http://localhost:3000`) |
+
+Le process exit avec le code `1` si des erreurs sont détectées.
 
 ---
 
@@ -175,6 +218,21 @@ Options spécifiques :
 
 Variables d'env requises : `FAC_HABITAT_SFTP_HOST`, `FAC_HABITAT_SFTP_USERNAME`, `FAC_HABITAT_SFTP_PASSWORD`, `FAC_HABITAT_SFTP_PORT` (défaut : 22), `S3_*` (upload images)
 
+#### `upload-images` — Upload d'images locales vers S3
+
+```bash
+pnpm cli upload-images /chemin/vers/dossier --name aclef
+```
+
+Upload les images d'un dossier local vers S3, organisé par sous-dossier. Chaque sous-dossier correspond à une résidence (ex: `albert-camus/`, `l-arsenal/`). Les images sont uploadées dans `accommodations{S3_SUFFIX_DIR}/{name}/pictures/{uuid}.{ext}`.
+
+Le résultat affiche les URLs S3 par sous-dossier, séparées par `|` (format compatible avec la colonne `pictures` de l'import CSV).
+
+Options :
+- `--name <name>` (requis) : nom du gestionnaire (ex: `aclef`, `acm-habitat`)
+
+Variables d'env requises : `S3_*`
+
 ---
 
 ### Commandes de sync
@@ -195,6 +253,7 @@ pnpm cli sync cities --dry-run --verbose
 1. Crée Paris/Marseille/Lyon si absentes (codes postaux et INSEE hardcodés)
 2. Met à jour chaque ville existante via geo.api.gouv.fr (contour, EPCI, population)
 3. Crée les villes manquantes à partir des accommodations publiées sans ville associée
+4. **Rattrapage de toutes les communes françaises** : parcourt chaque département via `GET /departements/{code}/communes` (~101 appels API) et importe les communes absentes en base (déduplication par code INSEE). Les arrondissements de Paris/Marseille/Lyon sont ignorés (gérés à l'étape 1). Cela permet à toutes les ~35 000 communes d'apparaître dans la recherche, même sans résidence associée.
 
 Pas de variables d'env spécifiques (utilise les APIs publiques geo.api.gouv.fr).
 
@@ -223,19 +282,26 @@ Pas de variables d'env spécifiques.
 #### `sync stats` — Synchroniser les statistiques Matomo
 
 ```bash
-pnpm cli sync stats
-pnpm cli sync stats --date 2025-03-10
-pnpm cli sync stats --force
-pnpm cli sync stats --dry-run --verbose
+pnpm cli sync stats                                        # stats de la veille
+pnpm cli sync stats --date 2025-03-10                      # un jour specifique
+pnpm cli sync stats --from 2025-01-01                      # du 1er janvier a hier
+pnpm cli sync stats --from 2025-01-01 --to 2025-03-31      # range specifique
+pnpm cli sync stats --force                                # ecraser les stats existantes
+pnpm cli sync stats --dry-run --verbose                    # simulation
 ```
 
-Collecte les statistiques journalières (visites + events) depuis l'API Matomo et les stocke dans les tables `stats_stats` et `stats_eventstats`.
+Collecte les statistiques journalières (visites + events custom) depuis l'API Matomo et les stocke dans les tables `stats` et `event_stats`. Les visualisations sont disponibles dans `/administration/statistiques`.
 
-Par défaut, collecte les stats de la veille. Les agrégations par semaine/mois sont faites dans Metabase.
+**Mode normal (cron)** : collecte les stats de la veille. C'est le mode utilise par le cron quotidien.
 
-Options spécifiques :
-- `--date <YYYY-MM-DD>` : collecter un jour spécifique (par défaut : veille)
-- `--force` : écraser les stats existantes pour la même date
+**Mode batch (rattrapage)** : avec `--from` (et optionnellement `--to`), boucle sur chaque jour de la range pour backfill l'historique. Un delai de 100ms est applique entre chaque jour pour ne pas surcharger l'API Matomo.
+
+Options :
+- `--date <YYYY-MM-DD>` : collecter un jour specifique (par defaut : veille)
+- `--from <YYYY-MM-DD>` : date de debut pour un sync en batch
+- `--to <YYYY-MM-DD>` : date de fin pour un sync en batch (par defaut : veille)
+- `--force` : ecraser les stats existantes pour la meme date
+- `--dry-run` : simuler sans modifier la base
 
 Variables d'env requises : `MATOMO_URL`, `MATOMO_TOKEN`, `MATOMO_ID_SITE`
 
@@ -244,6 +310,7 @@ Variables d'env requises : `MATOMO_URL`, `MATOMO_TOKEN`, `MATOMO_ID_SITE`
 ### Cron jobs (Scalingo)
 
 Les tâches planifiées sont définies dans `cron.json` à la racine. Scalingo lit ce fichier au déploiement.
+Les migrations Drizzle sont appliquées au déploiement via le hook `postdeploy` défini dans `Procfile`.
 
 | Cron | Commande | Fréquence |
 |------|----------|-----------|
@@ -276,7 +343,7 @@ Toutes les variables sont dans `.env.dist`. Celles spécifiques au CLI :
 | `FAC_HABITAT_SFTP_USERNAME` | `import fac-habitat` |
 | `FAC_HABITAT_SFTP_PASSWORD` | `import fac-habitat` |
 | `FAC_HABITAT_SFTP_PORT` | `import fac-habitat` |
-| `S3_*` | `import arpej-ibail`, `import csv`, `import fac-habitat` (upload images) |
+| `S3_*` | `import arpej-ibail`, `import csv`, `import fac-habitat`, `upload-images` |
 
 ## Architecture
 
@@ -363,6 +430,7 @@ Le script crée automatiquement l'iframe et gère le redimensionnement dynamique
 | `data-accessible` | Logements PMR | `data-accessible="true"` |
 | `data-filters` | Afficher/masquer les filtres (visible par défaut) | `data-filters="false"` |
 | `data-page` | Page de pagination | `data-page="2"` |
+| `data-gestionnaire` | Filtrer par slug du gestionnaire/bailleur | `data-gestionnaire="promologis-2"` |
 | `data-target` | ID de l'élément où déposer l'iframe | `data-target="widget-container"` |
 
 Si `data-city` ou `data-bbox` est fourni, le champ de recherche de localisation est masqué.
@@ -385,6 +453,9 @@ Les filtres sont **visibles par défaut**. Pour les masquer, utiliser `data-filt
 
 <!-- Bbox manuelle, colocation -->
 <script src="https://monlogementetudiant.beta.gouv.fr/widget/embed.js" data-bbox="2.2,48.8,2.5,48.9" data-colocation="true"></script>
+
+<!-- Logements d'un gestionnaire spécifique -->
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed.js" data-gestionnaire="promologis-2"></script>
 
 <!-- Iframe déposée dans un élément spécifique -->
 <div id="mon-widget"></div>
