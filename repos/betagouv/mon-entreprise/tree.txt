@@ -70,6 +70,8 @@
 │   ├── tsconfig.json
 │   └── vitest.config.ts
 ├── architecture.archimate
+├── doc
+│   └── infrastructure-netlify.md
 ├── exoneration-covid
 │   ├── .yarnrc.yaml
 │   ├── CHANGELOG.md
@@ -81,6 +83,48 @@
 │   └── tsconfig.json
 ├── flake.lock
 ├── flake.nix
+├── modele-as
+│   ├── .yarnrc.yaml
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── README.md
+│   ├── index.d.ts
+│   ├── package.json
+│   ├── règles
+│   │   ├── assimilé-salarié.publicodes
+│   │   ├── cotisations
+│   │   │   ├── cotisations.publicodes
+│   │   │   └── exonérations
+│   │   │       ├── JEI.publicodes
+│   │   │       ├── acre.publicodes
+│   │   │       └── exonérations.publicodes
+│   │   ├── entreprise
+│   │   │   ├── duree-activité.publicodes
+│   │   │   ├── entreprise.publicodes
+│   │   │   └── établissement.publicodes
+│   │   ├── exonérations.publicodes
+│   │   ├── impôt.publicodes
+│   │   ├── protection-sociale.publicodes
+│   │   └── rémunération.publicodes
+│   └── tsconfig.json
+├── modele-commun
+│   ├── CHANGELOG.md
+│   ├── README.md
+│   └── règles
+│       ├── base.publicodes
+│       ├── entreprise
+│       │   ├── catégorie-juridique.publicodes
+│       │   ├── entreprise.publicodes
+│       │   ├── imposition.publicodes
+│       │   └── établissement.publicodes
+│       ├── impôt
+│       │   ├── barème-standard.publicodes
+│       │   ├── foyer-fiscal.publicodes
+│       │   ├── impôt.publicodes
+│       │   └── taux-neutre.publicodes
+│       ├── paramètres.publicodes
+│       ├── période.publicodes
+│       └── situation-personnelle.publicodes
 ├── modele-social
 │   ├── .yarnrc.yaml
 │   ├── CHANGELOG.md
@@ -134,7 +178,11 @@
 │   │   ├── salarié
 │   │   │   ├── activité-partielle.publicodes
 │   │   │   ├── aides-employeur.publicodes
-│   │   │   ├── contrat.publicodes
+│   │   │   ├── contrat
+│   │   │   │   ├── CDD.publicodes
+│   │   │   │   ├── apprentissage.publicodes
+│   │   │   │   ├── contrat.publicodes
+│   │   │   │   └── professionnalisation.publicodes
 │   │   │   ├── conventions-collectives
 │   │   │   │   ├── autre.publicodes
 │   │   │   │   ├── bâtiment.publicodes
@@ -156,6 +204,64 @@
 │   │   │   ├── salarié.publicodes
 │   │   │   └── temps-de-travail.publicodes
 │   │   └── situation-personnelle.publicodes
+│   └── tsconfig.json
+├── modele-ti
+│   ├── .yarnrc.yaml
+│   ├── CHANGELOG.md
+│   ├── CONTRIBUTING.md
+│   ├── README.md
+│   ├── index.d.ts
+│   ├── package.json
+│   ├── règles
+│   │   ├── entreprise
+│   │   │   ├── activité.publicodes
+│   │   │   ├── cessation-activité.publicodes
+│   │   │   ├── chiffre-d'affaires.publicodes
+│   │   │   ├── durée-activité.publicodes
+│   │   │   ├── entreprise.publicodes
+│   │   │   └── imposition.publicodes
+│   │   ├── indépendant
+│   │   │   ├── conjoint-collaborateur.publicodes
+│   │   │   ├── cotisations-et-contributions
+│   │   │   │   ├── CSG-CRDS.publicodes
+│   │   │   │   ├── assiette-minimale.publicodes
+│   │   │   │   ├── cotisations
+│   │   │   │   │   ├── conjoint-collaborateur.publicodes
+│   │   │   │   │   ├── cotisations.publicodes
+│   │   │   │   │   ├── début-activité.publicodes
+│   │   │   │   │   └── exonérations
+│   │   │   │   │       ├── Acre.publicodes
+│   │   │   │   │       ├── drom.publicodes
+│   │   │   │   │       ├── exonérations.publicodes
+│   │   │   │   │       ├── invalidité.publicodes
+│   │   │   │   │       └── âge.publicodes
+│   │   │   │   ├── cotisations-et-contributions.publicodes
+│   │   │   │   ├── cotisations-facultatives.publicodes
+│   │   │   │   └── déduction-tabac.publicodes
+│   │   │   ├── indépendant.publicodes
+│   │   │   ├── profession-libérale.publicodes
+│   │   │   ├── professions-libérales
+│   │   │   │   ├── CARCDSF.publicodes
+│   │   │   │   ├── CARMF.publicodes
+│   │   │   │   ├── CARPIMKO.publicodes
+│   │   │   │   ├── CAVEC.publicodes
+│   │   │   │   ├── CAVP.publicodes
+│   │   │   │   ├── CNAVPL.publicodes
+│   │   │   │   ├── CNBF.publicodes
+│   │   │   │   ├── Cipav.publicodes
+│   │   │   │   └── PAMC.publicodes
+│   │   │   └── revenus
+│   │   │       ├── dividendes.publicodes
+│   │   │       ├── revenus-remplacement.publicodes
+│   │   │       ├── revenus-étrangers.publicodes
+│   │   │       └── rémunération.publicodes
+│   │   ├── protection-sociale
+│   │   │   ├── invalidité-décès.publicodes
+│   │   │   ├── maladie.publicodes
+│   │   │   ├── protection-sociale.publicodes
+│   │   │   ├── retraite-base.publicodes
+│   │   │   └── retraite-complémentaire.publicodes
+│   │   └── établissement.publicodes
 │   └── tsconfig.json
 ├── package.json
 ├── scripts
@@ -285,7 +391,6 @@
 │   │   │       │   ├── independant.ts
 │   │   │       │   ├── location-meuble.ts
 │   │   │       │   ├── lodeom.ts
-│   │   │       │   ├── reduction-generale.ts
 │   │   │       │   └── salarie.ts
 │   │   │       └── simulateurs-generic
 │   │   │           ├── dirigeant-sasu.js
@@ -443,11 +548,10 @@
 │   │   │   ├── Assistant
 │   │   │   │   └── AssistantGoal.tsx
 │   │   │   ├── AvertissementDansObjectifDeSimulateur.tsx
-│   │   │   ├── AvertissementRéformeAssietteNonImplémentée.tsx
-│   │   │   ├── AvertissementRéformeRGDUNonImplémentée.tsx
 │   │   │   ├── BarChart.tsx
 │   │   │   ├── BetaBanner
 │   │   │   │   └── index.tsx
+│   │   │   ├── BêtaChip.tsx
 │   │   │   ├── ChiffreAffairesActivitéMixte.tsx
 │   │   │   ├── ConseillersEntreprisesButton.tsx
 │   │   │   ├── ConseillersEntreprisesIframe.tsx
@@ -472,10 +576,11 @@
 │   │   │   ├── ErrorPage.tsx
 │   │   │   ├── Feedback
 │   │   │   │   ├── Feedback.tsx
+│   │   │   │   ├── FeedbackButton.tsx
 │   │   │   │   ├── FeedbackForm.tsx
 │   │   │   │   ├── FeedbackRating.tsx
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── useFeedback.ts
+│   │   │   │   ├── useFeedback.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── FicheDePaie
 │   │   │   │   ├── CotisationLine.tsx
 │   │   │   │   ├── Cotisations.tsx
@@ -494,21 +599,9 @@
 │   │   │   ├── PageHeader.tsx
 │   │   │   ├── PeriodSwitch.tsx
 │   │   │   ├── Provider.tsx
+│   │   │   ├── PublicodesDateChip.tsx
 │   │   │   ├── Redirections.tsx
-│   │   │   ├── References.tsx
 │   │   │   ├── RuleLink.tsx
-│   │   │   ├── RéductionDeCotisations
-│   │   │   │   ├── EffectifSwitch.tsx
-│   │   │   │   ├── Montant.tsx
-│   │   │   │   ├── MonthOptions.tsx
-│   │   │   │   ├── RécapitulatifTrimestre.tsx
-│   │   │   │   ├── RéductionMois.tsx
-│   │   │   │   ├── RéductionMoisParMois.tsx
-│   │   │   │   ├── RégularisationSwitch.tsx
-│   │   │   │   ├── RémunérationInput.tsx
-│   │   │   │   ├── Répartition.tsx
-│   │   │   │   ├── RépartitionValue.tsx
-│   │   │   │   └── réductionDeCotisations.ts
 │   │   │   ├── SearchButton.tsx
 │   │   │   ├── ServiceWorker.tsx
 │   │   │   ├── ShareSimulationBanner
@@ -518,6 +611,9 @@
 │   │   │   ├── SimulateurOrAssistantPage.tsx
 │   │   │   ├── SimulateurWarning.tsx
 │   │   │   ├── Simulation
+│   │   │   │   ├── Avertissements
+│   │   │   │   │   ├── AvertissementAnnéeCotisationsIndépendant.tsx
+│   │   │   │   │   └── AvertissementDoubleRégimeIndépendant.tsx
 │   │   │   │   ├── Banner.tsx
 │   │   │   │   ├── ComposantQuestion.ts
 │   │   │   │   ├── EntrepriseSelection.tsx
@@ -525,17 +621,19 @@
 │   │   │   │   ├── ObjectifDeSimulation.tsx
 │   │   │   │   ├── ObjectifSaisissableDeSimulation.tsx
 │   │   │   │   ├── PreviousSimulationBanner.tsx
+│   │   │   │   ├── QuestionPublicodes.tsx
 │   │   │   │   ├── Questions.tsx
 │   │   │   │   ├── Raccourcis.tsx
+│   │   │   │   ├── SimpleField.tsx
+│   │   │   │   ├── SimulationChargéeBanner.tsx
 │   │   │   │   ├── SimulationGoal.tsx
 │   │   │   │   ├── SimulationGoals.tsx
 │   │   │   │   ├── SimulationPréremplieBanner.tsx
 │   │   │   │   ├── SimulationValue.tsx
 │   │   │   │   ├── YearSelectionBanner.tsx
 │   │   │   │   └── index.tsx
-│   │   │   ├── StackedBarChart.test.desactivated.js
-│   │   │   ├── StackedBarChart.tsx
 │   │   │   ├── StatutTag.tsx
+│   │   │   ├── Switch.ts
 │   │   │   ├── TrackingProvider.tsx
 │   │   │   ├── WrongSimulateurWarning.tsx
 │   │   │   ├── conversation
@@ -567,10 +665,15 @@
 │   │   │   ├── documentation
 │   │   │   │   ├── DocumentationRouter.tsx
 │   │   │   │   ├── MDXDocumentationIndex.tsx
+│   │   │   │   ├── References
+│   │   │   │   │   ├── Reference.tsx
+│   │   │   │   │   ├── References.tsx
+│   │   │   │   │   └── ReferencesList.tsx
 │   │   │   │   ├── createMDXDocumentation.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── entreprise
 │   │   │   │   ├── EntrepriseDetails.tsx
+│   │   │   │   ├── EntrepriseDetailsCard.tsx
 │   │   │   │   ├── EntrepriseSearchDetails.tsx
 │   │   │   │   ├── EntrepriseSearchField.tsx
 │   │   │   │   ├── EntrepriseSearchResults.tsx
@@ -599,15 +702,24 @@
 │   │   │   │   ├── SearchRulesAndSimulators.tsx
 │   │   │   │   └── SimulatorHits.tsx
 │   │   │   ├── simulationExplanation
-│   │   │   │   ├── DistributionDesCotisations.tsx
-│   │   │   │   ├── DroitsRetraite.tsx
-│   │   │   │   ├── IndépendantCotisationsForfaitaires.tsx
-│   │   │   │   ├── IndépendantCotisationsRégularisation.tsx
-│   │   │   │   ├── IndépendantExplanation.tsx
-│   │   │   │   ├── InstitutionsPartenaires.tsx
+│   │   │   │   ├── InstitutionsPartenaires
+│   │   │   │   │   ├── CaisseRetraite.tsx
+│   │   │   │   │   ├── CotisationsUrssaf.tsx
+│   │   │   │   │   ├── ImpôtsDGFIP.tsx
+│   │   │   │   │   ├── InstitutionLine.ts
+│   │   │   │   │   ├── InstitutionLogo.ts
+│   │   │   │   │   └── InstitutionsPartenaires.tsx
 │   │   │   │   ├── PrintExportRecover.tsx
-│   │   │   │   ├── SalaryExplanation.tsx
-│   │   │   │   └── ÀQuoiServentMesCotisationsSection.tsx
+│   │   │   │   ├── SalaryExplanation
+│   │   │   │   │   ├── RevenueRepartitionSection.tsx
+│   │   │   │   │   └── SalaryExplanation.tsx
+│   │   │   │   ├── StackedRulesChart
+│   │   │   │   │   ├── InnerStackedBarChart.tsx
+│   │   │   │   │   ├── StackedBarChart.tsx
+│   │   │   │   │   └── StackedRulesChart.tsx
+│   │   │   │   └── ÀQuoiServentMesCotisations
+│   │   │   │       ├── DistributionDesCotisations.tsx
+│   │   │   │       └── ÀQuoiServentMesCotisationsSection.tsx
 │   │   │   ├── ui
 │   │   │   │   ├── AnimatedTargetValue.tsx
 │   │   │   │   ├── Checklist
@@ -622,7 +734,7 @@
 │   │   │       ├── DarkModeContext.tsx
 │   │   │       ├── DisableAnimationContext.tsx
 │   │   │       ├── DisableScroll.ts
-│   │   │       ├── EngineContext.tsx
+│   │   │       ├── Loader.tsx
 │   │   │       ├── Meta.tsx
 │   │   │       ├── Scroll
 │   │   │       │   ├── ScrollToElement.tsx
@@ -773,7 +885,7 @@
 │   │   │   ├── global.css
 │   │   │   ├── hooks.tsx
 │   │   │   ├── icons
-│   │   │   │   ├── Loader.tsx
+│   │   │   │   ├── Spinner.tsx
 │   │   │   │   ├── index.stories.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── index.ts
@@ -918,7 +1030,6 @@
 │   │   │   ├── Brand.ts
 │   │   │   ├── CodeActivite.ts
 │   │   │   ├── CodeCatégorieJuridique.ts
-│   │   │   ├── CodesImpôt.ts
 │   │   │   ├── ComparateurConfig.ts
 │   │   │   ├── ConstantesSociales.test.ts
 │   │   │   ├── ConstantesSociales.ts
@@ -927,6 +1038,7 @@
 │   │   │   ├── Date.ts
 │   │   │   ├── Entreprise.ts
 │   │   │   ├── EntreprisesRepository.ts
+│   │   │   ├── ExpressionPublicodes.ts
 │   │   │   ├── IndépendantContexte.ts
 │   │   │   ├── Montant.test.ts
 │   │   │   ├── Montant.ts
@@ -942,25 +1054,25 @@
 │   │   │   ├── ValeurAnnuelle.ts
 │   │   │   ├── engine
 │   │   │   │   ├── MontantAdapter.ts
-│   │   │   │   ├── NombrePublicodes.ts
 │   │   │   │   ├── OuiNonAdapter.ts
 │   │   │   │   ├── PublicodesAdapter.test.ts
 │   │   │   │   ├── PublicodesAdapter.ts
 │   │   │   │   ├── QuantitéAdapter.ts
-│   │   │   │   ├── SimpleRuleEvaluation.ts
 │   │   │   │   ├── détermineLesProchainesQuestions.ts
+│   │   │   │   ├── engineCache.ts
 │   │   │   │   ├── engineSingleton.ts
 │   │   │   │   └── listeLesVariablesManquantes.ts
-│   │   │   ├── estObjectifExclusifDeLaSimulation.ts
-│   │   │   ├── estQuestionEnListeNoire.ts
+│   │   │   ├── estPasQuestionEnListeNoire.ts
 │   │   │   ├── publicodes
 │   │   │   │   ├── AutoEntrepreneurContexteDansPublicodes.ts
+│   │   │   │   ├── DottedName.ts
+│   │   │   │   ├── EvaluatedRule.ts
+│   │   │   │   ├── Rules.ts
 │   │   │   │   └── TravailleurIndependantContexteDansPublicodes.ts
 │   │   │   ├── relativeDottedName.ts
 │   │   │   ├── searchParams.test.ts
 │   │   │   ├── searchParams.ts
 │   │   │   ├── updateSituation.ts
-│   │   │   ├── updateSituationMulti.ts
 │   │   │   ├── updateSituationMultiple.ts
 │   │   │   ├── useQuestions
 │   │   │   │   ├── estCeQueLaQuestionPublicodesEstRépondue.test.ts
@@ -995,10 +1107,13 @@
 │   │   │   ├── useDate.tsx
 │   │   │   ├── useDebounce.ts
 │   │   │   ├── useDisplayOnIntersecting.ts
+│   │   │   ├── useDocumentationIndexPath.ts
+│   │   │   ├── useEngineFromModèle.ts
 │   │   │   ├── useFetchData.ts
 │   │   │   ├── useGetFullURL.ts
 │   │   │   ├── useGetPath.ts
 │   │   │   ├── useInitialRender.tsx
+│   │   │   ├── useInversionFail.ts
 │   │   │   ├── useIsEmbedded.tsx
 │   │   │   ├── useIsIddle.ts
 │   │   │   ├── useMediaQuery.ts
@@ -1012,16 +1127,20 @@
 │   │   │   ├── usePublicodes.ts
 │   │   │   ├── useQuestionList.ts
 │   │   │   ├── useQuestions.ts
+│   │   │   ├── useQuestionsPublicodes.ts
 │   │   │   ├── useRepositories.ts
 │   │   │   ├── useSaveAndRestoreScrollPosition.ts
 │   │   │   ├── useSearchCompany.ts
 │   │   │   ├── useSearchParamsForSituation.test.ts
 │   │   │   ├── useSearchParamsForSituation.tsx
 │   │   │   ├── useSetEntreprise.ts
+│   │   │   ├── useSetEntrepriseFromUrssafConnection.ts
 │   │   │   ├── useSetSimulationFromSearchParams.test.ts
 │   │   │   ├── useSetSimulationFromSearchParams.ts
+│   │   │   ├── useSetupSafeSituation.tsx
 │   │   │   ├── useSimulationConfig.ts
-│   │   │   ├── useSimulationProgress.tsx
+│   │   │   ├── useSimulationPublicodes.ts
+│   │   │   ├── useSimulatorData.ts
 │   │   │   ├── useSimulatorsData.ts
 │   │   │   ├── useSiteUrl.tsx
 │   │   │   ├── useStatefulRulesEdit.ts
@@ -1044,7 +1163,9 @@
 │   │   │   ├── .editorconfig
 │   │   │   ├── .gitignore
 │   │   │   ├── i18n.ts
+│   │   │   ├── rules-as-en.yaml
 │   │   │   ├── rules-en.yaml
+│   │   │   ├── rules-ti-en.yaml
 │   │   │   ├── translateRules.ts
 │   │   │   ├── ui-en.yaml
 │   │   │   ├── ui-fr.yaml
@@ -1052,7 +1173,6 @@
 │   │   ├── pages
 │   │   │   ├── 404.tsx
 │   │   │   ├── Accessibilité.tsx
-│   │   │   ├── Documentation.tsx
 │   │   │   ├── Offline.tsx
 │   │   │   ├── Plan.tsx
 │   │   │   ├── _landing
@@ -1083,6 +1203,7 @@
 │   │   │   │   │   ├── recherche-activité.tsx
 │   │   │   │   │   ├── rémunération.tsx
 │   │   │   │   │   ├── résultat.tsx
+│   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   ├── siret.jpg
 │   │   │   │   │   └── siret.png
 │   │   │   │   ├── cmg
@@ -1122,19 +1243,13 @@
 │   │   │   │   │   │   └── styled-components.ts
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   ├── pages
-│   │   │   │   │   │   ├── Accueil.tsx
-│   │   │   │   │   │   ├── Déclarations.tsx
-│   │   │   │   │   │   ├── Enfants.tsx
-│   │   │   │   │   │   ├── InformationsGénérales.tsx
-│   │   │   │   │   │   ├── NonÉligible.tsx
-│   │   │   │   │   │   └── Résultat.tsx
-│   │   │   │   │   └── simulationConfig.ts
-│   │   │   │   ├── components
-│   │   │   │   │   ├── ActivitePartielle.tsx
-│   │   │   │   │   ├── Fields.tsx
-│   │   │   │   │   ├── ImpotSociete.tsx
-│   │   │   │   │   └── Video.tsx
+│   │   │   │   │   └── pages
+│   │   │   │   │       ├── Accueil.tsx
+│   │   │   │   │       ├── Déclarations.tsx
+│   │   │   │   │       ├── Enfants.tsx
+│   │   │   │   │       ├── InformationsGénérales.tsx
+│   │   │   │   │       ├── NonÉligible.tsx
+│   │   │   │   │       └── Résultat.tsx
 │   │   │   │   ├── declaration-charges-sociales-independant
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── declaration-revenu-independants
@@ -1142,25 +1257,25 @@
 │   │   │   │   ├── declaration-revenus-pamc
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── demande-mobilité
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── pour-mon-entreprise
 │   │   │   │   │   ├── AnnuaireEntreprises.tsx
-│   │   │   │   │   ├── config.tsx
+│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── forms.svg
 │   │   │   │   │   ├── growth.svg
-│   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── recherche-code-ape
 │   │   │   │   │   ├── SearchCodeAPE.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── ActivityNotFound.tsx
 │   │   │   │   │   │   ├── HelpGuichetUnique.tsx
-│   │   │   │   │   │   └── Result.tsx
+│   │   │   │   │   │   ├── Result.tsx
+│   │   │   │   │   │   └── SeoExplanations.tsx
 │   │   │   │   │   ├── config.tsx
 │   │   │   │   │   └── index.tsx
 │   │   │   │   └── économie-collaborative
-│   │   │   │       ├── illustration.svg
 │   │   │   │       └── index.tsx
 │   │   │   ├── budget
 │   │   │   │   ├── ResourcesAllocation.tsx
@@ -1168,6 +1283,12 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── dev
 │   │   │   │   └── IntegrationTest.tsx
+│   │   │   ├── documentation
+│   │   │   │   ├── BackToSimulation.tsx
+│   │   │   │   ├── Documentation.tsx
+│   │   │   │   ├── DocumentationAccordion.tsx
+│   │   │   │   ├── DocumentationLanding.tsx
+│   │   │   │   └── DocumentationPageBody.tsx
 │   │   │   ├── iframes
 │   │   │   │   ├── IframeFooter.tsx
 │   │   │   │   └── index.tsx
@@ -1194,6 +1315,7 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── simulateurs
 │   │   │   │   ├── NextSteps.tsx
+│   │   │   │   ├── SimulateurPageLayout.tsx
 │   │   │   │   ├── _configs
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── types.ts
@@ -1209,17 +1331,30 @@
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── artiste-auteur
 │   │   │   │   │   ├── ArtisteAuteur.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── CotisationsIrcec.tsx
+│   │   │   │   │   │   ├── CotisationsUrssaf.tsx
+│   │   │   │   │   │   └── InstitutionsPartenaires.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── auto-entrepreneur
 │   │   │   │   │   ├── AutoEntrepreneur.tsx
-│   │   │   │   │   ├── AutoEntrepreneurDétails.tsx
 │   │   │   │   │   ├── SeoExplanations.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── CotisationsUrssaf.tsx
+│   │   │   │   │   │   ├── DroitsRetraite.tsx
+│   │   │   │   │   │   ├── Explications.tsx
+│   │   │   │   │   │   ├── InstitutionsPartenaires.tsx
+│   │   │   │   │   │   └── RépartitionRevenu.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── auxiliaire-médical
+│   │   │   │   │   ├── AuxiliaireMédical.tsx
+│   │   │   │   │   ├── AvertissementAuxiliaireMédical.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── avocat
+│   │   │   │   │   ├── AvertissementAvocat.tsx
+│   │   │   │   │   ├── Avocat.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── cards
 │   │   │   │   │   ├── ExternalLinkCard.tsx
@@ -1233,9 +1368,13 @@
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── chirurgien-dentiste
+│   │   │   │   │   ├── AvertissementChirurgienDentiste.tsx
+│   │   │   │   │   ├── ChirurgienDentiste.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── cipav
-│   │   │   │   │   ├── config.tsx
+│   │   │   │   │   ├── AvertissementCipav.tsx
+│   │   │   │   │   ├── Cipav.tsx
+│   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── comparaison-statuts
 │   │   │   │   │   ├── EngineComparison.tsx
@@ -1257,19 +1396,34 @@
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── cout-creation-entreprise
 │   │   │   │   │   ├── config.ts
-│   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── dividendes
 │   │   │   │   │   ├── Dividendes.tsx
+│   │   │   │   │   ├── Goals.tsx
+│   │   │   │   │   ├── SeoExplanations.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── Explications.tsx
+│   │   │   │   │   │   └── OptionBarèmeSwitch.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── eirl
 │   │   │   │   │   ├── Avertissement.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   ├── EIRL.tsx
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── entreprise-individuelle
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   ├── EntrepriseIndividuelle.tsx
+│   │   │   │   │   ├── SeoExplanations.tsx
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── eurl
-│   │   │   │   │   └── config.tsx
+│   │   │   │   │   ├── EURL.tsx
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── expert-comptable
+│   │   │   │   │   ├── AvertissementExpertComptable.tsx
+│   │   │   │   │   ├── ExpertComptable.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── impot-societe
 │   │   │   │   │   ├── config.tsx
@@ -1277,11 +1431,19 @@
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── indépendant
-│   │   │   │   │   ├── EntrepriseIndividuelle.tsx
-│   │   │   │   │   ├── Goals.tsx
 │   │   │   │   │   ├── Indépendant.tsx
-│   │   │   │   │   ├── IndépendantPLSimulation.tsx
-│   │   │   │   │   ├── SeoExplanationsEI.tsx
+│   │   │   │   │   ├── IndépendantBase.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── CotisationsForfaitaires.tsx
+│   │   │   │   │   │   ├── CotisationsRégularisation.tsx
+│   │   │   │   │   │   ├── CotisationsUrssaf.tsx
+│   │   │   │   │   │   ├── DroitsRetraite.tsx
+│   │   │   │   │   │   ├── ExplicationCotisations.tsx
+│   │   │   │   │   │   ├── Explications.tsx
+│   │   │   │   │   │   ├── InstitutionsPartenaires.tsx
+│   │   │   │   │   │   ├── Objectifs.tsx
+│   │   │   │   │   │   ├── ParticipationCPAM.tsx
+│   │   │   │   │   │   └── RépartitionRevenu.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── location-de-meublé
@@ -1318,7 +1480,6 @@
 │   │   │   │   │   │   ├── RecettesCourteDuréeQuestion.tsx
 │   │   │   │   │   │   ├── TypeDuréeQuestion.tsx
 │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       └── helpers
 │   │   │   │   │           ├── TestProvider.tsx
@@ -1328,42 +1489,64 @@
 │   │   │   │   │   ├── Lodeom.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── BarèmeSwitch.tsx
+│   │   │   │   │   │   ├── EffectifSwitch.tsx
+│   │   │   │   │   │   ├── Montant.tsx
+│   │   │   │   │   │   ├── MonthOptions.tsx
+│   │   │   │   │   │   ├── RécapitulatifTrimestre.tsx
+│   │   │   │   │   │   ├── RéductionMois.tsx
+│   │   │   │   │   │   ├── RéductionMoisParMois.tsx
+│   │   │   │   │   │   ├── RégularisationSwitch.tsx
+│   │   │   │   │   │   ├── RémunérationInput.tsx
+│   │   │   │   │   │   ├── Répartition.tsx
+│   │   │   │   │   │   ├── RépartitionValue.tsx
 │   │   │   │   │   │   ├── WarningSalaireTrans.tsx
 │   │   │   │   │   │   ├── Warnings.tsx
 │   │   │   │   │   │   └── ZoneSwitch.tsx
 │   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── lodeom.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── médecin
+│   │   │   │   │   ├── AvertissementMédecin.tsx
+│   │   │   │   │   ├── Médecin.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── pamc
 │   │   │   │   │   ├── PAMCHome.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── pharmacien
+│   │   │   │   │   ├── AvertissementPharmacien.tsx
+│   │   │   │   │   ├── Pharmacien.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── profession-libérale
+│   │   │   │   │   ├── Avertissement.tsx
+│   │   │   │   │   ├── AvertissementProfessionLibérale.tsx
+│   │   │   │   │   ├── ProfessionLibérale.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── reduction-generale
-│   │   │   │   │   ├── Goals.tsx
-│   │   │   │   │   ├── RéductionGénérale.tsx
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── CongésPayésSwitch.tsx
-│   │   │   │   │   │   ├── WarningSalaireTrans.tsx
-│   │   │   │   │   │   └── Warnings.tsx
-│   │   │   │   │   ├── config.ts
-│   │   │   │   │   └── simulationConfig.ts
+│   │   │   │   │   └── index.tsx
 │   │   │   │   ├── sage-femme
+│   │   │   │   │   ├── AvertissementSageFemme.tsx
+│   │   │   │   │   ├── SageFemme.tsx
 │   │   │   │   │   └── config.ts
 │   │   │   │   ├── salarié
-│   │   │   │   │   ├── SalaireBrutNetPreviewEN.png
-│   │   │   │   │   ├── SalaireBrutNetPreviewFR.png
+│   │   │   │   │   ├── Goals.tsx
 │   │   │   │   │   ├── Salarié.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── Aides.tsx
+│   │   │   │   │   │   ├── Explications.tsx
+│   │   │   │   │   │   ├── SeoExplanations.tsx
+│   │   │   │   │   │   └── TitresRestaurant.tsx
 │   │   │   │   │   ├── config.ts
-│   │   │   │   │   ├── illustration-net-brut-en.png
-│   │   │   │   │   ├── illustration-net-brut.png
+│   │   │   │   │   ├── images
+│   │   │   │   │   │   ├── SalaireBrutNetPreviewEN.png
+│   │   │   │   │   │   ├── SalaireBrutNetPreviewFR.png
+│   │   │   │   │   │   ├── illustration-net-brut-en.png
+│   │   │   │   │   │   └── illustration-net-brut.png
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   └── sasu
 │   │   │   │       ├── SASU.tsx
+│   │   │   │       ├── components
+│   │   │   │       │   └── Explications.tsx
 │   │   │   │       ├── config.ts
 │   │   │   │       └── simulationConfig.ts
 │   │   │   ├── simulateurs-et-assistants
@@ -1429,51 +1612,65 @@
 │   │   │   └── plausibleService.ts
 │   │   ├── sitePaths.ts
 │   │   ├── storage
-│   │   │   ├── persistChoixStatutJuridique.ts
 │   │   │   ├── persistCompanySituation.ts
 │   │   │   ├── persistSimulation.ts
 │   │   │   ├── readCookie.ts
 │   │   │   ├── safeLocalStorage.ts
+│   │   │   ├── sanitizePersistedSituation.test.ts
+│   │   │   ├── sanitizePersistedSituation.ts
 │   │   │   └── serializeSimulation.ts
 │   │   ├── store
 │   │   │   ├── actions
 │   │   │   │   ├── actions.ts
-│   │   │   │   ├── companyActions.ts
-│   │   │   │   └── hiringChecklistAction.ts
+│   │   │   │   └── companyActions.ts
 │   │   │   ├── middlewares
 │   │   │   │   └── prendLaProchaineQuestion.middleware.ts
 │   │   │   ├── reducers
-│   │   │   │   ├── SituationReducer.ts
-│   │   │   │   ├── choixStatutJuridiqueReducer.ts
 │   │   │   │   ├── companySituationReducer.ts
 │   │   │   │   ├── previousSimulationRootReducer.ts
 │   │   │   │   ├── rootReducer.ts
 │   │   │   │   ├── simulation.reducer.spec.ts
 │   │   │   │   └── simulation.reducer.ts
 │   │   │   ├── selectors
-│   │   │   │   ├── acreActivé.selector.ts
-│   │   │   │   ├── config.selector.ts
-│   │   │   │   ├── currentQuestion.selector.ts
-│   │   │   │   ├── estSurLaPremièreQuestionRépondue.selector.ts
-│   │   │   │   ├── ilYADesQuestions.selector.test.ts
-│   │   │   │   ├── ilYADesQuestions.selector.ts
-│   │   │   │   ├── listeNoire.selector.ts
-│   │   │   │   ├── numéroDeLaQuestionEnCours.selector.ts
-│   │   │   │   ├── previousSimulationSelectors.ts
-│   │   │   │   ├── questionEnCoursRépondue.selector.ts
-│   │   │   │   ├── questionsRépondues.selector.ts
-│   │   │   │   ├── questionsRéponduesEncoreApplicables.selector.ts
-│   │   │   │   ├── questionsRéponduesEncoreApplicablesNoms.selector.ts
-│   │   │   │   ├── questionsRéponduesNom.selector.ts
-│   │   │   │   ├── questionsSuivantes.selector.ts
-│   │   │   │   ├── raccourcis.selector.ts
-│   │   │   │   ├── simulation.selector.ts
-│   │   │   │   └── simulationSelectors.ts
+│   │   │   │   ├── company
+│   │   │   │   │   ├── companyDetails.selector.ts
+│   │   │   │   │   ├── companySiren.selector.ts
+│   │   │   │   │   └── companySituation.selector.ts
+│   │   │   │   ├── completeSituation.selector.ts
+│   │   │   │   ├── completeSituationSelonContextes.selector.ts
+│   │   │   │   ├── previousSimulation.selector.ts
+│   │   │   │   ├── simulation
+│   │   │   │   │   ├── config
+│   │   │   │   │   │   ├── config.selector.ts
+│   │   │   │   │   │   ├── configContextes.selector.ts
+│   │   │   │   │   │   ├── configObjectifs.selector.ts
+│   │   │   │   │   │   ├── configSituation.selector.ts
+│   │   │   │   │   │   ├── listeNoire.selector.ts
+│   │   │   │   │   │   ├── nomModèle.selector.ts
+│   │   │   │   │   │   └── raccourcis.selector.ts
+│   │   │   │   │   ├── currentSimulation.selector.ts
+│   │   │   │   │   ├── firstStepCompleted.selector.ts
+│   │   │   │   │   ├── questions
+│   │   │   │   │   │   ├── questionsRépondues.selector.ts
+│   │   │   │   │   │   ├── questionsRéponduesEncoreApplicables.selector.ts
+│   │   │   │   │   │   ├── questionsRéponduesEncoreApplicablesNoms.selector.ts
+│   │   │   │   │   │   ├── questionsRéponduesNom.selector.ts
+│   │   │   │   │   │   └── questionsSuivantes.selector.ts
+│   │   │   │   │   ├── simulation.selector.ts
+│   │   │   │   │   ├── simulationKey.selector.ts
+│   │   │   │   │   ├── simulationUrl.selector.ts
+│   │   │   │   │   ├── situation
+│   │   │   │   │   │   └── situation.selector.ts
+│   │   │   │   │   └── targetUnit.selector.ts
+│   │   │   │   └── simulationSource.selector.ts
 │   │   │   ├── slices
-│   │   │   │   └── simulateursSlice.ts
+│   │   │   │   ├── simulateursSlice.ts
+│   │   │   │   ├── simulationSource.slice.test.ts
+│   │   │   │   └── simulationSource.slice.ts
 │   │   │   └── store.ts
 │   │   ├── types
 │   │   │   ├── app-env.d.ts
+│   │   │   ├── iframe-messages.d.ts
 │   │   │   ├── iframe-resizer.d.ts
 │   │   │   ├── import-yaml.d.ts
 │   │   │   ├── mdx.d.ts
@@ -1484,17 +1681,24 @@
 │   │       ├── ChangeHandler.ts
 │   │       ├── NoOp.ts
 │   │       ├── URLs.ts
+│   │       ├── chargeModèle.ts
 │   │       ├── complement.ts
 │   │       ├── dates.ts
 │   │       ├── guichetToPLMétier.ts
 │   │       ├── hexToHSL.ts
+│   │       ├── iframeMessageHandlers.ts
 │   │       ├── index.ts
 │   │       ├── logos.ts
+│   │       ├── number.test.ts
 │   │       ├── number.ts
 │   │       ├── polyfill.ts
-│   │       ├── publicodes.ts
-│   │       ├── react-compound-components.ts
-│   │       └── réductionDeCotisations.ts
+│   │       ├── publicodes
+│   │       │   ├── EngineContext.ts
+│   │       │   ├── engineFactory.ts
+│   │       │   ├── getStringOrNullFromPublicodesExpression.ts
+│   │       │   ├── publicodes.ts
+│   │       │   └── safeSetSituation.ts
+│   │       └── react-compound-components.ts
 │   ├── test
 │   │   ├── fabrique-social.fixtures.ts
 │   │   ├── fabrique-social.test.ts
@@ -1505,11 +1709,37 @@
 │   │   │   ├── helpers
 │   │   │   │   ├── PublicodesTypes.ts
 │   │   │   │   └── logValue.ts
-│   │   │   ├── lodeom.test.ts
 │   │   │   ├── matchers
 │   │   │   │   └── toEvaluate.ts
-│   │   │   └── réduction-générale.test.ts
+│   │   │   └── salarié
+│   │   │       ├── RGDU.test.ts
+│   │   │       ├── apprentissage.test.ts
+│   │   │       ├── lodeom.test.ts
+│   │   │       └── professionnalisation.test.ts
 │   │   ├── modele-social.test.ts
+│   │   ├── modele-ti
+│   │   │   ├── PAMC.test.ts
+│   │   │   ├── assiettes.test.ts
+│   │   │   ├── cotisations-et-contributions
+│   │   │   │   ├── CFP.test.ts
+│   │   │   │   ├── CSG-CRDS.test.ts
+│   │   │   │   ├── conjoint-collaborateur.test.ts
+│   │   │   │   ├── cotisations
+│   │   │   │   │   ├── allocations-familiales.test.ts
+│   │   │   │   │   ├── début-activité.test.ts
+│   │   │   │   │   ├── indemnités-journalières.test.ts
+│   │   │   │   │   ├── invalidité-décès.test.ts
+│   │   │   │   │   ├── maladie.test.ts
+│   │   │   │   │   ├── retraite-base.test.ts
+│   │   │   │   │   └── retraite-complémentaire.test.ts
+│   │   │   │   └── exonérations
+│   │   │   │       ├── Acre.test.ts
+│   │   │   │       ├── exonérations.test.ts
+│   │   │   │       └── invalidité.test.ts
+│   │   │   ├── dividendes.test.ts
+│   │   │   ├── entreprise
+│   │   │   │   └── durée-activité.test.ts
+│   │   │   └── revenus.test.ts
 │   │   ├── persistence.test.ts
 │   │   ├── regressions
 │   │   │   ├── SASU.test.ts
@@ -1524,7 +1754,6 @@
 │   │   │   │   ├── impôt-société.test.ts.snap
 │   │   │   │   ├── indépendant.test.ts.snap
 │   │   │   │   ├── professions-libérales.test.ts.snap
-│   │   │   │   ├── réduction-générale.test.ts.snap
 │   │   │   │   └── salarié.test.ts.snap
 │   │   │   ├── artiste-auteur.test.ts
 │   │   │   ├── artiste-auteur.yaml
@@ -1542,15 +1771,15 @@
 │   │   │   ├── indépendant.yaml
 │   │   │   ├── professions-libérales.test.ts
 │   │   │   ├── professions-libérales.yaml
-│   │   │   ├── réduction-générale.test.ts
-│   │   │   ├── réduction-générale.yaml
+│   │   │   ├── retraite-complémentaire-comparateur.test.ts
 │   │   │   ├── salarié.test.ts
 │   │   │   ├── salarié.yaml
 │   │   │   └── utils.ts
+│   │   ├── safeSetSituation.test.ts
 │   │   ├── unit-translations.test.js
 │   │   └── vitest.d.ts
 │   ├── tsconfig.json
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-272 directories, 1283 files
+316 directories, 1468 files
