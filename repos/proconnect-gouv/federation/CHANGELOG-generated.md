@@ -1,28 +1,31 @@
-## Changelog : federation (30 derniers jours, au 2026-04-16)
+## Changelog : federation (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de l'observabilité de la plateforme, notamment en ajoutant des vérifications de santé (healthchecks) et en affinant la gestion des erreurs et des logs. Des améliorations ont également été apportées à la sécurité, avec le remplacement des cookies par des sessions, et à l'intégration avec des services tiers comme Hyyyperbridge. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et fonctionnalités.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de l'observabilité de la plateforme, notamment en ajoutant des vérifications de santé (healthchecks) et en améliorant la gestion des erreurs et des logs. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité du système. Des améliorations ont été apportées à l'authentification et à l'intégration avec des services tiers.
 
 ### Évolutions fonctionnelles
-- Ajout d'une bannière de maintenance. [#1091](https://github.com/proconnect-gouv/federation/issues/1091)
-- Amélioration des messages d'erreur pour les emails et OIDC, rendant les informations plus claires pour les utilisateurs. [#1064](https://github.com/proconnect-gouv/federation/issues/1064)
-- Ajout des rôles dans les informations renvoyées par l'API. [#1012](https://github.com/proconnect-gouv/federation/issues/1012)
-- Tolérance accrue pour les codes TOTP dans l'interface d'administration. [#1011](https://github.com/proconnect-gouv/federation/issues/1011)
+- Ajout d'un banner de maintenance. [#1091](https://github.com/proconnect-gouv/federation/issues/1091)
+- Amélioration des messages d'erreur pour les emails et OIDC. [#1064](https://github.com/proconnect-gouv/federation/issues/1064)
+- Ajout des rôles dans la réponse FSA1. [#1012](https://github.com/proconnect-gouv/federation/issues/1012)
 - Mise à jour de la configuration pour se rapprocher de l'environnement de production. [#1071](https://github.com/proconnect-gouv/federation/issues/1071)
+- Amélioration de la gestion des erreurs et ajout de logs pour le service d'entreprise API. [#1070](https://github.com/proconnect-gouv/federation/issues/1070) et [#1039](https://github.com/proconnect-gouv/federation/issues/1039)
 
 ### Évolutions techniques
-- Implémentation de vérifications de santé (healthchecks) pour différents composants (CSMR, Hyyyperbridge) avec des points de contrôle personnalisés. [#1114](https://github.com/proconnect-gouv/federation/issues/1114), [#1116](https://github.com/proconnect-gouv/federation/issues/1116), [#1110](https://github.com/proconnect-gouv/federation/issues/1110)
-- Remplacement de l'utilisation d'Axios par `fetch` pour certaines requêtes, améliorant potentiellement la performance et réduisant les dépendances. [#1068](https://github.com/proconnect-gouv/federation/issues/1068)
-- Refactorisation du code pour extraire la logique d'appel à l'API Entreprise dans un provider dédié. [#1088](https://github.com/proconnect-gouv/federation/issues/1088)
-- Correction de tests ChangeStream MongoDB qui étaient instables. [#1096](https://github.com/proconnect-gouv/federation/issues/1096)
-- Amélioration de la gestion des erreurs et ajout de traces de pile pour faciliter le débogage. [#1111](https://github.com/proconnect-gouv/federation/issues/1111), [#1062](https://github.com/proconnect-gouv/federation/issues/1062)
-- Remplacement des cookies par des sessions pour une meilleure sécurité. [#1042](https://github.com/proconnect-gouv/federation/issues/1042)
-- Mise à jour de la librairie openid-client en version 6.8.1. [#1013](https://github.com/proconnect-gouv/federation/issues/1013)
-- Ajout de logs plus détaillés pour faciliter le diagnostic des problèmes liés à la découverte des services et aux erreurs d'authentification. [#1070](https://github.com/proconnect-gouv/federation/issues/1070), [#1038](https://github.com/proconnect-gouv/federation/issues/1038)
+- Implémentation d'un pattern ping/pong pour vérifier la disponibilité du broker. [#1117](https://github.com/proconnect-gouv/federation/issues/1117)
+- Ajout de vérifications de santé (healthchecks) avec des points de terminaison `/livez` et `/readyz` pour améliorer la surveillance et la résilience. [#1116](https://github.com/proconnect-gouv/federation/issues/1116), [#1111](https://github.com/proconnect-gouv/federation/issues/1111), [#1087](https://github.com/proconnect-gouv/federation/issues/1087)
+- Suppression des healthchecks redondants dans le Dockerfile. [#1119](https://github.com/proconnect-gouv/federation/issues/1119) et [#1120](https://github.com/proconnect-gouv/federation/issues/1120)
+- Utilisation de `fetch` au lieu de `axios` pour certaines requêtes. [#1063](https://github.com/proconnect-gouv/federation/issues/1063)
+- Mise à jour de la librairie `openid-client` en version 6.8.1. [#1013](https://github.com/proconnect-gouv/federation/issues/1013)
+- Refactorisation de l'appel à l'API entreprise pour une meilleure modularité. [#1088](https://github.com/proconnect-gouv/federation/issues/1088)
+- Correction de tests flaky avec ChangeStream. [#1096](https://github.com/proconnect-gouv/federation/issues/1096)
+- Autorisation de la connexion Redis sans TLS. [#1089](https://github.com/proconnect-gouv/federation/issues/1089)
 
 ### Autres changements
-- Ajout de `isEntraId` et `hyyyperbridge` aux métadonnées Grist. [#1115](https://github.com/proconnect-gouv/federation/issues/1115)
-- Configuration pour autoriser les connexions Redis sans TLS. [#1089](https://github.com/proconnect-gouv/federation/issues/1089)
-- Suppression de la dépendance Axios dans le module d'administration. [#1088](https://github.com/proconnect-gouv/federation/issues/1088)
-- Mise à jour de la configuration Kubernetes pour les tests d'intégration. [#1063](https://github.com/proconnect-gouv/federation/issues/1063)
-- Plusieurs mises à jour de dépendances (lodash, handlebars, jsdom, otplib, etc.) pour corriger des bugs et améliorer la sécurité. (Ces mises à jour sont listées dans les commits mais ne sont pas détaillées individuellement ici).
+- Ajout de traces de pile (stack traces) aux exceptions pour faciliter le débogage. [#1111](https://github.com/proconnect-gouv/federation/issues/1111)
+- Ajout de logs pour les erreurs de découverte et les erreurs d'accès aux organisations. [#1074](https://github.com/proconnect-gouv/federation/issues/1074) et [#1038](https://github.com/proconnect-gouv/federation/issues/1038)
+- Suppression de la dépendance `axios` dans le module admin. [#1088](https://github.com/proconnect-gouv/federation/issues/1088)
+- Diverses mises à jour de dépendances (lodash, handlebars, jest, cypress, etc.).
+- Configuration de prettier avec la configuration par défaut. [#996](https://github.com/proconnect-gouv/federation/issues/996)
+- Ajout de `isEntraId` et `hyyyperbridge` dans Grist. [#1115](https://github.com/proconnect-gouv/federation/issues/1115)
+- Ajout d'un check de readiness pour le CSM. [#1114](https://github.com/proconnect-gouv/federation/issues/1114)
+- Ajout d'un check de readiness pour hyyyperbridge. [#1110](https://github.com/proconnect-gouv/federation/issues/1110)
