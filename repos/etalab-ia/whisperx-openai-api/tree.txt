@@ -1,0 +1,45 @@
+.
+├── .github
+│   └── workflows
+│       └── docker.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── app
+│   ├── Dockerfile
+│   ├── __init__.py
+│   ├── endpoints
+│   │   ├── __init__.py
+│   │   ├── audio.py
+│   │   ├── models.py
+│   │   └── monitoring.py
+│   ├── main.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   ├── audio.py
+│   │   └── models.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   └── transcription.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   └── test_audio_transcriptions.py
+│   ├── tests_with_gpu
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── fixtures
+│   │   │   ├── sample_en_1.ogg
+│   │   │   └── sample_en_1_expected.json
+│   │   └── test_transcribe.py
+│   └── utils
+│       ├── config.py
+│       ├── exceptions.py
+│       ├── lifespan.py
+│       └── security.py
+├── docs
+│   └── testing_with_gpu.md
+├── logging-config.yaml
+├── pyproject.toml
+└── uv.lock
+12 directories, 32 files
