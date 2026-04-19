@@ -1,29 +1,26 @@
-## Changelog : data_pass (30 derniers jours, au 16 avril 2026)
+## Changelog : data_pass (30 derniers jours, au 18 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de data_pass se concentrent sur l'amélioration de la sécurité (bannissement d'utilisateurs), l'optimisation des performances (optimisation des tests CI/CD et des requêtes en base de données), et l'enrichissement des fonctionnalités pour les utilisateurs et les administrateurs (gestion des webhooks, édition de contenu, gestion des Data Providers). Des corrections de bugs et des mises à jour de dépendances ont également été réalisées.
+Ce mois-ci, les évolutions de data_pass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités de bannissement d'utilisateurs, l'amélioration des formulaires et des emails, et l'optimisation des performances. Des corrections de bugs et des améliorations de la documentation ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Bannissement d'utilisateurs :** Ajout d'une fonctionnalité permettant aux administrateurs de bannir des utilisateurs, bloquant ainsi leur accès au système et aux sessions actives. [#1508](https://github.com/etalab/data_pass/pull/1508)
-- **Amélioration de l'expérience utilisateur API Entreprise :** Suppression du scope `beneficiaires_effectifs_inpi` pour le formulaire API Entreprise. [#1482](https://github.com/etalab/data_pass/pull/1482)
-- **Gestion des webhooks :** Ajout d'une page de documentation pour les webhooks, accessible aux développeurs. [#1502](https://github.com/etalab/data_pass/pull/1502)
-- **Edition de contenu :** Possibilité pour les administrateurs d'éditer le contenu éditorial des types d'habilitation. [#1460](https://github.com/etalab/data_pass/pull/1460)
-- **Gestion des Data Providers :** Ajout de la création et de la gestion des Data Providers depuis l'interface d'administration. [#1455](https://github.com/etalab/data_pass/pull/1455)
-- **Amélioration des scopes Extenso :** Activation des scopes `men_statut_boursier` et `men_echelon_bourse` pour l'API Particulier. [#1473](https://github.com/etalab/data_pass/pull/1473)
-- **Formulaire Extenso :** Ajout du bloc "modalités" au formulaire Extenso et amélioration de sa description. [#1467](https://github.com/etalab/data_pass/pull/1467)
-- **Notifications :** Correction d'un bug empêchant les instructeurs de recevoir les notifications de messages. [#1471](https://github.com/etalab/data_pass/pull/1471)
-- **Retrait des droits :** Correction du retrait de tous les droits d'un utilisateur. [#1494](https://github.com/etalab/data_pass/pull/1494)
+- **Bannissement d'utilisateurs :** Ajout d'une interface d'administration pour bannir des utilisateurs, bloquant leur accès à la plateforme et aux sessions actives. [#1508](https://github.com/etalab/data_pass/pull/1508)
+- **Formulaires Extenso :** Amélioration du formulaire Extenso avec l'ajout de la possibilité de spécifier un cas d'utilisation, l'édition des champs de contenu et la suppression de certains scopes pré-remplis. [#1472](https://github.com/etalab/data_pass/pull/1472), [#1467](https://github.com/etalab/data_pass/pull/1467), [#1462](https://github.com/etalab/data_pass/pull/1462)
+- **Emails :** Amélioration de l'envoi d'emails pour les approbations DGFIP, avec envoi à des personnes spécifiques. Les URLs dans les emails sont désormais cliquables. [#1511](https://github.com/etalab/data_pass/pull/1511), [#1505](https://github.com/etalab/data_pass/pull/1505)
+- **API Particulier :** Ajout du scope `men_regime_pensionnat` pour le formulaire Solis. Les scopes `cnaf_adresse` et `cnaf_enfants` sont désormais cochables. [#1495](https://github.com/etalab/data_pass/pull/1495)
+- **Documentation :** Mise à jour de la documentation concernant les rôles et les webhooks. [#1507](https://github.com/etalab/data_pass/pull/1507), [#1502](https://github.com/etalab/data_pass/pull/1502)
+- **Amélioration de l'habilitation :** Correction d'un bug empêchant la consultation d'une habilitation avec une organisation non vérifiée. [#1478](https://github.com/etalab/data_pass/pull/1478)
 
 ### Évolutions techniques
-- **Optimisation CI/CD :** Amélioration significative de la performance des tests CI/CD grâce à la parallélisation des tests Cucumber et RSpec, et à l'optimisation de l'utilisation de Docker. [#1503](https://github.com/etalab/data_pass/pull/1503), [#1498](https://github.com/etalab/data_pass/pull/1498)
-- **Optimisation des requêtes :** Correction de requêtes N+1 sur le dashboard demandeur, améliorant ainsi les performances. [#1499](https://github.com/etalab/data_pass/pull/1499)
-- **Refactoring :** Remplacement de `before_destroy` par un interactor pour la suppression d'un `HabilitationType`. [#1462](https://github.com/etalab/data_pass/pull/1462)
-- **Synchronisation du cache :** Synchronisation du cache `StaticApplicationRecord` entre les workers Puma via Redis pour éviter les incohérences. [#1463](https://github.com/etalab/data_pass/pull/1463)
-- **Mise à jour Rails :** Mise à jour de Rails vers la version 8.1.2.1. [#1461](https://github.com/etalab/data_pass/pull/1461)
-- **Utilisation d'ID numériques :** Utilisation des ID numériques des autorisations dans les routes pour une meilleure performance. [#1498](https://github.com/etalab/data_pass/pull/1498)
+- **Optimisation des tests :** Optimisation significative de la suite de tests, notamment en parallélisant les tests Cucumber et RSpec, et en réduisant le temps d'exécution global. [#1503](https://github.com/etalab/data_pass/pull/1503)
+- **Refactoring :** Refactorisation de la suppression des HabilitationType pour utiliser un interactor. [#1462](https://github.com/etalab/data_pass/pull/1462)
+- **Mise à jour Rails :** Mise à jour de Rails vers la version 8.1.2.1. [#1460](https://github.com/etalab/data_pass/pull/1460)
+- **Webhooks :** Ajout d'un service MarkdownRenderer et documentation du format du payload de test des webhooks. [#1512](https://github.com/etalab/data_pass/pull/1512), [#1502](https://github.com/etalab/data_pass/pull/1502)
+- **ID des habilitations :** Utilisation de l'ID numérique des autorisations dans les URLs pour une meilleure performance. [#1498](https://github.com/etalab/data_pass/pull/1498)
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation des rôles. [#1507](https://github.com/etalab/data_pass/pull/1507)
-- **Correction de bug :** Correction d'une boucle de redirection sur les dates d'homologation identiques. [#1469](https://github.com/etalab/data_pass/pull/1469)
-- **Amélioration des tests :** Ajout de tests pour les cas d'erreur et de non-régression.
-- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (action_text-trix, rubocop, webmock, etc.).
+- **Correction de typos :** Correction de typos dans les sujets des emails. [#1506](https://github.com/etalab/data_pass/pull/1506)
+- **Amélioration de la gestion des erreurs :** Correction d'une erreur silencieuse lors de la soumission d'une demande d'autorisation depuis la page de résumé. [#1510](https://github.com/etalab/data_pass/pull/1510)
+- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances (zlib, rack-session, rubocop, action_text-trix, etc.).
+- **Intégration CLAUDE :** Introduction de CLAUDE pour la co-authorisation des commits. [#1504](https://github.com/etalab/data_pass/pull/1504)
+- **Correction d'une boucle de redirection :** Correction d'une boucle de redirection sur les dates d'homologation identiques. [#1469](https://github.com/etalab/data_pass/pull/1469)

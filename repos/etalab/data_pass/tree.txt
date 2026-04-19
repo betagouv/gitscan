@@ -1272,6 +1272,7 @@
 │   │   ├── instruction
 │   │   │   └── authorization_request_mailer.rb
 │   │   ├── instructor_draft_request_mailer.rb
+│   │   ├── link_in_emails_interceptor.rb
 │   │   ├── message_mailer.rb
 │   │   └── webhook_mailer.rb
 │   ├── migration
@@ -1837,6 +1838,7 @@
 │       │   ├── api_sfip_sandbox
 │       │   │   ├── approve.text.erb
 │       │   │   └── reopening_approve.text.erb
+│       │   ├── approve.html.erb
 │       │   ├── approve.text.erb
 │       │   ├── france_connect
 │       │   │   ├── approve.text.erb
@@ -1853,13 +1855,20 @@
 │       │   ├── pro_connect_service_provider
 │       │   │   ├── approve.text.erb
 │       │   │   └── reopening_approve.text.erb
+│       │   ├── refuse.html.erb
 │       │   ├── refuse.text.erb
+│       │   ├── reopening_approve.html.erb
 │       │   ├── reopening_approve.text.erb
+│       │   ├── reopening_refuse.html.erb
 │       │   ├── reopening_refuse.text.erb
+│       │   ├── reopening_request_changes.html.erb
 │       │   ├── reopening_request_changes.text.erb
+│       │   ├── request_changes.html.erb
 │       │   ├── request_changes.text.erb
+│       │   ├── revoke.html.erb
 │       │   ├── revoke.text.erb
 │       │   └── shared
+│       │       ├── _with_reason_body.html.erb
 │       │       └── dgfip_sandbox
 │       │           ├── approve.text.erb
 │       │           └── reopening_approve.text.erb
@@ -2251,6 +2260,7 @@
 │   │   ├── gaffe.rb
 │   │   ├── good_job.rb
 │   │   ├── inflections.rb
+│   │   ├── link_in_emails.rb
 │   │   ├── mailjet.rb
 │   │   ├── omniauth.rb
 │   │   ├── paper_trail.rb
@@ -2891,6 +2901,7 @@
 │   │   ├── definition_generator_spec.rb
 │   │   └── multi_stages_definition_generator_spec.rb
 │   ├── helpers
+│   │   ├── application_helper_spec.rb
 │   │   ├── concerns
 │   │   │   └── skip_links_spec.rb
 │   │   ├── page_title_helper_spec.rb
@@ -2959,6 +2970,7 @@
 │   │   ├── instruction
 │   │   │   └── authorization_request_mailer_spec.rb
 │   │   ├── instructor_draft_request_mailer_spec.rb
+│   │   ├── link_in_emails_interceptor_spec.rb
 │   │   ├── message_mailer_spec.rb
 │   │   ├── previews
 │   │   │   ├── admin_mailer_preview.rb
@@ -3151,6 +3163,7 @@
 │   │   ├── hubee_api_client_mocks.rb
 │   │   ├── hubee_helpers.rb
 │   │   ├── insee_sirene_api_mocks.rb
+│   │   ├── mail_spec_helpers.rb
 │   │   ├── matchers
 │   │   │   └── have_valid_syntax.rb
 │   │   ├── openapi_validation.rb
@@ -3194,4 +3207,4 @@
     ├── .keep
     └── javascript
         └── .keep
-444 directories, 2890 files
+444 directories, 2903 files
