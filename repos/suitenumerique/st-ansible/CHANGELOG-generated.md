@@ -1,10 +1,10 @@
-## Changelog : st-ansible (30 derniers jours, au 2026-04-02)
+## Changelog : st-ansible (30 derniers jours, au 2026-04-17)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la structure des rôles Ansible pour faciliter la maintenance et la réutilisation du code. Une correction a également été apportée au rôle `podman` pour assurer une configuration correcte des identifiants utilisateur et groupe des conteneurs.
+Cette mise à jour apporte des corrections et des améliorations concernant la gestion des droits sur les fichiers déployés par Podman, ainsi qu'une restructuration des tâches Ansible pour les rôles drive, messages et keycloak afin d'améliorer la lisibilité et la maintenabilité.
 
 ### Évolutions fonctionnelles
-- Correction du calcul de `container_uid` et `gid` dans le rôle `podman` pour une configuration correcte des conteneurs. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
+- Correction d'un problème de gestion des droits sur les fichiers déployés par l'application Podman. Cela assure un fonctionnement correct des applications déployées. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
 
 ### Évolutions techniques
-- Refactorisation des rôles `drive`, `messages` et `keycloak` : séparation des tâches principales et importation du fichier `deploy.yml` pour une meilleure organisation et réutilisabilité du code. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
+- Restructuration des tâches Ansible pour les rôles `drive`, `messages` et `keycloak` en séparant la logique principale et le déploiement dans un fichier `deploy.yml` dédié. Cela améliore l'organisation du code et facilite sa maintenance. [#20](https://github.com/suitenumerique/st-ansible/issues/20)
