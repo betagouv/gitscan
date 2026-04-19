@@ -1,35 +1,32 @@
-## Changelog : depenses-eclairees (30 derniers jours, au 15 mai 2026)
+## Changelog : depenses-eclairees (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la robustesse de la synchronisation des données, l'amélioration de la qualité de l'extraction d'informations (notamment pour les RIB, SIRET et devis), et la correction de bugs liés au traitement de certains documents. Des optimisations ont également été apportées à la gestion des fichiers et à l'utilisation des modèles de langage.
+Ce mois-ci, les améliorations se concentrent sur la robustesse de la synchronisation des données, l'amélioration de la qualité de l'extraction d'informations (OCR et LLM), et l'affinage de la validation des données, notamment pour les RIB et les SIRET. Des corrections ont également été apportées pour améliorer la gestion des fichiers volumineux et des erreurs lors du traitement des documents. Enfin, des ajustements ont été faits à l'interface utilisateur pour simplifier l'affichage et la pertinence des informations.
 
 ### Évolutions fonctionnelles
-- Amélioration de la reconstitution de l'IBAN à partir des codes bancaires présents sur les RIB. [#107](https://github.com/betagouv/depenses-eclairees/issues/107)
-- Ajout de la validation du SIRET via l'algorithme Luhn, similaire à la validation des IBAN. [#103](https://github.com/betagouv/depenses-eclairees/issues/103)
-- Amélioration de l'extraction d'informations des devis, notamment pour l'objet du devis. [#78](https://github.com/betagouv/depenses-eclairees/issues/78)
-- Prise en charge des documents de sous-traitance avec des améliorations de l'interface et des tests. [#83](https://github.com/betagouv/depenses-eclairees/issues/83)
-- Amélioration de la gestion des fichiers volumineux lors de l'OCR. [#109](https://github.com/betagouv/depenses-eclairees/issues/109)
-- Correction de bugs liés à la synchronisation des engagements et à la gestion des dates. [#88](https://github.com/betagouv/depenses-eclairees/issues/88), [#95](https://github.com/betagouv/depenses-eclairees/issues/95), [#97](https://github.com/betagouv/depenses-eclairees/issues/97)
+- Amélioration de la gestion des fichiers volumineux lors de l'OCR (#109).
+- Affichage des codes CCAP et AE pour les champs `ccp_simple` et `ccp_vae` (#108, #104).
+- Amélioration de la validation et de la reconstitution des numéros IBAN à partir des codes RIB (#105, #107).
+- Validation du numéro SIRET via l'algorithme Luhn, similaire à la validation IBAN (#103, #71c1c75).
+- Amélioration de la déduplication des données lors de la synchronisation des engagements (#89, #88).
+- Correction de l'affichage des noms de fichiers lors de la synchronisation (#86).
 
 ### Évolutions techniques
-- Passage au modèle de langage Mistral Medium pour certaines tâches d'extraction. [#91](https://github.com/betagouv/depenses-eclairees/issues/91)
-- Refactorisation du code pour améliorer l'organisation et la lisibilité, notamment dans les vues et les tests.
-- Amélioration de la gestion des erreurs lors du traitement des fichiers Excel. [#87](https://github.com/betagouv/depenses-eclairees/issues/87)
-- Optimisation de la logique de déduplication des données lors de la synchronisation.
-- Amélioration de la robustesse de la synchronisation en cas d'erreurs 401. [#99](https://github.com/betagouv/depenses-eclairees/issues/99)
-- Stabilisation des tests qualité end-to-end avec de nouvelles métriques de comparaison. [#100](https://github.com/betagouv/depenses-eclairees/issues/100)
+- Passage au modèle de langage Mistral Medium pour améliorer la performance et la qualité de l'extraction d'informations (#91, #86).
+- Amélioration de la gestion des erreurs lors du traitement des fichiers Excel, avec une conversion des `AssertionError` en `ValueError` pour une meilleure gestion des exceptions (#87).
+- Stabilisation des tests d'intégration (e2e) avec l'ajout de `best_comparison` et `included_column` (#100).
+- Ajout de fonctions de post-processing pour les noms d'entités légales (#94).
+- Amélioration de la logique de synchronisation pour préserver les dates de mise à jour les plus récentes (#89).
+- Correction de la gestion des erreurs 401 lors de la synchronisation (#99).
+- Ajout de la gestion des fichiers PDF lors de l'OCR (#102).
+- Correction d'un bug dans le traitement des fichiers XLSX (#6d2c671).
 
 ### Autres changements
-- Mise à jour des dépendances. [#92](https://github.com/betagouv/depenses-eclairees/issues/92)
-- Suppression temporaire d'une tâche cron pour maintenance.
-- Amélioration de la documentation et des tests unitaires.
-- Nettoyage du code et suppression de sections/champs obsolètes dans l'interface utilisateur.
-- Ajout de tests pour la fonction de post-processing des documents CCAP.
-- Suppression de champs inutiles dans l'interface utilisateur pour les documents AE et CCAP.
-- Correction de problèmes de formatage et de ponctuation dans les descriptions de classification.
-- Ajout de la possibilité de comparer des JSON complexes dans les tests qualité.
-- Amélioration de la gestion des valeurs nulles dans les tests.
-- Suppression de la correction automatique des SIRET incorrects.
-- Réutilisation des prompts existants pour différents types de documents. [#104](https://github.com/betagouv/depenses-eclairees/issues/104)
-- Ajout de la fonction `included_columns` pour la comparaison des tests qualité. [#96](https://github.com/betagouv/depenses-eclairees/issues/96)
-- Amélioration de la gestion des noms d'entités légales.
+- Suppression de sections et de champs obsolètes ou non évalués dans l'interface utilisateur pour les types de documents AE et CCAP.
+- Ajustement de la définition du champ "prestations" pour une meilleure concision et simplification du schéma.
+- Interdiction des valeurs nulles pour les champs de liste de lots dans le schéma CCAP, avec ajout de post-processing défensif (#85).
+- Amélioration de la classification des documents avec mise à jour du dictionnaire et des tests associés (#96).
+- Suppression d'une tâche cron de maintenance (#d9f4869).
+- Ajout de tests unitaires pour les fonctions de post-processing CCAP.
+- Correction de la définition des champs pour les tests unitaires.
+- Mise à jour des dépendances (#92).
