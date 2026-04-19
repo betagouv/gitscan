@@ -5,6 +5,7 @@
 │       ├── codeql-analysis.yml
 │       └── partaj-ci.yml
 ├── .gitignore
+├── .gitlab-ci.yml
 ├── .prettierrc
 ├── Dockerfile
 ├── LICENCE
@@ -91,6 +92,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── commands
     │   │   │   │       ├── __init__.py
+    │   │   │   │       ├── add_appendices_to_publishments.py
     │   │   │   │       ├── add_contributors_to_notes.py
     │   │   │   │       ├── add_fixtures.py
     │   │   │   │       ├── bootstrap_elasticsearch.py
@@ -101,6 +103,7 @@
     │   │   │   │       ├── es_init_referrals.py
     │   │   │   │       ├── fill_referrals_kdb_status.py
     │   │   │   │       ├── generate_notes.py
+    │   │   │   │       ├── transform_attachments_to_appendices.py
     │   │   │   │       ├── transform_referral_report_to_publishment.py
     │   │   │   │       ├── update_notes.py
     │   │   │   │       ├── update_publishment_date.py
@@ -234,6 +237,8 @@
     │   │   │   │   ├── 0126_referral_send_to_kdb_states.py
     │   │   │   │   ├── 0127_referralreportappendix.py
     │   │   │   │   ├── 0128_alter_notification_notification_type_and_more.py
+    │   │   │   │   ├── 0129_referralreportappendix_include_to_publishment.py
+    │   │   │   │   ├── 0130_referralreportpublishment_appendices_and_more.py
     │   │   │   │   └── __init__.py
     │   │   │   ├── models
     │   │   │   │   ├── __init__.py
@@ -301,6 +306,20 @@
     │   │   │   │       │   ├── Marianne-Regular_Italic.otf
     │   │   │   │       │   ├── sourcesanspro-*.woff  (12 files)
     │   │   │   │       │   └── sourcesanspro-*.woff2  (12 files)
+    │   │   │   │       ├── icons
+    │   │   │   │       │   └── arrows
+    │   │   │   │       │       ├── arrow-*.svg  (44 files)
+    │   │   │   │       │       ├── contract-*.svg  (8 files)
+    │   │   │   │       │       ├── corner-*.svg  (16 files)
+    │   │   │   │       │       ├── expand-*.svg  (8 files)
+    │   │   │   │       │       ├── fr--arrow-left-s-first-line.svg
+    │   │   │   │       │       ├── fr--arrow-left-s-line-double.svg
+    │   │   │   │       │       ├── fr--arrow-right-s-last-line.svg
+    │   │   │   │       │       ├── fr--arrow-right-s-line-double.svg
+    │   │   │   │       │       ├── skip-down-fill.svg
+    │   │   │   │       │       ├── skip-down-line.svg
+    │   │   │   │       │       ├── skip-up-fill.svg
+    │   │   │   │       │       └── skip-up-line.svg
     │   │   │   │       ├── icons.svg
     │   │   │   │       └── img
     │   │   │   │           ├── at-line.svg
@@ -420,6 +439,7 @@
         │   │   ├── text.css
         │   │   ├── tooltip.css
         │   │   └── version.css
+        │   ├── partial-dsfr.css
         │   ├── properties
         │   │   └── shadows.css
         │   ├── styles.css
@@ -437,7 +457,7 @@
         │   │   │   └── index.tsx
         │   │   ├── Attachment
         │   │   │   ├── AttachmentItem.tsx
-        │   │   │   ├── ReportAttachment.tsx
+        │   │   │   ├── ReportDocument.tsx
         │   │   │   └── ScanVerified.tsx
         │   │   ├── AttachmentsFormField
         │   │   │   └── index.tsx
@@ -506,6 +526,7 @@
         │   │   │   ├── NoteListContent.tsx
         │   │   │   ├── NoteListView.tsx
         │   │   │   ├── NotePreviewModal.tsx
+        │   │   │   ├── PaginationGeneric.tsx
         │   │   │   └── UsageGuide.tsx
         │   │   ├── OldDashboard
         │   │   │   ├── UserDashboard.tsx
@@ -542,6 +563,7 @@
         │   │   │   ├── AppendixDocument.tsx
         │   │   │   ├── AppendixEventIndicator.tsx
         │   │   │   ├── AppendixSummary.tsx
+        │   │   │   ├── MinAppendix.tsx
         │   │   │   └── index.tsx
         │   │   ├── ReferralDetail
         │   │   │   ├── Content
@@ -601,6 +623,8 @@
         │   │   │   └── index.tsx
         │   │   ├── ReferralDraftAnswersList
         │   │   │   └── index.tsx
+        │   │   ├── ReferralEvents
+        │   │   │   └── index.tsx
         │   │   ├── ReferralForm
         │   │   │   ├── AttachmentsField.tsx
         │   │   │   ├── ContextField.tsx
@@ -651,7 +675,6 @@
         │   │   │   │   ├── Message.tsx
         │   │   │   │   ├── NotificationList.tsx
         │   │   │   │   └── ProcessingMessage.tsx
-        │   │   │   ├── SendVersionModal.tsx
         │   │   │   ├── Version.tsx
         │   │   │   ├── VersionDocument.tsx
         │   │   │   ├── VersionEventIndicator.tsx
@@ -712,6 +735,8 @@
         │   │   ├── SentReferralsList
         │   │   │   └── index.tsx
         │   │   ├── Spinner
+        │   │   │   └── index.tsx
+        │   │   ├── SupportOverlay
         │   │   │   └── index.tsx
         │   │   ├── Tabs.tsx
         │   │   ├── Tickbox.tsx
@@ -777,6 +802,7 @@
         │   │   │   ├── RequestChangeAppendixContent.tsx
         │   │   │   ├── RequestChangeContent.tsx
         │   │   │   ├── RoleModal.tsx
+        │   │   │   ├── SendVersionContent.tsx
         │   │   │   ├── SubscribeModal.tsx
         │   │   │   ├── ValidateAppendixContent.tsx
         │   │   │   ├── ValidateContent.tsx
@@ -909,4 +935,4 @@
         ├── tsconfig.json
         ├── webpack.config.js
         └── yarn.lock
-170 directories, 834 files
+174 directories, 928 files

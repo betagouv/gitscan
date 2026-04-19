@@ -1,22 +1,23 @@
-## Changelog : partaj (30 derniers jours)
+## Changelog : partaj (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de Partaj se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du tableau de bord, de la gestion des saisines et de l'affichage des informations relatives aux dossiers. Des améliorations ont également été apportées à la gestion des pièces jointes et à la communication interne.
+Ce mois-ci, les évolutions de Partaj se concentrent sur l'amélioration de l'expérience utilisateur, notamment en matière de notifications et de consultation des saisines. Des corrections et des améliorations ont été apportées au suivi des pièces jointes et à la gestion des versions de projet. L'infrastructure a également été renforcée avec l'ajout d'une intégration GitLab CI.
 
 ### Évolutions fonctionnelles
-- Correction de la pagination du tableau de bord [#N997](https://github.com/MTES-MCT/partaj/issues/N997).
-- Amélioration de l'affichage des saisines liées [#IS-5](https://github.com/MTES-MCT/partaj/issues/IS-5).
-- Ajout d'un nouvel onglet "Journal & Discussion" pour faciliter la communication et le suivi des échanges.
-- Affichage des changements de statut KDB dans le chat.
-- Correction de l'actualisation des messages après une mise à jour de l'état KDB via l'affectation d'unité.
-- Correction pour les cas "particuliers".
-- Ajout d'une modale latérale pour la validation des pièces jointes.
-- Ajout de modales de version.
+- Les co-demandeurs sont désormais notifiés de l’envoi d’une saisine. [#10](https://github.com/MTES-MCT/partaj/issues/10)
+- Un bouton "Consulter la saisine" a été ajouté pour faciliter l'accès aux informations pertinentes. [#12](https://github.com/MTES-MCT/partaj/issues/12)
+- Les chargés d’études sont notifiés de l’ajout d’une nouvelle version de projet de réponse par le supérieur hiérarchique. [#8](https://github.com/MTES-MCT/partaj/issues/8)
+- Amélioration de la gestion des pièces jointes : correction de bugs, amélioration de l'affichage et de l'enregistrement des pièces jointes.
+- Pagination de la base de connaissance avec un composant React DSFR. [#13](https://github.com/MTES-MCT/partaj/issues/13)
+- Ajout d'icônes DSFR pour améliorer l'interface utilisateur. [#13](https://github.com/MTES-MCT/partaj/issues/13)
 
 ### Évolutions techniques
-- Correction pour assurer le rafraîchissement des données depuis la base de données avant l'assignation de la date de création.
-- Suppression de la modale de confirmation de division et sauvegarde en cas de problème réseau.
-- Alignement à gauche du texte sur certains éléments de l'interface.
+- Intégration de GitLab CI pour améliorer le processus d'intégration continue et de déploiement.
+- Refactorisation du code pour supprimer les importations inutiles.
+- Mise à jour de la configuration pour supprimer l'utilisation d'un mode "offline" en développement.
+- Mise en place d'une version compatible avec Elastic Search et Scalingo.
+- Modification des tests pour assurer la stabilité et la fiabilité des nouvelles fonctionnalités.
 
 ### Autres changements
-- Corrections suite aux revues de code.
+- Le bouton de support a été modifié pour ouvrir un lien externe au lieu d'utiliser Crisp.
+- Application de `isort` pour uniformiser le code.
