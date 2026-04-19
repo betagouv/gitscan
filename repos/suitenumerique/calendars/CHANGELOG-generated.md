@@ -1,27 +1,27 @@
-## Changelog : calendars (30 derniers jours)
+## Changelog : calendars (30 derniers jours, au 18 avril 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par d'importantes améliorations de l'application Calendars, notamment l'ajout de fonctionnalités de partage de calendriers, de liens de confirmation de participation (RSVP) et d'importation d'événements. L'interface utilisateur a également été améliorée, et des corrections ont été apportées pour optimiser les performances et la stabilité de l'application. De plus, le support de l'architecture ARM64 a été ajouté pour les images Docker.
+Ce mois-ci, l'application Calendars a bénéficié d'améliorations significatives en termes de gestion des boîtes aux lettres et des calendriers, ainsi que de corrections de bugs et d'optimisations diverses. L'intégration avec Messages a été ajoutée, offrant de nouvelles possibilités aux utilisateurs. Plusieurs améliorations ont été apportées à la sécurité et à la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de liens de confirmation de participation (RSVP) dans les emails d'invitation aux événements [#10](https://github.com/suitenumerique/calendars/issues/10).
-- Implémentation du partage de calendriers avec une nouvelle interface utilisateur et suppression de la terminologie "agenda" [#12](https://github.com/suitenumerique/calendars/issues/12).
-- Ajout d'une fonctionnalité d'importation d'événements via un modal dédié.
-- Ajout d'un bouton de visioconférence dans le modal d'événement, avec génération d'un lien [#8](https://github.com/suitenumerique/calendars/issues/8).
-- Ajout d'un backend pour la gestion des "Entitlements" avec support pour Deploy Center [#31](https://github.com/suitenumerique/calendars/issues/31).
-- Ajout d'une couleur par défaut pour les calendriers.
+- **Partage :** Ajout de différents niveaux de partage avec des corrections d'interface utilisateur associées. [#41](https://github.com/suitenumerique/calendars/issues/41)
+- **Intégration Messages :** Intégration avec l'application Messages pour une meilleure expérience utilisateur. [#46](https://github.com/suitenumerique/calendars/issues/46)
+- **Boîtes aux lettres :** Possibilité de mettre à niveau des calendriers individuels en boîtes aux lettres. [#49](https://github.com/suitenumerique/calendars/issues/49)
+- **URL de rappel :** Simplification de la logique des URL de rappel (callbacks). [#47](https://github.com/suitenumerique/calendars/issues/47)
+- **Disponibilités :** Masquage de la case à cocher "disponibilités" dans le modal d'édition en fonction d'un indicateur de fonctionnalité.
+- **Invitations :** Correction d'un bug empêchant l'envoi d'invitations depuis la boîte aux lettres sélectionnée.
+- **Audit :** Ajout de champs d'audit pour suivre le canal et l'utilisateur. [#42](https://github.com/suitenumerique/calendars/issues/42)
 
 ### Évolutions techniques
-- Ajout du support de l'architecture ARM64 pour les images Docker et amélioration du workflow CI [#11](https://github.com/suitenumerique/calendars/issues/11).
-- Refactoring du `EventModal` en composants de section pour une meilleure organisation du code [#7](https://github.com/suitenumerique/calendars/issues/7).
-- Optimisation de la récupération des calendriers visibles en utilisant une seule requête et en les affichant de manière plus efficace [#12](https://github.com/suitenumerique/calendars/issues/12).
-- Suppression des modèles `Calendar` et `CalendarShare` pour simplifier la structure des données [#12](https://github.com/suitenumerique/calendars/issues/12).
-- Ajout d'un buildpack Scalingo et d'une favicon dynamique.
-- Amélioration du CI et nettoyage général du code [#12](https://github.com/suitenumerique/calendars/issues/12).
+- **SabreDAV :** Séparation de la boîte aux lettres et des principaux utilisateurs dans SabreDAV. [#49](https://github.com/suitenumerique/calendars/issues/49)
+- **Favicon :** Chargement du favicon à partir d'un fichier d'asset au lieu d'un SVG en ligne. [#39](https://github.com/suitenumerique/calendars/issues/39)
+- **CI/CD :** Nettoyage des anciens fichiers et correction de la CI.
+- **Makefile :** Démarrage du backend et de Keycloak avec la commande `make start`.
 
 ### Autres changements
-- Réorganisation de la documentation dans le dossier `docs/` [#12](https://github.com/suitenumerique/calendars/issues/12).
-- Corrections de textes sur la page d'accueil.
-- Corrections mineures de style et de formatage du code.
-- Ajout de tests pour la fonctionnalité de visioconférence.
-- Extraction de l'URL ICS et affichage dans les emails d'invitation.
+- Correction de plusieurs petits problèmes avant la première version.
+- Correction d'une boucle infinie après la connexion en production.
+- Correction d'erreurs d'affichage et de verbosité des logs.
+- Correction de tests instables.
+- Correction de problèmes de linting.
+- Affichage d'une erreur lorsque aucune URL de base n'est présente.

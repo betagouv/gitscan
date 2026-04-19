@@ -1,7 +1,4 @@
 .
-├── .cursor
-│   └── rules
-│       └── django-python.mdc
 ├── .github
 │   ├── ISSUE_TEMPLATE
 │   │   ├── Bug_report.md
@@ -11,10 +8,9 @@
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
 │       ├── calendars-frontend.yml
+│       ├── calendars-ghcr.yml
 │       ├── calendars.yml
-│       ├── crowdin_download.yml
-│       ├── crowdin_upload.yml
-│       ├── docker-hub.yml
+│       ├── docker-publish.yml
 │       └── front-dependencies-installation.yml
 ├── .gitignore
 ├── .gitlint
@@ -35,11 +31,11 @@
 │   ├── fernetkey
 │   ├── manage
 │   ├── postgres_e2e
-│   ├── pylint
 │   ├── pytest
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── scalingo_run_web
+│   ├── scalingo_run_worker
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
 ├── compose.yaml
@@ -48,45 +44,20 @@
 │   ├── auth
 │   │   └── realm.json
 │   ├── files
-│   │   ├── development
-│   │   │   └── etc
-│   │   │       └── nginx
-│   │   │           └── conf.d
-│   │   │               └── default.conf
-│   │   ├── docker-entrypoint-initdb.d
-│   │   │   └── init-databases.sh
-│   │   └── etc
-│   │       └── nginx
-│   │           └── conf.d
-│   │               └── default.conf
-│   ├── postgresql
-│   │   └── init-databases.sh
-│   └── sabredav
-│       ├── Dockerfile
-│       ├── composer.json
-│       ├── init-database.sh
-│       ├── php-fpm.conf
-│       ├── sabredav.conf
-│       ├── server.php
-│       ├── sql
-│       │   ├── pgsql.addressbooks.sql
-│       │   ├── pgsql.calendars.sql
-│       │   ├── pgsql.locks.sql
-│       │   ├── pgsql.principals.sql
-│       │   ├── pgsql.propertystorage.sql
-│       │   └── pgsql.users.sql
-│       └── src
-│           ├── ApiKeyAuthBackend.php
-│           ├── AttendeeNormalizerPlugin.php
-│           ├── AutoCreatePrincipalBackend.php
-│           ├── CalendarSanitizerPlugin.php
-│           ├── HttpCallbackIMipPlugin.php
-│           └── ICSImportPlugin.php
+│   │   └── docker-entrypoint-initdb.d
+│   │       └── init-databases.sh
+│   └── postgresql
+│       └── init-databases.sh
 ├── docs
+│   ├── RECURRENCE_TESTS.md
 │   ├── architecture.md
 │   ├── entitlements.md
+│   ├── freebusy.md
 │   ├── invitations.md
-│   └── recurrence.md
+│   ├── mailboxes.md
+│   ├── organizations.md
+│   ├── recurrence.md
+│   └── resources.md
 ├── env.d
 │   └── development
 │       ├── backend.defaults
@@ -98,6 +69,8 @@
 │       └── postgresql.e2e
 ├── gitlint
 │   └── gitlint_emoji.py
+├── scripts
+│   └── fake_messages_server.py
 └── src
     ├── backend
     │   ├── .dockerignore
@@ -107,7 +80,6 @@
     │   ├── __init__.py
     │   ├── calendars
     │   │   ├── __init__.py
-    │   │   ├── celery_app.py
     │   │   ├── configuration
     │   │   │   └── theme
     │   │   │       └── default.json
@@ -124,8 +96,11 @@
     │   │   │   ├── serializers.py
     │   │   │   ├── viewsets.py
     │   │   │   ├── viewsets_caldav.py
+    │   │   │   ├── viewsets_channels.py
     │   │   │   ├── viewsets_ical.py
-    │   │   │   └── viewsets_rsvp.py
+    │   │   │   ├── viewsets_rsvp.py
+    │   │   │   ├── viewsets_setup.py
+    │   │   │   └── viewsets_task.py
     │   │   ├── apps.py
     │   │   ├── authentication
     │   │   │   ├── __init__.py
@@ -148,21 +123,26 @@
     │   │   ├── management
     │   │   │   └── commands
     │   │   │       ├── __init__.py
-    │   │   │       └── createsuperuser.py
+    │   │   │       ├── createsuperuser.py
+    │   │   │       └── sync_mailbox_acls.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
-    │   │   │   ├── 0002_calendarsubscriptiontoken.py
-    │   │   │   ├── 0003_calendarsubscriptiontoken_token_active_idx.py
-    │   │   │   ├── 0004_remove_calendarshare_calendar_and_more.py
+    │   │   │   ├── 0002_organization_default_sharing_level.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── caldav_service.py
     │   │   │   ├── calendar_invitation_service.py
+    │   │   │   ├── channel_event_service.py
     │   │   │   ├── import_service.py
+    │   │   │   ├── messages_service.py
+    │   │   │   ├── resource_service.py
+    │   │   │   ├── setup_service.py
     │   │   │   └── translation_service.py
     │   │   ├── signals.py
+    │   │   ├── task_utils.py
+    │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   ├── emails
     │   │   │   │   ├── calendar_invitation.html
@@ -174,6 +154,7 @@
     │   │   │   │   ├── calendar_invitation_update.html
     │   │   │   │   └── calendar_invitation_update.txt
     │   │   │   └── rsvp
+    │   │   │       ├── confirm.html
     │   │   │       └── response.html
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
@@ -192,17 +173,30 @@
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_audit_tracking.py
     │   │   │   ├── test_caldav_proxy.py
     │   │   │   ├── test_caldav_scheduling.py
     │   │   │   ├── test_caldav_service.py
     │   │   │   ├── test_calendar_invitation_service.py
+    │   │   │   ├── test_calendar_privacy_e2e.py
+    │   │   │   ├── test_calendar_sharing_e2e.py
     │   │   │   ├── test_calendar_subscription_api.py
+    │   │   │   ├── test_channels.py
+    │   │   │   ├── test_createsuperuser.py
+    │   │   │   ├── test_cross_org_e2e.py
     │   │   │   ├── test_entitlements.py
     │   │   │   ├── test_ical_export.py
+    │   │   │   ├── test_ical_export_e2e.py
     │   │   │   ├── test_import_events.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_organizations.py
+    │   │   │   ├── test_permissions_security.py
+    │   │   │   ├── test_resources.py
     │   │   │   ├── test_rsvp.py
     │   │   │   ├── test_settings.py
+    │   │   │   ├── test_setup_service.py
+    │   │   │   ├── test_signals.py
+    │   │   │   ├── test_tasks.py
     │   │   │   ├── test_translation_service.py
     │   │   │   └── utils
     │   │   │       └── urls.py
@@ -220,26 +214,53 @@
     │   │   └── viewsets.py
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
-    │   ├── locale
-    │   │   ├── de_DE
-    │   │   │   └── LC_MESSAGES
-    │   │   │       └── django.po
-    │   │   ├── en_US
-    │   │   │   └── LC_MESSAGES
-    │   │   │       └── django.po
-    │   │   ├── fr_FR
-    │   │   │   └── LC_MESSAGES
-    │   │   │       └── django.po
-    │   │   └── nl_NL
-    │   │       └── LC_MESSAGES
-    │   │           └── django.po
     │   ├── manage.py
     │   ├── pyproject.toml
-    │   └── uv.lock
+    │   ├── uv.lock
+    │   └── worker.py
+    ├── caldav
+    │   ├── Dockerfile
+    │   ├── composer.json
+    │   ├── init-database.sh
+    │   ├── php-fpm.conf
+    │   ├── sabredav.conf
+    │   ├── server.php
+    │   ├── sql
+    │   │   ├── migrations
+    │   │   │   ├── 001-add-audit-columns.sql
+    │   │   │   └── 002-add-calendarinstances-share-sync.sql
+    │   │   ├── pgsql.addressbooks.sql
+    │   │   ├── pgsql.calendars.sql
+    │   │   ├── pgsql.locks.sql
+    │   │   ├── pgsql.principals.sql
+    │   │   ├── pgsql.propertystorage.sql
+    │   │   └── pgsql.users.sql
+    │   └── src
+    │       ├── ApiKeyAuthBackend.php
+    │       ├── AttendeeNormalizerPlugin.php
+    │       ├── AuditCalDAVBackend.php
+    │       ├── AuditContextPlugin.php
+    │       ├── AvailabilityPlugin.php
+    │       ├── CalendarSanitizerPlugin.php
+    │       ├── CalendarsRoot.php
+    │       ├── CustomCalDAVPlugin.php
+    │       ├── CustomCalendarHome.php
+    │       ├── FreeBusyOrgScopePlugin.php
+    │       ├── HttpCallbackIMipPlugin.php
+    │       ├── InternalApiPlugin.php
+    │       ├── MailboxPlugin.php
+    │       ├── MailboxSharedCalendar.php
+    │       ├── PrincipalBackend.php
+    │       ├── PrincipalsRoot.php
+    │       ├── ResourceAutoSchedulePlugin.php
+    │       ├── ResourceCalendar.php
+    │       ├── ShareAccessPlugin.php
+    │       └── SharedCalendarPrivacyPlugin.php
     ├── frontend
     │   ├── .dockerignore
+    │   ├── Caddyfile
     │   ├── Dockerfile
-    │   ├── Dockerfile.nginx
+    │   ├── Dockerfile.caddy
     │   ├── apps
     │   │   ├── calendars
     │   │   │   ├── .env
@@ -248,8 +269,6 @@
     │   │   │   ├── README.md
     │   │   │   ├── __mocks__
     │   │   │   │   └── fileMock.js
-    │   │   │   ├── conf
-    │   │   │   │   └── default.conf
     │   │   │   ├── cunningham.ts
     │   │   │   ├── eslint.config.mjs
     │   │   │   ├── jest.config.ts
@@ -278,7 +297,7 @@
     │   │   │   │   │   │   ├── tchap.svg
     │   │   │   │   │   │   └── visio.svg
     │   │   │   │   │   ├── home
-    │   │   │   │   │   │   └── banner.png
+    │   │   │   │   │   │   └── banner.svg
     │   │   │   │   │   ├── icons
     │   │   │   │   │   │   ├── cancel.svg
     │   │   │   │   │   │   ├── cancel_blue.svg
@@ -333,25 +352,35 @@
     │   │   │   │   │   │   │   └── scheduler
     │   │   │   │   │   │   │       ├── AttendeesInput.scss
     │   │   │   │   │   │   │       ├── AttendeesInput.tsx
+    │   │   │   │   │   │   │       ├── CalendarSelect.tsx
     │   │   │   │   │   │   │       ├── DeleteEventModal.tsx
     │   │   │   │   │   │   │       ├── EventModal.scss
     │   │   │   │   │   │   │       ├── EventModal.tsx
+    │   │   │   │   │   │   │       ├── FreeBusyTimeline.scss
+    │   │   │   │   │   │   │       ├── FreeBusyTimeline.tsx
     │   │   │   │   │   │   │       ├── RecurrenceEditor.scss
     │   │   │   │   │   │   │       ├── RecurrenceEditor.tsx
+    │   │   │   │   │   │   │       ├── RecurringEditModal.tsx
     │   │   │   │   │   │   │       ├── Scheduler.scss
     │   │   │   │   │   │   │       ├── Scheduler.tsx
     │   │   │   │   │   │   │       ├── SchedulerToolbar.scss
     │   │   │   │   │   │   │       ├── SchedulerToolbar.tsx
+    │   │   │   │   │   │   │       ├── __tests__
+    │   │   │   │   │   │   │       │   ├── attendees-utils.test.ts
+    │   │   │   │   │   │   │       │   └── organizer-for-calendar.test.ts
+    │   │   │   │   │   │   │       ├── attendees-utils.ts
     │   │   │   │   │   │   │       ├── event-modal-sections
     │   │   │   │   │   │   │       │   ├── AttachmentsSection.tsx
     │   │   │   │   │   │   │       │   ├── AttendeesSection.tsx
     │   │   │   │   │   │   │       │   ├── DateTimeSection.tsx
     │   │   │   │   │   │   │       │   ├── DescriptionSection.tsx
+    │   │   │   │   │   │   │       │   ├── FreeBusySection.tsx
     │   │   │   │   │   │   │       │   ├── InvitationResponseSection.scss
     │   │   │   │   │   │   │       │   ├── InvitationResponseSection.tsx
     │   │   │   │   │   │   │       │   ├── LocationSection.tsx
     │   │   │   │   │   │   │       │   ├── RecurrenceSection.tsx
     │   │   │   │   │   │   │       │   ├── RemindersSection.tsx
+    │   │   │   │   │   │   │       │   ├── ResourcesSection.tsx
     │   │   │   │   │   │   │       │   ├── SectionPill.scss
     │   │   │   │   │   │   │       │   ├── SectionPill.tsx
     │   │   │   │   │   │   │       │   ├── SectionPills.tsx
@@ -364,9 +393,20 @@
     │   │   │   │   │   │   │       │   └── generateVisioRoomId.ts
     │   │   │   │   │   │   │       ├── hooks
     │   │   │   │   │   │   │       │   ├── useEventForm.ts
+    │   │   │   │   │   │   │       │   ├── useFreeBusy.ts
+    │   │   │   │   │   │   │       │   ├── useMobileNavigation.ts
     │   │   │   │   │   │   │       │   ├── useSchedulerHandlers.ts
     │   │   │   │   │   │   │       │   └── useSchedulerInit.ts
     │   │   │   │   │   │   │       ├── index.ts
+    │   │   │   │   │   │   │       ├── mobile
+    │   │   │   │   │   │   │       │   ├── FloatingActionButton.scss
+    │   │   │   │   │   │   │       │   ├── FloatingActionButton.tsx
+    │   │   │   │   │   │   │       │   ├── MobileListView.scss
+    │   │   │   │   │   │   │       │   ├── MobileListView.tsx
+    │   │   │   │   │   │   │       │   ├── MobileToolbar.scss
+    │   │   │   │   │   │   │       │   ├── MobileToolbar.tsx
+    │   │   │   │   │   │   │       │   ├── WeekDayBar.scss
+    │   │   │   │   │   │   │       │   └── WeekDayBar.tsx
     │   │   │   │   │   │   │       ├── scheduler-theme.scss
     │   │   │   │   │   │   │       ├── types.ts
     │   │   │   │   │   │   │       └── utils
@@ -387,13 +427,16 @@
     │   │   │   │   │   │   │       ├── __tests__
     │   │   │   │   │   │   │       │   ├── caldav-helpers.test.ts
     │   │   │   │   │   │   │       │   ├── event-calendar-helper.test.ts
+    │   │   │   │   │   │   │       │   ├── freebusy-builder.test.ts
     │   │   │   │   │   │   │       │   ├── ics-helper.test.ts
+    │   │   │   │   │   │   │       │   ├── sanitizeIcsUrl.test.ts
     │   │   │   │   │   │   │       │   └── timezone-conversion.test.ts
     │   │   │   │   │   │   │       ├── caldav-helpers.ts
     │   │   │   │   │   │   │       ├── constants.ts
     │   │   │   │   │   │   │       ├── helpers
     │   │   │   │   │   │   │       │   ├── dav-helper.ts
     │   │   │   │   │   │   │       │   ├── event-calendar-helper.ts
+    │   │   │   │   │   │   │       │   ├── freebusy-builder.ts
     │   │   │   │   │   │   │       │   ├── ical-timezones.ts
     │   │   │   │   │   │   │       │   ├── ics-helper.ts
     │   │   │   │   │   │   │       │   ├── index.ts
@@ -417,24 +460,67 @@
     │   │   │   │   │   │   ├── Feedback.scss
     │   │   │   │   │   │   ├── Feedback.tsx
     │   │   │   │   │   │   └── useMessagesWidget.tsx
+    │   │   │   │   │   ├── home
+    │   │   │   │   │   │   └── HomePage.tsx
     │   │   │   │   │   ├── i18n
     │   │   │   │   │   │   ├── conf.ts
     │   │   │   │   │   │   ├── initI18n.ts
     │   │   │   │   │   │   ├── translations.json
     │   │   │   │   │   │   └── utils.ts
+    │   │   │   │   │   ├── integrations
+    │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   └── useChannels.ts
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── ChannelCard.tsx
+    │   │   │   │   │   │   │   ├── ChannelList.tsx
+    │   │   │   │   │   │   │   ├── CreateChannelModal.tsx
+    │   │   │   │   │   │   │   ├── DeleteChannelModal.tsx
+    │   │   │   │   │   │   │   ├── Integrations.scss
+    │   │   │   │   │   │   │   └── TokenRevealBox.tsx
+    │   │   │   │   │   │   └── types.ts
     │   │   │   │   │   ├── layouts
-    │   │   │   │   │   │   └── components
-    │   │   │   │   │   │       ├── global
-    │   │   │   │   │   │       │   ├── GlobalLayout.scss
-    │   │   │   │   │   │       │   └── GlobalLayout.tsx
-    │   │   │   │   │   │       ├── header
-    │   │   │   │   │   │       │   ├── Header.tsx
-    │   │   │   │   │   │       │   └── index.scss
-    │   │   │   │   │   │       ├── left-panel
-    │   │   │   │   │   │       │   ├── LeftPanelMobile.scss
-    │   │   │   │   │   │       │   └── LeftPanelMobile.tsx
-    │   │   │   │   │   │       └── simple
-    │   │   │   │   │   │           └── SimpleLayout.tsx
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── global
+    │   │   │   │   │   │   │   │   ├── GlobalLayout.scss
+    │   │   │   │   │   │   │   │   └── GlobalLayout.tsx
+    │   │   │   │   │   │   │   ├── header
+    │   │   │   │   │   │   │   │   ├── Header.tsx
+    │   │   │   │   │   │   │   │   └── index.scss
+    │   │   │   │   │   │   │   ├── left-panel
+    │   │   │   │   │   │   │   │   ├── LeftPanelMobile.scss
+    │   │   │   │   │   │   │   │   └── LeftPanelMobile.tsx
+    │   │   │   │   │   │   │   └── simple
+    │   │   │   │   │   │   │       └── SimpleLayout.tsx
+    │   │   │   │   │   │   └── contexts
+    │   │   │   │   │   │       └── LeftPanelContext.tsx
+    │   │   │   │   │   ├── mailbox
+    │   │   │   │   │   │   ├── MailboxContext.tsx
+    │   │   │   │   │   │   ├── api.ts
+    │   │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   │   ├── types.ts
+    │   │   │   │   │   │   └── useMailboxSync.ts
+    │   │   │   │   │   ├── resources
+    │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   ├── useResourcePrincipals.ts
+    │   │   │   │   │   │   │   └── useResources.ts
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── CreateResourceModal.tsx
+    │   │   │   │   │   │   │   ├── DeleteResourceModal.tsx
+    │   │   │   │   │   │   │   ├── ResourceCard.tsx
+    │   │   │   │   │   │   │   ├── ResourceList.tsx
+    │   │   │   │   │   │   │   └── Resources.scss
+    │   │   │   │   │   │   └── types.ts
+    │   │   │   │   │   ├── settings
+    │   │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   │   └── availability-ics.test.ts
+    │   │   │   │   │   │   ├── api
+    │   │   │   │   │   │   │   └── useWorkingHours.ts
+    │   │   │   │   │   │   ├── availability-ics.ts
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── AvailabilityRow.tsx
+    │   │   │   │   │   │   │   ├── WorkingHoursSettings.scss
+    │   │   │   │   │   │   │   └── WorkingHoursSettings.tsx
+    │   │   │   │   │   │   └── types.ts
     │   │   │   │   │   ├── ui
     │   │   │   │   │   │   ├── components
     │   │   │   │   │   │   │   ├── gaufre
@@ -462,9 +548,12 @@
     │   │   │   │   │   │       └── useDynamicFavicon.ts
     │   │   │   │   │   └── users
     │   │   │   │   │       ├── hooks
-    │   │   │   │   │       │   └── useUserQueries.tsx
+    │   │   │   │   │       │   ├── useUserQueries.tsx
+    │   │   │   │   │       │   └── useUserSearch.ts
     │   │   │   │   │       └── types.ts
     │   │   │   │   ├── hooks
+    │   │   │   │   │   ├── useFeatureFlag.ts
+    │   │   │   │   │   ├── useIsMobile.ts
     │   │   │   │   │   └── useThemeCustomization.tsx
     │   │   │   │   ├── pages
     │   │   │   │   │   ├── 401.tsx
@@ -475,33 +564,34 @@
     │   │   │   │   │   ├── calendar.tsx
     │   │   │   │   │   ├── index.scss
     │   │   │   │   │   ├── index.tsx
-    │   │   │   │   │   └── no-access.tsx
+    │   │   │   │   │   ├── integrations.tsx
+    │   │   │   │   │   ├── no-access.tsx
+    │   │   │   │   │   ├── resources.tsx
+    │   │   │   │   │   └── settings.tsx
     │   │   │   │   ├── styles
     │   │   │   │   │   ├── cunningham-tokens-sass.scss
     │   │   │   │   │   ├── cunningham-tokens.css
     │   │   │   │   │   ├── cunningham-tokens.ts
     │   │   │   │   │   └── globals.scss
     │   │   │   │   └── utils
+    │   │   │   │       ├── date.ts
     │   │   │   │       └── useQueries.ts
     │   │   │   ├── svg.d.ts
+    │   │   │   ├── test-dst.js
     │   │   │   ├── tsconfig.json
     │   │   │   └── types.d.ts
     │   │   └── e2e
     │   │       ├── .gitignore
     │   │       ├── __tests__
     │   │       │   ├── calendar-locale.test.ts
-    │   │       │   └── calendar.test.ts
+    │   │       │   ├── calendar.test.ts
+    │   │       │   └── helpers
+    │   │       │       └── e2e-helpers.ts
     │   │       ├── package.json
     │   │       ├── playwright.config.ts
     │   │       └── tsconfig.json
-    │   ├── docker
-    │   │   └── files
-    │   │       └── usr
-    │   │           └── local
-    │   │               └── bin
-    │   │                   └── entrypoint
-    │   ├── package.json
-    │   └── yarn.lock
-    └── nginx
-        └── servers.conf.erb
-133 directories, 373 files
+    │   ├── package-lock.json
+    │   └── package.json
+    └── proxy
+        └── Caddyfile
+127 directories, 469 files
