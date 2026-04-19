@@ -1,22 +1,21 @@
-## Changelog : francetransfert (30 derniers jours, au 9 mai 2026)
+## Changelog : francetransfert (30 derniers jours, au 2026-04-15)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité, notamment en ajoutant des types de fichiers à la liste noire pour la protection contre les menaces. Des ajustements ont également été apportés à la gestion des envois et téléchargements, incluant des limites et des vérifications de dates, ainsi que des optimisations de l'infrastructure pour la production.
+Cette version apporte des améliorations de sécurité, notamment en ajoutant des types de fichiers à la liste noire pour éviter les téléchargements potentiellement dangereux. Des ajustements ont été effectués sur la gestion des dates d'expiration des fichiers et des limites d'envoi de notifications par email. Des optimisations de l'infrastructure et des mises à jour de versions ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout de types de fichiers HTML et HTM à la liste noire pour renforcer la sécurité des transferts [#6](https://github.com/numerique-gouv/francetransfert/issues/6).
-- Limitation du nombre d'emails envoyés pour certains processus (mails de relance, téléchargements).
-- Amélioration de la gestion des dates de validité des liens de téléchargement.
-- Possibilité de restaurer les paramètres de restauration dans le fichier `values.ft.yaml`.
+- Ajout de types de fichiers HTML et HTM à la liste noire pour interdire leur transfert [#6](https://github.com/numerique-gouv/francetransfert/issues/6).
+- Amélioration de la gestion des dates d'expiration des fichiers et des téléchargements.
+- Limitation du nombre de notifications par email envoyées pour certains événements.
 
 ### Évolutions techniques
-- Ajustement des paramètres HPA (Horizontal Pod Autoscaler) pour optimiser la gestion des ressources en production.
+- Ajustement des paramètres HPA (Horizontal Pod Autoscaler) pour l'environnement de production afin d'optimiser la scalabilité.
 - Mise à jour des images Docker vers la version 4.0.13.
-- Mises à jour de dépendances internes (Spring, Logback, POM).
-- Amélioration de la gestion des jobs de verrouillage/séquestre.
-- Préparation d'une nouvelle version du service.
+- Mise à jour des dépendances Spring.
+- Mise à jour de la librairie Logback.
+- Modifications de la configuration Kubernetes (décommentage des paramètres de restauration).
 
 ### Autres changements
-- Mise à jour de la clé de chiffrement.
-- Corrections et améliorations diverses du code.
-- Mise à jour de la version du service.
+- Préparation d'une nouvelle version (mise à jour des numéros de version et des clés).
+- Diverses corrections et ajustements de code.
+- Mise à jour de la configuration `values.ft.yaml`.
