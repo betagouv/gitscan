@@ -1,19 +1,21 @@
-## Changelog : qualicharge (30 derniers jours, au 2026-04-15)
+## Changelog : qualicharge (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Qualicharge se concentrent sur l'amélioration de la robustesse de l'API, notamment dans la gestion des stations de recharge (décommissionnement, remise en service) et la gestion des erreurs. Des corrections ont également été apportées pour améliorer la fiabilité des indicateurs Prefect et des messages d'erreur. Enfin, de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+Ce mois-ci, les mises à jour de Qualicharge se sont concentrées sur l'amélioration de la sécurité, la correction de bugs liés à la gestion des stations de recharge et l'optimisation de la gestion des données. Des améliorations continues de l'infrastructure et des dépendances ont également été apportées pour assurer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des stations de recharge : les stations orphelines sont désormais mises hors service au lieu d'être supprimées, ce qui permet une meilleure traçabilité. [#936](https://github.com/MTES-MCT/qualicharge/issues/936)
-- Les stations sont remises en service automatiquement lorsqu'un seul point de charge redevient opérationnel.
-- Amélioration des messages d'erreur pour les opérations de lecture et de listage, les rendant plus clairs et informatifs.
-- Suppression des sessions longues de l'indicateur OCCT dans Prefect pour une meilleure précision.
+- Correction d'un bug qui empêchait la remise en service correcte des stations lorsque seulement un point de charge était opérationnel. [#936](https://github.com/MTES-MCT/qualicharge/issues/936)
+- Amélioration des messages d'erreur lors de la lecture ou de la liste des stations via l'API.
+- Suppression des requêtes API mettant en cache les informations utilisateur, améliorant potentiellement la sécurité et la performance.
+- Décommissionnement des stations orphelines au lieu de les supprimer définitivement, permettant une meilleure gestion des données.
+- Suppression des sessions longues de l'indicateur OCCT pour améliorer la clarté des données.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances Python, incluant `pyjwt` (avec correction de sécurité), `requests`, `dynaconf`, `Django`, `pytest` et d'autres, pour bénéficier des dernières corrections et améliorations.
-- Mise à jour des images Docker utilisées pour Metabase, Keycloak, Locust, Terraform, et UV.
-- Mise à jour des actions GitHub utilisées pour le déploiement et la publication (upload-artifact, gh-action-pypi-publish, setup-uv).
-- Upgrade de pygments à la version 2.20.0
+- Mise à jour de plusieurs dépendances Python pour corriger des failles de sécurité et bénéficier des dernières améliorations : `python-multipart`, `pyjwt`, `requests`, `dynaconf`, `pytest`, `pygments`.
+- Mise à jour des images Docker pour Keycloak, Curl, Locust, Terraform et Metabase vers leurs dernières versions stables.
+- Mise à jour des actions GitHub utilisées pour le CI/CD (upload-artifact, gh-action-pypi-publish, setup-uv).
+- Mise à jour de la version de Django à la version 6.0.4.
 
 ### Autres changements
-- Publication d'une nouvelle version de l'API (0.33.1).
+- Bump de la version de l'API à 0.33.1.
+- Amélioration de la documentation et de la configuration.
