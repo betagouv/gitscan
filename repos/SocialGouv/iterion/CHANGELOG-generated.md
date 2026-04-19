@@ -1,49 +1,41 @@
-## Changelog : iterion (30 derniers jours, au 2026-04-16)
+## Changelog : iterion (30 derniers jours, au 2026-04-17)
 
 ### Résumé
-Les dernières semaines ont été marquées par une refonte majeure de l'éditeur visuel, avec l'ajout de nouvelles fonctionnalités de manipulation de nœuds, de gestion des flux de travail et d'intégration d'agents d'IA.  Des améliorations significatives ont également été apportées à l'exécution des workflows, notamment la gestion des erreurs, la reprise après interruption et l'intégration de nouveaux outils. Enfin, l'infrastructure de test a été renforcée avec l'ajout de tests de fuzzing, d'injection de chaos et de benchmarks de performance.
+Ce mois-ci, iterion a connu une évolution significative, axée sur l'amélioration de l'expérience de développement et de l'automatisation des workflows. Les efforts se sont concentrés sur l'intégration de nouveaux agents (Claude Code, Codex), l'amélioration de la robustesse et de la traçabilité des exécutions, et le développement d'un éditeur visuel plus puissant et intuitif. De nombreuses améliorations techniques ont été apportées pour supporter ces nouvelles fonctionnalités et améliorer la qualité globale du code.
 
 ### Évolutions fonctionnelles
-- **Éditeur visuel :**
+
+- **Intégration de nouveaux agents :** Ajout de la délégation vers Claude Code et Codex, permettant d'étendre les capacités d'automatisation d'iterion.
+- **Amélioration du workflow de revue et correction :** Implémentation d'un workflow de revue et correction avec double verdict, permettant une validation plus rigoureuse des résultats.
+- **Résolution de problèmes de contexte :** Correction d'un problème lié à la fenêtre de contexte de Codex, améliorant sa performance.
+- **Reprise d'exécution :** Possibilité de reprendre une exécution interrompue ou annulée, améliorant la résilience du système.
+- **Amélioration de l'éditeur visuel :**
     - Ajout d'une bibliothèque de nœuds préconfigurés avec glisser-déposer.
     - Amélioration du routage des connexions entre les nœuds.
-    - Ajout de la possibilité de grouper visuellement les nœuds.
-    - Ajout d'un panneau latéral pour l'édition des nœuds.
-    - Possibilité de trier les nœuds chronologiquement.
-- **Workflow :**
-    - Ajout d'un mode "round robin" pour exécuter des tâches en parallèle.
-    - Ajout d'un mécanisme de reprise après échec pour les workflows interrompus.
-    - Implémentation d'un système de suivi du coût des workflows.
-    - Ajout d'un système de revue et de correction des workflows.
-- **Intégration d'agents :**
-    - Intégration de Claude Code et Codex pour l'exécution de tâches.
-    - Streaming des activités des agents (entrées, sorties, appels d'outils).
-    - Ajout de la possibilité de déléguer des tâches à des agents.
-- **Documentation :**
-    - Ajout d'exemples d'utilisation de l'éditeur et des workflows.
-    - Mise à jour de la documentation sur l'intégration d'agents.
+    - Ajout d'un panneau de sélection de nœuds.
+    - Ajout de la possibilité de créer des groupes de nœuds.
+- **Journalisation améliorée :** Affichage des réponses des LLM, des appels aux outils et de l'activité de délégation au niveau d'information.
+- **Nouvelle fonctionnalité "run-and-refine" :** Ajout d'une fonctionnalité pour tester itérativement les workflows.
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Standardisation de la journalisation avec `iterlog`.
-    - Refonte de l'architecture de l'exécution des workflows.
-    - Remplacement de la structure `Node` monolithique par une interface polymorphe.
-    - Migration vers le framework Cobra pour la CLI.
-- **Tests :**
-    - Ajout de tests de fuzzing, d'injection de chaos et de benchmarks de performance.
-    - Amélioration de la couverture des tests d'intégration.
-    - Ajout de tests e2e live.
-- **Infrastructure :**
-    - Mise à jour des dépendances.
-    - Amélioration du processus de CI/CD.
-    - Utilisation de `taskfile` pour la gestion des tâches.
-- **Autres :**
-    - Utilisation de `corepack` et `token-bureau` pour la gestion des versions de Node.js.
-    - Ajout de la prise en charge de WebSocket pour la surveillance des fichiers.
+
+- **Refactoring de la journalisation :** Standardisation de la journalisation avec `iterlog` dans tous les packages.
+- **Refactorisation de l'architecture :**
+    - Remplacement de la structure monolithique `Node` par une interface polymorphe.
+    - Séparation des backends d'exécution.
+    - Extraction de constantes partagées et amélioration de la cohérence du code.
+- **Amélioration de la gestion des erreurs :** Ajout de mécanismes de reprise et de gestion des erreurs pour les exécutions déléguées.
+- **Tests améliorés :** Ajout de tests de fuzzing, d'injection de chaos et de benchmarks de performance.
+- **Migration vers Pnpm :** Migration du gestionnaire de paquets vers Pnpm.
+- **Amélioration du CI/CD :** Optimisation du pipeline CI/CD pour les releases.
+- **Utilisation de Cobra pour la CLI :** Migration de la CLI vers le framework Cobra pour une meilleure organisation et maintenabilité.
+- **Implémentation d'un système de cache pour la découverte des outils.**
 
 ### Autres changements
-- Ajout de la documentation pour la fonction `run-and-refine`.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Nettoyage du code et suppression du code mort.
-- Amélioration des messages de log.
-- Ajout de commentaires et de documentation au code.
+
+- **Documentation mise à jour :** Ajout d'exemples et de documentation pour les nouvelles fonctionnalités.
+- **Nettoyage du code :** Suppression du code mort et des fonctions obsolètes.
+- **Correction de bugs mineurs :** Correction de divers bugs et améliorations de la stabilité.
+- **Amélioration des logs et des messages d'erreur.**
+- **Ajout de tests unitaires et d'intégration.**
+- **Mise à jour des dépendances.**
