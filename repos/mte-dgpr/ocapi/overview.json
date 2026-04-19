@@ -1,29 +1,31 @@
 {
   "url": "https://github.com/mte-dgpr/ocapi",
   "name": "ocapi",
-  "description": "OCAPI est un pipeline de traitement automatisé des arrêtés préfectoraux pour les installations classées pour la protection de l'environnement (ICPE). Il permet de détecter, résoudre les conflits et générer un permis consolidé en HTML.",
+  "description": "OCAPI est un pipeline de traitement automatisé des arrêtés préfectoraux pour les installations classées pour la protection de l'environnement (ICPE). Il permet de détecter, résoudre les conflits et générer un permis consolidé.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
+    "arretify",
     "beautifulsoup4",
     "langchain-core",
     "networkx",
     "pydantic",
-    "pydantic-settings",
     "requests"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -34,8 +36,10 @@
     "pytest",
     "coverage"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-08T10:59:11+02:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-04-17T10:54:56+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,

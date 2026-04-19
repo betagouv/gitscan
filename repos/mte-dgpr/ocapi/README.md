@@ -9,9 +9,9 @@ OCAPI permet de :
 - **Résoudre** les conflits et construire l'historique des articles
 - **Générer** un permis consolidé en HTML regroupant toutes les prescriptions applicables
 
-Les exemples ICPE (arrêtés et permis consolidés en HTML) sont consultables dans le navigateur une fois GitHub Pages activé sur la branche `main` (source : répertoire `examples/`).
+Les exemples ICPE (arrêtés et permis consolidés en HTML) sont consultables dans le navigateur une fois GitHub Pages activé sur la branche `main` (source : répertoire `snapshots/`).
 
-- **Index des exemples** : https://mte-dgpr.github.io/ocapi/examples/
+- **Index des exemples** : https://mte-dgpr.github.io/ocapi/snapshots/
 - Chaque AIOT dispose de ses arrêtés source et du permis consolidé généré par le pipeline.
 
 ## 🏗️ Architecture du pipeline
@@ -31,12 +31,17 @@ Le pipeline OCAPI se décompose en 4 étapes principales :
 3. **Resolution** : Résout les conflits et construit l'historique des versions
 4. **Rendering** : Génère le permis consolidé HTML final
 
+### Filtrage des articles superflus
+
+Lors du rendering, les articles dont le titre correspond exactement (comparaison insensible à la casse et aux accents) à un titre qui n'intéresse pas la consolidation (e.g. frais, publication, sanctions…) sont automatiquement exclus du permis consolidé.
+
 ## 📦 Installation
 
 ### Prérequis
 
-- Python 3.10+
+- Python 3.12+
 - pip
+- [Arrêtify](https://github.com/mte-dgpr/arretify) (installé automatiquement)
 
 ### Installation standard
 
@@ -48,11 +53,11 @@ cd ocapi
 # Créer un environnement virtuel
 
 # Windows
-py -3.10 -m venv venv
+py -3.12 -m venv venv
 .\venv\Scripts\Activate.ps1
 
 # Linux
-python3.10 -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 
 # Installer OCAPI
@@ -138,19 +143,19 @@ ocapi --help
 ocapi run --help
 
 # Traiter tous les arrêtés d'un répertoire
-ocapi run examples/arretes_html/0005804239/
+ocapi run snapshots/arretes_html/0005804239/
 
 # Avec options
-ocapi run examples/arretes_html/0005804239/ \
+ocapi run snapshots/arretes_html/0005804239/ \
     --aiot 0005804239 \
     --output resultat.json
 
 # Filtrer sur des arrêtés spécifiques
-ocapi run examples/arretes_html/0005804239/ \
+ocapi run snapshots/arretes_html/0005804239/ \
     --include 2024-09-27 2023-12-04
 
 # Mode verbose
-ocapi --verbose run examples/arretes_html/0005804239/
+ocapi --verbose run snapshots/arretes_html/0005804239/
 ```
 
 **Options disponibles :**
@@ -169,20 +174,20 @@ Point d'entrée direct avec options avancées :
 python -m ocapi.main --help
 
 # Usage basique
-python -m ocapi.main examples/arretes_html/0005804239/
+python -m ocapi.main snapshots/arretes_html/0005804239/
 
 # Répertoire de sortie personnalisé
-python -m ocapi.main examples/arretes_html/0005804239/ \
+python -m ocapi.main snapshots/arretes_html/0005804239/ \
     --output custom_output/
 
 # Désactiver la détection (utiliser les opérations préchargées)
-python -m ocapi.main examples/arretes_html/0005804239/ --no-detection
+python -m ocapi.main snapshots/arretes_html/0005804239/ --no-detection
 
 # Désactiver le rendering (étapes 1-3 uniquement)
-python -m ocapi.main examples/arretes_html/0005804239/ --no-rendering
+python -m ocapi.main snapshots/arretes_html/0005804239/ --no-rendering
 
 # Combiner plusieurs options
-python -m ocapi.main examples/arretes_html/0005804239/ \
+python -m ocapi.main snapshots/arretes_html/0005804239/ \
     --include 2024-09-27 2023-12-04 \
     --no-detection \
     --output output/ \
@@ -329,18 +334,18 @@ ocapi_output/
 
 ```bash
 # Traiter tous les arrêtés et générer le permis
-ocapi run examples/arretes_html/0005804239/ \
-    --output examples/consolidated_permit/0005804239/permis.html
+ocapi run snapshots/arretes_html/0005804239/ \
+    --output output/0005804239/
 
 # Ou avec main.py
-python -m ocapi.main examples/arretes_html/0005804239/ \
-    --output examples/consolidated_permit/0005804239/
+python -m ocapi.main snapshots/arretes_html/0005804239/ \
+    --output output/0005804239/
 ```
 
 ### Exemple 2 : Detection uniquement (pas de rendering)
 
 ```bash
-python -m ocapi.main examples/arretes_html/0005804239/ \
+python -m ocapi.main snapshots/arretes_html/0005804239/ \
     --no-rendering \
     --output output/detection_only/
 ```
@@ -348,7 +353,7 @@ python -m ocapi.main examples/arretes_html/0005804239/ \
 ### Exemple 3 : Filtrage sur arrêtés récents
 
 ```bash
-ocapi run examples/arretes_html/0005804239/ \
+ocapi run snapshots/arretes_html/0005804239/ \
     --include 2024-09-27 2023-12-04 \
     --output recent_only.json
 ```
@@ -356,10 +361,10 @@ ocapi run examples/arretes_html/0005804239/ \
 ### Exemple 4 : Mode debug avec logs détaillés
 
 ```bash
-ocapi --verbose run examples/arretes_html/0005804239/
+ocapi --verbose run snapshots/arretes_html/0005804239/
 
 # Rediriger les logs vers un fichier
-ocapi --verbose run examples/arretes_html/0005804239/ 2>&1 | tee debug.log
+ocapi --verbose run snapshots/arretes_html/0005804239/ 2>&1 | tee debug.log
 ```
 
 ### Exemple 5 : Mode snapshot (sans LLM)
@@ -367,8 +372,8 @@ ocapi --verbose run examples/arretes_html/0005804239/ 2>&1 | tee debug.log
 Exécuter le pipeline avec des opérations pré-chargées, sans appeler le LLM :
 
 ```bash
-ocapi run examples/arretes_html/0005804239/ \
-    --operations-from examples/arretes_operations/0005804239/ \
+ocapi run snapshots/arretes_html/0005804239/ \
+    --operations-from snapshots/arretes_consolidation/0005804239/ \
     --output output/snapshot/
 ```
 
@@ -520,19 +525,19 @@ Vérifiez que :
 
 Utilisez l'option `--include` :
 ```bash
-ocapi run examples/arretes_html/<AIOT>/ --include 2024-09-27 2023-12-04
+ocapi run snapshots/arretes_html/<AIOT>/ --include 2024-09-27 2023-12-04
 ```
 
 ### Comment désactiver le rendering ?
 
 Avec `main.py`, utilisez `--no-rendering` :
 ```bash
-python -m ocapi.main examples/arretes_html/<AIOT>/ --no-rendering
+python -m ocapi.main snapshots/arretes_html/<AIOT>/ --no-rendering
 ```
 
 ### Les logs affichent trop d'informations
 
 Utilisez l'option `--quiet` pour n'afficher que les warnings et erreurs :
 ```bash
-ocapi --quiet run examples/arretes_html/<AIOT>/
+ocapi --quiet run snapshots/arretes_html/<AIOT>/
 ```

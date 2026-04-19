@@ -7,8 +7,6 @@
 │       └── pages.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
-├── .vscode
-│   └── settings.json
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -17,71 +15,6 @@
 │   ├── llm_rate_limit.json
 │   └── llm_resilience.json
 ├── conftest.py
-├── examples
-│   ├── arretes_history
-│   │   ├── 0003013459
-│   │   │   └── history.json
-│   │   ├── 0005302394
-│   │   │   └── history.json
-│   │   ├── 0005800425
-│   │   │   └── history.json
-│   │   └── 0005804239
-│   │       └── history.json
-│   ├── arretes_html
-│   │   ├── 0003013459
-│   │   │   ├── 2020-04-20.html
-│   │   │   ├── 2021-09-24.html
-│   │   │   └── 2023-02-22.html
-│   │   ├── 0005302394
-│   │   │   ├── 2008-12-10.html
-│   │   │   ├── 2009-12-18.html
-│   │   │   ├── 2010-12-24.html
-│   │   │   ├── 2012-04-03.html
-│   │   │   ├── 2012-12-07.html
-│   │   │   └── 2020-12-22.html
-│   │   ├── 0005800425
-│   │   │   ├── 2003-09-09.html
-│   │   │   ├── 2005-11-08.html
-│   │   │   ├── 2007-04-19.html
-│   │   │   ├── 2010-03-29.html
-│   │   │   ├── 2012-09-03.html
-│   │   │   └── 2025-02-24.html
-│   │   └── 0005804239
-│   │       ├── 2009-12-08.html
-│   │       ├── 2012-04-02.html
-│   │       ├── 2014-01-09.html
-│   │       ├── 2014-12-11.html
-│   │       ├── 2020-04-30.html
-│   │       ├── 2023-12-04.html
-│   │       └── 2024-09-27.html
-│   ├── arretes_operations
-│   │   ├── 0003013459
-│   │   │   └── operations.json
-│   │   ├── 0005302394
-│   │   │   └── operations.json
-│   │   ├── 0005800425
-│   │   │   └── operations.json
-│   │   └── 0005804239
-│   │       └── operations.json
-│   ├── consolidated_permit
-│   │   ├── 0003013459
-│   │   │   └── permis.html
-│   │   ├── 0005302394
-│   │   │   └── permis.html
-│   │   ├── 0005800425
-│   │   │   └── permis.html
-│   │   └── 0005804239
-│   │       └── permis.html
-│   ├── ground-truth
-│   │   ├── 0003013459
-│   │   │   └── operations.json
-│   │   ├── 0005302394
-│   │   │   └── operations.json
-│   │   ├── 0005800425
-│   │   │   └── operations.json
-│   │   └── 0005804239
-│   │       └── operations.json
-│   └── index.html
 ├── ocapi
 │   ├── __init__.py
 │   ├── cli.py
@@ -98,23 +31,6 @@
 │   ├── snapshots
 │   │   ├── __init__.py
 │   │   ├── config.py
-│   │   ├── expected
-│   │   │   ├── 0003013459
-│   │   │   │   ├── history.json
-│   │   │   │   ├── operations.json
-│   │   │   │   └── permis.html
-│   │   │   ├── 0005302394
-│   │   │   │   ├── history.json
-│   │   │   │   ├── operations.json
-│   │   │   │   └── permis.html
-│   │   │   ├── 0005800425
-│   │   │   │   ├── history.json
-│   │   │   │   ├── operations.json
-│   │   │   │   └── permis.html
-│   │   │   └── 0005804239
-│   │   │       ├── history.json
-│   │   │       ├── operations.json
-│   │   │       └── permis.html
 │   │   └── llm_mock.py
 │   ├── step_chunking
 │   │   ├── __init__.py
@@ -129,9 +45,13 @@
 │   │   └── step_detection_test.py
 │   ├── step_rendering
 │   │   ├── __init__.py
+│   │   ├── article_filter.py
+│   │   ├── article_filter_test.py
 │   │   ├── make_header.py
 │   │   ├── make_main_content.py
+│   │   ├── make_main_content_test.py
 │   │   ├── make_other.py
+│   │   ├── make_other_test.py
 │   │   ├── step_rendering.py
 │   │   └── step_rendering_test.py
 │   ├── step_resolution
@@ -165,6 +85,61 @@
 │   ├── evaluate_detection.py
 │   ├── evaluate_detection_test.py
 │   └── generate_docs_index.py
+├── snapshots
+│   ├── arretes_consolidation
+│   │   ├── 0003013459
+│   │   │   ├── history.json
+│   │   │   ├── operations.json
+│   │   │   └── permis.html
+│   │   ├── 0005302394
+│   │   │   ├── history.json
+│   │   │   ├── operations.json
+│   │   │   └── permis.html
+│   │   ├── 0005800425
+│   │   │   ├── history.json
+│   │   │   ├── operations.json
+│   │   │   └── permis.html
+│   │   └── 0005804239
+│   │       ├── history.json
+│   │       ├── operations.json
+│   │       └── permis.html
+│   ├── arretes_html
+│   │   ├── 0003013459
+│   │   │   ├── 2020-04-20.html
+│   │   │   ├── 2021-09-24.html
+│   │   │   └── 2023-02-22.html
+│   │   ├── 0005302394
+│   │   │   ├── 2008-12-10.html
+│   │   │   ├── 2009-12-18.html
+│   │   │   ├── 2010-12-24.html
+│   │   │   ├── 2012-04-03.html
+│   │   │   ├── 2012-12-07.html
+│   │   │   └── 2020-12-22.html
+│   │   ├── 0005800425
+│   │   │   ├── 2003-09-09.html
+│   │   │   ├── 2005-11-08.html
+│   │   │   ├── 2007-04-19.html
+│   │   │   ├── 2010-03-29.html
+│   │   │   ├── 2012-09-03.html
+│   │   │   └── 2025-02-24.html
+│   │   └── 0005804239
+│   │       ├── 2009-12-08.html
+│   │       ├── 2012-04-02.html
+│   │       ├── 2014-01-09.html
+│   │       ├── 2014-12-11.html
+│   │       ├── 2020-04-30.html
+│   │       ├── 2023-12-04.html
+│   │       └── 2024-09-27.html
+│   ├── ground-truth
+│   │   ├── 0003013459
+│   │   │   └── operations.json
+│   │   ├── 0005302394
+│   │   │   └── operations.json
+│   │   ├── 0005800425
+│   │   │   └── operations.json
+│   │   └── 0005804239
+│   │       └── operations.json
+│   └── index.html
 └── templates
     └── permis_consolide.html
-45 directories, 124 files
+29 directories, 115 files

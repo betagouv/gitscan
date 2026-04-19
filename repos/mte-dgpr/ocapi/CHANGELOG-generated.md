@@ -1,34 +1,37 @@
-## Changelog : ocapi (30 derniers jours, au 8 avril 2026)
+## Changelog : ocapi (30 derniers jours, au 2026-04-17)
 
 ### Résumé
-Ce mois-ci, ocapi a bénéficié d'améliorations significatives en matière de gestion des arrêts préfectoraux, notamment dans la résolution des opérations complexes, la gestion des doublons et la détection des erreurs. Des améliorations ont également été apportées à l'infrastructure de test et au déploiement, ainsi qu'à la documentation et à la qualité du code.
+Ce mois-ci, les améliorations se concentrent sur la robustesse du pipeline de traitement des arrêtés préfectoraux, notamment en améliorant la détection des dates limites, la gestion des opérations complexes et la gestion des erreurs. Des tests plus précis ont été ajoutés, ainsi qu'un support pour l'affichage de pages d'exemple et l'intégration de nouveaux modèles de langage (Google Gemini).
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des opérations complexes via l'utilisation de LLM (Large Language Models) [#368](https://github.com/mte-dgpr/ocapi/issues/368).
-- Gestion des doublons d'arrêtés préfectoraux [#55](https://github.com/mte-dgpr/ocapi/issues/55).
-- Amélioration du score de détection des informations pertinentes dans les arrêtés [#57](https://github.com/mte-dgpr/ocapi/issues/57).
-- Gestion des opérations d'ajout (ADD) dans les arrêtés [#48](https://github.com/mte-dgpr/ocapi/issues/48).
-- Affichage des codes de statut avec leur raison explicative [#363](https://github.com/mte-dgpr/ocapi/issues/363).
-- Gestion des erreurs lors de l'extraction de la cible et du sous-cible [#324](https://github.com/mte-dgpr/ocapi/issues/324).
-- Amélioration de la gestion des codes d'erreur liés aux sous-cibles [#42](https://github.com/mte-dgpr/ocapi/issues/42).
-- Publication des exemples sur GitHub Pages pour une meilleure accessibilité [#345](https://github.com/mte-dgpr/ocapi/issues/345).
-- Mise à jour des arrêtés préfectoraux à partir du dépôt arretify [#38](https://github.com/mte-dgpr/ocapi/issues/38).
-- Prise en charge du format de date YYYY-MM-DD pour les fichiers d'entrée [#37](https://github.com/mte-dgpr/ocapi/issues/37).
+- Amélioration de la détection des dates limites et ajout de prompts de secours en cas d'échec [#76](https://github.com/mte-dgpr/ocapi/issues/76).
+- Gestion améliorée des identifiants d'articles non standard lors du rendu des documents [#61](https://github.com/mte-dgpr/ocapi/issues/61).
+- Affichage des résultats des opérations sur les articles sources [#73](https://github.com/mte-dgpr/ocapi/issues/73).
+- Gestion des opérations complexes via l'utilisation de modèles de langage (LLM) [#368](https://github.com/mte-dgpr/ocapi/issues/368).
+- Gestion des opérations d'ajout (ADD) via LLM [#376](https://github.com/mte-dgpr/ocapi/issues/376).
+- Remplacement des exemples par des tests de snapshots pour une meilleure fiabilité [#428](https://github.com/mte-dgpr/ocapi/issues/428).
+- Ajout de pages d'exemple accessibles via GitHub Pages pour faciliter la compréhension et l'utilisation [#345](https://github.com/mte-dgpr/ocapi/issues/345).
+- Gestion des codes de statut d'erreur lors de l'extraction de la cible [#324](https://github.com/mte-dgpr/ocapi/issues/324).
+- Amélioration du score de détection et ajout de scores de confiance [#43](https://github.com/mte-dgpr/ocapi/issues/43).
+- Gestion des doublons [#55](https://github.com/mte-dgpr/ocapi/issues/55).
+- Élimination des titres de section redondants lors de la consolidation [#53](https://github.com/mte-dgpr/ocapi/issues/53).
 
 ### Évolutions techniques
-- Implémentation de tests de snapshot pour garantir la stabilité de l'application [#39](https://github.com/mte-dgpr/ocapi/issues/39).
-- Refonte de l'architecture de l'API (AP Refonte) [#40](https://github.com/mte-dgpr/ocapi/issues/40).
-- Ajout de tests de couverture pour améliorer la qualité du code.
-- Amélioration de la gestion des exceptions.
-- Centralisation des noms pour une meilleure cohérence du code [#34](https://github.com/mte-dgpr/ocapi/issues/34).
-- Refactorisation des étapes du pipeline [#32](https://github.com/mte-dgpr/ocapi/issues/32).
-- Mise à jour des dépendances et amélioration de la configuration du projet (pyproject.toml).
-- Ajout de linters pour améliorer la qualité du code.
+- Déclaration de la dépendance `arretify` et exigence de Python 3.12 [#70](https://github.com/mte-dgpr/ocapi/issues/70).
+- Utilisation de tests de snapshots pour une comparaison HTML plus précise [#67](https://github.com/mte-dgpr/ocapi/issues/67).
+- Refonte de l'approche de test avec l'ajout d'un workflow CI/CD et de tests de snapshots [#39](https://github.com/mte-dgpr/ocapi/issues/39).
+- Ajout du support pour le modèle Google Gemini [#52](https://github.com/mte-dgpr/ocapi/issues/52).
+- Amélioration de la gestion des erreurs et ajout de logs.
+- Suppression de fichiers inutiles du suivi Git (.vscode).
+- Mise à jour des modèles de langage utilisés.
+- Centralisation des noms pour une meilleure cohérence du code [#44](https://github.com/mte-dgpr/ocapi/issues/44).
 
 ### Autres changements
-- Traduction des commentaires, des docstrings et des messages en anglais.
-- Mise à jour de la documentation.
-- Nettoyage du code et suppression d'artefacts inutiles.
-- Ajout de logs pour faciliter le débogage.
-- Mise à jour des fichiers ground truth pour les tests.
-- Suppression de code obsolète.
+- Correction de fautes de frappe et amélioration de la documentation.
+- Amélioration de la lisibilité du code et refactoring de certaines parties.
+- Suppression de configurations locales inutiles.
+- Correction de problèmes mineurs dans les tests.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Mise à jour de la section filtres dans le README.
+- Correction de problèmes liés à l'imbrication des articles lors de l'application d'opérations d'ajout.
+- Amélioration de la gestion des payloads envoyés à OpenAI.
