@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE permet aux entreprises de suivre et de répondre à leurs obligations en matière de responsabilité sociale des entreprises (RSE). Il offre des outils pour la gestion des données, l'analyse et la publication d'informations relatives à la RSE.",
+  "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de responsabilité sociale des entreprises (RSE). Il offre un service de gestion et un site vitrine pour faciliter cette démarche.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -11,25 +11,27 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
+    "Contenu éditorial",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Administration & Backoffice"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "requests",
+    "React",
+    "Sentry",
+    "WeasyPrint",
     "psycopg",
-    "django-weasyprint",
+    "dj-database-url",
+    "whitenoise",
     "aiohttp",
-    "sib-api-v3-sdk",
-    "openpyxl",
-    "django-cors-headers"
+    "requests"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "Python (scripts & backend)",
     "Django",
     "Docker & Conteneurs"
@@ -39,9 +41,6 @@
       "email-password",
       "oauth2",
       "sso"
-    ],
-    "providers": [
-      "Proconnect"
     ]
   },
   "tests": [
@@ -63,9 +62,11 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Sécurité & Auth"
   ]
 }
