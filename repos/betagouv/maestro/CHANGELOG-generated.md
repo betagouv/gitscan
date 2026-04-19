@@ -1,40 +1,44 @@
-## Changelog : maestro (30 derniers jours, au 15 avril 2026)
+## Changelog : maestro (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Maestro se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des prélèvements, des plans et des analyses. Des corrections de bugs ont été apportées pour améliorer la fiabilité et la fluidité de l'application. Des refactorings techniques ont également été réalisés pour préparer l'application à de futures évolutions et optimiser les performances.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des prélèvements et des analyses, notamment en corrigeant des bugs et en ajoutant des fonctionnalités pour faciliter la saisie et la consultation des données. Des améliorations ont également été apportées à l'automatisation, à la documentation et à l'infrastructure du projet. Une migration vers un nouveau linter (BiomeJS) a été initiée pour améliorer la qualité du code.
 
 ### Évolutions fonctionnelles
-- Possibilité d'éditer les descripteurs des prélèvements [#652](https://github.com/betagouv/maestro/issues/652).
-- Amélioration de la gestion des filtres pour les prélèvements, permettant de sélectionner plusieurs valeurs [#705](https://github.com/betagouv/maestro/issues/705).
-- Correction de l'affichage des décalages horaires dans les prélèvements [#710](https://github.com/betagouv/maestro/issues/710).
-- Notification des coordinateurs régionaux lors de l'ajout d'un nouveau document [#709](https://github.com/betagouv/maestro/issues/709).
-- Possibilité de consulter le tableau de bord des plans fermés [#696](https://github.com/betagouv/maestro/issues/696).
-- Affichage de l'historique de la programmation [#668](https://github.com/betagouv/maestro/issues/668).
-- Amélioration du filtre des prélèvements par plan [#667](https://github.com/betagouv/maestro/issues/667).
-- Possibilité de saisir le résultat des résidus complexes dans l'analyse [#739](https://github.com/betagouv/maestro/issues/739).
-- Correction permettant de valider une programmation si la région l'a approuvée [#738](https://github.com/betagouv/maestro/issues/738).
-- Correction du nom du fichier et de l'extension pour les DAI [#744](https://github.com/betagouv/maestro/issues/744).
-- Déblocage des DAI pour les LNR [#714](https://github.com/betagouv/maestro/issues/714).
-- Gestion des erreurs pour les RAI [#749](https://github.com/betagouv/maestro/issues/749).
+- Possibilité d'éditer les descripteurs de prélèvements [#652](https://github.com/betagouv/maestro/issues/652).
+- Amélioration de la consultation du tableau de bord des plans fermés [#696](https://github.com/betagouv/maestro/issues/696).
+- Correction de l'affichage des décalages horaires pour les prélèvements [#710](https://github.com/betagouv/maestro/issues/710).
+- Possibilité de filtrer les préleveurs par plan [#667](https://github.com/betagouv/maestro/issues/667).
+- Correction de la validation de la programmation lorsque la région a approuvé celle-ci [#738](https://github.com/betagouv/maestro/issues/738).
+- Possibilité de saisir le résultat des résidus complexes dans les analyses [#739](https://github.com/betagouv/maestro/issues/739).
+- Déblocage des DAI (Demandes d'Analyse Individualisées) pour les LNR (Laboratoires Régionaux) [#714](https://github.com/betagouv/maestro/issues/714).
+- Correction du filtre par entreprise dans les prélèvements [#7551fd](https://github.com/betagouv/maestro/commit/f7551fd).
+- Correction du champ Saisie pour DAOA [#ba46613](https://github.com/betagouv/maestro/commit/ba46613).
+- Gestion des erreurs pour les RAI (Requêtes d'Analyse Individualisées) [#749](https://github.com/betagouv/maestro/issues/749).
+- Amélioration de la gestion des compétences analytiques (en cours de développement) [#491](https://github.com/betagouv/maestro/issues/491).
 
 ### Évolutions techniques
-- Migration vers `biomejs` pour le linting, remplaçant ESLint et Prettier [#672](https://github.com/betagouv/maestro/issues/672).
-- Refactoring de la gestion des données spécifiques aux prélèvements, migration vers une table dédiée [#649](https://github.com/betagouv/maestro/issues/649).
-- Refactoring des pages pour extraire un composant commun [#666](https://github.com/betagouv/maestro/issues/666).
-- Typage des requêtes via les définitions des routes dans `shared` [#693](https://github.com/betagouv/maestro/issues/693).
+- Remplacement de ESLint et Prettier par BiomeJS pour le linting et le formattage du code [#672](https://github.com/betagouv/maestro/issues/672).
+- Refactorisation du frontend pour typer les requêtes via les définitions des routes dans `shared` [#693](https://github.com/betagouv/maestro/issues/693).
 - Préparation à la migration vers PostgreSQL 17 [#708](https://github.com/betagouv/maestro/issues/708).
 - Ajout de schémas pour les échanges hors EDI Sacha [#711](https://github.com/betagouv/maestro/issues/711).
-- Amélioration de la performance des tests d'intégration [#724](https://github.com/betagouv/maestro/issues/724).
+- Correction de l'injection des échantillons dans le seed [#662](https://github.com/betagouv/maestro/issues/662).
+- Accélération des tests d'intégration [#724](https://github.com/betagouv/maestro/issues/724).
+- Correction de l'historique de la programmation [#668](https://github.com/betagouv/maestro/issues/668).
 
 ### Autres changements
-- Correction de divers bugs et améliorations de la stabilité.
-- Documentation mise à jour.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Documentation mise à jour, notamment l'architecture du projet [#680](https://github.com/betagouv/maestro/issues/680).
 - Correction de sigles pour la compatibilité avec Sigal [#664](https://github.com/betagouv/maestro/issues/664).
-- Ajout de focus sur les champs de recherche [#643](https://github.com/betagouv/maestro/issues/643).
-- Correction de l'affichage de l'unité des prélèvements [#651](https://github.com/betagouv/maestro/issues/651).
-- Correction du wording des instructions pour les coordinateurs régionaux [#645](https://github.com/betagouv/maestro/issues/645).
-- Correction de l'affichage de la date d'envoi des prélèvements [#641](https://github.com/betagouv/maestro/issues/641).
-- Correction du filtre des laboratoires pour afficher "Tous" par défaut [#640](https://github.com/betagouv/maestro/issues/640).
-- Correction de la récupération de l'utilisateur dans le local storage [#7a9b32d](https://github.com/betagouv/maestro/commit/7a9b32d4989770798f4c6566f665309b84815187).
-- Correction de l'injection des échantillons dans le seed [#662](https://github.com/betagouv/maestro/issues/662).
-- Correction du filtre par entreprise [#7551fd](https://github.com/betagouv/maestro/commit/f7551fd931458559924d6a913027a863147693d2).
+- Correction de l'affichage du message "programmation pas encore disponible" [#669](https://github.com/betagouv/maestro/issues/669).
+- Correction des droits de saisie des infos d'expéditions en DAOA [#723](https://github.com/betagouv/maestro/issues/723).
+- Correction du dossier Carbone pour éviter les créations concurrentes [#746](https://github.com/betagouv/maestro/issues/746).
+- Correction du préleveur dans les DAI [#744](https://github.com/betagouv/maestro/issues/744).
+- Suppression de l'entête des matrices réalisées dans le dashboard [#700](https://github.com/betagouv/maestro/issues/700).
+- Correction du filtre pour les admins dans les plans [#697](https://github.com/betagouv/maestro/issues/697).
+- Correction de la récupération de l'utilisateur dans le local storage [#7a9b32d](https://github.com/betagouv/maestro/commit/7a9b32d) et [#819b19b](https://github.com/betagouv/maestro/commit/819b19b).
+- Ajout d'une année et de plans aux ressources [#671](https://github.com/betagouv/maestro/issues/671).
+- Si aucune détection, alors Conforme et on ne notifie plus [#654](https://github.com/betagouv/maestro/issues/654).
+- Correction du status permission 2 [#722](https://github.com/betagouv/maestro/issues/722).
+- Correction du nom du fichier et de l'extension dans les DAI [#715](https://github.com/betagouv/maestro/issues/715).
+- Tri des plans par année puis ordre alpha [#703](https://github.com/betagouv/maestro/issues/703).
+- Notifie les coordinateurs régionaux des plans concernés de l'ajout d'un nouveau document [#709](https://github.com/betagouv/maestro/issues/709).
