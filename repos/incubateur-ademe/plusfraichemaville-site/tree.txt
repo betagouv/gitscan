@@ -266,6 +266,14 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260227092446_add_aides_fs_unselected_in_user_projet_table
 │   │   │   └── migration.sql
+│   │   ├── 20260331095911_add_fiche_diag_seen_for_user_projet
+│   │   │   └── migration.sql
+│   │   ├── 20260331123020_change_column_name
+│   │   │   └── migration.sql
+│   │   ├── 20260402200917_add_aides_more_info_clicked_column_in_user_projet_table
+│   │   │   └── migration.sql
+│   │   ├── 20260409191348_add_annuaire_kr_metrics_field
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── public
@@ -363,6 +371,9 @@
 │   │   │   ├── viewer-mode.svg
 │   │   │   └── wave.svg
 │   │   ├── espace-projet-incentive
+│   │   │   ├── apercu-prestation-diag.jpg
+│   │   │   ├── apercu-resultat-tribu.jpg
+│   │   │   ├── arrow-down.svg
 │   │   │   ├── background.svg
 │   │   │   ├── euros.svg
 │   │   │   ├── guide.svg
@@ -442,7 +453,6 @@
 │   │   │   ├── subvention.svg
 │   │   │   └── zone-geo.svg
 │   │   ├── homepage
-│   │   │   ├── home-hero.jpg
 │   │   │   ├── home-start-1.jpg
 │   │   │   ├── home-start-2.svg
 │   │   │   ├── rex
@@ -454,15 +464,7 @@
 │   │   │   ├── solution-bleue.jpg
 │   │   │   ├── solution-douce.jpg
 │   │   │   ├── solution-grise.jpg
-│   │   │   ├── solution-verte.jpg
-│   │   │   └── solutions
-│   │   │       ├── arbres-vegetaux-cour-ecole.jpg
-│   │   │       ├── batiment-ecole-adaptation-renovation-batiments.jpg
-│   │   │       ├── comportements-collectifs.jpg
-│   │   │       ├── facade-vegetalisee.jpg
-│   │   │       ├── revetement-albedo-eleve.jpeg
-│   │   │       ├── stockage-eau-de-pluie.jpeg
-│   │   │       └── stockage-eau-pluie-ecole.jpeg
+│   │   │   └── solution-verte.jpg
 │   │   ├── lcz
 │   │   │   └── logo-cerema.svg
 │   │   ├── linkedin.svg
@@ -593,6 +595,9 @@
 │   │   │   ├── accept-project-invitation-action.ts
 │   │   │   ├── accept-project-request-action.ts
 │   │   │   ├── add-aide-already-seen-action.ts
+│   │   │   ├── add-aide-more-info-clicked-action.ts
+│   │   │   ├── add-annuaire-projet-clicked-action.ts
+│   │   │   ├── add-fiche-diagnostic-seen-action.ts
 │   │   │   ├── attach-invitation-to-user-action.ts
 │   │   │   ├── decline-project-invitation-action.ts
 │   │   │   ├── decline-project-request-action.ts
@@ -935,6 +940,7 @@
 │   │   │   │   ├── generic-save-button-element.tsx
 │   │   │   │   ├── generic-save-button-unauthenticated.tsx
 │   │   │   │   ├── generic-save-button.tsx
+│   │   │   │   ├── generic-save-estimation-modal-authenticated-outside-projet.tsx
 │   │   │   │   ├── generic-save-modal-authenticated-inside-projet.tsx
 │   │   │   │   ├── generic-save-modal-authenticated-outside-projet.tsx
 │   │   │   │   ├── generic-save-modal-unauthenticated.tsx
@@ -995,6 +1001,7 @@
 │   │   │   │   │   ├── espace-projet-breadcurmb-estimation.ts
 │   │   │   │   │   ├── espace-projet-breadcurmb-financement.ts
 │   │   │   │   │   └── espace-projet-breadcurmb-solution.ts
+│   │   │   │   ├── create-projet-breadcrumb.tsx
 │   │   │   │   └── espace-projet-breadcurmb-list.tsx
 │   │   │   ├── recommandations-solutions
 │   │   │   │   └── recommandations-fiche-solution.tsx
@@ -1055,6 +1062,7 @@
 │   │   │   ├── FicheSolutionTabSynthese.tsx
 │   │   │   ├── fiche-solution-card-with-fetcher.tsx
 │   │   │   ├── fiche-solution-card.tsx
+│   │   │   ├── fiche-solution-materiaux-estimation-incentive.tsx
 │   │   │   ├── fiche-solution-side-menu.tsx
 │   │   │   ├── fiche-solution-small-card-container.tsx
 │   │   │   ├── fiche-solution-small-card.tsx
@@ -1123,17 +1131,17 @@
 │   │   │   └── types.ts
 │   │   ├── homepage
 │   │   │   ├── homepage-data.tsx
+│   │   │   ├── homepage-hero-cta.tsx
 │   │   │   ├── homepage-hero-pictos.tsx
 │   │   │   ├── homepage-hero.tsx
 │   │   │   ├── homepage-inspirer-card.tsx
 │   │   │   ├── homepage-inspirer.tsx
 │   │   │   ├── homepage-odd.tsx
-│   │   │   ├── homepage-projet.tsx
 │   │   │   ├── homepage-start.tsx
-│   │   │   ├── homepage-stories-controllers.tsx
-│   │   │   ├── homepage-stories.tsx
 │   │   │   ├── homepage-story.tsx
-│   │   │   └── homepage.tsx
+│   │   │   ├── homepage.tsx
+│   │   │   ├── presentation-services-link.tsx
+│   │   │   └── presentation-services.tsx
 │   │   ├── layout
 │   │   │   ├── AppFooter.tsx
 │   │   │   ├── AppHeader.tsx
@@ -1142,7 +1150,6 @@
 │   │   ├── liste-projets
 │   │   │   ├── available-projets-for-collectivite-button.tsx
 │   │   │   ├── available-projets-for-user-modal.tsx
-│   │   │   ├── empty.tsx
 │   │   │   ├── header.tsx
 │   │   │   ├── helpers.ts
 │   │   │   ├── index.tsx
@@ -1191,6 +1198,11 @@
 │   │   ├── signin
 │   │   │   └── SignInCard.tsx
 │   │   ├── surchauffe-urbaine
+│   │   │   ├── diagnostic-module-incentive
+│   │   │   │   ├── diagnostic-parcours-link.tsx
+│   │   │   │   ├── generic-diagnostic-module-button.tsx
+│   │   │   │   ├── modale-diagnostic-module-outside-projet.tsx
+│   │   │   │   └── surchauffe-urbaine-diag-module-incentive.tsx
 │   │   │   ├── surchauffe-urbaine-notions-component.tsx
 │   │   │   ├── surchauffe-urbaine-notions.ts
 │   │   │   ├── surchauffe-urbaine-stories-component.tsx
@@ -1265,7 +1277,8 @@
 │   │   │   ├── partage-user-invitation.ts
 │   │   │   └── partage-user-modification-schema.ts
 │   │   ├── projet
-│   │   │   ├── ProjetInfoForm.tsx
+│   │   │   ├── ProjetCreationForm.tsx
+│   │   │   ├── ProjetEditionForm.tsx
 │   │   │   └── ProjetInfoFormSchema.ts
 │   │   └── user
 │   │       ├── UserInfoForm.tsx
@@ -1367,6 +1380,8 @@
 │   │   ├── useAideDecisionSortFilter.ts
 │   │   ├── useMultipleValuesFilter.ts
 │   │   └── useTypeEspaceFilter.ts
+│   ├── instrumentation-client.ts
+│   ├── instrumentation.ts
 │   ├── lib
 │   │   ├── adresseApi
 │   │   │   ├── banApiHelper.ts
@@ -1489,4 +1504,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-372 directories, 1119 files
+376 directories, 1130 files

@@ -1,34 +1,27 @@
-## Changelog : plusfraichemaville-site (30 derniers jours)
+## Changelog : plusfraichemaville-site (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration du module d'aides financières, notamment en termes d'expérience utilisateur et de gestion des données. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance du site. La gestion des collectivités et l'intégration avec l'API adresse ont également été améliorées.
+Le site plusfraichemaville a connu une période d'amélioration significative ces dernières semaines, avec un accent particulier sur l'expérience utilisateur lors de la création de projets et le suivi des données d'utilisation. Des améliorations ont été apportées à la page d'accueil, au formulaire de création de projet, et à l'intégration de nouvelles métriques de suivi. Une migration vers un nouveau système de gestion des erreurs (Sentry) a également été réalisée pour améliorer la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface utilisateur pour le choix des aides : UX amélioré pour la sélection des aides [#467](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/467).
-- Ajout d'un badge "Déjà vu" sur les cartes d'aide pour indiquer les aides déjà sélectionnées [#468](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/468).
-- Amélioration du lecteur mode pour une meilleure expérience de consultation [#473](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/473).
-- Affichage du nombre d'aides sélectionnées dans le filtre.
-- Possibilité de voir les projets associés à une collectivité (EPCI ou commune) [#469](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/469).
-- Gestion des collectivités : ajout d'alertes Mattermost si un utilisateur n'a pas de SIREN [#465](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/465).
-- Modification de la logique d'affichage des projets disponibles.
-- Changement d'API adresse pour une meilleure fiabilité [#464](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/464).
-- Amélioration de l'ouverture du modal de création d'estimation [#474](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/474).
-- Ajout de la possibilité d'ajouter et supprimer des fiches solutions à une estimation.
-- Affichage d'un avertissement de prix pour les territoires ultramarins [#470](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/470).
+- **Création de projet :** Refonte complète du flux de création de projet avec un formulaire étape par étape [#484](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/484), incluant un bouton d'annulation [#486](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/486) et une alerte pour éviter la perte de données en cas de fermeture intempestive.
+- **Page d'accueil :** Nouvelle page d'accueil avec une refonte du design [#487](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/487).
+- **Annuaire des projets :** Ajout d'un suivi du nombre de vues des projets dans l'annuaire [#486](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/486).
+- **Fiches solutions et diagnostics :** Enregistrement des fiches solutions et diagnostics consultées par chaque utilisateur pour un meilleur suivi de l'utilisation [#482](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/482).
+- **Module surchauffe urbaine :** Ajout d'une interface utilisateur pour le module surchauffe urbaine [#478](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/478).
+- **Lien vers l'estimation :** Ajout d'un lien vers l'estimation dans les fiches solutions [#477](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/477).
+- **Amélioration de l'accessibilité :** Ajout d'attributs `alt` pour l'accessibilité des images dans le carrousel.
+- **Gestion des erreurs Cartagène :** Correction de l'affichage des erreurs Cartagène pour éviter les fausses alertes [#481](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/481).
 
 ### Évolutions techniques
-- Suppression du code lié à HubSpot et au lien vers les fonds verts [#471](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/471), [#472](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/472).
-- Mise à jour de Next.js et jspdf [#466](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/466).
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Correction de la gestion des erreurs lors de la récupération des données LCZ.
-- Suppression du champ `fiches_solutions_id` dans la table `estimations`.
-- Migration de la table `estimations_aides` vers `projet_aide`.
-- Ajout de scripts pour peupler les nouvelles tables EPCI et commune.
-- Correction de plusieurs bugs et améliorations de la stabilité.
+- **Migration Sentry :** Migration vers un nouveau système de gestion des erreurs (Sentry) pour une meilleure surveillance et résolution des problèmes [#480](https://github.com/incubateur-ademe/plusfraichemaville-site/pulls/480).
+- **Mise à jour des dépendances :** Mise à jour des dépendances pour améliorer la sécurité et la performance.
+- **Utilisation de pnpm :** Passage de npm à pnpm pour la gestion des dépendances.
+- **Refactoring et optimisation :** Amélioration du code et suppression de code inutilisé.
+- **Mise à jour Tailwind CSS :** Mise à jour de la version de Tailwind CSS.
 
 ### Autres changements
-- Nettoyage du code à plusieurs endroits.
-- Amélioration de la gestion des breadcrumbs.
-- Correction de problèmes de linting et de formatage du code.
-- Suppression de liens inutiles.
-- Ajustement des marges pour correspondre au design.
+- Amélioration des logs pour les erreurs 404 dans Sentry.
+- Ajout d'un callback URL et d'une action sur la page de création de projet.
+- Amélioration du design de la page "Mes projets" pour une meilleure réactivité.
+- Correction de typos.
