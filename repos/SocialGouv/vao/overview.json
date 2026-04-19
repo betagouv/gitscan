@@ -1,28 +1,26 @@
 {
   "url": "https://github.com/SocialGouv/vao",
   "name": "vao",
-  "description": "VAO est une application permettant de dématérialiser les procédures liées à l'organisation de séjours pour les personnes handicapées, offrant un portail pour les organismes et un back-office pour l'administration.",
+  "description": "VAO est une application pour la dématérialisation des procédures liées à l'organisation de séjours pour les personnes handicapées. Elle propose un portail pour les organismes et un back office pour l'administration.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Gestion des établissements & Structures",
     "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Gestion métier générale"
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "NodeJs",
+    "express",
+    "yup",
+    "pg",
     "NuxtJs",
     "VueJs",
     "Pinia",
-    "Vee-validate",
-    "yup",
-    "NodeJs",
-    "express",
-    "pg",
-    "PostgreSQL"
+    "Vee-validate"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,9 +34,11 @@
       "email-password"
     ]
   },
-  "tests": "Playwright",
-  "workflows": [],
-  "lastActivity": "2026-04-16T10:09:18+02:00",
+  "tests": "Jest, Playwright",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-04-17T16:31:47+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -51,7 +51,6 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
