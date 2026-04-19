@@ -1,7 +1,18 @@
 .
 ├── .claude
+│   ├── context
+│   │   ├── enrichissement-patterns.md
+│   │   ├── evaluation-patterns.md
+│   │   ├── feature-example.md
+│   │   └── security-rules.md
+│   ├── hooks
+│   │   └── format-on-write.sh
 │   ├── settings.json
-│   └── settings.local.json
+│   └── skills
+│       ├── adr
+│       │   └── SKILL.md
+│       └── verif
+│           └── SKILL.md
 ├── .env.example
 ├── .gitattributes
 ├── .github
@@ -22,9 +33,6 @@
 │   ├── api
 │   │   ├── .env.example
 │   │   ├── .gitignore
-│   │   ├── data
-│   │   │   ├── donnees-ademe-sites-pollues.geojson
-│   │   │   └── donnees-bpe-2024-filtered.csv
 │   │   ├── docker-compose.yml
 │   │   ├── drizzle.config.ts
 │   │   ├── nest-cli.json
@@ -235,7 +243,15 @@
 │   │   │   │   │   │   ├── algorithme.constants.ts
 │   │   │   │   │   │   ├── algorithme.types.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.spec.ts
-│   │   │   │   │   │   └── fiabilite.calculator.ts
+│   │   │   │   │   │   ├── fiabilite.calculator.ts
+│   │   │   │   │   │   └── versions
+│   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │       ├── v1.1.ts
+│   │   │   │   │   │       ├── v1.2.ts
+│   │   │   │   │   │       ├── v1.3.ts
+│   │   │   │   │   │       ├── v1.4.ts
+│   │   │   │   │   │       ├── v1.5.ts
+│   │   │   │   │   │       └── v1.6.ts
 │   │   │   │   │   ├── calcul-fixtures.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
@@ -264,10 +280,6 @@
 │   │   │   │   └── services
 │   │   │   │       ├── evenement.service.spec.ts
 │   │   │   │       └── evenement.service.ts
-│   │   │   ├── friches
-│   │   │   │   ├── friches.controller.spec.ts
-│   │   │   │   ├── friches.controller.ts
-│   │   │   │   └── friches.module.ts
 │   │   │   ├── main.ts
 │   │   │   ├── metabase
 │   │   │   │   ├── metabase.controller.ts
@@ -275,6 +287,9 @@
 │   │   │   │   ├── metabase.service.spec.ts
 │   │   │   │   └── metabase.service.ts
 │   │   │   ├── scripts
+│   │   │   │   ├── data
+│   │   │   │   │   ├── donnees-ademe-sites-pollues.geojson
+│   │   │   │   │   └── donnees-bpe-2024-filtered.csv
 │   │   │   │   ├── filter-bpe.ts
 │   │   │   │   ├── import-ademe-sites.ts
 │   │   │   │   ├── import-bpe.ts
@@ -304,6 +319,7 @@
 │   │   │   │   │   │   ├── 0013_tranquil_wrecking_crew.sql
 │   │   │   │   │   │   ├── 0014_rename_parcelle_to_site.sql
 │   │   │   │   │   │   ├── 0015_silent_black_panther.sql
+│   │   │   │   │   │   ├── 0016_rename_source_utilisation_to_source_campagne.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -320,6 +336,7 @@
 │   │   │   │   │   │       ├── 0013_snapshot.json
 │   │   │   │   │   │       ├── 0014_snapshot.json
 │   │   │   │   │   │       ├── 0015_snapshot.json
+│   │   │   │   │   │       ├── 0016_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
@@ -365,7 +382,6 @@
 │   │   │   ├── enrichissement.e2e-spec.ts
 │   │   │   ├── evaluation.e2e-spec.ts
 │   │   │   ├── evenements.e2e-spec.ts
-│   │   │   ├── friches.e2e-spec.ts
 │   │   │   ├── helpers
 │   │   │   │   ├── create-test-app.ts
 │   │   │   │   ├── index.ts
@@ -381,6 +397,21 @@
 │       ├── postcss.config.js
 │       ├── public
 │       │   ├── illustrations
+│       │   │   ├── landing
+│       │   │   │   ├── commentcamarche-1.png
+│       │   │   │   ├── commentcamarche-2.png
+│       │   │   │   ├── integrer-mutafriches.png
+│       │   │   │   ├── questceque-mutabilite.png
+│       │   │   │   ├── usage-banner.png
+│       │   │   │   ├── usage-ellipses.png
+│       │   │   │   └── usages
+│       │   │   │       ├── usage-bureaux.png
+│       │   │   │       ├── usage-habitat.png
+│       │   │   │       ├── usage-industrie.png
+│       │   │   │       ├── usage-photovoltaique.png
+│       │   │   │       ├── usage-public.png
+│       │   │   │       ├── usage-renature.png
+│       │   │   │       └── usages-culturel.png
 │       │   │   ├── moon.svg
 │       │   │   ├── podium
 │       │   │   │   ├── bureaux.png
@@ -402,12 +433,41 @@
 │       │   │   └── undraw_personal-site_z6pl.svg
 │       │   └── images
 │       │       ├── logo-ademe.svg
+│       │       ├── logo-benefriches.png
 │       │       ├── logo-cartofriches.svg
+│       │       ├── logo-urbanvitaliz.png
 │       │       ├── logo-urbanvitaliz.svg
 │       │       └── placeholder.16x9.png
 │       ├── src
 │       │   ├── App.tsx
 │       │   ├── features
+│       │   │   ├── analyser
+│       │   │   │   ├── components
+│       │   │   │   │   ├── EnrichmentLoadingCallout.tsx
+│       │   │   │   │   ├── MutabilityAccordion.tsx
+│       │   │   │   │   └── parcelle-map
+│       │   │   │   │       ├── AddressSearchBar.tsx
+│       │   │   │   │       ├── MapGuide.tsx
+│       │   │   │   │       ├── MapLayerSelector.css
+│       │   │   │   │       ├── MapLayerSelector.tsx
+│       │   │   │   │       ├── ParcelleActions.css
+│       │   │   │   │       └── ParcelleSelectionMap.tsx
+│       │   │   │   ├── pages
+│       │   │   │   │   ├── AnalyserPage.tsx
+│       │   │   │   │   └── EnrichissementPage.tsx
+│       │   │   │   └── utils
+│       │   │   │       ├── enrichissment.mapper.spec.ts
+│       │   │   │       └── enrichissment.mapper.ts
+│       │   │   ├── comparaison-algo
+│       │   │   │   ├── components
+│       │   │   │   │   ├── ComparaisonAlgoPanel.css
+│       │   │   │   │   ├── ComparaisonAlgoPanel.tsx
+│       │   │   │   │   ├── ComparaisonAlgoPanelGate.tsx
+│       │   │   │   │   ├── TableauComparaison.tsx
+│       │   │   │   │   └── VersionSelector.tsx
+│       │   │   │   └── hooks
+│       │   │   │       ├── useAlgorithmeVersions.ts
+│       │   │   │       └── useComparaisonAlgo.ts
 │       │   │   ├── debug
 │       │   │   │   ├── components
 │       │   │   │   │   ├── DebugPanel.css
@@ -432,22 +492,16 @@
 │       │   │   │   │   └── DocumentationIframe.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── DocumentationIntegrationPage.tsx
-│       │   │   ├── home
+│       │   │   ├── landing
 │       │   │   │   ├── components
-│       │   │   │   │   ├── EnrichmentLoadingCallout.tsx
-│       │   │   │   │   ├── MutabilityAccordion.tsx
-│       │   │   │   │   └── parcelle-map
-│       │   │   │   │       ├── AddressSearchBar.tsx
-│       │   │   │   │       ├── MapGuide.tsx
-│       │   │   │   │       ├── MapLayerSelector.css
-│       │   │   │   │       ├── MapLayerSelector.tsx
-│       │   │   │   │       ├── ParcelleActions.css
-│       │   │   │   │       └── ParcelleSelectionMap.tsx
-│       │   │   │   ├── pages
-│       │   │   │   │   ├── EnrichissementPage.tsx
-│       │   │   │   │   └── HomePage.tsx
-│       │   │   │   └── utils
-│       │   │   │       └── enrichissment.mapper.ts
+│       │   │   │   │   ├── CommentCaMarcheSection.tsx
+│       │   │   │   │   ├── HeroSection.tsx
+│       │   │   │   │   ├── IntegrateursSection.tsx
+│       │   │   │   │   ├── IntegrationSection.tsx
+│       │   │   │   │   ├── MutabiliteSection.tsx
+│       │   │   │   │   └── UsagesSection.tsx
+│       │   │   │   └── pages
+│       │   │   │       └── LandingPage.tsx
 │       │   │   ├── qualification
 │       │   │   │   ├── components
 │       │   │   │   │   ├── EnrichedInfoField.tsx
@@ -477,10 +531,14 @@
 │       │   │   │   ├── pages
 │       │   │   │   │   └── ResultatsPage.tsx
 │       │   │   │   └── utils
-│       │   │   │       ├── dynamicTags.config.ts
-│       │   │   │       ├── dynamicTags.resolver.ts
+│       │   │   │       ├── dynamicTags
+│       │   │   │       │   ├── config.ts
+│       │   │   │       │   ├── constants.ts
+│       │   │   │       │   ├── index.ts
+│       │   │   │       │   ├── labels.ts
+│       │   │   │       │   ├── resolver.ts
+│       │   │   │       │   └── types.ts
 │       │   │   │       ├── dynamicTags.spec.ts
-│       │   │   │       ├── dynamicTags.types.ts
 │       │   │   │       ├── mutability.mapper.ts
 │       │   │   │       └── usagesLabels.utils.ts
 │       │   │   ├── statistiques
@@ -587,6 +645,21 @@
 │       └── vitest.config.ts
 ├── docs
 │   ├── README.md
+│   ├── adr
+│   │   ├── 0000-template.md
+│   │   ├── 0001-nestjs-drizzle-orm.md
+│   │   ├── 0002-postgis-donnees-locales.md
+│   │   ├── 0003-pattern-mutation-site.md
+│   │   ├── 0004-api-response-wrapper.md
+│   │   ├── 0005-adapters-vs-domain-services.md
+│   │   ├── 0006-deploiement-scalingo.md
+│   │   ├── 0007-monorepo-pnpm.md
+│   │   ├── 0008-integration-iframe-postmessage.md
+│   │   ├── 0009-cache-evaluation-24h.md
+│   │   ├── 0010-matrice-scoring-excel.md
+│   │   ├── 0011-securisation-origin-guard-sans-api-key.md
+│   │   ├── 0012-tracking-source-utilisation-vs-integrateur.md
+│   │   └── 0013-zaenr-affichage-granulaire-scoring-grossier.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
 │   └── integration
@@ -636,6 +709,7 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   └── version.constants.ts
 │       │   │   ├── dto
+│       │   │   │   ├── algorithme-version.dto.ts
 │       │   │   │   ├── calculer-mutabilite-input.dto.ts
 │       │   │   │   ├── donnees-complementaires-input.dto.ts
 │       │   │   │   ├── index.ts
@@ -643,7 +717,9 @@
 │       │   │   ├── enums
 │       │   │   │   ├── etat-bati.enum.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── presence-especes-protegees.enum.ts
 │       │   │   │   ├── presence-pollution.enum.ts
+│       │   │   │   ├── presence-zone-humide.enum.ts
 │       │   │   │   ├── qualite-paysage.enum.ts
 │       │   │   │   ├── qualite-voie.enum.ts
 │       │   │   │   ├── raccordement-eau.enum.ts
@@ -749,4 +825,4 @@
 ├── scripts
 │   └── setup.sh
 └── tsconfig.json
-187 directories, 564 files
+202 directories, 625 files
