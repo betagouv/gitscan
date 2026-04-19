@@ -1,31 +1,34 @@
-## Changelog : code-du-travail-numerique (30 derniers jours)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au code du travail numérique au cours des 30 derniers jours. Les changements incluent des améliorations de la recherche, des corrections de bugs, des optimisations de performance et des ajustements de l'interface utilisateur, notamment au niveau des simulateurs d'indemnités et des questionnaires sur les accords d'entreprise.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la recherche, l'ajout d'une section actualités, et des corrections de bugs pour une meilleure expérience utilisateur. La migration des tests E2E de Cypress vers Playwright est également un point important pour la qualité du projet.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche pour de meilleurs résultats.
-- Suppression de l'étape "contrat" dans le calcul des indemnités, simplifiant ainsi le processus pour les utilisateurs. [#7127](https://github.com/SocialGouv/code-du-travail-numerique/issues/7127)
-- Modification de la phrase d'accroche du questionnaire sur les accords d'entreprise pour une meilleure clarté. [#7126](https://github.com/SocialGouv/code-du-travail-numerique/issues/7126)
-- Ajout d'un formulaire pour un sondage sur les accords d'entreprise, permettant de recueillir des retours utilisateurs. [#7121](https://github.com/SocialGouv/code-du-travail-numerique/issues/7121)
-- Ajout d'une question à la recherche pour valider si les résultats correspondent aux attentes de l'utilisateur. [#7115](https://github.com/SocialGouv/code-du-travail-numerique/issues/7115)
-- Amélioration de la gestion des listes et des informations dans la page des modèles de documents. [#7117](https://github.com/SocialGouv/code-du-travail-numerique/issues/7117)
-- Ajout de la customisation au niveau du header des accords. [#7101](https://github.com/SocialGouv/code-du-travail-numerique/issues/7101)
-- Suppression du questionnaire sur les accords d'entreprise.
-- Séparation de l'étape ancienneté avec les absences dans le calcul des indemnités. [#7146](https://github.com/SocialGouv/code-du-travail-numerique/issues/7146)
+
+*   **Recherche :**
+    *   Amélioration de l'affichage des résultats de recherche.
+    *   Ajout de définitions aux résultats de recherche.
+    *   Modification du libellé du moteur de recherche pour plus de clarté.
+    *   Ajout d'infographies dans la recherche et les outils.
+    *   Renommage des labels pour les contributions et autres pages.
+*   **Actualités :**
+    *   Ajout d'une page listant les actualités.
+    *   Ajout du JSON-LD et de la page au plan du site pour un meilleur référencement.
+    *   Corrections sur les titres, marges et liens des actualités.
+*   **Outils :** Ajout d'une illustration du bulletin de paie sur le préavis de démission.
+*   **Modale de convention collective :** Améliorations de l'accessibilité (a11y) et corrections d'UI.
+*   **Indemnité de licenciement :** Cohérence du message dans la description.
+*   **Modèles de courrier :** Ajustement du breakpoint entre les tailles d'écran `md` et `lg`.
 
 ### Évolutions techniques
-- Optimisation du temps de build Docker. [#7122](https://github.com/SocialGouv/code-du-travail-numerique/issues/7122)
-- Mise à jour vers la dernière version de Next.js. [#7095](https://github.com/SocialGouv/code-du-travail-numerique/issues/7095)
-- Normalisation du widget Indemnité de rupture conventionnelle dans la CI. [#7112](https://github.com/SocialGouv/code-du-travail-numerique/issues/7112)
-- Ajout des widgets en legacy et des nouveaux widgets. [#7096](https://github.com/SocialGouv/code-du-travail-numerique/issues/7096)
-- Suppression du fichier de workflow d'analyse CodeQL.
-- Correction des tests e2e suite à modification de la date de mise à jour. [#7124](https://github.com/SocialGouv/code-du-travail-numerique/issues/7124)
-- Corrections sur les tests e2e. [#7149](https://github.com/SocialGouv/code-du-travail-numerique/issues/7149)
-- Passage des tests instables sous Playwright. [#7151](https://github.com/SocialGouv/code-du-travail-numerique/issues/7151)
-- Configuration des tests Playwright dans la CI.
-- Correction des ancres sur la page des thèmes. [#7155](https://github.com/SocialGouv/code-du-travail-numerique/issues/7155)
+
+*   **Tests E2E :** Migration des tests E2E de Cypress vers Playwright [#7212](https://github.com/SocialGouv/code-du-travail-numerique/issues/7212).
+*   **pnpm :** Mise à jour de pnpm.
 
 ### Autres changements
-- Suppression de la redirection pour les CCs 1031 et 3203. [#7109](https://github.com/SocialGouv/code-du-travail-numerique/issues/7109)
-- Publication des versions 4.212.2, 4.213.0, 4.214.0, 4.215.0, 4.216.0, 4.217.0 et 4.218.0.
+
+*   **Corrections de tests E2E :** Corrections suite aux modifications apportées à la recherche et aux actualités [#7220](https://github.com/SocialGouv/code-du-travail-numerique/issues/7220) et [#7190](https://github.com/SocialGouv/code-du-travail-numerique/issues/7190).
+*   **Suppression d'un événement de tracking :** Suppression de l'événement de tracking `agreement search` dans la modale.
+*   **Correction d'un pattern dans la recherche :** Correction du pattern `idccXXXX` et ajout de la classe `siret` dans la recherche [#7216](https://github.com/SocialGouv/code-du-travail-numerique/issues/7216).
+*   **Correction d'un mismatch dans la recherche des définitions :** Correction d'un problème de correspondance dans la recherche des définitions [#7206](https://github.com/SocialGouv/code-du-travail-numerique/issues/7206).
+*   **Correction d'un problème de focus sur les icônes :** Utilisation de `focusable: false` sur les icônes [#7192](https://github.com/SocialGouv/code-du-travail-numerique/issues/7192).

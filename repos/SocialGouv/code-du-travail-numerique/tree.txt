@@ -96,6 +96,10 @@
 │   │   │   │   └── page.tsx
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
+│   │   │   ├── actualite
+│   │   │   │   ├── [slug]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
 │   │   │   ├── api
 │   │   │   │   ├── enterprises
 │   │   │   │   │   └── route.ts
@@ -118,6 +122,8 @@
 │   │   │   │       └── page.tsx
 │   │   │   ├── contribution
 │   │   │   │   ├── [slug]
+│   │   │   │   │   ├── [idcc]
+│   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── convention-collective
@@ -232,74 +238,6 @@
 │   │   │       │   └── page.tsx
 │   │   │       └── search
 │   │   │           └── page.tsx
-│   │   ├── cypress
-│   │   │   ├── integration
-│   │   │   │   ├── heavy
-│   │   │   │   │   ├── outils-externe.spec.ts
-│   │   │   │   │   └── widgets
-│   │   │   │   │       ├── indemnite-licenciement.spec.ts
-│   │   │   │   │       ├── indemnite-precarite.spec.ts
-│   │   │   │   │       ├── indemnite-rupture-conventionnelle.spec.ts
-│   │   │   │   │       ├── modeles-courrier.spec.ts
-│   │   │   │   │       ├── preavis-demission.spec.ts
-│   │   │   │   │       ├── preavis-licenciement.spec.ts
-│   │   │   │   │       ├── preavis-retraite.spec.ts
-│   │   │   │   │       ├── procedure-licenciement.spec.ts
-│   │   │   │   │       ├── recherche.spec.ts
-│   │   │   │   │       └── trouver-sa-cc.spec.ts
-│   │   │   │   ├── html-validation
-│   │   │   │   │   ├── validate-html-contributions.spec.ts
-│   │   │   │   │   └── validate-html.spec.ts
-│   │   │   │   └── light
-│   │   │   │       ├── article-code-du-travail.spec.ts
-│   │   │   │       ├── canonical-urls.spec.ts
-│   │   │   │       ├── check-headers.spec.ts
-│   │   │   │       ├── contributions
-│   │   │   │       │   ├── contributions.spec.ts
-│   │   │   │       │   └── search.spec.ts
-│   │   │   │       ├── conventions-collectives.spec.ts
-│   │   │   │       ├── fiche-ministere-travail.spec.ts
-│   │   │   │       ├── fiche-service-public.spec.ts
-│   │   │   │       ├── glossaire.spec.ts
-│   │   │   │       ├── header-agreement.spec.ts
-│   │   │   │       ├── header-search.spec.ts
-│   │   │   │       ├── header.spec.ts
-│   │   │   │       ├── home.spec.ts
-│   │   │   │       ├── infographies
-│   │   │   │       │   └── infographies.spec.ts
-│   │   │   │       ├── informations.spec.ts
-│   │   │   │       ├── integration.spec.ts
-│   │   │   │       ├── landing-pages.spec.ts
-│   │   │   │       ├── not-found.spec.ts
-│   │   │   │       ├── outils
-│   │   │   │       │   ├── brut-net.spec.ts
-│   │   │   │       │   ├── dossier-licenciement.spec.ts
-│   │   │   │       │   ├── indemnite-licenciement.spec.ts
-│   │   │   │       │   ├── indemnite-precarite.spec.ts
-│   │   │   │       │   ├── indemnite-rupture-co.spec.ts
-│   │   │   │       │   ├── preavis-demission.spec.ts
-│   │   │   │       │   ├── preavis-licenciement.spec.ts
-│   │   │   │       │   ├── preavis-retraite.spec.ts
-│   │   │   │       │   ├── trouver-sa-cc-je-la-saisis.spec.ts
-│   │   │   │       │   └── trouver-sa-cc-recherche-entreprise.spec.ts
-│   │   │   │       ├── plan-du-site.spec.ts
-│   │   │   │       ├── politique-confidentialite.spec.ts
-│   │   │   │       ├── quoi-de-neuf.spec.ts
-│   │   │   │       ├── redirects.spec.ts
-│   │   │   │       ├── sitemap.spec.ts
-│   │   │   │       ├── statistiques.spec.ts
-│   │   │   │       ├── validate-html.spec.ts
-│   │   │   │       └── widgets.spec.ts
-│   │   │   ├── support
-│   │   │   │   ├── before.ts
-│   │   │   │   ├── commands.ts
-│   │   │   │   ├── errors.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── urls-contributions-to-validate.json
-│   │   │   │   ├── urls-to-validate.json
-│   │   │   │   └── utils.ts
-│   │   │   └── tsconfig.json
-│   │   ├── cypress.config.js
 │   │   ├── eslint.config.mjs
 │   │   ├── global.d.ts
 │   │   ├── instrumentation-client.ts
@@ -520,6 +458,7 @@
 │   │   │   │   │   │   │   ├── referenceExtractor.ts
 │   │   │   │   │   │   │   ├── search.ts
 │   │   │   │   │   │   │   └── types.ts
+│   │   │   │   │   │   ├── type.ts
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── index.ts
@@ -558,17 +497,57 @@
 │   │   │   │       └── types.ts
 │   │   │   ├── config.ts
 │   │   │   ├── e2e
+│   │   │   │   ├── article-code-du-travail.e2e.ts
 │   │   │   │   ├── besoin-plus-informations.e2e.ts
+│   │   │   │   ├── canonical-urls.e2e.ts
+│   │   │   │   ├── check-headers.e2e.ts
+│   │   │   │   ├── contributions-search.e2e.ts
+│   │   │   │   ├── contributions.e2e.ts
+│   │   │   │   ├── conventions-collectives.e2e.ts
+│   │   │   │   ├── fiche-ministere-travail.e2e.ts
+│   │   │   │   ├── fiche-service-public.e2e.ts
 │   │   │   │   ├── global-setup.ts
+│   │   │   │   ├── glossaire.e2e.ts
+│   │   │   │   ├── header-agreement.e2e.ts
+│   │   │   │   ├── header-search.e2e.ts
+│   │   │   │   ├── header-skiplinks.e2e.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── axe-scan.ts
+│   │   │   │   │   ├── format.ts
+│   │   │   │   │   ├── html-validate.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── seo.ts
+│   │   │   │   ├── home.e2e.ts
+│   │   │   │   ├── infographies.e2e.ts
+│   │   │   │   ├── informations.e2e.ts
 │   │   │   │   ├── integration-convention-collective.e2e.ts
+│   │   │   │   ├── integration.e2e.ts
+│   │   │   │   ├── landing-pages.e2e.ts
 │   │   │   │   ├── modeles.e2e.ts
+│   │   │   │   ├── not-found.e2e.ts
 │   │   │   │   ├── outils
-│   │   │   │   │   └── heures-recherche-emploi.e2e.ts
-│   │   │   │   └── themes.e2e.ts
+│   │   │   │   │   ├── brut-net.e2e.ts
+│   │   │   │   │   ├── dossier-licenciement.e2e.ts
+│   │   │   │   │   ├── heures-recherche-emploi.e2e.ts
+│   │   │   │   │   ├── indemnite-licenciement.e2e.ts
+│   │   │   │   │   ├── indemnite-precarite.e2e.ts
+│   │   │   │   │   ├── indemnite-rupture-co.e2e.ts
+│   │   │   │   │   ├── preavis-demission.e2e.ts
+│   │   │   │   │   ├── preavis-licenciement.e2e.ts
+│   │   │   │   │   ├── preavis-retraite.e2e.ts
+│   │   │   │   │   └── trouver-sa-cc.e2e.ts
+│   │   │   │   ├── outils-externe.e2e.ts
+│   │   │   │   ├── plan-du-site.e2e.ts
+│   │   │   │   ├── politique-confidentialite.e2e.ts
+│   │   │   │   ├── quoi-de-neuf.e2e.ts
+│   │   │   │   ├── redirects.e2e.ts
+│   │   │   │   ├── sitemap.e2e.ts
+│   │   │   │   ├── statistiques.e2e.ts
+│   │   │   │   ├── themes.e2e.ts
+│   │   │   │   ├── validate-html-contributions.e2e.ts
+│   │   │   │   ├── validate-html.e2e.ts
+│   │   │   │   ├── widgets-locaux.e2e.ts
+│   │   │   │   └── widgets.e2e.ts
 │   │   │   └── modules
 │   │   │       ├── a-propos
 │   │   │       │   ├── __tests__
@@ -582,6 +561,14 @@
 │   │   │       │   │   └── __snapshots__
 │   │   │       │   │       └── Accessibilite.test.tsx.snap
 │   │   │       │   └── index.tsx
+│   │   │       ├── actualite
+│   │   │       │   ├── NewsContainer.tsx
+│   │   │       │   ├── NewsList.tsx
+│   │   │       │   ├── component
+│   │   │       │   │   └── NewsItem.tsx
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── queries.ts
+│   │   │       │   └── type.ts
 │   │   │       ├── analytics
 │   │   │       │   ├── __tests__
 │   │   │       │   │   └── config.test.ts
@@ -911,6 +898,7 @@
 │   │   │       │   │   ├── CardWithArrow.tsx
 │   │   │       │   │   ├── HomeButton.tsx
 │   │   │       │   │   ├── HomeCard.tsx
+│   │   │       │   │   ├── HomeNewsCard.tsx
 │   │   │       │   │   ├── HomeSearchV2.tsx
 │   │   │       │   │   ├── QuestionAnswers.tsx
 │   │   │       │   │   ├── QuestionBubble.tsx
@@ -921,6 +909,7 @@
 │   │   │       │   ├── Contributions.tsx
 │   │   │       │   ├── LaQuestionAction.tsx
 │   │   │       │   ├── Models.tsx
+│   │   │       │   ├── News.tsx
 │   │   │       │   ├── Search.tsx
 │   │   │       │   ├── Themes.tsx
 │   │   │       │   ├── Tools.tsx
@@ -1825,6 +1814,9 @@
 │   │   │       │   │       │       ├── types.ts
 │   │   │       │   │       │       └── validator.ts
 │   │   │       │   │       ├── Informations
+│   │   │       │   │       │   ├── components
+│   │   │       │   │       │   │   ├── BulletinDePaie.tsx
+│   │   │       │   │       │   │   └── index.ts
 │   │   │       │   │       │   ├── index.tsx
 │   │   │       │   │       │   └── store
 │   │   │       │   │       │       ├── index.ts
@@ -2031,6 +2023,7 @@
 │   │   │       │   └── index.tsx
 │   │   │       ├── recherche
 │   │   │       │   ├── Card.tsx
+│   │   │       │   ├── MasonryGrid.tsx
 │   │   │       │   ├── SearchBar.tsx
 │   │   │       │   ├── SearchPageClient.tsx
 │   │   │       │   ├── SearchWidgetDisplay.tsx
@@ -2068,6 +2061,7 @@
 │   │   │       │   │   │   ├── SearchModalContext.test.tsx
 │   │   │       │   │   │   └── SearchResultCard.test.tsx
 │   │   │       │   │   └── types.ts
+│   │   │       │   ├── query.ts
 │   │   │       │   ├── tracking.ts
 │   │   │       │   └── utils.ts
 │   │   │       ├── sentry
@@ -2080,6 +2074,7 @@
 │   │   │       │       ├── GovernmentOrganizationJsonLd.tsx
 │   │   │       │       ├── JsonLd.tsx
 │   │   │       │       ├── LegislationJsonLd.tsx
+│   │   │       │       ├── NewsArticleJsonLd.tsx
 │   │   │       │       ├── WebSiteJsonLd.tsx
 │   │   │       │       ├── __tests__
 │   │   │       │       │   ├── __snapshots__
@@ -3830,4 +3825,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-940 directories, 2892 files
+936 directories, 2891 files

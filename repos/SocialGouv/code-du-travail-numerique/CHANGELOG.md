@@ -3,6 +3,148 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.225.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.224.0...v4.225.0) (2026-04-10)
+
+
+### Features
+
+* **recherche:** renommage des labels pour les contributions et les autres pages. ([#7227](https://github.com/SocialGouv/code-du-travail-numerique/issues/7227)) ([0836586](https://github.com/SocialGouv/code-du-travail-numerique/commit/0836586b2114a3e21f5135c9f6c4434942329e07))
+
+
+
+
+
+# [4.224.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.223.1...v4.224.0) (2026-04-08)
+
+
+### Bug Fixes
+
+* **fiche-mt:** gestion des liens de type ancre sans href ([#7223](https://github.com/SocialGouv/code-du-travail-numerique/issues/7223)) ([b630587](https://github.com/SocialGouv/code-du-travail-numerique/commit/b630587057aa040d80661c9fe1b8ad35826e8cee))
+
+
+### Features
+
+* **actualite:** ajout du json-ld et au plan du site ([#7224](https://github.com/SocialGouv/code-du-travail-numerique/issues/7224)) ([a8c1bf2](https://github.com/SocialGouv/code-du-travail-numerique/commit/a8c1bf2e6650928902e9f21d12dd7fa3e207d539))
+
+
+
+
+
+## [4.223.1](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.223.0...v4.223.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* **e2e:** corrections des tests e2e suite à l'ajout des actualités ([#7220](https://github.com/SocialGouv/code-du-travail-numerique/issues/7220)) ([0d89fda](https://github.com/SocialGouv/code-du-travail-numerique/commit/0d89fdab19a4557056ff07b2b67e548fa1404f93))
+* **recherche:** corrections sur l'affichage des résultats ([#7219](https://github.com/SocialGouv/code-du-travail-numerique/issues/7219)) ([1eb337e](https://github.com/SocialGouv/code-du-travail-numerique/commit/1eb337e6ab52d9f1534c36de118954e68b283315))
+
+
+
+
+
+# [4.223.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.222.0...v4.223.0) (2026-04-07)
+
+
+### Bug Fixes
+
+* **actualite:** corrections sur les titres, les marges et bug sur les liens ([#7218](https://github.com/SocialGouv/code-du-travail-numerique/issues/7218)) ([c09c36b](https://github.com/SocialGouv/code-du-travail-numerique/commit/c09c36b36e4244973b2b7dedad6939e8d46d1ae8))
+* **contributions:** auto-redirect vers la concention collective quand celle-ci a été sauvegardée dans le header ([#7203](https://github.com/SocialGouv/code-du-travail-numerique/issues/7203)) ([599d3ae](https://github.com/SocialGouv/code-du-travail-numerique/commit/599d3aed5ecb802e1aa2b18b51a4f6861e15138a))
+* migrate e2e tests from Cypress to Playwright ([#7212](https://github.com/SocialGouv/code-du-travail-numerique/issues/7212)) ([7d5872a](https://github.com/SocialGouv/code-du-travail-numerique/commit/7d5872a1c1a686c49f2f3cd7928be6359fc7997b))
+* **quoi-de-neuf:** ajout du message `Aucune actualité cette semaine` sur la semaine courante ([#7198](https://github.com/SocialGouv/code-du-travail-numerique/issues/7198)) ([474efe1](https://github.com/SocialGouv/code-du-travail-numerique/commit/474efe1d50943751f4e3ebfcf5e857330277c99e))
+* **recherche:** mise en place de la masonry grid layout en horizontal ([#7215](https://github.com/SocialGouv/code-du-travail-numerique/issues/7215)) ([800cb47](https://github.com/SocialGouv/code-du-travail-numerique/commit/800cb47916c0cb8025a5cfc40b0bb4503e8f9216))
+* **recherche:** mismatch dans la recherche des définitions ([#7206](https://github.com/SocialGouv/code-du-travail-numerique/issues/7206)) ([4e1416f](https://github.com/SocialGouv/code-du-travail-numerique/commit/4e1416f0bce40a71cc8e0a96512326c68fa25108))
+* **search:** fix idccXXXX pattern and add siret class ([#7216](https://github.com/SocialGouv/code-du-travail-numerique/issues/7216)) ([e5745e1](https://github.com/SocialGouv/code-du-travail-numerique/commit/e5745e184a8be48f1a89ebd5588e8380db814f6f))
+
+
+### Features
+
+* **actualites:** ajout de la page listant les actualités ([#7205](https://github.com/SocialGouv/code-du-travail-numerique/issues/7205)) ([db257d9](https://github.com/SocialGouv/code-du-travail-numerique/commit/db257d9f589360ac205b8f4c118e98d625063fad))
+* **outils:** ajout d'une illustration du bulletin de paie sur le préavis de démission ([#7210](https://github.com/SocialGouv/code-du-travail-numerique/issues/7210)) ([d8dbfc4](https://github.com/SocialGouv/code-du-travail-numerique/commit/d8dbfc4e3bcc82130bf1eacbe58847afc9521acd))
+
+
+
+
+
+# [4.222.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.221.0...v4.222.0) (2026-03-30)
+
+
+### Bug Fixes
+
+* correction des tests e2e suite au changement de definition ([#7190](https://github.com/SocialGouv/code-du-travail-numerique/issues/7190)) ([6ead1cf](https://github.com/SocialGouv/code-du-travail-numerique/commit/6ead1cfb980bd10f58ea6dde3dbeda64fd912364))
+* **events:** suppression de l'event qui track l'input `agreement search` ([#7200](https://github.com/SocialGouv/code-du-travail-numerique/issues/7200)) ([c1c1af5](https://github.com/SocialGouv/code-du-travail-numerique/commit/c1c1af576d90ac26c82e04a119565b5f8e8fdd98))
+* **modale:** correction des derniers retours UI ([#7194](https://github.com/SocialGouv/code-du-travail-numerique/issues/7194)) ([5212f83](https://github.com/SocialGouv/code-du-travail-numerique/commit/5212f8335d15e27809baa414279d2b430a9ea0ec))
+* **modeles-de-courrier:** changement du breakpoint entre `md` et `lg` ([#7197](https://github.com/SocialGouv/code-du-travail-numerique/issues/7197)) ([f268f90](https://github.com/SocialGouv/code-du-travail-numerique/commit/f268f9058f3640daec1202e3a6b0be5c774ca0e3))
+* **theme:** utilisation de focusable à false sur les icônes ([#7192](https://github.com/SocialGouv/code-du-travail-numerique/issues/7192)) ([a3ff98e](https://github.com/SocialGouv/code-du-travail-numerique/commit/a3ff98e7673c649dac6c743723b98b9f48aa136b))
+
+
+### Features
+
+* **actualites:** ajout de la source actualités ([#7204](https://github.com/SocialGouv/code-du-travail-numerique/issues/7204)) ([3a4d8d6](https://github.com/SocialGouv/code-du-travail-numerique/commit/3a4d8d629a5424fb228b78a4951daad61d266bec))
+* **recherche:** evolution de la page de recherche ([#7189](https://github.com/SocialGouv/code-du-travail-numerique/issues/7189)) ([84ad449](https://github.com/SocialGouv/code-du-travail-numerique/commit/84ad449b99faac6512be6b225a7e648865bc9e47))
+* **recherche:** modification du wording pour le moteur de recherche ([#7191](https://github.com/SocialGouv/code-du-travail-numerique/issues/7191)) ([35f410f](https://github.com/SocialGouv/code-du-travail-numerique/commit/35f410f8629caf8446c6779fd902901d185a568a))
+
+
+
+
+
+# [4.221.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.220.0...v4.221.0) (2026-03-23)
+
+
+### Bug Fixes
+
+* **a11y:** mise en place des retours sur la modale de selection de la convention collective ([#7175](https://github.com/SocialGouv/code-du-travail-numerique/issues/7175)) ([2b85813](https://github.com/SocialGouv/code-du-travail-numerique/commit/2b85813dd05c73989cb0006f50a9f57a77018a57))
+* **e2e:** correction des tests e2e suite à l'ajout d'une contribution ([#7174](https://github.com/SocialGouv/code-du-travail-numerique/issues/7174)) ([00380e0](https://github.com/SocialGouv/code-du-travail-numerique/commit/00380e00951fd5e6af671124317cfbec3b612ad8))
+
+
+### Features
+
+* **infographie:** ajout des infographies dans la recherche + outil ([#7170](https://github.com/SocialGouv/code-du-travail-numerique/issues/7170)) ([adc7197](https://github.com/SocialGouv/code-du-travail-numerique/commit/adc7197124de45d9822b195bf4493472fb4dd610))
+* **search:** ajout de la définition sur la recherche ([#7177](https://github.com/SocialGouv/code-du-travail-numerique/issues/7177)) ([562aaab](https://github.com/SocialGouv/code-du-travail-numerique/commit/562aaabde73f97c215175e1b0951bb948a8ec0a7))
+* **seo:** changement du schema d'url pour la contribution `les-conges-pour-evenements-familiaux` ([#7165](https://github.com/SocialGouv/code-du-travail-numerique/issues/7165)) ([e5927ac](https://github.com/SocialGouv/code-du-travail-numerique/commit/e5927acb301eff4e91897e20f961e1560f96d933))
+
+
+
+
+
+# [4.220.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.219.0...v4.220.0) (2026-03-18)
+
+
+### Bug Fixes
+
+* **contribution:** ajout de la gestion des nouveaux tableaux avec colgroup ([#7172](https://github.com/SocialGouv/code-du-travail-numerique/issues/7172)) ([72f68ca](https://github.com/SocialGouv/code-du-travail-numerique/commit/72f68cae208f25d794f916ffff9ffbf81472c5e5))
+* **recherche:** gestion des liens sur les sous-thèmes  ([#7171](https://github.com/SocialGouv/code-du-travail-numerique/issues/7171)) ([15a30e9](https://github.com/SocialGouv/code-du-travail-numerique/commit/15a30e9e15bb7fd0b2871067da87002dda0256f9))
+* **recherche:** utilisation du `displayTitle` pour les simulateurs ([#7162](https://github.com/SocialGouv/code-du-travail-numerique/issues/7162)) ([7c6dc79](https://github.com/SocialGouv/code-du-travail-numerique/commit/7c6dc7957f56b5131b5a6a723216094032f48166))
+
+
+### Features
+
+* **navigation:** ajout d'un icon au niveau du menu déroulant sur `Voir tous les ...` ([#7164](https://github.com/SocialGouv/code-du-travail-numerique/issues/7164)) ([c4aceb8](https://github.com/SocialGouv/code-du-travail-numerique/commit/c4aceb87015e470911bc15e70801b7f3fcdc9abd))
+
+
+
+
+
+# [4.219.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.218.0...v4.219.0) (2026-03-13)
+
+
+### Bug Fixes
+
+* configuration des tests playwright dans la CI ([7d86e2d](https://github.com/SocialGouv/code-du-travail-numerique/commit/7d86e2d62aa2efc0c097b7348c2e49e1377daa94))
+* corrections sur les tests e2e ([#7149](https://github.com/SocialGouv/code-du-travail-numerique/issues/7149)) ([cbf7cbd](https://github.com/SocialGouv/code-du-travail-numerique/commit/cbf7cbda47c21313dfb23f8b7ec8c9f62b22c6d8))
+* passage des tests instables sous playwright ([#7151](https://github.com/SocialGouv/code-du-travail-numerique/issues/7151)) ([d20df76](https://github.com/SocialGouv/code-du-travail-numerique/commit/d20df76aa3c7dbef63e4f05ed61c71d9b7ae5a76))
+* **sdr:** correction des URLs qui sont en 404 et des redirections ([#7159](https://github.com/SocialGouv/code-du-travail-numerique/issues/7159)) ([2c1b1e6](https://github.com/SocialGouv/code-du-travail-numerique/commit/2c1b1e658d65b900dd7418ee0c2e71765102de2d))
+* **themes:** correction des ancres sur la page des thèmes ([#7155](https://github.com/SocialGouv/code-du-travail-numerique/issues/7155)) ([db9e75d](https://github.com/SocialGouv/code-du-travail-numerique/commit/db9e75d3ad320640b57b9e0e4701d67f8c12cfd0))
+
+
+### Features
+
+* **agreements:** ajout de la customisation au niveau du header ([#7101](https://github.com/SocialGouv/code-du-travail-numerique/issues/7101)) ([60e28c6](https://github.com/SocialGouv/code-du-travail-numerique/commit/60e28c673b414b36b9e62784bc62377137691c9a))
+* **indemnite:** séparation de l'étape ancienneté avec les absences ([#7146](https://github.com/SocialGouv/code-du-travail-numerique/issues/7146)) ([4000711](https://github.com/SocialGouv/code-du-travail-numerique/commit/4000711aee34c7ed53241dd885b8d85a4aa0a90a))
+
+
+
+
+
 # [4.218.0](https://github.com/SocialGouv/code-du-travail-numerique/compare/v4.217.0...v4.218.0) (2026-03-04)
 
 
