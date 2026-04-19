@@ -9,6 +9,7 @@
 ├── .prettierrc.json
 ├── .slugignore
 ├── .stylelintrc.json
+├── .yarnrc.yml
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -195,6 +196,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260413162919_add_indicateurs_financiers
 │   │   │   └── migration.sql
+│   │   ├── 20260415150233_operateur_user_action
+│   │   │   └── migration.sql
+│   │   ├── 20260416124533_improve_schema_following_multidna_migration
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -353,6 +358,19 @@
 │   │   │   ├── operateurs
 │   │   │   │   ├── OperateurItem.tsx
 │   │   │   │   ├── OperateursList.tsx
+│   │   │   │   ├── [id]
+│   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── DescriptionBlock.tsx
+│   │   │   │   │   │   ├── DocumentsBlock.tsx
+│   │   │   │   │   │   └── OperateurHeader.tsx
+│   │   │   │   │   ├── _context
+│   │   │   │   │   │   ├── OperateurClientContext.tsx
+│   │   │   │   │   │   └── OperateurContext.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── modification
+│   │   │   │   │   │   └── description
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
 │   │   │   ├── statistiques
@@ -605,6 +623,8 @@
 │   │   │   ├── metabase
 │   │   │   │   └── route.ts
 │   │   │   ├── operateurs
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── route.ts
 │   │   │   │   ├── operateur.repository.ts
 │   │   │   │   ├── operateur.service.ts
 │   │   │   │   ├── route.ts
@@ -707,7 +727,8 @@
 │   │   │   │   │   ├── AdresseAdministrativeAndAntennes.tsx
 │   │   │   │   │   ├── DnaInput.tsx
 │   │   │   │   │   ├── FieldSetAdresseAdministrative.tsx
-│   │   │   │   │   └── FieldSetAntennes.tsx
+│   │   │   │   │   ├── FieldSetAntennes.tsx
+│   │   │   │   │   └── ManualAddressInputs.tsx
 │   │   │   │   ├── calendrier
 │   │   │   │   │   └── FieldSetCalendrier.tsx
 │   │   │   │   ├── contacts
@@ -783,6 +804,9 @@
 │   │   │   │   ├── notes
 │   │   │   │   │   ├── FieldSetNotes.tsx
 │   │   │   │   │   └── NoteDisclaimer.tsx
+│   │   │   │   ├── operateur
+│   │   │   │   │   ├── FieldSetDescription.tsx
+│   │   │   │   │   └── FieldSetDirectionGenerale.tsx
 │   │   │   │   ├── ouvertureFermeture
 │   │   │   │   │   └── FieldSetOuvertureFermeture.tsx
 │   │   │   │   └── typePlace
@@ -834,6 +858,8 @@
 │   │   │   ├── useForm.ts
 │   │   │   ├── useHeaderHeight.ts
 │   │   │   ├── useLocalStorage.ts
+│   │   │   ├── useOperateur.ts
+│   │   │   ├── useOperateurFormHandling.ts
 │   │   │   ├── useOperateurSearch.ts
 │   │   │   ├── useOperateurSuggestion.ts
 │   │   │   ├── usePersistStructuresSearchQuery.ts
@@ -859,6 +885,7 @@
 │   │       ├── controle.util.ts
 │   │       ├── cpom.util.ts
 │   │       ├── date.util.ts
+│   │       ├── decimal.util.ts
 │   │       ├── defaultValues.util.ts
 │   │       ├── dna.util.ts
 │   │       ├── errorMail.util.ts
@@ -868,7 +895,9 @@
 │   │       ├── finess.util.ts
 │   │       ├── getErrorMessages.util.ts
 │   │       ├── indicateurFinancier.util.ts
+│   │       ├── math.util.ts
 │   │       ├── number.util.ts
+│   │       ├── operateur.util.ts
 │   │       ├── phone.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
@@ -1097,7 +1126,9 @@
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
 │   │   ├── date.util.test.ts
+│   │   ├── decimal.util.test.ts
 │   │   ├── getErrorMessages.util.test.ts
+│   │   ├── math.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
 │   │   ├── string.util.test.ts
@@ -1107,4 +1138,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-283 directories, 826 files
+292 directories, 848 files
