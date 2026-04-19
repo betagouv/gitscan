@@ -1,14 +1,13 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 15 avril 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 19 avril 2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières du site schema.data.gouv.fr, incluant des mises à jour des recommandations de schémas de données et des mises à jour générales du site web. Ces mises à jour visent à maintenir la pertinence et la qualité des informations disponibles pour les utilisateurs.
+Ce changelog fait état de mises à jour régulières du site schema.data.gouv.fr, principalement axées sur la mise à jour des recommandations et du site web lui-même. Ces mises à jour visent à maintenir la plateforme à jour et à améliorer l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Les mises à jour semblent principalement concerner le contenu et la maintenance du site.
+Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Les changements se concentrent sur des mises à jour régulières du site et des recommandations.
 
 ### Évolutions techniques
-Les commits indiquent des mises à jour régulières du site web et des recommandations. Bien que les détails techniques ne soient pas explicites dans les messages de commit, ces mises à jour peuvent inclure des optimisations de performance ou des corrections de bugs mineurs.
+Le site web et les recommandations ont été mis à jour de manière continue. Ces mises à jour peuvent inclure des corrections de bugs mineurs, des améliorations de performance ou des ajustements de l'interface utilisateur.
 
 ### Autres changements
-- Mise à jour régulière des recommandations de schémas de données (plusieurs commits, ex: [ac9d48a](https://github.com/datagouv/schema.data.gouv.fr/commit/ac9d48a)).
-- Mises à jour générales du site web (plusieurs commits, ex: [5d6b327](https://github.com/datagouv/schema.data.gouv.fr/commit/5d6b327)).
+Aucun autre changement significatif n'a été identifié. Les commits se concentrent sur les mises à jour régulières du site et des recommandations.
