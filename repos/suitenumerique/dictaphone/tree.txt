@@ -396,7 +396,6 @@
     └── mobile
         ├── .bundle
         │   └── config
-        ├── .eslintrc.js
         ├── .gitignore
         ├── .prettierrc.js
         ├── .watchmanconfig
@@ -404,8 +403,6 @@
         ├── Gemfile
         ├── Gemfile.lock
         ├── README.md
-        ├── __tests__
-        │   └── App.test.tsx
         ├── android
         │   ├── app
         │   │   ├── build.gradle
@@ -414,13 +411,28 @@
         │   │   └── src
         │   │       └── main
         │   │           ├── AndroidManifest.xml
+        │   │           ├── assets
+        │   │           │   └── fonts
+        │   │           │       ├── Marianne-Bold.ttf
+        │   │           │       ├── Marianne-BoldItalic.ttf
+        │   │           │       ├── Marianne-ExtraBold.ttf
+        │   │           │       ├── Marianne-ExtraBoldItalic.ttf
+        │   │           │       ├── Marianne-Light.ttf
+        │   │           │       ├── Marianne-LightItalic.ttf
+        │   │           │       ├── Marianne-Medium.ttf
+        │   │           │       ├── Marianne-MediumItalic.ttf
+        │   │           │       ├── Marianne-Regular.ttf
+        │   │           │       ├── Marianne-RegularItalic.ttf
+        │   │           │       ├── Marianne-Thin.ttf
+        │   │           │       └── Marianne-ThinItalic.ttf
         │   │           ├── java
-        │   │           │   └── com
-        │   │           │       └── dictaphone
-        │   │           │           ├── FileUploadModule.kt
-        │   │           │           ├── FileUploadPackage.kt
-        │   │           │           ├── MainActivity.kt
-        │   │           │           └── MainApplication.kt
+        │   │           │   └── fr
+        │   │           │       └── gouv
+        │   │           │           └── assistantTranscripts
+        │   │           │               ├── FileUploadModule.kt
+        │   │           │               ├── FileUploadPackage.kt
+        │   │           │               ├── MainActivity.kt
+        │   │           │               └── MainApplication.kt
         │   │           └── res
         │   │               ├── drawable
         │   │               │   └── rn_edit_text_material.xml
@@ -461,97 +473,88 @@
         │   ├── gradle.properties
         │   ├── gradlew
         │   ├── gradlew.bat
+        │   ├── link-assets-manifest.json
         │   └── settings.gradle
         ├── app.json
         ├── assets
-        │   └── bootsplash
-        │       ├── logo.png
-        │       ├── logo@1,5x.png
-        │       ├── logo@2x.png
-        │       ├── logo@3x.png
-        │       ├── logo@4x.png
-        │       └── manifest.json
+        │   ├── bootsplash
+        │   │   ├── logo.png
+        │   │   ├── logo@1,5x.png
+        │   │   ├── logo@2x.png
+        │   │   ├── logo@3x.png
+        │   │   ├── logo@4x.png
+        │   │   └── manifest.json
+        │   └── fonts
+        │       ├── Marianne-Bold.ttf
+        │       ├── Marianne-BoldItalic.ttf
+        │       ├── Marianne-ExtraBold.ttf
+        │       ├── Marianne-ExtraBoldItalic.ttf
+        │       ├── Marianne-Light.ttf
+        │       ├── Marianne-LightItalic.ttf
+        │       ├── Marianne-Medium.ttf
+        │       ├── Marianne-MediumItalic.ttf
+        │       ├── Marianne-Regular.ttf
+        │       ├── Marianne-RegularItalic.ttf
+        │       ├── Marianne-Thin.ttf
+        │       └── Marianne-ThinItalic.ttf
         ├── babel.config.js
+        ├── eslint.config.js
         ├── index.js
         ├── ios
         │   ├── .xcode.env
-        │   ├── Dictaphone
+        │   ├── AssistantTranscripts
         │   │   ├── AppDelegate.swift
         │   │   ├── BootSplash.storyboard
         │   │   ├── Colors.xcassets
-        │   │   │   └── BootSplashBackground-e082cc.colorset
+        │   │   │   └── BootSplashBackground-31a0d2.colorset
         │   │   │       └── Contents.json
         │   │   ├── Images.xcassets
         │   │   │   ├── AppIcon.appiconset
         │   │   │   │   ├── Contents.json
         │   │   │   │   ├── icon-1024x1024@1x.png
-        │   │   │   │   ├── icon-20x20@1x.png
         │   │   │   │   ├── icon-20x20@2x.png
         │   │   │   │   ├── icon-20x20@3x.png
         │   │   │   │   ├── icon-29x29@1x.png
         │   │   │   │   ├── icon-29x29@2x.png
         │   │   │   │   ├── icon-29x29@3x.png
-        │   │   │   │   ├── icon-40x40@1x.png
         │   │   │   │   ├── icon-40x40@2x.png
         │   │   │   │   ├── icon-40x40@3x.png
         │   │   │   │   ├── icon-60x60@2x.png
         │   │   │   │   ├── icon-60x60@3x.png
         │   │   │   │   ├── icon-76x76@1x.png
         │   │   │   │   ├── icon-76x76@2x.png
-        │   │   │   │   ├── icon-83.5x83.5@2x.png
-        │   │   │   │   ├── ios-marketing-1024x1024-1x.png
-        │   │   │   │   ├── ipad-20x20-1x.png
-        │   │   │   │   ├── ipad-20x20-2x.png
-        │   │   │   │   ├── ipad-29x29-1x.png
-        │   │   │   │   ├── ipad-29x29-2x.png
-        │   │   │   │   ├── ipad-40x40-1x.png
-        │   │   │   │   ├── ipad-40x40-2x.png
-        │   │   │   │   ├── ipad-50x50-1x.png
-        │   │   │   │   ├── ipad-50x50-2x.png
-        │   │   │   │   ├── ipad-72x72-1x.png
-        │   │   │   │   ├── ipad-72x72-2x.png
-        │   │   │   │   ├── ipad-76x76-1x.png
-        │   │   │   │   ├── ipad-76x76-2x.png
-        │   │   │   │   ├── ipad-83.5x83.5-2x.png
-        │   │   │   │   ├── iphone-20x20-2x.png
-        │   │   │   │   ├── iphone-20x20-3x.png
-        │   │   │   │   ├── iphone-29x29-1x.png
-        │   │   │   │   ├── iphone-29x29-2x.png
-        │   │   │   │   ├── iphone-29x29-3x.png
-        │   │   │   │   ├── iphone-40x40-2x.png
-        │   │   │   │   ├── iphone-40x40-3x.png
-        │   │   │   │   ├── iphone-57x57-1x.png
-        │   │   │   │   ├── iphone-57x57-2x.png
-        │   │   │   │   ├── iphone-60x60-2x.png
-        │   │   │   │   └── iphone-60x60-3x.png
-        │   │   │   ├── BootSplashLogo-e082cc.imageset
+        │   │   │   │   └── icon-83.5x83.5@2x.png
+        │   │   │   ├── BootSplashLogo-31a0d2.imageset
         │   │   │   │   ├── Contents.json
-        │   │   │   │   ├── logo-e082cc.png
-        │   │   │   │   ├── logo-e082cc@2x.png
-        │   │   │   │   └── logo-e082cc@3x.png
+        │   │   │   │   ├── logo-31a0d2.png
+        │   │   │   │   ├── logo-31a0d2@2x.png
+        │   │   │   │   └── logo-31a0d2@3x.png
         │   │   │   └── Contents.json
         │   │   ├── Info.plist
         │   │   ├── LaunchScreen.storyboard
         │   │   └── PrivacyInfo.xcprivacy
-        │   ├── Dictaphone.xcodeproj
+        │   ├── AssistantTranscripts-Bridging-Header.h
+        │   ├── AssistantTranscripts.xcodeproj
         │   │   ├── project.pbxproj
         │   │   ├── project.xcworkspace
         │   │   │   └── contents.xcworkspacedata
         │   │   └── xcshareddata
         │   │       └── xcschemes
-        │   │           └── Dictaphone.xcscheme
-        │   ├── Dictaphone.xcworkspace
+        │   │           └── AssistantTranscripts.xcscheme
+        │   ├── AssistantTranscripts.xcworkspace
         │   │   └── contents.xcworkspacedata
         │   ├── FileUploadModule.m
         │   ├── FileUploadModule.swift
         │   ├── Podfile
         │   ├── Podfile.lock
-        │   └── dictaphone-Briding-Header.h
+        │   ├── dictaphone-Briding-Header.h
+        │   └── link-assets-manifest.json
         ├── jest.config.js
         ├── metro.config.js
         ├── package.json
         ├── patches
         │   └── react-native-audio-api+0.11.7.patch
+        ├── react-native.config.js
         ├── src
         │   ├── api
         │   │   ├── ApiError.ts
@@ -561,14 +564,25 @@
         │   │   ├── queryKeys.ts
         │   │   └── useConfig.ts
         │   ├── assets
+        │   │   ├── icons
+        │   │   │   ├── docs.svg
+        │   │   │   ├── file-disabled.svg
+        │   │   │   ├── file.svg
+        │   │   │   ├── pause.svg
+        │   │   │   ├── record.svg
+        │   │   │   └── warning.svg
+        │   │   ├── logo-single-line.svg
         │   │   ├── logo-with-name.svg
         │   │   ├── logo.svg
         │   │   └── proconnect-content.svg
         │   ├── components
-        │   │   ├── AudioPlayer.tsx
+        │   │   ├── AppText.tsx
         │   │   ├── AudioRecorder.tsx
+        │   │   ├── LoginButton.tsx
         │   │   ├── LoginWithProConnectButton.tsx
-        │   │   └── UserInfoCard.tsx
+        │   │   ├── MainMenu.tsx
+        │   │   ├── RecordingMenu.tsx
+        │   │   └── colors.ts
         │   ├── features
         │   │   ├── ai-jobs
         │   │   │   ├── api
@@ -608,21 +622,22 @@
         │   │   │   └── fr.json
         │   │   └── resources.ts
         │   ├── navigation
-        │   │   └── types.ts
+        │   │   ├── types.ts
+        │   │   └── useRestNavigationHistory.ts
         │   ├── screens
-        │   │   ├── HomeScreen.tsx
         │   │   ├── LoginScreen.tsx
-        │   │   ├── RecordingsScreen.tsx
-        │   │   └── SettingsScreen.tsx
+        │   │   ├── RecordingDetailsScreen.tsx
+        │   │   ├── RecordingScreen.tsx
+        │   │   └── RecordingsScreen.tsx
         │   ├── services
-        │   │   ├── apiClient.ts
         │   │   ├── authService.ts
         │   │   └── storage.ts
         │   ├── types
-        │   │   ├── recording.ts
+        │   │   ├── localRecording.ts
         │   │   └── settings.ts
         │   └── utils
-        │       └── fileUpload.ts
+        │       ├── fileUpload.ts
+        │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-162 directories, 465 files
+166 directories, 476 files
