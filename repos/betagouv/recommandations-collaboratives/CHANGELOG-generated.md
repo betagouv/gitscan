@@ -1,53 +1,30 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 15 avril 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment dans les conversations et la gestion des documents, ainsi que par des corrections de bugs et des optimisations de performance. Des fonctionnalités ont été ajoutées pour faciliter la gestion des ressources et des tâches, et l'expérience utilisateur a été améliorée pour les conseillers.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des documents, notamment l'ajout de documents privés, la gestion des fichiers et des corrections liées à l'interface utilisateur. Des optimisations de performance et des mises à jour de dépendances ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- **Gestion des conversations :**
-    - Ajout de la gestion des brouillons de recommandations pour les conseillers, incluant la possibilité de les créer, modifier et supprimer.
-    - Amélioration de l'affichage des brouillons de recommandations dans le panneau de partage de contenu.
-    - Intégration des brouillons de recommandations dans le flux de travail des conversations.
-- **Gestion des documents :**
-    - Distinction claire entre les documents privés et publics, avec des permissions d'accès appropriées.
-    - Possibilité pour les conseillers de télécharger des documents privés.
-    - Amélioration de l'affichage des documents dans le panneau de partage de contenu.
-    - Ajout de notifications lors du téléchargement de documents.
-- **Gestion des tâches :**
-    - Amélioration de l'affichage et du filtrage des tâches.
-    - Correction de bugs liés à la gestion des tâches et des actions associées.
-- **CRM :**
-    - Affichage des actions des utilisateurs et des objets associés dans le CRM.
-    - Amélioration de l'affichage des informations sur les conseillers acceptés ou rejetés.
-    - Correction de bugs liés à l'affichage des informations dans le CRM.
-- **Statistiques :**
-    - Correction d'un bug empêchant l'inclusion des tâches "NON_INTERESTED" dans les exports CSV.
-    - Amélioration de la cohérence du filtrage des projets dans les statistiques et l'export CSV.
-- **Interface utilisateur :**
-    - Amélioration de l'accessibilité des panneaux de ressources et de partage de contenu.
-    - Refonte du sélecteur de catégories pour une meilleure expérience utilisateur.
-    - Suppression des alertes redondantes concernant les ressources.
-    - Correction de liens et d'URL obsolètes.
+- **Gestion des documents :** Ajout de la gestion des documents privés, permettant de restreindre l'accès à certains documents aux conseillers uniquement.
+- **Téléchargement de fichiers :** Amélioration du processus de téléchargement de fichiers, notamment dans le cadre des conversations et des notes.
+- **Affichage des ressources :** Suppression des informations sur l'auteur d'une ressource dans l'interface.
+- **Notes :** Possibilité d'ajouter des documents (publics et privés) aux notes.
+- **Tâches :** Nouvelle route spécifique pour la publication de recommandations depuis une tâche, avec un message de confirmation plus clair.
+- **Conversations :** Amélioration de l'ouverture du panneau de brouillon après la création d'une recommandation.
+- **Géolocalisation :** Mise à jour de la gestion des communes et intégration d'une commande de gestion pour l'attribution de nouvelles communes aux projets.
+- **Notifications :** Ajout de notifications lors du téléchargement de documents.
+- **Catégories :** Amélioration de l'interface du sélecteur de catégories pour les ressources.
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Suppression de code mort et simplification de la logique dans plusieurs composants.
-    - Amélioration de la gestion des états et des données dans les composants Alpine.js.
-    - Standardisation de l'utilisation de `formatDate` pour la gestion des dates.
-- **Dépendances :**
-    - Mise à jour de plusieurs dépendances, notamment `Django`, `pytest`, `pillow`, `cryptography`, `vite`, `lodash`, `axios`, `picomatch`, `flatted`, `requests`, `uv` et les dépendances frontend.
-- **CI/CD :**
-    - Utilisation de `uv` pour la gestion des dépendances Python et la génération du fichier `requirements.txt`.
-- **Infrastructure :**
-    - Mise à jour de la configuration de Vite.
-    - Ajout de fichiers `.gitignore` pour exclure les fichiers sensibles et temporaires.
+- **Refactoring :** Suppression de code mort et simplification de certaines logiques, notamment dans la gestion des notes et des documents.
+- **Dépendances :** Mise à jour de plusieurs dépendances, incluant Django, PostgreSQL, Redis, Alpine.js, Bootstrap, DSFR, ainsi que des librairies JavaScript (axios, lodash, picomatch, flatted, follow-redirects, dompurify, vite, cryptography, pygments, requests).
+- **CI/CD :** Utilisation de `uv` pour la gestion des dépendances Python et la génération du fichier `requirements.txt`.
+- **Performance :** Préchargement des tags pour les tâches afin d'améliorer les performances.
+- **Architecture :** Utilisation de `Alpine.store` pour une meilleure gestion de l'état de l'application.
+- **Tests :** Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les modifications apportées.
-- Amélioration des tests unitaires et d'intégration.
-- Correction de typos et amélioration de la lisibilité du code.
-- Ajout de commentaires pour clarifier la logique du code.
-- Mise à jour des liens vers la documentation.
-- Nettoyage du code et suppression de code redondant.
-- Ajout d'un script de gestion des communes pour l'outil géomatique.
-- Amélioration de la gestion des erreurs et des exceptions.
+- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'interface.
+- **Configuration :** Mise à jour de l'URL de base des démarches.
+- **Nettoyage de code :** Suppression de commentaires inutiles et amélioration de la lisibilité du code.
+- **Corrections de bugs :** Correction de plusieurs bugs mineurs liés à l'interface utilisateur, à la gestion des URLs et à l'affichage des informations.
+- **Amélioration de l'accessibilité :** Ajout d'attributs ARIA pour améliorer l'accessibilité des composants de l'interface utilisateur.
