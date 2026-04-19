@@ -7,7 +7,7 @@ Ce mois-ci, les mises à jour se concentrent sur la maintenance de l'infrastruct
 Aucune évolution fonctionnelle à signaler.
 
 ### Évolutions techniques
-- Maintien de l'activité du workflow GitHub Actions pour assurer le bon fonctionnement continu de l'API. [#1](https://github.com/etalab/calendrier.api.gouv.fr/commit/f0fa159)
+- Maintien de l'activité du workflow GitHub Actions pour assurer le bon fonctionnement de l'API. [#1](https://github.com/etalab/calendrier.api.gouv.fr/commit/f0fa159)
 
 ### Autres changements
 Aucun autre changement à signaler.
