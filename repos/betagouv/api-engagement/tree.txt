@@ -1,5 +1,7 @@
 .
 ├── .claude
+│   ├── HANDOFF.md
+│   ├── settings.json
 │   └── skills
 │       ├── README.md
 │       ├── branch
@@ -41,10 +43,12 @@
 │   └── settings.json
 ├── AGENTS.md
 ├── CHANGELOG.md
+├── CLAUDE.md -> AGENTS.md
 ├── README.md
 ├── analytics
 │   ├── .gitignore
 │   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Dockerfile.production
 │   ├── README.md
 │   ├── db
@@ -76,7 +80,11 @@
 │   │       ├── 20260216125629_delete_mission_activity_id.sql
 │   │       ├── 20260302154214_rename_organization_client_id.sql
 │   │       ├── 20260305092816_add_publisher_organization_fields.sql
-│   │       └── 20260306090455_add_publisher_organization_id_field.sql
+│   │       ├── 20260306090455_add_publisher_organization_id_field.sql
+│   │       ├── 20260319155046_add_publisher_mission_type.sql
+│   │       ├── 20260324104459_add_mission_jobboard.sql
+│   │       ├── 20260402074029_drop_organization_legacy_fields.sql
+│   │       └── 20260402083123_drop_mission_organization_client_id.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -131,6 +139,8 @@
 │   │       │   │   │   ├── mission_address.sql
 │   │       │   │   │   ├── mission_event.sql
 │   │       │   │   │   ├── mission_events_yearly.sql
+│   │       │   │   │   ├── mission_jobboard.sql
+│   │       │   │   │   ├── mission_jobboard_daily.sql
 │   │       │   │   │   ├── mission_moderation_status.sql
 │   │       │   │   │   ├── mission_time_to_event_monthly.sql
 │   │       │   │   │   └── mission_time_to_event_weekly.sql
@@ -152,6 +162,7 @@
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   ├── account.sql
 │   │       │   │   │   ├── apply.sql
+│   │       │   │   │   ├── apply_jva_attrs.sql
 │   │       │   │   │   ├── apply_service_civique_attrs.sql
 │   │       │   │   │   ├── click.sql
 │   │       │   │   │   └── impression.sql
@@ -197,7 +208,8 @@
 │   │       │       │   ├── stg_mission.sql
 │   │       │       │   ├── stg_mission_activity.sql
 │   │       │       │   ├── stg_mission_address.sql
-│   │       │       │   └── stg_mission_event.sql
+│   │       │       │   ├── stg_mission_event.sql
+│   │       │       │   └── stg_mission_jobboard.sql
 │   │       │       ├── moderation
 │   │       │       │   ├── __models.yml
 │   │       │       │   ├── stg_mission_moderation_status.sql
@@ -270,10 +282,38 @@
 ├── api
 │   ├── .gitignore
 │   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Dockerfile
 │   ├── Dockerfile.production
 │   ├── README.md
 │   ├── docker-entrypoint.sh
+│   ├── docs
+│   │   ├── .gitbook.yaml
+│   │   ├── SUMMARY.md
+│   │   ├── authentification.md
+│   │   ├── diffuseur
+│   │   │   ├── liste.md
+│   │   │   └── par-identifiant.md
+│   │   ├── errors.md
+│   │   ├── introduction.md
+│   │   ├── mes-missions
+│   │   │   ├── par-identifiant.md
+│   │   │   ├── recuperer.md
+│   │   │   └── statistiques.md
+│   │   ├── mes-organisations
+│   │   │   ├── liste-diffuseurs.md
+│   │   │   └── modifier-diffuseurs.md
+│   │   ├── mission
+│   │   │   ├── creer-mettre-a-jour.md
+│   │   │   ├── par-identifiant.md
+│   │   │   ├── rechercher.md
+│   │   │   ├── recuperer.md
+│   │   │   └── supprimer.md
+│   │   ├── openapi.yaml
+│   │   ├── organisations
+│   │   │   └── recuperer.md
+│   │   └── tracking
+│   │       └── qualifier.md
 │   ├── eslint.config.cjs
 │   ├── nodemon.json
 │   ├── package-lock.json
@@ -398,9 +438,18 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260304104852_link_publisher_exlcusion_and_publisher_organization
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260326105917_add_reserve_operationnelle_mission_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260401102657_remove_legacy_mission_field
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260401103056_add_login_history_on_delete_rule
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260402104518_remove_stat_event_legacy_field
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
+│   ├── redocly.yaml
 │   ├── scripts
 │   │   ├── README.md
 │   │   ├── backfill-mission-jobboard-sync-status.ts
@@ -408,6 +457,7 @@
 │   │   ├── backfill-publisher-organizations-exclusion.ts
 │   │   ├── backfill-publisher-organizations-review-model.ts
 │   │   ├── backfill-publisher-organizations.ts
+│   │   ├── check-stat-event-orphan-mission-fields.ts
 │   │   ├── cleanup-duplicate-organizations.ts
 │   │   ├── cleanup-orphan-activities.ts
 │   │   ├── fill-missions-type.ts
@@ -420,6 +470,7 @@
 │   │   │   ├── archive-phantom-piloty-jobs.ts
 │   │   │   └── archive-piloty-jobs.ts
 │   │   ├── migrate-mission-activities.ts
+│   │   ├── migrate-widget-rules-reseaux.ts
 │   │   ├── mongo-backfill
 │   │   │   ├── README.md
 │   │   │   ├── backfill-campaign.ts
@@ -656,6 +707,8 @@
 │   │   │   ├── mission-moderation-status.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── moderation-event.ts
+│   │   │   ├── observability
+│   │   │   │   └── metrics.ts
 │   │   │   ├── organization.ts
 │   │   │   ├── piloty
 │   │   │   │   ├── client.ts
@@ -677,7 +730,10 @@
 │   │   │   ├── widget-mission.ts
 │   │   │   └── widget.ts
 │   │   ├── static
-│   │   │   └── impression.js
+│   │   │   ├── impression.js
+│   │   │   └── well-known
+│   │   │       ├── security-policy.txt
+│   │   │       └── security.txt
 │   │   ├── types
 │   │   │   ├── brevo.d.ts
 │   │   │   ├── campaign.ts
@@ -765,6 +821,7 @@
 │   │   │   │   │   ├── aggs.test.ts
 │   │   │   │   │   ├── search.test.ts
 │   │   │   │   │   └── widget.test.ts
+│   │   │   │   ├── metrics.test.ts
 │   │   │   │   ├── moderation.test.ts
 │   │   │   │   ├── redirect
 │   │   │   │   │   ├── account.test.ts
@@ -784,6 +841,9 @@
 │   │   │   │       └── mission.test.ts
 │   │   │   ├── dashboard
 │   │   │   │   └── user-access.test.ts
+│   │   │   ├── docs
+│   │   │   │   ├── spec.test.ts
+│   │   │   │   └── testOpenApiApp.ts
 │   │   │   └── jobs
 │   │   │       ├── import-missions
 │   │   │       │   ├── data
@@ -817,6 +877,7 @@
 ├── app
 │   ├── .gitignore
 │   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Dockerfile
 │   ├── Dockerfile.production
 │   ├── eslint.config.cjs
@@ -828,6 +889,9 @@
 │   ├── postcss.config.js
 │   ├── prettier.config.js
 │   ├── public
+│   │   ├── .well-known
+│   │   │   ├── security-policy.txt
+│   │   │   └── security.txt
 │   │   ├── favicon.svg
 │   │   ├── jstag.js
 │   │   └── test-jstag.html
@@ -891,9 +955,9 @@
 │   │   │   ├── WarningAlert.jsx
 │   │   │   ├── combobox
 │   │   │   │   ├── DesignSystem.jsx
+│   │   │   │   ├── LabelledCombobox.jsx
 │   │   │   │   ├── LocationCombobox.jsx
 │   │   │   │   ├── MissionCombobox.jsx
-│   │   │   │   ├── PublisherCombobox.jsx
 │   │   │   │   └── index.jsx
 │   │   │   └── form
 │   │   │       ├── Checkbox.jsx
@@ -921,7 +985,10 @@
 │   │   │   ├── admin-report
 │   │   │   │   └── index.jsx
 │   │   │   ├── admin-stats
+│   │   │   │   ├── Annonceur.jsx
 │   │   │   │   ├── Apercu.jsx
+│   │   │   │   ├── Diffuseur.jsx
+│   │   │   │   ├── MultiSearchSelect.jsx
 │   │   │   │   └── index.jsx
 │   │   │   ├── admin-warning
 │   │   │   │   ├── components
@@ -1056,6 +1123,12 @@
 ├── docker-compose.yml
 ├── package-lock.json
 ├── package.json
+├── scripts
+│   ├── .gitignore
+│   ├── generate-changelog.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   └── tsconfig.json
 ├── terraform
 │   ├── containers.tf
 │   ├── data.tf
@@ -1072,6 +1145,7 @@
 └── widget
     ├── .gitignore
     ├── AGENTS.md
+    ├── CLAUDE.md -> AGENTS.md
     ├── Dockerfile
     ├── Dockerfile.production
     ├── components
@@ -1117,6 +1191,9 @@
     ├── postcss.config.js
     ├── proxy.ts
     ├── public
+    │   ├── .well-known
+    │   │   ├── security-policy.txt
+    │   │   └── security.txt
     │   ├── favicon.ico
     │   ├── images
     │   │   ├── generique.jpeg
@@ -1150,7 +1227,6 @@
     │               ├── card-volontariat-hover-desktop.png
     │               └── card-volontariat-mobile.png
     ├── tsconfig.json
-    ├── tsconfig.tsbuildinfo
     ├── types
     │   └── index.ts
     └── utils
@@ -1165,4 +1241,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-273 directories, 894 files
+290 directories, 953 files

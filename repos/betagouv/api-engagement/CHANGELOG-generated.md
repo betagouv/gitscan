@@ -1,41 +1,37 @@
-## Changelog : api-engagement (30 derniers jours, au 16 mars 2026)
+## Changelog : api-engagement (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de la gestion des missions et des organisations, ainsi que par des corrections de bugs et des optimisations de l'infrastructure. L'ajout de nouvelles fonctionnalités, comme les endpoints CRUD pour les missions, et les améliorations apportées à l'interface de modération, facilitent la gestion et l'analyse de l'engagement. Des efforts ont également été déployés pour améliorer la robustesse et la performance de l'API.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la robustesse de l'API et de l'application, notamment en corrigeant des erreurs liées à la gestion des sessions, à l'accessibilité et à l'affichage des données. Des optimisations ont également été apportées à l'analyse des données et à la gestion des organisations. Enfin, des améliorations de sécurité ont été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout d'endpoints CRUD pour la gestion des missions via l'API v2. [#847](https://github.com/betagouv/api-engagement/issues/847)
-- Amélioration du job `letudiant` avec l'ajout de quotas pour une meilleure gestion des données importées. [#855](https://github.com/betagouv/api-engagement/issues/855)
-- Ajout d'un bouton "événements en direct" sur les listes de campagnes et de widgets pour faciliter l'accès aux événements. [#809](https://github.com/betagouv/api-engagement/issues/809)
-- Amélioration de la recherche d'organisations avec l'ajout d'un champ `search_text`. [#817](https://github.com/betagouv/api-engagement/issues/817)
-- Ajout de métriques de taux de conversion dans les analytics. [#811](https://github.com/betagouv/api-engagement/issues/811)
-- Correction du bug empêchant la suppression de l'adresse d'une mission lors de l'importation. [#819](https://github.com/betagouv/api-engagement/issues/819)
-- Correction d'un bug empêchant le retour de l'adresse de la mission lors de la modération.
-- Amélioration de l'interface de modération avec des corrections de l'affichage et de la navigation.
-- Correction d'un problème de déconnexion pour les utilisateurs accédant à la section "mes missions".
+- Ajout d'un nouveau type de mission : "reserve_operationnelle" [#901](https://github.com/betagouv/api-engagement/issues/901).
+- Amélioration de la page d'administration des statistiques pour afficher correctement les paramètres de type de mission [#892](https://github.com/betagouv/api-engagement/issues/892).
+- Correction du formulaire d'édition du widget [#925](https://github.com/betagouv/api-engagement/issues/925).
+- Amélioration de la conception réactive pour les petites vues (RGAA 10.11) [#930](https://github.com/betagouv/api-engagement/issues/930).
+- Amélioration de la liste des utilisateurs et des formulaires utilisateurs [#922](https://github.com/betagouv/api-engagement/issues/922).
+- Amélioration du sélecteur de plage de dates pour l'accessibilité, empêchant la sélection du jour courant [#924](https://github.com/betagouv/api-engagement/issues/924) et [#928](https://github.com/betagouv/api-engagement/issues/928).
+- Correction de la déconnexion en cas d'erreur réseau [#930](https://github.com/betagouv/api-engagement/issues/930).
+- Correction du redirect en cas de mission non trouvée [#926](https://github.com/betagouv/api-engagement/issues/926).
+- Amélioration des filtres de modération avec recherche facettée [#902](https://github.com/betagouv/api-engagement/issues/902).
 
 ### Évolutions techniques
-- Mise à jour de l'AWS SDK vers la version 3. [#865](https://github.com/betagouv/api-engagement/issues/865)
-- Refactorisation de l'exclusion de diffusion des publishers pour lier à l'organisation publisher. [#848](https://github.com/betagouv/api-engagement/issues/848)
-- Mise à jour de la version de Prisma à la version 7. [#812](https://github.com/betagouv/api-engagement/issues/812)
-- Ajout d'un index partiel sur la table `mission` pour optimiser les requêtes de comptage de recherche géographique. [#806](https://github.com/betagouv/api-engagement/issues/806)
-- Mise à jour de la configuration de scaleway pour l'API.
-- Mise à jour de la version de Node.js à la version 24. [#802](https://github.com/betagouv/api-engagement/issues/802)
-- Amélioration de la gestion des erreurs non gérées et non capturées avec Sentry. [#797](https://github.com/betagouv/api-engagement/issues/797)
-- Ajout d'un proxy WAF pour le widget. [#795](https://github.com/betagouv/api-engagement/issues/795)
-- Refactorisation de l'utilisation du service dans les fixtures. [#858](https://github.com/betagouv/api-engagement/issues/858)
-- Ajout de tests non-régression pour la fonctionnalité de modération. [#818](https://github.com/betagouv/api-engagement/issues/818)
-- Ajout de tests pour valider l'utilisation du dashboard avec un rôle utilisateur. [#857](https://github.com/betagouv/api-engagement/issues/857)
+- Suppression des champs d'organisation hérités du schéma de mission [#863](https://github.com/betagouv/api-engagement/issues/863) et [#921](https://github.com/betagouv/api-engagement/issues/921).
+- Suppression de la clé étrangère `mission` dans `stat_events` [#933](https://github.com/betagouv/api-engagement/issues/933) et [#919](https://github.com/betagouv/api-engagement/issues/919).
+- Amélioration des règles CLAUDE [#935](https://github.com/betagouv/api-engagement/issues/935).
+- Mise à jour de Vite en v8 [#907](https://github.com/betagouv/api-engagement/issues/907).
+- Ajout d'une politique de sécurité [#920](https://github.com/betagouv/api-engagement/issues/920).
+- Mise à jour de la documentation OpenAPI [#915](https://github.com/betagouv/api-engagement/issues/915).
+- Amélioration du script de vérification des champs orphelins `stat_event` [#428515e](https://github.com/betagouv/api-engagement/commit/428515e).
+- Correction de l'endpoint `/v0/organization` [#917](https://github.com/betagouv/api-engagement/issues/917).
+- Restriction du proxy Metabase public à une carte spécifique [#916](https://github.com/betagouv/api-engagement/issues/916).
+- Amélioration du déploiement de l'application sandbox [#914](https://github.com/betagouv/api-engagement/issues/914).
 
 ### Autres changements
-- Correction de la gestion des adresses inconnues lors de l'importation des jobs. [#872](https://github.com/betagouv/api-engagement/issues/872)
-- Amélioration du workflow de release avec un lien vers le tag. [#860](https://github.com/betagouv/api-engagement/issues/860)
-- Nettoyage et mise à jour du fichier `CHANGELOG.md`.
-- Ajout d'un environnement sandbox pour les tests et le développement. [#850](https://github.com/betagouv/api-engagement/issues/850)
-- Correction de plusieurs problèmes d'environnement dans les workflows CI.
-- Suppression du workflow de synchronisation sandbox.
-- Ajout de vérifications de l'organisation publisher.
-- Amélioration de la documentation du `publisher_organization`. [#840](https://github.com/betagouv/api-engagement/issues/840)
-- Correction de problèmes d'accessibilité dans l'application (éléments manquants, focus, etc.).
-- Mise à jour des dépendances et des actions CI.
-- Correction de problèmes liés à l'affichage et au comportement de l'interface utilisateur de l'application.
+- Ajout d'un workflow de changelog automatique [#856](https://github.com/betagouv/api-engagement/issues/856).
+- Mise à jour des dépendances (softprops/action-gh-release, geoip-lite, dorny/paths-filter, etc.).
+- Amélioration de l'ESLint configuration et correction des règles [#898](https://github.com/betagouv/api-engagement/issues/898).
+- Ajout d'un pipeline de données Jobboard pour l'analyse [#894](https://github.com/betagouv/api-engagement/issues/894).
+- Amélioration de la gestion des erreurs `payloadTooLarge` [#896](https://github.com/betagouv/api-engagement/issues/896).
+- Amélioration de la hiérarchie des titres pour l'accessibilité [#899](https://github.com/betagouv/api-engagement/issues/899) et [#900](https://github.com/betagouv/api-engagement/issues/900).
+- Utilisation de balises HTML sémantiques pour l'accessibilité [#900](https://github.com/betagouv/api-engagement/issues/900).
+- Correction de l'affichage des statistiques admin [#870](https://github.com/betagouv/api-engagement/issues/870).
