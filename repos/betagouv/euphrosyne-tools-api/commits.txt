@@ -1,3 +1,86 @@
+2026-04-17T14:13:47+02:00 - c2c272e - Witold : Merge pull request #750 from betagouv/fix/init-endpoints-use-hot-client
+2026-04-17T14:12:34+02:00 - 1b6e4eb - Witold : fix: make init project & run endpoint use hot backend
+2026-04-15T14:26:41+02:00 - 3edab05 - Witold : Merge pull request #676 from betagouv/feat/hot-to-cool-data-management
+2026-04-15T10:40:50+02:00 - f598004 - Witold : feat: add storage write not allowed exception
+2026-04-15T10:40:50+02:00 - ef8e97f - Witold : chore: remove DATA_PROJECTS_LOCATION_PREFIX_COOL and use only DATA_PROJECTS_LOCATION_PREFIX for both backends
+2026-04-15T10:40:50+02:00 - e67099f - Witold : refactor: rename percent_complete to progress_percent for consistency
+2026-04-15T10:40:50+02:00 - dc0d33f - Witold : feat: add PRD for Hot to Cool Project Data Management
+2026-04-15T10:40:50+02:00 - d99f7dd - Witold : feat: handle transitioning states when required data client
+2026-04-15T10:40:50+02:00 - d312c7c - Witold : feat: implement GET status endpoints for COOL and RESTORE operations
+2026-04-15T10:40:50+02:00 - cd04d95 - Witold : feat: enforce readonly on non hot storage
+2026-04-15T10:40:50+02:00 - cc48c6c - Witold : doc: add comment for stream cleanup
+2026-04-15T10:40:50+02:00 - c626244 - Witold : doc: add missing space
+2026-04-15T10:40:50+02:00 - c41afb4 - Witold : feat: delete endpoint accept data then process it
+2026-04-15T10:40:50+02:00 - c1a3185 - Witold : refactor: remove unused AzCopyProgress dataclass from azcopy_runner
+2026-04-15T10:40:50+02:00 - b581a65 - Witold : fix: canceled and unknown states have no error messages
+2026-04-15T10:40:50+02:00 - ab41a2c - Witold : refactor: enhance azcopy tests with JSON message handling and mock improvements
+2026-04-15T10:40:50+02:00 - a2bebb3 - Witold : fix: mypy error
+2026-04-15T10:40:50+02:00 - a274980 - Witold : refactor: centralize data path parsing into typed refs
+2026-04-15T10:40:50+02:00 - a1ad498 - Witold : refactor: simplify _path_exists in BlobAzureClient
+2026-04-15T10:40:50+02:00 - a1a38e5 - Witold : feat: add timeout to data lifecyle fetch
+2026-04-15T10:40:50+02:00 - 9d03007 - Witold : feat: pass storage role to Azure client constructors in resolve_backend_client
+2026-04-15T10:40:50+02:00 - 9208a25 - Witold : feat: add EPID for Hot to Cool Project Data Management lifecycle
+2026-04-15T10:40:50+02:00 - 87a9708 - Witold : feat: enhance job polling with AzCopyJobNotFoundError handling and add corresponding tests
+2026-04-15T10:40:50+02:00 - 7f37528 - Witold : feat: add AzCopy installation script and add post_compile to execute it
+2026-04-15T10:40:50+02:00 - 7ab9b6f - Witold : feat: implement azcopy runner abstraction
+2026-04-15T10:40:50+02:00 - 78a0271 - Witold : feat: enforce SAS readonly permissions for cool storage in Azure clients
+2026-04-15T10:40:50+02:00 - 742a2e1 - Witold : feat: update & clean docs
+2026-04-15T10:40:50+02:00 - 6f255ab - Witold : fix: handle ResourceNotFoundError in blob _path_exists
+2026-04-15T10:40:50+02:00 - 63284de - Witold : fix: callback endpoint URL
+2026-04-15T10:40:50+02:00 - 6101527 - Witold : fix: update condition to check for None in _extract_failed_transfers function
+2026-04-15T10:40:50+02:00 - 57248b3 - Witold : feat: implement cool workflow
+2026-04-15T10:40:50+02:00 - 5244b26 - Witold : feat: consume euphrosyne storage role endpoint
+2026-04-15T10:40:50+02:00 - 4b303ee - Witold : feat: add project delete endpoint
+2026-04-15T10:40:50+02:00 - 491d00a - Witold : feat: implement restore workflow
+2026-04-15T10:40:50+02:00 - 459073b - Witold : Apply suggestions from code review
+2026-04-15T10:40:50+02:00 - 4571db6 - Witold : fix: typo in euphrosyne_backend_url
+2026-04-15T10:40:50+02:00 - 36aa328 - Witold : add EPIC.md
+2026-04-15T10:40:50+02:00 - 3438ab1 - Witold : refactor: update docstrings for get_summary and poll functions to clarify behavior
+2026-04-15T10:40:50+02:00 - 313d742 - Witold : feat: implement lifecycle operation persistence and idempotency with … (#678)
+2026-04-15T10:40:50+02:00 - 1db7bbb - Witold : feat: handle job not found error by returning pending status in lifecycle operation
+2026-04-15T10:40:50+02:00 - 1aeff53 - Witold : feat: include total files copied metadata in _perform_azcopy_lifecycle_operation return
+2026-04-15T10:40:50+02:00 - 136b52f - Witold : feat: only accept project_slug variable name in data related api endpoints
+2026-04-15T10:40:50+02:00 - 1047bb7 - Witold : feat: implement deterministic storage path resolver for HOT/COOL project data
+2026-04-15T10:40:50+02:00 - 0c4f3a1 - Witold : feat: enhance Azure client initialization with storage role support and add corresponding tests
+2026-04-15T10:40:50+02:00 - 0c19069 - Witold : feat: raise error when invalid backend
+2026-04-13T05:20:37Z - 11650e6 - github-actions[bot] : Merge pull request #746 from betagouv/dependabot/pip/types-requests-2.33.0.20260408
+2026-04-13T05:19:17Z - 1a855d7 - dependabot[bot] : chore(deps): Bump types-requests from 2.33.0.20260327 to 2.33.0.20260408
+2026-04-13T05:18:06Z - b0e711b - github-actions[bot] : Merge pull request #748 from betagouv/dependabot/pip/pytest-9.0.3
+2026-04-13T05:16:51Z - bc10a8a - dependabot[bot] : chore(deps): Bump pytest from 9.0.2 to 9.0.3
+2026-04-13T05:15:38Z - 79d02e7 - github-actions[bot] : Merge pull request #747 from betagouv/dependabot/pip/uvicorn-0.44.0
+2026-04-13T05:14:23Z - 0e79ab9 - dependabot[bot] : chore(deps): Bump uvicorn from 0.43.0 to 0.44.0
+2026-04-13T05:13:28Z - 58b67f2 - github-actions[bot] : Merge pull request #745 from betagouv/dependabot/pip/anyio-4.13.0
+2026-04-13T05:12:13Z - 9eb1f90 - dependabot[bot] : chore(deps): Bump anyio from 4.12.1 to 4.13.0
+2026-04-13T05:11:04Z - 8bde8fb - github-actions[bot] : Merge pull request #744 from betagouv/dependabot/pip/types-python-jose-3.5.0.20260408
+2026-04-13T05:09:58Z - 67ba01a - dependabot[bot] : chore(deps): Bump types-python-jose
+2026-04-06T05:19:01Z - 84218e5 - github-actions[bot] : Merge pull request #743 from betagouv/dependabot/pip/fastapi-0.135.3
+2026-04-06T05:17:46Z - b345349 - dependabot[bot] : chore(deps): Bump fastapi from 0.135.2 to 0.135.3
+2026-04-06T05:16:50Z - 33850bd - github-actions[bot] : Merge pull request #741 from betagouv/dependabot/pip/aiohttp-3.13.5
+2026-04-06T05:15:39Z - 6504832 - dependabot[bot] : chore(deps): Bump aiohttp from 3.13.4 to 3.13.5
+2026-04-06T05:14:17Z - 4e9b463 - github-actions[bot] : Merge pull request #740 from betagouv/dependabot/pip/uvicorn-0.43.0
+2026-04-06T05:13:09Z - 468a863 - dependabot[bot] : chore(deps): Bump uvicorn from 0.42.0 to 0.43.0
+2026-04-06T05:12:00Z - a42903a - github-actions[bot] : Merge pull request #742 from betagouv/dependabot/pip/requests-2.33.1
+2026-04-06T05:10:45Z - ffcc36d - dependabot[bot] : chore(deps): Bump requests from 2.33.0 to 2.33.1
+2026-04-06T05:09:27Z - ca72ffe - github-actions[bot] : Merge pull request #739 from betagouv/dependabot/pip/ruff-0.15.9
+2026-04-06T05:08:15Z - 6dab5b6 - dependabot[bot] : chore(deps): Bump ruff from 0.15.8 to 0.15.9
+2026-03-30T05:17:40Z - b8bb152 - github-actions[bot] : Merge pull request #736 from betagouv/dependabot/pip/aiohttp-3.13.4
+2026-03-30T05:16:23Z - 45185bb - dependabot[bot] : chore(deps): Bump aiohttp from 3.13.3 to 3.13.4
+2026-03-30T05:14:55Z - 450d80b - github-actions[bot] : Merge pull request #734 from betagouv/dependabot/pip/azure-mgmt-storage-24.0.1
+2026-03-30T05:13:35Z - 6edacf3 - dependabot[bot] : chore(deps): Bump azure-mgmt-storage from 24.0.0 to 24.0.1
+2026-03-30T05:12:31Z - aaeac3b - github-actions[bot] : Merge pull request #735 from betagouv/dependabot/pip/types-requests-2.33.0.20260327
+2026-03-30T05:11:11Z - 5899252 - dependabot[bot] : chore(deps): Bump types-requests from 2.32.4.20260107 to 2.33.0.20260327
+2026-03-30T05:10:26Z - 028303a - github-actions[bot] : Merge pull request #733 from betagouv/dependabot/pip/fastapi-0.135.2
+2026-03-30T05:09:12Z - 38f7031 - dependabot[bot] : chore(deps): Bump fastapi from 0.135.1 to 0.135.2
+2026-03-30T05:08:09Z - c158ac1 - github-actions[bot] : Merge pull request #732 from betagouv/dependabot/pip/ruff-0.15.8
+2026-03-30T05:06:57Z - aa12f01 - dependabot[bot] : chore(deps): Bump ruff from 0.15.7 to 0.15.8
+2026-03-27T16:07:40+01:00 - 7819821 - Witold : Merge pull request #730 from betagouv/dependabot/pip/requests-2.33.0
+2026-03-26T14:26:43Z - eea734d - dependabot[bot] : chore(deps): Bump requests from 2.32.5 to 2.33.0
+2026-03-23T06:10:08Z - 77ea2bc - github-actions[bot] : Merge pull request #728 from betagouv/dependabot/pip/ruff-0.15.7
+2026-03-23T06:08:10Z - 80df3fc - dependabot[bot] : chore(deps): Bump ruff from 0.15.6 to 0.15.7
+2026-03-23T06:07:08Z - 37615cc - github-actions[bot] : Merge pull request #727 from betagouv/dependabot/pip/sentry-sdk-fastapi--2.55.0
+2026-03-23T06:06:05Z - 4c66d5d - dependabot[bot] : chore(deps): Bump sentry-sdk[fastapi] from 2.54.0 to 2.55.0
+2026-03-23T06:04:59Z - 069303e - github-actions[bot] : Merge pull request #726 from betagouv/dependabot/pip/uvicorn-standard--0.42.0
+2026-03-23T06:03:41Z - 645dd72 - dependabot[bot] : chore(deps): Bump uvicorn[standard] from 0.41.0 to 0.42.0
 2026-03-17T10:13:54+01:00 - e46c48d - Witold : Merge pull request #719 from betagouv/dependabot/pip/black-26.3.1
 2026-03-16T06:08:30Z - 4ba3f3b - dependabot[bot] : chore(deps): Bump black from 26.3.0 to 26.3.1
 2026-03-16T06:07:24Z - 9ac79c8 - github-actions[bot] : Merge pull request #722 from betagouv/dependabot/pip/ruff-0.15.6

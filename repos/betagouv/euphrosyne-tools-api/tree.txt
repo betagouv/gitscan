@@ -25,6 +25,8 @@
 │   └── vms.py
 ├── auth.py
 ├── backgrounds.py
+├── bin
+│   └── post_compile
 ├── clients
 │   ├── __init__.py
 │   ├── azure
@@ -49,18 +51,31 @@
 │   │   └── models.py
 │   └── version.py
 ├── cron.json
+├── data_lifecycle
+│   ├── __init__.py
+│   ├── azcopy_runner.py
+│   ├── dependencies.py
+│   ├── hooks.py
+│   ├── models.py
+│   ├── operation.py
+│   ├── storage_resolver.py
+│   └── storage_types.py
 ├── dependencies.py
+├── docs
+│   └── DATA_LIFECYCLE.md
 ├── exceptions.py
 ├── hooks
 │   ├── __init__.py
 │   └── euphrosyne.py
 ├── main.py
+├── path.py
 ├── pyproject.toml
 ├── requirements.txt
 ├── scripts
 │   ├── __init__.py
 │   ├── capture_vm.py
 │   ├── check_health.py
+│   ├── cool_data.py
 │   ├── create_vm.py
 │   ├── delete_image_definition.py
 │   ├── delete_vm.py
@@ -85,6 +100,7 @@
     │   └── test_vm.py
     ├── clients
     │   ├── __init__.py
+    │   ├── test_azure_blob_data_client.py
     │   ├── test_azure_config.py
     │   ├── test_azure_data_client.py
     │   ├── test_azure_fileshare_file.py
@@ -93,9 +109,16 @@
     │   ├── test_azure_stream.py
     │   ├── test_azure_vault_client.py
     │   ├── test_azure_vm_client.py
+    │   ├── test_data_client.py
     │   ├── test_guacamole_client.py
     │   └── test_guacamole_models.py
     ├── conftest.py
+    ├── data_lifecycle
+    │   ├── test_azcopy_runner.py
+    │   ├── test_dependencies.py
+    │   ├── test_hooks.py
+    │   ├── test_operation.py
+    │   └── test_storage_resolver.py
     ├── hooks
     │   ├── __init__.py
     │   └── test_euphrosyne.py
@@ -105,7 +128,9 @@
     │       ├── __init__.py
     │       └── factories.py
     ├── test_auth.py
+    ├── test_dependencies.py
     ├── test_main.py
+    ├── test_path.py
     ├── test_user.py
     └── test_version.py
-16 directories, 94 files
+20 directories, 115 files

@@ -1,14 +1,27 @@
-## Changelog : euphrosyne-tools-api (30 derniers jours, au 17 mars 2026)
+## Changelog : euphrosyne-tools-api (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce changelog fait état d'une période d'activité principalement axée sur la maintenance et la mise à jour des dépendances du projet. De nombreuses bibliothèques utilisées par l'API ont été mises à jour vers leurs dernières versions, améliorant ainsi la sécurité, la stabilité et les performances globales.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'implémentation d'une gestion du cycle de vie des données de projet (passage du chaud au froid, restauration) avec une attention particulière à la robustesse et à l'idempotence des opérations. Des améliorations ont également été apportées à l'API pour supporter ces nouvelles fonctionnalités et à l'infrastructure avec des mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Ajout d'un endpoint pour supprimer un projet.
+- Implémentation du workflow de "refroidissement" (cool) des données de projet, permettant de les archiver sur un stockage moins coûteux.
+- Implémentation du workflow de restauration des données de projet.
+- Ajout d'endpoints pour obtenir le statut des opérations de "refroidissement" et de restauration.
+- L'API accepte désormais uniquement `project_slug` comme variable dans les endpoints liés aux données.
+- Ajout d'une gestion des erreurs pour les opérations de stockage en lecture seule.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances Python, incluant `fastapi` (de 0.128.5 à 0.135.1), `azure-identity` (de 1.25.1 à 1.25.3), `sentry-sdk[fastapi]` (de 2.52.0 à 2.54.0), `pydantic-settings` (de 2.12.0 à 2.13.1), `uvicorn[standard]` (de 0.40.0 à 0.41.0), `isort` (de 7.0.0 à 8.0.1), `ruff` (de 0.14.14 à 0.15.6) et `python-dotenv` (de 1.2.1 à 1.2.2).
-- Mise à jour des outils de développement : `black` (de 26.1.0 à 26.3.1) et `stream-zip` (de 0.0.83 à 0.0.84).
+- Refactorisation de la gestion des chemins de données pour une résolution déterministe entre les stockages "chaud" et "froid".
+- Amélioration de la gestion des erreurs et de la robustesse lors de l'utilisation d'AzCopy pour le transfert de données.
+- Ajout d'un script d'installation d'AzCopy.
+- Implémentation d'une abstraction "AzCopy runner" pour faciliter les tests et la maintenance.
+- Amélioration des tests avec une meilleure gestion des messages JSON et des mocks.
+- Persistance et idempotence des opérations de cycle de vie des données grâce à l'ajout d'un suivi des opérations.
+- Utilisation du rôle de stockage Euphrosyne pour initialiser les clients Azure.
+- Refactorisation du code pour une meilleure cohérence et lisibilité.
 
 ### Autres changements
-Aucun autre changement significatif n'a été apporté au projet durant cette période.
+- Ajout d'un fichier `EPIC.md` pour documenter les grandes étapes du projet.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
+- Mises à jour de plusieurs dépendances (requests, ruff, sentry-sdk, aiohttp, fastapi, uvicorn, types-requests, types-python-jose, azure-mgmt-storage, pytest, anyio).
