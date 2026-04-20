@@ -371,8 +371,11 @@
 │       │   │   ├── consolidate_lez_job.ex
 │       │   │   ├── conversions
 │       │   │   │   ├── clean_orphan_conversions_job.ex
+│       │   │   │   ├── generic_converter.ex
 │       │   │   │   ├── gtfs_generic_converter.ex
-│       │   │   │   └── gtfs_to_geojson_converter_job.ex
+│       │   │   │   ├── gtfs_to_geojson_converter_job.ex
+│       │   │   │   ├── netex_generic_converter.ex
+│       │   │   │   └── netex_to_geojson_converter_job.ex
 │       │   │   ├── create_tokens_job.ex
 │       │   │   ├── custom_logo_conversion_job.ex
 │       │   │   ├── database_backup_replication_job.ex
@@ -791,6 +794,7 @@
 │       │   │   │   ├── resource
 │       │   │   │   │   ├── _download_availability.html.heex
 │       │   │   │   │   ├── _errors_warnings_count.html.heex
+│       │   │   │   │   ├── _geojson.html.heex
 │       │   │   │   │   ├── _gtfs_coordinates_issue.html.heex
 │       │   │   │   │   ├── _gtfs_duplicate_stop_sequence_issue.html.heex
 │       │   │   │   │   ├── _gtfs_duplicate_stops_issue.html.heex
@@ -1307,6 +1311,7 @@
 │       │   │       ├── 20251220162908_contact_add_locale.exs
 │       │   │       ├── 20260117113753_create_hidden_reuser_alerts.exs
 │       │   │       ├── 20260122180704_create_dataset_subtype.exs
+│       │   │       ├── 20260126155921_allow_netex_to_geojson_conversion.exs
 │       │   │       ├── 20260205144049_rename_irve_valid_file_columns.exs
 │       │   │       ├── 20260209120000_add_missing_fields_to_irve_valid_file.exs
 │       │   │       ├── 20260311000000_create_company.exs
@@ -1809,4 +1814,4 @@
     │   ├── siri_create_doc.exs
     │   └── siri_request_parsing.exs
     └── subquery.exs
-180 directories, 1651 files
+180 directories, 1656 files
