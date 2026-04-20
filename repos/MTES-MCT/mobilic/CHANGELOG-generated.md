@@ -1,39 +1,27 @@
-## Changelog : mobilic (30 derniers jours)
+## Changelog : mobilic (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a principalement travaillé sur une refonte majeure du tableau d'administration des employés, améliorant l'ergonomie et la gestion des utilisateurs. Des corrections de bugs et des améliorations de la sécurité ont également été apportées, notamment concernant la gestion des cookies et des erreurs d'authentification. Enfin, des ajustements ont été faits pour améliorer la compatibilité et la configuration de l'application.
+Ce mois-ci, les améliorations se concentrent principalement sur l'interface d'administration de Mobilic, avec des améliorations significatives dans la gestion et l'affichage des statuts des missions, ainsi que des corrections de bugs et des optimisations de l'expérience utilisateur. Des corrections ont également été apportées à la gestion des contrôles et des redirections de l'application Agent Connect.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de compatibilité/exigences système pour l'application. [#797](https://github.com/MTES-MCT/mobilic/pull/797)
-- Amélioration de l'interface utilisateur du tableau d'administration des employés :
-    - Redesign complet du tableau avec édition en ligne.
-    - Ajout d'un badge indiquant le statut "inactif" des employés.
-    - Amélioration de la modale de résiliation d'un contrat de travail.
-    - Ajout d'un dropdown pour gérer les employés inactifs.
-    - Tri des employés détachés à la fin du tableau.
-- Possibilité de résilier plusieurs contrats de travail en batch pour les employés inactifs.
-- Ajout d'un message d'erreur plus clair lorsque l'authentification via un fournisseur d'identité (IDP) est bloquée. [#810](https://github.com/MTES-MCT/mobilic/pull/810)
-- Modification du texte pour l'installation de l'application iOS. [#811](https://github.com/MTES-MCT/mobilic/pull/811)
-- Correction de l'affichage des infractions dans l'en-tête et le tiroir de navigation.
-- Amélioration de la performance du dropdown des employés inactifs.
+- Amélioration de l'affichage des statuts des missions dans l'interface d'administration, avec l'ajout de tags visuels pour identifier les missions validées et leur statut. [#834](https://github.com/MTES-MCT/mobilic/pull/834)
+- Ajout de la possibilité de naviguer directement vers les détails d'une mission depuis le tableau d'administration en cliquant sur une ligne dédiée. [#834](https://github.com/MTES-MCT/mobilic/pull/834)
+- Correction du comportement de l'application Agent Connect après une mise à niveau de Flask, assurant le bon fonctionnement des URL de redirection. [#824](https://github.com/MTES-MCT/mobilic/pull/824)
+- Correction d'un bug empêchant la réinitialisation correcte des contrôles après une action spécifique. [#825](https://github.com/MTES-MCT/mobilic/pull/825)
+- Amélioration de l'affichage des missions en attente de validation, avec des tooltips plus clairs.
+- Correction de l'affichage des infractions lorsque plusieurs missions d'une même journée sont en attente de validation.
 
 ### Évolutions techniques
-- Correction d'un problème de boucle infinie avec le cookie `x-ubika-data` et le WAF (Web Application Firewall). [#808](https://github.com/MTES-MCT/mobilic/pull/808)
-- Utilisation de HTTP/1.1 pour les requêtes vers l'API en amont afin de corriger des problèmes avec le proxy Ubika. [#802](https://github.com/MTES-MCT/mobilic/pull/802)
-- Mise à jour de la configuration de webpack pour la compatibilité avec la version 5. [#799](https://github.com/MTES-MCT/mobilic/pull/799)
-- Refactorisation du code pour centraliser les styles DSFR dans les composants de filtre.
-- Utilisation de `useRef` pour optimiser la gestion des bannières.
-- Suppression de code inutilisé et amélioration de la qualité du code dans le tableau d'administration.
-- Correction de warnings ESLint.
-- Amélioration de la gestion des mutations GraphQL pour éviter les doublons.
-- Optimisation de la gestion des erreurs d'authentification dans le playground.
-- Correction d'erreurs CSS dans le playground.
+- Refactorisation du code de validation pour améliorer la déduplication des employés dans le filtre de validation. [#831](https://github.com/MTES-MCT/mobilic/pull/831)
+- Extraction des labels de statut des missions dans une utilitaire partagée pour une meilleure maintenabilité.
+- Optimisation du code de la table de temps de travail pour corriger des problèmes identifiés par SonarCloud.
+- Amélioration de la validation des props des composants d'administration.
+- Standardisation des labels de statut des missions dans l'interface d'administration.
+- Correction de l'importation d'un composant dans le composant `MissionStatusTagBtn`.
 
 ### Autres changements
-- Correction de l'importation des fichiers CSS dans le playground. [#806](https://github.com/MTES-MCT/mobilic/pull/806)
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité. [#791](https://github.com/MTES-MCT/mobilic/pull/791) et [#88d363e6b74ec1047607b6997b2e0a3c](https://github.com/MTES-MCT/mobilic/commit/9bdd4ab81538f7874791d29a269342893442447f)
-- Suppression de commentaires inutiles.
-- Correction de la taille des titres dans le tableau d'administration.
-- Correction de l'ordre des noms dans le tableau d'administration.
-- Suppression d'un titre d'action redondant dans le dropdown.
-- Corrections UI suite aux tests de l'épopée 12-13-37.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur dans l'interface d'administration (couleurs, tailles, espacements).
+- Nettoyage du code et suppression de code obsolète dans la table de temps de travail.
+- Correction de la logique d'affichage des missions supprimées dans l'interface d'administration.
+- Correction d'un problème lié au remounting du composant `MissionDetails` lors du changement de mission.
+- Correction d'un bug empêchant l'ouverture du drawer de détails de mission en cliquant sur le tag de statut.

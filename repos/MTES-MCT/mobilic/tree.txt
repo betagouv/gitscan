@@ -8,6 +8,7 @@
 │       └── codeql-analysis.yml
 ├── .gitignore
 ├── .husky
+│   ├── commit-msg
 │   └── pre-commit
 ├── .npmrc
 ├── .nvmrc
@@ -17,6 +18,7 @@
 ├── archi.jpg
 ├── archi.xml
 ├── babel.config.js
+├── commitlint.config.js
 ├── common
 │   ├── .npmrc
 │   ├── assets
@@ -55,7 +57,6 @@
 │   │   │   │       ├── diamant.png
 │   │   │   │       └── or.png
 │   │   │   ├── certification.svg
-│   │   │   ├── computer.png
 │   │   │   ├── controller1.png
 │   │   │   ├── crisp_closed_chat.svg
 │   │   │   ├── email.svg
@@ -70,14 +71,15 @@
 │   │   │   │   ├── pgh.png
 │   │   │   │   ├── timesheet-mobile.png
 │   │   │   │   └── waplanner.jpg
+│   │   │   ├── landing
+│   │   │   │   ├── flow-settings.svg
+│   │   │   │   └── self-training.svg
 │   │   │   ├── landing-gestionnaire-hero-background.png
 │   │   │   ├── landing-hero-horizontal.jpg
 │   │   │   ├── landing-hero-vertical-without-text-logo.svg
-│   │   │   ├── landing-hero-vertical.jpg
 │   │   │   ├── manager.png
 │   │   │   ├── marianne-small.svg
 │   │   │   ├── marianne.svg
-│   │   │   ├── mobilic-logo-blue.svg
 │   │   │   ├── mobilic-logo-filled.svg
 │   │   │   ├── mobilic-logo-outlined.svg
 │   │   │   ├── mobilic-logo-white-with-text.svg
@@ -144,11 +146,9 @@
 │   │   │   │   ├── saintonge.png
 │   │   │   │   ├── seegmuller.svg
 │   │   │   │   ├── sofrilog.jpg
-│   │   │   │   ├── sts.png
 │   │   │   │   ├── tme.jpg
 │   │   │   │   └── waytrans.png
 │   │   │   ├── press-logos
-│   │   │   │   ├── actuTransportLogistique.png
 │   │   │   │   ├── axec.png
 │   │   │   │   ├── ecologistics.jpg
 │   │   │   │   ├── flottes-automobiles.jpg
@@ -173,6 +173,7 @@
 │   │   │   └── xml.svg
 │   │   └── styles
 │   │       ├── Accordion.scss
+│   │       ├── Card.scss
 │   │       ├── Certificate.scss
 │   │       ├── Charts.scss
 │   │       ├── InfractionDay.scss
@@ -236,6 +237,7 @@
 │       ├── errors.js
 │       ├── events.js
 │       ├── expenditures.js
+│       ├── exportValidation.js
 │       ├── franceConnect.js
 │       ├── franceConnectErrors.js
 │       ├── franceConnectRoutes.js
@@ -394,6 +396,7 @@
     │   │   ├── MissionInfoCard.js
     │   │   ├── MissionLocationInfo.js
     │   │   ├── MissionNamesList.js
+    │   │   ├── MissionStatusTagBtn.js
     │   │   ├── MissionTitle.js
     │   │   ├── MissionVehicleInfo.js
     │   │   ├── OtherTask.js
@@ -508,6 +511,7 @@
     │       ├── loadCompaniesData.js
     │       ├── missionActions.js
     │       ├── missionWithStats.js
+    │       ├── missionsStatus.js
     │       ├── navigation.js
     │       ├── scenarioTesting.js
     │       ├── teams.js
@@ -779,33 +783,23 @@
     │   ├── compatibility.js
     │   ├── components
     │   │   ├── FullPageComponent.js
+    │   │   ├── InnerContainer.js
+    │   │   ├── LoginBanner.js
+    │   │   ├── OuterContainer.js
     │   │   └── WebinarList.js
     │   ├── follow.js
     │   ├── footer.js
-    │   ├── gestionnaire
-    │   │   ├── LandingGestionnaire.js
-    │   │   └── sections
-    │   │       ├── IntroGestionnaire.js
-    │   │       ├── OutroGestionnaire.js
-    │   │       ├── Testimony.js
-    │   │       ├── setup
-    │   │       │   ├── SetupMobilic.js
-    │   │       │   └── SetupMobilicBlock.js
-    │   │       └── whatsmobilic
-    │   │           ├── WhatsMobilic.js
-    │   │           └── WhatsMobilicCard.js
     │   ├── legalNotices.js
     │   ├── partners.js
     │   ├── privacyPolicy.js
     │   ├── root.js
     │   ├── sections
+    │   │   ├── AdminSection.js
     │   │   ├── IntroSection.js
-    │   │   ├── LandingSection.js
+    │   │   ├── SoftwareSection.js
     │   │   ├── TalkingAboutUsSection.js
     │   │   ├── VideoSection.js
-    │   │   ├── WebinarListSection.js
-    │   │   ├── WhatToKnowSection.js
-    │   │   └── WhoSection.js
+    │   │   └── WebinarListSection.js
     │   ├── stats.js
     │   └── useWebinars.js
     ├── login
@@ -928,4 +922,4 @@
         │   └── SubmitStep.js
         ├── invite.js
         └── root.js
-114 directories, 816 files
+111 directories, 813 files
