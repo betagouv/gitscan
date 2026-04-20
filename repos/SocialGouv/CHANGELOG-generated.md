@@ -1,25 +1,23 @@
 # Synthèse d'activité : SocialGouv (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts SocialGouv, avec un focus important sur la sécurité, la correction de bugs et l'amélioration de l'expérience utilisateur. Plusieurs projets ont bénéficié de mises à jour de dépendances et de migrations vers pnpm, renforçant ainsi la sécurité et la stabilité des applications. Des améliorations significatives ont été apportées à des outils clés comme cdtn-admin, iterion, matomo-next et vao, avec l'ajout de nouvelles fonctionnalités et la correction de problèmes existants. L'accent a également été mis sur l'automatisation des processus, notamment avec l'intégration d'agents d'IA dans repo-falcon et l'amélioration des workflows CI/CD.
+L'activité de SocialGouv au cours des 7 derniers jours a été marquée par des améliorations significatives sur plusieurs fronts. On observe une forte concentration sur l'amélioration de l'expérience utilisateur et la correction de bugs, notamment sur [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) avec l'ajout d'une section actualités et l'amélioration de la recherche, et sur [vao](/repos/SocialGouv/vao) avec des améliorations du module d'agrément. Des efforts importants ont également été déployés pour la modernisation technique, avec des migrations vers des versions plus récentes de langages et de frameworks (Python, Django, Pnpm) sur [collecte-pro](/repos/SocialGouv/collecte-pro) et [revu](/repos/SocialGouv/revu), ainsi que l'ajout de nouvelles fonctionnalités et l'amélioration de la sécurité sur [domifa](/repos/SocialGouv/domifa) et [egapro](/repos/SocialGouv/egapro).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- [archifiltre-docs](/repos/SocialGouv/archifiltre-docs) a reçu une correction de sécurité.
-- [archifiltre-mails](/repos/SocialGouv/archifiltre-mails) a corrigé une vulnérabilité de sécurité.
-- [token-bureau](/repos/SocialGouv/token-bureau) a amélioré la gestion des permissions configurables et corrigé des bugs liés à la migration vers pnpm, contribuant à une meilleure sécurité globale.
-- [srdt](/repos/SocialGouv/srdt) a ajouté des vérifications d'autorisation côté serveur pour les routes API non protégées.
+Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
+- [domifa](/repos/SocialGouv/domifa) a mis en place un système de limitation de requêtes et renforcé ses règles de sécurité.
+- [egapro](/repos/SocialGouv/egapro) a sécurisé la route de téléchargement S3 via un proxy et implémenté une infrastructure d'audit logging.
+- [revu](/repos/SocialGouv/revu) a mis à jour la configuration `sealed-secrets` pour l'environnement de pré-production.
 
 ## Autres changements notables
-- **Migrations vers pnpm:** Plusieurs projets, dont [revu](/repos/SocialGouv/revu), [matomo-next](/repos/SocialGouv/matomo-next), [token-bureau](/repos/SocialGouv/token-bureau) et [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) ont migré vers pnpm pour une meilleure gestion des dépendances.
-- **Amélioration de l'infrastructure:** Des améliorations ont été apportées à l'infrastructure de plusieurs projets, notamment avec l'ajout d'un cluster PostgreSQL pour [srdt](/repos/SocialGouv/srdt) et l'augmentation de la taille du disque pour Metabase dans [infra-apps](/repos/SocialGouv/infra-apps).
-- **Intégration d'IA:** [repo-falcon](/repos/SocialGouv/repo-falcon) a continué à progresser dans l'intégration avec des agents de codage comme Claude.
-- **Refonte de l'éditeur visuel:** [iterion](/repos/SocialGouv/iterion) a connu une refonte majeure de son éditeur visuel.
-- **Nouvelles API:** [questions-ecrites](/repos/SocialGouv/questions-ecrites) a ajouté une API FastAPI pour exposer les attributions de questions.
+- Migration vers Pnpm sur [revu](/repos/SocialGouv/revu) et [iterion](/repos/SocialGouv/iterion) pour une meilleure gestion des dépendances.
+- Migration vers Python 3.14 et Django 5.2.13 sur [collecte-pro](/repos/SocialGouv/collecte-pro) pour une meilleure pérennité et sécurité.
+- Migration de l'authentification vers JWT sur [egapro](/repos/SocialGouv/egapro).
+- Refactorisation importante de l'architecture de [iterion](/repos/SocialGouv/iterion) pour améliorer la performance et la flexibilité.
 
 ## Dépôts les plus actifs
-- [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Corrections de bugs, amélioration de la gestion des alertes et migration vers pnpm, Next.js et React-DSFR.
-- [iterion](/repos/SocialGouv/iterion) : Refonte majeure de l'éditeur visuel et intégration d'agents d'IA.
-- [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi, prise en charge des tests A/B et migration vers pnpm.
-- [vao](/repos/SocialGouv/vao) : Amélioration du parcours de renouvellement d'agrément et ajout de la messagerie pour les agréments.
-- [repo-falcon](/repos/SocialGouv/repo-falcon) : Amélioration de l'intégration avec les agents de codage et automatisation des processus de publication.
+- [egapro](/repos/SocialGouv/egapro) : Ajout de la gestion des référents, de l'impersonnation d'entreprises et d'attestations PDF.
+- [vao](/repos/SocialGouv/vao) : Amélioration du module d'agrément avec la gestion des messages, le renouvellement et l'interface back-office.
+- [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Ajout d'une section actualités et amélioration de la recherche.
+- [iterion](/repos/SocialGouv/iterion) : Intégration de nouveaux agents d'IA et amélioration significative de l'éditeur visuel.
+- [domifa](/repos/SocialGouv/domifa) : Ajout d'un système de limitation de requêtes et amélioration de la gestion des données.

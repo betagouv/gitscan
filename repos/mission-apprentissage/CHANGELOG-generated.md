@@ -1,21 +1,19 @@
 # Synthèse d'activité : mission-apprentissage (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation "mission-apprentissage" a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité, notamment avec la correction de vulnérabilités critiques dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) et la mise à jour des habilitations dans [mongodb](/repos/mission-apprentissage/mongodb). Des avancées notables ont également été réalisées sur [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) avec l'intégration de WhatsApp pour la messagerie, et sur [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) avec l'intégration d'un nouveau modèle d'apprentissage.  Plusieurs dépôts ont bénéficié d'améliorations de la gestion des secrets avec la migration vers SOPS, renforçant ainsi la sécurité globale de l'infrastructure.
+L'activité récente de l'organisation "mission-apprentissage" s'est concentrée sur l'amélioration de la plateforme [labonnealternance](/repos/mission-apprentissage/labonnealternance) avec l'ajout de nouvelles fonctionnalités pour les utilisateurs, notamment des filtres de recherche plus précis, l'intégration de nouvelles offres d'emploi (EDF, Enedis) et un bloc salaires avec redirection vers un simulateur. Des corrections de sécurité ont également été apportées à l'infrastructure [infra](/repos/mission-apprentissage/infra) et à la plateforme [labonnealternance](/repos/mission-apprentissage/labonnealternance). La surveillance de la disponibilité des services continue d'être assurée par le projet [upptime](/repos/mission-apprentissage/upptime).
 
 ## Sécurité
-Plusieurs correctifs de sécurité ont été déployés :
 - Correction de vulnérabilités critiques dans les dépendances de [labonnealternance](/repos/mission-apprentissage/labonnealternance) (handlebars, fast-xml-parser, basic-ftp).
-- Mise à jour des habilitations pour renforcer la sécurité des accès aux bases de données dans [mongodb](/repos/mission-apprentissage/mongodb).
+- Correction concernant la gestion des adresses IP de confiance dans l'infrastructure [infra](/repos/mission-apprentissage/infra) pour garantir la sécurité et l'accessibilité des services.
 
 ## Autres changements notables
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [mongodb](/repos/mission-apprentissage/mongodb) et [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab), améliorant la sécurité et la flexibilité.
-- Refactorisation des scripts de sauvegarde et de restauration de base de données dans [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin).
-- Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
-- Remplacement de Mailhog par Mailpit pour les tests SMTP dans [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
+- Amélioration des lectures MongoDB sur les secondaires pour la recherche dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) afin d'optimiser les performances.
+- Gestion du rate limit 429 sur l'API job-étudiant avec retry et throttling proactif dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) pour une meilleure robustesse.
+- Mise à jour des habilitations du projet LBA dans l'infrastructure [infra](/repos/mission-apprentissage/infra) pour une gestion plus fine des permissions.
+- Suppression des requêtes N+1 sur l'API /api/traininglinks dans [labonnealternance](/repos/mission-apprentissage/labonnealternance) pour améliorer l'efficacité.
 
 ## Dépôts les plus actifs
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Intégration de WhatsApp pour la messagerie et amélioration de la précision des données.
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Corrections de sécurité et améliorations de la performance de MongoDB.
-- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections d'affichage et de recalcul, ajout d'une page de configuration et modernisation de l'intégration avec Elasticsearch.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage et amélioration du processus de CI/CD.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Ajout de fonctionnalités et corrections de bugs pour améliorer l'expérience utilisateur et la performance de la plateforme.
+- [infra](/repos/mission-apprentissage/infra) : Améliorations de la sécurité et de la gestion des accès à l'infrastructure.
+- [upptime](/repos/mission-apprentissage/upptime) : Surveillance continue de la disponibilité des services et mise à jour de l'état.

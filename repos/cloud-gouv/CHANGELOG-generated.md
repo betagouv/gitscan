@@ -1,22 +1,17 @@
 # Synthèse d'activité : cloud-gouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation cloud-gouv a connu une activité soutenue au cours des dernières semaines, avec des améliorations significatives apportées à plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de la sécurité, notamment dans [openbao](/repos/cloud-gouv/openbao) avec des mises à jour de dépendances corrigeant des vulnérabilités critiques.  Des avancées ont également été réalisées dans la gestion des clusters Kubernetes avec [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts), offrant plus de flexibilité et de contrôle sur la configuration des nœuds et des volumes. Enfin, des corrections et des améliorations ont été apportées aux outils de déploiement et de gestion d'applications via [common-helm-charts](/repos/cloud-gouv/common-helm-charts) et [dockerfiles](/repos/cloud-gouv/dockerfiles).
+L'organisation cloud-gouv a connu une activité soutenue cette semaine, principalement axée sur l'amélioration de la stabilité et de la configuration de ses outils. Les mises à jour apportées à [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) renforcent la sécurité des nœuds worker et offrent une plus grande flexibilité dans la gestion des clusters Kubernetes. Le projet [portail](/repos/cloud-gouv/portail) s'est concentré sur la correction de bugs et l'ajout de tests pour améliorer la robustesse du proxy upstream. Enfin, [securix](/repos/cloud-gouv/securix) a simplifié sa configuration et supprimé le support d'Openstack.
 
 ## Sécurité
-Plusieurs changements ont été apportés pour renforcer la sécurité :
-
-- Correction de vulnérabilités dans les dépendances de [openbao](/repos/cloud-gouv/openbao) (Go 1.25.7 et `go.opentelemetry.io/otel/sdk`).
-- Amélioration de la sécurité des nœuds worker via l'injection de règles de sécurité (Security Groups) dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) permet désormais d'injecter des règles de sécurité supplémentaires (Security Groups) aux nœuds worker.
 
 ## Autres changements notables
-- Suppression du module Openstack dans [securix](/repos/cloud-gouv/securix).
-- Introduction de la version 1 des règles d'accès (ACL) dans [portail](/repos/cloud-gouv/portail).
-- Ajout de l'outil `kustomize` à l'image `k8s-tools` dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
-- Amélioration de la gestion des CIDR dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Amélioration de la gestion des CIDR et des volumes snapshot, avec des options de configuration plus fines.
+- [portail](/repos/cloud-gouv/portail) : Correction d'une erreur de configuration TLS et amélioration de la gestion des erreurs pour une meilleure robustesse.
+- [securix](/repos/cloud-gouv/securix) : Suppression du module Openstack, simplifiant ainsi le projet.
 
 ## Dépôts les plus actifs
-- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Amélioration de la gestion des clusters Kubernetes avec des corrections et des fonctionnalités pour la sécurité des nœuds, la gestion des volumes et des CIDR.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité pour le service de gestion des clés.
-- [portail](/repos/cloud-gouv/portail) : Ajout de tests d'intégration et initialisation des nouvelles règles d'accès.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de fonctionnalités pour la personnalisation des charts Helm et corrections de bugs.
+- [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) : Améliorations significatives de la gestion des clusters Kubernetes, notamment en termes de sécurité et de configuration.
+- [portail](/repos/cloud-gouv/portail) : Stabilisation et ajout de tests pour le proxy upstream Tinyproxy.
+- [securix](/repos/cloud-gouv/securix) : Simplification de la configuration et suppression du support d'Openstack.

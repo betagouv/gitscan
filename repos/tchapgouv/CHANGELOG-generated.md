@@ -1,26 +1,25 @@
 # Synthèse d'activité : tchapgouv (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations continues sur les applications Tchap, tant sur le web que sur mobile (Android et iOS), ainsi que sur l'infrastructure sous-jacente. L'accent a été mis sur l'amélioration de la sécurité (désactivation des salons non chiffrés sur iOS, verrouillage de comptes via le MAS), l'expérience utilisateur (arrondi des boutons sur le web, gestion des liens profonds sur desktop, amélioration de la vérification d'appareil sur Android) et la stabilité (corrections de bugs, mises à jour de dépendances). Plusieurs dépôts ont bénéficié de refactorisations et d'optimisations techniques pour faciliter la maintenance et le déploiement.
+L'activité récente de l'organisation tchapgouv s'est concentrée sur l'amélioration de la sécurité, de la stabilité et de l'expérience utilisateur de ses applications. Des efforts significatifs ont été déployés pour renforcer la sécurité des communications, notamment en désactivant les salons privés non chiffrés et en améliorant la gestion des identités.  Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de corrections de bugs, notamment [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) et [tchap-x-ios](/repos/tchapgouv/tchap-x-ios), améliorant ainsi la qualité globale de la plateforme.
 
 ## Sécurité
-Plusieurs changements ont été apportés pour renforcer la sécurité de la plateforme :
+Plusieurs changements visent à renforcer la sécurité de la plateforme :
 
-- Désactivation des salons privés non chiffrés sur [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) pour une meilleure protection des conversations.
-- Possibilité de verrouiller le statut d'un utilisateur via le service d'authentification Matrix (MAS) sur [synapse](/repos/tchapgouv/synapse).
-- Suppression de la création de comptes hérités sans passer par le MAS sur [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap).
-- Masquage du bouton de connexion par QR code sur l'écran d'accueil de [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) pour limiter les risques potentiels.
+*   Désactivation des salons privés non chiffrés dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) pour une meilleure protection des conversations.
+*   Masquage de l'option de connexion par QR code sur l'écran d'accueil de [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) pour réduire les risques potentiels.
+*   Suppression de la création de comptes hérités sans passer par le service d'authentification Matrix (MAS) dans [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap).
+*   Correction d'un problème de compatibilité sur Firefox avec les appareils utilisant un proxy dans [element-call](/repos/tchapgouv/element-call).
 
 ## Autres changements notables
-- Renommage du projet "TCHAP" en "element-call-tchap" sur [element-call](/repos/tchapgouv/element-call), marquant une évolution de l'identité du projet.
-- Mise à jour du SDK Matrix Rust sur [matrix-rust-components-swift](/repos/tchapgouv/matrix-rust-components-swift) et [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) pour bénéficier des dernières corrections et améliorations.
-- Optimisation du cache MAS et de la gestion des requêtes sur [synapse](/repos/tchapgouv/synapse) pour améliorer les performances.
-- Migration des dépendances de développement vers des groupes de dépendances PEP 735 sur [synapse](/repos/tchapgouv/synapse).
-- Intégration d'une version spécifique de `element-call` pour supporter l'Open Finance sur [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
+*   **Refactoring et mises à jour d'infrastructure :** [synapse](/repos/tchapgouv/synapse) a bénéficié d'optimisations du cache MAS et de la migration des dépendances de développement vers PEP 735.
+*   **Spécification Matrix :** Des ajouts à la spécification Matrix ([matrix-spec](/repos/tchapgouv/matrix-spec)) concernant l'autorisation d'appareil et les serveurs de politiques.
+*   **Renommage de dépôt :** Le dépôt [element-call](/repos/tchapgouv/element-call) a été renommé en "element-call-tchap".
+*   **Simplification de l'intégration Docker :** [tchap-docker-integration](/repos/tchapgouv/tchap-docker-integration) a été mis à jour pour utiliser une stack complète avec Element et Synapse par défaut.
 
 ## Dépôts les plus actifs
-- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Nombreuses corrections de bugs et améliorations de l'interface utilisateur, notamment concernant les salons privés et les notifications.
-- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Améliorations significatives de l'expérience utilisateur et corrections de bugs, avec une mise à jour vers la dernière version d'Element.
-- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Améliorations de la sécurité, corrections de bugs et refactorisation du code pour une meilleure maintenabilité.
-- [synapse](/repos/tchapgouv/synapse) : Améliorations de la gestion des utilisateurs, optimisations des performances et préparation de la version 1.150.0.
-- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) et [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap) : Améliorations des tests d'authentification et renforcement de la sécurité du processus d'authentification.
+*   [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Nombreuses améliorations fonctionnelles et techniques, incluant l'ajout de salons privés non chiffrés et des appels groupés.
+*   [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Améliorations de la sécurité, corrections de bugs et refactorisation du code.
+*   [synapse](/repos/tchapgouv/synapse) : Optimisations de performance et préparation de la version 1.150.0.
+*   [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap) : Ajout de tests et suppression de la création de comptes hérités.
+*   [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Amélioration de l'expérience utilisateur et mises à jour de dépendances.
