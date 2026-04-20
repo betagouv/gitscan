@@ -192,6 +192,7 @@
 │   │   ├── candidate
 │   │   │   ├── application_controller.rb
 │   │   │   ├── attachments_controller.rb
+│   │   │   ├── lot_selections_controller.rb
 │   │   │   ├── market_applications_controller.rb
 │   │   │   ├── sessions_controller.rb
 │   │   │   └── sync_status_controller.rb
@@ -246,10 +247,10 @@
 │   │   ├── candidate
 │   │   │   ├── delete_attached_file.rb
 │   │   │   ├── delete_unattached_blob.rb
-│   │   │   ├── find_market_application_by_siret.rb
 │   │   │   ├── find_or_create_user.rb
 │   │   │   ├── generate_and_send_magic_link.rb
 │   │   │   ├── prepare_document_scan_status.rb
+│   │   │   ├── resolve_market_application_for_reconnection.rb
 │   │   │   ├── validate_email_format.rb
 │   │   │   └── validate_siret.rb
 │   │   ├── carif_oref
@@ -334,6 +335,7 @@
 │   │       ├── index.js
 │   │       ├── input_type_hint_controller.js
 │   │       ├── input_validation_controller.js
+│   │       ├── lot_selection_controller.js
 │   │       ├── modal_controller.js
 │   │       ├── subcategory_filter_controller.js
 │   │       ├── summary_scan_refresh_controller.js
@@ -439,7 +441,8 @@
 │   │   └── urssaf.rb
 │   ├── policies
 │   │   ├── application_policy.rb
-│   │   └── editor_policy.rb
+│   │   ├── editor_policy.rb
+│   │   └── lot_selection_policy.rb
 │   ├── presenters
 │   │   ├── admin
 │   │   │   └── dashboard_presenter.rb
@@ -536,6 +539,8 @@
 │       │       └── show.html.erb
 │       ├── candidate
 │       │   ├── attestations
+│       │   │   └── show.html.erb
+│       │   ├── lot_selections
 │       │   │   └── show.html.erb
 │       │   ├── market_applications
 │       │   │   ├── _field_display.html.erb
@@ -747,7 +752,8 @@
 │   │   ├── 20260310142919_create_or_fix_solid_cache_entries.rb
 │   │   ├── 20260407000001_create_lots.rb
 │   │   ├── 20260407000002_create_market_application_lots.rb
-│   │   └── 20260407000003_add_lot_limit_to_public_markets.rb
+│   │   ├── 20260407000003_add_lot_limit_to_public_markets.rb
+│   │   └── 20260413110000_remove_lot_name_from_public_markets.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -826,6 +832,7 @@
 │   ├── candidate_flow.feature
 │   ├── candidate_flow_comprehensive.feature
 │   ├── candidate_flow_with_soft_deleted_attributes.feature
+│   ├── candidate_lot_selection.feature
 │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel.feature
 │   ├── capacite_economique_financiere_effectifs_moyens_annuels.feature
 │   ├── capacites_techniques_professionnelles_outillage_echantillons.feature
@@ -863,6 +870,7 @@
 │   │   ├── candidate_authentication_steps.rb
 │   │   ├── candidate_flow_comprehensive_steps.rb
 │   │   ├── candidate_flow_steps.rb
+│   │   ├── candidate_lot_selection_steps.rb
 │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
 │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
 │   │   ├── capacites_techniques_professionnelles_outillage_echantillons_steps.rb
@@ -1054,9 +1062,9 @@
 │   │   ├── candidate
 │   │   │   ├── delete_attached_file_spec.rb
 │   │   │   ├── delete_unattached_blob_spec.rb
-│   │   │   ├── find_market_application_by_siret_spec.rb
 │   │   │   ├── prepare_document_scan_status_spec.rb
 │   │   │   ├── request_magic_link_spec.rb
+│   │   │   ├── resolve_market_application_for_reconnection_spec.rb
 │   │   │   ├── validate_email_format_spec.rb
 │   │   │   └── validate_siret_spec.rb
 │   │   ├── carif_oref
@@ -1207,6 +1215,8 @@
 │   │   ├── rge_spec.rb
 │   │   ├── rne_spec.rb
 │   │   └── urssaf_spec.rb
+│   ├── policies
+│   │   └── lot_selection_policy_spec.rb
 │   ├── presenters
 │   │   ├── admin
 │   │   │   └── dashboard_presenter_spec.rb
@@ -1345,4 +1355,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-215 directories, 1132 files
+217 directories, 1140 files
