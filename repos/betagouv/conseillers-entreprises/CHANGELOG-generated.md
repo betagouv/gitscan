@@ -1,31 +1,29 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 15 avril 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 2026-04-16)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité et de la sécurité du formulaire de contact, ainsi que sur l'optimisation des rapports et des statistiques. Des améliorations techniques ont également été apportées, incluant la mise à jour de plusieurs dépendances et des refactorings pour une meilleure maintenabilité du code. L'intégration de données structurées (schema.org) a été renforcée pour améliorer le référencement.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité et de la correction de bugs. Des améliorations significatives ont été apportées aux schémas SEO pour une meilleure visibilité, ainsi que des optimisations techniques pour la performance et la sécurité.
 
 ### Évolutions fonctionnelles
-
-*   **Formulaire de contact :** Améliorations significatives de l'accessibilité du formulaire de contact, avec notamment un focus sur la gestion des erreurs et la navigation au clavier.
-*   **Rapports d'antenne :** Correction d'un bug affectant le calcul des données pour les antennes nationales agrégées.
-*   **Statistiques :** Amélioration de l'affichage des onglets de statistiques pour une meilleure navigation.
-*   **SEO :** Intégration complète des schémas schema.org pour améliorer le référencement des pages thématiques et des sujets, incluant des données spécifiques aux partenaires et aux avis.
-*   **Email :** Mise à jour du domaine d'email utilisé pour les notifications.
+- Correction de l'affichage des couleurs dans les paniers qualité [#4390](https://github.com/betagouv/conseillers-entreprises/issues/4390).
+- Amélioration de l'accessibilité du formulaire de contact et de l'étape entreprise, notamment en améliorant le focus et les erreurs d'accessibilité [#4377](https://github.com/betagouv/conseillers-entreprises/issues/4377).
+- Correction du numéro court des risques professionnels [#4378](https://github.com/betagouv/conseillers-entreprises/issues/4378).
+- Correction de la gestion des antennes nationales agrégées [#4379](https://github.com/betagouv/conseillers-entreprises/issues/4379).
+- Mise à jour du domaine des emails vers `entreprises.service-public.gouv.fr` [#4409](https://github.com/betagouv/conseillers-entreprises/issues/4409).
+- Amélioration des schémas SEO pour les thèmes et sujets, incluant l'intégration de données structurées pour une meilleure indexation par les moteurs de recherche [#4381](https://github.com/betagouv/conseillers-entreprises/issues/4381).
 
 ### Évolutions techniques
-
-*   **Mise à jour de Ruby :** Passage à Ruby 4.0.2 et 4.0.1.
-*   **Mise à jour de Rails :** Mise à jour de Rails vers la version 8.1.2.1.
-*   **Refactoring SEO :** Refactorisation du code lié à la génération des schémas SEO pour une meilleure organisation et réutilisation.
-*   **Suppression de code obsolète :** Suppression de code inutile et de dépendances non utilisées.
-*   **Amélioration des tests :** Ajout de tests pour les corrections apportées et amélioration de la couverture de tests existants.
-*   **Sécurité :** Ajout d'un système de protection contre les spams (HoneypotGuard) et renforcement de la politique de sécurité du contenu (CSP).
-*   **Optimisation des transactions :** Suppression de transactions inutiles dans le processus de complétion des demandes.
-*   **Indexation :** Ajout d'index concurrents sur les colonnes `siret` et `email` de la table `solicitations`.
+- Mise à jour de Rails vers la version 8.1.2.1 [#4375](https://github.com/betagouv/conseillers-entreprises/issues/4375).
+- Refactorisation du code pour améliorer la performance et la maintenabilité, notamment en supprimant du code obsolète et en simplifiant la logique existante.
+- Ajout d'un Contributor Covenant pour définir les règles de contribution au projet [#4327](https://github.com/betagouv/conseillers-entreprises/issues/4327).
+- Mise en place de tests pour garantir la stabilité et la qualité du code.
+- Amélioration de la gestion des transactions en base de données pour éviter les erreurs et les blocages [#4396](https://github.com/betagouv/conseillers-entreprises/issues/4396).
+- Migration du code Sass vers une syntaxe plus moderne et maintenable [#4356](https://github.com/betagouv/conseillers-entreprises/issues/4356).
+- Ajout d'un nonce pour la sécurité des iframes.
+- Correction de problèmes liés à l'utilisation de cookies dans les iframes.
 
 ### Autres changements
-
-*   **Documentation :** Ajout d'un code de conduite (Contributor Covenant).
-*   **Dépendances :** Mise à jour de plusieurs dépendances (addressable, rack, bcrypt, json, flatted, action_text-trix, picomatch).
-*   **Nettoyage du code :** Amélioration de la lisibilité et de la cohérence du code.
-*   **Configuration :** Modifications de la configuration de l'environnement de développement.
-*   **Correction de typos :** Correction de quelques erreurs de frappe.
+- Mise à jour des dépendances : `addressable`, `rack`, `action_text-trix`, `bcrypt`, `flatted`, `picomatch`, `lodash` et autres.
+- Amélioration de la documentation et des commentaires dans le code.
+- Corrections mineures de style et de typographie.
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+- Suppression de code inutile et nettoyage du code source.
