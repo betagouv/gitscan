@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.83.0](https://github.com/betagouv/api-subventions-asso/compare/v0.82.0...v0.83.0) (2026-04-01)
+
+### Bug Fixes
+
+- **api:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) update chorus fse program code and desc ([#3875](https://github.com/betagouv/api-subventions-asso/issues/3875)) ([9aa734d](https://github.com/betagouv/api-subventions-asso/commit/9aa734dbc37d8b1dfe9c6d8b3a124dd76bb49695))
+- **api:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) update chorus fse program code and desc ([#3875](https://github.com/betagouv/api-subventions-asso/issues/3875)) ([57933af](https://github.com/betagouv/api-subventions-asso/commit/57933af6704f825fc8a9bc28eda52e5d55ebaaa3))
+- **front:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) fix import ([f7dd26c](https://github.com/betagouv/api-subventions-asso/commit/f7dd26c92c3d5d3f9148b5f238b710c70d4fcd58))
+
+### Features
+
+- **api, front:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) apply deposit process v4 changes ([#3869](https://github.com/betagouv/api-subventions-asso/issues/3869)) ([a168f14](https://github.com/betagouv/api-subventions-asso/commit/a168f140747aa32a693d3098fa0edf84e1545b3c)), closes [#3873](https://github.com/betagouv/api-subventions-asso/issues/3873) [#3874](https://github.com/betagouv/api-subventions-asso/issues/3874)
+- **api:** [#3872](https://github.com/betagouv/api-subventions-asso/issues/3872) - fix multipart filename encoding pb ([#3876](https://github.com/betagouv/api-subventions-asso/issues/3876)) ([010e6b0](https://github.com/betagouv/api-subventions-asso/commit/010e6b0ff0702f4c57af623feb9a7909668c1949))
+- **api:** update fse desc ([c1417cb](https://github.com/betagouv/api-subventions-asso/commit/c1417cbf675d37e7347c9a23ee615c888f065386))
+- **api:** update fse desc ([64a1c99](https://github.com/betagouv/api-subventions-asso/commit/64a1c9999029f74e1754f364e8e9237227675475))
+
+# [0.82.0](https://github.com/betagouv/api-subventions-asso/compare/v0.81.7...v0.82.0) (2026-03-25)
+
+### Bug Fixes
+
+- **api:** \_\_dirname used in eslint in ES6 module ([05c4bea](https://github.com/betagouv/api-subventions-asso/commit/05c4bea054939e656b923d92472ee6a1fb84fc2d))
+- **api:** fix property access on undefined dto ([0bfe18f](https://github.com/betagouv/api-subventions-asso/commit/0bfe18fbf975dfbdb48b30f2aececfa16609d86f))
+- **chore:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) fix tsconfig root dir error ([#3870](https://github.com/betagouv/api-subventions-asso/issues/3870)) ([e366eaf](https://github.com/betagouv/api-subventions-asso/commit/e366eaf66eecbad28c0806c94955eb8e81d4cfa9))
+
+### Features
+
+- **api:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) added env conf filter for notifications ([#3820](https://github.com/betagouv/api-subventions-asso/issues/3820)) ([a39cc66](https://github.com/betagouv/api-subventions-asso/commit/a39cc66dffe22b66f479cbee0666dc09a60fdec5))
+- **api:** [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000) remove uses of dev.local alias ([#3851](https://github.com/betagouv/api-subventions-asso/issues/3851)) ([7cb56ad](https://github.com/betagouv/api-subventions-asso/commit/7cb56ad8e0831f1449bd1af32469d7b716588663))
+- **api:** [#3822](https://github.com/betagouv/api-subventions-asso/issues/3822) one year deposit notification ([#3860](https://github.com/betagouv/api-subventions-asso/issues/3860)) ([739843d](https://github.com/betagouv/api-subventions-asso/commit/739843d5ea36b117603ecb7a2ea452eafe52d88e))
+- **api:** [#3823](https://github.com/betagouv/api-subventions-asso/issues/3823) chorus european payments ([#3839](https://github.com/betagouv/api-subventions-asso/issues/3839)) ([4c85c2e](https://github.com/betagouv/api-subventions-asso/commit/4c85c2e9e909aeaebea1daf96459560a2ca7b6a4))
+- **api:** [#3867](https://github.com/betagouv/api-subventions-asso/issues/3867) chorus fse to flat ([#3868](https://github.com/betagouv/api-subventions-asso/issues/3868)) ([8f66c40](https://github.com/betagouv/api-subventions-asso/commit/8f66c40e33fd83c7883f8490d8b8facac7563a9e))
+
+## [0.81.7](https://github.com/betagouv/api-subventions-asso/compare/v0.81.6...v0.81.7) (2026-03-20)
+
+### Bug Fixes
+
+- **front:** upper RNA cases ([846bdbd](https://github.com/betagouv/api-subventions-asso/commit/846bdbd3711e71663596827fe005fbd981e8d938))
+
+## [0.81.6](https://github.com/betagouv/api-subventions-asso/compare/v0.81.5...v0.81.6) (2026-03-20)
+
+### Bug Fixes
+
+- **api:** avoid case sensitivity breaks from identifier with letters ([f7de6af](https://github.com/betagouv/api-subventions-asso/commit/f7de6af1efa04074daf1cd86953c5eba381dc5bf))
+- **front:** display headers in legal information modal ([981a770](https://github.com/betagouv/api-subventions-asso/commit/981a77021963fa3f7230b9a6987d5914ae7cf137))
+
 ## [0.81.5](https://github.com/betagouv/api-subventions-asso/compare/v0.81.4...v0.81.5) (2026-03-16)
 
 ### Bug Fixes
