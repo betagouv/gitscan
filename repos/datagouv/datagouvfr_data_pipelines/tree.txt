@@ -56,8 +56,6 @@
 │   │   │   ├── README.md
 │   │   │   ├── config.json
 │   │   │   ├── dag.py
-│   │   │   ├── scripts
-│   │   │   │   └── script_dl_elections.sh
 │   │   │   └── task_functions.py
 │   │   └── miom_mirroring
 │   │       ├── config.json
@@ -110,14 +108,6 @@
 │   │           ├── dag_geoloc.py
 │   │           ├── dag_stock.py
 │   │           └── task_functions.py
-│   ├── irve
-│   │   ├── README.md
-│   │   ├── dag.py
-│   │   ├── geo_utils
-│   │   │   ├── france_bbox.geojson
-│   │   │   ├── geo.py
-│   │   │   └── geo_data_quality.md
-│   │   └── task_functions.py
 │   ├── meteo
 │   │   ├── config.json
 │   │   ├── ftp_processing
@@ -278,11 +268,20 @@
 │   │   ├── dag.py
 │   │   ├── schemas_consolidation.md
 │   │   └── task_functions.py
+│   ├── irve
+│   │   ├── README.md
+│   │   ├── dag.py
+│   │   ├── geo_utils
+│   │   │   ├── france_bbox.geojson
+│   │   │   ├── geo.py
+│   │   │   └── geo_data_quality.md
+│   │   └── task_functions.py
 │   ├── recommendations
 │   │   ├── README.md
 │   │   ├── dag.py
 │   │   └── task_functions.py
 │   ├── utils
+│   │   ├── consolidation.py
 │   │   └── jsonschema.py
 │   └── website
 │       ├── README.md
@@ -301,9 +300,9 @@
 │   ├── postgres.py
 │   ├── retry.py
 │   ├── s3.py
-│   ├── schema.py
 │   ├── sftp.py
 │   ├── tasks.py
+│   ├── tchap.py
 │   ├── utils.py
 │   └── utils_test.py
 └── verticales
@@ -350,4 +349,4 @@
         │   └── test_topics_v2_manager.py
         ├── topics_api.py
         └── topics_v2_manager.py
-80 directories, 272 files
+79 directories, 272 files
