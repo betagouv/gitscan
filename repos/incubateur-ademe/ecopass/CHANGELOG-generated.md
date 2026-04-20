@@ -1,27 +1,24 @@
-## Changelog : ecopass (30 derniers jours)
+## Changelog : ecopass (30 derniers jours, au 11 mai 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la plateforme ecopass, notamment de nouvelles pages pour la DGCCRF et la création d'utilisateurs, ainsi que des corrections de bugs et des améliorations de l'expérience utilisateur. L'ajout du cycle de vie des produits permet une analyse plus complète de l'impact environnemental.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'interface d'administration, l'ajout de nouvelles fonctionnalités d'exportation de données et la correction de plusieurs bugs liés à la gestion des GTIN et des organisations. Ces améliorations visent à faciliter l'utilisation de la plateforme par les administrateurs et à garantir l'intégrité des données.
 
 ### Évolutions fonctionnelles
-- Ajout de pages dédiées à la DGCCRF [#123](https://github.com/incubateur-ademe/ecopass/issues/123).
-- Nouvelle page de connexion [#120](https://github.com/incubateur-ademe/ecopass/issues/120).
-- Amélioration de la page de déclaration [#121](https://github.com/incubateur-ademe/ecopass/issues/121).
-- Ajout d'une page de création d'utilisateurs [#116](https://github.com/incubateur-ademe/ecopass/issues/116).
-- Ajout du cycle de vie des produits [#115](https://github.com/incubateur-ademe/ecopass/issues/115).
-- Correction d'un bug d'affichage du score dans les tests unitaires.
-- Correction d'un bug empêchant la liaison de la version du produit [#118](https://github.com/incubateur-ademe/ecopass/issues/118).
-- Correction d'un problème de déconnexion automatique [#119](https://github.com/incubateur-ademe/ecopass/issues/119).
-- Correction d'un problème lié au score obligatoire pour les AD vides [#118](https://github.com/incubateur-ademe/ecopass/issues/118).
-- Mise à jour des images de la page d'accueil [#114](https://github.com/incubateur-ademe/ecopass/issues/114).
+- Ajout de la possibilité d'exporter des données en masse (batch) et des fiches de matières premières (MC) [#138](https://github.com/incubateur-ademe/ecopass/issues/138).
+- Amélioration de la vue d'administration avec une meilleure présentation des données [#135](https://github.com/incubateur-ademe/ecopass/issues/135).
+- Ajout d'une nouvelle charte graphique [#127](https://github.com/incubateur-ademe/ecopass/issues/127).
+- Ajout d'une icône pour les "batchs" [#131](https://github.com/incubateur-ademe/ecopass/issues/131).
+- Mise à jour de l'image du t-shirt [#130](https://github.com/incubateur-ademe/ecopass/issues/130).
 
 ### Évolutions techniques
-- Amélioration du calcul de l'impact environnemental pour une meilleure précision [#122](https://github.com/incubateur-ademe/ecopass/issues/122).
-- Intégration de Maildev dans les actions GitHub pour faciliter le débogage des emails [#117](https://github.com/incubateur-ademe/ecopass/issues/117).
-- Correction de problèmes de build.
-- Correction du seeding de la base de données.
-- Correction d'une erreur dans l'énumération des statistiques anonymisées.
-- Suppression des autres NAFs [#113](https://github.com/incubateur-ademe/ecopass/issues/113).
+- Correction d'un problème d'encodage des GTIN [#134](https://github.com/incubateur-ademe/ecopass/issues/134).
+- Résolution d'un problème de duplication des GTIN [#133](https://github.com/incubateur-ademe/ecopass/issues/133).
+- Correction d'un bug empêchant la gestion des organisations sans identifiant unique.
+- Ajout de tests d'accessibilité privés [#140](https://github.com/incubateur-ademe/ecopass/issues/140).
+- Correction de la largeur des statistiques d'administration [#139](https://github.com/incubateur-ademe/ecopass/issues/139).
+- Correction d'un problème de redirection après connexion en tant qu'administrateur.
 
 ### Autres changements
-- Mise à jour de la cartographie des navigateurs de base.
+- Clarification de la terminologie "produit" dans l'interface utilisateur [#127](https://github.com/incubateur-ademe/ecopass/issues/127).
+- Correction d'un bug lors du téléchargement de fichiers CSV sans GTIN [#132](https://github.com/incubateur-ademe/ecopass/issues/132).
+- Correction d'un problème d'identifiant de document.
