@@ -1,34 +1,36 @@
 ## Changelog : a-just (30 derniers jours, au 15 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la qualité du code, notamment via des mises à jour de dépendances et des corrections de bugs. Des améliorations ont également été apportées à l'interface utilisateur, en particulier concernant l'affichage des données et la gestion des stocks. Des ajustements de sécurité et de configuration ont également été effectués.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la maintenance du projet. Des corrections ont été apportées à la gestion des stocks, notamment lors de la propagation des données. Des mises à jour importantes des dépendances ont également été effectuées pour assurer la sécurité et la performance de l'application. Des améliorations ont été apportées à l'interface utilisateur, notamment au niveau de la visualisation des données et de la gestion des dates.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant la propagation de la valeur du stock calculé lors de la suppression d'une saisie sur un stock "à vérifier" hérité du mois précédent. [#522](https://github.com/betagouv/a-just/pull/522)
-- Amélioration de la visualisation des dernières données dans le cockpit.
-- Correction du calcul de l'EPT saisi.
-- Correction de l'importation des agents EAM.
-- Ajout d'infobulles d'informations pour les alertes concernant les commentaires des agents.
+- Correction d'un bug concernant la propagation de la valeur du stock calculé lors de la confirmation d'un stock "à vérifier" hérité du mois précédent. [#522](https://github.com/betagouv/a-just/pull/522)
+- Amélioration de la visualisation des dernières données dans le cockpit, avec une correction de l'affichage des données et suppression des doublons.
 - Correction de la date de fin d'historique.
+- Correction de l'importation des agents EAM.
+- Correction de l'affichage des dates de début et de fin.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances : Axios, TypeScript, divers modules Node.js (lodash, yaml, karma), Angular, et les dépendances de développement.
-- Refonte de la configuration du build front-end.
-- Suppression de Babel-cli et de Compodoc.
-- Mise à jour des actions GitHub.
-- Suppression de precommit.
-- Amélioration de la gestion des fichiers `package-lock.json`.
-- Suppression de `koa-smart` et création d'une version personnalisée.
-- Suppression de la configuration de formatage des dates.
-- Suppression des règles de sécurité inutiles.
-- Modification des permissions des workflows GitHub.
+- Mise à jour des dépendances : Axios, lodash, yaml, karma, TypeScript, Angular (côté administration), et des modules de base de données.
+- Suppression de Babel-cli, esdoc et compodoc pour alléger et simplifier l'environnement de développement.
+- Refonte de la configuration de construction (build) du projet.
+- Amélioration de la gestion des fichiers `package-lock.json` pour assurer la cohérence des dépendances.
+- Suppression de `precommit` et remplacement par une configuration plus simple.
+- Mise à jour des actions GitHub pour améliorer le workflow CI/CD.
+- Suppression de la génération aléatoire de nombres pour renforcer la sécurité des mots de passe.
+- Suppression de la configuration de formatage des données.
+- Suppression de l'utilisation de `koa-smart` et création d'une version personnalisée.
 
 ### Autres changements
-- Correction de la ventilation des dates par référentiel pour les enfants.
 - Suppression de la documentation temporaire.
-- Nettoyage du code `koa-smart`.
-- Correction de la configuration du Dockerfile pour l'environnement E2E.
+- Nettoyage du code et suppression des commentaires inutiles.
+- Modification des permissions des workflows GitHub.
+- Correction de la configuration Docker pour l'environnement d'end-to-end (E2E).
+- Mise à jour de la configuration TypeScript pour les tests E2E.
+- Modification de la méthode d'accès aux variables d'environnement dans les tests Cypress.
+- Ajout d'options et de packages optionnels.
+- Correction de la configuration de construction front-end.
+- Ajout de tests lors des changements de script de construction.
 - Mise à jour de la version du projet.
-- Amélioration des tests E2E (mise à jour de la méthode Cypress.env()).
-- Correction de l'affichage des CGU.
-- Suppression d'un nombre aléatoire utilisé pour la sécurité des mots de passe.
+- Modification du template CA.
+- Changement d'affectation de l'ATJ.

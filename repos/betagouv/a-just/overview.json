@@ -1,12 +1,11 @@
 {
   "url": "https://github.com/betagouv/a-just",
   "name": "a-just",
-  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour la gestion et l'analyse de données au sein du ministère.",
+  "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins spécifiques du ministère.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
@@ -18,25 +17,25 @@
   "dependencies": [
     "PostgreSQL",
     "Redis",
-    "Node.js",
-    "TypeScript",
-    "koa",
-    "jsonwebtoken",
+    "Axios",
     "bcryptjs",
-    "axios"
+    "jsonwebtoken",
+    "koa",
+    "sequelize"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "Authentification (composant)"
+    "Node.js / NestJS"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "jwt"
+      "oauth2",
+      "jwt",
+      "session"
     ]
   },
   "tests": [
@@ -60,8 +59,9 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "JavaScript",
-    "Sécurité & Conformité",
-    "Bases de données SQL"
+    "Déploiement & Hosting",
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
