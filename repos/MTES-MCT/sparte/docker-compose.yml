@@ -1,8 +1,6 @@
-version: "3.7"
-
 services:
   db:
-    image: kartoza/postgis:14-3.3--v2022.08.30
+    image: kartoza/postgis:17-3.5
     shm_size: 1gb
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -11,11 +9,29 @@ services:
       - "5555:5432"
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    networks:
+      - app-network
+
+  s3:
+    image: versity/versitygw:latest
+    command: ["posix", "/data"]
+    environment:
+      - ROOT_ACCESS_KEY=localaccess
+      - ROOT_SECRET_KEY=localsecret
+    ports:
+      - "7070:7070"
+    volumes:
+      - s3_data:/data
     networks:
       - app-network
 
@@ -46,7 +62,7 @@ services:
   django:
     build: .
     image: sparte/backend:latest
-    command: ["sh", "-c", "python manage.py runserver 0.0.0.0:8080 --nothreading"]
+    command: ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8080 --nothreading"]
     volumes:
       - .:/app
     env_file: .env
@@ -54,12 +70,22 @@ services:
       - SCALINGO_REDIS_URL=redis://redis:6379/0
       - EXPORT_SERVER_URL=http://export-server:3000
       - EXPORT_BASE_URL=http://django:8080
+      - AWS_S3_ENDPOINT_URL=http://s3:7070
+      - AWS_S3_REGION_NAME=us-east-1
+      - AWS_ACCESS_KEY_ID=localaccess
+      - AWS_SECRET_ACCESS_KEY=localsecret
+      - AWS_STORAGE_BUCKET_NAME=sparte-local
     ports:
       - "8080:8080"
     depends_on:
-      - db
-      - redis
-      - export-server
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      s3:
+        condition: service_started
+      export-server:
+        condition: service_started
     networks:
       - app-network
 
@@ -69,3 +95,4 @@ networks:
 
 volumes:
   db_data:
+  s3_data:

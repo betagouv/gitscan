@@ -18,9 +18,12 @@
 │   ├── settings.json
 │   └── tasks.json
 ├── Aptfile
+├── CONFIG.md
 ├── Dockerfile
 ├── Dockerfile.frontend
+├── ENV.md
 ├── LICENSE
+├── Makefile
 ├── Pipfile
 ├── Pipfile.lock
 ├── Procfile
@@ -58,6 +61,7 @@
 │   │   ├── ingest_carroyage_lea.py
 │   │   ├── ingest_cartofriches.py
 │   │   ├── ingest_cog_changes.py
+│   │   ├── ingest_dossier_complet.py
 │   │   ├── ingest_gpu.py
 │   │   ├── ingest_majic.py
 │   │   ├── ingest_matomo_tables.py
@@ -79,7 +83,8 @@
 │   │       ├── create_ocsge_diff_centroid_vector_tiles.py
 │   │       ├── create_ocsge_diff_vector_tiles.py
 │   │       ├── create_ocsge_friche_vector_tiles.py
-│   │       └── create_ocsge_vector_tiles.py
+│   │       ├── create_ocsge_vector_tiles.py
+│   │       └── create_zonage_urbanisme_vector_tiles.py
 │   ├── dbt_profile.yml
 │   ├── include
 │   │   ├── connectors
@@ -171,6 +176,7 @@
 │   │   │       │   │   ├── standardize_zonage_type.sql
 │   │   │       │   │   └── standardize_zonage_type.yml
 │   │   │       │   ├── insee
+│   │   │       │   │   ├── aggregate_dc_to_land.sql
 │   │   │       │   │   ├── commune_changed_since.sql
 │   │   │       │   │   ├── divide_population.sql
 │   │   │       │   │   ├── merge_flux_population_by_admin_level.sql
@@ -218,9 +224,11 @@
 │   │   │       │   └── utils
 │   │   │       │       ├── boolean_as_oui_non.sql
 │   │   │       │       ├── create_idx_if_not_exists.sql
+│   │   │       │       ├── land_type_to_slug.sql
 │   │   │       │       ├── m2_to_ha.sql
 │   │   │       │       ├── make_valid_multipolygon.sql
 │   │   │       │       ├── raw_date_starts_with_yyyy.sql
+│   │   │       │       ├── slugify.sql
 │   │   │       │       ├── sum_percent.sql
 │   │   │       │       └── sum_percent_median_avg.sql
 │   │   │       ├── models
@@ -299,19 +307,10 @@
 │   │   │       │   │   └── sources.yml
 │   │   │       │   ├── for_app
 │   │   │       │   │   ├── administration
-│   │   │       │   │   │   ├── for_app_commune.sql
-│   │   │       │   │   │   ├── for_app_departement.sql
-│   │   │       │   │   │   ├── for_app_epci.sql
-│   │   │       │   │   │   ├── for_app_epci_departements.sql
-│   │   │       │   │   │   ├── for_app_epci_departements.yml
 │   │   │       │   │   │   ├── for_app_land.sql
 │   │   │       │   │   │   ├── for_app_land.yml
-│   │   │       │   │   │   ├── for_app_region.sql
-│   │   │       │   │   │   ├── for_app_scot.sql
-│   │   │       │   │   │   ├── for_app_scot_departements.sql
-│   │   │       │   │   │   ├── for_app_scot_departements.yml
-│   │   │       │   │   │   ├── for_app_scot_regions.sql
-│   │   │       │   │   │   └── for_app_scot_regions.yml
+│   │   │       │   │   │   ├── for_app_land_geojson.sql
+│   │   │       │   │   │   └── for_app_land_geojson.yml
 │   │   │       │   │   ├── artificialisation
 │   │   │       │   │   │   ├── flux
 │   │   │       │   │   │   │   ├── for_app_landartifflux.sql
@@ -342,7 +341,15 @@
 │   │   │       │   │   │   ├── for_app_landartifstockusagecomposition.yml
 │   │   │       │   │   │   ├── for_app_landartifstockusagecompositionindex.sql
 │   │   │       │   │   │   └── for_app_landartifstockusagecompositionindex.yml
+│   │   │       │   │   ├── bivariate
+│   │   │       │   │   │   ├── for_app_bivariate_conso_threshold.sql
+│   │   │       │   │   │   ├── for_app_bivariate_conso_threshold.yml
+│   │   │       │   │   │   ├── for_app_bivariate_indic_threshold.sql
+│   │   │       │   │   │   ├── for_app_bivariate_indic_threshold.yml
+│   │   │       │   │   │   ├── for_app_bivariate_land_rate.sql
+│   │   │       │   │   │   └── for_app_bivariate_land_rate.yml
 │   │   │       │   │   ├── consommation
+│   │   │       │   │   │   ├── for_app_landcarroyagebounds.sql
 │   │   │       │   │   │   ├── for_app_landconso.sql
 │   │   │       │   │   │   ├── for_app_landconso.yml
 │   │   │       │   │   │   ├── for_app_landconsocomparison.sql
@@ -358,6 +365,17 @@
 │   │   │       │   │   │   ├── for_app_landpopulationdensity.yml
 │   │   │       │   │   │   ├── for_app_nearest_territories.sql
 │   │   │       │   │   │   └── for_app_nearest_territories.yml
+│   │   │       │   │   ├── dossier_complet
+│   │   │       │   │   │   ├── for_app_dc_activite_chomage.sql
+│   │   │       │   │   │   ├── for_app_dc_categories_socioprofessionnelles.sql
+│   │   │       │   │   │   ├── for_app_dc_creations_entreprises.sql
+│   │   │       │   │   │   ├── for_app_dc_emplois_lieu_travail.sql
+│   │   │       │   │   │   ├── for_app_dc_equipements_bpe.sql
+│   │   │       │   │   │   ├── for_app_dc_logement.sql
+│   │   │       │   │   │   ├── for_app_dc_menages.sql
+│   │   │       │   │   │   ├── for_app_dc_population.sql
+│   │   │       │   │   │   ├── for_app_dc_revenus_pauvrete.sql
+│   │   │       │   │   │   └── for_app_dc_tourisme.sql
 │   │   │       │   │   ├── friche
 │   │   │       │   │   │   ├── for_app_landfriche.sql
 │   │   │       │   │   │   ├── for_app_landfriche.yml
@@ -434,61 +452,17 @@
 │   │   │       │   │   │   │   ├── for_export_artif_region.yml
 │   │   │       │   │   │   │   ├── for_export_artif_scot.sql
 │   │   │       │   │   │   │   └── for_export_artif_scot.yml
-│   │   │       │   │   │   ├── artif_by_couverture
-│   │   │       │   │   │   │   ├── for_export_artif_commune_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_artif_commune_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_artif_departement_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_artif_departement_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_artif_epci_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_artif_epci_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_artif_region_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_artif_region_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_artif_scot_by_couverture.sql
-│   │   │       │   │   │   │   └── for_export_artif_scot_by_couverture.yml
-│   │   │       │   │   │   ├── artif_by_usage
-│   │   │       │   │   │   │   ├── for_export_artif_commune_by_usage.sql
-│   │   │       │   │   │   │   ├── for_export_artif_commune_by_usage.yml
-│   │   │       │   │   │   │   ├── for_export_artif_departement_by_usage.sql
-│   │   │       │   │   │   │   ├── for_export_artif_departement_by_usage.yml
-│   │   │       │   │   │   │   ├── for_export_artif_epci_by_usage.sql
-│   │   │       │   │   │   │   ├── for_export_artif_epci_by_usage.yml
-│   │   │       │   │   │   │   ├── for_export_artif_region_by_usage.sql
-│   │   │       │   │   │   │   ├── for_export_artif_region_by_usage.yml
-│   │   │       │   │   │   │   ├── for_export_artif_scot_by_usage.sql
-│   │   │       │   │   │   │   └── for_export_artif_scot_by_usage.yml
-│   │   │       │   │   │   ├── imper
-│   │   │       │   │   │   │   ├── for_export_imper_commune.sql
-│   │   │       │   │   │   │   ├── for_export_imper_commune.yml
-│   │   │       │   │   │   │   ├── for_export_imper_departement.sql
-│   │   │       │   │   │   │   ├── for_export_imper_departement.yml
-│   │   │       │   │   │   │   ├── for_export_imper_epci.sql
-│   │   │       │   │   │   │   ├── for_export_imper_epci.yml
-│   │   │       │   │   │   │   ├── for_export_imper_region.sql
-│   │   │       │   │   │   │   ├── for_export_imper_region.yml
-│   │   │       │   │   │   │   ├── for_export_imper_scot.sql
-│   │   │       │   │   │   │   └── for_export_imper_scot.yml
-│   │   │       │   │   │   ├── imper_by_couverture
-│   │   │       │   │   │   │   ├── for_export_imper_commune_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_imper_commune_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_imper_departement_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_imper_departement_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_imper_epci_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_imper_epci_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_imper_region_by_couverture.sql
-│   │   │       │   │   │   │   ├── for_export_imper_region_by_couverture.yml
-│   │   │       │   │   │   │   ├── for_export_imper_scot_by_couverture.sql
-│   │   │       │   │   │   │   └── for_export_imper_scot_by_couverture.yml
-│   │   │       │   │   │   └── imper_by_usage
-│   │   │       │   │   │       ├── for_export_imper_commune_by_usage.sql
-│   │   │       │   │   │       ├── for_export_imper_commune_by_usage.yml
-│   │   │       │   │   │       ├── for_export_imper_departement_by_usage.sql
-│   │   │       │   │   │       ├── for_export_imper_departement_by_usage.yml
-│   │   │       │   │   │       ├── for_export_imper_epci_by_usage.sql
-│   │   │       │   │   │       ├── for_export_imper_epci_by_usage.yml
-│   │   │       │   │   │       ├── for_export_imper_region_by_usage.sql
-│   │   │       │   │   │       ├── for_export_imper_region_by_usage.yml
-│   │   │       │   │   │       ├── for_export_imper_scot_by_usage.sql
-│   │   │       │   │   │       └── for_export_imper_scot_by_usage.yml
+│   │   │       │   │   │   └── imper
+│   │   │       │   │   │       ├── for_export_imper_commune.sql
+│   │   │       │   │   │       ├── for_export_imper_commune.yml
+│   │   │       │   │   │       ├── for_export_imper_departement.sql
+│   │   │       │   │   │       ├── for_export_imper_departement.yml
+│   │   │       │   │   │       ├── for_export_imper_epci.sql
+│   │   │       │   │   │       ├── for_export_imper_epci.yml
+│   │   │       │   │   │       ├── for_export_imper_region.sql
+│   │   │       │   │   │       ├── for_export_imper_region.yml
+│   │   │       │   │   │       ├── for_export_imper_scot.sql
+│   │   │       │   │   │       └── for_export_imper_scot.yml
 │   │   │       │   │   ├── ocsge_surface_cover_percent.sql
 │   │   │       │   │   ├── ocsge_surface_cover_percent.yml
 │   │   │       │   │   ├── trajectoires_communes.sql
@@ -506,19 +480,24 @@
 │   │   │       │   │   ├── for_vector_tiles_occupation_du_sol.sql
 │   │   │       │   │   ├── for_vector_tiles_occupation_du_sol.yml
 │   │   │       │   │   ├── for_vector_tiles_occupation_du_sol_friche.sql
-│   │   │       │   │   └── for_vector_tiles_occupation_du_sol_friche.yml
+│   │   │       │   │   ├── for_vector_tiles_occupation_du_sol_friche.yml
+│   │   │       │   │   ├── for_vector_tiles_zonage_urbanisme.sql
+│   │   │       │   │   └── for_vector_tiles_zonage_urbanisme.yml
 │   │   │       │   ├── gpu
-│   │   │       │   │   ├── commune_zonage.sql
-│   │   │       │   │   ├── commune_zonage.yml
 │   │   │       │   │   ├── sources.yml
-│   │   │       │   │   └── zonage_urbanisme
-│   │   │       │   │       ├── 1_zonage_urbanisme_raw.sql
-│   │   │       │   │       ├── 2_zonage_urbanisme_normalized.sql
-│   │   │       │   │       ├── 3_zonage_urbanisme_projected.sql
-│   │   │       │   │       ├── 4_zonage_urbanisme_deduplicated.sql
-│   │   │       │   │       ├── 5_zonage_urbanisme_with_surface.sql
-│   │   │       │   │       ├── zonage_urbanisme.sql
-│   │   │       │   │       └── zonage_urbanisme.yml
+│   │   │       │   │   ├── zonage_commune.sql
+│   │   │       │   │   ├── zonage_departement.sql
+│   │   │       │   │   ├── zonage_epci.sql
+│   │   │       │   │   ├── zonage_region.sql
+│   │   │       │   │   ├── zonage_scot.sql
+│   │   │       │   │   ├── zonage_urbanisme
+│   │   │       │   │   │   ├── 1_zonage_urbanisme_raw.sql
+│   │   │       │   │   │   ├── 2_zonage_urbanisme_normalized.sql
+│   │   │       │   │   │   ├── 3_zonage_urbanisme_projected.sql
+│   │   │       │   │   │   ├── 4_zonage_urbanisme_deduplicated.sql
+│   │   │       │   │   │   ├── zonage_urbanisme.sql
+│   │   │       │   │   │   └── zonage_urbanisme.yml
+│   │   │       │   │   └── zonage_urbanisme_artif_imper_stats.sql
 │   │   │       │   ├── insee
 │   │   │       │   │   ├── aggregated
 │   │   │       │   │   │   ├── flux
@@ -527,6 +506,7 @@
 │   │   │       │   │   │   │   ├── flux_population_custom_land.sql
 │   │   │       │   │   │   │   ├── flux_population_departement.sql
 │   │   │       │   │   │   │   ├── flux_population_epci.sql
+│   │   │       │   │   │   │   ├── flux_population_nation.sql
 │   │   │       │   │   │   │   ├── flux_population_region.sql
 │   │   │       │   │   │   │   ├── flux_population_scot.sql
 │   │   │       │   │   │   │   └── period
@@ -537,6 +517,7 @@
 │   │   │       │   │   │   │       ├── period_flux_population_departement.yml
 │   │   │       │   │   │   │       ├── period_flux_population_epci.sql
 │   │   │       │   │   │   │       ├── period_flux_population_epci.yml
+│   │   │       │   │   │   │       ├── period_flux_population_nation.sql
 │   │   │       │   │   │   │       ├── period_flux_population_region.sql
 │   │   │       │   │   │   │       ├── period_flux_population_region.yml
 │   │   │       │   │   │   │       ├── period_flux_population_scot.sql
@@ -548,6 +529,7 @@
 │   │   │       │   │   │           ├── period_stock_population_departement.yml
 │   │   │       │   │   │           ├── period_stock_population_epci.sql
 │   │   │       │   │   │           ├── period_stock_population_epci.yml
+│   │   │       │   │   │           ├── period_stock_population_nation.sql
 │   │   │       │   │   │           ├── period_stock_population_region.sql
 │   │   │       │   │   │           ├── period_stock_population_region.yml
 │   │   │       │   │   │           ├── period_stock_population_scot.sql
@@ -562,6 +544,53 @@
 │   │   │       │   │   │   └── pop_regional_stats_departement.sql
 │   │   │       │   │   ├── cog_changes_2025.sql
 │   │   │       │   │   ├── cog_changes_2025.yml
+│   │   │       │   │   ├── dossier_complet
+│   │   │       │   │   │   ├── dc_activite_chomage.sql
+│   │   │       │   │   │   ├── dc_activite_chomage.yml
+│   │   │       │   │   │   ├── dc_categories_socioprofessionnelles.sql
+│   │   │       │   │   │   ├── dc_categories_socioprofessionnelles.yml
+│   │   │       │   │   │   ├── dc_creations_entreprises.sql
+│   │   │       │   │   │   ├── dc_creations_entreprises.yml
+│   │   │       │   │   │   ├── dc_creations_etablissements.sql
+│   │   │       │   │   │   ├── dc_creations_etablissements.yml
+│   │   │       │   │   │   ├── dc_deplacements_domicile_travail.sql
+│   │   │       │   │   │   ├── dc_deplacements_domicile_travail.yml
+│   │   │       │   │   │   ├── dc_electeurs.sql
+│   │   │       │   │   │   ├── dc_electeurs.yml
+│   │   │       │   │   │   ├── dc_emploi_statut.sql
+│   │   │       │   │   │   ├── dc_emploi_statut.yml
+│   │   │       │   │   │   ├── dc_emplois_lieu_travail.sql
+│   │   │       │   │   │   ├── dc_emplois_lieu_travail.yml
+│   │   │       │   │   │   ├── dc_equipements_bpe.sql
+│   │   │       │   │   │   ├── dc_equipements_bpe.yml
+│   │   │       │   │   │   ├── dc_etablissements.sql
+│   │   │       │   │   │   ├── dc_etablissements.yml
+│   │   │       │   │   │   ├── dc_historique.sql
+│   │   │       │   │   │   ├── dc_historique.yml
+│   │   │       │   │   │   ├── dc_logement.sql
+│   │   │       │   │   │   ├── dc_logement.yml
+│   │   │       │   │   │   ├── dc_logement_confort.sql
+│   │   │       │   │   │   ├── dc_logement_confort.yml
+│   │   │       │   │   │   ├── dc_menages.sql
+│   │   │       │   │   │   ├── dc_menages.yml
+│   │   │       │   │   │   ├── dc_mobilite_residentielle.sql
+│   │   │       │   │   │   ├── dc_mobilite_residentielle.yml
+│   │   │       │   │   │   ├── dc_population.sql
+│   │   │       │   │   │   ├── dc_population.yml
+│   │   │       │   │   │   ├── dc_revenus_pauvrete.sql
+│   │   │       │   │   │   ├── dc_revenus_pauvrete.yml
+│   │   │       │   │   │   ├── dc_salaires.sql
+│   │   │       │   │   │   ├── dc_salaires.yml
+│   │   │       │   │   │   ├── dc_scolarisation_diplomes.sql
+│   │   │       │   │   │   ├── dc_scolarisation_diplomes.yml
+│   │   │       │   │   │   ├── dc_situation_conjugale.sql
+│   │   │       │   │   │   ├── dc_situation_conjugale.yml
+│   │   │       │   │   │   ├── dc_tourisme.sql
+│   │   │       │   │   │   ├── dc_tourisme.yml
+│   │   │       │   │   │   ├── dc_unites_legales_actives.sql
+│   │   │       │   │   │   ├── dc_unites_legales_actives.yml
+│   │   │       │   │   │   ├── dossier_complet.sql
+│   │   │       │   │   │   └── dossier_complet.yml
 │   │   │       │   │   ├── population.sql
 │   │   │       │   │   ├── population.yml
 │   │   │       │   │   ├── population_cog_2024.sql
@@ -596,6 +625,7 @@
 │   │   │       │   │   │       ├── flux_consommation_custom_land.sql
 │   │   │       │   │   │       ├── flux_consommation_departement.sql
 │   │   │       │   │   │       ├── flux_consommation_epci.sql
+│   │   │       │   │   │       ├── flux_consommation_nation.sql
 │   │   │       │   │   │       ├── flux_consommation_region.sql
 │   │   │       │   │   │       ├── flux_consommation_scot.sql
 │   │   │       │   │   │       └── period
@@ -604,6 +634,7 @@
 │   │   │       │   │   │           ├── period_consommation_departement.sql
 │   │   │       │   │   │           ├── period_consommation_epci.sql
 │   │   │       │   │   │           ├── period_consommation_land.sql
+│   │   │       │   │   │           ├── period_consommation_nation.sql
 │   │   │       │   │   │           ├── period_consommation_region.sql
 │   │   │       │   │   │           └── period_consommation_scot.sql
 │   │   │       │   │   ├── calculated
@@ -614,6 +645,8 @@
 │   │   │       │   │   │   ├── conso_national_stats_scot.sql
 │   │   │       │   │   │   └── conso_regional_stats_departement.sql
 │   │   │       │   │   ├── carroyage_lea.sql
+│   │   │       │   │   ├── carroyage_lea_communes.sql
+│   │   │       │   │   ├── carroyage_lea_land.sql
 │   │   │       │   │   ├── consommation.sql
 │   │   │       │   │   ├── consommation_cog_2024.sql
 │   │   │       │   │   ├── land_conso_correction_status.sql
@@ -715,6 +748,14 @@
 │   │   │       │   │   │   │   │   ├── imper_flux_land_by_usage_by_index.sql
 │   │   │       │   │   │   │   │   ├── imper_net_flux_land.sql
 │   │   │       │   │   │   │   │   └── imper_net_flux_land_by_index.sql
+│   │   │       │   │   │   │   ├── nation
+│   │   │       │   │   │   │   │   ├── artif_flux_nation.sql
+│   │   │       │   │   │   │   │   ├── artif_flux_nation_by_couverture.sql
+│   │   │       │   │   │   │   │   ├── artif_flux_nation_by_usage.sql
+│   │   │       │   │   │   │   │   ├── artif_net_flux_nation.sql
+│   │   │       │   │   │   │   │   ├── imper_flux_nation_by_couverture.sql
+│   │   │       │   │   │   │   │   ├── imper_flux_nation_by_usage.sql
+│   │   │       │   │   │   │   │   └── imper_net_flux_nation.sql
 │   │   │       │   │   │   │   ├── region
 │   │   │       │   │   │   │   │   ├── artif_flux_region.sql
 │   │   │       │   │   │   │   │   ├── artif_flux_region.yml
@@ -727,18 +768,19 @@
 │   │   │       │   │   │   │   │   ├── imper_flux_region_by_couverture.sql
 │   │   │       │   │   │   │   │   ├── imper_flux_region_by_usage.sql
 │   │   │       │   │   │   │   │   └── imper_net_flux_region.sql
-│   │   │       │   │   │   │   └── scot
-│   │   │       │   │   │   │       ├── artif_flux_scot.sql
-│   │   │       │   │   │   │       ├── artif_flux_scot.yml
-│   │   │       │   │   │   │       ├── artif_flux_scot_by_couverture.sql
-│   │   │       │   │   │   │       ├── artif_flux_scot_by_couverture.yml
-│   │   │       │   │   │   │       ├── artif_flux_scot_by_usage.sql
-│   │   │       │   │   │   │       ├── artif_flux_scot_by_usage.yml
-│   │   │       │   │   │   │       ├── artif_net_flux_scot.sql
-│   │   │       │   │   │   │       ├── artif_net_flux_scot.yml
-│   │   │       │   │   │   │       ├── imper_flux_scot_by_couverture.sql
-│   │   │       │   │   │   │       ├── imper_flux_scot_by_usage.sql
-│   │   │       │   │   │   │       └── imper_net_flux_scot.sql
+│   │   │       │   │   │   │   ├── scot
+│   │   │       │   │   │   │   │   ├── artif_flux_scot.sql
+│   │   │       │   │   │   │   │   ├── artif_flux_scot.yml
+│   │   │       │   │   │   │   │   ├── artif_flux_scot_by_couverture.sql
+│   │   │       │   │   │   │   │   ├── artif_flux_scot_by_couverture.yml
+│   │   │       │   │   │   │   │   ├── artif_flux_scot_by_usage.sql
+│   │   │       │   │   │   │   │   ├── artif_flux_scot_by_usage.yml
+│   │   │       │   │   │   │   │   ├── artif_net_flux_scot.sql
+│   │   │       │   │   │   │   │   ├── artif_net_flux_scot.yml
+│   │   │       │   │   │   │   │   ├── imper_flux_scot_by_couverture.sql
+│   │   │       │   │   │   │   │   ├── imper_flux_scot_by_usage.sql
+│   │   │       │   │   │   │   │   └── imper_net_flux_scot.sql
+│   │   │       │   │   │   │   └── zonage_flux_couverture_et_usage_artif.sql
 │   │   │       │   │   │   └── stock
 │   │   │       │   │   │       ├── commune
 │   │   │       │   │   │       │   ├── artif
@@ -746,14 +788,14 @@
 │   │   │       │   │   │       │   │   ├── artif_commune_by_couverture.sql
 │   │   │       │   │   │       │   │   ├── artif_commune_by_usage.sql
 │   │   │       │   │   │       │   │   └── artif_zonage_commune.sql
+│   │   │       │   │   │       │   ├── commune_couverture.sql
+│   │   │       │   │   │       │   ├── commune_couverture_et_usage.sql
+│   │   │       │   │   │       │   ├── commune_usage.sql
 │   │   │       │   │   │       │   └── imper
 │   │   │       │   │   │       │       ├── imper_commune.sql
 │   │   │       │   │   │       │       ├── imper_commune_by_couverture.sql
 │   │   │       │   │   │       │       ├── imper_commune_by_usage.sql
 │   │   │       │   │   │       │       └── imper_zonage_commune.sql
-│   │   │       │   │   │       ├── commune_couverture.sql
-│   │   │       │   │   │       ├── commune_couverture_et_usage.sql
-│   │   │       │   │   │       ├── commune_usage.sql
 │   │   │       │   │   │       ├── custom_land
 │   │   │       │   │   │       │   ├── artif
 │   │   │       │   │   │       │   │   ├── artif_custom_land.sql
@@ -789,8 +831,8 @@
 │   │   │       │   │   │       │       └── imper_zonage_epci.sql
 │   │   │       │   │   │       ├── friche
 │   │   │       │   │   │       │   ├── artif_friche.sql
+│   │   │       │   │   │       │   ├── friche_couverture_et_usage.sql
 │   │   │       │   │   │       │   └── imper_friche.sql
-│   │   │       │   │   │       ├── friche_couverture_et_usage.sql
 │   │   │       │   │   │       ├── land
 │   │   │       │   │   │       │   ├── artif
 │   │   │       │   │   │       │   │   ├── artif_land.sql
@@ -810,6 +852,17 @@
 │   │   │       │   │   │       │       ├── imper_land_by_usage_by_index.sql
 │   │   │       │   │   │       │       ├── imper_zonage_land.sql
 │   │   │       │   │   │       │       └── imper_zonage_land_by_index.sql
+│   │   │       │   │   │       ├── nation
+│   │   │       │   │   │       │   ├── artif
+│   │   │       │   │   │       │   │   ├── artif_nation.sql
+│   │   │       │   │   │       │   │   ├── artif_nation_by_couverture.sql
+│   │   │       │   │   │       │   │   ├── artif_nation_by_usage.sql
+│   │   │       │   │   │       │   │   └── artif_zonage_nation.sql
+│   │   │       │   │   │       │   └── imper
+│   │   │       │   │   │       │       ├── imper_nation.sql
+│   │   │       │   │   │       │       ├── imper_nation_by_couverture.sql
+│   │   │       │   │   │       │       ├── imper_nation_by_usage.sql
+│   │   │       │   │   │       │       └── imper_zonage_nation.sql
 │   │   │       │   │   │       ├── region
 │   │   │       │   │   │       │   ├── artif
 │   │   │       │   │   │       │   │   ├── artif_region.sql
@@ -832,22 +885,21 @@
 │   │   │       │   │   │       │       ├── imper_scot_by_couverture.sql
 │   │   │       │   │   │       │       ├── imper_scot_by_usage.sql
 │   │   │       │   │   │       │       └── imper_zonage_scot.sql
-│   │   │       │   │   │       ├── zonage
-│   │   │       │   │   │       │   ├── artif_zonage.sql
-│   │   │       │   │   │       │   ├── artif_zonage_by_couverture.sql
-│   │   │       │   │   │       │   └── artif_zonage_by_usage.sql
-│   │   │       │   │   │       ├── zonage_couverture.sql
-│   │   │       │   │   │       ├── zonage_couverture_et_usage.sql
-│   │   │       │   │   │       └── zonage_usage.sql
+│   │   │       │   │   │       └── zonage
+│   │   │       │   │   │           ├── zonage_couverture.sql
+│   │   │       │   │   │           ├── zonage_couverture_et_usage.sql
+│   │   │       │   │   │           └── zonage_usage.sql
 │   │   │       │   │   ├── diff_millesimes.sql
 │   │   │       │   │   ├── difference.sql
 │   │   │       │   │   ├── guyane_incomplete_lands.sql
 │   │   │       │   │   ├── intersected
 │   │   │       │   │   │   ├── artif_difference_commune.sql
 │   │   │       │   │   │   ├── artif_difference_commune.yml
+│   │   │       │   │   │   ├── artif_difference_zonage_urbanisme.sql
 │   │   │       │   │   │   ├── difference_commune.sql
 │   │   │       │   │   │   ├── difference_commune_artif.sql
 │   │   │       │   │   │   ├── difference_commune_artif.yml
+│   │   │       │   │   │   ├── imper_difference_zonage_urbanisme.sql
 │   │   │       │   │   │   ├── occupation_du_sol_commune.sql
 │   │   │       │   │   │   ├── occupation_du_sol_friche.sql
 │   │   │       │   │   │   └── occupation_du_sol_zonage_urbanisme.sql
@@ -876,6 +928,9 @@
 │   │   │       │   │   ├── epci
 │   │   │       │   │   │   ├── rpls_epci.sql
 │   │   │       │   │   │   └── rpls_epci.yml
+│   │   │       │   │   ├── nation
+│   │   │       │   │   │   ├── raw_rpls_nation.sql
+│   │   │       │   │   │   └── rpls_nation.sql
 │   │   │       │   │   ├── region
 │   │   │       │   │   │   ├── raw_rpls_region.sql
 │   │   │       │   │   │   ├── raw_rpls_region.yml
@@ -893,6 +948,7 @@
 │   │   │       │   │   ├── logement_departement.yml
 │   │   │       │   │   ├── logement_epci.sql
 │   │   │       │   │   ├── logement_epci.yml
+│   │   │       │   │   ├── logement_nation.sql
 │   │   │       │   │   ├── logement_region.sql
 │   │   │       │   │   ├── logement_region.yml
 │   │   │       │   │   ├── logement_scot.sql
@@ -924,6 +980,7 @@
 │   │   │       │       ├── logements_vacants_departement.yml
 │   │   │       │       ├── logements_vacants_epci.sql
 │   │   │       │       ├── logements_vacants_epci.yml
+│   │   │       │       ├── logements_vacants_nation.sql
 │   │   │       │       ├── logements_vacants_region.sql
 │   │   │       │       ├── logements_vacants_region.yml
 │   │   │       │       ├── logements_vacants_scot.sql
@@ -942,6 +999,11 @@
 │   │   │       └── tests
 │   │   │           ├── artif_flux_matches_artif_difference.sql
 │   │   │           ├── autorisation_logement_no_missing_year.sql
+│   │   │           ├── bivariate_conso_threshold_no_duplicate.sql
+│   │   │           ├── bivariate_conso_threshold_t1_max_lte_t2_min.sql
+│   │   │           ├── bivariate_indic_threshold_no_duplicate.sql
+│   │   │           ├── bivariate_indic_threshold_t1_max_lte_t2_min.sql
+│   │   │           ├── bivariate_land_rate_no_duplicate.sql
 │   │   │           ├── for_app_land_has_unique_land_id_land_type.sql
 │   │   │           ├── for_vector_tiles_artif_diff_centroid_same_count.sql
 │   │   │           ├── for_vector_tiles_diff_centroid_same_count.sql
@@ -949,6 +1011,7 @@
 │   │   │           │   ├── has_all_communes.sql
 │   │   │           │   ├── has_all_departements.sql
 │   │   │           │   ├── has_all_epcis.sql
+│   │   │           │   ├── has_all_lands.sql
 │   │   │           │   ├── has_all_regions.sql
 │   │   │           │   ├── has_all_scots.sql
 │   │   │           │   ├── has_years_from_to.sql
@@ -1286,13 +1349,31 @@
 │   ├── models.py
 │   ├── permissions.py
 │   ├── serializers.py
+│   ├── services.py
 │   ├── signals.py
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
+├── croisements
+│   ├── 00_synthese.md
+│   ├── 01_population_demographie.md
+│   ├── 02_menages_familles.md
+│   ├── 03_logement.md
+│   ├── 04_csp_activite.md
+│   ├── 05_mobilite_deplacement.md
+│   ├── 06_scolarite_diplomes.md
+│   ├── 07_emploi_lieu_travail.md
+│   ├── 08_salaires.md
+│   ├── 09_etablissements.md
+│   ├── 10_tourisme.md
+│   ├── 11_equipements_services.md
+│   ├── 12_electeurs.md
+│   └── README.md
 ├── docker-compose.yml
 ├── docs
-│   └── dat.md
+│   ├── dat.md
+│   ├── documentation_metier.md
+│   └── documentation_technique.md
 ├── export
 │   ├── .buildpacks
 │   ├── Aptfile
@@ -1309,6 +1390,10 @@
 │   └── tsconfig.json
 ├── flake8
 ├── frontend
+│   ├── assets
+│   │   └── animations
+│   │       ├── cup.json
+│   │       └── success.json
 │   ├── images
 │   │   ├── annexe-article-r-101-1-code-urbanisme.png
 │   │   ├── appartement_icon.png
@@ -1335,7 +1420,7 @@
 │   │   │   │   ├── ChartDataSource.tsx
 │   │   │   │   ├── ChartDataTable.test.tsx
 │   │   │   │   ├── ChartDataTable.tsx
-│   │   │   │   ├── ChartDetails.tsx
+│   │   │   │   ├── ChartExplorer.tsx
 │   │   │   │   ├── ChartWithTable.tsx
 │   │   │   │   ├── GenericChart.tsx
 │   │   │   │   ├── ObjectiveChart.tsx
@@ -1343,79 +1428,36 @@
 │   │   │   │   │   ├── ArtifPercentRate.tsx
 │   │   │   │   │   └── ArtifSyntheseChart.tsx
 │   │   │   │   ├── consommation
+│   │   │   │   │   ├── BivariateMap
+│   │   │   │   │   │   ├── BivariateLegend.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── types.ts
 │   │   │   │   │   └── ConsommationChart.tsx
 │   │   │   │   ├── friches
 │   │   │   │   │   └── FrichesChart.tsx
 │   │   │   │   └── ocsge
-│   │   │   │       ├── OcsgeGraph.tsx
 │   │   │   │       └── OcsgeImplementationMap.tsx
 │   │   │   ├── features
 │   │   │   │   ├── MainTerritorySearchBar.tsx
 │   │   │   │   ├── TerritorySelector.tsx
 │   │   │   │   ├── friches
 │   │   │   │   │   ├── FricheAbstract.tsx
-│   │   │   │   │   ├── FricheOverview.tsx
 │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── logementVacant
-│   │   │   │   │   ├── constant.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── logementVacantAbstract.tsx
-│   │   │   │   │   └── logementVacantOverview.tsx
+│   │   │   │   │   └── logementVacantAbstract.tsx
 │   │   │   │   ├── ocsge
-│   │   │   │   │   ├── ArtificialisationZonage.tsx
 │   │   │   │   │   ├── DepartmentSelector.tsx
-│   │   │   │   │   ├── DetailsCalculationOcsge.tsx
-│   │   │   │   │   ├── FluxBadge.tsx
-│   │   │   │   │   ├── ImpermeabilisationZonage.tsx
 │   │   │   │   │   ├── LandMillesimeTable.tsx
 │   │   │   │   │   ├── MillesimeDisplay.tsx
-│   │   │   │   │   ├── OcsgeMillesimeSelector.tsx
-│   │   │   │   │   └── SeuilsSchemas.tsx
-│   │   │   │   ├── report
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── ComparisonTerritoriesCallout.tsx
-│   │   │   │   │   │   ├── ComparisonTerritoriesSettings.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── editor
-│   │   │   │   │   │   ├── ContentZone.tsx
-│   │   │   │   │   │   ├── EditorTopBar.tsx
-│   │   │   │   │   │   ├── ReportEditor.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── hooks
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── useReportComparisonTerritories.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── list
-│   │   │   │   │   │   ├── EmptyState.tsx
-│   │   │   │   │   │   ├── LoginPrompt.tsx
-│   │   │   │   │   │   ├── ReportCard.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── modals
-│   │   │   │   │   │   ├── CreateReportForm.tsx
-│   │   │   │   │   │   ├── CreateReportModal.tsx
-│   │   │   │   │   │   ├── DeleteReportModal.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── styles
-│   │   │   │   │   │   ├── ReportStyles.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   └── templates
-│   │   │   │   │       ├── AvailableDataPage.tsx
-│   │   │   │   │       ├── CoverPage.tsx
-│   │   │   │   │       ├── RapportComplet.tsx
-│   │   │   │   │       ├── RapportLocal.tsx
-│   │   │   │   │       ├── ReportPrintPage.tsx
-│   │   │   │   │       └── index.ts
-│   │   │   │   ├── status
-│   │   │   │   │   ├── ConsoCorrectionStatus.tsx
-│   │   │   │   │   ├── FricheStatus.tsx
-│   │   │   │   │   ├── GpuStatus.tsx
-│   │   │   │   │   ├── LogementVacantStatus.tsx
-│   │   │   │   │   └── OcsgeStatus.tsx
-│   │   │   │   └── trajectoires
-│   │   │   │       ├── TargetModal.tsx
-│   │   │   │       ├── TerritorialisationHierarchy.tsx
-│   │   │   │       └── TerritorialisationWarning.tsx
+│   │   │   │   │   ├── OcsgeDrawerContext.tsx
+│   │   │   │   │   └── OcsgeMillesimeSelector.tsx
+│   │   │   │   └── status
+│   │   │   │       ├── ConsoCorrectionStatus.tsx
+│   │   │   │       ├── FricheStatus.tsx
+│   │   │   │       ├── LogementVacantStatus.tsx
+│   │   │   │       └── OcsgeStatus.tsx
 │   │   │   ├── layout
 │   │   │   │   ├── Dashboard.tsx
 │   │   │   │   ├── Footer.tsx
@@ -1426,6 +1468,7 @@
 │   │   │   ├── map
 │   │   │   │   ├── constants
 │   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── modeConfig.ts
 │   │   │   │   │   ├── ocsge_nomenclatures.ts
 │   │   │   │   │   └── presets.ts
 │   │   │   │   ├── controls
@@ -1434,6 +1477,7 @@
 │   │   │   │   │   ├── ControlsManager.ts
 │   │   │   │   │   ├── OcsgeDiffMillesimeControl.ts
 │   │   │   │   │   ├── OcsgeMillesimeControl.ts
+│   │   │   │   │   ├── OcsgeMillesimeIndexControl.ts
 │   │   │   │   │   ├── OcsgeNomenclatureControl.ts
 │   │   │   │   │   ├── OcsgeNomenclatureFilterControl.ts
 │   │   │   │   │   ├── OpacityControl.ts
@@ -1474,7 +1518,10 @@
 │   │   │   │   │   ├── ocsgeFrichesImpermeableLayer.ts
 │   │   │   │   │   ├── ocsgeFrichesLayer.ts
 │   │   │   │   │   ├── orthophotoLayer.ts
-│   │   │   │   │   └── osmLayer.ts
+│   │   │   │   │   ├── orthophotoOverlayLayer.ts
+│   │   │   │   │   ├── osmLayer.ts
+│   │   │   │   │   ├── territoryClipLayers.ts
+│   │   │   │   │   └── zonageUrbanismeLayer.ts
 │   │   │   │   ├── sources
 │   │   │   │   │   ├── baseOcsgeDiffSource.ts
 │   │   │   │   │   ├── baseOcsgeSource.ts
@@ -1490,7 +1537,8 @@
 │   │   │   │   │   ├── ocsgeFrichesSource.ts
 │   │   │   │   │   ├── ocsgeSource.ts
 │   │   │   │   │   ├── orthophotoSource.ts
-│   │   │   │   │   └── osmSource.ts
+│   │   │   │   │   ├── osmSource.ts
+│   │   │   │   │   └── zonageUrbanismeSource.ts
 │   │   │   │   ├── stats
 │   │   │   │   │   ├── StatsManager.ts
 │   │   │   │   │   ├── StatsStateManager.ts
@@ -1510,7 +1558,6 @@
 │   │   │   │   │   └── style.ts
 │   │   │   │   ├── ui
 │   │   │   │   │   ├── ArtificialisationDiffMap.tsx
-│   │   │   │   │   ├── ArtificialisationMap.tsx
 │   │   │   │   │   ├── BaseMap.tsx
 │   │   │   │   │   ├── CarroyageLeaMap.tsx
 │   │   │   │   │   ├── FrichesArtificialMap.tsx
@@ -1519,11 +1566,15 @@
 │   │   │   │   │   ├── FrichesOcsgeCouvertureMap.tsx
 │   │   │   │   │   ├── ImpermeabilisationDiffMap.tsx
 │   │   │   │   │   ├── ImpermeabilisationMap.tsx
+│   │   │   │   │   ├── OcsgeObjectMap.tsx
+│   │   │   │   │   ├── ZonageUrbanismeMap.tsx
 │   │   │   │   │   ├── controls
+│   │   │   │   │   │   ├── ConfigurableControlsBar.tsx
 │   │   │   │   │   │   ├── ControlsGroup.tsx
 │   │   │   │   │   │   ├── ControlsPanel.tsx
 │   │   │   │   │   │   ├── OcsgeDiffMillesimeControl.tsx
 │   │   │   │   │   │   ├── OcsgeMillesimeControl.tsx
+│   │   │   │   │   │   ├── OcsgeMillesimeIndexControl.tsx
 │   │   │   │   │   │   ├── OcsgeNomenclatureControl.tsx
 │   │   │   │   │   │   ├── OcsgeNomenclatureFilterControl.tsx
 │   │   │   │   │   │   ├── OpacityControl.tsx
@@ -1542,7 +1593,21 @@
 │   │   │   │   │   │   ├── InfoRow.tsx
 │   │   │   │   │   │   ├── InfoValue.tsx
 │   │   │   │   │   │   ├── OcsgeFrichesInfo.tsx
+│   │   │   │   │   │   ├── ZonageUrbanismeInfo.tsx
 │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── sidePanel
+│   │   │   │   │   │   ├── ArtificialisationDiffSidePanel.tsx
+│   │   │   │   │   │   ├── CarroyageLeaSidePanel.tsx
+│   │   │   │   │   │   ├── ImpermeabilisationDiffSidePanel.tsx
+│   │   │   │   │   │   ├── OcsgeDiffSidePanel.tsx
+│   │   │   │   │   │   ├── OcsgeObjectSidePanel.tsx
+│   │   │   │   │   │   ├── PieChart.tsx
+│   │   │   │   │   │   ├── SidePanelLayout.ts
+│   │   │   │   │   │   ├── SidePanelPrimitives.ts
+│   │   │   │   │   │   ├── ZonageUrbanismeSidePanel.tsx
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   └── stats
 │   │   │   │   │       ├── StatsBar.tsx
 │   │   │   │   │       └── index.ts
@@ -1551,48 +1616,150 @@
 │   │   │   │       ├── donutChart.ts
 │   │   │   │       └── ocsge.ts
 │   │   │   ├── pages
-│   │   │   │   ├── Artificialisation.tsx
+│   │   │   │   ├── Artificialisation
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ArtifCalculation.tsx
+│   │   │   │   │   │   ├── ArtifChildLands.tsx
+│   │   │   │   │   │   ├── ArtifControls.tsx
+│   │   │   │   │   │   ├── ArtifExplorer.tsx
+│   │   │   │   │   │   ├── ArtifFluxDetail.tsx
+│   │   │   │   │   │   ├── ArtifKpiCards.tsx
+│   │   │   │   │   │   ├── ArtifNetFlux.tsx
+│   │   │   │   │   │   ├── ArtifRepartition.tsx
+│   │   │   │   │   │   ├── ArtifZonage.tsx
+│   │   │   │   │   │   ├── ArtificialisationZonage.tsx
+│   │   │   │   │   │   ├── SeuilsSchemas.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── context
+│   │   │   │   │   │   └── ArtificialisationContext.tsx
+│   │   │   │   │   └── index.tsx
 │   │   │   │   ├── Consommation
 │   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── ConsoComparison
-│   │   │   │   │   │   │   ├── ChartSection.tsx
-│   │   │   │   │   │   │   ├── SuggestedTerritories.tsx
-│   │   │   │   │   │   │   ├── TerritoryBadge.tsx
-│   │   │   │   │   │   │   ├── TerritorySelector.tsx
-│   │   │   │   │   │   │   ├── constants.tsx
-│   │   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   │   ├── ConsoAnnuelle.tsx
+│   │   │   │   │   │   ├── ConsoCarroyage.tsx
+│   │   │   │   │   │   ├── ConsoComparison.tsx
 │   │   │   │   │   │   ├── ConsoDemography.tsx
-│   │   │   │   │   │   ├── ConsoStats.tsx
+│   │   │   │   │   │   ├── ConsoInsee.tsx
+│   │   │   │   │   │   ├── ConsoMaps.tsx
 │   │   │   │   │   │   ├── ConsommationControls.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── context
 │   │   │   │   │   │   └── ConsommationControlsContext.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── useComparisonTerritories.ts
-│   │   │   │   │   │   ├── useConsoData.ts
-│   │   │   │   │   │   └── useNearestTerritories.ts
+│   │   │   │   │   │   └── useConsoData.ts
 │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   ├── types
+│   │   │   │   │   └── types
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── Downloads
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ComparisonTerritoriesCallout.tsx
+│   │   │   │   │   │   ├── ComparisonTerritoriesSettings.tsx
 │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   └── utils
-│   │   │   │   │       └── territoryTransform.ts
-│   │   │   │   ├── Downloads.tsx
-│   │   │   │   ├── Friches.tsx
-│   │   │   │   ├── Impermeabilisation.tsx
+│   │   │   │   │   ├── editor
+│   │   │   │   │   │   ├── ContentZone.tsx
+│   │   │   │   │   │   ├── EditorTopBar.tsx
+│   │   │   │   │   │   ├── ReportEditor.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── useReportComparisonTerritories.ts
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── list
+│   │   │   │   │   │   ├── EmptyState.tsx
+│   │   │   │   │   │   ├── LoginPrompt.tsx
+│   │   │   │   │   │   ├── ReportCard.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── modals
+│   │   │   │   │   │   ├── CreateReportForm.tsx
+│   │   │   │   │   │   ├── CreateReportModal.tsx
+│   │   │   │   │   │   ├── DeleteReportModal.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── styles
+│   │   │   │   │   │   ├── ReportStyles.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── templates
+│   │   │   │   │       ├── AvailableDataPage.tsx
+│   │   │   │   │       ├── CoverPage.tsx
+│   │   │   │   │       ├── RapportComplet.tsx
+│   │   │   │   │       ├── RapportLocal.tsx
+│   │   │   │   │       ├── ReportPrintPage.tsx
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── Friches
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── FrichesCharts.tsx
+│   │   │   │   │   │   ├── FrichesDataTable.tsx
+│   │   │   │   │   │   ├── FrichesExternalServices.tsx
+│   │   │   │   │   │   ├── FrichesKpiCards.tsx
+│   │   │   │   │   │   ├── FrichesMaps.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── context
+│   │   │   │   │   │   └── FrichesContext.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── Impermeabilisation
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ImperChildLands.tsx
+│   │   │   │   │   │   ├── ImperControls.tsx
+│   │   │   │   │   │   ├── ImperExplorer.tsx
+│   │   │   │   │   │   ├── ImperFluxDetail.tsx
+│   │   │   │   │   │   ├── ImperKpiCards.tsx
+│   │   │   │   │   │   ├── ImperNetFlux.tsx
+│   │   │   │   │   │   ├── ImperRepartition.tsx
+│   │   │   │   │   │   ├── ImperZonage.tsx
+│   │   │   │   │   │   ├── ImpermeabilisationZonage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── context
+│   │   │   │   │   │   └── ImpermeabilisationContext.tsx
+│   │   │   │   │   └── index.tsx
 │   │   │   │   ├── LogementVacant
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── LogementVacantAutorisation.tsx
 │   │   │   │   │   │   ├── LogementVacantConso.tsx
-│   │   │   │   │   │   └── LogementVacantTaux.tsx
+│   │   │   │   │   │   ├── LogementVacantExternalServices.tsx
+│   │   │   │   │   │   ├── LogementVacantKpiCards.tsx
+│   │   │   │   │   │   ├── LogementVacantMaps.tsx
+│   │   │   │   │   │   ├── LogementVacantTaux.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── context
+│   │   │   │   │   │   └── LogementVacantContext.tsx
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   └── types
 │   │   │   │   │       └── index.ts
-│   │   │   │   ├── RapportLocal.tsx
-│   │   │   │   ├── Synthese.tsx
-│   │   │   │   └── Trajectoires.tsx
+│   │   │   │   ├── RapportLocal
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── ResidencesSecondaires
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── RSEvolution.tsx
+│   │   │   │   │   │   ├── RSKpis.tsx
+│   │   │   │   │   │   ├── RSMap.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── Synthese
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── DiagnosticsHub.tsx
+│   │   │   │   │   │   ├── SyntheseArtif.tsx
+│   │   │   │   │   │   ├── SyntheseConso.tsx
+│   │   │   │   │   │   ├── SyntheseFriche.tsx
+│   │   │   │   │   │   ├── SyntheseLogementVacant.tsx
+│   │   │   │   │   │   ├── TerritoryIdentityCard.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── Trajectoires
+│   │   │   │       ├── components
+│   │   │   │       │   ├── TrajectoiresBulletChart.tsx
+│   │   │   │       │   ├── TrajectoiresChildrenStats.tsx
+│   │   │   │       │   ├── TrajectoiresCustomTargetModal.tsx
+│   │   │   │       │   ├── TrajectoiresHierarchy.tsx
+│   │   │   │       │   ├── TrajectoiresObjectifs.tsx
+│   │   │   │       │   ├── TrajectoiresProjection.tsx
+│   │   │   │       │   └── index.ts
+│   │   │   │       ├── context
+│   │   │   │       │   └── TrajectoiresContext.tsx
+│   │   │   │       └── index.tsx
 │   │   │   └── ui
 │   │   │       ├── ActionCard.tsx
+│   │   │       ├── Badge.tsx
+│   │   │       ├── BaseCard.tsx
 │   │   │       ├── Button.tsx
 │   │   │       ├── ButtonToggleNavbar.tsx
 │   │   │       ├── CallToAction.tsx
@@ -1603,17 +1770,28 @@
 │   │   │       ├── Drawer.tsx
 │   │   │       ├── ErrorBoundary.tsx
 │   │   │       ├── ExternalServiceTile.tsx
-│   │   │       ├── Guide.tsx
+│   │   │       ├── Feedback.tsx
 │   │   │       ├── GuideContent.tsx
+│   │   │       ├── IconBadge.tsx
+│   │   │       ├── Kpi.tsx
 │   │   │       ├── Loader.tsx
+│   │   │       ├── MailleIndicator.tsx
 │   │   │       ├── Notice.tsx
 │   │   │       ├── Pagination.tsx
+│   │   │       ├── PeriodSelector.tsx
 │   │   │       ├── RouteWrapper.tsx
 │   │   │       ├── SearchBar.tsx
-│   │   │       └── SearchInput.tsx
+│   │   │       ├── SearchInput.tsx
+│   │   │       ├── Tag.tsx
+│   │   │       ├── Timeline.tsx
+│   │   │       ├── Toast.tsx
+│   │   │       ├── Triptych.tsx
+│   │   │       └── ZoneTypeBadge.tsx
 │   │   ├── hooks
 │   │   │   ├── useArtificialisation.ts
 │   │   │   ├── useArtificialisationZonage.ts
+│   │   │   ├── useAuthGuard.ts
+│   │   │   ├── useComparisonTerritories.ts
 │   │   │   ├── useConsentManagement.tsx
 │   │   │   ├── useDataTable.ts
 │   │   │   ├── useDebounce.ts
@@ -1622,8 +1800,10 @@
 │   │   │   ├── useImpermeabilisationZonage.ts
 │   │   │   ├── useMatomoTracking.ts
 │   │   │   ├── useMillesime.ts
+│   │   │   ├── useNearestTerritories.ts
 │   │   │   ├── usePageTitle.ts
 │   │   │   ├── useReportDrafts.ts
+│   │   │   ├── useTypewriterAnimation.ts
 │   │   │   └── useWindowSize.ts
 │   │   ├── index.js
 │   │   ├── react-roots.tsx
@@ -1636,7 +1816,9 @@
 │   │   │       ├── land.ts
 │   │   │       ├── land_friches.ts
 │   │   │       ├── land_friches_statut.ts
+│   │   │       ├── landartiffluxindex.ts
 │   │   │       ├── landartifstockindex.ts
+│   │   │       ├── landimperfluxindex.ts
 │   │   │       ├── landimperstockindex.ts
 │   │   │       ├── project.ts
 │   │   │       ├── project_download_links.ts
@@ -1644,8 +1826,10 @@
 │   │   ├── store
 │   │   │   ├── navbarSlice.ts
 │   │   │   ├── pdfExportSlice.ts
-│   │   │   ├── projectSlice.ts
 │   │   │   └── store.ts
+│   │   ├── theme
+│   │   │   ├── index.ts
+│   │   │   └── light.ts
 │   │   ├── types
 │   │   │   ├── LandType.ts
 │   │   │   └── ZonageType.ts
@@ -1653,7 +1837,8 @@
 │   │       ├── csrf.ts
 │   │       ├── formatUtils.test.ts
 │   │       ├── formatUtils.ts
-│   │       └── landUtils.ts
+│   │       ├── landUtils.ts
+│   │       └── projectUrls.ts
 │   ├── styles
 │   │   ├── index.css
 │   │   └── map.css
@@ -1711,13 +1896,13 @@
 ├── home
 │   ├── __init__.py
 │   ├── admin.py
+│   ├── api.py
 │   ├── apps.py
 │   ├── forms.py
 │   ├── management
 │   │   ├── __init__.py
 │   │   └── commands
-│   │       ├── __init__.py
-│   │       └── maintenance.py
+│   │       └── __init__.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_frequentlyaskedquestion_is_published.py
@@ -1739,6 +1924,8 @@
 │   │   ├── 0018_alter_satisfactionformentry_nps_and_more.py
 │   │   ├── 0019_remove_alivetimestamp.py
 │   │   ├── 0020_alter_contactform_status.py
+│   │   ├── 0021_pagefeedback.py
+│   │   ├── 0022_alter_pagefeedback_id.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── services.py
@@ -1748,15 +1935,19 @@
 │   │       │   └── home.css
 │   │       └── img
 │   │           ├── OCSGE.png
+│   │           ├── actors.jpg
 │   │           ├── cerema-logo.png
 │   │           ├── ign-logo.png
 │   │           ├── insee-geo-portail-urbanisme-logo.png
 │   │           ├── logo-cerema.svg
 │   │           ├── logo-gpu.png
 │   │           ├── logo-ign.svg
-│   │           ├── loi_climat_logo.png
+│   │           ├── logoInseeFr.svg
 │   │           ├── maintenance.svg
 │   │           ├── nps.svg
+│   │           ├── product-1.jpg
+│   │           ├── product-2.jpg
+│   │           ├── product-3.jpg
 │   │           ├── sparte-diagnostic.png
 │   │           ├── sparte-pilotage.png
 │   │           ├── sparte-territoire.png
@@ -1786,7 +1977,6 @@
 │       ├── AccessView.py
 │       ├── AliveView.py
 │       ├── ContactView.py
-│       ├── DownloadView.py
 │       ├── HomeRapportLocalView.py
 │       ├── HomeView.py
 │       ├── LegalNoticeView.py
@@ -1798,8 +1988,7 @@
 │       ├── RobotView.py
 │       ├── SatisfactionView.py
 │       ├── StatsView.py
-│       ├── __init__.py
-│       └── download_package_request.py
+│       └── __init__.py
 ├── jest.config.js
 ├── jest.setup.js
 ├── manage.py
@@ -1826,8 +2015,7 @@
 │   │   ├── ProjectDownloadLinkView.py
 │   │   ├── RecordDownloadRequestAPIView.py
 │   │   ├── ReportDraftViewSet.py
-│   │   ├── UpdateProjectComparisonLandsAPIView.py
-│   │   ├── UpdateProjectTarget2031APIView.py
+│   │   ├── UserLandPreferenceAPIView.py
 │   │   └── __init__.py
 │   ├── apps.py
 │   ├── charts
@@ -1847,6 +2035,9 @@
 │   │   │   ├── ArtifNetFluxChart.py
 │   │   │   ├── ArtifSyntheseChart.py
 │   │   │   └── __init__.py
+│   │   ├── base_charts
+│   │   │   ├── BaseOcsgeMap.py
+│   │   │   └── __init__.py
 │   │   ├── base_project_chart.py
 │   │   ├── consommation
 │   │   │   ├── AnnualConsoComparisonChart.py
@@ -1859,6 +2050,34 @@
 │   │   ├── demography
 │   │   │   ├── PopulationConsoComparisonChart.py
 │   │   │   ├── PopulationConsoProgressionChart.py
+│   │   │   └── __init__.py
+│   │   ├── dossier_complet
+│   │   │   ├── DcBivariateConsoMap.py
+│   │   │   ├── DcConsoComparisonBubbleChart.py
+│   │   │   ├── DcCreationsEntreprisesChart.py
+│   │   │   ├── DcCspRepartitionChart.py
+│   │   │   ├── DcEmploiChomageChart.py
+│   │   │   ├── DcEmploiConsoComparisonChart.py
+│   │   │   ├── DcEmploiConsoMap.py
+│   │   │   ├── DcEmploiVsConsoChart.py
+│   │   │   ├── DcEquipementsBpeChart.py
+│   │   │   ├── DcInseeMap.py
+│   │   │   ├── DcLogementConsoComparisonChart.py
+│   │   │   ├── DcLogementConsoMap.py
+│   │   │   ├── DcLogementConstructionChart.py
+│   │   │   ├── DcLogementParcChart.py
+│   │   │   ├── DcLogementVsConsoChart.py
+│   │   │   ├── DcMenagesConsoComparisonChart.py
+│   │   │   ├── DcMenagesConsoMap.py
+│   │   │   ├── DcMenagesEvolutionChart.py
+│   │   │   ├── DcPopulationConsoMap.py
+│   │   │   ├── DcPopulationEvolutionChart.py
+│   │   │   ├── DcPopulationPyramidChart.py
+│   │   │   ├── DcPopulationVsConsoChart.py
+│   │   │   ├── DcResidencesSecondairesChart.py
+│   │   │   ├── DcResidencesSecondairesConsoMap.py
+│   │   │   ├── DcRevenusPauvreteChart.py
+│   │   │   ├── DcTourismeChart.py
 │   │   │   └── __init__.py
 │   │   ├── impermeabilisation
 │   │   │   ├── ImperByCouverturePieChart.py
@@ -2023,10 +2242,10 @@
 │   │   ├── 0120_merge_20251216_1455.py
 │   │   ├── 0121_target_2031_nullable.py
 │   │   ├── 0122_alter_historicalproject_land_type_and_more.py
+│   │   ├── 0123_remove_project_from_report_draft.py
+│   │   ├── 0124_remove_rnupackagerequest_rnu_package_and_more.py
 │   │   └── __init__.py
 │   ├── models
-│   │   ├── RNUPackage.py
-│   │   ├── RNUPackageRequest.py
 │   │   ├── __init__.py
 │   │   ├── create.py
 │   │   ├── enums.py
@@ -2035,6 +2254,7 @@
 │   │   ├── project_base.py
 │   │   ├── report_draft.py
 │   │   ├── request.py
+│   │   ├── user_land_preference.py
 │   │   └── utils.py
 │   ├── permissions.py
 │   ├── serializers.py
@@ -2065,6 +2285,7 @@
 │   │           ├── list.html
 │   │           ├── logement_vacant.html
 │   │           ├── rapport_local.html
+│   │           ├── residences_secondaires.html
 │   │           ├── synthese.html
 │   │           └── trajectoires.html
 │   ├── templatetags
@@ -2082,7 +2303,8 @@
 │   │   ├── test_imper_flux_by_couverture.py
 │   │   ├── test_imper_flux_by_usage.py
 │   │   ├── test_imper_net_flux_chart.py
-│   │   └── test_logement_vacant_charts.py
+│   │   ├── test_logement_vacant_charts.py
+│   │   └── test_user_land_preference_api.py
 │   ├── urls.py
 │   ├── utils.py
 │   └── views
@@ -2096,6 +2318,7 @@
 │       │   ├── DiagnosticFrichesView.py
 │       │   ├── DiagnosticImpermeabilisationView.py
 │       │   ├── DiagnosticLogementVacantView.py
+│       │   ├── DiagnosticResidencesSecondairesView.py
 │       │   ├── DiagnosticSynthesisView.py
 │       │   ├── DiagnosticTrajectoiresView.py
 │       │   ├── DiagnostictRapportLocalView.py
@@ -2104,19 +2327,11 @@
 ├── public_data
 │   ├── __init__.py
 │   ├── admin
-│   │   ├── CommuneAdmin.py
-│   │   ├── DepartementAdmin.py
-│   │   ├── EpciAdmin.py
 │   │   ├── LandModelAdmin.py
-│   │   ├── RegionAdmin.py
-│   │   ├── ScotAdmin.py
-│   │   ├── SudocuhAdmin.py
-│   │   ├── SudocuhEpciAdmin.py
 │   │   ├── TerritorialisationObjectifAdmin.py
 │   │   └── __init__.py
 │   ├── apps.py
 │   ├── domain
-│   │   ├── ClassCacher.py
 │   │   ├── __init__.py
 │   │   ├── consommation
 │   │   │   ├── __init__.py
@@ -2149,9 +2364,6 @@
 │   │   │       └── stats
 │   │   │           ├── BasePopulationStatsService.py
 │   │   │           └── __init__.py
-│   │   ├── planning_competency
-│   │   │   ├── PlanningCompetencyService.py
-│   │   │   └── __init__.py
 │   │   └── urbanisme
 │   │       ├── autorisation_logement
 │   │       │   ├── entity
@@ -2173,7 +2385,6 @@
 │   ├── fixtures
 │   │   └── territorialisation_objectif.json
 │   ├── infra
-│   │   ├── PickleClassCacher.py
 │   │   ├── consommation
 │   │   │   ├── __init__.py
 │   │   │   ├── progression
@@ -2208,10 +2419,6 @@
 │   │   │       └── stats
 │   │   │           ├── PopulationStatsService.py
 │   │   │           └── __init__.py
-│   │   ├── planning_competency
-│   │   │   ├── PlanningCompetencyServiceSudocuh.py
-│   │   │   ├── __init__.py
-│   │   │   └── tests.py
 │   │   └── urbanisme
 │   │       ├── autorisation_logement
 │   │       │   └── progression
@@ -2229,8 +2436,7 @@
 │   ├── management
 │   │   ├── __init__.py
 │   │   └── commands
-│   │       ├── __init__.py
-│   │       └── import_sudocuh.py
+│   │       └── __init__.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_alter_communessybarval_mpoly.py
@@ -2441,25 +2647,21 @@
 │   │   ├── 0201_landartifflux_landartiffluxcouverturecomposition_and_more.py
 │   │   ├── 0202_delete_similarterritories.py
 │   │   ├── 0203_territorialisationobjectif.py
+│   │   ├── 0204_delete_sudocuh_delete_sudocuhepci.py
+│   │   ├── 0205_remove_departement_region_remove_epci_departements_and_more.py
+│   │   ├── 0206_landcarroyagebounds_landdcactivitechomage_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── administration
 │   │   │   ├── AdminRef.py
-│   │   │   ├── Commune.py
-│   │   │   ├── Departement.py
-│   │   │   ├── Epci.py
-│   │   │   ├── Land.py
-│   │   │   ├── LandMixin.py
+│   │   │   ├── LandGeoJSON.py
 │   │   │   ├── LandModel.py
 │   │   │   ├── Nation.py
-│   │   │   ├── Region.py
-│   │   │   ├── Scot.py
 │   │   │   ├── __init__.py
-│   │   │   ├── enums
-│   │   │   │   ├── ConsommationCorrectionStatus.py
-│   │   │   │   └── __init__.py
-│   │   │   └── tests.py
+│   │   │   └── enums
+│   │   │       ├── ConsommationCorrectionStatus.py
+│   │   │       └── __init__.py
 │   │   ├── artificialisation
 │   │   │   ├── ArtifZonage.py
 │   │   │   ├── ArtifZonageIndex.py
@@ -2480,7 +2682,9 @@
 │   │   │       ├── LandArtifFluxUsageComposition.py
 │   │   │       ├── LandArtifFluxUsageCompositionIndex.py
 │   │   │       └── __init__.py
+│   │   ├── bivariate.py
 │   │   ├── consommation
+│   │   │   ├── LandCarroyageBounds.py
 │   │   │   ├── LandConso.py
 │   │   │   ├── LandConsoComparison.py
 │   │   │   ├── LandConsoStats.py
@@ -2489,7 +2693,20 @@
 │   │   │   ├── LandPop.py
 │   │   │   ├── LandPopStats.py
 │   │   │   ├── LandPopulationDensity.py
+│   │   │   ├── LandSocioEconomicStats.py
 │   │   │   ├── NearestTerritories.py
+│   │   │   └── __init__.py
+│   │   ├── dossier_complet
+│   │   │   ├── LandDcActiviteChomage.py
+│   │   │   ├── LandDcCategoriesSocioprofessionnelles.py
+│   │   │   ├── LandDcCreationsEntreprises.py
+│   │   │   ├── LandDcEmploisLieuTravail.py
+│   │   │   ├── LandDcEquipementsBpe.py
+│   │   │   ├── LandDcLogement.py
+│   │   │   ├── LandDcMenages.py
+│   │   │   ├── LandDcPopulation.py
+│   │   │   ├── LandDcRevenusPauvrete.py
+│   │   │   ├── LandDcTourisme.py
 │   │   │   └── __init__.py
 │   │   ├── enums.py
 │   │   ├── impermeabilisation
@@ -2515,7 +2732,6 @@
 │   │   │       ├── LandImperStockUsageCompositionIndex.py
 │   │   │       └── __init__.py
 │   │   ├── mixins.py
-│   │   ├── sudocuh.py
 │   │   ├── territorialisation
 │   │   │   ├── TerritorialisationObjectif.py
 │   │   │   └── __init__.py
@@ -2561,8 +2777,10 @@
 │   └── views.py
 ├── pyproject.toml
 ├── pytest.ini
-├── required_parameters.json
 ├── scalingo.json
+├── scripts
+│   ├── restore_db.sh
+│   └── setup_env.sh
 ├── sonar-project.properties
 ├── static
 │   ├── assets
@@ -2848,7 +3066,9 @@
 │   │   └── site.webmanifest
 │   ├── favicon.ico
 │   └── img
+│       ├── cover-image.png
 │       ├── logo-mon-diagnostic-artificialisation.svg
+│       ├── og-image.png
 │       └── republique-francaise-logo.svg
 ├── templates
 │   ├── footer.html
@@ -2909,7 +3129,6 @@
 │   │       └── signup.html
 │   ├── tests
 │   │   ├── __init__.py
-│   │   ├── parameters.json
 │   │   ├── test_completion_form.py
 │   │   ├── test_signin.py
 │   │   ├── test_signup.py
@@ -2926,6 +3145,7 @@
 │       └── __init__.py
 ├── utils
 │   ├── __init__.py
+│   ├── antispam.py
 │   ├── apps.py
 │   ├── colors.py
 │   ├── commands.py
@@ -2962,4 +3182,4 @@
 │           ├── RedirectURLMixin.py
 │           └── __init__.py
 └── webpack.config.js
-340 directories, 2624 files
+367 directories, 2817 files
