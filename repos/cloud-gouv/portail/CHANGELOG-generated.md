@@ -1,16 +1,16 @@
 ## Changelog : portail (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au portail au cours des 30 derniers jours. Les principales évolutions concernent la correction de bugs liés à la configuration TLS, l'ajout de tests d'intégration pour le proxy upstream Tinyproxy et l'initialisation de la version 1 des règles d'accès (ACL).
+Ce mois-ci, les améliorations se concentrent sur la stabilisation et l'ajout de tests pour le proxy upstream Tinyproxy, ainsi que sur la correction de bugs liés à la configuration TLS et à la gestion des erreurs. Une initialisation de la version 1 des règles d'accès (ACL) a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la configuration correcte du nom de serveur TLS. [#75](https://github.com/cloud-gouv/portail/issues/75)
-- Ajout de tests d'intégration de bout en bout (E2E) pour le proxy upstream Tinyproxy. [#70](https://github.com/cloud-gouv/portail/issues/70)
-- Initialisation de la version 1 des règles d'accès (ACL). [#76](https://github.com/cloud-gouv/portail/issues/76)
+- Ajout d'un test E2E pour le proxy upstream Tinyproxy, permettant de valider son fonctionnement. [#70](https://github.com/cloud-gouv/portail/issues/70)
 
 ### Évolutions techniques
-- Ajout de commandes Cargo pour faciliter l'intégration continue (CI). [#68](https://github.com/cloud-gouv/portail/issues/68)
-- Correction d'un `unwrap` potentiellement problématique dans le code. [#76](https://github.com/cloud-gouv/portail/issues/76)
+- Correction d'une erreur où le nom du serveur TLS n'était pas correctement configuré. [#75](https://github.com/cloud-gouv/portail/issues/75)
+- Suppression d'un `unwrap` potentiellement problématique, améliorant la robustesse du code. [#76](https://github.com/cloud-gouv/portail/issues/76)
+- Ajout de commandes CI Cargo pour faciliter l'intégration continue. [#68](https://github.com/cloud-gouv/portail/issues/68)
+- Initialisation de la version 1 des règles d'accès (ACL).
 
 ### Autres changements
-- Mise à jour de la dépendance `zlink` vers la version 0.4.1 (mise à jour automatique).
+- Mise à jour de la dépendance `zlink` vers la version 0.4.1. (mise à jour automatique)
