@@ -1,28 +1,16 @@
-## Changelog : dialog (30 derniers jours)
+## Changelog : dialog (30 derniers jours, au 18 mai 2026)
 
 ### Résumé
-Les dernières mises à jour de dialog se concentrent sur l'amélioration de l'intégration des données de circulation, notamment via Literalis et la BDTOPO. Des corrections de bugs et des améliorations de l'API ont également été apportées, ainsi que des optimisations pour la gestion des données et l'expérience utilisateur.
+Ce mois-ci, les améliorations se concentrent sur l'importation et le traitement des données réglementaires, notamment via le nouveau flux Literalis et l'optimisation du traitement des données DATEX. Des corrections ont également été apportées pour améliorer la stabilité et la performance de l'application. Enfin, des améliorations de l'interface utilisateur ont été réalisées, notamment sur la carte.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'autocomplétion via la BDTOPO [#1688](https://github.com/MTES-MCT/dialog/issues/1688).
-- Tri des tronçons affichés sur la carte par ordre d'importance [#1672](https://github.com/MTES-MCT/dialog/issues/1672).
-- Correction de l'affichage du bandeau "notice" [#1678](https://github.com/MTES-MCT/dialog/issues/1678).
-- Intégration des données Literalis pour les Côtes d'Armor [#1681](https://github.com/MTES-MCT/dialog/issues/1681).
-- Amélioration du contrôle des variables pour les templates [#1652](https://github.com/MTES-MCT/dialog/issues/1652).
+- Amélioration de l'importation des données Literalis, avec correction de bugs et configuration de la CI pour le nouveau flux. [#1724](https://github.com/MTES-MCT/dialog/issues/1724), [#1770](https://github.com/MTES-MCT/dialog/issues/1770), [#1773](https://github.com/MTES-MCT/dialog/issues/1773), [#1792](https://github.com/MTES-MCT/dialog/issues/1792)
+- Sur la carte, la sélection par défaut est maintenant uniquement 'Circulation interdite', améliorant l'expérience utilisateur. [#1787](https://github.com/MTES-MCT/dialog/issues/1787)
+- Envoi de notifications d'intégration via Mattermost pour une meilleure communication. [#1797](https://github.com/MTES-MCT/dialog/issues/1797)
 
 ### Évolutions techniques
-- Mise en place d'une transaction pour l'import Literalis afin d'assurer la cohérence des données [#1686](https://github.com/MTES-MCT/dialog/issues/1686).
-- Amélioration du rollback Literalis [#1693](https://github.com/MTES-MCT/dialog/issues/1693).
-- Gestion des erreurs applicatives lors de l'import Literalis : l'import continue même en cas d'erreur [#1697](https://github.com/MTES-MCT/dialog/issues/1697).
-- Configuration du client Literalis pour augmenter le timeout et les tentatives de reconnexion [#1682](https://github.com/MTES-MCT/dialog/issues/1682).
-- Suppression de la notion de rôles utilisateurs [#1698](https://github.com/MTES-MCT/dialog/issues/1698).
-- Suppression de la mise à jour BDTOPO de la CI [#1685](https://github.com/MTES-MCT/dialog/issues/1685).
-- Ajout d'une documentation plus complète pour l'API concernant les règles permanentes [#1683](https://github.com/MTES-MCT/dialog/issues/1683).
-- Augmentation de la durée de vie des tokens à 1 mois [#1671](https://github.com/MTES-MCT/dialog/issues/1671).
-- Exclure les polygones lors de l'import Literalis [#1699](https://github.com/MTES-MCT/dialog/issues/1699).
-
-### Autres changements
-- Ajout d'une crontask pour mettre à jour les statuts de l'IGN [#1694](https://github.com/MTES-MCT/dialog/issues/1694).
-- Transfert de propriété de l'organisation [#1701](https://github.com/MTES-MCT/dialog/issues/1701).
-- Migration des contacts du site web vers Zammad [#1680](https://github.com/MTES-MCT/dialog/issues/1680).
-- Correction d'une faute de frappe [#1675](https://github.com/MTES-MCT/dialog/issues/1675).
+- Optimisation du traitement des données DATEX pour résoudre les problèmes de mémoire liés à la quantité de données. [#1798](https://github.com/MTES-MCT/dialog/issues/1798)
+- Streaming de la réponse DATEX pour une meilleure performance. [#1771](https://github.com/MTES-MCT/dialog/issues/1771)
+- Correction de la CI pour assurer le bon fonctionnement des pipelines. [#1767](https://github.com/MTES-MCT/dialog/issues/1767)
+- Correction d'une utilisation de fonction dépréciée. [#1763](https://github.com/MTES-MCT/dialog/issues/1763)
+- POC de génération de fichier statique pour l'API des réglementations. [#1772](https://github.com/MTES-MCT/dialog/issues/1772)

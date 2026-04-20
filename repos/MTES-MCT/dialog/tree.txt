@@ -12,6 +12,7 @@
 │       ├── bdtopo_migrate.yml
 │       ├── ci.yml
 │       ├── grist_sync.yml
+│       ├── ign_sync_report_statuses.yml
 │       ├── litteralis_import.yml
 │       ├── metabase_export.yml
 │       └── metabase_migrate.yml
@@ -527,6 +528,7 @@
 ├── scalingo.json
 ├── src
 │   ├── Application
+│   │   ├── ApiClientSecretHasherInterface.php
 │   │   ├── ApiOrganizationFetcherInterface.php
 │   │   ├── AsyncCommandInterface.php
 │   │   ├── Cifs
@@ -580,7 +582,22 @@
 │   │   ├── LineSectionMakerInterface.php
 │   │   ├── MailerInterface.php
 │   │   ├── MapGeocoderInterface.php
+│   │   ├── MattermostInterface.php
 │   │   ├── Organization
+│   │   │   ├── ApiClient
+│   │   │   │   ├── Command
+│   │   │   │   │   ├── CreateApiClientForUserCommand.php
+│   │   │   │   │   ├── CreateApiClientForUserCommandHandler.php
+│   │   │   │   │   ├── DeleteApiClientCommand.php
+│   │   │   │   │   ├── DeleteApiClientCommandHandler.php
+│   │   │   │   │   ├── RegenerateApiClientSecretCommand.php
+│   │   │   │   │   └── RegenerateApiClientSecretCommandHandler.php
+│   │   │   │   ├── Query
+│   │   │   │   │   ├── GetOrganizationApiClientsQuery.php
+│   │   │   │   │   └── GetOrganizationApiClientsQueryHandler.php
+│   │   │   │   └── View
+│   │   │   │       ├── ApiClientCreatedView.php
+│   │   │   │       └── ApiClientView.php
 │   │   │   ├── Command
 │   │   │   │   ├── GetOrCreateOrganizationBySiretCommand.php
 │   │   │   │   ├── GetOrCreateOrganizationBySiretCommandHandler.php
@@ -633,6 +650,8 @@
 │   │   │   │   ├── DuplicateMeasureCommandHandler.php
 │   │   │   │   ├── DuplicateRegulationCommand.php
 │   │   │   │   ├── DuplicateRegulationCommandHandler.php
+│   │   │   │   ├── GenerateDatexCommand.php
+│   │   │   │   ├── GenerateDatexCommandHandler.php
 │   │   │   │   ├── Location
 │   │   │   │   │   ├── DeleteLocationCommand.php
 │   │   │   │   │   ├── DeleteLocationCommandHandler.php
@@ -688,6 +707,7 @@
 │   │   │   │       └── SaveVehicleSetCommandHandler.php
 │   │   │   ├── DTO
 │   │   │   │   └── CifsFilterSet.php
+│   │   │   ├── DatexGeneratorInterface.php
 │   │   │   ├── Query
 │   │   │   │   ├── GetAdministratorsQuery.php
 │   │   │   │   ├── GetAdministratorsQueryHandler.php
@@ -770,6 +790,9 @@
 │   │   ├── RoadGeocoderInterface.php
 │   │   ├── RoadSectionMakerInterface.php
 │   │   ├── Statistics
+│   │   │   ├── Command
+│   │   │   │   ├── RecordApiUsageCommand.php
+│   │   │   │   └── RecordApiUsageCommandHandler.php
 │   │   │   └── Query
 │   │   │       ├── GetOrganizationsGeometriesQuery.php
 │   │   │       └── GetOrganizationsGeometriesQueryHandler.php
@@ -874,7 +897,8 @@
 │   │   │   │   └── Repository
 │   │   │   │       └── EstablishmentRepositoryInterface.php
 │   │   │   ├── Exception
-│   │   │   │   └── ApiClientNotFoundException.php
+│   │   │   │   ├── ApiClientNotFoundException.php
+│   │   │   │   └── UserAlreadyHasApiClientForOrganizationException.php
 │   │   │   ├── MailingList
 │   │   │   │   ├── Exception
 │   │   │   │   │   └── MailingListNotFoundException.php
@@ -961,7 +985,9 @@
 │   │   │   │   └── CanViewRegulationDetail.php
 │   │   │   └── StorageRegulationOrder.php
 │   │   ├── Statistics
+│   │   │   ├── ApiUsageDaily.php
 │   │   │   └── Repository
+│   │   │       ├── ApiUsageDailyRepositoryInterface.php
 │   │   │       └── StatisticsRepositoryInterface.php
 │   │   └── User
 │   │       ├── Enum
@@ -1019,6 +1045,7 @@
 │   ├── Infrastructure
 │   │   ├── Adapter
 │   │   │   ├── APIAdresseGeocoder.php
+│   │   │   ├── ApiClientSecretHasher.php
 │   │   │   ├── ApiOrganizationFetcher.php
 │   │   │   ├── BdTopoRoadGeocoder.php
 │   │   │   ├── BdTopoStreetGeocoderAdapter.php
@@ -1026,6 +1053,7 @@
 │   │   │   ├── CommandBus.php
 │   │   │   ├── CsvExporter.php
 │   │   │   ├── DateUtils.php
+│   │   │   ├── DatexGenerator.php
 │   │   │   ├── IdFactory.php
 │   │   │   ├── IgnMapGeocoder.php
 │   │   │   ├── IgnReportClient.php
@@ -1033,6 +1061,7 @@
 │   │   │   ├── LaneSectionMaker.php
 │   │   │   ├── LineSectionMaker.php
 │   │   │   ├── Mailer.php
+│   │   │   ├── Mattermost.php
 │   │   │   ├── MetabaseEmbedFactory.php
 │   │   │   ├── OrganizationAdministrativeBoundariesGeometry.php
 │   │   │   ├── PasswordHasher.php
@@ -1086,6 +1115,11 @@
 │   │   │   ├── MyArea
 │   │   │   │   ├── Organization
 │   │   │   │   │   ├── AbstractOrganizationController.php
+│   │   │   │   │   ├── ApiClient
+│   │   │   │   │   │   ├── CreateApiClientController.php
+│   │   │   │   │   │   ├── DeleteApiClientController.php
+│   │   │   │   │   │   ├── ListApiClientsController.php
+│   │   │   │   │   │   └── RegenerateApiClientController.php
 │   │   │   │   │   ├── Fragments
 │   │   │   │   │   │   ├── GetOrganizationDetailFragmentController.php
 │   │   │   │   │   │   └── SaveOrganizationDetailFragmentController.php
@@ -1178,6 +1212,7 @@
 │   │   │   ├── Map
 │   │   │   │   └── MapFilterFormType.php
 │   │   │   ├── Organization
+│   │   │   │   ├── CreateApiClientFormType.php
 │   │   │   │   ├── MailingListFormType.php
 │   │   │   │   ├── OrganizationFormType.php
 │   │   │   │   ├── RegulationOrderTemplateFormType.php
@@ -1240,6 +1275,9 @@
 │   │   │   └── Litteralis
 │   │   │       ├── LitteralisClient.php
 │   │   │       ├── LitteralisClientFactory.php
+│   │   │       ├── LitteralisCommunicationClientFactory.php
+│   │   │       ├── LitteralisCommunicationExecutor.php
+│   │   │       ├── LitteralisCommunicationExtractor.php
 │   │   │       ├── LitteralisExecutor.php
 │   │   │       ├── LitteralisExtractor.php
 │   │   │       ├── LitteralisPeriodParser.php
@@ -1307,6 +1345,7 @@
 │   │   │       │   ├── Regulation.RegulationOrderRecord.orm.xml
 │   │   │       │   ├── Regulation.RegulationOrderTemplate.orm.xml
 │   │   │       │   ├── Regulation.StorageRegulationOrder.orm.xml
+│   │   │       │   ├── Statistics.ApiUsageDaily.orm.xml
 │   │   │       │   ├── User.Feedback.orm.xml
 │   │   │       │   ├── User.Invitation.orm.xml
 │   │   │       │   ├── User.News.orm.xml
@@ -1322,12 +1361,13 @@
 │   │   │       │   ├── Version20241216142341.php
 │   │   │       │   ├── Version20251127100000.php
 │   │   │       │   ├── Version20260129100000.php
-│   │   │       │   └── Version20260129110000.php
+│   │   │       │   ├── Version20260129110000.php
+│   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (152 files)
+│   │   │       │   └── Version*.php  (155 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
-│   │   │       │   │   └── ORMSchemaEventSubscriber.php
+│   │   │       │   │   └── ORMSchemaEventListener.php
 │   │   │       │   └── Functions
 │   │   │       │       └── ST_ApproximateMedialAxis.php
 │   │   │       └── Repository
@@ -1360,6 +1400,7 @@
 │   │   │           ├── SigningAuthority
 │   │   │           │   └── SigningAuthorityRepository.php
 │   │   │           ├── Statistics
+│   │   │           │   ├── ApiUsageDailyRepository.php
 │   │   │           │   └── StatisticsRepository.php
 │   │   │           └── User
 │   │   │               ├── FeedbackRepository.php
@@ -1397,6 +1438,7 @@
 │   │   │   │   ├── IgnSyncReportStatusesCommand.php
 │   │   │   │   ├── JOPImportCommand.php
 │   │   │   │   ├── LitteralisImportCommand.php
+│   │   │   │   ├── LitteralisImportCommunicationCommand.php
 │   │   │   │   ├── LoadFrCityDataCommand.php
 │   │   │   │   ├── PurgeUserTokensCommand.php
 │   │   │   │   ├── RunMetabaseExportCommand.php
@@ -1410,6 +1452,7 @@
 │   │   │   │   └── LitteralisCredentialsEnvVarProcessor.php
 │   │   │   └── EventSubscriber
 │   │   │       ├── ApIExceptionSubscriber.php
+│   │   │       ├── ApiUsageRecorderSubscriber.php
 │   │   │       ├── RateLimiterSubscriber.php
 │   │   │       └── WebProfilerXHRSubscriber.php
 │   │   ├── Twig
@@ -1465,8 +1508,6 @@
 │   ├── ecodesign_statement.html.twig
 │   ├── email
 │   │   ├── base.html.twig
-│   │   ├── litteralis
-│   │   │   └── support_report.html.twig
 │   │   ├── mailing_list
 │   │   │   └── mailing_list_email.html.twig
 │   │   └── user
@@ -1496,6 +1537,9 @@
 │   ├── my_area
 │   │   ├── organization
 │   │   │   ├── _tabs.html.twig
+│   │   │   ├── api_client
+│   │   │   │   ├── create.html.twig
+│   │   │   │   └── index.html.twig
 │   │   │   ├── detail.html.twig
 │   │   │   ├── fragments
 │   │   │   │   ├── _form.html.twig
@@ -1627,6 +1671,11 @@
 │   │       │   │   └── MapControllerTest.php
 │   │       │   ├── MyArea
 │   │       │   │   ├── Organization
+│   │       │   │   │   ├── ApiClient
+│   │       │   │   │   │   ├── CreateApiClientControllerTest.php
+│   │       │   │   │   │   ├── DeleteApiClientControllerTest.php
+│   │       │   │   │   │   ├── ListApiClientsControllerTest.php
+│   │       │   │   │   │   └── RegenerateApiClientControllerTest.php
 │   │       │   │   │   ├── Fragments
 │   │       │   │   │   │   ├── GetOrganizationDetailFragmentControllerTest.php
 │   │       │   │   │   │   └── SaveOrganizationDetailFragmentControllerTest.php
@@ -1764,6 +1813,13 @@
 │   │   │   │       └── DTO
 │   │   │   │           └── LitteralisCredentialsTest.php
 │   │   │   ├── Organization
+│   │   │   │   ├── ApiClient
+│   │   │   │   │   ├── Command
+│   │   │   │   │   │   ├── CreateApiClientForUserCommandHandlerTest.php
+│   │   │   │   │   │   ├── DeleteApiClientCommandHandlerTest.php
+│   │   │   │   │   │   └── RegenerateApiClientSecretCommandHandlerTest.php
+│   │   │   │   │   └── Query
+│   │   │   │   │       └── GetOrganizationApiClientsQueryHandlerTest.php
 │   │   │   │   ├── Command
 │   │   │   │   │   ├── GetOrCreateOrganizationBySiretCommandHandlerTest.php
 │   │   │   │   │   ├── SyncOrganizationAdministrativeBoundariesCommandHandlerTest.php
@@ -1792,6 +1848,7 @@
 │   │   │   │   │   ├── DeleteRegulationOrderStorageCommandHandlerTest.php
 │   │   │   │   │   ├── DuplicateMeasureCommandHandlerTest.php
 │   │   │   │   │   ├── DuplicateRegulationCommandHandlerTest.php
+│   │   │   │   │   ├── GenerateDatexCommandHandlerTest.php
 │   │   │   │   │   ├── Location
 │   │   │   │   │   │   ├── DeleteLocationCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteNamedStreetCommandHandlerTest.php
@@ -1850,6 +1907,8 @@
 │   │   │   │   └── View
 │   │   │   │       └── GeneralInfoViewTest.php
 │   │   │   ├── Statistics
+│   │   │   │   ├── Command
+│   │   │   │   │   └── RecordApiUsageCommandHandlerTest.php
 │   │   │   │   └── Query
 │   │   │   │       └── GetOrganizationsGeometriesQueryHandlerTest.php
 │   │   │   └── User
@@ -1963,14 +2022,20 @@
 │   │       │   ├── BdTopoStreetGeocoderAdapterTest.php
 │   │       │   ├── CifsExportClientTest.php
 │   │       │   ├── DateUtilsTest.php
+│   │       │   ├── DatexGeneratorTest.php
 │   │       │   ├── IgnMapGeocoderTest.php
 │   │       │   ├── IgnReportClientTest.php
 │   │       │   ├── LaneSectionMakerTest.php
+│   │       │   ├── MattermostTest.php
 │   │       │   ├── RoadSectionMakerTest.php
 │   │       │   ├── StorageTest.php
 │   │       │   └── StringUtilsTest.php
 │   │       ├── CRM
 │   │       │   └── GristClientTest.php
+│   │       ├── Controller
+│   │       │   └── Api
+│   │       │       └── Regulations
+│   │       │           └── GetRegulationsControllerTest.php
 │   │       ├── Data
 │   │       │   └── StorageArea
 │   │       │       └── StorageAreaMigrationGeneratorTest.php
@@ -1995,6 +2060,9 @@
 │   │       │   │   └── JOPTransformerTest.php
 │   │       │   └── Litteralis
 │   │       │       ├── LitteralisClientTest.php
+│   │       │       ├── LitteralisCommunicationClientFactoryTest.php
+│   │       │       ├── LitteralisCommunicationExecutorTest.php
+│   │       │       ├── LitteralisCommunicationExtractorTest.php
 │   │       │       ├── LitteralisExecutorTest.php
 │   │       │       ├── LitteralisExtractorTest.php
 │   │       │       ├── LitteralisPeriodParserTest.php
@@ -2024,6 +2092,7 @@
 │   │       │   │   ├── IgnSyncReportStatusesCommandTest.php
 │   │       │   │   ├── JOPImportCommandTest.php
 │   │       │   │   ├── LitteralisImportCommandTest.php
+│   │       │   │   ├── LitteralisImportCommunicationCommandTest.php
 │   │       │   │   ├── SyncLocationGeometriesCommandTest.php
 │   │       │   │   ├── SyncOrganizationsToGristCommandTest.php
 │   │       │   │   └── SyncUsersToGristCommandTest.php
@@ -2033,6 +2102,7 @@
 │   │       │   ├── DependencyInjectionTest.php
 │   │       │   └── EventSubscriber
 │   │       │       ├── ApIExceptionSubscriberTest.php
+│   │       │       ├── ApiUsageRecorderSubscriberTest.php
 │   │       │       ├── RateLimiterSubscriberTest.php
 │   │       │       └── WebProfilerXHRSubscriberTest.php
 │   │       ├── Twig
@@ -2044,6 +2114,8 @@
 │   │   ├── aires_de_stockage_test.csv
 │   │   ├── dialog_export.docx
 │   │   ├── file_too_large.pdf
+│   │   ├── litteralis
+│   │   │   └── savoie_communication_sample.json
 │   │   └── logo.png
 │   └── tmp
 │       └── .gitkeep
@@ -2066,4 +2138,4 @@
 │   ├── messages.fr.xlf
 │   └── validators.fr.xlf
 └── webpack.config.js
-413 directories, 1806 files
+428 directories, 1866 files
