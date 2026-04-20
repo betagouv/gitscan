@@ -1,35 +1,34 @@
-## Changelog : ui-kit (30 derniers jours, au 3 mai 2026)
+## Changelog : ui-kit (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience utilisateur avec l'ajout de nouveaux composants comme des menus déroulants avec sous-menus, des jauges d'utilisation du stockage et un formulaire de feedback. Des améliorations ont également été apportées aux icônes, aux polices et à la gestion de l'accessibilité. Enfin, des outils de déploiement et de génération d'icônes SVG ont été ajoutés pour faciliter le développement et la maintenance du projet.
+Ce mois-ci, l'équipe a apporté des améliorations significatives à la bibliothèque d'icônes, en automatisant leur génération à partir de Figma et en ajoutant un nouveau composant wrapper. De nouvelles fonctionnalités ont été ajoutées aux menus déroulants et contextuels, ainsi que de nouveaux composants pour la gestion du stockage, les formulaires de feedback et l'aide utilisateur. Des corrections de bugs et des améliorations de l'accessibilité ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout de sous-menus, d'une variante "tiny" et de la possibilité de maintenir les menus déroulants ouverts pour le composant `DropdownMenu` [#fd17ed1](https://github.com/suitenumerique/ui-kit/commit/fd17ed1).
-- Implémentation d'un filtre de recherche dans les menus déroulants (`SearchFilter`) [#eee1928](https://github.com/suitenumerique/ui-kit/commit/eee1928).
-- Ajout d'un composant de visualisation de l'utilisation du stockage (`StorageGauge`) [#376b582](https://github.com/suitenumerique/ui-kit/commit/376b582).
-- Nouveau composant de formulaire de feedback (`FeedbackForm`) [#6b44533](https://github.com/suitenumerique/ui-kit/commit/6b44533).
-- Ajout d'un menu d'aide avec un composant icône (`HelpMenu`) [#01fe3fe](https://github.com/suitenumerique/ui-kit/commit/01fe3fe).
-- Support du footer dans le panneau latéral (`layout`) [#873f83e](https://github.com/suitenumerique/ui-kit/commit/873f83e).
-- Possibilité de maintenir les éléments ouverts dans le menu contextuel (`ContextMenu`) [#7e838df](https://github.com/suitenumerique/ui-kit/commit/7e838df).
-- Correction d'un problème de sélection fantôme entre les nœuds dans l'interface utilisateur [#345e918](https://github.com/suitenumerique/ui-kit/commit/345e918).
-- Amélioration de l'accessibilité en masquant l'icône waffle des lecteurs d'écran [#3b50700](https://github.com/suitenumerique/ui-kit/commit/3b50700).
+- Ajout de sous-menus, d'une variante "tiny" et de la possibilité de maintenir les menus déroulants ouverts pour le composant `DropdownMenu`.
+- Implémentation d'un filtre déroulant avec recherche intégrée (`SearchFilter`).
+- Ajout d'un composant de visualisation de l'utilisation du stockage (`StorageGauge`).
+- Nouveau composant de formulaire de feedback (`FeedbackForm`).
+- Ajout d'un menu d'aide avec un composant icône (`HelpMenu`).
+- Amélioration de la gestion du focus et de la sémantique des menus déroulants.
+- Correction d'un problème de sélection fantôme entre les nœuds dans les arbres.
+- Masquage de l'icône "waffle" des lecteurs d'écran pour améliorer l'accessibilité.
+- Ajout de la possibilité de maintenir les éléments du menu contextuel ouverts (`keepOpen`).
+- Ajout du support du footer dans le panneau de gauche (`Layout`).
 
 ### Évolutions techniques
-- Ajout d'un script de génération d'icônes SVG à partir de Figma [#bd5ec5e](https://github.com/suitenumerique/ui-kit/commit/bd5ec5e).
-- Création d'un composant wrapper `IconSvg` pour les icônes SVG [#378cb38](https://github.com/suitenumerique/ui-kit/commit/378cb38).
-- Génération automatique de composants d'icônes SVG [#edf722a](https://github.com/suitenumerique/ui-kit/commit/edf722a).
-- Refonte de l'organisation des stories et exportation des icônes SVG [#852e3a2](https://github.com/suitenumerique/ui-kit/commit/852e3a2).
-- Mise en place d'un déploiement sur Scalingo et d'un environnement Docker local [#c0083ea](https://github.com/suitenumerique/ui-kit/commit/c0083ea).
-- Correction du chargement de la police Marianne sur Scalingo [#1e0a305](https://github.com/suitenumerique/ui-kit/commit/1e0a305).
-- Mise à jour des fichiers de police Marianne et du CSS associé [#f3fc147](https://github.com/suitenumerique/ui-kit/commit/f3fc147).
-- Harmonisation des poids de police et des styles textarea [#8a5e7e7](https://github.com/suitenumerique/ui-kit/commit/8a5e7e7).
-- Correction d'une erreur de lint dans les stories `IconSvg` [#fc3b7e3](https://github.com/suitenumerique/ui-kit/commit/fc3b7e3).
-- Correction d'une erreur de type dans les stories du composant `Modal` [#ce36a66](https://github.com/suitenumerique/ui-kit/commit/ce36a66).
+- Automatisation de la génération des composants SVG d'icônes à partir de Figma via un script dédié.
+- Création d'un composant wrapper `IconSvg` pour les icônes SVG.
+- Refonte de l'organisation des stories des icônes.
+- Ajout du support de déploiement sur Scalingo et configuration d'un environnement Docker local.
+- Correction du chargement de la police Marianne sur Scalingo.
+- Mise à jour des fichiers de police Marianne et du CSS associé.
+- Harmonisation des poids de police et des styles des textarea.
+- Correction d'une erreur de type dans les stories du composant `Modal` grâce à l'utilisation d'une union discriminée.
 
 ### Autres changements
-- Ajout de documentation sur le déploiement [#e249727](https://github.com/suitenumerique/ui-kit/commit/e249727).
-- Amélioration de la mise en page des stories du composant `AllIcons` [#144d463](https://github.com/suitenumerique/ui-kit/commit/144d463).
-- Mise à jour de la version du package [#b09f605](https://github.com/suitenumerique/ui-kit/commit/b09f605).
-- Mise à jour des tokens de style (bordure des formulaires, poids des polices) [#db7bb76](https://github.com/suitenumerique/ui-kit/commit/db7bb76).
-- Mise à jour des versions des paquets dans `package.json` et `yarn.lock` [#5402e2b](https://github.com/suitenumerique/ui-kit/commit/5402e2b).
-- Publication de la version `0.20.0` du package [#b09f605](https://github.com/suitenumerique/ui-kit/commit/b09f605).
+- Ajout de documentation sur le déploiement.
+- Mise à jour des versions des paquets dans `package.json` et `yarn.lock`.
+- Amélioration du layout des stories du composant `AllIcons`.
+- Correction d'une erreur de lint dans les stories du composant `IconSvg`.
+- Mise à jour du changelog.
+- Ajout de variables pour le `border-radius` des formulaires et correction des poids de police.
