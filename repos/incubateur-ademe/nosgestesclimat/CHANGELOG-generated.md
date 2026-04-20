@@ -1,27 +1,28 @@
 ## Changelog : nosgestesclimat (30 derniers jours, au 14 mai 2026)
 
 ### Résumé
-Ce mois-ci, nosgestesclimat a bénéficié d'une série d'améliorations axées sur la précision des calculs, l'expérience utilisateur et la gestion des données. Des ajustements ont été apportés aux estimations de consommation d'énergie, aux profils par défaut, et aux actions proposées aux utilisateurs. Plusieurs corrections de bugs et mises à jour de données ont également été intégrées.
+Ce mois-ci, nosgestesclimat a bénéficié d'améliorations significatives concernant le calcul de l'empreinte carbone liée au transport, notamment pour les véhicules (voitures, scooters électriques, camping-cars) et les modes de transport alternatifs. Des corrections et ajustements ont été apportés aux calculs de consommation d'énergie, ainsi que des mises à jour des données relatives à la Date Limite d'Utilisation Optimale (DLUO) pour certains produits. L'expérience utilisateur a également été améliorée avec l'ajout de nouvelles actions et la suppression de questions redondantes.
 
 ### Évolutions fonctionnelles
-- Ajout d'une action "JVA" (Justice Verte et Alimentaire) pour encourager des comportements plus responsables. [#2741](https://github.com/incubateur-ademe/nosgestesclimat/issues/2741)
-- Amélioration de la gestion des profils de véhicules, notamment pour les camping-cars et les scooters électriques. [#2742](https://github.com/incubateur-ademe/nosgestesclimat/issues/2742)
-- Ajout d'une option pour le chauffage au fioul pour les logements collectifs. [#2735](https://github.com/incubateur-ademe/nosgestesclimat/issues/2735)
-- Ajout d'une notification pour encourager l'achat en vrac. [#2731](https://github.com/incubateur-ademe/nosgestesclimat/issues/2731)
-- Mise à jour des données de la DLUO (Durée de Vie Utile Optimale) pour les véhicules. [#2733](https://github.com/incubateur-ademe/nosgestesclimat/issues/2733)
-- Mise à jour des données de l'éco-analyse pour certains produits. [#2732](https://github.com/incubateur-ademe/nosgestesclimat/issues/2732)
-- Suppression de la question sur les services sociétaux. [#2735](https://github.com/incubateur-ademe/nosgestesclimat/issues/2735)
+- Ajout de l'action "JVA" (Job, Vélo, Auto-partage) pour encourager des modes de transport plus durables. [#2741](https://github.com/incubateur-ademe/nosgestesclimat/pull/2741)
+- Amélioration de la gestion des scooters électriques en frontend. [#2741](https://github.com/incubateur-ademe/nosgestesclimat/pull/2741)
+- Prise en compte de la distinction entre camping-cars de 3.5t et 4t pour un calcul plus précis de l'empreinte carbone.
+- Ajout d'une option pour le fioul dans le cadre du chauffage collectif. [#2735](https://github.com/incubateur-ademe/nosgestesclimat/pull/2735)
+- Mise à jour des données DLUO pour les voitures et les textiles. [#2733](https://github.com/incubateur-ademe/nosgestesclimat/pull/2733) [#2732](https://github.com/incubateur-ademe/nosgestesclimat/pull/2732)
+- Ajout d'une notification pour l'achat en vrac. [#2731](https://github.com/incubateur-ademe/nosgestesclimat/pull/2731)
+- Repousse de la DLUO pour certains produits. [#2732](https://github.com/incubateur-ademe/nosgestesclimat/pull/2732)
 
 ### Évolutions techniques
-- Utilisation d'un contexte pour le modèle de voiture, améliorant la gestion des données et la flexibilité du code. [#2741](https://github.com/incubateur-ademe/nosgestesclimat/issues/2741)
-- Refonte de la mosaïque de chauffage pour une meilleure organisation et lisibilité. [#2718](https://github.com/incubateur-ademe/nosgestesclimat/issues/2718)
-- Amélioration de la gestion des conditions et des profils par défaut pour une plus grande précision des calculs.
-- Mise à jour de la version du projet à 4.10.0 puis 4.10.1 et 4.10.2.
+- Utilisation d'un contexte pour le modèle voiture afin d'améliorer la gestion des données et la réutilisabilité du code.
+- Refonte de la gestion de la consommation électrique, notamment pour le chauffage collectif et les cas "pas de chauffage".
+- Mise à jour de l'API Ecobalyse. [#2732](https://github.com/incubateur-ademe/nosgestesclimat/pull/2732)
+- Amélioration de la gestion des personas.
 
 ### Autres changements
-- Corrections de typos et améliorations de la documentation.
-- Ajustements des personas et des consommations par défaut.
-- Suppression d'une action obsolète ("se chauffer au bois").
-- Corrections de bugs liés au double comptage de la consommation électrique et aux conditions d'affichage.
-- Amélioration de la suggestion du nombre d'habitants.
-- Corrections de conditions logiques pour une meilleure cohérence.
+- Suppression de la question relative aux services sociétaux. [#2735](https://github.com/incubateur-ademe/nosgestesclimat/pull/2735)
+- Suppression de l'action "se chauffer au bois".
+- Corrections de typos et de migrations de données.
+- Traductions mises à jour.
+- Corrections de bugs liés au double comptage de la consommation électrique.
+- Corrections de bugs liés aux valeurs par défaut de consommation.
+- Publication des versions 4.10.1 et 4.10.2.
