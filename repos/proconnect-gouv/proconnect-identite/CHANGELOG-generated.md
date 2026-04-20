@@ -1,29 +1,23 @@
 ## Changelog : proconnect-identite (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la stabilité et de la performance de ProConnect Identité. Des corrections de fuites mémoire et des optimisations ont été apportées. De plus, des mises à jour de dépendances ont été réalisées pour assurer la sécurité et la compatibilité du système. Des améliorations ont également été apportées à la gestion des annuaires d'entreprises et à la logique de détermination des petites structures.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la performance du service, avec notamment la correction d'une fuite mémoire et l'optimisation de la gestion des dépendances. Des améliorations ont également été apportées à l'indexation des données et à la gestion des erreurs. Enfin, des mises à jour de dépendances ont été effectuées pour assurer la sécurité et la compatibilité du système.
 
 ### Évolutions fonctionnelles
-- Ajout de routes de ping pour les services externes, améliorant la surveillance de la disponibilité du service.
-- Publication du package `annuaire_entreprises`, rendant les fonctionnalités associées accessibles.
-- Amélioration de l'algorithme de détermination des "petites associations" pour une meilleure précision.
-- Correction d'un problème empêchant la configuration de l'authentification à deux facteurs (2FA).
-- Ajout du champ "tranche-effectifs-unite-legale" à l'index pour une meilleure gestion des informations sur les effectifs.
+- Ajout de routes de ping pour les services externes, permettant de vérifier la disponibilité du service. [#1900](https://github.com/proconnect-gouv/proconnect-identite/pull/1900)
+- Mise à jour de la logique de détermination si un établissement public est de petite taille. [#1890](https://github.com/proconnect-gouv/proconnect-identite/pull/1890)
+- Ajout du champ "tranche-effectifs-unite-legale" à l'index, corrigeant une omission précédente. [#1899](https://github.com/proconnect-gouv/proconnect-identite/pull/1899)
+- Ajout d'un formateur pour le champ "tranche effectifs unite legale". [#1897](https://github.com/proconnect-gouv/proconnect-identite/pull/1897)
+- Amélioration de la gestion des erreurs "trop de requêtes" en déplaçant le code dans un fichier spécifique. [#1838](https://github.com/proconnect-gouv/proconnect-identite/pull/1838)
 
 ### Évolutions techniques
-- Correction d'une fuite mémoire dans la gestion des requêtes HTTP, améliorant la stabilité du service.
-- Remplacement de l'utilisation de `axios` par `fetch` (puis rétablissement d'axios suite à des problèmes), optimisant la gestion des requêtes réseau.
-- Mise à jour de la base image Node.js vers la version 24-slim pour une meilleure sécurité et performance.
-- Refactorisation de l'utilisation des repositories de l'API entreprise pour une meilleure organisation du code.
-- Suppression de tables temporaires inutiles lors de la création de dumps.
-- Remplacement de l'importation directe d'axios par une utilisation plus modulaire.
-- Simplification du typage de la fonction `isPublicService`.
-- Rendre les dépendances peer optionnelles dans le package `identite`.
+- Correction d'une fuite mémoire dans la gestion des requêtes HTTP en revenant à l'utilisation d'Axios. [#1905](https://github.com/proconnect-gouv/proconnect-identite/pull/1905)
+- Remplacement de l'importation de `fetch` par Axios. [#1879](https://github.com/proconnect-gouv/proconnect-identite/pull/1879)
+- Mise à jour de la base image Node.js vers la version 24-slim. [#1863](https://github.com/proconnect-gouv/proconnect-identite/pull/1863)
+- Les dépendances peer sont maintenant optionnelles dans le package identité. [#1906](https://github.com/proconnect-gouv/proconnect-identite/pull/1906)
+- Ajout de changements pour la publication de versions (changesets). [#1901](https://github.com/proconnect-gouv/proconnect-identite/pull/1901), [#1902](https://github.com/proconnect-gouv/proconnect-identite/pull/1902), [#1876](https://github.com/proconnect-gouv/proconnect-identite/pull/1876)
 
 ### Autres changements
-- Mises à jour de plusieurs dépendances : `hono`, `nodemailer`, `vite`, `cypress`, `sentry`, `drizzle-orm`, `path-to-regexp`, `brace-expansion`, `picomatch`, `dotenvx`, `lodash-es`, `follow-redirects`.
-- Ajout de tests unitaires et d'intégration pour valider les corrections et les nouvelles fonctionnalités.
-- Amélioration de la documentation interne et des commentaires dans le code.
-- Nettoyage du code et suppression de code obsolète.
-- Ajout de changements pour la gestion des versions des packages.
-- Suppression d'instructions `it.only` résiduelles dans les tests Cypress.
+- Suppression d'instructions `it.only` résiduelles dans les tests Cypress. [#1870](https://github.com/proconnect-gouv/proconnect-identite/pull/1870)
+- Renommage et nettoyage du code. [#1872](https://github.com/proconnect-gouv/proconnect-identite/pull/1872)
+- Diverses mises à jour de dépendances (Hono, follow-redirects, nodemailer, vite, cypress, dotenvx, brace-expansion, picomatch, etc.).
