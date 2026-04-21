@@ -871,6 +871,7 @@
 │   │   ├── dashboard
 │   │   │   ├── blank_state_component.html.erb
 │   │   │   └── blank_state_component.rb
+│   │   ├── diff_list_component.rb
 │   │   ├── dsfr
 │   │   │   ├── multi_select_component.html.erb
 │   │   │   └── multi_select_component.rb
@@ -1091,6 +1092,7 @@
 │   ├── interactors
 │   │   ├── add_user_to_organization.rb
 │   │   ├── admin
+│   │   │   ├── build_admin_change_diff.rb
 │   │   │   ├── capture_user_ban_attributes.rb
 │   │   │   ├── check_data_provider_deletable.rb
 │   │   │   ├── check_habilitation_type_deletable.rb
@@ -1103,6 +1105,7 @@
 │   │   │   ├── mark_user_as_banned.rb
 │   │   │   ├── mark_user_as_unbanned.rb
 │   │   │   ├── notify_admins_for_roles_update.rb
+│   │   │   ├── persist_admin_change.rb
 │   │   │   ├── persist_new_data_provider.rb
 │   │   │   ├── persist_new_habilitation_type.rb
 │   │   │   ├── remove_habilitation_type_roles.rb
@@ -1326,6 +1329,7 @@
 │   │   ├── run.sh
 │   │   └── v1_copied_enrollments_exporter.rb
 │   ├── models
+│   │   ├── admin_change.rb
 │   │   ├── admin_event.rb
 │   │   ├── application_record.rb
 │   │   ├── authorization.rb
@@ -1424,6 +1428,7 @@
 │   ├── organizers
 │   │   ├── admin
 │   │   │   ├── ban_user.rb
+│   │   │   ├── create_admin_change.rb
 │   │   │   ├── create_data_provider.rb
 │   │   │   ├── create_habilitation_type.rb
 │   │   │   ├── destroy_data_provider.rb
@@ -1539,6 +1544,7 @@
 │   │   ├── bulk_authorization_request_update_notification_extractor.rb
 │   │   ├── datagouv_api_client.rb
 │   │   ├── dgfip_spreadsheet_generator.rb
+│   │   ├── diff_presenter.rb
 │   │   ├── dynamic_authorization_request_registrar.rb
 │   │   ├── email_preview_renderer.rb
 │   │   ├── email_verifier_api.rb
@@ -2432,6 +2438,8 @@
 │   │   ├── 20260317100302_backfill_france_connect_authorization_id_on_api_particulier_requests.rb
 │   │   ├── 20260331084007_clean_dormant_france_connect_data_on_api_particulier_requests.rb
 │   │   ├── 20260401152848_add_dyn_suffix_to_habilitation_type_slugs.rb
+│   │   ├── 20260403092328_create_admin_changes.rb
+│   │   ├── 20260403121548_add_admin_change_constraint_to_authorization_request_events.rb
 │   │   ├── 20260415134608_add_banned_at_and_ban_reason_to_users.rb
 │   │   └── 20260416154456_add_ban_reason_check_constraint_to_users.rb
 │   ├── rails_pulse_migrate
@@ -2445,6 +2453,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── README.md
+│   ├── admin_change.md
 │   ├── ajout_evenement.md
 │   ├── ajout_nouveau_bloc_de_formulaire.md
 │   ├── ajout_nouveau_form_non_tech.md
@@ -2548,6 +2557,7 @@
 │   │   ├── consultation_demande_lien_organisation.feature
 │   │   ├── consultation_habilitation.feature
 │   │   ├── habilitations_france_connectees.feature
+│   │   ├── historique_admin_change.feature
 │   │   ├── historique_habilitation.feature
 │   │   ├── liste_des_demandes.feature
 │   │   ├── liste_des_habilitations.feature
@@ -2583,6 +2593,7 @@
 │   ├── step_definitions
 │   │   ├── .keep
 │   │   ├── accessibility_steps.rb
+│   │   ├── admin_change_steps.rb
 │   │   ├── admin_steps.rb
 │   │   ├── applicant_authorization_requests_steps.rb
 │   │   ├── authorization_requests_steps.rb
@@ -2749,6 +2760,7 @@
 │   │   ├── authorization_header_component_spec.rb
 │   │   ├── dashboard
 │   │   │   └── blank_state_component_spec.rb
+│   │   ├── diff_list_component_spec.rb
 │   │   ├── dsfr
 │   │   │   └── multi_select_component_spec.rb
 │   │   ├── habilitation
@@ -2837,6 +2849,7 @@
 │   ├── factories
 │   │   ├── active_storage_attachment.rb
 │   │   ├── active_storage_blob.rb
+│   │   ├── admin_changes.rb
 │   │   ├── admin_events.rb
 │   │   ├── authorization_documents.rb
 │   │   ├── authorization_request_changelogs.rb
@@ -2910,6 +2923,7 @@
 │   ├── interactors
 │   │   ├── .gitkeep
 │   │   ├── admin
+│   │   │   ├── build_admin_change_diff_spec.rb
 │   │   │   ├── check_data_provider_deletable_spec.rb
 │   │   │   ├── check_habilitation_type_deletable_spec.rb
 │   │   │   ├── destroy_data_provider_record_spec.rb
@@ -2983,6 +2997,7 @@
 │   │   │   └── message_mailer_preview.rb
 │   │   └── webhook_mailer_spec.rb
 │   ├── models
+│   │   ├── admin_change_spec.rb
 │   │   ├── admin_event_spec.rb
 │   │   ├── authorization_definition
 │   │   │   └── scope_spec.rb
@@ -3043,6 +3058,7 @@
 │   │   ├── .gitkeep
 │   │   ├── admin
 │   │   │   ├── ban_user_spec.rb
+│   │   │   ├── create_admin_change_spec.rb
 │   │   │   ├── create_habilitation_type_spec.rb
 │   │   │   ├── destroy_data_provider_spec.rb
 │   │   │   ├── destroy_habilitation_type_spec.rb
@@ -3140,6 +3156,7 @@
 │   │   ├── authorizations_search_engine_builder_spec.rb
 │   │   ├── datagouv_api_client_spec.rb
 │   │   ├── dgfip_spreadsheet_generator_spec.rb
+│   │   ├── diff_presenter_spec.rb
 │   │   ├── dynamic_authorization_request_registrar_spec.rb
 │   │   ├── email_preview_renderer_spec.rb
 │   │   ├── france_connect_data_builder_spec.rb
@@ -3207,4 +3224,4 @@
     ├── .keep
     └── javascript
         └── .keep
-444 directories, 2903 files
+444 directories, 2920 files
