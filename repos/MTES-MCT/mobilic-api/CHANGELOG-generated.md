@@ -1,33 +1,24 @@
-## Changelog : mobilic-api (30 derniers jours, au 15 avril 2026)
+## Changelog : mobilic-api (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de l'API Mobilic se sont concentrées sur l'amélioration de la sécurité et de la conformité des données, notamment via l'anonymisation des informations sensibles et la correction de vulnérabilités. Des améliorations ont également été apportées à la gestion des exports de données, ainsi qu'à la correction de bugs liés à l'authentification et à la validation des missions. Enfin, une mise à jour de la version de Flask a été effectuée, suivie d'un retour en arrière pour éviter des impacts trop importants.
+Ce mois-ci, les évolutions de mobilic-api se sont concentrées sur la correction de bugs, l'amélioration de la sécurité et l'optimisation de certaines fonctionnalités existantes. Des corrections ont été apportées concernant les fuseaux horaires dans les exports, la validation automatique des missions, et la gestion des poids des véhicules. Une mise à jour de Flask a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la validation automatique des missions en raison d'un problème avec l'identification de l'entreprise soumettant la mission. [#692](https://github.com/MTES-MCT/mobilic-api/pull/692)
-- Correction du format d'affichage du poids des véhicules dans les bulletins de contrôle (Bdc) pour utiliser une virgule décimale. [#691](https://github.com/MTES-MCT/mobilic-api/pull/691)
-- Amélioration de la gestion de la connexion des agents (AgentConnect) en corrigeant des problèmes liés aux redirections et à la synchronisation de l'unité organisationnelle. [#687](https://github.com/MTES-MCT/mobilic-api/pull/687), [#686](https://github.com/MTES-MCT/mobilic-api/pull/686)
-- Ajout d'une nouvelle fonctionnalité d'anonymisation des données des Bdc pour le Ministère de l'Intérieur. [#688](https://github.com/MTES-MCT/mobilic-api/pull/688)
-- Mise à jour de l'étiquette de vérification de la réglementation "sans permis de conduire". [#684](https://github.com/MTES-MCT/mobilic-api/pull/684)
-- Ajout d'un endpoint de validation pour les exports.
-- Ajout de stratégies d'export vers Sentry.
+- Correction d'un problème de fuseaux horaires dans les exports et les fichiers PDF [#671](https://github.com/MTES-MCT/mobilic-api/pull/671).
+- Amélioration de la validation automatique des missions, notamment pour éviter des erreurs liées aux identifiants d'entreprise [#692](https://github.com/MTES-MCT/mobilic-api/pull/692) et pour gérer les activités en cours [#689](https://github.com/MTES-MCT/mobilic-api/pull/689).
+- Mise à jour du label de vérification de la réglementation en cas d'absence de permis [#684](https://github.com/MTES-MCT/mobilic-api/pull/684).
+- Correction du format d'affichage du poids des véhicules dans les bulletins de contrôle BDC [#691](https://github.com/MTES-MCT/mobilic-api/pull/691).
+- Correction d'un bug lié à l'ordre de tri des fichiers exportés [#678](https://github.com/MTES-MCT/mobilic-api/pull/678).
 
 ### Évolutions techniques
-- Mise à jour de Flask et des dépendances pipenv pour corriger des vulnérabilités de sécurité, suivie d'un retour à une version antérieure pour éviter des changements trop importants. [#686](https://github.com/MTES-MCT/mobilic-api/pull/686)
-- Refactoring du code pour améliorer la qualité et la conformité aux règles SonarCloud.
-- Amélioration de la gestion des exports de données :
-    - Ajout de règles pour la gestion des chunks.
-    - Tri des fichiers dans les archives zip.
-    - Gestion des exports pour les données vides.
-- Suppression du contexte des accès aux données d'activité pour améliorer la sécurité. [#693](https://github.com/MTES-MCT/mobilic-api/pull/693)
-- Renommage de variables pour respecter les conventions de nommage (snake_case).
-- Synchronisation de l'unité organisationnelle lors de la reconnexion d'AgentConnect.
+- Mise à jour de Flask, la librairie web Python utilisée par l'API [#686](https://github.com/MTES-MCT/mobilic-api/pull/686).
+- Ajout d'une protection contre les attaques par complexité de requête GraphQL pour éviter une surcharge du serveur [#694](https://github.com/MTES-MCT/mobilic-api/pull/694).
+- Suppression du contexte des accès aux données d'activité pour améliorer la sécurité et la performance [#693](https://github.com/MTES-MCT/mobilic-api/pull/693).
+- Désactivation de GraphiQL en production pour des raisons de sécurité, suite à une alerte SonarQube [#5de072e](https://github.com/MTES-MCT/mobilic-api/commit/5de072e).
+- Ajout d'une limite de taille pour les requêtes GraphQL afin de prévenir les attaques par déni de service [#9286bc8](https://github.com/MTES-MCT/mobilic-api/commit/9286bc8).
 
 ### Autres changements
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la documentation.
-- Correction de bugs mineurs et nettoyage du code.
-- Ajout de logs pour faciliter le débogage.
-- Tri des fichiers d'export par ordre alphabétique.
-- Ajout des noms des employés lors de l'export de données vides.
-- Correction de l'ordre de tri des dates dans les exports.
+- Améliorations de la qualité du code et corrections de style pour répondre aux exigences de SonarCloud [#8a097e2](https://github.com/MTES-MCT/mobilic-api/commit/8a097e2).
+- Renommage de variables pour une meilleure lisibilité et conformité aux conventions de nommage (snake_case) [#67d0e13](https://github.com/MTES-MCT/mobilic-api/commit/67d0e13), [#21d5f5e](https://github.com/MTES-MCT/mobilic-api/commit/21d5f5e).
+- Ajout de logs de débogage pour faciliter le diagnostic des problèmes liés à l'authentification Agent Connect [#f01eecd](https://github.com/MTES-MCT/mobilic-api/commit/f01eecd).
+- Corrections mineures liées à la redirection URI dans Agent Connect [#09e4e20](https://github.com/MTES-MCT/mobilic-api/commit/09e4e20), [#50411bd](https://github.com/MTES-MCT/mobilic-api/commit/50411bd).
