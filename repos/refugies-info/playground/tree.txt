@@ -22,13 +22,16 @@
 │   ├── .gitignore
 │   └── settings.json
 ├── .env.example
+├── .env.production.example
 ├── .gemini
 │   └── settings.json
 ├── .github
 │   └── workflows
 │       ├── checks.yml
+│       ├── chromatic.yml
 │       └── production-release.yml
 ├── .gitignore
+├── .gitleaks.toml
 ├── .husky
 │   └── pre-commit
 ├── .npmrc
@@ -72,224 +75,256 @@
 ├── DOCUMENTATION_GUIDELINES.md
 ├── README.md
 ├── apps
-│   └── frontend
-│       ├── .env.example
-│       ├── .gitignore
-│       ├── README.md
-│       ├── components.json
-│       ├── next.config.ts
+│   ├── frontend
+│   │   ├── .env.example
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── components.json
+│   │   ├── next.config.ts
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── public
+│   │   │   ├── logo-ri.svg
+│   │   │   └── rco-json-schema.json
+│   │   ├── src
+│   │   │   ├── app
+│   │   │   │   ├── (auth)
+│   │   │   │   │   ├── auth
+│   │   │   │   │   │   └── callback
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── login
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── password-reset
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── signup
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── (main)
+│   │   │   │   │   ├── documents
+│   │   │   │   │   │   ├── columns.tsx
+│   │   │   │   │   │   ├── documents-list.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── error.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── translations
+│   │   │   │   │   │   ├── TranslationsList.tsx
+│   │   │   │   │   │   ├── columns.tsx
+│   │   │   │   │   │   ├── error.tsx
+│   │   │   │   │   │   ├── loading.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── users
+│   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   └── user-grid.tsx
+│   │   │   │   │   └── workflow
+│   │   │   │   │       ├── columns.tsx
+│   │   │   │   │       ├── document-preview-drawer.tsx
+│   │   │   │   │       ├── page.tsx
+│   │   │   │   │       └── workflow-client.tsx
+│   │   │   │   ├── actions
+│   │   │   │   │   ├── di.ts
+│   │   │   │   │   └── users.ts
+│   │   │   │   ├── api
+│   │   │   │   │   ├── agents
+│   │   │   │   │   │   └── metadata
+│   │   │   │   │   │       └── stream
+│   │   │   │   │   │           └── route.ts
+│   │   │   │   │   ├── classify
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── content
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── cron
+│   │   │   │   │   │   └── di-ingestion
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── health
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── tools
+│   │   │   │   │   │   └── validate-metadata-ri
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   └── workflow
+│   │   │   │   │       └── [id]
+│   │   │   │   │           └── route.ts
+│   │   │   │   ├── documents
+│   │   │   │   │   ├── [id]
+│   │   │   │   │   │   ├── compliance
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   ├── metadata
+│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── layout.tsx
+│   │   │   │   ├── error.tsx
+│   │   │   │   ├── global-error.tsx
+│   │   │   │   ├── globals.css
+│   │   │   │   ├── icon.svg
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── service-unavailable
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── translations
+│   │   │   │       └── [id]
+│   │   │   │           └── page.tsx
+│   │   │   ├── components
+│   │   │   │   ├── TopNav.tsx
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── LoginForm.tsx
+│   │   │   │   │   ├── PasswordConfirmForm.tsx
+│   │   │   │   │   ├── PasswordResetForm.tsx
+│   │   │   │   │   ├── SignupForm.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── common
+│   │   │   │   │   └── app-pagination.tsx
+│   │   │   │   ├── document-editor
+│   │   │   │   │   ├── DocumentContext.tsx
+│   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── DocumentActionsContext.tsx
+│   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   └── usePublicationRealtime.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── ui
+│   │   │   │   │   │       ├── DocumentActions.tsx
+│   │   │   │   │   │       ├── PublishConfirmationDialog.tsx
+│   │   │   │   │   │       └── PublishSuccessDialog.tsx
+│   │   │   │   │   ├── arbitration
+│   │   │   │   │   │   ├── ArbitrationView.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── assistant
+│   │   │   │   │   │   ├── AssistantPanel.tsx
+│   │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   │   └── useEditorialRealtime.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── editor
+│   │   │   │   │   │   ├── AiSuggestionBanner.tsx
+│   │   │   │   │   │   ├── EditionView.tsx
+│   │   │   │   │   │   ├── EditorTabs.tsx
+│   │   │   │   │   │   ├── OriginalContentView.tsx
+│   │   │   │   │   │   ├── RawMarkdownView.tsx
+│   │   │   │   │   │   ├── blocks
+│   │   │   │   │   │   │   ├── callout-block.tsx
+│   │   │   │   │   │   │   └── custom-schema.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── slash-menu-config.tsx
+│   │   │   │   │   ├── metadata
+│   │   │   │   │   │   ├── FieldBadge.tsx
+│   │   │   │   │   │   ├── MetadataContext.tsx
+│   │   │   │   │   │   ├── MetadataRow.tsx
+│   │   │   │   │   │   ├── MetadataTable.tsx
+│   │   │   │   │   │   ├── MetadataView.tsx
+│   │   │   │   │   │   ├── SourceDisplay.tsx
+│   │   │   │   │   │   ├── fields
+│   │   │   │   │   │   │   ├── AgeField.tsx
+│   │   │   │   │   │   │   ├── CommitmentField.tsx
+│   │   │   │   │   │   │   ├── DepartmentField.tsx
+│   │   │   │   │   │   │   ├── EnumField.tsx
+│   │   │   │   │   │   │   ├── FrequencyField.tsx
+│   │   │   │   │   │   │   ├── MultiEnumField.tsx
+│   │   │   │   │   │   │   ├── NeedSelectField.tsx
+│   │   │   │   │   │   │   ├── PoiField.tsx
+│   │   │   │   │   │   │   ├── PriceField.tsx
+│   │   │   │   │   │   │   ├── SessionField.tsx
+│   │   │   │   │   │   │   ├── TextField.tsx
+│   │   │   │   │   │   │   ├── TextareaField.tsx
+│   │   │   │   │   │   │   ├── ThemeSelectField.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── publication-targets
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   └── refugies-info
+│   │   │   │   │   │   │       ├── constants.ts
+│   │   │   │   │   │   │       ├── field-components.tsx
+│   │   │   │   │   │   │       ├── fields-config.ts
+│   │   │   │   │   │   │       └── index.ts
+│   │   │   │   │   │   ├── shared
+│   │   │   │   │   │   │   ├── helpers.ts
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── types.ts
+│   │   │   │   │   └── shared
+│   │   │   │   │       ├── DebugPanel.tsx
+│   │   │   │   │       ├── DocumentLayout.tsx
+│   │   │   │   │       ├── DocumentStatus.tsx
+│   │   │   │   │       ├── EditorNavigation.tsx
+│   │   │   │   │       ├── MarkdownViewer.tsx
+│   │   │   │   │       ├── TopBar.tsx
+│   │   │   │   │       ├── hooks
+│   │   │   │   │       │   └── useDocumentStatusRealtime.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── documents
+│   │   │   │   │   └── cells
+│   │   │   │   │       ├── ComplianceStatusCell.tsx
+│   │   │   │   │       ├── ExternalIdCell.tsx
+│   │   │   │   │       ├── ModalitesEntreesSortiesCell.tsx
+│   │   │   │   │       ├── OnlineStatusCell.tsx
+│   │   │   │   │       ├── QualityScoreCell.tsx
+│   │   │   │   │       ├── WorkStatusCell.tsx
+│   │   │   │   │       └── index.ts
+│   │   │   │   └── translation-editor
+│   │   │   │       ├── SourcePane.tsx
+│   │   │   │       ├── TranslationActions.tsx
+│   │   │   │       ├── TranslationContext.tsx
+│   │   │   │       ├── TranslationEditorPane.tsx
+│   │   │   │       ├── TranslationLayout.tsx
+│   │   │   │       ├── TranslationSidebar.tsx
+│   │   │   │       ├── TranslationStatus.tsx
+│   │   │   │       ├── TranslationTopBar.tsx
+│   │   │   │       └── hooks
+│   │   │   │           └── useTranslationPublicationRealtime.ts
+│   │   │   ├── config
+│   │   │   │   └── features.ts
+│   │   │   ├── hooks
+│   │   │   │   └── useUrlFilters.ts
+│   │   │   ├── lib
+│   │   │   │   ├── auth.ts
+│   │   │   │   ├── column-factories.tsx
+│   │   │   │   ├── document-column-factories.tsx
+│   │   │   │   ├── document-labels.ts
+│   │   │   │   ├── errors.ts
+│   │   │   │   ├── markdown
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── normalizeMarkdown.ts
+│   │   │   │   │   ├── parser.ts
+│   │   │   │   │   └── serializer.ts
+│   │   │   │   ├── mock
+│   │   │   │   │   ├── documents.ts
+│   │   │   │   │   └── seededRandom.ts
+│   │   │   │   ├── payload-builder.ts
+│   │   │   │   ├── preview-utils.ts
+│   │   │   │   ├── publication-errors.ts
+│   │   │   │   ├── supabase
+│   │   │   │   │   └── client.ts
+│   │   │   │   ├── url-builder.ts
+│   │   │   │   └── workflow-utils.ts
+│   │   │   ├── proxy.ts
+│   │   │   ├── services
+│   │   │   │   ├── document-actions.ts
+│   │   │   │   ├── documents.ts
+│   │   │   │   ├── helpers.ts
+│   │   │   │   ├── metadata-actions.ts
+│   │   │   │   ├── permission-helper.ts
+│   │   │   │   ├── ri-reference-data.ts
+│   │   │   │   ├── translation-actions.ts
+│   │   │   │   └── translations.ts
+│   │   │   └── types
+│   │   │       └── database.types.ts
+│   │   ├── tests
+│   │   │   └── lib
+│   │   │       └── markdown
+│   │   │           ├── parser.test.ts
+│   │   │           └── serializer.test.ts
+│   │   ├── tsconfig.json
+│   │   ├── vercel.json
+│   │   └── vitest.config.ts
+│   └── storybook
+│       ├── .storybook
+│       │   ├── globals.css
+│       │   ├── main.ts
+│       │   └── preview.ts
+│       ├── chromatic-diagnostics.json
 │       ├── package.json
 │       ├── postcss.config.mjs
-│       ├── public
-│       │   ├── logo-ri.svg
-│       │   └── rco-json-schema.json
 │       ├── src
-│       │   ├── app
-│       │   │   ├── (auth)
-│       │   │   │   ├── auth
-│       │   │   │   │   └── callback
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── login
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── password-reset
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── signup
-│       │   │   │       └── page.tsx
-│       │   │   ├── (main)
-│       │   │   │   ├── documents
-│       │   │   │   │   ├── columns.tsx
-│       │   │   │   │   ├── documents-list.tsx
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── layout.tsx
-│       │   │   │   ├── translations
-│       │   │   │   │   ├── TranslationsList.tsx
-│       │   │   │   │   ├── columns.tsx
-│       │   │   │   │   ├── error.tsx
-│       │   │   │   │   ├── loading.tsx
-│       │   │   │   │   └── page.tsx
-│       │   │   │   ├── users
-│       │   │   │   │   ├── page.tsx
-│       │   │   │   │   └── user-grid.tsx
-│       │   │   │   └── workflow
-│       │   │   │       ├── document-preview-drawer.tsx
-│       │   │   │       ├── page.tsx
-│       │   │   │       └── workflow-client.tsx
-│       │   │   ├── actions
-│       │   │   │   ├── di.ts
-│       │   │   │   └── users.ts
-│       │   │   ├── api
-│       │   │   │   ├── agents
-│       │   │   │   │   ├── editorial
-│       │   │   │   │   │   └── stream
-│       │   │   │   │   │       └── route.ts
-│       │   │   │   │   └── metadata
-│       │   │   │   │       └── stream
-│       │   │   │   │           └── route.ts
-│       │   │   │   ├── classify
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── content
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── cron
-│       │   │   │   │   └── di-ingestion
-│       │   │   │   │       └── route.ts
-│       │   │   │   ├── documents
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── health
-│       │   │   │   │   └── route.ts
-│       │   │   │   ├── tools
-│       │   │   │   │   └── validate-metadata-ri
-│       │   │   │   │       └── route.ts
-│       │   │   │   └── workflow
-│       │   │   │       └── [id]
-│       │   │   │           └── route.ts
-│       │   │   ├── documents
-│       │   │   │   ├── [id]
-│       │   │   │   │   ├── compliance
-│       │   │   │   │   │   └── page.tsx
-│       │   │   │   │   ├── layout.tsx
-│       │   │   │   │   ├── metadata
-│       │   │   │   │   │   └── page.tsx
-│       │   │   │   │   └── page.tsx
-│       │   │   │   └── layout.tsx
-│       │   │   ├── globals.css
-│       │   │   ├── icon.svg
-│       │   │   ├── layout.tsx
-│       │   │   ├── page.tsx
-│       │   │   └── translations
-│       │   │       └── [id]
-│       │   │           └── page.tsx
-│       │   ├── components
-│       │   │   ├── TopNav.tsx
-│       │   │   ├── auth
-│       │   │   │   ├── LoginForm.tsx
-│       │   │   │   ├── PasswordConfirmForm.tsx
-│       │   │   │   ├── PasswordResetForm.tsx
-│       │   │   │   ├── SignupForm.tsx
-│       │   │   │   └── index.ts
-│       │   │   ├── common
-│       │   │   │   └── app-pagination.tsx
-│       │   │   ├── document-editor
-│       │   │   │   ├── DocumentContext.tsx
-│       │   │   │   ├── actions
-│       │   │   │   │   ├── DocumentActionsContext.tsx
-│       │   │   │   │   ├── hooks
-│       │   │   │   │   │   └── usePublicationRealtime.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   └── ui
-│       │   │   │   │       ├── DocumentActions.tsx
-│       │   │   │   │       ├── PublishConfirmationDialog.tsx
-│       │   │   │   │       └── PublishSuccessDialog.tsx
-│       │   │   │   ├── arbitration
-│       │   │   │   │   ├── ArbitrationView.tsx
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── assistant
-│       │   │   │   │   ├── AssistantPanel.tsx
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── editor
-│       │   │   │   │   ├── AiSuggestionBanner.tsx
-│       │   │   │   │   ├── EditionView.tsx
-│       │   │   │   │   ├── EditorTabs.tsx
-│       │   │   │   │   ├── OriginalContentView.tsx
-│       │   │   │   │   ├── RawMarkdownView.tsx
-│       │   │   │   │   ├── blocks
-│       │   │   │   │   │   ├── callout-block.tsx
-│       │   │   │   │   │   └── custom-schema.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   └── slash-menu-config.tsx
-│       │   │   │   ├── metadata
-│       │   │   │   │   ├── FieldBadge.tsx
-│       │   │   │   │   ├── MetadataContext.tsx
-│       │   │   │   │   ├── MetadataRow.tsx
-│       │   │   │   │   ├── MetadataTable.tsx
-│       │   │   │   │   ├── MetadataView.tsx
-│       │   │   │   │   ├── SourceDisplay.tsx
-│       │   │   │   │   ├── fields
-│       │   │   │   │   │   ├── AgeField.tsx
-│       │   │   │   │   │   ├── CommitmentField.tsx
-│       │   │   │   │   │   ├── DepartmentField.tsx
-│       │   │   │   │   │   ├── EnumField.tsx
-│       │   │   │   │   │   ├── FrequencyField.tsx
-│       │   │   │   │   │   ├── MultiEnumField.tsx
-│       │   │   │   │   │   ├── NeedSelectField.tsx
-│       │   │   │   │   │   ├── PoiField.tsx
-│       │   │   │   │   │   ├── PriceField.tsx
-│       │   │   │   │   │   ├── SessionField.tsx
-│       │   │   │   │   │   ├── TextField.tsx
-│       │   │   │   │   │   ├── TextareaField.tsx
-│       │   │   │   │   │   ├── ThemeSelectField.tsx
-│       │   │   │   │   │   └── index.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── publication-targets
-│       │   │   │   │   │   ├── index.ts
-│       │   │   │   │   │   └── refugies-info
-│       │   │   │   │   │       ├── constants.ts
-│       │   │   │   │   │       ├── field-components.tsx
-│       │   │   │   │   │       ├── fields-config.ts
-│       │   │   │   │   │       └── index.ts
-│       │   │   │   │   ├── shared
-│       │   │   │   │   │   ├── helpers.ts
-│       │   │   │   │   │   └── index.ts
-│       │   │   │   │   └── types.ts
-│       │   │   │   └── shared
-│       │   │   │       ├── DebugPanel.tsx
-│       │   │   │       ├── DocumentLayout.tsx
-│       │   │   │       ├── DocumentStatus.tsx
-│       │   │   │       ├── EditorNavigation.tsx
-│       │   │   │       ├── MarkdownViewer.tsx
-│       │   │   │       ├── TopBar.tsx
-│       │   │   │       ├── hooks
-│       │   │   │       │   └── useDocumentStatusRealtime.ts
-│       │   │   │       └── index.ts
-│       │   │   └── translation-editor
-│       │   │       ├── SourcePane.tsx
-│       │   │       ├── TranslationActions.tsx
-│       │   │       ├── TranslationContext.tsx
-│       │   │       ├── TranslationEditorPane.tsx
-│       │   │       ├── TranslationLayout.tsx
-│       │   │       ├── TranslationSidebar.tsx
-│       │   │       ├── TranslationStatus.tsx
-│       │   │       ├── TranslationTopBar.tsx
-│       │   │       └── hooks
-│       │   │           └── useTranslationPublicationRealtime.ts
-│       │   ├── config
-│       │   │   └── features.ts
-│       │   ├── lib
-│       │   │   ├── document-labels.ts
-│       │   │   ├── markdown
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── normalizeMarkdown.ts
-│       │   │   │   ├── parser.ts
-│       │   │   │   └── serializer.ts
-│       │   │   ├── mock
-│       │   │   │   ├── documents.ts
-│       │   │   │   └── seededRandom.ts
-│       │   │   ├── payload-builder.ts
-│       │   │   ├── preview-utils.ts
-│       │   │   ├── publication-errors.ts
-│       │   │   ├── supabase
-│       │   │   │   └── client.ts
-│       │   │   ├── url-builder.ts
-│       │   │   └── workflow-utils.ts
-│       │   ├── proxy.ts
-│       │   ├── services
-│       │   │   ├── document-actions.ts
-│       │   │   ├── documents.ts
-│       │   │   ├── helpers.ts
-│       │   │   ├── metadata-actions.ts
-│       │   │   ├── permission-helper.ts
-│       │   │   ├── ri-reference-data.ts
-│       │   │   ├── translation-actions.ts
-│       │   │   └── translations.ts
-│       │   └── types
-│       │       └── database.types.ts
-│       ├── tests
 │       │   └── lib
-│       │       └── markdown
-│       │           ├── parser.test.ts
-│       │           └── serializer.test.ts
+│       │       └── remixicon-categories.ts
 │       ├── tsconfig.json
-│       ├── vercel.json
-│       └── vitest.config.ts
+│       ├── vitest.config.ts
+│       └── vitest.setup.ts
 ├── biome.json
 ├── docs
 │   └── architecture
@@ -319,6 +354,8 @@
 │   │   ├── README.md
 │   │   ├── component-quick-reference.md
 │   │   ├── component-strategy.md
+│   │   ├── design-tokens.md
+│   │   ├── icon-system.md
 │   │   └── publication
 │   │       ├── archive.md
 │   │       ├── index.md
@@ -346,6 +383,10 @@
 │   ├── roadmaps
 │   │   ├── README.md
 │   │   └── roadmap-mvp.md
+│   ├── scripts
+│   │   ├── README.md
+│   │   ├── force-metadata-reports.md
+│   │   └── sync-dsfr-icons.md
 │   ├── troubleshooting
 │   │   └── README.md
 │   └── workflows
@@ -482,6 +523,7 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── clients.ts
+│   │   │   ├── errors.ts
 │   │   │   ├── index.ts
 │   │   │   ├── ingestion.ts
 │   │   │   ├── proxy.ts
@@ -489,10 +531,29 @@
 │   │   └── tsconfig.json
 │   ├── ui
 │   │   ├── package.json
+│   │   ├── scripts
+│   │   │   └── sync-dsfr-icons.ts
 │   │   ├── src
 │   │   │   ├── composites
+│   │   │   │   ├── app-header
+│   │   │   │   │   ├── AppHeader.stories.tsx
+│   │   │   │   │   ├── AppHeader.tsx
+│   │   │   │   │   ├── AppLogo.stories.tsx
+│   │   │   │   │   ├── AppLogo.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── data-table
+│   │   │   │   │   ├── DataTable.stories.tsx
+│   │   │   │   │   ├── cells.tsx
+│   │   │   │   │   ├── data-table-column-header.tsx
+│   │   │   │   │   ├── data-table-faceted-filter.tsx
+│   │   │   │   │   ├── data-table-pagination.tsx
+│   │   │   │   │   ├── data-table-toolbar.tsx
+│   │   │   │   │   ├── data-table.tsx
+│   │   │   │   │   └── table.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── pagination-controls.tsx
+│   │   │   │   ├── pagination.stories.tsx
+│   │   │   │   ├── pagination.tsx
 │   │   │   │   └── user-card
 │   │   │   │       ├── AddUserCard.tsx
 │   │   │   │       └── UserCard.tsx
@@ -507,18 +568,36 @@
 │   │   │   │   ├── TextInput.tsx
 │   │   │   │   ├── date-range-picker.tsx
 │   │   │   │   └── index.ts
+│   │   │   ├── icons.ts
 │   │   │   ├── index.ts
+│   │   │   ├── lib
+│   │   │   │   └── remixicon-categories.ts
 │   │   │   ├── overlays
 │   │   │   │   ├── drawer
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   └── tooltip.tsx
 │   │   │   ├── primitives
+│   │   │   │   ├── avatar
+│   │   │   │   │   └── Avatar.stories.tsx
 │   │   │   │   ├── avatar.tsx
 │   │   │   │   ├── badge
+│   │   │   │   │   ├── Badge.stories.tsx
 │   │   │   │   │   ├── Badge.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── bouton-filtre
+│   │   │   │   │   ├── BoutonFiltre.stories.tsx
+│   │   │   │   │   ├── BoutonFiltre.tsx
+│   │   │   │   │   ├── BoutonFiltreDate.stories.tsx
+│   │   │   │   │   ├── BoutonFiltreDate.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── variants.ts
+│   │   │   │   ├── bouton-menu
+│   │   │   │   │   ├── BoutonMenu.stories.tsx
+│   │   │   │   │   ├── BoutonMenu.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── button
+│   │   │   │   │   ├── Button.stories.tsx
 │   │   │   │   │   ├── Button.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── callout
@@ -527,19 +606,81 @@
 │   │   │   │   ├── card
 │   │   │   │   │   ├── Card.tsx
 │   │   │   │   │   └── index.ts
-│   │   │   │   ├── data-table
-│   │   │   │   │   ├── data-table-column-header.tsx
-│   │   │   │   │   ├── data-table-faceted-filter.tsx
-│   │   │   │   │   ├── data-table-pagination.tsx
-│   │   │   │   │   ├── data-table-toolbar.tsx
-│   │   │   │   │   └── data-table.tsx
+│   │   │   │   ├── conformite
+│   │   │   │   │   ├── Conformite.stories.tsx
+│   │   │   │   │   ├── Conformite.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── error
+│   │   │   │   │   ├── ErrorCard.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── icon
+│   │   │   │   │   ├── Icon.stories.tsx
+│   │   │   │   │   ├── Icon.tsx
+│   │   │   │   │   ├── custom-icons
+│   │   │   │   │   │   └── dsfr
+│   │   │   │   │   │       ├── EraserFill1.tsx
+│   │   │   │   │   │       ├── EraserLine1.tsx
+│   │   │   │   │   │       ├── FrAccessibilityFill.tsx
+│   │   │   │   │   │       ├── FrAccessibilityLine.tsx
+│   │   │   │   │   │       ├── FrAlertWarning2Fill.tsx
+│   │   │   │   │   │       ├── FrAlertWarningFill.tsx
+│   │   │   │   │   │       ├── FrArrowLeftSFirstLine.tsx
+│   │   │   │   │   │       ├── FrArrowLeftSLineDouble.tsx
+│   │   │   │   │   │       ├── FrArrowRightSLastLine.tsx
+│   │   │   │   │   │       ├── FrArrowRightSLineDouble.tsx
+│   │   │   │   │   │       ├── FrAvalanchesFill.tsx
+│   │   │   │   │   │       ├── FrAvalanchesLine.tsx
+│   │   │   │   │   │       ├── FrBold.tsx
+│   │   │   │   │   │       ├── FrCapslockLine.tsx
+│   │   │   │   │   │       ├── FrDailymotionFill.tsx
+│   │   │   │   │   │       ├── FrDailymotionLine.tsx
+│   │   │   │   │   │       ├── FrEarOffFill.tsx
+│   │   │   │   │   │       ├── FrEarOffLine.tsx
+│   │   │   │   │   │       ├── FrEqualCircleFill.tsx
+│   │   │   │   │   │       ├── FrErrorFill.tsx
+│   │   │   │   │   │       ├── FrErrorLine.tsx
+│   │   │   │   │   │       ├── FrHighlight.tsx
+│   │   │   │   │   │       ├── FrInfoFill.tsx
+│   │   │   │   │   │       ├── FrInfoLine.tsx
+│   │   │   │   │   │       ├── FrMentalDisabilitiesFill.tsx
+│   │   │   │   │   │       ├── FrMentalDisabilitiesLine.tsx
+│   │   │   │   │   │       ├── FrQuoteFill.tsx
+│   │   │   │   │   │       ├── FrQuoteLine.tsx
+│   │   │   │   │   │       ├── FrSignLanguageFill.tsx
+│   │   │   │   │   │       ├── FrSignLanguageLine.tsx
+│   │   │   │   │   │       ├── FrSubmersionFill.tsx
+│   │   │   │   │   │       ├── FrSubmersionLine.tsx
+│   │   │   │   │   │       ├── FrSuccessFill.tsx
+│   │   │   │   │   │       ├── FrSuccessLine.tsx
+│   │   │   │   │   │       ├── FrThemeFill.tsx
+│   │   │   │   │   │       ├── FrTiktokFill.tsx
+│   │   │   │   │   │       ├── FrTiktokLine.tsx
+│   │   │   │   │   │       ├── FrWarningFill.tsx
+│   │   │   │   │   │       ├── FrWarningLine.tsx
+│   │   │   │   │   │       ├── FranceFill.tsx
+│   │   │   │   │   │       ├── FranceLine.tsx
+│   │   │   │   │   │       ├── ProfilFill.tsx
+│   │   │   │   │   │       ├── ProfilLine.tsx
+│   │   │   │   │   │       ├── UserSettingFill.tsx
+│   │   │   │   │   │       ├── UserSettingLine.tsx
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── input
+│   │   │   │   │   ├── Input.stories.tsx
 │   │   │   │   │   ├── Input.tsx
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── search-input
+│   │   │   │   │   ├── SearchInput.tsx
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── spinner.tsx
-│   │   │   │   └── table
-│   │   │   │       └── table.tsx
+│   │   │   │   └── tag
+│   │   │   │       ├── Tag.stories.tsx
+│   │   │   │       ├── Tag.tsx
+│   │   │   │       └── index.ts
+│   │   │   ├── styles
+│   │   │   │   ├── globals.css
+│   │   │   │   └── tailwind-theme.css
 │   │   │   └── utils
 │   │   │       ├── cn.ts
 │   │   │       └── index.ts
@@ -550,6 +691,7 @@
 │       │   ├── index.ts
 │       │   ├── pipelines
 │       │   │   ├── editorial
+│       │   │   │   ├── force-editorial.ts
 │       │   │   │   ├── persist-editorial.ts
 │       │   │   │   ├── persist-metadata.ts
 │       │   │   │   ├── save.ts
@@ -557,7 +699,8 @@
 │       │   │   ├── ingestion
 │       │   │   │   ├── di-ingestion.ts
 │       │   │   │   ├── di-single-record.ts
-│       │   │   │   └── force-arbitration.ts
+│       │   │   │   ├── force-arbitration.ts
+│       │   │   │   └── force-metadata-only.ts
 │       │   │   ├── publication
 │       │   │   │   ├── archive.ts
 │       │   │   │   ├── publication.ts
@@ -571,6 +714,7 @@
 │       │   │   │   ├── get-editorial-record-id.ts
 │       │   │   │   └── supabase.ts
 │       │   │   ├── editorial
+│       │   │   │   ├── force-editorial-step.ts
 │       │   │   │   ├── persist-editorial-report.ts
 │       │   │   │   ├── persist-metadata-report.ts
 │       │   │   │   ├── save-document.ts
@@ -605,6 +749,7 @@
 │   ├── copy-schema.ts
 │   ├── create-di-ingestion-records.ts
 │   ├── extract-random-records.ts
+│   ├── force-metadata-reports.ts
 │   ├── generate-json.ts
 │   ├── generate-md.ts
 │   ├── ingest-di.ts
@@ -708,7 +853,14 @@
 │   │   ├── 20260226100000_optimize_indexes.sql
 │   │   ├── 20260303100000_publication_records_replica_identity.sql
 │   │   ├── 20260303110000_translation_records_replica_identity.sql
-│   │   └── 20260311120000_fix_workflow_status_terminal_states.sql
+│   │   ├── 20260311120000_fix_workflow_status_terminal_states.sql
+│   │   ├── 20260318120000_enable_realtime_letta_reports.sql
+│   │   ├── 20260318130000_letta_reports_replica_identity.sql
+│   │   ├── 20260318140000_add_generating_status_to_letta_reports.sql
+│   │   ├── 20260319130000_add_sortable_fields_to_workflows_enriched.sql
+│   │   ├── 20260405120000_fix_claim_di_audit_targets_backlog_logic.sql
+│   │   ├── 20260416150000_add_word_count_to_workflows_enriched.sql
+│   │   └── 20260416150001_add_publication_records_composite_index.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -725,4 +877,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-183 directories, 544 files
+203 directories, 676 files
