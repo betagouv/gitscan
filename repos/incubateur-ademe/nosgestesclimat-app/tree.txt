@@ -8,16 +8,20 @@
 │   ├── actions
 │   │   ├── deploy-scalingo
 │   │   │   └── action.yaml
-│   │   └── setup
+│   │   ├── setup
+│   │   │   └── action.yml
+│   │   └── setup-playwright
 │   │       └── action.yml
 │   ├── scripts
+│   │   ├── scalingo-ensure-review-app.sh
 │   │   ├── scalingo-monitor-deployment.sh
 │   │   └── scalingo-trigger-deployment.sh
 │   └── workflows
 │       ├── common:create-release-note.yaml
+│       ├── common:deploy-preview.yaml
 │       ├── common:deploy.yaml
-│       ├── common:e2e.yaml
 │       ├── server:pull-request.yml
+│       ├── site:e2e.yaml
 │       ├── site:generate-pr-comment.yaml
 │       ├── site:storybook.yaml
 │       └── site:tests.yaml
@@ -2182,4 +2186,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-541 directories, 1688 files
+542 directories, 1691 files
