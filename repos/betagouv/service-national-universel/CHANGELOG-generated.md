@@ -1,14 +1,14 @@
 ## Changelog : service-national-universel (30 derniers jours, au 27 mars 2026)
 
 ### Résumé
-Ce changelog couvre les évolutions du Service National Universel sur les 30 derniers jours. Les mises à jour incluent des corrections de problèmes liés aux déploiements et des améliorations de la base de connaissances concernant les séjours SNU et les ressources d'engagement pour 2025.
+Ce changelog couvre les évolutions du Service National Universel sur les 30 derniers jours. Les principales améliorations concernent la correction de problèmes de déploiement et la mise à jour des informations relatives aux séjours SNU pour 2025, incluant des ressources pour l'engagement.
 
 ### Évolutions fonctionnelles
-- Mise à jour du message concernant les séjours SNU dans la base de connaissances, avec ajout de ressources d'engagement pour 2025. [#5261](https://github.com/betagouv/service-national-universel/issues/5261)
-- Correction de problèmes de déploiement dans l'application et l'administration. [#5262](https://github.com/betagouv/service-national-universel/issues/5262)
+- Mise à jour du message concernant les séjours SNU pour l'année 2025, avec ajout de ressources pour l'engagement des volontaires. [#5261](https://github.com/betagouv/service-national-universel/issues/5261)
+- Correction de problèmes liés aux déploiements de l'application et de l'administration. [#5262](https://github.com/betagouv/service-national-universel/issues/5262)
 
 ### Évolutions techniques
-*(Aucune évolution technique significative n'a été identifiée dans les commits récents)*
+Ce changelog ne contient pas d'informations sur des évolutions techniques majeures.
 
 ### Autres changements
-*(Aucun autre changement significatif n'a été identifié)*
+Ce changelog ne contient pas d'autres changements significatifs.
