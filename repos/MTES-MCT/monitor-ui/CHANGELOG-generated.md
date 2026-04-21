@@ -1,21 +1,16 @@
-## Changelog : monitor-ui (30 derniers jours)
+## Changelog : monitor-ui (30 derniers jours, au 13 avril 2026)
 
 ### Résumé
-Les récentes mises à jour de monitor-ui se concentrent principalement sur l'amélioration des performances et la correction de bugs, notamment au niveau du composant "check tree picker". Des améliorations de l'interface utilisateur et des corrections de bugs mineurs ont également été apportées, ainsi que des ajouts d'icônes et de couleurs réglementaires.
+Cette version apporte des améliorations visuelles avec l'ajout de nouvelles couleurs pour les icônes, des corrections de bugs concernant l'affichage des champs de saisie de date et de temps, ainsi que des refactorings pour améliorer la qualité du code et la flexibilité des composants.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug dans le composant `DatePicker` qui empêchait la fermeture correcte des calendriers en cliquant en dehors. [#64740cc](https://github.com/MTES-MCT/monitor-ui/commit/64740ccf300e0f697a447b2db122807ebbf3cf18)
-- Amélioration des performances du composant `check tree picker` grâce à un rendu paresseux des options et à l'ajout d'un debounce pour la recherche.
-- Ajout d'icônes pour les onglets des navires. [#19d2fc9](https://github.com/MTES-MCT/monitor-ui/commit/19d2fc9040b8d28c2cfe0cc0518514e882a76e75)
-- Ajout d'une nouvelle icône "Copier". [#d717e9f](https://github.com/MTES-MCT/monitor-ui/commit/d717e9f5103750ca56f8cf276e5bb68293bf95a8)
-- Ajout de nouvelles couleurs réglementaires. [#c3f5ca4](https://github.com/MTES-MCT/monitor-ui/commit/c3f5ca48b83c04694cf77a81cd7e25fac0cb0481)
+- Ajout de couleurs secondaires et tertiaires pour les icônes, permettant une plus grande personnalisation de l'interface utilisateur. [#6ac0078](https://github.com/MTES-MCT/monitor-ui/commit/6ac007805b99387aa09696043279607afaf529c4)
+- Ajout d'une nouvelle icône "Load". [#57f388a](https://github.com/MTES-MCT/monitor-ui/commit/57f388a)
 
 ### Évolutions techniques
-- Correction du type de retour de la fonction `onChange` dans le composant `check tree picker`. [#eb6a504](https://github.com/MTES-MCT/monitor-ui/commit/eb6a504b618be999f3e539c645a1741eadd5b890)
-- Ajout de tests unitaires pour le composant `check tree picker`. [#ade5b29](https://github.com/MTES-MCT/monitor-ui/commit/ade5b299612544019f6826704619684393581674)
-- Refactoring du composant `MultiZoneEditor` renommé en `MultiLocationEditor` avec modification des props. [#c41b601](https://github.com/MTES-MCT/monitor-ui/commit/c41b60112a702e5f3097d5a964f1940198999364)
-- Mise en place de variables d'environnement pour la gestion des tokens NPM. [#626ac09](https://github.com/MTES-MCT/monitor-ui/commit/626ac095ce23dc05b48cb8be3330d5416c0f2ee7) et [#eee2b56](https://github.com/MTES-MCT/monitor-ui/commit/eee2b566c882a0da9f4823439b651641d9b73575)
+- Refactoring du composant `MultiSelect.tsx` pour améliorer sa structure et sa maintenabilité. [#428a22f](https://github.com/MTES-MCT/monitor-ui/commit/428a22f9a47a18467463541e186927717640878f)
+- Suppression d'une propriété optionnelle inutile dans le composant `fields`, simplifiant ainsi le code. [#dec24a7](https://github.com/MTES-MCT/monitor-ui/commit/dec24a7)
+- Correction de l'affichage des champs de saisie de date et de temps lorsque l'option `isCalendarTop` est activée. [#986360c](https://github.com/MTES-MCT/monitor-ui/commit/986360c88730ba36a3e3d78d35d4bf44aeaf0fee)
 
 ### Autres changements
-- Correction d'un bug de comparaison dans le composant `check tree picker`. [#8bf8dd9](https://github.com/MTES-MCT/monitor-ui/commit/8bf8dd90712477f84e5982443402fc5f9a74d8ce)
-- Vérification de la présence du fichier `.npmrc`. [#a5f3b56](https://github.com/MTES-MCT/monitor-ui/commit/a5f3b5645d6)
+- Mises à jour de version (24.38.3, 24.38.4, 24.44.0, 24.45.0, 24.47.0, 24.48.0)
