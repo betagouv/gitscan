@@ -1,8 +1,8 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Messages est une boîte de réception collaborative pour La Suite territoriale. Elle permet aux équipes de collaborer sur les emails à travers des boîtes de réception partagées ou personnelles.",
-  "language": "TypeScript",
+  "description": "Messages est une boîte de réception collaborative pour La Suite territoriale. Il permet aux équipes de collaborer sur les e-mails via des boîtes de réception partagées ou personnelles.",
+  "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
@@ -10,38 +10,40 @@
     "Recherche & Filtres",
     "Notifications & Alertes",
     "Collaboration & Workflow",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "React",
+    "Django",
+    "Django Rest Framework",
     "Next.js",
     "BlockNote.js",
-    "Django Rest Framework",
     "Postfix",
+    "Redis",
+    "Celery",
     "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "saml"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-04-17T10:00:56+02:00",
+  "tests": "Tests unitaires et d'intégration",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-04-20T15:04:34+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
