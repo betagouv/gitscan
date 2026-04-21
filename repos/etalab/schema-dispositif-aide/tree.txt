@@ -3,11 +3,72 @@
 │   └── workflows
 │       ├── assert_version.py
 │       ├── assert_version.yml
-│       └── frictionless_tests.yml
+│       └── build_and_validate_schemas.yml
+├── .gitignore
 ├── CHANGELOG.md
+├── DEVELOPMENT.md
 ├── LICENSE.md
 ├── README.md
-├── exemple-valide.csv
+├── build
+│   ├── .gitkeep
+│   ├── exemples
+│   │   ├── exemple-complet.csv
+│   │   └── par_schema
+│   │       └── exemple-dispositif-aide.csv
+│   └── schemas
+│       └── dispositif-aide.json
+├── datapackage.json
 ├── requirements.txt
-└── schema.json
-3 directories, 9 files
+├── schema
+│   ├── core
+│   │   └── schema-core.json
+│   └── extensions
+│       ├── cible
+│       │   └── .gitkeep
+│       └── usage
+│           └── .gitkeep
+├── src
+│   ├── build_schemas.py
+│   ├── constants.py
+│   ├── models.py
+│   ├── schema_builder.py
+│   ├── schema_example_generator.py
+│   ├── schema_merger.py
+│   ├── schema_repository.py
+│   └── validate_schemas.py
+└── tests
+    ├── .gitignore
+    ├── build
+    │   └── .gitignore
+    ├── expected
+    │   ├── exemples
+    │   │   ├── exemple-complet.csv
+    │   │   └── par_schema
+    │   │       ├── exemple-dispositif-aide-activation-pilotage.csv
+    │   │       ├── exemple-dispositif-aide-activation.csv
+    │   │       ├── exemple-dispositif-aide-pilotage.csv
+    │   │       ├── exemple-dispositif-aide-professionnels-activation-pilotage.csv
+    │   │       ├── exemple-dispositif-aide-professionnels-activation.csv
+    │   │       ├── exemple-dispositif-aide-professionnels-pilotage.csv
+    │   │       ├── exemple-dispositif-aide-professionnels.csv
+    │   │       └── exemple-dispositif-aide.csv
+    │   └── schemas
+    │       ├── dispositif-aide-activation-pilotage.json
+    │       ├── dispositif-aide-activation.json
+    │       ├── dispositif-aide-pilotage.json
+    │       ├── dispositif-aide-professionnels-activation-pilotage.json
+    │       ├── dispositif-aide-professionnels-activation.json
+    │       ├── dispositif-aide-professionnels-pilotage.json
+    │       ├── dispositif-aide-professionnels.json
+    │       └── dispositif-aide.json
+    ├── schema
+    │   ├── core
+    │   │   └── schema-core.json
+    │   └── extensions
+    │       ├── cible
+    │       │   └── professionnels.json
+    │       └── usage
+    │           ├── activation.json
+    │           └── pilotage.json
+    └── test_schema_builder.py
+24 directories, 49 files
