@@ -51,6 +51,7 @@
 ├── docs
 │   ├── RECURRENCE_TESTS.md
 │   ├── architecture.md
+│   ├── channels.md
 │   ├── entitlements.md
 │   ├── freebusy.md
 │   ├── invitations.md
@@ -61,6 +62,7 @@
 ├── env.d
 │   └── development
 │       ├── backend.defaults
+│       ├── caldav-test.defaults
 │       ├── caldav.defaults
 │       ├── crowdin.defaults
 │       ├── frontend.defaults
@@ -128,6 +130,7 @@
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_organization_default_sharing_level.py
+    │   │   │   ├── 0003_channel_scope_level.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -144,6 +147,10 @@
     │   │   ├── task_utils.py
     │   │   ├── tasks.py
     │   │   ├── templates
+    │   │   │   ├── admin
+    │   │   │   │   └── core
+    │   │   │   │       └── channel
+    │   │   │   │           └── regenerated_tokens.html
     │   │   │   ├── emails
     │   │   │   │   ├── calendar_invitation.html
     │   │   │   │   ├── calendar_invitation.txt
@@ -472,11 +479,15 @@
     │   │   │   │   │   │   │   └── useChannels.ts
     │   │   │   │   │   │   ├── components
     │   │   │   │   │   │   │   ├── ChannelCard.tsx
+    │   │   │   │   │   │   │   ├── ChannelForm.tsx
     │   │   │   │   │   │   │   ├── ChannelList.tsx
-    │   │   │   │   │   │   │   ├── CreateChannelModal.tsx
+    │   │   │   │   │   │   │   ├── ChannelModal.tsx
+    │   │   │   │   │   │   │   ├── ChannelTypePicker.tsx
     │   │   │   │   │   │   │   ├── DeleteChannelModal.tsx
     │   │   │   │   │   │   │   ├── Integrations.scss
-    │   │   │   │   │   │   │   └── TokenRevealBox.tsx
+    │   │   │   │   │   │   │   ├── ScopeEditor.tsx
+    │   │   │   │   │   │   │   ├── TokenRevealBox.tsx
+    │   │   │   │   │   │   │   └── TokenRevealModal.tsx
     │   │   │   │   │   │   └── types.ts
     │   │   │   │   │   ├── layouts
     │   │   │   │   │   │   ├── components
@@ -594,4 +605,4 @@
     │   └── package.json
     └── proxy
         └── Caddyfile
-127 directories, 469 files
+130 directories, 477 files
