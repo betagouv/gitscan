@@ -1,26 +1,27 @@
-## Changelog : people (30 derniers jours, au 15 avril 2026)
+## Changelog : people (30 derniers jours, au 20 avril 2026)
 
-### Résumé
-Les dernières mises à jour de People se concentrent sur l'amélioration de l'expérience utilisateur, notamment en clarifiant les messages d'erreur et en ajustant le comportement de redirection. Des corrections de bugs ont également été apportées pour assurer la stabilité et la fiabilité de l'application, ainsi que des améliorations de sécurité avec la mise à jour de plusieurs dépendances.
+Ce mois-ci, les améliorations se concentrent sur la sécurité, l'expérience utilisateur et la gestion des invitations. Une modification importante est le passage à l'envoi de liens de connexion plutôt que de mots de passe, renforçant ainsi la sécurité. Des corrections ont également été apportées pour éviter des potentielles failles de sécurité et améliorer la gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- Amélioration du message d'erreur affiché lorsqu'il n'y a pas d'adresse email secondaire associée à une boîte aux lettres. [#1108](https://github.com/suitenumerique/people/issues/1108)
-- Amélioration du message affiché lorsqu'il n'y a pas d'alias sur la page de domaine.
-- Priorisation des domaines de messagerie comme page d'atterrissage par défaut après la redirection.
-- Export des informations de contact du domaine pour l'administration.
-- Les tests d'accès via invitation vérifient maintenant que le rôle attendu est bien attribué lors de la création à partir d'une adresse email.
-- Mise à jour du logo dans le modèle d'email d'invitation. [#1085](https://github.com/suitenumerique/people/issues/1085)
+
+- ✨ Envoi de liens de connexion au lieu des mots de passe pour une meilleure sécurité.
+- 🧑‍💻 Possibilité d'exporter les informations de contact d'un domaine depuis l'interface d'administration.
+- 💬 Amélioration du message affiché lorsqu'aucun alias n'est configuré pour un domaine.
+- ✅ Les tests garantissent que les accès créés par email ont le rôle attendu.
+- 🐛 Correction de l'affichage de la langue actuelle dans le menu de profil [#1108].
+- 🐛 Amélioration du message d'erreur lorsque l'utilisateur n'a pas d'adresse email secondaire.
 
 ### Évolutions techniques
-- Mise à jour de Pillow à la version 12.2.0 pour des raisons de sécurité.
-- Refactorisation de l'interface utilisateur avec la nouvelle version du UI Kit (regie v2). [#1083](https://github.com/suitenumerique/people/issues/1083)
-- Mise à jour de la configuration de l'interface utilisateur pour la modale de domaine. [#1089](https://github.com/suitenumerique/people/issues/1089)
-- Ajout d'une étape de build du frontend lors du bootstrap.
-- Correction d'un problème d'importation pour les boîtes aux lettres fonctionnelles.
-- Correction du chemin de redirection par défaut pour revenir à `/mail-domains/`.
-- Suppression d'une bordure inutile dans l'interface utilisateur. [#1107](https://github.com/suitenumerique/people/issues/1107)
+
+- 🔒 Correction d'une potentielle escalade de privilèges lors de l'invitation d'utilisateurs.
+- ⬆️ Mise à jour de la bibliothèque `dimail` vers la version 0.6.5.
+- ⬆️ Mise à jour de la bibliothèque `pillow` vers la version 12.2.0 pour corriger des failles de sécurité.
+- 🐛 Correction d'un problème d'importation pour les boîtes aux lettres fonctionnelles.
+- 🐛 Correction du chargement de la langue dans le menu de profil.
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité : Django, Next.js, pytest, lodash, requests.
-- Mise à jour des chaînes de traduction.
-- Publication de la version 1.24.0.
+
+- 🌐 Mise à jour des chaînes de traduction.
+- 📝 Mise à jour de la documentation concernant `dimail`.
+- 🔖 Publication de la version 1.25.0.
+- 🔖 Publication de la version 1.24.0.
