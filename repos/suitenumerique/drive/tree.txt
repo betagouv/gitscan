@@ -83,6 +83,8 @@
 │       └── log4js
 │           └── production.json
 ├── docs
+│   ├── architecture
+│   │   └── explorer-selection-store.md
 │   ├── architecture.md
 │   ├── assets
 │   │   ├── banner-drive.png
@@ -556,6 +558,7 @@
     │   │   │   │   │   │   │   │   ├── AppExplorerBreadcrumbs.tsx
     │   │   │   │   │   │   │   │   ├── AppExplorerGrid.tsx
     │   │   │   │   │   │   │   │   ├── AppExplorerInner.tsx
+    │   │   │   │   │   │   │   │   ├── AppExplorerSelectionBarGate.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerFilters.scss
     │   │   │   │   │   │   │   │   ├── ExplorerFilters.tsx
     │   │   │   │   │   │   │   │   ├── ExplorerSearchButton.tsx
@@ -568,6 +571,7 @@
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridBreadcrumbs.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridMobileCell.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridNameCell.tsx
+    │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridRow.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerGridUpdatedAtCell.tsx
     │   │   │   │   │   │   │   │   ├── EmbeddedExplorerSearchInput.tsx
     │   │   │   │   │   │   │   │   ├── cells
@@ -647,6 +651,8 @@
     │   │   │   │   │   │   │   ├── useTableKeyboardNavigation.ts
     │   │   │   │   │   │   │   ├── useTreeUtils.ts
     │   │   │   │   │   │   │   └── useUpload.tsx
+    │   │   │   │   │   │   ├── stores
+    │   │   │   │   │   │   │   └── selectionStore.ts
     │   │   │   │   │   │   ├── types
     │   │   │   │   │   │   │   ├── columns.ts
     │   │   │   │   │   │   │   └── viewConfig.ts
@@ -775,55 +781,62 @@
     │   │   │   │   │   │   ├── cunningham
     │   │   │   │   │   │   │   └── useCunninghamTheme.ts
     │   │   │   │   │   │   └── preview
-    │   │   │   │   │   │       ├── audio-player
-    │   │   │   │   │   │       │   ├── AudioPlayer.tsx
-    │   │   │   │   │   │       │   └── audio-player.scss
+    │   │   │   │   │   │       ├── FilesPreview.scss
+    │   │   │   │   │   │       ├── FilesPreview.tsx
     │   │   │   │   │   │       ├── components
+    │   │   │   │   │   │       │   ├── ZoomControls
+    │   │   │   │   │   │       │   │   └── ZoomControls.tsx
     │   │   │   │   │   │       │   ├── controls
     │   │   │   │   │   │       │   │   ├── PreviewControls.scss
     │   │   │   │   │   │       │   │   └── PreviewControls.tsx
     │   │   │   │   │   │       │   ├── duration-bar
     │   │   │   │   │   │       │   │   ├── DurationBar.scss
     │   │   │   │   │   │       │   │   └── DurationBar.tsx
+    │   │   │   │   │   │       │   ├── preview-message
+    │   │   │   │   │   │       │   │   ├── PreviewMessage.scss
+    │   │   │   │   │   │       │   │   └── PreviewMessage.tsx
     │   │   │   │   │   │       │   └── volume-bar
     │   │   │   │   │   │       │       ├── VolumeBar.scss
     │   │   │   │   │   │       │       └── VolumeBar.tsx
     │   │   │   │   │   │       ├── custom-files-preview
     │   │   │   │   │   │       │   └── CustomFilesPreview.tsx
-    │   │   │   │   │   │       ├── error
-    │   │   │   │   │   │       │   ├── ErrorPreview.scss
-    │   │   │   │   │   │       │   └── ErrorPreview.tsx
-    │   │   │   │   │   │       ├── files-preview
-    │   │   │   │   │   │       │   ├── FilesPreview.tsx
-    │   │   │   │   │   │       │   └── files-preview.scss
-    │   │   │   │   │   │       ├── image-viewer
-    │   │   │   │   │   │       │   ├── ImageViewer.scss
-    │   │   │   │   │   │       │   └── ImageViewer.tsx
-    │   │   │   │   │   │       ├── not-supported
-    │   │   │   │   │   │       │   ├── NotSupportedPreview.scss
-    │   │   │   │   │   │       │   └── NotSupportedPreview.tsx
-    │   │   │   │   │   │       ├── pdf-preview
-    │   │   │   │   │   │       │   ├── OutdatedBrowserPreview.tsx
-    │   │   │   │   │   │       │   ├── PdfControls.tsx
-    │   │   │   │   │   │       │   ├── PdfPageViewer.tsx
-    │   │   │   │   │   │       │   ├── PdfThumbnailSidebar.tsx
-    │   │   │   │   │   │       │   ├── PreviewPdf.scss
-    │   │   │   │   │   │       │   ├── PreviewPdf.tsx
-    │   │   │   │   │   │       │   ├── pdfOptions.ts
-    │   │   │   │   │   │       │   ├── pdfPolyfills.ts
-    │   │   │   │   │   │       │   ├── useDebouncedResize.ts
-    │   │   │   │   │   │       │   ├── usePdfNavigation.ts
-    │   │   │   │   │   │       │   └── useRedirectDisclaimer.tsx
     │   │   │   │   │   │       ├── preview.scss
-    │   │   │   │   │   │       ├── suspicious
-    │   │   │   │   │   │       │   ├── SuspiciousPreview.scss
-    │   │   │   │   │   │       │   └── SuspiciousPreview.tsx
-    │   │   │   │   │   │       ├── video-player
-    │   │   │   │   │   │       │   ├── VideoPlayer.scss
-    │   │   │   │   │   │       │   └── VideoPlayer.tsx
-    │   │   │   │   │   │       └── wopi
-    │   │   │   │   │   │           ├── WopiEditor.scss
-    │   │   │   │   │   │           └── WopiEditor.tsx
+    │   │   │   │   │   │       ├── utils
+    │   │   │   │   │   │       │   └── printImage.ts
+    │   │   │   │   │   │       └── viewers
+    │   │   │   │   │   │           ├── audio-player
+    │   │   │   │   │   │           │   ├── AudioPlayer.scss
+    │   │   │   │   │   │           │   └── AudioPlayer.tsx
+    │   │   │   │   │   │           ├── error
+    │   │   │   │   │   │           │   └── ErrorPreview.tsx
+    │   │   │   │   │   │           ├── image-viewer
+    │   │   │   │   │   │           │   ├── ImageViewer.scss
+    │   │   │   │   │   │           │   └── ImageViewer.tsx
+    │   │   │   │   │   │           ├── not-supported
+    │   │   │   │   │   │           │   └── NotSupportedPreview.tsx
+    │   │   │   │   │   │           ├── pdf-preview
+    │   │   │   │   │   │           │   ├── OutdatedBrowserPreview.tsx
+    │   │   │   │   │   │           │   ├── PdfControls.tsx
+    │   │   │   │   │   │           │   ├── PdfPageViewer.tsx
+    │   │   │   │   │   │           │   ├── PdfPreview.scss
+    │   │   │   │   │   │           │   ├── PdfPreview.tsx
+    │   │   │   │   │   │           │   ├── PdfThumbnailSidebar.tsx
+    │   │   │   │   │   │           │   ├── pdfConsts.tsx
+    │   │   │   │   │   │           │   ├── pdfOptions.ts
+    │   │   │   │   │   │           │   ├── pdfPolyfills.ts
+    │   │   │   │   │   │           │   ├── useDebouncedResize.ts
+    │   │   │   │   │   │           │   ├── usePdfNavigation.ts
+    │   │   │   │   │   │           │   └── useRedirectDisclaimer.tsx
+    │   │   │   │   │   │           ├── suspicious
+    │   │   │   │   │   │           │   └── SuspiciousPreview.tsx
+    │   │   │   │   │   │           ├── video-player
+    │   │   │   │   │   │           │   ├── VideoPlayer.scss
+    │   │   │   │   │   │           │   └── VideoPlayer.tsx
+    │   │   │   │   │   │           └── wopi
+    │   │   │   │   │   │               ├── WopiEditorFrame.scss
+    │   │   │   │   │   │               ├── WopiEditorFrame.tsx
+    │   │   │   │   │   │               ├── WopiOpenInEditor.tsx
+    │   │   │   │   │   │               └── openWopi.ts
     │   │   │   │   │   └── users
     │   │   │   │   │       ├── hooks
     │   │   │   │   │       │   └── useUserQueries.tsx
@@ -851,11 +864,13 @@
     │   │   │   │   │   │       └── index.tsx
     │   │   │   │   │   ├── index.scss
     │   │   │   │   │   ├── index.tsx
-    │   │   │   │   │   └── sdk
-    │   │   │   │   │       ├── explorer
-    │   │   │   │   │       │   └── index.tsx
-    │   │   │   │   │       ├── index.scss
-    │   │   │   │   │       └── index.tsx
+    │   │   │   │   │   ├── sdk
+    │   │   │   │   │   │   ├── explorer
+    │   │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   │   ├── index.scss
+    │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   └── wopi
+    │   │   │   │   │       └── [id].tsx
     │   │   │   │   ├── styles
     │   │   │   │   │   ├── cunningham-tokens-sass.scss
     │   │   │   │   │   ├── cunningham-tokens.css
@@ -881,17 +896,29 @@
     │   │   │   │   │   │   ├── pdf_with_js_link.pdf
     │   │   │   │   │   │   ├── pdf_with_links.pdf
     │   │   │   │   │   │   ├── pv_cm.pdf
-    │   │   │   │   │   │   └── test-image.heic
+    │   │   │   │   │   │   ├── test-audio.mp3
+    │   │   │   │   │   │   ├── test-image.heic
+    │   │   │   │   │   │   ├── test-image.png
+    │   │   │   │   │   │   ├── test-unsupported.bin
+    │   │   │   │   │   │   └── test-video.mp4
     │   │   │   │   │   ├── breadcrumbs-from-page.spec.ts
     │   │   │   │   │   ├── config-custom-assets.spec.ts
     │   │   │   │   │   ├── context-menu.spec.ts
+    │   │   │   │   │   ├── create-fallback-to-my-files.spec.ts
     │   │   │   │   │   ├── create-file-from-template.spec.ts
     │   │   │   │   │   ├── create-folder.spec.ts
     │   │   │   │   │   ├── custom-columns.spec.ts
     │   │   │   │   │   ├── db.setup.ts
     │   │   │   │   │   ├── delete-item.spec.ts
     │   │   │   │   │   ├── duplicate-item.spec.ts
-    │   │   │   │   │   ├── heic-file-preview.spec.ts
+    │   │   │   │   │   ├── file-preview
+    │   │   │   │   │   │   ├── audio-preview.spec.ts
+    │   │   │   │   │   │   ├── file-preview-actions.spec.ts
+    │   │   │   │   │   │   ├── heic-file-preview.spec.ts
+    │   │   │   │   │   │   ├── image-preview.spec.ts
+    │   │   │   │   │   │   ├── pdf-preview.spec.ts
+    │   │   │   │   │   │   ├── unsupported-file-preview.spec.ts
+    │   │   │   │   │   │   └── video-preview.spec.ts
     │   │   │   │   │   ├── item
     │   │   │   │   │   │   └── right-content-info.spec.ts
     │   │   │   │   │   ├── language-sync.spec.ts
@@ -900,7 +927,6 @@
     │   │   │   │   │   ├── mobile-actions.spec.ts
     │   │   │   │   │   ├── move-item.spec.ts
     │   │   │   │   │   ├── noindex.spec.ts
-    │   │   │   │   │   ├── pdf-preview.spec.ts
     │   │   │   │   │   ├── redirect-401.spec.ts
     │   │   │   │   │   ├── release-note.spec.ts
     │   │   │   │   │   ├── search.spec.ts
@@ -925,10 +951,7 @@
     │   │   │   │   │   ├── utils-item.ts
     │   │   │   │   │   ├── utils-navigate.ts
     │   │   │   │   │   ├── utils-tree.ts
-    │   │   │   │   │   ├── wopi.spec.ts
-    │   │   │   │   │   └── wopi.spec.ts-snapshots
-    │   │   │   │   │       ├── empty-doc-canvas-after-paste-chromium.png
-    │   │   │   │   │       └── empty-doc-canvas-chromium.png
+    │   │   │   │   │   └── wopi.spec.ts
     │   │   │   │   ├── empty-doc-canvas-after-paste-chromium.png
     │   │   │   │   └── empty-doc-canvas-chromium.png
     │   │   │   ├── package.json
@@ -1023,4 +1046,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-242 directories, 783 files
+248 directories, 800 files

@@ -1,30 +1,25 @@
-## Changelog : drive (30 derniers jours, au 16 avril 2026)
+## Changelog : drive (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a apporté des améliorations significatives à l'expérience utilisateur, notamment l'ajout de la duplication d'éléments, l'intégration d'un visualiseur PDF, et des améliorations de l'interface utilisateur pour les actions mobiles et les colonnes personnalisables. Des corrections de bugs et des optimisations de performance ont également été réalisées, ainsi qu'une amélioration de la sécurité.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience de prévisualisation des fichiers, en particulier pour les PDF et les images. De nouvelles fonctionnalités comme la duplication d'éléments et la personnalisation des colonnes dans l'explorateur de fichiers ont également été ajoutées, ainsi que des corrections de bugs pour améliorer la stabilité et la fiabilité de la plateforme. Des optimisations de performance et des améliorations de l'infrastructure ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de duplication d'éléments (fichiers et dossiers) avec un préfixe "Copie de" [#238d6eb](https://github.com/suitenumerique/drive/commit/238d6eb).
-- Intégration d'un visualiseur PDF complet avec navigation par pages, zoom et barre de miniatures [#62df235](https://github.com/suitenumerique/drive/commit/62df235).
-- Amélioration de l'expérience d'upload de fichiers avec affichage de la progression, gestion des erreurs et possibilité d'annulation [#399c1a7](https://github.com/suitenumerique/drive/commit/399c1a7).
-- Ajout d'un menu d'actions sur mobile pour la page "Mes fichiers" [#0cc97d6](https://github.com/suitenumerique/drive/commit/0cc97d6).
-- Implémentation de colonnes personnalisables dans l'explorateur de fichiers, avec tri et configuration [#0686605](https://github.com/suitenumerique/drive/commit/0686605).
-- Possibilité de trier les éléments par date de création, nom du créateur et taille [#1441b4f](https://github.com/suitenumerique/drive/commit/1441b4f).
-- Ajout d'une commande pour purger les éléments supprimés définitivement [#ea811ca](https://github.com/suitenumerique/drive/commit/ea811ca).
+- Ajout de la possibilité de prévisualiser les fichiers PDF avec navigation par pages et zoom. [#3030f71](https://github.com/suitenumerique/drive/commit/3030f7189f177782025d9622603054654f46187a)
+- Amélioration de la prévisualisation des images avec possibilité d'impression via le navigateur. [#49c0821](https://github.com/suitenumerique/drive/commit/49c082163686792053678a94b560369737651698)
+- Implémentation de la duplication d'éléments (fichiers et dossiers). [#e817417](https://github.com/suitenumerique/drive/commit/e81741787b180956449967710f306512b559257e)
+- Ajout de la possibilité de personnaliser les colonnes affichées dans l'explorateur de fichiers. [#a4569a3](https://github.com/suitenumerique/drive/commit/a4569a33179646624900841705f616656859913f)
+- Amélioration de l'expérience d'upload avec affichage de la progression, gestion des erreurs et possibilité d'annulation. [#399c1a7](https://github.com/suitenumerique/drive/commit/399c1a768d89881455357884a2a9614235335f89)
+- Ajout d'un menu d'actions sur mobile pour faciliter l'accès aux fonctionnalités. [#0cc97d6](https://github.com/suitenumerique/drive/commit/0cc97d6180497852793648444646725851054949)
 
 ### Évolutions techniques
-- Mise à jour de Django en version 5.2.13 (correction de sécurité) [#d4a83b6](https://github.com/suitenumerique/drive/commit/d4a83b6).
-- Mise à jour de Pillow en version 12.2.0 (correction de sécurité) [#832725d](https://github.com/suitenumerique/drive/commit/832725d).
-- Amélioration de la configuration du workflow CI/CD pour pré-construire l'interface utilisateur et la servir via Nginx [#bdfade5](https://github.com/suitenumerique/drive/commit/bdfade5).
-- Optimisation des tests E2E avec parallélisation et mise en cache des navigateurs Playwright [#2099179](https://github.com/suitenumerique/drive/commit/2099179).
-- Refonte de l'architecture de l'upload de fichiers pour permettre l'annulation et une meilleure gestion des erreurs [#bdb5fcd](https://github.com/suitenumerique/drive/commit/bdb5fcd).
-- Utilisation de React Query pour la gestion des données du visualiseur PDF [#ee10b7b](https://github.com/suitenumerique/drive/commit/ee10b7b).
-- Amélioration de la configuration du serveur Nginx pour servir correctement les fichiers .mjs [#aca3adf](https://github.com/suitenumerique/drive/commit/aca3adf).
+- Refonte de la prévisualisation des fichiers pour une meilleure performance et maintenabilité. [#511ca27](https://github.com/suitenumerique/drive/commit/511ca2760636662002556691385553386409260d)
+- Mise en place d'un système de cache pour les navigateurs Playwright dans les tests E2E. [#d194b51](https://github.com/suitenumerique/drive/commit/d194b5166355819634496697317654614933092a)
+- Amélioration de l'infrastructure CI/CD pour un déploiement plus rapide et fiable. [#768f616](https://github.com/suitenumerique/drive/commit/768f6162b7391298361f89b34671c4b342645766) et [#bdfade5](https://github.com/suitenumerique/drive/commit/bdfade56683928008f99990261c9752c39114298)
+- Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections de sécurité et améliorations. [#8029d4f](https://github.com/suitenumerique/drive/commit/8029d4f85517939403571679394471571f299413) et [#d4a83b6](https://github.com/suitenumerique/drive/commit/d4a83b679311032644267864415c7179161b7a3e)
+- Optimisation de la configuration Nginx pour servir les fichiers statiques de manière plus efficace. [#aca3adf](https://github.com/suitenumerique/drive/commit/aca3adf2793385207664f43917918290f1824947)
 
 ### Autres changements
-- Mise à jour de la documentation pour inclure la configuration réseau locale [#622fb81](https://github.com/suitenumerique/drive/commit/622fb81).
-- Ajout de tests E2E pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la couverture de code et correction de problèmes signalés par SonarCloud [#51552ac](https://github.com/suitenumerique/drive/commit/51552ac).
-- Mise à jour des traductions pour les nouvelles fonctionnalités.
-- Nettoyage du code et suppression de code inutilisé.
-- Ajout de variables d'environnement pour configurer le comportement de PostHog en développement [#e132107](https://github.com/suitenumerique/drive/commit/e132107).
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et améliorations. [#30cfcc7](https://github.com/suitenumerique/drive/commit/30cfcc7466a21f953128045972b6a79025325181)
+- Ajout de tests E2E pour assurer la qualité et la stabilité des nouvelles fonctionnalités.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout d'une commande pour purger les éléments supprimés. [#ea811ca](https://github.com/suitenumerique/drive/commit/ea811ca541f111792489498624913663491c037a)
