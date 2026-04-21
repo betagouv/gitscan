@@ -71,6 +71,7 @@
 │       ├── mapper.py
 │       ├── models.py
 │       ├── postgresql_manager.py
+│       ├── reference_extractor.py
 │       ├── scripts
 │       │   └── ingest.py
 │       ├── tokenizer.py
@@ -86,7 +87,9 @@
     ├── Dockerfile
     ├── db
     │   └── migrations
-    │       └── 001_create_conversations.sql
+    │       ├── 001_create_conversations.sql
+    │       ├── 002_add_followup_exchanges.sql
+    │       └── 003_add_followup_count.sql
     ├── eslint.config.mjs
     ├── next.config.ts
     ├── package.json
@@ -123,7 +126,9 @@
     │   │   ├── global-error.tsx
     │   │   ├── layout.tsx
     │   │   ├── page.tsx
-    │   │   └── prompt-instructions
+    │   │   ├── prompt-instructions
+    │   │   │   └── page.tsx
+    │   │   └── statistiques
     │   │       └── page.tsx
     │   ├── constants.ts
     │   ├── hooks
@@ -177,12 +182,14 @@
     │   │   │   └── SimpleFeedback.tsx
     │   │   ├── home
     │   │   │   └── HomeContent.tsx
-    │   │   └── layout
-    │   │       ├── ClientHtml.tsx
-    │   │       └── LayoutWrapper.tsx
+    │   │   ├── layout
+    │   │   │   ├── ClientHtml.tsx
+    │   │   │   └── LayoutWrapper.tsx
+    │   │   └── statistiques
+    │   │       └── StatistiquesContent.tsx
     │   ├── types
     │   │   ├── next-auth.d.ts
     │   │   └── svg.d.ts
     │   └── types.ts
     └── tsconfig.json
-49 directories, 138 files
+51 directories, 143 files

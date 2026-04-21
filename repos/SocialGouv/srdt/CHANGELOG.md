@@ -1,3 +1,81 @@
+## [1.39.1](https://github.com/SocialGouv/srdt/compare/v1.39.0...v1.39.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* better followup placeholder ([#347](https://github.com/SocialGouv/srdt/issues/347)) ([c9a5cff](https://github.com/SocialGouv/srdt/commit/c9a5cff46f8c2b63f346d5f023b372c12d9b7e57))
+
+# [1.39.0](https://github.com/SocialGouv/srdt/compare/v1.38.3...v1.39.0) (2026-04-16)
+
+
+### Features
+
+* **api:** allow debug calls on /api/generate with bearer token ([#346](https://github.com/SocialGouv/srdt/issues/346)) ([92bade6](https://github.com/SocialGouv/srdt/commit/92bade68c291a815b4c25db63798cbb4c975aaa9))
+* **chat:** add convention collective badge on assistant messages ([#344](https://github.com/SocialGouv/srdt/issues/344)) ([8640a9c](https://github.com/SocialGouv/srdt/commit/8640a9c2651ec2e94b3207cace2d6c0276614415))
+
+## [1.38.3](https://github.com/SocialGouv/srdt/compare/v1.38.2...v1.38.3) (2026-04-16)
+
+
+### Bug Fixes
+
+* **api:** keep direct links to CC [#319](https://github.com/SocialGouv/srdt/issues/319) ([bf15e6b](https://github.com/SocialGouv/srdt/commit/bf15e6bd665fa92eae4f68a6fcad91db480dfa63))
+
+## [1.38.2](https://github.com/SocialGouv/srdt/compare/v1.38.1...v1.38.2) (2026-04-14)
+
+
+### Bug Fixes
+
+* **llm:** move to chatgpt to fix mistral response time ([#341](https://github.com/SocialGouv/srdt/issues/341)) ([ec1b555](https://github.com/SocialGouv/srdt/commit/ec1b55511715beb9f0e1cb7c9f102ecbc93236c3))
+
+## [1.38.1](https://github.com/SocialGouv/srdt/compare/v1.38.0...v1.38.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* **prompt:** update prompt ([923a088](https://github.com/SocialGouv/srdt/commit/923a0880187660584abcf0385cf2035ce8e44668))
+
+# [1.38.0](https://github.com/SocialGouv/srdt/compare/v1.37.0...v1.38.0) (2026-03-31)
+
+
+### Features
+
+* add public statistics page with embedded Metabase dashboard ([#327](https://github.com/SocialGouv/srdt/issues/327)) ([3999326](https://github.com/SocialGouv/srdt/commit/39993269b4ed8b69c60dd6a40e4c6630a71c5a6c))
+
+# [1.37.0](https://github.com/SocialGouv/srdt/compare/v1.36.3...v1.37.0) (2026-03-26)
+
+
+### Features
+
+* **db:** add followup_count column for Metabase tracking ([#326](https://github.com/SocialGouv/srdt/issues/326)) ([547d842](https://github.com/SocialGouv/srdt/commit/547d842629e2d134c9fb7104b72e6b86cb479d66))
+
+## [1.36.3](https://github.com/SocialGouv/srdt/compare/v1.36.2...v1.36.3) (2026-03-25)
+
+
+### Bug Fixes
+
+* **api:** recreate article urls ([#316](https://github.com/SocialGouv/srdt/issues/316)) ([dc62e41](https://github.com/SocialGouv/srdt/commit/dc62e412bd50ec4516c421406a47f2c8fb1c65d0))
+
+## [1.36.2](https://github.com/SocialGouv/srdt/compare/v1.36.1...v1.36.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* new prompt with quotes ([47a6dac](https://github.com/SocialGouv/srdt/commit/47a6dac0335bdaef890cd947d86a4cccd6019b64))
+
+## [1.36.1](https://github.com/SocialGouv/srdt/compare/v1.36.0...v1.36.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* **api:** adapt Albert rerank API to breaking change introduced in 0.4.1 ([ec5daf6](https://github.com/SocialGouv/srdt/commit/ec5daf60bed19d41bf66091f19951826b1c10c5a))
+
+# [1.36.0](https://github.com/SocialGouv/srdt/compare/v1.35.3...v1.36.0) (2026-03-17)
+
+
+### Features
+
+* **chat:** allow up to 5 follow-up questions per conversation ([#311](https://github.com/SocialGouv/srdt/issues/311)) ([9a7cc1f](https://github.com/SocialGouv/srdt/commit/9a7cc1f307ccd96920d8852c7d5c738fc532b9d2))
+
 ## [1.35.3](https://github.com/SocialGouv/srdt/compare/v1.35.2...v1.35.3) (2026-02-20)
 
 

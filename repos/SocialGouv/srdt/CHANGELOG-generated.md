@@ -1,21 +1,19 @@
-## Changelog : srdt (30 derniers jours)
+## Changelog : srdt (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de l'assistant virtuel SRDT se concentrent sur l'amélioration de la stabilité, la correction de bugs et l'ajout de nouvelles fonctionnalités pour une meilleure expérience utilisateur. Des améliorations ont été apportées à la gestion des conversations, à la sécurité des API et à la sauvegarde des discussions.
+Ce mois-ci, l'assistant virtuel SRDT a bénéficié d'améliorations significatives en termes de performance et de fonctionnalités. Un tableau de bord public avec des statistiques d'utilisation a été ajouté, permettant un suivi plus précis de l'activité. Des corrections ont été apportées pour améliorer la qualité des réponses et la gestion des liens vers les conventions collectives. L'utilisation de ChatGPT a été rétablie pour améliorer les temps de réponse.
 
 ### Évolutions fonctionnelles
-- Possibilité de sauvegarder l'historique des discussions en base de données (#298).
-- Amélioration de l'interface web pour afficher des informations pendant le streaming de réponses (#306).
-- Autorisation du département "dreets" (#301).
-- Correction d'un bug empêchant l'annulation du streaming et la réponse lors d'une nouvelle conversation (#307).
-- Correction de l'analyse et du filtrage des URLs dans les réponses de l'API (#293).
+- Ajout d'un badge de convention collective sur les messages de l'assistant dans l'interface de chat. [#344](https://github.com/SocialGouv/srdt/issues/344)
+- Mise en place d'une page publique de statistiques avec un tableau de bord Metabase intégré, offrant une vue d'ensemble de l'utilisation de l'assistant. [#327](https://github.com/SocialGouv/srdt/issues/327)
+- Amélioration de la gestion des liens directs vers les conventions collectives. [#319](https://github.com/SocialGouv/srdt/issues/319)
+- Retour à l'utilisation de ChatGPT pour améliorer les temps de réponse du modèle de langage. [#341](https://github.com/SocialGouv/srdt/issues/341)
 
 ### Évolutions techniques
-- Ajout de vérifications d'autorisation côté serveur pour les routes API non protégées (#302).
-- Mise à jour des noms des modèles Albert.
-- Ajout des secrets PostgreSQL aux variables d'environnement web (#300).
-- Mise en place d'un cluster PostgreSQL (#299).
+- Ajout d'une colonne `followup_count` dans la base de données pour le suivi des interactions avec Metabase. [#326](https://github.com/SocialGouv/srdt/issues/326)
+- Possibilité d'effectuer des appels de débogage sur l'API `/api/generate` en utilisant un token bearer. [#346](https://github.com/SocialGouv/srdt/issues/346)
+- Mise à jour du prompt utilisé par le modèle de langage pour améliorer la qualité des réponses. [#341](https://github.com/SocialGouv/srdt/issues/341) et [#316](https://github.com/SocialGouv/srdt/issues/316)
 
 ### Autres changements
-- Correction d'une référence incorrecte dans l'API (#293, #309).
-- Publication des versions 1.35.3, 1.35.2, 1.35.1, 1.35.0, 1.34.3, 1.34.2, 1.34.1 et 1.34.0.
+- Correction du placeholder de suivi pour une meilleure expérience utilisateur. [#347](https://github.com/SocialGouv/srdt/issues/347)
+- Correction de la reconstruction des URLs des articles. [#316](https://github.com/SocialGouv/srdt/issues/316)
