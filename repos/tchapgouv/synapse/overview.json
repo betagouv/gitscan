@@ -4,13 +4,11 @@
   "description": "Synapse est un serveur Matrix écrit en Python/Twisted. Il permet de gérer une communication décentralisée et sécurisée.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Collaboration & Workflow",
-    "Temps réel & WebSocket"
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,52 +16,48 @@
     "PyYAML",
     "bcrypt",
     "Pillow",
-    "sortedcontainers",
     "prometheus-client",
     "attrs",
-    "netaddr",
-    "Jinja2",
     "cryptography",
     "ijson",
-    "matrix-common",
-    "packaging",
-    "setuptools_rust"
+    "matrix-common"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "PostgreSQL & SQL",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "saml",
-      "jwt"
-    ]
+      "jwt",
+      "session",
+      "mfa",
+      "sso"
+    ],
+    "providers": []
   },
-  "tests": "Tests unitaires et d'intégration",
-  "workflows": [
-    "build",
-    "test",
-    "release"
+  "tests": [
+    "Pytest"
   ],
-  "lastActivity": "2026-04-10T19:14:43Z",
+  "workflows": [],
+  "lastActivity": "2026-04-16T17:48:34+02:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 1,
-    "forks": 2,
+    "stars": 741921188,
+    "forks": null,
     "contributors": null,
-    "openIssues": 3
+    "openIssues": null
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Sécurité & Conformité",
+    "Sécurité & Auth",
     "Communication & Messagerie"
   ]
 }
