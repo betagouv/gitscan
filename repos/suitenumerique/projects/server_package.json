@@ -1,5 +1,5 @@
 {
-  "name": "planka-server",
+  "name": "projects-server",
   "private": true,
   "main": "app.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "start": "nodemon",
     "start:prod": "node app.js --prod",
-    "test": "mocha test/lifecycle.test.js test/integration/**/*.test.js test/utils/**/*.test.js"
+    "test": "mocha --exit test/lifecycle.test.js test/integration/**/*.test.js test/utils/**/*.test.js"
   },
   "eslintConfig": {
     "root": true,
@@ -51,6 +51,7 @@
     "uuid": "^9.0.1",
     "validator": "^13.12.0",
     "winston": "^3.17.0",
+    "zod": "^4.3.5",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {

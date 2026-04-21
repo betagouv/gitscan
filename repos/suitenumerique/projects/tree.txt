@@ -1,16 +1,16 @@
 .
 ├── .dockerignore
+├── .gitattributes
 ├── .github
 │   ├── ISSUE_TEMPLATE
 │   │   ├── 1-bug-report.yml
 │   │   └── 2-feature-request.yml
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── act
+│   │   ├── .env
+│   │   └── event.json
 │   └── workflows
-│       ├── build-and-push-docker-base-image.yml
-│       ├── build-and-push-docker-image-dev.yml
-│       ├── build-and-push-docker-image.yml
-│       ├── build-and-push-release-package.yml
-│       ├── build-and-test.yml
-│       └── lint.yml
+│       └── ci.yml
 ├── .gitignore
 ├── .nvmrc
 ├── .vscode
@@ -19,13 +19,13 @@
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── Dockerfile
-├── Dockerfile.base
 ├── LICENSE
 ├── Makefile
 ├── Procfile
 ├── README.md
 ├── SECURITY.md
 ├── client
+│   ├── .dockerignore
 │   ├── .eslintignore
 │   ├── .gitignore
 │   ├── .npmrc
@@ -35,14 +35,22 @@
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── patches
-│   │   ├── @gouvfr-lasuite+ui-kit+0.16.1.patch
+│   │   ├── @gouvfr-lasuite+ui-kit+0.19.8.patch
 │   │   └── react-photoswipe-gallery+2.2.7.patch
 │   ├── public
+│   │   ├── favicon-anct-dark.svg
+│   │   ├── favicon-anct.svg
+│   │   ├── favicon-dark.ico
+│   │   ├── favicon-dark.svg
 │   │   ├── favicon.ico
+│   │   ├── favicon.png
+│   │   ├── favicon.svg
 │   │   ├── index.html
 │   │   ├── logo-anct.png
 │   │   ├── logo-gouv.png
-│   │   ├── logo-projets.png
+│   │   ├── logo-gouv.svg
+│   │   ├── logo-projets-anct.svg
+│   │   ├── logo.svg
 │   │   └── manifest.json
 │   ├── src
 │   │   ├── actions
@@ -90,8 +98,15 @@
 │   │   │   └── users.js
 │   │   ├── assets
 │   │   │   ├── images
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── chat.svg
+│   │   │   │   │   ├── survey.svg
+│   │   │   │   │   └── video.svg
 │   │   │   │   ├── illustration.jpg
 │   │   │   │   ├── logo-gouv.svg
+│   │   │   │   ├── logo.svg
+│   │   │   │   ├── projects_background.svg
+│   │   │   │   ├── projects_background.webp
 │   │   │   │   └── projets_logo.svg
 │   │   │   └── styles
 │   │   │       ├── cunningham-tokens.css
@@ -226,8 +241,13 @@
 │   │   │   │   ├── Core.jsx
 │   │   │   │   ├── Core.module.scss
 │   │   │   │   └── index.js
+│   │   │   ├── Feedback
+│   │   │   │   ├── Feedback.jsx
+│   │   │   │   ├── Feedback.module.scss
+│   │   │   │   └── index.js
 │   │   │   ├── HeaderRight
 │   │   │   │   ├── HeaderRight.jsx
+│   │   │   │   ├── HeaderRight.module.scss
 │   │   │   │   └── index.js
 │   │   │   ├── LeftMenu
 │   │   │   │   ├── FolderEditModal
@@ -245,10 +265,35 @@
 │   │   │   │   ├── LoginWrapper.module.scss
 │   │   │   │   └── index.js
 │   │   │   ├── NotFound.jsx
+│   │   │   ├── ProjectAddModal
+│   │   │   │   ├── ProjectAddModal.jsx
+│   │   │   │   ├── ProjectAddModal.module.scss
+│   │   │   │   └── index.js
+│   │   │   ├── ProjectSettingsModal
+│   │   │   │   ├── GeneralPane
+│   │   │   │   │   ├── GeneralPane.jsx
+│   │   │   │   │   ├── GeneralPane.module.scss
+│   │   │   │   │   ├── InformationEdit.jsx
+│   │   │   │   │   ├── InformationEdit.module.scss
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── ProjectSettingsModal.jsx
+│   │   │   │   └── index.js
+│   │   │   ├── Projects
+│   │   │   │   ├── Projects.jsx
+│   │   │   │   ├── Projects.module.scss
+│   │   │   │   └── index.js
 │   │   │   ├── Root.jsx
-│   │   │   └── Static
-│   │   │       ├── Static.jsx
-│   │   │       ├── Static.module.scss
+│   │   │   ├── Static
+│   │   │   │   ├── Static.jsx
+│   │   │   │   ├── Static.module.scss
+│   │   │   │   └── index.js
+│   │   │   └── UserSettingsModal
+│   │   │       ├── AccountPane
+│   │   │       │   ├── AccountPane.jsx
+│   │   │       │   ├── AccountPane.module.scss
+│   │   │       │   └── index.js
+│   │   │       ├── UserSettingsModal.jsx
+│   │   │       ├── UserSettingsModal.module.scss
 │   │   │       └── index.js
 │   │   ├── constants
 │   │   │   ├── ActionTypes.js
@@ -274,7 +319,11 @@
 │   │   │   ├── ListContainer.js
 │   │   │   ├── LoginContainer.js
 │   │   │   ├── LoginWrapperContainer.js
-│   │   │   └── StaticContainer.js
+│   │   │   ├── ProjectAddModalContainer.js
+│   │   │   ├── ProjectSettingsModalContainer.js
+│   │   │   ├── ProjectsContainer.js
+│   │   │   ├── StaticContainer.js
+│   │   │   └── UserSettingsModalContainer.js
 │   │   ├── entry-actions
 │   │   │   ├── activities.js
 │   │   │   ├── attachments.js
@@ -305,6 +354,7 @@
 │   │   │   ├── use-modal.js
 │   │   │   ├── use-nested-ref.js
 │   │   │   ├── use-steps.js
+│   │   │   ├── use-theme.js
 │   │   │   └── use-users-search.js
 │   │   ├── i18n.js
 │   │   ├── index.js
@@ -326,7 +376,39 @@
 │   │   │       ├── create-router-reducer.js
 │   │   │       └── index.js
 │   │   ├── locales
+│   │   │   ├── ar-YE
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── bg-BG
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── cs-CZ
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── da-DK
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── de-DE
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── en-GB
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
 │   │   │   ├── en-US
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── es-ES
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── fa-IR
 │   │   │   │   ├── core.js
 │   │   │   │   ├── index.js
 │   │   │   │   └── login.js
@@ -334,7 +416,83 @@
 │   │   │   │   ├── core.js
 │   │   │   │   ├── index.js
 │   │   │   │   └── login.js
-│   │   │   └── index.js
+│   │   │   ├── hu-HU
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── id-ID
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── index.js
+│   │   │   ├── it-IT
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── ja-JP
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── ko-KR
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── nl-NL
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── pl-PL
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── pt-BR
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── ro-RO
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── ru-RU
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── sk-SK
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── sr-Cyrl-CS
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── sr-Latn-CS
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── sv-SE
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── tr-TR
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── uk-UA
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── uz-UZ
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   ├── zh-CN
+│   │   │   │   ├── core.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── login.js
+│   │   │   └── zh-TW
+│   │   │       ├── core.js
+│   │   │       ├── index.js
+│   │   │       └── login.js
 │   │   ├── models
 │   │   │   ├── Activity.js
 │   │   │   ├── Attachment.js
@@ -528,6 +686,10 @@
 │   │   │       └── index.js
 │   │   ├── store.js
 │   │   ├── ui
+│   │   │   ├── Badge
+│   │   │   │   ├── Badge.jsx
+│   │   │   │   ├── Badge.module.scss
+│   │   │   │   └── index.js
 │   │   │   ├── ColorPicker
 │   │   │   │   ├── ColorPicker.jsx
 │   │   │   │   ├── ColorPicker.module.scss
@@ -536,9 +698,6 @@
 │   │   │   │   ├── DueDate.jsx
 │   │   │   │   ├── DueDate.module.scss
 │   │   │   │   └── index.js
-│   │   │   ├── FeedbackButton
-│   │   │   │   ├── _index.scss
-│   │   │   │   └── index.tsx
 │   │   │   ├── FeedbackWidget
 │   │   │   │   └── index.tsx
 │   │   │   ├── FilePicker
@@ -619,11 +778,15 @@
 │       ├── keycloak-post-import.sh
 │       ├── nginx.conf
 │       └── realm-export.json
+├── docker-compose-db.yml
 ├── docker-compose-dev.yml
 ├── docker-compose.yml
+├── europe_opensource.png
+├── header.png
 ├── healthcheck.js
 ├── package-lock.json
 ├── package.json
+├── preview.png
 ├── renovate.json
 ├── scalingo.json
 ├── scalingo_post_frontend.sh
@@ -631,7 +794,6 @@
 │   ├── .editorconfig
 │   ├── .env.sample
 │   ├── .eslintignore
-│   ├── .eslintrc.json
 │   ├── .gitignore
 │   ├── .npmrc
 │   ├── .sailsrc
@@ -818,7 +980,6 @@
 │   │   │   │   ├── get-manager-and-board-member-user-ids.js
 │   │   │   │   ├── get-manager-user-ids.js
 │   │   │   │   ├── get-many.js
-│   │   │   │   ├── get-one.js
 │   │   │   │   ├── get-project-managers.js
 │   │   │   │   ├── process-uploaded-background-image-file.js
 │   │   │   │   └── update-one.js
@@ -864,6 +1025,9 @@
 │   │   │       ├── map-records.js
 │   │   │       ├── receive-file.js
 │   │   │       ├── send-email.js
+│   │   │       ├── send-google-chat-message.js
+│   │   │       ├── send-slack-message.js
+│   │   │       ├── send-telegram-message.js
 │   │   │       ├── send-webhooks.js
 │   │   │       ├── set-http-only-token-cookie.js
 │   │   │       ├── to-title-case.js
@@ -924,6 +1088,7 @@
 │   │   ├── bootstrap.js
 │   │   ├── custom.js
 │   │   ├── datastores.js
+│   │   ├── default-theme.json
 │   │   ├── env
 │   │   │   ├── production.js
 │   │   │   └── test.js
@@ -988,7 +1153,8 @@
 │   │   │   ├── 20250602000001_add_siret_to_project.js
 │   │   │   ├── 20250603000000_create_folder_table.js
 │   │   │   ├── 20250603000001_create_user_board_preferences_table.js
-│   │   │   └── 20250603000002_remove_position_from_board_table.js
+│   │   │   ├── 20250603000002_remove_position_from_board_table.js
+│   │   │   └── 20260310000000_rename_siret_to_organization_id.js
 │   │   └── seeds
 │   │       └── default.js
 │   ├── dumps
@@ -1000,6 +1166,8 @@
 │   │   └── attachments
 │   │       └── .gitkeep
 │   ├── public
+│   │   ├── project-background-images
+│   │   │   └── .gitkeep
 │   │   └── user-avatars
 │   │       └── .gitkeep
 │   ├── test
@@ -1023,5 +1191,6 @@
 │   │   └── remoteAddress.js
 │   └── views
 │       └── .gitkeep
+├── simulate-github-actions-push.sh
 └── start.sh
-193 directories, 833 files
+230 directories, 965 files

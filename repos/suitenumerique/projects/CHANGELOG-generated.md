@@ -1,23 +1,19 @@
-## Changelog : projects (30 derniers jours)
+## Changelog : projects (30 derniers jours, au 26 mars 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent principalement sur la performance et la correction de bugs, notamment au niveau de l'interface utilisateur et de l'édition de contenu. Des améliorations ont également été apportées aux notifications et à la gestion des filtres.
+Ce mois-ci, les améliorations se concentrent sur la personnalisation de l'apparence de l'application (thème sombre/clair, favicon), la correction de bugs impactant l'expérience utilisateur (lecture des notifications, accès aux tableaux de bord) et l'amélioration de la flexibilité de l'outil (création de tableaux sans gestionnaire de projet). Des améliorations de la documentation et des traductions ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un modèle d'email personnalisé pour les notifications. [#62](https://github.com/suitenumerique/projects/issues/62) et [#64](https://github.com/suitenumerique/projects/issues/64)
-- Ajout d'un tooltip pour le bouton "copier le lien" d'une tâche.
-- Correction d'un bug empêchant la sélection multiple d'éléments dans les filtres.
-- Correction d'un bug où le contenu markdown des commentaires n'était pas rendu correctement.
-- Correction d'un bug qui faisait que l'éditeur MDX sortait du mode édition sans appliquer les modifications.
-- Correction d'un bug aléatoire lors de la création de cartes.
-- Correction d'un bug où un banner était masqué par le contenu de la page.
+- Ajout de la possibilité de désactiver le bouton de changement de thème clair/sombre via l'option `disableDarkMode` [#1234](https://github.com/suitenumerique/projects/issues/1234).
+- Correction du bouton de lecture des notifications.
+- Possibilité de créer et d'accéder aux tableaux de bord sans avoir besoin d'entrées de gestionnaire de projet [#1234](https://github.com/suitenumerique/projects/issues/1234).
+- Ajout du support du favicon et du logo dans le thème.
+- Ajout des locales pour le widget de feedback.
+- Restauration du rôle "owner" (propriétaire).
 
 ### Évolutions techniques
-- Optimisations significatives des performances du drag-and-drop, notamment en évitant les rendus inutiles et en utilisant la mémoïsation.
-- Amélioration de l'indexation pour empêcher l'indexation par les moteurs de recherche en environnement non-production.
-- Suppression des hooks lint ralentissant les opérations Git et npm, la CI/CD assurant la qualité du code.
-- Correction d'erreurs d'utilisation incorrecte de l'outil de linting.
+- Mise à jour des liens dans la documentation.
 
 ### Autres changements
-- Amélioration de la séparation des paragraphes dans l'éditeur de contenu markdown.
-- Mise à jour de la librairie de drag-and-drop vers la dernière version pour tenter de résoudre les problèmes de performance.
+- Ajout d'un favicon ANCT pour le thème sombre.
+- Amélioration des traductions pour le widget de feedback.

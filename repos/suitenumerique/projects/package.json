@@ -1,15 +1,19 @@
 {
-  "name": "st-projects",
-  "version": "1.2.0",
+  "name": "projects",
+  "version": "1.25.1",
   "private": true,
   "homepage": "https://projets.suite.anct.gouv.fr/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suitenumerique/projects.git"
+  },
   "license": "AGPL-3.0",
-  "author": "ANCT",
   "scripts": {
     "client:build": "npm run build --prefix client",
     "client:lint": "npm run lint --prefix client",
     "client:start": "npm start --prefix client",
     "client:test": "npm test --prefix client",
+    "docker:build": "docker build -t lasuite/projects:local -f Dockerfile .",
     "gv": "npm i --package-lock-only --ignore-scripts && genversion --source ./ --template client/version-template.ejs client/src/version.js",
     "postinstall": "(cd server && npm i && cd ../client && npm i)",
     "lint": "npm run server:lint && npm run client:lint",
@@ -22,18 +26,35 @@
     "server:start:prod": "npm run start:prod --prefix server",
     "server:test": "npm test --prefix server",
     "start": "concurrently -n server,client \"npm run server:start\" \"npm run client:start\"",
-    "test": "npm run server:test && npm run client:test"
+    "test": "npm run server:test && npm run client:test",
+    "build": "npm run client:build",
+    "cicd:simulate": "./simulate-github-actions-push.sh"
   },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "eslintConfig": {
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "no-undef": "off",
+      "prettier/prettier": "error"
+    }
+  },
   "dependencies": {
     "concurrently": "^8.2.2",
     "genversion": "^3.2.0"
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3"
   },
   "engines": {
