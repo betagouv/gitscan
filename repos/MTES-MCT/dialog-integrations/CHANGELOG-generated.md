@@ -1,22 +1,18 @@
-## Changelog : dialog-integrations (30 derniers jours)
+## Changelog : dialog-integrations (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce projet a connu des améliorations significatives au cours des dernières semaines, notamment l'intégration de nouvelles sources de données (Brest, Sarthe) et l'ajout de fonctionnalités permettant la mise à jour des données. Des corrections ont également été apportées pour assurer la précision des informations, notamment concernant le tonnage. L'infrastructure a été améliorée avec des mises à jour de dépendances et des optimisations du code.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'intégration des données de la Sarthe et la correction de problèmes liés à l'importation de données pour d'autres régions comme Brest et l'Aveyron. Des améliorations de la configuration et de la documentation ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Intégration de la source de données de Brest avec l'ajout de l'URL du lien associé. [#1](https://github.com/MTES-MCT/dialog-integrations/pull/1)
-- Intégration des limitations de gabarits pour le département de la Sarthe. [#2](https://github.com/MTES-MCT/dialog-integrations/pull/2)
-- Correction du statut de publication pour les données de la Sarthe, maintenant correctement défini comme "publié".
-- Correction de l'unité de mesure du tonnage pour le département de la Sarthe, affiché en tonnes.
-- Ajout de la possibilité de mettre à jour les données via la ligne de commande. [#2](https://github.com/MTES-MCT/dialog-integrations/pull/2)
-- Ajout d'arrêtés pour la Sarthe lorsque le tonnage est nul.
+- Intégration des données de la Sarthe : les données des arrêtés préfectoraux de la Sarthe sont maintenant disponibles et intégrées dans la base DiaLog. [#5](https://github.com/MTES-MCT/dialog-integrations/pull/5)
+- Correction de l'identifiant pour Brest : correction d'un problème lié à l'identifiant utilisé pour les données de Brest. [#3](https://github.com/MTES-MCT/dialog-integrations/pull/3)
+- Corrections pour l'Aveyron : des corrections ont été apportées pour assurer le bon fonctionnement de l'importation des données de l'Aveyron.
 
 ### Évolutions techniques
-- Refactorisation et harmonisation de certaines fonctions pour améliorer la lisibilité et la maintenabilité du code.
-- Possibilité de gérer plusieurs sources de données.
-- Ajout d'un fichier `.gitignore` à la racine du projet.
-- Amélioration de la qualité du code avec l'utilisation de `ruff` pour le linting et le formatage.
-- Tous les tests passent suite aux corrections et optimisations.
+- Mise à jour des dépendances `uv` : les dépendances `uv` ont été mises à jour pour assurer la sécurité et la stabilité du projet.
+- Amélioration de la configuration : des ajustements ont été faits à la configuration pour une meilleure gestion des URLs.
+- Nettoyage du code : suppression d'une ligne superflue dans le code.
 
 ### Autres changements
-- Mise à jour de la dépendance `nbconvert`.
+- Mise à jour de la documentation README : la documentation README a été mise à jour pour refléter les dernières modifications.
+- Intégration continue : amélioration du workflow d'intégration continue.

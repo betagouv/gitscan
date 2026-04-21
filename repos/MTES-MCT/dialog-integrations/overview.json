@@ -1,21 +1,27 @@
 {
   "url": "https://github.com/MTES-MCT/dialog-integrations",
   "name": "dialog-integrations",
-  "description": "Ce projet vise à intégrer différentes sources de données de dialogue, probablement pour des réglementations ou des informations spécifiques à des zones géographiques. Il permet de centraliser et de traiter ces données pour les rendre accessibles et utilisables.",
+  "description": "Ce projet vise à intégrer différentes sources de données publiques des arrêtés préfectoraux pour les intégrer dans la base DiaLog. Il permet d'explorer et d'intégrer ces données pour une utilisation centralisée.",
   "language": "Python",
-  "features": [],
+  "features": [
+    "Gestion des données",
+    "Intégration de données",
+    "API & Intégrations"
+  ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Polars",
+    "geojson",
     "geopandas",
     "ipdb",
     "jupyter",
+    "jupyterlab-geojson",
     "loguru",
     "mypy",
     "numpy",
     "openapi",
     "openapi-python-client",
     "pandera",
-    "polars",
     "pyarrow",
     "pydantic",
     "pydantic-settings",
@@ -28,8 +34,8 @@
     "typer"
   ],
   "components": [
-    "Intégrations de sources de données",
-    "Templates & Moteurs de rendu",
+    "API REST & GraphQL",
+    "Python (scripts & backend)",
     "Tests"
   ],
   "auth": {
@@ -44,22 +50,18 @@
     "ci.yml",
     "integrate.yml"
   ],
-  "lastActivity": "2026-03-03T09:21:27Z",
+  "lastActivity": "2026-04-16T15:28:20+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 0
+    "openIssues": 5
   },
   "tags": [
-    "dialog",
-    "integration",
     "Données & Open Data",
-    "geopandas",
-    "openapi",
     "Python"
   ]
 }
