@@ -1,26 +1,21 @@
-## Changelog : flux-retour-cfas (30 derniers jours)
+## Changelog : flux-retour-cfas (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives concernant l'intégration de WhatsApp pour la messagerie, ainsi que des ajustements et des corrections pour améliorer la précision des données et la stabilité de l'application. Plusieurs mises à jour de Metabase ont également été effectuées.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration des fonctionnalités liées à l'apprentissage machine (ML) et à la collaboration, notamment en intégrant des données ML dans les exports utilisateurs et en ajoutant des colonnes de collaboration. Des corrections importantes ont également été apportées à la chaîne de déploiement pour une meilleure stabilité et fiabilité.
 
 ### Évolutions fonctionnelles
-
-- Ajout de la possibilité d'autoriser les "dreets" à exporter des données. [#4565](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4565)
-- Déduplication des effectifs. [#4564](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4564)
-- Modification du template utilisé. [#4561](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4561)
-- Ajout de l'effectif disponible dans le récapitulatif ML. [#4556](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4556)
-- Ajout du pourcentage dans le suivi. [#4555](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4555)
-- Implémentation de réponses automatiques aux messages WhatsApp. [#4554](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4554)
-- Ajout d'un message de bannière dans ML pour WhatsApp. [#4553](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4553)
-- Amélioration de la messagerie WhatsApp. [#4544](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4544)
-- Ajout de la messagerie WhatsApp avec variables d'environnement pour la configuration. [#4541](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4541)
+- Ajout de la possibilité d'exporter les données utilisateurs enrichies avec des informations issues de l'apprentissage machine. [#4583](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4583)
+- Intégration de nouvelles collaborations ML/OFA. [#4558](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4558)
+- Ajout de colonnes de collaboration au traitement et à l'export des données ML. [#4584](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4584)
+- Ajout d'un classificateur (classifier) pour les indicateurs. [#4568](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4568)
+- Possibilité de filtrer les retours (feedbacks) uniquement pour le classificateur indicateur. [#4569](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4569)
+- Suppression de la modal et de la logique backend liées au feedback du classificateur. [#4582](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4582)
+- Désactivation de l'effectif pour le ML sur les CFA sélectionnés. [#4581](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4581)
+- Ajout de feedbacks collaboratifs. [#4585](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4585)
 
 ### Évolutions techniques
-
-- Utilisation d'un nouveau template WhatsApp. [#4557](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4557)
-- Correction des tests concernant les dates. [#4547](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4547)
-- Ajout d'une variable d'environnement par défaut pour WhatsApp. [#4543](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4543)
+- Migration de l'outil de gestion des secrets Ansible Vault vers SOPS, améliorant la sécurité et la gestion des configurations. [#4571](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4571)
+- Corrections et améliorations significatives de la chaîne de déploiement (scripts `app-build.sh`, `app-release.sh`, `release.yml`, `sentry-release.sh`) pour une meilleure fiabilité et automatisation. [#4573](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4573) [#4574](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4574) [#4575](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4575) [#4576](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4576) [#4577](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4577) [#4578](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4578) [#4579](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4579) [#4580](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4580)
 
 ### Autres changements
-
-- Mises à jour de Metabase vers les versions v0.58.7, v0.57.13, v0.56.20, v0.55.20, v0.54.20, v0.53.10 et v0.52.15. [#4552](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4552), [#4551](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4551), [#4550](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4550), [#4549](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4549), [#4548](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4548), [#4546](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4546), [#4545](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4545)
+- Déclenchement manuel d'un workflow (chore). [#4572](https://github.com/mission-apprentissage/flux-retour-cfas/issues/4572)

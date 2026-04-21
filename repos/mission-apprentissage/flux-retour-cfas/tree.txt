@@ -3,25 +3,15 @@
 │   ├── commands.sh
 │   ├── mna-tdb
 │   ├── scripts
-│   │   ├── build-images.sh
+│   │   ├── app-build.sh
+│   │   ├── app-release-interactive.sh
+│   │   ├── app-release.sh
 │   │   ├── buildkitd.toml
-│   │   ├── check-dependencies.sh
-│   │   ├── deploy-app.sh
-│   │   ├── deploy-log-decrypt.sh
-│   │   ├── deploy-log-encrypt.sh
-│   │   ├── edit-vault.sh
-│   │   ├── get-vault-password-client.sh
+│   │   ├── env-init.sh
 │   │   ├── get-version.sh
-│   │   ├── merge-vault.sh
-│   │   ├── release-app.sh
-│   │   ├── release-interactive.sh
-│   │   ├── run-playbook.sh
-│   │   ├── seed-apply.sh
-│   │   ├── seed-update.sh
 │   │   ├── sentry-deploy.sh
-│   │   ├── sentry-release.sh
-│   │   └── setup-local-env.sh
-│   └── zsh-completion
+│   │   └── sentry-release.sh
+│   └── shared
 ├── .dockerignore
 ├── .editorconfig
 ├── .eslintrc.cjs
@@ -48,6 +38,7 @@
 │       ├── release.yml
 │       └── sync-preprod.yml
 ├── .gitignore
+├── .gitmodules
 ├── .husky
 │   ├── commit-msg
 │   ├── commitlint.config.js
@@ -59,22 +50,24 @@
 │   └── preventSensibleFilesCommit.sh
 ├── .infra
 │   ├── .env_server
+│   ├── .env_server_classifier
 │   ├── .env_ui
 │   ├── .gitignore
 │   ├── ansible
 │   │   ├── ansible.cfg
 │   │   ├── deploy.yml
-│   │   ├── preview.yml
-│   │   ├── preview_cleanup.yml
+│   │   ├── initialize-env.yml
 │   │   ├── sync-preprod.yml
 │   │   └── tasks
-│   │       ├── files_copy.yml
-│   │       └── preview_pr.yml
-│   ├── docker-compose.preview-system.yml
-│   ├── docker-compose.preview.yml
+│   │       └── files_copy.yml
+│   ├── authorizations
 │   ├── docker-compose.production.yml
 │   ├── docker-compose.recette.yml
-│   ├── env.ini
+│   ├── env.global.yml
+│   ├── env.local.yml
+│   ├── env.preprod.yml
+│   ├── env.production.yml
+│   ├── env.recette.yml
 │   ├── files
 │   │   ├── configs
 │   │   │   ├── mailpit
@@ -109,11 +102,9 @@
 │   │       ├── migrations-status.sh
 │   │       ├── migrations-up.sh
 │   │       ├── run-dummy-outside-job.sh
-│   │       ├── seed.sh
 │   │       ├── sync-preprod.sh
 │   │       └── trigger-indexes-creation.sh
-│   └── vault
-│       └── vault.yml
+│   └── inventories
 ├── .node-version
 ├── .prettierignore
 ├── .talismanrc
@@ -138,14 +129,12 @@
 ├── docs
 │   ├── CLI-JOBS.md
 │   ├── DATASOURCES.md
-│   ├── Vault.md
 │   ├── deploy.md
 │   ├── developpement
 │   │   └── developpement.md
 │   ├── infrastructure
 │   │   ├── architecture.md
-│   │   ├── manage.md
-│   │   └── preview.md
+│   │   └── manage.md
 │   ├── infrastructure.md
 │   └── securite.md
 ├── knip.json
@@ -179,7 +168,9 @@
 │   │   │   │   ├── campagnes
 │   │   │   │   │   └── campagnes.actions.ts
 │   │   │   │   ├── cfa
-│   │   │   │   │   └── cfa-daily-recap.actions.ts
+│   │   │   │   │   ├── cfa-daily-recap.actions.ts
+│   │   │   │   │   ├── cfa-effectifs-ruptures.actions.ts
+│   │   │   │   │   └── cfa-effectifs.actions.ts
 │   │   │   │   ├── effectif.legacy_schema.ts
 │   │   │   │   ├── effectifs
 │   │   │   │   │   ├── __obsolete__
@@ -226,7 +217,8 @@
 │   │   │   │   │   ├── mission-locale-stats.actions.ts
 │   │   │   │   │   ├── mission-locale-stats.helpers.ts
 │   │   │   │   │   ├── mission-locale-weekly-recap.actions.ts
-│   │   │   │   │   └── mission-locale.actions.ts
+│   │   │   │   │   ├── mission-locale.actions.ts
+│   │   │   │   │   └── mission-locale.constants.ts
 │   │   │   │   ├── opcos
 │   │   │   │   │   └── opcos.actions.ts
 │   │   │   │   ├── organisations.actions.ts
@@ -244,6 +236,8 @@
 │   │   │   │   ├── rome
 │   │   │   │   │   └── rome.actions.ts
 │   │   │   │   ├── sessions.actions.ts
+│   │   │   │   ├── shared
+│   │   │   │   │   └── rupture-pipeline.utils.ts
 │   │   │   │   ├── telechargementListeNomLogs.actions.ts
 │   │   │   │   └── users.actions.ts
 │   │   │   ├── apis
@@ -290,6 +284,10 @@
 │   │   │   │   │       ├── notifications.ts
 │   │   │   │   │       ├── phone.ts
 │   │   │   │   │       └── types.ts
+│   │   │   │   ├── classifier
+│   │   │   │   │   ├── classifier.test.ts
+│   │   │   │   │   ├── classifier.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── mailer
 │   │   │   │   │   └── mailer.ts
 │   │   │   │   └── sentry
@@ -414,7 +412,11 @@
 │   │   │       ├── 20260123091419-update-mission-locale-orga.ts
 │   │   │       ├── 20260202100614-add-ml-identifiant-normalise.ts
 │   │   │       ├── 20260216190000-clean-failed-whatsapp-contacts.ts
-│   │   │       └── 20260305120000-fix-ml-effectif-doublons.ts
+│   │   │       ├── 20260224120000-add-deca-cfa-only.ts
+│   │   │       ├── 20260225000000-update-ml-identifiant-normalise-unique-index.ts
+│   │   │       ├── 20260305120000-fix-ml-effectif-doublons.ts
+│   │   │       ├── 20260319120000-backfill-derniere-activite.ts
+│   │   │       └── 20260402120000-add-deca-cfa-list.ts
 │   │   ├── dev.ts
 │   │   ├── http
 │   │   │   ├── helpers
@@ -453,6 +455,7 @@
 │   │   │   │   │   └── mission-locale
 │   │   │   │   │       └── mission-locale.routes.ts
 │   │   │   │   ├── organismes.routes
+│   │   │   │   │   ├── cfa.routes.ts
 │   │   │   │   │   ├── effectifs.routes.ts
 │   │   │   │   │   └── mission-locale.routes.ts
 │   │   │   │   ├── public.routes
@@ -472,6 +475,8 @@
 │   │   ├── jobs
 │   │   │   ├── bal
 │   │   │   │   └── bal.job.ts
+│   │   │   ├── classifier
+│   │   │   │   └── score-effectifs.ts
 │   │   │   ├── clear
 │   │   │   │   └── purge-queues.ts
 │   │   │   ├── computed
@@ -658,12 +663,15 @@
 │   │   ├── integration
 │   │   │   ├── common
 │   │   │   │   ├── actions
+│   │   │   │   │   ├── cfa-effectifs-ruptures.actions.test.ts
+│   │   │   │   │   ├── cfa-effectifs.actions.test.ts
 │   │   │   │   │   ├── effectifs.duplicates.actions.test.ts
 │   │   │   │   │   ├── effectifs.types.actions.test.ts
 │   │   │   │   │   ├── formations.actions.test.ts
 │   │   │   │   │   ├── franceTravailEffectif.actions.test.ts
 │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   └── flatPathsWithoutEmpty.test.ts
+│   │   │   │   │   ├── mission-locale-organisme.actions.test.ts
 │   │   │   │   │   └── organismes.actions.test.ts
 │   │   │   │   ├── constants
 │   │   │   │   │   └── validation.test.ts
@@ -704,6 +712,8 @@
 │   │   │   │   └── utils
 │   │   │   │       └── validators.test.ts
 │   │   │   └── jobs
+│   │   │       ├── classifier
+│   │   │       │   └── score-effectifs.test.ts
 │   │   │       ├── emails
 │   │   │       │   └── reminder.test.ts
 │   │   │       ├── fiabilisation
@@ -736,6 +746,30 @@
 │   │       └── testUtils.ts
 │   ├── tsconfig.json
 │   └── tsup.config.ts
+├── server-classifier
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── __init__.py
+│   ├── classifier.py
+│   ├── config.py
+│   ├── data
+│   │   └── test-dataset.json
+│   ├── main.py
+│   ├── model_manager.py
+│   ├── requirements-dev.txt
+│   ├── requirements.txt
+│   ├── routes
+│   │   ├── __init__.py
+│   │   ├── health.py
+│   │   ├── inference.py
+│   │   └── model.py
+│   ├── ruff.toml
+│   └── tests
+│       ├── __init__.py
+│       ├── test_classifier.py
+│       └── test_routes.py
 ├── shared
 │   ├── .eslintrc.cjs
 │   ├── actions
@@ -849,6 +883,9 @@
 │   │   │   │   └── missionLocale.api.ts
 │   │   │   ├── organismes
 │   │   │   │   ├── OrganismeFormationEffectif.ts
+│   │   │   │   ├── cfa
+│   │   │   │   │   ├── cfa.api.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── effectifs
 │   │   │   │   │   └── effectifs.api.ts
 │   │   │   │   ├── index.ts
@@ -904,12 +941,27 @@
 │   │   ├── (cfa)
 │   │   │   ├── cfa
 │   │   │   │   ├── CfaClient.tsx
-│   │   │   │   ├── [id]
-│   │   │   │   │   ├── CfaDetailClient.tsx
+│   │   │   │   ├── CfaContainer.tsx
+│   │   │   │   ├── collaborations
+│   │   │   │   │   ├── CfaCollaborationsClient.tsx
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── effectifs
+│   │   │   │   │   ├── CfaEffectifsClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── error.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── parametres
 │   │   │   │       ├── ParametresClient.tsx
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   ├── (cfa-detail)
+│   │   │   ├── cfa
+│   │   │   │   └── [id]
+│   │   │   │       ├── CfaDetailClient.tsx
+│   │   │   │       ├── collaboration
+│   │   │   │       │   ├── CollaborationFormPage.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── error.tsx
 │   │   │   │       └── page.tsx
 │   │   │   └── layout.tsx
 │   │   ├── (decommissionnement)
@@ -957,9 +1009,7 @@
 │   │   │   ├── layout.tsx
 │   │   │   └── mission-locale
 │   │   │       ├── MissionLocaleClient.tsx
-│   │   │       ├── [id]
-│   │   │       │   ├── MissionLocaleDetailClient.tsx
-│   │   │       │   └── page.tsx
+│   │   │       ├── MlContainer.tsx
 │   │   │       ├── error.tsx
 │   │   │       ├── page.tsx
 │   │   │       └── validation
@@ -968,6 +1018,13 @@
 │   │   │           └── prioritaire
 │   │   │               ├── ValidationPrioritaireClient.tsx
 │   │   │               └── page.tsx
+│   │   ├── (ml-detail)
+│   │   │   ├── layout.tsx
+│   │   │   └── mission-locale
+│   │   │       └── [id]
+│   │   │           ├── MissionLocaleDetailClient.tsx
+│   │   │           ├── error.tsx
+│   │   │           └── page.tsx
 │   │   ├── _components
 │   │   │   ├── ConnectedHeader.tsx
 │   │   │   ├── CrispChat.tsx
@@ -999,13 +1056,14 @@
 │   │   │   │   ├── FeedbackForm.module.css
 │   │   │   │   └── FeedbackForm.tsx
 │   │   │   ├── common
+│   │   │   │   ├── MultiSelectDropdown.module.css
+│   │   │   │   ├── MultiSelectDropdown.tsx
 │   │   │   │   └── Spinner.tsx
 │   │   │   ├── context
 │   │   │   │   └── UserContext.tsx
 │   │   │   ├── france-travail
 │   │   │   │   ├── DepartementButtonGroup.module.css
 │   │   │   │   ├── DepartementButtonGroup.tsx
-│   │   │   │   ├── DepartementMultiSelect.module.css
 │   │   │   │   ├── DepartementMultiSelect.tsx
 │   │   │   │   ├── FTEffectifPageHeader.module.css
 │   │   │   │   ├── FTEffectifPageHeader.tsx
@@ -1031,6 +1089,8 @@
 │   │   │   │   │   ├── dateFormatting.ts
 │   │   │   │   │   └── departements.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── layouts
+│   │   │   │   └── DetailLayout.tsx
 │   │   │   ├── link
 │   │   │   │   └── DsfrLink.tsx
 │   │   │   ├── mission-locale
@@ -1040,8 +1100,57 @@
 │   │   │   │       └── ModalAdminSyncBrevo.tsx
 │   │   │   ├── ruptures
 │   │   │   │   ├── cfa
+│   │   │   │   │   ├── CfaCollaborationBadge.module.css
+│   │   │   │   │   ├── CfaCollaborationBadge.tsx
+│   │   │   │   │   ├── CfaCollaborationsList.tsx
+│   │   │   │   │   ├── CfaCollaborationsTable.tsx
+│   │   │   │   │   ├── CfaDashboard.module.css
+│   │   │   │   │   ├── CfaDashboard.tsx
+│   │   │   │   │   ├── CfaDashboardSkeleton.module.css
+│   │   │   │   │   ├── CfaDashboardSkeleton.tsx
+│   │   │   │   │   ├── CfaDeclareDateRuptureModal.tsx
+│   │   │   │   │   ├── CfaEffectifsList.module.css
+│   │   │   │   │   ├── CfaEffectifsList.tsx
+│   │   │   │   │   ├── CfaEffectifsSkeleton.tsx
+│   │   │   │   │   ├── CfaEffectifsTable.module.css
+│   │   │   │   │   ├── CfaEffectifsTable.tsx
 │   │   │   │   │   ├── CfaFeedback.tsx
+│   │   │   │   │   ├── CfaFilters.module.css
+│   │   │   │   │   ├── CfaRuptureInfoModal.tsx
+│   │   │   │   │   ├── CfaRuptureSegment.module.css
+│   │   │   │   │   ├── CfaRuptureSegment.tsx
+│   │   │   │   │   ├── CfaRupturesList.module.css
+│   │   │   │   │   ├── CfaRupturesList.tsx
+│   │   │   │   │   ├── CfaSearchResults.module.css
+│   │   │   │   │   ├── CfaSearchResults.tsx
 │   │   │   │   │   ├── EffectifParcoursCfa.tsx
+│   │   │   │   │   ├── collaboration
+│   │   │   │   │   │   ├── CfaCollaborationColumn.tsx
+│   │   │   │   │   │   ├── CfaCollaborationDetail.module.css
+│   │   │   │   │   │   ├── CfaCollaborationDetail.tsx
+│   │   │   │   │   │   ├── CfaEffectifInfoColumn.tsx
+│   │   │   │   │   │   ├── CfaSuiviDossierColumn.tsx
+│   │   │   │   │   │   ├── CollaborationForm.module.css
+│   │   │   │   │   │   ├── CollaborationForm.tsx
+│   │   │   │   │   │   ├── CollaborationSentView.tsx
+│   │   │   │   │   │   ├── CollaborationSidebar.tsx
+│   │   │   │   │   │   ├── MlInactiveBanner.tsx
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── hooks.ts
+│   │   │   │   │   │   ├── sections
+│   │   │   │   │   │   │   ├── CauseRuptureSection.tsx
+│   │   │   │   │   │   │   ├── NoteSection.tsx
+│   │   │   │   │   │   │   ├── ObjectifsSection.tsx
+│   │   │   │   │   │   │   ├── ReferentSection.tsx
+│   │   │   │   │   │   │   ├── StatusSection.tsx
+│   │   │   │   │   │   │   └── VerifiedInfoSection.tsx
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── utils.test.ts
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── useCfaMutations.ts
+│   │   │   │   │   │   └── useCfaQueries.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── mission-locale
 │   │   │   │   │   ├── DownloadSection.tsx
@@ -1050,6 +1159,15 @@
 │   │   │   │   │   ├── EffectifsListView.tsx
 │   │   │   │   │   ├── WhatsAppCallbackBanner.module.css
 │   │   │   │   │   ├── WhatsAppCallbackBanner.tsx
+│   │   │   │   │   ├── collaboration
+│   │   │   │   │   │   ├── CollaborationReceivedView.tsx
+│   │   │   │   │   │   ├── MlCollaborationColumn.tsx
+│   │   │   │   │   │   ├── MlCollaborationDetail.module.css
+│   │   │   │   │   │   ├── MlCollaborationDetail.tsx
+│   │   │   │   │   │   ├── MlEffectifInfoColumn.tsx
+│   │   │   │   │   │   ├── MlSuiviDossierColumn.tsx
+│   │   │   │   │   │   ├── hooks.ts
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── contact
 │   │   │   │   │   │   ├── ContactForm.module.css
 │   │   │   │   │   │   ├── ContactForm.tsx
@@ -1060,6 +1178,19 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── useMonthDownload.ts
 │   │   │   │   └── shared
+│   │   │   │       ├── collaboration
+│   │   │   │       │   ├── BooleanLine.tsx
+│   │   │   │       │   ├── CollaborationDetail.shared.module.css
+│   │   │   │       │   ├── CollapsibleDetail.tsx
+│   │   │   │       │   ├── CommentBubbles.tsx
+│   │   │   │       │   ├── DossierTraiteBubble.tsx
+│   │   │   │       │   ├── FeedbackBubble.tsx
+│   │   │   │       │   ├── MlInactiveBadge.tsx
+│   │   │   │       │   ├── NouveauContratBanner.tsx
+│   │   │   │       │   ├── ReferentCoordonnees.tsx
+│   │   │   │       │   ├── collaboration.utils.ts
+│   │   │   │       │   ├── timeline.utils.tsx
+│   │   │   │       │   └── withSharedStyles.ts
 │   │   │   │       ├── constants.ts
 │   │   │   │       ├── hooks
 │   │   │   │       │   ├── index.ts
@@ -1093,6 +1224,8 @@
 │   │   │   │       │   ├── PriorityTable.module.css
 │   │   │   │       │   ├── ProblematiquesJeune.tsx
 │   │   │   │       │   ├── RightColumnSkeleton.tsx
+│   │   │   │       │   ├── SortableTable.module.css
+│   │   │   │       │   ├── SortableTableParts.tsx
 │   │   │   │       │   └── WhatsAppBadge.module.css
 │   │   │   │       ├── utils
 │   │   │   │       │   └── searchUtils.ts
@@ -1109,6 +1242,8 @@
 │   │   │   │   │   ├── ChartLegend.tsx
 │   │   │   │   │   ├── ChartTooltip.module.css
 │   │   │   │   │   ├── ChartTooltip.tsx
+│   │   │   │   │   ├── ClassifierFeedbackCharts.tsx
+│   │   │   │   │   ├── ClassifierSituationsPieChart.tsx
 │   │   │   │   │   ├── DejaConnuMiniChart.module.css
 │   │   │   │   │   ├── DejaConnuMiniChart.tsx
 │   │   │   │   │   ├── DetailsDossiersTraitesPieChart.module.css
@@ -1134,6 +1269,7 @@
 │   │   │   │   ├── sections
 │   │   │   │   │   ├── AccompagnementConjointSection.module.css
 │   │   │   │   │   ├── AccompagnementConjointSection.tsx
+│   │   │   │   │   ├── ClassifierSection.tsx
 │   │   │   │   │   ├── CouvertureRegionsSection.tsx
 │   │   │   │   │   ├── DeploymentSection.module.css
 │   │   │   │   │   ├── DeploymentSection.tsx
@@ -1217,7 +1353,9 @@
 │   │   │   ├── hooks.utils.ts
 │   │   │   ├── phone.utils.ts
 │   │   │   ├── ruptures.utils.ts
-│   │   │   └── session.utils.ts
+│   │   │   ├── session.utils.ts
+│   │   │   ├── user.utils.test.ts
+│   │   │   └── user.utils.ts
 │   │   ├── admin
 │   │   │   ├── error.tsx
 │   │   │   ├── layout.tsx
@@ -1287,11 +1425,13 @@
 │   │   │   └── User.ts
 │   │   ├── queryClient.ts
 │   │   ├── types
+│   │   │   ├── cfaRuptures.ts
 │   │   │   ├── infoSiret.ts
 │   │   │   └── ruptures.ts
 │   │   └── utils
 │   │       ├── accountUtils.ts
 │   │       ├── browser.ts
+│   │       ├── cfaUtils.ts
 │   │       ├── dateUtils.ts
 │   │       ├── exportUtils.ts
 │   │       ├── markdownUtils.ts
@@ -1423,6 +1563,7 @@
 │   │   ├── plausible.ts
 │   │   ├── tranmissions.ts
 │   │   ├── useAuth.ts
+│   │   ├── useCfaUnreadNotifications.ts
 │   │   ├── useDraggableScroll.ts
 │   │   ├── useErp.ts
 │   │   ├── useExcelFileProcessor.ts
@@ -1878,6 +2019,7 @@
 │   │   │   ├── parcours-france-travail-contact.svg
 │   │   │   ├── parcours-partage-mission-locale.svg
 │   │   │   ├── parcours-rupture.svg
+│   │   │   ├── recontacte.png
 │   │   │   ├── refus-invitation.svg
 │   │   │   ├── supportOutline.svg
 │   │   │   ├── supportOutline_III.svg
@@ -1982,4 +2124,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-420 directories, 1564 files
+444 directories, 1682 files
