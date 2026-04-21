@@ -1,42 +1,37 @@
-## Changelog : mon-entreprise (30 derniers jours, au 14 mai 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 19 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la modernisation et la maintenance du simulateur, notamment avec la refactorisation du code, la mise à jour des règles de calcul (cotisations, impôts) pour 2026 et la préparation à la suppression du simulateur RGCP. Des améliorations ont également été apportées à l'expérience utilisateur, comme la correction de bugs et l'ajout d'informations plus claires.
+Ce mois-ci, les évolutions se concentrent sur une refonte majeure du modèle de calcul pour les travailleurs indépendants (régime TI), avec l'intégration des dernières mises à jour réglementaires et une amélioration significative de la précision des simulations. De nombreuses corrections et optimisations ont été apportées, notamment concernant les cotisations, les exonérations et les cas particuliers. Des améliorations de l'expérience utilisateur ont également été réalisées, avec notamment la suppression du simulateur RGCP obsolète et des ajustements de l'interface.
 
 ### Évolutions fonctionnelles
-- Suppression du simulateur RGCP.
-- Amélioration de l'affichage des informations de l'entreprise sélectionnée.
-- Correction de l'affichage des caisses de retraite PLR dans le simulateur.
-- Ajout d'un bandeau rouge pour signaler la présence de règles obsolètes.
-- Ajout d'un bandeau d'information pour les simulations en cours de chargement [#4433](https://github.com/betagouv/mon-entreprise/issues/4433).
-- Correction du calcul des cotisations de début d'activité au régime micro-fiscal.
-- Correction de l'affichage des professions libérales dans le simulateur.
-- Ajout de liens vers le simulateur pour les indépendants depuis d'autres simulateurs.
-- Ajout de la possibilité de choisir entre IR et IS pour les indépendants.
-- Ajout d'un avertissement en cas de pension invalidité.
-- Correction de la navigation entre les simulateurs indépendants.
-- Correction de l'affichage des informations de l'entreprise.
-- Correction de l'affichage des dividendes.
+- Suppression du simulateur RGCP, désormais obsolète.
+- Ajout de la prise en charge des dividendes dans les simulations pour les travailleurs indépendants.
+- Amélioration du calcul des cotisations et de l'assiette sociale pour les travailleurs indépendants, incluant la prise en compte de la pension invalidité et des exonérations.
+- Ajout de la prise en compte du PASS mahorais pour les DROM.
+- Correction de l'affichage des informations de l'entreprise sélectionnée.
+- Ajout de liens vers des services utiles (ex: service employeur).
+- Amélioration de la navigation entre les différents simulateurs indépendants.
+- Correction de l'affichage des informations et du fonctionnement des simulateurs en iframe.
+- Mise à jour des plafonds de CA pour les simulations.
+- Ajout d'un bandeau rouge d'alerte en cas de règles obsolètes détectées.
+- Ajout d'un bandeau d'information pour les simulations en cours de chargement.
 
 ### Évolutions techniques
-- Refactorisation importante du code, notamment pour la gestion des règles, des composants et du store.
-- Mise à jour de la version de Node.js.
-- Mise à jour des actions CI/CD.
-- Amélioration de la performance du chargement des règles.
-- Utilisation d'un modèle de règles par simulateur pour une meilleure organisation.
-- Suppression de code commenté et de dépendances obsolètes.
+- Refonte du modèle de calcul pour les travailleurs indépendants (régime TI) avec intégration de nouvelles règles et améliorations de la précision.
+- Refactorisation importante du code, notamment concernant la gestion des règles, des questions, des sélecteurs et des actions du store.
+- Séparation du code en paquets plus modulaires (modele-ti, modele-as, règles communes).
+- Amélioration de la performance de `useEngine`.
+- Mise à jour des versions de Node.js et des actions CI/CD.
+- Correction de bugs liés à la gestion des expressions Publicodes et à la restauration de l'état de la simulation.
 - Amélioration des tests unitaires et des snapshots.
-- Découplage du `safeSetSituation` du cache engine.
-- Exportation du type `OrigineSimulation` pour une meilleure typage.
-- Utilisation de `useOptionalEngine` pour une gestion plus flexible des moteurs de règles.
-- Simplification de l'action `ajusteLaSituation` dans le store.
+- Utilisation d'un modèle de règles par simulateur.
 
 ### Autres changements
-- Mise à jour des plafonds de CA.
-- Mise à jour des références exonérations.
-- Mise à jour des taux de cotisation et des règles de calcul pour 2026.
-- Correction de fautes de frappe et amélioration de la documentation.
-- Ajout de traductions.
-- Amélioration de la documentation interne.
-- Mise à jour des dépendances (hors mises à jour automatiques).
-- Correction du formatage Prettier.
+- Mise à jour de la documentation et des traductions.
+- Correction de typos et amélioration de la lisibilité du code.
+- Suppression de code commenté et de dépendances inutilisées.
+- Amélioration de la documentation interne et des commentaires.
+- Mise à jour des références aux réglementations et aux taux de cotisation.
+- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
+- Amélioration de la gestion des erreurs et des messages d'alerte.
+- Correction de problèmes de style et d'alignement de l'interface utilisateur.
