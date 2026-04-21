@@ -59,7 +59,8 @@
     │   ├── data
     │   │   └── README.md
     │   ├── greco.md
-    │   ├── ingres.md
+    │   ├── ingres_corps.md
+    │   ├── ingres_rmfp.md
     │   ├── legifrance.md
     │   ├── matcher.md
     │   ├── ocr_cv_open_router.md
@@ -168,6 +169,8 @@
         │   │   ├── corps.py
         │   │   ├── cv_metadata.py
         │   │   ├── document.py
+        │   │   ├── domaine_fonctionnel.py
+        │   │   ├── metier.py
         │   │   ├── offer.py
         │   │   └── vectorized_document.py
         │   ├── exceptions
@@ -214,6 +217,7 @@
         │       ├── __init__.py
         │       ├── access_modality.py
         │       ├── category.py
+        │       ├── competence.py
         │       ├── contract_type.py
         │       ├── country.py
         │       ├── cv_extraction_types.py
@@ -228,6 +232,7 @@
         │       ├── opportunity_type.py
         │       ├── region.py
         │       ├── similarity_type.py
+        │       ├── type_competence.py
         │       └── verse.py
         ├── infrastructure
         │   ├── __init__.py
@@ -276,6 +281,7 @@
         │   │   │   │       ├── __init__.py
         │   │   │   │       ├── clean_documents.py
         │   │   │   │       ├── load_corps.py
+        │   │   │   │       ├── load_metiers.py
         │   │   │   │       ├── load_offers.py
         │   │   │   │       └── vectorize_documents.py
         │   │   │   ├── migrations
@@ -345,6 +351,7 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── albert_types.py
         │   │   │   ├── ingres_corps_dtos.py
+        │   │   │   ├── ingres_metiers_dtos.py
         │   │   │   ├── openai_dtos.py
         │   │   │   └── talentsoft_dtos.py
         │   │   ├── external_document_gateway.py
@@ -583,7 +590,8 @@
         │   │   ├── concours_factory.py
         │   │   ├── corps_factory.py
         │   │   ├── cv_metadata_factory.py
-        │   │   ├── ingres_factories.py
+        │   │   ├── ingres_corps_factories.py
+        │   │   ├── ingres_metiers_factories.py
         │   │   ├── offer_factory.py
         │   │   ├── raw_document_factory.py
         │   │   ├── talentsoft_factories.py
@@ -647,4 +655,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-130 directories, 519 files
+130 directories, 527 files
