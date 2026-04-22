@@ -1,30 +1,39 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 17 avril 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 2026-04-21)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des documents, notamment l'ajout de documents privés, la gestion des fichiers et des corrections liées à l'interface utilisateur. Des optimisations de performance et des mises à jour de dépendances ont également été réalisées.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans la gestion des conversations, des documents et des tâches. Des corrections de bugs et des optimisations de performance ont également été apportées. L'ajout de la gestion de documents privés et l'amélioration de la sécurité sont également des points importants.
 
 ### Évolutions fonctionnelles
-- **Gestion des documents :** Ajout de la gestion des documents privés, permettant de restreindre l'accès à certains documents aux conseillers uniquement.
-- **Téléchargement de fichiers :** Amélioration du processus de téléchargement de fichiers, notamment dans le cadre des conversations et des notes.
-- **Affichage des ressources :** Suppression des informations sur l'auteur d'une ressource dans l'interface.
-- **Notes :** Possibilité d'ajouter des documents (publics et privés) aux notes.
-- **Tâches :** Nouvelle route spécifique pour la publication de recommandations depuis une tâche, avec un message de confirmation plus clair.
-- **Conversations :** Amélioration de l'ouverture du panneau de brouillon après la création d'une recommandation.
-- **Géolocalisation :** Mise à jour de la gestion des communes et intégration d'une commande de gestion pour l'attribution de nouvelles communes aux projets.
-- **Notifications :** Ajout de notifications lors du téléchargement de documents.
-- **Catégories :** Amélioration de l'interface du sélecteur de catégories pour les ressources.
+- Possibilité de joindre des fichiers aux notes privées. [#1997](https://github.com/betagouv/recommandations-collaboratives/pull/1997)
+- Ajout d'une distinction entre documents publics et privés, avec gestion des permissions. [#2032](https://github.com/betagouv/recommandations-collaboratives/pull/2032)
+- Amélioration de l'affichage des informations sur les ressources et des requêtes de recherche. [#2028](https://github.com/betagouv/recommandations-collaboratives/pull/2028)
+- Possibilité de masquer l'onglet "Recommandations" pour certains utilisateurs. [#2064](https://github.com/betagouv/recommandations-collaboratives/pull/2064)
+- Ajout d'informations provenant des invitations. [#2013](https://github.com/betagouv/recommandations-collaboratives/pull/2013)
+- Ajout de la possibilité de suggérer des ressources dans les conversations. [#2051](https://github.com/betagouv/recommandations-collaboratives/pull/2051)
+- Amélioration de la gestion des erreurs et des validations pour les mots de passe et les numéros de téléphone.
+- Ajout d'une section pour les fichiers privés dans la liste des documents.
+- Amélioration de la gestion des brouillons de recommandations dans les conversations.
+- Correction d'un bug empêchant la fusion correcte des organisations. [#2033](https://github.com/betagouv/recommandations-collaboratives/pull/2033)
+- Correction du lien de l'invitation dans le CRM. [#2062](https://github.com/betagouv/recommandations-collaboratives/pull/2062)
 
 ### Évolutions techniques
-- **Refactoring :** Suppression de code mort et simplification de certaines logiques, notamment dans la gestion des notes et des documents.
-- **Dépendances :** Mise à jour de plusieurs dépendances, incluant Django, PostgreSQL, Redis, Alpine.js, Bootstrap, DSFR, ainsi que des librairies JavaScript (axios, lodash, picomatch, flatted, follow-redirects, dompurify, vite, cryptography, pygments, requests).
-- **CI/CD :** Utilisation de `uv` pour la gestion des dépendances Python et la génération du fichier `requirements.txt`.
-- **Performance :** Préchargement des tags pour les tâches afin d'améliorer les performances.
-- **Architecture :** Utilisation de `Alpine.store` pour une meilleure gestion de l'état de l'application.
-- **Tests :** Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
+- Mise à jour de Django en version 5.2.13. [#2063](https://github.com/betagouv/recommandations-collaboratives/pull/2063)
+- Refactorings divers pour améliorer la qualité du code et supprimer du code obsolète.
+- Mise à jour des dépendances (Pygments, Requests, lodash, dompurify, follow-redirects, etc.).
+- Utilisation de `uv` pour la gestion des dépendances et la génération du fichier `requirements.txt`.
+- Amélioration de la gestion des traces et des notifications.
+- Optimisation de la récupération des tâches et des documents.
+- Amélioration de la gestion des erreurs et de la robustesse de l'application.
+- Mise à jour de la configuration de Vite.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'interface.
-- **Configuration :** Mise à jour de l'URL de base des démarches.
-- **Nettoyage de code :** Suppression de commentaires inutiles et amélioration de la lisibilité du code.
-- **Corrections de bugs :** Correction de plusieurs bugs mineurs liés à l'interface utilisateur, à la gestion des URLs et à l'affichage des informations.
-- **Amélioration de l'accessibilité :** Ajout d'attributs ARIA pour améliorer l'accessibilité des composants de l'interface utilisateur.
+- Amélioration de la documentation.
+- Nettoyage du code et suppression de commentaires inutiles.
+- Mise à jour des tests pour assurer la couverture du code.
+- Correction de typos et amélioration de la lisibilité du code.
+- Mise à jour des dépendances de test.
+- Ajout de tests pour la visibilité des fichiers privés.
+- Suppression de code obsolète lié à la gestion des tâches.
+- Mise à jour des URL de la documentation.
+- Ajout de gestion des communes pour la géolocalisation.
+- Suppression de la gestion des documents via les tâches.
