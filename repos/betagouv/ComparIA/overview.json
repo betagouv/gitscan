@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est une plateforme open source qui collecte des données de préférences humaines pour l'évaluation et l'entraînement de modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
+  "description": "ComparIA est une plateforme open source pour collecter des données de préférences humaines pour les modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser à la diversité des modèles, aux biais et à l'impact environnemental.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -22,28 +22,36 @@
   "dependencies": [
     "ecologits",
     "fastapi",
+    "json5",
     "litellm",
+    "google-auth",
+    "numpy",
+    "prometheus-fastapi-instrumentator",
     "psycopg2-binary",
     "pydantic",
+    "pydantic-settings",
+    "python-logging-loki",
     "redis",
-    "numpy",
-    "requests"
+    "requests",
+    "rich",
+    "sentry-sdk",
+    "uvicorn",
+    "altcha"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "none"
+      "email-password"
     ]
   },
   "tests": null,
-  "workflows": [
-    "CI/CD & Déploiement"
-  ],
+  "workflows": null,
   "lastActivity": "2026-04-15T16:38:10+02:00",
   "status": "active",
   "license": null,
