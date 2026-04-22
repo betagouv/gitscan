@@ -53,13 +53,13 @@
 │       └── rgaa-audit.yaml
 ├── .gitignore
 ├── .kontinuous
+│   ├── Chart.yaml
 │   ├── config.yaml
 │   ├── env
 │   │   ├── dev
 │   │   │   ├── templates
 │   │   │   │   ├── admin.configmap.yaml
 │   │   │   │   ├── api.sealed-secret.yaml
-│   │   │   │   ├── audit-cleanup.sealed-secret.yaml
 │   │   │   │   ├── clamav.configmap.yaml
 │   │   │   │   ├── gip-mds-import-job.yaml
 │   │   │   │   ├── gip-mds-import.sealed-secret.yaml
@@ -73,16 +73,17 @@
 │   │   │   │   ├── s3.sealed-secret.yaml
 │   │   │   │   ├── sentry.sealed-secret.yaml
 │   │   │   │   ├── suit.configmap.yaml
-│   │   │   │   └── suit.sealed-secret.yaml
+│   │   │   │   ├── suit.sealed-secret.yaml
+│   │   │   │   └── valkey.configmap.yaml
 │   │   │   └── values.yaml
 │   │   ├── preprod
 │   │   │   ├── templates
 │   │   │   │   ├── admin.configmap.yaml
 │   │   │   │   ├── api.sealed-secret.yaml
-│   │   │   │   ├── audit-cleanup.sealed-secret.yaml
 │   │   │   │   ├── clamav.configmap.yaml
 │   │   │   │   ├── gip-mds-import.sealed-secret.yaml
 │   │   │   │   ├── mail.configmap.yaml
+│   │   │   │   ├── maildev.yaml
 │   │   │   │   ├── next-auth.sealed-secret.yaml
 │   │   │   │   ├── proconnect.configmap.yaml
 │   │   │   │   ├── proconnect.sealed-secret.yaml
@@ -90,13 +91,13 @@
 │   │   │   │   ├── s3.sealed-secret.yaml
 │   │   │   │   ├── sentry.sealed-secret.yaml
 │   │   │   │   ├── suit.configmap.yaml
-│   │   │   │   └── suit.sealed-secret.yaml
+│   │   │   │   ├── suit.sealed-secret.yaml
+│   │   │   │   └── valkey.configmap.yaml
 │   │   │   └── values.yaml
 │   │   └── prod
 │   │       ├── templates
 │   │       │   ├── admin.sealed-secret.yaml
 │   │       │   ├── api.sealed-secret.yaml
-│   │       │   ├── audit-cleanup.sealed-secret.yaml
 │   │       │   ├── clamav.configmap.yaml
 │   │       │   ├── gip-mds-import.sealed-secret.yaml
 │   │       │   ├── mail.configmap.yaml
@@ -106,8 +107,10 @@
 │   │       │   ├── s3.configmap.yaml
 │   │       │   ├── s3.sealed-secret.yaml
 │   │       │   ├── sentry.sealed-secret.yaml
+│   │       │   ├── smtp-app.sealed-secret.yaml
 │   │       │   ├── suit.configmap.yaml
-│   │       │   └── suit.sealed-secret.yaml
+│   │       │   ├── suit.sealed-secret.yaml
+│   │       │   └── valkey.configmap.yaml
 │   │       └── values.yaml
 │   ├── templates
 │   │   ├── audit-cleanup-cron.yaml
@@ -131,6 +134,7 @@
 │       ├── CLAUDE.md
 │       ├── Dockerfile
 │       ├── biome.jsonc
+│       ├── cache-handler.cjs
 │       ├── data
 │       │   ├── companies.json
 │       │   ├── mock-gip-mds-edge-cases.csv
@@ -165,6 +169,7 @@
 │       │   ├── 0025_add_user_is_admin.sql
 │       │   ├── 0026_add_referents_table.sql
 │       │   ├── 0027_add_global_settings.sql
+│       │   ├── 0028_add_cse_opinion_completed_at.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
@@ -202,12 +207,15 @@
 │       │           ├── login-illustration.svg
 │       │           └── proconnect-logo.svg
 │       ├── scripts
+│       │   ├── audit-cleanup.mjs
 │       │   ├── copy-dsfr.js
 │       │   ├── copy-swagger-ui.mjs
 │       │   ├── entrypoint.sh
 │       │   ├── fetch-large-companies.ts
 │       │   ├── generate-edge-case-gip-data.ts
 │       │   ├── generate-mock-gip-data.ts
+│       │   ├── generate-suit-signature.js
+│       │   ├── generate-suit-signing-keys.sh
 │       │   └── migrate.mjs
 │       ├── src
 │       │   ├── __tests__
@@ -231,9 +239,6 @@
 │       │   │   │   │   └── page.tsx
 │       │   │   │   └── page.tsx
 │       │   │   ├── api
-│       │   │   │   ├── audit
-│       │   │   │   │   └── cleanup
-│       │   │   │   │       └── route.ts
 │       │   │   │   ├── auth
 │       │   │   │   │   ├── [...nextauth]
 │       │   │   │   │   │   └── route.ts
@@ -339,6 +344,8 @@
 │       │   │   │   ├── [id]
 │       │   │   │   │   └── page.tsx
 │       │   │   │   └── page.tsx
+│       │   │   ├── robots.ts
+│       │   │   ├── sitemap.ts
 │       │   │   ├── test-error
 │       │   │   │   └── page.tsx
 │       │   │   └── test-panel
@@ -831,7 +838,12 @@
 │       │   │   │   │   ├── PrivacyRightsAndData.tsx
 │       │   │   │   │   └── index.tsx
 │       │   │   │   ├── SitemapPage.tsx
-│       │   │   │   └── index.ts
+│       │   │   │   ├── __tests__
+│       │   │   │   │   ├── robots.test.ts
+│       │   │   │   │   └── sitemap.test.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── robots.ts
+│       │   │   │   └── sitemap.ts
 │       │   │   ├── login
 │       │   │   │   ├── LoginAccordion.module.scss
 │       │   │   │   ├── LoginAccordion.tsx
@@ -995,6 +1007,7 @@
 │       │   │   │   │   │   ├── adminReferents.test.ts
 │       │   │   │   │   │   ├── adminSettings.test.ts
 │       │   │   │   │   │   ├── company.test.ts
+│       │   │   │   │   │   ├── cseOpinion.finalize.test.ts
 │       │   │   │   │   │   ├── cseOpinion.test.ts
 │       │   │   │   │   │   ├── declaration.test.ts
 │       │   │   │   │   │   ├── declarationHelpers.test.ts
@@ -1016,15 +1029,13 @@
 │       │   │   │   └── trpc.ts
 │       │   │   ├── audit
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── auditCleanupScript.integration.test.ts
 │       │   │   │   │   ├── cachedAuth.test.ts
-│       │   │   │   │   ├── cleanup.integration.test.ts
-│       │   │   │   │   ├── cleanup.test.ts
 │       │   │   │   │   ├── log.test.ts
 │       │   │   │   │   ├── requestContext.test.ts
 │       │   │   │   │   ├── trpcMiddleware.test.ts
 │       │   │   │   │   └── withAuditedRoute.test.ts
 │       │   │   │   ├── cachedAuth.ts
-│       │   │   │   ├── cleanup.ts
 │       │   │   │   ├── log.ts
 │       │   │   │   ├── requestContext.ts
 │       │   │   │   ├── trpcMiddleware.ts
@@ -1073,6 +1084,7 @@
 │       │   │       ├── uploadPipeline.ts
 │       │   │       └── weez.ts
 │       │   ├── test
+│       │   │   ├── impersonationMock.ts
 │       │   │   ├── integration-per-file-setup.ts
 │       │   │   ├── integration-setup.ts
 │       │   │   └── setup.ts
@@ -1085,7 +1097,5 @@
 │       └── vitest.integration.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── scripts
-│   └── generate-suit-signing-keys.sh
 └── sonar-project.properties
-208 directories, 882 files
+206 directories, 894 files
