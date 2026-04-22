@@ -245,7 +245,7 @@
 │   │       ├── pole_emploi.scss
 │   │       ├── prefill_descriptions_edit.scss
 │   │       ├── print.scss
-│   │       ├── procedure_*.scss  (7 files)
+│   │       ├── procedure_*.scss  (8 files)
 │   │       ├── proconnect.scss
 │   │       ├── profil.scss
 │   │       ├── rich_text.scss
@@ -1687,6 +1687,8 @@
 │   │       └── warning_message_type.rb
 │   ├── helpers
 │   │   ├── address_helper.rb
+│   │   ├── administrateurs
+│   │   │   └── procedures_helper.rb
 │   │   ├── application_helper.rb
 │   │   ├── archive_helper.rb
 │   │   ├── attestation_depot_helper.rb
@@ -1817,6 +1819,7 @@
 │   │   │   ├── number_input_controller.ts
 │   │   │   ├── persisted_form_controller.ts
 │   │   │   ├── prevent_submit_on_enter_controller.ts
+│   │   │   ├── procedure_sticky_title_controller.ts
 │   │   │   ├── referentiel_mapping_controller.ts
 │   │   │   ├── referentiel_new_form_controller.ts
 │   │   │   ├── repetition_toggle_all_controller.ts
@@ -1957,6 +1960,7 @@
 │   │   │   ├── purge_unattached_blobs_job.rb
 │   │   │   ├── purge_unused_admin_job.rb
 │   │   │   ├── release_crashed_export_job.rb
+│   │   │   ├── send_api_entreprise_token_expiration_notice_job.rb
 │   │   │   ├── send_api_token_expiration_notice_job.rb
 │   │   │   ├── stalled_declarative_procedures_job.rb
 │   │   │   ├── trusted_device_token_renewal_job.rb
@@ -2712,6 +2716,7 @@
 │       │       └── _pagination.html.haml
 │       ├── administrateur_mailer
 │       │   ├── activate_before_expiration.haml
+│       │   ├── api_entreprise_token_expiration.html.erb
 │       │   ├── api_token_expiration.haml
 │       │   ├── notify_procedure_expires_when_termine_forced.haml
 │       │   └── notify_service_without_siret.haml
@@ -2811,6 +2816,7 @@
 │       │   │   ├── _procedures_list.html.haml
 │       │   │   ├── _publication_form.html.haml
 │       │   │   ├── _publication_form_inputs.html.erb
+│       │   │   ├── _sticky_title.html.haml
 │       │   │   ├── _suggest_expires_when_termine.html.haml
 │       │   │   ├── _unpublished_changes_sticky_header.html.haml
 │       │   │   ├── accuse_lecture.html.haml
@@ -4530,7 +4536,9 @@
 │   │   ├── 20260313120001_validate_not_null_trusted_device_tokens_instructeur_id.rb
 │   │   ├── 20260330134316_add_tiptap_columns_to_referentiels.rb
 │   │   ├── 20260330164058_add_submitted_with_france_connect_to_dossiers.rb
-│   │   └── 20260402182757_recreate_search_terms_indexes_with_unaccent.rb
+│   │   ├── 20260402182757_recreate_search_terms_indexes_with_unaccent.rb
+│   │   ├── 20260407120000_add_api_entreprise_token_expiration_notice_sent_at_to_procedures.rb
+│   │   └── 20260421120000_add_partial_index_for_stalled_declarative_dossiers.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -5253,6 +5261,8 @@
 │   │   └── types
 │   │       └── geo_area_type_spec.rb
 │   ├── helpers
+│   │   ├── administrateurs
+│   │   │   └── procedures_helper_spec.rb
 │   │   ├── application_helper_spec.rb
 │   │   ├── archive_helper_spec.rb
 │   │   ├── commentaire_helper_spec.rb
@@ -5323,6 +5333,7 @@
 │   │   │   ├── purge_old_email_event_job_spec.rb
 │   │   │   ├── purge_orphan_referentiels_job_spec.rb
 │   │   │   ├── release_crashed_export_job_spec.rb
+│   │   │   ├── send_api_entreprise_token_expiration_notice_job_spec.rb
 │   │   │   ├── send_api_token_expiration_notice_job_spec.rb
 │   │   │   ├── stalled_declarative_procedures_job_spec.rb
 │   │   │   ├── trusted_device_token_renewal_job_spec.rb
@@ -5773,6 +5784,7 @@
 │   │   │   ├── procedure_spec_helper.rb
 │   │   │   ├── procedure_update_spec.rb
 │   │   │   ├── simpliscore_spec.rb
+│   │   │   ├── sticky_procedure_title_spec.rb
 │   │   │   └── types_de_champ_spec.rb
 │   │   ├── api_particulier
 │   │   │   └── api_particulier_spec.rb
@@ -6033,4 +6045,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-973 directories, 5377 files
+975 directories, 5388 files
