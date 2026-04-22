@@ -1,38 +1,40 @@
 ## Changelog : meet (30 derniers jours, au 17 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de Meet se concentrent sur l'amélioration de la sécurité, l'ajout de nouvelles fonctionnalités pour la transcription et la gestion des tâches, ainsi que des améliorations d'accessibilité et de performance. Des corrections de bugs ont également été apportées pour assurer une meilleure expérience utilisateur.
+Ce mois-ci, les améliorations se concentrent sur la sécurité, l'accessibilité et l'ajout de nouvelles fonctionnalités pour la transcription et la collecte de métadonnées. Des corrections de bugs et des mises à jour de dépendances ont également été apportées pour améliorer la stabilité et la sécurité de la plateforme. L'équipe a également travaillé sur l'amélioration de l'expérience développeur et de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Ajout de la collecte de métadonnées sur l'activité des utilisateurs (VAD, connexions, chat) pour une meilleure analyse et optimisation. [#82]
-- Amélioration du système de transcription avec la prise en charge de plus d'extensions de fichiers et d'une nouvelle version de l'API pour les tâches asynchrones. [#1171, #1265]
-- Ajout de la possibilité de définir un arrière-plan personnalisé.
-- Amélioration de l'interface utilisateur pour le téléchargement des enregistrements, avec un titre de document explicite pour une meilleure accessibilité. [#1261]
-- Ajout d'un indicateur de chargement avec prévisualisation lors du téléchargement d'un arrière-plan personnalisé.
-- Prise en charge de raccourcis clavier pour la barre d'outils de réactions. [#1262]
+- Ajout du support multi-tenant et d'une nouvelle API pour les tâches de transcription asynchrone et de résumé (#1171).
+- Possibilité de télécharger les enregistrements avec un titre de document explicite pour une meilleure accessibilité (#1261).
+- Amélioration de l'accessibilité de la barre d'outils de réactions, avec un raccourci clavier pour l'ouvrir (#1262).
+- Extension des types de fichiers autorisés pour le partage (#1265).
+- Amélioration de l'affichage du raccourci clavier spécifique au système d'exploitation pour les participants (#1193).
 
 ### Évolutions techniques
 - Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (Pillow, aiohttp, vite, django, pytest).
-- Amélioration de l'authentification LiveKit en utilisant l'en-tête `Authorization`.
+- Utilisation de l'en-tête `Authorization` pour l'authentification avec le token LiveKit.
 - Refactorisation du système de réactions pour unifier l'état et le rendu.
-- Amélioration de la gestion des erreurs Twirp.
-- Mise à jour de l'image frontend pour utiliser Alpine 3.23 afin de corriger des CVE.
-- Ajout de la configuration de l'engine de session via une variable d'environnement.
-- Fix d'un problème d'inclusion de module avec uv-build.
-- Pin de l'image Docker pour des builds reproductibles.
-- Mise à jour du chart Helm vers la version 0.0.20.
-- Ajout de support compose pour multi-user-transcriber.
-- Suppression d'outils de développement Tilt obsolètes.
+- Amélioration de la gestion des erreurs Twirp pour les opérations sur les participants.
+- Ajout de la collecte de métadonnées sur l'activité VAD (Voice Activity Detection), les connexions et le chat.
+- Fixation de l'image Docker pour des builds reproductibles.
+- Configuration de l'engine de session via une variable d'environnement.
+- Suppression d'outils de développement obsolètes (Tilt).
+- Amélioration de la documentation Swagger pour clarifier l'exigence d'un slash final dans les URLs.
 
 ### Autres changements
-- Ajout de tests unitaires pour le service JwtTokenService.
-- Amélioration de la documentation Swagger pour clarifier les exigences de la barre oblique de fin.
-- Amélioration de la journalisation pour éviter la divulgation d'adresses e-mail sensibles.
-- Mise à jour des logos.
-- Corrections de l'indentation dans le Makefile.
-- Optimisation de l'utilisation de PostHog pour les sondages et enrichissement des métadonnées des événements.
-- Suppression de la commande obsolète de récupération de secrets externes.
-- Initialisation des secrets Kubernetes pour la pile Tilt.
-- Amélioration de la sécurité des pods et conteneurs via Helm.
-- Mise à jour des dépendances Python.
-- Suppression de valeurs Helm inutilisées.
+- Ajout de tests unitaires pour le service de token JWT.
+- Amélioration de l'accessibilité de la navigation dans la barre latérale.
+- Optimisation de l'utilisation des sondages PostHog et enrichissement des métadonnées des événements.
+- Suppression de l'affichage des adresses e-mail dans les logs d'échec d'invitation.
+- Correction d'un bug empêchant la sélection correcte du périphérique lors d'une conférence.
+- Ajout de contexte de sécurité pour les pods et conteneurs dans le Helm chart.
+- Mise à jour du chart Helm vers la version 0.0.20.
+- Correction d'un bug dans l'endpoint de mise à jour des participants.
+- Suppression de la récupération d'informations secrètes externes obsolètes.
+- Ajout du support pour Docker Compose pour le service multi-user-transcriber.
+- Correction d'indentations dans le Makefile.
+- Amélioration de la gestion des erreurs de module avec uv-build.
+- Ajout de commentaires et amélioration de la documentation pour la méthode de résumé.
+- Suppression de valeurs Helm de développement inutilisées.
+- Ajout de la possibilité de configurer les secrets Kubernetes pour l'environnement Tilt.
+- Correction d'un warning concernant la longueur de la clé dans les tests.
