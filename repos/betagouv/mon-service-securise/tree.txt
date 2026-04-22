@@ -317,6 +317,7 @@
 │   │   │   ├── localisationDonneesTraitees
 │   │   │   │   ├── UE.svg
 │   │   │   │   └── horsUE.svg
+│   │   │   ├── logo_ANSSI_MSS.svg
 │   │   │   ├── logo_anssi.png
 │   │   │   ├── logo_indice_cyber.png
 │   │   │   ├── logo_indice_cyber.svg
@@ -424,8 +425,6 @@
 │   │       ├── doctrineHomologation.css
 │   │       ├── documentation.css
 │   │       ├── dossiers.css
-│   │       ├── entete.css
-│   │       ├── entete.responsive.css
 │   │       ├── erreur.css
 │   │       ├── erreurAccesRefuse.css
 │   │       ├── etapesDossier
@@ -436,26 +435,21 @@
 │   │       ├── fond-blanc.css
 │   │       ├── fonts.css
 │   │       ├── formulaire.css
-│   │       ├── headerLarge.css
 │   │       ├── home.css
 │   │       ├── home.desktop.css
 │   │       ├── home.tablette.css
 │   │       ├── homologation
 │   │       │   ├── descriptionService.css
 │   │       │   ├── formulaire.css
-│   │       │   ├── indiceCyber.css
-│   │       │   ├── mesures.css
-│   │       │   └── rolesResponsabilites.css
+│   │       │   └── mesures.css
 │   │       ├── lien.css
 │   │       ├── modale.css
 │   │       ├── modules
 │   │       │   ├── selectize.css
 │   │       │   └── validation.css
 │   │       ├── mss.css
-│   │       ├── navigationSiteVitrine.css
 │   │       ├── palette.css
 │   │       ├── parcoursService.css
-│   │       ├── radarIndiceCyber.css
 │   │       ├── statistiques.css
 │   │       └── tiroir.css
 │   ├── bibliotheques
@@ -466,13 +460,11 @@
 │   ├── connexion.mjs
 │   ├── creation-compte.mjs
 │   ├── creationV2.mjs
-│   ├── entete.js
 │   ├── home.js
 │   ├── listeMesures.mjs
 │   ├── modules
 │   │   ├── adaptateurAjaxAxios.mjs
 │   │   ├── arrangeParametresAvis.mjs
-│   │   ├── arrangeParametresPartiesPrenantes.mjs
 │   │   ├── brancheElementsAjoutables.js
 │   │   ├── deconnexion.js
 │   │   ├── donneesPartagees.mjs
@@ -530,9 +522,8 @@
 │   │   │   └── formulaireEtape.mjs
 │   │   ├── indiceCyber.mjs
 │   │   ├── mesures.mjs
-│   │   ├── risques.mjs
-│   │   ├── risquesV2.mjs
-│   │   └── rolesResponsabilites.js
+│   │   ├── pagesService.mjs
+│   │   └── risquesV2.mjs
 │   ├── simulationV2.mjs
 │   ├── supervision.mjs
 │   └── tableauDeBord.mjs
@@ -809,6 +800,7 @@
 │   │   ├── notificationExpirationHomologation.js
 │   │   ├── objetsApi
 │   │   │   ├── objetGetAutorisation.js
+│   │   │   ├── objetGetContactsUtiles.ts
 │   │   │   ├── objetGetIndicesCyber.js
 │   │   │   ├── objetGetMesures.js
 │   │   │   ├── objetGetService.js
@@ -1056,19 +1048,13 @@
 │       │   ├── donneesPartagees.pug
 │       │   ├── elementsAjoutables
 │       │   │   ├── elementsAjoutables.pug
-│       │   │   ├── elementsAjoutablesActeurHomologation.pug
 │       │   │   ├── elementsAjoutablesAvis.pug
-│       │   │   ├── elementsAjoutablesDescription.pug
-│       │   │   └── elementsAjoutablesPartiePrenante.pug
+│       │   │   └── elementsAjoutablesDescription.pug
 │       │   ├── footer.pug
 │       │   ├── formulaireDescriptionService.pug
-│       │   ├── indiceCyber
-│       │   │   └── radarIndiceCyber.pug
+│       │   ├── header.pug
 │       │   ├── inputChoix.pug
-│       │   ├── inputIdentite.pug
-│       │   ├── inputPartiePrenante.pug
 │       │   ├── lienNouvelOnglet.pug
-│       │   ├── navigationSiteVitrine.pug
 │       │   └── texteTronque.pug
 │       ├── home
 │       │   └── temoignages.pug
@@ -1097,13 +1083,11 @@
 │       │   │   ├── documents.pug
 │       │   │   └── recapitulatif.pug
 │       │   ├── formulaireEtapier.pug
-│       │   ├── indiceCyber.pug
 │       │   ├── mesures.pug
 │       │   ├── modaleEncartHomologation.pug
 │       │   ├── modaleParcoursHomologation.pug
-│       │   ├── risques.pug
+│       │   ├── pagesService.pug
 │       │   ├── risquesV2.pug
-│       │   ├── rolesResponsabilites.pug
 │       │   └── simulation-referentiel-v2.pug
 │       ├── statistiques.pug
 │       ├── supervision.pug
@@ -1204,10 +1188,6 @@
 │   │   │   │   ├── Tuile.svelte
 │   │   │   │   └── TuileTelechargement.svelte
 │   │   │   └── doctrineHomologation.ts
-│   │   ├── entete
-│   │   │   ├── Entete.svelte
-│   │   │   ├── entete.api.ts
-│   │   │   └── entete.ts
 │   │   ├── entetePageService
 │   │   │   ├── EntetePageService.svelte
 │   │   │   ├── entetePageService.d.ts
@@ -1371,6 +1351,26 @@
 │   │   │   ├── date.ts
 │   │   │   ├── string.ts
 │   │   │   └── url.ts
+│   │   ├── pagesService
+│   │   │   ├── PagesService.svelte
+│   │   │   ├── kit
+│   │   │   │   └── NavigationSecuriser.svelte
+│   │   │   ├── pages
+│   │   │   │   ├── contactsUtiles
+│   │   │   │   │   ├── ContactsUtiles.svelte
+│   │   │   │   │   ├── InputDSFR.svelte
+│   │   │   │   │   ├── contactsUtiles.api.ts
+│   │   │   │   │   └── contactsUtiles.types.ts
+│   │   │   │   └── indiceCyber
+│   │   │   │       ├── IndiceCyber.svelte
+│   │   │   │       ├── RadarIndiceCyber.svelte
+│   │   │   │       └── indiceCyber.types.ts
+│   │   │   ├── pages.donnees.ts
+│   │   │   ├── pagesService.d.ts
+│   │   │   ├── pagesService.ts
+│   │   │   ├── pagesServiceGerees.ts
+│   │   │   └── store
+│   │   │       └── routeur.store.ts
 │   │   ├── profil
 │   │   │   ├── Profil.svelte
 │   │   │   ├── profil.d.ts
@@ -1625,6 +1625,9 @@
 │   ├── test
 │   │   ├── listeMesures
 │   │   │   └── mesuresAvecServicesAssocies.store.spec.ts
+│   │   ├── pagesService
+│   │   │   └── store
+│   │   │       └── routeur.store.spec.ts
 │   │   ├── rapportTeleversement
 │   │   │   └── tri.spec.ts
 │   │   ├── tableauDesMesures
@@ -1834,6 +1837,7 @@
 │   │   ├── mesuresSpecifiques.spec.ts
 │   │   ├── notificationExpirationHomologation.spec.js
 │   │   ├── objetsApi
+│   │   │   ├── objetGetContactsUtiles.spec.ts
 │   │   │   ├── objetGetIndicesCyber.spec.js
 │   │   │   ├── objetGetMesures.spec.js
 │   │   │   ├── objetGetService.spec.js
@@ -1990,11 +1994,10 @@
 ├── test_public
 │   └── modules
 │       ├── arrangeParametresAvis.spec.mjs
-│       ├── arrangeParametresPartiesPrenantes.spec.mjs
 │       ├── interactions
 │       │   ├── brancheOnglets.spec.mjs
 │       │   └── brancheValidationCasesACocher.spec.mjs
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-266 directories, 1851 files
+272 directories, 1848 files

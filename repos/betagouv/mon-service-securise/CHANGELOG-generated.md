@@ -1,31 +1,49 @@
-## Changelog : mon-service-securise (30 derniers jours, au 15 mai 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des risques, notamment avec l'introduction des risques v2 et l'ajout de tests d'accessibilité pour garantir une meilleure expérience utilisateur. Des corrections et des optimisations ont également été apportées à l'interface utilisateur et aux processus de déploiement.
+Ce mois-ci, les efforts de développement se sont concentrés sur la modernisation de l'interface utilisateur avec l'intégration du Design System de la République Française (DSFR), l'amélioration de la gestion des risques (notamment avec l'introduction des risques spécifiques v2) et l'ajout de la page Indice Cyber. De nombreuses corrections et optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des risques v2, incluant l'affichage des risques spécifiques, la possibilité de les modifier et de les supprimer.
-- Implémentation d'un tiroir pour la gestion des risques v2 avec affichage des mesures associées.
-- Possibilité de refuser une demande d'homologation et gestion des dossiers refusés (affichage, archivage, notifications).
-- Amélioration de l'affichage des informations sur les services, incluant le nom du service dans l'en-tête et les indices cyber.
-- Ajout d'une fonctionnalité d'export CSV des risques v1.
-- Ajout d'une question supplémentaire de validation lors de l'homologation.
-- Affichage d'un message de confirmation lors d'un refus d'homologation.
+- Intégration du header DSFR, remplaçant l'ancien header custom.
+- Ajout du composant de page "Indice Cyber" avec affichage du radar et des tranches d'indice.
+- Ajout de la navigation horizontale dans la section "SÉCURISER".
+- Ajout de la gestion des risques spécifiques v2 : création, modification, suppression et affichage dans l'interface.
+- Possibilité d'exporter les risques V1 au format CSV.
+- Ajout d'une modale pour afficher les cartographies de risques.
+- Ajout d'un tiroir pour l'ajout de risque spécifique v2.
+- Affichage du nom du service dans l'en-tête des pages de service.
+- Ajout du bouton de gestion des contributeurs.
+- Amélioration de l'affichage des informations de service dans la page "Décrire".
+- Ajout d'une route pour marquer comme "vu" les explications des risques V2.
 
 ### Évolutions techniques
-- Mise en place de tests d'accessibilité avec Playwright et Axe pour améliorer l'inclusivité du service.
-- Publication des rapports d'accessibilité dans Mattermost.
-- Refonte de l'architecture du menu de navigation avec un composant Svelte.
-- Conversion de plusieurs composants en TypeScript pour une meilleure typage et maintenabilité.
-- Optimisation des workflows de déploiement Clever Cloud.
-- Mise à jour de nombreuses dépendances (Express, PostgreSQL, Svelte, Vite, etc.).
+- Migration de la page "Mesures" et "Décrire V2" vers une application SPA (Single Page Application).
+- Refonte de la navigation principale avec le composant `dsfr-navigation`.
+- Utilisation des slots du header DSFR pour une meilleure personnalisation.
+- Suppression de l'ancien code Pug au profit de Svelte.
+- Amélioration de la gestion des données et des objets de données pour les risques v2.
+- Refactorisation du code pour une meilleure organisation et maintenabilité.
+- Mise à jour de nombreuses dépendances (Svelte, Vite, TypeScript, ESLint, etc.).
+- Ajout de tests d'accessibilité avec Playwright et Axe.
+- Configuration de l'exécution des tests d'accessibilité en CI/CD.
 - Amélioration de la gestion des feature flags.
-- Suppression de code obsolète et refactoring de certains composants.
 
 ### Autres changements
+- Suppression du bandeau de promotion de MSC.
+- Correction de problèmes d'accessibilité.
 - Amélioration de la documentation et des commentaires.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur (espacement, typographie, etc.).
-- Ajout de badges et d'infobulles pour une meilleure clarté.
-- Correction de problèmes de 404 sur les pages de risques v2 et de création de compte.
-- Ajout d'un retry sur la recherche d'entreprise.
+- Nettoyage du code et suppression de code obsolète.
+- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
+- Mise à jour des variables d'environnement pour les tests d'accessibilité.
+- Ajout de rapports d'exécution des tests d'accessibilité.
+- Correction de la bordure du menu de page service.
+- Harmonisation de l'identifiant de la page `contactsUtiles`.
+- Correction de l'affichage des valeurs d'indice cyber.
+- Suppression des fichiers d'en-tête inutiles.
+- Suppression des anciennes vues `pug`.
+- Correction des retours du pôle Design sur la page Indice Cyber.
+- Ajout des données concernant les indices cyber dans l'objet d'API service complet.
+- Correction d'erreurs liées aux routes et à la gestion des paramètres de requête.
+- Suppression de code obsolète et de styles inutilisés.
 - Amélioration de la gestion des erreurs et des exceptions.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
