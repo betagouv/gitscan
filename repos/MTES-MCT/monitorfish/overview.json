@@ -1,23 +1,21 @@
 {
   "url": "https://github.com/MTES-MCT/monitorfish",
   "name": "monitorfish",
-  "description": "Monitorfish est un logiciel de surveillance des navires de pêche développé par l'administration française pour le Centre National de Surveillance des Pêches. Il vise à améliorer le suivi et le contrôle des activités de pêche.",
+  "description": "Monitorfish est un logiciel de surveillance des activités de pêche développé pour le Centre National de Surveillance des Pêches. Il vise à améliorer le suivi et le contrôle des navires de pêche et à faciliter la détection des fraudes.",
   "language": "TypeScript",
   "features": [
     "Visualisation de données & Cartographie",
     "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Statistiques & Rapports",
-    "Recherche & Filtres"
+    "Gestion des établissements & Structures",
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
     "PostgreSQL",
-    "Keycloak",
-    "Docker",
-    "Node.js"
+    "OpenLayers"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,7 +30,9 @@
       "jwt",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": [
     "Cypress",
@@ -41,9 +41,9 @@
   "workflows": [
     "CI/CD & Déploiement"
   ],
-  "lastActivity": "2026-04-16T19:31:52+02:00",
+  "lastActivity": "2026-04-21T17:38:51+02:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": "GNU Affero GPL Version 3",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
