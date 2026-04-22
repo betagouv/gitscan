@@ -1,23 +1,20 @@
-## Changelog : publicodes-aides-velo (30 derniers jours)
+## Changelog : publicodes-aides-velo (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des modifications aux aides vélo disponibles, notamment l'ajout de nouvelles aides territoriales, la mise à jour de certaines conditions d'éligibilité et la suppression d'aides obsolètes. Des améliorations techniques ont également été apportées, notamment l'utilisation de logos de fallback et la correction de bugs mineurs.
+Cette mise à jour apporte des corrections et des ajouts concernant les aides vélo disponibles dans différentes collectivités françaises. Des liens cassés ont été corrigés, des informations sur les dates de fin d'aides ont été mises à jour, et de nouvelles collectivités ont été ajoutées au modèle.  Des améliorations techniques ont également été apportées, notamment le passage à Prettier pour le formatage du code.
 
 ### Évolutions fonctionnelles
-- Ajout de l'aide vélo de la Communauté d'Agglomération Grand Châtellerault.
-- Ajout de l'aide vélo de Villeneuve lez Avignon.
-- Mise à jour de l'aide vélo de Pornic agglo Pays de Retz.
-- Mise à jour de l'aide vélo de la Communauté d'Agglomération Tarbes-Lourdes-Pyrénées.
-- Mise à jour de l'aide vélo de la Communauté de Communes du Carmausin-Ségala.
-- Mise à jour de l'aide vélo de la Communauté de Communes du Pays de L'Arbresle.
-- Modification du montant par défaut du prix du vélo pour l'aide de Blois Agglopolys (fixe à 2000 euros).
-- L'âge par défaut du demandeur est maintenant de 18 ans (au lieu de 30 ans).
-- Suppression des aides vélo de Brest Métropole, de la Communauté de Communes du Pays des Achards et de la Communauté de Communes Haut Val de Sèvre.
-- Suppression de l'aide vélo de la Ville de Saint-Omer.
+- Ajout de nouvelles aides pour les collectivités suivantes : CC Vie et Boulogne, CCVO.
+- Mise à jour des informations concernant les aides de la ville d'Oullins-Pierre-Bénite, de Saint-Alban-Leysse et du Dunkerque.
+- Correction de liens cassés pour certaines aides (au 13 avril 2026).
+- Correction des dates de fin d'aides dépassées.
+- Suppression d'un doublon pour l'aide de la CC Loue-Lison.
+- Amélioration du tri des aides dans les scripts par type de collectivité et date d'obsolescence.
 
 ### Évolutions techniques
-- Utilisation des logos de fallback définis dans `fallback-miniatures.json` en priorité pour les aides.
+- Remplacement de l'outil de formatage de code Dprint par Prettier.
+- Mise à jour de la dépendance `decoupage-administratif` vers la version 6.0.0.
+- Restauration de la logique de génération du fichier `communes.json`.
 
 ### Autres changements
-- Correction de bugs et nettoyage du code pour supprimer les aides obsolètes (#83).
-- Mise à jour des dépendances du projet.
+- Aucun changement significatif à signaler.
