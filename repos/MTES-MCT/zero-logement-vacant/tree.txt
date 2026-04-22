@@ -34,6 +34,7 @@
 │       ├── deploy.yml
 │       ├── e2e.yml
 │       ├── export-zlovac.yml
+│       ├── generate-docs.yml
 │       ├── github-actions-data-stack.yml
 │       ├── main.yml
 │       ├── pull-request.yml
@@ -373,9 +374,8 @@
 │   │   │   │       ├── int_zlovac_evol_housing_owners.sql
 │   │   │   │       ├── int_zlovac_housing.sql
 │   │   │   │       ├── int_zlovac_owner_housing.sql
-│   │   │   │       ├── int_zlovac_owner_housing_scored.sql
+│   │   │   │       ├── int_zlovac_owner_matching.sql
 │   │   │   │       ├── int_zlovac_owners.sql
-│   │   │   │       ├── int_zlovac_owners_rematched.sql
 │   │   │   │       ├── int_zlovac_unique_owners.sql
 │   │   │   │       └── schemas.yml
 │   │   │   ├── marts
@@ -485,7 +485,8 @@
 │   │   │       │   ├── stg_ff_building_2024.sql
 │   │   │       │   ├── stg_ff_housing_2024.sql
 │   │   │       │   ├── stg_ff_owners_2024.sql
-│   │   │       │   └── stg_ff_owners_2025.sql
+│   │   │       │   ├── stg_ff_owners_2025.sql
+│   │   │       │   └── stg_ff_owners_idperson_2025.sql
 │   │   │       ├── lovac
 │   │   │       │   ├── ff
 │   │   │       │   │   ├── schema.yml
@@ -736,6 +737,22 @@
 ├── docs
 │   ├── DATABASE_SEEDS_SAFETY.md
 │   ├── SCRIPT_BEST_PRACTICES.md
+│   ├── api
+│   │   └── API_IMPROVEMENTS.md
+│   ├── architecture
+│   │   ├── 00-system-overview.md
+│   │   ├── 01-frontend-architecture.md
+│   │   ├── 02-backend-architecture.md
+│   │   ├── 03-queue-architecture.md
+│   │   ├── 04-data-warehouse-architecture.md
+│   │   ├── 05-scripts-architecture.md
+│   │   ├── 06-infrastructure.md
+│   │   ├── 07-integrations.md
+│   │   ├── 08-security.md
+│   │   ├── 09-database-schema.md
+│   │   └── README.md
+│   ├── benchmarks
+│   │   └── vite8-upgrade.md
 │   ├── database
 │   │   ├── establishments.md
 │   │   └── trigger-campaign-return-count.md
@@ -755,31 +772,50 @@
 │   │   ├── pdf.md
 │   │   ├── supprimer-les-warnings-not-wrapped-in-act.md
 │   │   └── tester-les-inputs-api.md
+│   ├── operations
+│   │   ├── README.md
+│   │   ├── dpe-import-presentation.md
+│   │   └── runbooks
+│   │       ├── database-operations.md
+│   │       ├── deployment-rollback.md
+│   │       ├── incident-response.md
+│   │       ├── monitoring-alerts.md
+│   │       └── troubleshooting.md
 │   ├── performance-improvements.md
 │   ├── portail-df-decision-tree.md
-│   └── superpowers
-│       ├── plans
-│       │   ├── 2026-01-26-agents-md-configuration-design.md
-│       │   ├── 2026-01-28-document-upload-refactoring.md
-│       │   ├── 2026-02-02-document-events-design.md
-│       │   ├── 2026-02-02-frontend-document-api-update.md
-│       │   ├── 2026-03-03-claude-automation-rules-skill.md
-│       │   ├── 2026-03-03-group-rename-modal.md
-│       │   ├── 2026-03-04-campaign-view-rework-design.md
-│       │   ├── 2026-03-04-campaign-view-rework.md
-│       │   ├── 2026-03-10-signatory-document-upload.md
-│       │   ├── 2026-03-17-pdf-worker-thread-impl.md
-│       │   ├── 2026-03-17-pdf-worker-thread.md
-│       │   ├── 2026-03-19-campaign-housing-owner-counts.md
-│       │   ├── 2026-03-23-campaign-sort-fields.md
-│       │   ├── 2026-04-07-groups-precomputed-counts.md
-│       │   ├── 2026-04-09-geo-api-lazy-fetch.md
-│       │   ├── 2026-04-09-standardize-user-repository.md
-│       │   ├── 2026-04-13-factories.md
-│       │   └── 2026-04-14-import-lovac-owner-eetl.md
-│       └── specs
-│           ├── 2026-04-07-groups-precomputed-counts-design.md
-│           └── 2026-04-13-factories-design.md
+│   ├── superpowers
+│   │   ├── plans
+│   │   │   ├── 2026-01-26-agents-md-configuration-design.md
+│   │   │   ├── 2026-01-28-document-upload-refactoring.md
+│   │   │   ├── 2026-02-02-document-events-design.md
+│   │   │   ├── 2026-02-02-frontend-document-api-update.md
+│   │   │   ├── 2026-03-03-claude-automation-rules-skill.md
+│   │   │   ├── 2026-03-03-group-rename-modal.md
+│   │   │   ├── 2026-03-04-campaign-view-rework-design.md
+│   │   │   ├── 2026-03-04-campaign-view-rework.md
+│   │   │   ├── 2026-03-10-signatory-document-upload.md
+│   │   │   ├── 2026-03-17-pdf-worker-thread-impl.md
+│   │   │   ├── 2026-03-17-pdf-worker-thread.md
+│   │   │   ├── 2026-03-19-campaign-housing-owner-counts.md
+│   │   │   ├── 2026-03-23-campaign-sort-fields.md
+│   │   │   ├── 2026-04-07-groups-precomputed-counts.md
+│   │   │   ├── 2026-04-09-geo-api-lazy-fetch.md
+│   │   │   ├── 2026-04-09-standardize-user-repository.md
+│   │   │   ├── 2026-04-13-factories.md
+│   │   │   ├── 2026-04-14-import-lovac-owner-eetl.md
+│   │   │   ├── 2026-04-14-vite8-upgrade.md
+│   │   │   └── 2026-04-20-convict-to-zod.md
+│   │   └── specs
+│   │       ├── 2026-04-07-groups-precomputed-counts-design.md
+│   │       ├── 2026-04-13-factories-design.md
+│   │       ├── 2026-04-14-vite8-upgrade-design.md
+│   │       └── 2026-04-21-remove-old-campaign-flow-design.md
+│   └── technical
+│       ├── .gitignore
+│       ├── DAT-Dossier-Architecture-Technique.md
+│       ├── DE-Dossier-Exploitation.md
+│       ├── DI-Dossier-Installation.md
+│       └── generate-pdf.sh
 ├── eslint.config.mjs
 ├── frontend
 │   ├── .env.example
@@ -1475,7 +1511,6 @@
 │   │   │   │   └── draft.service.test.ts
 │   │   │   ├── user-account.service.ts
 │   │   │   └── user.service.ts
-│   │   ├── setupTests.ts
 │   │   ├── store
 │   │   │   ├── actions
 │   │   │   │   └── authenticationAction.tsx
@@ -1590,6 +1625,7 @@
 │   ├── vite.config.mts
 │   ├── vitest.polyfills.js
 │   └── vitest.setup.ts
+├── knip.json
 ├── nx.json
 ├── package.json
 ├── packages
@@ -2025,6 +2061,7 @@
 │   │   ├── infra
 │   │   │   ├── clamav.test.ts
 │   │   │   ├── clamav.ts
+│   │   │   ├── config.test.ts
 │   │   │   ├── config.ts
 │   │   │   ├── database
 │   │   │   │   ├── data
@@ -2292,13 +2329,16 @@
 │   │   │   │   │   │   └── 20250113145122_precisions.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       ├── 20240405011849_establishments.ts
-│   │   │   │   │       └── 20250113145122_precisions.ts
+│   │   │   │   │       ├── 20250113145122_precisions.ts
+│   │   │   │   │       └── 20260421083139_users.ts
 │   │   │   │   ├── test
 │   │   │   │   │   ├── index.test.ts
 │   │   │   │   │   └── transaction.test.ts
 │   │   │   │   └── transaction.ts
 │   │   │   ├── graceful-shutdown.ts
 │   │   │   ├── logger.ts
+│   │   │   ├── openapi.ts
+│   │   │   ├── openapi.yaml
 │   │   │   ├── queue.ts
 │   │   │   ├── sentry.ts
 │   │   │   └── server.ts
@@ -2418,8 +2458,6 @@
 │   │   ├── scripts
 │   │   │   ├── README.md
 │   │   │   ├── backfill-campaign-drafts.ts
-│   │   │   ├── elastic-indexes
-│   │   │   │   └── createScriptsExecutionsIndexes.ts
 │   │   │   ├── fix-campaign-housing-status
 │   │   │   │   ├── .gitignore
 │   │   │   │   └── index.ts
@@ -2647,7 +2685,6 @@
 │   │   ├── test
 │   │   │   ├── global-setup.ts
 │   │   │   ├── sample.pdf
-│   │   │   ├── setup-env.ts
 │   │   │   ├── testFixtures.ts
 │   │   │   └── testUtils.ts
 │   │   ├── types
@@ -2734,4 +2771,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-412 directories, 2324 files
+417 directories, 2356 files
