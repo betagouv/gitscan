@@ -363,6 +363,7 @@
 │   │   │   │   ├── anonymizeUsers.ts
 │   │   │   │   └── removeBrevoContacts.ts
 │   │   │   ├── applications
+│   │   │   │   ├── processApplications.test.ts
 │   │   │   │   ├── processApplications.ts
 │   │   │   │   └── processRecruiterIntentions.ts
 │   │   │   ├── database
@@ -502,6 +503,7 @@
 │   │   │   │   │   ├── importFranceTravailCEGID.ts
 │   │   │   │   │   ├── mappingAgences.ts
 │   │   │   │   │   └── mockGeolocApi.ts
+│   │   │   │   ├── geiqWhitelist.ts
 │   │   │   │   ├── hellowork
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── importHelloWork.test.ts.snap
@@ -614,7 +616,8 @@
 │   │   │   │   ├── analyzeClosedCompanies.ts
 │   │   │   │   ├── cleanClosedCompanies.test.ts
 │   │   │   │   ├── cleanClosedCompanies.ts
-│   │   │   │   └── renvoiMailCreationCompte.ts
+│   │   │   │   ├── renvoiMailCreationCompte.ts
+│   │   │   │   └── resyncLbaJobsPartnersStats.ts
 │   │   │   ├── partenaireExport
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── exportJobsToS3V2.test.ts.snap
@@ -694,7 +697,8 @@
 │   │   │   ├── 20260226120000-classification-publish-unpublish.ts
 │   │   │   ├── 20260316162512-initialisation-seo-offres-metiers-villes.ts
 │   │   │   ├── 20260323180547-update-seo-ville.ts
-│   │   │   └── 20260403125147-fix-contract-type-jobs-partners.ts
+│   │   │   ├── 20260403125147-fix-contract-type-jobs-partners.ts
+│   │   │   └── 20260409135117-partner-job-id-taleez.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -759,6 +763,7 @@
 │   │       ├── organization.service.ts
 │   │       ├── partnerJob.service.test.ts
 │   │       ├── partnerJob.service.ts
+│   │       ├── queryValidator.service.test.ts
 │   │       ├── queryValidator.service.ts
 │   │       ├── queryValidator.service.types.ts
 │   │       ├── recruteurLba.service.test.ts
@@ -797,6 +802,8 @@
 │   │   │   ├── labonnealternance.referentielromes_classification_new_21.01.26.csv
 │   │   │   ├── romes renommées_changement de sous-domaines.csv
 │   │   │   └── unix_referentiel_code_rome_v460_utf8.csv
+│   │   ├── taleez
+│   │   │   └── export_id_lba_token_taleez.csv
 │   │   └── templates
 │   │       ├── mail-bienvenue-entreprise-sans-offre.mjml.ejs
 │   │       ├── mail-bienvenue.mjml.ejs
@@ -1726,6 +1733,7 @@
 │   │   │   │   └── LbaJobTechniques.tsx
 │   │   │   ├── PartnerJobComponents
 │   │   │   │   ├── PartnerJobDetail.tsx
+│   │   │   │   ├── PartnerJobExternalApply.tsx
 │   │   │   │   └── PartnerJobPostuler.tsx
 │   │   │   ├── RecruteurLbaComponents
 │   │   │   │   ├── RecruteurLbaCandidater.tsx
@@ -2192,7 +2200,6 @@
 │   │   │   │   │   └── parcoursup.svg
 │   │   │   │   ├── partenaire-1j1s.webp
 │   │   │   │   ├── partenaire-affelnet.webp
-│   │   │   │   ├── partenaire-catalogue.webp
 │   │   │   │   ├── partenaire-diagoriente.webp
 │   │   │   │   ├── partenaire-france-travail.webp
 │   │   │   │   ├── partenaire-onisep.webp
@@ -2208,7 +2215,7 @@
 │   │   │   │   ├── partenaire-opco-sante.webp
 │   │   │   │   ├── partenaire-opco-uniformation.webp
 │   │   │   │   ├── partenaire-parcoursup.webp
-│   │   │   │   ├── partenaire-portail-alternance.webp
+│   │   │   │   ├── partenaire-rco.svg
 │   │   │   │   └── partenaire-tdb.webp
 │   │   │   ├── lostCat.svg
 │   │   │   ├── marianne.svg
@@ -2376,4 +2383,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-463 directories, 1915 files
+464 directories, 1921 files
