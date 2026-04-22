@@ -55,6 +55,7 @@
 ├── core
 │   ├── __init__.py
 │   ├── admin.py
+│   ├── antivirus.py
 │   ├── apps.py
 │   ├── audit.py
 │   ├── auth_views.py
@@ -71,6 +72,7 @@
 │   ├── form_mixins.py
 │   ├── forms.py
 │   ├── formsets.py
+│   ├── html.py
 │   ├── importmaps.py
 │   ├── management
 │   │   └── commands
@@ -140,6 +142,9 @@
 │   │   ├── 0056_alter_document_file.py
 │   │   ├── 0057_structure_departement_structure_region.py
 │   │   ├── 0058_alter_document_is_deleted.py
+│   │   ├── 0059_auto_20260323_0925.py
+│   │   ├── 0060_message_date_publication_message_last_updated.py
+│   │   ├── 0061_document_mimetype.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -189,8 +194,13 @@
 │   │       ├── list.css
 │   │       ├── login.css
 │   │       ├── message.css
+│   │       ├── message_colors.css
+│   │       ├── message_detail.css
 │   │       ├── message_form_page.mjs
 │   │       ├── message_page.css
+│   │       ├── object_lazy_load.mjs
+│   │       ├── rich_text_editor.css
+│   │       ├── rich_text_editor.mjs
 │   │       ├── sidebar.js
 │   │       ├── siret.mjs
 │   │       ├── stimulus_app.mjs
@@ -210,7 +220,6 @@
 │   │   │   ├── _contacts.html
 │   │   │   ├── _delete_modal.html
 │   │   │   ├── _details_toogle.html
-│   │   │   ├── _document_warning_modal.html
 │   │   │   ├── _documents.html
 │   │   │   ├── _dsfr_div.html
 │   │   │   ├── _evenement_sort_link.html
@@ -239,7 +248,9 @@
 │   │   │   ├── login.html
 │   │   │   ├── message_detail.html
 │   │   │   ├── message_form.html
+│   │   │   ├── modal_warning_update.html
 │   │   │   └── templatetags
+│   │   │       ├── and_more_ellipsis_tooltip.html
 │   │   │       └── inline_radio_snippet.html
 │   │   ├── forms
 │   │   │   ├── checkbox_select.html
@@ -253,9 +264,11 @@
 │   │   └── reversion
 │   │       └── version_list.html
 │   ├── templatetags
+│   │   ├── and_more_ellipsis_tooltip.py
 │   │   ├── contains.py
 │   │   ├── etat_tags.py
 │   │   ├── get_item.py
+│   │   ├── or_empty_value_tag.py
 │   │   ├── pagination_tags.py
 │   │   ├── render_field.py
 │   │   ├── render_field_with_inline_label.py
@@ -278,6 +291,7 @@
 │   │   ├── test_settings.py
 │   │   ├── test_storage.py
 │   │   ├── test_tasks.py
+│   │   ├── test_templatetags.py
 │   │   ├── test_update_contacts_structures_email.py
 │   │   └── test_users.py
 │   ├── urls.py
@@ -389,6 +403,7 @@
 │   │   ├── 0062_auto_20260309_1039.py
 │   │   ├── 0063_etablissement_code_postal.py
 │   │   ├── 0064_evenementinvestigationcashumain_last_updated_and_more.py
+│   │   ├── 0065_evenementinvestigationcashumain_date_publication_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -441,9 +456,6 @@
 │   │       │   ├── etablissement_formset.html
 │   │       │   └── investigation_cas_humain.html
 │   │       └── investigation_cas_humain_detail.html
-│   ├── templatetags
-│   │   ├── __init__.py
-│   │   └── or_empty_value_tag.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
@@ -625,6 +637,10 @@
 │   │   ├── 0113_auto_20260303_1550.py
 │   │   ├── 0114_auto_20260309_1114.py
 │   │   ├── 0115_lieu_code_postal.py
+│   │   ├── 0116_auto_20260323_0921.py
+│   │   ├── 0117_auto_20260311_1603.py
+│   │   ├── 0118_evenement_date_publication.py
+│   │   ├── 0119_alter_zoneinfestee_fiche_zone_delimitee.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -707,6 +723,7 @@
 │   │   ├── test_evenement_documents.py
 │   │   ├── test_evenement_etats.py
 │   │   ├── test_evenement_fin_de_suivi.py
+│   │   ├── test_evenement_history.py
 │   │   ├── test_evenement_list.py
 │   │   ├── test_evenement_list_order.py
 │   │   ├── test_evenement_message.py
@@ -803,6 +820,8 @@
     │   ├── 0046_alter_evenementsimple_follow_up.py
     │   ├── 0047_etablissement_code_postal.py
     │   ├── 0048_evenementsimple_last_updated_and_more.py
+    │   ├── 0049_evenementsimple_date_publication_and_more.py
+    │   ├── 0050_evenementsimple_numero_rasff_and_more.py
     │   └── __init__.py
     ├── mixins.py
     ├── model_mixins.py
@@ -902,4 +921,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-71 directories, 833 files
+70 directories, 853 files
