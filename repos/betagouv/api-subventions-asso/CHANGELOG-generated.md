@@ -1,22 +1,31 @@
-## Changelog : api-subversions-asso (30 derniers jours, au 9 avril 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des données des programmes de financement (notamment Chorus FSE), la correction de bugs liés aux notifications et à l'encodage des noms de fichiers, ainsi que des refactorings internes pour une meilleure maintenabilité du code. Une nouvelle version (v0.83.0) a été publiée.
+Ce mois-ci, les évolutions se concentrent sur l'intégration et le traitement des données Helios, avec des améliorations de l'API pour parser ces données et afficher des informations pertinentes dans l'interface utilisateur. Des corrections de bugs et des refactorings techniques ont également été réalisés pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug dans les notifications de dépôt de renouvellement [#3822](https://github.com/betagouv/api-subventions-asso/issues/3822).
-- Amélioration de la gestion des programmes Chorus FSE, incluant la mise à jour des codes et descriptions [#3867](https://github.com/betagouv/api-subventions-asso/issues/3867) et [#3875](https://github.com/betagouv/api-subventions-asso/issues/3875).
-- Possibilité de restreindre le parsing des données à des exercices spécifiques [#3873](https://github.com/betagouv/api-subventions-asso/issues/3873) et [#3884](https://github.com/betagouv/api-subventions-asso/issues/3884).
-- Changement d'instance Matomo pour le suivi analytique [#3825](https://github.com/betagouv/api-subventions-asso/issues/3825) et [#3881](https://github.com/betagouv/api-subventions-asso/issues/3881).
-- Correction d'un problème d'encodage des noms de fichiers lors de l'envoi de fichiers multipart [#3872](https://github.com/betagouv/api-subventions-asso/issues/3872) et [#3876](https://github.com/betagouv/api-subventions-asso/issues/3876).
+- L'interface utilisateur affiche désormais le nom de l'allocataire dans l'instructeur pour les données Helios.
+- Le tableau de bord des subventions a été amélioré avec des informations supplémentaires.
+- L'instance Matomo utilisée pour le suivi analytique a été modifiée.
+- Intégration initiale du parsing des données Helios, permettant de traiter les informations relatives aux subventions.
+- Amélioration du processus de dépôt avec l'application des changements de la version 4.
 
 ### Évolutions techniques
-- Refactoring du code pour renommer les dossiers et fichiers afin de respecter les conventions du projet [#3802](https://github.com/betagouv/api-subventions-asso/issues/3802) et [#3879](https://github.com/betagouv/api-subventions-asso/issues/3879).
-- Introduction de "ports to adapters" pour améliorer l'architecture et la testabilité [#3803](https://github.com/betagouv/api-subventions-asso/issues/3803) et [#3877](https://github.com/betagouv/api-subventions-asso/issues/3877).
-- Refactoring du code Chorus [#3837](https://github.com/betagouv/api-subventions-asso/issues/3837) et [#3866](https://github.com/betagouv/api-subventions-asso/issues/3866).
-- Amélioration de la documentation Swagger pour une meilleure compréhension de l'API [#3847](https://github.com/betagouv/api-subventions-asso/issues/3847) et [#3878](https://github.com/betagouv/api-subventions-asso/issues/3878).
-- Corrections de configurations ESLint et TypeScript pour éviter les erreurs.
+- Refactoring de l'API pour déplacer les DTO Helios vers le mapping des entités dans les adaptateurs.
+- Renommage des dossiers et fichiers de l'API pour respecter les conventions de nommage.
+- Création de ports vers les adaptateurs dans l'API pour une meilleure modularité.
+- Correction d'une erreur de chemin d'accès dans la configuration ESLint.
+- Amélioration de la documentation Swagger de l'API.
+- Correction d'un problème d'encodage des noms de fichiers multipart.
+- Correction d'une erreur liée à l'utilisation de `__dirname` dans les modules ES6.
+- Amélioration de la configuration ESLint pour spécifier les fichiers `tsconfig`.
+- Refactoring du code Chorus pour une meilleure structure et maintenabilité.
 
 ### Autres changements
-- Initialisation du cron Scdl.
-- Publication des versions v0.82.0 et v0.83.0.
+- Correction d'un bug lié à la notification de dépôt de renouvellement.
+- Ajout de l'ID de paiement aux données Helios.
+- Possibilité de restreindre le parsing des données Helios à des exercices spécifiques.
+- Correction d'un test dans le front-end.
+- Mise à jour de la description de FSE.
+- Correction d'un import dans le front-end.
+- Mise à jour du code et de la description du programme Chorus FSE.

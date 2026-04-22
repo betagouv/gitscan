@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.84.2](https://github.com/betagouv/api-subventions-asso/compare/v0.84.1...v0.84.2) (2026-04-21)
+
+**Note:** Version bump only for package api-subventions-asso
+
+## [0.84.1](https://github.com/betagouv/api-subventions-asso/compare/v0.84.0...v0.84.1) (2026-04-21)
+
+### Bug Fixes
+
+- **api:** add object in helios application flat ([e38bab2](https://github.com/betagouv/api-subventions-asso/commit/e38bab2864847d60a025879889aec88a192b4014))
+- **api:** add paymentId to helios application-flat ([f37d31f](https://github.com/betagouv/api-subventions-asso/commit/f37d31fc3e2b6251b582dd1fa8ee6afe058478d1))
+- **front:** display allocator name in instructor for helios data ([936cf42](https://github.com/betagouv/api-subventions-asso/commit/936cf42988e85deb58c8d0ee50721c9519a30511))
+
+### Features
+
+- **front:** amend grant dashboard title info ([00d4a85](https://github.com/betagouv/api-subventions-asso/commit/00d4a85e03f38754ed4786da130f5852f7c03c46))
+
+# [0.84.0](https://github.com/betagouv/api-subventions-asso/compare/v0.83.2...v0.84.0) (2026-04-21)
+
+### Features
+
+- **api:** [#3865](https://github.com/betagouv/api-subventions-asso/issues/3865) parse helios data ([#3886](https://github.com/betagouv/api-subventions-asso/issues/3886)) ([d666a0c](https://github.com/betagouv/api-subventions-asso/commit/d666a0cd44efb27143ec1e6abefa50cc583f6289))
+
+## [0.83.2](https://github.com/betagouv/api-subventions-asso/compare/v0.83.1...v0.83.2) (2026-04-09)
+
+### Bug Fixes
+
+- **api:** [#3822](https://github.com/betagouv/api-subventions-asso/issues/3822) fix renewal deposit notification ([#3885](https://github.com/betagouv/api-subventions-asso/issues/3885)) ([10a0037](https://github.com/betagouv/api-subventions-asso/commit/10a00371b5eef815f647230609e9e739d8a0a37e))
+
+### Features
+
+- **api:** [#3873](https://github.com/betagouv/api-subventions-asso/issues/3873) optionally restrict parsing to specific exercises ([#3884](https://github.com/betagouv/api-subventions-asso/issues/3884)) ([4ed33cf](https://github.com/betagouv/api-subventions-asso/commit/4ed33cf63cc925dc12af59d468a74e6b47f1487c))
+- **api:** [#3873](https://github.com/betagouv/api-subventions-asso/issues/3873) optionally restrict parsing to specific exercises ([#3884](https://github.com/betagouv/api-subventions-asso/issues/3884)) ([5917172](https://github.com/betagouv/api-subventions-asso/commit/5917172ac1a426843ddf3a200df1b0b0887e901b))
+
+## [0.83.1](https://github.com/betagouv/api-subventions-asso/compare/v0.83.0...v0.83.1) (2026-04-07)
+
+### Bug Fixes
+
+- **api:** init scdl cron ([bb118ad](https://github.com/betagouv/api-subventions-asso/commit/bb118adaadc0c51033d5cfdd65f8933bdd354b8b))
+- **front:** eslint + tsconfig errors ([92f551e](https://github.com/betagouv/api-subventions-asso/commit/92f551ee7a1d28095fe1c84627f1396da83f121d))
+
+### Features
+
+- **front:** [#3825](https://github.com/betagouv/api-subventions-asso/issues/3825) switch matomo instance ([#3881](https://github.com/betagouv/api-subventions-asso/issues/3881)) ([5b8b566](https://github.com/betagouv/api-subventions-asso/commit/5b8b566cb36c2ad36149f40222ce1538c6f42faf))
+
 # [0.83.0](https://github.com/betagouv/api-subventions-asso/compare/v0.82.0...v0.83.0) (2026-04-01)
 
 ### Bug Fixes

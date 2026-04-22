@@ -152,7 +152,12 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── adapters
 │   │   │   │   ├── inputs
+│   │   │   │   │   ├── abstract-parser.test.ts
+│   │   │   │   │   ├── abstract-parser.ts
 │   │   │   │   │   ├── cli
+│   │   │   │   │   │   ├── @errors
+│   │   │   │   │   │   │   ├── MissingArgError.ts
+│   │   │   │   │   │   │   └── MissingFilePathError.ts
 │   │   │   │   │   │   ├── admin-structure.cli.ts
 │   │   │   │   │   │   ├── amounts-vs-program-region.cli.ts
 │   │   │   │   │   │   ├── chorus.cli.test.ts
@@ -169,6 +174,14 @@
 │   │   │   │   │   │   ├── geo.cli.ts
 │   │   │   │   │   │   ├── gispro.cli.test.ts
 │   │   │   │   │   │   ├── gispro.cli.ts
+│   │   │   │   │   │   ├── helios
+│   │   │   │   │   │   │   ├── helios.cli.factory.ts
+│   │   │   │   │   │   │   ├── helios.cli.test.ts
+│   │   │   │   │   │   │   ├── helios.cli.ts
+│   │   │   │   │   │   │   ├── helios.dto.ts
+│   │   │   │   │   │   │   ├── helios.mapper.ts
+│   │   │   │   │   │   │   ├── helios.parser.test.ts
+│   │   │   │   │   │   │   └── helios.parser.ts
 │   │   │   │   │   │   ├── osiris.cli.test.ts
 │   │   │   │   │   │   ├── osiris.cli.ts
 │   │   │   │   │   │   ├── scdl-batch.cli.test.ts
@@ -283,6 +296,7 @@
 │   │   │   │       │   ├── data-log
 │   │   │   │       │   │   ├── data-log.adapter.ts
 │   │   │   │       │   │   └── data-log.port.ts
+│   │   │   │       │   ├── database.port.ts
 │   │   │   │       │   ├── dataviz
 │   │   │   │       │   │   └── amount-vs-program-region
 │   │   │   │       │   │       ├── amounts-vs-program-region.adapter.ts
@@ -361,6 +375,11 @@
 │   │   │   │       │   │   │   └── geo.port.ts
 │   │   │   │       │   │   ├── gispro.adapter.ts
 │   │   │   │       │   │   ├── gispro.port.ts
+│   │   │   │       │   │   ├── helios
+│   │   │   │       │   │   │   ├── __fixtures__
+│   │   │   │       │   │   │   │   └── helios.fixture.ts
+│   │   │   │       │   │   │   ├── helios.adapter.ts
+│   │   │   │       │   │   │   └── helios.port.ts
 │   │   │   │       │   │   ├── osiris
 │   │   │   │       │   │   │   ├── index.ts
 │   │   │   │       │   │   │   ├── osiris-action.mapper.ts
@@ -491,6 +510,7 @@
 │   │   │   │   │   ├── IdentifierName.ts
 │   │   │   │   │   ├── IdentifierType.ts
 │   │   │   │   │   └── StructureIdentifier.ts
+│   │   │   │   ├── AssociationIdentifier.test.ts
 │   │   │   │   ├── AssociationIdentifier.ts
 │   │   │   │   ├── EstablishmentIdentifier.test.ts
 │   │   │   │   ├── EstablishmentIdentifier.ts
@@ -507,8 +527,9 @@
 │   │   │   │   ├── Tahiti.ts
 │   │   │   │   ├── Tahitiet.test.ts
 │   │   │   │   ├── Tahitiet.ts
-│   │   │   │   └── __fixtures__
-│   │   │   │       └── IdentifierFixture.ts
+│   │   │   │   ├── __fixtures__
+│   │   │   │   │   └── IdentifierFixture.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── index.ts
 │   │   │   ├── init-services.ts
 │   │   │   ├── middlewares
@@ -563,7 +584,16 @@
 │   │   │   │   │   ├── associations.helper.test.ts
 │   │   │   │   │   ├── associations.helper.ts
 │   │   │   │   │   ├── associations.service.test.ts
-│   │   │   │   │   └── associations.service.ts
+│   │   │   │   │   ├── associations.service.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── association.use-case.factory.ts
+│   │   │   │   │       ├── association.use-case.test.ts
+│   │   │   │   │       ├── check-identifier-is-from-asso.use-case.ts
+│   │   │   │   │       ├── check-siren-is-from-asso.use-case.ts
+│   │   │   │   │       ├── find-siret-from-association-identifier.use-case.ts
+│   │   │   │   │       ├── find-siret-from-rna.use-case.ts
+│   │   │   │   │       ├── find-siret-from-siren.use-case.ts
+│   │   │   │   │       └── get-identifier-from-string.use-case.ts
 │   │   │   │   ├── configurations
 │   │   │   │   │   ├── configurations.service.test.ts
 │   │   │   │   │   ├── configurations.service.ts
@@ -885,6 +915,22 @@
 │   │   │   │   │   │   │   └── geo.service.test.ts.snap
 │   │   │   │   │   │   ├── geo.service.test.ts
 │   │   │   │   │   │   └── geo.service.ts
+│   │   │   │   │   ├── helios
+│   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   └── helios.fixture.ts
+│   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   └── helios.entity.ts
+│   │   │   │   │   │   └── use-cases
+│   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │       │   └── helios.use-case.test.ts.snap
+│   │   │   │   │   │       ├── extract-helios-application-flat-specific-fields.use-case.ts
+│   │   │   │   │   │       ├── extract-helios-beneficary-info.use-case.ts
+│   │   │   │   │   │       ├── extract-helios-payment-flat-specific-fields.use-case.ts
+│   │   │   │   │   │       ├── helios.use-case.factory.ts
+│   │   │   │   │   │       ├── helios.use-case.test.ts
+│   │   │   │   │   │       ├── save-helios-data.use-case.ts
+│   │   │   │   │   │       ├── save-helios-entities-to-flat.use-case.ts
+│   │   │   │   │   │       └── transform-helios-entities-to-flat.use-case.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── osiris
 │   │   │   │   │   │   ├── @types
@@ -967,7 +1013,9 @@
 │   │   │   │   │   │   └── stock-unite-legale
 │   │   │   │   │   │       ├── @types
 │   │   │   │   │   │       │   ├── SireneUniteLegaleDbo.ts
-│   │   │   │   │   │       │   └── SireneUniteLegaleDto.ts
+│   │   │   │   │   │       │   ├── SireneUniteLegaleDto.ts
+│   │   │   │   │   │       │   └── __fixtures__
+│   │   │   │   │   │       │       └── sirene-stock-unite-legale.fixture.ts
 │   │   │   │   │   │       ├── mappers
 │   │   │   │   │   │       │   ├── __snapshots__
 │   │   │   │   │   │       │   │   └── sirene-stock-unite-legale.mapper.test.ts.snap
@@ -1182,6 +1230,7 @@
 │   │   │   │   └── rna-siren.fixture.ts
 │   │   │   ├── __helpers__
 │   │   │   │   ├── ayncIterableHelper.ts
+│   │   │   │   ├── expect-any.helper.ts
 │   │   │   │   ├── resetTokenHelper.ts
 │   │   │   │   ├── tokenHelper.ts
 │   │   │   │   └── userHelper.ts
@@ -1194,6 +1243,12 @@
 │   │   │   ├── __snapshots__
 │   │   │   │   └── example.spec.ts.snap
 │   │   │   ├── adapters
+│   │   │   │   ├── inputs
+│   │   │   │   │   └── cli
+│   │   │   │   │       ├── __snapshots__
+│   │   │   │   │       │   └── helios.cli.spec.ts.snap
+│   │   │   │   │       ├── helios.cli.spec.ts
+│   │   │   │   │       └── helios.fixture.ods
 │   │   │   │   └── outputs
 │   │   │   │       └── db
 │   │   │   │           └── __fixtures__
@@ -2097,5 +2152,8 @@
 │       └── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-└── post-install.bash
-489 directories, 1611 files
+├── post-install.bash
+└── vendor
+    ├── README.md
+    └── xlsx-0.20.3.tgz
+504 directories, 1654 files
