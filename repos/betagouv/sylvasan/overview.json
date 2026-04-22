@@ -1,27 +1,28 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. Le projet vise à simplifier la collecte et la gestion des données relatives à la santé des arbres en milieu forestier.",
+  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. Le projet vise à simplifier la collecte de données et le suivi de la santé des arbres en milieu forestier.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Gestion des établissements & Structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "React",
-    "PostgreSQL",
-    "Node.js",
-    "npm",
-    "Python",
     "Vue.js",
-    "Capacitor"
+    "Capacitor",
+    "Ionic",
+    "PostgreSQL",
+    "Sentry",
+    "tailwindcss",
+    "vite"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,10 +34,11 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
-  "tests": "Pytest",
+  "tests": "Pytest, Jest, Cypress",
   "workflows": [
     "CI/CD & Déploiement"
   ],

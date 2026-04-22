@@ -1,44 +1,38 @@
 ## Changelog : sylvasan (30 derniers jours, au 17 mai 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de la gestion des enquêtes, notamment la création, la modification, la sauvegarde de brouillons et l'affichage des réponses. Des améliorations significatives ont également été apportées à l'application mobile, avec l'ajout de la synchronisation hors ligne et l'optimisation de l'interface utilisateur. De nombreuses mises à jour de dépendances ont été intégrées pour assurer la sécurité et la stabilité du projet.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur mobile et web, notamment en permettant la sauvegarde de brouillons d'enquêtes, l'affichage des réponses, et la création d'enquêtes. Des améliorations significatives ont également été apportées à la gestion des données et à l'infrastructure du projet.
 
 ### Évolutions fonctionnelles
 - **Gestion des enquêtes :**
     - Possibilité de sauvegarder plusieurs brouillons par enquête [#173](https://github.com/betagouv/sylvasan/pull/173).
-    - Affichage d'un résumé des réponses à la fin de chaque enquête.
-    - Affichage des réponses brouillons et en attente.
-    - Création d'enquêtes via l'interface web [#142](https://github.com/betagouv/sylvasan/pull/142).
-    - Création d'une page pour visualiser les réponses aux enquêtes.
-    - Ajout d'une fonctionnalité de liste des réponses.
+    - Affichage des réponses aux enquêtes sur le web [#139](https://github.com/betagouv/sylvasan/pull/139).
+    - Création d'enquêtes depuis l'interface web [#108](https://github.com/betagouv/sylvasan/pull/108).
+    - Ajout d'un aperçu de la carte pour les enquêtes [#5ab5dfa](https://github.com/betagouv/sylvasan/commit/5ab5dfa).
 - **Application mobile :**
-    - Synchronisation des réponses hors ligne.
-    - Amélioration de l'affichage des enquêtes sur mobile.
-    - Ajout d'un "pull-down to refresh" pour actualiser les données.
-    - Correction de bugs et amélioration de la stabilité.
-- **Interface utilisateur :**
-    - Ajout d'icônes dans les boutons.
-    - Ajout d'une barre d'onglets (tab bar) pour une navigation plus intuitive [#159](https://github.com/betagouv/sylvasan/pull/159).
-    - Ajout d'un aperçu de la carte.
-    - Amélioration de l'affichage des champs de formulaire.
+    - L'application mobile récupère et cache les enquêtes hors ligne [#d352bb3](https://github.com/betagouv/sylvasan/commit/d352bb3).
+    - Ajout d'un "pull-down to refresh" pour actualiser les données [#982c950](https://github.com/betagouv/sylvasan/commit/982c950).
+- **Formulaires :**
+    - Ajout de nouveaux types de champs dans les formulaires : radio, textarea, switch, date [#2490090](https://github.com/betagouv/sylvasan/commit/2490090).
+    - Amélioration de la validation des champs de formulaire.
+    - Ajout d'un aperçu des champs lors de la création de formulaires.
 
 ### Évolutions techniques
-- **Architecture :**
+- **Infrastructure :**
+    - Mise à jour de nombreuses dépendances (Django, React, Vue.js, Capacitor, Ionic, PostgreSQL, Sentry, tailwindcss, vite) pour bénéficier des dernières corrections et améliorations de sécurité.
     - Refactor de la liste d'enquêtes.
-    - Partage de code entre le web et le mobile (en cours de stabilisation).
-- **Dépendances :**
-    - Mises à jour de nombreuses dépendances (Django, React, Vue.js, Capacitor, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+    - Mise à jour de la configuration Vite.
+- **Architecture :**
+    - Passage à une barre d'onglets (tab bar) pour la navigation principale [#157](https://github.com/betagouv/sylvasan/pull/157).
+    - Refactor du composant SurveyRenderer pour le partage entre le web et le mobile.
+    - Ajout de types globaux pour améliorer la cohérence du code.
 - **Tests :**
     - Ajout de tests pour les nouvelles fonctionnalités.
-    - Correction de bugs détectés par les tests.
-- **CI/CD :**
-    - Mise à jour des workflows CI/CD.
+    - Correction de bugs dans les tests mobiles.
 
 ### Autres changements
-- Ajout de documentation pour l'ADR 003 concernant le partage de fichiers TypeScript.
-- Ajout de validations pour les titres de page.
-- Ajout de pages dans le renderer.
-- Correction de problèmes d'affichage dans les composants DsfrTabs.
-- Ajout de types globaux pour améliorer la cohérence du code.
-- Ajout de factories pour faciliter les tests.
-- Suppression de code inutile et amélioration de la lisibilité du code.
+- Ajout d'icônes dans les boutons.
+- Ajout de la validation pour les titres de page.
+- Ajout d'une ADR (Architectural Decision Record) expliquant la décision d'utiliser des fichiers types TypeScript.
+- Amélioration de la documentation.
+- Correction de divers bugs et améliorations de la performance.
