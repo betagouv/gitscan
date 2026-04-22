@@ -1,21 +1,23 @@
-## Changelog : francetransfert (30 derniers jours, au 2026-04-15)
+## Changelog : francetransfert (30 derniers jours, au 15 mai 2026)
 
 ### Résumé
-Cette version apporte des améliorations de sécurité, notamment en ajoutant des types de fichiers à la liste noire pour éviter les téléchargements potentiellement dangereux. Des ajustements ont été effectués sur la gestion des dates d'expiration des fichiers et des limites d'envoi de notifications par email. Des optimisations de l'infrastructure et des mises à jour de versions ont également été réalisées.
+Cette période a été marquée par des améliorations de la sécurité, notamment en ajoutant des types de fichiers à la liste noire pour la protection contre les menaces. Des ajustements ont également été apportés à la gestion des jobs et des limites d'envoi de mails pour optimiser la performance et la fiabilité du service. Enfin, des mises à jour de version et de configuration ont été déployées.
 
 ### Évolutions fonctionnelles
-- Ajout de types de fichiers HTML et HTM à la liste noire pour interdire leur transfert [#6](https://github.com/numerique-gouv/francetransfert/issues/6).
-- Amélioration de la gestion des dates d'expiration des fichiers et des téléchargements.
-- Limitation du nombre de notifications par email envoyées pour certains événements.
+- Ajout de `html` et `htm` à la liste noire des types de fichiers autorisés pour renforcer la sécurité. [#6](https://github.com/numerique-gouv/francetransfert/issues/6)
+- Limitation du nombre de mails envoyés pour certaines opérations (date check, téléchargement) afin d'éviter les abus et d'améliorer la délivrabilité.
+- Amélioration de la gestion des jobs de verrouillage/séquestre.
+- Restauration des paramètres de restauration dans le fichier `values.ft.yaml`.
 
 ### Évolutions techniques
+- Mise à jour des tags d'image vers la version 4.0.13.
 - Ajustement des paramètres HPA (Horizontal Pod Autoscaler) pour l'environnement de production afin d'optimiser la scalabilité.
-- Mise à jour des images Docker vers la version 4.0.13.
-- Mise à jour des dépendances Spring.
-- Mise à jour de la librairie Logback.
-- Modifications de la configuration Kubernetes (décommentage des paramètres de restauration).
+- Mise à jour de la librairie `logback`.
+- Mise à jour de la librairie `spring`.
+- Préparation d'une nouvelle version du service.
+- Mise à jour de la clé PPR.
 
 ### Autres changements
-- Préparation d'une nouvelle version (mise à jour des numéros de version et des clés).
-- Diverses corrections et ajustements de code.
-- Mise à jour de la configuration `values.ft.yaml`.
+- Mise à jour de la version du service.
+- Modifications de la configuration du service (pom, valeurs de production).
+- Diverses corrections et améliorations mineures du code.
