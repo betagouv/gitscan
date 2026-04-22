@@ -1,16 +1,24 @@
-## Changelog : dialog (30 derniers jours, au 18 mai 2026)
+## Changelog : dialog (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'importation et le traitement des données réglementaires, notamment via le nouveau flux Literalis et l'optimisation du traitement des données DATEX. Des corrections ont également été apportées pour améliorer la stabilité et la performance de l'application. Enfin, des améliorations de l'interface utilisateur ont été réalisées, notamment sur la carte.
+Ce mois-ci, les améliorations se concentrent sur la robustesse et la performance du traitement des données réglementaires, notamment concernant les flux Datex et Literalis. Des corrections ont été apportées pour améliorer la stabilité de l'import de données et la gestion de la mémoire. De nouvelles fonctionnalités permettent d'obtenir les rues à proximité et de modifier un arrêté après publication. L'interface utilisateur a également été améliorée avec une désélection par défaut sur la carte.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'importation des données Literalis, avec correction de bugs et configuration de la CI pour le nouveau flux. [#1724](https://github.com/MTES-MCT/dialog/issues/1724), [#1770](https://github.com/MTES-MCT/dialog/issues/1770), [#1773](https://github.com/MTES-MCT/dialog/issues/1773), [#1792](https://github.com/MTES-MCT/dialog/issues/1792)
-- Sur la carte, la sélection par défaut est maintenant uniquement 'Circulation interdite', améliorant l'expérience utilisateur. [#1787](https://github.com/MTES-MCT/dialog/issues/1787)
-- Envoi de notifications d'intégration via Mattermost pour une meilleure communication. [#1797](https://github.com/MTES-MCT/dialog/issues/1797)
+- Possibilité de récupérer les rues à proximité via l'API. [#1809](https://github.com/MTES-MCT/dialog/issues/1809)
+- Modification d'un arrêté après sa publication est maintenant possible. [#1793](https://github.com/MTES-MCT/dialog/issues/1793)
+- Amélioration de l'interface cartographique : désélection de toutes les couches par défaut, sauf "Circulation interdite". [#1787](https://github.com/MTES-MCT/dialog/issues/1787)
+- Notifications d'intégration envoyées via Mattermost. [#1797](https://github.com/MTES-MCT/dialog/issues/1797)
 
 ### Évolutions techniques
-- Optimisation du traitement des données DATEX pour résoudre les problèmes de mémoire liés à la quantité de données. [#1798](https://github.com/MTES-MCT/dialog/issues/1798)
-- Streaming de la réponse DATEX pour une meilleure performance. [#1771](https://github.com/MTES-MCT/dialog/issues/1771)
-- Correction de la CI pour assurer le bon fonctionnement des pipelines. [#1767](https://github.com/MTES-MCT/dialog/issues/1767)
-- Correction d'une utilisation de fonction dépréciée. [#1763](https://github.com/MTES-MCT/dialog/issues/1763)
-- POC de génération de fichier statique pour l'API des réglementations. [#1772](https://github.com/MTES-MCT/dialog/issues/1772)
+- Amélioration de la disponibilité du flux Datex. [#1805](https://github.com/MTES-MCT/dialog/issues/1805)
+- Correction des problèmes de mémoire liés au traitement des données Datex. [#1798](https://github.com/MTES-MCT/dialog/issues/1798)
+- Optimisation du traitement du flux Datex en utilisant le streaming. [#1771](https://github.com/MTES-MCT/dialog/issues/1771)
+- Refonte de l'import Literalis avec un nouveau client WFS. [#1724](https://github.com/MTES-MCT/dialog/issues/1724)
+- Correction de l'import Literalis. [#1792](https://github.com/MTES-MCT/dialog/issues/1792) et [#1773](https://github.com/MTES-MCT/dialog/issues/1773)
+- Amélioration de la gestion des index de la base de données BDTOPO via une commande Symfony. [#1806](https://github.com/MTES-MCT/dialog/issues/1806)
+- Configuration de la CI pour le nouveau flux Literalis. [#1770](https://github.com/MTES-MCT/dialog/issues/1770)
+- Correction de la CI. [#1767](https://github.com/MTES-MCT/dialog/issues/1767)
+
+### Autres changements
+- Suppression des usages dépréciés. [#1763](https://github.com/MTES-MCT/dialog/issues/1763)
+- POC de génération de fichiers statiques pour l'API des réglementations. [#1772](https://github.com/MTES-MCT/dialog/issues/1772)

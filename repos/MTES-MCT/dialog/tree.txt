@@ -717,6 +717,8 @@
 │   │   │   │   ├── GetDuplicateIdentifierQueryHandler.php
 │   │   │   │   ├── GetGeneralInfoQuery.php
 │   │   │   │   ├── GetGeneralInfoQueryHandler.php
+│   │   │   │   ├── GetNearbyStreetsQuery.php
+│   │   │   │   ├── GetNearbyStreetsQueryHandler.php
 │   │   │   │   ├── GetNewsNoticeQuery.php
 │   │   │   │   ├── GetNewsNoticeQueryHandler.php
 │   │   │   │   ├── GetOrganizationIdentifiersQuery.php
@@ -1088,6 +1090,7 @@
 │   │   │   │   ├── ReportAddressCrudController.php
 │   │   │   │   └── UserCrudController.php
 │   │   │   ├── Api
+│   │   │   │   ├── GetNearbyStreetsController.php
 │   │   │   │   ├── Regulations
 │   │   │   │   │   ├── AddRegulationController.php
 │   │   │   │   │   ├── DeleteRegulationController.php
@@ -1434,6 +1437,7 @@
 │   │   ├── Symfony
 │   │   │   ├── Command
 │   │   │   │   ├── BacIdfImportCommand.php
+│   │   │   │   ├── BdTopoSetupIndexesCommand.php
 │   │   │   │   ├── EudonetParisImportCommand.php
 │   │   │   │   ├── IgnSyncReportStatusesCommand.php
 │   │   │   │   ├── JOPImportCommand.php
@@ -1593,12 +1597,14 @@
 │   │   │   ├── _city_completions.html.twig
 │   │   │   ├── _export_section.html.twig
 │   │   │   ├── _general_info.html.twig
+│   │   │   ├── _general_info.updated.stream.html.twig
 │   │   │   ├── _general_info_form.html.twig
 │   │   │   ├── _intersection_options.html.twig
 │   │   │   ├── _measure.added.stream.html.twig
 │   │   │   ├── _measure.deleted.stream.html.twig
 │   │   │   ├── _measure.duplicated.stream.html.twig
 │   │   │   ├── _measure.html.twig
+│   │   │   ├── _measure.updated.stream.html.twig
 │   │   │   ├── _measure_delete_form.html.twig
 │   │   │   ├── _measure_form.html.twig
 │   │   │   ├── _named_street_completions.html.twig
@@ -1647,6 +1653,7 @@
 │   │       │   │   ├── AddRegulationControllerTest.php
 │   │       │   │   ├── DeleteRegulationControllerTest.php
 │   │       │   │   ├── GetCifsIncidentsControllerTest.php
+│   │       │   │   ├── GetNearbyStreetsControllerTest.php
 │   │       │   │   ├── GetOrganizationIdentifiersControllerTest.php
 │   │       │   │   ├── GetRegulationsControllerTest.php
 │   │       │   │   ├── PublishRegulationControllerTest.php
@@ -1883,6 +1890,7 @@
 │   │   │   │   │   ├── GetCifsIncidentsQueryHandlerTest.php
 │   │   │   │   │   ├── GetDuplicateIdentifierQueryHandlerTest.php
 │   │   │   │   │   ├── GetGeneralInfoQueryHandlerTest.php
+│   │   │   │   │   ├── GetNearbyStreetsQueryHandlerTest.php
 │   │   │   │   │   ├── GetNewsNoticeQueryHandlerTest.php
 │   │   │   │   │   ├── GetOrganizationIdentifiersQueryHandlerTest.php
 │   │   │   │   │   ├── GetOrganizationUuidByRegulationOrderRecordQueryHandlerTest.php
@@ -2034,6 +2042,7 @@
 │   │       │   └── GristClientTest.php
 │   │       ├── Controller
 │   │       │   └── Api
+│   │       │       ├── GetNearbyStreetsControllerTest.php
 │   │       │       └── Regulations
 │   │       │           └── GetRegulationsControllerTest.php
 │   │       ├── Data
@@ -2088,6 +2097,7 @@
 │   │       ├── Symfony
 │   │       │   ├── Command
 │   │       │   │   ├── BacIdfImportCommandTest.php
+│   │       │   │   ├── BdTopoSetupIndexesCommandTest.php
 │   │       │   │   ├── EudonetParisImportCommandTest.php
 │   │       │   │   ├── IgnSyncReportStatusesCommandTest.php
 │   │       │   │   ├── JOPImportCommandTest.php
@@ -2138,4 +2148,4 @@
 │   ├── messages.fr.xlf
 │   └── validators.fr.xlf
 └── webpack.config.js
-428 directories, 1866 files
+428 directories, 1876 files
