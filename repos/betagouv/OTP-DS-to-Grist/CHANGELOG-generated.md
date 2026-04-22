@@ -1,21 +1,22 @@
-## Changelog : OTP-DS-to-Grist (30 derniers jours, au 16 avril 2026)
+## Changelog : OTP-DS-to-Grist (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la robustesse de la synchronisation des données, l'amélioration de l'expérience utilisateur avec des messages d'erreur plus précis et une meilleure indication de la progression, ainsi que sur l'ajout de données pour deux nouvelles tables. Des efforts ont également été faits pour améliorer la documentation et la configuration du projet.
+Ce mois-ci, les améliorations se concentrent sur la robustesse de la synchronisation des données, notamment la gestion des dates et des erreurs. Des correctifs ont été apportés pour améliorer la précision des messages d'erreur et la gestion du chargement des données. La documentation a également été mise à jour avec un nouveau README pour le dossier de synchronisation. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
 
 ### Évolutions fonctionnelles
-- Ajout de la synchronisation des données pour deux nouvelles tables. [#278](https://github.com/betagouv/OTP-DS-to-Grist/issues/278)
-- Amélioration des messages d'erreur pour une meilleure compréhension des problèmes de synchronisation. [#281](https://github.com/betagouv/OTP-DS-to-Grist/issues/281) et [#276](https://github.com/betagouv/OTP-DS-to-Grist/issues/276)
-- Amélioration de l'affichage de la progression de la synchronisation, en supprimant les détails unitaires des temps d'appels pour une vue plus claire. [#273](https://github.com/betagouv/OTP-DS-to-Grist/issues/273)
-- Correction de la création de la table "avis". [#265](https://github.com/betagouv/OTP-DS-to-Grist/issues/265)
-- Amélioration de la précision du "loader" (indicateur de chargement). [#270](https://github.com/betagouv/OTP-DS-to-Grist/issues/270) et [#249](https://github.com/betagouv/OTP-DS-to-Grist/issues/249)
-- Ajout de la récupération et de la création de la table "expert". [#247](https://github.com/betagouv/OTP-DS-to-Grist/issues/247) et [#248](https://github.com/betagouv/OTP-DS-to-Grist/issues/248)
+- Amélioration de la conversion des dates : la conversion de la colonne `updated_since_cursor` vers une chaîne de caractères est maintenant gérée correctement lorsque la colonne Grist est de type Date. [#283](https://github.com/betagouv/OTP-DS-to-Grist/issues/283)
+- Ajout de données de 2 nouvelles tables : la synchronisation a été étendue pour inclure les données de deux tables supplémentaires. [#278](https://github.com/betagouv/OTP-DS-to-Grist/issues/278)
+- Amélioration de la précision des erreurs : les messages d'erreur affichés lors des synchronisations automatiques sont plus précis, facilitant le diagnostic des problèmes. [#276](https://github.com/betagouv/OTP-DS-to-Grist/issues/276)
+- Amélioration du loader : le loader a été optimisé pour une meilleure précision et une meilleure gestion des erreurs. [#270](https://github.com/betagouv/OTP-DS-to-Grist/issues/270) et [#249](https://github.com/betagouv/OTP-DS-to-Grist/issues/249)
+- Ajout de la récupération et de la création de la table "expert" [#247](https://github.com/betagouv/OTP-DS-to-Grist/issues/247) et [#248](https://github.com/betagouv/OTP-DS-to-Grist/issues/248)
 
 ### Évolutions techniques
-- Optimisation des performances : mise en cache globale, utilisation d'instructeurs uniques, traitement par lots des champs et ajout de champs de requêtes d'extraction. [#224](https://github.com/betagouv/OTP-DS-to-Grist/issues/224)
-- Suppression de code mort et ajout de "fallbacks" (solutions de repli) pour améliorer la robustesse. [#257](https://github.com/betagouv/OTP-DS-to-Grist/issues/257)
-- Suppression des crochets et guillemets dans les données JSON pour éviter les erreurs de parsing. [#256](https://github.com/betagouv/OTP-DS-to-Grist/issues/256)
+- Documentation : Ajout d'un nouveau README pour le dossier `sync`, améliorant la documentation du projet. [#282](https://github.com/betagouv/OTP-DS-to-Grist/issues/282)
+- Optimisation des performances : optimisation de la récupération des données, incluant la mise en cache globale, l'utilisation d'instructeurs uniques et le traitement par lots des champs. [#224](https://github.com/betagouv/OTP-DS-to-Grist/issues/224)
+- Suppression de code mort et ajout de fallbacks pour une meilleure robustesse. [#257](https://github.com/betagouv/OTP-DS-to-Grist/issues/257)
+- Suppression des crochets et guillemets JSON pour éviter les erreurs de parsing. [#256](https://github.com/betagouv/OTP-DS-to-Grist/issues/256)
 
 ### Autres changements
-- Ajout d'un nouveau README pour le dossier de synchronisation, améliorant la documentation du projet. [#282](https://github.com/betagouv/OTP-DS-to-Grist/issues/282) et [#280](https://github.com/betagouv/OTP-DS-to-Grist/issues/280)
-- Publication de la version 0.7.0. [#189](https://github.com/betagouv/OTP-DS-to-Grist/issues/189)
+- Mise à jour de la documentation pour afficher l'environnement d'exécution. [#254](https://github.com/betagouv/OTP-DS-to-Grist/issues/254)
+- Suppression des détails unitaires des temps d'appels dans la progression de la synchronisation pour une meilleure lisibilité. [#273](https://github.com/betagouv/OTP-DS-to-Grist/issues/273)
+- Correction de la création de la table "avis". [#265](https://github.com/betagouv/OTP-DS-to-Grist/issues/265)
