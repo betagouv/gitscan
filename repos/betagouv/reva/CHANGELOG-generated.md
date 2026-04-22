@@ -1,31 +1,47 @@
-## Changelog : reva (30 derniers jours, au 17 mai 2026)
+## Changelog : reva (30 derniers jours, au 2026-04-21)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'intégration FranceConnect, avec notamment la gestion des cas où les informations de l'utilisateur ne correspondent pas, et la possibilité de révoquer une décision de validation. Des efforts ont également été déployés pour améliorer la gestion des blocs de compétences et des résultats de jury dans l'interface d'administration, ainsi que pour la maintenance et la sécurisation du code (suppression de feature flags obsolètes, mises à jour de dépendances).
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des candidatures FranceConnect, la gestion des jurys et la correction de bugs. Des optimisations de performance ont également été apportées, ainsi que des mises à jour de sécurité et de dépendances.
 
 ### Évolutions fonctionnelles
-- **FranceConnect :** Amélioration de l'intégration FranceConnect avec gestion des erreurs et des cas de non-correspondance des données. Possibilité pour les utilisateurs de délier leur compte FranceConnect.
-- **Gestion des décisions de jury :** Les administrateurs peuvent désormais révoquer une décision de validation (COMPLETE/INCOMPLETE) sur les dossiers de faisabilité.
-- **Gestion des blocs de compétences :** Amélioration de l'affichage et de la gestion des blocs de compétences dans l'interface d'administration, notamment lors de la validation des résultats de jury.
-- **Interface d'administration :** Ajout d'une page pour la gestion des compléments d'expérience.
-- **Informations candidat :** Possibilité pour les administrateurs de modifier le nom et prénom des comptes d'autorité de certification.
-- **Notifications :** Envoi d'un email à la nouvelle AAP lors de la mise à jour d'une candidature par un administrateur.
-- **VAE Collective :** Amélioration de l'affichage des informations sur la page d'accueil.
-- **Formulaire d'inscription :** Amélioration de l'UX et de la clarté des formulaires d'informations civiles et de typologie/convention collective.
+- **FranceConnect :**
+    - Amélioration de la gestion des erreurs et des informations lors de la connexion via FranceConnect, notamment en cas de données manquantes ou incohérentes.
+    - Possibilité de modifier la ville et le département de naissance pour les candidats connectés via FranceConnect (si le pays n'est pas la France).
+    - Ajout d'une fonctionnalité de nettoyage des données FranceConnect en sandbox pour l'administration.
+    - Enregistrement de la date de dernière connexion via FranceConnect.
+- **Gestion des jurys :**
+    - Refonte de l'interface de gestion des résultats de jury, avec affichage des blocs de compétences validés et non validés.
+    - Possibilité de sauvegarder les résultats du jury par blocs de compétences.
+    - Ajout d'une page dédiée à la gestion de la date de jury.
+    - Possibilité de révoquer une décision de jury.
+- **Administration :**
+    - Ajout d'une page pour gérer les informations générales des organismes certificateurs, incluant la possibilité de modifier le label.
+    - Amélioration de l'interface pour la gestion des fichiers de dématérialisation (DFF), avec ajout de la gestion du "complément d'expérience parcours Vise".
+- **VAE Collective :**
+    - Amélioration de la gestion des jetons de session pour éviter les erreurs liées à la taille des cookies.
+- **Candidatures :**
+    - Suppression des fonctionnalités liées à l'inscription manuelle et à la demande de mot de passe, privilégiant FranceConnect.
+    - Amélioration de l'affichage des informations de contact et de la civilité pour les candidats connectés via FranceConnect.
 
 ### Évolutions techniques
-- **Refactoring :** Suppression de nombreux *feature flags* obsolètes pour simplifier le code.
-- **Tests :** Migration de nombreux tests Cypress vers Playwright pour améliorer la stabilité et la performance. Ajout de tests unitaires et d'intégration.
-- **Sécurité :** Mise à jour de nombreuses dépendances pour corriger des vulnérabilités de sécurité.
-- **Architecture :** Rework de la gestion des index dans la base de données pour optimiser les requêtes.
-- **Keycloak :** Ajout d'un thème et d'une configuration spécifique pour la page de connexion.
-- **API :** Amélioration de la gestion des erreurs et des logs.
-- **Strapi :** Mise à jour et sécurisation de l'infrastructure Strapi.
+- **API :**
+    - Optimisation des requêtes GraphQL pour améliorer les performances, notamment lors de la récupération des expériences et des objectifs d'une candidature.
+    - Ajout d'index sur les tables de la base de données pour accélérer les requêtes.
+    - Suppression de code obsolète.
+    - Mise à jour des dépendances (Fastify, Strapi, Brevo).
+    - Amélioration de la gestion des erreurs et des logs.
+- **Infrastructure :**
+    - Mise à jour des dépendances des différents packages.
+    - Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- **Tests :**
+    - Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
+    - Amélioration de la couverture de tests.
+    - Migration de certains tests vers Playwright.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration de la gestion des variables d'environnement.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de code mort.
-- Amélioration des messages d'erreur.
-- Modification de certains libellés dans l'interface d'administration.
+- Documentation mise à jour.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Suppression de fonctionnalités obsolètes.
+- Amélioration de la sécurité (gestion des jetons, validation des données).
+- Uniformisation du style de code.
+- Suppression de certains feature flags.
