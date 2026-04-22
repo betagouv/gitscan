@@ -193,6 +193,11 @@
 │   │   │   │                   │   │   │   │       └── v2
 │   │   │   │                   │   │   │   │           ├── TargetStatusType.kt
 │   │   │   │                   │   │   │   │           └── TargetType.kt
+│   │   │   │                   │   │   │   ├── sati
+│   │   │   │                   │   │   │   │   ├── AddressEntity.kt
+│   │   │   │                   │   │   │   │   ├── ContactEntity.kt
+│   │   │   │                   │   │   │   │   ├── SatiEntity.kt
+│   │   │   │                   │   │   │   │   └── SatiEntityMapper.kt
 │   │   │   │                   │   │   │   └── v2
 │   │   │   │                   │   │   │       ├── BaseMissionActionEntity.kt
 │   │   │   │                   │   │   │       ├── BaseMissionEnvAction.kt
@@ -217,6 +222,7 @@
 │   │   │   │                   │   │   │       ├── MissionNavInputEntity.kt
 │   │   │   │                   │   │   │       ├── MissionReinforcementTypeEnum.kt
 │   │   │   │                   │   │   │       ├── MissionReportTypeEnum.kt
+│   │   │   │                   │   │   │       ├── PortEntity.kt
 │   │   │   │                   │   │   │       ├── TargetEntity.kt
 │   │   │   │                   │   │   │       ├── TargetExternalDataEntity.kt
 │   │   │   │                   │   │   │       └── VesselEntity.kt
@@ -248,6 +254,8 @@
 │   │   │   │                   │   │   │   │   └── IMissionGeneralInfoRepository.kt
 │   │   │   │                   │   │   │   ├── infraction
 │   │   │   │                   │   │   │   │   └── INatinfRepository.kt
+│   │   │   │                   │   │   │   ├── sati
+│   │   │   │                   │   │   │   │   └── ISatiRepository.kt
 │   │   │   │                   │   │   │   └── target2
 │   │   │   │                   │   │   │       └── v2
 │   │   │   │                   │   │   │           ├── IInquiryRepository.kt
@@ -321,6 +329,7 @@
 │   │   │   │                   │   │   │   │       ├── GetComputeEnvTarget.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeFishActionListByMissionId.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeNavActionListByMissionId.kt
+│   │   │   │                   │   │   │   │       ├── GetComputeSati.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeTarget.kt
 │   │   │   │                   │   │   │   │       ├── GetEnvActionById.kt
 │   │   │   │                   │   │   │   │       ├── GetEnvMissionById2.kt
@@ -378,11 +387,13 @@
 │   │   │   │                   │   │   │       ├── GetMissions.kt
 │   │   │   │                   │   │   │       ├── GetNavMissionById2.kt
 │   │   │   │                   │   │   │       ├── GetNavMissions.kt
+│   │   │   │                   │   │   │       ├── GetPorts.kt
 │   │   │   │                   │   │   │       ├── GetVessels.kt
 │   │   │   │                   │   │   │       ├── PatchMissionEnv.kt
 │   │   │   │                   │   │   │       ├── PatchNavMission.kt
 │   │   │   │                   │   │   │       ├── ProcessMissionActionTarget.kt
 │   │   │   │                   │   │   │       ├── ProcessMissionCrew.kt
+│   │   │   │                   │   │   │       ├── ProcessSati.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfo.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfoAdmin.kt
 │   │   │   │                   │   │   │       ├── administrations
@@ -492,6 +503,11 @@
 │   │   │   │                       │   │   │   │   └── MissionGeneralInfo.kt
 │   │   │   │                       │   │   │   ├── infraction
 │   │   │   │                       │   │   │   │   └── Natinf.kt
+│   │   │   │                       │   │   │   ├── sati
+│   │   │   │                       │   │   │   │   ├── Address.kt
+│   │   │   │                       │   │   │   │   ├── Contact.kt
+│   │   │   │                       │   │   │   │   ├── Sati.kt
+│   │   │   │                       │   │   │   │   └── SatiMapper.kt
 │   │   │   │                       │   │   │   └── v2
 │   │   │   │                       │   │   │       ├── BaseMissionEnvActionData.kt
 │   │   │   │                       │   │   │       ├── BaseMissionFishActionData.kt
@@ -511,6 +527,7 @@
 │   │   │   │                       │   │   │       ├── MissionFishActionData.kt
 │   │   │   │                       │   │   │       ├── MissionNavAction.kt
 │   │   │   │                       │   │   │       ├── MissionNavActionData.kt
+│   │   │   │                       │   │   │       ├── Port.kt
 │   │   │   │                       │   │   │       ├── Target.kt
 │   │   │   │                       │   │   │       ├── TargetExternalData.kt
 │   │   │   │                       │   │   │       ├── UserInfos.kt
@@ -531,18 +548,20 @@
 │   │   │   │                       │   │   │   ├── AgentRestController.kt
 │   │   │   │                       │   │   │   ├── AgentRoleController.kt
 │   │   │   │                       │   │   │   ├── ControlUnitResourceRestController.kt
-│   │   │   │                       │   │   │   ├── CrewRestController.kt
 │   │   │   │                       │   │   │   ├── GeneralInfoRestController.kt
 │   │   │   │                       │   │   │   ├── InquiryRestController.kt
 │   │   │   │                       │   │   │   ├── MissionExportController.kt
 │   │   │   │                       │   │   │   ├── MissionRestController.kt
 │   │   │   │                       │   │   │   ├── NatInfRestController.kt
+│   │   │   │                       │   │   │   ├── PortRestController.kt
 │   │   │   │                       │   │   │   ├── UserRestController.kt
 │   │   │   │                       │   │   │   └── VesselRestController.kt
 │   │   │   │                       │   │   └── wiremock
 │   │   │   │                       │   │       ├── AdministrationStubs.kt
 │   │   │   │                       │   │       ├── ControlUnitResourcesStubs.kt
+│   │   │   │                       │   │       ├── ControlUnitsStubs.kt
 │   │   │   │                       │   │       ├── FishActionsStubs.kt
+│   │   │   │                       │   │       ├── FishPortsStubs.kt
 │   │   │   │                       │   │       ├── FishVesselsStubs.kt
 │   │   │   │                       │   │       ├── MissionByIdStubs.kt
 │   │   │   │                       │   │       ├── MissionsStubs.kt
@@ -597,6 +616,11 @@
 │   │   │   │                       │   │   │   │       └── InfractionModel.kt
 │   │   │   │                       │   │   │   ├── passenger
 │   │   │   │                       │   │   │   │   └── MissionPassengerModel.kt
+│   │   │   │                       │   │   │   ├── sati
+│   │   │   │                       │   │   │   │   ├── AddressModel.kt
+│   │   │   │                       │   │   │   │   ├── ContactModel.kt
+│   │   │   │                       │   │   │   │   ├── SatiModel.kt
+│   │   │   │                       │   │   │   │   └── SatiModelMapper.kt
 │   │   │   │                       │   │   │   └── target2
 │   │   │   │                       │   │   │       └── v2
 │   │   │   │                       │   │   │           └── TargetModel.kt
@@ -624,6 +648,8 @@
 │   │   │   │                       │       │   │   ├── generalInfo
 │   │   │   │                       │       │   │   │   ├── IDBInterMinisterialServiceRepository.kt
 │   │   │   │                       │       │   │   │   └── IDBMissionGeneralInfoRepository.kt
+│   │   │   │                       │       │   │   ├── sati
+│   │   │   │                       │       │   │   │   └── IDBSatiRepository.kt
 │   │   │   │                       │       │   │   └── target2
 │   │   │   │                       │       │   │       └── v2
 │   │   │   │                       │       │   │           ├── IDBInquiryRepository.kt
@@ -643,6 +669,8 @@
 │   │   │   │                       │       │   │   └── JPAServiceRepository.kt
 │   │   │   │                       │       │   ├── generalInfo
 │   │   │   │                       │       │   │   └── JPAMissionGeneralInfoRepository.kt
+│   │   │   │                       │       │   ├── sati
+│   │   │   │                       │       │   │   └── JPASatiRepository.kt
 │   │   │   │                       │       │   └── target2
 │   │   │   │                       │       │       └── v2
 │   │   │   │                       │       │           ├── JPAInquiryRepository.kt
@@ -681,11 +709,13 @@
 │   │   │   │                       │       ├── InfractionHierarchyBuilder.kt
 │   │   │   │                       │       ├── InfractionThreatCharacterizationDataOutput.kt
 │   │   │   │                       │       ├── MissionActionDataOutput.kt
+│   │   │   │                       │       ├── PortDataOutput.kt
 │   │   │   │                       │       ├── ThreatHierarchyDataOutput.kt
 │   │   │   │                       │       └── VesselIdentityDataOutput.kt
 │   │   │   │                       └── utils
 │   │   │   │                           ├── Base64Converter.kt
 │   │   │   │                           ├── FileUtils.kt
+│   │   │   │                           ├── HttpRequestUtils.kt
 │   │   │   │                           ├── ZipUtils.kt
 │   │   │   │                           └── office
 │   │   │   │                               ├── ExportExcelFile.kt
@@ -855,7 +885,11 @@
 │   │   │       │       ├── V1.2026.02.11.14.16__mission_source_enum.sql
 │   │   │       │       ├── V1.2026.02.11.16.16__target_mission_source_enum.sql
 │   │   │       │       ├── V1.2026.02.17.16.16__user_status.sql
-│   │   │       │       └── V1.2026.02.17.17.00__create_authentication_audit_table.sql
+│   │   │       │       ├── V1.2026.02.17.17.00__create_authentication_audit_table.sql
+│   │   │       │       ├── V1.2026.03.17.10.00__move_legacy_tables_to_archived_schema.sql
+│   │   │       │       ├── V1.2026.03.23.15.39__create_sati_table_and_correspondance.sql
+│   │   │       │       ├── V1.2026.03.23.15.42__alter_mission_action_fix_training_type.sql
+│   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
 │   │   │       │       ├── migration_mission_action.sql
@@ -868,11 +902,13 @@
 │   │   │           │   ├── administrations.json
 │   │   │           │   ├── control_plans.json
 │   │   │           │   ├── control_unit_resources.json
+│   │   │           │   ├── control_units.json
 │   │   │           │   ├── mission.json
 │   │   │           │   ├── missions.json
 │   │   │           │   └── natinfs.json
 │   │   │           └── fish
 │   │   │               ├── actions.json
+│   │   │               ├── ports.json
 │   │   │               └── vessels.json
 │   │   └── test
 │   │       ├── kotlin
@@ -930,8 +966,7 @@
 │   │       │                   │   │       ├── MissionEnvEntityTest.kt
 │   │       │                   │   │       ├── MissionGeneralInfoEntity2Tests.kt
 │   │       │                   │   │       ├── MissionNavActionEntityTest.kt
-│   │       │                   │   │       ├── MissionNavEntityTest.kt
-│   │       │                   │   │       └── VesselEntityTest.kt
+│   │       │                   │   │       └── MissionNavEntityTest.kt
 │   │       │                   │   ├── use_cases
 │   │       │                   │   │   ├── analytics
 │   │       │                   │   │   │   ├── ComputeAEMDataTest.kt
@@ -1017,6 +1052,9 @@
 │   │       │                   │   │   │   │   ├── FormatActionsForTimelineTests.kt
 │   │       │                   │   │   │   │   ├── GetInfoAboutActionTests.kt
 │   │       │                   │   │   │   │   └── MapStatusDurationsTests.kt
+│   │       │                   │   │   │   ├── sati
+│   │       │                   │   │   │   │   ├── GetComputeSatiTest.kt
+│   │       │                   │   │   │   │   └── ProcessSatiTest.kt
 │   │       │                   │   │   │   ├── status
 │   │       │                   │   │   │   │   ├── GetNbOfDaysAtSeaFromNavigationStatusTests.kt
 │   │       │                   │   │   │   │   ├── GetStatusDurationsTests.kt
@@ -1041,6 +1079,7 @@
 │   │       │                   │   │   │       ├── GetMissionsTest.kt
 │   │       │                   │   │   │       ├── GetNavMissionById2Test.kt
 │   │       │                   │   │   │       ├── GetNavMissionsTest.kt
+│   │       │                   │   │   │       ├── GetPortsTest.kt
 │   │       │                   │   │   │       ├── GetVesselsTest.kt
 │   │       │                   │   │   │       ├── PatchMissionEnvTest.kt
 │   │       │                   │   │   │       ├── PatchNavMissionTest.kt
@@ -1094,6 +1133,7 @@
 │   │       │                   ├── infrastructure
 │   │       │                   │   ├── api
 │   │       │                   │   │   ├── ControllersExceptionHandlerTest.kt
+│   │       │                   │   │   ├── FrontendRoutesControllerTest.kt
 │   │       │                   │   │   ├── adapters
 │   │       │                   │   │   │   └── ProblemDetailFactoryTest.kt
 │   │       │                   │   │   ├── admin
@@ -1103,9 +1143,13 @@
 │   │       │                   │   │   │   └── ApiAnalyticsControllerTests.kt
 │   │       │                   │   │   ├── auth
 │   │       │                   │   │   │   └── ApiAuthControllerTests.kt
-│   │       │                   │   │   └── bff
-│   │       │                   │   │       └── v2
-│   │       │                   │   │           └── MissionExportControllerTest.kt
+│   │       │                   │   │   ├── bff
+│   │       │                   │   │   │   └── v2
+│   │       │                   │   │   │       └── MissionExportControllerTest.kt
+│   │       │                   │   │   └── model
+│   │       │                   │   │       └── sati
+│   │       │                   │   │           ├── SatiMapperTest.kt
+│   │       │                   │   │           └── SatiModelMapperTest.kt
 │   │       │                   │   ├── bff
 │   │       │                   │   │   ├── adapters
 │   │       │                   │   │   │   └── mission
@@ -1115,10 +1159,10 @@
 │   │       │                   │   │   │   ├── AgentRestControllerTest.kt
 │   │       │                   │   │   │   ├── AgentRoleControllerTest.kt
 │   │       │                   │   │   │   ├── ControlUnitResourceRestControllerTest.kt
-│   │       │                   │   │   │   ├── CrewRestControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfoRestControllerTest.kt
 │   │       │                   │   │   │   ├── MissionRestControllerTest.kt
 │   │       │                   │   │   │   ├── NatInfRestControllerTest.kt
+│   │       │                   │   │   │   ├── PortRestControllerTest.kt
 │   │       │                   │   │   │   ├── UserRestControllerTest.kt
 │   │       │                   │   │   │   └── VesselRestControllerTest.kt
 │   │       │                   │   │   └── model
@@ -1186,10 +1230,12 @@
 │   │       │                   │   │   └── output
 │   │       │                   │   │       ├── InfractionHierarchyBuilderTest.kt
 │   │       │                   │   │       ├── InfractionThreatCharacterizationDataOutputTest.kt
-│   │       │                   │   │       └── MissionActionDataOutputTest.kt
+│   │       │                   │   │       ├── MissionActionDataOutputTest.kt
+│   │       │                   │   │       └── VesselIdentityDataOutputTest.kt
 │   │       │                   │   └── utils
 │   │       │                   │       ├── ExportZipTest.kt
 │   │       │                   │       ├── FileUtilsTest.kt
+│   │       │                   │       ├── HttpRequestUtilsTest.kt
 │   │       │                   │       └── ZipUtilsTest.kt
 │   │       │                   └── mocks
 │   │       │                       ├── mission
@@ -1203,6 +1249,7 @@
 │   │       │                       │   ├── MissionModelMock.kt
 │   │       │                       │   ├── MissionNavEntityMock.kt
 │   │       │                       │   ├── MultiPolygonMock.kt
+│   │       │                       │   ├── PortEntityMock.kt
 │   │       │                       │   ├── TargetEntityMock.kt
 │   │       │                       │   ├── TargetModelMock.kt
 │   │       │                       │   ├── VesselEntityMock.kt
@@ -1426,7 +1473,6 @@
 │   │   │       │   ├── mission-types.ts
 │   │   │       │   └── service-types.ts
 │   │   │       └── utils
-│   │   │           ├── control-utils.ts
 │   │   │           ├── dates-for-humans.test.ts
 │   │   │           ├── dates-for-humans.ts
 │   │   │           ├── dates-for-machines.test.ts
@@ -1572,6 +1618,7 @@
 │   │   │   │   │   │       │   │   ├── dialog-question.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-coordonates-input-dmd.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-date-range-picker.test.tsx.snap
+│   │   │   │   │   │       │   │   ├── formik-search-port.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-search-vessel.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-select-status-reason.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-select-vessel-size.test.tsx.snap
@@ -1599,10 +1646,14 @@
 │   │   │   │   │   │       │   ├── dialog-question.test.tsx
 │   │   │   │   │   │       │   ├── formik-coordonates-input-dmd.test.tsx
 │   │   │   │   │   │       │   ├── formik-date-range-picker.test.tsx
+│   │   │   │   │   │       │   ├── formik-number-input.test.tsx
+│   │   │   │   │   │       │   ├── formik-search-port.test.tsx
 │   │   │   │   │   │       │   ├── formik-search-vessel.test.tsx
 │   │   │   │   │   │       │   ├── formik-select-status-reason.test.tsx
 │   │   │   │   │   │       │   ├── formik-select-vessel-size.test.tsx
 │   │   │   │   │   │       │   ├── formik-styled-toogle.test.tsx
+│   │   │   │   │   │       │   ├── formik-text-input.test.tsx
+│   │   │   │   │   │       │   ├── formik-textarea-input.test.tsx
 │   │   │   │   │   │       │   ├── icon-vessel-commerce.test.tsx
 │   │   │   │   │   │       │   ├── icon-vessel-fishing.test.tsx
 │   │   │   │   │   │       │   ├── icon-vessel-passenger.test.tsx
@@ -1619,49 +1670,21 @@
 │   │   │   │   │   │       │   ├── mission-page-footer.test.tsx
 │   │   │   │   │   │       │   ├── mission-page-header-banner.test.tsx
 │   │   │   │   │   │       │   ├── mission-status-tag.test.tsx
+│   │   │   │   │   │       │   ├── search-city.test.tsx
 │   │   │   │   │   │       │   ├── text-by-cacem.test.tsx
 │   │   │   │   │   │       │   ├── text-by-cnsp.test.tsx
 │   │   │   │   │   │       │   ├── time-conversion.test.tsx
 │   │   │   │   │   │       │   ├── timeline-item-status.test.tsx
 │   │   │   │   │   │       │   ├── vessel-name.test.tsx
 │   │   │   │   │   │       │   └── yes-no-toogle.test.tsx
-│   │   │   │   │   │       ├── action-empty.tsx
-│   │   │   │   │   │       ├── action-error.tsx
-│   │   │   │   │   │       ├── action-header-completeness-for-stats.tsx
-│   │   │   │   │   │       ├── action-header-sync-status-banner.tsx
-│   │   │   │   │   │       ├── action-loader.tsx
+│   │   │   │   │   │       ├── action-*.tsx  (5 files)
 │   │   │   │   │   │       ├── dialog-question.tsx
 │   │   │   │   │   │       ├── foreign-establishment.tsx
-│   │   │   │   │   │       ├── formik-coordonates-input-dmd.tsx
-│   │   │   │   │   │       ├── formik-date-range-picker.tsx
-│   │   │   │   │   │       ├── formik-establishment.tsx
-│   │   │   │   │   │       ├── formik-multi-select-natinf.tsx
-│   │   │   │   │   │       ├── formik-number-input-delay.tsx
-│   │   │   │   │   │       ├── formik-search-vessel.tsx
-│   │   │   │   │   │       ├── formik-select-status-reason.tsx
-│   │   │   │   │   │       ├── formik-select-vessel-size.tsx
-│   │   │   │   │   │       ├── formik-styled-toogle.tsx
-│   │   │   │   │   │       ├── formik-text-area-delay.tsx
-│   │   │   │   │   │       ├── formik-text-input-delay.tsx
+│   │   │   │   │   │       ├── formik-*.tsx  (15 files)
 │   │   │   │   │   │       ├── general-information-header.tsx
-│   │   │   │   │   │       ├── icon-vessel-commerce.tsx
-│   │   │   │   │   │       ├── icon-vessel-fishing.tsx
-│   │   │   │   │   │       ├── icon-vessel-passenger.tsx
-│   │   │   │   │   │       ├── icon-vessel-sailing-leisure.tsx
-│   │   │   │   │   │       ├── icon-vessel-sailing-pro.tsx
-│   │   │   │   │   │       ├── icon-vessel-school.tsx
-│   │   │   │   │   │       ├── mission-control-selection.tsx
-│   │   │   │   │   │       ├── mission-incomplete-control-tag.tsx
-│   │   │   │   │   │       ├── mission-list-page-sidebar.tsx
-│   │   │   │   │   │       ├── mission-list-page-title.tsx
-│   │   │   │   │   │       ├── mission-natinfs-tag-fish.tsx
-│   │   │   │   │   │       ├── mission-natinfs-tag.tsx
-│   │   │   │   │   │       ├── mission-page-error.tsx
-│   │   │   │   │   │       ├── mission-page-footer.tsx
-│   │   │   │   │   │       ├── mission-page-header-banner.tsx
-│   │   │   │   │   │       ├── mission-page-loading.tsx
-│   │   │   │   │   │       ├── mission-source-tag.tsx
-│   │   │   │   │   │       ├── mission-status-tag.tsx
+│   │   │   │   │   │       ├── icon-*.tsx  (6 files)
+│   │   │   │   │   │       ├── mission-*.tsx  (12 files)
+│   │   │   │   │   │       ├── search-city.tsx
 │   │   │   │   │   │       ├── search-establishment.tsx
 │   │   │   │   │   │       ├── text-by-cacem.tsx
 │   │   │   │   │   │       ├── text-by-cnsp.tsx
@@ -1729,6 +1752,8 @@
 │   │   │   │   │   │   ├── use-vehicule.tsx
 │   │   │   │   │   │   └── use-vessel.tsx
 │   │   │   │   │   ├── schemas
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── conditionally-required-helper.test.ts
 │   │   │   │   │   │   ├── conditionally-required-helper.ts
 │   │   │   │   │   │   ├── dates-schema.ts
 │   │   │   │   │   │   └── geocoords-schema.ts
@@ -1743,9 +1768,9 @@
 │   │   │   │   │   │   │   └── use-update-general-info.test.tsx
 │   │   │   │   │   │   ├── query-keys.ts
 │   │   │   │   │   │   ├── use-action.tsx
+│   │   │   │   │   │   ├── use-address-service.tsx
 │   │   │   │   │   │   ├── use-administrations.tsx
 │   │   │   │   │   │   ├── use-agent-roles.tsx
-│   │   │   │   │   │   ├── use-agent-services.tsx
 │   │   │   │   │   │   ├── use-agents.tsx
 │   │   │   │   │   │   ├── use-create-action.tsx
 │   │   │   │   │   │   ├── use-delete-action.tsx
@@ -1755,6 +1780,7 @@
 │   │   │   │   │   │   ├── use-mission.tsx
 │   │   │   │   │   │   ├── use-missions.tsx
 │   │   │   │   │   │   ├── use-natinf-service.tsx
+│   │   │   │   │   │   ├── use-port-service.tsx
 │   │   │   │   │   │   ├── use-prefetch-static-data.tsx
 │   │   │   │   │   │   ├── use-resources-control-unit.tsx
 │   │   │   │   │   │   ├── use-resources.tsx
@@ -1765,6 +1791,7 @@
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── abstract-formik-hook.ts
 │   │   │   │   │       ├── action-type.ts
+│   │   │   │   │       ├── address-type.ts
 │   │   │   │   │       ├── control-unit-types.ts
 │   │   │   │   │       ├── crew-type.ts
 │   │   │   │   │       ├── etablishment.ts
@@ -1778,6 +1805,7 @@
 │   │   │   │   │       ├── network-types.ts
 │   │   │   │   │       ├── owner-type.ts
 │   │   │   │   │       ├── passenger-type.ts
+│   │   │   │   │       ├── port-type.ts
 │   │   │   │   │       ├── rescue-type.ts
 │   │   │   │   │       ├── role-type.ts
 │   │   │   │   │       ├── sector-types.ts
@@ -1882,7 +1910,9 @@
 │   │   │   │   │   │   │   └── mission-action-item-vigimer.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
-│   │   │   │   │   │       │   └── mission-action-env-themes.test.tsx
+│   │   │   │   │   │       │   ├── mission-action-env-themes.test.tsx
+│   │   │   │   │   │       │   ├── mission-action-formik-coordonate-input-dmd.test.tsx
+│   │   │   │   │   │       │   └── mission-action-nav-control-warning.test.tsx
 │   │   │   │   │   │       ├── mission-action-anti-pollution-warning.tsx
 │   │   │   │   │   │       ├── mission-action-control-nautical-leisure-form.tsx
 │   │   │   │   │   │       ├── mission-action-control-sector-form.tsx
@@ -1890,8 +1920,6 @@
 │   │   │   │   │   │       ├── mission-action-env-control-summary.tsx
 │   │   │   │   │   │       ├── mission-action-env-themes.tsx
 │   │   │   │   │   │       ├── mission-action-formik-coordonate-input-dmd.tsx
-│   │   │   │   │   │       ├── mission-action-formik-number-input.tsx
-│   │   │   │   │   │       ├── mission-action-formik-text-input.tsx
 │   │   │   │   │   │       ├── mission-action-formik-toogle-unit-has-confirm.tsx
 │   │   │   │   │   │       ├── mission-action-incident-download.tsx
 │   │   │   │   │   │       └── mission-action-nav-control-warning.tsx
@@ -1911,6 +1939,8 @@
 │   │   │   │   │   ├── types
 │   │   │   │   │   │   └── action-type.ts
 │   │   │   │   │   └── validation-schema
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   └── control-nautical-leisure.test.ts
 │   │   │   │   │       ├── conrtol-nautical-leisure.ts
 │   │   │   │   │       └── date-validation.ts
 │   │   │   │   ├── mission-control
@@ -1952,6 +1982,8 @@
 │   │   │   │   │       └── control-hook.ts
 │   │   │   │   ├── mission-general-infos
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── mission-general-information-control-unit-resource.test.tsx
 │   │   │   │   │   │   ├── mission-general-information-control-unit-resource.tsx
 │   │   │   │   │   │   ├── mission-general-information-crew-no-comment.tsx
 │   │   │   │   │   │   └── mission-general-information-inter-service.tsx
@@ -2066,6 +2098,7 @@
 │   │   │   │   │   │       │   ├── mission-timeline-item-control-card-subtitle.test.tsx
 │   │   │   │   │   │       │   ├── mission-timeline-item-control-card-tag.test.tsx
 │   │   │   │   │   │       │   ├── mission-timeline-item-fish-control-card-title.test.tsx
+│   │   │   │   │   │       │   ├── mission-timeline-item-nav-control-card-title.test.tsx
 │   │   │   │   │   │       │   ├── mission-timeline-item-note-card-title.test.tsx
 │   │   │   │   │   │       │   └── mission-timeline-item-surveillance-card-title.test.tsx
 │   │   │   │   │   │       ├── mission-timeline-empty.tsx
@@ -2160,7 +2193,8 @@
 │   │   │   │       ├── components
 │   │   │   │       │   ├── element
 │   │   │   │       │   │   ├── __tests__
-│   │   │   │       │   │   │   └── mission-create-dialog.test.tsx
+│   │   │   │       │   │   │   ├── mission-create-dialog.test.tsx
+│   │   │   │       │   │   │   └── mission-general-information-ulam-form-extend.test.tsx
 │   │   │   │       │   │   ├── mission-action-item-ulam.tsx
 │   │   │   │       │   │   ├── mission-action-ulam-body.tsx
 │   │   │   │       │   │   ├── mission-action-ulam-header.tsx
@@ -2168,9 +2202,9 @@
 │   │   │   │       │   │   ├── mission-create-dialog.tsx
 │   │   │   │       │   │   ├── mission-create-new-ulam.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam-body.tsx
-│   │   │   │       │   │   ├── mission-general-information-ulam-extended-form.tsx
+│   │   │   │       │   │   ├── mission-general-information-ulam-form-extend.tsx
+│   │   │   │       │   │   ├── mission-general-information-ulam-form-main.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam-form.tsx
-│   │   │   │       │   │   ├── mission-general-information-ulam-initial-form.tsx
 │   │   │   │       │   │   ├── mission-general-information-ulam.tsx
 │   │   │   │       │   │   ├── mission-header-ulam.tsx
 │   │   │   │       │   │   ├── mission-list
@@ -2195,13 +2229,12 @@
 │   │   │   │       │   ├── __tests__
 │   │   │   │       │   │   ├── use-ulam-crew-for-mission-list.test.tsx
 │   │   │   │       │   │   ├── use-ulam-home-unit-resources.test.tsx
+│   │   │   │       │   │   ├── use-ulam-mission-general-information-form.test.tsx
 │   │   │   │       │   │   └── use-ulam-timeline-registry.test.tsx
 │   │   │   │       │   ├── use-ulam-action-registry.tsx
 │   │   │   │       │   ├── use-ulam-crew-for-mission-list.tsx
 │   │   │   │       │   ├── use-ulam-home-unit-resources.tsx
 │   │   │   │       │   ├── use-ulam-mission-general-information-form.tsx
-│   │   │   │       │   ├── use-ulam-mission-general-informations-extended-form.tsx
-│   │   │   │       │   ├── use-ulam-mission-general-informations-initial-form.tsx
 │   │   │   │       │   └── use-ulam-timeline-registry.tsx
 │   │   │   │       └── services
 │   │   │   │           └── use-create-mission.tsx
@@ -2258,4 +2291,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-444 directories, 1816 files
+456 directories, 1871 files

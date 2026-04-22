@@ -1,29 +1,35 @@
-## Changelog : rapportnav2 (30 derniers jours)
+## Changelog : rapportnav2 (30 derniers jours, au 2026-04-21)
 
 ### Résumé
-Cette version apporte des améliorations à l'interface d'administration, notamment la pagination et la recherche dans la liste des informations générales, ainsi que la possibilité de supprimer ces informations. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, en particulier concernant la gestion des ressources et des coordonnées GPS. Des mises à jour de sécurité et des améliorations de la journalisation ont également été effectuées.
+Ce mois-ci, les évolutions se concentrent sur l'ajout de nouvelles fonctionnalités liées à la gestion des contrôles (types de contrôle, permis d'armement), l'amélioration de la validation des données et l'intégration de services externes pour la recherche d'adresses et de ports. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. Un travail significatif a été réalisé sur la gestion des données Sati, avec la création de la structure de base de données et l'implémentation des cas d'utilisation associés.
 
 ### Évolutions fonctionnelles
-- Ajout de la pagination et de la recherche sur la page d'administration des informations générales.
-- Possibilité de supprimer des informations générales depuis l'interface d'administration.
-- Correction de l'affichage du nombre de cibles sur le titre.
-- Correction du formulaire de coordonnées GPS dans l'interface utilisateur.
+- Ajout du champ "permis d'armement confirmé" pour les contrôles administratifs. [#1099](https://github.com/MTES-MCT/rapportnav2/issues/1099)
+- Ajout de la possibilité de sélectionner le type de contrôle "coquillages" pour les missions ULAM. [#1272](https://github.com/MTES-MCT/rapportnav2/issues/1272)
+- Intégration d'un service d'autocomplétion d'adresses via l'API data.gouv.fr.
+- Intégration d'un service de recherche de ports via l'API MonitorFish.
+- Amélioration de la validation des données pour les missions ULAM, notamment en rendant obligatoire le nombre d'heures en mer pour les missions de type "MER". [#1250](https://github.com/MTES-MCT/rapportnav2/issues/1250)
+- Amélioration des messages d'erreur de validation pour les ressources ULAM.
+- Ajout de la gestion des pays et codes pays pour les adresses.
+- Implémentation des cas d'utilisation (GET/PUT) pour la gestion des données Sati.
+- Création de la structure de base de données Sati.
 
 ### Évolutions techniques
-- Mise à jour de la version de Gradle vers la version 9.
-- Mise à jour de plusieurs dépendances frontend, notamment Vitest.
-- Amélioration de la gestion des erreurs et implémentation des réponses RFC 7807 Problem Detail.
-- Ajout de la journalisation des événements d'authentification et d'audit des clés API.
-- Amélioration de la configuration de la sécurité (CORS et CSRF).
-- Correction d'un problème lié à la gestion des ressources et de leur statut "complété" pour les statistiques.
-- Correction d'un problème lié à l'utilisation de l'ID de l'unité de contrôle lors de la mise à jour des ressources.
-- Amélioration de la gestion des sessions Sentry.
-- Correction de problèmes liés à la configuration de Sentry.
+- Mise à jour de Spring Boot.
+- Refactoring de l'architecture pour respecter les principes hexagonaux pour les Vessels.
+- Archivage des anciennes tables SQL dans un nouveau schéma "archived".
+- Correction de la configuration de l'action Trivy pour utiliser un hash fixe.
+- Mise à jour de la version de Java à Java 25.
+- Suppression de code obsolète (control-utils.ts).
+- Amélioration de la performance en ajoutant un cache Caffeine pour les ports.
+- Utilisation de HTTP 1.1 pour MonitorEnv.
 
 ### Autres changements
-- Mise à jour des dépendances de sécurité (npm audit fix).
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de code inutile et nettoyage du code.
+- Correction de problèmes d'audit npm.
+- Ajout de listeners sur les modèles de données.
+- Suppression de valeurs codées en dur (fishActionType, hardcoded fishActionType).
+- Amélioration de la validation du secteur de contrôle.
+- Amélioration de la validation du type de contrôle nautique et de loisirs.
+- Correction d'un problème de validation sur les actions ULAM.
+- Ajout de tests unitaires.
 - Mise à jour de la documentation.
-- Correction de problèmes de build et de packaging.
-- Correction de tests unitaires.

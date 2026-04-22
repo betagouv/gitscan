@@ -1,5 +1,72 @@
 # Changelog
 
+## [2.72.0](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.71.0...docker-container@v2.72.0) (2026-03-26)
+
+
+### Features
+
+* **Controls:** add "permis d'armement confirme" for administrative controls [#1099](https://github.com/MTES-MCT/rapportnav2/issues/1099) ([2156b58](https://github.com/MTES-MCT/rapportnav2/commit/2156b5826476f6d8e06180e0505b404a14233105))
+* **Controls:** remove fishing pro (for all) - add shellfish (for ULAM only) [#1272](https://github.com/MTES-MCT/rapportnav2/issues/1272) ([1cd7bad](https://github.com/MTES-MCT/rapportnav2/commit/1cd7badabd9c7891d16202b07a443f2fdb9ca507))
+
+
+### Bug Fixes
+
+* **action:** update training type length ([72764c2](https://github.com/MTES-MCT/rapportnav2/commit/72764c230cb8a26fa36de80e019e0def6aad34af))
+* **Controls:** allow all infraction categories for NavControls ([8d2f829](https://github.com/MTES-MCT/rapportnav2/commit/8d2f829a4b9ea7162170039dd1b65fb2a1b6e6a4))
+* don't run env mission completeness on nav missions ([d3e6803](https://github.com/MTES-MCT/rapportnav2/commit/d3e680305c52df6242bc57fa78cee9da9c5bffaa))
+* **establishment:** propagate isLight prop to make field visible for all background colors ([035eecd](https://github.com/MTES-MCT/rapportnav2/commit/035eecdcf311f8a231a6beb409c06db09b7b878c))
+* **NavControl:** update warning message [#1259](https://github.com/MTES-MCT/rapportnav2/issues/1259) ([cd71354](https://github.com/MTES-MCT/rapportnav2/commit/cd713547764431bc6f1063bad0a0f3d54d3aab56))
+* npm audit ([56f1adc](https://github.com/MTES-MCT/rapportnav2/commit/56f1adc78f2933bf4ed45192fe6d9bd3153a14b4))
+* **ULAM:** hide isMissionArmed for non field mission + rework validation rule accordingly ([6f782e8](https://github.com/MTES-MCT/rapportnav2/commit/6f782e85d71935ca100a9beab5899082db24ee47))
+* **ULAM:** require nbHoursAtSea for SEA type missions [#1250](https://github.com/MTES-MCT/rapportnav2/issues/1250) ([bfb189a](https://github.com/MTES-MCT/rapportnav2/commit/bfb189ac6c37f60e0c7b900a36230560fae4b7b3))
+* **ULAM:** show validation error message when resources have not been set ([ebf4e70](https://github.com/MTES-MCT/rapportnav2/commit/ebf4e7070990380ccfb0d8055cd63c37d9907db2))
+* **validation:** fix conditional validation on ULAM actions ([c988774](https://github.com/MTES-MCT/rapportnav2/commit/c9887743ceb3b606638596c7824480c9df7c1195))
+* **validation:** fix overvalidation, fix conditionally-required-helper ([ce7a476](https://github.com/MTES-MCT/rapportnav2/commit/ce7a4766f6152a511acb5bd2ae4548e4cba315d0))
+
+## [2.71.0](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.70.0...docker-container@v2.71.0) (2026-03-23)
+
+
+### Features
+
+* bump to java25 ([e0d71d1](https://github.com/MTES-MCT/rapportnav2/commit/e0d71d19de6ed921a5602a79e7e63f025ed94269))
+* **frontend:** enable all control types for control sleeping engins ([87b05dc](https://github.com/MTES-MCT/rapportnav2/commit/87b05dcbf744f88785dfe08b005789e6aea00eb0))
+* **frontend:** remove 3 sec delay ([a54c971](https://github.com/MTES-MCT/rapportnav2/commit/a54c971220a805267beaca6b72999868cd35a60d))
+* **frontend:** remove 3 sec delay ([515e165](https://github.com/MTES-MCT/rapportnav2/commit/515e16587eea0cb3a4fc13db3c236527d069dcb5))
+* **frontend:** remove 3 sec policy general infos ulam ([3ec8314](https://github.com/MTES-MCT/rapportnav2/commit/3ec8314eac1c03cfd2f6edbaea237b664b093e53))
+
+
+### Bug Fixes
+
+* add controlUnits mocks ([bdde185](https://github.com/MTES-MCT/rapportnav2/commit/bdde18553fe8d69549e72905555401f1850b58ee))
+* **AEM:** change counting rule for 4.1.4 ([fb889f2](https://github.com/MTES-MCT/rapportnav2/commit/fb889f284d997bd20bc359237e0407bd53115851))
+* **AEM:** filter by sea_controls for 4.3 items ([8a6324e](https://github.com/MTES-MCT/rapportnav2/commit/8a6324e38711a43908d204639d341623a396e4f8))
+* dependencies ([62ce8e0](https://github.com/MTES-MCT/rapportnav2/commit/62ce8e0436886f0a93c08dc08ebc0049b28c9809))
+* **formik:** fix validation on delay inputs ([bfe463d](https://github.com/MTES-MCT/rapportnav2/commit/bfe463d7249ff0d385bd89ca167cda4d66ae007b))
+* **formik:** read validation from parent for MissionActionFormikCoordinateInputDMD ([3e8cd50](https://github.com/MTES-MCT/rapportnav2/commit/3e8cd5089527349258caef211a0f0688d874ede9))
+* **formik:** remove isMissionFinished as form field ([895ae71](https://github.com/MTES-MCT/rapportnav2/commit/895ae710c485acd84e306a2ef4169f24d9a78bf3))
+* **Secu:** limit IP spoofing and use Spring ForwardedHeaderFilter ([b2869d4](https://github.com/MTES-MCT/rapportnav2/commit/b2869d4dff06d49a0bd448b6c9c106a4e1675d55))
+* set HTTP 1.1 for MonitorEnv ([804cd19](https://github.com/MTES-MCT/rapportnav2/commit/804cd195633b7d6f39a4b70ab4ca24b64dc0e835))
+* trivy version ([64f7832](https://github.com/MTES-MCT/rapportnav2/commit/64f7832e2ef1bceb358da939585a7dd3e7e35766))
+
+## [2.70.0](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.69.2...docker-container@v2.70.0) (2026-03-11)
+
+
+### Features
+
+* **secu:** improve CSP ([7dbc2bb](https://github.com/MTES-MCT/rapportnav2/commit/7dbc2bbbb9f290bab3edce1e10089aa9bb488d0c))
+
+
+### Bug Fixes
+
+* **errors:** fix and improve reporting for 400s ([204ed18](https://github.com/MTES-MCT/rapportnav2/commit/204ed18a34afa7b7e11db8362ab20cd476ac6cbf))
+
+## [2.69.2](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.69.1...docker-container@v2.69.2) (2026-03-09)
+
+
+### Bug Fixes
+
+* **ApiAnalytics:** add AEM 4.4.x and 5.x ([2eec684](https://github.com/MTES-MCT/rapportnav2/commit/2eec684fab9c78ad0a88698380d983914d26d5cb))
+
 ## [2.69.1](https://github.com/MTES-MCT/rapportnav2/compare/docker-container@v2.69.0...docker-container@v2.69.1) (2026-03-05)
 
 
