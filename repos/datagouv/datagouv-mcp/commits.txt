@@ -1,3 +1,9 @@
+2026-04-20T18:13:05+02:00 - 9105bac - Shahfazal Mohammed : feat: add deep health check and call_tool dev script (#100)
+2026-04-13T14:52:04+02:00 - 69f584a - Adrien Carpentier : fix(tabular): handle Tabular API 4xx/5xx with LLM hints (#94)
+2026-04-13T14:43:45+02:00 - 801ced6 - Adrien Carpentier : refactor(datagouv): simplify tags handling to match API swagger (#98)
+2026-04-13T14:41:04+02:00 - 684f742 - Adrien Carpentier : feat: add tool titles and MCP annotations (#102)
+2026-04-13T14:37:49+02:00 - d0a5981 - Adrien Carpentier : feat(matomo): track MCP tool calls as Matomo events (#101)
+2026-04-13T13:01:03+02:00 - 60f5687 - Adrien Carpentier : refactor(query_resource_data): remove question parameter (#95)
 2026-04-09T13:20:09+02:00 - 1bc7f3b - Adrien Carpentier : chore: update gitignore
 2026-04-09T11:58:41+02:00 - b912351 - Adrien Carpentier : chore: release 0.2.23 (CHANGELOG)
 2026-04-09T11:58:12+02:00 - 905d772 - Adrien Carpentier : fix: fix wrong matomo env var
@@ -78,6 +84,7 @@
 2026-02-27T15:51:21+01:00 - 834f85e - Antonin Garrone : Enhance README with image cover
 2026-02-27T14:54:45+01:00 - b24b9dc - Adrien Carpentier : Merge pull request #35 from datagouv/fix/fix-matomo
 2026-02-27T14:53:47+01:00 - 2f7c513 - Adrien Carpentier : fix: normalize env var name
+2026-02-27T14:47:27+09:00 - cb095b3 - Ikko Eltociear Ashimine : docs: update README.md
 2026-02-27T11:53:45+01:00 - 3828c9d - AbdelStark : perf: use bytearray buffering in resource downloader
 2026-02-27T11:52:46+01:00 - 30a62af - AbdelStark : fix: validate filter and sort options in query_resource_data
 2026-02-27T11:51:38+01:00 - ad72fdd - AbdelStark : fix: align docker-compose env with DATAGOUV_ENV
@@ -89,7 +96,6 @@
 2026-02-27T11:32:03+01:00 - c3dd376 - Adrien Carpentier : docs: improve contributing guidelines in README
 2026-02-27T09:25:41+01:00 - ea06906 - Adrien Carpentier : Merge pull request #21 from glaforge/patch-1
 2026-02-27T09:24:20+01:00 - 05e7b3d - Adrien Carpentier : Merge pull request #23 from eltociear/patch-1
-2026-02-27T14:47:27+09:00 - cb095b3 - Ikko Eltociear Ashimine : docs: update README.md
 2026-02-27T00:57:46+01:00 - 9e2b6f4 - Guillaume Laforge : fix: Remove 'transport' field for the Gemini CLI configuration
 2026-02-26T17:58:48+01:00 - 60b8ced - Adrien Carpentier : Merge pull request #11 from vperrinfr/patch-1
 2026-02-26T17:14:54+01:00 - 9aac9aa - Adrien Carpentier : chore: release 0.2.17 (CHANGELOG)
@@ -101,9 +107,9 @@
 2026-02-25T18:38:15+01:00 - 63bb980 - Vincent Perrin : Update README with IBM Bob MCP configuration details
 2026-02-23T16:27:26+01:00 - 176ddcf - Adrien Carpentier : docs: update README
 2026-02-23T11:21:43+01:00 - 9958491 - Adrien Carpentier : chore: release 0.2.16 (CHANGELOG)
+2026-02-23T11:21:32+01:00 - eb3c56a - Adrien Carpentier : chore: update dependency for security
 2026-02-23T11:21:32+01:00 - db4c9d8 - Adrien Carpentier : feat: add type checking
 2026-02-23T11:21:32+01:00 - be8c7e3 - Adrien Carpentier : docs: improve README for contributing section
-2026-02-23T11:21:32+01:00 - eb3c56a - Adrien Carpentier : chore: update dependency for security
 2026-02-23T11:21:17+01:00 - c100627 - Adrien Carpentier : chore: release 0.2.15 (CHANGELOG)
 2026-02-23T11:21:02+01:00 - af2e04d - Adrien Carpentier : docs: add disambiguation about dataservices
 2026-02-16T14:05:04+01:00 - bc230da - Adrien Carpentier : docs: update README
@@ -121,8 +127,8 @@
 2026-01-15T13:44:09+01:00 - f093232 - Adrien Carpentier : feat: add allowed_origins and MCP_HOST local var to comply with official MCP specs
 2026-01-13T14:01:14+01:00 - 578b91d - Adrien Carpentier : feat: upgrade mcp to 1.25 with DNS rebinding protection config
 2026-01-13T13:26:40+01:00 - 53143ae - Adrien Carpentier : chore: release 0.2.11 (CHANGELOG)
-2026-01-13T13:25:25+01:00 - 5f9e691 - Adrien Carpentier : docs: streamline tool docstrings for better LLM efficiency
 2026-01-13T13:25:25+01:00 - fe15781 - Adrien Carpentier : fix: add page_size argument for query_resource_data tool with 20 as a default, so that the LLM can preview the resource
+2026-01-13T13:25:25+01:00 - 5f9e691 - Adrien Carpentier : docs: streamline tool docstrings for better LLM efficiency
 2026-01-13T12:20:01+01:00 - bafd1b6 - Adrien Carpentier : chore: release 0.2.10 (CHANGELOG)
 2026-01-13T12:19:49+01:00 - 959fdb1 - Adrien Carpentier : chore: revert mcp to 1.22 and update other dependencies
 2026-01-13T12:17:33+01:00 - a545717 - Adrien Carpentier : Revert "fix(server): allow all hosts to prevent 421 Invalid Host header errors"

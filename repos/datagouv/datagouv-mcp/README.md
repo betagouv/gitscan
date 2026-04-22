@@ -352,7 +352,7 @@ The MCP server is built using the [official Python SDK for MCP servers and clien
 
 **Streamable HTTP transport (standards-compliant):**
 - `POST /mcp` - JSON-RPC messages (client → server)
-- `GET /health` - Simple JSON health probe (`{"status":"ok","timestamp":"..."}`)
+- `GET /health` - Health check endpoint: runs a full MCP handshake and tool call. Returns `{"status":"ok",...}` with HTTP 200 if healthy, or `{"status":"mcp_unavailable"}` with HTTP 503 if the MCP stack is not responding correctly.
 
 ## 🛠️ Available Tools
 
@@ -380,7 +380,7 @@ The MCP server provides tools to interact with data.gouv.fr datasets and dataser
 
 - **`query_resource_data`** - Query data from a specific resource via the Tabular API. Fetches rows from a resource to answer questions.
 
-  Parameters: `question` (required), `resource_id` (required), `page` (optional, default: 1), `page_size` (optional, default: 20, max: 200)
+  Parameters: `resource_id` (required), `page` (optional, default: 1), `page_size` (optional, default: 20, max: 200)
 
   Note: Recommended workflow: 1) Use `search_datasets` to find the dataset, 2) Use `list_dataset_resources` to see available resources, 3) Use `query_resource_data` with default `page_size` (20) to preview data structure. For small datasets (<500 rows), increase `page_size` or paginate. For large datasets (>1000 rows), continue paginating or use `get_resource_info` to retrieve the raw file URL and fetch it directly. Works for CSV/XLS resources within Tabular API size limits (CSV ≤ 100 MB, XLSX ≤ 12.5 MB).
 
@@ -441,6 +441,25 @@ uv run pytest -m stress
 ```
 
 Currently includes a test that mixes normal requests with abrupt client TCP disconnects, verifying the server stays healthy and keeps serving despite the disruption. It uses `MCP_PORT` (default: `8000`) to connect to the local server.
+
+### 🩺 Run a Health Check from the CLI
+
+Runs a full MCP handshake and calls `search_datasets` to validate end-to-end stack health. Requires a running server and is excluded from default `pytest` runs.
+
+```shell
+# Start the server first, then in another terminal:
+uv run pytest -m health_check
+```
+
+### 🛠️ Local Tool Testing Script
+
+`scripts/call_tool.py` lets you call any MCP tool directly without manually managing the curl handshake. Requires a running server.
+
+```shell
+# Start the server first, then in another terminal:
+python scripts/call_tool.py search_datasets '{"query": "IRVE"}'
+python scripts/call_tool.py get_resource_info '{"resource_id": "<id>"}'
+```
 
 ### 🔍 Interactive Testing with MCP Inspector
 
