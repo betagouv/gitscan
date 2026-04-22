@@ -1,24 +1,90 @@
 .
 ├── .agents
 │   └── skills
-│       └── mastra
+│       ├── mastra
+│       │   ├── SKILL.md
+│       │   ├── references
+│       │   │   ├── common-errors.md
+│       │   │   ├── create-mastra.md
+│       │   │   ├── embedded-docs.md
+│       │   │   ├── migration-guide.md
+│       │   │   └── remote-docs.md
+│       │   └── scripts
+│       │       └── provider-registry.mjs
+│       └── module-3-rag
 │           ├── SKILL.md
-│           ├── references
-│           │   ├── common-errors.md
-│           │   ├── create-mastra.md
-│           │   ├── embedded-docs.md
-│           │   ├── migration-guide.md
-│           │   └── remote-docs.md
-│           └── scripts
-│               └── provider-registry.mjs
+│           └── references
+│               ├── cp1-setup.md
+│               ├── cp2-ingestion.md
+│               ├── cp3-embeddings.md
+│               ├── cp4-retrieval.md
+│               ├── cp5-generation.md
+│               └── cp6-eval.md
 ├── .claude
 │   └── skills
-│       └── mastra -> ../../.agents/skills/mastra
+│       ├── mastra -> ../../.agents/skills/mastra
+│       └── module-3-rag -> ../../.agents/skills/module-3-rag
+├── .env.example
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── release-please.yml
+├── .gitignore
+├── .husky
+│   └── pre-commit
 ├── .pi
 │   └── skills
-│       └── mastra -> ../../.agents/skills/mastra
+│       ├── mastra -> ../../.agents/skills/mastra
+│       └── module-3-rag -> ../../.agents/skills/module-3-rag
 ├── .skills
-│   └── mastra -> ../.agents/skills/mastra
+│   ├── mastra -> ../.agents/skills/mastra
+│   └── module-3-rag -> ../.agents/skills/module-3-rag
 ├── LICENSE
-└── skills-lock.json
-14 directories, 9 files
+├── README.md
+├── biome.json
+├── corpus
+│   └── anssi-essentiels
+│       ├── anssi_essentiels_architecture_securisee_v1.0.pdf
+│       ├── anssi_essentiels_bdd_relationnelles_1.0.pdf
+│       ├── anssi_essentiels_denis-de-service-distribues_v2.0.pdf
+│       ├── anssi_essentiels_devsecops_v1.0.pdf
+│       ├── anssi_essentiels_données_traitements_sensibles_1.0.pdf
+│       ├── anssi_essentiels_fuites_données_1.0.pdf
+│       ├── anssi_essentiels_hygiene_telephones_mobiles_1.1.pdf
+│       ├── anssi_essentiels_igc_1.0.pdf
+│       ├── anssi_essentiels_migration_1.0.pdf
+│       ├── anssi_essentiels_mise-en-oeuvre-securisee-cms_v1.1.pdf
+│       ├── anssi_essentiels_sauvegarde-si_v1.1.pdf
+│       ├── anssi_essentiels_selection_logiciel_libre_1.0.pdf
+│       ├── anssi_essentiels_serveur_Windows_autonome_v1.0.pdf
+│       ├── anssi_essentiels_serveur_Windows_controleur_domaine_v1.0.pdf
+│       ├── anssi_essentiels_serveur_Windows_membre_AD_DS_v1.0.pdf
+│       ├── anssi_essentiels_virtualisation_v1.0.pdf
+│       ├── anssi_essentiels_zero_trust_1.0.pdf
+│       └── manifest.json
+├── data
+│   └── eval-questions.json
+├── design
+│   └── module-3-design.md
+├── instructor-guide
+│   └── module-3.md
+├── package.json
+├── pnpm-lock.yaml
+├── reference
+│   ├── README.md
+│   ├── build-index.ts
+│   ├── generate.ts
+│   ├── observed-behavior.md
+│   ├── retrieve.ts
+│   └── run-eval.ts
+├── skills-lock.json
+├── src
+│   └── mastra
+│       ├── agents
+│       │   └── chat-agent.ts
+│       ├── gateways
+│       │   └── albert.ts
+│       └── index.ts
+└── tsconfig.json
+32 directories, 57 files
