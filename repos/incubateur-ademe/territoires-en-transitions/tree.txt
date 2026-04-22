@@ -64,6 +64,7 @@
 │       ├── cd-auth.yml
 │       ├── cd-backend.yml
 │       ├── cd-panier.yml
+│       ├── cd-restore-preprod.yml
 │       ├── cd-site.yml
 │       ├── cd-sync-preprod.yml
 │       ├── cd-sync.yml
@@ -2551,23 +2552,34 @@
 │   │   │   │   │       ├── update-fiche.router.ts
 │   │   │   │   │       └── update-fiche.service.ts
 │   │   │   │   ├── paniers
-│   │   │   │   │   └── models
-│   │   │   │   │       ├── action-impact-action.table.ts
-│   │   │   │   │       ├── action-impact-banatic-competence.table.ts
-│   │   │   │   │       ├── action-impact-categorie.table.ts
-│   │   │   │   │       ├── action-impact-cateorie-fnv.table.ts
-│   │   │   │   │       ├── action-impact-effet-attendu.table.ts
-│   │   │   │   │       ├── action-impact-fourchette-budgetaire.table.ts
-│   │   │   │   │       ├── action-impact-indicateur.table.ts
-│   │   │   │   │       ├── action-impact-panier.table.ts
-│   │   │   │   │       ├── action-impact-partenaire.table.ts
-│   │   │   │   │       ├── action-impact-sous-thematique.table.ts
-│   │   │   │   │       ├── action-impact-statut.table.ts
-│   │   │   │   │       ├── action-impact-thematique.table.ts
-│   │   │   │   │       ├── action-impact-tier.table.ts
-│   │   │   │   │       ├── action-impact.table.ts
-│   │   │   │   │       ├── panier-partenaire.table.ts
-│   │   │   │   │       └── panier.table.ts
+│   │   │   │   │   ├── checkout
+│   │   │   │   │   │   ├── checkout.errors.ts
+│   │   │   │   │   │   ├── checkout.input.ts
+│   │   │   │   │   │   ├── checkout.router.e2e-spec.ts
+│   │   │   │   │   │   ├── checkout.router.ts
+│   │   │   │   │   │   ├── checkout.service.ts
+│   │   │   │   │   │   ├── panier-checkout-line-to-fiche-action.spec.ts
+│   │   │   │   │   │   ├── panier-checkout-line-to-fiche-action.ts
+│   │   │   │   │   │   └── panier-checkout.repository.ts
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   ├── action-impact-action.table.ts
+│   │   │   │   │   │   ├── action-impact-banatic-competence.table.ts
+│   │   │   │   │   │   ├── action-impact-categorie.table.ts
+│   │   │   │   │   │   ├── action-impact-cateorie-fnv.table.ts
+│   │   │   │   │   │   ├── action-impact-effet-attendu.table.ts
+│   │   │   │   │   │   ├── action-impact-fourchette-budgetaire.table.ts
+│   │   │   │   │   │   ├── action-impact-indicateur.table.ts
+│   │   │   │   │   │   ├── action-impact-panier.table.ts
+│   │   │   │   │   │   ├── action-impact-partenaire.table.ts
+│   │   │   │   │   │   ├── action-impact-sous-thematique.table.ts
+│   │   │   │   │   │   ├── action-impact-statut.table.ts
+│   │   │   │   │   │   ├── action-impact-thematique.table.ts
+│   │   │   │   │   │   ├── action-impact-tier.table.ts
+│   │   │   │   │   │   ├── action-impact.table.ts
+│   │   │   │   │   │   ├── panier-partenaire.table.ts
+│   │   │   │   │   │   └── panier.table.ts
+│   │   │   │   │   ├── paniers.module.ts
+│   │   │   │   │   └── paniers.router.ts
 │   │   │   │   ├── plans
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
@@ -3878,6 +3890,8 @@
 │   ├── README.md
 │   ├── backup
 │   │   ├── backup.sh
+│   │   ├── cleanup.sh
+│   │   ├── reset_sequences.sql
 │   │   └── restore.sh
 │   ├── pgsync
 │   │   ├── .pgsync.yml
@@ -4214,6 +4228,7 @@
 │   │   │   ├── panier_action_impact
 │   │   │   │   ├── action_impact.sql
 │   │   │   │   ├── action_impact@v4.6.0.sql
+│   │   │   │   ├── drop_plan_from_panier.sql
 │   │   │   │   ├── panier.sql
 │   │   │   │   ├── plan_action.sql
 │   │   │   │   └── plan_action@v4.6.0.sql
@@ -4741,6 +4756,7 @@
 │   │   │   ├── panier_action_impact
 │   │   │   │   ├── action_impact.sql
 │   │   │   │   ├── action_impact@v4.6.0.sql
+│   │   │   │   ├── drop_plan_from_panier.sql
 │   │   │   │   ├── panier.sql
 │   │   │   │   ├── plan_action.sql
 │   │   │   │   └── plan_action@v4.6.0.sql
@@ -5267,6 +5283,7 @@
 │   │       ├── panier_action_impact
 │   │       │   ├── action_impact.sql
 │   │       │   ├── action_impact@v4.6.0.sql
+│   │       │   ├── drop_plan_from_panier.sql
 │   │       │   ├── panier.sql
 │   │       │   ├── plan_action.sql
 │   │       │   └── plan_action@v4.6.0.sql
@@ -5599,7 +5616,8 @@
 │   │   ├── 0012-sous-actions.md
 │   │   ├── 0013-tests-e2e.md
 │   │   ├── 0014-notifications-email.md
-│   │   └── 0015-generation-pptx.md
+│   │   ├── 0015-generation-pptx.md
+│   │   └── 0016-strategie-backup-database.md
 │   └── solutions
 │       ├── architecture-patterns
 │       │   └── extract-history-repository-from-service.md
@@ -5646,6 +5664,8 @@
 │   │   │   │   │   ├── list-fiches-filter.spec.ts
 │   │   │   │   │   └── list-fiches.pom.ts
 │   │   │   │   └── show-fiche
+│   │   │   │       ├── contributeur.spec.ts
+│   │   │   │       ├── financeurs-draft.spec.ts
 │   │   │   │       └── lecteur-readonly-description.spec.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
@@ -5664,6 +5684,7 @@
 │   │   │   │   └── validate-labellisation-cot.spec.ts
 │   │   │   ├── referentiels.fixture.ts
 │   │   │   └── scores
+│   │   │       ├── accordion-header-click.spec.ts
 │   │   │       ├── action-access-rights.spec.ts
 │   │   │       ├── create-update-document.spec.ts
 │   │   │       ├── hash-navigation.spec.ts
@@ -6006,7 +6027,8 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── labels.ts
 │   │   │   │   ├── paniers
-│   │   │   │   │   └── action-impact.schema.ts
+│   │   │   │   │   ├── action-impact.schema.ts
+│   │   │   │   │   └── panier-checkout.schema.ts
 │   │   │   │   └── plans
 │   │   │   │       ├── flat-axe.schema.ts
 │   │   │   │       ├── generate-report
@@ -6700,4 +6722,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── vitest.config.ts
-1176 directories, 5682 files
+1177 directories, 5703 files
