@@ -1,13 +1,16 @@
-## Changelog : gallene-deployment (30 derniers jours, au 17 avril 2026)
+## Changelog : gallene-deployment (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Ce changelog marque le premier déploiement du projet Gallene. Il contient l'initialisation du dépôt avec l'image Docker et le chart Helm nécessaires au déploiement de l'application. C'est un point de départ pour les futures évolutions et améliorations.
+Ce mois-ci, le projet Gallene-deployment a connu une refonte majeure avec l'ajout d'un Dockerfile et de scripts de déploiement basés sur le projet `deburau/galene-docker`. Ces changements facilitent grandement le déploiement de Gallene, notamment dans un environnement Kubernetes, en permettant la configuration via un fichier `.env`.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle pour ce premier commit.
+- Ajout de la possibilité de configurer Gallene via un fichier `.env` pour faciliter le déploiement Kubernetes. [#1](https://github.com/suitenumerique/gallene-deployment/pull/1)
 
 ### Évolutions techniques
-- Initialisation du dépôt avec l'image Docker et le chart Helm pour le déploiement de Gallene.
+- Intégration du Dockerfile initial et des scripts de déploiement du projet `deburau/galene-docker`.
+- Correction d'une erreur de syntaxe dans le Dockerfile.
+- Modification du Dockerfile pour l'adapter au contexte de Gallene-deployment.
+- Initialisation du dépôt avec un premier commit.
 
 ### Autres changements
-- Initialisation du dépôt.
+- Ajout du dossier racine contenant les scripts issus de `deburau/galene-docker`.
