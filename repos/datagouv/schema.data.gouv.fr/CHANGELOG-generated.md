@@ -1,13 +1,13 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 21 avril 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de schema.data.gouv.fr se sont concentrées sur des améliorations continues du site web et des recommandations de schémas. Ces mises à jour visent à maintenir la plateforme à jour et à optimiser l'expérience utilisateur.
+Le site schema.data.gouv.fr a bénéficié de mises à jour régulières au cours des 30 derniers jours. Ces mises à jour concernent principalement des améliorations continues du site web et des recommandations de schémas, sans changements majeurs impactant directement l'utilisation du site par les utilisateurs.
 
 ### Évolutions fonctionnelles
-- Amélioration des recommandations de schémas de données. Des ajustements ont été apportés pour affiner la pertinence des suggestions proposées aux utilisateurs.
+- Les recommandations de schémas ont été mises à jour à plusieurs reprises pour améliorer leur pertinence et leur exhaustivité. Ces mises à jour visent à faciliter la découverte des schémas les plus appropriés pour les utilisateurs.
 
 ### Évolutions techniques
-- Mises à jour régulières du site web pour assurer sa stabilité et sa performance.
+- Mises à jour régulières du site web pour maintenir sa stabilité et améliorer ses performances.
 
 ### Autres changements
-- Aucune information supplémentaire disponible.
+- Aucune information supplémentaire ne ressort des commits analysés.
