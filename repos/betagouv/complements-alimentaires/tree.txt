@@ -198,15 +198,13 @@
 │   │   ├── datagouv.py
 │   │   ├── declarations.py
 │   │   ├── exceptions.py
-│   │   ├── teleicare_history
-│   │   │   ├── README.md
-│   │   │   ├── extractor.py
-│   │   │   └── sql
-│   │   │       ├── company_table_creation.sql
-│   │   │       ├── declaration_composition_table_creation.sql
-│   │   │       └── declaration_table_creation.sql
-│   │   └── teleicare_ingredients
-│   │       └── utils.py
+│   │   └── teleicare_history
+│   │       ├── README.md
+│   │       ├── extractor.py
+│   │       └── sql
+│   │           ├── company_table_creation.sql
+│   │           ├── declaration_composition_table_creation.sql
+│   │           └── declaration_table_creation.sql
 │   ├── factories
 │   │   ├── __init__.py
 │   │   ├── blogpost.py
@@ -532,41 +530,12 @@
 │   │   ├── __init__.py
 │   │   ├── files
 │   │   │   ├── accepted_encodings
-│   │   │   │   ├── REF_ICA_PARTIE_PLANTE_UTF16.csv
-│   │   │   │   └── REF_ICA_PARTIE_PLANTE_UTF8.csv
-│   │   │   ├── create_objects_in_relation_if_they_do_not_already_exist
-│   │   │   │   ├── REF_ICA_PARTIE_PLANTE.csv
-│   │   │   │   ├── REF_ICA_PARTIE_UTILE.csv
-│   │   │   │   └── REF_ICA_PLANTE.csv
-│   │   │   ├── create_plants_with_distinct_useful_and_to_be_monitored_parts
-│   │   │   │   ├── REF_ICA_PARTIE_PLANTE.csv
-│   │   │   │   ├── REF_ICA_PARTIE_PL_A_SURVEILLER.csv
-│   │   │   │   ├── REF_ICA_PARTIE_UTILE.csv
-│   │   │   │   └── REF_ICA_PLANTE.csv
-│   │   │   ├── creates_models_with_their_relations
-│   │   │   │   ├── REF_ICA_PARTIE_PLANTE.csv
-│   │   │   │   ├── REF_ICA_PARTIE_UTILE.csv
-│   │   │   │   └── REF_ICA_PLANTE.csv
-│   │   │   ├── declaration_models_creation
-│   │   │   │   ├── REF_ICA_FORME_GALENIQUE.csv
-│   │   │   │   └── REF_ICA_OBJECTIFS_EFFETS.csv
+│   │   │   │   └── REF_ICA_PARTIE_PLANTE_UTF16.csv
 │   │   │   ├── element_models_creation
-│   │   │   │   ├── REF_ICA_INGREDIENT_AUTRE.csv
-│   │   │   │   ├── REF_ICA_MICRO_ORGANISME.csv
-│   │   │   │   ├── REF_ICA_PARTIE_PLANTE.csv
-│   │   │   │   ├── REF_ICA_PLANTE.csv
 │   │   │   │   ├── REF_ICA_STATUT_INGR_SUBST.csv
-│   │   │   │   ├── REF_ICA_SUBSTANCE_ACTIVE.csv
 │   │   │   │   └── REF_ICA_UNITE.csv
-│   │   │   ├── import_twice_same_synonym_created_only_once
-│   │   │   │   ├── REF_ICA_PLANTE.csv
-│   │   │   │   └── REF_ICA_PLANTE_SYNONYME.csv
-│   │   │   ├── raises_if_not_csv
-│   │   │   │   └── blank.pdf
-│   │   │   ├── raises_if_not_utf_8_file
-│   │   │   │   └── REF_ICA_PLANTE.csv
-│   │   │   └── substances_quantity
-│   │   │       └── REF_ICA_SUBSTANCE_ACTIVE.csv
+│   │   │   └── raises_if_not_csv
+│   │   │       └── blank.pdf
 │   │   ├── test_control_role_assignation.py
 │   │   ├── test_declaration.py
 │   │   ├── test_external_utils.py
@@ -588,23 +557,26 @@
 │   ├── conventions.md
 │   └── fixtures.md
 ├── files
-│   ├── POPULATION_CIBLE.csv
-│   ├── REF_ICA_FORME_GALENIQUE.csv
-│   ├── REF_ICA_INGREDIENT_AUTRE.csv
-│   ├── REF_ICA_MICRO_ORGANISME.csv
 │   ├── REF_ICA_OBJECTIFS_EFFETS.csv
-│   ├── REF_ICA_PARTIE_PLANTE.csv
-│   ├── REF_ICA_PLANTE.csv
-│   ├── REF_ICA_POPULATION_ARISQUE.csv
-│   ├── REF_ICA_SUBSTANCE_ACTIVE.csv
-│   └── REF_ICA_TYPE_PREPARATION.csv
+│   └── REF_ICA_PARTIE_PLANTE.csv
 ├── fixtures
 │   ├── auth.Group.yaml
 │   ├── auth.Permission.yaml
 │   ├── data.BlogPost.yaml
 │   ├── data.Company.yaml
+│   ├── data.Condition.yaml
 │   ├── data.DeclarantRole.yaml
+│   ├── data.Effect.yaml
+│   ├── data.GalenicFormulation.yaml
+│   ├── data.Ingredient.yaml
+│   ├── data.Microorganism.yaml
+│   ├── data.Plant.yaml
+│   ├── data.PlantFamily.yaml
+│   ├── data.Population.yaml
+│   ├── data.Preparation.yaml
+│   ├── data.Substance.yaml
 │   ├── data.SupervisorRole.yaml
+│   ├── data.Unit.yaml
 │   ├── data.User.yaml
 │   └── data.Webinar.yaml
 ├── frontend
@@ -886,13 +858,6 @@
 │   ├── tailwind.config.js
 │   └── vue.config.js
 ├── manage.py
-├── notebooks
-│   ├── README.md
-│   ├── activity_and_ingredient_type.ipynb
-│   ├── extract_duplicates_in_ANSES_files.ipynb
-│   ├── plant_parts_exploration.ipynb
-│   ├── siccrf_field_cleaning.ipynb
-│   └── siccrf_fields_completion.ipynb
 ├── pyproject.toml
 ├── requirements.txt
 ├── stats
@@ -1016,4 +981,4 @@
         ├── pdfview.py
         ├── summary.py
         └── user.py
-119 directories, 899 files
+110 directories, 873 files
