@@ -1,27 +1,43 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 21 avril 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la stabilité et des performances de la plateforme, notamment en corrigeant des tests automatisés et en optimisant le code. Des améliorations ont également été apportées à l'expérience utilisateur, avec un suivi des clics sur les résultats de recherche et des corrections sur la page d'accueil de l'assistant. Des travaux préliminaires sur un modèle de machine learning pour la déduplication des données ont également été entrepris.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de la recherche et de l'affichage des résultats, ainsi que sur la correction de bugs et l'optimisation des performances. Des efforts importants ont également été déployés pour la maintenance technique, incluant des mises à jour de dépendances et des améliorations de l'infrastructure. Un travail de fond sur la déduplication des données et le clustering a également été initié.
 
 ### Évolutions fonctionnelles
-- **Suivi des clics sur les résultats de recherche:** Implémentation du suivi des clics sur les résultats de recherche pour mieux comprendre le comportement des utilisateurs. [#2722](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2722)
-- **Refonte de la page d'accueil de l'assistant:** Amélioration de l'interface et de l'expérience utilisateur de la page d'accueil de l'assistant. [#2572](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2572)
-- **Correction de bugs sur la fermeture d'une fiche acteur:** Résolution de problèmes empêchant la fermeture correcte des fiches acteurs. [#2622](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2622)
-- **Ajout de la sous-catégorie "Smartphone" au PAM:** Ajout de la sous-catégorie "Smartphone" au Plan d'Action pour la Matière. [#2634](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2634)
-- **Affichage des liens des SIRET, SIREN et URL:** Amélioration de l'affichage des informations de contact des acteurs. [#2655](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2655)
-- **Correction sur les traductions et le plan de site:** Amélioration de la qualité des traductions et du plan de site. [#2625](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2625)
+- Amélioration de la recherche : correction de l'affichage dupliqué du nom dans les résultats de recherche (notamment pour Vélovélo) [#2754].
+- Tracking des clics sur les résultats de recherche implémenté [#2722].
+- Correction de la page d'accueil de l'assistant, avec une refonte complète [#2572].
+- Ajout de la sous-catégorie "Smartphone" au PAM pour les acteurs Ecologic et Ecosysteme [#2634].
+- Correction d'un problème sur les couleurs dans la fiche acteur, qui reprenaient la couleur de l'action au lieu du groupe.
+- Ajout de la distance dans le mode liste et la fiche acteur [#2632].
+- Correction d'un bug sur le formulaire : la carte était masquée et le titre tronqué [#2632].
+- Redirections massives depuis l'ancien site vers le nouveau implémentées [#2639].
+- Affichage des liens des SIRET dans le clustering [#2649].
 
 ### Évolutions techniques
-- **Corrections de tests:** Correction de plusieurs tests automatisés (e2e, unitaires) suite à des mises à jour de dépendances et des modifications du code. [#2735](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2735), [#2736](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2736)
-- **Optimisations de performances:** Amélioration des performances globales de la plateforme. [#2633](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2633)
-- **Modèle de Machine Learning pour la déduplication:** Premières itérations d'un modèle de machine learning pour la déduplication des données. [#2727](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2727), [#2662](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2662)
-- **Mise à jour des dépendances:** Mise à jour de nombreuses dépendances (Django, React, Parcel, etc.) pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-- **Refonte du tracking:** Refonte du système de tracking avec PostHog, incluant l'envoi d'événements et de vues de page. [#2721](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2721)
-- **Proxy PostHog:** Configuration d'un proxy pour PostHog afin d'utiliser notre propre domaine. [#2720](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2720)
+- Migration de base de données effectuée [#2750].
+- Correction d'erreurs sur les termes de recherche orphelins [#2749].
+- Optimisations de performances apportées [#2633].
+- Passage de la version d'Airflow à la version 2 (rollback effectué suite à des problèmes) [#2646].
+- Refactoring de la gestion du tableau des suggestions de groupe [#2619].
+- Amélioration de l'indexation à la publication d'une page Wagtail [#2653].
+- Suppression du script de migration de la page d'accueil [#2637].
+- Rationalisation des environnements de développement [#2659].
+- Documentation et Makefile pour la partie DBT ajoutés [#2631].
+- Correction des tests e2e suite à des mises à jour de dépendances [#2736].
+- Correction des tests après les mises à jour de Pandas [#2735].
+- Mise à jour de nombreuses dépendances (Django, React, Parcel, PostgreSQL, Airflow, dbt, etc.).
+- Amélioration de la résilience des tests e2e [#2661].
 
 ### Autres changements
-- **Documentation DBT:** Ajout de documentation et d'un Makefile pour la partie DBT (Data Build Tool). [#2631](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2631)
-- **Configuration Nginx:** Suppression de directives Nginx en double sur Scalingo. [#2718](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2718)
-- **Exclusion de la page de configuration de l'infotri de l'index Google:** Ajout d'une balise meta robots pour exclure la page de configuration de l'index Google. [#2702](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2702)
-- **Amélioration de l'indexation Wagtail:** Amélioration de l'indexation lors de la publication d'une page Wagtail. [#2653](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2653)
-- **Rationalisation des environnements de développement:** Simplification et amélioration des environnements de développement. [#2659](https://github.com/incubateur-ademe/quefairedemesobjets/issues/2659)
+- Redirection du domaine legacy vers le domaine principal [#2756].
+- Proxy PostHog configuré via le domaine principal [#2720].
+- Suppression de directives Nginx en double sur Scalingo [#2718].
+- Ajout d'un avertissement si une page à rediriger existe déjà dans le CMS [#2701].
+- Début de l'implémentation d'un modèle de Machine Learning pour la déduplication des données [#2727, #2662].
+- Suppression de l'accent du code `mélange_d_inertes_produits` des sous-catégories [#2635].
+- Suppression du cache npm car le `package-lock.json` est maintenant dans `webapp` [#2700].
+- Suppression de l'icône bonus réparation incorrecte [#2660].
+- Mise en place d'un système d'enrichissement des URL pour la nouvelle architecture de SuggestionGroupe [#2699].
+- Correction de l'indexation des pages pour éviter la mise en cache incorrecte [#2629].
+- Suppression de la mise en cache de la version iframe et standalone d'une page avec la même clé [#2629].
