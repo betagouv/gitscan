@@ -31,7 +31,6 @@ Configurez les variables selon votre environnement. Les principales variables in
 - `NODE_ENV` : Environnement d'exécution (`development` ou `production`)
 - `NEXT_PUBLIC_MATOMO_SITE_ID` : ID Matomo pour l'analytics
 - `NEXT_PUBLIC_MATOMO_URL` : URL de l'instance Matomo
-- `NEXT_PUBLIC_SENTRY_DSN` : DSN Sentry pour le monitoring d'erreurs
 - `DEMARCHES_SIMPLIFIEES_GRAPHQL_API_KEY` : Clé d'API pour récupérer les informations de la plateforme Démarches Simplifiées via GraphQL
 - `DEMARCHES_SIMPLIFIEES_GRAPHQL_API_URL` : URL de l'API GRAPHQL de la plateforme Démarches Simplifiées
 - `DEMARCHES_SIMPLIFIEES_REST_API_URL` : URL de l'API Rest de la plateforme Démarches Simplifiées
@@ -50,20 +49,20 @@ L'application sera disponible sur [http://localhost:3000](http://localhost:3000)
 
 ### Scripts disponibles
 
-| Commande | Description |
-|----------|-------------|
-| `pnpm start:dev` | Lance le serveur de développement |
-| `pnpm build` | Construit l'application pour la production |
-| `pnpm start` | Démarre le serveur de production |
-| `pnpm lint` | Vérifie le code avec ESLint |
-| `pnpm typecheck` | Vérifie les types TypeScript |
-| `pnpm test` | Lance les tests unitaires |
-| `pnpm test:watch` | Lance les tests en mode watch |
-| `pnpm test:coverage` | Lance les tests avec couverture |
-| `pnpm format` | Formate le code avec Prettier |
-| `pnpm validate` | Lance toutes les vérifications (types, lint, tests) |
-| `pnpm clean` | Nettoie le cache Next.js |
-| `pnpm fresh` | Réinstallation complète des dépendances |
+| Commande             | Description                                         |
+| -------------------- | --------------------------------------------------- |
+| `pnpm start:dev`     | Lance le serveur de développement                   |
+| `pnpm build`         | Construit l'application pour la production          |
+| `pnpm start`         | Démarre le serveur de production                    |
+| `pnpm lint`          | Vérifie le code avec ESLint                         |
+| `pnpm typecheck`     | Vérifie les types TypeScript                        |
+| `pnpm test`          | Lance les tests unitaires                           |
+| `pnpm test:watch`    | Lance les tests en mode watch                       |
+| `pnpm test:coverage` | Lance les tests avec couverture                     |
+| `pnpm format`        | Formate le code avec Prettier                       |
+| `pnpm validate`      | Lance toutes les vérifications (types, lint, tests) |
+| `pnpm clean`         | Nettoie le cache Next.js                            |
+| `pnpm fresh`         | Réinstallation complète des dépendances             |
 
 ## Tests
 
@@ -193,7 +192,6 @@ Pour modifier un texte de l'application :
 - **[Tailwind CSS](https://tailwindcss.com/)** 4.x - Framework CSS utilitaire
 - **[DSFR](https://www.systeme-de-design.gouv.fr/)** 1.14.x - Design System de l'État
 - **[Vitest](https://vitest.dev/)** - Tests unitaires
-- **[Sentry](https://sentry.io/)** - Monitoring d'erreurs
 - **[Matomo](https://matomo.org/)** - Analytics
 
 ## Déploiement
@@ -331,19 +329,19 @@ Ce projet applique des mesures de protection contre les attaques de type supply 
 
 ### Configuration `.npmrc`
 
-| Option | Valeur | Protection |
-|--------|--------|------------|
-| `ignore-scripts` | `true` | Bloque l'exécution automatique des scripts `postinstall`, `preinstall`, etc. Empêche l'exécution de code malveillant lors de l'installation |
-| `auto-install-peers` | `false` | Désactive l'installation automatique des peer dependencies, évitant l'ajout silencieux de packages non audités |
+| Option               | Valeur  | Protection                                                                                                                                  |
+| -------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ignore-scripts`     | `true`  | Bloque l'exécution automatique des scripts `postinstall`, `preinstall`, etc. Empêche l'exécution de code malveillant lors de l'installation |
+| `auto-install-peers` | `false` | Désactive l'installation automatique des peer dependencies, évitant l'ajout silencieux de packages non audités                              |
 
 ### Configuration `pnpm-workspace.yaml`
 
-| Option | Valeur | Protection |
-|--------|--------|------------|
-| `savePrefix` | `~` | Limite les mises à jour automatiques aux versions patch uniquement (ex: `5.1.x`). Évite les breaking changes inattendus |
-| `minimumReleaseAge` | `10080` | Refuse les packages publiés depuis moins de 7 jours. Laisse le temps à la communauté de détecter des versions compromises |
-| `trustPolicy` | `no-downgrade` | Empêche la republication d'une version existante avec un contenu différent (attaque par remplacement) |
-| `onlyBuiltDependencies` | whitelist | Seuls les packages listés peuvent exécuter des scripts de build natifs. Tous les autres sont bloqués |
+| Option                  | Valeur         | Protection                                                                                                                |
+| ----------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `savePrefix`            | `~`            | Limite les mises à jour automatiques aux versions patch uniquement (ex: `5.1.x`). Évite les breaking changes inattendus   |
+| `minimumReleaseAge`     | `10080`        | Refuse les packages publiés depuis moins de 7 jours. Laisse le temps à la communauté de détecter des versions compromises |
+| `trustPolicy`           | `no-downgrade` | Empêche la republication d'une version existante avec un contenu différent (attaque par remplacement)                     |
+| `onlyBuiltDependencies` | whitelist      | Seuls les packages listés peuvent exécuter des scripts de build natifs. Tous les autres sont bloqués                      |
 
 ### Packages autorisés pour les builds natifs
 

@@ -1,23 +1,24 @@
-## Changelog : fonds-prevention-argile (30 derniers jours)
+## Changelog : fonds-prevention-argile (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de l'application Fonds de Prévention de l'Argile se concentrent sur l'amélioration des fonctionnalités pour les Agents DDT et les AMO (Autorités Maîtresses d'Ouvrage). De nouvelles fonctionnalités ont été ajoutées pour la gestion des allers-vers, l'archivage des AMO, l'édition des données de simulation et la gestion des commentaires. Des corrections et améliorations de l'interface ont également été apportées.
+Cette version apporte des améliorations significatives aux statistiques disponibles pour les analystes, incluant des données sur les demandeurs. La cartographie des zones RGA a été mise à jour pour 2026. Plusieurs corrections de texte et d'affichage ont été apportées, ainsi que des ajustements pour une meilleure gestion des EPCI dans certains départements.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de qualification des allers-vers pour les AMO. [#142](https://github.com/MTES-MCT/fonds-prevention-argile/issues/142)
-- Ajout d'un rôle "analyste DDT" et de statistiques par département. [#141](https://github.com/MTES-MCT/fonds-prevention-argile/issues/141)
-- Implémentation de la fonctionnalité d'éligibilité pour les allers-vers. [#140](https://github.com/MTES-MCT/fonds-prevention-argile/issues/140)
-- Mise en place d'un flux d'archivage pour les AMO. [#139](https://github.com/MTES-MCT/fonds-prevention-argile/issues/139)
-- Ajout de la possibilité d'éditer les données de simulation. [#137](https://github.com/MTES-MCT/fonds-prevention-argile/issues/137)
-- Ajout de la gestion des commentaires. [#133](https://github.com/MTES-MCT/fonds-prevention-argile/issues/133)
-- Création d'un espace dédié aux agents pour la gestion des allers-vers. [#129](https://github.com/MTES-MCT/fonds-prevention-argile/issues/129)
+- Ajout de statistiques sur les demandeurs pour les analystes. [#182](https://github.com/MTES-MCT/fonds-prevention-argile/issues/182)
+- Mise à jour de la cartographie RGA pour l'année 2026. [#164](https://github.com/MTES-MCT/fonds-prevention-argile/issues/164)
+- Ajout de la possibilité d'ajouter des notes dans l'interface back-office. [#166](https://github.com/MTES-MCT/fonds-prevention-argile/issues/166)
+- Gestion des EPCI (Établissements Publics de Coopération Intercommunale) améliorée pour les départements 54 et 59. [#163](https://github.com/MTES-MCT/fonds-prevention-argile/issues/163)
+- Implémentation d'une démarche DN (Diagnostic National). [#173](https://github.com/MTES-MCT/fonds-prevention-argile/issues/173)
+- Ajout d'un nouvel arrêté. [#170](https://github.com/MTES-MCT/fonds-prevention-argile/issues/170) (puis annulé et réimplémenté)
 
 ### Évolutions techniques
-- Le nombre de communes par département a été doublé. [#134](https://github.com/MTES-MCT/fonds-prevention-argile/issues/134)
-- Correction d'un bug lié à l'ajout du code département dans la liste des allers-vers pour l'administration. [#136](https://github.com/MTES-MCT/fonds-prevention-argile/issues/136)
+- Refonte des statistiques avec optimisation de la mémoïsation et amélioration du script associé. [#168](https://github.com/MTES-MCT/fonds-prevention-argile/issues/168)
+- Correction d'un problème de `firstRender` avec Matomo. [#171](https://github.com/MTES-MCT/fonds-prevention-argile/issues/171)
+- Amélioration de l'affichage du label d'adresse. [#167](https://github.com/MTES-MCT/fonds-prevention-argile/issues/167)
 
 ### Autres changements
-- Améliorations de l'interface utilisateur (DSFR) et corrections de commentaires. [#135](https://github.com/MTES-MCT/fonds-prevention-argile/issues/135)
-- Application du mode blanc forcé et suppression du paramètre d'affichage du footer. [#131](https://github.com/MTES-MCT/fonds-prevention-argile/issues/131)
-- Corrections de bugs concernant la qualité d'assurance des allers-vers. [#130](https://github.com/MTES-MCT/fonds-prevention-argile/issues/130)
-- Mise à jour des designs pour les AMO. [#138](https://github.com/MTES-MCT/fonds-prevention-argile/issues/138)
+- Corrections de textes et de libellés divers. [#181](https://github.com/MTES-MCT/fonds-prevention-argile/issues/181), [#175](https://github.com/MTES-MCT/fonds-prevention-argile/issues/175), [#165](https://github.com/MTES-MCT/fonds-prevention-argile/issues/165)
+- Correction de bugs dans les statistiques. [#176](https://github.com/MTES-MCT/fonds-prevention-argile/issues/176), [#160](https://github.com/MTES-MCT/fonds-prevention-argile/issues/160)
+- Rétractation et réimplémentation de la fonctionnalité "nouvel arreté" suite à des problèmes. [#174](https://github.com/MTES-MCT/fonds-prevention-argile/issues/174)
+- Mise à jour des dépendances. [#172](https://github.com/MTES-MCT/fonds-prevention-argile/issues/172)
+- Bump de version à 1.9.0 et 1.10.0. [#161](https://github.com/MTES-MCT/fonds-prevention-argile/issues/161), [#180](https://github.com/MTES-MCT/fonds-prevention-argile/issues/180)

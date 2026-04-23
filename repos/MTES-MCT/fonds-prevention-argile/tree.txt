@@ -1,8 +1,12 @@
 .
 ├── .buildpacks
 ├── .claude
+│   ├── hooks
+│   │   └── format-on-write.sh
 │   ├── settings.json
-│   └── settings.local.json
+│   └── skills
+│       └── verif
+│           └── SKILL.md
 ├── .dockerignore
 ├── .env.example
 ├── .eslintrc.json
@@ -19,8 +23,6 @@
 ├── .prettierrc
 ├── .slugignore
 ├── .talismanrc
-├── .vscode
-│   └── settings.json
 ├── CLAUDE.md
 ├── Dockerfile
 ├── Procfile
@@ -65,6 +67,8 @@
 │   │   ├── technical-error.svg
 │   │   └── warning.svg
 │   ├── images
+│   │   ├── carte-exposition-2026
+│   │   │   └── carte-france-alea.png
 │   │   ├── home
 │   │   │   ├── conseillers-locaux-aller-vers.png
 │   │   │   ├── en-savoir-plus-1.png
@@ -72,7 +76,7 @@
 │   │   │   ├── en-savoir-plus-3.png
 │   │   │   ├── fissure-escalier.jpeg
 │   │   │   ├── guide.webp
-│   │   │   ├── logement-concerne.webp
+│   │   │   ├── logement-concerne.png
 │   │   │   ├── meta-cover.png
 │   │   │   ├── ministere_transition_ecologique.svg
 │   │   │   ├── plaquette.webp
@@ -119,92 +123,161 @@
 │   │   └── seed-agents-prod.sql
 │   ├── amo
 │   │   └── extend-expired-tokens.sql
+│   ├── demarches-simplifiees
+│   │   └── fetch-demarche-schema.ts
 │   ├── fix-missing-epci
 │   │   └── fix-missing-epci.ts
-│   └── seed
-│       └── seed-fake-parcours
-│           ├── 00-init.sql
-│           ├── 01-users.sql
-│           ├── 01b-users-prospects.sql
-│           ├── 02-parcours.sql
-│           ├── 03-validations-amo.sql
-│           ├── 04-dossiers-ds.sql
-│           ├── 05-prospects-sans-amo.sql
-│           ├── 06-test-aucun-amo.sql
-│           ├── 07-commentaires.sql
-│           ├── 08-prospect-qualifications.sql
-│           ├── 99-verification.sql
-│           └── README.md
+│   ├── import-rga-zones
+│   │   ├── ARCHITECTURE.md
+│   │   ├── README.md
+│   │   └── import-rga-zones.ts
+│   ├── matomo
+│   │   └── debug-matomo-events.ts
+│   ├── seed
+│   │   └── seed-fake-parcours
+│   │       ├── 00-init.sql
+│   │       ├── 01-users.sql
+│   │       ├── 01b-users-prospects.sql
+│   │       ├── 02-parcours.sql
+│   │       ├── 03-validations-amo.sql
+│   │       ├── 04-dossiers-ds.sql
+│   │       ├── 05-prospects-sans-amo.sql
+│   │       ├── 06-test-aucun-amo.sql
+│   │       ├── 07-commentaires.sql
+│   │       ├── 08-prospect-qualifications.sql
+│   │       ├── 09-archives-dashboard.sql
+│   │       ├── 10-top-departements-dashboard.sql
+│   │       ├── 11-statistiques-demandes.sql
+│   │       ├── 12-donnees-eligibilite.sql
+│   │       ├── 99-verification.sql
+│   │       └── README.md
+│   └── verify-dashboard-stats.ts
 ├── src
 │   ├── app
 │   │   ├── (backoffice)
 │   │   │   ├── administration
-│   │   │   │   ├── components
-│   │   │   │   │   ├── AdminDashboard.tsx
-│   │   │   │   │   ├── agents
+│   │   │   │   ├── acquisition
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AcquisitionPanel.tsx
+│   │   │   │   │   │   ├── DepartementSelector.tsx
+│   │   │   │   │   │   ├── StatistiquesDepartement.tsx
+│   │   │   │   │   │   ├── simulateur
+│   │   │   │   │   │   │   ├── DetailEtapesFunnel.tsx
+│   │   │   │   │   │   │   ├── EntonnoirEligibilite.tsx
+│   │   │   │   │   │   │   ├── MotifsIneligibiliteCard.tsx
+│   │   │   │   │   │   │   ├── StatistiquesFunnel.tsx
+│   │   │   │   │   │   │   └── TopSimulationsCard.tsx
+│   │   │   │   │   │   └── site-vitrine
+│   │   │   │   │   │       └── SiteVitrineTab.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── agents
+│   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AgentDeleteModal.tsx
 │   │   │   │   │   │   ├── AgentFormModal.tsx
 │   │   │   │   │   │   ├── AgentsList.tsx
 │   │   │   │   │   │   ├── AgentsPanel.tsx
 │   │   │   │   │   │   ├── DepartementsSelect.tsx
 │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── allers-vers
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── allers-vers
+│   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AllerVersList.tsx
 │   │   │   │   │   │   ├── AllersVersEditModal.tsx
 │   │   │   │   │   │   ├── AllersVersPanel.tsx
 │   │   │   │   │   │   ├── AllersVersSeedUpload.tsx
 │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── amo
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── amo
+│   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AmoEditModal.tsx
 │   │   │   │   │   │   ├── AmoList.tsx
 │   │   │   │   │   │   ├── AmoPanel.tsx
 │   │   │   │   │   │   └── AmoSeedUpload.tsx
-│   │   │   │   │   ├── devis
-│   │   │   │   │   │   └── DevisPanel.tsx
-│   │   │   │   │   ├── diagnostic
-│   │   │   │   │   │   └── DiagnosticPanel.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── commentaires
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   └── CommentairesAdminPanel.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── components
 │   │   │   │   │   ├── eligibilite
 │   │   │   │   │   │   ├── EligibiliteDemarcheInfo.tsx
 │   │   │   │   │   │   ├── EligibiliteDemarcheSchema.tsx
 │   │   │   │   │   │   ├── EligibiliteDossierDetail.tsx
 │   │   │   │   │   │   ├── EligibiliteDossiersList.tsx
 │   │   │   │   │   │   └── EligibilitePanel.tsx
-│   │   │   │   │   ├── factures
-│   │   │   │   │   │   └── FacturesPanel.tsx
-│   │   │   │   │   ├── shared
-│   │   │   │   │   │   ├── AdminSideMenu.tsx
-│   │   │   │   │   │   ├── InProgress.tsx
-│   │   │   │   │   │   └── StatCard.tsx
-│   │   │   │   │   ├── statistiques
-│   │   │   │   │   │   ├── DepartementSelector.tsx
-│   │   │   │   │   │   ├── StatistiquesDepartement.tsx
-│   │   │   │   │   │   ├── StatistiquesFunnel.tsx
-│   │   │   │   │   │   └── StatistiquesPanel.tsx
-│   │   │   │   │   └── users
-│   │   │   │   │       ├── UserDetailParcoursCard.tsx
-│   │   │   │   │       ├── UserDetailRow.tsx
-│   │   │   │   │       ├── UserTimeline.tsx
-│   │   │   │   │       ├── UsersTable.tsx
-│   │   │   │   │       ├── UsersTrackingPanel.tsx
-│   │   │   │   │       ├── details
-│   │   │   │   │       │   ├── UserDetailAmo.tsx
-│   │   │   │   │       │   ├── UserDetailParcours.tsx
-│   │   │   │   │       │   ├── UserDetailSimulation.tsx
-│   │   │   │   │       │   └── UserDetailUser.tsx
-│   │   │   │   │       ├── filters
-│   │   │   │   │       │   └── departements
-│   │   │   │   │       │       ├── DepartementFilter.tsx
-│   │   │   │   │       │       └── departementFilter.utils.ts
-│   │   │   │   │       └── statistiques
-│   │   │   │   │           ├── UsersAmoStats.tsx
-│   │   │   │   │           ├── UsersEtapesStats.tsx
-│   │   │   │   │           ├── UsersSimulationRgaStats.tsx
-│   │   │   │   │           └── index.ts
+│   │   │   │   │   └── placeholders
+│   │   │   │   │       ├── DevisPanel.tsx
+│   │   │   │   │       ├── DiagnosticPanel.tsx
+│   │   │   │   │       └── FacturesPanel.tsx
+│   │   │   │   ├── demandeurs
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── UserDetailParcoursCard.tsx
+│   │   │   │   │   │   ├── UserDetailRow.tsx
+│   │   │   │   │   │   ├── UserTimeline.tsx
+│   │   │   │   │   │   ├── UsersTable.tsx
+│   │   │   │   │   │   ├── UsersTrackingPanel.tsx
+│   │   │   │   │   │   ├── archivage-ineligibilite
+│   │   │   │   │   │   │   ├── ArchivageIneligibiliteTab.tsx
+│   │   │   │   │   │   │   ├── DemandesArchiveesFullTable.tsx
+│   │   │   │   │   │   │   └── DemandesIneligiblesFullTable.tsx
+│   │   │   │   │   │   ├── details
+│   │   │   │   │   │   │   ├── UserDetailAmo.tsx
+│   │   │   │   │   │   │   ├── UserDetailParcours.tsx
+│   │   │   │   │   │   │   ├── UserDetailSimulation.tsx
+│   │   │   │   │   │   │   └── UserDetailUser.tsx
+│   │   │   │   │   │   ├── donnees-eligibilite
+│   │   │   │   │   │   │   ├── DonneesEligibiliteTab.tsx
+│   │   │   │   │   │   │   ├── IndemnisationSection.tsx
+│   │   │   │   │   │   │   ├── MicroFissuresSection.tsx
+│   │   │   │   │   │   │   ├── TopCommunesTable.tsx
+│   │   │   │   │   │   │   ├── TopDepartementsTable.tsx
+│   │   │   │   │   │   │   └── TranchesRevenusSection.tsx
+│   │   │   │   │   │   ├── filters
+│   │   │   │   │   │   │   └── departements
+│   │   │   │   │   │   │       ├── DepartementFilter.tsx
+│   │   │   │   │   │   │       └── departementFilter.utils.ts
+│   │   │   │   │   │   ├── statistiques
+│   │   │   │   │   │   │   ├── UsersAmoStats.tsx
+│   │   │   │   │   │   │   ├── UsersEtapesStats.tsx
+│   │   │   │   │   │   │   ├── UsersSimulationRgaStats.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── statistiques-demandes
+│   │   │   │   │   │       ├── DelaisMoyensParEtape.tsx
+│   │   │   │   │   │       ├── NombreDemandesParEtape.tsx
+│   │   │   │   │   │       ├── RepartitionAmoCards.tsx
+│   │   │   │   │   │       ├── RepartitionDossiersCards.tsx
+│   │   │   │   │   │       ├── StatistiquesDemandesTab.tsx
+│   │   │   │   │   │       └── StepStatCard.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── layout.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── shared
+│   │   │   │   │   ├── InProgress.tsx
+│   │   │   │   │   ├── StatCard.tsx
+│   │   │   │   │   └── components
+│   │   │   │   │       └── AdminBreadcrumb.tsx
+│   │   │   │   └── tableau-de-bord
+│   │   │   │       ├── FiltresTableauDeBord.tsx
+│   │   │   │       ├── TableauDeBord.tsx
+│   │   │   │       ├── alertes
+│   │   │   │       │   └── AlertesTendances.tsx
+│   │   │   │       ├── demandes-archivees
+│   │   │   │       │   ├── AutresMotifsDrawer.tsx
+│   │   │   │       │   ├── DemandeArchiveeCard.tsx
+│   │   │   │       │   └── DemandesArchiveesCard.tsx
+│   │   │   │       ├── demandes-ineligibles
+│   │   │   │       │   └── DemandesIneligiblesCard.tsx
+│   │   │   │       ├── shared
+│   │   │   │       │   ├── DashboardStatCard.tsx
+│   │   │   │       │   ├── VariationBadge.tsx
+│   │   │   │       │   └── format-matomo-value.utils.ts
+│   │   │   │       └── top-departements
+│   │   │   │           └── TopDepartementsCard.tsx
 │   │   │   ├── components
 │   │   │   │   └── AmoGuard.tsx
 │   │   │   ├── espace-agent
+│   │   │   │   ├── components
+│   │   │   │   │   └── SuperAdminReadOnlyBanner.tsx
 │   │   │   │   ├── demandes
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── README.md
@@ -222,10 +295,10 @@
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── ArchiveDossierButton.tsx
+│   │   │   │   │   │   │   ├── DossierStatusBadge.tsx
 │   │   │   │   │   │   │   ├── GagnezDuTempsTravaux.tsx
 │   │   │   │   │   │   │   ├── InfoDossierCallout.tsx
 │   │   │   │   │   │   │   ├── PiecesJustificatives.tsx
-│   │   │   │   │   │   │   ├── QualificationAllersVers.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── components
@@ -268,6 +341,7 @@
 │   │   │   │   │   │   │   ├── NotesPartagees.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
+│   │   │   │   │   │   ├── QualificationAllersVers.tsx
 │   │   │   │   │   │   ├── RepartitionCardTile.tsx
 │   │   │   │   │   │   ├── StatTile.tsx
 │   │   │   │   │   │   ├── UnarchiveModal.tsx
@@ -318,6 +392,10 @@
 │   │   │   │   └── validation
 │   │   │   │       └── [token]
 │   │   │   │           └── page.tsx
+│   │   │   ├── carte-exposition-2026
+│   │   │   │   ├── content
+│   │   │   │   │   └── content.json
+│   │   │   │   └── page.tsx
 │   │   │   ├── cgu
 │   │   │   │   ├── content
 │   │   │   │   │   └── content.json
@@ -523,6 +601,9 @@
 │   │   │   │           └── route.ts
 │   │   │   ├── health
 │   │   │   │   └── route.ts
+│   │   │   ├── rga
+│   │   │   │   └── alea
+│   │   │   │       └── route.ts
 │   │   │   └── webhooks
 │   │   │       └── brevo
 │   │   │           └── route.ts
@@ -615,7 +696,32 @@
 │   │   │       └── validation.utils.ts
 │   │   ├── backoffice
 │   │   │   ├── administration
-│   │   │   │   ├── gestion-agents
+│   │   │   │   ├── acquisition
+│   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── get-agent-departements.action.ts
+│   │   │   │   │   │   ├── get-statistiques-departement.action.ts
+│   │   │   │   │   │   ├── get-statistiques.action.test.ts
+│   │   │   │   │   │   ├── get-statistiques.action.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   └── matomo-api.adapter.ts
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── types
+│   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │       ├── matomo-funnels.types.ts
+│   │   │   │   │   │       ├── matomo.types.ts
+│   │   │   │   │   │       ├── statistiques-departement.types.ts
+│   │   │   │   │   │       └── statistiques.types.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── services
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── matomo-funnel.service.ts
+│   │   │   │   │       ├── matomo.service.ts
+│   │   │   │   │       ├── statistiques-departement.service.ts
+│   │   │   │   │       ├── statistiques.service.test.ts
+│   │   │   │   │       └── statistiques.service.ts
+│   │   │   │   ├── agents
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── agents.actions.test.ts
 │   │   │   │   │   │   ├── agents.actions.ts
@@ -629,7 +735,7 @@
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── agents-admin.service.ts
 │   │   │   │   │       └── index.ts
-│   │   │   │   ├── gestion-allers-vers
+│   │   │   │   ├── allers-vers
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── allers-vers-admin.actions.test.ts
 │   │   │   │   │   │   ├── allers-vers-admin.actions.ts
@@ -643,7 +749,7 @@
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── allers-vers-import.service.ts
 │   │   │   │   │       └── index.ts
-│   │   │   │   ├── gestion-amo
+│   │   │   │   ├── amo
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── amo-admin.actions.test.ts
 │   │   │   │   │   │   ├── amo-admin.actions.ts
@@ -658,7 +764,20 @@
 │   │   │   │   │       ├── amo-import.service.test.ts
 │   │   │   │   │       ├── amo-import.service.ts
 │   │   │   │   │       └── index.ts
-│   │   │   │   ├── gestion-utilisateurs
+│   │   │   │   ├── commentaires
+│   │   │   │   │   ├── actions
+│   │   │   │   │   │   ├── commentaires-admin.actions.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── types
+│   │   │   │   │   │       ├── commentaire-admin.types.ts
+│   │   │   │   │   │       └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── services
+│   │   │   │   │       ├── commentaires-admin.service.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── demandeurs
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── users-tracking.actions.test.ts
@@ -674,39 +793,21 @@
 │   │   │   │   │       └── users-tracking.service.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── shared
-│   │   │   │   │   ├── context
-│   │   │   │   │   │   └── AdminContext.tsx
 │   │   │   │   │   └── domain
 │   │   │   │   │       ├── index.ts
-│   │   │   │   │       ├── types
-│   │   │   │   │       │   └── tab.types.ts
 │   │   │   │   │       └── value-objects
-│   │   │   │   │           └── admin-tabs.config.ts
-│   │   │   │   └── statistiques
+│   │   │   │   │           └── admin-nav.config.ts
+│   │   │   │   ├── stores
+│   │   │   │   │   └── administration-filters.store.ts
+│   │   │   │   └── tableau-de-bord
 │   │   │   │       ├── actions
-│   │   │   │       │   ├── get-agent-departements.action.ts
-│   │   │   │       │   ├── get-statistiques-departement.action.ts
-│   │   │   │       │   ├── get-statistiques.action.test.ts
-│   │   │   │       │   ├── get-statistiques.action.ts
-│   │   │   │       │   └── index.ts
-│   │   │   │       ├── adapters
-│   │   │   │       │   └── matomo-api.adapter.ts
+│   │   │   │       │   └── tableau-de-bord.actions.ts
 │   │   │   │       ├── domain
-│   │   │   │       │   ├── index.ts
 │   │   │   │       │   └── types
-│   │   │   │       │       ├── index.ts
-│   │   │   │       │       ├── matomo-funnels.types.ts
-│   │   │   │       │       ├── matomo.types.ts
-│   │   │   │       │       ├── statistiques-departement.types.ts
-│   │   │   │       │       └── statistiques.types.ts
-│   │   │   │       ├── index.ts
+│   │   │   │       │       ├── eligibilite-stats.types.ts
+│   │   │   │       │       └── tableau-de-bord.types.ts
 │   │   │   │       └── services
-│   │   │   │           ├── index.ts
-│   │   │   │           ├── matomo-funnel.service.ts
-│   │   │   │           ├── matomo.service.ts
-│   │   │   │           ├── statistiques-departement.service.ts
-│   │   │   │           ├── statistiques.service.test.ts
-│   │   │   │           └── statistiques.service.ts
+│   │   │   │           └── tableau-de-bord.service.ts
 │   │   │   ├── espace-agent
 │   │   │   │   ├── demandes
 │   │   │   │   │   ├── actions
@@ -775,6 +876,7 @@
 │   │   │   │   │   │       └── amo-tabs.config.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── services
+│   │   │   │   │       ├── agent-edit-info.service.ts
 │   │   │   │   │       ├── commentaires.service.test.ts
 │   │   │   │   │       ├── commentaires.service.ts
 │   │   │   │   │       └── edition-simulation.service.ts
@@ -797,7 +899,8 @@
 │   │   │   └── shared
 │   │   │       ├── actions
 │   │   │       │   ├── agent.actions.ts
-│   │   │       │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   └── super-admin-access.ts
 │   │   │       ├── index.ts
 │   │   │       └── services
 │   │   │           ├── agent.service.ts
@@ -848,14 +951,18 @@
 │   │   │   │       └── amo.utils.ts
 │   │   │   ├── core
 │   │   │   │   ├── actions
+│   │   │   │   │   ├── contact-info.actions.ts
+│   │   │   │   │   ├── diagnostic.actions.ts
 │   │   │   │   │   ├── eligibilite.actions.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parcours-dossier.actions.ts
 │   │   │   │   │   ├── parcours-init.actions.ts
 │   │   │   │   │   ├── parcours-progression.actions.ts
 │   │   │   │   │   ├── parcours-query.actions.ts
-│   │   │   │   │   └── parcours-simulateur-rga-migration.actions.ts
+│   │   │   │   │   ├── parcours-simulateur-rga-migration.actions.ts
+│   │   │   │   │   └── qualification-query.actions.ts
 │   │   │   │   ├── components
+│   │   │   │   │   ├── ContactInfoModal.tsx
 │   │   │   │   │   ├── MonCompteClient.tsx
 │   │   │   │   │   ├── common
 │   │   │   │   │   │   ├── MaListe.tsx
@@ -865,6 +972,8 @@
 │   │   │   │   │       │   ├── StepDetailDevis.tsx
 │   │   │   │   │       │   └── index.ts
 │   │   │   │   │       ├── diagnostic
+│   │   │   │   │       │   ├── CalloutDiagnosticAccepte.tsx
+│   │   │   │   │       │   ├── CalloutDiagnosticEnInstruction.tsx
 │   │   │   │   │       │   ├── CalloutDiagnosticTodo.tsx
 │   │   │   │   │       │   ├── StepDetailDiagnostic.tsx
 │   │   │   │   │       │   └── index.ts
@@ -901,6 +1010,7 @@
 │   │   │   │   │   └── useMigrateRGAToDB.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── services
+│   │   │   │   │   ├── diagnostic.service.ts
 │   │   │   │   │   ├── eligibilite.service.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parcours-permissions.service.ts
@@ -1048,6 +1158,7 @@
 │   │       │   │   └── RGATestFiller.tsx
 │   │       │   ├── index.ts
 │   │       │   ├── results
+│   │       │   │   ├── ConfirmationQuitModal.tsx
 │   │       │   │   ├── ConfirmationSaveModal.tsx
 │   │       │   │   ├── EligibilityChecksList.tsx
 │   │       │   │   ├── ModificationsSummary.tsx
@@ -1161,6 +1272,9 @@
 │   │   ├── components
 │   │   │   ├── AccesNonAutorise
 │   │   │   │   └── AccesNonAutorise.tsx
+│   │   │   ├── AdminNavigation
+│   │   │   │   ├── AdminNavigation.tsx
+│   │   │   │   └── index.ts
 │   │   │   ├── AgentNavigation
 │   │   │   │   ├── AgentNavigation.tsx
 │   │   │   │   └── index.ts
@@ -1199,6 +1313,7 @@
 │   │   ├── config
 │   │   │   └── env.config.ts
 │   │   ├── constants
+│   │   │   ├── departements.constants.test.ts
 │   │   │   ├── departements.constants.ts
 │   │   │   ├── index.ts
 │   │   │   ├── matomo.constants.ts
@@ -1233,6 +1348,10 @@
 │   │   │   │   ├── 0020_peaceful_wolfpack.sql
 │   │   │   │   ├── 0021_sad_captain_marvel.sql
 │   │   │   │   ├── 0022_bouncy_felicia_hardy.sql
+│   │   │   │   ├── 0023_luxuriant_wraith.sql
+│   │   │   │   ├── 0024_living_mordo.sql
+│   │   │   │   ├── 0025_kind_whizzer.sql
+│   │   │   │   ├── 0026_postgis_rga_zones.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1257,6 +1376,10 @@
 │   │   │   │       ├── 0020_snapshot.json
 │   │   │   │       ├── 0021_snapshot.json
 │   │   │   │       ├── 0022_snapshot.json
+│   │   │   │       ├── 0023_snapshot.json
+│   │   │   │       ├── 0024_snapshot.json
+│   │   │   │       ├── 0025_snapshot.json
+│   │   │   │       ├── 0026_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1272,6 +1395,7 @@
 │   │   │   │   ├── parcours-prevention.repository.test.ts
 │   │   │   │   ├── parcours-prevention.repository.ts
 │   │   │   │   ├── prospect-qualifications.repository.ts
+│   │   │   │   ├── rga-zones.repository.ts
 │   │   │   │   └── user.repository.ts
 │   │   │   └── schema
 │   │   │       ├── agent-permissions.ts
@@ -1290,6 +1414,7 @@
 │   │   │       ├── parcours-commentaires.ts
 │   │   │       ├── parcours-prevention.ts
 │   │   │       ├── prospect-qualifications.ts
+│   │   │       ├── rga-zones.ts
 │   │   │       └── users.ts
 │   │   ├── domain
 │   │   │   ├── types
@@ -1329,9 +1454,12 @@
 │   │   │   ├── useDebounce.ts
 │   │   │   └── useDsfrChart.ts
 │   │   ├── services
-│   │   │   └── bdnb
-│   │   │       ├── bdnb.service.ts
-│   │   │       └── index.ts
+│   │   │   ├── bdnb
+│   │   │   │   ├── bdnb.service.ts
+│   │   │   │   └── index.ts
+│   │   │   └── rga
+│   │   │       ├── index.ts
+│   │   │       └── rga-alea.service.ts
 │   │   ├── testing
 │   │   │   └── mocks
 │   │   │       ├── agents.mocks.ts
@@ -1371,4 +1499,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-398 directories, 975 files
+437 directories, 1064 files
