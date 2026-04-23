@@ -1,41 +1,34 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 2026-04-16)
+## Changelog : ami-notifications-api (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Cette période a été marquée par une migration majeure vers Django, remplaçant l'ancien framework Litestar. Cette migration vise à améliorer la maintenabilité, la sécurité et l'évolutivité de l'API. De nouvelles fonctionnalités ont été ajoutées, notamment la gestion des agendas (vacances scolaires, jours fériés) et l'intégration de ProConnection pour l'authentification. Des améliorations ont également été apportées à la gestion des notifications et à la journalisation des erreurs.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des agents et de leurs accès, ainsi que sur des corrections et optimisations de l'API et de l'interface utilisateur. L'ajout de fonctionnalités de gestion des rôles et d'audit renforce la sécurité et la traçabilité du système. Des améliorations ont également été apportées à l'expérience utilisateur, notamment la gestion des notifications et la page de déconnexion.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Intégration de ProConnection pour une authentification simplifiée et sécurisée. Ajout d'une page de déconnexion.
-- **Gestion des notifications :**
-    - Possibilité d'ajouter une URL interne à une notification.
-    - Amélioration de la gestion des notifications de type "follow-up" avec affichage d'icônes et de couleurs spécifiques, ainsi qu'un tri par date.
-    - Envoi de notifications push web et mobile.
-    - Simplification de l'endpoint des notifications.
-- **Agendas :** Ajout de la gestion des agendas avec la prise en compte des jours fériés et des vacances scolaires.
-- **Interface utilisateur :**
-    - Ajout d'une page de gestion des accès avec la possibilité de gérer les rôles des agents.
-    - Amélioration de l'affichage des agents et des journaux d'audit.
-    - Refonte de l'interface utilisateur avec l'utilisation de DSFR (Design System for French administration).
-- **API Particulier :** Correction de la journalisation des erreurs et récupération de l'adresse utilisateur depuis l'API Particulier.
-- **Websockets :** Reconnexion automatique des websockets en cas de déconnexion.
+- Ajout d'une page de gestion des accès pour les agents, permettant de gérer leurs rôles et permissions. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
+- Implémentation d'un audit des actions réalisées par les agents, notamment les changements de rôle. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
+- Amélioration de la gestion de la déconnexion avec une confirmation visuelle pour l'utilisateur. [#753](https://github.com/numerique-gouv/ami-notifications-api/issues/753)
+- L'URL de l'application est désormais incluse dans les notifications envoyées aux applications mobiles. [#648](https://github.com/numerique-gouv/ami-notifications-api/issues/648)
+- Correction d'un problème où l'identifiant du secteur n'était pas correctement utilisé. [#747](https://github.com/numerique-gouv/ami-notifications-api/issues/747)
+- Simplification de l'endpoint des notifications. [#468](https://github.com/numerique-gouv/ami-notifications-api/issues/468)
+- Correction de l'envoi des headers lors de la création de notifications planifiées. [#782](https://github.com/numerique-gouv/ami-notifications-api/issues/782)
+- Envoi de l'URL interne lors de la création de notifications planifiées. [#779](https://github.com/numerique-gouv/ami-notifications-api/issues/779)
 
 ### Évolutions techniques
-- **Migration vers Django :** Remplacement complet du framework Litestar par Django pour une meilleure maintenabilité et évolutivité.
-- **Infrastructure :** Configuration pour le déploiement sur Scalingo avec Gunicorn.
-- **Tests :** Ajout de tests unitaires et d'intégration pour assurer la qualité du code.
-- **Sécurité :**
-    - Utilisation de certificats SSL pour le développement local.
-    - Stockage sécurisé de la clé secrète de Django dans une variable d'environnement.
-    - Ajout de décorateurs pour vérifier les rôles des agents.
-- **Journalisation :** Intégration de Sentry pour la surveillance des erreurs et des performances.
-- **Dépendances :** Mise à jour de plusieurs dépendances (Django, cryptography, pyopenssl, etc.).
-- **Configuration :** Simplification de la configuration en déplaçant les variables d'environnement vers les fichiers de configuration de Django.
-- **Refactoring :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité. Suppression de code obsolète.
+- Refactorisation de la gestion des erreurs dans l'API Particulier, ajout des headers dans les logs.
+- Déplacement des endpoints `agenda` et `follow-p` sous `/api/v1` pour une meilleure organisation. [#762](https://github.com/numerique-gouv/ami-notifications-api/issues/762)
+- Simplification des commandes et des tests pour les notifications planifiées. [#786](https://github.com/numerique-gouv/ami-notifications-api/issues/786)
+- Suppression de l'utilisation de `settings.CONFIG` au profit de variables d'environnement plus explicites. [#729](https://github.com/numerique-gouv/ami-notifications-api/issues/729)
+- Mise à jour de la configuration pour utiliser `fr-fr` comme langue par défaut. [#662](https://github.com/numerique-gouv/ami-notifications-api/issues/662)
+- Suppression de `django-admin` et ajout d'une commande pour attribuer le rôle d'administrateur à un agent. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
+- Initialisation du SDK Firebase. [#712](https://github.com/numerique-gouv/ami-notifications-api/issues/712)
+- Reconnexion automatique de la websocket en cas de besoin. [#652](https://github.com/numerique-gouv/ami-notifications-api/issues/652)
+- Mise à jour de l'URL du schéma OpenAPI. [#717](https://github.com/numerique-gouv/ami-notifications-api/issues/717)
 
 ### Autres changements
-- Suppression des variables d'environnement inutilisées.
-- Ajout de Makefile pour faciliter les tâches de développement et de déploiement.
-- Amélioration de la documentation.
-- Correction de bugs mineurs et améliorations de la performance.
-- Ajout de la gestion des langues en français (fr-fr).
-- Suppression de la mise en cache des templates en mode développement.
-- Ajout de l'URL de l'API dans la configuration Swagger.
+- Amélioration de la documentation CONTRIBUTING. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
+- Corrections de linting et de style dans l'interface utilisateur (Svelte). [#792](https://github.com/numerique-gouv/ami-notifications-api/issues/792)
+- Suppression de variables d'environnement inutilisées. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
+- Correction de padding sur la page d'accueil. [#764](https://github.com/numerique-gouv/ami-notifications-api/issues/764)
+- Ajout d'un lien vers l'élément concerné dans les requêtes. [#726](https://github.com/numerique-gouv/ami-notifications-api/issues/726)
+- Correction d'un bug empêchant la création d'un agent si `partner_id` était manquant. [#798](https://github.com/numerique-gouv/ami-notifications-api/issues/798)
+- Suppression du champ `name` dans le log pour simplifier le message. [#626](https://github.com/numerique-gouv/ami-notifications-api/issues/626)
