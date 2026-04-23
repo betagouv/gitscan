@@ -86,6 +86,7 @@
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
+    │   │   ├── analytics.py
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   ├── filters.py
@@ -205,6 +206,8 @@
     │   ├── package.json
     │   ├── public
     │   │   └── assets
+    │   │       ├── favicon-96x96.png
+    │   │       ├── favicon.ico
     │   │       ├── files
     │   │       │   └── icons
     │   │       │       ├── doc.svg
@@ -249,6 +252,10 @@
     │   │   │   │       ├── getMainAiJobs.ts
     │   │   │   │       ├── transcript.test.ts
     │   │   │   │       └── transcript.ts
+    │   │   │   ├── analytics
+    │   │   │   │   └── hooks
+    │   │   │   │       ├── useAnalytics.ts
+    │   │   │   │       └── useIsAnalyticsEnabled.ts
     │   │   │   ├── auth
     │   │   │   │   ├── api
     │   │   │   │   │   ├── ApiUser.ts
@@ -310,6 +317,8 @@
     │   │   ├── i18n
     │   │   │   └── init.ts
     │   │   ├── layout
+    │   │   │   ├── BaseLayout.scss
+    │   │   │   ├── BaseLayout.tsx
     │   │   │   ├── ConnectedLayout.scss
     │   │   │   ├── ConnectedLayout.tsx
     │   │   │   ├── HeaderRight.scss
@@ -321,6 +330,7 @@
     │   │   │   ├── en-US
     │   │   │   │   ├── home.json
     │   │   │   │   ├── layout.json
+    │   │   │   │   ├── legals.json
     │   │   │   │   ├── record.json
     │   │   │   │   ├── recordings.json
     │   │   │   │   ├── shared.json
@@ -328,6 +338,7 @@
     │   │   │   └── fr-FR
     │   │   │       ├── home.json
     │   │   │       ├── layout.json
+    │   │   │       ├── legals.json
     │   │   │       ├── record.json
     │   │   │       ├── recordings.json
     │   │   │       ├── shared.json
@@ -341,7 +352,13 @@
     │   │   │   ├── RecordingPage.scss
     │   │   │   ├── RecordingPage.tsx
     │   │   │   ├── RecordingsPage.scss
-    │   │   │   └── RecordingsPage.tsx
+    │   │   │   ├── RecordingsPage.tsx
+    │   │   │   └── legal
+    │   │   │       ├── AccessibilityPage.tsx
+    │   │   │       ├── LegalPage.scss
+    │   │   │       ├── LegalTermsPage.tsx
+    │   │   │       ├── PersonalDataPage.tsx
+    │   │   │       └── TermsOfServicePage.tsx
     │   │   ├── styles
     │   │   │   ├── cunningham-tokens-sass.scss
     │   │   │   ├── cunningham-tokens.css
@@ -428,7 +445,7 @@
         │   │           ├── java
         │   │           │   └── fr
         │   │           │       └── gouv
-        │   │           │           └── assistantTranscripts
+        │   │           │           └── assistant_transcripts
         │   │           │               ├── FileUploadModule.kt
         │   │           │               ├── FileUploadPackage.kt
         │   │           │               ├── MainActivity.kt
@@ -506,29 +523,14 @@
         │   │   ├── AppDelegate.swift
         │   │   ├── BootSplash.storyboard
         │   │   ├── Colors.xcassets
-        │   │   │   └── BootSplashBackground-31a0d2.colorset
+        │   │   │   └── BootSplashBackground-7da0ea.colorset
         │   │   │       └── Contents.json
         │   │   ├── Images.xcassets
-        │   │   │   ├── AppIcon.appiconset
+        │   │   │   ├── BootSplashLogo-7da0ea.imageset
         │   │   │   │   ├── Contents.json
-        │   │   │   │   ├── icon-1024x1024@1x.png
-        │   │   │   │   ├── icon-20x20@2x.png
-        │   │   │   │   ├── icon-20x20@3x.png
-        │   │   │   │   ├── icon-29x29@1x.png
-        │   │   │   │   ├── icon-29x29@2x.png
-        │   │   │   │   ├── icon-29x29@3x.png
-        │   │   │   │   ├── icon-40x40@2x.png
-        │   │   │   │   ├── icon-40x40@3x.png
-        │   │   │   │   ├── icon-60x60@2x.png
-        │   │   │   │   ├── icon-60x60@3x.png
-        │   │   │   │   ├── icon-76x76@1x.png
-        │   │   │   │   ├── icon-76x76@2x.png
-        │   │   │   │   └── icon-83.5x83.5@2x.png
-        │   │   │   ├── BootSplashLogo-31a0d2.imageset
-        │   │   │   │   ├── Contents.json
-        │   │   │   │   ├── logo-31a0d2.png
-        │   │   │   │   ├── logo-31a0d2@2x.png
-        │   │   │   │   └── logo-31a0d2@3x.png
+        │   │   │   │   ├── logo-7da0ea.png
+        │   │   │   │   ├── logo-7da0ea@2x.png
+        │   │   │   │   └── logo-7da0ea@3x.png
         │   │   │   └── Contents.json
         │   │   ├── Info.plist
         │   │   ├── LaunchScreen.storyboard
@@ -548,7 +550,11 @@
         │   ├── Podfile
         │   ├── Podfile.lock
         │   ├── dictaphone-Briding-Header.h
-        │   └── link-assets-manifest.json
+        │   ├── link-assets-manifest.json
+        │   └── logo-app-assistant-transcript.icon
+        │       ├── Assets
+        │       │   └── Logomark Transcripts.png
+        │       └── icon.json
         ├── jest.config.js
         ├── metro.config.js
         ├── package.json
@@ -564,12 +570,16 @@
         │   │   ├── queryKeys.ts
         │   │   └── useConfig.ts
         │   ├── assets
+        │   │   ├── icon.svg
         │   │   ├── icons
         │   │   │   ├── docs.svg
         │   │   │   ├── file-disabled.svg
         │   │   │   ├── file.svg
+        │   │   │   ├── pause-recording.svg
         │   │   │   ├── pause.svg
         │   │   │   ├── record.svg
+        │   │   │   ├── resume-recording.svg
+        │   │   │   ├── stop-recording.svg
         │   │   │   └── warning.svg
         │   │   ├── logo-single-line.svg
         │   │   ├── logo-with-name.svg
@@ -640,4 +650,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-166 directories, 476 files
+170 directories, 482 files
