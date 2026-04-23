@@ -22,19 +22,15 @@ dev = [
     "django-extensions",
     "ptpython",
     "pytest-cov",
-    "pytest>=9.0",
+    "pytest>=9.0.3",
     "pytest-django",
     "ruff",
     "pre-commit>=4.3.0", # https://github.com/pre-commit/pre-commit
-    "pytest-env>=1.5.0",
 ]
 
 [tool.pytest.ini_options]
-addopts = "--create-db --cov=. -x"
+addopts = "--reuse-db -x --ds=config.settings.test"
 xfail_strict = true
-env = [
-    "DJANGO_SETTINGS_MODULE=config.settings.test",
-]
 
 [tool.ruff.lint]
 select = ["ALL"]

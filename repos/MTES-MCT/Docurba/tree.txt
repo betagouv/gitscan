@@ -8,10 +8,12 @@
 │   └── workflows
 │       ├── lint_test.yml
 │       ├── review_app_creation.yml
-│       └── review_app_removal.yml
+│       ├── review_app_removal.yml
+│       └── wake_up_scalingo_apps.yml
 ├── .gitignore
 ├── .mise.toml
 ├── .pre-commit-config.yaml
+├── README.md
 ├── django
 │   ├── .env.example
 │   ├── .python-version
@@ -35,11 +37,17 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
 │   │   │   ├── apps.py
+│   │   │   ├── data
+│   │   │   │   └── create_topics.json
+│   │   │   ├── enums.py
 │   │   │   ├── management
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       └── collectivites_en_base.py
+│   │   │   │       ├── collectivites_en_base.py
+│   │   │   │       ├── import_dgaln_zan_objects.py
+│   │   │   │       ├── migrate_procedure_topics.py
+│   │   │   │       └── migrate_sudocuh_comments.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -49,9 +57,36 @@
 │   │   │   │   ├── 0006_delete_viewcollectiviteadhesionsdeep.py
 │   │   │   │   ├── 0007_alter_event_options.py
 │   │   │   │   ├── 0008_alter_communeprocedure_options.py
-│   │   │   │   └── __init__.py
+│   │   │   │   ├── 0009_proceduretopic_topic_proceduretopic_topics_and_more.py
+│   │   │   │   ├── 0010_proceduretopic_created_at.py
+│   │   │   │   ├── 0011_alter_topic_options.py
+│   │   │   │   ├── 0012_proceduretopic_comment.py
+│   │   │   │   ├── 0013_topics_rls.py
+│   │   │   │   ├── 0014_add_sudocuh_comment.py
+│   │   │   │   ├── 0015_update_procedures_by_collectivites_function.py
+│   │   │   │   ├── 0016_rls_update_proceduretopic.py
+│   │   │   │   ├── 0017_rls_update_delete_proceduretopic.py
+│   │   │   │   ├── 0018_add_last_updated_by_id_to_procedures.py
+│   │   │   │   ├── 0019_communeprocedure_is_managed.py
+│   │   │   │   ├── 0020_communeprocedure_state.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── sql_statements
+│   │   │   │       ├── create_table_procedures_perimetres.sql
+│   │   │   │       └── drop_table_procedures_perimetres.sql
 │   │   │   ├── models.py
+│   │   │   ├── utils.py
 │   │   │   └── views.py
+│   │   ├── surveys
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_survey_rls.py
+│   │   │   │   ├── 0003_populate_proceduresurvey.py
+│   │   │   │   ├── 0004_remove_archived_procedures.py
+│   │   │   │   └── __init__.py
+│   │   │   └── models.py
 │   │   ├── templates
 │   │   │   ├── 404.html
 │   │   │   └── core
@@ -80,21 +115,37 @@
 │   │   ├── __init__.py
 │   │   ├── core
 │   │   │   ├── __init__.py
+│   │   │   ├── management
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── test_migrate_procedure_topics.py
+│   │   │   │       └── test_migrate_sudocuh_comments.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_models.py
 │   │   │   └── test_views.py
 │   │   ├── factories.py
+│   │   ├── surveys
+│   │   │   ├── __init__.py
+│   │   │   └── test_models.py
 │   │   └── users
 │   │       ├── __init__.py
 │   │       ├── factories.py
 │   │       └── test_models.py
 │   └── uv.lock
+├── docker
+│   └── test_db
+│       ├── prod_schema_before_django_migrations.sql
+│       └── supabase_seeds
+│           ├── _supabase.sql
+│           ├── logs.sql
+│           ├── roles.sql
+│           └── webhooks.sql
+├── docker-compose.yml
 ├── nuxt
 │   ├── .editorconfig
 │   ├── .env.example
 │   ├── .eslintrc.js
 │   ├── .gitattributes
-│   ├── .slugignore
 │   ├── README.md
 │   ├── assets
 │   │   ├── README.md
@@ -285,7 +336,8 @@
 │   │   ├── Layouts
 │   │   │   ├── AppBar.vue
 │   │   │   ├── CustomApp.vue
-│   │   │   └── Footer.vue
+│   │   │   ├── Footer.vue
+│   │   │   └── LoginBanner.vue
 │   │   ├── Onboarding
 │   │   │   └── SignupForm.vue
 │   │   ├── PAC
@@ -315,7 +367,9 @@
 │   │   │   └── YouWantCard.vue
 │   │   ├── Procedures
 │   │   │   ├── InsertForm.vue
-│   │   │   └── InsertTabs.vue
+│   │   │   ├── InsertTabs.vue
+│   │   │   ├── TopicChips.vue
+│   │   │   └── UpdateForm.vue
 │   │   ├── README.md
 │   │   ├── RecordCard.vue
 │   │   ├── RecordList.vue
@@ -634,6 +688,7 @@
 │   │   │   │   │   │   └── procedure
 │   │   │   │   │   │       └── add.vue
 │   │   │   │   │   └── index.vue
+│   │   │   │   ├── enquete.vue
 │   │   │   │   ├── index.vue
 │   │   │   │   ├── pac.vue
 │   │   │   │   └── procedures
@@ -653,7 +708,8 @@
 │   │   │       ├── _eventId.vue
 │   │   │       ├── add.vue
 │   │   │       ├── index.vue
-│   │   │       └── invite.vue
+│   │   │       ├── invite.vue
+│   │   │       └── update.vue
 │   │   ├── guide.vue
 │   │   ├── index.vue
 │   │   ├── login
@@ -704,7 +760,8 @@
 │   │   ├── tiptap-resizable.js
 │   │   ├── urbanisator.js
 │   │   ├── user.js
-│   │   └── utils.js
+│   │   ├── utils.js
+│   │   └── zanSurvey.js
 │   ├── scalingo.json
 │   ├── scripts
 │   │   └── 940_updateProceduresColPorteuse.mjs
@@ -777,6 +834,7 @@
 │   │   │   ├── project_sharings.delete.sql
 │   │   │   └── project_sharings.insert.sql
 │   │   └── rpc
+│   │       ├── procedures_by_collectivites.sql
 │   │       ├── validated_collectivites.sql
 │   │       └── validated_collectivites_by_depts.sql
 │   └── static
@@ -962,4 +1020,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-189 directories, 817 files
+199 directories, 865 files

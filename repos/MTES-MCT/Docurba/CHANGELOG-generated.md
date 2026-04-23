@@ -1,34 +1,31 @@
-## Changelog : Docurba (30 derniers jours)
+## Changelog : Docurba (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par d'importantes améliorations de l'administration de l'application, notamment au niveau de la gestion des procédures et des événements. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de la plateforme.
+Ce mois-ci, Docurba a bénéficié d'améliorations significatives en termes de performance et de stabilité, notamment grâce à l'optimisation des requêtes en base de données et à une meilleure gestion des tests. De nouvelles fonctionnalités ont été ajoutées pour faciliter la gestion des procédures et des enquêtes, ainsi que des améliorations de l'interface utilisateur, notamment un bandeau d'information pour les utilisateurs non authentifiés.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des informations relatives aux procédures dans l'interface d'administration (commentaire, périmètre actuel, statut).
-- Affichage des événements liés à une procédure dans la page de modification de cette dernière.
-- Correction d'un bug empêchant l'ouverture de la vue de modification d'une procédure.
-- Recherche de procédures par identifiant dans l'interface d'administration.
-- Affichage du code de la collectivité porteuse dans l'administration des procédures.
-- Les événements de caducité d'un POS donnent le statut "Caduc".
-- Désactivation des enquêtes pour les DDT non incluses dans la liste `DDT_ENQUETE_ENABLED`.
-- Désactivation de la modification de l'adresse email dans l'administration.
-- Harmonisation de la description de la liste des DU (Droits Unifiés) sur les pages collectivité.
+- Ajout d'un bandeau d'information sur la page de connexion pour clarifier la procédure de création de compte [#1867](https://github.com/MTES-MCT/Docurba/issues/1867).
+- Ajout d'un bandeau de connexion pour les utilisateurs non authentifiés [#1865](https://github.com/MTES-MCT/Docurba/issues/1865).
+- Mise en place d'une page dédiée à l'enquête ZAN 2026.
+- Possibilité de filtrer les procédures dans l'administration par type de collectivité porteuse.
+- Activation de la modification de la collectivité porteuse d'une procédure dans l'administration.
+- Affichage de la colonne "procédure archivée" dans l'administration.
+- Prototype d'une fonctionnalité d'enquête (survey).
+- Suppression des procédures d'enquête si les procédures associées sont archivées.
 
 ### Évolutions techniques
-- Mise à jour de Django de la version 5.2.11 à la version 6.0.
-- Refonte de l'architecture Django avec séparation des configurations et des applications.
-- Utilisation de Rclone pour synchroniser le dossier d'export.
-- Ajout de tests unitaires pour les modules Django.
-- Amélioration des performances du modèle Event.
-- Correction de problèmes de N+1 queries sur l'API.
-- Ajout de la fonctionnalité de profiling Sentry.
-- Transformation des logs en format JSON pour Datadog.
-- Spécification de la version de Pytest.
-- Mise à jour de plusieurs dépendances : `ruff`, `django-environ`, `pytest-django`, `sqlparse`.
+- Optimisation des requêtes SQL pour corriger des problèmes de performance (N+1 queries) [#1865](https://github.com/MTES-MCT/Docurba/issues/1865).
+- Amélioration de la configuration des tests : utilisation d'une base de données de test plus proche de la production, ajout de couverture de code (coverage) et utilisation du SHA de commit pour identifier les builds.
+- Refonte de l'indexation Django pour gérer les colonnes générées.
+- Utilisation des couleurs du thème Vuetify au lieu de CSS spécifiques dans le composant LoginBanner.
+- Mise à jour de l'infrastructure de déploiement pour nettoyer la mémoire des serveurs plus fréquemment (déploiement horaire).
+- Correction d'un test instable.
+- Ajout d'un fichier README pour faciliter l'intégration de nouveaux développeurs.
+- Mise à jour de plusieurs dépendances : `pytest`, `ruff`, `django-debug-toolbar`, `django`, `pygments`, `pytest-cov`, `django-datadog-logger`.
 
 ### Autres changements
-- Ajout d'usines pour générer de faux objets pour les tests.
-- Réusinage du code avec l'utilisation des usines.
-- Ajout d'un "cooldown" de 7 jours pour Dependabot.
-- Documentation de l'API avec des exemples utilisant `avant=2026-01-01`.
-- Plusieurs reverts de modifications récentes suite à des problèmes détectés.
+- Mise à jour de la documentation et des kits de communication Nuxt.
+- Correction de liens et de fautes de frappe dans la documentation et l'interface utilisateur.
+- Correction d'un problème empêchant la restauration des migrations Django.
+- Ajout d'un type de commune (CommuneType) avec des choix textuels.
+- Réveil des applications et nettoyage de la mémoire.
