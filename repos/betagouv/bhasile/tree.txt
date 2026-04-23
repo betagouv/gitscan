@@ -200,6 +200,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260416124533_improve_schema_following_multidna_migration
 │   │   │   └── migration.sql
+│   │   ├── 20260421145404_log_monthly_usage_statistics
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -217,6 +219,7 @@
 │   │   ├── location.prisma
 │   │   ├── note.prisma
 │   │   ├── operateur.prisma
+│   │   ├── reporting.prisma
 │   │   ├── schema.prisma
 │   │   ├── structure.prisma
 │   │   └── user.prisma
@@ -284,6 +287,7 @@
 │   │   ├── eig-fetch.ts
 │   │   ├── empty-bucket.ts
 │   │   ├── fill-cpoms.ts
+│   │   ├── fill-monthly-reporting.ts
 │   │   ├── fill-roles.ts
 │   │   └── ofii-fill-referential-and-activity.ts
 │   ├── run-one-off.sh
@@ -645,6 +649,7 @@
 │   │   │   │   ├── stats
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── structure.constants.ts
+│   │   │   │   ├── structure.db.type.ts
 │   │   │   │   ├── structure.repository.ts
 │   │   │   │   ├── structure.service.ts
 │   │   │   │   └── structure.util.ts
@@ -711,6 +716,7 @@
 │   │   │   │   ├── DropZone.tsx
 │   │   │   │   ├── FormWrapper.tsx
 │   │   │   │   ├── InputWithValidation.tsx
+│   │   │   │   ├── LeaveModificationModal.tsx
 │   │   │   │   ├── MaxSizeNotice.tsx
 │   │   │   │   ├── ModificationTitle.tsx
 │   │   │   │   ├── OperateurAutocomplete.tsx
@@ -1138,4 +1144,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-292 directories, 848 files
+293 directories, 853 files
