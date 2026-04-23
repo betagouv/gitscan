@@ -1,37 +1,24 @@
-## Changelog : arretify (30 derniers jours, au 9 avril 2026)
+## Changelog : arretify (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Les dernières mises à jour d'Arrêtify se concentrent sur l'amélioration de la reconnaissance et de la structuration des arrêtés préfectoraux, notamment grâce à une meilleure intégration avec la version 3 de Mistral OCR.  De nombreuses corrections et optimisations ont été apportées pour gérer plus robustement les différents formats et les erreurs d'OCR, améliorant ainsi la qualité de la conversion en HTML sémantique.
+Cette nouvelle version d'Arrêtify améliore significativement la conversion d'arrêtés préfectoraux en HTML. Les améliorations se concentrent sur la détection des titres, la gestion des tableaux issus de l'OCR, et la robustesse générale de l'analyse des documents. La version 0.2.0 est presque prête à être publiée.
 
 ### Évolutions fonctionnelles
-- Amélioration de la détection du début du contenu principal des arrêtés.
-- Support amélioré pour l'intégration de tableaux extraits par Mistral OCR, y compris les balises en ligne.
-- Correction d'un bug concernant les balises de pagination dans les visas.
-- Détection plus précise des titres de table des matières (TOC) et correction d'un bug lié au diviseur de TOC.
-- Détection plus stricte des titres composés uniquement de chiffres.
-- Amélioration de la détection et du traitement des en-têtes, avec application du nettoyage OCR.
-- Correction de la détection des cadres (frames) qui étaient parfois identifiés à tort comme des tableaux avec Mistral OCR 3.
-- Ajout du support pour les en-têtes et pieds de page extraits par Mistral 3.
-- Intégration de l'inclusion d'images et du rendu dans le pré-traitement.
+- **Détection de titres améliorée :** Ajout d'abréviations pour les mots "article" afin d'améliorer la détection des titres. [#issue à investiguer]
+- **Gestion des tableaux OCR :** Support ajouté pour les balises en ligne dans les tableaux extraits par OCR, permettant une meilleure restitution du formatage.
+- **Détection de table des matières (TOC) :** Amélioration de la détection du titre de la table des matières et déplacement vers le corps de la page.
+- **Robustesse accrue :** Ajout d'une option de repli si le mot-clé "arrêté" n'est pas trouvé, évitant ainsi des erreurs dans certains cas.
+- **Détection du début du contenu principal :** Modification de la règle pour détecter le début du contenu principal du document.
+- **Détection de titres numériques :** La détection des titres est désormais plus stricte pour les titres composés uniquement de chiffres.
 
 ### Évolutions techniques
-- Refonte du système de stockage des pages pour supporter Mistral 3.
-- Introduction de la classe `Asset` pour gérer les ressources associées aux documents.
-- Création d'un modèle `OcrDocument` pour encapsuler les pages d'un document OCRisé.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Ajout de docstrings pour les fonctions de séparation de texte.
-- Ajout d'une option de repli si le mot-clé "arrêté" n'est pas trouvé.
-- Restauration des snapshots à partir de la branche Mistral OCR3.
-- Nettoyage et régénération des pages d'exemple avec Mistral OCR 3.
+- **Préparation de la version 0.2.0 :**  Préparation des derniers ajustements pour la publication de la version 0.2.0.
+- **Correction de bugs :**
+    - Correction d'un bug lié aux balises de pagination dans les visas.
+    - Correction de la représentation des éléments d'en-tête.
+    - Correction d'un bug dans le diviseur de table des matières.
+- **Amélioration de la détection de page headers et footers** (via l'intégration de Mistral OCR 3, déjà mentionnée dans le CHANGELOG existant).
+- **Traitement direct des tableaux en HTML** (via l'intégration de Mistral OCR 3, déjà mentionnée dans le CHANGELOG existant).
 
 ### Autres changements
-- Régénération des snapshots de la page d'index.
-- Correction de bugs et amélioration de la qualité de l'évaluation avec des ground truths mis à jour.
-- Formatage du code avec `black`.
-- Raccourcissement des chemins dans les jeux de données.
-- Correction de titres dans les en-têtes.
-- Correction de bugs liés à la description des tableaux OCR intégrés.
-- Correction de l'enregistrement des documents OCR avec des fichiers non chargés.
-- Mise à jour du markdown pour tester l'intégration des tableaux OCR.
-- Correction de tests.
-- Petites corrections diverses.
+- Correction d'une petite erreur de documentation.
