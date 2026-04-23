@@ -160,6 +160,7 @@
 │   │   │   ├── actions
 │   │   │   │   ├── account.actions.ts
 │   │   │   │   ├── admin
+│   │   │   │   │   ├── invitations.admin.actions.ts
 │   │   │   │   │   └── mission-locale
 │   │   │   │   │       └── mission-locale.admin.actions.ts
 │   │   │   │   ├── affelnet.actions.ts
@@ -325,6 +326,7 @@
 │   │   │       ├── objectIdSchema.ts
 │   │   │       ├── organismesFilterSchema.ts
 │   │   │       ├── paginationSchema.ts
+│   │   │       ├── registrationCfaSchema.ts
 │   │   │       ├── registrationSchema.ts
 │   │   │       ├── searchSchema.ts
 │   │   │       ├── userProfileSchema.ts
@@ -435,6 +437,7 @@
 │   │   │   │   │   ├── affelnet.routes.ts
 │   │   │   │   │   ├── effectifs.routes.ts
 │   │   │   │   │   ├── erps.routes.ts
+│   │   │   │   │   ├── invitations.routes.ts
 │   │   │   │   │   ├── maintenances.routes.ts
 │   │   │   │   │   ├── mission-locale.routes.ts
 │   │   │   │   │   ├── opcos.routes.ts
@@ -576,13 +579,18 @@
 │   ├── static
 │   │   ├── bassins_emploi_communes.json
 │   │   ├── emails
+│   │   │   ├── activation_cfa.mjml.ejs
 │   │   │   ├── activation_user.mjml.ejs
 │   │   │   ├── cfa_daily_recap.mjml.ejs
 │   │   │   ├── common
 │   │   │   │   ├── footer.ejs
+│   │   │   │   ├── footer_cfa.ejs
 │   │   │   │   ├── head.ejs
 │   │   │   │   ├── header.ejs
 │   │   │   │   └── signature.ejs
+│   │   │   ├── confirmation_cfa.mjml.ejs
+│   │   │   ├── invitation_cfa_admin.mjml.ejs
+│   │   │   ├── invitation_cfa_member.mjml.ejs
 │   │   │   ├── invitation_organisation.mjml.ejs
 │   │   │   ├── mission_locale_daily_recap.mjml.ejs
 │   │   │   ├── mission_locale_weekly_recap.mjml.ejs
@@ -692,6 +700,8 @@
 │   │   │   ├── external
 │   │   │   │   └── zod.test.ts
 │   │   │   ├── http
+│   │   │   │   ├── admin-cfa-invite.routes.test.ts
+│   │   │   │   ├── admin-invitations.routes.test.ts
 │   │   │   │   ├── admin.routes.test.ts
 │   │   │   │   ├── authentication.routes.test.ts
 │   │   │   │   ├── brevo-whatsapp.routes.test.ts
@@ -702,8 +712,10 @@
 │   │   │   │   ├── indicateurs-deca.route.test.ts
 │   │   │   │   ├── indicateurs-national.route.test.ts
 │   │   │   │   ├── indicateurs.route.test.ts
+│   │   │   │   ├── inscription-cfa.routes.test.ts
 │   │   │   │   ├── misc.routes.test.ts
 │   │   │   │   ├── mission-locale.routes.test.ts
+│   │   │   │   ├── organisation-membres-batch.routes.test.ts
 │   │   │   │   ├── organisme.routes.test.ts
 │   │   │   │   ├── organismes.routes.test.ts
 │   │   │   │   ├── password.route.test.ts
@@ -733,10 +745,14 @@
 │   │   │   ├── setupMongo.ts
 │   │   │   └── setupNock.ts
 │   │   ├── unit
-│   │   │   └── common
-│   │   │       └── actions
-│   │   │           └── personV2
-│   │   │               └── personV2.actions.test.ts
+│   │   │   ├── common
+│   │   │   │   └── actions
+│   │   │   │       └── personV2
+│   │   │   │           └── personV2.actions.test.ts
+│   │   │   └── http
+│   │   │       └── middlewares
+│   │   │           ├── requireCfaAdmin.test.ts
+│   │   │           └── requireCfaAdminIfCfa.test.ts
 │   │   └── utils
 │   │       ├── mongoUtils.ts
 │   │       ├── nockApis
@@ -903,6 +919,8 @@
 │       ├── date.ts
 │       ├── frenchTelephoneNumber.ts
 │       ├── index.ts
+│       ├── maskEmail.test.ts
+│       ├── maskEmail.ts
 │       ├── organisationRegions.ts
 │       ├── phone.ts
 │       ├── regex.ts
@@ -950,8 +968,14 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── error.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   └── parametres
-│   │   │   │       ├── ParametresClient.tsx
+│   │   │   │   ├── parametres
+│   │   │   │   │   ├── ParametresClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── roles-habilitations
+│   │   │   │       ├── InvitationSidePanel.module.css
+│   │   │   │       ├── InvitationSidePanel.tsx
+│   │   │   │       ├── RolesHabilitationsClient.module.css
+│   │   │   │       ├── RolesHabilitationsClient.tsx
 │   │   │   │       └── page.tsx
 │   │   │   └── layout.tsx
 │   │   ├── (cfa-detail)
@@ -997,8 +1021,16 @@
 │   │   ├── (home)
 │   │   │   ├── HomeClient.tsx
 │   │   │   ├── auth
+│   │   │   │   ├── bienvenue
+│   │   │   │   │   ├── Bienvenue.module.css
+│   │   │   │   │   ├── BienvenueClient.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── connexion
 │   │   │   │   │   ├── ConnexionClient.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── inscription-cfa
+│   │   │   │   │   ├── InscriptionCfa.module.css
+│   │   │   │   │   ├── InscriptionCfaClient.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── mot-de-passe-oublie
 │   │   │   │       ├── ForgotPasswordClient.tsx
@@ -1037,6 +1069,7 @@
 │   │   │   ├── ServiceDiscontinuedPage.tsx
 │   │   │   ├── UserConnectedHeader.tsx
 │   │   │   ├── admin
+│   │   │   │   ├── InvitationsTable.tsx
 │   │   │   │   ├── MultiSelectDropdown.tsx
 │   │   │   │   ├── UserForm.tsx
 │   │   │   │   ├── UserTableCells.tsx
@@ -1116,6 +1149,8 @@
 │   │   │   │   │   ├── CfaEffectifsTable.tsx
 │   │   │   │   │   ├── CfaFeedback.tsx
 │   │   │   │   │   ├── CfaFilters.module.css
+│   │   │   │   │   ├── CfaInviteBanner.module.css
+│   │   │   │   │   ├── CfaInviteBanner.tsx
 │   │   │   │   │   ├── CfaRuptureInfoModal.tsx
 │   │   │   │   │   ├── CfaRuptureSegment.module.css
 │   │   │   │   │   ├── CfaRuptureSegment.tsx
@@ -1346,7 +1381,9 @@
 │   │   │   └── start-dsfr.tsx
 │   │   ├── _hooks
 │   │   │   ├── plausible.ts
+│   │   │   ├── useAdminInvitations.ts
 │   │   │   ├── useAllUsers.ts
+│   │   │   ├── useCfaAdmin.ts
 │   │   │   └── useVirtualizedPagination.tsx
 │   │   ├── _utils
 │   │   │   ├── date.utils.ts
@@ -1436,6 +1473,7 @@
 │   │       ├── exportUtils.ts
 │   │       ├── markdownUtils.ts
 │   │       ├── misc.ts
+│   │       ├── notionUtils.ts
 │   │       ├── parseExcelBoolean.test.ts
 │   │       ├── parseExcelBoolean.ts
 │   │       ├── parseExcelDate.test.ts
@@ -1578,6 +1616,7 @@
 │   │   ├── admin
 │   │   │   ├── DashboardAdministrateur.tsx
 │   │   │   ├── InfosTransmissionEtParametrageOFA.tsx
+│   │   │   ├── InviteCfaAdminModal.tsx
 │   │   │   ├── OrganismeDetail.tsx
 │   │   │   ├── fusion-organismes
 │   │   │   │   ├── OrganismeDoublonDeleteAlertDialog.tsx
@@ -1967,7 +2006,8 @@
 │   │   │   │   ├── action-ml.png
 │   │   │   │   ├── collaboration-cfa.png
 │   │   │   │   ├── marianne.png
-│   │   │   │   └── screen-ml-recontacter.png
+│   │   │   │   ├── screen-ml-recontacter.png
+│   │   │   │   └── tba-homepage.png
 │   │   │   ├── france-icon.svg
 │   │   │   ├── france-travail-select-secteur.png
 │   │   │   ├── france_relance.svg
@@ -1975,6 +2015,7 @@
 │   │   │   │   ├── slide1.png
 │   │   │   │   ├── slide2.png
 │   │   │   │   └── slide3.png
+│   │   │   ├── illu-onboarding.png
 │   │   │   ├── info-nouveau-contrat.svg
 │   │   │   ├── landing-cards
 │   │   │   │   ├── alarm-warning.svg
@@ -2124,4 +2165,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-444 directories, 1682 files
+449 directories, 1718 files
