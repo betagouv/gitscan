@@ -1,24 +1,17 @@
-## Changelog : b3desk (30 derniers jours, au 17 avril 2026)
+## Changelog : b3desk (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'expérience utilisateur, notamment la possibilité pour un utilisateur authentifié de modifier son nom lors de la page de connexion et une correction pour éviter que le logo ne soit masqué par le titre. Des corrections ont également été apportées pour améliorer la compatibilité avec Keycloak et éviter l'utilisation de liens statiques. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'ajout de fonctionnalités liées à la délégation de réunions et à l'expérience utilisateur lors de la participation à une visioconférence. Des mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Un utilisateur authentifié peut maintenant modifier son nom sur la page de connexion. [#318](https://github.com/numerique-gouv/b3desk/issues/318)
-- Le logo n'est plus masqué par le titre de la page. [#319](https://github.com/numerique-gouv/b3desk/issues/319)
-- Délégation de réunion : implémentation de la fonctionnalité permettant de déléguer la gestion d'une réunion. [#241](https://github.com/numerique-gouv/b3desk/pull/241) via [#226](https://github.com/numerique-gouv/b3desk/issues/226)
+- Correction d'un bug permettant à un utilisateur authentifié de modifier son nom sur la page de participation à une réunion. [#318](https://github.com/numerique-gouv/b3desk/issues/318)
+- Amélioration de l'interface utilisateur pour éviter que le logo ne soit masqué par le titre de la réunion. [#319](https://github.com/numerique-gouv/b3desk/issues/319)
+- Implémentation de la délégation de réunions, permettant à un utilisateur de déléguer sa participation à une autre personne. [#241](https://github.com/numerique-gouv/b3desk/pulls/241) (via #226)
 
 ### Évolutions techniques
-- Correction de la compatibilité avec Keycloak. [#317](https://github.com/numerique-gouv/b3desk/issues/317)
-- Suppression des liens statiques au profit de liens dynamiques.
-- Mise à jour de la version principale vers 1.6.1dev et 1.5.9dev.
+- Correction de la compatibilité avec Keycloak dans le pipeline CI. [#317](https://github.com/numerique-gouv/b3desk/issues/317)
+- Mise à jour vers la version 1.6.1dev et 1.5.9dev.
+- Mises à jour de plusieurs dépendances : `lxml`, `python-dotenv`, `authlib`, `mako`, `pytest`, `uv`, `cryptography`, `pygments`, `requests`.
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances :
-    - `authlib` de 1.6.9 à 1.6.11
-    - `mako` de 1.3.10 à 1.3.11
-    - `pytest` de 9.0.2 à 9.0.3
-    - `uv` de 0.9.26 à 0.11.6
-    - `cryptography` de 46.0.5 à 46.0.7
-    - `pygments` de 2.19.2 à 2.20.0
-    - `requests` de 2.32.5 à 2.33.0
+- Aucune information supplémentaire disponible.
