@@ -180,6 +180,7 @@
         │   │   ├── cv_errors.py
         │   │   ├── document_error.py
         │   │   ├── domain_errors.py
+        │   │   ├── metiers_error.py
         │   │   └── offer_errors.py
         │   ├── gateways
         │   │   ├── __init__.py
@@ -197,6 +198,7 @@
         │   │   ├── corps_repository_interface.py
         │   │   ├── cv_metadata_repository_interface.py
         │   │   ├── document_repository_interface.py
+        │   │   ├── metier_repository_interface.py
         │   │   ├── offers_repository_interface.py
         │   │   ├── repository_factory_interface.py
         │   │   └── vector_repository_interface.py
@@ -303,6 +305,7 @@
         │   │   │   │   ├── 0017_rawdocument_error_msg.py
         │   │   │   │   ├── 0018_rawdocument_processed_at.py
         │   │   │   │   ├── 0019_rawdocument_processing.py
+        │   │   │   │   ├── 0020_alter_rawdocument_document_type.py
         │   │   │   │   └── __init__.py
         │   │   │   ├── models
         │   │   │   │   ├── __init__.py
@@ -330,11 +333,17 @@
         │   │       │   ├── 0017_populate_processed_at.py
         │   │       │   ├── 0018_alter_vectorizeddocumentmodel_options_and_more.py
         │   │       │   ├── 0019_remove_vectorizeddocumentmodel_embedding_hnsw_idx_and_more.py
+        │   │       │   ├── 0020_create_metiers_table.py
+        │   │       │   ├── 0021_update_metiers_table.py
+        │   │       │   ├── 0022_remove_metiermodel_competences.py
+        │   │       │   ├── 0023_alter_metiermodel_external_id.py
+        │   │       │   ├── 0024_alter_metiermodel_code_emploi_csp.py
         │   │       │   └── __init__.py
         │   │       └── models
         │   │           ├── __init__.py
         │   │           ├── concours.py
         │   │           ├── corps.py
+        │   │           ├── metier.py
         │   │           └── offer.py
         │   ├── exceptions
         │   │   ├── __init__.py
@@ -372,6 +381,7 @@
         │   │   │   ├── document_cleaner.py
         │   │   │   ├── load_documents_strategies.py
         │   │   │   ├── load_documents_strategy_factory.py
+        │   │   │   ├── metier_cleaner.py
         │   │   │   ├── offers_cleaner.py
         │   │   │   ├── pelage_checks.py
         │   │   │   └── text_extractor.py
@@ -397,6 +407,7 @@
         │           ├── __init__.py
         │           ├── postgres_concours_repository.py
         │           ├── postgres_corps_repository.py
+        │           ├── postgres_metier_repository.py
         │           ├── postgres_offers_repository.py
         │           └── qdrant_repository.py
         ├── locale
@@ -648,6 +659,7 @@
         │       ├── in_memory_corps_repository.py
         │       ├── in_memory_cv_metadata_repository.py
         │       ├── in_memory_document_repository.py
+        │       ├── in_memory_metier_repository.py
         │       ├── in_memory_offers_repository.py
         │       ├── in_memory_vector_repository.py
         │       ├── mock_api_response_factory.py
@@ -655,4 +667,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-130 directories, 527 files
+130 directories, 539 files

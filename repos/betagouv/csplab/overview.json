@@ -1,27 +1,22 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet est en cours de développement et vise à accompagner le travail des employeurs de la fonction publique.",
+  "description": "Accompagner le travail des employeurs de la fonction publique. Ce projet vise à soutenir les acteurs de la fonction publique dans leurs tâches quotidiennes.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Authentification & Accès",
     "Recherche & Filtres",
-    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
-    "Intelligence Artificielle & NLP"
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Django",
     "PostgreSQL",
-    "Docker",
-    "Docker Compose",
-    "uv",
-    "Direnv",
-    "Jupyter",
-    "psycopg",
-    "pydantic",
+    "Redis",
     "qdrant"
   ],
   "components": [
@@ -32,15 +27,16 @@
   ],
   "auth": {
     "methods": [
-      "none"
+      "jwt"
     ]
   },
-  "tests": "pytest",
-  "workflows": [
-    "CI",
-    "CD"
+  "tests": [
+    "pytest"
   ],
-  "lastActivity": "2026-04-20T18:08:05+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-04-22T17:11:00+00:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -48,13 +44,13 @@
     "stars": 10,
     "forks": 1,
     "contributors": null,
-    "openIssues": 43
+    "openIssues": 52
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Intelligence Artificielle & NLP"
+    "Sécurité & Auth"
   ]
 }
