@@ -20,11 +20,10 @@
 │       ├── common:create-release-note.yaml
 │       ├── common:deploy-preview.yaml
 │       ├── common:deploy.yaml
-│       ├── server:pull-request.yml
+│       ├── common:quality-control.yml
 │       ├── site:e2e.yaml
 │       ├── site:generate-pr-comment.yaml
-│       ├── site:storybook.yaml
-│       └── site:tests.yaml
+│       └── site:storybook.yaml
 ├── .gitignore
 ├── .gitmodules
 ├── .husky
@@ -54,7 +53,6 @@
 │   │   ├── README.md
 │   │   ├── cron.json
 │   │   ├── env.d.ts
-│   │   ├── eslint.config.mjs
 │   │   ├── package.json
 │   │   ├── pnpm-lock.yaml
 │   │   ├── prisma
@@ -478,7 +476,6 @@
 │       │       ├── decodeRuleName.ts
 │       │       ├── encodeRuleName.ts
 │       │       └── getNamespace.ts
-│       ├── eslint.config.js
 │       ├── i18next-parser.config.js
 │       ├── mdx-components.tsx
 │       ├── next.config.ts
@@ -2182,8 +2179,31 @@
 ├── knip.json
 ├── package.json
 ├── packages
-│   └── .gitkeep
+│   ├── .gitkeep
+│   └── core
+│       ├── package.json
+│       ├── src
+│       │   ├── features
+│       │   │   ├── actions
+│       │   │   │   ├── data
+│       │   │   │   │   ├── actions
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── meat-reduction-fr.ts
+│       │   │   │   │   ├── add-action.sh
+│       │   │   │   │   ├── add-theme.sh
+│       │   │   │   │   └── themes
+│       │   │   │   │       ├── food-fr.ts
+│       │   │   │   │       └── index.ts
+│       │   │   │   └── types
+│       │   │   │       ├── action-media.ts
+│       │   │   │       ├── action.ts
+│       │   │   │       └── theme.ts
+│       │   │   └── geo
+│       │   │       └── types
+│       │   │           └── language.ts
+│       │   └── index.ts
+│       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-542 directories, 1691 files
+552 directories, 1701 files
