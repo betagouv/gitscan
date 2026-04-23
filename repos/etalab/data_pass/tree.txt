@@ -1043,6 +1043,7 @@
 │   │   └── service_provider_decorator.rb
 │   ├── facades
 │   │   ├── abstract_dashboard_facade.rb
+│   │   ├── api_errors_facade.rb
 │   │   ├── dashboard_demandes_facade.rb
 │   │   ├── dashboard_habilitations_facade.rb
 │   │   ├── instruction
@@ -1118,6 +1119,7 @@
 │   │   │   └── update_user_roles_attribute.rb
 │   │   ├── affect_default_reason_to_instruction_modification_request.rb
 │   │   ├── application_interactor.rb
+│   │   ├── assign_create_params_for_create_authorization_request.rb
 │   │   ├── assign_default_data_to_authorization_request.rb
 │   │   ├── assign_documents_to_instructor_draft_request.rb
 │   │   ├── assign_france_connect_defaults.rb
@@ -1127,6 +1129,7 @@
 │   │   ├── change_user_current_organization.rb
 │   │   ├── check_applicant_belongs_to_organization.rb
 │   │   ├── concerns
+│   │   │   ├── authorization_request_permitted_keys.rb
 │   │   │   ├── documents_affector.rb
 │   │   │   ├── mon_compte_pro_payloads.rb
 │   │   │   └── pro_connect_payloads.rb
@@ -1135,7 +1138,6 @@
 │   │   ├── create_authorization_request_changelog.rb
 │   │   ├── create_authorization_request_event_model.rb
 │   │   ├── create_authorization_request_from_instructor_draft.rb
-│   │   ├── create_authorization_request_model.rb
 │   │   ├── create_authorization_request_reopening_cancellation.rb
 │   │   ├── create_authorization_request_transfer_model.rb
 │   │   ├── create_denial_of_authorization_model.rb
@@ -1167,11 +1169,15 @@
 │   │   │   ├── test_webhook.rb
 │   │   │   ├── test_webhook_if_url_changed.rb
 │   │   │   └── update_webhook_model.rb
+│   │   ├── enqueue_organization_insee_refresh.rb
+│   │   ├── ensure_authorization_request_is_updatable.rb
 │   │   ├── ensure_instructor_draft_not_claimed.rb
 │   │   ├── ensure_user_is_organization_member.rb
 │   │   ├── execute_authorization_request_bridge.rb
 │   │   ├── find_applicant.rb
 │   │   ├── find_authorization_request.rb
+│   │   ├── find_or_create_applicant_from_api.rb
+│   │   ├── find_or_create_organization_for_api.rb
 │   │   ├── find_or_create_organization_model.rb
 │   │   ├── find_or_create_organization_through_mon_compte_pro.rb
 │   │   ├── find_or_create_organization_through_pro_connect.rb
@@ -1180,14 +1186,17 @@
 │   │   ├── find_or_create_user_through_pro_connect.rb
 │   │   ├── find_organization.rb
 │   │   ├── increment_authorization_request_unread_counter.rb
+│   │   ├── link_applicant_to_organization.rb
 │   │   ├── mark_authorization_as_revoked.rb
 │   │   ├── mark_authorizations_as_revoked.rb
 │   │   ├── mark_instructor_draft_as_claimed.rb
 │   │   ├── regenerate_instructor_draft_request_public_id.rb
+│   │   ├── resolve_authorization_request_form.rb
 │   │   ├── restore_authorization_request_to_authorization.rb
 │   │   ├── restore_authorization_request_to_latest_authorization.rb
 │   │   ├── revoke_child_authorizations.rb
 │   │   ├── run_malware_scan_on_documents.rb
+│   │   ├── save_authorization_request.rb
 │   │   ├── save_instructor_draft_request.rb
 │   │   ├── send_authorization_request_transfer_email_to_users.rb
 │   │   ├── send_invitation_email_instructor_draft_request.rb
@@ -1200,6 +1209,7 @@
 │   │   ├── update_instructor_draft_request_with_user_and_organization.rb
 │   │   ├── update_organization_insee_payload.rb
 │   │   ├── update_organization_on_authorization_request.rb
+│   │   ├── validate_api_data_keys.rb
 │   │   └── verify_contacts_emails_asynchronously.rb
 │   ├── javascript
 │   │   ├── application.js
@@ -1441,6 +1451,8 @@
 │   │   │   ├── update_data_provider.rb
 │   │   │   ├── update_habilitation_type.rb
 │   │   │   └── update_user_roles.rb
+│   │   ├── after_create_authorization_request.rb
+│   │   ├── after_update_authorization_request.rb
 │   │   ├── application_organizer.rb
 │   │   ├── approve_authorization_request.rb
 │   │   ├── archive_authorization_request.rb
@@ -1453,6 +1465,8 @@
 │   │   ├── change_current_organization_through_pro_connect.rb
 │   │   ├── claim_instructor_draft_request.rb
 │   │   ├── create_authorization_request.rb
+│   │   ├── create_authorization_request_from_api.rb
+│   │   ├── create_authorization_request_model.rb
 │   │   ├── create_instructor_draft_request.rb
 │   │   ├── developer
 │   │   │   ├── create_webhook.rb
@@ -1474,6 +1488,8 @@
 │   │   ├── transfer_authorization_request_to_new_applicant.rb
 │   │   ├── transfer_authorization_request_to_new_organization.rb
 │   │   ├── update_authorization_request.rb
+│   │   ├── update_authorization_request_from_api.rb
+│   │   ├── update_authorization_request_model.rb
 │   │   └── update_instructor_draft_request.rb
 │   ├── policies
 │   │   ├── application_policy.rb
@@ -1534,6 +1550,7 @@
 │   │   ├── abstract_insee_api_client.rb
 │   │   ├── abstract_search_engine_builder.rb
 │   │   ├── abstract_yaml_configuration.rb
+│   │   ├── announcement_banner.rb
 │   │   ├── authorization_definition_configurations.rb
 │   │   ├── authorization_request_changelog_presenter.rb
 │   │   ├── authorization_request_form_configurations.rb
@@ -2123,6 +2140,7 @@
 │       │   └── new.html.erb
 │       ├── shared
 │       │   ├── _alerts.html.erb
+│       │   ├── _announcement_banner.html.erb
 │       │   ├── _dashboard_skip_links.html.erb
 │       │   ├── _display_document.html.erb
 │       │   ├── _display_documents.html.erb
@@ -2170,6 +2188,7 @@
 │   ├── sync_identity_providers.rb
 │   └── worktree-build
 ├── config
+│   ├── announcement_banner.yml
 │   ├── application.rb
 │   ├── authorization_definitions
 │   │   ├── api_entreprise.yml
@@ -2281,6 +2300,7 @@
 │   ├── locales
 │   │   ├── activerecord.fr.yml
 │   │   ├── admin.fr.yml
+│   │   ├── api_errors.fr.yml
 │   │   ├── authorization_request_forms.fr.yml
 │   │   ├── components.fr.yml
 │   │   ├── developers.fr.yml
@@ -2440,6 +2460,7 @@
 │   │   ├── 20260401152848_add_dyn_suffix_to_habilitation_type_slugs.rb
 │   │   ├── 20260403092328_create_admin_changes.rb
 │   │   ├── 20260403121548_add_admin_change_constraint_to_authorization_request_events.rb
+│   │   ├── 20260414070427_add_api_change_constraint_to_authorization_request_events.rb
 │   │   ├── 20260415134608_add_banned_at_and_ban_reason_to_users.rb
 │   │   └── 20260416154456_add_ban_reason_check_constraint_to_users.rb
 │   ├── rails_pulse_migrate
@@ -2462,6 +2483,7 @@
 │   ├── api_particulier
 │   │   └── france_connect
 │   │       └── editeurs_certifies.md
+│   ├── banniere_annonce.md
 │   ├── conception.md
 │   ├── dashboard-comportement-utilisateur.md
 │   ├── datagouv-habilitations-sync.md
@@ -2833,6 +2855,7 @@
 │   │   └── service_provider_decorator_spec.rb
 │   ├── facades
 │   │   ├── abstract_dashboard_facade_spec.rb
+│   │   ├── api_errors_facade_spec.rb
 │   │   ├── dashboard_demandes_facade_spec.rb
 │   │   ├── dashboard_habilitations_facade_spec.rb
 │   │   ├── instruction
@@ -2951,15 +2974,19 @@
 │   │   │   ├── replay_webhook_attempt_spec.rb
 │   │   │   ├── save_webhook_attempt_spec.rb
 │   │   │   └── test_webhook_spec.rb
+│   │   ├── find_or_create_applicant_from_api_spec.rb
+│   │   ├── find_or_create_organization_for_api_spec.rb
 │   │   ├── find_or_create_organization_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_organization_through_pro_connect_spec.rb
 │   │   ├── find_or_create_user_through_mon_compte_pro_spec.rb
 │   │   ├── find_or_create_user_through_pro_connect_spec.rb
+│   │   ├── link_applicant_to_organization_spec.rb
 │   │   ├── restore_authorization_request_to_latest_authorization_spec.rb
 │   │   ├── revoke_child_authorizations_spec.rb
 │   │   ├── run_malware_scan_on_documents_spec.rb
-│   │   └── stats
-│   │       └── fetch_stats_data_spec.rb
+│   │   ├── stats
+│   │   │   └── fetch_stats_data_spec.rb
+│   │   └── validate_api_data_keys_spec.rb
 │   ├── jobs
 │   │   ├── backfill_malware_scan_sha256_job_spec.rb
 │   │   ├── datagouv_habilitations_sync_job_spec.rb
@@ -3076,6 +3103,7 @@
 │   │   ├── cancel_authorization_reopening_spec.rb
 │   │   ├── cancel_next_authorization_request_stage_spec.rb
 │   │   ├── claim_instructor_draft_request_spec.rb
+│   │   ├── create_authorization_request_from_api_spec.rb
 │   │   ├── create_authorization_request_spec.rb
 │   │   ├── create_instructor_draft_request_spec.rb
 │   │   ├── developer
@@ -3129,6 +3157,7 @@
 │   │   │       ├── authorization_request_events_controller_spec.rb
 │   │   │       ├── authorization_request_forms_controller_spec.rb
 │   │   │       ├── authorization_requests_controller_spec.rb
+│   │   │       ├── authorization_requests_write_spec.rb
 │   │   │       ├── authorizations_controller_spec.rb
 │   │   │       ├── credentials_controller_spec.rb
 │   │   │       └── webhook_attempts_controller_spec.rb
@@ -3149,6 +3178,7 @@
 │   │   ├── webhook_authorization_serializer_spec.rb
 │   │   └── webhook_serializer_spec.rb
 │   ├── services
+│   │   ├── announcement_banner_spec.rb
 │   │   ├── authorization_request_changelog_presenter_spec.rb
 │   │   ├── authorization_request_tabs_builder_spec.rb
 │   │   ├── authorization_requests_search_engine_builder_spec.rb
@@ -3224,4 +3254,4 @@
     ├── .keep
     └── javascript
         └── .keep
-444 directories, 2920 files
+444 directories, 2950 files
