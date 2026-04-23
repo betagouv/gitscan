@@ -333,6 +333,7 @@
 │   │       │   │   │   ├── _notice_incomplete.scss
 │   │       │   │   │   └── _table_criteres.scss
 │   │       │   │   ├── pdf
+│   │       │   │   │   ├── _header_eva.scss
 │   │       │   │   │   └── _header_evapro.scss
 │   │       │   │   └── sidebar
 │   │       │   │       └── _parametres.scss
@@ -484,6 +485,8 @@
 │   │   │   ├── annexe_diagnostic_component.rb
 │   │   │   ├── annexe_positionnement_component.pdf.erb
 │   │   │   ├── annexe_positionnement_component.rb
+│   │   │   ├── annexe_positionnement_eva_component.pdf.erb
+│   │   │   ├── annexe_positionnement_eva_component.rb
 │   │   │   ├── bienvenue_component.html.erb
 │   │   │   ├── bienvenue_component.pdf.erb
 │   │   │   ├── bienvenue_component.rb
@@ -538,6 +541,8 @@
 │   │   ├── pdf
 │   │   │   ├── entete_page_component.erb
 │   │   │   ├── entete_page_component.rb
+│   │   │   ├── header_eva_comparaison_component.erb
+│   │   │   ├── header_eva_comparaison_component.rb
 │   │   │   ├── header_evapro_component.erb
 │   │   │   ├── header_evapro_component.rb
 │   │   │   ├── pied_page_component.erb
@@ -639,6 +644,7 @@
 │   │   ├── file_input.rb
 │   │   ├── image_file_input.rb
 │   │   ├── numero_telephone_input.rb
+│   │   ├── select_input.rb
 │   │   ├── siret_input.rb
 │   │   └── toggle_input.rb
 │   ├── jobs
@@ -1317,6 +1323,7 @@
 │   │   │   ├── evaluation
 │   │   │   │   ├── annexe_diagnostic_component.yml
 │   │   │   │   ├── annexe_positionnement_component.yml
+│   │   │   │   ├── annexe_positionnement_eva_component.yml
 │   │   │   │   ├── competence_transversale_component.yml
 │   │   │   │   ├── competences_transversales_component.yml
 │   │   │   │   ├── notice_incomplete_component.yml
@@ -1712,7 +1719,8 @@
 │   │   ├── 20260330130653_create_opcos_parcours_type.rb
 │   │   ├── 20260402152415_rattache_parcours_type_aux_opcos.rb
 │   │   ├── 20260408100000_renomme_usage_eva_entreprises_en_evapro.rb
-│   │   └── 20260409152506_ajoute_code_commune_a_structure.rb
+│   │   ├── 20260409152506_ajoute_code_commune_a_structure.rb
+│   │   └── 20260421120000_initialise_usage_structures_administratives.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1837,94 +1845,7 @@
 │   ├── favicon.ico
 │   ├── images
 │   │   └── signature.png
-│   ├── javascripts
-│   │   └── i18n.js
-│   ├── robots.txt
-│   └── tarteaucitron
-│       ├── LICENSE
-│       ├── README.md
-│       ├── SECURITY.md
-│       ├── advertising.js
-│       ├── advertising.min.js
-│       ├── css
-│       │   ├── tarteaucitron.css
-│       │   └── tarteaucitron.min.css
-│       ├── lang
-│       │   ├── tarteaucitron.ar.js
-│       │   ├── tarteaucitron.ar.min.js
-│       │   ├── tarteaucitron.bg.js
-│       │   ├── tarteaucitron.bg.min.js
-│       │   ├── tarteaucitron.ca.js
-│       │   ├── tarteaucitron.ca.min.js
-│       │   ├── tarteaucitron.cn.js
-│       │   ├── tarteaucitron.cn.min.js
-│       │   ├── tarteaucitron.cs.js
-│       │   ├── tarteaucitron.cs.min.js
-│       │   ├── tarteaucitron.da.js
-│       │   ├── tarteaucitron.da.min.js
-│       │   ├── tarteaucitron.de.js
-│       │   ├── tarteaucitron.de.min.js
-│       │   ├── tarteaucitron.el.js
-│       │   ├── tarteaucitron.el.min.js
-│       │   ├── tarteaucitron.en.js
-│       │   ├── tarteaucitron.en.min.js
-│       │   ├── tarteaucitron.es.js
-│       │   ├── tarteaucitron.es.min.js
-│       │   ├── tarteaucitron.et.js
-│       │   ├── tarteaucitron.et.min.js
-│       │   ├── tarteaucitron.fi.js
-│       │   ├── tarteaucitron.fi.min.js
-│       │   ├── tarteaucitron.fr.js
-│       │   ├── tarteaucitron.fr.min.js
-│       │   ├── tarteaucitron.hr.js
-│       │   ├── tarteaucitron.hr.min.js
-│       │   ├── tarteaucitron.hu.js
-│       │   ├── tarteaucitron.hu.min.js
-│       │   ├── tarteaucitron.it.js
-│       │   ├── tarteaucitron.it.min.js
-│       │   ├── tarteaucitron.ja.js
-│       │   ├── tarteaucitron.ja.min.js
-│       │   ├── tarteaucitron.kr.js
-│       │   ├── tarteaucitron.kr.min.js
-│       │   ├── tarteaucitron.lb.js
-│       │   ├── tarteaucitron.lb.min.js
-│       │   ├── tarteaucitron.lt.js
-│       │   ├── tarteaucitron.lt.min.js
-│       │   ├── tarteaucitron.lv.js
-│       │   ├── tarteaucitron.lv.min.js
-│       │   ├── tarteaucitron.nl.js
-│       │   ├── tarteaucitron.nl.min.js
-│       │   ├── tarteaucitron.no.js
-│       │   ├── tarteaucitron.no.min.js
-│       │   ├── tarteaucitron.oc.js
-│       │   ├── tarteaucitron.oc.min.js
-│       │   ├── tarteaucitron.pl.js
-│       │   ├── tarteaucitron.pl.min.js
-│       │   ├── tarteaucitron.pt.js
-│       │   ├── tarteaucitron.pt.min.js
-│       │   ├── tarteaucitron.ro.js
-│       │   ├── tarteaucitron.ro.min.js
-│       │   ├── tarteaucitron.ru.js
-│       │   ├── tarteaucitron.ru.min.js
-│       │   ├── tarteaucitron.se.js
-│       │   ├── tarteaucitron.se.min.js
-│       │   ├── tarteaucitron.sk.js
-│       │   ├── tarteaucitron.sk.min.js
-│       │   ├── tarteaucitron.sv.js
-│       │   ├── tarteaucitron.sv.min.js
-│       │   ├── tarteaucitron.tr.js
-│       │   ├── tarteaucitron.tr.min.js
-│       │   ├── tarteaucitron.uk.js
-│       │   ├── tarteaucitron.uk.min.js
-│       │   ├── tarteaucitron.vi.js
-│       │   ├── tarteaucitron.vi.min.js
-│       │   ├── tarteaucitron.zh.js
-│       │   └── tarteaucitron.zh.min.js
-│       ├── package.json
-│       ├── tarteaucitron.js
-│       ├── tarteaucitron.min.js
-│       ├── tarteaucitron.services.js
-│       └── tarteaucitron.services.min.js
+│   └── robots.txt
 ├── scalingo.json
 ├── script
 │   └── create_structure_siret_non_officiel.rb
@@ -1959,6 +1880,7 @@
 │   │   │   └── structures_locales_controller_spec.rb
 │   │   ├── api
 │   │   │   ├── evaluations
+│   │   │   │   ├── collections_evenements_controller_spec.rb
 │   │   │   │   └── fins_controller_spec.rb
 │   │   │   └── evaluations_controller_spec.rb
 │   │   ├── eva
@@ -2095,6 +2017,7 @@
 │   │   │   └── structure_preview.rb
 │   │   └── structure_spec.rb
 │   ├── models
+│   │   ├── ability_opco_restrictions_spec.rb
 │   │   ├── actualite_spec.rb
 │   │   ├── affiliation_opco_service_spec.rb
 │   │   ├── annonce_generale_spec.rb
@@ -2286,6 +2209,7 @@
 │   │   ├── statistiques_campagne_spec.rb
 │   │   ├── statistiques_evaluation_spec.rb
 │   │   ├── statistiques_structure_spec.rb
+│   │   ├── structure_administrative_spec.rb
 │   │   ├── structure_locale_spec.rb
 │   │   ├── structure_spec.rb
 │   │   ├── syntheses_evapro_pour_index_spec.rb
@@ -2302,6 +2226,7 @@
 │   │   │   └── fin_evaluations_spec.rb
 │   │   ├── evaluations_spec.rb
 │   │   ├── evenements_spec.rb
+│   │   ├── inscription_informations_compte_spec.rb
 │   │   ├── inscription_invitation_embarquement_spec.rb
 │   │   ├── inscription_invitation_invalide_spec.rb
 │   │   ├── inscription_invitation_mauvaise_structure_spec.rb
@@ -2361,4 +2286,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-335 directories, 2082 files
+331 directories, 2011 files
