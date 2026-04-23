@@ -1,29 +1,27 @@
-## Changelog : grist-core (30 derniers jours, au 2026-04-08)
+## Changelog : grist-core (30 derniers jours, au 2026-05-22)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations de la stabilité et de la fiabilité du logiciel, notamment en corrigeant des problèmes de tests aléatoires et en améliorant la gestion des imports depuis Airtable. Des efforts ont également été déployés pour améliorer l'expérience utilisateur, notamment dans les formulaires et l'interface d'administration, ainsi que pour la traduction dans plusieurs langues. Enfin, des fondations pour de nouvelles fonctionnalités, comme les automatisations et l'authentification, ont été posées.
+Les dernières semaines ont été marquées par des améliorations de la stabilité et de la correction de tests automatisés, ainsi que par des avancées significatives dans l'importation de données depuis Airtable et la gestion des automatisations. Des améliorations d'accessibilité ont également été apportées aux formulaires, et des traductions ont été mises à jour.
 
 ### Évolutions fonctionnelles
-- **Import Airtable :** Amélioration de l'importation depuis Airtable, avec la prise en charge des couleurs des choix et la conversion des références de champs en colonnes de type "Ref" (#2199, #2201). Possibilité de mettre à jour les lignes existantes lors de l'importation (#2216).
-- **Formulaires :** Amélioration de l'accessibilité des champs "select" pour les lecteurs d'écran (#2164).
-- **Automatisations :** Ajout d'une nouvelle interface utilisateur pour les déclencheurs de documents dans le cadre des automatisations (#2205).
-- **Authentification :** Ajout d'une page de configuration initiale et d'une connexion via clé d'amorçage (#2250).
-- **Suggestions :** Amélioration de l'affichage des différences dans le mode suggestion (#2140).
-- **SCIM :** Accélération de la recherche d'utilisateurs dans le protocole SCIM (#2070).
-- **Gestion des abonnements :** Ajout de bannières d'abonnement et mise en lecture seule du site en cas de problème d'abonnement.
+- **Import Airtable :** Amélioration de l'importation depuis Airtable avec la prise en charge des couleurs des choix et la mise à jour des lignes existantes. [#2199](https://github.com/gristgouv/grist-core/issues/2199), [#2216](https://github.com/gristgouv/grist-core/issues/2216)
+- **Automatisation :** Nouvelle interface utilisateur pour les déclencheurs de documents dans la version SaaS.
+- **Formulaires :** Amélioration de l'accessibilité des champs "select" pour les lecteurs d'écran. [#2164](https://github.com/gristgouv/grist-core/issues/2164)
+- **Abonnements (SaaS) :** Ajout de bannières d'abonnement et passage en mode lecture seule en cas de problème avec l'abonnement.
+- **Page de configuration :** Ajout d'une page de configuration initiale.
+- **Connexion :** Ajout d'une connexion via clé de démarrage.
 
 ### Évolutions techniques
-- **Tests :** Correction de plusieurs tests aléatoires (flakiness) dans différents modules (DocTutorial, PageWidgetPicker, AccessRules2, Search2, UserManager, GranularAccess, CursorSaving) (#2244, #2247, #2248, #2250, #2224, #2232).
-- **Infrastructure :** Mise à jour de plusieurs dépendances, notamment `axios`, `mocha-webdriver`, `@gristlabs/sqlite3` et `handlebars`.
-- **Docker :** Amélioration des builds Docker et utilisation de `gristlabs/gvisor-unprivileged`.
-- **Architecture :** Refonte de la gestion des liens ancrés dans les commentaires pour utiliser des URL relatives.
-- **Storybook :** Ajout de Storybook pour documenter les composants de l'interface utilisateur.
-- **Vercel/NFT :** Remplacement de Browserify par Vercel/NFT pour la gestion des fichiers.
-- **Logging :** Réduction du niveau de détail des logs pour l'API.
+- **Tests :** Correction de plusieurs tests automatisés instables (DocTutorial, PageWidgetPicker, AccessRules2, Search2, GranularAccess, UserManager). [#2244](https://github.com/gristgouv/grist-core/issues/2244), [#2247](https://github.com/gristgouv/grist-core/issues/2247), [#2248](https://github.com/gristgouv/grist-core/issues/2248), [#2232](https://github.com/gristgouv/grist-core/issues/2232)
+- **Docker :** Mise à jour de la configuration pour les tests Docker.
+- **gvisor :** Utilisation de `gristlabs/gvisor-unprivileged` dans `gristlabs/grist-base`.
+- **Email :** Modification de la gestion des groupes d'emails pour une meilleure performance et flexibilité.
+- **Liens :** Mise à jour des liens vers le site et la documentation.
+- **Architecture :** Refactorisation pour séparer les tests spécifiques à l'édition Enterprise (grist-ee) du cœur du projet.
 
 ### Autres changements
-- **Traduction :** Ajout et mise à jour de traductions dans plusieurs langues (français, allemand, suédois, catalan, portugais brésilien, hongrois, grec, basque, tamoul, indonésien).
-- **Documentation :** Mise à jour de la documentation sur le format des données Grist et ajout d'informations sur les valeurs de référence.
-- **README :** Mise à jour de la liste des fonctionnalités dans le fichier README.md.
+- **Traductions :** Mise à jour des traductions en français, allemand, portugais (Brésil), catalan, suédois.
+- **Dépendances :** Mise à jour de la dépendance `handlebars` (4.7.7 -> 4.7.9) et `mocha-webdriver` (0.3.3 -> 0.3.5).
+- **Documentation :** Mise à jour du fichier README.md.
 - **CLA :** Signature du CLA par plusieurs contributeurs.
-- **Nettoyage de code :** Diverses corrections de typos et améliorations de la lisibilité du code.
+- **Automatisation des traductions :** Mise en place d'une automatisation pour les clés de traduction.
