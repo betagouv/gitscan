@@ -1,15 +1,13 @@
-## Changelog : statistiques-impact (30 derniers jours, au 03 avril 2026)
+## Changelog : statistiques-impact (30 derniers jours, au 2026-04-21)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au site statistiques-impact au cours du dernier mois. Les modifications incluent des améliorations de la gestion des adaptateurs de données, une simplification des clients de données et l'ajout d'un fichier changelog pour suivre les évolutions du projet.
+Ce mois-ci, les efforts de développement se sont concentrés sur la correction d'un problème lié à la configuration de l'environnement, améliorant ainsi la stabilité et la fiabilité du site. Aucune nouvelle fonctionnalité n'a été ajoutée, mais cette correction est essentielle pour assurer le bon fonctionnement de la plateforme.
 
 ### Évolutions fonctionnelles
-- Amélioration du format de retour des méthodes `get_data` des clients de données, pour une meilleure lisibilité et utilisation des données.
-- Suppression d'un client en double pour PostHog/Visio, simplifiant ainsi la configuration et la maintenance.
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Modification des adaptateurs de données pour autoriser les produits sans informations, offrant une plus grande flexibilité dans la configuration des sources de données. [#2](https://github.com/numerique-gouv/statistiques-impact/pulls/2)
-- Correction du linting du dernier fichier de migration pour assurer la qualité du code et la conformité aux standards du projet.
+- Correction d'un problème de configuration de l'environnement avec `ftenv` [#issue à identifier si existante](https://github.com/numerique-gouv/statistiques-impact/issues/).
 
 ### Autres changements
-- Ajout d'un fichier `CHANGELOG.md` pour documenter les changements futurs du projet, suivant les conventions [Keep a Changelog](https://keepachangelog.com/en/1.0.0).
+Aucun autre changement significatif à signaler.
