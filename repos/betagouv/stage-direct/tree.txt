@@ -1,0 +1,186 @@
+.
+├── .circleci
+│   └── config.yml
+├── .gitignore
+├── .npmrc
+├── Procfile
+├── README.md
+├── apps
+│   └── web
+│       ├── .env.example
+│       ├── package.json
+│       ├── prisma
+│       │   ├── migrations
+│       │   │   ├── 20260423070136_init
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260423082404_user_role_nullable
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260423082644_mds_fonction_nullable
+│       │   │   │   └── migration.sql
+│       │   │   └── migration_lock.toml
+│       │   ├── schema.prisma
+│       │   └── seed.ts
+│       ├── prisma.config.ts
+│       ├── public
+│       │   └── stage-direct-logo.svg
+│       ├── src
+│       │   ├── __tests__
+│       │   │   ├── auditeur.integration.test.ts
+│       │   │   ├── dashboard.integration.test.ts
+│       │   │   ├── fixtures
+│       │   │   │   └── factories.ts
+│       │   │   └── helpers
+│       │   │       ├── setup-integration.ts
+│       │   │       ├── test-caller.ts
+│       │   │       └── test-db.ts
+│       │   ├── components
+│       │   │   ├── brand-top.tsx
+│       │   │   ├── footer.tsx
+│       │   │   ├── header.tsx
+│       │   │   ├── ui
+│       │   │   │   ├── create-toast.tsx
+│       │   │   │   ├── dropdown.tsx
+│       │   │   │   ├── toaster.module.css
+│       │   │   │   └── toaster.tsx
+│       │   │   └── user-menu.tsx
+│       │   ├── features
+│       │   │   ├── authentification
+│       │   │   │   ├── components
+│       │   │   │   │   ├── auth-layout.module.css
+│       │   │   │   │   ├── auth-layout.tsx
+│       │   │   │   │   ├── password-input.tsx
+│       │   │   │   │   └── proconnect-button.tsx
+│       │   │   │   ├── prefetch.ts
+│       │   │   │   ├── reinitialiser-son-mot-de-passe
+│       │   │   │   │   ├── forgot-password-form.tsx
+│       │   │   │   │   ├── forgot-password-page.tsx
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── reset-password-form.tsx
+│       │   │   │   │   └── server
+│       │   │   │   │       ├── schemas
+│       │   │   │   │       │   ├── forgot-password.ts
+│       │   │   │   │       │   └── reset-password.ts
+│       │   │   │   │       ├── use-forgot-password.ts
+│       │   │   │   │       └── use-reset-password.ts
+│       │   │   │   ├── s-inscrire
+│       │   │   │   │   ├── index.tsx
+│       │   │   │   │   ├── role-tabs.module.css
+│       │   │   │   │   ├── role-tabs.tsx
+│       │   │   │   │   ├── server
+│       │   │   │   │   │   ├── schemas
+│       │   │   │   │   │   │   └── sign-up.ts
+│       │   │   │   │   │   └── use-sign-up.ts
+│       │   │   │   │   └── sign-up-form.tsx
+│       │   │   │   └── se-connecter
+│       │   │   │       ├── credentials-form.tsx
+│       │   │   │       ├── index.tsx
+│       │   │   │       ├── server
+│       │   │   │       │   ├── schemas
+│       │   │   │       │   │   └── sign-in.ts
+│       │   │   │       │   └── use-sign-in.ts
+│       │   │   │       └── sign-in-page.module.css
+│       │   │   └── onboarding
+│       │   │       ├── index.tsx
+│       │   │       ├── onboarding-form.tsx
+│       │   │       └── server
+│       │   │           ├── schemas
+│       │   │           │   └── onboarding.ts
+│       │   │           └── use-onboarding.ts
+│       │   ├── generated
+│       │   │   └── prisma
+│       │   │       ├── browser.ts
+│       │   │       ├── client.ts
+│       │   │       ├── commonInputTypes.ts
+│       │   │       ├── enums.ts
+│       │   │       ├── internal
+│       │   │       │   ├── class.ts
+│       │   │       │   ├── prismaNamespace.ts
+│       │   │       │   └── prismaNamespaceBrowser.ts
+│       │   │       ├── models
+│       │   │       │   ├── Account.ts
+│       │   │       │   ├── Alerte.ts
+│       │   │       │   ├── Auditeur.ts
+│       │   │       │   ├── Circulaire.ts
+│       │   │       │   ├── Crf.ts
+│       │   │       │   ├── Dcs.ts
+│       │   │       │   ├── Evaluation.ts
+│       │   │       │   ├── EvaluationCrf.ts
+│       │   │       │   ├── Juridiction.ts
+│       │   │       │   ├── Mds.ts
+│       │   │       │   ├── Promotion.ts
+│       │   │       │   ├── Relance.ts
+│       │   │       │   ├── Session.ts
+│       │   │       │   ├── Stage.ts
+│       │   │       │   ├── User.ts
+│       │   │       │   └── Verification.ts
+│       │   │       └── models.ts
+│       │   ├── globals.css
+│       │   ├── helpers
+│       │   │   ├── border.css
+│       │   │   ├── colors.css
+│       │   │   ├── cursor.css
+│       │   │   ├── display.css
+│       │   │   ├── dropdown.css
+│       │   │   ├── flex.css
+│       │   │   ├── link.css
+│       │   │   ├── position.css
+│       │   │   ├── size.css
+│       │   │   ├── skeleton.css
+│       │   │   └── text.css
+│       │   ├── lib
+│       │   │   ├── auth-client.ts
+│       │   │   ├── auth-session.ts
+│       │   │   └── route-guards.ts
+│       │   ├── routeTree.gen.ts
+│       │   ├── router.tsx
+│       │   ├── routes
+│       │   │   ├── __root.tsx
+│       │   │   ├── api
+│       │   │   │   ├── -trpc.$.ts
+│       │   │   │   └── auth
+│       │   │   │       └── -$.ts
+│       │   │   ├── index.tsx
+│       │   │   ├── mot-de-passe-oublie.tsx
+│       │   │   ├── onboarding.tsx
+│       │   │   ├── reinitialiser-son-mot-de-passe.tsx
+│       │   │   ├── s-inscrire.tsx
+│       │   │   └── se-connecter.tsx
+│       │   ├── server
+│       │   │   ├── handler.ts
+│       │   │   ├── providers
+│       │   │   │   ├── auth.ts
+│       │   │   │   ├── brevo.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── prisma.ts
+│       │   │   │   └── s3.ts
+│       │   │   ├── router.ts
+│       │   │   ├── routers
+│       │   │   │   ├── alerte.ts
+│       │   │   │   ├── auditeur.ts
+│       │   │   │   ├── authentification.ts
+│       │   │   │   ├── dashboard.ts
+│       │   │   │   ├── evaluation.ts
+│       │   │   │   ├── juridiction.ts
+│       │   │   │   ├── promotion.ts
+│       │   │   │   └── stage.ts
+│       │   │   └── trpc.ts
+│       │   ├── types
+│       │   │   └── tanstack-start-api.d.ts
+│       │   └── utils
+│       │       └── trpc.ts
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       └── vitest.config.ts
+├── biome.json
+├── docker-compose.yml
+├── package.json
+├── packages
+│   └── cli
+│       ├── package.json
+│       ├── src
+│       │   └── index.ts
+│       ├── tsconfig.json
+│       └── tsup.config.ts
+├── pnpm-lock.yaml
+└── pnpm-workspace.yaml
+48 directories, 137 files
