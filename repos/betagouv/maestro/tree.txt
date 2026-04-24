@@ -519,7 +519,6 @@
 │   │   ├── programmingPlanController.ts
 │   │   ├── sachaCommemoratifsController.ts
 │   │   ├── sampleController.integration.test.ts
-│   │   ├── sampleController.test.ts
 │   │   ├── sampleController.ts
 │   │   ├── specificDataFieldConfigController.ts
 │   │   └── userController.ts
@@ -635,7 +634,8 @@
 │   │   │   ├── 089-sacha-sftp-login.ts
 │   │   │   ├── 089-sample-compliance.ts
 │   │   │   ├── 089-split-sampled-at.ts
-│   │   │   └── 090-refactor-status.ts
+│   │   │   ├── 090-refactor-status.ts
+│   │   │   └── 091-analysis-dai.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -675,6 +675,8 @@
 │   │   └── validator.ts
 │   ├── package.json
 │   ├── repositories
+│   │   ├── analysisDaiRepository.test.ts
+│   │   ├── analysisDaiRepository.ts
 │   │   ├── analysisErrorsRepository.test.ts
 │   │   ├── analysisErrorsRepository.ts
 │   │   ├── analysisReportDocumentsRepository.test.ts
@@ -749,11 +751,13 @@
 │   ├── scripts
 │   │   ├── searchBadLMR.ts
 │   │   ├── searchResidueComplexWithoutAnalyte.ts
+│   │   ├── sendDAI.ts
 │   │   └── updateSSD2Referential.ts
 │   ├── sentry.mjs
 │   ├── server.test.ts
 │   ├── server.ts
 │   ├── services
+│   │   ├── analysisDaiProcessor.ts
 │   │   ├── authService
 │   │   │   ├── authService.ts
 │   │   │   ├── index.ts
@@ -761,6 +765,8 @@
 │   │   ├── csvService
 │   │   │   ├── csvService.test.ts
 │   │   │   └── csvService.ts
+│   │   ├── daiSendingService.test.ts
+│   │   ├── daiSendingService.ts
 │   │   ├── documentService.ts
 │   │   ├── ediSacha
 │   │   │   ├── __snapshots__
@@ -821,6 +827,7 @@
 │   │   ├── pdfService
 │   │   │   └── pdfService.ts
 │   │   ├── s3Service.ts
+│   │   ├── supportDocumentProcessor.ts
 │   │   └── zipService.ts
 │   ├── templates
 │   │   ├── analysisRequest
@@ -948,6 +955,10 @@
 │   │   │       ├── ResidueCompliance.ts
 │   │   │       ├── ResidueKind.ts
 │   │   │       └── ResultKind.ts
+│   │   ├── AnalysisDai
+│   │   │   ├── AnalysisDai.ts
+│   │   │   ├── AnalysisDaiSentMethod.ts
+│   │   │   └── AnalysisDaiState.ts
 │   │   ├── AppRouteLinks
 │   │   │   └── AppRouteLinks.ts
 │   │   ├── Auth
@@ -1061,4 +1072,4 @@
     ├── env.d.ts
     └── express-jwt
         └── index.d.ts
-204 directories, 859 files
+205 directories, 869 files
