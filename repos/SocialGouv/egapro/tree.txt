@@ -113,6 +113,9 @@
 │   │       │   └── valkey.configmap.yaml
 │   │       └── values.yaml
 │   ├── templates
+│   │   ├── apisix-suit.configmap.yaml
+│   │   ├── apisix-suit.ingress.yaml
+│   │   ├── apisix-suit.yaml
 │   │   ├── audit-cleanup-cron.yaml
 │   │   ├── export-cron.yaml
 │   │   └── gip-mds-import-cron.yaml
@@ -125,6 +128,8 @@
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
+├── docs
+│   └── SUIT-API.md
 ├── package.json
 ├── packages
 │   └── app
@@ -170,6 +175,7 @@
 │       │   ├── 0026_add_referents_table.sql
 │       │   ├── 0027_add_global_settings.sql
 │       │   ├── 0028_add_cse_opinion_completed_at.sql
+│       │   ├── 0029_add_declaration_submitted_at.sql
 │       │   └── meta
 │       │       ├── 0000_snapshot.json
 │       │       ├── 0001_snapshot.json
@@ -208,14 +214,12 @@
 │       │           └── proconnect-logo.svg
 │       ├── scripts
 │       │   ├── audit-cleanup.mjs
-│       │   ├── copy-dsfr.js
+│       │   ├── copy-dsfr.mjs
 │       │   ├── copy-swagger-ui.mjs
 │       │   ├── entrypoint.sh
 │       │   ├── fetch-large-companies.ts
 │       │   ├── generate-edge-case-gip-data.ts
 │       │   ├── generate-mock-gip-data.ts
-│       │   ├── generate-suit-signature.js
-│       │   ├── generate-suit-signing-keys.sh
 │       │   └── migrate.mjs
 │       ├── src
 │       │   ├── __tests__
@@ -232,8 +236,11 @@
 │       │   │   │   ├── liste-referents
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── page.tsx
-│       │   │   │   └── parametres
-│       │   │   │       └── page.tsx
+│       │   │   │   ├── parametres
+│       │   │   │   │   └── page.tsx
+│       │   │   │   └── stats
+│       │   │   │       └── campagne
+│       │   │   │           └── page.tsx
 │       │   │   ├── aide
 │       │   │   │   ├── nous-contacter
 │       │   │   │   │   └── page.tsx
@@ -354,6 +361,7 @@
 │       │   │   ├── admin-declarations.e2e.ts
 │       │   │   ├── admin-impersonation-read-only.e2e.ts
 │       │   │   ├── admin-referents.e2e.ts
+│       │   │   ├── admin-stats-campagne.e2e.ts
 │       │   │   ├── admin.e2e.ts
 │       │   │   ├── auth.setup.ts
 │       │   │   ├── campaign-deadlines-gating.e2e.ts
@@ -444,17 +452,27 @@
 │       │   │   │   │   │   └── constants.ts
 │       │   │   │   │   └── types.ts
 │       │   │   │   ├── schemas.ts
-│       │   │   │   └── settings
-│       │   │   │       ├── ActiveYearForm.tsx
-│       │   │   │       ├── AdminSettingsPage.tsx
-│       │   │   │       ├── CampaignDeadlinesForm.tsx
+│       │   │   │   ├── settings
+│       │   │   │   │   ├── AdminSettingsPage.tsx
+│       │   │   │   │   ├── CampaignDeadlinesForm.tsx
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── AdminSettingsPage.test.tsx
+│       │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
+│       │   │   │   │   │   └── schemas.test.ts
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── schemas.ts
+│       │   │   │   └── stats
+│       │   │   │       ├── CampaignProgressionChart.module.scss
+│       │   │   │       ├── CampaignProgressionChart.tsx
+│       │   │   │       ├── CampaignProgressionTable.tsx
+│       │   │   │       ├── CampaignStatsPage.tsx
+│       │   │   │       ├── YearsFilter.tsx
 │       │   │   │       ├── __tests__
-│       │   │   │       │   ├── ActiveYearForm.test.tsx
-│       │   │   │       │   ├── AdminSettingsPage.test.tsx
-│       │   │   │       │   ├── CampaignDeadlinesForm.test.tsx
-│       │   │   │       │   └── schemas.test.ts
+│       │   │   │       │   ├── CampaignProgressionTable.test.tsx
+│       │   │   │       │   └── YearsFilter.test.tsx
 │       │   │   │       ├── index.ts
-│       │   │   │       └── schemas.ts
+│       │   │   │       ├── schemas.ts
+│       │   │   │       └── types.ts
 │       │   │   ├── aide
 │       │   │   │   ├── AideCallout.tsx
 │       │   │   │   ├── AideIllustration.tsx
@@ -809,10 +827,12 @@
 │       │   │   │   │   │   └── UserAccountMenu.test.tsx
 │       │   │   │   │   └── index.tsx
 │       │   │   │   ├── ImpersonateBanner.tsx
+│       │   │   │   ├── PublicChrome.tsx
 │       │   │   │   ├── ResourceBanner.tsx
 │       │   │   │   ├── __tests__
 │       │   │   │   │   ├── Breadcrumb.test.tsx
 │       │   │   │   │   ├── ImpersonateBanner.test.tsx
+│       │   │   │   │   ├── PublicChrome.test.tsx
 │       │   │   │   │   └── ResourceBanner.test.tsx
 │       │   │   │   ├── index.ts
 │       │   │   │   └── shared
@@ -968,6 +988,7 @@
 │       │   │   │   │   └── useReferentsSearchForm.ts
 │       │   │   │   └── types.ts
 │       │   │   ├── shared
+│       │   │   │   ├── CompanySizeFilter.tsx
 │       │   │   │   ├── DsfrTable.tsx
 │       │   │   │   ├── FileUpload.module.scss
 │       │   │   │   ├── FileUpload.tsx
@@ -975,6 +996,7 @@
 │       │   │   │   ├── PhoneField.tsx
 │       │   │   │   ├── SubmitModal.tsx
 │       │   │   │   ├── __tests__
+│       │   │   │   │   ├── CompanySizeFilter.test.tsx
 │       │   │   │   │   ├── DsfrTable.test.tsx
 │       │   │   │   │   ├── Pagination.test.tsx
 │       │   │   │   │   ├── getDsfrModal.test.ts
@@ -1006,6 +1028,7 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── adminReferents.test.ts
 │       │   │   │   │   │   ├── adminSettings.test.ts
+│       │   │   │   │   │   ├── adminStats.test.ts
 │       │   │   │   │   │   ├── company.test.ts
 │       │   │   │   │   │   ├── cseOpinion.finalize.test.ts
 │       │   │   │   │   │   ├── cseOpinion.test.ts
@@ -1017,6 +1040,7 @@
 │       │   │   │   │   ├── adminDeclarations.ts
 │       │   │   │   │   ├── adminReferents.ts
 │       │   │   │   │   ├── adminSettings.ts
+│       │   │   │   │   ├── adminStats.ts
 │       │   │   │   │   ├── company.ts
 │       │   │   │   │   ├── cseOpinion.ts
 │       │   │   │   │   ├── declaration.ts
@@ -1070,17 +1094,16 @@
 │       │   │       │   ├── gipMds.test.ts
 │       │   │       │   ├── s3.test.ts
 │       │   │       │   ├── suit.test.ts
-│       │   │       │   ├── suitApiAuth.test.ts
 │       │   │       │   ├── uploadPipeline.test.ts
 │       │   │       │   └── weez.test.ts
 │       │   │       ├── clamav.ts
 │       │   │       ├── fileStreaming.ts
 │       │   │       ├── fileUpload.ts
 │       │   │       ├── fileValidation.ts
+│       │   │       ├── gatewaySource.ts
 │       │   │       ├── gipMds.ts
 │       │   │       ├── s3.ts
 │       │   │       ├── suit.ts
-│       │   │       ├── suitApiAuth.ts
 │       │   │       ├── uploadPipeline.ts
 │       │   │       └── weez.ts
 │       │   ├── test
@@ -1098,4 +1121,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── sonar-project.properties
-206 directories, 894 files
+211 directories, 912 files
