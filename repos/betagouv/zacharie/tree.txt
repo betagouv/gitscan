@@ -12,7 +12,9 @@
 │       └── tests.yml
 ├── .gitignore
 ├── .npmrc
+├── .prettierignore
 ├── .vscode
+│   ├── extensions.json
 │   └── settings.json
 ├── CLAUDE.md
 ├── LICENSE
@@ -47,6 +49,8 @@
 │   │   │   ├── 20260319125544_is_zacharie_admin
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260319125730_role
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260422074603_svi_carcasse_relation
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -186,6 +190,7 @@
 │   ├── .dockerignore
 │   ├── .gitignore
 │   ├── .npmrc
+│   ├── .prettierignore
 │   ├── README.md
 │   ├── __tests__
 │   │   ├── fei-steps.test.ts
@@ -591,6 +596,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260319125730_role
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260422074603_svi_carcasse_relation
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── public
@@ -841,6 +848,7 @@
 │   │   │   │   ├── etg-destinataire-select-sous-traite.tsx
 │   │   │   │   ├── etg-fei.tsx
 │   │   │   │   ├── etg-fiches.tsx
+│   │   │   │   ├── etg-header-fiche.tsx
 │   │   │   │   ├── etg-layout.tsx
 │   │   │   │   ├── etg-navigation-menu.ts
 │   │   │   │   ├── etg-router.tsx
@@ -914,6 +922,7 @@
 │   │   │   │   ├── svi-deactivated.tsx
 │   │   │   │   ├── svi-fei.tsx
 │   │   │   │   ├── svi-fiches.tsx
+│   │   │   │   ├── svi-header-fiche.tsx
 │   │   │   │   ├── svi-layout.tsx
 │   │   │   │   ├── svi-navigation-menu.ts
 │   │   │   │   └── svi-router.tsx
@@ -1002,14 +1011,14 @@
 ├── doc
 │   ├── Instruction 2021-555_final.pdf
 │   ├── automatic reload.md
+│   ├── e2e-tests-status.md
 │   ├── from_fei_to_carcasse.md
 │   ├── project_overview
 │   │   ├── img1.1.png
 │   │   ├── img1.png
 │   │   ├── img2.png
 │   │   └── project_overview.md
-│   ├── remix pwa offline
-│   └── tree.txt
+│   └── remix pwa offline
 ├── e2e
 │   ├── .gitignore
 │   ├── .npmrc
@@ -1021,16 +1030,143 @@
 │   │   ├── init-db.ts
 │   │   └── reset-db.ts
 │   ├── tests
-│   │   ├── comptes-vides-desktop.spec.ts
-│   │   ├── comptes-vides-mobile.spec.ts
-│   │   ├── connexion.spec.ts
-│   │   ├── creation-comptes.spec.ts
-│   │   ├── fiche_circuit-long_simple_etg.spec.ts
-│   │   ├── fiche_circuit-long_simple_examinateur.spec.ts
-│   │   ├── fiche_circuit-long_simple_premier-detenteur.spec.ts
-│   │   └── fiche_dispatch_multi_destinataires.spec.ts
+│   │   ├── chains
+│   │   │   ├── 111-chain-circuit-long.spec.ts
+│   │   │   ├── 112-chain-circuit-court-direct.spec.ts
+│   │   │   ├── 113-chain-avec-collecteur.spec.ts
+│   │   │   ├── 114-chain-dispatch-hybride.spec.ts
+│   │   │   ├── 115-chain-refus-total-etg.spec.ts
+│   │   │   └── 116-chain-refus-partiel-svi.spec.ts
+│   │   ├── circuit-court
+│   │   │   ├── 89-reception-directe-pd.spec.ts
+│   │   │   ├── 90-prise-en-charge.spec.ts
+│   │   │   ├── 91-liste-triable.spec.ts
+│   │   │   ├── 92-onboarding-incomplet.spec.ts
+│   │   │   ├── 93-onboarding-complet.spec.ts
+│   │   │   ├── 94-profil.spec.ts
+│   │   │   ├── 95-fiche-recuperee-fin-de-chaine.spec.ts
+│   │   │   ├── 96-refus-carcasse.spec.ts
+│   │   │   └── 97-retransmission-interdite.spec.ts
+│   │   ├── collecteur
+│   │   │   ├── 62-reception-fiche-depuis-pd.spec.ts
+│   │   │   ├── 63-transmission-a-etg.spec.ts
+│   │   │   ├── 64-vue-carcasses-agregee.spec.ts
+│   │   │   ├── 65-refus-carcasse-en-collecte.spec.ts
+│   │   │   ├── 66-onboarding-incomplet-acces-restreint.spec.ts
+│   │   │   ├── 67-onboarding-complet.spec.ts
+│   │   │   ├── 68-profil.spec.ts
+│   │   │   ├── 69-post-inspection-svi.spec.ts
+│   │   │   ├── 70-fiche-cloturee-lecture-seule.spec.ts
+│   │   │   ├── 71-pas-de-transmission-svi-directe.spec.ts
+│   │   │   ├── 72-fiche-attribuee-autre-collecteur.spec.ts
+│   │   │   └── 73-hors-ligne-prise-en-charge.spec.ts
+│   │   ├── dispatch-isolation
+│   │   │   ├── 117-dispatch-2-etg-isolation-negative.spec.ts
+│   │   │   ├── 118-dispatch-etg-plus-collecteur.spec.ts
+│   │   │   ├── 119-dispatch-3-destinataires.spec.ts
+│   │   │   ├── 120-vue-agregee-etg-carcasses.spec.ts
+│   │   │   ├── 121-carcasse-intermediaire-api-leak.spec.ts
+│   │   │   ├── 122-refus-etg1-ne-propage-pas.spec.ts
+│   │   │   ├── 123-transmission-svi-n-expose-pas-etg2.spec.ts
+│   │   │   ├── 124-deux-chaines-svi-paralleles.spec.ts
+│   │   │   ├── 125-fiche-pd-2-groupes.spec.ts
+│   │   │   ├── 126-decisions-svi-divergentes-par-branche.spec.ts
+│   │   │   ├── 127-url-directe-carcasse-autre-branche.spec.ts
+│   │   │   ├── 128-modification-api-cross-branche.spec.ts
+│   │   │   └── fiche_dispatch_multi_destinataires.spec.ts
+│   │   ├── etg
+│   │   │   ├── 45-reception-avec-stockage-ccg.spec.ts
+│   │   │   ├── 48-vue-carcasses-agregee.spec.ts
+│   │   │   ├── 49-onboarding-incomplet-acces-restreint.spec.ts
+│   │   │   ├── 50-profil-entreprise.spec.ts
+│   │   │   ├── 51-utilisateurs-entreprise.spec.ts
+│   │   │   ├── 52-roles-internes-transport-reception.spec.ts
+│   │   │   ├── 53-notifications.spec.ts
+│   │   │   ├── 54-partage-de-mes-donnees.spec.ts
+│   │   │   ├── 55-post-inspection-svi-decision-visible.spec.ts
+│   │   │   ├── 56-fiche-cloturee-lecture-seule.spec.ts
+│   │   │   ├── 57-transmission-sans-prochain-detenteur.spec.ts
+│   │   │   ├── 58-acces-cross-etg-refuse.spec.ts
+│   │   │   ├── 59-double-prise-en-charge.spec.ts
+│   │   │   ├── 60-refus-sans-motif.spec.ts
+│   │   │   ├── 61-transmission-hors-ligne.spec.ts
+│   │   │   └── fiche_circuit-long_simple_etg.spec.ts
+│   │   ├── examinateur
+│   │   │   ├── 01-creation-fiche-grand-gibier-mono.spec.ts
+│   │   │   ├── 03-creation-fiche-petit-gibier-lot.spec.ts
+│   │   │   ├── 04-creation-fiche-mixte.spec.ts
+│   │   │   ├── 05-creation-fiche-anomalies.spec.ts
+│   │   │   ├── 06-brouillon-persistance.spec.ts
+│   │   │   ├── 07-edition-carcasse-depuis-detail.spec.ts
+│   │   │   ├── 08-examinateur-pd-self-handoff.spec.ts
+│   │   │   ├── 09-onboarding-complet.spec.ts
+│   │   │   ├── 10-onboarding-incomplet-acces-restreint.spec.ts
+│   │   │   ├── 11-onboarding-partiel-formation-manquante.spec.ts
+│   │   │   ├── 12-profil-examinateur.spec.ts
+│   │   │   ├── 13-ccg-creation-profil.spec.ts
+│   │   │   ├── 14-ccg-edition.spec.ts
+│   │   │   ├── 15-fiche-svi-cloturee-vue-chasseur.spec.ts
+│   │   │   ├── 16-fiche-circuit-court-livree-vue-chasseur.spec.ts
+│   │   │   ├── 17-fiche-refusee-par-etg-vue-chasseur.spec.ts
+│   │   │   ├── 18-date-future-refusee.spec.ts
+│   │   │   ├── 19-heure-eviscération-invalide.spec.ts
+│   │   │   ├── 20-retirer-carcasse.spec.ts
+│   │   │   ├── 21-zero-carcasse-transmettre-disabled.spec.ts
+│   │   │   ├── 22-double-clic-transmettre.spec.ts
+│   │   │   ├── 23-deconnexion-pendant-formulaire.spec.ts
+│   │   │   ├── README.md
+│   │   │   └── fiche_circuit-long_simple_examinateur.spec.ts
+│   │   ├── premier-detenteur
+│   │   │   ├── 28-dispatch-etg-collecteur.spec.ts
+│   │   │   ├── 29-dispatch-commerce-de-detail.spec.ts
+│   │   │   ├── 30-ccg-creation-inline.spec.ts
+│   │   │   ├── 31-onboarding-incomplet-acces-restreint.spec.ts
+│   │   │   ├── 32-profil-informations-de-chasse.spec.ts
+│   │   │   ├── 33-partage-de-mes-donnees.spec.ts
+│   │   │   ├── 34-fiche-svi-cloturee-lecture-seule.spec.ts
+│   │   │   ├── 35-fiche-circuit-court-livree.spec.ts
+│   │   │   ├── 36-refus-carcasse-avant-transmission.spec.ts
+│   │   │   ├── 37-suppression-carcasse.spec.ts
+│   │   │   ├── 38-dispatch-groupe-vide.spec.ts
+│   │   │   ├── 39-changement-prochain-detenteur.spec.ts
+│   │   │   ├── 40-stockage-ccg-sans-ccg.spec.ts
+│   │   │   ├── 41-transmission-hors-ligne.spec.ts
+│   │   │   ├── 42-contact.spec.ts
+│   │   │   ├── 43-tableau-de-bord.spec.ts
+│   │   │   ├── README.md
+│   │   │   └── fiche_circuit-long_simple_premier-detenteur.spec.ts
+│   │   ├── svi
+│   │   │   ├── 74-inspection-acceptee.spec.ts
+│   │   │   ├── 75-inspection-refusee.spec.ts
+│   │   │   ├── 76-inspection-consignee.spec.ts
+│   │   │   ├── 77-traitement-assainissant.spec.ts
+│   │   │   ├── 78-cloture-automatique-j10.spec.ts
+│   │   │   ├── 79-vue-fiches.spec.ts
+│   │   │   ├── 80-vue-carcasses.spec.ts
+│   │   │   ├── 81-onboarding-incomplet.spec.ts
+│   │   │   ├── 82-profil.spec.ts
+│   │   │   ├── 83-fiche-cloturee-consultation.spec.ts
+│   │   │   ├── 84-revision-decision.spec.ts
+│   │   │   ├── 85-refus-sans-motif.spec.ts
+│   │   │   ├── 86-carcasse-manquante.spec.ts
+│   │   │   ├── 87-fiche-sans-carcasse-a-inspecter.spec.ts
+│   │   │   └── 88-svi-autre-departement.spec.ts
+│   │   └── transverse
+│   │       ├── 103-dead-routes-old-tableau-de-bord.spec.ts
+│   │       ├── 104-offline-create-online-sync.spec.ts
+│   │       ├── 105-role-based-route-access-matrix.spec.ts
+│   │       ├── 106-service-worker-cache-offline-reload.spec.ts
+│   │       ├── 107-logout-cleans-local-store.spec.ts
+│   │       ├── 108-changement-de-role-interdit.spec.ts
+│   │       ├── 109-session-expiree.spec.ts
+│   │       ├── 110-deep-link-fiche-inconnue.spec.ts
+│   │       ├── comptes-vides-desktop.spec.ts
+│   │       ├── comptes-vides-mobile.spec.ts
+│   │       ├── connexion.spec.ts
+│   │       └── creation-comptes.spec.ts
 │   └── utils
 │       ├── connect-with.ts
+│       ├── logout-and-connect.ts
 │       ├── network-throttling.ts
 │       └── react-select.ts
 ├── expo
@@ -1078,6 +1214,7 @@
 │   ├── fei-stats.sql
 │   ├── france-stats.sql
 │   └── refresh.sql
+├── package-lock.json
 ├── package.json
 └── tsconfig.json
-290 directories, 792 files
+301 directories, 918 files
