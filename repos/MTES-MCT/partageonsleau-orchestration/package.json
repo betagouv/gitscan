@@ -1,0 +1,30 @@
+{
+  "name": "partageonsleau-orchestration",
+  "version": "1.0.0",
+  "description": "Orchestrator for the partageons l'eau project",
+  "license": "MIT",
+  "author": "Alec de Guillebon",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "start": "node dist/index.js",
+    "dev": "node --env-file=.env --import tsx index.ts",
+    "test": "xo"
+  },
+  "engines": {
+    "node": "24.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "xo": "^2.0.2"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
