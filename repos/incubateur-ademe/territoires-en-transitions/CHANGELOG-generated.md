@@ -1,61 +1,42 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 21 avril 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches d'actions, des plans et des référentiels. Des corrections et des optimisations ont été apportées pour fluidifier les workflows, notamment concernant l'import de données, la gestion des statuts et des scores, ainsi que la navigation et l'affichage des informations. Des améliorations techniques ont également été réalisées pour la gestion des backups, la robustesse des tests et l'infrastructure.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches action, des plans et des indicateurs. Des corrections et des optimisations ont été apportées pour fluidifier les workflows, notamment lors de la création, modification et suppression d'éléments. L'interface utilisateur a également été revue pour une meilleure ergonomie, en particulier avec l'introduction d'un side panel et des améliorations sur l'édition en ligne.
 
 ### Évolutions fonctionnelles
-- **Fiches d'actions (FA) :**
-    - Amélioration de l'ergonomie de l'éditeur de fiches d'actions avec l'utilisation d'un side panel pour une meilleure gestion de l'espace.
-    - Correction d'un bug empêchant la mise à jour des budgets.
-    - Refonte de l'interface pour une meilleure gestion des sous-actions, notamment lors de l'import de plans.
-    - Amélioration du rendu et du wording des tags dans l'export PDF.
-    - Suppression du champ calendrier des fiches d'actions.
-    - Possibilité de modifier l'ordre des étapes legacy en sous-actions via un script de migration.
-- **Plans :**
-    - Ajout d'un endpoint backend pour créer un plan à partir d'un panier d'actions.
-    - Amélioration de la génération de rapports, notamment en évitant certaines requêtes et en limitant la parallélisation.
-    - Ajout des objectifs de la collectivité sur les graphes du PCAET dans les rapports.
-    - Envoi des plans et du parentId au système des communs.
-- **Référentiels :**
-    - Ajout d'un nouveau référentiel et possibilité de l'afficher/cacher via les préférences de la collectivité.
-    - Amélioration de la gestion des scores indicatifs et de leur affichage.
-    - Recalcul du score courant si la version du référentiel a changé.
-    - Possibilité de ne pas exporter les mesures désactivées.
-    - Ajout de vérifications des formules du référentiel.
-- **Interface utilisateur :**
-    - Amélioration de l'affichage des instances de gouvernance.
-    - Suppression du bouton d'accès à la collectivité en mode visite pour un utilisateur vérifié sans collectivité.
-    - Limitation de la hauteur du sélecteur de pilotes d'une SA.
-    - Affichage du prénom plutôt que du nom dans l'email de notification au pilote.
-    - Amélioration de la pagination de la page Actualités.
-    - Mise à jour de l'interface pour rendre le header des sous-actions cliquable.
-- **Authentification :**
-    - Amélioration de la gestion des erreurs lors de l'inscription.
+- Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions dans les plans [#1234](https://github.com/incubateur-ademe/territoires-en-transitions/issues/1234).
+- Il est maintenant possible d'ajouter la dernière note dans les rapports.
+- Amélioration de l'ergonomie de l'édition en ligne (inline edit) avec un nouveau composant et des corrections de typage.
+- Ajout d'un portail pour le menu d'édition des options d'un select dans la nouvelle fiche action.
+- Les étapes d'une fiche sont désormais transformées en sous-actions.
+- Ajout de la possibilité d'ajouter des tags et de les supprimer.
+- Amélioration de l'affichage des scores indicatifs.
+- Mise à jour de la page d'accueil avec une nouvelle bannière et une vidéo de présentation.
+- Refonte de la page "Programme" avec réintégration des témoignages et amélioration de la navigation.
+- Possibilité d'ajouter la dernière note dans les rapports.
+- Amélioration de l'affichage de l'état d'avancement des sous-actions.
+- Ajout d'un bloc "centralisez, pilotez, etc." sur la page d'accueil.
 
 ### Évolutions techniques
-- **Infrastructure :**
-    - Finalisation de la stratégie de backup et de restore de la base de données.
-    - Ajout de scripts de backup et de restore dans le CI/CD.
-    - Ajout du dashboard privé Streamlit dans le healthcheck.
-    - Reset des applications Streamlit keepalive.
-    - Mise à jour de la version de Node.js dans les actions GitHub.
-- **Tests :**
-    - Ajout de tests unitaires.
-    - Correction de tests flaky.
-    - Augmentation du timeout par défaut des tests.
-- **Code :**
-    - Refactoring et mutualisation de code (hooks d'accès aux données, gestion du titre des fiches d'actions).
-    - Suppression de code legacy et de feature flags obsolètes.
-    - Amélioration de la gestion des transactions dans la sauvegarde de l'historique des statuts et commentaires des actions.
-    - Utilisation d'une transaction pour sauvegarder l'historique des statuts et commentaires des actions.
-    - Amélioration du scope des requêtes dans l'iframe Streamlit.
-    - Correction de linter.
+- Refactorisation du code pour mutualiser des composants et simplifier la gestion des données (use-get-fiche, hooks d'accès aux données).
+- Suppression du code legacy et du feature flag associé.
+- Mise à jour des dépendances (Node.js, GitHub Actions).
+- Amélioration de la gestion des erreurs et des validations (dates, instances de gouvernance).
+- Optimisation des requêtes pour la génération de rapports.
+- Mise en place d'une stratégie de backup et restore de la base de données.
+- Ajout de tests E2E pour vérifier l'ouverture de la modale de saisie des données d'indicateur.
+- Ajout d'un endpoint backend pour créer un plan à partir d'un panier d'actions.
+- Mise à jour du spreadsheet pour l'import de plans.
+- Amélioration du healthcheck avec l'ajout du dashboard privé Streamlit.
+- Correction de problèmes de performance liés au scroll et à la navigation entre les onglets.
+- Suppression de vues SQL inutilisées.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Ajout de configurations pour l'utilisation de Claude.
-- Suppression de vues SQL inutilisées.
-- Mise à jour du spreadsheet utilisé pour l'import de données.
-- Amélioration de la page d'accueil et des pages du programme (bannière, vidéo, témoignages, navigation).
-- Correction de la gestion des fichiers de preuve de labellisation.
-- Ajout de la possibilité d'utiliser des fichiers CSV locaux pour importer les indicateurs, les référentiels et les questions de personnalisation.
+- Mise à jour de la documentation et du wording de l'application.
+- Corrections de typos et améliorations de l'ergonomie générale.
+- Ajout de vérifications des formules dans les référentiels.
+- Amélioration de la gestion des types de collectivités.
+- Correction de bugs mineurs et améliorations de la stabilité de l'application.
+- Mise à jour des tests et des configurations CI/CD.
+- Ajout de la gestion des erreurs pour la création de tickets depuis Crisp.
+- Ajout de la possibilité d'importer des indicateurs, des référentiels et des questions de personnalisation via des fichiers CSV locaux.
