@@ -1,27 +1,21 @@
-## Changelog : mobilic (30 derniers jours, au 17 avril 2026)
+## Changelog : mobilic (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent principalement sur l'interface d'administration de Mobilic, avec des améliorations significatives dans la gestion et l'affichage des statuts des missions, ainsi que des corrections de bugs et des optimisations de l'expérience utilisateur. Des corrections ont également été apportées à la gestion des contrôles et des redirections de l'application Agent Connect.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface d'administration, notamment la gestion des statuts des missions et l'affichage des validations. L'intégration de Brevo Conversations remplace Crisp pour le support client via chat en direct. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des statuts des missions dans l'interface d'administration, avec l'ajout de tags visuels pour identifier les missions validées et leur statut. [#834](https://github.com/MTES-MCT/mobilic/pull/834)
-- Ajout de la possibilité de naviguer directement vers les détails d'une mission depuis le tableau d'administration en cliquant sur une ligne dédiée. [#834](https://github.com/MTES-MCT/mobilic/pull/834)
-- Correction du comportement de l'application Agent Connect après une mise à niveau de Flask, assurant le bon fonctionnement des URL de redirection. [#824](https://github.com/MTES-MCT/mobilic/pull/824)
-- Correction d'un bug empêchant la réinitialisation correcte des contrôles après une action spécifique. [#825](https://github.com/MTES-MCT/mobilic/pull/825)
-- Amélioration de l'affichage des missions en attente de validation, avec des tooltips plus clairs.
-- Correction de l'affichage des infractions lorsque plusieurs missions d'une même journée sont en attente de validation.
+- **Administration des missions :** Ajout d'un tag "Validé" pour les missions validées, désactivation des liens vers les missions pour les jours déjà validés, et amélioration de l'affichage des statuts des missions. [#835](https://github.com/MTES-MCT/mobilic/issues/835)
+- **Chat en direct :** Remplacement de Crisp par Brevo Conversations pour le support client, avec une intégration spécifique pour l'environnement de contrôle. [#832](https://github.com/MTES-MCT/mobilic/issues/832)
+- **Amélioration de l'affichage des validations :** Clarification de la logique d'affichage des validations en attente et gestion des cas où plusieurs missions d'un même jour sont en attente de validation.
+- **Agent Connect :** Correction de l'URL de redirection après une mise à jour de Flask. [#824](https://github.com/MTES-MCT/mobilic/issues/824)
 
 ### Évolutions techniques
-- Refactorisation du code de validation pour améliorer la déduplication des employés dans le filtre de validation. [#831](https://github.com/MTES-MCT/mobilic/pull/831)
-- Extraction des labels de statut des missions dans une utilitaire partagée pour une meilleure maintenabilité.
-- Optimisation du code de la table de temps de travail pour corriger des problèmes identifiés par SonarCloud.
-- Amélioration de la validation des props des composants d'administration.
-- Standardisation des labels de statut des missions dans l'interface d'administration.
-- Correction de l'importation d'un composant dans le composant `MissionStatusTagBtn`.
+- **Refactoring des validations :** Déduplication du code de filtrage des validations pour améliorer la maintenabilité. [#833](https://github.com/MTES-MCT/mobilic/issues/833), [#831](https://github.com/MTES-MCT/mobilic/issues/831)
+- **Suppression de Crisp :** Suppression du SDK Crisp et des références associées dans le code et la documentation.
+- **Optimisations diverses :** Correction de plusieurs issues SonarCloud concernant l'accessibilité, la gestion des props et des objets globaux.
+- **Amélioration du code admin :** Nettoyage et correction de bugs dans les composants de l'interface d'administration, notamment la table des temps de travail et les tags de statut des missions.
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de l'interface utilisateur dans l'interface d'administration (couleurs, tailles, espacements).
-- Nettoyage du code et suppression de code obsolète dans la table de temps de travail.
-- Correction de la logique d'affichage des missions supprimées dans l'interface d'administration.
-- Correction d'un problème lié au remounting du composant `MissionDetails` lors du changement de mission.
-- Correction d'un bug empêchant l'ouverture du drawer de détails de mission en cliquant sur le tag de statut.
+- **Documentation :** Mise à jour de la politique de confidentialité pour refléter l'utilisation de Brevo et le changement de nom du ministère.
+- **Suppression de code obsolète :** Suppression d'imports inutilisés et de commentaires obsolètes.
+- **Styling :** Alignement des couleurs de la table augmentée avec les tokens DSFR.
