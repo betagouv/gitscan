@@ -1,40 +1,39 @@
-## Changelog : meet (30 derniers jours, au 17 avril 2026)
+## Changelog : meet (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité, l'accessibilité et l'ajout de nouvelles fonctionnalités pour la transcription et la collecte de métadonnées. Des corrections de bugs et des mises à jour de dépendances ont également été apportées pour améliorer la stabilité et la sécurité de la plateforme. L'équipe a également travaillé sur l'amélioration de l'expérience développeur et de l'infrastructure.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de la sécurité, de l'accessibilité et de la robustesse de la plateforme Meet. Des corrections de vulnérabilités ont été apportées, l'accessibilité a été renforcée pour les utilisateurs ayant des besoins spécifiques, et des améliorations ont été faites à la collecte de métadonnées pour mieux comprendre l'utilisation de la plateforme. De nouvelles fonctionnalités sont également en préparation, notamment l'amélioration de la transcription et du résumé des réunions.
 
 ### Évolutions fonctionnelles
-- Ajout du support multi-tenant et d'une nouvelle API pour les tâches de transcription asynchrone et de résumé (#1171).
-- Possibilité de télécharger les enregistrements avec un titre de document explicite pour une meilleure accessibilité (#1261).
-- Amélioration de l'accessibilité de la barre d'outils de réactions, avec un raccourci clavier pour l'ouvrir (#1262).
-- Extension des types de fichiers autorisés pour le partage (#1265).
-- Amélioration de l'affichage du raccourci clavier spécifique au système d'exploitation pour les participants (#1193).
+- Ajout de la prise en charge de formats de fichiers supplémentaires pour le partage de documents [#1265].
+- Amélioration de la gestion des tâches de transcription et de résumé, avec une API plus proche des exigences du gateway [#1171].
+- Possibilité de télécharger les enregistrements avec un titre de document explicite pour une meilleure accessibilité [#1261].
+- Amélioration du raccourci clavier pour la barre de réactions, permettant de la rouvrir facilement [#1262].
 
 ### Évolutions techniques
 - Mise à jour de plusieurs dépendances pour corriger des vulnérabilités de sécurité (Pillow, aiohttp, vite, django, pytest).
-- Utilisation de l'en-tête `Authorization` pour l'authentification avec le token LiveKit.
-- Refactorisation du système de réactions pour unifier l'état et le rendu.
+- Refactorisation du système de réactions pour unifier l'état et le rendu, améliorant ainsi la maintenabilité du code.
+- Utilisation de l'en-tête `Authorization` pour l'authentification des tokens LiveKit, renforçant la sécurité.
 - Amélioration de la gestion des erreurs Twirp pour les opérations sur les participants.
-- Ajout de la collecte de métadonnées sur l'activité VAD (Voice Activity Detection), les connexions et le chat.
-- Fixation de l'image Docker pour des builds reproductibles.
-- Configuration de l'engine de session via une variable d'environnement.
-- Suppression d'outils de développement obsolètes (Tilt).
-- Amélioration de la documentation Swagger pour clarifier l'exigence d'un slash final dans les URLs.
+- Ajout de la collecte de métadonnées sur les événements VAD (Voice Activity Detection), de connexion et de chat pour une meilleure analyse de l'utilisation.
+- Mise à jour de l'image frontend pour utiliser Alpine 3.23, corrigeant ainsi des vulnérabilités.
+- Pinning de l'image Docker pour des builds reproductibles.
+- Amélioration des tests unitaires pour le service de gestion des tokens JWT.
+- Ajout de la prise en charge de l'authentification multi-tenant.
 
 ### Autres changements
-- Ajout de tests unitaires pour le service de token JWT.
-- Amélioration de l'accessibilité de la navigation dans la barre latérale.
+- Amélioration de la documentation pour la méthode de résumé.
+- Suppression d'outils de développement obsolètes pour Tilt.
+- Corrections de l'indentation dans le Makefile.
+- Ajout de variables d'environnement pour les secrets dans Tilt.
+- Amélioration des logs pour ne plus inclure d'adresses email sensibles.
+- Ajout de contextes de sécurité pour les pods et conteneurs dans Helm.
+- Suppression de valeurs Helm inutilisées.
 - Optimisation de l'utilisation des sondages PostHog et enrichissement des métadonnées des événements.
-- Suppression de l'affichage des adresses e-mail dans les logs d'échec d'invitation.
-- Correction d'un bug empêchant la sélection correcte du périphérique lors d'une conférence.
-- Ajout de contexte de sécurité pour les pods et conteneurs dans le Helm chart.
-- Mise à jour du chart Helm vers la version 0.0.20.
-- Correction d'un bug dans l'endpoint de mise à jour des participants.
-- Suppression de la récupération d'informations secrètes externes obsolètes.
-- Ajout du support pour Docker Compose pour le service multi-user-transcriber.
-- Correction d'indentations dans le Makefile.
-- Amélioration de la gestion des erreurs de module avec uv-build.
-- Ajout de commentaires et amélioration de la documentation pour la méthode de résumé.
-- Suppression de valeurs Helm de développement inutilisées.
-- Ajout de la possibilité de configurer les secrets Kubernetes pour l'environnement Tilt.
-- Correction d'un warning concernant la longueur de la clé dans les tests.
+- Suppression de la commande de récupération des secrets externes obsolète.
+- Initialisation des secrets Kubernetes pour l'environnement de développement Tilt.
+- Correction de la simulation d'erreurs Twirp dans les tests.
+- Ajout de support pour Compose pour le service multi-user-transcriber.
+- Amélioration de la gestion des erreurs dans le webhook de notification.
+- Ajout d'un ignore ruff pour la commande ffprobe.
+- Correction du format de payload whisperX.
+- Ajout de support pour le format webm.
