@@ -46,17 +46,16 @@
     └── backend
         ├── .python-version
         ├── Dockerfile
-        ├── api
-        │   ├── __init__.py
-        │   ├── admin.py
-        │   ├── apps.py
-        │   ├── migrations
-        │   │   └── __init__.py
-        │   ├── models.py
-        │   ├── tests
-        │   │   ├── __init__.py
-        │   │   └── test_views.py
-        │   ├── tests.py
+        ├── demo
+        │   ├── forms.py
+        │   ├── management
+        │   │   └── commands
+        │   │       ├── __init__.py
+        │   │       ├── create_demo.py
+        │   │       └── createsuperuser.py
+        │   ├── templates
+        │   │   └── demo
+        │   │       └── token_exchange_form.html
         │   ├── urls.py
         │   └── views.py
         ├── locale
@@ -68,8 +67,25 @@
         │   ├── settings.py
         │   ├── urls.py
         │   └── wsgi.py
-        ├── migrations
-        │   └── __init__.py
         ├── pyproject.toml
+        ├── token_exchange
+        │   ├── __init__.py
+        │   ├── admin.py
+        │   ├── apps.py
+        │   ├── authentication.py
+        │   ├── factories.py
+        │   ├── migrations
+        │   │   ├── 0001_initial.py
+        │   │   └── __init__.py
+        │   ├── models.py
+        │   ├── permissions.py
+        │   ├── serializers.py
+        │   ├── tests
+        │   │   ├── __init__.py
+        │   │   ├── conftest.py
+        │   │   └── test_views.py
+        │   ├── token_generator.py
+        │   ├── urls.py
+        │   └── views.py
         └── uv.lock
-22 directories, 52 files
+26 directories, 64 files

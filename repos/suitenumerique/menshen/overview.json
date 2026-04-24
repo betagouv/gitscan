@@ -1,24 +1,25 @@
 {
   "url": "https://github.com/suitenumerique/menshen",
   "name": "menshen",
-  "description": "Ce projet est un serveur d'autorisation Token Exchange OAuth 2.0, construit avec Django. Il est actuellement en phase de démarrage et n'est pas encore prêt pour une utilisation en production.",
+  "description": "Ce projet est un serveur d'autorisation Token Exchange OAuth 2.0, construit avec Django. Il permet l'échange de jetons OAuth 2.0.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
-    "Échange de jetons"
+    "Authentification & Accès"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Django",
-    "dj-database-url",
     "djangorestframework",
-    "django-cors-headers",
+    "django-redis",
     "psycopg[binary]",
-    "django-redis"
+    "dj-database-url",
+    "django-cors-headers"
   ],
   "components": [
-    "Serveur d'autorisation OAuth 2.0",
-    "Django"
+    "API REST & GraphQL",
+    "Django",
+    "PostgreSQL & SQL",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -33,7 +34,7 @@
     "backend.yml",
     "security.yml"
   ],
-  "lastActivity": "2026-03-11T10:56:40+01:00",
+  "lastActivity": "2026-04-22T17:41:33Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
@@ -45,8 +46,8 @@
   },
   "tags": [
     "Sécurité & Auth",
-    "Token Exchange",
-    "Django & FastAPI",
-    "Données & Open Data"
+    "OAuth",
+    "Django",
+    "Python"
   ]
 }

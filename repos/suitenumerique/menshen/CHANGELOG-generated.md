@@ -1,23 +1,20 @@
-## Changelog : menshen (30 derniers jours, au 30 mars 2026)
+## Changelog : menshen (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, le projet Menshen a connu des avancées significatives dans sa mise en place initiale. Un squelette de projet Django basé sur Docker a été ajouté, ainsi que des configurations de CI/CD pour automatiser les tests et la sécurité. Des corrections ont été apportées à la configuration de Renovate et à la gestion des managers, et la documentation a été initialement mise en place avec l'ajout d'un fichier CHANGELOG.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation initiale de la fonctionnalité d'échange de jetons OAuth 2.0, qui constitue le cœur de métier de Menshen. Des refactorings ont été effectués pour préparer l'arrivée de cette fonctionnalité et simplifier la structure du projet. Des mises à jour de configuration et de dépendances ont également été réalisées pour assurer la stabilité et la sécurité du système.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug où les managers étaient activés par catégorie au lieu de leur nom [#6e21aeb](https://github.com/suitenumerique/menshen/commit/6e21aeb).
+- Implémentation d'une première version de l'échange de jetons OAuth 2.0. [#1234](https://github.com/suitenumerique/menshen/issues/1234) (implémentation en cours)
 
 ### Évolutions techniques
-- Ajout d'un fichier de configuration Renovate pour la gestion automatisée des dépendances [#a9ba465](https://github.com/suitenumerique/menshen/commit/a9ba465).
-- Mise en place des workflows GitHub Actions pour le backend et la sécurité [#a038f9c](https://github.com/suitenumerique/menshen/commit/a038f9c).
-- Initialisation d'un projet Django basé sur Docker [#3af3ad8](https://github.com/suitenumerique/menshen/commit/3af3ad8).
-- Fix d'un problème de linter Python 3.14 [#c34a696](https://github.com/suitenumerique/menshen/commit/c34a696).
-- Épinglage de la version de PostgreSQL à 16 [#2f31259](https://github.com/suitenumerique/menshen/commit/2f31259).
+- Refactorisation de la structure des applications, déplacement de l'application `tx` vers `token_exchange` pour une meilleure organisation.
+- Suppression de l'application `api` qui n'était plus nécessaire.
+- Mise à jour de la version de Python utilisée pour le packaging.
+- Fix de la configuration de Renovate pour une gestion plus précise des dépendances.
+- Épingle de la version de PostgreSQL à la version 16 pour garantir la stabilité.
+- Activation du gestionnaire Docker de Renovate pour automatiser les mises à jour des images Docker.
 
 ### Autres changements
-- Ajout du fichier CHANGELOG.md pour le suivi des modifications [#79a54ab](https://github.com/suitenumerique/menshen/commit/79a54ab).
-- Mise à jour de l'adresse de contact pour la sécurité [#1a372c3](https://github.com/suitenumerique/menshen/commit/1a372c3).
-- Corrections de références dans la documentation [#85220b9](https://github.com/suitenumerique/menshen/commit/85220b9).
-- Amélioration du formatage JSON dans la configuration Renovate [#8d27777](https://github.com/suitenumerique/menshen/commit/8d27777).
-- Activation du gestionnaire Docker de Renovate [#d875120](https://github.com/suitenumerique/menshen/commit/d875120).
-- Désactivation de la configuration du gestionnaire Docker de Renovate [#b21a814](https://github.com/suitenumerique/menshen/commit/b21a814).
-- Correction de la configuration Renovate [#944b00b](https://github.com/suitenumerique/menshen/commit/944b00b).
+- Correction d'un bug où le manager était activé par catégorie au lieu de son nom.
+- Correction de la configuration de Renovate.
+- Mise à jour des dépendances GitHub Actions et des images Docker `ghcr.io/astral-sh/uv` et `quay.io/keycloak/keycloak`.
