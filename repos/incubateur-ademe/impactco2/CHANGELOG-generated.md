@@ -1,26 +1,27 @@
-## Changelog : impactco2 (30 derniers jours, au 15 avril 2026)
+## Changelog : impactco2 (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la correction de bugs et l'amélioration de l'expérience utilisateur, notamment au niveau des étiquettes d'information et de l'intégration de contenu externe via des iframes. De nouvelles statistiques ont également été ajoutées et la gestion du temps d'engagement dans les simulateurs a été affinée.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes de fonctionnalités et de qualité. De nouveaux éléments de calcul ont été ajoutés, notamment des repas, et des corrections ont été apportées à l'affichage et à l'accessibilité de l'application. Des améliorations techniques ont également été réalisées pour optimiser les performances et la stabilité, notamment concernant l'intégration de tests visuels et la gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- Correction de l'adresse du Bioparc.
-- Amélioration de l'accessibilité des étiquettes d'information. [#876](https://github.com/incubateur-ademe/impactco2/issues/876)
-- Ajustement de la hauteur des boutons sur les étiquettes d'information animées pour la livraison.
-- Modification de la formulation des mentions légales sur les étiquettes.
-- Correction de la largeur maximale des étiquettes grises. [#877](https://github.com/incubateur-ademe/impactco2/issues/877)
+- Ajout de nouveaux repas pour le calcul de l'impact carbone. [#879](https://github.com/incubateur-ademe/impactco2/issues/879)
+- Amélioration de l'affichage des étiquettes (étiquette LR, étiquette de livraison) avec des ajustements de hauteur, de libellés et de largeur maximale.
+- Correction de l'adresse du Bioparc. [#876](https://github.com/incubateur-ademe/impactco2/issues/876)
 - Ajout de nouvelles statistiques. [#873](https://github.com/incubateur-ademe/impactco2/issues/873)
-- Gestion du temps d'engagement dans les simulateurs en fonction du contexte.
-- Mise en cache des données de la FAQ pour une meilleure performance. [#871](https://github.com/incubateur-ademe/impactco2/issues/871)
+- Gestion du temps d'engagement en fonction du simulateur. [#873](https://github.com/incubateur-ademe/impactco2/issues/873)
 
 ### Évolutions techniques
-- Optimisation de l'appel à la carte (callgmap) pour une exécution côté serveur. [#874](https://github.com/incubateur-ademe/impactco2/issues/874)
-- Suppression du rendu côté serveur (SSR) pour le contenu de Notion.
-- Ajout d'une gestion des erreurs (error boundary) aux composants Notion pour une meilleure robustesse.
-- Correction de valeurs dans le checker d'iframes.
-- Suppression d'une vérification inutile.
+- Intégration d'Integrabook pour les tests d'intégration visuels. [#878](https://github.com/incubateur-ademe/impactco2/issues/878)
+- Amélioration de la gestion des erreurs dans les composants Notion avec l'ajout de *error boundaries*.
+- Optimisation de l'appel de la carte (callgmap) dans une fonction serveur. [#874](https://github.com/incubateur-ademe/impactco2/issues/874)
+- Suppression du rendu côté serveur (SSR) sur la page Notion.
+- Correction de valeurs dans le *iframe checker*.
+- Mise à jour de npm. [#875](https://github.com/incubateur-ademe/impactco2/issues/875)
 
 ### Autres changements
-- Mise à jour de npm. [#875](https://github.com/incubateur-ademe/impactco2/issues/875)
-- Ajout de tests pour le Bioparc.
+- Ajout de logs pour le suivi de l'API.
+- Suppression de logs inutiles.
+- Ajout de tests sur le Bioparc.
 - Correction du zoom sur les logos du footer.
+- Amélioration de l'accessibilité des étiquettes.
+- Correction de petits problèmes de wording sur les étiquettes.

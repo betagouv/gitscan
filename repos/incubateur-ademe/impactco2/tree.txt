@@ -4,9 +4,11 @@
 ├── .github
 │   └── workflows
 │       ├── e2e.yml
-│       └── iframes.yml
+│       ├── iframes.yml
+│       └── sync-integrabook.yml
 ├── .gitignore
 ├── .npmrc
+├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc.json
 ├── .slugignore
@@ -176,6 +178,25 @@
 ├── eslint.config.mjs
 ├── iframe
 │   └── index.js
+├── integrabook
+│   ├── README.md
+│   ├── alimentation.html
+│   ├── api.html
+│   ├── chauffage.html
+│   ├── comparateur.html
+│   ├── config.js
+│   ├── detecteur.html
+│   ├── habillement.html
+│   ├── index.html
+│   ├── infographie.html
+│   ├── legacy-isolated.html
+│   ├── legacy.html
+│   ├── livraison.html
+│   ├── quiz.html
+│   ├── shared.css
+│   ├── shared.js
+│   ├── transport.html
+│   └── webcomponent.html
 ├── jest.config.ts
 ├── jest.polyfills.js
 ├── license
@@ -488,9 +509,13 @@
 │   │   ├── refrigirateur.svg
 │   │   ├── reineclaude.svg
 │   │   ├── repasavecduboeuf.svg
+│   │   ├── repasavecdulieunoir.svg
 │   │   ├── repasavecdupoissonblanc.svg
 │   │   ├── repasavecdupoissongras.svg
+│   │   ├── repasavecduporc.svg
 │   │   ├── repasavecdupoulet.svg
+│   │   ├── repasavecduthon.svg
+│   │   ├── repasavecduveau.svg
 │   │   ├── repasvegetalien.svg
 │   │   ├── repasvegetarien.svg
 │   │   ├── rer.svg
@@ -794,6 +819,12 @@
 │   │   ├── chataigne-en.png
 │   │   ├── chataigne-es.png
 │   │   ├── chataigne-fr.png
+│   │   ├── chaudiereabois-en.png
+│   │   ├── chaudiereabois-es.png
+│   │   ├── chaudiereabois-fr.png
+│   │   ├── chaudiereagranule-en.png
+│   │   ├── chaudiereagranule-es.png
+│   │   ├── chaudiereagranule-fr.png
 │   │   ├── chauffage-en.png
 │   │   ├── chauffage-es.png
 │   │   ├── chauffage-fr.png
@@ -854,9 +885,27 @@
 │   │   ├── clickcollect-en.png
 │   │   ├── clickcollect-es.png
 │   │   ├── clickcollect-fr.png
+│   │   ├── clickcollect15kg-en.png
+│   │   ├── clickcollect15kg-es.png
+│   │   ├── clickcollect15kg-fr.png
+│   │   ├── clickcollect2kg-en.png
+│   │   ├── clickcollect2kg-es.png
+│   │   ├── clickcollect2kg-fr.png
+│   │   ├── clickcollect30kg-en.png
+│   │   ├── clickcollect30kg-es.png
+│   │   ├── clickcollect30kg-fr.png
 │   │   ├── clickcollectdouce-en.png
 │   │   ├── clickcollectdouce-es.png
 │   │   ├── clickcollectdouce-fr.png
+│   │   ├── clickcollectdouce15kg-en.png
+│   │   ├── clickcollectdouce15kg-es.png
+│   │   ├── clickcollectdouce15kg-fr.png
+│   │   ├── clickcollectdouce2kg-en.png
+│   │   ├── clickcollectdouce2kg-es.png
+│   │   ├── clickcollectdouce2kg-fr.png
+│   │   ├── clickcollectdouce30kg-en.png
+│   │   ├── clickcollectdouce30kg-es.png
+│   │   ├── clickcollectdouce30kg-fr.png
 │   │   ├── climatisationenfrancejour-en.png
 │   │   ├── climatisationenfrancejour-es.png
 │   │   ├── climatisationenfrancejour-fr.png
@@ -1054,6 +1103,15 @@
 │   │   ├── livraisondomicile-en.png
 │   │   ├── livraisondomicile-es.png
 │   │   ├── livraisondomicile-fr.png
+│   │   ├── livraisondomicile15kg-en.png
+│   │   ├── livraisondomicile15kg-es.png
+│   │   ├── livraisondomicile15kg-fr.png
+│   │   ├── livraisondomicile2kg-en.png
+│   │   ├── livraisondomicile2kg-es.png
+│   │   ├── livraisondomicile2kg-fr.png
+│   │   ├── livraisondomicile30kg-en.png
+│   │   ├── livraisondomicile30kg-es.png
+│   │   ├── livraisondomicile30kg-fr.png
 │   │   ├── location-en.png
 │   │   ├── location-es.png
 │   │   ├── location-fr.png
@@ -1066,9 +1124,27 @@
 │   │   ├── magasin-en.png
 │   │   ├── magasin-es.png
 │   │   ├── magasin-fr.png
+│   │   ├── magasin15kg-en.png
+│   │   ├── magasin15kg-es.png
+│   │   ├── magasin15kg-fr.png
+│   │   ├── magasin2kg-en.png
+│   │   ├── magasin2kg-es.png
+│   │   ├── magasin2kg-fr.png
+│   │   ├── magasin30kg-en.png
+│   │   ├── magasin30kg-es.png
+│   │   ├── magasin30kg-fr.png
 │   │   ├── magasindouce-en.png
 │   │   ├── magasindouce-es.png
 │   │   ├── magasindouce-fr.png
+│   │   ├── magasindouce15kg-en.png
+│   │   ├── magasindouce15kg-es.png
+│   │   ├── magasindouce15kg-fr.png
+│   │   ├── magasindouce2kg-en.png
+│   │   ├── magasindouce2kg-es.png
+│   │   ├── magasindouce2kg-fr.png
+│   │   ├── magasindouce30kg-en.png
+│   │   ├── magasindouce30kg-es.png
+│   │   ├── magasindouce30kg-fr.png
 │   │   ├── main.png
 │   │   ├── mais-en.png
 │   │   ├── mais-es.png
@@ -1216,9 +1292,27 @@
 │   │   ├── pointrelais-en.png
 │   │   ├── pointrelais-es.png
 │   │   ├── pointrelais-fr.png
+│   │   ├── pointrelais15kg-en.png
+│   │   ├── pointrelais15kg-es.png
+│   │   ├── pointrelais15kg-fr.png
+│   │   ├── pointrelais2kg-en.png
+│   │   ├── pointrelais2kg-es.png
+│   │   ├── pointrelais2kg-fr.png
+│   │   ├── pointrelais30kg-en.png
+│   │   ├── pointrelais30kg-es.png
+│   │   ├── pointrelais30kg-fr.png
 │   │   ├── pointrelaisdouce-en.png
 │   │   ├── pointrelaisdouce-es.png
 │   │   ├── pointrelaisdouce-fr.png
+│   │   ├── pointrelaisdouce15kg-en.png
+│   │   ├── pointrelaisdouce15kg-es.png
+│   │   ├── pointrelaisdouce15kg-fr.png
+│   │   ├── pointrelaisdouce2kg-en.png
+│   │   ├── pointrelaisdouce2kg-es.png
+│   │   ├── pointrelaisdouce2kg-fr.png
+│   │   ├── pointrelaisdouce30kg-en.png
+│   │   ├── pointrelaisdouce30kg-es.png
+│   │   ├── pointrelaisdouce30kg-fr.png
 │   │   ├── poire-en.png
 │   │   ├── poire-es.png
 │   │   ├── poire-fr.png
@@ -1287,15 +1381,27 @@
 │   │   ├── repasavecduboeuf-en.png
 │   │   ├── repasavecduboeuf-es.png
 │   │   ├── repasavecduboeuf-fr.png
+│   │   ├── repasavecdulieunoir-en.png
+│   │   ├── repasavecdulieunoir-es.png
+│   │   ├── repasavecdulieunoir-fr.png
 │   │   ├── repasavecdupoissonblanc-en.png
 │   │   ├── repasavecdupoissonblanc-es.png
 │   │   ├── repasavecdupoissonblanc-fr.png
 │   │   ├── repasavecdupoissongras-en.png
 │   │   ├── repasavecdupoissongras-es.png
 │   │   ├── repasavecdupoissongras-fr.png
+│   │   ├── repasavecduporc-en.png
+│   │   ├── repasavecduporc-es.png
+│   │   ├── repasavecduporc-fr.png
 │   │   ├── repasavecdupoulet-en.png
 │   │   ├── repasavecdupoulet-es.png
 │   │   ├── repasavecdupoulet-fr.png
+│   │   ├── repasavecduthon-en.png
+│   │   ├── repasavecduthon-es.png
+│   │   ├── repasavecduthon-fr.png
+│   │   ├── repasavecduveau-en.png
+│   │   ├── repasavecduveau-es.png
+│   │   ├── repasavecduveau-fr.png
 │   │   ├── repasvegetalien-en.png
 │   │   ├── repasvegetalien-es.png
 │   │   ├── repasvegetalien-fr.png
@@ -2187,4 +2293,4 @@
 │   ├── transport.d.ts
 │   └── window.d.ts
 └── webpack.config.js
-172 directories, 2093 files
+173 directories, 2198 files
