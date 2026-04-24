@@ -168,6 +168,9 @@
 │   ├── migration-preview
 │   │   ├── alternative-build-ci.md
 │   │   └── plan-migration-preview.md
+│   ├── migration-recruiters
+│   │   ├── README.md
+│   │   └── bugs-et-incoherences.md
 │   ├── migration-temp
 │   │   ├── 00-README.md
 │   │   ├── 01-overview.md
@@ -248,6 +251,7 @@
 │   │   │   ├── sentry
 │   │   │   │   ├── sentry.fastify.ts
 │   │   │   │   └── sentry.ts
+│   │   │   ├── territoires.test.ts
 │   │   │   ├── territoires.ts
 │   │   │   └── utils
 │   │   │       ├── apiUtils.ts
@@ -260,6 +264,7 @@
 │   │   │       ├── errorManager.ts
 │   │   │       ├── fileUtils.ts
 │   │   │       ├── ftpUtils.ts
+│   │   │       ├── geolib.test.ts
 │   │   │       ├── geolib.ts
 │   │   │       ├── getStaticFilePath.ts
 │   │   │       ├── httpUtils.ts
@@ -285,7 +290,8 @@
 │   │   │   ├── StreamProcessorServer.ts
 │   │   │   ├── controllers
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── etablissementRecruteur.controller.test.ts.snap
+│   │   │   │   │   ├── etablissementRecruteur.controller.test.ts.snap
+│   │   │   │   │   └── jobsEtFormations.controller.test.ts.snap
 │   │   │   │   ├── _private
 │   │   │   │   │   ├── admin
 │   │   │   │   │   │   └── processor.admin.routes.ts
@@ -295,7 +301,6 @@
 │   │   │   │   │   ├── eligibleTrainingsForAppointment.controller.ts
 │   │   │   │   │   ├── etablissement.controller.ts
 │   │   │   │   │   └── formations.controller.ts
-│   │   │   │   ├── application.controller.test.ts
 │   │   │   │   ├── application.controller.ts
 │   │   │   │   ├── appointmentRequest.controller.ts
 │   │   │   │   ├── classification.controller.ts
@@ -388,7 +393,6 @@
 │   │   │   │   └── generateFranceTravailAccess.ts
 │   │   │   ├── jobs.ts
 │   │   │   ├── metabase
-│   │   │   │   ├── metabaseJobsCollection.ts
 │   │   │   │   └── metabaseRoleManagement360.ts
 │   │   │   ├── migrations
 │   │   │   │   └── migrations.ts
@@ -396,7 +400,8 @@
 │   │   │   │   └── sendMiseEnRelation.ts
 │   │   │   ├── offrePartenaire
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── fillSiretInfosForPartners.test.ts.snap
+│   │   │   │   │   ├── fillSiretInfosForPartners.test.ts.snap
+│   │   │   │   │   └── importFromStreamInXml.test.ts.snap
 │   │   │   │   ├── apec
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── importApec.test.ts.snap
@@ -528,6 +533,7 @@
 │   │   │   │   ├── importFromComputedToJobsPartners.ts
 │   │   │   │   ├── importFromStreamInCsv.ts
 │   │   │   │   ├── importFromStreamInJson.ts
+│   │   │   │   ├── importFromStreamInXml.test.ts
 │   │   │   │   ├── importFromStreamInXml.ts
 │   │   │   │   ├── importFromUrlInCsv.ts
 │   │   │   │   ├── importFromUrlInXml.ts
@@ -567,7 +573,6 @@
 │   │   │   │   │   ├── importLaposte.ts
 │   │   │   │   │   ├── laposteMapper.ts
 │   │   │   │   │   └── processLaposte.ts
-│   │   │   │   ├── lbaJobToJobsPartners.ts
 │   │   │   │   ├── leboncoin
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── importLeboncoin.test.ts.snap
@@ -611,7 +616,6 @@
 │   │   │   │   ├── validateComputedJobPartners.test.ts
 │   │   │   │   └── validateComputedJobPartners.ts
 │   │   │   ├── oneTimeJob
-│   │   │   │   ├── addNafDataToCacheEntreprise.ts
 │   │   │   │   ├── analyzeCfaBlockList.ts
 │   │   │   │   ├── analyzeClosedCompanies.ts
 │   │   │   │   ├── cleanClosedCompanies.test.ts
@@ -619,14 +623,17 @@
 │   │   │   │   ├── renvoiMailCreationCompte.ts
 │   │   │   │   └── resyncLbaJobsPartnersStats.ts
 │   │   │   ├── partenaireExport
+│   │   │   │   ├── FTExport.types.ts
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── exportJobsToS3V2.test.ts.snap
+│   │   │   │   │   ├── exportJobsToS3V2.test.ts.snap
+│   │   │   │   │   └── exportToFranceTravail.test.ts.snap
 │   │   │   │   ├── exportBlacklistAlgo.ts
 │   │   │   │   ├── exportContactsToBrevo.ts
 │   │   │   │   ├── exportJobsToS3.ts
 │   │   │   │   ├── exportJobsToS3V2.test.ts
 │   │   │   │   ├── exportJobsToS3V2.ts
 │   │   │   │   ├── exportRecrutersToBrevo.ts
+│   │   │   │   ├── exportToFranceTravail.test.ts
 │   │   │   │   └── exportToFranceTravail.ts
 │   │   │   ├── rdv
 │   │   │   │   ├── activateOptoutOnEtablissementAndUpdateReferrersOnETFA.ts
@@ -645,16 +652,12 @@
 │   │   │   │   ├── syncEtablissementDates.ts
 │   │   │   │   └── syncEtablissementsAndFormations.ts
 │   │   │   ├── recruiters
-│   │   │   │   ├── cancelOfferJob.ts
 │   │   │   │   ├── createApiUser.ts
 │   │   │   │   ├── disableApiUser.ts
-│   │   │   │   ├── fixJobExpirationDateJob.ts
-│   │   │   │   ├── fixRecruiterDataValidationJob.ts
 │   │   │   │   ├── opcoReminderJob.ts
+│   │   │   │   ├── recruiterOfferExpirationReminderJob.test.ts
 │   │   │   │   ├── recruiterOfferExpirationReminderJob.ts
-│   │   │   │   ├── removeDuplicatesRecruiters.ts
 │   │   │   │   ├── resetApiKey.ts
-│   │   │   │   ├── updateMissingStartDateJob.ts
 │   │   │   │   └── updateSiretInfosInErrorJob.ts
 │   │   │   ├── referentielRome
 │   │   │   │   └── referentielRome.ts
@@ -695,10 +698,13 @@
 │   │   │   ├── 20260218011730-initialisation-seo-metier.ts
 │   │   │   ├── 20260218174124-update-indexes.ts
 │   │   │   ├── 20260226120000-classification-publish-unpublish.ts
+│   │   │   ├── 20260304120000-suppression-recruiters.ts
 │   │   │   ├── 20260316162512-initialisation-seo-offres-metiers-villes.ts
+│   │   │   ├── 20260318120000-fill-entreprises-managed-by-cfa.ts
 │   │   │   ├── 20260323180547-update-seo-ville.ts
 │   │   │   ├── 20260403125147-fix-contract-type-jobs-partners.ts
-│   │   │   └── 20260409135117-partner-job-id-taleez.ts
+│   │   │   ├── 20260409135117-partner-job-id-taleez.ts
+│   │   │   └── 20260422115041-reset-date-premium.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -731,6 +737,7 @@
 │   │       ├── eligibleTrainingsForAppointment.service.ts
 │   │       ├── emails.service.test.ts
 │   │       ├── emails.service.ts
+│   │       ├── entrepriseManagedByCfa.service.ts
 │   │       ├── etablissement.service.ts
 │   │       ├── etablissement.service.types.ts
 │   │       ├── external
@@ -775,8 +782,6 @@
 │   │       ├── referentielEngagementEntreprise.service.ts
 │   │       ├── referrers.service.ts
 │   │       ├── reportedCompany.service.ts
-│   │       ├── resumeToken.service.test.ts
-│   │       ├── resumeToken.service.ts
 │   │       ├── roleManagement.service.test.ts
 │   │       ├── roleManagement.service.ts
 │   │       ├── rome.service.ts
@@ -851,6 +856,15 @@
 │   │   ├── integration
 │   │   │   └── common
 │   │   │       └── model.test.ts
+│   │   ├── mocks
+│   │   │   ├── mockApiBal.ts
+│   │   │   ├── mockApiEntreprise.ts
+│   │   │   ├── mockDiagoriente.ts
+│   │   │   ├── mockGeolocalisation.ts
+│   │   │   └── mockLab.ts
+│   │   ├── sdk
+│   │   │   ├── entrepriseSdk.ts
+│   │   │   └── jobsV3Sdk.ts
 │   │   ├── unit
 │   │   │   ├── external
 │   │   │   │   └── zod.test.ts
@@ -959,6 +973,7 @@
 │   │   │   ├── elligibleTrainingHistory.model.ts
 │   │   │   ├── emailBlacklist.model.ts
 │   │   │   ├── entreprise.model.ts
+│   │   │   ├── entreprisesManagedByCfa.model.ts
 │   │   │   ├── errors.model.ts
 │   │   │   ├── etablissement.model.ts
 │   │   │   ├── formation.model.ts
@@ -1011,7 +1026,6 @@
 │   │   │   ├── referentielEngagementEntreprise.model.ts
 │   │   │   ├── referentielOnisep.model.ts
 │   │   │   ├── reportedCompany.model.ts
-│   │   │   ├── resumeTokens.model.ts
 │   │   │   ├── roleManagement.model.ts
 │   │   │   ├── roleManagement360.model.ts
 │   │   │   ├── rome.model.ts
@@ -1107,6 +1121,7 @@
 │   │   │   └── layout.tsx
 │   │   ├── (candidat)
 │   │   │   ├── (recherche)
+│   │   │   │   ├── RechercheLayoutClient.tsx
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── recherche
 │   │   │   │   │   ├── _components
@@ -1138,11 +1153,11 @@
 │   │   │   │   │   │   │   ├── RecherchePageHome.tsx
 │   │   │   │   │   │   │   ├── RechercheResultatsFooter.tsx
 │   │   │   │   │   │   │   ├── RechercheResultatsList.tsx
+│   │   │   │   │   │   │   ├── RechercheTitle.tsx
 │   │   │   │   │   │   │   ├── ResultCardData.ts
 │   │   │   │   │   │   │   ├── VirtualContainer.tsx
 │   │   │   │   │   │   │   └── Whisper.tsx
 │   │   │   │   │   │   ├── RechercheResultatsPlaceholder.tsx
-│   │   │   │   │   │   ├── hasEmail.ts
 │   │   │   │   │   │   └── isOfferActive.ts
 │   │   │   │   │   ├── _hooks
 │   │   │   │   │   │   ├── useNavigateToRecherchePage.ts
@@ -1152,7 +1167,8 @@
 │   │   │   │   │   │   ├── useSearchViewNotifier.ts
 │   │   │   │   │   │   └── useWhispers.ts
 │   │   │   │   │   ├── _utils
-│   │   │   │   │   │   └── recherche.route.utils.ts
+│   │   │   │   │   │   ├── recherche.route.utils.ts
+│   │   │   │   │   │   └── scrollToVirtualItem.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── recherche-emploi
 │   │   │   │   │   └── page.tsx
@@ -1686,6 +1702,7 @@
 │   │   │   └── IntentionPageForm.tsx
 │   │   ├── ItemDetail
 │   │   │   ├── AideApprentissage.tsx
+│   │   │   ├── BackToTopButton.tsx
 │   │   │   ├── CandidatureLba
 │   │   │   │   ├── CandidatureLba.tsx
 │   │   │   │   ├── CandidatureLbaFailed.tsx
@@ -2383,4 +2400,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-464 directories, 1921 files
+467 directories, 1935 files
