@@ -1,22 +1,24 @@
 {
   "url": "https://github.com/betagouv/recommandations-collaboratives",
   "name": "recommandations-collaboratives",
-  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs. Il est réalisé en python/django côté moteur et alpinejs/bootstrap/dsfr côté interface.",
+  "description": "Le logiciel Recoco est un outil numérique permettant d'épauler une méthodologie de Recommandations Collaboratives se focalisant sur les problématiques complexes et nécessitant de multiples expertises sur des temps longs.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Notifications & Alertes",
-    "Recherche & Filtres",
-    "Authentification & Accès"
+    "Recherche",
+    "Notifications",
+    "Authentification & Accès",
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Redis",
-    "Alpine.js",
-    "Bootstrap",
-    "DSFR"
+    "celery",
+    "django-allauth",
+    "django-crispy-forms",
+    "django-leaflet"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,16 +29,17 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
-    "Pytest"
+    "pytest"
   ],
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD & GitHub Actions"
   ],
-  "lastActivity": "2026-04-21T17:28:33+02:00",
+  "lastActivity": "2026-04-22T17:10:21+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -50,6 +53,7 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
