@@ -150,6 +150,7 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── infographic.ts
 │   │   │   │   ├── modeles-de-courrier.ts
+│   │   │   │   ├── news.ts
 │   │   │   │   ├── prequalified.ts
 │   │   │   │   ├── related-items.ts
 │   │   │   │   ├── theme.ts
@@ -171,6 +172,7 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── infographic.ts
 │   │   │   │   ├── modeles-de-courrier.ts
+│   │   │   │   ├── news.ts
 │   │   │   │   ├── prequalified.ts
 │   │   │   │   └── themes.ts
 │   │   │   ├── index.ts
@@ -465,6 +467,10 @@
     │   │   │   │   ├── getRelatedIdsDocuments.ts
     │   │   │   │   └── mergeRelatedDocumentsToEditorialContents.ts
     │   │   │   ├── ingest.ts
+    │   │   │   ├── news
+    │   │   │   │   ├── generate.ts
+    │   │   │   │   ├── generateLinkedContent.ts
+    │   │   │   │   └── index.ts
     │   │   │   ├── plan-de-contenu.js
     │   │   │   ├── prequalified
     │   │   │   │   ├── __tests__
@@ -737,6 +743,10 @@
     │   │   │   │   │   ├── MenuSpecial.tsx
     │   │   │   │   │   ├── MenuStyle.tsx
     │   │   │   │   │   ├── MenuTable.tsx
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   ├── Editor.test.tsx
+    │   │   │   │   │   │   └── __snapshots__
+    │   │   │   │   │   │       └── Editor.test.tsx.snap
     │   │   │   │   │   ├── component
     │   │   │   │   │   │   └── AddInfographyDialog.tsx
     │   │   │   │   │   ├── extensions
@@ -1050,6 +1060,30 @@
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── mapModelToDocument.ts
     │   │   │   │   └── type.ts
+    │   │   │   ├── news
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── news.query.ts
+    │   │   │   │   │   └── newsRepository.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── Common
+    │   │   │   │   │   │   ├── Form.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   ├── Creation
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   └── news.mutation.ts
+    │   │   │   │   │   ├── Edition
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   ├── news.mutation.ts
+    │   │   │   │   │   │   └── news.query.ts
+    │   │   │   │   │   ├── List
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   └── list.query.ts
+    │   │   │   │   │   ├── graphql.type.ts
+    │   │   │   │   │   └── index.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── mapNewsToDocument.ts
+    │   │   │   │   └── type.ts
     │   │   │   ├── prequalified
     │   │   │   │   ├── ValidationBar.tsx
     │   │   │   │   ├── edition
@@ -1174,6 +1208,10 @@
     │   │   │   │   ├── [modelId].tsx
     │   │   │   │   ├── creation.tsx
     │   │   │   │   └── index.tsx
+    │   │   │   ├── news
+    │   │   │   │   ├── [newsId].tsx
+    │   │   │   │   ├── creation.tsx
+    │   │   │   │   └── index.tsx
     │   │   │   ├── prequalified
     │   │   │   │   ├── [id].tsx
     │   │   │   │   ├── create.tsx
@@ -1233,6 +1271,8 @@
     │   │   │           ├── model_models.yaml
     │   │   │           ├── model_models_legi_references.yaml
     │   │   │           ├── model_models_other_references.yaml
+    │   │   │           ├── news_news.yaml
+    │   │   │           ├── news_news_cdtn_references.yaml
     │   │   │           ├── public_*.yaml  (19 files)
     │   │   │           ├── search_prequalified.yaml
     │   │   │           ├── search_prequalified_documents.yaml
@@ -2006,7 +2046,19 @@
     │           ├── 1768157253000_delete_duplicate_theme_relations
     │           │   ├── down.sql
     │           │   └── up.sql
-    │           └── 1768157350000_prevent_duplicate_theme_relations
+    │           ├── 1768157350000_prevent_duplicate_theme_relations
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1774861700007_create_schema_news
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1774861957043_create_table_news_news
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1774862298246_create_table_news_news_cdtn_references
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           └── 1775113841000_delete_dismissals_information_page
     │               ├── down.sql
     │               └── up.sql
     └── ingester
@@ -2076,4 +2128,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-548 directories, 1570 files
+563 directories, 1607 files

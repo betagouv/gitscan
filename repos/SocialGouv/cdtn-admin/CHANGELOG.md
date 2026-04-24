@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.72.2](https://github.com/SocialGouv/cdtn-admin/compare/v2.72.1...v2.72.2) (2026-04-10)
+
+### Bug Fixes
+
+- update synonyms ([b914109](https://github.com/SocialGouv/cdtn-admin/commit/b914109a2db715b02d1f9116a3c361a6769e96f3))
+
+## [2.72.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.72.0...v2.72.1) (2026-04-08)
+
+### Bug Fixes
+
+- next-env file ([e7a6b84](https://github.com/SocialGouv/cdtn-admin/commit/e7a6b84dd1ad6da714c8b6d8a18171dcca1f0f92))
+
+# [2.72.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.71.0...v2.72.0) (2026-04-07)
+
+### Bug Fixes
+
+- update suggestions - boost themes & add synonym ([1b672ac](https://github.com/SocialGouv/cdtn-admin/commit/1b672acdeb52214c0b2c2663d53aaa561fcfbc4c))
+
+### Features
+
+- **actualites:** ajout des actualités (liste/ajout/modification) ([#1655](https://github.com/SocialGouv/cdtn-admin/issues/1655)) ([c32f837](https://github.com/SocialGouv/cdtn-admin/commit/c32f8379967cb46b8843df7194763e561bf7e487))
+- **infographies:** suppression des pages informations pour l'outil comprendre sa procédure de licenciement ([#1657](https://github.com/SocialGouv/cdtn-admin/issues/1657)) ([916a0df](https://github.com/SocialGouv/cdtn-admin/commit/916a0df28b00517198c9b263385f6bf22ea8d076))
+
+# [2.71.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.70.1...v2.71.0) (2026-03-30)
+
+### Features
+
+- **actualites:** ajout des types dans l'admin ([#1654](https://github.com/SocialGouv/cdtn-admin/issues/1654)) ([4e6b2b7](https://github.com/SocialGouv/cdtn-admin/commit/4e6b2b7326f82ef6214f3f5aca812b9eca464204))
+
+## [2.70.1](https://github.com/SocialGouv/cdtn-admin/compare/v2.70.0...v2.70.1) (2026-03-26)
+
+### Bug Fixes
+
+- ajout du user agent pour télécharger le fichier des conventions collectives ([#1651](https://github.com/SocialGouv/cdtn-admin/issues/1651)) ([836ba07](https://github.com/SocialGouv/cdtn-admin/commit/836ba07e314d9ab9ca6b96c7a633c7eb24e12e21))
+
+# [2.70.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.69.0...v2.70.0) (2026-03-24)
+
+### Features
+
+- mise à jour de la méthode pour récupérer le contenu du ministère ([e89c189](https://github.com/SocialGouv/cdtn-admin/commit/e89c189c482bcbcf072d041e3d0c5b970745eb81))
+- **tiptap:** ajout de tests unitaires sur tiptap ([#1649](https://github.com/SocialGouv/cdtn-admin/issues/1649)) ([2a4c66e](https://github.com/SocialGouv/cdtn-admin/commit/2a4c66e08ba08f7475c777c39b11d07af9aad591))
+
 # [2.69.0](https://github.com/SocialGouv/cdtn-admin/compare/v2.68.1...v2.69.0) (2026-03-11)
 
 ### Features
