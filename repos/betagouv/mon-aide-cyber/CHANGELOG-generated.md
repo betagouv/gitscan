@@ -1,20 +1,17 @@
-## Changelog : mon-aide-cyber (30 derniers jours, au 16 avril 2026)
+## Changelog : mon-aide-cyber (30 derniers jours, au 16 mai 2026)
 
 ### Résumé
-Ce changelog présente les récentes améliorations apportées à MonAideCyber. Les modifications incluent des corrections de bugs, notamment concernant le calcul du cooldown et la gestion des encarts d'homologation, ainsi qu'une gestion améliorée des erreurs renvoyées par l'API Géo. Des mises à jour de dépendances et de composants UI ont également été effectuées pour assurer la stabilité et la sécurité de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur la correction de bugs et l'amélioration de la robustesse de l'application, notamment en cas d'erreurs externes (API Géo). Des ajustements ont également été apportés à l'interface utilisateur et aux processus de build.
 
 ### Évolutions fonctionnelles
-- Correction du calcul du nombre de jours pour le cooldown dans le module SOIN.
-- Correction de l'affichage des encarts d'homologation dans le module SOIN.
-- Amélioration de la gestion des erreurs retournées par l'API Géo lors de l'appel EPCI, évitant ainsi des dysfonctionnements. [#issue-potentielle]
+- Correction du calcul du nombre de jours pour le "cooldown" dans le module SOIN. [#issue à investiguer]
+- Correction de l'affichage des encarts d'homologations dans le module SOIN. [#issue à investiguer]
+- Amélioration de la gestion des erreurs lors de l'appel à l'API Géo pour l'EPCI, évitant ainsi des dysfonctionnements en cas de problème avec ce service externe. [#issue à investiguer]
 
 ### Évolutions techniques
-- Mise à jour de la version du UI Kit vers la v1.28.4.
-- Suppression d'un UI Kit non utilisé pour alléger le code et simplifier la maintenance.
 - Mise à jour de certaines dépendances pour améliorer la sécurité et la stabilité de l'application.
+- Suppression d'un UI Kit inutilisé, allégeant ainsi le code et simplifiant la maintenance.
+- Mise à jour du UI Kit vers la version 1.28.4.
 
 ### Autres changements
 - Mise à jour des tampons d'homologation MAC.
-- Mise à jour de la dépendance `yaml` vers la version 2.8.3.
-- Mise à jour de la dépendance `vite` vers la version 7.3.2.
-- Mise à jour de la dépendance `happy-dom` vers la version 20.8.9.
