@@ -1,27 +1,32 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 16 mai 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la page "Qui sommes-nous", l'ajout d'informations sur les éco-réseaux et l'amélioration de la gestion des filtres dans l'interface d'administration. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de la landing page du simulateur simplifié et l'ajout de nouvelles informations sur les écoréseaux. Des améliorations techniques ont également été apportées, notamment des mises à jour de dépendances et des corrections de bugs.
 
 ### Évolutions fonctionnelles
-- **Page "Qui sommes-nous" :** Refonte complète de la page avec suppression des icônes de l'équipe et clarification de la formulation concernant le budget [#1232](https://github.com/betagouv/france-chaleur-urbaine/pull/1232).
-- **Éco-réseaux :** Ajout d'une fonctionnalité permettant d'importer et d'afficher les informations sur les éco-réseaux, incluant une colonne dédiée dans la liste des réseaux de chaleur et une source d'information pour ces données [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224), [#1227](https://github.com/betagouv/france-chaleur-urbaine/pull/1227).
-- **Filtres :** Amélioration de la gestion des filtres dans l'interface d'administration, notamment pour les valeurs vides et les filtres de type texte [#1223](https://github.com/betagouv/france-chaleur-urbaine/pull/1223).
-- **Formulaire de contact :** Ajout de liens vers les adresses email dans le formulaire de contact [#1228](https://github.com/betagouv/france-chaleur-urbaine/pull/1228).
-- **Simulateur simplifié :** Amélioration de la landing page du simulateur simplifié avec de nouveaux visuels, des CTA améliorés et une meilleure gestion des variables [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215).
-- **Affichage des réseaux :** Amélioration de l'affichage des réseaux de chaleur, de froid et en construction, avec ajout de colonnes et de filtres [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224).
+- **Simulateur simplifié :** Refonte complète de la landing page avec de nouveaux visuels, des CTA améliorés et une meilleure intégration du carrousel. [#1215](https://github.com/betagouv/france-chaleur-urbaine/pull/1215)
+- **Écoréseaux :** Ajout d'une nouvelle colonne et d'un filtre pour les écoréseaux dans la liste des réseaux de chaleur/froid.  Intégration des données des écoréseaux avec l'ajout de leur source et d'un label spécifique. [#1224](https://github.com/betagouv/france-chaleur-urbaine/pull/1224)
+- **Page "Qui sommes-nous" :** Mise à jour des textes et suppression de la section "équipe" ainsi que correction du wording concernant le budget. [#1232](https://github.com/betagouv/france-chaleur-urbaine/pull/1232)
+- **Formulaire de contact :** Ajout de liens vers les formulaires de contact dans les emails. [#1228](https://github.com/betagouv/france-chaleur-urbaine/pull/1228)
+- **Gestion des utilisateurs :** Ajout d'une structure pour la gestion des utilisateurs dans l'administration. [#1226](https://github.com/betagouv/france-chaleur-urbaine/pull/1226)
+- **Affichage des réseaux :** Le label des réseaux est maintenant affiché sur la carte, la page réseau et la liste des réseaux.
+- **Tableau des réseaux :** Ajout de filtres textuels sur les colonnes du tableau des réseaux de chaleur.
 
 ### Évolutions techniques
-- **Dépendances :** Mise à jour des dépendances du projet [#1229](https://github.com/betagouv/france-chaleur-urbaine/pull/1229).
-- **Emails :** Envoi des emails depuis une adresse no-reply beta.gouv pour une meilleure gestion de la délivrabilité.
-- **Admin Events :** Refonte de l'écran d'événements dans l'administration avec une interface de type tableau de bord Grafana.
-- **Typage :** Amélioration du typage de certaines variables pour une meilleure robustesse du code.
-- **Refactoring :** Refactoring de certains composants pour améliorer la lisibilité et la maintenabilité du code.
-- **Images :** Conversion des images au format WebP pour optimiser la performance.
+- **Mise à jour des dépendances :** Mise à jour des dépendances du projet, incluant TypeScript et remark-directive-rehype. [#1229](https://github.com/betagouv/france-chaleur-urbaine/pull/1229)
+- **Envoi d'emails :** Configuration de l'envoi d'emails depuis une adresse no-reply beta.gouv.
+- **Tests :** Correction d'un bug dans les tests concernant l'import en masse d'adresses. [#1230](https://github.com/betagouv/france-chaleur-urbaine/pull/1230)
+- **Admin Events :** Refonte de l'écran d'administration des événements pour ressembler à un tableau de bord de type Grafana.
+- **Linting & Styling :** Amélioration du linting et du style avec des classes Tailwind CSS canoniques.
+- **Typage :** Amélioration du typage de certaines variables et réponses API.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation.
-- **Tests :** Correction de tests suite à des modifications du code.
-- **Linting :** Amélioration du linting et de la conformité aux standards de codage.
-- **Configuration :** Mise à jour de la configuration du projet.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la structure du code.
+- Mise à jour des statistiques d'avril.
+- Procédure de mise à jour des statistiques mensuelles documentée.
+- Correction de coquilles et d'erreurs typographiques.
+- Conversion d'images au format WebP pour optimiser les performances.
+- Suppression de code inutile et amélioration de la structure du code.
+- Ajout d'images pour les articles et la nouvelle landing du simulateur simplifié.
+- Amélioration du nommage du tracking pour le simulateur simplifié.
+- Correction d'un problème d'affichage initial des réseaux dans les iframes.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
