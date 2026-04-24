@@ -446,6 +446,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260402104518_remove_stat_event_legacy_field
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260417130203_add_compensation_amount_max
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260421120000_add_organization_search_text_fts_index
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -471,6 +475,23 @@
 │   │   │   └── archive-piloty-jobs.ts
 │   │   ├── migrate-mission-activities.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
+│   │   ├── missions-sdis
+│   │   │   ├── addresses.csv
+│   │   │   ├── create-spv-missions.ts
+│   │   │   ├── data.ts
+│   │   │   ├── fetch-addresses.ts
+│   │   │   ├── logos
+│   │   │   │   ├── SDIS_*.jpg  (25 files)
+│   │   │   │   ├── SDIS_*.png  (52 files)
+│   │   │   │   ├── SDIS_*.svg  (5 files)
+│   │   │   │   ├── SDIS_*.jpeg  (8 files)
+│   │   │   │   ├── SDIS_13.webp
+│   │   │   │   ├── SDIS_25.webp
+│   │   │   │   ├── SDIS_33.webp
+│   │   │   │   ├── SDIS_82.webp
+│   │   │   │   └── sdis_80.jpeg
+│   │   │   ├── publisher.ts
+│   │   │   └── update-sdis-publishers.ts
 │   │   ├── mongo-backfill
 │   │   │   ├── README.md
 │   │   │   ├── backfill-campaign.ts
@@ -613,6 +634,9 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── rdb-backup
+│   │   │   │   ├── client.ts
+│   │   │   │   └── handler.ts
 │   │   │   ├── report
 │   │   │   │   ├── fonts
 │   │   │   │   │   ├── Marianne.ts
@@ -1242,4 +1266,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-290 directories, 954 files
+295 directories, 1059 files
