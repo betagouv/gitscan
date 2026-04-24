@@ -233,6 +233,10 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260331145254_agenda_file_position_is_nullable
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260414151452_adds_official_report_tables
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260421165436_create_justice_presentation_table
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -317,34 +321,57 @@
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
 │   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── agenda-nomination-file-outcome.ts
 │   │   │   │   │   │   ├── agenda-nomination-file.ts
-│   │   │   │   │   │   └── agenda.ts
+│   │   │   │   │   │   ├── agenda.ts
+│   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
+│   │   │   │   │   │   ├── justice-presentation-plan.ts
+│   │   │   │   │   │   └── official-report.ts
 │   │   │   │   │   └── infrastructure
 │   │   │   │   │       ├── docs.controller.ts
 │   │   │   │   │       ├── docs.dto.ts
+│   │   │   │   │       ├── docs.filter.ts
 │   │   │   │   │       ├── finders
-│   │   │   │   │       │   └── agenda-nomination-files.finder.ts
+│   │   │   │   │       │   ├── agenda-nomination-files.finder.ts
+│   │   │   │   │       │   └── agenda.finder.ts
 │   │   │   │   │       ├── queries
 │   │   │   │   │       │   ├── details-agenda-metadata.query.ts
-│   │   │   │   │       │   ├── details-session-doc.query.ts
+│   │   │   │   │       │   ├── details-official-report.query.ts
+│   │   │   │   │       │   ├── details-presentation-plan-metadata.query.ts
+│   │   │   │   │       │   ├── details-presentation-plan-pdf-document.query.ts
+│   │   │   │   │       │   ├── details-session-agenda.query.ts
+│   │   │   │   │       │   ├── details-session-official-report.query.ts
 │   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
 │   │   │   │   │       │   ├── find-agenda-document.query.ts
 │   │   │   │   │       │   ├── find-chairmen.query.ts
+│   │   │   │   │       │   ├── find-justice-contacts.query.ts
+│   │   │   │   │       │   ├── find-members-for-new-official-report.query.ts
+│   │   │   │   │       │   ├── find-official-report-document-pdf.query.ts
+│   │   │   │   │       │   ├── find-official-report-document.query.ts
+│   │   │   │   │       │   ├── find-presentation-plan-document-pdf.query.ts
+│   │   │   │   │       │   ├── find-presentation-plan-document.query.ts
 │   │   │   │   │       │   ├── find-session-docs.query.ts
-│   │   │   │   │       │   └── is-session-ready-for-doc-generation.query.ts
+│   │   │   │   │       │   ├── is-session-ready-for-doc-generation.query.ts
+│   │   │   │   │       │   ├── list-non-presented-plans.query.ts
+│   │   │   │   │       │   ├── list-presented-plans.query.ts
+│   │   │   │   │       │   └── list-secretaries-general.query.ts
 │   │   │   │   │       ├── repositories
-│   │   │   │   │       │   └── agenda.repository.ts
+│   │   │   │   │       │   ├── agenda.repository.ts
+│   │   │   │   │       │   ├── justice-presentation-plan.repository.ts
+│   │   │   │   │       │   └── official-report.repository.ts
 │   │   │   │   │       └── services
-│   │   │   │   │           ├── doc-renderer.service.ts
 │   │   │   │   │           └── renderers
 │   │   │   │   │               ├── agenda.renderer.ts
 │   │   │   │   │               ├── helpers.ts
+│   │   │   │   │               ├── official-report.renderer.ts
 │   │   │   │   │               ├── pdf
 │   │   │   │   │               │   ├── pdf-renderer.service.ts
 │   │   │   │   │               │   └── pdf-worker.ts
+│   │   │   │   │               ├── presentation-plan.renderer.ts
 │   │   │   │   │               └── templates
 │   │   │   │   │                   ├── agenda.html.ts
+│   │   │   │   │                   ├── common.html.ts
+│   │   │   │   │                   ├── official-report.html.ts
+│   │   │   │   │                   ├── presentation-plan.html.ts
 │   │   │   │   │                   └── templates.types.ts
 │   │   │   │   ├── framework
 │   │   │   │   │   ├── clock.ts
@@ -466,6 +493,7 @@
 │   │   │   │   │   │   └── queries
 │   │   │   │   │   │       ├── details-member.query.ts
 │   │   │   │   │   │       ├── internal-find-members-by-full-name.query.ts
+│   │   │   │   │   │       ├── internal-find-members-by-ids.query.ts
 │   │   │   │   │   │       ├── internal-find-members.query.ts
 │   │   │   │   │   │       ├── internal-get-member.query.ts
 │   │   │   │   │   │       ├── list-members.query.ts
@@ -640,6 +668,8 @@
 │   │   │       ├── noop.ts
 │   │   │       ├── promises.ts
 │   │   │       ├── result.ts
+│   │   │       ├── time-only.spec.ts
+│   │   │       ├── time-only.ts
 │   │   │       ├── time.ts
 │   │   │       ├── types.ts
 │   │   │       ├── unaccent.ts
@@ -773,6 +803,9 @@
 │       │   │   │       └── summary-labels.ts
 │       │   │   ├── secretariat-general
 │       │   │   │   ├── Dashboard.tsx
+│       │   │   │   ├── document-preview
+│       │   │   │   │   ├── DocumentPreview.tsx
+│       │   │   │   │   └── document-fonts.css
 │       │   │   │   ├── membres
 │       │   │   │   │   ├── details
 │       │   │   │   │   │   ├── DetailsMember.tsx
@@ -795,6 +828,10 @@
 │       │   │   │       │   ├── Transparence.tsx
 │       │   │   │       │   └── tableau-de-bord
 │       │   │   │       │       ├── actions
+│       │   │   │       │       │   ├── DocActionDelete.tsx
+│       │   │   │       │       │   ├── DocActionDetails.tsx
+│       │   │   │       │       │   ├── DocActionUpdate.tsx
+│       │   │   │       │       │   ├── DocGenerationAction.tsx
 │       │   │   │       │       │   ├── ImportAttachmentModal.tsx
 │       │   │   │       │       │   ├── ImportObservantsModal.tsx
 │       │   │   │       │       │   ├── NominationSessionDocsList.tsx
@@ -820,6 +857,7 @@
 │       │   │   │   ├── HintImportXlsxFile.tsx
 │       │   │   │   ├── ImpersonatedAppLayout.tsx
 │       │   │   │   ├── LolfiMagistratLink.tsx
+│       │   │   │   ├── Mandatory.tsx
 │       │   │   │   ├── Marked.tsx
 │       │   │   │   ├── NominationSessionAttachmentList.tsx
 │       │   │   │   ├── ObservationDescription.tsx
@@ -836,6 +874,7 @@
 │       │   │   │   ├── alerts
 │       │   │   │   │   ├── AlertsProvider.tsx
 │       │   │   │   │   └── alerts.context.ts
+│       │   │   │   ├── combobox.tsx
 │       │   │   │   ├── data-table
 │       │   │   │   │   ├── DataTable.tsx
 │       │   │   │   │   ├── ReactTableBody.tsx
@@ -1000,6 +1039,7 @@
 │       │   │   ├── useBeforeUnload.ts
 │       │   │   ├── useConfirmation.hook.tsx
 │       │   │   ├── useLocallyStoredState.hook.ts
+│       │   │   ├── useSelection.hook.ts
 │       │   │   └── useTab.ts
 │       │   ├── i18n
 │       │   │   ├── components.tsx
@@ -1051,29 +1091,55 @@
 │       │   │   │   ├── SecretariatGeneralPage.tsx
 │       │   │   │   ├── SecretariatLayout.tsx
 │       │   │   │   ├── TransparencePage.tsx
-│       │   │   │   ├── agenda
-│       │   │   │   │   ├── AgendaPage.tsx
-│       │   │   │   │   ├── PreviewAgendaPage.css
-│       │   │   │   │   ├── PreviewAgendaPage.tsx
-│       │   │   │   │   ├── components
-│       │   │   │   │   │   ├── AgendaChairmanSelect.tsx
-│       │   │   │   │   │   ├── AgendaFileSearch.tsx
-│       │   │   │   │   │   ├── AgendaNominationFile.css
-│       │   │   │   │   │   └── AgendaNominationFile.tsx
-│       │   │   │   │   ├── context
-│       │   │   │   │   │   ├── AgendaContext.tsx
-│       │   │   │   │   │   ├── AgendaContext.types.ts
-│       │   │   │   │   │   └── AgendaProvider.tsx
-│       │   │   │   │   ├── hooks
-│       │   │   │   │   │   ├── useScrollDownIndicator.hook.ts
-│       │   │   │   │   │   └── useSelection.hook.ts
-│       │   │   │   │   └── steps
-│       │   │   │   │       ├── AgendaMetadataStep.tsx
-│       │   │   │   │       └── AgendaNominationFilesStep.tsx
+│       │   │   │   ├── docs
+│       │   │   │   │   ├── agenda
+│       │   │   │   │   │   ├── AgendaPage.tsx
+│       │   │   │   │   │   ├── AgendaPreviewPage.tsx
+│       │   │   │   │   │   ├── components
+│       │   │   │   │   │   │   ├── AgendaChairmanSelect.tsx
+│       │   │   │   │   │   │   ├── AgendaFileSearch.tsx
+│       │   │   │   │   │   │   ├── AgendaNominationFile.css
+│       │   │   │   │   │   │   └── AgendaNominationFile.tsx
+│       │   │   │   │   │   ├── context
+│       │   │   │   │   │   │   ├── AgendaContext.tsx
+│       │   │   │   │   │   │   ├── AgendaContext.types.ts
+│       │   │   │   │   │   │   └── AgendaProvider.tsx
+│       │   │   │   │   │   ├── hooks
+│       │   │   │   │   │   │   └── useScrollDownIndicator.hook.ts
+│       │   │   │   │   │   └── steps
+│       │   │   │   │   │       ├── AgendaMetadataStep.tsx
+│       │   │   │   │   │       └── AgendaNominationFilesStep.tsx
+│       │   │   │   │   └── official-report
+│       │   │   │   │       ├── OfficialReportPage.tsx
+│       │   │   │   │       ├── OfficialReportPreviewPage.tsx
+│       │   │   │   │       ├── components
+│       │   │   │   │       │   └── JusticeContactSelector.tsx
+│       │   │   │   │       ├── context
+│       │   │   │   │       │   ├── OfficialReportContext.tsx
+│       │   │   │   │       │   ├── OfficialReportContext.types.ts
+│       │   │   │   │       │   └── OfficialReportProvider.tsx
+│       │   │   │   │       ├── hooks
+│       │   │   │   │       │   └── useSelection.ts
+│       │   │   │   │       └── steps
+│       │   │   │   │           ├── OfficialReportMetadataStep.tsx
+│       │   │   │   │           └── OfficialReportSelectionsStep.tsx
 │       │   │   │   ├── membres
 │       │   │   │   │   └── DetailsMemberPage.tsx
-│       │   │   │   └── observations
-│       │   │   │       └── ObservationDetailsPage.tsx
+│       │   │   │   ├── observations
+│       │   │   │   │   └── ObservationDetailsPage.tsx
+│       │   │   │   └── presentations
+│       │   │   │       ├── PresentationUpsertPage.tsx
+│       │   │   │       ├── PresentationsLayout.tsx
+│       │   │   │       ├── PresentationsPreviewPage.tsx
+│       │   │   │       ├── PresentationsTabPast.tsx
+│       │   │   │       ├── PresentationsTabReady.tsx
+│       │   │   │       ├── PresentationsTabsPage.tsx
+│       │   │   │       ├── components
+│       │   │   │       │   └── PresentationAgendaSelecionList.tsx
+│       │   │   │       └── contexts
+│       │   │   │           ├── PresentationPlanProvider.tsx
+│       │   │   │           ├── presentation-plan.context.ts
+│       │   │   │           └── presentation-plan.type.ts
 │       │   │   ├── summary
 │       │   │   │   ├── SummaryContext.ts
 │       │   │   │   ├── SummaryNotFound.tsx
@@ -1116,6 +1182,7 @@
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
 │       │   │   ├── string.utils.ts
+│       │   │   ├── time-only.util.ts
 │       │   │   ├── transparences-breadcrumb.utils.tsx
 │       │   │   ├── types.util.ts
 │       │   │   └── user.utils.ts
@@ -1142,9 +1209,6 @@
 │       └── vite.config.ts
 ├── bin
 │   └── api.sh
-├── i18n
-│   └── fr
-│       └── extracted.json
 ├── package.json
 ├── packages
 │   └── shared-models
@@ -1169,4 +1233,4 @@
 ├── pnpm-workspace.yaml
 └── scripts
     └── changelog.js
-234 directories, 937 files
+244 directories, 991 files
