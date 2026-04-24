@@ -1,15 +1,13 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 20 avril 2026)
+## Changelog : fiches-travail-data (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce changelog couvre une période d'activité soutenue sur le projet, principalement axée sur la mise à jour régulière des données.  De nombreuses versions ont été publiées, chacune intégrant les dernières informations disponibles.  En plus des mises à jour de données, des corrections ont été apportées pour améliorer la fiabilité de la récupération des fiches du ministère.
+Ce changelog couvre une période d'intense mise à jour des données. Au cours des 30 derniers jours, le jeu de données a été mis à jour quotidiennement avec les dernières informations disponibles sur le site travail-emploi. Ces mises à jour visent à maintenir la pertinence et l'exactitude des données fournies aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière des données des fiches de travail : chaque jour, une nouvelle version des données a été intégrée.
-- Correction de l'utilisation d'un user-agent lors de la récupération des fiches du ministère, résolvant une erreur dans le job de mise à jour des données. [#442](https://github.com/SocialGouv/fiches-travail-data/issues/442)
-- Correction d'une erreur dans le job de mise à jour des données, liée à la variable USER_AGENT manquante. [#443](https://github.com/SocialGouv/fiches-travail-data/issues/443)
+- Mise à jour quotidienne des données : Les données ont été mises à jour chaque jour avec les dernières informations disponibles. Ces mises à jour concernent les fiches de travail et sont identifiées par la date de la mise à jour (ex: 20260423_2141).
 
 ### Évolutions techniques
-- Aucune évolution technique majeure n'a été apportée durant cette période.
+- Aucune évolution technique significative n'a été apportée durant cette période. Les changements se concentrent exclusivement sur la mise à jour des données.
 
 ### Autres changements
-- Aucune autre modification significative n'a été effectuée.
+- Aucun autre changement significatif à signaler.
