@@ -90,6 +90,7 @@
 │       │   ├── notification-dot.css
 │       │   ├── regulation
 │       │   │   ├── index.scss
+│       │   │   ├── table.css
 │       │   │   ├── timeslot.css
 │       │   │   └── vehicles.css
 │       │   └── stats-map.css
@@ -295,6 +296,7 @@
 │   │   └── web_profiler.yaml
 │   ├── routes.yaml
 │   ├── services.yaml
+│   ├── team_admins.yaml
 │   └── validator
 │       ├── Application
 │       │   ├── Organization
@@ -544,6 +546,7 @@
 │   │   │   ├── EmptyRoadBanIdException.php
 │   │   │   ├── EndAbscissaOutOfRangeException.php
 │   │   │   ├── GeocodingFailureException.php
+│   │   │   ├── IntersectionGeocodingFailureException.php
 │   │   │   ├── LaneGeocodingFailureException.php
 │   │   │   ├── OrganizationCannotInterveneOnGeometryException.php
 │   │   │   ├── RoadGeocodingFailureException.php
@@ -1450,6 +1453,7 @@
 │   │   │   │   ├── SyncLocationGeometriesCommand.php
 │   │   │   │   ├── SyncOrganizationsCodesCommand.php
 │   │   │   │   ├── SyncOrganizationsToGristCommand.php
+│   │   │   │   ├── SyncTeamAdminsCommand.php
 │   │   │   │   └── SyncUsersToGristCommand.php
 │   │   │   ├── DependencyInjection
 │   │   │   │   ├── CifsFilterSetEnvVarProcessor.php
@@ -1773,7 +1777,8 @@
 │   │       │       ├── PurgeUserTokensCommandTest.php
 │   │       │       ├── RunMetabaseExportCommandTest.php
 │   │       │       ├── StorageAreaGenerateCommandTest.php
-│   │       │       └── SyncLocationGeometriesCommandTest.php
+│   │       │       ├── SyncLocationGeometriesCommandTest.php
+│   │       │       └── SyncTeamAdminsCommandTest.php
 │   │       └── Templates
 │   │           ├── NamedStreetPointsTemplateTest.php
 │   │           └── VehicleSetTemplateTest.php
@@ -2105,6 +2110,7 @@
 │   │       │   │   ├── LitteralisImportCommunicationCommandTest.php
 │   │       │   │   ├── SyncLocationGeometriesCommandTest.php
 │   │       │   │   ├── SyncOrganizationsToGristCommandTest.php
+│   │       │   │   ├── SyncTeamAdminsCommandTest.php
 │   │       │   │   └── SyncUsersToGristCommandTest.php
 │   │       │   ├── DependencyInjection
 │   │       │   │   ├── CifsFilterSetEnvVarProcessorTest.php
@@ -2148,4 +2154,4 @@
 │   ├── messages.fr.xlf
 │   └── validators.fr.xlf
 └── webpack.config.js
-428 directories, 1876 files
+428 directories, 1882 files
