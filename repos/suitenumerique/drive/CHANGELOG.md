@@ -8,12 +8,16 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v0.17.0] - 2026-04-23
+
 ### Added
 
+- ✨(backend) make invitation validity duration configurable via env var
 - ✨(frontend) enhance upload toast with progress, errors and cancel support
 - ✨(frontend) add ErrorIcon component and support numeric icon sizes
 - ✨(frontend) make file upload abortable in driver layer
 - ✨(frontend) files preview v2
+- 🔧(project) add DJANGO_EMAIL_URL_APP environment variable
 
 ### Fixed
 
@@ -22,14 +26,12 @@ and this project adheres to
 - 🐛(frontend) Responsive broken with long filters in search #659
 - 🐛(front) set size and variant on trash navigate modal #666
 - 🐛(frontend) fix uploads continuing after parent folder deletion
-
-### Fixed
-
+- 🐛(frontend) fix SDK picker link reach promotion
+- 🐛(backend) route share invitation link to file view for files
 - 🐛(frontend) fix "+ New" menu in read-only folders and virtual tabs
-
-### Fixed
-
 - 🐛(frontend) range selection freezes when there are many items in the list
+- 🐛(backend) fix openapi schema for item access endpoints
+- 🐛(backend) load jwks url when OIDC_RS_PRIVATE_KEY_STR is set
 
 ## [v0.16.0] - 2026-04-09
 

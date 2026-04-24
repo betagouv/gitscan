@@ -1,25 +1,40 @@
-## Changelog : drive (30 derniers jours, au 20 avril 2026)
+## Changelog : drive (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience de prévisualisation des fichiers, en particulier pour les PDF et les images. De nouvelles fonctionnalités comme la duplication d'éléments et la personnalisation des colonnes dans l'explorateur de fichiers ont également été ajoutées, ainsi que des corrections de bugs pour améliorer la stabilité et la fiabilité de la plateforme. Des optimisations de performance et des améliorations de l'infrastructure ont également été réalisées.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur avec l'ajout d'un visualiseur PDF, de nouvelles fonctionnalités de duplication de fichiers, et des améliorations significatives de la gestion des fichiers et des permissions. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de la plateforme. Des améliorations de sécurité ont été intégrées, notamment la configuration de variables d'environnement et la mise à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de prévisualiser les fichiers PDF avec navigation par pages et zoom. [#3030f71](https://github.com/suitenumerique/drive/commit/3030f7189f177782025d9622603054654f46187a)
-- Amélioration de la prévisualisation des images avec possibilité d'impression via le navigateur. [#49c0821](https://github.com/suitenumerique/drive/commit/49c082163686792053678a94b560369737651698)
-- Implémentation de la duplication d'éléments (fichiers et dossiers). [#e817417](https://github.com/suitenumerique/drive/commit/e81741787b180956449967710f306512b559257e)
-- Ajout de la possibilité de personnaliser les colonnes affichées dans l'explorateur de fichiers. [#a4569a3](https://github.com/suitenumerique/drive/commit/a4569a33179646624900841705f616656859913f)
-- Amélioration de l'expérience d'upload avec affichage de la progression, gestion des erreurs et possibilité d'annulation. [#399c1a7](https://github.com/suitenumerique/drive/commit/399c1a768d89881455357884a2a9614235335f89)
-- Ajout d'un menu d'actions sur mobile pour faciliter l'accès aux fonctionnalités. [#0cc97d6](https://github.com/suitenumerique/drive/commit/0cc97d6180497852793648444646725851054949)
+- Ajout d'un visualiseur PDF intégré avec barre latérale de vignettes, zoom et navigation par pages. [#659]
+- Possibilité de configurer la durée de validité des invitations de partage via une variable d'environnement.
+- Ajout de la fonctionnalité de duplication de fichiers avec indication visuelle de l'état d'avancement.
+- Ajout de la possibilité de trier les fichiers par date de création et par nom du créateur.
+- Amélioration de l'expérience d'upload avec affichage de la progression, gestion des erreurs et possibilité d'annulation.
+- Ajout de la possibilité de personnaliser les colonnes affichées dans l'explorateur de fichiers.
+- Ajout d'un menu d'actions sur mobile pour faciliter la gestion des fichiers.
+- Correction d'un bug empêchant l'affichage correct du menu "+ Nouveau" dans les dossiers en lecture seule.
+- Correction d'un bug de blocage de la sélection de fichiers dans les dossiers volumineux.
+- Correction d'un bug empêchant l'affichage correct des fichiers dans la corbeille après une suppression définitive.
 
 ### Évolutions techniques
-- Refonte de la prévisualisation des fichiers pour une meilleure performance et maintenabilité. [#511ca27](https://github.com/suitenumerique/drive/commit/511ca2760636662002556691385553386409260d)
-- Mise en place d'un système de cache pour les navigateurs Playwright dans les tests E2E. [#d194b51](https://github.com/suitenumerique/drive/commit/d194b5166355819634496697317654614933092a)
-- Amélioration de l'infrastructure CI/CD pour un déploiement plus rapide et fiable. [#768f616](https://github.com/suitenumerique/drive/commit/768f6162b7391298361f89b34671c4b342645766) et [#bdfade5](https://github.com/suitenumerique/drive/commit/bdfade56683928008f99990261c9752c39114298)
-- Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections de sécurité et améliorations. [#8029d4f](https://github.com/suitenumerique/drive/commit/8029d4f85517939403571679394471571f299413) et [#d4a83b6](https://github.com/suitenumerique/drive/commit/d4a83b679311032644267864415c7179161b7a3e)
-- Optimisation de la configuration Nginx pour servir les fichiers statiques de manière plus efficace. [#aca3adf](https://github.com/suitenumerique/drive/commit/aca3adf2793385207664f43917918290f1824947)
+- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité (pytest, vite, next, requests).
+- Amélioration de la configuration de l'infrastructure avec l'ajout d'une variable d'environnement pour l'URL de l'email.
+- Refonte de la gestion des previews de fichiers pour une meilleure performance et maintenabilité.
+- Amélioration de la configuration CI/CD pour des builds plus rapides et fiables.
+- Mise en place de tests E2E plus robustes pour la fonctionnalité de duplication de fichiers et le visualiseur PDF.
+- Pré-compilation du frontend et service via Nginx pour améliorer les performances des tests E2E.
+- Restriction des permissions du token utilisé par le workflow frontend pour une meilleure sécurité.
+- Utilisation de React Query pour la gestion des données du visualiseur PDF.
+- Amélioration de la gestion des erreurs et des exceptions côté backend.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et améliorations. [#30cfcc7](https://github.com/suitenumerique/drive/commit/30cfcc7466a21f953128045972b6a79025325181)
-- Ajout de tests E2E pour assurer la qualité et la stabilité des nouvelles fonctionnalités.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout d'une commande pour purger les éléments supprimés. [#ea811ca](https://github.com/suitenumerique/drive/commit/ea811ca541f111792489498624913663491c037a)
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements de configuration.
+- Ajout de tests unitaires et E2E pour les nouvelles fonctionnalités.
+- Nettoyage du code et suppression de code obsolète.
+- Mise à jour des traductions pour les nouvelles fonctionnalités.
+- Ajout de la possibilité de configurer une période de grâce pour la suppression définitive des fichiers.
+- Amélioration de la gestion des erreurs CSRF.
+- Ajout de la possibilité de définir des origines CSRF supplémentaires via une variable d'environnement.
+- Correction de problèmes de style et d'affichage dans l'interface utilisateur.
+- Ajout de la prise en charge de l'indexation par les moteurs de recherche.
+- Amélioration de la gestion des vignettes PDF.
+- Ajout d'un mécanisme de purge des éléments supprimés.
