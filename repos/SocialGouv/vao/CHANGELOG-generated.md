@@ -1,27 +1,36 @@
-## Changelog : vao (30 derniers jours, au 17 avril 2026)
+## Changelog : vao (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration du module d'agrément, notamment en ce qui concerne la gestion des messages, le renouvellement des agréments et l'interface back-office. Des corrections et des améliorations ont également été apportées au fusager et à la gestion des utilisateurs.
+Ce changelog couvre une période d'intenses activités de développement sur VAO, principalement axées sur l'amélioration du processus de renouvellement d'agrément, avec des correctifs et des nouvelles fonctionnalités pour les étapes 1 à 4. Des améliorations ont également été apportées à la gestion des messages et des documents, ainsi qu'à l'interface utilisateur pour les agents de l'administration. Enfin, des corrections et des ajouts ont été réalisés concernant le fusager.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des messages non lus pour les agréments côté DREETS. [#1272](https://github.com/SocialGouv/vao/issues/1272)
-- Amélioration de l'affichage des informations de la personne et de son représentant légal. [#1265](https://github.com/SocialGouv/vao/issues/1265)
-- Ajout de la possibilité de modifier le statut d'un agrément en "À MODIFIER" dans le back-office. [#1227](https://github.com/SocialGouv/vao/issues/1227)
-- Ajout d'un bouton d'action pour confirmer la complétude d'un agrément dans le back-office. [#1236](https://github.com/SocialGouv/vao/issues/1236)
-- Ajout d'un affichage des documents par onglets dans le back-office pour les agréments. [#1233](https://github.com/SocialGouv/vao/issues/1233)
-- Ajout de la possibilité de refuser un agrément dans le back-office. [#1245](https://github.com/SocialGouv/vao/issues/1245)
-- Ajout de la liste des JDMA dans le fusager. [#1268](https://github.com/SocialGouv/vao/issues/1268)
-- Suppression des menus "Renouvellement" et "Agrément" dans le fusager. [#1269](https://github.com/SocialGouv/vao/issues/1269)
-- Correction d'un bug où le nombre de femmes était indéfini dans le fusager. [#1270](https://github.com/SocialGouv/vao/issues/1270)
-- Correction d'un bug où le bouton d'action disparaissait dans le fusager. [#1238](https://github.com/SocialGouv/vao/issues/1238)
-- Correction d'un bug empêchant de passer à l'étape suivante dans le fusager avec une condition spécifique. [#1237](https://github.com/SocialGouv/vao/issues/1237)
+- **Renouvellement d'agrément :**
+    - Correction de plusieurs étapes du processus de renouvellement d'agrément (étapes 1, 2, 3 et 4) [#1256, #1265, #1258, #1259, #1272, #1279].
+    - Ajout de la gestion des activités et des fichiers lors du renouvellement [#1265].
+    - Correction de la validation en brouillon lors de l'étape 2 [#1279].
+    - Amélioration de la récupération des informations des représentants légaux [#1266].
+- **Messagerie DREETS :**
+    - Implémentation de la messagerie pour les agréments côté DREETS, incluant la gestion des messages non lus et le comptage des nouveaux messages [#1271, #1272].
+- **Gestion des documents :**
+    - Amélioration de l'interface pour la gestion des documents dans le back-office, notamment pour les agréments [#1249, #1269].
+    - Ajout de la possibilité de supprimer les menus de renouvellement d'agrément [#1269].
+- **Fusager :**
+    - Ajout de nouvelles fonctionnalités et corrections concernant le fusager, notamment pour la gestion des agréments et des listes JDMA [#1237, #1245, #1248, #1263, #1266, #1268, #1270, #1273].
+    - Correction d'un problème d'affichage du nombre de femmes dans le fusager [#1270].
+    - Ajout d'une action pour confirmer la complétude d'un agrément [#1236].
+    - Ajout de la possibilité de changer le statut d'un agrément à "À MODIFIER" [#1227].
 
 ### Évolutions techniques
-- Refactorisation et passage en TypeScript de plusieurs composants liés aux étapes de renouvellement d'agrément (1085, 1084, 1101, 1194).
-- Amélioration de la gestion des requêtes pour éviter les erreurs liées aux tableaux. [#1247](https://github.com/SocialGouv/vao/issues/1247)
-- Mise à jour des pré-commits pour interdire l'utilisation de `console.log`. [#1246](https://github.com/SocialGouv/vao/issues/1246)
-- Amélioration des tests E2E pour la gestion des personnes physiques et la suppression d'utilisateurs. [#1244](https://github.com/SocialGouv/vao/issues/1244) et [#1235](https://github.com/SocialGouv/vao/issues/1235)
+- **Refactoring et TypeScript :**
+    - Conversion de certaines parties du code en TypeScript pour améliorer la maintenabilité et la robustesse [#1256, #1266].
+- **Tests E2E :**
+    - Ajout et correction de tests E2E pour améliorer la couverture et la qualité des tests [#1234, #1235, #1244].
+- **CI/CD :**
+    - Mise à jour de la configuration du pre-commit pour vérifier l'absence de `console.log` dans le code [#1246].
+- **Nettoyage du code :**
+    - Nettoyage du code dans le répertoire `shared-ui` [#1234].
 
 ### Autres changements
-- Nettoyage du code dans `shared-ui`. [#1234](https://github.com/SocialGouv/vao/issues/1234)
-- Correction de bugs mineurs et améliorations diverses de l'interface utilisateur.
+- Mise à jour des dépendances et correction de problèmes liés à la configuration de l'environnement de développement.
+- Amélioration de la gestion des requêtes avec des tableaux de données.
+- Correction de divers bugs et améliorations de l'expérience utilisateur.
