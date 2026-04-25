@@ -1,20 +1,18 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 22 avril 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Le site beta.gouv.fr a connu des mises à jour éditoriales régulières, notamment l'ajout d'une nouvelle page pour le bilan 2025 et la mise à jour de la rubrique EIG. Plusieurs pages ont été ajoutées ou modifiées concernant le PNI (Plan National d'Investissement), notamment une page d'évaluation de l'accessibilité des services. Des modifications de la base de données ont été effectuées de manière automatisée.
+Le site beta.gouv.fr a connu des mises à jour éditoriales importantes, notamment l'ajout d'une page pour le bilan 2025 et la mise à jour de la rubrique EIG. Des améliorations ont également été apportées à la présentation des incubateurs et à la gestion des liens. Enfin, des modifications de base de données régulières ont été effectuées pour assurer le bon fonctionnement du site.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle page pour le bilan 2025. [#21504](https://github.com/betagouv/beta.gouv.fr/issues/21504)
-- Publication d'une page d'évaluation de l'accessibilité des services dans le cadre du PNI 2025. [#21491](https://github.com/betagouv/beta.gouv.fr/issues/21491)
+- Ajout d'une nouvelle page présentant le bilan 2025. [#21504](https://github.com/betagouv/beta.gouv.fr/issues/21504)
 - Mise à jour éditoriale de la rubrique EIG. [#21517](https://github.com/betagouv/beta.gouv.fr/issues/21517) et [#21518](https://github.com/betagouv/beta.gouv.fr/issues/21518)
-- Ajout d'une page pour le Plan d'action 2026 (PNI). [#21522](https://github.com/betagouv/beta.gouv.fr/issues/21522)
-- Correction du lien vers la DGFIP. [#3e11a9b](https://github.com/betagouv/beta.gouv.fr/commit/3e11a9b836b38194251966f845449894d0664f7a)
-- Amélioration de la mise en forme de la description courte des incubateurs. [#28b0646](https://github.com/betagouv/beta.gouv.fr/commit/28b064656455b98359704f69836122f02f38956b)
+- Ajout d'une page pour l'évaluation de l'accessibilité des services du PNI 2025. [#21491](https://github.com/betagouv/beta.gouv.fr/issues/21491)
+- Correction du lien vers la DGFIP. [#21503](https://github.com/betagouv/beta.gouv.fr/issues/21503)
+- Amélioration de la présentation de la description courte des incubateurs. [#21503](https://github.com/betagouv/beta.gouv.fr/issues/21503)
 
 ### Évolutions techniques
-- Mises à jour régulières de la base de données via le bot `secretariat-bot`. (nombreuses PRs référencées : [#21529](https://github.com/betagouv/beta.gouv.fr/issues/21529), [#21526](https://github.com/betagouv/beta.gouv.fr/issues/21526), [#21525](https://github.com/betagouv/beta.gouv.fr/issues/21525), etc.)
-- Renommage d'un fichier image (`personna-mdso.png` vers `personae-mdso.png`). [#313009a](https://github.com/betagouv/beta.gouv.fr/commit/313009a5554808c497791867a62b04809a2f1929)
+- Modifications régulières de la base de données pour la maintenance et le bon fonctionnement du site. (commits préfixés "chore: db changes" et issues associées [#21500](https://github.com/betagouv/beta.gouv.fr/issues/21500), [#21502](https://github.com/betagouv/beta.gouv.fr/issues/21502), [#21506](https://github.com/betagouv/beta.gouv.fr/issues/21506), [#21508](https://github.com/betagouv/beta.gouv.fr/issues/21508), [#21510](https://github.com/betagouv/beta.gouv.fr/issues/21510), [#21512](https://github.com/betagouv/beta.gouv.fr/issues/21513), [#21514](https://github.com/betagouv/beta.gouv.fr/issues/21515), [#21519](https://github.com/betagouv/beta.gouv.fr/issues/21519), [#21521](https://github.com/betagouv/beta.gouv.fr/issues/21521), [#21522](https://github.com/betagouv/beta.gouv.fr/issues/21523), [#21524](https://github.com/betagouv/beta.gouv.fr/issues/21525), [#21526](https://github.com/betagouv/beta.gouv.fr/issues/21529), [#21531](https://github.com/betagouv/beta.gouv.fr/issues/21531))
+- Renommage de l'image `personna-mdso.png` en `personae-mdso.png`. [#21516](https://github.com/betagouv/beta.gouv.fr/issues/21516)
 
 ### Autres changements
-- Suppression d'un fichier de contenu obsolète (`content/_teams/engagement-civique-responsable-de-portefeuille.md`). [#21494](https://github.com/betagouv/beta.gouv.fr/issues/21494)
-- Mise à jour des gems. [#175076d](https://github.com/betagouv/beta.gouv.fr/commit/175076d6546b2538a6988754f0191b286379040a)
+- Mise à jour des gems. [#21503](https://github.com/betagouv/beta.gouv.fr/issues/21503)
