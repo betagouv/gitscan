@@ -1,31 +1,30 @@
-# Synthèse d'activité : betagouv (derniers 7 jours)
+# Synthèse d'activité : betagouv (du 22/04 au 22/05)
 
 ## Résumé de l'activité
-L'organisation betagouv a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité (correction de vulnérabilités dans `eva-serveur`), l'enrichissement des fonctionnalités (ajout de nouvelles fonctionnalités dans `Aidants Connect`, `comparIA`, `aides-simplifiees-app`, `depots-sauvages`, `euphrosyne`), et l'amélioration de la qualité du code et de la maintenance (mises à jour de dépendances, refactorisations, corrections de bugs dans de nombreux dépôts). Plusieurs projets ont également progressé dans la préparation de nouvelles versions ou de nouvelles fonctionnalités majeures, comme `resultats-Elections-FPT`, `a-just`, `acces-cible`, `api-engagement` et `doc.albert-api`.
+L'activité récente de l'organisation betagouv a été particulièrement riche, avec des mises à jour significatives sur de nombreux dépôts. On observe une forte concentration sur l'amélioration de l'expérience utilisateur, notamment via des interfaces plus intuitives et des fonctionnalités de recherche optimisées (portail-rse, doctorat-gouv). La sécurité a également été un axe majeur, avec des corrections de vulnérabilités et des renforcements de l'authentification (api-subventions-asso, infomedicament).  De nombreux dépôts ont bénéficié de mises à jour techniques importantes, incluant des refactorings, des optimisations de performance et l'adoption de nouvelles technologies (dsfr-view-components, eva, sylvasan). L'intégration de nouvelles données et l'amélioration des processus de gestion des données sont également des thèmes récurrents (depots-sauvages, anssi-recommandations-cyber-data, diagbruit.beta.gouv.fr).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
 
-*   Correction d'une vulnérabilité d'injection SQL dans `eva-serveur` ([#CollectionsEvenementsController](https://github.com/betagouv/eva-serveur)).
-*   Correction d'une faille de sécurité sur TarteauCitronJS dans `eva-serveur`.
-*   Sécurisation du rendu des URLs externes pour prévenir les attaques XSS dans `acces-cible` ([acces-cible](/repos/betagouv/acces-cible)).
+- Correction d'une vulnérabilité potentielle d'IDOR sur la soumission de notes avancées dans [infomedicament](/repos/betagouv/infomedicament).
+- Renforcement de la sécurité en désactivant le "device code grant" dans Passport dans [jeveuxaider-back](/repos/betagouv/jeveuxaider-back).
+- Correction d'une vulnérabilité (CVE) dans [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr).
 
 ## Autres changements notables
-*   **Refonte d'architecture :** `dsfr-renderer` a adopté une structure monorepo basée sur Turborepo, améliorant l'organisation et le développement.
-*   **Gestion du cycle de vie des données :** `euphrosyne-tools-api` et `euphrosyne` ont implémenté un système de gestion du cycle de vie des données de projet (refroidissement et archivage).
-*   **Intégration de nouvelles API :** `csplab` s'intègre avec Talentsoft, et `agreste-crawler` a amélioré son extraction de données.
-*   **Suppression de code obsolète :** Suppression de code obsolète dans `a-just`, `dsfr-form-builder` et `doc.incubateur.net-alliance`.
-*   **Mise à jour majeure :** `dsfr-form-builder` a été mis à jour vers ViewComponent 4.
-*   **Simplification de l'infrastructure :** Suppression de certaines APIs dans `docurba-nuxt3`.
+Plusieurs évolutions techniques majeures ont été déployées :
+
+- Mise à jour vers ViewComponent 4 dans [dsfr-view-components](/repos/betagouv/dsfr-view-components).
+- Refonte du modèle de calcul pour les travailleurs indépendants dans [mon-entreprise](/repos/betagouv/mon-entreprise).
+- Passage au crawler Playwright dans [agreste-crawler](/repos/betagouv/agreste-crawler).
+- Intégration de l'API Amethis dans [doctorat-gouv](/repos/betagouv/doctorat-gouv).
+- Mise en place d'une base de données réplica dans [jeveuxaider-back](/repos/betagouv/jeveuxaider-back).
+- Refactoring et optimisation des requêtes dans [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr).
 
 ## Dépôts les plus actifs
-*   **Aidants Connect** ([Aidants_Connect](/repos/betagouv/Aidants_Connect)) : Ajout de nouvelles fonctionnalités pour la gestion des attestations, la publication de formations et la signature de mandats.
-*   **ComparIA** ([ComparIA](/repos/betagouv/ComparIA)) : Simplification du déploiement avec Docker, amélioration de la détection de spam et ajout de nouveaux modèles.
-*   **a-just** ([a-just](/repos/betagouv/a-just)) : Corrections de bugs, améliorations de la stabilité et de la qualité du code.
-*   **eva-serveur** ([eva-serveur](/repos/betagouv/eva-serveur)) : Améliorations de la sécurité et ajout de nouvelles fonctionnalités pour les comptes OPCO.
-*   **euphrosyne** ([euphrosyne](/repos/betagouv/euphrosyne)) : Implémentation d'un système de gestion du cycle de vie des données et ajout de nouvelles fonctionnalités pour l'administration.
-*   **acces-cible** ([acces-cible](/repos/betagouv/acces-cible)) : Améliorations de la sécurité, de la gestion des fichiers CSV et de la détection des liens externes.
-*   **api-engagement** ([api-engagement](/repos/betagouv/api-engagement)) : Amélioration de la performance, de la sécurité et ajout de nouvelles fonctionnalités pour la gestion des organisations.
-*   **dsfr-form-builder** ([dsfr-form-builder](/repos/betagouv/dsfr-form-builder)) : Mise à jour vers ViewComponent 4 et amélioration de la gestion des champs de formulaire.
-*   **doc.albert-api** ([doc.albert-api](/repos/betagouv/doc.albert-api)) : Amélioration de la documentation de l'API Albert.
-*   **depots-sauvages** ([depots-sauvages](/repos/betagouv/depots-sauvages)) : Amélioration de l'expérience utilisateur et ajout de nouvelles fonctionnalités pour le suivi des procédures.
+- [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte majeure du modèle de calcul pour les travailleurs indépendants.
+- [diagbruit.beta.gouv.fr](/repos/betagouv/diagbruit.beta.gouv.fr) : Amélioration de l'expérience utilisateur et intégration de données scolaires.
+- [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Amélioration de la gestion des invitations, intégration France Travail et renforcement de la sécurité.
+- [anssi-recommandations-cyber-data](/repos/betagouv/anssi-recommandations-cyber-data) : Intégration de nouvelles sources de données et amélioration de la qualité des questions.
+- [euphrosyne](/repos/betagouv/euphrosyne) et [euphrosyne-tools-api](/repos/betagouv/euphrosyne-tools-api) : Gestion du cycle de vie des données de projet et améliorations techniques.
+- [portail-rse](/repos/betagouv/portail-rse) : Amélioration de la recherche et ajout du code postal des entreprises.
+- [infomedicament](/repos/betagouv/infomedicament) : Optimisation des performances et correction de vulnérabilités.

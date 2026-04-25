@@ -44,6 +44,9 @@ echo "Generating org summaries for changelogs committed since: $CUTOFF_DATE"
 ORG_COUNT=0
 ORG_ERRORS=0
 
+# Final report data: each entry is "org|used_count|total_count|file1,file2,..."
+FINAL_REPORT_LINES=()
+
 for org_dir in ./repos/*; do
     [ -d "$org_dir" ] || continue
 
@@ -56,8 +59,9 @@ for org_dir in ./repos/*; do
 
     # [ $ORG_NAME == "betagouv" ] || continue
 
-    # Collect eligible changelog files for this org
-    ELIGIBLE_FILES=()
+    # Collect eligible changelog files with their git dates for sorting
+    DATED_FILES=()
+    NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
     for changelog_file in "$org_dir"/*/CHANGELOG-generated.md; do
         [ -f "$changelog_file" ] || continue
 
@@ -65,16 +69,25 @@ for org_dir in ./repos/*; do
         changelog_git_date=$(git log -1 --format="%aI" -- "$changelog_file" 2>/dev/null || true)
 
         if [ -z "$changelog_git_date" ]; then
-            # File not yet committed, include it (it's new/pending)
-            :
+            # File not yet committed: treat as now (most recent)
+            changelog_git_date="$NOW"
         elif [[ "$changelog_git_date" < "$CUTOFF_DATE" ]]; then
             continue
         fi
 
         content=$(cat "$changelog_file")
         if [ -n "$content" ]; then
-            ELIGIBLE_FILES+=("$changelog_file")
+            DATED_FILES+=("${changelog_git_date}|${changelog_file}")
         fi
+    done
+
+    # Sort by date descending (most recent first)
+    IFS=$'\n' SORTED_DATED=($(printf '%s\n' "${DATED_FILES[@]}" | sort -r))
+    unset IFS
+
+    ELIGIBLE_FILES=()
+    for dated_entry in "${SORTED_DATED[@]}"; do
+        ELIGIBLE_FILES+=("${dated_entry#*|}")
     done
 
     TOTAL_ELIGIBLE=${#ELIGIBLE_FILES[@]}
@@ -83,10 +96,12 @@ for org_dir in ./repos/*; do
     CHANGELOGS=""
     CHANGELOG_COUNT=0
     CHANGELOGS_SIZE=0
+    USED_FILES=()
 
     for changelog_file in "${ELIGIBLE_FILES[@]}"; do
         repo_name=$(basename "$(dirname "$changelog_file")")
         content=$(cat "$changelog_file")
+        file_date="${SORTED_DATED[$CHANGELOG_COUNT]%%|*}"
 
         # Summarize large changelogs to save context space
         if [ ${#content} -gt "$MAX_ENTRY_CHARS" ]; then
@@ -108,6 +123,7 @@ for org_dir in ./repos/*; do
                 CHANGELOGS+=$(echo "$entry" | head -c "$remaining")
                 CHANGELOGS+=$'\n[... tronqué ...]\n\n'
                 CHANGELOG_COUNT=$((CHANGELOG_COUNT + 1))
+                USED_FILES+=("$changelog_file (tronqué, date: $file_date)")
             fi
             break
         fi
@@ -115,6 +131,7 @@ for org_dir in ./repos/*; do
         CHANGELOGS+="$entry"
         CHANGELOGS_SIZE=$((CHANGELOGS_SIZE + entry_size))
         CHANGELOG_COUNT=$((CHANGELOG_COUNT + 1))
+        USED_FILES+=("$changelog_file (date: $file_date)")
     done
 
     CHANGELOGS_SKIPPED=$((TOTAL_ELIGIBLE - CHANGELOG_COUNT))
@@ -127,6 +144,10 @@ for org_dir in ./repos/*; do
         continue
     fi
 
+    # Record for final report
+    USED_FILES_STR=$(IFS='|'; echo "${USED_FILES[*]}")
+    FINAL_REPORT_LINES+=("${ORG_NAME}|||${CHANGELOG_COUNT}|||${TOTAL_ELIGIBLE}|||${USED_FILES_STR}")
+
     echo "--- $ORG_NAME: $CHANGELOG_COUNT/$TOTAL_ELIGIBLE changelogs included (${CHANGELOGS_SIZE} chars)"
 
     # Prepare the prompt
@@ -136,7 +157,7 @@ Tu reçois les changelogs individuels des dépôts de l'organisation \"$ORG_NAME
 
 Génère une synthèse globale en français avec la structure markdown suivante :
 
-# Synthèse d'activité : $ORG_NAME (derniers $DAYS jours)
+# Synthèse d'activité : $ORG_NAME (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
 Un ou deux paragraphes résumant l'activité récente de l'organisation de manière accessible pour des décideurs, product owners ou parties prenantes non techniques en allant a l'essentielle. Mets en avant les évolutions produit, les nouveaux usages, et l'impact pour les utilisateurs finaux et reste concis. Cite les dépôts avec [nom du repo](/repos/$ORG_NAME/[repo]).
@@ -221,3 +242,23 @@ EOF
 done
 
 echo "Done: $ORG_COUNT org summaries generated, $ORG_ERRORS errors"
+
+# Final report: show which files were used to generate each org report
+echo ""
+echo "===== FINAL REPORT: Files used per org ====="
+for report_line in "${FINAL_REPORT_LINES[@]}"; do
+    org="${report_line%%|||*}"
+    rest="${report_line#*|||}"
+    used_count="${rest%%|||*}"
+    rest="${rest#*|||}"
+    total_count="${rest%%|||*}"
+    files_str="${rest#*|||}"
+
+    echo ""
+    echo "  ORG: $org ($used_count/$total_count files used)"
+    IFS='|' read -ra files_arr <<< "$files_str"
+    for f in "${files_arr[@]}"; do
+        echo "    - $f"
+    done
+done
+echo "============================================="

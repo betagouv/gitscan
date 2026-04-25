@@ -1,22 +1,18 @@
-# Synthèse d'activité : etalab-ia (derniers 7 jours)
+# Synthèse d'activité : etalab-ia (du 16/04 au 23/04/2026)
 
 ## Résumé de l'activité
-L'organisation etalab-ia a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts de développement se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités d'authentification, de persistance des conversations et d'assistants de configuration (rag-facile, lettabot).  Des refactorisations architecturales ont été menées pour améliorer la maintenabilité et la scalabilité de plusieurs projets (OpenGateLLM, ragtime). L'intégration de nouveaux jeux de données et l'automatisation de pipelines (mediatech-to-albert-api, albert-data-collections) visent à enrichir et à maintenir à jour les ressources disponibles pour les applications d'IA.
+L'activité de l'organisation etalab-ia au cours des dernières semaines a été marquée par des avancées significatives sur plusieurs fronts. Le projet [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a bénéficié d'une refonte architecturale et de corrections de bugs, améliorant la stabilité et l'expérience utilisateur. Le projet [ragtime](/repos/etalab-ia/ragtime) a simplifié son offre en supprimant certaines fonctionnalités pour se concentrer sur ses capacités principales, tout en améliorant la gestion des collections. Enfin, le projet [parcours-rag](/repos/etalab-ia/parcours-rag) a progressé avec l'ajout complet du module 3, enrichissant le parcours d'apprentissage sur le RAG. Un nouveau projet, [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api), a démarré avec une API fonctionnelle pour la transcription et la diarisation audio.
 
 ## Sécurité
-- Correction d'une vulnérabilité dans [dragster](/repos/etalab-ia/dragster) avec la suppression d'un évaluateur nécessitant une clé OpenAI.
-- Intégration de `gitleaks` dans [skills](/repos/etalab-ia/skills) pour la détection de secrets dans le code.
+Aucun changement lié à la sécurité n'a été rapporté durant cette période.
 
 ## Autres changements notables
-- Migration de la base de données de [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless.
-- Refonte de l'architecture interne de [ragtime](/repos/etalab-ia/ragtime) avec la suppression de fonctionnalités et une simplification du projet.
-- Refactorisation de la gestion des rôles dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une architecture plus propre et maintenable.
-- Refactorisation de la structure du projet [skills](/repos/etalab-ia/skills) pour la conformité avec la spécification Agent Skills.
-- Migration vers la version 6 du SDK IA dans [BlockNote](/repos/etalab-ia/BlockNote).
+- Refonte de la gestion des rôles dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une architecture plus maintenable.
+- Suppression de la fonctionnalité "agentic harness" et de la commande `ragtime learn` dans [ragtime](/repos/etalab-ia/ragtime) pour simplifier le projet.
+- Mise en place d'un pipeline CI/CD pour le projet [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) afin d'automatiser les tests et le déploiement.
 
 ## Dépôts les plus actifs
-- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration majeure de la plateforme avec authentification, persistance des conversations et intégration d'IA Inspect.
-- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de l'onboarding pour différents canaux.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et amélioration de la documentation pour faciliter l'utilisation des fonctionnalités d'IA.
-- [skills](/repos/etalab-ia/skills) : Ajout de nouvelles skills pour les assistants de code IA et amélioration des skills existantes.
-- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur, notamment concernant les tableaux et l'IA.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Corrections de bugs et refactorisation de l'architecture interne pour améliorer la stabilité et la maintenabilité.
+- [ragtime](/repos/etalab-ia/ragtime) : Simplification du projet et amélioration de la gestion des collections via la CLI.
+- [parcours-rag](/repos/etalab-ia/parcours-rag) : Enrichissement du parcours d'apprentissage RAG avec l'ajout du module 3 et l'intégration du corpus ANSSI Essentiels.
+- [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Développement initial d'une API pour la transcription et la diarisation audio compatible avec l'API OpenAI.

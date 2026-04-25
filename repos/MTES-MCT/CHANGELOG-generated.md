@@ -1,34 +1,25 @@
-# Synthèse d'activité : MTES-MCT (derniers 7 jours)
+# Synthèse d'activité : MTES-MCT (du 15/04 au 23/04/2026)
 
 ## Résumé de l'activité
-L'organisation MTES-MCT a connu une semaine riche en activités, avec des améliorations significatives apportées à de nombreux projets. L'accent a été mis sur l'amélioration de l'expérience utilisateur, notamment avec des refontes d'interfaces (tableaux de bord de `rapportnav2`, `sparte`, `otelo`), l'ajout de nouvelles fonctionnalités (gestion des rappels dans `histologe`, intégration Brevo dans `partaj`, gestion des garanties financières dans `resorption-bidonvilles`), et l'enrichissement des données (ajout de données démographiques dans `otelo`, intégration de données Olo et Aquasys dans `partageonsleau-orchestration`). Des efforts importants ont également été consacrés à la sécurité (corrections de vulnérabilités dans `dossierfacile-backend`, `mobilic-api`, `qualicharge`) et à la maintenance technique (mise à jour de dépendances, refactorisation de code). Plusieurs projets ont bénéficié d'améliorations de performance et de stabilité, notamment `apilos`, `dialog`, `ecobalyse-runner`, et `prelevements-deau-api`.
+L'activité récente de l'organisation MTES-MCT se concentre sur l'amélioration continue de ses outils et plateformes, avec un accent particulier sur l'expérience utilisateur et la qualité des données. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et d'ajouts de nouvelles fonctionnalités. On note des avancées significatives dans les domaines de la gestion des données environnementales (monitorfish, ecobalyse, fisheries-and-environment-data-warehouse), du suivi des déchets (trackdechets), de la gestion du territoire (dialog, potentiel, acceslibre) et de la simplification des démarches administratives (otelo, dossier-facile-frontend). L'intégration de nouvelles sources de données et l'amélioration de la sécurité sont également des thèmes récurrents.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-*   `dossierfacile-backend` : Renforcement de la sécurité du back-office avec des contrôles d'accès et des mesures de durcissement.
-*   `mobilic-api` : Désactivation de GraphiQL en production et limitation de la complexité des requêtes GraphQL.
-*   `qualicharge` : Mise à jour de dépendances pour corriger des vulnérabilités.
-*   `trackdechets-vigiedechets` : Ajout d'en-têtes HTTP pour gérer les références et les échanges entre origines.
+- Correction de vulnérabilités XSS dans [envergo](/repos/MTES-MCT/envergo).
+- Renforcement de la sécurité avec vérification de la revendication `organizational_unit` dans [monitorenv](/repos/MTES-MCT/monitorenv).
+- Ajout d'une limite de complexité pour les requêtes GraphQL dans [mobilic-api](/repos/MTES-MCT/mobilic-api).
+- Ajout des en-têtes HTTP `Referrer` et `crossOrigin` dans [trackdechets](/repos/MTES-MCT/trackdechets).
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures :
-
-*   `dialog` : Refonte du processus de création des index BDTOPO et optimisation du traitement du Datex.
-*   `ecobalyse-runner` : Mise en place d'une authentification basique par token.
-*   `fonds-prevention-argile` : Corrections et améliorations de la robustesse de l'application.
-*   `mobilic` : Intégration de GitLab CI pour l'intégration continue et le déploiement.
-*   `partageonsleau-orchestration` : Dockerisation de l'application pour faciliter le déploiement.
-*   `sparte` : Refonte majeure de la page d'accueil.
-*   `verseau2` : Migration vers pnpm pour la gestion des dépendances et amélioration de la gestion des tokens d'authentification.
-*   `zero-logement-vacant` : Refonte de la configuration du serveur avec Zod et documentation OpenAPI complète.
+- Dockerisation de l'application [partageonsleau-orchestration](/repos/MTES-MCT/partageonsleau-orchestration) pour simplifier le déploiement.
+- Refonte de l'authentification dans [ecobalyse](/repos/MTES-MCT/ecobalyse) avec suppression de l'authentification par cookie.
+- Migration vers pnpm pour la gestion des dépendances dans [verseau2](/repos/MTES-MCT/verseau2).
+- Intégration de GitLab CI dans [partaj](/repos/MTES-MCT/partaj) pour améliorer l'intégration continue.
+- Mise à jour majeure de Flask dans [mobilic-api](/repos/MTES-MCT/mobilic-api).
 
 ## Dépôts les plus actifs
-*   `dossierfacile-backend` : Amélioration de l'analyse des fiches de paie et des documents, renforcement de la sécurité.
-*   `dialog` : Optimisation des performances, ajout de nouvelles fonctionnalités liées aux arrêtés et à la cartographie.
-*   `mobilic` : Amélioration de l'interface d'administration, intégration de Brevo Conversations.
-*   `otelo` : Refonte du tableau de bord, ajout de nouvelles fonctionnalités de gestion des utilisateurs et des données.
-*   `rapportnav2` : Ajout de nouvelles fonctionnalités pour la gestion des ports et des criées, amélioration de la gestion des missions et des contrôles.
-*   `trackdechets` : Corrections de bugs et améliorations de la gestion des BSDA et des VHU.
-*   `verseau2` : Ajout d'un tableau de bord de conformité prévisionnelle et d'indicateurs de conformité.
-*   `vizeau` : Ajout de l'export des parcelles et du journal de bord, amélioration de la visualisation des AAC.
+- [otelo](/repos/MTES-MCT/otelo) : Refonte significative du tableau de bord et ajout de nouvelles fonctionnalités de gestion des utilisateurs et des données.
+- [monitorfish](/repos/MTES-MCT/monitorfish) : Corrections de bugs et ajout de nouvelles catégories d'infractions, ainsi que des améliorations cartographiques.
+- [dialog](/repos/MTES-MCT/dialog) : Amélioration de la gestion des arrêtés, intégration de nouvelles sources de données et ajout de notifications Mattermost.
+- [mobilic-api](/repos/MTES-MCT/mobilic-api) : Corrections de bugs, améliorations de sécurité et mise à jour de Flask.
+- [acceslibre](/repos/MTES-MCT/acceslibre) : Implémentation de la génération de PDF pour les ERP et amélioration de l'API pour les widgets.

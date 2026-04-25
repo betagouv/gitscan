@@ -1,29 +1,21 @@
-# Synthèse d'activité : incubateur-ademe (derniers 7 jours)
+# Synthèse d'activité : incubateur-ademe (du 19 avril 2026 au 17 mai 2026)
 
 ## Résumé de l'activité
-L'organisation incubateur-ademe a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec la refonte de certaines interfaces (plusfraichemaville-site, nosgestesclimat-app) et l'ajout de nouvelles fonctionnalités (benefriches, ecopass).  Des améliorations techniques importantes ont également été apportées, notamment concernant la sécurité (benefriches, vaultwarden), la performance (stats-incubateur, thumbnail-generator) et la modernisation des outils (roadmaps-faciles, publicodes-empreinte-carbone-chauffage). Plusieurs dépôts ont bénéficié de corrections de bugs et de mises à jour de dépendances.
+L'activité de l'incubateur-ademe au cours des dernières semaines a été marquée par des améliorations significatives sur plusieurs de ses projets phares. On observe une forte concentration sur l'amélioration de l'expérience utilisateur avec des refontes d'interfaces ([plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site), [benefriches](/repos/incubateur-ademe/benefriches), [mutafriches](/repos/incubateur-ademe/mutafriches)) et l'ajout de nouvelles fonctionnalités, notamment pour la création de projets ([plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site)) et l'analyse de données ([benefriches](/repos/incubateur-ademe/benefriches), [mutafriches](/repos/incubateur-ademe/mutafriches)).  Des efforts importants ont également été déployés pour renforcer la sécurité et la stabilité des plateformes ([ecopass](/repos/incubateur-ademe/ecopass), [benefriches](/repos/incubateur-ademe/benefriches), [dashlord](/repos/incubateur-ademe/dashlord)).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
-
-- [benefriches](/repos/incubateur-ademe/benefriches) : Utilisation de cookies sécurisés pour une meilleure protection des données.
-- [vaultwarden](/repos/incubateur-ademe/vaultwarden) : Mises à jour de Rust, des crates et de GitHub Actions pour bénéficier des derniers correctifs de sécurité.
+- Correction de vulnérabilités et amélioration de la sécurité des cookies dans [benefriches](/repos/incubateur-ademe/benefriches).
+- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité dans [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site).
 
 ## Autres changements notables
-Plusieurs évolutions techniques majeures ont été réalisées :
-
-- **Refonte d'architecture :** [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) a migré vers une architecture monorepo. [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) a vu une refonte de son architecture d'authentification.
-- **Modernisation technologique :** [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a été entièrement réécrit avec Vite, React 19 et TypeScript. [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) a publié des versions majeures avec des corrections et des améliorations.
-- **Amélioration de l'infrastructure :** [dashlord](/repos/incubateur-ademe/dashlord) a vu des mises à jour régulières de ses configurations de surveillance.
-- **Automatisation :** [thumbnail-generator](/repos/incubateur-ademe/thumbnail-generator) a mis en place un workflow de déploiement automatique vers GitHub Pages.
+- Refonte de l'architecture vers une structure monorepo dans [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app).
+- Refactoring majeur et suppression de fonctionnalités dans [tacct](/repos/incubateur-ademe/tacct) pour simplifier l'application.
+- Migration de base de données dans [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets).
+- Passage à pnpm pour la gestion des dépendances dans [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site).
 
 ## Dépôts les plus actifs
-Voici les dépôts les plus actifs de la semaine :
-
-- [benefriches](/repos/incubateur-ademe/benefriches) : Ajout de nouvelles fonctionnalités et améliorations de la sécurité pour le calcul de l'impact des friches.
-- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Refonte de l'interface utilisateur et ajout de nouvelles fonctionnalités pour l'application Nos Gestes Climat.
-- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités pour le site Plus Frais Ma Ville.
-- [ecopass](/repos/incubateur-ademe/ecopass) : Ajout de nouvelles fonctionnalités d'exportation de données et correction de bugs pour la plateforme EcoPass.
-- [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Refonte de l'authentification et ajout de nombreuses nouvelles fonctionnalités pour la gestion des roadmaps.
-- [dashlord](/repos/incubateur-ademe/dashlord) : Mises à jour régulières des configurations de surveillance pour assurer la pertinence des données.
-- [impactco2](/repos/incubateur-ademe/impactco2) : Ajout de nouveaux repas et amélioration de l'affichage pour le calcul de l'impact carbone.
+- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Refonte de l'architecture et ajout de nouvelles fonctionnalités pour l'application de calcul d'empreinte carbone.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration significative de la saisie de données et ajout d'une API pour le calcul du coût de l'inaction.
+- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Refonte complète du flux de création de projet et amélioration de la gestion des erreurs.
+- [impactco2](/repos/incubateur-ademe/impactco2) : Ajout de nouvelles fonctionnalités de calcul et amélioration de la gestion des erreurs.
+- [mutafriches](/repos/incubateur-ademe/mutafriches) : Refonte des algorithmes de calcul et ajout de nouvelles données pour l'analyse de mutabilité.

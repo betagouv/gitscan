@@ -1,20 +1,17 @@
-# Synthèse d'activité : etalab (derniers 7 jours)
+# Synthèse d'activité : etalab (du 01 mai 2026 au 16 mai 2026)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur plusieurs fronts chez etalab. On observe des avancées significatives dans l'enrichissement des APIs de l'administration (ajout d'APIs CNOUS, MSA, et mise à jour de l'API MEN), améliorant ainsi l'accès aux données publiques pour les services numériques.  Des efforts importants ont également été consacrés à l'amélioration de la plateforme Data Pass avec de nouvelles fonctionnalités de gestion des demandes et des utilisateurs, ainsi qu'à la modernisation de l'infrastructure et des schémas de données, notamment dans le domaine du transport. L'accent a été mis sur la qualité des données et la conformité aux normes (NeTEx, GTFS).
+L'activité récente d'etalab s'est concentrée sur l'amélioration de ses services existants et l'ajout de nouvelles fonctionnalités clés.  [data_pass](/repos/etalab/data_pass) a bénéficié de mises à jour importantes concernant la gestion des demandes et des utilisateurs, ainsi que des corrections de bugs.  [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) a introduit une nouvelle architecture pour une plus grande flexibilité du schéma des dispositifs d'aide. Enfin, [transport-site](/repos/etalab/transport-site) a amélioré l'expérience utilisateur avec l'intégration de données NeTEx et des améliorations d'accessibilité.
 
 ## Sécurité
-- Rotation annuelle du token webhook pour renforcer la sécurité de l'API [admin_api_entreprise](/repos/etalab/admin_api_entreprise).
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion des accès.
 - Mise à jour de Rails vers la version 8.1.2.1 dans [data_pass](/repos/etalab/data_pass).
-- Prise en charge de la norme NeTEx v2.4.0 sur [transport-normes-site](/repos/etalab/transport-normes-site).
-- Introduction de l'architecture des "data packages" pour étendre le schéma des dispositifs d'aide dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide).
+- Refactorisation de `MaintenanceBanner` en service singleton `AnnouncementBanner` dans [data_pass](/repos/etalab/data_pass).
+- Amélioration de la gestion des erreurs critiques dans le validateur GTFS-RT de [transport-site](/repos/etalab/transport-site).
 
 ## Dépôts les plus actifs
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles APIs et amélioration de la gestion des tokens et de l'interface d'administration.
-- [data_pass](/repos/etalab/data_pass) : Ajout de fonctionnalités de gestion des demandes, des utilisateurs et correction de bugs.
-- [transport-site](/repos/etalab/transport-site) : Intégration de données NeTEx, amélioration de l'accessibilité et de l'export des données.
-- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication de la version 2.4.0 du profil France NeTEx avec des clarifications et améliorations.
-- [transport-normes-site](/repos/etalab/transport-normes-site) : Mise à jour pour supporter la dernière version de la norme NeTEx.
+- [data_pass](/repos/etalab/data_pass) : Ajout de nouvelles fonctionnalités pour la gestion des demandes, des utilisateurs et des scopes d'API, ainsi que des corrections de bugs et des mises à jour techniques.
+- [transport-site](/repos/etalab/transport-site) : Intégration de données NeTEx, améliorations de l'accessibilité et de l'export des données, et optimisations techniques.
+- [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) : Introduction d'une nouvelle architecture basée sur les "data packages" pour une plus grande flexibilité du schéma des dispositifs d'aide.

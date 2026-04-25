@@ -1,23 +1,17 @@
-# Synthèse d'activité : mission-apprentissage (derniers 7 jours)
+# Synthèse d'activité : mission-apprentissage (du 2026-04-20 au 2026-04-26)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par des améliorations significatives sur plusieurs fronts. Le [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) a bénéficié de corrections et d'une refonte technique majeure avec la mise à jour de Mongoose.  Le [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) a vu l'intégration de nouvelles fonctionnalités pour l'onboarding et l'analyse des données, ainsi qu'une migration vers SOPS pour une meilleure sécurité.  Des optimisations de performance et des corrections de bugs ont été apportées à [bal](/repos/mission-apprentissage/bal) et [labonnealternance](/repos/mission-apprentissage/labonnealternance), tandis que [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) a intégré un nouveau modèle d'apprentissage et amélioré son processus de CI/CD.
+La semaine a été marquée par des améliorations significatives sur plusieurs fronts. [labonnealternance](/repos/mission-apprentissage/labonnealternance) a reçu de nombreuses mises à jour axées sur l'amélioration de l'expérience utilisateur, notamment avec l'intégration de nouvelles sources d'offres d'emploi (EDF, Enedis) et une simplification du processus de candidature.  [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) a progressé dans l'intégration de données issues du Machine Learning et de l'OFA pour enrichir l'analyse des retours d'expérience, tout en renforçant la sécurité de la gestion des secrets. Enfin, [mongodb](/repos/mission-apprentissage/mongodb) a implémenté une authentification plus robuste pour les clusters MongoDB.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
-- Configuration d'une autorité de certification pour l'authentification des membres d'une grappe MongoDB dans [mongodb](/repos/mission-apprentissage/mongodb).
-- Correction concernant la gestion des adresses IP de confiance dans [infra](/repos/mission-apprentissage/infra).
+- [mongodb](/repos/mission-apprentissage/mongodb) : Configuration d'une autorité de certification pour une authentification plus robuste des membres d'un cluster MongoDB.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Migration de la gestion des secrets d'Ansible Vault vers SOPS pour une sécurité renforcée.
 
 ## Autres changements notables
-- Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
-- Refactorisation des scripts de sauvegarde et de restauration de base de données dans [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin).
-- Remplacement de Mailhog par Mailpit pour les tests SMTP dans [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Améliorations significatives de la chaîne de déploiement.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Ajout de lectures MongoDB sur les secondaires pour la recherche, amélioration de la gestion du rate limit de l'API job-étudiant et optimisation des healthchecks.
 
 ## Dépôts les plus actifs
-- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections de bugs, refonte technique avec mise à jour de Mongoose et amélioration de la synchronisation avec Elasticsearch.
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout de nouvelles fonctionnalités pour l'onboarding, l'analyse des données et migration vers SOPS pour la sécurité.
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration de la navigation, intégration de l'API Taleez et optimisation des healthchecks.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage, amélioration du CI/CD et migration vers SOPS.
-- [bal](/repos/mission-apprentissage/bal) : Optimisation des performances, correction de bugs et ajout de l'automatisation de la constitution de listes de contact.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Nombreuses améliorations de l'expérience utilisateur et intégration de nouvelles sources d'offres d'emploi.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Intégration de données ML/OFA, nouveau processus d'onboarding et renforcement de la sécurité.
+- [mongodb](/repos/mission-apprentissage/mongodb) : Implémentation d'une authentification plus robuste pour les clusters MongoDB.
