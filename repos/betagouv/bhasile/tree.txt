@@ -202,6 +202,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260421145404_log_monthly_usage_statistics
 │   │   │   └── migration.sql
+│   │   ├── 20260423132042_rename_reporting_fields
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -821,7 +823,8 @@
 │   │   │   ├── lists
 │   │   │   │   ├── ListLoader.tsx
 │   │   │   │   ├── ListTableHeadings.tsx
-│   │   │   │   └── OrderButton.tsx
+│   │   │   │   ├── OrderButton.tsx
+│   │   │   │   └── entitiesConstants.ts
 │   │   │   ├── map
 │   │   │   │   ├── GroupMarker.tsx
 │   │   │   │   ├── Map.tsx
@@ -1008,10 +1011,18 @@
 │   ├── (authenticated)
 │   │   └── structures
 │   │       ├── StructuresTable.test.tsx
+│   │       ├── [id]
+│   │       │   └── finalisation
+│   │       │       └── 01-identification
+│   │       │           └── page.test.tsx
 │   │       └── _components
 │   │           ├── Filters.test.tsx
 │   │           ├── ListTableHeadings.test.tsx
 │   │           └── OrderButton.test.tsx
+│   ├── api
+│   │   └── structures
+│   │       ├── structure.repository.test.ts
+│   │       └── structures.route.test.ts
 │   ├── components
 │   │   ├── Menu.test.tsx
 │   │   └── forms
@@ -1111,6 +1122,7 @@
 │   │   ├── useFieldValidator.test.ts
 │   │   ├── useFileUpload.test.ts
 │   │   ├── useLocalStorage.test.ts
+│   │   ├── useStructures.test.ts
 │   │   └── useStructuresSearch.test.ts
 │   ├── lib
 │   │   └── casl
@@ -1125,6 +1137,7 @@
 │   │   ├── controle.factory.ts
 │   │   ├── evaluation.factory.ts
 │   │   ├── form-test-wrapper.tsx
+│   │   ├── http.mock.ts
 │   │   ├── structure-typologie.factory.ts
 │   │   └── structure.factory.ts
 │   ├── utils
@@ -1144,4 +1157,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-293 directories, 853 files
+299 directories, 860 files
