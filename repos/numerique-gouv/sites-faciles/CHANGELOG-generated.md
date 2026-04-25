@@ -1,28 +1,27 @@
-## Changelog : sites-faciles (30 derniers jours, au 16 avril 2026)
+## Changelog : sites-faciles (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'internationalisation (i18n) du projet, notamment pour les formulaires et les menus, ainsi que sur l'optimisation des performances et la correction de bugs. Des améliorations ont également été apportées à l'administration et à la gestion des sitemaps.
+Ce mois-ci, les améliorations se concentrent sur l'internationalisation de la plateforme, avec l'ajout de la gestion de plusieurs langues pour les formulaires et les menus. Des optimisations de performance ont également été apportées au panneau de tutoriel et à la récupération des images de prévisualisation. Enfin, un déploiement en un clic sur Scalingo a été mis en place pour faciliter le déploiement des sites.
 
 ### Évolutions fonctionnelles
-- Ajout d'un sélecteur de langue dans l'interface d'administration pour faciliter la gestion du contenu multilingue. [#463](https://github.com/numerique-gouv/sites-faciles/issues/463)
-- Internationalisation des champs de formulaire, permettant l'affichage des labels et des messages dans différentes langues. [#481](https://github.com/numerique-gouv/sites-faciles/issues/481)
-- Possibilité d'exclure des pages du sitemap via un nouveau champ dans l'interface d'administration. [#466](https://github.com/numerique-gouv/sites-faciles/issues/466)
+- Ajout d'un sélecteur de langue pour l'administration et les formulaires, permettant la gestion de contenu multilingue. [#481](https://github.com/numerique-gouv/sites-faciles/pull/481)
+- Possibilité d'exclure des pages du sitemap via un nouveau champ. [#466](https://github.com/numerique-gouv/sites-faciles/pull/466)
 - Amélioration du menu utilisateur avec une présentation plus claire.
-- Ajout de la possibilité d'obtenir l'image de prévisualisation d'une page via une requête.
-- Correction de l'alignement des boutons.
+- Ajout de la possibilité d'obtenir l'image de prévisualisation d'une page via une requête. [#463](https://github.com/numerique-gouv/sites-faciles/pull/463)
+- Optimisation de la récupération des images de prévisualisation avec ajout d'un cache et d'un timeout.
 
 ### Évolutions techniques
-- Optimisation des requêtes et ajout d'un cache avec un délai d'expiration pour améliorer les performances du tutoriel. [#473](https://github.com/numerique-gouv/sites-faciles/issues/473)
-- Correction de la configuration de l'en-tête configurable. [#469](https://github.com/numerique-gouv/sites-faciles/issues/469)
-- Suppression de la synchronisation avec Notion. [#465](https://github.com/numerique-gouv/sites-faciles/issues/465)
-- Suppression des migrations inutiles et correction d'une migration existante.
-- Mise à jour des dépendances Python. [#475](https://github.com/numerique-gouv/sites-faciles/issues/475)
-- Amélioration de la couverture des tests.
-- Suppression des traductions DjangoJS et des locales inutiles.
+- Mise en place d'un déploiement en un clic sur la plateforme Scalingo. [#484](https://github.com/numerique-gouv/sites-faciles/pull/484)
+- Internationalisation des champs de formulaire. [#481](https://github.com/numerique-gouv/sites-faciles/pull/481)
+- Optimisation du panneau de tutoriel pour améliorer les performances. [#473](https://github.com/numerique-gouv/sites-faciles/pull/473)
+- Correction d'un bug lié à l'URL des pages.
+- Correction d'un bug lié à l'en-tête configurable. [#469](https://github.com/numerique-gouv/sites-faciles/pull/469)
+- Mise à jour des dépendances Python. [#475](https://github.com/numerique-gouv/sites-faciles/pull/475)
+- Suppression de la synchronisation avec Notion. [#465](https://github.com/numerique-gouv/sites-faciles/pull/465)
 
 ### Autres changements
-- Ajout de commentaires pour améliorer la lisibilité du code.
-- Correction de clés de langues.
-- Correction de messages.
+- Amélioration de l'alignement des boutons.
+- Ajout de commentaires dans le code pour une meilleure lisibilité.
+- Correction de la migration.
 - Modification du nom d'une variable pour la constante de cache.
-- Correction de l'URL de la page.
+- Ajout d'une gestion d'erreur lors de la validation.
