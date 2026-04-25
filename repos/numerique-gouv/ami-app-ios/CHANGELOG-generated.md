@@ -1,26 +1,36 @@
-## Changelog : ami-app-ios (30 derniers jours, au 21 avril 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment une gestion améliorée des notifications, un accès facilité à la page d'accueil après la configuration des notifications, et l'ajout d'un bouton de partage de logs plus visible. Des corrections et refactorings techniques ont également été effectués pour améliorer la stabilité et la maintenabilité de l'application.
+Cette version apporte des améliorations significatives à la navigation et à l'expérience utilisateur, notamment la gestion des liens, des notifications et des pages externes. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. Une page d'onboarding pour les notifications a été ajoutée.
 
 ### Évolutions fonctionnelles
-- **Notifications :** L'application ouvre maintenant la page des notifications lorsqu'un utilisateur clique sur une notification push. [#54](https://github.com/numerique-gouv/ami-app-ios/pull/54)
-- **Onboarding Notifications :** La page de configuration des notifications est maintenant présentée en natif, améliorant l'expérience utilisateur. [#71](https://github.com/numerique-gouv/ami-app-ios/pull/71)
-- **Navigation :** Après avoir configuré les préférences de réception des notifications, l'application redirige automatiquement l'utilisateur vers la page d'accueil. [#76](https://github.com/numerique-gouv/ami-app-ios/pull/76)
-- **Partage de logs :** Le bouton de partage de logs a été mis à jour avec le nouveau design DSFR et est maintenant plus facilement accessible en bas de page. [#72](https://github.com/numerique-gouv/ami-app-ios/pull/72) [#74](https://github.com/numerique-gouv/ami-app-ios/pull/74)
-- **Contact par email :** La fonctionnalité de contact par email est maintenant disponible sur la page d'accueil. [#59](https://github.com/numerique-gouv/ami-app-ios/pull/59)
-- **Liens Mailto :** La gestion des liens `mailto:` a été réactivée. [#65](https://github.com/numerique-gouv/ami-app-ios/pull/65)
+- **Notifications :** L'application ouvre maintenant la page des notifications lorsqu'on clique sur une notification push [#54](https://github.com/numerique-gouv/ami-app-ios/pull/54).
+- **Liens :** Gestion améliorée des liens `mailto` sur les pages partenaires [#65](https://github.com/numerique-gouv/ami-app-ios/pull/65).
+- **Navigation :**
+    - Ajout d'un bouton "Retour" lorsque l'on navigue vers une page externe dans la WebView [#78](https://github.com/numerique-gouv/ami-app-ios/pull/78).
+    - Amélioration de la navigation vers la page d'accueil après le choix des préférences de réception de notifications [#76](https://github.com/numerique-gouv/ami-app-ios/pull/76).
+    - Introduction d'une vue "Partenaire" simplifiée pour les pages externes, avec un bouton "Retour" visible [#74](https://github.com/numerique-gouv/ami-app-ios/pull/74).
+- **Partage de logs :** Le bouton de partage de logs a été mis à jour avec le style DSFR [#72](https://github.com/numerique-gouv/ami-app-ios/pull/72) et [#73](https://github.com/numerique-gouv/ami-app-ios/pull/73).
+- **Onboarding Notifications :** Ajout d'une page d'onboarding native pour la gestion des notifications [#71](https://github.com/numerique-gouv/ami-app-ios/pull/71).
+- **WebView :** Amélioration de la gestion de la navigation dans la WebView, avec la possibilité de réinitialiser la navigation à l'URL racine et la gestion des autorisations de navigation [#80](https://github.com/numerique-gouv/ami-app-ios/pull/80).
 
 ### Évolutions techniques
-- **WebView :** Refactorisation importante de la WebView, incluant la gestion de la navigation et la sécurité des certificats.
-- **Gestion des URLs :** Ajout d'un mécanisme pour contrôler la navigation dans la WebView, permettant de bloquer certaines URLs si nécessaire.
-- **Firebase :** Amélioration de la gestion de l'enregistrement du token Firebase, forçant la ré-inscription en cas d'échec initial.
-- **Architecture :** Initialisation correcte des vues `HomeView` et `ReviewAppView` avec leurs modèles de données.
-- **Configuration :** Suppression des fichiers de configuration inutilisés et simplification de la configuration de l'URL de base.
+- **Architecture :** Introduction d'une classe `AppState` pour gérer l'état de l'application et d'un `NetworkMonitor` pour surveiller la connectivité réseau.
+- **Refactoring :** Refactor de la WebView et des vues `HomeView` et `ReviewAppView` pour améliorer la structure du code et la maintenabilité.
+- **Observabilité :** Utilisation de `@Observable` pour l'affichage d'informations dans l'application.
+- **Gestion des certificats :** Acceptation uniquement des certificats auto-signés en mode DEBUG.
+- **Configuration :** Suppression des fichiers de configuration obsolètes.
 - **Compatibilité iOS :** L'application est maintenant compatible avec iOS 17.0.
-- **Exécution JavaScript :** L'exécution de JavaScript dans la WebView est maintenant forcée sur le thread principal.
 
 ### Autres changements
-- Mise à jour de la documentation et des messages de log pour plus de clarté.
-- Correction de typos et suppression de code inutilisé.
-- Amélioration de la gestion des previews en mode release.
+- Correction de fautes de frappe.
+- Suppression de code inutile.
+- Amélioration des messages de log.
+- Mise à jour de la documentation.
+- Amélioration de l'alignement vertical des sous-vues dans `HomeView`.
+- Correction d'un problème d'initialisation des vues `HomeView` et `ReviewAppView` après le refactoring.
+- Ajout de tests pour la gestion des notifications.
+- Amélioration de la gestion de l'enregistrement des tokens Firebase.
+- Exécution de `evaluateJavaScript` sur le thread principal.
+- Log des réceptions de tokens FCM.
+- Suppression de fichiers WebView obsolètes.
