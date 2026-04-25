@@ -7,7 +7,7 @@ import { SearchBar } from "@/components/SearchBar";
 import type { AggregatedData } from "@/lib/types";
 import reposData from "../../../data/repos.json";
 
-const data = reposData as AggregatedData;
+const data = reposData as unknown as AggregatedData;
 
 // Compute audience stats
 const audienceStats: Record<string, number> = {};

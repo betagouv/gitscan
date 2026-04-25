@@ -6,7 +6,7 @@ import { RepoCard } from "@/components/RepoCard";
 import reposData from "../../../../data/repos.json";
 import contributionsByOrgData from "../../../../data/contributions-by-org.json";
 
-const data = reposData as AggregatedData;
+const data = reposData as unknown as AggregatedData;
 const contributionsByOrg = contributionsByOrgData as ContributionsByOrg;
 
 const orgChangelogs = data.orgChangelogs ?? [];
@@ -101,11 +101,14 @@ export default async function OrgActivityPage({ params }: PageProps) {
           {entry.changelogGeneratedAt && (
             <p className="text-xs text-slate-400 mb-4">
               Généré le{" "}
-              {new Date(entry.changelogGeneratedAt).toLocaleDateString("fr-FR", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
+              {new Date(entry.changelogGeneratedAt).toLocaleDateString(
+                "fr-FR",
+                {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                },
+              )}
             </p>
           )}
           <Changelog content={entry.changelog} />

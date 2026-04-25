@@ -3,7 +3,7 @@ import type { AggregatedData } from "@/lib/types";
 import { Changelog } from "@/components/Changelog";
 import reposData from "../../../../../data/repos.json";
 
-const data = reposData as AggregatedData;
+const data = reposData as unknown as AggregatedData;
 
 function formatRelativeTime(dateString: string): string {
   const date = new Date(dateString);

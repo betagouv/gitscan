@@ -9,7 +9,7 @@ import type {
 import reposData from "../../data/repos.json";
 import contributionsByOrgData from "../../data/contributions-by-org.json";
 
-const data = reposData as AggregatedData;
+const data = reposData as unknown as AggregatedData;
 const contributionsByOrg = contributionsByOrgData as ContributionsByOrg;
 
 const recentRepos = [...data.repos]

@@ -6,7 +6,7 @@ import type { DependencyIndex, DependencyType } from "@/lib/types";
 import { parseVersionFilter, matchesVersionRange } from "@/lib/semver";
 import depsData from "../../../data/dependencies.json";
 
-const data = depsData as DependencyIndex;
+const data = depsData as unknown as DependencyIndex;
 
 const typeLabels: Record<DependencyType, string> = {
   npm: "NPM",

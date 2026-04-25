@@ -6,7 +6,7 @@ import { RepoCard } from "@/components/RepoCard";
 import type { AggregatedData } from "@/lib/types";
 import reposData from "../../data/repos.json";
 
-const data = reposData as AggregatedData;
+const data = reposData as unknown as AggregatedData;
 
 // Haikus inspirants pour les nerds en français
 const haikus = [
