@@ -132,8 +132,7 @@
         │   │       ├── __init__.py
         │   │       ├── initialize_cv_metadata.py
         │   │       ├── match_cv_to_opportunities.py
-        │   │       ├── process_uploaded_cv.py
-        │   │       └── retrieve_corps.py
+        │   │       └── process_uploaded_cv.py
         │   ├── exceptions.py
         │   └── ingestion
         │       ├── __init__.py
@@ -257,35 +256,17 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
-        │   │   │   ├── management
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── commands
-        │   │   │   │       ├── __init__.py
-        │   │   │   │       └── process_cv.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   ├── 0002_cvmetadatamodel_status_cvmetadatamodel_updated_at_and_more.py
         │   │   │   │   └── __init__.py
-        │   │   │   ├── models
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── cv_metadata.py
-        │   │   │   └── templatetags
+        │   │   │   └── models
         │   │   │       ├── __init__.py
-        │   │   │       └── percentage.py
+        │   │   │       └── cv_metadata.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
-        │   │   │   ├── management
-        │   │   │   │   ├── README.md
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── commands
-        │   │   │   │       ├── __init__.py
-        │   │   │   │       ├── clean_documents.py
-        │   │   │   │       ├── load_corps.py
-        │   │   │   │       ├── load_metiers.py
-        │   │   │   │       ├── load_offers.py
-        │   │   │   │       └── vectorize_documents.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   ├── 0002_rawcorps_alter_rawexamination_options.py
@@ -307,10 +288,9 @@
         │   │   │   │   ├── 0019_rawdocument_processing.py
         │   │   │   │   ├── 0020_alter_rawdocument_document_type.py
         │   │   │   │   └── __init__.py
-        │   │   │   ├── models
-        │   │   │   │   ├── __init__.py
-        │   │   │   │   └── raw_document.py
-        │   │   │   └── tasks.py
+        │   │   │   └── models
+        │   │   │       ├── __init__.py
+        │   │   │       └── raw_document.py
         │   │   └── shared
         │   │       ├── __init__.py
         │   │       ├── admin.py
@@ -362,6 +342,7 @@
         │   │   │   ├── ingres_corps_dtos.py
         │   │   │   ├── ingres_metiers_dtos.py
         │   │   │   ├── openai_dtos.py
+        │   │   │   ├── talentsoft_back_dtos.py
         │   │   │   └── talentsoft_dtos.py
         │   │   ├── external_document_gateway.py
         │   │   ├── ocr_extractor.py
@@ -447,7 +428,6 @@
         │   │       │   └── _index.scss
         │   │       ├── main.scss
         │   │       ├── pages
-        │   │       │   ├── _corps-search.scss
         │   │       │   ├── _cv-processing.scss
         │   │       │   ├── _cv-upload.scss
         │   │       │   ├── _home.scss
@@ -463,12 +443,17 @@
         │   │           └── _index.scss
         │   ├── candidate
         │   │   ├── __init__.py
+        │   │   ├── apps.py
         │   │   ├── filter_config.py
         │   │   ├── formatters.py
         │   │   ├── forms
         │   │   │   ├── __init__.py
-        │   │   │   ├── corps_search.py
         │   │   │   └── cv_flow.py
+        │   │   ├── management
+        │   │   │   ├── __init__.py
+        │   │   │   └── commands
+        │   │   │       ├── __init__.py
+        │   │   │       └── process_cv.py
         │   │   ├── mappers.py
         │   │   ├── mixins.py
         │   │   ├── presenters.py
@@ -476,13 +461,24 @@
         │   │   ├── types.py
         │   │   ├── urls.py
         │   │   └── views
-        │   │       ├── corps_search.py
         │   │       └── cv_flow.py
         │   ├── context_processors.py
         │   ├── ingestion
         │   │   ├── __init__.py
+        │   │   ├── apps.py
         │   │   ├── health.py
+        │   │   ├── management
+        │   │   │   ├── README.md
+        │   │   │   ├── __init__.py
+        │   │   │   └── commands
+        │   │   │       ├── __init__.py
+        │   │   │       ├── clean_documents.py
+        │   │   │       ├── load_corps.py
+        │   │   │       ├── load_metiers.py
+        │   │   │       ├── load_offers.py
+        │   │   │       └── vectorize_documents.py
         │   │   ├── schemas.py
+        │   │   ├── tasks.py
         │   │   ├── urls.py
         │   │   └── views.py
         │   ├── pages
@@ -545,8 +541,7 @@
         │       │   ├── cv_processing.html
         │       │   ├── cv_results.html
         │       │   ├── cv_upload.html
-        │       │   ├── opportunity_detail.html
-        │       │   └── search.html
+        │       │   └── opportunity_detail.html
         │       ├── components
         │       │   ├── _drawer.html
         │       │   ├── cv_upload_actions.html
@@ -580,16 +575,14 @@
         │   │   │   ├── test_drawer_views.py
         │   │   │   ├── test_integration_initialize_cv_metadata.py
         │   │   │   ├── test_integration_match_cv_to_opportunities.py
-        │   │   │   ├── test_integration_process_uploaded_cv.py
-        │   │   │   └── test_integration_retrieve_corps.py
+        │   │   │   └── test_integration_process_uploaded_cv.py
         │   │   └── unit
         │   │       ├── __init__.py
         │   │       ├── test_limit_date.py
         │   │       ├── test_unit_initialize_cv_metadata.py
         │   │       ├── test_unit_match_cv_to_opportunities.py
         │   │       ├── test_unit_process_cv_tasks.py
-        │   │       ├── test_unit_process_uploaded_cv.py
-        │   │       └── test_unit_retrieve_corps.py
+        │   │       └── test_unit_process_uploaded_cv.py
         │   ├── external_gateways
         │   │   ├── __init__.py
         │   │   ├── unit
@@ -650,7 +643,8 @@
         │   │       ├── __init__.py
         │   │       ├── test_postgres_concours_repository.py
         │   │       ├── test_postgres_corps_repository.py
-        │   │       └── test_postgres_offers_repository.py
+        │   │       ├── test_postgres_offers_repository.py
+        │   │       └── test_qdrant_repository.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── cv_test_utils.py
@@ -667,4 +661,4 @@
         │       ├── pdf_test_utils.py
         │       └── test_container_factory.py
         └── uv.lock
-130 directories, 539 files
+129 directories, 534 files
