@@ -1,56 +1,58 @@
 ## Changelog : dictaphone (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment sur la page d'accueil, les listes d'enregistrements et la gestion des fichiers. L'application mobile iOS a également fait des progrès importants avec l'implémentation des fonctionnalités d'enregistrement, de listage et de suppression, ainsi que l'intégration de l'authentification. De plus, l'intégration avec un service d'IA pour la transcription et la création de résumés a été initiée.
+Cette version apporte des améliorations significatives à l'interface utilisateur, tant sur le web que sur mobile (iOS). L'application mobile est en cours de développement et voit l'implémentation de fonctionnalités essentielles comme l'enregistrement, la liste des enregistrements, la suppression et l'authentification.  Des améliorations ont également été apportées à l'intégration avec un service d'IA pour la transcription et la création de résumés, ainsi qu'à la gestion des fichiers et des permissions.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur (Frontend):**
-    - Nouvelle page d'accueil avec une mise en page responsive.
-    - Amélioration de l'interface de la page d'enregistrement et de la liste des enregistrements.
-    - Ajout d'un indicateur visuel pour les enregistrements supprimés.
+- **Interface utilisateur (Web) :**
+    - Nouvelle page d'accueil avec un design amélioré.
+    - Amélioration de la réactivité de l'interface.
+    - Ajout d'un indicateur de progression lors du chargement des transcriptions.
+    - Ajout d'un badge "supprimé" pour les enregistrements supprimés.
+    - Création d'une page "corbeille" avec des actions de suppression et de restauration.
     - Possibilité de copier la transcription dans le presse-papier.
-    - Affichage de la durée des enregistrements.
-    - Ajout d'une icône audio à la liste des enregistrements.
-    - Intégration de l'affichage du résumé et de la transcription.
-    - Amélioration de l'expérience utilisateur pour le téléchargement et la lecture des fichiers.
-    - Ajout d'un menu d'actions pour les fichiers (ouvrir dans Docs, partager).
-- **Application Mobile (iOS):**
-    - Implémentation de l'enregistrement audio.
+    - Affichage de la durée de l'enregistrement.
+    - Amélioration de l'affichage des informations de la transcription.
+- **Application mobile (iOS) :**
+    - Implémentation de l'authentification (connexion/déconnexion).
+    - Enregistrement audio fonctionnel.
     - Liste des enregistrements avec suppression par glissement.
-    - Intégration du système d'authentification (connexion/déconnexion).
-    - Amélioration de l'interface utilisateur et de la navigation.
-- **Intégration IA:**
-    - Intégration avec un service d'IA pour la transcription et la création de résumés.
-    - Possibilité d'ouvrir la transcription dans un outil de documentation.
-- **Gestion des fichiers:**
-    - Ajout d'une page "Corbeille" pour les fichiers supprimés avec possibilité de restauration.
+    - Navigation améliorée.
+    - Gestion des permissions (microphone).
+- **Intégration Docs :**
+    - Intégration avec un service de documentation pour ouvrir les transcriptions.
+- **Gestion des fichiers :**
+    - Support amélioré des formats audio `m4a` et `webm`.
+    - Ajout de la durée des enregistrements.
 
 ### Évolutions techniques
-- **Backend:**
-    - Mise en place d'une vue pour la gestion des jobs IA.
-    - Amélioration de la gestion des permissions pour les jobs IA et les médias.
-    - Support amélioré des formats audio `m4a` et `webm`.
-    - Implémentation d'un système de redirection mobile pour faciliter l'intégration avec l'application iOS.
-    - Correction de bugs liés au tri des enregistrements.
-    - Support de la transcription via l'API Docs.
-- **Infrastructure:**
-    - Mise à jour du Dockerfile pour inclure la bibliothèque `libmagic` nécessaire à `collectstatic`.
-- **Frontend:**
-    - Refonte de l'architecture de l'interface utilisateur pour une meilleure maintenabilité.
-    - Amélioration de la gestion des langues (i18n).
-    - Utilisation de composants UI réutilisables.
-    - Optimisation des performances et correction de bugs.
-- **Mobile:**
-    - Initialisation du projet React Native pour l'application mobile iOS.
-    - Configuration de l'environnement de développement et de build.
-    - Intégration de bibliothèques essentielles pour l'enregistrement audio et la gestion de l'interface utilisateur.
+- **Backend :**
+    - Mise en place d'une API pour la gestion des "jobs" d'IA (transcription, résumé).
+    - Intégration avec un service d'IA externe pour la transcription.
+    - Amélioration de la gestion des permissions et de l'authentification.
+    - Ajout d'un endpoint de redirection pour l'application mobile.
+    - Support amélioré des formats audio.
+- **Frontend :**
+    - Refonte de l'architecture de l'interface utilisateur.
+    - Utilisation de composants UI plus modernes.
+    - Amélioration de la gestion des états et des requêtes API.
+    - Mise en place d'un système de rafraîchissement automatique des jobs en attente.
+- **Mobile :**
+    - Initialisation du projet React Native.
+    - Configuration de l'environnement de développement.
+    - Implémentation de la navigation de base.
+    - Utilisation de bibliothèques pour l'enregistrement audio et la lecture.
+- **Divers :**
+    - Ajout de tests pour l'intégration avec le service de documentation.
+    - Mise à jour de la documentation.
+    - Amélioration de la configuration du Dockerfile.
 
 ### Autres changements
-- Ajout de documentation concernant la redirection mobile.
-- Mise à jour des dépendances et des configurations.
-- Amélioration du code et refactoring pour une meilleure lisibilité et maintenabilité.
-- Ajout de tests unitaires et d'intégration.
-- Mise en place d'un système d'analyse pour suivre l'utilisation de l'application.
-- Suppression de l'écriture inclusive dans les textes en français.
+- Ajout d'un favicon.
+- Correction de problèmes de typographie en français.
+- Suppression d'écritures inclusives du code.
+- Amélioration de la configuration de l'outil de linting.
+- Mise à jour des dépendances.
 - Publication de la version 0.4.0.
-- Publication des versions 0.1 et 0.2 de l'application mobile iOS.
+- Publication des versions 0.1 et 0.1-5 de l'application mobile iOS.
+- Ajout de l'analyse (analytics) pour suivre l'utilisation de l'application.
