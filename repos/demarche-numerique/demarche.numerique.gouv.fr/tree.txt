@@ -270,7 +270,7 @@
 │   │   ├── account_dropdown_component
 │   │   │   ├── account_dropdown_component.en.yml
 │   │   │   ├── account_dropdown_component.fr.yml
-│   │   │   └── account_dropdown_component.html.haml
+│   │   │   └── account_dropdown_component.html.erb
 │   │   ├── account_dropdown_component.rb
 │   │   ├── application_component.rb
 │   │   ├── attachment
@@ -1907,6 +1907,7 @@
 │   │   ├── backfill_variants_for_dossier_job.rb
 │   │   ├── batch_operation_enqueue_all_job.rb
 │   │   ├── batch_operation_process_one_job.rb
+│   │   ├── blob_processor_job.rb
 │   │   ├── bulk_route_job.rb
 │   │   ├── champ_fetch_external_data_job.rb
 │   │   ├── concerns
@@ -2209,8 +2210,8 @@
 │   │   │   ├── .keep
 │   │   │   ├── addressable_column_concern.rb
 │   │   │   ├── api_entreprise_token_concern.rb
-│   │   │   ├── attachment_virus_scanner_concern.rb
-│   │   │   ├── blob_image_processor_concern.rb
+│   │   │   ├── attachment_processor_concern.rb
+│   │   │   ├── blob_processor_concern.rb
 │   │   │   ├── blob_signed_id_concern.rb
 │   │   │   ├── blob_virus_scanner_concern.rb
 │   │   │   ├── champ_conditional_concern.rb
@@ -2476,8 +2477,8 @@
 │   │   ├── api_recherche_entreprises_service.rb
 │   │   ├── archive_uploader.rb
 │   │   ├── attachment
+│   │   │   ├── piece_justificative_service.rb
 │   │   │   └── validation.rb
-│   │   ├── auto_rotate_service.rb
 │   │   ├── bill_signature_service.rb
 │   │   ├── browser_support.rb
 │   │   ├── clamav_service.rb
@@ -2537,7 +2538,6 @@
 │   │   ├── staging_auth_service.rb
 │   │   ├── sva_svr_decision_date_calculator_service.rb
 │   │   ├── tiptap_service.rb
-│   │   ├── uninterlace_service.rb
 │   │   ├── value_normalizer.rb
 │   │   ├── watermark_service.rb
 │   │   ├── weasyprint_service.rb
@@ -4003,6 +4003,10 @@
 │   │       ├── root.en.yml
 │   │       ├── root.fr.yml
 │   │       ├── shared
+│   │       │   ├── champs
+│   │       │   │   └── dossier_link
+│   │       │   │       ├── en.yml
+│   │       │   │       └── fr.yml
 │   │       │   ├── en.yml
 │   │       │   └── fr.yml
 │   │       └── users
@@ -4747,6 +4751,8 @@
 │   │   │   ├── individual_form_component_spec.rb
 │   │   │   ├── message_component_spec.rb
 │   │   │   └── pending_correction_checkbox_component_spec.rb
+│   │   ├── dsfr
+│   │   │   └── toggle_component_spec.rb
 │   │   ├── editable_champ
 │   │   │   ├── champ_label_content_component_spec.rb
 │   │   │   ├── communes_component_spec.rb
@@ -5300,6 +5306,7 @@
 │   │   ├── auto_archive_procedure_dossiers_job_spec.rb
 │   │   ├── backfill_variants_for_dossier_job_spec.rb
 │   │   ├── batch_operation_process_one_job_spec.rb
+│   │   ├── blob_processor_job_spec.rb
 │   │   ├── bulk_route_job_spec.rb
 │   │   ├── champ_fetch_external_data_job_spec.rb
 │   │   ├── crisp_create_conversation_job_spec.rb
@@ -5532,7 +5539,8 @@
 │   │   ├── commentaire_spec.rb
 │   │   ├── concerns
 │   │   │   ├── api_entreprise_token_concern_spec.rb
-│   │   │   ├── blob_image_processor_concern_spec.rb
+│   │   │   ├── attachment_processor_concern_spec.rb
+│   │   │   ├── blob_processor_concern_spec.rb
 │   │   │   ├── champ_conditional_concern_spec.rb
 │   │   │   ├── champ_external_data_concern_spec.rb
 │   │   │   ├── champ_validate_concern_spec.rb
@@ -5685,8 +5693,8 @@
 │   │   ├── api_recherche_entreprise_service_spec.rb
 │   │   ├── archive_uploader_spec.rb
 │   │   ├── attachment
+│   │   │   ├── piece_justificative_service_spec.rb
 │   │   │   └── validation_spec.rb
-│   │   ├── auto_rotate_service_spec.rb
 │   │   ├── bill_signature_service_spec.rb
 │   │   ├── clamav_service_spec.rb
 │   │   ├── commentaire_service_spec.rb
@@ -6045,4 +6053,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-975 directories, 5388 files
+978 directories, 5393 files

@@ -1,3 +1,45 @@
+2026-04-24T05:29:53+02:00 - aefd5374d - mfo : feat(attachment/hints_component): show multi-file hint via i18n pluralization
+2026-04-24T05:29:53+02:00 - ae6b8f264 - mfo : test(pj): prove concurrent attach race condition loses attachments
+2026-04-24T05:29:53+02:00 - 7449e0a7e - mfo : fix(pj): serialize concurrent uploads with SELECT FOR UPDATE
+2026-04-24T05:29:53+02:00 - 2b3f9e743 - mfo : refactor(pj): extract attach logic into Attachment::PieceJustificativeService
+2026-04-24T05:29:52+02:00 - f9b0cf8f2 - mfo : feat(attachment/hints_component): better wording
+2026-04-24T05:29:03+02:00 - 7be66189f - mfo : refactor(haml): migrate AccountDropdownComponent to ERB
+2026-04-24T03:47:50Z - 0233a4325 - mfo : Merge pull request #13010 from demarche-numerique/auto/haml-migration/c-a-account_dropdown_component
+2026-04-24T03:35:24Z - 5e70ffce4 - mfo : Merge pull request #13000 from mfo/multiupload-again-broken
+2026-04-23T10:50:22+02:00 - 8878e427a - simon lehericey : feat(dossier_linked): user/instructeur see if a dossier linked is deleted
+2026-04-23T10:50:21+02:00 - b5bfaecdc - simon lehericey : feat(dossier_linked): an instructeur dossier view show the linked file hash been deleted
+2026-04-23T10:50:21+02:00 - 7b3b968a8 - simon lehericey : feat(dossier_linked): a user can submitted a deleted_dossier.dossier_id
+2026-04-23T10:50:21+02:00 - 2626769c3 - simon lehericey : feat(dossier_linked): user/instructeur see if a dossier linked is expired
+2026-04-23T10:50:21+02:00 - 1da628a83 - simon lehericey : feat(dossier_linked): an user see when it selects a expired dossier
+2026-04-23T10:50:20+02:00 - c4ba32ebf - simon lehericey : fix(dossier_linked): a brouillon cannot be linked
+2026-04-23T10:50:20+02:00 - aabbdf6fe - simon lehericey : feat(dossier_linked): a user can linked to a dossier in basket
+2026-04-23T10:50:20+02:00 - 62085c277 - simon lehericey : feat(dossier_linked): an user dossier view show the linked file has been deleted
+2026-04-23T10:10:45+02:00 - d4cef9d83 - Colin Darie : feat(pj): allow .md (text/markdown) uploads
+2026-04-23T10:10:15+02:00 - 6e50f9702 - Colin Darie : feat(pj): advertise .xlsm extension in file picker accept attribute
+2026-04-23T09:43:39+02:00 - 5fefa8b82 - simon lehericey : perf: preload dossier when adding/deleting a repetition row
+2026-04-23T09:00:57Z - 8bdcab55a - LeSim : Merge pull request #12932 from demarche-numerique/link_dossier_with_different_state
+2026-04-23T08:22:24Z - b8dcf62c7 - Colin Darie : Merge pull request #13009 from colinux/support-xlsm-md
+2026-04-23T08:13:35Z - 0fa9e336d - LeSim : Merge pull request #13011 from demarche-numerique/better_perf_on_delete_repetition
+2026-04-23T08:03:47Z - ac2283d8b - Colin Darie : Merge pull request #13008 from colinux/fix-toggle-a-archiver
+2026-04-22T17:45:53+02:00 - 2301b257f - Colin Darie : fix(toggle_component): prevent double namespace prefix in toggle input id
+2026-04-22T14:51:18+02:00 - 9d97b740d - simon lehericey : fix: do not leak avis revocation status
+2026-04-22T14:51:18+02:00 - 62439425d - simon lehericey : fix: do do not leak if an expert is linked to an avis
+2026-04-22T14:36:45+02:00 - 6d1696b18 - simon lehericey : perf(email_checker): skip levenshtein when domain length differs by more than 2
+2026-04-22T14:36:45+02:00 - 1d3d6009f - simon lehericey : perf(email_checker): compute levenshtein distance once per candidate
+2026-04-22T12:57:10Z - fd97f55a3 - LeSim : Merge pull request #13003 from demarche-numerique/fix_avis_information_disclosure
+2026-04-22T12:45:57Z - f9c8a1611 - LeSim : Merge pull request #13006 from demarche-numerique/less_allocation_in_check_email
+2026-04-22T10:15:35+02:00 - 96710b7d1 - Colin Darie : refactor: remove dead AutoRotateService and UninterlaceService
+2026-04-22T10:15:35+02:00 - 18f0965ed - Colin Darie : refactor: remove WatermarkService#process in favor of #apply
+2026-04-22T10:15:34+02:00 - cc1d035b3 - Colin Darie : refactor(blob-processor): fuse image mutations into a single Vips pipeline
+2026-04-22T09:43:11Z - 24b766fc1 - Colin Darie : Merge pull request #12913 from demarche-numerique/push-vmpkxwmooyuw
+2026-04-22T09:24:44Z - f4b6eabd6 - Colin Darie : Merge pull request #12917 from colinux/optimize-blob-processor
+2026-04-21T23:06:48+02:00 - 9773e1fbf - Colin Darie : feat(watermark): add Vips::Image-based apply API
+2026-04-21T18:47:36+02:00 - eb843d353 - Colin Darie : refactor: migrate cron job, maintenance task, and specs to BlobProcessorJob
+2026-04-21T18:47:36+02:00 - 41d59b61a - Colin Darie : test: stub BlobProcessorJob in system tests without libvips
+2026-04-21T18:47:35+02:00 - 0a11a34cd - Colin Darie : feat: implement unified blob processing pipeline
+2026-04-21T18:47:34+02:00 - 1bc2f3e47 - Colin Darie : refactor: rename ImageProcessorJob to BlobProcessorJob
+2026-04-21T18:47:32+02:00 - f7f18097f - Colin Darie : refactor: rename BlobImageProcessorConcern to BlobProcessorConcern
+2026-04-21T16:46:29+02:00 - 927d17714 - Paul Chavard : use new single select component
 2026-04-21T11:05:33+02:00 - f568bdf16 - simon lehericey : perf: exclude brouillon procedure
 2026-04-21T11:05:33+02:00 - e3b61f23d - simon lehericey : perf: do not scan old closed procedures
 2026-04-21T11:05:33+02:00 - 751171fd0 - simon lehericey : perf: add partial index to target stalled dossier
