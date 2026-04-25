@@ -1,14 +1,13 @@
-## Changelog : mongodb (30 derniers jours)
+## Changelog : mongodb (30 derniers jours, au 2026-04-24)
 
 ### Résumé
-Ce changelog résume les modifications apportées à l'infrastructure MongoDB de la Mission Apprentissage au cours du dernier mois. Les principales évolutions concernent une amélioration de la sécurité avec la mise à jour des habilitations, une simplification de l'environnement en supprimant l'environnement de pentest, et une modernisation de la gestion des secrets avec la migration vers SOPS.
+Ce changelog présente l'ajout d'une fonctionnalité importante pour la sécurité des données : la configuration d'une autorité de certification permettant une authentification plus robuste des membres d'un cluster MongoDB. Cette évolution renforce la protection des bases de données et améliore la gestion des accès.
 
 ### Évolutions fonctionnelles
-- Mise à jour des habilitations pour renforcer la sécurité des accès aux bases de données. [#61](https://github.com/mission-apprentissage/mongodb/issues/61)
+- Ajout de la configuration d'une autorité de certification pour l'authentification des membres d'une même grappe MongoDB. [#62](https://github.com/mission-apprentissage/mongodb/issues/62)
 
 ### Évolutions techniques
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS, améliorant ainsi la sécurité et la flexibilité de la gestion des informations sensibles. [#59](https://github.com/mission-apprentissage/mongodb/issues/59)
-- Mise à jour du sous-module `mna-shared-bin` pour bénéficier des dernières corrections et améliorations.
+- Implémentation de la configuration de l'autorité de certification via des scripts et configurations adaptés à l'infrastructure existante.
 
 ### Autres changements
-- Suppression de l'environnement de pentest, simplifiant ainsi l'infrastructure et réduisant les coûts de maintenance. [#60](https://github.com/mission-apprentissage/mongodb/issues/60)
+- Aucun autre changement significatif à signaler.

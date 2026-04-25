@@ -34,10 +34,12 @@
 │   │       ├── create_user.yml
 │   │       ├── create_users.yml
 │   │       ├── files_copy.yml
+│   │       ├── install_ca.yml
 │   │       ├── install_mongodb.yml
 │   │       ├── install_tls.yml
 │   │       ├── mount_volume.yml
 │   │       ├── percona.yml
+│   │       ├── start_initial_mongodb.yml
 │   │       ├── start_mongodb.yml
 │   │       ├── system.yml
 │   │       └── tweaks
@@ -50,6 +52,7 @@
 │   ├── env.global.yml
 │   ├── env.lba.yml
 │   ├── env.recette.yml
+│   ├── env.sandbox.yml
 │   ├── env.tdb.yml
 │   ├── files
 │   │   ├── configs
@@ -57,9 +60,12 @@
 │   │   │   │   └── 01_mongodb.conf
 │   │   │   ├── mongodb
 │   │   │   │   ├── create_roles.js
+│   │   │   │   ├── create_root_user.js.jinja2
 │   │   │   │   ├── create_user.js
 │   │   │   │   ├── disable-transparent-huge-pages.service
 │   │   │   │   ├── init_rs.js.jinja2
+│   │   │   │   ├── mongod.conf.step-1.jinja2
+│   │   │   │   ├── mongod.conf.step-2.jinja2
 │   │   │   │   ├── mongod.service
 │   │   │   │   └── register_member.js.jinja2
 │   │   │   ├── reverse_proxy
@@ -81,13 +87,21 @@
 │   │   │   │   └── .gitkeep
 │   │   │   └── smtp
 │   │   │       └── .gitkeep
-│   │   ├── keyfile.jinja2
 │   │   ├── logrotate.d
 │   │   │   └── mongod
-│   │   ├── mongod.conf.jinja2
+│   │   ├── pki
+│   │   │   ├── ca
+│   │   │   │   ├── ca.pem.jinja2
+│   │   │   │   ├── openssl.cnf.jinja2
+│   │   │   │   ├── openssl.mtls.cnf.jinja2
+│   │   │   │   ├── private
+│   │   │   │   │   └── ca.key.jinja2
+│   │   │   │   └── root-ca.pem
+│   │   │   └── mongodb-cluster-ca-chain.pem.jinja2
 │   │   └── scripts
 │   │       ├── .gitkeep
 │   │       ├── backup-database.sh.jinja2
+│   │       ├── ca.sh
 │   │       ├── list-backups.sh.jinja2
 │   │       ├── migrate.sh.jinja2
 │   │       ├── mongo.sh.jinja2
@@ -125,4 +139,4 @@
         ├── increase_volume.md
         ├── lost_node.md
         └── update_primary.md
-32 directories, 95 files
+35 directories, 106 files
