@@ -903,6 +903,7 @@
 │   │   │   └── helper.rb
 │   │   ├── statistiques_campagne.rb
 │   │   ├── statistiques_evaluation.rb
+│   │   ├── statistiques_opco.rb
 │   │   ├── statistiques_structure.rb
 │   │   ├── structure.rb
 │   │   ├── structure_administrative.rb
@@ -983,10 +984,12 @@
 │       │   ├── dashboard
 │       │   │   ├── _bloc_resultats_entreprise.html.erb
 │       │   │   ├── _dashboard.html.arb
+│       │   │   ├── _metabase_dashboard_opco.html.erb
 │       │   │   ├── _modal_confirmation_cgu.html.erb
 │       │   │   ├── _modal_validation_comptes_en_attente.html.erb
 │       │   │   ├── _tableau_de_bord_eva.html.arb
 │       │   │   ├── _tableau_de_bord_eva_pro.html.arb
+│       │   │   ├── _tableau_de_bord_opco.html.arb
 │       │   │   ├── _validation_necessaire.html.erb
 │       │   │   ├── _validation_refusee.html.arb
 │       │   │   ├── eva
@@ -1002,10 +1005,12 @@
 │       │   │   │   ├── _derniere_evaluation_complete.html.erb
 │       │   │   │   ├── _message_incitation_premier_questionnaire.html.erb
 │       │   │   │   └── _sidebar_opco.html.erb
-│       │   │   └── mise_en_action
-│       │   │       ├── _avec_evaluations.html.erb
-│       │   │       ├── _bloc_evaluations_sans_mise_en_action.arb
-│       │   │       └── _sans_evaluations.arb
+│       │   │   ├── mise_en_action
+│       │   │   │   ├── _avec_evaluations.html.erb
+│       │   │   │   ├── _bloc_evaluations_sans_mise_en_action.arb
+│       │   │   │   └── _sans_evaluations.arb
+│       │   │   └── opco
+│       │   │       └── _sidebar_opco.html.erb
 │       │   ├── evaluations
 │       │   │   ├── _actions_et_date.html.erb
 │       │   │   ├── _aller_plus_loin.erb
@@ -1255,6 +1260,7 @@
 │           └── index.html.erb
 ├── bin
 │   ├── bundle
+│   ├── lint_locale_opco
 │   ├── lint_locale_typography
 │   ├── postdeploy.sh
 │   ├── rails
@@ -1819,6 +1825,7 @@
 │   ├── importeur_commentaires.rb
 │   ├── importeur_telephone.rb
 │   ├── linters
+│   │   ├── locale_opco.rb
 │   │   └── locale_typography.rb
 │   ├── pourcentage.rb
 │   ├── rake_logger.rb
@@ -1831,6 +1838,7 @@
 │       ├── donnees_socio_demographique.rake
 │       ├── evaluations.rake
 │       ├── importe.rake
+│       ├── locale_opco.rake
 │       ├── locale_typography.rake
 │       ├── nettoyage.rake
 │       ├── reviewapp.rake
@@ -1972,6 +1980,7 @@
 │   ├── initializers
 │   │   └── active_admin_lower_sorting_spec.rb
 │   ├── inputs
+│   │   ├── email_input_spec.rb
 │   │   ├── file_input_spec.rb
 │   │   └── image_file_input_spec.rb
 │   ├── integrations
@@ -2037,6 +2046,7 @@
 │   │   │   └── fichier_spec.rb
 │   │   ├── conditions_passation_spec.rb
 │   │   ├── donnees_sociodemographique_spec.rb
+│   │   ├── envoi_invitation_service_spec.rb
 │   │   ├── evaluation
 │   │   │   └── context_spec.rb
 │   │   ├── evaluation_spec.rb
@@ -2208,6 +2218,7 @@
 │   │   │   └── base_spec.rb
 │   │   ├── statistiques_campagne_spec.rb
 │   │   ├── statistiques_evaluation_spec.rb
+│   │   ├── statistiques_opco_spec.rb
 │   │   ├── statistiques_structure_spec.rb
 │   │   ├── structure_administrative_spec.rb
 │   │   ├── structure_locale_spec.rb
@@ -2232,9 +2243,10 @@
 │   │   ├── inscription_invitation_mauvaise_structure_spec.rb
 │   │   └── questionnaires_spec.rb
 │   ├── services
-│   │   └── admin
-│   │       └── evaluations
-│   │           └── xls_configuration_spec.rb
+│   │   ├── admin
+│   │   │   └── evaluations
+│   │   │       └── xls_configuration_spec.rb
+│   │   └── creation_compte_depuis_invitation_service_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── N1Pse1-sans-bonne-reponse.svg
@@ -2286,4 +2298,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-331 directories, 2011 files
+332 directories, 2022 files
