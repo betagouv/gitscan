@@ -1,54 +1,34 @@
-## Changelog : monitorfish (30 derniers jours, au 21 avril 2026)
+## Changelog : monitorfish (30 derniers jours, au 22 avril 2026)
 
 ### Résumé
-Ce mois-ci, monitorfish a bénéficié d'améliorations significatives en termes de cartographie, de gestion des signalements et de correction de bugs. Des optimisations ont été apportées à l'affichage des données sur la carte, à la gestion des alertes et à la stabilité de l'application. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la performance du système.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment sur la gestion des signalements et des observations, ainsi que sur la cartographie avec la mise à jour d'OpenLayers et l'ajout de la ZEE SHOM. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Cartographie :**
-    - Ajout de la ZEE SHOM et mise à jour de la ZEE monde pour une meilleure précision géographique. [#4922]
-    - Correction de l'affichage des coordonnées lors de la modification d'un signalement.
-    - Amélioration de la gestion des projections cartographiques pour éviter les problèmes d'affichage en dehors de la projection MERCATOR. [#4920]
-    - Possibilité de supprimer automatiquement les anciens signalements IUU après 24 heures.
-- **Signalements :**
-    - Amélioration de l'interface utilisateur pour la création et la gestion des signalements. [#4924]
-    - Correction de l'affichage des signalements sur la carte après leur création. [#4919]
-    - Ajout de la possibilité de filtrer les navires par équipement VMS. [#4914]
-    - Ajout de la possibilité de sélectionner la nationalité d'un navire inconnu. [#4993, #4989]
-    - Ajout de trois nouvelles catégories d'infractions (NATINFs). [#4975]
-- **Alertes :**
-    - Correction d'un bug où deux alertes étaient affichées au lieu d'une seule. [#5028]
-    - Ajout d'un bouton pour supprimer les alertes de position. [#5027]
-- **Gestion des infractions :**
-    - Possibilité de supprimer automatiquement les signalements IUU après une période définie.
+- **Signalements :** Correction de l'affichage des signalements hors façade. [#5044](https://github.com/MTES-MCT/monitorfish/issues/5044)
+- **Observations :** Mise à jour de la liste des observations courantes. [#5037](https://github.com/MTES-MCT/monitorfish/issues/5037)
+- **Alertes :** Possibilité de suppression automatique des alertes paramétrables. [#5027](https://github.com/MTES-MCT/monitorfish/issues/5027)
+- **Coordonnées :** Affichage des coordonnées lors de la modification d'un signalement. [#5029](https://github.com/MTES-MCT/monitorfish/issues/5029)
+- **Catégories d'infractions :** Ajout de trois nouvelles catégories d'infractions NATINFs. [#4975](https://github.com/MTES-MCT/monitorfish/issues/4975)
+- **Cartographie :** Ajout de la ZEE SHOM et mise à jour de la ZEE monde. [#4922](https://github.com/MTES-MCT/monitorfish/issues/4922)
+- **Liste des navires :** Ajout d'un filtre "Equipé VMS" pour la gestion des navires tiers. [#4990](https://github.com/MTES-MCT/monitorfish/issues/4990)
+- **Signalements INN :** Diverses améliorations apportées. [#4994](https://github.com/MTES-MCT/monitorfish/issues/4994)
+- **Contrôle :** Ajout d'un menu déroulant "nationalité" pour les navires inconnus. [#4993](https://github.com/MTES-MCT/monitorfish/issues/4993)
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Refactoring du composant carte avec des hooks pour une meilleure maintenabilité. [#5030]
-    - Refactoring de la base de la carte avec des hooks.
-- **Mises à jour de dépendances :**
-    - Mise à jour de OpenLayers. [#5021]
-    - Mises à jour de plusieurs dépendances frontend (ora, basic-ftp, vite, rollup, lodash, etc.).
-    - Mises à jour de dépendances backend (testcontainers, cryptography, weasyprint, etc.).
-- **CI/CD :**
-    - Mise à jour de l'action Docker pour le build et le push. [#4957]
-    - Mise à jour de l'action Docker pour la connexion. [#4958]
-- **Tests :**
-    - Correction de problèmes de race condition dans les fixtures de base de données des tests de pipeline. [#5023, #88a27ecf]
-    - Amélioration de la stabilité des tests Cypress.
-- **Architecture :**
-    - Correction d'un bug lié à la gestion des time zones dans le parser ERS. [#4946]
-    - Ajout de gestion des éléments de risque (zones fermées, VMS, PNO).
+- **OpenLayers :** Mise à jour de la librairie OpenLayers. [#5021](https://github.com/MTES-MCT/monitorfish/issues/5021)
+- **Refactoring :** Refactoring du composant carte avec des hooks. [#5030](https://github.com/MTES-MCT/monitorfish/issues/5030)
+- **Docker :** Mise à jour de l'action Docker pour le build et le push. [#4957](https://github.com/MTES-MCT/monitorfish/issues/4957)
+- **Keycloak :** Correction pour éviter que SSL ne soit requis pendant le développement. [#4941](https://github.com/MTES-MCT/monitorfish/issues/4941)
+- **Tests :** Correction d'une race condition dans la fixture de base de données des tests de pipeline. [#5023](https://github.com/MTES-MCT/monitorfish/issues/5023)
+- **Dépendances :** Mise à jour de plusieurs dépendances frontend (ora, basic-ftp, vite, rollup, lodash, lodash-es, got).
+- **Prefect :** Rétrogradation de Prefect en version 3.6.9 pour résoudre des problèmes de compatibilité. [#4938](https://github.com/MTES-MCT/monitorfish/issues/4938) et [#4937](https://github.com/MTES-MCT/monitorfish/issues/4937)
 
 ### Autres changements
-- Correction de bugs divers liés à l'interface utilisateur et à l'affichage des données.
-- Amélioration des performances de certaines requêtes SQL.
+- Correction de bugs mineurs et améliorations de la performance SQL.
+- Suppression de code mort et simplification de certaines parties du code.
 - Mise à jour de la documentation.
-- Suppression de code mort.
-- Ajout de tests unitaires et d'intégration.
-- Configuration de dépendabot pour exclure Prefect des mises à jour automatiques.
-- Correction de problèmes de linting.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
-- Correction de problèmes de typage.
-- Ajout de feature flags.
-- Mise à jour de la liste des pays.
-- Correction de problèmes de marge blanche dans l'interface utilisateur.
+- Correction de problèmes de marge dans l'interface utilisateur.
+- Correction de l'affichage des alertes dans la fiche d'un navire. [#5028](https://github.com/MTES-MCT/monitorfish/issues/5028)
+- Correction de l'affichage des champs dans l'overlay de reporting.
+- Amélioration de la gestion des timezones dans le parser ERS. [#4946](https://github.com/MTES-MCT/monitorfish/issues/4946)
+- Ajout de cooldown sur les mises à jour de dépendances.
