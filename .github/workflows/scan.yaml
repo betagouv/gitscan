@@ -115,3 +115,7 @@ jobs:
                     echo "Push failed, retrying ($i/5)..."
                     sleep $((i * 2))
                   done
+
+    build-web-data:
+        needs: scans
+        uses: ./.github/workflows/build-web-data.yaml
