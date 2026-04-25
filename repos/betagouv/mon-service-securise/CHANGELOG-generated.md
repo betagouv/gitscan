@@ -1,49 +1,41 @@
-## Changelog : mon-service-securise (30 derniers jours, au 21 avril 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la modernisation de l'interface utilisateur avec l'intégration du Design System de la République Française (DSFR), l'amélioration de la gestion des risques (notamment avec l'introduction des risques spécifiques v2) et l'ajout de la page Indice Cyber. De nombreuses corrections et optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'interface utilisateur, notamment la refonte de la page d'accueil et l'intégration du nouveau design système (DSFR). L'accès aux données et la navigation ont été optimisés, avec l'ajout de nouvelles pages et fonctionnalités liées à la gestion des risques et des indices cyber. Des corrections et améliorations ont également été apportées pour améliorer l'accessibilité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Intégration du header DSFR, remplaçant l'ancien header custom.
-- Ajout du composant de page "Indice Cyber" avec affichage du radar et des tranches d'indice.
-- Ajout de la navigation horizontale dans la section "SÉCURISER".
-- Ajout de la gestion des risques spécifiques v2 : création, modification, suppression et affichage dans l'interface.
-- Possibilité d'exporter les risques V1 au format CSV.
-- Ajout d'une modale pour afficher les cartographies de risques.
-- Ajout d'un tiroir pour l'ajout de risque spécifique v2.
-- Affichage du nom du service dans l'en-tête des pages de service.
-- Ajout du bouton de gestion des contributeurs.
-- Amélioration de l'affichage des informations de service dans la page "Décrire".
-- Ajout d'une route pour marquer comme "vu" les explications des risques V2.
+- Intégration du header DSFR pour une expérience utilisateur plus cohérente.
+- Ajout de la page "Risques" dans la navigation "Sécuriser".
+- Affichage des dossiers d'homologation dans la SPA, avec des boutons pour la création, la reprise et le téléchargement du tampon d'homologation.
+- Affichage des données de dossiers d'homologation dans le service complet.
+- Ajout d'une page squelette pour l'Indice Cyber, avec l'affichage du radar et des tranches d'indice.
+- Affichage des contacts utiles du service.
+- Implémentation de l'objet de données pour l'annexe PDF des risques V2.
+- Génération des matrices de risque V2 dans le PDF d'annexes.
+- Affichage des indices cyber ANSSI et personnalisé dans l'entête des pages service.
+- Ajout du bouton de suppression de dossier courant.
+- Ajout du bandeau de simulation vers le référentiel V2.
+- Amélioration de l'affichage des risques résiduels.
 
 ### Évolutions techniques
-- Migration de la page "Mesures" et "Décrire V2" vers une application SPA (Single Page Application).
-- Refonte de la navigation principale avec le composant `dsfr-navigation`.
-- Utilisation des slots du header DSFR pour une meilleure personnalisation.
-- Suppression de l'ancien code Pug au profit de Svelte.
-- Amélioration de la gestion des données et des objets de données pour les risques v2.
-- Refactorisation du code pour une meilleure organisation et maintenabilité.
-- Mise à jour de nombreuses dépendances (Svelte, Vite, TypeScript, ESLint, etc.).
+- Migration vers le nouveau design système (DSFR) pour le header, le footer et la navigation.
+- Refonte de la page d'accueil pour les différentes tailles d'écran (mobile, tablette, desktop).
+- Transformation de plusieurs pages (Décrire V2, Mesures, Contacts Utiles) en Single Page Application (SPA).
+- Utilisation de l'API pour charger les données des services.
+- Refactoring du code pour utiliser TypeScript et améliorer la structure.
 - Ajout de tests d'accessibilité avec Playwright et Axe.
-- Configuration de l'exécution des tests d'accessibilité en CI/CD.
-- Amélioration de la gestion des feature flags.
+- Mise à jour des dépendances (Express, PostgreSQL, bcrypt, jsonwebtoken, axios, pg, knex, dotenv, Svelte, Vite, etc.).
+- Amélioration de la gestion des erreurs et des états de chargement.
+- Optimisation des performances et de la réactivité de l'interface utilisateur.
 
 ### Autres changements
-- Suppression du bandeau de promotion de MSC.
+- Correction de typos et de bugs mineurs.
+- Amélioration de la documentation.
+- Suppression de code obsolète.
+- Mise à jour des workflows CI/CD.
+- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
 - Correction de problèmes d'accessibilité.
-- Amélioration de la documentation et des commentaires.
-- Nettoyage du code et suppression de code obsolète.
-- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
-- Mise à jour des variables d'environnement pour les tests d'accessibilité.
-- Ajout de rapports d'exécution des tests d'accessibilité.
-- Correction de la bordure du menu de page service.
-- Harmonisation de l'identifiant de la page `contactsUtiles`.
-- Correction de l'affichage des valeurs d'indice cyber.
-- Suppression des fichiers d'en-tête inutiles.
-- Suppression des anciennes vues `pug`.
-- Correction des retours du pôle Design sur la page Indice Cyber.
-- Ajout des données concernant les indices cyber dans l'objet d'API service complet.
-- Correction d'erreurs liées aux routes et à la gestion des paramètres de requête.
-- Suppression de code obsolète et de styles inutilisés.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Suppression de styles CSS obsolètes.
+- Amélioration de la gestion des erreurs dans les tests.
+- Ajout de retries pour la recherche d'entreprise.
+- Publication des rapports d'accessibilité dans Mattermost.
