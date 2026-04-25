@@ -1,19 +1,23 @@
-## Changelog : st-home (30 derniers jours, au 20 avril 2026)
+## Changelog : st-home (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Les dernières mises à jour de st-home se concentrent sur l'amélioration de la carte de déploiement avec une version 2 enrichie de nouvelles données, le remplacement de Nginx par Caddy pour la gestion du reverse proxy, et des corrections de bugs concernant l'export CSV des statistiques et l'affichage de l'OPSN. Des améliorations de contenu et l'ajout de nouvelles pages "Commune" ont également été apportées.
+Les dernières mises à jour de st-home se concentrent sur l'amélioration de la carte de déploiement avec de nouvelles données et fonctionnalités, l'ajout d'une page dédiée aux partenaires OPSN, et des corrections de bugs concernant l'affichage des données et l'export CSV. L'infrastructure a également été modernisée avec le remplacement de Nginx par Caddy.
 
 ### Évolutions fonctionnelles
-- **Carte de déploiement améliorée :** Nouvelle version (v2) de la carte de déploiement avec affichage des services et des EPCI. [#56](https://github.com/suitenumerique/st-home/issues/56)
-- **Nouvelles pages "Commune" :** Ajout de nouvelles pages dédiées aux communes. [#57](https://github.com/suitenumerique/st-home/issues/57)
-- **Améliorations de contenu :** Mise à jour des textes sur les pages RPNT et OPSN. [#1625e83](https://github.com/suitenumerique/st-home/commit/1625e83)
-- **Correction d'un lien brisé :** Correction du lien vers le webinaire. [#ce55982](https://github.com/suitenumerique/st-home/commit/ce55982)
-- **Correction de l'ordre des services :** Correction de l'ordre d'affichage des services Proconnect. [#ce55982](https://github.com/suitenumerique/st-home/commit/ce55982)
-- **Correction de l'export CSV :** Correction de l'export CSV pour les niveaux groupés dans les statistiques. [#79d0dc4](https://github.com/suitenumerique/st-home/commit/79d0dc4)
+- Ajout d'une nouvelle page listant les partenaires OPSN. [#58](https://github.com/suitenumerique/st-home/issues/58)
+- Nouvelle version de la carte de déploiement (v2) incluant des informations sur les services et les EPCI. [#56](https://github.com/suitenumerique/st-home/issues/56)
+- Amélioration de la gestion des différents niveaux d'affichage sur la carte de déploiement.
+- Ajout d'une nouvelle entrée de menu pour le déploiement.
+- Mise à jour des textes dans les pages RPNT et OPSN pour une meilleure clarté.
+- Correction de l'affichage des données OPSN, qui n'était pas visible avant l'étape d'intention.
+- Correction de l'export CSV pour les statistiques groupées par niveau.
 
 ### Évolutions techniques
-- **Remplacement de Nginx par Caddy :** Nginx a été remplacé par Caddy comme reverse proxy pour améliorer la performance et la configuration. [#58](https://github.com/suitenumerique/st-home/issues/58)
-- **Utilisation des données du DeployCenter :** La carte de déploiement utilise désormais les données du DeployCenter pour afficher les partenaires. [#97ad622](https://github.com/suitenumerique/st-home/commit/97ad622)
+- Remplacement de Nginx par Caddy comme reverse proxy pour améliorer la performance et la simplicité de configuration. [#58](https://github.com/suitenumerique/st-home/issues/58)
+- Désactivation des logs d'accès Caddy et utilisation des logs du routeur Scalingo. [#59](https://github.com/suitenumerique/st-home/issues/59)
+- Mise à jour de la fréquence de mise à jour de la base de données à toutes les 4 heures.
+- Ajout d'une commande pour restaurer la base de données à distance.
 
 ### Autres changements
-- **Correction de l'affichage de l'OPSN :** Suppression de l'affichage de l'OPSN avant l'étape d'intention. [#0bb0cb3](https://github.com/suitenumerique/st-home/commit/0bb0cb3)
+- Suppression des logs de débogage (console.log) dans le code.
+- Utilisation des données du centre de déploiement pour la carte des partenaires.
