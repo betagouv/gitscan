@@ -1,16 +1,22 @@
 # Synthèse d'activité : etalab-ia (derniers 7 jours)
 
 ## Résumé de l'activité
-L'organisation etalab-ia a connu une activité soutenue cette semaine, principalement axée sur l'amélioration de la sécurité et de l'expérience utilisateur de [OpenGateLLM](/repos/etalab-ia/OpenGateLLM). Des corrections de bugs ont été apportées à l'interface de test et à l'API, et des outils d'analyse de vulnérabilités ont été intégrés. Le projet [ragtime](/repos/etalab-ia/ragtime) a également connu une évolution importante avec un changement de nom et l'ajout d'une interface en ligne de commande pour la gestion des collections. Les projets [parcours-rag](/repos/etalab-ia/parcours-rag) et [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) sont en phase de démarrage avec la mise en place de l'infrastructure initiale.
+L'organisation etalab-ia a connu une semaine riche en activités, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts de développement se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de fonctionnalités d'authentification, de persistance des conversations et d'assistants de configuration (rag-facile, lettabot).  Des refactorisations architecturales ont été menées pour améliorer la maintenabilité et la scalabilité de plusieurs projets (OpenGateLLM, ragtime). L'intégration de nouveaux jeux de données et l'automatisation de pipelines (mediatech-to-albert-api, albert-data-collections) visent à enrichir et à maintenir à jour les ressources disponibles pour les applications d'IA.
 
 ## Sécurité
-[OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a bénéficié d'un renforcement de la sécurité en dissociant la clé de chiffrement des clés API du mot de passe maître. De plus, des outils d'analyse de vulnérabilités (Trivy et Semgrep) ont été ajoutés pour améliorer la sécurité de la chaîne d'approvisionnement et du code. [ragtime](/repos/etalab-ia/ragtime) a également amélioré la sécurité en demandant le mot de passe lors de la saisie de la clé API.
+- Correction d'une vulnérabilité dans [dragster](/repos/etalab-ia/dragster) avec la suppression d'un évaluateur nécessitant une clé OpenAI.
+- Intégration de `gitleaks` dans [skills](/repos/etalab-ia/skills) pour la détection de secrets dans le code.
 
 ## Autres changements notables
-Le projet [ragtime](/repos/etalab-ia/ragtime) a été renommé de "rag-facile" à "ragtime", ce qui a nécessité des ajustements des workflows et du script d'installation. Une nouvelle interface en ligne de commande (CLI) a été ajoutée pour la gestion des collections.  [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a vu une refactorisation de la gestion des rôles pour une meilleure maintenabilité.
+- Migration de la base de données de [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless.
+- Refonte de l'architecture interne de [ragtime](/repos/etalab-ia/ragtime) avec la suppression de fonctionnalités et une simplification du projet.
+- Refactorisation de la gestion des rôles dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une architecture plus propre et maintenable.
+- Refactorisation de la structure du projet [skills](/repos/etalab-ia/skills) pour la conformité avec la spécification Agent Skills.
+- Migration vers la version 6 du SDK IA dans [BlockNote](/repos/etalab-ia/BlockNote).
 
 ## Dépôts les plus actifs
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Corrections de bugs, renforcement de la sécurité et amélioration de la maintenabilité.
-- [ragtime](/repos/etalab-ia/ragtime) : Changement de nom, ajout d'une CLI pour la gestion des collections et améliorations de l'authentification.
-- [parcours-rag](/repos/etalab-ia/parcours-rag) : Initialisation du dépôt et configuration des compétences pour les contributeurs.
-- [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Initialisation du dépôt et configuration de l'infrastructure de base.
+- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration majeure de la plateforme avec authentification, persistance des conversations et intégration d'IA Inspect.
+- [lettabot](/repos/etalab-ia/lettabot) : Ajout d'un assistant de configuration interactif pour Slack et amélioration de l'onboarding pour différents canaux.
+- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et amélioration de la documentation pour faciliter l'utilisation des fonctionnalités d'IA.
+- [skills](/repos/etalab-ia/skills) : Ajout de nouvelles skills pour les assistants de code IA et amélioration des skills existantes.
+- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur, notamment concernant les tableaux et l'IA.

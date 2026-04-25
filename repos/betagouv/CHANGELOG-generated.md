@@ -1,34 +1,31 @@
 # Synthèse d'activité : betagouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité de l'organisation betagouv sur les 7 derniers jours a été riche et diversifiée, touchant à la fois l'amélioration de l'expérience utilisateur, la correction de bugs, l'ajout de nouvelles fonctionnalités et le renforcement de la sécurité. Plusieurs projets ont bénéficié de mises à jour significatives, notamment `aides-agri`, `Aidants_Connect`, `mon-entreprise` et `sante-psy`. Des efforts importants ont également été consacrés à la modernisation des infrastructures et des dépendances, ainsi qu'à l'amélioration de la documentation et des tests. L'accent a été mis sur la qualité du code, la sécurité et la satisfaction des utilisateurs.
+L'organisation betagouv a connu une semaine riche en activités, avec des mises à jour significatives sur de nombreux dépôts. Les efforts se sont concentrés sur l'amélioration de la sécurité (correction de vulnérabilités dans `eva-serveur`), l'enrichissement des fonctionnalités (ajout de nouvelles fonctionnalités dans `Aidants Connect`, `comparIA`, `aides-simplifiees-app`, `depots-sauvages`, `euphrosyne`), et l'amélioration de la qualité du code et de la maintenance (mises à jour de dépendances, refactorisations, corrections de bugs dans de nombreux dépôts). Plusieurs projets ont également progressé dans la préparation de nouvelles versions ou de nouvelles fonctionnalités majeures, comme `resultats-Elections-FPT`, `a-just`, `acces-cible`, `api-engagement` et `doc.albert-api`.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de la sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-- `sante-psy` : Blocage des adresses IP malveillantes et ajout de `crisp.help` à la Content Security Policy (CSP).
-- `zacharie` : Implémentation d'une Content Security Policy (CSP), ajout de headers de sécurité, correction de vulnérabilités et audit des dépendances.
+*   Correction d'une vulnérabilité d'injection SQL dans `eva-serveur` ([#CollectionsEvenementsController](https://github.com/betagouv/eva-serveur)).
+*   Correction d'une faille de sécurité sur TarteauCitronJS dans `eva-serveur`.
+*   Sécurisation du rendu des URLs externes pour prévenir les attaques XSS dans `acces-cible` ([acces-cible](/repos/betagouv/acces-cible)).
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures :
-
-- `a-just` : Refonte de la configuration de construction (build) du projet et suppression de Babel-cli, esdoc et compodoc pour alléger l'environnement de développement.
-- `api-subversions-asso` : Refactoring du code pour renommer les dossiers et fichiers, introduction de "ports to adapters" pour améliorer l'architecture.
-- `csplab` : Remplacement de pgvector par Qdrant pour la gestion des vecteurs et suppression d'Elasticsearch.
-- `monstagedeseconde` : Migration des tests Cypress vers Playwright pour améliorer la stabilité et la performance.
-- `portail-rse` : Remplacement de pipenv par uv pour une meilleure gestion des dépendances.
-- `reva` : Suppression de nombreux *feature flags* obsolètes pour simplifier le code.
-- `sylvasan` : Refactor de la liste d'enquêtes et partage de code entre le web et le mobile.
-- `zacharie` : Refonte du système de routage pour optimiser les performances.
+*   **Refonte d'architecture :** `dsfr-renderer` a adopté une structure monorepo basée sur Turborepo, améliorant l'organisation et le développement.
+*   **Gestion du cycle de vie des données :** `euphrosyne-tools-api` et `euphrosyne` ont implémenté un système de gestion du cycle de vie des données de projet (refroidissement et archivage).
+*   **Intégration de nouvelles API :** `csplab` s'intègre avec Talentsoft, et `agreste-crawler` a amélioré son extraction de données.
+*   **Suppression de code obsolète :** Suppression de code obsolète dans `a-just`, `dsfr-form-builder` et `doc.incubateur.net-alliance`.
+*   **Mise à jour majeure :** `dsfr-form-builder` a été mis à jour vers ViewComponent 4.
+*   **Simplification de l'infrastructure :** Suppression de certaines APIs dans `docurba-nuxt3`.
 
 ## Dépôts les plus actifs
-Voici une liste des dépôts les plus actifs sur la période :
-
-- `a-just` : Amélioration de la stabilité et de la maintenance du projet, corrections de bugs et mises à jour des dépendances.
-- `acces-cible` : Amélioration de l'importation et de la gestion des sites web, correction de bugs liés à la lecture des fichiers CSV.
-- `aides-agri` : Amélioration de la sécurité, ajout de nouvelles fonctionnalités pour la gestion des aides en back-office.
-- `Aidants_Connect` : Ajout de la génération d'attestations, amélioration de la recherche des mandats.
-- `mon-entreprise` : Modernisation et maintenance du simulateur, mise à jour des règles de calcul pour 2026.
-- `sante-psy` : Amélioration de la sécurité, correction de bugs et amélioration de la recherche dans l'annuaire.
-- `reva` : Amélioration de la gestion des enquêtes et de l'application mobile, mises à jour de dépendances.
-- `zacharie` : Ajout d'un tableau de bord public, nouvelle interface pour la création de FEI et amélioration de la sécurité.
+*   **Aidants Connect** ([Aidants_Connect](/repos/betagouv/Aidants_Connect)) : Ajout de nouvelles fonctionnalités pour la gestion des attestations, la publication de formations et la signature de mandats.
+*   **ComparIA** ([ComparIA](/repos/betagouv/ComparIA)) : Simplification du déploiement avec Docker, amélioration de la détection de spam et ajout de nouveaux modèles.
+*   **a-just** ([a-just](/repos/betagouv/a-just)) : Corrections de bugs, améliorations de la stabilité et de la qualité du code.
+*   **eva-serveur** ([eva-serveur](/repos/betagouv/eva-serveur)) : Améliorations de la sécurité et ajout de nouvelles fonctionnalités pour les comptes OPCO.
+*   **euphrosyne** ([euphrosyne](/repos/betagouv/euphrosyne)) : Implémentation d'un système de gestion du cycle de vie des données et ajout de nouvelles fonctionnalités pour l'administration.
+*   **acces-cible** ([acces-cible](/repos/betagouv/acces-cible)) : Améliorations de la sécurité, de la gestion des fichiers CSV et de la détection des liens externes.
+*   **api-engagement** ([api-engagement](/repos/betagouv/api-engagement)) : Amélioration de la performance, de la sécurité et ajout de nouvelles fonctionnalités pour la gestion des organisations.
+*   **dsfr-form-builder** ([dsfr-form-builder](/repos/betagouv/dsfr-form-builder)) : Mise à jour vers ViewComponent 4 et amélioration de la gestion des champs de formulaire.
+*   **doc.albert-api** ([doc.albert-api](/repos/betagouv/doc.albert-api)) : Amélioration de la documentation de l'API Albert.
+*   **depots-sauvages** ([depots-sauvages](/repos/betagouv/depots-sauvages)) : Amélioration de l'expérience utilisateur et ajout de nouvelles fonctionnalités pour le suivi des procédures.

@@ -1,19 +1,22 @@
 # Synthèse d'activité : numerique-gouv (derniers 7 jours)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la modernisation de ses applications. L'application [ami-app-ios](/repos/numerique-gouv/ami-app-ios) bénéficie de nouvelles fonctionnalités comme un écran d'onboarding et la gestion des liens "mailto", tandis que [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) a subi une migration majeure vers Django pour une meilleure maintenabilité. Des améliorations d'accessibilité sont également notables sur la page d'accueil de [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage). Enfin, des efforts de sécurité et d'optimisation sont visibles sur [francetransfert](/repos/numerique-gouv/francetransfert) et [dockerfiles](/repos/numerique-gouv/dockerfiles).
+L'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur des applications Ami (Android et iOS) avec des fonctionnalités comme l'ouverture directe des notifications et une meilleure gestion de l'authentification FranceConnect. Des efforts importants ont également été déployés pour renforcer la sécurité, notamment sur [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et [francetransfert](/repos/numerique-gouv/francetransfert), et pour améliorer l'accessibilité et l'internationalisation de [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1). Enfin, des optimisations et corrections de bugs ont été apportées à plusieurs projets, notamment [b3desk](/repos/numerique-gouv/b3desk) et [django-dsfr](/repos/numerique-gouv/django-dsfr).
 
 ## Sécurité
-- [francetransfert](/repos/numerique-gouv/francetransfert) a renforcé sa sécurité en ajoutant des types de fichiers (HTML, HTM) à la liste noire pour prévenir les téléchargements potentiellement dangereux.
-- [dockerfiles](/repos/numerique-gouv/dockerfiles) a mis à jour l'image de base Keycloak pour bénéficier des dernières corrections de sécurité.
+Plusieurs changements liés à la sécurité ont été apportés :
+- Correction d'une vulnérabilité potentielle concernant l'URL du secteur dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
+- Restriction des types de fichiers autorisés dans [francetransfert](/repos/numerique-gouv/francetransfert) pour bloquer les fichiers HTML et HTM.
 
 ## Autres changements notables
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) a été migré de Litestar vers Django, une migration majeure visant à améliorer la maintenabilité et l'évolutivité. L'intégration de Sentry permet une meilleure surveillance des erreurs et des performances.
-- [b3desk](/repos/numerique-gouv/b3desk) a implémenté la délégation de réunion, une nouvelle fonctionnalité permettant de déléguer la gestion d'une réunion.
+- Mise à jour du Design System FR (DSFR) vers la version 1.14.4 dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
+- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles).
+- Suppression de fonctionnalités obsolètes (synchronisation Notion, Makefile) dans [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1).
+- Internationalisation des formulaires et menus dans [sites-faciles](/repos/numerique-gouv/sites-faciles).
 
 ## Dépôts les plus actifs
-- [ami-app-ios](/repos/numerique-gouv/ami-app-ios) : Amélioration de l'expérience utilisateur avec un nouvel écran d'onboarding et la réactivation de fonctionnalités existantes.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Migration vers Django et intégration de Sentry pour une meilleure gestion et surveillance des notifications.
-- [b3desk](/repos/numerique-gouv/b3desk) : Ajout de la fonctionnalité de délégation de réunion et corrections de compatibilité avec Keycloak.
-- [francetransfert](/repos/numerique-gouv/francetransfert) : Renforcement de la sécurité et optimisation de l'infrastructure.
-- [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage) : Amélioration de l'accessibilité et ajout d'un processus de sélection pour la prise de rendez-vous.
+- [ami-app-android](/repos/numerique-gouv/ami-app-android) : Amélioration de l'authentification FranceConnect, gestion des notifications et adoption du Design System FR.
+- [ami-app-ios](/repos/numerique-gouv/ami-app-ios) : Ajout de l'ouverture directe de la page de notifications et amélioration de la navigation.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Gestion des zones géographiques pour les vacances scolaires et amélioration de la sécurité.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Internationalisation de la plateforme et déploiement simplifié sur Scalingo.
+- [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Amélioration de l'internationalisation, gestion des sitemaps et suppression de fonctionnalités obsolètes.

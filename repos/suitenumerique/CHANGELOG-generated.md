@@ -1,23 +1,28 @@
 # Synthèse d'activité : suitenumerique (derniers 7 jours)
 
 ## Résumé de l'activité
-La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation suitenumerique. Plusieurs applications ont bénéficié d'améliorations significatives en termes de fonctionnalités et de sécurité. On note notamment des avancées importantes sur [calendars](/repos/suitenumerique/calendars) avec l'intégration de Messages et l'amélioration du partage, sur [conversations](/repos/suitenumerique/conversations) avec l'authentification silencieuse et la prise en charge de nouveaux formats de fichiers, et sur [drive](/repos/suitenumerique/drive) avec l'ajout de la duplication de fichiers et un visualiseur PDF. L'application [meet](/repos/suitenumerique/meet) a également reçu de nombreuses améliorations, notamment en matière de sécurité et de transcription.
+La semaine écoulée a été marquée par une activité soutenue sur l'ensemble des dépôts de l'organisation SuiteNumerique. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment au niveau de la gestion des calendriers ([calendars]), des messages ([messages]) et de l'interface utilisateur générale ([cunningham], [ui-kit]). Des avancées significatives ont également été réalisées sur l'infrastructure de déploiement ([gallene-deployment], [st-deploycenter]) et l'intégration de nouvelles fonctionnalités comme l'authentification silencieuse ([conversations]) et la visioconférence ([meet]). Plusieurs projets ont débuté leur développement initial ([encryption], [meet-matting]).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
-- [conversations](/repos/suitenumerique/conversations) : Correction de vulnérabilités (CVEs) via la mise à jour des dépendances backend et frontend.
-- [drive](/repos/suitenumerique/drive) : Mise à jour de Django et Pillow pour corriger des failles de sécurité.
-- [people](/repos/suitenumerique/people) : Mise à jour de plusieurs dépendances (Django, Next.js, pytest, lodash, requests) pour corriger des failles de sécurité.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- Correction de potentielles escalades de privilèges dans [people].
+- Validation du temps d'envoi et vérification SPF récursive dans [messages].
+- Utilisation de NPM Trusted Publisher dans [cunningham].
+- Mise à jour de dépendances avec des correctifs de sécurité dans [docs].
+- Restriction des permissions de token dans [drive].
 
 ## Autres changements notables
-- **Infrastructure :** Remplacement de Nginx par Caddy comme reverse proxy sur [st-home](/repos/suitenumerique/st-home).
-- **CI/CD :** Migration de CircleCI vers GitHub Actions sur [cunningham](/repos/suitenumerique/cunningham).
-- **Architecture :** Refonte de l'architecture frontend de [dictaphone](/repos/suitenumerique/dictaphone) avec des composants réutilisables.
-- **Gestion des dépendances :** Configuration de Renovate pour la gestion des dépendances sur [menshen](/repos/suitenumerique/menshen).
+- Migration de l'infrastructure CI/CD de CircleCI vers GitHub Actions dans [cunningham].
+- Remplacement de Nginx par Caddy comme reverse proxy dans [st-home].
+- Mise à jour de Next.js de la version 15 à la version 16 dans [conversations].
+- Automatisation de la génération des icônes SVG à partir de Figma dans [ui-kit].
+- Refonte de l'infrastructure de déploiement Gallene avec Docker et configuration via `.env` dans [gallene-deployment].
 
 ## Dépôts les plus actifs
-- [meet](/repos/suitenumerique/meet) : Améliorations majeures en matière de sécurité, de transcription et d'expérience utilisateur.
-- [drive](/repos/suitenumerique/drive) : Ajout de nouvelles fonctionnalités comme la duplication de fichiers et un visualiseur PDF.
-- [conversations](/repos/suitenumerique/conversations) : Implémentation de l'authentification silencieuse et support de nouveaux formats de fichiers.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Amélioration de la bibliothèque d'icônes et ajout de nouveaux composants d'interface utilisateur.
-- [calendars](/repos/suitenumerique/calendars) : Intégration avec l'application Messages et amélioration du partage de calendriers.
+- [calendars] : Amélioration significative de la gestion des canaux CalDAV, du partage d'événements et de l'intégration avec des services de messagerie.
+- [conversations] : Ajout d'authentification silencieuse et intégration de snippets de contexte pour la recherche web.
+- [cunningham] : Modernisation de l'infrastructure CI/CD et améliorations de l'accessibilité des composants.
+- [docs] : Mises à jour de sécurité des dépendances et améliorations de l'accessibilité.
+- [messages] : Ajout de fonctionnalités de partage de messages internes, de notifications et de gestion des labels.
+- [ui-kit] : Améliorations importantes de la bibliothèque d'icônes et ajout de nouveaux composants d'interface utilisateur.
+- [st-home] : Ajout d'une nouvelle page pour les partenaires OPSN et amélioration de la carte de déploiement.
