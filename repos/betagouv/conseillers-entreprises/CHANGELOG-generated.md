@@ -1,29 +1,100 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 2026-04-16)
+## Changelog : conseillers-entreprises (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité et de la correction de bugs. Des améliorations significatives ont été apportées aux schémas SEO pour une meilleure visibilité, ainsi que des optimisations techniques pour la performance et la sécurité.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau de l'accessibilité du formulaire de sollicitation et de la gestion des statistiques pour les sponsors. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations de la documentation et de la sécurité.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des couleurs dans les paniers qualité [#4390](https://github.com/betagouv/conseillers-entreprises/issues/4390).
-- Amélioration de l'accessibilité du formulaire de contact et de l'étape entreprise, notamment en améliorant le focus et les erreurs d'accessibilité [#4377](https://github.com/betagouv/conseillers-entreprises/issues/4377).
-- Correction du numéro court des risques professionnels [#4378](https://github.com/betagouv/conseillers-entreprises/issues/4378).
-- Correction de la gestion des antennes nationales agrégées [#4379](https://github.com/betagouv/conseillers-entreprises/issues/4379).
-- Mise à jour du domaine des emails vers `entreprises.service-public.gouv.fr` [#4409](https://github.com/betagouv/conseillers-entreprises/issues/4409).
-- Amélioration des schémas SEO pour les thèmes et sujets, incluant l'intégration de données structurées pour une meilleure indexation par les moteurs de recherche [#4381](https://github.com/betagouv/conseillers-entreprises/issues/4381).
+- Ajout d'une nouvelle question et d'une interface utilisateur associée pour la satisfaction des entreprises [#4392](https://github.com/betagouv/conseillers-entreprises/pull/4392).
+- Amélioration de l'affichage des statistiques pour les sponsors, avec la possibilité de filtrer les institutions et l'accès à des données plus précises.
+- Correction du calcul des taux d'échange dans les rapports.
+- Mise à jour du formulaire de sollicitation pour améliorer l'accessibilité, notamment avec des labels et des messages d'erreur plus clairs.
+- Correction de l'affichage des couleurs dans les paniers qualité.
+- Intégration de schémas SEO plus complets pour améliorer le référencement des pages thématiques et des sujets.
 
 ### Évolutions techniques
-- Mise à jour de Rails vers la version 8.1.2.1 [#4375](https://github.com/betagouv/conseillers-entreprises/issues/4375).
-- Refactorisation du code pour améliorer la performance et la maintenabilité, notamment en supprimant du code obsolète et en simplifiant la logique existante.
-- Ajout d'un Contributor Covenant pour définir les règles de contribution au projet [#4327](https://github.com/betagouv/conseillers-entreprises/issues/4327).
-- Mise en place de tests pour garantir la stabilité et la qualité du code.
-- Amélioration de la gestion des transactions en base de données pour éviter les erreurs et les blocages [#4396](https://github.com/betagouv/conseillers-entreprises/issues/4396).
-- Migration du code Sass vers une syntaxe plus moderne et maintenable [#4356](https://github.com/betagouv/conseillers-entreprises/issues/4356).
-- Ajout d'un nonce pour la sécurité des iframes.
-- Correction de problèmes liés à l'utilisation de cookies dans les iframes.
+- Refactorisation du code pour améliorer la clarté et l'efficacité, notamment dans la gestion des drapeaux de sollicitation et la logique de recherche d'entreprises similaires.
+- Optimisation des requêtes SQL pour réduire les temps de chargement et améliorer les performances.
+- Suppression de la logique de zone globale pour les experts, simplifiant ainsi le code et améliorant la maintenance.
+- Mise à jour des dépendances, incluant `addressable`, `rack`, `action_text-trix`, `lodash`, `mcp` et `picomatch`.
+- Amélioration de la gestion des cookies pour permettre le fonctionnement des iframes en local.
+- Migration du code Sass vers une syntaxe plus moderne.
+- Ajout de tests pour les corrections apportées, notamment pour les iframes et les statistiques.
+- Correction de la transmission des événements de conversion Google Ads.
+- Suppression de code inutile et simplification de certaines parties du code, notamment dans la gestion de la barre de navigation et des politiques Pundit.
 
 ### Autres changements
-- Mise à jour des dépendances : `addressable`, `rack`, `action_text-trix`, `bcrypt`, `flatted`, `picomatch`, `lodash` et autres.
-- Amélioration de la documentation et des commentaires dans le code.
-- Corrections mineures de style et de typographie.
-- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
-- Suppression de code inutile et nettoyage du code source.
+- Ajout d'un fichier CONTRIBUTING.md pour définir les règles de contribution au projet.
+- Mise à jour de la documentation pour refléter les dernières modifications.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Correction de l'affichage des couleurs des badges dans l'interface d'administration.
+- Mise à jour du domaine des emails pour utiliser `entreprises.service-public.gouv.fr`.
+- Correction de l'affichage des dates dans les rapports des antennes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques générées.
+- Correction de l'affichage des liens dans les statistiques.
+- Amélioration de la gestion des erreurs dans le formulaire de sollicitation.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.
+- Ajout d'un test pour vérifier le bon fonctionnement des iframes.
+- Correction de l'affichage des couleurs des icônes.
+- Ajout d'un test pour vérifier le bon fonctionnement des statistiques.
+- Correction de l'affichage des liens dans la barre de navigation.

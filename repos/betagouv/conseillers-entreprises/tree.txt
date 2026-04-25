@@ -355,7 +355,6 @@
 │   │   │   │   │   ├── direct_submit_controller.js
 │   │   │   │   │   ├── expert_autocomplete_controller.js
 │   │   │   │   │   ├── feedback_form_controller.js
-│   │   │   │   │   ├── fr_dropdown_controller.js
 │   │   │   │   │   ├── fr_header_controller.js
 │   │   │   │   │   ├── index.js
 │   │   │   │   │   ├── modal_controller.js
@@ -405,6 +404,7 @@
 │   │   ├── institutions_helper.rb
 │   │   ├── landings_seo_helper.rb
 │   │   ├── mailto_helper.rb
+│   │   ├── navbar_helper.rb
 │   │   ├── needs_helper.rb
 │   │   ├── nested_errors_helper.rb
 │   │   ├── page_infos_helper.rb
@@ -492,6 +492,7 @@
 │   │   │   ├── naf_code.rb
 │   │   │   ├── perimeter_needs_status.rb
 │   │   │   ├── person_concern.rb
+│   │   │   ├── precompute_flags.rb
 │   │   │   ├── range_scopes.rb
 │   │   │   ├── soft_deletable.rb
 │   │   │   ├── with_effectif.rb
@@ -558,9 +559,8 @@
 │   │   ├── report_policy.rb
 │   │   ├── shared_satisfaction_policy.rb
 │   │   ├── solicitation_policy.rb
-│   │   ├── stats
-│   │   │   └── all_policy.rb
-│   │   └── user_policy.rb
+│   │   └── stats
+│   │       └── team_policy.rb
 │   ├── serializers
 │   │   ├── api
 │   │   │   └── v1
@@ -703,7 +703,6 @@
 │   │   │   │   ├── overall_distribution_solicitations.rb
 │   │   │   │   ├── overall_distribution_solicitations_column.rb
 │   │   │   │   └── solicitations_base.rb
-│   │   │   ├── all.rb
 │   │   │   ├── base_stats.rb
 │   │   │   ├── companies
 │   │   │   │   ├── by_employees.rb
@@ -854,7 +853,11 @@
 │       │   ├── _person.haml
 │       │   ├── _person_modal.html.haml
 │       │   ├── _tarteaucitron.html.erb
-│       │   └── _user_admin_view.haml
+│       │   ├── _user_admin_view.haml
+│       │   └── navbar
+│       │       ├── _admin.html.haml
+│       │       ├── _app.html.haml
+│       │       └── _public.html.haml
 │       ├── badges
 │       │   ├── _form.html.haml
 │       │   ├── _header.html.haml
@@ -1314,7 +1317,9 @@
 │   │   ├── 20260310152229_add_service_name_to_active_storage_blobs.active_storage.rb
 │   │   ├── 20260310152230_create_active_storage_variant_records.active_storage.rb
 │   │   ├── 20260310152231_remove_not_null_on_active_storage_blobs_checksum.active_storage.rb
-│   │   └── 20260330132110_add_index_for_solicitation_email_and_siret.rb
+│   │   ├── 20260330132110_add_index_for_solicitation_email_and_siret.rb
+│   │   ├── 20260421130510_remove_is_global_zone_to_expert.rb
+│   │   └── 20260423101238_add_satisfaction_third_question.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1598,6 +1603,7 @@
 │   │   │   ├── naf_code_spec.rb
 │   │   │   ├── perimeter_needs_status_spec.rb
 │   │   │   ├── person_concern_spec.rb
+│   │   │   ├── precompute_flags_spec.rb
 │   │   │   └── soft_deletable_spec.rb
 │   │   ├── contact_spec.rb
 │   │   ├── cooperation_spec.rb
@@ -1640,9 +1646,8 @@
 │   │   ├── report_policy_spec.rb
 │   │   ├── shared_satisfaction_policy_spec.rb
 │   │   ├── solicitation_policy_spec.rb
-│   │   ├── stats
-│   │   │   └── all_policy_spec.rb
-│   │   └── user_policy_spec.rb
+│   │   └── stats
+│   │       └── team_policy_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── api
@@ -1805,4 +1810,4 @@
 │       └── stylesheets
 │           └── .keep
 └── yarn.lock
-312 directories, 1504 files
+313 directories, 1508 files

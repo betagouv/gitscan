@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter l'accès des entreprises aux conseils adaptés à leurs besoins.",
+  "description": "Le service public Conseillers-Entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à améliorer l'accompagnement des entreprises.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -9,7 +9,7 @@
     "Notifications & Alertes",
     "Gestion des établissements & Structures",
     "Aides & Éligibilité",
-    "Statistiques & Rapports"
+    "Gestion des signalements"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -26,14 +26,15 @@
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Ruby (scripts & backend)",
-    "Frontend React",
+    "Ruby on Rails",
     "Microservices & Architecture",
-    "Documentation & Schémas"
+    "Documentation & Schémas",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
@@ -41,8 +42,11 @@
     "Capybara",
     "Selenium-webdriver"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-16T16:58:23+02:00",
+  "workflows": [
+    "CircleCI",
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-04-23T17:05:58+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -55,10 +59,9 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Ruby",
-    "Bases de données SQL",
+    "Ruby on Rails",
+    "PostgreSQL",
     "Sécurité & Auth",
-    "Environnement & Énergie",
     "Déploiement & Hosting"
   ]
 }
