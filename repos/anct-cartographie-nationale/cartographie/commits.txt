@@ -1,3 +1,52 @@
+2026-04-24T22:14:35+02:00 - 6ec2227 - Marc Gavanier : perf: add bot rate limiting and scale up infrastructure
+2026-04-24T20:15:57Z - e7d11ef - semantic-release-bot : chore(release): 6.15.1 [skip ci]
+2026-04-24T17:13:25+02:00 - 80781fc - Marc Gavanier : feat: add POST /api/cache/reset endpoint for on-demand cache invalidation
+2026-04-24T15:28:16+02:00 - e3a13f4 - Marc Gavanier : fix: preload lieux cache at startup and refresh in background
+2026-04-24T15:28:16+02:00 - 97248cd - Marc Gavanier : fix: use bracket notation for process.env access
+2026-04-24T15:14:34Z - f26953b - semantic-release-bot : chore(release): 6.15.0 [skip ci]
+2026-04-24T14:00:09+02:00 - 3d5ffab - Marc Gavanier : perf: replace PostgREST API calls with in-memory BFF cache
+2026-04-24T13:29:48Z - 85ad1fd - semantic-release-bot : chore(release): 6.14.11 [skip ci]
+2026-04-24T12:01:21Z - 7f6111f - semantic-release-bot : chore(release): 6.14.10 [skip ci]
+2026-04-23T18:34:52+02:00 - b8448bd - Marc Gavanier : fix: use system theme preference instead of forcing dark mode
+2026-04-23T17:47:34+02:00 - 8162988 - Marc Gavanier : fix: re-enable geo-blocking now that realip works correctly
+2026-04-23T17:30:40+02:00 - dff519e - Marc Gavanier : fix: trust all private/reserved IP ranges for realip
+2026-04-23T17:04:17+02:00 - 8d2a361 - Marc Gavanier : fix: fix realip extraction for Scaleway proxy chain
+2026-04-23T16:36:04Z - 1f17c08 - semantic-release-bot : chore(release): 6.14.9 [skip ci]
+2026-04-23T16:35:00+02:00 - d86f9e5 - Marc Gavanier : perf: skip cache for RSC requests and add XFF debug logging
+2026-04-23T16:01:38+02:00 - 6201633 - Marc Gavanier : fix: disable geo-blocking temporarily
+2026-04-23T15:50:48+02:00 - 4abaa6b - Marc Gavanier : fix: force PORT=3000 for Node.js to avoid conflict with Nginx
+2026-04-23T15:49:39Z - f08c98e - semantic-release-bot : chore(release): 6.14.8 [skip ci]
+2026-04-23T15:31:59Z - 3e08d18 - semantic-release-bot : chore(release): 6.14.7 [skip ci]
+2026-04-23T15:08:58+02:00 - 523c5ae - Marc Gavanier : fix: fix container startup for Scaleway deployment
+2026-04-23T15:05:48Z - aeb9c60 - semantic-release-bot : chore(release): 6.14.6 [skip ci]
+2026-04-23T14:42:42Z - 0c896b2 - semantic-release-bot : chore(release): 6.14.5 [skip ci]
+2026-04-23T14:37:01+02:00 - acaf09d - Marc Gavanier : perf: reduce Docker image size by removing unused CrowdSec plugins
+2026-04-23T14:37:01+02:00 - 8448241 - Marc Gavanier : perf: reduce Docker image size by 42% (530 → 308 MB)
+2026-04-23T14:02:49Z - f39c349 - semantic-release-bot : chore(release): 6.14.4 [skip ci]
+2026-04-23T13:52:08Z - ede5694 - semantic-release-bot : chore(release): 6.14.3 [skip ci]
+2026-04-23T13:47:25+02:00 - df3b744 - Marc Gavanier : chore: move entrypoint.sh to infrastructure/nginx/ and add .dockerignore
+2026-04-23T13:47:25+02:00 - b4602a7 - Marc Gavanier : fix: hide nginx version, add error logs and graceful shutdown
+2026-04-23T13:47:25+02:00 - b110cfd - Marc Gavanier : refactor: move nginx config and tests to infrastructure/nginx/
+2026-04-23T13:47:25+02:00 - aa782a9 - Marc Gavanier : test: add rate limiting verification with concurrent requests
+2026-04-23T13:47:25+02:00 - a84e9ad - Marc Gavanier : feat: add structured access logs with country and cache status
+2026-04-23T13:47:25+02:00 - a3788fc - Marc Gavanier : ci: add infrastructure test job for geo-restriction and cache
+2026-04-23T13:47:25+02:00 - 9eb9498 - Marc Gavanier : feat: add rate limiting, custom 403 page and proxy timeouts
+2026-04-23T13:47:25+02:00 - 936b49c - Marc Gavanier : test: add gzip, server tokens, cache isolation and CrowdSec tests
+2026-04-23T13:47:25+02:00 - 908f6b6 - Marc Gavanier : perf: add Nginx reverse proxy cache with 6h TTL
+2026-04-23T13:47:25+02:00 - 81f0230 - Marc Gavanier : test: add custom 403 page content verification
+2026-04-23T13:47:25+02:00 - 756a580 - Marc Gavanier : test: add infrastructure tests for geo-restriction and cache
+2026-04-23T13:47:25+02:00 - 67fd6ae - Marc Gavanier : ci: run test-infra in parallel instead of after build
+2026-04-23T13:47:25+02:00 - 610fe63 - Marc Gavanier : chore: remove unused network infrastructure (LB, VPC, Edge Services)
+2026-04-23T13:47:25+02:00 - 40e2926 - Marc Gavanier : fix: harden geo-filter and improve cache configuration
+2026-04-23T13:47:25+02:00 - 36b7380 - Marc Gavanier : feat: add US to geo-whitelist for search engine crawlers and CI
+2026-04-23T13:47:25+02:00 - 358e08f - Marc Gavanier : feat: add geographic whitelist via Nginx reverse proxy with GeoIP2
+2026-04-23T13:47:25+02:00 - 32dcada - Marc Gavanier : chore: add nginx-linter to code:check
+2026-04-23T13:47:25+02:00 - 2045815 - Marc Gavanier : perf: add gzip compression, upstream keepalive and auto workers
+2026-04-23T13:47:25+02:00 - 1f717e6 - Marc Gavanier : feat: integrate CrowdSec for collaborative threat detection
+2026-04-23T13:47:25+02:00 - 119aa57 - Marc Gavanier : fix: exclude infrastructure tests from regular test run
+2026-04-23T13:10:20Z - 077a387 - semantic-release-bot : chore(release): 6.14.2 [skip ci]
+2026-04-23T12:38:16Z - 3d080e7 - semantic-release-bot : chore(release): 6.14.1 [skip ci]
+2026-04-23T11:48:54Z - 2834b53 - semantic-release-bot : chore(release): 6.14.0 [skip ci]
 2026-04-10T17:01:54+02:00 - a9624aa - Marc Gavanier : fix: disable Next.js cache on export fetch to avoid Node.js streaming crash
 2026-04-10T15:03:02Z - 6c32c1f - semantic-release-bot : chore(release): 6.13.10 [skip ci]
 2026-04-09T10:12:12+02:00 - 5fd7058 - Marc Gavanier : perf: increase container resources to 1120 mVCPU / 2048 MB

@@ -1,6 +1,7 @@
 .
 ├── .commitlintrc.mjs
 ├── .dependency-cruiser.cjs
+├── .dockerignore
 ├── .editorconfig
 ├── .env.example
 ├── .folderslintrc
@@ -35,6 +36,12 @@
 │   ├── .gitignore
 │   ├── Pulumi.yaml
 │   ├── README.md
+│   ├── nginx
+│   │   ├── 403.html
+│   │   ├── acquis.yaml
+│   │   ├── entrypoint.sh
+│   │   ├── nginx.conf
+│   │   └── nginx.spec.ts
 │   ├── package.json
 │   ├── src
 │   │   ├── config.ts
@@ -44,7 +51,6 @@
 │   │   │   ├── cockpit.ts
 │   │   │   ├── container.ts
 │   │   │   ├── image.ts
-│   │   │   ├── network.ts
 │   │   │   ├── scaleway.provider.ts
 │   │   │   └── static.ts
 │   │   └── utils
@@ -159,6 +165,9 @@
 │   │   │   │   └── lieux
 │   │   │   │       └── exporter
 │   │   │   │           └── route.ts
+│   │   │   ├── cache
+│   │   │   │   └── reset
+│   │   │   │       └── route.ts
 │   │   │   ├── fragilite-numerique
 │   │   │   │   └── [...params]
 │   │   │   │       └── route.ts
@@ -376,6 +385,7 @@
 │   │           ├── index.ts
 │   │           ├── lieux-cache.key.ts
 │   │           └── lieux-for-chunk.key.ts
+│   ├── instrumentation.ts
 │   ├── libraries
 │   │   ├── analytics
 │   │   │   ├── index.ts
@@ -467,6 +477,11 @@
 │   │   │   ├── container.ts
 │   │   │   ├── index.ts
 │   │   │   └── with-injectable.ts
+│   │   ├── lieux-cache
+│   │   │   ├── filter-lieux.spec.ts
+│   │   │   ├── filter-lieux.ts
+│   │   │   ├── index.ts
+│   │   │   └── lieux-cache.ts
 │   │   ├── map
 │   │   │   ├── geo
 │   │   │   │   ├── index.ts
@@ -519,7 +534,8 @@
 │   │   │   │   │   ├── with-error-handler.ts
 │   │   │   │   │   ├── with-path-params.ts
 │   │   │   │   │   ├── with-required.ts
-│   │   │   │   │   └── with-search-params.ts
+│   │   │   │   │   ├── with-search-params.ts
+│   │   │   │   │   └── with-static-bearer-auth.ts
 │   │   │   │   ├── response
 │   │   │   │   │   ├── csv-response.ts
 │   │   │   │   │   └── index.ts
@@ -726,5 +742,6 @@
 ├── tsconfig.json
 ├── vite-plugin-file-replacement.ts
 ├── vite.config.wc.ts
+├── vitest.config.infra.mjs
 └── vitest.config.mjs
-196 directories, 533 files
+200 directories, 546 files

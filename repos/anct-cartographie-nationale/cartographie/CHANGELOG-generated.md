@@ -1,41 +1,35 @@
-## Changelog : cartographie (30 derniers jours, au 10 avril 2026)
+## Changelog : cartographie (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en termes de performance, notamment au niveau du chargement des données et de l'optimisation des requêtes. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, notamment concernant la gestion des exports CSV, des robots.txt et de la compatibilité avec les versions de Node.js.  De nouvelles fonctionnalités ont été ajoutées pour améliorer l'expérience utilisateur, comme la gestion des erreurs et l'ajout de pages légales.
+Ce mois-ci, les améliorations se concentrent sur la performance et la stabilité de la plateforme. Des optimisations significatives ont été apportées au caching, à la gestion des requêtes API et à l'infrastructure, notamment avec l'ajout d'un reverse proxy Nginx et de mesures de sécurité renforcées. Des corrections de bugs ont également été implémentées pour améliorer l'expérience utilisateur et la fiabilité du système.
 
 ### Évolutions fonctionnelles
-- Ajout de pages légales avec MDX.
-- Ajout de redirections pour les anciennes routes Angular.
+- Ajout d'un endpoint `/api/cache/reset` pour invalider manuellement le cache.
 - Pré-remplissage des informations du lieu dans le formulaire de signalement d'erreur.
-- Ajout d'un point de terminaison de vérification de l'état de santé pour le conteneur Scaleway.
-- Configuration du `robots.txt` avec l'URL du site correct et blocage des robots d'IA.
-- Publication du `robots.txt` et du `sitemap` dans le dossier `public/` pour le déploiement Docker.
+- Ajout de pages légales avec du contenu en MDX.
+- Redirections pour les anciennes routes Angular.
+- Amélioration de la gestion du thème (passage automatique au thème système).
 
 ### Évolutions techniques
-- Mise à jour de Node.js de la version 20 à la version 22 pour une meilleure compatibilité avec les Web Streams.
-- Optimisation des ressources du conteneur (1120 mVCPU / 2048 MB).
-- Refactorisation des routes et des middlewares pour une meilleure organisation du code.
-- Migration des gestionnaires de routes vers une API basée sur des pipes.
-- Utilisation de middlewares pour la gestion du cache HTTP et côté serveur.
-- Amélioration de la gestion des requêtes vers l'API, notamment avec l'utilisation de `curried collectivite parameter`.
-- Ajout de tests E2E pour les endpoints de l'API stats.
-- Ajout de configuration de la carte basée sur l'URL pour l'application Next.js.
-- Implémentation d'un cache LRU pour les chunks de carte.
-- Utilisation de `Suspense` pour les états de chargement des routes principales.
-- Optimisation du rendu React pour les marqueurs de carte et les éléments de liste.
-- Stream des exports CSV via `ReadableStream`.
-- Ajout de timeouts avec `AbortSignal` pour les appels API.
-- Ajout de sources de données Cockpit Grafana pour la synchronisation.
+- Implémentation d'un cache en mémoire (BFF) pour remplacer les appels directs à l'API PostgREST, améliorant significativement les performances.
+- Ajout d'un reverse proxy Nginx avec caching (TTL de 6h), compression gzip, et configuration de sécurité (limitation de débit, page d'erreur personnalisée 403, timeouts).
+- Intégration de CrowdSec pour la détection collaborative de menaces.
+- Optimisation de la taille de l'image Docker (réduction de 42%).
+- Amélioration de la gestion des erreurs et ajout de logs plus détaillés.
+- Mise à jour de Node.js vers la version 22 pour une meilleure compatibilité avec les Web Streams.
+- Amélioration de la configuration et des ressources des conteneurs Scaleway.
+- Ajout de tests d'infrastructure pour la restriction géographique et le cache.
+- Refactorisation de la configuration Nginx et des tests associés.
+- Ajout de tests e2e pour les endpoints de statistiques.
 
 ### Autres changements
-- Mise à jour des dépendances.
-- Correction de typos dans la configuration.
+- Mise à jour des variables d'environnement Matomo.
 - Mise à jour de l'URL de La Coop.
-- Amélioration de la stabilité des tests E2E.
-- Ajout de variables d'environnement Matomo.
-- Mise à jour de la documentation pour refléter l'URL de cartographie.
-- Suppression des fichiers `robots.txt` et `sitemap` générés du suivi Git.
-- Stabilisation du calcul des heures d'ouverture.
-- Correction d'un bug lié à la préservation des filtres `code_insee`.
-- Correction d'un bug lié à l'affichage des cases à cocher.
-- Correction d'un bug lié au nom des lieux dans les réponses de l'API web component.
+- Mise à jour des dépendances.
+- Amélioration de la configuration de lint-staged.
+- Ajout de sources de données Cockpit Grafana.
+- Correction de la configuration robots.txt et sitemap.
+- Ajout de health check pour Scaleway container.
+- Suppression de code et de dépendances inutilisées.
+- Amélioration de la configuration des workflows GitHub Actions.
+- Correction de bugs divers liés à l'extraction d'IP, la gestion des filtres, et la configuration de l'environnement.

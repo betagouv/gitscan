@@ -1,3 +1,120 @@
+## [6.15.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.15.0...v6.15.1) (2026-04-24)
+
+
+### Performance Improvements
+
+* add bot rate limiting and scale up infrastructure ([6ec2227](https://github.com/anct-cartographie-nationale/cartographie/commit/6ec222759a101b0b0cdb9c0078ac19f2c7710939))
+
+# [6.15.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.11...v6.15.0) (2026-04-24)
+
+
+### Features
+
+* add POST /api/cache/reset endpoint for on-demand cache invalidation ([80781fc](https://github.com/anct-cartographie-nationale/cartographie/commit/80781fc0ea8956999a595bb11bbfcfdffafa9b23))
+
+## [6.14.11](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.10...v6.14.11) (2026-04-24)
+
+
+### Bug Fixes
+
+* preload lieux cache at startup and refresh in background ([e3a13f4](https://github.com/anct-cartographie-nationale/cartographie/commit/e3a13f4dbdb7e9e6fa20c26719336a2f18fe3c65))
+* use bracket notation for process.env access ([97248cd](https://github.com/anct-cartographie-nationale/cartographie/commit/97248cd3b3d7e102b91220ea08aa51f3857c15d0))
+
+## [6.14.10](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.9...v6.14.10) (2026-04-24)
+
+
+### Performance Improvements
+
+* replace PostgREST API calls with in-memory BFF cache ([3d5ffab](https://github.com/anct-cartographie-nationale/cartographie/commit/3d5ffab4dd7c6b5e1e992161067074b04b3d3c3d))
+
+## [6.14.9](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.8...v6.14.9) (2026-04-23)
+
+
+### Bug Fixes
+
+* use system theme preference instead of forcing dark mode ([b8448bd](https://github.com/anct-cartographie-nationale/cartographie/commit/b8448bd6decff2e30661b191c6c8bbc487f9afb4))
+
+## [6.14.8](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.7...v6.14.8) (2026-04-23)
+
+
+### Bug Fixes
+
+* re-enable geo-blocking now that realip works correctly ([8162988](https://github.com/anct-cartographie-nationale/cartographie/commit/81629887361050b85850347fec3d6cfde67ca73a))
+
+## [6.14.7](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.6...v6.14.7) (2026-04-23)
+
+
+### Bug Fixes
+
+* trust all private/reserved IP ranges for realip ([dff519e](https://github.com/anct-cartographie-nationale/cartographie/commit/dff519e09907466efa62bb6e1cb38d27653a3ee0))
+
+## [6.14.6](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.5...v6.14.6) (2026-04-23)
+
+
+### Bug Fixes
+
+* fix realip extraction for Scaleway proxy chain ([8d2a361](https://github.com/anct-cartographie-nationale/cartographie/commit/8d2a361de9654b17597f05bdb0e22e180616ab7d))
+
+## [6.14.5](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.4...v6.14.5) (2026-04-23)
+
+
+### Performance Improvements
+
+* skip cache for RSC requests and add XFF debug logging ([d86f9e5](https://github.com/anct-cartographie-nationale/cartographie/commit/d86f9e59b4408dde7cd867cc9bde946710ec74bb))
+
+## [6.14.4](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.3...v6.14.4) (2026-04-23)
+
+
+### Bug Fixes
+
+* disable geo-blocking temporarily ([6201633](https://github.com/anct-cartographie-nationale/cartographie/commit/620163386d5826c200e5b5bdb095bab434c17401))
+
+## [6.14.3](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.2...v6.14.3) (2026-04-23)
+
+
+### Bug Fixes
+
+* force PORT=3000 for Node.js to avoid conflict with Nginx ([4abaa6b](https://github.com/anct-cartographie-nationale/cartographie/commit/4abaa6b42f365b3193fb639c959e3185f2990806))
+
+## [6.14.2](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.1...v6.14.2) (2026-04-23)
+
+
+### Bug Fixes
+
+* fix container startup for Scaleway deployment ([523c5ae](https://github.com/anct-cartographie-nationale/cartographie/commit/523c5ae25c155cae4544b6bf7bbfbcb53eae9392))
+
+## [6.14.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.14.0...v6.14.1) (2026-04-23)
+
+
+### Performance Improvements
+
+* reduce Docker image size by 42% (530 → 308 MB) ([8448241](https://github.com/anct-cartographie-nationale/cartographie/commit/8448241c31ed668ac29538281ba2b49872dcb9d2))
+* reduce Docker image size by removing unused CrowdSec plugins ([acaf09d](https://github.com/anct-cartographie-nationale/cartographie/commit/acaf09d04819d2ba369f1ea1f17c3c66c5640304))
+
+# [6.14.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.10...v6.14.0) (2026-04-23)
+
+
+### Bug Fixes
+
+* exclude infrastructure tests from regular test run ([119aa57](https://github.com/anct-cartographie-nationale/cartographie/commit/119aa57efd1a32c1131fd0c25bed5820605197ca))
+* harden geo-filter and improve cache configuration ([40e2926](https://github.com/anct-cartographie-nationale/cartographie/commit/40e292654bef58c9217d47df16f06a325e2e8375))
+* hide nginx version, add error logs and graceful shutdown ([b4602a7](https://github.com/anct-cartographie-nationale/cartographie/commit/b4602a78d6a882e997d7cee6ee8b3c93c3d16f5e))
+
+
+### Features
+
+* add geographic whitelist via Nginx reverse proxy with GeoIP2 ([358e08f](https://github.com/anct-cartographie-nationale/cartographie/commit/358e08ffa48d3b5aa2d52f0fc9728179f22223fd))
+* add rate limiting, custom 403 page and proxy timeouts ([9eb9498](https://github.com/anct-cartographie-nationale/cartographie/commit/9eb94981845f6406bda1d358e6d68d3ea4b4bc50))
+* add structured access logs with country and cache status ([a84e9ad](https://github.com/anct-cartographie-nationale/cartographie/commit/a84e9adc064f2b4ef40ce0a81b4a8e6877d89389))
+* add US to geo-whitelist for search engine crawlers and CI ([36b7380](https://github.com/anct-cartographie-nationale/cartographie/commit/36b7380dbfd79983d03690a2b93b85201afc1a71))
+* integrate CrowdSec for collaborative threat detection ([1f717e6](https://github.com/anct-cartographie-nationale/cartographie/commit/1f717e6d67e141764fe38ee05950f6ab4eccff7c))
+
+
+### Performance Improvements
+
+* add gzip compression, upstream keepalive and auto workers ([2045815](https://github.com/anct-cartographie-nationale/cartographie/commit/20458157f4dabd224194967561d1b04d66c71b93))
+* add Nginx reverse proxy cache with 6h TTL ([908f6b6](https://github.com/anct-cartographie-nationale/cartographie/commit/908f6b6e1b5f1c75d0d6a76f744365cd3baf97ae))
+
 ## [6.13.10](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.13.9...v6.13.10) (2026-04-10)
 
 
