@@ -1,18 +1,19 @@
-## Changelog : common-helm-charts (30 derniers jours, au 9 avril 2026)
+## Changelog : common-helm-charts (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées aux charts Helm communs au cours du dernier mois. Les principales évolutions concernent l'ajout de fonctionnalités pour la personnalisation des chemins d'applications, l'intégration du terminal web ArgoCD, et des corrections pour améliorer la synchronisation et la configuration des charts.
+Ce mois-ci, les charts Helm ont été améliorés pour offrir plus de flexibilité et de contrôle aux utilisateurs. Des corrections ont été apportées pour améliorer la stabilité, notamment concernant le déverrouillage de Restic et la publication des images OCI. De nouvelles fonctionnalités permettent l'utilisation de secrets externes et la personnalisation du chemin d'accès aux applications.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de spécifier un chemin personnalisé pour les applications via le chart `Copier` [#4](https://github.com/cloud-gouv/common-helm-charts/issues/4).
-- Le chart `client-namespace` supporte désormais l'activation du terminal web d'ArgoCD [#5](https://github.com/cloud-gouv/common-helm-charts/issues/5).
+- Possibilité d'utiliser des secrets externes pour les charts. [#15](https://github.com/cloud-gouv/common-helm-charts/issues/15)
+- Correction d'un problème empêchant le déverrouillage de Restic. [#13](https://github.com/cloud-gouv/common-helm-charts/issues/13)
+- Correction du nom de l'application cible dans le chart Copier. [#12](https://github.com/cloud-gouv/common-helm-charts/issues/12)
+- Possibilité de définir un chemin d'accès personnalisé pour les applications. [#4](https://github.com/cloud-gouv/common-helm-charts/issues/4)
 
 ### Évolutions techniques
-- Correction d'un problème de nom d'application cible dans le chart `Copier`.
-- Correction de la racine de la comparaison dans `root-app`.
-- Mise à jour des dashboards Argo.
-- Correction d'un problème dans `helmfile` concernant les variables d'environnement [#3](https://github.com/cloud-gouv/common-helm-charts/issues/3).
-- Synchronisation des changements depuis la branche principale.
+- Ajout de la publication d'images OCI lors des releases. [#12](https://github.com/cloud-gouv/common-helm-charts/issues/12)
+- Suppression d'une limite CPU inutile. [#11](https://github.com/cloud-gouv/common-helm-charts/issues/11)
+- Désactivation temporaire du CI pour certains workflows et mise à jour de l'index de documentation.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Nettoyage du code.
+- Mise à jour de l'index de documentation et des packages par les actions automatisées.
