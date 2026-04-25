@@ -70,7 +70,8 @@
 │   │       ├── 2025_12_16_1737-d2e9e967501b_add_default_value_carbon_params.py
 │   │       ├── 2025_12_17_0947-551b2920b23c_add_provider_router_list_relationship.py
 │   │       ├── 2025_12_22_1507-f02a2525b97c_remove_carbon_footprint_prefix.py
-│   │       └── 2026_02_26_1730-c206a2bfefe9_remove_min_max_carbon_impact.py
+│   │       ├── 2026_02_26_1730-c206a2bfefe9_remove_min_max_carbon_impact.py
+│   │       └── 2026_04_23_1814-4a8f3b3aed3a_remove_master_user.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -101,6 +102,9 @@
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   ├── entities.py
+│   │   │   └── errors.py
+│   │   ├── organization
+│   │   │   ├── __init__.py
 │   │   │   └── errors.py
 │   │   ├── provider
 │   │   │   ├── __init__.py
@@ -238,7 +242,8 @@
 │   │       ├── _postgresrolesrepository.py
 │   │       ├── _postgresrouterrepository.py
 │   │       ├── _postgresuserinforepository.py
-│   │       └── _postgresusersrepository.py
+│   │       ├── _postgresusersrepository.py
+│   │       └── decorators.py
 │   ├── main.py
 │   ├── routers
 │   │   └── registry.py
@@ -344,7 +349,10 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── app
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── test_bootstrapadmin.py
+│   │   │   │   ├── lifespan
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── test_bootstrapadmin.py
+│   │   │   │   │   └── test_bootstrapmodel.py
 │   │   │   │   └── test_createapp.py
 │   │   │   ├── conftest.py
 │   │   │   ├── endpoints
@@ -392,6 +400,7 @@
 │   │   │       │   ├── test_create_role.py
 │   │   │       │   ├── test_delete_role.py
 │   │   │       │   ├── test_get_role_by_id.py
+│   │   │       │   ├── test_get_role_name.py
 │   │   │       │   ├── test_get_roles_page.py
 │   │   │       │   └── test_update_role.py
 │   │   │       ├── test_postgreslimitrepository.py
@@ -436,9 +445,6 @@
 │   │       │   │   ├── test_tokens.py
 │   │       │   │   └── test_users.py
 │   │       │   ├── test_limiter.py
-│   │       │   ├── test_modelregistry
-│   │       │   │   ├── test_providers.py
-│   │       │   │   └── test_routers.py
 │   │       │   └── test_parsermanager.py
 │   │       ├── test_legacy.py
 │   │       ├── test_utils
@@ -470,6 +476,7 @@
 │   │           │   │   ├── test_getroutersusecase.py
 │   │           │   │   └── test_updaterouterusecase.py
 │   │           │   ├── test_bootstrapadminusecase.py
+│   │           │   ├── test_bootstrapmodelsusecase.py
 │   │           │   └── users
 │   │           │       ├── __init__.py
 │   │           │       └── test_createuserusecase.py
@@ -507,6 +514,7 @@
 │   │   │       └── _updateuserusecase.py
 │   │   └── models
 │   │       ├── __init__.py
+│   │       ├── _bootstrapmodelsusecase.py
 │   │       └── _getmodelsusecase.py
 │   └── utils
 │       ├── __init__.py
@@ -750,7 +758,7 @@
 ├── pyproject.toml
 ├── pytest.ini
 └── scripts
-    ├── create_admin.py
+    ├── create_api_key.py
     ├── docs
     │   ├── configuration_header.md
     │   └── generate_configuration_documentation.py
@@ -758,4 +766,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-162 directories, 598 files
+163 directories, 605 files
