@@ -242,7 +242,8 @@
 │   │       ├── test_all.py
 │   │       ├── test_expiration_rules.py
 │   │       ├── test_generate-identity-tokens.py
-│   │       └── test_generate_identity_tokens_in_file.py
+│   │       ├── test_generate_identity_tokens_in_file.py
+│   │       └── test_httpx.py
 │   └── wsgi.py
 ├── bin
 │   ├── check-no-vanilla-httpx-usage.sh
@@ -321,7 +322,8 @@
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
-│   │   │   │   │   └── Toasts.svelte.test.ts
+│   │   │   │   │   ├── Toasts.svelte.test.ts
+│   │   │   │   │   └── Toggle.svelte
 │   │   │   │   ├── dsfr.ts
 │   │   │   │   ├── follow-up.test.ts
 │   │   │   │   ├── follow-up.ts
@@ -346,8 +348,13 @@
 │   │   │   │   ├── state
 │   │   │   │   │   ├── User.svelte.test.ts
 │   │   │   │   │   ├── User.svelte.ts
+│   │   │   │   │   ├── preferences.test.ts
+│   │   │   │   │   ├── preferences.ts
 │   │   │   │   │   ├── toast.svelte.test.ts
 │   │   │   │   │   └── toast.svelte.ts
+│   │   │   │   ├── types
+│   │   │   │   │   └── components
+│   │   │   │   │       └── toggletag.ts
 │   │   │   │   ├── utils.test.ts
 │   │   │   │   └── utils.ts
 │   │   │   └── routes
@@ -382,6 +389,15 @@
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── page.svelte.test.ts
+│   │   │       ├── preferences
+│   │   │       │   ├── +page.svelte
+│   │   │       │   ├── notifications
+│   │   │       │   │   ├── +page.svelte
+│   │   │       │   │   └── page.svelte.test.ts
+│   │   │       │   ├── pages.svelte.test.ts
+│   │   │       │   └── zones
+│   │   │       │       ├── +page.svelte
+│   │   │       │       └── page.svelte.test.ts
 │   │   │       ├── procedure
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
@@ -389,9 +405,6 @@
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       ├── requests
-│   │   │       │   ├── +page.svelte
-│   │   │       │   └── page.svelte.test.ts
-│   │   │       ├── settings
 │   │   │       │   ├── +page.svelte
 │   │   │       │   └── page.svelte.test.ts
 │   │   │       └── technical-error
@@ -456,4 +469,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-83 directories, 375 files
+87 directories, 384 files

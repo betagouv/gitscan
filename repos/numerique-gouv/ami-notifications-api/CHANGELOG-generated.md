@@ -1,34 +1,28 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 22 avril 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des agents et de leurs accès, ainsi que sur des corrections et optimisations de l'API et de l'interface utilisateur. L'ajout de fonctionnalités de gestion des rôles et d'audit renforce la sécurité et la traçabilité du système. Des améliorations ont également été apportées à l'expérience utilisateur, notamment la gestion des notifications et la page de déconnexion.
+Les dernières mises à jour apportent des améliorations significatives à l'expérience utilisateur, notamment l'ajout de la gestion des zones pour l'agenda des notifications, une meilleure gestion des utilisateurs et de leurs rôles, ainsi que des corrections de bugs et des optimisations de performance. Des améliorations de la sécurité et de la gestion des logs ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de gestion des accès pour les agents, permettant de gérer leurs rôles et permissions. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
-- Implémentation d'un audit des actions réalisées par les agents, notamment les changements de rôle. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
-- Amélioration de la gestion de la déconnexion avec une confirmation visuelle pour l'utilisateur. [#753](https://github.com/numerique-gouv/ami-notifications-api/issues/753)
-- L'URL de l'application est désormais incluse dans les notifications envoyées aux applications mobiles. [#648](https://github.com/numerique-gouv/ami-notifications-api/issues/648)
-- Correction d'un problème où l'identifiant du secteur n'était pas correctement utilisé. [#747](https://github.com/numerique-gouv/ami-notifications-api/issues/747)
-- Simplification de l'endpoint des notifications. [#468](https://github.com/numerique-gouv/ami-notifications-api/issues/468)
-- Correction de l'envoi des headers lors de la création de notifications planifiées. [#782](https://github.com/numerique-gouv/ami-notifications-api/issues/782)
-- Envoi de l'URL interne lors de la création de notifications planifiées. [#779](https://github.com/numerique-gouv/ami-notifications-api/issues/779)
+- **Agenda des notifications :** Ajout de la possibilité de définir des préférences de zones pour l'affichage des vacances scolaires dans l'agenda. L'utilisateur peut maintenant sélectionner ses zones géographiques pour une information plus pertinente. [#508](https://github.com/numerique-gouv/ami-notifications-api/issues/508)
+- **Gestion des utilisateurs :** Ajout de la gestion des rôles d'agents (admin, agent) avec une page dédiée pour l'administration des accès. Possibilité de créer des agents lors de la connexion via ProConnection. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
+- **Déconnexion :** Ajout d'une confirmation modale lors de la déconnexion de l'utilisateur. [#753](https://github.com/numerique-gouv/ami-notifications-api/issues/753)
+- **Notifications mobiles :** L'URL de l'application mobile est maintenant incluse dans les notifications push. [#648](https://github.com/numerique-gouv/ami-notifications-api/issues/648)
+- **Page d'accueil :** Correction de problèmes de padding sur la page d'accueil. [#764](https://github.com/numerique-gouv/ami-notifications-api/issues/764)
+- **Affichage des notifications :** Amélioration de l'affichage des notifications, notamment pour les journaux d'audit.
+- **Accès refusé :** Amélioration du style de la page d'accès refusé.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des erreurs dans l'API Particulier, ajout des headers dans les logs.
-- Déplacement des endpoints `agenda` et `follow-p` sous `/api/v1` pour une meilleure organisation. [#762](https://github.com/numerique-gouv/ami-notifications-api/issues/762)
-- Simplification des commandes et des tests pour les notifications planifiées. [#786](https://github.com/numerique-gouv/ami-notifications-api/issues/786)
-- Suppression de l'utilisation de `settings.CONFIG` au profit de variables d'environnement plus explicites. [#729](https://github.com/numerique-gouv/ami-notifications-api/issues/729)
-- Mise à jour de la configuration pour utiliser `fr-fr` comme langue par défaut. [#662](https://github.com/numerique-gouv/ami-notifications-api/issues/662)
-- Suppression de `django-admin` et ajout d'une commande pour attribuer le rôle d'administrateur à un agent. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
-- Initialisation du SDK Firebase. [#712](https://github.com/numerique-gouv/ami-notifications-api/issues/712)
-- Reconnexion automatique de la websocket en cas de besoin. [#652](https://github.com/numerique-gouv/ami-notifications-api/issues/652)
-- Mise à jour de l'URL du schéma OpenAPI. [#717](https://github.com/numerique-gouv/ami-notifications-api/issues/717)
+- **Refactoring de l'API :** Les points d'entrée de l'API agenda et follow-p ont été regroupés sous `/api/v1`. [#762](https://github.com/numerique-gouv/ami-notifications-api/issues/762)
+- **Cache :** Implémentation d'un cache pour les requêtes des vacances scolaires afin d'améliorer les performances. [#508](https://github.com/numerique-gouv/ami-notifications-api/issues/508)
+- **Logging :** Amélioration du logging des erreurs d'API, avec ajout des headers dans les logs.
+- **Configuration :** Migration des variables de configuration de `.env` vers les fichiers de settings Django.
+- **Suppression de code obsolète :** Suppression de l'utilisation de `settings.CONFIG` et du script `django-admin`.
+- **Amélioration de la sécurité :** Correction d'une vulnérabilité potentielle concernant l'URL du secteur. [#747](https://github.com/numerique-gouv/ami-notifications-api/issues/747)
+- **Linting :** Correction de plusieurs avertissements de linting dans le code frontend. [#792](https://github.com/numerique-gouv/ami-notifications-api/issues/792)
+- **Tests :** Mise à jour des fixtures de tests.
 
 ### Autres changements
-- Amélioration de la documentation CONTRIBUTING. [#795](https://github.com/numerique-gouv/ami-notifications-api/issues/795)
-- Corrections de linting et de style dans l'interface utilisateur (Svelte). [#792](https://github.com/numerique-gouv/ami-notifications-api/issues/792)
-- Suppression de variables d'environnement inutilisées. [#609](https://github.com/numerique-gouv/ami-notifications-api/issues/609)
-- Correction de padding sur la page d'accueil. [#764](https://github.com/numerique-gouv/ami-notifications-api/issues/764)
-- Ajout d'un lien vers l'élément concerné dans les requêtes. [#726](https://github.com/numerique-gouv/ami-notifications-api/issues/726)
-- Correction d'un bug empêchant la création d'un agent si `partner_id` était manquant. [#798](https://github.com/numerique-gouv/ami-notifications-api/issues/798)
-- Suppression du champ `name` dans le log pour simplifier le message. [#626](https://github.com/numerique-gouv/ami-notifications-api/issues/626)
+- **Documentation :** Mise à jour de la documentation CONTRIBUTING.
+- **Dépendances :** Mise à jour de plusieurs dépendances (uuid, @cucumber/cucumber, python-dotenv, lxml, @sveltejs/kit, uv, pytest, pygments, requests, yaml, picomatch, brace-expansion, cryptography).
+- **Interface utilisateur :** Amélioration de l'interface utilisateur, notamment le centrage du bouton FranceConnect et le défilement des champs d'adresse. [#515](https://github.com/numerique-gouv/ami-notifications-api/issues/515), [#568](https://github.com/numerique-gouv/ami-notifications-api/issues/568)
