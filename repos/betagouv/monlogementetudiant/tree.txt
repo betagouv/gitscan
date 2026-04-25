@@ -78,6 +78,11 @@
 │   ├── 0021_normal_abomination.sql
 │   ├── 0022_rename-stats-tables.sql
 │   ├── 0023_activity-log.sql
+│   ├── 0024_drop_accommodation_available.sql
+│   ├── 0025_import-blocklist.sql
+│   ├── 0026_externalsource_cascade.sql
+│   ├── 0027_import_jobs.sql
+│   ├── 0028_wild_punisher.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -103,6 +108,11 @@
 │       ├── 0021_snapshot.json
 │       ├── 0022_snapshot.json
 │       ├── 0023_snapshot.json
+│       ├── 0024_snapshot.json
+│       ├── 0025_snapshot.json
+│       ├── 0026_snapshot.json
+│       ├── 0027_snapshot.json
+│       ├── 0028_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -113,7 +123,6 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── public
-│   ├── cities.module.css
 │   ├── images
 │   │   ├── 404.svg
 │   │   ├── afev.svg
@@ -131,6 +140,7 @@
 │   │   ├── caf.svg
 │   │   ├── compteur.png
 │   │   ├── espacil.svg
+│   │   ├── etudiantgouv.svg
 │   │   ├── explore-cities.webp
 │   │   ├── fac-habitat.svg
 │   │   ├── facilities.svg
@@ -146,11 +156,14 @@
 │   │   ├── logo-crous.svg
 │   │   ├── logo-esr.svg
 │   │   ├── logo.svg
+│   │   ├── messervices.svg
 │   │   ├── mgel.svg
 │   │   ├── mmh.svg
 │   │   ├── mmn.svg
 │   │   ├── mobilijeune.svg
+│   │   ├── monmaster.svg
 │   │   ├── opal.svg
+│   │   ├── parcourssup.svg
 │   │   ├── placeholder
 │   │   │   ├── logement-etudiant-chambre-1.jpg
 │   │   │   ├── logement-etudiant-chambre-2.jpg
@@ -167,9 +180,12 @@
 │   │   ├── visale.svg
 │   │   └── visibility.webp
 │   ├── loyers.json
-│   ├── test-widget.html
 │   └── widget
+│       ├── embed-calculatrice.js
+│       ├── embed-simulateur-aides.js
 │       ├── embed.js
+│       ├── test-calculatrice.html
+│       ├── test-simulateur-aides.html
 │       └── test.html
 ├── sentry.edge.config.ts
 ├── sentry.server.config.ts
@@ -251,10 +267,17 @@
 │   │   │       ├── candidatures
 │   │   │       │   └── page.tsx
 │   │   │       ├── comptes-gestionnaires
+│   │   │       │   ├── nouveau
+│   │   │       │   │   └── page.tsx
 │   │   │       │   ├── owner-accounts-list.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── gestionnaires-stats
 │   │   │       │   ├── gestionnaires-stats.module.css
+│   │   │       │   └── page.tsx
+│   │   │       ├── imports
+│   │   │       │   ├── [id]
+│   │   │       │   │   ├── import-job-detail.tsx
+│   │   │       │   │   └── page.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── journaux
 │   │   │       │   └── page.tsx
@@ -384,14 +407,25 @@
 │   │   │   ├── layout.module.css
 │   │   │   ├── layout.tsx
 │   │   │   └── widget
-│   │   │       └── logements
-│   │   │           ├── loading.tsx
+│   │   │       ├── calculatrice
+│   │   │       │   └── page.tsx
+│   │   │       ├── logements
+│   │   │       │   ├── loading.tsx
+│   │   │       │   └── page.tsx
+│   │   │       └── simulateur-aides
 │   │   │           └── page.tsx
 │   │   ├── api
 │   │   │   ├── accommodations
 │   │   │   │   └── my
 │   │   │   │       └── [slug]
 │   │   │   │           └── upload
+│   │   │   │               └── route.ts
+│   │   │   ├── admin
+│   │   │   │   └── import
+│   │   │   │       └── csv
+│   │   │   │           ├── execute
+│   │   │   │           │   └── route.ts
+│   │   │   │           └── preview
 │   │   │   │               └── route.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...all]
@@ -432,6 +466,13 @@
 │   │   │   ├── admin-data-table.tsx
 │   │   │   ├── admin-header.tsx
 │   │   │   ├── admin-navigation.tsx
+│   │   │   ├── imports
+│   │   │   │   ├── csv-import-form.tsx
+│   │   │   │   ├── import-preview-table.tsx
+│   │   │   │   ├── import-progress.tsx
+│   │   │   │   ├── job-history-list.tsx
+│   │   │   │   ├── job-summary.tsx
+│   │   │   │   └── status-badge.tsx
 │   │   │   ├── link-admin-to-owner-dialog.tsx
 │   │   │   ├── link-dialog.module.css
 │   │   │   ├── link-user-owner-dialog.tsx
@@ -510,6 +551,8 @@
 │   │   │   ├── find-student-accommodation-banner.tsx
 │   │   │   ├── header
 │   │   │   │   ├── find-student-accessible-accomodation-switch.tsx
+│   │   │   │   ├── find-student-accommodation-availability-switch.module.css
+│   │   │   │   ├── find-student-accommodation-availability-switch.tsx
 │   │   │   │   ├── find-student-accommodation-crous-filter.tsx
 │   │   │   │   ├── find-student-accommodation-price.tsx
 │   │   │   │   ├── find-student-accommodation-title.tsx
@@ -587,9 +630,12 @@
 │   │   │   ├── news
 │   │   │   │   ├── news.module.css
 │   │   │   │   └── news.tsx
-│   │   │   └── partners
-│   │   │       ├── partners.module.css
-│   │   │       └── partners.tsx
+│   │   │   ├── partners
+│   │   │   │   ├── partners.module.css
+│   │   │   │   └── partners.tsx
+│   │   │   └── social-landlords-partners
+│   │   │       ├── social-landlords-partners.module.css
+│   │   │       └── social-landlords-partners.tsx
 │   │   ├── magic-link-sign-in
 │   │   │   ├── actions.ts
 │   │   │   └── magic-link-sign-in.tsx
@@ -699,6 +745,7 @@
 │   │       ├── widget-accommodation-grid.module.css
 │   │       ├── widget-accommodation-grid.tsx
 │   │       ├── widget-body-style.tsx
+│   │       ├── widget-filters.ts
 │   │       └── widget-matomo.tsx
 │   ├── dsfr
 │   │   ├── default-color-scheme.ts
@@ -807,6 +854,7 @@
 │   │   │   └── get-favorites.ts
 │   │   ├── forgot-password
 │   │   │   └── forgot-password.ts
+│   │   ├── import-jobs.ts
 │   │   ├── magic-link-sign-in
 │   │   │   └── magic-link-sign-in.ts
 │   │   ├── owner-form.ts
@@ -840,6 +888,8 @@
 │   │   │       ├── event-stats.ts
 │   │   │       ├── external-sources.ts
 │   │   │       ├── favorite-accommodations.ts
+│   │   │       ├── import-blocklist.ts
+│   │   │       ├── import-jobs.ts
 │   │   │       ├── index.ts
 │   │   │       ├── newsletter-subscriptions.ts
 │   │   │       ├── owners.ts
@@ -847,6 +897,11 @@
 │   │   │       ├── relations.ts
 │   │   │       ├── stats.ts
 │   │   │       └── student-alerts.ts
+│   │   ├── lib
+│   │   │   └── import
+│   │   │       ├── csv-importer.ts
+│   │   │       ├── csv-parser.ts
+│   │   │       └── geocoder.ts
 │   │   ├── questions-answers
 │   │   │   └── get-global-questions-answers.ts
 │   │   ├── services
@@ -913,6 +968,10 @@
 │       ├── french-contraction.ts
 │       ├── get-favicon-url.ts
 │       ├── is-per-person-typology.ts
+│       ├── normalize-accommodation-name.test.ts
+│       ├── normalize-accommodation-name.ts
+│       ├── preserve-query-params.test.ts
+│       ├── preserve-query-params.ts
 │       ├── sPluriel.ts
 │       ├── sanitize-html.ts
 │       ├── schema.ts
@@ -920,4 +979,4 @@
 │       └── widget-resize.ts
 ├── tsconfig.json
 └── vitest.config.ts
-202 directories, 720 files
+216 directories, 765 files

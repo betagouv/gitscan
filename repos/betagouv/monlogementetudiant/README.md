@@ -400,11 +400,15 @@ cli/
 drizzle/                        # Migrations SQL Drizzle
 public/
   widget/
-    embed.js                    # Script d'embed pour les partenaires
-    test.html                   # Page de test du widget
+    embed.js                          # Script d'embed — widget logements
+    embed-simulateur-aides.js         # Script d'embed — widget simulateur d'aides
+    embed-calculatrice.js             # Script d'embed — widget calculatrice de budget
+    test.html                         # Page de test — widget logements
+    test-simulateur-aides.html        # Page de test — widget simulateur d'aides
+    test-calculatrice.html            # Page de test — widget calculatrice de budget
 ```
 
-## Widget iframe
+## Widget iframe — Logements
 
 Widget embarquable qui affiche une grille de résidences étudiantes sur des sites partenaires.
 
@@ -428,14 +432,14 @@ Le script crée automatiquement l'iframe et gère le redimensionnement dynamique
 | `data-crous` | CROUS uniquement | `data-crous="true"` |
 | `data-colocation` | Colocation uniquement | `data-colocation="true"` |
 | `data-accessible` | Logements PMR | `data-accessible="true"` |
-| `data-filters` | Afficher/masquer les filtres (visible par défaut) | `data-filters="false"` |
+| `data-filters` | Filtres à afficher (tous par défaut). `"false"` masque tout. Liste séparée par des virgules parmi `ville`, `prix`, `colocation`, `crous`, `accessible` | `data-filters="ville,prix,colocation"` |
 | `data-page` | Page de pagination | `data-page="2"` |
 | `data-gestionnaire` | Filtrer par slug du gestionnaire/bailleur | `data-gestionnaire="promologis-2"` |
 | `data-target` | ID de l'élément où déposer l'iframe | `data-target="widget-container"` |
 
 Si `data-city` ou `data-bbox` est fourni, le champ de recherche de localisation est masqué.
 
-Les filtres sont **visibles par défaut**. Pour les masquer, utiliser `data-filters="false"`.
+Les filtres sont **tous visibles par défaut**. Pour n'en afficher que certains, passer une liste séparée par des virgules : `data-filters="ville,prix"`. Pour tout masquer : `data-filters="false"`. Valeurs disponibles : `ville`, `prix`, `colocation`, `crous`, `accessible`.
 
 ### Comportement du widget
 
@@ -456,6 +460,9 @@ Les filtres sont **visibles par défaut**. Pour les masquer, utiliser `data-filt
 
 <!-- Logements d'un gestionnaire spécifique -->
 <script src="https://monlogementetudiant.beta.gouv.fr/widget/embed.js" data-gestionnaire="promologis-2"></script>
+
+<!-- Afficher uniquement les filtres ville, prix et colocation -->
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed.js" data-filters="ville,prix,colocation"></script>
 
 <!-- Iframe déposée dans un élément spécifique -->
 <div id="mon-widget"></div>
@@ -478,6 +485,62 @@ Ouvrir le fichier test en `file://` (pas via localhost) pour simuler un vrai con
 - Le body de l'iframe a `overflow: hidden` — pas de double scrollbar, le scroll est géré par la page parente
 - Les cards ouvrent la page détail sur le site principal dans un nouvel onglet
 - Les headers `X-Frame-Options` et `Content-Security-Policy: frame-ancestors *` sont configurés dans `next.config.mjs` pour autoriser l'embedding
+
+## Widget iframe — Simulateur d'aides
+
+Widget embarquable qui affiche le simulateur d'aides au logement (éligibilité CAF, APL, etc.) sur des sites partenaires.
+
+### Intégration
+
+```html
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed-simulateur-aides.js"></script>
+```
+
+Le simulateur gère son propre state interne (navigation par étapes), aucun paramètre de configuration n'est requis.
+
+### Paramètres
+
+| Attribut | Description | Exemple |
+|---|---|---|
+| `data-target` | ID de l'élément où déposer l'iframe | `data-target="mon-widget"` |
+
+### Exemple
+
+```html
+<!-- Insertion dans un conteneur spécifique -->
+<div id="mon-widget"></div>
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed-simulateur-aides.js" data-target="mon-widget"></script>
+```
+
+## Widget iframe — Calculatrice de budget
+
+Widget embarquable qui affiche la calculatrice de budget étudiant (revenus, dépenses, résumé mensuel) sur des sites partenaires.
+
+### Intégration
+
+```html
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed-calculatrice.js"></script>
+```
+
+La calculatrice gère son propre state interne, aucun paramètre de configuration n'est requis.
+
+### Paramètres
+
+| Attribut | Description | Exemple |
+|---|---|---|
+| `data-target` | ID de l'élément où déposer l'iframe | `data-target="mon-widget"` |
+
+### Exemple
+
+```html
+<!-- Insertion dans un conteneur spécifique -->
+<div id="mon-widget"></div>
+<script src="https://monlogementetudiant.beta.gouv.fr/widget/embed-calculatrice.js" data-target="mon-widget"></script>
+```
+
+### Test local (simulateur d'aides et calculatrice)
+
+Même procédure que pour le widget logements : lancer `pnpm dev` puis ouvrir `public/widget/test-simulateur-aides.html` ou `public/widget/test-calculatrice.html` en `file://`.
 
 ## Maintainers
 
