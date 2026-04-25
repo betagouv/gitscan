@@ -25,6 +25,7 @@
 │       ├── Dockerfile
 │       └── sync-db.sh
 ├── .env
+├── .env.ci
 ├── .env.sample
 ├── .github
 │   ├── pull_request_template.md
@@ -404,7 +405,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (93 files)
+│   └── Version*.php  (97 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -562,8 +563,8 @@
 │   │   │   ├── ResetInjonctionNoResponseCommand.php
 │   │   │   ├── RetryFailedEmailsCommand.php
 │   │   │   ├── RetryFailedPushCommand.php
+│   │   │   ├── SendDailyEmailsCommand.php
 │   │   │   ├── SendSuiviWaitingNotificationCommand.php
-│   │   │   ├── SendSummaryEmailsCommand.php
 │   │   │   ├── SynchronizeEsaboraSCHSCommand.php
 │   │   │   ├── SynchronizeEsaboraSISHCommand.php
 │   │   │   ├── SynchronizeIdossCommand.php
@@ -996,9 +997,7 @@
 │   │   │   │   ├── AbstractDossierMessageFactory.php
 │   │   │   │   ├── DossierMessageSCHSFactory.php
 │   │   │   │   └── DossierMessageSISHFactory.php
-│   │   │   ├── Idoss
-│   │   │   │   └── DossierMessageFactory.php
-│   │   │   └── Oilhi
+│   │   │   └── Idoss
 │   │   │       └── DossierMessageFactory.php
 │   │   ├── InterventionFactory.php
 │   │   ├── NotificationFactory.php
@@ -1142,8 +1141,6 @@
 │   │   │   ├── InactiveUserExportMessage.php
 │   │   │   ├── ListExportMessage.php
 │   │   │   ├── NewSignalementCheckFileMessage.php
-│   │   │   ├── Oilhi
-│   │   │   │   └── DossierMessage.php
 │   │   │   ├── PdfExportMessage.php
 │   │   │   ├── SignalementDraftProcessMessage.php
 │   │   │   ├── SignalementServiceSecoursFileMessage.php
@@ -1160,8 +1157,6 @@
 │   │       ├── InactiveUserExportMessageHandler.php
 │   │       ├── ListExportMessageHandler.php
 │   │       ├── NewSignalementCheckFileMessageHandler.php
-│   │       ├── Oilhi
-│   │       │   └── DossierMessageHandler.php
 │   │       ├── PdfExportMessageHandler.php
 │   │       ├── SignalementAddressUpdateAndAutoAssignMessageHandler.php
 │   │       ├── SignalementDraftFileMessageHandler.php
@@ -1195,6 +1190,8 @@
 │   │   ├── PartnerRepository.php
 │   │   ├── PopNotificationRepository.php
 │   │   ├── Query
+│   │   │   ├── Commune
+│   │   │   │   └── CommuneStatisticsQuery.php
 │   │   │   ├── Dashboard
 │   │   │   │   ├── DossiersActiviteRecenteQuery.php
 │   │   │   │   ├── DossiersAvecRelanceSansReponseQuery.php
@@ -1203,15 +1200,27 @@
 │   │   │   │   ├── DossiersSuivisUsagerQuery.php
 │   │   │   │   ├── DossiersUndeliverableEmailQuery.php
 │   │   │   │   ├── KpiQuery.php
+│   │   │   │   ├── NouveauxDossiersKpiQuery.php
 │   │   │   │   └── SignalementsSansAffectationAccepteeQuery.php
 │   │   │   ├── EmailAlert
 │   │   │   │   ├── PartnerQueryService.php
 │   │   │   │   └── UserQueryService.php
-│   │   │   └── SignalementList
-│   │   │       ├── ExportIterableQuery.php
-│   │   │       ├── ListPaginatorQuery.php
-│   │   │       ├── MapGeoDataQuery.php
-│   │   │       └── QueryBuilderFactory.php
+│   │   │   ├── SignalementList
+│   │   │   │   ├── ExportIterableQuery.php
+│   │   │   │   ├── ListPaginatorQuery.php
+│   │   │   │   ├── MapGeoDataQuery.php
+│   │   │   │   └── QueryBuilderFactory.php
+│   │   │   └── Statistics
+│   │   │       ├── CountStatisticsQuery.php
+│   │   │       ├── CriticitePercentStatisticsQuery.php
+│   │   │       ├── CriticiteStatisticsQuery.php
+│   │   │       ├── FilteredStatisticsQuery.php
+│   │   │       ├── GlobalStatisticsQuery.php
+│   │   │       ├── MonthStatisticsQuery.php
+│   │   │       ├── MotifClotureStatisticsQuery.php
+│   │   │       ├── SituationStatisticsQuery.php
+│   │   │       ├── StatusStatisticsQuery.php
+│   │   │       └── VisiteStatisticsQuery.php
 │   │   ├── ServiceSecoursRouteRepository.php
 │   │   ├── SignalementDraftRepository.php
 │   │   ├── SignalementQualificationRepository.php
@@ -1305,19 +1314,25 @@
 │   │   │   ├── TabDossier.php
 │   │   │   ├── TabDossierResult.php
 │   │   │   └── TabQueryParameters.php
-│   │   ├── EmailAlertChecker.php
-│   │   ├── FileListService.php
-│   │   ├── FileVisibilityService.php
+│   │   ├── EmailAlert
+│   │   │   └── EmailAlertChecker.php
+│   │   ├── Export
+│   │   │   ├── InactiveUserExportLoader.php
+│   │   │   └── UserExportLoader.php
 │   │   ├── Files
 │   │   │   ├── DocumentProvider.php
+│   │   │   ├── FileListService.php
+│   │   │   ├── FileReaderExif.php
+│   │   │   ├── FileVisibilityService.php
 │   │   │   ├── FilenameGenerator.php
 │   │   │   ├── ImageBase64Encoder.php
+│   │   │   ├── ImageManipulationHandler.php
 │   │   │   ├── ImageVariantProvider.php
 │   │   │   ├── SignalementFileAttacher.php
 │   │   │   ├── TmpFileWriter.php
+│   │   │   ├── UserAvatar.php
 │   │   │   ├── ZipHelper.php
 │   │   │   └── ZipStreamBuilder.php
-│   │   ├── FormHelper.php
 │   │   ├── Gouv
 │   │   │   ├── Ban
 │   │   │   │   ├── AddressService.php
@@ -1354,9 +1369,7 @@
 │   │   ├── History
 │   │   │   ├── EntityComparator.php
 │   │   │   └── HistoryEntryBuffer.php
-│   │   ├── HtmlCleaner.php
 │   │   ├── HtmlTargetContentsService.php
-│   │   ├── ImageManipulationHandler.php
 │   │   ├── Import
 │   │   │   ├── Bailleur
 │   │   │   │   ├── BailleurHeader.php
@@ -1370,7 +1383,6 @@
 │   │   │       ├── SignalementImportImageHeader.php
 │   │   │       ├── SignalementImportLoader.php
 │   │   │       └── SignalementImportMapper.php
-│   │   ├── InactiveUserExportLoader.php
 │   │   ├── InjonctionBailleur
 │   │   │   ├── BailleurLoginCodeGenerator.php
 │   │   │   ├── CourrierBailleurGenerator.php
@@ -1421,11 +1433,7 @@
 │   │   │   ├── Idoss
 │   │   │   │   └── IdossService.php
 │   │   │   ├── JobEventHttpClient.php
-│   │   │   ├── JobEventMetaData.php
-│   │   │   └── Oilhi
-│   │   │       ├── HookZapierService.php
-│   │   │       └── Model
-│   │   │           └── Desordre.php
+│   │   │   └── JobEventMetaData.php
 │   │   ├── Intervention
 │   │   │   └── InterventionDescriptionGenerator.php
 │   │   ├── ListFilters
@@ -1465,6 +1473,9 @@
 │   │   │   │   │   ├── AccountTransferMailer.php
 │   │   │   │   │   ├── AccountUserSoonArchivedMailer.php
 │   │   │   │   │   └── AccountsSoonArchivedMailer.php
+│   │   │   │   ├── Club
+│   │   │   │   │   ├── NotificationClubEventMailer.php
+│   │   │   │   │   └── NotificationClubEventReminderMailer.php
 │   │   │   │   ├── Cron
 │   │   │   │   │   └── CronMailer.php
 │   │   │   │   ├── Error
@@ -1537,10 +1548,9 @@
 │   │   │   ├── DashboardKey.php
 │   │   │   └── DashboardUrlGenerator.php
 │   │   ├── Notification
+│   │   │   ├── NotificationAndMailSender.php
 │   │   │   └── NotificationCounter.php
-│   │   ├── NotificationAndMailSender.php
 │   │   ├── RequestDataExtractor.php
-│   │   ├── Sanitizer.php
 │   │   ├── Security
 │   │   │   ├── CguTiersChecker.php
 │   │   │   ├── FileScanner.php
@@ -1597,8 +1607,11 @@
 │   │   │   ├── SignalementInputValueMapper.php
 │   │   │   ├── SignalementProfileOccupantMapper.php
 │   │   │   ├── SignalementQualificationNde.php
-│   │   │   ├── SuiviHelper.php
-│   │   │   ├── SuiviSeenMarker.php
+│   │   │   ├── Suivi
+│   │   │   │   ├── SuiviCategoryMapper.php
+│   │   │   │   ├── SuiviHelper.php
+│   │   │   │   ├── SuiviSeenMarker.php
+│   │   │   │   └── SuiviTransformerService.php
 │   │   │   ├── VisiteNotifier.php
 │   │   │   └── ZipcodeProvider.php
 │   │   ├── Statistics
@@ -1621,18 +1634,13 @@
 │   │   │   ├── StatusStatisticProvider.php
 │   │   │   ├── TerritoryStatisticProvider.php
 │   │   │   └── VisiteStatisticProvider.php
-│   │   ├── SuiviCategoryMapper.php
-│   │   ├── SuiviTransformerService.php
 │   │   ├── TimezoneProvider.php
 │   │   ├── Token
 │   │   │   ├── AbstractTokenGenerator.php
 │   │   │   ├── ActivationTokenGenerator.php
 │   │   │   ├── TokenGenerator.php
 │   │   │   └── TokenGeneratorInterface.php
-│   │   ├── UploadHandlerService.php
-│   │   ├── UrlHelper.php
-│   │   ├── UserAvatar.php
-│   │   └── UserExportLoader.php
+│   │   └── UploadHandlerService.php
 │   ├── Specification
 │   │   ├── Affectation
 │   │   │   ├── AllocataireSpecification.php
@@ -1657,20 +1665,25 @@
 │   │   ├── MenuExtension.php
 │   │   └── TestExtension.php
 │   ├── Utils
-│   │   ├── AddressParser.php
+│   │   ├── Address
+│   │   │   ├── AddressParser.php
+│   │   │   ├── CommuneHelper.php
+│   │   │   ├── EscalierParser.php
+│   │   │   ├── EtageParser.php
+│   │   │   └── ImportCommune.php
 │   │   ├── AttributeParser.php
-│   │   ├── CommuneHelper.php
 │   │   ├── DataPropertyArrayFilter.php
 │   │   ├── DateHelper.php
 │   │   ├── DictionaryProvider.php
 │   │   ├── Enum
 │   │   │   └── ExtensionAdresse.php
-│   │   ├── EscalierParser.php
-│   │   ├── EtageParser.php
-│   │   ├── ImportCommune.php
+│   │   ├── FormHelper.php
+│   │   ├── HtmlCleaner.php
 │   │   ├── Json.php
 │   │   ├── Phone.php
-│   │   └── TrimHelper.php
+│   │   ├── Sanitizer.php
+│   │   ├── TrimHelper.php
+│   │   └── UrlHelper.php
 │   └── Validator
 │       ├── AdresseOccupant.php
 │       ├── AdresseOccupantValidator.php
@@ -1900,6 +1913,7 @@
 │   │   │   ├── _modal_profil_infos.html.twig
 │   │   │   ├── _modal_profil_infos_content.html.twig
 │   │   │   ├── _modal_profil_notification_email.html.twig
+│   │   │   ├── _modal_profil_notification_email_alert_signalement.html.twig
 │   │   │   ├── _modal_profil_password.html.twig
 │   │   │   ├── _notifications-email.html.twig
 │   │   │   └── index.html.twig
@@ -2088,6 +2102,8 @@
 │   │   ├── closed_to_partner_signalement_email.html.twig
 │   │   ├── closed_to_partners_signalement_email.html.twig
 │   │   ├── closed_to_usager_signalement_email.html.twig
+│   │   ├── club_event_email.html.twig
+│   │   ├── club_event_reminder_email.html.twig
 │   │   ├── continue_from_draft_email.html.twig
 │   │   ├── cron_email.html.twig
 │   │   ├── delete_account_email.html.twig
@@ -2208,14 +2224,13 @@
 │   │   │   │   ├── RemindInjonctionSignalementCommandTest.php
 │   │   │   │   ├── RemindPendingDraftsCommandTest.php
 │   │   │   │   ├── ResetInjonctionNoResponseCommandTest.php
+│   │   │   │   ├── SendDailyEmailsCommandTest.php
 │   │   │   │   ├── SendSuiviWaitingNotificationCommandTest.php
-│   │   │   │   ├── SendSummaryEmailsCommandTest.php
 │   │   │   │   └── SynchronizeInterventionSISHCommandTest.php
 │   │   │   ├── LoadEpciCommandTest.php
 │   │   │   ├── MergePartnersCommandTest.php
 │   │   │   └── NotifyVisitsCommandTest.php
 │   │   ├── Controller
-│   │   │   ├── AffectationControllerTest.php
 │   │   │   ├── Api
 │   │   │   │   ├── AffectationUpdateControllerTest.php
 │   │   │   │   ├── ArreteCreateControllerTest.php
@@ -2231,6 +2246,7 @@
 │   │   │   ├── AutoAffectationRuleControllerTest.php
 │   │   │   ├── Back
 │   │   │   │   ├── AdminTerritoryFilesControllerTest.php
+│   │   │   │   ├── AffectationControllerTest.php
 │   │   │   │   ├── AutoAssignerSimulatorControllerTest.php
 │   │   │   │   ├── BackArchivedPartnerControllerTest.php
 │   │   │   │   ├── BackBailleurControllerTest.php
@@ -2285,7 +2301,8 @@
 │   │   │   └── Webhook
 │   │   │       ├── BrevoWebhookControllerTest.php
 │   │   │       └── CronReportingControllerTest.php
-│   │   ├── EmailAlertCheckerTest.php
+│   │   ├── EmailAlert
+│   │   │   └── EmailAlertCheckerTest.php
 │   │   ├── EventListener
 │   │   │   ├── AuthentificationSuccessListenerTest.php
 │   │   │   └── MaintenanceListenerTest.php
@@ -2300,8 +2317,6 @@
 │   │   │   ├── SignalementClosedSubscriberTest.php
 │   │   │   └── SignalementViewedSubscriberTest.php
 │   │   ├── Factory
-│   │   │   ├── Oilhi
-│   │   │   │   └── DossierMessageFactoryTest.php
 │   │   │   └── SignalementAffectationListViewFactoryTest.php
 │   │   ├── Manager
 │   │   │   ├── AffectationManagerTest.php
@@ -2343,9 +2358,11 @@
 │   │   │   │   │   ├── DossiersSuivisUsagerQueryTest.php
 │   │   │   │   │   ├── KpiQueryTest.php
 │   │   │   │   │   └── SignalementsSansAffectationAccepteeQueryTest.php
-│   │   │   │   └── SignalementList
-│   │   │   │       ├── MapGeoDataQueryTest.php
-│   │   │   │       └── QueryBuilderFactoryTest.php
+│   │   │   │   ├── SignalementList
+│   │   │   │   │   ├── MapGeoDataQueryTest.php
+│   │   │   │   │   └── QueryBuilderFactoryTest.php
+│   │   │   │   └── Statistics
+│   │   │   │       └── CountStatisticsQueryTest.php
 │   │   │   ├── SignalementRepositoryTest.php
 │   │   │   ├── SuiviRepositoryTest.php
 │   │   │   ├── UserRepositoryTest.php
@@ -2366,8 +2383,8 @@
 │   │   │   ├── Mailer
 │   │   │   │   └── SummaryMailServiceTest.php
 │   │   │   ├── Notification
+│   │   │   │   ├── NotificationAndMailSenderTest.php
 │   │   │   │   └── NotificationCounterTest.php
-│   │   │   ├── NotificationAndMailSenderTest.php
 │   │   │   ├── Security
 │   │   │   │   └── PartnerAuthorizedResolverTest.php
 │   │   │   ├── Signalement
@@ -2393,7 +2410,8 @@
 │   │   │   │   ├── ReferenceGeneratorTest.php
 │   │   │   │   ├── SearchFilterOptionDataProviderTest.php
 │   │   │   │   ├── SignalementBuilderTest.php
-│   │   │   │   ├── SuiviSeenMarkerTest.php
+│   │   │   │   ├── Suivi
+│   │   │   │   │   └── SuiviSeenMarkerTest.php
 │   │   │   │   ├── VisiteNotifierTest.php
 │   │   │   │   └── ZipCodeProviderTest.php
 │   │   │   ├── Statistics
@@ -2507,8 +2525,6 @@
 │   │   │       ├── Idoss
 │   │   │       │   └── DossierMessageHandlerTest.php
 │   │   │       ├── NewSignalementCheckFileMessageHandlerTest.php
-│   │   │       ├── Oilhi
-│   │   │       │   └── DossierMessageHandlerTest.php
 │   │   │       └── SignalementServiceSecoursFileMessageHandlerTest.php
 │   │   ├── Security
 │   │   │   ├── Authenticator
@@ -2523,6 +2539,7 @@
 │   │   │   └── SignalementDraftRequestNormalizerTest.php
 │   │   ├── Service
 │   │   │   ├── AutoAssignerTest.php
+│   │   │   ├── ClubEventServiceTest.php
 │   │   │   ├── DashboardTabPanel
 │   │   │   │   ├── Kpi
 │   │   │   │   │   ├── CountAfermerTest.php
@@ -2542,7 +2559,8 @@
 │   │   │   │   ├── TabBodyTest.php
 │   │   │   │   ├── TabDataManagerTest.php
 │   │   │   │   └── TabQueryParametersTest.php
-│   │   │   ├── EmailAlertCheckerTest.php
+│   │   │   ├── EmailAlert
+│   │   │   │   └── EmailAlertCheckerTest.php
 │   │   │   ├── Esabora
 │   │   │   │   ├── AttachmentsUtilsTest.php
 │   │   │   │   ├── DateParserTest.php
@@ -2561,14 +2579,15 @@
 │   │   │   │       ├── DossierStateSCHSResponseTest.php
 │   │   │   │       ├── DossierStateSISHResponseTest.php
 │   │   │   │       └── DossierVisiteSISHCollectionResponseTest.php
-│   │   │   ├── FileListServiceTest.php
 │   │   │   ├── FileScannerTest.php
-│   │   │   ├── FileVisibilityServiceTest.php
 │   │   │   ├── Files
+│   │   │   │   ├── FileListServiceTest.php
+│   │   │   │   ├── FileVisibilityServiceTest.php
 │   │   │   │   ├── FilenameGeneratorTest.php
 │   │   │   │   ├── ImageVariantProviderTest.php
 │   │   │   │   ├── SignalementFileAttacherTest.php
 │   │   │   │   ├── TmpFileWriterTest.php
+│   │   │   │   ├── UserAvatarTest.php
 │   │   │   │   ├── ZipHelperTest.php
 │   │   │   │   └── ZipStreamBuilderTest.php
 │   │   │   ├── Gouv
@@ -2592,13 +2611,11 @@
 │   │   │   ├── History
 │   │   │   │   ├── EntityComparatorTest.php
 │   │   │   │   └── HistoryEntryBufferTest.php
-│   │   │   ├── HtmlCleanerTest.php
 │   │   │   ├── Idoss
 │   │   │   │   └── IdossServiceTest.php
 │   │   │   ├── ImageInterventionHandlerTest.php
 │   │   │   ├── InjonctionBailleur
 │   │   │   │   ├── BailleurLoginCodeGeneratorTest.php
-│   │   │   │   ├── ClubEventServiceTest.php
 │   │   │   │   └── InjonctionBailleurServiceTest.php
 │   │   │   ├── Interconnection
 │   │   │   │   ├── Esabora
@@ -2615,8 +2632,6 @@
 │   │   │   │   └── MenuBuilderTest.php
 │   │   │   ├── Metabase
 │   │   │   │   └── DashboardUrlGeneratorTest.php
-│   │   │   ├── Oilhi
-│   │   │   │   └── HookZapierServiceTest.php
 │   │   │   ├── Signalement
 │   │   │   │   ├── DesordreTraitement
 │   │   │   │   │   └── DesordreTraitementProcessorTest.php
@@ -2630,23 +2645,24 @@
 │   │   │   │   ├── SignalementFileProcessorTest.php
 │   │   │   │   ├── SignalementInputValueMapperTest.php
 │   │   │   │   └── SignalementProfileOccupantMapperTest.php
-│   │   │   ├── TimezoneProviderTest.php
-│   │   │   ├── UrlHelperTest.php
-│   │   │   └── UserAvatarTest.php
+│   │   │   └── TimezoneProviderTest.php
 │   │   ├── Twig
 │   │   │   └── AppExtensionTest.php
 │   │   ├── Utils
-│   │   │   ├── AddressParserTest.php
+│   │   │   ├── Address
+│   │   │   │   ├── AddressParserTest.php
+│   │   │   │   ├── CommuneHelperTest.php
+│   │   │   │   ├── EscalierParserTest.php
+│   │   │   │   └── EtageParserTest.php
 │   │   │   ├── AttributeParserTest.php
-│   │   │   ├── CommuneHelperTest.php
 │   │   │   ├── DataPropertyArrayFilterTest.php
 │   │   │   ├── DateHelperTest.php
 │   │   │   ├── DictionaryProviderTest.php
-│   │   │   ├── EscalierParserTest.php
-│   │   │   ├── EtageParserTest.php
+│   │   │   ├── HtmlCleanerTest.php
 │   │   │   ├── JsonTest.php
 │   │   │   ├── PhoneTest.php
-│   │   │   └── TrimHelperTest.php
+│   │   │   ├── TrimHelperTest.php
+│   │   │   └── UrlHelperTest.php
 │   │   └── Validator
 │   │       ├── AdresseOccupantValidatorTest.php
 │   │       ├── Behaviour
@@ -2753,6 +2769,8 @@
 │               │   │   ├── ws_get_dossier_events.json
 │               │   │   └── ws_import.json
 │               │   └── sish
+│               │       ├── error
+│               │       │   └── ws_dossier_adresse.json
 │               │       ├── ws_arrete_main_levee_dossier_sas.json
 │               │       ├── ws_arretes_dossier_sas.json
 │               │       ├── ws_arretes_dossier_sas_termine.json
@@ -2762,10 +2780,12 @@
 │               │       ├── ws_dossier_personne.json
 │               │       ├── ws_etat_dossier_sas
 │               │       │   ├── etat_importe.json
+│               │       │   ├── etat_importe_sish_schs.json
 │               │       │   ├── etat_rejete.json
 │               │       │   └── etat_termine.json
 │               │       ├── ws_visites_dossier_sas.json
-│               │       └── ws_visites_dossier_sas_en_cours.json
+│               │       ├── ws_visites_dossier_sas_en_cours.json
+│               │       └── ws_visites_dossier_sas_en_cours_sish_schs.json
 │               ├── Idoss
 │               │   ├── authentification.json
 │               │   ├── creatDossHistologe-2023-12.json
@@ -2788,4 +2808,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-462 directories, 2437 files
+467 directories, 2456 files
