@@ -1,35 +1,46 @@
-## Changelog : otelo (30 derniers jours)
+## Changelog : otelo (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Le projet Otelo a connu un mois de février et début mars riche en améliorations et nouvelles fonctionnalités. Les efforts se sont concentrés sur l'amélioration de la gestion des données (versioning, import), l'expérience utilisateur (gestion des utilisateurs, simulations, affichage des résultats) et la correction de bugs pour une application plus stable et performante. Une page de feedback utilisateur a également été ajoutée.
+Le projet Otelo a connu un mois d'avril riche en améliorations, notamment une refonte significative du tableau de bord, l'ajout de nouvelles fonctionnalités pour la gestion des utilisateurs et des données, ainsi que des corrections de bugs et des optimisations diverses. Ces évolutions visent à améliorer l'expérience utilisateur et à renforcer les capacités d'analyse et de pilotage de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de feedback utilisateur pour recueillir les retours des utilisateurs. [#16](https://github.com/MTES-MCT/otelo/pull/16)
-- Possibilité de supprimer un groupe d'EPCI. [#15](https://github.com/MTES-MCT/otelo/pull/15)
-- Amélioration de l'affichage des résultats des simulations avec un bouton d'export. [#10](https://github.com/MTES-MCT/otelo/pull/10)
-- Ajout d'un historique des résultats des simulations, permettant de suivre l'évolution des données. [#10](https://github.com/MTES-MCT/otelo/pull/10)
-- Amélioration de la gestion des utilisateurs avec un refonte de l'interface et du tri.
-- Correction de l'affichage des logements secondaires.
-- Correction de l'affichage des données cumulées pour les logements vacants et secondaires.
-- Correction de l'export Excel pour les décimales.
-- Correction de l'affichage des données dans les graphiques récapitulatifs.
-- Correction d'un bug lié à la projection du scroll dans la liste des ménages.
-- Correction d'un bug lié au gel de la taille de page.
+- **Tableau de bord refondu** : Amélioration de la présentation et des fonctionnalités du tableau de bord, incluant la comparaison de scénarios via un tableau de bord dédié [#40](https://github.com/MTES-MCT/otelo/pull/40).
+- **Prévisualisation des résultats** : Possibilité de prévisualiser les résultats directement dans les formulaires de création et de mise à jour [#39](https://github.com/MTES-MCT/otelo/pull/39).
+- **Gestion des utilisateurs** :
+    - Ajout d'un nouveau type d'utilisateur et d'une fonctionnalité associée dans l'interface CLI [#38](https://github.com/MTES-MCT/otelo/pull/38).
+    - Possibilité d'impersonner un administrateur.
+    - Importation d'utilisateurs à partir d'un fichier CSV.
+- **Gestion des données** :
+    - Import de données via la CLI.
+    - Dataversioning implémenté.
+    - Ajout de la gestion des besoins en renouvellement urbain.
+    - Ajout de la gestion des besoins annuels de Sitadel.
+- **Améliorations diverses** :
+    - Ajout d'une page changelog.
+    - Ajout de liens vers le centre d'aide et nouvelles illustrations.
+    - Amélioration des descriptions des logements.
+    - Ajout de la gestion des clés API et de leurs consommateurs.
 
 ### Évolutions techniques
-- Implémentation du versioning des datapacks. [#23](https://github.com/MTES-MCT/otelo/pull/23)
-- Ajout d'un CLI pour importer des données. [#25](https://github.com/MTES-MCT/otelo/pull/25)
-- Gestion des clés API et des consommateurs. [#20](https://github.com/MTES-MCT/otelo/pull/20)
-- Refactorisation de la gestion des mises à jour de la base de données pour éviter les erreurs.
-- Suppression du module d'authentification de l'API.
-- Amélioration de la gestion des énumérations dans Swagger.
-- Ajout de tests et de linting pour améliorer la qualité du code.
+- **Architecture & Infrastructure** :
+    - Amélioration de la gestion des injections de modules CLI.
+    - Correction de problèmes de build web.
+    - Mise en place de tests E2E.
+    - Correction de problèmes liés aux locks pnpm et amélioration du linting.
+    - Amélioration de la gestion des erreurs et des tests.
+- **API** :
+    - Ajout d'énums Swagger pour une meilleure documentation.
+    - Correction de problèmes liés aux mises à jour asynchrones.
+- **Divers** :
+    - Refactoring de la gestion des taux de disparition.
+    - Amélioration de la gestion des données démographiques.
 
 ### Autres changements
-- Ajout d'une page changelog. [#6](https://github.com/MTES-MCT/otelo/pull/6)
-- Correction de divers typos et améliorations de la documentation.
-- Correction de l'année du millésime dans différentes parties de l'application.
-- Correction de la gestion du millésime dans le provider de taux.
-- Correction de la restructuration liée à la disparition des données.
-- Amélioration de la gestion des injections de modules CLI.
-- Ajout d'un fichier README et configuration du mode "dry run" par défaut pour le CLI.
+- Mise à jour des wordings et des libellés dans l'interface utilisateur.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Amélioration de la gestion des templates d'emails (Brevo).
+- Suppression de l'envoi d'emails en environnement local pour faciliter le développement.
+- Correction du calcul de l'année de base dans les graphiques de comparaison.
+- Amélioration de l'exportation des données Excel.
+- Correction de la somme des besoins de renouvellement.
+- Amélioration de la gestion des années de millésime.

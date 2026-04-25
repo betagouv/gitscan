@@ -86,6 +86,18 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260226124519_add_versioning_datapack
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260325134047_add_no_insee_projection_flag
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260326133653_remove_free_sne
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260327080957_add_user_referent
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260401120000_add_simulation_share_links
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260408131557_add_region_name_department_code
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260414105500_extend_user_type_enum
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -111,6 +123,7 @@
 │   │   │   │   ├── auth.module.ts
 │   │   │   │   ├── auth.service.spec.ts
 │   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── better-auth.spec.ts
 │   │   │   │   └── better-auth.ts
 │   │   │   ├── bad-quality
 │   │   │   │   ├── bad-quality.module.ts
@@ -174,9 +187,11 @@
 │   │   │   │   ├── cli.module.ts
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── commands
+│   │   │   │   │   ├── backfill-epcis-geo.command.ts
 │   │   │   │   │   ├── import-backup.command.ts
 │   │   │   │   │   ├── import-csv.command.ts
-│   │   │   │   │   └── recalculate-results.command.ts
+│   │   │   │   │   ├── recalculate-results.command.ts
+│   │   │   │   │   └── update-user-types.command.ts
 │   │   │   │   └── services
 │   │   │   │       └── scalingo-backup.service.ts
 │   │   │   ├── common
@@ -191,7 +206,9 @@
 │   │   │   │   │   ├── api-key.guard.spec.ts
 │   │   │   │   │   ├── api-key.guard.ts
 │   │   │   │   │   ├── authorization.guard.spec.ts
-│   │   │   │   │   └── authorization.guard.ts
+│   │   │   │   │   ├── authorization.guard.ts
+│   │   │   │   │   ├── share-token.guard.spec.ts
+│   │   │   │   │   └── share-token.guard.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── email-anonymizer.ts
 │   │   │   │       └── encryption.ts
@@ -329,7 +346,13 @@
 │   │   │   │   ├── physical-inadequation.module.ts
 │   │   │   │   ├── physical-inadequation.service.spec.ts
 │   │   │   │   └── physical-inadequation.service.ts
+│   │   │   ├── preview
+│   │   │   │   ├── preview.controller.ts
+│   │   │   │   ├── preview.module.ts
+│   │   │   │   └── preview.service.ts
 │   │   │   ├── results
+│   │   │   │   ├── preview.controller.ts
+│   │   │   │   ├── preview.service.ts
 │   │   │   │   ├── results.controller.spec.ts
 │   │   │   │   ├── results.controller.ts
 │   │   │   │   ├── results.module.ts
@@ -378,6 +401,11 @@
 │   │   │   │   └── users
 │   │   │   │       ├── update-user.ts
 │   │   │   │       └── user.ts
+│   │   │   ├── share-links
+│   │   │   │   ├── share-links.controller.ts
+│   │   │   │   ├── share-links.module.ts
+│   │   │   │   ├── share-links.service.spec.ts
+│   │   │   │   └── share-links.service.ts
 │   │   │   ├── simulations
 │   │   │   │   ├── simulations.controller.spec.ts
 │   │   │   │   ├── simulations.controller.ts
@@ -399,6 +427,8 @@
 │   │   │   ├── types
 │   │   │   │   └── prisma-json.ts
 │   │   │   ├── users
+│   │   │   │   ├── user-type.utils.ts
+│   │   │   │   ├── users-import.controller.spec.ts
 │   │   │   │   ├── users.controller.spec.ts
 │   │   │   │   ├── users.controller.ts
 │   │   │   │   ├── users.module.ts
@@ -410,7 +440,8 @@
 │   │   │       └── vacancy.service.ts
 │   │   ├── test
 │   │   │   ├── app.e2e-spec.ts
-│   │   │   └── jest-e2e.json
+│   │   │   ├── jest-e2e.json
+│   │   │   └── jest-setup.ts
 │   │   ├── tsconfig.build.json
 │   │   ├── tsconfig.cli.json
 │   │   └── tsconfig.json
@@ -424,8 +455,27 @@
 │       ├── public
 │       │   └── assets
 │       │       ├── Etude de cas - Arras.pptx
+│       │       ├── centre-d-aide
+│       │       │   ├── otelo-cibler-la-vacance-de-longue-duree.jpg
+│       │       │   ├── otelo-cibler-le-taux-de-residences-secondaires.jpg
+│       │       │   ├── otelo-comment-est-calculee-la-resorption-de-la-vacance.jpg
+│       │       │   ├── otelo-comment-sont-calculees-les-projections-demographiques.jpg
+│       │       │   ├── otelo-comment-sont-calculees-les-projections-en-menage.jpg
+│       │       │   ├── otelo-creer-son-compte-otelo.jpg
+│       │       │   ├── otelo-creer-un-territoire-a-facon.jpg
+│       │       │   ├── otelo-debuter-l-elaboration-d-un-scenario.jpg
+│       │       │   ├── otelo-elaborer-un-scenario-de-a-a-z.jpg
+│       │       │   ├── otelo-generer-une-presentation-ppt-editable.jpg
+│       │       │   ├── otelo-importer-des-donnees-a-facon.jpg
+│       │       │   ├── otelo-je-suis-un-ddt.jpg
+│       │       │   ├── otelo-methodologie-et-donnees.jpg
+│       │       │   ├── otelo-parametrer-les-dynamiques-de-renouvellement-urbain.jpg
+│       │       │   ├── otelo-parametrer-les-projections-demographiques.jpg
+│       │       │   ├── otelo-que-repondre-aux-elus.jpg
+│       │       │   └── otelo-resorber-le-mal-logement.jpg
 │       │       ├── csv
-│       │       │   └── template_import_a_facon.csv
+│       │       │   ├── template_import_a_facon.csv
+│       │       │   └── template_import_utilisateurs.csv
 │       │       ├── img
 │       │       │   ├── acces_collectivite.png
 │       │       │   ├── acces_ddt.png
@@ -461,6 +511,8 @@
 │       │   │   │   ├── layout-wrapper.tsx
 │       │   │   │   ├── layout.module.css
 │       │   │   │   ├── layout.tsx
+│       │   │   │   ├── pilotage
+│       │   │   │   │   └── page.tsx
 │       │   │   │   ├── simulation
 │       │   │   │   │   ├── (creation)
 │       │   │   │   │   │   ├── (rates-provider)
@@ -549,6 +601,8 @@
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   └── layout.tsx
 │       │   │   │   ├── tableaux-de-bord
+│       │   │   │   │   ├── comparison-data.ts
+│       │   │   │   │   ├── group-by-period.ts
 │       │   │   │   │   ├── no-results.tsx
 │       │   │   │   │   ├── page.tsx
 │       │   │   │   │   └── tableaux-de-bord.module.css
@@ -569,17 +623,29 @@
 │       │   │   │   │   ├── @summary
 │       │   │   │   │   │   ├── [...all]
 │       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── aller-plus-loin-methodologie
+│       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── apprendre-a-utiliser-l-outil
+│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── guide
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── methodologie
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── notes-de-version
 │       │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   ├── participer-a-une-formation
+│       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── summary.module.css
-│       │   │   │   │   │   └── summary.tsx
+│       │   │   │   │   │   ├── summary.tsx
+│       │   │   │   │   │   └── tester-mes-connaissances
+│       │   │   │   │   │       └── page.tsx
 │       │   │   │   │   ├── a-propos
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── accessibilite
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── aller-plus-loin-methodologie
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── apprendre-a-utiliser-l-outil
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── cgv
 │       │   │   │   │   │   └── page.tsx
@@ -594,7 +660,11 @@
 │       │   │   │   │   ├── notes-de-version
 │       │   │   │   │   │   ├── page.tsx
 │       │   │   │   │   │   └── release-notes.ts
-│       │   │   │   │   └── ressources
+│       │   │   │   │   ├── participer-a-une-formation
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── ressources
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   └── tester-mes-connaissances
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── accueil
 │       │   │   │   │   ├── _components
@@ -620,6 +690,9 @@
 │       │   │   │   │   ├── faq.module.css
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── layout.tsx
+│       │   │   │   ├── partage
+│       │   │   │   │   └── [token]
+│       │   │   │   │       └── page.tsx
 │       │   │   │   ├── statistiques
 │       │   │   │   │   ├── page.tsx
 │       │   │   │   │   └── statistiques.module.css
@@ -692,17 +765,31 @@
 │       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   ├── clone
 │       │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   ├── name
+│       │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   ├── results
+│       │   │   │   │   │   │   └── route.ts
 │       │   │   │   │   │   ├── route.ts
-│       │   │   │   │   │   └── scenario
+│       │   │   │   │   │   ├── scenario
+│       │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   └── share
 │       │   │   │   │   │       └── route.ts
+│       │   │   │   │   ├── preview
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── request-powerpoint
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── statistics
+│       │   │   │   │   ├── pilotage
+│       │   │   │   │   │   ├── export
+│       │   │   │   │   │   │   └── route.ts
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── results
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── route.ts
 │       │   │   │   │   ├── simulations
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   ├── template
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── users
 │       │   │   │   │       └── route.ts
@@ -713,6 +800,9 @@
 │       │   │   │       │   └── [id]
 │       │   │   │       │       └── route.ts
 │       │   │   │       ├── export
+│       │   │   │       │   └── csv
+│       │   │   │       │       └── route.ts
+│       │   │   │       ├── import
 │       │   │   │       │   └── csv
 │       │   │   │       │       └── route.ts
 │       │   │   │       ├── route.ts
@@ -731,6 +821,7 @@
 │       │   │   │   │   └── consumers-table.tsx
 │       │   │   │   ├── feedbacks
 │       │   │   │   │   └── feedbacks-content.tsx
+│       │   │   │   ├── pilotage-tab.tsx
 │       │   │   │   ├── statistics-export-buttons.tsx
 │       │   │   │   └── users
 │       │   │   │       ├── users-management.tsx
@@ -773,7 +864,11 @@
 │       │   │   │   ├── population-scenarios-custom-tooltip.tsx
 │       │   │   │   ├── population-scenarios-selection.tsx
 │       │   │   │   ├── stock-evolution-chart.tsx
+│       │   │   │   ├── synthesis-cn-evolution-chart.module.css
+│       │   │   │   ├── synthesis-cn-evolution-chart.tsx
 │       │   │   │   └── upload-demographic-evolution-custom.tsx
+│       │   │   ├── collaboration
+│       │   │   │   └── share-simulation-modal.tsx
 │       │   │   ├── common
 │       │   │   │   ├── dropdown.tsx
 │       │   │   │   ├── generic-card
@@ -812,6 +907,11 @@
 │       │   │   │   ├── creation-guide
 │       │   │   │   │   ├── bad-housing-settings-creation-guide-tag.tsx
 │       │   │   │   │   └── demographic-settings-creation-guide-tag.tsx
+│       │   │   │   ├── preview
+│       │   │   │   │   ├── bad-housing-preview.tsx
+│       │   │   │   │   ├── creation-preview.tsx
+│       │   │   │   │   ├── demographic-preview.tsx
+│       │   │   │   │   └── simulation-preview.tsx
 │       │   │   │   ├── results
 │       │   │   │   │   ├── annual-needs
 │       │   │   │   │   │   ├── simulation-annual-needs-dropdown-summary.tsx
@@ -894,7 +994,8 @@
 │       │   │   │   │   │   │   │   ├── select-bad-quality-part.tsx
 │       │   │   │   │   │   │   │   ├── select-bad-quality-source.tsx
 │       │   │   │   │   │   │   │   ├── select-confort-source.tsx
-│       │   │   │   │   │   │   │   └── select-occupation-source.tsx
+│       │   │   │   │   │   │   │   ├── select-occupation-source.tsx
+│       │   │   │   │   │   │   │   └── select-qualite-source.tsx
 │       │   │   │   │   │   │   ├── heberges
 │       │   │   │   │   │   │   │   ├── select-heberges-accommodation-types.tsx
 │       │   │   │   │   │   │   │   └── select-heberges-part.tsx
@@ -966,6 +1067,13 @@
 │       │   │   │   ├── dashboard-simulation-item.tsx
 │       │   │   │   ├── delete-simulation-button.tsx
 │       │   │   │   ├── multiple-epci-select.tsx
+│       │   │   │   ├── period-row.module.css
+│       │   │   │   ├── period-row.tsx
+│       │   │   │   ├── rate-by-epci-select.module.css
+│       │   │   │   ├── rate-by-epci-select.tsx
+│       │   │   │   ├── rename-simulation-button.tsx
+│       │   │   │   ├── scenario-card.module.css
+│       │   │   │   ├── scenario-card.tsx
 │       │   │   │   ├── tableau-de-bord.module.css
 │       │   │   │   └── tableau-de-bord.tsx
 │       │   │   ├── territoires-voisins
@@ -999,52 +1107,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   ├── use-accommodation-rate-epci.ts
-│       │   │   ├── use-actualize-simulation.ts
-│       │   │   ├── use-bassin-epcis.ts
-│       │   │   ├── use-chart-download.ts
-│       │   │   ├── use-clone-simulation.ts
-│       │   │   ├── use-consumers.ts
-│       │   │   ├── use-contact-form.ts
-│       │   │   ├── use-contiguous-epcis.ts
-│       │   │   ├── use-create-consumer.ts
-│       │   │   ├── use-create-simulation.ts
-│       │   │   ├── use-create-user.ts
-│       │   │   ├── use-data-pack-versions.ts
-│       │   │   ├── use-data-visualisation.ts
-│       │   │   ├── use-delete-consumer.ts
-│       │   │   ├── use-delete-simulation.ts
-│       │   │   ├── use-delete-user.ts
-│       │   │   ├── use-demographic-evolution-custom.ts
-│       │   │   ├── use-epci-groups.ts
-│       │   │   ├── use-epci-neighbors-access.ts
-│       │   │   ├── use-epci-neighbors.ts
-│       │   │   ├── use-epcis.ts
-│       │   │   ├── use-export-csv-users.ts
-│       │   │   ├── use-export-excel-simulation.ts
-│       │   │   ├── use-export-results-statistics.ts
-│       │   │   ├── use-export-simulations-statistics.ts
-│       │   │   ├── use-export-users-statistics.ts
-│       │   │   ├── use-feedback-status.ts
-│       │   │   ├── use-forgot-password.ts
-│       │   │   ├── use-geoapi-search.ts
-│       │   │   ├── use-get-consumer-key.ts
-│       │   │   ├── use-impersonation.ts
-│       │   │   ├── use-regenerate-consumer-key.ts
-│       │   │   ├── use-request-powerpoint.ts
-│       │   │   ├── use-reset-password.ts
-│       │   │   ├── use-scenario.ts
-│       │   │   ├── use-search-users.ts
-│       │   │   ├── use-simulation.ts
-│       │   │   ├── use-snooze-feedback.ts
-│       │   │   ├── use-statistics.ts
-│       │   │   ├── use-submit-feedback.ts
-│       │   │   ├── use-synchro-ds.ts
-│       │   │   ├── use-update-consumer.ts
-│       │   │   ├── use-update-simulation.ts
-│       │   │   ├── use-update-user-access.ts
-│       │   │   ├── use-update-user-type.ts
-│       │   │   └── use-users.ts
+│       │   │   └── use-*.ts  (53 files)
 │       │   ├── lib
 │       │   │   └── auth
 │       │   │       ├── client.ts
@@ -1069,6 +1132,7 @@
 │       │   │   └── user.ts
 │       │   ├── server-only
 │       │   │   ├── demographic-evolution
+│       │   │   │   ├── get-epcis-without-insee-projection.ts
 │       │   │   │   ├── get-omphale-evolution-by-epci.ts
 │       │   │   │   └── get-population-evolution-by-epci.ts
 │       │   │   ├── epcis
@@ -1130,8 +1194,10 @@
 │       │       │   ├── simulation.base.ts
 │       │       │   └── user.base.ts
 │       │       ├── index.ts
-│       │       └── rates
-│       │           └── accommodations-rates.ts
+│       │       ├── rates
+│       │       │   └── accommodations-rates.ts
+│       │       └── statistics
+│       │           └── template-statistics.ts
 │       ├── tsconfig.json
 │       └── tsup.config.ts
 ├── pnpm-lock.yaml
@@ -1139,4 +1205,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-328 directories, 813 files
+360 directories, 899 files
