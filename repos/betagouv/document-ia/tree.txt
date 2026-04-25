@@ -33,7 +33,7 @@
 │   │   └── post_compile.sh
 │   ├── bruno-api
 │   │   ├── Document IA
-│   │   │   ├── Albert
+│   │   │   ├── albert-api
 │   │   │   │   ├── OCR
 │   │   │   │   │   ├── Get Models.bru
 │   │   │   │   │   ├── Mistral OCR.bru
@@ -52,17 +52,18 @@
 │   │   │       │   │   ├── delete an api key.bru
 │   │   │       │   │   ├── folder.bru
 │   │   │       │   │   └── update api key status for organization.bru
-│   │   │       │   ├── create new organization.bru
-│   │   │       │   ├── delete an organization.bru
 │   │   │       │   ├── folder.bru
-│   │   │       │   ├── get organization details.bru
-│   │   │       │   ├── list all organizations.bru
-│   │   │       │   ├── web-hooks
-│   │   │       │   │   ├── create webhook.bru
-│   │   │       │   │   ├── delete a webhook.bru
-│   │   │       │   │   └── list organization webhooks.bru
+│   │   │       │   ├── organizations
+│   │   │       │   │   ├── create new organization.bru
+│   │   │       │   │   ├── delete an organization.bru
+│   │   │       │   │   ├── folder.bru
+│   │   │       │   │   ├── get organization details.bru
+│   │   │       │   │   └── list all organizations.bru
 │   │   │       │   └── webhooks
-│   │   │       │       └── folder.bru
+│   │   │       │       ├── create webhook.bru
+│   │   │       │       ├── delete a webhook.bru
+│   │   │       │       ├── folder.bru
+│   │   │       │       └── list organization webhooks.bru
 │   │   │       ├── folder.bru
 │   │   │       ├── secure
 │   │   │       │   ├── Execute Workflow Sync.bru
@@ -289,6 +290,7 @@
 │   │       │   ├── export_dataset.py
 │   │       │   ├── home.py
 │   │       │   ├── list_experiments.py
+│   │       │   ├── prompt_playground.py
 │   │       │   ├── retrieve_api_execution.py
 │   │       │   └── run_api_workflow.py
 │   │       ├── services
@@ -314,7 +316,9 @@
 │               ├── __init__.py
 │               ├── test_compare_number.py
 │               ├── test_compare_string_date.py
-│               └── test_levenshtein_distance.py
+│               ├── test_compare_token_set_equality.py
+│               ├── test_levenshtein_distance.py
+│               └── test_pydantic_helpers.py
 ├── document-ia-infra
 │   ├── README.md
 │   ├── poetry.lock
@@ -541,12 +545,13 @@
 │   └── tests
 │       ├── test_avis_imposition_description.py
 │       ├── test_avis_imposition_json_schema.py
+│       ├── test_base_document_type_schema.py
+│       ├── test_bulletin_salaire_postprocessing.py
 │       ├── test_fuzzy_date.py
 │       ├── test_supported_document_type.py
 │       └── utils
 │           ├── __init__.py
 │           ├── test_build_response_format.py
-│           ├── test_examples_model.py
 │           └── test_extract_fileds_info.py
 ├── document-ia-worker
 │   ├── .buildpacks
@@ -651,7 +656,8 @@
 │   │           │   │   └── llm_classify_document.py
 │   │           │   ├── llm_extract_document
 │   │           │   │   ├── __init__.py
-│   │           │   │   └── llm_extract_document.py
+│   │           │   │   ├── llm_extract_document.py
+│   │           │   │   └── settings.py
 │   │           │   ├── preprocess_file
 │   │           │   │   ├── __init__.py
 │   │           │   │   └── preprocess_file.py
@@ -670,6 +676,15 @@
 │       ├── conftest.py
 │       ├── fixtures
 │       │   ├── ocr_result_cni.json
+│       │   ├── prompts
+│       │   │   └── extraction
+│       │   │       ├── avis_imposition.txt
+│       │   │       ├── bulletin_salaire.txt
+│       │   │       ├── cni.txt
+│       │   │       ├── passeport.txt
+│       │   │       ├── permis_conduire.txt
+│       │   │       └── visale_certificate.txt
+│       │   ├── regenerate_extraction_prompt_fixtures.py
 │       │   └── test_download_file.pdf
 │       ├── integration
 │       │   ├── test_download_file_step_integration.py
@@ -696,4 +711,4 @@
 ├── pyrightconfig.json
 └── scripts
     └── init-s3-bucket.py
-182 directories, 516 files
+184 directories, 529 files
