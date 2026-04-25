@@ -133,6 +133,8 @@
 │   │   │   │                   │   │   │   ├── fish
 │   │   │   │                   │   │   │   │   ├── ControlResource.kt
 │   │   │   │                   │   │   │   │   ├── ControlUnit.kt
+│   │   │   │                   │   │   │   │   ├── FacadeTypeEnum.kt
+│   │   │   │                   │   │   │   │   ├── FishAuctionEntity.kt
 │   │   │   │                   │   │   │   │   ├── MissionAndActions.kt
 │   │   │   │                   │   │   │   │   ├── MissionFishEntity.kt
 │   │   │   │                   │   │   │   │   ├── MissionSource.kt
@@ -250,6 +252,8 @@
 │   │   │   │                   │   │   │   │   ├── IMissionCrewRepository.kt
 │   │   │   │                   │   │   │   │   ├── IMissionPassengerRepository.kt
 │   │   │   │                   │   │   │   │   └── IServiceRepository.kt
+│   │   │   │                   │   │   │   ├── fish
+│   │   │   │                   │   │   │   │   └── IFishAuctionRepository.kt
 │   │   │   │                   │   │   │   ├── generalInfo
 │   │   │   │                   │   │   │   │   └── IMissionGeneralInfoRepository.kt
 │   │   │   │                   │   │   │   ├── infraction
@@ -361,6 +365,10 @@
 │   │   │   │                   │   │   │   │   ├── FormatActionsForTimeline.kt
 │   │   │   │                   │   │   │   │   ├── GetInfoAboutAction.kt
 │   │   │   │                   │   │   │   │   └── MapStatusDurations.kt
+│   │   │   │                   │   │   │   ├── fish
+│   │   │   │                   │   │   │   │   ├── CreateOrUpdateFishAuction.kt
+│   │   │   │                   │   │   │   │   ├── DeleteFishAuction.kt
+│   │   │   │                   │   │   │   │   └── GetFishAuctions.kt
 │   │   │   │                   │   │   │   ├── generalInfo
 │   │   │   │                   │   │   │   │   ├── AddOrUpdateMissionGeneralInfo.kt
 │   │   │   │                   │   │   │   │   └── GetMissionGeneralInfoByMissionId.kt
@@ -455,6 +463,7 @@
 │   │   │   │                       │   │   ├── AgentRoleAdminController.kt
 │   │   │   │                       │   │   ├── ApiAdminController.kt
 │   │   │   │                       │   │   ├── ApiKeysAdminController.kt
+│   │   │   │                       │   │   ├── FishAuctionAdminController.kt
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
 │   │   │   │                       │   │   ├── UserAdminController.kt
@@ -469,7 +478,8 @@
 │   │   │   │                       │   │   │       ├── AdminPaginatedAuthenticationAuditOutput.kt
 │   │   │   │                       │   │   │       └── AdminPaginatedGeneralInfosOutput.kt
 │   │   │   │                       │   │   └── models
-│   │   │   │                       │   │       └── AdminApiKey.kt
+│   │   │   │                       │   │       ├── AdminApiKey.kt
+│   │   │   │                       │   │       └── AdminFishAuction.kt
 │   │   │   │                       │   ├── auth
 │   │   │   │                       │   │   ├── ApiAuthController.kt
 │   │   │   │                       │   │   └── adapters
@@ -514,6 +524,7 @@
 │   │   │   │                       │   │   │       ├── BaseMissionNavActionData.kt
 │   │   │   │                       │   │   │       ├── Control.kt
 │   │   │   │                       │   │   │       ├── Establishment.kt
+│   │   │   │                       │   │   │       ├── FishAuction.kt
 │   │   │   │                       │   │   │       ├── Infraction.kt
 │   │   │   │                       │   │   │       ├── Inquiry.kt
 │   │   │   │                       │   │   │       ├── Mission.kt
@@ -548,6 +559,7 @@
 │   │   │   │                       │   │   │   ├── AgentRestController.kt
 │   │   │   │                       │   │   │   ├── AgentRoleController.kt
 │   │   │   │                       │   │   │   ├── ControlUnitResourceRestController.kt
+│   │   │   │                       │   │   │   ├── FishAuctionController.kt
 │   │   │   │                       │   │   │   ├── GeneralInfoRestController.kt
 │   │   │   │                       │   │   │   ├── InquiryRestController.kt
 │   │   │   │                       │   │   │   ├── MissionExportController.kt
@@ -608,6 +620,8 @@
 │   │   │   │                       │   │   │   │   ├── AgentModel.kt
 │   │   │   │                       │   │   │   │   ├── AgentRoleModel.kt
 │   │   │   │                       │   │   │   │   └── MissionCrewModel.kt
+│   │   │   │                       │   │   │   ├── fish
+│   │   │   │                       │   │   │   │   └── FishAuctionModel.kt
 │   │   │   │                       │   │   │   ├── generalInfo
 │   │   │   │                       │   │   │   │   ├── InterMinisterialServiceModel.kt
 │   │   │   │                       │   │   │   │   └── MissionGeneralInfoModel.kt
@@ -645,6 +659,8 @@
 │   │   │   │                       │       │   │   │   ├── IDBMissionCrewRepository.kt
 │   │   │   │                       │       │   │   │   ├── IDBMissionPassengerRepository.kt
 │   │   │   │                       │       │   │   │   └── IDBServiceRepository.kt
+│   │   │   │                       │       │   │   ├── fish
+│   │   │   │                       │       │   │   │   └── IDBFishAuctionRepository.kt
 │   │   │   │                       │       │   │   ├── generalInfo
 │   │   │   │                       │       │   │   │   ├── IDBInterMinisterialServiceRepository.kt
 │   │   │   │                       │       │   │   │   └── IDBMissionGeneralInfoRepository.kt
@@ -667,6 +683,8 @@
 │   │   │   │                       │       │   │   ├── JPAMissionCrewRepository.kt
 │   │   │   │                       │       │   │   ├── JPAMissionPassengerRepository.kt
 │   │   │   │                       │       │   │   └── JPAServiceRepository.kt
+│   │   │   │                       │       │   ├── fish
+│   │   │   │                       │       │   │   └── JPAFishAuctionRepository.kt
 │   │   │   │                       │       │   ├── generalInfo
 │   │   │   │                       │       │   │   └── JPAMissionGeneralInfoRepository.kt
 │   │   │   │                       │       │   ├── sati
@@ -889,6 +907,7 @@
 │   │   │       │       ├── V1.2026.03.17.10.00__move_legacy_tables_to_archived_schema.sql
 │   │   │       │       ├── V1.2026.03.23.15.39__create_sati_table_and_correspondance.sql
 │   │   │       │       ├── V1.2026.03.23.15.42__alter_mission_action_fix_training_type.sql
+│   │   │       │       ├── V1.2026.04.22.10.00__create_facade_and_fish_auction_tables.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1052,6 +1071,8 @@
 │   │       │                   │   │   │   │   ├── FormatActionsForTimelineTests.kt
 │   │       │                   │   │   │   │   ├── GetInfoAboutActionTests.kt
 │   │       │                   │   │   │   │   └── MapStatusDurationsTests.kt
+│   │       │                   │   │   │   ├── fish
+│   │       │                   │   │   │   │   └── GetFishAuctionsTest.kt
 │   │       │                   │   │   │   ├── sati
 │   │       │                   │   │   │   │   ├── GetComputeSatiTest.kt
 │   │       │                   │   │   │   │   └── ProcessSatiTest.kt
@@ -1159,6 +1180,7 @@
 │   │       │                   │   │   │   ├── AgentRestControllerTest.kt
 │   │       │                   │   │   │   ├── AgentRoleControllerTest.kt
 │   │       │                   │   │   │   ├── ControlUnitResourceRestControllerTest.kt
+│   │       │                   │   │   │   ├── FishAuctionControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfoRestControllerTest.kt
 │   │       │                   │   │   │   ├── MissionRestControllerTest.kt
 │   │       │                   │   │   │   ├── NatInfRestControllerTest.kt
@@ -1205,6 +1227,8 @@
 │   │       │                   │   │       │   │   ├── JPAAgentRoleRepositoryTest.kt
 │   │       │                   │   │       │   │   ├── JPAMissionCrewRepositoryTest.kt
 │   │       │                   │   │       │   │   └── JPAServiceRepositoryTest.kt
+│   │       │                   │   │       │   ├── fish
+│   │       │                   │   │       │   │   └── JPAFishAuctionRepositoryTest.kt
 │   │       │                   │   │       │   ├── generalInfo
 │   │       │                   │   │       │   │   └── JPAMissionGeneralInfoRepositoryTest.kt
 │   │       │                   │   │       │   └── passenger
@@ -1507,6 +1531,7 @@
 │   │   │   │   │   │   │   ├── admin-agent-role-item.tsx
 │   │   │   │   │   │   │   ├── admin-apikey-item.tsx
 │   │   │   │   │   │   │   ├── admin-basic-item-generic.tsx
+│   │   │   │   │   │   │   ├── admin-fish-auction-item.tsx
 │   │   │   │   │   │   │   ├── admin-general-infos-item.tsx
 │   │   │   │   │   │   │   ├── admin-service-item.tsx
 │   │   │   │   │   │   │   ├── admin-user-apikey-logging-item.tsx
@@ -1516,6 +1541,7 @@
 │   │   │   │   │   │       ├── admin-agent-form.tsx
 │   │   │   │   │   │       ├── admin-agent-role.tsx
 │   │   │   │   │   │       ├── admin-apikey-form.tsx
+│   │   │   │   │   │       ├── admin-fish-auction-form.tsx
 │   │   │   │   │   │       ├── admin-general-infos-form.tsx
 │   │   │   │   │   │       ├── admin-service-form.tsx
 │   │   │   │   │   │       ├── admin-user-form.tsx
@@ -1528,6 +1554,7 @@
 │   │   │   │   │   │   ├── use-admin-create-update-agents-role-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-agents-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-apikey-service.tsx
+│   │   │   │   │   │   ├── use-admin-create-update-fish-auction-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-services-service.tsx
 │   │   │   │   │   │   ├── use-admin-create-update-user-service.tsx
 │   │   │   │   │   │   ├── use-admin-delete-agents-service.tsx
@@ -1536,7 +1563,9 @@
 │   │   │   │   │   │   ├── use-admin-delete-services-service.tsx
 │   │   │   │   │   │   ├── use-admin-disable-agent-service.tsx
 │   │   │   │   │   │   ├── use-admin-disable-apikey-service.tsx
+│   │   │   │   │   │   ├── use-admin-disable-fish-auction.tsx
 │   │   │   │   │   │   ├── use-admin-disable-user.tsx
+│   │   │   │   │   │   ├── use-admin-fish-auctions-service.tsx
 │   │   │   │   │   │   ├── use-admin-general-infos.tsx
 │   │   │   │   │   │   ├── use-admin-migrate-agents-service.tsx
 │   │   │   │   │   │   ├── use-admin-rorate-apikey-service.tsx
@@ -1550,6 +1579,7 @@
 │   │   │   │   │       ├── admin-agent-types.ts
 │   │   │   │   │       ├── admin-apikey-logging-types.ts
 │   │   │   │   │       ├── admin-apikey-types.ts
+│   │   │   │   │       ├── admin-fish-auction-types.ts
 │   │   │   │   │       ├── admin-general-infos-types.ts
 │   │   │   │   │       ├── admin-services-type.ts
 │   │   │   │   │       ├── admin-user-auth-logging-types.ts
@@ -1761,6 +1791,7 @@
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── use-create-action.test.tsx
 │   │   │   │   │   │   │   ├── use-delete-action.test.tsx
+│   │   │   │   │   │   │   ├── use-etablishments-service.test.tsx
 │   │   │   │   │   │   │   ├── use-mission-export.test.tsx
 │   │   │   │   │   │   │   ├── use-mission.test.tsx
 │   │   │   │   │   │   │   ├── use-missions.test.tsx
@@ -2291,4 +2322,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-456 directories, 1871 files
+463 directories, 1895 files
