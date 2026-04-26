@@ -1,20 +1,23 @@
-## Changelog : publicodes-aides-velo (30 derniers jours, au 20 avril 2026)
+## Changelog : publicodes-aides-velo (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des corrections et des ajouts concernant les aides vélo disponibles dans différentes collectivités françaises. Des liens cassés ont été corrigés, des informations sur les dates de fin d'aides ont été mises à jour, et de nouvelles collectivités ont été ajoutées au modèle.  Des améliorations techniques ont également été apportées, notamment le passage à Prettier pour le formatage du code.
+Ce mois-ci, les mises à jour se concentrent sur la correction de données d'aides (dates de fin, liens, communes) et l'ajout de nouvelles aides locales. Des améliorations techniques ont également été apportées, notamment le remplacement de l'outil de formatage de code par Prettier et la mise à jour de certaines dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles aides pour les collectivités suivantes : CC Vie et Boulogne, CCVO.
-- Mise à jour des informations concernant les aides de la ville d'Oullins-Pierre-Bénite, de Saint-Alban-Leysse et du Dunkerque.
-- Correction de liens cassés pour certaines aides (au 13 avril 2026).
-- Correction des dates de fin d'aides dépassées.
-- Suppression d'un doublon pour l'aide de la CC Loue-Lison.
-- Amélioration du tri des aides dans les scripts par type de collectivité et date d'obsolescence.
+- Mise à jour des aides pour le Luxembourg et Monaco.
+- Correction de la question relative au "revenu de référence" pour une meilleure clarté.
+- Mise à jour des aides pour les communes de Gap, Saint-Alban-Leysse, Dunkerque et Oullins-Pierre-Bénite.
+- Ajout de nouvelles aides pour les communautés de communes (CC) Vie et Boulogne, CCVO.
+- Correction d'un doublon pour l'aide "cc loue-lison".
+- Correction de liens cassés et de dates de fin d'aides dépassées.
 
 ### Évolutions techniques
-- Remplacement de l'outil de formatage de code Dprint par Prettier.
-- Mise à jour de la dépendance `decoupage-administratif` vers la version 6.0.0.
-- Restauration de la logique de génération du fichier `communes.json`.
+- Remplacement de l'outil de formatage de code Dprint par Prettier pour une meilleure cohérence du code. [#492b479](https://github.com/betagouv/publicodes-aides-velo/commit/492b479)
+- Mise à jour de la dépendance `@etalab/decoupage-administratif` vers la version 6. [#436a823](https://github.com/betagouv/publicodes-aides-velo/commit/436a823)
+- Restauration de la logique de génération du fichier `communes.json`. [#38060ea](https://github.com/betagouv/publicodes-aides-velo/commit/38060ea)
+- Amélioration du script de gestion des aides : tri par type de collectivité et date des aides obsolètes. [#acfae35](https://github.com/betagouv/publicodes-aides-velo/commit/acfae35)
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Correction du workflow de publication (release). [#94837a6](https://github.com/betagouv/publicodes-aides-velo/commit/94837a6)
+- Application du formatage Prettier aux fichiers Publicodes. [#6d5cfc4](https://github.com/betagouv/publicodes-aides-velo/commit/6d5cfc4)
+- Ajout d'un nouveau workflow pour les pull requests de mise à jour des packages. [#7db9959](https://github.com/betagouv/publicodes-aides-velo/commit/7db9959)
