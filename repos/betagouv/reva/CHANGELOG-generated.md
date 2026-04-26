@@ -1,47 +1,46 @@
-## Changelog : reva (30 derniers jours, au 2026-04-21)
+## Changelog : reva (30 derniers jours, au 2026-04-24)
 
 ### Résumé
-Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des candidatures FranceConnect, la gestion des jurys et la correction de bugs. Des optimisations de performance ont également été apportées, ainsi que des mises à jour de sécurité et de dépendances.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment dans les formulaires et la gestion des candidatures, avec un accent particulier sur l'intégration de FranceConnect. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des évolutions techniques pour faciliter la maintenance et l'évolutivité du projet.
 
 ### Évolutions fonctionnelles
-- **FranceConnect :**
-    - Amélioration de la gestion des erreurs et des informations lors de la connexion via FranceConnect, notamment en cas de données manquantes ou incohérentes.
-    - Possibilité de modifier la ville et le département de naissance pour les candidats connectés via FranceConnect (si le pays n'est pas la France).
-    - Ajout d'une fonctionnalité de nettoyage des données FranceConnect en sandbox pour l'administration.
-    - Enregistrement de la date de dernière connexion via FranceConnect.
-- **Gestion des jurys :**
-    - Refonte de l'interface de gestion des résultats de jury, avec affichage des blocs de compétences validés et non validés.
-    - Possibilité de sauvegarder les résultats du jury par blocs de compétences.
-    - Ajout d'une page dédiée à la gestion de la date de jury.
-    - Possibilité de révoquer une décision de jury.
-- **Administration :**
-    - Ajout d'une page pour gérer les informations générales des organismes certificateurs, incluant la possibilité de modifier le label.
-    - Amélioration de l'interface pour la gestion des fichiers de dématérialisation (DFF), avec ajout de la gestion du "complément d'expérience parcours Vise".
-- **VAE Collective :**
-    - Amélioration de la gestion des jetons de session pour éviter les erreurs liées à la taille des cookies.
-- **Candidatures :**
-    - Suppression des fonctionnalités liées à l'inscription manuelle et à la demande de mot de passe, privilégiant FranceConnect.
-    - Amélioration de l'affichage des informations de contact et de la civilité pour les candidats connectés via FranceConnect.
+- **FranceConnect :** Amélioration du flux d'abonnement AAP avec un avertissement concernant l'email et le SIRET. Correction d'un bug empêchant la planification d'une date de jury antérieure à la date d'envoi du dossier de validation.
+- **Gestion des candidatures :** Possibilité de modifier la ville et le département de naissance pour les candidats FranceConnect. Correction d'un bug lié à la sélection de villes non uniques dans le composant d'autocomplétion d'adresse.
+- **Interface Admin :**
+    - Affichage par défaut des accordéons pour les autorités de certification si le résultat de la faisabilité n'est ni admissible ni rejeté.
+    - Alignement de la carte blanche admin avec la largeur du conteneur DSFR.
+    - Alignement de la page d'informations générales du compte local avec les spécifications Figma.
+    - Affichage de l'autorité de certification sur la page d'informations générales du compte local.
+    - Alignement des champs de contact du compte local.
+    - Ajout d'une page de nettoyage des candidats FranceConnect en sandbox.
+    - Ajout d'une page pour gérer les décisions de jury par blocs.
+    - Amélioration de la page de signalement des problèmes de DV.
+    - Possibilité de limiter le nombre d'heures de formation à 100.
+    - Ajout d'une modale pour afficher les blocs inclus et non inclus dans la faisabilité.
+- **VAE Collective :** Correction d'un bug lié aux tokens stockés dans les cookies.
+- **Notifications :** Amélioration des messages d'erreur liés à FranceConnect.
+- **Formulaires :** Amélioration du wording des champs requis (genre).
+- **Expérience utilisateur :** Amélioration de la gestion des dates de décision de faisabilité (COMPLETE/INCOMPLETE).
 
 ### Évolutions techniques
 - **API :**
-    - Optimisation des requêtes GraphQL pour améliorer les performances, notamment lors de la récupération des expériences et des objectifs d'une candidature.
-    - Ajout d'index sur les tables de la base de données pour accélérer les requêtes.
-    - Suppression de code obsolète.
-    - Mise à jour des dépendances (Fastify, Strapi, Brevo).
-    - Amélioration de la gestion des erreurs et des logs.
-- **Infrastructure :**
-    - Mise à jour des dépendances des différents packages.
-    - Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- **Tests :**
-    - Ajout de tests unitaires et d'intégration pour valider les nouvelles fonctionnalités et les corrections de bugs.
-    - Amélioration de la couverture de tests.
-    - Migration de certains tests vers Playwright.
+    - Suppression de la logique d'attribution du rôle candidat lors du callback FranceConnect.
+    - Refactorisation de la gestion des erreurs FranceConnect et ajout de logs pour faciliter le débogage.
+    - Ajout d'index sur les tables de la base de données pour optimiser les requêtes.
+    - Suppression de la fonctionnalité de connexion par lien magique.
+    - Suppression des fonctionnalités liées à l'inscription candidat.
+    - Ajout de la possibilité de révoquer une décision de jury.
+    - Amélioration de la gestion des données DFF.
+    - Ajout de la gestion des prénoms dans l'API.
+- **Infrastructure :** Mise à jour de plusieurs dépendances (Fastify, Axios, Lodash, etc.).
+- **Tests :** Ajout et mise à jour de nombreux tests unitaires et d'intégration.
+- **Refactoring :** Réorganisation des dossiers de routes dans l'admin.
+- **Sécurité :** Correction de vulnérabilités potentielles liées à la vérification des JWT et à l'utilisation de FranceConnect.
+- **Suppression de code obsolète :** Suppression de plusieurs fonctionnalités et dépendances obsolètes.
 
 ### Autres changements
-- Documentation mise à jour.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Suppression de fonctionnalités obsolètes.
-- Amélioration de la sécurité (gestion des jetons, validation des données).
-- Uniformisation du style de code.
-- Suppression de certains feature flags.
+- **Documentation :** Mise à jour de la documentation.
+- **Configuration :** Mise à jour de la configuration de l'environnement de développement.
+- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+- **Corrections de style :** Correction de problèmes de style et de formatage du code.
+- **Mise à jour des versions des paquets :** De nombreuses mises à jour de dépendances ont été effectuées pour corriger des vulnérabilités et améliorer la stabilité.
