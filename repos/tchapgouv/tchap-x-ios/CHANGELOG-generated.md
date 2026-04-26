@@ -1,20 +1,22 @@
-## Changelog : tchap-x-ios (30 derniers jours, au 9 avril 2026)
+## Changelog : tchap-x-ios (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations de sécurité en désactivant les salons privés non chiffrés et en masquant l'option de connexion par QR code sur l'écran d'accueil. Des corrections et des ajustements ont été effectués pour améliorer la stabilité et la compatibilité de l'application, notamment concernant la gestion des instances Matrix et la réouverture de l'écran de récupération.
+Cette mise à jour apporte des améliorations significatives à la gestion des espaces et des salons, notamment la possibilité de créer des salons accessibles par lien. Des corrections et des améliorations techniques ont également été apportées pour stabiliser l'application et faciliter le développement futur.
 
 ### Évolutions fonctionnelles
-- Désactivation des salons privés non chiffrés pour renforcer la sécurité des conversations. [#318](https://github.com/tchapgouv/tchap-x-ios/pull/318)
-- Masquage du bouton de connexion par QR code sur l'écran d'accueil pour simplifier l'expérience utilisateur et potentiellement améliorer la sécurité. [#316](https://github.com/tchapgouv/tchap-x-ios/pull/316)
-- Autorisation de la connexion à toutes les instances Matrix, offrant une plus grande flexibilité aux utilisateurs. [#311](https://github.com/tchapgouv/tchap-x-ios/pull/311)
-- L'écran de récupération s'ouvre maintenant avant l'écran de confirmation d'identité, améliorant le flux de récupération de compte. [#324](https://github.com/tchapgouv/tchap-x-ios/pull/324)
+- **Accès par lien aux salons :** Implémentation de la fonctionnalité permettant de générer un lien d'accès pour un salon, facilitant ainsi l'invitation de participants. [#309](https://github.com/tchapgouv/tchap-x-ios/pull/309)
+- **Gestion des espaces :** Amélioration de l'affichage et de la gestion des espaces, avec une action par défaut de filtrage des conversations. [#329](https://github.com/tchapgouv/tchap-x-ios/pull/329)
+- **Création de salon :** Modification de l'écran de création de salon pour mieux s'intégrer avec la gestion des espaces, notamment en masquant la sélection d'espace. [#323](https://github.com/tchapgouv/tchap-x-ios/pull/323)
+- **Désactivation de l'épinglage des données géographiques :** Désactivation temporaire de l'épinglage pour les données géographiques. [#331](https://github.com/tchapgouv/tchap-x-ios/pull/331)
+- **Écran de récupération :** L'écran de récupération s'ouvre maintenant avant l'écran de confirmation d'identité. [#8959144c7](https://github.com/tchapgouv/tchap-x-ios/commit/8959144c7)
 
 ### Évolutions techniques
-- Mise à jour du SDK Matrix Rust pour bénéficier des dernières corrections et améliorations. [#322](https://github.com/tchapgouv/tchap-x-ios/pull/322), [#4d3d9b903](https://github.com/tchapgouv/tchap-x-ios/commit/4d3d9b903)
-- Refactorisation du code pour supprimer du code BWI (Business Workflow Integration) inutilisé, améliorant la maintenabilité. [#304](https://github.com/tchapgouv/tchap-x-ios/pull/304)
-- Mise en place d'un système de build basé sur les dépendances GitHub pour une meilleure gestion des dépendances. [#314](https://github.com/tchapgouv/tchap-x-ios/pull/314)
-- Désactivation de Sentry pour des raisons de configuration et de conformité. [#308](https://github.com/tchapgouv/tchap-x-ios/pull/308), [#f19b077d8](https://github.com/tchapgouv/tchap-x-ios/commit/f19b077d8)
+- **Mise à jour du SDK matrix-rust-components-swift :** Mise à jour vers la version `v0.9.10` du SDK. [#324](https://github.com/tchapgouv/tchap-x-ios/pull/324)
+- **Correction temporaire de visibilité du SDK :** Correction temporaire de la visibilité du SDK. [#322](https://github.com/tchapgouv/tchap-x-ios/pull/322)
+- **Formatage du code :** Formatage du code source avec `swiftformat v0.59.1` pour améliorer la lisibilité et la cohérence. [#ffddb50fc](https://github.com/tchapgouv/tchap-x-ios/commit/ffddb50fc)
+- **Correction des tests unitaires :** Correction de problèmes de compilation et d'import dans les tests unitaires. [#b33d332f0](https://github.com/tchapgouv/tchap-x-ios/commit/b33d332f0)
 
 ### Autres changements
-- Modification du libellé du bouton "Sign in manually" en "Sign in" pour une meilleure clarté. [#315](https://github.com/tchapgouv/tchap-x-ios/pull/315)
-- Incrémentation de la version de l'application à v0.9.10. [#322](https://github.com/tchapgouv/tchap-x-ios/commit/637c99daf)
+- **Terminologie Tchap :** Utilisation de la terminologie spécifique à Tchap dans l'application. [#3b59175ca](https://github.com/tchapgouv/tchap-x-ios/commit/3b59175ca)
+- **Suppression de fichiers inutiles :** Suppression de fichiers hérités de ElementX. [#a278eff34](https://github.com/tchapgouv/tchap-x-ios/commit/a278eff34)
+- **Génération de chaînes de caractères :** Ajout de chaînes de caractères générées. [#9f982bc8d](https://github.com/tchapgouv/tchap-x-ios/commit/9f982bc8d)

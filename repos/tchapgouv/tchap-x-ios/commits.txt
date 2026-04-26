@@ -1,4 +1,27 @@
+2026-04-24T09:31:36+02:00 - 6113451cf - Anaïs P. : Merge pull request #331 from tchapgouv/327-desactivate-pinning-geodata
+2026-04-23T16:41:53+02:00 - 0ff2abd8f - Anaïs P. : Merge pull request #323 from tchapgouv/sianay/312-taxonomie
+2026-04-23T16:08:13+02:00 - 3b59175ca - Anaïs Payet : Tchap: use specific tchap wording
+2026-04-23T13:25:32+02:00 - 7d9f9d316 - Anaïs P. : Merge pull request #329 from tchapgouv/144-espaces-modifications-d-affichage
+2026-04-23T11:50:56+02:00 - 6b12e6aec - Anaïs Payet : Tchap: Space default action is now conversation filtering
+2026-04-23T11:00:11+02:00 - f7ec2f456 - Anaïs Payet : Tchap: temporary disable pinning for geo data
+2026-04-21T16:53:10+02:00 - c54c2400d - Anaïs Payet : Tchap: Changes in CreateRoomScreen for space
+2026-04-21T16:39:10+02:00 - 81c2b3bf1 - Anaïs Payet : Tchap: Hide space selection in create room
+2026-04-21T15:33:44+02:00 - 8e3caa9c1 - Anaïs P. : Merge pull request #309 from tchapgouv/139-acces-par-lien-a-un-salon
+2026-04-21T15:31:41+02:00 - 1d6eb2f5d - Anaïs P. : Merge pull request #325 from tchapgouv/sianay/try-fix-ci
+2026-04-08T11:43:51+02:00 - 9f982bc8d - Anaïs Payet : Add generated strings
+2026-04-08T10:54:22+02:00 - cb3581acf - Nicolas Buquet : Only disable toggle button if toggling link access is not allowed.
+2026-04-08T10:54:06+02:00 - 6fb378a28 - Nicolas Buquet : Implement Room Access Via Link in Room Details View
+2026-04-08T10:52:20+02:00 - 2cfbe947e - Nicolas Buquet : Mask Access via Link in Room Creation view
+2026-04-08T10:52:03+02:00 - e71043d8e - Nicolas Buquet : Create room with access by link enabled
+2026-04-08T10:52:03+02:00 - 282e06ee0 - Nicolas Buquet : Introduce Access by Link in Room Detail
+2026-04-08T10:52:01+02:00 - a278eff34 - Nicolas Buquet : Remove useless file removed from ElementX
+2026-04-08T10:51:59+02:00 - 4eb28e5ad - Nicolas Buquet : Implement access by link UI on create Room view
 2026-04-07T16:24:31+02:00 - 8959144c7 - Anaïs P. : Tchap: open RecoveryScreen first before IdentityConfirmation
+2026-04-03T19:59:55+02:00 - b33d332f0 - Anaïs Payet : Fix UnitTests compilation
+2026-04-03T19:59:02+02:00 - 0e6895d01 - Anaïs Payet : Fix target and import for unit tests
+2026-04-03T15:16:35+02:00 - fa4d2bbda - Anaïs Payet : Fix typo in test
+2026-04-02T17:20:51+02:00 - ffddb50fc - Anaïs Payet : Format TchapX code using swiftformat v0.59.1
+2026-04-02T17:20:41+02:00 - ce4b86d6d - Anaïs Payet : overwrite swiftformat version for CI
 2026-04-02T15:49:58+02:00 - 187c7b7b9 - Anaïs P. : Merge pull request #324 from tchapgouv/sianay/v0.9.10
 2026-04-02T14:56:04+02:00 - 637c99daf - Anaïs Payet : tchap: increment version
 2026-03-31T10:32:38+02:00 - 812e42843 - Anaïs P. : Merge pull request #322 from tchapgouv/sianay/rebase-sdk-temp-fix-visibility
@@ -51,45 +74,45 @@
 2026-02-25T17:35:20+01:00 - aa2f9e849 - Nicolas Buquet : Merge pull request #269 from tchapgouv/207-pop-up-de-bienvenue
 2026-02-25T17:32:03+01:00 - c5666fc06 - Nicolas Buquet : Optimize maps content loading.
 2026-02-25T17:26:57+01:00 - 894ce6dbf - Nicolas Buquet : Update certificate pinning
-2026-02-25T10:00:24Z - 61c3262c3 - manuroe : Change Signposter 'Homeserver' performance tag to 'homeserver' (#5128)
 2026-02-25T10:16:20+01:00 - 3bf0e2795 - Nicolas Buquet : Merge pull request #274 from tchapgouv/273-reactiver-la-saisie-sur-l-ecran-d-email-apres-echec-ou-annulation-de-l-oidc
+2026-02-25T10:00:24Z - 61c3262c3 - manuroe : Change Signposter 'Homeserver' performance tag to 'homeserver' (#5128)
 2026-02-25T09:35:16+01:00 - 9f20c03d9 - Anaïs Payet : Update SDKGeneratedMock for createRoom
 2026-02-25T09:34:44+01:00 - 0aa0f39d3 - Anaïs Payet : Replace isFederated parameter with isRoomFederated from CreateRoomParameters
 2026-02-25T09:07:45+02:00 - 69e3f8bc9 - Stefan Ceriu : Simplify LinkNewDeviceScreen preview test setup and fix preview and accessibility test reliability.
 2026-02-24T20:22:14+01:00 - a0221abf4 - Nicolas Buquet : Use defined "Invite by email" warning in invite users list
-2026-02-24T20:22:13+01:00 - 5d9e39a8b - Nicolas Buquet : Fix update to original Element code for `invite(userID)`
 2026-02-24T20:22:13+01:00 - e3015fbbe - Nicolas Buquet : Fix auto-capitalization in invite users screens
-2026-02-24T20:22:12+01:00 - 1751d3fa1 - Nicolas Buquet : Call Rust `createRoom` with Tchap parameters
-2026-02-24T20:22:12+01:00 - 4333008e4 - Nicolas Buquet : Fix badges horizontal offset in users list
+2026-02-24T20:22:13+01:00 - 5d9e39a8b - Nicolas Buquet : Fix update to original Element code for `invite(userID)`
 2026-02-24T20:22:12+01:00 - 6cb23ee1e - Nicolas Buquet : Add "Tchap Invite by email" badge
+2026-02-24T20:22:12+01:00 - 4333008e4 - Nicolas Buquet : Fix badges horizontal offset in users list
+2026-02-24T20:22:12+01:00 - 1751d3fa1 - Nicolas Buquet : Call Rust `createRoom` with Tchap parameters
 2026-02-24T20:22:11+01:00 - c1a30d973 - Nicolas Buquet : Add Strings for Invite by email
 2026-02-24T20:22:11+01:00 - 81f320a92 - Nicolas Buquet : Introduce and use `TchapUserType` (agent or external, invited by email or not)
 2026-02-24T17:48:20+01:00 - 654087736 - Nicolas Buquet : Merge pull request #272 from tchapgouv/271-activer-le-partage-de-fichier
 2026-02-24T17:45:17+01:00 - 2c0c2206d - Nicolas Buquet : Reset `DecideHomeServerScreenCoordinator` interactive state after failure or cancelation
-2026-02-24T16:29:30Z - 11f9162e0 - Doug : Update the SDK. (#5141)
 2026-02-24T16:41:00+01:00 - cac1cb4af - Nicolas Buquet : Activate document sharing with the app.
+2026-02-24T16:29:30Z - 11f9162e0 - Doug : Update the SDK. (#5141)
 2026-02-24T13:30:07+01:00 - c976378d3 - Anaïs Payet : Fix rebase compilation tchapAppLogo
-2026-02-24T12:20:01Z - e58c5801f - Copilot : Finish migration of UnitTests target from XCTestCase to Swift Testing (#5129)
 2026-02-24T13:08:38+01:00 - c0edf17f3 - Anaïs Payet : Lint - fix comment indent
-2026-02-24T13:08:37+01:00 - 87cd44c13 - Anaïs Payet : Add Tchap comment
 2026-02-24T13:08:37+01:00 - ace799071 - Anaïs Payet : Show TchapWelcomeScreen before NotificationPermissionScreen
-2026-02-24T13:08:37+01:00 - 8d23bc33f - Anaïs Payet : Remove gradient background on WelcomeScreen and NotificationPermissionsScreen
 2026-02-24T13:08:37+01:00 - 9aa292b7a - Nicolas Buquet : Customize Welcome screen content
-2026-02-24T13:08:36+01:00 - 04f655df5 - Nicolas Buquet : Update Routing State Machine to handle Tchap Welcome screen
+2026-02-24T13:08:37+01:00 - 8d23bc33f - Anaïs Payet : Remove gradient background on WelcomeScreen and NotificationPermissionsScreen
+2026-02-24T13:08:37+01:00 - 87cd44c13 - Anaïs Payet : Add Tchap comment
 2026-02-24T13:08:36+01:00 - f3fd78b4c - Nicolas Buquet : Add Tchap welcome flag
 2026-02-24T13:08:36+01:00 - c57002af6 - Nicolas Buquet : Duplicate Notification permission screen as Tchap welcome screen
+2026-02-24T13:08:36+01:00 - 04f655df5 - Nicolas Buquet : Update Routing State Machine to handle Tchap Welcome screen
+2026-02-24T12:20:01Z - e58c5801f - Copilot : Finish migration of UnitTests target from XCTestCase to Swift Testing (#5129)
 2026-02-24T09:33:36Z - 62f193eda - ElementRobot : Bump the calendar version ready for the next release (#5138)
-2026-02-23T18:44:32+01:00 - 6a297e536 - Mauro Romito : update template tests
 2026-02-23T18:44:32+01:00 - 7a5591cf8 - Mauro Romito : preview tests fully migrated to swift testing
+2026-02-23T18:44:32+01:00 - 6a297e536 - Mauro Romito : update template tests
 2026-02-23T14:24:19+01:00 - 6f1720da8 - Mauro : `waitConfirmation` implementation (#5130)
 2026-02-23T10:01:41+01:00 - 546a71df0 - ElementRobot : Translations update
 2026-02-20T18:00:04Z - dca0c5166 - Doug : Add an `AGENTS.md` file to the project. (#5125)
 2026-02-20T17:21:35Z - e44188024 - Mauro : Improved Defer Fulfillment (#5127)
 2026-02-19T22:40:31+01:00 - d6eccd3a6 - Mauro Romito : pr suggestions
 2026-02-19T22:40:31+01:00 - 43fa220b4 - Mauro Romito : updated preview tests
-2026-02-19T22:40:31+01:00 - 04dd0c005 - Mauro Romito : removed unused import and fixed tests for swift testing
 2026-02-19T22:40:31+01:00 - 3dfcb6912 - Mauro Romito : improved the code so that we can use the AudioPlayerState directly to check the playback speed and added localization
 2026-02-19T22:40:31+01:00 - 285f8b783 - Florian : Voice message: variable play back speed (#5121)
+2026-02-19T22:40:31+01:00 - 04dd0c005 - Mauro Romito : removed unused import and fixed tests for swift testing
 2026-02-19T16:20:47+01:00 - 7982aef85 - Mauro : Swift Testing for Unit Tests PART 1 (#5119)
 2026-02-19T09:13:42Z - fc03e0569 - Stefan Ceriu : Replace ruby/fastlane tools with swift variants. (#5105)
 2026-02-18T16:11:26+01:00 - f808dc10a - Nicolas Buquet : Merge pull request #268 from tchapgouv/267-ui-arrondir-le-bouton-nouveau-chat
@@ -101,16 +124,16 @@
 2026-02-17T16:52:48+01:00 - 651885cbc - Nicolas Buquet : Merge pull request #264 from tchapgouv/261-build-ameliorer-la-ci
 2026-02-17T11:57:58+01:00 - 7118033d6 - Anaïs P. : Merge pull request #265 from tchapgouv/sianay/259-fix-logo
 2026-02-16T14:04:04+01:00 - e8a6af195 - Mauro : Swift Testing for Compound (#5110)
-2026-02-16T10:19:12Z - 26bfa6ed7 - Mauro : Compound - Swift 6.2 and Main actor isolation (#5109)
 2026-02-16T12:11:25+02:00 - b4eedfef5 - Stefan Ceriu : Fix the `upload_dsyms_to_sentry` lane after plugin update.
 2026-02-16T10:45:42+01:00 - d25a5c825 - Mauro Romito : make .invited the default history visibility of a dm
 2026-02-16T10:45:27+01:00 - acc08a3c8 - ElementRobot : Translations update
-2026-02-13T16:36:45Z - 9207f004b - Doug : Define the notification sound name in AppSettings. (#5106)
+2026-02-16T10:19:12Z - 26bfa6ed7 - Mauro : Compound - Swift 6.2 and Main actor isolation (#5109)
 2026-02-13T18:00:23+02:00 - 8f9d507e2 - Stefan Ceriu : Update the RustSDK and adopt the new tracing configuration that allows maximum size and age limits on all logs.
-2026-02-13T15:58:45Z - 2ee095554 - Doug : Update the Gemfile.lock with Ruby 4.0 (#5101)
 2026-02-13T16:45:58+01:00 - 0e40cc700 - Mauro : Fix A11y tests (#5104)
-2026-02-13T16:45:39+01:00 - b11438e38 - Mauro Romito : fix auth tests
 2026-02-13T16:45:39+01:00 - b885282b6 - Mauro Romito : fix UI tests not related to auth
+2026-02-13T16:45:39+01:00 - b11438e38 - Mauro Romito : fix auth tests
+2026-02-13T16:36:45Z - 9207f004b - Doug : Define the notification sound name in AppSettings. (#5106)
+2026-02-13T15:58:45Z - 2ee095554 - Doug : Update the Gemfile.lock with Ruby 4.0 (#5101)
 2026-02-12T18:58:28+02:00 - e288be686 - Stefan Ceriu : Fix integration tests room header discovery
 2026-02-12T13:19:20Z - b34832f7f - Doug : Re-write the space flow state machine configuration and cover it more in UI tests. (#5098)
 2026-02-12T11:21:24Z - 92a5fb395 - Doug : Lock the Link New Device flow to portrait and improve Cancel/Try Again handling. (#5094)
@@ -121,7 +144,6 @@
 2026-02-11T09:18:29+02:00 - 992cec91d - renovate[bot] : Update dependency fastlane to v2.232.1
 2026-02-10T21:50:41+01:00 - 1918d558d - Anaïs P. : Put back app-logo element to avoid future confusion
 2026-02-10T21:49:27+01:00 - 33f496900 - Anaïs P. : Update and rename app-logo.pdf
-2026-02-10T10:08:45-08:00 - 4116ee8a5 - Element CI : Prepare next release
 2026-02-10T17:16:11Z - 071a1eeb5 - Doug : Remove the global UserIndicatorController.alertInfo, replacing it with local alertInfo usage. (#5087)
 2026-02-10T17:08:07+01:00 - b725d8be8 - Mauro Romito : make the FFs volatile and initialised to true by default
 2026-02-10T17:08:07+01:00 - 2cd58b93e - Mauro Romito : Enable spaces second iteration FFs
@@ -129,13 +151,14 @@
 2026-02-10T16:14:10+01:00 - a803d63c0 - Nicolas Buquet : Update TchapFeatureFlag settings
 2026-02-10T16:03:47+01:00 - fe3bc76c0 - Nicolas Buquet : Fix Swiftgen calls
 2026-02-10T15:17:31+01:00 - 8496cf7fc - Nicolas Buquet : Merge pull request #257 from tchapgouv/254-ui-rendre-les-boutons-dans-le-style-dsfr
-2026-02-10T14:45:35+01:00 - ce5cde9c0 - Anaïs P. : Merge pull request #260 from tchapgouv/sianay/fix-namefield-corner
-2026-02-10T13:44:04Z - 17cc41e6a - Doug : More Space tweaks. (#5086)
 2026-02-10T15:12:16+02:00 - 617fa2701 - Doug : Update the SDK. (#5081)
-2026-02-10T13:28:55+01:00 - 9ced1cff2 - Mauro Romito : always present the space selection even for pre selected spaces
+2026-02-10T14:45:35+01:00 - ce5cde9c0 - Anaïs P. : Merge pull request #260 from tchapgouv/sianay/fix-namefield-corner
 2026-02-10T14:20:53+02:00 - 591ce3975 - Stefan Ceriu : Add a rounded rect border around space avatars
-2026-02-10T12:17:16+02:00 - 20a84dd89 - Stefan Ceriu : Fix multiple server confirmation request crashes and show a modal indicator sooner
+2026-02-10T13:44:04Z - 17cc41e6a - Doug : More Space tweaks. (#5086)
+2026-02-10T13:28:55+01:00 - 9ced1cff2 - Mauro Romito : always present the space selection even for pre selected spaces
 2026-02-10T12:17:16+02:00 - 32ec97a86 - Stefan Ceriu : Make the PassthroughWindow work correctly on iOS 26
+2026-02-10T12:17:16+02:00 - 20a84dd89 - Stefan Ceriu : Fix multiple server confirmation request crashes and show a modal indicator sooner
+2026-02-10T10:08:45-08:00 - 4116ee8a5 - Element CI : Prepare next release
 2026-02-09T21:43:43+01:00 - f74a90da6 - Anais Payet : Fix corner radius on nameTextField
 2026-02-09T19:16:15+01:00 - 35800ed6d - ElementRobot : Translations update
 2026-02-09T18:22:41+01:00 - db3a6239e - Mauro Romito : renamed function to `resetRoomList`
@@ -143,9 +166,9 @@
 2026-02-09T18:22:41+01:00 - c9cd4cb1d - Mauro Romito : 1. Updated the space selection UI 2. Paginate spaces after room creation 3. Pre-selected space creation defaults to space members access.
 2026-02-09T16:33:30+01:00 - 20450f1a6 - Anaïs P. : Merge pull request #256 from tchapgouv/sianay/hide-translate-item-action
 2026-02-09T16:12:13+01:00 - 542d5c476 - Nicolas Buquet : Update TimelineItemMenuActionProvider.swift
+2026-02-09T15:35:18+02:00 - e23685be7 - Stefan Ceriu : Show the empty room list state when filtering by a space that has no children.
 2026-02-09T15:07:50Z - 14845d562 - Doug : Automatically dismiss `UserDetailsEditScreen` when saving changes. (#5073)
 2026-02-09T15:05:45+01:00 - c908be772 - Anais Payet : Hide translate item action
-2026-02-09T15:35:18+02:00 - e23685be7 - Stefan Ceriu : Show the empty room list state when filtering by a space that has no children.
 2026-02-09T14:22:27+02:00 - 2dfda9891 - Hugh Nimmo-Smith : Treat NotFound error as expired in Sign in with QR/Link new device
 2026-02-09T11:54:41Z - 4b4b060bf - Doug : Space tweaks. (#5068)
 2026-02-09T11:04:31+02:00 - 7c96ebfca - Stefan Ceriu : Fix a retain cycle in the `SecureBackupController` `remoteBackupStateTask`
@@ -163,23 +186,23 @@
 2026-02-03T16:08:42+01:00 - 340e96287 - Nicolas Buquet : Remove Liquid glass shared background from Home "new room" button
 2026-02-03T15:57:42+01:00 - 6f6a2cda9 - Nicolas Buquet : Fix mocks
 2026-02-03T15:34:54+01:00 - 45b625e7f - Nicolas Buquet : Update binding without needing powerLevels
-2026-02-03T13:10:49Z - 65fb54f1f - Doug : Fix the bug report size check and a bad swiftlint command. (#5045)
-2026-02-03T13:54:25+01:00 - eee5d9586 - Nicolas Buquet : Propagate room properties to ThreadTimeline to display room badges in header
 2026-02-03T14:22:15+02:00 - b2fefd5a7 - Stefan Ceriu : Prevent crashes when tapping multiple space children in the spaces tab
-2026-02-03T12:12:49Z - a7e750278 - Doug : Add a stale bot for X-Needs-Info issues. (#5036)
+2026-02-03T13:54:25+01:00 - eee5d9586 - Nicolas Buquet : Propagate room properties to ThreadTimeline to display room badges in header
+2026-02-03T13:10:49Z - 65fb54f1f - Doug : Fix the bug report size check and a bad swiftlint command. (#5045)
 2026-02-03T13:06:42+02:00 - 08546d7ad - Stefan Ceriu : Fix #4853 - Unable to open rooms because of missing bug reporting completion handling.
+2026-02-03T12:12:49Z - a7e750278 - Doug : Add a stale bot for X-Needs-Info issues. (#5036)
 2026-02-03T11:04:32Z - 3e43ba42d - Doug : Fix notification delivery after powering on a device. (#5035)
 2026-02-02T17:43:03+02:00 - 35daa017b - Stefan Ceriu : Fix call service completion handler calls. (#5026)
-2026-02-02T10:37:21+02:00 - 37ee5c9c7 - Stefan Ceriu : Fix a couple of warnings
 2026-02-02T10:37:21+02:00 - c18b4b4f7 - ElementRobot : Translations update
+2026-02-02T10:37:21+02:00 - 37ee5c9c7 - Stefan Ceriu : Fix a couple of warnings
 2026-01-30T17:33:24+01:00 - deb6e9b28 - Mauro Romito : ui tests updated
 2026-01-30T17:33:24+01:00 - 20657de09 - Mauro Romito : Updated compound icons to match ios 26 designs
 2026-01-30T17:17:49+02:00 - e48fb5270 - Stefan Ceriu : Add a search bar to the space filters screen
-2026-01-30T13:11:10Z - 955ec0c8a - Skye Elliot : Display an icon in the room header for rooms with shared history (#5016)
 2026-01-30T15:07:44+02:00 - 26cb30c61 - Stefan Ceriu : Allow redacting the collocutor's messages in DMs (again)
 2026-01-30T13:19:05+02:00 - a2a8527ff - Stefan Ceriu : Clean up the Signposter implementation and align on new metrics
 2026-01-30T13:19:05+02:00 - 8b768f74f - Stefan Ceriu : Align with android on sentry settings.
 2026-01-30T13:19:05+02:00 - 5c609566a - Stefan Ceriu : Bump the SentrySDK to v9.2.0
+2026-01-30T13:11:10Z - 955ec0c8a - Skye Elliot : Display an icon in the room header for rooms with shared history (#5016)
 2026-01-30T10:37:23Z - 1c738c445 - Doug : Fix a bug where the app wouldn't retry when the server rate-limits its requests. (#5022)
 2026-01-30T10:26:36Z - 7fbb0bb86 - Doug : Tidy-up FormattedBodyText and MessageBubbleLayout. (#5019)
 2026-01-29T21:10:27+02:00 - 39be9c490 - Stefan Ceriu : Reduce the default number of room list items to 100
@@ -187,60 +210,60 @@
 2026-01-29T06:22:32+01:00 - ef45c4d11 - Nicolas Buquet : Undo removing of `private` on CreateRoomAccessType, not needed anymore
 2026-01-28T19:06:46+01:00 - ef9b2fff0 - Nicolas Buquet : Handle room type (and encrypted/federated) using and enhancing Element new `CreateRoomAccessType`
 2026-01-28T15:42:17+01:00 - 9edb7fd7f - Mauro Romito : pr suggestions
-2026-01-28T15:42:17+01:00 - 8f6506ced - Mauro Romito : refactored the flows to use a state and an event for the transfer ownership screen
-2026-01-28T15:42:17+01:00 - 9999cd24b - Mauro Romito : implemented the presentation of transfer ownership screen from the space flow and update UI and preview tests
 2026-01-28T15:42:17+01:00 - 9de49bad9 - Mauro Romito : implemented the logic to transfer ownership from a space
+2026-01-28T15:42:17+01:00 - 9999cd24b - Mauro Romito : implemented the presentation of transfer ownership screen from the space flow and update UI and preview tests
+2026-01-28T15:42:17+01:00 - 8f6506ced - Mauro Romito : refactored the flows to use a state and an event for the transfer ownership screen
 2026-01-28T15:13:04+01:00 - 6c90046ed - Nicolas Buquet : Fix rebase conflicts on Rebase/ElementX-26.01.0 into Tchap
 2026-01-28T15:11:17+01:00 - ee1cba830 - Nicolas Buquet : Merge ElementX-ios v26.01.0 into Tchap-rebase
 2026-01-28T12:48:22Z - b90365897 - Doug : Fix to changelog.
-2026-01-28T04:16:24-08:00 - bda395bf0 - Element CI : Prepare next release
 2026-01-28T11:46:13Z - fa200cfed - Doug : Fix inline code being rendered as blocks. (#5017)
+2026-01-28T04:16:24-08:00 - bda395bf0 - Element CI : Prepare next release
 2026-01-27T14:14:16Z - 3d5269fa1 - renovate[bot] : Update dependency element-hq/compound-design-tokens to v6.9.0 (#5011)
 2026-01-27T14:13:47Z - 4431925ba - Doug : Update the SDK. (#5015)
-2026-01-27T11:32:52Z - e06baf6f3 - Doug : Update the crypto strings. (#5009)
-2026-01-27T12:50:57+02:00 - 23062901c - Stefan Ceriu : Update files following swiftformat upgrade
 2026-01-27T12:50:57+02:00 - fe189fcfe - Stefan Ceriu : Disable swiftformat `emptyExtensions` rule as it clashes with Sourcery's AutoMockables
 2026-01-27T12:50:57+02:00 - b90fd5d8d - Stefan Ceriu : Fix incorrect empty lines in doc comments
+2026-01-27T12:50:57+02:00 - 23062901c - Stefan Ceriu : Update files following swiftformat upgrade
+2026-01-27T11:32:52Z - e06baf6f3 - Doug : Update the crypto strings. (#5009)
 2026-01-27T08:11:22+02:00 - 6f66e0116 - ElementRobot : Bump the calendar version ready for the next release
 2026-01-26T14:59:48Z - 2d5a86f16 - Skye Elliot : Remove "history may be shared banner" (#4999)
 2026-01-26T12:39:55+02:00 - cf79cb9b0 - Stefan Ceriu : Horizontally scrollable code blocks (#5001)
 2026-01-26T11:28:21+01:00 - d2e0a1210 - Nicolas Buquet : Upgrade version to 0.9.4
 2026-01-26T09:54:00Z - bb801d0be - ElementRobot : Translations update (#5008)
 2026-01-26T09:45:46Z - 06f37daca - Doug : Remove the protocol for SpaceServiceRoom given its a struct type. (#5000)
-2026-01-23T17:36:26Z - 3b231339c - Doug : Make sure the selected/available rooms are updated when adding space children fails part way through. (#4997)
 2026-01-23T17:49:07+01:00 - a3683ea99 - Mauro Romito : updated the SDK and included the fix for leaving a space when the last owner of a non empty space
-2026-01-23T15:18:55+01:00 - 8f8ea473f - Mauro Romito : pr suggestions
-2026-01-23T15:18:55+01:00 - ab1ed9e67 - Mauro Romito : added the create button in the empty state of the space screen and refactored some code
+2026-01-23T17:36:26Z - 3b231339c - Doug : Make sure the selected/available rooms are updated when adding space children fails part way through. (#4997)
 2026-01-23T15:18:55+01:00 - d012380b0 - Mauro Romito : implemented the flow to create room in a selected space
+2026-01-23T15:18:55+01:00 - ab1ed9e67 - Mauro Romito : added the create button in the empty state of the space screen and refactored some code
+2026-01-23T15:18:55+01:00 - 8f8ea473f - Mauro Romito : pr suggestions
 2026-01-23T15:18:55+01:00 - 8b38c2874 - Mauro Romito : Implemented adding the room to the space after selection, and the editableSpace proxied API. Also updated and added tests.
 2026-01-23T15:18:55+01:00 - 51c7466fd - Mauro Romito : implemented  the logic that displays the space selection CTA
 2026-01-23T11:24:59Z - 5a0dd23cb - Doug : Update the enterprise submodule. (#4989)
 2026-01-22T20:11:45+02:00 - 40b655bde - Stefan Ceriu : Fix #4856, fix #4431 - Normalise HTML whitespaces using SwiftSoup's own text()/TextNode.normaliseWhitespace methods
-2026-01-22T16:40:25+01:00 - 7d47a290e - Mauro Romito : pr suggestion rename `isPrivate` to `isVisibilityPrivate`
-2026-01-22T16:40:25+01:00 - 4852c8861 - Mauro Romito : update xcodeproj
-2026-01-22T16:40:25+01:00 - 5fd32ec67 - Mauro Romito : pr suggestions + await PLs of the room to be ready before adding it to the space
 2026-01-22T16:40:25+01:00 - d4ec756fe - Mauro Romito : log errors when add child and remove child fail
 2026-01-22T16:40:25+01:00 - 9dead7ed5 - Mauro Romito : Implemented adding the room to the space after selection, and the editableSpace proxied API. Also updated and added tests.
-2026-01-22T16:40:25+01:00 - 07243be94 - Mauro Romito : implemented the space selection list and the selection logic
 2026-01-22T16:40:25+01:00 - 7f66b694b - Mauro Romito : implemented  the logic that displays the space selection CTA
+2026-01-22T16:40:25+01:00 - 7d47a290e - Mauro Romito : pr suggestion rename `isPrivate` to `isVisibilityPrivate`
+2026-01-22T16:40:25+01:00 - 5fd32ec67 - Mauro Romito : pr suggestions + await PLs of the room to be ready before adding it to the space
+2026-01-22T16:40:25+01:00 - 4852c8861 - Mauro Romito : update xcodeproj
 2026-01-22T16:40:25+01:00 - 204fa5b0c - Mauro Romito : started implementing the logic behind the access type and the creation parameters
+2026-01-22T16:40:25+01:00 - 07243be94 - Mauro Romito : implemented the space selection list and the selection logic
 2026-01-22T12:37:34Z - cea365ac9 - Doug : Add the empty state to SpaceScreen. (#4985)
-2026-01-21T20:19:39Z - b4b9f6aff - Stefan Ceriu : Space filters (#4977)
 2026-01-21T21:48:02+02:00 - 0d34a28ec - renovate[bot] : Update peter-evans/create-pull-request action to v8.1.0
+2026-01-21T20:19:39Z - b4b9f6aff - Stefan Ceriu : Space filters (#4977)
 2026-01-21T17:16:23Z - 43770ab48 - Doug : Replace a debugging visibility check with the real condition. (#4982)
-2026-01-21T15:24:54Z - 6e2ff7ae5 - Doug : Include the Members and Add Rooms screens in the spaces UI tests. (#4981)
 2026-01-21T15:43:49+01:00 - 8ff16e913 - renovate[bot] : Update dependency fastlane to v2.231.1
+2026-01-21T15:24:54Z - 6e2ff7ae5 - Doug : Include the Members and Add Rooms screens in the spaces UI tests. (#4981)
 2026-01-21T12:46:02Z - 3dccdf668 - Doug : Add space management to the flows. (#4978)
 2026-01-21T11:20:39+02:00 - 5577acac1 - Stefan Ceriu : Fix the setting button's layout and animation on liquid glass
 2026-01-20T13:09:35Z - 0360db792 - Doug : Tweak the RoomHeaderView to match Figma. (#4975)
 2026-01-20T11:16:53+02:00 - 6e89b4906 - subnix : feat: set user-agent for calls WebView
 2026-01-19T19:59:26Z - 69349d67e - ElementRobot : Translations update (#4970)
 2026-01-19T18:56:59Z - e12c8a266 - Doug : Fake an actual title bar on macOS Tahoe. (#4971)
-2026-01-19T15:16:16Z - 1faf9125c - Doug : Silence some warnings. (#4969)
 2026-01-19T15:40:42+01:00 - 10a466e5a - Nicolas Buquet : Merge pull request #248 from tchapgouv/247-reject-login-attempt-if-returned-instance-in-not-in-a-listed-account-provider
 2026-01-19T15:38:55+01:00 - 868985fae - Nicolas Buquet : Add TODO to remove restriction for official release
-2026-01-19T14:27:49Z - a30ae24d1 - Skye Elliot : Display a badge for messages decrypted using shared keys. (#4937)
 2026-01-19T15:22:40+01:00 - 695f5c4ab - Nicolas Buquet : Reject login attempt if returned instance in not in a listed account provider
+2026-01-19T15:16:16Z - 1faf9125c - Doug : Silence some warnings. (#4969)
+2026-01-19T14:27:49Z - a30ae24d1 - Skye Elliot : Display a badge for messages decrypted using shared keys. (#4937)
 2026-01-19T10:29:35Z - 20e15f0e3 - renovate[bot] : Update dependency fastlane to v2.231.0 (#4967)
 2026-01-19T09:15:28Z - b0bb41a72 - Doug : Enable Swift 6 and default actor isolation on the Compound Inspector app. (#4966)
 2026-01-16T19:29:27Z - c5b1c5d1b - Doug : Use more Liquid Glass in the room/space screen toolbars (#4965)
