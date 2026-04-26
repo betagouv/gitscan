@@ -1,21 +1,21 @@
-## Changelog : cunningham (30 derniers jours, au 21 avril 2026)
+## Changelog : cunningham (30 derniers jours, au 26 avril 2026)
 
 ### Résumé
-Ce mois-ci, Cunningham a bénéficié d'améliorations significatives sur ses composants Modale et Calendrier, avec l'introduction de nouveaux systèmes de variantes pour la Modale.  L'infrastructure de CI/CD a également été modernisée en migrant vers GitHub Actions pour une meilleure gestion des builds et des déploiements. Des corrections d'accessibilité ont été apportées aux composants Toast et Dropdown.
+Ce mois-ci, Cunningham a connu des améliorations significatives concernant la modal, avec l'introduction d'un système de variantes pour une plus grande flexibilité. La migration vers GitHub Actions pour le CI/CD a également été finalisée, améliorant ainsi la sécurité et l'efficacité du processus de publication. Des corrections d'accessibilité ont été apportées aux composants Toast et Dropdown.
 
 ### Évolutions fonctionnelles
-- **Modale :** Ajout d'un système de variantes permettant de définir différents agencements (layouts) par défaut et avec onglets. [#issue à retrouver]
-- **Calendrier :** Extraction du composant calendrier en tant que composant autonome, facilitant sa réutilisation. [#issue à retrouver]
-- **Bouton :** Correction d'un bug empêchant le désactivation correcte des liens de boutons. [#89a91e6](https://github.com/suitenumerique/cunningham/commit/89a91e6)
-- **Dropdown :** Amélioration de l'accessibilité du bouton de bascule (toggle) du dropdown en définissant un nom accessible approprié. [#issue à retrouver]
-- **Toast :** Amélioration de l'accessibilité des notifications Toast en masquant l'icône décorative des lecteurs d'écran. [#issue à retrouver]
+- Ajout d'un système de variantes pour le composant Modal, offrant des mises en page par défaut et en onglets. [#issue à retrouver]
+- Extraction du calendrier en tant que composant autonome. [#issue à retrouver]
+- Correction du comportement du bouton "désactivé" dans les liens du composant Button. [#89a91e6](https://github.com/suitenumerique/cunningham/commit/89a91e6)
+- Amélioration de l'accessibilité du bouton de bascule du menu déroulant avec un nom accessible correct. [#5c715fd](https://github.com/suitenumerique/cunningham/commit/5c715fd)
+- Amélioration de l'accessibilité du composant Toast en masquant l'icône décorative des lecteurs d'écran. [#1f28aeb](https://github.com/suitenumerique/cunningham/commit/1f28aeb)
 
 ### Évolutions techniques
-- **CI/CD :** Migration de l'infrastructure d'intégration continue depuis CircleCI vers GitHub Actions pour une meilleure intégration avec l'écosystème GitHub. [#issue à retrouver]
-- **Sécurité :** Utilisation de NPM Trusted Publisher pour sécuriser la publication des paquets. [#issue à retrouver]
-- **Refactoring :** Refactorisation des tokens de formulaire et mise à jour des composants Select et Modal pour une meilleure cohérence et maintenabilité. [#issue à retrouver]
-- **Tokens :** Régénération des fichiers de tokens pour assurer la cohérence du design system. [#issue à retrouver]
+- Migration du système d'intégration continue (CI) de CircleCI vers GitHub Actions pour une meilleure sécurité et flexibilité. [#c31ebd9](https://github.com/suitenumerique/cunningham/commit/c31ebd9)
+- Utilisation de NPM Trusted Publisher pour la publication des packages, renforçant la sécurité de la chaîne d'approvisionnement. [#54c3e65](https://github.com/suitenumerique/cunningham/commit/54c3e65)
+- Refactoring du formatage dans les composants Select et Modal. [#3615ff8](https://github.com/suitenumerique/cunningham/commit/3615ff8)
+- Refactorisation des tokens de formulaire et mise à jour du composant Modal. [#5c86834](https://github.com/suitenumerique/cunningham/commit/5c86834)
+- Publication de la version 4.3.0. [#1f6a938](https://github.com/suitenumerique/cunningham/commit/1f6a938)
 
 ### Autres changements
-- Publication de la version 4.3.0. [#1f6a938](https://github.com/suitenumerique/cunningham/commit/1f6a938)
-- Nettoyage et amélioration du formatage dans les composants Select et Modal. [#3615ff8](https://github.com/suitenumerique/cunningham/commit/3615ff8)
+- Régénération des fichiers de tokens. [#15b8575](https://github.com/suitenumerique/cunningham/commit/15b8575) et [#d9f569f](https://github.com/suitenumerique/cunningham/commit/d9f569f)
