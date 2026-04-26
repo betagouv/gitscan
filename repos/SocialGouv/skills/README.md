@@ -48,6 +48,24 @@ Forensic intrusion analysis methodology combining application logs with source c
 - MITRE ATT&CK-aligned timeline templates
 - Structured report template with final checklist
 
+### git-ai-trace
+
+_Maintained in a separate repo: [SocialGouv/git-ai-trace](https://github.com/SocialGouv/git-ai-trace)._
+
+A Claude Code skill and companion git hooks that embed an honest, observation-only recap of human/AI collaboration inside each commit message — so the story of *how* the code was made travels with the code through rebases, squashes, and cherry-picks.
+
+**Use when:**
+- Committing work after an AI-assisted coding session
+- Wanting provenance richer than a binary "was AI used?" flag
+- Reviewing PRs where understanding the human/AI collaboration shape matters
+- Looking for an alternative to flat labels (HUC/HCE/ACE) or separate attribution files
+
+**Includes:**
+- `SKILL.md` — the skill definition (auto-invokes on "let's commit" and related phrases)
+- Claude Code `PreToolUse` hook — blocks malformed `git commit -m` calls
+- Native git hooks (`prepare-commit-msg`, `commit-msg`) — cover editor flow and any other entry point
+- `scripts/recap-log.sh` — regenerates a panoramic `AI_CONTRIB.md`-style view from `git log` on demand
+
 ## Installation
 
 All skills:
@@ -59,6 +77,7 @@ Individual skills:
 ```bash
 npx skills add SocialGouv/skills/skills/rgaa-html-css
 npx skills add SocialGouv/skills/skills/forensic-intrusion-analysis
+npx skills add SocialGouv/git-ai-trace         # separate repo
 ```
 
 ## Usage
