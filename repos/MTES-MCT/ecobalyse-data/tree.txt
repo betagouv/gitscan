@@ -110,10 +110,793 @@
 ├── import_food.py
 ├── import_method.py
 ├── justfile
+├── lci_catalog
+│   ├── agribalyse-3-2
+│   │   ├── agave-default.json
+│   │   ├── alfalfa-organic-2025.json
+│   │   ├── almond-in-shell-fr.json
+│   │   ├── almond-inshell-fr-2025.json
+│   │   ├── aluminium.json
+│   │   ├── anchovy-fr-2025.json
+│   │   ├── apple-compote-fr-2025.json
+│   │   ├── apple-fr.json
+│   │   ├── apple-juice-2025.json
+│   │   ├── apricot-fr.json
+│   │   ├── artichoke-fr.json
+│   │   ├── asian-250g-pasta-opp-bag.json
+│   │   ├── asian-60g-pasta-opp-bag.json
+│   │   ├── asparagu-fr.json
+│   │   ├── avocado-non-eu-2025.json
+│   │   ├── avocado-organic-2025.json
+│   │   ├── baby-250g-deserts-proxy-pack-rigid-plastic-other-than.json
+│   │   ├── baby-340g-biscuits-cereals-proxy-pack-rigid-plastic-other.json
+│   │   ├── baby-800g-food-powder-proxy-pack-steel.json
+│   │   ├── bacon-fr-2025.json
+│   │   ├── baguette-250g-proxy-pack-cardboard.json
+│   │   ├── balsamic-vinegar-2025.json
+│   │   ├── banana-non-eu-2025.json
+│   │   ├── banana-wi.json
+│   │   ├── bar-100g-chocolate-proxy-pack-aluminium.json
+│   │   ├── barley-2025.json
+│   │   ├── barley-eu-2025.json
+│   │   ├── barley-organic-2025.json
+│   │   ├── barley-whole-fr.json
+│   │   ├── bay-leaf-fr.json
+│   │   ├── bean-fr.json
+│   │   ├── bean-organic-2025.json
+│   │   ├── beef-*.json  (6 files)
+│   │   ├── beer-1500g-proxy-pack-glass.json
+│   │   ├── beetroot-fr.json
+│   │   ├── bellpepper-unheated-greenhouse-fr.json
+│   │   ├── biscuit-200g-shortbread-proxy-pack-plastic-film.json
+│   │   ├── biscuits-100g-proxy-pack-plastic-film.json
+│   │   ├── biscuits-150g-proxy-pack-plastic-film.json
+│   │   ├── black-currant-fr.json
+│   │   ├── black-mulberry-default.json
+│   │   ├── black-pepper-2025.json
+│   │   ├── blinis-200g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── blue-150g-cheeses-cat-b-plastic-tray-single-lid.json
+│   │   ├── blue-150g-cheeses-cat-pp-tray-blue-cheese.json
+│   │   ├── blue-250g-cheeses-cat-c-aluminium-foil-within-cardboard.json
+│   │   ├── blueberry-non-eu.json
+│   │   ├── boat-cooling.json
+│   │   ├── bolognese-2025.json
+│   │   ├── box-500g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── box-563g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── breaded-1000g-products-apet-pe-tray-lid.json
+│   │   ├── breaded-200g-products-cardboard-box-bag.json
+│   │   ├── breaded-400g-products-xps-tray-film.json
+│   │   ├── breakfast-cereals-2025.json
+│   │   ├── brie-cheese-2025.json
+│   │   ├── broad-beans-eu.json
+│   │   ├── broccoli-eu.json
+│   │   ├── broiler-conventional-fr-live.json
+│   │   ├── broiler-organic-fr-live.json
+│   │   ├── broth-80g-cube-proxy-pack-aluminium.json
+│   │   ├── burger-750g-proxy-pack-plastic-film.json
+│   │   ├── butter-2025.json
+│   │   ├── butters-250g-complex-foil.json
+│   │   ├── butters-250g-paper-foil.json
+│   │   ├── butters-250g-plastic-caco3-foil.json
+│   │   ├── butters-250g-plastic-tub.json
+│   │   ├── cakes-200g-be-shared-cake-shelf-proxy-pack-plastic.json
+│   │   ├── candied-fruits-2025.json
+│   │   ├── cane-sugar-2025.json
+│   │   ├── canned-425g-fruit-steel-can.json
+│   │   ├── canned-850g-fruit-steel-can.json
+│   │   ├── canning.json
+│   │   ├── capsule-125g-dosettes-proxy-pack-plastic-film.json
+│   │   ├── cardboard.json
+│   │   ├── carrot-eu-2025.json
+│   │   ├── carrot-fr.json
+│   │   ├── carrot-non-ue-2025.json
+│   │   ├── cauliflower-fr-2025.json
+│   │   ├── cauliflower-organic-2025.json
+│   │   ├── celery-fr.json
+│   │   ├── cereal-126g-bars-proxy-pack-plastic-film.json
+│   │   ├── cereal-220g-powder-proxy-pack-steel.json
+│   │   ├── cereal-400g-products-others-proxy-pack-plastic-film.json
+│   │   ├── cervelat-400g-vacuum-bag.json
+│   │   ├── cheese-150g-dishes-plastic-tray-cardboard-sheath.json
+│   │   ├── cheese-300g-dishes-plastic-tray-cardboard-case.json
+│   │   ├── cheese-300g-dishes-wood-tray-cardboard-sheath.json
+│   │   ├── cheese-400g-dishes-plastic-bag.json
+│   │   ├── cherry-fr.json
+│   │   ├── chestnut-370g-cream-or-canned-proxy-pack-glass.json
+│   │   ├── chia-seed-dried-default.json
+│   │   ├── chia-seed-dried-fr.json
+│   │   ├── chicken-breast-2025.json
+│   │   ├── chickpea-dried-fr.json
+│   │   ├── chickpea-fr.json
+│   │   ├── chickpea-organic-2025.json
+│   │   ├── chicory-root-default.json
+│   │   ├── chicory-root-fr.json
+│   │   ├── chips-150g-proxy-pack-plastic-film.json
+│   │   ├── chitterling-*.json  (5 files)
+│   │   ├── chocolate-350g-spread-proxy-pack-glass.json
+│   │   ├── cider-750g-proxy-pack-glass.json
+│   │   ├── clementine-non-eu.json
+│   │   ├── cocktail-200g-sausage-pp-pot.json
+│   │   ├── cocktails-700g-proxy-pack-glass.json
+│   │   ├── cocoa-butter-eu-2025.json
+│   │   ├── cocoa-powder-ue-2025.json
+│   │   ├── coconut-dehusked-fr-overseas.json
+│   │   ├── cod-eu-2025.json
+│   │   ├── coffee-200g-chicory-rehydrated-water-at-consumer-step-proxy.json
+│   │   ├── coffee-250g-grounded-proxy-pack-plastic-film.json
+│   │   ├── coffee-bean-default.json
+│   │   ├── coffee-ground-2025.json
+│   │   ├── combined-5l-oil-blended-vegetable-oils-0-plastic-bottle.json
+│   │   ├── combined-68l-oil-blended-vegetable-oils-0-plastic-squeeze.json
+│   │   ├── comte-aop-2025.json
+│   │   ├── condiment-250g-sauces-proxy-pack-glass.json
+│   │   ├── cooked-160g-ham-apet-pe-evoh-pe-tray-lid.json
+│   │   ├── cooked-224g-ham-kraft-pe-evoh-pe-tray-lid.json
+│   │   ├── cooked-600g-seafood-proxy-pack-plastic-film.json
+│   │   ├── cooked-ham-2025.json
+│   │   ├── cookies-200g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── cooking-400g-aid-proxy-pack-cardboard.json
+│   │   ├── cooking-66g-aids-bakery-proxy-pack-cardboard.json
+│   │   ├── cooking.json
+│   │   ├── cotton-seed-default.json
+│   │   ├── cotton-seed-fr.json
+│   │   ├── crab-eu-2025.json
+│   │   ├── crab-fr-2025.json
+│   │   ├── crackers-100g-proxy-pack-plastic-film.json
+│   │   ├── cranberry-fr.json
+│   │   ├── creams-200g-plastic-pot.json
+│   │   ├── creams-500g-bottles-pack.json
+│   │   ├── creams-600g-bricks-pack.json
+│   │   ├── crepe-300g-or-fajitas-or-burritos-proxy-pack-rigid.json
+│   │   ├── crepes-240g-waffles-proxy-pack-plastic-film.json
+│   │   ├── croutons-90g-proxy-pack-plastic-film.json
+│   │   ├── cucumber-fr-offseason.json
+│   │   ├── cull-cow-organic-live.json
+│   │   ├── cured-100g-ham-apet-pe-evoh-pe-tray-lid.json
+│   │   ├── cured-164g-ham-kraft-pe-evoh-pe-tray-lid.json
+│   │   ├── dairy-330g-desserts-cat-b-plastic-bottle.json
+│   │   ├── dairy-400g-desserts-cat-aluminium-cups-pack.json
+│   │   ├── dairy-500g-desserts-cat-cardboard-pots-pack.json
+│   │   ├── dairy-500g-desserts-cat-plastic-pots-pack.json
+│   │   ├── dark-chocolate-2025.json
+│   │   ├── date-default.json
+│   │   ├── dehydrated-195g-flakes-proxy-pack-plastic-film.json
+│   │   ├── domestic-gas-heat.json
+│   │   ├── dried-*.json  (5 files)
+│   │   ├── dry-*.json  (6 files)
+│   │   ├── duck-1000g-confit-vacuum-bag.json
+│   │   ├── durum-wheat-eu-2025.json
+│   │   ├── durum-wheat-fr.json
+│   │   ├── durum-wheat-non-eu-2025.json
+│   │   ├── durum-wheat-semolina-2025.json
+│   │   ├── egg-*.json  (9 files)
+│   │   ├── eggplant-default.json
+│   │   ├── eggs-360g-raw-proxy-pack-cardboard.json
+│   │   ├── eggs-800g-powder-proxy-pack-steel.json
+│   │   ├── elderberry-fr.json
+│   │   ├── emmental-2025.json
+│   │   ├── emmental-grated-fr-2025.json
+│   │   ├── extra-virgin-olive-oil-2025.json
+│   │   ├── fennel-fr.json
+│   │   ├── fig-fr.json
+│   │   ├── fish-*.json  (18 files)
+│   │   ├── flavour-25l-oil-0-glass-bottle.json
+│   │   ├── flaxseed-default.json
+│   │   ├── flaxseed-fr.json
+│   │   ├── flour-2025.json
+│   │   ├── flours-1000g-proxy-pack-cardboard.json
+│   │   ├── foods-750g-particular-nutritional-uses-proxy-pack-rigid-plastic.json
+│   │   ├── french-bean-fr.json
+│   │   ├── french-fries-2025.json
+│   │   ├── fresh-*.json  (8 files)
+│   │   ├── frozen-354g-desserts-proxy-pack-rigid-plastic-other-than.json
+│   │   ├── frozen-450g-fish-products-proxy-pack-cardboard.json
+│   │   ├── fruit-puree-2025.json
+│   │   ├── frying-2l-oil-plastic-bottle-clear.json
+│   │   ├── garden-peas-fr-2025.json
+│   │   ├── glass.json
+│   │   ├── glucose-syrup-2025.json
+│   │   ├── goat-cheese-2025.json
+│   │   ├── goat-milk-2025.json
+│   │   ├── grape-black-or-white-default.json
+│   │   ├── grape-black-or-white-fr-2025.json
+│   │   ├── grape-black-or-white-fr.json
+│   │   ├── grapeseed-1l-oil-glass-bottle.json
+│   │   ├── grazed-grass-permanent-2025.json
+│   │   ├── grazed-grass-temporary-2025.json
+│   │   ├── ground-beef-2025.json
+│   │   ├── hake-eu-2025.json
+│   │   ├── hazelnut-*.json  (5 files)
+│   │   ├── hdpe.json
+│   │   ├── hemp-grain-fr.json
+│   │   ├── honey-375g-proxy-pack-glass.json
+│   │   ├── honey-default.json
+│   │   ├── honey-fr.json
+│   │   ├── ice-*.json  (5 files)
+│   │   ├── individual-200g-chocolates-proxy-pack-rigid-plastic-other-than.json
+│   │   ├── jams-370g-ambient-glass-jar-capsule.json
+│   │   ├── juices-1000g-proxy-pack-plastic-bottles.json
+│   │   ├── kiwi-eu-2025.json
+│   │   ├── kiwi-fr.json
+│   │   ├── knack-210g-sausages-vacuum-bag.json
+│   │   ├── kumquat-fr.json
+│   │   ├── lamb-conventional-fr-live.json
+│   │   ├── lamb-meat-without-bone-2025.json
+│   │   ├── lardoons-175g-apet-pe-tray-lid.json
+│   │   ├── large-trout-2025.json
+│   │   ├── ldpe.json
+│   │   ├── leek-default.json
+│   │   ├── leek-eu-2025.json
+│   │   ├── leek-fr.json
+│   │   ├── legumes-1000g-cooked-frozen-ldpe-bag.json
+│   │   ├── legumes-350g-cooked-ambient-glass-jar-capsule.json
+│   │   ├── lemon-eu.json
+│   │   ├── lemon-juice-2025.json
+│   │   ├── lentils-uncooked-non-eu.json
+│   │   ├── lettuce-eu-2025.json
+│   │   ├── lettuce-fr.json
+│   │   ├── lobster-eu-2025.json
+│   │   ├── lobster-fr-2025.json
+│   │   ├── lobster-non-eu-2025.json
+│   │   ├── long-500g-shelflife-bread-pastries-proxy-pack-plastic-film.json
+│   │   ├── lorry-cooling.json
+│   │   ├── lupin-fr.json
+│   │   ├── madeleine-500g-proxy-pack-plastic-film.json
+│   │   ├── maize-3l-corn-oil-plastic-bottle-clear.json
+│   │   ├── mandarin-eu-2025.json
+│   │   ├── mango-non-eu.json
+│   │   ├── margarines-*.json  (5 files)
+│   │   ├── mayonnaise-175g-plastic-tube-cardboard-box.json
+│   │   ├── mayonnaise-425g-plastic-squeeze.json
+│   │   ├── mayonnaise-470g-glass-jar.json
+│   │   ├── meat-320g-on-skewer-apet-pe-tray-lid.json
+│   │   ├── meat-320g-on-skewer-pp-tray-lid.json
+│   │   ├── meat-334g-on-skewer-eps-tray-film.json
+│   │   ├── meat-450g-dishes-garnish-chilled-plastic-tray-cardboard-case.json
+│   │   ├── melon-fr.json
+│   │   ├── melon-honeydew-charentai-cataloupe-cavaillon-default.json
+│   │   ├── melon-organic-2025.json
+│   │   ├── milk-*.json  (6 files)
+│   │   ├── milk.json
+│   │   ├── millet-whole-fr.json
+│   │   ├── minced-250g-meat-pp-tray-lid.json
+│   │   ├── minced-500g-meat-xps-tray-film.json
+│   │   ├── mixed-180g-salads-chilled-plastic-tray-lid.json
+│   │   ├── mixed-240g-salads-chilled-plastic-tray-cardboard-sheath.json
+│   │   ├── mixed-250g-salads-chilled-plastic-tray-strapping.json
+│   │   ├── mixed-320g-salads-chilled-plastic-tray-cardboard-case.json
+│   │   ├── mixing.json
+│   │   ├── mortadella-135g-apet-pe-tray-lid.json
+│   │   ├── mozzarella-2025.json
+│   │   ├── muesli-500g-proxy-pack-plastic-film.json
+│   │   ├── mushroom-eu.json
+│   │   ├── mustard-2025.json
+│   │   ├── mustard-seed-fr.json
+│   │   ├── nectars-1000g-proxy-pack-plastic-bottles.json
+│   │   ├── non-250g-chocolate-confectionery-proxy-pack-plastic-film.json
+│   │   ├── nut-1000g-flour-proxy-pack-cardboard.json
+│   │   ├── oat-500g-flakes-proxy-pack-plastic-film.json
+│   │   ├── oats-default.json
+│   │   ├── oats-fr.json
+│   │   ├── oats-glo-2025.json
+│   │   ├── oats-organic-2025.json
+│   │   ├── offals-250g-sold-by-weight.json
+│   │   ├── oilseed-feed-2025.json
+│   │   ├── olive-1l-oil-plastic-bottle-opaque.json
+│   │   ├── olive-75l-oil-0-glass-bottle.json
+│   │   ├── olive-eu-2025.json
+│   │   ├── olive-oil-eu-2025.json
+│   │   ├── omelette-500g-or-tortilla-proxy-pack-plastic-film.json
+│   │   ├── onion-dried-2025.json
+│   │   ├── onion-eu-2025.json
+│   │   ├── onion-fr.json
+│   │   ├── onion-non-ue-2025.json
+│   │   ├── orange-eu.json
+│   │   ├── orange-juice-2025.json
+│   │   ├── orange-non-eu-2025.json
+│   │   ├── other-285g-desserts-cat-c-cardboard-box.json
+│   │   ├── other-300g-rusks-proxy-pack-plastic-film.json
+│   │   ├── other-328g-desserts-cat-b-complex-bag.json
+│   │   ├── other-500g-breads-proxy-pack-plastic-film.json
+│   │   ├── others-160g-cakes-proxy-pack-rigid-plastic-other-than.json
+│   │   ├── palm-fruit-default.json
+│   │   ├── papaya-fr-overseas.json
+│   │   ├── paper.json
+│   │   ├── parsley-fresh-fr.json
+│   │   ├── pasta-*.json  (10 files)
+│   │   ├── pastries-400g-starters-proxy-pack-plastic-film.json
+│   │   ├── pates-*.json  (6 files)
+│   │   ├── peach-eu-2025.json
+│   │   ├── peach-fr-2025.json
+│   │   ├── peach-organic-2025.json
+│   │   ├── peanut-350g-butter-proxy-pack-glass.json
+│   │   ├── peanut-non-eu-2025.json
+│   │   ├── pear-eu-2025.json
+│   │   ├── pear-fr.json
+│   │   ├── pear-organic-2025.json
+│   │   ├── pet.json
+│   │   ├── pie-230g-crusts-proxy-pack-plastic-film.json
+│   │   ├── pig-bbc-fr-live.json
+│   │   ├── pig-conventional-fr-live.json
+│   │   ├── pig-organic-fr-live.json
+│   │   ├── pine-nut-fr.json
+│   │   ├── pineapple-default.json
+│   │   ├── pineapple-fr-overseas.json
+│   │   ├── pineapple-non-eu-2025.json
+│   │   ├── pistachio-non-eu-2025.json
+│   │   ├── pizzas-260g-chilled-tray-lid.json
+│   │   ├── pizzas-380g-chilled-flow-pack-sachet-cardboard-case.json
+│   │   ├── plant-125g-based-cheese-proxy-pack-rigid-plastic-other.json
+│   │   ├── plant-500g-based-spread-proxy-pack-glass.json
+│   │   ├── plantain-fr.json
+│   │   ├── pop-100g-corn-proxy-pack-plastic-film.json
+│   │   ├── pork-250g-sold-by-weight.json
+│   │   ├── pork-710g-eps-tray-film.json
+│   │   ├── pork-fr.json
+│   │   ├── pork-liver-2025.json
+│   │   ├── potato-fr.json
+│   │   ├── potato-industry-fr-2025.json
+│   │   ├── potato-starch-2025.json
+│   │   ├── potato-table-fr-2025.json
+│   │   ├── poultry-238g-xps-tray-film.json
+│   │   ├── poultry-366g-apet-pe-tray-lid.json
+│   │   ├── pp.json
+│   │   ├── precooked-320g-bread-proxy-pack-plastic-film.json
+│   │   ├── processed-160g-cheeses-cat-b-aluminium-foils-within-cardboard.json
+│   │   ├── processed-175g-cheeses-cat-b-plastic-trays-within-cardboard.json
+│   │   ├── processed-250g-cheeses-cat-aluminium-foils-within-cardboard-tray.json
+│   │   ├── processed-300g-cheeses-cat-c-plastic-films-within-plastic.json
+│   │   ├── ps.json
+│   │   ├── puffed-130g-rice-or-cereals-textured-bread-proxy-pack.json
+│   │   ├── pureed-1200g-fruits-ambient-or-chilled-plastic-pot.json
+│   │   ├── pureed-400g-fruits-ambient-or-chilled-plastic-pot.json
+│   │   ├── pureed-730g-fruits-ambient-glass-jar-capsule.json
+│   │   ├── pvc.json
+│   │   ├── quenelles-240g-vacuum-bag.json
+│   │   ├── quinoa-default.json
+│   │   ├── quinoa-fr.json
+│   │   ├── radish-fr.json
+│   │   ├── rapeseed-*.json  (7 files)
+│   │   ├── raspberry-eu.json
+│   │   ├── raw-250g-fish-proxy-pack-rigid-plastic-other-than.json
+│   │   ├── reblochon-2025.json
+│   │   ├── red-cabbage-non-eu-2025.json
+│   │   ├── red-wine-2025.json
+│   │   ├── refined-*.json  (8 files)
+│   │   ├── rice-*.json  (5 files)
+│   │   ├── rillettes-220g-pp-pot.json
+│   │   ├── rusks-225g-swedish-toast-proxy-pack-cardboard.json
+│   │   ├── rye-whole-fr.json
+│   │   ├── saffron-fr.json
+│   │   ├── salad-25l-dressing-0-plastic-bottle.json
+│   │   ├── salad-33l-dressing-0-plastic-bottle.json
+│   │   ├── salad-45l-dressing-0-plastic-bottle.json
+│   │   ├── salicornia-fresh-default.json
+│   │   ├── salmon-raw-eu-2025.json
+│   │   ├── salt-2025.json
+│   │   ├── salts-125g-proxy-pack-cardboard.json
+│   │   ├── sandwich-135g-plastic-tray-lid.json
+│   │   ├── sandwich-190g-proxy-pack-plastic-film.json
+│   │   ├── sandwich-230g-made-loaf-bread-proxy-pack-rigid-plastic.json
+│   │   ├── sandwich-270g-plastic-bag-flow-pack.json
+│   │   ├── sardine-eu-2025.json
+│   │   ├── sardine-fr-2025.json
+│   │   ├── sauces-30g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── sausage-meat-2025.json
+│   │   ├── sausage-tofu-2025.json
+│   │   ├── sausage-toulouse-2025.json
+│   │   ├── sausage-toulouse-cooked-2025.json
+│   │   ├── sea-salt-celery-salt-or-fleur-de-sel-fr.json
+│   │   ├── seafood-180g-cooked-plastic-tray.json
+│   │   ├── seafood-290g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── seaweed-fr.json
+│   │   ├── semihard-*.json  (5 files)
+│   │   ├── sheep-milk-fr.json
+│   │   ├── short-200g-shelflife-bread-pastries-proxy-pack-rigid-plastic.json
+│   │   ├── silage-maize-fr-2025.json
+│   │   ├── sirop-500g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── sliced-100g-dry-sausages-apet-pe-tray-lid.json
+│   │   ├── snail-default.json
+│   │   ├── snail-fr.json
+│   │   ├── soft-*.json  (16 files)
+│   │   ├── soluble-200g-powder-proxy-pack-glass.json
+│   │   ├── sorghum-default.json
+│   │   ├── sorghum-fr.json
+│   │   ├── soup-dehydrated-fr-2025.json
+│   │   ├── soup-fr-2025.json
+│   │   ├── soy-milk-2025.json
+│   │   ├── soy-protein-2025.json
+│   │   ├── soybean-*.json  (6 files)
+│   │   ├── sparkling-25cl-wine-aluminium-can.json
+│   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-560g.json
+│   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-775g.json
+│   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-835g.json
+│   │   ├── spinach-non-eu.json
+│   │   ├── spring-*.json  (5 files)
+│   │   ├── squid-fr-2025.json
+│   │   ├── starters-280g-exotic-products-proxy-pack-rigid-plastic-other.json
+│   │   ├── still-*.json  (11 files)
+│   │   ├── strawberry-*.json  (5 files)
+│   │   ├── sugar-1000g-proxy-pack-cardboard.json
+│   │   ├── sugar-2025.json
+│   │   ├── sugar-beet-default.json
+│   │   ├── sugar-beet-fr.json
+│   │   ├── sunflower-*.json  (6 files)
+│   │   ├── sweet-corn-br-2025.json
+│   │   ├── sweet-corn-fr.json
+│   │   ├── sweet-corn-organic-fr-2025.json
+│   │   ├── sweet-potato-default.json
+│   │   ├── syrups-600g-proxy-pack-steel.json
+│   │   ├── tap-water-2025.json
+│   │   ├── tart-260g-chilled-tray-lid-aluminum-mold.json
+│   │   ├── tartinables-150g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── tea-30g-rehydrated-water-at-consumer-step-proxy-pack.json
+│   │   ├── tea-dried-2025.json
+│   │   ├── tempeh-125g-proxy-pack-rigid-plastic-other-than-bottles.json
+│   │   ├── tomato-*.json  (9 files)
+│   │   ├── triticale-organic-2025.json
+│   │   ├── turkey-2025.json
+│   │   ├── turmeric-2025.json
+│   │   ├── turnip-organic-2025.json
+│   │   ├── uncured-125g-cheeses-similar-cat-c-plastic-bag.json
+│   │   ├── uncured-200g-cheeses-similar-cat-plastic-tray-double-lid.json
+│   │   ├── uncured-210g-cheeses-similar-cat-b-plastic-pot.json
+│   │   ├── uncured-300g-cheeses-similar-cat-glass-jar.json
+│   │   ├── vanilla-10g-proxy-pack-glass.json
+│   │   ├── vanilla-75g-sugar-proxy-pack-cardboard.json
+│   │   ├── vanilla-alcoholic-or-aqueou-extract-fr-overseas.json
+│   │   ├── veal-meat-2025.json
+│   │   ├── vegetable-950g-dishes-frozen-plastic-bag-small-sachets.json
+│   │   ├── vegetable-mix-2025.json
+│   │   ├── vegetables-*.json  (8 files)
+│   │   ├── vinegar-750g-proxy-pack-glass.json
+│   │   ├── vinegar-alcohol-2025.json
+│   │   ├── virgin-hazelnut-oil-2025.json
+│   │   ├── walnut-husked-fr-2025.json
+│   │   ├── walnut-inshell-fr.json
+│   │   ├── walnut-inshell-organic-2025.json
+│   │   ├── warm-150g-sauces-chilled-plastic-pot.json
+│   │   ├── water-3000g-proxy-pack-plastic-bottles.json
+│   │   ├── whey-2025.json
+│   │   ├── white-250g-black-pudding-pp-pe-evoh-pe-tray.json
+│   │   ├── white-cabbage-non-eu.json
+│   │   ├── whole-1295g-poultry-eps-tray-film.json
+│   │   ├── wine-grape-fr-2025.json
+│   │   ├── yoghurts-1000g-plastic-pot.json
+│   │   ├── yoghurts-500g-glass-pots-pack.json
+│   │   ├── yoghurts-500g-plastic-pot.json
+│   │   ├── yoghurts-600g-plastic-bottles-pack.json
+│   │   ├── yogurt-2025.json
+│   │   ├── zucchini-eu.json
+│   │   ├── zucchini-fr-2025.json
+│   │   └── zucchini-organic-2025.json
+│   ├── custom
+│   │   ├── aluminum-extrusion.json
+│   │   ├── aluminum-rolling-0-2-mm.json
+│   │   ├── aluminum-rolling-0-26-mm.json
+│   │   ├── bleaching-average-aquatic-pollution-scenario.json
+│   │   ├── bleaching.json
+│   │   ├── carbon-fiber-manufacturing.json
+│   │   ├── conventional-spinning-40-nm.json
+│   │   ├── cooking-*.json  (7 files)
+│   │   ├── cooling.json
+│   │   ├── copper-wire-drawing.json
+│   │   ├── coton-rdp.json
+│   │   ├── coton-rdpc.json
+│   │   ├── desizing.json
+│   │   ├── distribution.json
+│   │   ├── dyeing-*.json  (7 files)
+│   │   ├── ei-laine-nouvelle-filiere.json
+│   │   ├── elasthane.json
+│   │   ├── fading.json
+│   │   ├── finishing.json
+│   │   ├── freezing.json
+│   │   ├── frying.json
+│   │   ├── heat-europe.json
+│   │   ├── heat-row.json
+│   │   ├── heat-treatment.json
+│   │   ├── knitting-*.json  (5 files)
+│   │   ├── machining-metal-stamping-do-not-use.json
+│   │   ├── machining-metal-stamping.json
+│   │   ├── mercerization.json
+│   │   ├── microwaving.json
+│   │   ├── non-conventional-spinning-40-nm.json
+│   │   ├── oven-cooking.json
+│   │   ├── pan-cooking.json
+│   │   ├── pan-reheating.json
+│   │   ├── panels-*.json  (6 files)
+│   │   ├── passenger-car.json
+│   │   ├── printing-dyes.json
+│   │   ├── printing-paste.json
+│   │   ├── printing-pigment.json
+│   │   ├── printing-substantive.json
+│   │   ├── retail-dry-product.json
+│   │   ├── retail-fresh-product.json
+│   │   ├── retail-frozen-product.json
+│   │   ├── sawing-air-drying-wood.json
+│   │   ├── sawing-kiln-drying-wood.json
+│   │   ├── scouring.json
+│   │   ├── spinning-40-nm.json
+│   │   ├── stainless-steel-rolling.json
+│   │   ├── steel-rolling.json
+│   │   ├── steel-wire-drawing.json
+│   │   ├── textile-end-of-life-process-mix.json
+│   │   ├── use-*.json  (8 files)
+│   │   ├── vehicle-assembling.json
+│   │   ├── washing-synthetic-fiber.json
+│   │   ├── weaving-40-nm-and-250-gm2.json
+│   │   └── weaving.json
+│   ├── ecobalyse
+│   │   ├── air-transport.json
+│   │   ├── alu-*.json  (6 files)
+│   │   ├── aluminium-ingot-recycled-in-cff.json
+│   │   ├── aluminium-ingot-recycled-rer-cff.json
+│   │   ├── aluminium-ingot-recycled-row-cff.json
+│   │   ├── bacon-default-2025.json
+│   │   ├── bacon-fr-bbc-2025.json
+│   │   ├── bacon-organic-2025.json
+│   │   ├── beef-*.json  (7 files)
+│   │   ├── broiler-*.json  (5 files)
+│   │   ├── butter-organic-2025.json
+│   │   ├── chicken-breast-br-max-2025.json
+│   │   ├── chicken-breast-fr-feed-2025.json
+│   │   ├── chicken-breast-fr-organic-2025.json
+│   │   ├── chicken-breast-organic-2025.json
+│   │   ├── cooked-ham-bbc-2025.json
+│   │   ├── cooked-ham-organic-2025.json
+│   │   ├── cull-cow-organic-national-average-live.json
+│   │   ├── dibond.json
+│   │   ├── diesel-b7-euro4.json
+│   │   ├── diesel-b7-euro6.json
+│   │   ├── eol-*.json  (15 files)
+│   │   ├── flour-organic-2025.json
+│   │   ├── galvanization.json
+│   │   ├── ground-beef-feedlot-2025.json
+│   │   ├── ground-beef-grass-fed-2025.json
+│   │   ├── ground-beef-organic-2025.json
+│   │   ├── heat-europe-v2.json
+│   │   ├── heat-world-v2.json
+│   │   ├── industrial-wood.json
+│   │   ├── lamb-meat-without-bone-organic-2025.json
+│   │   ├── lamb-organic-national-average-farm-gate-fr-u-live.json
+│   │   ├── lamb-organic.json
+│   │   ├── milk-organic-2025.json
+│   │   ├── organic-cotton-irrigated.json
+│   │   ├── pasta-*.json  (5 files)
+│   │   ├── pet-recycled-cff.json
+│   │   ├── petrol-e10-euro6.json
+│   │   ├── pork-default.json
+│   │   ├── pork-organic.json
+│   │   ├── rapeseed-oil-organic-2025.json
+│   │   ├── recycled-wood-shavings-post-consumer.json
+│   │   ├── soup-*.json  (8 files)
+│   │   ├── steel-low-alloyed-recycled-rer-cff.json
+│   │   ├── steel-low-alloyed-recycled-row-cff.json
+│   │   ├── steel-market-cn.json
+│   │   ├── steel-market-fr.json
+│   │   └── sunflower-oil-organic-2025.json
+│   ├── ecoinvent-3-11
+│   │   ├── avocado-default.json
+│   │   ├── bamboo-shoot-default.json
+│   │   ├── bell-pepper-green-yellow-or-red-default.json
+│   │   ├── broad-bean-default.json
+│   │   ├── brussel-sprout-default.json
+│   │   ├── chickpea-dried-default.json
+│   │   ├── cocoa-bean-default.json
+│   │   ├── corn-default.json
+│   │   ├── cow-milk-default.json
+│   │   ├── ei-lin.json
+│   │   ├── endive-default.json
+│   │   ├── lead-acid-battery.json
+│   │   ├── li-ion-battery-lfp.json
+│   │   ├── li-ion-battery-nmc811.json
+│   │   ├── li-ion-battery-other.json
+│   │   ├── lima-bean-default.json
+│   │   ├── millet-whole-default.json
+│   │   ├── olive-fr.json
+│   │   ├── pomegranate-default.json
+│   │   ├── potato-default.json
+│   │   ├── radish-default.json
+│   │   ├── red-bean-dried-default.json
+│   │   ├── rye-whole-default.json
+│   │   └── tea-dried-default.json
+│   ├── ecoinvent-3-9-1
+│   │   ├── bean-eu-2025.json
+│   │   ├── bean-non-eu-2025.json
+│   │   ├── brass.json
+│   │   ├── carbon-black.json
+│   │   ├── chickpea-non-eu-2025.json
+│   │   ├── copper.json
+│   │   ├── corrugated-cardboard.json
+│   │   ├── ei-*.json  (9 files)
+│   │   ├── electric-motor.json
+│   │   ├── electronic-components.json
+│   │   ├── eol-*.json  (19 files)
+│   │   ├── extrusion-thermoforming-plastic.json
+│   │   ├── flat-glass.json
+│   │   ├── granulated-plastic-pp.json
+│   │   ├── granulated-plastic-pvc.json
+│   │   ├── injection-molding.json
+│   │   ├── internal-combustion-engine.json
+│   │   ├── low-voltage-electricity.json
+│   │   ├── lumber-hardwood-beech.json
+│   │   ├── lumber-hardwood-oak.json
+│   │   ├── lumber-softwood-pine.json
+│   │   ├── lumber-softwood-spruce.json
+│   │   ├── medium-*.json  (33 files)
+│   │   ├── metal-processing-medium-no-longer-in-use.json
+│   │   ├── organic-compound.json
+│   │   ├── panel-finish-melamine-paper.json
+│   │   ├── paraffin-wax.json
+│   │   ├── plastic-film.json
+│   │   ├── plastic-pellets-pet.json
+│   │   ├── plastic-pellets-various.json
+│   │   ├── plexiglas.json
+│   │   ├── powder-coating-aluminum.json
+│   │   ├── powder-coating-steel.json
+│   │   ├── recycled-aluminum.json
+│   │   ├── resin-melamine-urea-formaldehyde.json
+│   │   ├── resin-phenol-formaldehyde.json
+│   │   ├── resin-urea-formaldehyde.json
+│   │   ├── rigid-foam-pur.json
+│   │   ├── rigid-plastic-abs.json
+│   │   ├── rigid-plastic-pc.json
+│   │   ├── road-transport.json
+│   │   ├── sea-transport.json
+│   │   ├── stainless-steel.json
+│   │   ├── steel-low-alloy.json
+│   │   ├── steel.json
+│   │   ├── synthetic-rubber.json
+│   │   ├── train-transport.json
+│   │   ├── virgin-steel-unalloyed-rest-of-the-world.json
+│   │   ├── wood-coating-epoxy-resin.json
+│   │   └── wood-finish-oil-or-acrylic-varnish.json
+│   ├── ginko-2025
+│   │   ├── agave-organic.json
+│   │   ├── alfalfa-organic.json
+│   │   ├── almond-inshell-organic-2025.json
+│   │   ├── apple-organic-2025.json
+│   │   ├── apple-organic.json
+│   │   ├── apricot-organic-2025.json
+│   │   ├── artichoke-organic-2025.json
+│   │   ├── asparagu-organic.json
+│   │   ├── avocado-organic.json
+│   │   ├── banana-organic.json
+│   │   ├── basmati-rice-organic.json
+│   │   ├── beetroot-organic.json
+│   │   ├── bell-pepper-green-yellow-or-red-organic.json
+│   │   ├── black-currant-organic.json
+│   │   ├── black-mulberry-organic.json
+│   │   ├── blueberry-organic-2025.json
+│   │   ├── brazil-nut-organic.json
+│   │   ├── broad-bean-organic.json
+│   │   ├── broccoli-organic-2025.json
+│   │   ├── broccoli-organic.json
+│   │   ├── carrot-organic-2025.json
+│   │   ├── cashew-organic.json
+│   │   ├── cassava-organic.json
+│   │   ├── celery-organic-2025.json
+│   │   ├── cherry-organic-2025.json
+│   │   ├── cherry-tomato-organic.json
+│   │   ├── chestnut-organic.json
+│   │   ├── chicory-root-organic.json
+│   │   ├── chinese-cabbage-organic-2025.json
+│   │   ├── clementine-organic.json
+│   │   ├── coconut-dehusked-organic.json
+│   │   ├── coffee-bean-organic.json
+│   │   ├── coriander-organic.json
+│   │   ├── corn-organic.json
+│   │   ├── cranberry-organic.json
+│   │   ├── cucumber-organic.json
+│   │   ├── date-organic.json
+│   │   ├── durum-wheat-organic-2025.json
+│   │   ├── durum-wheat-organic.json
+│   │   ├── eggplant-organic.json
+│   │   ├── elderberry-organic.json
+│   │   ├── fig-organic.json
+│   │   ├── flaxseed-organic.json
+│   │   ├── french-bean-organic.json
+│   │   ├── garden-peas-organic-2025.json
+│   │   ├── ginger-organic.json
+│   │   ├── grape-black-or-white-organic.json
+│   │   ├── grapefruit-organic.json
+│   │   ├── guava-organic.json
+│   │   ├── hazelnut-organic-2025.json
+│   │   ├── hazelnut-unshelled-organic-2025.json
+│   │   ├── hemp-grain-organic.json
+│   │   ├── kiwi-organic-2025.json
+│   │   ├── kumquat-organic.json
+│   │   ├── leek-organic-2025.json
+│   │   ├── lemon-organic-2025.json
+│   │   ├── lemon-organic.json
+│   │   ├── lentils-uncooked-organic-2025.json
+│   │   ├── lettuce-organic-2025.json
+│   │   ├── lupin-organic.json
+│   │   ├── mango-organic-2025.json
+│   │   ├── mango-organic.json
+│   │   ├── millet-whole-organic.json
+│   │   ├── oats-organic.json
+│   │   ├── olive-organic-2025.json
+│   │   ├── onion-organic-2025.json
+│   │   ├── orange-organic-2025.json
+│   │   ├── orange-organic.json
+│   │   ├── palm-fruit-organic.json
+│   │   ├── papaya-organic-2025.json
+│   │   ├── papaya-organic.json
+│   │   ├── pea-with-pod-organic.json
+│   │   ├── peach-organic.json
+│   │   ├── peanut-organic-2025.json
+│   │   ├── pear-organic.json
+│   │   ├── pineapple-organic-2025.json
+│   │   ├── pineapple-organic.json
+│   │   ├── pistachio-organic-2025.json
+│   │   ├── plantain-organic.json
+│   │   ├── potato-industry-organic-2025.json
+│   │   ├── potato-table-organic-2025.json
+│   │   ├── quinoa-organic.json
+│   │   ├── radish-organic-2025.json
+│   │   ├── rapeseed-organic.json
+│   │   ├── raspberry-organic-2025.json
+│   │   ├── red-cabbage-organic-2025.json
+│   │   ├── rice-basmati-organic-2025.json
+│   │   ├── sesame-seed-organic.json
+│   │   ├── soft-wheat-organic.json
+│   │   ├── sorghum-organic.json
+│   │   ├── soybean-organic.json
+│   │   ├── spinach-organic-2025.json
+│   │   ├── spring-faba-organic.json
+│   │   ├── sugar-beet-organic-2025.json
+│   │   ├── sugar-beet-organic.json
+│   │   ├── sunflower-organic-2025.json
+│   │   ├── sunflower-seed-organic.json
+│   │   ├── tomato-organic.json
+│   │   ├── watermelon-organic-2025.json
+│   │   ├── white-cabbage-organic-2025.json
+│   │   └── wine-grape-organic-2025.json
+│   ├── pastoeco
+│   │   └── cull-cow-grass-fed-fr-live.json
+│   ├── wfldb
+│   │   ├── apple-non-eu-2025.json
+│   │   ├── apricot-non-eu-2025.json
+│   │   ├── asparagu-default.json
+│   │   ├── banana-default.json
+│   │   ├── barley-whole-default.json
+│   │   ├── bay-leaf-default.json
+│   │   ├── black-currant-default.json
+│   │   ├── brazil-nut-default.json
+│   │   ├── breadfruit-default.json
+│   │   ├── carrot-default.json
+│   │   ├── cashew-default.json
+│   │   ├── cherry-tomato-default.json
+│   │   ├── cherry-tr-2025.json
+│   │   ├── chestnut-default.json
+│   │   ├── chicken-breast-eu-2025.json
+│   │   ├── chive-default.json
+│   │   ├── coconut-dehusked-default.json
+│   │   ├── egg-default.json
+│   │   ├── fig-default.json
+│   │   ├── garlic-default.json
+│   │   ├── ginger-default.json
+│   │   ├── hazelnut-in-shell-default.json
+│   │   ├── lamb-meat-without-bone-eu-2025.json
+│   │   ├── lemon-default.json
+│   │   ├── lentils-uncooked-fr-2025.json
+│   │   ├── mandarin-non-eu-2025.json
+│   │   ├── milk-eu-2025.json
+│   │   ├── olive-default.json
+│   │   ├── pear-default.json
+│   │   ├── potato-table-eu-2025.json
+│   │   ├── sunflower-seed-default.json
+│   │   ├── sweet-corn-eu-2025.json
+│   │   ├── swine-industrial-ca-live.json
+│   │   └── vanilla-alcoholic-or-aqueou-extract-default.json
+│   └── woolmark
+│       └── ei-laine-par-defaut.json
 ├── migrations
 │   ├── 2025-11-06-refactor-activities-to-nested-format.py
 │   ├── 2026-03-17-add-food2-to-activities.py
-│   └── 2026-04-13-add-food-type-to-food-items.py
+│   ├── 2026-04-13-add-food-type-to-food-items.py
+│   └── 2026-06-14-explode-activities-json.py
 ├── models
 │   └── process.py
 ├── notebooks
@@ -133,13 +916,14 @@
 │       └── textile
 │           └── materials.json
 ├── pyproject.toml
+├── schemas
+│   └── lci-schema.json
 ├── settings.toml
 ├── simapro-biosphere.json
 ├── spapi
 │   ├── README.txt
 │   └── simapro.py
 ├── tests
-│   ├── activities-schema.json
 │   ├── activities_to_create.json
 │   ├── conftest.py
 │   ├── fixtures
@@ -151,6 +935,20 @@
 │   │   │   ├── feed.json
 │   │   │   └── ugb.csv
 │   │   ├── forwast.json
+│   │   ├── lci_catalog
+│   │   │   ├── custom
+│   │   │   │   ├── elasthane.json
+│   │   │   │   └── mercerization.json
+│   │   │   ├── ecobalyse
+│   │   │   │   └── example-activity-from-scratch.json
+│   │   │   └── forwast
+│   │   │       ├── egg-bleublanccoeur.json
+│   │   │       ├── ei-acrylique.json
+│   │   │       ├── ei-pet-r.json
+│   │   │       ├── example-object-1.json
+│   │   │       ├── milk-organic.json
+│   │   │       ├── milk.json
+│   │   │       └── sea-transport.json
 │   │   ├── processes_generic_impacts_output.json
 │   │   ├── processes_generic_output.json
 │   │   └── processes_impacts_output.json
@@ -177,4 +975,4 @@
 │   ├── __init__.py
 │   └── codes.json
 └── uv.lock
-35 directories, 144 files
+50 directories, 1213 files
