@@ -221,6 +221,7 @@
 │   ├── app
 │   │   ├── (private)
 │   │   │   └── (dashboard)
+│   │   │       ├── BreadCrumbs.tsx
 │   │   │       ├── PrivateLayout.tsx
 │   │   │       ├── account
 │   │   │       │   ├── base-info
@@ -323,9 +324,6 @@
 │   │   │   │       └── index.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...nextauth]
-│   │   │   │       └── route.ts
-│   │   │   ├── hook
-│   │   │   │   └── [id]
 │   │   │   │       └── route.ts
 │   │   │   ├── image
 │   │   │   │   ├── route.ts
@@ -622,14 +620,6 @@
 │   │   │   │   └── users.ts
 │   │   │   └── queries.ts
 │   │   ├── matomo.ts
-│   │   ├── mattermost
-│   │   │   ├── activeUsers.ts
-│   │   │   ├── deactiveUsers.ts
-│   │   │   ├── getActiveMattermostUsers.ts
-│   │   │   ├── getAllChannels.ts
-│   │   │   ├── getMattermostUsersStatus.ts
-│   │   │   ├── getTeam.ts
-│   │   │   └── index.ts
 │   │   ├── mdtohtml.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
@@ -668,7 +658,6 @@
 │   │   ├── matomo.ts
 │   │   ├── matomoSite.ts
 │   │   ├── mattermost.ts
-│   │   ├── mattermostMemberInfo.ts
 │   │   ├── member.ts
 │   │   ├── memberChange.ts
 │   │   ├── misc.ts
@@ -702,8 +691,6 @@
 │   │   │   ├── email.config.ts
 │   │   │   ├── index.ts
 │   │   │   ├── matomo.config.ts
-│   │   │   ├── mattermost
-│   │   │   │   └── mattermost.config.ts
 │   │   │   └── sentry.config.ts
 │   │   ├── controllers
 │   │   │   ├── utils.spec.ts
@@ -749,8 +736,6 @@
 │   │   ├── schedulers
 │   │   │   ├── cron.ts
 │   │   │   ├── emailScheduler.ts
-│   │   │   ├── mattermostScheduler
-│   │   │   │   └── syncMattermostUserWithMattermostMemberInfosTable.ts
 │   │   │   ├── recreateEmailIfUserActive.spec.ts
 │   │   │   ├── recreateEmailIfUserActive.ts
 │   │   │   ├── scheduleCronJobs.ts
@@ -769,8 +754,6 @@
 │   │   └── views
 │   │       ├── templates
 │   │       │   └── emails
-│   │       │       ├── DepartureReminderInXDaysEmail
-│   │       │       │   └── DepartureReminderInXDaysEmail.tsx
 │   │       │       ├── EmailCreatedDimail
 │   │       │       │   └── EmailCreatedDimail.tsx
 │   │       │       ├── EmailCreatedEmail
@@ -781,10 +764,6 @@
 │   │       │       │   └── MatomoAccountCreatedEmail.tsx
 │   │       │       ├── MatomoAccountUpdatedEmail
 │   │       │       │   └── MatomoAccountUpdatedEmail.tsx
-│   │       │       ├── MattermostAccountCreatedEmail
-│   │       │       │   └── MattermostAccountCreatedEmail.tsx
-│   │       │       ├── NoMoreContractEmail
-│   │       │       │   └── NoMoreContractXDaysEmail.tsx
 │   │       │       ├── StartupNewMemberArrivalEmail
 │   │       │       │   └── StartupNewMemberArrivalEmail.tsx
 │   │       │       ├── VerificationWaitingEmail
@@ -822,7 +801,6 @@
 │       ├── pgAdpter.ts
 │       ├── platform.ts
 │       ├── routes
-│       │   ├── registry.ts
 │       │   ├── routeTitles.ts
 │       │   └── routes.ts
 │       ├── startup.ts
@@ -830,4 +808,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-194 directories, 638 files
+186 directories, 624 files
