@@ -309,6 +309,7 @@
 │   │   │   ├── dashboard_schools_modal_controller.js
 │   │   │   ├── dashboard_students_internship_application_controller.js
 │   │   │   ├── digit_code_controller.js
+│   │   │   ├── downcase_controller.js
 │   │   │   ├── dropdown_controller.js
 │   │   │   ├── email_confirmation_controller.js
 │   │   │   ├── fill_card_controller.js
@@ -655,6 +656,7 @@
 │   │   │   │   ├── fa.scss
 │   │   │   │   ├── form.scss
 │   │   │   │   ├── help.scss
+│   │   │   │   ├── input.scss
 │   │   │   │   ├── label.scss
 │   │   │   │   ├── link.scss
 │   │   │   │   ├── listview.scss
@@ -781,7 +783,8 @@
 │   │   │   ├── autocomplete_address.rb
 │   │   │   ├── autocomplete_city.rb
 │   │   │   ├── autocomplete_school.rb
-│   │   │   └── autocomplete_sirene.rb
+│   │   │   ├── autocomplete_sirene.rb
+│   │   │   └── validation_error.rb
 │   │   ├── builder_base.rb
 │   │   ├── builders
 │   │   │   ├── callback.rb
@@ -1091,6 +1094,7 @@
 │       │   │   ├── shared
 │       │   │   │   ├── _date_field_element.html.slim
 │       │   │   │   ├── _detailed_planning_alert.html.slim
+│       │   │   │   ├── _email_field_element.html.slim
 │       │   │   │   ├── _form_header.html.slim
 │       │   │   │   ├── _radio_button_element.html.slim
 │       │   │   │   ├── _school_management_form_fields.html.slim
@@ -1320,6 +1324,7 @@
 │       │   ├── _date_input.html.slim
 │       │   ├── _date_input_dsfr.html.slim
 │       │   ├── _dsfr_checkbox_field.html.slim
+│       │   ├── _dsfr_email_field.html.slim
 │       │   ├── _dsfr_input_field.html.slim
 │       │   ├── _dsfr_radio_field.html.slim
 │       │   ├── _dsfr_rich_radio_field.html.slim
@@ -1446,7 +1451,6 @@
 │       │   │   ├── notify_student_legal_representatives_can_sign_email.html.slim
 │       │   │   ├── offer_was_flagged.html.slim
 │       │   │   ├── offer_was_flagged.text.erb
-│       │   │   ├── special_notify_student_legal_representatives_can_sign_email.html.slim
 │       │   │   ├── students_global_applications_reminder.html.slim
 │       │   │   ├── weekly_expired_applications_email.slim
 │       │   │   ├── weekly_kpis_email.html.slim
@@ -2321,7 +2325,8 @@
 │   │   ├── 20260115112842_add_pre_selected_for_signature_to_internship_agreement.rb
 │   │   ├── 20260126172713_create_letter_thief_email_messages.rb
 │   │   ├── 20260203214306_remove_internship_offer_infos_tables.rb
-│   │   └── 20260309162833_create_boarding_houses.rb
+│   │   ├── 20260309162833_create_boarding_houses.rb
+│   │   └── 20260420123136_reduce_student_address_size.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
 │   │   ├── 01_populate sectors_and_groups.rb
@@ -2396,7 +2401,9 @@
 │   │       │   │   ├── created.json
 │   │       │   │   ├── unauthorized.json
 │   │       │   │   ├── unprocessable_entity_bad_data.json
-│   │       │   │   └── unprocessable_entity_bad_payload.json
+│   │       │   │   ├── unprocessable_entity_bad_payload.json
+│   │       │   │   ├── unprocessable_entity_missing_mandatory_weeks.json
+│   │       │   │   └── unprocessable_entity_mixed_grades.json
 │   │       │   ├── destroy
 │   │       │   │   ├── conflict.json
 │   │       │   │   ├── forbidden.json
@@ -2851,6 +2858,9 @@
 │   │   └── triggers
 │   │       ├── single_application_reminder_test.rb
 │   │       └── student_accepted_internship_application_reminder_test.rb
+│   ├── libs
+│   │   └── api
+│   │       └── validation_error_test.rb
 │   ├── mailers
 │   │   ├── .keep
 │   │   ├── custom_devise_mailer_test.rb
@@ -3020,4 +3030,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-403 directories, 2627 files
+405 directories, 2635 files
