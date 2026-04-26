@@ -1,4 +1,8 @@
 .
+├── .claude
+│   └── skills
+│       └── edit-endpoint
+│           └── SKILL.md
 ├── .github
 │   ├── dependabot.yml
 │   └── workflows
@@ -17,12 +21,93 @@
 ├── LICENSE
 ├── README.md
 ├── bin
+│   ├── setup_worktree.sh
 │   └── test
 ├── commons
 │   ├── README.md
 │   ├── data
 │   │   ├── authorizations.yml
 │   │   └── throttle.yml
+│   ├── endpoints
+│   │   ├── _swagger_shared
+│   │   │   ├── 00_commons.yml
+│   │   │   ├── civility.yml
+│   │   │   ├── cnav.yml
+│   │   │   ├── cnous.yml
+│   │   │   ├── dgfip.yml
+│   │   │   ├── france_travail.yml
+│   │   │   ├── gip_mds.yml
+│   │   │   ├── infogreffe.yml
+│   │   │   ├── inpi_rne.yml
+│   │   │   ├── insee.yml
+│   │   │   ├── men.yml
+│   │   │   ├── mesri.yml
+│   │   │   └── mi.yml
+│   │   ├── api_entreprise
+│   │   │   ├── 10_dgfip_chiffres_affaires.yml
+│   │   │   ├── 12_bdf_bilans.yml
+│   │   │   ├── 13_dgfip_liasses_fiscales.yml
+│   │   │   ├── 14_dgfip_attestation_fiscale.yml
+│   │   │   ├── 15_urssaf_attestation_vigilance.yml
+│   │   │   ├── 16_msa_conformites_cotisations.yml
+│   │   │   ├── 17_probtp_conformites_cotisations_retraite.yml
+│   │   │   ├── 18_fntp_cartes_pro_travaux_publics.yml
+│   │   │   ├── 19_cnetp_attestations_cotisations_conges_payes_chomage_intemperies.yml
+│   │   │   ├── 1_insee_etablissements.yml
+│   │   │   ├── 1_insee_successions.yml
+│   │   │   ├── 20_agencebio_certifications_bio.yml
+│   │   │   ├── 21_ademe_certifications_rge.yml
+│   │   │   ├── 22_qualibat_certifications_batiment.yml
+│   │   │   ├── 23_opqibi_certifications_ingenierie.yml
+│   │   │   ├── 24_qualifelec_certificat.yml
+│   │   │   ├── 2_infogreffe_extrait_rcs.yml
+│   │   │   ├── 2_infogreffe_mandataires_sociaux.yml
+│   │   │   ├── 2_inpi_extrait_rne.yml
+│   │   │   ├── 30_commission_europeene_vies.yml
+│   │   │   ├── 31_cibtp_attestations_cotisations_chomage_intemperies.yml
+│   │   │   ├── 3_insee_adresse_etablissement.yml
+│   │   │   ├── 3_insee_siege_social.yml
+│   │   │   ├── 3_insee_unites_legales.yml
+│   │   │   ├── 4_ministere_interieur_rna_v3.yml
+│   │   │   ├── 4_ministere_interieur_v4.yml
+│   │   │   ├── 5_inpi_rne_actes_bilans.yml
+│   │   │   ├── 5_inpi_rne_beneficiaires.yml
+│   │   │   ├── 6_fabnum_conventions_collectives.yml
+│   │   │   ├── 7_cmafrance_rnm.yml
+│   │   │   ├── 9_douanes_eori.yml
+│   │   │   ├── carif_oref_certifications_qualiopi_france_competences.yml
+│   │   │   ├── datasubvention_subventions.yml
+│   │   │   ├── dgfip_liens_capitalistiques.yml
+│   │   │   └── gip_mds_effectifs.yml
+│   │   ├── api_particulier
+│   │   │   ├── ants_siv.yml
+│   │   │   ├── cnaf_msa_allocation_education_enfant_handicape.yml
+│   │   │   ├── cnaf_msa_prestation_de_service_unique.yml
+│   │   │   ├── cnaf_msa_quotient_familial.yml
+│   │   │   ├── cnav_allocation_adulte_handicape.yml
+│   │   │   ├── cnav_allocation_soutien_familial.yml
+│   │   │   ├── cnav_complementaire_sante_solidaire.yml
+│   │   │   ├── cnav_prime_activite.yml
+│   │   │   ├── cnav_revenu_solidarite_active.yml
+│   │   │   ├── cnous_student_scholarship.yml
+│   │   │   ├── dsnj_service_national.yml
+│   │   │   ├── education_nationale_statut_eleve.yml
+│   │   │   ├── mesri_student_status.yml
+│   │   │   ├── pole_emploi.yml
+│   │   │   ├── sport_data_hub_sportif_haut_niveau.yml
+│   │   │   ├── v2_cnaf_msa_quotient_familial_v1.yml
+│   │   │   ├── v2_cnaf_msa_quotient_familial_v2.yml
+│   │   │   ├── v2_cnav_allocation_adulte_handicape.yml
+│   │   │   ├── v2_cnav_allocation_soutien_familial.yml
+│   │   │   ├── v2_cnav_complementaire_sante_solidaire.yml
+│   │   │   ├── v2_cnav_prime_activite.yml
+│   │   │   ├── v2_cnav_revenu_solidarite_active.yml
+│   │   │   ├── v2_cnous_student_scholarship.yml
+│   │   │   ├── v2_education_nationale_statut_eleve.yml
+│   │   │   ├── v2_mesri_student_status.yml
+│   │   │   └── v2_pole_emploi.yml
+│   │   ├── template.entreprise.yml.example
+│   │   └── template.particulier.yml.example
 │   └── swagger
 │       ├── api_particulier_open_api_static
 │       │   └── v2.yaml
@@ -2273,6 +2358,9 @@
 │   │   │       ├── 2024.json
 │   │   │       └── 2025.json
 │   │   ├── encrypt_data_signer_data.yml
+│   │   ├── endpoints
+│   │   │   ├── api_entreprise -> ../../../commons/endpoints/api_entreprise
+│   │   │   └── api_particulier -> ../../../commons/endpoints/api_particulier
 │   │   ├── endpoints_with_test_case.yml
 │   │   ├── environment.rb
 │   │   ├── environments
@@ -2325,41 +2413,7 @@
 │   │   │   └── api_particulier.rb
 │   │   ├── routes.rb
 │   │   ├── spring.rb
-│   │   ├── swagger_data
-│   │   │   ├── 00_commons.yml
-│   │   │   ├── acoss.yml
-│   │   │   ├── ademe.yml
-│   │   │   ├── ants.yml
-│   │   │   ├── banque_de_france.yml
-│   │   │   ├── carif_oref.yml
-│   │   │   ├── cibtp.yml
-│   │   │   ├── civility.yml
-│   │   │   ├── cnav.yml
-│   │   │   ├── cnetp.yml
-│   │   │   ├── cnous.yml
-│   │   │   ├── data_subvention.yaml
-│   │   │   ├── dgddi.yml
-│   │   │   ├── dgfip.yml
-│   │   │   ├── dsnj.yml
-│   │   │   ├── fabrique_numerique_ministeres_sociaux.yml
-│   │   │   ├── fntp.yml
-│   │   │   ├── france_travail.yml
-│   │   │   ├── gip_mds.yml
-│   │   │   ├── infogreffe.yml
-│   │   │   ├── inpi_rne.yml
-│   │   │   ├── insee.yml
-│   │   │   ├── men.yml
-│   │   │   ├── mesri.yml
-│   │   │   ├── mi.yml
-│   │   │   ├── msa.yml
-│   │   │   ├── opqibi.yml
-│   │   │   ├── probtp.yml
-│   │   │   ├── qualibat.yml
-│   │   │   ├── qualifelec.yaml
-│   │   │   ├── rnm.yml
-│   │   │   ├── sdh.yml
-│   │   │   ├── urssaf.yml
-│   │   │   └── vies.yml
+│   │   ├── swagger_data -> ../../commons/endpoints/_swagger_shared
 │   │   └── throttle.yml -> ../../commons/data/throttle.yml
 │   ├── config.ru
 │   ├── db
@@ -5426,71 +5480,10 @@
     │   ├── datapass_webhooks_entreprise.yml
     │   ├── datapass_webhooks_particulier.yml
     │   ├── endpoints
-    │   │   ├── api_entreprise
-    │   │   │   ├── 10_dgfip_chiffres_affaires.yml
-    │   │   │   ├── 12_bdf_bilans.yml
-    │   │   │   ├── 13_dgfip_liasses_fiscales.yml
-    │   │   │   ├── 14_dgfip_attestation_fiscale.yml
-    │   │   │   ├── 15_urssaf_attestation_vigilance.yml
-    │   │   │   ├── 16_msa_conformites_cotisations.yml
-    │   │   │   ├── 17_probtp_conformites_cotisations_retraite.yml
-    │   │   │   ├── 18_fntp_cartes_pro_travaux_publics.yml
-    │   │   │   ├── 19_cnetp_attestations_cotisations_conges_payes_chomage_intemperies.yml
-    │   │   │   ├── 1_insee_etablissements.yml
-    │   │   │   ├── 1_insee_successions.yml
-    │   │   │   ├── 20_agencebio_certifications_bio.yml
-    │   │   │   ├── 21_ademe_certifications_rge.yml
-    │   │   │   ├── 22_qualibat_certifications_batiment.yml
-    │   │   │   ├── 23_opqibi_certifications_ingenierie.yml
-    │   │   │   ├── 24_qualifelec_certificat.yml
-    │   │   │   ├── 2_infogreffe_extrait_rcs.yml
-    │   │   │   ├── 2_infogreffe_mandataires_sociaux.yml
-    │   │   │   ├── 2_inpi_extrait_rne.yml
-    │   │   │   ├── 30_commission_europeene_vies.yml
-    │   │   │   ├── 31_cibtp_attestations_cotisations_chomage_intemperies.yml
-    │   │   │   ├── 3_insee_adresse_etablissement.yml
-    │   │   │   ├── 3_insee_siege_social.yml
-    │   │   │   ├── 3_insee_unites_legales.yml
-    │   │   │   ├── 4_ministere_interieur_rna_v3.yml
-    │   │   │   ├── 4_ministere_interieur_v4.yml
-    │   │   │   ├── 5_inpi_rne_actes_bilans.yml
-    │   │   │   ├── 5_inpi_rne_beneficiaires.yml
-    │   │   │   ├── 6_fabnum_conventions_collectives.yml
-    │   │   │   ├── 7_cmafrance_rnm.yml
-    │   │   │   ├── 9_douanes_eori.yml
-    │   │   │   ├── carif_oref_certifications_qualiopi_france_competences.yml
-    │   │   │   ├── datasubvention_subventions.yml
-    │   │   │   ├── dgfip_liens_capitalistiques.yml
-    │   │   │   └── gip_mds_effectifs.yml
-    │   │   ├── api_particulier
-    │   │   │   ├── ants_siv.yml
-    │   │   │   ├── cnaf_msa_allocation_education_enfant_handicape.yml
-    │   │   │   ├── cnaf_msa_prestation_de_service_unique.yml
-    │   │   │   ├── cnaf_msa_quotient_familial.yml
-    │   │   │   ├── cnav_allocation_adulte_handicape.yml
-    │   │   │   ├── cnav_allocation_soutien_familial.yml
-    │   │   │   ├── cnav_complementaire_sante_solidaire.yml
-    │   │   │   ├── cnav_prime_activite.yml
-    │   │   │   ├── cnav_revenu_solidarite_active.yml
-    │   │   │   ├── cnous_student_scholarship.yml
-    │   │   │   ├── dsnj_service_national.yml
-    │   │   │   ├── education_nationale_statut_eleve.yml
-    │   │   │   ├── mesri_student_status.yml
-    │   │   │   ├── pole_emploi.yml
-    │   │   │   ├── sport_data_hub_sportif_haut_niveau.yml
-    │   │   │   ├── v2_cnaf_msa_quotient_familial_v1.yml
-    │   │   │   ├── v2_cnaf_msa_quotient_familial_v2.yml
-    │   │   │   ├── v2_cnav_allocation_adulte_handicape.yml
-    │   │   │   ├── v2_cnav_allocation_soutien_familial.yml
-    │   │   │   ├── v2_cnav_complementaire_sante_solidaire.yml
-    │   │   │   ├── v2_cnav_prime_activite.yml
-    │   │   │   ├── v2_cnav_revenu_solidarite_active.yml
-    │   │   │   ├── v2_cnous_student_scholarship.yml
-    │   │   │   ├── v2_education_nationale_statut_eleve.yml
-    │   │   │   ├── v2_mesri_student_status.yml
-    │   │   │   └── v2_pole_emploi.yml
-    │   │   ├── template.entreprise.yml.example
-    │   │   └── template.particulier.yml.example
+    │   │   ├── api_entreprise -> ../../../commons/endpoints/api_entreprise
+    │   │   ├── api_particulier -> ../../../commons/endpoints/api_particulier
+    │   │   ├── template.entreprise.yml.example -> ../../../commons/endpoints/template.entreprise.yml.example
+    │   │   └── template.particulier.yml.example -> ../../../commons/endpoints/template.particulier.yml.example
     │   ├── environment.rb
     │   ├── environments
     │   │   ├── development.rb
@@ -6544,4 +6537,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1330 directories, 5485 files
+1340 directories, 5468 files
