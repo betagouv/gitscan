@@ -94,6 +94,16 @@
 │   │   │   │   │   └── email.ts
 │   │   │   │   └── templates
 │   │   │   │       └── DiagnosticEmail.tsx
+│   │   │   ├── home-page-content
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── home-page-content
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── home-page-content.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── home-page-content.ts
+│   │   │   │   └── services
+│   │   │   │       └── home-page-content.ts
 │   │   │   ├── legal-mention
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── legal-mention
@@ -156,15 +166,26 @@
 │   │   │           └── setting.ts
 │   │   ├── components
 │   │   │   └── global
+│   │   │       ├── about.json
+│   │   │       ├── accordion.json
 │   │   │       ├── array.json
+│   │   │       ├── availability-map.json
+│   │   │       ├── diag-preview.json
+│   │   │       ├── home-search.json
 │   │   │       ├── link.json
 │   │   │       ├── local-documentation-code-insee.json
+│   │   │       ├── most-recent-preco.json
+│   │   │       ├── partners.json
+│   │   │       ├── stats-and-quiz.json
+│   │   │       ├── stats.json
 │   │   │       └── title-text-array.json
 │   │   ├── extensions
 │   │   │   └── .gitkeep
 │   │   ├── index.ts
-│   │   └── middlewares
-│   │       └── rate-limit.ts
+│   │   ├── middlewares
+│   │   │   └── rate-limit.ts
+│   │   └── seeds
+│   │       └── home-page-content.json
 │   ├── tsconfig.json
 │   ├── types
 │   │   └── generated
@@ -489,17 +510,27 @@
 │   ├── public
 │   │   ├── favicon.ico
 │   │   ├── images
+│   │   │   ├── authorDefaultImage.png
+│   │   │   ├── carte_france_regionale.svg
 │   │   │   ├── cerema.svg
 │   │   │   ├── connection-lost.svg
+│   │   │   ├── defaultBannerImage.png
+│   │   │   ├── diagPreviewIcon.svg
 │   │   │   ├── document-download.svg
 │   │   │   ├── document.svg
 │   │   │   ├── health.svg
 │   │   │   ├── homehero.svg
+│   │   │   ├── imgPlaceholder.png
 │   │   │   ├── innovation.svg
 │   │   │   ├── isolation.svg
 │   │   │   ├── position.svg
+│   │   │   ├── precoIcon.svg
+│   │   │   ├── regulationPreview.svg
 │   │   │   ├── search-2.svg
-│   │   │   └── search.svg
+│   │   │   ├── search.svg
+│   │   │   ├── solutionPreview.svg
+│   │   │   ├── sonoscorePreview.svg
+│   │   │   └── statsIcon.svg
 │   │   ├── index.html
 │   │   ├── logo192.png
 │   │   ├── logo512.png
@@ -534,16 +565,26 @@
 │   │   │   │   ├── DiagnosticSummaryIsolation.tsx
 │   │   │   │   ├── DiagnosticSummaryNoiseReductionScreen.tsx
 │   │   │   │   ├── DiagnosticSummarySourceAction.tsx
+│   │   │   │   ├── DiagnosticTag.tsx
 │   │   │   │   ├── DiagnosticVerificationNotice.tsx
 │   │   │   │   ├── DiagnsoticSummaryPosition.tsx
 │   │   │   │   ├── NoiseSourcesModal.tsx
+│   │   │   │   ├── SelectorContent.tsx
+│   │   │   │   ├── TallyForm.tsx
 │   │   │   │   └── regulation
 │   │   │   │       ├── RegulationCls.tsx
 │   │   │   │       ├── RegulationIsolation.tsx
 │   │   │   │       ├── RegulationPeb.tsx
 │   │   │   │       └── RegulationPlu.tsx
 │   │   │   ├── home
-│   │   │   │   └── HomeHero.tsx
+│   │   │   │   ├── About.tsx
+│   │   │   │   ├── AvailabilityMap.tsx
+│   │   │   │   ├── DiagPreview.tsx
+│   │   │   │   ├── HomeHero.tsx
+│   │   │   │   ├── HomeSearch.tsx
+│   │   │   │   ├── ImagePreview.tsx
+│   │   │   │   ├── MostRecentPreco.tsx
+│   │   │   │   └── StatsAndQuiz.tsx
 │   │   │   ├── map
 │   │   │   │   ├── MapComponent.tsx
 │   │   │   │   ├── NoisePinModal.tsx
@@ -556,6 +597,7 @@
 │   │   │   │   └── ParcelleSearch.tsx
 │   │   │   ├── ui
 │   │   │   │   ├── CardPreco.tsx
+│   │   │   │   ├── EmptyScreenZone.tsx
 │   │   │   │   ├── FakeLinkComponent.tsx
 │   │   │   │   ├── Loader.tsx
 │   │   │   │   └── RichContent.tsx
@@ -566,9 +608,11 @@
 │   │   │   ├── previous.ts
 │   │   │   ├── useCmsPage.ts
 │   │   │   ├── useDecrees.ts
+│   │   │   ├── useGetPrecosCards.ts
 │   │   │   ├── useLocalDocumentation.ts
 │   │   │   ├── useMatomo.ts
 │   │   │   ├── useOptimalZone.ts
+│   │   │   ├── usePageMeta.ts
 │   │   │   └── usePreco.ts
 │   │   ├── index.css
 │   │   ├── index.tsx
@@ -581,6 +625,7 @@
 │   │   │   ├── home.tsx
 │   │   │   ├── maintenance.tsx
 │   │   │   ├── preco.tsx
+│   │   │   ├── searchPreco.tsx
 │   │   │   └── stats.tsx
 │   │   ├── react-app-env.d.ts
 │   │   ├── reportWebVitals.ts
@@ -590,6 +635,7 @@
 │   │   │   └── point-in-polygon.d.ts
 │   │   └── utils
 │   │       ├── compression.ts
+│   │       ├── diagnosticSearchParams.ts
 │   │       ├── draw.ts
 │   │       ├── map.ts
 │   │       ├── matomo.ts
@@ -795,4 +841,4 @@
 │   └── system.properties
 ├── setup-dbt.sh
 └── setup-dev.sh
-251 directories, 581 files
+258 directories, 620 files
