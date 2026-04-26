@@ -1,617 +1,1325 @@
+2026-04-24T18:05:41+02:00 - a069b57b - Elie Gavoty : Merge pull request #454 from betagouv/enh-remove-db-logging
+2026-04-24T17:53:06+02:00 - 2927e82c - Elie Gavoty : backend: remove postgres logging
+2026-04-24T17:28:37+02:00 - f5b9dd9a - axolotle : refactor(database): remove dropped columns in rename_llm
+2026-04-24T17:28:37+02:00 - ed5878c0 - axolotle : refactor(database): drop legacy 'selected_category' + 'is_unedited_prompt' on conversations + votes
+2026-04-24T17:28:37+02:00 - ecee323a - axolotle : refactor(database): reflect reactions column drops to queries
+2026-04-24T17:28:37+02:00 - dc19c452 - axolotle : refactor(database): remove refs to timestamp in persistence.py
+2026-04-24T17:28:37+02:00 - c8ac6656 - axolotle : chore(database): rename migration file
+2026-04-24T17:28:37+02:00 - c88aed03 - axolotle : refactor(database): reflect votes column drops to queries
+2026-04-24T17:28:37+02:00 - a849d291 - axolotle : refactor(database): drop simple reactions redondant columns
+2026-04-24T17:28:37+02:00 - 6101dad9 - axolotle : refactor(database): reflect reactions column drops to upsert query
+2026-04-24T17:28:37+02:00 - 4b631e53 - axolotle : fix(database): archive_corrupted queries
+2026-04-24T17:28:37+02:00 - 3b22ec58 - axolotle : chore: update Records comments
+2026-04-24T17:28:37+02:00 - 33094f6e - axolotle : refactor(database): drop legacy 'chatbot_index' on reactions
+2026-04-24T17:28:37+02:00 - 30dbad42 - axolotle : refactor(database): drop redondant 'conv_turns' on votes
+2026-04-24T17:28:37+02:00 - 2f06f839 - axolotle : refactor(database): drop simple votes redondant columns
+2026-04-24T17:28:37+02:00 - 0beb6efc - axolotle : refactor(database): rename 'conv_turns' to 'current_conv_turn_when_reacting' on reactions
+2026-04-24T17:27:45+02:00 - ca3d89cd - axolotle : chore: format python
+2026-04-24T17:27:45+02:00 - 5b5d7d0e - Elie Gavoty : chore: exclude db action init from autoflake
+2026-04-24T17:27:45+02:00 - 066b7bc0 - Elie Gavoty : enh: use openrouter for llm analyze (drop vertex usage)
+2026-04-24T17:27:44+02:00 - fd06b8b6 - axolotle : feat(database): add set_not_archived after linting to mark data as analyzed
+2026-04-24T17:27:44+02:00 - fca17b83 - axolotle : refactor(dataset): remove spam filtering in ranking compute
+2026-04-24T17:27:44+02:00 - e62d53e0 - axolotle : refactor(llm_analyze): use logger instead of prints
+2026-04-24T17:27:44+02:00 - e0367d49 - axolotle : refactor(database): also log last conversation timestamp for each reason in log_archived
+2026-04-24T17:27:44+02:00 - d77a0f2d - axolotle : refactor(database): rename_llm log if nothing found
+2026-04-24T17:27:44+02:00 - cb1937a5 - axolotle : refactor(db): readd 'db archive spam' command and run it in 'db lint'
+2026-04-24T17:27:44+02:00 - c686b29a - axolotle : refactor(database): comment archive_spam for now since it is also done in topic_pii.py
+2026-04-24T17:27:44+02:00 - c3639e3e - axolotle : fix(database): fix wrong but okish country_portal
+2026-04-24T17:27:44+02:00 - c1fa743b - axolotle : refactor(database): log_archived also show contains_pii and contains_spam as archived like
+2026-04-24T17:27:44+02:00 - c1f5ffea - axolotle : refactor(database): set 'unknown' archived_reason to votes and reaction also in 03_2026_archived migration
+2026-04-24T17:27:44+02:00 - c04b48a3 - axolotle : refactor: remove corrupted data checks in global db queries
+2026-04-24T17:27:44+02:00 - b67497e0 - axolotle : fix(database): archive_not_archived logging
+2026-04-24T17:27:44+02:00 - b4f49f5c - axolotle : chore(database): rename migration files
+2026-04-24T17:27:44+02:00 - b4bf4cf5 - axolotle : refactor(database): add other llm rename to 03_2026_archived migration
+2026-04-24T17:27:44+02:00 - ad357f74 - axolotle : feat(database): add archive_or_fix_country_portal
+2026-04-24T17:27:44+02:00 - 9f40a3d3 - axolotle : feat(database): add reset_archived in migration
+2026-04-24T17:27:44+02:00 - 9d5257b5 - axolotle : refactor(db): move topics_pii.py to database actions
+2026-04-24T17:27:44+02:00 - 9c4b8e72 - axolotle : feat(database): add archived count logging infos
+2026-04-24T17:27:44+02:00 - 9aade547 - axolotle : refactor(database): improve table archived display + add 'order_by' arg + add 'days' arg to also display infos within last n days
+2026-04-24T17:27:44+02:00 - 93385d10 - axolotle : refactor(db): run llm analyze only on archived=False (exclude already archived data and not yet pre linted data)
+2026-04-24T17:27:44+02:00 - 90d59dbd - axolotle : refactor(cli): configure base 'comparia' logger
+2026-04-24T17:27:44+02:00 - 8dbcd481 - axolotle : refactor(database): add log_archived cli command
+2026-04-24T17:27:44+02:00 - 86dc36c6 - axolotle : refactor: rename logger 'comparia.database' -> 'comparia.db'
+2026-04-24T17:27:44+02:00 - 7e1a9b16 - axolotle : refactor(db): llm_analyze local import of heavy vertexai lib
+2026-04-24T17:27:44+02:00 - 79eb065d - axolotle : fix(database): migration archived_reason query
+2026-04-24T17:27:44+02:00 - 6266a7f1 - axolotle : feat(cli): add 'db llm-analyze' command
+2026-04-24T17:27:44+02:00 - 61a6b6cd - axolotle : refactor(db): add llm analyze in 'db lint' with '--with-llm-analyze' arg
+2026-04-24T17:27:44+02:00 - 57ba70d5 - axolotle : fix(archive): conv a -> conv b
+2026-04-24T17:27:44+02:00 - 3ed05faf - axolotle : chore(cli): add some command comments
+2026-04-24T17:27:44+02:00 - 3cbcbabe - axolotle : chore: llm_analyze format queries
+2026-04-24T17:27:44+02:00 - 330fbf49 - axolotle : refactor(database): improve log_archived
+2026-04-24T17:27:44+02:00 - 2afb6211 - axolotle : refactor(database): enhance corrupted conversations checks
+2026-04-24T17:27:44+02:00 - 24e84194 - axolotle : refactor(database): log_archived allow to display only last n days data or display alongside global data
+2026-04-24T17:27:44+02:00 - 24c46ba6 - axolotle : chore(utils): format
+2026-04-24T17:27:44+02:00 - 20e32aa3 - axolotle : fix(archive): not_archived continue instead of return
+2026-04-24T17:27:44+02:00 - 1a1aa1b5 - axolotle : feat(database): add function to archive reactions on conversations with already a vote
+2026-04-24T17:27:44+02:00 - 100ba5ce - axolotle : refactor(cli): make cli executable
+2026-04-24T17:27:44+02:00 - 0940a0b4 - axolotle : fix(database): fix some archive queries
+2026-04-24T17:27:44+02:00 - 05188560 - axolotle : fix(archive): corrupted next() calls
+2026-04-24T17:27:44+02:00 - 02ae9e31 - axolotle : refactor(database): reflect rename migration files
+2026-04-24T17:27:44+02:00 - 02a8c1c4 - axolotle : refactor(database): lint comment spam since it is done in topics_pii
+2026-04-24T17:27:43+02:00 - fd85e5fc - axolotle : feat(database): add archive_spam db utility
+2026-04-24T17:27:43+02:00 - eaa68bda - axolotle : feat(database): add archive_duplicate function that search for votes and reactions dups
+2026-04-24T17:27:43+02:00 - d104a5d0 - axolotle : feat(database): add lint db utility
+2026-04-24T17:27:43+02:00 - cd367128 - axolotle : feat(database): add migration with new col archived_reason and archive_at, and drop archive default value to FALSE
+2026-04-24T17:27:43+02:00 - b2d7e330 - axolotle : feat(database): archive votes with no choice
+2026-04-24T17:27:43+02:00 - b0201ece - axolotle : feat(database): add __init__
+2026-04-24T17:27:43+02:00 - a2d947a1 - axolotle : feat(database): add archive db utility
+2026-04-24T17:27:43+02:00 - 9c2a575e - axolotle : feat(database): archive conversations with no model defined
+2026-04-24T17:27:43+02:00 - 88f352c0 - axolotle : fix(database): fix missing import
+2026-04-24T17:27:43+02:00 - 7407c9e4 - axolotle : feat(database): add archive_duplicate command in cli and in lint command
+2026-04-24T17:27:43+02:00 - 736adac2 - axolotle : feat(database): add rename_llm db utility
+2026-04-24T17:27:43+02:00 - 5c6fcbc4 - axolotle : feat: add comparia cli global tool with database commands
+2026-04-24T17:27:43+02:00 - 50e7fee7 - axolotle : feat(database): add archive_corrupted db utility
+2026-04-24T17:27:43+02:00 - 49727042 - axolotle : refactor(database): split reaction corrupted data query
+2026-04-24T17:27:43+02:00 - 448ce63d - axolotle : feat(database): archive conversations with same model match
+2026-04-24T17:27:43+02:00 - 41f43476 - axolotle : feat(database): add archive_unknown_llms db utility
+2026-04-24T17:27:43+02:00 - 3cafa0f1 - axolotle : feat(database): add reset_archived db utility
+2026-04-24T17:27:43+02:00 - 22257ef1 - axolotle : feat(database): add archive_not_archived db utility
+2026-04-24T17:27:43+02:00 - 1b5c012a - axolotle : feat(database): add database cli tool
+2026-04-24T17:27:43+02:00 - 1898559e - axolotle : feat(database): rework corrupted data archival loop
+2026-04-24T17:27:43+02:00 - 11d012b4 - axolotle : refactor(database): update ArchivedReason
+2026-04-24T16:13:40+02:00 - 39d69daa - Elie Gavoty : Merge pull request #453 from betagouv/fix/spam-fake-session-id-prefix
+2026-04-23T13:33:44+02:00 - 71cfc284 - axolotle : chore(config): autoflake ignore __init__.py
+2026-04-23T13:33:16+02:00 - c4f2c1ba - axolotle : chore: format python
+2026-04-23T09:45:37+02:00 - c8ada555 - Simon : feat(spam): detect bot prompts prefixed with fake session IDs
+2026-04-22T15:54:34+02:00 - 65e77fd0 - Elie Gavoty : chore(models): update
+2026-04-22T15:50:14+02:00 - f9f10553 - Elie Gavoty : Merge pull request #444 from betagouv/add-glm-5.1
+2026-04-22T14:00:38+02:00 - 33e0ab1b - Elie Gavoty : Merge pull request #449 from betagouv/feat/catalog-archive-and-new-models
+2026-04-22T10:02:02+02:00 - e9b1d043 - Elie Gavoty : Merge pull request #445 from betagouv/fix/spam-hex-injection
+2026-04-21T16:48:04+02:00 - e3c11358 - Simon : feat(models): add Kimi K2.6
+2026-04-20T16:37:18+02:00 - 4f3b90a0 - Simon : feat(models): archive 12 superseded models, add Grok 4.20, Qwen 3.6 Plus, MiniMax M2.7, LFM2 24B A2B
+2026-04-16T14:44:04+02:00 - 88ec8f3a - Simon : fix(spam): block hex-prefixed prompt injection messages
+2026-04-16T10:57:00+02:00 - 7118e2a7 - Simon : chore(models): add GLM 5.1
+2026-04-15T16:38:10+02:00 - d6e0e0e0 - Elie Gavoty : Merge branch 'main' into develop
 2026-04-15T16:38:10+02:00 - d6e0e0e - Elie Gavoty : Merge branch 'main' into develop
+2026-04-15T11:06:18+02:00 - 6c158969 - Elie Gavoty : Merge pull request #429 from betagouv/simple_docker_install
 2026-04-15T11:06:18+02:00 - 6c15896 - Elie Gavoty : Merge pull request #429 from betagouv/simple_docker_install
+2026-04-09T16:29:10+02:00 - 4dbbfbce - Elie Gavoty : fix caddy reverse proxy
 2026-04-09T16:29:10+02:00 - 4dbbfbc - Elie Gavoty : fix caddy reverse proxy
+2026-04-09T16:23:11+02:00 - 263d5c5b - Elie Gavoty : fix(devops): fix postgres error
 2026-04-09T16:23:11+02:00 - 263d5c5 - Elie Gavoty : fix(devops): fix postgres error
+2026-04-09T16:21:08+02:00 - 0af822c8 - Elie Gavoty : fix(devops): fix postgres error
 2026-04-09T16:21:08+02:00 - 0af822c - Elie Gavoty : fix(devops): fix postgres error
+2026-04-09T16:16:09+02:00 - aa52a721 - Elie Gavoty : enh(doc): detail the database init process
 2026-04-09T16:16:09+02:00 - aa52a72 - Elie Gavoty : enh(doc): detail the database init process
+2026-04-09T16:04:53+02:00 - 9d4506d2 - Elie Gavoty : fix(devops): fix caddy error
 2026-04-09T16:04:53+02:00 - 9d4506d - Elie Gavoty : fix(devops): fix caddy error
+2026-04-09T16:04:38+02:00 - a5677f00 - Elie Gavoty : fix(devops): patch postgres GRANT user in db init script
 2026-04-09T16:04:38+02:00 - a5677f0 - Elie Gavoty : fix(devops): patch postgres GRANT user in db init script
+2026-04-09T15:49:39+02:00 - d3dda598 - Elie Gavoty : enh(doc): improve docker install doc
 2026-04-09T15:49:39+02:00 - d3dda59 - Elie Gavoty : enh(doc): improve docker install doc
+2026-04-08T19:56:24+02:00 - 6d304e9a - Elie Gavoty : devops: add Docker install documentation
 2026-04-08T19:56:24+02:00 - 6d304e9 - Elie Gavoty : devops: add Docker install documentation
+2026-04-08T19:53:41+02:00 - dc3665c2 - Elie Gavoty : devops: add standalone docker install with caddy
 2026-04-08T19:53:41+02:00 - dc3665c - Elie Gavoty : devops: add standalone docker install with caddy
+2026-04-08T19:39:59+02:00 - e65d886e - Elie Gavoty : devops: rename docker-compose.yml to docker-compose-dev.yml
 2026-04-08T19:39:59+02:00 - e65d886 - Elie Gavoty : devops: rename docker-compose.yml to docker-compose-dev.yml
+2026-04-08T19:36:24+02:00 - 8eadd999 - Elie Gavoty : rename docker dir to devops
 2026-04-08T19:36:24+02:00 - 8eadd99 - Elie Gavoty : rename docker dir to devops
+2026-04-08T18:38:36+02:00 - bb4e4172 - Elie Gavoty : Merge pull request #428 from betagouv/archive-olmo-3-32b-think
 2026-04-08T18:38:36+02:00 - bb4e417 - Elie Gavoty : Merge pull request #428 from betagouv/archive-olmo-3-32b-think
+2026-04-08T18:35:40+02:00 - 42b532a2 - Elie Gavoty : chore(models): archive olmo-3-32b-think there seems to be no available provider for the last week -> 404
 2026-04-08T18:35:40+02:00 - 42b532a - Elie Gavoty : chore(models): archive olmo-3-32b-think there seems to be no available provider for the last week -> 404
+2026-04-08T18:27:58+02:00 - 6aa1b879 - Elie Gavoty : Merge pull request #427 from betagouv/dependabot/npm_and_yarn/frontend/npm-minor-patch-b01d27084a
 2026-04-08T18:27:58+02:00 - 6aa1b87 - Elie Gavoty : Merge pull request #427 from betagouv/dependabot/npm_and_yarn/frontend/npm-minor-patch-b01d27084a
+2026-04-08T18:26:37+02:00 - f58cc643 - dependabot[bot] : chore(deps): bump the npm-minor-patch group across 1 directory with 24 updates
 2026-04-08T18:26:37+02:00 - f58cc64 - dependabot[bot] : chore(deps): bump the npm-minor-patch group across 1 directory with 24 updates
+2026-04-08T18:25:02+02:00 - 60408641 - Elie Gavoty : Merge pull request #422 from betagouv/dependabot/npm_and_yarn/frontend/jsdom-29.0.2
 2026-04-08T18:25:02+02:00 - 6040864 - Elie Gavoty : Merge pull request #422 from betagouv/dependabot/npm_and_yarn/frontend/jsdom-29.0.2
+2026-04-08T18:21:56+02:00 - 4c12af4b - dependabot[bot] : chore(deps-dev): bump jsdom from 27.4.0 to 29.0.2 in /frontend
 2026-04-08T18:21:56+02:00 - 4c12af4 - dependabot[bot] : chore(deps-dev): bump jsdom from 27.4.0 to 29.0.2 in /frontend
+2026-04-08T18:18:11+02:00 - e527d56a - Elie Gavoty : Merge pull request #423 from betagouv/dependabot/npm_and_yarn/frontend/eslint-10.2.0
 2026-04-08T18:18:11+02:00 - e527d56 - Elie Gavoty : Merge pull request #423 from betagouv/dependabot/npm_and_yarn/frontend/eslint-10.2.0
+2026-04-08T18:16:44+02:00 - b62aa49d - dependabot[bot] : chore(deps-dev): bump eslint from 9.39.2 to 10.2.0 in /frontend
 2026-04-08T18:16:44+02:00 - b62aa49 - dependabot[bot] : chore(deps-dev): bump eslint from 9.39.2 to 10.2.0 in /frontend
+2026-04-08T18:12:58+02:00 - 43d70578 - Elie Gavoty : Merge pull request #421 from betagouv/dependabot/npm_and_yarn/frontend/eslint/js-10.0.1
 2026-04-08T18:12:58+02:00 - 43d7057 - Elie Gavoty : Merge pull request #421 from betagouv/dependabot/npm_and_yarn/frontend/eslint/js-10.0.1
+2026-04-08T18:06:23+02:00 - 808e3b79 - Elie Gavoty : Merge branch 'develop'
 2026-04-08T18:06:23+02:00 - 808e3b7 - Elie Gavoty : Merge branch 'develop'
+2026-04-08T18:03:20+02:00 - df3d4826 - Elie Gavoty : Merge pull request #417 from weblate/weblate-comparia-develop
 2026-04-08T18:03:20+02:00 - df3d482 - Elie Gavoty : Merge pull request #417 from weblate/weblate-comparia-develop
+2026-04-08T18:01:54+02:00 - 7a5265a8 - Elie Gavoty : Merge pull request #398 from betagouv/fix/persist-spam-detection-db
 2026-04-08T18:01:54+02:00 - 7a5265a - Elie Gavoty : Merge pull request #398 from betagouv/fix/persist-spam-detection-db
+2026-04-08T17:04:39+02:00 - af242e92 - Simon Zilinskas : fix(spam): use Gemini model for spam/NSFW detection instead of regex
 2026-04-08T17:04:39+02:00 - af242e9 - Simon Zilinskas : fix(spam): use Gemini model for spam/NSFW detection instead of regex
+2026-04-08T17:04:39+02:00 - 69b93856 - Simon Zilinskas : refactor(spam): consolidate stats queries, use NULL default for contains_spam
 2026-04-08T17:04:39+02:00 - 69b9385 - Simon Zilinskas : refactor(spam): consolidate stats queries, use NULL default for contains_spam
+2026-04-08T17:04:39+02:00 - 371f0fcf - Simon Zilinskas : fix(spam): use response_schema for strict enforcement, adopt gemini-3.1-flash-lite
 2026-04-08T17:04:39+02:00 - 371f0fc - Simon Zilinskas : fix(spam): use response_schema for strict enforcement, adopt gemini-3.1-flash-lite
+2026-04-08T17:04:39+02:00 - 064f55c5 - Simon Zilinskas : fix(spam): persist spam detection in DB like PII
 2026-04-08T17:04:39+02:00 - 064f55c - Simon Zilinskas : fix(spam): persist spam detection in DB like PII
+2026-04-08T17:03:25+02:00 - 16567fa8 - Elie Gavoty : Merge pull request #425 from betagouv/feat/add-gemma-4-26b-a4b
 2026-04-08T17:03:25+02:00 - 16567fa - Elie Gavoty : Merge pull request #425 from betagouv/feat/add-gemma-4-26b-a4b
+2026-04-08T17:02:33+02:00 - 92cd56d4 - Elie Gavoty : Merge pull request #426 from betagouv/archive-lfm2-8b-a1b
 2026-04-08T17:02:33+02:00 - 92cd56d - Elie Gavoty : Merge pull request #426 from betagouv/archive-lfm2-8b-a1b
+2026-04-08T17:01:53+02:00 - 04af6a04 - Elie Gavoty : chore: build models
 2026-04-08T17:01:53+02:00 - 04af6a0 - Elie Gavoty : chore: build models
+2026-04-08T17:00:41+02:00 - f338521d - Simon : feat: add Gemma 4 26B A4B (MoE) to model catalog
 2026-04-08T17:00:41+02:00 - f338521 - Simon : feat: add Gemma 4 26B A4B (MoE) to model catalog
+2026-04-08T16:26:23+02:00 - 37ceb7a6 - Elie Gavoty : chore: archive LFM 2 8B A1B model
 2026-04-08T16:26:23+02:00 - 37ceb7a - Elie Gavoty : chore: archive LFM 2 8B A1B model
+2026-04-07T14:54:39+02:00 - 66a32e2e - Elie Gavoty : Merge pull request #424 from betagouv/archive-gemini-3-pro
 2026-04-07T14:54:39+02:00 - 66a32e2 - Elie Gavoty : Merge pull request #424 from betagouv/archive-gemini-3-pro
+2026-04-07T14:52:25+02:00 - 0fd60261 - Elie Gavoty : chore: archive Gemini 3 Pro model
 2026-04-07T14:52:25+02:00 - 0fd6026 - Elie Gavoty : chore: archive Gemini 3 Pro model
+2026-04-07T13:52:29+02:00 - 45150d85 - Elie Gavoty : Merge pull request #419 from betagouv/dependabot/pip/pip-minor-patch-8870262dd2
 2026-04-07T13:52:29+02:00 - 45150d8 - Elie Gavoty : Merge pull request #419 from betagouv/dependabot/pip/pip-minor-patch-8870262dd2
+2026-04-07T13:47:39+02:00 - f966e17b - Elie Gavoty : fix(devops): fix dependabot frequency
 2026-04-07T13:47:39+02:00 - f966e17 - Elie Gavoty : fix(devops): fix dependabot frequency
+2026-04-07T13:45:01+02:00 - 0e47a387 - Elie Gavoty : Merge branch 'main' into develop
 2026-04-07T13:45:01+02:00 - 0e47a38 - Elie Gavoty : Merge branch 'main' into develop
+2026-04-07T13:36:48+02:00 - e02f5361 - Elie Gavoty : chore: update models
 2026-04-07T13:36:48+02:00 - e02f536 - Elie Gavoty : chore: update models
+2026-04-07T13:36:48+02:00 - 663eb48b - Simon : feat: add Gemma 4 31B to model catalog
 2026-04-07T13:36:48+02:00 - 663eb48 - Simon : feat: add Gemma 4 31B to model catalog
+2026-04-07T11:55:11Z - 4a5bcafb - dependabot[bot] : chore(deps-dev): bump @eslint/js from 9.39.2 to 10.0.1 in /frontend
 2026-04-07T11:55:11Z - 4a5bcaf - dependabot[bot] : chore(deps-dev): bump @eslint/js from 9.39.2 to 10.0.1 in /frontend
+2026-04-07T11:49:27Z - e9217e13 - dependabot[bot] : chore(deps): bump the pip-minor-patch group with 2 updates
 2026-04-07T11:49:27Z - e9217e1 - dependabot[bot] : chore(deps): bump the pip-minor-patch group with 2 updates
+2026-04-03T20:58:10+09:00 - 56392cad - Simon : feat: add Gemma 4 31B to model catalog
 2026-04-03T20:58:10+09:00 - 56392ca - Simon : feat: add Gemma 4 31B to model catalog
+2026-04-03T16:04:58+02:00 - 0cd1c27b - Elie Gavoty : Merge pull request #416 from betagouv/enh/config-dependabot
 2026-04-03T16:04:58+02:00 - 0cd1c27 - Elie Gavoty : Merge pull request #416 from betagouv/enh/config-dependabot
+2026-04-03T15:58:46+02:00 - dee3f82e - Elie Gavoty : Merge pull request #418 from betagouv/feat/add-gemma-4-31b
 2026-04-03T15:58:46+02:00 - dee3f82 - Elie Gavoty : Merge pull request #418 from betagouv/feat/add-gemma-4-31b
+2026-04-03T15:56:35+02:00 - 4eb3b342 - Elie Gavoty : chore: update models
 2026-04-03T15:56:35+02:00 - 4eb3b34 - Elie Gavoty : chore: update models
+2026-04-03T11:09:59+02:00 - b5f10f64 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-04-03T11:09:59+02:00 - b5f10f6 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-04-03T09:09:53Z - daf370ea - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
 2026-04-03T09:09:53Z - daf370e - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-04-02T16:38:19+02:00 - 0af1340a - Elie Gavoty : enh(devops): dependabot batch update every 2 weeks rather than security PR
 2026-04-02T16:38:19+02:00 - 0af1340 - Elie Gavoty : enh(devops): dependabot batch update every 2 weeks rather than security PR
+2026-04-02T16:29:04+02:00 - 0483d619 - Elie Gavoty : fix(front+devops): npm version conflict make dependabot pipeline crash
 2026-04-02T16:29:04+02:00 - 0483d61 - Elie Gavoty : fix(front+devops): npm version conflict make dependabot pipeline crash
+2026-04-02T15:25:21+02:00 - 922101f1 - Elie Gavoty : Merge branch 'develop'
 2026-04-02T15:25:21+02:00 - 922101f - Elie Gavoty : Merge branch 'develop'
+2026-04-01T19:00:28+02:00 - 4c5cccca - Elie Gavoty : devops: remove rankings update github pipeline
 2026-04-01T19:00:28+02:00 - 4c5cccc - Elie Gavoty : devops: remove rankings update github pipeline
+2026-04-01T18:58:11+02:00 - d8397f5f - Elie Gavoty : Merge branch 'develop'
 2026-04-01T18:58:11+02:00 - d8397f5 - Elie Gavoty : Merge branch 'develop'
+2026-04-01T18:44:55+02:00 - 7ba0c421 - Elie Gavoty : Merge pull request #400 from betagouv/feat/jenkins-scripts-refactor
 2026-04-01T18:44:55+02:00 - 7ba0c42 - Elie Gavoty : Merge pull request #400 from betagouv/feat/jenkins-scripts-refactor
+2026-04-01T18:31:11+02:00 - 925d28d0 - Elie Gavoty : Merge pull request #407 from weblate/weblate-comparia-develop
 2026-04-01T18:31:11+02:00 - 925d28d - Elie Gavoty : Merge pull request #407 from weblate/weblate-comparia-develop
+2026-04-01T18:17:45+02:00 - d6fabe80 - Elie Gavoty : devops: drastic simplification following jenkins pipeline cleaning : only use deploy-dev etc
 2026-04-01T18:17:45+02:00 - d6fabe8 - Elie Gavoty : devops: drastic simplification following jenkins pipeline cleaning : only use deploy-dev etc
+2026-04-01T17:53:10+02:00 - eb7ad183 - Elie Gavoty : devops: remove check image jobs in jenkins and github
 2026-04-01T17:53:10+02:00 - eb7ad18 - Elie Gavoty : devops: remove check image jobs in jenkins and github
+2026-04-01T17:53:09+02:00 - d4c03253 - Elie Gavoty : enh(devops):refactor Jenkins trigger scripts with common module
 2026-04-01T17:53:09+02:00 - d4c0325 - Elie Gavoty : enh(devops):refactor Jenkins trigger scripts with common module
+2026-04-01T17:40:50+02:00 - 3c7ae451 - Elie Gavoty : Merge pull request #384 from betagouv/feat/rate-limit-custom-selection
 2026-04-01T17:40:50+02:00 - 3c7ae45 - Elie Gavoty : Merge pull request #384 from betagouv/feat/rate-limit-custom-selection
+2026-04-01T17:21:42+02:00 - a1b9ae90 - Elie Gavoty : fix(session): fix rebase error
 2026-04-01T17:21:42+02:00 - a1b9ae9 - Elie Gavoty : fix(session): fix rebase error
+2026-04-01T17:14:06+02:00 - e9f78a77 - Simon Zilinskas : feat: add Altcha proof-of-work captcha to arena endpoints
 2026-04-01T17:14:06+02:00 - e9f78a7 - Simon Zilinskas : feat: add Altcha proof-of-work captcha to arena endpoints
+2026-04-01T17:14:06+02:00 - c1104182 - Simon Zilinskas : feat(i18n): translate custom selection rate limit error
 2026-04-01T17:14:06+02:00 - c110418 - Simon Zilinskas : feat(i18n): translate custom selection rate limit error
+2026-04-01T17:14:06+02:00 - 50809ebb - Simon Zilinskas : feat(backend): rate limit custom model selection per IP
 2026-04-01T17:14:06+02:00 - 50809eb - Simon Zilinskas : feat(backend): rate limit custom model selection per IP
+2026-04-01T17:11:34+02:00 - e4011935 - Elie Gavoty : Merge pull request #414 from betagouv/debug_odin_models
 2026-04-01T17:11:34+02:00 - e401193 - Elie Gavoty : Merge pull request #414 from betagouv/debug_odin_models
+2026-04-01T17:09:59+02:00 - f69172a9 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-04-01T17:09:59+02:00 - f69172a - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-04-01T17:09:54+02:00 - 5adc4856 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
 2026-04-01T17:09:54+02:00 - 5adc485 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-04-01T17:03:42+02:00 - ad8a8e10 - Elie Gavoty : fix(odin): raise timeouts for ordbogen
 2026-04-01T17:03:42+02:00 - ad8a8e1 - Elie Gavoty : fix(odin): raise timeouts for ordbogen
+2026-04-01T16:38:29+02:00 - be445c05 - Elie Gavoty : fix(models): reenable odin models
 2026-04-01T16:38:29+02:00 - be445c0 - Elie Gavoty : fix(models): reenable odin models
+2026-04-01T15:12:36+02:00 - ee1e039d - Elie Gavoty : Merge branch 'develop'
 2026-04-01T15:12:36+02:00 - ee1e039 - Elie Gavoty : Merge branch 'develop'
+2026-04-01T14:58:05+02:00 - 92868082 - Elie Gavoty : fix(analyze): fix gemini 3.1 flash vertex region
 2026-04-01T14:58:05+02:00 - 9286808 - Elie Gavoty : fix(analyze): fix gemini 3.1 flash vertex region
+2026-04-01T14:16:41+02:00 - 09f10b86 - Elie Gavoty : Merge pull request #368 from betagouv/switch-gemini-model-topics-pii
 2026-04-01T14:16:41+02:00 - 09f10b8 - Elie Gavoty : Merge pull request #368 from betagouv/switch-gemini-model-topics-pii
+2026-04-01T14:14:37+02:00 - a1b3cc26 - Simon Zilinskas : fix(data): switch to gemini-3.1-flash-lite-preview for conversation post-processing
 2026-04-01T14:14:37+02:00 - a1b3cc2 - Simon Zilinskas : fix(data): switch to gemini-3.1-flash-lite-preview for conversation post-processing
+2026-04-01T14:07:47+02:00 - 8b032d65 - Elie Gavoty : Merge branch 'develop'
 2026-04-01T14:07:47+02:00 - 8b032d6 - Elie Gavoty : Merge branch 'develop'
+2026-04-01T14:05:40+02:00 - d84c9027 - Elie Gavoty : Merge pull request #380 from betagouv/dataset-portals
 2026-04-01T14:05:40+02:00 - d84c902 - Elie Gavoty : Merge pull request #380 from betagouv/dataset-portals
+2026-03-31T19:22:58+02:00 - 8fe138c1 - Elie Gavoty : fix(devops): update github pipeline to install data group for sqlalchemy
 2026-03-31T19:22:58+02:00 - 8fe138c - Elie Gavoty : fix(devops): update github pipeline to install data group for sqlalchemy
+2026-03-31T19:14:59+02:00 - ffe42a3b - axolotle : refactor(utils): add db_connection contextmanager to get a sqlalchemy db connection
 2026-03-31T19:14:59+02:00 - ffe42a3 - axolotle : refactor(utils): add db_connection contextmanager to get a sqlalchemy db connection
+2026-03-31T19:14:59+02:00 - fc22f5a0 - axolotle : refactor(dataset): use utils logging
 2026-03-31T19:14:59+02:00 - fc22f5a - axolotle : refactor(dataset): use utils logging
+2026-03-31T19:14:59+02:00 - f5018fb7 - axolotle : fix(utils): add key for conv filtering
 2026-03-31T19:14:59+02:00 - f5018fb - axolotle : fix(utils): add key for conv filtering
+2026-03-31T19:14:59+02:00 - e0a5a807 - axolotle : refactor(utils): add stream_result option to get_db_engine
 2026-03-31T19:14:59+02:00 - e0a5a80 - axolotle : refactor(utils): add stream_result option to get_db_engine
+2026-03-31T19:14:59+02:00 - d49f9cde - axolotle : refactor(dataset): use cyclopts for cli args handling
 2026-03-31T19:14:59+02:00 - d49f9cd - axolotle : refactor(dataset): use cyclopts for cli args handling
+2026-03-31T19:14:59+02:00 - d07293fc - axolotle : refactor(dataset): use available utils constants
 2026-03-31T19:14:59+02:00 - d07293f - axolotle : refactor(dataset): use available utils constants
+2026-03-31T19:14:59+02:00 - bc30133a - axolotle : refactor(dataset): fix loggers
 2026-03-31T19:14:59+02:00 - bc30133 - axolotle : refactor(dataset): fix loggers
+2026-03-31T19:14:59+02:00 - a2cabda9 - axolotle : refactor(dataset): rework ip map data access
 2026-03-31T19:14:59+02:00 - a2cabda - axolotle : refactor(dataset): rework ip map data access
+2026-03-31T19:14:59+02:00 - 8d5aeb04 - axolotle : refactor(dataset): rework llm data access
 2026-03-31T19:14:59+02:00 - 8d5aeb0 - axolotle : refactor(dataset): rework llm data access
+2026-03-31T19:14:59+02:00 - 8646c990 - axolotle : refactor(dataset): separate export/push function to there own file
 2026-03-31T19:14:59+02:00 - 8646c99 - axolotle : refactor(dataset): separate export/push function to there own file
+2026-03-31T19:14:59+02:00 - 7485e517 - axolotle : chore: add HF_PUSH_DATASET_KEY_DA in .env.example
 2026-03-31T19:14:59+02:00 - 7485e51 - axolotle : chore: add HF_PUSH_DATASET_KEY_DA in .env.example
+2026-03-31T19:14:59+02:00 - 6ef6b9d5 - axolotle : refactor(dataset): use db_connection helper
 2026-03-31T19:14:59+02:00 - 6ef6b9d - axolotle : refactor(dataset): use db_connection helper
+2026-03-31T19:14:59+02:00 - 61764ac2 - axolotle : refactor(dataset): extract command related function to its own file
 2026-03-31T19:14:59+02:00 - 61764ac - axolotle : refactor(dataset): extract command related function to its own file
+2026-03-31T19:14:59+02:00 - 57ea673d - axolotle : feat(dataset): add new da hf token env var and add token prop to PortalRepo
 2026-03-31T19:14:59+02:00 - 57ea673 - axolotle : feat(dataset): add new da hf token env var and add token prop to PortalRepo
+2026-03-31T19:14:59+02:00 - 56a9ce9c - axolotle : refactor(dataset): move file to folder
 2026-03-31T19:14:59+02:00 - 56a9ce9 - axolotle : refactor(dataset): move file to folder
+2026-03-31T19:14:59+02:00 - 4dff69f7 - axolotle : feat(dataset): allow to build dataset for specific country_portal
 2026-03-31T19:14:59+02:00 - 4dff69f - axolotle : feat(dataset): allow to build dataset for specific country_portal
+2026-03-31T19:14:59+02:00 - 42694134 - axolotle : refactor(dataset): make country_portal required
 2026-03-31T19:14:59+02:00 - 4269413 - axolotle : refactor(dataset): make country_portal required
+2026-03-31T19:14:59+02:00 - 3bb9b9fd - axolotle : refactor(dataset): use python hf login function directly
 2026-03-31T19:14:59+02:00 - 3bb9b9f - axolotle : refactor(dataset): use python hf login function directly
+2026-03-31T19:14:59+02:00 - 3317d150 - axolotle : feat: add dataset-export-da command
 2026-03-31T19:14:59+02:00 - 3317d15 - axolotle : feat: add dataset-export-da command
+2026-03-31T19:14:59+02:00 - 2f8bd627 - axolotle : refactor(dataset): use hugginface-hub python upload function instead of cli call
 2026-03-31T19:14:59+02:00 - 2f8bd62 - axolotle : refactor(dataset): use hugginface-hub python upload function instead of cli call
+2026-03-31T19:14:58+02:00 - 24171b80 - axolotle : refactor(dataset): use module exec
 2026-03-31T19:14:58+02:00 - 24171b8 - axolotle : refactor(dataset): use module exec
+2026-03-31T19:04:34+02:00 - 529f0272 - Elie Gavoty : Merge branch 'develop'
 2026-03-31T19:04:34+02:00 - 529f027 - Elie Gavoty : Merge branch 'develop'
+2026-03-31T18:47:15+02:00 - ba70e0d7 - Elie Gavoty : Merge branch 'debug_ranking_consolidation' into HEAD
 2026-03-31T18:47:15+02:00 - ba70e0d - Elie Gavoty : Merge branch 'debug_ranking_consolidation' into HEAD
+2026-03-31T18:45:13+02:00 - 47741378 - Elie Gavoty : Merge branch 'ranking-consolidation' into develop
 2026-03-31T18:45:13+02:00 - 4774137 - Elie Gavoty : Merge branch 'ranking-consolidation' into develop
+2026-03-31T18:05:55+02:00 - 8aae5a27 - Elie Gavoty : fix(backend): don't use get_votes_db_query/get_reactions_db_query for get_country_portal_count as it create huge db performance issue
 2026-03-31T18:05:55+02:00 - 8aae5a2 - Elie Gavoty : fix(backend): don't use get_votes_db_query/get_reactions_db_query for get_country_portal_count as it create huge db performance issue
+2026-03-31T16:09:56+02:00 - fe219448 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
 2026-03-31T16:09:56+02:00 - fe21944 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-03-31T14:39:24+02:00 - 08716dd7 - Elie Gavoty : fix(backend): remove some logger noise
 2026-03-31T14:39:24+02:00 - 08716dd - Elie Gavoty : fix(backend): remove some logger noise
+2026-03-31T13:47:25+02:00 - cb09fd7d - Elie Gavoty : fix: update models to remove legacy fields
 2026-03-31T13:47:25+02:00 - cb09fd7 - Elie Gavoty : fix: update models to remove legacy fields
+2026-03-31T13:28:44+02:00 - 0d39d5e7 - Elie Gavoty : fix(backend): graceful degradation of loki push logging
 2026-03-31T13:28:44+02:00 - 0d39d5e - Elie Gavoty : fix(backend): graceful degradation of loki push logging
+2026-03-29T14:09:52+02:00 - 57c7a3c0 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
 2026-03-29T14:09:52+02:00 - 57c7a3c - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
+2026-03-29T14:09:49+02:00 - 0ff70f0b - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
 2026-03-29T14:09:49+02:00 - 0ff70f0 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-03-28T12:09:53+01:00 - cfdc84e8 - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
 2026-03-28T12:09:53+01:00 - cfdc84e - Marii Ojastu : i18n: updated translation for Estonian (Weblate)
+2026-03-27T15:59:22+01:00 - ed223b59 - axolotle : fix(back): cache: fix import and add REDIS_LLM_RESPONSES_KEY
 2026-03-27T15:59:22+01:00 - ed223b5 - axolotle : fix(back): cache: fix import and add REDIS_LLM_RESPONSES_KEY
+2026-03-27T15:59:22+01:00 - c7239e78 - axolotle : refactor(front): rename reaction to pref
 2026-03-27T15:59:22+01:00 - c7239e7 - axolotle : refactor(front): rename reaction to pref
+2026-03-27T15:59:22+01:00 - bb5550a6 - axolotle : fix(back): update comment
 2026-03-27T15:59:22+01:00 - bb5550a - axolotle : fix(back): update comment
+2026-03-27T15:59:22+01:00 - abf2bc65 - axolotle : refactor: move pref types to config
 2026-03-27T15:59:22+01:00 - abf2bc6 - axolotle : refactor: move pref types to config
+2026-03-27T15:59:22+01:00 - 950167db - axolotle : chore(data): update generated-models.json
 2026-03-27T15:59:22+01:00 - 950167d - axolotle : chore(data): update generated-models.json
+2026-03-27T15:59:22+01:00 - 6c061253 - axolotle : fix(back): revert get_country_portal_count ttl
 2026-03-27T15:59:22+01:00 - 6c06125 - axolotle : fix(back): revert get_country_portal_count ttl
+2026-03-27T15:59:22+01:00 - 5e5be7f6 - axolotle : chore(data): update generated-models.json with removed 'data' and 'prefs' keys
 2026-03-27T15:59:22+01:00 - 5e5be7f - axolotle : chore(data): update generated-models.json with removed 'data' and 'prefs' keys
+2026-03-27T15:59:22+01:00 - 53cc85ae - Elie Gavoty : fix(front): ranking avoid error if no models data yet
 2026-03-27T15:59:22+01:00 - 53cc85a - Elie Gavoty : fix(front): ranking avoid error if no models data yet
+2026-03-27T15:59:22+01:00 - 52ef6c3b - axolotle : chore: remove no longer needed model generation from 'compute-rankings'
 2026-03-27T15:59:22+01:00 - 52ef6c3 - axolotle : chore: remove no longer needed model generation from 'compute-rankings'
+2026-03-27T15:59:22+01:00 - 465faa9e - axolotle : feat(ranking): improve monitoring
 2026-03-27T15:59:22+01:00 - 465faa9 - axolotle : feat(ranking): improve monitoring
+2026-03-27T15:59:22+01:00 - 0de2c794 - axolotle : feat(ranking): also compute reaction for preferences
 2026-03-27T15:59:22+01:00 - 0de2c79 - axolotle : feat(ranking): also compute reaction for preferences
+2026-03-27T15:59:22+01:00 - 0d470935 - axolotle : refactor(back): rename generic reaction to pref
 2026-03-27T15:59:22+01:00 - 0d47093 - axolotle : refactor(back): rename generic reaction to pref
+2026-03-27T15:59:21+01:00 - e78d5778 - axolotle : refactor: remove no longer used ranking_scheduler
 2026-03-27T15:59:21+01:00 - e78d577 - axolotle : refactor: remove no longer used ranking_scheduler
+2026-03-27T15:59:21+01:00 - dd7862c7 - axolotle : refactor(llms): remove 'data' and 'prefs' from llms generation
 2026-03-27T15:59:21+01:00 - dd7862c - axolotle : refactor(llms): remove 'data' and 'prefs' from llms generation
+2026-03-27T15:59:21+01:00 - da256bf7 - axolotle : refactor: move ranking computation code to utils/
 2026-03-27T15:59:21+01:00 - da256bf - axolotle : refactor: move ranking computation code to utils/
+2026-03-27T15:59:21+01:00 - bfd7657b - axolotle : refactor(ranking): add DataGroup type
 2026-03-27T15:59:21+01:00 - bfd7657 - axolotle : refactor(ranking): add DataGroup type
+2026-03-27T15:59:21+01:00 - bda4c97c - axolotle : refactor(utils): use settings in get_db_engine()
 2026-03-27T15:59:21+01:00 - bda4c97 - axolotle : refactor(utils): use settings in get_db_engine()
+2026-03-27T15:59:21+01:00 - baa81cc3 - axolotle : refactor: move get_redis_client() to utils/storage
 2026-03-27T15:59:21+01:00 - baa81cc - axolotle : refactor: move get_redis_client() to utils/storage
+2026-03-27T15:59:21+01:00 - b2b18581 - axolotle : refactor(utils): move ranking data monitoring to 'ranking"
 2026-03-27T15:59:21+01:00 - b2b1858 - axolotle : refactor(utils): move ranking data monitoring to 'ranking"
+2026-03-27T15:59:21+01:00 - 9d430bf1 - axolotle : feat(back): use redis cached ranking data in get_available_models
 2026-03-27T15:59:21+01:00 - 9d430bf - axolotle : feat(back): use redis cached ranking data in get_available_models
+2026-03-27T15:59:21+01:00 - 9cc33cc6 - axolotle : feat(utils): add db_cursor helper
 2026-03-27T15:59:21+01:00 - 9cc33cc - axolotle : feat(utils): add db_cursor helper
+2026-03-27T15:59:21+01:00 - 97cc3afb - axolotle : feat(ranking): add 'run' script to compute ranking and store results in redis cache
 2026-03-27T15:59:21+01:00 - 97cc3af - axolotle : feat(ranking): add 'run' script to compute ranking and store results in redis cache
+2026-03-27T15:59:21+01:00 - 816d1387 - axolotle : refactor(ranking): update logger
 2026-03-27T15:59:21+01:00 - 816d138 - axolotle : refactor(ranking): update logger
+2026-03-27T15:59:21+01:00 - 78bec42d - axolotle : refactor: remove no longer used ranking data files
 2026-03-27T15:59:21+01:00 - 78bec42 - axolotle : refactor: remove no longer used ranking data files
+2026-03-27T15:59:21+01:00 - 6d5c68fa - axolotle : refactor(back): no longer fallback to json ranking data
 2026-03-27T15:59:21+01:00 - 6d5c68f - axolotle : refactor(back): no longer fallback to json ranking data
+2026-03-27T15:59:21+01:00 - 57696c44 - axolotle : refactor(back): remove no longer used validation alias in DatasetData model
 2026-03-27T15:59:21+01:00 - 57696c4 - axolotle : refactor(back): remove no longer used validation alias in DatasetData model
+2026-03-27T15:59:21+01:00 - 425ced2a - axolotle : refactor(ranking): use db helpers in queries
 2026-03-27T15:59:21+01:00 - 425ced2 - axolotle : refactor(ranking): use db helpers in queries
+2026-03-27T15:59:21+01:00 - 424d2170 - axolotle : chore(utils): add cyclopts dep
 2026-03-27T15:59:21+01:00 - 424d217 - axolotle : chore(utils): add cyclopts dep
+2026-03-27T15:59:21+01:00 - 31cfc67a - axolotle : refactor(ranking): set "redis" as default ranking computation storage mode
 2026-03-27T15:59:21+01:00 - 31cfc67 - axolotle : refactor(ranking): set "redis" as default ranking computation storage mode
+2026-03-27T15:59:21+01:00 - 2bf1a7ec - axolotle : refactor(front): ranking: display message if leaderboard not available
 2026-03-27T15:59:21+01:00 - 2bf1a7e - axolotle : refactor(front): ranking: display message if leaderboard not available
+2026-03-27T15:59:21+01:00 - 28c45a62 - axolotle : refactor: use globals vars for redis cache keys
 2026-03-27T15:59:21+01:00 - 28c45a6 - axolotle : refactor: use globals vars for redis cache keys
+2026-03-27T15:59:21+01:00 - 223dbe57 - axolotle : feat(utils): add modular db queries for conversations, votes and reactions
 2026-03-27T15:59:21+01:00 - 223dbe5 - axolotle : feat(utils): add modular db queries for conversations, votes and reactions
+2026-03-27T15:59:21+01:00 - 19b16a30 - axolotle : fix: update module path to ranking
 2026-03-27T15:59:21+01:00 - 19b16a3 - axolotle : fix: update module path to ranking
+2026-03-27T15:59:21+01:00 - 18077be4 - axolotle : chore: format python
 2026-03-27T15:59:21+01:00 - 18077be - axolotle : chore: format python
+2026-03-27T15:59:21+01:00 - 13627529 - axolotle : chore: update makefile 'compute-rankings' command
 2026-03-27T15:59:21+01:00 - 1362752 - axolotle : chore: update makefile 'compute-rankings' command
+2026-03-27T15:59:21+01:00 - 0d0c2e88 - Simon Zilinskas : feat(ranking): compute rankings in-app from DB instead of static files
 2026-03-27T15:59:21+01:00 - 0d0c2e8 - Simon Zilinskas : feat(ranking): compute rankings in-app from DB instead of static files
+2026-03-27T15:59:21+01:00 - 043867de - axolotle : refactor(back): use db helpers in get_country_portal_count
 2026-03-27T15:59:21+01:00 - 043867d - axolotle : refactor(back): use db helpers in get_country_portal_count
+2026-03-25T18:55:09+01:00 - af0e9a4e - Elie Gavoty : fix(front): lock file
 2026-03-25T18:55:09+01:00 - af0e9a4 - Elie Gavoty : fix(front): lock file
+2026-03-25T18:53:00+01:00 - c56fbf28 - Elie Gavoty : fix(backend): fix logger url
 2026-03-25T18:53:00+01:00 - c56fbf2 - Elie Gavoty : fix(backend): fix logger url
+2026-03-25T18:28:28+01:00 - 410508fd - Elie Gavoty : enh(front): add loki based custom logging
 2026-03-25T18:28:28+01:00 - 410508f - Elie Gavoty : enh(front): add loki based custom logging
+2026-03-25T18:12:30+01:00 - ca38e1aa - Elie Gavoty : enh(front): add instrumentation ssr
 2026-03-25T18:12:30+01:00 - ca38e1a - Elie Gavoty : enh(front): add instrumentation ssr
+2026-03-25T18:00:56+01:00 - 36a1e817 - Elie Gavoty : enh(back): add red metrics for fastapi
 2026-03-25T18:00:56+01:00 - 36a1e81 - Elie Gavoty : enh(back): add red metrics for fastapi
+2026-03-25T14:59:52+01:00 - 3b1c6dbe - Elie Gavoty : chore(models): build
 2026-03-25T14:59:52+01:00 - 3b1c6db - Elie Gavoty : chore(models): build
+2026-03-25T14:40:43+01:00 - 41fc218b - Simon Zilinskas : fix(spam): block System: prefix and roleplay injection tags
 2026-03-25T14:40:43+01:00 - 41fc218 - Simon Zilinskas : fix(spam): block System: prefix and roleplay injection tags
+2026-03-25T14:40:08+01:00 - d524c7d6 - Simon Zilinskas : feat(models): add GPT 5.4 Mini and Nano, archive GPT 5 Mini/Nano
 2026-03-25T14:40:08+01:00 - d524c7d - Simon Zilinskas : feat(models): add GPT 5.4 Mini and Nano, archive GPT 5 Mini/Nano
+2026-03-25T14:39:32+01:00 - 7f7632a7 - Elie Gavoty : enh(readme): add deepwiki badge to add auto-refresh of deepwiki page
 2026-03-25T14:39:32+01:00 - 7f7632a - Elie Gavoty : enh(readme): add deepwiki badge to add auto-refresh of deepwiki page
+2026-03-25T14:39:14+01:00 - dfed42a6 - Elie Gavoty : chore(models): models-build
 2026-03-25T14:39:14+01:00 - dfed42a - Elie Gavoty : chore(models): models-build
+2026-03-25T14:38:46+01:00 - 53579068 - Simon Zilinskas : feat(models): add Mistral Small 4 (119B MoE)
 2026-03-25T14:38:46+01:00 - 5357906 - Simon Zilinskas : feat(models): add Mistral Small 4 (119B MoE)
+2026-03-19T14:37:23+01:00 - 76ce6032 - Elie Gavoty : Merge pull request #396 from betagouv/enh/deepwiki-badge
 2026-03-19T14:37:23+01:00 - 76ce603 - Elie Gavoty : Merge pull request #396 from betagouv/enh/deepwiki-badge
+2026-03-19T14:00:25+01:00 - deda9340 - Elie Gavoty : enh(readme): add deepwiki badge to add auto-refresh of deepwiki page
 2026-03-19T14:00:25+01:00 - deda934 - Elie Gavoty : enh(readme): add deepwiki badge to add auto-refresh of deepwiki page
+2026-03-17T18:23:50+01:00 - 3b78c54a - Elie Gavoty : Merge pull request #392 from betagouv/add-mistral-small-4
 2026-03-17T18:23:50+01:00 - 3b78c54 - Elie Gavoty : Merge pull request #392 from betagouv/add-mistral-small-4
+2026-03-17T17:46:28+01:00 - fca5f873 - Elie Gavoty : chore(models): models-build
 2026-03-17T17:46:28+01:00 - fca5f87 - Elie Gavoty : chore(models): models-build
+2026-03-17T17:44:15+01:00 - b623816f - Simon Zilinskas : feat(models): add Mistral Small 4 (119B MoE)
 2026-03-17T17:44:15+01:00 - b623816 - Simon Zilinskas : feat(models): add Mistral Small 4 (119B MoE)
+2026-03-17T17:43:02+01:00 - cba1f0c9 - Elie Gavoty : Merge pull request #268 from betagouv/ranking-consolidation
 2026-03-17T17:43:02+01:00 - cba1f0c - Elie Gavoty : Merge pull request #268 from betagouv/ranking-consolidation
+2026-03-17T12:04:57+01:00 - fd2e72d2 - axolotle : feat(utils): add db_cursor helper
 2026-03-17T12:04:57+01:00 - fd2e72d - axolotle : feat(utils): add db_cursor helper
+2026-03-17T12:04:57+01:00 - fb54f257 - axolotle : refactor(back): remove no longer used validation alias in DatasetData model
 2026-03-17T12:04:57+01:00 - fb54f25 - axolotle : refactor(back): remove no longer used validation alias in DatasetData model
+2026-03-17T12:04:57+01:00 - f3906ff2 - axolotle : refactor(back): use db helpers in get_country_portal_count
 2026-03-17T12:04:57+01:00 - f3906ff - axolotle : refactor(back): use db helpers in get_country_portal_count
+2026-03-17T12:04:57+01:00 - dcaaaad0 - axolotle : refactor: move pref types to config
 2026-03-17T12:04:57+01:00 - dcaaaad - axolotle : refactor: move pref types to config
+2026-03-17T12:04:57+01:00 - d72e3a8e - axolotle : refactor(back): rename generic reaction to pref
 2026-03-17T12:04:57+01:00 - d72e3a8 - axolotle : refactor(back): rename generic reaction to pref
+2026-03-17T12:04:57+01:00 - d1d8e6e2 - axolotle : refactor(utils): move ranking data monitoring to 'ranking"
 2026-03-17T12:04:57+01:00 - d1d8e6e - axolotle : refactor(utils): move ranking data monitoring to 'ranking"
+2026-03-17T12:04:57+01:00 - d028b4ae - axolotle : refactor(front): rename reaction to pref
 2026-03-17T12:04:57+01:00 - d028b4a - axolotle : refactor(front): rename reaction to pref
+2026-03-17T12:04:57+01:00 - ab2dc1fa - axolotle : refactor(utils): use settings in get_db_engine()
 2026-03-17T12:04:57+01:00 - ab2dc1f - axolotle : refactor(utils): use settings in get_db_engine()
+2026-03-17T12:04:57+01:00 - a7f8e715 - axolotle : refactor(ranking): add DataGroup type
 2026-03-17T12:04:57+01:00 - a7f8e71 - axolotle : refactor(ranking): add DataGroup type
+2026-03-17T12:04:57+01:00 - a7d9de2f - axolotle : feat(ranking): improve monitoring
 2026-03-17T12:04:57+01:00 - a7d9de2 - axolotle : feat(ranking): improve monitoring
+2026-03-17T12:04:57+01:00 - a79728ba - axolotle : fix(back): revert get_country_portal_count ttl
 2026-03-17T12:04:57+01:00 - a79728b - axolotle : fix(back): revert get_country_portal_count ttl
+2026-03-17T12:04:57+01:00 - a4f75434 - axolotle : chore: format python
 2026-03-17T12:04:57+01:00 - a4f7543 - axolotle : chore: format python
+2026-03-17T12:04:57+01:00 - 9c39b9b4 - Simon Zilinskas : feat(ranking): compute rankings in-app from DB instead of static files
 2026-03-17T12:04:57+01:00 - 9c39b9b - Simon Zilinskas : feat(ranking): compute rankings in-app from DB instead of static files
+2026-03-17T12:04:57+01:00 - 91f6a233 - axolotle : refactor(ranking): set "redis" as default ranking computation storage mode
 2026-03-17T12:04:57+01:00 - 91f6a23 - axolotle : refactor(ranking): set "redis" as default ranking computation storage mode
+2026-03-17T12:04:57+01:00 - 91e22ee8 - axolotle : feat(back): use redis cached ranking data in get_available_models
 2026-03-17T12:04:57+01:00 - 91e22ee - axolotle : feat(back): use redis cached ranking data in get_available_models
+2026-03-17T12:04:57+01:00 - 8b1f2d71 - axolotle : refactor: remove no longer used ranking_scheduler
 2026-03-17T12:04:57+01:00 - 8b1f2d7 - axolotle : refactor: remove no longer used ranking_scheduler
+2026-03-17T12:04:57+01:00 - 74540741 - axolotle : fix(back): cache: fix import and add REDIS_LLM_RESPONSES_KEY
 2026-03-17T12:04:57+01:00 - 7454074 - axolotle : fix(back): cache: fix import and add REDIS_LLM_RESPONSES_KEY
+2026-03-17T12:04:57+01:00 - 7090776b - axolotle : refactor(ranking): use db helpers in queries
 2026-03-17T12:04:57+01:00 - 7090776 - axolotle : refactor(ranking): use db helpers in queries
+2026-03-17T12:04:57+01:00 - 6bfd2d7c - axolotle : refactor: move ranking computation code to utils/
 2026-03-17T12:04:57+01:00 - 6bfd2d7 - axolotle : refactor: move ranking computation code to utils/
+2026-03-17T12:04:57+01:00 - 654d0192 - axolotle : chore(data): update generated-models.json with removed 'data' and 'prefs' keys
 2026-03-17T12:04:57+01:00 - 654d019 - axolotle : chore(data): update generated-models.json with removed 'data' and 'prefs' keys
+2026-03-17T12:04:57+01:00 - 647f7570 - axolotle : chore(data): update generated-models.json
 2026-03-17T12:04:57+01:00 - 647f757 - axolotle : chore(data): update generated-models.json
+2026-03-17T12:04:57+01:00 - 5f23a213 - axolotle : chore(utils): add cyclopts dep
 2026-03-17T12:04:57+01:00 - 5f23a21 - axolotle : chore(utils): add cyclopts dep
+2026-03-17T12:04:57+01:00 - 59ae8683 - axolotle : refactor(front): ranking: display message if leaderboard not available
 2026-03-17T12:04:57+01:00 - 59ae868 - axolotle : refactor(front): ranking: display message if leaderboard not available
+2026-03-17T12:04:57+01:00 - 58ceb81d - Elie Gavoty : fix(front): ranking avoid error if no models data yet
 2026-03-17T12:04:57+01:00 - 58ceb81 - Elie Gavoty : fix(front): ranking avoid error if no models data yet
+2026-03-17T12:04:57+01:00 - 56c55714 - axolotle : feat(ranking): also compute reaction for preferences
 2026-03-17T12:04:57+01:00 - 56c5571 - axolotle : feat(ranking): also compute reaction for preferences
+2026-03-17T12:04:57+01:00 - 4e6d39ab - axolotle : refactor(ranking): update logger
 2026-03-17T12:04:57+01:00 - 4e6d39a - axolotle : refactor(ranking): update logger
+2026-03-17T12:04:57+01:00 - 3d495706 - axolotle : chore: remove no longer needed model generation from 'compute-rankings'
 2026-03-17T12:04:57+01:00 - 3d49570 - axolotle : chore: remove no longer needed model generation from 'compute-rankings'
+2026-03-17T12:04:57+01:00 - 3a70a230 - axolotle : refactor: use globals vars for redis cache keys
 2026-03-17T12:04:57+01:00 - 3a70a23 - axolotle : refactor: use globals vars for redis cache keys
+2026-03-17T12:04:57+01:00 - 367530bf - axolotle : fix: update module path to ranking
 2026-03-17T12:04:57+01:00 - 367530b - axolotle : fix: update module path to ranking
+2026-03-17T12:04:57+01:00 - 33d0fd45 - axolotle : refactor(llms): remove 'data' and 'prefs' from llms generation
 2026-03-17T12:04:57+01:00 - 33d0fd4 - axolotle : refactor(llms): remove 'data' and 'prefs' from llms generation
+2026-03-17T12:04:57+01:00 - 2f442b3e - axolotle : refactor: move get_redis_client() to utils/storage
 2026-03-17T12:04:57+01:00 - 2f442b3 - axolotle : refactor: move get_redis_client() to utils/storage
+2026-03-17T12:04:57+01:00 - 2d96ec9e - axolotle : chore: update makefile 'compute-rankings' command
 2026-03-17T12:04:57+01:00 - 2d96ec9 - axolotle : chore: update makefile 'compute-rankings' command
+2026-03-17T12:04:57+01:00 - 25606b1a - axolotle : feat(ranking): add 'run' script to compute ranking and store results in redis cache
 2026-03-17T12:04:57+01:00 - 25606b1 - axolotle : feat(ranking): add 'run' script to compute ranking and store results in redis cache
+2026-03-17T12:04:57+01:00 - 154d1c60 - axolotle : refactor(back): no longer fallback to json ranking data
 2026-03-17T12:04:57+01:00 - 154d1c6 - axolotle : refactor(back): no longer fallback to json ranking data
+2026-03-17T12:04:57+01:00 - 0e1a283d - axolotle : fix(back): update comment
 2026-03-17T12:04:57+01:00 - 0e1a283 - axolotle : fix(back): update comment
+2026-03-17T12:04:57+01:00 - 054f13bb - axolotle : feat(utils): add modular db queries for conversations, votes and reactions
 2026-03-17T12:04:57+01:00 - 054f13b - axolotle : feat(utils): add modular db queries for conversations, votes and reactions
+2026-03-17T12:04:57+01:00 - 04efa6d0 - axolotle : refactor: remove no longer used ranking data files
 2026-03-17T12:04:57+01:00 - 04efa6d - axolotle : refactor: remove no longer used ranking data files
+2026-03-16T16:35:23+01:00 - 8cc9ae48 - axolotle : fix(back): remove logging of asyncio.CancelledError
 2026-03-16T16:35:23+01:00 - 8cc9ae4 - axolotle : fix(back): remove logging of asyncio.CancelledError
+2026-03-16T16:29:10+01:00 - 6bb3bb1f - Axolotle : Merge pull request #379 from betagouv/feat/response-cache
 2026-03-16T16:29:10+01:00 - 6bb3bb1 - Axolotle : Merge pull request #379 from betagouv/feat/response-cache
+2026-03-16T14:51:11+01:00 - b58a7273 - axolotle : fix(back): typing
 2026-03-16T14:51:11+01:00 - b58a727 - axolotle : fix(back): typing
+2026-03-16T14:51:11+01:00 - 83eb4614 - Simon Zilinskas : feat(backend): add probabilistic response caching for first-turn messages
 2026-03-16T14:51:11+01:00 - 83eb461 - Simon Zilinskas : feat(backend): add probabilistic response caching for first-turn messages
+2026-03-16T14:51:11+01:00 - 7de59659 - axolotle : fix(back): remove is_cache default value in MessageMetadata to make sure those are defined at build
 2026-03-16T14:51:11+01:00 - 7de5965 - axolotle : fix(back): remove is_cache default value in MessageMetadata to make sure those are defined at build
+2026-03-16T14:51:11+01:00 - 7d5db501 - axolotle : fix(back): save CachedResponse with current_msg data
 2026-03-16T14:51:11+01:00 - 7d5db50 - axolotle : fix(back): save CachedResponse with current_msg data
+2026-03-16T14:51:11+01:00 - 4fbb56d0 - axolotle : fix(back): use same logic for gathering has_cached_response
 2026-03-16T14:51:11+01:00 - 4fbb56d - axolotle : fix(back): use same logic for gathering has_cached_response
+2026-03-16T14:51:11+01:00 - 4929015e - axolotle : fix(back): remove cached_response_* default values in ConversationsRecord to make sure those are defined at build
 2026-03-16T14:51:11+01:00 - 4929015 - axolotle : fix(back): remove cached_response_* default values in ConversationsRecord to make sure those are defined at build
+2026-03-16T14:51:11+01:00 - 26233d1b - axolotle : fix(streaming): silence CancelledError in _stream_cached_response to avoid breaking the whole conversation
 2026-03-16T14:51:11+01:00 - 26233d1 - axolotle : fix(streaming): silence CancelledError in _stream_cached_response to avoid breaking the whole conversation
+2026-03-16T14:48:30+01:00 - 7c53a212 - axolotle : fix(front): fix newsletter tally form darkmode
 2026-03-16T14:48:30+01:00 - 7c53a21 - axolotle : fix(front): fix newsletter tally form darkmode
+2026-03-16T10:49:10+01:00 - aba2c342 - Axolotle : Merge pull request #390 from betagouv/i18n-parameter-count-fix
 2026-03-16T10:49:10+01:00 - aba2c34 - Axolotle : Merge pull request #390 from betagouv/i18n-parameter-count-fix
+2026-03-16T10:42:26+01:00 - 51b9c82a - Simon : Fix number of parameters
 2026-03-16T10:42:26+01:00 - 51b9c82 - Simon : Fix number of parameters
+2026-03-16T10:37:44+01:00 - 083a9aa9 - Axolotle : Merge pull request #365 from betagouv/feat/newsletter-brevo-tally
 2026-03-16T10:37:44+01:00 - 083a9aa - Axolotle : Merge pull request #365 from betagouv/feat/newsletter-brevo-tally
+2026-03-16T10:25:14+01:00 - cab51ad9 - axolotle : fix(front): remove iframe outline
 2026-03-16T10:25:14+01:00 - cab51ad - axolotle : fix(front): remove iframe outline
+2026-03-13T08:45:26+01:00 - 35caca27 - Simon Zilinskas : fix(models): use free tier endpoint for Nemotron 3 Super (paid variant not yet available on OpenRouter)
 2026-03-13T08:45:26+01:00 - 35caca2 - Simon Zilinskas : fix(models): use free tier endpoint for Nemotron 3 Super (paid variant not yet available on OpenRouter)
+2026-03-13T08:34:38+01:00 - b19bc8fe - Simon Zilinskas : chore(models): build/update models
 2026-03-13T08:34:38+01:00 - b19bc8f - Simon Zilinskas : chore(models): build/update models
+2026-03-12T15:31:33+01:00 - ba114c92 - Simon : Merge pull request #386 from betagouv/add-nemotron-3-super
 2026-03-12T15:31:33+01:00 - ba114c9 - Simon : Merge pull request #386 from betagouv/add-nemotron-3-super
+2026-03-12T13:48:38+01:00 - ad68deee - Simon Zilinskas : feat(models): enrich Nemotron 3 Super fyi with expert count, synthetic data provenance and verbosity note
 2026-03-12T13:48:38+01:00 - ad68dee - Simon Zilinskas : feat(models): enrich Nemotron 3 Super fyi with expert count, synthetic data provenance and verbosity note
+2026-03-12T10:34:41+01:00 - e4abe583 - Simon Zilinskas : feat(models): add Nemotron 3 Super 120B-A12B
 2026-03-12T10:34:41+01:00 - e4abe58 - Simon Zilinskas : feat(models): add Nemotron 3 Super 120B-A12B
+2026-03-11T16:56:36+01:00 - a7dff130 - Elie Gavoty : fix(devops): prd deploy job name
 2026-03-11T16:56:36+01:00 - a7dff13 - Elie Gavoty : fix(devops): prd deploy job name
+2026-03-11T15:59:13+01:00 - d8341cd6 - Elie Gavoty : Merge branch 'archive-cohere-command-a' into develop
 2026-03-11T15:59:13+01:00 - d8341cd - Elie Gavoty : Merge branch 'archive-cohere-command-a' into develop
+2026-03-11T15:51:56+01:00 - 3fe1afa0 - Elie Gavoty : chore(models): update
 2026-03-11T15:51:56+01:00 - 3fe1afa - Elie Gavoty : chore(models): update
+2026-03-11T15:39:29+01:00 - 3e529905 - Elie Gavoty : Merge pull request #383 from betagouv/fix/block-role-prefixed-bot-spam
 2026-03-11T15:39:29+01:00 - 3e52990 - Elie Gavoty : Merge pull request #383 from betagouv/fix/block-role-prefixed-bot-spam
+2026-03-11T14:58:16+01:00 - 6266ee49 - Simon Zilinskas : chore(models): archive Cohere Command A
 2026-03-11T14:58:16+01:00 - 6266ee4 - Simon Zilinskas : chore(models): archive Cohere Command A
+2026-03-11T11:38:29+01:00 - 4c1a773d - Simon Zilinskas : fix(spam): block role-prefixed bot commands like 'User: say ok'
 2026-03-11T11:38:29+01:00 - 4c1a773 - Simon Zilinskas : fix(spam): block role-prefixed bot commands like 'User: say ok'
+2026-03-10T12:15:57+01:00 - 43780263 - Elie Gavoty : Merge pull request #356 from betagouv/dev
 2026-03-10T12:15:57+01:00 - 4378026 - Elie Gavoty : Merge pull request #356 from betagouv/dev
+2026-03-09T18:45:12+01:00 - 167c789e - Elie Gavoty : chore(models): disable oding large and medium temporarily waiting to fix api networl error
 2026-03-09T18:45:12+01:00 - 167c789 - Elie Gavoty : chore(models): disable oding large and medium temporarily waiting to fix api networl error
+2026-03-09T18:19:24+01:00 - 2b718a46 - Elie Gavoty : enh(devops): setup deploy-prd
 2026-03-09T18:19:24+01:00 - 2b718a4 - Elie Gavoty : enh(devops): setup deploy-prd
+2026-03-09T17:45:15+01:00 - 69b07d7f - Elie Gavoty : enh(devops): fix check images job name
 2026-03-09T17:45:15+01:00 - 69b07d7 - Elie Gavoty : enh(devops): fix check images job name
+2026-03-09T17:41:06+01:00 - 7241042e - Elie Gavoty : enh(devops): fix check images job name
 2026-03-09T17:41:06+01:00 - 7241042 - Elie Gavoty : enh(devops): fix check images job name
+2026-03-09T17:35:03+01:00 - d81f0101 - Elie Gavoty : enh(devops): add stg pipeline
 2026-03-09T17:35:03+01:00 - d81f010 - Elie Gavoty : enh(devops): add stg pipeline
+2026-03-09T16:38:59+01:00 - aa7f8c35 - Elie Gavoty : enh(devops): fix deploy dev
 2026-03-09T16:38:59+01:00 - aa7f8c3 - Elie Gavoty : enh(devops): fix deploy dev
+2026-03-09T16:31:43+01:00 - 5c2f4f4f - Elie Gavoty : enh(devops): add deploy dev if both builds have succeded
 2026-03-09T16:31:43+01:00 - 5c2f4f4 - Elie Gavoty : enh(devops): add deploy dev if both builds have succeded
+2026-03-09T15:16:50+01:00 - ba12d54a - Elie Gavoty : enh(devops): add frontend image build trigger
 2026-03-09T15:16:50+01:00 - ba12d54 - Elie Gavoty : enh(devops): add frontend image build trigger
+2026-03-09T15:02:58+01:00 - ba21371f - Elie Gavoty : enh(devops): python script to trigger backend image build in jenkins
 2026-03-09T15:02:58+01:00 - ba21371 - Elie Gavoty : enh(devops): python script to trigger backend image build in jenkins
+2026-03-09T15:02:58+01:00 - 8189677d - Elie Gavoty : enh(devops): limit permission for github workflow repo access
 2026-03-09T15:02:58+01:00 - 8189677 - Elie Gavoty : enh(devops): limit permission for github workflow repo access
+2026-03-09T15:02:58+01:00 - 1bc2671c - Elie Gavoty : enh(devops): add github workflow to build backend image
 2026-03-09T15:02:58+01:00 - 1bc2671 - Elie Gavoty : enh(devops): add github workflow to build backend image
+2026-03-09T15:02:58+01:00 - 09f083a2 - Elie Gavoty : enh(devops): ajouter la librairie jenkins pour les automatisation devops
 2026-03-09T15:02:58+01:00 - 09f083a - Elie Gavoty : enh(devops): ajouter la librairie jenkins pour les automatisation devops
+2026-03-09T14:37:46+01:00 - 7bbab4ba - Elie Gavoty : Merge pull request #374 from betagouv/add-gpt-5.4
 2026-03-09T14:37:46+01:00 - 7bbab4b - Elie Gavoty : Merge pull request #374 from betagouv/add-gpt-5.4
+2026-03-09T14:36:07+01:00 - 4ca49899 - Elie Gavoty : chore(models): build update models
 2026-03-09T14:36:07+01:00 - 4ca4989 - Elie Gavoty : chore(models): build update models
+2026-03-09T14:10:28+01:00 - c225098a - Elie Gavoty : Merge pull request #353 from weblate/weblate-comparia-develop
 2026-03-09T14:10:28+01:00 - c225098 - Elie Gavoty : Merge pull request #353 from weblate/weblate-comparia-develop
+2026-03-07T17:10:35Z - 8db9c084 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
 2026-03-07T17:10:35Z - 8db9c08 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
+2026-03-06T15:10:00Z - c3a782de - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-03-06T15:10:00Z - c3a782d - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-03-06T15:09:56Z - c4597124 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-03-06T15:09:56Z - c459712 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-03-06T15:09:51Z - a238b9e6 - Simonas : i18n: updated translation for English (Weblate)
 2026-03-06T15:09:51Z - a238b9e - Simonas : i18n: updated translation for English (Weblate)
+2026-03-06T09:13:20+01:00 - 11764f8a - Simon Zilinskas : chore(models): add GPT 5.4, archive GPT 5.2
 2026-03-06T09:13:20+01:00 - 11764f8 - Simon Zilinskas : chore(models): add GPT 5.4, archive GPT 5.2
+2026-03-05T15:05:28+01:00 - 16f0c525 - Elie Gavoty : Merge pull request #371 from betagouv/fix/block-json-prompt-injection-spam
 2026-03-05T15:05:28+01:00 - 16f0c52 - Elie Gavoty : Merge pull request #371 from betagouv/fix/block-json-prompt-injection-spam
+2026-03-05T14:09:14+01:00 - 4c07b7f0 - Simon Zilinskas : fix(backend): block JSON and LLM prompt template injection spam
 2026-03-05T14:09:14+01:00 - 4c07b7f - Simon Zilinskas : fix(backend): block JSON and LLM prompt template injection spam
+2026-03-05T13:25:51+01:00 - a7653a91 - axolotle : chore: format python
 2026-03-05T13:25:51+01:00 - a7653a9 - axolotle : chore: format python
+2026-03-05T12:10:09Z - 4bf46afd - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-03-05T12:10:09Z - 4bf46af - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-03-05T12:09:55Z - 5f9b0039 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-03-05T12:09:55Z - 5f9b003 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-03-05T12:09:51Z - b327858e - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
 2026-03-05T12:09:51Z - b327858 - Kenneth Enevoldsen : i18n: updated translation for Danish (Weblate)
+2026-03-04T19:19:59+01:00 - 609226de - Elie Gavoty : Merge branch 'add-gemini-3.1-flash-lite' into develop
 2026-03-04T19:19:59+01:00 - 609226d - Elie Gavoty : Merge branch 'add-gemini-3.1-flash-lite' into develop
+2026-03-04T19:18:53+01:00 - 758c266b - Elie Gavoty : Merge branch 'add-gpt-5.3' into develop
 2026-03-04T19:18:53+01:00 - 758c266 - Elie Gavoty : Merge branch 'add-gpt-5.3' into develop
+2026-03-04T18:58:41+01:00 - b5f9d5bf - Elie Gavoty : chore(models): build/update models
 2026-03-04T18:58:41+01:00 - b5f9d5b - Elie Gavoty : chore(models): build/update models
+2026-03-04T18:12:38+01:00 - 5ef1c773 - Elie Gavoty : enh(spam): use pydantic and simpler json pattern loading
 2026-03-04T18:12:38+01:00 - 5ef1c77 - Elie Gavoty : enh(spam): use pydantic and simpler json pattern loading
+2026-03-04T14:55:05+01:00 - c9365182 - Elie Gavoty : enh(backend): filter dataset with spam filter before export
 2026-03-04T14:55:05+01:00 - c936518 - Elie Gavoty : enh(backend): filter dataset with spam filter before export
+2026-03-04T14:55:05+01:00 - b77b0e39 - Elie Gavoty : enh(backend): add regex based spam filtering
 2026-03-04T14:55:05+01:00 - b77b0e3 - Elie Gavoty : enh(backend): add regex based spam filtering
+2026-03-04T12:32:25+01:00 - e11f987e - Elie Gavoty : chore(models): build/update models
 2026-03-04T12:32:25+01:00 - e11f987 - Elie Gavoty : chore(models): build/update models
+2026-03-04T12:09:58+01:00 - f36c3d7a - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
 2026-03-04T12:09:58+01:00 - f36c3d7 - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
+2026-03-04T12:09:53+01:00 - f761b5f7 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-03-04T12:09:53+01:00 - f761b5f - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-03-04T12:09:48+01:00 - 47e772a4 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-03-04T12:09:48+01:00 - 47e772a - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-03-04T12:08:13+01:00 - a0bf03ed - Simon Zilinskas : feat(models): add GPT 5.3, archive GPT 5.1
 2026-03-04T12:08:13+01:00 - a0bf03e - Simon Zilinskas : feat(models): add GPT 5.3, archive GPT 5.1
+2026-03-04T11:42:33+01:00 - 5397d75e - Elie Gavoty : chore(models): update models
 2026-03-04T11:42:33+01:00 - 5397d75 - Elie Gavoty : chore(models): update models
+2026-03-04T11:36:21+01:00 - 76432da9 - Simon Zilinskas : feat(models): add Gemini 3.1 Flash Lite Preview
 2026-03-04T11:36:21+01:00 - 76432da - Simon Zilinskas : feat(models): add Gemini 3.1 Flash Lite Preview
+2026-03-04T11:16:47+01:00 - 62fd28b1 - Elie Gavoty : Merge pull request #349 from betagouv/enh-ecologits
 2026-03-04T11:16:47+01:00 - 62fd28b - Elie Gavoty : Merge pull request #349 from betagouv/enh-ecologits
+2026-03-04T11:14:49+01:00 - 2d4a3970 - Elie Gavoty : Merge pull request #360 from betagouv/add-qwen3.5-35b-a3b
 2026-03-04T11:14:49+01:00 - 2d4a397 - Elie Gavoty : Merge pull request #360 from betagouv/add-qwen3.5-35b-a3b
+2026-03-04T11:14:06+01:00 - fc0ca2b9 - Elie Gavoty : Merge pull request #363 from betagouv/fix/block-prompt-injection-spam
 2026-03-04T11:14:06+01:00 - fc0ca2b - Elie Gavoty : Merge pull request #363 from betagouv/fix/block-prompt-injection-spam
+2026-03-03T15:45:48+01:00 - b1157c29 - Simon Zilinskas : feat(newsletter): migrate to Brevo via Tally and update privacy policy
 2026-03-03T15:45:48+01:00 - b1157c2 - Simon Zilinskas : feat(newsletter): migrate to Brevo via Tally and update privacy policy
+2026-03-03T13:30:23+01:00 - 050c6fba - Simon Zilinskas : refactor(backend): consolidate prompt injection regex and move import to top
 2026-03-03T13:30:23+01:00 - 050c6fb - Simon Zilinskas : refactor(backend): consolidate prompt injection regex and move import to top
+2026-03-03T11:07:04+01:00 - 3447ab2e - Simon Zilinskas : fix(backend): block prompt injection spam via XML tag detection
 2026-03-03T11:07:04+01:00 - 3447ab2 - Simon Zilinskas : fix(backend): block prompt injection spam via XML tag detection
+2026-03-03T09:09:49Z - 0e694b70 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-03-03T09:09:49Z - 0e694b7 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-03-02T15:58:11+01:00 - 459af917 - Simon : Update models.json
 2026-03-02T15:58:11+01:00 - 459af91 - Simon : Update models.json
+2026-03-02T15:56:16+01:00 - 32a537e7 - Simon : Add new qwen3.5-35b-a3b and update new statuses
 2026-03-02T15:56:16+01:00 - 32a537e - Simon : Add new qwen3.5-35b-a3b and update new statuses
+2026-03-01T16:09:51Z - 765dc084 - Simonas : i18n: updated translation for English (Weblate)
 2026-03-01T16:09:51Z - 765dc08 - Simonas : i18n: updated translation for English (Weblate)
+2026-03-01T16:09:48Z - e03a850f - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-03-01T16:09:48Z - e03a850 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-28T16:09:48+01:00 - 2963dd49 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-28T16:09:48+01:00 - 2963dd4 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-28T15:09:55Z - e089d373 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-28T15:09:55Z - e089d37 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-27T18:42:15+01:00 - 109e906e - Elie Gavoty : fix(devops): add missing topic_pii dependencies
 2026-02-27T18:42:15+01:00 - 109e906 - Elie Gavoty : fix(devops): add missing topic_pii dependencies
+2026-02-27T16:29:35+01:00 - bda62c8f - Elie Gavoty : fix(devops): missing docker dependency for cronjobs
 2026-02-27T16:29:35+01:00 - bda62c8 - Elie Gavoty : fix(devops): missing docker dependency for cronjobs
+2026-02-27T15:55:04+01:00 - e7d518da - Elie Gavoty : fix(devops): load the right .env file in local docker setup
 2026-02-27T15:55:04+01:00 - e7d518d - Elie Gavoty : fix(devops): load the right .env file in local docker setup
+2026-02-27T15:54:28+01:00 - accf60f8 - Elie Gavoty : chore(backend): accept/ignore useless env variables in .env file
 2026-02-27T15:54:28+01:00 - accf60f - Elie Gavoty : chore(backend): accept/ignore useless env variables in .env file
+2026-02-27T15:24:40+01:00 - ff07bc54 - Elie Gavoty : Merge pull request #303 from betagouv/add-odin-medium
 2026-02-27T15:24:40+01:00 - ff07bc5 - Elie Gavoty : Merge pull request #303 from betagouv/add-odin-medium
+2026-02-27T14:09:58Z - f0239e68 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-27T14:09:58Z - f0239e6 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-27T14:09:50Z - 50b1b31b - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-27T14:09:50Z - 50b1b31 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-27T10:45:54+01:00 - fc187319 - axolotle : refactor(data): update generated-models.json wh_per_million_token
 2026-02-27T10:45:54+01:00 - fc18731 - axolotle : refactor(data): update generated-models.json wh_per_million_token
+2026-02-27T10:45:54+01:00 - f5b1eaf7 - Simon : Fix plane
 2026-02-27T10:45:54+01:00 - f5b1eaf - Simon : Fix plane
+2026-02-27T10:45:54+01:00 - e688f0d3 - axolotle : feat(reveal): add refresh button to cycle through equivalences
 2026-02-27T10:45:54+01:00 - e688f0d - axolotle : feat(reveal): add refresh button to cycle through equivalences
+2026-02-27T10:45:54+01:00 - e152aad4 - axolotle : refactor(back): simplify equivalence computation
 2026-02-27T10:45:54+01:00 - e152aad - axolotle : refactor(back): simplify equivalence computation
+2026-02-27T10:45:54+01:00 - dc2a82f1 - axolotle : refactor(front): update tooltip energy unit
 2026-02-27T10:45:54+01:00 - dc2a82f - axolotle : refactor(front): update tooltip energy unit
+2026-02-27T10:45:54+01:00 - cc621213 - axolotle : refactor(back): rework reveal data equivalences
 2026-02-27T10:45:54+01:00 - cc62121 - axolotle : refactor(back): rework reveal data equivalences
+2026-02-27T10:45:54+01:00 - cbccf9c4 - axolotle : refactor(front): use RevealCard in RevealArea
 2026-02-27T10:45:54+01:00 - cbccf9c - axolotle : refactor(front): use RevealCard in RevealArea
+2026-02-27T10:45:54+01:00 - bac820c9 - axolotle : refactor(front): reflect equivalences datastructure
 2026-02-27T10:45:54+01:00 - bac820c - axolotle : refactor(front): reflect equivalences datastructure
+2026-02-27T10:45:54+01:00 - aece396f - axolotle : refactor(back): remove no longer used conso utils
 2026-02-27T10:45:54+01:00 - aece396 - axolotle : refactor(back): remove no longer used conso utils
+2026-02-27T10:45:54+01:00 - 9fc57480 - axolotle : refactor(front): add arctic_sea_ice_melt unit
 2026-02-27T10:45:54+01:00 - 9fc5748 - axolotle : refactor(front): add arctic_sea_ice_melt unit
+2026-02-27T10:45:54+01:00 - 98876349 - axolotle : chore(back): upgrade ecologits to 0.9.2
 2026-02-27T10:45:54+01:00 - 9887634 - axolotle : chore(back): upgrade ecologits to 0.9.2
+2026-02-27T10:45:54+01:00 - 8d8cd17b - axolotle : refactor: reveal: reduce number of equivalences
 2026-02-27T10:45:54+01:00 - 8d8cd17 - axolotle : refactor: reveal: reduce number of equivalences
+2026-02-27T10:45:54+01:00 - 86bd98fd - axolotle : refactor(front): increase equivalences padding + remove nbsp tooltip
 2026-02-27T10:45:54+01:00 - 86bd98f - axolotle : refactor(front): increase equivalences padding + remove nbsp tooltip
+2026-02-27T10:45:54+01:00 - 7f4e8343 - axolotle : refactor(front): rework reveal data equivalences
 2026-02-27T10:45:54+01:00 - 7f4e834 - axolotle : refactor(front): rework reveal data equivalences
+2026-02-27T10:45:54+01:00 - 79b9baf0 - axolotle : feat(front): add RevealCard component with new scrollable equivalences
 2026-02-27T10:45:54+01:00 - 79b9baf - axolotle : feat(front): add RevealCard component with new scrollable equivalences
+2026-02-27T10:45:54+01:00 - 74bd9548 - axolotle : refactor(data): update generated-models.json wh_per_million_token
 2026-02-27T10:45:54+01:00 - 74bd954 - axolotle : refactor(data): update generated-models.json wh_per_million_token
+2026-02-27T10:45:54+01:00 - 6d4c1362 - axolotle : refactor(front): update leaderboard consumption units and scale
 2026-02-27T10:45:54+01:00 - 6d4c136 - axolotle : refactor(front): update leaderboard consumption units and scale
+2026-02-27T10:45:54+01:00 - 696953c0 - axolotle : chore(front): lint
 2026-02-27T10:45:54+01:00 - 696953c - axolotle : chore(front): lint
+2026-02-27T10:45:54+01:00 - 393a52c3 - axolotle : refactor(front): model.wh_per_million_token / 1000 to get it for 1000 tokens
 2026-02-27T10:45:54+01:00 - 393a52c - axolotle : refactor(front): model.wh_per_million_token / 1000 to get it for 1000 tokens
+2026-02-27T10:45:54+01:00 - 22a0d08b - axolotle : feat(reveal): add new environmental equivalences and refactor config
 2026-02-27T10:45:54+01:00 - 22a0d08 - axolotle : feat(reveal): add new environmental equivalences and refactor config
+2026-02-27T10:45:54+01:00 - 202e359a - axolotle : fix: adapt units for ecologits 0.9.1 reduced values
 2026-02-27T10:45:54+01:00 - 202e359 - axolotle : fix: adapt units for ecologits 0.9.1 reduced values
+2026-02-27T10:45:54+01:00 - 1c2331bc - axolotle : refactor(front): reveal: use i18n links for data + add equivalence sources
 2026-02-27T10:45:54+01:00 - 1c2331b - axolotle : refactor(front): reveal: use i18n links for data + add equivalence sources
+2026-02-27T10:45:54+01:00 - 072289e1 - axolotle : feat(back): add required datacenter_pue, datacenter_wue, and if_electricity_mix_wue parameters to compute_llm_impacts
 2026-02-27T10:45:54+01:00 - 072289e - axolotle : feat(back): add required datacenter_pue, datacenter_wue, and if_electricity_mix_wue parameters to compute_llm_impacts
+2026-02-27T10:45:54+01:00 - 05d67c5a - axolotle : refactor(back): add ARTIC_SEA_ICE_MELT equivalence
 2026-02-27T10:45:54+01:00 - 05d67c5 - axolotle : refactor(back): add ARTIC_SEA_ICE_MELT equivalence
+2026-02-26T14:12:57+01:00 - 8cca6fe7 - Elie Gavoty : fix(dataset): update uggingface_hub version
 2026-02-26T14:12:57+01:00 - 8cca6fe - Elie Gavoty : fix(dataset): update uggingface_hub version
+2026-02-26T08:20:39+01:00 - 379a9504 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-26T08:20:39+01:00 - 379a950 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-25T23:34:24+01:00 - a187e938 - Elie Gavoty : Merge pull request #350 from betagouv/fix/dataset-date-quality
 2026-02-25T23:34:24+01:00 - a187e93 - Elie Gavoty : Merge pull request #350 from betagouv/fix/dataset-date-quality
+2026-02-25T20:40:27+01:00 - 6a4818eb - Elie Gavoty : fix(dataset): simplify duckdb with cli and verification sql request
 2026-02-25T20:40:27+01:00 - 6a4818e - Elie Gavoty : fix(dataset): simplify duckdb with cli and verification sql request
+2026-02-25T19:32:04+01:00 - daf4cce0 - Elie Gavoty : fix(dataset): export jsonl by chunk to avoid silent OOM kill of the process
 2026-02-25T19:32:04+01:00 - daf4cce - Elie Gavoty : fix(dataset): export jsonl by chunk to avoid silent OOM kill of the process
+2026-02-25T19:31:31+01:00 - cdf4268f - Elie Gavoty : fix(dataset): ignore .tsv .jsonl dataset files
 2026-02-25T19:31:31+01:00 - cdf4268 - Elie Gavoty : fix(dataset): ignore .tsv .jsonl dataset files
+2026-02-25T18:12:35+01:00 - 464c5d0b - Elie Gavoty : fix(dataset): fix local folder cli argument + handle ctrl+C
 2026-02-25T18:12:35+01:00 - 464c5d0 - Elie Gavoty : fix(dataset): fix local folder cli argument + handle ctrl+C
+2026-02-25T17:19:49+01:00 - d0c02723 - Elie Gavoty : enh(dataset): add duckdb local dataset exploration
 2026-02-25T17:19:49+01:00 - d0c0272 - Elie Gavoty : enh(dataset): add duckdb local dataset exploration
+2026-02-25T17:16:27+01:00 - 5cac3722 - Elie Gavoty : fix(dataset): git ignore dataset files
 2026-02-25T17:16:27+01:00 - 5cac372 - Elie Gavoty : fix(dataset): git ignore dataset files
+2026-02-25T17:15:36+01:00 - 6bfaf07c - Elie Gavoty : fix(dataset): fix python import order + filter out disabled models + use utils/local_dataset folder for dry-run
 2026-02-25T17:15:36+01:00 - 6bfaf07 - Elie Gavoty : fix(dataset): fix python import order + filter out disabled models + use utils/local_dataset folder for dry-run
+2026-02-25T12:21:46+01:00 - 8984aa0c - Axolotle : Merge pull request #333 from weblate/weblate-comparia-develop
 2026-02-25T12:21:46+01:00 - 8984aa0 - Axolotle : Merge pull request #333 from weblate/weblate-comparia-develop
+2026-02-25T12:19:22+01:00 - 8c71548b - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-25T12:19:22+01:00 - 8c71548 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-25T12:19:22+01:00 - 6ebcc244 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-25T12:19:22+01:00 - 6ebcc24 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-25T12:18:56+01:00 - 7fab4baa - axolotle : chore(data): update generated data
 2026-02-25T12:18:56+01:00 - 7fab4ba - axolotle : chore(data): update generated data
+2026-02-25T12:16:44+01:00 - 97f84efd - axolotle : refactor: resize Ordbogen Odin logo to square
 2026-02-25T12:16:44+01:00 - 97f84ef - axolotle : refactor: resize Ordbogen Odin logo to square
+2026-02-25T12:16:44+01:00 - 0c9ddad6 - axolotle : refactor(data): update descs in french
 2026-02-25T12:16:44+01:00 - 0c9ddad - axolotle : refactor(data): update descs in french
+2026-02-25T12:16:44+01:00 - 01e898ba - Simon Zilinskas : Add Ordbogen Odin models (odin-large, odin-medium) for Danish portal
 2026-02-25T12:16:44+01:00 - 01e898b - Simon Zilinskas : Add Ordbogen Odin models (odin-large, odin-medium) for Danish portal
+2026-02-25T12:13:39+01:00 - 46599577 - axolotle : refactor(back): add is_timeout info in ErrorDetails + throw err on retry if models have already been rerolled
 2026-02-25T12:13:39+01:00 - 4659957 - axolotle : refactor(back): add is_timeout info in ErrorDetails + throw err on retry if models have already been rerolled
+2026-02-25T11:55:59+01:00 - 35a15d5c - axolotle : fix(back): fix bugs in auto-swap model on first-turn timeout - Cancel pending asyncio tasks after FIRST_COMPLETED to prevent   concurrent anext() on the same generator (RuntimeError) - Preserve conv_id when swapping so conversation_pair_id stays stable   across DB upserts - Emit SSE swap event for frontend observability
 2026-02-25T11:55:59+01:00 - 35a15d5 - axolotle : fix(back): fix bugs in auto-swap model on first-turn timeout - Cancel pending asyncio tasks after FIRST_COMPLETED to prevent   concurrent anext() on the same generator (RuntimeError) - Preserve conv_id when swapping so conversation_pair_id stays stable   across DB upserts - Emit SSE swap event for frontend observability
+2026-02-25T11:55:25+01:00 - 6474b185 - axolotle : fix(back): retry: use conv_b.model_name instead of conv_b object
 2026-02-25T11:55:25+01:00 - 6474b18 - axolotle : fix(back): retry: use conv_b.model_name instead of conv_b object
+2026-02-25T11:54:59+01:00 - a041f250 - axolotle : refactor(back): Bump API timeouts from 10s to 15s
 2026-02-25T11:54:59+01:00 - a041f25 - axolotle : refactor(back): Bump API timeouts from 10s to 15s
+2026-02-25T11:49:59+01:00 - 8aeb31e5 - Axolotle : Merge pull request #351 from betagouv/enh-auto-swap
 2026-02-25T11:49:59+01:00 - 8aeb31e - Axolotle : Merge pull request #351 from betagouv/enh-auto-swap
+2026-02-25T11:41:32+01:00 - d8bad0fe - axolotle : fix(back): remove db conv try except since db errors are handle in `db()` context manager
 2026-02-25T11:41:32+01:00 - d8bad0f - axolotle : fix(back): remove db conv try except since db errors are handle in `db()` context manager
+2026-02-25T11:41:32+01:00 - b219b4dc - axolotle : chore(back): format
 2026-02-25T11:41:32+01:00 - b219b4d - axolotle : chore(back): format
+2026-02-25T11:28:34+01:00 - 5f32c088 - axolotle : refactor(front): simplify model modal opening
 2026-02-25T11:28:34+01:00 - 5f32c08 - axolotle : refactor(front): simplify model modal opening
+2026-02-25T11:18:16+01:00 - 0cbc3761 - axolotle : fix(front): keep possible hash when removing locale search param
 2026-02-25T11:18:16+01:00 - 0cbc376 - axolotle : fix(front): keep possible hash when removing locale search param
+2026-02-25T10:37:09+01:00 - 14dfd2ef - Axolotle : Merge pull request #266 from ronnix/feature/open-model-from-url-hash
 2026-02-25T10:37:09+01:00 - 14dfd2e - Axolotle : Merge pull request #266 from ronnix/feature/open-model-from-url-hash
+2026-02-25T10:28:26+01:00 - dfc3a812 - Elie Gavoty : update models
 2026-02-25T10:28:26+01:00 - dfc3a81 - Elie Gavoty : update models
+2026-02-25T10:28:26+01:00 - d13ce756 - Simon : Add Gemini 3.1 pro
 2026-02-25T10:28:26+01:00 - d13ce75 - Simon : Add Gemini 3.1 pro
+2026-02-25T10:09:52+01:00 - 95f3d8e0 - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-25T10:09:52+01:00 - 95f3d8e - Arne Martinus Lindstad : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-25T09:09:59Z - 2e03fc8a - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-25T09:09:59Z - 2e03fc8 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-24T17:48:36+01:00 - 2ae6bd65 - Elie Gavoty : chore(back): update deps
 2026-02-24T17:48:36+01:00 - 2ae6bd6 - Elie Gavoty : chore(back): update deps
+2026-02-24T17:45:58+01:00 - 597ec6e5 - Elie Gavoty : chore(front): update deps
 2026-02-24T17:45:58+01:00 - 597ec6e - Elie Gavoty : chore(front): update deps
+2026-02-24T17:23:42+01:00 - 5e6d03d6 - Elie Gavoty : fix(dataset): filter out corrupted or incoherent data from db via sql query
 2026-02-24T17:23:42+01:00 - 5e6d03d - Elie Gavoty : fix(dataset): filter out corrupted or incoherent data from db via sql query
+2026-02-24T15:34:49+01:00 - 1b2338d3 - Elie Gavoty : Merge pull request #313 from betagouv/rankings-update
 2026-02-24T15:34:49+01:00 - 1b2338d - Elie Gavoty : Merge pull request #313 from betagouv/rankings-update
+2026-02-21T12:09:54+01:00 - 19ee76b5 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-21T12:09:54+01:00 - 19ee76b - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-21T11:09:47Z - 93513897 - Simonas : i18n: updated translation for English (Weblate)
 2026-02-21T11:09:47Z - 9351389 - Simonas : i18n: updated translation for English (Weblate)
+2026-02-20T15:08:08+01:00 - 30917597 - Elie Gavoty : Merge pull request #310 from betagouv/news/arxiv-paper
 2026-02-20T15:08:08+01:00 - 3091759 - Elie Gavoty : Merge pull request #310 from betagouv/news/arxiv-paper
+2026-02-20T15:05:44+01:00 - c7ea805c - Elie Gavoty : Merge pull request #311 from betagouv/feat/add-matrice-impact-link
 2026-02-20T15:05:44+01:00 - c7ea805 - Elie Gavoty : Merge pull request #311 from betagouv/feat/add-matrice-impact-link
+2026-02-20T15:04:49+01:00 - 14b15b13 - Simon Zilinskas : feat(footer): add link to Matrice d'impact dashboard
 2026-02-20T15:04:49+01:00 - 14b15b1 - Simon Zilinskas : feat(footer): add link to Matrice d'impact dashboard
+2026-02-20T15:03:50+01:00 - d819476b - Elie Gavoty : feat(config): update FR vote objective from 250k to 300k
 2026-02-20T15:03:50+01:00 - d819476 - Elie Gavoty : feat(config): update FR vote objective from 250k to 300k
+2026-02-20T15:00:09+01:00 - e5c0c22e - Simon : Update README.md
 2026-02-20T15:00:09+01:00 - e5c0c22 - Simon : Update README.md
+2026-02-20T15:00:09+01:00 - db41779a - Simon : Create CONTRIBUTING.md
 2026-02-20T15:00:09+01:00 - db41779 - Simon : Create CONTRIBUTING.md
+2026-02-20T15:00:09+01:00 - 7e85c8b2 - Simon : Update README.md
 2026-02-20T15:00:09+01:00 - 7e85c8b - Simon : Update README.md
+2026-02-20T15:00:09+01:00 - 12f0e3f5 - Simon : Update README.md
 2026-02-20T15:00:09+01:00 - 12f0e3f - Simon : Update README.md
+2026-02-20T14:57:14+01:00 - 07362558 - Simon Zilinskas : feat(frontend): add Tally feedback popup on French pages
 2026-02-20T14:57:14+01:00 - 0736255 - Simon Zilinskas : feat(frontend): add Tally feedback popup on French pages
+2026-02-20T10:10:04Z - f19337a2 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-20T10:10:04Z - f19337a - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-20T10:09:51Z - bf021bf3 - Javier de la Rosa : i18n: updated translation for Norwegian Nynorsk (Weblate)
 2026-02-20T10:09:51Z - bf021bf - Javier de la Rosa : i18n: updated translation for Norwegian Nynorsk (Weblate)
+2026-02-20T10:09:47Z - fd46d494 - Javier de la Rosa : i18n: updated translation for Norwegian Bokmål (Weblate)
 2026-02-20T10:09:47Z - fd46d49 - Javier de la Rosa : i18n: updated translation for Norwegian Bokmål (Weblate)
+2026-02-19T18:29:14+01:00 - d6893af9 - Elie Gavoty : chore(models): update models json
 2026-02-19T18:29:14+01:00 - d6893af - Elie Gavoty : chore(models): update models json
+2026-02-19T18:29:14+01:00 - 8dc07acc - Simon Zilinskas : fix(streaming): read correct reasoning_content field from LiteLLM delta
 2026-02-19T18:29:14+01:00 - 8dc07ac - Simon Zilinskas : fix(streaming): read correct reasoning_content field from LiteLLM delta
+2026-02-19T18:29:14+01:00 - 71a3a8ed - Elie Gavoty : fix(backend): ModuleNotFoundError: No module named 'google'
 2026-02-19T18:29:14+01:00 - 71a3a8e - Elie Gavoty : fix(backend): ModuleNotFoundError: No module named 'google'
+2026-02-19T18:29:14+01:00 - 3f04a594 - Elie Gavoty : fix(backend):  Error couldn't save 'vote' data: column "country_portal" of relation "votes" does not exist + cohorts
 2026-02-19T18:29:14+01:00 - 3f04a59 - Elie Gavoty : fix(backend):  Error couldn't save 'vote' data: column "country_portal" of relation "votes" does not exist + cohorts
+2026-02-19T18:29:14+01:00 - 2b815d64 - Elie Gavoty : fix(persistence): narrow exception scope in record_conversations DB fallback
 2026-02-19T18:29:14+01:00 - 2b815d6 - Elie Gavoty : fix(persistence): narrow exception scope in record_conversations DB fallback
+2026-02-19T18:29:14+01:00 - 033dafe9 - Elie Gavoty : fix(streaming): handle both cases as it depends on llm provider
 2026-02-19T18:29:14+01:00 - 033dafe - Elie Gavoty : fix(streaming): handle both cases as it depends on llm provider
+2026-02-19T15:51:49+01:00 - 769ccff0 - Elie Gavoty : devops: remove pgadmin
 2026-02-19T15:51:49+01:00 - 769ccff - Elie Gavoty : devops: remove pgadmin
+2026-02-19T15:51:49+01:00 - 5dad018e - Elie Gavoty : devops: improve prd-local docker compose
 2026-02-19T15:51:49+01:00 - 5dad018 - Elie Gavoty : devops: improve prd-local docker compose
+2026-02-19T15:51:49+01:00 - 494fa8ca - Elie Gavoty : chore(backend): remove sentry test issue
 2026-02-19T15:51:49+01:00 - 494fa8c - Elie Gavoty : chore(backend): remove sentry test issue
+2026-02-19T15:51:49+01:00 - 0d2e558e - Elie Gavoty : fix(backend): use defaut SENTRY_ENVIRONMENT env var name to avoid magic
 2026-02-19T15:51:49+01:00 - 0d2e558 - Elie Gavoty : fix(backend): use defaut SENTRY_ENVIRONMENT env var name to avoid magic
+2026-02-19T10:50:21+01:00 - 4c1e6e79 - Javier de la Rosa : i18n: added translation for Norwegian Nynorsk (Weblate)
 2026-02-19T10:50:21+01:00 - 4c1e6e7 - Javier de la Rosa : i18n: added translation for Norwegian Nynorsk (Weblate)
+2026-02-19T10:49:15+01:00 - 0cd026b1 - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
 2026-02-19T10:49:15+01:00 - 0cd026b - Hosted Weblate : i18n: updated translation files (Weblate via Cleanup translation files)
+2026-02-19T10:49:10+01:00 - f0c41668 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-19T10:49:10+01:00 - f0c4166 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-19T10:49:07+01:00 - 2f824bce - Javier de la Rosa : i18n: added translation for Norwegian Bokmål (Weblate)
 2026-02-19T10:49:07+01:00 - 2f824bc - Javier de la Rosa : i18n: added translation for Norwegian Bokmål (Weblate)
+2026-02-18T11:36:04+01:00 - 8ee70167 - Simon Zilinskas : feat(models): add Claude Sonnet 4.6
 2026-02-18T11:36:04+01:00 - 8ee7016 - Simon Zilinskas : feat(models): add Claude Sonnet 4.6
+2026-02-16T16:43:22+01:00 - 9a80dedc - Elie Gavoty : chore(models): add modified MIT license and update models
 2026-02-16T16:43:22+01:00 - 9a80ded - Elie Gavoty : chore(models): add modified MIT license and update models
+2026-02-16T16:36:27+01:00 - fbb7f844 - Simon Zilinskas : feat(models): add Qwen 3.5 397B & MiniMax M2.5, archive older models
 2026-02-16T16:36:27+01:00 - fbb7f84 - Simon Zilinskas : feat(models): add Qwen 3.5 397B & MiniMax M2.5, archive older models
+2026-02-16T16:07:40+01:00 - ded9949e - Simon Zilinskas : fix: stop treating output truncation as context-too-long error
 2026-02-16T16:07:40+01:00 - ded9949 - Simon Zilinskas : fix: stop treating output truncation as context-too-long error
+2026-02-16T16:07:08+01:00 - 1cd14ec5 - Simon Zilinskas : fix(streaming): auto-swap model on first-turn timeout
 2026-02-16T16:07:08+01:00 - 1cd14ec - Simon Zilinskas : fix(streaming): auto-swap model on first-turn timeout
+2026-02-16T15:53:02+01:00 - 96a972dc - Simon Zilinskas : fix(data): update Apertus descriptions from 'semi-ouvert' to 'open source'
 2026-02-16T15:53:02+01:00 - 96a972d - Simon Zilinskas : fix(data): update Apertus descriptions from 'semi-ouvert' to 'open source'
+2026-02-16T15:51:23+01:00 - b64cf26a - Elie Gavoty : chore(models): update models
 2026-02-16T15:51:23+01:00 - b64cf26 - Elie Gavoty : chore(models): update models
+2026-02-16T15:46:54+01:00 - 129c3aa8 - Simon Zilinskas : feat(data): add GLM-5 and archive GLM 4.6
 2026-02-16T15:46:54+01:00 - 129c3aa - Simon Zilinskas : feat(data): add GLM-5 and archive GLM 4.6
+2026-02-16T15:40:33+01:00 - f1ae4778 - Elie Gavoty : fix(front): fix counterLocale mechanism
 2026-02-16T15:40:33+01:00 - f1ae477 - Elie Gavoty : fix(front): fix counterLocale mechanism
+2026-02-16T15:29:15+01:00 - 9cd2d863 - Elie Gavoty : fix(front): disable counterLocale mechanism
 2026-02-16T15:29:15+01:00 - 9cd2d86 - Elie Gavoty : fix(front): disable counterLocale mechanism
+2026-02-16T15:18:12+01:00 - ceb9bd69 - Elie Gavoty : Merge branch 'develop'
 2026-02-16T15:18:12+01:00 - ceb9bd6 - Elie Gavoty : Merge branch 'develop'
+2026-02-11T16:01:38+01:00 - 2e8b40bd - Elie Gavoty : chore(models): regenerate models
 2026-02-11T16:01:38+01:00 - 2e8b40b - Elie Gavoty : chore(models): regenerate models
+2026-02-11T16:01:18+01:00 - c742fe0a - Elie Gavoty : fix(modelgeneration): permit endpoint = None for archived models
 2026-02-11T16:01:18+01:00 - c742fe0 - Elie Gavoty : fix(modelgeneration): permit endpoint = None for archived models
+2026-02-11T07:47:28Z - 18fa8fd3 - github-actions[bot] : Update rankings data from build_models script
 2026-02-11T07:47:28Z - 18fa8fd - github-actions[bot] : Update rankings data from build_models script
+2026-02-10T14:40:15+01:00 - 1beaa61d - Elie Gavoty : chore(env): remove sentry dsn from example env file
 2026-02-10T14:40:15+01:00 - 1beaa61 - Elie Gavoty : chore(env): remove sentry dsn from example env file
+2026-02-10T14:35:08+01:00 - f1e2d077 - Elie Gavoty : sentry: set default env in config.py
 2026-02-10T14:35:08+01:00 - f1e2d07 - Elie Gavoty : sentry: set default env in config.py
+2026-02-10T14:35:08+01:00 - e20edd7b - Elie Gavoty : devops: optimise docker bake and dockerfiles
 2026-02-10T14:35:08+01:00 - e20edd7 - Elie Gavoty : devops: optimise docker bake and dockerfiles
+2026-02-10T14:35:08+01:00 - d9e774c6 - Elie Gavoty : revert backend access
 2026-02-10T14:35:08+01:00 - d9e774c - Elie Gavoty : revert backend access
+2026-02-10T14:35:08+01:00 - c737da14 - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
 2026-02-10T14:35:08+01:00 - c737da1 - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
+2026-02-10T14:35:08+01:00 - bc3ce4fd - Elie Gavoty : devops: remove frontend sentry test issue
 2026-02-10T14:35:08+01:00 - bc3ce4f - Elie Gavoty : devops: remove frontend sentry test issue
+2026-02-10T14:35:08+01:00 - ba1174af - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
 2026-02-10T14:35:08+01:00 - ba1174a - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
+2026-02-10T14:35:08+01:00 - afea824e - Elie Gavoty : devops: fixes for dockerfile front and makefile
 2026-02-10T14:35:08+01:00 - afea824 - Elie Gavoty : devops: fixes for dockerfile front and makefile
+2026-02-10T14:35:08+01:00 - a7c1eb8f - Elie Gavoty : fix: replace DATABASE_URI everywhere with COMPARIA_DB_URI
 2026-02-10T14:35:08+01:00 - a7c1eb8 - Elie Gavoty : fix: replace DATABASE_URI everywhere with COMPARIA_DB_URI
+2026-02-10T14:35:08+01:00 - a64e9603 - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
 2026-02-10T14:35:08+01:00 - a64e960 - Elie Gavoty : front: simplify getBackendUrl - defining env var necessray if not dev
+2026-02-10T14:35:08+01:00 - a525a095 - Elie Gavoty : devops: add env file for image build
 2026-02-10T14:35:08+01:00 - a525a09 - Elie Gavoty : devops: add env file for image build
+2026-02-10T14:35:08+01:00 - 9f08a2ec - Elie Gavoty : chore: update frontend lock file
 2026-02-10T14:35:08+01:00 - 9f08a2e - Elie Gavoty : chore: update frontend lock file
+2026-02-10T14:35:08+01:00 - 9d482fc4 - Elie Gavoty : fix(front): fix mixed content error because of trailing slash missmatch between front and back + 307 redirect
 2026-02-10T14:35:08+01:00 - 9d482fc - Elie Gavoty : fix(front): fix mixed content error because of trailing slash missmatch between front and back + 307 redirect
+2026-02-10T14:35:08+01:00 - 9672ba75 - Elie Gavoty : devops: improve Makefile
 2026-02-10T14:35:08+01:00 - 9672ba7 - Elie Gavoty : devops: improve Makefile
+2026-02-10T14:35:08+01:00 - 950dfb0e - Elie Gavoty : front: add explicit sentry init for frontend+ssr
 2026-02-10T14:35:08+01:00 - 950dfb0 - Elie Gavoty : front: add explicit sentry init for frontend+ssr
+2026-02-10T14:35:08+01:00 - 8eac50a3 - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
 2026-02-10T14:35:08+01:00 - 8eac50a - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
+2026-02-10T14:35:08+01:00 - 856853a7 - Elie Gavoty : fix(frontend): move images from arena to static because /arena => backend
 2026-02-10T14:35:08+01:00 - 856853a - Elie Gavoty : fix(frontend): move images from arena to static because /arena => backend
+2026-02-10T14:35:08+01:00 - 7abd3844 - Elie Gavoty : devops: improve compose file for app
 2026-02-10T14:35:08+01:00 - 7abd384 - Elie Gavoty : devops: improve compose file for app
+2026-02-10T14:35:08+01:00 - 6ae4a789 - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
 2026-02-10T14:35:08+01:00 - 6ae4a78 - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
+2026-02-10T14:35:08+01:00 - 66634877 - Elie Gavoty : front: sentry yarn.lock update
 2026-02-10T14:35:08+01:00 - 6663487 - Elie Gavoty : front: sentry yarn.lock update
+2026-02-10T14:35:08+01:00 - 655f3a92 - Elie Gavoty : front: use ssr only for layout load function to avoid mixed content http/https mixing
 2026-02-10T14:35:08+01:00 - 655f3a9 - Elie Gavoty : front: use ssr only for layout load function to avoid mixed content http/https mixing
+2026-02-10T14:35:08+01:00 - 648232b9 - Elie Gavoty : devops: add postgres logging (disabled by default) in docker compose
 2026-02-10T14:35:08+01:00 - 648232b - Elie Gavoty : devops: add postgres logging (disabled by default) in docker compose
+2026-02-10T14:35:08+01:00 - 5d8a952b - Elie Gavoty : frontend: add dummy event to test sentry catching
 2026-02-10T14:35:08+01:00 - 5d8a952 - Elie Gavoty : frontend: add dummy event to test sentry catching
+2026-02-10T14:35:08+01:00 - 451d2538 - Elie Gavoty : backend(fix): typo in config.py
 2026-02-10T14:35:08+01:00 - 451d253 - Elie Gavoty : backend(fix): typo in config.py
+2026-02-10T14:35:08+01:00 - 3a37f119 - Elie Gavoty : devops: lock file change for remove frontend sentry test issue
 2026-02-10T14:35:08+01:00 - 3a37f11 - Elie Gavoty : devops: lock file change for remove frontend sentry test issue
+2026-02-10T14:35:08+01:00 - 374e464c - Elie Gavoty : devops: clean sentry test issue
 2026-02-10T14:35:08+01:00 - 374e464 - Elie Gavoty : devops: clean sentry test issue
+2026-02-10T14:35:08+01:00 - 2c6b7687 - Elie Gavoty : devops: fix getBackendUrl definition priority
 2026-02-10T14:35:08+01:00 - 2c6b768 - Elie Gavoty : devops: fix getBackendUrl definition priority
+2026-02-10T14:35:08+01:00 - 26da2a9d - Elie Gavoty : devops: fix docker compose, add PUBLIC_API_URL to frontend env
 2026-02-10T14:35:08+01:00 - 26da2a9 - Elie Gavoty : devops: fix docker compose, add PUBLIC_API_URL to frontend env
+2026-02-10T14:35:08+01:00 - 25dfe4e0 - Elie Gavoty : devops: add google credentiel file mount in docker compose
 2026-02-10T14:35:08+01:00 - 25dfe4e - Elie Gavoty : devops: add google credentiel file mount in docker compose
+2026-02-10T14:35:08+01:00 - 1d6f31e2 - Elie Gavoty : devops: redesign compose file with override + makefile entries
 2026-02-10T14:35:08+01:00 - 1d6f31e - Elie Gavoty : devops: redesign compose file with override + makefile entries
+2026-02-10T14:35:08+01:00 - 17a46e33 - Elie Gavoty : devops: fix backend Dockerfile for fastapi migration
 2026-02-10T14:35:08+01:00 - 17a46e3 - Elie Gavoty : devops: fix backend Dockerfile for fastapi migration
+2026-02-10T14:35:08+01:00 - 15abe2db - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
 2026-02-10T14:35:08+01:00 - 15abe2d - Elie Gavoty : Revert "front: simplify getBackendUrl - defining env var necessray if not dev"
+2026-02-10T14:35:08+01:00 - 0fa13ffd - Elie Gavoty : devops: fix dev env vars file
 2026-02-10T14:35:08+01:00 - 0fa13ff - Elie Gavoty : devops: fix dev env vars file
+2026-02-10T14:35:08+01:00 - 0c032460 - Elie Gavoty : devops: make docker compose prod oriented (to test prod deployment)
 2026-02-10T14:35:08+01:00 - 0c03246 - Elie Gavoty : devops: make docker compose prod oriented (to test prod deployment)
+2026-02-10T14:34:39+01:00 - 85d7afa4 - Elie Gavoty : devops: redesign compose file with override + makefile entries
 2026-02-10T14:34:39+01:00 - 85d7afa - Elie Gavoty : devops: redesign compose file with override + makefile entries
+2026-02-10T14:34:39+01:00 - 5ef37550 - Elie Gavoty : devops: improve docker-compose
 2026-02-10T14:34:39+01:00 - 5ef3755 - Elie Gavoty : devops: improve docker-compose
+2026-02-10T14:34:39+01:00 - 26a2019f - Elie Gavoty : devops: use uv to launch backend
 2026-02-10T14:34:39+01:00 - 26a2019 - Elie Gavoty : devops: use uv to launch backend
+2026-02-10T14:33:03+01:00 - ded44747 - Elie Gavoty : devops: fix backen dockerfile to follow fastapi refactoring
 2026-02-10T14:33:03+01:00 - ded4474 - Elie Gavoty : devops: fix backen dockerfile to follow fastapi refactoring
+2026-02-10T14:33:03+01:00 - d940f2e1 - Elie Gavoty : feat(docker): migrate build to buildx WIP
 2026-02-10T14:33:03+01:00 - d940f2e - Elie Gavoty : feat(docker): migrate build to buildx WIP
+2026-02-10T14:33:03+01:00 - cde7c8bc - Elie Gavoty : devops: remove pgadmin from  main docker compose file
 2026-02-10T14:33:03+01:00 - cde7c8b - Elie Gavoty : devops: remove pgadmin from  main docker compose file
+2026-02-10T14:33:03+01:00 - ca2cee4f - Elie Gavoty : devops: passage à docker bake plutôt qu'une paralélisation dans le script
 2026-02-10T14:33:03+01:00 - ca2cee4 - Elie Gavoty : devops: passage à docker bake plutôt qu'une paralélisation dans le script
+2026-02-10T14:33:03+01:00 - 59bb7232 - Elie Gavoty : devops: build locally and push at the same time using docker bake
 2026-02-10T14:33:03+01:00 - 59bb723 - Elie Gavoty : devops: build locally and push at the same time using docker bake
+2026-02-10T14:33:03+01:00 - 38ca8e8d - Elie Gavoty : devops: docker compose full to test new dockerisation
 2026-02-10T14:33:03+01:00 - 38ca8e8 - Elie Gavoty : devops: docker compose full to test new dockerisation
+2026-02-09T19:04:15+01:00 - b298da8f - Simon Zilinskas : feat(footer): add link to Matrice d'impact dashboard
 2026-02-09T19:04:15+01:00 - b298da8 - Simon Zilinskas : feat(footer): add link to Matrice d'impact dashboard
+2026-02-09T16:50:02+01:00 - 1e3b205b - Elie Gavoty : devops: local prd database using docker
 2026-02-09T16:50:02+01:00 - 1e3b205 - Elie Gavoty : devops: local prd database using docker
+2026-02-09T15:44:48+01:00 - 9a963926 - Simon Zilinskas : feat(news): add arXiv paper publication
 2026-02-09T15:44:48+01:00 - 9a96392 - Simon Zilinskas : feat(news): add arXiv paper publication
+2026-02-09T15:22:00+01:00 - ad8ffe0d - Elie Gavoty : Merge branch 'develop'
 2026-02-09T15:22:00+01:00 - ad8ffe0 - Elie Gavoty : Merge branch 'develop'
+2026-02-09T14:33:17+01:00 - fd74dc4c - Elie Gavoty : devops: local prd database using docker
 2026-02-09T14:33:17+01:00 - fd74dc4 - Elie Gavoty : devops: local prd database using docker
+2026-02-09T14:33:17+01:00 - e04f5d7f - axolotle : refactor(llms): maintenance: add logger and use dump mode="json"
 2026-02-09T14:33:17+01:00 - e04f5d7 - axolotle : refactor(llms): maintenance: add logger and use dump mode="json"
+2026-02-09T14:33:17+01:00 - d5cf4fc8 - Elie Gavoty : controller(dashboard): fix pydantic serialization issue
 2026-02-09T14:33:17+01:00 - d5cf4fc - Elie Gavoty : controller(dashboard): fix pydantic serialization issue
+2026-02-09T14:33:17+01:00 - bcd997fd - axolotle : refactor(back): realign conversations serialization to what it was
 2026-02-09T14:33:17+01:00 - bcd997f - axolotle : refactor(back): realign conversations serialization to what it was
+2026-02-09T14:33:17+01:00 - b4f01c67 - axolotle : feat(llms): add build_doc script to generate llms specs doc + JSON schemas
 2026-02-09T14:33:17+01:00 - b4f01c6 - axolotle : feat(llms): add build_doc script to generate llms specs doc + JSON schemas
+2026-02-09T14:33:17+01:00 - aedab8ef - axolotle : feat(llms): add base README to hydrate
 2026-02-09T14:33:17+01:00 - aedab8e - axolotle : feat(llms): add base README to hydrate
+2026-02-09T14:33:17+01:00 - 88408d29 - axolotle : refactor(back): rm reaction index fixmes
 2026-02-09T14:33:17+01:00 - 88408d2 - axolotle : refactor(back): rm reaction index fixmes
+2026-02-09T14:33:17+01:00 - 7cb3e39b - axolotle : fix(llms): in*
 2026-02-09T14:33:17+01:00 - 7cb3e39 - axolotle : fix(llms): in*
+2026-02-09T14:33:17+01:00 - 768beb6a - axolotle : chore: update LLM doc + schemas
 2026-02-09T14:33:17+01:00 - 768beb6 - axolotle : chore: update LLM doc + schemas
+2026-02-09T14:33:17+01:00 - 70f6a09e - axolotle : refactor(llms): move field rename to Organisation
 2026-02-09T14:33:17+01:00 - 70f6a09 - axolotle : refactor(llms): move field rename to Organisation
+2026-02-09T14:33:17+01:00 - 5a437f69 - axolotle : refactor(llms): add License fields doc
 2026-02-09T14:33:17+01:00 - 5a437f6 - axolotle : refactor(llms): add License fields doc
+2026-02-09T14:33:17+01:00 - 4f4ada46 - axolotle : refactor(llms): use pydantic create_model to inject default values and be able to call model_dump(exclude_defaults)
 2026-02-09T14:33:17+01:00 - 4f4ada4 - axolotle : refactor(llms): use pydantic create_model to inject default values and be able to call model_dump(exclude_defaults)
+2026-02-09T14:33:17+01:00 - 417e72f2 - axolotle : chore(data): update generated-models.json with `specific_portals`
 2026-02-09T14:33:17+01:00 - 417e72f - axolotle : chore(data): update generated-models.json with `specific_portals`
+2026-02-09T14:33:17+01:00 - 3af4eebc - Elie Gavoty : fix(frontend): error catching for streaming
 2026-02-09T14:33:17+01:00 - 3af4eeb - Elie Gavoty : fix(frontend): error catching for streaming
+2026-02-09T14:33:17+01:00 - 37efd39c - axolotle : refactor(llms): MarkdownSerializer: to markdown if not mode="json"
 2026-02-09T14:33:17+01:00 - 37efd39 - axolotle : refactor(llms): MarkdownSerializer: to markdown if not mode="json"
+2026-02-09T14:33:17+01:00 - 360e4c35 - Elie Gavoty : backend(fix): accept empty list as custom model selection
 2026-02-09T14:33:17+01:00 - 360e4c3 - Elie Gavoty : backend(fix): accept empty list as custom model selection
+2026-02-09T14:33:17+01:00 - 31efe6fe - axolotle : refactor(llms): add LLMDataRawBase fields doc
 2026-02-09T14:33:17+01:00 - 31efe6f - axolotle : refactor(llms): add LLMDataRawBase fields doc
+2026-02-09T14:33:17+01:00 - 26e1ded7 - axolotle : chore: add JSON schemas to vscode settings
 2026-02-09T14:33:17+01:00 - 26e1ded - axolotle : chore: add JSON schemas to vscode settings
+2026-02-09T14:33:17+01:00 - 14c8ad73 - axolotle : refactor(llms): add RawOrganisation fields doc
 2026-02-09T14:33:17+01:00 - 14c8ad7 - axolotle : refactor(llms): add RawOrganisation fields doc
+2026-02-09T14:33:17+01:00 - 0f7ec353 - axolotle : feat(back): add docstrings
 2026-02-09T14:33:17+01:00 - 0f7ec35 - axolotle : feat(back): add docstrings
+2026-02-09T14:33:17+01:00 - 0671035b - axolotle : refactor(llms): add Arch fields doc
 2026-02-09T14:33:17+01:00 - 0671035 - axolotle : refactor(llms): add Arch fields doc
+2026-02-09T14:31:33+01:00 - ff78e0c8 - axolotle : feat(front): add X-Locale header in api stream and request calls
 2026-02-09T14:31:33+01:00 - ff78e0c - axolotle : feat(front): add X-Locale header in api stream and request calls
+2026-02-09T14:31:33+01:00 - fec1ac08 - axolotle : refactor(utils): move arch stuff in its own file
 2026-02-09T14:31:33+01:00 - fec1ac0 - axolotle : refactor(utils): move arch stuff in its own file
+2026-02-09T14:31:33+01:00 - fdaf6999 - axolotle : refactor: remove no longer used generated-preferences.json
 2026-02-09T14:31:33+01:00 - fdaf699 - axolotle : refactor: remove no longer used generated-preferences.json
+2026-02-09T14:31:33+01:00 - f205a31f - axolotle : refactor(utils): use utils logger in build_models
 2026-02-09T14:31:33+01:00 - f205a31 - axolotle : refactor(utils): use utils logger in build_models
+2026-02-09T14:31:33+01:00 - e1f92ad8 - axolotle : refactor(back): rename LanguageModel -> LLM pydantic models
 2026-02-09T14:31:33+01:00 - e1f92ad - axolotle : refactor(back): rename LanguageModel -> LLM pydantic models
+2026-02-09T14:31:33+01:00 - db07f376 - axolotle : refactor(utils): move licence stuff in its own file
 2026-02-09T14:31:33+01:00 - db07f37 - axolotle : refactor(utils): move licence stuff in its own file
+2026-02-09T14:31:33+01:00 - d1fad990 - axolotle : refactor: remove dupplicate Licence model
 2026-02-09T14:31:33+01:00 - d1fad99 - axolotle : refactor: remove dupplicate Licence model
+2026-02-09T14:31:33+01:00 - cbba3234 - axolotle : refactor(llms): improve missing llm or dataset data logging
 2026-02-09T14:31:33+01:00 - cbba323 - axolotle : refactor(llms): improve missing llm or dataset data logging
+2026-02-09T14:31:33+01:00 - cb4acfd2 - axolotle : refactor(back): update /models route to return filtered country llms
 2026-02-09T14:31:33+01:00 - cb4acfd - axolotle : refactor(back): update /models route to return filtered country llms
+2026-02-09T14:31:33+01:00 - c3419c87 - axolotle : refactor(llms): move dataset fetch in dataset_data
 2026-02-09T14:31:33+01:00 - c3419c8 - axolotle : refactor(llms): move dataset fetch in dataset_data
+2026-02-09T14:31:33+01:00 - a976d49f - axolotle : refactor(llms): license and llm desc with custom markdown serializer and default values
 2026-02-09T14:31:33+01:00 - a976d49 - axolotle : refactor(llms): license and llm desc with custom markdown serializer and default values
+2026-02-09T14:31:33+01:00 - a3fc940b - axolotle : feat(llms): add dataset data parser/validator
 2026-02-09T14:31:33+01:00 - a3fc940 - axolotle : feat(llms): add dataset data parser/validator
+2026-02-09T14:31:33+01:00 - a13ec80c - axolotle : refactor(llms): use dataset data validators for proper logging and validation
 2026-02-09T14:31:33+01:00 - a13ec80 - axolotle : refactor(llms): use dataset data validators for proper logging and validation
+2026-02-09T14:31:33+01:00 - 9b12c16a - axolotle : chore: format
 2026-02-09T14:31:33+01:00 - 9b12c16 - axolotle : chore: format
+2026-02-09T14:31:33+01:00 - 98c4cc96 - axolotle : refactor: normalize path variables
 2026-02-09T14:31:33+01:00 - 98c4cc9 - axolotle : refactor: normalize path variables
+2026-02-09T14:31:33+01:00 - 9513107f - axolotle : refactor(llms): filter excluded llms in validator
 2026-02-09T14:31:33+01:00 - 9513107 - axolotle : refactor(llms): filter excluded llms in validator
+2026-02-09T14:31:33+01:00 - 90eb51fd - axolotle : chore(front): update yarn.lock
 2026-02-09T14:31:33+01:00 - 90eb51f - axolotle : chore(front): update yarn.lock
+2026-02-09T14:31:33+01:00 - 888ac95c - axolotle : refactor(utils): move raw llms models stuff in its own file
 2026-02-09T14:31:33+01:00 - 888ac95 - axolotle : refactor(utils): move raw llms models stuff in its own file
+2026-02-09T14:31:33+01:00 - 8819cb7e - axolotle : refactor(front): remove country_portal query param from /counter call (passed as header now)
 2026-02-09T14:31:33+01:00 - 8819cb7 - axolotle : refactor(front): remove country_portal query param from /counter call (passed as header now)
+2026-02-09T14:31:33+01:00 - 7c93a407 - axolotle : feat(utils): add base rich logger config
 2026-02-09T14:31:33+01:00 - 7c93a40 - axolotle : feat(utils): add base rich logger config
+2026-02-09T14:31:33+01:00 - 78e45813 - axolotle : refactor(back): update CountryPortalAnno to expect a X-Locale header
 2026-02-09T14:31:33+01:00 - 78e4581 - axolotle : refactor(back): update CountryPortalAnno to expect a X-Locale header
+2026-02-09T14:31:33+01:00 - 78d0945c - axolotle : feat(llms): add `specific_portals` attr to specify list of CountryPortals from where the LLM should be available
 2026-02-09T14:31:33+01:00 - 78d0945 - axolotle : feat(llms): add `specific_portals` attr to specify list of CountryPortals from where the LLM should be available
+2026-02-09T14:31:33+01:00 - 65f58f35 - axolotle : refactor: split LLMData model into multiple to be able to inherit raw models from it
 2026-02-09T14:31:33+01:00 - 65f58f3 - axolotle : refactor: split LLMData model into multiple to be able to inherit raw models from it
+2026-02-09T14:31:33+01:00 - 5bedaca1 - axolotle : refactor(utils): move general utils to utils root
 2026-02-09T14:31:33+01:00 - 5bedaca - axolotle : refactor(utils): move general utils to utils root
+2026-02-09T14:31:33+01:00 - 5520c82e - axolotle : refactor(back): update calls to get_llms_data with country_portal from header or conversations in arena and remove country_portal in /add_first_text body
 2026-02-09T14:31:33+01:00 - 5520c82 - axolotle : refactor(back): update calls to get_llms_data with country_portal from header or conversations in arena and remove country_portal in /add_first_text body
+2026-02-09T14:31:33+01:00 - 52c1e41e - axolotle : refactor: inherit raw LLM models from backend models with extra defaults values
 2026-02-09T14:31:33+01:00 - 52c1e41 - axolotle : refactor: inherit raw LLM models from backend models with extra defaults values
+2026-02-09T14:31:33+01:00 - 49756c96 - axolotle : feat(back): update get_llms_data to return a instance of LLMsData with available filtered llms from country_portal
 2026-02-09T14:31:33+01:00 - 49756c9 - axolotle : feat(back): update get_llms_data to return a instance of LLMsData with available filtered llms from country_portal
+2026-02-09T14:31:33+01:00 - 489eaca7 - axolotle : fix(utils): types
 2026-02-09T14:31:33+01:00 - 489eaca - axolotle : fix(utils): types
+2026-02-09T14:31:33+01:00 - 40435c63 - axolotle : feat(utils): add file read/write logging
 2026-02-09T14:31:33+01:00 - 40435c6 - axolotle : feat(utils): add file read/write logging
+2026-02-09T14:31:33+01:00 - 3f67ae14 - axolotle : chore: deps: add types-markdown
 2026-02-09T14:31:33+01:00 - 3f67ae1 - axolotle : chore: deps: add types-markdown
+2026-02-09T14:31:33+01:00 - 352f3508 - axolotle : refactor(back): add RichHandler for base logger
 2026-02-09T14:31:33+01:00 - 352f350 - axolotle : refactor(back): add RichHandler for base logger
+2026-02-09T14:31:33+01:00 - 27602ef3 - axolotle : refactor(utils): move organisations stuff in its own file
 2026-02-09T14:31:33+01:00 - 27602ef - axolotle : refactor(utils): move organisations stuff in its own file
+2026-02-09T14:31:33+01:00 - 25013c5b - axolotle : refactor(llms): improve build_models error logging
 2026-02-09T14:31:33+01:00 - 25013c5 - axolotle : refactor(llms): improve build_models error logging
+2026-02-09T14:31:33+01:00 - 0913f400 - axolotle : feat(utils): add get_db_engine sqlalchemy helper
 2026-02-09T14:31:33+01:00 - 0913f40 - axolotle : feat(utils): add get_db_engine sqlalchemy helper
+2026-02-09T14:31:04+01:00 - f993d802 - axolotle : chore(front): remove unused + upgrade dependencies
 2026-02-09T14:31:04+01:00 - f993d80 - axolotle : chore(front): remove unused + upgrade dependencies
+2026-02-09T14:31:04+01:00 - 6f0ed86c - axolotle : chore(front): remove gradio optimize deps
 2026-02-09T14:31:04+01:00 - 6f0ed86 - axolotle : chore(front): remove gradio optimize deps
+2026-02-09T14:31:04+01:00 - 156a3e2a - axolotle : fix(front): nav bg
 2026-02-09T14:31:04+01:00 - 156a3e2 - axolotle : fix(front): nav bg
+2026-02-09T14:30:07+01:00 - f567073a - axolotle : chore: add python lint and format commands with custom configs
 2026-02-09T14:30:07+01:00 - f567073 - axolotle : chore: add python lint and format commands with custom configs
+2026-02-09T14:30:07+01:00 - dc7f64ee - axolotle : chore(back): add mypy, isort, autoflake dev dependencies
 2026-02-09T14:30:07+01:00 - dc7f64e - axolotle : chore(back): add mypy, isort, autoflake dev dependencies
+2026-02-09T14:30:07+01:00 - c66bb5a5 - axolotle : refactor(front): MarkdownCode: remove not used latex + add gradio sanitizer
 2026-02-09T14:30:07+01:00 - c66bb5a - axolotle : refactor(front): MarkdownCode: remove not used latex + add gradio sanitizer
+2026-02-09T14:30:07+01:00 - b5c4f6bf - axolotle : refactor: remove unused files?
 2026-02-09T14:30:07+01:00 - b5c4f6b - axolotle : refactor: remove unused files?
+2026-02-09T14:30:07+01:00 - a64db0ff - axolotle : fix(back): custom_models_selection typing
 2026-02-09T14:30:07+01:00 - a64db0f - axolotle : fix(back): custom_models_selection typing
+2026-02-09T14:30:07+01:00 - 8cc17ede - axolotle : chore(front): remove package-lock.json
 2026-02-09T14:30:07+01:00 - 8cc17ed - axolotle : chore(front): remove package-lock.json
+2026-02-09T14:30:07+01:00 - 823aefe0 - axolotle : chore: update python dependencies except ecologits and litellm
 2026-02-09T14:30:07+01:00 - 823aefe - axolotle : chore: update python dependencies except ecologits and litellm
+2026-02-09T14:30:07+01:00 - 7b8a4332 - axolotle : refactor(back): drop Conversations selected_category and is_unedited_prompt in code, keep it in db models for legacy with default values for now
 2026-02-09T14:30:07+01:00 - 7b8a433 - axolotle : refactor(back): drop Conversations selected_category and is_unedited_prompt in code, keep it in db models for legacy with default values for now
+2026-02-09T14:30:07+01:00 - 695dc505 - axolotle : fix(back): custom_models_selection typing
 2026-02-09T14:30:07+01:00 - 695dc50 - axolotle : fix(back): custom_models_selection typing
+2026-02-09T14:30:07+01:00 - 66aa08d3 - axolotle : chore(back): add missing backend types dependencies
 2026-02-09T14:30:07+01:00 - 66aa08d - axolotle : chore(back): add missing backend types dependencies
+2026-02-09T14:30:07+01:00 - 5ba6ce56 - axolotle : chore(front): add MarkdownCode component dependencies
 2026-02-09T14:30:07+01:00 - 5ba6ce5 - axolotle : chore(front): add MarkdownCode component dependencies
+2026-02-09T14:30:07+01:00 - 4db76063 - axolotle : refactor(front): add comparia.inlang
 2026-02-09T14:30:07+01:00 - 4db7606 - axolotle : refactor(front): add comparia.inlang
+2026-02-09T14:30:07+01:00 - 2075d4e4 - axolotle : chore(back): move data dependencies to 'data' group and upgrade those
 2026-02-09T14:30:07+01:00 - 2075d4e - axolotle : chore(back): move data dependencies to 'data' group and upgrade those
+2026-02-09T14:30:07+01:00 - 171b80df - axolotle : refactor(dataset): fix export_dataset calls to get_active|total_params
 2026-02-09T14:30:07+01:00 - 171b80d - axolotle : refactor(dataset): fix export_dataset calls to get_active|total_params
+2026-02-09T14:30:07+01:00 - 04101b7c - axolotle : chore(back): remove what's look likes no longer used dependencies
 2026-02-09T14:30:07+01:00 - 04101b7 - axolotle : chore(back): remove what's look likes no longer used dependencies
+2026-02-09T14:30:07+01:00 - 001a28e4 - axolotle : refactor(back): remove SentryAsgiMiddleware call since docs indicates that a call to sentry_sdk.init() is enough for fastAPI
 2026-02-09T14:30:07+01:00 - 001a28e - axolotle : refactor(back): remove SentryAsgiMiddleware call since docs indicates that a call to sentry_sdk.init() is enough for fastAPI
+2026-02-09T14:30:06+01:00 - febd1074 - axolotle : refactor(back): start rework Conversation and Conversations
 2026-02-09T14:30:06+01:00 - febd107 - axolotle : refactor(back): start rework Conversation and Conversations
+2026-02-09T14:30:06+01:00 - fced8bb6 - axolotle : refactor(front): send session cohorts thru '/add_first_text' and make sure cohort detection has been called
 2026-02-09T14:30:06+01:00 - fced8bb - axolotle : refactor(front): send session cohorts thru '/add_first_text' and make sure cohort detection has been called
+2026-02-09T14:30:06+01:00 - fa3159b0 - axolotle : refactor(back): use Conversations in reveal
 2026-02-09T14:30:06+01:00 - fa3159b - axolotle : refactor(back): use Conversations in reveal
+2026-02-09T14:30:06+01:00 - f5ce602a - axolotle : refactor(back): add model reroll in retry
 2026-02-09T14:30:06+01:00 - f5ce602 - axolotle : refactor(back): add model reroll in retry
+2026-02-09T14:30:06+01:00 - f56eb139 - axolotle : refactor(back): rework conversation streaming
 2026-02-09T14:30:06+01:00 - f56eb13 - axolotle : refactor(back): rework conversation streaming
+2026-02-09T14:30:06+01:00 - f48f5f58 - axolotle : refactor(back): move ratelimited and input chars session saving functions to arena session file
 2026-02-09T14:30:06+01:00 - f48f5f5 - axolotle : refactor(back): move ratelimited and input chars session saving functions to arena session file
+2026-02-09T14:30:06+01:00 - eefbde95 - axolotle : fix(front): api call inn layout.ts
 2026-02-09T14:30:06+01:00 - eefbde9 - axolotle : fix(front): api call inn layout.ts
+2026-02-09T14:30:06+01:00 - ec0f1345 - axolotle : feat(back): add ratelimiting incr
 2026-02-09T14:30:06+01:00 - ec0f134 - axolotle : feat(back): add ratelimiting incr
+2026-02-09T14:30:06+01:00 - e97e1b4f - axolotle : refactor(back): add ReactionRecord model to parse/validate db/logs data
 2026-02-09T14:30:06+01:00 - e97e1b4 - axolotle : refactor(back): add ReactionRecord model to parse/validate db/logs data
+2026-02-09T14:30:06+01:00 - e78b0f59 - axolotle : fix(back): raise error if llm impact computation fails
 2026-02-09T14:30:06+01:00 - e78b0f5 - axolotle : fix(back): raise error if llm impact computation fails
+2026-02-09T14:30:06+01:00 - de8def0e - axolotle : refactor(back): update Conversation & Conversations with needed computed field
 2026-02-09T14:30:06+01:00 - de8def0 - axolotle : refactor(back): update Conversation & Conversations with needed computed field
+2026-02-09T14:30:06+01:00 - db57751d - axolotle : refactor(back): remove no longer used models and utils
 2026-02-09T14:30:06+01:00 - db57751 - axolotle : refactor(back): remove no longer used models and utils
+2026-02-09T14:30:06+01:00 - da766d48 - axolotle : refactor(back): add some TODO for VoteRecord
 2026-02-09T14:30:06+01:00 - da766d4 - axolotle : refactor(back): add some TODO for VoteRecord
+2026-02-09T14:30:06+01:00 - d983b22d - axolotle : feat(back): add session data to Conversations directly
 2026-02-09T14:30:06+01:00 - d983b22 - axolotle : feat(back): add session data to Conversations directly
+2026-02-09T14:30:06+01:00 - d83d574a - axolotle : refactor(back): reflect language_models rename
 2026-02-09T14:30:06+01:00 - d83d574 - axolotle : refactor(back): reflect language_models rename
+2026-02-09T14:30:06+01:00 - d417cb50 - axolotle : refactor(back): add some TODO for ConversationsRecord
 2026-02-09T14:30:06+01:00 - d417cb5 - axolotle : refactor(back): add some TODO for ConversationsRecord
+2026-02-09T14:30:06+01:00 - d3d48cf7 - axolotle : refactor(back): remove unused functions
 2026-02-09T14:30:06+01:00 - d3d48cf - axolotle : refactor(back): remove unused functions
+2026-02-09T14:30:06+01:00 - d376384c - axolotle : refactor(back): add custom_models_selection attr to Conversations
 2026-02-09T14:30:06+01:00 - d376384 - axolotle : refactor(back): add custom_models_selection attr to Conversations
+2026-02-09T14:30:06+01:00 - d2214598 - axolotle : refactor(back): remove no longer used Conversation serialization helpers
 2026-02-09T14:30:06+01:00 - d221459 - axolotle : refactor(back): remove no longer used Conversation serialization helpers
+2026-02-09T14:30:06+01:00 - cef60d65 - axolotle : refactor(front): reflect '/react' changes
 2026-02-09T14:30:06+01:00 - cef60d6 - axolotle : refactor(front): reflect '/react' changes
+2026-02-09T14:30:06+01:00 - cec46811 - axolotle : refactor(back): send error to sentry manually for silenced sse error
 2026-02-09T14:30:06+01:00 - cec4681 - axolotle : refactor(back): send error to sentry manually for silenced sse error
+2026-02-09T14:30:06+01:00 - c372a970 - axolotle : fix: reveal type + /reveal without query param
 2026-02-09T14:30:06+01:00 - c372a97 - axolotle : fix: reveal type + /reveal without query param
+2026-02-09T14:30:06+01:00 - c2285016 - axolotle : refactor(back): add get_conversations dependency and related annotation
 2026-02-09T14:30:06+01:00 - c228501 - axolotle : refactor(back): add get_conversations dependency and related annotation
+2026-02-09T14:30:06+01:00 - c0a352e2 - axolotle : fix(back): reput metadata record as optional since we record failed messages for now
 2026-02-09T14:30:06+01:00 - c0a352e - axolotle : fix(back): reput metadata record as optional since we record failed messages for now
+2026-02-09T14:30:06+01:00 - c09c177b - axolotle : refactor(front): add global server error parsing
 2026-02-09T14:30:06+01:00 - c09c177 - axolotle : refactor(front): add global server error parsing
+2026-02-09T14:30:06+01:00 - bd0da77f - axolotle : refactor(back): rework litellm interaction
 2026-02-09T14:30:06+01:00 - bd0da77 - axolotle : refactor(back): rework litellm interaction
+2026-02-09T14:30:06+01:00 - b918af10 - axolotle : refactor: add reaction types and normalize front/back keys
 2026-02-09T14:30:06+01:00 - b918af1 - axolotle : refactor: add reaction types and normalize front/back keys
+2026-02-09T14:30:06+01:00 - b7342b7e - axolotle : refactor(back): separate delete_reaction from record_reaction
 2026-02-09T14:30:06+01:00 - b7342b7 - axolotle : refactor(back): separate delete_reaction from record_reaction
+2026-02-09T14:30:06+01:00 - b690288d - axolotle : refactor(front): reflect vote types changes
 2026-02-09T14:30:06+01:00 - b690288 - axolotle : refactor(front): reflect vote types changes
+2026-02-09T14:30:06+01:00 - b052c192 - axolotle : refactor(back): rework get_reveal_data
 2026-02-09T14:30:06+01:00 - b052c19 - axolotle : refactor(back): rework get_reveal_data
+2026-02-09T14:30:06+01:00 - afb77fb3 - axolotle : chore(back): format
 2026-02-09T14:30:06+01:00 - afb77fb - axolotle : chore(back): format
+2026-02-09T14:30:06+01:00 - ab838fac - axolotle : refactor(back): update conversation function types
 2026-02-09T14:30:06+01:00 - ab838fa - axolotle : refactor(back): update conversation function types
+2026-02-09T14:30:06+01:00 - a90be646 - Elie Gavoty : fix(back): quickly adapting to missing pydantic models
 2026-02-09T14:30:06+01:00 - a90be64 - Elie Gavoty : fix(back): quickly adapting to missing pydantic models
+2026-02-09T14:30:06+01:00 - a6aea1b4 - axolotle : feat(back): add is_streaming status on Conversation and raise error if any arena action is triggered before chat end
 2026-02-09T14:30:06+01:00 - a6aea1b - axolotle : feat(back): add is_streaming status on Conversation and raise error if any arena action is triggered before chat end
+2026-02-09T14:30:06+01:00 - a527d23e - axolotle : fix(back) Conversation: return `system_msg` content
 2026-02-09T14:30:06+01:00 - a527d23 - axolotle : fix(back) Conversation: return `system_msg` content
+2026-02-09T14:30:06+01:00 - a0957a22 - axolotle : refactor(back): restore vote data recording + use pydantic models
 2026-02-09T14:30:06+01:00 - a0957a2 - axolotle : refactor(back): restore vote data recording + use pydantic models
+2026-02-09T14:30:06+01:00 - 9df63701 - axolotle : refactor(back): move `get_matomo_tracker_from_cookies` to user utils
 2026-02-09T14:30:06+01:00 - 9df6370 - axolotle : refactor(back): move `get_matomo_tracker_from_cookies` to user utils
+2026-02-09T14:30:06+01:00 - 9cde7b38 - axolotle : refactor(back): move consumption helper to language models utils
 2026-02-09T14:30:06+01:00 - 9cde7b3 - axolotle : refactor(back): move consumption helper to language models utils
+2026-02-09T14:30:06+01:00 - 9cd43b98 - axolotle : refactor(front): reflect streaming changes and use one api
 2026-02-09T14:30:06+01:00 - 9cd43b9 - axolotle : refactor(front): reflect streaming changes and use one api
+2026-02-09T14:30:06+01:00 - 95cd2a15 - axolotle : refactor(back): ConversationMessageRecord metadata as required
 2026-02-09T14:30:06+01:00 - 95cd2a1 - axolotle : refactor(back): ConversationMessageRecord metadata as required
+2026-02-09T14:30:06+01:00 - 93c2a3d5 - axolotle : refactor(back): consumption functions types
 2026-02-09T14:30:06+01:00 - 93c2a3d - axolotle : refactor(back): consumption functions types
+2026-02-09T14:30:06+01:00 - 90454df0 - axolotle : refactor(back): move custom errors to related file
 2026-02-09T14:30:06+01:00 - 90454df - axolotle : refactor(back): move custom errors to related file
+2026-02-09T14:30:06+01:00 - 843bdd29 - axolotle : refactor(back): add some logs in arena routes
 2026-02-09T14:30:06+01:00 - 843bdd2 - axolotle : refactor(back): add some logs in arena routes
+2026-02-09T14:30:06+01:00 - 82cd75fc - axolotle : feat(back): add custom ChatError
 2026-02-09T14:30:06+01:00 - 82cd75f - axolotle : feat(back): add custom ChatError
+2026-02-09T14:30:06+01:00 - 7ec81a55 - axolotle : refactor(back): rename country code to country portal
 2026-02-09T14:30:06+01:00 - 7ec81a5 - axolotle : refactor(back): rename country code to country portal
+2026-02-09T14:30:06+01:00 - 7c0ba18b - axolotle : refactor(back): add get_chosen_llm function to guess it from reaction score
 2026-02-09T14:30:06+01:00 - 7c0ba18 - axolotle : refactor(back): add get_chosen_llm function to guess it from reaction score
+2026-02-09T14:30:06+01:00 - 78536728 - axolotle : refactor(back): LOGDIR as Path
 2026-02-09T14:30:06+01:00 - 7853672 - axolotle : refactor(back): LOGDIR as Path
+2026-02-09T14:30:06+01:00 - 75891ad2 - axolotle : refactor(back): make sure Conversation is created with an enabled LLM
 2026-02-09T14:30:06+01:00 - 75891ad - axolotle : refactor(back): make sure Conversation is created with an enabled LLM
+2026-02-09T14:30:06+01:00 - 753ce2ea - Elie Gavoty : refactor(back): add Redis serialization helpers for Pydantic Conversation model
 2026-02-09T14:30:06+01:00 - 753ce2e - Elie Gavoty : refactor(back): add Redis serialization helpers for Pydantic Conversation model
+2026-02-09T14:30:06+01:00 - 6f4b01dd - axolotle : refactor(back): add ConversationsRecord model to parse/validate db/logs data
 2026-02-09T14:30:06+01:00 - 6f4b01d - axolotle : refactor(back): add ConversationsRecord model to parse/validate db/logs data
+2026-02-09T14:30:06+01:00 - 6ae9f068 - axolotle : fix(back): add missing redis storing methods
 2026-02-09T14:30:06+01:00 - 6ae9f06 - axolotle : fix(back): add missing redis storing methods
+2026-02-09T14:30:06+01:00 - 6a83d83e - axolotle : refactor(back): persistence: add db helper with simplified db access and query building
 2026-02-09T14:30:06+01:00 - 6a83d83 - axolotle : refactor(back): persistence: add db helper with simplified db access and query building
+2026-02-09T14:30:06+01:00 - 6a6905ce - axolotle : refactor(back): litellm: use settings and some types
 2026-02-09T14:30:06+01:00 - 6a6905c - axolotle : refactor(back): litellm: use settings and some types
+2026-02-09T14:30:06+01:00 - 692951db - axolotle : refactor(back): use get_redis_client in session functions
 2026-02-09T14:30:06+01:00 - 692951d - axolotle : refactor(back): use get_redis_client in session functions
+2026-02-09T14:30:06+01:00 - 6894fd42 - axolotle : fix(back): quick fix logger.py types
 2026-02-09T14:30:06+01:00 - 6894fd4 - axolotle : fix(back): quick fix logger.py types
+2026-02-09T14:30:06+01:00 - 67f0db51 - axolotle : refactor(back): add ErrorDetails model, error field to Conversations and remove error field from AssistantMessage
 2026-02-09T14:30:06+01:00 - 67f0db5 - axolotle : refactor(back): add ErrorDetails model, error field to Conversations and remove error field from AssistantMessage
+2026-02-09T14:30:06+01:00 - 6779f24b - axolotle : refactor(back): rework get_reveal_data
 2026-02-09T14:30:06+01:00 - 6779f24 - axolotle : refactor(back): rework get_reveal_data
+2026-02-09T14:30:06+01:00 - 66bcce43 - axolotle : refactor(back): persistence: simplify messages serialization
 2026-02-09T14:30:06+01:00 - 66bcce4 - axolotle : refactor(back): persistence: simplify messages serialization
+2026-02-09T14:30:06+01:00 - 666b4d4d - axolotle : refactor(back): remove unused get_model_system_prompt
 2026-02-09T14:30:06+01:00 - 666b4d4 - axolotle : refactor(back): remove unused get_model_system_prompt
+2026-02-09T14:30:06+01:00 - 63c5354d - axolotle : refactor(front): remove api logger
 2026-02-09T14:30:06+01:00 - 63c5354 - axolotle : refactor(front): remove api logger
+2026-02-09T14:30:06+01:00 - 634acb3d - axolotle : refactor(back): use fastapi jsonable_encoder for sse data
 2026-02-09T14:30:06+01:00 - 634acb3 - axolotle : refactor(back): use fastapi jsonable_encoder for sse data
+2026-02-09T14:30:06+01:00 - 6211d567 - axolotle : feat(back): raise error in vote/react if already voted/reacted
 2026-02-09T14:30:06+01:00 - 6211d56 - axolotle : feat(back): raise error in vote/react if already voted/reacted
+2026-02-09T14:30:06+01:00 - 615ff32c - axolotle : fix(front): always send custom_models_selection, backend will use it only if mode == "custom"
 2026-02-09T14:30:06+01:00 - 615ff32 - axolotle : fix(front): always send custom_models_selection, backend will use it only if mode == "custom"
+2026-02-09T14:30:06+01:00 - 5bbc7d7f - axolotle : refactor(front): rework chat error handling
 2026-02-09T14:30:06+01:00 - 5bbc7d7 - axolotle : refactor(front): rework chat error handling
+2026-02-09T14:30:06+01:00 - 59a2d748 - axolotle : refactor(back): exclude computed field in session saving
 2026-02-09T14:30:06+01:00 - 59a2d74 - axolotle : refactor(back): exclude computed field in session saving
+2026-02-09T14:30:06+01:00 - 4e730940 - axolotle : chore: add some FIXME/TODO
 2026-02-09T14:30:06+01:00 - 4e73094 - axolotle : chore: add some FIXME/TODO
+2026-02-09T14:30:06+01:00 - 4bbc8801 - axolotle : chore: format
 2026-02-09T14:30:06+01:00 - 4bbc880 - axolotle : chore: format
+2026-02-09T14:30:06+01:00 - 4a819b7d - axolotle : refactor(back): add get_llm_consumption
 2026-02-09T14:30:06+01:00 - 4a819b7 - axolotle : refactor(back): add get_llm_consumption
+2026-02-09T14:30:06+01:00 - 4a296cea - Elie Gavoty : refactor(back): adapt streaming.py to use Pydantic Conversation models
 2026-02-09T14:30:06+01:00 - 4a296ce - Elie Gavoty : refactor(back): adapt streaming.py to use Pydantic Conversation models
+2026-02-09T14:30:06+01:00 - 4997501d - axolotle : refactor(back): update record_conversation based on new Conversations attrs + remove db error raise as in previous code
 2026-02-09T14:30:06+01:00 - 4997501 - axolotle : refactor(back): update record_conversation based on new Conversations attrs + remove db error raise as in previous code
+2026-02-09T14:30:06+01:00 - 468c5226 - axolotle : refactor(back): remove frontend logger
 2026-02-09T14:30:06+01:00 - 468c522 - axolotle : refactor(back): remove frontend logger
+2026-02-09T14:30:06+01:00 - 4423d457 - axolotle : refactor(back): use fastapi.status error codes
 2026-02-09T14:30:06+01:00 - 4423d45 - axolotle : refactor(back): use fastapi.status error codes
+2026-02-09T14:30:06+01:00 - 41d699a1 - axolotle : refactor(back): logger: add request
 2026-02-09T14:30:06+01:00 - 41d699a - axolotle : refactor(back): logger: add request
+2026-02-09T14:30:06+01:00 - 413f3440 - axolotle : refactor(back): move get_api_key to litellm file
 2026-02-09T14:30:06+01:00 - 413f344 - axolotle : refactor(back): move get_api_key to litellm file
+2026-02-09T14:30:06+01:00 - 3f62b22f - Elie Gavoty : refactor(back): add missing db persistence WIP
 2026-02-09T14:30:06+01:00 - 3f62b22 - Elie Gavoty : refactor(back): add missing db persistence WIP
+2026-02-09T14:30:06+01:00 - 3e2f08d7 - axolotle : refactor(back): ConversationsRecord reorder attrs
 2026-02-09T14:30:06+01:00 - 3e2f08d - axolotle : refactor(back): ConversationsRecord reorder attrs
+2026-02-09T14:30:06+01:00 - 3d1b4b34 - axolotle : refactor(back): restore converstations data recording
 2026-02-09T14:30:06+01:00 - 3d1b4b3 - axolotle : refactor(back): restore converstations data recording
+2026-02-09T14:30:06+01:00 - 3d0ae90a - axolotle : fix(back): reaction indexes computing
 2026-02-09T14:30:06+01:00 - 3d0ae90 - axolotle : fix(back): reaction indexes computing
+2026-02-09T14:30:06+01:00 - 3cb0d3c7 - axolotle : refactor(back): reflect language_models rename
 2026-02-09T14:30:06+01:00 - 3cb0d3c - axolotle : refactor(back): reflect language_models rename
+2026-02-09T14:30:06+01:00 - 3528784a - axolotle : refactor: react: get real index and bot info from front and update reaction storing (need more work for db)
 2026-02-09T14:30:06+01:00 - 3528784 - axolotle : refactor: react: get real index and bot info from front and update reaction storing (need more work for db)
+2026-02-09T14:30:06+01:00 - 328f76c3 - axolotle : refactor(back): rework reveal types
 2026-02-09T14:30:06+01:00 - 328f76c - axolotle : refactor(back): rework reveal types
+2026-02-09T14:30:06+01:00 - 322a5b82 - axolotle : refactor: add country portal validator, use it in `get_counter` and in expected `add_first_text` body
 2026-02-09T14:30:06+01:00 - 322a5b8 - axolotle : refactor: add country portal validator, use it in `get_counter` and in expected `add_first_text` body
+2026-02-09T14:30:06+01:00 - 2eeb2de8 - axolotle : refactor(back): add PromptField for message validation
 2026-02-09T14:30:06+01:00 - 2eeb2de - axolotle : refactor(back): add PromptField for message validation
+2026-02-09T14:30:06+01:00 - 2ed3e732 - axolotle : refactor: remove old root main.py
 2026-02-09T14:30:06+01:00 - 2ed3e73 - axolotle : refactor: remove old root main.py
+2026-02-09T14:30:06+01:00 - 2ecfdb50 - axolotle : refactor(back): remove stale functions and add some docstrings
 2026-02-09T14:30:06+01:00 - 2ecfdb5 - axolotle : refactor(back): remove stale functions and add some docstrings
+2026-02-09T14:30:06+01:00 - 2e471e7f - axolotle : refactor(back): update Conversation with llm data and endpoint getters
 2026-02-09T14:30:06+01:00 - 2e471e7 - axolotle : refactor(back): update Conversation with llm data and endpoint getters
+2026-02-09T14:30:06+01:00 - 2da42928 - axolotle : refactor(back): rename language_models folder to llms
 2026-02-09T14:30:06+01:00 - 2da4292 - axolotle : refactor(back): rename language_models folder to llms
+2026-02-09T14:30:06+01:00 - 2adb469a - axolotle : refactor(back): add some TODO for ReactionRecord
 2026-02-09T14:30:06+01:00 - 2adb469 - axolotle : refactor(back): add some TODO for ReactionRecord
+2026-02-09T14:30:06+01:00 - 282ee943 - axolotle : refactor(back): add get_redis_client function
 2026-02-09T14:30:06+01:00 - 282ee94 - axolotle : refactor(back): add get_redis_client function
+2026-02-09T14:30:06+01:00 - 2809ee2e - axolotle : refactor: update Vote type
 2026-02-09T14:30:06+01:00 - 2809ee2 - axolotle : refactor: update Vote type
+2026-02-09T14:30:06+01:00 - 27079778 - axolotle : feat(front): add global error catcher
 2026-02-09T14:30:06+01:00 - 2707977 - axolotle : feat(front): add global error catcher
+2026-02-09T14:30:06+01:00 - 23e78e2a - axolotle : refactor(bacl): rework /vote
 2026-02-09T14:30:06+01:00 - 23e78e2 - axolotle : refactor(bacl): rework /vote
+2026-02-09T14:30:06+01:00 - 225e84ad - Elie Gavoty : refactor(back): Adapt conversation.py to use Pydantic Conversation models
 2026-02-09T14:30:06+01:00 - 225e84a - Elie Gavoty : refactor(back): Adapt conversation.py to use Pydantic Conversation models
+2026-02-09T14:30:06+01:00 - 1ebac4e5 - Elie Gavoty : refactor(back): adapt router.py to use Pydantic Conversation models
 2026-02-09T14:30:06+01:00 - 1ebac4e - Elie Gavoty : refactor(back): adapt router.py to use Pydantic Conversation models
+2026-02-09T14:30:06+01:00 - 1bb01f6b - axolotle : refactor: use Conversations and *Message
 2026-02-09T14:30:06+01:00 - 1bb01f6 - axolotle : refactor: use Conversations and *Message
+2026-02-09T14:30:06+01:00 - 1782efc6 - axolotle : refactor(front): remove old api files
 2026-02-09T14:30:06+01:00 - 1782efc - axolotle : refactor(front): remove old api files
+2026-02-09T14:30:06+01:00 - 1700589e - axolotle : refactor(back): rework '/react'
 2026-02-09T14:30:06+01:00 - 1700589 - axolotle : refactor(back): rework '/react'
+2026-02-09T14:30:06+01:00 - 152e68d9 - axolotle : refactor(back): move arena body requests to models for consistency
 2026-02-09T14:30:06+01:00 - 152e68d - axolotle : refactor(back): move arena body requests to models for consistency
+2026-02-09T14:30:06+01:00 - 1463ac59 - axolotle : refactor(back): rename reaction/vote var names for consistency
 2026-02-09T14:30:06+01:00 - 1463ac5 - axolotle : refactor(back): rename reaction/vote var names for consistency
+2026-02-09T14:30:06+01:00 - 12d36b87 - axolotle : refactor(back): restore reaction data recording + use pydantic models
 2026-02-09T14:30:06+01:00 - 12d36b8 - axolotle : refactor(back): restore reaction data recording + use pydantic models
+2026-02-09T14:30:06+01:00 - 10fa9218 - axolotle : chore(back): update pydantic to >=2.12
 2026-02-09T14:30:06+01:00 - 10fa921 - axolotle : chore(back): update pydantic to >=2.12
+2026-02-09T14:30:06+01:00 - 0ab92425 - axolotle : refactor(back): remove unused imports
 2026-02-09T14:30:06+01:00 - 0ab9242 - axolotle : refactor(back): remove unused imports
+2026-02-09T14:30:06+01:00 - 08ea34de - axolotle : refactor(front): show response only if both are successfull
 2026-02-09T14:30:06+01:00 - 08ea34d - axolotle : refactor(front): show response only if both are successfull
+2026-02-09T14:30:06+01:00 - 08987365 - axolotle : refactor(back): i18n errors as TODO
 2026-02-09T14:30:06+01:00 - 0898736 - axolotle : refactor(back): i18n errors as TODO
+2026-02-09T14:30:06+01:00 - 08652a24 - axolotle : refactor(back): remove record_vote and react session args since they are in conversation now
 2026-02-09T14:30:06+01:00 - 08652a2 - axolotle : refactor(back): remove record_vote and react session args since they are in conversation now
+2026-02-09T14:30:06+01:00 - 07a9a5b0 - axolotle : feat(front): TextPrompt: add bindable error display
 2026-02-09T14:30:06+01:00 - 07a9a5b - axolotle : feat(front): TextPrompt: add bindable error display
+2026-02-09T14:30:06+01:00 - 03c84a81 - axolotle : refactor(back): add VoteRecord model to parse/validate db/logs data
 2026-02-09T14:30:06+01:00 - 03c84a8 - axolotle : refactor(back): add VoteRecord model to parse/validate db/logs data
+2026-02-09T14:30:05+01:00 - ffc9d028 - Elie Gavoty : fix(backend): use list for get_available_models
 2026-02-09T14:30:05+01:00 - ffc9d02 - Elie Gavoty : fix(backend): use list for get_available_models
+2026-02-09T14:30:05+01:00 - fa5a9c71 - Elie Gavoty : refactor(frontend): migrate client for fastapi
 2026-02-09T14:30:05+01:00 - fa5a9c7 - Elie Gavoty : refactor(frontend): migrate client for fastapi
 2026-02-09T14:30:05+01:00 - f8677a6 - axolotle : refactor(back): DatasetData: add named attrs as validation alias too
 2026-02-09T14:30:05+01:00 - f6138ee - axolotle : refactor(back): logger: use settings + move needed utils
@@ -620,34 +1328,47 @@
 2026-02-09T14:30:05+01:00 - edc7001 - axolotle : fix(back): models: typing
 2026-02-09T14:30:05+01:00 - eadc1db - Hadrien : fix: fix some import errors
 2026-02-09T14:30:05+01:00 - df9a8a8 - axolotle : chore(back): add pydantic-settings
+2026-02-09T14:30:05+01:00 - d8e2946d - axolotle : refactor(back): move model picker to LanguageModels
 2026-02-09T14:30:05+01:00 - d8e2946 - axolotle : refactor(back): move model picker to LanguageModels
 2026-02-09T14:30:05+01:00 - d667d1e - axolotle : refactor(back): move Conversation models to arena
 2026-02-09T14:30:05+01:00 - cee86d7 - axolotle : refactor(back): add country code typing + /counter route
 2026-02-09T14:30:05+01:00 - cab0e94 - axolotle : refactor(back): move models file
 2026-02-09T14:30:05+01:00 - bdd413e - axolotle : refactor(back): move session file
+2026-02-09T14:30:05+01:00 - bd5fc3f0 - Elie Gavoty : refactor(backend): pydantic arena models + session management + streaming SSE bootstrap + arena router dependencies for validation
 2026-02-09T14:30:05+01:00 - bd5fc3f - Elie Gavoty : refactor(backend): pydantic arena models + session management + streaming SSE bootstrap + arena router dependencies for validation
+2026-02-09T14:30:05+01:00 - b637b3e0 - axolotle : refactor(back): rework get_llm_impact expecting LanguageModel arg
 2026-02-09T14:30:05+01:00 - b637b3e - axolotle : refactor(back): rework get_llm_impact expecting LanguageModel arg
 2026-02-09T14:30:05+01:00 - b51161c - Hadrien : fix: fix some imports
 2026-02-09T14:30:05+01:00 - a45a728 - axolotle : feat(back): add final LanguageModel pydantic model
 2026-02-09T14:30:05+01:00 - a266ebc - Hadrien : fix: mock response bool
+2026-02-09T14:30:05+01:00 - 9ed51230 - Elie Gavoty : refactor(backend): arena endpoints
 2026-02-09T14:30:05+01:00 - 9ed5123 - Elie Gavoty : refactor(backend): arena endpoints
 2026-02-09T14:30:05+01:00 - 99a905a - Hadrien : fix: disable models in custom component dropdown
 2026-02-09T14:30:05+01:00 - 962bae7 - axolotle : refactor(back): move logging stuff into new logger file
 2026-02-09T14:30:05+01:00 - 925d739 - axolotle : refactor(back):  move CohortRequest model to session.py
+2026-02-09T14:30:05+01:00 - 88ee68bf - axolotle : refactor(back): rename models folder to language_models
 2026-02-09T14:30:05+01:00 - 88ee68b - axolotle : refactor(back): rename models folder to language_models
+2026-02-09T14:30:05+01:00 - 8607ff52 - axolotle : feat(back): add arena router + partial '/add_first_text' route
 2026-02-09T14:30:05+01:00 - 8607ff5 - axolotle : feat(back): add arena router + partial '/add_first_text' route
+2026-02-09T14:30:05+01:00 - 8486b41b - Elie Gavoty : fix(backend): multiple fix for logger still referencing gradio session_hash and sse streaming events messing up the front
 2026-02-09T14:30:05+01:00 - 8486b41 - Elie Gavoty : fix(backend): multiple fix for logger still referencing gradio session_hash and sse streaming events messing up the front
 2026-02-09T14:30:05+01:00 - 7dd22b8 - axolotle : refactor(back): use pydantic BaseSettings for env variables + move some constants in new config.py
 2026-02-09T14:30:05+01:00 - 7741a4d - axolotle : refactor(back): move get_country_portal_count to backend
+2026-02-09T14:30:05+01:00 - 739aad70 - axolotle : refactor(controller): fix imports + types
 2026-02-09T14:30:05+01:00 - 739aad7 - axolotle : refactor(controller): fix imports + types
 2026-02-09T14:30:05+01:00 - 71f52ff - axolotle : feat(back): add root __init__
+2026-02-09T14:30:05+01:00 - 6ee04efb - axolotle : feat(back): add SelectionMode types/constants
 2026-02-09T14:30:05+01:00 - 6ee04ef - axolotle : feat(back): add SelectionMode types/constants
 2026-02-09T14:30:05+01:00 - 68ecc27 - axolotle : refactor(front): move sentry to its own init fn + update using settings
 2026-02-09T14:30:05+01:00 - 676f504 - axolotle : refactor(front): models utils types
+2026-02-09T14:30:05+01:00 - 5f87aaa0 - Elie Gavoty : fix(backend): fix reaction endpoints WIP
 2026-02-09T14:30:05+01:00 - 5f87aaa - Elie Gavoty : fix(backend): fix reaction endpoints WIP
 2026-02-09T14:30:05+01:00 - 5b96ce4 - axolotle : refactor(back): move models utils
+2026-02-09T14:30:05+01:00 - 5a88e2b1 - axolotle : fix(back): language_models imports
 2026-02-09T14:30:05+01:00 - 5a88e2b - axolotle : fix(back): language_models imports
+2026-02-09T14:30:05+01:00 - 56bdf339 - axolotle : fix(back): session: return types + global logger
 2026-02-09T14:30:05+01:00 - 56bdf33 - axolotle : fix(back): session: return types + global logger
+2026-02-09T14:30:05+01:00 - 56040459 - Elie Gavoty : fix(backend): multiple fix for vote
 2026-02-09T14:30:05+01:00 - 5604045 - Elie Gavoty : fix(backend): multiple fix for vote
 2026-02-09T14:30:05+01:00 - 5092a76 - axolotle : fix(back): temp fix gradio part imports
 2026-02-09T14:30:05+01:00 - 4c800ab - axolotle : refactor(back): rename logging config function and call in main
@@ -656,42 +1377,71 @@
 2026-02-09T14:30:05+01:00 - 411c6ac - axolotle : fix(back): syntax
 2026-02-09T14:30:05+01:00 - 4063403 - axolotle : feat(front): add new main.py
 2026-02-09T14:30:05+01:00 - 351eba0 - axolotle : fix(back): update utils imports
+2026-02-09T14:30:05+01:00 - 3504d87e - Elie Gavoty : refactor(backend): move pertinent old code and clean
 2026-02-09T14:30:05+01:00 - 3504d87 - Elie Gavoty : refactor(backend): move pertinent old code and clean
 2026-02-09T14:30:05+01:00 - 2ec69bc - Hadrien : fix: fix some imports
+2026-02-09T14:30:05+01:00 - 2c43755d - Elie Gavoty : fix(backend): multiple fix for import and add_first_text action (pydantic model 2 json convert)
 2026-02-09T14:30:05+01:00 - 2c43755 - Elie Gavoty : fix(backend): multiple fix for import and add_first_text action (pydantic model 2 json convert)
 2026-02-09T14:30:05+01:00 - 2b817f3 - axolotle : refactor(back): temp readd gradio part in new backend
+2026-02-09T14:30:05+01:00 - 26e6b85c - Elie Gavoty : remove useless arena route /init + format + eslint
 2026-02-09T14:30:05+01:00 - 26e6b85 - Elie Gavoty : remove useless arena route /init + format + eslint
 2026-02-09T14:30:05+01:00 - 24e4ae7 - axolotle : refactor(back): remove already migrated routes
+2026-02-09T14:30:05+01:00 - 1d67f5bd - axolotle : refactor(back): move models picker to LanguageModels
 2026-02-09T14:30:05+01:00 - 1d67f5b - axolotle : refactor(back): move models picker to LanguageModels
 2026-02-09T14:30:05+01:00 - 1c590dd - axolotle : fix(back): loggers: add LOG_FORMAT setting + use settings
 2026-02-09T14:30:05+01:00 - 1a255d2 - axolotle : refactor(back): rework llms data with pydantic model
 2026-02-09T14:30:05+01:00 - 04d14ba - axolotle : feat(back): add models router and route
 2026-02-09T14:30:05+01:00 - 008d9e7 - axolotle : chore(back): makefile: switch to new backend
 2026-02-09T14:30:05+01:00 - 007b3b7 - axolotle : refactor(back): config: add base project path and use in models
+2026-02-09T14:25:38+01:00 - b47b906a - axolotle : chore(front): upgrade @lobehub/icons-static-svg
 2026-02-09T14:25:38+01:00 - b47b906 - axolotle : chore(front): upgrade @lobehub/icons-static-svg
+2026-02-09T14:25:10+01:00 - f0f0bbf8 - axolotle : chore(data): update llm data
 2026-02-09T14:25:10+01:00 - f0f0bbf - axolotle : chore(data): update llm data
+2026-02-09T14:22:11+01:00 - 52bc0a2d - axolotle : chore(data): run models maintenance
 2026-02-09T14:22:11+01:00 - 52bc0a2 - axolotle : chore(data): run models maintenance
+2026-02-09T13:58:43+01:00 - 1cb4060c - Axolotle : Merge pull request #301 from betagouv/rankings-update
 2026-02-09T13:58:43+01:00 - 1cb4060 - Axolotle : Merge pull request #301 from betagouv/rankings-update
+2026-02-09T13:54:04+01:00 - 49148dab - Axolotle : Merge pull request #287 from betagouv/add/arcee-trinity-large-kimi-k2.5
 2026-02-09T13:54:04+01:00 - 49148da - Axolotle : Merge pull request #287 from betagouv/add/arcee-trinity-large-kimi-k2.5
+2026-02-09T13:53:40+01:00 - f53f06c5 - Axolotle : Merge pull request #302 from betagouv/qwen-model-updates
 2026-02-09T13:53:40+01:00 - f53f06c - Axolotle : Merge pull request #302 from betagouv/qwen-model-updates
+2026-02-09T13:39:16+01:00 - 2f57c884 - Axolotle : Merge pull request #291 from betagouv/fix-kimi-URL
 2026-02-09T13:39:16+01:00 - 2f57c88 - Axolotle : Merge pull request #291 from betagouv/fix-kimi-URL
+2026-02-09T12:33:40+01:00 - 7b783152 - Axolotle : Merge pull request #247 from weblate/weblate-comparia-develop
 2026-02-09T12:33:40+01:00 - 7b78315 - Axolotle : Merge pull request #247 from weblate/weblate-comparia-develop
+2026-02-04T17:51:17+01:00 - 37d2e639 - Simon Zilinskas : Archive Qwen models and add Qwen3-Coder-Next
 2026-02-04T17:51:17+01:00 - 37d2e63 - Simon Zilinskas : Archive Qwen models and add Qwen3-Coder-Next
+2026-02-04T07:37:51Z - ccf6e48e - github-actions[bot] : Update rankings data from build_models script
 2026-02-04T07:37:51Z - ccf6e48 - github-actions[bot] : Update rankings data from build_models script
+2026-02-03T12:02:16Z - 76423a7f - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
 2026-02-03T12:02:16Z - 76423a7 - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop
+2026-02-03T12:02:04Z - b165f618 - Simonas : i18n: updated translation for English (Weblate)
 2026-02-03T12:02:04Z - b165f61 - Simonas : i18n: updated translation for English (Weblate)
+2026-01-30T08:17:38+01:00 - bf3933b0 - Simon : Fix Kimi 2.5 more info URL
 2026-01-30T08:17:38+01:00 - bf3933b - Simon : Fix Kimi 2.5 more info URL
+2026-01-29T17:27:10+01:00 - af3b2cd2 - Simon Zilinskas : Add Arcee Trinity Large model and mark Kimi K2.5 as new
 2026-01-29T17:27:10+01:00 - af3b2cd - Simon Zilinskas : Add Arcee Trinity Large model and mark Kimi K2.5 as new
+2026-01-28T18:27:49+01:00 - 089a58ac - Elie Gavoty : Merge pull request #281 from betagouv/rankings-update
 2026-01-28T18:27:49+01:00 - 089a58a - Elie Gavoty : Merge pull request #281 from betagouv/rankings-update
+2026-01-28T17:58:19+01:00 - 015247ec - Elie Gavoty : Merge pull request #282 from betagouv/add-model-kimi-k-2-5
 2026-01-28T17:58:19+01:00 - 015247e - Elie Gavoty : Merge pull request #282 from betagouv/add-model-kimi-k-2-5
+2026-01-28T17:08:50Z - 88f1fee8 - github-actions[bot] : Update rankings data from build_models script
 2026-01-28T17:08:50Z - 88f1fee - github-actions[bot] : Update rankings data from build_models script
+2026-01-28T15:21:29+01:00 - eef61ff7 - Simon : Small fixes to formulation
 2026-01-28T15:21:29+01:00 - eef61ff - Simon : Small fixes to formulation
+2026-01-28T15:16:16+01:00 - b155eddd - Simon : Add model - Kimi K2.5
 2026-01-28T15:16:16+01:00 - b155edd - Simon : Add model - Kimi K2.5
+2026-01-28T13:32:11+01:00 - 1510e705 - Elie Gavoty : Merge branch 'fix/apertus-olmo-open-source' into develop
 2026-01-28T13:32:11+01:00 - 1510e70 - Elie Gavoty : Merge branch 'fix/apertus-olmo-open-source' into develop
+2026-01-28T13:28:58+01:00 - 45eb4934 - Simon : fix: mark Apertus and OLMo as fully open source
 2026-01-28T13:28:58+01:00 - 45eb493 - Simon : fix: mark Apertus and OLMo as fully open source
+2026-01-28T13:21:43+01:00 - a4afc090 - Elie Gavoty : Merge pull request #280 from betagouv/rankings-update
 2026-01-28T13:21:43+01:00 - a4afc09 - Elie Gavoty : Merge pull request #280 from betagouv/rankings-update
+2026-01-28T07:18:44Z - d4626fda - github-actions[bot] : Update rankings data from build_models script
 2026-01-28T07:18:44Z - d4626fd - github-actions[bot] : Update rankings data from build_models script
+2026-01-27T20:54:14+01:00 - 33a8fa55 - Elie Gavoty : Merge pull request #272 from betagouv/rankings-update
 2026-01-27T20:54:14+01:00 - 33a8fa5 - Elie Gavoty : Merge pull request #272 from betagouv/rankings-update
+2026-01-27T15:28:18+01:00 - 6f90bd7a - Simon : fix: mark Apertus and OLMo as fully open source
 2026-01-27T15:28:18+01:00 - 6f90bd7 - Simon : fix: mark Apertus and OLMo as fully open source
 2026-01-21T07:20:42Z - f63dc06 - github-actions[bot] : Update rankings data from build_models script
 2026-01-20T16:02:03Z - 9d70c3b - Hosted Weblate : Merge remote-tracking branch 'origin/develop' into develop

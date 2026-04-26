@@ -54,6 +54,7 @@
 │       ├── __init__.py
 │       ├── countries.py
 │       └── user.py
+├── comparia-cli
 ├── controller.py
 ├── devops
 │   ├── .env.dev
@@ -555,6 +556,25 @@
 ├── utils
 │   ├── __init__.py
 │   ├── add_token_count.py
+│   ├── database
+│   │   ├── __init__.py
+│   │   ├── actions
+│   │   │   ├── __init__.py
+│   │   │   ├── archive_corrupted.py
+│   │   │   ├── archive_duplicate.py
+│   │   │   ├── archive_not_archived.py
+│   │   │   ├── archive_or_fix_country_portal.py
+│   │   │   ├── archive_spam.py
+│   │   │   ├── archive_unknown_llms.py
+│   │   │   ├── llm_analyze.py
+│   │   │   └── rename_llm.py
+│   │   ├── cli.py
+│   │   ├── lint.py
+│   │   ├── migrations
+│   │   │   ├── 2026_04_archived.py
+│   │   │   ├── 2026_04_archived.sql
+│   │   │   └── 2026_04_simplify_db.sql
+│   │   └── utils.py
 │   ├── dataset
 │   │   ├── compute.py
 │   │   ├── export.py
@@ -617,7 +637,6 @@
 │   │   ├── da.json
 │   │   ├── fr.json
 │   │   └── sv.json
-│   ├── topics_pii.py
 │   └── utils.py
 └── uv.lock
-94 directories, 528 files
+97 directories, 544 files
