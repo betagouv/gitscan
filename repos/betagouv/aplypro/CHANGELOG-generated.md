@@ -1,25 +1,35 @@
-## Changelog : aplypro (30 derniers jours, au 17 avril 2026)
+## Changelog : aplypro (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions d'aplypro se concentrent sur l'amélioration de la gestion des adresses, la correction de bugs liés aux paiements MASA et à l'envoi de données à RNVP, ainsi que des améliorations de l'interface utilisateur et de la logique métier pour la gestion des élèves et des PFMP. Plusieurs corrections mineures et optimisations ont également été apportées.
+Cette période a été marquée par des améliorations significatives sur la page de rectification des PFMP (Primes de Formation en Milieu Professionnel), avec une attention particulière portée à la correction de bugs et à l'amélioration de l'expérience utilisateur. Des corrections liées à l'adresse et aux paiements MASA ont également été apportées, ainsi que des améliorations concernant la gestion des élèves et de leur scolarité.
 
 ### Évolutions fonctionnelles
-- **Gestion des adresses :** Amélioration de la correction d'adresses avec l'intégration de `ASP::AdresseCorrectionRequest` [#1941]. Correction de plusieurs bugs liés aux mises à jour d'adresses [#1944].
-- **Paiements MASA :** Déblocage des paiements MASA [#1933].
-- **PFMP :** Affichage des messages d'erreur sur le formulaire de rectification d'une PFMP [#1933].
-- **Informations élève :** Ajout d'informations complémentaires sur la page de détail de l'élève et modification de la présentation visuelle [#1933].
-- **Gestion des doublons RNVP :** Correction d'un problème d'envoi de doublons de données à RNVP [#1933].
-- **Gestion de la double scolarité :** Prise en charge de la double scolarité d'un élève dans une même classe [#1923].
-- **Abrogation des DA :** Modification de la logique et de l'affichage du bouton d'abrogation des DA.
+- Amélioration de la page de rectification des PFMP :
+    - Affichage des messages d'erreur du formulaire de rectification. [#1948]
+    - Correction de plusieurs problèmes mineurs sur cette page. [#1947]
+    - Correction du problème de réinitialisation du champ IBAN.
+    - Correction du bouton de suppression du RIB.
+    - Collage du titre de la page de rectification.
+- Déblocage des paiements MASA. [#1933]
+- Gestion de la double scolarité d'un élève dans une même classe. [#1923]
+- Affichage d'informations complémentaires sur la page de détail de l'élève.
+- Modification visuelle des informations de l'élève.
+- Modification de la logique et de l'affichage du bouton d'abrogation.
+- Correction d'un bug empêchant la recherche d'étudiants.
 
 ### Évolutions techniques
-- **API RNVP :** Correction des bugs liés à l'appel à l'API RNVP [#1922].
-- **Refactoring :** Renommage de méthodes pour une meilleure lisibilité et suppression de l'opérateur bang sur `merge_date_range`.
-- **Tests :** Ajout de tests unitaires pour FREGATA et SYGNE. Correction de tests existants.
-- **Dépendances :** Mise à jour de plusieurs dépendances : `addressable` [#1940], `rack-session` [#1939], `rack` [#1936].
-- **Optimisation :** Amélioration de la gestion des appels batch à RNVP pour les grands nombres d'élèves.
+- Intégration de `ASP::AdresseCorrectionRequest` pour formaliser l'intégration et la gestion des retours de la correction d'adresse. [#1941]
+- Centralisation de la définition de la méthode `overpaid?`.
+- Pré-calcul du validateur pour la rectification PFMP afin d'optimiser les performances.
+- Amélioration de la logique de déduplication.
+- Correction de plusieurs erreurs de type dans le code.
+- Mise à jour de la logique de gestion des codes INSEE.
+- Amélioration de la gestion des majuscules/minuscules pour la correction d'adresse.
+- Correction de tests et ajout de tests fonctionnels sur la page de rectification.
+- Suppression de code inutile et nettoyage du code.
 
 ### Autres changements
-- **Documentation :** Traductions des messages d'erreur en français.
-- **Nettoyage de code :** Suppression de code obsolète et correction de problèmes de style avec Rubocop.
-- **Version :** Mise à jour de la version de l'application à 2.9.1 et 2.9.2.
+- Traduction des messages d'erreur en français.
+- Mise à jour de certaines dépendances : `addressable`, `rack-session`, `rack`.
+- Bump de version : 2.9.1, 2.9.2, 2.9.3, 2.9.4, 2.10.0.
+- Correction de Rubocop.
