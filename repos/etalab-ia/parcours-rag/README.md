@@ -16,17 +16,61 @@ corpus des guides ANSSI « Les Essentiels », piloté par votre agent de codage.
 ## Prérequis
 
 - Node 20+
-- `pnpm`
-- Un agent de codage (Letta Code, Claude Code, Cursor…)
+- Un agent de codage (Claude Code, Cursor…)
 - Une clé API Albert → [albert.api.etalab.gouv.fr](https://albert.api.etalab.gouv.fr)
+
+## Installation via skills.sh (sans clone manuel)
+
+Mode recommandé pour les participants : installer les skills puis laisser l'agent
+bootstrapper le workspace atelier (Mastra + corpus) automatiquement.
+
+Installer depuis le dossier `skills/` du repo pour récupérer tous les skills Parcours RAG
+(Module 3 aujourd'hui, Module 4 ensuite) en une seule commande :
+
+```bash
+npx skills add https://github.com/etalab-ia/parcours-rag/tree/main/skills
+```
+
+Le skill du Module 3 est exposé sous le nom `parcours-rag/module3`.
+
+Ensuite, dans votre agent :
+
+```text
+/parcours-rag/module3
+```
+
+Selon l'agent, il peut aussi apparaître sous la forme `/parcours-rag-module3`.
+
+Le skill lance d'abord un bootstrap workspace basé sur `npm create mastra@latest`
+puis déroule les checkpoints CP1 → CP6. Si le skill `mastra` n'est pas installé,
+il l'installe automatiquement au début du bootstrap.
+
+### Smoke tests (clean-room)
+
+```bash
+# End-to-end bootstrap smoke test (npm-only)
+scripts/smoke/module3-bootstrap-smoke.sh --corpus-source anssi
+
+# Compare corpus download time by source
+node scripts/smoke/benchmark-corpus-sources.mjs
+```
+
+### Backlog (post-MVP)
+
+- 📦 Packaging optimisation: publish `anssi-essentiels.zip` as a versioned GitHub Release asset,
+  then let bootstrap download/extract a single archive (fallback to per-file download if unavailable).
+
+## Démarrage local (mode repo)
+
+Si vous travaillez directement dans ce repo, utilisez le flux historique ci-dessous.
 
 ## Démarrage (checkpoint 1)
 
 ```bash
-pnpm install
+npm install
 cp .env.example .env
 # éditer .env et renseigner ALBERT_API_KEY
-pnpm dev
+npm run dev
 ```
 
 Ouvrir [http://localhost:4111](http://localhost:4111) — Mastra Studio doit afficher
@@ -35,11 +79,18 @@ Albert fonctionne.
 
 ## Comment suivre le workshop
 
-Le parcours est piloté par un *skill* installé dans ce repo (`.skills/module-3-rag/`).
+Le parcours est piloté par le *skill* `parcours-rag/module3` (installé via skills.sh
+ou présent dans ce repo sous `skills/parcours-rag-module3/`).
 Demandez à votre agent de codage de lancer le workshop :
 
 ```
-/module-3-rag
+/parcours-rag/module3
+```
+
+Si votre agent ne propose pas ce nom exact, essayez aussi :
+
+```
+/parcours-rag-module3
 ```
 
 Votre agent vous guidera checkpoint par checkpoint. Le facilitateur orchestre la
@@ -54,7 +105,7 @@ parcours-rag/
 │   ├── agents/                Agents (chat, puis RAG)
 │   ├── gateways/              Gateway Albert (chat + embeddings)
 │   └── index.ts               Entrée Mastra
-├── .skills/module-3-rag/      Skill qui pilote l'atelier
+├── skills/parcours-rag-module3/ Skill qui pilote l'atelier
 ├── design/                    Document de conception (lecture utile pour les formateurs)
 └── README.md
 ```

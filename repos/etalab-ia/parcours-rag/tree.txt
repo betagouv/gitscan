@@ -1,6 +1,10 @@
 .
 ├── .agents
 │   └── skills
+│       ├── gws-shared
+│       │   └── SKILL.md
+│       ├── gws-slides
+│       │   └── SKILL.md
 │       ├── mastra
 │       │   ├── SKILL.md
 │       │   ├── references
@@ -11,15 +15,6 @@
 │       │   │   └── remote-docs.md
 │       │   └── scripts
 │       │       └── provider-registry.mjs
-│       ├── module-3-rag
-│       │   ├── SKILL.md
-│       │   └── references
-│       │       ├── cp1-setup.md
-│       │       ├── cp2-ingestion.md
-│       │       ├── cp3-embeddings.md
-│       │       ├── cp4-retrieval.md
-│       │       ├── cp5-generation.md
-│       │       └── cp6-eval.md
 │       └── slidev
 │           ├── LICENSE.md
 │           ├── README.md
@@ -53,10 +48,12 @@
 │               ├── syntax-importing-slides.md
 │               ├── syntax-mdc.md
 │               └── tool-eject-theme.md
+├── .aiexclude
 ├── .claude
 │   └── skills
+│       ├── gws-shared -> ../../.agents/skills/gws-shared
+│       ├── gws-slides -> ../../.agents/skills/gws-slides
 │       ├── mastra -> ../../.agents/skills/mastra
-│       ├── module-3-rag -> ../../.agents/skills/module-3-rag
 │       └── slidev -> ../../.agents/skills/slidev
 ├── .env.example
 ├── .github
@@ -69,12 +66,14 @@
 │   └── pre-commit
 ├── .pi
 │   └── skills
+│       ├── gws-shared -> ../../.agents/skills/gws-shared
+│       ├── gws-slides -> ../../.agents/skills/gws-slides
 │       ├── mastra -> ../../.agents/skills/mastra
-│       ├── module-3-rag -> ../../.agents/skills/module-3-rag
 │       └── slidev -> ../../.agents/skills/slidev
 ├── .skills
+│   ├── gws-shared -> ../.agents/skills/gws-shared
+│   ├── gws-slides -> ../.agents/skills/gws-slides
 │   ├── mastra -> ../.agents/skills/mastra
-│   ├── module-3-rag -> ../.agents/skills/module-3-rag
 │   └── slidev -> ../.agents/skills/slidev/
 ├── LICENSE
 ├── README.md
@@ -114,6 +113,21 @@
 │   ├── observed-behavior.md
 │   ├── retrieve.ts
 │   └── run-eval.ts
+├── scripts
+│   └── smoke
+│       ├── benchmark-corpus-sources.mjs
+│       └── module3-bootstrap-smoke.sh
+├── skills
+│   └── parcours-rag-module3
+│       ├── SKILL.md
+│       └── references
+│           ├── bootstrap-workspace.md
+│           ├── cp1-setup.md
+│           ├── cp2-ingestion.md
+│           ├── cp3-embeddings.md
+│           ├── cp4-retrieval.md
+│           ├── cp5-generation.md
+│           └── cp6-eval.md
 ├── skills-lock.json
 ├── slides
 │   ├── README.md
@@ -126,4 +140,4 @@
 │       │   └── albert.ts
 │       └── index.ts
 └── tsconfig.json
-38 directories, 115 files
+46 directories, 121 files
