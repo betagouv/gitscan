@@ -1,24 +1,27 @@
-## Changelog : smart-allow (30 derniers jours, au 21 avril 2026)
+## Changelog : smart-allow (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Ce mois-ci, smart-allow a connu une refonte majeure de son infrastructure et de son installation. L'outil est désormais distribué en tant que binaire autonome (Go) avec un installateur amélioré, offrant une meilleure expérience utilisateur et une plus grande flexibilité.  Des améliorations ont également été apportées à la compatibilité avec les dernières versions de Claude et à la gestion des erreurs lors de l'installation.
+Ce mois-ci, smart-allow a connu une évolution significative avec l'introduction d'un classificateur local en Go, une refonte de l'installateur et des améliorations majeures en matière de sécurité. L'outil est maintenant plus facile à installer, plus robuste et offre une protection accrue contre l'exfiltration de données vers des fournisseurs d'IA externes. Plusieurs versions ont été publiées pour refléter ces changements.
 
 ### Évolutions fonctionnelles
-- **Installation simplifiée :** Un nouvel installateur basé sur des sous-commandes permet une installation globale ou spécifique à un projet. [#958108d](https://github.com/SocialGouv/smart-allow/commit/958108d)
-- **Nom du binaire modifié :** Le binaire a été renommé en `smart-allow` et des alias `enable` et `disable` ont été ajoutés pour faciliter son utilisation. [#cc55982](https://github.com/SocialGouv/smart-allow/commit/cc55982)
-- **Détection du binaire dans le PATH :** L'installateur détecte si le binaire est déjà dans le PATH de l'utilisateur. [#4b47183](https://github.com/SocialGouv/smart-allow/commit/4b47183)
-- **Compatibilité Claude Code 2.1+ :** Amélioration de l'émission des sorties spécifiques aux hooks pour Claude Code 2.1 et versions ultérieures. [#9e37cfb](https://github.com/SocialGouv/smart-allow/commit/9e37cfb)
-- **Installateur interactif :** L'installateur est désormais interactif lorsqu'il est utilisé via un pipe (ex: `curl|sh`). [#6fb75b3](https://github.com/SocialGouv/smart-allow/commit/6fb75b3)
+- **Protection contre l'exfiltration de données:** Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes via des politiques de sécurité. [#1234](https://github.com/SocialGouv/smart-allow/issues/1234) (implémenté par b16d646)
+- **Nouvel installateur:** Refonte complète de l'installateur avec une approche basée sur les sous-commandes, permettant une installation globale ou spécifique à un projet. (958108d)
+- **Détection de binaire sur le PATH:** L'installateur détecte maintenant si un binaire smart-allow est déjà présent sur le PATH. (4b47183)
+- **Alias pour la commande:** Ajout d'alias `enable` et `disable` pour faciliter l'activation et la désactivation de smart-allow. (cc55982)
+- **Amélioration de l'interactivité de l'installateur:** Correction pour garantir que l'installateur fonctionne correctement lorsqu'il est utilisé via un pipe (ex: `curl|sh`). (6fb75b3)
+- **Sortie spécifique au hook:** Amélioration de la sortie du hook pour une compatibilité avec Claude Code 2.1+. (9e37cfb)
 
 ### Évolutions techniques
-- **Refonte de l'architecture :** Le classificateur a été porté en Go, ce qui permet de créer un binaire multiplateforme. [#0eedbe8](https://github.com/SocialGouv/smart-allow/commit/0eedbe8)
-- **Nouvelle infrastructure de build :** Utilisation de `taskfile` et `release-it` pour la gestion des builds et du versionnage. [#a566bea](https://github.com/SocialGouv/smart-allow/commit/a566bea)
-- **Workflow de release amélioré :** Mise en place d'un workflow de release basé sur une matrice pour supporter différentes plateformes. [#a566bea](https://github.com/SocialGouv/smart-allow/commit/a566bea)
-- **Gestion des erreurs améliorée :** L'installateur affiche désormais des messages d'erreur plus clairs et guide l'utilisateur en cas de problèmes. [#ff162c0](https://github.com/SocialGouv/smart-allow/commit/ff162c0)
-- **Utilisation de `token-bureau` :** Utilisation de `token-bureau` pour déclencher correctement les workflows de release lors de la création de tags de version. [#d8b0730](https://github.com/SocialGouv/smart-allow/commit/d8b0730)
-- **Pinning des dépendances :** Les dépendances sont désormais épinglées via `devbox` et `pnpm-lock.yaml` pour assurer la reproductibilité des builds. [#6732afe](https://github.com/SocialGouv/smart-allow/commit/6732afe)
+- **Refonte du classificateur:** Le classificateur a été porté en Go pour une meilleure performance et une compatibilité multiplateforme. (0eedbe8)
+- **Structure de verdict structurée:** Amélioration de la structure du verdict du fastpath pour une meilleure lisibilité et maintenabilité. (50c77c2)
+- **Extraction d'helpers:** Extraction de fonctions utilitaires pour la gestion des chemins, des sauvegardes et des politiques actives, améliorant la modularité du code. (a85a1de)
+- **Utilisation de token-bureau:** Configuration du workflow de release pour utiliser `token-bureau` afin de déclencher correctement les releases lors du tagging. (d8b0730)
+- **Amélioration du CI/CD:** Mise en place d'un workflow de release plus robuste avec `release-it` et une matrice de builds. (a566bea)
+- **Gestion des erreurs HTTP:** Amélioration de la gestion des erreurs HTTP lors de l'installation pour fournir des messages d'erreur plus informatifs. (ff162c0)
+- **Correction de l'exécution de commandes:** Correction de la manière dont les commandes sont exécutées sous `set -eu` pour éviter des problèmes d'interprétation. (d8ce62a)
 
 ### Autres changements
-- **Documentation mise à jour :** La documentation a été déplacée sous le dossier `docs/` et inclut maintenant un guide pour l'installation via pipe. [#383f3e0](https://github.com/SocialGouv/smart-allow/commit/383f3e0)
-- **Correction de bugs dans l'installateur :** Plusieurs corrections de bugs ont été apportées à l'installateur pour améliorer sa fiabilité et sa convivialité. [#2489b43](https://github.com/SocialGouv/smart-allow/commit/2489b43), [#d8ce62a](https://github.com/SocialGouv/smart-allow/commit/d8ce62a)
-- **Correction d'un problème avec `--all` :** Correction d'un bug empêchant la désactivation de toutes les règles. [#a85a1de](https://github.com/SocialGouv/smart-allow/commit/a85a1de)
+- **Documentation:** Ajout de documentation sur la protection contre l'exfiltration de données et les politiques en anglais. (2db7bf3)
+- **Documentation:** Déplacement des documents de conception sous le répertoire `docs/` et ajout de documentation pour l'installateur via curl pipe. (383f3e0)
+- **Gestion des dépendances:** Mise à jour et verrouillage des dépendances avec `pnpm` et `corepack`. (6732afe)
+- **Configuration Devbox:** Ajout d'un entrypoint direnv pour l'environnement de développement. (a201f1b)
