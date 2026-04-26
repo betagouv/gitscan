@@ -165,8 +165,6 @@
     │   │   │       ├── clean_pending_items.py
     │   │   │       ├── createsuperuser.py
     │   │   │       ├── index.py
-    │   │   │       ├── prepare_mirroring_items_history.py
-    │   │   │       ├── process_pending_mirror_tasks.py
     │   │   │       ├── purge_deleted_items.py
     │   │   │       └── update_suspicious_item_file_hash.py
     │   │   ├── migrations
@@ -195,19 +193,16 @@
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
-    │   │   │   ├── mirror.py
     │   │   │   ├── sdk_relay.py
     │   │   │   └── search_indexers.py
     │   │   ├── signals.py
     │   │   ├── storage
     │   │   │   ├── __init__.py
     │   │   │   ├── creator_storage_compute_backend.py
-    │   │   │   ├── s3_mirroring_storage.py
     │   │   │   └── storage_compute_backend.py
     │   │   ├── tasks
     │   │   │   ├── item.py
-    │   │   │   ├── search.py
-    │   │   │   └── storage.py
+    │   │   │   └── search.py
     │   │   ├── templates
     │   │   │   └── core
     │   │   │       └── generate_document.html
@@ -223,8 +218,6 @@
     │   │   │   ├── commands
     │   │   │   │   ├── test_clean_pending_items.py
     │   │   │   │   ├── test_index.py
-    │   │   │   │   ├── test_prepare_mirroring_items_history.py
-    │   │   │   │   ├── test_process_pending_mirror_tasks.py
     │   │   │   │   ├── test_purge_deleted_items.py
     │   │   │   │   └── test_update_suspicious_item_file_hash.py
     │   │   │   ├── conftest.py
@@ -268,21 +261,15 @@
     │   │   │   │   ├── test_api_items_tree.py
     │   │   │   │   ├── test_api_items_update.py
     │   │   │   │   └── test_api_items_wopi.py
-    │   │   │   ├── services
-    │   │   │   │   └── test_mirror.py
-    │   │   │   ├── storage
-    │   │   │   │   └── test_s3_mirroring_storage.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── tasks
-    │   │   │   │   ├── items
-    │   │   │   │   │   ├── test_duplicate_file.py
-    │   │   │   │   │   ├── test_process_item_purge.py
-    │   │   │   │   │   ├── test_rename_file.py
-    │   │   │   │   │   └── test_update_suspicious_item_file_hash.py
-    │   │   │   │   └── storage
-    │   │   │   │       └── test_mirror_file.py
+    │   │   │   │   └── items
+    │   │   │   │       ├── test_duplicate_file.py
+    │   │   │   │       ├── test_process_item_purge.py
+    │   │   │   │       ├── test_rename_file.py
+    │   │   │   │       └── test_update_suspicious_item_file_hash.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_entitlements.py
     │   │   │   ├── test_api_entitlements_anct.py
@@ -1048,4 +1035,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-249 directories, 801 files
+246 directories, 791 files
