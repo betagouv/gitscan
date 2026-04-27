@@ -80,6 +80,7 @@
 │   │   │   ├── icon-api-success.svg
 │   │   │   ├── icon-info.svg
 │   │   │   ├── icon-target.svg
+│   │   │   ├── icon-travaux.png
 │   │   │   ├── icon-warning-triangle.svg
 │   │   │   ├── passe-marche-logo-email.jpg
 │   │   │   ├── passe-marche-logo.png
@@ -202,7 +203,8 @@
 │   │   │   │   ├── authorization.rb
 │   │   │   │   └── csv_import_handling.rb
 │   │   │   └── candidate
-│   │   │       └── authentication.rb
+│   │   │       ├── authentication.rb
+│   │   │       └── webhook_submission.rb
 │   │   ├── home_controller.rb
 │   │   └── robots_txt_controller.rb
 │   ├── exceptions
@@ -305,6 +307,7 @@
 │   │   │   ├── build_resource.rb
 │   │   │   ├── download_document.rb
 │   │   │   └── make_request.rb
+│   │   ├── queue_market_application_webhook.rb
 │   │   ├── rge
 │   │   │   ├── build_resource.rb
 │   │   │   ├── download_document.rb
@@ -337,6 +340,7 @@
 │   │       ├── input_validation_controller.js
 │   │       ├── lot_selection_controller.js
 │   │       ├── modal_controller.js
+│   │       ├── radio_toggle_controller.js
 │   │       ├── subcategory_filter_controller.js
 │   │       ├── summary_scan_refresh_controller.js
 │   │       ├── sync_status_controller.js
@@ -454,6 +458,8 @@
 │   │   ├── antivirus_service.rb
 │   │   ├── application_service.rb
 │   │   ├── bug_tracker_service.rb
+│   │   ├── buyer
+│   │   │   └── public_market_wizard_service.rb
 │   │   ├── candidate
 │   │   │   └── prefill_email_attribute_responses.rb
 │   │   ├── category_export_service.rb
@@ -471,7 +477,6 @@
 │   │   ├── market_attribute_filtering_service.rb
 │   │   ├── market_attribute_query_service.rb
 │   │   ├── market_attribute_update_service.rb
-│   │   ├── market_configuration_service.rb
 │   │   ├── pdf_watermark_service.rb
 │   │   └── socle_de_base_stats_service.rb
 │   ├── validators
@@ -532,6 +537,7 @@
 │       │   │   ├── _field_display.html.erb
 │       │   │   ├── _subcategory_section.html.erb
 │       │   │   ├── generic_step.html.erb
+│       │   │   ├── lot_config.html.erb
 │       │   │   ├── motifs_exclusion.html.erb
 │       │   │   ├── setup.html.erb
 │       │   │   └── summary.html.erb
@@ -624,6 +630,7 @@
 │       │   ├── manifest.json.erb
 │       │   └── service-worker.js
 │       └── shared
+│           ├── _application_lots_summary.html.erb
 │           ├── _application_summary_content.html.erb
 │           ├── _candidate_attestation_motifs_exclusion.html.erb
 │           ├── _card_header.html.erb
@@ -637,6 +644,7 @@
 │           ├── _notice.html.erb
 │           ├── _pdf_environment_indicator.html.erb
 │           ├── _renamed_documents_section.html.erb
+│           ├── _sidebar_market_info.html.erb
 │           ├── _subcategory_attributes.html.erb
 │           └── _value_with_badge.html.erb
 ├── bin
@@ -753,7 +761,8 @@
 │   │   ├── 20260407000001_create_lots.rb
 │   │   ├── 20260407000002_create_market_application_lots.rb
 │   │   ├── 20260407000003_add_lot_limit_to_public_markets.rb
-│   │   └── 20260413110000_remove_lot_name_from_public_markets.rb
+│   │   ├── 20260413110000_remove_lot_name_from_public_markets.rb
+│   │   └── 20260416154352_add_cpv_code_to_lots.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -826,7 +835,9 @@
 │   ├── admin_socle_de_base_filters.feature
 │   ├── admin_socle_de_base_reorder.feature
 │   ├── api_public_markets.feature
+│   ├── attestation_lots_display.feature
 │   ├── buyer_flow.feature
+│   ├── buyer_lot_config.feature
 │   ├── candidate_authentication.feature
 │   ├── candidate_file_deletion.feature
 │   ├── candidate_flow.feature
@@ -866,7 +877,9 @@
 │   │   ├── admin_socle_de_base_reorder_steps.rb
 │   │   ├── admin_socle_de_base_steps.rb
 │   │   ├── api_public_markets_steps.rb
+│   │   ├── attestation_lots_display_steps.rb
 │   │   ├── buyer_flow_steps.rb
+│   │   ├── buyer_lot_config_steps.rb
 │   │   ├── candidate_authentication_steps.rb
 │   │   ├── candidate_flow_comprehensive_steps.rb
 │   │   ├── candidate_flow_steps.rb
@@ -890,7 +903,8 @@
 │   │   ├── setup_steps.rb
 │   │   ├── soft_delete_steps.rb
 │   │   ├── summary_page_banners_steps.rb
-│   │   └── urssaf_steps.rb
+│   │   ├── urssaf_steps.rb
+│   │   └── web_steps.rb
 │   ├── summary_page_banners.feature
 │   ├── support
 │   │   ├── active_job.rb
@@ -1253,6 +1267,8 @@
 │   │   ├── antivirus_service_spec.rb
 │   │   ├── application_service_spec.rb
 │   │   ├── bug_tracker_service_spec.rb
+│   │   ├── buyer
+│   │   │   └── public_market_wizard_service_spec.rb
 │   │   ├── category_export_service_spec.rb
 │   │   ├── clamav_service_spec.rb
 │   │   ├── document_naming_service_spec.rb
@@ -1268,7 +1284,6 @@
 │   │   ├── market_attribute_filtering_service_spec.rb
 │   │   ├── market_attribute_query_service_spec.rb
 │   │   ├── market_attribute_update_service_spec.rb
-│   │   ├── market_configuration_service_spec.rb
 │   │   ├── pdf_watermark_service_spec.rb
 │   │   └── socle_de_base_stats_service_spec.rb
 │   ├── spec_helper.rb
@@ -1355,4 +1370,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-217 directories, 1140 files
+219 directories, 1153 files
