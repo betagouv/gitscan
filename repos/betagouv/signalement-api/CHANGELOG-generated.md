@@ -1,15 +1,11 @@
-## Changelog : signalement-api (30 derniers jours)
+## Changelog : signalement-api (30 derniers jours, au 13 mai 2026)
 
 ### Résumé
-Les récentes évolutions de l'API SignalConso se concentrent sur l'amélioration de la gestion de la mémoire et des ressources, ainsi que sur la correction de bugs liés à l'export de fichiers et à la taille des requêtes. Ces améliorations visent à rendre l'API plus robuste et performante, notamment en production.
+Cette mise à jour apporte des améliorations mineures à l'export des données, notamment l'ajout de l'identifiant lors de l'export. Une correction de nom de variable d'environnement a également été effectuée. Ces changements visent à améliorer la qualité et la traçabilité des données exportées.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug concernant la taille limite du parser du corps des requêtes, permettant de traiter des requêtes plus importantes. [#3175](https://github.com/betagouv/signalement-api/issues/3175)
-- Correction du nom des fichiers exportés. [#3179](https://github.com/betagouv/signalement-api/issues/3179)
+- Ajout de l'identifiant lors de l'export des données. [#2032](https://github.com/betagouv/signalement-api/pull/2032)
 
 ### Évolutions techniques
-- Limitation de la taille de la mémoire directe (direct memory) pour éviter des problèmes de performance. [#3152](https://github.com/betagouv/signalement-api/issues/3152)
-- Ajout de la possibilité de définir des options de mémoire personnalisées (Xmx et Xms) en production. [#3152](https://github.com/betagouv/signalement-api/issues/3152)
-- Suppression des fichiers temporaires après leur téléchargement depuis S3 pour libérer de l'espace disque. [#2027](https://github.com/betagouv/signalement-api/issues/2027)
-- Limitation des "arenas" directes pour optimiser l'utilisation des ressources. [#3152](https://github.com/betagouv/signalement-api/issues/3152)
-- Correction de problèmes de linting. [#3179](https://github.com/betagouv/signalement-api/issues/3179)
+- Correction du nom d'une variable d'environnement. [56b03ae](https://github.com/betagouv/signalement-api/commit/56b03ae)
+- Amélioration du formatage de l'export. [c332a8f](https://github.com/betagouv/signalement-api/commit/c332a8f)
