@@ -4,17 +4,22 @@
   "description": "Améliorer la qualité globale du service de recharge pour véhicules électriques en analysant les données de supervision.",
   "language": "Python",
   "features": [
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
     "Statistiques & Rapports",
-    "Visualisation de données & Cartographie"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Monitoring & Logs"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Docker",
     "Django",
     "PostgreSQL",
-    "Docker",
-    "Keycloak"
+    "Metabase",
+    "Prefect"
   ],
   "components": [
     "API REST & GraphQL",
@@ -24,15 +29,13 @@
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "saml"
+      "email-password"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
+  "tests": "pytest",
   "workflows": [
-    "CI/CD"
+    "CI",
+    "CD"
   ],
   "lastActivity": "2026-04-24T14:25:14+02:00",
   "status": "active",
@@ -45,9 +48,10 @@
     "openIssues": null
   },
   "tags": [
-    "Énergie",
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
-    "API & Intégrations"
+    "Bases de données SQL",
+    "Environnement & Énergie"
   ]
 }
