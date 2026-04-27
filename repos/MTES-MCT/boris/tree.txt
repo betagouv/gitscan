@@ -102,28 +102,46 @@
 │   │   │   │   │   └── views
 │   │   │   │   │       ├── distributor.view.ts
 │   │   │   │   │       └── relationnal.view.ts
-│   │   │   │   ├── landbot-customer
+│   │   │   │   ├── eligibility-simulation
 │   │   │   │   │   ├── usecases
-│   │   │   │   │   │   ├── calculateConversionFunnel.usecase.ts
-│   │   │   │   │   │   ├── countSimulations.params.ts
-│   │   │   │   │   │   ├── countSimulations.usecase.ts
+│   │   │   │   │   │   ├── calculate-conversion-funnel.usecase.ts
+│   │   │   │   │   │   ├── count-simulations.usecase.ts
 │   │   │   │   │   │   ├── create.params.ts
 │   │   │   │   │   │   ├── create.usecase.ts
-│   │   │   │   │   │   ├── findLast.usecase.ts
-│   │   │   │   │   │   ├── groupByBrsKnowledge.usecase.ts
-│   │   │   │   │   │   ├── groupByDepartements.usecase.ts
-│   │   │   │   │   │   ├── groupByEligibility.usecase.ts
-│   │   │   │   │   │   ├── groupByRealEstateSituation.usecase.ts
-│   │   │   │   │   │   ├── groupByRegion.params.ts
-│   │   │   │   │   │   ├── groupByRegions.usecase.ts
-│   │   │   │   │   │   └── groupSimulationsByYearAndMonth.usecase.ts
+│   │   │   │   │   │   ├── group-by-brs-knowledge.usecase.ts
+│   │   │   │   │   │   ├── group-by-departements.usecase.ts
+│   │   │   │   │   │   ├── group-by-eligibility-stats.usecase.ts
+│   │   │   │   │   │   ├── group-by-real-estate-situation.usecase.ts
+│   │   │   │   │   │   ├── group-by-regions.usecase.ts
+│   │   │   │   │   │   ├── group-simulations-by-year-and-month.usecase.ts
+│   │   │   │   │   │   ├── update.params.ts
+│   │   │   │   │   │   └── update.usecase.ts
 │   │   │   │   │   └── views
-│   │   │   │   │       ├── landbot-customer-calculate-conversion-tunnel.view.ts
-│   │   │   │   │       ├── landbot-customer-group-by-departements.view.ts
-│   │   │   │   │       ├── landbot-customer-group-by-field.view.ts
-│   │   │   │   │       ├── landbot-customer-group-by-regions.view.ts
-│   │   │   │   │       ├── landbot-customer.view.ts
-│   │   │   │   │       └── landbot-custommer-group-simulations-by-year-and-month.view.ts
+│   │   │   │   │       ├── eligibility-simulation-calculate-conversion-funnel.view.ts
+│   │   │   │   │       ├── eligibility-simulation-group-by-departements.view.ts
+│   │   │   │   │       ├── eligibility-simulation-group-by-field.view.ts
+│   │   │   │   │       ├── eligibility-simulation-group-by-regions.view.ts
+│   │   │   │   │       ├── eligibility-simulation-group-simulations-by-year-and-month.view.ts
+│   │   │   │   │       ├── eligibility-simulation.view.ts
+│   │   │   │   │       └── group-by-field.view.ts
+│   │   │   │   ├── landbot-customer
+│   │   │   │   │   ├── usecases
+│   │   │   │   │   │   ├── create.params.ts
+│   │   │   │   │   │   ├── create.usecase.ts
+│   │   │   │   │   │   ├── findAll.params.ts
+│   │   │   │   │   │   ├── findAll.usecase.ts
+│   │   │   │   │   │   ├── findLast.usecase.ts
+│   │   │   │   │   │   └── groupByRegion.params.ts
+│   │   │   │   │   └── views
+│   │   │   │   │       └── landbot-customer.view.ts
+│   │   │   │   ├── location
+│   │   │   │   │   ├── usecases
+│   │   │   │   │   │   ├── delete.params.ts
+│   │   │   │   │   │   ├── delete.usecase.ts
+│   │   │   │   │   │   ├── save.params.ts
+│   │   │   │   │   │   └── save.usecase.ts
+│   │   │   │   │   └── views
+│   │   │   │   │       └── location.view.ts
 │   │   │   │   ├── municipality
 │   │   │   │   │   ├── usecases
 │   │   │   │   │   │   ├── create.params.ts
@@ -215,14 +233,24 @@
 │   │   │   │   ├── distributor
 │   │   │   │   │   ├── distributor.interface.ts
 │   │   │   │   │   └── distributor.repository.interface.ts
+│   │   │   │   ├── eligibility-simulation
+│   │   │   │   │   ├── eligibility-simulation.interface.ts
+│   │   │   │   │   └── eligibility-simulation.repository.interface.ts
 │   │   │   │   ├── geocoder
 │   │   │   │   │   └── geocoder.service.interface.ts
+│   │   │   │   ├── google-sheets
+│   │   │   │   │   └── google-sheets.service.interface.ts
 │   │   │   │   ├── landbot-api-client
 │   │   │   │   │   ├── landbot-api-client-list-customers.interface.ts
 │   │   │   │   │   └── landbot-api-client.repository.interface.ts
 │   │   │   │   ├── landbot-customer
 │   │   │   │   │   ├── landbot-customer.interface.ts
 │   │   │   │   │   └── landbot-customer.repository.interface.ts
+│   │   │   │   ├── location
+│   │   │   │   │   ├── location.interface.ts
+│   │   │   │   │   └── location.repository.interface.ts
+│   │   │   │   ├── mailer
+│   │   │   │   │   └── mailer.service.interface.ts
 │   │   │   │   ├── municipality
 │   │   │   │   │   ├── municipality.interface.ts
 │   │   │   │   │   └── municipality.repository.interface.ts
@@ -326,29 +354,48 @@
 │   │   │   │   │   └── dtos
 │   │   │   │   │       ├── create.dto.ts
 │   │   │   │   │       └── update.dto.ts
+│   │   │   │   ├── eligibility-simulation
+│   │   │   │   │   ├── controllers
+│   │   │   │   │   │   └── api
+│   │   │   │   │   │       ├── create-eligibility-simulation.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-brs-knowledge.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-conversion-funnel.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-departements.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-eligibility.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-regions.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-monthly-summary.controller.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-real-estate-situation.controller.ts
+│   │   │   │   │   │       └── update-eligibility-simulation.controller.ts
+│   │   │   │   │   ├── dtos
+│   │   │   │   │   │   ├── create.dto.ts
+│   │   │   │   │   │   └── update.dto.ts
+│   │   │   │   │   ├── eligibility-simulation.entity.ts
+│   │   │   │   │   ├── eligibility-simulation.module.ts
+│   │   │   │   │   └── eligibility-simulation.repository.ts
 │   │   │   │   ├── geocoder
 │   │   │   │   │   ├── generated-address-datagouv-types.ts
 │   │   │   │   │   ├── geocoder.module.ts
 │   │   │   │   │   ├── geocoder.service.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── google-sheets
+│   │   │   │   │   ├── google-sheets.module.ts
+│   │   │   │   │   └── google-sheets.service.ts
 │   │   │   │   ├── landbot-api-client
 │   │   │   │   │   ├── landbot-api-client.module.ts
 │   │   │   │   │   └── landbot-api-client.repository.ts
 │   │   │   │   ├── landbot-customer
-│   │   │   │   │   ├── controllers
-│   │   │   │   │   │   └── api
-│   │   │   │   │   │       ├── get-landbot-customers-by-field.controller.ts
-│   │   │   │   │   │       ├── get-landbot-customers-conversion-funnel.controller.ts
-│   │   │   │   │   │       ├── get-landbot-customers-grouped-by-departements.controller.ts
-│   │   │   │   │   │       ├── get-landbot-customers-grouped-by-regions.controller.ts
-│   │   │   │   │   │       └── get-landbot-customers-simulations-monthly-summary.controller.ts
-│   │   │   │   │   ├── cron
-│   │   │   │   │   │   └── import-landbot-customers.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   └── getLandbotCustomersByField.dto.ts
 │   │   │   │   │   ├── landbot-customer.entity.ts
 │   │   │   │   │   ├── landbot-customer.module.ts
 │   │   │   │   │   └── landbot-customer.repository.ts
+│   │   │   │   ├── location
+│   │   │   │   │   ├── location.entity.ts
+│   │   │   │   │   ├── location.module.ts
+│   │   │   │   │   └── location.repository.ts
+│   │   │   │   ├── mailer
+│   │   │   │   │   ├── mailer.module.ts
+│   │   │   │   │   └── mailer.service.ts
 │   │   │   │   ├── middlewares
 │   │   │   │   │   ├── method-override.middleware.ts
 │   │   │   │   │   └── to-locals.middleware.ts
@@ -404,10 +451,18 @@
 │   │   │   │   │   │   ├── 1763386244889-change_landbot_customer_table_date_type.ts
 │   │   │   │   │   │   ├── 1764079774414-add_code_to_region.ts
 │   │   │   │   │   │   ├── 1765273408763-add_is-partner_to_ofs.ts
-│   │   │   │   │   │   └── 1767785657416-complete_landbot_customer_table.ts
+│   │   │   │   │   │   ├── 1767785657416-complete_landbot_customer_table.ts
+│   │   │   │   │   │   ├── 1772119754663-create_eligibility_simulation_and_location_table.ts
+│   │   │   │   │   │   ├── 1772536901988-alter_location_table.ts
+│   │   │   │   │   │   ├── 1772642156555-add_isFromLandbot_eligibility_simulation_table.ts
+│   │   │   │   │   │   └── 1773000000000-add_highest_eligibility_zone_to_eligibility_simulation.ts
 │   │   │   │   │   ├── seeds
 │   │   │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   │   │   ├── data.ts
+│   │   │   │   │   │   │   ├── module.ts
+│   │   │   │   │   │   │   ├── run.ts
+│   │   │   │   │   │   │   └── seed.ts
+│   │   │   │   │   │   ├── eligibility-simulations
 │   │   │   │   │   │   │   ├── module.ts
 │   │   │   │   │   │   │   ├── run.ts
 │   │   │   │   │   │   │   └── seed.ts
@@ -561,18 +616,27 @@
 │   │   │   │   │       ├── findById.usecase.unit-spec.ts
 │   │   │   │   │       ├── findManyByIds.usecase.unit-spec.ts
 │   │   │   │   │       └── update.usecase.unit-spec.ts
+│   │   │   │   ├── eligibility-simulation
+│   │   │   │   │   └── usecases
+│   │   │   │   │       ├── calculate-conversion-funnel.usecase.unit-spec.ts
+│   │   │   │   │       ├── count-simulations.usecase.unit-spec.ts
+│   │   │   │   │       ├── create.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-by-brs-knowledge.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-by-departements.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-by-eligibility-stats.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-by-real-estate-situation.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-by-regions.usecase.unit-spec.ts
+│   │   │   │   │       ├── group-simulations-by-year-and-month.usecase.unit-spec.ts
+│   │   │   │   │       └── update.usecase.unit-spec.ts
 │   │   │   │   ├── landbot-customer
 │   │   │   │   │   └── usecases
-│   │   │   │   │       ├── calculateConversionFunnel.usecase.unit-spec.ts
-│   │   │   │   │       ├── countSimulations.usecase.unit-spec.ts
 │   │   │   │   │       ├── create.usecase.unit-spec.ts
-│   │   │   │   │       ├── findLast.usecase.unit-spec.ts
-│   │   │   │   │       ├── groupByBrsKnowledge.usecase.unit-spec.ts
-│   │   │   │   │       ├── groupByDepartements.usecase.unit-spec.ts
-│   │   │   │   │       ├── groupByEligibility.usecase.unit-spec.ts
-│   │   │   │   │       ├── groupByRealEstateSituation.usecase.unit-spec.ts
-│   │   │   │   │       ├── groupByRegions.usecase.unit-spec.ts
-│   │   │   │   │       └── groupSimulationsByYearAndMonth.usecase.unit-spec.ts
+│   │   │   │   │       ├── findAll.usecase.unit-spec.ts
+│   │   │   │   │       └── findLast.usecase.unit-spec.ts
+│   │   │   │   ├── location
+│   │   │   │   │   └── usecases
+│   │   │   │   │       ├── delete.usecase.unit-spec.ts
+│   │   │   │   │       └── save.usecase.unit-spec.ts
 │   │   │   │   ├── municipality
 │   │   │   │   │   └── usecases
 │   │   │   │   │       ├── create.usecase.unit-spec.ts
@@ -598,8 +662,10 @@
 │   │   │   │   ├── setup.e2e.ts
 │   │   │   │   └── setup.integration.ts
 │   │   │   ├── domain
-│   │   │   │   └── common
-│   │   │   │       └── paginationProps.unit-spec.ts
+│   │   │   │   ├── common
+│   │   │   │   │   └── paginationProps.unit-spec.ts
+│   │   │   │   └── eligibility-simulation
+│   │   │   │       └── eligibility-simulation.interface.unit-spec.ts
 │   │   │   ├── infrastructure
 │   │   │   │   ├── acquisition-simulation
 │   │   │   │   │   ├── acquisition-simulation.entity.unit-spec.ts
@@ -641,22 +707,30 @@
 │   │   │   │   │   └── dtos
 │   │   │   │   │       ├── create.dto.unit-spec.ts
 │   │   │   │   │       └── update.dto.unit-spec.ts
+│   │   │   │   ├── eligibility-simulation
+│   │   │   │   │   ├── controllers
+│   │   │   │   │   │   └── api
+│   │   │   │   │   │       ├── create-eligibility-simulation.controller.e2e-spec.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-conversion-funnel.controller.e2e-spec.ts
+│   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-eligibility.controller.e2e-spec.ts
+│   │   │   │   │   │       └── update-eligibility-simulation.controller.e2e-spec.ts
+│   │   │   │   │   ├── dtos
+│   │   │   │   │   │   ├── create.dto.unit-spec.ts
+│   │   │   │   │   │   └── update.dto.unit-spec.ts
+│   │   │   │   │   ├── eligibility-simulation.entity.unit-spec.ts
+│   │   │   │   │   └── eligibility-simulation.repository.unit-spec.ts
 │   │   │   │   ├── geocoder
 │   │   │   │   │   └── geocoder.service.unit-spec.ts
 │   │   │   │   ├── landbot-api-client
 │   │   │   │   │   └── landbot-api-client.repository.unit-spec.ts
 │   │   │   │   ├── landbot-customer
-│   │   │   │   │   ├── controllers
-│   │   │   │   │   │   └── api
-│   │   │   │   │   │       ├── get-landbot-customers-by-field.controller.e2e-spec.ts
-│   │   │   │   │   │       ├── get-landbot-customers-conversion-funnel.controller.e2e-spec.ts
-│   │   │   │   │   │       ├── get-landbot-customers-grouped-by-departements.controller.e2e-spec.ts
-│   │   │   │   │   │       ├── get-landbot-customers-grouped-by-regions.controller.e2e-spec.ts
-│   │   │   │   │   │       └── get-landbot-customers-simulations-monthly-summary.controller.e2e-spec.ts
-│   │   │   │   │   ├── dtos
-│   │   │   │   │   │   └── getLandbotCustomersByField.dto.unit-spec.ts
 │   │   │   │   │   ├── landbot-customer.entity.unit-spec.ts
 │   │   │   │   │   └── landbot-customer.repository.unit-spec.ts
+│   │   │   │   ├── location
+│   │   │   │   │   ├── location.entity.unit-spec.ts
+│   │   │   │   │   └── location.repository.unit-spec.ts
+│   │   │   │   ├── mailer
+│   │   │   │   │   └── mailer.service.unit-spec.ts
 │   │   │   │   ├── municipality
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   └── get-municipality-by-insee-code.e2e-spec.ts
@@ -688,9 +762,11 @@
 │   │   │           ├── brs-diffusion-website.ts
 │   │   │           ├── departement.ts
 │   │   │           ├── distributor.ts
+│   │   │           ├── eligibility-simulation.ts
 │   │   │           ├── geocoder.ts
 │   │   │           ├── landbot-api-client.ts
 │   │   │           ├── landbot-customer.ts
+│   │   │           ├── location.ts
 │   │   │           ├── municipality.ts
 │   │   │           ├── ofs.ts
 │   │   │           ├── region.ts
@@ -718,6 +794,7 @@
 │       │   ├── assets
 │       │   │   ├── icons
 │       │   │   │   ├── end-of-path.svg
+│       │   │   │   ├── euro.svg
 │       │   │   │   ├── mascotte-celebrating.svg
 │       │   │   │   ├── mascotte-showing.svg
 │       │   │   │   ├── mascotte-thinking.svg
@@ -776,6 +853,7 @@
 │       │   │   │   │   ├── Consent.svelte
 │       │   │   │   │   ├── ContentPageSubtitle.svelte
 │       │   │   │   │   ├── Disclaimer.svelte
+│       │   │   │   │   ├── EligibilityTresholds.svelte
 │       │   │   │   │   ├── GradientBackgroundWrapper.svelte
 │       │   │   │   │   ├── Heros
 │       │   │   │   │   │   └── ContentPageHero.svelte
@@ -796,12 +874,19 @@
 │       │   │   │   │   ├── RadioFieldset.svelte
 │       │   │   │   │   ├── Section.svelte
 │       │   │   │   │   ├── Select.svelte
+│       │   │   │   │   ├── Seo.svelte
 │       │   │   │   │   ├── ShadowedBox.svelte
 │       │   │   │   │   ├── SideNavPage
 │       │   │   │   │   │   ├── Nav.svelte
 │       │   │   │   │   │   ├── Page.svelte
 │       │   │   │   │   │   ├── Step.svelte
 │       │   │   │   │   │   └── StepLink.svelte
+│       │   │   │   │   ├── Simulator
+│       │   │   │   │   │   ├── Action.svelte
+│       │   │   │   │   │   ├── Actions.svelte
+│       │   │   │   │   │   ├── Description.svelte
+│       │   │   │   │   │   ├── Form.svelte
+│       │   │   │   │   │   └── Wrapper.svelte
 │       │   │   │   │   ├── Stepper.svelte
 │       │   │   │   │   ├── Steppers
 │       │   │   │   │   │   └── VerticalStepper.svelte
@@ -844,11 +929,7 @@
 │       │   │   │       │   ├── Synthesis.svelte
 │       │   │   │       │   └── TitleWithMascotte.svelte
 │       │   │   │       ├── simulateur-acquisition
-│       │   │   │       │   ├── Action.svelte
-│       │   │   │       │   ├── Actions.svelte
-│       │   │   │       │   ├── Description.svelte
 │       │   │   │       │   ├── FeesSynthesis.svelte
-│       │   │   │       │   ├── Form.svelte
 │       │   │   │       │   ├── GlobalSynthesis.svelte
 │       │   │   │       │   ├── LissageSynthesis.svelte
 │       │   │   │       │   ├── OperationSynthesis.svelte
@@ -860,16 +941,32 @@
 │       │   │   │       │   ├── Step6.svelte
 │       │   │   │       │   ├── Step7.svelte
 │       │   │   │       │   ├── Step8.svelte
-│       │   │   │       │   ├── Wrapper.svelte
 │       │   │   │       │   └── synthesis
 │       │   │   │       │       ├── Block.svelte
 │       │   │   │       │       ├── Row.svelte
 │       │   │   │       │       └── RowContainer.svelte
 │       │   │   │       ├── simulateur-eligibilite
-│       │   │   │       │   ├── Chatbot.svelte
-│       │   │   │       │   ├── Data.svelte
 │       │   │   │       │   ├── Hero.svelte
-│       │   │   │       │   └── Simulator.svelte
+│       │   │   │       │   ├── SimulationCta.svelte
+│       │   │   │       │   └── steps
+│       │   │   │       │       ├── EligibilityDefinition
+│       │   │   │       │       │   ├── EligibilityDefinition.svelte
+│       │   │   │       │       │   ├── FiscalRevenues.svelte
+│       │   │   │       │       │   ├── HouseholdComposition.svelte
+│       │   │   │       │       │   └── PropertySituation.svelte
+│       │   │   │       │       ├── EligibilityResult
+│       │   │   │       │       │   ├── EligibilityDetail.svelte
+│       │   │   │       │       │   ├── EligibilityResult.svelte
+│       │   │   │       │       │   ├── ResultDetails.svelte
+│       │   │   │       │       │   └── UserDetails.svelte
+│       │   │   │       │       ├── SearchInformations
+│       │   │   │       │       │   ├── AdditionalInformations.svelte
+│       │   │   │       │       │   ├── FinancialInformations.svelte
+│       │   │   │       │       │   ├── HousingInformations.svelte
+│       │   │   │       │       │   └── SearchInformations.svelte
+│       │   │   │       │       └── Synthesis
+│       │   │   │       │           ├── Synthesis.svelte
+│       │   │   │       │           └── SynthesisContent.svelte
 │       │   │   │       └── statistiques
 │       │   │   │           ├── AcquisitionSimulationsConversionFunnel.svelte
 │       │   │   │           ├── ConversionFunnel.svelte
@@ -884,13 +981,18 @@
 │       │   │   │   ├── acquisition-simulator.svelte.ts
 │       │   │   │   ├── annuaire.svelte.ts
 │       │   │   │   ├── consent.svelte.ts
-│       │   │   │   └── dsfr.svelte.ts
+│       │   │   │   ├── dsfr.svelte.ts
+│       │   │   │   └── eligibility-simulator.svelte.ts
 │       │   │   ├── server
 │       │   │   │   └── cache.ts
+│       │   │   ├── types
+│       │   │   │   └── statistics.ts
 │       │   │   └── utils
 │       │   │       ├── api-types.ts
 │       │   │       ├── constants.ts
 │       │   │       ├── definitions.ts
+│       │   │       ├── eligibility-simulator.ts
+│       │   │       ├── eligibility-simulator.unit-spec.ts
 │       │   │       ├── formatters.ts
 │       │   │       ├── generated-address-datagouv-types.ts
 │       │   │       ├── generated-api-types.ts
@@ -898,7 +1000,8 @@
 │       │   │       ├── lissage-ptz.ts
 │       │   │       ├── mascottes.ts
 │       │   │       ├── pictograms.ts
-│       │   │       └── sentry.ts
+│       │   │       ├── sentry.ts
+│       │   │       └── seo.ts
 │       │   └── routes
 │       │       ├── (accueil)
 │       │       │   └── +page.svelte
@@ -920,10 +1023,17 @@
 │       │       │   │   ├── +server.ts
 │       │       │   │   └── all
 │       │       │   │       └── +server.ts
-│       │       │   ├── landbot-customers
-│       │       │   │   ├── [field]
+│       │       │   ├── eligibility-simulations
+│       │       │   │   ├── +server.ts
+│       │       │   │   ├── [id]
+│       │       │   │   │   └── +server.ts
+│       │       │   │   ├── brs-knowledge
 │       │       │   │   │   └── +server.ts
 │       │       │   │   ├── conversion-funnel
+│       │       │   │   │   └── +server.ts
+│       │       │   │   ├── eligibility
+│       │       │   │   │   └── +server.ts
+│       │       │   │   ├── real-estate-situation
 │       │       │   │   │   └── +server.ts
 │       │       │   │   └── simulations
 │       │       │   │       ├── by-departements
@@ -988,8 +1098,9 @@
 │       │       ├── simulateur-acquisition
 │       │       │   └── +page.svelte
 │       │       ├── simulateur-eligibilite
-│       │       │   ├── +page.server.ts
-│       │       │   └── +page.svelte
+│       │       │   ├── +page.svelte
+│       │       │   └── steps
+│       │       │       └── +page.svelte
 │       │       ├── sitemap.xml
 │       │       │   └── +server.ts
 │       │       ├── statistiques
@@ -1004,28 +1115,35 @@
 │       │           └── content.ts
 │       ├── static
 │       │   ├── favicon.ico
+│       │   ├── og-image.svg
 │       │   ├── revenu-fiscal-de-reference.png
 │       │   └── robots.txt
 │       ├── svelte.config.js
 │       ├── tests
 │       │   ├── e2e
 │       │   │   ├── a11y.spec.ts
-│       │   │   └── blog
-│       │   │       ├── [slug]
-│       │   │       │   └── blogPost.spec.ts
-│       │   │       └── blog.spec.ts
+│       │   │   ├── blog
+│       │   │   │   ├── [slug]
+│       │   │   │   │   └── blogPost.spec.ts
+│       │   │   │   └── blog.spec.ts
+│       │   │   └── simulateur-eligibilite
+│       │   │       ├── +page.spec.ts
+│       │   │       └── steps
+│       │   │           └── +page.spec.ts
 │       │   ├── mocks
 │       │   │   └── ofss.ts
 │       │   └── unit
 │       │       └── src
 │       │           └── lib
 │       │               └── utils
+│       │                   ├── eligibility-simulator.spec.ts
 │       │                   ├── formatters.spec.ts
 │       │                   └── lissage-ptz.spec.ts
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── docker-compose.yml
+├── mise.toml
 ├── package-lock.json
 ├── package.json
 └── renovate.json
-303 directories, 727 files
+339 directories, 809 files
