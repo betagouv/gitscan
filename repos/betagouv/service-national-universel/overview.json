@@ -1,37 +1,34 @@
 {
   "url": "https://github.com/betagouv/service-national-universel",
   "name": "service-national-universel",
-  "description": "Plateforme du Service National Universel. Ce projet vise à gérer les candidatures, les affectations et le suivi des volontaires pour le service national universel.",
+  "description": "Plateforme du Service National Universel, organisée en plusieurs services : interface publique, interface de gestion et API.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Authentification utilisateur",
+    "Authentification & Accès",
     "Formulaires & Démarches",
     "Gestion documentaire & Fichiers",
-    "Notifications & Alertes",
-    "API & Intégrations"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Express",
     "PostgreSQL",
-    "turbo",
-    "dotenv-cli"
+    "turbo"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "Base de données PostgreSQL",
-    "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Base de données PostgreSQL"
   ],
-  "auth": {
-    "methods": [
-      "email-password"
-    ]
-  },
-  "tests": "Jest, Cypress",
+  "auth.methods": [
+    "email-password",
+    "oauth2",
+    "jwt",
+    "session"
+  ],
+  "tests": "Jest, Pytest, Cypress",
   "workflows": [
     "api.yml"
   ],
@@ -39,12 +36,7 @@
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
+  "metrics": null,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
