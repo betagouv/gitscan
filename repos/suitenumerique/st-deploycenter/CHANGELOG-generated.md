@@ -1,17 +1,19 @@
-## Changelog : st-deploycenter (30 derniers jours, au 23 avril 2026)
+## Changelog : st-deploycenter (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives pour le suivi et l'administration des services, notamment l'export régulier des jeux de données vers datagouv, la possibilité de récupérer des métriques par ID de service, et l'introduction de clés API spécifiques à chaque service. Des optimisations ont également été apportées pour garantir la fiabilité des tâches planifiées.
+Cette mise à jour apporte des améliorations significatives à la gestion des droits et des métriques, ainsi qu'une nouvelle fonctionnalité permettant la création de clés API spécifiques à un service. Des optimisations ont également été apportées à la planification des tâches et à la documentation.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de récupérer des métriques par ID de service. [#52](https://github.com/suitenumerique/st-deploycenter/issues/52)
-- Introduction de nouvelles clés API avec une portée spécifique à chaque service. [#53](https://github.com/suitenumerique/st-deploycenter/issues/53)
-- Export régulier des jeux de données vers datagouv toutes les 4 heures.
-- Ajout d'un rôle administrateur opérateur avec accès complet, ainsi qu'une route pour les métriques et des fonctionnalités opérationnelles potentielles. [#52](https://github.com/suitenumerique/st-deploycenter/issues/52)
+- Ajout d'une indication de la raison pour laquelle un utilisateur peut ou non télécharger des fichiers dans l'interface d'administration des droits.
+- Possibilité de récupérer les métriques par identifiant de service.
+- Ajout d'un rôle administrateur opérateur permettant de passer les métriques.
+- Création de nouvelles clés API avec une portée limitée à un service spécifique [#53](https://github.com/suitenumerique/st-deploycenter/issues/53).
+- Export des jeux de données Datagouv toutes les 4 heures.
 
 ### Évolutions techniques
 - Augmentation de la taille du dyno utilisé pour les tâches planifiées afin d'améliorer leur fiabilité.
-- Amélioration de la documentation du Makefile pour inclure la commande `restart`.
+- Ajout d'une route pour les métriques.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Documentation de la commande `make restart` dans le fichier README.
+- Ajout de la possibilité pour les opérateurs d'accéder aux métriques et à d'autres fonctionnalités opérationnelles [#52](https://github.com/suitenumerique/st-deploycenter/issues/52).
