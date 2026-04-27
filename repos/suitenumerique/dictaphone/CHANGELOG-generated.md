@@ -1,58 +1,39 @@
-## Changelog : dictaphone (30 derniers jours, au 22 avril 2026)
+## Changelog : dictaphone (30 derniers jours, au 25 avril 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, tant sur le web que sur mobile (iOS). L'application mobile est en cours de développement et voit l'implémentation de fonctionnalités essentielles comme l'enregistrement, la liste des enregistrements, la suppression et l'authentification.  Des améliorations ont également été apportées à l'intégration avec un service d'IA pour la transcription et la création de résumés, ainsi qu'à la gestion des fichiers et des permissions.
+Cette version apporte des améliorations significatives à l'application, notamment l'intégration de l'application mobile (iOS et Android) avec une authentification sécurisée, l'ajout de fonctionnalités de suppression et de restauration de fichiers, ainsi que l'intégration avec un service d'IA pour la transcription et la synthèse audio. L'interface utilisateur a également été améliorée, avec une attention particulière à la réactivité et à l'expérience mobile.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur (Web) :**
-    - Nouvelle page d'accueil avec un design amélioré.
-    - Amélioration de la réactivité de l'interface.
-    - Ajout d'un indicateur de progression lors du chargement des transcriptions.
-    - Ajout d'un badge "supprimé" pour les enregistrements supprimés.
-    - Création d'une page "corbeille" avec des actions de suppression et de restauration.
-    - Possibilité de copier la transcription dans le presse-papier.
-    - Affichage de la durée de l'enregistrement.
-    - Amélioration de l'affichage des informations de la transcription.
-- **Application mobile (iOS) :**
-    - Implémentation de l'authentification (connexion/déconnexion).
-    - Enregistrement audio fonctionnel.
-    - Liste des enregistrements avec suppression par glissement.
-    - Navigation améliorée.
-    - Gestion des permissions (microphone).
-- **Intégration Docs :**
-    - Intégration avec un service de documentation pour ouvrir les transcriptions.
-- **Gestion des fichiers :**
-    - Support amélioré des formats audio `m4a` et `webm`.
-    - Ajout de la durée des enregistrements.
+- Ajout d'une application mobile (iOS et Android) avec authentification via JWT et PKCE.
+- Intégration de la suppression et de la restauration des enregistrements avec une page "Corbeille".
+- Intégration avec un service d'IA externe pour la transcription et la synthèse des enregistrements.
+- Possibilité d'ouvrir les transcriptions dans une application externe via un bouton "Ouvrir dans Docs".
+- Ajout d'une page d'aide avec des liens de téléchargement des applications mobiles.
+- Amélioration de l'interface utilisateur pour une meilleure réactivité et une expérience utilisateur optimisée sur mobile.
+- Affichage de l'état de progression lors du téléchargement des fichiers.
+- Ajout d'indicateurs visuels pour les enregistrements en cours de traitement.
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Ajout d'une option pour afficher la durée des enregistrements.
+- Possibilité de copier la transcription dans le presse-papier.
 
 ### Évolutions techniques
-- **Backend :**
-    - Mise en place d'une API pour la gestion des "jobs" d'IA (transcription, résumé).
-    - Intégration avec un service d'IA externe pour la transcription.
-    - Amélioration de la gestion des permissions et de l'authentification.
-    - Ajout d'un endpoint de redirection pour l'application mobile.
-    - Support amélioré des formats audio.
-- **Frontend :**
-    - Refonte de l'architecture de l'interface utilisateur.
-    - Utilisation de composants UI plus modernes.
-    - Amélioration de la gestion des états et des requêtes API.
-    - Mise en place d'un système de rafraîchissement automatique des jobs en attente.
-- **Mobile :**
-    - Initialisation du projet React Native.
-    - Configuration de l'environnement de développement.
-    - Implémentation de la navigation de base.
-    - Utilisation de bibliothèques pour l'enregistrement audio et la lecture.
-- **Divers :**
-    - Ajout de tests pour l'intégration avec le service de documentation.
-    - Mise à jour de la documentation.
-    - Amélioration de la configuration du Dockerfile.
+- Mise en place d'un système d'authentification JWT avec PKCE pour l'application mobile.
+- Refonte de l'architecture backend pour supporter l'intégration avec le service d'IA externe.
+- Amélioration de la gestion des logs pour faciliter le débogage.
+- Mise à jour des dépendances pour bénéficier des dernières corrections et améliorations.
+- Configuration du pipeline CI/CD pour déployer les images Docker sur les branches d'intégration.
+- Ajout de tests unitaires pour valider le bon fonctionnement des nouvelles fonctionnalités.
+- Amélioration de la gestion des fichiers audio (support de m4a).
+- Mise en place d'un système d'analyse (PostHog) pour suivre l'utilisation de l'application.
+- Amélioration de la gestion des erreurs lors de l'appel au service d'IA.
 
 ### Autres changements
-- Ajout d'un favicon.
-- Correction de problèmes de typographie en français.
-- Suppression d'écritures inclusives du code.
-- Amélioration de la configuration de l'outil de linting.
-- Mise à jour des dépendances.
-- Publication de la version 0.4.0.
-- Publication des versions 0.1 et 0.1-5 de l'application mobile iOS.
-- Ajout de l'analyse (analytics) pour suivre l'utilisation de l'application.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
+- Amélioration de la structure du code pour une meilleure lisibilité et maintenabilité.
+- Correction de typos et amélioration de la qualité du code.
+- Ajout de commentaires pour expliquer le fonctionnement de certaines parties du code.
+- Mise à jour des assets et des logos de l'application.
+- Amélioration de la configuration du projet pour faciliter le développement et le déploiement.
+- Suppression du code obsolète.
+- Ajout de variables d'environnement pour configurer le comportement de l'application.
+- Correction de problèmes de compatibilité avec certains navigateurs.

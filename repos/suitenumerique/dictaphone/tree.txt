@@ -97,6 +97,8 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
+    │   │   │   ├── models.py
+    │   │   │   ├── views.py
     │   │   │   └── webhooks.py
     │   │   ├── enums.py
     │   │   ├── factories.py
@@ -108,6 +110,7 @@
     │   │   │   ├── 0005_alter_aifilejob_file.py
     │   │   │   ├── 0006_alter_aifilejob_remote_job_id.py
     │   │   │   ├── 0007_aifilejob_docs_app_id.py
+    │   │   │   ├── 0008_user_flag_show_mobile_app_popup.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── static
@@ -130,7 +133,9 @@
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
-    │   │   │   │   └── test_mobile_redirect.py
+    │   │   │   │   ├── test_mobile_app_download_page.py
+    │   │   │   │   ├── test_mobile_redirect.py
+    │   │   │   │   └── test_pkce_views.py
     │   │   │   ├── conftest.py
     │   │   │   ├── files
     │   │   │   │   ├── __init__.py
@@ -148,11 +153,13 @@
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_api_frontend_configuration.py
     │   │   │   ├── test_api_users.py
     │   │   │   ├── test_models_ai_jobs.py
     │   │   │   ├── test_models_users.py
     │   │   │   ├── test_tasks.py
-    │   │   │   └── test_utils_detect_mimetype.py
+    │   │   │   ├── test_utils_detect_mimetype.py
+    │   │   │   └── test_utils_update_url_query_params.py
     │   │   ├── urls.py
     │   │   ├── utils.py
     │   │   └── webhook_models.py
@@ -206,20 +213,27 @@
     │   ├── package.json
     │   ├── public
     │   │   └── assets
+    │   │       ├── download-app-store-en.svg
+    │   │       ├── download-app-store-fr.svg
+    │   │       ├── download-play-store-en.svg
+    │   │       ├── download-play-store-fr.svg
     │   │       ├── favicon-96x96.png
     │   │       ├── favicon.ico
     │   │       ├── files
     │   │       │   └── icons
+    │   │       │       ├── apple-logo.svg
     │   │       │       ├── doc.svg
     │   │       │       ├── docs-mono.svg
     │   │       │       ├── mime-audio-mini.svg
-    │   │       │       └── mime-audio.svg
+    │   │       │       ├── mime-audio.svg
+    │   │       │       └── play-store-logo.svg
     │   │       ├── gouv-logo.svg
     │   │       ├── hero.svg
     │   │       ├── home
     │   │       │   ├── ex-1.svg
     │   │       │   ├── ex-2.svg
     │   │       │   └── ex-3.svg
+    │   │       ├── logo-download.svg
     │   │       ├── logo-lasuite-assistant.svg
     │   │       ├── logo-multiline.svg
     │   │       ├── logo-picto.svg
@@ -237,6 +251,8 @@
     │   │   │   ├── AppInitialization.tsx
     │   │   │   ├── Card.scss
     │   │   │   ├── Card.tsx
+    │   │   │   ├── DownloadAppsButtons.scss
+    │   │   │   ├── DownloadAppsButtons.tsx
     │   │   │   ├── NotFoundScreen.tsx
     │   │   │   ├── Pagination.scss
     │   │   │   ├── Pagination.tsx
@@ -321,8 +337,11 @@
     │   │   │   ├── BaseLayout.tsx
     │   │   │   ├── ConnectedLayout.scss
     │   │   │   ├── ConnectedLayout.tsx
+    │   │   │   ├── DownloadMobileAppPopUp.scss
+    │   │   │   ├── DownloadMobileAppPopUp.tsx
     │   │   │   ├── HeaderRight.scss
     │   │   │   ├── HeaderRight.tsx
+    │   │   │   ├── HelpMenu.tsx
     │   │   │   ├── Layout.tsx
     │   │   │   ├── LogoApp.scss
     │   │   │   └── LogoApp.tsx
@@ -346,6 +365,8 @@
     │   │   ├── main.tsx
     │   │   ├── pages
     │   │   │   ├── DeletedRecordingsPage.tsx
+    │   │   │   ├── DownloadMobileAppPage.scss
+    │   │   │   ├── DownloadMobileAppPage.tsx
     │   │   │   ├── HomePage.scss
     │   │   │   ├── HomePage.tsx
     │   │   │   ├── RecordPage.tsx
@@ -586,6 +607,7 @@
         │   │   ├── logo.svg
         │   │   └── proconnect-content.svg
         │   ├── components
+        │   │   ├── AppInitialization.tsx
         │   │   ├── AppText.tsx
         │   │   ├── AudioRecorder.tsx
         │   │   ├── LoginButton.tsx
@@ -603,12 +625,17 @@
         │   │   │       ├── getMainAiJobs.ts
         │   │   │       ├── transcript.test.ts
         │   │   │       └── transcript.ts
+        │   │   ├── analytics
+        │   │   │   └── hooks
+        │   │   │       └── useAnalytics.ts
         │   │   ├── auth
         │   │   │   └── api
         │   │   │       ├── ApiUser.ts
         │   │   │       ├── fetchUser.ts
         │   │   │       ├── updateUserPreferences.ts
         │   │   │       └── useUser.tsx
+        │   │   ├── config
+        │   │   │   └── UpdateModal.tsx
         │   │   ├── files
         │   │   │   └── api
         │   │   │       ├── createFile.ts
@@ -635,6 +662,7 @@
         │   │   ├── types.ts
         │   │   └── useRestNavigationHistory.ts
         │   ├── screens
+        │   │   ├── InfoScreen.tsx
         │   │   ├── LoginScreen.tsx
         │   │   ├── RecordingDetailsScreen.tsx
         │   │   ├── RecordingScreen.tsx
@@ -650,4 +678,4 @@
         │       └── useInsets.ts
         ├── tsconfig.json
         └── yarn.lock
-170 directories, 482 files
+173 directories, 507 files
