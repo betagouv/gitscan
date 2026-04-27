@@ -1,13 +1,12 @@
-## Changelog : monprojetsup (30 derniers jours, au 24 mars 2026)
+## Changelog : monprojetsup (30 derniers jours, au 25 avril 2026)
 
 ### Résumé
-Cette mise à jour se concentre sur l'amélioration de la gestion des indicateurs, en s'assurant qu'ils restent actifs et visibles pour les utilisateurs. Ces améliorations visent à fournir une vue d'ensemble plus précise et à jour des projets suivis.
+Ce mois-ci, les efforts de développement se sont concentrés sur la gestion des environnements (demo et production) et sur l'amélioration de la manière dont les données sont envoyées à l'API. Ces changements visent à faciliter le déploiement et l'utilisation du service.
 
 ### Évolutions fonctionnelles
-- Correction : Les indicateurs sont maintenant correctement maintenus actifs, assurant leur affichage continu dans l'application. [#1078](https://github.com/betagouv/monprojetsup/issues/1078)
+- Modification de la méthode d'envoi des paramètres à l'API : les paramètres sont désormais envoyés dans le corps de la requête (body) au lieu de l'URL [#1088](https://github.com/betagouv/monprojetsup/issues/1088).
 
 ### Évolutions techniques
-- Aucune évolution technique significative à signaler.
-
-### Autres changements
-- Aucune autre modification n'a été apportée.
+- Rebasage de la branche `demo` sur la branche `Prod` [#1090](https://github.com/betagouv/monprojetsup/issues/1090).
+- Rebasage de la branche `prod` sur la branche `demo` [#1089](https://github.com/betagouv/monprojetsup/issues/1089).
+- Uniformisation de la méthode d'envoi des paramètres dans plusieurs commits [#1088](https://github.com/betagouv/monprojetsup/issues/1088).
