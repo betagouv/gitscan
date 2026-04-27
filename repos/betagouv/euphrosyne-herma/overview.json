@@ -1,10 +1,10 @@
 {
   "url": "https://github.com/betagouv/euphrosyne-herma",
   "name": "euphrosyne-herma",
-  "description": "Cet outil permet le transfert de données Euphrosyne depuis un ordinateur local vers Azure Fileshare en utilisant azcopy. Il offre une interface graphique conviviale pour la gestion des transferts de données avec une authentification sécurisée.",
+  "description": "Cet outil permet le transfert de données vers la plateforme Euphrosyne grâce à une interface graphique conviviale et une authentification sécurisée.",
   "language": "Python",
   "features": [
-    "Visualisation de données & Cartographie",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "API & Intégrations",
     "Collaboration & Workflow",
@@ -19,10 +19,11 @@
     "AzCopy"
   ],
   "components": [
-    "Microservices & Architecture",
-    "API Euphrosyne",
-    "Scripts & Utilitaires",
-    "Documentation & Schémas"
+    "API REST & GraphQL",
+    "Python (scripts & backend)",
+    "GUI & Interface utilisateur",
+    "Authentification (composant)",
+    "Intégrations services externes"
   ],
   "auth": {
     "methods": [
@@ -30,11 +31,14 @@
     ],
     "providers": []
   },
-  "tests": null,
-  "workflows": [
-    "build-release.yml"
+  "tests": [
+    "pytest"
   ],
-  "lastActivity": "2025-07-22T13:51:32Z",
+  "workflows": [
+    "build-release.yml",
+    "checks.yml"
+  ],
+  "lastActivity": "2026-04-24T11:56:25+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -42,7 +46,7 @@
     "stars": 0,
     "forks": 0,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": 1
   },
   "tags": [
     "Python",

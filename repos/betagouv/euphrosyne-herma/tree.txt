@@ -1,8 +1,10 @@
 .
 ├── .github
 │   └── workflows
-│       └── build-release.yml
+│       ├── build-release.yml
+│       └── checks.yml
 ├── .gitignore
+├── FINDINGS.md
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -21,6 +23,7 @@
 │   │   ├── init.py
 │   │   └── login.py
 │   ├── azcopy.py
+│   ├── cli.py
 │   ├── config.py
 │   ├── constants.py
 │   ├── euphro_tools.py
@@ -38,9 +41,24 @@
 │       ├── data_type.py
 │       ├── data_upload.py
 │       ├── login.py
-│       └── text_edit_stream.py
+│       ├── text_edit_stream.py
+│       └── theme.py
 ├── requirements
 │   ├── base.txt
 │   └── dev.txt
-└── setup.cfg
-10 directories, 35 files
+├── setup.cfg
+└── tests
+    ├── conftest.py
+    ├── test_app_azcopy.py
+    ├── test_app_init.py
+    ├── test_auth.py
+    ├── test_azcopy.py
+    ├── test_cli.py
+    ├── test_config.py
+    ├── test_data_upload_widget.py
+    ├── test_euphro_tools.py
+    ├── test_gui.py
+    ├── test_login_dialog.py
+    ├── test_main.py
+    └── test_project.py
+11 directories, 52 files
