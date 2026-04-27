@@ -1346,12 +1346,19 @@
 │       │       │   │   ├── edit-document-denied-option.html
 │       │       │   │   ├── feature-flags.html
 │       │       │   │   ├── fragments
+│       │       │   │   │   ├── active-link-card.html
 │       │       │   │   │   ├── brevo-mail-history.html
+│       │       │   │   │   ├── confirm-delete-modal.html
+│       │       │   │   │   ├── deleted-links-category.html
 │       │       │   │   │   ├── document-analysis.html
+│       │       │   │   │   ├── document-card.html
 │       │       │   │   │   ├── document-ia-data.html
+│       │       │   │   │   ├── file-delete-modal.html
 │       │       │   │   │   ├── metadata-modal.html
 │       │       │   │   │   ├── pagination-with-parameters.html
 │       │       │   │   │   ├── pagination.html
+│       │       │   │   │   ├── shared-links.html
+│       │       │   │   │   ├── tenant-logs-modal.html
 │       │       │   │   │   └── user-api-form.html
 │       │       │   │   ├── index.html
 │       │       │   │   ├── item.html
@@ -1652,7 +1659,8 @@
 │       │   │               │   ├── UserFeatureAssignmentRepository.java
 │       │   │               │   ├── WatermarkDocumentRepository.java
 │       │   │               │   └── projection
-│       │   │               │       └── TenantLastStatusProjection.java
+│       │   │               │       ├── TenantLastStatusProjection.java
+│       │   │               │       └── TenantWaitingTimeBucketProjection.java
 │       │   │               ├── service
 │       │   │               │   ├── AdemeApiServiceImpl.java
 │       │   │               │   ├── ApartmentSharingCommonServiceImpl.java
@@ -2043,6 +2051,7 @@
 │       │   │                   │       ├── tax
 │       │   │                   │       │   ├── BaseTaxRule.java
 │       │   │                   │       │   ├── TaxClassificationRuleB.java
+│       │   │                   │       │   ├── TaxLeafRuleB.java
 │       │   │                   │       │   ├── TaxNamesRule.java
 │       │   │                   │       │   ├── TaxYearRule.java
 │       │   │                   │       │   └── document_ia_model
@@ -2099,6 +2108,7 @@
 │                               │       │   └── PayslipNamesRuleTest.java
 │                               │       ├── tax
 │                               │       │   ├── TaxClassificationRuleBTest.java
+│                               │       │   ├── TaxLeafRuleBTest.java
 │                               │       │   ├── TaxNamesRuleTest.java
 │                               │       │   └── TaxYearRuleTest.java
 │                               │       └── visale_certificate
@@ -2350,4 +2360,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-582 directories, 1874 files
+582 directories, 1884 files
