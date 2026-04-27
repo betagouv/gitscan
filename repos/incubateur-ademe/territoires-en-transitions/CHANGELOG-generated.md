@@ -1,42 +1,33 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 23 avril 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches action, des plans et des indicateurs. Des corrections et des optimisations ont été apportées pour fluidifier les workflows, notamment lors de la création, modification et suppression d'éléments. L'interface utilisateur a également été revue pour une meilleure ergonomie, en particulier avec l'introduction d'un side panel et des améliorations sur l'édition en ligne.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans la gestion des fiches actions et des plans, notamment avec une refonte de l'édition et de l'import de données. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme, ainsi que l'intégration avec des outils externes comme Crisp et Streamlit.
 
 ### Évolutions fonctionnelles
-- Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions dans les plans [#1234](https://github.com/incubateur-ademe/territoires-en-transitions/issues/1234).
-- Il est maintenant possible d'ajouter la dernière note dans les rapports.
-- Amélioration de l'ergonomie de l'édition en ligne (inline edit) avec un nouveau composant et des corrections de typage.
-- Ajout d'un portail pour le menu d'édition des options d'un select dans la nouvelle fiche action.
-- Les étapes d'une fiche sont désormais transformées en sous-actions.
-- Ajout de la possibilité d'ajouter des tags et de les supprimer.
-- Amélioration de l'affichage des scores indicatifs.
-- Mise à jour de la page d'accueil avec une nouvelle bannière et une vidéo de présentation.
-- Refonte de la page "Programme" avec réintégration des témoignages et amélioration de la navigation.
-- Possibilité d'ajouter la dernière note dans les rapports.
-- Amélioration de l'affichage de l'état d'avancement des sous-actions.
-- Ajout d'un bloc "centralisez, pilotez, etc." sur la page d'accueil.
+- **Plans :** Les contributeurs pilotes peuvent désormais créer, modifier et supprimer des sous-actions. [#e2e6673](https://github.com/incubateur-ademe/territoires-en-transitions/issues/e2e6673)
+- **Rapports :** Possibilité d'ajouter la dernière note dans les rapports. [#6f4471d](https://github.com/incubateur-ademe/territoires-en-transitions/issues/6f4471d)
+- **Indicateurs :** Suppression du groupement "trajectoire" pour simplifier l'affichage des indicateurs.
+- **Scores indicatifs :** Amélioration de l'ergonomie et correction de bugs liés à l'affichage et au calcul des scores indicatifs.
+- **Interface utilisateur :**
+    - Amélioration de l'ergonomie de l'édition des données dans les fiches actions, notamment avec l'utilisation de side panels et de menus portails.
+    - Correction de divers bugs d'affichage et de comportement des composants d'interface (checkbox, select, etc.).
+    - Mise à jour du style et du wording de certains éléments (tags, titres, etc.).
+- **Authentification :** Amélioration de la gestion des erreurs lors de l'inscription.
+- **Pages Programme et Accueil :** Refonte complète de la page d'accueil et de la page Programme avec ajout de nouvelles bannières, vidéos et témoignages.
+- **Import de plans :** Amélioration de la gestion des sous-actions lors de l'import de plans depuis des fichiers.
 
 ### Évolutions techniques
-- Refactorisation du code pour mutualiser des composants et simplifier la gestion des données (use-get-fiche, hooks d'accès aux données).
-- Suppression du code legacy et du feature flag associé.
-- Mise à jour des dépendances (Node.js, GitHub Actions).
-- Amélioration de la gestion des erreurs et des validations (dates, instances de gouvernance).
-- Optimisation des requêtes pour la génération de rapports.
-- Mise en place d'une stratégie de backup et restore de la base de données.
-- Ajout de tests E2E pour vérifier l'ouverture de la modale de saisie des données d'indicateur.
-- Ajout d'un endpoint backend pour créer un plan à partir d'un panier d'actions.
-- Mise à jour du spreadsheet pour l'import de plans.
-- Amélioration du healthcheck avec l'ajout du dashboard privé Streamlit.
-- Correction de problèmes de performance liés au scroll et à la navigation entre les onglets.
-- Suppression de vues SQL inutilisées.
+- **Tests :** Amélioration de l'isolation des tests et parallélisation pour une exécution plus rapide.
+- **Base de données :** Finalisation de la stratégie de backup et restore de la base de données.
+- **Architecture :** Refactorisation du code pour améliorer la modularité et la maintenabilité, notamment en centralisant certains hooks et en supprimant du code legacy.
+- **CI/CD :** Mise à jour des versions de Node.js dans les workflows GitHub Actions.
+- **Streamlit :** Intégration d'un dashboard Streamlit pour les statistiques, avec vérification de son bon fonctionnement via un healthcheck.
+- **Backend :** Ajout d'un endpoint pour créer un plan à partir d'un panier d'actions.
+- **Supabase :** Utilisation de transactions pour garantir la cohérence des données lors de la sauvegarde de l'historique des statuts et commentaires des actions.
 
 ### Autres changements
-- Mise à jour de la documentation et du wording de l'application.
-- Corrections de typos et améliorations de l'ergonomie générale.
-- Ajout de vérifications des formules dans les référentiels.
-- Amélioration de la gestion des types de collectivités.
-- Correction de bugs mineurs et améliorations de la stabilité de l'application.
-- Mise à jour des tests et des configurations CI/CD.
-- Ajout de la gestion des erreurs pour la création de tickets depuis Crisp.
-- Ajout de la possibilité d'importer des indicateurs, des référentiels et des questions de personnalisation via des fichiers CSV locaux.
+- **Documentation :** Mise à jour de la documentation.
+- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+- **Configuration :** Mise à jour de la configuration de l'application.
+- **Migration :** Correction et amélioration des scripts de migration de données.
+- **Typescript :** Correction d'erreurs de typage.
