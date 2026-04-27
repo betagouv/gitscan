@@ -1,25 +1,29 @@
-## Changelog : jeveuxaider-back (30 derniers jours, au 17 avril 2026)
+## Changelog : jeveuxaider-back (30 derniers jours, au 25 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration des performances et de la robustesse de la plateforme, notamment au niveau de la base de données et des notifications. Des ajustements ont été apportés pour faciliter l'intégration de France Travail et améliorer le suivi des missions pour les mineurs. L'équipe a également travaillé sur l'amélioration du suivi des activités et la correction de bugs.
+Ce changelog présente les améliorations apportées au backend de la plateforme "Je veux aider" au cours des 30 derniers jours. Les évolutions concernent principalement la gestion des missions, des notifications et l'infrastructure, avec un focus sur l'amélioration de la performance et la correction de bugs. Des ajustements ont également été faits pour supporter les évolutions France Travail et les statistiques pour les référents PPG.
 
 ### Évolutions fonctionnelles
-- Amélioration du traitement des invitations et gestion des erreurs lors de l'acceptation [#170](https://github.com/betagouv/jeveuxaider-back/issues/170).
-- Intégration d'évolutions spécifiques pour France Travail [#166](https://github.com/betagouv/jeveuxaider-back/issues/166).
-- Ajout de notifications par email pour les mises à jour des modèles de missions [#149](https://github.com/betagouv/jeveuxaider-back/issues/149).
-- Ajustements pour la gestion des missions pour les mineurs, incluant la fermeture automatique des missions [#146](https://github.com/betagouv/jeveuxaider-back/issues/146) et [#157](https://github.com/betagouv/jeveuxaider-back/issues/157).
-- Amélioration des statistiques PPG pour les référents [#137](https://github.com/betagouv/jeveuxaider-back/issues/137).
-- Correction de l'affichage des noms d'activités liés aux missions [#168](https://github.com/betagouv/jeveuxaider-back/issues/168).
+- Correction d'un bug empêchant la récupération du numéro de téléphone et du code postal de l'utilisateur [#171](https://github.com/betagouv/jeveuxaider-back/issues/171).
+- Amélioration de la gestion des erreurs lors de l'acceptation d'une invitation [#170](https://github.com/betagouv/jeveuxaider-back/issues/170).
+- Mise à jour du message de bienvenue dans la notification "StructureAssociationValidated".
+- Ajout de la configuration "reply-to" pour les notifications par email, permettant de personnaliser l'adresse de réponse.
+- Amélioration de l'implémentation de "reply-to" dans la classe `TestNotification` pour utiliser la classe `Address`.
+- Ajout d'une classe `TestNotification` pour tester la fonctionnalité "reply-to".
+- Prise en compte des ajustements pour les missions concernant les mineurs [#146](https://github.com/betagouv/jeveuxaider-back/issues/146).
+- Implémentation des statistiques PPG pour les référents [#137](https://github.com/betagouv/jeveuxaider-back/issues/137).
+- Ajout d'un script pour fermer automatiquement les missions concernant les mineurs [#157](https://github.com/betagouv/jeveuxaider-back/issues/157).
 
 ### Évolutions techniques
-- Mise en place d'une base de données réplica pour améliorer la performance et la disponibilité [#164](https://github.com/betagouv/jeveuxaider-back/issues/164).
-- Ajout d'index sur les colonnes `created_at` et `conversation_id` de la table `messages` pour optimiser les requêtes [#165](https://github.com/betagouv/jeveuxaider-back/issues/165).
-- Refactoring du contrôleur `GoalsJVAController` pour supprimer les paramètres et méthodes inutilisés [#163](https://github.com/betagouv/jeveuxaider-back/issues/163).
-- Amélioration de la configuration des notifications email avec l'ajout d'une adresse de réponse (`reply-to`) [#162](https://github.com/betagouv/jeveuxaider-back/issues/162), [#161](https://github.com/betagouv/jeveuxaider-back/issues/161) et [#160](https://github.com/betagouv/jeveuxaider-back/issues/160).
-- Optimisation du processus de backfill pour l'historique des activités (activity log) avec l'ajout de colonnes `old_state` et `new_state`, l'utilisation de CTE et de pagination par plages [#150](https://github.com/betagouv/jeveuxaider-back/issues/150), [#151](https://github.com/betagouv/jeveuxaider-back/issues/151), [#152](https://github.com/betagouv/jeveuxaider-back/issues/152), [#153](https://github.com/betagouv/jeveuxaider-back/issues/153), [#154](https://github.com/betagouv/jeveuxaider-back/issues/154) et [#155](https://github.com/betagouv/jeveuxaider-back/issues/155).
-- Désactivation du "device code grant" dans la configuration de Passport pour renforcer la sécurité [#156](https://github.com/betagouv/jeveuxaider-back/issues/156).
-- Suppression de la dépendance MistralAI et des routes associées [#159](https://github.com/betagouv/jeveuxaider-back/issues/159).
+- Utilisation de la base de données réplica pour améliorer les performances, notamment dans le contrôleur `StatisticsPublicController` [#164](https://github.com/betagouv/jeveuxaider-back/issues/164).
+- Ajout d'un index sur les colonnes `created_at` et `conversation_id` de la table `messages` pour optimiser les requêtes [#165](https://github.com/betagouv/jeveuxaider-back/issues/165).
+- Suppression de paramètres et de méthodes inutilisés du contrôleur `GoalsJVAController` [#163](https://github.com/betagouv/jeveuxaider-back/issues/163).
+- Suppression de la dépendance MistralAI et des routes associées du contrôleur `AIController` [#159](https://github.com/betagouv/jeveuxaider-back/issues/159).
+- Mise à jour de la librairie Laravel Passport vers la version 13.7.1 [#167](https://github.com/betagouv/jeveuxaider-back/issues/167).
+- Mise à jour de la librairie phpseclib/phpseclib vers la version 3.0.51 [#169](https://github.com/betagouv/jeveuxaider-back/issues/169).
+- Mise à jour de la librairie aws/aws-sdk-php vers la version 3.374.2 [#158](https://github.com/betagouv/jeveuxaider-back/issues/158).
 
 ### Autres changements
-- Suppression du code lié aux missions terminées de la tâche `ApiEngagementExportMissionsJob`.
-- Mise à jour de la documentation et de la configuration.
+- Suppression des missions passées de la tâche `ApiEngagementExportMissionsJob`.
+- Commentaires sur l'utilisation de `UseReplicaDBConnection` dans `StatisticsPublicController`.
+- Corrections mineures et refactoring du code.
