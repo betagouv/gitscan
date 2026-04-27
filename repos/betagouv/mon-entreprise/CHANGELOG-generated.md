@@ -1,37 +1,28 @@
-## Changelog : mon-entreprise (30 derniers jours, au 19 avril 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur une refonte majeure du modèle de calcul pour les travailleurs indépendants (régime TI), avec l'intégration des dernières mises à jour réglementaires et une amélioration significative de la précision des simulations. De nombreuses corrections et optimisations ont été apportées, notamment concernant les cotisations, les exonérations et les cas particuliers. Des améliorations de l'expérience utilisateur ont également été réalisées, avec notamment la suppression du simulateur RGCP obsolète et des ajustements de l'interface.
+Cette période a été marquée par une refonte importante de l'architecture du projet, notamment au niveau des workflows CI/CD, de la gestion des règles Publicodes et de l'organisation du code. Des corrections et améliorations ont également été apportées aux simulateurs, en particulier pour les travailleurs indépendants (TI) et les sociétés par actions simplifiées unipersonnelles (SASU), avec une mise à jour des règles de cotisation et une simplification de l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Suppression du simulateur RGCP, désormais obsolète.
-- Ajout de la prise en charge des dividendes dans les simulations pour les travailleurs indépendants.
-- Amélioration du calcul des cotisations et de l'assiette sociale pour les travailleurs indépendants, incluant la prise en compte de la pension invalidité et des exonérations.
-- Ajout de la prise en compte du PASS mahorais pour les DROM.
-- Correction de l'affichage des informations de l'entreprise sélectionnée.
-- Ajout de liens vers des services utiles (ex: service employeur).
-- Amélioration de la navigation entre les différents simulateurs indépendants.
-- Correction de l'affichage des informations et du fonctionnement des simulateurs en iframe.
-- Mise à jour des plafonds de CA pour les simulations.
-- Ajout d'un bandeau rouge d'alerte en cas de règles obsolètes détectées.
-- Ajout d'un bandeau d'information pour les simulations en cours de chargement.
+- **Décommissionnement du simulateur RGCP :** Le simulateur RGCP n'est plus disponible.
+- **Amélioration de l'affichage des informations d'entreprise :** Correction d'un bug empêchant l'affichage correct des informations de l'entreprise sélectionnée.
+- **Prise en charge des dividendes :** Ajout de la gestion des dividendes dans les simulateurs pour indépendants et SASU, avec des questions et des informations pertinentes.
+- **Amélioration de l'expérience utilisateur :** Correction de bugs d'affichage et de navigation dans les simulateurs, notamment en iframe.
+- **Nouvelles règles et mises à jour de cotisations :** Mise à jour des règles de cotisation pour les travailleurs indépendants (régime micro-social) et les professions libérales (PLR), incluant la réforme des barèmes.
+- **Ajout de liens utiles :** Ajout de liens vers des services pertinents pour les utilisateurs, tels que le service employeur.
+- **Amélioration de la gestion des professions :** Correction et clarification des règles liées aux professions libérales et aux activités indépendantes.
 
 ### Évolutions techniques
-- Refonte du modèle de calcul pour les travailleurs indépendants (régime TI) avec intégration de nouvelles règles et améliorations de la précision.
-- Refactorisation importante du code, notamment concernant la gestion des règles, des questions, des sélecteurs et des actions du store.
-- Séparation du code en paquets plus modulaires (modele-ti, modele-as, règles communes).
-- Amélioration de la performance de `useEngine`.
-- Mise à jour des versions de Node.js et des actions CI/CD.
-- Correction de bugs liés à la gestion des expressions Publicodes et à la restauration de l'état de la simulation.
-- Amélioration des tests unitaires et des snapshots.
-- Utilisation d'un modèle de règles par simulateur.
+- **Refonte des workflows CI/CD :** Refonte complète des workflows GitHub Actions pour améliorer la fiabilité, la performance et la maintenabilité. Renommage des workflows pour plus de clarté.
+- **Gestion des règles Publicodes :** Refactorisation de la gestion des règles Publicodes pour une meilleure organisation et une plus grande flexibilité. Création de paquets de règles communes.
+- **Amélioration de l'architecture :** Refactorisation du code pour une meilleure séparation des préoccupations, notamment au niveau de la gestion de l'état, des composants d'interface utilisateur et des appels à l'API.
+- **Mise à jour des dépendances :** Mise à jour des dépendances du projet, notamment Node.js et les actions GitHub.
+- **Correction de bugs et amélioration de la qualité du code :** Correction de nombreux bugs et amélioration de la qualité du code grâce à des tests unitaires et des revues de code.
+- **Amélioration des performances :** Optimisation de la performance de certains composants et fonctions.
 
 ### Autres changements
-- Mise à jour de la documentation et des traductions.
-- Correction de typos et amélioration de la lisibilité du code.
-- Suppression de code commenté et de dépendances inutilisées.
-- Amélioration de la documentation interne et des commentaires.
-- Mise à jour des références aux réglementations et aux taux de cotisation.
-- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
-- Amélioration de la gestion des erreurs et des messages d'alerte.
-- Correction de problèmes de style et d'alignement de l'interface utilisateur.
+- **Documentation :** Amélioration de la documentation du projet et ajout de documentation pour les nouveaux paquets de règles.
+- **Traduction :** Mise à jour des traductions.
+- **Nettoyage du code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Mise à jour des plafonds de CA :** Mise à jour des plafonds de chiffre d'affaires pour les calculs de cotisations.
+- **Corrections de tests :** Correction de plusieurs tests unitaires et d'intégration.
