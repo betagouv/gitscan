@@ -1,42 +1,42 @@
 ## Changelog : zero-logement-vacant (30 derniers jours, au 21 avril 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations techniques, notamment la refonte de la configuration du serveur avec l'utilisation de Zod pour la validation, la modernisation des outils de build et de test, et l'ajout d'une documentation OpenAPI complète pour l'API. Des améliorations fonctionnelles ont également été apportées, comme l'ajout de fonctionnalités pour les campagnes (affichage, téléchargement des destinataires) et la gestion des droits d'accès basés sur le périmètre géographique.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la documentation, la refactorisation du code serveur pour une meilleure maintenabilité et performance, ainsi que des corrections de bugs et des améliorations de l'expérience utilisateur, notamment concernant l'export de données et la gestion des droits d'accès. L'ajout de tests et l'amélioration de l'infrastructure CI/CD ont également été des points importants.
 
 ### Évolutions fonctionnelles
-- Ajout de l'affichage de la liste des campagnes avec des options de tri améliorées.
-- Possibilité de télécharger la liste des destinataires d'une campagne.
-- Amélioration de l'affichage des informations relatives aux propriétaires (rang et droits de propriété).
-- Correction de l'affichage des libellés dans l'onglet "Évolutions".
-- Ajout d'une notification lors de la création d'une campagne et de la suppression d'un groupe.
-- Amélioration de l'affichage des pourcentages et des nombres décimaux.
-- Ajout d'un avertissement concernant les données sensibles sur les onglets "Notes" et "Documents".
-- Correction de l'affichage des noms de filtres de périmètre.
-- Correction du comportement du bouton de suppression d'une campagne.
+- Amélioration de l'export des données des propriétaires avec la séparation des colonnes d'adresse BAN. [#1719](https://github.com/MTES-MCT/zero-logement-vacant/pull/1719)
+- Correction de l'affichage du menu de navigation pour mettre en évidence la section "Parc de logements" lors de la navigation vers les pages associées (groupes, logements, propriétaires). [#1734](https://github.com/MTES-MCT/zero-logement-vacant/pull/1734)
+- Amélioration de l'affichage des pourcentages dans les tableaux de bord, avec une seule décimale par défaut. [#1748](https://github.com/MTES-MCT/zero-logement-vacant/pull/1748)
+- Ajout de notifications lors de la création d'une campagne et de la suppression d'un groupe. [#1751](https://github.com/MTES-MCT/zero-logement-vacant/pull/1751)
+- Correction de l'affichage des aperçus des documents lors du téléchargement. [#1748](https://github.com/MTES-MCT/zero-logement-vacant/pull/1748)
+- Amélioration de la gestion des droits d'accès et de la filtration des données en fonction du périmètre Portail DF. [#1644](https://github.com/MTES-MCT/zero-logement-vacant/pull/1644)
 
 ### Évolutions techniques
-- Refonte de la configuration du serveur : remplacement de `convict` par `Zod` pour une validation plus robuste et une meilleure gestion des schémas.
-- Mise à jour de Vite en version 8 et des plugins associés.
-- Ajout de documentation OpenAPI complète pour l'API, avec l'utilisation de Scalar au lieu de Swagger UI.
-- Amélioration des tests : ajout de tests unitaires et d'intégration, correction de tests existants, et amélioration de la couverture de code.
-- Refactorisation du code : suppression de code inutilisé, simplification de la logique, et amélioration de la lisibilité.
-- Mise à jour des dépendances et des outils de build.
+- Refactorisation importante de la configuration du serveur, remplaçant `convict` par `Zod` pour une meilleure validation et gestion des configurations.
+- Migration de la spécification OpenAPI de l'API de TypeScript vers YAML, avec remplacement de Swagger UI par Scalar.
+- Suppression de dépendances inutilisées et mise à jour de celles existantes.
+- Amélioration de l'infrastructure CI/CD avec des mises à jour des actions GitHub et l'ajout de tests Cypress pour les tests end-to-end.
 - Ajout de l'outil d'analyse de code Knip pour identifier les dépendances inutilisées.
-- Implémentation de triggers pour optimiser les calculs de comptage des logements et des propriétaires dans les groupes.
-- Utilisation de `p-memoize` pour optimiser les performances de l'API Geo.
-- Migration vers une abstraction de fournisseur d'authentification pour gérer les droits d'accès basés sur le périmètre géographique.
+- Mise à jour de Vite en version 8 et des plugins associés.
+- Implémentation de triggers au niveau des instructions SQL pour optimiser le calcul des statistiques sur les groupes de logements.
+- Refactorisation du code pour utiliser `axios` au lieu de `fetch` dans le service Cerema.
+- Ajout d'une abstraction pour la gestion des fournisseurs d'authentification.
+- Amélioration de la gestion des erreurs et des types dans le code.
 
 ### Autres changements
-- Ajout de documentation pour les "superpowers" et les plans d'implémentation.
-- Amélioration de la documentation technique (DAT, DE, DI) avec génération de PDF.
-- Mise à jour des scripts de CI/CD pour améliorer l'efficacité et la fiabilité du processus de déploiement.
-- Correction de problèmes mineurs d'interface utilisateur et de comportement.
-- Ajout de commentaires et de documentation pour améliorer la maintenabilité du code.
-- Correction de problèmes de compatibilité avec les navigateurs et les outils de développement.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Ajout de tests pour les nouvelles fonctionnalités et corrections de bugs.
-- Mise à jour des dépendances de sécurité.
-- Amélioration de la configuration de Worktrunk.
-- Ajout de la gestion des fichiers `.env` avec CleverCloud.
-- Suppression de scripts et de dépendances inutiles.
-- Correction de problèmes de performance.
+- Ajout de documentation technique complète (DAT, DE, DI) avec génération de PDF.
+- Ajout de documentation sur les plans et spécifications des "superpowers".
+- Ajout de documentation sur l'exploration EETL et la mise en œuvre du pipeline des propriétaires.
+- Amélioration de la documentation existante et correction de fautes de frappe.
+- Ajout de badges Codecov.
+- Correction de problèmes de configuration pour l'exécution des tests en CI.
+- Suppression de scripts de test obsolètes.
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
+- Mise à jour des fichiers de configuration et des dépendances.
+- Correction de problèmes liés à l'environnement macOS en CI.
+- Ajout de la possibilité de configurer l'application via CleverCloud.
+- Ajout de la gestion des variables d'environnement avec `@dotenvx/dotenvx`.
+- Ajout de la gestion des types manquants.
+- Amélioration de la gestion des erreurs dans les scripts Python.
+- Ajout de la gestion des propriétaires FF25 dans les pipelines Dbt.
+- Correction de bugs mineurs et améliorations de la lisibilité du code.
