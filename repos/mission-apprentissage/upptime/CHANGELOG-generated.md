@@ -1,13 +1,13 @@
-## Changelog : upptime (30 derniers jours, au 2026-04-25)
+## Changelog : upptime (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce changelog résume les 30 derniers jours d'activité sur le projet upptime. La majorité des changements concernent les mises à jour automatiques du statut des différents services surveillés par le bot Upptime. Ces mises à jour indiquent si les services sont opérationnels ou non, ainsi que leurs temps de réponse.  Aucun changement majeur concernant l'application elle-même n'a été effectué durant cette période.
+Ce changelog résume les mises à jour du projet upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques de l'état des différents services surveillés par upptime. Le bot Upptime a régulièrement vérifié la disponibilité de ces services et mis à jour le tableau de bord et le résumé de l'état en conséquence.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle n'a été apportée durant cette période. Le projet se concentre sur la surveillance continue des services existants.
+Aucune évolution fonctionnelle n'a été apportée au projet durant cette période. Les changements concernent uniquement les rapports d'état des services surveillés.
 
 ### Évolutions techniques
-Aucune évolution technique significative n'a été apportée durant cette période.
+Aucune évolution technique n'a été apportée au projet durant cette période.
 
 ### Autres changements
-Les commits récents sont principalement des mises à jour automatiques du statut des services surveillés par le bot Upptime, ainsi que des mises à jour de la documentation et du fichier README. Ces mises à jour sont effectuées par le bot Upptime lui-même et ne nécessitent aucune action de la part des utilisateurs.
+Aucun autre changement n'a été apporté au projet durant cette période. Les commits sont principalement des mises à jour automatiques du bot de surveillance.
