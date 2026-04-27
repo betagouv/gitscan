@@ -21,8 +21,6 @@
 │       │   ├── schema.prisma
 │       │   └── seed.ts
 │       ├── prisma.config.ts
-│       ├── public
-│       │   └── stage-direct-logo.svg
 │       ├── src
 │       │   ├── __tests__
 │       │   │   ├── auditeur.integration.test.ts
@@ -48,6 +46,7 @@
 │       │   │   │   ├── components
 │       │   │   │   │   ├── auth-layout.module.css
 │       │   │   │   │   ├── auth-layout.tsx
+│       │   │   │   │   ├── password-input.module.css
 │       │   │   │   │   ├── password-input.tsx
 │       │   │   │   │   └── proconnect-button.tsx
 │       │   │   │   ├── prefetch.ts
@@ -79,6 +78,11 @@
 │       │   │   │       │   │   └── sign-in.ts
 │       │   │   │       │   └── use-sign-in.ts
 │       │   │   │       └── sign-in-page.module.css
+│       │   │   ├── faq
+│       │   │   │   ├── faq-content.tsx
+│       │   │   │   ├── faq-questions-answers.module.css
+│       │   │   │   ├── faq-questions-answers.tsx
+│       │   │   │   └── index.tsx
 │       │   │   └── onboarding
 │       │   │       ├── index.tsx
 │       │   │       ├── onboarding-form.tsx
@@ -136,9 +140,11 @@
 │       │   ├── routes
 │       │   │   ├── __root.tsx
 │       │   │   ├── api
-│       │   │   │   ├── -trpc.$.ts
-│       │   │   │   └── auth
-│       │   │   │       └── -$.ts
+│       │   │   │   ├── auth
+│       │   │   │   │   └── $.ts
+│       │   │   │   └── trpc
+│       │   │   │       └── $.ts
+│       │   │   ├── foire-aux-questions.tsx
 │       │   │   ├── index.tsx
 │       │   │   ├── mot-de-passe-oublie.tsx
 │       │   │   ├── onboarding.tsx
@@ -167,6 +173,7 @@
 │       │   ├── types
 │       │   │   └── tanstack-start-api.d.ts
 │       │   └── utils
+│       │       ├── form-errors.ts
 │       │       └── trpc.ts
 │       ├── tsconfig.json
 │       ├── vite.config.ts
@@ -183,4 +190,4 @@
 │       └── tsup.config.ts
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-48 directories, 137 files
+49 directories, 143 files

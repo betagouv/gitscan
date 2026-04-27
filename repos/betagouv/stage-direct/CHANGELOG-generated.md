@@ -1,18 +1,22 @@
-## Changelog : stage-direct (30 derniers jours, au 23 avril 2026)
+## Changelog : stage-direct (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'implémentation de l'authentification via ProConnect, améliorant ainsi l'expérience utilisateur et la sécurité de la plateforme. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives en termes d'authentification et d'expérience utilisateur. Une page FAQ a été ajoutée pour répondre aux questions fréquentes, et des corrections ont été apportées aux formulaires. L'intégration avec Proconnect a été initiée, avec l'utilisation de composants de la DSFR pour une meilleure cohérence visuelle.
 
 ### Évolutions fonctionnelles
-- Implémentation de l'authentification via ProConnect, intégrant le bouton de connexion DSFR. [#1](https://github.com/betagouv/stage-direct/pull/1)
-- Préchargement (prefetch) des données pour une navigation plus rapide.
-- Initialisation de la pile technologique (stack) de la plateforme.
+- Ajout d'une page FAQ pour aider les utilisateurs à trouver des réponses aux questions courantes. [#1](https://github.com/betagouv/stage-direct/pull/1)
+- Correction des erreurs de formulaire pour une meilleure expérience utilisateur. [#1](https://github.com/betagouv/stage-direct/pull/1)
+- Implémentation des pages d'authentification et intégration avec Proconnect, utilisant les composants de la DSFR pour l'apparence.
+- Préchargement des données pour une navigation plus rapide.
 
 ### Évolutions techniques
 - Initialisation de la migration de la base de données.
 - Mise à jour des dépendances du projet.
-- Correction d'un problème lié à la configuration du fichier `.env`.
+- Initialisation du stack technique du projet.
+- Configuration initiale de TRPC.
+- Utilisation du bouton Proconnect de la DSFR.
 
 ### Autres changements
-- Améliorations de l'interface utilisateur (CSS).
-- Revue de code et nettoyage du code.
+- Améliorations de l'UX/UI et corrections de style CSS.
+- Correction de la configuration du fichier `.env`.
+- Revue de code et nettoyage général.
