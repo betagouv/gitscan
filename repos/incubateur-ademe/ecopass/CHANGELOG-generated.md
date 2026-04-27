@@ -1,24 +1,18 @@
-## Changelog : ecopass (30 derniers jours, au 11 mai 2026)
+## Changelog : ecopass (30 derniers jours, au 24 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'interface d'administration, l'ajout de nouvelles fonctionnalités d'exportation de données et la correction de plusieurs bugs liés à la gestion des GTIN et des organisations. Ces améliorations visent à faciliter l'utilisation de la plateforme par les administrateurs et à garantir l'intégrité des données.
+Cette version apporte des améliorations significatives à l'interface d'administration, notamment une vue plus complète et des options d'export de données. Des corrections ont été apportées pour gérer correctement les prix des produits en lots et les codes GTIN, ainsi que pour améliorer la gestion des organisations. La documentation du score a également été clarifiée.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'exporter des données en masse (batch) et des fiches de matières premières (MC) [#138](https://github.com/incubateur-ademe/ecopass/issues/138).
-- Amélioration de la vue d'administration avec une meilleure présentation des données [#135](https://github.com/incubateur-ademe/ecopass/issues/135).
-- Ajout d'une nouvelle charte graphique [#127](https://github.com/incubateur-ademe/ecopass/issues/127).
-- Ajout d'une icône pour les "batchs" [#131](https://github.com/incubateur-ademe/ecopass/issues/131).
-- Mise à jour de l'image du t-shirt [#130](https://github.com/incubateur-ademe/ecopass/issues/130).
+- Ajout de la possibilité d'exporter les données en lot et en masse (MC) [#138](https://github.com/incubateur-ademe/ecopass/issues/138).
+- Amélioration de la vue d'administration avec une présentation plus claire et des informations plus complètes [#135](https://github.com/incubateur-ademe/ecopass/issues/135).
+- Correction d'un bug empêchant la gestion correcte des prix inférieurs à 1 pour les produits en lot [#142](https://github.com/incubateur-ademe/ecopass/issues/142).
+- Correction d'un problème de redirection après l'authentification en tant qu'administrateur.
+- Clarification de la documentation concernant le calcul du score.
 
 ### Évolutions techniques
-- Correction d'un problème d'encodage des GTIN [#134](https://github.com/incubateur-ademe/ecopass/issues/134).
-- Résolution d'un problème de duplication des GTIN [#133](https://github.com/incubateur-ademe/ecopass/issues/133).
-- Correction d'un bug empêchant la gestion des organisations sans identifiant unique.
 - Ajout de tests d'accessibilité privés [#140](https://github.com/incubateur-ademe/ecopass/issues/140).
-- Correction de la largeur des statistiques d'administration [#139](https://github.com/incubateur-ademe/ecopass/issues/139).
-- Correction d'un problème de redirection après connexion en tant qu'administrateur.
-
-### Autres changements
-- Clarification de la terminologie "produit" dans l'interface utilisateur [#127](https://github.com/incubateur-ademe/ecopass/issues/127).
-- Correction d'un bug lors du téléchargement de fichiers CSV sans GTIN [#132](https://github.com/incubateur-ademe/ecopass/issues/132).
-- Correction d'un problème d'identifiant de document.
+- Correction d'un bug lié à la duplication des codes GTIN [#133](https://github.com/incubateur-ademe/ecopass/issues/133).
+- Correction d'un problème lié à l'absence d'identifiant unique pour certaines organisations [#133](https://github.com/incubateur-ademe/ecopass/issues/133).
+- Correction du problème d'encodage des codes GTIN [#134](https://github.com/incubateur-ademe/ecopass/issues/134).
+- Ajustement de la largeur des statistiques d'administration [#139](https://github.com/incubateur-ademe/ecopass/issues/139).
