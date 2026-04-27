@@ -1,19 +1,22 @@
-## Changelog : ami-app-android (30 derniers jours, au 9 avril 2026)
+## Changelog : ami-app-android (30 derniers jours, au 16 avril 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'expérience utilisateur, notamment une meilleure gestion de l'authentification FranceConnect et l'ouverture directe de l'application sur la page de notifications lors de la réception d'une notification push. Des améliorations techniques ont également été apportées pour faciliter le développement et le débogage. L'application commence également à adopter le Design System FR (DSFR).
+Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment l'ajout d'un mécanisme de rafraîchissement par glissement vers le bas (swipe-to-refresh) sur plusieurs écrans, une meilleure gestion de l'authentification FranceConnect, et l'intégration de la nouvelle identité visuelle du gouvernement français (DSFR). Des corrections de couleurs et de polices ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Authentification FranceConnect :** L'écran de FranceConnect est maintenant mis en avant pour une meilleure expérience utilisateur [#38](https://github.com/numerique-gouv/ami-app-android/pull/38).
-- **Notifications :** L'application ouvre désormais directement la page des notifications lorsqu'un utilisateur clique sur une notification push [#39](https://github.com/numerique-gouv/ami-app-android/issues/39).
-- **Gestion de l'authentification :** Le token d'authentification est maintenant effacé en cas d'échec d'authentification, améliorant ainsi la sécurité et la robustesse de l'application.
-- **Correction d'un bug :** Correction d'un problème lié à l'URL de connexion FranceConnect [#50f8dac](https://github.com/numerique-gouv/ami-app-android/commit/50f8dac).
+- **Rafraîchissement par glissement vers le bas:** Ajout de la fonctionnalité de rafraîchissement par glissement vers le bas sur l'écran de revue des applications et dans les webviews. [#49](https://github.com/numerique-gouv/ami-app-android/pull/49)
+- **Amélioration de l'authentification FranceConnect:** Promotion de l'écran de FranceConnect pour une meilleure visibilité et un accès plus facile. [#38](https://github.com/numerique-gouv/ami-app-android/pull/38)
+- **Notifications:** Ouverture de la page des notifications lors du clic sur une notification push. [#39](https://github.com/numerique-gouv/ami-app-android/issues/39)
+- **Gestion de l'authentification:** Suppression du token d'authentification (bearer) en cas d'échec de l'authentification. [#95f918f](https://github.com/numerique-gouv/ami-app-android/commit/95f918f)
 
 ### Évolutions techniques
-- **DSFR :** Intégration des couleurs, polices et icônes du Design System FR (DSFR) pour une cohérence visuelle accrue et une meilleure maintenabilité.
-- **Débogage :** Désactivation de la vérification SSL en mode DEBUG pour simplifier le développement et le débogage [#ea84e1a](https://github.com/numerique-gouv/ami-app-android/commit/ea84e1a).
-- **Configuration de l'API :** Mise à jour de l'URL de l'API Retrofit pour permettre l'utilisation d'une URL d'application de revue spécifique [#29](https://github.com/numerique-gouv/ami-app-android/pull/29).
+- **Intégration de la DSFR:**
+    - Ajout des polices DSFR.
+    - Ajout des couleurs DSFR.
+    - Ajout des icônes DSFR.
+- **Gestion du rafraîchissement:** Refactorisation de la gestion de l'état de rafraîchissement (isRefreshing) dans le ViewModel. [#7999862](https://github.com/numerique-gouv/ami-app-android/commit/7999862)
+- **Sécurité (Debug):** Contournement de la vérification SSL en mode DEBUG pour faciliter le développement. [#ea84e1a](https://github.com/numerique-gouv/ami-app-android/commit/ea84e1a)
 
 ### Autres changements
-- Correction d'une réversion de suppression sur l'écran WebView.
-- Amélioration de la gestion des revues de code.
+- Correction des couleurs et des polices pour une meilleure cohérence visuelle. [#51927e8](https://github.com/numerique-gouv/ami-app-android/commit/51927e8)
+- Ajout de l'icône infinity_line. [#65ffd98](https://github.com/numerique-gouv/ami-app-android/commit/65ffd98)
