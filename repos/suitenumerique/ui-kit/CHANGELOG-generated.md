@@ -1,34 +1,34 @@
-## Changelog : ui-kit (30 derniers jours, au 17 avril 2026)
+## Changelog : ui-kit (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a apporté des améliorations significatives à la bibliothèque d'icônes, en automatisant leur génération à partir de Figma et en ajoutant un nouveau composant wrapper. De nouvelles fonctionnalités ont été ajoutées aux menus déroulants et contextuels, ainsi que de nouveaux composants pour la gestion du stockage, les formulaires de feedback et l'aide utilisateur. Des corrections de bugs et des améliorations de l'accessibilité ont également été implémentées.
+Cette version apporte des améliorations significatives à la bibliothèque, notamment de nouveaux composants pour la gestion des icônes, des menus déroulants, des filtres, et des indicateurs d'utilisation de stockage. Des améliorations de l'accessibilité et de l'expérience utilisateur ont également été apportées, ainsi que des corrections de bugs et des optimisations de performance. L'ajout de scripts pour la génération d'icônes SVG à partir de Figma facilite l'intégration de nouvelles icônes.
 
 ### Évolutions fonctionnelles
-- Ajout de sous-menus, d'une variante "tiny" et de la possibilité de maintenir les menus déroulants ouverts pour le composant `DropdownMenu`.
-- Implémentation d'un filtre déroulant avec recherche intégrée (`SearchFilter`).
-- Ajout d'un composant de visualisation de l'utilisation du stockage (`StorageGauge`).
-- Nouveau composant de formulaire de feedback (`FeedbackForm`).
-- Ajout d'un menu d'aide avec un composant icône (`HelpMenu`).
-- Amélioration de la gestion du focus et de la sémantique des menus déroulants.
-- Correction d'un problème de sélection fantôme entre les nœuds dans les arbres.
-- Masquage de l'icône "waffle" des lecteurs d'écran pour améliorer l'accessibilité.
-- Ajout de la possibilité de maintenir les éléments du menu contextuel ouverts (`keepOpen`).
-- Ajout du support du footer dans le panneau de gauche (`Layout`).
+- Ajout de composants pour les sous-menus et une variante "tiny" aux menus déroulants, avec la possibilité de les maintenir ouverts [#190](https://github.com/suitenumerique/ui-kit/issues/190).
+- Implémentation d'un filtre déroulant avec une fonctionnalité de recherche.
+- Ajout d'un indicateur d'utilisation du stockage.
+- Nouveau composant de formulaire de feedback.
+- Ajout d'un menu d'aide avec un composant d'icône.
+- Ajout d'un support pour le pied de page dans le panneau gauche.
+- Possibilité de maintenir les éléments ouverts dans le menu contextuel.
+- Génération automatique de composants d'icônes SVG à partir de fichiers Figma, avec un composant wrapper `IconSvg`.
+- Amélioration de la présentation des icônes dans Storybook.
+- Correction d'un problème d'enveloppement de texte dans les étiquettes des filtres.
 
 ### Évolutions techniques
-- Automatisation de la génération des composants SVG d'icônes à partir de Figma via un script dédié.
-- Création d'un composant wrapper `IconSvg` pour les icônes SVG.
-- Refonte de l'organisation des stories des icônes.
-- Ajout du support de déploiement sur Scalingo et configuration d'un environnement Docker local.
+- Mise à jour des fichiers de police Marianne.
+- Ajout de la configuration Renovate pour la gestion des dépendances.
+- Mise à jour des étapes du workflow GitHub Actions vers les dernières versions.
+- Ajout du support pour le déploiement sur Scalingo et un environnement Docker local.
 - Correction du chargement de la police Marianne sur Scalingo.
-- Mise à jour des fichiers de police Marianne et du CSS associé.
-- Harmonisation des poids de police et des styles des textarea.
-- Correction d'une erreur de type dans les stories du composant `Modal` grâce à l'utilisation d'une union discriminée.
+- Refactorisation et organisation des stories des icônes.
+- Mise à jour des versions des paquets dans `package.json` et `yarn.lock`.
+- Harmonisation des poids de police et des styles des zones de texte.
+- Correction d'erreurs de linting dans les stories des icônes.
 
 ### Autres changements
+- Correction de fautes de frappe dans la documentation.
 - Ajout de documentation sur le déploiement.
-- Mise à jour des versions des paquets dans `package.json` et `yarn.lock`.
-- Amélioration du layout des stories du composant `AllIcons`.
-- Correction d'une erreur de lint dans les stories du composant `IconSvg`.
-- Mise à jour du changelog.
-- Ajout de variables pour le `border-radius` des formulaires et correction des poids de police.
+- Publication d'une nouvelle version du package.
+- Correction d'une erreur de type dans les stories de la modale.
+- Ajout de tokens pour le rayon de bordure des formulaires et correction des poids de police.
