@@ -1,22 +1,22 @@
-## Changelog : domifa (30 derniers jours, au 23 avril 2026)
+## Changelog : domifa (30 derniers jours, au 27 avril 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de DomiFa se concentrent sur l'amélioration de la sécurité, la correction de bugs et l'optimisation des performances. Des validations de données plus strictes ont été ajoutées côté backend, ainsi qu'un système de limitation de requêtes (throttling) pour protéger l'application. Des corrections ont également été apportées à l'interface utilisateur et aux tests.
+Les dernières mises à jour de DomiFa se concentrent sur l'amélioration de la sécurité, la correction de bugs et l'intégration de la nouvelle bibliothèque de composants DSFR pour une interface utilisateur plus moderne et accessible. Des optimisations ont également été apportées pour améliorer la performance et la robustesse de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'une bannière DSFR à l'interface utilisateur frontend.
-- Ajout d'un fichier `claude.md` (contenu inconnu).
+- Intégration de la bibliothèque de composants DSFR sur le frontend, améliorant l'accessibilité et l'expérience utilisateur.
+- Ajout d'un mécanisme de limitation de débit (throttling) pour protéger l'API contre les requêtes abusives.
+- Correction de bugs concernant l'édition du numéro SIRET et l'assignation des référents.
+- Ajout d'une bannière DSFR sur le frontend.
 
 ### Évolutions techniques
-- Implémentation d'un système de limitation de requêtes (throttling) pour améliorer la stabilité et la performance du backend.
-- Désactivation du throttling pour les requêtes de vérification de l'état de santé (health check).
-- Ajout de logs pour faciliter le débogage du throttling.
-- Renforcement des règles de sécurité côté backend.
-- Amélioration de la validation des données (DTO) côté backend : ajout de contraintes de longueur maximale et application stricte des DTO pour les contacts et les référents.
-- Correction d'un problème dans les tests unitaires.
-- Ajout de logs au backend.
+- Amélioration de la sécurité en renforçant les règles de validation et en ajoutant des logs pour le suivi des activités.
+- Ajout de tests unitaires et correction de tests existants.
+- Refonte des DTO (Data Transfer Objects) pour une meilleure cohérence et validation des données.
+- Optimisation des performances en désactivant le throttling pour les vérifications de santé (health check).
+- Mise en place d'un mécanisme pour éviter les commits déclenchant des CI inutiles.
 
 ### Autres changements
-- Amélioration de la configuration du workflow de release pour inclure une branche dédiée aux corrections de sécurité.
-- Corrections de la documentation du changelog.
-- Ajout de `[skip ci]` à certains commits pour éviter des exécutions CI inutiles.
+- Ajout d'un fichier `claude.md`.
+- Amélioration du changelog et correction des liens vers les commits.
+- Ajout de logs pour faciliter le débogage.

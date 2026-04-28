@@ -247,6 +247,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
+│   │   │   │   ├── 1776860581111-auto-migration.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -578,6 +579,8 @@
 │   │   │   │   │       ├── interactionsTypeManager.service.spec.ts
 │   │   │   │   │       └── interactionsTypeManager.service.ts
 │   │   │   │   ├── mails
+│   │   │   │   │   ├── controllers
+│   │   │   │   │   │   └── newsletter.public.controller.ts
 │   │   │   │   │   ├── mails.module.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── brevo-sender
@@ -731,6 +734,7 @@
 │   │   │   │   │   │       ├── cron-sms-fetch-end-dom.service.ts
 │   │   │   │   │   │       ├── cron-sms-id-mon-domifa.service.ts
 │   │   │   │   │   │       ├── cron-sms-interaction-sender.service.ts
+│   │   │   │   │   │       ├── cron-sms-send-end-dom.service.ts
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── sms.controller.security-tests.ts
 │   │   │   │   │   ├── sms.controller.ts
@@ -1483,14 +1487,7 @@
 │   │   │   │   │   ├── USER_STRUCTURE.mock.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   └── model
-│   │   │   │       ├── _general
-│   │   │   │       │   ├── DEFAULT_MODAL_OPTIONS.const.ts
-│   │   │   │       │   └── index.ts
 │   │   │   │       ├── index.ts
-│   │   │   │       ├── interaction
-│   │   │   │       │   ├── InteractionForApi.interface.ts
-│   │   │   │       │   ├── InteractionForms.type.ts
-│   │   │   │       │   └── index.ts
 │   │   │   │       ├── telephone
 │   │   │   │       │   ├── COUNTRY_CODES.ts
 │   │   │   │       │   ├── PREFERRED_COUNTRIES.const.ts
@@ -1572,6 +1569,20 @@
 │   │   │   │   │   │       ├── manage-portail-usagers.service.ts
 │   │   │   │   │   │       ├── structure-information.service.spec.ts
 │   │   │   │   │   │       └── structure-information.service.ts
+│   │   │   │   │   ├── auth
+│   │   │   │   │   │   ├── auth.module.ts
+│   │   │   │   │   │   ├── auth.routing.module.ts
+│   │   │   │   │   │   └── components
+│   │   │   │   │   │       ├── login
+│   │   │   │   │   │       │   ├── login-form.component.css
+│   │   │   │   │   │       │   ├── login-form.component.html
+│   │   │   │   │   │       │   ├── login-form.component.spec.ts
+│   │   │   │   │   │       │   └── login-form.component.ts
+│   │   │   │   │   │       └── login-container
+│   │   │   │   │   │           ├── login-container.component.html
+│   │   │   │   │   │           ├── login-container.component.scss
+│   │   │   │   │   │           ├── login-container.component.spec.ts
+│   │   │   │   │   │           └── login-container.component.ts
 │   │   │   │   │   ├── general
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── contact-support
@@ -1579,6 +1590,11 @@
 │   │   │   │   │   │   │   │   ├── contact-support.component.scss
 │   │   │   │   │   │   │   │   ├── contact-support.component.spec.ts
 │   │   │   │   │   │   │   │   └── contact-support.component.ts
+│   │   │   │   │   │   │   ├── decouvrir-domifa
+│   │   │   │   │   │   │   │   ├── decouvrir-domifa.component.css
+│   │   │   │   │   │   │   │   ├── decouvrir-domifa.component.html
+│   │   │   │   │   │   │   │   ├── decouvrir-domifa.component.spec.ts
+│   │   │   │   │   │   │   │   └── decouvrir-domifa.component.ts
 │   │   │   │   │   │   │   ├── errors
 │   │   │   │   │   │   │   │   └── not-found
 │   │   │   │   │   │   │   │       ├── not-found.component.css
@@ -1586,21 +1602,48 @@
 │   │   │   │   │   │   │   │       ├── not-found.component.spec.ts
 │   │   │   │   │   │   │   │       └── not-found.component.ts
 │   │   │   │   │   │   │   ├── faq
+│   │   │   │   │   │   │   │   ├── faq-routing.module.ts
 │   │   │   │   │   │   │   │   ├── faq.component.html
 │   │   │   │   │   │   │   │   ├── faq.component.scss
 │   │   │   │   │   │   │   │   ├── faq.component.spec.ts
-│   │   │   │   │   │   │   │   └── faq.component.ts
+│   │   │   │   │   │   │   │   ├── faq.component.ts
+│   │   │   │   │   │   │   │   └── fragments
+│   │   │   │   │   │   │   │       ├── faq-discover
+│   │   │   │   │   │   │   │       │   ├── faq-discover.component.html
+│   │   │   │   │   │   │   │       │   ├── faq-discover.component.spec.ts
+│   │   │   │   │   │   │   │       │   └── faq-discover.component.ts
+│   │   │   │   │   │   │   │       ├── faq-fiches
+│   │   │   │   │   │   │   │       │   ├── faq-fiches.component.html
+│   │   │   │   │   │   │   │       │   ├── faq-fiches.component.spec.ts
+│   │   │   │   │   │   │   │       │   └── faq-fiches.component.ts
+│   │   │   │   │   │   │   │       ├── faq-security
+│   │   │   │   │   │   │   │       │   ├── faq-security.component.html
+│   │   │   │   │   │   │   │       │   ├── faq-security.component.spec.ts
+│   │   │   │   │   │   │   │       │   └── faq-security.component.ts
+│   │   │   │   │   │   │   │       ├── faq-usage
+│   │   │   │   │   │   │   │       │   ├── faq-usage.component.html
+│   │   │   │   │   │   │   │       │   ├── faq-usage.component.spec.ts
+│   │   │   │   │   │   │   │       │   └── faq-usage.component.ts
+│   │   │   │   │   │   │   │       └── faq-video-tutorial
+│   │   │   │   │   │   │   │           ├── faq-video-tutorial.component.html
+│   │   │   │   │   │   │   │           ├── faq-video-tutorial.component.spec.ts
+│   │   │   │   │   │   │   │           └── faq-video-tutorial.component.ts
 │   │   │   │   │   │   │   ├── home
 │   │   │   │   │   │   │   │   ├── home.component.css
 │   │   │   │   │   │   │   │   ├── home.component.html
 │   │   │   │   │   │   │   │   ├── home.component.spec.ts
 │   │   │   │   │   │   │   │   └── home.component.ts
-│   │   │   │   │   │   │   ├── login
-│   │   │   │   │   │   │   │   ├── login.component.css
-│   │   │   │   │   │   │   │   ├── login.component.html
-│   │   │   │   │   │   │   │   ├── login.component.spec.ts
-│   │   │   │   │   │   │   │   └── login.component.ts
 │   │   │   │   │   │   │   ├── navbar
+│   │   │   │   │   │   │   │   ├── fragments
+│   │   │   │   │   │   │   │   │   ├── alerte-confidentialite
+│   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.html
+│   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.spec.ts
+│   │   │   │   │   │   │   │   │   │   └── alerte-confidentialite.component.ts
+│   │   │   │   │   │   │   │   │   └── login-dropdown
+│   │   │   │   │   │   │   │   │       ├── login-dropdown.component.html
+│   │   │   │   │   │   │   │   │       ├── login-dropdown.component.scss
+│   │   │   │   │   │   │   │   │       ├── login-dropdown.component.spec.ts
+│   │   │   │   │   │   │   │   │       └── login-dropdown.component.ts
 │   │   │   │   │   │   │   │   ├── navbar.component.css
 │   │   │   │   │   │   │   │   ├── navbar.component.html
 │   │   │   │   │   │   │   │   ├── navbar.component.spec.ts
@@ -1622,11 +1665,6 @@
 │   │   │   │   │   │   │   │   │   ├── app-tour-modal.component.html
 │   │   │   │   │   │   │   │   │   ├── app-tour-modal.component.spec.ts
 │   │   │   │   │   │   │   │   │   └── app-tour-modal.component.ts
-│   │   │   │   │   │   │   │   ├── help-modal
-│   │   │   │   │   │   │   │   │   ├── help-modal.component.css
-│   │   │   │   │   │   │   │   │   ├── help-modal.component.html
-│   │   │   │   │   │   │   │   │   ├── help-modal.component.spec.ts
-│   │   │   │   │   │   │   │   │   └── help-modal.component.ts
 │   │   │   │   │   │   │   │   ├── idle-manager
 │   │   │   │   │   │   │   │   │   ├── idle-manager.component.html
 │   │   │   │   │   │   │   │   │   ├── idle-manager.component.spec.ts
@@ -1650,6 +1688,9 @@
 │   │   │   │   │   │   │       │   ├── mentions-legales.component.html
 │   │   │   │   │   │   │       │   ├── mentions-legales.component.spec.ts
 │   │   │   │   │   │   │       │   └── mentions-legales.component.ts
+│   │   │   │   │   │   │       ├── partenaires
+│   │   │   │   │   │   │       │   ├── partenaires.component.html
+│   │   │   │   │   │   │       │   └── partenaires.component.ts
 │   │   │   │   │   │   │       ├── politique
 │   │   │   │   │   │   │       │   ├── politique.component.html
 │   │   │   │   │   │   │       │   ├── politique.component.spec.ts
@@ -1687,6 +1728,7 @@
 │   │   │   │   │   │   │   │   └── assign-referrers.component.ts
 │   │   │   │   │   │   │   ├── column-informations
 │   │   │   │   │   │   │   │   ├── column-informations.component.html
+│   │   │   │   │   │   │   │   ├── column-informations.component.scss
 │   │   │   │   │   │   │   │   ├── column-informations.component.spec.ts
 │   │   │   │   │   │   │   │   └── column-informations.component.ts
 │   │   │   │   │   │   │   ├── column-interactions
@@ -1720,6 +1762,8 @@
 │   │   │   │   │   │   │   └── USAGER_DEADLINES.const.ts
 │   │   │   │   │   │   ├── directives
 │   │   │   │   │   │   │   ├── date-fr-conditional.directive.ts
+│   │   │   │   │   │   │   ├── date-fr.directive.spec.ts
+│   │   │   │   │   │   │   ├── date-fr.directive.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   └── sticky.directive.ts
 │   │   │   │   │   │   ├── manage-usagers-routing.module.ts
@@ -1756,11 +1800,6 @@
 │   │   │   │   │   │   │   │   ├── assign-referrers.component.html
 │   │   │   │   │   │   │   │   ├── assign-referrers.component.spec.ts
 │   │   │   │   │   │   │   │   └── assign-referrers.component.ts
-│   │   │   │   │   │   │   ├── delete-user
-│   │   │   │   │   │   │   │   ├── delete-user.component.css
-│   │   │   │   │   │   │   │   ├── delete-user.component.html
-│   │   │   │   │   │   │   │   ├── delete-user.component.spec.ts
-│   │   │   │   │   │   │   │   └── delete-user.component.ts
 │   │   │   │   │   │   │   ├── edit-user
 │   │   │   │   │   │   │   │   ├── edit-user.component.html
 │   │   │   │   │   │   │   │   ├── edit-user.component.spec.ts
@@ -1770,6 +1809,7 @@
 │   │   │   │   │   │   │   │   ├── register-user-admin.component.spec.ts
 │   │   │   │   │   │   │   │   └── register-user-admin.component.ts
 │   │   │   │   │   │   │   └── user-profil
+│   │   │   │   │   │   │       ├── user-profil.component.css
 │   │   │   │   │   │   │       ├── user-profil.component.html
 │   │   │   │   │   │   │       ├── user-profil.component.spec.ts
 │   │   │   │   │   │   │       └── user-profil.component.ts
@@ -1781,19 +1821,28 @@
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── button
-│   │   │   │   │   │   │   │   ├── button.component.css
 │   │   │   │   │   │   │   │   ├── button.component.html
+│   │   │   │   │   │   │   │   ├── button.component.scss
 │   │   │   │   │   │   │   │   ├── button.component.spec.ts
 │   │   │   │   │   │   │   │   └── button.component.ts
 │   │   │   │   │   │   │   ├── custom-toastr
-│   │   │   │   │   │   │   │   ├── custom-toastr.component.css
 │   │   │   │   │   │   │   │   ├── custom-toastr.component.html
+│   │   │   │   │   │   │   │   ├── custom-toastr.component.scss
 │   │   │   │   │   │   │   │   └── custom-toastr.component.ts
+│   │   │   │   │   │   │   ├── display-last-login
+│   │   │   │   │   │   │   │   ├── display-last-login.component.css
+│   │   │   │   │   │   │   │   ├── display-last-login.component.html
+│   │   │   │   │   │   │   │   ├── display-last-login.component.spec.ts
+│   │   │   │   │   │   │   │   └── display-last-login.component.ts
 │   │   │   │   │   │   │   ├── display-table-image
 │   │   │   │   │   │   │   │   ├── display-table-image.component.html
 │   │   │   │   │   │   │   │   ├── display-table-image.component.scss
 │   │   │   │   │   │   │   │   ├── display-table-image.component.spec.ts
 │   │   │   │   │   │   │   │   └── display-table-image.component.ts
+│   │   │   │   │   │   │   ├── faq-section
+│   │   │   │   │   │   │   │   ├── faq-section.component.html
+│   │   │   │   │   │   │   │   ├── faq-section.component.spec.ts
+│   │   │   │   │   │   │   │   └── faq-section.component.ts
 │   │   │   │   │   │   │   ├── fonction-selection
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.html
 │   │   │   │   │   │   │   │   ├── fonction-selection.component.spec.ts
@@ -1813,34 +1862,33 @@
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.scss
 │   │   │   │   │   │   │   │   ├── table-head-sort.component.spec.ts
 │   │   │   │   │   │   │   │   └── table-head-sort.component.ts
-│   │   │   │   │   │   │   └── table-head-sort-icon
-│   │   │   │   │   │   │       ├── table-head-sort-icon.component.html
-│   │   │   │   │   │   │       ├── table-head-sort-icon.component.spec.ts
-│   │   │   │   │   │   │       └── table-head-sort-icon.component.ts
-│   │   │   │   │   │   ├── constants
-│   │   │   │   │   │   │   └── FA_ICONS.const.ts
+│   │   │   │   │   │   │   ├── table-head-sort-icon
+│   │   │   │   │   │   │   │   ├── table-head-sort-icon.component.html
+│   │   │   │   │   │   │   │   ├── table-head-sort-icon.component.spec.ts
+│   │   │   │   │   │   │   │   └── table-head-sort-icon.component.ts
+│   │   │   │   │   │   │   └── user-structure-password-form
+│   │   │   │   │   │   │       ├── user-structure-password-form.component.html
+│   │   │   │   │   │   │       ├── user-structure-password-form.component.spec.ts
+│   │   │   │   │   │   │       └── user-structure-password-form.component.ts
 │   │   │   │   │   │   ├── directives
 │   │   │   │   │   │   │   ├── clean-str.directive.ts
-│   │   │   │   │   │   │   ├── date-fr.directive.spec.ts
-│   │   │   │   │   │   │   ├── date-fr.directive.ts
 │   │   │   │   │   │   │   ├── digit-only.directive.ts
+│   │   │   │   │   │   │   ├── has-role.directive.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── pipes
+│   │   │   │   │   │   │   ├── aria-hide-emoji.pipe.ts
 │   │   │   │   │   │   │   ├── fonction-format.pipe.spec.ts
 │   │   │   │   │   │   │   ├── fonction-format.pipe.ts
 │   │   │   │   │   │   │   ├── full-name.pipe.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   ├── nl2br.pipe.ts
+│   │   │   │   │   │   │   ├── safe-html.pipe.ts
 │   │   │   │   │   │   │   └── sort-array.pipe.ts
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── auth.service.spec.ts
 │   │   │   │   │   │   │   ├── auth.service.ts
 │   │   │   │   │   │   │   ├── custom-toast.service.spec.ts
 │   │   │   │   │   │   │   ├── custom-toast.service.ts
-│   │   │   │   │   │   │   ├── date-formatter.service.ts
-│   │   │   │   │   │   │   ├── date-formatter.spec.ts
-│   │   │   │   │   │   │   ├── date-french.service.ts
-│   │   │   │   │   │   │   ├── date-french.spec.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   ├── loading.service.spec.ts
 │   │   │   │   │   │   │   ├── loading.service.ts
@@ -1855,11 +1903,6 @@
 │   │   │   │   │   ├── stats
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── elements
-│   │   │   │   │   │   │   │   ├── impact-line
-│   │   │   │   │   │   │   │   │   ├── impact-line.component.html
-│   │   │   │   │   │   │   │   │   ├── impact-line.component.scss
-│   │   │   │   │   │   │   │   │   ├── impact-line.component.spec.ts
-│   │   │   │   │   │   │   │   │   └── impact-line.component.ts
 │   │   │   │   │   │   │   │   ├── stats-charts
 │   │   │   │   │   │   │   │   │   ├── stats-charts.component.css
 │   │   │   │   │   │   │   │   │   ├── stats-charts.component.html
@@ -1880,8 +1923,8 @@
 │   │   │   │   │   │   │   │   ├── impact.component.spec.ts
 │   │   │   │   │   │   │   │   └── impact.component.ts
 │   │   │   │   │   │   │   └── public-stats
-│   │   │   │   │   │   │       ├── public-stats.component.css
 │   │   │   │   │   │   │       ├── public-stats.component.html
+│   │   │   │   │   │   │       ├── public-stats.component.scss
 │   │   │   │   │   │   │       └── public-stats.component.ts
 │   │   │   │   │   │   ├── constants
 │   │   │   │   │   │   │   ├── STATS_REGIONS_FOR_MAP.const.ts
@@ -1994,14 +2037,11 @@
 │   │   │   │   │   │   │   │   ├── decision-valide-form.component.html
 │   │   │   │   │   │   │   │   ├── decision-valide-form.component.spec.ts
 │   │   │   │   │   │   │   │   └── decision-valide-form.component.ts
-│   │   │   │   │   │   │   ├── display-contact-details-decision
-│   │   │   │   │   │   │   │   ├── display-contact-details-decision.component.html
-│   │   │   │   │   │   │   │   ├── display-contact-details-decision.component.spec.ts
-│   │   │   │   │   │   │   │   └── display-contact-details-decision.component.ts
-│   │   │   │   │   │   │   ├── display-etat-civil-decision
-│   │   │   │   │   │   │   │   ├── display-etat-civil-decision.component.html
-│   │   │   │   │   │   │   │   ├── display-etat-civil-decision.component.spec.ts
-│   │   │   │   │   │   │   │   └── display-etat-civil-decision.component.ts
+│   │   │   │   │   │   │   ├── form-stepper
+│   │   │   │   │   │   │   │   ├── form-stepper.component.html
+│   │   │   │   │   │   │   │   ├── form-stepper.component.scss
+│   │   │   │   │   │   │   │   ├── form-stepper.component.spec.ts
+│   │   │   │   │   │   │   │   └── form-stepper.component.ts
 │   │   │   │   │   │   │   ├── step-decision
 │   │   │   │   │   │   │   │   ├── step-decision.component.html
 │   │   │   │   │   │   │   │   ├── step-decision.component.spec.ts
@@ -2015,22 +2055,23 @@
 │   │   │   │   │   │   │   │   ├── step-entretien.component.spec.ts
 │   │   │   │   │   │   │   │   └── step-entretien.component.ts
 │   │   │   │   │   │   │   ├── step-etat-civil
-│   │   │   │   │   │   │   │   ├── step-etat-civil.component.css
 │   │   │   │   │   │   │   │   ├── step-etat-civil.component.html
+│   │   │   │   │   │   │   │   ├── step-etat-civil.component.scss
 │   │   │   │   │   │   │   │   ├── step-etat-civil.component.spec.ts
 │   │   │   │   │   │   │   │   └── step-etat-civil.component.ts
 │   │   │   │   │   │   │   ├── step-footer
 │   │   │   │   │   │   │   │   ├── step-footer.component.html
+│   │   │   │   │   │   │   │   ├── step-footer.component.scss
 │   │   │   │   │   │   │   │   ├── step-footer.component.spec.ts
 │   │   │   │   │   │   │   │   └── step-footer.component.ts
 │   │   │   │   │   │   │   ├── step-header
-│   │   │   │   │   │   │   │   ├── step-header.component.css
 │   │   │   │   │   │   │   │   ├── step-header.component.html
+│   │   │   │   │   │   │   │   ├── step-header.component.scss
 │   │   │   │   │   │   │   │   ├── step-header.component.spec.ts
 │   │   │   │   │   │   │   │   └── step-header.component.ts
 │   │   │   │   │   │   │   └── step-rdv
-│   │   │   │   │   │   │       ├── step-rdv.component.css
 │   │   │   │   │   │   │       ├── step-rdv.component.html
+│   │   │   │   │   │   │       ├── step-rdv.component.scss
 │   │   │   │   │   │   │       ├── step-rdv.component.spec.ts
 │   │   │   │   │   │   │       └── step-rdv.component.ts
 │   │   │   │   │   │   ├── constants
@@ -2068,6 +2109,7 @@
 │   │   │   │   │   │   │   └── usager-notes.service.ts
 │   │   │   │   │   │   └── usager-notes.module.ts
 │   │   │   │   │   ├── usager-profil
+│   │   │   │   │   │   ├── ProfilHeadSection.Type.ts
 │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   ├── _courriers
 │   │   │   │   │   │   │   │   ├── profil-edit-portail-usager-preference
@@ -2088,15 +2130,6 @@
 │   │   │   │   │   │   │   │       ├── profil-structure-docs.component.spec.ts
 │   │   │   │   │   │   │   │       └── profil-structure-docs.component.ts
 │   │   │   │   │   │   │   ├── _general-section
-│   │   │   │   │   │   │   │   ├── display-contact-details
-│   │   │   │   │   │   │   │   │   ├── display-contact-details.component.css
-│   │   │   │   │   │   │   │   │   ├── display-contact-details.component.html
-│   │   │   │   │   │   │   │   │   ├── display-contact-details.component.spec.ts
-│   │   │   │   │   │   │   │   │   └── display-contact-details.component.ts
-│   │   │   │   │   │   │   │   ├── display-etat-civil
-│   │   │   │   │   │   │   │   │   ├── display-etat-civil.component.html
-│   │   │   │   │   │   │   │   │   ├── display-etat-civil.component.spec.ts
-│   │   │   │   │   │   │   │   │   └── display-etat-civil.component.ts
 │   │   │   │   │   │   │   │   ├── profil-general-historique-courriers
 │   │   │   │   │   │   │   │   │   ├── profil-general-historique-courriers.component.css
 │   │   │   │   │   │   │   │   │   ├── profil-general-historique-courriers.component.html
@@ -2107,7 +2140,6 @@
 │   │   │   │   │   │   │   │       ├── set-npai.component.spec.ts
 │   │   │   │   │   │   │   │       └── set-npai.component.ts
 │   │   │   │   │   │   │   ├── _historiques
-│   │   │   │   │   │   │   │   ├── historique-table.scss
 │   │   │   │   │   │   │   │   ├── profil-historique-courriers
 │   │   │   │   │   │   │   │   │   ├── profil-historique-courriers.component.html
 │   │   │   │   │   │   │   │   │   ├── profil-historique-courriers.component.spec.ts
@@ -2154,8 +2186,8 @@
 │   │   │   │   │   │   │   │   │   ├── profil-dossier.component.spec.ts
 │   │   │   │   │   │   │   │   │   └── profil-dossier.component.ts
 │   │   │   │   │   │   │   │   ├── profil-general-section
-│   │   │   │   │   │   │   │   │   ├── profil-general-section.component.css
 │   │   │   │   │   │   │   │   │   ├── profil-general-section.component.html
+│   │   │   │   │   │   │   │   │   ├── profil-general-section.component.scss
 │   │   │   │   │   │   │   │   │   ├── profil-general-section.component.spec.ts
 │   │   │   │   │   │   │   │   │   └── profil-general-section.component.ts
 │   │   │   │   │   │   │   │   ├── profil-historique
@@ -2168,12 +2200,17 @@
 │   │   │   │   │   │   │   │       ├── profil-sms-portail.component.html
 │   │   │   │   │   │   │   │       ├── profil-sms-portail.component.spec.ts
 │   │   │   │   │   │   │   │       └── profil-sms-portail.component.ts
+│   │   │   │   │   │   │   ├── profil-alerts
+│   │   │   │   │   │   │   │   ├── profil-alerts.component.css
+│   │   │   │   │   │   │   │   ├── profil-alerts.component.html
+│   │   │   │   │   │   │   │   └── profil-alerts.component.ts
 │   │   │   │   │   │   │   └── profil-head
 │   │   │   │   │   │   │       ├── profil-head.component.css
 │   │   │   │   │   │   │       ├── profil-head.component.html
 │   │   │   │   │   │   │       ├── profil-head.component.spec.ts
 │   │   │   │   │   │   │       └── profil-head.component.ts
 │   │   │   │   │   │   ├── constants
+│   │   │   │   │   │   │   ├── INTERACTION_ICONS.const.ts
 │   │   │   │   │   │   │   ├── SMS_LABELS.const.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── services
@@ -2192,11 +2229,6 @@
 │   │   │   │   │   │   │   │   ├── decision-radiation-form.component.scss
 │   │   │   │   │   │   │   │   ├── decision-radiation-form.component.spec.ts
 │   │   │   │   │   │   │   │   └── decision-radiation-form.component.ts
-│   │   │   │   │   │   │   ├── delete-usager
-│   │   │   │   │   │   │   │   ├── delete-usager.component.css
-│   │   │   │   │   │   │   │   ├── delete-usager.component.html
-│   │   │   │   │   │   │   │   ├── delete-usager.component.spec.ts
-│   │   │   │   │   │   │   │   └── delete-usager.component.ts
 │   │   │   │   │   │   │   ├── delete-usager-menu
 │   │   │   │   │   │   │   │   ├── delete-usager-menu.component.css
 │   │   │   │   │   │   │   │   ├── delete-usager-menu.component.html
@@ -2206,6 +2238,11 @@
 │   │   │   │   │   │   │   │   ├── display-ayants-droits.component.html
 │   │   │   │   │   │   │   │   ├── display-ayants-droits.component.spec.ts
 │   │   │   │   │   │   │   │   └── display-ayants-droits.component.ts
+│   │   │   │   │   │   │   ├── display-contact-details
+│   │   │   │   │   │   │   │   ├── display-contact-details.component.css
+│   │   │   │   │   │   │   │   ├── display-contact-details.component.html
+│   │   │   │   │   │   │   │   ├── display-contact-details.component.spec.ts
+│   │   │   │   │   │   │   │   └── display-contact-details.component.ts
 │   │   │   │   │   │   │   ├── display-duplicates-usager
 │   │   │   │   │   │   │   │   ├── display-duplicates-usager.component.css
 │   │   │   │   │   │   │   │   ├── display-duplicates-usager.component.html
@@ -2215,6 +2252,10 @@
 │   │   │   │   │   │   │   │   ├── display-entretien.component.html
 │   │   │   │   │   │   │   │   ├── display-entretien.component.spec.ts
 │   │   │   │   │   │   │   │   └── display-entretien.component.ts
+│   │   │   │   │   │   │   ├── display-etat-civil
+│   │   │   │   │   │   │   │   ├── display-etat-civil.component.html
+│   │   │   │   │   │   │   │   ├── display-etat-civil.component.spec.ts
+│   │   │   │   │   │   │   │   └── display-etat-civil.component.ts
 │   │   │   │   │   │   │   ├── display-usager-docs
 │   │   │   │   │   │   │   │   ├── display-usager-docs.component.html
 │   │   │   │   │   │   │   │   ├── display-usager-docs.component.spec.ts
@@ -2243,8 +2284,17 @@
 │   │   │   │   │   │   │   │   ├── input-nationality.component.html
 │   │   │   │   │   │   │   │   ├── input-nationality.component.spec.ts
 │   │   │   │   │   │   │   │   └── input-nationality.component.ts
+│   │   │   │   │   │   │   ├── input-phone-international
+│   │   │   │   │   │   │   │   ├── constants
+│   │   │   │   │   │   │   │   │   ├── FR_COUNTRIES.const.ts
+│   │   │   │   │   │   │   │   │   ├── PREFERRED_COUNTRIES.const.ts
+│   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   ├── input-phone-international.component.html
+│   │   │   │   │   │   │   │   ├── input-phone-international.component.scss
+│   │   │   │   │   │   │   │   ├── input-phone-international.component.spec.ts
+│   │   │   │   │   │   │   │   └── input-phone-international.component.ts
 │   │   │   │   │   │   │   ├── interactions
-│   │   │   │   │   │   │   │   ├── interactions.css
+│   │   │   │   │   │   │   │   ├── interactions.scss
 │   │   │   │   │   │   │   │   ├── set-interaction-in-form
 │   │   │   │   │   │   │   │   │   ├── set-interaction-in-form.component.html
 │   │   │   │   │   │   │   │   │   ├── set-interaction-in-form.component.spec.ts
@@ -2266,15 +2316,21 @@
 │   │   │   │   │   │   │       ├── upload.component.spec.ts
 │   │   │   │   │   │   │       └── upload.component.ts
 │   │   │   │   │   │   ├── interfaces
+│   │   │   │   │   │   │   ├── DeleteUsagerContext.type.ts
 │   │   │   │   │   │   │   ├── UsagerFormModel.ts
 │   │   │   │   │   │   │   ├── ayant-droit.ts
 │   │   │   │   │   │   │   ├── decision.ts
 │   │   │   │   │   │   │   ├── entretien.ts
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── interaction
+│   │   │   │   │   │   │   │   ├── InteractionForApi.interface.ts
+│   │   │   │   │   │   │   │   ├── InteractionForms.type.ts
+│   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   ├── rdv.ts
 │   │   │   │   │   │   │   └── usager-interfaces.spec.ts
 │   │   │   │   │   │   ├── pipes
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── language-label.pipe.ts
 │   │   │   │   │   │   │   └── referrer-name.pipe.ts
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── document.service.spec.ts
@@ -2293,21 +2349,15 @@
 │   │   │   │   │   │       └── languages
 │   │   │   │   │   │           ├── AppLanguage.type.ts
 │   │   │   │   │   │           ├── LANGUAGES.const.ts
-│   │   │   │   │   │           ├── index.ts
-│   │   │   │   │   │           ├── languages-autocomplete.util.spec.ts
-│   │   │   │   │   │           └── languages-autocomplete.util.ts
+│   │   │   │   │   │           └── index.ts
 │   │   │   │   │   └── users
 │   │   │   │   │       ├── PASSWORD_VALIDATOR.const.ts
 │   │   │   │   │       ├── components
-│   │   │   │   │       │   ├── reset-password
-│   │   │   │   │       │   │   ├── reset-password.component.css
-│   │   │   │   │       │   │   ├── reset-password.component.html
-│   │   │   │   │       │   │   ├── reset-password.component.spec.ts
-│   │   │   │   │       │   │   └── reset-password.component.ts
-│   │   │   │   │       │   └── user-structure-password-form
-│   │   │   │   │       │       ├── user-structure-password-form.component.html
-│   │   │   │   │       │       ├── user-structure-password-form.component.spec.ts
-│   │   │   │   │       │       └── user-structure-password-form.component.ts
+│   │   │   │   │       │   └── reset-password
+│   │   │   │   │       │       ├── reset-password.component.css
+│   │   │   │   │       │       ├── reset-password.component.html
+│   │   │   │   │       │       ├── reset-password.component.spec.ts
+│   │   │   │   │       │       └── reset-password.component.ts
 │   │   │   │   │       ├── services
 │   │   │   │   │       │   ├── index.ts
 │   │   │   │   │       │   ├── password-validator.service.ts
@@ -2324,6 +2374,7 @@
 │   │   │   │       ├── constants
 │   │   │   │       │   ├── MATOMO_INJECTORS.const.ts
 │   │   │   │       │   └── index.ts
+│   │   │   │       ├── date-utils.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── phone
 │   │   │   │       │   ├── formatInternationalPhoneNumber.pipe.ts
@@ -2356,10 +2407,6 @@
 │   │   │   ├── assets
 │   │   │   │   ├── .gitkeep
 │   │   │   │   ├── css
-│   │   │   │   │   ├── bootstrap-custom.css
-│   │   │   │   │   ├── fonts.css
-│   │   │   │   │   ├── forms.scss
-│   │   │   │   │   ├── icons.css
 │   │   │   │   │   ├── main.scss
 │   │   │   │   │   └── print.css
 │   │   │   │   ├── favicon
@@ -2410,89 +2457,99 @@
 │   │   │   │   │       ├── Marianne-Thin_Italic.woff
 │   │   │   │   │       └── Marianne-Thin_Italic.woff2
 │   │   │   │   ├── icones
-│   │   │   │   │   ├── avispassage.svg
-│   │   │   │   │   ├── ban-solid.svg
-│   │   │   │   │   ├── calendar.svg
-│   │   │   │   │   ├── colis.svg
-│   │   │   │   │   ├── courrier.svg
-│   │   │   │   │   ├── danger.svg
-│   │   │   │   │   ├── distribution.svg
-│   │   │   │   │   ├── fleche-droite.svg
-│   │   │   │   │   ├── fleche-gauche.svg
-│   │   │   │   │   ├── icon-heart.png
-│   │   │   │   │   ├── link-external.png
-│   │   │   │   │   ├── menu.svg
-│   │   │   │   │   ├── moins.svg
-│   │   │   │   │   ├── note.svg
-│   │   │   │   │   ├── passage.svg
-│   │   │   │   │   ├── phone.svg
-│   │   │   │   │   ├── pinned-note.svg
-│   │   │   │   │   ├── plus.svg
-│   │   │   │   │   ├── reception.svg
-│   │   │   │   │   └── recommande.svg
-│   │   │   │   └── images
-│   │   │   │       ├── faq
-│   │   │   │       │   ├── faq-compte.jpg
-│   │   │   │       │   ├── faq-demande.jpg
-│   │   │   │       │   ├── faq-import.jpg
-│   │   │   │       │   ├── faq-inscription.jpg
-│   │   │   │       │   ├── faq-liste.jpg
-│   │   │   │       │   ├── faq-profil.jpg
-│   │   │   │       │   └── faq-sms.jpg
-│   │   │   │       ├── footer
-│   │   │   │       │   ├── logo-dgcs.svg
-│   │   │   │       │   ├── logo-france-relance.svg
-│   │   │   │       │   ├── logo_anct.webp
-│   │   │   │       │   ├── logo_francerelance.webp
-│   │   │   │       │   ├── partenaire-beta-gouv.png
-│   │   │   │       │   ├── partenaire-dihal.png
-│   │   │   │       │   ├── partenaire-fabrique-numerique.png
-│   │   │   │       │   └── partenaire-unccas.jpg
-│   │   │   │       ├── home
-│   │   │   │       │   ├── avantage-1-suivi-complet.png
-│   │   │   │       │   ├── avantage-2-logiciel-intuitif.png
-│   │   │   │       │   ├── avantage-3-dossiers-securises.png
-│   │   │   │       │   ├── avantage-4-liberez-temps.png
-│   │   │   │       │   ├── avantage-5-protegez-donnees-domicilies.png
-│   │   │   │       │   ├── avantage-6-facilitez-autonomie.png
-│   │   │   │       │   ├── courrier-distribution-main.png
-│   │   │   │       │   ├── courrier-reception-main.png
-│   │   │   │       │   ├── domifa-screenshot-1.png
-│   │   │   │       │   ├── domifa-screenshot-2.png
-│   │   │   │       │   ├── domifa-screenshot-3.png
-│   │   │   │       │   ├── structure-aurore.png
-│   │   │   │       │   ├── structure-ccas-annecy.png
-│   │   │   │       │   ├── structure-ccas-clermont-ferrant.png
-│   │   │   │       │   ├── structure-ccas-le-havre.png
-│   │   │   │       │   ├── structure-paris.jpg
-│   │   │   │       │   └── structure-samu-social-paris.png
-│   │   │   │       ├── impact
-│   │   │   │       │   ├── fond-impact-humain.svg
-│   │   │   │       │   ├── impact-humain.svg
-│   │   │   │       │   ├── impact-organisation.svg
-│   │   │   │       │   ├── impact-social.svg
-│   │   │   │       │   ├── quote.svg
-│   │   │   │       │   └── temoignages.jpg
-│   │   │   │       ├── logo-ministere.jpg
-│   │   │   │       ├── logo-ministere.svg
-│   │   │   │       ├── logo.png
-│   │   │   │       ├── logo.svg
-│   │   │   │       ├── modals
-│   │   │   │       │   ├── admin.png
-│   │   │   │       │   ├── facteur.png
-│   │   │   │       │   ├── popup.gif
-│   │   │   │       │   └── responsable.png
-│   │   │   │       ├── portail
-│   │   │   │       │   ├── courrier.png
-│   │   │   │       │   ├── no-courrier.png
-│   │   │   │       │   ├── notif.png
-│   │   │   │       │   └── warning.png
-│   │   │   │       └── stats
-│   │   │   │           ├── agents.svg
-│   │   │   │           ├── courriers.svg
-│   │   │   │           ├── domicilies.svg
-│   │   │   │           ├── satisfaction.svg
-│   │   │   │           └── structures.svg
+│   │   │   │   │   ├── dsfr
+│   │   │   │   │   │   └── domicilies.svg
+│   │   │   │   │   └── mon-domifa
+│   │   │   │   │       ├── illu-mon-domifa.svg
+│   │   │   │   │       └── logo-mon-domifa.svg
+│   │   │   │   ├── images
+│   │   │   │   │   ├── contact.svg
+│   │   │   │   │   ├── discover
+│   │   │   │   │   │   ├── bottom-banner.svg
+│   │   │   │   │   │   ├── discover-header.svg
+│   │   │   │   │   │   ├── facilite-1.svg
+│   │   │   │   │   │   ├── facilite-2.svg
+│   │   │   │   │   │   ├── facilite-3.svg
+│   │   │   │   │   │   ├── partenaire-anct.svg
+│   │   │   │   │   │   ├── partenaire-beta.svg
+│   │   │   │   │   │   ├── partenaire-dinum.svg
+│   │   │   │   │   │   ├── partenaire-mtssf.svg
+│   │   │   │   │   │   └── partenaire-unccas.svg
+│   │   │   │   │   ├── faq
+│   │   │   │   │   │   └── faq-header.svg
+│   │   │   │   │   ├── footer
+│   │   │   │   │   │   ├── logo-dgcs.svg
+│   │   │   │   │   │   ├── logo-france-relance.svg
+│   │   │   │   │   │   ├── logo_anct.webp
+│   │   │   │   │   │   └── logo_francerelance.webp
+│   │   │   │   │   ├── home
+│   │   │   │   │   │   ├── accompagnemet-social-1.svg
+│   │   │   │   │   │   ├── accompagnemet-social-2.svg
+│   │   │   │   │   │   ├── accompagnemet-social-3.svg
+│   │   │   │   │   │   ├── avantage-1-suivi-complet.png
+│   │   │   │   │   │   ├── avantage-2-logiciel-intuitif.png
+│   │   │   │   │   │   ├── avantage-3-dossiers-securises.png
+│   │   │   │   │   │   ├── avantage-4-liberez-temps.png
+│   │   │   │   │   │   ├── avantage-5-protegez-donnees-domicilies.png
+│   │   │   │   │   │   ├── avantage-6-facilitez-autonomie.png
+│   │   │   │   │   │   ├── domifa-screenshot-1.png
+│   │   │   │   │   │   ├── domifa-screenshot-3.png
+│   │   │   │   │   │   ├── home-header.svg
+│   │   │   │   │   │   ├── inscription-structure.svg
+│   │   │   │   │   │   ├── link-mon-domifa.svg
+│   │   │   │   │   │   ├── mon-domifa.svg
+│   │   │   │   │   │   ├── recherche-structure.svg
+│   │   │   │   │   │   ├── structure-aurore.png
+│   │   │   │   │   │   ├── structure-ccas-annecy.png
+│   │   │   │   │   │   ├── structure-ccas-clermont-ferrant.png
+│   │   │   │   │   │   ├── structure-ccas-le-havre.png
+│   │   │   │   │   │   ├── structure-introuvable.svg
+│   │   │   │   │   │   ├── structure-paris.svg
+│   │   │   │   │   │   └── structure-samu-social-paris.svg
+│   │   │   │   │   ├── impact
+│   │   │   │   │   │   ├── fond-impact-humain.svg
+│   │   │   │   │   │   ├── impact-humain.svg
+│   │   │   │   │   │   ├── impact-lien-stats.svg
+│   │   │   │   │   │   ├── impact-organisation.svg
+│   │   │   │   │   │   ├── impact-satisfaction.svg
+│   │   │   │   │   │   ├── impact-social.svg
+│   │   │   │   │   │   ├── quote.svg
+│   │   │   │   │   │   └── temoignages.jpg
+│   │   │   │   │   ├── login
+│   │   │   │   │   │   └── login-container.svg
+│   │   │   │   │   ├── logo-dsfr.svg
+│   │   │   │   │   ├── logo.png
+│   │   │   │   │   ├── logo.svg
+│   │   │   │   │   ├── modals
+│   │   │   │   │   │   ├── admin.png
+│   │   │   │   │   │   ├── facteur.png
+│   │   │   │   │   │   ├── popup.gif
+│   │   │   │   │   │   └── responsable.png
+│   │   │   │   │   ├── mon-domifa
+│   │   │   │   │   │   ├── image-1.png
+│   │   │   │   │   │   ├── image-2.png
+│   │   │   │   │   │   └── image-3.png
+│   │   │   │   │   ├── news.svg
+│   │   │   │   │   ├── partners
+│   │   │   │   │   │   └── illu-partners.svg
+│   │   │   │   │   ├── register
+│   │   │   │   │   │   ├── register-success.svg
+│   │   │   │   │   │   └── success-structure.svg
+│   │   │   │   │   ├── stats
+│   │   │   │   │   │   ├── agents.svg
+│   │   │   │   │   │   ├── courriers.svg
+│   │   │   │   │   │   ├── domicilies.svg
+│   │   │   │   │   │   ├── satisfaction.svg
+│   │   │   │   │   │   ├── stat-header.svg
+│   │   │   │   │   │   └── structures.svg
+│   │   │   │   │   └── usager-form
+│   │   │   │   │       └── entretien.svg
+│   │   │   │   └── pictograms
+│   │   │   │       ├── environment
+│   │   │   │       │   ├── moon.svg
+│   │   │   │       │   └── sun.svg
+│   │   │   │       └── system
+│   │   │   │           └── system.svg
 │   │   │   ├── environments
 │   │   │   │   ├── AppEnvironment.type.ts
 │   │   │   │   ├── environment.prod.ts
@@ -3124,4 +3181,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-697 directories, 2429 files
+720 directories, 2463 files
