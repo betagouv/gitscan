@@ -1,7 +1,7 @@
-## Changelog : lab-anssi-admin (30 derniers jours)
+## Changelog : lab-anssi-admin (30 derniers jours, au 23 avril 2026)
 
 ### Résumé
-Ce changelog présente l'ajout d'un script permettant de lister la validité des certificats utilisés par les applications de sauvegarde. Cette nouvelle fonctionnalité aide les administrateurs à surveiller et à gérer les certificats pour assurer la sécurité et la disponibilité des sauvegardes.
+Cette mise à jour apporte une vérification du certificat MQC pour renforcer la sécurité des sauvegardes. Cette amélioration garantit que les communications avec le service MQC sont bien sécurisées, assurant ainsi la confidentialité et l'intégrité des données sauvegardées.
 
 ### Évolutions techniques
-- Ajout d'un script pour lister la validité des certificats [#1](https://github.com/betagouv/lab-anssi-admin/commit/015784b)
+- Ajout d'une vérification du certificat MQC pour sécuriser les communications. [#1](https://github.com/betagouv/lab-anssi-admin/commit/b9f4723)
