@@ -1,28 +1,19 @@
 ## Changelog : proconnect-espace-partenaires (30 derniers jours, au 20 avril 2026)
 
 ### Résumé
-Ce changelog fait état d'une période principalement axée sur l'amélioration de la documentation destinée aux partenaires, notamment concernant la configuration et l'intégration avec les services d'identification. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la documentation pour les partenaires, notamment concernant la configuration et les erreurs rencontrées lors de l'intégration. Une nouvelle fonctionnalité de mode maintenance a été ajoutée pour permettre de bloquer les modifications de l'espace partenaire. Des mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période. Les changements se concentrent sur l'amélioration de la documentation.
+- Ajout d'un mode maintenance pour désactiver les modifications de l'espace partenaire. [#312](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/312)
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances :
-    - `typescript` (#296)
-    - `lodash` (#302, #304)
-    - `follow-redirects` (#313)
-    - `@playwright/test` (#310)
-    - `defu` (#295)
-    - `@gouvfr-lasuite/proconnect.debounce` (#151)
-    - `next` (#280)
-    - `flatted` (#279)
-    - `proconnect-gouv/federation/api-partner` (#287)
-    - `picomatch` (#286)
-- Tests d'intégration avec l'IDP (#299) et tests préliminaires (#293).
+- Mise à jour de la dépendance `proconnect-gouv/federation/api-partner` vers la version `4f05153`. [#315](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/315)
+- Mises à jour de plusieurs dépendances de développement (TypeScript, lodash, @playwright/test, picomatch, defu, follow-redirects) pour améliorer la sécurité et la stabilité. (voir commits dependabot)
 
 ### Autres changements
-- Amélioration de la documentation concernant la configuration et les erreurs Y020032 (#294).
-- Restructuration de la documentation de configuration et correction de la numérotation de l'index (#311).
-- Clarification des niveaux EIDAS et amélioration de la découvrabilité de la documentation (#290).
-- Ajout d'une page sur la résolution de l'URL de découverte RIE (#291).
-- Ajout d'une page de référentiel IP pour les fournisseurs de services (#292).
+- Amélioration de la documentation concernant les erreurs Y020032 et la configuration générale. [#294](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/294)
+- Restructuration de la documentation et correction de la numérotation dans l'index.mdx. [#311](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/311)
+- Ajout de pages de documentation concernant la résolution d'URL RIE Discovery et le référentiel IP pour les fournisseurs de services. [#291](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/291), [#292](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/292)
+- Clarification des niveaux EIDAS dans la documentation. [#290](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/290)
+- Tests d'intégration IDP. [#299](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/299)
+- Tests Proco. [#293](https://github.com/proconnect-gouv/proconnect-espace-partenaires/issues/293)
